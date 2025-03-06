@@ -2,7 +2,7 @@ import { useEffect, useCallback } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 
 export function useGameLogic() {
-  const { gameState, chess, makeMove, updateScore } = useGameStore();
+  const { gameState, makeMove, updateScore } = useGameStore();
 
   const handleMove = useCallback((move: string) => {
     if (makeMove(move)) {

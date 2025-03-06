@@ -7,7 +7,7 @@ interface GameStore {
   // Game state
   gameState: GameState;
   history: GameHistory[];
-  chess: Chess;
+  chess: Chess | null;
   
   // Actions
   startGame: () => void;
@@ -24,27 +24,53 @@ interface GameStore {
   getTotalTimePlayed: () => number;
 }
 
+// Initial game state
+const initialGameState: GameState = {
+  isPlaying: false,
+  timeElapsed: 0,
+  elapsedTime: 0,
+  score: 0,
+  currentLevel: 1,
+  level: 1,
+  moves: [],
+};
+
+// Initialize a chess instance outside the store to ensure it's created correctly
+let initialChess: Chess | null = null;
+try {
+  initialChess = new Chess();
+} catch (error) {
+  console.error('Failed to initialize Chess:', error);
+}
+
+// Define a type for chess.js move objects
+interface ChessMove {
+  from: string;
+  to: string;
+  promotion?: string;
+}
+
 export const useGameStore = create<GameStore>()(
   persist(
     (set, get) => ({
-      gameState: {
-        isPlaying: false,
-        timeElapsed: 0,
-        score: 0,
-        currentLevel: 1,
-      },
+      gameState: initialGameState,
       history: [],
-      chess: new Chess(),
+      chess: initialChess,
 
       startGame: () => {
-        const chess = new Chess();
+        let newChess: Chess | null = null;
+        try {
+          newChess = new Chess();
+          console.log('Chess instance created successfully');
+        } catch (error) {
+          console.error('Failed to create Chess instance in startGame:', error);
+        }
+        
         set({
-          chess,
+          chess: newChess,
           gameState: {
-            ...get().gameState,
+            ...initialGameState,
             isPlaying: true,
-            timeElapsed: 0,
-            score: 0,
           },
         });
       },
@@ -59,29 +85,69 @@ export const useGameStore = create<GameStore>()(
         get().addToHistory({
           date: new Date(),
           score: currentState.score,
-          level: currentState.currentLevel,
-          duration: currentState.timeElapsed,
+          level: currentState.level || currentState.currentLevel || 1,
+          duration: currentState.elapsedTime || currentState.timeElapsed || 0,
         });
       },
 
       makeMove: (move: string) => {
+        const chess = get().chess;
+        if (!chess) {
+          console.error('Chess object is null in makeMove');
+          return false;
+        }
+        
         try {
-          const result = get().chess.move(move);
-          return !!result;
-        } catch {
+          // Check if the move is in the standard algebraic notation (e.g., "e2e4")
+          // If so, convert it to an object format that chess.js can understand
+          let moveObj: string | ChessMove;
+          if (move.length === 4) {
+            moveObj = {
+              from: move.substring(0, 2),
+              to: move.substring(2, 4),
+            };
+          } else {
+            moveObj = move;
+          }
+          
+          // Try to make the move directly
+          const result = chess.move(moveObj);
+          
+          if (result) {
+            // Move was successful
+            set((state) => ({
+              gameState: {
+                ...state.gameState,
+                moves: [
+                  ...(state.gameState.moves || []), 
+                  typeof moveObj === 'string' ? moveObj : `${moveObj.from}${moveObj.to}`
+                ],
+                // Update score based on move
+                score: state.gameState.score + 10,
+              },
+            }));
+            return true;
+          } else {
+            console.log(`Move failed: ${JSON.stringify(moveObj)}`);
+            return false;
+          }
+        } catch (error) {
+          console.error('Invalid move:', error);
           return false;
         }
       },
 
       resetGame: () => {
+        let newChess: Chess | null = null;
+        try {
+          newChess = new Chess();
+        } catch (error) {
+          console.error('Failed to create Chess instance in resetGame:', error);
+        }
+        
         set({
-          chess: new Chess(),
-          gameState: {
-            isPlaying: false,
-            timeElapsed: 0,
-            score: 0,
-            currentLevel: 1,
-          },
+          chess: newChess,
+          gameState: { ...initialGameState },
         });
       },
 
@@ -128,6 +194,11 @@ export const useGameStore = create<GameStore>()(
     }),
     {
       name: 'memory-chess-storage',
+      partialize: (state) => ({
+        // Don't persist the chess object as it can't be serialized properly
+        gameState: state.gameState,
+        history: state.history,
+      }),
     }
   )
 ); 

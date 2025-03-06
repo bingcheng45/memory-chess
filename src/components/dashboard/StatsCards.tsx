@@ -1,38 +1,49 @@
 'use client';
 
-import { useGameStore } from '@/lib/store/gameStore';
+interface StatsCardsProps {
+  readonly totalGames: number;
+  readonly averageScore: number;
+  readonly highestLevel: number;
+  readonly totalTimePlayed: number;
+}
 
-export default function StatsCards() {
-  const {
-    getTotalGames,
-    getAverageScore,
-    getHighestLevel,
-    getTotalTimePlayed,
-  } = useGameStore();
-
-  const formatTime = (seconds: number) => {
+export default function StatsCards({ 
+  totalGames, 
+  averageScore, 
+  highestLevel, 
+  totalTimePlayed 
+}: StatsCardsProps) {
+  const formatTime = (seconds: number): string => {
     const hours = Math.floor(seconds / 3600);
-    return `${hours}h`;
+    const minutes = Math.floor((seconds % 3600) / 60);
+    
+    if (hours > 0) {
+      return `${hours}h ${minutes}m`;
+    }
+    return `${minutes}m`;
   };
 
-  const stats = [
-    { label: 'Total Games', value: getTotalGames().toString() },
-    { label: 'Average Score', value: getAverageScore().toString() },
-    { label: 'Highest Level', value: getHighestLevel().toString() },
-    { label: 'Time Played', value: formatTime(getTotalTimePlayed()) },
-  ];
-
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {stats.map((stat) => (
-        <div
-          key={stat.label}
-          className="rounded-lg border border-white/10 bg-gray-800 p-4"
-        >
-          <p className="text-sm text-gray-400">{stat.label}</p>
-          <p className="text-2xl font-bold">{stat.value}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="rounded-lg border border-white/10 bg-gray-800 p-4">
+        <p className="text-sm text-gray-400">Total Games</p>
+        <p className="text-2xl font-medium">{totalGames}</p>
+      </div>
+      
+      <div className="rounded-lg border border-white/10 bg-gray-800 p-4">
+        <p className="text-sm text-gray-400">Average Score</p>
+        <p className="text-2xl font-medium">{averageScore}</p>
+      </div>
+      
+      <div className="rounded-lg border border-white/10 bg-gray-800 p-4">
+        <p className="text-sm text-gray-400">Highest Level</p>
+        <p className="text-2xl font-medium">{highestLevel}</p>
+      </div>
+      
+      <div className="rounded-lg border border-white/10 bg-gray-800 p-4">
+        <p className="text-sm text-gray-400">Total Time Played</p>
+        <p className="text-2xl font-medium">{formatTime(totalTimePlayed)}</p>
+      </div>
+    </>
   );
 } 

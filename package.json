@@ -6,8 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prepare": "husky install"
+    "lint": "next lint"
   },
   "dependencies": {
     "chess.js": "^1.1.0",
@@ -27,7 +26,6 @@
     "@typescript-eslint/parser": "^8.26.0",
     "eslint": "^9",
     "eslint-config-next": "15.2.1",
-    "husky": "^8.0.0",
     "lint-staged": "^15.4.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",

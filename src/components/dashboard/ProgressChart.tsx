@@ -1,62 +1,62 @@
 'use client';
 
-import { useGameStore } from '@/lib/store/gameStore';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { GameHistory } from '@/lib/types/game';
 
-export default function ProgressChart() {
-  const history = useGameStore((state) => state.history);
+interface ProgressChartProps {
+  readonly history: readonly GameHistory[];
+}
 
-  const data = history
-    .slice()
-    .reverse()
-    .map((game) => ({
-      date: new Date(game.date).toLocaleDateString(),
+export default function ProgressChart({ history }: ProgressChartProps) {
+  // Prepare data for the chart
+  const chartData = history
+    .slice(0, 20) // Take the last 20 games
+    .reverse() // Show oldest to newest
+    .map((game, index) => ({
+      name: `Game ${index + 1}`,
       score: game.score,
       level: game.level,
     }));
 
   return (
-    <div className="rounded-lg border border-white/10 bg-gray-800 p-6">
-      <h2 className="mb-4 text-xl font-semibold">Progress Over Time</h2>
-      <div className="h-[300px] w-full">
+    <div className="h-80 w-full">
+      {chartData.length > 0 ? (
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-            <XAxis
-              dataKey="date"
-              stroke="#9CA3AF"
-              tick={{ fill: '#9CA3AF' }}
-            />
-            <YAxis stroke="#9CA3AF" tick={{ fill: '#9CA3AF' }} />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: '#1F2937',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-              }}
+          <LineChart
+            data={chartData}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+            <XAxis dataKey="name" stroke="#888" />
+            <YAxis stroke="#888" />
+            <Tooltip 
+              contentStyle={{ 
+                backgroundColor: '#333', 
+                border: '1px solid #555',
+                borderRadius: '4px',
+                color: 'white'
+              }} 
             />
             <Line
               type="monotone"
               dataKey="score"
-              stroke="#3B82F6"
+              stroke="#8884d8"
+              activeDot={{ r: 8 }}
               strokeWidth={2}
             />
             <Line
               type="monotone"
               dataKey="level"
-              stroke="#10B981"
+              stroke="#82ca9d"
               strokeWidth={2}
             />
           </LineChart>
         </ResponsiveContainer>
-      </div>
+      ) : (
+        <div className="flex h-full items-center justify-center">
+          <p className="text-gray-400">No game history available yet</p>
+        </div>
+      )}
     </div>
   );
 } 

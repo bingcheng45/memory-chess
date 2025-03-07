@@ -8,6 +8,7 @@ import MemorizationBoard from '@/components/game/MemorizationBoard';
 import SolutionBoard from '@/components/game/SolutionBoard';
 import GameResult from '@/components/game/GameResult';
 import GameStats from '@/components/game/GameStats';
+import Link from 'next/link';
 
 export default function GamePage() {
   const { 
@@ -141,9 +142,20 @@ export default function GamePage() {
   return (
     <main className="min-h-screen bg-black text-peach-100">
       <div className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
-        <h1 className="mb-8 text-center text-4xl font-bold text-peach-100">
-          Memory <span className="text-peach-500">Chess</span>
-        </h1>
+        <div className="mb-8 flex w-full max-w-4xl items-center justify-between">
+          <Link 
+            href="/"
+            className="rounded-lg border border-peach-500/20 px-4 py-2 text-sm font-medium text-peach-200 transition-all hover:bg-peach-500/10"
+          >
+            ← Back to Home
+          </Link>
+          
+          <h1 className="text-center text-3xl font-bold text-peach-100">
+            Memory <span className="text-peach-500">Chess</span>
+          </h1>
+          
+          <div className="w-[100px]"></div> {/* Spacer for centering */}
+        </div>
         
         {renderGameContent()}
       </div>

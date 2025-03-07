@@ -116,12 +116,12 @@ export default function GamePage() {
         return (
           <div className="flex flex-col items-center">
             <div className="mb-4 flex w-full max-w-[600px] items-center justify-between">
-              <div className="text-xl font-bold text-peach-100">
+              <div className="text-xl font-bold text-text-primary">
                 Time: {formatTime(elapsedTime)}
               </div>
               <button
                 onClick={handleSubmitSolution}
-                className="rounded-lg bg-peach-500 px-4 py-2 font-medium text-black transition-colors hover:bg-peach-400 focus:outline-none focus:ring-2 focus:ring-peach-300"
+                className="rounded-lg bg-peach-500 px-4 py-2 font-medium text-bg-dark transition-all hover:bg-peach-400 focus:outline-none focus:ring-2 focus:ring-peach-300"
                 type="button"
               >
                 Submit Solution
@@ -140,17 +140,17 @@ export default function GamePage() {
   };
   
   return (
-    <main className="min-h-screen bg-black text-peach-100">
+    <main className="min-h-screen bg-bg-dark text-text-primary">
       <div className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
         <div className="mb-8 flex w-full max-w-4xl items-center justify-between">
           <Link 
             href="/"
-            className="rounded-lg border border-peach-500/20 px-4 py-2 text-sm font-medium text-peach-200 transition-all hover:bg-peach-500/10"
+            className="rounded-lg border border-peach-500/20 px-4 py-2 text-sm font-medium text-text-secondary transition-all hover:bg-peach-500/10"
           >
             ← Back to Home
           </Link>
           
-          <h1 className="text-center text-3xl font-bold text-peach-100">
+          <h1 className="text-center text-3xl font-bold text-text-primary">
             Memory <span className="text-peach-500">Chess</span>
           </h1>
           

@@ -21,15 +21,15 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   };
   
   return (
-    <div className="w-full max-w-md rounded-xl border border-gray-light bg-gray-dark p-8 shadow-xl">
-      <h2 className="mb-8 text-center text-2xl font-bold text-peach-100">Game Configuration</h2>
+    <div className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-8 shadow-xl">
+      <h2 className="mb-8 text-center text-2xl font-bold text-text-primary">Game Configuration</h2>
       
       <div className="mb-8">
         <div className="mb-2 flex items-center justify-between">
-          <label htmlFor="pieceCount" className="text-sm font-medium text-peach-200">
+          <label htmlFor="pieceCount" className="text-sm font-medium text-text-secondary">
             Number of Pieces
           </label>
-          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-medium text-black">
+          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-medium text-bg-dark">
             {pieceCount}
           </span>
         </div>
@@ -40,12 +40,12 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           max="32"
           value={pieceCount}
           onChange={(e) => setPieceCount(parseInt(e.target.value))}
-          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-light"
+          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light"
           style={{
-            backgroundImage: `linear-gradient(to right, #FFB894 0%, #FFB894 ${(pieceCount - 4) * 100 / 28}%, #3A3A3A ${(pieceCount - 4) * 100 / 28}%, #3A3A3A 100%)`
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${(pieceCount - 4) * 100 / 28}%, #2A2A2A ${(pieceCount - 4) * 100 / 28}%, #2A2A2A 100%)`
           }}
         />
-        <div className="mt-1 flex justify-between text-xs text-gray-400">
+        <div className="mt-1 flex justify-between text-xs text-text-muted">
           <span>4</span>
           <span>16</span>
           <span>32</span>
@@ -54,10 +54,10 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       
       <div className="mb-10">
         <div className="mb-2 flex items-center justify-between">
-          <label htmlFor="memorizeTime" className="text-sm font-medium text-peach-200">
+          <label htmlFor="memorizeTime" className="text-sm font-medium text-text-secondary">
             Memorization Time
           </label>
-          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-medium text-black">
+          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-medium text-bg-dark">
             {memorizeTime}s
           </span>
         </div>
@@ -68,12 +68,12 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           max="30"
           value={memorizeTime}
           onChange={(e) => setMemorizeTime(parseInt(e.target.value))}
-          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-light"
+          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light"
           style={{
-            backgroundImage: `linear-gradient(to right, #FFB894 0%, #FFB894 ${(memorizeTime - 5) * 100 / 25}%, #3A3A3A ${(memorizeTime - 5) * 100 / 25}%, #3A3A3A 100%)`
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${(memorizeTime - 5) * 100 / 25}%, #2A2A2A ${(memorizeTime - 5) * 100 / 25}%, #2A2A2A 100%)`
           }}
         />
-        <div className="mt-1 flex justify-between text-xs text-gray-400">
+        <div className="mt-1 flex justify-between text-xs text-text-muted">
           <span>5s</span>
           <span>15s</span>
           <span>30s</span>
@@ -82,7 +82,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       
       <button
         onClick={handleStart}
-        className="w-full rounded-lg bg-peach-500 px-4 py-3 font-medium text-black transition-all hover:bg-peach-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-peach-300"
+        className="w-full rounded-lg bg-peach-500 px-4 py-3 font-medium text-bg-dark transition-all hover:bg-peach-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-peach-300"
       >
         Start Game
       </button>

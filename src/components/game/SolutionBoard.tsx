@@ -78,7 +78,7 @@ export default function SolutionBoard() {
     
     return (
       <div className="mb-6">
-        <div className="mb-2 text-center text-sm font-medium text-peach-200">
+        <div className="mb-2 text-center text-sm font-medium text-text-secondary">
           Select a piece to place
         </div>
         
@@ -94,15 +94,15 @@ export default function SolutionBoard() {
                 className={`flex h-14 w-14 flex-col items-center justify-center rounded-md border ${
                   isSelected 
                     ? 'border-peach-500 bg-peach-500/10' 
-                    : 'border-gray-light bg-gray-medium'
+                    : 'border-bg-light bg-bg-card'
                 } transition-all hover:border-peach-400`}
                 aria-label={`Select ${name} piece`}
                 type="button"
               >
-                <span className={`text-2xl ${selectedColor === 'w' ? 'text-peach-100' : 'text-peach-500'}`}>
+                <span className={`text-2xl ${selectedColor === 'w' ? 'text-text-primary' : 'text-peach-500'}`}>
                   {getPieceSymbol(displayPiece)}
                 </span>
-                <span className="mt-1 text-xs text-peach-200">{name}</span>
+                <span className="mt-1 text-xs text-text-secondary">{name}</span>
               </button>
             );
           })}
@@ -113,7 +113,7 @@ export default function SolutionBoard() {
             onClick={() => setSelectedColor(selectedColor === 'w' ? 'b' : 'w')}
             className={`flex items-center justify-center rounded-md border px-4 py-2 transition-all ${
               selectedColor === 'w'
-                ? 'border-peach-200/30 bg-peach-500/10 text-peach-100'
+                ? 'border-peach-200/30 bg-peach-500/10 text-text-primary'
                 : 'border-peach-500/30 bg-peach-500/5 text-peach-500'
             }`}
             aria-label="Toggle piece color"
@@ -128,8 +128,8 @@ export default function SolutionBoard() {
   
   // Instructions for the user
   const Instructions = () => (
-    <div className="mb-4 rounded-lg bg-peach-500/5 p-3 text-sm text-peach-200">
-      <p className="mb-1 font-medium text-peach-100">Instructions:</p>
+    <div className="mb-4 rounded-lg bg-peach-500/5 p-3 text-sm text-text-secondary">
+      <p className="mb-1 font-medium text-text-primary">Instructions:</p>
       <ul className="list-inside list-disc">
         <li>Select a piece type from above</li>
         <li>Click on the board to place the piece</li>
@@ -143,8 +143,8 @@ export default function SolutionBoard() {
   return (
     <div className="flex flex-col items-center">
       <div className="mb-4 text-center">
-        <div className="text-xl font-bold text-peach-100">Recreate the Position</div>
-        <div className="mt-1 text-sm text-peach-200">
+        <div className="text-xl font-bold text-text-primary">Recreate the Position</div>
+        <div className="mt-1 text-sm text-text-secondary">
           Place the pieces as you remember them
         </div>
       </div>
@@ -152,11 +152,11 @@ export default function SolutionBoard() {
       <Instructions />
       <PieceSelector />
       
-      <div className="aspect-square w-full max-w-[600px] overflow-hidden rounded-xl border border-gray-light bg-gray-dark shadow-xl">
+      <div className="aspect-square w-full max-w-[600px] overflow-hidden rounded-xl border border-bg-light bg-bg-card shadow-xl">
         <div className="grid h-full w-full grid-cols-8 grid-rows-8">
           {position.map((row, i) =>
             row.map((piece, j) => {
-              const squareColor = (i + j) % 2 === 0 ? 'bg-gray-medium' : 'bg-gray-dark';
+              const squareColor = (i + j) % 2 === 0 ? 'bg-bg-light' : 'bg-bg-card';
               const squareName = `${String.fromCharCode(97 + j)}${8 - i}`;
               
               return (
@@ -170,7 +170,7 @@ export default function SolutionBoard() {
                   type="button"
                 >
                   {piece && (
-                    <span className={`text-3xl ${piece === piece.toUpperCase() ? 'text-peach-100' : 'text-peach-500'}`}>
+                    <span className={`text-3xl ${piece === piece.toUpperCase() ? 'text-text-primary' : 'text-peach-500'}`}>
                       {getPieceSymbol(piece)}
                     </span>
                   )}
@@ -181,7 +181,7 @@ export default function SolutionBoard() {
         </div>
       </div>
       
-      <div className="mt-4 text-center text-sm text-peach-300">
+      <div className="mt-4 text-center text-sm text-text-secondary">
         Placed {position.flat().filter(Boolean).length} of {gameState.pieceCount} pieces
       </div>
     </div>

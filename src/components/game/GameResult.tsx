@@ -27,7 +27,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   
   // Determine result message and color based on accuracy
   const getResultMessage = () => {
-    if (gameState.accuracy === undefined) return { text: 'Game Completed', color: 'text-peach-100' };
+    if (gameState.accuracy === undefined) return { text: 'Game Completed', color: 'text-text-primary' };
     
     if (gameState.accuracy >= 90) {
       return { text: 'Excellent Memory!', color: 'text-peach-400' };
@@ -43,7 +43,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const result = getResultMessage();
   
   return (
-    <div className="w-full max-w-md rounded-xl border border-gray-light bg-gray-dark p-8 shadow-xl">
+    <div className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-8 shadow-xl">
       <h2 className={`mb-6 text-center text-3xl font-bold ${result.color}`}>
         {result.text}
       </h2>
@@ -51,49 +51,49 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       {isNewBestTime && (
         <div className="mb-6 rounded-lg bg-peach-500/10 p-4 text-center">
           <div className="text-xl font-bold text-peach-400">🏆 New Best Time! 🏆</div>
-          <div className="mt-1 text-sm text-peach-200">You&apos;ve set a new record for {gameState.pieceCount} pieces</div>
+          <div className="mt-1 text-sm text-text-secondary">You&apos;ve set a new record for {gameState.pieceCount} pieces</div>
         </div>
       )}
       
       <div className="mb-8 space-y-4">
-        <div className="flex justify-between border-b border-gray-light pb-3">
-          <span className="text-peach-200">Time:</span>
-          <span className="font-medium text-peach-100">
+        <div className="flex justify-between border-b border-bg-light pb-3">
+          <span className="text-text-secondary">Time:</span>
+          <span className="font-medium text-text-primary">
             {formatTime(gameState.completionTime || 0)}
           </span>
         </div>
         
         {bestTime > 0 && (
-          <div className="flex justify-between border-b border-gray-light pb-3">
-            <span className="text-peach-200">Best Time:</span>
+          <div className="flex justify-between border-b border-bg-light pb-3">
+            <span className="text-text-secondary">Best Time:</span>
             <span className="font-medium text-peach-400">
               {formatTime(bestTime)}
             </span>
           </div>
         )}
         
-        <div className="flex justify-between border-b border-gray-light pb-3">
-          <span className="text-peach-200">Accuracy:</span>
-          <span className="font-medium text-peach-100">{gameState.accuracy || 0}%</span>
+        <div className="flex justify-between border-b border-bg-light pb-3">
+          <span className="text-text-secondary">Accuracy:</span>
+          <span className="font-medium text-text-primary">{gameState.accuracy || 0}%</span>
         </div>
         
-        <div className="flex justify-between border-b border-gray-light pb-3">
-          <span className="text-peach-200">Pieces:</span>
-          <span className="font-medium text-peach-100">{gameState.pieceCount}</span>
+        <div className="flex justify-between border-b border-bg-light pb-3">
+          <span className="text-text-secondary">Pieces:</span>
+          <span className="font-medium text-text-primary">{gameState.pieceCount}</span>
         </div>
       </div>
       
       <div className="flex flex-col space-y-3">
         <button
           onClick={onTryAgain}
-          className="rounded-lg bg-peach-500 px-4 py-3 font-medium text-black transition-all hover:bg-peach-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-peach-300"
+          className="rounded-lg bg-peach-500 px-4 py-3 font-medium text-bg-dark transition-all hover:bg-peach-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-peach-300"
         >
           Try Again (Same Configuration)
         </button>
         
         <button
           onClick={onNewGame}
-          className="rounded-lg border border-peach-500/30 bg-transparent px-4 py-3 font-medium text-peach-100 transition-all hover:bg-peach-500/10 focus:outline-none focus:ring-2 focus:ring-peach-300"
+          className="rounded-lg border border-peach-500/30 bg-transparent px-4 py-3 font-medium text-text-primary transition-all hover:bg-peach-500/10 focus:outline-none focus:ring-2 focus:ring-peach-300"
         >
           New Game (Different Configuration)
         </button>

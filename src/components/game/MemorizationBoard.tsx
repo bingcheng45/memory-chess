@@ -68,18 +68,18 @@ export default function MemorizationBoard() {
   return (
     <div className="flex flex-col items-center">
       <div className="mb-8 text-center">
-        <div className="text-xl font-bold text-peach-100">Memorize the Position</div>
+        <div className="text-xl font-bold text-text-primary">Memorize the Position</div>
         <div className="mt-3 text-5xl font-bold text-peach-500">{timeLeft}</div>
-        <div className="mt-2 text-sm text-peach-200">
+        <div className="mt-2 text-sm text-text-secondary">
           Remember the position of all {gameState.pieceCount} pieces
         </div>
       </div>
       
-      <div className="aspect-square w-full max-w-[600px] overflow-hidden rounded-xl border border-gray-light bg-gray-dark shadow-xl">
+      <div className="aspect-square w-full max-w-[600px] overflow-hidden rounded-xl border border-bg-light bg-bg-card shadow-xl">
         <div className="grid h-full w-full grid-cols-8 grid-rows-8">
           {position.map((row, i) =>
             row.map((piece, j) => {
-              const squareColor = (i + j) % 2 === 0 ? 'bg-gray-medium' : 'bg-gray-dark';
+              const squareColor = (i + j) % 2 === 0 ? 'bg-bg-light' : 'bg-bg-card';
               
               return (
                 <div
@@ -87,7 +87,7 @@ export default function MemorizationBoard() {
                   className={`flex items-center justify-center ${squareColor}`}
                 >
                   {piece && (
-                    <span className={`text-3xl ${piece === piece.toUpperCase() ? 'text-peach-100' : 'text-peach-500'}`}>
+                    <span className={`text-3xl ${piece === piece.toUpperCase() ? 'text-text-primary' : 'text-peach-500'}`}>
                       {getPieceSymbol(piece)}
                     </span>
                   )}
@@ -98,7 +98,7 @@ export default function MemorizationBoard() {
         </div>
       </div>
       
-      <div className="mt-4 text-center text-sm text-peach-300">
+      <div className="mt-4 text-center text-sm text-text-secondary">
         The board will clear after the timer ends
       </div>
     </div>

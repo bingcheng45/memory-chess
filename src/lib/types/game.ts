@@ -1,19 +1,43 @@
 export interface GameState {
+  // Game status
   isPlaying: boolean;
+  
+  // Game phases
+  isMemorizationPhase: boolean;
+  isSolutionPhase: boolean;
+  
+  // Configuration
+  pieceCount: number;
+  memorizeTime: number;
+  
+  // Timing
   timeElapsed: number;
-  score: number;
+  memorizeStartTime?: number;
+  solutionStartTime?: number;
+  completionTime?: number;
+  
+  // Progress
   currentLevel: number;
-  moves?: string[];
-  elapsedTime?: number;
   level?: number;
+  
+  // Game data
+  moves: string[];
+  originalPosition?: string; // FEN string of position to memorize
+  userPosition?: string;     // FEN string of user's solution
+  
+  // Results
+  accuracy?: number;         // Percentage of correct piece placements
+  success?: boolean;         // Whether the user successfully recreated the position
 }
 
 export interface GameHistory {
   id: string;
   date: Date;
-  score: number;
-  level: number;
-  duration: number;
+  completionTime: number;    // Time taken to complete the solution in seconds
+  accuracy: number;          // Percentage of correct piece placements
+  pieceCount: number;        // Number of pieces in the position
+  memorizeTime: number;      // Time given for memorization in seconds
+  level: number;             // Difficulty level
 }
 
 export interface GameConfig {
@@ -32,7 +56,14 @@ export interface GameMove {
 
 export interface GameResult {
   success: boolean;
-  score: number;
-  timeElapsed: number;
+  completionTime: number;
   accuracy: number;
+  pieceCount: number;
+}
+
+export enum GamePhase {
+  CONFIGURATION = 'configuration',
+  MEMORIZATION = 'memorization',
+  SOLUTION = 'solution',
+  RESULT = 'result'
 } 

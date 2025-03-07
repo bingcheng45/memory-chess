@@ -1,65 +1,79 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 
 export default function GameStats() {
-  const { gameState } = useGameStore();
+  const { gameState, getBestTime, getAverageAccuracy } = useGameStore();
   const [timer, setTimer] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Update timer when game is playing
+  
+  // Format time in seconds to mm:ss format
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+  
+  // Start/stop timer based on game state
   useEffect(() => {
-    // Clear any existing timer
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-    
-    if (gameState.isPlaying) {
-      // Start a new timer
+    if (gameState.isSolutionPhase) {
+      // Start the timer
       timerRef.current = setInterval(() => {
         setTimer(prev => prev + 1);
       }, 1000);
     } else {
-      // Reset timer when game stops
-      setTimer(0);
-    }
-    
-    // Cleanup function
-    return () => {
+      // Stop the timer
       if (timerRef.current) {
         clearInterval(timerRef.current);
         timerRef.current = null;
       }
+      
+      // Reset timer if not in solution phase
+      if (!gameState.isSolutionPhase) {
+        setTimer(0);
+      }
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
     };
-  }, [gameState.isPlaying]);
-
-  const formatTime = (seconds: number): string => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
-
+  }, [gameState.isSolutionPhase]);
+  
+  // Get best time for current piece count
+  const bestTime = getBestTime();
+  
+  // Get average accuracy
+  const averageAccuracy = getAverageAccuracy();
+  
   return (
     <div className="rounded-lg border border-white/10 bg-gray-800 p-4">
-      <h2 className="mb-4 text-xl font-semibold">Game Stats</h2>
-      <div className="grid grid-cols-2 gap-4">
+      <h2 className="mb-4 text-xl font-bold text-white">Game Stats</h2>
+      
+      <div className="space-y-4">
         <div>
-          <p className="text-sm text-gray-400">Score</p>
-          <p className="text-lg font-medium">{gameState.score}</p>
+          <p className="text-sm text-gray-400">Current Time</p>
+          <p className="text-2xl font-medium text-white">{formatTime(timer)}</p>
         </div>
+        
+        {bestTime > 0 && (
+          <div>
+            <p className="text-sm text-gray-400">Best Time ({gameState.pieceCount} pieces)</p>
+            <p className="text-2xl font-medium text-green-400">{formatTime(bestTime)}</p>
+          </div>
+        )}
+        
         <div>
-          <p className="text-sm text-gray-400">Level</p>
-          <p className="text-lg font-medium">{gameState.level || gameState.currentLevel}</p>
+          <p className="text-sm text-gray-400">Pieces to Memorize</p>
+          <p className="text-2xl font-medium text-white">{gameState.pieceCount}</p>
         </div>
+        
         <div>
-          <p className="text-sm text-gray-400">Time</p>
-          <p className="text-lg font-medium">{formatTime(timer)}</p>
-        </div>
-        <div>
-          <p className="text-sm text-gray-400">Moves</p>
-          <p className="text-lg font-medium">{gameState.moves?.length || 0}</p>
+          <p className="text-sm text-gray-400">Average Accuracy</p>
+          <p className="text-2xl font-medium text-white">{averageAccuracy}%</p>
         </div>
       </div>
     </div>

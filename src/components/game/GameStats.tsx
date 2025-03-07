@@ -50,30 +50,30 @@ export default function GameStats() {
   const averageAccuracy = getAverageAccuracy();
   
   return (
-    <div className="rounded-lg border border-white/10 bg-gray-800 p-4">
-      <h2 className="mb-4 text-xl font-bold text-white">Game Stats</h2>
+    <div className="rounded-xl border border-gray-light bg-gray-dark p-6 shadow-xl">
+      <h2 className="mb-6 text-xl font-bold text-peach-100">Game Stats</h2>
       
-      <div className="space-y-4">
+      <div className="space-y-5">
         <div>
-          <p className="text-sm text-gray-400">Current Time</p>
-          <p className="text-2xl font-medium text-white">{formatTime(timer)}</p>
+          <p className="text-sm text-peach-200">Current Time</p>
+          <p className="text-2xl font-medium text-peach-100">{formatTime(timer)}</p>
         </div>
         
         {bestTime > 0 && (
           <div>
-            <p className="text-sm text-gray-400">Best Time ({gameState.pieceCount} pieces)</p>
-            <p className="text-2xl font-medium text-green-400">{formatTime(bestTime)}</p>
+            <p className="text-sm text-peach-200">Best Time ({gameState.pieceCount} pieces)</p>
+            <p className="text-2xl font-medium text-peach-400">{formatTime(bestTime)}</p>
           </div>
         )}
         
         <div>
-          <p className="text-sm text-gray-400">Pieces to Memorize</p>
-          <p className="text-2xl font-medium text-white">{gameState.pieceCount}</p>
+          <p className="text-sm text-peach-200">Pieces to Memorize</p>
+          <p className="text-2xl font-medium text-peach-100">{gameState.pieceCount}</p>
         </div>
         
         <div>
-          <p className="text-sm text-gray-400">Average Accuracy</p>
-          <p className="text-2xl font-medium text-white">{averageAccuracy}%</p>
+          <p className="text-sm text-peach-200">Average Accuracy</p>
+          <p className="text-2xl font-medium text-peach-100">{averageAccuracy}%</p>
         </div>
       </div>
     </div>

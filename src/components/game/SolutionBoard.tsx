@@ -67,69 +67,110 @@ export default function SolutionBoard() {
   
   // Piece selector
   const PieceSelector = () => {
-    const pieces = ['k', 'q', 'r', 'b', 'n', 'p'];
+    const pieces = [
+      { type: 'k', name: 'King' },
+      { type: 'q', name: 'Queen' },
+      { type: 'r', name: 'Rook' },
+      { type: 'b', name: 'Bishop' },
+      { type: 'n', name: 'Knight' },
+      { type: 'p', name: 'Pawn' }
+    ];
     
     return (
-      <div className="mb-4 flex flex-wrap justify-center gap-2">
-        {pieces.map((piece) => {
-          const displayPiece = selectedColor === 'w' ? piece.toUpperCase() : piece;
-          const isSelected = selectedPiece === piece;
-          
-          return (
-            <button
-              key={piece}
-              onClick={() => setSelectedPiece(isSelected ? null : piece)}
-              className={`flex h-12 w-12 items-center justify-center rounded-md border ${
-                isSelected 
-                  ? 'border-blue-500 bg-blue-500/20' 
-                  : 'border-gray-600 bg-gray-700'
-              }`}
-              aria-label={`Select ${piece} piece`}
-              type="button"
-            >
-              <span className="text-2xl">{getPieceSymbol(displayPiece)}</span>
-            </button>
-          );
-        })}
+      <div className="mb-6">
+        <div className="mb-2 text-center text-sm font-medium text-peach-200">
+          Select a piece to place
+        </div>
         
-        <button
-          onClick={() => setSelectedColor(selectedColor === 'w' ? 'b' : 'w')}
-          className="flex h-12 items-center justify-center rounded-md border border-gray-600 bg-gray-700 px-3"
-          aria-label="Toggle piece color"
-          type="button"
-        >
-          <span className="text-sm font-medium">
-            {selectedColor === 'w' ? 'White' : 'Black'}
-          </span>
-        </button>
+        <div className="mb-4 flex flex-wrap justify-center gap-3">
+          {pieces.map(({ type, name }) => {
+            const displayPiece = selectedColor === 'w' ? type.toUpperCase() : type;
+            const isSelected = selectedPiece === type;
+            
+            return (
+              <button
+                key={type}
+                onClick={() => setSelectedPiece(isSelected ? null : type)}
+                className={`flex h-14 w-14 flex-col items-center justify-center rounded-md border ${
+                  isSelected 
+                    ? 'border-peach-500 bg-peach-500/10' 
+                    : 'border-gray-light bg-gray-medium'
+                } transition-all hover:border-peach-400`}
+                aria-label={`Select ${name} piece`}
+                type="button"
+              >
+                <span className={`text-2xl ${selectedColor === 'w' ? 'text-peach-100' : 'text-peach-500'}`}>
+                  {getPieceSymbol(displayPiece)}
+                </span>
+                <span className="mt-1 text-xs text-peach-200">{name}</span>
+              </button>
+            );
+          })}
+        </div>
+        
+        <div className="flex justify-center">
+          <button
+            onClick={() => setSelectedColor(selectedColor === 'w' ? 'b' : 'w')}
+            className={`flex items-center justify-center rounded-md border px-4 py-2 transition-all ${
+              selectedColor === 'w'
+                ? 'border-peach-200/30 bg-peach-500/10 text-peach-100'
+                : 'border-peach-500/30 bg-peach-500/5 text-peach-500'
+            }`}
+            aria-label="Toggle piece color"
+            type="button"
+          >
+            {selectedColor === 'w' ? 'White Pieces' : 'Black Pieces'}
+          </button>
+        </div>
       </div>
     );
   };
   
+  // Instructions for the user
+  const Instructions = () => (
+    <div className="mb-4 rounded-lg bg-peach-500/5 p-3 text-sm text-peach-200">
+      <p className="mb-1 font-medium text-peach-100">Instructions:</p>
+      <ul className="list-inside list-disc">
+        <li>Select a piece type from above</li>
+        <li>Click on the board to place the piece</li>
+        <li>Click on a placed piece to remove it</li>
+        <li>Toggle between white and black pieces</li>
+        <li>Submit your solution when finished</li>
+      </ul>
+    </div>
+  );
+  
   return (
     <div className="flex flex-col items-center">
       <div className="mb-4 text-center">
-        <div className="text-xl font-bold text-white">Recreate the Position</div>
+        <div className="text-xl font-bold text-peach-100">Recreate the Position</div>
+        <div className="mt-1 text-sm text-peach-200">
+          Place the pieces as you remember them
+        </div>
       </div>
       
+      <Instructions />
       <PieceSelector />
       
-      <div className="aspect-square w-full max-w-[600px] overflow-hidden rounded-lg border border-white/10 bg-gray-800">
+      <div className="aspect-square w-full max-w-[600px] overflow-hidden rounded-xl border border-gray-light bg-gray-dark shadow-xl">
         <div className="grid h-full w-full grid-cols-8 grid-rows-8">
           {position.map((row, i) =>
             row.map((piece, j) => {
-              const squareColor = (i + j) % 2 === 0 ? 'bg-gray-700' : 'bg-gray-600';
+              const squareColor = (i + j) % 2 === 0 ? 'bg-gray-medium' : 'bg-gray-dark';
+              const squareName = `${String.fromCharCode(97 + j)}${8 - i}`;
               
               return (
                 <button
                   key={`${i}-${j}`}
-                  className={`flex items-center justify-center border-none ${squareColor}`}
+                  className={`flex items-center justify-center border-none ${squareColor} ${
+                    selectedPiece ? 'cursor-pointer hover:bg-peach-500/10' : ''
+                  }`}
                   onClick={() => handleSquareClick(i, j)}
-                  aria-label={`Square ${String.fromCharCode(97 + j)}${8 - i}`}
+                  aria-label={`Square ${squareName}${piece ? ` with ${getPieceSymbol(piece)}` : ''}`}
                   type="button"
                 >
                   {piece && (
-                    <span className="text-2xl">
+                    <span className={`text-3xl ${piece === piece.toUpperCase() ? 'text-peach-100' : 'text-peach-500'}`}>
                       {getPieceSymbol(piece)}
                     </span>
                   )}
@@ -138,6 +179,10 @@ export default function SolutionBoard() {
             })
           )}
         </div>
+      </div>
+      
+      <div className="mt-4 text-center text-sm text-peach-300">
+        Placed {position.flat().filter(Boolean).length} of {gameState.pieceCount} pieces
       </div>
     </div>
   );

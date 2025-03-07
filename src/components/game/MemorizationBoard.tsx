@@ -4,17 +4,18 @@ import { useState, useEffect } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 
 export default function MemorizationBoard() {
-  const { memorizationChess, gameState } = useGameStore();
+  const { chess, gameState } = useGameStore();
   const [position, setPosition] = useState<string[][]>(Array(8).fill(0).map(() => Array(8).fill('')));
   const [timeLeft, setTimeLeft] = useState(gameState.memorizeTime);
   
   // Parse the FEN string to get the position
   useEffect(() => {
-    if (!memorizationChess) return;
+    if (!chess) return;
     
     try {
+      console.log('Parsing chess position for memorization:', chess.fen());
       const newPosition = Array(8).fill(0).map(() => Array(8).fill(''));
-      const fen = memorizationChess.fen();
+      const fen = chess.fen();
       const rows = fen.split(' ')[0].split('/');
       
       rows.forEach((row, i) => {
@@ -33,11 +34,14 @@ export default function MemorizationBoard() {
     } catch (error) {
       console.error('Error parsing FEN:', error);
     }
-  }, [memorizationChess]);
+  }, [chess]);
   
   // Countdown timer
   useEffect(() => {
     if (!gameState.isMemorizationPhase) return;
+    
+    console.log('Starting memorization countdown from', timeLeft, 'seconds');
+    setTimeLeft(gameState.memorizeTime); // Reset timer when phase starts
     
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
@@ -50,7 +54,7 @@ export default function MemorizationBoard() {
     }, 1000);
     
     return () => clearInterval(timer);
-  }, [gameState.isMemorizationPhase]);
+  }, [gameState.isMemorizationPhase, gameState.memorizeTime, timeLeft]);
   
   // Get piece symbol for display
   const getPieceSymbol = (piece: string): string => {
@@ -63,16 +67,19 @@ export default function MemorizationBoard() {
   
   return (
     <div className="flex flex-col items-center">
-      <div className="mb-4 text-center">
-        <div className="text-xl font-bold text-white">Memorize the Position</div>
-        <div className="text-3xl font-bold text-amber-500">{timeLeft}s</div>
+      <div className="mb-8 text-center">
+        <div className="text-xl font-bold text-peach-100">Memorize the Position</div>
+        <div className="mt-3 text-5xl font-bold text-peach-500">{timeLeft}</div>
+        <div className="mt-2 text-sm text-peach-200">
+          Remember the position of all {gameState.pieceCount} pieces
+        </div>
       </div>
       
-      <div className="aspect-square w-full max-w-[600px] overflow-hidden rounded-lg border border-white/10 bg-gray-800">
+      <div className="aspect-square w-full max-w-[600px] overflow-hidden rounded-xl border border-gray-light bg-gray-dark shadow-xl">
         <div className="grid h-full w-full grid-cols-8 grid-rows-8">
           {position.map((row, i) =>
             row.map((piece, j) => {
-              const squareColor = (i + j) % 2 === 0 ? 'bg-gray-700' : 'bg-gray-600';
+              const squareColor = (i + j) % 2 === 0 ? 'bg-gray-medium' : 'bg-gray-dark';
               
               return (
                 <div
@@ -80,7 +87,7 @@ export default function MemorizationBoard() {
                   className={`flex items-center justify-center ${squareColor}`}
                 >
                   {piece && (
-                    <span className="text-2xl">
+                    <span className={`text-3xl ${piece === piece.toUpperCase() ? 'text-peach-100' : 'text-peach-500'}`}>
                       {getPieceSymbol(piece)}
                     </span>
                   )}
@@ -89,6 +96,10 @@ export default function MemorizationBoard() {
             })
           )}
         </div>
+      </div>
+      
+      <div className="mt-4 text-center text-sm text-peach-300">
+        The board will clear after the timer ends
       </div>
     </div>
   );

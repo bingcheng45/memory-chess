@@ -248,27 +248,27 @@ export const useGameStore = create<GameStore>()(
       memorizationChess: null,
 
       startGame: (pieceCount = 8, memorizeTime = 10) => {
-        // Create a new chess instance for the game
-        let newChess: Chess | null = null;
-        try {
-          newChess = new Chess();
-          console.log('Chess instance created successfully');
-        } catch (error) {
-          console.error('Failed to create Chess instance in startGame:', error);
-        }
+        console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
         
         // Generate a random position for memorization
         const memorizationPosition = generateRandomPosition(pieceCount);
         
+        if (!memorizationPosition) {
+          console.error('Failed to generate random position');
+          return;
+        }
+        
+        console.log('Random position generated:', memorizationPosition.fen());
+        
         set({
-          chess: newChess,
+          chess: memorizationPosition, // Use the random position for the current board
           memorizationChess: memorizationPosition,
           gameState: {
             ...initialGameState,
             isPlaying: true,
             pieceCount,
             memorizeTime,
-            originalPosition: memorizationPosition?.fen() || '',
+            originalPosition: memorizationPosition.fen(),
           },
           gamePhase: GamePhase.CONFIGURATION,
         });

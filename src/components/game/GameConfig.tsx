@@ -25,11 +25,11 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       <h2 className="mb-8 text-center text-2xl font-bold text-text-primary">Game Configuration</h2>
       
       <div className="mb-8">
-        <div className="mb-2 flex items-center justify-between">
+        <div className="mb-3 flex items-center justify-between">
           <label htmlFor="pieceCount" className="text-sm font-medium text-text-secondary">
             Number of Pieces
           </label>
-          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-medium text-bg-dark">
+          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark">
             {pieceCount}
           </span>
         </div>
@@ -42,10 +42,10 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           onChange={(e) => setPieceCount(parseInt(e.target.value))}
           className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light"
           style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${(pieceCount - 4) * 100 / 28}%, #2A2A2A ${(pieceCount - 4) * 100 / 28}%, #2A2A2A 100%)`
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${(pieceCount - 4) * 100 / 28}%, #222222 ${(pieceCount - 4) * 100 / 28}%, #222222 100%)`
           }}
         />
-        <div className="mt-1 flex justify-between text-xs text-text-muted">
+        <div className="mt-2 flex justify-between text-xs text-text-muted">
           <span>4</span>
           <span>16</span>
           <span>32</span>
@@ -53,11 +53,11 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       </div>
       
       <div className="mb-10">
-        <div className="mb-2 flex items-center justify-between">
+        <div className="mb-3 flex items-center justify-between">
           <label htmlFor="memorizeTime" className="text-sm font-medium text-text-secondary">
             Memorization Time
           </label>
-          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-medium text-bg-dark">
+          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark">
             {memorizeTime}s
           </span>
         </div>
@@ -70,10 +70,10 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           onChange={(e) => setMemorizeTime(parseInt(e.target.value))}
           className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light"
           style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${(memorizeTime - 5) * 100 / 25}%, #2A2A2A ${(memorizeTime - 5) * 100 / 25}%, #2A2A2A 100%)`
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${(memorizeTime - 5) * 100 / 25}%, #222222 ${(memorizeTime - 5) * 100 / 25}%, #222222 100%)`
           }}
         />
-        <div className="mt-1 flex justify-between text-xs text-text-muted">
+        <div className="mt-2 flex justify-between text-xs text-text-muted">
           <span>5s</span>
           <span>15s</span>
           <span>30s</span>

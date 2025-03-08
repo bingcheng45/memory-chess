@@ -79,7 +79,7 @@ export default function MemorizationBoard() {
         <div className="grid h-full w-full grid-cols-8 grid-rows-8">
           {position.map((row, i) =>
             row.map((piece, j) => {
-              const squareColor = (i + j) % 2 === 0 ? 'bg-bg-light' : 'bg-bg-card';
+              const squareColor = (i + j) % 2 === 0 ? 'bg-board-light' : 'bg-board-dark';
               
               return (
                 <div

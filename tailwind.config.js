@@ -9,9 +9,9 @@ module.exports = {
     extend: {
       colors: {
         // Dark background with better contrast
-        'bg-dark': '#121212',
-        'bg-card': '#1E1E1E',
-        'bg-light': '#2A2A2A',
+        'bg-dark': '#0A0A0A',  // Darker background
+        'bg-card': '#141414',  // Darker card background
+        'bg-light': '#222222', // Darker light background
         
         // Peach accent colors with better contrast
         peach: {
@@ -27,19 +27,27 @@ module.exports = {
           900: '#FF6419',
         },
         
-        // Text colors with good contrast
-        'text-primary': '#FFFFFF',
-        'text-secondary': '#E0E0E0',
-        'text-muted': '#A0A0A0',
+        // Text colors with enhanced contrast
+        'text-primary': '#FFFFFF',    // Pure white for maximum contrast
+        'text-secondary': '#F0F0F0',  // Lighter secondary text
+        'text-muted': '#BBBBBB',      // Lighter muted text
+        
+        // Board colors with better contrast
+        'board-light': '#2A2A2A',     // Light squares
+        'board-dark': '#1A1A1A',      // Dark squares
         
         // Complementary colors for accents
         teal: {
-          500: '#38B2AC',
-          600: '#319795',
+          300: '#5EEAD4',
+          400: '#2DD4BF',
+          500: '#14B8A6',
+          600: '#0D9488',
         },
         indigo: {
-          500: '#667EEA',
-          600: '#5A67D8',
+          300: '#A5B4FC',
+          400: '#818CF8',
+          500: '#6366F1',
+          600: '#4F46E5',
         },
       },
       backgroundImage: {

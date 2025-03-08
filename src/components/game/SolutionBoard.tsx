@@ -93,7 +93,7 @@ export default function SolutionBoard() {
                 onClick={() => setSelectedPiece(isSelected ? null : type)}
                 className={`flex h-14 w-14 flex-col items-center justify-center rounded-md border ${
                   isSelected 
-                    ? 'border-peach-500 bg-peach-500/10' 
+                    ? 'border-peach-500 bg-peach-500/20' 
                     : 'border-bg-light bg-bg-card'
                 } transition-all hover:border-peach-400`}
                 aria-label={`Select ${name} piece`}
@@ -113,8 +113,8 @@ export default function SolutionBoard() {
             onClick={() => setSelectedColor(selectedColor === 'w' ? 'b' : 'w')}
             className={`flex items-center justify-center rounded-md border px-4 py-2 transition-all ${
               selectedColor === 'w'
-                ? 'border-peach-200/30 bg-peach-500/10 text-text-primary'
-                : 'border-peach-500/30 bg-peach-500/5 text-peach-500'
+                ? 'border-peach-200/30 bg-peach-500/20 text-text-primary'
+                : 'border-peach-500/30 bg-peach-500/10 text-peach-500'
             }`}
             aria-label="Toggle piece color"
             type="button"
@@ -128,9 +128,9 @@ export default function SolutionBoard() {
   
   // Instructions for the user
   const Instructions = () => (
-    <div className="mb-4 rounded-lg bg-peach-500/5 p-3 text-sm text-text-secondary">
-      <p className="mb-1 font-medium text-text-primary">Instructions:</p>
-      <ul className="list-inside list-disc">
+    <div className="mb-4 rounded-lg bg-peach-500/10 p-4 text-sm text-text-secondary border border-peach-500/20">
+      <p className="mb-2 font-medium text-text-primary">Instructions:</p>
+      <ul className="list-inside list-disc space-y-1">
         <li>Select a piece type from above</li>
         <li>Click on the board to place the piece</li>
         <li>Click on a placed piece to remove it</li>
@@ -156,14 +156,14 @@ export default function SolutionBoard() {
         <div className="grid h-full w-full grid-cols-8 grid-rows-8">
           {position.map((row, i) =>
             row.map((piece, j) => {
-              const squareColor = (i + j) % 2 === 0 ? 'bg-bg-light' : 'bg-bg-card';
+              const squareColor = (i + j) % 2 === 0 ? 'bg-board-light' : 'bg-board-dark';
               const squareName = `${String.fromCharCode(97 + j)}${8 - i}`;
               
               return (
                 <button
                   key={`${i}-${j}`}
                   className={`flex items-center justify-center border-none ${squareColor} ${
-                    selectedPiece ? 'cursor-pointer hover:bg-peach-500/10' : ''
+                    selectedPiece ? 'cursor-pointer hover:bg-peach-500/20' : ''
                   }`}
                   onClick={() => handleSquareClick(i, j)}
                   aria-label={`Square ${squareName}${piece ? ` with ${getPieceSymbol(piece)}` : ''}`}

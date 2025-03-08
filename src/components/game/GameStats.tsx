@@ -55,25 +55,25 @@ export default function GameStats() {
       
       <div className="space-y-5">
         <div>
-          <p className="text-sm text-text-secondary">Current Time</p>
-          <p className="text-2xl font-medium text-text-primary">{formatTime(timer)}</p>
+          <p className="text-sm font-medium text-text-secondary">Current Time</p>
+          <p className="text-2xl font-bold text-text-primary">{formatTime(timer)}</p>
         </div>
         
         {bestTime > 0 && (
           <div>
-            <p className="text-sm text-text-secondary">Best Time ({gameState.pieceCount} pieces)</p>
-            <p className="text-2xl font-medium text-peach-400">{formatTime(bestTime)}</p>
+            <p className="text-sm font-medium text-text-secondary">Best Time ({gameState.pieceCount} pieces)</p>
+            <p className="text-2xl font-bold text-peach-400">{formatTime(bestTime)}</p>
           </div>
         )}
         
         <div>
-          <p className="text-sm text-text-secondary">Pieces to Memorize</p>
-          <p className="text-2xl font-medium text-text-primary">{gameState.pieceCount}</p>
+          <p className="text-sm font-medium text-text-secondary">Pieces to Memorize</p>
+          <p className="text-2xl font-bold text-text-primary">{gameState.pieceCount}</p>
         </div>
         
         <div>
-          <p className="text-sm text-text-secondary">Average Accuracy</p>
-          <p className="text-2xl font-medium text-text-primary">{averageAccuracy}%</p>
+          <p className="text-sm font-medium text-text-secondary">Average Accuracy</p>
+          <p className="text-2xl font-bold text-text-primary">{averageAccuracy}%</p>
         </div>
       </div>
     </div>

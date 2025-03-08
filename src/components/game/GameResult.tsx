@@ -49,7 +49,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       </h2>
       
       {isNewBestTime && (
-        <div className="mb-6 rounded-lg bg-peach-500/10 p-4 text-center">
+        <div className="mb-6 rounded-lg bg-peach-500/20 p-4 text-center border border-peach-500/30">
           <div className="text-xl font-bold text-peach-400">🏆 New Best Time! 🏆</div>
           <div className="mt-1 text-sm text-text-secondary">You&apos;ve set a new record for {gameState.pieceCount} pieces</div>
         </div>
@@ -57,29 +57,29 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       
       <div className="mb-8 space-y-4">
         <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary">Time:</span>
-          <span className="font-medium text-text-primary">
+          <span className="text-text-secondary font-medium">Time:</span>
+          <span className="font-bold text-text-primary">
             {formatTime(gameState.completionTime || 0)}
           </span>
         </div>
         
         {bestTime > 0 && (
           <div className="flex justify-between border-b border-bg-light pb-3">
-            <span className="text-text-secondary">Best Time:</span>
-            <span className="font-medium text-peach-400">
+            <span className="text-text-secondary font-medium">Best Time:</span>
+            <span className="font-bold text-peach-400">
               {formatTime(bestTime)}
             </span>
           </div>
         )}
         
         <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary">Accuracy:</span>
-          <span className="font-medium text-text-primary">{gameState.accuracy || 0}%</span>
+          <span className="text-text-secondary font-medium">Accuracy:</span>
+          <span className="font-bold text-text-primary">{gameState.accuracy || 0}%</span>
         </div>
         
         <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary">Pieces:</span>
-          <span className="font-medium text-text-primary">{gameState.pieceCount}</span>
+          <span className="text-text-secondary font-medium">Pieces:</span>
+          <span className="font-bold text-text-primary">{gameState.pieceCount}</span>
         </div>
       </div>
       
@@ -93,7 +93,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         
         <button
           onClick={onNewGame}
-          className="rounded-lg border border-peach-500/30 bg-transparent px-4 py-3 font-medium text-text-primary transition-all hover:bg-peach-500/10 focus:outline-none focus:ring-2 focus:ring-peach-300"
+          className="rounded-lg border border-peach-500/30 bg-transparent px-4 py-3 font-medium text-text-primary transition-all hover:bg-peach-500/20 focus:outline-none focus:ring-2 focus:ring-peach-300"
         >
           New Game (Different Configuration)
         </button>

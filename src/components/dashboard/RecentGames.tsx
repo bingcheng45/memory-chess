@@ -27,30 +27,38 @@ export default function RecentGames({ games }: RecentGamesProps) {
         games.map((game) => (
           <div
             key={game.id}
-            className="rounded-lg border border-white/10 bg-gray-800 p-4"
+            className="rounded-xl border border-bg-light bg-bg-card p-4 shadow-md"
           >
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-400">{formatDate(game.date)}</span>
-              <span className="rounded-full bg-blue-900/50 px-2 py-1 text-xs font-medium text-blue-200">
+              <span className="text-sm font-medium text-text-secondary">{formatDate(game.date)}</span>
+              <span className="rounded-full bg-indigo-500/30 px-2 py-1 text-xs font-medium text-indigo-300">
                 Level {game.level}
               </span>
             </div>
             <div className="mt-2 flex items-center justify-between">
               <div>
-                <p className="text-lg font-medium">{game.score} points</p>
-                <p className="text-sm text-gray-400">{formatTime(game.duration)}</p>
+                <p className="text-lg font-bold text-text-primary">
+                  {formatTime(game.completionTime)} time
+                </p>
+                <p className="text-sm text-text-secondary">{game.accuracy}% accuracy</p>
               </div>
               <div className="flex items-center gap-2">
-                <span className={`h-2 w-2 rounded-full ${game.score > 50 ? 'bg-green-500' : 'bg-yellow-500'}`}></span>
-                <span className="text-sm">{game.score > 50 ? 'Good' : 'Average'}</span>
+                <span className={`h-2 w-2 rounded-full ${
+                  game.accuracy >= 80 ? 'bg-peach-500' : 
+                  game.accuracy >= 50 ? 'bg-indigo-500' : 'bg-teal-500'
+                }`}></span>
+                <span className="text-sm font-medium text-text-secondary">
+                  {game.accuracy >= 80 ? 'Excellent' : 
+                   game.accuracy >= 50 ? 'Good' : 'Practice'}
+                </span>
               </div>
             </div>
           </div>
         ))
       ) : (
-        <div className="rounded-lg border border-white/10 bg-gray-800 p-6 text-center">
-          <p className="text-gray-400">No games played yet</p>
-          <p className="mt-2 text-sm text-gray-500">
+        <div className="rounded-xl border border-bg-light bg-bg-card p-6 text-center shadow-md">
+          <p className="text-text-secondary">No games played yet</p>
+          <p className="mt-2 text-sm text-text-muted">
             Start training to see your game history
           </p>
         </div>

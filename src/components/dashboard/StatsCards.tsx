@@ -25,24 +25,24 @@ export default function StatsCards({
 
   return (
     <>
-      <div className="rounded-lg border border-white/10 bg-gray-800 p-4">
-        <p className="text-sm text-gray-400">Total Games</p>
-        <p className="text-2xl font-medium">{totalGames}</p>
+      <div className="rounded-xl border border-bg-light bg-bg-card p-4 shadow-md">
+        <p className="text-sm font-medium text-text-secondary">Total Games</p>
+        <p className="text-2xl font-bold text-text-primary">{totalGames}</p>
       </div>
       
-      <div className="rounded-lg border border-white/10 bg-gray-800 p-4">
-        <p className="text-sm text-gray-400">Average Score</p>
-        <p className="text-2xl font-medium">{averageScore}</p>
+      <div className="rounded-xl border border-bg-light bg-bg-card p-4 shadow-md">
+        <p className="text-sm font-medium text-text-secondary">Average Score</p>
+        <p className="text-2xl font-bold text-text-primary">{averageScore}</p>
       </div>
       
-      <div className="rounded-lg border border-white/10 bg-gray-800 p-4">
-        <p className="text-sm text-gray-400">Highest Level</p>
-        <p className="text-2xl font-medium">{highestLevel}</p>
+      <div className="rounded-xl border border-bg-light bg-bg-card p-4 shadow-md">
+        <p className="text-sm font-medium text-text-secondary">Highest Level</p>
+        <p className="text-2xl font-bold text-text-primary">{highestLevel}</p>
       </div>
       
-      <div className="rounded-lg border border-white/10 bg-gray-800 p-4">
-        <p className="text-sm text-gray-400">Total Time Played</p>
-        <p className="text-2xl font-medium">{formatTime(totalTimePlayed)}</p>
+      <div className="rounded-xl border border-bg-light bg-bg-card p-4 shadow-md">
+        <p className="text-sm font-medium text-text-secondary">Total Time Played</p>
+        <p className="text-2xl font-bold text-text-primary">{formatTime(totalTimePlayed)}</p>
       </div>
     </>
   );

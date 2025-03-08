@@ -14,8 +14,9 @@ export default function ProgressChart({ history }: ProgressChartProps) {
     .reverse() // Show oldest to newest
     .map((game, index) => ({
       name: `Game ${index + 1}`,
-      score: game.score,
+      score: game.accuracy || 0,
       level: game.level,
+      time: game.completionTime || 0,
     }));
 
   return (
@@ -26,35 +27,44 @@ export default function ProgressChart({ history }: ProgressChartProps) {
             data={chartData}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-            <XAxis dataKey="name" stroke="#888" />
-            <YAxis stroke="#888" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+            <XAxis dataKey="name" stroke="#F0F0F0" />
+            <YAxis stroke="#F0F0F0" />
             <Tooltip 
               contentStyle={{ 
-                backgroundColor: '#333', 
-                border: '1px solid #555',
+                backgroundColor: '#222', 
+                border: '1px solid #333',
                 borderRadius: '4px',
-                color: 'white'
+                color: '#FFF'
               }} 
             />
             <Line
               type="monotone"
               dataKey="score"
-              stroke="#8884d8"
+              name="Score/Accuracy"
+              stroke="#FFB380"
               activeDot={{ r: 8 }}
               strokeWidth={2}
             />
             <Line
               type="monotone"
               dataKey="level"
-              stroke="#82ca9d"
+              name="Level"
+              stroke="#6366F1"
+              strokeWidth={2}
+            />
+            <Line
+              type="monotone"
+              dataKey="time"
+              name="Time (s)"
+              stroke="#14B8A6"
               strokeWidth={2}
             />
           </LineChart>
         </ResponsiveContainer>
       ) : (
         <div className="flex h-full items-center justify-center">
-          <p className="text-gray-400">No game history available yet</p>
+          <p className="text-text-secondary">No game history available yet</p>
         </div>
       )}
     </div>

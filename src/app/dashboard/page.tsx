@@ -1,65 +1,118 @@
 'use client';
 
 import { useGameStore } from '@/lib/store/gameStore';
-import StatsCards from '@/components/dashboard/StatsCards';
-import ProgressChart from '@/components/dashboard/ProgressChart';
-import RecentGames from '@/components/dashboard/RecentGames';
-import Link from 'next/link';
+import PerformanceMetrics from '@/components/dashboard/PerformanceMetrics';
+import LearningRecommendations from '@/components/dashboard/LearningRecommendations';
+import AnalyticsDashboard from '@/components/dashboard/AnalyticsDashboard';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function DashboardPage() {
-  const { history, getTotalGames, getBestTime, getAverageAccuracy, getHighestLevel } = useGameStore();
-
-  return (
-    <main className="min-h-screen bg-bg-dark text-text-primary">
-      <div className="container mx-auto p-4">
-        <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-text-primary">Your Progress</h1>
-            <p className="text-text-secondary">Track your memory chess training performance</p>
-          </div>
-          <div className="mt-4 flex gap-4 sm:mt-0">
-            <Link 
-              href="/"
-              className="inline-flex items-center rounded-lg border border-peach-500/30 px-4 py-2 font-medium text-text-primary transition-all hover:bg-peach-500/10"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
+  const { history } = useGameStore();
+  
+  // If no game history, show onboarding
+  if (history.length === 0) {
+    return (
+      <div className="container mx-auto max-w-5xl py-8">
+        <Card className="border-bg-light bg-bg-dark">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-text-primary">Welcome to Memory Chess</CardTitle>
+            <CardDescription className="text-text-secondary">
+              Start playing games to see your performance metrics and get personalized recommendations.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col items-center justify-center space-y-6 py-8">
+            <div className="rounded-full bg-peach-500/10 p-6">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="64" 
+                height="64" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                className="text-peach-500"
+              >
+                <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
               </svg>
-              <span>Home</span>
-            </Link>
-            <Link 
-              href="/game"
-              className="inline-flex items-center rounded-lg bg-peach-500 px-4 py-2 font-medium text-bg-dark transition-all hover:bg-peach-400"
+            </div>
+            <p className="max-w-md text-center text-text-secondary">
+              Memory Chess helps you improve your memory and visualization skills through chess-based exercises.
+              Play your first game to start tracking your progress!
+            </p>
+            <a 
+              href="/game" 
+              className="rounded-lg bg-peach-500 px-6 py-3 font-medium text-bg-dark transition-all hover:bg-peach-400"
             >
-              <span>Start New Game</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <StatsCards 
-            totalGames={getTotalGames()}
-            averageScore={getAverageAccuracy()}
-            highestLevel={getHighestLevel()}
-            totalTimePlayed={getBestTime()}
-          />
-        </div>
-
-        <div className="mt-8 grid gap-8 lg:grid-cols-[2fr_1fr]">
-          <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-xl">
-            <h2 className="mb-6 text-xl font-semibold text-text-primary">Performance Over Time</h2>
-            <ProgressChart history={history} />
-          </div>
-
-          <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-xl">
-            <h2 className="mb-6 text-xl font-semibold text-text-primary">Recent Games</h2>
-            <RecentGames games={history.slice(0, 5)} />
-          </div>
-        </div>
+              Play Your First Game
+            </a>
+          </CardContent>
+        </Card>
       </div>
-    </main>
+    );
+  }
+  
+  return (
+    <div className="container mx-auto max-w-5xl py-8">
+      <h1 className="mb-6 text-3xl font-bold text-text-primary">Your Dashboard</h1>
+      
+      <Tabs defaultValue="performance">
+        <TabsList className="mb-6 grid w-full grid-cols-3 bg-bg-dark">
+          <TabsTrigger value="performance" className="data-[state=active]:bg-peach-500 data-[state=active]:text-bg-dark">
+            Performance
+          </TabsTrigger>
+          <TabsTrigger value="analytics" className="data-[state=active]:bg-peach-500 data-[state=active]:text-bg-dark">
+            Analytics
+          </TabsTrigger>
+          <TabsTrigger value="learning" className="data-[state=active]:bg-peach-500 data-[state=active]:text-bg-dark">
+            Learning
+          </TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="performance" className="mt-0">
+          <Card className="border-bg-light bg-bg-dark">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-text-primary">Performance Metrics</CardTitle>
+              <CardDescription className="text-text-secondary">
+                Track your progress and see how your memory skills are improving over time.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <PerformanceMetrics />
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="analytics" className="mt-0">
+          <Card className="border-bg-light bg-bg-dark">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-text-primary">Advanced Analytics</CardTitle>
+              <CardDescription className="text-text-secondary">
+                Dive deeper into your performance data with detailed analytics.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <AnalyticsDashboard />
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="learning" className="mt-0">
+          <Card className="border-bg-light bg-bg-dark">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-text-primary">Learning & Recommendations</CardTitle>
+              <CardDescription className="text-text-secondary">
+                Personalized challenges and recommendations based on your performance.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <LearningRecommendations />
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 } 

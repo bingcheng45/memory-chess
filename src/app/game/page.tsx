@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useGameStore } from '@/lib/store/gameStore';
 import { GamePhase } from '@/lib/types/game';
 import GameConfig from '@/components/game/GameConfig';
@@ -8,9 +9,26 @@ import MemorizationBoard from '@/components/game/MemorizationBoard';
 import SolutionBoard from '@/components/game/SolutionBoard';
 import GameResult from '@/components/game/GameResult';
 import GameStats from '@/components/game/GameStats';
+import ErrorBoundary from '@/components/ui/ErrorBoundary';
+import SoundSettings from '@/components/ui/SoundSettings';
+import { playSound } from '@/lib/utils/soundEffects';
 import Link from 'next/link';
+import { useAnalytics, AnalyticsEventType } from '@/lib/utils/analyticsTracker';
 
 export default function GamePage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const analytics = useAnalytics();
+  
+  // Get query parameters
+  const challengeId = searchParams.get('challenge');
+  const pieceCountParam = searchParams.get('pieceCount');
+  const memorizeTimeParam = searchParams.get('memorizeTime');
+  
+  // Parse parameters with defaults
+  const pieceCount = pieceCountParam ? parseInt(pieceCountParam) : 8;
+  const memorizeTime = memorizeTimeParam ? parseInt(memorizeTimeParam) : 10;
+  
   const { 
     gameState, 
     gamePhase, 
@@ -19,15 +37,86 @@ export default function GamePage() {
     startMemorizationPhase, 
     endMemorizationPhase, 
     startSolutionPhase, 
-    submitSolution 
+    submitSolution,
+    calculateSkillRatingChange
   } = useGameStore();
   
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [timerWarningPlayed, setTimerWarningPlayed] = useState(false);
+  
+  // Track initial page load
+  useEffect(() => {
+    analytics.trackFeatureUsage('game_page', 'view');
+    
+    // Clean up game state when leaving
+    return () => {
+      resetGame();
+    };
+  }, []);
+  
+  // Start game with parameters from URL if provided
+  useEffect(() => {
+    if (pieceCountParam || memorizeTimeParam) {
+      startGame(pieceCount, memorizeTime);
+      
+      // Track game start
+      analytics.trackGameStart(
+        pieceCount, 
+        memorizeTime, 
+        !!challengeId
+      );
+    }
+  }, [pieceCountParam, memorizeTimeParam, challengeId]);
+  
+  // Track phase changes
+  useEffect(() => {
+    if (gamePhase === GamePhase.MEMORIZATION) {
+      analytics.track(AnalyticsEventType.MEMORIZATION_PHASE, {
+        pieceCount: gameState.pieceCount,
+        memorizeTime: gameState.memorizeTime
+      });
+    } else if (gamePhase === GamePhase.SOLUTION) {
+      analytics.track(AnalyticsEventType.SOLUTION_PHASE, {
+        pieceCount: gameState.pieceCount,
+        memorizeTime: gameState.memorizeTime
+      });
+    } else if (gamePhase === GamePhase.RESULT && gameState.accuracy !== undefined) {
+      // Calculate skill rating change
+      const skillRatingChange = calculateSkillRatingChange(
+        gameState.accuracy,
+        gameState.pieceCount,
+        gameState.completionTime || 0
+      );
+      
+      // Create a game history object for analytics
+      const gameHistoryForAnalytics = {
+        id: '',
+        timestamp: Date.now(),
+        pieceCount: gameState.pieceCount,
+        memorizeTime: gameState.memorizeTime,
+        accuracy: gameState.accuracy || 0,
+        correctPlacements: 0,
+        totalPlacements: 0,
+        level: gameState.level || 1,
+        duration: gameState.completionTime ? 
+          Math.floor((gameState.completionTime - (gameState.memorizeStartTime || 0)) / 1000) : 0
+      };
+      
+      // Track game completion
+      analytics.trackGameComplete(gameHistoryForAnalytics, skillRatingChange);
+      
+      // Track daily challenge completion if applicable
+      if (challengeId) {
+        analytics.trackDailyChallengeComplete(gameHistoryForAnalytics, skillRatingChange);
+      }
+    }
+  }, [gamePhase, gameState]);
   
   // Start memorization phase when game is started
   useEffect(() => {
     if (gameState.isPlaying && gamePhase === GamePhase.CONFIGURATION) {
       console.log('Starting memorization phase');
+      playSound('click');
       startMemorizationPhase();
     }
   }, [gameState.isPlaying, gamePhase, startMemorizationPhase]);
@@ -36,8 +125,14 @@ export default function GamePage() {
   useEffect(() => {
     if (gameState.isMemorizationPhase) {
       console.log(`Setting timeout for ${gameState.memorizeTime} seconds`);
+      setTimerWarningPlayed(false);
+      
+      // Play timer start sound
+      playSound('timer');
+      
       const timer = setTimeout(() => {
         console.log('Memorization time ended, transitioning to solution phase');
+        playSound('timerEnd');
         endMemorizationPhase();
         startSolutionPhase();
       }, gameState.memorizeTime * 1000);
@@ -50,15 +145,24 @@ export default function GamePage() {
   useEffect(() => {
     if (gameState.isSolutionPhase) {
       console.log('Starting solution phase timer');
+      setElapsedTime(0);
+      
       const timer = setInterval(() => {
-        setElapsedTime(prev => prev + 1);
+        setElapsedTime(prev => {
+          // Play warning sound when 75% of the memorization time has elapsed
+          if (!timerWarningPlayed && prev >= Math.floor(gameState.memorizeTime * 0.75)) {
+            playSound('timer');
+            setTimerWarningPlayed(true);
+          }
+          return prev + 1;
+        });
       }, 1000);
       
       return () => clearInterval(timer);
     } else {
       setElapsedTime(0);
     }
-  }, [gameState.isSolutionPhase]);
+  }, [gameState.isSolutionPhase, gameState.memorizeTime, timerWarningPlayed]);
   
   // Format time in seconds to mm:ss format
   const formatTime = (seconds: number): string => {
@@ -70,12 +174,23 @@ export default function GamePage() {
   // Handle submitting the solution
   const handleSubmitSolution = () => {
     console.log('Submitting solution');
+    playSound('click');
     submitSolution();
+    
+    // Play success or failure sound based on accuracy
+    setTimeout(() => {
+      if (gameState.accuracy && gameState.accuracy >= 70) {
+        playSound('success');
+      } else {
+        playSound('failure');
+      }
+    }, 500);
   };
   
   // Handle trying again with the same configuration
   const handleTryAgain = () => {
     console.log('Trying again with same configuration');
+    playSound('click');
     resetGame();
     startGame(gameState.pieceCount, gameState.memorizeTime);
   };
@@ -83,13 +198,21 @@ export default function GamePage() {
   // Handle starting a new game with different configuration
   const handleNewGame = () => {
     console.log('Starting new game with different configuration');
+    playSound('click');
     resetGame();
   };
   
   // Handle starting the game from configuration
   const handleStartGame = (pieceCount: number, memorizeTime: number) => {
     console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
+    playSound('click');
     startGame(pieceCount, memorizeTime);
+  };
+  
+  // Handle back button
+  const handleBack = () => {
+    analytics.trackFeatureUsage('game_navigation', 'back_to_home');
+    router.push('/');
   };
   
   console.log('Current game phase:', gamePhase);
@@ -100,17 +223,25 @@ export default function GamePage() {
       case GamePhase.CONFIGURATION:
         return (
           <div className="flex flex-col items-center">
-            <GameConfig onStart={handleStartGame} />
+            <ErrorBoundary>
+              <GameConfig onStart={handleStartGame} />
+            </ErrorBoundary>
             {gameState.completionTime !== undefined && (
               <div className="mt-8">
-                <GameStats />
+                <ErrorBoundary>
+                  <GameStats />
+                </ErrorBoundary>
               </div>
             )}
           </div>
         );
         
       case GamePhase.MEMORIZATION:
-        return <MemorizationBoard />;
+        return (
+          <ErrorBoundary>
+            <MemorizationBoard />
+          </ErrorBoundary>
+        );
         
       case GamePhase.SOLUTION:
         return (
@@ -127,15 +258,25 @@ export default function GamePage() {
                 Submit Solution
               </button>
             </div>
-            <SolutionBoard />
+            <ErrorBoundary>
+              <SolutionBoard />
+            </ErrorBoundary>
           </div>
         );
         
       case GamePhase.RESULT:
-        return <GameResult onTryAgain={handleTryAgain} onNewGame={handleNewGame} />;
+        return (
+          <ErrorBoundary>
+            <GameResult onTryAgain={handleTryAgain} onNewGame={handleNewGame} />
+          </ErrorBoundary>
+        );
         
       default:
-        return <GameConfig onStart={handleStartGame} />;
+        return (
+          <ErrorBoundary>
+            <GameConfig onStart={handleStartGame} />
+          </ErrorBoundary>
+        );
     }
   };
   
@@ -146,6 +287,7 @@ export default function GamePage() {
           <Link 
             href="/"
             className="rounded-lg border border-peach-500/20 px-4 py-2 text-sm font-medium text-text-secondary transition-all hover:bg-peach-500/10"
+            onClick={handleBack}
           >
             ← Back to Home
           </Link>
@@ -154,10 +296,12 @@ export default function GamePage() {
             Memory <span className="text-peach-500">Chess</span>
           </h1>
           
-          <div className="w-[100px]"></div> {/* Spacer for centering */}
+          <SoundSettings className="w-[100px]" />
         </div>
         
-        {renderGameContent()}
+        <ErrorBoundary>
+          {renderGameContent()}
+        </ErrorBoundary>
       </div>
     </main>
   );

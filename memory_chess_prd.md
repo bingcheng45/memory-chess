@@ -1,13 +1,33 @@
 # Memory Chess - Product Requirements Document (PRD)
 
 ## Overview
-Memory Chess is a web-based memory game that challenges players to memorize and recreate chess positions. The game combines chess knowledge with memory skills, offering a unique and engaging experience for chess enthusiasts and casual players alike.
+Memory Chess is a web-based memory game that challenges players to memorize and recreate randomized chess positions. The game combines chess visualization with memory skills, offering a unique and engaging experience for chess enthusiasts and casual players alike.
+
+## Core Gameplay
+Memory Chess follows a simple yet challenging gameplay loop:
+
+1. **Memorization Phase**: Players are shown a randomly generated chess position with a specific number of pieces for a limited time. These positions are not standard starting positions but rather unique arrangements of pieces that the player needs to mentally register - including the types of pieces and their exact locations on the board.
+
+2. **Solution Phase**: After the memorization time expires, the pieces disappear, and players must recreate the position from memory by placing the correct pieces on the correct squares.
+
+3. **Accuracy Assessment**: The game evaluates how accurately the player recreated the position, calculating a score based on correct piece placements.
+
+4. **Progressive Difficulty**: As players improve, the game increases in difficulty by:
+   - Increasing the number of pieces to memorize
+   - Reducing the memorization time
+   - Using more complex piece arrangements
+
+5. **Skill Rating System**: Players earn a skill rating that evolves based on their performance, creating a sense of progression and achievement.
+
+6. **Daily Challenges**: Special curated positions that provide a consistent challenge and encourage regular practice.
+
+The randomized positions make each memory challenge unique and prevent players from relying on familiarity with standard chess positions, focusing the gameplay purely on memory and visualization skills.
 
 ## Core Features
 
 ### 1. Game Configuration
 - **Piece Selection Slider**
-  - Range: 1 to 32 pieces (full chess set)
+  - Range: 2 to 32 pieces (minimum 2 for kings)
   - Numeric input field for precise selection
   - Visual slider for intuitive control
   - Mobile-friendly touch interface
@@ -16,6 +36,13 @@ Memory Chess is a web-based memory game that challenges players to memorize and 
   - Range: 1 to 30 seconds
   - Visual countdown display
   - Configurable before game start
+
+- **Difficulty Presets**
+  - Easy: 2 pieces (kings only), 10 seconds
+  - Medium: 6 pieces, 10 seconds
+  - Hard: 12 pieces, 8 seconds
+  - Grandmaster: 20 pieces, 5 seconds
+  - Custom: User-defined settings
 
 ### 2. Game Board
 - **Initial State**
@@ -26,8 +53,8 @@ Memory Chess is a web-based memory game that challenges players to memorize and 
 
 - **Game State**
   - Valid chess positions only
-  - Random piece placement
-  - Respects chess rules (e.g., no two bishops on same color)
+  - Truly random piece placement across the entire board
+  - Kings can be placed on any square
   - Maintains realistic piece distribution
 
 ### 3. User Interface
@@ -48,6 +75,26 @@ Memory Chess is a web-based memory game that challenges players to memorize and 
   - Separate counts for black and white pieces
   - Updates in real-time as pieces are placed/removed
   - Prevents invalid piece quantities
+
+- **Game Results**
+  - **Accuracy Display**
+    - Percentage of correctly placed pieces
+    - Number of pieces correct / total pieces
+    - Color-coded feedback (green for excellent, orange for good, red for needs improvement)
+    - Visual progress bar
+
+  - **Performance Metrics**
+    - Completion time
+    - Skill rating change
+    - Streak counter
+    - Time bonus earned (if applicable)
+    - Perfect score indicator (if 100% accuracy)
+
+  - **Recommendations**
+    - Personalized improvement tips based on performance
+    - Suggested difficulty adjustments
+    - Option to try again with same configuration
+    - Option to start new game with different settings
 
 ### 4. Game Flow
 1. Configuration phase

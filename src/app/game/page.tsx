@@ -6,14 +6,18 @@ import { useGameStore } from '@/lib/store/gameStore';
 import { GamePhase } from '@/lib/types/game';
 import GameConfig from '@/components/game/GameConfig';
 import MemorizationBoard from '@/components/game/MemorizationBoard';
-import SolutionBoard from '@/components/game/SolutionBoard';
 import GameResult from '@/components/game/GameResult';
 import GameStats from '@/components/game/GameStats';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
-import SoundSettings from '@/components/ui/SoundSettings';
-import { playSound } from '@/lib/utils/soundEffects';
 import Link from 'next/link';
 import { useAnalytics, AnalyticsEventType } from '@/lib/utils/analyticsTracker';
+import { playSound } from '@/lib/utils/soundEffects';
+import SoundSettings from '@/components/ui/SoundSettings';
+import { Chess } from 'chess.js';
+import { v4 as uuidv4 } from 'uuid';
+import InteractiveChessBoard from '@/components/game/InteractiveChessBoard';
+import { ChessPiece, PieceType } from '@/types/chess';
+import { Button } from "@/components/ui/button";
 
 export default function GamePage() {
   const router = useRouter();
@@ -38,11 +42,23 @@ export default function GamePage() {
     endMemorizationPhase, 
     startSolutionPhase, 
     submitSolution,
-    calculateSkillRatingChange
+    calculateSkillRatingChange,
+    placePiece,
+    removePiece,
+    chess
   } = useGameStore();
   
   const [elapsedTime, setElapsedTime] = useState(0);
   const [timerWarningPlayed, setTimerWarningPlayed] = useState(false);
+  const [soundPlayed, setSoundPlayed] = useState(false);
+  const [solutionPieces, setSolutionPieces] = useState<ChessPiece[]>([]);
+  
+  // Format time in seconds to mm:ss format
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
   
   // Track initial page load
   useEffect(() => {
@@ -52,7 +68,7 @@ export default function GamePage() {
     return () => {
       resetGame();
     };
-  }, []);
+  }, [analytics, resetGame]);
   
   // Start game with parameters from URL if provided
   useEffect(() => {
@@ -66,7 +82,7 @@ export default function GamePage() {
         !!challengeId
       );
     }
-  }, [pieceCountParam, memorizeTimeParam, challengeId]);
+  }, [pieceCountParam, memorizeTimeParam, challengeId, analytics, memorizeTime, pieceCount, startGame]);
   
   // Track phase changes
   useEffect(() => {
@@ -110,14 +126,17 @@ export default function GamePage() {
         analytics.trackDailyChallengeComplete(gameHistoryForAnalytics, skillRatingChange);
       }
     }
-  }, [gamePhase, gameState]);
+  }, [gamePhase, gameState, analytics, calculateSkillRatingChange, challengeId]);
   
   // Start memorization phase when game is started
   useEffect(() => {
     if (gameState.isPlaying && gamePhase === GamePhase.CONFIGURATION) {
       console.log('Starting memorization phase');
-      playSound('click');
+      playSound('success');
       startMemorizationPhase();
+      
+      // Reset the sound played flag when starting a new game
+      setSoundPlayed(false);
     }
   }, [gameState.isPlaying, gamePhase, startMemorizationPhase]);
   
@@ -127,19 +146,36 @@ export default function GamePage() {
       console.log(`Setting timeout for ${gameState.memorizeTime} seconds`);
       setTimerWarningPlayed(false);
       
-      // Play timer start sound
-      playSound('timer');
+      // Play timer start sound only if it hasn't been played yet
+      if (!soundPlayed) {
+        // Add a small delay to ensure the success sound finishes first
+        setTimeout(() => {
+          console.log('Playing timer sound at start of memorization phase');
+          playSound('timer');
+          setSoundPlayed(true);
+        }, 500); // Increased delay to ensure the success sound finishes
+      }
       
+      // Add a small buffer (50ms) to ensure the visual timer reaches 0 before the phase changes
       const timer = setTimeout(() => {
         console.log('Memorization time ended, transitioning to solution phase');
         playSound('timerEnd');
         endMemorizationPhase();
         startSolutionPhase();
-      }, gameState.memorizeTime * 1000);
+      }, gameState.memorizeTime * 1000 + 50);
       
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+      };
     }
-  }, [gameState.isMemorizationPhase, gameState.memorizeTime, endMemorizationPhase, startSolutionPhase]);
+  }, [gameState.isMemorizationPhase, gameState.memorizeTime, endMemorizationPhase, startSolutionPhase, soundPlayed]);
+  
+  // Reset solution pieces when entering solution phase
+  useEffect(() => {
+    if (gamePhase === GamePhase.SOLUTION) {
+      setSolutionPieces([]);
+    }
+  }, [gamePhase]);
   
   // Track elapsed time during solution phase
   useEffect(() => {
@@ -163,13 +199,6 @@ export default function GamePage() {
       setElapsedTime(0);
     }
   }, [gameState.isSolutionPhase, gameState.memorizeTime, timerWarningPlayed]);
-  
-  // Format time in seconds to mm:ss format
-  const formatTime = (seconds: number): string => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
   
   // Handle submitting the solution
   const handleSubmitSolution = () => {
@@ -217,6 +246,38 @@ export default function GamePage() {
   
   console.log('Current game phase:', gamePhase);
   
+  // Add this helper function to convert chess.js board to ChessPiece array
+  // Currently not used as we start with an empty board in solution phase,
+  // but kept for future reference if we need to pre-populate the board
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function chessToPieces(chess: Chess | null): ChessPiece[] {
+    if (!chess) return [];
+    
+    const pieces: ChessPiece[] = [];
+    const board = chess.board();
+    
+    for (let rank = 0; rank < 8; rank++) {
+      for (let file = 0; file < 8; file++) {
+        const square = board[rank][file];
+        if (square) {
+          pieces.push({
+            id: uuidv4(),
+            type: square.type as PieceType,
+            color: square.color === 'w' ? 'white' : 'black',
+            position: { file, rank }
+          });
+        }
+      }
+    }
+    
+    return pieces;
+  }
+  
+  // Add a useEffect to log the chess instance when it changes
+  useEffect(() => {
+    console.log('Chess instance updated:', chess);
+  }, [chess]);
+  
   // Render the appropriate component based on game phase
   const renderGameContent = () => {
     switch (gamePhase) {
@@ -244,22 +305,58 @@ export default function GamePage() {
         );
         
       case GamePhase.SOLUTION:
+        // Use the solutionPieces state instead of an empty array
+        console.log('Starting solution phase with empty board');
         return (
           <div className="flex flex-col items-center">
-            <div className="mb-4 flex w-full max-w-[600px] items-center justify-between">
-              <div className="text-xl font-bold text-text-primary">
-                Time: {formatTime(elapsedTime)}
+            <div className="mb-6 flex items-center justify-between w-full max-w-[600px]">
+              <div className="flex items-center">
+                <span className="text-lg font-medium mr-2">Time:</span>
+                <span className="text-xl font-bold">{formatTime(elapsedTime)}</span>
               </div>
-              <button
+              <Button
                 onClick={handleSubmitSolution}
-                className="rounded-lg bg-peach-500 px-4 py-2 font-medium text-bg-dark transition-all hover:bg-peach-400 focus:outline-none focus:ring-2 focus:ring-peach-300"
+                variant="primary"
+                size="default"
                 type="button"
               >
                 Submit Solution
-              </button>
+              </Button>
             </div>
             <ErrorBoundary>
-              <SolutionBoard />
+              <InteractiveChessBoard 
+                playerSolution={solutionPieces}
+                onPlacePiece={(piece) => {
+                  // Update the solutionPieces state
+                  setSolutionPieces(prevPieces => {
+                    // Remove any existing piece at the same position
+                    const filteredPieces = prevPieces.filter(
+                      p => !(p.position.file === piece.position.file && p.position.rank === piece.position.rank)
+                    );
+                    // Add the new piece
+                    return [...filteredPieces, piece];
+                  });
+                  
+                  // Convert ChessPiece to chess.js format
+                  const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
+                  const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
+                  console.log('Placing piece:', piece, 'at square:', square, 'with code:', pieceCode);
+                  placePiece(square, pieceCode);
+                }}
+                onRemovePiece={(position) => {
+                  // Update the solutionPieces state
+                  setSolutionPieces(prevPieces => 
+                    prevPieces.filter(
+                      p => !(p.position.file === position.file && p.position.rank === position.rank)
+                    )
+                  );
+                  
+                  // Convert Position to chess.js square format
+                  const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
+                  console.log('Removing piece at position:', position, 'square:', square);
+                  removePiece(square);
+                }}
+              />
             </ErrorBoundary>
           </div>
         );

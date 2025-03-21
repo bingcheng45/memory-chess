@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -14,18 +15,16 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
-            <Link 
-              href="/game"
-              className="rounded-lg bg-peach-500 px-8 py-3 font-semibold text-bg-dark transition-all hover:bg-peach-400 hover:shadow-lg"
-            >
-              Start Training
+            <Link href="/game">
+              <Button variant="primary" size="lg">
+                Start Training
+              </Button>
             </Link>
             
-            <Link
-              href="/dashboard"
-              className="rounded-lg border border-peach-500/30 px-8 py-3 font-semibold text-text-primary transition-all hover:bg-peach-500/10"
-            >
-              View Progress
+            <Link href="/dashboard">
+              <Button variant="outline" size="lg">
+                View Progress
+              </Button>
             </Link>
           </div>
 

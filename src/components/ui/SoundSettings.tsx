@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { isSoundEnabled, setSoundEnabled, getVolume, setVolume, playSound } from '@/lib/utils/soundEffects';
+import { Button } from '@/components/ui/button';
 
 interface SoundSettingsProps {
   className?: string;
@@ -45,8 +46,10 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
   
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <button
+      <Button
         onClick={handleSoundToggle}
+        variant="outline"
+        size="icon"
         className="flex h-8 w-8 items-center justify-center rounded-full bg-bg-light hover:bg-bg-light/80"
         aria-label={soundOn ? 'Mute sound' : 'Unmute sound'}
         title={soundOn ? 'Mute sound' : 'Unmute sound'}
@@ -64,7 +67,7 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
             <line x1="17" y1="9" x2="23" y2="15"></line>
           </svg>
         )}
-      </button>
+      </Button>
       
       {soundOn && (
         <div className="flex items-center gap-2">

@@ -89,7 +89,7 @@ export default function LearningRecommendations() {
           
           {dailyChallenge.completed && (
             <div className="mt-2 text-center text-sm text-text-secondary">
-              You've completed today's challenge with {dailyChallenge.accuracy}% accuracy
+              You&apos;ve completed today&apos;s challenge with {dailyChallenge.accuracy}% accuracy
             </div>
           )}
         </div>

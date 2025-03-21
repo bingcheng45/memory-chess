@@ -14,6 +14,7 @@ import {
   calculateStreakStats,
   generatePerformanceSummary
 } from '@/lib/utils/analyticsUtils';
+import { Button } from '@/components/ui/button';
 
 // Time period options for filtering
 const TIME_PERIODS = [
@@ -91,8 +92,9 @@ export default function PerformanceDashboard() {
       {/* Tab Navigation */}
       <div className="mb-6 border-b border-bg-light">
         <nav className="flex space-x-4">
-          <button
+          <Button
             onClick={() => handleTabChange('overview')}
+            variant="link"
             className={`border-b-2 px-4 py-2 text-sm font-medium ${
               activeTab === 'overview'
                 ? 'border-peach-500 text-peach-500'
@@ -100,9 +102,10 @@ export default function PerformanceDashboard() {
             }`}
           >
             Overview
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => handleTabChange('trends')}
+            variant="link"
             className={`border-b-2 px-4 py-2 text-sm font-medium ${
               activeTab === 'trends'
                 ? 'border-peach-500 text-peach-500'
@@ -110,9 +113,10 @@ export default function PerformanceDashboard() {
             }`}
           >
             Trends
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => handleTabChange('analysis')}
+            variant="link"
             className={`border-b-2 px-4 py-2 text-sm font-medium ${
               activeTab === 'analysis'
                 ? 'border-peach-500 text-peach-500'
@@ -120,9 +124,10 @@ export default function PerformanceDashboard() {
             }`}
           >
             Analysis
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => handleTabChange('heatmap')}
+            variant="link"
             className={`border-b-2 px-4 py-2 text-sm font-medium ${
               activeTab === 'heatmap'
                 ? 'border-peach-500 text-peach-500'
@@ -130,7 +135,7 @@ export default function PerformanceDashboard() {
             }`}
           >
             Heatmap
-          </button>
+          </Button>
         </nav>
       </div>
       

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import { 
   calculateAccuracyTrend, 
@@ -63,8 +63,8 @@ export default function AnalyticsDashboard() {
   // Colors for charts
   const colors = ['#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899'];
   
-  // Convert time filter to days
-  const getTimeFilterDays = (): number => {
+  // Wrap the getTimeFilterDays function in a useCallback
+  const getTimeFilterDays = useCallback((): number => {
     switch (timeFilter) {
       case 'week': return 7;
       case 'month': return 30;
@@ -72,7 +72,7 @@ export default function AnalyticsDashboard() {
       case 'all': return 0; // 0 means all data
       default: return 30;
     }
-  };
+  }, [timeFilter]);
   
   // Update chart data when filters change
   useEffect(() => {
@@ -102,7 +102,7 @@ export default function AnalyticsDashboard() {
       default:
         setChartData([]);
     }
-  }, [history, timeFilter, metricFilter]);
+  }, [history, timeFilter, metricFilter, getTimeFilterDays]);
   
   // Format accuracy trend data
   const formatAccuracyTrendData = (data: number[]): AccuracyDataPoint[] => {

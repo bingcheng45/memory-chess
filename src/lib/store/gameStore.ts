@@ -734,23 +734,33 @@ export const useGameStore = create<GameStore>()(
       
       placePiece: (square, piece) => {
         const { chess } = get();
-        if (!chess) return;
+        console.log('placePiece called with square:', square, 'piece:', piece, 'chess instance:', chess);
+        if (!chess) {
+          console.error('Chess instance is null in placePiece');
+          return;
+        }
         
         try {
           // Determine piece color and type
           const color = piece === piece.toLowerCase() ? 'b' : 'w';
           const type = piece.toLowerCase() as PieceSymbol;
           
+          console.log(`Placing ${color} ${type} on ${square}`);
+          
           // Place the piece
           chess.put({ type, color }, square as Square);
           
           // Update the state
-          set((state) => ({
-            gameState: {
-              ...state.gameState,
-              userPosition: chess.fen(),
-            },
-          }));
+          set((state) => {
+            const newState = {
+              gameState: {
+                ...state.gameState,
+                userPosition: chess.fen(),
+              },
+            };
+            console.log('Updated state after placing piece:', newState);
+            return newState;
+          });
         } catch (error) {
           console.error(`Failed to place piece ${piece} on ${square}:`, error);
         }
@@ -758,19 +768,29 @@ export const useGameStore = create<GameStore>()(
       
       removePiece: (square) => {
         const { chess } = get();
-        if (!chess) return;
+        console.log('removePiece called with square:', square, 'chess instance:', chess);
+        if (!chess) {
+          console.error('Chess instance is null in removePiece');
+          return;
+        }
         
         try {
+          console.log(`Removing piece from ${square}`);
+          
           // Remove the piece
           chess.remove(square as Square);
           
           // Update the state
-          set((state) => ({
-            gameState: {
-              ...state.gameState,
-              userPosition: chess.fen(),
-            },
-          }));
+          set((state) => {
+            const newState = {
+              gameState: {
+                ...state.gameState,
+                userPosition: chess.fen(),
+              },
+            };
+            console.log('Updated state after removing piece:', newState);
+            return newState;
+          });
         } catch (error) {
           console.error(`Failed to remove piece from ${square}:`, error);
         }

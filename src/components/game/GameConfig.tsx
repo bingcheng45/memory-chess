@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
+import { Button } from "@/components/ui/button";
 
 interface GameConfigProps {
   readonly onStart?: (pieceCount: number, memorizeTime: number) => void;
@@ -63,21 +64,6 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   const totalGames = getTotalGames();
   const recommendedDifficulty = getRecommendedDifficulty();
   
-  // Check if this is the first time playing
-  useEffect(() => {
-    if (totalGames === 0) {
-      setShowTutorial(true);
-      // Set Easy preset for first-time players
-      handlePresetSelect(DIFFICULTY_PRESETS[0]);
-    } else {
-      // Set recommended difficulty based on skill rating
-      const recommendedPreset = getRecommendedPreset();
-      if (recommendedPreset) {
-        handlePresetSelect(recommendedPreset);
-      }
-    }
-  }, [totalGames]);
-  
   // Get recommended preset based on skill rating
   const getRecommendedPreset = (): DifficultyPreset | null => {
     if (skillRating < 1000) {
@@ -96,6 +82,24 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     setMemorizeTime(preset.memorizeTime);
     setSelectedPreset(preset.name);
   };
+  
+  // Check if this is the first time playing
+  useEffect(() => {
+    if (totalGames === 0) {
+      setShowTutorial(true);
+      // Set Easy preset for first-time players
+      handlePresetSelect(DIFFICULTY_PRESETS[0]);
+    } else {
+      // For new players, auto-select the recommended preset
+      if (totalGames < 5) {
+        const recommendedPreset = getRecommendedPreset();
+        if (recommendedPreset) {
+          handlePresetSelect(recommendedPreset);
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [totalGames]);
   
   const handleCustomChange = () => {
     setSelectedPreset(null);
@@ -140,12 +144,13 @@ export default function GameConfig({ onStart }: GameConfigProps) {
             <li>Recreate the position from memory</li>
             <li>Check your accuracy and time</li>
           </ol>
-          <button 
+          <Button 
             onClick={() => setShowTutorial(false)}
-            className="mt-3 text-peach-500 hover:text-peach-400 font-medium"
+            variant="link"
+            className="mt-3 text-peach-500 hover:text-peach-400 p-0"
           >
             Got it!
-          </button>
+          </Button>
         </div>
       )}
       
@@ -172,12 +177,14 @@ export default function GameConfig({ onStart }: GameConfigProps) {
             <span className="font-medium text-text-primary">{totalGames}</span>
           </div>
           
-          <button
+          <Button
             onClick={generateCustomDifficulty}
-            className="mt-3 w-full rounded-lg border border-peach-500/30 bg-peach-500/10 px-3 py-2 text-sm font-medium text-peach-500 transition-all hover:bg-peach-500/20"
+            variant="outline"
+            size="sm"
+            className="mt-3 w-full border-peach-500/30 bg-peach-500/10 text-peach-500 hover:bg-peach-500/20"
           >
             Generate Recommended Challenge
-          </button>
+          </Button>
         </div>
       )}
       
@@ -185,21 +192,22 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         <h3 className="mb-3 text-sm font-medium text-text-secondary">Difficulty Presets</h3>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           {DIFFICULTY_PRESETS.map((preset) => (
-            <button
+            <Button
               key={preset.name}
               onClick={() => handlePresetSelect(preset)}
-              className={`flex flex-col items-center justify-center rounded-lg border p-3 transition-all
-                ${selectedPreset === preset.name 
+              variant={selectedPreset === preset.name ? "secondary" : "ghost"}
+              className={`flex h-auto flex-col items-center justify-center p-3 ${
+                selectedPreset === preset.name 
                   ? 'border-peach-500 bg-peach-500/20 text-text-primary' 
-                  : 'border-bg-light bg-bg-dark/30 text-text-secondary hover:border-peach-500/50 hover:bg-peach-500/10'
-                }`}
+                  : 'border-bg-light text-text-secondary hover:border-peach-500/50 hover:bg-peach-500/10'
+              }`}
               aria-pressed={selectedPreset === preset.name}
             >
               <span className="font-medium">{preset.name}</span>
               <div className="mt-1 text-xs opacity-70">
                 {preset.pieceCount} pcs / {preset.memorizeTime}s
               </div>
-            </button>
+            </Button>
           ))}
         </div>
         <div className="mt-2 text-xs text-text-muted">
@@ -270,12 +278,14 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </div>
       </div>
       
-      <button
+      <Button
         onClick={handleStart}
-        className="w-full rounded-lg bg-peach-500 px-4 py-3 font-medium text-bg-dark transition-all hover:bg-peach-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-peach-300"
+        variant="primary"
+        size="lg"
+        className="w-full"
       >
-        Start Game
-      </button>
+        Start Training
+      </Button>
       
       {gameState.completionTime !== undefined && (
         <div className="mt-4 text-center text-sm text-text-secondary">

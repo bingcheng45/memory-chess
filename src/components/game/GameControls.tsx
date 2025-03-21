@@ -1,6 +1,7 @@
 'use client';
 
 import { useGameStore } from '@/lib/store/gameStore';
+import { Button } from '@/components/ui/button';
 
 export default function GameControls() {
   const { gameState, startGame, stopGame, resetGame } = useGameStore();
@@ -9,7 +10,7 @@ export default function GameControls() {
     if (gameState.isPlaying) {
       stopGame();
     } else {
-      startGame();
+      startGame(gameState.pieceCount || 8, gameState.memorizeTime || 10);
     }
   };
 
@@ -21,26 +22,23 @@ export default function GameControls() {
 
   return (
     <div className="flex gap-4">
-      <button
+      <Button
         onClick={handleStartStop}
-        className="rounded-lg bg-blue-600 px-6 py-2 font-semibold text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+        variant="primary"
         aria-label={gameState.isPlaying ? "Stop Training" : "Start Training"}
       >
         {gameState.isPlaying ? 'Stop' : 'Start'} Training
-      </button>
+      </Button>
       
-      <button
+      <Button
         onClick={handleReset}
-        className={`rounded-lg border border-white/20 px-6 py-2 font-semibold text-white transition-colors ${
-          gameState.isPlaying 
-            ? 'cursor-not-allowed opacity-50' 
-            : 'hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-gray-900'
-        }`}
+        variant="outline"
         aria-label="Reset Game"
         disabled={gameState.isPlaying}
+        className={gameState.isPlaying ? 'opacity-50' : ''}
       >
         Reset
-      </button>
+      </Button>
     </div>
   );
 } 

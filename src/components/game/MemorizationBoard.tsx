@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import Image from 'next/image';
 import { useGameStore } from '@/lib/store/gameStore';
+import { getPieceImageUrl, mapChessJsPieceToType } from '@/utils/chessPieces';
 
 export default function MemorizationBoard() {
   const { chess, gameState } = useGameStore();
   const [position, setPosition] = useState<string[][]>(Array(8).fill(0).map(() => Array(8).fill('')));
-  const [timeLeft, setTimeLeft] = useState(gameState.memorizeTime);
-  const [milliseconds, setMilliseconds] = useState(99);
+  const [timeRemaining, setTimeRemaining] = useState(gameState.memorizeTime * 1000); // Store time in milliseconds
   const [isLoading, setIsLoading] = useState(true);
   
   // Parse the FEN string to get the position
@@ -45,85 +46,50 @@ export default function MemorizationBoard() {
   useEffect(() => {
     if (!gameState.isMemorizationPhase) return;
     
-    console.log('Starting memorization countdown from', timeLeft, 'seconds');
-    setTimeLeft(gameState.memorizeTime); // Reset timer when phase starts
-    setMilliseconds(99);
+    // Ensure we start with the exact memorization time
+    console.log('Starting memorization countdown from', gameState.memorizeTime, 'seconds');
     
-    // Update milliseconds every 10ms for smooth countdown
-    const msTimer = setInterval(() => {
-      setMilliseconds((prev) => {
-        if (prev <= 0) {
-          return 99;
-        }
-        return prev - 1;
-      });
-    }, 10);
+    // Set initial time (convert seconds to milliseconds)
+    setTimeRemaining(gameState.memorizeTime * 1000);
     
-    // Update seconds every second
-    const secTimer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          clearInterval(secTimer);
-          clearInterval(msTimer);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+    // Get the start time to calculate elapsed time
+    const startTime = Date.now();
+    const endTime = startTime + (gameState.memorizeTime * 1000);
     
+    // Update time every 33ms (approximately 30fps) for smooth animation
+    const timer = setInterval(() => {
+      const now = Date.now();
+      const remaining = Math.max(0, endTime - now);
+      
+      setTimeRemaining(remaining);
+      
+      // Stop the timer when we reach 0
+      if (remaining <= 0) {
+        clearInterval(timer);
+      }
+    }, 33);
+    
+    // Clean up timer when component unmounts or phase changes
     return () => {
-      clearInterval(secTimer);
-      clearInterval(msTimer);
+      clearInterval(timer);
     };
   }, [gameState.isMemorizationPhase, gameState.memorizeTime]);
   
+  // Calculate seconds and milliseconds for display
+  const seconds = Math.floor(timeRemaining / 1000);
+  const milliseconds = Math.floor((timeRemaining % 1000) / 10);
+  
   // Calculate progress percentage for the timer
   const timerProgress = useMemo(() => {
-    const totalTime = gameState.memorizeTime;
-    const elapsedTime = totalTime - timeLeft - (milliseconds / 100);
+    const totalTime = gameState.memorizeTime * 1000; // Total time in milliseconds
+    const elapsedTime = totalTime - timeRemaining;
     return Math.max(0, Math.min(100, (elapsedTime / totalTime) * 100));
-  }, [timeLeft, milliseconds, gameState.memorizeTime]);
-  
-  // Get piece symbol for display
-  const getPieceSymbol = (piece: string): string => {
-    const symbols: Record<string, string> = {
-      'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙',
-      'k': '♚', 'q': '♛', 'r': '♜', 'b': '♝', 'n': '♞', 'p': '♟',
-    };
-    return symbols[piece] || '';
-  };
-  
-  // Count pieces by type for the piece inventory
-  const pieceCounts = useMemo(() => {
-    const counts = {
-      white: { p: 0, n: 0, b: 0, r: 0, q: 0, k: 0, total: 0 },
-      black: { p: 0, n: 0, b: 0, r: 0, q: 0, k: 0, total: 0 }
-    };
-    
-    position.forEach(row => {
-      row.forEach(piece => {
-        if (!piece) return;
-        
-        const isWhite = piece === piece.toUpperCase();
-        const pieceType = piece.toLowerCase();
-        
-        if (isWhite) {
-          counts.white[pieceType as keyof typeof counts.white]++;
-          counts.white.total++;
-        } else {
-          counts.black[pieceType as keyof typeof counts.black]++;
-          counts.black.total++;
-        }
-      });
-    });
-    
-    return counts;
-  }, [position]);
+  }, [timeRemaining, gameState.memorizeTime]);
   
   // Get urgency class based on time left
   const getUrgencyClass = () => {
-    if (timeLeft <= 3) return 'text-red-500 animate-pulse';
-    if (timeLeft <= 5) return 'text-orange-500';
+    if (seconds <= 3) return 'text-red-500 animate-pulse';
+    if (seconds <= 5) return 'text-orange-500';
     return 'text-peach-500';
   };
   
@@ -132,7 +98,7 @@ export default function MemorizationBoard() {
       <div className="mb-6 text-center">
         <div className="text-xl font-bold text-text-primary">Memorize the Position</div>
         <div className={`mt-3 text-6xl font-bold ${getUrgencyClass()} transition-colors`}>
-          {timeLeft}
+          {seconds}
           <span className="text-3xl opacity-50">.{milliseconds.toString().padStart(2, '0')}</span>
         </div>
         
@@ -156,7 +122,7 @@ export default function MemorizationBoard() {
           </div>
         )}
         
-        <div className="grid h-full w-full grid-cols-8 grid-rows-8">
+        <div className="grid h-full w-full grid-cols-8 grid-rows-8 gap-0 border border-gray-700 shadow-inner">
           {position.map((row, i) =>
             row.map((piece, j) => {
               const squareColor = (i + j) % 2 === 0 ? 'bg-board-light' : 'bg-board-dark';
@@ -165,8 +131,8 @@ export default function MemorizationBoard() {
               return (
                 <div
                   key={`${i}-${j}`}
-                  className={`flex items-center justify-center ${squareColor} relative`}
-                  aria-label={`${squareName}${piece ? ' with ' + getPieceSymbol(piece) : ''}`}
+                  className={`flex items-center justify-center ${squareColor} relative border border-gray-800/50 transition-all`}
+                  aria-label={`${squareName}${piece ? ' with ' + (piece === piece.toUpperCase() ? 'white' : 'black') + ' ' + mapChessJsPieceToType(piece) : ''}`}
                 >
                   {/* Coordinate labels on the edges */}
                   {j === 0 && (
@@ -181,39 +147,24 @@ export default function MemorizationBoard() {
                   )}
                   
                   {piece && (
-                    <span className={`text-3xl ${piece === piece.toUpperCase() ? 'text-text-primary' : 'text-peach-500'}`}>
-                      {getPieceSymbol(piece)}
-                    </span>
+                    <div className="flex items-center justify-center">
+                      <Image 
+                        src={getPieceImageUrl(
+                          mapChessJsPieceToType(piece), 
+                          piece === piece.toUpperCase() ? 'white' : 'black'
+                        )}
+                        alt={`${piece === piece.toUpperCase() ? 'White' : 'Black'} ${mapChessJsPieceToType(piece)}`}
+                        width={32}
+                        height={32}
+                        className="drop-shadow-md"
+                        priority
+                      />
+                    </div>
                   )}
                 </div>
               );
             })
           )}
-        </div>
-      </div>
-      
-      {/* Piece inventory */}
-      <div className="mt-6 flex w-full max-w-[600px] justify-between rounded-lg bg-bg-card p-3 text-sm">
-        <div className="flex items-center">
-          <span className="mr-2 font-medium text-text-primary">White:</span>
-          {pieceCounts.white.k > 0 && <span className="mx-1">♔{pieceCounts.white.k > 1 ? pieceCounts.white.k : ''}</span>}
-          {pieceCounts.white.q > 0 && <span className="mx-1">♕{pieceCounts.white.q > 1 ? pieceCounts.white.q : ''}</span>}
-          {pieceCounts.white.r > 0 && <span className="mx-1">♖{pieceCounts.white.r > 1 ? pieceCounts.white.r : ''}</span>}
-          {pieceCounts.white.b > 0 && <span className="mx-1">♗{pieceCounts.white.b > 1 ? pieceCounts.white.b : ''}</span>}
-          {pieceCounts.white.n > 0 && <span className="mx-1">♘{pieceCounts.white.n > 1 ? pieceCounts.white.n : ''}</span>}
-          {pieceCounts.white.p > 0 && <span className="mx-1">♙{pieceCounts.white.p > 1 ? pieceCounts.white.p : ''}</span>}
-          <span className="ml-2 text-text-secondary">({pieceCounts.white.total})</span>
-        </div>
-        
-        <div className="flex items-center">
-          <span className="mr-2 font-medium text-peach-500">Black:</span>
-          {pieceCounts.black.k > 0 && <span className="mx-1 text-peach-500">♚{pieceCounts.black.k > 1 ? pieceCounts.black.k : ''}</span>}
-          {pieceCounts.black.q > 0 && <span className="mx-1 text-peach-500">♛{pieceCounts.black.q > 1 ? pieceCounts.black.q : ''}</span>}
-          {pieceCounts.black.r > 0 && <span className="mx-1 text-peach-500">♜{pieceCounts.black.r > 1 ? pieceCounts.black.r : ''}</span>}
-          {pieceCounts.black.b > 0 && <span className="mx-1 text-peach-500">♝{pieceCounts.black.b > 1 ? pieceCounts.black.b : ''}</span>}
-          {pieceCounts.black.n > 0 && <span className="mx-1 text-peach-500">♞{pieceCounts.black.n > 1 ? pieceCounts.black.n : ''}</span>}
-          {pieceCounts.black.p > 0 && <span className="mx-1 text-peach-500">♟{pieceCounts.black.p > 1 ? pieceCounts.black.p : ''}</span>}
-          <span className="ml-2 text-text-secondary">({pieceCounts.black.total})</span>
         </div>
       </div>
       

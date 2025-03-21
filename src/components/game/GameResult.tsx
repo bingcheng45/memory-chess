@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import { GameState } from '@/lib/types/game';
+import { Button } from "@/components/ui/button";
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & { 
@@ -21,7 +22,6 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     gameState, 
     getBestTime, 
     getAverageAccuracy, 
-    history, 
     getSkillRating,
     getCurrentStreak,
     getLongestStreak,
@@ -114,13 +114,6 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     if (accuracy >= 50) return 'text-peach-500';
     return 'text-peach-600';
   };
-  
-  // Get recent games for the progress chart (last 5 games)
-  const recentGames = history.slice(-5).map(game => ({
-    accuracy: game.accuracy,
-    pieceCount: game.pieceCount,
-    completionTime: game.completionTime
-  }));
   
   // Get skill rating change class
   const getSkillRatingChangeClass = () => {
@@ -291,26 +284,6 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         </div>
       </div>
       
-      {/* Progress chart (if there are previous games) */}
-      {recentGames.length > 1 && (
-        <div className="mb-6">
-          <h3 className="mb-2 text-sm font-medium text-text-secondary">Your Recent Progress</h3>
-          <div className="h-32 w-full">
-            <div className="flex h-full items-end justify-between">
-              {recentGames.map((game, index) => (
-                <div key={index} className="flex h-full flex-col items-center justify-end">
-                  <div 
-                    className={`w-8 ${getAccuracyColor(game.accuracy)}`}
-                    style={{ height: `${game.accuracy}%` }}
-                  ></div>
-                  <div className="mt-1 text-xs text-text-muted">{game.accuracy}%</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-      
       {/* Recommended next challenge */}
       <div className="mb-6 rounded-lg bg-bg-dark/30 p-4">
         <h3 className="mb-2 text-sm font-medium text-text-primary">Recommended Challenge</h3>
@@ -345,19 +318,23 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       )}
       
       <div className="flex flex-col space-y-3">
-        <button
+        <Button
           onClick={onTryAgain}
-          className="rounded-lg bg-peach-500 px-4 py-3 font-medium text-bg-dark transition-all hover:bg-peach-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-peach-300"
+          variant={gameState.accuracy === 100 ? "secondary" : "primary"}
+          size="lg"
+          className="w-full"
         >
           Try Again (Same Configuration)
-        </button>
+        </Button>
         
-        <button
+        <Button
           onClick={onNewGame}
-          className="rounded-lg border border-peach-500/30 bg-transparent px-4 py-3 font-medium text-text-primary transition-all hover:bg-peach-500/20 focus:outline-none focus:ring-2 focus:ring-peach-300"
+          variant={gameState.accuracy === 100 ? "primary" : "secondary"}
+          size="lg"
+          className={`w-full ${gameState.accuracy === 100 ? "" : "border border-gray-600"}`}
         >
           New Game (Different Configuration)
-        </button>
+        </Button>
       </div>
     </div>
   );

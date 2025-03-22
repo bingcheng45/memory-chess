@@ -29,7 +29,7 @@ interface GameStore {
   placePiece: (square: string, piece: string) => void;
   removePiece: (square: string) => void;
   
-  // Stats and progression
+  // Stats and progression (kept because they're used in game components)
   getTotalGames: () => number;
   getBestTime: () => number;
   getAverageAccuracy: () => number;
@@ -56,50 +56,14 @@ const initialGameState: GameState = {
   moves: [], // Initialize empty moves array
 };
 
-// Sample game history for testing
-const sampleHistory: GameHistory[] = [
-  {
-    id: '1',
-    timestamp: Date.now() - 1000 * 60 * 60 * 24 * 2, // 2 days ago
-    pieceCount: 8,
-    memorizeTime: 10,
-    accuracy: 85,
-    correctPlacements: 7,
-    totalPlacements: 8,
-    level: 1,
-    duration: 45
-  },
-  {
-    id: '2',
-    timestamp: Date.now() - 1000 * 60 * 60 * 24, // 1 day ago
-    pieceCount: 10,
-    memorizeTime: 15,
-    accuracy: 90,
-    correctPlacements: 9,
-    totalPlacements: 10,
-    level: 2,
-    duration: 60
-  },
-  {
-    id: '3',
-    timestamp: Date.now() - 1000 * 60 * 60 * 12, // 12 hours ago
-    pieceCount: 12,
-    memorizeTime: 20,
-    accuracy: 75,
-    correctPlacements: 9,
-    totalPlacements: 12,
-    level: 2,
-    duration: 75
-  }
-];
-
 // Initialize a chess instance outside the store to ensure it's created correctly
 let initialChess: Chess | null = null;
 try {
   // Initialize with a minimal valid board (just kings)
   initialChess = new Chess('4k3/8/8/8/8/8/8/4K3 w - - 0 1');
 } catch (error) {
-  console.error('Failed to initialize Chess:', error);
+  console.error('Failed to initialize chess instance:', error);
+  initialChess = null;
 }
 
 // Define a type for chess.js move objects
@@ -423,14 +387,15 @@ const calculateSkillRatingChange = (
   return Math.round(points * scaleFactor);
 };
 
+// Initialize the store
 export const useGameStore = create<GameStore>()(
   persist(
     (set, get) => ({
-      // State
+      // State initialization
       gameState: initialGameState,
-      gamePhase: GamePhase.CONFIGURATION,
-      history: sampleHistory,
-      chess: initialChess,
+      gamePhase: 'configuration' as GamePhase,
+      history: [], // Empty history array
+      chess: initialChess, // Use the initialized chess instance
       memorizationChess: null,
       
       // Actions
@@ -589,7 +554,7 @@ export const useGameStore = create<GameStore>()(
               id: crypto.randomUUID(),
             },
             ...state.history,
-          ].slice(0, 100), // Keep last 100 games
+          ].slice(0, 20), // Keep only the last 20 games (reduced from 100)
         }));
       },
       
@@ -891,9 +856,12 @@ export const useGameStore = create<GameStore>()(
     {
       name: 'memory-chess-storage',
       partialize: (state) => ({
-        // Don't persist the chess object as it can't be serialized properly
-        gameState: state.gameState,
-        gamePhase: state.gamePhase,
+        gameState: {
+          pieceCount: state.gameState.pieceCount,
+          memorizeTime: state.gameState.memorizeTime,
+          level: state.gameState.level,
+          skillRating: state.gameState.skillRating,
+        },
         history: state.history,
       }),
     }

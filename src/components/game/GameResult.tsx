@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import { GameState } from '@/lib/types/game';
 import { Button } from "@/components/ui/button";
@@ -21,13 +20,10 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const { 
     gameState, 
     getBestTime, 
-    getAverageAccuracy, 
     getSkillRating,
     getCurrentStreak,
-    getLongestStreak,
     getRecommendedDifficulty
   } = useGameStore();
-  const [showConfetti, setShowConfetti] = useState(false);
   
   // Cast gameState to extended type
   const extendedGameState = gameState as GameStateWithRating;
@@ -39,12 +35,10 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
   
-  // Get best time for current piece count
+  // Get metrics
   const bestTime = getBestTime();
-  const averageAccuracy = getAverageAccuracy();
   const skillRating = getSkillRating();
   const currentStreak = getCurrentStreak();
-  const longestStreak = getLongestStreak();
   const recommendedDifficulty = getRecommendedDifficulty();
   
   const isNewBestTime = gameState.completionTime !== undefined && 
@@ -53,59 +47,38 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                         gameState.accuracy !== undefined && 
                         gameState.accuracy >= 80;
   
-  // Show confetti animation for excellent results
-  useEffect(() => {
-    if (gameState.accuracy !== undefined && gameState.accuracy >= 90) {
-      setShowConfetti(true);
-      const timer = setTimeout(() => setShowConfetti(false), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [gameState.accuracy]);
-  
   // Determine result message and color based on accuracy
   const getResultMessage = () => {
     if (gameState.accuracy === undefined) return { text: 'Game Completed', color: 'text-text-primary' };
     
     if (gameState.accuracy >= 90) {
-      return { text: 'Excellent Memory!', color: 'text-green-400', emoji: '🏆' };
+      return { text: 'Excellent Memory!', color: 'text-green-400' };
     } else if (gameState.accuracy >= 70) {
-      return { text: 'Great Job!', color: 'text-peach-400', emoji: '🎯' };
+      return { text: 'Great Job!', color: 'text-peach-400' };
     } else if (gameState.accuracy >= 50) {
-      return { text: 'Good Effort!', color: 'text-peach-500', emoji: '👍' };
+      return { text: 'Good Effort!', color: 'text-peach-500' };
     } else {
-      return { text: 'Keep Practicing!', color: 'text-peach-600', emoji: '💪' };
+      return { text: 'Keep Practicing!', color: 'text-peach-600' };
     }
   };
   
-  // Get improvement tips based on accuracy
-  const getImprovementTips = () => {
-    if (gameState.accuracy === undefined) return [];
-    
-    const tips = [];
+  // Simplified improvement tips
+  const getTip = () => {
+    if (gameState.accuracy === undefined) return '';
     
     if (gameState.accuracy < 50) {
-      tips.push('Start with fewer pieces to build your memory');
-      tips.push('Focus on key pieces like kings and queens first');
-      tips.push('Try to identify patterns in the position');
+      return 'Try starting with fewer pieces to build your memory skills.';
     } else if (gameState.accuracy < 70) {
-      tips.push('Pay attention to piece colors and their positions');
-      tips.push('Try to remember pieces by their relative positions');
-      tips.push('Practice with slightly more time before reducing it');
+      return 'Focus on remembering pieces by their relative positions.';
     } else if (gameState.accuracy < 90) {
-      tips.push('Focus on the exact square of each piece');
-      tips.push('Try to visualize the board in sections');
-      tips.push('Challenge yourself with more pieces or less time');
+      return 'Try to visualize the board in sections for better recall.';
     } else {
-      tips.push('You\'re doing great! Try increasing the difficulty');
-      tips.push('Challenge yourself with more pieces or less time');
-      tips.push('Practice consistently to maintain your skills');
+      return 'Challenge yourself with more pieces or less time.';
     }
-    
-    return tips;
   };
   
   const result = getResultMessage();
-  const improvementTips = getImprovementTips();
+  const tip = getTip();
   
   // Calculate accuracy color
   const getAccuracyColor = (accuracy: number) => {
@@ -129,118 +102,23 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   
   return (
     <div className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-8 shadow-xl">
-      {showConfetti && (
-        <div className="confetti-container absolute inset-0 overflow-hidden pointer-events-none">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div 
-              key={i}
-              className="confetti"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `-5%`,
-                backgroundColor: ['#FFB380', '#FF9248', '#FFD700', '#87CEEB', '#90EE90'][Math.floor(Math.random() * 5)],
-                width: `${Math.random() * 10 + 5}px`,
-                height: `${Math.random() * 10 + 5}px`,
-                animation: `fall ${Math.random() * 3 + 2}s linear forwards, sway ${Math.random() * 2 + 3}s ease-in-out infinite alternate`
-              }}
-            />
-          ))}
-          <style jsx>{`
-            @keyframes fall {
-              to { transform: translateY(105vh); }
-            }
-            @keyframes sway {
-              from { transform: translateX(-5px); }
-              to { transform: translateX(5px); }
-            }
-            .confetti {
-              position: absolute;
-              border-radius: 2px;
-              opacity: 0.7;
-            }
-          `}</style>
-        </div>
-      )}
-      
-      <h2 className={`mb-4 text-center text-3xl font-bold ${result.color} flex items-center justify-center`}>
-        <span className="mr-2">{result.emoji}</span>
+      <h2 className={`mb-4 text-center text-3xl font-bold ${result.color}`}>
         {result.text}
-        <span className="ml-2">{result.emoji}</span>
       </h2>
       
       {isNewBestTime && (
-        <div className="mb-6 rounded-lg bg-peach-500/20 p-4 text-center border border-peach-500/30">
-          <div className="text-xl font-bold text-peach-400">🏆 New Best Time! 🏆</div>
-          <div className="mt-1 text-sm text-text-secondary">You&apos;ve set a new record for {gameState.pieceCount} pieces</div>
+        <div className="mb-6 rounded-lg bg-peach-500/20 p-3 text-center">
+          <div className="text-lg font-bold text-peach-400">🏆 New Best Time!</div>
         </div>
       )}
       
       {extendedGameState.perfectScore && (
-        <div className="mb-6 rounded-lg bg-green-500/20 p-4 text-center border border-green-500/30">
-          <div className="text-xl font-bold text-green-400">✨ Perfect Score! ✨</div>
-          <div className="mt-1 text-sm text-text-secondary">You placed all pieces correctly</div>
+        <div className="mb-6 rounded-lg bg-green-500/20 p-3 text-center">
+          <div className="text-lg font-bold text-green-400">✨ Perfect Score!</div>
         </div>
       )}
       
       <div className="mb-6 space-y-4">
-        {/* Skill Rating */}
-        <div className="flex flex-col border-b border-bg-light pb-3">
-          <div className="flex justify-between">
-            <span className="text-text-secondary font-medium">Skill Rating:</span>
-            <div className="flex items-center">
-              <span className="font-bold text-text-primary">{skillRating}</span>
-              {extendedGameState.skillRatingChange !== undefined && (
-                <span className={`ml-2 text-sm ${getSkillRatingChangeClass()}`}>
-                  {getSkillRatingChangeSymbol()} {Math.abs(extendedGameState.skillRatingChange)}
-                </span>
-              )}
-            </div>
-          </div>
-          
-          {/* Skill level */}
-          <div className="mt-1 text-xs text-right text-text-muted">
-            Level: {recommendedDifficulty.name}
-          </div>
-        </div>
-        
-        {/* Streak */}
-        <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary font-medium">Current Streak:</span>
-          <div className="flex items-center">
-            <span className="font-bold text-text-primary">{currentStreak}</span>
-            {longestStreak > 0 && (
-              <span className="ml-2 text-xs text-text-muted">
-                (Best: {longestStreak})
-              </span>
-            )}
-          </div>
-        </div>
-        
-        {/* Time */}
-        <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary font-medium">Time:</span>
-          <span className="font-bold text-text-primary">
-            {formatTime(gameState.completionTime || 0)}
-          </span>
-        </div>
-        
-        {bestTime > 0 && (
-          <div className="flex justify-between border-b border-bg-light pb-3">
-            <span className="text-text-secondary font-medium">Best Time:</span>
-            <span className="font-bold text-peach-400">
-              {formatTime(bestTime)}
-            </span>
-          </div>
-        )}
-        
-        {/* Time Bonus */}
-        {extendedGameState.timeBonusEarned !== undefined && extendedGameState.timeBonusEarned > 0 && (
-          <div className="flex justify-between border-b border-bg-light pb-3">
-            <span className="text-text-secondary font-medium">Time Bonus:</span>
-            <span className="font-bold text-green-400">+{extendedGameState.timeBonusEarned} pts</span>
-          </div>
-        )}
-        
         {/* Accuracy */}
         <div className="flex flex-col border-b border-bg-light pb-3">
           <div className="flex justify-between">
@@ -270,70 +148,74 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               style={{ width: `${gameState.accuracy || 0}%` }}
             ></div>
           </div>
-          
-          {averageAccuracy > 0 && (
-            <div className="mt-1 text-xs text-right text-text-muted">
-              Your average: {averageAccuracy}%
-            </div>
-          )}
         </div>
         
+        {/* Time */}
+        <div className="flex justify-between border-b border-bg-light pb-3">
+          <span className="text-text-secondary font-medium">Time:</span>
+          <span className="font-bold text-text-primary">
+            {formatTime(gameState.completionTime || 0)}
+          </span>
+        </div>
+        
+        {/* Skill Rating */}
+        <div className="flex justify-between border-b border-bg-light pb-3">
+          <span className="text-text-secondary font-medium">Skill Rating:</span>
+          <div className="flex items-center">
+            <span className="font-bold text-text-primary">{skillRating}</span>
+            {extendedGameState.skillRatingChange !== undefined && (
+              <span className={`ml-2 text-sm ${getSkillRatingChangeClass()}`}>
+                {getSkillRatingChangeSymbol()} {Math.abs(extendedGameState.skillRatingChange)}
+              </span>
+            )}
+          </div>
+        </div>
+        
+        {/* Streak */}
+        <div className="flex justify-between border-b border-bg-light pb-3">
+          <span className="text-text-secondary font-medium">Current Streak:</span>
+          <span className="font-bold text-text-primary">{currentStreak}</span>
+        </div>
+        
+        {/* Pieces */}
         <div className="flex justify-between border-b border-bg-light pb-3">
           <span className="text-text-secondary font-medium">Pieces:</span>
           <span className="font-bold text-text-primary">{gameState.pieceCount}</span>
         </div>
       </div>
       
-      {/* Recommended next challenge */}
+      {/* Simple recommendation and tip */}
       <div className="mb-6 rounded-lg bg-bg-dark/30 p-4">
-        <h3 className="mb-2 text-sm font-medium text-text-primary">Recommended Challenge</h3>
+        <h3 className="mb-2 text-sm font-medium text-text-primary">Next Challenge</h3>
         <div className="flex justify-between text-sm">
-          <span className="text-text-secondary">Difficulty:</span>
+          <span className="text-text-secondary">Suggested Difficulty:</span>
           <span className="font-medium text-peach-400">{recommendedDifficulty.name}</span>
         </div>
-        <div className="flex justify-between text-sm">
-          <span className="text-text-secondary">Pieces:</span>
-          <span className="font-medium text-text-primary">
-            {recommendedDifficulty.minPieces}-{recommendedDifficulty.maxPieces}
-          </span>
-        </div>
-        <div className="flex justify-between text-sm">
-          <span className="text-text-secondary">Time:</span>
-          <span className="font-medium text-text-primary">
-            {recommendedDifficulty.minTime}-{recommendedDifficulty.maxTime}s
-          </span>
-        </div>
+        
+        {tip && (
+          <div className="mt-3 text-sm text-text-secondary">
+            <span className="text-peach-400 font-medium">Tip:</span> {tip}
+          </div>
+        )}
       </div>
-      
-      {/* Improvement tips */}
-      {improvementTips.length > 0 && (
-        <div className="mb-6 rounded-lg bg-bg-dark/30 p-4">
-          <h3 className="mb-2 text-sm font-medium text-text-primary">Tips for Improvement</h3>
-          <ul className="list-inside list-disc space-y-1 text-xs text-text-secondary">
-            {improvementTips.map((tip, index) => (
-              <li key={index}>{tip}</li>
-            ))}
-          </ul>
-        </div>
-      )}
       
       <div className="flex flex-col space-y-3">
         <Button
           onClick={onTryAgain}
-          variant={gameState.accuracy === 100 ? "secondary" : "primary"}
+          variant="primary"
           size="lg"
           className="w-full"
         >
-          Try Again (Same Configuration)
+          Try Again
         </Button>
         
         <Button
           onClick={onNewGame}
-          variant={gameState.accuracy === 100 ? "primary" : "secondary"}
+          variant="secondary"
           size="lg"
-          className={`w-full ${gameState.accuracy === 100 ? "" : "border border-gray-600"}`}
+          className="w-full border border-gray-600"
         >
-          New Game (Different Configuration)
+          New Game
         </Button>
       </div>
     </div>

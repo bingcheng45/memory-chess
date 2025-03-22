@@ -21,11 +21,7 @@ export default function Home() {
               </Button>
             </Link>
             
-            <Link href="/dashboard">
-              <Button variant="outline" size="lg">
-                View Progress
-              </Button>
-            </Link>
+            {/* Dashboard link removed */}
           </div>
 
           <div className="mt-12 grid gap-8 sm:grid-cols-3">

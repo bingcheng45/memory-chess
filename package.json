@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "npm install @vercel/analytics@1.5.0 @vercel/speed-insights@1.2.0 --no-save"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",

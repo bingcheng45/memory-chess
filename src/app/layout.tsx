@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
+
+// Import Vercel packages dynamically to avoid build errors
+import dynamic from 'next/dynamic';
+const Analytics = dynamic(() => import('@vercel/analytics/react').then(mod => mod.Analytics));
+const SpeedInsights = dynamic(() => import('@vercel/speed-insights/next').then(mod => mod.SpeedInsights));
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

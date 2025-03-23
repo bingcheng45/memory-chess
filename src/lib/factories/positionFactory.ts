@@ -253,24 +253,29 @@ export class PositionFactory {
     let strategy: 'random' | 'tactical';
     
     switch (difficulty) {
-      case 'Easy':
+      case 'easy':
         pieceCount = Math.floor(Math.random() * 3) + 2; // 2-4 pieces
         strategy = 'random';
         break;
-      case 'Medium':
+      case 'medium':
         pieceCount = Math.floor(Math.random() * 5) + 6; // 6-10 pieces
         strategy = Math.random() > 0.5 ? 'random' : 'tactical';
         break;
-      case 'Hard':
+      case 'hard':
         pieceCount = Math.floor(Math.random() * 5) + 12; // 12-16 pieces
         strategy = Math.random() > 0.3 ? 'tactical' : 'random';
         break;
-      case 'Grandmaster':
+      case 'grandmaster':
         pieceCount = Math.floor(Math.random() * 13) + 20; // 20-32 pieces
         strategy = 'tactical';
         break;
+      case 'custom':
+        // For custom difficulty, use a moderate setup
+        pieceCount = Math.floor(Math.random() * 7) + 8; // 8-14 pieces
+        strategy = Math.random() > 0.5 ? 'random' : 'tactical';
+        break;
       default:
-        pieceCount = 8;
+        pieceCount = 6; // Default
         strategy = 'random';
     }
     

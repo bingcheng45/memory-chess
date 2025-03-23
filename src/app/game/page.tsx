@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useGameStore } from '@/lib/store/gameStore';
 import { GamePhase } from '@/lib/types/game';
@@ -19,7 +19,8 @@ import InteractiveChessBoard from '@/components/game/InteractiveChessBoard';
 import { ChessPiece, PieceType } from '@/types/chess';
 import { Button } from "@/components/ui/button";
 
-export default function GamePage() {
+// Component to handle URL parameters
+function GamePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const analytics = useAnalytics();
@@ -401,5 +402,15 @@ export default function GamePage() {
         </ErrorBoundary>
       </div>
     </main>
+  );
+}
+
+export default function GamePage() {
+  return (
+    <ErrorBoundary>
+      <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading game...</div>}>
+        <GamePageContent />
+      </Suspense>
+    </ErrorBoundary>
   );
 } 

@@ -2,15 +2,15 @@ import { useEffect, useCallback } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 
 export function useGameLogic() {
-  const { gameState, makeMove, updateScore } = useGameStore();
+  const { gameState, makeMove } = useGameStore();
 
   const handleMove = useCallback((move: string) => {
     if (makeMove(move)) {
-      updateScore(10); // Basic scoring
+      // Score update is handled within the store
       return true;
     }
     return false;
-  }, [makeMove, updateScore]);
+  }, [makeMove]);
 
   // Add game timer
   useEffect(() => {

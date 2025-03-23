@@ -16,6 +16,7 @@ interface GameActions {
   endMemorization: () => void;
   submitSolution: () => void;
   resetGame: () => void;
+  initializeGame: (pieces: ChessPiece[]) => void;
   
   // Piece manipulation actions
   placePiece: (piece: ChessPiece) => void;
@@ -76,6 +77,16 @@ export const useGameStore = create<GameState & GameActions>()(
       },
       
       // Game flow actions
+      initializeGame: (pieces) => {
+        set({
+          phase: GamePhase.MEMORIZATION,
+          originalPosition: pieces,
+          playerSolution: [],
+          startTime: Date.now(),
+          isLoading: false
+        });
+      },
+      
       startGame: () => {
         try {
           set({ isLoading: true, error: null });

@@ -2,7 +2,8 @@
 
 import { useEffect } from 'react';
 import { useGameStore } from '@/stores/gameStore';
-import { ChessPiece, PieceType, PieceColor } from '@/components/features/game/ChessBoard/ChessBoard.types';
+import { ChessPiece as UIChessPiece, PieceType, PieceColor } from '@/components/features/game/ChessBoard/ChessBoard.types';
+import { ChessPiece } from '@/types/chess';
 
 const PIECE_TYPES: PieceType[] = ['pawn', 'rook', 'knight', 'bishop', 'queen', 'king'];
 const PIECE_SYMBOLS: Record<PieceType, string> = {
@@ -14,8 +15,8 @@ const PIECE_SYMBOLS: Record<PieceType, string> = {
   king: '♚'
 };
 
-function generatePieces(count: number = 8): ChessPiece[] {
-  const pieces: ChessPiece[] = [];
+function generatePieces(count: number = 8): UIChessPiece[] {
+  const pieces: UIChessPiece[] = [];
   const positions = generateRandomPositions(count * 2);
   let id = 1;
 
@@ -60,13 +61,27 @@ function generateRandomPositions(count: number) {
   return positions;
 }
 
+// Convert UI pieces to game store pieces
+function convertPieces(uiPieces: UIChessPiece[]): ChessPiece[] {
+  return uiPieces.map(piece => ({
+    id: piece.id,
+    type: piece.type,
+    color: piece.color,
+    position: {
+      file: piece.position.col, // Convert col to file
+      rank: piece.position.row  // Convert row to rank
+    }
+  }));
+}
+
 export function GameClient() {
   const { initializeGame } = useGameStore();
 
   useEffect(() => {
     // Initialize the game with random pieces
-    const pieces = generatePieces(8);
-    initializeGame(pieces);
+    const uiPieces = generatePieces(8);
+    const gamePieces = convertPieces(uiPieces);
+    initializeGame(gamePieces);
   }, [initializeGame]);
 
   return null;

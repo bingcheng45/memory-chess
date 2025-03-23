@@ -9,6 +9,12 @@ export enum GamePhase {
 
 export type Difficulty = 'easy' | 'medium' | 'hard' | 'grandmaster' | 'custom';
 
+export interface PiecePosition {
+  square: string;
+  type: string;
+  color: 'w' | 'b';
+}
+
 export interface GameConfig {
   pieceCount: number;
   memorizeTime: number;
@@ -35,6 +41,22 @@ export interface GameResult {
   completionTime: number;
   skillRatingChange: number;
 }
+
+export type GameHistory = {
+  id: string;
+  timestamp: number; // Unix timestamp
+  pieceCount: number;
+  memorizeTime: number;
+  accuracy: number;
+  correctPlacements: number;
+  totalPlacements: number;
+  level: number;
+  duration: number; // in seconds
+  completionTime?: number; // Time to complete the solution phase
+  skillRatingChange?: number; // Change in skill rating from this game
+  streak?: number; // Current streak at the time of this game
+  perfectScore?: boolean; // Whether the user achieved 100% accuracy
+};
 
 export const DIFFICULTY_PRESETS: Record<Exclude<Difficulty, 'custom'>, GameConfig> = {
   easy: {

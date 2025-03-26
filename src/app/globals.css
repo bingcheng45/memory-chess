@@ -5,6 +5,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Chess board colors */
+  --board-light: #f0d9b5;
+  --board-dark: #b58863;
 }
 
 :root {
@@ -18,6 +22,10 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    
+    /* Chess board colors - same in dark mode for consistency */
+    --board-light: #f0d9b5;
+    --board-dark: #b58863;
   }
 }
 
@@ -25,4 +33,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+}
+
+/* Additional utility classes for responsive design */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }

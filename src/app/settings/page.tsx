@@ -75,7 +75,7 @@ export default function SettingsPage() {
               href="/"
               className="px-4 py-3 bg-gray-700 text-gray-300 rounded-md hover:bg-gray-600 text-center"
             >
-              Back to Home
+              Home
             </Link>
             <Link 
               href="/game"

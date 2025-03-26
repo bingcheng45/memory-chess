@@ -29,10 +29,28 @@
   }
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+  position: relative;
+}
+
+/* Game container styles for responsive layout */
+.game-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Additional utility classes for responsive design */
@@ -43,4 +61,40 @@ body {
 
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
+}
+
+/* Ensure content fits within viewport on mobile */
+@media (max-width: 640px) {
+  .mobile-constrained {
+    max-width: 95vw;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure better touch targets for mobile */
+  button, 
+  [role="button"] {
+    min-height: 36px;
+    min-width: 36px;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  /* Smaller text on mobile */
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  /* More compact buttons */
+  button, a[role="button"] {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
 }

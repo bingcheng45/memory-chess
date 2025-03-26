@@ -51,7 +51,8 @@ export default function ResponsiveChessBoard({
   const boardStyle = useMemo(() => ({
     width: `${size}px`,
     height: `${size}px`,
-    maxWidth: '95vw', // Fallback to ensure it doesn't overflow
+    maxWidth: '100%', // Use 100% instead of 95vw
+    boxSizing: 'border-box' as const, // Add box-sizing to include padding in width calculation
   }), [size]);
   
   // Calculate square styles
@@ -109,7 +110,7 @@ export default function ResponsiveChessBoard({
 
   return (
     <div 
-      className="relative rounded-lg overflow-hidden shadow-lg mx-auto"
+      className="relative rounded-lg overflow-hidden shadow-lg mx-auto game-container"
       style={boardStyle}
     >
       {/* Loading overlay */}

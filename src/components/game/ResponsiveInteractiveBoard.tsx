@@ -84,7 +84,7 @@ export default function ResponsiveInteractiveBoard({
   const controlsHeight = 150; // Approximate height of the piece selector controls
   
   return (
-    <div className="flex flex-col items-center w-full max-w-screen-sm mx-auto px-2">
+    <div className="flex flex-col items-center w-full max-w-screen-sm mx-auto px-2 mobile-constrained">
       <ResponsiveChessBoard
         pieces={playerSolution}
         selectedSquare={selectedPosition}

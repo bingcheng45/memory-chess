@@ -16,8 +16,10 @@ import SoundSettings from '@/components/ui/SoundSettings';
 import { Chess } from 'chess.js';
 import { v4 as uuidv4 } from 'uuid';
 import InteractiveChessBoard from '@/components/game/InteractiveChessBoard';
-import { ChessPiece, PieceType } from '@/types/chess';
+import { ChessPiece, PieceType, Position } from '@/types/chess';
 import { Button } from "@/components/ui/button";
+import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
+import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
 
 // Component to handle URL parameters
 function GamePageContent() {
@@ -279,8 +281,10 @@ function GamePageContent() {
     console.log('Chess instance updated:', chess);
   }, [chess]);
   
-  // Render the appropriate component based on game phase
+  // Render the appropriate content based on game phase
   const renderGameContent = () => {
+    console.log('Rendering game content for phase:', gamePhase);
+    
     switch (gamePhase) {
       case GamePhase.CONFIGURATION:
         return (
@@ -300,64 +304,58 @@ function GamePageContent() {
         
       case GamePhase.MEMORIZATION:
         return (
-          <ErrorBoundary>
-            <MemorizationBoard />
-          </ErrorBoundary>
+          <div className="w-full">
+            <ErrorBoundary>
+              <ResponsiveMemorizationBoard />
+            </ErrorBoundary>
+          </div>
         );
         
       case GamePhase.SOLUTION:
-        // Use the solutionPieces state instead of an empty array
-        console.log('Starting solution phase with empty board');
         return (
-          <div className="flex flex-col items-center">
-            <div className="mb-6 flex items-center justify-between w-full max-w-[600px]">
-              <div className="flex items-center">
-                <span className="text-lg font-medium mr-2">Time:</span>
-                <span className="text-xl font-bold">{formatTime(elapsedTime)}</span>
-              </div>
-              <Button
-                onClick={handleSubmitSolution}
-                variant="primary"
-                size="default"
-                type="button"
-              >
-                Submit Solution
-              </Button>
-            </div>
+          <div className="w-full">
             <ErrorBoundary>
-              <InteractiveChessBoard 
-                playerSolution={solutionPieces}
-                onPlacePiece={(piece) => {
-                  // Update the solutionPieces state
-                  setSolutionPieces(prevPieces => {
-                    // Remove any existing piece at the same position
-                    const filteredPieces = prevPieces.filter(
-                      p => !(p.position.file === piece.position.file && p.position.rank === piece.position.rank)
-                    );
-                    // Add the new piece
-                    return [...filteredPieces, piece];
-                  });
-                  
-                  // Convert ChessPiece to chess.js format
-                  const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
-                  const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
-                  console.log('Placing piece:', piece, 'at square:', square, 'with code:', pieceCode);
-                  placePiece(square, pieceCode);
-                }}
-                onRemovePiece={(position) => {
-                  // Update the solutionPieces state
-                  setSolutionPieces(prevPieces => 
-                    prevPieces.filter(
-                      p => !(p.position.file === position.file && p.position.rank === position.rank)
-                    )
-                  );
-                  
-                  // Convert Position to chess.js square format
-                  const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
-                  console.log('Removing piece at position:', position, 'square:', square);
-                  removePiece(square);
-                }}
-              />
+              <div className="mb-6">
+                <h2 className="text-xl font-bold mb-2">Recreate the Position</h2>
+                <div className="flex items-center space-x-4">
+                  <span className="text-lg">Time: <span className="text-xl font-bold">{formatTime(elapsedTime)}</span></span>
+                  <span className="text-lg">Pieces: <span className="text-xl font-bold">{gameState.pieceCount}</span></span>
+                </div>
+              </div>
+              
+              <div className="mt-6">
+                <ResponsiveInteractiveBoard
+                  playerSolution={solutionPieces}
+                  onPlacePiece={(piece) => {
+                    console.log('Placing piece:', piece);
+                    setSolutionPieces(prev => [...prev, piece]);
+                    // Convert ChessPiece to chess.js format for the game store
+                    const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
+                    const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
+                    placePiece(square, pieceCode);
+                  }}
+                  onRemovePiece={(position) => {
+                    console.log('Removing piece at:', position);
+                    setSolutionPieces(prev => prev.filter(p => 
+                      p.position.file !== position.file || p.position.rank !== position.rank
+                    ));
+                    // Convert Position to chess.js square format
+                    const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
+                    removePiece(square);
+                  }}
+                />
+              </div>
+              
+              <div className="mt-8 flex justify-center">
+                <Button 
+                  onClick={handleSubmitSolution}
+                  variant="primary"
+                  size="lg"
+                  className="px-8 py-3"
+                >
+                  Submit Solution
+                </Button>
+              </div>
             </ErrorBoundary>
           </div>
         );
@@ -380,14 +378,14 @@ function GamePageContent() {
   
   return (
     <main className="min-h-screen bg-bg-dark text-text-primary">
-      <div className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
+      <div className="container mobile-constrained mx-auto flex min-h-screen flex-col items-center justify-center p-4">
         <div className="mb-8 flex w-full max-w-4xl items-center justify-between">
           <Link 
             href="/"
             className="rounded-lg border border-peach-500/20 px-4 py-2 text-sm font-medium text-text-secondary transition-all hover:bg-peach-500/10"
             onClick={handleBack}
           >
-            ← Back to Home
+            ← Home
           </Link>
           
           <h1 className="text-center text-3xl font-bold text-text-primary">

@@ -42,10 +42,13 @@ export function useResponsiveBoard(
       // Subtract fixed heights (status bar, navigation, etc.)
       const availableHeight = viewportHeight - statusBarHeight - controlsHeight;
       
+      // More aggressive scaling for mobile (especially iPhone)
+      const isSmallScreen = viewportWidth < 768;
+      
       // Calculate maximum possible square size based on available space
-      // Account for padding, borders, and other UI elements
-      const maxBoardWidth = viewportWidth * 0.95; // 95% of viewport width
-      const maxBoardHeight = availableHeight * 0.7; // 70% of available height
+      // Use more aggressive scaling on mobile
+      const maxBoardWidth = isSmallScreen ? viewportWidth * 0.92 : viewportWidth * 0.95; 
+      const maxBoardHeight = isSmallScreen ? availableHeight * 0.65 : availableHeight * 0.7;
       
       // Use the smaller dimension to ensure the board fits
       let optimalSize = Math.min(maxBoardWidth, maxBoardHeight, maxSize);

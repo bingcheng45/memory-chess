@@ -29,9 +29,10 @@ export default function PageHeader({
   const getPositionClass = (): string => {
     switch(pageType) {
       case 'game-config':
+        return "right-6 sm:right-14 md:right-30 lg:right-48";
       case 'game-result':
         // Configuration and result phases - keep current positioning
-        return "right-8 sm:right-16 md:right-32 lg:right-52";
+        return "right-6 sm:right-16 md:right-32 lg:right-52";
       case 'game-memorize-solution':
         // Memorization and solution phases - shift slightly to the right
         return "right-6 sm:right-16 md:right-32 lg:right-50";

@@ -1,15 +1,18 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
+import PageHeader from '@/components/ui/PageHeader';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-bg-dark text-text-primary">
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-8">
+        <div className="flex justify-center mb-8">
+          <PageHeader showSoundSettings={false} />
+        </div>
+        
         <div className="flex flex-col items-center justify-center space-y-8 text-center">
-          <h1 className="text-4xl font-bold sm:text-6xl">
-            Memory <span className="text-peach-500">Chess</span>
-          </h1>
-          
           <p className="max-w-2xl text-lg text-text-secondary">
             Train your chess memory and visualization skills through interactive exercises
           </p>

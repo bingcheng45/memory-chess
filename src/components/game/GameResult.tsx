@@ -21,8 +21,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     gameState, 
     getBestTime, 
     getSkillRating,
-    getCurrentStreak,
-    getRecommendedDifficulty
+    getCurrentStreak
   } = useGameStore();
   
   // Cast gameState to extended type
@@ -39,7 +38,6 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const bestTime = getBestTime();
   const skillRating = getSkillRating();
   const currentStreak = getCurrentStreak();
-  const recommendedDifficulty = getRecommendedDifficulty();
   
   const isNewBestTime = gameState.completionTime !== undefined && 
                         bestTime > 0 && 
@@ -62,23 +60,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     }
   };
   
-  // Simplified improvement tips
-  const getTip = () => {
-    if (gameState.accuracy === undefined) return '';
-    
-    if (gameState.accuracy < 50) {
-      return 'Try starting with fewer pieces to build your memory skills.';
-    } else if (gameState.accuracy < 70) {
-      return 'Focus on remembering pieces by their relative positions.';
-    } else if (gameState.accuracy < 90) {
-      return 'Try to visualize the board in sections for better recall.';
-    } else {
-      return 'Challenge yourself with more pieces or less time.';
-    }
-  };
-  
   const result = getResultMessage();
-  const tip = getTip();
   
   // Calculate accuracy color
   const getAccuracyColor = (accuracy: number) => {
@@ -182,21 +164,6 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           <span className="text-text-secondary font-medium">Pieces:</span>
           <span className="font-bold text-text-primary">{gameState.pieceCount}</span>
         </div>
-      </div>
-      
-      {/* Simple recommendation and tip */}
-      <div className="mb-6 rounded-lg bg-bg-dark/30 p-4">
-        <h3 className="mb-2 text-sm font-medium text-text-primary">Next Challenge</h3>
-        <div className="flex justify-between text-sm">
-          <span className="text-text-secondary">Suggested Difficulty:</span>
-          <span className="font-medium text-peach-400">{recommendedDifficulty.name}</span>
-        </div>
-        
-        {tip && (
-          <div className="mt-3 text-sm text-text-secondary">
-            <span className="text-peach-400 font-medium">Tip:</span> {tip}
-          </div>
-        )}
       </div>
       
       <div className="flex flex-col space-y-3">

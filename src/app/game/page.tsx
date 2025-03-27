@@ -8,11 +8,9 @@ import GameConfig from '@/components/game/GameConfig';
 import GameResult from '@/components/game/GameResult';
 import GameStats from '@/components/game/GameStats';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
-import Link from 'next/link';
 import { useAnalytics, AnalyticsEventType } from '@/lib/utils/analyticsTracker';
 import { playSound } from '@/lib/utils/soundEffects';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
-import SoundSettings from '@/components/ui/SoundSettings';
 import { Chess } from 'chess.js';
 import { v4 as uuidv4 } from 'uuid';
 import { ChessPiece, PieceType } from '@/types/chess';
@@ -20,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
 import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
 import { formatTimeExact } from '@/utils/timer';
+import PageHeader from '@/components/ui/PageHeader';
 
 // Component to handle URL parameters
 function GamePageContent() {
@@ -400,27 +399,26 @@ function GamePageContent() {
     }
   };
   
+  // Determine header page type based on current game phase
+  const getHeaderPageType = () => {
+    switch(gamePhase) {
+      case GamePhase.CONFIGURATION:
+        return 'game-config'; // Configuration phase - keep current button position
+      case GamePhase.MEMORIZATION:
+      case GamePhase.SOLUTION:
+        return 'game-memorize-solution'; // Active gameplay - shift button to the right
+      case GamePhase.RESULT:
+        return 'game-result'; // Result phase - keep same as configuration
+      default:
+        return 'game-config';
+    }
+  };
+  
   return (
     <main className="min-h-screen bg-bg-dark text-text-primary">
       <div className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
-        {/* Header with title and centered sound controls */}
-        <div className="relative w-full max-w-4xl mb-8 px-1">
-          {/* Title centered in the available space */}
-          <div className="flex items-center justify-center">
-            <Link 
-              href="/"
-              onClick={handleBack}
-              className="text-center text-xl sm:text-3xl font-bold text-text-primary whitespace-nowrap cursor-pointer transition-all hover:opacity-80"
-            >
-              Memory <span className="text-peach-500">Chess</span>
-            </Link>
-          </div>
-          
-          {/* Sound settings positioned further from the right edge */}
-          <div className="absolute top-1/2 -translate-y-1/2 right-6 sm:right-16 md:right-24 lg:right-36">
-            <SoundSettings className="w-[46px] sm:w-[50px]" />
-          </div>
-        </div>
+        {/* Pass different pageType based on current game phase */}
+        <PageHeader onBackClick={handleBack} pageType={getHeaderPageType()} />
         
         <ErrorBoundary>
           {renderGameContent()}

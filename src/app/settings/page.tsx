@@ -3,8 +3,11 @@
 import React from 'react';
 import { useSettingsStore } from '@/stores/settingsStore';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import PageHeader from '@/components/ui/PageHeader';
 
 export default function SettingsPage() {
+  const router = useRouter();
   const {
     difficulty,
     memorizationTime,
@@ -14,10 +17,16 @@ export default function SettingsPage() {
     setShowCoordinates
   } = useSettingsStore();
 
+  const handleBack = () => {
+    router.push('/');
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8 text-center">Settings</h1>
+        <div className="flex justify-center mb-8">
+          <PageHeader onBackClick={handleBack} pageType="other" />
+        </div>
         
         <div className="max-w-md mx-auto bg-gray-800 rounded-lg p-6 shadow-lg min-h-[400px] w-full">
           <div className="mb-8">

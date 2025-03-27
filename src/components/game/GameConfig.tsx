@@ -132,7 +132,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           }}
           className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light"
           style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${(pieceCount - 2) * 100 / 30}%, #222222 ${(pieceCount - 2) * 100 / 30}%, #222222 100%)`
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((pieceCount - 2) / (32 - 2)) * 100}%, #222222 ${((pieceCount - 2) / (32 - 2)) * 100}%, #222222 100%)`
           }}
         />
         <div className="mt-2 flex justify-between text-xs text-text-muted">
@@ -163,7 +163,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           }}
           className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light"
           style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${(memorizeTime - 5) * 100 / 25}%, #222222 ${(memorizeTime - 5) * 100 / 25}%, #222222 100%)`
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((memorizeTime - 5) / (30 - 5)) * 100}%, #222222 ${((memorizeTime - 5) / (30 - 5)) * 100}%, #222222 100%)`
           }}
         />
         <div className="mt-2 flex justify-between text-xs text-text-muted">

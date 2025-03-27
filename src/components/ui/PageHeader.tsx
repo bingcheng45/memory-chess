@@ -31,10 +31,10 @@ export default function PageHeader({
       case 'game-config':
       case 'game-result':
         // Configuration and result phases - keep current positioning
-        return "right-8 sm:right-16 md:right-32 lg:right-48";
+        return "right-8 sm:right-16 md:right-32 lg:right-52";
       case 'game-memorize-solution':
-        // Memorization and solution phases - slight shift to the right (closer to edge)
-        return "right-6 sm:right-12 md:right-24 lg:right-40";
+        // Memorization and solution phases - shift slightly to the right
+        return "right-6 sm:right-16 md:right-32 lg:right-50";
       case 'other':
       default:
         // Other pages (settings, etc.) - at the absolute right edge

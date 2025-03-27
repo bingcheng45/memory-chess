@@ -207,18 +207,33 @@ function GamePageContent() {
     playSound('click');
     submitSolution();
     
-    // Play success or failure sound based on accuracy after a short delay
-    // This delay gives time for the submitSolution function to update gameState
+    // Play success or failure sound based on game phase and result
+    // Use a longer delay to ensure state updates have propagated
     setTimeout(() => {
-      console.log('Solution submitted, accuracy:', gameState.accuracy);
-      // At this point gameState.accuracy should be defined
-      const accuracy = gameState.accuracy ?? 0;
-      if (accuracy >= 70) {
-        playSound('success');
+      console.log('Solution submitted, checking game phase:', gamePhase);
+      console.log('Game state after submission:', {
+        phase: gamePhase,
+        success: gameState.success,
+        accuracy: gameState.accuracy
+      });
+      
+      // If we've transitioned to the RESULT phase, the submission was successful
+      if (gamePhase === GamePhase.RESULT) {
+        // Use gameState.success which is set along with accuracy
+        console.log('Game is in RESULT phase, success value:', gameState.success);
+        if (gameState.success) {
+          console.log('Playing success sound');
+          playSound('success');
+        } else {
+          console.log('Playing failure sound');
+          playSound('failure');
+        }
       } else {
+        console.warn('Game phase not updated to RESULT after submission');
+        // Default to failure sound if something went wrong
         playSound('failure');
       }
-    }, 500);
+    }, 1000); // Increased from 500ms to 1000ms
   };
   
   // Handle trying again with the same configuration

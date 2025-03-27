@@ -16,7 +16,10 @@ export default function Home() {
 
           <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
             <Link href="/game">
-              <Button variant="primary" size="lg">
+              <Button 
+                variant="outline"
+                className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-5 py-2"
+              >
                 Start Training
               </Button>
             </Link>

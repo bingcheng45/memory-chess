@@ -154,9 +154,8 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       <div className="flex flex-col space-y-3">
         <Button
           onClick={onTryAgain}
-          variant="primary"
-          size="lg"
-          className="w-full"
+          variant="outline"
+          className="w-full bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5"
         >
           Try Again
         </Button>

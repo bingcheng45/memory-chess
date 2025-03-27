@@ -72,8 +72,8 @@ export default function InteractiveChessBoard({
   };
   
   // Handle piece color selection
-  const handleColorToggle = () => {
-    setSelectedPieceColor(prev => prev === 'white' ? 'black' : 'white');
+  const handleColorToggle = (color: PieceColor) => {
+    setSelectedPieceColor(color);
   };
 
   // Piece type buttons
@@ -162,19 +162,45 @@ export default function InteractiveChessBoard({
           </div>
           <div className="flex items-center gap-2">
             <span className="text-sm text-text-secondary">Color:</span>
-            <Button
-              onClick={handleColorToggle}
-              variant="default"
-              className={`flex items-center gap-2 w-24 justify-center ${
-                selectedPieceColor === 'white' 
-                  ? 'bg-black text-white border border-gray-600' 
-                  : 'bg-white text-black border border-gray-300'
-              }`}
-              aria-label={`Toggle piece color, currently ${selectedPieceColor}`}
-            >
-              <div className={`w-4 h-4 rounded-full ${selectedPieceColor === 'white' ? 'bg-white' : 'bg-black'}`}></div>
-              <span>{selectedPieceColor === 'white' ? 'White' : 'Black'}</span>
-            </Button>
+            <div className="flex items-center gap-1">
+              {/* White color button */}
+              <Button
+                onClick={() => handleColorToggle('white')}
+                variant="default"
+                className={`flex items-center gap-2 px-3 py-1 bg-white text-black border ${
+                  selectedPieceColor === 'white' 
+                    ? 'border-gray-700 shadow-md' 
+                    : 'border-gray-300 opacity-70'
+                }`}
+                aria-label="Select white pieces"
+              >
+                <div className={`w-4 h-4 rounded-full ${
+                  selectedPieceColor === 'white' 
+                    ? 'bg-peach-500' 
+                    : 'bg-white border border-gray-300'
+                }`}></div>
+                <span>White</span>
+              </Button>
+              
+              {/* Black color button */}
+              <Button
+                onClick={() => handleColorToggle('black')}
+                variant="default"
+                className={`flex items-center gap-2 px-3 py-1 bg-black text-white border ${
+                  selectedPieceColor === 'black' 
+                    ? 'border-gray-300 shadow-md' 
+                    : 'border-gray-600 opacity-70'
+                }`}
+                aria-label="Select black pieces"
+              >
+                <div className={`w-4 h-4 rounded-full ${
+                  selectedPieceColor === 'black' 
+                    ? 'bg-peach-500' 
+                    : 'bg-black border border-gray-600'
+                }`}></div>
+                <span>Black</span>
+              </Button>
+            </div>
           </div>
         </div>
         

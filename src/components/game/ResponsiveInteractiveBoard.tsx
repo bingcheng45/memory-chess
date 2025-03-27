@@ -73,8 +73,8 @@ export default function ResponsiveInteractiveBoard({
   };
   
   // Handle piece color selection
-  const handleColorToggle = () => {
-    setSelectedPieceColor(prev => prev === 'white' ? 'black' : 'white');
+  const handleColorToggle = (color: PieceColor) => {
+    setSelectedPieceColor(color);
   };
 
   // Piece type buttons
@@ -102,20 +102,47 @@ export default function ResponsiveInteractiveBoard({
             <h3 className="text-sm font-medium">Place Pieces:</h3>
             <span className="text-xs text-text-secondary hidden sm:inline">Select type & color</span>
           </div>
-          <Button
-            onClick={handleColorToggle}
-            variant="default"
-            size="sm"
-            className={`h-8 flex items-center gap-1 px-2 ${
-              selectedPieceColor === 'white' 
-                ? 'bg-black text-white border border-gray-600' 
-                : 'bg-white text-black border border-gray-300'
-            }`}
-            aria-label={`Toggle piece color, currently ${selectedPieceColor}`}
-          >
-            <div className={`w-3 h-3 rounded-full ${selectedPieceColor === 'white' ? 'bg-white' : 'bg-black'}`}></div>
-            <span className="text-xs">{selectedPieceColor === 'white' ? 'White' : 'Black'}</span>
-          </Button>
+          <div className="flex items-center gap-1">
+            {/* White color button */}
+            <Button
+              onClick={() => handleColorToggle('white')}
+              variant="default"
+              size="sm"
+              className={`h-8 flex items-center gap-1 px-2 bg-white text-black border ${
+                selectedPieceColor === 'white' 
+                  ? 'border-gray-700 shadow-md' 
+                  : 'border-gray-300 opacity-70'
+              }`}
+              aria-label="Select white pieces"
+            >
+              <div className={`w-3 h-3 rounded-full ${
+                selectedPieceColor === 'white' 
+                  ? 'bg-peach-500' 
+                  : 'bg-white border border-gray-300'
+              }`}></div>
+              <span className="text-xs">White</span>
+            </Button>
+            
+            {/* Black color button */}
+            <Button
+              onClick={() => handleColorToggle('black')}
+              variant="default"
+              size="sm"
+              className={`h-8 flex items-center gap-1 px-2 bg-black text-white border ${
+                selectedPieceColor === 'black' 
+                  ? 'border-gray-300 shadow-md' 
+                  : 'border-gray-600 opacity-70'
+              }`}
+              aria-label="Select black pieces"
+            >
+              <div className={`w-3 h-3 rounded-full ${
+                selectedPieceColor === 'black' 
+                  ? 'bg-peach-500' 
+                  : 'bg-black border border-gray-600'
+              }`}></div>
+              <span className="text-xs">Black</span>
+            </Button>
+          </div>
         </div>
         
         <div className="grid grid-cols-6 gap-1 mt-1">

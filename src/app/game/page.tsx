@@ -315,7 +315,7 @@ function GamePageContent() {
             <ErrorBoundary>
               <div className="mb-4 relative w-full max-w-screen-sm mx-auto px-2">
                 <div className="flex items-center justify-between">
-                  <div className="inline-flex items-center justify-center bg-bg-card/50 backdrop-blur-sm px-4 py-2 rounded-lg">
+                  <div className="inline-flex items-center">
                     <span className="text-lg">Time: <span className="text-xl font-mono font-bold">{formatTime(elapsedTime)}</span></span>
                   </div>
                   

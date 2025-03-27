@@ -329,8 +329,8 @@ function GamePageContent() {
               <div className="w-full max-w-screen-sm mx-auto">
                 {/* Timer and submit button row, with precise padding to match chess board edges */}
                 <div className="flex items-center justify-between mb-4 w-full">
-                  {/* Timer aligned with left edge of chess board */}
-                  <div className="text-lg font-medium">
+                  {/* Timer moved slightly to the right from the left edge of chess board */}
+                  <div className="text-lg font-medium pl-4">
                     TIME: <span className="text-xl font-mono font-bold">
                       {(() => {
                         if (typeof elapsedTime !== 'number' || isNaN(elapsedTime)) {

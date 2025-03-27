@@ -55,27 +55,22 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   
   const [pieceCount, setPieceCount] = useState(8);
   const [memorizeTime, setMemorizeTime] = useState(10);
-  const [selectedPreset, setSelectedPreset] = useState<string | null>(null);
+  const [selectedPreset, setSelectedPreset] = useState<string>('Easy');
   const [showTutorial, setShowTutorial] = useState(false);
+  
+  // Initialize with Easy preset values
+  useEffect(() => {
+    // Set Easy preset as default
+    const easyPreset = DIFFICULTY_PRESETS[0];
+    setPieceCount(easyPreset.pieceCount);
+    setMemorizeTime(easyPreset.memorizeTime);
+  }, []);
   
   // Get player stats
   const skillRating = getSkillRating();
   const currentStreak = getCurrentStreak();
   const totalGames = getTotalGames();
   const recommendedDifficulty = getRecommendedDifficulty();
-  
-  // Get recommended preset based on skill rating
-  const getRecommendedPreset = (): DifficultyPreset | null => {
-    if (skillRating < 1000) {
-      return DIFFICULTY_PRESETS[0]; // Easy
-    } else if (skillRating < 1500) {
-      return DIFFICULTY_PRESETS[1]; // Medium
-    } else if (skillRating < 2000) {
-      return DIFFICULTY_PRESETS[2]; // Hard
-    } else {
-      return DIFFICULTY_PRESETS[3]; // Grandmaster
-    }
-  };
   
   const handlePresetSelect = (preset: DifficultyPreset) => {
     setPieceCount(preset.pieceCount);
@@ -87,22 +82,12 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   useEffect(() => {
     if (totalGames === 0) {
       setShowTutorial(true);
-      // Set Easy preset for first-time players
-      handlePresetSelect(DIFFICULTY_PRESETS[0]);
-    } else {
-      // For new players, auto-select the recommended preset
-      if (totalGames < 5) {
-        const recommendedPreset = getRecommendedPreset();
-        if (recommendedPreset) {
-          handlePresetSelect(recommendedPreset);
-        }
-      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalGames]);
   
   const handleCustomChange = () => {
-    setSelectedPreset(null);
+    setSelectedPreset('');
   };
   
   const handleStart = () => {
@@ -128,7 +113,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     
     setPieceCount(randomPieceCount);
     setMemorizeTime(randomMemorizeTime);
-    setSelectedPreset(null);
+    setSelectedPreset('');
   };
   
   return (
@@ -211,8 +196,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           ))}
         </div>
         <div className="mt-2 text-xs text-text-muted">
-          {selectedPreset && DIFFICULTY_PRESETS.find(p => p.name === selectedPreset)?.description}
-          {!selectedPreset && "Custom settings"}
+          {selectedPreset && selectedPreset !== '' && DIFFICULTY_PRESETS.find(p => p.name === selectedPreset)?.description}
+          {(!selectedPreset || selectedPreset === '') && "Custom settings"}
         </div>
       </div>
       

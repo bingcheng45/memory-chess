@@ -150,7 +150,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               const { minutes, seconds, milliseconds } = formatTimeParts(gameState.completionTime || 0);
               return (
                 <>
-                  {minutes}:{seconds}<span className="text-xs relative -top-0.5">.{milliseconds}</span>
+                  {minutes}:{seconds}<span className="text-xs">{milliseconds}</span>
                 </>
               );
             })()}

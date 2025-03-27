@@ -284,7 +284,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
               const milliseconds = Math.round((gameState.completionTime - seconds) * 1000).toString().padStart(3, '0');
               return (
                 <>
-                  {seconds}<span className="text-xs relative -top-0.5">.{milliseconds}</span>s solution time with {gameState.accuracy}% accuracy
+                  {seconds}<span className="text-xs">{milliseconds}</span>s solution time with {gameState.accuracy}% accuracy
                 </>
               );
             })()}

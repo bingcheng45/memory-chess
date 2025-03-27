@@ -5,12 +5,22 @@ import { useGameStore } from '@/lib/store/gameStore';
 import { ChessPiece } from '@/types/chess';
 import ResponsiveChessBoard from './ResponsiveChessBoard';
 import { mapChessJsPieceToType } from '@/utils/chessPieces';
+import { Button } from '@/components/ui/button';
+import { playSound } from '@/lib/utils/soundEffects';
 
 export default function ResponsiveMemorizationBoard() {
-  const { chess, gameState } = useGameStore();
+  const { chess, gameState, endMemorizationPhase, startSolutionPhase } = useGameStore();
   const [pieces, setPieces] = useState<ChessPiece[]>([]);
   const [timeRemaining, setTimeRemaining] = useState(gameState.memorizeTime * 1000); // Store time in milliseconds
   const [isLoading, setIsLoading] = useState(true);
+  
+  // Handle skipping memorization phase
+  const handleSkip = () => {
+    console.log('Skipping memorization phase');
+    playSound('timerEnd');
+    endMemorizationPhase();
+    startSolutionPhase();
+  };
   
   // Convert chess.js position to ChessPiece array
   useEffect(() => {
@@ -113,23 +123,48 @@ export default function ResponsiveMemorizationBoard() {
   
   return (
     <div className="flex flex-col items-center w-full max-w-screen-sm mx-auto">
-      <div className="mb-3 text-center w-full">
-        <div className="text-md font-bold text-text-primary">Memorize the Position</div>
-        <div className={`mt-1 text-5xl font-bold ${getUrgencyClass()} transition-colors`}>
-          {seconds}
-          <span className="text-2xl opacity-50">.{milliseconds.toString().padStart(2, '0')}</span>
+      <div className="mb-1 text-center w-full">
+        <div className="text-md font-bold text-text-primary mb-1">Memorize the Position</div>
+        
+        {/* Timer in center */}
+        <div className="w-full max-w-[250px] mx-auto">
+          {/* Centered timer */}
+          <div className="text-center">
+            <div className={`text-5xl font-bold ${getUrgencyClass()} transition-colors`}>
+              {seconds}
+              <span className="text-2xl opacity-50">.{milliseconds.toString().padStart(2, '0')}</span>
+            </div>
+          </div>
+          
+          {/* Progress bar and skip button on same line */}
+          <div className="relative w-full mt-1">
+            {/* Skip button positioned at right edge of chess board, not exceeding it */}
+            <div className="absolute right-[-170px] top-1/2 -translate-y-1/2">
+              <Button 
+                onClick={handleSkip}
+                variant="outline"
+                size="sm"
+                className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
+              >
+                Skip
+              </Button>
+            </div>
+            
+            {/* Progress bar */}
+            <div className="mx-auto h-1.5 w-full overflow-hidden rounded-full bg-bg-light">
+              <div 
+                className="h-full bg-peach-500 transition-all"
+                style={{ width: `${timerProgress}%` }}
+              ></div>
+            </div>
+          </div>
         </div>
         
-        {/* Progress bar */}
-        <div className="mx-auto mt-1 h-1.5 w-full max-w-[250px] overflow-hidden rounded-full bg-bg-light">
-          <div 
-            className="h-full bg-peach-500 transition-all"
-            style={{ width: `${timerProgress}%` }}
-          ></div>
-        </div>
-        
-        <div className="mt-2 text-xs text-text-secondary">
-          Remember the position of all {gameState.pieceCount} pieces
+        {/* Instruction text row */}
+        <div className="mt-1 mb-1 w-full max-w-[280px] mx-auto">
+          <div className="text-xs text-text-secondary text-center">
+            Remember the position of all {gameState.pieceCount} pieces
+          </div>
         </div>
       </div>
       

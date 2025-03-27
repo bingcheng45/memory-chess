@@ -295,12 +295,12 @@ function GamePageContent() {
     switch (gamePhase) {
       case GamePhase.CONFIGURATION:
         return (
-          <div className="flex flex-col items-center w-full max-w-screen-md mx-auto">
+          <div className="w-full max-w-4xl mx-auto">
             <ErrorBoundary>
               <GameConfig onStart={handleStartGame} />
             </ErrorBoundary>
             {gameState.completionTime !== undefined && (
-              <div className="mt-8 w-full">
+              <div className="mt-8 w-full max-w-md md:max-w-lg mx-auto">
                 <ErrorBoundary>
                   <GameStats />
                 </ErrorBoundary>
@@ -311,7 +311,7 @@ function GamePageContent() {
         
       case GamePhase.MEMORIZATION:
         return (
-          <div className="w-full flex justify-center">
+          <div className="w-full max-w-4xl mx-auto">
             <ErrorBoundary>
               <ResponsiveMemorizationBoard />
             </ErrorBoundary>
@@ -320,7 +320,7 @@ function GamePageContent() {
         
       case GamePhase.SOLUTION:
         return (
-          <div className="w-full flex flex-col items-center">
+          <div className="w-full max-w-4xl mx-auto">
             <ErrorBoundary>
               <div className="mb-4 relative w-full max-w-screen-sm mx-auto px-2 sm:px-4">
                 <div className="flex items-center justify-between">
@@ -376,7 +376,7 @@ function GamePageContent() {
         
       case GamePhase.RESULT:
         return (
-          <div className="w-full max-w-screen-md mx-auto flex justify-center">
+          <div className="w-full max-w-4xl mx-auto">
             <ErrorBoundary>
               <GameResult onTryAgain={handleTryAgain} onNewGame={handleNewGame} />
             </ErrorBoundary>
@@ -385,7 +385,7 @@ function GamePageContent() {
         
       default:
         return (
-          <div className="w-full max-w-screen-md mx-auto flex justify-center">
+          <div className="w-full max-w-4xl mx-auto">
             <ErrorBoundary>
               <GameConfig onStart={handleStartGame} />
             </ErrorBoundary>
@@ -397,20 +397,22 @@ function GamePageContent() {
   return (
     <main className="min-h-screen bg-bg-dark text-text-primary">
       <div className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
-        <div className="mb-8 flex w-full max-w-4xl items-center justify-between">
-          <div className="w-[60px] sm:w-[100px]">
-            {/* Empty div to maintain spacing */}
+        {/* Header with title and back button */}
+        <div className="relative w-full max-w-4xl mb-8 px-1">
+          <div className="flex items-center justify-center">
+            <Link 
+              href="/"
+              onClick={handleBack}
+              className="text-center text-xl sm:text-3xl font-bold text-text-primary whitespace-nowrap mx-1 cursor-pointer transition-all hover:opacity-80"
+            >
+              Memory <span className="text-peach-500">Chess</span>
+            </Link>
           </div>
           
-          <Link 
-            href="/"
-            onClick={handleBack}
-            className="text-center text-xl sm:text-3xl font-bold text-text-primary whitespace-nowrap mx-1 cursor-pointer transition-all hover:opacity-80"
-          >
-            Memory <span className="text-peach-500">Chess</span>
-          </Link>
-          
-          <SoundSettings className="w-[60px] sm:w-[100px]" />
+          {/* Sound settings positioned at the right edge */}
+          <div className="absolute top-0 right-0 sm:right-1">
+            <SoundSettings className="w-[60px] sm:w-[100px]" />
+          </div>
         </div>
         
         <ErrorBoundary>

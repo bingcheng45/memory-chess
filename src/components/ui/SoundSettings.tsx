@@ -139,7 +139,7 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
   return (
     <div 
       ref={wrapperRef}
-      className={`relative flex justify-end ${className}`}
+      className={`relative ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -147,7 +147,7 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
       <motion.button
         onClick={handleSoundToggle}
         whileTap={{ scale: 0.9 }}
-        className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-bg-card/30 backdrop-blur-sm hover:bg-bg-card/50 transition-all ml-auto"
+        className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-bg-card/30 backdrop-blur-sm hover:bg-bg-card/50 transition-all"
         aria-label={soundOn ? 'Mute sound' : 'Unmute sound'}
         title={soundOn ? 'Mute sound' : 'Unmute sound'}
       >

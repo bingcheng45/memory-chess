@@ -80,7 +80,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   };
   
   return (
-    <div className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-8 shadow-xl">
+    <div className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-6 sm:p-8 shadow-xl relative">
       <h2 className="mb-6 text-center text-2xl font-bold text-text-primary">Game Configuration</h2>
       
       <div className="mb-6">

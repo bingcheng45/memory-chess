@@ -17,7 +17,12 @@ export function useGameState() {
     setSelectedPieceType(type);
   }, []);
   
-  // Toggle the selected color
+  // Set the selected color
+  const setColor = useCallback((color: PieceColor) => {
+    setSelectedColor(color);
+  }, []);
+  
+  // Toggle the selected color (kept for backward compatibility)
   const toggleColor = useCallback(() => {
     setSelectedColor(prev => prev === 'white' ? 'black' : 'white');
   }, []);
@@ -94,6 +99,7 @@ export function useGameState() {
     selectedColor,
     selectedPosition,
     selectPieceType,
+    setColor,
     toggleColor,
     selectPosition,
     handleSquareClick,

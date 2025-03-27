@@ -6,6 +6,8 @@ import { PieceType } from '../types/chess';
 interface KeyboardControlsOptions {
   onPieceSelect?: (type: PieceType) => void;
   onColorToggle?: () => void;
+  onSelectWhite?: () => void;
+  onSelectBlack?: () => void;
   onPlacePiece?: () => void;
   onRemovePiece?: () => void;
   onSubmit?: () => void;
@@ -16,6 +18,8 @@ interface KeyboardControlsOptions {
 export function useKeyboardControls({
   onPieceSelect,
   onColorToggle,
+  onSelectWhite,
+  onSelectBlack,
   onPlacePiece,
   onRemovePiece,
   onSubmit,
@@ -55,7 +59,13 @@ export function useKeyboardControls({
         onPieceSelect?.('king');
         break;
       
-      // Color toggle (spacebar)
+      // Color selection (w, b, spacebar)
+      case 'w':
+        onSelectWhite?.();
+        break;
+      case 'b':
+        onSelectBlack?.();
+        break;
       case ' ':
         event.preventDefault(); // Prevent page scroll
         onColorToggle?.();
@@ -97,6 +107,8 @@ export function useKeyboardControls({
     disabled,
     onPieceSelect,
     onColorToggle,
+    onSelectWhite,
+    onSelectBlack,
     onPlacePiece,
     onRemovePiece,
     onSubmit,
@@ -117,6 +129,8 @@ export function useKeyboardControls({
       '4': 'Select Rook',
       '5': 'Select Queen',
       '6': 'Select King',
+      'W': 'Select White Pieces',
+      'B': 'Select Black Pieces',
       'Spacebar': 'Toggle Piece Color',
       'Enter': 'Place Piece',
       'Delete/Backspace': 'Remove Piece',

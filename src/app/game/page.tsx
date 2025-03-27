@@ -417,7 +417,7 @@ function GamePageContent() {
           </div>
           
           {/* Sound settings positioned at the right edge with responsive positioning */}
-          <div className="absolute top-1/2 -translate-y-1/2 right-0 sm:right-4 md:right-8 lg:right-16">
+          <div className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-8 md:right-12 lg:right-24">
             <SoundSettings className="w-[46px] sm:w-[50px]" />
           </div>
         </div>

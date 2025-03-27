@@ -66,11 +66,17 @@ function GamePageContent() {
   const [soundPlayed, setSoundPlayed] = useState(false);
   const [solutionPieces, setSolutionPieces] = useState<ChessPiece[]>([]);
   
-  // Format time in seconds to mm:ss format
-  const formatTime = (seconds: number): string => {
+  // Format time in seconds to mm:ss.ms format
+  const formatTime = (seconds: number): { minutes: string; seconds: string; milliseconds: string } => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    const ms = Math.round((seconds - Math.floor(seconds)) * 1000);
+    
+    return {
+      minutes: mins.toString().padStart(2, '0'),
+      seconds: secs.toString().padStart(2, '0'),
+      milliseconds: ms.toString().padStart(3, '0')
+    };
   };
   
   // Track initial page load
@@ -196,16 +202,19 @@ function GamePageContent() {
       console.log('Starting solution phase timer');
       setElapsedTime(0);
       
+      // Record start time to calculate elapsed time with millisecond precision
+      const startTime = Date.now();
+      
       const timer = setInterval(() => {
-        setElapsedTime(prev => {
-          // Play warning sound when 75% of the memorization time has elapsed
-          if (!timerWarningPlayed && prev >= Math.floor(gameState.memorizeTime * 0.75)) {
-            playSound('timer');
-            setTimerWarningPlayed(true);
-          }
-          return prev + 1;
-        });
-      }, 1000);
+        const elapsedSeconds = (Date.now() - startTime) / 1000;
+        setElapsedTime(elapsedSeconds);
+        
+        // Play warning sound when 75% of the memorization time has elapsed
+        if (!timerWarningPlayed && elapsedSeconds >= Math.floor(gameState.memorizeTime * 0.75)) {
+          playSound('timer');
+          setTimerWarningPlayed(true);
+        }
+      }, 100); // Update every 100ms for smoother timer display
       
       return () => clearInterval(timer);
     } else {
@@ -319,7 +328,16 @@ function GamePageContent() {
               <div className="mb-4 relative w-full max-w-screen-sm mx-auto px-2">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center">
-                    <span className="text-lg">TIME: <span className="text-xl font-mono font-bold">{formatTime(elapsedTime)}</span></span>
+                    <span className="text-lg">TIME: <span className="text-xl font-mono font-bold">
+                      {(() => {
+                        const { minutes, seconds, milliseconds } = formatTime(elapsedTime);
+                        return (
+                          <>
+                            {minutes}:{seconds}<span className="text-xs">{milliseconds}</span>
+                          </>
+                        );
+                      })()}
+                    </span></span>
                   </div>
                   
                   <Button 

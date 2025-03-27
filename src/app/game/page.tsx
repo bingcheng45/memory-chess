@@ -325,21 +325,23 @@ function GamePageContent() {
         return (
           <div className={containerClass}>
             <ErrorBoundary>
-              {/* Align with the same width constraint as the chess board for consistent width */}
+              {/* Use a wrapper with the same max width as the chess board component */}
               <div className="w-full max-w-screen-sm mx-auto">
-                <div className="mb-4 w-full flex items-center justify-between px-0">
-                  <div className="inline-flex items-center">
-                    <span className="text-lg">TIME: <span className="text-xl font-mono font-bold">
+                {/* Timer and submit button row, with precise padding to match chess board edges */}
+                <div className="flex items-center justify-between mb-4 w-full">
+                  {/* Timer aligned with left edge of chess board */}
+                  <div className="text-lg font-medium">
+                    TIME: <span className="text-xl font-mono font-bold">
                       {(() => {
-                        // Use the robust formatter with explicit safety checks
                         if (typeof elapsedTime !== 'number' || isNaN(elapsedTime)) {
                           return formatTimeExact(0);
                         }
                         return formatTimeExact(elapsedTime);
                       })()}
-                    </span></span>
+                    </span>
                   </div>
                   
+                  {/* Submit button aligned with right edge of chess board */}
                   <Button 
                     onClick={handleSubmitSolution}
                     variant="outline"
@@ -350,28 +352,27 @@ function GamePageContent() {
                   </Button>
                 </div>
                 
-                <div className="w-full">
-                  <ResponsiveInteractiveBoard
-                    playerSolution={solutionPieces}
-                    onPlacePiece={(piece) => {
-                      console.log('Placing piece:', piece);
-                      setSolutionPieces(prev => [...prev, piece]);
-                      // Convert ChessPiece to chess.js format for the game store
-                      const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
-                      const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
-                      placePiece(square, pieceCode);
-                    }}
-                    onRemovePiece={(position) => {
-                      console.log('Removing piece at:', position);
-                      setSolutionPieces(prev => prev.filter(p => 
-                        p.position.file !== position.file || p.position.rank !== position.rank
-                      ));
-                      // Convert Position to chess.js square format
-                      const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
-                      removePiece(square);
-                    }}
-                  />
-                </div>
+                {/* Chess board */}
+                <ResponsiveInteractiveBoard
+                  playerSolution={solutionPieces}
+                  onPlacePiece={(piece) => {
+                    console.log('Placing piece:', piece);
+                    setSolutionPieces(prev => [...prev, piece]);
+                    // Convert ChessPiece to chess.js format for the game store
+                    const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
+                    const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
+                    placePiece(square, pieceCode);
+                  }}
+                  onRemovePiece={(position) => {
+                    console.log('Removing piece at:', position);
+                    setSolutionPieces(prev => prev.filter(p => 
+                      p.position.file !== position.file || p.position.rank !== position.rank
+                    ));
+                    // Convert Position to chess.js square format
+                    const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
+                    removePiece(square);
+                  }}
+                />
               </div>
             </ErrorBoundary>
           </div>

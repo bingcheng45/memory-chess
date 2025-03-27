@@ -12,6 +12,28 @@ export function formatTime(seconds: number): string {
 }
 
 /**
+ * Robust time formatter that safely handles any potential floating-point issues
+ * and ensures time is displayed correctly in the format "mm:ss".
+ * 
+ * @param seconds The time in seconds (can be a floating-point number)
+ * @returns A formatted string in the format "mm:ss"
+ */
+export function formatTimeExact(seconds: number): string {
+  // Safety check for invalid inputs
+  if (typeof seconds !== 'number' || isNaN(seconds) || !isFinite(seconds)) {
+    seconds = 0;
+  }
+  
+  // Explicit conversion to an integer
+  const totalSeconds = Math.floor(seconds);
+  const minutes = Math.floor(totalSeconds / 60);
+  const remainingSeconds = totalSeconds % 60;
+  
+  // Format with leading zeros
+  return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
+
+/**
  * Calculates the elapsed time in seconds between two timestamps.
  * 
  * @param startTime The start time in milliseconds

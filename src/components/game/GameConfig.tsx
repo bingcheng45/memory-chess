@@ -46,48 +46,26 @@ const DIFFICULTY_PRESETS: DifficultyPreset[] = [
 export default function GameConfig({ onStart }: GameConfigProps) {
   const { 
     startGame, 
-    gameState, 
-    getTotalGames, 
-    getSkillRating, 
-    getCurrentStreak,
-    getRecommendedDifficulty
+    gameState
   } = useGameStore();
   
   const [pieceCount, setPieceCount] = useState(8);
   const [memorizeTime, setMemorizeTime] = useState(10);
   const [selectedPreset, setSelectedPreset] = useState<string>('Easy');
-  const [showTutorial, setShowTutorial] = useState(false);
-  const [isClient, setIsClient] = useState(false);
   
-  // Initialize with Easy preset values and set client-side rendering flag
+  // Initialize with Easy preset values
   useEffect(() => {
     // Set Easy preset as default
     const easyPreset = DIFFICULTY_PRESETS[0];
     setPieceCount(easyPreset.pieceCount);
     setMemorizeTime(easyPreset.memorizeTime);
-    // Set client-side rendering flag
-    setIsClient(true);
   }, []);
-  
-  // Get player stats
-  const skillRating = getSkillRating();
-  const currentStreak = getCurrentStreak();
-  const totalGames = getTotalGames();
-  const recommendedDifficulty = getRecommendedDifficulty();
   
   const handlePresetSelect = (preset: DifficultyPreset) => {
     setPieceCount(preset.pieceCount);
     setMemorizeTime(preset.memorizeTime);
     setSelectedPreset(preset.name);
   };
-  
-  // Check if this is the first time playing
-  useEffect(() => {
-    if (totalGames === 0) {
-      setShowTutorial(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalGames]);
   
   const handleCustomChange = () => {
     setSelectedPreset('');
@@ -101,80 +79,9 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     }
   };
   
-  // Generate a custom difficulty based on recommended difficulty
-  const generateCustomDifficulty = () => {
-    // Get random values within the recommended range
-    const randomPieceCount = Math.floor(
-      Math.random() * (recommendedDifficulty.maxPieces - recommendedDifficulty.minPieces + 1) + 
-      recommendedDifficulty.minPieces
-    );
-    
-    const randomMemorizeTime = Math.floor(
-      Math.random() * (recommendedDifficulty.maxTime - recommendedDifficulty.minTime + 1) + 
-      recommendedDifficulty.minTime
-    );
-    
-    setPieceCount(randomPieceCount);
-    setMemorizeTime(randomMemorizeTime);
-    setSelectedPreset('');
-  };
-  
   return (
     <div className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-8 shadow-xl">
       <h2 className="mb-6 text-center text-2xl font-bold text-text-primary">Game Configuration</h2>
-      
-      {showTutorial && isClient && (
-        <div className="mb-6 rounded-lg bg-peach-500/10 p-4 text-sm text-text-secondary border border-peach-500/20">
-          <h3 className="mb-2 font-semibold text-text-primary">How to Play</h3>
-          <ol className="list-inside list-decimal space-y-1">
-            <li>Choose your difficulty or customize settings</li>
-            <li>Memorize the chess position shown</li>
-            <li>Recreate the position from memory</li>
-            <li>Check your accuracy and time</li>
-          </ol>
-          <Button 
-            onClick={() => setShowTutorial(false)}
-            variant="link"
-            className="mt-3 text-peach-500 hover:text-peach-400 p-0"
-          >
-            Got it!
-          </Button>
-        </div>
-      )}
-      
-      {/* Player Stats - Only render on client side */}
-      {totalGames > 0 && isClient && (
-        <div className="mb-6 rounded-lg bg-bg-dark/30 p-4">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="text-sm font-medium text-text-primary">Your Stats</h3>
-            <span className="text-xs text-text-secondary">Level: {recommendedDifficulty.name}</span>
-          </div>
-          
-          <div className="flex justify-between text-sm">
-            <span className="text-text-secondary">Skill Rating:</span>
-            <span className="font-medium text-text-primary">{skillRating}</span>
-          </div>
-          
-          <div className="flex justify-between text-sm">
-            <span className="text-text-secondary">Current Streak:</span>
-            <span className="font-medium text-text-primary">{currentStreak}</span>
-          </div>
-          
-          <div className="flex justify-between text-sm">
-            <span className="text-text-secondary">Games Played:</span>
-            <span className="font-medium text-text-primary">{totalGames}</span>
-          </div>
-          
-          <Button
-            onClick={generateCustomDifficulty}
-            variant="outline"
-            size="sm"
-            className="mt-3 w-full border-peach-500/30 bg-peach-500/10 text-peach-500 hover:bg-peach-500/20"
-          >
-            Generate Recommended Challenge
-          </Button>
-        </div>
-      )}
       
       <div className="mb-6">
         <h3 className="mb-3 text-sm font-medium text-text-secondary">Difficulty Presets</h3>

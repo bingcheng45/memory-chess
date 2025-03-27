@@ -3,6 +3,8 @@
 import { useGameStore } from '@/lib/store/gameStore';
 import { GameState } from '@/lib/types/game';
 import { Button } from "@/components/ui/button";
+import { useEffect } from 'react';
+import { playSound } from '@/lib/utils/soundEffects';
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & { 
@@ -17,92 +19,60 @@ interface GameResultProps {
 }
 
 export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
-  const { 
-    gameState, 
-    getBestTime, 
-    getSkillRating,
-    getCurrentStreak
-  } = useGameStore();
+  const { gameState } = useGameStore();
   
-  // Cast gameState to extended type
+  // Get the local copy of gameState with skill rating change info
   const extendedGameState = gameState as GameStateWithRating;
   
-  // Format time in seconds to mm:ss.ms format, with parts separated for styling
+  // Play success sound on component mount
+  useEffect(() => {
+    // Only play success sound if accuracy is high enough
+    if (gameState.accuracy && gameState.accuracy >= 70) {
+      playSound('success');
+    } else if (gameState.accuracy !== undefined) {
+      playSound('failure');
+    }
+  }, [gameState.accuracy]);
+  
+  // Time formatting helper
   const formatTimeParts = (seconds: number): { minutes: string; seconds: string; milliseconds: string } => {
-    // Extract the whole seconds and milliseconds parts
     const wholeSeconds = Math.floor(seconds);
-    const milliseconds = Math.round((seconds - wholeSeconds) * 1000);
+    const minutes = Math.floor(wholeSeconds / 60).toString().padStart(2, '0');
+    const remainingSeconds = (wholeSeconds % 60).toString().padStart(2, '0');
+    const ms = Math.floor((seconds - wholeSeconds) * 1000).toString().padStart(3, '0');
     
-    const mins = Math.floor(wholeSeconds / 60);
-    const secs = wholeSeconds % 60;
-    
-    // Format with leading zeros
     return {
-      minutes: mins.toString().padStart(2, '0'),
-      seconds: secs.toString().padStart(2, '0'),
-      milliseconds: milliseconds.toString().padStart(3, '0')
+      minutes,
+      seconds: remainingSeconds,
+      milliseconds: ms
     };
   };
   
-  // Get metrics
-  const bestTime = getBestTime();
-  const skillRating = getSkillRating();
-  const currentStreak = getCurrentStreak();
-  
-  const isNewBestTime = gameState.completionTime !== undefined && 
-                        bestTime > 0 && 
-                        gameState.completionTime < bestTime && 
-                        gameState.accuracy !== undefined && 
-                        gameState.accuracy >= 80;
-  
-  // Determine result message and color based on accuracy
+  // Get a message based on accuracy
   const getResultMessage = () => {
-    if (gameState.accuracy === undefined) return { text: 'Game Completed', color: 'text-text-primary' };
+    const accuracy = gameState.accuracy || 0;
     
-    if (gameState.accuracy >= 90) {
-      return { text: 'Excellent Memory!', color: 'text-green-400' };
-    } else if (gameState.accuracy >= 70) {
-      return { text: 'Great Job!', color: 'text-peach-400' };
-    } else if (gameState.accuracy >= 50) {
-      return { text: 'Good Effort!', color: 'text-peach-500' };
-    } else {
-      return { text: 'Keep Practicing!', color: 'text-peach-600' };
-    }
+    if (accuracy === 100) return "Perfect Score!";
+    if (accuracy >= 90) return "Excellent Memory!";
+    if (accuracy >= 80) return "Great Job!";
+    if (accuracy >= 70) return "Well Done!";
+    if (accuracy >= 50) return "Good Effort!";
+    return "Keep Practicing!";
   };
   
-  const result = getResultMessage();
-  
-  // Calculate accuracy color
+  // Get color class based on accuracy
   const getAccuracyColor = (accuracy: number) => {
-    if (accuracy >= 90) return 'text-green-400';
-    if (accuracy >= 70) return 'text-peach-400';
-    if (accuracy >= 50) return 'text-peach-500';
-    return 'text-peach-600';
-  };
-  
-  // Get skill rating change class
-  const getSkillRatingChangeClass = () => {
-    if (!extendedGameState.skillRatingChange) return 'text-text-secondary';
-    return extendedGameState.skillRatingChange > 0 ? 'text-green-400' : 'text-red-400';
-  };
-  
-  // Get skill rating change symbol
-  const getSkillRatingChangeSymbol = () => {
-    if (!extendedGameState.skillRatingChange) return '';
-    return extendedGameState.skillRatingChange > 0 ? '▲' : '▼';
+    if (accuracy >= 90) return "text-green-500";
+    if (accuracy >= 70) return "text-peach-500";
+    if (accuracy >= 50) return "text-yellow-500";
+    return "text-red-500";
   };
   
   return (
     <div className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-8 shadow-xl">
-      <h2 className={`mb-4 text-center text-3xl font-bold ${result.color}`}>
-        {result.text}
+      <h2 className={`mb-4 text-center text-3xl font-bold ${getAccuracyColor(gameState.accuracy || 0)}`}>
+        {getResultMessage()}
       </h2>
-      
-      {isNewBestTime && (
-        <div className="mb-6 rounded-lg bg-peach-500/20 p-3 text-center">
-          <div className="text-lg font-bold text-peach-400">🏆 New Best Time!</div>
-        </div>
-      )}
       
       {extendedGameState.perfectScore && (
         <div className="mb-6 rounded-lg bg-green-500/20 p-3 text-center">
@@ -157,29 +127,27 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           </span>
         </div>
         
-        {/* Skill Rating */}
+        {/* Recall Speed - replacing Pieces section */}
         <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary font-medium">Skill Rating:</span>
-          <div className="flex items-center">
-            <span className="font-bold text-text-primary">{skillRating}</span>
-            {extendedGameState.skillRatingChange !== undefined && (
-              <span className={`ml-2 text-sm ${getSkillRatingChangeClass()}`}>
-                {getSkillRatingChangeSymbol()} {Math.abs(extendedGameState.skillRatingChange)}
-              </span>
-            )}
-          </div>
-        </div>
-        
-        {/* Streak */}
-        <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary font-medium">Current Streak:</span>
-          <span className="font-bold text-text-primary">{currentStreak}</span>
-        </div>
-        
-        {/* Pieces */}
-        <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary font-medium">Pieces:</span>
-          <span className="font-bold text-text-primary">{gameState.pieceCount}</span>
+          <span className="text-text-secondary font-medium">Recall Speed:</span>
+          <span className="font-bold text-text-primary">
+            {(() => {
+              // Handle edge cases
+              if (!gameState.completionTime || gameState.completionTime <= 0) {
+                return "0.0 pieces/sec";
+              }
+              
+              // Calculate correct pieces based on accuracy
+              const accuracyPercentage = (gameState.accuracy || 0) / 100;
+              const correctPieces = gameState.pieceCount * accuracyPercentage;
+              
+              // Calculate correct pieces per second
+              const piecesPerSecond = correctPieces / gameState.completionTime;
+              
+              // Format to 1 decimal place
+              return `${piecesPerSecond.toFixed(1)} pieces/sec`;
+            })()}
+          </span>
         </div>
       </div>
       

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useGameStore } from '@/lib/store/gameStore';
 import { GamePhase } from '@/lib/types/game';
@@ -19,6 +19,7 @@ import { ChessPiece, PieceType } from '@/types/chess';
 import { Button } from "@/components/ui/button";
 import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
 import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
+import { formatTimeExact } from '@/utils/timer';
 
 // Component to handle URL parameters
 function GamePageContent() {
@@ -65,6 +66,7 @@ function GamePageContent() {
   const [timerWarningPlayed, setTimerWarningPlayed] = useState(false);
   const [soundPlayed, setSoundPlayed] = useState(false);
   const [solutionPieces, setSolutionPieces] = useState<ChessPiece[]>([]);
+  const solutionStartTimeRef = useRef<number | null>(null);
   
   // Track initial page load
   useEffect(() => {
@@ -187,28 +189,35 @@ function GamePageContent() {
   useEffect(() => {
     if (gameState.isSolutionPhase) {
       console.log('Starting solution phase timer');
-      setElapsedTime(0);
       
-      // Record start time to calculate elapsed time in whole seconds
-      const startTime = Date.now();
+      // Only initialize the start time when first entering solution phase
+      if (solutionStartTimeRef.current === null) {
+        solutionStartTimeRef.current = Date.now();
+        setElapsedTime(0);
+      }
       
       const timer = setInterval(() => {
-        // Calculate time in whole seconds only (no milliseconds)
-        const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-        setElapsedTime(elapsedSeconds);
-        
-        // Play warning sound when 75% of the memorization time has elapsed
-        if (!timerWarningPlayed && elapsedSeconds >= Math.floor(gameState.memorizeTime * 0.75)) {
-          playSound('timer');
-          setTimerWarningPlayed(true);
+        if (solutionStartTimeRef.current !== null) {
+          // Calculate time based on the stored start time
+          const rawElapsedSeconds = (Date.now() - solutionStartTimeRef.current) / 1000;
+          const elapsedSeconds = Math.floor(rawElapsedSeconds);
+          setElapsedTime(elapsedSeconds);
+          
+          // Play warning sound when 75% of the memorization time has elapsed
+          if (!timerWarningPlayed && elapsedSeconds >= Math.floor(gameState.memorizeTime * 0.75)) {
+            playSound('timer');
+            setTimerWarningPlayed(true);
+          }
         }
       }, 1000); // Update once per second
       
       return () => clearInterval(timer);
     } else {
+      // Reset the ref when leaving solution phase
+      solutionStartTimeRef.current = null;
       setElapsedTime(0);
     }
-  }, [gameState.isSolutionPhase, gameState.memorizeTime, timerWarningPlayed]);
+  }, [gameState.isSolutionPhase, gameState.memorizeTime, timerWarningPlayed, playSound, setTimerWarningPlayed]);
   
   // Handle submitting the solution
   const handleSubmitSolution = () => {
@@ -318,11 +327,11 @@ function GamePageContent() {
                   <div className="inline-flex items-center">
                     <span className="text-lg">TIME: <span className="text-xl font-mono font-bold">
                       {(() => {
-                        // Format time components - minutes and seconds only
-                        const mins = Math.floor(elapsedTime / 60).toString().padStart(2, '0');
-                        const secs = Math.floor(elapsedTime % 60).toString().padStart(2, '0');
-                        
-                        return `${mins}:${secs}`;
+                        // Use the robust formatter with explicit safety checks
+                        if (typeof elapsedTime !== 'number' || isNaN(elapsedTime)) {
+                          return formatTimeExact(0);
+                        }
+                        return formatTimeExact(elapsedTime);
                       })()}
                     </span></span>
                   </div>

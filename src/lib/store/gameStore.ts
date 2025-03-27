@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Chess, PieceSymbol, Square } from 'chess.js';
 import { GameState, GameHistory, GamePhase, DIFFICULTY_LEVELS, DifficultyLevel } from '@/lib/types/game';
+import { v4 as uuidv4 } from 'uuid';
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & { skillRatingChange?: number };
@@ -336,11 +337,14 @@ const calculateAccuracy = (originalFen: string, userFen: string): number => {
   }
 };
 
-// Calculate time bonus based on completion time and memorize time
-const calculateTimeBonus = (completionTime: number, memorizeTime: number): number => {
-  // If completed within memorizeTime seconds, award bonus points
-  if (completionTime <= memorizeTime) {
-    return Math.round((memorizeTime - completionTime) * 10); // 10 points per second under memorize time
+// Calculate time bonus based on completion time and actual memorize time
+const calculateTimeBonus = (completionTime: number, memorizeTime: number, actualMemorizeTime?: number): number => {
+  // Use actual memorize time if available, otherwise fall back to configured time
+  const timeToCompare = actualMemorizeTime || memorizeTime;
+  
+  // If completed within the memorize time, award bonus points
+  if (completionTime <= timeToCompare) {
+    return Math.round((timeToCompare - completionTime) * 10); // 10 points per second under memorize time
   }
   return 0;
 };
@@ -351,7 +355,8 @@ const calculateSkillRatingChange = (
   pieceCount: number, 
   completionTime: number, 
   memorizeTime: number,
-  currentRating: number
+  currentRating: number,
+  actualMemorizeTime?: number
 ): number => {
   // Base points for accuracy
   let points = 0;
@@ -374,8 +379,11 @@ const calculateSkillRatingChange = (
   // Points for piece count (more pieces = more points)
   points += Math.floor(pieceCount / 2);
   
+  // Use actual memorize time if available, otherwise fall back to configured time
+  const timeToCompare = actualMemorizeTime || memorizeTime;
+  
   // Time efficiency bonus
-  const timeRatio = memorizeTime / completionTime;
+  const timeRatio = timeToCompare / completionTime;
   if (timeRatio >= 1) {
     // Completed faster than memorize time
     points += Math.floor(timeRatio * 10);
@@ -446,6 +454,7 @@ export const useGameStore = create<GameStore>()(
             accuracy: currentState.accuracy,
             pieceCount: currentState.pieceCount,
             memorizeTime: currentState.memorizeTime,
+            actualMemorizeTime: currentState.actualMemorizeTime,
             level: currentState.level || currentState.currentLevel || 1,
             skillRatingChange: gameStateWithRating.skillRatingChange,
             streak: currentState.streak,
@@ -551,7 +560,7 @@ export const useGameStore = create<GameStore>()(
           history: [
             {
               ...game,
-              id: crypto.randomUUID(),
+              id: uuidv4(),
             },
             ...state.history,
           ].slice(0, 20), // Keep only the last 20 games (reduced from 100)
@@ -573,10 +582,16 @@ export const useGameStore = create<GameStore>()(
       },
       
       endMemorizationPhase: () => {
+        const now = Date.now();
+        const state = get().gameState;
+        const memorizeStartTime = state.memorizeStartTime || now;
+        const actualMemorizeTime = (now - memorizeStartTime) / 1000; // Calculate actual time spent in seconds
+        
         set((state) => ({
           gameState: {
             ...state.gameState,
             isMemorizationPhase: false,
+            actualMemorizeTime,
           },
         }));
       },
@@ -643,8 +658,8 @@ export const useGameStore = create<GameStore>()(
         const solutionStartTime = gameState.solutionStartTime || now;
         const completionTime = (now - solutionStartTime) / 1000; // Store as floating point seconds with millisecond precision
         
-        // Calculate time bonus
-        const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime);
+        // Calculate time bonus using actual memorize time if available
+        const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime, gameState.actualMemorizeTime);
         
         // Determine if this is a perfect score
         const perfectScore = accuracy === 100;
@@ -659,7 +674,8 @@ export const useGameStore = create<GameStore>()(
           gameState.pieceCount, 
           completionTime, 
           gameState.memorizeTime,
-          currentRating
+          currentRating,
+          gameState.actualMemorizeTime
         );
         
         // Update streak
@@ -849,7 +865,8 @@ export const useGameStore = create<GameStore>()(
           pieceCount, 
           completionTime, 
           gameState.memorizeTime,
-          gameState.skillRating || 1000
+          gameState.skillRating || 1000,
+          gameState.actualMemorizeTime
         );
       }
     }),

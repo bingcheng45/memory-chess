@@ -137,12 +137,16 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                 return "0.0 pieces/sec";
               }
               
+              // Use actual memorization time if available, otherwise fall back to configured time
+              const memorizeTime = gameState.actualMemorizeTime || gameState.memorizeTime;
+              
               // Calculate correct pieces based on accuracy
               const accuracyPercentage = (gameState.accuracy || 0) / 100;
               const correctPieces = gameState.pieceCount * accuracyPercentage;
               
-              // Calculate correct pieces per second
-              const piecesPerSecond = correctPieces / gameState.completionTime;
+              // Calculate correct pieces per second - based on actual memorization time
+              // This represents how efficiently pieces were memorized
+              const piecesPerSecond = correctPieces / memorizeTime;
               
               // Format to 1 decimal place
               return `${piecesPerSecond.toFixed(1)} pieces/sec`;

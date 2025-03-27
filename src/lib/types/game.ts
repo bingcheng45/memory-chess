@@ -17,6 +17,7 @@ export interface GameState {
   memorizeStartTime?: number;
   solutionStartTime?: number;
   completionTime?: number;
+  actualMemorizeTime?: number; // Actual time spent in memorization phase
   
   // Progress
   currentLevel: number;
@@ -52,6 +53,7 @@ export type GameHistory = {
   level: number;
   duration: number; // in seconds
   completionTime?: number; // Time to complete the solution phase
+  actualMemorizeTime?: number; // Actual time spent in memorization phase
   skillRatingChange?: number; // Change in skill rating from this game
   streak?: number; // Current streak at the time of this game
   perfectScore?: boolean; // Whether the user achieved 100% accuracy

@@ -136,12 +136,12 @@ export default function MemorizationBoard() {
                 >
                   {/* Coordinate labels on the edges */}
                   {j === 0 && (
-                    <span className="absolute left-1 top-0 text-xs opacity-50">
+                    <span className="absolute left-1 top-0 text-xs opacity-50 text-black">
                       {8 - i}
                     </span>
                   )}
                   {i === 7 && (
-                    <span className="absolute bottom-0 right-1 text-xs opacity-50">
+                    <span className="absolute bottom-0 right-1 text-xs opacity-50 text-black">
                       {String.fromCharCode(97 + j)}
                     </span>
                   )}

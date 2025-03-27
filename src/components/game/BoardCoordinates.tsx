@@ -20,7 +20,7 @@ export function BoardCoordinates({
   
   if (position === 'file' && rank === 0) {
     return (
-      <div className="absolute bottom-0 right-1 text-xs font-medium text-gray-600 dark:text-gray-300">
+      <div className="absolute bottom-0 right-1 text-xs font-medium text-black dark:text-black">
         {FILES[file]}
       </div>
     );
@@ -28,7 +28,7 @@ export function BoardCoordinates({
   
   if (position === 'rank' && file === 0) {
     return (
-      <div className="absolute top-0 left-1 text-xs font-medium text-gray-600 dark:text-gray-300">
+      <div className="absolute top-0 left-1 text-xs font-medium text-black dark:text-black">
         {RANKS[rank]}
       </div>
     );

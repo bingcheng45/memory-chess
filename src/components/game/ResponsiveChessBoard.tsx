@@ -86,6 +86,7 @@ export default function ResponsiveChessBoard({
     fontSize: `${fontSize.coordinates}px`,
     opacity: 0.7,
     position: 'absolute' as const,
+    color: 'black',
   };
   
   // Handle square click

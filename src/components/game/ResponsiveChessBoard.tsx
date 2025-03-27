@@ -51,8 +51,9 @@ export default function ResponsiveChessBoard({
   const boardStyle = useMemo(() => ({
     width: `${size}px`,
     height: `${size}px`,
-    maxWidth: '100%', // Use 100% instead of 95vw
-    boxSizing: 'border-box' as const, // Add box-sizing to include padding in width calculation
+    maxWidth: '100%',
+    boxSizing: 'border-box' as const,
+    margin: '0 auto', // Ensure centering
   }), [size]);
   
   // Calculate square styles

@@ -295,12 +295,12 @@ function GamePageContent() {
     switch (gamePhase) {
       case GamePhase.CONFIGURATION:
         return (
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center w-full max-w-screen-md mx-auto">
             <ErrorBoundary>
               <GameConfig onStart={handleStartGame} />
             </ErrorBoundary>
             {gameState.completionTime !== undefined && (
-              <div className="mt-8">
+              <div className="mt-8 w-full">
                 <ErrorBoundary>
                   <GameStats />
                 </ErrorBoundary>
@@ -311,7 +311,7 @@ function GamePageContent() {
         
       case GamePhase.MEMORIZATION:
         return (
-          <div className="w-full">
+          <div className="w-full flex justify-center">
             <ErrorBoundary>
               <ResponsiveMemorizationBoard />
             </ErrorBoundary>
@@ -320,9 +320,9 @@ function GamePageContent() {
         
       case GamePhase.SOLUTION:
         return (
-          <div className="w-full">
+          <div className="w-full flex flex-col items-center">
             <ErrorBoundary>
-              <div className="mb-4 relative w-full max-w-screen-sm mx-auto px-2">
+              <div className="mb-4 relative w-full max-w-screen-sm mx-auto px-2 sm:px-4">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center">
                     <span className="text-lg">TIME: <span className="text-xl font-mono font-bold">
@@ -347,7 +347,7 @@ function GamePageContent() {
                 </div>
               </div>
               
-              <div className="mt-2">
+              <div className="w-full">
                 <ResponsiveInteractiveBoard
                   playerSolution={solutionPieces}
                   onPlacePiece={(piece) => {
@@ -376,23 +376,27 @@ function GamePageContent() {
         
       case GamePhase.RESULT:
         return (
-          <ErrorBoundary>
-            <GameResult onTryAgain={handleTryAgain} onNewGame={handleNewGame} />
-          </ErrorBoundary>
+          <div className="w-full max-w-screen-md mx-auto flex justify-center">
+            <ErrorBoundary>
+              <GameResult onTryAgain={handleTryAgain} onNewGame={handleNewGame} />
+            </ErrorBoundary>
+          </div>
         );
         
       default:
         return (
-          <ErrorBoundary>
-            <GameConfig onStart={handleStartGame} />
-          </ErrorBoundary>
+          <div className="w-full max-w-screen-md mx-auto flex justify-center">
+            <ErrorBoundary>
+              <GameConfig onStart={handleStartGame} />
+            </ErrorBoundary>
+          </div>
         );
     }
   };
   
   return (
     <main className="min-h-screen bg-bg-dark text-text-primary">
-      <div className="container mobile-constrained mx-auto flex min-h-screen flex-col items-center justify-center p-4">
+      <div className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
         <div className="mb-8 flex w-full max-w-4xl items-center justify-between">
           <div className="w-[60px] sm:w-[100px]">
             {/* Empty div to maintain spacing */}

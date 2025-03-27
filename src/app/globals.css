@@ -51,6 +51,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto; /* Ensure centering */
 }
 
 /* Additional utility classes for responsive design */
@@ -66,10 +67,12 @@ body {
 /* Ensure content fits within viewport on mobile */
 @media (max-width: 640px) {
   .mobile-constrained {
-    max-width: 95vw;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     overflow-x: hidden;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
   
   /* Ensure better touch targets for mobile */

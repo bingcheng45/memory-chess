@@ -112,7 +112,7 @@ export default function ResponsiveMemorizationBoard() {
   const statusBarHeight = 120; // Height of timer and instructions
   
   return (
-    <div className="flex flex-col items-center w-full max-w-screen-sm mx-auto px-2 mobile-constrained">
+    <div className="flex flex-col items-center w-full max-w-screen-sm mx-auto px-2 sm:px-4">
       <div className="mb-3 text-center w-full">
         <div className="text-md font-bold text-text-primary">Memorize the Position</div>
         <div className={`mt-1 text-5xl font-bold ${getUrgencyClass()} transition-colors`}>

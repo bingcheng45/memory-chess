@@ -130,7 +130,11 @@ export default function GameConfig({ onStart }: GameConfigProps) {
             setPieceCount(parseInt(e.target.value));
             handleCustomChange();
           }}
-          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light"
+          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light relative
+                     [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 
+                     [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-500 [&::-webkit-slider-thumb]:mt-[-8px]
+                     [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
+                     [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-blue-500 [&::-moz-range-thumb]:border-0"
           style={{
             backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((pieceCount - 2) / (32 - 2)) * 100}%, #222222 ${((pieceCount - 2) / (32 - 2)) * 100}%, #222222 100%)`
           }}
@@ -161,7 +165,11 @@ export default function GameConfig({ onStart }: GameConfigProps) {
             setMemorizeTime(parseInt(e.target.value));
             handleCustomChange();
           }}
-          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light"
+          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light relative
+                     [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 
+                     [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-500 [&::-webkit-slider-thumb]:mt-[-8px]
+                     [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
+                     [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-blue-500 [&::-moz-range-thumb]:border-0"
           style={{
             backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((memorizeTime - 5) / (30 - 5)) * 100}%, #222222 ${((memorizeTime - 5) / (30 - 5)) * 100}%, #222222 100%)`
           }}

@@ -209,7 +209,7 @@ function GamePageContent() {
     
     // Play success or failure sound based on accuracy
     setTimeout(() => {
-      if (gameState.accuracy && gameState.accuracy >= 70) {
+      if (gameState.accuracy >= 70) {
         playSound('success');
       } else {
         playSound('failure');

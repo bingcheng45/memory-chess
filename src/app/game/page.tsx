@@ -318,18 +318,11 @@ function GamePageContent() {
                   <div className="inline-flex items-center">
                     <span className="text-lg">TIME: <span className="text-xl font-mono font-bold">
                       {(() => {
-                        // Format time components
+                        // Format time components - minutes and seconds only
                         const mins = Math.floor(elapsedTime / 60).toString().padStart(2, '0');
                         const secs = Math.floor(elapsedTime % 60).toString().padStart(2, '0');
-                        const ms = Math.floor((elapsedTime % 1) * 1000).toString().padStart(3, '0');
                         
-                        console.log('Direct time calculation:', { mins, secs, ms, elapsedTime });
-                        
-                        return (
-                          <>
-                            {mins}:{secs}<span className="text-xs">{ms}</span>
-                          </>
-                        );
+                        return `${mins}:${secs}`;
                       })()}
                     </span></span>
                   </div>

@@ -277,7 +277,18 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       
       {gameState.completionTime !== undefined && (
         <div className="mt-4 text-center text-sm text-text-secondary">
-          <p>Last game: {gameState.completionTime.toFixed(3)}s solution time with {gameState.accuracy}% accuracy</p>
+          <p>
+            Last game: 
+            {(() => {
+              const seconds = Math.floor(gameState.completionTime);
+              const milliseconds = Math.round((gameState.completionTime - seconds) * 1000).toString().padStart(3, '0');
+              return (
+                <>
+                  {seconds}<span className="text-xs relative -top-0.5">.{milliseconds}</span>s solution time with {gameState.accuracy}% accuracy
+                </>
+              );
+            })()}
+          </p>
         </div>
       )}
     </div>

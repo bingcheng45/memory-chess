@@ -27,8 +27,8 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   // Cast gameState to extended type
   const extendedGameState = gameState as GameStateWithRating;
   
-  // Format time in seconds to mm:ss.ms format, showing milliseconds
-  const formatTime = (seconds: number): string => {
+  // Format time in seconds to mm:ss.ms format, with parts separated for styling
+  const formatTimeParts = (seconds: number): { minutes: string; seconds: string; milliseconds: string } => {
     // Extract the whole seconds and milliseconds parts
     const wholeSeconds = Math.floor(seconds);
     const milliseconds = Math.round((seconds - wholeSeconds) * 1000);
@@ -36,8 +36,12 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     const mins = Math.floor(wholeSeconds / 60);
     const secs = wholeSeconds % 60;
     
-    // Format with leading zeros and include milliseconds
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${milliseconds.toString().padStart(3, '0')}`;
+    // Format with leading zeros
+    return {
+      minutes: mins.toString().padStart(2, '0'),
+      seconds: secs.toString().padStart(2, '0'),
+      milliseconds: milliseconds.toString().padStart(3, '0')
+    };
   };
   
   // Get metrics
@@ -142,7 +146,14 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         <div className="flex justify-between border-b border-bg-light pb-3">
           <span className="text-text-secondary font-medium">Solution Time:</span>
           <span className="font-bold text-text-primary">
-            {formatTime(gameState.completionTime || 0)}
+            {(() => {
+              const { minutes, seconds, milliseconds } = formatTimeParts(gameState.completionTime || 0);
+              return (
+                <>
+                  {minutes}:{seconds}<span className="text-xs relative -top-0.5">.{milliseconds}</span>
+                </>
+              );
+            })()}
           </span>
         </div>
         

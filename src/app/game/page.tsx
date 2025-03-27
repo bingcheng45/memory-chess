@@ -341,15 +341,17 @@ function GamePageContent() {
                     </span>
                   </div>
                   
-                  {/* Submit button aligned with right edge of chess board */}
-                  <Button 
-                    onClick={handleSubmitSolution}
-                    variant="outline"
-                    size="sm"
-                    className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
-                  >
-                    Submit
-                  </Button>
+                  {/* Submit button aligned to end exactly at the right edge of chess board */}
+                  <div className="pr-4">
+                    <Button 
+                      onClick={handleSubmitSolution}
+                      variant="outline"
+                      size="sm"
+                      className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
+                    >
+                      Submit
+                    </Button>
+                  </div>
                 </div>
                 
                 {/* Chess board */}

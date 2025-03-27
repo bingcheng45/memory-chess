@@ -325,8 +325,9 @@ function GamePageContent() {
         return (
           <div className={containerClass}>
             <ErrorBoundary>
-              <div className="mb-4 relative w-full max-w-screen-sm mx-auto px-2 sm:px-4">
-                <div className="flex items-center justify-between">
+              {/* Align with the same width constraint as the chess board for consistent width */}
+              <div className="w-full max-w-screen-sm mx-auto">
+                <div className="mb-4 w-full flex items-center justify-between px-0">
                   <div className="inline-flex items-center">
                     <span className="text-lg">TIME: <span className="text-xl font-mono font-bold">
                       {(() => {
@@ -348,31 +349,30 @@ function GamePageContent() {
                     Submit
                   </Button>
                 </div>
+                
+                <div className="w-full">
+                  <ResponsiveInteractiveBoard
+                    playerSolution={solutionPieces}
+                    onPlacePiece={(piece) => {
+                      console.log('Placing piece:', piece);
+                      setSolutionPieces(prev => [...prev, piece]);
+                      // Convert ChessPiece to chess.js format for the game store
+                      const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
+                      const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
+                      placePiece(square, pieceCode);
+                    }}
+                    onRemovePiece={(position) => {
+                      console.log('Removing piece at:', position);
+                      setSolutionPieces(prev => prev.filter(p => 
+                        p.position.file !== position.file || p.position.rank !== position.rank
+                      ));
+                      // Convert Position to chess.js square format
+                      const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
+                      removePiece(square);
+                    }}
+                  />
+                </div>
               </div>
-              
-              <div className="w-full">
-                <ResponsiveInteractiveBoard
-                  playerSolution={solutionPieces}
-                  onPlacePiece={(piece) => {
-                    console.log('Placing piece:', piece);
-                    setSolutionPieces(prev => [...prev, piece]);
-                    // Convert ChessPiece to chess.js format for the game store
-                    const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
-                    const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
-                    placePiece(square, pieceCode);
-                  }}
-                  onRemovePiece={(position) => {
-                    console.log('Removing piece at:', position);
-                    setSolutionPieces(prev => prev.filter(p => 
-                      p.position.file !== position.file || p.position.rank !== position.rank
-                    ));
-                    // Convert Position to chess.js square format
-                    const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
-                    removePiece(square);
-                  }}
-                />
-              </div>
-              
             </ErrorBoundary>
           </div>
         );

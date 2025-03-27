@@ -189,12 +189,12 @@ function GamePageContent() {
       console.log('Starting solution phase timer');
       setElapsedTime(0);
       
-      // Record start time to calculate elapsed time with millisecond precision
+      // Record start time to calculate elapsed time in whole seconds
       const startTime = Date.now();
       
       const timer = setInterval(() => {
-        // Calculate time with millisecond precision
-        const elapsedSeconds = (Date.now() - startTime) / 1000;
+        // Calculate time in whole seconds only (no milliseconds)
+        const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
         setElapsedTime(elapsedSeconds);
         
         // Play warning sound when 75% of the memorization time has elapsed
@@ -202,7 +202,7 @@ function GamePageContent() {
           playSound('timer');
           setTimerWarningPlayed(true);
         }
-      }, 50); // Update more frequently (50ms) for smoother millisecond display
+      }, 1000); // Update once per second
       
       return () => clearInterval(timer);
     } else {

@@ -29,6 +29,14 @@ function GamePageContent() {
   // Initialize sound effects hook to handle sound based on game state changes
   useSoundEffects();
   
+  // Add state to track client-side rendering
+  const [isClient, setIsClient] = useState(false);
+  
+  // Set isClient to true when component mounts on client
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  
   // Get query parameters
   const challengeId = searchParams.get('challenge');
   const pieceCountParam = searchParams.get('pieceCount');
@@ -101,7 +109,7 @@ function GamePageContent() {
         pieceCount: gameState.pieceCount,
         memorizeTime: gameState.memorizeTime
       });
-    } else if (gamePhase === GamePhase.RESULT && gameState.accuracy !== undefined) {
+    } else if (gamePhase === GamePhase.RESULT && gameState.accuracy !== undefined && isClient) {
       // Calculate skill rating change
       const skillRatingChange = calculateSkillRatingChange(
         gameState.accuracy,
@@ -131,7 +139,7 @@ function GamePageContent() {
         analytics.trackDailyChallengeComplete(gameHistoryForAnalytics, skillRatingChange);
       }
     }
-  }, [gamePhase, gameState, analytics, calculateSkillRatingChange, challengeId]);
+  }, [gamePhase, gameState, analytics, calculateSkillRatingChange, challengeId, isClient]);
   
   // Start memorization phase when game is started
   useEffect(() => {

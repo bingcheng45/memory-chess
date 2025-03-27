@@ -377,17 +377,17 @@ function GamePageContent() {
     <main className="min-h-screen bg-bg-dark text-text-primary">
       <div className="container mobile-constrained mx-auto flex min-h-screen flex-col items-center justify-center p-4">
         <div className="mb-8 flex w-full max-w-4xl items-center justify-between">
+          <div className="w-[60px] sm:w-[100px]">
+            {/* Empty div to maintain spacing */}
+          </div>
+          
           <Link 
             href="/"
-            className="rounded-lg border border-peach-500/20 px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-medium text-text-secondary transition-all hover:bg-peach-500/10 whitespace-nowrap overflow-hidden"
             onClick={handleBack}
+            className="text-center text-xl sm:text-3xl font-bold text-text-primary whitespace-nowrap mx-1 cursor-pointer transition-all hover:opacity-80"
           >
-            ← Home
-          </Link>
-          
-          <h1 className="text-center text-xl sm:text-3xl font-bold text-text-primary whitespace-nowrap mx-1">
             Memory <span className="text-peach-500">Chess</span>
-          </h1>
+          </Link>
           
           <SoundSettings className="w-[60px] sm:w-[100px]" />
         </div>

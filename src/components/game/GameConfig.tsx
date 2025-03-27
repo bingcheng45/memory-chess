@@ -57,13 +57,16 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   const [memorizeTime, setMemorizeTime] = useState(10);
   const [selectedPreset, setSelectedPreset] = useState<string>('Easy');
   const [showTutorial, setShowTutorial] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   
-  // Initialize with Easy preset values
+  // Initialize with Easy preset values and set client-side rendering flag
   useEffect(() => {
     // Set Easy preset as default
     const easyPreset = DIFFICULTY_PRESETS[0];
     setPieceCount(easyPreset.pieceCount);
     setMemorizeTime(easyPreset.memorizeTime);
+    // Set client-side rendering flag
+    setIsClient(true);
   }, []);
   
   // Get player stats
@@ -120,7 +123,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     <div className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-8 shadow-xl">
       <h2 className="mb-6 text-center text-2xl font-bold text-text-primary">Game Configuration</h2>
       
-      {showTutorial && (
+      {showTutorial && isClient && (
         <div className="mb-6 rounded-lg bg-peach-500/10 p-4 text-sm text-text-secondary border border-peach-500/20">
           <h3 className="mb-2 font-semibold text-text-primary">How to Play</h3>
           <ol className="list-inside list-decimal space-y-1">
@@ -139,8 +142,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </div>
       )}
       
-      {/* Player Stats */}
-      {totalGames > 0 && (
+      {/* Player Stats - Only render on client side */}
+      {totalGames > 0 && isClient && (
         <div className="mb-6 rounded-lg bg-bg-dark/30 p-4">
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-sm font-medium text-text-primary">Your Stats</h3>

@@ -207,9 +207,13 @@ function GamePageContent() {
     playSound('click');
     submitSolution();
     
-    // Play success or failure sound based on accuracy
+    // Play success or failure sound based on accuracy after a short delay
+    // This delay gives time for the submitSolution function to update gameState
     setTimeout(() => {
-      if (gameState.accuracy >= 70) {
+      console.log('Solution submitted, accuracy:', gameState.accuracy);
+      // At this point gameState.accuracy should be defined
+      const accuracy = gameState.accuracy ?? 0;
+      if (accuracy >= 70) {
         playSound('success');
       } else {
         playSound('failure');

@@ -80,10 +80,10 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   };
   
   return (
-    <div className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-6 sm:p-8 shadow-xl relative">
-      <h2 className="mb-6 text-center text-2xl font-bold text-text-primary">Game Configuration</h2>
+    <div className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-5 sm:p-7 shadow-xl">
+      <h2 className="mb-5 text-center text-2xl font-bold text-text-primary">Game Configuration</h2>
       
-      <div className="mb-6">
+      <div className="mb-5">
         <h3 className="mb-3 text-sm font-medium text-text-secondary">Difficulty Presets</h3>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           {DIFFICULTY_PRESETS.map((preset) => (
@@ -91,7 +91,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
               key={preset.name}
               onClick={() => handlePresetSelect(preset)}
               variant={selectedPreset === preset.name ? "secondary" : "ghost"}
-              className={`flex h-auto flex-col items-center justify-center p-3 ${
+              className={`flex h-auto flex-col items-center justify-center p-2.5 ${
                 selectedPreset === preset.name 
                   ? 'border-peach-500 bg-peach-500/20 text-text-primary' 
                   : 'border-bg-light text-text-secondary hover:border-peach-500/50 hover:bg-peach-500/10'
@@ -111,7 +111,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </div>
       </div>
       
-      <div className="mb-6">
+      <div className="mb-5">
         <div className="mb-3 flex items-center justify-between">
           <label htmlFor="pieceCount" className="text-sm font-medium text-text-secondary">
             Number of Pieces
@@ -142,7 +142,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </div>
       </div>
       
-      <div className="mb-8">
+      <div className="mb-6">
         <div className="mb-3 flex items-center justify-between">
           <label htmlFor="memorizeTime" className="text-sm font-medium text-text-secondary">
             Memorization Time

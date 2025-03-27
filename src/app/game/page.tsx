@@ -292,10 +292,13 @@ function GamePageContent() {
   const renderGameContent = () => {
     console.log('Rendering game content for phase:', gamePhase);
     
+    // Shared container for consistent width and centering across all phases
+    const containerClass = "w-full max-w-4xl mx-auto flex flex-col items-center justify-center";
+    
     switch (gamePhase) {
       case GamePhase.CONFIGURATION:
         return (
-          <div className="w-full max-w-4xl mx-auto">
+          <div className={containerClass}>
             <ErrorBoundary>
               <GameConfig onStart={handleStartGame} />
             </ErrorBoundary>
@@ -311,7 +314,7 @@ function GamePageContent() {
         
       case GamePhase.MEMORIZATION:
         return (
-          <div className="w-full max-w-4xl mx-auto">
+          <div className={containerClass}>
             <ErrorBoundary>
               <ResponsiveMemorizationBoard />
             </ErrorBoundary>
@@ -320,7 +323,7 @@ function GamePageContent() {
         
       case GamePhase.SOLUTION:
         return (
-          <div className="w-full max-w-4xl mx-auto">
+          <div className={containerClass}>
             <ErrorBoundary>
               <div className="mb-4 relative w-full max-w-screen-sm mx-auto px-2 sm:px-4">
                 <div className="flex items-center justify-between">
@@ -376,7 +379,7 @@ function GamePageContent() {
         
       case GamePhase.RESULT:
         return (
-          <div className="w-full max-w-4xl mx-auto">
+          <div className={containerClass}>
             <ErrorBoundary>
               <GameResult onTryAgain={handleTryAgain} onNewGame={handleNewGame} />
             </ErrorBoundary>
@@ -385,7 +388,7 @@ function GamePageContent() {
         
       default:
         return (
-          <div className="w-full max-w-4xl mx-auto">
+          <div className={containerClass}>
             <ErrorBoundary>
               <GameConfig onStart={handleStartGame} />
             </ErrorBoundary>
@@ -397,21 +400,22 @@ function GamePageContent() {
   return (
     <main className="min-h-screen bg-bg-dark text-text-primary">
       <div className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
-        {/* Header with title and back button */}
+        {/* Header with title and centered sound controls */}
         <div className="relative w-full max-w-4xl mb-8 px-1">
+          {/* Title centered in the available space */}
           <div className="flex items-center justify-center">
             <Link 
               href="/"
               onClick={handleBack}
-              className="text-center text-xl sm:text-3xl font-bold text-text-primary whitespace-nowrap mx-1 cursor-pointer transition-all hover:opacity-80"
+              className="text-center text-xl sm:text-3xl font-bold text-text-primary whitespace-nowrap cursor-pointer transition-all hover:opacity-80"
             >
               Memory <span className="text-peach-500">Chess</span>
             </Link>
           </div>
           
-          {/* Sound settings positioned at the right edge */}
-          <div className="absolute top-0 right-0 sm:right-1">
-            <SoundSettings className="w-[60px] sm:w-[100px]" />
+          {/* Sound settings positioned at the absolute right edge */}
+          <div className="absolute top-1/2 -translate-y-1/2 right-0">
+            <SoundSettings className="w-[46px] sm:w-[50px]" />
           </div>
         </div>
         

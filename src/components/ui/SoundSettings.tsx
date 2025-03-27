@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { isSoundEnabled, setSoundEnabled, getVolume, setVolume, playSound } from '@/lib/utils/soundEffects';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useClickAway } from '@/hooks/useClickAway';
+import { createPortal } from 'react-dom';
 
 interface SoundSettingsProps {
   className?: string;
@@ -17,9 +18,16 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
   const [toastMessage, setToastMessage] = useState('');
   const [isHovering, setIsHovering] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const sliderTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Check if component is mounted (for portal)
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
 
   // Check if device is mobile
   useEffect(() => {
@@ -84,6 +92,7 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
     setToastMessage(message);
     setShowToast(true);
     
+    // Automatically hide the toast after 1.5 seconds
     setTimeout(() => {
       setShowToast(false);
     }, 1500);
@@ -91,6 +100,11 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
 
   // Handle sound toggle
   const handleSoundToggle = () => {
+    // If a toast is currently showing, hide it first
+    if (showToast) {
+      setShowToast(false);
+    }
+    
     const newState = !soundOn;
     setSoundOn(newState);
     setSoundEnabled(newState);
@@ -212,20 +226,27 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
         )}
       </AnimatePresence>
 
-      {/* Toast notification */}
-      <AnimatePresence>
-        {showToast && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-10 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-bg-dark/80 text-text-primary rounded-full shadow-lg backdrop-blur-sm z-50"
-          >
-            {toastMessage}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Toast notification - Rendered via Portal */}
+      {isMounted && showToast && createPortal(
+        <div className="fixed left-0 top-0 w-screen h-screen flex items-center justify-center pointer-events-none z-[99999]">
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 300, 
+                damping: 30
+              }}
+              className="px-6 py-3 bg-black/85 text-white rounded-full shadow-xl backdrop-blur-md text-sm font-medium"
+            >
+              {toastMessage}
+            </motion.div>
+          </AnimatePresence>
+        </div>,
+        document.body
+      )}
     </div>
   );
 } 

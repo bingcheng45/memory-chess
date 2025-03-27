@@ -66,19 +66,6 @@ function GamePageContent() {
   const [soundPlayed, setSoundPlayed] = useState(false);
   const [solutionPieces, setSolutionPieces] = useState<ChessPiece[]>([]);
   
-  // Format time in seconds to mm:ss.ms format
-  const formatTime = (seconds: number): { minutes: string; seconds: string; milliseconds: string } => {
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    const ms = Math.round((seconds - Math.floor(seconds)) * 1000);
-    
-    return {
-      minutes: mins.toString().padStart(2, '0'),
-      seconds: secs.toString().padStart(2, '0'),
-      milliseconds: ms.toString().padStart(3, '0')
-    };
-  };
-  
   // Track initial page load
   useEffect(() => {
     analytics.trackFeatureUsage('game_page', 'view');
@@ -331,12 +318,16 @@ function GamePageContent() {
                   <div className="inline-flex items-center">
                     <span className="text-lg">TIME: <span className="text-xl font-mono font-bold">
                       {(() => {
-                        const { minutes, seconds, milliseconds } = formatTime(elapsedTime);
-                        // Log for debugging
-                        console.log('Timer components:', { minutes, seconds, milliseconds, elapsedTime });
+                        // Format time components
+                        const mins = Math.floor(elapsedTime / 60).toString().padStart(2, '0');
+                        const secs = Math.floor(elapsedTime % 60).toString().padStart(2, '0');
+                        const ms = Math.floor((elapsedTime % 1) * 1000).toString().padStart(3, '0');
+                        
+                        console.log('Direct time calculation:', { mins, secs, ms, elapsedTime });
+                        
                         return (
                           <>
-                            {minutes}:{seconds}<span className="text-xs">{milliseconds.substring(0, 3)}</span>
+                            {mins}:{secs}<span className="text-xs">{ms}</span>
                           </>
                         );
                       })()}

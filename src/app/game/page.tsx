@@ -69,7 +69,7 @@ function GamePageContent() {
   // Format time in seconds to mm:ss.ms format
   const formatTime = (seconds: number): { minutes: string; seconds: string; milliseconds: string } => {
     const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
+    const secs = Math.floor(seconds % 60);
     const ms = Math.round((seconds - Math.floor(seconds)) * 1000);
     
     return {
@@ -332,9 +332,11 @@ function GamePageContent() {
                     <span className="text-lg">TIME: <span className="text-xl font-mono font-bold">
                       {(() => {
                         const { minutes, seconds, milliseconds } = formatTime(elapsedTime);
+                        // Log for debugging
+                        console.log('Timer components:', { minutes, seconds, milliseconds, elapsedTime });
                         return (
                           <>
-                            {minutes}:{seconds}<span className="text-xs">{milliseconds}</span>
+                            {minutes}:{seconds}<span className="text-xs">{milliseconds.substring(0, 3)}</span>
                           </>
                         );
                       })()}

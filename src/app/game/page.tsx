@@ -329,8 +329,8 @@ function GamePageContent() {
               <div className="w-full max-w-screen-sm mx-auto">
                 {/* Timer and submit button row, with precise padding to match chess board edges */}
                 <div className="flex items-center justify-between mb-4 w-full">
-                  {/* Timer moved slightly to the right from the left edge of chess board */}
-                  <div className="text-lg font-medium pl-4">
+                  {/* Timer moved further to the right from the left edge of chess board */}
+                  <div className="text-lg font-medium pl-6">
                     TIME: <span className="text-xl font-mono font-bold">
                       {(() => {
                         if (typeof elapsedTime !== 'number' || isNaN(elapsedTime)) {
@@ -342,7 +342,7 @@ function GamePageContent() {
                   </div>
                   
                   {/* Submit button aligned to end exactly at the right edge of chess board */}
-                  <div className="pr-4">
+                  <div className="pr-6">
                     <Button 
                       onClick={handleSubmitSolution}
                       variant="outline"

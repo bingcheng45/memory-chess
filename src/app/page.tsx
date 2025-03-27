@@ -18,7 +18,8 @@ export default function Home() {
             <Link href="/game">
               <Button 
                 variant="outline"
-                className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-5 py-2"
+                size="sm"
+                className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
               >
                 Start Training
               </Button>

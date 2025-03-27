@@ -353,9 +353,6 @@ function GamePageContent() {
                 />
               </div>
               
-              <div className="mt-8 flex justify-center">
-                <h2 className="text-xl font-bold">Recreate the Position</h2>
-              </div>
             </ErrorBoundary>
           </div>
         );

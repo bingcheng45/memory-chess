@@ -333,7 +333,7 @@ function GamePageContent() {
                         const { minutes, seconds, milliseconds } = formatTime(elapsedTime);
                         return (
                           <>
-                            {minutes}:{seconds}<span className="text-xs">{milliseconds}</span>
+                            {minutes}:{seconds}<span className="text-xs">{milliseconds.substring(0, 3)}</span>
                           </>
                         );
                       })()}

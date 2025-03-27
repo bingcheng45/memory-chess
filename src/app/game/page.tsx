@@ -314,13 +314,23 @@ function GamePageContent() {
           <div className="w-full">
             <ErrorBoundary>
               <div className="mb-6 text-center">
-                <h2 className="text-xl font-bold mb-2">Recreate the Position</h2>
                 <div className="inline-flex items-center justify-center bg-bg-card/80 backdrop-blur-sm border border-gray-700/30 px-4 py-2 rounded-lg">
                   <span className="text-lg">Time: <span className="text-xl font-mono font-bold">{formatTime(elapsedTime)}</span></span>
                 </div>
               </div>
               
-              <div className="mt-6">
+              <div className="mt-6 relative">
+                <div className="flex justify-end mb-2">
+                  <Button 
+                    onClick={handleSubmitSolution}
+                    variant="outline"
+                    size="sm"
+                    className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
+                  >
+                    Submit Solution
+                  </Button>
+                </div>
+                
                 <ResponsiveInteractiveBoard
                   playerSolution={solutionPieces}
                   onPlacePiece={(piece) => {
@@ -344,14 +354,7 @@ function GamePageContent() {
               </div>
               
               <div className="mt-8 flex justify-center">
-                <Button 
-                  onClick={handleSubmitSolution}
-                  variant="primary"
-                  size="lg"
-                  className="px-8 py-3"
-                >
-                  Submit Solution
-                </Button>
+                <h2 className="text-xl font-bold">Recreate the Position</h2>
               </div>
             </ErrorBoundary>
           </div>

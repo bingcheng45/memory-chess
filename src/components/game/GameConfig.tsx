@@ -158,8 +158,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         <input
           id="memorizeTime"
           type="range"
-          min="5"
-          max="30"
+          min="2"
+          max="32"
           value={memorizeTime}
           onChange={(e) => {
             setMemorizeTime(parseInt(e.target.value));
@@ -171,13 +171,13 @@ export default function GameConfig({ onStart }: GameConfigProps) {
                      [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
                      [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-blue-500 [&::-moz-range-thumb]:border-0"
           style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((memorizeTime - 5) / (30 - 5)) * 100}%, #222222 ${((memorizeTime - 5) / (30 - 5)) * 100}%, #222222 100%)`
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((memorizeTime - 2) / (32 - 2)) * 100}%, #222222 ${((memorizeTime - 2) / (32 - 2)) * 100}%, #222222 100%)`
           }}
         />
         <div className="mt-2 flex justify-between text-xs text-text-muted">
-          <span>5s</span>
+          <span>2s</span>
           <span>17s</span>
-          <span>30s</span>
+          <span>32s</span>
         </div>
       </div>
       

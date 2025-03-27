@@ -313,11 +313,10 @@ function GamePageContent() {
         return (
           <div className="w-full">
             <ErrorBoundary>
-              <div className="mb-6">
+              <div className="mb-6 text-center">
                 <h2 className="text-xl font-bold mb-2">Recreate the Position</h2>
-                <div className="flex items-center space-x-4">
-                  <span className="text-lg">Time: <span className="text-xl font-bold">{formatTime(elapsedTime)}</span></span>
-                  <span className="text-lg">Pieces: <span className="text-xl font-bold">{gameState.pieceCount}</span></span>
+                <div className="inline-flex items-center justify-center bg-bg-card/80 backdrop-blur-sm border border-gray-700/30 px-4 py-2 rounded-lg">
+                  <span className="text-lg">Time: <span className="text-xl font-mono font-bold">{formatTime(elapsedTime)}</span></span>
                 </div>
               </div>
               

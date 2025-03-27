@@ -134,7 +134,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         
         {/* Time */}
         <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary font-medium">Time:</span>
+          <span className="text-text-secondary font-medium">Solution Time:</span>
           <span className="font-bold text-text-primary">
             {formatTime(gameState.completionTime || 0)}
           </span>

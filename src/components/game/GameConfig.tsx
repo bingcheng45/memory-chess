@@ -277,7 +277,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       
       {gameState.completionTime !== undefined && (
         <div className="mt-4 text-center text-sm text-text-secondary">
-          <p>Last game: {gameState.completionTime}s solution time with {gameState.accuracy}% accuracy</p>
+          <p>Last game: {gameState.completionTime.toFixed(3)}s solution time with {gameState.accuracy}% accuracy</p>
         </div>
       )}
     </div>

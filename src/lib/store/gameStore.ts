@@ -638,10 +638,10 @@ export const useGameStore = create<GameStore>()(
         // Calculate accuracy
         const accuracy = calculateAccuracy(gameState.originalPosition, userPosition);
         
-        // Calculate completion time
+        // Calculate completion time with millisecond precision
         const now = Date.now();
         const solutionStartTime = gameState.solutionStartTime || now;
-        const completionTime = Math.round((now - solutionStartTime) / 1000);
+        const completionTime = (now - solutionStartTime) / 1000; // Store as floating point seconds with millisecond precision
         
         // Calculate time bonus
         const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime);

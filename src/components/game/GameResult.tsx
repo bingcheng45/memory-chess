@@ -27,11 +27,17 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   // Cast gameState to extended type
   const extendedGameState = gameState as GameStateWithRating;
   
-  // Format time in seconds to mm:ss format
+  // Format time in seconds to mm:ss.ms format, showing milliseconds
   const formatTime = (seconds: number): string => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    // Extract the whole seconds and milliseconds parts
+    const wholeSeconds = Math.floor(seconds);
+    const milliseconds = Math.round((seconds - wholeSeconds) * 1000);
+    
+    const mins = Math.floor(wholeSeconds / 60);
+    const secs = wholeSeconds % 60;
+    
+    // Format with leading zeros and include milliseconds
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${milliseconds.toString().padStart(3, '0')}`;
   };
   
   // Get metrics

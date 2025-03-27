@@ -137,7 +137,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         />
         <div className="mt-2 flex justify-between text-xs text-text-muted">
           <span>2</span>
-          <span>16</span>
+          <span>17</span>
           <span>32</span>
         </div>
       </div>
@@ -168,7 +168,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         />
         <div className="mt-2 flex justify-between text-xs text-text-muted">
           <span>5s</span>
-          <span>15s</span>
+          <span>17s</span>
           <span>30s</span>
         </div>
       </div>

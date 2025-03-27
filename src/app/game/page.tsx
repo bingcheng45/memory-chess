@@ -206,6 +206,7 @@ function GamePageContent() {
       const startTime = Date.now();
       
       const timer = setInterval(() => {
+        // Calculate time with millisecond precision
         const elapsedSeconds = (Date.now() - startTime) / 1000;
         setElapsedTime(elapsedSeconds);
         
@@ -214,7 +215,7 @@ function GamePageContent() {
           playSound('timer');
           setTimerWarningPlayed(true);
         }
-      }, 100); // Update every 100ms for smoother timer display
+      }, 50); // Update more frequently (50ms) for smoother millisecond display
       
       return () => clearInterval(timer);
     } else {
@@ -333,7 +334,7 @@ function GamePageContent() {
                         const { minutes, seconds, milliseconds } = formatTime(elapsedTime);
                         return (
                           <>
-                            {minutes}:{seconds}<span className="text-xs">{milliseconds.substring(0, 3)}</span>
+                            {minutes}:{seconds}<span className="text-xs">{milliseconds}</span>
                           </>
                         );
                       })()}

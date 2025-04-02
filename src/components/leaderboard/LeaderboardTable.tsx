@@ -31,16 +31,45 @@ const TimeDisplay = ({ time }: { time: string }) => {
   let milliseconds = "000";
   
   // Handle different time formats
-  if (time.includes(':')) {
-    const parts = time.split(':');
-    if (parts.length === 3) {
-      // Already in MM:SS:XXX format
-      [minutes, seconds, milliseconds] = parts;
-    } else if (parts.length === 2 && parts[1].length >= 5) {
-      // In MM:SSXXX format (missing second colon)
-      minutes = parts[0];
-      seconds = parts[1].substring(0, 2);
-      milliseconds = parts[1].substring(2);
+  if (typeof time === 'string') {
+    // Special handling for decimal format (e.g., "1.245")
+    if (time.includes('.') && !time.includes(':')) {
+      const [secondsPart, msPart] = time.split('.');
+      const totalSeconds = parseInt(secondsPart || "0");
+      minutes = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+      seconds = (totalSeconds % 60).toString().padStart(2, '0');
+      milliseconds = msPart?.padStart(3, '0') || "000";
+    }
+    // Handle MM:SS:XXX format
+    else if (time.includes(':')) {
+      const parts = time.split(':');
+      
+      // Standard format MM:SS:XXX
+      if (parts.length === 3) {
+        [minutes, seconds, milliseconds] = parts;
+        
+        // Check if milliseconds contains a decimal (e.g., "1.245")
+        if (milliseconds.includes('.')) {
+          const [secPart, msPart] = milliseconds.split('.');
+          if (secPart && secPart !== '0') {
+            // Add the additional seconds to the seconds part
+            seconds = (parseInt(seconds) + parseInt(secPart)).toString().padStart(2, '0');
+          }
+          milliseconds = msPart?.padStart(3, '0') || "000";
+        }
+      } 
+      // Handle MM:SSXXX format (missing second colon)
+      else if (parts.length === 2) {
+        minutes = parts[0];
+        // Check if the second part is longer than 2 characters
+        if (parts[1].length > 2) {
+          seconds = parts[1].substring(0, 2);
+          milliseconds = parts[1].substring(2);
+        } else {
+          seconds = parts[1];
+          milliseconds = "000";
+        }
+      }
     }
   }
   

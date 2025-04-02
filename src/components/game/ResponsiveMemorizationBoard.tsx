@@ -131,7 +131,7 @@ export default function ResponsiveMemorizationBoard() {
             onClick={handleSkip}
             variant="outline"
             size="sm"
-            className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs sm:text-sm transform origin-right"
+            className="bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs sm:text-sm transform origin-right"
           >
             Skip
           </Button>

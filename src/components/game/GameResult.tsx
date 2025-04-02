@@ -252,7 +252,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         <Button
           onClick={onTryAgain}
           variant="outline"
-          className="w-full bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5"
+          className="w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5"
         >
           Try Again
         </Button>
@@ -270,7 +270,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           <Button
             onClick={() => setShowLeaderboardDialog(true)}
             variant="outline"
-            className="w-full bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 mt-2"
+            className="w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 mt-2"
           >
             Submit to Leaderboard
           </Button>

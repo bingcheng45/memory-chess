@@ -18,11 +18,21 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
+// Interface for entry details from URL params
+interface EntryDetails {
+  player: string | null;
+  difficulty: string | null;
+  memorizeTime: number | null;
+  solutionTime: number | null;
+  pieceCount: number | null;
+  correctPieces: number | null;
+}
+
 interface LeaderboardTableProps {
   data: LeaderboardEntry[];
   isLoading: boolean;
   error: string | null;
-  highlightPlayer?: string | null;
+  entryDetails?: EntryDetails;
 }
 
 // Consistent time display component
@@ -86,13 +96,13 @@ const TimeDisplay = ({ time }: { time: string }) => {
   );
 };
 
-export default function LeaderboardTable({ data, isLoading, error, highlightPlayer }: LeaderboardTableProps) {
+export default function LeaderboardTable({ data, isLoading, error, entryDetails }: LeaderboardTableProps) {
   // Create a ref to store the highlighted row element
   const highlightedRowRef = useRef<HTMLTableRowElement>(null);
   
   // Scroll to highlighted row when data loads
   useEffect(() => {
-    if (!isLoading && highlightPlayer && highlightedRowRef.current) {
+    if (!isLoading && entryDetails?.player && highlightedRowRef.current) {
       // Use a small timeout to ensure the DOM is fully updated
       setTimeout(() => {
         highlightedRowRef.current?.scrollIntoView({
@@ -101,7 +111,7 @@ export default function LeaderboardTable({ data, isLoading, error, highlightPlay
         });
       }, 100);
     }
-  }, [isLoading, highlightPlayer, data]);
+  }, [isLoading, entryDetails, data]);
   
   if (isLoading) {
     return (
@@ -195,7 +205,18 @@ export default function LeaderboardTable({ data, isLoading, error, highlightPlay
         </TableHeader>
         <TableBody>
           {data.map((entry, index) => {
-            const isHighlighted = highlightPlayer && entry.player_name === highlightPlayer;
+            // More precise matching with multiple criteria
+            const isHighlighted = entryDetails?.player && (
+              // Match all relevant criteria if available
+              entry.player_name === entryDetails.player &&
+              // Match times with a small tolerance to account for precision differences
+              (entryDetails.memorizeTime === null || Math.abs(entry.memorize_time - entryDetails.memorizeTime) < 0.001) &&
+              (entryDetails.solutionTime === null || Math.abs(entry.solution_time - entryDetails.solutionTime) < 0.001) &&
+              // Match piece counts
+              (entryDetails.pieceCount === null || entry.piece_count === entryDetails.pieceCount) &&
+              (entryDetails.correctPieces === null || entry.correct_pieces === entryDetails.correctPieces)
+            );
+            
             return (
               <TableRow 
                 key={entry.id} 

@@ -7,14 +7,32 @@ import PageHeader from '@/components/ui/PageHeader';
 import { LeaderboardEntry } from '@/types/leaderboard';
 import { useSearchParams } from 'next/navigation';
 
+// Interface for entry details from URL params
+interface EntryDetails {
+  player: string | null;
+  difficulty: string | null;
+  memorizeTime: number | null;
+  solutionTime: number | null;
+  pieceCount: number | null;
+  correctPieces: number | null;
+}
+
 export default function LeaderboardPage() {
   const searchParams = useSearchParams();
-  const playerParam = searchParams.get('player');
-  const difficultyParam = searchParams.get('difficulty');
+  
+  // Extract all parameters for precise entry identification
+  const entryDetails: EntryDetails = {
+    player: searchParams.get('player'),
+    difficulty: searchParams.get('difficulty'),
+    memorizeTime: searchParams.get('memorizeTime') ? parseFloat(searchParams.get('memorizeTime')!) : null,
+    solutionTime: searchParams.get('solutionTime') ? parseFloat(searchParams.get('solutionTime')!) : null,
+    pieceCount: searchParams.get('pieceCount') ? parseInt(searchParams.get('pieceCount')!) : null,
+    correctPieces: searchParams.get('correctPieces') ? parseInt(searchParams.get('correctPieces')!) : null
+  };
   
   const [activeTab, setActiveTab] = useState(
-    difficultyParam && ['easy', 'medium', 'hard', 'grandmaster'].includes(difficultyParam) 
-      ? difficultyParam 
+    entryDetails.difficulty && ['easy', 'medium', 'hard', 'grandmaster'].includes(entryDetails.difficulty) 
+      ? entryDetails.difficulty 
       : 'medium'
   );
   const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry[]>([]);
@@ -114,19 +132,19 @@ export default function LeaderboardPage() {
             </TabsList>
             
             <TabsContent value="easy">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} highlightPlayer={playerParam} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} />
             </TabsContent>
             
             <TabsContent value="medium">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} highlightPlayer={playerParam} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} />
             </TabsContent>
             
             <TabsContent value="hard">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} highlightPlayer={playerParam} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} />
             </TabsContent>
             
             <TabsContent value="grandmaster">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} highlightPlayer={playerParam} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} />
             </TabsContent>
           </Tabs>
           

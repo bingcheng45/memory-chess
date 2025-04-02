@@ -334,7 +334,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               </div>
               
               <div className="flex justify-center gap-2">
-                <Link href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${encodeURIComponent('medium')}`}>
+                <Link href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${encodeURIComponent('medium')}&memorizeTime=${gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}`}>
                   <Button className="bg-peach-500 text-white hover:bg-peach-600">
                     View Leaderboard
                   </Button>

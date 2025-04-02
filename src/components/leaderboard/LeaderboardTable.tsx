@@ -105,7 +105,7 @@ export default function LeaderboardTable({ data, isLoading, error }: Leaderboard
     <div className="rounded-lg border border-bg-light overflow-hidden">
       <Table>
         <TableHeader className="bg-bg-card">
-          <TableRow>
+          <TableRow className="hover:bg-transparent">
             <TableHead className="w-16 text-center">Rank</TableHead>
             <TableHead>Player</TableHead>
             <TableHead className="text-center">Pieces</TableHead>

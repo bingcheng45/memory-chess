@@ -103,7 +103,7 @@ export default function LeaderboardPage() {
           
           <div className="w-full max-w-4xl flex justify-end">
             <p className="text-xs text-text-secondary/70 italic">
-              Displaying top 200 competitors. Ranked by accuracy, memorization time, and solution speed.
+              Displaying top 200 only. Ranked by accuracy, memorization time, and solution speed.
             </p>
           </div>
         </div>

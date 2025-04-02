@@ -278,8 +278,8 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         
         <Link href="/leaderboard">
           <Button 
-            variant="ghost"
-            className="w-full text-text-secondary hover:text-text-primary mt-2"
+            variant="outline"
+            className="w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 mt-2"
           >
             View Leaderboard
           </Button>

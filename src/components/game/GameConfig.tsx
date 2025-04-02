@@ -126,47 +126,25 @@ export default function GameConfig({ onStart }: GameConfigProps) {
             {pieceCount}
           </span>
         </div>
-        <div className="relative">
-          <input
-            id="pieceCount"
-            type="range"
-            min="2"
-            max="32"
-            step="1"
-            value={pieceCount}
-            onChange={(e) => {
-              setPieceCount(parseInt(e.target.value));
-            }}
-            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light relative
-                       [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 
-                       [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-peach-500 [&::-webkit-slider-thumb]:mt-[-1.5px]
-                       [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
-                       [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
-            style={{
-              backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((pieceCount - 2) / (32 - 2)) * 100}%, #222222 ${((pieceCount - 2) / (32 - 2)) * 100}%, #222222 100%)`
-            }}
-          />
-          
-          {/* Snap Points for Standard Difficulties */}
-          <div className="absolute top-1/2 left-0 right-0 -mt-1 pointer-events-none flex justify-between px-0">
-            {DIFFICULTY_PRESETS.map((preset) => {
-              // Calculate position percentage based on min (2) and max (32) values
-              const position = ((preset.pieceCount - 2) / (32 - 2)) * 100;
-              return (
-                <div 
-                  key={`snap-${preset.name}`}
-                  className={`h-3 w-3 rounded-full border-2 ${
-                    pieceCount === preset.pieceCount ? 'border-peach-500 bg-peach-500' : 'border-text-secondary bg-bg-light'
-                  }`}
-                  style={{
-                    marginLeft: position === 0 ? '0' : position === 100 ? 'auto' : `calc(${position}% - 6px)`,
-                    marginRight: position === 100 ? '0' : 'auto',
-                  }}
-                ></div>
-              );
-            })}
-          </div>
-        </div>
+        <input
+          id="pieceCount"
+          type="range"
+          min="2"
+          max="32"
+          step="1"
+          value={pieceCount}
+          onChange={(e) => {
+            setPieceCount(parseInt(e.target.value));
+          }}
+          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light
+                     [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 
+                     [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-peach-500 [&::-webkit-slider-thumb]:mt-[-1.5px]
+                     [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
+                     [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
+          style={{
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((pieceCount - 2) / (32 - 2)) * 100}%, #222222 ${((pieceCount - 2) / (32 - 2)) * 100}%, #222222 100%)`
+          }}
+        />
         <div className="mt-4 flex justify-between text-xs text-text-muted">
           <span>2</span>
           <span>17</span>
@@ -183,48 +161,25 @@ export default function GameConfig({ onStart }: GameConfigProps) {
             {memorizeTime}s
           </span>
         </div>
-        <div className="relative">
-          <input
-            id="memorizeTime"
-            type="range"
-            min="2"
-            max="32"
-            step="1"
-            value={memorizeTime}
-            onChange={(e) => {
-              setMemorizeTime(parseInt(e.target.value));
-            }}
-            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light relative
-                       [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 
-                       [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-peach-500 [&::-webkit-slider-thumb]:mt-[-1.5px]
-                       [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
-                       [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
-            style={{
-              backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((memorizeTime - 2) / (32 - 2)) * 100}%, #222222 ${((memorizeTime - 2) / (32 - 2)) * 100}%, #222222 100%)`
-            }}
-          />
-          
-          {/* Snap Points for Standard Difficulties */}
-          <div className="absolute top-1/2 left-0 right-0 -mt-1 pointer-events-none flex justify-between px-0">
-            {DIFFICULTY_PRESETS.map((preset) => {
-              // Calculate position percentage based on min (2) and max (32) values
-              const position = ((preset.memorizeTime - 2) / (32 - 2)) * 100;
-              return (
-                <div 
-                  key={`snap-${preset.name}`}
-                  className={`h-3 w-3 rounded-full border-2 ${
-                    memorizeTime === preset.memorizeTime ? 'border-peach-500 bg-peach-500' : 'border-text-secondary bg-bg-light'
-                  }`}
-                  style={{
-                    marginLeft: position === 0 ? '0' : position === 100 ? 'auto' : `calc(${position}% - 6px)`,
-                    marginRight: position === 100 ? '0' : 'auto',
-                    display: DIFFICULTY_PRESETS.filter(p => p.memorizeTime === preset.memorizeTime).indexOf(preset) === 0 ? 'block' : 'none', // Only show once for each unique value
-                  }}
-                ></div>
-              );
-            })}
-          </div>
-        </div>
+        <input
+          id="memorizeTime"
+          type="range"
+          min="2"
+          max="32"
+          step="1"
+          value={memorizeTime}
+          onChange={(e) => {
+            setMemorizeTime(parseInt(e.target.value));
+          }}
+          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light
+                     [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 
+                     [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-peach-500 [&::-webkit-slider-thumb]:mt-[-1.5px]
+                     [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
+                     [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
+          style={{
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((memorizeTime - 2) / (32 - 2)) * 100}%, #222222 ${((memorizeTime - 2) / (32 - 2)) * 100}%, #222222 100%)`
+          }}
+        />
         <div className="mt-4 flex justify-between text-xs text-text-muted">
           <span>2s</span>
           <span>17s</span>

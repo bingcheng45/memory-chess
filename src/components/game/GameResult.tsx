@@ -59,6 +59,19 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     };
   };
   
+  // Consistent time display component
+  const TimeDisplay = ({ minutes, seconds, milliseconds }: { minutes: string; seconds: string; milliseconds: string }) => {
+    return (
+      <div className="inline-flex items-center font-mono text-base">
+        <span>{minutes}</span>
+        <span>:</span>
+        <span>{seconds}</span>
+        <span>:</span>
+        <span>{milliseconds}</span>
+      </div>
+    );
+  };
+  
   // Get a message based on accuracy
   const getResultMessage = () => {
     const accuracy = gameState.accuracy || 0;
@@ -179,11 +192,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           <span className="font-bold text-text-primary">
             {(() => {
               const { minutes, seconds, milliseconds } = formatTimeParts(gameState.completionTime || 0);
-              return (
-                <>
-                  {minutes}:{seconds}<span className="text-xs">{milliseconds}</span>
-                </>
-              );
+              return <TimeDisplay minutes={minutes} seconds={seconds} milliseconds={milliseconds} />;
             })()}
           </span>
         </div>

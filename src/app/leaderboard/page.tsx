@@ -77,31 +77,11 @@ export default function LeaderboardPage() {
             onValueChange={setActiveTab}
             className="w-full max-w-4xl"
           >
-            <TabsList className="grid grid-cols-2 sm:grid-cols-4 mb-8">
-              <TabsTrigger 
-                value="easy" 
-                className="text-sm px-2 py-1.5 sm:text-base sm:px-4 sm:py-2"
-              >
-                Easy
-              </TabsTrigger>
-              <TabsTrigger 
-                value="medium"
-                className="text-sm px-2 py-1.5 sm:text-base sm:px-4 sm:py-2"
-              >
-                Medium
-              </TabsTrigger>
-              <TabsTrigger 
-                value="hard"
-                className="text-sm px-2 py-1.5 sm:text-base sm:px-4 sm:py-2"
-              >
-                Hard
-              </TabsTrigger>
-              <TabsTrigger 
-                value="grandmaster"
-                className="text-sm px-2 py-1.5 sm:text-base sm:px-4 sm:py-2"
-              >
-                Grandmaster
-              </TabsTrigger>
+            <TabsList className="grid grid-cols-4 mb-8">
+              <TabsTrigger value="easy">Easy</TabsTrigger>
+              <TabsTrigger value="medium">Medium</TabsTrigger>
+              <TabsTrigger value="hard">Hard</TabsTrigger>
+              <TabsTrigger value="grandmaster">Grandmaster</TabsTrigger>
             </TabsList>
             
             <TabsContent value="easy">

@@ -270,7 +270,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           <Button
             onClick={() => setShowLeaderboardDialog(true)}
             variant="outline"
-            className="w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5"
+            className="w-full bg-green-500/10 text-green-500 hover:text-green-500 border-green-500/30 hover:bg-green-500/20 px-3 py-1.5"
           >
             Submit to Leaderboard
           </Button>
@@ -308,7 +308,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                   onChange={(e) => setPlayerName(e.target.value)}
                   placeholder="Enter your name"
                   disabled={isSubmitting}
-                  className="bg-bg-light border-bg-light text-text-primary focus:border-peach-500/50 focus:ring-peach-500/30"
+                  className="bg-bg-light border-bg-light text-text-primary focus:border-green-500/50 focus:ring-green-500/30"
                 />
               </div>
               
@@ -330,7 +330,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                 <Button 
                   onClick={submitToLeaderboard}
                   disabled={!playerName.trim() || isSubmitting}
-                  className="bg-peach-500 text-white hover:text-white hover:bg-peach-600"
+                  className="bg-green-500 text-white hover:text-white hover:bg-green-600"
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit Score'}
                 </Button>
@@ -339,10 +339,10 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           ) : (
             <div className="space-y-4 py-4">
               <div className="flex justify-center">
-                <div className="rounded-full bg-peach-500/20 p-3">
+                <div className="rounded-full bg-green-500/20 p-3">
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
-                    className="h-6 w-6 text-peach-500" 
+                    className="h-6 w-6 text-green-500" 
                     fill="none" 
                     viewBox="0 0 24 24" 
                     stroke="currentColor"
@@ -361,7 +361,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                   const difficulty = determineDifficulty(gameState.pieceCount);
                   return encodeURIComponent(difficulty === 'custom' ? 'medium' : difficulty);
                 })()}&memorizeTime=${gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}`}>
-                  <Button className="bg-peach-500 text-white hover:text-white hover:bg-peach-600">
+                  <Button className="bg-green-500 text-white hover:text-white hover:bg-green-600">
                     View Leaderboard
                   </Button>
                 </Link>

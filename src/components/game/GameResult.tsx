@@ -35,6 +35,19 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   // Get the local copy of gameState with skill rating change info
   const extendedGameState = gameState as GameStateWithRating;
   
+  // Helper function to determine difficulty level based on piece count
+  const determineDifficulty = (pieceCount: number): 'easy' | 'medium' | 'hard' | 'grandmaster' => {
+    if (pieceCount <= 2) {
+      return 'easy';
+    } else if (pieceCount <= 6) {
+      return 'medium';
+    } else if (pieceCount <= 12) {
+      return 'hard';
+    } else {
+      return 'grandmaster';
+    }
+  };
+  
   // Play success sound on component mount
   useEffect(() => {
     // Only play success sound if accuracy is high enough
@@ -100,9 +113,12 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   
   // Prepare leaderboard entry data
   const prepareLeaderboardEntry = (playerName: string) => {
+    // Determine difficulty based on piece count
+    const difficulty = determineDifficulty(gameState.pieceCount);
+    
     return {
       player_name: playerName,
-      difficulty: 'medium' as 'easy' | 'medium' | 'hard' | 'grandmaster', // Default to medium for this demo
+      difficulty: difficulty,
       piece_count: gameState.pieceCount,
       correct_pieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
       memorize_time: gameState.memorizeTime,
@@ -334,7 +350,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               </div>
               
               <div className="flex justify-center gap-2">
-                <Link href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${encodeURIComponent('medium')}&memorizeTime=${gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}`}>
+                <Link href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${encodeURIComponent(determineDifficulty(gameState.pieceCount))}&memorizeTime=${gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}`}>
                   <Button className="bg-peach-500 text-white hover:bg-peach-600">
                     View Leaderboard
                   </Button>

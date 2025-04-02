@@ -9,7 +9,7 @@ import GameResult from '@/components/game/GameResult';
 import GameStats from '@/components/game/GameStats';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
 import { useAnalytics, AnalyticsEventType } from '@/lib/utils/analyticsTracker';
-import { playSound } from '@/lib/utils/soundEffects';
+import { playSound, stopTimerSound } from '@/lib/utils/soundEffects';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
 import { Chess } from 'chess.js';
 import { v4 as uuidv4 } from 'uuid';
@@ -73,6 +73,7 @@ function GamePageContent() {
     
     // Clean up game state when leaving
     return () => {
+      stopTimerSound(); // Stop any timer sound when leaving the page
       resetGame();
     };
   }, [analytics, resetGame]);
@@ -166,6 +167,7 @@ function GamePageContent() {
       // Add a small buffer (50ms) to ensure the visual timer reaches 0 before the phase changes
       const timer = setTimeout(() => {
         console.log('Memorization time ended, transitioning to solution phase');
+        stopTimerSound(); // Stop the timer sound before playing the end sound
         playSound('timerEnd');
         endMemorizationPhase();
         startSolutionPhase();
@@ -210,17 +212,21 @@ function GamePageContent() {
         }
       }, 1000); // Update once per second
       
-      return () => clearInterval(timer);
+      return () => {
+        clearInterval(timer);
+      };
     } else {
       // Reset the ref when leaving solution phase
+      stopTimerSound(); // Stop any timer sound when leaving solution phase
       solutionStartTimeRef.current = null;
       setElapsedTime(0);
     }
-  }, [gameState.isSolutionPhase, gameState.memorizeTime, timerWarningPlayed, playSound, setTimerWarningPlayed]);
+  }, [gameState.isSolutionPhase, gameState.memorizeTime, timerWarningPlayed]);
   
   // Handle submitting the solution
   const handleSubmitSolution = () => {
     console.log('Submitting solution');
+    stopTimerSound(); // Stop any playing timer sound
     playSound('click');
     submitSolution();
   };
@@ -228,6 +234,7 @@ function GamePageContent() {
   // Handle trying again with the same configuration
   const handleTryAgain = () => {
     console.log('Trying again with same configuration');
+    stopTimerSound(); // Stop any playing timer sound
     playSound('click');
     resetGame();
     startGame(gameState.pieceCount, gameState.memorizeTime);
@@ -236,6 +243,7 @@ function GamePageContent() {
   // Handle starting a new game with different configuration
   const handleNewGame = () => {
     console.log('Starting new game with different configuration');
+    stopTimerSound(); // Stop any playing timer sound
     playSound('click');
     resetGame();
   };
@@ -249,6 +257,7 @@ function GamePageContent() {
   
   // Handle back button
   const handleBack = () => {
+    stopTimerSound(); // Stop any playing timer sound
     analytics.trackFeatureUsage('game_navigation', 'back_to_home');
     router.push('/');
   };

@@ -6,6 +6,8 @@ import './globals.css';
 import dynamic from 'next/dynamic';
 const Analytics = dynamic(() => import('@vercel/analytics/react').then(mod => mod.Analytics));
 const SpeedInsights = dynamic(() => import('@vercel/speed-insights/next').then(mod => mod.SpeedInsights));
+import { GoogleAnalytics } from "@next/third-parties/google";
+import SoundStopNavigator from '@/components/common/SoundStopNavigator';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,6 +36,8 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
+        <GoogleAnalytics gaId="G-R8BM9EMY9J" />
+        <SoundStopNavigator />
       </body>
     </html>
   );

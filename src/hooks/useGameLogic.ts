@@ -10,7 +10,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useGameStore } from '@/stores/gameStore';
 import { ChessPiece, Position } from '@/components/features/game/ChessBoard/ChessBoard.types';
-import { playSound } from '@/lib/utils/sound';
+import { playSound, stopTimerSound } from '@/lib/utils/soundEffects';
 
 /**
  * Custom hook that provides game logic functionality
@@ -55,14 +55,25 @@ export function useGameLogic() {
   }, []);
 
   const matchPieces = useCallback((piece1: ChessPiece, piece2: ChessPiece) => {
-    setPieces(prev => 
-      prev.map(p => 
+    let allMatched = false;
+    setPieces(prev => {
+      const newPieces = prev.map(p => 
         p.id === piece1.id || p.id === piece2.id 
           ? { ...p, isMatched: true } 
           : p
-      )
-    );
+      );
+      // Check if all pieces are now matched
+      allMatched = newPieces.every(p => p.isMatched);
+      return newPieces;
+    });
     setScore(prev => prev + 10);
+
+    // If all pieces are matched, stop timer and set status to completed
+    if (allMatched) {
+      console.log('All pieces matched! Game completed.');
+      stopTimerSound(); // Stop the timer sound
+      setGameStatus('completed'); // Set game status
+    }
   }, []);
 
   const makeMove = useCallback((from: Position, to: Position) => {

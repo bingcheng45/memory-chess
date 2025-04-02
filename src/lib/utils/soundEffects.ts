@@ -12,11 +12,16 @@ const SOUND_URLS = {
   timer: '/sounds/timer.mp3',
   timerEnd: '/sounds/timer-end.mp3',
   place: '/sounds/place.mp3',
-  remove: '/sounds/remove.mp3'
+  remove: '/sounds/remove.mp3',
+  reveal: '/sounds/click.mp3',
+  match: '/sounds/success.mp3',
+  error: '/sounds/failure.mp3'
 };
 
 // Cache for audio objects
 const audioCache: Record<string, HTMLAudioElement | null> = {};
+// Store the currently playing timer instance
+let currentTimerAudio: HTMLAudioElement | null = null;
 
 // Flag to track if user has interacted with the page
 let userHasInteracted = false;
@@ -35,7 +40,9 @@ const initSound = (soundName: keyof typeof SOUND_URLS): void => {
       
       // Add error handler
       audio.addEventListener('error', (e) => {
-        console.error(`Error loading sound ${soundName}:`, e);
+        // Log more details from the error event
+        const error = (e.target as HTMLAudioElement).error;
+        console.error(`Error loading sound ${soundName}:`, error ? `${error.code} - ${error.message}` : 'Unknown error', e);
         audioCache[soundName] = null;
       });
       
@@ -107,9 +114,34 @@ export const playSound = (soundName: keyof typeof SOUND_URLS): void => {
       return;
     }
     
+    // If trying to play timer, stop any existing timer sound first
+    if (soundName === 'timer' && currentTimerAudio) {
+      console.log('Stopping previous timer sound');
+      currentTimerAudio.pause();
+      currentTimerAudio.currentTime = 0; // Reset time
+      currentTimerAudio = null; // Clear reference
+    }
+
     // Create a new audio element for each play to allow overlapping sounds
     const sound = new Audio(SOUND_URLS[soundName]);
     sound.volume = volume;
+
+    // If it's the timer sound, store the instance and handle its end
+    if (soundName === 'timer') {
+      currentTimerAudio = sound;
+      sound.addEventListener('ended', () => {
+        console.log('Timer sound ended naturally');
+        if (currentTimerAudio === sound) { // Ensure it's the same instance
+           currentTimerAudio = null;
+        }
+      }, { once: true });
+      sound.addEventListener('pause', () => { // Also clear if manually paused elsewhere (e.g., stopTimerSound)
+        console.log('Timer sound paused');
+         if (currentTimerAudio === sound) { 
+           currentTimerAudio = null;
+         }
+      }, { once: true });
+    }
     
     // Play with error handling
     const playPromise = sound.play();
@@ -127,6 +159,24 @@ export const playSound = (soundName: keyof typeof SOUND_URLS): void => {
     }
   } catch (err) {
     console.error(`Error with sound ${soundName}:`, err);
+    // Clear timer reference on error too
+    if (soundName === 'timer' && currentTimerAudio) {
+        currentTimerAudio = null;
+    }
+  }
+};
+
+/**
+ * Stop the currently playing timer sound, if any.
+ */
+export const stopTimerSound = (): void => {
+  if (currentTimerAudio) {
+    console.log('Explicitly stopping timer sound');
+    currentTimerAudio.pause();
+    currentTimerAudio.currentTime = 0;
+    // Setting currentTimerAudio to null is handled by the 'pause' event listener added in playSound
+  } else {
+    console.log('No timer sound currently playing to stop');
   }
 };
 

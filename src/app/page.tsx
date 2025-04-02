@@ -28,7 +28,15 @@ export default function Home() {
               </Button>
             </Link>
             
-            {/* Dashboard link removed */}
+            <Link href="/leaderboard">
+              <Button 
+                variant="outline"
+                size="sm"
+                className="bg-indigo-500/10 text-indigo-500 border-indigo-500/30 hover:bg-indigo-500/20 px-3 py-1.5 text-sm"
+              >
+                Leaderboard
+              </Button>
+            </Link>
           </div>
 
           <div className="mt-12 grid gap-8 sm:grid-cols-3">

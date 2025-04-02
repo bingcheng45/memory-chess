@@ -4,6 +4,7 @@ import { ChessPiece } from '../types/chess';
 import { Difficulty, GamePhase, GameState, DIFFICULTY_PRESETS } from '../types/game';
 import { generateRandomPosition } from '../utils/positionGenerator';
 import { comparePositions } from '../utils/positionComparator';
+import { LeaderboardSubmission } from '../types/leaderboard';
 
 interface GameActions {
   // Configuration actions
@@ -25,6 +26,10 @@ interface GameActions {
   // Error handling
   setError: (error: string | null) => void;
   setLoading: (isLoading: boolean) => void;
+  
+  // Leaderboard actions
+  isEligibleForLeaderboard: () => boolean;
+  prepareLeaderboardEntry: (playerName: string) => LeaderboardSubmission;
 }
 
 const initialState: GameState = {
@@ -167,7 +172,29 @@ export const useGameStore = create<GameState & GameActions>()(
       
       // Error handling
       setError: (error) => set({ error }),
-      setLoading: (isLoading) => set({ isLoading })
+      setLoading: (isLoading) => set({ isLoading }),
+      
+      // Leaderboard functions
+      isEligibleForLeaderboard: () => {
+        const state = get();
+        // Only standard difficulties are eligible
+        return ['easy', 'medium', 'hard', 'grandmaster'].includes(state.config.difficulty);
+      },
+      
+      prepareLeaderboardEntry: (playerName: string) => {
+        const state = get();
+        
+        return {
+          player_name: playerName,
+          difficulty: state.config.difficulty as 'easy' | 'medium' | 'hard' | 'grandmaster',
+          piece_count: state.config.pieceCount,
+          correct_pieces: Math.round((state.accuracy || 0) * state.config.pieceCount / 100),
+          memorize_time: state.config.memorizeTime,
+          solution_time: state.endTime && state.startTime ? 
+            (state.endTime - state.startTime) / 1000 :
+            0,
+        };
+      }
     }),
     {
       name: 'memory-chess-game-state'

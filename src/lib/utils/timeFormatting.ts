@@ -5,6 +5,9 @@ export function formatTimeParts(milliseconds: number): { minutes: string; second
   const seconds = (totalSeconds % 60).toString().padStart(2, '0');
   const ms = (milliseconds % 1000).toString().padStart(3, '0');
   
+  // Debug the components
+  console.log(`formatTimeParts: ${milliseconds}ms → min:${minutes}, sec:${seconds}, ms:${ms}`);
+  
   return {
     minutes,
     seconds,
@@ -14,17 +17,26 @@ export function formatTimeParts(milliseconds: number): { minutes: string; second
 
 export function formatTimeDisplay(milliseconds: number): string {
   const { minutes, seconds, milliseconds: ms } = formatTimeParts(milliseconds);
-  return `${minutes}:${seconds}:${ms}`;
+  // Ensure proper formatting with colons
+  const formatted = `${minutes}:${seconds}:${ms}`;
+  console.log(`formatTimeDisplay: ${formatted}`);
+  return formatted;
 }
 
 export function formatMemorizeTime(milliseconds: number): string {
   const { minutes, seconds, milliseconds: ms } = formatTimeParts(milliseconds);
-  return `${minutes}:${seconds}:${ms}`;
+  // Ensure proper formatting with colons
+  const formatted = `${minutes}:${seconds}:${ms}`;
+  console.log(`formatMemorizeTime: ${formatted}`);
+  return formatted;
 }
 
 export function formatSolutionTime(milliseconds: number): string {
   const { minutes, seconds, milliseconds: ms } = formatTimeParts(milliseconds);
-  return `${minutes}:${seconds}:${ms}`;
+  // Ensure proper formatting with colons
+  const formatted = `${minutes}:${seconds}:${ms}`;
+  console.log(`formatSolutionTime: ${formatted}`);
+  return formatted;
 }
 
 export function formatDate(dateString: string): string {

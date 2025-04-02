@@ -330,7 +330,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                 <Button 
                   onClick={submitToLeaderboard}
                   disabled={!playerName.trim() || isSubmitting}
-                  className="bg-peach-500 text-white hover:bg-peach-600"
+                  className="bg-peach-500 text-white hover:text-white hover:bg-peach-600"
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit Score'}
                 </Button>
@@ -361,7 +361,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                   const difficulty = determineDifficulty(gameState.pieceCount);
                   return encodeURIComponent(difficulty === 'custom' ? 'medium' : difficulty);
                 })()}&memorizeTime=${gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}`}>
-                  <Button className="bg-peach-500 text-white hover:bg-peach-600">
+                  <Button className="bg-peach-500 text-white hover:text-white hover:bg-peach-600">
                     View Leaderboard
                   </Button>
                 </Link>

@@ -36,15 +36,17 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const extendedGameState = gameState as GameStateWithRating;
   
   // Helper function to determine difficulty level based on piece count
-  const determineDifficulty = (pieceCount: number): 'easy' | 'medium' | 'hard' | 'grandmaster' => {
-    if (pieceCount <= 2) {
+  const determineDifficulty = (pieceCount: number): 'easy' | 'medium' | 'hard' | 'grandmaster' | 'custom' => {
+    if (pieceCount === 2) {
       return 'easy';
-    } else if (pieceCount <= 6) {
+    } else if (pieceCount === 6) {
       return 'medium';
-    } else if (pieceCount <= 12) {
+    } else if (pieceCount === 12) {
       return 'hard';
-    } else {
+    } else if (pieceCount === 20) {
       return 'grandmaster';
+    } else {
+      return 'custom';
     }
   };
   
@@ -107,8 +109,9 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   
   // Check if the score is eligible for the leaderboard
   const isEligibleForLeaderboard = () => {
-    // Only standard difficulties are eligible
-    return true; // Simplified for now; normally would check difficulty
+    // Only standard difficulties are eligible (not custom games)
+    const difficulty = determineDifficulty(gameState.pieceCount);
+    return difficulty !== 'custom';
   };
   
   // Prepare leaderboard entry data
@@ -116,9 +119,13 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     // Determine difficulty based on piece count
     const difficulty = determineDifficulty(gameState.pieceCount);
     
+    // Custom games shouldn't reach this point due to isEligibleForLeaderboard check,
+    // but as a safeguard, use medium difficulty if somehow a custom game is submitted
+    const submissionDifficulty = difficulty === 'custom' ? 'medium' : difficulty;
+    
     return {
       player_name: playerName,
-      difficulty: difficulty,
+      difficulty: submissionDifficulty,
       piece_count: gameState.pieceCount,
       correct_pieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
       memorize_time: gameState.memorizeTime,
@@ -350,7 +357,10 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               </div>
               
               <div className="flex justify-center gap-2">
-                <Link href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${encodeURIComponent(determineDifficulty(gameState.pieceCount))}&memorizeTime=${gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}`}>
+                <Link href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${(() => {
+                  const difficulty = determineDifficulty(gameState.pieceCount);
+                  return encodeURIComponent(difficulty === 'custom' ? 'medium' : difficulty);
+                })()}&memorizeTime=${gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}`}>
                   <Button className="bg-peach-500 text-white hover:bg-peach-600">
                     View Leaderboard
                   </Button>

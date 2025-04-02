@@ -251,17 +251,26 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       <div className="flex flex-col space-y-3">
         <Button
           onClick={onTryAgain}
-          variant="outline"
-          className="w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5"
+          variant={gameState.accuracy === 100 ? "outline" : "secondary"}
+          size={gameState.accuracy === 100 ? "default" : "lg"}
+          className={
+            gameState.accuracy === 100 
+              ? "w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5"
+              : "w-full border border-gray-600"
+          }
         >
           Try Again
         </Button>
         
         <Button
           onClick={onNewGame}
-          variant="secondary"
-          size="lg"
-          className="w-full border border-gray-600"
+          variant={gameState.accuracy === 100 ? "secondary" : "outline"}
+          size={gameState.accuracy === 100 ? "lg" : "default"}
+          className={
+            gameState.accuracy === 100
+              ? "w-full border border-gray-600"
+              : "w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5"
+          }
         >
           New Game
         </Button>

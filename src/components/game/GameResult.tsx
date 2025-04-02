@@ -62,12 +62,12 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   // Consistent time display component
   const TimeDisplay = ({ minutes, seconds, milliseconds }: { minutes: string; seconds: string; milliseconds: string }) => {
     return (
-      <div className="inline-flex items-center font-mono text-base">
+      <div className="inline-flex items-baseline font-mono">
         <span>{minutes}</span>
         <span>:</span>
         <span>{seconds}</span>
         <span>:</span>
-        <span>{milliseconds}</span>
+        <span className="text-xs">{milliseconds}</span>
       </div>
     );
   };

@@ -25,41 +25,32 @@ interface LeaderboardTableProps {
 
 // Consistent time display component
 const TimeDisplay = ({ time }: { time: string }) => {
-  // Use CSS to ensure all characters (including colons) have the same styling and size
+  // Extract time parts
+  let minutes = "00";
+  let seconds = "00";
+  let milliseconds = "000";
+  
+  // Handle different time formats
+  if (time.includes(':')) {
+    const parts = time.split(':');
+    if (parts.length === 3) {
+      // Already in MM:SS:XXX format
+      [minutes, seconds, milliseconds] = parts;
+    } else if (parts.length === 2 && parts[1].length >= 5) {
+      // In MM:SSXXX format (missing second colon)
+      minutes = parts[0];
+      seconds = parts[1].substring(0, 2);
+      milliseconds = parts[1].substring(2);
+    }
+  }
+  
   return (
-    <div className="inline-flex items-center font-mono text-base">
-      {/* Split time string if it has proper format */}
-      {time.includes(':') ? (
-        <>
-          {/* If time is already in MM:SS:XXX format */}
-          {time.split(':').length === 3 ? (
-            <>
-              <span>{time.split(':')[0]}</span>
-              <span>:</span>
-              <span>{time.split(':')[1]}</span>
-              <span>:</span>
-              <span>{time.split(':')[2]}</span>
-            </>
-          ) : (
-            /* If time is in MM:SSXXX format (missing second colon) */ 
-            time.split(':').length === 2 && time.split(':')[1].length >= 5 ? (
-              <>
-                <span>{time.split(':')[0]}</span>
-                <span>:</span>
-                <span>{time.split(':')[1].substring(0, 2)}</span>
-                <span>:</span>
-                <span>{time.split(':')[1].substring(2)}</span>
-              </>
-            ) : (
-              /* Fall back to showing the original string */
-              <span>{time}</span>
-            )
-          )}
-        </>
-      ) : (
-        /* Time string without any colons */
-        <span>{time}</span>
-      )}
+    <div className="inline-flex items-baseline font-mono">
+      <span>{minutes}</span>
+      <span>:</span>
+      <span>{seconds}</span>
+      <span>:</span>
+      <span className="text-xs">{milliseconds}</span>
     </div>
   );
 };

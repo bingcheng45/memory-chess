@@ -63,15 +63,11 @@ export default function LeaderboardPage() {
         </div>
         
         <div className="flex flex-col items-center justify-center space-y-8">
-          <h1 className="text-3xl font-bold text-peach-400">Chess Recall Rankings</h1>
+          <h1 className="text-3xl font-bold text-peach-400">Memory Chess Rankings</h1>
           
           <div className="max-w-2xl space-y-2">
             <p className="text-lg text-text-secondary text-center">
               Master the board through visualization. Compete against the world&apos;s best in mental precision and speed.
-            </p>
-            
-            <p className="text-sm text-text-secondary/80 text-center">
-              Displaying top 200 competitors. Ranked by accuracy, memorization time, and solution speed.
             </p>
           </div>
           
@@ -104,6 +100,12 @@ export default function LeaderboardPage() {
               <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} />
             </TabsContent>
           </Tabs>
+          
+          <div className="w-full max-w-4xl flex justify-end">
+            <p className="text-xs text-text-secondary/70 italic">
+              Displaying top 200 competitors. Ranked by accuracy, memorization time, and solution speed.
+            </p>
+          </div>
         </div>
       </main>
     </div>

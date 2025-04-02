@@ -2,11 +2,14 @@
 
 import Link from 'next/link';
 import SoundSettings from './SoundSettings';
+import { Button } from './button';
 
 type PageType = 'game-config' | 'game-memorize-solution' | 'game-result' | 'other';
 
 interface PageHeaderProps {
   onBackClick?: () => void;
+  onSkipClick?: () => void;
+  showSkipButton?: boolean;
   className?: string;
   showSoundSettings?: boolean;
   pageType?: PageType;
@@ -14,6 +17,8 @@ interface PageHeaderProps {
 
 export default function PageHeader({ 
   onBackClick, 
+  onSkipClick,
+  showSkipButton = false,
   className = '',
   showSoundSettings = true,
   pageType = 'other'
@@ -56,12 +61,25 @@ export default function PageHeader({
         </Link>
       </div>
       
-      {/* Sound settings with positioning based on page type */}
-      {showSoundSettings && (
-        <div className={`absolute top-1/2 -translate-y-1/2 ${getPositionClass()}`}>
+      {/* Control buttons with positioning based on page type */}
+      <div className={`absolute top-1/2 -translate-y-1/2 ${getPositionClass()} flex items-center space-x-2`}>
+        {/* Skip button, only shown during memorization phase */}
+        {showSkipButton && onSkipClick && (
+          <Button 
+            onClick={onSkipClick}
+            variant="outline"
+            size="sm"
+            className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-xs h-7"
+          >
+            Skip
+          </Button>
+        )}
+        
+        {/* Sound settings */}
+        {showSoundSettings && (
           <SoundSettings className="w-[46px] sm:w-[50px]" />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 } 

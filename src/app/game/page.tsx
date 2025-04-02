@@ -262,6 +262,15 @@ function GamePageContent() {
     router.push('/');
   };
   
+  // Handle skipping memorization phase
+  const handleSkip = () => {
+    console.log('Skipping memorization phase');
+    stopTimerSound(); // Stop any playing timer sound
+    playSound('timerEnd');
+    endMemorizationPhase();
+    startSolutionPhase();
+  };
+  
   console.log('Current game phase:', gamePhase);
   
   // Add this helper function to convert chess.js board to ChessPiece array
@@ -427,7 +436,12 @@ function GamePageContent() {
     <main className="min-h-screen bg-bg-dark text-text-primary">
       <div className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
         {/* Pass different pageType based on current game phase */}
-        <PageHeader onBackClick={handleBack} pageType={getHeaderPageType()} />
+        <PageHeader 
+          onBackClick={handleBack} 
+          onSkipClick={handleSkip}
+          showSkipButton={gamePhase === GamePhase.MEMORIZATION}
+          pageType={getHeaderPageType()} 
+        />
         
         <ErrorBoundary>
           {renderGameContent()}

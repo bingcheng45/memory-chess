@@ -247,7 +247,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           <Button
             onClick={() => setShowLeaderboardDialog(true)}
             variant="outline"
-            className="w-full bg-indigo-500/10 text-indigo-500 border-indigo-500/30 hover:bg-indigo-500/20 px-3 py-1.5 mt-2"
+            className="w-full bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 mt-2"
           >
             Submit to Leaderboard
           </Button>
@@ -265,10 +265,10 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       
       {/* Leaderboard Submission Dialog */}
       <Dialog open={showLeaderboardDialog} onOpenChange={setShowLeaderboardDialog}>
-        <DialogContent>
+        <DialogContent className="bg-bg-card border border-bg-light text-text-primary">
           <DialogHeader>
-            <DialogTitle>{submitSuccess ? 'Score Submitted!' : 'Submit to Leaderboard'}</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-text-primary">{submitSuccess ? 'Score Submitted!' : 'Submit to Leaderboard'}</DialogTitle>
+            <DialogDescription className="text-text-secondary">
               {submitSuccess 
                 ? 'Your score has been successfully submitted to the leaderboard.'
                 : 'Enter your name to be displayed on the leaderboard.'}
@@ -278,13 +278,14 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           {!submitSuccess ? (
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label htmlFor="player-name">Player Name</Label>
+                <Label htmlFor="player-name" className="text-text-secondary">Player Name</Label>
                 <Input
                   id="player-name"
                   value={playerName}
                   onChange={(e) => setPlayerName(e.target.value)}
                   placeholder="Enter your name"
                   disabled={isSubmitting}
+                  className="bg-bg-light border-bg-light text-text-primary focus:border-peach-500/50 focus:ring-peach-500/30"
                 />
               </div>
               
@@ -299,6 +300,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                   variant="outline"
                   onClick={() => setShowLeaderboardDialog(false)}
                   disabled={isSubmitting}
+                  className="bg-bg-light text-text-secondary border-bg-light hover:bg-bg-light/80 hover:text-text-primary"
                 >
                   Cancel
                 </Button>
@@ -314,10 +316,10 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           ) : (
             <div className="space-y-4 py-4">
               <div className="flex justify-center">
-                <div className="rounded-full bg-green-500/20 p-3">
+                <div className="rounded-full bg-peach-500/20 p-3">
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
-                    className="h-6 w-6 text-green-500" 
+                    className="h-6 w-6 text-peach-500" 
                     fill="none" 
                     viewBox="0 0 24 24" 
                     stroke="currentColor"
@@ -333,7 +335,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               
               <div className="flex justify-center gap-2">
                 <Link href="/leaderboard">
-                  <Button className="bg-indigo-500 text-white hover:bg-indigo-600">
+                  <Button className="bg-peach-500 text-white hover:bg-peach-600">
                     View Leaderboard
                   </Button>
                 </Link>

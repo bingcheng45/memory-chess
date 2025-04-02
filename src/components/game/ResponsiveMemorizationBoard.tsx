@@ -21,7 +21,7 @@ export default function ResponsiveMemorizationBoard() {
     endMemorizationPhase();
     startSolutionPhase();
   };
-  
+
   // Convert chess.js position to ChessPiece array
   useEffect(() => {
     if (!chess) return;
@@ -123,47 +123,55 @@ export default function ResponsiveMemorizationBoard() {
   
   return (
     <div className="flex flex-col items-center w-full max-w-screen-sm mx-auto">
-      <div className="mb-1 text-center w-full">
-        <div className="text-md font-bold text-text-primary mb-1">Memorize the Position</div>
+      {/* Timer container - centered */}
+      <div className="w-full mb-4 relative px-4 sm:px-6">
+        {/* Skip button - aligned with the right edge of the contained area */}
+        <div className="absolute right-4 sm:right-6 bottom-0 z-10">
+          <Button 
+            onClick={handleSkip}
+            variant="outline"
+            size="sm"
+            className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs sm:text-sm transform origin-right"
+          >
+            Skip
+          </Button>
+        </div>
         
-        {/* Timer in center */}
-        <div className="w-full max-w-[250px] mx-auto">
-          {/* Centered timer */}
-          <div className="text-center">
-            <div className={`text-5xl font-bold ${getUrgencyClass()} transition-colors`}>
-              {seconds}
-              <span className="text-2xl opacity-50">.{milliseconds.toString().padStart(2, '0')}</span>
-            </div>
-          </div>
+        {/* Timer and instructions - centered with improved dynamic width */}
+        <div 
+          className="text-center mx-auto" 
+          style={{ 
+            width: "min(280px, calc(100% - 75px))",
+            minWidth: "180px", 
+            marginLeft: "auto", 
+            marginRight: "auto"
+          }}
+        >
+          <div className="text-md font-bold text-text-primary mb-1">Memorize the Position</div>
           
-          {/* Progress bar and skip button on same line */}
-          <div className="relative w-full mt-1">
-            {/* Skip button positioned at right edge of chess board, not exceeding it */}
-            <div className="absolute right-[-170px] top-1/2 -translate-y-1/2">
-              <Button 
-                onClick={handleSkip}
-                variant="outline"
-                size="sm"
-                className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
-              >
-                Skip
-              </Button>
+          {/* Timer */}
+          <div className="mx-auto">
+            <div className="text-center">
+              <div className={`text-4xl sm:text-5xl font-bold ${getUrgencyClass()} transition-colors`}>
+                {seconds}
+                <span className="text-xl sm:text-2xl opacity-50">.{milliseconds.toString().padStart(2, '0')}</span>
+              </div>
             </div>
             
-            {/* Progress bar */}
-            <div className="mx-auto h-1.5 w-full overflow-hidden rounded-full bg-bg-light">
+            {/* Progress bar - narrower on mobile */}
+            <div className="w-4/5 mx-auto h-1.5 overflow-hidden rounded-full bg-bg-light mt-1">
               <div 
                 className="h-full bg-peach-500 transition-all"
                 style={{ width: `${timerProgress}%` }}
               ></div>
             </div>
           </div>
-        </div>
-        
-        {/* Instruction text row */}
-        <div className="mt-1 mb-1 w-full max-w-[280px] mx-auto">
-          <div className="text-xs text-text-secondary text-center">
-            Remember the position of all {gameState.pieceCount} pieces
+          
+          {/* Instruction text ensured to be on one line with fallback */}
+          <div className="mt-1 mb-1">
+            <div className="text-xs text-text-secondary text-center whitespace-nowrap overflow-hidden text-ellipsis">
+              Remember the position of all {gameState.pieceCount} pieces
+            </div>
           </div>
         </div>
       </div>

@@ -25,65 +25,43 @@ interface LeaderboardTableProps {
 
 // Consistent time display component
 const TimeDisplay = ({ time }: { time: string }) => {
-  // For debugging - log the time string
-  console.log("Time string received:", time);
-  
-  // Check if the time matches the specific pattern "00:02017" (missing colon)
-  const missingColonPattern = /^(\d{2}):(\d{2})(\d{3})$/;
-  if (missingColonPattern.test(time)) {
-    // Skip the first element using array destructuring
-    const matches = time.match(missingColonPattern) || [];
-    const minutes = matches[1] || '';
-    const secondsStart = matches[2] || '';
-    const milliseconds = matches[3] || '';
-    console.log("Fixed malformed time:", `${minutes}:${secondsStart}:${milliseconds}`);
-    
-    return (
-      <span className="font-mono text-base">
-        {minutes}:<wbr />{secondsStart}:<wbr />{milliseconds}
-      </span>
-    );
-  }
-  
-  // Check if the time is in standard format
-  const isCorrectFormat = /^\d{2}:\d{2}:\d{3}$/.test(time);
-  
-  if (isCorrectFormat) {
-    // If already correctly formatted, just apply consistent styling
-    const parts = time.split(':');
-    const [minutes, seconds, milliseconds] = parts;
-    
-    return (
-      <span className="font-mono text-base">
-        {minutes}:<wbr />{seconds}:<wbr />{milliseconds}
-      </span>
-    );
-  } else {
-    // Handle other malformed time strings
-    console.log("Other malformed time string:", time);
-    
-    // Try to parse and reformat the time string
-    if (time.includes(':')) {
-      const parts = time.split(':');
-      if (parts.length === 2 && parts[1].length > 2) {
-        // Format likely missing second colon (e.g., "00:02017")
-        const minutes = parts[0];
-        const seconds = parts[1].substring(0, 2);
-        const milliseconds = parts[1].substring(2);
-        
-        console.log("Fixed split time:", `${minutes}:${seconds}:${milliseconds}`);
-        
-        return (
-          <span className="font-mono text-base">
-            {minutes}:<wbr />{seconds}:<wbr />{milliseconds}
-          </span>
-        );
-      }
-    }
-    
-    // Fallback for completely unexpected formats
-    return <span className="font-mono text-base">{time}</span>;
-  }
+  // Use CSS to ensure all characters (including colons) have the same styling and size
+  return (
+    <div className="inline-flex items-center font-mono text-base">
+      {/* Split time string if it has proper format */}
+      {time.includes(':') ? (
+        <>
+          {/* If time is already in MM:SS:XXX format */}
+          {time.split(':').length === 3 ? (
+            <>
+              <span>{time.split(':')[0]}</span>
+              <span>:</span>
+              <span>{time.split(':')[1]}</span>
+              <span>:</span>
+              <span>{time.split(':')[2]}</span>
+            </>
+          ) : (
+            /* If time is in MM:SSXXX format (missing second colon) */ 
+            time.split(':').length === 2 && time.split(':')[1].length >= 5 ? (
+              <>
+                <span>{time.split(':')[0]}</span>
+                <span>:</span>
+                <span>{time.split(':')[1].substring(0, 2)}</span>
+                <span>:</span>
+                <span>{time.split(':')[1].substring(2)}</span>
+              </>
+            ) : (
+              /* Fall back to showing the original string */
+              <span>{time}</span>
+            )
+          )}
+        </>
+      ) : (
+        /* Time string without any colons */
+        <span>{time}</span>
+      )}
+    </div>
+  );
 };
 
 export default function LeaderboardTable({ data, isLoading, error }: LeaderboardTableProps) {

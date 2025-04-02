@@ -51,6 +51,14 @@ export async function POST(request: NextRequest) {
       );
     }
     
+    // Validate player name length
+    if (typeof player_name === 'string' && (player_name.length < 4 || player_name.length > 16)) {
+      return NextResponse.json(
+        { error: 'Player name must be between 4 and 16 characters' },
+        { status: 400 }
+      );
+    }
+    
     // Validate difficulty
     if (!['easy', 'medium', 'hard', 'grandmaster'].includes(difficulty)) {
       return NextResponse.json(

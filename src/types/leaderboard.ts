@@ -1,5 +1,8 @@
 export interface LeaderboardEntry {
   id: string;
+  /**
+   * Player's display name (4-16 characters)
+   */
   player_name: string;
   difficulty: 'easy' | 'medium' | 'hard' | 'grandmaster';
   piece_count: number;
@@ -10,6 +13,9 @@ export interface LeaderboardEntry {
 }
 
 export interface LeaderboardSubmission {
+  /**
+   * Player's display name (4-16 characters)
+   */
   player_name: string;
   difficulty: 'easy' | 'medium' | 'hard' | 'grandmaster';
   piece_count: number;

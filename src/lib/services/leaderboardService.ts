@@ -41,6 +41,11 @@ export async function getLeaderboard(difficulty: string = 'medium'): Promise<{da
 }
 
 export async function submitLeaderboardEntry(entry: LeaderboardSubmission): Promise<LeaderboardEntry> {
+  // Validate player name length
+  if (entry.player_name.length < 4 || entry.player_name.length > 16) {
+    throw new Error('Player name must be between 4 and 16 characters');
+  }
+  
   const { data, error } = await supabase
     .from('leaderboard_entries')
     .insert(entry)

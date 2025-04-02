@@ -63,15 +63,15 @@ export default function LeaderboardPage() {
         </div>
         
         <div className="flex flex-col items-center justify-center space-y-8">
-          <h1 className="text-3xl font-bold text-peach-400">⚡ Memory Legends ⚡</h1>
+          <h1 className="text-3xl font-bold text-peach-400">Chess Recall Rankings</h1>
           
           <div className="max-w-2xl space-y-2">
             <p className="text-lg text-text-secondary text-center">
-              Brain vs. Board! 🧠♟️ Can you out-memorize the competition and claim your spot among the memory elite?
+              Master the board through visualization. Compete against the world&apos;s best in mental precision and speed.
             </p>
             
             <p className="text-sm text-text-secondary/80 text-center">
-              Top 200 players shown • Ranked by correct pieces → speed → style points ✨
+              Displaying top 200 competitors. Ranked by accuracy, memorization time, and solution speed.
             </p>
           </div>
           

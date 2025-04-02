@@ -23,6 +23,11 @@ interface LeaderboardTableProps {
   error: string | null;
 }
 
+// Consistent time display component
+const TimeDisplay = ({ time }: { time: string }) => {
+  return <span className="font-mono">{time}</span>;
+};
+
 export default function LeaderboardTable({ data, isLoading, error }: LeaderboardTableProps) {
   if (isLoading) {
     return (
@@ -128,10 +133,10 @@ export default function LeaderboardTable({ data, isLoading, error }: Leaderboard
                 {entry.correct_pieces}/{entry.piece_count}
               </TableCell>
               <TableCell className="text-center">
-                {formatMemorizeTime(entry.memorize_time)}
+                <TimeDisplay time={formatMemorizeTime(entry.memorize_time)} />
               </TableCell>
               <TableCell className="text-center">
-                {formatSolutionTime(entry.solution_time)}
+                <TimeDisplay time={formatSolutionTime(entry.solution_time)} />
               </TableCell>
               <TableCell className="text-right text-text-muted">
                 {formatDate(entry.created_at)}

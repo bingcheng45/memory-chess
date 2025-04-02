@@ -12,19 +12,19 @@ export function formatTimeParts(milliseconds: number): { minutes: string; second
   };
 }
 
-export function formatTimeDisplay(seconds: number): string {
-  const { minutes, seconds: secs, milliseconds } = formatTimeParts(seconds);
-  return `${minutes}:${secs}:${milliseconds}`;
+export function formatTimeDisplay(milliseconds: number): string {
+  const { minutes, seconds, milliseconds: ms } = formatTimeParts(milliseconds);
+  return `${minutes}:${seconds}:${ms}`;
 }
 
-export function formatMemorizeTime(seconds: number): string {
-  const { minutes, seconds: secs, milliseconds } = formatTimeParts(seconds);
-  return `${minutes}:${secs}:${milliseconds}`;
+export function formatMemorizeTime(milliseconds: number): string {
+  const { minutes, seconds, milliseconds: ms } = formatTimeParts(milliseconds);
+  return `${minutes}:${seconds}:${ms}`;
 }
 
-export function formatSolutionTime(seconds: number): string {
-  const { minutes, seconds: secs, milliseconds } = formatTimeParts(seconds);
-  return `${minutes}:${secs}:${milliseconds}`;
+export function formatSolutionTime(milliseconds: number): string {
+  const { minutes, seconds, milliseconds: ms } = formatTimeParts(milliseconds);
+  return `${minutes}:${seconds}:${ms}`;
 }
 
 export function formatDate(dateString: string): string {

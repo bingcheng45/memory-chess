@@ -16,11 +16,13 @@ import {
 import { LeaderboardEntry } from '@/types/leaderboard';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 interface LeaderboardTableProps {
   data: LeaderboardEntry[];
   isLoading: boolean;
   error: string | null;
+  highlightPlayer?: string | null;
 }
 
 // Consistent time display component
@@ -84,7 +86,23 @@ const TimeDisplay = ({ time }: { time: string }) => {
   );
 };
 
-export default function LeaderboardTable({ data, isLoading, error }: LeaderboardTableProps) {
+export default function LeaderboardTable({ data, isLoading, error, highlightPlayer }: LeaderboardTableProps) {
+  // Create a ref to store the highlighted row element
+  const highlightedRowRef = useRef<HTMLTableRowElement>(null);
+  
+  // Scroll to highlighted row when data loads
+  useEffect(() => {
+    if (!isLoading && highlightPlayer && highlightedRowRef.current) {
+      // Use a small timeout to ensure the DOM is fully updated
+      setTimeout(() => {
+        highlightedRowRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }, 100);
+    }
+  }, [isLoading, highlightPlayer, data]);
+  
   if (isLoading) {
     return (
       <div className="text-center p-8">
@@ -176,29 +194,42 @@ export default function LeaderboardTable({ data, isLoading, error }: Leaderboard
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((entry, index) => (
-            <TableRow key={entry.id} className={index < 3 ? "bg-peach-500/5" : undefined}>
-              <TableCell className="text-center font-bold">
-                {index === 0 && <span className="text-yellow-400">🏆</span>}
-                {index === 1 && <span className="text-gray-300">🥈</span>}
-                {index === 2 && <span className="text-amber-700">🥉</span>}
-                {index > 2 && index + 1}
-              </TableCell>
-              <TableCell className="font-medium">{entry.player_name}</TableCell>
-              <TableCell className="text-center">
-                {entry.correct_pieces}/{entry.piece_count}
-              </TableCell>
-              <TableCell className="text-center">
-                <TimeDisplay time={formatMemorizeTime(entry.memorize_time)} />
-              </TableCell>
-              <TableCell className="text-center">
-                <TimeDisplay time={formatSolutionTime(entry.solution_time)} />
-              </TableCell>
-              <TableCell className="text-right text-text-muted">
-                {formatDate(entry.created_at)}
-              </TableCell>
-            </TableRow>
-          ))}
+          {data.map((entry, index) => {
+            const isHighlighted = highlightPlayer && entry.player_name === highlightPlayer;
+            return (
+              <TableRow 
+                key={entry.id} 
+                className={`
+                  ${index < 3 ? "bg-peach-500/5" : ""}
+                  ${isHighlighted ? "bg-peach-500/20 animate-pulse" : ""}
+                `}
+                ref={isHighlighted ? highlightedRowRef : null}
+              >
+                <TableCell className="text-center font-bold">
+                  {index === 0 && <span className="text-yellow-400">🏆</span>}
+                  {index === 1 && <span className="text-gray-300">🥈</span>}
+                  {index === 2 && <span className="text-amber-700">🥉</span>}
+                  {index > 2 && index + 1}
+                </TableCell>
+                <TableCell className={`font-medium ${isHighlighted ? "text-peach-500" : ""}`}>
+                  {entry.player_name}
+                  {isHighlighted && <span className="ml-2 text-xs bg-peach-500/20 text-peach-500 px-2 py-0.5 rounded-full">You</span>}
+                </TableCell>
+                <TableCell className="text-center">
+                  {entry.correct_pieces}/{entry.piece_count}
+                </TableCell>
+                <TableCell className="text-center">
+                  <TimeDisplay time={formatMemorizeTime(entry.memorize_time)} />
+                </TableCell>
+                <TableCell className="text-center">
+                  <TimeDisplay time={formatSolutionTime(entry.solution_time)} />
+                </TableCell>
+                <TableCell className="text-right text-text-muted">
+                  {formatDate(entry.created_at)}
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </div>

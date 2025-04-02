@@ -334,7 +334,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               </div>
               
               <div className="flex justify-center gap-2">
-                <Link href="/leaderboard">
+                <Link href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${encodeURIComponent('medium')}`}>
                   <Button className="bg-peach-500 text-white hover:bg-peach-600">
                     View Leaderboard
                   </Button>

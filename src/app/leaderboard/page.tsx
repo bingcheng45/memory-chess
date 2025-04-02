@@ -5,9 +5,18 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import LeaderboardTable from '@/components/leaderboard/LeaderboardTable';
 import PageHeader from '@/components/ui/PageHeader';
 import { LeaderboardEntry } from '@/types/leaderboard';
+import { useSearchParams } from 'next/navigation';
 
 export default function LeaderboardPage() {
-  const [activeTab, setActiveTab] = useState('medium');
+  const searchParams = useSearchParams();
+  const playerParam = searchParams.get('player');
+  const difficultyParam = searchParams.get('difficulty');
+  
+  const [activeTab, setActiveTab] = useState(
+    difficultyParam && ['easy', 'medium', 'hard', 'grandmaster'].includes(difficultyParam) 
+      ? difficultyParam 
+      : 'medium'
+  );
   const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -105,19 +114,19 @@ export default function LeaderboardPage() {
             </TabsList>
             
             <TabsContent value="easy">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} highlightPlayer={playerParam} />
             </TabsContent>
             
             <TabsContent value="medium">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} highlightPlayer={playerParam} />
             </TabsContent>
             
             <TabsContent value="hard">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} highlightPlayer={playerParam} />
             </TabsContent>
             
             <TabsContent value="grandmaster">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} highlightPlayer={playerParam} />
             </TabsContent>
           </Tabs>
           

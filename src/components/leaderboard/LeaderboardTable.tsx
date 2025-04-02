@@ -25,7 +25,20 @@ interface LeaderboardTableProps {
 
 // Consistent time display component
 const TimeDisplay = ({ time }: { time: string }) => {
-  return <span className="font-mono">{time}</span>;
+  // Split the time string to style each part consistently
+  const parts = time.split(':');
+  
+  if (parts.length !== 3) {
+    return <span className="font-mono text-base">{time}</span>;
+  }
+  
+  const [minutes, seconds, milliseconds] = parts;
+  
+  return (
+    <span className="font-mono text-base">
+      {minutes}:{seconds}:{milliseconds}
+    </span>
+  );
 };
 
 export default function LeaderboardTable({ data, isLoading, error }: LeaderboardTableProps) {

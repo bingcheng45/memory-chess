@@ -5,12 +5,22 @@ import { useGameStore } from '@/lib/store/gameStore';
 import { ChessPiece } from '@/types/chess';
 import ResponsiveChessBoard from './ResponsiveChessBoard';
 import { mapChessJsPieceToType } from '@/utils/chessPieces';
+import { Button } from '@/components/ui/button';
+import { playSound } from '@/lib/utils/soundEffects';
 
 export default function ResponsiveMemorizationBoard() {
-  const { chess, gameState } = useGameStore();
+  const { chess, gameState, endMemorizationPhase, startSolutionPhase } = useGameStore();
   const [pieces, setPieces] = useState<ChessPiece[]>([]);
   const [timeRemaining, setTimeRemaining] = useState(gameState.memorizeTime * 1000); // Store time in milliseconds
   const [isLoading, setIsLoading] = useState(true);
+  
+  // Handle skipping memorization phase
+  const handleSkip = () => {
+    console.log('Skipping memorization phase');
+    playSound('timerEnd');
+    endMemorizationPhase();
+    startSolutionPhase();
+  };
   
   // Convert chess.js position to ChessPiece array
   useEffect(() => {
@@ -128,7 +138,17 @@ export default function ResponsiveMemorizationBoard() {
           
           {/* Progress bar and skip button on same line */}
           <div className="relative w-full mt-1">
-            {/* Skip button removed - now in header */}
+            {/* Skip button positioned at right edge of chess board, not exceeding it */}
+            <div className="absolute right-[-170px] top-1/2 -translate-y-1/2">
+              <Button 
+                onClick={handleSkip}
+                variant="outline"
+                size="sm"
+                className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
+              >
+                Skip
+              </Button>
+            </div>
             
             {/* Progress bar */}
             <div className="mx-auto h-1.5 w-full overflow-hidden rounded-full bg-bg-light">

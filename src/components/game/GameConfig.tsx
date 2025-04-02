@@ -191,7 +191,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         onClick={handleStart}
         variant="outline"
         size="sm"
-        className="w-full bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
+        className="w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
       >
         Start Training
       </Button>

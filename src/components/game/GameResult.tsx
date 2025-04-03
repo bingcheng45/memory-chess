@@ -166,15 +166,21 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     // Use actual memorize time if available, otherwise fall back to configured time
     const memorizeTime = gameState.actualMemorizeTime || gameState.memorizeTime;
     
-    return {
+    // Create base entry without the new field
+    const entry = {
       player_name: playerName,
       difficulty: submissionDifficulty,
       piece_count: gameState.pieceCount,
       correct_pieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
       memorize_time: memorizeTime,
       solution_time: gameState.completionTime || 0,
-      total_wrong_pieces: piecesInfo.totalWrong,
     };
+    
+    // Log the total wrong pieces for debugging
+    console.log(`Total wrong pieces: ${piecesInfo.totalWrong}`);
+    
+    // Return the entry without the new field while Supabase is being updated
+    return entry;
   };
   
   // Handle score submission

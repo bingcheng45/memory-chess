@@ -126,14 +126,14 @@ export default function ResponsiveInteractiveBoard({
                     onClick={() => handleColorToggle('white')}
                     variant={selectedPieceColor === 'white' ? "default" : "outline"}
                     size="sm"
-                    className={`h-8 w-8 p-1 rounded-full ${
+                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full ${
                       selectedPieceColor === 'white' 
                         ? 'bg-peach-500 hover:bg-peach-500' 
                         : 'bg-secondary/50 hover:bg-secondary/50'
                     }`}
                     aria-label="Select white pieces"
                   >
-                    <div className="w-full h-full rounded-full bg-white"></div>
+                    <div className="w-6 h-6 rounded-full bg-white"></div>
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="bottom">
@@ -149,14 +149,14 @@ export default function ResponsiveInteractiveBoard({
                     onClick={() => handleColorToggle('black')}
                     variant={selectedPieceColor === 'black' ? "default" : "outline"}
                     size="sm"
-                    className={`h-8 w-8 p-1 rounded-full ${
+                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full ${
                       selectedPieceColor === 'black' 
-                        ? 'bg-peach-500 border-1 hover:bg-peach-500' 
+                        ? 'bg-peach-500 hover:bg-peach-500' 
                         : 'bg-secondary/50 hover:bg-secondary/50'
                     }`}
                     aria-label="Select black pieces"
                   >
-                    <div className="w-full h-full rounded-full bg-black"></div>
+                    <div className="w-6 h-6 rounded-full bg-black"></div>
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="bottom">

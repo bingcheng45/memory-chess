@@ -245,15 +245,14 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
                 <TableCell className="text-center">
                   <span className="font-medium">
                     {entry.correct_pieces}
-                    
                     {entry.total_wrong_pieces !== undefined && 
-                     entry.total_wrong_pieces > (entry.piece_count - entry.correct_pieces) && (
+                     entry.total_wrong_pieces > (entry.piece_count - entry.correct_pieces) ? (
                       <sup className="text-xs ml-1 text-red-500 font-bold">
                         -{entry.total_wrong_pieces - (entry.piece_count - entry.correct_pieces)}
                       </sup>
-                    )}
-                    
-                    / {entry.piece_count}
+                    ) : (
+                      " "
+                    )}/ {entry.piece_count}
                   </span>
                 </TableCell>
                 <TableCell className="text-center">

@@ -70,44 +70,6 @@ function LeaderboardContent() {
           throw new Error('Failed to parse server response. Please try again later.');
         });
         
-        // Debug logging for API response
-        console.log('============ LEADERBOARD API RESPONSE DEBUG ============');
-        console.log('API Response:', result);
-        console.log('Response successful:', response.ok && !result.error);
-        console.log('Data length:', result.data?.length || 0);
-        
-        if (result.data && result.data.length > 0) {
-          console.log('First entry details:', {
-            id: result.data[0].id,
-            player_name: result.data[0].player_name,
-            difficulty: result.data[0].difficulty,
-            piece_count: result.data[0].piece_count,
-            correct_pieces: result.data[0].correct_pieces,
-            total_wrong_pieces: result.data[0].total_wrong_pieces,
-            extra_pieces_calc: result.data[0].total_wrong_pieces 
-              ? result.data[0].total_wrong_pieces - (result.data[0].piece_count - result.data[0].correct_pieces)
-              : 'N/A',
-            memorize_time: result.data[0].memorize_time,
-            solution_time: result.data[0].solution_time,
-            created_at: result.data[0].created_at
-          });
-          
-          // Print all entries' total_wrong_pieces fields
-          console.log('All entries total_wrong_pieces values:');
-          result.data.forEach((entry: LeaderboardEntry, index: number) => {
-            console.log(`Entry ${index + 1} - ${entry.player_name}:`, {
-              total_wrong_pieces: entry.total_wrong_pieces,
-              piece_count: entry.piece_count,
-              correct_pieces: entry.correct_pieces,
-              basic_wrong: entry.piece_count - entry.correct_pieces,
-              extra_pieces: entry.total_wrong_pieces 
-                ? entry.total_wrong_pieces - (entry.piece_count - entry.correct_pieces) 
-                : 'N/A'
-            });
-          });
-        }
-        console.log('====================================================');
-        
         if (!response.ok || result.error) {
           // If the API returns an error but with status 200, we'll still catch it here
           throw new Error(result.error || `Request failed with status ${response.status}`);

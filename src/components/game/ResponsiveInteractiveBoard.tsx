@@ -49,21 +49,6 @@ export default function ResponsiveInteractiveBoard({
 
   // Handle square click
   const handleSquareClick = (position: Position) => {
-    // Log the clicked position with file and rank info
-    console.log('---------- INTERACTIVE BOARD COORDINATE DEBUG ----------');
-    console.log('Position received from ChessBoard:', position);
-    console.log('Algebraic notation:', 
-      `${String.fromCharCode(97 + position.file)}${position.rank + 1}`);
-    console.log('Previous selected position:', selectedPosition);
-    
-    // Check if the coordinates match what the user intended
-    console.log('Board orientation check:');
-    console.log('- If you clicked a1 (bottom-left), position should be {file: 0, rank: 0}');
-    console.log('- If you clicked a8 (top-left), position should be {file: 0, rank: 7}');
-    console.log('- If you clicked h1 (bottom-right), position should be {file: 7, rank: 0}');
-    console.log('- If you clicked h8 (top-right), position should be {file: 7, rank: 7}');
-    console.log('------------------------------------------------------');
-    
     setSelectedPosition(position);
     
     // Check if there's already a piece at this position
@@ -73,8 +58,6 @@ export default function ResponsiveInteractiveBoard({
     
     if (existingPiece) {
       // Remove the piece if it exists
-      console.log('Removing piece at:', position, 
-        `(${String.fromCharCode(97 + position.file)}${position.rank + 1})`);
       onRemovePiece(position);
     } else {
       // Check if we've reached the limit for this piece type and color

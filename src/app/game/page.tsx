@@ -377,29 +377,6 @@ function GamePageContent() {
                 <ResponsiveInteractiveBoard
                   playerSolution={solutionPieces}
                   onPlacePiece={(piece) => {
-                    console.log('---------- PIECE PLACEMENT COORDINATE DEBUG ----------');
-                    console.log('Piece object to place:', piece);
-                    console.log('Position in piece object:', piece.position);
-                    console.log('Algebraic notation of placement position:', 
-                      `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`);
-                    
-                    // Verify that the board orientation is correct
-                    if (piece.position.file === 0 && piece.position.rank === 0) {
-                      console.log('This is a1 (bottom-left)');
-                    } else if (piece.position.file === 0 && piece.position.rank === 7) {
-                      console.log('This is a8 (top-left)');
-                    } else if (piece.position.file === 7 && piece.position.rank === 0) {
-                      console.log('This is h1 (bottom-right)');
-                    } else if (piece.position.file === 7 && piece.position.rank === 7) {
-                      console.log('This is h8 (top-right)');
-                    }
-                    
-                    console.log('----------------------------------------------------');
-                    
-                    console.log('Placing piece in solution phase:', piece);
-                    console.log('Current solution pieces before adding:', solutionPieces.map(p => 
-                      `${p.color} ${p.type} at ${String.fromCharCode(97 + p.position.file)}${p.position.rank + 1}`
-                    ));
                     setSolutionPieces(prev => [...prev, piece]);
                     // Convert ChessPiece to chess.js format for the game store
                     const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
@@ -407,11 +384,6 @@ function GamePageContent() {
                     placePiece(square, pieceCode);
                   }}
                   onRemovePiece={(position) => {
-                    console.log('Removing piece in solution phase at position:', position);
-                    console.log(`Square: ${String.fromCharCode(97 + position.file)}${position.rank + 1}`);
-                    console.log('Current solution pieces before removing:', solutionPieces.map(p => 
-                      `${p.color} ${p.type} at ${String.fromCharCode(97 + p.position.file)}${p.position.rank + 1}`
-                    ));
                     setSolutionPieces(prev => prev.filter(p => 
                       p.position.file !== position.file || p.position.rank !== position.rank
                     ));

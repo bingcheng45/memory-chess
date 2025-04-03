@@ -126,11 +126,12 @@ export default function ResponsiveInteractiveBoard({
                     onClick={() => handleColorToggle('white')}
                     variant="ghost"
                     size="sm"
-                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full ${
+                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full overflow-hidden ${
                       selectedPieceColor === 'white' 
-                        ? 'bg-peach-500 hover:bg-peach-500 border-0' 
-                        : 'bg-secondary/50 hover:bg-secondary/50 border border-muted/30'
+                        ? 'bg-peach-500 hover:bg-peach-500 ring-0 border-0' 
+                        : 'bg-secondary/50 hover:bg-secondary/50 ring-1 ring-white/10 border-0'
                     }`}
+                    style={{ boxShadow: selectedPieceColor !== 'white' ? 'inset 0 0 0 1px rgba(255,255,255,0.1)' : 'none' }}
                     aria-label="Select white pieces"
                   >
                     <div className="w-6 h-6 rounded-full bg-white"></div>
@@ -149,11 +150,12 @@ export default function ResponsiveInteractiveBoard({
                     onClick={() => handleColorToggle('black')}
                     variant="ghost"
                     size="sm"
-                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full ${
+                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full overflow-hidden ${
                       selectedPieceColor === 'black' 
-                        ? 'bg-peach-500 hover:bg-peach-500 border-0' 
-                        : 'bg-secondary/50 hover:bg-secondary/50 border border-muted/30'
+                        ? 'bg-peach-500 hover:bg-peach-500 ring-0 border-0' 
+                        : 'bg-secondary/50 hover:bg-secondary/50 ring-1 ring-white/10 border-0'
                     }`}
+                    style={{ boxShadow: selectedPieceColor !== 'black' ? 'inset 0 0 0 1px rgba(255,255,255,0.1)' : 'none' }}
                     aria-label="Select black pieces"
                   >
                     <div className="w-6 h-6 rounded-full bg-black"></div>

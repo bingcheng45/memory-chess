@@ -32,8 +32,24 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   
+  // Debug state
+  const [showDebug, setShowDebug] = useState(false);
+  
   // Get the local copy of gameState with skill rating change info
   const extendedGameState = gameState as GameStateWithRating;
+  
+  // Calculate pieces info for debugging and display
+  const piecesInfo = {
+    accuracy: gameState.accuracy || 0,
+    totalPieces: gameState.pieceCount,
+    correctPieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
+    get wrongPieces() { return this.totalPieces - this.correctPieces; }
+  };
+  
+  // Log the calculation on every render
+  useEffect(() => {
+    console.log('GameResult rendered with pieces info:', piecesInfo);
+  }, [piecesInfo.accuracy, piecesInfo.totalPieces, piecesInfo.correctPieces]);
   
   // Helper function to determine difficulty level based on piece count
   const determineDifficulty = (pieceCount: number): 'easy' | 'medium' | 'hard' | 'grandmaster' | 'custom' => {
@@ -170,6 +186,43 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   
   return (
     <div className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-8 shadow-xl">
+      {/* Debug toggle button */}
+      <div className="flex justify-end mb-2">
+        <button 
+          onClick={() => setShowDebug(!showDebug)}
+          className="text-xs px-2 py-1 bg-gray-800 text-gray-300 rounded hover:bg-gray-700"
+        >
+          {showDebug ? 'Hide Debug' : 'Debug'}
+        </button>
+      </div>
+      
+      {/* Debug information section */}
+      {showDebug && (
+        <div className="mb-4 p-3 bg-gray-800 text-gray-300 rounded text-xs font-mono overflow-auto">
+          <h3 className="font-bold mb-1">Debug Info:</h3>
+          <pre className="whitespace-pre-wrap break-all">
+            {JSON.stringify({
+              gameState: {
+                accuracy: gameState.accuracy,
+                pieceCount: gameState.pieceCount,
+                isPlaying: gameState.isPlaying,
+                memorizeTime: gameState.memorizeTime,
+                completionTime: gameState.completionTime,
+                success: gameState.success,
+                perfectScore: extendedGameState.perfectScore,
+              },
+              calculations: {
+                correctPieces: piecesInfo.correctPieces,
+                totalPieces: piecesInfo.totalPieces,
+                wrongPieces: piecesInfo.wrongPieces,
+                accuracyPercentage: gameState.accuracy,
+                calculation: `${piecesInfo.totalPieces} - ${piecesInfo.correctPieces} = ${piecesInfo.wrongPieces}`
+              }
+            }, null, 2)}
+          </pre>
+        </div>
+      )}
+      
       <h2 className={`mb-4 text-center text-3xl font-bold ${getAccuracyColor(gameState.accuracy || 0)}`}>
         {getResultMessage()}
       </h2>
@@ -194,33 +247,13 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           <div className="flex justify-between mt-1">
             <span className="text-text-secondary text-sm">Pieces correct:</span>
             <span className="text-sm font-medium text-text-primary flex items-center">
-              {Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)} / {gameState.pieceCount}
+              {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
               
-              {(() => {
-                // Calculate wrong pieces
-                const correctPieces = Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100);
-                const totalPieces = gameState.pieceCount;
-                const wrongPieces = totalPieces - correctPieces;
-                
-                // Debug log
-                console.log('Wrong pieces calculation:', { 
-                  accuracy: gameState.accuracy, 
-                  pieceCount: gameState.pieceCount,
-                  correctPieces, 
-                  totalPieces, 
-                  wrongPieces 
-                });
-                
-                // Only show the wrong pieces info if there are wrong pieces
-                if (wrongPieces > 0) {
-                  return (
-                    <span className="ml-2 text-xs text-red-500 font-bold">
-                      (Wrong: {wrongPieces})
-                    </span>
-                  );
-                }
-                return null;
-              })()}
+              {piecesInfo.wrongPieces > 0 && (
+                <span className="ml-2 text-xs text-red-500 font-bold">
+                  (Wrong: {piecesInfo.wrongPieces})
+                </span>
+              )}
             </span>
           </div>
           

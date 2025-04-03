@@ -195,6 +195,22 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
             <span className="text-text-secondary text-sm">Pieces correct:</span>
             <span className="text-sm font-medium text-text-primary">
               {Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)} / {gameState.pieceCount}
+              {(() => {
+                // Calculate wrong pieces
+                const correctPieces = Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100);
+                const totalPieces = gameState.pieceCount;
+                const wrongPieces = totalPieces - correctPieces;
+                
+                // Only show the superscript if there are wrong pieces
+                if (wrongPieces > 0) {
+                  return (
+                    <sup className="text-xs ml-1 text-red-500 font-bold">
+                      -{correctPieces}:{totalPieces}
+                    </sup>
+                  );
+                }
+                return null;
+              })()}
             </span>
           </div>
           

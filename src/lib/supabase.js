@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
 // Initialize the Supabase client with environment variables
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
 // Validate environment variables with more detailed messages
 let environmentError = null;
@@ -14,12 +14,13 @@ if (!supabaseUrl && !supabaseAnonKey) {
   environmentError = 'Missing Supabase anonymous key (NEXT_PUBLIC_SUPABASE_ANON_KEY)';
 }
 
-if (environmentError) {
+// Only log during development or when explicitly requested, not during build
+if (environmentError && (process.env.NODE_ENV === 'development' || process.env.DEBUG)) {
   console.error(`Supabase configuration error: ${environmentError}. Check your .env.local file.`);
 }
 
 // Create a single supabase client for the entire app
-export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Helper to check Supabase connection
 export async function checkSupabaseConnection() {
@@ -33,7 +34,11 @@ export async function checkSupabaseConnection() {
     const { error } = await supabase.from('leaderboard_entries').select('count', { count: 'exact', head: true });
     
     if (error) {
-      console.error('Supabase connection test failed:', error);
+      // Only log during development or when explicitly requested
+      if (process.env.NODE_ENV === 'development' || process.env.DEBUG) {
+        console.error('Supabase connection test failed:', error);
+      }
+      
       // Provide more specific error messages based on common error codes
       if (error.code === 'PGRST301') {
         return { connected: false, error: 'Table does not exist. Please create the leaderboard_entries table.' };
@@ -47,7 +52,11 @@ export async function checkSupabaseConnection() {
     
     return { connected: true };
   } catch (err) {
-    console.error('Unexpected error testing Supabase connection:', err);
+    // Only log during development or when explicitly requested
+    if (process.env.NODE_ENV === 'development' || process.env.DEBUG) {
+      console.error('Unexpected error testing Supabase connection:', err);
+    }
+    
     return { 
       connected: false, 
       error: err instanceof Error 

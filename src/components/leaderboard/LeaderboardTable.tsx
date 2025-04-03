@@ -33,6 +33,7 @@ interface LeaderboardTableProps {
   isLoading: boolean;
   error: string | null;
   entryDetails?: EntryDetails;
+  activeTab?: string;
 }
 
 // Consistent time display component
@@ -59,6 +60,16 @@ const TimeDisplay = ({ time }: { time: string }) => {
       // Standard format MM:SS:XXX
       if (parts.length === 3) {
         [minutes, seconds, milliseconds] = parts;
+        
+        // Fix for memorize time format where seconds appear as milliseconds ("00:00:010")
+        if (minutes === "00" && seconds === "00" && milliseconds.length === 3) {
+          // Check if milliseconds represents seconds (e.g., "010" means 10 seconds)
+          const msValue = parseInt(milliseconds);
+          if (msValue > 0) {
+            seconds = msValue.toString().padStart(2, '0');
+            milliseconds = "000";
+          }
+        }
         
         // Check if milliseconds contains a decimal (e.g., "1.245")
         if (milliseconds.includes('.')) {
@@ -96,7 +107,7 @@ const TimeDisplay = ({ time }: { time: string }) => {
   );
 };
 
-export default function LeaderboardTable({ data, isLoading, error, entryDetails }: LeaderboardTableProps) {
+export default function LeaderboardTable({ data, isLoading, error, entryDetails, activeTab }: LeaderboardTableProps) {
   // Create a ref to store the highlighted row element
   const highlightedRowRef = useRef<HTMLTableRowElement>(null);
   
@@ -123,35 +134,25 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails 
   }
   
   if (error) {
+    // Check if this is a database connection error and provide a more user-friendly message
+    const isConnectionError = error.includes('Database connection unavailable') || 
+                              error.includes('Unable to connect') ||
+                              error.includes('connection issue');
+    
     return (
       <div className="text-center p-8 border border-red-500/30 rounded-lg bg-red-500/10">
-        <div className="flex justify-center mb-4">
-          <div className="rounded-full p-3 bg-red-500/20">
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-8 w-8 text-red-400" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-        </div>
-        <h3 className="text-xl font-bold text-red-400 mb-2">Oops! Something Went Wrong</h3>
-        <p className="text-text-secondary mb-4">
-          We couldn&apos;t load the leaderboard right now. This might be a temporary issue.
-        </p>
-        <p className="text-sm text-red-300 mb-4">Error: {error}</p>
-        <div className="flex justify-center">
-          <Button 
-            variant="outline"
-            className="border-red-500/30 text-red-400 hover:bg-red-500/10"
-            onClick={() => window.location.reload()}
-          >
-            Try Again
-          </Button>
-        </div>
+        {isConnectionError ? (
+          <>
+            <p className="text-amber-400 font-semibold mb-2">Leaderboard Temporarily Unavailable</p>
+            <p className="text-text-secondary">The leaderboard service is currently offline. Your game data is still being saved locally.</p>
+            <p className="mt-4 text-text-muted text-sm">You can continue playing without disruption.</p>
+          </>
+        ) : (
+          <>
+            <p className="text-red-400">Error loading leaderboard: {error}</p>
+            <p className="mt-2 text-text-secondary">Please try again later</p>
+          </>
+        )}
       </div>
     );
   }
@@ -178,10 +179,10 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails 
           Challenge your memory skills and claim your spot at the top! 
           Play a game now and etch your name in Memory Chess history.
         </p>
-        <Link href="/game" className="inline-block">
+        <Link href={`/game?difficulty=${activeTab || 'medium'}`} className="inline-block">
           <Button 
             variant="outline"
-            className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 mt-2"
+            className="bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 mt-2"
           >
             Start Playing Now
           </Button>

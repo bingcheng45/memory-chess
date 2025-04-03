@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
+import { checkSupabaseConnection } from '@/lib/supabase';
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -14,6 +15,17 @@ export async function GET(request: NextRequest) {
   }
   
   try {
+    // First check if Supabase is configured properly
+    const connectionStatus = await checkSupabaseConnection();
+    if (!connectionStatus.connected) {
+      console.warn('Supabase connection issue:', connectionStatus.error);
+      // Return empty data with a connection error message
+      return NextResponse.json({ 
+        data: [], 
+        error: 'Database connection unavailable. Please check the application configuration.'
+      });
+    }
+
     const result = await getLeaderboard(difficulty);
     
     if (result.error) {
@@ -72,6 +84,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Invalid data values' },
         { status: 400 }
+      );
+    }
+
+    // First check if Supabase is configured properly
+    const connectionStatus = await checkSupabaseConnection();
+    if (!connectionStatus.connected) {
+      return NextResponse.json(
+        { error: 'Database connection unavailable. Please check the application configuration.' },
+        { status: 503 }
       );
     }
     

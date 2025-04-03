@@ -15,6 +15,8 @@ type GameStateWithRating = GameState & {
   skillRatingChange?: number;
   timeBonusEarned?: number;
   perfectScore?: boolean;
+  extraPieces?: number;
+  wrongPieces?: number;
 };
 
 interface GameResultProps {
@@ -43,13 +45,24 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     accuracy: gameState.accuracy || 0,
     totalPieces: gameState.pieceCount,
     correctPieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
-    get wrongPieces() { return this.totalPieces - this.correctPieces; }
+    // Wrong pieces might come from extra pieces placed that weren't in original position
+    // The gameState might include this information separately
+    wrongPieces: extendedGameState.wrongPieces || 0,
+    extraPieces: extendedGameState.extraPieces || 0,
+    // Total wrong is the sum of missed original pieces and any extra pieces
+    get totalWrong() { 
+      // By default, wrong pieces is the inverse of correct pieces
+      const basicWrongPieces = this.totalPieces - this.correctPieces;
+      
+      // Add any extra pieces that were placed but not in the original position
+      return basicWrongPieces + this.extraPieces;
+    }
   };
   
   // Log the calculation on every render
   useEffect(() => {
     console.log('GameResult rendered with pieces info:', piecesInfo);
-  }, [piecesInfo.accuracy, piecesInfo.totalPieces, piecesInfo.correctPieces]);
+  }, [piecesInfo.accuracy, piecesInfo.totalPieces, piecesInfo.correctPieces, piecesInfo.wrongPieces, piecesInfo.extraPieces]);
   
   // Helper function to determine difficulty level based on piece count
   const determineDifficulty = (pieceCount: number): 'easy' | 'medium' | 'hard' | 'grandmaster' | 'custom' => {
@@ -210,13 +223,17 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                 completionTime: gameState.completionTime,
                 success: gameState.success,
                 perfectScore: extendedGameState.perfectScore,
+                wrongPieces: extendedGameState.wrongPieces,
+                extraPieces: extendedGameState.extraPieces
               },
               calculations: {
                 correctPieces: piecesInfo.correctPieces,
                 totalPieces: piecesInfo.totalPieces,
                 wrongPieces: piecesInfo.wrongPieces,
+                extraPieces: piecesInfo.extraPieces,
+                totalWrong: piecesInfo.totalWrong,
                 accuracyPercentage: gameState.accuracy,
-                calculation: `${piecesInfo.totalPieces} - ${piecesInfo.correctPieces} = ${piecesInfo.wrongPieces}`
+                calculation: `${piecesInfo.totalPieces} - ${piecesInfo.correctPieces} + ${piecesInfo.extraPieces} = ${piecesInfo.totalWrong} wrong pieces`
               }
             }, null, 2)}
           </pre>
@@ -246,13 +263,13 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           {/* Pieces correct / total */}
           <div className="flex justify-between mt-1">
             <span className="text-text-secondary text-sm">Pieces correct:</span>
-            <span className="text-sm font-medium text-text-primary flex items-center">
+            <span className="text-sm font-medium text-text-primary">
               {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
               
-              {piecesInfo.wrongPieces > 0 && (
-                <span className="ml-2 text-xs text-red-500 font-bold">
-                  (Wrong: {piecesInfo.wrongPieces})
-                </span>
+              {piecesInfo.totalWrong > 0 && (
+                <sup className="text-xs ml-1 text-red-500 font-bold">
+                  -{piecesInfo.totalWrong}
+                </sup>
               )}
             </span>
           </div>

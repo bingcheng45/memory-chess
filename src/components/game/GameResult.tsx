@@ -173,6 +173,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       correct_pieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
       memorize_time: memorizeTime,
       solution_time: gameState.completionTime || 0,
+      total_wrong_pieces: piecesInfo.totalWrong,
     };
   };
   

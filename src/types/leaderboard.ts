@@ -9,6 +9,7 @@ export interface LeaderboardEntry {
   correct_pieces: number;
   memorize_time: number;
   solution_time: number;
+  total_wrong_pieces?: number; // Total wrong pieces (missed + extra)
   created_at: string;
 }
 
@@ -22,4 +23,5 @@ export interface LeaderboardSubmission {
   correct_pieces: number;
   memorize_time: number;
   solution_time: number;
+  total_wrong_pieces?: number; // Total wrong pieces (missed + extra)
 } 

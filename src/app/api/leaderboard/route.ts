@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate request body
-    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time } = body;
+    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces } = body;
     
     if (!player_name || !difficulty || !piece_count || correct_pieces === undefined || 
         !memorize_time || !solution_time) {
@@ -103,6 +103,7 @@ export async function POST(request: NextRequest) {
       correct_pieces,
       memorize_time,
       solution_time,
+      total_wrong_pieces,
     });
     
     return NextResponse.json({ success: true, data });

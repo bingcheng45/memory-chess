@@ -20,7 +20,7 @@ export default function Home() {
           <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
             <Link href="/game">
               <Button 
-                variant="outline"
+                variant="secondary"
                 size="sm"
                 className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
               >
@@ -32,7 +32,7 @@ export default function Home() {
               <Button 
                 variant="outline"
                 size="sm"
-                className="bg-indigo-500/10 text-indigo-500 border-indigo-500/30 hover:bg-indigo-500/20 px-3 py-1.5 text-sm"
+                className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 hover:text-peach-500 px-3 py-1.5 text-sm"
               >
                 Leaderboard
               </Button>

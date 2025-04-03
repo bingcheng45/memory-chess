@@ -132,19 +132,19 @@ export default function LeaderboardPage() {
             </TabsList>
             
             <TabsContent value="easy">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="easy" />
             </TabsContent>
             
             <TabsContent value="medium">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="medium" />
             </TabsContent>
             
             <TabsContent value="hard">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="hard" />
             </TabsContent>
             
             <TabsContent value="grandmaster">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} />
+              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="grandmaster" />
             </TabsContent>
           </Tabs>
           

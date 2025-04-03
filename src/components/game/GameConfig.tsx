@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import { Button } from "@/components/ui/button";
+import { useSearchParams } from 'next/navigation';
 
 interface GameConfigProps {
   readonly onStart?: (pieceCount: number, memorizeTime: number) => void;
@@ -48,10 +49,30 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     startGame, 
     gameState
   } = useGameStore();
+  const searchParams = useSearchParams();
+  
+  // Get difficulty from URL parameters
+  const difficultyParam = searchParams.get('difficulty')?.toLowerCase();
   
   const [pieceCount, setPieceCount] = useState(6);
   const [memorizeTime, setMemorizeTime] = useState(10);
   const [selectedPreset, setSelectedPreset] = useState("medium");
+  
+  // Set the initial difficulty from URL parameters if available
+  useEffect(() => {
+    if (difficultyParam && ['easy', 'medium', 'hard', 'grandmaster'].includes(difficultyParam)) {
+      // Find the matching preset
+      const preset = DIFFICULTY_PRESETS.find(
+        preset => preset.name.toLowerCase() === difficultyParam
+      );
+      
+      if (preset) {
+        setSelectedPreset(preset.name);
+        setPieceCount(preset.pieceCount);
+        setMemorizeTime(preset.memorizeTime);
+      }
+    }
+  }, [difficultyParam]);
   
   // Auto-detect if current settings match a preset
   useEffect(() => {

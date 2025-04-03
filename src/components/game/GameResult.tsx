@@ -123,12 +123,15 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     // but as a safeguard, use medium difficulty if somehow a custom game is submitted
     const submissionDifficulty = difficulty === 'custom' ? 'medium' : difficulty;
     
+    // Use actual memorize time if available, otherwise fall back to configured time
+    const memorizeTime = gameState.actualMemorizeTime || gameState.memorizeTime;
+    
     return {
       player_name: playerName,
       difficulty: submissionDifficulty,
       piece_count: gameState.pieceCount,
       correct_pieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
-      memorize_time: gameState.memorizeTime,
+      memorize_time: memorizeTime,
       solution_time: gameState.completionTime || 0,
     };
   };
@@ -209,7 +212,20 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           </div>
         </div>
         
-        {/* Time */}
+        {/* Memorization Time */}
+        <div className="flex justify-between border-b border-bg-light pb-3">
+          <span className="text-text-secondary font-medium">Memorization Time:</span>
+          <span className="font-bold text-text-primary">
+            {(() => {
+              // Use actual memorize time if available, otherwise fall back to configured time
+              const memorizeTime = gameState.actualMemorizeTime || gameState.memorizeTime;
+              const { minutes, seconds, milliseconds } = formatTimeParts(memorizeTime);
+              return <TimeDisplay minutes={minutes} seconds={seconds} milliseconds={milliseconds} />;
+            })()}
+          </span>
+        </div>
+        
+        {/* Solution Time */}
         <div className="flex justify-between border-b border-bg-light pb-3">
           <span className="text-text-secondary font-medium">Solution Time:</span>
           <span className="font-bold text-text-primary">
@@ -369,7 +385,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                 <Link href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${(() => {
                   const difficulty = determineDifficulty(gameState.pieceCount);
                   return encodeURIComponent(difficulty === 'custom' ? 'medium' : difficulty);
-                })()}&memorizeTime=${gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}`}>
+                })()}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}`}>
                   <Button className="bg-green-500 text-white hover:text-white hover:bg-green-600">
                     View Leaderboard
                   </Button>

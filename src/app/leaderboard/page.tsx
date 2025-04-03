@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import LeaderboardTable from '@/components/leaderboard/LeaderboardTable';
 import PageHeader from '@/components/ui/PageHeader';
@@ -17,7 +17,8 @@ interface EntryDetails {
   correctPieces: number | null;
 }
 
-export default function LeaderboardPage() {
+// Component that uses searchParams - needs to be wrapped in Suspense
+function LeaderboardContent() {
   const searchParams = useSearchParams();
   
   // Extract all parameters for precise entry identification
@@ -83,77 +84,110 @@ export default function LeaderboardPage() {
   }, [activeTab]);
 
   return (
+    <div className="flex flex-col items-center justify-center space-y-8">
+      <h1 className="text-3xl font-bold text-peach-400">Memory Chess Rankings</h1>
+      
+      <div className="max-w-2xl space-y-2">
+        <p className="text-lg text-text-secondary text-center">
+          Master the board through visualization. Compete against the world&apos;s best in mental precision and speed.
+        </p>
+      </div>
+      
+      <Tabs 
+        defaultValue="medium" 
+        value={activeTab}
+        onValueChange={setActiveTab}
+        className="w-full max-w-4xl"
+      >
+        <TabsList className="grid grid-cols-4 mb-8 bg-bg-light/30">
+          <TabsTrigger 
+            value="easy"
+            className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
+          >
+            Easy
+          </TabsTrigger>
+          <TabsTrigger 
+            value="medium"
+            className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
+          >
+            Medium
+          </TabsTrigger>
+          <TabsTrigger 
+            value="hard"
+            className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
+          >
+            Hard
+          </TabsTrigger>
+          <TabsTrigger 
+            value="grandmaster"
+            className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
+          >
+            Grandmaster
+          </TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="easy">
+          <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="easy" />
+        </TabsContent>
+        
+        <TabsContent value="medium">
+          <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="medium" />
+        </TabsContent>
+        
+        <TabsContent value="hard">
+          <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="hard" />
+        </TabsContent>
+        
+        <TabsContent value="grandmaster">
+          <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="grandmaster" />
+        </TabsContent>
+      </Tabs>
+      
+      <div className="w-full max-w-4xl flex justify-end">
+        <p className="text-xs text-text-secondary/70 italic">
+          Displaying top 200 only. Ranked by accuracy, memorization time, and solution speed.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// Loading fallback component
+function LeaderboardLoading() {
+  return (
+    <div className="min-h-screen bg-bg-dark text-text-primary">
+      <main className="container mx-auto px-4 py-8">
+        <div className="flex justify-center mb-8">
+          <PageHeader />
+        </div>
+        <div className="flex flex-col items-center justify-center space-y-8">
+          <h1 className="text-3xl font-bold text-peach-400">Memory Chess Rankings</h1>
+          <div className="max-w-2xl space-y-2">
+            <p className="text-lg text-text-secondary text-center">
+              Loading leaderboard data...
+            </p>
+          </div>
+          <div className="w-full max-w-4xl flex justify-center py-12">
+            <div className="animate-spin h-8 w-8 border-4 border-peach-500 rounded-full border-t-transparent"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+// Main export - the wrapper with suspense boundary
+export default function LeaderboardPage() {
+  return (
     <div className="min-h-screen bg-bg-dark text-text-primary">
       <main className="container mx-auto px-4 py-8">
         <div className="flex justify-center mb-8">
           <PageHeader />
         </div>
         
-        <div className="flex flex-col items-center justify-center space-y-8">
-          <h1 className="text-3xl font-bold text-peach-400">Memory Chess Rankings</h1>
-          
-          <div className="max-w-2xl space-y-2">
-            <p className="text-lg text-text-secondary text-center">
-              Master the board through visualization. Compete against the world&apos;s best in mental precision and speed.
-            </p>
-          </div>
-          
-          <Tabs 
-            defaultValue="medium" 
-            value={activeTab}
-            onValueChange={setActiveTab}
-            className="w-full max-w-4xl"
-          >
-            <TabsList className="grid grid-cols-4 mb-8 bg-bg-light/30">
-              <TabsTrigger 
-                value="easy"
-                className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
-              >
-                Easy
-              </TabsTrigger>
-              <TabsTrigger 
-                value="medium"
-                className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
-              >
-                Medium
-              </TabsTrigger>
-              <TabsTrigger 
-                value="hard"
-                className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
-              >
-                Hard
-              </TabsTrigger>
-              <TabsTrigger 
-                value="grandmaster"
-                className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
-              >
-                Grandmaster
-              </TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="easy">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="easy" />
-            </TabsContent>
-            
-            <TabsContent value="medium">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="medium" />
-            </TabsContent>
-            
-            <TabsContent value="hard">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="hard" />
-            </TabsContent>
-            
-            <TabsContent value="grandmaster">
-              <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="grandmaster" />
-            </TabsContent>
-          </Tabs>
-          
-          <div className="w-full max-w-4xl flex justify-end">
-            <p className="text-xs text-text-secondary/70 italic">
-              Displaying top 200 only. Ranked by accuracy, memorization time, and solution speed.
-            </p>
-          </div>
-        </div>
+        <Suspense fallback={<LeaderboardLoading />}>
+          <LeaderboardContent />
+        </Suspense>
       </main>
     </div>
   );

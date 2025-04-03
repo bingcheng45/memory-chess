@@ -243,12 +243,18 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
                   {isHighlighted && <span className="ml-2 text-xs bg-peach-500/20 text-peach-500 px-2 py-0.5 rounded-full">You</span>}
                 </TableCell>
                 <TableCell className="text-center">
-                  {entry.correct_pieces}/{entry.piece_count}
-                  {entry.total_wrong_pieces !== undefined && entry.total_wrong_pieces > 0 && (
-                    <sup className="text-xs ml-1 text-red-500 font-bold">
-                      -{entry.total_wrong_pieces}
-                    </sup>
-                  )}
+                  <span className="font-medium">
+                    {entry.correct_pieces}
+                    
+                    {entry.total_wrong_pieces !== undefined && 
+                     entry.total_wrong_pieces > (entry.piece_count - entry.correct_pieces) && (
+                      <sup className="text-xs ml-1 text-red-500 font-bold">
+                        -{entry.total_wrong_pieces - (entry.piece_count - entry.correct_pieces)}
+                      </sup>
+                    )}
+                    
+                    / {entry.piece_count}
+                  </span>
                 </TableCell>
                 <TableCell className="text-center">
                   <TimeDisplay time={formatMemorizeTime(entry.memorize_time)} />

@@ -121,7 +121,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
               className={`flex h-auto flex-col items-center justify-center p-2.5 transition-all duration-200 ease-in-out border ${
                 selectedPreset === preset.name 
                   ? 'border-peach-500 bg-peach-500/20 text-text-primary shadow-sm' 
-                  : 'border-transparent text-text-secondary hover:bg-peach-500/10 hover:text-black hover:transform hover:scale-105 hover:shadow-sm'
+                  : 'border-transparent text-text-secondary hover:border-peach-500/30 hover:bg-peach-500/15 hover:text-black hover:shadow-sm'
               }`}
               aria-pressed={selectedPreset === preset.name}
             >

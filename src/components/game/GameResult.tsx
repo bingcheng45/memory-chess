@@ -34,10 +34,6 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   
-  // Debug state
-  const [showDebug, setShowDebug] = useState(false);
-  const [showPieceDebugDialog, setShowPieceDebugDialog] = useState(false);
-  
   // Get the local copy of gameState with skill rating change info
   const extendedGameState = gameState as GameStateWithRating;
   
@@ -58,22 +54,6 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       return basicWrongPieces + this.extraPieces;
     }
   };
-  
-  // Log the calculation on every render
-  useEffect(() => {
-    console.log('GameResult rendered with pieces info:', piecesInfo);
-    
-    // Print detailed debug information about wrong pieces
-    console.log('------ PIECE PLACEMENT RESULTS ------');
-    console.log(`Total pieces in original position: ${piecesInfo.totalPieces}`);
-    console.log(`Correct pieces placed: ${piecesInfo.correctPieces}`);
-    console.log(`Wrong/missed pieces: ${piecesInfo.totalPieces - piecesInfo.correctPieces}`);
-    console.log(`Extra pieces placed: ${piecesInfo.extraPieces}`);
-    console.log(`Total wrong (missed + extra): ${piecesInfo.totalWrong}`);
-    console.log(`Accuracy percentage: ${piecesInfo.accuracy}%`);
-    console.log('-----------------------------------');
-    
-  }, [piecesInfo.accuracy, piecesInfo.totalPieces, piecesInfo.correctPieces, piecesInfo.extraPieces]);
   
   // Helper function to determine difficulty level based on piece count
   const determineDifficulty = (pieceCount: number): 'easy' | 'medium' | 'hard' | 'grandmaster' | 'custom' => {
@@ -131,7 +111,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const getResultMessage = () => {
     const accuracy = gameState.accuracy || 0;
     
-    if (accuracy === 100) return "Perfect Score!";
+    if (accuracy === 100) return "✨ Perfect Score! ✨";
     if (accuracy >= 90) return "Excellent Memory!";
     if (accuracy >= 80) return "Great Job!";
     if (accuracy >= 70) return "Well Done!";
@@ -212,62 +192,9 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   
   return (
     <div className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-8 shadow-xl">
-      {/* Debug toggle button */}
-      <div className="flex justify-end mb-2 gap-2">
-        <button 
-          onClick={() => setShowDebug(!showDebug)}
-          className="text-xs px-2 py-1 bg-gray-800 text-gray-300 rounded hover:bg-gray-700"
-        >
-          {showDebug ? 'Hide Debug' : 'Debug'}
-        </button>
-        <button 
-          onClick={() => setShowPieceDebugDialog(true)}
-          className="text-xs px-2 py-1 bg-gray-800 text-gray-300 rounded hover:bg-gray-700"
-        >
-          Debug Pieces
-        </button>
-      </div>
-      
-      {/* Debug information section */}
-      {showDebug && (
-        <div className="mb-4 p-3 bg-gray-800 text-gray-300 rounded text-xs font-mono overflow-auto">
-          <h3 className="font-bold mb-1">Debug Info:</h3>
-          <pre className="whitespace-pre-wrap break-all">
-            {JSON.stringify({
-              gameState: {
-                accuracy: gameState.accuracy,
-                pieceCount: gameState.pieceCount,
-                isPlaying: gameState.isPlaying,
-                memorizeTime: gameState.memorizeTime,
-                completionTime: gameState.completionTime,
-                success: gameState.success,
-                perfectScore: extendedGameState.perfectScore,
-                extraPieces: extendedGameState.extraPieces,
-                totalPiecesPlaced: extendedGameState.totalPiecesPlaced
-              },
-              calculations: {
-                correctPieces: piecesInfo.correctPieces,
-                totalPieces: piecesInfo.totalPieces,
-                extraPieces: piecesInfo.extraPieces,
-                totalWrong: piecesInfo.totalWrong,
-                accuracyPercentage: gameState.accuracy,
-                calculation: `${piecesInfo.totalPieces} - ${piecesInfo.correctPieces} + ${piecesInfo.extraPieces} = ${piecesInfo.totalWrong} wrong pieces`,
-                accuracyFormula: `Accuracy = MAX(0, (${piecesInfo.correctPieces} / ${piecesInfo.totalPieces}) * 100 - ${piecesInfo.extraPieces} * 10)`
-              }
-            }, null, 2)}
-          </pre>
-        </div>
-      )}
-      
       <h2 className={`mb-4 text-center text-3xl font-bold ${getAccuracyColor(gameState.accuracy || 0)}`}>
         {getResultMessage()}
       </h2>
-      
-      {extendedGameState.perfectScore && (
-        <div className="mb-6 rounded-lg bg-green-500/20 p-3 text-center">
-          <div className="text-lg font-bold text-green-400">✨ Perfect Score!</div>
-        </div>
-      )}
       
       <div className="mb-6 space-y-4">
         {/* Accuracy */}
@@ -289,9 +216,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                 <sup className="text-xs ml-1 text-red-500 font-bold">
                   -{piecesInfo.extraPieces}
                 </sup>
-              )}
-              
-              / {piecesInfo.totalPieces}
+              )} / {piecesInfo.totalPieces}
             </span>
           </div>
           
@@ -490,79 +415,6 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               </div>
             </div>
           )}
-        </DialogContent>
-      </Dialog>
-      
-      {/* Piece Debug Dialog */}
-      <Dialog open={showPieceDebugDialog} onOpenChange={setShowPieceDebugDialog}>
-        <DialogContent className="bg-bg-card border border-bg-light text-text-primary max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-text-primary">Piece Placement Debug</DialogTitle>
-            <DialogDescription className="text-text-secondary">
-              Detailed information about the piece placement.
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="space-y-4 py-2">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-bg-light">
-                  <th className="text-left py-2">Type</th>
-                  <th className="text-right py-2">Count</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-bg-light">
-                  <td className="py-2">Original Pieces Total</td>
-                  <td className="text-right font-mono">{piecesInfo.totalPieces}</td>
-                </tr>
-                <tr className="border-b border-bg-light">
-                  <td className="py-2 text-green-500">Correct Pieces</td>
-                  <td className="text-right font-mono text-green-500">{piecesInfo.correctPieces}</td>
-                </tr>
-                <tr className="border-b border-bg-light">
-                  <td className="py-2 text-red-500">Wrong/Missed Pieces</td>
-                  <td className="text-right font-mono text-red-500">{piecesInfo.totalPieces - piecesInfo.correctPieces}</td>
-                </tr>
-                <tr className="border-b border-bg-light">
-                  <td className="py-2 text-orange-500">Extra Pieces Placed</td>
-                  <td className="text-right font-mono text-orange-500">{piecesInfo.extraPieces}</td>
-                </tr>
-                <tr className="border-b border-bg-light font-medium">
-                  <td className="py-2 text-red-500">Total Wrong Pieces</td>
-                  <td className="text-right font-mono text-red-500">{piecesInfo.totalWrong}</td>
-                </tr>
-                <tr className="border-b border-bg-light">
-                  <td className="py-2">Accuracy</td>
-                  <td className="text-right font-mono">{piecesInfo.accuracy}%</td>
-                </tr>
-              </tbody>
-            </table>
-            
-            <div className="mt-4 p-3 bg-gray-800 text-gray-300 rounded text-xs">
-              <h4 className="font-bold mb-2">Accuracy Formula:</h4>
-              <div className="font-mono">
-                Base Accuracy = (correctPieces / totalPieces) * 100<br/>
-                Penalty = extraPieces * 10<br/>
-                Final Accuracy = MAX(0, Base Accuracy - Penalty)
-              </div>
-              <div className="mt-2">
-                <span className="text-blue-400">Example:</span> With {piecesInfo.correctPieces} correct out of {piecesInfo.totalPieces} pieces and {piecesInfo.extraPieces} extra pieces:<br/>
-                Base = ({piecesInfo.correctPieces}/{piecesInfo.totalPieces}) * 100 = {Math.round((piecesInfo.correctPieces / piecesInfo.totalPieces) * 100)}%<br/>
-                Penalty = {piecesInfo.extraPieces} * 10 = {piecesInfo.extraPieces * 10}%<br/>
-                Final = MAX(0, {Math.round((piecesInfo.correctPieces / piecesInfo.totalPieces) * 100)} - {piecesInfo.extraPieces * 10}) = {Math.max(0, Math.round((piecesInfo.correctPieces / piecesInfo.totalPieces) * 100) - (piecesInfo.extraPieces * 10))}%
-              </div>
-            </div>
-            
-            <div className="flex justify-center mt-4">
-              <button
-                onClick={() => setShowPieceDebugDialog(false)}
-                className="px-4 py-2 bg-gray-800 text-gray-300 rounded hover:bg-gray-700"
-              >
-                Close
-              </button>
-            </div>
-          </div>
         </DialogContent>
       </Dialog>
     </div>

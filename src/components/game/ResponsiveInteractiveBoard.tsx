@@ -127,7 +127,7 @@ export default function ResponsiveInteractiveBoard({
                     className={`h-10 w-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 ${
                       selectedPieceColor === 'white' 
                         ? 'bg-gradient-to-br from-peach-400 to-peach-600 shadow-lg' 
-                        : 'bg-neutral-800/40 hover:bg-neutral-700/30'
+                        : 'bg-neutral-400/40 hover:bg-neutral-200/50'
                     }`}
                     aria-label="Select white pieces"
                   >
@@ -152,7 +152,7 @@ export default function ResponsiveInteractiveBoard({
                     className={`h-10 w-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 ${
                       selectedPieceColor === 'black' 
                         ? 'bg-gradient-to-br from-peach-400 to-peach-600 shadow-lg' 
-                        : 'bg-neutral-800/40 hover:bg-neutral-700/30'
+                        : 'bg-neutral-400/40 hover:bg-neutral-200/50'
                     }`}
                     aria-label="Select black pieces"
                   >

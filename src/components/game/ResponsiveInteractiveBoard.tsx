@@ -118,24 +118,25 @@ export default function ResponsiveInteractiveBoard({
           </div>
           
           <div className="flex items-center gap-2">
-            {/* Color selection buttons */}
+            {/* Color selection buttons - completely redesigned */}
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button
+                  <div 
                     onClick={() => handleColorToggle('white')}
-                    variant="ghost"
-                    size="sm"
-                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full overflow-hidden ${
+                    className={`h-10 w-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 ${
                       selectedPieceColor === 'white' 
-                        ? 'bg-peach-500 hover:bg-peach-500 ring-0 border-0' 
-                        : 'bg-secondary/50 hover:bg-secondary/50 ring-1 ring-white/5 border-0'
+                        ? 'bg-gradient-to-br from-peach-400 to-peach-600 shadow-lg' 
+                        : 'bg-neutral-800/40 hover:bg-neutral-700/30'
                     }`}
-                    style={{ boxShadow: selectedPieceColor !== 'white' ? 'inset 0 0 0 1px rgba(255,255,255,0.05)' : 'none' }}
                     aria-label="Select white pieces"
                   >
-                    <div className="w-6 h-6 rounded-full bg-white"></div>
-                  </Button>
+                    <div className={`w-7 h-7 rounded-full ${
+                      selectedPieceColor === 'white'
+                        ? 'bg-white shadow-inner'
+                        : 'bg-white/90 border border-white/20'
+                    }`}></div>
+                  </div>
                 </TooltipTrigger>
                 <TooltipContent side="bottom">
                   <p className="text-xs">White pieces</p>
@@ -146,20 +147,21 @@ export default function ResponsiveInteractiveBoard({
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button
+                  <div 
                     onClick={() => handleColorToggle('black')}
-                    variant="ghost"
-                    size="sm"
-                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full overflow-hidden ${
+                    className={`h-10 w-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 ${
                       selectedPieceColor === 'black' 
-                        ? 'bg-peach-500 hover:bg-peach-500 ring-0 border-0' 
-                        : 'bg-secondary/50 hover:bg-secondary/50 ring-1 ring-white/5 border-0'
+                        ? 'bg-gradient-to-br from-peach-400 to-peach-600 shadow-lg' 
+                        : 'bg-neutral-800/40 hover:bg-neutral-700/30'
                     }`}
-                    style={{ boxShadow: selectedPieceColor !== 'black' ? 'inset 0 0 0 1px rgba(255,255,255,0.05)' : 'none' }}
                     aria-label="Select black pieces"
                   >
-                    <div className="w-6 h-6 rounded-full bg-black"></div>
-                  </Button>
+                    <div className={`w-7 h-7 rounded-full ${
+                      selectedPieceColor === 'black'
+                        ? 'bg-black shadow-inner'
+                        : 'bg-black/90 border border-white/20'
+                    }`}></div>
+                  </div>
                 </TooltipTrigger>
                 <TooltipContent side="bottom">
                   <p className="text-xs">Black pieces</p>

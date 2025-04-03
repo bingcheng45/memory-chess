@@ -16,7 +16,7 @@ type GameStateWithRating = GameState & {
   timeBonusEarned?: number;
   perfectScore?: boolean;
   extraPieces?: number;
-  wrongPieces?: number;
+  totalPiecesPlaced?: number;
 };
 
 interface GameResultProps {
@@ -45,10 +45,9 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const piecesInfo = {
     accuracy: gameState.accuracy || 0,
     totalPieces: gameState.pieceCount,
+    totalPiecesPlaced: extendedGameState.totalPiecesPlaced || 0,
     correctPieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
-    // Wrong pieces might come from extra pieces placed that weren't in original position
-    // The gameState might include this information separately
-    wrongPieces: extendedGameState.wrongPieces || 0,
+    // Extra pieces are only counted if more pieces were placed than required
     extraPieces: extendedGameState.extraPieces || 0,
     // Total wrong is the sum of missed original pieces and any extra pieces
     get totalWrong() { 
@@ -74,7 +73,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     console.log(`Accuracy percentage: ${piecesInfo.accuracy}%`);
     console.log('-----------------------------------');
     
-  }, [piecesInfo.accuracy, piecesInfo.totalPieces, piecesInfo.correctPieces, piecesInfo.wrongPieces, piecesInfo.extraPieces]);
+  }, [piecesInfo.accuracy, piecesInfo.totalPieces, piecesInfo.correctPieces, piecesInfo.extraPieces]);
   
   // Helper function to determine difficulty level based on piece count
   const determineDifficulty = (pieceCount: number): 'easy' | 'medium' | 'hard' | 'grandmaster' | 'custom' => {
@@ -241,17 +240,17 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                 completionTime: gameState.completionTime,
                 success: gameState.success,
                 perfectScore: extendedGameState.perfectScore,
-                wrongPieces: extendedGameState.wrongPieces,
-                extraPieces: extendedGameState.extraPieces
+                extraPieces: extendedGameState.extraPieces,
+                totalPiecesPlaced: extendedGameState.totalPiecesPlaced
               },
               calculations: {
                 correctPieces: piecesInfo.correctPieces,
                 totalPieces: piecesInfo.totalPieces,
-                wrongPieces: piecesInfo.wrongPieces,
                 extraPieces: piecesInfo.extraPieces,
                 totalWrong: piecesInfo.totalWrong,
                 accuracyPercentage: gameState.accuracy,
-                calculation: `${piecesInfo.totalPieces} - ${piecesInfo.correctPieces} + ${piecesInfo.extraPieces} = ${piecesInfo.totalWrong} wrong pieces`
+                calculation: `${piecesInfo.totalPieces} - ${piecesInfo.correctPieces} + ${piecesInfo.extraPieces} = ${piecesInfo.totalWrong} wrong pieces`,
+                accuracyFormula: `Accuracy = MAX(0, (${piecesInfo.correctPieces} / ${piecesInfo.totalPieces}) * 100 - ${piecesInfo.extraPieces} * 10)`
               }
             }, null, 2)}
           </pre>
@@ -282,13 +281,15 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           <div className="flex justify-between mt-1">
             <span className="text-text-secondary text-sm">Pieces correct:</span>
             <span className="text-sm font-medium text-text-primary">
-              {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
+              {piecesInfo.correctPieces}
               
-              {piecesInfo.totalWrong > 0 && (
+              {piecesInfo.extraPieces > 0 && (
                 <sup className="text-xs ml-1 text-red-500 font-bold">
-                  -{piecesInfo.totalWrong}
+                  -{piecesInfo.extraPieces}
                 </sup>
               )}
+              
+              / {piecesInfo.totalPieces}
             </span>
           </div>
           
@@ -529,12 +530,27 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                   <td className="py-2 text-red-500">Total Wrong Pieces</td>
                   <td className="text-right font-mono text-red-500">{piecesInfo.totalWrong}</td>
                 </tr>
-                <tr>
+                <tr className="border-b border-bg-light">
                   <td className="py-2">Accuracy</td>
                   <td className="text-right font-mono">{piecesInfo.accuracy}%</td>
                 </tr>
               </tbody>
             </table>
+            
+            <div className="mt-4 p-3 bg-gray-800 text-gray-300 rounded text-xs">
+              <h4 className="font-bold mb-2">Accuracy Formula:</h4>
+              <div className="font-mono">
+                Base Accuracy = (correctPieces / totalPieces) * 100<br/>
+                Penalty = extraPieces * 10<br/>
+                Final Accuracy = MAX(0, Base Accuracy - Penalty)
+              </div>
+              <div className="mt-2">
+                <span className="text-blue-400">Example:</span> With {piecesInfo.correctPieces} correct out of {piecesInfo.totalPieces} pieces and {piecesInfo.extraPieces} extra pieces:<br/>
+                Base = ({piecesInfo.correctPieces}/{piecesInfo.totalPieces}) * 100 = {Math.round((piecesInfo.correctPieces / piecesInfo.totalPieces) * 100)}%<br/>
+                Penalty = {piecesInfo.extraPieces} * 10 = {piecesInfo.extraPieces * 10}%<br/>
+                Final = MAX(0, {Math.round((piecesInfo.correctPieces / piecesInfo.totalPieces) * 100)} - {piecesInfo.extraPieces * 10}) = {Math.max(0, Math.round((piecesInfo.correctPieces / piecesInfo.totalPieces) * 100) - (piecesInfo.extraPieces * 10))}%
+              </div>
+            </div>
             
             <div className="flex justify-center mt-4">
               <button

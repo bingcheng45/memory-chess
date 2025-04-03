@@ -5,7 +5,12 @@ import { GameState, GameHistory, GamePhase, DIFFICULTY_LEVELS, DifficultyLevel }
 import { v4 as uuidv4 } from 'uuid';
 
 // Extended GameState type with skillRatingChange
-type GameStateWithRating = GameState & { skillRatingChange?: number };
+type GameStateWithRating = GameState & { 
+  skillRatingChange?: number;
+  wrongPieces?: number;
+  extraPieces?: number;
+  totalPiecesPlaced?: number;
+};
 
 interface GameStore {
   // Game state
@@ -284,7 +289,11 @@ const generateRandomPosition = (pieceCount: number): Chess | null => {
 };
 
 // Function to calculate accuracy between two positions
-const calculateAccuracy = (originalFen: string, userFen: string): number => {
+const calculateAccuracy = (originalFen: string, userFen: string): {
+  accuracy: number;
+  extraPieces: number;
+  totalPiecesPlaced: number;
+} => {
   try {
     // Extract piece placement part from FEN strings
     const originalPieces = originalFen.split(' ')[0];
@@ -317,23 +326,52 @@ const calculateAccuracy = (originalFen: string, userFen: string): number => {
     const originalMap = getSquaresMap(originalPieces);
     const userMap = getSquaresMap(userPieces);
     
-    // Count correct placements
+    // Count correct placements and total pieces
     let correctPlacements = 0;
-    let totalPieces = 0;
+    const totalOriginalPieces = originalMap.size;
+    const totalPiecesPlaced = userMap.size;
     
     // Check user placements against original
     originalMap.forEach((piece, square) => {
-      totalPieces++;
       if (userMap.get(square) === piece) {
         correctPlacements++;
       }
     });
     
-    // Calculate accuracy as a percentage
-    return Math.round((correctPlacements / totalPieces) * 100);
+    // Calculate extra pieces (only count excess pieces)
+    const extraPieces = Math.max(0, totalPiecesPlaced - totalOriginalPieces);
+    
+    // Calculate base accuracy as a percentage
+    const baseAccuracy = Math.round((correctPlacements / totalOriginalPieces) * 100);
+    
+    // Apply penalty for extra pieces: -10% for each extra piece
+    const extraPiecesPenalty = extraPieces * 10;
+    
+    // Ensure accuracy doesn't go below 0%
+    const accuracy = Math.max(0, baseAccuracy - extraPiecesPenalty);
+    
+    console.log('Accuracy calculation:', {
+      totalOriginalPieces,
+      totalPiecesPlaced,
+      correctPlacements,
+      extraPieces,
+      baseAccuracy,
+      extraPiecesPenalty,
+      finalAccuracy: accuracy
+    });
+    
+    return {
+      accuracy,
+      extraPieces,
+      totalPiecesPlaced
+    };
   } catch (error) {
     console.error('Error calculating accuracy:', error);
-    return 0;
+    return {
+      accuracy: 0,
+      extraPieces: 0,
+      totalPiecesPlaced: 0
+    };
   }
 };
 
@@ -651,7 +689,7 @@ export const useGameStore = create<GameStore>()(
         const userPosition = chess.fen();
         
         // Calculate accuracy
-        const accuracy = calculateAccuracy(gameState.originalPosition, userPosition);
+        const accuracyResult = calculateAccuracy(gameState.originalPosition, userPosition);
         
         // Calculate completion time with millisecond precision
         const now = Date.now();
@@ -662,15 +700,15 @@ export const useGameStore = create<GameStore>()(
         const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime, gameState.actualMemorizeTime);
         
         // Determine if this is a perfect score
-        const perfectScore = accuracy === 100;
+        const perfectScore = accuracyResult.accuracy === 100 && accuracyResult.extraPieces === 0;
         
         // Determine success (e.g., accuracy >= 70%)
-        const success = accuracy >= 70;
+        const success = accuracyResult.accuracy >= 70;
         
         // Calculate skill rating change
         const currentRating = gameState.skillRating || 1000;
         const skillRatingChange = calculateSkillRatingChange(
-          accuracy, 
+          accuracyResult.accuracy, 
           gameState.pieceCount, 
           completionTime, 
           gameState.memorizeTime,
@@ -690,14 +728,19 @@ export const useGameStore = create<GameStore>()(
         const newSkillRating = Math.max(0, currentRating + skillRatingChange);
         
         // Create a type that extends GameState with skillRatingChange
-        type GameStateWithRating = GameState & { skillRatingChange?: number };
+        type GameStateWithRating = GameState & { 
+          skillRatingChange?: number;
+          wrongPieces?: number;
+          extraPieces?: number;
+          totalPiecesPlaced?: number;
+        };
         
         // Update game state with results
         const updatedGameState: GameStateWithRating = {
           ...gameState,
           isSolutionPhase: false,
           userPosition,
-          accuracy,
+          accuracy: accuracyResult.accuracy,
           completionTime,
           success,
           perfectScore,
@@ -705,6 +748,8 @@ export const useGameStore = create<GameStore>()(
           skillRating: newSkillRating,
           streak,
           skillRatingChange,
+          extraPieces: accuracyResult.extraPieces,
+          totalPiecesPlaced: accuracyResult.totalPiecesPlaced
         };
         
         set({

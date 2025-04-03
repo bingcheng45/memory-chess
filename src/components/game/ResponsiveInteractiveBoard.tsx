@@ -124,12 +124,12 @@ export default function ResponsiveInteractiveBoard({
                 <TooltipTrigger asChild>
                   <Button
                     onClick={() => handleColorToggle('white')}
-                    variant={selectedPieceColor === 'white' ? "default" : "outline"}
+                    variant="ghost"
                     size="sm"
-                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full border-[0.5px] ${
+                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full ${
                       selectedPieceColor === 'white' 
-                        ? 'bg-peach-500 hover:bg-peach-500 border-transparent' 
-                        : 'bg-secondary/50 hover:bg-secondary/50'
+                        ? 'bg-peach-500 hover:bg-peach-500 border-0' 
+                        : 'bg-secondary/50 hover:bg-secondary/50 border border-muted/30'
                     }`}
                     aria-label="Select white pieces"
                   >
@@ -147,12 +147,12 @@ export default function ResponsiveInteractiveBoard({
                 <TooltipTrigger asChild>
                   <Button
                     onClick={() => handleColorToggle('black')}
-                    variant={selectedPieceColor === 'black' ? "default" : "outline"}
+                    variant="ghost"
                     size="sm"
-                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full border-[0.5px] ${
+                    className={`flex items-center justify-center h-10 w-10 p-0 aspect-square rounded-full ${
                       selectedPieceColor === 'black' 
-                        ? 'bg-peach-500 hover:bg-peach-500 border-transparent' 
-                        : 'bg-secondary/50 hover:bg-secondary/50'
+                        ? 'bg-peach-500 hover:bg-peach-500 border-0' 
+                        : 'bg-secondary/50 hover:bg-secondary/50 border border-muted/30'
                     }`}
                     aria-label="Select black pieces"
                   >

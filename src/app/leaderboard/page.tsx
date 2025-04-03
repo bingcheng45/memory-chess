@@ -6,6 +6,8 @@ import LeaderboardTable from '@/components/leaderboard/LeaderboardTable';
 import PageHeader from '@/components/ui/PageHeader';
 import { LeaderboardEntry } from '@/types/leaderboard';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 // Interface for entry details from URL params
 interface EntryDetails {
@@ -67,6 +69,44 @@ function LeaderboardContent() {
         const result = await response.json().catch(() => {
           throw new Error('Failed to parse server response. Please try again later.');
         });
+        
+        // Debug logging for API response
+        console.log('============ LEADERBOARD API RESPONSE DEBUG ============');
+        console.log('API Response:', result);
+        console.log('Response successful:', response.ok && !result.error);
+        console.log('Data length:', result.data?.length || 0);
+        
+        if (result.data && result.data.length > 0) {
+          console.log('First entry details:', {
+            id: result.data[0].id,
+            player_name: result.data[0].player_name,
+            difficulty: result.data[0].difficulty,
+            piece_count: result.data[0].piece_count,
+            correct_pieces: result.data[0].correct_pieces,
+            total_wrong_pieces: result.data[0].total_wrong_pieces,
+            extra_pieces_calc: result.data[0].total_wrong_pieces 
+              ? result.data[0].total_wrong_pieces - (result.data[0].piece_count - result.data[0].correct_pieces)
+              : 'N/A',
+            memorize_time: result.data[0].memorize_time,
+            solution_time: result.data[0].solution_time,
+            created_at: result.data[0].created_at
+          });
+          
+          // Print all entries' total_wrong_pieces fields
+          console.log('All entries total_wrong_pieces values:');
+          result.data.forEach((entry: LeaderboardEntry, index: number) => {
+            console.log(`Entry ${index + 1} - ${entry.player_name}:`, {
+              total_wrong_pieces: entry.total_wrong_pieces,
+              piece_count: entry.piece_count,
+              correct_pieces: entry.correct_pieces,
+              basic_wrong: entry.piece_count - entry.correct_pieces,
+              extra_pieces: entry.total_wrong_pieces 
+                ? entry.total_wrong_pieces - (entry.piece_count - entry.correct_pieces) 
+                : 'N/A'
+            });
+          });
+        }
+        console.log('====================================================');
         
         if (!response.ok || result.error) {
           // If the API returns an error but with status 200, we'll still catch it here
@@ -144,6 +184,21 @@ function LeaderboardContent() {
           <LeaderboardTable data={leaderboardData} isLoading={isLoading} error={error} entryDetails={entryDetails} activeTab="grandmaster" />
         </TabsContent>
       </Tabs>
+      
+      {/* Start Playing Now button - only shown when there's data */}
+      {leaderboardData.length > 0 && !isLoading && !error && (
+        <div className="w-full flex justify-center mt-4 mb-6">
+          <Link href={`/game?difficulty=${activeTab}`} className="inline-block">
+            <Button 
+              variant="secondary"
+              className="bg-peach-500 text-white hover:bg-peach-600 px-6 py-2"
+              size="lg"
+            >
+              Claim Your Rank
+            </Button>
+          </Link>
+        </div>
+      )}
       
       <div className="w-full max-w-4xl flex justify-end">
         <p className="text-xs text-text-secondary/70 italic">

@@ -166,21 +166,16 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     // Use actual memorize time if available, otherwise fall back to configured time
     const memorizeTime = gameState.actualMemorizeTime || gameState.memorizeTime;
     
-    // Create base entry without the new field
-    const entry = {
+    // Include the total_wrong_pieces field now that it's added to the database
+    return {
       player_name: playerName,
       difficulty: submissionDifficulty,
       piece_count: gameState.pieceCount,
       correct_pieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
       memorize_time: memorizeTime,
       solution_time: gameState.completionTime || 0,
+      total_wrong_pieces: piecesInfo.totalWrong
     };
-    
-    // Log the total wrong pieces for debugging
-    console.log(`Total wrong pieces: ${piecesInfo.totalWrong}`);
-    
-    // Return the entry without the new field while Supabase is being updated
-    return entry;
   };
   
   // Handle score submission
@@ -487,7 +482,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                 <Link href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${(() => {
                   const difficulty = determineDifficulty(gameState.pieceCount);
                   return encodeURIComponent(difficulty === 'custom' ? 'medium' : difficulty);
-                })()}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}`}>
+                })()}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100)}&totalWrongPieces=${piecesInfo.totalWrong}`}>
                   <Button className="bg-green-500 text-white hover:text-white hover:bg-green-600">
                     View Leaderboard
                   </Button>

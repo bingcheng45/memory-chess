@@ -53,12 +53,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate request body
-    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time } = body;
-    
-    // Log total_wrong_pieces for debugging but don't use it yet
-    if (body.total_wrong_pieces !== undefined) {
-      console.log(`Received total_wrong_pieces: ${body.total_wrong_pieces}`);
-    }
+    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces } = body;
     
     if (!player_name || !difficulty || !piece_count || correct_pieces === undefined || 
         !memorize_time || !solution_time) {
@@ -108,7 +103,7 @@ export async function POST(request: NextRequest) {
       correct_pieces,
       memorize_time,
       solution_time,
-      // Don't include total_wrong_pieces until DB schema is updated
+      total_wrong_pieces
     });
     
     return NextResponse.json({ success: true, data });

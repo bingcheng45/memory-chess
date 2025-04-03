@@ -15,6 +15,7 @@ interface EntryDetails {
   solutionTime: number | null;
   pieceCount: number | null;
   correctPieces: number | null;
+  totalWrongPieces: number | null;
 }
 
 // Component that uses searchParams - needs to be wrapped in Suspense
@@ -28,7 +29,8 @@ function LeaderboardContent() {
     memorizeTime: searchParams.get('memorizeTime') ? parseFloat(searchParams.get('memorizeTime')!) : null,
     solutionTime: searchParams.get('solutionTime') ? parseFloat(searchParams.get('solutionTime')!) : null,
     pieceCount: searchParams.get('pieceCount') ? parseInt(searchParams.get('pieceCount')!) : null,
-    correctPieces: searchParams.get('correctPieces') ? parseInt(searchParams.get('correctPieces')!) : null
+    correctPieces: searchParams.get('correctPieces') ? parseInt(searchParams.get('correctPieces')!) : null,
+    totalWrongPieces: searchParams.get('totalWrongPieces') ? parseInt(searchParams.get('totalWrongPieces')!) : null
   };
   
   const [activeTab, setActiveTab] = useState(

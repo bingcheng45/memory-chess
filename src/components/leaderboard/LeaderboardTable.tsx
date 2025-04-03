@@ -26,6 +26,7 @@ interface EntryDetails {
   solutionTime: number | null;
   pieceCount: number | null;
   correctPieces: number | null;
+  totalWrongPieces: number | null;
 }
 
 interface LeaderboardTableProps {
@@ -215,7 +216,11 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
               (entryDetails.solutionTime === null || Math.abs(entry.solution_time - entryDetails.solutionTime) < 0.001) &&
               // Match piece counts
               (entryDetails.pieceCount === null || entry.piece_count === entryDetails.pieceCount) &&
-              (entryDetails.correctPieces === null || entry.correct_pieces === entryDetails.correctPieces)
+              (entryDetails.correctPieces === null || entry.correct_pieces === entryDetails.correctPieces) &&
+              // Match total wrong pieces if available
+              (entryDetails.totalWrongPieces === null || 
+               entry.total_wrong_pieces === undefined || 
+               entry.total_wrong_pieces === entryDetails.totalWrongPieces)
             );
             
             return (
@@ -239,6 +244,11 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
                 </TableCell>
                 <TableCell className="text-center">
                   {entry.correct_pieces}/{entry.piece_count}
+                  {entry.total_wrong_pieces !== undefined && entry.total_wrong_pieces > 0 && (
+                    <sup className="text-xs ml-1 text-red-500 font-bold">
+                      -{entry.total_wrong_pieces}
+                    </sup>
+                  )}
                 </TableCell>
                 <TableCell className="text-center">
                   <TimeDisplay time={formatMemorizeTime(entry.memorize_time)} />

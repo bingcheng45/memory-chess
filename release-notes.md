@@ -13,4 +13,4 @@
 - Consistent sizing and alignment for better visual hierarchy
 
 ### How to Use
-Simply select white or black color by clicking on the respective button when placing chess pieces. The selected button will show a peach gradient background. 
+Simply select white or black color by clicking on the respective button when placing chess pieces. The selected button will show a peach gradient background.  

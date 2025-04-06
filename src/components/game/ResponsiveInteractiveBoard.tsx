@@ -49,6 +49,17 @@ export default function ResponsiveInteractiveBoard({
 
   // Handle square click
   const handleSquareClick = (position: Position) => {
+    console.log(`Square clicked: ${position.file}${position.rank} at ${new Date().toISOString()}`);
+    
+    // Check if this is a different position than the last selected position
+    if (selectedPosition && 
+        selectedPosition.file === position.file && 
+        selectedPosition.rank === position.rank) {
+      console.log('Same square clicked again');
+    } else {
+      console.log('New square selection');
+    }
+    
     setSelectedPosition(position);
     
     // Check if there's already a piece at this position
@@ -58,6 +69,7 @@ export default function ResponsiveInteractiveBoard({
     
     if (existingPiece) {
       // Remove the piece if it exists
+      console.log(`Removing piece at ${position.file}${position.rank}`);
       onRemovePiece(position);
     } else {
       // Check if we've reached the limit for this piece type and color
@@ -71,6 +83,7 @@ export default function ResponsiveInteractiveBoard({
       }
       
       // Place a new piece
+      console.log(`Placing ${selectedPieceColor} ${selectedPieceType} at ${position.file}${position.rank}`);
       const newPiece: ChessPiece = {
         id: uuidv4(),
         type: selectedPieceType,

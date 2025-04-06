@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef, useState, useCallback } from 'react';
 import Image from 'next/image';
 import { useResponsiveBoard } from '@/hooks/useResponsiveBoard';
 import { ChessPiece, Position } from '@/types/chess';
@@ -35,6 +35,11 @@ export default function ResponsiveChessBoard({
   controlsHeight = 0,
   renderOverlay
 }: ResponsiveChessBoardProps) {
+  // Touch handling state
+  const [lastTapPosition, setLastTapPosition] = useState<string | null>(null);
+  const [lastTapTime, setLastTapTime] = useState<number>(0);
+  const touchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
   // Get responsive dimensions
   const { size, squareSize, pieceSize, fontSize, padding } = useResponsiveBoard(
     minSize,
@@ -90,17 +95,50 @@ export default function ResponsiveChessBoard({
     color: 'black',
   };
   
-  // Handle square click
-  const handleSquareClick = (file: number, rank: number) => {
+  // Handle square click with debounce for touch events
+  const handleSquareClick = useCallback((file: number, rank: number) => {
     if (!isInteractive || isLoading || !onSquareClick) return;
     
     const position: Position = {
       file,
-      rank: rank, // Keep the rank as is - already converted in the onClick handler
+      rank,
     };
     
+    const squareKey = `${file}-${rank}`;
+    const currentTime = Date.now();
+    
+    // Prevent rapid double-taps on mobile
+    if (lastTapPosition === squareKey && currentTime - lastTapTime < 500) {
+      console.log('Preventing rapid tap on same square', squareKey);
+      return;
+    }
+    
+    // Handle case where rapid taps occur on different squares
+    if (lastTapPosition !== squareKey && currentTime - lastTapTime < 300) {
+      console.log('Detected rapid tap on different square', squareKey);
+      
+      // Clear any pending timeouts
+      if (touchTimeoutRef.current) {
+        clearTimeout(touchTimeoutRef.current);
+        touchTimeoutRef.current = null;
+      }
+      
+      // Wait a bit to ensure the previous tap was processed
+      touchTimeoutRef.current = setTimeout(() => {
+        setLastTapPosition(squareKey);
+        setLastTapTime(currentTime);
+        console.log('Processing delayed tap on', squareKey);
+        onSquareClick(position);
+      }, 50);
+      
+      return;
+    }
+    
+    // Normal tap handling
+    setLastTapPosition(squareKey);
+    setLastTapTime(currentTime);
     onSquareClick(position);
-  };
+  }, [isInteractive, isLoading, onSquareClick, lastTapPosition, lastTapTime]);
   
   // Find piece at a specific position
   const getPieceAt = (file: number, rank: number): ChessPiece | undefined => {
@@ -144,11 +182,24 @@ export default function ResponsiveChessBoard({
               }
             };
             
+            // Handle touch events explicitly
+            const handleTouchStart = (e: React.TouchEvent) => {
+              // Prevent default to avoid double-triggering with click
+              e.preventDefault();
+            };
+            
+            const handleTouchEnd = (e: React.TouchEvent) => {
+              e.preventDefault();
+              handleSquareClick(file, rank);
+            };
+            
             return (
               <div
                 key={`${file}-${rank}`}
                 style={squareStyle}
                 onClick={() => handleSquareClick(file, rank)}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
                 onKeyDown={handleKeyDown}
                 tabIndex={isInteractive ? 0 : -1}
                 role={isInteractive ? "button" : "presentation"}

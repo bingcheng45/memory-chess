@@ -42,7 +42,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     accuracy: gameState.accuracy || 0,
     totalPieces: gameState.pieceCount,
     totalPiecesPlaced: extendedGameState.totalPiecesPlaced || 0,
-    correctPieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
+    correctPieces: extendedGameState.correctPlacements || 0,
     // Extra pieces are only counted if more pieces were placed than required
     extraPieces: extendedGameState.extraPieces || 0,
     // Total wrong is the sum of missed original pieces and any extra pieces
@@ -151,7 +151,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       player_name: playerName,
       difficulty: submissionDifficulty,
       piece_count: gameState.pieceCount,
-      correct_pieces: Math.round((gameState.accuracy || 0) * gameState.pieceCount / 100),
+      correct_pieces: extendedGameState.correctPlacements || 0,
       memorize_time: memorizeTime,
       solution_time: gameState.completionTime || 0,
       total_wrong_pieces: piecesInfo.totalWrong

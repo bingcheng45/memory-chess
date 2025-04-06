@@ -10,6 +10,7 @@ type GameStateWithRating = GameState & {
   wrongPieces?: number;
   extraPieces?: number;
   totalPiecesPlaced?: number;
+  correctPlacements?: number;
 };
 
 interface GameStore {
@@ -293,6 +294,7 @@ const calculateAccuracy = (originalFen: string, userFen: string): {
   accuracy: number;
   extraPieces: number;
   totalPiecesPlaced: number;
+  correctPlacements: number;
 } => {
   try {
     // Extract piece placement part from FEN strings
@@ -363,14 +365,16 @@ const calculateAccuracy = (originalFen: string, userFen: string): {
     return {
       accuracy,
       extraPieces,
-      totalPiecesPlaced
+      totalPiecesPlaced,
+      correctPlacements
     };
   } catch (error) {
     console.error('Error calculating accuracy:', error);
     return {
       accuracy: 0,
       extraPieces: 0,
-      totalPiecesPlaced: 0
+      totalPiecesPlaced: 0,
+      correctPlacements: 0
     };
   }
 };
@@ -733,6 +737,7 @@ export const useGameStore = create<GameStore>()(
           wrongPieces?: number;
           extraPieces?: number;
           totalPiecesPlaced?: number;
+          correctPlacements?: number;
         };
         
         // Update game state with results
@@ -749,7 +754,8 @@ export const useGameStore = create<GameStore>()(
           streak,
           skillRatingChange,
           extraPieces: accuracyResult.extraPieces,
-          totalPiecesPlaced: accuracyResult.totalPiecesPlaced
+          totalPiecesPlaced: accuracyResult.totalPiecesPlaced,
+          correctPlacements: accuracyResult.correctPlacements
         };
         
         set({

@@ -32,6 +32,7 @@ export interface GameState {
   
   // Results
   accuracy?: number;         // Percentage of correct piece placements
+  correctPlacements?: number; // Number of correctly placed pieces
   success?: boolean;         // Whether the user successfully recreated the position
   perfectScore?: boolean;    // Whether the user achieved 100% accuracy
   timeBonusEarned?: number;  // Time bonus earned for quick completion

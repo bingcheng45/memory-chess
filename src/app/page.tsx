@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import PageHeader from '@/components/ui/PageHeader';
 import FaqSection from '@/components/ui/FaqSection';
+import VideoSection from '@/components/ui/VideoSection';
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
           <PageHeader showSoundSettings={false} />
         </div>
         
-        <div className="flex flex-col items-center justify-center space-y-8 text-center mb-16">
+        <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">
           <p className="max-w-2xl text-lg text-text-secondary">
             Train your chess memory and visualization skills through interactive exercises
           </p>
@@ -57,6 +58,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+        
+        {/* Video Section */}
+        <VideoSection />
         
         {/* FAQ Section */}
         <FaqSection />

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import PageHeader from '@/components/ui/PageHeader';
+import FaqSection from '@/components/ui/FaqSection';
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
           <PageHeader showSoundSettings={false} />
         </div>
         
-        <div className="flex flex-col items-center justify-center space-y-8 text-center">
+        <div className="flex flex-col items-center justify-center space-y-8 text-center mb-16">
           <p className="max-w-2xl text-lg text-text-secondary">
             Train your chess memory and visualization skills through interactive exercises
           </p>
@@ -39,7 +40,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+          <div className="mt-12 grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
             <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md transition-all hover:shadow-lg">
               <h2 className="mb-2 text-xl font-semibold text-text-primary">Visualization</h2>
               <p className="text-text-secondary">Train your ability to see the board in your mind</p>
@@ -56,6 +57,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+        
+        {/* FAQ Section */}
+        <FaqSection />
       </main>
     </div>
   );

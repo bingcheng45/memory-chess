@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     console.log('- GOOGLE_SERVICE_ACCOUNT_KEY exists:', !!serviceAccountKey);
     console.log('- GOOGLE_SERVICE_ACCOUNT_KEY length:', serviceAccountKey ? serviceAccountKey.length : 0);
     console.log('- GOOGLE_SHEET_ID exists:', !!spreadsheetId);
-    console.log('- GOOGLE_SHEET_ID value:', spreadsheetId);
+    // Don't log the actual Sheet ID value
     
     if (!serviceAccountKey) {
       throw new Error('Google service account key is missing');
@@ -30,10 +30,9 @@ export async function POST(request: Request) {
     try {
       credentials = JSON.parse(serviceAccountKey);
       console.log('Service account key parsed successfully');
-      console.log('- project_id:', credentials.project_id);
-      console.log('- client_email:', credentials.client_email);
-    } catch (parseError) {
-      console.error('Failed to parse service account key:', parseError);
+      // Don't log any credential details
+    } catch {
+      console.error('Failed to parse service account key');
       throw new Error('Invalid service account key format');
     }
     
@@ -67,33 +66,21 @@ export async function POST(request: Request) {
       message: 'Form submitted successfully'
     });
   } catch (error: unknown) {
-    console.error('Error submitting to Google Sheets:', error);
+    console.error('Error submitting to Google Sheets');
     
-    // Provide more detailed error information
+    // Provide more detailed error information without leaking sensitive data
     let errorMessage = 'Unknown error';
-    let errorDetails = {};
     
     if (error instanceof Error) {
+      // Only log the error message, not the stack trace
       errorMessage = error.message;
-      errorDetails = {
-        name: error.name,
-        stack: error.stack ? error.stack.split('\n').slice(0, 3).join('\n') : undefined
-      };
-    } else if (typeof error === 'object' && error !== null) {
-      try {
-        errorMessage = JSON.stringify(error);
-      } catch {
-        // If error can't be stringified
-        errorMessage = 'Error object cannot be stringified';
-      }
+      console.error('Error type:', error.name);
     }
-    
-    console.error('Detailed error:', { errorMessage, errorDetails });
     
     return NextResponse.json({ 
       error: 'Failed to send message', 
       details: errorMessage,
-      debug: process.env.NODE_ENV === 'development' ? errorDetails : undefined
+      // Don't include debug details in the response
     }, { status: 500 });
   }
 } 

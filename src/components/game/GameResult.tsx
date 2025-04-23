@@ -3,7 +3,7 @@
 import { useGameStore } from '@/lib/store/gameStore';
 import { GameState } from '@/lib/types/game';
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { playSound } from '@/lib/utils/soundEffects';
 import Link from 'next/link';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -34,8 +34,49 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   
+  // Use a ref instead of state to prevent double increments due to StrictMode
+  const playsCountedRef = useRef(false);
+  
   // Get the local copy of gameState with skill rating change info
   const extendedGameState = gameState as GameStateWithRating;
+  
+  // Update play count on component mount (runs once when game result is shown)
+  useEffect(() => {
+    // Skip if we've already counted this play
+    if (playsCountedRef.current) return;
+    
+    // Set ref to true immediately to prevent duplicate calls
+    playsCountedRef.current = true;
+    
+    // Increment the total plays counter in Supabase
+    async function incrementPlaysCounter() {
+      try {
+        const response = await fetch('/api/game-stats', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            metric: 'total_plays',
+            increment: 1
+          }),
+        });
+        
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('Failed to increment plays counter:', errorData.error);
+          return;
+        }
+        
+        const data = await response.json();
+        console.log(`Total plays updated to: ${data?.data?.value || 'unknown'}`);
+      } catch (err) {
+        console.error('Error incrementing plays counter:', err);
+      }
+    }
+    
+    incrementPlaysCounter();
+  }, []); // Empty dependency array since we're using a ref
   
   // Calculate pieces info for debugging and display
   const piecesInfo = {

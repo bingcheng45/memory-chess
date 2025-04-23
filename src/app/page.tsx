@@ -6,8 +6,44 @@ import PageHeader from '@/components/ui/PageHeader';
 import FaqSection from '@/components/ui/FaqSection';
 import VideoSection from '@/components/ui/VideoSection';
 import Footer from '@/components/ui/Footer';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [totalPlays, setTotalPlays] = useState<number | null>(null);
+
+  // Fetch total plays from Supabase on component mount
+  useEffect(() => {
+    async function fetchTotalPlays() {
+      try {
+        const response = await fetch('/api/game-stats?metric=total_plays');
+        
+        if (!response.ok) {
+          console.error('Failed to fetch total plays data');
+          return;
+        }
+        
+        const data = await response.json();
+        console.log('API Response:', data);
+        
+        // Extract the value from the correct path: data.metric_value
+        const playsValue = data?.data?.metric_value;
+        
+        console.log('Extracted plays value:', playsValue);
+        
+        if (playsValue !== undefined) {
+          setTotalPlays(playsValue);
+        } else {
+          console.error('Could not find metric_value in API response');
+          setTotalPlays(0);
+        }
+      } catch (err) {
+        console.error('Error fetching total plays:', err);
+      }
+    }
+    
+    fetchTotalPlays();
+  }, []);
+
   return (
     <div className="min-h-screen bg-bg-dark text-text-primary">
       <main className="container mx-auto px-4 py-8">
@@ -16,6 +52,10 @@ export default function Home() {
         </div>
         
         <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">
+          <h2 className="text-xl font-bold text-peach-500">
+            Total Games Played: {totalPlays !== null ? totalPlays : '...'}
+          </h2>
+          
           <p className="max-w-2xl text-lg text-text-secondary">
             Train your chess memory and visualization skills through interactive exercises
           </p>
@@ -45,7 +85,7 @@ export default function Home() {
           {/* Video Section - Moved up */}
           <VideoSection />
 
-          {/* Three cards grid - Moved down */}
+          {/* Three cards grid */}
           <div className="mt-12 grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
             <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md transition-all hover:shadow-lg">
               <h2 className="mb-2 text-xl font-semibold text-text-primary">Visualization</h2>

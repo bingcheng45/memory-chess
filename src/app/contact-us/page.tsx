@@ -48,6 +48,7 @@ export default function ContactUs() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
   // Initialize form
   const form = useForm<FormValues>({
@@ -63,12 +64,43 @@ export default function ContactUs() {
   // Form submission handler
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
+    setFormError(null);
     try {
-      // Here you would typically send the data to your backend or API
-      console.log('Form data:', data);
+      // Explicitly check that inquiry type is selected
+      if (!data.type || data.type.trim() === '') {
+        form.setError('type', {
+          type: 'manual',
+          message: 'Please select an inquiry type.'
+        });
+        setFormError('Please select an inquiry type.');
+        throw new Error('Inquiry type is required');
+      }
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send data to our API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        // Get detailed error information from response if available
+        const errorDetails = result.details ? `: ${result.details}` : '';
+        setFormError(`Failed to submit form${errorDetails}`);
+        
+        // Log additional debug info if available
+        if (result.debug) {
+          console.error('Debug information:', result.debug);
+        }
+        
+        throw new Error(result.error || 'Failed to submit form');
+      }
+      
+      console.log('Form submission result:', result);
       
       setSubmitSuccess(true);
       form.reset();
@@ -79,6 +111,10 @@ export default function ContactUs() {
       }, 3000);
     } catch (error) {
       console.error('Error submitting form:', error);
+      // If no specific error was set, set a generic one
+      if (!formError) {
+        setFormError('An error occurred while submitting the form. Please try again.');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -102,6 +138,12 @@ export default function ContactUs() {
             </div>
           ) : (
             <Form {...form}>
+              {formError && (
+                <div className="p-4 mb-4 text-sm rounded-lg bg-red-500/10 text-red-400 border border-red-500/30">
+                  <p>{formError}</p>
+                </div>
+              )}
+
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 px-2 sm:px-0">
                 <FormField
                   control={form.control}
@@ -137,7 +179,12 @@ export default function ContactUs() {
                   render={({ field }: { field: ControllerRenderProps<FormValues, "type"> }) => (
                     <FormItem>
                       <FormLabel>Inquiry Type</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select 
+                        onValueChange={field.onChange} 
+                        defaultValue={field.value}
+                        value={field.value}
+                        required
+                      >
                         <FormControl>
                           <SelectTrigger className="bg-bg-card border-bg-light text-white focus:border-white focus:ring-white focus:ring-opacity-50">
                             <SelectValue placeholder="Select inquiry type" className="text-white" />

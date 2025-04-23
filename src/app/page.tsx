@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import PageHeader from '@/components/ui/PageHeader';
 import FaqSection from '@/components/ui/FaqSection';
 import VideoSection from '@/components/ui/VideoSection';
+import Footer from '@/components/ui/Footer';
 
 export default function Home() {
   return (
@@ -41,30 +42,47 @@ export default function Home() {
             </Link>
           </div>
 
+          {/* Video Section - Moved up */}
+          <VideoSection />
+
+          {/* Three cards grid - Moved down */}
           <div className="mt-12 grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
             <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md transition-all hover:shadow-lg">
               <h2 className="mb-2 text-xl font-semibold text-text-primary">Visualization</h2>
-              <p className="text-text-secondary">Train your ability to see the board in your mind</p>
+              <p className="text-text-secondary">Sharpen your mind&apos;s eye for chess, programming, and problem-solving.</p>
             </div>
 
             <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md transition-all hover:shadow-lg">
               <h2 className="mb-2 text-xl font-semibold text-text-primary">Memory</h2>
-              <p className="text-text-secondary">Remember positions and sequences of moves</p>
+              <p className="text-text-secondary">Master grandmaster techniques to hold complex information effortlessly.</p>
             </div>
 
             <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md transition-all hover:shadow-lg">
               <h2 className="mb-2 text-xl font-semibold text-text-primary">Progress</h2>
-              <p className="text-text-secondary">Track your improvement over time</p>
+              <p className="text-text-secondary">See measurable improvements with just 10-15 minutes of daily practice.</p>
             </div>
           </div>
+          
+          {/* Added Start Training button below the cards */}
+          <div className="mt-8 mb-4">
+            <Link href="/game">
+              <Button 
+                variant="default"
+                size="lg"
+                className="bg-peach-500 hover:bg-peach-600 text-white px-6 py-2.5 text-base font-medium"
+              >
+                Start Training Now
+              </Button>
+            </Link>
+          </div>
         </div>
-        
-        {/* Video Section */}
-        <VideoSection />
         
         {/* FAQ Section */}
         <FaqSection />
       </main>
+      
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

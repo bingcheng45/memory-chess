@@ -58,7 +58,7 @@ export default function GameStats() {
         hour: 'numeric',
         minute: 'numeric',
       }).format(date);
-    } catch (_) {
+    } catch {
       return 'Invalid date';
     }
   };

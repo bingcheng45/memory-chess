@@ -10,13 +10,6 @@ export async function POST(request: Request) {
     const serviceAccountKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
     
-    // Debug: Log environment variable status (safe partial logging)
-    console.log('Environment variables check:');
-    console.log('- GOOGLE_SERVICE_ACCOUNT_KEY exists:', !!serviceAccountKey);
-    console.log('- GOOGLE_SERVICE_ACCOUNT_KEY length:', serviceAccountKey ? serviceAccountKey.length : 0);
-    console.log('- GOOGLE_SHEET_ID exists:', !!spreadsheetId);
-    // Don't log the actual Sheet ID value
-    
     if (!serviceAccountKey) {
       throw new Error('Google service account key is missing');
     }
@@ -37,7 +30,7 @@ export async function POST(request: Request) {
     }
     
     // Log attempt to help with debugging
-    console.log('Attempting to connect to Google Sheets with spreadsheet ID:', spreadsheetId);
+    console.log('Attempting to connect to Google Sheets');
     
     // Set up auth
     const auth = new google.auth.GoogleAuth({

@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     const sheets = google.sheets('v4');
     
     // Append data to the sheet
-    const response = await sheets.spreadsheets.values.append({
+    await sheets.spreadsheets.values.append({
       auth,
       spreadsheetId,
       range: 'Sheet1!A:E', // Adjust range as needed
@@ -52,7 +52,8 @@ export async function POST(request: Request) {
       },
     });
     
-    console.log('Successfully wrote to Google Sheets:', response.data);
+    // Don't log response data as it could contain sheet metadata
+    console.log('Successfully wrote to Google Sheets');
     
     return NextResponse.json({ 
       success: true,

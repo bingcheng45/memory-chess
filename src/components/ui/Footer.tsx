@@ -15,7 +15,7 @@ export default function Footer() {
         </div>
         
         {/* Product Hunt Badge */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-4">
           <a 
             href="https://www.producthunt.com/posts/memory-chess?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-memory&#0045;chess" 
             target="_blank" 
@@ -28,6 +28,33 @@ export default function Footer() {
               height="54" 
               style={{ width: '250px', height: '54px' }}
             />
+          </a>
+        </div>
+        
+        {/* Twitter/X Icon */}
+        <div className="flex justify-center mb-6">
+          <a 
+            href="https://x.com/TheMemoryChess" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-text-secondary hover:text-peach-500 transition-colors"
+            aria-label="Follow us on Twitter/X"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-5 h-5"
+            >
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+            </svg>
+            <span>@TheMemoryChess</span>
           </a>
         </div>
         

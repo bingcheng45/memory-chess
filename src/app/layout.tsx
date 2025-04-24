@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 // Define your site URL for canonical and OG URLs
-const siteUrl = 'https://memory-chess.vercel.app';
+const siteUrl = 'https://thememorychess.com';
 
 export const metadata: Metadata = {
   // Basic Metadata

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Chess, PieceSymbol, Square } from 'chess.js';
+import { Chess, PieceSymbol, Square, Color } from 'chess.js';
 import { GameState, GameHistory, GamePhase, DIFFICULTY_LEVELS, DifficultyLevel } from '@/lib/types/game';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -109,8 +109,22 @@ const generateRandomPosition = (pieceCount: number): Chess | null => {
       }
     });
     
-    // Define piece types and their relative frequencies
-    const pieces = [
+    // Set up a piece inventory that respects standard chess piece limits
+    const standardInventory = {
+      'w': { 'p': 8, 'n': 2, 'b': 2, 'r': 2, 'q': 1, 'k': 1 },
+      'b': { 'p': 8, 'n': 2, 'b': 2, 'r': 2, 'q': 1, 'k': 1 }
+    };
+    
+    // Create a deep copy of the inventory to track available pieces
+    const availableInventory: {
+      [key: string]: { [key: string]: number }
+    } = {
+      'w': { ...standardInventory['w'] },
+      'b': { ...standardInventory['b'] }
+    };
+    
+    // Define piece types and their relative frequencies for weighted selection
+    const pieceWeights = [
       { type: 'p', weight: 8 }, // pawns (most common)
       { type: 'n', weight: 2 }, // knights
       { type: 'b', weight: 2 }, // bishops
@@ -118,14 +132,6 @@ const generateRandomPosition = (pieceCount: number): Chess | null => {
       { type: 'q', weight: 1 }, // queen (least common)
       { type: 'k', weight: 0 }, // kings are handled separately
     ];
-    
-    // Create a weighted array for random selection
-    const weightedPieces: string[] = [];
-    pieces.forEach(piece => {
-      for (let i = 0; i < piece.weight; i++) {
-        weightedPieces.push(piece.type);
-      }
-    });
     
     // Track occupied squares
     const occupiedSquares = new Set<string>();
@@ -149,6 +155,7 @@ const generateRandomPosition = (pieceCount: number): Chess | null => {
       try {
         chess.put({ type: 'k' as PieceSymbol, color: 'w' }, square as Square);
         occupiedSquares.add(square);
+        availableInventory['w']['k'] = 0; // Mark white king as used
         whiteKingPlaced = true;
         break;
       } catch (error) {
@@ -167,6 +174,7 @@ const generateRandomPosition = (pieceCount: number): Chess | null => {
       try {
         chess.put({ type: 'k' as PieceSymbol, color: 'b' }, square as Square);
         occupiedSquares.add(square);
+        availableInventory['b']['k'] = 0; // Mark black king as used
         blackKingPlaced = true;
         break;
       } catch (error) {
@@ -190,10 +198,10 @@ const generateRandomPosition = (pieceCount: number): Chess | null => {
     const maxAttempts = 1000; // Prevent infinite loops
     let attempts = 0;
     
-    // Calculate how many pieces of each color to place
-    const remainingPieces = adjustedPieceCount - 2; // Subtract the 2 kings
-    const targetWhitePieces = Math.ceil(remainingPieces / 2);
-    const targetBlackPieces = remainingPieces - targetWhitePieces;
+    // Calculate how many pieces of each color to place, keeping roughly balanced
+    const remainingPieces = adjustedPieceCount - 2;
+    let targetWhitePieces = Math.ceil(remainingPieces / 2);
+    let targetBlackPieces = remainingPieces - targetWhitePieces;
     
     let whitePiecesPlaced = 1; // Start with 1 for the king
     let blackPiecesPlaced = 1; // Start with 1 for the king
@@ -209,11 +217,11 @@ const generateRandomPosition = (pieceCount: number): Chess | null => {
       const square = availableSquares[randomIndex] as Square;
       
       // Determine color based on balance
-      const needMoreWhite = whitePiecesPlaced < targetWhitePieces + 1; // +1 for the king
-      const needMoreBlack = blackPiecesPlaced < targetBlackPieces + 1; // +1 for the king
+      const needMoreWhite = whitePiecesPlaced < (targetWhitePieces + 1); // +1 for the king
+      const needMoreBlack = blackPiecesPlaced < (targetBlackPieces + 1); // +1 for the king
       
+      // If we've reached our target for one color, only use the other
       let isWhite: boolean;
-      
       if (needMoreWhite && !needMoreBlack) {
         isWhite = true;
       } else if (!needMoreWhite && needMoreBlack) {
@@ -222,27 +230,55 @@ const generateRandomPosition = (pieceCount: number): Chess | null => {
         isWhite = Math.random() > 0.5;
       }
       
-      // Select random piece type
-      const pieceType = weightedPieces[Math.floor(Math.random() * weightedPieces.length)];
-      const finalPieceType = isWhite ? pieceType.toUpperCase() : pieceType;
+      const color = isWhite ? 'w' : 'b';
+      
+      // Get available piece types for this color based on inventory
+      const availablePieceTypes = pieceWeights
+        .filter(p => availableInventory[color][p.type] > 0)
+        .flatMap(p => Array(p.weight).fill(p.type));
+      
+      // If no piece types are available for this color, try the other color
+      if (availablePieceTypes.length === 0) {
+        // If we're short on pieces, recalculate target distribution
+        if ((isWhite && needMoreWhite) || (!isWhite && needMoreBlack)) {
+          // Adjust target distribution to use remaining available pieces
+          const availableWhitePieces = Object.values(availableInventory['w']).reduce((sum, count) => sum + count, 0);
+          const availableBlackPieces = Object.values(availableInventory['b']).reduce((sum, count) => sum + count, 0);
+          
+          const totalAvailable = availableWhitePieces + availableBlackPieces;
+          if (totalAvailable === 0) break; // No more pieces available
+          
+          // Recalculate targets based on availability
+          targetWhitePieces = Math.min(remainingPieces - (blackPiecesPlaced - 1), 1 + availableWhitePieces);
+          targetBlackPieces = Math.min(remainingPieces - (whitePiecesPlaced - 1), 1 + availableBlackPieces);
+        }
+        continue;
+      }
+      
+      // Select random piece type from available types
+      const pieceType = availablePieceTypes[Math.floor(Math.random() * availablePieceTypes.length)] as PieceSymbol;
       
       // Place the piece
       try {
         chess.put({ 
-          type: pieceType as PieceSymbol, 
-          color: isWhite ? 'w' : 'b' 
+          type: pieceType, 
+          color: color as Color
         }, square);
         
         occupiedSquares.add(square);
         piecesPlaced++;
         
+        // Update inventory
+        availableInventory[color][pieceType]--;
+        
+        // Update piece counts
         if (isWhite) {
           whitePiecesPlaced++;
         } else {
           blackPiecesPlaced++;
         }
       } catch (error) {
-        console.error(`Failed to place piece ${finalPieceType} on ${square}:`, error);
+        console.error(`Failed to place piece ${pieceType} on ${square}:`, error);
       }
     }
     

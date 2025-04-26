@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { formatNumber } from '@/lib/utils';
 
 interface GameStat {
   id: string;
@@ -43,6 +44,11 @@ export default function GameStats() {
   const getStatValue = (name: string) => {
     const stat = stats.find(s => s.metric_name === name);
     return stat?.metric_value || 0;
+  };
+  
+  // Helper function to get and format a stat value with commas
+  const getFormattedStatValue = (name: string) => {
+    return formatNumber(getStatValue(name));
   };
   
   // Format a date string to a readable format
@@ -112,15 +118,15 @@ export default function GameStats() {
           <>
             <div className="flex justify-between items-center">
               <span className="text-text-secondary">Total Plays:</span>
-              <span className="text-lg font-bold text-text-primary">{getStatValue('total_plays')}</span>
+              <span className="text-lg font-bold text-text-primary">{getFormattedStatValue('total_plays')}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-text-secondary">Completed Games:</span>
-              <span className="text-lg font-bold text-text-primary">{getStatValue('total_completed_games')}</span>
+              <span className="text-lg font-bold text-text-primary">{getFormattedStatValue('total_completed_games')}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-text-secondary">Total Correct Pieces:</span>
-              <span className="text-lg font-bold text-text-primary">{getStatValue('total_correct_pieces')}</span>
+              <span className="text-lg font-bold text-text-primary">{getFormattedStatValue('total_correct_pieces')}</span>
             </div>
             
             {/* Display all other metrics */}
@@ -131,7 +137,7 @@ export default function GameStats() {
                   <span className="text-text-secondary">
                     {stat.metric_name.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}:
                   </span>
-                  <span className="text-lg font-bold text-text-primary">{stat.metric_value}</span>
+                  <span className="text-lg font-bold text-text-primary">{formatNumber(stat.metric_value)}</span>
                 </div>
               ))
             }

@@ -7,6 +7,7 @@ import FaqSection from '@/components/ui/FaqSection';
 import VideoSection from '@/components/ui/VideoSection';
 import Footer from '@/components/ui/Footer';
 import { useState, useEffect } from 'react';
+import { formatNumber } from '@/lib/utils';
 
 export default function Home() {
   const [totalPlays, setTotalPlays] = useState<number | null>(null);
@@ -53,7 +54,7 @@ export default function Home() {
         
         <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">
           <h2 className="text-xl font-bold text-peach-500">
-            Total Games Played: {totalPlays !== null ? totalPlays : '...'}
+            Total Games Played: {totalPlays !== null ? formatNumber(totalPlays) : '...'}
           </h2>
           
           <p className="max-w-2xl text-lg text-text-secondary">

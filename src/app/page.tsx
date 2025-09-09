@@ -1,16 +1,31 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import PageHeader from '@/components/ui/PageHeader';
 import FaqSection from '@/components/ui/FaqSection';
 import VideoSection from '@/components/ui/VideoSection';
 import Footer from '@/components/ui/Footer';
 import { useState, useEffect } from 'react';
 import { formatNumber } from '@/lib/utils';
+import Script from 'next/script';
+import { motion } from 'framer-motion';
+import { Eye, Brain, TrendingUp } from 'lucide-react';
 
 export default function Home() {
   const [totalPlays, setTotalPlays] = useState<number | null>(null);
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Memory Chess",
+    "url": "https://thememorychess.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://thememorychess.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
 
   // Fetch total plays from Supabase on component mount
   useEffect(() => {
@@ -51,29 +66,68 @@ export default function Home() {
         <div className="flex justify-center mb-8">
           <PageHeader showSoundSettings={false} />
         </div>
-        
-        <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">
-          <h2 className="text-xl font-bold text-peach-500">
-            Total Games Played: {totalPlays !== null ? formatNumber(totalPlays) : '...'}
-          </h2>
-          
-          <p className="max-w-2xl text-lg text-text-secondary">
-            Train your chess memory and visualization skills through interactive exercises
-          </p>
+        <Script id="website-schema" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify(websiteSchema)}
+        </Script>
 
-          <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
+        <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl sm:text-5xl font-extrabold text-text-primary"
+          >
+            Train Spatial Memory with Memory Chess
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="max-w-2xl text-lg text-text-secondary"
+          >
+            Play a free online memory chess game to sharpen board visualization and recall.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="max-w-2xl text-lg text-text-secondary"
+          >
+            Join players worldwide improving their spatial memory and track results on the{' '}
+            <Link href="/leaderboard" className="underline hover:text-peach-500">
+              leaderboard
+            </Link>.
+          </motion.p>
+
+          <motion.h2
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="text-xl font-bold text-peach-500"
+          >
+            Total Games Played: {totalPlays !== null ? formatNumber(totalPlays) : '...'}
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="flex flex-col gap-4 sm:flex-row sm:gap-6"
+          >
             <Link href="/game">
-              <Button 
+              <Button
                 variant="secondary"
                 size="sm"
                 className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
               >
-                Start Training
+                Play Free
               </Button>
             </Link>
-            
+
             <Link href="/leaderboard">
-              <Button 
+              <Button
                 variant="outline"
                 size="sm"
                 className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 hover:text-peach-500 px-3 py-1.5 text-sm"
@@ -81,33 +135,59 @@ export default function Home() {
                 Leaderboard
               </Button>
             </Link>
-          </div>
+          </motion.div>
 
-          {/* Video Section - Moved up */}
           <VideoSection />
 
-          {/* Three cards grid */}
-          <div className="mt-12 grid gap-8 sm:grid-cols-3 w-full max-w-4xl">
-            <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md transition-all hover:shadow-lg">
-              <h2 className="mb-2 text-xl font-semibold text-text-primary">Visualization</h2>
-              <p className="text-text-secondary">Sharpen your mind&apos;s eye for chess, programming, and problem-solving.</p>
-            </div>
+          <section className="mt-16 w-full max-w-5xl">
+            <h2 className="mb-8 text-2xl sm:text-3xl font-bold text-center text-text-primary">
+              How Memory Chess Builds Spatial Memory
+            </h2>
+            <div className="grid gap-8 sm:grid-cols-3">
+              <motion.div
+                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 40 }}
+                transition={{ duration: 0.5 }}
+                className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md"
+              >
+                <Eye className="h-10 w-10 text-peach-500 mb-4" />
+                <h3 className="mb-2 text-xl font-semibold text-text-primary">Observe</h3>
+                <p className="text-text-secondary">
+                  Study a randomized chessboard for a few seconds to imprint key patterns.
+                </p>
+              </motion.div>
 
-            <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md transition-all hover:shadow-lg">
-              <h2 className="mb-2 text-xl font-semibold text-text-primary">Memory</h2>
-              <p className="text-text-secondary">Master grandmaster techniques to hold complex information effortlessly.</p>
-            </div>
+              <motion.div
+                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 40 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md"
+              >
+                <Brain className="h-10 w-10 text-peach-500 mb-4" />
+                <h3 className="mb-2 text-xl font-semibold text-text-primary">Recreate</h3>
+                <p className="text-text-secondary">
+                  Rebuild the position from memory to train recall and board vision.
+                </p>
+              </motion.div>
 
-            <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md transition-all hover:shadow-lg">
-              <h2 className="mb-2 text-xl font-semibold text-text-primary">Progress</h2>
-              <p className="text-text-secondary">See measurable improvements with just 10-15 minutes of daily practice.</p>
+              <motion.div
+                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 40 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-md"
+              >
+                <TrendingUp className="h-10 w-10 text-peach-500 mb-4" />
+                <h3 className="mb-2 text-xl font-semibold text-text-primary">Improve</h3>
+                <p className="text-text-secondary">
+                  Get instant feedback and track your progress over time.
+                </p>
+              </motion.div>
             </div>
-          </div>
-          
-          {/* Added Start Training button below the cards */}
+          </section>
+
           <div className="mt-8 mb-4">
             <Link href="/game">
-              <Button 
+              <Button
                 variant="default"
                 size="lg"
                 className="bg-peach-500 hover:bg-peach-600 text-white px-6 py-2.5 text-base font-medium"

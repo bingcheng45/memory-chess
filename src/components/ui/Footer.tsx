@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
         
         <div className="pt-6 text-center text-text-secondary text-sm">
-          <p>&copy; {currentYear} TheMemoryChess. All rights reserved.</p>
+          <p>&copy; {currentYear} Memory Chess. All rights reserved.</p>
         </div>
       </div>
     </footer>

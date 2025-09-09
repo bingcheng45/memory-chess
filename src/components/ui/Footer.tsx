@@ -21,11 +21,12 @@ export default function Footer() {
             target="_blank" 
             rel="noopener noreferrer"
           >
-            <img 
-              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=957046&theme=dark&t=1745436905003" 
-              alt="Memory&#0032;Chess - Train&#0032;your&#0032;spatial&#0032;visualisation&#0032;with&#0032;chess&#0033; | Product Hunt" 
-              width="250" 
-              height="54" 
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=957046&theme=dark&t=1745436905003"
+              alt="Memory&#0032;Chess - Train&#0032;your&#0032;spatial&#0032;visualisation&#0032;with&#0032;chess&#0033; | Product Hunt"
+              width="250"
+              height="54"
+              loading="lazy"
               style={{ width: '250px', height: '54px' }}
             />
           </a>
@@ -58,7 +59,7 @@ export default function Footer() {
         </div>
         
         <div className="pt-6 text-center text-text-secondary text-sm">
-          <p>&copy; {currentYear} TheMemoryChess. All rights reserved.</p>
+          <p>&copy; {currentYear} Memory Chess. All rights reserved.</p>
         </div>
       </div>
     </footer>

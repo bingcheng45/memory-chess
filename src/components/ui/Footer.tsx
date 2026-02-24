@@ -14,22 +14,39 @@ export default function Footer() {
           </Link>
         </div>
         
-        {/* Product Hunt Badge */}
+        {/* Product Hunt Badges */}
         <div className="flex justify-center mb-4">
-          <a 
-            href="https://www.producthunt.com/posts/memory-chess?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-memory&#0045;chess" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            <img
-              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=957046&theme=dark&t=1745436905003"
-              alt="Memory&#0032;Chess - Train&#0032;your&#0032;spatial&#0032;visualisation&#0032;with&#0032;chess&#0033; | Product Hunt"
-              width="250"
-              height="54"
-              loading="lazy"
-              style={{ width: '250px', height: '54px' }}
-            />
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="https://www.producthunt.com/products/memory-chess/launches/memory-chess?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_campaign=badge-memory-chess"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                alt="Memory Chess - Train your spatial visualization with chess | Product Hunt"
+                width="250"
+                height="54"
+                src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=957046&theme=dark&period=daily&t=1771899006529"
+                loading="lazy"
+                style={{ width: '250px', height: '54px' }}
+              />
+            </a>
+
+            <a
+              href="https://www.producthunt.com/products/memory-chess/launches/memory-chess?embed=true&utm_source=badge-top-post-topic-badge&utm_medium=badge&utm_campaign=badge-memory-chess"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                alt="Memory Chess - Train your spatial visualization with chess | Product Hunt"
+                width="250"
+                height="54"
+                src="https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=957046&theme=dark&period=weekly&topic_id=204&t=1771899006529"
+                loading="lazy"
+                style={{ width: '250px', height: '54px' }}
+              />
+            </a>
+          </div>
         </div>
         
         {/* Twitter/X Icon */}

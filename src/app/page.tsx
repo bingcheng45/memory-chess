@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import PageHeader from '@/components/ui/PageHeader';
 import FaqSection from '@/components/ui/FaqSection';
+import OtherAppsSection from '@/components/ui/OtherAppsSection';
 import VideoSection from '@/components/ui/VideoSection';
 import Footer from '@/components/ui/Footer';
 import { useState, useEffect } from 'react';
@@ -200,6 +201,9 @@ export default function Home() {
         
         {/* FAQ Section */}
         <FaqSection />
+
+        {/* Other Apps Section */}
+        <OtherAppsSection />
       </main>
       
       {/* Footer */}

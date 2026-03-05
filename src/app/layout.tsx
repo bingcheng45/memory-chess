@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -36,16 +36,9 @@ export const metadata: Metadata = {
     'board memory', 'grandmaster techniques', 'memory chess'
   ],
   
-  // Viewport
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
-
-  // Canonical link - helps prevent duplicate content issues
+  // Canonical for home route; child routes override via route metadata
   alternates: {
-    canonical: siteUrl,
+    canonical: '/',
   },
 
   // Icons
@@ -110,10 +103,16 @@ export const metadata: Metadata = {
   
   // Content type
   metadataBase: new URL(siteUrl),
-  themeColor: '#1D1C20', // Your dark background color
-  colorScheme: 'dark',
   creator: 'Memory Chess Team',
   publisher: 'Memory Chess',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#1D1C20',
+  colorScheme: 'dark',
 };
 
 export default function RootLayout({

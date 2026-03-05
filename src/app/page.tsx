@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import { formatNumber } from '@/lib/utils';
 import Script from 'next/script';
 import { motion } from 'framer-motion';
-import { Eye, Brain, TrendingUp } from 'lucide-react';
+import { Eye, Brain, TrendingUp, BookOpen } from 'lucide-react';
 
 export default function Home() {
   const [totalPlays, setTotalPlays] = useState<number | null>(null);
@@ -185,6 +185,39 @@ export default function Home() {
               </motion.div>
             </div>
           </section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mt-14 w-full max-w-4xl rounded-xl border border-bg-light bg-bg-card p-6 sm:p-8"
+          >
+            <div className="flex flex-col items-center text-center">
+              <BookOpen className="h-9 w-9 text-peach-500 mb-4" />
+              <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-3">
+                Learning Center for Chess Memory and Visualization
+              </h2>
+              <p className="text-text-secondary max-w-2xl mb-6">
+                Follow beginner-focused guides on board vision, visualization, and memory
+                drills. Each guide includes practical routines and direct links to training.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/learn">
+                  <Button className="bg-peach-500 hover:bg-peach-600 text-white">
+                    Explore Learning Center
+                  </Button>
+                </Link>
+                <Link href="/learn/how-to-get-better-at-chess-for-beginners">
+                  <Button
+                    variant="outline"
+                    className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 hover:text-peach-400"
+                  >
+                    Start with beginner roadmap
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </motion.section>
 
           <div className="mt-8 mb-4">
             <Link href="/game">

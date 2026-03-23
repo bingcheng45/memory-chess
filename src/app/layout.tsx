@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     siteName: 'Memory Chess',
     images: [
       {
-        url: `${siteUrl}/images/memory-chess-og.png`,
+        url: `${siteUrl}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: 'Memory Chess - Train Your Chess Memory',
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Memory Chess - Chess Visualization Training',
     description: 'Enhance your memory and spatial visualization skills with chess-based training exercises',
-    images: [`${siteUrl}/images/memory-chess-twitter.png`],
+    images: [`${siteUrl}/twitter-image`],
     creator: '@memorychess',
   },
 

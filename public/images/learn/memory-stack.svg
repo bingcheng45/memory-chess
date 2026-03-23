@@ -1,0 +1,23 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="36" fill="#101111"/>
+  <path d="M0 0H1200V630H0V0Z" fill="url(#paint0_radial_403_10)"/>
+  <rect x="62" y="62" width="1076" height="506" rx="28" fill="#171818" stroke="#2D2F2F" stroke-width="2"/>
+  <rect x="122" y="332" width="344" height="146" rx="24" fill="#171A1B" stroke="#4FD1A5"/>
+  <rect x="152" y="272" width="344" height="146" rx="24" fill="#1B1E20" stroke="#FF9F43"/>
+  <rect x="182" y="212" width="344" height="146" rx="24" fill="#1E2224" stroke="#E8F7EF"/>
+  <rect x="212" y="152" width="344" height="146" rx="24" fill="#202527" stroke="#4FD1A5"/>
+  <text x="256" y="240" fill="#FFF8EF" font-family="Arial, sans-serif" font-size="72" font-weight="700">e4</text>
+  <text x="256" y="300" fill="#B7C1BB" font-family="Arial, sans-serif" font-size="26">piece map</text>
+  <path d="M598 154H1054" stroke="#313434" stroke-width="2"/>
+  <text x="598" y="220" fill="#7EE5C0" font-family="Arial, sans-serif" font-size="26" letter-spacing="5">MEMORY</text>
+  <text x="598" y="306" fill="#FFF8EF" font-family="Arial, sans-serif" font-size="62" font-weight="700">Recall the board</text>
+  <text x="598" y="380" fill="#FFF8EF" font-family="Arial, sans-serif" font-size="62" font-weight="700">before the line</text>
+  <text x="598" y="454" fill="#FFF8EF" font-family="Arial, sans-serif" font-size="62" font-weight="700">starts to blur.</text>
+  <text x="598" y="518" fill="#C7CEC8" font-family="Arial, sans-serif" font-size="28">Memory Chess learn guides</text>
+  <defs>
+    <radialGradient id="paint0_radial_403_10" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1082 48) rotate(137.409) scale(781.722 1035.01)">
+      <stop stop-color="#4FD1A5" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#101111" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

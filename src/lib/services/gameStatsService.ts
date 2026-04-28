@@ -24,6 +24,12 @@ export async function getAllGameMetrics(): Promise<{
         error: `Database connection issue: ${connectionStatus.error || 'Unable to connect to the database'}`
       };
     }
+    if (!supabase) {
+      return {
+        data: [],
+        error: 'Database connection issue: Supabase is not configured'
+      };
+    }
 
     const { data, error } = await supabase
       .from('game_stats')
@@ -61,6 +67,12 @@ export async function getGameMetric(metricName: string): Promise<{
       return {
         data: null,
         error: `Database connection issue: ${connectionStatus.error || 'Unable to connect to the database'}`
+      };
+    }
+    if (!supabase) {
+      return {
+        data: null,
+        error: 'Database connection issue: Supabase is not configured'
       };
     }
 
@@ -107,6 +119,12 @@ export async function incrementGameMetric(metricName: string, increment: number 
       return {
         success: false,
         error: `Database connection issue: ${connectionStatus.error || 'Unable to connect to the database'}`
+      };
+    }
+    if (!supabase) {
+      return {
+        success: false,
+        error: 'Database connection issue: Supabase is not configured'
       };
     }
 
@@ -181,4 +199,4 @@ export async function incrementGameMetric(metricName: string, increment: number 
       error: err instanceof Error ? err.message : 'An unexpected error occurred'
     };
   }
-} 
+}

@@ -12,6 +12,12 @@ export async function getLeaderboard(difficulty: string = 'medium'): Promise<{da
         error: `Database connection issue: ${connectionStatus.error || 'Unable to connect to the database'}` 
       };
     }
+    if (!supabase) {
+      return {
+        data: [],
+        error: 'Database connection issue: Supabase is not configured'
+      };
+    }
     
     const { data, error } = await supabase
       .from('leaderboard_entries')
@@ -45,6 +51,9 @@ export async function submitLeaderboardEntry(entry: LeaderboardSubmission): Prom
   // Validate player name length
   if (entry.player_name.length < 4 || entry.player_name.length > 16) {
     throw new Error('Player name must be between 4 and 16 characters');
+  }
+  if (!supabase) {
+    throw new Error('Supabase is not configured');
   }
   
   const { data, error } = await supabase
@@ -81,6 +90,9 @@ export async function checkLeaderboardRanking(
     condition += `, and(correct_pieces.eq.${correctPieces},memorize_time.lt.${memorizeTime})`;
     condition += `, and(correct_pieces.eq.${correctPieces},memorize_time.eq.${memorizeTime},solution_time.lt.${solutionTime})`;
   }
+  if (!supabase) {
+    throw new Error('Supabase is not configured');
+  }
   
   const { count, error } = await supabase
     .from('leaderboard_entries')
@@ -95,4 +107,4 @@ export async function checkLeaderboardRanking(
   
   // The rank is one position after all the entries that beat this one
   return (count || 0) + 1;
-} 
+}

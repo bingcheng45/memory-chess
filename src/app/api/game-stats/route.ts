@@ -5,6 +5,10 @@ import {
   incrementGameMetric 
 } from '@/lib/services/gameStatsService';
 
+const hasSupabaseConfig =
+  Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL) &&
+  Boolean(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+
 /**
  * GET /api/game-stats - Retrieve all game metrics
  * GET /api/game-stats?metric=total_plays - Retrieve a specific metric
@@ -14,6 +18,17 @@ export async function GET(request: NextRequest) {
   const metricName = searchParams.get('metric');
   
   try {
+    if (!hasSupabaseConfig && process.env.NODE_ENV === 'development' && metricName) {
+      const productionResponse = await fetch(
+        `https://thememorychess.com/api/game-stats?metric=${encodeURIComponent(metricName)}`,
+        { cache: 'no-store' }
+      );
+
+      if (productionResponse.ok) {
+        return NextResponse.json(await productionResponse.json());
+      }
+    }
+
     if (metricName) {
       // Get a specific metric
       const { data, error } = await getGameMetric(metricName);
@@ -93,4 +108,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}

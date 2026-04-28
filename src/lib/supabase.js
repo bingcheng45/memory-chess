@@ -14,13 +14,8 @@ if (!supabaseUrl && !supabaseAnonKey) {
   environmentError = 'Missing Supabase anonymous key (NEXT_PUBLIC_SUPABASE_ANON_KEY)';
 }
 
-// Only log during development or when explicitly requested, not during build
-if (environmentError && (process.env.NODE_ENV === 'development' || process.env.DEBUG)) {
-  console.error(`Supabase configuration error: ${environmentError}. Check your .env.local file.`);
-}
-
 // Create a single supabase client for the entire app
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = environmentError ? null : createClient(supabaseUrl, supabaseAnonKey);
 
 // Helper to check Supabase connection
 export async function checkSupabaseConnection() {

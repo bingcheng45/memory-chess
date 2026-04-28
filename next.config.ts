@@ -5,7 +5,13 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
     domains: [],
-    remotePatterns: []
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        pathname: '/wikipedia/commons/**',
+      },
+    ]
   }
 };
 

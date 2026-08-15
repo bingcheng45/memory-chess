@@ -39,6 +39,12 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     changeFrequency: "monthly",
     priority: 0.5,
   },
+  {
+    path: "/changelog",
+    sourceFile: "src/lib/changelog.ts",
+    changeFrequency: "monthly",
+    priority: 0.6,
+  },
 ];
 
 async function getLastModified(sourceFile: string): Promise<Date> {

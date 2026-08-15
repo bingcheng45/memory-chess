@@ -1,80 +1,46 @@
-import { NextResponse } from 'next/server';
-import { google } from 'googleapis';
+import { NextResponse } from "next/server";
+import { appendGoogleSheetRow } from "@/lib/server/googleSheets";
+
+export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { name, email, type, message } = body;
     const timestamp = new Date().toISOString();
-    
-    const serviceAccountKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
-    
-    if (!serviceAccountKey) {
-      throw new Error('Google service account key is missing');
-    }
-    
-    if (!spreadsheetId) {
-      throw new Error('Google Sheet ID is missing');
-    }
-    
-    // Attempt to parse the service account key to validate JSON format
-    let credentials;
-    try {
-      credentials = JSON.parse(serviceAccountKey);
-      console.log('Service account key parsed successfully');
-      // Don't log any credential details
-    } catch {
-      console.error('Failed to parse service account key');
-      throw new Error('Invalid service account key format');
-    }
-    
-    // Log attempt to help with debugging
-    console.log('Attempting to connect to Google Sheets');
-    
-    // Set up auth
-    const auth = new google.auth.GoogleAuth({
-      credentials,
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+
+    await appendGoogleSheetRow({
+      range: "Sheet1!A:E",
+      row: [timestamp, name, email, type, message],
+      valueInputOption: "USER_ENTERED",
     });
-    
-    // Create client
-    const sheets = google.sheets('v4');
-    
-    // Append data to the sheet
-    await sheets.spreadsheets.values.append({
-      auth,
-      spreadsheetId,
-      range: 'Sheet1!A:E', // Adjust range as needed
-      valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values: [[timestamp, name, email, type, message]],
-      },
-    });
-    
+
     // Don't log response data as it could contain sheet metadata
-    console.log('Successfully wrote to Google Sheets');
-    
-    return NextResponse.json({ 
+    console.log("Successfully wrote to Google Sheets");
+
+    return NextResponse.json({
       success: true,
-      message: 'Form submitted successfully'
+      message: "Form submitted successfully",
     });
   } catch (error: unknown) {
-    console.error('Error submitting to Google Sheets');
-    
+    console.error("Error submitting to Google Sheets");
+
     // Provide more detailed error information without leaking sensitive data
-    let errorMessage = 'Unknown error';
-    
+    let errorMessage = "Unknown error";
+
     if (error instanceof Error) {
       // Only log the error message, not the stack trace
       errorMessage = error.message;
-      console.error('Error type:', error.name);
+      console.error("Error type:", error.name);
     }
-    
-    return NextResponse.json({ 
-      error: 'Failed to send message', 
-      details: errorMessage,
-      // Don't include debug details in the response
-    }, { status: 500 });
+
+    return NextResponse.json(
+      {
+        error: "Failed to send message",
+        details: errorMessage,
+        // Don't include debug details in the response
+      },
+      { status: 500 },
+    );
   }
-} 
+}

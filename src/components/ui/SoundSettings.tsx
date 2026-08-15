@@ -1,21 +1,28 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { isSoundEnabled, setSoundEnabled, getVolume, setVolume, playSound } from '@/lib/utils/soundEffects';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useClickAway } from '@/hooks/useClickAway';
-import { createPortal } from 'react-dom';
+import { useState, useEffect, useRef } from "react";
+import {
+  DEFAULT_SOUND_VOLUME,
+  isSoundEnabled,
+  setSoundEnabled,
+  getVolume,
+  setVolume,
+  playSound,
+} from "@/lib/utils/soundEffects";
+import { motion, AnimatePresence } from "framer-motion";
+import { useClickAway } from "@/hooks/useClickAway";
+import { createPortal } from "react-dom";
 
 interface SoundSettingsProps {
   className?: string;
 }
 
-export default function SoundSettings({ className = '' }: SoundSettingsProps) {
+export default function SoundSettings({ className = "" }: SoundSettingsProps) {
   const [soundOn, setSoundOn] = useState(true);
-  const [volume, setVolumeState] = useState(1); // Default to 100% for mobile
+  const [volume, setVolumeState] = useState(DEFAULT_SOUND_VOLUME);
   const [showSlider, setShowSlider] = useState(false);
   const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
+  const [toastMessage, setToastMessage] = useState("");
   const [isHovering, setIsHovering] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -31,30 +38,30 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
 
   // Check if device is mobile
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const checkMobile = () => {
         setIsMobile(window.innerWidth < 640); // Same breakpoint as sm: in Tailwind
       };
-      
+
       checkMobile();
-      window.addEventListener('resize', checkMobile);
-      
+      window.addEventListener("resize", checkMobile);
+
       return () => {
-        window.removeEventListener('resize', checkMobile);
+        window.removeEventListener("resize", checkMobile);
       };
     }
   }, []);
 
   // Initialize state from sound utilities
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const enabled = isSoundEnabled();
       setSoundOn(enabled);
-      
-      // On mobile, we only use 0% or 100% volume
+
+      // Mobile keeps a simple sound on/off control at the quieter default volume.
       if (isMobile) {
-        setVolumeState(1); // Always 100% on mobile when sound is on
-        setVolume(1);
+        setVolumeState(DEFAULT_SOUND_VOLUME);
+        setVolume(DEFAULT_SOUND_VOLUME);
       } else {
         setVolumeState(getVolume());
       }
@@ -67,12 +74,12 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
       if (sliderTimeoutRef.current) {
         clearTimeout(sliderTimeoutRef.current);
       }
-      
+
       sliderTimeoutRef.current = setTimeout(() => {
         setShowSlider(false);
       }, 3000);
     }
-    
+
     return () => {
       if (sliderTimeoutRef.current) {
         clearTimeout(sliderTimeoutRef.current);
@@ -91,7 +98,7 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
   const showToastNotification = (message: string) => {
     setToastMessage(message);
     setShowToast(true);
-    
+
     // Automatically hide the toast after 1.5 seconds
     setTimeout(() => {
       setShowToast(false);
@@ -104,23 +111,23 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
     if (showToast) {
       setShowToast(false);
     }
-    
+
     const newState = !soundOn;
     setSoundOn(newState);
     setSoundEnabled(newState);
-    
+
     if (newState) {
-      // On mobile, set volume to 100% when toggling on
+      // On mobile, restore the quieter default when toggling on.
       if (isMobile) {
-        setVolumeState(1);
-        setVolume(1);
+        setVolumeState(DEFAULT_SOUND_VOLUME);
+        setVolume(DEFAULT_SOUND_VOLUME);
       }
-      
+
       // Play a sound to confirm sound is on
-      playSound('click');
-      showToastNotification('Sound On');
+      playSound("click");
+      showToastNotification("Sound On");
     } else {
-      showToastNotification('Sound Off');
+      showToastNotification("Sound Off");
     }
   };
 
@@ -129,10 +136,10 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
     const newVolume = parseFloat(e.target.value);
     setVolumeState(newVolume);
     setVolume(newVolume);
-    
+
     // Play a sound to demonstrate new volume
-    if (soundOn && (newVolume > 0)) {
-      playSound('click');
+    if (soundOn && newVolume > 0) {
+      playSound("click");
     }
   };
 
@@ -151,7 +158,7 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
   };
 
   return (
-    <div 
+    <div
       ref={wrapperRef}
       className={`relative ${className}`}
       onMouseEnter={handleMouseEnter}
@@ -162,26 +169,46 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
         onClick={handleSoundToggle}
         whileTap={{ scale: 0.9 }}
         className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-bg-card/30 backdrop-blur-sm hover:bg-bg-card/50 transition-all"
-        aria-label={soundOn ? 'Mute sound' : 'Unmute sound'}
-        title={soundOn ? 'Mute sound' : 'Unmute sound'}
+        aria-label={soundOn ? "Mute sound" : "Unmute sound"}
+        title={soundOn ? "Mute sound" : "Unmute sound"}
       >
         <motion.div
           initial={{ scale: 1 }}
-          animate={{ 
+          animate={{
             scale: [1, 1.2, 1],
-            color: soundOn ? 'var(--peach-500)' : 'var(--text-secondary)'
+            color: soundOn ? "var(--peach-500)" : "var(--text-secondary)",
           }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          key={soundOn ? 'sound-on' : 'sound-off'}
+          key={soundOn ? "sound-on" : "sound-off"}
         >
           {soundOn ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
               <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
               <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
               <line x1="23" y1="9" x2="17" y2="15"></line>
               <line x1="17" y1="9" x2="23" y2="15"></line>
@@ -199,11 +226,11 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
             className="absolute p-3 bg-bg-card/90 backdrop-blur-sm rounded-lg shadow-lg z-10"
-            style={{ 
-              top: '100%',
+            style={{
+              top: "100%",
               right: 0,
-              marginTop: '8px',
-              width: 'max-content'
+              marginTop: "8px",
+              width: "max-content",
             }}
           >
             <div className="flex items-center gap-3">
@@ -216,37 +243,41 @@ export default function SoundSettings({ className = '' }: SoundSettingsProps) {
                 onChange={handleVolumeChange}
                 className="h-1.5 w-24 cursor-pointer appearance-none rounded-lg bg-bg-light"
                 style={{
-                  backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${volume * 100}%, #222222 ${volume * 100}%, #222222 100%)`
+                  backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${volume * 100}%, #222222 ${volume * 100}%, #222222 100%)`,
                 }}
                 aria-label="Volume"
               />
-              <span className="text-sm font-medium text-text-primary">{Math.round(volume * 100)}%</span>
+              <span className="text-sm font-medium text-text-primary">
+                {Math.round(volume * 100)}%
+              </span>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Toast notification - Rendered via Portal */}
-      {isMounted && showToast && createPortal(
-        <div className="fixed left-0 top-0 w-screen h-screen flex items-center justify-center pointer-events-none z-[99999]">
-          <AnimatePresence>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 300, 
-                damping: 30
-              }}
-              className="px-6 py-3 bg-black/85 text-white rounded-full shadow-xl backdrop-blur-md text-sm font-medium"
-            >
-              {toastMessage}
-            </motion.div>
-          </AnimatePresence>
-        </div>,
-        document.body
-      )}
+      {isMounted &&
+        showToast &&
+        createPortal(
+          <div className="fixed left-0 top-0 w-screen h-screen flex items-center justify-center pointer-events-none z-[99999]">
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                }}
+                className="px-6 py-3 bg-black/85 text-white rounded-full shadow-xl backdrop-blur-md text-sm font-medium"
+              >
+                {toastMessage}
+              </motion.div>
+            </AnimatePresence>
+          </div>,
+          document.body,
+        )}
     </div>
   );
-} 
+}

@@ -1,19 +1,28 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="w-full py-10 mt-10 border-t border-bg-light">
       <div className="container mx-auto px-4">
-        <div className="flex justify-center mb-6">
-          <Link href="/contact-us" className="text-peach-500 hover:text-peach-400 transition-colors">
+        <div className="mb-6 flex justify-center gap-6">
+          <Link
+            href="/changelog"
+            className="text-peach-500 transition-colors hover:text-peach-400"
+          >
+            Changelog
+          </Link>
+          <Link
+            href="/contact-us"
+            className="text-peach-500 transition-colors hover:text-peach-400"
+          >
             Contact Us
           </Link>
         </div>
-        
+
         {/* Product Hunt Badges */}
         <div className="flex justify-center mb-4">
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -28,7 +37,7 @@ export default function Footer() {
                 height="54"
                 src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=957046&theme=dark&period=daily&t=1771899006529"
                 loading="lazy"
-                style={{ width: '250px', height: '54px' }}
+                style={{ width: "250px", height: "54px" }}
               />
             </a>
 
@@ -43,17 +52,17 @@ export default function Footer() {
                 height="54"
                 src="https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=957046&theme=dark&period=weekly&topic_id=204&t=1771899006529"
                 loading="lazy"
-                style={{ width: '250px', height: '54px' }}
+                style={{ width: "250px", height: "54px" }}
               />
             </a>
           </div>
         </div>
-        
+
         {/* Twitter/X Icon */}
         <div className="flex justify-center mb-6">
-          <a 
-            href="https://x.com/TheMemoryChess" 
-            target="_blank" 
+          <a
+            href="https://x.com/TheMemoryChess"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-text-secondary hover:text-peach-500 transition-colors p-2"
             aria-label="Follow us on Twitter/X"
@@ -74,11 +83,11 @@ export default function Footer() {
             </svg>
           </a>
         </div>
-        
+
         <div className="pt-6 text-center text-text-secondary text-sm">
           <p>&copy; {currentYear} Memory Chess. All rights reserved.</p>
         </div>
       </div>
     </footer>
   );
-} 
+}

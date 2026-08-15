@@ -1,77 +1,93 @@
-import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
 
 // Import Vercel packages dynamically to avoid build errors
-import dynamic from 'next/dynamic';
-const Analytics = dynamic(() => import('@vercel/analytics/react').then(mod => mod.Analytics));
-const SpeedInsights = dynamic(() => import('@vercel/speed-insights/next').then(mod => mod.SpeedInsights));
+import dynamic from "next/dynamic";
+const Analytics = dynamic(() =>
+  import("@vercel/analytics/react").then((mod) => mod.Analytics),
+);
+const SpeedInsights = dynamic(() =>
+  import("@vercel/speed-insights/next").then((mod) => mod.SpeedInsights),
+);
 import { GoogleAnalytics } from "@next/third-parties/google";
-import SoundStopNavigator from '@/components/common/SoundStopNavigator';
+import SoundStopNavigator from "@/components/common/SoundStopNavigator";
+import ChangelogBanner from "@/components/ui/ChangelogBanner";
 
 const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 // Define your site URL for canonical and OG URLs
-const siteUrl = 'https://thememorychess.com';
+const siteUrl = "https://thememorychess.com";
 
 export const metadata: Metadata = {
   // Basic Metadata
   title: {
-    default: 'Memory Chess - Train Your Chess Visualization and Spatial Memory',
-    template: '%s | Memory Chess',
+    default: "Memory Chess - Train Your Chess Visualization and Spatial Memory",
+    template: "%s | Memory Chess",
   },
-  description: 'Enhance your chess visualization, spatial memory, and cognitive skills through interactive board memorization exercises. Train like grandmasters with Memory Chess.',
+  description:
+    "Enhance your chess visualization, spatial memory, and cognitive skills through interactive board memorization exercises. Train like grandmasters with Memory Chess.",
   keywords: [
-    'chess memory', 'chess visualization', 'spatial memory training', 
-    'chess board memory', 'memory improvement', 'chess training', 
-    'visualization skills', 'cognitive enhancement', 'chess exercises',
-    'board memory', 'grandmaster techniques', 'memory chess'
+    "chess memory",
+    "chess visualization",
+    "spatial memory training",
+    "chess board memory",
+    "memory improvement",
+    "chess training",
+    "visualization skills",
+    "cognitive enhancement",
+    "chess exercises",
+    "board memory",
+    "grandmaster techniques",
+    "memory chess",
   ],
-  
+
   // Canonical for home route; child routes override via route metadata
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
 
   // Icons
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-    shortcut: '/favicon-16x16.png',
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-16x16.png",
   },
 
   // Open Graph (Facebook, LinkedIn) metadata
   openGraph: {
-    type: 'website',
+    type: "website",
     url: siteUrl,
-    title: 'Memory Chess - Train Your Visualization Skills Like a Grandmaster',
-    description: 'Improve your spatial visualization and memory with chess-based cognitive training exercises',
-    siteName: 'Memory Chess',
+    title: "Memory Chess - Train Your Visualization Skills Like a Grandmaster",
+    description:
+      "Improve your spatial visualization and memory with chess-based cognitive training exercises",
+    siteName: "Memory Chess",
     images: [
       {
         url: `${siteUrl}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: 'Memory Chess - Train Your Chess Memory',
+        alt: "Memory Chess - Train Your Chess Memory",
       },
     ],
   },
 
   // Twitter metadata
   twitter: {
-    card: 'summary_large_image',
-    title: 'Memory Chess - Chess Visualization Training',
-    description: 'Enhance your memory and spatial visualization skills with chess-based training exercises',
+    card: "summary_large_image",
+    title: "Memory Chess - Chess Visualization Training",
+    description:
+      "Enhance your memory and spatial visualization skills with chess-based training exercises",
     images: [`${siteUrl}/twitter-image`],
-    creator: '@memorychess',
+    creator: "@memorychess",
   },
 
   // Robots - default Next.js sets index, follow
@@ -82,8 +98,8 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 
@@ -94,25 +110,25 @@ export const metadata: Metadata = {
   },
 
   // App information for progressive web app
-  applicationName: 'Memory Chess',
+  applicationName: "Memory Chess",
   appleWebApp: {
-    title: 'Memory Chess',
-    statusBarStyle: 'black-translucent',
+    title: "Memory Chess",
+    statusBarStyle: "black-translucent",
     capable: true,
   },
-  
+
   // Content type
   metadataBase: new URL(siteUrl),
-  creator: 'Memory Chess Team',
-  publisher: 'Memory Chess',
+  creator: "Memory Chess Team",
+  publisher: "Memory Chess",
 };
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#1D1C20',
-  colorScheme: 'dark',
+  themeColor: "#1D1C20",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -122,7 +138,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-bg-dark text-text-primary antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-bg-dark text-text-primary antialiased`}
+      >
+        <ChangelogBanner />
         {children}
         <Analytics />
         <SpeedInsights />

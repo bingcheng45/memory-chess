@@ -1,7 +1,7 @@
 import sitemap from "@/app/sitemap";
 
 describe("sitemap", () => {
-  it("includes the new learn article URLs and updates the learn hub timestamp", async () => {
+  it("includes static routes, learn article URLs, and the learn hub timestamp", async () => {
     const entries = await sitemap();
     const urls = entries.map((entry) => entry.url);
     const learnHubEntry = entries.find(
@@ -9,12 +9,13 @@ describe("sitemap", () => {
     );
 
     expect(urls).toContain(
-      "https://thememorychess.com/learn/whats-trending-in-chess-2026",
+      "https://thememorychess.com/learn/how-to-get-better-at-chess-for-beginners",
     );
     expect(urls).toContain(
-      "https://thememorychess.com/learn/most-impressive-chess-memory-feats-ranked",
+      "https://thememorychess.com/learn/chess-calculation-exercises-for-beginners",
     );
-    expect(learnHubEntry?.lastModified?.toISOString()).toBe(
+    expect(urls).toContain("https://thememorychess.com/changelog");
+    expect(new Date(learnHubEntry?.lastModified ?? 0).toISOString()).toBe(
       "2026-03-23T00:00:00.000Z",
     );
   });

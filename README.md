@@ -2,15 +2,18 @@
 
 A web-based memory training application that challenges players to memorize and recreate chess positions. Built with Next.js, TypeScript, and Tailwind CSS.
 
-## Latest Release - v1.1.0
+## Latest Release - v1.2.0
 
-Our latest release includes a completely redesigned color selection interface, improved UI elements, and enhanced game experience. [View the full release notes](https://github.com/bingcheng45/memory-chess/releases/tag/v1.1.0).
+Our latest release adds a richer Learning Center, a refreshed homepage experience, reliability improvements, and an in-app changelog for future updates. Visit `/changelog` in the app to see the full release history.
 
-### What's New in v1.1.0
-- Completely redesigned color selection buttons with a modern UI
-- Improved visual appearance for selected/unselected states
-- Better hover interactions and visual feedback
-- Enhanced UI contrast and visibility
+### What's New in v1.2.0
+
+- Added research-informed chess memory and visualization guides
+- Refreshed the homepage spatial-memory training experience
+- Improved mobile interactions, position generation, and leaderboard ordering
+- Lowered the default sound volume to 50%
+- Added anonymous result-screen feedback with a 24-hour cooldown
+- Added a changelog page and dismissible update announcements
 
 ## Overview
 
@@ -19,6 +22,7 @@ Memory Chess combines chess knowledge with memory skills, offering a unique and 
 ## Features
 
 ### Currently Implemented ✅
+
 - Core chess game functionality
   - Interactive chess board with piece movement
   - Game state management using Zustand
@@ -46,6 +50,7 @@ Memory Chess combines chess knowledge with memory skills, offering a unique and 
   - Ability to claim your rank
 
 ### In Progress 🚧
+
 - Testing and optimization
   - Component unit tests
   - Integration testing
@@ -53,6 +58,7 @@ Memory Chess combines chess knowledge with memory skills, offering a unique and 
   - Code documentation
 
 ### Planned Features 📋
+
 - Advanced features
   - Daily challenges
   - Achievement system
@@ -63,32 +69,43 @@ Memory Chess combines chess knowledge with memory skills, offering a unique and 
 ## Getting Started
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/bingcheng45/memory-chess.git
 cd memory-chess
 ```
 
 2. Install dependencies:
+
 ```bash
 bun install
 ```
 
 3. Run the development server:
+
 ```bash
 bun run dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
+### Game feedback worksheet
+
+Game feedback uses the same spreadsheet configured by `GOOGLE_SHEET_ID`. Create a worksheet tab named `Game Feedback` and add these headers to columns A–J:
+
+`Submitted At`, `Rating`, `Feedback`, `Accuracy`, `Correct Pieces`, `Piece Count`, `Difficulty`, `Memorization Time`, `Solution Time`, `App Version`.
+
 ## Project Roadmap Progress
 
 ### Phase 1: Project Setup ✅
+
 - [x] Initialize Next.js project with TypeScript
 - [x] Set up ESLint and Prettier
 - [x] Configure Git hooks (husky)
 - [x] Set up project structure
 
 ### Phase 2: Core Game Components ✅
+
 - [x] Create chess board component
 - [x] Implement piece movement
 - [x] Add game controls
@@ -96,6 +113,7 @@ bun run dev
 - [x] Add difficulty presets
 
 ### Phase 3: Game Logic Implementation ✅
+
 - [x] Implement memory training mechanics
 - [x] Add timer system
 - [x] Create position validation
@@ -104,6 +122,7 @@ bun run dev
 - [x] Display pieces correct / total in results
 
 ### Phase 4: Game Experience Improvements ✅
+
 - [x] Session tracking for player progress
 - [x] Add basic performance metrics
 - [x] Improve mobile experience
@@ -114,17 +133,20 @@ bun run dev
 - [x] Create elegant color selection interface
 
 ### Phase 5: Social Features ✅
+
 - [x] Create leaderboard system
 - [x] Implement "Claim Your Rank" feature
 - [x] Add leaderboard entry submission
 
 ### Phase 6: Testing and Optimization 🚧
+
 - [ ] Implement comprehensive testing
 - [ ] Optimize rendering performance
 - [ ] Add code documentation
 - [ ] Prepare for deployment
 
 ### Phase 7: Additional Features (Optional) 📋
+
 - [ ] Add daily challenges
 - [ ] Implement simple achievements
 - [ ] Create shareable results
@@ -142,21 +164,25 @@ bun run dev
 ## Game Difficulty Settings
 
 ### Beginner
+
 - 3-5 pieces on the board
 - 30 seconds memorization time
 - Simple piece patterns
 
 ### Intermediate
+
 - 6-10 pieces on the board
 - 15 seconds memorization time
 - More complex patterns
 
 ### Advanced
+
 - 11-16 pieces on the board
 - 10 seconds memorization time
 - Challenging positions
 
 ### Expert
+
 - 17+ pieces on the board
 - 5 seconds memorization time
 - Complex, game-like positions

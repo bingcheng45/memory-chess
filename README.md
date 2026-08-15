@@ -11,7 +11,7 @@ Our latest release adds a richer Learning Center, a refreshed homepage experienc
 - Added research-informed chess memory and visualization guides
 - Refreshed the homepage spatial-memory training experience
 - Improved mobile interactions, position generation, and leaderboard ordering
-- Lowered the default sound volume to 50%
+- Lowered the default sound volume to 10%
 - Added anonymous result-screen feedback with a 24-hour cooldown
 - Added a changelog page and dismissible update announcements
 

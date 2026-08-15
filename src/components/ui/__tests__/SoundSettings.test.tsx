@@ -3,9 +3,9 @@ import SoundSettings from "@/components/ui/SoundSettings";
 import { DEFAULT_SOUND_VOLUME, setVolume } from "@/lib/utils/soundEffects";
 
 jest.mock("@/lib/utils/soundEffects", () => ({
-  DEFAULT_SOUND_VOLUME: 0.5,
+  DEFAULT_SOUND_VOLUME: 0.1,
   isSoundEnabled: jest.fn(() => true),
-  getVolume: jest.fn(() => 0.5),
+  getVolume: jest.fn(() => 0.1),
   setSoundEnabled: jest.fn(),
   setVolume: jest.fn(),
   playSound: jest.fn(),
@@ -21,7 +21,7 @@ describe("SoundSettings", () => {
     jest.mocked(setVolume).mockClear();
   });
 
-  it("restores the 50% default when mobile sound is enabled", async () => {
+  it("restores the 10% default when mobile sound is enabled", async () => {
     render(<SoundSettings />);
 
     await waitFor(() => {

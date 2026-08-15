@@ -7,7 +7,6 @@ import {
   CHANGELOG_ANNOUNCEMENT_DURATION_MS,
   CHANGELOG_DISMISSAL_STORAGE_KEY,
   LATEST_CHANGELOG_ENTRY,
-  getChangelogEntryId,
   isChangelogAnnouncementActive,
 } from "@/lib/changelog";
 
@@ -90,7 +89,7 @@ export default function ChangelogBanner() {
     >
       <div className="container relative mx-auto flex min-h-10 items-center justify-center px-12 py-2 text-center text-xs sm:text-sm">
         <Link
-          href={`/changelog#${getChangelogEntryId(release.version)}`}
+          href="/changelog"
           className="group rounded-sm outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-peach-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-card"
         >
           <span className="font-medium text-text-primary">

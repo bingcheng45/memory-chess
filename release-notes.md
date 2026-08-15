@@ -13,7 +13,7 @@
 - Corrected generated piece limits to better reflect a standard chess set
 - Refined leaderboard ordering for fairer score comparisons
 - Improved site metadata, navigation, and application stability
-- Lowered the default sound volume from 100% to 50% while preserving the full desktop volume control
+- Lowered the default sound volume from 100% to 10% while preserving the full desktop volume control
 
 ## Previous Releases
 

@@ -24,7 +24,7 @@ describe("ChangelogBanner", () => {
       name: /Memory Chess v1\.2\.0 is here/i,
     });
 
-    expect(link).toHaveAttribute("href", "/changelog#v1-2-0");
+    expect(link).toHaveAttribute("href", "/changelog");
   });
 
   it("stores the dismissed version and hides immediately", async () => {

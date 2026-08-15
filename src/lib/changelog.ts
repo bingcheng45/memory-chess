@@ -21,7 +21,7 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
       "Learn with new, easy-to-follow chess memory guides.",
       "The home page now shows how Memory Chess trains your brain.",
       "Mobile play, piece setups, and leaderboard results are more reliable.",
-      "Game sounds now start at a gentler 50% volume.",
+      "Game sounds now start at a gentle 10% volume.",
       "Rate the game and share ideas after you play. We ask at most once a day.",
       "See every update here, and use the top banner to spot what is new.",
     ],

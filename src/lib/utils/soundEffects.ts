@@ -1,7 +1,7 @@
 "use client";
 
 // Sound settings
-export const DEFAULT_SOUND_VOLUME = 0.5;
+export const DEFAULT_SOUND_VOLUME = 0.1;
 
 let soundEnabled = true;
 let volume = DEFAULT_SOUND_VOLUME;

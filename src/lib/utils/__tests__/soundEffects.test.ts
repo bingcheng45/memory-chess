@@ -9,8 +9,8 @@ describe("sound effects volume", () => {
     setVolume(DEFAULT_SOUND_VOLUME);
   });
 
-  it("starts at the quieter 50% default", () => {
-    expect(DEFAULT_SOUND_VOLUME).toBe(0.5);
+  it("starts at the quieter 10% default", () => {
+    expect(DEFAULT_SOUND_VOLUME).toBe(0.1);
     expect(getVolume()).toBe(DEFAULT_SOUND_VOLUME);
   });
 

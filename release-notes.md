@@ -6,6 +6,7 @@
 - Refreshed the homepage with a clearer spatial-memory training loop and improved board preview
 - Added an in-app changelog and dismissible update banner for future releases
 - Added anonymous result-screen feedback with a 24-hour cooldown between prompts
+- Added a clear privacy policy for browser storage, analytics, feedback, and advertising
 
 ### Improved
 
@@ -17,14 +18,14 @@
 
 ## Previous Releases
 
-### Memory Chess v1.1.0 — April 4, 2025
+### Memory Chess v1.1.0, April 4, 2025
 
 - Redesigned the piece color selector and improved state contrast, hover feedback, and control consistency
 
-### Memory Chess v1.0.1 — April 3, 2025
+### Memory Chess v1.0.1, April 3, 2025
 
 - Improved responsive game controls, mobile interactions, and sound management
 
-### Memory Chess v1.0.0 — March 28, 2025
+### Memory Chess v1.0.0, March 28, 2025
 
 - Launched the core chess-position memorization, reconstruction, and scoring experience

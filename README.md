@@ -14,6 +14,7 @@ Our latest release adds a richer Learning Center, a refreshed homepage experienc
 - Lowered the default sound volume to 10%
 - Added anonymous result-screen feedback with a 24-hour cooldown
 - Added a changelog page and dismissible update announcements
+- Added a clear privacy page covering browser storage, analytics, feedback, and advertising
 
 ## Overview
 
@@ -94,6 +95,12 @@ bun run dev
 Game feedback uses the same spreadsheet configured by `GOOGLE_SHEET_ID`. Create a worksheet tab named `Game Feedback` and add these headers to columns A–J:
 
 `Submitted At`, `Rating`, `Feedback`, `Accuracy`, `Correct Pieces`, `Piece Count`, `Difficulty`, `Memorization Time`, `Solution Time`, `App Version`.
+
+### Advertising rollout
+
+The AdSense ownership code is installed, but no ad units are active while the
+site is under review. The approval-gated placement design is documented in
+[`adsense-layout-plan.md`](./adsense-layout-plan.md).
 
 ## Project Roadmap Progress
 

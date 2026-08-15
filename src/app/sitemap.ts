@@ -45,6 +45,12 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     changeFrequency: "monthly",
     priority: 0.6,
   },
+  {
+    path: "/privacy",
+    sourceFile: "src/app/privacy/page.tsx",
+    changeFrequency: "yearly",
+    priority: 0.4,
+  },
 ];
 
 async function getLastModified(sourceFile: string): Promise<Date> {

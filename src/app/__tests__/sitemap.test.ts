@@ -15,6 +15,7 @@ describe("sitemap", () => {
       "https://thememorychess.com/learn/chess-calculation-exercises-for-beginners",
     );
     expect(urls).toContain("https://thememorychess.com/changelog");
+    expect(urls).toContain("https://thememorychess.com/privacy");
     expect(new Date(learnHubEntry?.lastModified ?? 0).toISOString()).toBe(
       "2026-03-23T00:00:00.000Z",
     );

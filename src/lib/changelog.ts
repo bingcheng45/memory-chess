@@ -24,6 +24,7 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
       "Game sounds now start at a gentle 10% volume.",
       "Rate the game and share ideas after you play. We ask at most once a day.",
       "See every update here, and use the top banner to spot what is new.",
+      "Read a simple privacy page about saved settings, analytics, feedback, and future ads.",
     ],
   },
   {

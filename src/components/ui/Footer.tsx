@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="w-full py-10 mt-10 border-t border-bg-light">
       <div className="container mx-auto px-4">
-        <div className="mb-6 flex justify-center gap-6">
+        <div className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-3">
           <Link
             href="/changelog"
             className="text-peach-500 transition-colors hover:text-peach-400"
@@ -20,6 +20,12 @@ export default function Footer() {
             className="text-peach-500 transition-colors hover:text-peach-400"
           >
             Contact Us
+          </Link>
+          <Link
+            href="/privacy"
+            className="text-peach-500 transition-colors hover:text-peach-400"
+          >
+            Privacy
           </Link>
         </div>
 

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { cn } from '@/lib/utils';
-import React, { useCallback, useEffect, useState, memo } from 'react';
-import { ChessPiece as ChessPieceType, Position } from './ChessBoard.types';
-import { ChessPiece } from './ChessPiece';
+import { cn } from "@/lib/utils";
+import React, { useCallback, useEffect, useState, memo } from "react";
+import { ChessPiece as ChessPieceType, Position } from "./ChessBoard.types";
+import { ChessPiece } from "./ChessPiece";
 
 interface ChessBoardProps {
   pieces: ChessPieceType[];
@@ -18,7 +18,7 @@ function ChessBoardComponent({
   onPieceClick,
   onSquareClick,
   selectedPiece,
-  className
+  className,
 }: ChessBoardProps) {
   const [boardSize, setBoardSize] = useState(0);
 
@@ -29,52 +29,62 @@ function ChessBoardComponent({
     };
 
     updateSize();
-    window.addEventListener('resize', updateSize);
-    return () => window.removeEventListener('resize', updateSize);
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  const handleSquareClick = useCallback((position: Position) => {
-    onSquareClick?.(position);
-  }, [onSquareClick]);
+  const handleSquareClick = useCallback(
+    (position: Position) => {
+      onSquareClick?.(position);
+    },
+    [onSquareClick],
+  );
 
-  const handlePieceClick = useCallback((piece: ChessPieceType) => {
-    onPieceClick?.(piece);
-  }, [onPieceClick]);
+  const handlePieceClick = useCallback(
+    (piece: ChessPieceType) => {
+      onPieceClick?.(piece);
+    },
+    [onPieceClick],
+  );
 
   const renderSquare = (row: number, col: number) => {
     const isLight = (row + col) % 2 === 0;
     const position: Position = { row, col };
-    const piece = pieces.find(p => p.position.row === row && p.position.col === col);
+    const piece = pieces.find(
+      (p) => p.position.row === row && p.position.col === col,
+    );
     const isSelected = selectedPiece?.id === piece?.id;
 
     return (
       <div
         key={`${row}-${col}`}
+        role="gridcell"
+        aria-label={`Square ${String.fromCharCode(97 + col)}${8 - row}`}
         className={cn(
-          'relative w-full h-full',
-          isLight ? 'bg-board-light' : 'bg-board-dark',
-          'transition-colors duration-200',
-          isSelected && 'ring-2 ring-blue-500'
+          "relative w-full h-full",
+          isLight ? "bg-board-light" : "bg-board-dark",
+          "transition-colors duration-200",
+          isSelected && "ring-2 ring-blue-500",
         )}
         onClick={() => handleSquareClick(position)}
       >
-        {piece && (
-          <ChessPiece
-            piece={piece}
-            onClick={handlePieceClick}
-          />
-        )}
+        {piece && <ChessPiece piece={piece} onClick={handlePieceClick} />}
       </div>
     );
   };
 
   return (
     <div
-      className={cn('grid grid-cols-8 grid-rows-8 border border-gray-300', className)}
+      role="grid"
+      aria-label="Chess board"
+      className={cn(
+        "grid grid-cols-8 grid-rows-8 border border-gray-300",
+        className,
+      )}
       style={{ width: boardSize, height: boardSize }}
     >
       {Array.from({ length: 8 }, (_, row) =>
-        Array.from({ length: 8 }, (_, col) => renderSquare(row, col))
+        Array.from({ length: 8 }, (_, col) => renderSquare(row, col)),
       )}
     </div>
   );
@@ -88,4 +98,4 @@ export const ChessBoard = memo(ChessBoardComponent, (prevProps, nextProps) => {
     prevProps.onPieceClick === nextProps.onPieceClick &&
     prevProps.onSquareClick === nextProps.onSquareClick
   );
-}); 
+});

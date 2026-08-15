@@ -1,298 +1,191 @@
-import { act } from '@testing-library/react';
-import { useGameStore } from '../gameStore';
-import { ChessPiece, Position } from '@/components/features/game/ChessBoard/ChessBoard.types';
+import { act } from "@testing-library/react";
+import { useGameStore } from "../gameStore";
+import { GamePhase } from "@/types/game";
+import type { ChessPiece } from "@/types/chess";
 
-// Mock the localStorage
-const mockLocalStorage = (() => {
-  let store: Record<string, string> = {};
-  return {
-    getItem: (key: string) => store[key] || null,
-    setItem: (key: string, value: string) => {
-      store[key] = value.toString();
-    },
-    clear: () => {
-      store = {};
-    },
-  };
-})();
+const whitePawn: ChessPiece = {
+  id: "white-pawn",
+  type: "pawn",
+  color: "white",
+  position: { file: 0, rank: 1 },
+};
 
-Object.defineProperty(window, 'localStorage', {
-  value: mockLocalStorage,
-});
+const blackRook: ChessPiece = {
+  id: "black-rook",
+  type: "rook",
+  color: "black",
+  position: { file: 7, rank: 7 },
+};
 
-describe('gameStore', () => {
+describe("gameStore", () => {
   beforeEach(() => {
-    // Clear the store before each test
+    window.localStorage.clear();
     act(() => {
       useGameStore.setState({
-        pieces: [],
-        selectedPiece: null,
-        moves: [],
-        matchedPairs: [],
-        gameStatus: 'idle',
-        score: 0,
-        timeElapsed: 0,
+        phase: GamePhase.CONFIGURATION,
+        config: {
+          pieceCount: 6,
+          memorizeTime: 10,
+          difficulty: "medium",
+        },
+        originalPosition: [],
+        playerSolution: [],
+        startTime: undefined,
+        endTime: undefined,
+        accuracy: undefined,
+        correctPlacements: undefined,
         isLoading: false,
         error: null,
-        lastUpdated: 0,
       });
-      mockLocalStorage.clear();
     });
   });
 
-  it('should initialize the game with pieces', () => {
-    const mockPieces: ChessPiece[] = [
-      {
-        id: 'piece-1',
-        type: 'pawn',
-        color: 'white',
-        position: { row: 0, col: 0 },
-        symbol: '♟',
-        isRevealed: false,
-        isMatched: false,
-      },
-    ];
+  it("initializes a memorization round with the supplied position", () => {
+    act(() => {
+      useGameStore.getState().initializeGame([whitePawn, blackRook]);
+    });
+
+    const state = useGameStore.getState();
+    expect(state.phase).toBe(GamePhase.MEMORIZATION);
+    expect(state.originalPosition).toEqual([whitePawn, blackRook]);
+    expect(state.playerSolution).toEqual([]);
+    expect(state.startTime).toEqual(expect.any(Number));
+    expect(state.isLoading).toBe(false);
+  });
+
+  it("applies presets and clamps custom configuration values", () => {
+    act(() => {
+      useGameStore.getState().setDifficulty("easy");
+    });
+    expect(useGameStore.getState().config).toEqual({
+      pieceCount: 2,
+      memorizeTime: 10,
+      difficulty: "easy",
+    });
 
     act(() => {
-      useGameStore.getState().initializeGame(mockPieces);
+      useGameStore.getState().setPieceCount(99);
+      useGameStore.getState().setMemorizeTime(0);
     });
-
-    expect(useGameStore.getState().pieces).toEqual(mockPieces);
-    expect(useGameStore.getState().gameStatus).toBe('playing');
-    expect(useGameStore.getState().score).toBe(0);
-    expect(useGameStore.getState().timeElapsed).toBe(0);
+    expect(useGameStore.getState().config).toEqual({
+      pieceCount: 32,
+      memorizeTime: 1,
+      difficulty: "custom",
+    });
   });
 
-  it('should select a piece', () => {
-    const mockPiece: ChessPiece = {
-      id: 'piece-1',
-      type: 'pawn',
-      color: 'white',
-      position: { row: 0, col: 0 },
-      symbol: '♟',
-      isRevealed: false,
-      isMatched: false,
-    };
+  it("moves from memorization into the solution phase", () => {
+    act(() => {
+      useGameStore.getState().initializeGame([whitePawn]);
+      useGameStore.getState().endMemorization();
+    });
+
+    expect(useGameStore.getState().phase).toBe(GamePhase.SOLUTION);
+    expect(useGameStore.getState().playerSolution).toEqual([]);
+  });
+
+  it("adds, replaces, and removes solution pieces by square", () => {
+    act(() => {
+      useGameStore.getState().placePiece(whitePawn);
+      useGameStore.getState().placePiece({
+        ...blackRook,
+        position: whitePawn.position,
+      });
+    });
+
+    expect(useGameStore.getState().playerSolution).toEqual([
+      { ...blackRook, position: whitePawn.position },
+    ]);
 
     act(() => {
-      useGameStore.getState().selectPiece(mockPiece);
+      useGameStore.getState().removePiece(whitePawn.position);
     });
-
-    expect(useGameStore.getState().selectedPiece).toEqual(mockPiece);
+    expect(useGameStore.getState().playerSolution).toEqual([]);
   });
 
-  it('should make a move', () => {
-    const mockPiece: ChessPiece = {
-      id: 'piece-1',
-      type: 'pawn',
-      color: 'white',
-      position: { row: 0, col: 0 },
-      symbol: '♟',
-      isRevealed: false,
-      isMatched: false,
-    };
-
+  it("scores an identical solution as fully correct", () => {
     act(() => {
       useGameStore.setState({
-        pieces: [mockPiece],
-        selectedPiece: mockPiece,
+        phase: GamePhase.SOLUTION,
+        originalPosition: [whitePawn, blackRook],
+        playerSolution: [whitePawn, blackRook],
+        startTime: Date.now() - 1_000,
       });
+      useGameStore.getState().submitSolution();
     });
 
-    const fromPosition: Position = { row: 0, col: 0 };
-    const toPosition: Position = { row: 1, col: 1 };
-
-    act(() => {
-      useGameStore.getState().makeMove(fromPosition, toPosition);
-    });
-
-    // The piece should be moved to the new position
-    expect(useGameStore.getState().pieces[0].position).toEqual(toPosition);
-    // The move should be recorded
-    expect(useGameStore.getState().moves.length).toBe(1);
-    expect(useGameStore.getState().moves[0].from).toEqual(fromPosition);
-    expect(useGameStore.getState().moves[0].to).toEqual(toPosition);
-    // The selected piece should be cleared
-    expect(useGameStore.getState().selectedPiece).toBeNull();
+    const state = useGameStore.getState();
+    expect(state.phase).toBe(GamePhase.RESULT);
+    expect(state.accuracy).toBe(100);
+    expect(state.correctPlacements).toBe(2);
+    expect(state.endTime).toEqual(expect.any(Number));
   });
 
-  it('should reveal a piece', () => {
-    const mockPiece: ChessPiece = {
-      id: 'piece-1',
-      type: 'pawn',
-      color: 'white',
-      position: { row: 0, col: 0 },
-      symbol: '♟',
-      isRevealed: false,
-      isMatched: false,
-    };
-
+  it("resets round data while preserving the current configuration", () => {
     act(() => {
       useGameStore.setState({
-        pieces: [mockPiece],
+        phase: GamePhase.RESULT,
+        config: {
+          pieceCount: 12,
+          memorizeTime: 8,
+          difficulty: "hard",
+        },
+        originalPosition: [whitePawn],
+        playerSolution: [blackRook],
+        accuracy: 50,
       });
-    });
-
-    act(() => {
-      useGameStore.getState().revealPiece(mockPiece);
-    });
-
-    expect(useGameStore.getState().pieces[0].isRevealed).toBe(true);
-  });
-
-  it('should match pieces', () => {
-    const mockPiece1: ChessPiece = {
-      id: 'piece-1',
-      type: 'pawn',
-      color: 'white',
-      position: { row: 0, col: 0 },
-      symbol: '♟',
-      isRevealed: true,
-      isMatched: false,
-    };
-
-    const mockPiece2: ChessPiece = {
-      id: 'piece-2',
-      type: 'pawn',
-      color: 'white',
-      position: { row: 1, col: 1 },
-      symbol: '♟',
-      isRevealed: true,
-      isMatched: false,
-    };
-
-    act(() => {
-      useGameStore.setState({
-        pieces: [mockPiece1, mockPiece2],
-        score: 0,
-      });
-    });
-
-    act(() => {
-      useGameStore.getState().matchPieces(mockPiece1, mockPiece2);
-    });
-
-    expect(useGameStore.getState().pieces[0].isMatched).toBe(true);
-    expect(useGameStore.getState().pieces[1].isMatched).toBe(true);
-    expect(useGameStore.getState().matchedPairs.length).toBe(1);
-    expect(useGameStore.getState().score).toBe(100); // Score should be increased
-  });
-
-  it('should pause and resume the game', () => {
-    act(() => {
-      useGameStore.setState({
-        gameStatus: 'playing',
-      });
-    });
-
-    act(() => {
-      useGameStore.getState().pauseGame();
-    });
-
-    expect(useGameStore.getState().gameStatus).toBe('paused');
-
-    act(() => {
-      useGameStore.getState().resumeGame();
-    });
-
-    expect(useGameStore.getState().gameStatus).toBe('playing');
-  });
-
-  it('should reset the game', () => {
-    const mockPiece: ChessPiece = {
-      id: 'piece-1',
-      type: 'pawn',
-      color: 'white',
-      position: { row: 0, col: 0 },
-      symbol: '♟',
-      isRevealed: true,
-      isMatched: true,
-    };
-
-    act(() => {
-      useGameStore.setState({
-        pieces: [mockPiece],
-        selectedPiece: mockPiece,
-        moves: [{ piece: mockPiece, from: { row: 0, col: 0 }, to: { row: 1, col: 1 } }],
-        matchedPairs: ['pair-1'],
-        gameStatus: 'playing',
-        score: 100,
-        timeElapsed: 60,
-      });
-    });
-
-    act(() => {
       useGameStore.getState().resetGame();
     });
 
-    expect(useGameStore.getState().pieces).toEqual([]);
-    expect(useGameStore.getState().selectedPiece).toBeNull();
-    expect(useGameStore.getState().moves).toEqual([]);
-    expect(useGameStore.getState().matchedPairs).toEqual([]);
-    expect(useGameStore.getState().gameStatus).toBe('idle');
-    expect(useGameStore.getState().score).toBe(0);
-    expect(useGameStore.getState().timeElapsed).toBe(0);
+    const state = useGameStore.getState();
+    expect(state.phase).toBe(GamePhase.CONFIGURATION);
+    expect(state.config).toEqual({
+      pieceCount: 12,
+      memorizeTime: 8,
+      difficulty: "hard",
+    });
+    expect(state.originalPosition).toEqual([]);
+    expect(state.playerSolution).toEqual([]);
+    expect(state.accuracy).toBeUndefined();
   });
 
-  it('should update the score', () => {
-    act(() => {
-      useGameStore.setState({
-        score: 0,
-      });
-    });
-
-    act(() => {
-      useGameStore.getState().updateScore(50);
-    });
-
-    expect(useGameStore.getState().score).toBe(50);
-
-    act(() => {
-      useGameStore.getState().updateScore(25);
-    });
-
-    expect(useGameStore.getState().score).toBe(75);
-  });
-
-  it('should update the time elapsed', () => {
-    act(() => {
-      useGameStore.setState({
-        timeElapsed: 0,
-      });
-    });
-
-    act(() => {
-      useGameStore.getState().updateTimeElapsed(30);
-    });
-
-    expect(useGameStore.getState().timeElapsed).toBe(30);
-  });
-
-  it('should set loading state', () => {
-    act(() => {
-      useGameStore.setState({
-        isLoading: false,
-      });
-    });
-
+  it("tracks loading and error state", () => {
     act(() => {
       useGameStore.getState().setLoading(true);
+      useGameStore.getState().setError("An error occurred");
     });
 
     expect(useGameStore.getState().isLoading).toBe(true);
+    expect(useGameStore.getState().error).toBe("An error occurred");
   });
 
-  it('should set error state', () => {
+  it("only prepares leaderboard entries for standard difficulties", () => {
     act(() => {
       useGameStore.setState({
-        error: null,
+        config: {
+          pieceCount: 6,
+          memorizeTime: 10,
+          difficulty: "medium",
+        },
+        accuracy: 50,
+        startTime: 1_000,
+        endTime: 3_500,
       });
     });
 
-    act(() => {
-      useGameStore.getState().setError('An error occurred');
+    expect(useGameStore.getState().isEligibleForLeaderboard()).toBe(true);
+    expect(useGameStore.getState().prepareLeaderboardEntry("Player")).toEqual({
+      player_name: "Player",
+      difficulty: "medium",
+      piece_count: 6,
+      correct_pieces: 3,
+      memorize_time: 10,
+      solution_time: 2.5,
     });
 
-    expect(useGameStore.getState().error).toBe('An error occurred');
+    act(() => {
+      useGameStore.getState().setPieceCount(7);
+    });
+    expect(useGameStore.getState().isEligibleForLeaderboard()).toBe(false);
   });
-}); 
+});

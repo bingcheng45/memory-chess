@@ -15,19 +15,6 @@ jest.mock("next/link", () => {
   return MockNextLink;
 });
 
-jest.mock("next/image", () => ({
-  __esModule: true,
-  default: function MockImage(props: ComponentProps<"img">) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        alt={props.alt}
-        src={typeof props.src === "string" ? props.src : ""}
-      />
-    );
-  },
-}));
-
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
     return <div>PageHeader</div>;
@@ -57,24 +44,6 @@ jest.mock("@/components/learn/LearnArticleTracking", () => {
 
   return MockLearnArticleTracking;
 });
-jest.mock("@/components/ui/button", () => ({
-  Button: function MockButton({
-    children,
-    asChild,
-    ...props
-  }: ComponentProps<"button"> & { asChild?: boolean }) {
-    if (asChild) {
-      return <>{children}</>;
-    }
-
-    return (
-      <button type="button" {...props}>
-        {children}
-      </button>
-    );
-  },
-}));
-
 describe("LearnArticleRich", () => {
   it("renders the direct answer, practice ideas, and reference links", () => {
     const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
@@ -89,22 +58,39 @@ describe("LearnArticleRich", () => {
       screen.getByRole("heading", { name: "Reference links" }),
     ).toBeInTheDocument();
     expect(screen.getByText(/Use a short daily routine/i)).toBeInTheDocument();
+    expect(container.querySelectorAll("img")).toHaveLength(0);
 
     const allClasses = Array.from(container.querySelectorAll("[class]"))
       .map((element) => element.getAttribute("class") ?? "")
       .join(" ");
-    const fontWeights = allClasses
-      .split(/\s+/)
-      .filter((className) =>
-        /^font-(normal|medium|semibold|bold|extrabold|black)$/.test(className),
-      );
 
-    expect(new Set(fontWeights)).toEqual(
-      new Set(["font-normal", "font-semibold", "font-bold"]),
-    );
+    expect(allClasses).toContain("max-w-[68ch]");
+    expect(allClasses).toContain("border-white/10");
     expect(allClasses).not.toContain("font-black");
-    expect(allClasses).not.toContain("uppercase");
-    expect(allClasses).not.toContain("tracking-[");
+    expect(allClasses).not.toContain("rounded-3xl");
+    expect(allClasses).not.toContain("shadow-[");
+
+    const schemaScript = container.querySelector(
+      'script[type="application/ld+json"]',
+    );
+    const schema = JSON.parse(schemaScript?.textContent ?? "{}");
+    const article = schema["@graph"].find(
+      (entry: { "@type": string }) => entry["@type"] === "Article",
+    );
+
+    expect(article.image.url).toBe(
+      "https://thememorychess.com/learn/how-to-get-better-at-chess-for-beginners/opengraph-image",
+    );
+    expect(
+      schema["@graph"].map((entry: { "@type": string }) => entry["@type"]),
+    ).toEqual(
+      expect.arrayContaining([
+        "Article",
+        "WebPage",
+        "BreadcrumbList",
+        "FAQPage",
+      ]),
+    );
   });
 
   it("renders clear links to the next guides", () => {

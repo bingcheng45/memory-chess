@@ -35,7 +35,7 @@ describe("buildLearnPageMetadata", () => {
       : [metadata.authors];
 
     expect(openGraph.publishedTime).toBe("2026-03-06T00:00:00.000Z");
-    expect(openGraph.modifiedTime).toBe("2026-08-16T00:00:00.000Z");
+    expect(openGraph.modifiedTime).toBe("2026-08-17T00:00:00.000Z");
     expect(images[0]).toMatchObject({
       url: "https://thememorychess.com/learn/how-to-stop-blundering-in-chess/opengraph-image",
     });
@@ -45,10 +45,19 @@ describe("buildLearnPageMetadata", () => {
   it("keeps metadata complete for every published guide", () => {
     for (const page of LEARN_PAGES) {
       const metadata = buildLearnPageMetadata(page.slug);
+      const openGraph = metadata.openGraph;
+      const twitter = metadata.twitter;
 
       expect(metadata.title).toBe(page.title);
       expect(metadata.description).toBe(page.description);
       expect(metadata.alternates?.canonical).toBe(`/learn/${page.slug}`);
+      expect(openGraph && "url" in openGraph ? openGraph.url : undefined).toBe(
+        `https://thememorychess.com/learn/${page.slug}`,
+      );
+      expect(openGraph?.title).toBe(page.title);
+      expect(openGraph?.description).toBe(page.description);
+      expect(twitter?.title).toBe(page.title);
+      expect(twitter?.description).toBe(page.description);
     }
   });
 });

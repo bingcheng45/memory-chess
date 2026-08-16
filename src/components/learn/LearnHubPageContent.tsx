@@ -1,401 +1,264 @@
-import Image from "next/image";
 import Link from "next/link";
-import PageHeader from "@/components/ui/PageHeader";
-import Footer from "@/components/ui/Footer";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  EditorialActionLink,
+  EditorialHero,
+  EditorialPageShell,
+} from "@/components/editorial/EditorialPage";
+import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import {
-  getFeaturedLearnPages,
   getLearnPagesByGoal,
-  getNewestLearnPages,
   LEARN_GOALS,
+  LEARN_PAGES,
+  type LearnGoalId,
 } from "@/lib/seo/learnPages";
-import {
-  ArrowRight,
-  Clock3,
-  Compass,
-  Sparkles,
-  Target,
-  TrendingUp,
-} from "lucide-react";
-import { LEARN_TYPOGRAPHY } from "@/components/learn/learnTypography";
 
-const featuredPages = getFeaturedLearnPages(4);
-const newestPages = getNewestLearnPages(4);
+const SITE_URL = "https://thememorychess.com";
+
+const QUICK_STARTS = [
+  {
+    label: "New to chess",
+    title: "Build a simple improvement plan",
+    description:
+      "Start with the fundamentals, then turn one useful idea into a repeatable daily habit.",
+    href: "/learn/how-to-get-better-at-chess-for-beginners",
+  },
+  {
+    label: "Missing simple threats",
+    title: "Train your whole-board scan",
+    description:
+      "Use a short checking routine to notice loose pieces, attacks, and danger before you move.",
+    href: "/learn/chess-board-vision-drills",
+  },
+  {
+    label: "Losing the position in your head",
+    title: "Strengthen visualization and recall",
+    description:
+      "Practice holding a small, accurate picture of the board before adding longer move sequences.",
+    href: "/learn/chess-visualization-exercises",
+  },
+] as const;
+
+const goalEntries = Object.entries(LEARN_GOALS) as Array<
+  [LearnGoalId, (typeof LEARN_GOALS)[LearnGoalId]]
+>;
+
+const learnHubSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${SITE_URL}/learn#webpage`,
+      url: `${SITE_URL}/learn`,
+      name: "Chess Learning Center for Beginners",
+      description:
+        "Practical beginner chess guides for board vision, visualization, memory, calculation, blunder prevention, and daily practice.",
+      isPartOf: {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        name: "Memory Chess",
+        url: SITE_URL,
+      },
+      mainEntity: { "@id": `${SITE_URL}/learn#guides` },
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${SITE_URL}/learn#guides`,
+      name: "Memory Chess learning guides",
+      numberOfItems: LEARN_PAGES.length,
+      itemListElement: LEARN_PAGES.map((page, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: page.title,
+        url: `${SITE_URL}/learn/${page.slug}`,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Learn",
+          item: `${SITE_URL}/learn`,
+        },
+      ],
+    },
+  ],
+};
 
 export default function LearnHubPageContent() {
   return (
-    <div
-      className={`${LEARN_TYPOGRAPHY.reading} min-h-screen bg-bg-dark text-text-primary`}
-    >
-      <main className="container mx-auto px-4 py-8">
-        <div className="mb-8 flex justify-center">
-          <PageHeader showSoundSettings={false} />
+    <EditorialPageShell>
+      <EditorialHero
+        eyebrow="Learn with Memory Chess"
+        title="Learn Chess One Clear Step at a Time"
+        description="Choose what you want to improve. Each guide explains one useful idea in plain English, then gives you a short drill to try."
+      >
+        <div className="mt-7 flex flex-wrap justify-center gap-3">
+          <EditorialActionLink href="/learn/how-to-get-better-at-chess-for-beginners">
+            Start the beginner guide
+          </EditorialActionLink>
+          <EditorialActionLink href="/game" variant="secondary">
+            Play Memory Chess
+          </EditorialActionLink>
         </div>
+      </EditorialHero>
 
-        <section className="mx-auto max-w-7xl rounded-[30px] border border-bg-light bg-gradient-to-br from-bg-card via-bg-card to-black/35 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.28)] sm:p-8">
-          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-            <div className="space-y-6">
-              <div className="flex flex-wrap gap-3">
-                <Badge
-                  className="border-peach-500/30 bg-peach-500/10 text-peach-500"
-                  variant="outline"
-                >
-                  Made for beginners
-                </Badge>
-                <Badge
-                  className="border-bg-light bg-white/5 text-text-primary"
-                  variant="outline"
-                >
-                  Board vision, memory, and fewer blunders
-                </Badge>
-              </div>
-              <div className="space-y-4">
-                <h1
-                  className={`${LEARN_TYPOGRAPHY.pageTitle} max-w-4xl text-4xl sm:text-5xl`}
-                >
-                  Learn Chess One Clear Step at a Time
-                </h1>
-                <p className="max-w-3xl text-lg text-text-secondary">
-                  Choose what you want to improve. Each guide explains the idea
-                  in plain English and gives you a short drill to try in Memory
-                  Chess.
-                </p>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-3">
-                <Card className="border-white/10 bg-black/20">
-                  <CardContent className="p-5">
-                    <p
-                      className={`${LEARN_TYPOGRAPHY.heading} mb-2 text-sm text-peach-400`}
-                    >
-                      Start here
-                    </p>
-                    <p className="text-sm leading-7 text-text-secondary">
-                      Choose one goal below. Read the first guide, try its
-                      drill, and then move to the next step.
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="border-white/10 bg-black/20">
-                  <CardContent className="p-5">
-                    <p
-                      className={`${LEARN_TYPOGRAPHY.heading} mb-2 text-sm text-peach-400`}
-                    >
-                      Practice as you read
-                    </p>
-                    <p className="text-sm leading-7 text-text-secondary">
-                      Every guide includes short exercises and a quick way to
-                      start a Memory Chess round.
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="border-white/10 bg-black/20">
-                  <CardContent className="p-5">
-                    <p
-                      className={`${LEARN_TYPOGRAPHY.heading} mb-2 text-sm text-peach-400`}
-                    >
-                      Who it is for
-                    </p>
-                    <p className="text-sm leading-7 text-text-secondary">
-                      New and improving players who want fewer mistakes and a
-                      clearer picture of the board.
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  asChild
-                  className={`${LEARN_TYPOGRAPHY.heading} bg-peach-500 text-white hover:bg-peach-600`}
-                >
-                  <Link href="/learn/how-to-get-better-at-chess-for-beginners">
-                    Start the Beginner Guide
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className={`${LEARN_TYPOGRAPHY.heading} border-peach-500/30 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300`}
-                >
-                  <Link href="/game">Play Memory Chess</Link>
-                </Button>
-              </div>
-            </div>
+      <div className={EDITORIAL_STYLES.wideColumn}>
+        <section aria-labelledby="next-step-heading" className="pb-10 sm:pb-12">
+          <div className="mb-7">
+            <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>Start here</p>
+            <h2
+              id="next-step-heading"
+              className={EDITORIAL_STYLES.sectionTitle}
+            >
+              Pick Your Next Step
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
+              Choose the sentence that sounds most like your current game. There
+              is no perfect order, and you can change paths at any time.
+            </p>
+          </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {featuredPages.slice(0, 4).map((page) => (
+          <ol className="border-y border-white/10">
+            {QUICK_STARTS.map((item, index) => (
+              <li
+                key={item.href}
+                className="border-b border-white/10 last:border-b-0"
+              >
                 <Link
-                  key={page.slug}
-                  href={`/learn/${page.slug}`}
-                  className="group"
+                  href={item.href}
+                  className="group grid gap-3 py-6 sm:grid-cols-[2.5rem_1fr_auto] sm:items-start sm:gap-5"
                 >
-                  <Card className="h-full overflow-hidden border-white/10 bg-black/20 transition-transform duration-200 group-hover:-translate-y-1">
-                    <div className="overflow-hidden border-b border-white/10">
-                      <Image
-                        src={page.coverImage}
-                        alt={page.title}
-                        width={640}
-                        height={360}
-                        className="h-auto w-full transition-transform duration-300 group-hover:scale-[1.02]"
-                      />
-                    </div>
-                    <CardHeader>
-                      <CardDescription className="text-peach-400">
-                        {LEARN_GOALS[page.goal].label}
-                      </CardDescription>
-                      <CardTitle className="text-xl leading-tight">
-                        {page.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="pt-0 text-sm leading-7 text-text-secondary">
-                      {page.description}
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto mt-12 max-w-7xl">
-          <div className="mb-6 flex items-center gap-3">
-            <Compass className="h-5 w-5 text-peach-500" />
-            <div>
-              <h2 className={`${LEARN_TYPOGRAPHY.heading} text-3xl`}>
-                Choose a Goal
-              </h2>
-              <p className="mt-1 text-text-secondary">
-                Pick what you want to improve. Each path starts with three
-                guides in a useful order.
-              </p>
-            </div>
-          </div>
-          <div className="grid gap-6 lg:grid-cols-2">
-            {Object.entries(LEARN_GOALS).map(([goalId, goal]) => {
-              const pages = getLearnPagesByGoal(
-                goalId as keyof typeof LEARN_GOALS,
-              ).slice(0, 3);
-
-              return (
-                <Card key={goalId} className="border-bg-light bg-bg-card">
-                  <CardHeader>
-                    <CardDescription className="text-peach-400">
-                      {goal.accent}
-                    </CardDescription>
-                    <CardTitle className="text-2xl">{goal.label}</CardTitle>
-                    <p className="text-sm leading-7 text-text-secondary">
-                      {goal.description}
-                    </p>
-                  </CardHeader>
-                  <CardContent className="space-y-4 pt-0">
-                    {pages.map((page, index) => (
-                      <Link
-                        key={page.slug}
-                        href={`/learn/${page.slug}`}
-                        className="block rounded-2xl border border-bg-light/80 bg-black/20 p-4 transition-colors hover:border-peach-500/30"
-                      >
-                        <div className="flex items-center justify-between gap-4">
-                          <div>
-                            <p
-                              className={`${LEARN_TYPOGRAPHY.heading} text-sm text-peach-400`}
-                            >
-                              Step {index + 1}
-                            </p>
-                            <h3
-                              className={`${LEARN_TYPOGRAPHY.heading} mt-1 text-lg`}
-                            >
-                              {page.title}
-                            </h3>
-                            <p className="mt-2 text-sm leading-7 text-text-secondary">
-                              {page.painPoint}
-                            </p>
-                          </div>
-                          <ArrowRight className="h-5 w-5 shrink-0 text-peach-500" />
-                        </div>
-                      </Link>
-                    ))}
-                    <Button
-                      asChild
-                      variant="outline"
-                      className={`${LEARN_TYPOGRAPHY.heading} w-full border-peach-500/30 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300`}
-                    >
-                      <Link href={goal.href}>View This Goal</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="mx-auto mt-14 max-w-7xl grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-          <div>
-            <div className="mb-6 flex items-center gap-3">
-              <Sparkles className="h-5 w-5 text-peach-500" />
-              <div>
-                <h2 className={`${LEARN_TYPOGRAPHY.heading} text-3xl`}>
-                  Featured guides
-                </h2>
-                <p className="mt-1 text-text-secondary">
-                  Good places to start if you are not sure what to read first.
-                </p>
-              </div>
-            </div>
-            <div className="grid gap-6">
-              {featuredPages.map((page) => (
-                <Card
-                  key={`featured-${page.slug}`}
-                  className="overflow-hidden border-bg-light bg-bg-card"
-                >
-                  <div className="grid gap-0 md:grid-cols-[280px_1fr]">
-                    <div className="overflow-hidden border-b border-bg-light/80 md:border-b-0 md:border-r">
-                      <Image
-                        src={page.coverImage}
-                        alt={page.title}
-                        width={640}
-                        height={360}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <div className="mb-4 flex flex-wrap items-center gap-3">
-                        <Badge
-                          className="border-peach-500/30 bg-peach-500/10 text-peach-500"
-                          variant="outline"
-                        >
-                          {LEARN_GOALS[page.goal].label}
-                        </Badge>
-                        <span className="inline-flex items-center gap-2 text-sm text-text-secondary">
-                          <Clock3 className="h-4 w-4 text-peach-500" />
-                          {page.timeToRead}
-                        </span>
-                      </div>
-                      <h3 className={`${LEARN_TYPOGRAPHY.heading} text-2xl`}>
-                        {page.title}
-                      </h3>
-                      <p className="mt-3 text-text-secondary">
-                        {page.description}
-                      </p>
-                      <div className="mt-5 flex flex-wrap gap-4">
-                        <Button
-                          asChild
-                          className={`${LEARN_TYPOGRAPHY.heading} bg-peach-500 text-white hover:bg-peach-600`}
-                        >
-                          <Link href={`/learn/${page.slug}`}>Read Guide</Link>
-                        </Button>
-                        <Button
-                          asChild
-                          variant="outline"
-                          className={`${LEARN_TYPOGRAPHY.heading} border-peach-500/30 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300`}
-                        >
-                          <Link href="/game">Try a Memory Round</Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <Card className="border-bg-light bg-bg-card">
-              <CardHeader>
-                <CardDescription className="text-peach-400">
-                  New and updated
-                </CardDescription>
-                <CardTitle className="text-2xl">More Guides to Read</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 pt-0">
-                {newestPages.map((page) => (
-                  <Link
-                    key={`newest-${page.slug}`}
-                    href={`/learn/${page.slug}`}
-                    className="block rounded-2xl border border-bg-light/80 bg-black/20 p-4 transition-colors hover:border-peach-500/30"
+                  <span className="font-mono text-xs tabular-nums text-peach-400">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span>
+                    <span className="block text-sm font-medium text-peach-300">
+                      {item.label}
+                    </span>
+                    <span className="mt-1 block text-xl font-semibold tracking-tight text-white">
+                      {item.title}
+                    </span>
+                    <span className="mt-2 block text-sm leading-6 text-text-muted sm:text-base sm:leading-7">
+                      {item.description}
+                    </span>
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="hidden pt-6 text-xl text-peach-400 transition-transform group-hover:translate-x-1 sm:block"
                   >
-                    <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p
-                          className={`${LEARN_TYPOGRAPHY.heading} text-sm text-peach-400`}
-                        >
-                          {LEARN_GOALS[page.goal].label}
-                        </p>
-                        <h3
-                          className={`${LEARN_TYPOGRAPHY.heading} mt-1 text-lg`}
-                        >
-                          {page.title}
-                        </h3>
-                        <p className="mt-2 text-sm leading-7 text-text-secondary">
-                          {page.painPoint}
-                        </p>
-                      </div>
-                      <ArrowRight className="h-5 w-5 shrink-0 text-peach-500" />
-                    </div>
-                  </Link>
-                ))}
-              </CardContent>
-            </Card>
+                    →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-            <Card className="border-peach-500/20 bg-gradient-to-b from-peach-500/10 to-transparent">
-              <CardHeader>
-                <CardDescription className="text-peach-400">
-                  Try what you learn
-                </CardDescription>
-                <CardTitle className="text-2xl">
-                  Turn Reading into Practice
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 pt-0">
-                <p className="text-sm leading-7 text-text-secondary">
-                  After you read a guide, play one short round while the idea is
-                  still fresh. Use your result to choose what to practice next.
+        <section
+          aria-labelledby="choose-goal-heading"
+          className="border-t border-white/10 pt-10 sm:pt-12"
+        >
+          <div className="mb-3">
+            <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>
+              All {LEARN_PAGES.length} guides
+            </p>
+            <h2
+              id="choose-goal-heading"
+              className={EDITORIAL_STYLES.sectionTitle}
+            >
+              Choose a Goal
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
+              Each path moves from a simple first exercise toward a more
+              complete practice habit.
+            </p>
+          </div>
+
+          {goalEntries.map(([goalId, goal]) => {
+            const pages = getLearnPagesByGoal(goalId);
+
+            return (
+              <section
+                key={goalId}
+                id={goalId}
+                aria-labelledby={`${goalId}-heading`}
+                className={EDITORIAL_STYLES.section}
+              >
+                <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
+                  {goal.accent}
                 </p>
-                <Button
-                  asChild
-                  className={`${LEARN_TYPOGRAPHY.heading} w-full bg-peach-500 text-white hover:bg-peach-600`}
+                <h3
+                  id={`${goalId}-heading`}
+                  className="text-2xl font-semibold tracking-tight text-white"
                 >
-                  <Link href="/game">Start a Memory Round</Link>
-                </Button>
-              </CardContent>
-            </Card>
+                  {goal.label}
+                </h3>
+                <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
+                  {goal.description}
+                </p>
 
-            <Card className="border-bg-light bg-bg-card">
-              <CardHeader>
-                <CardDescription className="text-peach-400">
-                  Need some help?
-                </CardDescription>
-                <CardTitle className="text-2xl">Pick Your Next Step</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 pt-0 text-sm leading-7 text-text-secondary">
-                <p className="inline-flex items-start gap-3">
-                  <TrendingUp className="mt-1 h-4 w-4 shrink-0 text-peach-500" />
-                  New to chess? Start with the beginner guide and build a simple
-                  practice plan.
-                </p>
-                <p className="inline-flex items-start gap-3">
-                  <Target className="mt-1 h-4 w-4 shrink-0 text-peach-500" />
-                  Losing track of pieces? Choose a board vision, memory, or
-                  visualization guide.
-                </p>
-                <p className="inline-flex items-start gap-3">
-                  <Sparkles className="mt-1 h-4 w-4 shrink-0 text-peach-500" />
-                  Short on time? Try the 20-minute study plan and keep the
-                  routine easy to repeat.
-                </p>
-              </CardContent>
-            </Card>
+                <ol className="mt-7 divide-y divide-white/10 border-y border-white/10">
+                  {pages.map((page, index) => (
+                    <li key={page.slug}>
+                      <Link
+                        href={`/learn/${page.slug}`}
+                        className="group grid gap-2 py-5 sm:grid-cols-[6rem_1fr_auto] sm:items-start sm:gap-5"
+                      >
+                        <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                          Guide {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span>
+                          <span className="block text-lg font-semibold leading-6 text-white transition-colors group-hover:text-peach-200">
+                            {page.title}
+                          </span>
+                          <span className="mt-2 block text-sm leading-6 text-text-muted">
+                            {page.description}
+                          </span>
+                          <span className="mt-2 block text-xs text-text-muted">
+                            {page.timeToRead} · {page.difficulty}
+                          </span>
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          className="hidden text-lg text-peach-400 transition-transform group-hover:translate-x-1 sm:block"
+                        >
+                          →
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            );
+          })}
+        </section>
+
+        <section className="border-t border-white/10 pt-10 text-center sm:pt-12">
+          <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>
+            Read, recall, play
+          </p>
+          <h2 className="text-2xl font-semibold tracking-tight text-white">
+            Turn one idea into practice
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-text-muted">
+            Read one guide, play one short round while the idea is fresh, then
+            notice what was easy to remember and what needs another try.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <EditorialActionLink href="/game">
+              Start a memory round
+            </EditorialActionLink>
           </div>
         </section>
-      </main>
+      </div>
 
-      <Footer />
-    </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(learnHubSchema) }}
+      />
+    </EditorialPageShell>
   );
 }

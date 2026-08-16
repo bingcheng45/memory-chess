@@ -2,33 +2,35 @@ import type { Metadata } from "next";
 import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
 
 export const metadata: Metadata = {
-  title: "Chess Learning Center for Beginners",
+  title: "Chess Learning Center: Beginner Guides & Drills",
   description:
-    "Read simple chess guides about board vision, visualization, memory, calculation, blunders, and building a useful practice routine.",
+    "Read practical beginner chess guides for board vision, visualization, memory, calculation, fewer blunders, and a useful daily practice routine.",
   alternates: {
     canonical: "/learn",
   },
   openGraph: {
-    title: "Chess Learning Center for Beginners",
+    title: "Chess Learning Center: Beginner Guides & Drills",
     description:
-      "Simple guides and practical drills for chess memory, board vision, calculation, and fewer blunders.",
+      "Practical beginner guides and drills for chess memory, board vision, calculation, and fewer blunders.",
     url: "https://thememorychess.com/learn",
+    type: "website",
     images: [
       {
-        url: "https://thememorychess.com/opengraph-image",
+        url: "https://thememorychess.com/learn/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Memory Chess Learning Center",
+        alt: "Memory Chess learning guides for clearer board vision",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chess Learning Center for Beginners",
+    title: "Chess Learning Center: Beginner Guides & Drills",
     description:
-      "Simple guides and practical drills for chess memory, board vision, calculation, and fewer blunders.",
-    images: ["https://thememorychess.com/twitter-image"],
+      "Practical beginner guides and drills for chess memory, board vision, calculation, and fewer blunders.",
+    images: ["https://thememorychess.com/learn/opengraph-image"],
   },
+  category: "Chess education",
 };
 
 export default function LearnHubPage() {

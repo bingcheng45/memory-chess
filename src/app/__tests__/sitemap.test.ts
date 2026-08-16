@@ -15,7 +15,7 @@ describe("sitemap", () => {
     expect(urls).toContain("https://thememorychess.com/changelog");
     expect(urls).toContain("https://thememorychess.com/privacy");
     expect(new Date(learnHubEntry?.lastModified ?? 0).toISOString()).toBe(
-      "2026-08-16T00:00:00.000Z",
+      "2026-08-17T00:00:00.000Z",
     );
   });
 });

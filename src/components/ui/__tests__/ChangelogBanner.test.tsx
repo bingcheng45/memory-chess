@@ -1,14 +1,17 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
 import {
+  CHANGELOG_ANNOUNCEMENT_DURATION_MS,
   CHANGELOG_DISMISSAL_STORAGE_KEY,
   LATEST_CHANGELOG_ENTRY,
 } from "@/lib/changelog";
 
 describe("ChangelogBanner", () => {
+  const publishedAt = Date.parse(LATEST_CHANGELOG_ENTRY.publishedAt);
+
   beforeEach(() => {
     jest.useFakeTimers();
-    jest.setSystemTime(new Date("2026-08-20T00:00:00.000Z"));
+    jest.setSystemTime(new Date(publishedAt + 24 * 60 * 60 * 1000));
     window.localStorage.clear();
   });
 
@@ -21,7 +24,10 @@ describe("ChangelogBanner", () => {
     render(<ChangelogBanner />);
 
     const link = await screen.findByRole("link", {
-      name: /Memory Chess v1\.2\.0 is here/i,
+      name: new RegExp(
+        `Memory Chess v${LATEST_CHANGELOG_ENTRY.version.replaceAll(".", "\\.")} is here`,
+        "i",
+      ),
     });
 
     expect(link).toHaveAttribute("href", "/changelog");
@@ -31,7 +37,7 @@ describe("ChangelogBanner", () => {
     render(<ChangelogBanner />);
 
     const closeButton = await screen.findByRole("button", {
-      name: /Dismiss Memory Chess v1\.2\.0 update/i,
+      name: `Dismiss Memory Chess v${LATEST_CHANGELOG_ENTRY.version} update`,
     });
     fireEvent.click(closeButton);
 
@@ -67,7 +73,9 @@ describe("ChangelogBanner", () => {
   });
 
   it("does not appear once the 30-day window has ended", () => {
-    jest.setSystemTime(new Date("2026-09-15T00:00:00.000Z"));
+    jest.setSystemTime(
+      new Date(publishedAt + CHANGELOG_ANNOUNCEMENT_DURATION_MS),
+    );
 
     render(<ChangelogBanner />);
 
@@ -77,7 +85,9 @@ describe("ChangelogBanner", () => {
   });
 
   it("disappears at the expiry boundary without a reload", async () => {
-    jest.setSystemTime(new Date("2026-09-14T15:59:59.000Z"));
+    jest.setSystemTime(
+      new Date(publishedAt + CHANGELOG_ANNOUNCEMENT_DURATION_MS - 1_000),
+    );
     render(<ChangelogBanner />);
 
     expect(

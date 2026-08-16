@@ -8,6 +8,7 @@ import { LeaderboardEntry } from '@/types/leaderboard';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { ACTIVE_GAME_FRAME_WIDTH } from '@/hooks/useResponsiveBoard';
 
 // Interface for entry details from URL params
 interface EntryDetails {
@@ -174,10 +175,16 @@ function LeaderboardContent() {
 // Loading fallback component
 function LeaderboardLoading() {
   return (
-    <div className="min-h-screen bg-bg-dark text-text-primary">
-      <main className="container mx-auto px-4 py-8">
+    <div className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
+      <main className="container mx-auto px-4 pb-8 pt-4">
         <div className="flex justify-center mb-8">
-          <PageHeader />
+          <PageHeader
+            pageType="game-memorize-solution"
+            style={{
+              width: ACTIVE_GAME_FRAME_WIDTH,
+              maxWidth: '100%',
+            }}
+          />
         </div>
         <div className="flex flex-col items-center justify-center space-y-8">
           <h1 className="text-3xl font-bold text-peach-400">Memory Chess Rankings</h1>
@@ -198,10 +205,16 @@ function LeaderboardLoading() {
 // Main export - the wrapper with suspense boundary
 export default function LeaderboardPage() {
   return (
-    <div className="min-h-screen bg-bg-dark text-text-primary">
-      <main className="container mx-auto px-4 py-8">
+    <div className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
+      <main className="container mx-auto px-4 pb-8 pt-4">
         <div className="flex justify-center mb-8">
-          <PageHeader />
+          <PageHeader
+            pageType="game-memorize-solution"
+            style={{
+              width: ACTIVE_GAME_FRAME_WIDTH,
+              maxWidth: '100%',
+            }}
+          />
         </div>
         
         <Suspense fallback={<LeaderboardLoading />}>
@@ -210,4 +223,4 @@ export default function LeaderboardPage() {
       </main>
     </div>
   );
-} 
+}

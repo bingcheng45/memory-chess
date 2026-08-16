@@ -17,8 +17,14 @@ import { ChessPiece, PieceType } from '@/types/chess';
 import { Button } from "@/components/ui/button";
 import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
 import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
-import { formatTimeExact } from '@/utils/timer';
+import { formatTimeWithMilliseconds } from '@/utils/timer';
 import PageHeader from '@/components/ui/PageHeader';
+import {
+  ACTIVE_GAME_FRAME_WIDTH,
+  ACTIVE_GAME_RESERVED_HEIGHT,
+  useResponsiveBoard,
+} from '@/hooks/useResponsiveBoard';
+import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
 
 // Component to handle URL parameters
 function GamePageContent() {
@@ -65,7 +71,10 @@ function GamePageContent() {
   const [timerWarningPlayed, setTimerWarningPlayed] = useState(false);
   const [soundPlayed, setSoundPlayed] = useState(false);
   const [solutionPieces, setSolutionPieces] = useState<ChessPiece[]>([]);
+  const [isSubmissionFlashVisible, setIsSubmissionFlashVisible] = useState(false);
   const solutionStartTimeRef = useRef<number | null>(null);
+  const submissionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const activeBoardDimensions = useResponsiveBoard(280, 600, ACTIVE_GAME_RESERVED_HEIGHT);
   
   // Track initial page load
   useEffect(() => {
@@ -74,6 +83,9 @@ function GamePageContent() {
     // Clean up game state when leaving
     return () => {
       stopTimerSound(); // Stop any timer sound when leaving the page
+      if (submissionTimeoutRef.current) {
+        clearTimeout(submissionTimeoutRef.current);
+      }
       resetGame();
     };
   }, [analytics, resetGame]);
@@ -188,7 +200,7 @@ function GamePageContent() {
   
   // Track elapsed time during solution phase
   useEffect(() => {
-    if (gameState.isSolutionPhase) {
+    if (gameState.isSolutionPhase && !isSubmissionFlashVisible) {
       console.log('Starting solution phase timer');
       
       // Only initialize the start time when first entering solution phase
@@ -202,7 +214,7 @@ function GamePageContent() {
           // Calculate time based on the stored start time
           const rawElapsedSeconds = (Date.now() - solutionStartTimeRef.current) / 1000;
           const elapsedSeconds = Math.floor(rawElapsedSeconds);
-          setElapsedTime(elapsedSeconds);
+          setElapsedTime(rawElapsedSeconds);
           
           // Play warning sound when 75% of the memorization time has elapsed
           if (!timerWarningPlayed && elapsedSeconds >= Math.floor(gameState.memorizeTime * 0.75)) {
@@ -210,25 +222,37 @@ function GamePageContent() {
             setTimerWarningPlayed(true);
           }
         }
-      }, 1000); // Update once per second
+      }, 33); // Update at approximately 30fps for a smooth milliseconds display
       
       return () => {
         clearInterval(timer);
       };
-    } else {
+    } else if (!gameState.isSolutionPhase) {
       // Reset the ref when leaving solution phase
       stopTimerSound(); // Stop any timer sound when leaving solution phase
       solutionStartTimeRef.current = null;
       setElapsedTime(0);
     }
-  }, [gameState.isSolutionPhase, gameState.memorizeTime, timerWarningPlayed]);
+  }, [gameState.isSolutionPhase, gameState.memorizeTime, timerWarningPlayed, isSubmissionFlashVisible]);
   
   // Handle submitting the solution
   const handleSubmitSolution = () => {
+    if (isSubmissionFlashVisible) return;
+
     console.log('Submitting solution');
     stopTimerSound(); // Stop any playing timer sound
     playSound('click');
-    submitSolution();
+    const frozenElapsedTime = solutionStartTimeRef.current
+      ? (Date.now() - solutionStartTimeRef.current) / 1000
+      : elapsedTime;
+    setElapsedTime(frozenElapsedTime);
+    setIsSubmissionFlashVisible(true);
+
+    submissionTimeoutRef.current = setTimeout(() => {
+      submissionTimeoutRef.current = null;
+      submitSolution(frozenElapsedTime);
+      setIsSubmissionFlashVisible(false);
+    }, GAME_SUBMISSION_FLASH_DURATION_MS);
   };
   
   // Handle trying again with the same configuration
@@ -335,7 +359,7 @@ function GamePageContent() {
         return (
           <div className={containerClass}>
             <ErrorBoundary>
-              <ResponsiveMemorizationBoard />
+              <ResponsiveMemorizationBoard dimensions={activeBoardDimensions} />
             </ErrorBoundary>
           </div>
         );
@@ -344,59 +368,56 @@ function GamePageContent() {
         return (
           <div className={containerClass}>
             <ErrorBoundary>
-              {/* Use a wrapper with the same max width as the chess board component */}
-              <div className="w-full max-w-screen-sm mx-auto">
-                {/* Timer and submit button row, with precise padding to match chess board edges */}
-                <div className="flex items-center justify-between mb-4 w-full">
-                  {/* Timer moved further to the right from the left edge of chess board */}
-                  <div className="text-lg font-medium pl-6">
-                    TIME: <span className="text-xl font-mono font-bold">
-                      {(() => {
-                        if (typeof elapsedTime !== 'number' || isNaN(elapsedTime)) {
-                          return formatTimeExact(0);
-                        }
-                        return formatTimeExact(elapsedTime);
-                      })()}
-                    </span>
-                  </div>
-                  
-                  {/* Submit button aligned to end exactly at the right edge of chess board */}
-                  <div className="pr-6">
-                    <Button 
+              <ResponsiveInteractiveBoard
+                dimensions={activeBoardDimensions}
+                status={
+                  <div className="relative flex h-full items-center justify-center px-3 sm:px-4">
+                    <div className="text-center text-sm font-medium sm:text-base">
+                      Time
+                      <div className="font-mono text-2xl font-bold leading-tight sm:text-3xl">
+                        {(() => {
+                          if (typeof elapsedTime !== 'number' || isNaN(elapsedTime)) {
+                            return formatTimeWithMilliseconds(0);
+                          }
+                          return formatTimeWithMilliseconds(elapsedTime);
+                        })()}
+                      </div>
+                    </div>
+
+                    <Button
                       onClick={handleSubmitSolution}
+                      disabled={isSubmissionFlashVisible}
                       variant="outline"
                       size="sm"
-                      className="bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
+                      className="absolute right-0 top-1/2 h-9 -translate-y-1/2 border-peach-500/30 bg-peach-500/10 px-3 text-sm text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
                     >
                       Submit
                     </Button>
                   </div>
-                </div>
-                
-                {/* Chess board */}
-                <ResponsiveInteractiveBoard
-                  playerSolution={solutionPieces}
-                  onPlacePiece={(piece) => {
-                    setSolutionPieces(prev => [...prev, piece]);
-                    // Convert ChessPiece to chess.js format for the game store
-                    const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
-                    const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
-                    placePiece(square, pieceCode);
-                  }}
-                  onRemovePiece={(position) => {
-                    setSolutionPieces(prev => prev.filter(p => 
+                }
+                playerSolution={solutionPieces}
+                onPlacePiece={(piece) => {
+                  setSolutionPieces(prev => [...prev, piece]);
+                  // Convert ChessPiece to chess.js format for the game store
+                  const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
+                  const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
+                  placePiece(square, pieceCode);
+                }}
+                onRemovePiece={(position) => {
+                  setSolutionPieces(prev =>
+                    prev.filter(p =>
                       p.position.file !== position.file || p.position.rank !== position.rank
-                    ));
-                    // Convert Position to chess.js format
-                    const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
-                    removePiece(square);
-                  }}
-                />
-              </div>
+                    )
+                  );
+                  // Convert Position to chess.js format
+                  const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
+                  removePiece(square);
+                }}
+              />
             </ErrorBoundary>
           </div>
         );
-        
+
       case GamePhase.RESULT:
         return (
           <div className={containerClass}>
@@ -417,30 +438,21 @@ function GamePageContent() {
     }
   };
   
-  // Determine header page type based on current game phase
-  const getHeaderPageType = () => {
-    switch(gamePhase) {
-      case GamePhase.CONFIGURATION:
-        return 'game-config'; // Configuration phase - keep current button position
-      case GamePhase.MEMORIZATION:
-      case GamePhase.SOLUTION:
-        return 'game-memorize-solution'; // Active gameplay - shift button to the right
-      case GamePhase.RESULT:
-        return 'game-result'; // Result phase - keep same as configuration
-      default:
-        return 'game-config';
-    }
-  };
-  
   return (
-    <main className="min-h-screen bg-bg-dark text-text-primary">
-      <div className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
-        {/* Pass different pageType based on current game phase */}
-        <PageHeader 
-          onBackClick={handleBack} 
-          pageType={getHeaderPageType()} 
+    <main className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
+      {isSubmissionFlashVisible && <GameSubmissionFlash />}
+
+      <div className="container mx-auto flex min-h-[calc(100dvh-2.5rem-1px)] flex-col items-center justify-start p-4">
+        <PageHeader
+          onBackClick={handleBack}
+          pageType="game-memorize-solution"
+          className="!mb-3"
+          style={{
+            width: ACTIVE_GAME_FRAME_WIDTH,
+            maxWidth: '100%'
+          }}
         />
-        
+
         <ErrorBoundary>
           {renderGameContent()}
         </ErrorBoundary>
@@ -457,4 +469,4 @@ export default function GamePage() {
       </Suspense>
     </ErrorBoundary>
   );
-} 
+}

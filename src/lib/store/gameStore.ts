@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Chess, PieceSymbol, Square, Color } from 'chess.js';
+import { Chess, PieceSymbol, Square } from 'chess.js';
 import { GameState, GameHistory, GamePhase, DIFFICULTY_LEVELS, DifficultyLevel } from '@/lib/types/game';
+import { generateMemorizationPosition } from '@/lib/utils/memorizationPosition';
 import { v4 as uuidv4 } from 'uuid';
 
 // Extended GameState type with skillRatingChange
@@ -32,7 +33,7 @@ interface GameStore {
   startMemorizationPhase: () => void;
   endMemorizationPhase: () => void;
   startSolutionPhase: () => void;
-  submitSolution: () => void;
+  submitSolution: (completionTimeOverride?: number) => void;
   placePiece: (square: string, piece: string) => void;
   removePiece: (square: string) => void;
   
@@ -79,251 +80,6 @@ interface ChessMove {
   to: string;
   promotion?: string;
 }
-
-// Function to generate a random chess position with a specified number of pieces
-const generateRandomPosition = (pieceCount: number): Chess | null => {
-  try {
-    // Ensure piece count is valid (minimum 2 for the kings)
-    const adjustedPieceCount = Math.max(2, Math.min(32, pieceCount)); // Min 2 (kings), max 32 (full board)
-    
-    // Create a chess instance with a minimal valid position
-    // We'll clear this board immediately
-    const chess = new Chess('4k3/8/8/8/8/8/8/4K3 w - - 0 1');
-    
-    // Clear the board by removing all pieces
-    const squares = [
-      'a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1',
-      'a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2',
-      'a3', 'b3', 'c3', 'd3', 'e3', 'f3', 'g3', 'h3',
-      'a4', 'b4', 'c4', 'd4', 'e4', 'f4', 'g4', 'h4',
-      'a5', 'b5', 'c5', 'd5', 'e5', 'f5', 'g5', 'h5',
-      'a6', 'b6', 'c6', 'd6', 'e6', 'f6', 'g6', 'h6',
-      'a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7',
-      'a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'
-    ];
-    
-    // Remove all pieces from the board
-    squares.forEach(square => {
-      if (chess.get(square as Square)) {
-        chess.remove(square as Square);
-      }
-    });
-    
-    // Set up a piece inventory that respects standard chess piece limits
-    const standardInventory = {
-      'w': { 'p': 8, 'n': 2, 'b': 2, 'r': 2, 'q': 1, 'k': 1 },
-      'b': { 'p': 8, 'n': 2, 'b': 2, 'r': 2, 'q': 1, 'k': 1 }
-    };
-    
-    // Create a deep copy of the inventory to track available pieces
-    const availableInventory: {
-      [key: string]: { [key: string]: number }
-    } = {
-      'w': { ...standardInventory['w'] },
-      'b': { ...standardInventory['b'] }
-    };
-    
-    // Define piece types and their relative frequencies for weighted selection
-    const pieceWeights = [
-      { type: 'p', weight: 8 }, // pawns (most common)
-      { type: 'n', weight: 2 }, // knights
-      { type: 'b', weight: 2 }, // bishops
-      { type: 'r', weight: 2 }, // rooks
-      { type: 'q', weight: 1 }, // queen (least common)
-      { type: 'k', weight: 0 }, // kings are handled separately
-    ];
-    
-    // Track occupied squares
-    const occupiedSquares = new Set<string>();
-    
-    // First, place the kings (required for a valid position)
-    // Create a list of all possible squares
-    const allSquares = [];
-    const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-    for (let rank = 1; rank <= 8; rank++) {
-      for (const file of files) {
-        allSquares.push(`${file}${rank}`);
-      }
-    }
-    
-    // Shuffle all squares for completely random placement
-    const shuffledSquares = [...allSquares].sort(() => Math.random() - 0.5);
-    
-    // Place white king on a random square
-    let whiteKingPlaced = false;
-    for (const square of shuffledSquares) {
-      try {
-        chess.put({ type: 'k' as PieceSymbol, color: 'w' }, square as Square);
-        occupiedSquares.add(square);
-        availableInventory['w']['k'] = 0; // Mark white king as used
-        whiteKingPlaced = true;
-        break;
-      } catch (error) {
-        console.error(`Failed to place white king on ${square}:`, error);
-      }
-    }
-    
-    // Place black king on a random square (that's not occupied)
-    let blackKingPlaced = false;
-    // Reshuffle squares for black king to ensure maximum randomness
-    const shuffledSquaresForBlack = [...allSquares].sort(() => Math.random() - 0.5);
-    
-    for (const square of shuffledSquaresForBlack) {
-      if (occupiedSquares.has(square)) continue;
-      
-      try {
-        chess.put({ type: 'k' as PieceSymbol, color: 'b' }, square as Square);
-        occupiedSquares.add(square);
-        availableInventory['b']['k'] = 0; // Mark black king as used
-        blackKingPlaced = true;
-        break;
-      } catch (error) {
-        console.error(`Failed to place black king on ${square}:`, error);
-      }
-    }
-    
-    // If we couldn't place both kings, return null
-    if (!whiteKingPlaced || !blackKingPlaced) {
-      console.error('Failed to place kings on the board');
-      return null;
-    }
-    
-    // If we only want the kings (pieceCount = 2), return now
-    if (adjustedPieceCount <= 2) {
-      return chess;
-    }
-    
-    // Now place the remaining pieces
-    let piecesPlaced = 2; // We've already placed 2 kings
-    const maxAttempts = 1000; // Prevent infinite loops
-    let attempts = 0;
-    
-    // Calculate how many pieces of each color to place, keeping roughly balanced
-    const remainingPieces = adjustedPieceCount - 2;
-    let targetWhitePieces = Math.ceil(remainingPieces / 2);
-    let targetBlackPieces = remainingPieces - targetWhitePieces;
-    
-    let whitePiecesPlaced = 1; // Start with 1 for the king
-    let blackPiecesPlaced = 1; // Start with 1 for the king
-    
-    while (piecesPlaced < adjustedPieceCount && attempts < maxAttempts) {
-      attempts++;
-      
-      // Generate random square from remaining unoccupied squares
-      const availableSquares = allSquares.filter(square => !occupiedSquares.has(square));
-      if (availableSquares.length === 0) break;
-      
-      const randomIndex = Math.floor(Math.random() * availableSquares.length);
-      const square = availableSquares[randomIndex] as Square;
-      
-      // Determine color based on balance
-      const needMoreWhite = whitePiecesPlaced < (targetWhitePieces + 1); // +1 for the king
-      const needMoreBlack = blackPiecesPlaced < (targetBlackPieces + 1); // +1 for the king
-      
-      // If we've reached our target for one color, only use the other
-      let isWhite: boolean;
-      if (needMoreWhite && !needMoreBlack) {
-        isWhite = true;
-      } else if (!needMoreWhite && needMoreBlack) {
-        isWhite = false;
-      } else {
-        isWhite = Math.random() > 0.5;
-      }
-      
-      const color = isWhite ? 'w' : 'b';
-      
-      // Get available piece types for this color based on inventory
-      const availablePieceTypes = pieceWeights
-        .filter(p => availableInventory[color][p.type] > 0)
-        .flatMap(p => Array(p.weight).fill(p.type));
-      
-      // If no piece types are available for this color, try the other color
-      if (availablePieceTypes.length === 0) {
-        // If we're short on pieces, recalculate target distribution
-        if ((isWhite && needMoreWhite) || (!isWhite && needMoreBlack)) {
-          // Adjust target distribution to use remaining available pieces
-          const availableWhitePieces = Object.values(availableInventory['w']).reduce((sum, count) => sum + count, 0);
-          const availableBlackPieces = Object.values(availableInventory['b']).reduce((sum, count) => sum + count, 0);
-          
-          const totalAvailable = availableWhitePieces + availableBlackPieces;
-          if (totalAvailable === 0) break; // No more pieces available
-          
-          // Recalculate targets based on availability
-          targetWhitePieces = Math.min(remainingPieces - (blackPiecesPlaced - 1), 1 + availableWhitePieces);
-          targetBlackPieces = Math.min(remainingPieces - (whitePiecesPlaced - 1), 1 + availableBlackPieces);
-        }
-        continue;
-      }
-      
-      // Select random piece type from available types
-      const pieceType = availablePieceTypes[Math.floor(Math.random() * availablePieceTypes.length)] as PieceSymbol;
-      
-      // Place the piece
-      try {
-        chess.put({ 
-          type: pieceType, 
-          color: color as Color
-        }, square);
-        
-        occupiedSquares.add(square);
-        piecesPlaced++;
-        
-        // Update inventory
-        availableInventory[color][pieceType]--;
-        
-        // Update piece counts
-        if (isWhite) {
-          whitePiecesPlaced++;
-        } else {
-          blackPiecesPlaced++;
-        }
-      } catch (error) {
-        console.error(`Failed to place piece ${pieceType} on ${square}:`, error);
-      }
-    }
-    
-    // Validate the final position
-    try {
-      // Make sure the position has both kings
-      const fenPosition = chess.fen();
-      if (!fenPosition.includes('K') || !fenPosition.includes('k')) {
-        console.error('Generated position is missing kings');
-        return null;
-      }
-      
-      // Count the kings to ensure there's exactly one of each
-      const position = chess.board();
-      let whiteKingCount = 0;
-      let blackKingCount = 0;
-      
-      for (let rank = 0; rank < 8; rank++) {
-        for (let file = 0; file < 8; file++) {
-          const piece = position[rank][file];
-          if (piece && piece.type === 'k') {
-            if (piece.color === 'w') {
-              whiteKingCount++;
-            } else {
-              blackKingCount++;
-            }
-          }
-        }
-      }
-      
-      if (whiteKingCount !== 1 || blackKingCount !== 1) {
-        console.error(`Invalid king count: white=${whiteKingCount}, black=${blackKingCount}`);
-        return null;
-      }
-      
-      return chess;
-    } catch (error) {
-      console.error('Error validating chess position:', error);
-      return null;
-    }
-  } catch (error) {
-    console.error('Error generating random position:', error);
-    return null;
-  }
-};
 
 // Function to calculate accuracy between two positions
 const calculateAccuracy = (originalFen: string, userFen: string): {
@@ -489,7 +245,7 @@ export const useGameStore = create<GameStore>()(
         console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
         
         // Generate a random position for memorization
-        const memorizationPosition = generateRandomPosition(pieceCount);
+        const memorizationPosition = generateMemorizationPosition(pieceCount);
         
         if (!memorizationPosition) {
           console.error('Failed to generate random position');
@@ -717,7 +473,7 @@ export const useGameStore = create<GameStore>()(
         }));
       },
       
-      submitSolution: () => {
+      submitSolution: (completionTimeOverride) => {
         const { gameState, chess } = get();
         
         if (!chess || !gameState.originalPosition) {
@@ -734,7 +490,7 @@ export const useGameStore = create<GameStore>()(
         // Calculate completion time with millisecond precision
         const now = Date.now();
         const solutionStartTime = gameState.solutionStartTime || now;
-        const completionTime = (now - solutionStartTime) / 1000; // Store as floating point seconds with millisecond precision
+        const completionTime = completionTimeOverride ?? (now - solutionStartTime) / 1000;
         
         // Calculate time bonus using actual memorize time if available
         const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime, gameState.actualMemorizeTime);
@@ -970,4 +726,4 @@ export const useGameStore = create<GameStore>()(
       }),
     }
   )
-); 
+);

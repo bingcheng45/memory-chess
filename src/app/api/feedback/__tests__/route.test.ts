@@ -49,7 +49,7 @@ describe("POST /api/feedback", () => {
         "medium",
         9,
         12.5,
-        "1.2.0",
+        "1.2.1",
       ],
       valueInputOption: "RAW",
     });

@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
+import ResultBoardComparison from "@/components/game/ResultBoardComparison";
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & {
@@ -259,176 +260,153 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     }
   };
 
+  const accuracy = gameState.accuracy || 0;
+  const memorizationTime =
+    gameState.actualMemorizeTime || gameState.memorizeTime;
+  const memorizationTimeParts = formatTimeParts(memorizationTime);
+  const solutionTimeParts = formatTimeParts(gameState.completionTime || 0);
+  const recallSpeed =
+    gameState.completionTime && gameState.completionTime > 0
+      ? `${((gameState.pieceCount * (accuracy / 100)) / memorizationTime).toFixed(1)} pieces/sec`
+      : "0.0 pieces/sec";
+  const leaderboardEligible = isEligibleForLeaderboard();
+
   return (
-    <div className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-8 shadow-xl">
-      <h2
-        className={`mb-4 text-center text-3xl font-bold ${getAccuracyColor(gameState.accuracy || 0)}`}
+    <div className="w-full max-w-4xl space-y-6 pb-4">
+      <section
+        aria-labelledby="game-result-heading"
+        className="w-full rounded-xl border border-bg-light bg-bg-card p-4 shadow-xl sm:p-6"
       >
-        {getResultMessage()}
-      </h2>
+        <h2
+          id="game-result-heading"
+          className={`text-center text-2xl font-bold sm:text-3xl ${getAccuracyColor(accuracy)}`}
+        >
+          {getResultMessage()}
+        </h2>
 
-      <div className="mb-6 space-y-4">
-        {/* Accuracy */}
-        <div className="flex flex-col border-b border-bg-light pb-3">
-          <div className="flex justify-between">
-            <span className="text-text-secondary font-medium">Accuracy:</span>
-            <span
-              className={`font-bold ${getAccuracyColor(gameState.accuracy || 0)}`}
+        <div className="mt-4 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.16em] text-text-secondary">
+              Accuracy
+            </p>
+            <p
+              className={`text-4xl font-bold leading-none sm:text-5xl ${getAccuracyColor(accuracy)}`}
             >
-              {gameState.accuracy || 0}%
-            </span>
+              {accuracy}%
+            </p>
           </div>
-
-          {/* Pieces correct / total */}
-          <div className="flex justify-between mt-1">
-            <span className="text-text-secondary text-sm">Pieces correct:</span>
-            <span className="text-sm font-medium text-text-primary">
+          <p className="text-right text-sm text-text-secondary">
+            <span className="block font-semibold text-text-primary">
               {piecesInfo.correctPieces}
               {piecesInfo.extraPieces > 0 && (
-                <sup className="text-xs ml-1 text-red-500 font-bold">
+                <sup className="ml-1 text-xs font-bold text-red-500">
                   -{piecesInfo.extraPieces}
                 </sup>
               )}{" "}
               / {piecesInfo.totalPieces}
             </span>
+            pieces correct
+          </p>
+        </div>
+
+        <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-bg-light">
+          <div
+            className={`h-full transition-all ${
+              accuracy >= 90
+                ? "bg-green-400"
+                : accuracy >= 70
+                  ? "bg-peach-400"
+                  : accuracy >= 50
+                    ? "bg-peach-500"
+                    : "bg-peach-600"
+            }`}
+            style={{ width: `${accuracy}%` }}
+          />
+        </div>
+
+        <dl className="mt-5 grid grid-cols-2 gap-2 lg:grid-cols-4">
+          <div className="rounded-lg bg-bg-light/45 p-3">
+            <dt className="text-xs text-text-secondary">Pieces Correct</dt>
+            <dd className="mt-1 font-semibold text-text-primary">
+              {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
+            </dd>
           </div>
-
-          {/* Accuracy progress bar */}
-          <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-bg-light">
-            <div
-              className={`h-full transition-all ${
-                gameState.accuracy && gameState.accuracy >= 90
-                  ? "bg-green-400"
-                  : gameState.accuracy && gameState.accuracy >= 70
-                    ? "bg-peach-400"
-                    : gameState.accuracy && gameState.accuracy >= 50
-                      ? "bg-peach-500"
-                      : "bg-peach-600"
-              }`}
-              style={{ width: `${gameState.accuracy || 0}%` }}
-            ></div>
+          <div className="rounded-lg bg-bg-light/45 p-3">
+            <dt className="text-xs text-text-secondary">Memorization Time</dt>
+            <dd className="mt-1 font-semibold text-text-primary">
+              <TimeDisplay {...memorizationTimeParts} />
+            </dd>
           </div>
-        </div>
+          <div className="rounded-lg bg-bg-light/45 p-3">
+            <dt className="text-xs text-text-secondary">Solution Time</dt>
+            <dd className="mt-1 font-semibold text-text-primary">
+              <TimeDisplay {...solutionTimeParts} />
+            </dd>
+          </div>
+          <div className="rounded-lg bg-bg-light/45 p-3">
+            <dt className="text-xs text-text-secondary">Recall Speed</dt>
+            <dd className="mt-1 text-sm font-semibold text-text-primary sm:text-base">
+              {recallSpeed}
+            </dd>
+          </div>
+        </dl>
 
-        {/* Memorization Time */}
-        <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary font-medium">
-            Memorization Time:
-          </span>
-          <span className="font-bold text-text-primary">
-            {(() => {
-              // Use actual memorize time if available, otherwise fall back to configured time
-              const memorizeTime =
-                gameState.actualMemorizeTime || gameState.memorizeTime;
-              const { minutes, seconds, milliseconds } =
-                formatTimeParts(memorizeTime);
-              return (
-                <TimeDisplay
-                  minutes={minutes}
-                  seconds={seconds}
-                  milliseconds={milliseconds}
-                />
-              );
-            })()}
-          </span>
-        </div>
-
-        {/* Solution Time */}
-        <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary font-medium">
-            Solution Time:
-          </span>
-          <span className="font-bold text-text-primary">
-            {(() => {
-              const { minutes, seconds, milliseconds } = formatTimeParts(
-                gameState.completionTime || 0,
-              );
-              return (
-                <TimeDisplay
-                  minutes={minutes}
-                  seconds={seconds}
-                  milliseconds={milliseconds}
-                />
-              );
-            })()}
-          </span>
-        </div>
-
-        {/* Recall Speed - replacing Pieces section */}
-        <div className="flex justify-between border-b border-bg-light pb-3">
-          <span className="text-text-secondary font-medium">Recall Speed:</span>
-          <span className="font-bold text-text-primary">
-            {(() => {
-              // Handle edge cases
-              if (!gameState.completionTime || gameState.completionTime <= 0) {
-                return "0.0 pieces/sec";
-              }
-
-              // Use actual memorization time if available, otherwise fall back to configured time
-              const memorizeTime =
-                gameState.actualMemorizeTime || gameState.memorizeTime;
-
-              // Calculate correct pieces based on accuracy
-              const accuracyPercentage = (gameState.accuracy || 0) / 100;
-              const correctPieces = gameState.pieceCount * accuracyPercentage;
-
-              // Calculate correct pieces per second - based on actual memorization time
-              // This represents how efficiently pieces were memorized
-              const piecesPerSecond = correctPieces / memorizeTime;
-
-              // Format to 1 decimal place
-              return `${piecesPerSecond.toFixed(1)} pieces/sec`;
-            })()}
-          </span>
-        </div>
-      </div>
-
-      <div className="flex flex-col space-y-3">
-        <Button
-          onClick={onTryAgain}
-          variant={gameState.accuracy === 100 ? "outline" : "secondary"}
-          size={gameState.accuracy === 100 ? "default" : "lg"}
-          className={
-            gameState.accuracy === 100
-              ? "w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5"
-              : "w-full border border-gray-600"
-          }
+        <nav
+          aria-label="Result actions"
+          className="mt-5 grid grid-cols-2 gap-2 border-t border-bg-light pt-5 lg:grid-cols-4"
         >
-          Try Again
-        </Button>
-
-        <Button
-          onClick={onNewGame}
-          variant={gameState.accuracy === 100 ? "secondary" : "outline"}
-          size={gameState.accuracy === 100 ? "lg" : "default"}
-          className={
-            gameState.accuracy === 100
-              ? "w-full border border-gray-600"
-              : "w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5"
-          }
-        >
-          New Game
-        </Button>
-
-        {isEligibleForLeaderboard() && (
           <Button
-            onClick={() => setShowLeaderboardDialog(true)}
-            variant="outline"
-            className="w-full bg-green-500/10 text-green-500 hover:text-green-500 border-green-500/30 hover:bg-green-500/20 px-3 py-1.5"
+            onClick={onTryAgain}
+            variant={accuracy === 100 ? "outline" : "secondary"}
+            className={
+              accuracy === 100
+                ? "h-10 w-full border-peach-500/30 bg-peach-500/10 px-3 text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
+                : "h-10 w-full border border-gray-600 px-3"
+            }
           >
-            Submit to Leaderboard
+            Try Again
           </Button>
-        )}
 
-        <Link href="/leaderboard">
           <Button
-            variant="ghost"
-            className="w-full text-peach-500 hover:text-peach-500 border-0 hover:border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5"
+            onClick={onNewGame}
+            variant={accuracy === 100 ? "secondary" : "outline"}
+            className={
+              accuracy === 100
+                ? "h-10 w-full border border-gray-600 px-3"
+                : "h-10 w-full border-peach-500/30 bg-peach-500/10 px-3 text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
+            }
           >
-            View Leaderboard
+            New Game
           </Button>
-        </Link>
-      </div>
+
+          {leaderboardEligible && (
+            <Button
+              onClick={() => setShowLeaderboardDialog(true)}
+              variant="outline"
+              className="h-10 w-full border-green-500/30 bg-green-500/10 px-3 text-green-500 hover:bg-green-500/20 hover:text-green-500"
+            >
+              Submit to Leaderboard
+            </Button>
+          )}
+
+          <Link
+            href="/leaderboard"
+            className={leaderboardEligible ? "w-full" : "col-span-2 w-full"}
+          >
+            <Button
+              variant="ghost"
+              className="h-10 w-full border-0 px-3 text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
+            >
+              View Leaderboard
+            </Button>
+          </Link>
+        </nav>
+      </section>
+
+      <ResultBoardComparison
+        originalPosition={gameState.originalPosition}
+        userPosition={gameState.userPosition}
+      />
 
       <FirstGameFeedbackDialog
         game={{

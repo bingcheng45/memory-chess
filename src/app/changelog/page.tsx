@@ -94,23 +94,32 @@ export default function ChangelogPage() {
                   {entry.summary}
                 </p>
 
-                <ul
-                  className="mt-5 space-y-3"
+                <div
+                  className="mt-6 space-y-6"
                   aria-label={`Changes in version ${entry.version}`}
                 >
-                  {entry.changes.map((change) => (
-                    <li
-                      key={change}
-                      className="grid grid-cols-[auto_1fr] gap-3 text-sm leading-6 text-text-secondary sm:text-base"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="mt-2.5 h-1 w-1 rounded-full bg-peach-400"
-                      />
-                      <span>{change}</span>
-                    </li>
+                  {entry.groups.map((group) => (
+                    <section key={group.title}>
+                      <h4 className="text-sm font-semibold uppercase tracking-[0.12em] text-peach-300">
+                        {group.title}
+                      </h4>
+                      <ul className="mt-2.5 space-y-2.5">
+                        {group.changes.map((change) => (
+                          <li
+                            key={change}
+                            className="grid grid-cols-[auto_1fr] gap-3 text-sm leading-6 text-text-secondary sm:text-base"
+                          >
+                            <span
+                              aria-hidden="true"
+                              className="mt-2.5 h-1 w-1 rounded-full bg-peach-400"
+                            />
+                            <span>{change}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
                   ))}
-                </ul>
+                </div>
               </article>
             );
           })}

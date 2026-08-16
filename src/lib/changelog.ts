@@ -12,7 +12,30 @@ export interface ChangelogEntry {
 
 export interface ChangelogGroup {
   title: string;
-  changes: readonly string[];
+  description?: string;
+  changes?: readonly ChangelogChange[];
+  tables?: readonly ChangelogTable[];
+  note?: string;
+}
+
+export type ChangelogChange =
+  | string
+  | {
+      segments: readonly (string | ChangelogLink)[];
+    };
+
+export interface ChangelogLink {
+  text: string;
+  href: string;
+}
+
+export interface ChangelogTable {
+  caption: string;
+  columns: readonly string[];
+  rows: readonly {
+    label: string;
+    values: readonly string[];
+  }[];
 }
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
@@ -47,6 +70,77 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
         title: "A clearer finish",
         changes: [
           "When you submit, the timer stops for one second so you can see your locked-in time and final board before the results appear. A quick GAME! flash marks the end of the round, and the placement timer now shows milliseconds.",
+        ],
+      },
+      {
+        title: "Some statistics for everyone!",
+        description:
+          "Here is a snapshot of public leaderboard submissions through August 16, 2026.",
+        tables: [
+          {
+            caption: "Accuracy",
+            columns: ["Leaderboard submissions", "Through 2025", "2026"],
+            rows: [
+              {
+                label: "Average accuracy",
+                values: ["72.3%", "89.1%"],
+              },
+              {
+                label: "Perfect-score rate",
+                values: ["56.4%", "77.3%"],
+              },
+              {
+                label: "Medium average accuracy",
+                values: ["65.6%", "75.7%"],
+              },
+              {
+                label: "Medium perfect-score rate",
+                values: ["35.4%", "52.5%"],
+              },
+              {
+                label: "Hard average accuracy",
+                values: ["50.0%", "72.9%"],
+              },
+              {
+                label: "Grandmaster average accuracy",
+                values: ["21.7%", "52.3%"],
+              },
+            ],
+          },
+          {
+            caption: "Submission speed",
+            columns: ["Perfect-score solution time", "Through 2025", "2026"],
+            rows: [
+              {
+                label: "All difficulties, median",
+                values: ["5.42s", "5.42s"],
+              },
+              {
+                label: "Easy, median",
+                values: ["4.86s", "4.85s"],
+              },
+              {
+                label: "Medium, median",
+                values: ["15.88s", "17.60s"],
+              },
+            ],
+          },
+        ],
+        note: "Among 50 repeated player-name and difficulty combinations, 33 had a faster latest solution and 17 had a slower one. Accuracy improved strongly overall, but taking more time can also lead to a better score. These figures cover voluntary leaderboard submissions, not every game, and the Easy leaderboard is limited to its top 200 entries.",
+      },
+      {
+        title: "Thank you for playing",
+        changes: [
+          {
+            segments: [
+              "A huge thank you to everyone who helped Memory Chess reach more than 800 monthly players and over 32,000 games played. We are especially grateful to everyone who shared ideas, encouragement, and bug reports through the ",
+              {
+                text: "Contact Us page",
+                href: "/contact-us",
+              },
+              " or the end-of-game feedback form. Every game and message helps Memory Chess keep growing.",
+            ],
+          },
         ],
       },
     ],

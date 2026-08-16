@@ -18,6 +18,35 @@
 
 - When you submit, the timer stops for one second so you can see your locked-in time and final board before the results appear. A quick GAME! flash marks the end of the round, and the placement timer now shows milliseconds.
 
+### Thank you for playing
+
+- A huge thank you to everyone who helped Memory Chess reach more than 800 monthly players and over 32,000 games played. We are especially grateful to everyone who shared ideas, encouragement, and bug reports through the [Contact Us page](https://thememorychess.com/contact-us) or the end-of-game feedback form. Every game and message helps Memory Chess keep growing.
+
+### Some statistics for everyone!
+
+These figures are a snapshot of public leaderboard submissions through August 16, 2026.
+
+#### Accuracy
+
+| Leaderboard submissions      | Through 2025 | 2026  |
+| ---------------------------- | ------------ | ----- |
+| Average accuracy             | 72.3%        | 89.1% |
+| Perfect-score rate           | 56.4%        | 77.3% |
+| Medium average accuracy      | 65.6%        | 75.7% |
+| Medium perfect-score rate    | 35.4%        | 52.5% |
+| Hard average accuracy        | 50.0%        | 72.9% |
+| Grandmaster average accuracy | 21.7%        | 52.3% |
+
+#### Submission speed
+
+| Perfect-score solution time | Through 2025 | 2026   |
+| --------------------------- | ------------ | ------ |
+| All difficulties, median    | 5.42s        | 5.42s  |
+| Easy, median                | 4.86s        | 4.85s  |
+| Medium, median              | 15.88s       | 17.60s |
+
+Among 50 repeated player-name and difficulty combinations, 33 had a faster latest solution and 17 had a slower one. Accuracy improved strongly overall, but taking more time can also lead to a better score. These figures cover voluntary leaderboard submissions, not every game, and the Easy leaderboard is limited to its top 200 entries.
+
 ## Memory Chess v1.2.0
 
 ### Learn and improve

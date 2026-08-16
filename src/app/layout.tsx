@@ -31,25 +31,11 @@ const siteUrl = "https://thememorychess.com";
 export const metadata: Metadata = {
   // Basic Metadata
   title: {
-    default: "Memory Chess - Train Your Chess Visualization and Spatial Memory",
+    default: "Memory Chess: Free Chess Memory and Visualization Game",
     template: "%s | Memory Chess",
   },
   description:
-    "Enhance your chess visualization, spatial memory, and cognitive skills through interactive board memorization exercises. Train like grandmasters with Memory Chess.",
-  keywords: [
-    "chess memory",
-    "chess visualization",
-    "spatial memory training",
-    "chess board memory",
-    "memory improvement",
-    "chess training",
-    "visualization skills",
-    "cognitive enhancement",
-    "chess exercises",
-    "board memory",
-    "grandmaster techniques",
-    "memory chess",
-  ],
+    "Memorize a chess position, rebuild it from memory, and get an instant score. Play free to train board vision, visualization, and spatial memory.",
 
   // Canonical for home route; child routes override via route metadata
   alternates: {
@@ -67,9 +53,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Memory Chess - Train Your Visualization Skills Like a Grandmaster",
+    title: "Memory Chess: Free Chess Memory and Visualization Game",
     description:
-      "Improve your spatial visualization and memory with chess-based cognitive training exercises",
+      "Memorize a chess position, rebuild it, and get an instant score. Play free with no account needed.",
     siteName: "Memory Chess",
     images: [
       {
@@ -84,9 +70,9 @@ export const metadata: Metadata = {
   // Twitter metadata
   twitter: {
     card: "summary_large_image",
-    title: "Memory Chess - Chess Visualization Training",
+    title: "Memory Chess: Free Chess Memory Game",
     description:
-      "Enhance your memory and spatial visualization skills with chess-based training exercises",
+      "Memorize a chess position, rebuild it, and improve your board vision one round at a time.",
     images: [`${siteUrl}/twitter-image`],
     creator: "@memorychess",
   },

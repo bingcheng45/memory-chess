@@ -1,4 +1,5 @@
 import sitemap from "@/app/sitemap";
+import { LEARN_PAGES } from "@/lib/seo/learnPages";
 
 describe("sitemap", () => {
   it("includes static routes, learn article URLs, and the learn hub timestamp", async () => {
@@ -8,15 +9,13 @@ describe("sitemap", () => {
       (entry) => entry.url === "https://thememorychess.com/learn",
     );
 
-    expect(urls).toContain(
-      "https://thememorychess.com/learn/how-to-get-better-at-chess-for-beginners",
-    );
-    expect(urls).toContain(
-      "https://thememorychess.com/learn/chess-calculation-exercises-for-beginners",
-    );
+    for (const page of LEARN_PAGES) {
+      expect(urls).toContain(`https://thememorychess.com/learn/${page.slug}`);
+    }
     expect(urls).toContain("https://thememorychess.com/changelog");
+    expect(urls).toContain("https://thememorychess.com/privacy");
     expect(new Date(learnHubEntry?.lastModified ?? 0).toISOString()).toBe(
-      "2026-03-23T00:00:00.000Z",
+      "2026-08-16T00:00:00.000Z",
     );
   });
 });

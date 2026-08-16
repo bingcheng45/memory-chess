@@ -1,26 +1,26 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 type OtherApp = { name: string; href: string; icon: string };
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 const otherApps: OtherApp[] = [
   {
-    name: 'Tont',
-    href: 'https://tont.app',
-    icon: '/apps/tont.png',
+    name: "Tont",
+    href: "https://tont.app",
+    icon: "/apps/tont.png",
   },
 ];
 
 function withUtm(url: string) {
-  const utm = 'utm_source=memory-chess&utm_medium=site&utm_campaign=other-apps';
-  return url.includes('?') ? `${url}&${utm}` : `${url}?${utm}`;
+  const utm = "utm_source=memory-chess&utm_medium=site&utm_campaign=other-apps";
+  return url.includes("?") ? `${url}&${utm}` : `${url}?${utm}`;
 }
 
 export default function OtherAppsSection() {
@@ -36,7 +36,7 @@ export default function OtherAppsSection() {
         viewport={{ once: true }}
         variants={fadeUp}
       >
-        Other apps by me
+        More Apps from the Creator
       </motion.h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

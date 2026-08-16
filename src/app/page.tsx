@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import PageHeader from '@/components/ui/PageHeader';
-import FaqSection from '@/components/ui/FaqSection';
-import OtherAppsSection from '@/components/ui/OtherAppsSection';
-import VideoSection from '@/components/ui/VideoSection';
-import Footer from '@/components/ui/Footer';
-import { useState, useEffect } from 'react';
-import { formatNumber } from '@/lib/utils';
-import { getPieceImageUrl } from '@/utils/chessPieces';
-import { PieceColor, PieceType } from '@/types/chess';
-import Script from 'next/script';
-import { motion } from 'framer-motion';
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import PageHeader from "@/components/ui/PageHeader";
+import FaqSection from "@/components/ui/FaqSection";
+import OtherAppsSection from "@/components/ui/OtherAppsSection";
+import VideoSection from "@/components/ui/VideoSection";
+import Footer from "@/components/ui/Footer";
+import { useState, useEffect } from "react";
+import { formatNumber } from "@/lib/utils";
+import { getPieceImageUrl } from "@/utils/chessPieces";
+import { PieceColor, PieceType } from "@/types/chess";
+import Script from "next/script";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   BookOpen,
@@ -21,28 +21,28 @@ import {
   Eye,
   Sparkles,
   TrendingUp,
-} from 'lucide-react';
+} from "lucide-react";
 
 const memorySteps = [
   {
-    label: '01',
-    title: 'Observe',
+    label: "01",
+    title: "Observe",
     description:
-      'Scan the board like a position, not a picture. Anchor pieces, colors, and diagonals into a quick mental map.',
+      "Study where each piece sits. Look for groups, lines, and useful empty spaces.",
     icon: Eye,
   },
   {
-    label: '02',
-    title: 'Recreate',
+    label: "02",
+    title: "Recreate",
     description:
-      'Rebuild the position from memory so board vision becomes active recall instead of passive recognition.',
+      "When the board clears, place every piece back on the square you remember.",
     icon: Brain,
   },
   {
-    label: '03',
-    title: 'Improve',
+    label: "03",
+    title: "Improve",
     description:
-      'Use instant feedback to spot which squares, piece types, and patterns fade first, then train the next board smarter.',
+      "Check your score, see what you missed, and try again with more pieces or less time.",
     icon: TrendingUp,
   },
 ];
@@ -65,30 +65,25 @@ export default function Home() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Memory Chess",
-    "url": "https://thememorychess.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://thememorychess.com/?s={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    name: "Memory Chess",
+    url: "https://thememorychess.com",
   };
 
   // Fetch total plays from Supabase on component mount
   useEffect(() => {
     async function fetchTotalPlays() {
       try {
-        const response = await fetch('/api/game-stats?metric=total_plays');
-        
+        const response = await fetch("/api/game-stats?metric=total_plays");
+
         if (!response.ok) {
           return;
         }
-        
+
         const data = await response.json();
-        
+
         // Extract the value from the correct path: data.metric_value
         const playsValue = data?.data?.metric_value;
-        
+
         if (playsValue !== undefined) {
           setTotalPlays(playsValue);
         }
@@ -96,7 +91,7 @@ export default function Home() {
         // Stats are optional; keep the homepage usable when local Supabase env vars are absent.
       }
     }
-    
+
     fetchTotalPlays();
   }, []);
 
@@ -106,7 +101,11 @@ export default function Home() {
         <div className="flex justify-center mb-8">
           <PageHeader showSoundSettings={false} />
         </div>
-        <Script id="website-schema" type="application/ld+json" strategy="afterInteractive">
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
           {JSON.stringify(websiteSchema)}
         </Script>
 
@@ -117,7 +116,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl font-extrabold text-text-primary"
           >
-            Train Spatial Memory with Memory Chess
+            Train Your Chess Memory and Visualization
           </motion.h1>
 
           <motion.p
@@ -126,7 +125,8 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="max-w-2xl text-lg text-text-secondary"
           >
-            Play a free online memory chess game to sharpen board visualization and recall.
+            Memorize a chess position, rebuild it from memory, and get an
+            instant score. Improve your board vision one round at a time.
           </motion.p>
 
           <motion.p
@@ -135,10 +135,15 @@ export default function Home() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="max-w-2xl text-lg text-text-secondary"
           >
-            Join players worldwide improving their spatial memory and track results on the{' '}
-            <Link href="/leaderboard" className="underline hover:text-peach-500">
+            Free to play, with no account needed. You can also compare your
+            score on the{" "}
+            <Link
+              href="/leaderboard"
+              className="underline hover:text-peach-500"
+            >
               leaderboard
-            </Link>.
+            </Link>
+            .
           </motion.p>
 
           <motion.h2
@@ -147,7 +152,8 @@ export default function Home() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-xl font-bold text-peach-500"
           >
-            Total Games Played: {totalPlays !== null ? formatNumber(totalPlays) : '...'}
+            Games played:{" "}
+            {totalPlays !== null ? formatNumber(totalPlays) : "..."}
           </motion.h2>
 
           <motion.div
@@ -162,7 +168,7 @@ export default function Home() {
                 size="sm"
                 className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
               >
-                Play Free
+                Play Memory Chess
               </Button>
             </Link>
 
@@ -172,7 +178,7 @@ export default function Home() {
                 size="sm"
                 className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 hover:text-peach-500 px-3 py-1.5 text-sm"
               >
-                Leaderboard
+                View Leaderboard
               </Button>
             </Link>
           </motion.div>
@@ -193,17 +199,16 @@ export default function Home() {
                     <Sparkles className="h-4 w-4 text-peach-400" />
                   </span>
                   <p className="text-sm font-medium uppercase tracking-[0.18em] text-peach-300">
-                    Spatial memory loop
+                    How it works
                   </p>
                 </div>
 
                 <h2 className="max-w-xl text-3xl font-bold leading-tight text-text-primary sm:text-4xl">
-                  How Memory Chess Builds Spatial Memory
+                  A Simple Workout for Your Chess Memory
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-7 text-text-muted">
-                  A sharper training rhythm for turning a board position into a
-                  remembered structure: notice the anchors, reconstruct the map,
-                  then refine the recall.
+                  Every round has three simple steps: study the position,
+                  rebuild it, and learn from your score.
                 </p>
 
                 <div className="mt-10 grid gap-4">
@@ -259,12 +264,12 @@ export default function Home() {
 
                       return (
                         <div
-                          key={`${piece?.color ?? 'empty'}-${piece?.type ?? 'square'}-${index}`}
+                          key={`${piece?.color ?? "empty"}-${piece?.type ?? "square"}-${index}`}
                           className="flex items-center justify-center border border-black/15"
                           style={{
                             backgroundColor: isWarmSquare
-                              ? 'var(--board-light)'
-                              : 'var(--board-dark)',
+                              ? "var(--board-light)"
+                              : "var(--board-dark)",
                           }}
                         >
                           {piece && (
@@ -283,9 +288,9 @@ export default function Home() {
                     })}
                   </div>
                   <div className="mx-auto mt-4 flex max-w-sm items-center justify-between text-xs text-text-muted">
-                    <span>5 second imprint</span>
+                    <span>Study the board</span>
                     <span className="h-px flex-1 bg-white/10 mx-3" />
-                    <span>pattern recall</span>
+                    <span>Rebuild from memory</span>
                   </div>
                 </div>
 
@@ -299,18 +304,19 @@ export default function Home() {
                         Learning Center
                       </p>
                       <h3 className="text-xl font-bold leading-snug text-text-primary">
-                        Chess Memory and Visualization
+                        Simple Chess Guides
                       </h3>
                     </div>
                   </div>
                   <p className="mb-5 text-sm leading-6 text-text-muted">
-                    Beginner-focused guides pair board vision drills with
-                    practical routines and direct links back into training.
+                    Learn practical ways to improve board vision, visualization,
+                    calculation, and memory. Each guide includes drills you can
+                    try right away.
                   </p>
                   <div className="grid gap-3">
                     <Link href="/learn" className="group">
                       <Button className="w-full justify-between bg-peach-500 text-bg-dark hover:bg-peach-400">
-                        Explore Learning Center
+                        Browse Chess Guides
                         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                       </Button>
                     </Link>
@@ -322,7 +328,7 @@ export default function Home() {
                         variant="outline"
                         className="w-full justify-between border-white/15 bg-white/[0.03] text-text-primary hover:bg-white/[0.07] hover:text-peach-300"
                       >
-                        Start with beginner roadmap
+                        Start with the Beginner Guide
                         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                       </Button>
                     </Link>
@@ -339,7 +345,7 @@ export default function Home() {
                 size="lg"
                 className="bg-peach-500 hover:bg-peach-600 text-white px-6 py-2.5 text-base font-medium"
               >
-                Start Training Now
+                Play a Free Round
               </Button>
             </Link>
           </div>

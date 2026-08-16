@@ -1,33 +1,33 @@
-import type { Metadata } from 'next';
-import LearnHubPageContent from '@/components/learn/LearnHubPageContent';
+import type { Metadata } from "next";
+import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
 
 export const metadata: Metadata = {
-  title: 'Memory Chess Learning Center',
+  title: "Chess Learning Center for Beginners",
   description:
-    'Explore beginner-friendly chess guides focused on board vision, visualization, memory training, and practical routines that connect directly to Memory Chess.',
+    "Read simple chess guides about board vision, visualization, memory, calculation, blunders, and building a useful practice routine.",
   alternates: {
-    canonical: '/learn',
+    canonical: "/learn",
   },
   openGraph: {
-    title: 'Memory Chess Learning Center',
+    title: "Chess Learning Center for Beginners",
     description:
-      'Beginner-focused guides for blunder prevention, visualization, board memory, and realistic daily training plans.',
-    url: 'https://thememorychess.com/learn',
+      "Simple guides and practical drills for chess memory, board vision, calculation, and fewer blunders.",
+    url: "https://thememorychess.com/learn",
     images: [
       {
-        url: 'https://thememorychess.com/opengraph-image',
+        url: "https://thememorychess.com/opengraph-image",
         width: 1200,
         height: 630,
-        alt: 'Memory Chess Learning Center',
+        alt: "Memory Chess Learning Center",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Memory Chess Learning Center',
+    card: "summary_large_image",
+    title: "Chess Learning Center for Beginners",
     description:
-      'Beginner-focused guides for blunder prevention, visualization, board memory, and realistic daily training plans.',
-    images: ['https://thememorychess.com/twitter-image'],
+      "Simple guides and practical drills for chess memory, board vision, calculation, and fewer blunders.",
+    images: ["https://thememorychess.com/twitter-image"],
   },
 };
 

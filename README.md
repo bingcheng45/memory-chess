@@ -2,19 +2,17 @@
 
 A web-based memory training application that challenges players to memorize and recreate chess positions. Built with Next.js, TypeScript, and Tailwind CSS.
 
-## Latest Release - v1.2.0
+## Latest Release - v1.2.1
 
-Our latest release adds a richer Learning Center, a refreshed homepage experience, reliability improvements, and an in-app changelog for future updates. Visit `/changelog` in the app to see the full release history.
+Our latest release keeps the board steady between gameplay phases, improves random positions, and makes game results easier to review. Visit `/changelog` in the app to see the full release history.
 
-### What's New in v1.2.0
+### What's New in v1.2.1
 
-- Added research-informed chess memory and visualization guides
-- Refreshed the homepage spatial-memory training experience
-- Improved mobile interactions, position generation, and leaderboard ordering
-- Lowered the default sound volume to 10%
-- Added anonymous result-screen feedback with a 24-hour cooldown
-- Added a changelog page and dismissible update announcements
-- Added a clear privacy page covering browser storage, analytics, feedback, and advertising
+- Kept the board in the same place between memorization and placement after helpful player feedback
+- Improved random positions after a player reported invalid setups on Reddit
+- Added a target-versus-submitted board comparison to the result screen
+- Grouped accuracy, replay, and leaderboard actions at the top of the results
+- Paused briefly after submission so players can see their locked-in time and final board
 
 ## Overview
 

@@ -26,12 +26,18 @@ describe("ChangelogPage", () => {
     });
 
     expect(versionHeadings.map((heading) => heading.textContent)).toEqual([
+      "v1.2.1",
       "v1.2.0",
       "v1.1.0",
       "v1.0.1",
       "v1.0.0",
     ]);
+    expect(
+      screen.getByRole("heading", { name: "Steadier gameplay" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/reported this on Reddit/)).toBeInTheDocument();
     expect(screen.getByText("August 16, 2026")).toBeInTheDocument();
+    expect(screen.getByText("August 15, 2026")).toBeInTheDocument();
     expect(screen.getByText("Changelog footer")).toBeInTheDocument();
   });
 });

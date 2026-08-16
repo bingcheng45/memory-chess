@@ -34,6 +34,22 @@ export function formatTimeExact(seconds: number): string {
 }
 
 /**
+ * Formats elapsed time as "mm:ss.mmm" for a smoothly updating count-up timer.
+ */
+export function formatTimeWithMilliseconds(seconds: number): string {
+  if (typeof seconds !== 'number' || isNaN(seconds) || !isFinite(seconds)) {
+    seconds = 0;
+  }
+
+  const totalMilliseconds = Math.floor(Math.max(0, seconds) * 1000);
+  const minutes = Math.floor(totalMilliseconds / 60000);
+  const remainingSeconds = Math.floor((totalMilliseconds % 60000) / 1000);
+  const milliseconds = totalMilliseconds % 1000;
+
+  return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(3, '0')}`;
+}
+
+/**
  * Calculates the elapsed time in seconds between two timestamps.
  * 
  * @param startTime The start time in milliseconds
@@ -64,4 +80,4 @@ export function calculateRemainingTime(totalTime: number, elapsedTime: number): 
  */
 export function calculateProgress(elapsedTime: number, totalTime: number): number {
   return Math.min(100, (elapsedTime / totalTime) * 100);
-} 
+}

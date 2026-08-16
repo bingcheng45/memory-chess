@@ -1,8 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-interface BoardDimensions {
+export const ACTIVE_GAME_RESERVED_HEIGHT = 384;
+export const ACTIVE_GAME_FRAME_WIDTH = `max(280px, min(92vw, calc(100dvh - ${ACTIVE_GAME_RESERVED_HEIGHT}px), 600px))`;
+
+export interface BoardDimensions {
   size: number;
   squareSize: number;
   pieceSize: number;
@@ -16,8 +19,7 @@ interface BoardDimensions {
 export function useResponsiveBoard(
   minSize: number = 280, 
   maxSize: number = 600,
-  statusBarHeight: number = 0, // Height of any status bars or fixed headers
-  controlsHeight: number = 0  // Height of game controls
+  reservedHeight: number = 0
 ): BoardDimensions {
   const [dimensions, setDimensions] = useState<BoardDimensions>({
     size: maxSize,
@@ -39,16 +41,15 @@ export function useResponsiveBoard(
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       
-      // Subtract fixed heights (status bar, navigation, etc.)
-      const availableHeight = viewportHeight - statusBarHeight - controlsHeight;
+      // Keep enough room for the page header and active-game controls.
+      const availableHeight = viewportHeight - reservedHeight;
       
-      // More aggressive scaling for mobile (especially iPhone)
+      // Leave a small horizontal gutter on mobile screens.
       const isSmallScreen = viewportWidth < 768;
       
-      // Calculate maximum possible square size based on available space
-      // Use more aggressive scaling on mobile
+      // Calculate the largest square that fits the shared gameplay frame.
       const maxBoardWidth = isSmallScreen ? viewportWidth * 0.92 : viewportWidth * 0.95; 
-      const maxBoardHeight = isSmallScreen ? availableHeight * 0.65 : availableHeight * 0.7;
+      const maxBoardHeight = availableHeight;
       
       // Use the smaller dimension to ensure the board fits
       let optimalSize = Math.min(maxBoardWidth, maxBoardHeight, maxSize);
@@ -91,7 +92,7 @@ export function useResponsiveBoard(
     return () => {
       window.removeEventListener('resize', calculateDimensions);
     };
-  }, [minSize, maxSize, statusBarHeight, controlsHeight]);
+  }, [minSize, maxSize, reservedHeight]);
 
   return dimensions;
-} 
+}

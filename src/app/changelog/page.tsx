@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Footer from "@/components/ui/Footer";
 import PageHeader from "@/components/ui/PageHeader";
 import {
@@ -103,20 +104,111 @@ export default function ChangelogPage() {
                       <h4 className="text-sm font-semibold uppercase tracking-[0.12em] text-peach-300">
                         {group.title}
                       </h4>
-                      <ul className="mt-2.5 space-y-2.5">
-                        {group.changes.map((change) => (
-                          <li
-                            key={change}
-                            className="grid grid-cols-[auto_1fr] gap-3 text-sm leading-6 text-text-secondary sm:text-base"
-                          >
-                            <span
-                              aria-hidden="true"
-                              className="mt-2.5 h-1 w-1 rounded-full bg-peach-400"
-                            />
-                            <span>{change}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      {group.description && (
+                        <p className="mt-2.5 text-sm leading-6 text-text-muted sm:text-base">
+                          {group.description}
+                        </p>
+                      )}
+
+                      {group.changes && (
+                        <ul className="mt-2.5 space-y-2.5">
+                          {group.changes.map((change) => {
+                            const changeKey =
+                              typeof change === "string"
+                                ? change
+                                : change.segments
+                                    .map((segment) =>
+                                      typeof segment === "string"
+                                        ? segment
+                                        : `${segment.text}:${segment.href}`,
+                                    )
+                                    .join("");
+
+                            return (
+                              <li
+                                key={changeKey}
+                                className="grid grid-cols-[auto_1fr] gap-3 text-sm leading-6 text-text-secondary sm:text-base"
+                              >
+                                <span
+                                  aria-hidden="true"
+                                  className="mt-2.5 h-1 w-1 rounded-full bg-peach-400"
+                                />
+                                <span>
+                                  {typeof change === "string"
+                                    ? change
+                                    : change.segments.map((segment, index) =>
+                                        typeof segment === "string" ? (
+                                          <span key={`${changeKey}-${index}`}>
+                                            {segment}
+                                          </span>
+                                        ) : (
+                                          <Link
+                                            key={`${segment.href}-${index}`}
+                                            href={segment.href}
+                                            className="font-medium text-peach-300 underline decoration-peach-400/40 underline-offset-4 transition-colors hover:text-peach-200"
+                                          >
+                                            {segment.text}
+                                          </Link>
+                                        ),
+                                      )}
+                                </span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+
+                      {group.tables?.map((table) => (
+                        <div
+                          key={table.caption}
+                          className="mt-4 overflow-x-auto rounded-lg border border-white/10"
+                        >
+                          <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
+                            <caption className="border-b border-white/10 bg-white/[0.03] px-4 py-3 text-left font-semibold text-text-primary">
+                              {table.caption}
+                            </caption>
+                            <thead className="bg-white/[0.025] text-xs uppercase tracking-wide text-text-muted">
+                              <tr>
+                                {table.columns.map((column) => (
+                                  <th
+                                    key={column}
+                                    scope="col"
+                                    className="px-4 py-3 font-medium first:w-1/2"
+                                  >
+                                    {column}
+                                  </th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-white/10 text-text-secondary">
+                              {table.rows.map((row) => (
+                                <tr key={row.label}>
+                                  <th
+                                    scope="row"
+                                    className="px-4 py-3 font-medium text-text-primary"
+                                  >
+                                    {row.label}
+                                  </th>
+                                  {row.values.map((value, index) => (
+                                    <td
+                                      key={`${row.label}-${table.columns[index + 1]}`}
+                                      className="px-4 py-3 font-mono tabular-nums"
+                                    >
+                                      {value}
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      ))}
+
+                      {group.note && (
+                        <p className="mt-3 text-xs leading-5 text-text-muted sm:text-sm">
+                          {group.note}
+                        </p>
+                      )}
                     </section>
                   ))}
                 </div>

@@ -45,7 +45,7 @@ jest.mock("@/components/ui/Footer", () => {
 
 describe("LearnHubPageContent", () => {
   it("uses simple guidance instead of internal SEO language", () => {
-    render(<LearnHubPageContent />);
+    const { container } = render(<LearnHubPageContent />);
 
     expect(
       screen.getByRole("heading", {
@@ -60,5 +60,21 @@ describe("LearnHubPageContent", () => {
     ).toBeInTheDocument();
     expect(screen.queryByText(/search intent/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/SEO hub/i)).not.toBeInTheDocument();
+
+    const allClasses = Array.from(container.querySelectorAll("[class]"))
+      .map((element) => element.getAttribute("class") ?? "")
+      .join(" ");
+    const fontWeights = allClasses
+      .split(/\s+/)
+      .filter((className) =>
+        /^font-(normal|medium|semibold|bold|extrabold|black)$/.test(className),
+      );
+
+    expect(new Set(fontWeights)).toEqual(
+      new Set(["font-normal", "font-semibold", "font-bold"]),
+    );
+    expect(allClasses).not.toContain("font-black");
+    expect(allClasses).not.toContain("uppercase");
+    expect(allClasses).not.toContain("tracking-[");
   });
 });

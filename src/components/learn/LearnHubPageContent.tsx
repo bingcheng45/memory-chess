@@ -25,13 +25,16 @@ import {
   Target,
   TrendingUp,
 } from "lucide-react";
+import { LEARN_TYPOGRAPHY } from "@/components/learn/learnTypography";
 
 const featuredPages = getFeaturedLearnPages(4);
 const newestPages = getNewestLearnPages(4);
 
 export default function LearnHubPageContent() {
   return (
-    <div className="min-h-screen bg-bg-dark text-text-primary">
+    <div
+      className={`${LEARN_TYPOGRAPHY.reading} min-h-screen bg-bg-dark text-text-primary`}
+    >
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8 flex justify-center">
           <PageHeader showSoundSettings={false} />
@@ -55,7 +58,9 @@ export default function LearnHubPageContent() {
                 </Badge>
               </div>
               <div className="space-y-4">
-                <h1 className="max-w-4xl text-4xl font-black tracking-tight sm:text-5xl">
+                <h1
+                  className={`${LEARN_TYPOGRAPHY.pageTitle} max-w-4xl text-4xl sm:text-5xl`}
+                >
                   Learn Chess One Clear Step at a Time
                 </h1>
                 <p className="max-w-3xl text-lg text-text-secondary">
@@ -67,7 +72,9 @@ export default function LearnHubPageContent() {
               <div className="grid gap-4 sm:grid-cols-3">
                 <Card className="border-white/10 bg-black/20">
                   <CardContent className="p-5">
-                    <p className="mb-2 text-sm uppercase tracking-[0.18em] text-peach-400">
+                    <p
+                      className={`${LEARN_TYPOGRAPHY.heading} mb-2 text-sm text-peach-400`}
+                    >
                       Start here
                     </p>
                     <p className="text-sm leading-7 text-text-secondary">
@@ -78,7 +85,9 @@ export default function LearnHubPageContent() {
                 </Card>
                 <Card className="border-white/10 bg-black/20">
                   <CardContent className="p-5">
-                    <p className="mb-2 text-sm uppercase tracking-[0.18em] text-peach-400">
+                    <p
+                      className={`${LEARN_TYPOGRAPHY.heading} mb-2 text-sm text-peach-400`}
+                    >
                       Practice as you read
                     </p>
                     <p className="text-sm leading-7 text-text-secondary">
@@ -89,7 +98,9 @@ export default function LearnHubPageContent() {
                 </Card>
                 <Card className="border-white/10 bg-black/20">
                   <CardContent className="p-5">
-                    <p className="mb-2 text-sm uppercase tracking-[0.18em] text-peach-400">
+                    <p
+                      className={`${LEARN_TYPOGRAPHY.heading} mb-2 text-sm text-peach-400`}
+                    >
                       Who it is for
                     </p>
                     <p className="text-sm leading-7 text-text-secondary">
@@ -102,7 +113,7 @@ export default function LearnHubPageContent() {
               <div className="flex flex-wrap gap-4">
                 <Button
                   asChild
-                  className="bg-peach-500 text-white hover:bg-peach-600"
+                  className={`${LEARN_TYPOGRAPHY.heading} bg-peach-500 text-white hover:bg-peach-600`}
                 >
                   <Link href="/learn/how-to-get-better-at-chess-for-beginners">
                     Start the Beginner Guide
@@ -111,7 +122,7 @@ export default function LearnHubPageContent() {
                 <Button
                   asChild
                   variant="outline"
-                  className="border-peach-500/30 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300"
+                  className={`${LEARN_TYPOGRAPHY.heading} border-peach-500/30 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300`}
                 >
                   <Link href="/game">Play Memory Chess</Link>
                 </Button>
@@ -157,7 +168,9 @@ export default function LearnHubPageContent() {
           <div className="mb-6 flex items-center gap-3">
             <Compass className="h-5 w-5 text-peach-500" />
             <div>
-              <h2 className="text-3xl font-bold">Choose a Goal</h2>
+              <h2 className={`${LEARN_TYPOGRAPHY.heading} text-3xl`}>
+                Choose a Goal
+              </h2>
               <p className="mt-1 text-text-secondary">
                 Pick what you want to improve. Each path starts with three
                 guides in a useful order.
@@ -190,10 +203,14 @@ export default function LearnHubPageContent() {
                       >
                         <div className="flex items-center justify-between gap-4">
                           <div>
-                            <p className="text-sm uppercase tracking-[0.18em] text-peach-400">
+                            <p
+                              className={`${LEARN_TYPOGRAPHY.heading} text-sm text-peach-400`}
+                            >
                               Step {index + 1}
                             </p>
-                            <h3 className="mt-1 text-lg font-semibold">
+                            <h3
+                              className={`${LEARN_TYPOGRAPHY.heading} mt-1 text-lg`}
+                            >
                               {page.title}
                             </h3>
                             <p className="mt-2 text-sm leading-7 text-text-secondary">
@@ -207,7 +224,7 @@ export default function LearnHubPageContent() {
                     <Button
                       asChild
                       variant="outline"
-                      className="w-full border-peach-500/30 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300"
+                      className={`${LEARN_TYPOGRAPHY.heading} w-full border-peach-500/30 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300`}
                     >
                       <Link href={goal.href}>View This Goal</Link>
                     </Button>
@@ -223,7 +240,9 @@ export default function LearnHubPageContent() {
             <div className="mb-6 flex items-center gap-3">
               <Sparkles className="h-5 w-5 text-peach-500" />
               <div>
-                <h2 className="text-3xl font-bold">Featured guides</h2>
+                <h2 className={`${LEARN_TYPOGRAPHY.heading} text-3xl`}>
+                  Featured guides
+                </h2>
                 <p className="mt-1 text-text-secondary">
                   Good places to start if you are not sure what to read first.
                 </p>
@@ -258,21 +277,23 @@ export default function LearnHubPageContent() {
                           {page.timeToRead}
                         </span>
                       </div>
-                      <h3 className="text-2xl font-bold">{page.title}</h3>
+                      <h3 className={`${LEARN_TYPOGRAPHY.heading} text-2xl`}>
+                        {page.title}
+                      </h3>
                       <p className="mt-3 text-text-secondary">
                         {page.description}
                       </p>
                       <div className="mt-5 flex flex-wrap gap-4">
                         <Button
                           asChild
-                          className="bg-peach-500 text-white hover:bg-peach-600"
+                          className={`${LEARN_TYPOGRAPHY.heading} bg-peach-500 text-white hover:bg-peach-600`}
                         >
                           <Link href={`/learn/${page.slug}`}>Read Guide</Link>
                         </Button>
                         <Button
                           asChild
                           variant="outline"
-                          className="border-peach-500/30 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300"
+                          className={`${LEARN_TYPOGRAPHY.heading} border-peach-500/30 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300`}
                         >
                           <Link href="/game">Try a Memory Round</Link>
                         </Button>
@@ -301,10 +322,14 @@ export default function LearnHubPageContent() {
                   >
                     <div className="flex items-center justify-between gap-4">
                       <div>
-                        <p className="text-sm uppercase tracking-[0.18em] text-peach-400">
+                        <p
+                          className={`${LEARN_TYPOGRAPHY.heading} text-sm text-peach-400`}
+                        >
                           {LEARN_GOALS[page.goal].label}
                         </p>
-                        <h3 className="mt-1 text-lg font-semibold">
+                        <h3
+                          className={`${LEARN_TYPOGRAPHY.heading} mt-1 text-lg`}
+                        >
                           {page.title}
                         </h3>
                         <p className="mt-2 text-sm leading-7 text-text-secondary">
@@ -334,7 +359,7 @@ export default function LearnHubPageContent() {
                 </p>
                 <Button
                   asChild
-                  className="w-full bg-peach-500 text-white hover:bg-peach-600"
+                  className={`${LEARN_TYPOGRAPHY.heading} w-full bg-peach-500 text-white hover:bg-peach-600`}
                 >
                   <Link href="/game">Start a Memory Round</Link>
                 </Button>

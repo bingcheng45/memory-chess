@@ -1,16 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import PageHeader from "@/components/ui/PageHeader";
-import Footer from "@/components/ui/Footer";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
@@ -18,26 +6,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  EditorialActionLink,
+  EditorialPageShell,
+} from "@/components/editorial/EditorialPage";
+import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
+import {
   LEARN_GOALS,
   LEARN_PAGES,
   type LearnComparisonRow,
   type LearnPageContent,
 } from "@/lib/seo/learnPages";
-import {
-  ArrowRight,
-  BookOpen,
-  Brain,
-  CheckCircle2,
-  Clock3,
-  Compass,
-  ExternalLink,
-  Layers,
-  ListChecks,
-  Sparkles,
-  Target,
-} from "lucide-react";
 import LearnArticleTracking from "@/components/learn/LearnArticleTracking";
-import { LEARN_TYPOGRAPHY } from "@/components/learn/learnTypography";
 
 const SITE_URL = "https://thememorychess.com";
 
@@ -54,6 +33,7 @@ function formatDate(value: string): string {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   }).format(new Date(value));
 }
 
@@ -64,14 +44,7 @@ function buildRelatedPageData(page: LearnPageContent) {
         (candidate) => candidate.slug === entry.slug,
       );
 
-      if (!relatedPage) {
-        return null;
-      }
-
-      return {
-        ...entry,
-        page: relatedPage,
-      };
+      return relatedPage ? { ...entry, page: relatedPage } : null;
     })
     .filter(Boolean) as Array<{
     slug: string;
@@ -82,17 +55,19 @@ function buildRelatedPageData(page: LearnPageContent) {
 
 function renderComparisonRows(rows: LearnComparisonRow[]) {
   return rows.map((row) => (
-    <tr key={row.label} className="border-t border-bg-light/80">
+    <tr key={row.label} className="border-t border-white/10">
       <th
         scope="row"
-        className={`${LEARN_TYPOGRAPHY.heading} px-4 py-4 text-left align-top text-sm text-text-primary`}
+        className="px-4 py-4 text-left align-top text-sm font-medium text-white"
       >
         {row.label}
       </th>
-      <td className="px-4 py-4 text-sm text-text-secondary">
+      <td className="px-4 py-4 align-top text-sm leading-6 text-text-secondary">
         {row.struggling}
       </td>
-      <td className="px-4 py-4 text-sm text-text-secondary">{row.stronger}</td>
+      <td className="px-4 py-4 align-top text-sm leading-6 text-text-secondary">
+        {row.stronger}
+      </td>
     </tr>
   ));
 }
@@ -100,768 +75,579 @@ function renderComparisonRows(rows: LearnComparisonRow[]) {
 export default function LearnArticleRich({ page }: LearnArticleProps) {
   const goal = LEARN_GOALS[page.goal];
   const articlePath = `/learn/${page.slug}`;
+  const articleUrl = toAbsoluteUrl(articlePath);
+  const socialImageUrl = `${articleUrl}/opengraph-image`;
   const relatedPages = buildRelatedPageData(page);
-  const coverImageUrl = toAbsoluteUrl(page.coverImage);
 
-  const articleSchema = {
+  const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: page.h1,
-    description: page.description,
-    image: [coverImageUrl],
-    datePublished: page.publishedAt,
-    dateModified: page.updatedAt,
-    inLanguage: "en-US",
-    isAccessibleForFree: true,
-    articleSection: goal.label,
-    author: {
-      "@type": "Organization",
-      name: "Memory Chess Editorial Team",
-      url: SITE_URL,
-    },
-    reviewedBy: {
-      "@type": "Organization",
-      name: page.reviewedBy,
-      url: `${SITE_URL}/learn`,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Memory Chess",
-      url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/apple-touch-icon.png`,
-      },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": toAbsoluteUrl(articlePath),
-    },
-    keywords: [page.primaryKeyword, ...page.secondaryKeywords].join(", "),
-    about: page.painPoint,
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    "@graph": [
       {
-        "@type": "ListItem",
-        position: 2,
-        name: "Learn",
-        item: `${SITE_URL}/learn`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
+        "@type": "Article",
+        "@id": `${articleUrl}#article`,
+        headline: page.h1,
         name: page.title,
-        item: toAbsoluteUrl(articlePath),
+        description: page.description,
+        image: {
+          "@type": "ImageObject",
+          url: socialImageUrl,
+          width: 1200,
+          height: 630,
+        },
+        datePublished: page.publishedAt,
+        dateModified: page.updatedAt,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        articleSection: goal.label,
+        author: {
+          "@type": "Organization",
+          "@id": `${SITE_URL}/#editorial-team`,
+          name: "Memory Chess Editorial Team",
+          url: `${SITE_URL}/learn`,
+        },
+        reviewedBy: {
+          "@type": "Organization",
+          name: page.reviewedBy,
+          url: `${SITE_URL}/learn`,
+        },
+        publisher: {
+          "@type": "Organization",
+          "@id": `${SITE_URL}/#organization`,
+          name: "Memory Chess",
+          url: SITE_URL,
+          logo: {
+            "@type": "ImageObject",
+            url: `${SITE_URL}/apple-touch-icon.png`,
+          },
+        },
+        mainEntityOfPage: { "@id": `${articleUrl}#webpage` },
+        keywords: [page.primaryKeyword, ...page.secondaryKeywords].join(", "),
+        about: page.painPoint,
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${articleUrl}#webpage`,
+        url: articleUrl,
+        name: page.title,
+        description: page.description,
+        isPartOf: {
+          "@type": "CollectionPage",
+          "@id": `${SITE_URL}/learn#webpage`,
+        },
+        mainEntity: { "@id": `${articleUrl}#article` },
+        breadcrumb: { "@id": `${articleUrl}#breadcrumb` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${articleUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Learn",
+            item: `${SITE_URL}/learn`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: page.title,
+            item: articleUrl,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${articleUrl}#faq-schema`,
+        mainEntity: page.faq.map((entry) => ({
+          "@type": "Question",
+          name: entry.question,
+          acceptedAnswer: { "@type": "Answer", text: entry.answer },
+        })),
       },
     ],
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: page.faq.map((entry) => ({
-      "@type": "Question",
-      name: entry.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: entry.answer,
-      },
-    })),
-  };
-
   return (
-    <div
-      className={`${LEARN_TYPOGRAPHY.reading} min-h-screen bg-bg-dark text-text-primary`}
-    >
+    <EditorialPageShell>
       <LearnArticleTracking page={page} />
-      <main className="container mx-auto px-4 py-8">
-        <div className="mb-8 flex justify-center">
-          <PageHeader showSoundSettings={false} />
-        </div>
 
-        <article className="mx-auto max-w-7xl">
-          <nav className="mb-6 text-sm text-text-secondary">
-            <Link href="/" className="hover:text-peach-500">
-              Home
-            </Link>{" "}
-            /{" "}
-            <Link href="/learn" className="hover:text-peach-500">
-              Learn
-            </Link>{" "}
-            / <span className="text-text-primary">{page.title}</span>
-          </nav>
-
-          <header className="overflow-hidden rounded-[28px] border border-bg-light bg-gradient-to-br from-bg-card via-bg-card to-black/40 shadow-[0_20px_60px_rgba(0,0,0,0.28)]">
-            <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-3">
-                  <Badge
-                    className="border-peach-500/30 bg-peach-500/10 text-peach-500"
-                    variant="outline"
-                  >
-                    {goal.label}
-                  </Badge>
-                  <Badge
-                    className="border-bg-light bg-white/5 text-text-primary"
-                    variant="outline"
-                  >
-                    {page.timeToRead}
-                  </Badge>
-                  <Badge
-                    className="border-bg-light bg-white/5 text-text-primary"
-                    variant="outline"
-                  >
-                    {page.difficulty}
-                  </Badge>
-                </div>
-                <div className="space-y-4">
-                  <p
-                    className={`${LEARN_TYPOGRAPHY.heading} text-sm text-peach-500`}
-                  >
-                    Simple chess guide
-                  </p>
-                  <h1
-                    className={`${LEARN_TYPOGRAPHY.pageTitle} text-4xl sm:text-5xl`}
-                  >
-                    {page.h1}
-                  </h1>
-                  <p className="max-w-2xl text-lg text-text-secondary">
-                    {page.description}
-                  </p>
-                </div>
-                <Card className="border-peach-500/20 bg-black/25">
-                  <CardHeader className="pb-4">
-                    <CardDescription
-                      className={`${LEARN_TYPOGRAPHY.heading} text-sm text-peach-400`}
-                    >
-                      Start here
-                    </CardDescription>
-                    <CardTitle className="text-2xl leading-tight">
-                      {page.quickAnswer}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="grid gap-6 pt-0 sm:grid-cols-2">
-                    <div>
-                      <h2
-                        className={`${LEARN_TYPOGRAPHY.heading} mb-3 flex items-center gap-2 text-sm text-text-primary`}
-                      >
-                        <CheckCircle2 className="h-4 w-4 text-peach-500" />
-                        What you will learn
-                      </h2>
-                      <ul className="space-y-3 text-sm text-text-secondary">
-                        {page.keyTakeaways.map((takeaway) => (
-                          <li key={takeaway} className="flex gap-3">
-                            <span className="mt-1 h-2.5 w-2.5 rounded-full bg-peach-500" />
-                            <span>{takeaway}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h2
-                        className={`${LEARN_TYPOGRAPHY.heading} mb-3 flex items-center gap-2 text-sm text-text-primary`}
-                      >
-                        <Target className="h-4 w-4 text-peach-500" />
-                        Who this is for
-                      </h2>
-                      <ul className="space-y-3 text-sm text-text-secondary">
-                        {page.whoThisIsFor.map((item) => (
-                          <li key={item} className="flex gap-3">
-                            <span className="mt-1 h-2.5 w-2.5 rounded-full bg-peach-500" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-                <div className="flex flex-wrap items-center gap-4">
-                  <Button
-                    asChild
-                    className={`${LEARN_TYPOGRAPHY.heading} bg-peach-500 text-white hover:bg-peach-600`}
-                    data-learn-cta="hero-primary"
-                  >
-                    <Link href={page.ctaHref}>{page.ctaLabel}</Link>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className={`${LEARN_TYPOGRAPHY.heading} border-peach-500/30 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300`}
-                    data-learn-cta="hero-secondary"
-                  >
-                    <Link href="/learn">Browse all guides</Link>
-                  </Button>
-                </div>
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-text-secondary">
-                  <span className="inline-flex items-center gap-2">
-                    <Clock3 className="h-4 w-4 text-peach-500" />
-                    Updated {formatDate(page.updatedAt)}
-                  </span>
-                  <span className="inline-flex items-center gap-2">
-                    <Brain className="h-4 w-4 text-peach-500" />
-                    Checked by {page.reviewedBy}
-                  </span>
-                </div>
-              </div>
-
-              <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-black/20 p-4">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,159,67,0.18),transparent_52%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_45%)]" />
-                <div className="relative space-y-4">
-                  <div className="overflow-hidden rounded-[18px] border border-white/10 bg-black/30">
-                    <Image
-                      src={page.coverImage}
-                      alt={page.title}
-                      width={960}
-                      height={540}
-                      className="h-auto w-full"
-                      priority
-                    />
-                  </div>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <Card className="border-white/10 bg-black/30">
-                      <CardContent className="p-5">
-                        <p
-                          className={`${LEARN_TYPOGRAPHY.heading} mb-2 text-sm text-peach-400`}
-                        >
-                          Focus
-                        </p>
-                        <p className="text-sm text-text-secondary">
-                          {goal.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                    <Card className="border-white/10 bg-black/30">
-                      <CardContent className="p-5">
-                        <p
-                          className={`${LEARN_TYPOGRAPHY.heading} mb-2 text-sm text-peach-400`}
-                        >
-                          This can help if
-                        </p>
-                        <p className="text-sm text-text-secondary">
-                          {page.painPoint}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </header>
-
-          <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
-            <div className="space-y-10">
-              <section className="rounded-3xl border border-bg-light bg-bg-card p-5 sm:p-6 lg:hidden">
-                <h2
-                  className={`${LEARN_TYPOGRAPHY.heading} mb-4 flex items-center gap-2 text-sm text-peach-500`}
-                >
-                  <Compass className="h-4 w-4" />
-                  Jump to
-                </h2>
-                <div className="flex flex-wrap gap-3">
-                  {page.tableOfContents.map((item) => (
-                    <Link
-                      key={item.id}
-                      href={`#${item.id}`}
-                      className="rounded-full border border-bg-light bg-black/20 px-4 py-2 text-sm text-text-secondary transition-colors hover:border-peach-500/30 hover:text-peach-400"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </section>
-
-              {page.contentSections.map((section, index) => (
-                <section
-                  key={section.id}
-                  id={section.id}
-                  className="scroll-mt-24 rounded-3xl border border-bg-light bg-bg-card p-6 sm:p-8"
-                >
-                  <div className="mb-6 space-y-3">
-                    {section.eyebrow ? (
-                      <p
-                        className={`${LEARN_TYPOGRAPHY.heading} text-sm text-peach-500`}
-                      >
-                        {section.eyebrow}
-                      </p>
-                    ) : null}
-                    <h2
-                      className={`${LEARN_TYPOGRAPHY.heading} text-2xl sm:text-3xl`}
-                    >
-                      {section.title}
-                    </h2>
-                    {section.summary ? (
-                      <p className="max-w-3xl text-text-secondary">
-                        {section.summary}
-                      </p>
-                    ) : null}
-                  </div>
-
-                  {section.paragraphs ? (
-                    <div className="space-y-4 text-base leading-8 text-text-secondary">
-                      {section.paragraphs.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {section.orderedBullets ? (
-                    <ol className="mt-6 grid gap-4">
-                      {section.orderedBullets.map((bullet, bulletIndex) => (
-                        <li
-                          key={bullet}
-                          className="flex gap-4 rounded-2xl border border-bg-light/80 bg-black/20 p-4 text-text-secondary"
-                        >
-                          <span
-                            className={`${LEARN_TYPOGRAPHY.heading} flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-peach-500 text-white`}
-                          >
-                            {bulletIndex + 1}
-                          </span>
-                          <span className="leading-7">{bullet}</span>
-                        </li>
-                      ))}
-                    </ol>
-                  ) : null}
-
-                  {section.bullets ? (
-                    <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-                      {section.bullets.map((bullet) => (
-                        <li
-                          key={bullet}
-                          className="rounded-2xl border border-bg-light/80 bg-black/20 p-4 text-sm leading-7 text-text-secondary"
-                        >
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-
-                  {section.drillCards ? (
-                    <div className="mt-6 grid gap-5 lg:grid-cols-3">
-                      {section.drillCards.map((drill) => (
-                        <Card
-                          key={drill.title}
-                          className="border-peach-500/15 bg-black/25"
-                        >
-                          <CardHeader>
-                            <CardDescription className="inline-flex items-center gap-2 text-peach-400">
-                              <Sparkles className="h-4 w-4" />
-                              {drill.duration}
-                            </CardDescription>
-                            <CardTitle className="text-xl">
-                              {drill.title}
-                            </CardTitle>
-                          </CardHeader>
-                          <CardContent className="space-y-4 pt-0">
-                            <p className="text-sm leading-7 text-text-secondary">
-                              {drill.description}
-                            </p>
-                            <p className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-text-secondary">
-                              {drill.goal}
-                            </p>
-                            <Button
-                              asChild
-                              variant="outline"
-                              className={`${LEARN_TYPOGRAPHY.heading} w-full border-peach-500/25 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300`}
-                              data-learn-cta={`section-drill-${section.id}`}
-                            >
-                              <Link href={drill.href}>{drill.ctaLabel}</Link>
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {section.comparisonRows ? (
-                    <div className="mt-6 overflow-hidden rounded-2xl border border-bg-light/80 bg-black/20">
-                      <table className="w-full border-collapse">
-                        <thead>
-                          <tr className="bg-white/5">
-                            {section.comparisonColumns?.map((column) => (
-                              <th
-                                key={column}
-                                scope="col"
-                                className={`${LEARN_TYPOGRAPHY.heading} px-4 py-3 text-left text-xs text-text-secondary`}
-                              >
-                                {column}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {renderComparisonRows(section.comparisonRows)}
-                        </tbody>
-                      </table>
-                    </div>
-                  ) : null}
-
-                  {section.planSteps ? (
-                    <div className="mt-6 grid gap-4">
-                      {section.planSteps.map((step) => (
-                        <div
-                          key={step.label}
-                          className="flex flex-col gap-3 rounded-2xl border border-bg-light/80 bg-black/20 p-5 sm:flex-row sm:items-start sm:justify-between"
-                        >
-                          <div>
-                            <p
-                              className={`${LEARN_TYPOGRAPHY.heading} text-sm text-peach-400`}
-                            >
-                              {step.label}
-                            </p>
-                            <h3
-                              className={`${LEARN_TYPOGRAPHY.heading} mt-1 text-lg`}
-                            >
-                              {step.duration}
-                            </h3>
-                          </div>
-                          <p className="max-w-3xl text-sm leading-7 text-text-secondary">
-                            {step.detail}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {section.callout ? (
-                    <Card className="mt-6 border-peach-500/20 bg-peach-500/8">
-                      <CardHeader className="pb-3">
-                        <CardDescription className="text-peach-400">
-                          {section.callout.title}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="pt-0 text-sm leading-7 text-text-secondary">
-                        {section.callout.body}
-                      </CardContent>
-                    </Card>
-                  ) : null}
-
-                  {index === 1 ? (
-                    <Card className="mt-8 border-peach-500/20 bg-gradient-to-r from-peach-500/12 to-transparent">
-                      <CardContent className="flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:justify-between">
-                        <div className="max-w-2xl">
-                          <p
-                            className={`${LEARN_TYPOGRAPHY.heading} mb-2 text-sm text-peach-400`}
-                          >
-                            Try it now
-                          </p>
-                          <h3 className={`${LEARN_TYPOGRAPHY.heading} text-xl`}>
-                            Play one short round before you keep reading.
-                          </h3>
-                          <p className="mt-2 text-sm leading-7 text-text-secondary">
-                            Try the steps while they are fresh. Then come back
-                            and use what you noticed to understand the rest of
-                            the guide.
-                          </p>
-                        </div>
-                        <Button
-                          asChild
-                          className={`${LEARN_TYPOGRAPHY.heading} bg-peach-500 text-white hover:bg-peach-600`}
-                          data-learn-cta="mid-article"
-                        >
-                          <Link href={page.ctaHref}>
-                            Start a training round
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  ) : null}
-                </section>
-              ))}
-
-              <section className="rounded-3xl border border-bg-light bg-bg-card p-6 sm:p-8">
-                <div className="mb-6 flex items-center gap-3">
-                  <Layers className="h-5 w-5 text-peach-500" />
-                  <div>
-                    <h2 className={`${LEARN_TYPOGRAPHY.heading} text-2xl`}>
-                      What to learn next
-                    </h2>
-                    <p className="mt-1 text-text-secondary">
-                      Choose the guide that best matches what you want to
-                      improve next.
-                    </p>
-                  </div>
-                </div>
-                <div className="grid gap-5 lg:grid-cols-3">
-                  {relatedPages.map((entry) => (
-                    <Card
-                      key={entry.slug}
-                      className="border-bg-light/90 bg-black/20"
-                    >
-                      <CardHeader>
-                        <CardDescription className="text-peach-400">
-                          {LEARN_GOALS[entry.page.goal].label}
-                        </CardDescription>
-                        <CardTitle className="text-xl leading-tight">
-                          {entry.page.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-4 pt-0">
-                        <p className="text-sm leading-7 text-text-secondary">
-                          {entry.reason}
-                        </p>
-                        <Button
-                          asChild
-                          variant="outline"
-                          className={`${LEARN_TYPOGRAPHY.heading} w-full border-peach-500/25 bg-peach-500/10 text-peach-400 hover:bg-peach-500/20 hover:text-peach-300`}
-                        >
-                          <Link
-                            href={`/learn/${entry.slug}`}
-                            data-learn-link={entry.slug}
-                          >
-                            Read this guide
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </section>
-
-              <section className="rounded-3xl border border-bg-light bg-bg-card p-6 sm:p-8">
-                <div className="mb-6 flex items-center gap-3">
-                  <BookOpen className="h-5 w-5 text-peach-500" />
-                  <div>
-                    <h2 className={`${LEARN_TYPOGRAPHY.heading} text-2xl`}>
-                      Practice in Memory Chess
-                    </h2>
-                    <p className="mt-1 text-text-secondary">
-                      Use these short drills to practise what you just learned.
-                    </p>
-                  </div>
-                </div>
-                <div className="grid gap-5 lg:grid-cols-3">
-                  {page.relatedDrills.map((drill) => (
-                    <Card
-                      key={`${page.slug}-${drill.title}`}
-                      className="border-white/10 bg-black/20"
-                    >
-                      <CardHeader>
-                        <CardDescription className="text-peach-400">
-                          {drill.duration}
-                        </CardDescription>
-                        <CardTitle className="text-xl">{drill.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-4 pt-0">
-                        <p className="text-sm leading-7 text-text-secondary">
-                          {drill.description}
-                        </p>
-                        <p className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-text-secondary">
-                          {drill.goal}
-                        </p>
-                        <Button
-                          asChild
-                          className={`${LEARN_TYPOGRAPHY.heading} w-full bg-peach-500 text-white hover:bg-peach-600`}
-                          data-learn-cta="end-drill"
-                        >
-                          <Link href={drill.href}>{drill.ctaLabel}</Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </section>
-
-              <section
-                id="faq"
-                className="rounded-3xl border border-bg-light bg-bg-card p-6 sm:p-8"
+      <article className={EDITORIAL_STYLES.wideColumn}>
+        <nav aria-label="Breadcrumb" className="mb-9 text-sm text-text-muted">
+          <ol className="flex flex-wrap items-center gap-2">
+            <li>
+              <Link href="/" className="transition-colors hover:text-peach-300">
+                Home
+              </Link>
+            </li>
+            <li aria-hidden="true" className="text-white/30">
+              /
+            </li>
+            <li>
+              <Link
+                href="/learn"
+                className="transition-colors hover:text-peach-300"
               >
-                <div className="mb-6 flex items-center gap-3">
-                  <ListChecks className="h-5 w-5 text-peach-500" />
-                  <div>
-                    <h2 className={`${LEARN_TYPOGRAPHY.heading} text-2xl`}>
-                      FAQ
-                    </h2>
-                    <p className="mt-1 text-text-secondary">
-                      Quick answers to common questions about this topic.
+                Learn
+              </Link>
+            </li>
+            <li aria-hidden="true" className="text-white/30">
+              /
+            </li>
+            <li className="text-text-secondary" aria-current="page">
+              {goal.label}
+            </li>
+          </ol>
+        </nav>
+
+        <header className="mb-10 sm:mb-12">
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <span className={EDITORIAL_STYLES.pill}>{goal.label}</span>
+            <span className="text-xs text-text-muted">{page.timeToRead}</span>
+            <span aria-hidden="true" className="text-white/25">
+              ·
+            </span>
+            <span className="text-xs text-text-muted">{page.difficulty}</span>
+          </div>
+          <p className={`${EDITORIAL_STYLES.eyebrow} mb-4`}>
+            Simple chess guide
+          </p>
+          <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+            {page.h1}
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-text-muted">
+            {page.description}
+          </p>
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-text-muted">
+            <time dateTime={page.updatedAt}>
+              Updated {formatDate(page.updatedAt)}
+            </time>
+            <span>Reviewed by {page.reviewedBy}</span>
+          </div>
+        </header>
+
+        <section
+          aria-labelledby="quick-answer-heading"
+          className={`${EDITORIAL_STYLES.callout} mb-10 sm:mb-12`}
+        >
+          <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
+            Start here
+          </p>
+          <h2
+            id="quick-answer-heading"
+            className="text-xl font-semibold leading-8 tracking-tight text-white sm:text-2xl"
+          >
+            {page.quickAnswer}
+          </h2>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 sm:gap-8">
+            <div>
+              <h3 className="text-sm font-semibold text-white">
+                What you will learn
+              </h3>
+              <ul className="mt-3 space-y-2.5">
+                {page.keyTakeaways.map((takeaway) => (
+                  <li
+                    key={takeaway}
+                    className="grid grid-cols-[auto_1fr] gap-3 text-sm leading-6 text-text-secondary"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-2.5 h-1 w-1 rounded-full bg-peach-400"
+                    />
+                    <span>{takeaway}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-white">
+                Who this is for
+              </h3>
+              <ul className="mt-3 space-y-2.5">
+                {page.whoThisIsFor.map((item) => (
+                  <li
+                    key={item}
+                    className="grid grid-cols-[auto_1fr] gap-3 text-sm leading-6 text-text-secondary"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-2.5 h-1 w-1 rounded-full bg-peach-400"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <EditorialActionLink
+              href={page.ctaHref}
+              trackingName="hero-primary"
+            >
+              {page.ctaLabel}
+            </EditorialActionLink>
+            <EditorialActionLink
+              href="/learn"
+              variant="secondary"
+              trackingName="hero-secondary"
+            >
+              Browse all guides
+            </EditorialActionLink>
+          </div>
+        </section>
+
+        <nav
+          aria-labelledby="on-this-page-heading"
+          className="mb-2 border-y border-white/10 py-6"
+        >
+          <p
+            id="on-this-page-heading"
+            className={`${EDITORIAL_STYLES.subsectionTitle} mb-4`}
+          >
+            On this page
+          </p>
+          <ol className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+            {page.tableOfContents.map((item, index) => (
+              <li key={item.id}>
+                <Link
+                  href={`#${item.id}`}
+                  className="group flex items-baseline gap-3 text-sm leading-6 text-text-secondary transition-colors hover:text-peach-200"
+                >
+                  <span className="font-mono text-xs tabular-nums text-peach-400">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="underline decoration-white/15 underline-offset-4 group-hover:decoration-peach-400/40">
+                    {item.label}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        {page.contentSections.map((section, sectionIndex) => (
+          <section
+            key={section.id}
+            id={section.id}
+            className={EDITORIAL_STYLES.section}
+          >
+            <header className="mb-6">
+              {section.eyebrow ? (
+                <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
+                  {section.eyebrow}
+                </p>
+              ) : null}
+              <h2 className={EDITORIAL_STYLES.sectionTitle}>{section.title}</h2>
+              {section.summary ? (
+                <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
+                  {section.summary}
+                </p>
+              ) : null}
+            </header>
+
+            {section.paragraphs ? (
+              <div className="max-w-[68ch] space-y-5 text-base leading-8 text-text-secondary">
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            ) : null}
+
+            {section.orderedBullets ? (
+              <ol className="mt-6 divide-y divide-white/10 border-y border-white/10">
+                {section.orderedBullets.map((bullet, index) => (
+                  <li
+                    key={bullet}
+                    className="grid grid-cols-[2rem_1fr] gap-4 py-5 text-base leading-7 text-text-secondary"
+                  >
+                    <span className="font-mono text-xs tabular-nums text-peach-400">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ol>
+            ) : null}
+
+            {section.bullets ? (
+              <ul className="mt-6 space-y-3">
+                {section.bullets.map((bullet) => (
+                  <li
+                    key={bullet}
+                    className="grid grid-cols-[auto_1fr] gap-3 text-base leading-7 text-text-secondary"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-3 h-1 w-1 rounded-full bg-peach-400"
+                    />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+
+            {section.drillCards ? (
+              <div className="mt-7 divide-y divide-white/10 border-y border-white/10">
+                {section.drillCards.map((drill, index) => (
+                  <article
+                    key={drill.title}
+                    className="grid gap-4 py-6 sm:grid-cols-[2.5rem_1fr_auto] sm:gap-5"
+                  >
+                    <span className="font-mono text-xs tabular-nums text-peach-400">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
+                        {drill.duration}
+                      </p>
+                      <h3 className="mt-1 text-lg font-semibold text-white">
+                        {drill.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-text-secondary">
+                        {drill.description}
+                      </p>
+                      <p className="mt-3 text-sm leading-6 text-text-muted">
+                        <span className="font-medium text-text-secondary">
+                          Aim for:
+                        </span>{" "}
+                        {drill.goal}
+                      </p>
+                    </div>
+                    <Link
+                      href={drill.href}
+                      data-learn-cta={`section-drill-${section.id}`}
+                      className={`${EDITORIAL_STYLES.link} self-start text-sm`}
+                    >
+                      {drill.ctaLabel}
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            ) : null}
+
+            {section.comparisonRows ? (
+              <div className={`${EDITORIAL_STYLES.tableFrame} mt-7`}>
+                <table className="w-full min-w-[40rem] border-collapse text-left">
+                  <thead className="bg-white/[0.03]">
+                    <tr>
+                      {section.comparisonColumns?.map((column) => (
+                        <th
+                          key={column}
+                          scope="col"
+                          className="px-4 py-3 text-xs font-medium uppercase tracking-wide text-text-muted first:w-1/4"
+                        >
+                          {column}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>{renderComparisonRows(section.comparisonRows)}</tbody>
+                </table>
+              </div>
+            ) : null}
+
+            {section.planSteps ? (
+              <ol className="mt-7 divide-y divide-white/10 border-y border-white/10">
+                {section.planSteps.map((step, index) => (
+                  <li
+                    key={step.label}
+                    className="grid gap-3 py-5 sm:grid-cols-[2.5rem_9rem_1fr] sm:gap-5"
+                  >
+                    <span className="font-mono text-xs tabular-nums text-peach-400">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
+                        {step.label}
+                      </p>
+                      <h3 className="mt-1 font-semibold text-white">
+                        {step.duration}
+                      </h3>
+                    </div>
+                    <p className="text-sm leading-7 text-text-secondary">
+                      {step.detail}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            ) : null}
+
+            {section.callout ? (
+              <aside className={`${EDITORIAL_STYLES.callout} mt-7`}>
+                <h3 className={EDITORIAL_STYLES.subsectionTitle}>
+                  {section.callout.title}
+                </h3>
+                <p className="mt-2 text-sm leading-7 text-text-secondary sm:text-base">
+                  {section.callout.body}
+                </p>
+              </aside>
+            ) : null}
+
+            {sectionIndex === 1 ? (
+              <aside className="mt-8 border-y border-peach-500/20 py-6">
+                <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-2`}>
+                  Try it now
+                </p>
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+                  <div className="max-w-xl">
+                    <h3 className="text-lg font-semibold text-white">
+                      Play one short round before you keep reading.
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-text-muted">
+                      Use the steps while they are fresh, then return with one
+                      concrete thing you noticed.
                     </p>
                   </div>
+                  <EditorialActionLink
+                    href={page.ctaHref}
+                    trackingName="mid-article"
+                  >
+                    Start a training round
+                  </EditorialActionLink>
                 </div>
-                <Accordion type="single" collapsible className="w-full">
-                  {page.faq.map((entry, index) => (
-                    <AccordionItem
-                      key={entry.question}
-                      value={`item-${index}`}
-                      className="border-bg-light/80"
-                    >
-                      <AccordionTrigger
-                        className={`${LEARN_TYPOGRAPHY.heading} text-base text-text-primary`}
-                      >
-                        {entry.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-sm leading-7 text-text-secondary">
-                        {entry.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </section>
+              </aside>
+            ) : null}
+          </section>
+        ))}
 
-              <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-                <Card className="border-bg-light bg-bg-card">
-                  <CardHeader>
-                    <CardDescription className="text-peach-400">
-                      About this guide
-                    </CardDescription>
-                    <CardTitle className="text-2xl">
-                      Clear advice you can use
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4 pt-0 text-sm leading-7 text-text-secondary">
-                    <p>
-                      Every guide is written for beginners and improving
-                      players. The Memory Chess editorial team checks each
-                      guide.
-                    </p>
-                    <p>
-                      You get a direct answer, simple practice steps, and one
-                      useful way to track your progress.
-                    </p>
-                    <p>
-                      Published {formatDate(page.publishedAt)}. Last updated{" "}
-                      {formatDate(page.updatedAt)}.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-bg-light bg-bg-card">
-                  <CardHeader>
-                    <CardDescription className="text-peach-400">
-                      Sources used
-                    </CardDescription>
-                    <CardTitle className="text-2xl">Reference links</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4 pt-0">
-                    {page.sources.map((source) => (
-                      <a
-                        key={source.url}
-                        href={source.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="block rounded-2xl border border-bg-light/80 bg-black/20 p-4 transition-colors hover:border-peach-500/30"
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <h3
-                              className={`${LEARN_TYPOGRAPHY.heading} text-text-primary`}
-                            >
-                              {source.title}
-                            </h3>
-                            <p className="mt-2 text-sm leading-7 text-text-secondary">
-                              {source.note}
-                            </p>
-                          </div>
-                          <ExternalLink className="mt-1 h-4 w-4 shrink-0 text-peach-500" />
-                        </div>
-                      </a>
-                    ))}
-                  </CardContent>
-                </Card>
-              </section>
-            </div>
-
-            <aside className="hidden lg:block">
-              <div className="sticky top-24 space-y-5">
-                <Card className="border-bg-light bg-bg-card">
-                  <CardHeader>
-                    <CardDescription className="text-peach-400">
-                      On this page
-                    </CardDescription>
-                    <CardTitle className="text-xl">Jump links</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2 pt-0">
-                    {page.tableOfContents.map((item) => (
-                      <Link
-                        key={item.id}
-                        href={`#${item.id}`}
-                        className="block rounded-xl px-3 py-2 text-sm text-text-secondary transition-colors hover:bg-white/5 hover:text-peach-400"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </CardContent>
-                </Card>
-
-                <Card className="border-peach-500/20 bg-gradient-to-b from-peach-500/10 to-transparent">
-                  <CardHeader>
-                    <CardDescription className="text-peach-400">
-                      Try it yourself
-                    </CardDescription>
-                    <CardTitle className="text-xl">
-                      Play a short practice round
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4 pt-0">
-                    <p className="text-sm leading-7 text-text-secondary">
-                      Play one Memory Chess round. Then notice what was easy to
-                      remember and what you missed.
-                    </p>
-                    <Button
-                      asChild
-                      className={`${LEARN_TYPOGRAPHY.heading} w-full bg-peach-500 text-white hover:bg-peach-600`}
-                      data-learn-cta="sidebar"
-                    >
-                      <Link href={page.ctaHref}>Open Memory Chess</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-bg-light bg-bg-card">
-                  <CardHeader>
-                    <CardDescription className="text-peach-400">
-                      Keep learning
-                    </CardDescription>
-                    <CardTitle className="text-xl">
-                      Choose your next guide
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4 pt-0">
-                    {relatedPages.slice(0, 3).map((entry) => (
-                      <Link
-                        key={`sidebar-${entry.slug}`}
-                        href={`/learn/${entry.slug}`}
-                        data-learn-link={entry.slug}
-                        className="block rounded-2xl border border-bg-light/80 bg-black/20 p-4 transition-colors hover:border-peach-500/30"
-                      >
-                        <p
-                          className={`${LEARN_TYPOGRAPHY.heading} text-sm text-text-primary`}
-                        >
-                          {entry.page.title}
-                        </p>
-                        <p className="mt-2 text-sm leading-7 text-text-secondary">
-                          {entry.reason}
-                        </p>
-                        <span className="mt-3 inline-flex items-center gap-2 text-sm text-peach-400">
-                          Read next <ArrowRight className="h-4 w-4" />
-                        </span>
-                      </Link>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
-            </aside>
+        <section className={EDITORIAL_STYLES.section}>
+          <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
+            Keep learning
+          </p>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>What to learn next</h2>
+          <p className="mt-3 text-base leading-7 text-text-muted">
+            Choose the guide that best matches the next problem you want to
+            solve.
+          </p>
+          <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
+            {relatedPages.map((entry) => (
+              <article key={entry.slug} className="py-5">
+                <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
+                  {LEARN_GOALS[entry.page.goal].label}
+                </p>
+                <h3 className="mt-1 text-lg font-semibold text-white">
+                  {entry.page.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-text-muted">
+                  {entry.reason}
+                </p>
+                <Link
+                  href={`/learn/${entry.slug}`}
+                  data-learn-link={entry.slug}
+                  className={`${EDITORIAL_STYLES.link} mt-3 inline-block text-sm`}
+                >
+                  Read this guide
+                </Link>
+              </article>
+            ))}
           </div>
-        </article>
-      </main>
+        </section>
+
+        <section className={EDITORIAL_STYLES.section}>
+          <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
+            Put it on the board
+          </p>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>
+            Practice in Memory Chess
+          </h2>
+          <p className="mt-3 text-base leading-7 text-text-muted">
+            Use one short drill to practise what you just learned.
+          </p>
+          <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
+            {page.relatedDrills.map((drill) => (
+              <article key={`${page.slug}-${drill.title}`} className="py-5">
+                <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
+                  {drill.duration}
+                </p>
+                <h3 className="mt-1 text-lg font-semibold text-white">
+                  {drill.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-text-secondary">
+                  {drill.description}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-text-muted">
+                  <span className="font-medium text-text-secondary">Goal:</span>{" "}
+                  {drill.goal}
+                </p>
+                <Link
+                  href={drill.href}
+                  data-learn-cta="end-drill"
+                  className={`${EDITORIAL_STYLES.link} mt-3 inline-block text-sm`}
+                >
+                  {drill.ctaLabel}
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="faq" className={EDITORIAL_STYLES.section}>
+          <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
+            Common questions
+          </p>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>FAQ</h2>
+          <Accordion type="single" collapsible className="mt-6 w-full">
+            {page.faq.map((entry, index) => (
+              <AccordionItem
+                key={entry.question}
+                value={`item-${index}`}
+                className="border-white/10"
+              >
+                <AccordionTrigger className="text-left text-base font-semibold leading-6 text-white hover:text-peach-200 hover:no-underline">
+                  {entry.question}
+                </AccordionTrigger>
+                <AccordionContent className="max-w-[68ch] text-sm leading-7 text-text-secondary sm:text-base">
+                  {entry.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </section>
+
+        <section className={EDITORIAL_STYLES.section}>
+          <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
+            Editorial notes
+          </p>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>About this guide</h2>
+          <div className="mt-5 max-w-[68ch] space-y-4 text-sm leading-7 text-text-muted sm:text-base">
+            <p>
+              Memory Chess guides are written for beginners and improving
+              players. Each guide gives you a direct answer, practical steps,
+              and one useful way to track progress.
+            </p>
+            <p>
+              Published {formatDate(page.publishedAt)}. Last reviewed and
+              updated {formatDate(page.updatedAt)} by {page.reviewedBy}.
+            </p>
+          </div>
+
+          <h2 className="mt-9 text-xl font-semibold tracking-tight text-white">
+            Reference links
+          </h2>
+          <ul className="mt-4 divide-y divide-white/10 border-y border-white/10">
+            {page.sources.map((source) => (
+              <li key={source.url} className="py-4">
+                <a
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={EDITORIAL_STYLES.link}
+                >
+                  {source.title}
+                </a>
+                <p className="mt-2 text-sm leading-6 text-text-muted">
+                  {source.note}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </article>
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
-      <Footer />
-    </div>
+    </EditorialPageShell>
   );
 }

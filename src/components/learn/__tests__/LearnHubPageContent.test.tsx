@@ -14,19 +14,6 @@ jest.mock("next/link", () => {
   return MockNextLink;
 });
 
-jest.mock("next/image", () => ({
-  __esModule: true,
-  default: function MockImage(props: ComponentProps<"img">) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        alt={props.alt}
-        src={typeof props.src === "string" ? props.src : ""}
-      />
-    );
-  },
-}));
-
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
     return <div>PageHeader</div>;
@@ -44,7 +31,7 @@ jest.mock("@/components/ui/Footer", () => {
 });
 
 describe("LearnHubPageContent", () => {
-  it("uses simple guidance instead of internal SEO language", () => {
+  it("uses the shared editorial layout and plain guidance", () => {
     const { container } = render(<LearnHubPageContent />);
 
     expect(
@@ -60,21 +47,30 @@ describe("LearnHubPageContent", () => {
     ).toBeInTheDocument();
     expect(screen.queryByText(/search intent/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/SEO hub/i)).not.toBeInTheDocument();
+    expect(container.querySelectorAll("img")).toHaveLength(0);
+    expect(
+      screen.getByText("All 16 guides", { exact: true }),
+    ).toBeInTheDocument();
 
     const allClasses = Array.from(container.querySelectorAll("[class]"))
       .map((element) => element.getAttribute("class") ?? "")
       .join(" ");
-    const fontWeights = allClasses
-      .split(/\s+/)
-      .filter((className) =>
-        /^font-(normal|medium|semibold|bold|extrabold|black)$/.test(className),
-      );
 
-    expect(new Set(fontWeights)).toEqual(
-      new Set(["font-normal", "font-semibold", "font-bold"]),
-    );
+    expect(allClasses).toContain("max-w-3xl");
+    expect(allClasses).toContain("border-white/10");
     expect(allClasses).not.toContain("font-black");
-    expect(allClasses).not.toContain("uppercase");
-    expect(allClasses).not.toContain("tracking-[");
+    expect(allClasses).not.toContain("rounded-[30px]");
+    expect(allClasses).not.toContain("shadow-[");
+
+    const schemaScript = container.querySelector(
+      'script[type="application/ld+json"]',
+    );
+    const schema = JSON.parse(schemaScript?.textContent ?? "{}");
+    const itemList = schema["@graph"].find(
+      (entry: { "@type": string }) => entry["@type"] === "ItemList",
+    );
+
+    expect(itemList.numberOfItems).toBe(16);
+    expect(itemList.itemListElement).toHaveLength(16);
   });
 });

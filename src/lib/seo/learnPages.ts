@@ -1,5 +1,5 @@
 const PUBLISHED_AT = "2026-03-06T00:00:00.000Z";
-const UPDATED_AT = "2026-08-16T00:00:00.000Z";
+const UPDATED_AT = "2026-08-17T00:00:00.000Z";
 
 export const LEARN_GOALS = {
   "reduce-blunders": {
@@ -112,8 +112,6 @@ export type LearnPageContent = {
   whoThisIsFor: string[];
   timeToRead: string;
   difficulty: "Beginner" | "Beginner to Intermediate";
-  coverImage: string;
-  ogImage: string;
   featured: boolean;
   tableOfContents: LearnTableOfContentsItem[];
   contentSections: LearnContentSection[];
@@ -159,29 +157,35 @@ type BuildGuideInput = {
 
 const EDITORIAL_REVIEWER = "Memory Chess Editorial Team";
 
-const COMMON_SOURCES: LearnSource[] = [
-  {
-    title: "Creating helpful, reliable, people-first content",
-    url: "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
-    note: "Google guidance for writing useful pages for people.",
-  },
-  {
-    title: "SEO Starter Guide",
-    url: "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
-    note: "Google guidance for clear page titles, descriptions, and links.",
-  },
-  {
-    title: "Learn About Article Schema Markup",
-    url: "https://developers.google.com/search/docs/appearance/structured-data/article",
-    note: "Google guidance for article details such as dates, images, and authorship.",
-  },
-];
+const CHESS_MEMORY_SOURCE: LearnSource = {
+  title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
+  url: "https://doi.org/10.1006/cogp.1996.0011",
+  note: "Gobet and Simon's research on how skilled players use chunks and templates to encode chess positions.",
+};
 
-const GOAL_COVER_IMAGES: Record<LearnGoalId, string> = {
-  "reduce-blunders": "/images/learn/blunder-board.svg",
-  visualization: "/images/learn/visualization-map.svg",
-  memory: "/images/learn/memory-stack.svg",
-  routine: "/images/learn/routine-path.svg",
+const CHESS_RECOGNITION_SOURCE: LearnSource = {
+  title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
+  url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
+  note: "Research comparing recognition and calculation in time-constrained grandmaster play.",
+};
+
+const RETRIEVAL_PRACTICE_SOURCE: LearnSource = {
+  title: "Test-Enhanced Learning: Taking Memory Tests Improves Retention",
+  url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
+  note: "Experimental research showing that active recall can improve later retention more than repeated study.",
+};
+
+const SPACED_PRACTICE_SOURCE: LearnSource = {
+  title: "Distributed Practice in Verbal Recall Tasks",
+  url: "https://doi.org/10.1037/0033-2909.132.3.354",
+  note: "A quantitative review of how spacing practice affects long-term retention.",
+};
+
+const GOAL_SOURCES: Record<LearnGoalId, LearnSource[]> = {
+  "reduce-blunders": [CHESS_RECOGNITION_SOURCE, CHESS_MEMORY_SOURCE],
+  visualization: [CHESS_MEMORY_SOURCE, CHESS_RECOGNITION_SOURCE],
+  memory: [CHESS_MEMORY_SOURCE, RETRIEVAL_PRACTICE_SOURCE],
+  routine: [SPACED_PRACTICE_SOURCE, RETRIEVAL_PRACTICE_SOURCE],
 };
 
 function buildTableOfContents(
@@ -268,15 +272,13 @@ function buildGuide(input: BuildGuideInput): LearnPageContent {
     whoThisIsFor: input.whoThisIsFor,
     timeToRead: input.timeToRead,
     difficulty: input.difficulty,
-    coverImage: GOAL_COVER_IMAGES[input.goal],
-    ogImage: GOAL_COVER_IMAGES[input.goal],
     featured: Boolean(input.featured),
     tableOfContents: buildTableOfContents(sections, input.faq),
     contentSections: sections,
     faq: input.faq,
     relatedArticles: input.relatedArticles,
     relatedDrills: input.relatedDrills ?? input.drillCards,
-    sources: [...COMMON_SOURCES, ...(input.sources ?? [])],
+    sources: [...GOAL_SOURCES[input.goal], ...(input.sources ?? [])],
   };
 }
 

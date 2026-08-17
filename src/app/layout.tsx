@@ -73,7 +73,9 @@ export const metadata: Metadata = {
     title: "Memory Chess: Free Chess Memory Game",
     description:
       "Memorize a chess position, rebuild it, and improve your board vision one round at a time.",
-    images: [`${siteUrl}/twitter-image`],
+    // Reuse the Open Graph card and bump this version when the artwork changes
+    // so Twitter does not keep serving a previously cached image.
+    images: [`${siteUrl}/opengraph-image?v=2`],
     creator: "@memorychess",
   },
 

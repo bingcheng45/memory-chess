@@ -28,6 +28,16 @@ const geistMono = Geist_Mono({
 // Define your site URL for canonical and OG URLs
 const siteUrl = "https://thememorychess.com";
 
+// Social preview artwork. Served as a static file from /public rather than a
+// dynamic `opengraph-image` route: X's card crawler is noticeably more reliable
+// against a plain PNG with no query string and no Next.js `Vary` headers.
+const socialImage = {
+  url: `${siteUrl}/og-image.png`,
+  width: 1200,
+  height: 630,
+  alt: "Memory Chess - memorise a chess position in 5 seconds, then rebuild it",
+};
+
 export const metadata: Metadata = {
   // Basic Metadata
   title: {
@@ -57,14 +67,7 @@ export const metadata: Metadata = {
     description:
       "Memorize a chess position, rebuild it, and get an instant score. Play free with no account needed.",
     siteName: "Memory Chess",
-    images: [
-      {
-        url: `${siteUrl}/opengraph-image`,
-        width: 1200,
-        height: 630,
-        alt: "Memory Chess - Train Your Chess Memory",
-      },
-    ],
+    images: [socialImage],
   },
 
   // Twitter metadata
@@ -73,9 +76,10 @@ export const metadata: Metadata = {
     title: "Memory Chess: Free Chess Memory Game",
     description:
       "Memorize a chess position, rebuild it, and improve your board vision one round at a time.",
-    // Reuse the Open Graph card and bump this version when the artwork changes
-    // so Twitter does not keep serving a previously cached image.
-    images: [`${siteUrl}/opengraph-image?v=2`],
+    // Must match the Open Graph URL exactly. X caches cards against the *page*
+    // URL, not the image URL, so a query-string bump here does nothing -- share
+    // a fresh URL variant (e.g. ?s=x) to force a re-crawl after artwork changes.
+    images: [socialImage],
     creator: "@memorychess",
   },
 

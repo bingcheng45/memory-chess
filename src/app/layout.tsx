@@ -32,10 +32,11 @@ const siteUrl = "https://thememorychess.com";
 // dynamic `opengraph-image` route: X's card crawler is noticeably more reliable
 // against a plain PNG with no query string and no Next.js `Vary` headers.
 const socialImage = {
-  url: `${siteUrl}/og-image.png`,
+  url: `${siteUrl}/social-preview.png`,
   width: 1200,
   height: 630,
-  alt: "Memory Chess - memorise a chess position in 5 seconds, then rebuild it",
+  type: "image/png",
+  alt: "Memory Chess knight and brain logo — thememorychess.com",
 };
 
 export const metadata: Metadata = {
@@ -80,14 +81,14 @@ export const metadata: Metadata = {
     // URL, not the image URL, so a query-string bump here does nothing -- share
     // a fresh URL variant (e.g. ?s=x) to force a re-crawl after artwork changes.
     images: [socialImage],
-    creator: "@memorychess",
+    creator: "@TheMemoryChess",
+    site: "@TheMemoryChess",
   },
 
   // Robots - default Next.js sets index, follow
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,

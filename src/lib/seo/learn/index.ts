@@ -91,9 +91,98 @@ export function learnLocales(): Locale[] {
 }
 
 /**
- * Per-locale article inputs. English is bundled directly; other locales are
- * loaded on demand so a reader of one language never downloads the prose of
- * twenty-three others.
+ * A locale's translated prose. Structural fields are deliberately absent --
+ * slug, goal, difficulty, featured, drill hrefs, relatedArticles slugs and
+ * source urls all come from the English guide, so a translation physically
+ * cannot break routing, related links or citations.
+ */
+type ProseOverride = {
+  title: string;
+  h1: string;
+  description: string;
+  primaryKeyword: string;
+  secondaryKeywords: string[];
+  painPoint: string;
+  ctaLabel: string;
+  quickAnswer: string;
+  keyTakeaways: string[];
+  whoThisIsFor: string[];
+  timeToRead: string;
+  introParagraphs: string[];
+  startHereTitle: string;
+  startHereSteps: string[];
+  drillSectionTitle: string;
+  drillCards: Array<{
+    title: string;
+    description: string;
+    duration: string;
+    goal: string;
+    ctaLabel: string;
+  }>;
+  comparisonTitle: string;
+  comparisonSummary: string;
+  comparisonRows: Array<{
+    label: string;
+    struggling: string;
+    stronger: string;
+  }>;
+  mistakes: string[];
+  mistakesCallout: string;
+  planTitle: string;
+  planSteps: Array<{ label: string; duration: string; detail: string }>;
+  faq: Array<{ question: string; answer: string }>;
+  relatedArticles: Array<{ reason: string }>;
+};
+
+/** Overlays translated prose onto the English guide, keeping its structure. */
+function mergeProse(
+  guide: BuildGuideInput,
+  prose: ProseOverride,
+): BuildGuideInput {
+  return {
+    ...guide,
+    title: prose.title,
+    h1: prose.h1,
+    description: prose.description,
+    primaryKeyword: prose.primaryKeyword,
+    secondaryKeywords: prose.secondaryKeywords,
+    painPoint: prose.painPoint,
+    ctaLabel: prose.ctaLabel,
+    quickAnswer: prose.quickAnswer,
+    keyTakeaways: prose.keyTakeaways,
+    whoThisIsFor: prose.whoThisIsFor,
+    timeToRead: prose.timeToRead,
+    introParagraphs: prose.introParagraphs,
+    startHereTitle: prose.startHereTitle,
+    startHereSteps: prose.startHereSteps,
+    drillSectionTitle: prose.drillSectionTitle,
+    drillCards: guide.drillCards.map((card, i) => ({
+      ...card,
+      ...prose.drillCards[i],
+    })),
+    comparisonTitle: prose.comparisonTitle,
+    comparisonSummary: prose.comparisonSummary,
+    comparisonRows: prose.comparisonRows,
+    mistakes: prose.mistakes,
+    mistakesCallout: prose.mistakesCallout,
+    planTitle: prose.planTitle,
+    planSteps: prose.planSteps,
+    faq: prose.faq,
+    relatedArticles: guide.relatedArticles.map((entry, i) => ({
+      ...entry,
+      reason: prose.relatedArticles[i].reason,
+    })),
+    relatedDrills: guide.relatedDrills?.map((card, i) => ({
+      ...card,
+      ...prose.drillCards[i],
+    })),
+  };
+}
+
+/**
+ * Per-locale article inputs. English is bundled directly; other locales load
+ * their prose on demand so a reader of one language never downloads the text
+ * of twenty-three others.
  */
 async function loadGuides(locale: string): Promise<BuildGuideInput[]> {
   if (!hasLearnTranslation(locale) || locale === DEFAULT_LOCALE) {
@@ -101,11 +190,12 @@ async function loadGuides(locale: string): Promise<BuildGuideInput[]> {
   }
 
   try {
-    const mod = await import(`./content.${locale}`);
-    return mod.GUIDES as BuildGuideInput[];
+    const mod = await import(`./prose/${locale}.json`);
+    const prose = (mod.default ?? mod) as ProseOverride[];
+    return EN_GUIDES.map((guide, i) => mergeProse(guide, prose[i]));
   } catch {
-    // A locale listed as translated but missing its file is a build mistake,
-    // not a reader's problem -- serve English rather than erroring the page.
+    // A locale listed as translated but missing its prose file is a build
+    // mistake, not a reader's problem -- serve English rather than erroring.
     return EN_GUIDES;
   }
 }

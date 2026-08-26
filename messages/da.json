@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: gratis spil til skakhukommelse og visualisering",
+      "description": "Husk en skakstilling, byg den op fra hukommelsen, og få point med det samme. Spil gratis, og træn brætsyn, visualisering og rumlig hukommelse.",
+      "socialTitle": "Memory Chess: gratis spil til skakhukommelse og visualisering",
+      "socialDescription": "Husk en stilling, byg den op, og få point med det samme. Spil gratis uden konto.",
+      "twitterTitle": "Memory Chess: gratis spil til skakhukommelse",
+      "twitterDescription": "Husk en stilling, byg den op, og forbedr dit brætsyn runde for runde."
+    },
     "hero": {
       "title": "Træn din skakhukommelse og forestillingsevne",
       "subtitle": "Husk en skakstilling, genskab den fra hukommelsen, og få point med det samme. Forbedr dit brætoverblik runde for runde.",

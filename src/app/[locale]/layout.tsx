@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import "../globals.css";
 
 // Import Vercel packages dynamically to avoid build errors
@@ -44,15 +44,17 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  // The home route is a client component, so its copy comes from the layout
+  // defaults. Every other route overrides both in its own generateMetadata.
+  const t = await getTranslations({ locale, namespace: "home.meta" });
 
   return {
     // Basic Metadata
     title: {
-      default: "Memory Chess: Free Chess Memory and Visualization Game",
+      default: t("title"),
       template: "%s | Memory Chess",
     },
-    description:
-      "Memorize a chess position, rebuild it from memory, and get an instant score. Play free to train board vision, visualization, and spatial memory.",
+    description: t("description"),
 
     // Canonical + hreflang for the home route; child routes override via route metadata
     alternates: buildAlternates("/", locale),
@@ -68,9 +70,8 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       url: siteUrl,
-      title: "Memory Chess: Free Chess Memory and Visualization Game",
-      description:
-        "Memorize a chess position, rebuild it, and get an instant score. Play free with no account needed.",
+      title: t("socialTitle"),
+      description: t("socialDescription"),
       siteName: "Memory Chess",
       images: [socialImage],
     },
@@ -78,9 +79,8 @@ export async function generateMetadata({
     // Twitter metadata
     twitter: {
       card: "summary_large_image",
-      title: "Memory Chess: Free Chess Memory Game",
-      description:
-        "Memorize a chess position, rebuild it, and improve your board vision one round at a time.",
+      title: t("twitterTitle"),
+      description: t("twitterDescription"),
       // Must match the Open Graph URL exactly. X caches cards against the *page*
       // URL, not the image URL, so a query-string bump here does nothing -- share
       // a fresh URL variant (e.g. ?s=x) to force a re-crawl after artwork changes.

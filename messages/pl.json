@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: darmowa gra na pamięć szachową i wyobraźnię",
+      "description": "Zapamiętaj pozycję szachową, odtwórz ją z pamięci i od razu otrzymaj wynik. Graj za darmo, by trenować widzenie szachownicy, wyobraźnię i pamięć przestrzenną.",
+      "socialTitle": "Memory Chess: darmowa gra na pamięć szachową i wyobraźnię",
+      "socialDescription": "Zapamiętaj pozycję, odtwórz ją i od razu otrzymaj wynik. Graj za darmo, bez zakładania konta.",
+      "twitterTitle": "Memory Chess: darmowa gra na pamięć szachową",
+      "twitterDescription": "Zapamiętuj pozycję, odtwarzaj ją i poprawiaj widzenie szachownicy runda po rundzie."
+    },
     "hero": {
       "title": "Trenuj szachową pamięć i wyobraźnię",
       "subtitle": "Zapamiętaj pozycję szachową, odtwórz ją z pamięci i od razu otrzymaj wynik. Poprawiaj widzenie szachownicy runda po rundzie.",

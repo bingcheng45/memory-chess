@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: ingyenes játék a sakkemlékezethez és a vizualizációhoz",
+      "description": "Jegyezz meg egy sakkállást, építsd fel emlékezetből, és azonnal pontszámot kapsz. Játssz ingyen, és edzd a táblalátást, a vizualizációt és a téri emlékezetet.",
+      "socialTitle": "Memory Chess: ingyenes játék a sakkemlékezethez és a vizualizációhoz",
+      "socialDescription": "Jegyezz meg egy állást, építsd fel újra, és azonnal pontszámot kapsz. Ingyenes, fiók nélkül.",
+      "twitterTitle": "Memory Chess: ingyenes sakkemlékezet-játék",
+      "twitterDescription": "Jegyezz meg egy állást, építsd fel újra, és javítsd a táblalátásod körről körre."
+    },
     "hero": {
       "title": "Fejleszd a sakkmemóriádat és a vizualizációdat",
       "subtitle": "Jegyezz meg egy sakkállást, építsd fel emlékezetből, és azonnal pontszámot kapsz. Javítsd a tábla átlátását körről körre.",

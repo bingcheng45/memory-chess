@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: juego gratis de memoria y visualización en ajedrez",
+      "description": "Memoriza una posición de ajedrez, recompónla de memoria y recibe una puntuación al instante. Juega gratis para entrenar la visión del tablero, la visualización y la memoria espacial.",
+      "socialTitle": "Memory Chess: juego gratis de memoria y visualización en ajedrez",
+      "socialDescription": "Memoriza una posición, recompónla y recibe una puntuación al instante. Juega gratis y sin crear cuenta.",
+      "twitterTitle": "Memory Chess: juego gratis de memoria en ajedrez",
+      "twitterDescription": "Memoriza una posición, recompónla y mejora tu visión del tablero ronda a ronda."
+    },
     "hero": {
       "title": "Entrena tu memoria y tu visualización en el ajedrez",
       "subtitle": "Memoriza una posición de ajedrez, reconstrúyela de memoria y recibe una puntuación al instante. Mejora tu visión del tablero ronda a ronda.",

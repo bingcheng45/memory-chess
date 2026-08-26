@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: joc gratuit de memorie și vizualizare la șah",
+      "description": "Memorează o poziție de șah, reconstruiește-o din memorie și primești un scor pe loc. Joacă gratuit ca să antrenezi vederea tablei, vizualizarea și memoria spațială.",
+      "socialTitle": "Memory Chess: joc gratuit de memorie și vizualizare la șah",
+      "socialDescription": "Memorează o poziție, reconstruiește-o și primești un scor pe loc. Joacă gratuit, fără cont.",
+      "twitterTitle": "Memory Chess: joc gratuit de memorie la șah",
+      "twitterDescription": "Memorează o poziție, reconstruiește-o și îmbunătățește-ți vederea tablei rundă după rundă."
+    },
     "hero": {
       "title": "Antrenează-ți memoria și vizualizarea la șah",
       "subtitle": "Memorează o poziție de șah, reconstruiește-o din memorie și primești pe loc un punctaj. Îmbunătățește-ți vederea de ansamblu a tablei rundă după rundă.",

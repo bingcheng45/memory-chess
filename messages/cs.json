@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: hra zdarma na šachovou paměť a představivost",
+      "description": "Zapamatujte si šachovou pozici, postavte ji z paměti a hned získejte skóre. Hrajte zdarma a trénujte vidění šachovnice, představivost a prostorovou paměť.",
+      "socialTitle": "Memory Chess: hra zdarma na šachovou paměť a představivost",
+      "socialDescription": "Zapamatujte si pozici, postavte ji znovu a hned získejte skóre. Hrajte zdarma bez účtu.",
+      "twitterTitle": "Memory Chess: hra zdarma na šachovou paměť",
+      "twitterDescription": "Zapamatujte si pozici, postavte ji znovu a zlepšujte vidění šachovnice kolo za kolem."
+    },
     "hero": {
       "title": "Trénujte šachovou paměť a představivost",
       "subtitle": "Zapamatujte si šachovou pozici, poskládejte ji zpátky po paměti a hned dostanete skóre. Zlepšujte přehled na šachovnici kolo za kolem.",

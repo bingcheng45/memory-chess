@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess：免費西洋棋記憶與想像力遊戲",
+      "description": "記住一個西洋棋局面，憑記憶把它還原，立刻拿到分數。免費遊玩，訓練棋盤視野、想像力與空間記憶。",
+      "socialTitle": "Memory Chess：免費西洋棋記憶與想像力遊戲",
+      "socialDescription": "記住一個局面，把它還原，立刻拿到分數。免費遊玩，不必註冊帳號。",
+      "twitterTitle": "Memory Chess：免費西洋棋記憶遊戲",
+      "twitterDescription": "記住一個局面，把它還原，一局一局提升你的棋盤視野。"
+    },
     "hero": {
       "title": "訓練你的西洋棋記憶力與盤面想像力",
       "subtitle": "記住一個棋局，憑記憶重新擺回來，立刻取得分數。每一輪都讓你的棋盤視野更清楚。",

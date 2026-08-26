@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: gratis spel för schackminne och visualisering",
+      "description": "Memorera en schackställning, bygg upp den ur minnet och få poäng direkt. Spela gratis för att träna brädseende, visualisering och rumsligt minne.",
+      "socialTitle": "Memory Chess: gratis spel för schackminne och visualisering",
+      "socialDescription": "Memorera en ställning, bygg upp den och få poäng direkt. Spela gratis utan konto.",
+      "twitterTitle": "Memory Chess: gratis spel för schackminne",
+      "twitterDescription": "Memorera en ställning, bygg upp den och förbättra ditt brädseende runda för runda."
+    },
     "hero": {
       "title": "Träna ditt schackminne och din visualisering",
       "subtitle": "Memorera en schackställning, bygg upp den ur minnet och få poäng direkt. Förbättra din brädkänsla omgång för omgång.",

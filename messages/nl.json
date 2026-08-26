@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: gratis spel voor schaakgeheugen en visualisatie",
+      "description": "Onthoud een schaakstelling, bouw haar uit je geheugen op en krijg meteen een score. Speel gratis om bordvisie, visualisatie en ruimtelijk geheugen te trainen.",
+      "socialTitle": "Memory Chess: gratis spel voor schaakgeheugen en visualisatie",
+      "socialDescription": "Onthoud een stelling, bouw haar op en krijg meteen een score. Gratis spelen, zonder account.",
+      "twitterTitle": "Memory Chess: gratis schaakgeheugenspel",
+      "twitterDescription": "Onthoud een stelling, bouw haar op en verbeter je bordvisie ronde na ronde."
+    },
     "hero": {
       "title": "Train je schaakgeheugen en je voorstellingsvermogen",
       "subtitle": "Onthoud een schaakstelling, bouw die uit je hoofd weer op en krijg meteen een score. Verbeter je bordoverzicht ronde na ronde.",

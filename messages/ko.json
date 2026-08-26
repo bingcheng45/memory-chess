@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: 무료 체스 기억력·시각화 게임",
+      "description": "체스 포지션을 외우고 기억만으로 다시 세우면 바로 점수가 나옵니다. 무료로 즐기며 판을 보는 능력, 시각화, 공간 기억을 훈련하세요.",
+      "socialTitle": "Memory Chess: 무료 체스 기억력·시각화 게임",
+      "socialDescription": "포지션을 외우고 다시 세우면 바로 점수가 나옵니다. 계정 없이 무료로 즐기세요.",
+      "twitterTitle": "Memory Chess: 무료 체스 기억력 게임",
+      "twitterDescription": "포지션을 외우고 다시 세우며 한 판씩 판을 보는 능력을 키우세요."
+    },
     "hero": {
       "title": "체스 기억력과 시각화 능력을 훈련하세요",
       "subtitle": "체스 국면을 외우고 기억만으로 다시 배치하면 바로 점수가 나옵니다. 한 판씩 판 전체를 보는 눈을 키워 보세요.",

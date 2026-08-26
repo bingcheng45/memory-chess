@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: gioco gratuito di memoria e visualizzazione negli scacchi",
+      "description": "Memorizza una posizione di scacchi, ricostruiscila a memoria e ricevi subito un punteggio. Gioca gratis per allenare visione della scacchiera, visualizzazione e memoria spaziale.",
+      "socialTitle": "Memory Chess: gioco gratuito di memoria e visualizzazione negli scacchi",
+      "socialDescription": "Memorizza una posizione, ricostruiscila e ricevi subito un punteggio. Gratis e senza account.",
+      "twitterTitle": "Memory Chess: gioco gratuito di memoria negli scacchi",
+      "twitterDescription": "Memorizza una posizione, ricostruiscila e migliora la visione della scacchiera turno dopo turno."
+    },
     "hero": {
       "title": "Allena la tua memoria e visualizzazione negli scacchi",
       "subtitle": "Memorizza una posizione, ricostruiscila a memoria e ricevi subito un punteggio. Migliora la tua visione della scacchiera turno dopo turno.",

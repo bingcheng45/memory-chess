@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: kostenloses Spiel für Schachgedächtnis und Vorstellungskraft",
+      "description": "Präge dir eine Schachstellung ein, baue sie aus dem Gedächtnis nach und erhalte sofort eine Wertung. Spiele kostenlos und trainiere Brettübersicht, Vorstellungskraft und räumliches Gedächtnis.",
+      "socialTitle": "Memory Chess: kostenloses Spiel für Schachgedächtnis und Vorstellungskraft",
+      "socialDescription": "Präge dir eine Stellung ein, baue sie nach und erhalte sofort eine Wertung. Kostenlos und ohne Konto.",
+      "twitterTitle": "Memory Chess: kostenloses Schachgedächtnis-Spiel",
+      "twitterDescription": "Präge dir eine Stellung ein, baue sie nach und verbessere deine Brettübersicht Runde für Runde."
+    },
     "hero": {
       "title": "Trainiere dein Schachgedächtnis und deine Vorstellungskraft",
       "subtitle": "Präge dir eine Schachstellung ein, baue sie aus dem Gedächtnis wieder auf und erhalte sofort eine Bewertung. Verbessere dein Brettgefühl Runde für Runde.",

@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: jogo grátis de memória e visualização no xadrez",
+      "description": "Memorize uma posição de xadrez, reconstrua-a de memória e receba uma pontuação na hora. Jogue de graça para treinar visão do tabuleiro, visualização e memória espacial.",
+      "socialTitle": "Memory Chess: jogo grátis de memória e visualização no xadrez",
+      "socialDescription": "Memorize uma posição, reconstrua-a e receba uma pontuação na hora. Jogue de graça, sem criar conta.",
+      "twitterTitle": "Memory Chess: jogo grátis de memória no xadrez",
+      "twitterDescription": "Memorize uma posição, reconstrua-a e melhore sua visão do tabuleiro rodada após rodada."
+    },
     "hero": {
       "title": "Treine sua memória e visualização no xadrez",
       "subtitle": "Memorize uma posição de xadrez, reconstrua de memória e receba uma pontuação na hora. Melhore sua visão de tabuleiro a cada rodada.",

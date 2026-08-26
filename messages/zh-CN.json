@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess：免费国际象棋记忆与想象力游戏",
+      "description": "记住一个国际象棋局面，凭记忆还原它，并立刻得到评分。免费游玩，训练棋盘视野、想象力和空间记忆。",
+      "socialTitle": "Memory Chess：免费国际象棋记忆与想象力游戏",
+      "socialDescription": "记住一个局面，把它还原出来，立刻得到评分。免费游玩，无需注册账号。",
+      "twitterTitle": "Memory Chess：免费国际象棋记忆游戏",
+      "twitterDescription": "记住一个局面，把它还原出来，一局一局提升你的棋盘视野。"
+    },
     "hero": {
       "title": "训练你的国际象棋记忆与盘面想象力",
       "subtitle": "记住一个棋局，凭记忆还原它，立刻得到评分。每一轮都让你的棋盘视野更清晰。",

@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess : jeu gratuit de mémoire et de visualisation aux échecs",
+      "description": "Mémorisez une position d'échecs, reconstruisez-la de mémoire et obtenez un score immédiat. Jouez gratuitement pour travailler la vision de l'échiquier, la visualisation et la mémoire spatiale.",
+      "socialTitle": "Memory Chess : jeu gratuit de mémoire et de visualisation aux échecs",
+      "socialDescription": "Mémorisez une position, reconstruisez-la et obtenez un score immédiat. Gratuit, sans compte.",
+      "twitterTitle": "Memory Chess : jeu gratuit de mémoire aux échecs",
+      "twitterDescription": "Mémorisez une position, reconstruisez-la et améliorez votre vision de l'échiquier manche après manche."
+    },
     "hero": {
       "title": "Entraînez votre mémoire et votre visualisation aux échecs",
       "subtitle": "Mémorisez une position d’échecs, reconstituez-la de mémoire et obtenez un score immédiat. Améliorez votre vision de l’échiquier partie après partie.",

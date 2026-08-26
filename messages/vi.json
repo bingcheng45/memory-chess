@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: trò chơi miễn phí luyện trí nhớ và hình dung cờ vua",
+      "description": "Ghi nhớ một thế cờ, dựng lại nó từ trí nhớ và nhận điểm ngay. Chơi miễn phí để luyện khả năng nhìn bàn cờ, hình dung và trí nhớ không gian.",
+      "socialTitle": "Memory Chess: trò chơi miễn phí luyện trí nhớ và hình dung cờ vua",
+      "socialDescription": "Ghi nhớ một thế cờ, dựng lại nó và nhận điểm ngay. Chơi miễn phí, không cần tài khoản.",
+      "twitterTitle": "Memory Chess: trò chơi trí nhớ cờ vua miễn phí",
+      "twitterDescription": "Ghi nhớ một thế cờ, dựng lại nó và cải thiện khả năng nhìn bàn cờ sau từng ván."
+    },
     "hero": {
       "title": "Rèn trí nhớ và khả năng hình dung bàn cờ",
       "subtitle": "Ghi nhớ một thế cờ, dựng lại từ trí nhớ và nhận điểm ngay. Cải thiện khả năng bao quát bàn cờ qua từng vòng.",

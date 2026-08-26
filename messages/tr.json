@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: ücretsiz satranç hafıza ve görselleştirme oyunu",
+      "description": "Bir satranç konumunu ezberleyin, hafızanızdan yeniden kurun ve anında puan alın. Tahta görüşü, görselleştirme ve mekânsal hafıza için ücretsiz oynayın.",
+      "socialTitle": "Memory Chess: ücretsiz satranç hafıza ve görselleştirme oyunu",
+      "socialDescription": "Bir konumu ezberleyin, yeniden kurun ve anında puan alın. Hesap gerekmeden ücretsiz oynayın.",
+      "twitterTitle": "Memory Chess: ücretsiz satranç hafıza oyunu",
+      "twitterDescription": "Bir konumu ezberleyin, yeniden kurun ve tahta görüşünüzü her turda geliştirin."
+    },
     "hero": {
       "title": "Satranç hafızanı ve görselleştirmeni geliştir",
       "subtitle": "Bir satranç konumunu ezberle, hafızandan yeniden kur ve anında puan al. Tahta görüşünü her turda biraz daha güçlendir.",

@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: ilmainen peli shakkimuistiin ja visualisointiin",
+      "description": "Opettele shakkiasema ulkoa, rakenna se muistista ja saa pisteet heti. Pelaa ilmaiseksi ja harjoita laudan hahmottamista, visualisointia ja tilamuistia.",
+      "socialTitle": "Memory Chess: ilmainen peli shakkimuistiin ja visualisointiin",
+      "socialDescription": "Opettele asema ulkoa, rakenna se uudelleen ja saa pisteet heti. Pelaa ilmaiseksi ilman tiliä.",
+      "twitterTitle": "Memory Chess: ilmainen shakkimuistipeli",
+      "twitterDescription": "Opettele asema, rakenna se uudelleen ja paranna laudan hahmottamista kierros kerrallaan."
+    },
     "hero": {
       "title": "Harjoita shakkimuistiasi ja hahmotustasi",
       "subtitle": "Paina mieleen shakkiasema, rakenna se uudelleen muistista ja saat pisteet heti. Paranna laudan hahmotusta kierros kerrallaan.",

@@ -29,6 +29,14 @@
     }
   },
   "home": {
+    "meta": {
+      "title": "Memory Chess: gim gratis untuk ingatan dan visualisasi catur",
+      "description": "Hafalkan sebuah posisi catur, bangun ulang dari ingatan, dan dapatkan skor seketika. Main gratis untuk melatih penglihatan papan, visualisasi, dan ingatan ruang.",
+      "socialTitle": "Memory Chess: gim gratis untuk ingatan dan visualisasi catur",
+      "socialDescription": "Hafalkan sebuah posisi, bangun ulang, dan dapatkan skor seketika. Main gratis tanpa perlu akun.",
+      "twitterTitle": "Memory Chess: gim ingatan catur gratis",
+      "twitterDescription": "Hafalkan sebuah posisi, bangun ulang, dan tingkatkan penglihatan papan Anda tiap ronde."
+    },
     "hero": {
       "title": "Latih ingatan dan visualisasi catur Anda",
       "subtitle": "Hafalkan sebuah posisi catur, susun ulang dari ingatan, dan langsung dapatkan skor. Pertajam penglihatan papan Anda ronde demi ronde.",

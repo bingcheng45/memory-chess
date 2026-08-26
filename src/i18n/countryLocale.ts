@@ -13,8 +13,8 @@ import type { Locale } from "./routing";
  *   real audiences here, and both browse chess sites in English. Switching
  *   them out of English on the strength of an IP would make the product worse
  *   for the people it would affect most.
- * - Taiwan, Hong Kong and Macau are NOT mapped to zh-CN. They read Traditional
- *   characters; serving Simplified is not a neutral fallback.
+ * - Taiwan, Hong Kong and Macau map to zh-TW, never zh-CN. They read
+ *   Traditional characters; Simplified is not a neutral fallback.
  */
 export const COUNTRY_LOCALE_HINTS: Readonly<Record<string, Locale>> = {
   // Spanish
@@ -42,11 +42,29 @@ export const COUNTRY_LOCALE_HINTS: Readonly<Record<string, Locale>> = {
   // Italian
   IT: "it", SM: "it", VA: "it",
 
-  // Simplified Chinese
+  // Chinese, split by script
   CN: "zh-CN",
+  TW: "zh-TW", HK: "zh-TW", MO: "zh-TW",
 
   // Turkish
   TR: "tr",
+
+  // Added from site analytics
+  SE: "sv",
+  NL: "nl", // Belgium stays French: Flemish is closer to Dutch, but Brussels
+  //          and Wallonia are the larger share of Belgian chess traffic.
+  PL: "pl",
+  ID: "id",
+  NO: "no", SJ: "no",
+  FI: "fi",
+  RO: "ro", // Moldova is genuinely split between Romanian and Russian; it stays
+  //           mapped to Russian above, where the existing traffic points.
+  VN: "vi",
+  CZ: "cs",
+  JP: "ja",
+  KR: "ko",
+  DK: "da", GL: "da", FO: "da",
+  HU: "hu",
 };
 
 /** Crawlers skip geo detection so a bot's exit IP cannot decide what gets indexed. */

@@ -1,0 +1,246 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Újdonságok",
+      "contactUs": "Kapcsolat",
+      "privacy": "Adatvédelem"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Minden jog fenntartva.",
+      "followOnX": "Kövess minket a Twitteren/X-en",
+      "productHuntAlt": "Memory Chess - Fejleszd a térlátásodat sakkal | Product Hunt"
+    },
+    "sound": {
+      "mute": "Hang némítása",
+      "unmute": "Hang bekapcsolása",
+      "on": "Hang bekapcsolva",
+      "off": "Hang kikapcsolva",
+      "volume": "Hangerő"
+    },
+    "language": {
+      "change": "Nyelvváltás. Jelenlegi nyelv: {language}",
+      "current": "Nyelv: {language}",
+      "select": "Válassz nyelvet"
+    },
+    "otherApps": {
+      "title": "A készítő további alkalmazásai",
+      "visitWebsite": "Ugrás a webhelyre →",
+      "iconAlt": "A(z) {name} alkalmazás ikonja"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Fejleszd a sakkmemóriádat és a vizualizációdat",
+      "subtitle": "Jegyezz meg egy sakkállást, építsd fel emlékezetből, és azonnal pontszámot kapsz. Javítsd a tábla átlátását körről körre.",
+      "freeToPlay": "Ingyenes, fiók nélkül is játszható. Az eredményedet a <link>ranglistán</link> is összevetheted másokéval.",
+      "gamesPlayed": "Lejátszott játszmák: {count}"
+    },
+    "cta": {
+      "play": "Memory Chess játék",
+      "leaderboard": "Ranglista megtekintése",
+      "playFree": "Játssz egy ingyenes kört"
+    },
+    "video": {
+      "title": "Nézd meg, hogyan működik a Memory Chess",
+      "subtitle": "Rövid útmutató a tábla tanulmányozásához, az állás felépítéséhez és az eredményed értelmezéséhez.",
+      "iframeTitle": "Így játszd a Memory Chesst",
+      "credit": "Videó: „A New Way To Train Your Vision”, Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Hogyan működik",
+      "title": "Egyszerű edzés a sakkmemóriádnak",
+      "subtitle": "Minden kör három egyszerű lépésből áll: tanulmányozd az állást, építsd fel újra, és tanulj az eredményedből.",
+      "steps": {
+        "observe": {
+          "title": "Figyelj",
+          "description": "Jegyezd meg, hol áll az egyes bábuk. Keress csoportokat, vonalakat és üres mezőket, amelyek fogódzót adnak."
+        },
+        "recreate": {
+          "title": "Építsd fel",
+          "description": "Amikor a tábla kiürül, tedd vissza minden bábut arra a mezőre, amelyikre emlékszel."
+        },
+        "improve": {
+          "title": "Fejlődj",
+          "description": "Nézd meg az eredményed, keresd meg, mi maradt ki, és próbáld újra több bábuval vagy kevesebb idővel."
+        }
+      }
+    },
+    "board": {
+      "study": "Tanulmányozd a táblát",
+      "rebuild": "Építsd fel emlékezetből"
+    },
+    "learn": {
+      "eyebrow": "Tanulóközpont",
+      "title": "Érthető sakk-útmutatók",
+      "description": "Ismerj meg gyakorlati módszereket a tábla átlátásának, a vizualizációnak, a számolásnak és a memóriának a fejlesztésére. Minden útmutató tartalmaz azonnal kipróbálható gyakorlatokat.",
+      "browseCta": "Útmutatók böngészése",
+      "beginnerCta": "Kezdd a kezdő útmutatóval"
+    },
+    "faq": {
+      "title": "Kérdések a Memory Chessről",
+      "items": [
+        {
+          "question": "Mi az a Memory Chess?",
+          "answer": "A Memory Chess egy ingyenes memóriajáték a sakktáblán. Rövid ideig tanulmányozol egy állást, emlékezetből felépíted, és aszerint kapsz pontot, hány bábut tettél a helyére."
+        },
+        {
+          "question": "Hogyan kell játszani?",
+          "answer": "Válaszd ki, hány bábut szeretnél, és mennyi ideig néznéd a táblát. Amikor az állás eltűnik, tedd vissza a bábukat azokra a mezőkre, amelyekre emlékszel. Küldd be a megoldást, és látod a pontosságot meg az időt."
+        },
+        {
+          "question": "Játszhatják kezdők is a Memory Chesst?",
+          "answer": "Igen. Nem kell megnyitásokat ismerned és lépéseket számolnod. Kezdd kevesebb bábuval és több idővel, majd emeld a nehézséget, amikor késznek érzed magad."
+        },
+        {
+          "question": "Hogyan fejleszti a sakkvizualizációt?",
+          "answer": "Minden kör célzott gyakorlás abban, hogy fejben tartsd az állást, és felidézd, hova tartoznak a bábuk. Az eredmény megmutatja, mely állások mennek könnyen, és hol kell még gyakorolni."
+        },
+        {
+          "question": "Mire figyeljek a tábla megjegyzésekor?",
+          "answer": "Indulj könnyű fogódzókból: királyok, vezérek, sarkok és szélső mezők. Utána csoportokat, vonalakat, átlókat és üres területeket keress, ahelyett hogy minden bábut külön jegyeznél meg."
+        },
+        {
+          "question": "Hogyan tehetem nehezebbé a játékot?",
+          "answer": "Tegyél be több bábut, rövidítsd a nézési időt, vagy rejtsd el a tábla koordinátáit. Egyszerre csak egy beállítást változtass, így látod, melyik számít a legtöbbet."
+        },
+        {
+          "question": "Ingyenes a Memory Chess?",
+          "answer": "Igen. Fiók létrehozása nélkül, ingyen játszhatsz. A név megadása a ranglistán opcionális."
+        },
+        {
+          "question": "Milyen gyakran gyakoroljak?",
+          "answer": "Néhány koncentrált kör rendszeresen jó kezdet. Tartsd elég rövidre az alkalmakat ahhoz, hogy minden állást alaposan meg tudj nézni."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Játssz Memory Chesst online",
+      "description": "Játssz Memory Chesst online, és fejleszd a tábla vizualizációját, a memóriádat és a sakkmintázatok felismerését időre menő feladatokkal.",
+      "socialTitle": "Játssz Memory Chesst online",
+      "socialDescription": "Fejleszd a sakkvizualizációdat és a memóriádat interaktív, időre menő feladatokkal."
+    },
+    "hud": {
+      "time": "Idő",
+      "submit": "Beküldés",
+      "loading": "Játék betöltése…",
+      "status": "Játék állapota",
+      "controls": "Játékvezérlők",
+      "complete": "A játszma véget ért",
+      "flash": "KÉSZ!"
+    },
+    "config": {
+      "title": "Játékbeállítások",
+      "presetsLabel": "Nehézségi szintek",
+      "presetSummary": "{pieces} bábu / {seconds} mp",
+      "customLabel": "Egyéni beállítások",
+      "pieceCount": "Bábuk száma",
+      "memorizeTime": "Memorizálási idő",
+      "seconds": "{seconds} mp",
+      "start": "Edzés indítása",
+      "lastGame": "Előző játszma: {time} mp megoldási idő, {accuracy}% pontosság"
+    },
+    "presets": {
+      "easy": {
+        "label": "Könnyű",
+        "description": "Csak a királyok – tökéletes az induláshoz"
+      },
+      "medium": {
+        "label": "Közepes",
+        "description": "Néhány bábu, kényelmes memorizálási idővel"
+      },
+      "hard": {
+        "label": "Nehéz",
+        "description": "Több bábu, kevesebb memorizálási idővel"
+      },
+      "grandmaster": {
+        "label": "Nagymester",
+        "description": "Fotografikus memóriájú sakkmestereknek"
+      }
+    },
+    "memorize": {
+      "title": "Jegyezd meg az állást",
+      "skip": "Kihagyás",
+      "hint": "A tábla kiürül, amint lejár az idő"
+    },
+    "place": {
+      "title": "Helyezd el a bábukat",
+      "subtitle": "Válassz típust és színt",
+      "whitePieces": "Világos bábuk",
+      "blackPieces": "Sötét bábuk",
+      "selectWhite": "Világos bábuk kiválasztása",
+      "selectBlack": "Sötét bábuk kiválasztása",
+      "hint": "Koppints egy mezőre bábu elhelyezéséhez vagy eltávolításához"
+    },
+    "stats": {
+      "title": "Statisztikák",
+      "currentTime": "Eltelt idő",
+      "piecesToMemorize": "Megjegyzendő bábuk",
+      "averageAccuracy": "Átlagos pontosság"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Hibátlan! ✨",
+        "excellent": "Kiváló memória!",
+        "great": "Remek munka!",
+        "wellDone": "Szép volt!",
+        "goodEffort": "Jó próbálkozás!",
+        "keepPracticing": "Gyakorolj tovább!"
+      },
+      "accuracy": "Pontosság",
+      "piecesCorrectCaption": "bábu helyesen",
+      "piecesCorrect": "Helyes bábuk",
+      "memorizationTime": "Memorizálási idő",
+      "solutionTime": "Megoldási idő",
+      "recallSpeed": "Felidézési sebesség",
+      "piecesPerSecond": "{value} bábu/mp",
+      "actions": "Eredményhez tartozó műveletek",
+      "tryAgain": "Újra",
+      "newGame": "Új játszma",
+      "submitToLeaderboard": "Beküldés a ranglistára",
+      "viewLeaderboard": "Ranglista megtekintése",
+      "dialog": {
+        "submitTitle": "Beküldés a ranglistára",
+        "submitDescription": "Add meg a nevet, amely a ranglistán megjelenik.",
+        "successTitle": "Eredmény beküldve!",
+        "successDescription": "Az eredményed felkerült a ranglistára.",
+        "playerName": "Játékos neve",
+        "playerNamePlaceholder": "Írd be a neved",
+        "error": "Hiba: {message}",
+        "submitFailed": "Az eredményt nem sikerült beküldeni",
+        "cancel": "Mégse",
+        "submit": "Eredmény beküldése",
+        "submitting": "Küldés…",
+        "thanks": "Köszönjük a részvételt, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Nézd át az állásodat",
+      "subtitle": "Vesd össze, amit megjegyeztél, azzal, amit beküldtél.",
+      "unavailable": "A táblák összehasonlítása nem érhető el.",
+      "ariaLabel": "Táblák összehasonlítása",
+      "correct": "Helyes",
+      "incorrect": "Hibás",
+      "missed": "Kimaradt",
+      "originalBoard": "A megjegyzendő állás",
+      "submittedBoard": "Az általad beküldött állás"
+    },
+    "feedback": {
+      "title": "Köszönjük, hogy Memory Chesst játszottál!",
+      "prompt": "Hogyan értékelnéd a játékot?",
+      "placeholder": "Írd meg, mi működött jól, vagy min változtatnál…",
+      "notNow": "Most nem",
+      "sentTitle": "Köszönjük, hogy segítesz jobbá tenni",
+      "sentBody": "Megkaptuk a visszajelzésed.",
+      "done": "Kész",
+      "commentLabel": "Milyen volt játszani, és mitől lenne jobb?",
+      "commentOptional": "(nem kötelező)",
+      "starRating": "{count, plural, one {# csillag} other {# csillag}}",
+      "chooseRating": "Kérjük, válassz csillagos értékelést.",
+      "sendFailed": "Nem tudtuk elküldeni a visszajelzésed. Próbáld újra, vagy válaszd a Most nem lehetőséget.",
+      "send": "Visszajelzés küldése",
+      "sending": "Küldés…"
+    }
+  }
+}

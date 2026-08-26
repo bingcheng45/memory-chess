@@ -1,0 +1,246 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Nowości",
+      "contactUs": "Kontakt",
+      "privacy": "Prywatność"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Wszelkie prawa zastrzeżone.",
+      "followOnX": "Obserwuj nas na Twitterze/X",
+      "productHuntAlt": "Memory Chess - Trenuj wyobraźnię przestrzenną przy pomocy szachów | Product Hunt"
+    },
+    "sound": {
+      "mute": "Wyłącz dźwięk",
+      "unmute": "Włącz dźwięk",
+      "on": "Dźwięk włączony",
+      "off": "Dźwięk wyłączony",
+      "volume": "Głośność"
+    },
+    "language": {
+      "change": "Zmień język. Bieżący język: {language}",
+      "current": "Język: {language}",
+      "select": "Wybierz język"
+    },
+    "otherApps": {
+      "title": "Inne aplikacje autora",
+      "visitWebsite": "Odwiedź stronę →",
+      "iconAlt": "Ikona aplikacji {name}"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Trenuj szachową pamięć i wyobraźnię",
+      "subtitle": "Zapamiętaj pozycję szachową, odtwórz ją z pamięci i od razu otrzymaj wynik. Poprawiaj widzenie szachownicy runda po rundzie.",
+      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>.",
+      "gamesPlayed": "Rozegrane partie: {count}"
+    },
+    "cta": {
+      "play": "Zagraj w Memory Chess",
+      "leaderboard": "Zobacz ranking",
+      "playFree": "Zagraj darmową rundę"
+    },
+    "video": {
+      "title": "Zobacz, jak działa Memory Chess",
+      "subtitle": "Krótki przewodnik: jak studiować szachownicę, odtwarzać pozycję i czytać swój wynik.",
+      "iframeTitle": "Jak grać w Memory Chess",
+      "credit": "Wideo: „A New Way To Train Your Vision”, Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Jak to działa",
+      "title": "Prosty trening szachowej pamięci",
+      "subtitle": "Każda runda ma trzy proste kroki: przeanalizuj pozycję, odtwórz ją i wyciągnij wnioski z wyniku.",
+      "steps": {
+        "observe": {
+          "title": "Obserwuj",
+          "description": "Zapamiętaj, gdzie stoi każda bierka. Szukaj grup, linii i pustych pól, które posłużą za punkty odniesienia."
+        },
+        "recreate": {
+          "title": "Odtwórz",
+          "description": "Gdy szachownica opustoszeje, ustaw każdą bierkę na polu, które pamiętasz."
+        },
+        "improve": {
+          "title": "Poprawiaj się",
+          "description": "Sprawdź wynik, zobacz, co ci umknęło, i spróbuj ponownie z większą liczbą bierek albo krótszym czasem."
+        }
+      }
+    },
+    "board": {
+      "study": "Przeanalizuj szachownicę",
+      "rebuild": "Odtwórz z pamięci"
+    },
+    "learn": {
+      "eyebrow": "Centrum nauki",
+      "title": "Przystępne poradniki szachowe",
+      "description": "Poznaj praktyczne sposoby na lepsze widzenie szachownicy, wyobraźnię, liczenie wariantów i pamięć. Każdy poradnik zawiera ćwiczenia do wypróbowania od razu.",
+      "browseCta": "Przeglądaj poradniki",
+      "beginnerCta": "Zacznij od poradnika dla początkujących"
+    },
+    "faq": {
+      "title": "Pytania o Memory Chess",
+      "items": [
+        {
+          "question": "Czym jest Memory Chess?",
+          "answer": "Memory Chess to darmowa gra pamięciowa na szachownicy. Przez chwilę analizujesz pozycję, odtwarzasz ją z pamięci i dostajesz wynik zależny od tego, ile bierek ustawiłeś poprawnie."
+        },
+        {
+          "question": "Jak się gra?",
+          "answer": "Wybierz liczbę bierek i czas na analizę szachownicy. Gdy pozycja zniknie, ustaw bierki na polach, które pamiętasz. Wyślij odpowiedź, aby zobaczyć celność i czas."
+        },
+        {
+          "question": "Czy początkujący mogą grać w Memory Chess?",
+          "answer": "Tak. Nie musisz znać debiutów ani liczyć wariantów. Zacznij od mniejszej liczby bierek i dłuższego czasu, a poziom podnieś, gdy poczujesz się gotowy."
+        },
+        {
+          "question": "Jak to trenuje wyobraźnię szachową?",
+          "answer": "Każda runda to ukierunkowane ćwiczenie: utrzymać pozycję w głowie i przypomnieć sobie, gdzie stoją bierki. Wynik pokazuje, które pozycje przychodzą łatwo, a nad czym trzeba popracować."
+        },
+        {
+          "question": "Na co zwracać uwagę przy zapamiętywaniu?",
+          "answer": "Zacznij od łatwych punktów odniesienia: królów, hetmanów, rogów i pól brzegowych. Potem szukaj grup, linii, przekątnych i pustych obszarów, zamiast zapamiętywać każdą bierkę osobno."
+        },
+        {
+          "question": "Jak utrudnić sobie grę?",
+          "answer": "Dodaj bierki, skróć czas analizy albo ukryj współrzędne szachownicy. Zmieniaj po jednym ustawieniu, żeby zobaczyć, co robi największą różnicę."
+        },
+        {
+          "question": "Czy Memory Chess jest darmowe?",
+          "answer": "Tak. Możesz grać za darmo bez zakładania konta. Dodanie nazwy do rankingu jest opcjonalne."
+        },
+        {
+          "question": "Jak często ćwiczyć?",
+          "answer": "Kilka skupionych rund w regularnym rytmie to dobry początek. Sesje powinny być na tyle krótkie, żebyś wciąż uważnie analizował każdą pozycję."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Zagraj w Memory Chess online",
+      "description": "Zagraj w Memory Chess online, aby trenować widzenie szachownicy, pamięć i rozpoznawanie wzorców w zadaniach na czas.",
+      "socialTitle": "Zagraj w Memory Chess online",
+      "socialDescription": "Trenuj szachową wyobraźnię i pamięć w interaktywnych zadaniach na czas."
+    },
+    "hud": {
+      "time": "Czas",
+      "submit": "Wyślij",
+      "loading": "Wczytywanie gry…",
+      "status": "Stan partii",
+      "controls": "Sterowanie grą",
+      "complete": "Partia zakończona",
+      "flash": "GOTOWE!"
+    },
+    "config": {
+      "title": "Ustawienia partii",
+      "presetsLabel": "Poziomy trudności",
+      "presetSummary": "{pieces} bierek / {seconds} s",
+      "customLabel": "Ustawienia własne",
+      "pieceCount": "Liczba bierek",
+      "memorizeTime": "Czas na zapamiętanie",
+      "seconds": "{seconds} s",
+      "start": "Rozpocznij trening",
+      "lastGame": "Poprzednia partia: {time} s na rozwiązanie, celność {accuracy}%"
+    },
+    "presets": {
+      "easy": {
+        "label": "Łatwy",
+        "description": "Tylko królowie – idealne na początek"
+      },
+      "medium": {
+        "label": "Średni",
+        "description": "Kilka bierek i spokojny czas na zapamiętanie"
+      },
+      "hard": {
+        "label": "Trudny",
+        "description": "Więcej bierek i mniej czasu na zapamiętanie"
+      },
+      "grandmaster": {
+        "label": "Arcymistrz",
+        "description": "Dla mistrzów szachowych z pamięcią fotograficzną"
+      }
+    },
+    "memorize": {
+      "title": "Zapamiętaj pozycję",
+      "skip": "Pomiń",
+      "hint": "Szachownica opustoszeje, gdy skończy się czas"
+    },
+    "place": {
+      "title": "Ustaw bierki",
+      "subtitle": "Wybierz rodzaj i kolor",
+      "whitePieces": "Białe bierki",
+      "blackPieces": "Czarne bierki",
+      "selectWhite": "Wybierz białe bierki",
+      "selectBlack": "Wybierz czarne bierki",
+      "hint": "Dotknij pola, aby postawić lub usunąć bierkę"
+    },
+    "stats": {
+      "title": "Statystyki",
+      "currentTime": "Bieżący czas",
+      "piecesToMemorize": "Bierki do zapamiętania",
+      "averageAccuracy": "Średnia celność"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Komplet punktów! ✨",
+        "excellent": "Znakomita pamięć!",
+        "great": "Świetna robota!",
+        "wellDone": "Dobra robota!",
+        "goodEffort": "Niezła próba!",
+        "keepPracticing": "Ćwicz dalej!"
+      },
+      "accuracy": "Celność",
+      "piecesCorrectCaption": "bierek poprawnie",
+      "piecesCorrect": "Poprawne bierki",
+      "memorizationTime": "Czas zapamiętywania",
+      "solutionTime": "Czas rozwiązania",
+      "recallSpeed": "Szybkość przypominania",
+      "piecesPerSecond": "{value} bierek/s",
+      "actions": "Działania dla wyniku",
+      "tryAgain": "Spróbuj ponownie",
+      "newGame": "Nowa partia",
+      "submitToLeaderboard": "Wyślij do rankingu",
+      "viewLeaderboard": "Zobacz ranking",
+      "dialog": {
+        "submitTitle": "Wyślij do rankingu",
+        "submitDescription": "Podaj nazwę, która pojawi się w rankingu.",
+        "successTitle": "Wynik wysłany!",
+        "successDescription": "Twój wynik został dodany do rankingu.",
+        "playerName": "Nazwa gracza",
+        "playerNamePlaceholder": "Wpisz swoją nazwę",
+        "error": "Błąd: {message}",
+        "submitFailed": "Nie udało się wysłać wyniku",
+        "cancel": "Anuluj",
+        "submit": "Wyślij wynik",
+        "submitting": "Wysyłanie…",
+        "thanks": "Dziękujemy za udział, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Przejrzyj swoją pozycję",
+      "subtitle": "Porównaj to, co zapamiętałeś, z tym, co wysłałeś.",
+      "unavailable": "Porównanie szachownic jest niedostępne.",
+      "ariaLabel": "Porównanie szachownic",
+      "correct": "Poprawnie",
+      "incorrect": "Błędnie",
+      "missed": "Pominięte",
+      "originalBoard": "Pozycja do zapamiętania",
+      "submittedBoard": "Twoja wysłana pozycja"
+    },
+    "feedback": {
+      "title": "Dziękujemy za grę w Memory Chess!",
+      "prompt": "Jak oceniasz grę?",
+      "placeholder": "Napisz, co się sprawdziło albo co byś zmienił…",
+      "notNow": "Nie teraz",
+      "sentTitle": "Dziękujemy za pomoc w ulepszaniu gry",
+      "sentBody": "Otrzymaliśmy twoją opinię.",
+      "done": "Gotowe",
+      "commentLabel": "Jak grało się w praktyce i co dałoby się poprawić?",
+      "commentOptional": "(opcjonalnie)",
+      "starRating": "{count, plural, one {# gwiazdka} few {# gwiazdki} many {# gwiazdek} other {# gwiazdki}}",
+      "chooseRating": "Wybierz ocenę w gwiazdkach.",
+      "sendFailed": "Nie udało się wysłać opinii. Spróbuj ponownie albo wybierz „Nie teraz”.",
+      "send": "Wyślij opinię",
+      "sending": "Wysyłanie…"
+    }
+  }
+}

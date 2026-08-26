@@ -1,0 +1,246 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Uutta",
+      "contactUs": "Ota yhteyttä",
+      "privacy": "Tietosuoja"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Kaikki oikeudet pidätetään.",
+      "followOnX": "Seuraa meitä Twitterissä/X:ssä",
+      "productHuntAlt": "Memory Chess - Harjoita avaruudellista hahmotusta shakin avulla | Product Hunt"
+    },
+    "sound": {
+      "mute": "Mykistä äänet",
+      "unmute": "Ota äänet käyttöön",
+      "on": "Äänet päällä",
+      "off": "Äänet pois",
+      "volume": "Äänenvoimakkuus"
+    },
+    "language": {
+      "change": "Vaihda kieltä. Nykyinen kieli: {language}",
+      "current": "Kieli: {language}",
+      "select": "Valitse kieli"
+    },
+    "otherApps": {
+      "title": "Tekijän muut sovellukset",
+      "visitWebsite": "Siirry sivustolle →",
+      "iconAlt": "Sovelluksen {name} kuvake"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Harjoita shakkimuistiasi ja hahmotustasi",
+      "subtitle": "Paina mieleen shakkiasema, rakenna se uudelleen muistista ja saat pisteet heti. Paranna laudan hahmotusta kierros kerrallaan.",
+      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>.",
+      "gamesPlayed": "Pelattuja pelejä: {count}"
+    },
+    "cta": {
+      "play": "Pelaa Memory Chessiä",
+      "leaderboard": "Katso tulostaulukko",
+      "playFree": "Pelaa ilmainen kierros"
+    },
+    "video": {
+      "title": "Katso, miten Memory Chess toimii",
+      "subtitle": "Lyhyt opas laudan tutkimiseen, aseman rakentamiseen ja tuloksen tulkintaan.",
+      "iframeTitle": "Näin pelaat Memory Chessiä",
+      "credit": "Video: ”A New Way To Train Your Vision”, Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Näin se toimii",
+      "title": "Yksinkertainen treeni shakkimuistille",
+      "subtitle": "Jokaisessa kierroksessa on kolme yksinkertaista vaihetta: tutki asema, rakenna se uudelleen ja opi tuloksesta.",
+      "steps": {
+        "observe": {
+          "title": "Havainnoi",
+          "description": "Huomaa, missä kukin nappula on. Etsi ryhmiä, linjoja ja tyhjiä ruutuja, jotka toimivat kiintopisteinä."
+        },
+        "recreate": {
+          "title": "Rakenna uudelleen",
+          "description": "Kun lauta tyhjenee, aseta jokainen nappula muistamaasi ruutuun."
+        },
+        "improve": {
+          "title": "Kehity",
+          "description": "Katso tuloksesi, selvitä mikä meni ohi, ja yritä uudelleen useammalla nappulalla tai lyhyemmällä ajalla."
+        }
+      }
+    },
+    "board": {
+      "study": "Tutki lautaa",
+      "rebuild": "Rakenna muistista"
+    },
+    "learn": {
+      "eyebrow": "Oppimiskeskus",
+      "title": "Selkeät shakkioppaat",
+      "description": "Opi käytännön keinoja parantaa laudan hahmotusta, mielikuvitusta, laskentaa ja muistia. Jokaisessa oppaassa on harjoituksia, jotka voit kokeilla heti.",
+      "browseCta": "Selaa shakkioppaita",
+      "beginnerCta": "Aloita aloittelijan oppaasta"
+    },
+    "faq": {
+      "title": "Kysymyksiä Memory Chessistä",
+      "items": [
+        {
+          "question": "Mikä Memory Chess on?",
+          "answer": "Memory Chess on ilmainen laudan muistipeli. Tutkit shakkiasemaa hetken, rakennat sen uudelleen muistista ja saat pisteet sen mukaan, kuinka monta nappulaa asetit oikein."
+        },
+        {
+          "question": "Miten peliä pelataan?",
+          "answer": "Valitse nappuloiden määrä ja se, kuinka kauan haluat tutkia lautaa. Kun asema katoaa, aseta nappulat takaisin muistamiisi ruutuihin. Lähetä vastauksesi, niin näet tarkkuuden ja ajan."
+        },
+        {
+          "question": "Voivatko aloittelijat pelata Memory Chessiä?",
+          "answer": "Kyllä. Sinun ei tarvitse tuntea avauksia tai laskea muunnelmia. Aloita harvemmilla nappuloilla ja pidemmällä ajalla, ja nosta vaikeustasoa kun tunnet olevasi valmis."
+        },
+        {
+          "question": "Miten tämä harjoittaa shakin hahmottamista?",
+          "answer": "Jokainen kierros on kohdennettua harjoitusta aseman pitämisessä mielessä ja nappuloiden paikkojen muistamisessa. Tulos näyttää, mitkä asemat sujuvat helposti ja missä tarvitset lisää harjoitusta."
+        },
+        {
+          "question": "Mihin kannattaa kiinnittää huomiota lautaa muistaessa?",
+          "answer": "Aloita helpoista kiintopisteistä: kuninkaat, kuningattaret, kulmat ja reunaruudut. Etsi sitten ryhmiä, linjoja, viistolinjoja ja tyhjiä alueita sen sijaan, että muistaisit jokaisen nappulan erikseen."
+        },
+        {
+          "question": "Miten teen pelistä vaikeamman?",
+          "answer": "Lisää nappuloita, lyhennä tutkimisaikaa tai piilota laudan koordinaatit. Muuta yhtä asetusta kerrallaan, niin näet mikä vaikuttaa eniten."
+        },
+        {
+          "question": "Onko Memory Chess ilmainen?",
+          "answer": "Kyllä. Voit pelata ilmaiseksi ilman tiliä. Nimen lisääminen tulostaulukkoon on vapaaehtoista."
+        },
+        {
+          "question": "Kuinka usein kannattaa harjoitella?",
+          "answer": "Muutama keskittynyt kierros säännöllisesti on hyvä alku. Pidä harjoitukset niin lyhyinä, että jaksat yhä tutkia jokaisen aseman huolellisesti."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Pelaa Memory Chessiä verkossa",
+      "description": "Pelaa Memory Chessiä verkossa ja harjoita laudan hahmottamista, muistia ja shakin kuviontunnistusta aikarajoitetuilla haasteilla.",
+      "socialTitle": "Pelaa Memory Chessiä verkossa",
+      "socialDescription": "Harjoita shakin hahmottamista ja muistia vuorovaikutteisilla aikarajoitetuilla haasteilla."
+    },
+    "hud": {
+      "time": "Aika",
+      "submit": "Lähetä",
+      "loading": "Ladataan peliä…",
+      "status": "Pelin tila",
+      "controls": "Pelin säätimet",
+      "complete": "Peli päättyi",
+      "flash": "VALMIS!"
+    },
+    "config": {
+      "title": "Pelin asetukset",
+      "presetsLabel": "Vaikeustasot",
+      "presetSummary": "{pieces} nappulaa / {seconds} s",
+      "customLabel": "Omat asetukset",
+      "pieceCount": "Nappuloiden määrä",
+      "memorizeTime": "Muistiinpainamisaika",
+      "seconds": "{seconds} s",
+      "start": "Aloita harjoitus",
+      "lastGame": "Edellinen peli: ratkaisuaika {time} s, tarkkuus {accuracy} %"
+    },
+    "presets": {
+      "easy": {
+        "label": "Helppo",
+        "description": "Vain kuninkaat – täydellinen aloitukseen"
+      },
+      "medium": {
+        "label": "Keskitaso",
+        "description": "Muutama nappula ja reilusti aikaa painaa mieleen"
+      },
+      "hard": {
+        "label": "Vaikea",
+        "description": "Enemmän nappuloita ja vähemmän aikaa"
+      },
+      "grandmaster": {
+        "label": "Suurmestari",
+        "description": "Shakkimestareille, joilla on valokuvamuisti"
+      }
+    },
+    "memorize": {
+      "title": "Paina asema mieleen",
+      "skip": "Ohita",
+      "hint": "Lauta tyhjenee, kun aika loppuu"
+    },
+    "place": {
+      "title": "Aseta nappulat",
+      "subtitle": "Valitse tyyppi ja väri",
+      "whitePieces": "Valkeat nappulat",
+      "blackPieces": "Mustat nappulat",
+      "selectWhite": "Valitse valkeat nappulat",
+      "selectBlack": "Valitse mustat nappulat",
+      "hint": "Napauta ruutua lisätäksesi tai poistaaksesi nappulan"
+    },
+    "stats": {
+      "title": "Tilastot",
+      "currentTime": "Kulunut aika",
+      "piecesToMemorize": "Muistettavat nappulat",
+      "averageAccuracy": "Keskimääräinen tarkkuus"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Täydet pisteet! ✨",
+        "excellent": "Erinomainen muisti!",
+        "great": "Hienoa työtä!",
+        "wellDone": "Hyvin tehty!",
+        "goodEffort": "Hyvä yritys!",
+        "keepPracticing": "Jatka harjoittelua!"
+      },
+      "accuracy": "Tarkkuus",
+      "piecesCorrectCaption": "nappulaa oikein",
+      "piecesCorrect": "Oikeat nappulat",
+      "memorizationTime": "Muistiinpainamisaika",
+      "solutionTime": "Ratkaisuaika",
+      "recallSpeed": "Palautusnopeus",
+      "piecesPerSecond": "{value} nappulaa/s",
+      "actions": "Tulokseen liittyvät toiminnot",
+      "tryAgain": "Yritä uudelleen",
+      "newGame": "Uusi peli",
+      "submitToLeaderboard": "Lähetä tulostaulukkoon",
+      "viewLeaderboard": "Katso tulostaulukko",
+      "dialog": {
+        "submitTitle": "Lähetä tulostaulukkoon",
+        "submitDescription": "Kirjoita nimi, joka näkyy tulostaulukossa.",
+        "successTitle": "Tulos lähetetty!",
+        "successDescription": "Tuloksesi lisättiin tulostaulukkoon.",
+        "playerName": "Pelaajan nimi",
+        "playerNamePlaceholder": "Kirjoita nimesi",
+        "error": "Virhe: {message}",
+        "submitFailed": "Tuloksen lähettäminen epäonnistui",
+        "cancel": "Peruuta",
+        "submit": "Lähetä tulos",
+        "submitting": "Lähetetään…",
+        "thanks": "Kiitos osallistumisesta, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Käy asemasi läpi",
+      "subtitle": "Vertaa muistamaasi siihen, minkä lähetit.",
+      "unavailable": "Lautojen vertailu ei ole käytettävissä.",
+      "ariaLabel": "Lautojen vertailu",
+      "correct": "Oikein",
+      "incorrect": "Väärin",
+      "missed": "Jäi huomaamatta",
+      "originalBoard": "Muistettava asema",
+      "submittedBoard": "Lähettämäsi asema"
+    },
+    "feedback": {
+      "title": "Kiitos, että pelasit Memory Chessiä!",
+      "prompt": "Minkä arvosanan antaisit pelille?",
+      "placeholder": "Kerro, mikä toimi hyvin tai mitä muuttaisit…",
+      "notNow": "Ei nyt",
+      "sentTitle": "Kiitos, että autat meitä kehittymään",
+      "sentBody": "Palautteesi on vastaanotettu.",
+      "done": "Valmis",
+      "commentLabel": "Miltä pelaaminen tuntui, ja mikä tekisi siitä parempaa?",
+      "commentOptional": "(vapaaehtoinen)",
+      "starRating": "{count, plural, one {# tähti} other {# tähteä}}",
+      "chooseRating": "Valitse arvosana tähdillä.",
+      "sendFailed": "Palautteen lähettäminen ei onnistunut. Yritä uudelleen tai valitse Ei nyt.",
+      "send": "Lähetä palaute",
+      "sending": "Lähetetään…"
+    }
+  }
+}

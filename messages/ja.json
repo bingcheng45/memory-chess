@@ -1,0 +1,246 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "更新履歴",
+      "contactUs": "お問い合わせ",
+      "privacy": "プライバシー"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. All rights reserved.",
+      "followOnX": "Twitter/X でフォローする",
+      "productHuntAlt": "Memory Chess - チェスで空間イメージ力を鍛えよう | Product Hunt"
+    },
+    "sound": {
+      "mute": "音を消す",
+      "unmute": "音を出す",
+      "on": "サウンド オン",
+      "off": "サウンド オフ",
+      "volume": "音量"
+    },
+    "language": {
+      "change": "言語を変更します。現在の言語：{language}",
+      "current": "言語：{language}",
+      "select": "言語を選択"
+    },
+    "otherApps": {
+      "title": "制作者のほかのアプリ",
+      "visitWebsite": "サイトを見る →",
+      "iconAlt": "{name} のアプリアイコン"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "チェスの記憶力とイメージ力を鍛える",
+      "subtitle": "チェスの局面を覚え、記憶だけで並べ直すと、その場でスコアが出ます。一局ごとに盤面を見る力が育ちます。",
+      "freeToPlay": "アカウント不要、無料で遊べます。スコアは<link>ランキング</link>で比べることもできます。",
+      "gamesPlayed": "プレイ回数：{count}"
+    },
+    "cta": {
+      "play": "Memory Chess で遊ぶ",
+      "leaderboard": "ランキングを見る",
+      "playFree": "無料で 1 ラウンド遊ぶ"
+    },
+    "video": {
+      "title": "Memory Chess の遊び方を見る",
+      "subtitle": "盤面の見方、局面の並べ直し方、スコアの読み方を短い動画で説明します。",
+      "iframeTitle": "Memory Chess の遊び方",
+      "credit": "動画：Colin Galen「A New Way To Train Your Vision」"
+    },
+    "howItWorks": {
+      "eyebrow": "遊び方",
+      "title": "チェスの記憶力を鍛えるシンプルな練習",
+      "subtitle": "各ラウンドは 3 つの簡単なステップです。局面を見て、並べ直し、スコアから学びます。",
+      "steps": {
+        "observe": {
+          "title": "観察する",
+          "description": "駒がどこにあるかを見ます。駒のまとまり、ライン、目印になる空きマスを探しましょう。"
+        },
+        "recreate": {
+          "title": "並べ直す",
+          "description": "盤面が消えたら、覚えているマスに駒を戻していきます。"
+        },
+        "improve": {
+          "title": "上達する",
+          "description": "スコアを確認し、抜けた部分を見つけて、駒を増やすか時間を縮めてもう一度挑戦しましょう。"
+        }
+      }
+    },
+    "board": {
+      "study": "盤面を覚える",
+      "rebuild": "記憶だけで並べ直す"
+    },
+    "learn": {
+      "eyebrow": "ラーニングセンター",
+      "title": "わかりやすいチェスガイド",
+      "description": "盤面を見る力、イメージ力、読みの力、記憶力を伸ばす実践的な方法を紹介します。各ガイドにはすぐ試せる練習が付いています。",
+      "browseCta": "チェスガイドを見る",
+      "beginnerCta": "初心者ガイドから始める"
+    },
+    "faq": {
+      "title": "Memory Chess についてのご質問",
+      "items": [
+        {
+          "question": "Memory Chess とは何ですか？",
+          "answer": "Memory Chess は無料の盤面記憶ゲームです。チェスの局面を短時間だけ見て、記憶をたよりに並べ直すと、正しく置けた駒の数に応じてスコアが出ます。"
+        },
+        {
+          "question": "遊び方を教えてください",
+          "answer": "駒の数と、盤面を見る時間を選びます。局面が消えたら、覚えているマスに駒を戻してください。解答を送信すると、正答率と所要時間が表示されます。"
+        },
+        {
+          "question": "初心者でも Memory Chess を遊べますか？",
+          "answer": "遊べます。定跡を知っている必要も、手を読む必要もありません。まずは駒を少なく、見る時間を長めにして、慣れてきたら難しくしていきましょう。"
+        },
+        {
+          "question": "どのようにイメージ力が鍛えられますか？",
+          "answer": "各ラウンドは、局面を頭の中に保ち、駒の位置を思い出す練習に集中しています。スコアを見れば、得意な局面と練習が必要な部分がわかります。"
+        },
+        {
+          "question": "盤面を覚えるとき、何に注目すればよいですか？",
+          "answer": "まずはキング、クイーン、隅、端のマスなど、目印になりやすいところから覚えます。そのうえで、駒のまとまり、ライン、斜め、空いている場所を探しましょう。1 つずつ丸暗記するより効果的です。"
+        },
+        {
+          "question": "難易度を上げるには？",
+          "answer": "駒を増やす、見る時間を短くする、盤面の座標を隠す、といった方法があります。何が一番効くかを見るために、設定は 1 つずつ変えてください。"
+        },
+        {
+          "question": "Memory Chess は無料ですか？",
+          "answer": "無料です。アカウントを作らずに遊べます。ランキングに名前を載せるかどうかは自由です。"
+        },
+        {
+          "question": "どのくらいの頻度で練習すべきですか？",
+          "answer": "集中して数ラウンドを定期的に、が良い出発点です。1 局面ずつしっかり見られる程度の短さに保ちましょう。"
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Memory Chess をオンラインでプレイ",
+      "description": "Memory Chess をオンラインでプレイして、盤面のイメージ力、記憶力、チェスのパターン認識を時間制限つきの課題で鍛えましょう。",
+      "socialTitle": "Memory Chess をオンラインでプレイ",
+      "socialDescription": "時間制限つきの対話的な課題で、チェスのイメージ力と記憶力を鍛えましょう。"
+    },
+    "hud": {
+      "time": "時間",
+      "submit": "送信",
+      "loading": "ゲームを読み込み中…",
+      "status": "ゲームの状態",
+      "controls": "ゲーム操作",
+      "complete": "ゲーム終了",
+      "flash": "終了！"
+    },
+    "config": {
+      "title": "ゲーム設定",
+      "presetsLabel": "難易度プリセット",
+      "presetSummary": "{pieces} 駒 / {seconds} 秒",
+      "customLabel": "カスタム設定",
+      "pieceCount": "駒の数",
+      "memorizeTime": "記憶時間",
+      "seconds": "{seconds} 秒",
+      "start": "トレーニングを開始",
+      "lastGame": "前回：解答時間 {time} 秒、正答率 {accuracy}%"
+    },
+    "presets": {
+      "easy": {
+        "label": "やさしい",
+        "description": "キングだけ。始めるのにぴったり"
+      },
+      "medium": {
+        "label": "ふつう",
+        "description": "少なめの駒と、余裕のある記憶時間"
+      },
+      "hard": {
+        "label": "むずかしい",
+        "description": "駒は多め、記憶時間は短め"
+      },
+      "grandmaster": {
+        "label": "グランドマスター",
+        "description": "映像記憶を持つチェスの達人向け"
+      }
+    },
+    "memorize": {
+      "title": "局面を覚えてください",
+      "skip": "スキップ",
+      "hint": "時間が切れると盤面が消えます"
+    },
+    "place": {
+      "title": "駒を並べる",
+      "subtitle": "種類と色を選んでください",
+      "whitePieces": "白の駒",
+      "blackPieces": "黒の駒",
+      "selectWhite": "白の駒を選択",
+      "selectBlack": "黒の駒を選択",
+      "hint": "マスをタップすると駒を置いたり外したりできます"
+    },
+    "stats": {
+      "title": "ゲーム統計",
+      "currentTime": "経過時間",
+      "piecesToMemorize": "覚える駒の数",
+      "averageAccuracy": "平均正答率"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ 満点！ ✨",
+        "excellent": "すばらしい記憶力！",
+        "great": "よくできました！",
+        "wellDone": "いい調子！",
+        "goodEffort": "惜しい！",
+        "keepPracticing": "練習を続けましょう！"
+      },
+      "accuracy": "正答率",
+      "piecesCorrectCaption": "駒が正解",
+      "piecesCorrect": "正解した駒",
+      "memorizationTime": "記憶時間",
+      "solutionTime": "解答時間",
+      "recallSpeed": "想起スピード",
+      "piecesPerSecond": "{value} 駒/秒",
+      "actions": "結果に対する操作",
+      "tryAgain": "もう一度",
+      "newGame": "新しいゲーム",
+      "submitToLeaderboard": "ランキングに登録",
+      "viewLeaderboard": "ランキングを見る",
+      "dialog": {
+        "submitTitle": "ランキングに登録",
+        "submitDescription": "ランキングに表示する名前を入力してください。",
+        "successTitle": "スコアを登録しました！",
+        "successDescription": "スコアがランキングに登録されました。",
+        "playerName": "プレイヤー名",
+        "playerNamePlaceholder": "名前を入力",
+        "error": "エラー：{message}",
+        "submitFailed": "スコアを送信できませんでした",
+        "cancel": "キャンセル",
+        "submit": "スコアを送信",
+        "submitting": "送信中…",
+        "thanks": "ご参加ありがとうございます、{name} さん！"
+      }
+    },
+    "comparison": {
+      "title": "自分の局面を振り返る",
+      "subtitle": "覚えた内容と、送信した内容を見比べてみましょう。",
+      "unavailable": "盤面の比較は利用できません。",
+      "ariaLabel": "盤面の比較",
+      "correct": "正解",
+      "incorrect": "不正解",
+      "missed": "抜け",
+      "originalBoard": "覚えるべき局面",
+      "submittedBoard": "送信した局面"
+    },
+    "feedback": {
+      "title": "Memory Chess で遊んでいただきありがとうございます！",
+      "prompt": "このゲームを評価してください",
+      "placeholder": "良かった点や、変えたほうがいい点をお聞かせください…",
+      "notNow": "あとで",
+      "sentTitle": "改善にご協力いただきありがとうございます",
+      "sentBody": "ご意見を受け取りました。",
+      "done": "完了",
+      "commentLabel": "遊んでみた感想と、もっと良くなる点はありますか？",
+      "commentOptional": "（任意）",
+      "starRating": "{count, plural, other {星 # つ}}",
+      "chooseRating": "星の評価を選んでください。",
+      "sendFailed": "ご意見を送信できませんでした。もう一度お試しいただくか、「あとで」を選んでください。",
+      "send": "意見を送信",
+      "sending": "送信中…"
+    }
+  }
+}

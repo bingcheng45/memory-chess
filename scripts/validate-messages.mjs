@@ -9,22 +9,48 @@
  *
  * Usage: node scripts/validate-messages.mjs
  */
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { IntlMessageFormat } from "intl-messageformat";
 
-const LOCALES = [
-  "en",
-  "es",
-  "ru",
-  "pt-BR",
-  "de",
-  "fr",
-  "hi",
-  "it",
-  "zh-CN",
-  "tr",
-];
+/**
+ * The locale list is read from src/i18n/routing.ts rather than duplicated
+ * here. A hardcoded copy silently drifts -- an earlier version of this script
+ * kept validating ten locales long after the app shipped twenty-four, and
+ * reported success the whole time.
+ */
+function readLocalesFromRouting() {
+  const source = readFileSync(
+    new URL("../src/i18n/routing.ts", import.meta.url),
+    "utf8",
+  );
+  const block = source.match(/export const LOCALES = \[([\s\S]*?)\] as const;/);
+  if (!block) {
+    throw new Error("Could not find LOCALES in src/i18n/routing.ts");
+  }
+  return [...block[1].matchAll(/"([\w-]+)"/g)].map((m) => m[1]);
+}
+
+const LOCALES = readLocalesFromRouting();
 const DEFAULT_LOCALE = "en";
+
+// A catalogue with no locale, or a locale with no catalogue, is a broken build
+// either way -- both directions are checked before anything else runs.
+const catalogueFiles = readdirSync(new URL("../messages/", import.meta.url))
+  .filter((name) => name.endsWith(".json"))
+  .map((name) => name.replace(/\.json$/, ""));
+
+const orphanFiles = catalogueFiles.filter((l) => !LOCALES.includes(l));
+const missingFiles = LOCALES.filter((l) => !catalogueFiles.includes(l));
+
+if (orphanFiles.length || missingFiles.length) {
+  if (missingFiles.length) {
+    console.error(`No catalogue for declared locale(s): ${missingFiles.join(", ")}`);
+  }
+  if (orphanFiles.length) {
+    console.error(`Catalogue with no declared locale: ${orphanFiles.join(", ")}`);
+  }
+  process.exit(1);
+}
 
 /** Strings that must survive translation verbatim. */
 const PROTECTED_TERMS = ["Memory Chess"];

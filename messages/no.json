@@ -1,0 +1,246 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Nyheter",
+      "contactUs": "Kontakt oss",
+      "privacy": "Personvern"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Med enerett.",
+      "followOnX": "Følg oss på Twitter/X",
+      "productHuntAlt": "Memory Chess - Tren romlig forestillingsevne med sjakk | Product Hunt"
+    },
+    "sound": {
+      "mute": "Slå av lyden",
+      "unmute": "Slå på lyden",
+      "on": "Lyd på",
+      "off": "Lyd av",
+      "volume": "Volum"
+    },
+    "language": {
+      "change": "Bytt språk. Gjeldende språk: {language}",
+      "current": "Språk: {language}",
+      "select": "Velg språk"
+    },
+    "otherApps": {
+      "title": "Flere apper fra utvikleren",
+      "visitWebsite": "Besøk nettstedet →",
+      "iconAlt": "Appikon for {name}"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Tren sjakkhukommelsen og forestillingsevnen din",
+      "subtitle": "Husk en sjakkstilling, bygg den opp igjen fra hukommelsen og få poeng med én gang. Forbedre brettforståelsen runde for runde.",
+      "freeToPlay": "Gratis å spille, uten konto. Du kan også sammenligne poengsummen din på <link>topplisten</link>.",
+      "gamesPlayed": "Spilte partier: {count}"
+    },
+    "cta": {
+      "play": "Spill Memory Chess",
+      "leaderboard": "Se topplisten",
+      "playFree": "Spill en gratis runde"
+    },
+    "video": {
+      "title": "Se hvordan Memory Chess fungerer",
+      "subtitle": "En kjapp guide til å studere brettet, bygge opp stillingen og tolke poengsummen.",
+      "iframeTitle": "Slik spiller du Memory Chess",
+      "credit": "Video: «A New Way To Train Your Vision» av Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Slik fungerer det",
+      "title": "En enkel treningsøkt for sjakkhukommelsen",
+      "subtitle": "Hver runde har tre enkle steg: studer stillingen, bygg den opp igjen og lær av poengsummen.",
+      "steps": {
+        "observe": {
+          "title": "Observer",
+          "description": "Merk deg hvor hver brikke står. Se etter grupper, linjer og tomme felt du kan bruke som holdepunkter."
+        },
+        "recreate": {
+          "title": "Gjenskap",
+          "description": "Når brettet tømmes, setter du hver brikke tilbake på feltet du husker."
+        },
+        "improve": {
+          "title": "Forbedre",
+          "description": "Se på poengsummen, finn ut hva du bommet på, og prøv igjen med flere brikker eller kortere tid."
+        }
+      }
+    },
+    "board": {
+      "study": "Studer brettet",
+      "rebuild": "Gjenskap fra hukommelsen"
+    },
+    "learn": {
+      "eyebrow": "Læringssenter",
+      "title": "Enkle sjakkguider",
+      "description": "Lær praktiske måter å forbedre brettforståelse, forestillingsevne, beregning og hukommelse på. Hver guide har øvelser du kan prøve med en gang.",
+      "browseCta": "Bla gjennom guidene",
+      "beginnerCta": "Start med nybegynnerguiden"
+    },
+    "faq": {
+      "title": "Spørsmål om Memory Chess",
+      "items": [
+        {
+          "question": "Hva er Memory Chess?",
+          "answer": "Memory Chess er et gratis hukommelsesspill på sjakkbrettet. Du studerer en stilling en kort stund, bygger den opp igjen fra hukommelsen og får poeng ut fra hvor mange brikker du plasserte riktig."
+        },
+        {
+          "question": "Hvordan spiller jeg?",
+          "answer": "Velg hvor mange brikker du vil ha og hvor lenge du vil studere brettet. Når stillingen forsvinner, setter du brikkene tilbake på feltene du husker. Send inn svaret for å se treffsikkerhet og tid."
+        },
+        {
+          "question": "Kan nybegynnere spille Memory Chess?",
+          "answer": "Ja. Du trenger verken å kunne åpninger eller regne varianter. Start med færre brikker og lengre tid, og øk vanskelighetsgraden når du føler deg klar."
+        },
+        {
+          "question": "Hvordan trener det sjakkvisualisering?",
+          "answer": "Hver runde er målrettet trening i å holde en stilling i hodet og huske hvor brikkene hører hjemme. Poengsummen viser hvilke stillinger som går lett, og hvor du trenger mer trening."
+        },
+        {
+          "question": "Hva bør jeg se etter når jeg husker brettet?",
+          "answer": "Start med enkle holdepunkter som konger, dronninger, hjørner og kantfelt. Se så etter grupper, linjer, diagonaler og tomme områder i stedet for å huske hver brikke for seg."
+        },
+        {
+          "question": "Hvordan gjør jeg spillet vanskeligere?",
+          "answer": "Legg til flere brikker, kort ned studietiden eller skjul brettkoordinatene. Endre én innstilling om gangen, så ser du hva som betyr mest."
+        },
+        {
+          "question": "Er Memory Chess gratis?",
+          "answer": "Ja. Du kan spille gratis uten å opprette konto. Å legge inn navn på topplisten er valgfritt."
+        },
+        {
+          "question": "Hvor ofte bør jeg trene?",
+          "answer": "Noen fokuserte runder jevnlig er en god start. Hold øktene korte nok til at du fortsatt studerer hver stilling grundig."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Spill Memory Chess på nett",
+      "description": "Spill Memory Chess på nett og tren brettvisualisering, hukommelse og mønstergjenkjenning i sjakk med oppgaver på tid.",
+      "socialTitle": "Spill Memory Chess på nett",
+      "socialDescription": "Tren sjakkvisualisering og hukommelse med interaktive oppgaver på tid."
+    },
+    "hud": {
+      "time": "Tid",
+      "submit": "Send inn",
+      "loading": "Laster spillet …",
+      "status": "Spillstatus",
+      "controls": "Spillkontroller",
+      "complete": "Partiet er ferdig",
+      "flash": "FERDIG!"
+    },
+    "config": {
+      "title": "Spillinnstillinger",
+      "presetsLabel": "Vanskelighetsgrader",
+      "presetSummary": "{pieces} brikker / {seconds} s",
+      "customLabel": "Egne innstillinger",
+      "pieceCount": "Antall brikker",
+      "memorizeTime": "Innlæringstid",
+      "seconds": "{seconds} s",
+      "start": "Start treningen",
+      "lastGame": "Forrige parti: {time} s løsningstid med {accuracy} % treffsikkerhet"
+    },
+    "presets": {
+      "easy": {
+        "label": "Lett",
+        "description": "Bare kongene – perfekt for å komme i gang"
+      },
+      "medium": {
+        "label": "Middels",
+        "description": "Noen få brikker med god tid til å huske"
+      },
+      "hard": {
+        "label": "Vanskelig",
+        "description": "Flere brikker og kortere tid til å huske"
+      },
+      "grandmaster": {
+        "label": "Stormester",
+        "description": "For sjakkmestere med fotografisk hukommelse"
+      }
+    },
+    "memorize": {
+      "title": "Husk stillingen",
+      "skip": "Hopp over",
+      "hint": "Brettet tømmes når tiden er ute"
+    },
+    "place": {
+      "title": "Plasser brikkene",
+      "subtitle": "Velg type og farge",
+      "whitePieces": "Hvite brikker",
+      "blackPieces": "Svarte brikker",
+      "selectWhite": "Velg hvite brikker",
+      "selectBlack": "Velg svarte brikker",
+      "hint": "Trykk på et felt for å sette ut eller fjerne en brikke"
+    },
+    "stats": {
+      "title": "Statistikk",
+      "currentTime": "Nåværende tid",
+      "piecesToMemorize": "Brikker å huske",
+      "averageAccuracy": "Gjennomsnittlig treffsikkerhet"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Full pott! ✨",
+        "excellent": "Utmerket hukommelse!",
+        "great": "Flott jobbet!",
+        "wellDone": "Bra gjort!",
+        "goodEffort": "Godt forsøk!",
+        "keepPracticing": "Fortsett å trene!"
+      },
+      "accuracy": "Treffsikkerhet",
+      "piecesCorrectCaption": "brikker riktig",
+      "piecesCorrect": "Riktige brikker",
+      "memorizationTime": "Innlæringstid",
+      "solutionTime": "Løsningstid",
+      "recallSpeed": "Gjenkallingsfart",
+      "piecesPerSecond": "{value} brikker/s",
+      "actions": "Handlinger for resultatet",
+      "tryAgain": "Prøv igjen",
+      "newGame": "Nytt parti",
+      "submitToLeaderboard": "Send til topplisten",
+      "viewLeaderboard": "Se topplisten",
+      "dialog": {
+        "submitTitle": "Send til topplisten",
+        "submitDescription": "Skriv navnet som skal vises på topplisten.",
+        "successTitle": "Resultatet er sendt!",
+        "successDescription": "Resultatet ditt er lagt til på topplisten.",
+        "playerName": "Spillernavn",
+        "playerNamePlaceholder": "Skriv navnet ditt",
+        "error": "Feil: {message}",
+        "submitFailed": "Kunne ikke sende resultatet",
+        "cancel": "Avbryt",
+        "submit": "Send resultatet",
+        "submitting": "Sender …",
+        "thanks": "Takk for at du var med, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Gå gjennom stillingen din",
+      "subtitle": "Sammenlign det du husket med det du sendte inn.",
+      "unavailable": "Brettsammenligning er ikke tilgjengelig.",
+      "ariaLabel": "Brettsammenligning",
+      "correct": "Riktig",
+      "incorrect": "Feil",
+      "missed": "Bommet",
+      "originalBoard": "Stillingen du skulle huske",
+      "submittedBoard": "Stillingen du sendte inn"
+    },
+    "feedback": {
+      "title": "Takk for at du spilte Memory Chess!",
+      "prompt": "Hvilken karakter gir du spillet?",
+      "placeholder": "Fortell oss hva som fungerte bra, eller hva du ville endret …",
+      "notNow": "Ikke nå",
+      "sentTitle": "Takk for at du hjelper oss å bli bedre",
+      "sentBody": "Vi har mottatt tilbakemeldingen din.",
+      "done": "Ferdig",
+      "commentLabel": "Hvordan opplevdes spillingen, og hva ville gjort den bedre?",
+      "commentOptional": "(valgfritt)",
+      "starRating": "{count, plural, one {# stjerne} other {# stjerner}}",
+      "chooseRating": "Velg en vurdering i stjerner.",
+      "sendFailed": "Vi klarte ikke å sende tilbakemeldingen. Prøv igjen eller velg Ikke nå.",
+      "send": "Send tilbakemelding",
+      "sending": "Sender …"
+    }
+  }
+}

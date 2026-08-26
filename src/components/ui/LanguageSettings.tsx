@@ -220,12 +220,15 @@ export default function LanguageSettings({
                 aria-label={t("select")}
                 // Solid, not translucent: at 90% the chess board read straight
                 // through the menu and the labels became hard to scan.
-                className="fixed z-[99990] rounded-lg border border-bg-light bg-bg-card p-2 shadow-2xl shadow-black/60"
+                className="fixed z-[99990] overflow-y-auto overscroll-contain rounded-lg border border-bg-light bg-bg-card p-2 shadow-2xl shadow-black/60"
                 style={{
                   top: anchor.top,
                   left: anchor.left,
                   minWidth: "11rem",
                   width: "max-content",
+                  // Two dozen locales will not fit on a laptop screen; cap to
+                  // the space actually below the button and scroll the rest.
+                  maxHeight: `calc(100vh - ${anchor.top + 16}px)`,
                 }}
               >
                 {menuItems}

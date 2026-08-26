@@ -1,0 +1,246 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Noutăți",
+      "contactUs": "Contact",
+      "privacy": "Confidențialitate"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Toate drepturile rezervate.",
+      "followOnX": "Urmărește-ne pe Twitter/X",
+      "productHuntAlt": "Memory Chess - Antrenează-ți vizualizarea spațială cu ajutorul șahului | Product Hunt"
+    },
+    "sound": {
+      "mute": "Oprește sunetul",
+      "unmute": "Pornește sunetul",
+      "on": "Sunet pornit",
+      "off": "Sunet oprit",
+      "volume": "Volum"
+    },
+    "language": {
+      "change": "Schimbă limba. Limba curentă: {language}",
+      "current": "Limbă: {language}",
+      "select": "Alege limba"
+    },
+    "otherApps": {
+      "title": "Alte aplicații ale creatorului",
+      "visitWebsite": "Vezi site-ul →",
+      "iconAlt": "Pictograma aplicației {name}"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Antrenează-ți memoria și vizualizarea la șah",
+      "subtitle": "Memorează o poziție de șah, reconstruiește-o din memorie și primești pe loc un punctaj. Îmbunătățește-ți vederea de ansamblu a tablei rundă după rundă.",
+      "freeToPlay": "Gratuit, fără cont. Îți poți compara punctajul și în <link>clasament</link>.",
+      "gamesPlayed": "Partide jucate: {count}"
+    },
+    "cta": {
+      "play": "Joacă Memory Chess",
+      "leaderboard": "Vezi clasamentul",
+      "playFree": "Joacă o rundă gratuită"
+    },
+    "video": {
+      "title": "Vezi cum funcționează Memory Chess",
+      "subtitle": "Un ghid scurt despre cum studiezi tabla, reconstruiești poziția și îți citești punctajul.",
+      "iframeTitle": "Cum se joacă Memory Chess",
+      "credit": "Video: „A New Way To Train Your Vision”, de Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Cum funcționează",
+      "title": "Un antrenament simplu pentru memoria ta șahistă",
+      "subtitle": "Fiecare rundă are trei pași simpli: studiezi poziția, o reconstruiești și înveți din punctaj.",
+      "steps": {
+        "observe": {
+          "title": "Observă",
+          "description": "Reține unde stă fiecare piesă. Caută grupuri, linii și pătrate goale care îți pot servi drept repere."
+        },
+        "recreate": {
+          "title": "Reconstruiește",
+          "description": "Când tabla se golește, pune fiecare piesă înapoi pe pătratul pe care ți-l amintești."
+        },
+        "improve": {
+          "title": "Progresează",
+          "description": "Uită-te la punctaj, vezi ce ți-a scăpat și încearcă din nou cu mai multe piese sau cu mai puțin timp."
+        }
+      }
+    },
+    "board": {
+      "study": "Studiază tabla",
+      "rebuild": "Reconstruiește din memorie"
+    },
+    "learn": {
+      "eyebrow": "Centru de învățare",
+      "title": "Ghiduri de șah pe înțelesul tuturor",
+      "description": "Învață metode practice pentru a-ți îmbunătăți vederea tablei, vizualizarea, calculul și memoria. Fiecare ghid conține exerciții pe care le poți încerca imediat.",
+      "browseCta": "Răsfoiește ghidurile",
+      "beginnerCta": "Începe cu ghidul pentru începători"
+    },
+    "faq": {
+      "title": "Întrebări despre Memory Chess",
+      "items": [
+        {
+          "question": "Ce este Memory Chess?",
+          "answer": "Memory Chess este un joc gratuit de memorie pe tabla de șah. Studiezi o poziție pentru scurt timp, o reconstruiești din memorie și primești un punctaj în funcție de câte piese ai așezat corect."
+        },
+        {
+          "question": "Cum se joacă?",
+          "answer": "Alege câte piese vrei și cât timp vrei să studiezi tabla. Când poziția dispare, pune piesele înapoi pe pătratele pe care ți le amintești. Trimite răspunsul ca să vezi precizia și timpul."
+        },
+        {
+          "question": "Pot juca începătorii Memory Chess?",
+          "answer": "Da. Nu trebuie să știi deschideri și nici să calculezi variante. Începe cu mai puține piese și mai mult timp, apoi crește dificultatea când te simți pregătit."
+        },
+        {
+          "question": "Cum antrenează vizualizarea la șah?",
+          "answer": "Fiecare rundă este exercițiu concentrat: să ții o poziție în minte și să-ți amintești unde stă fiecare piesă. Punctajul îți arată ce poziții îți vin ușor și unde ai nevoie de mai mult antrenament."
+        },
+        {
+          "question": "La ce să fiu atent când memorez tabla?",
+          "answer": "Începe cu repere ușoare: regii, damele, colțurile și pătratele de margine. Caută apoi grupuri, linii, diagonale și spații goale, în loc să memorezi fiecare piesă separat."
+        },
+        {
+          "question": "Cum fac jocul mai greu?",
+          "answer": "Adaugă mai multe piese, scurtează timpul de studiu sau ascunde coordonatele tablei. Schimbă câte o singură setare, ca să vezi care contează cel mai mult."
+        },
+        {
+          "question": "Memory Chess este gratuit?",
+          "answer": "Da. Poți juca gratuit, fără cont. Adăugarea unui nume în clasament este opțională."
+        },
+        {
+          "question": "Cât de des ar trebui să exersez?",
+          "answer": "Câteva runde făcute cu atenție, în mod regulat, sunt un început bun. Ține sesiunile suficient de scurte cât să poți studia atent fiecare poziție."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Joacă Memory Chess online",
+      "description": "Joacă Memory Chess online ca să-ți antrenezi vizualizarea tablei, memoria și recunoașterea tiparelor la șah, prin provocări cronometrate.",
+      "socialTitle": "Joacă Memory Chess online",
+      "socialDescription": "Antrenează-ți vizualizarea și memoria la șah prin provocări interactive cronometrate."
+    },
+    "hud": {
+      "time": "Timp",
+      "submit": "Trimite",
+      "loading": "Se încarcă jocul…",
+      "status": "Starea partidei",
+      "controls": "Comenzile partidei",
+      "complete": "Partidă încheiată",
+      "flash": "GATA!"
+    },
+    "config": {
+      "title": "Setările partidei",
+      "presetsLabel": "Niveluri de dificultate",
+      "presetSummary": "{pieces} piese / {seconds} s",
+      "customLabel": "Setări personalizate",
+      "pieceCount": "Numărul de piese",
+      "memorizeTime": "Timp de memorare",
+      "seconds": "{seconds} s",
+      "start": "Începe antrenamentul",
+      "lastGame": "Partida anterioară: {time} s timp de rezolvare, precizie {accuracy}%"
+    },
+    "presets": {
+      "easy": {
+        "label": "Ușor",
+        "description": "Doar regii – perfect pentru început"
+      },
+      "medium": {
+        "label": "Mediu",
+        "description": "Câteva piese și timp suficient pentru memorare"
+      },
+      "hard": {
+        "label": "Dificil",
+        "description": "Mai multe piese și mai puțin timp de memorare"
+      },
+      "grandmaster": {
+        "label": "Mare maestru",
+        "description": "Pentru maeștrii cu memorie fotografică"
+      }
+    },
+    "memorize": {
+      "title": "Memorează poziția",
+      "skip": "Sari peste",
+      "hint": "Tabla se golește când se termină timpul"
+    },
+    "place": {
+      "title": "Așază piesele",
+      "subtitle": "Alege tipul și culoarea",
+      "whitePieces": "Piese albe",
+      "blackPieces": "Piese negre",
+      "selectWhite": "Selectează piesele albe",
+      "selectBlack": "Selectează piesele negre",
+      "hint": "Atinge un pătrat ca să adaugi sau să scoți o piesă"
+    },
+    "stats": {
+      "title": "Statistici",
+      "currentTime": "Timp curent",
+      "piecesToMemorize": "Piese de memorat",
+      "averageAccuracy": "Precizie medie"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Punctaj perfect! ✨",
+        "excellent": "Memorie excelentă!",
+        "great": "Foarte bine!",
+        "wellDone": "Bravo!",
+        "goodEffort": "Încercare bună!",
+        "keepPracticing": "Continuă să exersezi!"
+      },
+      "accuracy": "Precizie",
+      "piecesCorrectCaption": "piese corecte",
+      "piecesCorrect": "Piese corecte",
+      "memorizationTime": "Timp de memorare",
+      "solutionTime": "Timp de rezolvare",
+      "recallSpeed": "Viteză de reamintire",
+      "piecesPerSecond": "{value} piese/s",
+      "actions": "Acțiuni pentru rezultat",
+      "tryAgain": "Încearcă din nou",
+      "newGame": "Partidă nouă",
+      "submitToLeaderboard": "Trimite în clasament",
+      "viewLeaderboard": "Vezi clasamentul",
+      "dialog": {
+        "submitTitle": "Trimite în clasament",
+        "submitDescription": "Scrie numele care va apărea în clasament.",
+        "successTitle": "Rezultat trimis!",
+        "successDescription": "Rezultatul tău a fost adăugat în clasament.",
+        "playerName": "Numele jucătorului",
+        "playerNamePlaceholder": "Scrie-ți numele",
+        "error": "Eroare: {message}",
+        "submitFailed": "Rezultatul nu a putut fi trimis",
+        "cancel": "Anulează",
+        "submit": "Trimite rezultatul",
+        "submitting": "Se trimite…",
+        "thanks": "Mulțumim că ai participat, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Revezi-ți poziția",
+      "subtitle": "Compară ce ai memorat cu ce ai trimis.",
+      "unavailable": "Compararea tablelor nu este disponibilă.",
+      "ariaLabel": "Compararea tablelor",
+      "correct": "Corect",
+      "incorrect": "Greșit",
+      "missed": "Omis",
+      "originalBoard": "Poziția de reținut",
+      "submittedBoard": "Poziția trimisă de tine"
+    },
+    "feedback": {
+      "title": "Mulțumim că ai jucat Memory Chess!",
+      "prompt": "Ce notă i-ai da jocului?",
+      "placeholder": "Spune-ne ce a mers bine sau ce ai schimba…",
+      "notNow": "Nu acum",
+      "sentTitle": "Mulțumim că ne ajuți să ne îmbunătățim",
+      "sentBody": "Am primit părerea ta.",
+      "done": "Gata",
+      "commentLabel": "Cum ți s-a părut jocul și ce l-ar face mai bun?",
+      "commentOptional": "(opțional)",
+      "starRating": "{count, plural, one {# stea} few {# stele} other {# de stele}}",
+      "chooseRating": "Te rugăm să alegi o notă în stele.",
+      "sendFailed": "Nu am putut trimite părerea ta. Încearcă din nou sau alege „Nu acum”.",
+      "send": "Trimite părerea",
+      "sending": "Se trimite…"
+    }
+  }
+}

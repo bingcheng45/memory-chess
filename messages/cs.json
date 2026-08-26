@@ -1,0 +1,246 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Novinky",
+      "contactUs": "Kontakt",
+      "privacy": "Soukromí"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Všechna práva vyhrazena.",
+      "followOnX": "Sledujte nás na Twitteru/X",
+      "productHuntAlt": "Memory Chess - Trénujte prostorovou představivost pomocí šachů | Product Hunt"
+    },
+    "sound": {
+      "mute": "Vypnout zvuk",
+      "unmute": "Zapnout zvuk",
+      "on": "Zvuk zapnutý",
+      "off": "Zvuk vypnutý",
+      "volume": "Hlasitost"
+    },
+    "language": {
+      "change": "Změnit jazyk. Aktuální jazyk: {language}",
+      "current": "Jazyk: {language}",
+      "select": "Vyberte jazyk"
+    },
+    "otherApps": {
+      "title": "Další aplikace autora",
+      "visitWebsite": "Přejít na web →",
+      "iconAlt": "Ikona aplikace {name}"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Trénujte šachovou paměť a představivost",
+      "subtitle": "Zapamatujte si šachovou pozici, poskládejte ji zpátky po paměti a hned dostanete skóre. Zlepšujte přehled na šachovnici kolo za kolem.",
+      "freeToPlay": "Zdarma a bez zakládání účtu. Své skóre můžete porovnat i v <link>žebříčku</link>.",
+      "gamesPlayed": "Odehraných partií: {count}"
+    },
+    "cta": {
+      "play": "Hrát Memory Chess",
+      "leaderboard": "Zobrazit žebříček",
+      "playFree": "Zahrát si kolo zdarma"
+    },
+    "video": {
+      "title": "Podívejte se, jak Memory Chess funguje",
+      "subtitle": "Krátký průvodce: jak si prohlédnout šachovnici, poskládat pozici a přečíst si své skóre.",
+      "iframeTitle": "Jak hrát Memory Chess",
+      "credit": "Video: „A New Way To Train Your Vision“ od Colina Galena"
+    },
+    "howItWorks": {
+      "eyebrow": "Jak to funguje",
+      "title": "Jednoduchý trénink šachové paměti",
+      "subtitle": "Každé kolo má tři jednoduché kroky: prohlédnout si pozici, poskládat ji a poučit se ze skóre.",
+      "steps": {
+        "observe": {
+          "title": "Pozorujte",
+          "description": "Všímejte si, kde stojí jednotlivé figurky. Hledejte skupiny, linie a prázdná pole, která poslouží jako záchytné body."
+        },
+        "recreate": {
+          "title": "Poskládejte",
+          "description": "Až se šachovnice vyprázdní, vraťte každou figurku na pole, které si pamatujete."
+        },
+        "improve": {
+          "title": "Zlepšujte se",
+          "description": "Podívejte se na skóre, zjistěte, co vám uniklo, a zkuste to znovu s více figurkami nebo kratším časem."
+        }
+      }
+    },
+    "board": {
+      "study": "Prohlédněte si šachovnici",
+      "rebuild": "Poskládejte po paměti"
+    },
+    "learn": {
+      "eyebrow": "Výukové centrum",
+      "title": "Srozumitelné šachové návody",
+      "description": "Naučte se praktické způsoby, jak zlepšit přehled na šachovnici, představivost, výpočet variant a paměť. Každý návod obsahuje cvičení, která můžete zkusit hned.",
+      "browseCta": "Procházet návody",
+      "beginnerCta": "Začněte návodem pro začátečníky"
+    },
+    "faq": {
+      "title": "Otázky k Memory Chess",
+      "items": [
+        {
+          "question": "Co je Memory Chess?",
+          "answer": "Memory Chess je bezplatná paměťová hra na šachovnici. Chvíli si prohlížíte pozici, pak ji poskládáte po paměti a dostanete skóre podle toho, kolik figurek jste umístili správně."
+        },
+        {
+          "question": "Jak se hraje?",
+          "answer": "Zvolte počet figurek a čas na prohlížení šachovnice. Jakmile pozice zmizí, vraťte figurky na pole, která si pamatujete. Odešlete odpověď a uvidíte přesnost i čas."
+        },
+        {
+          "question": "Mohou Memory Chess hrát začátečníci?",
+          "answer": "Ano. Nemusíte znát zahájení ani počítat varianty. Začněte s méně figurkami a delším časem a obtížnost zvyšte, až se budete cítit připraveni."
+        },
+        {
+          "question": "Jak to trénuje šachovou představivost?",
+          "answer": "Každé kolo je cílený trénink v udržení pozice v hlavě a vybavení si, kam figurky patří. Skóre ukáže, které pozice jdou snadno a kde je potřeba víc cvičit."
+        },
+        {
+          "question": "Čeho si při zapamatování všímat?",
+          "answer": "Začněte snadnými záchytnými body: králové, dámy, rohy a krajní pole. Potom hledejte skupiny, linie, diagonály a prázdná místa, místo abyste si pamatovali každou figurku zvlášť."
+        },
+        {
+          "question": "Jak si hru ztížit?",
+          "answer": "Přidejte figurky, zkraťte čas na prohlížení nebo skryjte souřadnice šachovnice. Měňte vždy jen jedno nastavení, ať poznáte, co má největší vliv."
+        },
+        {
+          "question": "Je Memory Chess zdarma?",
+          "answer": "Ano. Hrát můžete zdarma a bez účtu. Zápis jména do žebříčku je dobrovolný."
+        },
+        {
+          "question": "Jak často trénovat?",
+          "answer": "Pár soustředěných kol pravidelně je dobrý začátek. Udržujte lekce dost krátké na to, abyste si každou pozici stále pečlivě prohlédli."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Hrajte Memory Chess online",
+      "description": "Hrajte Memory Chess online a trénujte přehled na šachovnici, paměť a rozpoznávání šachových vzorců v úlohách na čas.",
+      "socialTitle": "Hrajte Memory Chess online",
+      "socialDescription": "Trénujte šachovou představivost a paměť v interaktivních úlohách na čas."
+    },
+    "hud": {
+      "time": "Čas",
+      "submit": "Odeslat",
+      "loading": "Načítání hry…",
+      "status": "Stav partie",
+      "controls": "Ovládání hry",
+      "complete": "Partie dokončena",
+      "flash": "HOTOVO!"
+    },
+    "config": {
+      "title": "Nastavení hry",
+      "presetsLabel": "Úrovně obtížnosti",
+      "presetSummary": "{pieces} figurek / {seconds} s",
+      "customLabel": "Vlastní nastavení",
+      "pieceCount": "Počet figurek",
+      "memorizeTime": "Čas na zapamatování",
+      "seconds": "{seconds} s",
+      "start": "Začít trénink",
+      "lastGame": "Minulá partie: {time} s na vyřešení, přesnost {accuracy} %"
+    },
+    "presets": {
+      "easy": {
+        "label": "Lehká",
+        "description": "Jen králové – ideální pro začátek"
+      },
+      "medium": {
+        "label": "Střední",
+        "description": "Několik figurek a pohodlný čas na zapamatování"
+      },
+      "hard": {
+        "label": "Těžká",
+        "description": "Více figurek a méně času na zapamatování"
+      },
+      "grandmaster": {
+        "label": "Velmistr",
+        "description": "Pro šachové mistry s fotografickou pamětí"
+      }
+    },
+    "memorize": {
+      "title": "Zapamatujte si pozici",
+      "skip": "Přeskočit",
+      "hint": "Až vyprší čas, šachovnice se vyprázdní"
+    },
+    "place": {
+      "title": "Rozestavte figurky",
+      "subtitle": "Vyberte druh a barvu",
+      "whitePieces": "Bílé figurky",
+      "blackPieces": "Černé figurky",
+      "selectWhite": "Vybrat bílé figurky",
+      "selectBlack": "Vybrat černé figurky",
+      "hint": "Klepnutím na pole figurku přidáte nebo odeberete"
+    },
+    "stats": {
+      "title": "Statistiky",
+      "currentTime": "Aktuální čas",
+      "piecesToMemorize": "Figurky k zapamatování",
+      "averageAccuracy": "Průměrná přesnost"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Plný počet! ✨",
+        "excellent": "Vynikající paměť!",
+        "great": "Skvělá práce!",
+        "wellDone": "Dobrá práce!",
+        "goodEffort": "Slušný pokus!",
+        "keepPracticing": "Trénujte dál!"
+      },
+      "accuracy": "Přesnost",
+      "piecesCorrectCaption": "figurek správně",
+      "piecesCorrect": "Správné figurky",
+      "memorizationTime": "Čas na zapamatování",
+      "solutionTime": "Čas řešení",
+      "recallSpeed": "Rychlost vybavování",
+      "piecesPerSecond": "{value} figurek/s",
+      "actions": "Akce k výsledku",
+      "tryAgain": "Zkusit znovu",
+      "newGame": "Nová partie",
+      "submitToLeaderboard": "Odeslat do žebříčku",
+      "viewLeaderboard": "Zobrazit žebříček",
+      "dialog": {
+        "submitTitle": "Odeslat do žebříčku",
+        "submitDescription": "Zadejte jméno, které se zobrazí v žebříčku.",
+        "successTitle": "Výsledek odeslán!",
+        "successDescription": "Váš výsledek byl přidán do žebříčku.",
+        "playerName": "Jméno hráče",
+        "playerNamePlaceholder": "Zadejte své jméno",
+        "error": "Chyba: {message}",
+        "submitFailed": "Výsledek se nepodařilo odeslat",
+        "cancel": "Zrušit",
+        "submit": "Odeslat výsledek",
+        "submitting": "Odesílání…",
+        "thanks": "Díky za účast, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Projděte si svou pozici",
+      "subtitle": "Porovnejte, co jste si zapamatovali, s tím, co jste odeslali.",
+      "unavailable": "Porovnání šachovnic není k dispozici.",
+      "ariaLabel": "Porovnání šachovnic",
+      "correct": "Správně",
+      "incorrect": "Špatně",
+      "missed": "Vynecháno",
+      "originalBoard": "Pozice k zapamatování",
+      "submittedBoard": "Vámi odeslaná pozice"
+    },
+    "feedback": {
+      "title": "Díky, že jste si zahráli Memory Chess!",
+      "prompt": "Jak byste hru ohodnotili?",
+      "placeholder": "Napište, co fungovalo dobře nebo co byste změnili…",
+      "notNow": "Teď ne",
+      "sentTitle": "Díky, že nám pomáháte se zlepšovat",
+      "sentBody": "Vaši zpětnou vazbu jsme dostali.",
+      "done": "Hotovo",
+      "commentLabel": "Jaké to bylo hrát a co by hru vylepšilo?",
+      "commentOptional": "(nepovinné)",
+      "starRating": "{count, plural, one {# hvězdička} few {# hvězdičky} many {# hvězdičky} other {# hvězdiček}}",
+      "chooseRating": "Vyberte prosím hodnocení hvězdičkami.",
+      "sendFailed": "Zpětnou vazbu se nepodařilo odeslat. Zkuste to znovu nebo zvolte „Teď ne“.",
+      "send": "Odeslat zpětnou vazbu",
+      "sending": "Odesílání…"
+    }
+  }
+}

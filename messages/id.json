@@ -1,0 +1,246 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Yang Baru",
+      "contactUs": "Hubungi Kami",
+      "privacy": "Privasi"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Seluruh hak cipta dilindungi.",
+      "followOnX": "Ikuti kami di Twitter/X",
+      "productHuntAlt": "Memory Chess - Latih visualisasi spasial Anda lewat catur | Product Hunt"
+    },
+    "sound": {
+      "mute": "Matikan suara",
+      "unmute": "Nyalakan suara",
+      "on": "Suara aktif",
+      "off": "Suara nonaktif",
+      "volume": "Volume"
+    },
+    "language": {
+      "change": "Ganti bahasa. Bahasa saat ini: {language}",
+      "current": "Bahasa: {language}",
+      "select": "Pilih bahasa"
+    },
+    "otherApps": {
+      "title": "Aplikasi lain dari pembuatnya",
+      "visitWebsite": "Kunjungi situs →",
+      "iconAlt": "Ikon aplikasi {name}"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Latih ingatan dan visualisasi catur Anda",
+      "subtitle": "Hafalkan sebuah posisi catur, susun ulang dari ingatan, dan langsung dapatkan skor. Pertajam penglihatan papan Anda ronde demi ronde.",
+      "freeToPlay": "Gratis dimainkan, tanpa perlu akun. Anda juga bisa membandingkan skor di <link>papan peringkat</link>.",
+      "gamesPlayed": "Permainan dimainkan: {count}"
+    },
+    "cta": {
+      "play": "Mainkan Memory Chess",
+      "leaderboard": "Lihat papan peringkat",
+      "playFree": "Mainkan satu ronde gratis"
+    },
+    "video": {
+      "title": "Lihat cara kerja Memory Chess",
+      "subtitle": "Panduan singkat untuk mengamati papan, menyusun ulang posisi, dan membaca skor Anda.",
+      "iframeTitle": "Cara bermain Memory Chess",
+      "credit": "Video: “A New Way To Train Your Vision” oleh Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Cara kerjanya",
+      "title": "Latihan sederhana untuk ingatan catur Anda",
+      "subtitle": "Setiap ronde punya tiga langkah sederhana: amati posisinya, susun ulang, lalu pelajari skor Anda.",
+      "steps": {
+        "observe": {
+          "title": "Amati",
+          "description": "Perhatikan letak setiap bidak. Cari kelompok, garis, dan kotak kosong yang bisa jadi patokan."
+        },
+        "recreate": {
+          "title": "Susun ulang",
+          "description": "Saat papan dikosongkan, kembalikan setiap bidak ke kotak yang Anda ingat."
+        },
+        "improve": {
+          "title": "Tingkatkan",
+          "description": "Cek skor Anda, lihat apa yang terlewat, lalu coba lagi dengan lebih banyak bidak atau waktu lebih singkat."
+        }
+      }
+    },
+    "board": {
+      "study": "Amati papannya",
+      "rebuild": "Susun ulang dari ingatan"
+    },
+    "learn": {
+      "eyebrow": "Pusat belajar",
+      "title": "Panduan catur yang mudah dipahami",
+      "description": "Pelajari cara praktis meningkatkan penglihatan papan, visualisasi, perhitungan, dan ingatan. Setiap panduan berisi latihan yang bisa langsung dicoba.",
+      "browseCta": "Jelajahi panduan catur",
+      "beginnerCta": "Mulai dari panduan pemula"
+    },
+    "faq": {
+      "title": "Pertanyaan seputar Memory Chess",
+      "items": [
+        {
+          "question": "Apa itu Memory Chess?",
+          "answer": "Memory Chess adalah permainan ingatan papan yang gratis. Anda mengamati sebuah posisi catur sebentar, menyusunnya ulang dari ingatan, lalu mendapat skor berdasarkan berapa banyak bidak yang Anda letakkan dengan benar."
+        },
+        {
+          "question": "Bagaimana cara bermainnya?",
+          "answer": "Pilih jumlah bidak dan berapa lama Anda ingin mengamati papan. Setelah posisinya hilang, kembalikan bidak ke kotak yang Anda ingat. Kirim jawaban Anda untuk melihat akurasi dan waktunya."
+        },
+        {
+          "question": "Bisakah pemula bermain Memory Chess?",
+          "answer": "Bisa. Anda tidak perlu tahu pembukaan atau menghitung langkah. Mulailah dengan sedikit bidak dan waktu lebih panjang, lalu naikkan kesulitannya saat sudah siap."
+        },
+        {
+          "question": "Bagaimana ini melatih visualisasi catur?",
+          "answer": "Setiap ronde melatih Anda secara khusus untuk menahan sebuah posisi di kepala dan mengingat letak tiap bidak. Skor Anda menunjukkan posisi mana yang terasa mudah dan bagian mana yang perlu lebih banyak latihan."
+        },
+        {
+          "question": "Apa yang harus diperhatikan saat menghafal papan?",
+          "answer": "Mulailah dari patokan yang mudah seperti raja, menteri, sudut, dan kotak tepi. Setelah itu cari kelompok, garis, diagonal, dan ruang kosong, alih-alih menghafal tiap bidak satu per satu."
+        },
+        {
+          "question": "Bagaimana membuat permainannya lebih sulit?",
+          "answer": "Tambah jumlah bidak, persingkat waktu mengamati, atau sembunyikan koordinat papan. Ubah satu pengaturan saja setiap kali agar terlihat mana yang paling berpengaruh."
+        },
+        {
+          "question": "Apakah Memory Chess gratis?",
+          "answer": "Ya. Anda bisa bermain gratis tanpa membuat akun. Menuliskan nama di papan peringkat sifatnya opsional."
+        },
+        {
+          "question": "Seberapa sering sebaiknya berlatih?",
+          "answer": "Beberapa ronde yang fokus secara rutin sudah jadi awal yang baik. Jaga durasinya tetap singkat agar Anda masih bisa mengamati setiap posisi dengan cermat."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Main Memory Chess online",
+      "description": "Main Memory Chess online untuk melatih visualisasi papan, daya ingat, dan pengenalan pola catur lewat tantangan berbatas waktu.",
+      "socialTitle": "Main Memory Chess online",
+      "socialDescription": "Latih visualisasi dan ingatan catur Anda lewat tantangan interaktif berbatas waktu."
+    },
+    "hud": {
+      "time": "Waktu",
+      "submit": "Kirim",
+      "loading": "Memuat permainan…",
+      "status": "Status permainan",
+      "controls": "Kontrol permainan",
+      "complete": "Permainan selesai",
+      "flash": "SELESAI!"
+    },
+    "config": {
+      "title": "Pengaturan permainan",
+      "presetsLabel": "Tingkat kesulitan",
+      "presetSummary": "{pieces} bidak / {seconds} dtk",
+      "customLabel": "Pengaturan sendiri",
+      "pieceCount": "Jumlah bidak",
+      "memorizeTime": "Waktu menghafal",
+      "seconds": "{seconds} dtk",
+      "start": "Mulai berlatih",
+      "lastGame": "Permainan terakhir: {time} dtk waktu penyelesaian dengan akurasi {accuracy}%"
+    },
+    "presets": {
+      "easy": {
+        "label": "Mudah",
+        "description": "Hanya raja — pas untuk memulai"
+      },
+      "medium": {
+        "label": "Sedang",
+        "description": "Beberapa bidak dengan waktu menghafal yang longgar"
+      },
+      "hard": {
+        "label": "Sulit",
+        "description": "Lebih banyak bidak dengan waktu menghafal lebih singkat"
+      },
+      "grandmaster": {
+        "label": "Grandmaster",
+        "description": "Untuk master catur dengan ingatan fotografis"
+      }
+    },
+    "memorize": {
+      "title": "Hafalkan posisinya",
+      "skip": "Lewati",
+      "hint": "Papan akan dikosongkan saat waktu habis"
+    },
+    "place": {
+      "title": "Letakkan bidak",
+      "subtitle": "Pilih jenis dan warna",
+      "whitePieces": "Bidak putih",
+      "blackPieces": "Bidak hitam",
+      "selectWhite": "Pilih bidak putih",
+      "selectBlack": "Pilih bidak hitam",
+      "hint": "Ketuk kotak untuk menambah atau menghapus bidak"
+    },
+    "stats": {
+      "title": "Statistik",
+      "currentTime": "Waktu berjalan",
+      "piecesToMemorize": "Bidak untuk dihafal",
+      "averageAccuracy": "Akurasi rata-rata"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Skor sempurna! ✨",
+        "excellent": "Ingatan luar biasa!",
+        "great": "Kerja bagus!",
+        "wellDone": "Bagus sekali!",
+        "goodEffort": "Usaha yang bagus!",
+        "keepPracticing": "Terus berlatih!"
+      },
+      "accuracy": "Akurasi",
+      "piecesCorrectCaption": "bidak benar",
+      "piecesCorrect": "Bidak benar",
+      "memorizationTime": "Waktu menghafal",
+      "solutionTime": "Waktu penyelesaian",
+      "recallSpeed": "Kecepatan mengingat",
+      "piecesPerSecond": "{value} bidak/dtk",
+      "actions": "Tindakan untuk hasil",
+      "tryAgain": "Coba lagi",
+      "newGame": "Permainan baru",
+      "submitToLeaderboard": "Kirim ke papan peringkat",
+      "viewLeaderboard": "Lihat papan peringkat",
+      "dialog": {
+        "submitTitle": "Kirim ke papan peringkat",
+        "submitDescription": "Tulis nama yang akan tampil di papan peringkat.",
+        "successTitle": "Skor terkirim!",
+        "successDescription": "Skor Anda berhasil dikirim ke papan peringkat.",
+        "playerName": "Nama pemain",
+        "playerNamePlaceholder": "Tulis nama Anda",
+        "error": "Kesalahan: {message}",
+        "submitFailed": "Gagal mengirim skor",
+        "cancel": "Batal",
+        "submit": "Kirim skor",
+        "submitting": "Mengirim…",
+        "thanks": "Terima kasih sudah ikut, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Tinjau posisi Anda",
+      "subtitle": "Bandingkan yang Anda hafal dengan yang Anda kirim.",
+      "unavailable": "Perbandingan papan tidak tersedia.",
+      "ariaLabel": "Perbandingan papan",
+      "correct": "Benar",
+      "incorrect": "Salah",
+      "missed": "Terlewat",
+      "originalBoard": "Posisi yang harus diingat",
+      "submittedBoard": "Posisi yang Anda kirim"
+    },
+    "feedback": {
+      "title": "Terima kasih sudah memainkan Memory Chess!",
+      "prompt": "Berapa nilai Anda untuk permainan ini?",
+      "placeholder": "Ceritakan apa yang sudah bagus atau apa yang ingin Anda ubah…",
+      "notNow": "Nanti saja",
+      "sentTitle": "Terima kasih sudah membantu kami berkembang",
+      "sentBody": "Masukan Anda sudah kami terima.",
+      "done": "Selesai",
+      "commentLabel": "Bagaimana rasanya bermain, dan apa yang bisa membuatnya lebih baik?",
+      "commentOptional": "(opsional)",
+      "starRating": "{count, plural, other {# bintang}}",
+      "chooseRating": "Silakan pilih penilaian bintang.",
+      "sendFailed": "Kami tidak bisa mengirim masukan Anda. Coba lagi atau pilih Nanti saja.",
+      "send": "Kirim masukan",
+      "sending": "Mengirim…"
+    }
+  }
+}

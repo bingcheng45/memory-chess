@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Jak poprawić grę w szachy jako początkujący",
+    "h1": "Jak poprawić grę w szachy jako początkujący",
+    "description": "Trzymaj się prostego planu: lepiej widz szachownicę, zapamiętuj pozycje i graj bezpieczniejsze ruchy.",
+    "primaryKeyword": "jak poprawić grę w szachy",
+    "secondaryKeywords": [
+      "plan rozwoju w szachach",
+      "trening szachowy dla początkujących",
+      "rutyna szachowa dla początkujących",
+      "mniej błędów w szachach",
+      "widzenie szachownicy"
+    ],
+    "painPoint": "Nie wiesz, co ćwiczyć ani od czego zacząć.",
+    "ctaLabel": "Zacznij rundę dla początkujących",
+    "quickAnswer": "Stosuj krótką codzienną rutynę: ćwicz widzenie szachownicy, trenuj pamięć, zagraj partię i przeanalizuj jeden błąd. Powtarzaj 20 do 30 minut dziennie.",
+    "keyTakeaways": [
+      "Widzenie i pamiętanie szachownicy znaczy więcej niż uczenie się wielu otwarć.",
+      "Krótka codzienna praktyka działa lepiej niż rzadkie długie sesje.",
+      "Notuj swoje błędy i dokładność odtwarzania, nie tylko ranking."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy znają zasady, a wciąż gubią figury.",
+      "Początkujący, którym idą zadania, ale nie partie.",
+      "Każdy, kto nie wie, od czego zacząć naukę."
+    ],
+    "timeToRead": "9 minut czytania",
+    "introParagraphs": [
+      "Większość początkujących nie potrzebuje kolejnych otwarć, filmów ani kursów. Potrzebują panować nad szachownicą i sprawdzać, czy ruch jest bezpieczny, zanim go zagrają.",
+      "Memory Chess pomaga ćwiczyć obie umiejętności. Lepsze odtwarzanie pozycji ułatwia dostrzeganie szachów, bić i zagrożeń."
+    ],
+    "startHereTitle": "Zacznij od tej rutyny dla początkujących",
+    "startHereSteps": [
+      "Poświęć 3 minuty na skanowanie szachownicy i nazwij figury atakowane, bronione i niebronione.",
+      "Rozegraj jedną rundę Memory Chess z 8 bierkami i 10-sekundowym podglądem.",
+      "Przerób dwie krótkie pozycje taktyczne, wypowiadając szachy, bicia i zagrożenia przed wyborem ruchu.",
+      "Zagraj jedną partię szybką. Każdy duży błąd oznacz jako widzenie, pamięć albo niedoczas.",
+      "Zapisz jedną rzecz do powtórzenia jutro."
+    ],
+    "drillSectionTitle": "Proste ćwiczenia na lepsze partie",
+    "drillCards": [
+      {
+        "title": "Skan szachownicy w 10 sekund",
+        "description": "Weź łatwy układ i znajdź każdą niebronioną bierkę, zanim skończy się czas.",
+        "duration": "3 minuty",
+        "goal": "Zbudować kontrolę bezpieczeństwa przed każdym ruchem.",
+        "ctaLabel": "Uruchom skan"
+      },
+      {
+        "title": "Powtórka tej samej pozycji",
+        "description": "Rozegraj tę samą pozycję dwa razy, aby znaleźć i poprawić jeden błąd pamięci.",
+        "duration": "5 minut",
+        "goal": "Wskazać dokładnie zapomnianą bierkę lub pole.",
+        "ctaLabel": "Powtórz odtwarzanie"
+      },
+      {
+        "title": "Przeniesienie z partii do ćwiczeń",
+        "description": "Po partii szybkiej wyobraź sobie pozycję z błędem, zanim ją przeanalizujesz.",
+        "duration": "7 minut",
+        "goal": "Niech prawdziwe błędy wyznaczają twój trening.",
+        "ctaLabel": "Zacznij przeniesienie"
+      }
+    ],
+    "comparisonTitle": "Jak wygląda lepsza gra początkującego",
+    "comparisonSummary": "Nie musisz liczyć pięciu ruchów naprzód. Najpierw wyraźnie zobacz obecną pozycję i zatrzymaj się przed ruchem.",
+    "comparisonRows": [
+      {
+        "label": "Przed ruchem",
+        "struggling": "Patrzysz tylko na własny pomysł.",
+        "stronger": "Najpierw sprawdzasz zagrożenia przeciwnika."
+      },
+      {
+        "label": "W taktyce",
+        "struggling": "Wariant znika po jednej wymianie.",
+        "stronger": "Widzisz kluczowe pola, porównując dwa możliwe ruchy."
+      },
+      {
+        "label": "Po porażce",
+        "struggling": "Od razu startujesz kolejną partię.",
+        "stronger": "Nazywasz błąd i ćwiczysz go jutro."
+      }
+    ],
+    "mistakes": [
+      "Skakanie po przypadkowych materiałach zamiast dwóch tygodni jednej rutyny.",
+      "Nauka otwarć, zanim widzenie szachownicy jest stabilne.",
+      "Granie zbyt wielu partii bez krótkich notatek po nich.",
+      "Traktowanie pamięci jako czegoś osobnego od prawdziwych szachów."
+    ],
+    "mistakesCallout": "Nie pędź do zaawansowanej nauki. Większość początkujących przegrywa przez przeoczone jednoruchowe zagrożenia, a nie zapomniany wariant otwarcia.",
+    "planTitle": "30-dniowy plan dla początkujących",
+    "planSteps": [
+      {
+        "label": "Tydzień 1",
+        "duration": "20 minut dziennie",
+        "detail": "Używaj tego samego skanu i graj krótką rundę Memory Chess przed każdą sesją gry."
+      },
+      {
+        "label": "Tydzień 2",
+        "duration": "25 minut dziennie",
+        "detail": "Dodaj drugą rundę odtwarzania i notuj, czy błąd wynikał z widzenia, pamięci czy paniki."
+      },
+      {
+        "label": "Tydzień 3",
+        "duration": "25 do 30 minut dziennie",
+        "detail": "Te same ćwiczenia, ale skróć czas zapamiętywania, by odtwarzanie było czyste pod presją."
+      },
+      {
+        "label": "Tydzień 4",
+        "duration": "30 minut dziennie",
+        "detail": "Sprawdź, czy liczba błędów na partię spada, i zostaw tylko ustawienia, które najlepiej się przeniosły."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Ile minut dziennie powinien ćwiczyć początkujący?",
+        "answer": "Skupione 20 do 30 minut wystarczy, jeśli łączysz widzenie szachownicy, pamięć i jedną prawdziwą pozycję."
+      },
+      {
+        "question": "Dlaczego zadania nie przekładają się na partie?",
+        "answer": "Zadanie zaczyna się, gdy taktyka już istnieje. W partii najpierw musisz zauważyć zmianę na szachownicy, więc pamięć i kontrola bezpieczeństwa liczą się o wiele bardziej."
+      },
+      {
+        "question": "Czy uczyć się otwarć na początku?",
+        "answer": "Na start tylko podstawowych zasad. Większość początkujących zyskuje więcej, widząc zagrożenia wcześniej i trzymając pozycję wyraźniej."
+      },
+      {
+        "question": "Jaki wskaźnik najszybciej pokaże postęp?",
+        "answer": "Liczba błędów na partię i dokładność odtwarzania w Memory Chess. Zwykle ruszają przed rankingiem."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sięgnij tu, jeśli głównym problemem jest gubienie figur."
+      },
+      {
+        "reason": "Pogłęb nawyk sprawdzania zagrożeń przed ruchem."
+      },
+      {
+        "reason": "Zbuduj mocniejszą szachownicę w głowie, by taktyka się trzymała."
+      },
+      {
+        "reason": "Trenuj odtwarzanie wprost, jeśli zapominasz położenia bierek."
+      },
+      {
+        "reason": "Wybierz krótszą rutynę, jeśli potrzebujesz prostszej struktury dnia."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Ćwiczenia wizualizacji szachowej dla początkujących",
+    "h1": "Codzienne ćwiczenia wizualizacji szachowej",
+    "description": "Wypróbuj proste ćwiczenia wizualizacji, by pamiętać szachownicę i wyraźniej widzieć ruchy.",
+    "primaryKeyword": "ćwiczenia wizualizacji szachowej",
+    "secondaryKeywords": [
+      "trening wizualizacji w szachach",
+      "liczenie ruchów naprzód",
+      "wizualizacja szachownicy",
+      "przygotowanie do gry na ślepo",
+      "szachy w wyobraźni"
+    ],
+    "painPoint": "Gubisz bierki, gdy próbujesz wyobrazić sobie kolejne ruchy.",
+    "ctaLabel": "Ćwicz wizualizację",
+    "quickAnswer": "Najpierw zapamiętaj szachownicę bez ruszania bierek. Potem wyobrażaj sobie po jednym ruchu. Nie musisz grać całej partii na ślepo.",
+    "keyTakeaways": [
+      "Krótka codzienna praktyka działa lepiej niż rzadkie długie sesje.",
+      "Po każdej próbie sprawdzaj wyobrażoną pozycję.",
+      "Zobacz wyraźnie jeden ruch, zanim spróbujesz dłuższych wariantów."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy tracą wariant po jednej wymianie.",
+      "Początkujący, którzy gubią się bez widoku szachownicy.",
+      "Każdy, kto chce podejść do gry na ślepo krok po kroku."
+    ],
+    "timeToRead": "8 minut czytania",
+    "introParagraphs": [
+      "Wizualizacja to wyobrażanie sobie, jak zmienia się szachownica po ruchu. Dla początkującego celem jest porównanie dwóch możliwych ruchów bez gubienia bierek.",
+      "Memory Chess pokazuje, które bierki lub pola zapominasz. Potem możesz powtórzyć ten sam typ pozycji."
+    ],
+    "startHereTitle": "Zacznij od tych kroków wizualizacji",
+    "startHereSteps": [
+      "Przez 60 sekund nazwij każdą bierkę i pole na nieruchomej szachownicy.",
+      "Zamknij oczy i odbuduj pozycję w głowie, zanim ją sprawdzisz.",
+      "Wyobraź sobie po jednym legalnym ruchu dla każdej strony, nie dotykając bierek.",
+      "Rozegraj rundę Memory Chess z umiarkowaną liczbą bierek i krótkim czasem.",
+      "Zweryfikuj pozycję i powtórz dopiero, gdy wiesz, co zapomniałeś."
+    ],
+    "drillSectionTitle": "Łatwe ćwiczenia wizualizacji",
+    "drillCards": [
+      {
+        "title": "Migawka nieruchomej pozycji",
+        "description": "Zapamiętaj szachownicę, a potem ustaw każdą bierkę na właściwym polu.",
+        "duration": "4 minuty",
+        "goal": "Zapamiętać pozycję przed wyobrażaniem ruchów.",
+        "ctaLabel": "Zacznij migawkę"
+      },
+      {
+        "title": "Po jednym ruchu na stronę",
+        "description": "Zapamiętaj pozycję, wyobraź po jednym ruchu dla każdej strony, potem sprawdź.",
+        "duration": "5 minut",
+        "goal": "Nauczyć się aktualizować szachownicę w głowie.",
+        "ctaLabel": "Ćwicz aktualizację"
+      },
+      {
+        "title": "Odtwarzanie pod presją",
+        "description": "Gdy odtwarzanie jest dokładne, skróć czas na zapamiętanie.",
+        "duration": "5 minut",
+        "goal": "Korzystać z czystego odtwarzania w szybkich partiach.",
+        "ctaLabel": "Dodaj presję"
+      }
+    ],
+    "comparisonTitle": "Jak czuć słabą wizualizację",
+    "comparisonSummary": "Wygląda to na problem z liczeniem, ale często obraz szachownicy zbyt szybko blaknie.",
+    "comparisonRows": [
+      {
+        "label": "Ruchy kandydackie",
+        "struggling": "Umiesz nazwać ruch, ale nie widzisz wyraźnie powstałej pozycji.",
+        "stronger": "Porównujesz dwie możliwe pozycje przed ruchem."
+      },
+      {
+        "label": "Chaos taktyczny",
+        "struggling": "Po wymianach masz pustkę w głowie.",
+        "stronger": "Trzymasz ważne pola i zagrożenia dość długo, by spokojnie zdecydować."
+      },
+      {
+        "label": "Informacja zwrotna",
+        "struggling": "Nie wiesz, które dokładnie pole zapomniałeś.",
+        "stronger": "Wychwytujesz, czy błąd wynikał z linii, rzędu czy brakującego obrońcy."
+      }
+    ],
+    "mistakes": [
+      "Głębokie liczenie na ślepo, zanim odtwarzanie statyczne jest stabilne.",
+      "Fizyczne przestawianie bierek przy każdej próbie liczenia.",
+      "Ćwiczenie raz w tygodniu zamiast krótkiego bloku codziennie.",
+      "Brak sprawdzania, czy wyobrażona pozycja zgadza się z rzeczywistą."
+    ],
+    "mistakesCallout": "Nie goń jeszcze dłuższych wariantów. Najpierw zobacz wyraźnie pierwszy ruch.",
+    "planTitle": "7-dniowy postęp wizualizacji",
+    "planSteps": [
+      {
+        "label": "Dzień 1",
+        "duration": "10 minut",
+        "detail": "Tylko migawki nieruchomej pozycji i natychmiastowa weryfikacja."
+      },
+      {
+        "label": "Dzień 2 do 3",
+        "duration": "12 minut",
+        "detail": "Dodaj po jednym wyobrażonym ruchu na stronę i śledź, które pola znikają najpierw."
+      },
+      {
+        "label": "Dzień 4 do 5",
+        "duration": "15 minut",
+        "detail": "Skróć czas podglądu w Memory Chess, zachowując liczbę bierek."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 minut",
+        "detail": "Przenieś ćwiczenie do partii szybkiej: przed każdą decyzją taktyczną zatrzymaj się i nazwij powstającą pozycję."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Ile trwa poprawa wizualizacji?",
+        "answer": "Większość początkujących zauważa czystsze odtwarzanie po dwóch do czterech tygodniach krótkiej, regularnej praktyki."
+      },
+      {
+        "question": "Czy te ćwiczenia pomagają w blitzu?",
+        "answer": "Tak. Szybsza aktualizacja szachownicy w głowie ułatwia dostrzeganie szachów, bić i zagrożeń pod presją czasu."
+      },
+      {
+        "question": "Czy da się ćwiczyć wizualizację bez gry na ślepo?",
+        "answer": "Tak. Odtwarzanie na czas i ćwiczenia jednego ruchu w zupełności wystarczą na start."
+      },
+      {
+        "question": "Co robić, gdy ciągle zapominam położenia bierek?",
+        "answer": "Zmniejsz liczbę bierek, sprawdzaj częściej i powtarzaj tę samą pozycję, aż odtwarzanie będzie czyste."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sięgnij tu, gdy odtwarzanie statyczne i jednoruchowe jest stabilne."
+      },
+      {
+        "reason": "Poszerz uwagę, jeśli gubisz bierki przy krawędziach."
+      },
+      {
+        "reason": "Połącz wizualizację z prostą kontrolą zagrożeń."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Ćwiczenia widzenia szachownicy przeciw błędom",
+    "h1": "Ćwiczenia widzenia szachownicy dla początkujących",
+    "description": "Proste ćwiczenia, które pomogą dostrzegać zagrożenia, chronić bierki i popełniać mniej błędów.",
+    "primaryKeyword": "widzenie szachownicy",
+    "secondaryKeywords": [
+      "ćwiczenia widzenia szachownicy",
+      "mniej błędów w szachach",
+      "dostrzeganie zagrożeń w szachach",
+      "czujność taktyczna",
+      "błędy początkujących w szachach"
+    ],
+    "painPoint": "Skupiasz się na jednym fragmencie szachownicy i przeoczasz proste zagrożenie gdzie indziej.",
+    "ctaLabel": "Zacznij ćwiczenie widzenia",
+    "quickAnswer": "Przed każdym ruchem szukaj szachów, bić, zagrożeń i niebronionych bierek. Trening pamięci pomaga trzymać w głowie wszystkie bierki podczas skanowania.",
+    "keyTakeaways": [
+      "Widzenie szachownicy to nawyk, którego można się nauczyć.",
+      "Czujność na niebronione bierki to zwykle najszybsza poprawa.",
+      "Trening pamięci pomaga śledzić całą szachownicę."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy znają podstawy taktyki, a mimo to gubią figury.",
+      "Początkujący, którzy grają szybko i widzą błąd dopiero po biciu.",
+      "Każdy, kto potrzebuje jasnej listy przed ruchem."
+    ],
+    "timeToRead": "8 minut czytania",
+    "introParagraphs": [
+      "Gdy gracz mówi „nie zobaczyłem tego”, zwykle zagrał, zanim sprawdził całą szachownicę.",
+      "Te ćwiczenia uczą, gdzie patrzeć. Zacznij od niebronionych bierek oraz ruchów dających szacha, bijących lub tworzących zagrożenie."
+    ],
+    "startHereTitle": "Zacznij tutaj: pętla widzenia przed ruchem",
+    "startHereSteps": [
+      "Przed każdym ruchem nazwij szachy, bicia i zagrożenia obu stron.",
+      "Zaznacz każdą niebronioną bierkę i powiedz, czy naprawdę jest bezpieczna, czy tylko tak wygląda.",
+      "Rozegraj krótką rundę Memory Chess, by wzmocnić związek pola z bierką.",
+      "Przeanalizuj jeden niedawny błąd i wskaż dokładnie przeoczone zagrożenie.",
+      "Powtórz tę samą listę w kolejnej partii szybkiej, nie skracając jej."
+    ],
+    "drillSectionTitle": "Ćwiczenia widzenia do prawdziwych partii",
+    "drillCards": [
+      {
+        "title": "Inwentarz niebronionych bierek",
+        "description": "Przeskanuj szachownicę i wskaż każdą niebronioną bierkę przed ruchem.",
+        "duration": "3 minuty",
+        "goal": "Wcześnie wyłapać najczęstsze źródło błędów.",
+        "ctaLabel": "Zrób inwentarz"
+      },
+      {
+        "title": "Powtórka zagrożenia",
+        "description": "Odtwórz swoją ostatnią pozycję z błędem i znajdź najsilniejsze zagrożenie przeciwnika, zanim sprawdzisz partię.",
+        "duration": "5 minut",
+        "goal": "Nauczyć się, jak przeoczone zagrożenie wyglądało w kontekście.",
+        "ctaLabel": "Powtórz zagrożenie"
+      },
+      {
+        "title": "Szybkie odtwarzanie pól",
+        "description": "Skróć czas podglądu, by szachownica trzymała się w głowie podczas skanowania.",
+        "duration": "4 minuty",
+        "goal": "Pamiętać położenie bierek, gdy skanujesz.",
+        "ctaLabel": "Przyspiesz odtwarzanie"
+      }
+    ],
+    "comparisonTitle": "Słabe kontra mocne widzenie szachownicy",
+    "comparisonSummary": "Różnicę zwykle widać, zanim w ogóle zacznie się liczenie.",
+    "comparisonRows": [
+      {
+        "label": "Uwaga",
+        "struggling": "Wpatrujesz się w jeden pomysł taktyczny.",
+        "stronger": "Skanujesz całą szachownicę przed wyborem planu."
+      },
+      {
+        "label": "Kontrola bezpieczeństwa",
+        "struggling": "Zakładasz, że broniona bierka jest bezpieczna.",
+        "stronger": "Liczysz atakujących i broniących, zanim zaufasz polu."
+      },
+      {
+        "label": "Presja czasu",
+        "struggling": "Grasz szybciej, gdy pozycja się zaostrza.",
+        "stronger": "Zwalniasz, gdy pojawiają się szachy, bicia lub zagrożenia."
+      }
+    ],
+    "mistakes": [
+      "Sprawdzanie tylko własnego pomysłu i pomijanie zagrożeń przeciwnika.",
+      "Uznawanie bronionej bierki za bezpieczną bez policzenia całej wymiany.",
+      "Zbyt szybka gra, gdy pozycja staje się taktyczna.",
+      "Nienazywanie typu błędu po partii."
+    ],
+    "mistakesCallout": "Więcej zadań nie naprawi pospiesznego skanu. Powtarzaj tę samą krótką kontrolę przed każdym ruchem.",
+    "planTitle": "7-dniowy reset widzenia",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "12 minut",
+        "detail": "Tylko inwentarz niebronionych bierek i skan szachy-bicia-zagrożenia."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "15 minut",
+        "detail": "Dodaj rundę Memory Chess przed partiami, by skanować na czystszej szachownicy w głowie."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "15 minut",
+        "detail": "Przejrzyj trzy niedawne błędy i nazwij przeoczony sygnał w każdej pozycji."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 do 20 minut",
+        "detail": "Graj szybkie partie i stosuj pełną listę przy każdym ruchu zmieniającym napięcie lub bezpieczeństwo króla."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Jak najszybciej poprawić widzenie szachownicy?",
+        "answer": "Stosuj tę samą listę przed każdym ruchem, aż stanie się automatyczna: szachy, bicia, zagrożenia i niebronione bierki."
+      },
+      {
+        "question": "Dlaczego popełniam błędy, choć znam taktykę?",
+        "answer": "Bo warstwa śledzenia szachownicy jest słaba. Taktyka pomaga dopiero wtedy, gdy poprawnie widzisz pozycję."
+      },
+      {
+        "question": "Jak często analizować swoje błędy?",
+        "answer": "Po każdej partii. Krótki nawyk analizy przenosi się dużo szybciej niż cotygodniowy maraton."
+      },
+      {
+        "question": "Czy ćwiczenia pamięci pomagają w widzeniu?",
+        "answer": "Tak. Szybsze odtwarzanie bierek ułatwia utrzymanie całej szachownicy w uwadze podczas skanowania."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sięgnij po pełny poradnik antybłędowy, gdy tracisz materiał przez widzenie."
+      },
+      {
+        "reason": "Zrozum, dlaczego taktyka zawodzi pod presją prawdziwej partii."
+      },
+      {
+        "reason": "Zobacz, gdzie widzenie szachownicy mieści się w pełnej rutynie."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Trening pamięci szachowej dla szybszego odtwarzania",
+    "h1": "Trening pamięci szachowej dla początkujących",
+    "description": "Proste ćwiczenia pamięci, by zapamiętywać pozycje, dostrzegać wzorce i wyraźniej śledzić ruchy.",
+    "primaryKeyword": "trening pamięci szachowej",
+    "secondaryKeywords": [
+      "ćwiczenia pamięci szachowej",
+      "zapamiętywanie pozycji szachowych",
+      "rozpoznawanie wzorców w szachach",
+      "trening odtwarzania pozycji",
+      "koncentracja w szachach"
+    ],
+    "painPoint": "Zapominasz, gdzie stoją bierki, gdy myślisz o kolejnych ruchach.",
+    "ctaLabel": "Zacznij wyzwanie pamięci",
+    "quickAnswer": "Trening pamięci pomaga trzymać w głowie użyteczne pozycje, gdy bierki się zmieniają. Nie chodzi o zapamiętanie jak największej liczby przypadkowych ustawień.",
+    "keyTakeaways": [
+      "Na początku dokładność liczy się bardziej niż szybkość.",
+      "Powtarzanie pozycji pozwala poprawiać po jednym błędzie pamięci.",
+      "Trening pamięci umieść przed liczeniem albo analizą partii."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy tracą plan po jednej mocnej odpowiedzi.",
+      "Początkujący, którzy nie potrafią odtworzyć kluczowych pozycji z partii.",
+      "Każdy, komu trudno, gdy w grze jest wiele bierek."
+    ],
+    "timeToRead": "8 minut czytania",
+    "introParagraphs": [
+      "Pamięć szachowa to praktyczna umiejętność. Celem jest utrzymanie wyraźnego obrazu pozycji na tyle długo, by spokojnie wybrać ruch.",
+      "Memory Chess daje prostą pętlę: spójrz, zapamiętaj, sprawdź i spróbuj ponownie."
+    ],
+    "startHereTitle": "Zacznij od tej rutyny pamięci",
+    "startHereSteps": [
+      "Zacznij od prostej pozycji i zapamiętaj ją przez 10 sekund.",
+      "Odtwórz szachownicę i zanotuj pierwsze utracone pole lub bierkę.",
+      "Powtórz tę samą pozycję raz, aby poprawka stała się widoczna.",
+      "Dodaj krótki wariant taktyczny z zapamiętanego ustawienia.",
+      "Zapisuj i dokładność, i typ popełnionego błędu pamięci."
+    ],
+    "drillSectionTitle": "Ćwiczenia pamięci do prawdziwych partii",
+    "drillCards": [
+      {
+        "title": "Powtórka jednej pozycji",
+        "description": "Zapamiętaj pozycję, odtwórz ją, a potem powtórz raz z tymi samymi ustawieniami.",
+        "duration": "5 minut",
+        "goal": "Znaleźć jeden wyraźny błąd pamięci do poprawy.",
+        "ctaLabel": "Powtórz jedną pozycję"
+      },
+      {
+        "title": "Odtwarzanie po punktach zaczepienia",
+        "description": "Najpierw skup się na położeniu królów, niebronionych bierkach i napięciu w centrum.",
+        "duration": "4 minuty",
+        "goal": "Zapamiętać najpierw najważniejsze elementy pozycji.",
+        "ctaLabel": "Ćwicz punkty zaczepienia"
+      },
+      {
+        "title": "Najpierw odtwórz, potem licz",
+        "description": "Po odtworzeniu pozycji policz krótki wariant, zanim zweryfikujesz.",
+        "duration": "6 minut",
+        "goal": "Wykorzystać pamięć pozycji podczas liczenia.",
+        "ctaLabel": "Dodaj wariant"
+      }
+    ],
+    "comparisonTitle": "Jak wygląda słabe odtwarzanie w partii",
+    "comparisonSummary": "Pozycja może wydawać się znajoma, a i tak być zbyt rozmyta, by unieść liczenie.",
+    "comparisonRows": [
+      {
+        "label": "Trzymanie wariantu",
+        "struggling": "Tracisz pozycję wyjściową, rozważając nowy ruch kandydacki.",
+        "stronger": "Po przeliczeniu wariantu dokładnie wracasz do pozycji wyjściowej."
+      },
+      {
+        "label": "Pamięć wzorców",
+        "struggling": "Pamiętasz pomysł taktyczny, ale nie obrońców.",
+        "stronger": "Pamiętasz pomysł i pola, które go umożliwiają."
+      },
+      {
+        "label": "Jakość analizy",
+        "struggling": "Analiza jest mglista, bo pozycja od razu znika.",
+        "stronger": "Odtwarzasz kluczowe momenty i uczysz się szybciej."
+      }
+    ],
+    "mistakes": [
+      "Zbyt duże skoki trudności jak na obecny poziom.",
+      "Mierzenie szybkości przy ignorowaniu dokładności.",
+      "Brak zapisu błędów, przez co powtarzalne słabości pozostają ukryte.",
+      "Traktowanie pamięci jako czegoś odrębnego od gry taktycznej."
+    ],
+    "mistakesCallout": "Nie utrudniaj pozycji, dopóki odtwarzanie jest niejasne. Obniż trudność i najpierw zbuduj dokładność.",
+    "planTitle": "7-dniowy blok pamięci",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "10 minut",
+        "detail": "Powtarzaj proste pozycje i nazywaj każdy błąd pamięci."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "12 minut",
+        "detail": "Dodaj punkty zaczepienia, by najpierw pamiętać królów, niebronione bierki i napięcie w centrum."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "12 minut",
+        "detail": "Po każdym poprawnym odtworzeniu dodaj krótką sekwencję ruchów."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 minut",
+        "detail": "Skróć nieco czas przy tej samej liczbie bierek, a potem przenieś pracę do analizy partii szybkiej."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Czy trening pamięci poprawia prawdziwe partie?",
+        "answer": "Tak, jeśli łączysz go z liczeniem lub analizą. Lepsze odtwarzanie utrzymuje warianty wyraźniej pod presją."
+      },
+      {
+        "question": "Ile pozycji ćwiczyć na sesję?",
+        "answer": "Dla początkujących wystarczy sześć do dwunastu starannych prób, jeśli weryfikujesz błędy zamiast się spieszyć."
+      },
+      {
+        "question": "Losowe pozycje czy wzorce z partii?",
+        "answer": "Oba. Losowe wyostrzają czyste odtwarzanie, a prawdziwe struktury poprawiają przeniesienie."
+      },
+      {
+        "question": "Co, jeśli dokładność stoi w miejscu?",
+        "answer": "Przez tydzień używaj mniej bierek, popraw jeden typ błędu i dodawaj bierki dopiero, gdy odtwarzanie znów jest czyste."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sięgnij tu, jeśli trudno ci pamiętać sekwencje ruchów."
+      },
+      {
+        "reason": "Zbalansuj pamięć z rozsądną liczbą zadań."
+      },
+      {
+        "reason": "Połącz pamięć pozycji z typowymi wzorcami."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Trening gry na ślepo dla początkujących",
+    "h1": "Gra na ślepo dla początkujących, krok po kroku",
+    "description": "Ucz się gry na ślepo małymi krokami, które poprawiają wizualizację i nie przytłaczają.",
+    "primaryKeyword": "trening gry na ślepo",
+    "secondaryKeywords": [
+      "gra na ślepo dla początkujących",
+      "trening szachownicy w głowie",
+      "ćwiczenia wizualizacji szachowej",
+      "liczenie bez ruszania bierek",
+      "ćwiczenia koncentracji w szachach"
+    ],
+    "painPoint": "Tracisz orientację, gdy tylko przestaniesz patrzeć na szachownicę.",
+    "ctaLabel": "Zacznij trening na ślepo",
+    "quickAnswer": "Zacznij od prostej pozycji. Zapamiętaj ją, wyobraź po jednym ruchu na stronę i sprawdź. Całą partię na ślepo próbuj dopiero, gdy te kroki będą łatwe.",
+    "keyTakeaways": [
+      "Gra na ślepo to umiejętność budowana krok po kroku.",
+      "Sprawdzanie odpowiedzi liczy się bardziej niż trudniejsze pozycje.",
+      "Dla początkującego ćwiczenia na ślepo to wizualizacja z mniejszą pomocą szachownicy."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy chcą lepszej wizualizacji bez pełnej partii na ślepo.",
+      "Początkujący, którzy gubią pola po jednym czy dwóch wyobrażonych ruchach.",
+      "Każdy, kto chce trzymać wyraźniejszy obraz pozycji w głowie."
+    ],
+    "timeToRead": "8 minut czytania",
+    "introParagraphs": [
+      "Największym błędem jest zbyt wczesna próba pełnej partii na ślepo. Zwykle kończy się frustracją zamiast postępem.",
+      "Idź krok po kroku: zobacz pozycję, zapamiętaj ją, wyobraź ruch, sprawdź i powoli ograniczaj pomoc wzrokową."
+    ],
+    "startHereTitle": "Zacznij tutaj: bezpieczny postęp na ślepo",
+    "startHereSteps": [
+      "Zapamiętaj małą pozycję i odtwórz ją, zanim wyobrazisz sobie jakikolwiek ruch.",
+      "Policz po jednym ruchu dla każdej strony, nie dotykając bierek.",
+      "Weryfikuj każdą rozbieżność od razu, zamiast brnąć dalej.",
+      "Rozegraj rundę Memory Chess z nieco krótszym podglądem.",
+      "Dodaj kolejny ruch dopiero, gdy obecny wariant jest wyraźny."
+    ],
+    "drillSectionTitle": "Łatwe ćwiczenia gry na ślepo",
+    "drillCards": [
+      {
+        "title": "Najpierw odbuduj, potem ruszaj",
+        "description": "Nie wyobrażaj sobie ruchów, dopóki pozycja wyjściowa nie jest w pełni stabilna.",
+        "duration": "4 minuty",
+        "goal": "Zbudować wyraźne odtwarzanie przed dodawaniem ruchów.",
+        "ctaLabel": "Najpierw odbuduj"
+      },
+      {
+        "title": "Po jednym ruchu na stronę",
+        "description": "Wyobraź ruch białych i odpowiedź czarnych, a potem zweryfikuj nową pozycję.",
+        "duration": "5 minut",
+        "goal": "Aktualizować pozycję bez patrzenia na szachownicę.",
+        "ctaLabel": "Wyobraź dwa ruchy"
+      },
+      {
+        "title": "Krótszy czas podglądu",
+        "description": "Skróć czas podglądu, by szybciej zapamiętywać pozycję.",
+        "duration": "4 minuty",
+        "goal": "Przygotować się do gry na ślepo bez zasłaniania całej szachownicy.",
+        "ctaLabel": "Skróć czas"
+      }
+    ],
+    "comparisonTitle": "Bezpieczniejszy sposób na ćwiczenie gry na ślepo",
+    "comparisonSummary": "Pytaj, czy widzisz wyraźnie o jeden ruch więcej niż wcześniej. Pełna partia na ślepo nie jest jeszcze potrzebna.",
+    "comparisonRows": [
+      {
+        "label": "Punkt startu",
+        "struggling": "Od razu rzucasz się na pełną partię na ślepo.",
+        "stronger": "Zapamiętujesz pozycję wyjściową przed dodawaniem ruchów."
+      },
+      {
+        "label": "Weryfikacja",
+        "struggling": "Ufasz rozmytej pozycji w głowie.",
+        "stronger": "Sprawdzasz każdą wyobrażoną aktualizację i od razu ją poprawiasz."
+      },
+      {
+        "label": "Jakość sesji",
+        "struggling": "Ćwiczysz, aż koncentracja się załamie.",
+        "stronger": "Kończysz, gdy dokładność wciąż jest wysoka."
+      }
+    ],
+    "mistakes": [
+      "Zbyt wczesne próby pełnych partii na ślepo.",
+      "Pomijanie weryfikacji i ufanie błędnym pozycjom w głowie.",
+      "Dodawanie ruchów, zanim krótkie warianty są wyraźne.",
+      "Zbyt długie sesje, które wypalają koncentrację."
+    ],
+    "mistakesCallout": "Nie przeskakuj do dużo trudniejszego zadania. Za każdym razem ograniczaj pomoc szachownicy tylko trochę.",
+    "planTitle": "7-dniowy blok przygotowania do gry na ślepo",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "10 minut",
+        "detail": "Tylko odtwarzanie pozycji z pamięci i natychmiastowe sprawdzanie."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "12 minut",
+        "detail": "Dodaj po jednym ruchu na stronę i trzymaj proste pozycje."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "12 minut",
+        "detail": "Skróć podgląd w Memory Chess, zachowując liczbę bierek."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 minut",
+        "detail": "Spróbuj kilku sekwencji dwuruchowych, tylko jeśli praca na jednym ruchu jest dokładna."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Czy gra na ślepo jest przydatna dla początkujących?",
+        "answer": "Tak, w krótkich, kontrolowanych ćwiczeniach. Wzmacnia wizualizację, która wspiera zwykłe partie."
+      },
+      {
+        "question": "Jak często robić ćwiczenia na ślepo?",
+        "answer": "Dwie do czterech krótkich sesji tygodniowo wystarczą, gdy łączysz je z regularną grą i analizą."
+      },
+      {
+        "question": "Jakie jest najlepsze pierwsze ćwiczenie?",
+        "answer": "Odtworzenie prostej pozycji z pamięci i wyobrażenie po jednym ruchu na stronę przed sprawdzeniem."
+      },
+      {
+        "question": "Skąd wiem, że robię postępy?",
+        "answer": "Utrzymasz poprawnie więcej pól, dłużej zaktualizujesz pozycję i popełnisz mniej błędów wzrokowych w zwykłych partiach."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Trzymaj mocne podstawy zamiast skakać do zaawansowanej gry na ślepo."
+      },
+      {
+        "reason": "Połącz pracę na ślepo z ćwiczeniami trzymania wariantu."
+      },
+      {
+        "reason": "Wykorzystaj wyraźniejszą wizualizację do porównywania ruchów."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Ćwiczenia pamięci roboczej dla szachistów",
+    "h1": "Ćwiczenia pamięci roboczej dla początkujących",
+    "description": "Proste ćwiczenia, by pamiętać sekwencje ruchów, porównywać opcje i decydować wyraźniej.",
+    "primaryKeyword": "ćwiczenia pamięci roboczej",
+    "secondaryKeywords": [
+      "pamięć robocza w szachach",
+      "trening liczenia w szachach",
+      "ćwiczenia koncentracji w szachach",
+      "większa równość gry",
+      "wytrzymałość mentalna w szachach"
+    ],
+    "painPoint": "Zapominasz pierwszą sekwencję ruchów, myśląc o kolejnej.",
+    "ctaLabel": "Zacznij rutynę pamięci",
+    "quickAnswer": "Pamięć robocza pozwala trzymać w głowie kilka możliwych sekwencji. Trzymaj ich mało i sprawdzaj każdą wyraźnie.",
+    "keyTakeaways": [
+      "Trzy jasne wybory są lepsze niż sześć mętnych.",
+      "Krótkie podsumowanie na głos pomaga pamiętać każdy wariant.",
+      "Ćwicz na prawdziwych pozycjach i używaj tej umiejętności w partiach."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy tracą pierwszy wariant, badając drugi.",
+      "Początkujący, którzy mylą kolejność ruchów.",
+      "Każdy, kto popełnia więcej błędów taktycznych, gdy jest zmęczony."
+    ],
+    "timeToRead": "8 minut czytania",
+    "introParagraphs": [
+      "Pamięć robocza pozwala trzymać możliwe ruchy w głowie, gdy je porównujesz. W szachach musisz pamiętać pozycję wyjściową i jeden lub dwa krótkie warianty, nie myląc ich.",
+      "Memory Chess pomaga zapamiętać pozycję wyjściową. Gdy ten obraz jest wyraźny, śledzenie kolejnych ruchów staje się łatwiejsze."
+    ],
+    "startHereTitle": "Zacznij od dwóch krótkich sekwencji",
+    "startHereSteps": [
+      "Wybierz jedną pozycję i wymień trzy ruchy kandydackie bez dotykania bierek.",
+      "Policz każdy wariant na dwa półruchy i podsumuj wynik jednym zdaniem.",
+      "Rozegraj rundę odtwarzania w Memory Chess, by odświeżyć pozycję bazową.",
+      "Wróć do pozycji i ponownie porównaj możliwe sekwencje.",
+      "Napisz jedno zdanie o tym, gdzie urwało się trzymanie wariantu."
+    ],
+    "drillSectionTitle": "Ćwiczenia pamięci roboczej w szachach",
+    "drillCards": [
+      {
+        "title": "Podsumowanie trzech wariantów",
+        "description": "Trzymaj krótko trzy ruchy kandydackie i opisz każdą gałąź jednym zdaniem.",
+        "duration": "6 minut",
+        "goal": "Utrzymać każdą sekwencję wyraźną zamiast dodawać kolejne.",
+        "ctaLabel": "Trzymaj trzy warianty"
+      },
+      {
+        "title": "Reset odtwarzania",
+        "description": "Między próbami liczenia wstaw jedną rundę Memory Chess, by pozycja bazowa była stabilna.",
+        "duration": "4 minuty",
+        "goal": "Pamiętać pozycję wyjściową przed śledzeniem ruchów.",
+        "ctaLabel": "Zresetuj pozycję"
+      },
+      {
+        "title": "Porównanie po wariancie",
+        "description": "Wróć do pozycji wyjściowej i po krótkiej przerwie porównaj gałęzie.",
+        "duration": "5 minut",
+        "goal": "Przechodzić między pozycją bazową a wariantami bez mylenia ich.",
+        "ctaLabel": "Porównaj opcje"
+      }
+    ],
+    "comparisonTitle": "Gdy próbujesz pamiętać za dużo",
+    "comparisonSummary": "Gdy pamięć się zapełnia, wariant staje się niejasny, a kolejność ruchów się miesza.",
+    "comparisonRows": [
+      {
+        "label": "Ruchy kandydackie",
+        "struggling": "Próbujesz trzymać zbyt wiele opcji naraz.",
+        "stronger": "Trzymasz mniej wariantów, ale każdy dłużej pozostaje dokładny."
+      },
+      {
+        "label": "Kolejność ruchów",
+        "struggling": "Gałęzie zlewają się ze sobą.",
+        "stronger": "Każdy wariant pozostaje osobny i łatwy do porównania."
+      },
+      {
+        "label": "Zmęczenie",
+        "struggling": "Jakość decyzji spada pod koniec partii.",
+        "stronger": "Zachowujesz prostszy, wyraźniejszy proces, gdy opada energia."
+      }
+    ],
+    "mistakes": [
+      "Próba zapamiętania zbyt wielu sekwencji naraz.",
+      "Pomijanie krótkiego podsumowania po każdym wariancie.",
+      "Robienie tylko zadań i nieużywanie tej umiejętności w partiach.",
+      "Kontynuowanie mimo zmęczenia uniemożliwiającego jasne myślenie."
+    ],
+    "mistakesCallout": "Nie dodawaj jeszcze wariantów. Najpierw utrzymuj mniej wariantów wyraźnie, zanim je wydłużysz.",
+    "planTitle": "7-dniowy blok pamięci roboczej",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "10 minut",
+        "detail": "Używaj tylko dwóch sekwencji i objaśniaj każdą na głos."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "12 minut",
+        "detail": "Dodaj reset Memory Chess między próbami, by pozycja wyjściowa była czysta."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "12 minut",
+        "detail": "Dodaj trzeci wybór tylko wtedy, gdy pierwsze dwa pozostają dokładne."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 minut",
+        "detail": "Zastosuj rutynę w partii szybkiej. Zatrzymuj się w trudnych momentach i wyraźnie nazywaj możliwe ruchy."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Czy ćwiczenia pamięci roboczej przekładają się na szachy?",
+        "answer": "Mogą, zwłaszcza gdy są powiązane z pozycjami, trzymaniem wariantów i analizą, a nie z ogólnymi grami umysłowymi."
+      },
+      {
+        "question": "Jak początkujący powinien to poukładać?",
+        "answer": "Krótkie sesje łączące możliwe ruchy, pamięć pozycji i jedną prawdziwą pozycję z partii."
+      },
+      {
+        "question": "Jak prosto mierzyć postęp?",
+        "answer": "Notuj, ile sekwencji potrafisz utrzymać i jak często gubisz miejsce."
+      },
+      {
+        "question": "Czy to zastąpi trening taktyczny?",
+        "answer": "Nie. Uzupełnia go, pomagając trzymać warianty wyraźniej podczas rozwiązywania i gry."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Wykorzystaj lepszą pamięć roboczą do porównywania ruchów."
+      },
+      {
+        "reason": "Wzmocnij warstwę odtwarzania pod trzymaniem wariantów."
+      },
+      {
+        "reason": "Zastosuj prostszy proces myślenia, by nie marnować pamięci roboczej."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Jak przestać popełniać błędy w szachach",
+    "h1": "Jak przestać popełniać błędy w szachach",
+    "description": "Krótka kontrola bezpieczeństwa, by dostrzegać zagrożenia, chronić niebronione bierki i mniej się mylić.",
+    "primaryKeyword": "jak przestać popełniać błędy w szachach",
+    "secondaryKeywords": [
+      "zapobieganie błędom w szachach",
+      "przestać gubić figury",
+      "kontrola zagrożeń w szachach",
+      "lista bezpieczeństwa w szachach",
+      "mniej prostych błędów w szachach"
+    ],
+    "painPoint": "Rozumiesz idee szachowe, a wciąż tracisz figury na proste zagrożenia.",
+    "ctaLabel": "Zacznij ćwiczenie antybłędowe",
+    "quickAnswer": "Przed każdym ruchem sprawdź zagrożenia przeciwnika, poszukaj niebronionych bierek i upewnij się, że twój ruch jest bezpieczny. Trening pamięci pomaga trzymać w głowie całą szachownicę.",
+    "keyTakeaways": [
+      "Większość błędów początkujących wynika z pominięcia części szachownicy.",
+      "Lista bezpieczeństwa musi być na tyle krótka, by przetrwać presję czasu.",
+      "Powtarzaj swoje błędy, aż szybko zobaczysz, co przeoczyłeś."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy wielokrotnie wpadają na jednoruchową taktykę.",
+      "Początkujący, którzy czują się gorzej w partiach niż w zadaniach.",
+      "Każdy, kto chce spokojnej rutyny na każdy ruch."
+    ],
+    "timeToRead": "8 minut czytania",
+    "introParagraphs": [
+      "Wiele błędów bierze się z ruchu wykonanego przed sprawdzeniem całej pozycji. Można też stracić z oczu, gdzie bierka jest broniona.",
+      "Krótka rutyna zastępuje panikę i zgadywanie. Stosuj te same kontrole, gdy pozycja się zaostrza."
+    ],
+    "startHereTitle": "Zacznij tutaj: lista antybłędowa",
+    "startHereSteps": [
+      "Zapytaj, jakie szachy, bicia i zagrożenia ma teraz przeciwnik.",
+      "Znajdź każdą niebronioną lub przeciążoną bierkę.",
+      "Dopiero potem sprawdź, czy planowany ruch jest bezpieczny.",
+      "Przed partiami rozegraj krótką rundę Memory Chess, by wyostrzyć odtwarzanie.",
+      "Po każdym błędzie zapisz przeoczony sygnał jednym zdaniem."
+    ],
+    "drillSectionTitle": "Proste ćwiczenia antybłędowe",
+    "drillCards": [
+      {
+        "title": "Skan od strony przeciwnika",
+        "description": "Każdą pozycję zaczynaj od sprawdzenia najsilniejszych zagrożeń przeciwnika.",
+        "duration": "3 minuty",
+        "goal": "Pamiętać o pomyśle przeciwnika przed własnym.",
+        "ctaLabel": "Skanuj od przeciwnika"
+      },
+      {
+        "title": "Alarm niebronionych bierek",
+        "description": "Przed ruchem wymień każdą niebronioną lub przeciążoną bierkę.",
+        "duration": "4 minuty",
+        "goal": "Wcześnie wyłapać najłatwiejsze straty materiału.",
+        "ctaLabel": "Uruchom alarm"
+      },
+      {
+        "title": "Pętla powtórek błędów",
+        "description": "Powtarzaj własne pozycje z błędami, aż przeoczone zagrożenie stanie się oczywiste.",
+        "duration": "6 minut",
+        "goal": "Uczyć się z pozycji, które naprawdę kosztowały partie.",
+        "ctaLabel": "Powtórz swój błąd"
+      }
+    ],
+    "comparisonTitle": "Co się zmienia, gdy błędów ubywa",
+    "comparisonSummary": "Partie nie stają się nagle bezbłędne. Stają się spokojniejsze, a porażki mają zrozumiałe przyczyny zamiast jednoruchowej katastrofy.",
+    "comparisonRows": [
+      {
+        "label": "Moment ruchu",
+        "struggling": "Grasz, gdy tylko zobaczysz plan.",
+        "stronger": "Wykonujesz ruch dopiero po krótkiej kontroli bezpieczeństwa."
+      },
+      {
+        "label": "Czujność na zagrożenia",
+        "struggling": "Widzisz taktykę po fakcie.",
+        "stronger": "Rozpoznajesz kształt taktyczny przed decyzją."
+      },
+      {
+        "label": "Analiza po partii",
+        "struggling": "Porażka wydaje się przypadkowa.",
+        "stronger": "Szybko nazywasz konkretny przeoczony sygnał."
+      }
+    ],
+    "mistakes": [
+      "Próba wyeliminowania błędów wyłącznie wolniejszą grą.",
+      "Nauka kolejnych otwarć, gdy nawyk kontroli zagrożeń jest wciąż słaby.",
+      "Przeglądanie wariantów silnika bez wskazania realnie przeoczonego sygnału.",
+      "Ignorowanie, że presja czasu osłabia odtwarzanie."
+    ],
+    "mistakesCallout": "Wolniejsza gra nie wystarczy. Za każdym razem stosuj tę samą krótką kontrolę bezpieczeństwa.",
+    "planTitle": "7-dniowy reset antybłędowy",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "10 minut",
+        "detail": "Tylko skan od strony przeciwnika i alarm niebronionych bierek."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "12 minut",
+        "detail": "Dodaj rundę Memory Chess przed każdą sesją gry, by stan pozycji był czystszy."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "15 minut",
+        "detail": "Powtórz trzy niedawne błędy i sklasyfikuj przeoczony sygnał w każdym."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 minut",
+        "detail": "Stosuj pełną listę w partiach szybkich i licz błędy na partię, a nie tylko wynik."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Dlaczego ciągle gubię figury?",
+        "answer": "Zwykle dlatego, że skan przed ruchem jest niepełny. Możesz znać taktykę, ale nie sprawdzasz całej szachownicy przed ruchem."
+      },
+      {
+        "question": "Czy wystarczy grać wolniej?",
+        "answer": "Tylko jeśli ten czas wykorzystasz na wyraźną kontrolę bezpieczeństwa. Bezplanowe wpatrywanie się nie pomoże."
+      },
+      {
+        "question": "Czy ćwiczenia pamięci naprawdę pomagają?",
+        "answer": "Tak. Czystsze odtwarzanie ułatwia dostrzeganie zagrożeń, gdy pozycja się zmienia."
+      },
+      {
+        "question": "Co śledzić, by mieć mniej błędów?",
+        "answer": "Błędy na partię, przeoczone niebronione bierki i to, czy zagrożenie umknęło przez zły skan, czy złe liczenie."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Zbuduj mocniejszy skan, by zapobiegać błędom."
+      },
+      {
+        "reason": "Zobacz, dlaczego taktyka zawodzi przy słabym śledzeniu pozycji."
+      },
+      {
+        "reason": "Wepnij pracę antybłędową w pełną rutynę początkującego."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Dlaczego ranking zadań nie przekłada się na partie",
+    "h1": "Dlaczego twój ranking zadań nie przekłada się na partie",
+    "description": "Dowiedz się, czemu umiejętność rozwiązywania zadań różni się od gry i jak widzenie szachownicy, pamięć i analiza domykają tę lukę.",
+    "primaryKeyword": "dlaczego ranking zadań nie przekłada się na partie",
+    "secondaryKeywords": [
+      "ranking zadań a ranking szachowy",
+      "taktyka nie działa w partiach",
+      "umiejętność zadań w prawdziwej grze",
+      "dlaczego jestem lepszy w zadaniach",
+      "widzenie szachownicy"
+    ],
+    "painPoint": "Dobrze rozwiązujesz zadania, a w partiach wciąż przeoczasz taktykę.",
+    "ctaLabel": "Trenuj pod prawdziwe partie",
+    "quickAnswer": "Zadanie mówi ci, że taktyka istnieje. Partia nie. Musisz zauważyć niebezpieczeństwo, pamiętać pozycję i wiedzieć, kiedy zwolnić.",
+    "keyTakeaways": [
+      "Zadanie informuje, że jest problem do rozwiązania.",
+      "W partii musisz sam znaleźć niebezpieczny moment.",
+      "Lepsze widzenie i pamięć pozwalają zauważyć taktykę wcześniej."
+    ],
+    "whoThisIsFor": [
+      "Gracze z wysokim rankingiem zadań i płaskim rankingiem partii.",
+      "Początkujący, którzy widzą taktykę po partii, a nie w trakcie.",
+      "Każdy, kto nie potrafi wykorzystać pomysłów z zadań w grze."
+    ],
+    "timeToRead": "8 minut czytania",
+    "introParagraphs": [
+      "To częsty problem początkujących. Rozwiązujesz zadania, a w partiach wciąż są utracone figury, przeoczone zagrożenia i pospieszne ruchy.",
+      "Więcej zadań może tego nie naprawić. Musisz też zauważać, kiedy pozycja staje się groźna, i widzieć, co nastąpi po każdym wyborze."
+    ],
+    "startHereTitle": "Zacznij od połączenia zadań z partiami",
+    "startHereSteps": [
+      "Przed zadaniami poświęć 2 minuty na skan szachownicy pod kątem szachów, bić i zagrożeń.",
+      "Dodaj rundę Memory Chess, by obraz pozycji był stabilny pod presją.",
+      "Po zadaniu zapytaj, jaki sygnał kazałby ci zwolnić w prawdziwej partii.",
+      "Przeanalizuj jeden niedawny błąd i porównaj go z podobnym zadaniem taktycznym.",
+      "Zagraj co najmniej jedną partię szybką na sesję, by sprawdzić, czy skan przed ruchem się utrzymuje."
+    ],
+    "drillSectionTitle": "Ćwiczenia łączące zadania z partiami",
+    "drillCards": [
+      {
+        "title": "Znajdź sygnał ostrzegawczy",
+        "description": "Zanim zaczniesz szukać taktyki, poszukaj sygnału ostrzegawczego.",
+        "duration": "4 minuty",
+        "goal": "Wcześniej zauważać groźne pozycje.",
+        "ctaLabel": "Trenuj najpierw sygnał"
+      },
+      {
+        "title": "Odtwarzanie przed liczeniem",
+        "description": "Przed zadaniami rozegraj szybką rundę Memory Chess, by pozycja była wyraźniejsza.",
+        "duration": "4 minuty",
+        "goal": "Połączyć pracę nad wzorcami z prawdziwą grą.",
+        "ctaLabel": "Wyostrz odtwarzanie"
+      },
+      {
+        "title": "Powtórka pozycji z partii",
+        "description": "Odtwórz przeoczony moment taktyczny z własnej partii i rozwiąż go jak zadanie.",
+        "duration": "6 minut",
+        "goal": "Sprawić, by trening taktyczny znów przypominał prawdziwe pozycje.",
+        "ctaLabel": "Powtórz przeoczoną taktykę"
+      }
+    ],
+    "comparisonTitle": "Zadania a partie: co się zmienia?",
+    "comparisonSummary": "Ruch taktyczny może być identyczny, ale zadanie dla umysłu już nie.",
+    "comparisonRows": [
+      {
+        "label": "Ramy problemu",
+        "struggling": "Partia nie mówi ci, że taktyka istnieje.",
+        "stronger": "Zauważasz sygnał, że napięcie właśnie się zmieniło."
+      },
+      {
+        "label": "Wyrazistość pozycji",
+        "struggling": "Wariant się rozmywa, gdy rusza kilka bierek.",
+        "stronger": "Trzymasz w pamięci ważne pola i obrońców."
+      },
+      {
+        "label": "Tempo decyzji",
+        "struggling": "Grasz w normalnym tempie, gdy pozycja staje się groźna.",
+        "stronger": "Zwalniasz, gdy pojawiają się szachy, bicia lub zagrożenia."
+      }
+    ],
+    "mistakes": [
+      "Rozwiązywanie zadań bez żadnego kroku przenoszącego je do partii.",
+      "Zakładanie, że sama wiedza taktyczna zapobiegnie błędom.",
+      "Brak analizy, dlaczego pozycja w partii stała się groźna.",
+      "Traktowanie widzenia szachownicy jako czegoś odrębnego od taktyki."
+    ],
+    "mistakesCallout": "Nie dokładaj tylko kolejnych zadań. Ćwicz też zauważanie momentów taktycznych we własnych partiach.",
+    "planTitle": "7-dniowy blok przenoszenia zadań",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "12 minut",
+        "detail": "Do każdej sesji zadań dodaj nawyk szukania sygnału przed rozwiązaniem."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "12 minut",
+        "detail": "Przed zadaniami lub grą szybką rozegraj krótką rundę Memory Chess."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "15 minut",
+        "detail": "Powtórz trzy przeoczone momenty taktyczne z własnych partii."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 do 20 minut",
+        "detail": "Graj szybkie partie i zatrzymuj się zawsze, gdy pozycja robi się forsowna lub taktycznie napięta."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Dlaczego jestem lepszy w zadaniach niż w partiach?",
+        "answer": "Bo zadanie już mówi ci, że jest taktyka do znalezienia. Prawdziwa partia tego nie robi."
+      },
+      {
+        "question": "Czy mam przestać robić zadania?",
+        "answer": "Nie. Zostaw je, ale dodaj widzenie szachownicy, odtwarzanie i powtórki pozycji z partii, by wzorce się przenosiły."
+      },
+      {
+        "question": "Jakie jest najlepsze ćwiczenie przenoszące?",
+        "answer": "Powtórka przeoczonej taktyki z własnej partii i rozwiązanie jej po odtworzeniu pozycji z pamięci."
+      },
+      {
+        "question": "Jak mierzyć przeniesienie?",
+        "answer": "Sprawdzaj, czy spada liczba błędów na partię i przeoczonych prostych taktyk, a nie tylko czy rośnie ranking zadań."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Wykorzystaj to, by zbudować krótszą listę antybłędową do partii."
+      },
+      {
+        "reason": "Wzmocnij nawyk skanowania, dzięki któremu taktyka staje się widoczna."
+      },
+      {
+        "reason": "Wybierz liczbę zadań, która zostawia czas na grę."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Jak widzieć całą szachownicę",
+    "h1": "Jak widzieć całą szachownicę",
+    "description": "Prosty skan, by zauważać odległe bierki, dostrzegać zagrożenia i unikać widzenia tunelowego.",
+    "primaryKeyword": "jak widzieć całą szachownicę",
+    "secondaryKeywords": [
+      "świadomość szachownicy",
+      "koniec z widzeniem tunelowym",
+      "widzieć całą szachownicę",
+      "ćwiczenia skanowania szachownicy",
+      "widzenie peryferyjne w szachach"
+    ],
+    "painPoint": "Skupiasz się na jednym obszarze i przeoczasz zagrożenie gdzie indziej.",
+    "ctaLabel": "Trenuj widzenie całej szachownicy",
+    "quickAnswer": "Przed każdym ruchem sprawdź obu królów, niebronione bierki, centrum i skrzydła. Trening pamięci pomaga trzymać w głowie większą część pozycji.",
+    "keyTakeaways": [
+      "Widzenie tunelowe to uwaga zablokowana w jednym rejonie.",
+      "Sprawdzanie bierek przy krawędziach jest szczególnie przydatne dla początkujących.",
+      "Wyraźna pamięć pozycji ułatwia skanowanie."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy widzą taktykę tylko po jednej stronie.",
+      "Początkujący, którzy przeoczają gońce, wieże i odległe zagrożenia.",
+      "Każdy, kto czuje się ciasno w otwartych pozycjach."
+    ],
+    "timeToRead": "7 minut czytania",
+    "introParagraphs": [
+      "Wielu początkujących patrzy tylko na bierki obok planowanego ruchu. Dlatego łatwo przeoczają odległe gońce, wieże i zagrożenia.",
+      "Nie musisz patrzeć dłużej. Stosuj ten sam prosty skan, by sprawdzić każdy ważny rejon."
+    ],
+    "startHereTitle": "Zacznij tutaj: poszerz skan",
+    "startHereSteps": [
+      "Sprawdź obu królów i linie wycelowane w ich stronę.",
+      "Poszukaj niebronionych bierek najpierw w centrum, potem przy krawędziach.",
+      "Przejedź gońce i wieże po całych liniach, nie tylko po interesującym cię polu.",
+      "Rozegraj rundę Memory Chess, by cała szachownica była łatwiej dostępna w uwadze.",
+      "Przed ruchem zapytaj, której części szachownicy jeszcze nie sprawdziłeś."
+    ],
+    "drillSectionTitle": "Ćwiczenia przeciw widzeniu tunelowemu",
+    "drillCards": [
+      {
+        "title": "Przegląd krawędzi",
+        "description": "Przed każdym ruchem sprawdź bierki w narożnikach i przy krawędziach.",
+        "duration": "3 minuty",
+        "goal": "Wyłapać zagrożenia poza obszarem skupienia.",
+        "ctaLabel": "Sprawdź krawędzie"
+      },
+      {
+        "title": "Przegląd linii działania",
+        "description": "Prześledź całe linie gońców i wież, zamiast patrzeć na jedno pole docelowe.",
+        "duration": "4 minuty",
+        "goal": "Objąć więcej szachownicy przy każdym skanie.",
+        "ctaLabel": "Prześledź linie"
+      },
+      {
+        "title": "Odtwarzanie całej szachownicy",
+        "description": "Zagraj Memory Chess z umiarkowaną liczbą bierek, a potem wymień pozycję rejon po rejonie.",
+        "duration": "5 minut",
+        "goal": "Pamiętać naraz większą część pozycji.",
+        "ctaLabel": "Odtwarzaj rejonami"
+      }
+    ],
+    "comparisonTitle": "Widzenie tunelowe a świadomość całej szachownicy",
+    "comparisonSummary": "Nie musisz patrzeć wszędzie tak samo długo. Wystarczy nie przeoczyć niczego ważnego.",
+    "comparisonRows": [
+      {
+        "label": "Ścieżka uwagi",
+        "struggling": "Wpatrujesz się w jedną grupę bierek.",
+        "stronger": "Odwiedzasz główne rejony ryzyka w stałej kolejności."
+      },
+      {
+        "label": "Bierki dalekiego zasięgu",
+        "struggling": "Zapominasz o gońcach i wieżach z dala od akcji.",
+        "stronger": "Przed zaufaniem ruchowi sprawdzasz ich pełne linie."
+      },
+      {
+        "label": "Rejony szachownicy",
+        "struggling": "Pomijasz stronę, która wygląda spokojnie.",
+        "stronger": "Sprawdzasz spokojną stronę przed ruchem."
+      }
+    ],
+    "mistakes": [
+      "Mylenie widzenia całej szachownicy z dłuższym patrzeniem zamiast lepszym skanem.",
+      "Ignorowanie krawędzi, bo centrum wydaje się pilniejsze.",
+      "Niepełne śledzenie linii bierek dalekiego zasięgu.",
+      "Próba skanowania szerzej, zanim potrafisz wyraźnie pamiętać bierki."
+    ],
+    "mistakesCallout": "Dodatkowy czas do namysłu nie pomoże bez wyraźnego skanu. Sprawdzaj pozycję zawsze w tej samej kolejności.",
+    "planTitle": "7-dniowy plan skanowania całej szachownicy",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "10 minut",
+        "detail": "Tylko sprawdzanie królów, niebronionych bierek i przegląd krawędzi."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "12 minut",
+        "detail": "Dodaj do skanu pełne śledzenie linii gońców i wież."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "12 minut",
+        "detail": "Użyj Memory Chess i odtwarzaj pozycję rejonami zamiast w przypadkowej kolejności."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 minut",
+        "detail": "Przenieś skan do partii szybkich i przy błędzie notuj, który rejon go spowodował."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Dlaczego wciąż przeoczam bierki po drugiej stronie?",
+        "answer": "Bo twoja uwaga jest zbyt lokalna. Stała kolejność skanu jest lepsza niż nadzieja, że sam wszystko zauważysz."
+      },
+      {
+        "question": "Czy Memory Chess pomaga w świadomości całej szachownicy?",
+        "answer": "Tak. Uczy trzymać w pamięci większą część pozycji, a nie tylko taktyczny punkt zapalny."
+      },
+      {
+        "question": "Czy sprawdzać krawędzie przy każdym ruchu?",
+        "answer": "Tak, zwłaszcza jako początkujący. Wiele tanich błędów kryje się w bierkach przy krawędziach i długich liniach."
+      },
+      {
+        "question": "Skąd wiem, że skan się poprawia?",
+        "answer": "Rzadziej przeoczysz odległe zagrożenia i mniej zaskoczą cię gońce, wieże i odsłony."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Połącz świadomość całej szachownicy z mocniejszą listą bezpieczeństwa."
+      },
+      {
+        "reason": "Popraw szachownicę w głowie, by szerszy skan był łatwiejszy."
+      },
+      {
+        "reason": "Szybciej rozpoznawaj pola, by szerokie skany mniej męczyły."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Ćwiczenie współrzędnych dla szybszej orientacji",
+    "h1": "Ćwiczenie współrzędnych szachowych dla początkujących",
+    "description": "Szybciej naucz się nazw pól i ułatw sobie skanowanie, notację oraz wizualizację.",
+    "primaryKeyword": "ćwiczenie współrzędnych szachowych",
+    "secondaryKeywords": [
+      "ćwiczenie notacji szachowej",
+      "nauka współrzędnych szachowych",
+      "szybsze rozpoznawanie pól",
+      "świadomość pól szachownicy",
+      "ćwiczenia nazywania pól"
+    ],
+    "painPoint": "Potrzebujesz czasu, by ustalić nazwę pola, albo często je mylisz.",
+    "ctaLabel": "Ćwicz nazwy pól",
+    "quickAnswer": "Współrzędne to nazwy 64 pól. Ich znajomość ułatwia skanowanie, wyobrażanie ruchów i analizę partii.",
+    "keyTakeaways": [
+      "Szybkie rozpoznawanie pól ułatwia skany.",
+      "Ćwicz współrzędne na prawdziwych pozycjach.",
+      "Na start wystarczą podstawowe nazwy pól."
+    ],
+    "whoThisIsFor": [
+      "Początkujący, którzy wciąż wolno liczą linie i rzędy.",
+      "Gracze, którzy chcą szybciej skanować i wizualizować.",
+      "Każdy, komu notacja wydaje się myląca."
+    ],
+    "timeToRead": "7 minut czytania",
+    "introParagraphs": [
+      "Współrzędne przydają się nie tylko w książkach i zapisach partii. Szybkie rozpoznawanie pól pomaga w widzeniu szachownicy, pamięci i analizie.",
+      "Gdy znasz nazwy pól, szachownica staje się czytelną mapą zamiast zbioru mglistych obszarów."
+    ],
+    "startHereTitle": "Zacznij od nazw pól na prawdziwej szachownicy",
+    "startHereSteps": [
+      "Wybierz jedną linię lub rząd i nazwij pola na głos.",
+      "Odtwarzając pozycję z Memory Chess, wymieniaj pole każdej bierki.",
+      "Weź niedawną pozycję i nazwij po polach kluczowych atakujących i obrońców.",
+      "Ćwicz gońce, wieże i skoki skoczka po współrzędnych, nie tylko wzrokiem.",
+      "Zakończ szybkim skanem, w którym każdą niebronioną bierkę nazywasz po polu."
+    ],
+    "drillSectionTitle": "Ćwiczenia współrzędnych przydatne w grze",
+    "drillCards": [
+      {
+        "title": "Nazywanie bierki i pola",
+        "description": "Odbuduj pozycję i wymień każdą bierkę wraz z jej polem.",
+        "duration": "4 minuty",
+        "goal": "Powiązać nazwy pól z bierkami, które trzeba zapamiętać.",
+        "ctaLabel": "Nazwij każde pole"
+      },
+      {
+        "title": "Nazywanie długich linii",
+        "description": "Prześledź linie gońców i wież, wymieniając pola, na które wpływają.",
+        "duration": "4 minuty",
+        "goal": "Uczynić współrzędne przydatnymi podczas pełnych skanów.",
+        "ctaLabel": "Śledź linie po polach"
+      },
+      {
+        "title": "Mapa skoków skoczka",
+        "description": "Wybierz pole skoczka i szybko wymień wszystkie legalne pola docelowe.",
+        "duration": "3 minuty",
+        "goal": "Szybciej rozpoznawać ruchy skoczka i pola celu.",
+        "ctaLabel": "Zrób mapę skoków"
+      }
+    ],
+    "comparisonTitle": "Wolne kontra szybkie rozpoznawanie pól",
+    "comparisonSummary": "Współrzędne nie poprawią każdego aspektu gry, ale ułatwiają kilka umiejętności.",
+    "comparisonRows": [
+      {
+        "label": "Skan szachownicy",
+        "struggling": "Znasz kształt, ale nie nazwy pól.",
+        "stronger": "Precyzyjniej i szybciej wskazujesz zagrożenia i obrońców."
+      },
+      {
+        "label": "Wizualizacja",
+        "struggling": "Wyobrażone ruchy są mgliste.",
+        "stronger": "Powstającą pozycję łatwiej opisać i utrzymać."
+      },
+      {
+        "label": "Analiza",
+        "struggling": "Notatki po partii są niewyraźne.",
+        "stronger": "Kluczowy moment opisujesz na tyle jasno, by wrócić do niego później."
+      }
+    ],
+    "mistakes": [
+      "Ćwiczenie nazw pól bez prawdziwych pozycji.",
+      "Zapamiętywanie zasad notacji bez przykładów na szachownicy.",
+      "Ignorowanie linii bierek dalekiego zasięgu podczas ćwiczeń.",
+      "Porzucenie nawyku, gdy tylko notacja stanie się znajoma."
+    ],
+    "mistakesCallout": "Nie powtarzaj samych nazw pól. Używaj ich razem z prawdziwymi bierkami i pozycjami.",
+    "planTitle": "7-dniowa rozgrzewka ze współrzędnymi",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "8 minut",
+        "detail": "Odtwarzając pozycję z Memory Chess, nazywaj każdą bierkę i jej pole."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "10 minut",
+        "detail": "Dodaj nazywanie długich linii dla gońców i wież."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "10 minut",
+        "detail": "Ćwicz mapę skoków skoczka i biegłość na polach centralnych."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "12 minut",
+        "detail": "Używaj nazw pól podczas pełnego skanu, a potem przeanalizuj ważną pozycję wyłącznie po polach."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Czy współrzędne naprawdę są ważne dla początkujących?",
+        "answer": "Tak, gdy przyspieszają orientację, wizualizację i analizę. Nie potrzebujesz doskonałej notacji, ale szybkie rozpoznawanie pól pomaga."
+      },
+      {
+        "question": "Jak najlepiej uczyć się współrzędnych?",
+        "answer": "Ucz się nazw pól na prawdziwych pozycjach i bierkach zamiast powtarzać samą notację."
+      },
+      {
+        "question": "Czy to pomoże mi przestać się mylić?",
+        "answer": "Pośrednio tak. Szybsze rozpoznawanie pól czyni skany i kontrole zagrożeń precyzyjniejszymi."
+      },
+      {
+        "question": "Jak długo ćwiczyć współrzędne?",
+        "answer": "Pięć do dziesięciu skupionych minut wystarczy, gdy ćwiczenie łączy się z pracą na szachownicy."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Wykorzystaj współrzędne do szerszego skanu całej szachownicy."
+      },
+      {
+        "reason": "Uczyń aktualizacje w głowie precyzyjnymi co do pola."
+      },
+      {
+        "reason": "Użyj nazw pól, by uprościć myślenie pod presją."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Codzienny 20-minutowy plan szachowy dla początkujących",
+    "h1": "Codzienny 20-minutowy plan szachowy dla początkujących",
+    "description": "Prosty plan na 20 minut: praca nad szachownicą, pamięć, partia i krótka analiza.",
+    "primaryKeyword": "codzienny 20-minutowy plan szachowy",
+    "secondaryKeywords": [
+      "codzienna rutyna szachowa dla początkujących",
+      "krótki plan nauki szachów",
+      "postęp w 20 minut dziennie",
+      "program treningowy dla początkujących",
+      "rutyna zadań i analizy"
+    ],
+    "painPoint": "Chcesz się rozwijać, ale większość planów szachowych zabiera za dużo czasu.",
+    "ctaLabel": "Rozpocznij plan 20-minutowy",
+    "quickAnswer": "Przeznacz po kilka minut na wyczucie szachownicy, pamięć, taktykę i analizę. Rutyna ma być na tyle krótka, byś dał radę nawet zmęczony.",
+    "keyTakeaways": [
+      "Częsty trening znaczy więcej niż długi trening.",
+      "Używaj i ćwiczeń, i prawdziwych pozycji.",
+      "Krótka analiza pomaga jutrzejszemu treningowi."
+    ],
+    "whoThisIsFor": [
+      "Początkujący z małą ilością czasu, ale stałą motywacją.",
+      "Gracze, którzy porzucają zbyt wymagające plany.",
+      "Każdy, kto chce powtarzalnej codziennej rutyny."
+    ],
+    "timeToRead": "7 minut czytania",
+    "introParagraphs": [
+      "Wiele planów nauki działa tylko przy dużej ilości wolnego czasu. Użyteczny plan musi działać także w pracowity dzień.",
+      "Ta 20-minutowa rutyna zachowuje jedno ćwiczenie, jedną prawdziwą pozycję i krótką analizę."
+    ],
+    "startHereTitle": "Twoja 20-minutowa rutyna szachowa",
+    "startHereSteps": [
+      "Przeznacz 4 minuty na ćwiczenie wyczucia szachownicy lub odtwarzania.",
+      "Przeznacz 6 minut na rundę Memory Chess z tymi samymi ustawieniami przez cały tydzień.",
+      "Przeznacz 6 minut na taktykę albo pozycję z prawdziwej partii.",
+      "Przeznacz 4 minuty na zapisanie, co dziś zawiodło, a co się utrzymało.",
+      "Utrzymaj tę strukturę przez co najmniej 7 dni, zanim ją zmienisz."
+    ],
+    "drillSectionTitle": "Ćwiczenia, które mieszczą się w krótkim planie",
+    "drillCards": [
+      {
+        "title": "Rozgrzewka z odtwarzaniem",
+        "description": "Użyj krótkiej rundy Memory Chess jako kotwicy całej sesji.",
+        "duration": "6 minut",
+        "goal": "Zaczynać każdą sesję od tej samej rozgrzewki pamięci.",
+        "ctaLabel": "Zacznij rozgrzewkę"
+      },
+      {
+        "title": "Sprint kontroli zagrożeń",
+        "description": "Przeskanuj pozycję pod kątem szachów, bić, zagrożeń i niebronionych bierek.",
+        "duration": "4 minuty",
+        "goal": "Poprawić przeniesienie do partii niemal bez kosztu czasu.",
+        "ctaLabel": "Zrób kontrolę zagrożeń"
+      },
+      {
+        "title": "Pętla notatek",
+        "description": "Napisz jedno zdanie o typie błędu, który dziś popełniłeś.",
+        "duration": "4 minuty",
+        "goal": "Wykorzystać dzisiejszą lekcję jutro.",
+        "ctaLabel": "Zapisz jedną lekcję"
+      }
+    ],
+    "comparisonTitle": "Rutyna, którą utrzymasz",
+    "comparisonSummary": "Najlepsza rutyna to ta, którą powtórzysz w zwykłym tygodniu.",
+    "comparisonRows": [
+      {
+        "label": "Dzienne obciążenie",
+        "struggling": "Próbujesz naraz zbyt wielu form nauki.",
+        "stronger": "Powtarzasz zwarty cykl, który codziennie pokrywa podstawy."
+      },
+      {
+        "label": "Przeniesienie",
+        "struggling": "Tylko oglądasz lub czytasz, nie ćwicząc.",
+        "stronger": "Każda sesja zawiera ćwiczenie, które wykorzystasz w partii."
+      },
+      {
+        "label": "Analiza",
+        "struggling": "Błędy znikają, bo nic nie zapisujesz.",
+        "stronger": "Każdy dzień kończy się notatką na jutro."
+      }
+    ],
+    "mistakes": [
+      "Kopiowanie zaawansowanych planów nie do utrzymania.",
+      "Przeznaczanie całych 20 minut na treści bierne.",
+      "Zmienianie rutyny co dwa dni.",
+      "Pomijanie analizy, bo wydaje się drobna."
+    ],
+    "mistakesCallout": "Nie rozbudowuj planu. Zrób go na tyle lekkim, by dało się go powtarzać.",
+    "planTitle": "20-minutowa rutyna przez 7 dni",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 3",
+        "duration": "20 minut",
+        "detail": "Dla spójności zachowaj te same ustawienia Memory Chess i ten sam format kontroli."
+      },
+      {
+        "label": "Dzień 4",
+        "duration": "20 minut",
+        "detail": "Przeczytaj notatki i zostaw tylko jeden punkt do poprawy na kolejne trzy dni."
+      },
+      {
+        "label": "Dzień 5 do 6",
+        "duration": "20 minut",
+        "detail": "Powtórz dokładnie tę samą strukturę bez dodatkowej różnorodności."
+      },
+      {
+        "label": "Dzień 7",
+        "duration": "20 minut",
+        "detail": "Sprawdź, czy poprawiły się błędy lub dokładność odtwarzania, i wprowadź tylko jedną zmianę na kolejny tydzień."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Czy 20 minut treningu wystarczy?",
+        "answer": "Tak, jeśli jest regularne i zawiera ćwiczenia przenoszące się wprost do partii, a nie tylko bierną naukę."
+      },
+      {
+        "question": "Czy poświęcić wszystkie 20 minut na taktykę?",
+        "answer": "Zwykle nie. Mieszanka wyrazistości pozycji, przeniesienia taktycznego i krótkiej analizy działa u początkujących lepiej."
+      },
+      {
+        "question": "Jak długo trzymać ten sam plan?",
+        "answer": "Co najmniej tydzień. Ciągłe zmiany sprawiają, że postępu nie da się odczytać."
+      },
+      {
+        "question": "Co powinienem notować?",
+        "answer": "Błędy na partię, dokładność odtwarzania i typ błędu, który pojawia się najczęściej."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Zobacz, jak ta krótka rutyna wpisuje się w dłuższy plan."
+      },
+      {
+        "reason": "Zrównoważ pracę taktyczną i wyrazistość pozycji."
+      },
+      {
+        "reason": "Utrzymaj blok analizy prosty i produktywny."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Jak początkujący powinni analizować swoje partie",
+    "h1": "Jak początkujący powinni analizować swoje partie",
+    "description": "Przeanalizuj swoje partie, zrozum błędy i wybierz jedną jasną rzecz do ćwiczenia.",
+    "primaryKeyword": "analiza partii szachowych dla początkujących",
+    "secondaryKeywords": [
+      "analiza partii dla początkujących",
+      "przeglądanie własnych partii",
+      "samodzielna analiza w szachach",
+      "analiza błędów",
+      "rutyna po partii"
+    ],
+    "painPoint": "Twoja analiza jest za szybka, chaotyczna albo pełna wariantów silnika.",
+    "ctaLabel": "Przeanalizuj następną partię",
+    "quickAnswer": "Znajdź moment, w którym partia się przechyliła, nazwij typ błędu i wybierz jedną poprawkę. Silnik włącz dopiero po własnej ocenie pozycji.",
+    "keyTakeaways": [
+      "Kończ analizę działaniem, a nie długą listą ruchów silnika.",
+      "Nazwanie typu błędu pomaga wybrać ćwiczenie.",
+      "Spróbuj odtworzyć kluczową pozycję z pamięci."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy przeglądają partie, ale nie wiedzą, co dalej.",
+      "Początkujący, którzy widzą skok oceny, lecz nie rozumieją dlaczego.",
+      "Każdy, kto chce prostszego nawyku po partii."
+    ],
+    "timeToRead": "7 minut czytania",
+    "introParagraphs": [
+      "Zacznij od pytania: który błąd zmienił partię? Sama ocena silnika nie mówi, co masz ćwiczyć.",
+      "Odtwórz kluczową pozycję, nazwij błąd i na tej podstawie wybierz jutrzejsze ćwiczenie."
+    ],
+    "startHereTitle": "Zacznij tutaj: pętla analizy dla początkujących",
+    "startHereSteps": [
+      "Znajdź pierwszy moment, w którym pozycja mocno się zmieniła.",
+      "Odtwórz tę pozycję z pamięci, zanim sprawdzisz silnik.",
+      "Zaklasyfikuj błąd jako widzenie, pamięć, liczenie albo zarządzanie czasem.",
+      "Zapytaj, jaki sygnał kazałby ci zwolnić.",
+      "Zamień odpowiedź w ćwiczenie na kolejną sesję."
+    ],
+    "drillSectionTitle": "Proste ćwiczenia analityczne",
+    "drillCards": [
+      {
+        "title": "Odtwórz kluczową pozycję",
+        "description": "Odtwórz z pamięci pozycję głównego błędu, zanim ją sprawdzisz.",
+        "duration": "5 minut",
+        "goal": "Zapamiętać pozycję, zanim zobaczysz odpowiedź.",
+        "ctaLabel": "Odtwórz ten moment"
+      },
+      {
+        "title": "Oznacz typ błędu",
+        "description": "Każdy duży błąd nazwij: widzenie, pamięć, liczenie albo niedoczas.",
+        "duration": "3 minuty",
+        "goal": "Wiedzieć, co ćwiczyć dalej.",
+        "ctaLabel": "Oznacz typ błędu"
+      },
+      {
+        "title": "Analiza z jedną poprawką",
+        "description": "Zakończ analizę jedną jasną poprawką na jutro.",
+        "duration": "2 minuty",
+        "goal": "Skończyć użytecznym kolejnym krokiem.",
+        "ctaLabel": "Wybierz poprawkę"
+      }
+    ],
+    "comparisonTitle": "Analiza użyteczna kontra bezużyteczna",
+    "comparisonSummary": "Nie musisz studiować każdego ruchu. Znajdź najjaśniejszą lekcję dla kolejnego ćwiczenia.",
+    "comparisonRows": [
+      {
+        "label": "Użycie silnika",
+        "struggling": "Od razu włączasz silnik.",
+        "stronger": "Najpierw stawiasz własną diagnozę."
+      },
+      {
+        "label": "Efekt",
+        "struggling": "Kończysz z wieloma komentarzami i bez działania.",
+        "stronger": "Kończysz ćwiczeniem lub zmianą na liście."
+      },
+      {
+        "label": "Pamięć",
+        "struggling": "Pozycja znika zaraz po partii.",
+        "stronger": "Odtwarzasz ją i widzisz błąd wyraźniej."
+      }
+    ],
+    "mistakes": [
+      "Analiza wyłącznie wariantami silnika bez własnej diagnozy.",
+      "Próba analizowania każdego ruchu równie głęboko.",
+      "Nienazywanie typu błędu.",
+      "Kończenie analizy bez wyboru kolejnego ćwiczenia."
+    ],
+    "mistakesCallout": "Nie przeglądaj każdego wariantu silnika. Nazwij błąd i ćwicz poprawkę.",
+    "planTitle": "7-dniowy nawyk analizy",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "10 minut",
+        "detail": "Przeanalizuj jedną partię i znajdź tylko pierwszy duży zwrot."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "12 minut",
+        "detail": "Odtwórz tę pozycję z pamięci, zanim sprawdzisz silnik."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "12 minut",
+        "detail": "Przypisz każdemu dużemu błędowi typ i policz, który pojawia się najczęściej."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 minut",
+        "detail": "Na podstawie najczęstszego typu błędu wybierz pierwsze ćwiczenie kolejnej sesji."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Czy początkujący powinni używać silnika?",
+        "answer": "Tak, ale po własnej próbie diagnozy. Inaczej analiza pozostaje bierna."
+      },
+      {
+        "question": "Ile błędów sprawdzać po partii?",
+        "answer": "Dla większości początkujących wystarczy jeden do trzech dużych zwrotów."
+      },
+      {
+        "question": "Co zapisać po analizie?",
+        "answer": "Typ błędu, przeoczony sygnał i ćwiczenie lub zmianę listy na następny raz."
+      },
+      {
+        "question": "Jak Memory Chess pomaga w analizie?",
+        "answer": "Pomaga odtwarzać ważne pozycje, dzięki czemu analiza jest dokładniejsza."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Wpasuj analizę w rutynę, która nie przytłacza."
+      },
+      {
+        "reason": "Zamień wnioski z analizy w ćwiczenia antybłędowe."
+      },
+      {
+        "reason": "Pamiętaj i odtwarzaj kluczowe momenty po partii."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Ile zadań szachowych dziennie powinien robić początkujący?",
+    "h1": "Ile zadań szachowych dziennie powinien robić początkujący?",
+    "description": "Wybierz dzienną liczbę zadań, która poprawia taktykę i zostawia czas na pamięć, partie i analizę.",
+    "primaryKeyword": "ile zadań szachowych dziennie",
+    "secondaryKeywords": [
+      "dzienna liczba zadań",
+      "rutyna zadań dla początkujących",
+      "ile taktyki dziennie",
+      "za dużo zadań szachowych",
+      "objętość taktyki dla początkujących"
+    ],
+    "painPoint": "Robisz dużo zadań, ale nie wiesz, czy pomagają w partiach.",
+    "ctaLabel": "Zrównoważ zadania i grę",
+    "quickAnswer": "Dla większości początkujących wystarczy krótka codzienna sesja. Kończ, dopóki myślisz jasno, i zostaw czas na partie, pamięć i analizę.",
+    "keyTakeaways": [
+      "Jakość zadań liczy się bardziej niż ich liczba.",
+      "Zbyt wiele zadań zabiera czas partiom i analizie.",
+      "Idealna liczba powinna zostawiać czas na grę lub analizę."
+    ],
+    "whoThisIsFor": [
+      "Gracze, u których cały plan nauki to zadania.",
+      "Początkujący, którzy chcą jasnej rutyny zadań.",
+      "Każdy, kto chce zrównoważyć zadania i praktykę."
+    ],
+    "timeToRead": "7 minut czytania",
+    "introParagraphs": [
+      "Nie ma jednej idealnej liczby dla wszystkich. Za mało zadań spowalnia naukę wzorców, za dużo nie zostawia czasu na resztę.",
+      "Rób ich tyle, by zachować ostrość, a resztę czasu przeznacz na pamięć pozycji, partie i analizę."
+    ],
+    "startHereTitle": "Wybierz sensowną dzienną liczbę",
+    "startHereSteps": [
+      "Zdecyduj, czy zadania są rozgrzewką, głównym blokiem, czy testem przeniesienia.",
+      "Zachowaj krótką rundę Memory Chess przed albo po, dla wyrazistości pozycji.",
+      "Kończ, gdy odpowiedzi robią się pospieszne, zamiast gonić większą liczbę.",
+      "Codziennie odtwórz jeden przeoczony moment taktyczny z prawdziwej partii.",
+      "Zmieniaj liczbę dopiero po sprawdzeniu, czy błędy w partiach się zmieniają."
+    ],
+    "drillSectionTitle": "Ćwiczenia, które czynią zadania użyteczniejszymi",
+    "drillCards": [
+      {
+        "title": "Rozgrzewka i odtwarzanie",
+        "description": "Połącz krótkie ćwiczenie odtwarzania z umiarkowanym blokiem zadań zamiast startować na zimno.",
+        "duration": "10 minut",
+        "goal": "Powiązać zadania z prawdziwą grą.",
+        "ctaLabel": "Dodaj odtwarzanie"
+      },
+      {
+        "title": "Kontrola sygnału po każdym zadaniu",
+        "description": "Zanim zobaczysz rozwiązanie, zapytaj, jaki sygnał umożliwił tę taktykę.",
+        "duration": "5 minut",
+        "goal": "Zauważać, dlaczego w pozycji jest taktyka.",
+        "ctaLabel": "Sprawdź sygnał"
+      },
+      {
+        "title": "Odtwórz taktykę z partii",
+        "description": "Zamień przeoczoną taktykę z partii w zadanie, które rozwiążesz po odtworzeniu pozycji.",
+        "duration": "5 minut",
+        "goal": "Wykorzystać taktykę z własnych partii.",
+        "ctaLabel": "Odtwórz taktykę"
+      }
+    ],
+    "comparisonTitle": "Za mało, za dużo i w sam raz",
+    "comparisonSummary": "Właściwa liczba utrzymuje ostrość taktyczną, a wciąż zostawia czas na grę.",
+    "comparisonRows": [
+      {
+        "label": "Rozpoznawanie wzorców",
+        "struggling": "Zbyt mało praktyki sprawia, że typowa taktyka wydaje się obca.",
+        "stronger": "Umiarkowany dzienny blok utrzymuje wzorce świeże."
+      },
+      {
+        "label": "Przeniesienie",
+        "struggling": "Zbyt wiele zadań nie zostawia czasu na widzenie ani analizę.",
+        "stronger": "W rutynie zostaje odtwarzanie i praca na pozycjach z partii."
+      },
+      {
+        "label": "Zmęczenie",
+        "struggling": "Późne zadania zamieniają się w pospieszne zgadywanie.",
+        "stronger": "Kończysz, gdy decyzje są jeszcze czyste."
+      }
+    ],
+    "mistakes": [
+      "Traktowanie liczby zadań jako jedynej miary jakości.",
+      "Rozwiązywanie taktyki bez żadnego przeniesienia do partii.",
+      "Kontynuowanie długo po spadku koncentracji.",
+      "Wypieranie analizy i wyczucia szachownicy."
+    ],
+    "mistakesCallout": "Więcej zadań nie zawsze znaczy lepiej. Sprawdź, czy pomagają w prawdziwych partiach.",
+    "planTitle": "7-dniowy plan równowagi",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "15 minut",
+        "detail": "Użyj małego bloku zadań i dodaj przed nim krótkie ćwiczenie odtwarzania."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "15 minut",
+        "detail": "Po każdym zadaniu dodaj kontrolę sygnału, by zobaczyć, dlaczego taktyka istniała."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "15 minut",
+        "detail": "Odtwórz przeoczoną taktykę z partii i porównaj ją ze swoimi wynikami w zadaniach."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 do 20 minut",
+        "detail": "Zmień liczbę tylko wtedy, gdy odpowiedzi pozostają staranne, a czas na grę wciąż jest."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Ile zadań dziennie wystarczy początkującemu?",
+        "answer": "Tyle, by typowa taktyka pozostała znajoma, a został czas na pamięć i partie. Dla wielu wystarczy krótka codzienna sesja."
+      },
+      {
+        "question": "Czy zbyt wiele zadań może szkodzić?",
+        "answer": "Pośrednio tak. Mogą wyprzeć wyczucie szachownicy, odtwarzanie i analizę, potrzebne do realnego przeniesienia."
+      },
+      {
+        "question": "Zadania przed partiami czy po?",
+        "answer": "Obie opcje działają, ale mała rozgrzewka plus krok przeniesienia po partii często sprawdza się dobrze."
+      },
+      {
+        "question": "Co powinienem śledzić?",
+        "answer": "Czy spadają błędy i przeoczone proste taktyki, a nie tylko ile zadań zrobiłeś."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Zrozum, dlaczego same sukcesy w zadaniach nie wystarczą."
+      },
+      {
+        "reason": "Wpasuj zadania w zrównoważoną, krótką rutynę."
+      },
+      {
+        "reason": "Ucz się typowych wzorców zamiast zwiększać liczbę zadań."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Ćwiczenia rozpoznawania wzorców w szachach",
+    "h1": "Ćwiczenia rozpoznawania wzorców dla początkujących",
+    "description": "Proste ćwiczenia, by dostrzegać typowe wzorce szachowe i szybciej widzieć użyteczne pomysły.",
+    "primaryKeyword": "ćwiczenia rozpoznawania wzorców w szachach",
+    "secondaryKeywords": [
+      "rozpoznawanie wzorców w szachach",
+      "trening motywów taktycznych",
+      "ćwiczenia wzorców taktycznych",
+      "wzorce szachowe dla początkujących",
+      "zapamiętywanie motywów szachowych"
+    ],
+    "painPoint": "Każda pozycja wygląda na nową, więc pomysły taktyczne widzisz za późno.",
+    "ctaLabel": "Trenuj wzorce",
+    "quickAnswer": "Wzorzec to znajomy układ bierek i pól. Powtarzaj ten sam rodzaj wzorca, aż szybko zobaczysz stojący za nim pomysł.",
+    "keyTakeaways": [
+      "Wzorzec to zarówno kształt na szachownicy, jak i pomysł, który z niego wynika.",
+      "Pamięć pozycji pomaga dostrzegać wzorce pod presją.",
+      "Powtórz kilka typowych wzorców, zanim dodasz wiele nowych."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy rozwiązują taktykę, ale nie widzą podobnych kształtów w partiach.",
+      "Początkujący, którzy chcą więcej struktury niż przypadkowe zadania.",
+      "Każdy, komu pozycje wciąż wydają się wizualnie chaotyczne."
+    ],
+    "timeToRead": "7 minut czytania",
+    "introParagraphs": [
+      "Rozpoznawanie wzorców sprawia, że pozycja staje się znajoma. Kształt na szachownicy może wskazać widelec, związanie, uwięzioną bierkę lub słabe pole, zanim zaczniesz liczyć.",
+      "Zacznij od małej grupy typowych wzorców. Odtwarzaj każdą pozycję z pamięci, by zapamiętać bierki i pola, które niosą pomysł."
+    ],
+    "startHereTitle": "Zacznij od jednego wzorca naraz",
+    "startHereSteps": [
+      "Wybierz rodzaj wzorca, na przykład widelce, związania lub ataki na niebronione bierki.",
+      "Przestudiuj kształt i odtwórz go z pamięci, nie tylko ze statycznego diagramu.",
+      "Nazwij pola i obrońców, którzy niosą ten wzorzec.",
+      "Rozegraj rundę Memory Chess, by utrwalić czyste odtwarzanie.",
+      "Przeanalizuj niedawną partię i znajdź, gdzie pojawił się podobny wzorzec albo go zabrakło."
+    ],
+    "drillSectionTitle": "Proste ćwiczenia rozpoznawania wzorców",
+    "drillCards": [
+      {
+        "title": "Odtwórz wzorzec",
+        "description": "Odtwórz wzorzec z pamięci i nazwij kluczowe bierki oraz pola.",
+        "duration": "5 minut",
+        "goal": "Powiązać wzorzec z wyraźną pamięcią pozycji.",
+        "ctaLabel": "Odtwórz wzorzec"
+      },
+      {
+        "title": "Powtórz jedną rodzinę",
+        "description": "Powtórz kilka przykładów tego samego wzorca, zanim zmienisz rodzaj.",
+        "duration": "5 minut",
+        "goal": "Uczynić kształt na szachownicy znajomym.",
+        "ctaLabel": "Powtórz rodzinę"
+      },
+      {
+        "title": "Znajdź go w swoich partiach",
+        "description": "Przejrzyj niedawną partię i znajdź, gdzie pojawił się ten sam wzorzec.",
+        "duration": "5 minut",
+        "goal": "Powiązać pracę nad wzorcami z prawdziwymi pozycjami.",
+        "ctaLabel": "Szukaj w swoich partiach"
+      }
+    ],
+    "comparisonTitle": "Przypadkowa taktyka a prawdziwe rozpoznawanie wzorców",
+    "comparisonSummary": "Wzorce przydają się wtedy, gdy zauważysz je przed rozpoczęciem długiego liczenia.",
+    "comparisonRows": [
+      {
+        "label": "Struktura treningu",
+        "struggling": "Ciągle skaczesz między niepowiązanymi wzorcami.",
+        "stronger": "Powtarzasz jeden rodzaj wzorca, aż stanie się znajomy."
+      },
+      {
+        "label": "Pamięć pozycji",
+        "struggling": "Znasz pomysł, ale nie pola, które go niosą.",
+        "stronger": "Pamiętasz szczegóły, dzięki którym wzorzec działa."
+      },
+      {
+        "label": "Prawdziwe partie",
+        "struggling": "Wzorce zostają zamknięte w zadaniach.",
+        "stronger": "Zauważasz ich wczesne oznaki w trwającej partii."
+      }
+    ],
+    "mistakes": [
+      "Uczenie się samej nazwy wzorca bez zrozumienia kształtu.",
+      "Zbyt częsta zmiana rodzaju wzorca.",
+      "Ignorowanie pól i obrońców niosących wzorzec.",
+      "Pomijanie analizy partii po pracy nad wzorcami."
+    ],
+    "mistakesCallout": "Nie dodawaj różnorodności zbyt szybko. Powtarzaj jeden rodzaj wzorca, aż stanie się znajomy.",
+    "planTitle": "7-dniowy plan wzorców",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "10 minut",
+        "detail": "Wybierz jeden rodzaj wzorca i odtwórz kilka przykładów z pamięci."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "12 minut",
+        "detail": "Do każdego przykładu dodaj nazwy pól i liczenie obrońców."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "12 minut",
+        "detail": "Przed pracą nad wzorcami rozegraj rundę Memory Chess, by pozycja była wyraźniejsza."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 minut",
+        "detail": "Przeszukaj niedawne partie pod kątem tego samego wzorca i zapisz, gdzie się pojawił lub prawie pojawił."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Czym jest rozpoznawanie wzorców w szachach?",
+        "answer": "To dostrzeżenie znajomego kształtu na szachownicy i szybkie przypomnienie sobie pomysłu, który zwykle tam działa."
+      },
+      {
+        "question": "Jak początkujący ćwiczą wzorce?",
+        "answer": "Powtarzając małą grupę wzorców, odtwarzając pozycje z pamięci i szukając ich w prawdziwych partiach."
+      },
+      {
+        "question": "Czy zadania wystarczą do wzorców?",
+        "answer": "Nie zawsze. Pomagają, ale dopiero powtarzanie tego samego rodzaju i analiza partii czynią je użytecznymi."
+      },
+      {
+        "question": "Po co łączyć Memory Chess z pracą nad wzorcami?",
+        "answer": "Bo rozpoznawanie wzorców jest łatwiejsze, gdy cała pozycja pozostaje wyraźna w pamięci."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Zbuduj mocniejszą warstwę odtwarzania pod naukę wzorców."
+      },
+      {
+        "reason": "Zrównoważ pracę nad wzorcami z rozsądną liczbą zadań."
+      },
+      {
+        "reason": "Wykorzystaj poznane wzorce w prawdziwych partiach."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Ćwiczenia liczenia w szachach dla początkujących",
+    "h1": "Ćwiczenia liczenia w szachach dla początkujących",
+    "description": "Proste ćwiczenia, by porównywać ruchy i śledzić krótkie warianty bez gubienia się.",
+    "primaryKeyword": "ćwiczenia liczenia w szachach",
+    "secondaryKeywords": [
+      "liczenie w szachach dla początkujących",
+      "liczenie ruchów naprzód",
+      "ćwiczenia trzymania wariantu",
+      "ćwiczenie ruchów kandydackich",
+      "wizualizacja i liczenie"
+    ],
+    "painPoint": "Zaczynasz liczyć i szybko mylisz ruchy albo gubisz pozycję.",
+    "ctaLabel": "Ćwicz czyste liczenie",
+    "quickAnswer": "Na początku porównuj tylko jeden lub dwa możliwe ruchy. Trzymaj pozycję wyraźnie w głowie i od razu sprawdzaj.",
+    "keyTakeaways": [
+      "Dwa jasne warianty są lepsze niż pięć mętnych.",
+      "Wyraźna wizualizacja daje czyste liczenie.",
+      "Sprawdzaj od razu po każdym ćwiczeniu."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy wiedzą, że powinni liczyć, ale szybko gubią wariant.",
+      "Początkujący, którzy w ostrych pozycjach grają na wyczucie.",
+      "Każdy, kto chce wykorzystać pracę nad pamięcią w realnych decyzjach."
+    ],
+    "timeToRead": "7 minut czytania",
+    "introParagraphs": [
+      "Liczenie to po prostu pytanie: „Jeśli zagram tutaj, co się stanie?”. Trudne jest utrzymanie wyraźnej pozycji.",
+      "Pamięć pozycji i wizualizacja ułatwiają liczenie. Ćwicz je razem, a nie osobno."
+    ],
+    "startHereTitle": "Zacznij od dwóch możliwych ruchów",
+    "startHereSteps": [
+      "Wybierz z pozycji najwyżej dwa ruchy kandydackie.",
+      "Wyobraź sobie wariant na dwa półruchy i podsumuj go jednym zdaniem.",
+      "Rozegraj rundę Memory Chess, by pozycja bazowa była ostra.",
+      "Wróć do pozycji wyjściowej i spokojnie porównaj oba warianty.",
+      "Sprawdź od razu i nazwij, czy błąd wynikał z obrazu pozycji, czy z kolejności ruchów."
+    ],
+    "drillSectionTitle": "Proste ćwiczenia liczenia",
+    "drillCards": [
+      {
+        "title": "Porównaj dwóch kandydatów",
+        "description": "Trzymaj dwa sensowne ruchy i porównaj ich krótkie skutki taktyczne.",
+        "duration": "6 minut",
+        "goal": "Porównywać ruchy bez zapamiętywania zbyt wiele.",
+        "ctaLabel": "Porównaj dwa warianty"
+      },
+      {
+        "title": "Najpierw odtwórz, potem licz",
+        "description": "Przed pracą nad wariantami zrób krótką rundę odtwarzania dla czystszej pozycji.",
+        "duration": "4 minuty",
+        "goal": "Utrzymać pozycję przed śledzeniem sekwencji.",
+        "ctaLabel": "Odtwórz przed liczeniem"
+      },
+      {
+        "title": "Wariant w jednym zdaniu",
+        "description": "Podsumuj gałąź jednym zdaniem, zanim ją sprawdzisz.",
+        "duration": "4 minuty",
+        "goal": "Utrzymać wariant wyraźny i łatwy do wyjaśnienia.",
+        "ctaLabel": "Podsumuj gałąź"
+      }
+    ],
+    "comparisonTitle": "Chaotyczne kontra czyste liczenie",
+    "comparisonSummary": "Nie goń jeszcze długich wariantów. Najpierw ustaw krótkie dokładnie.",
+    "comparisonRows": [
+      {
+        "label": "Ruchy kandydackie",
+        "struggling": "Rozważasz naraz zbyt wiele ruchów.",
+        "stronger": "Porównujesz kilka sensownych ruchów."
+      },
+      {
+        "label": "Obraz pozycji",
+        "struggling": "Powstająca pozycja szybko się rozmywa.",
+        "stronger": "Trzymasz w pamięci kluczowe pola i obrońców."
+      },
+      {
+        "label": "Weryfikacja",
+        "struggling": "Nie wiesz, dlaczego wariant się posypał.",
+        "stronger": "Widzisz, czy błąd wynikał z pamięci, kolejności ruchów, czy oceny."
+      }
+    ],
+    "mistakes": [
+      "Próba liczenia zbyt wielu gałęzi naraz.",
+      "Pomijanie wyboru kandydatów i liczenie wszystkiego.",
+      "Brak weryfikacji zaraz po wariancie.",
+      "Ignorowanie słabej pamięci pozycji."
+    ],
+    "mistakesCallout": "Nie licz jeszcze daleko. Wyraźny wariant na dwa ruchy jest lepszy niż długi i pogmatwany.",
+    "planTitle": "7-dniowy plan liczenia dla początkujących",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "10 minut",
+        "detail": "Tylko porównania dwóch kandydatów z natychmiastową weryfikacją."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "12 minut",
+        "detail": "Przed pracą nad liczeniem dodaj rundę Memory Chess."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "12 minut",
+        "detail": "Podsumuj każdą gałąź jednym zdaniem przed sprawdzeniem."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 minut",
+        "detail": "Przenieś ten schemat do partii szybkich: zatrzymuj się w ostrych momentach i trzymaj mało kandydatów."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Jak początkujący poprawia liczenie?",
+        "answer": "Mniej kandydatów, szybka weryfikacja oraz lepsza wizualizacja i pamięć pod pracą nad wariantami."
+      },
+      {
+        "question": "Czy liczyć dalej?",
+        "answer": "Dopiero gdy obecna głębokość jest niezawodna. Dokładność jest ważniejsza niż ambicja."
+      },
+      {
+        "question": "Dlaczego moje warianty się rozpadają?",
+        "answer": "Zwykle dlatego, że obraz pozycji nie jest dość stabilny albo trzymasz naraz zbyt wielu kandydatów."
+      },
+      {
+        "question": "Czy Memory Chess pomaga w liczeniu?",
+        "answer": "Tak. Lepsze odtwarzanie znacznie ułatwia trzymanie powstających pozycji podczas liczenia."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Wzmocnij warstwę trzymającą warianty pod liczeniem."
+      },
+      {
+        "reason": "Zobacz pozycję wyraźniej, zanim wydłużysz warianty."
+      },
+      {
+        "reason": "Zastosuj prostszy proces decyzyjny dla czystszego liczenia."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Jak myśleć w szachach jako początkujący",
+    "h1": "Jak myśleć w szachach jako początkujący",
+    "description": "Prosty proces na każdy ruch: sprawdź zagrożenia, porównaj opcje i panuj nad czasem.",
+    "primaryKeyword": "jak myśleć w szachach",
+    "secondaryKeywords": [
+      "proces myślenia dla początkujących",
+      "o czym myśleć w szachach",
+      "podejmowanie decyzji w szachach",
+      "lista przed ruchem",
+      "prosty proces myślenia"
+    ],
+    "painPoint": "Grasz za szybko albo myślisz za długo i wciąż nie masz pewności.",
+    "ctaLabel": "Ćwicz prosty proces ruchu",
+    "quickAnswer": "Przy każdym ruchu stosuj ten sam krótki proces: sprawdź zagrożenia przeciwnika, wybierz od jednego do trzech ruchów i upewnij się, że wybór jest bezpieczny.",
+    "keyTakeaways": [
+      "Krótki proces łatwiej stosować niż długą listę.",
+      "Kontrola zagrożeń zawsze poprzedza wybór ruchu.",
+      "Gdy pozycja robi się groźna, poświęć więcej czasu."
+    ],
+    "whoThisIsFor": [
+      "Gracze, którzy zgadują w spokojnych pozycjach i zamierają w ostrych.",
+      "Początkujący, którzy potrzebują jasnego procesu na każdy ruch.",
+      "Każdy, kto chce decydować czyściej pod presją."
+    ],
+    "timeToRead": "7 minut czytania",
+    "introParagraphs": [
+      "Początkujący często zastanawiają się, o czym myślą silni gracze. Odpowiedź może brzmieć skomplikowanie, ale twój proces musi być na tyle krótki, byś stosował go za każdym razem.",
+      "Zacznij od zagrożeń, wybierz kilka możliwych ruchów i sprawdź, czy ostateczny wybór jest bezpieczny."
+    ],
+    "startHereTitle": "Zacznij tutaj: proces w czterech krokach",
+    "startHereSteps": [
+      "Najpierw sprawdź najsilniejsze zagrożenia przeciwnika.",
+      "Wymień od jednego do trzech realistycznych ruchów kandydackich.",
+      "Sprawdź, czy planowany ruch jest bezpieczny i nie zostawia bierki bez obrony.",
+      "Zapytaj, czy pozycja jest dość spokojna, by zagrać, czy dość ostra, by zwolnić.",
+      "Po partii sprawdź, w którym miejscu proces się załamał."
+    ],
+    "drillSectionTitle": "Ćwiczenia na spokojniejsze decyzje",
+    "drillCards": [
+      {
+        "title": "Wyzwalacz „najpierw przeciwnik”",
+        "description": "Każdą pozycję treningową zaczynaj od wymienienia forsownych możliwości przeciwnika.",
+        "duration": "3 minuty",
+        "goal": "Uczynić kontrolę zagrożeń automatyczną, a nie opcjonalną.",
+        "ctaLabel": "Zacznij od zagrożeń"
+      },
+      {
+        "title": "Limit trzech kandydatów",
+        "description": "W pozycji treningowej nigdy nie pozwalaj sobie na więcej niż trzy ruchy kandydackie.",
+        "duration": "4 minuty",
+        "goal": "Ograniczyć nadmiar opcji i przemyśliwanie.",
+        "ctaLabel": "Ogranicz kandydatów"
+      },
+      {
+        "title": "Kontrola pewności",
+        "description": "Spójrz na ruch i zapytaj, czy naprawdę byłeś pewny, czy tylko zmęczony myśleniem.",
+        "duration": "4 minuty",
+        "goal": "Zauważyć, kiedy grasz z wyczerpania.",
+        "ctaLabel": "Sprawdź pewność"
+      }
+    ],
+    "comparisonTitle": "Prosty proces na każdy ruch",
+    "comparisonSummary": "Najlepszy proces to ten, który zastosujesz nawet przy tykającym zegarze.",
+    "comparisonRows": [
+      {
+        "label": "Zagrożenia",
+        "struggling": "Najpierw myślisz o własnym planie.",
+        "stronger": "Zaczynasz od najsilniejszych zagrożeń przeciwnika."
+      },
+      {
+        "label": "Ruchy kandydackie",
+        "struggling": "Skaczesz między zbyt wieloma możliwościami.",
+        "stronger": "Trzymasz mały, realistyczny zestaw kandydatów."
+      },
+      {
+        "label": "Gospodarka czasem",
+        "struggling": "Każdemu ruchowi poświęcasz tyle samo uwagi.",
+        "stronger": "Zwalniasz, gdy zmienia się napięcie, taktyka lub bezpieczeństwo króla."
+      }
+    ],
+    "mistakes": [
+      "Stosowanie długiej listy, której w partiach nigdy nie przestrzegasz.",
+      "Myślenie o własnym planie przed sprawdzeniem zagrożeń.",
+      "Pozwalanie, by lista kandydatów rosła zbyt mocno.",
+      "Mylenie zmęczenia z pewnością."
+    ],
+    "mistakesCallout": "Nie dodawaj kolejnych kontroli. Stosuj krótki proces, który powtórzysz przy każdym ruchu.",
+    "planTitle": "7-dniowe dopracowanie procesu",
+    "planSteps": [
+      {
+        "label": "Dzień 1 do 2",
+        "duration": "10 minut",
+        "detail": "Stosuj tylko wyzwalacz „najpierw przeciwnik” i limit trzech kandydatów."
+      },
+      {
+        "label": "Dzień 3 do 4",
+        "duration": "12 minut",
+        "detail": "Dodaj krótką rundę Memory Chess, by pozycja była wyraźniejsza w chwili decyzji."
+      },
+      {
+        "label": "Dzień 5",
+        "duration": "12 minut",
+        "detail": "Sprawdź, czy ostatni błąd wynikał z kontroli zagrożeń, czy z nadmiaru kandydatów."
+      },
+      {
+        "label": "Dzień 6 do 7",
+        "duration": "15 minut",
+        "detail": "Stosuj pełny proces w partiach szybkich i zapisuj, który krok pęka pod presją."
+      }
+    ],
+    "faq": [
+      {
+        "question": "O czym początkujący powinien myśleć w szachach?",
+        "answer": "Zacznij od zagrożeń przeciwnika, wybierz od jednego do trzech możliwych ruchów i sprawdź, czy ostateczny wybór jest bezpieczny."
+      },
+      {
+        "question": "Ile ruchów kandydackich trzymać?",
+        "answer": "Zwykle od jednego do trzech. Więcej zwykle przeciąża początkujących i obniża jakość decyzji."
+      },
+      {
+        "question": "Dlaczego zamieram, choć znam proces?",
+        "answer": "Często dlatego, że pozycja nie jest dość wyraźna albo trzymasz zbyt wielu kandydatów. Prostsze pozycje i praca nad pamięcią pomagają."
+      },
+      {
+        "question": "Czy proces myślenia zapobiega błędom?",
+        "answer": "Tak, zwłaszcza gdy wymusza kontrolę zagrożeń przed wyborem ruchu."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sięgnij po wyraźniejszą listę antybłędową, jeśli wciąż tracisz materiał."
+      },
+      {
+        "reason": "Licz czyściej, by porównywać możliwe ruchy."
+      },
+      {
+        "reason": "Szybciej rozpoznawaj pola w trakcie swojego procesu."
+      }
+    ]
+  }
+]

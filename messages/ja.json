@@ -242,5 +242,124 @@
       "send": "意見を送信",
       "sending": "送信中…"
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess ランキング",
+      "description": "難易度、正答率、記憶の速さ、解答時間ごとに Memory Chess の上位プレイヤーを見られます。",
+      "socialTitle": "Memory Chess ランキング",
+      "socialDescription": "記憶とイメージ力の課題でプレイヤーがどう並ぶかをご覧ください。"
+    },
+    "title": "Memory Chess ランキング",
+    "claimRank": "順位を勝ち取る",
+    "footnote": "上位 200 件のみ表示しています。正答率、記憶時間、解答の速さの順です。",
+    "loading": "ランキングを読み込み中…",
+    "unavailableTitle": "ランキングは一時的に利用できません",
+    "unavailableBody": "ランキングのサービスが現在停止しています。ゲームのデータはローカルに保存され続けます。",
+    "unavailableNote": "そのまま続けてプレイできます。",
+    "retryLater": "しばらくしてからもう一度お試しください",
+    "emptyTitle": "最初のチャンピオンになりましょう！",
+    "emptyBody": "このランキングにはまだ記録がありません",
+    "startPlaying": "今すぐプレイする",
+    "you": "あなた",
+    "columns": {
+      "rank": "順位",
+      "player": "プレイヤー",
+      "pieces": "駒数",
+      "memorizeTime": "記憶時間",
+      "solutionTime": "解答時間",
+      "date": "日付"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess の設定",
+      "description": "Memory Chess のゲーム設定と好みを調整できます。"
+    },
+    "difficulty": "難易度",
+    "memorizationTime": "記憶時間：{seconds} 秒",
+    "seconds": "{seconds} 秒",
+    "showCoordinates": "盤面の座標を表示",
+    "home": "ホーム",
+    "playGame": "プレイする"
+  },
+  "contact": {
+    "meta": {
+      "title": "Memory Chess へのお問い合わせ",
+      "description": "ご意見、機能のご要望、ビジネスのご相談は Memory Chess までどうぞ。",
+      "socialTitle": "Memory Chess へのお問い合わせ",
+      "socialDescription": "Memory Chess にご意見、機能のご要望、提携のご相談をお送りください。"
+    },
+    "title": "お問い合わせ",
+    "sentTitle": "送信しました！",
+    "sentBody": "ご連絡ありがとうございます。追ってご返信します。",
+    "redirecting": "ホームへ移動しています…",
+    "name": "お名前",
+    "namePlaceholder": "お名前",
+    "email": "メールアドレス",
+    "emailPlaceholder": "your.email@example.com",
+    "inquiryType": "お問い合わせの種類",
+    "inquiryPlaceholder": "種類を選んでください",
+    "message": "メッセージ",
+    "messagePlaceholder": "ここにメッセージをご記入ください…",
+    "send": "メッセージを送信",
+    "sending": "送信中…",
+    "types": {
+      "feedback": "ご意見",
+      "featureRequest": "機能のご要望",
+      "general": "一般的なお問い合わせ",
+      "business": "ビジネスのご相談"
+    },
+    "validation": {
+      "nameTooShort": "お名前は 2 文字以上で入力してください。",
+      "emailInvalid": "有効なメールアドレスを入力してください。",
+      "typeRequired": "お問い合わせの種類を選んでください。",
+      "messageTooShort": "メッセージは 10 文字以上で入力してください。"
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "チェスを一歩ずつ、はっきり学ぶ",
+      "description": "初心者向けの実践的なチェスガイド。盤面を見る力、イメージ力、記憶、読み、うっかりミスの防止、毎日の練習まで。"
+    },
+    "title": "チェスを一歩ずつ、はっきり学ぶ",
+    "startBeginner": "初心者ガイドを始める",
+    "playCta": "Memory Chess で遊ぶ",
+    "startHere": "ここから始める",
+    "pickNext": "次の一歩を選ぶ",
+    "chooseGoal": "目標を選ぶ",
+    "readRecallPlay": "読んで、思い出して、指す",
+    "turnIdea": "ひとつの考えを練習に変える",
+    "startRound": "記憶ラウンドを始める",
+    "paths": {
+      "newToChess": {
+        "label": "チェスは初めて",
+        "title": "シンプルな上達プランを作る",
+        "description": "まず基本から始め、役に立つ考えをひとつ、毎日くり返せる習慣に変えていきます。"
+      },
+      "missingThreats": {
+        "label": "簡単な狙いを見落とす",
+        "title": "盤面全体を見渡す習慣を鍛える",
+        "description": "短いチェック手順を使い、指す前にタダ取りされる駒、相手の狙い、危険に気づけるようにします。"
+      },
+      "losingPosition": {
+        "label": "頭の中で局面が崩れる",
+        "title": "イメージ力と記憶を鍛える",
+        "description": "長い手順を足す前に、盤面の小さく正確なイメージを保つ練習をします。"
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "更新履歴",
+      "description": "公式の更新履歴で Memory Chess の最新機能、改善、修正をご覧ください。",
+      "socialTitle": "Memory Chess の更新履歴",
+      "socialDescription": "Memory Chess の最新機能、改善、修正をご覧ください。"
+    },
+    "title": "更新履歴",
+    "latest": "最新",
+    "bannerCta": "新着をチェック",
+    "bannerLabel": "Memory Chess のアップデート",
+    "entriesInEnglish": "リリースノートは英語で公開しています。"
   }
 }

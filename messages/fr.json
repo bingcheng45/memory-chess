@@ -242,5 +242,124 @@
       "send": "Envoyer mon retour",
       "sending": "Envoi..."
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Classement Memory Chess",
+      "description": "Découvrez les meilleurs joueurs de Memory Chess par difficulté, précision, vitesse de mémorisation et temps de résolution.",
+      "socialTitle": "Classement Memory Chess",
+      "socialDescription": "Voyez comment les joueurs se classent dans les défis de mémoire et de visualisation."
+    },
+    "title": "Classement Memory Chess",
+    "claimRank": "Réclamez votre place",
+    "footnote": "Seuls les 200 premiers sont affichés. Classés par précision, temps de mémorisation et vitesse de résolution.",
+    "loading": "Chargement du classement...",
+    "unavailableTitle": "Classement momentanément indisponible",
+    "unavailableBody": "Le service de classement est hors ligne pour le moment. Vos parties continuent d’être enregistrées en local.",
+    "unavailableNote": "Vous pouvez continuer à jouer sans interruption.",
+    "retryLater": "Réessayez plus tard",
+    "emptyTitle": "Soyez le premier champion !",
+    "emptyBody": "Aucune entrée dans ce classement pour l’instant",
+    "startPlaying": "Commencer à jouer",
+    "you": "Vous",
+    "columns": {
+      "rank": "Rang",
+      "player": "Joueur",
+      "pieces": "Pièces",
+      "memorizeTime": "Temps de mémorisation",
+      "solutionTime": "Temps de résolution",
+      "date": "Date"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Paramètres Memory Chess",
+      "description": "Personnalisez les paramètres et préférences de votre partie Memory Chess."
+    },
+    "difficulty": "Difficulté",
+    "memorizationTime": "Temps de mémorisation : {seconds} secondes",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Afficher les coordonnées de l’échiquier",
+    "home": "Accueil",
+    "playGame": "Jouer"
+  },
+  "contact": {
+    "meta": {
+      "title": "Contacter Memory Chess",
+      "description": "Contactez Memory Chess pour vos retours, suggestions de fonctionnalités ou demandes commerciales.",
+      "socialTitle": "Contacter Memory Chess",
+      "socialDescription": "Envoyez vos retours, suggestions de fonctionnalités et demandes de partenariat à Memory Chess."
+    },
+    "title": "Nous contacter",
+    "sentTitle": "Message envoyé !",
+    "sentBody": "Merci de nous avoir écrit. Nous vous répondrons bientôt.",
+    "redirecting": "Redirection vers la page d’accueil...",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "email": "E-mail",
+    "emailPlaceholder": "votre.email@exemple.com",
+    "inquiryType": "Type de demande",
+    "inquiryPlaceholder": "Choisissez le type de demande",
+    "message": "Message",
+    "messagePlaceholder": "Écrivez votre message ici...",
+    "send": "Envoyer le message",
+    "sending": "Envoi...",
+    "types": {
+      "feedback": "Retour d’expérience",
+      "featureRequest": "Suggestion de fonctionnalité",
+      "general": "Question générale",
+      "business": "Opportunité commerciale"
+    },
+    "validation": {
+      "nameTooShort": "Le nom doit contenir au moins 2 caractères.",
+      "emailInvalid": "Saisissez une adresse e-mail valide.",
+      "typeRequired": "Choisissez un type de demande.",
+      "messageTooShort": "Le message doit contenir au moins 10 caractères."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Apprendre les échecs, une étape claire à la fois",
+      "description": "Guides d’échecs pratiques pour débutants : vision de l’échiquier, visualisation, mémoire, calcul, prévention des gaffes et entraînement quotidien."
+    },
+    "title": "Apprendre les échecs, une étape claire à la fois",
+    "startBeginner": "Commencer le guide débutant",
+    "playCta": "Jouer à Memory Chess",
+    "startHere": "Commencez ici",
+    "pickNext": "Choisissez votre prochaine étape",
+    "chooseGoal": "Choisissez un objectif",
+    "readRecallPlay": "Lire, se rappeler, jouer",
+    "turnIdea": "Transformer une idée en pratique",
+    "startRound": "Lancer une manche de mémoire",
+    "paths": {
+      "newToChess": {
+        "label": "Débutant aux échecs",
+        "title": "Construire un plan de progression simple",
+        "description": "Commencez par les fondamentaux, puis transformez une idée utile en habitude quotidienne répétable."
+      },
+      "missingThreats": {
+        "label": "Vous ratez des menaces simples",
+        "title": "Entraîner le balayage de tout l’échiquier",
+        "description": "Utilisez une courte routine de vérification pour repérer les pièces en prise, les attaques et le danger avant de jouer."
+      },
+      "losingPosition": {
+        "label": "Vous perdez la position dans votre tête",
+        "title": "Renforcer la visualisation et le rappel",
+        "description": "Entraînez-vous à garder une image petite et précise de l’échiquier avant d’allonger les séquences de coups."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Nouveautés",
+      "description": "Découvrez les dernières fonctionnalités, améliorations et corrections de Memory Chess dans le journal officiel.",
+      "socialTitle": "Nouveautés de Memory Chess",
+      "socialDescription": "Découvrez les dernières fonctionnalités, améliorations et corrections de Memory Chess."
+    },
+    "title": "Nouveautés",
+    "latest": "Dernière",
+    "bannerCta": "Voir les nouveautés",
+    "bannerLabel": "Mise à jour de Memory Chess",
+    "entriesInEnglish": "Les notes de version sont publiées en anglais."
   }
 }

@@ -242,5 +242,124 @@
       "send": "Skicka återkoppling",
       "sending": "Skickar ..."
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess topplista",
+      "description": "Se de bästa Memory Chess-spelarna efter svårighetsgrad, träffsäkerhet, memoreringstempo och lösningstid.",
+      "socialTitle": "Memory Chess topplista",
+      "socialDescription": "Se hur spelare rankas i minnes- och visualiseringsutmaningarna."
+    },
+    "title": "Memory Chess-rankning",
+    "claimRank": "Ta din plats",
+    "footnote": "Visar endast de 200 bästa. Rankade efter träffsäkerhet, memoreringstid och lösningstempo.",
+    "loading": "Laddar topplistan ...",
+    "unavailableTitle": "Topplistan är tillfälligt otillgänglig",
+    "unavailableBody": "Topplistetjänsten är offline just nu. Dina speldata sparas fortfarande lokalt.",
+    "unavailableNote": "Du kan fortsätta spela utan avbrott.",
+    "retryLater": "Försök igen senare",
+    "emptyTitle": "Bli den första mästaren!",
+    "emptyBody": "Inga resultat på den här topplistan ännu",
+    "startPlaying": "Börja spela",
+    "you": "Du",
+    "columns": {
+      "rank": "Plats",
+      "player": "Spelare",
+      "pieces": "Pjäser",
+      "memorizeTime": "Memoreringstid",
+      "solutionTime": "Lösningstid",
+      "date": "Datum"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess-inställningar",
+      "description": "Anpassa inställningar och preferenser för ditt Memory Chess-spel."
+    },
+    "difficulty": "Svårighetsgrad",
+    "memorizationTime": "Memoreringstid: {seconds} sekunder",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Visa brädets koordinater",
+    "home": "Start",
+    "playGame": "Spela"
+  },
+  "contact": {
+    "meta": {
+      "title": "Kontakta Memory Chess",
+      "description": "Kontakta Memory Chess för återkoppling, funktionsönskemål eller affärsförfrågningar.",
+      "socialTitle": "Kontakta Memory Chess",
+      "socialDescription": "Skicka återkoppling, funktionsönskemål och samarbetsförfrågningar till Memory Chess."
+    },
+    "title": "Kontakta oss",
+    "sentTitle": "Meddelandet är skickat!",
+    "sentBody": "Tack för att du hörde av dig. Vi återkommer snart.",
+    "redirecting": "Omdirigerar till startsidan ...",
+    "name": "Namn",
+    "namePlaceholder": "Ditt namn",
+    "email": "E-post",
+    "emailPlaceholder": "din.adress@exempel.se",
+    "inquiryType": "Typ av ärende",
+    "inquiryPlaceholder": "Välj typ av ärende",
+    "message": "Meddelande",
+    "messagePlaceholder": "Skriv ditt meddelande här ...",
+    "send": "Skicka meddelande",
+    "sending": "Skickar ...",
+    "types": {
+      "feedback": "Återkoppling",
+      "featureRequest": "Funktionsönskemål",
+      "general": "Allmän fråga",
+      "business": "Affärsmöjlighet"
+    },
+    "validation": {
+      "nameTooShort": "Namnet måste ha minst 2 tecken.",
+      "emailInvalid": "Ange en giltig e-postadress.",
+      "typeRequired": "Välj en typ av ärende.",
+      "messageTooShort": "Meddelandet måste ha minst 10 tecken."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Lär dig schack ett tydligt steg i taget",
+      "description": "Praktiska schackguider för nybörjare: brädkänsla, visualisering, minne, beräkning, färre misstag och daglig träning."
+    },
+    "title": "Lär dig schack ett tydligt steg i taget",
+    "startBeginner": "Starta nybörjarguiden",
+    "playCta": "Spela Memory Chess",
+    "startHere": "Börja här",
+    "pickNext": "Välj ditt nästa steg",
+    "chooseGoal": "Välj ett mål",
+    "readRecallPlay": "Läs, minns, spela",
+    "turnIdea": "Gör en idé till träning",
+    "startRound": "Starta en minnesomgång",
+    "paths": {
+      "newToChess": {
+        "label": "Ny på schack",
+        "title": "Bygg en enkel utvecklingsplan",
+        "description": "Börja med grunderna och gör sedan en användbar idé till en daglig vana du kan upprepa."
+      },
+      "missingThreats": {
+        "label": "Missar enkla hot",
+        "title": "Träna att svepa hela brädet",
+        "description": "Använd en kort kontrollrutin för att upptäcka oskyddade pjäser, angrepp och faror innan du drar."
+      },
+      "losingPosition": {
+        "label": "Tappar ställningen i huvudet",
+        "title": "Stärk visualisering och minne",
+        "description": "Öva på att hålla en liten, korrekt bild av brädet innan du lägger till längre dragföljder."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Nyheter",
+      "description": "Se de senaste funktionerna, förbättringarna och rättningarna i Memory Chess i den officiella ändringsloggen.",
+      "socialTitle": "Nyheter i Memory Chess",
+      "socialDescription": "Se de senaste funktionerna, förbättringarna och rättningarna i Memory Chess."
+    },
+    "title": "Nyheter",
+    "latest": "Senaste",
+    "bannerCta": "Se vad som är nytt",
+    "bannerLabel": "Memory Chess-uppdatering",
+    "entriesInEnglish": "Versionsanteckningarna publiceras på engelska."
   }
 }

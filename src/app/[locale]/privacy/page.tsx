@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Learn how Memory Chess uses data, browser storage, analytics, cookies, and advertising services.",
+  // Placeholder: replaced with buildAlternates once the policy copy is
+  // translated. Kept as a plain canonical so nothing points at a locale that
+  // does not yet differ in content.
   alternates: {
     canonical: "/privacy",
   },

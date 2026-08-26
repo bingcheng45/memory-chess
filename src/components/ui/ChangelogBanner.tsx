@@ -3,6 +3,7 @@
 import { Link } from "@/i18n/navigation";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   CHANGELOG_ANNOUNCEMENT_DURATION_MS,
   CHANGELOG_DISMISSAL_STORAGE_KEY,
@@ -11,6 +12,7 @@ import {
 } from "@/lib/changelog";
 
 export default function ChangelogBanner() {
+  const t = useTranslations("changelog");
   const [isVisible, setIsVisible] = useState(false);
   const release = LATEST_CHANGELOG_ENTRY;
 
@@ -84,7 +86,7 @@ export default function ChangelogBanner() {
 
   return (
     <aside
-      aria-label="Memory Chess update"
+      aria-label={t("bannerLabel")}
       className="w-full border-b border-white/10 bg-bg-card text-text-secondary"
     >
       <div className="container relative mx-auto flex min-h-10 items-center justify-center px-12 py-2 text-center text-xs sm:text-sm">
@@ -95,9 +97,7 @@ export default function ChangelogBanner() {
           <span className="font-medium text-text-primary">
             Memory Chess v{release.version} is here.
           </span>{" "}
-          <span className="whitespace-nowrap text-peach-400 underline decoration-peach-400/40 underline-offset-4 transition-colors group-hover:text-peach-300">
-            See what&apos;s new
-          </span>
+          <span className="whitespace-nowrap text-peach-400 underline decoration-peach-400/40 underline-offset-4 transition-colors group-hover:text-peach-300">{t("bannerCta")}</span>
         </Link>
 
         <button

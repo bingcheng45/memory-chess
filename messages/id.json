@@ -242,5 +242,124 @@
       "send": "Kirim masukan",
       "sending": "Mengirim…"
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Papan peringkat Memory Chess",
+      "description": "Lihat pemain Memory Chess terbaik berdasarkan tingkat kesulitan, akurasi, kecepatan menghafal, dan waktu penyelesaian.",
+      "socialTitle": "Papan peringkat Memory Chess",
+      "socialDescription": "Lihat posisi para pemain dalam tantangan ingatan dan visualisasi."
+    },
+    "title": "Peringkat Memory Chess",
+    "claimRank": "Raih peringkatmu",
+    "footnote": "Hanya menampilkan 200 teratas. Diurutkan berdasarkan akurasi, waktu menghafal, dan kecepatan penyelesaian.",
+    "loading": "Memuat papan peringkat…",
+    "unavailableTitle": "Papan peringkat sementara tidak tersedia",
+    "unavailableBody": "Layanan papan peringkat sedang offline. Data permainanmu tetap tersimpan secara lokal.",
+    "unavailableNote": "Kamu bisa terus bermain tanpa gangguan.",
+    "retryLater": "Silakan coba lagi nanti",
+    "emptyTitle": "Jadilah juara pertama!",
+    "emptyBody": "Belum ada catatan di papan peringkat ini",
+    "startPlaying": "Mulai bermain",
+    "you": "Kamu",
+    "columns": {
+      "rank": "Peringkat",
+      "player": "Pemain",
+      "pieces": "Bidak",
+      "memorizeTime": "Waktu menghafal",
+      "solutionTime": "Waktu penyelesaian",
+      "date": "Tanggal"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Pengaturan Memory Chess",
+      "description": "Sesuaikan pengaturan dan preferensi permainan Memory Chess kamu."
+    },
+    "difficulty": "Tingkat kesulitan",
+    "memorizationTime": "Waktu menghafal: {seconds} detik",
+    "seconds": "{seconds} dtk",
+    "showCoordinates": "Tampilkan koordinat papan",
+    "home": "Beranda",
+    "playGame": "Main"
+  },
+  "contact": {
+    "meta": {
+      "title": "Hubungi Memory Chess",
+      "description": "Hubungi Memory Chess untuk masukan, usulan fitur, atau peluang kerja sama.",
+      "socialTitle": "Hubungi Memory Chess",
+      "socialDescription": "Kirim masukan, usulan fitur, dan ajakan kerja sama ke Memory Chess."
+    },
+    "title": "Hubungi kami",
+    "sentTitle": "Pesan terkirim!",
+    "sentBody": "Terima kasih sudah menghubungi kami. Kami akan segera membalas.",
+    "redirecting": "Mengalihkan ke beranda…",
+    "name": "Nama",
+    "namePlaceholder": "Nama kamu",
+    "email": "Email",
+    "emailPlaceholder": "email.kamu@contoh.com",
+    "inquiryType": "Jenis pertanyaan",
+    "inquiryPlaceholder": "Pilih jenis pertanyaan",
+    "message": "Pesan",
+    "messagePlaceholder": "Tulis pesanmu di sini…",
+    "send": "Kirim pesan",
+    "sending": "Mengirim…",
+    "types": {
+      "feedback": "Masukan",
+      "featureRequest": "Usulan fitur",
+      "general": "Pertanyaan umum",
+      "business": "Peluang bisnis"
+    },
+    "validation": {
+      "nameTooShort": "Nama harus minimal 2 karakter.",
+      "emailInvalid": "Masukkan alamat email yang valid.",
+      "typeRequired": "Pilih jenis pertanyaan.",
+      "messageTooShort": "Pesan harus minimal 10 karakter."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Belajar catur satu langkah jelas setiap kali",
+      "description": "Panduan catur praktis untuk pemula: penglihatan papan, visualisasi, ingatan, perhitungan, mencegah blunder, dan latihan harian."
+    },
+    "title": "Belajar catur satu langkah jelas setiap kali",
+    "startBeginner": "Mulai panduan pemula",
+    "playCta": "Mainkan Memory Chess",
+    "startHere": "Mulai di sini",
+    "pickNext": "Pilih langkah berikutnya",
+    "chooseGoal": "Pilih tujuan",
+    "readRecallPlay": "Baca, ingat, mainkan",
+    "turnIdea": "Ubah satu ide jadi latihan",
+    "startRound": "Mulai satu ronde ingatan",
+    "paths": {
+      "newToChess": {
+        "label": "Baru mengenal catur",
+        "title": "Susun rencana peningkatan yang sederhana",
+        "description": "Mulailah dari dasar, lalu ubah satu ide yang berguna menjadi kebiasaan harian yang bisa diulang."
+      },
+      "missingThreats": {
+        "label": "Sering melewatkan ancaman sederhana",
+        "title": "Latih pemindaian seluruh papan",
+        "description": "Gunakan rutinitas pengecekan singkat untuk melihat bidak tanpa perlindungan, serangan, dan bahaya sebelum melangkah."
+      },
+      "losingPosition": {
+        "label": "Kehilangan posisi di kepala",
+        "title": "Perkuat visualisasi dan daya ingat",
+        "description": "Berlatihlah menahan gambaran papan yang kecil dan akurat sebelum menambah rangkaian langkah yang lebih panjang."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Yang baru",
+      "description": "Lihat fitur, peningkatan, dan perbaikan terbaru Memory Chess di catatan perubahan resmi.",
+      "socialTitle": "Yang baru di Memory Chess",
+      "socialDescription": "Lihat fitur, peningkatan, dan perbaikan terbaru Memory Chess."
+    },
+    "title": "Yang baru",
+    "latest": "Terbaru",
+    "bannerCta": "Lihat yang baru",
+    "bannerLabel": "Pembaruan Memory Chess",
+    "entriesInEnglish": "Catatan rilis diterbitkan dalam bahasa Inggris."
   }
 }

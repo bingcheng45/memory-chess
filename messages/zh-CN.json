@@ -242,5 +242,124 @@
       "send": "提交反馈",
       "sending": "发送中…"
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess 排行榜",
+      "description": "按难度、准确率、记忆速度和还原用时查看 Memory Chess 的顶尖玩家。",
+      "socialTitle": "Memory Chess 排行榜",
+      "socialDescription": "看看玩家在记忆与盘面想象挑战中的排名情况。"
+    },
+    "title": "Memory Chess 排名",
+    "claimRank": "抢占你的排名",
+    "footnote": "仅显示前 200 名。按准确率、记忆时间和还原速度排序。",
+    "loading": "正在加载排行榜…",
+    "unavailableTitle": "排行榜暂时无法使用",
+    "unavailableBody": "排行榜服务目前离线。你的对局数据仍会保存在本地。",
+    "unavailableNote": "你可以继续游玩，不受影响。",
+    "retryLater": "请稍后再试",
+    "emptyTitle": "来当第一个冠军吧！",
+    "emptyBody": "这个排行榜还没有任何记录",
+    "startPlaying": "立即开始游玩",
+    "you": "你",
+    "columns": {
+      "rank": "排名",
+      "player": "玩家",
+      "pieces": "棋子数",
+      "memorizeTime": "记忆时间",
+      "solutionTime": "还原用时",
+      "date": "日期"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess 设置",
+      "description": "自定义你的 Memory Chess 游戏设置和偏好。"
+    },
+    "difficulty": "难度",
+    "memorizationTime": "记忆时间：{seconds} 秒",
+    "seconds": "{seconds} 秒",
+    "showCoordinates": "显示棋盘坐标",
+    "home": "首页",
+    "playGame": "开始游戏"
+  },
+  "contact": {
+    "meta": {
+      "title": "联系 Memory Chess",
+      "description": "如需反馈、功能建议或商务合作，请联系 Memory Chess。",
+      "socialTitle": "联系 Memory Chess",
+      "socialDescription": "向 Memory Chess 发送反馈、功能建议和合作意向。"
+    },
+    "title": "联系我们",
+    "sentTitle": "消息已发送！",
+    "sentBody": "感谢你的来信，我们会尽快回复。",
+    "redirecting": "正在跳转到首页…",
+    "name": "称呼",
+    "namePlaceholder": "你的称呼",
+    "email": "电子邮箱",
+    "emailPlaceholder": "your.email@example.com",
+    "inquiryType": "咨询类型",
+    "inquiryPlaceholder": "请选择咨询类型",
+    "message": "留言",
+    "messagePlaceholder": "在这里写下你的留言…",
+    "send": "发送消息",
+    "sending": "发送中…",
+    "types": {
+      "feedback": "反馈",
+      "featureRequest": "功能建议",
+      "general": "一般咨询",
+      "business": "商务合作"
+    },
+    "validation": {
+      "nameTooShort": "称呼至少需要 2 个字符。",
+      "emailInvalid": "请输入有效的电子邮箱地址。",
+      "typeRequired": "请选择咨询类型。",
+      "messageTooShort": "留言至少需要 10 个字符。"
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "一步一步把国际象棋学清楚",
+      "description": "面向初学者的实用国际象棋指南：棋盘视野、盘面想象、记忆力、计算、减少失误和日常练习。"
+    },
+    "title": "一步一步把国际象棋学清楚",
+    "startBeginner": "开始新手指南",
+    "playCta": "开始玩 Memory Chess",
+    "startHere": "从这里开始",
+    "pickNext": "选择你的下一步",
+    "chooseGoal": "选一个目标",
+    "readRecallPlay": "阅读、回想、上手",
+    "turnIdea": "把一个想法变成练习",
+    "startRound": "开始一轮记忆训练",
+    "paths": {
+      "newToChess": {
+        "label": "刚接触国际象棋",
+        "title": "制定一份简单的进步计划",
+        "description": "先从基本功入手，再把一个有用的方法变成可以每天重复的习惯。"
+      },
+      "missingThreats": {
+        "label": "总是漏看简单的威胁",
+        "title": "训练扫视全盘的习惯",
+        "description": "用一套简短的检查流程，在落子前发现无保护的棋子、对方的攻击和潜在危险。"
+      },
+      "losingPosition": {
+        "label": "棋局在脑中容易散掉",
+        "title": "强化盘面想象与回忆",
+        "description": "先练习在脑中保持一小块准确的棋盘图像，再逐步加长着法序列。"
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "更新日志",
+      "description": "在官方更新日志中查看 Memory Chess 的最新功能、改进和修复。",
+      "socialTitle": "Memory Chess 更新日志",
+      "socialDescription": "查看 Memory Chess 的最新功能、改进和修复。"
+    },
+    "title": "更新日志",
+    "latest": "最新",
+    "bannerCta": "看看有什么新变化",
+    "bannerLabel": "Memory Chess 更新",
+    "entriesInEnglish": "版本说明以英文发布。"
   }
 }

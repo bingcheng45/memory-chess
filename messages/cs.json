@@ -242,5 +242,124 @@
       "send": "Odeslat zpětnou vazbu",
       "sending": "Odesílání…"
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Žebříček Memory Chess",
+      "description": "Podívejte se na nejlepší hráče Memory Chess podle obtížnosti, přesnosti, rychlosti zapamatování a času řešení.",
+      "socialTitle": "Žebříček Memory Chess",
+      "socialDescription": "Zjistěte, jak si hráči vedou v úlohách na paměť a představivost."
+    },
+    "title": "Žebříček Memory Chess",
+    "claimRank": "Získejte své místo",
+    "footnote": "Zobrazuje se jen 200 nejlepších. Řazeno podle přesnosti, času na zapamatování a rychlosti řešení.",
+    "loading": "Načítání žebříčku...",
+    "unavailableTitle": "Žebříček je dočasně nedostupný",
+    "unavailableBody": "Služba žebříčku je právě offline. Data vašich partií se dál ukládají lokálně.",
+    "unavailableNote": "Můžete bez omezení hrát dál.",
+    "retryLater": "Zkuste to prosím později",
+    "emptyTitle": "Buďte prvním šampionem!",
+    "emptyBody": "V tomto žebříčku zatím nejsou žádné záznamy",
+    "startPlaying": "Začít hrát",
+    "you": "Vy",
+    "columns": {
+      "rank": "Pořadí",
+      "player": "Hráč",
+      "pieces": "Figurky",
+      "memorizeTime": "Čas na zapamatování",
+      "solutionTime": "Čas řešení",
+      "date": "Datum"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Nastavení Memory Chess",
+      "description": "Přizpůsobte si nastavení a předvolby své hry Memory Chess."
+    },
+    "difficulty": "Obtížnost",
+    "memorizationTime": "Čas na zapamatování: {seconds} s",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Zobrazit souřadnice šachovnice",
+    "home": "Domů",
+    "playGame": "Hrát"
+  },
+  "contact": {
+    "meta": {
+      "title": "Kontaktovat Memory Chess",
+      "description": "Napište Memory Chess s podnětem, návrhem funkce nebo obchodním dotazem.",
+      "socialTitle": "Kontaktovat Memory Chess",
+      "socialDescription": "Posílejte podněty, návrhy funkcí a dotazy k partnerství na Memory Chess."
+    },
+    "title": "Kontakt",
+    "sentTitle": "Zpráva odeslána!",
+    "sentBody": "Díky, že jste napsali. Brzy se ozveme.",
+    "redirecting": "Přesměrování na úvodní stránku...",
+    "name": "Jméno",
+    "namePlaceholder": "Vaše jméno",
+    "email": "E-mail",
+    "emailPlaceholder": "vas.email@priklad.cz",
+    "inquiryType": "Typ dotazu",
+    "inquiryPlaceholder": "Vyberte typ dotazu",
+    "message": "Zpráva",
+    "messagePlaceholder": "Sem napište svou zprávu...",
+    "send": "Odeslat zprávu",
+    "sending": "Odesílání...",
+    "types": {
+      "feedback": "Zpětná vazba",
+      "featureRequest": "Návrh funkce",
+      "general": "Obecný dotaz",
+      "business": "Obchodní příležitost"
+    },
+    "validation": {
+      "nameTooShort": "Jméno musí mít alespoň 2 znaky.",
+      "emailInvalid": "Zadejte platnou e-mailovou adresu.",
+      "typeRequired": "Vyberte typ dotazu.",
+      "messageTooShort": "Zpráva musí mít alespoň 10 znaků."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Učte se šachy krok za krokem",
+      "description": "Praktické šachové návody pro začátečníky: přehled na šachovnici, představivost, paměť, výpočet variant, prevence přehmatů a každodenní trénink."
+    },
+    "title": "Učte se šachy krok za krokem",
+    "startBeginner": "Začít návod pro začátečníky",
+    "playCta": "Hrát Memory Chess",
+    "startHere": "Začněte tady",
+    "pickNext": "Vyberte si další krok",
+    "chooseGoal": "Zvolte cíl",
+    "readRecallPlay": "Přečíst, vybavit si, zahrát",
+    "turnIdea": "Proměňte nápad v trénink",
+    "startRound": "Spustit kolo na paměť",
+    "paths": {
+      "newToChess": {
+        "label": "Nováček v šachách",
+        "title": "Sestavte si jednoduchý plán zlepšení",
+        "description": "Začněte základy a pak z jedné užitečné myšlenky udělejte opakovatelný denní návyk."
+      },
+      "missingThreats": {
+        "label": "Unikají vám jednoduché hrozby",
+        "title": "Trénujte přehled po celé šachovnici",
+        "description": "Používejte krátkou kontrolní rutinu, abyste si všimli nekrytých figurek, útoků a nebezpečí ještě před tahem."
+      },
+      "losingPosition": {
+        "label": "Ztrácíte pozici v hlavě",
+        "title": "Posilte představivost a vybavování",
+        "description": "Trénujte udržení malého a přesného obrazu šachovnice, než začnete přidávat delší sledy tahů."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Novinky",
+      "description": "Podívejte se na nejnovější funkce, vylepšení a opravy Memory Chess v oficiálním přehledu změn.",
+      "socialTitle": "Novinky v Memory Chess",
+      "socialDescription": "Podívejte se na nejnovější funkce, vylepšení a opravy Memory Chess."
+    },
+    "title": "Novinky",
+    "latest": "Nejnovější",
+    "bannerCta": "Zobrazit novinky",
+    "bannerLabel": "Aktualizace Memory Chess",
+    "entriesInEnglish": "Poznámky k vydání vycházejí v angličtině."
   }
 }

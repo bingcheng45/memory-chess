@@ -5,7 +5,12 @@ import { useSettingsStore } from '@/stores/settingsStore';
 import { Link, useRouter } from "@/i18n/navigation";
 import PageHeader from '@/components/ui/PageHeader';
 
+import { useTranslations } from "next-intl";
 export default function SettingsPage() {
+  const t = useTranslations("settings");
+  // Difficulty names come from the game namespace so settings and game config
+  // never show two different words for the same level.
+  const tg = useTranslations("game");
   const router = useRouter();
   const {
     difficulty,
@@ -29,7 +34,7 @@ export default function SettingsPage() {
         
         <div className="max-w-md mx-auto bg-gray-800 rounded-lg p-6 shadow-lg min-h-[400px] w-full">
           <div className="mb-8">
-            <label className="block text-gray-300 mb-3 font-medium">Difficulty</label>
+            <label className="block text-gray-300 mb-3 font-medium">{t("difficulty")}</label>
             <div className="flex flex-col sm:flex-row gap-2">
               {(['easy', 'medium', 'hard'] as const).map((level) => (
                 <button
@@ -41,7 +46,7 @@ export default function SettingsPage() {
                   }`}
                   onClick={() => setDifficulty(level)}
                 >
-                  {level.charAt(0).toUpperCase() + level.slice(1)}
+                  {tg(`presets.${level}.label`)}
                 </button>
               ))}
             </div>
@@ -49,7 +54,7 @@ export default function SettingsPage() {
           
           <div className="mb-8">
             <label className="block text-gray-300 mb-3 font-medium">
-              Memorization Time: {memorizationTime} seconds
+              {t("memorizationTime", { seconds: memorizationTime })}
             </label>
             <input
               type="range"
@@ -61,8 +66,8 @@ export default function SettingsPage() {
               className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
             />
             <div className="flex justify-between text-xs text-gray-400 mt-2">
-              <span>5s</span>
-              <span>30s</span>
+              <span>{t("seconds", { seconds: 5 })}</span>
+              <span>{t("seconds", { seconds: 30 })}</span>
             </div>
           </div>
           
@@ -74,7 +79,7 @@ export default function SettingsPage() {
                 onChange={() => setShowCoordinates(!showCoordinates)}
                 className="w-5 h-5 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-600"
               />
-              <span className="text-gray-300">Show board coordinates</span>
+              <span className="text-gray-300">{t("showCoordinates")}</span>
             </label>
           </div>
           
@@ -82,15 +87,11 @@ export default function SettingsPage() {
             <Link 
               href="/"
               className="px-4 py-3 bg-gray-700 text-gray-300 rounded-md hover:bg-gray-600 text-center"
-            >
-              Home
-            </Link>
+            >{t("home")}</Link>
             <Link 
               href="/game"
               className="px-4 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-center"
-            >
-              Play Game
-            </Link>
+            >{t("playGame")}</Link>
           </div>
         </div>
       </div>

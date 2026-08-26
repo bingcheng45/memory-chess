@@ -242,5 +242,124 @@
       "send": "Enviar comentarios",
       "sending": "Enviando..."
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Clasificación de Memory Chess",
+      "description": "Consulta a los mejores jugadores de Memory Chess por dificultad, precisión, velocidad de memorización y tiempo de resolución.",
+      "socialTitle": "Clasificación de Memory Chess",
+      "socialDescription": "Mira cómo se clasifican los jugadores en los retos de visualización y memoria."
+    },
+    "title": "Clasificación de Memory Chess",
+    "claimRank": "Reclama tu puesto",
+    "footnote": "Solo se muestran los 200 mejores. Ordenados por precisión, tiempo de memorización y velocidad de resolución.",
+    "loading": "Cargando la clasificación...",
+    "unavailableTitle": "Clasificación no disponible temporalmente",
+    "unavailableBody": "El servicio de clasificación está desconectado ahora mismo. Tus partidas se siguen guardando en local.",
+    "unavailableNote": "Puedes seguir jugando sin problema.",
+    "retryLater": "Inténtalo de nuevo más tarde",
+    "emptyTitle": "¡Sé el primer campeón!",
+    "emptyBody": "Todavía no hay entradas en esta clasificación",
+    "startPlaying": "Empieza a jugar",
+    "you": "Tú",
+    "columns": {
+      "rank": "Puesto",
+      "player": "Jugador",
+      "pieces": "Piezas",
+      "memorizeTime": "Tiempo de memorización",
+      "solutionTime": "Tiempo de resolución",
+      "date": "Fecha"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Ajustes de Memory Chess",
+      "description": "Personaliza los ajustes y preferencias de tu partida de Memory Chess."
+    },
+    "difficulty": "Dificultad",
+    "memorizationTime": "Tiempo de memorización: {seconds} segundos",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Mostrar las coordenadas del tablero",
+    "home": "Inicio",
+    "playGame": "Jugar"
+  },
+  "contact": {
+    "meta": {
+      "title": "Contacta con Memory Chess",
+      "description": "Contacta con Memory Chess para enviar comentarios, sugerencias de funciones o consultas comerciales.",
+      "socialTitle": "Contacta con Memory Chess",
+      "socialDescription": "Envía comentarios, sugerencias de funciones y consultas de colaboración a Memory Chess."
+    },
+    "title": "Contacto",
+    "sentTitle": "¡Mensaje enviado!",
+    "sentBody": "Gracias por escribirnos. Te responderemos pronto.",
+    "redirecting": "Redirigiendo a la página de inicio...",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu.correo@ejemplo.com",
+    "inquiryType": "Tipo de consulta",
+    "inquiryPlaceholder": "Elige el tipo de consulta",
+    "message": "Mensaje",
+    "messagePlaceholder": "Escribe aquí tu mensaje...",
+    "send": "Enviar mensaje",
+    "sending": "Enviando...",
+    "types": {
+      "feedback": "Comentarios",
+      "featureRequest": "Sugerencia de función",
+      "general": "Consulta general",
+      "business": "Oportunidad comercial"
+    },
+    "validation": {
+      "nameTooShort": "El nombre debe tener al menos 2 caracteres.",
+      "emailInvalid": "Introduce una dirección de correo válida.",
+      "typeRequired": "Elige un tipo de consulta.",
+      "messageTooShort": "El mensaje debe tener al menos 10 caracteres."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Aprende ajedrez paso a paso",
+      "description": "Guías prácticas de ajedrez para principiantes: visión del tablero, visualización, memoria, cálculo, prevención de errores y práctica diaria."
+    },
+    "title": "Aprende ajedrez paso a paso",
+    "startBeginner": "Empieza la guía para principiantes",
+    "playCta": "Jugar a Memory Chess",
+    "startHere": "Empieza aquí",
+    "pickNext": "Elige tu siguiente paso",
+    "chooseGoal": "Elige un objetivo",
+    "readRecallPlay": "Lee, recuerda, juega",
+    "turnIdea": "Convierte una idea en práctica",
+    "startRound": "Empieza una ronda de memoria",
+    "paths": {
+      "newToChess": {
+        "label": "Nuevo en el ajedrez",
+        "title": "Crea un plan de mejora sencillo",
+        "description": "Empieza por los fundamentos y convierte una idea útil en un hábito diario que puedas repetir."
+      },
+      "missingThreats": {
+        "label": "Se te escapan amenazas sencillas",
+        "title": "Entrena el barrido de todo el tablero",
+        "description": "Usa una rutina corta de comprobación para detectar piezas sueltas, ataques y peligros antes de mover."
+      },
+      "losingPosition": {
+        "label": "Pierdes la posición en la cabeza",
+        "title": "Refuerza la visualización y el recuerdo",
+        "description": "Practica mantener una imagen pequeña y precisa del tablero antes de añadir secuencias de jugadas más largas."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Novedades",
+      "description": "Consulta las últimas funciones, mejoras y correcciones de Memory Chess en el registro oficial.",
+      "socialTitle": "Novedades de Memory Chess",
+      "socialDescription": "Consulta las últimas funciones, mejoras y correcciones de Memory Chess."
+    },
+    "title": "Novedades",
+    "latest": "Última",
+    "bannerCta": "Ver novedades",
+    "bannerLabel": "Actualización de Memory Chess",
+    "entriesInEnglish": "Las notas de versión se publican en inglés."
   }
 }

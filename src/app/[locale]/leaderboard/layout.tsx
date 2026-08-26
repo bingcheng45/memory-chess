@@ -1,32 +1,34 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { getTranslations } from 'next-intl/server';
+import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
 
 const siteUrl = 'https://thememorychess.com';
 
-export const metadata: Metadata = {
-  title: 'Memory Chess Leaderboard',
-  description:
-    'View top Memory Chess players by difficulty, accuracy, memorization speed, and solution time.',
-  alternates: {
-    canonical: '/leaderboard',
-  },
-  openGraph: {
-    title: 'Memory Chess Leaderboard',
-    description:
-      'See how players rank in memory-based chess visualization challenges.',
-    url: `${siteUrl}/leaderboard`,
-  },
-  twitter: {
-    title: 'Memory Chess Leaderboard',
-    description:
-      'See how players rank in memory-based chess visualization challenges.',
-  },
-};
-
-export default function LeaderboardLayout({
-  children,
+export async function generateMetadata({
+  params,
 }: {
-  children: ReactNode;
-}) {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'leaderboard.meta' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: buildAlternates('/leaderboard', locale),
+    openGraph: {
+      title: t('socialTitle'),
+      description: t('socialDescription'),
+      url: `${siteUrl}${localizedPath('/leaderboard', locale)}`,
+    },
+    twitter: {
+      title: t('socialTitle'),
+      description: t('socialDescription'),
+    },
+  };
+}
+
+export default function LeaderboardLayout({ children }: { children: ReactNode }) {
   return children;
 }

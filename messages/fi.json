@@ -242,5 +242,124 @@
       "send": "Lähetä palaute",
       "sending": "Lähetetään…"
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess -tulostaulukko",
+      "description": "Katso Memory Chessin parhaat pelaajat vaikeustason, tarkkuuden, muistiinpainamisnopeuden ja ratkaisuajan mukaan.",
+      "socialTitle": "Memory Chess -tulostaulukko",
+      "socialDescription": "Katso, miten pelaajat sijoittuvat muisti- ja hahmotushaasteissa."
+    },
+    "title": "Memory Chess -sijoitukset",
+    "claimRank": "Lunasta sijoituksesi",
+    "footnote": "Näytetään vain 200 parasta. Järjestys: tarkkuus, muistiinpainamisaika ja ratkaisunopeus.",
+    "loading": "Ladataan tulostaulukkoa…",
+    "unavailableTitle": "Tulostaulukko ei ole juuri nyt käytettävissä",
+    "unavailableBody": "Tulostaulukkopalvelu on tällä hetkellä poissa käytöstä. Pelitietosi tallentuvat edelleen paikallisesti.",
+    "unavailableNote": "Voit jatkaa pelaamista normaalisti.",
+    "retryLater": "Yritä myöhemmin uudelleen",
+    "emptyTitle": "Ole ensimmäinen mestari!",
+    "emptyBody": "Tässä tulostaulukossa ei ole vielä merkintöjä",
+    "startPlaying": "Aloita pelaaminen",
+    "you": "Sinä",
+    "columns": {
+      "rank": "Sija",
+      "player": "Pelaaja",
+      "pieces": "Nappulat",
+      "memorizeTime": "Muistiinpainamisaika",
+      "solutionTime": "Ratkaisuaika",
+      "date": "Päivä"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess -asetukset",
+      "description": "Muokkaa Memory Chess -pelisi asetuksia ja mieltymyksiä."
+    },
+    "difficulty": "Vaikeustaso",
+    "memorizationTime": "Muistiinpainamisaika: {seconds} sekuntia",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Näytä laudan koordinaatit",
+    "home": "Etusivu",
+    "playGame": "Pelaa"
+  },
+  "contact": {
+    "meta": {
+      "title": "Ota yhteyttä Memory Chessiin",
+      "description": "Ota yhteyttä Memory Chessiin palautteen, ominaisuustoiveiden tai liiketoiminta-asioiden merkeissä.",
+      "socialTitle": "Ota yhteyttä Memory Chessiin",
+      "socialDescription": "Lähetä palautetta, ominaisuustoiveita ja yhteistyöpyyntöjä Memory Chessille."
+    },
+    "title": "Ota yhteyttä",
+    "sentTitle": "Viesti lähetetty!",
+    "sentBody": "Kiitos yhteydenotosta. Vastaamme pian.",
+    "redirecting": "Ohjataan etusivulle…",
+    "name": "Nimi",
+    "namePlaceholder": "Nimesi",
+    "email": "Sähköposti",
+    "emailPlaceholder": "sinun.osoite@esimerkki.fi",
+    "inquiryType": "Yhteydenoton aihe",
+    "inquiryPlaceholder": "Valitse aihe",
+    "message": "Viesti",
+    "messagePlaceholder": "Kirjoita viestisi tähän…",
+    "send": "Lähetä viesti",
+    "sending": "Lähetetään…",
+    "types": {
+      "feedback": "Palaute",
+      "featureRequest": "Ominaisuustoive",
+      "general": "Yleinen kysymys",
+      "business": "Liiketoimintamahdollisuus"
+    },
+    "validation": {
+      "nameTooShort": "Nimessä on oltava vähintään 2 merkkiä.",
+      "emailInvalid": "Anna kelvollinen sähköpostiosoite.",
+      "typeRequired": "Valitse yhteydenoton aihe.",
+      "messageTooShort": "Viestissä on oltava vähintään 10 merkkiä."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Opi shakkia selkeä askel kerrallaan",
+      "description": "Käytännönläheiset shakkioppaat aloittelijoille: laudan hahmotus, visualisointi, muisti, laskenta, virheiden välttäminen ja päivittäinen harjoittelu."
+    },
+    "title": "Opi shakkia selkeä askel kerrallaan",
+    "startBeginner": "Aloita aloittelijan opas",
+    "playCta": "Pelaa Memory Chessiä",
+    "startHere": "Aloita tästä",
+    "pickNext": "Valitse seuraava askel",
+    "chooseGoal": "Valitse tavoite",
+    "readRecallPlay": "Lue, muista, pelaa",
+    "turnIdea": "Muuta yksi idea harjoitukseksi",
+    "startRound": "Aloita muistikierros",
+    "paths": {
+      "newToChess": {
+        "label": "Uusi shakin parissa",
+        "title": "Rakenna yksinkertainen kehityssuunnitelma",
+        "description": "Aloita perusteista ja tee sitten yhdestä hyödyllisestä ideasta toistettava päivittäinen tapa."
+      },
+      "missingThreats": {
+        "label": "Yksinkertaiset uhat jäävät huomaamatta",
+        "title": "Harjoittele koko laudan silmäilyä",
+        "description": "Käytä lyhyttä tarkistusrutiinia huomataksesi suojaamattomat nappulat, hyökkäykset ja vaarat ennen siirtoa."
+      },
+      "losingPosition": {
+        "label": "Asema katoaa mielestä",
+        "title": "Vahvista visualisointia ja muistia",
+        "description": "Harjoittele pitämään laudasta pieni ja tarkka kuva ennen kuin lisäät pidempiä siirtosarjoja."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Uutta",
+      "description": "Katso Memory Chessin uusimmat ominaisuudet, parannukset ja korjaukset virallisesta muutoslokista.",
+      "socialTitle": "Uutta Memory Chessissä",
+      "socialDescription": "Katso Memory Chessin uusimmat ominaisuudet, parannukset ja korjaukset."
+    },
+    "title": "Uutta",
+    "latest": "Uusin",
+    "bannerCta": "Katso mitä uutta",
+    "bannerLabel": "Memory Chess -päivitys",
+    "entriesInEnglish": "Julkaisutiedot julkaistaan englanniksi."
   }
 }

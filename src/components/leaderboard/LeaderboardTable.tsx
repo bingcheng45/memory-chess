@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { useEffect, useRef } from "react";
 
+import { useTranslations } from "next-intl";
 // Interface for entry details from URL params
 interface EntryDetails {
   player: string | null;
@@ -109,6 +110,7 @@ const TimeDisplay = ({ time }: { time: string }) => {
 };
 
 export default function LeaderboardTable({ data, isLoading, error, entryDetails, activeTab }: LeaderboardTableProps) {
+  const t = useTranslations("leaderboard");
   // Create a ref to store the highlighted row element
   const highlightedRowRef = useRef<HTMLTableRowElement>(null);
   
@@ -129,7 +131,7 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
     return (
       <div className="text-center p-8">
         <div className="animate-spin h-8 w-8 border-4 border-peach-500 rounded-full border-t-transparent mx-auto"></div>
-        <p className="mt-4 text-text-secondary">Loading leaderboard data...</p>
+        <p className="mt-4 text-text-secondary">{t("loading")}</p>
       </div>
     );
   }
@@ -144,14 +146,14 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
       <div className="text-center p-8 border border-red-500/30 rounded-lg bg-red-500/10">
         {isConnectionError ? (
           <>
-            <p className="text-amber-400 font-semibold mb-2">Leaderboard Temporarily Unavailable</p>
-            <p className="text-text-secondary">The leaderboard service is currently offline. Your game data is still being saved locally.</p>
-            <p className="mt-4 text-text-muted text-sm">You can continue playing without disruption.</p>
+            <p className="text-amber-400 font-semibold mb-2">{t("unavailableTitle")}</p>
+            <p className="text-text-secondary">{t("unavailableBody")}</p>
+            <p className="mt-4 text-text-muted text-sm">{t("unavailableNote")}</p>
           </>
         ) : (
           <>
             <p className="text-red-400">Error loading leaderboard: {error}</p>
-            <p className="mt-2 text-text-secondary">Please try again later</p>
+            <p className="mt-2 text-text-secondary">{t("retryLater")}</p>
           </>
         )}
       </div>
@@ -174,8 +176,8 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
             </svg>
           </div>
         </div>
-        <h3 className="text-xl font-bold text-peach-400 mb-2">Be the First Champion!</h3>
-        <p className="text-lg text-text-secondary mb-2">No entries on this leaderboard yet</p>
+        <h3 className="text-xl font-bold text-peach-400 mb-2">{t("emptyTitle")}</h3>
+        <p className="text-lg text-text-secondary mb-2">{t("emptyBody")}</p>
         <p className="text-text-muted mb-4">
           Challenge your memory skills and claim your spot at the top! 
           Play a game now and etch your name in Memory Chess history.
@@ -184,9 +186,7 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
           <Button 
             variant="outline"
             className="bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 mt-2"
-          >
-            Start Playing Now
-          </Button>
+          >{t("startPlaying")}</Button>
         </Link>
       </div>
     );
@@ -197,12 +197,12 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
       <Table>
         <TableHeader className="bg-bg-card">
           <TableRow className="hover:bg-transparent">
-            <TableHead className="w-16 text-center">Rank</TableHead>
-            <TableHead>Player</TableHead>
-            <TableHead className="text-center">Pieces</TableHead>
-            <TableHead className="text-center">Memorize Time</TableHead>
-            <TableHead className="text-center">Solution Time</TableHead>
-            <TableHead className="text-right">Date</TableHead>
+            <TableHead className="w-16 text-center">{t("columns.rank")}</TableHead>
+            <TableHead>{t("columns.player")}</TableHead>
+            <TableHead className="text-center">{t("columns.pieces")}</TableHead>
+            <TableHead className="text-center">{t("columns.memorizeTime")}</TableHead>
+            <TableHead className="text-center">{t("columns.solutionTime")}</TableHead>
+            <TableHead className="text-right">{t("columns.date")}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -240,7 +240,7 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
                 </TableCell>
                 <TableCell className={`font-medium ${isHighlighted ? "text-peach-500" : ""}`}>
                   {entry.player_name}
-                  {isHighlighted && <span className="ml-2 text-xs bg-peach-500/20 text-peach-500 px-2 py-0.5 rounded-full">You</span>}
+                  {isHighlighted && <span className="ml-2 text-xs bg-peach-500/20 text-peach-500 px-2 py-0.5 rounded-full">{t("you")}</span>}
                 </TableCell>
                 <TableCell className="text-center">
                   <span className="font-medium">

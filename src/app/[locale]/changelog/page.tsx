@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import { buildAlternates, localizedPath } from "@/lib/seo/alternates";
 import { Link } from "@/i18n/navigation";
 import {
   EditorialHero,
   EditorialPageShell,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
+import { useTranslations } from "next-intl";
 import {
   CHANGELOG_ENTRIES,
   LATEST_CHANGELOG_ENTRY,
@@ -13,25 +16,29 @@ import {
 
 const siteUrl = "https://thememorychess.com";
 
-export const metadata: Metadata = {
-  title: "Changelog",
-  description:
-    "See the latest Memory Chess features, improvements, and fixes in the official changelog.",
-  alternates: {
-    canonical: "/changelog",
-  },
-  openGraph: {
-    title: "Memory Chess Changelog",
-    description:
-      "See the latest Memory Chess features, improvements, and fixes.",
-    url: `${siteUrl}/changelog`,
-  },
-  twitter: {
-    title: "Memory Chess Changelog",
-    description:
-      "See the latest Memory Chess features, improvements, and fixes.",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "changelog.meta" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: buildAlternates("/changelog", locale),
+    openGraph: {
+      title: t("socialTitle"),
+      description: t("socialDescription"),
+      url: `${siteUrl}${localizedPath("/changelog", locale)}`,
+    },
+    twitter: {
+      title: t("socialTitle"),
+      description: t("socialDescription"),
+    },
+  };
+}
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "long",
@@ -41,6 +48,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 export default function ChangelogPage() {
+  const t = useTranslations("changelog");
   return (
     <EditorialPageShell>
       <EditorialHero
@@ -68,9 +76,7 @@ export default function ChangelogPage() {
                   v{entry.version}
                 </h2>
                 {isLatest && (
-                  <span className="rounded-full border border-peach-500/25 bg-peach-500/10 px-2.5 py-1 text-xs font-medium text-peach-300">
-                    Latest
-                  </span>
+                  <span className="rounded-full border border-peach-500/25 bg-peach-500/10 px-2.5 py-1 text-xs font-medium text-peach-300">{t("latest")}</span>
                 )}
                 <time
                   dateTime={entry.publishedAt}

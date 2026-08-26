@@ -1,26 +1,23 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { getTranslations } from 'next-intl/server';
+import { buildAlternates } from '@/lib/seo/alternates';
 
-export const metadata: Metadata = {
-  title: 'Memory Chess Settings',
-  description: 'Customize your Memory Chess game settings and preferences.',
-  alternates: {
-    canonical: '/settings',
-  },
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
-  },
-};
-
-export default function SettingsLayout({
-  children,
+export async function generateMetadata({
+  params,
 }: {
-  children: ReactNode;
-}) {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'settings.meta' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: buildAlternates('/settings', locale),
+  };
+}
+
+export default function SettingsLayout({ children }: { children: ReactNode }) {
   return children;
 }

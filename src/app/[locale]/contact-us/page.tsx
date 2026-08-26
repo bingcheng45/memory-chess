@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useRouter } from "@/i18n/navigation";
 import { z } from 'zod';
 import { useForm, ControllerRenderProps } from 'react-hook-form';
@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import PageHeader from '@/components/ui/PageHeader';
 import Footer from '@/components/ui/Footer';
 import { Button } from '@/components/ui/button';
+import { useTranslations } from 'next-intl';
 import {
   Form,
   FormControl,
@@ -26,25 +27,22 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-// Define form schema with zod
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: 'Name must be at least 2 characters.',
-  }),
-  email: z.string().email({
-    message: 'Please enter a valid email address.',
-  }),
-  type: z.string({
-    required_error: 'Please select an inquiry type.',
-  }),
-  message: z.string().min(10, {
-    message: 'Message must be at least 10 characters.',
-  }),
-});
+// Built from the translator rather than declared at module scope: the
+// validation messages are user-facing copy and have to follow the locale.
+function buildFormSchema(t: (key: string) => string) {
+  return z.object({
+    name: z.string().min(2, { message: t('validation.nameTooShort') }),
+    email: z.string().email({ message: t('validation.emailInvalid') }),
+    type: z.string({ required_error: t('validation.typeRequired') }),
+    message: z.string().min(10, { message: t('validation.messageTooShort') }),
+  });
+}
 
-type FormValues = z.infer<typeof formSchema>;
+type FormValues = z.infer<ReturnType<typeof buildFormSchema>>;
 
 export default function ContactUs() {
+  const t = useTranslations('contact');
+  const formSchema = useMemo(() => buildFormSchema(t), [t]);
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -70,7 +68,7 @@ export default function ContactUs() {
       if (!data.type || data.type.trim() === '') {
         form.setError('type', {
           type: 'manual',
-          message: 'Please select an inquiry type.'
+          message: t('validation.typeRequired')
         });
         setFormError('Please select an inquiry type.');
         throw new Error('Inquiry type is required');
@@ -128,13 +126,13 @@ export default function ContactUs() {
         </div>
         
         <div className="max-w-2xl mx-auto mb-16 px-2 sm:px-4">
-          <h1 className="text-3xl font-bold text-center mb-8">Contact Us</h1>
+          <h1 className="text-3xl font-bold text-center mb-8">{t("title")}</h1>
           
           {submitSuccess ? (
             <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-6 text-center">
-              <h2 className="text-xl font-semibold text-green-400 mb-2">Message Sent!</h2>
-              <p className="text-text-secondary">Thank you for reaching out. We&apos;ll get back to you soon.</p>
-              <p className="text-text-secondary mt-4">Redirecting to homepage...</p>
+              <h2 className="text-xl font-semibold text-green-400 mb-2">{t("sentTitle")}</h2>
+              <p className="text-text-secondary">{t("sentBody")}</p>
+              <p className="text-text-secondary mt-4">{t("redirecting")}</p>
             </div>
           ) : (
             <Form {...form}>
@@ -150,9 +148,9 @@ export default function ContactUs() {
                   name="name"
                   render={({ field }: { field: ControllerRenderProps<FormValues, "name"> }) => (
                     <FormItem>
-                      <FormLabel>Name</FormLabel>
+                      <FormLabel>{t("name")}</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your name" {...field} className="bg-bg-card border-bg-light" />
+                        <Input placeholder={t("namePlaceholder")} {...field} className="bg-bg-card border-bg-light" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -164,9 +162,9 @@ export default function ContactUs() {
                   name="email"
                   render={({ field }: { field: ControllerRenderProps<FormValues, "email"> }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel>{t("email")}</FormLabel>
                       <FormControl>
-                        <Input placeholder="your.email@example.com" {...field} className="bg-bg-card border-bg-light" />
+                        <Input placeholder={t("emailPlaceholder")} {...field} className="bg-bg-card border-bg-light" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -178,7 +176,7 @@ export default function ContactUs() {
                   name="type"
                   render={({ field }: { field: ControllerRenderProps<FormValues, "type"> }) => (
                     <FormItem>
-                      <FormLabel>Inquiry Type</FormLabel>
+                      <FormLabel>{t("inquiryType")}</FormLabel>
                       <Select 
                         onValueChange={field.onChange} 
                         defaultValue={field.value}
@@ -187,14 +185,14 @@ export default function ContactUs() {
                       >
                         <FormControl>
                           <SelectTrigger className="bg-bg-card border-bg-light text-white focus:border-white focus:ring-white focus:ring-opacity-50">
-                            <SelectValue placeholder="Select inquiry type" className="text-white" />
+                            <SelectValue placeholder={t("inquiryPlaceholder")} className="text-white" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="bg-bg-card border-bg-light text-white">
-                          <SelectItem value="feedback" className="text-white">Feedback</SelectItem>
-                          <SelectItem value="feature" className="text-white">Feature Request</SelectItem>
-                          <SelectItem value="inquiry" className="text-white">General Inquiry</SelectItem>
-                          <SelectItem value="business" className="text-white">Business Opportunity</SelectItem>
+                          <SelectItem value="feedback" className="text-white">{t("types.feedback")}</SelectItem>
+                          <SelectItem value="feature" className="text-white">{t("types.featureRequest")}</SelectItem>
+                          <SelectItem value="inquiry" className="text-white">{t("types.general")}</SelectItem>
+                          <SelectItem value="business" className="text-white">{t("types.business")}</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -207,10 +205,10 @@ export default function ContactUs() {
                   name="message"
                   render={({ field }: { field: ControllerRenderProps<FormValues, "message"> }) => (
                     <FormItem>
-                      <FormLabel>Message</FormLabel>
+                      <FormLabel>{t("message")}</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Type your message here..." 
+                          placeholder={t("messagePlaceholder")} 
                           {...field} 
                           className="bg-bg-card border-bg-light h-40"
                         />
@@ -225,7 +223,7 @@ export default function ContactUs() {
                   className="w-full bg-peach-500 hover:bg-peach-600 text-white"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? t('sending') : t('send')}
                 </Button>
               </form>
             </Form>

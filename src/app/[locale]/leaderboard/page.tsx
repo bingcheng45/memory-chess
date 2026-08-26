@@ -10,6 +10,7 @@ import { Link } from "@/i18n/navigation";
 import { Button } from '@/components/ui/button';
 import { ACTIVE_GAME_FRAME_WIDTH } from '@/hooks/useResponsiveBoard';
 
+import { useTranslations } from "next-intl";
 // Interface for entry details from URL params
 interface EntryDetails {
   player: string | null;
@@ -23,6 +24,10 @@ interface EntryDetails {
 
 // Component that uses searchParams - needs to be wrapped in Suspense
 function LeaderboardContent() {
+  const t = useTranslations("leaderboard");
+  // Difficulty names are the same strings the game config shows; reuse them
+  // rather than translating "Easy" twice and letting the two drift.
+  const tg = useTranslations("game");
   const searchParams = useSearchParams();
   
   // Extract all parameters for precise entry identification
@@ -90,7 +95,7 @@ function LeaderboardContent() {
 
   return (
     <div className="flex flex-col items-center justify-center space-y-8">
-      <h1 className="text-3xl font-bold text-peach-400">Memory Chess Rankings</h1>
+      <h1 className="text-3xl font-bold text-peach-400">{t("title")}</h1>
       
       <div className="max-w-2xl space-y-2">
         <p className="text-lg text-text-secondary text-center">
@@ -108,27 +113,19 @@ function LeaderboardContent() {
           <TabsTrigger 
             value="easy"
             className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
-          >
-            Easy
-          </TabsTrigger>
+          >{tg("presets.easy.label")}</TabsTrigger>
           <TabsTrigger 
             value="medium"
             className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
-          >
-            Medium
-          </TabsTrigger>
+          >{tg("presets.medium.label")}</TabsTrigger>
           <TabsTrigger 
             value="hard"
             className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
-          >
-            Hard
-          </TabsTrigger>
+          >{tg("presets.hard.label")}</TabsTrigger>
           <TabsTrigger 
             value="grandmaster"
             className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
-          >
-            Grandmaster
-          </TabsTrigger>
+          >{tg("presets.grandmaster.label")}</TabsTrigger>
         </TabsList>
         
         <TabsContent value="easy">
@@ -156,17 +153,13 @@ function LeaderboardContent() {
               variant="secondary"
               className="bg-peach-500 text-white hover:bg-peach-600 px-6 py-2"
               size="lg"
-            >
-              Claim Your Rank
-            </Button>
+            >{t("claimRank")}</Button>
           </Link>
         </div>
       )}
       
       <div className="w-full max-w-4xl flex justify-end">
-        <p className="text-xs text-text-secondary/70 italic">
-          Displaying top 200 only. Ranked by accuracy, memorization time, and solution speed.
-        </p>
+        <p className="text-xs text-text-secondary/70 italic">{t("footnote")}</p>
       </div>
     </div>
   );
@@ -174,6 +167,7 @@ function LeaderboardContent() {
 
 // Loading fallback component
 function LeaderboardLoading() {
+  const t = useTranslations("leaderboard");
   return (
     <div className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
       <main className="container mx-auto px-4 pb-8 pt-4">
@@ -189,9 +183,7 @@ function LeaderboardLoading() {
         <div className="flex flex-col items-center justify-center space-y-8">
           <h1 className="text-3xl font-bold text-peach-400">Memory Chess Rankings</h1>
           <div className="max-w-2xl space-y-2">
-            <p className="text-lg text-text-secondary text-center">
-              Loading leaderboard data...
-            </p>
+            <p className="text-lg text-text-secondary text-center">{t("loading")}</p>
           </div>
           <div className="w-full max-w-4xl flex justify-center py-12">
             <div className="animate-spin h-8 w-8 border-4 border-peach-500 rounded-full border-t-transparent"></div>

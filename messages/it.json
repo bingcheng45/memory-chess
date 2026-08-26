@@ -242,5 +242,124 @@
       "send": "Invia il commento",
       "sending": "Invio..."
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Classifica di Memory Chess",
+      "description": "Guarda i migliori giocatori di Memory Chess per difficoltà, precisione, velocità di memorizzazione e tempo di risoluzione.",
+      "socialTitle": "Classifica di Memory Chess",
+      "socialDescription": "Scopri come si posizionano i giocatori nelle sfide di memoria e visualizzazione."
+    },
+    "title": "Classifica di Memory Chess",
+    "claimRank": "Prenditi il tuo posto",
+    "footnote": "Mostrati solo i primi 200. Ordinati per precisione, tempo di memorizzazione e velocità di risoluzione.",
+    "loading": "Caricamento della classifica...",
+    "unavailableTitle": "Classifica temporaneamente non disponibile",
+    "unavailableBody": "Il servizio classifica al momento è offline. Le tue partite continuano a essere salvate in locale.",
+    "unavailableNote": "Puoi continuare a giocare senza problemi.",
+    "retryLater": "Riprova più tardi",
+    "emptyTitle": "Diventa il primo campione!",
+    "emptyBody": "Non ci sono ancora risultati in questa classifica",
+    "startPlaying": "Inizia a giocare",
+    "you": "Tu",
+    "columns": {
+      "rank": "Posizione",
+      "player": "Giocatore",
+      "pieces": "Pezzi",
+      "memorizeTime": "Tempo di memorizzazione",
+      "solutionTime": "Tempo di risoluzione",
+      "date": "Data"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Impostazioni di Memory Chess",
+      "description": "Personalizza le impostazioni e le preferenze della tua partita a Memory Chess."
+    },
+    "difficulty": "Difficoltà",
+    "memorizationTime": "Tempo di memorizzazione: {seconds} secondi",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Mostra le coordinate della scacchiera",
+    "home": "Home",
+    "playGame": "Gioca"
+  },
+  "contact": {
+    "meta": {
+      "title": "Contatta Memory Chess",
+      "description": "Contatta Memory Chess per commenti, richieste di funzionalità o proposte commerciali.",
+      "socialTitle": "Contatta Memory Chess",
+      "socialDescription": "Invia commenti, richieste di funzionalità e proposte di collaborazione a Memory Chess."
+    },
+    "title": "Contattaci",
+    "sentTitle": "Messaggio inviato!",
+    "sentBody": "Grazie per averci scritto. Ti risponderemo presto.",
+    "redirecting": "Reindirizzamento alla home...",
+    "name": "Nome",
+    "namePlaceholder": "Il tuo nome",
+    "email": "E-mail",
+    "emailPlaceholder": "tua.email@esempio.com",
+    "inquiryType": "Tipo di richiesta",
+    "inquiryPlaceholder": "Scegli il tipo di richiesta",
+    "message": "Messaggio",
+    "messagePlaceholder": "Scrivi qui il tuo messaggio...",
+    "send": "Invia il messaggio",
+    "sending": "Invio...",
+    "types": {
+      "feedback": "Commenti",
+      "featureRequest": "Richiesta di funzionalità",
+      "general": "Domanda generica",
+      "business": "Opportunità commerciale"
+    },
+    "validation": {
+      "nameTooShort": "Il nome deve avere almeno 2 caratteri.",
+      "emailInvalid": "Inserisci un indirizzo e-mail valido.",
+      "typeRequired": "Scegli un tipo di richiesta.",
+      "messageTooShort": "Il messaggio deve avere almeno 10 caratteri."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Impara gli scacchi un passo alla volta",
+      "description": "Guide pratiche di scacchi per principianti: visione della scacchiera, visualizzazione, memoria, calcolo, prevenzione degli errori e pratica quotidiana."
+    },
+    "title": "Impara gli scacchi un passo alla volta",
+    "startBeginner": "Inizia la guida per principianti",
+    "playCta": "Gioca a Memory Chess",
+    "startHere": "Inizia qui",
+    "pickNext": "Scegli il prossimo passo",
+    "chooseGoal": "Scegli un obiettivo",
+    "readRecallPlay": "Leggi, ricorda, gioca",
+    "turnIdea": "Trasforma un’idea in pratica",
+    "startRound": "Inizia un turno di memoria",
+    "paths": {
+      "newToChess": {
+        "label": "Nuovo agli scacchi",
+        "title": "Costruisci un piano di miglioramento semplice",
+        "description": "Parti dalle basi, poi trasforma un’idea utile in un’abitudine quotidiana ripetibile."
+      },
+      "missingThreats": {
+        "label": "Ti sfuggono minacce semplici",
+        "title": "Allena la scansione dell’intera scacchiera",
+        "description": "Usa una breve routine di controllo per notare pezzi indifesi, attacchi e pericoli prima di muovere."
+      },
+      "losingPosition": {
+        "label": "Perdi la posizione nella testa",
+        "title": "Rafforza visualizzazione e memoria",
+        "description": "Allenati a tenere un’immagine piccola e precisa della scacchiera prima di allungare le sequenze di mosse."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Novità",
+      "description": "Scopri le ultime funzionalità, i miglioramenti e le correzioni di Memory Chess nel registro ufficiale.",
+      "socialTitle": "Novità di Memory Chess",
+      "socialDescription": "Scopri le ultime funzionalità, i miglioramenti e le correzioni di Memory Chess."
+    },
+    "title": "Novità",
+    "latest": "Ultima",
+    "bannerCta": "Guarda le novità",
+    "bannerLabel": "Aggiornamento di Memory Chess",
+    "entriesInEnglish": "Le note di rilascio sono pubblicate in inglese."
   }
 }

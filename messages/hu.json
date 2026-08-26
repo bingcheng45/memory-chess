@@ -242,5 +242,124 @@
       "send": "Visszajelzés küldése",
       "sending": "Küldés…"
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess ranglista",
+      "description": "Nézd meg a legjobb Memory Chess játékosokat nehézség, pontosság, memorizálási tempó és megoldási idő szerint.",
+      "socialTitle": "Memory Chess ranglista",
+      "socialDescription": "Nézd meg, hogyan állnak a játékosok a memória- és vizualizációs feladatokban."
+    },
+    "title": "Memory Chess rangsor",
+    "claimRank": "Foglald el a helyed",
+    "footnote": "Csak a legjobb 200 látszik. Rendezés pontosság, memorizálási idő és megoldási tempó szerint.",
+    "loading": "Ranglista betöltése…",
+    "unavailableTitle": "A ranglista átmenetileg nem érhető el",
+    "unavailableBody": "A ranglista szolgáltatás most nem működik. A játékadataid továbbra is helyben mentődnek.",
+    "unavailableNote": "Zavartalanul játszhatsz tovább.",
+    "retryLater": "Próbáld újra később",
+    "emptyTitle": "Legyél te az első bajnok!",
+    "emptyBody": "Ezen a ranglistán még nincs bejegyzés",
+    "startPlaying": "Kezdj játszani",
+    "you": "Te",
+    "columns": {
+      "rank": "Helyezés",
+      "player": "Játékos",
+      "pieces": "Bábuk",
+      "memorizeTime": "Memorizálási idő",
+      "solutionTime": "Megoldási idő",
+      "date": "Dátum"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess beállítások",
+      "description": "Szabd testre a Memory Chess játékod beállításait és preferenciáit."
+    },
+    "difficulty": "Nehézség",
+    "memorizationTime": "Memorizálási idő: {seconds} másodperc",
+    "seconds": "{seconds} mp",
+    "showCoordinates": "Tábla koordinátáinak mutatása",
+    "home": "Főoldal",
+    "playGame": "Játék"
+  },
+  "contact": {
+    "meta": {
+      "title": "Kapcsolat a Memory Chess-szel",
+      "description": "Írj a Memory Chessnek visszajelzéssel, funkciókéréssel vagy üzleti megkereséssel.",
+      "socialTitle": "Kapcsolat a Memory Chess-szel",
+      "socialDescription": "Küldj visszajelzést, funkciókérést és együttműködési megkeresést a Memory Chessnek."
+    },
+    "title": "Kapcsolat",
+    "sentTitle": "Üzenet elküldve!",
+    "sentBody": "Köszönjük, hogy írtál. Hamarosan válaszolunk.",
+    "redirecting": "Átirányítás a főoldalra…",
+    "name": "Név",
+    "namePlaceholder": "A neved",
+    "email": "E-mail",
+    "emailPlaceholder": "a.cimed@pelda.hu",
+    "inquiryType": "Megkeresés típusa",
+    "inquiryPlaceholder": "Válaszd ki a megkeresés típusát",
+    "message": "Üzenet",
+    "messagePlaceholder": "Írd ide az üzeneted…",
+    "send": "Üzenet küldése",
+    "sending": "Küldés…",
+    "types": {
+      "feedback": "Visszajelzés",
+      "featureRequest": "Funkciókérés",
+      "general": "Általános kérdés",
+      "business": "Üzleti lehetőség"
+    },
+    "validation": {
+      "nameTooShort": "A név legalább 2 karakter legyen.",
+      "emailInvalid": "Adj meg érvényes e-mail-címet.",
+      "typeRequired": "Válaszd ki a megkeresés típusát.",
+      "messageTooShort": "Az üzenet legalább 10 karakter legyen."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Tanulj sakkozni, egy világos lépéssel egyszerre",
+      "description": "Gyakorlatias sakk-útmutatók kezdőknek: tábla átlátása, vizualizáció, memória, számolás, hibák elkerülése és napi gyakorlás."
+    },
+    "title": "Tanulj sakkozni, egy világos lépéssel egyszerre",
+    "startBeginner": "Kezdd a kezdő útmutatót",
+    "playCta": "Memory Chess játék",
+    "startHere": "Kezdd itt",
+    "pickNext": "Válaszd ki a következő lépést",
+    "chooseGoal": "Válassz célt",
+    "readRecallPlay": "Olvasd, idézd fel, játszd",
+    "turnIdea": "Alakíts egy ötletet gyakorlattá",
+    "startRound": "Indíts egy memóriakört",
+    "paths": {
+      "newToChess": {
+        "label": "Új a sakkban",
+        "title": "Építs egyszerű fejlődési tervet",
+        "description": "Kezdd az alapokkal, majd alakíts egy hasznos ötletet ismételhető napi szokássá."
+      },
+      "missingThreats": {
+        "label": "Elkerülik a figyelmed az egyszerű fenyegetések",
+        "title": "Gyakorold az egész tábla átpásztázását",
+        "description": "Használj rövid ellenőrző rutint, hogy lépés előtt észrevedd a fedezetlen bábukat, a támadásokat és a veszélyt."
+      },
+      "losingPosition": {
+        "label": "Fejben elveszíted az állást",
+        "title": "Erősítsd a vizualizációt és a felidézést",
+        "description": "Gyakorold, hogy kicsi, pontos képet tarts a tábláról, mielőtt hosszabb lépéssorokat teszel hozzá."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Újdonságok",
+      "description": "Nézd meg a Memory Chess legújabb funkcióit, fejlesztéseit és javításait a hivatalos változásnaplóban.",
+      "socialTitle": "Memory Chess újdonságok",
+      "socialDescription": "Nézd meg a Memory Chess legújabb funkcióit, fejlesztéseit és javításait."
+    },
+    "title": "Újdonságok",
+    "latest": "Legutóbbi",
+    "bannerCta": "Nézd meg, mi újult meg",
+    "bannerLabel": "Memory Chess frissítés",
+    "entriesInEnglish": "A kiadási jegyzetek angolul jelennek meg."
   }
 }

@@ -242,5 +242,124 @@
       "send": "Trimite părerea",
       "sending": "Se trimite…"
     }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Clasament Memory Chess",
+      "description": "Vezi cei mai buni jucători Memory Chess după dificultate, precizie, viteză de memorare și timp de rezolvare.",
+      "socialTitle": "Clasament Memory Chess",
+      "socialDescription": "Vezi cum se clasează jucătorii în provocările de memorie și vizualizare."
+    },
+    "title": "Clasament Memory Chess",
+    "claimRank": "Revendică-ți locul",
+    "footnote": "Se afișează doar primii 200. Ordonați după precizie, timp de memorare și viteză de rezolvare.",
+    "loading": "Se încarcă clasamentul…",
+    "unavailableTitle": "Clasamentul este temporar indisponibil",
+    "unavailableBody": "Serviciul de clasament este momentan offline. Datele partidelor tale se salvează în continuare local.",
+    "unavailableNote": "Poți juca mai departe fără probleme.",
+    "retryLater": "Încearcă din nou mai târziu",
+    "emptyTitle": "Fii primul campion!",
+    "emptyBody": "Încă nu există înregistrări în acest clasament",
+    "startPlaying": "Începe să joci",
+    "you": "Tu",
+    "columns": {
+      "rank": "Loc",
+      "player": "Jucător",
+      "pieces": "Piese",
+      "memorizeTime": "Timp de memorare",
+      "solutionTime": "Timp de rezolvare",
+      "date": "Data"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Setări Memory Chess",
+      "description": "Personalizează setările și preferințele partidei tale de Memory Chess."
+    },
+    "difficulty": "Dificultate",
+    "memorizationTime": "Timp de memorare: {seconds} secunde",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Afișează coordonatele tablei",
+    "home": "Acasă",
+    "playGame": "Joacă"
+  },
+  "contact": {
+    "meta": {
+      "title": "Contactează Memory Chess",
+      "description": "Contactează Memory Chess pentru păreri, propuneri de funcții sau colaborări.",
+      "socialTitle": "Contactează Memory Chess",
+      "socialDescription": "Trimite păreri, propuneri de funcții și solicitări de parteneriat către Memory Chess."
+    },
+    "title": "Contact",
+    "sentTitle": "Mesaj trimis!",
+    "sentBody": "Îți mulțumim că ne-ai scris. Revenim în curând.",
+    "redirecting": "Redirecționare către pagina principală…",
+    "name": "Nume",
+    "namePlaceholder": "Numele tău",
+    "email": "E-mail",
+    "emailPlaceholder": "adresa.ta@exemplu.ro",
+    "inquiryType": "Tipul solicitării",
+    "inquiryPlaceholder": "Alege tipul solicitării",
+    "message": "Mesaj",
+    "messagePlaceholder": "Scrie aici mesajul tău…",
+    "send": "Trimite mesajul",
+    "sending": "Se trimite…",
+    "types": {
+      "feedback": "Părere",
+      "featureRequest": "Propunere de funcție",
+      "general": "Întrebare generală",
+      "business": "Oportunitate de afaceri"
+    },
+    "validation": {
+      "nameTooShort": "Numele trebuie să aibă cel puțin 2 caractere.",
+      "emailInvalid": "Introdu o adresă de e-mail validă.",
+      "typeRequired": "Alege tipul solicitării.",
+      "messageTooShort": "Mesajul trebuie să aibă cel puțin 10 caractere."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Învață șah pas cu pas",
+      "description": "Ghiduri practice de șah pentru începători: vederea tablei, vizualizare, memorie, calcul, evitarea gafelor și practică zilnică."
+    },
+    "title": "Învață șah pas cu pas",
+    "startBeginner": "Începe ghidul pentru începători",
+    "playCta": "Joacă Memory Chess",
+    "startHere": "Începe aici",
+    "pickNext": "Alege pasul următor",
+    "chooseGoal": "Alege un obiectiv",
+    "readRecallPlay": "Citește, amintește-ți, joacă",
+    "turnIdea": "Transformă o idee în practică",
+    "startRound": "Începe o rundă de memorie",
+    "paths": {
+      "newToChess": {
+        "label": "Începător la șah",
+        "title": "Construiește un plan simplu de progres",
+        "description": "Începe cu bazele, apoi transformă o idee utilă într-un obicei zilnic pe care îl poți repeta."
+      },
+      "missingThreats": {
+        "label": "Îți scapă amenințări simple",
+        "title": "Antrenează scanarea întregii table",
+        "description": "Folosește o rutină scurtă de verificare pentru a observa piese neapărate, atacuri și pericole înainte de a muta."
+      },
+      "losingPosition": {
+        "label": "Pierzi poziția în minte",
+        "title": "Întărește-ți vizualizarea și memoria",
+        "description": "Exersează păstrarea unei imagini mici și exacte a tablei înainte de a adăuga secvențe mai lungi de mutări."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Noutăți",
+      "description": "Vezi cele mai noi funcții, îmbunătățiri și remedieri Memory Chess în jurnalul oficial de modificări.",
+      "socialTitle": "Noutăți Memory Chess",
+      "socialDescription": "Vezi cele mai noi funcții, îmbunătățiri și remedieri Memory Chess."
+    },
+    "title": "Noutăți",
+    "latest": "Cea mai recentă",
+    "bannerCta": "Vezi noutățile",
+    "bannerLabel": "Actualizare Memory Chess",
+    "entriesInEnglish": "Notele de versiune sunt publicate în engleză."
   }
 }

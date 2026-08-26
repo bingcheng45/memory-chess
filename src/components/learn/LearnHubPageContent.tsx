@@ -5,6 +5,7 @@ import {
   EditorialPageShell,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
+import { useTranslations } from "next-intl";
 import {
   getLearnPagesByGoal,
   LEARN_GOALS,
@@ -14,28 +15,12 @@ import {
 
 const SITE_URL = "https://thememorychess.com";
 
+// `id` keys into the `learnHub.paths` messages; `href` is language-neutral.
+// Slugs stay English across every locale so inbound links keep working.
 const QUICK_STARTS = [
-  {
-    label: "New to chess",
-    title: "Build a simple improvement plan",
-    description:
-      "Start with the fundamentals, then turn one useful idea into a repeatable daily habit.",
-    href: "/learn/how-to-get-better-at-chess-for-beginners",
-  },
-  {
-    label: "Missing simple threats",
-    title: "Train your whole-board scan",
-    description:
-      "Use a short checking routine to notice loose pieces, attacks, and danger before you move.",
-    href: "/learn/chess-board-vision-drills",
-  },
-  {
-    label: "Losing the position in your head",
-    title: "Strengthen visualization and recall",
-    description:
-      "Practice holding a small, accurate picture of the board before adding longer move sequences.",
-    href: "/learn/chess-visualization-exercises",
-  },
+  { id: "newToChess", href: "/learn/how-to-get-better-at-chess-for-beginners" },
+  { id: "missingThreats", href: "/learn/chess-board-vision-drills" },
+  { id: "losingPosition", href: "/learn/chess-visualization-exercises" },
 ] as const;
 
 const goalEntries = Object.entries(LEARN_GOALS) as Array<
@@ -88,33 +73,28 @@ const learnHubSchema = {
 };
 
 export default function LearnHubPageContent() {
+  const t = useTranslations("learnHub");
   return (
     <EditorialPageShell>
       <EditorialHero
         eyebrow="Learn with Memory Chess"
-        title="Learn Chess One Clear Step at a Time"
+        title={t("title")}
         description="Choose what you want to improve. Each guide explains one useful idea in plain English, then gives you a short drill to try."
       >
         <div className="mt-7 flex flex-wrap justify-center gap-3">
-          <EditorialActionLink href="/learn/how-to-get-better-at-chess-for-beginners">
-            Start the beginner guide
-          </EditorialActionLink>
-          <EditorialActionLink href="/game" variant="secondary">
-            Play Memory Chess
-          </EditorialActionLink>
+          <EditorialActionLink href="/learn/how-to-get-better-at-chess-for-beginners">{t("startBeginner")}</EditorialActionLink>
+          <EditorialActionLink href="/game" variant="secondary">{t("playCta")}</EditorialActionLink>
         </div>
       </EditorialHero>
 
       <div className={EDITORIAL_STYLES.wideColumn}>
         <section aria-labelledby="next-step-heading" className="pb-10 sm:pb-12">
           <div className="mb-7">
-            <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>Start here</p>
+            <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>{t("startHere")}</p>
             <h2
               id="next-step-heading"
               className={EDITORIAL_STYLES.sectionTitle}
-            >
-              Pick Your Next Step
-            </h2>
+            >{t("pickNext")}</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
               Choose the sentence that sounds most like your current game. There
               is no perfect order, and you can change paths at any time.
@@ -124,7 +104,7 @@ export default function LearnHubPageContent() {
           <ol className="border-y border-white/10">
             {QUICK_STARTS.map((item, index) => (
               <li
-                key={item.href}
+                key={item.id}
                 className="border-b border-white/10 last:border-b-0"
               >
                 <Link
@@ -136,13 +116,13 @@ export default function LearnHubPageContent() {
                   </span>
                   <span>
                     <span className="block text-sm font-medium text-peach-300">
-                      {item.label}
+                      {t(`paths.${item.id}.label`)}
                     </span>
                     <span className="mt-1 block text-xl font-semibold tracking-tight text-white">
-                      {item.title}
+                      {t(`paths.${item.id}.title`)}
                     </span>
                     <span className="mt-2 block text-sm leading-6 text-text-muted sm:text-base sm:leading-7">
-                      {item.description}
+                      {t(`paths.${item.id}.description`)}
                     </span>
                   </span>
                   <span
@@ -168,9 +148,7 @@ export default function LearnHubPageContent() {
             <h2
               id="choose-goal-heading"
               className={EDITORIAL_STYLES.sectionTitle}
-            >
-              Choose a Goal
-            </h2>
+            >{t("chooseGoal")}</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
               Each path moves from a simple first exercise toward a more
               complete practice habit.
@@ -237,20 +215,14 @@ export default function LearnHubPageContent() {
         </section>
 
         <section className="border-t border-white/10 pt-10 text-center sm:pt-12">
-          <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>
-            Read, recall, play
-          </p>
-          <h2 className="text-2xl font-semibold tracking-tight text-white">
-            Turn one idea into practice
-          </h2>
+          <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>{t("readRecallPlay")}</p>
+          <h2 className="text-2xl font-semibold tracking-tight text-white">{t("turnIdea")}</h2>
           <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-text-muted">
             Read one guide, play one short round while the idea is fresh, then
             notice what was easy to remember and what needs another try.
           </p>
           <div className="mt-6 flex justify-center">
-            <EditorialActionLink href="/game">
-              Start a memory round
-            </EditorialActionLink>
+            <EditorialActionLink href="/game">{t("startRound")}</EditorialActionLink>
           </div>
         </section>
       </div>

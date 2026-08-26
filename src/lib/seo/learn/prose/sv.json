@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Så blir du bättre på schack som nybörjare",
+    "h1": "Så blir du bättre på schack som nybörjare",
+    "description": "Följ en enkel plan för att se brädet bättre, minnas ställningar och spela säkrare drag.",
+    "primaryKeyword": "bli bättre på schack",
+    "secondaryKeywords": [
+      "plan för schackutveckling",
+      "schackträning för nybörjare",
+      "schackrutin för nybörjare",
+      "färre tabbar i schack",
+      "brädseende"
+    ],
+    "painPoint": "Du vet inte vad du ska träna eller var du ska börja.",
+    "ctaLabel": "Starta en nybörjarrunda",
+    "quickAnswer": "Använd en kort daglig rutin: träna brädseende, träna minnet, spela ett parti och gå igenom ett misstag. Upprepa 20 till 30 minuter om dagen.",
+    "keyTakeaways": [
+      "Att se och minnas brädet betyder mer än att plugga många öppningar.",
+      "Kort daglig träning fungerar bättre än sällsynta långa pass.",
+      "Följ dina misstag och din minnesträffsäkerhet, inte bara ratingen."
+    ],
+    "whoThisIsFor": [
+      "Spelare som kan reglerna men fortfarande ger bort pjäser.",
+      "Nybörjare som klarar problem men kämpar i partier.",
+      "Alla som inte vet vad de ska studera först."
+    ],
+    "timeToRead": "9 minuters läsning",
+    "introParagraphs": [
+      "De flesta nybörjare behöver inte fler öppningar, videor eller kurser. De behöver hålla koll på brädet och kontrollera att draget är säkert innan de spelar det.",
+      "Memory Chess hjälper dig träna båda färdigheterna. Bättre minne av brädet gör schackar, slag och hot lättare att upptäcka."
+    ],
+    "startHereTitle": "Börja med den här nybörjarrutinen",
+    "startHereSteps": [
+      "Lägg 3 minuter på att svepa över brädet och namnge angripna, skyddade och oskyddade pjäser.",
+      "Kör en runda Memory Chess med 8 pjäser och 10 sekunders visningstid.",
+      "Gå igenom två korta taktiska ställningar och säg schackar, slag och hot innan du väljer drag.",
+      "Spela ett snabbparti. Märk varje stort misstag som seende, minne eller tidsnöd.",
+      "Skriv ner en sak att träna igen i morgon."
+    ],
+    "drillSectionTitle": "Enkla övningar för bättre partier",
+    "drillCards": [
+      {
+        "title": "Brädsvep på 10 sekunder",
+        "description": "Använd en enkel uppställning och hitta varje oskyddad pjäs innan tiden tar slut.",
+        "duration": "3 minuter",
+        "goal": "Bygga en säkerhetskoll före varje drag.",
+        "ctaLabel": "Kör ett brädsvep"
+      },
+      {
+        "title": "Upprepa samma ställning",
+        "description": "Spela samma ställning två gånger för att hitta och rätta ett minnesfel.",
+        "duration": "5 minuter",
+        "goal": "Hitta exakt vilken pjäs eller ruta du glömde.",
+        "ctaLabel": "Träna upprepad återgivning"
+      },
+      {
+        "title": "Från parti till övning",
+        "description": "Föreställ dig efter ett snabbparti ställningen där du missade, innan du analyserar den.",
+        "duration": "7 minuter",
+        "goal": "Låta dina verkliga misstag styra träningen.",
+        "ctaLabel": "Starta överföringsträning"
+      }
+    ],
+    "comparisonTitle": "Så ser bättre nybörjarspel ut",
+    "comparisonSummary": "Du behöver inte se fem drag framåt. Se först den aktuella ställningen tydligt och ta en paus innan du drar.",
+    "comparisonRows": [
+      {
+        "label": "Före draget",
+        "struggling": "Du tittar bara på din egen idé.",
+        "stronger": "Du kontrollerar först motståndarens hot."
+      },
+      {
+        "label": "Under taktik",
+        "struggling": "Varianten försvinner efter ett byte.",
+        "stronger": "Du ser nyckelrutorna medan du jämför två möjliga drag."
+      },
+      {
+        "label": "Efter förlust",
+        "struggling": "Du startar genast ett nytt parti.",
+        "stronger": "Du sätter namn på misstaget och tränar det i morgon."
+      }
+    ],
+    "mistakes": [
+      "Hoppa mellan slumpmässigt material i stället för att hålla en rutin i två veckor.",
+      "Studera öppningar innan brädseendet är stabilt.",
+      "Spela för många partier utan korta anteckningar efteråt.",
+      "Se minnesträning som skilt från riktigt schack."
+    ],
+    "mistakesCallout": "Skynda inte till avancerade studier. De flesta nybörjare förlorar på missade hot i ett drag, inte på en glömd öppningsvariant.",
+    "planTitle": "30-dagarsplan för nybörjare",
+    "planSteps": [
+      {
+        "label": "Vecka 1",
+        "duration": "20 minuter om dagen",
+        "detail": "Använd samma brädsvep och kör en kort runda Memory Chess före varje spelpass."
+      },
+      {
+        "label": "Vecka 2",
+        "duration": "25 minuter om dagen",
+        "detail": "Lägg till en andra minnesrunda och notera om varje fel berodde på seende, minne eller panik."
+      },
+      {
+        "label": "Vecka 3",
+        "duration": "25 till 30 minuter om dagen",
+        "detail": "Samma övningar, men korta ner memoreringstiden så att återgivningen blir ren under press."
+      },
+      {
+        "label": "Vecka 4",
+        "duration": "30 minuter om dagen",
+        "detail": "Se om tabbarna per parti minskar och behåll bara de inställningar som överfördes bäst."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hur många minuter om dagen bör en nybörjare träna?",
+        "answer": "Fokuserade 20 till 30 minuter räcker om du kombinerar brädseende, minne och en riktig ställning."
+      },
+      {
+        "question": "Varför överförs inte min problemlösning till partier?",
+        "answer": "Problem börjar när taktiken redan finns. I partiet måste du först märka förändringen, så minne och säkerhetskoll betyder mycket mer."
+      },
+      {
+        "question": "Ska jag lära mig öppningar tidigt?",
+        "answer": "Bara grundprinciperna i början. De flesta nybörjare vinner mer på att se hot tidigare och hålla ställningen tydligare."
+      },
+      {
+        "question": "Vilket mått visar framsteg snabbast?",
+        "answer": "Tabbar per parti och träffsäkerheten i Memory Chess. De rör sig oftast före ratingen."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Använd den här om ditt huvudproblem är att ge bort pjäser."
+      },
+      {
+        "reason": "Fördjupa vanan att kontrollera hot före draget."
+      },
+      {
+        "reason": "Bygg ett starkare bräde i huvudet så att taktiken håller ihop."
+      },
+      {
+        "reason": "Träna återgivning direkt om du glömmer var pjäserna står."
+      },
+      {
+        "reason": "Följ en kortare rutin om du vill ha en enklare dagsstruktur."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Visualiseringsövningar i schack för nybörjare",
+    "h1": "Dagliga visualiseringsövningar i schack",
+    "description": "Prova enkla visualiseringsövningar för att minnas brädet och se drag tydligare.",
+    "primaryKeyword": "visualiseringsövningar schack",
+    "secondaryKeywords": [
+      "visualiseringsträning i schack",
+      "räkna drag framåt",
+      "visualisera brädet",
+      "förberedelse för blindschack",
+      "mentalt schack"
+    ],
+    "painPoint": "Du tappar bort pjäserna när du försöker föreställa dig nästa drag.",
+    "ctaLabel": "Träna visualisering",
+    "quickAnswer": "Minns först ett bräde utan att flytta något. Föreställ dig sedan ett drag i taget. Du behöver inte spela ett helt parti blint.",
+    "keyTakeaways": [
+      "Kort daglig träning fungerar bättre än sällsynta långa pass.",
+      "Kontrollera ditt föreställda bräde efter varje försök.",
+      "Se ett drag tydligt innan du provar längre varianter."
+    ],
+    "whoThisIsFor": [
+      "Spelare som tappar varianten efter ett byte.",
+      "Nybörjare som kör fast när de inte ser brädet.",
+      "Alla som vill närma sig blindschack steg för steg."
+    ],
+    "timeToRead": "8 minuters läsning",
+    "introParagraphs": [
+      "Visualisering betyder att föreställa sig hur brädet ändras efter ett drag. För nybörjare är målet bara att jämföra två möjliga drag utan att tappa pjäserna.",
+      "Memory Chess visar vilka pjäser eller rutor du glömmer. Sedan kan du träna samma typ av ställning igen."
+    ],
+    "startHereTitle": "Börja med de här stegen",
+    "startHereSteps": [
+      "Namnge varje pjäs och ruta på ett stillastående bräde i 60 sekunder.",
+      "Blunda och bygg upp brädet i huvudet innan du kontrollerar.",
+      "Föreställ dig ett lagligt drag för varje sida utan att röra pjäserna.",
+      "Kör en runda Memory Chess med måttligt antal pjäser och snäv tid.",
+      "Verifiera ställningen och upprepa först när du vet vad du glömde."
+    ],
+    "drillSectionTitle": "Enkla visualiseringsövningar",
+    "drillCards": [
+      {
+        "title": "Stillbild av brädet",
+        "description": "Minns brädet och placera sedan varje pjäs på rätt ruta.",
+        "duration": "4 minuter",
+        "goal": "Minnas brädet innan du föreställer dig drag.",
+        "ctaLabel": "Starta stillbilden"
+      },
+      {
+        "title": "Ett drag per sida",
+        "description": "Minns brädet, föreställ dig ett drag per sida och kontrollera sedan svaret.",
+        "duration": "5 minuter",
+        "goal": "Lära dig uppdatera brädet i huvudet.",
+        "ctaLabel": "Träna draguppdatering"
+      },
+      {
+        "title": "Återgivning under press",
+        "description": "När återgivningen är korrekt, korta ner tiden du får se brädet.",
+        "duration": "5 minuter",
+        "goal": "Använda ren återgivning i snabbare partier.",
+        "ctaLabel": "Lägg till press"
+      }
+    ],
+    "comparisonTitle": "Så känns svag visualisering",
+    "comparisonSummary": "Det känns som ett räkneproblem, men ofta bleknar bilden av brädet för snabbt.",
+    "comparisonRows": [
+      {
+        "label": "Kandidatdrag",
+        "struggling": "Du kan nämna ett drag men inte se den nya ställningen tydligt.",
+        "stronger": "Du jämför två möjliga ställningar innan du drar."
+      },
+      {
+        "label": "Taktiskt kaos",
+        "struggling": "Huvudet blir tomt efter byten.",
+        "stronger": "Du håller viktiga rutor och hot tillräckligt länge för att bestämma dig lugnt."
+      },
+      {
+        "label": "Träningsåterkoppling",
+        "struggling": "Du vet inte exakt vilken ruta du glömde.",
+        "stronger": "Du fångar om felet kom från en linje, rad eller saknad försvarare."
+      }
+    ],
+    "mistakes": [
+      "Djup blindräkning innan statisk återgivning är stabil.",
+      "Flytta pjäserna fysiskt vid varje räkneförsök.",
+      "Träna en gång i veckan i stället för ett kort dagligt block.",
+      "Inte kontrollera om det föreställda brädet stämmer med verkligheten."
+    ],
+    "mistakesCallout": "Jaga inte längre varianter ännu. Se först första draget tydligt.",
+    "planTitle": "7 dagars visualiseringsplan",
+    "planSteps": [
+      {
+        "label": "Dag 1",
+        "duration": "10 minuter",
+        "detail": "Endast stillbilder av brädet med direkt kontroll."
+      },
+      {
+        "label": "Dag 2 till 3",
+        "duration": "12 minuter",
+        "detail": "Lägg till ett föreställt drag per sida och notera vilka rutor som försvinner först."
+      },
+      {
+        "label": "Dag 4 till 5",
+        "duration": "15 minuter",
+        "detail": "Korta ner visningstiden i Memory Chess med samma antal pjäser."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 minuter",
+        "detail": "Ta med övningen till ett snabbparti: pausa före varje taktiskt beslut och beskriv den nya ställningen."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hur lång tid tar det innan visualiseringen förbättras?",
+        "answer": "De flesta nybörjare märker renare återgivning inom två till fyra veckor av kort, regelbunden träning."
+      },
+      {
+        "question": "Hjälper övningarna i blixtschack?",
+        "answer": "Ja. Snabbare uppdatering av det mentala brädet gör schackar, slag och hot lättare att se under tidspress."
+      },
+      {
+        "question": "Kan man träna visualisering utan blindschack?",
+        "answer": "Ja. Tidsatt återgivning och övningar med ett drag räcker för en riktig grund."
+      },
+      {
+        "question": "Vad gör jag om jag glömmer var pjäserna står?",
+        "answer": "Använd färre pjäser, kontrollera oftare och upprepa samma ställning tills återgivningen är ren."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Använd den här när statisk återgivning och ett drag känns stabila."
+      },
+      {
+        "reason": "Bredda brädmedvetenheten om du missar pjäser vid kanterna."
+      },
+      {
+        "reason": "Kombinera visualisering med en enkel hotkontroll."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Övningar i brädseende mot tabbar",
+    "h1": "Övningar i brädseende för nybörjare",
+    "description": "Använd enkla övningar för att se hot, skydda pjäser och göra färre tabbar.",
+    "primaryKeyword": "brädseende",
+    "secondaryKeywords": [
+      "övningar i brädseende",
+      "färre tabbar i schack",
+      "se hot i schack",
+      "taktisk vaksamhet",
+      "nybörjarmisstag i schack"
+    ],
+    "painPoint": "Du fokuserar på en del av brädet och missar ett enkelt hot någon annanstans.",
+    "ctaLabel": "Starta en brädseendeövning",
+    "quickAnswer": "Leta före varje drag efter schackar, slag, hot och oskyddade pjäser. Minnesträning hjälper dig hålla alla pjäser i huvudet medan du sveper.",
+    "keyTakeaways": [
+      "Brädseende är en vana du kan lära dig.",
+      "Vaksamhet på oskyddade pjäser är ofta den snabbaste förbättringen.",
+      "Minnesträning hjälper dig följa hela brädet."
+    ],
+    "whoThisIsFor": [
+      "Spelare som kan grundtaktik men ändå tappar pjäser.",
+      "Nybörjare som spelar snabbt och ser tabben först efter slaget.",
+      "Alla som behöver en tydlig lista före varje drag."
+    ],
+    "timeToRead": "8 minuters läsning",
+    "introParagraphs": [
+      "När någon säger ”jag såg det inte” har draget oftast spelats innan hela brädet kontrollerades.",
+      "Övningarna lär dig var du ska titta. Börja med oskyddade pjäser och drag som ger schack, slår eller skapar hot."
+    ],
+    "startHereTitle": "Börja här: kontrollen före draget",
+    "startHereSteps": [
+      "Namnge schackar, slag och hot för båda sidor före varje drag.",
+      "Markera varje oskyddad pjäs och säg om den verkligen är säker eller bara verkar det.",
+      "Kör en kort runda Memory Chess för att skärpa kopplingen ruta och pjäs.",
+      "Gå igenom en färsk tabbe och peka ut exakt vilket hot du missade.",
+      "Upprepa samma lista i nästa snabbparti utan att korta ner den."
+    ],
+    "drillSectionTitle": "Brädseendeövningar för riktiga partier",
+    "drillCards": [
+      {
+        "title": "Inventering av oskyddade pjäser",
+        "description": "Svep över brädet och peka ut varje oskyddad pjäs innan du drar.",
+        "duration": "3 minuter",
+        "goal": "Fånga den vanligaste orsaken till tabbar tidigt.",
+        "ctaLabel": "Kör inventeringen"
+      },
+      {
+        "title": "Spela om hotet",
+        "description": "Bygg upp din senaste tabbställning och hitta motståndarens starkaste hot innan du tittar på partiet.",
+        "duration": "5 minuter",
+        "goal": "Lära dig hur det missade hotet såg ut i sitt sammanhang.",
+        "ctaLabel": "Spela om ett hot"
+      },
+      {
+        "title": "Snabb rutåtergivning",
+        "description": "Använd kort visningstid så att brädet håller ihop medan du sveper.",
+        "duration": "4 minuter",
+        "goal": "Minnas pjäsernas platser medan du sveper.",
+        "ctaLabel": "Snabba upp återgivningen"
+      }
+    ],
+    "comparisonTitle": "Svagt mot starkt brädseende",
+    "comparisonSummary": "Skillnaden syns oftast redan innan räkningen börjar.",
+    "comparisonRows": [
+      {
+        "label": "Uppmärksamhet",
+        "struggling": "Du stirrar på en taktisk idé.",
+        "stronger": "Du sveper hela brädet innan du väljer plan."
+      },
+      {
+        "label": "Säkerhetskoll",
+        "struggling": "Du antar att en skyddad pjäs är säker.",
+        "stronger": "Du räknar angripare och försvarare innan du litar på rutan."
+      },
+      {
+        "label": "Tidspress",
+        "struggling": "Du spelar snabbare när ställningen skärps.",
+        "stronger": "Du saktar ner när schackar, slag eller hot dyker upp."
+      }
+    ],
+    "mistakes": [
+      "Bara kontrollera din egen idé och strunta i motståndarens hot.",
+      "Anta att en skyddad pjäs är säker utan att räkna hela bytet.",
+      "Spela för snabbt när ställningen blir taktisk.",
+      "Aldrig namnge feltypen efter partiet."
+    ],
+    "mistakesCallout": "Fler problem lagar inte ett hastigt svep. Upprepa samma korta kontroll före varje drag.",
+    "planTitle": "7 dagars omstart av brädseendet",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "12 minuter",
+        "detail": "Endast inventering av oskyddade pjäser och svep efter schack, slag och hot."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "15 minuter",
+        "detail": "Lägg till en runda Memory Chess före partierna så att svepet sker på ett renare mentalt bräde."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minuter",
+        "detail": "Gå igenom tre färska tabbar och namnge den missade signalen i varje ställning."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 till 20 minuter",
+        "detail": "Spela snabbschack och använd hela listan vid varje drag som ändrar spänning eller kungssäkerhet."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Vad är snabbaste sättet att förbättra brädseendet?",
+        "answer": "Använd samma lista före varje drag tills den blir automatisk: schackar, slag, hot och oskyddade pjäser."
+      },
+      {
+        "question": "Varför tabbar jag trots att jag kan taktik?",
+        "answer": "För att lagret som följer brädet är svagt. Taktik hjälper först när du uppfattar ställningen rätt."
+      },
+      {
+        "question": "Hur ofta ska jag gå igenom mina tabbar?",
+        "answer": "Efter varje parti. En kort genomgångsvana överförs mycket snabbare än en veckolång genomgång."
+      },
+      {
+        "question": "Hjälper minnesövningar brädseendet?",
+        "answer": "Ja. Snabbare pjäsåtergivning gör det lättare att hålla hela brädet i uppmärksamheten medan du sveper."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Använd hela tabbguiden när seendefel kostar material."
+      },
+      {
+        "reason": "Förstå varför taktik faller ihop under verklig press."
+      },
+      {
+        "reason": "Se var brädseendet passar in i en komplett nybörjarrutin."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Minnesträning i schack för snabbare återgivning",
+    "h1": "Minnesträning i schack för nybörjare",
+    "description": "Enkla minnesövningar för att minnas ställningar, se mönster och följa drag tydligare.",
+    "primaryKeyword": "minnesträning schack",
+    "secondaryKeywords": [
+      "minnesövningar schack",
+      "memorera schackställningar",
+      "mönsterigenkänning i schack",
+      "träna brädminne",
+      "koncentration i schack"
+    ],
+    "painPoint": "Du glömmer var pjäserna står medan du tänker på nästa drag.",
+    "ctaLabel": "Starta en minnesutmaning",
+    "quickAnswer": "Minnesträning hjälper dig hålla kvar användbara ställningar medan pjäserna ändras. Det handlar inte om att memorera så många slumpbräden som möjligt.",
+    "keyTakeaways": [
+      "I början betyder noggrannhet mer än snabbhet.",
+      "Att upprepa en ställning låter dig rätta ett minnesfel i taget.",
+      "Lägg minnesträningen före räkning eller analys."
+    ],
+    "whoThisIsFor": [
+      "Spelare som tappar planen efter ett starkt svar.",
+      "Nybörjare som inte kan återskapa nyckelställningar från sina partier.",
+      "Alla som kämpar när många pjäser är aktiva."
+    ],
+    "timeToRead": "8 minuters läsning",
+    "introParagraphs": [
+      "Schackminne är en praktisk färdighet. Målet är att hålla en tydlig bild av brädet tillräckligt länge för att lugnt välja drag.",
+      "Memory Chess ger en enkel slinga: titta, minns, kontrollera och försök igen."
+    ],
+    "startHereTitle": "Börja med den här minnesrutinen",
+    "startHereSteps": [
+      "Börja med en enkel ställning och memorera den i 10 sekunder.",
+      "Bygg upp brädet igen och notera första rutan eller pjäsen du tappade.",
+      "Upprepa samma ställning en gång så att rättelsen blir synlig.",
+      "Lägg till en kort taktisk variant från den memorerade uppställningen.",
+      "Följ både noggrannhet och vilken typ av minnesfel du gjorde."
+    ],
+    "drillSectionTitle": "Minnesövningar för riktiga partier",
+    "drillCards": [
+      {
+        "title": "Upprepa en ställning",
+        "description": "Memorera en ställning, bygg upp den och upprepa sedan med samma inställningar.",
+        "duration": "5 minuter",
+        "goal": "Hitta ett tydligt minnesfel du kan rätta.",
+        "ctaLabel": "Upprepa en ställning"
+      },
+      {
+        "title": "Återgivning via ankarpunkter",
+        "description": "Fokusera först på kungarnas läge, oskyddade pjäser och spänningen i centrum.",
+        "duration": "4 minuter",
+        "goal": "Minnas ställningens viktigaste delar först.",
+        "ctaLabel": "Träna ankarpunkter"
+      },
+      {
+        "title": "Minns först, räkna sedan",
+        "description": "Räkna en kort variant efter att du byggt upp brädet, innan du verifierar.",
+        "duration": "6 minuter",
+        "goal": "Använda brädminnet medan du räknar.",
+        "ctaLabel": "Lägg till en variant"
+      }
+    ],
+    "comparisonTitle": "Så ser svag återgivning ut i partier",
+    "comparisonSummary": "Brädet kan kännas bekant och ändå vara för suddigt för att bära räkning.",
+    "comparisonRows": [
+      {
+        "label": "Hålla varianten",
+        "struggling": "Du tappar utgångsställningen när du tittar på ett nytt kandidatdrag.",
+        "stronger": "Du återvänder exakt till utgångsställningen efter en variant."
+      },
+      {
+        "label": "Mönsterminne",
+        "struggling": "Du minns idén men inte försvararna.",
+        "stronger": "Du minns både idén och rutorna som gör den möjlig."
+      },
+      {
+        "label": "Analysens kvalitet",
+        "struggling": "Analysen blir vag för att ställningen försvinner direkt.",
+        "stronger": "Du bygger upp nyckelmoment igen och lär dig snabbare."
+      }
+    ],
+    "mistakes": [
+      "För stora hopp i svårighet för din nivå.",
+      "Mäta snabbhet och strunta i noggrannhet.",
+      "Ingen felnotering, så återkommande svagheter förblir dolda.",
+      "Se minnesövningar som skilda från taktiskt spel."
+    ],
+    "mistakesCallout": "Gör inte ställningen svårare medan återgivningen är oklar. Sänk svårigheten och bygg noggrannhet först.",
+    "planTitle": "7 dagars minnesblock",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "10 minuter",
+        "detail": "Upprepa enkla ställningar och namnge varje minnesfel."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "12 minuter",
+        "detail": "Lägg till ankarpunkter så att du minns kungar, oskyddade pjäser och centrumspänning först."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minuter",
+        "detail": "Lägg till en kort dragföljd efter varje korrekt återskapande."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 minuter",
+        "detail": "Korta tiden något med samma antal pjäser och ta sedan arbetet till analysen av ett snabbparti."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Förbättrar minnesträning riktiga partier?",
+        "answer": "Ja, när den kombineras med räkning eller analys. Bättre återgivning håller varianterna tydligare under press."
+      },
+      {
+        "question": "Hur många ställningar per pass?",
+        "answer": "För nybörjare räcker sex till tolv noggranna försök om du verifierar fel i stället för att stressa."
+      },
+      {
+        "question": "Slumpbräden eller riktiga strukturer?",
+        "answer": "Båda. Slumpbräden skärper ren återgivning, riktiga strukturer förbättrar överföringen."
+      },
+      {
+        "question": "Vad gör jag om noggrannheten står still?",
+        "answer": "Använd färre pjäser en vecka, rätta en feltyp och lägg till pjäser först när återgivningen är ren igen."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Använd den här om du har svårt att minnas dragföljder."
+      },
+      {
+        "reason": "Balansera minnesträning med ett rimligt antal problem."
+      },
+      {
+        "reason": "Koppla brädminnet till vanliga mönster."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Blindschackträning för nybörjare",
+    "h1": "Blindschack för nybörjare, ett steg i taget",
+    "description": "Lär dig blindschack i små steg som förbättrar visualiseringen utan att bli övermäktiga.",
+    "primaryKeyword": "blindschackträning",
+    "secondaryKeywords": [
+      "blindschack för nybörjare",
+      "träna det mentala brädet",
+      "visualiseringsövningar schack",
+      "räkna utan att flytta pjäser",
+      "koncentrationsövningar schack"
+    ],
+    "painPoint": "Du tappar brädet så fort du slutar titta på det.",
+    "ctaLabel": "Starta blindträning",
+    "quickAnswer": "Börja med en enkel ställning. Minns den, föreställ dig ett drag per sida och kontrollera. Prova ett helt blindparti först när stegen känns lätta.",
+    "keyTakeaways": [
+      "Blindschack byggs upp steg för steg.",
+      "Att kontrollera svaret betyder mer än att prova svårare ställningar.",
+      "Nybörjarövningar i blindschack är visualiseringsövningar med mindre hjälp från brädet."
+    ],
+    "whoThisIsFor": [
+      "Spelare som vill visualisera bättre utan att börja med ett helt blindparti.",
+      "Nybörjare som tappar rutor efter ett eller två föreställda drag.",
+      "Alla som vill hålla en tydligare bild av brädet."
+    ],
+    "timeToRead": "8 minuters läsning",
+    "introParagraphs": [
+      "Det största misstaget är att prova ett helt blindparti för tidigt. Det ger oftast frustration i stället för framsteg.",
+      "Ta ett steg i taget: se brädet, minns det, föreställ dig ett drag, kontrollera och minska långsamt den visuella hjälpen."
+    ],
+    "startHereTitle": "Börja här: en trygg väg mot blindschack",
+    "startHereSteps": [
+      "Memorera en liten ställning och bygg upp den innan du föreställer dig några drag.",
+      "Räkna ett drag per sida utan att röra pjäserna.",
+      "Verifiera varje avvikelse direkt i stället för att köra vidare.",
+      "Kör en runda Memory Chess med något kortare visningstid.",
+      "Lägg till ett drag först när den nuvarande varianten känns tydlig."
+    ],
+    "drillSectionTitle": "Enkla blindschackövningar",
+    "drillCards": [
+      {
+        "title": "Bygg upp innan du drar",
+        "description": "Föreställ dig inga drag förrän utgångsställningen är helt stabil.",
+        "duration": "4 minuter",
+        "goal": "Bygga tydlig återgivning innan du lägger till drag.",
+        "ctaLabel": "Bygg upp brädet först"
+      },
+      {
+        "title": "Ett drag per sida",
+        "description": "Föreställ dig ett drag för vit och ett svar för svart, och verifiera sedan det nya brädet.",
+        "duration": "5 minuter",
+        "goal": "Uppdatera ställningen utan att titta på brädet.",
+        "ctaLabel": "Föreställ dig två drag"
+      },
+      {
+        "title": "Kort visningstid",
+        "description": "Minska visningstiden så att du lär dig minnas brädet snabbare.",
+        "duration": "4 minuter",
+        "goal": "Förbereda blindschack utan att dölja hela brädet.",
+        "ctaLabel": "Korta visningstiden"
+      }
+    ],
+    "comparisonTitle": "Ett tryggare sätt att träna blindschack",
+    "comparisonSummary": "Fråga om du ser ett drag till tydligare än förut. Ett helt blindparti behövs inte ännu.",
+    "comparisonRows": [
+      {
+        "label": "Startpunkt",
+        "struggling": "Du hoppar direkt in i helt blindspel.",
+        "stronger": "Du minns utgångsställningen innan du lägger till drag."
+      },
+      {
+        "label": "Verifiering",
+        "struggling": "Du litar på ett suddigt mentalt bräde.",
+        "stronger": "Du verifierar varje föreställd uppdatering och rättar direkt."
+      },
+      {
+        "label": "Passets kvalitet",
+        "struggling": "Du tränar tills fokus rasar.",
+        "stronger": "Du slutar medan den mentala noggrannheten fortfarande är hög."
+      }
+    ],
+    "mistakes": [
+      "Prova hela blindpartier för tidigt.",
+      "Hoppa över verifiering och lita på felaktiga mentala bräden.",
+      "Lägga till drag innan korta varianter är tydliga.",
+      "Träna för länge i ett pass och bränna fokus."
+    ],
+    "mistakesCallout": "Hoppa inte till en mycket svårare uppgift. Minska brädets hjälp lite i taget.",
+    "planTitle": "7 dagars blindförberedelse",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "10 minuter",
+        "detail": "Bygg bara upp ställningar ur minnet och kontrollera direkt."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "12 minuter",
+        "detail": "Lägg till ett drag per sida och håll ställningarna enkla."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minuter",
+        "detail": "Korta visningstiden i Memory Chess med samma antal pjäser."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 minuter",
+        "detail": "Prova några följder på två drag, men bara om arbetet med ett drag är korrekt."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Är blindschack nyttigt för nybörjare?",
+        "answer": "Ja, i korta kontrollerade övningar. Det stärker visualiseringen som stödjer vanliga partier."
+      },
+      {
+        "question": "Hur ofta ska jag göra blindövningar?",
+        "answer": "Två till fyra korta pass i veckan räcker i kombination med regelbundet spel och analys."
+      },
+      {
+        "question": "Vilken är den bästa första blindövningen?",
+        "answer": "Att bygga upp en enkel ställning ur minnet och föreställa sig ett drag per sida före kontrollen."
+      },
+      {
+        "question": "Hur vet jag att jag utvecklas?",
+        "answer": "Du håller fler rutor korrekt, uppdaterar brädet längre och gör färre seendefel i vanliga partier."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Håll grunden stark i stället för att hoppa till avancerat blindspel."
+      },
+      {
+        "reason": "Kombinera blindarbete med övningar som håller varianten."
+      },
+      {
+        "reason": "Använd tydligare visualisering för att jämföra drag."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Arbetsminnesövningar för schackspelare",
+    "h1": "Arbetsminnesövningar för nybörjare",
+    "description": "Enkla övningar för att minnas dragföljder, jämföra alternativ och besluta tydligare.",
+    "primaryKeyword": "arbetsminnesövningar",
+    "secondaryKeywords": [
+      "arbetsminne i schack",
+      "räkneträning schack",
+      "koncentrationsövningar schack",
+      "jämnare schackspel",
+      "mental uthållighet i schack"
+    ],
+    "painPoint": "Du glömmer den första dragföljden medan du tänker på en annan.",
+    "ctaLabel": "Starta en minnesrutin",
+    "quickAnswer": "Arbetsminnet låter dig hålla några möjliga dragföljder i huvudet. Håll antalet litet och kontrollera varje följd tydligt.",
+    "keyTakeaways": [
+      "Tre tydliga val är bättre än sex förvirrande.",
+      "En kort sammanfattning högt hjälper dig minnas varje variant.",
+      "Träna på riktiga ställningar och använd färdigheten i partier."
+    ],
+    "whoThisIsFor": [
+      "Spelare som tappar första varianten när de tittar på en andra.",
+      "Nybörjare som blandar ihop dragordningen.",
+      "Alla som gör fler taktiska fel när de är trötta."
+    ],
+    "timeToRead": "8 minuters läsning",
+    "introParagraphs": [
+      "Arbetsminnet låter dig hålla möjliga drag i huvudet medan du jämför dem. I schack måste du minnas utgångsställningen och en eller två korta varianter utan att blanda ihop dem.",
+      "Memory Chess hjälper dig minnas utgångsställningen. När den bilden är tydlig blir det lättare att följa nästa drag."
+    ],
+    "startHereTitle": "Börja med två korta dragföljder",
+    "startHereSteps": [
+      "Välj en ställning och lista tre kandidatdrag utan att röra brädet.",
+      "Räkna varje variant två halvdrag och sammanfatta utfallet i en mening.",
+      "Kör en återgivningsrunda i Memory Chess för att fräscha upp grundställningen.",
+      "Gå tillbaka till ställningen och jämför de möjliga följderna igen.",
+      "Skriv en mening om var du tappade greppet om varianten."
+    ],
+    "drillSectionTitle": "Arbetsminnesövningar för schack",
+    "drillCards": [
+      {
+        "title": "Sammanfatta tre varianter",
+        "description": "Håll kort tre kandidatdrag och beskriv varje gren i en mening.",
+        "duration": "6 minuter",
+        "goal": "Hålla varje följd tydlig i stället för att lägga till fler.",
+        "ctaLabel": "Håll tre varianter"
+      },
+      {
+        "title": "Återställ minnet",
+        "description": "Lägg in en runda Memory Chess mellan räkneförsöken så att grundbrädet förblir stabilt.",
+        "duration": "4 minuter",
+        "goal": "Minnas utgångsställningen innan du följer drag.",
+        "ctaLabel": "Återställ brädet"
+      },
+      {
+        "title": "Jämför efter varianten",
+        "description": "Gå tillbaka till utgångsställningen och jämför grenarna efter en kort paus.",
+        "duration": "5 minuter",
+        "goal": "Växla mellan grundställning och varianter utan att blanda ihop dem.",
+        "ctaLabel": "Jämför dina val"
+      }
+    ],
+    "comparisonTitle": "När du försöker minnas för mycket",
+    "comparisonSummary": "När minnet är fullt blir varianten otydlig och dragordningen blandas ihop.",
+    "comparisonRows": [
+      {
+        "label": "Kandidatdrag",
+        "struggling": "Du försöker hålla för många alternativ samtidigt.",
+        "stronger": "Du håller färre varianter, men varje är korrekt längre."
+      },
+      {
+        "label": "Dragordning",
+        "struggling": "Grenarna flyter ihop.",
+        "stronger": "Varje variant hålls separat och är lätt att jämföra."
+      },
+      {
+        "label": "Trötthet",
+        "struggling": "Beslutskvaliteten rasar sent i partiet.",
+        "stronger": "Du håller en enklare, tydligare process när orken sjunker."
+      }
+    ],
+    "mistakes": [
+      "Försöka minnas för många dragföljder samtidigt.",
+      "Hoppa över den korta sammanfattningen efter varje variant.",
+      "Bara lösa problem och aldrig använda färdigheten i partier.",
+      "Fortsätta trots att du är för trött för att tänka klart."
+    ],
+    "mistakesCallout": "Lägg inte till fler varianter ännu. Håll färre varianter tydliga innan du förlänger dem.",
+    "planTitle": "7 dagars arbetsminnesblock",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "10 minuter",
+        "detail": "Använd bara två dragföljder och förklara varje högt."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "12 minuter",
+        "detail": "Lägg in en Memory Chess-återställning mellan försöken så att utgångsställningen förblir ren."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minuter",
+        "detail": "Lägg till ett tredje val bara om de två första förblir korrekta."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 minuter",
+        "detail": "Använd rutinen i ett snabbparti. Pausa vid svåra lägen och namnge dina möjliga drag tydligt."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Överförs arbetsminnesövningar till schackspelet?",
+        "answer": "De kan göra det, särskilt när de kopplas direkt till ställningar, variantminne och analys i stället för allmänna hjärngympor."
+      },
+      {
+        "question": "Hur bör en nybörjare lägga upp träningen?",
+        "answer": "Korta pass som kombinerar möjliga drag, brädminne och en riktig partiställning."
+      },
+      {
+        "question": "Hur mäter jag framsteg enkelt?",
+        "answer": "Notera hur många följder du kan hålla och hur ofta du tappar bort dig."
+      },
+      {
+        "question": "Ersätter det taktikträning?",
+        "answer": "Nej. Det kompletterar den genom att hålla varianterna tydligare när du löser och spelar."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Använd bättre arbetsminne för att jämföra möjliga drag."
+      },
+      {
+        "reason": "Stärk återgivningslagret under variantminnet."
+      },
+      {
+        "reason": "Använd en enklare tankeprocess så att arbetsminnet inte slösas."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Så slutar du tabba i schack",
+    "h1": "Så slutar du tabba i schack",
+    "description": "Använd en kort säkerhetskoll för att se hot, skydda oskyddade pjäser och tabba mindre.",
+    "primaryKeyword": "sluta tabba i schack",
+    "secondaryKeywords": [
+      "förebygga tabbar i schack",
+      "sluta ge bort pjäser",
+      "hotkontroll i schack",
+      "säkerhetslista i schack",
+      "färre enkla misstag i schack"
+    ],
+    "painPoint": "Du förstår idéerna men förlorar ändå pjäser på enkla hot.",
+    "ctaLabel": "Starta en anti-tabbövning",
+    "quickAnswer": "Kontrollera före varje drag motståndarens hot, leta efter oskyddade pjäser och se till att ditt drag är säkert. Minnesträning hjälper dig hålla hela brädet i huvudet.",
+    "keyTakeaways": [
+      "De flesta nybörjartabbar beror på att en del av brädet missas.",
+      "Säkerhetslistan måste vara kort nog att överleva tidspress.",
+      "Spela om dina misstag tills du snabbt ser vad du missade."
+    ],
+    "whoThisIsFor": [
+      "Spelare som gång på gång går på taktik i ett drag.",
+      "Nybörjare som känner sig sämre i partier än i problem.",
+      "Alla som vill ha en lugn rutin till varje drag."
+    ],
+    "timeToRead": "8 minuters läsning",
+    "introParagraphs": [
+      "Många tabbar uppstår för att du drar innan du kontrollerat hela ställningen. Du kan också tappa bort var en pjäs är skyddad.",
+      "En kort rutin ersätter panik och gissningar. Använd samma kontroller när ställningen skärps."
+    ],
+    "startHereTitle": "Börja här: anti-tabblistan",
+    "startHereSteps": [
+      "Fråga vilka schackar, slag och hot motståndaren har just nu.",
+      "Hitta varje oskyddad eller överbelastad pjäs.",
+      "Kontrollera först därefter om ditt planerade drag är säkert.",
+      "Kör en kort runda Memory Chess före partierna för skarpare pjäsminne.",
+      "Skriv efter varje tabbe ner den missade signalen i en mening."
+    ],
+    "drillSectionTitle": "Enkla anti-tabbövningar",
+    "drillCards": [
+      {
+        "title": "Svep från motståndarens sida",
+        "description": "Börja varje ställning med att kontrollera motståndarens starkaste hot.",
+        "duration": "3 minuter",
+        "goal": "Tänka på motståndarens idé före din egen.",
+        "ctaLabel": "Svep från andra sidan"
+      },
+      {
+        "title": "Larm för oskyddade pjäser",
+        "description": "Nämn varje oskyddad eller överbelastad pjäs innan du drar.",
+        "duration": "4 minuter",
+        "goal": "Fånga de enklaste materialförlusterna tidigt.",
+        "ctaLabel": "Kör larmet"
+      },
+      {
+        "title": "Spela om dina tabbar",
+        "description": "Spela om dina egna tabbställningar tills det missade hotet blir uppenbart.",
+        "duration": "6 minuter",
+        "goal": "Lära av ställningar som verkligen kostade partier.",
+        "ctaLabel": "Spela om din tabbe"
+      }
+    ],
+    "comparisonTitle": "Vad förändras när tabbarna minskar",
+    "comparisonSummary": "Partierna blir inte plötsligt felfria. De blir lugnare, och förlusterna får begripliga orsaker i stället för en katastrof i ett drag.",
+    "comparisonRows": [
+      {
+        "label": "När du drar",
+        "struggling": "Du drar så fort du ser en plan.",
+        "stronger": "Du drar först efter en kort säkerhetsrunda."
+      },
+      {
+        "label": "Hotmedvetenhet",
+        "struggling": "Du ser taktiken efter att den slagit till.",
+        "stronger": "Du känner igen den taktiska formen innan du binder dig."
+      },
+      {
+        "label": "Genomgång efter partiet",
+        "struggling": "Förlusten känns slumpmässig.",
+        "stronger": "Du kan snabbt namnge exakt vilken signal du missade."
+      }
+    ],
+    "mistakes": [
+      "Försöka få bort tabbar bara genom att spela långsammare.",
+      "Plugga fler öppningar medan hotkontrollen fortfarande är svag.",
+      "Titta på motorvarianter utan att peka ut den verkliga missade signalen.",
+      "Bortse från att tidspress försvagar återgivningen."
+    ],
+    "mistakesCallout": "Att spela långsammare räcker inte. Använd samma korta säkerhetskoll varje gång.",
+    "planTitle": "7 dagars anti-tabbomstart",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "10 minuter",
+        "detail": "Endast svep från motståndarens sida och larm för oskyddade pjäser."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "12 minuter",
+        "detail": "Lägg till en runda Memory Chess före varje spelpass för en renare bild av ställningen."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minuter",
+        "detail": "Spela om tre färska tabbar och klassificera den missade signalen i varje."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 minuter",
+        "detail": "Använd hela listan i snabbpartier och följ tabbar per parti i stället för bara resultatet."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Varför fortsätter jag ge bort pjäser?",
+        "answer": "Oftast för att svepet före draget är ofullständigt. Du kanske kan taktiken men kontrollerar inte hela brädet innan du drar."
+      },
+      {
+        "question": "Räcker det att spela långsammare?",
+        "answer": "Bara om du använder tiden till en tydlig säkerhetskoll. Att stirra planlöst på brädet hjälper inte."
+      },
+      {
+        "question": "Hjälper minnesövningar verkligen mot tabbar?",
+        "answer": "Ja. Renare pjäsminne gör det lättare att se hot medan ställningen ändras."
+      },
+      {
+        "question": "Vad ska jag följa för färre tabbar?",
+        "answer": "Tabbar per parti, missade oskyddade pjäser och om det missade hotet kom av ett dåligt svep eller dålig räkning."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bygg ett starkare brädsvep för att förebygga tabbar."
+      },
+      {
+        "reason": "Se varför taktiken faller ihop när du följer brädet dåligt."
+      },
+      {
+        "reason": "Koppla anti-tabbarbetet till en komplett nybörjarrutin."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Varför problemratingen inte följer med till partier",
+    "h1": "Varför din problemrating inte följer med till partier",
+    "description": "Förstå varför problemförmåga känns annorlunda än riktiga partier och hur brädseende, minne och analys sluter gapet.",
+    "primaryKeyword": "varför problemrating inte följer med till partier",
+    "secondaryKeywords": [
+      "problemrating mot schackrating",
+      "taktik som inte överförs",
+      "problemförmåga i riktiga partier",
+      "varför är jag bättre på problem",
+      "brädseende i schack"
+    ],
+    "painPoint": "Du löser problem bra men missar taktik i riktiga partier.",
+    "ctaLabel": "Träna för riktiga partier",
+    "quickAnswer": "Ett problem säger att taktiken finns. Ett parti gör det inte. Du måste märka faran, minnas brädet och veta när du ska sakta ner.",
+    "keyTakeaways": [
+      "Ett problem säger att det finns något att lösa.",
+      "I ett parti måste du själv hitta det farliga ögonblicket.",
+      "Bättre brädseende och minne gör att du märker taktiken tidigare."
+    ],
+    "whoThisIsFor": [
+      "Spelare med hög problemrating men platt partirating.",
+      "Nybörjare som ser taktiken efter partiet i stället för under.",
+      "Alla som inte kan använda problemidéer i riktiga partier."
+    ],
+    "timeToRead": "8 minuters läsning",
+    "introParagraphs": [
+      "Det här är ett vanligt nybörjarproblem. Du löser problem, men partierna innehåller ändå tappade pjäser, missade hot och hastiga drag.",
+      "Fler problem löser inte alltid det. Du måste också märka när ställningen blir farlig och se vad som händer efter varje val."
+    ],
+    "startHereTitle": "Börja med att koppla problem till partier",
+    "startHereSteps": [
+      "Svep brädet i 2 minuter efter schackar, slag och hot innan du löser problem.",
+      "Lägg till en runda Memory Chess så att bilden av brädet håller under press.",
+      "Fråga efter varje problem vilken signal som borde ha fått dig att sakta ner i ett parti.",
+      "Gå igenom en färsk tabbe och jämför den med ett liknande taktiskt problem.",
+      "Spela minst ett snabbparti per pass för att se om svepet före draget håller."
+    ],
+    "drillSectionTitle": "Övningar som kopplar problem till partier",
+    "drillCards": [
+      {
+        "title": "Hitta varningssignalen",
+        "description": "Leta efter varningssignalen innan du försöker hitta taktiken.",
+        "duration": "4 minuter",
+        "goal": "Märka farliga ställningar tidigare.",
+        "ctaLabel": "Träna signalen först"
+      },
+      {
+        "title": "Minns före räkning",
+        "description": "Kör en snabb runda Memory Chess före problemen så att brädet känns tydligare.",
+        "duration": "4 minuter",
+        "goal": "Koppla mönsterträning till riktigt spel.",
+        "ctaLabel": "Skärp minnet först"
+      },
+      {
+        "title": "Spela om en partiställning",
+        "description": "Bygg upp ett missat taktiskt ögonblick från ditt eget parti och lös det som ett problem.",
+        "duration": "6 minuter",
+        "goal": "Få taktikträningen att likna riktiga ställningar igen.",
+        "ctaLabel": "Spela om din missade taktik"
+      }
+    ],
+    "comparisonTitle": "Problem mot partier: vad ändras?",
+    "comparisonSummary": "Det taktiska draget kan vara identiskt, men den mentala uppgiften är det inte.",
+    "comparisonRows": [
+      {
+        "label": "Problemets ram",
+        "struggling": "Partiet säger inte att taktik finns.",
+        "stronger": "Du märker signalen att spänningen just ändrades."
+      },
+      {
+        "label": "Brädets tydlighet",
+        "struggling": "Varianten blir suddig när flera pjäser rör sig.",
+        "stronger": "Du håller viktiga rutor och försvarare i minnet."
+      },
+      {
+        "label": "Beslutstempo",
+        "struggling": "Du spelar i normalt tempo när ställningen blir farlig.",
+        "stronger": "Du saktar ner när schackar, slag eller hot dyker upp."
+      }
+    ],
+    "mistakes": [
+      "Lösa problem utan något steg mot partier.",
+      "Anta att taktisk kunskap ensam hindrar tabbar.",
+      "Aldrig granska varför en ställning blev farlig.",
+      "Se brädseende som skilt från taktik."
+    ],
+    "mistakesCallout": "Lägg inte bara till fler problem. Träna också på att märka taktiska ögonblick i dina egna partier.",
+    "planTitle": "7 dagars överföringsblock",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "12 minuter",
+        "detail": "Lägg till signaltänkandet före lösningen i varje problempass."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "12 minuter",
+        "detail": "Kör en kort runda Memory Chess före problem eller snabbschack."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minuter",
+        "detail": "Spela om tre missade taktiska ögonblick från dina egna partier."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 till 20 minuter",
+        "detail": "Spela snabbschack och stoppa dig själv när ställningen blir forcerad eller taktiskt spänd."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Varför är jag bättre på problem än på partier?",
+        "answer": "För att ett problem redan säger att det finns taktik att hitta. Ett riktigt parti gör inte det."
+      },
+      {
+        "question": "Ska jag sluta lösa problem?",
+        "answer": "Nej. Behåll dem, men lägg till brädseende, minne och omspel av partiställningar så att mönstren överförs."
+      },
+      {
+        "question": "Vilken är den bästa överföringsövningen?",
+        "answer": "Att spela om en missad taktik från ditt eget parti och lösa den efter att du byggt upp ställningen ur minnet."
+      },
+      {
+        "question": "Hur mäter jag överföringen?",
+        "answer": "Se om tabbar per parti och missad enkel taktik minskar, inte bara om problemratingen stiger."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Använd den här för att bygga en kortare anti-tabblista till partier."
+      },
+      {
+        "reason": "Stärk svepvanan som gör taktiken synlig."
+      },
+      {
+        "reason": "Välj ett antal problem som lämnar tid för partier."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Så ser du hela brädet i schack",
+    "h1": "Så ser du hela schackbrädet",
+    "description": "Använd ett enkelt svep för att märka avlägsna pjäser, se hot och undvika tunnelseende.",
+    "primaryKeyword": "se hela brädet i schack",
+    "secondaryKeywords": [
+      "brädmedvetenhet i schack",
+      "undvika tunnelseende",
+      "se hela brädet",
+      "svepövningar schack",
+      "perifert brädseende"
+    ],
+    "painPoint": "Du fokuserar på ett område och missar ett hot någon annanstans.",
+    "ctaLabel": "Träna helhetsseende",
+    "quickAnswer": "Kontrollera före varje drag båda kungarna, oskyddade pjäser, centrum och kanterna. Minnesträning hjälper dig hålla mer av brädet i huvudet.",
+    "keyTakeaways": [
+      "Tunnelseende betyder att uppmärksamheten fastnat i ett område.",
+      "Att kolla kantpjäser är särskilt nyttigt för nybörjare.",
+      "Ett tydligt minne av brädet gör svepet lättare."
+    ],
+    "whoThisIsFor": [
+      "Spelare som bara märker taktik på en sida av brädet.",
+      "Nybörjare som missar löpare, torn eller avlägsna hot.",
+      "Alla som känner sig trängda i öppna ställningar."
+    ],
+    "timeToRead": "7 minuters läsning",
+    "introParagraphs": [
+      "Många nybörjare tittar bara på pjäserna nära det tänkta draget. Då missas avlägsna löpare, torn och hot lätt.",
+      "Du behöver inte stirra längre på brädet. Använd samma enkla svep för att kontrollera varje viktigt område."
+    ],
+    "startHereTitle": "Börja här: bredda svepet",
+    "startHereSteps": [
+      "Kontrollera båda kungarna och linjerna som pekar mot dem.",
+      "Leta efter oskyddade pjäser först i centrum, sedan vid kanterna.",
+      "Följ löpare och torn längs hela linjen, inte bara den ruta du bryr dig om.",
+      "Kör en runda Memory Chess så att hela brädet finns kvar i uppmärksamheten.",
+      "Fråga före draget vilken del av brädet du ännu inte tittat på."
+    ],
+    "drillSectionTitle": "Övningar mot tunnelseende",
+    "drillCards": [
+      {
+        "title": "Svep kanterna",
+        "description": "Kontrollera hörn- och kantpjäser före varje drag.",
+        "duration": "3 minuter",
+        "goal": "Fånga hot utanför området du fokuserar på.",
+        "ctaLabel": "Svep kanterna"
+      },
+      {
+        "title": "Följ siktlinjerna igen",
+        "description": "Följ varje löpar- och tornlinje helt i stället för att bara titta på en målruta.",
+        "duration": "4 minuter",
+        "goal": "Kontrollera mer av brädet vid varje svep.",
+        "ctaLabel": "Följ hela linjer"
+      },
+      {
+        "title": "Återgivning av hela brädet",
+        "description": "Använd Memory Chess med måttligt antal pjäser och beskriv sedan brädet zon för zon.",
+        "duration": "5 minuter",
+        "goal": "Minnas mer av brädet på en gång.",
+        "ctaLabel": "Återge zonvis"
+      }
+    ],
+    "comparisonTitle": "Tunnelseende mot helhetsseende",
+    "comparisonSummary": "Du behöver inte titta lika länge överallt. Se bara till att inte missa något viktigt.",
+    "comparisonRows": [
+      {
+        "label": "Uppmärksamhetens väg",
+        "struggling": "Du stirrar på en klunga pjäser.",
+        "stronger": "Du går igenom riskområdena i samma ordning varje gång."
+      },
+      {
+        "label": "Långräckviddiga pjäser",
+        "struggling": "Du glömmer löpare och torn långt från handlingen.",
+        "stronger": "Du sveper hela deras linjer innan du litar på ett drag."
+      },
+      {
+        "label": "Brädets zoner",
+        "struggling": "Du hoppar över sidan som verkar lugn.",
+        "stronger": "Du kontrollerar den lugna sidan innan du drar."
+      }
+    ],
+    "mistakes": [
+      "Tro att helhetsseende betyder att titta längre i stället för att svepa bättre.",
+      "Strunta i kanterna för att centrum känns mer akut.",
+      "Inte följa långräckviddiga pjäsers linjer hela vägen.",
+      "Försöka svepa bredare innan du kan minnas pjäserna tydligt."
+    ],
+    "mistakesCallout": "Mer betänketid hjälper inte utan ett tydligt svep. Kontrollera brädet i samma ordning varje gång.",
+    "planTitle": "7 dagars svepplan",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "10 minuter",
+        "detail": "Endast kungskontroller, oskyddade pjäser och kantsvep."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "12 minuter",
+        "detail": "Lägg till fullständig genomgång av löpar- och tornlinjer."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minuter",
+        "detail": "Använd Memory Chess och återge brädet zonvis i stället för slumpvis."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 minuter",
+        "detail": "Ta med svepet till snabbpartier och notera vilken zon som orsakade missen vid en tabbe."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Varför missar jag pjäser på andra sidan brädet?",
+        "answer": "För att uppmärksamheten är för lokal. En fast svepordning är bättre än att hoppas att du märker allt."
+      },
+      {
+        "question": "Hjälper Memory Chess helhetsseendet?",
+        "answer": "Ja. Det tränar dig att hålla mer av brädet aktivt i minnet, inte bara den taktiska härden."
+      },
+      {
+        "question": "Ska jag kolla kanterna varje drag?",
+        "answer": "Ja, särskilt som nybörjare. Många billiga tabbar gömmer sig i kantpjäser och långa linjer."
+      },
+      {
+        "question": "Hur vet jag att svepet blir bättre?",
+        "answer": "Du missar färre avlägsna hot och blir mindre överraskad av löpare, torn och avdragare."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Kombinera helhetsseende med en starkare säkerhetslista."
+      },
+      {
+        "reason": "Förbättra det mentala brädet så att breda svep känns lättare."
+      },
+      {
+        "reason": "Känn igen rutor snabbare så att breda svep kostar mindre."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Koordinatträning för snabbare brädmedvetenhet",
+    "h1": "Koordinatträning i schack för nybörjare",
+    "description": "Lär dig rutnamnen snabbare och gör svep, notation och visualisering enklare.",
+    "primaryKeyword": "koordinatträning schack",
+    "secondaryKeywords": [
+      "notationsträning schack",
+      "lära sig schackkoordinater",
+      "känna igen rutor snabbare",
+      "medvetenhet om rutorna",
+      "övningar i rutnamn"
+    ],
+    "painPoint": "Du behöver tid för att komma på ett rutnamn eller blandar ofta ihop rutor.",
+    "ctaLabel": "Träna rutnamn",
+    "quickAnswer": "Koordinater är namnen på de 64 rutorna. Att kunna dem gör svep, drag i huvudet och analys enklare.",
+    "keyTakeaways": [
+      "Att känna igen rutor snabbt gör svepen lättare.",
+      "Träna koordinater med riktiga ställningar.",
+      "För att börja räcker grundläggande rutnamn."
+    ],
+    "whoThisIsFor": [
+      "Nybörjare som fortfarande räknar linjer och rader långsamt.",
+      "Spelare som vill svepa och visualisera snabbare.",
+      "Alla som tycker att notation är förvirrande."
+    ],
+    "timeToRead": "7 minuters läsning",
+    "introParagraphs": [
+      "Koordinater är mer än böcker och draglistor. Att känna igen rutor snabbt hjälper brädseende, minne och analys.",
+      "När du kan rutnamnen blir brädet en tydlig karta i stället för en samling vaga områden."
+    ],
+    "startHereTitle": "Börja med rutnamn på ett riktigt bräde",
+    "startHereSteps": [
+      "Välj en linje eller rad och säg rutnamnen högt.",
+      "Säg varje pjäs ruta medan du bygger upp en Memory Chess-ställning.",
+      "Ta en färsk ställning och namnge viktiga angripare och försvarare per ruta.",
+      "Träna löpare, torn och springarsprång via koordinater, inte bara på syn.",
+      "Avsluta med ett snabbt svep där varje oskyddad pjäs namnges per ruta."
+    ],
+    "drillSectionTitle": "Koordinatövningar som hjälper i spel",
+    "drillCards": [
+      {
+        "title": "Namnge pjäs och ruta",
+        "description": "Bygg upp ett bräde och säg varje pjäs med namn och ruta.",
+        "duration": "4 minuter",
+        "goal": "Koppla rutnamn till pjäser du behöver minnas.",
+        "ctaLabel": "Namnge varje ruta"
+      },
+      {
+        "title": "Namnge långa linjer",
+        "description": "Följ löpar- och tornlinjer och säg vilka rutor de påverkar.",
+        "duration": "4 minuter",
+        "goal": "Göra koordinater användbara under hela svep.",
+        "ctaLabel": "Följ linjer per ruta"
+      },
+      {
+        "title": "Karta över springarsprång",
+        "description": "Välj en springarruta och säg snabbt alla lagliga målrutor.",
+        "duration": "3 minuter",
+        "goal": "Känna igen springardrag och målrutor snabbare.",
+        "ctaLabel": "Kartlägg sprången"
+      }
+    ],
+    "comparisonTitle": "Långsam mot snabb rutigenkänning",
+    "comparisonSummary": "Koordinater förbättrar inte allt i ditt schack, men gör flera färdigheter enklare.",
+    "comparisonRows": [
+      {
+        "label": "Brädsvep",
+        "struggling": "Du känner formen men inte rutnamnen.",
+        "stronger": "Du pekar ut hot och försvarare snabbare och exaktare."
+      },
+      {
+        "label": "Visualisering",
+        "struggling": "Föreställda drag känns vaga.",
+        "stronger": "Den nya ställningen blir lättare att beskriva och hålla."
+      },
+      {
+        "label": "Analys",
+        "struggling": "Anteckningarna efter partiet blir luddiga.",
+        "stronger": "Du beskriver nyckelögonblicket tydligt nog att studera senare."
+      }
+    ],
+    "mistakes": [
+      "Träna rutnamn utan riktiga ställningar.",
+      "Memorera notationsregler utan exempel på brädet.",
+      "Strunta i långräckviddiga pjäsers linjer under träningen.",
+      "Släppa vanan så fort grundnotationen känns bekant."
+    ],
+    "mistakesCallout": "Upprepa inte bara rutnamn. Använd dem med riktiga pjäser och ställningar.",
+    "planTitle": "7 dagars koordinatuppvärmning",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "8 minuter",
+        "detail": "Namnge varje pjäs och ruta medan du bygger upp en Memory Chess-ställning."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "10 minuter",
+        "detail": "Lägg till namngivning av långa linjer för löpare och torn."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "10 minuter",
+        "detail": "Träna kartan över springarsprång och flyt på centrumrutorna."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "12 minuter",
+        "detail": "Använd rutnamn under ett helt svep och analysera sedan en viktig ställning enbart med rutnamn."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Spelar koordinater verkligen roll för nybörjare?",
+        "answer": "Ja, när de snabbar upp brädmedvetenhet, visualisering och analys. Perfekt notation behövs inte, men snabb igenkänning hjälper."
+      },
+      {
+        "question": "Vilket är bästa sättet att lära sig koordinater?",
+        "answer": "Lär rutnamn med riktiga ställningar och pjäser i stället för att bara repetera notation."
+      },
+      {
+        "question": "Hjälper det mig att tabba mindre?",
+        "answer": "Indirekt, ja. Snabbare rutigenkänning gör svep och hotkontroller mer exakta."
+      },
+      {
+        "question": "Hur länge ska jag träna koordinater?",
+        "answer": "Fem till tio fokuserade minuter räcker när övningen kopplas till riktigt brädarbete."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Använd koordinater för att stödja ett bredare svep."
+      },
+      {
+        "reason": "Gör uppdateringar i huvudet exakta ruta för ruta."
+      },
+      {
+        "reason": "Använd rutnamn för att förenkla tänkandet under press."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Daglig 20-minutersplan i schack för nybörjare",
+    "h1": "En daglig 20-minutersplan i schack för nybörjare",
+    "description": "Följ en enkel 20-minutersplan med brädarbete, minne, partier och kort genomgång.",
+    "primaryKeyword": "daglig 20-minutersplan schack",
+    "secondaryKeywords": [
+      "daglig schackrutin för nybörjare",
+      "kort studieplan i schack",
+      "bli bättre på 20 minuter om dagen",
+      "träningsprogram för nybörjare",
+      "rutin med problem och analys"
+    ],
+    "painPoint": "Du vill bli bättre, men de flesta schackplaner tar för mycket tid.",
+    "ctaLabel": "Starta 20-minutersplanen",
+    "quickAnswer": "Ge några minuter var till brädkänsla, minne, taktik och genomgång. Håll rutinen kort nog att klara även trött.",
+    "keyTakeaways": [
+      "Att träna ofta betyder mer än att träna länge.",
+      "Använd både övningar och riktiga ställningar.",
+      "En kort genomgång hjälper morgondagens träning."
+    ],
+    "whoThisIsFor": [
+      "Nybörjare med lite tid men stadig motivation.",
+      "Spelare som ger upp för krävande planer.",
+      "Alla som vill ha en upprepbar dagsrutin."
+    ],
+    "timeToRead": "7 minuters läsning",
+    "introParagraphs": [
+      "Många studieplaner fungerar bara med mycket ledig tid. En användbar plan måste fungera även en full dag.",
+      "Den här 20-minutersrutinen behåller en övning, en riktig ställning och en kort genomgång."
+    ],
+    "startHereTitle": "Din 20-minutersrutin i schack",
+    "startHereSteps": [
+      "Lägg 4 minuter på en övning i brädkänsla eller återgivning.",
+      "Lägg 6 minuter på en runda Memory Chess med samma inställningar hela veckan.",
+      "Lägg 6 minuter på taktik eller en ställning från ett riktigt parti.",
+      "Lägg 4 minuter på att skriva vad som gick fel idag och vad som höll.",
+      "Behåll strukturen i minst 7 dagar innan du justerar."
+    ],
+    "drillSectionTitle": "Övningar som ryms i en kort plan",
+    "drillCards": [
+      {
+        "title": "Värm upp med återgivning",
+        "description": "Använd en kort runda Memory Chess som ankare för hela passet.",
+        "duration": "6 minuter",
+        "goal": "Börja varje pass med samma minnesuppvärmning.",
+        "ctaLabel": "Starta uppvärmningen"
+      },
+      {
+        "title": "Hotkontroll på tid",
+        "description": "Svep en ställning efter schackar, slag, hot och oskyddade pjäser.",
+        "duration": "4 minuter",
+        "goal": "Förbättra överföringen till partier nästan utan tidskostnad.",
+        "ctaLabel": "Gör hotkontrollen"
+      },
+      {
+        "title": "Anteckningsrunda",
+        "description": "Skriv en mening om vilken typ av misstag du gjorde idag.",
+        "duration": "4 minuter",
+        "goal": "Använda dagens lärdom i morgon.",
+        "ctaLabel": "Skriv en lärdom"
+      }
+    ],
+    "comparisonTitle": "En rutin du håller fast vid",
+    "comparisonSummary": "Den bästa rutinen är den du kan upprepa under en vanlig vecka.",
+    "comparisonRows": [
+      {
+        "label": "Daglig belastning",
+        "struggling": "Du provar för många studieformer samtidigt.",
+        "stronger": "Du upprepar en kompakt slinga som täcker grunderna dagligen."
+      },
+      {
+        "label": "Överföring",
+        "struggling": "Du bara tittar eller läser utan att träna.",
+        "stronger": "Varje pass innehåller en övning du använder i partier."
+      },
+      {
+        "label": "Genomgång",
+        "struggling": "Misstagen försvinner för att inget skrivs ner.",
+        "stronger": "Varje dag slutar med en anteckning till i morgon."
+      }
+    ],
+    "mistakes": [
+      "Kopiera avancerade planer du inte orkar hålla.",
+      "Lägga alla 20 minuter på passivt material.",
+      "Byta rutin varannan dag.",
+      "Hoppa över genomgången för att den känns liten."
+    ],
+    "mistakesCallout": "Gör inte planen större. Gör den lätt nog att upprepa.",
+    "planTitle": "20-minutersrutin i 7 dagar",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 3",
+        "duration": "20 minuter",
+        "detail": "Behåll samma inställningar i Memory Chess och samma kontrollformat för konsekvens."
+      },
+      {
+        "label": "Dag 4",
+        "duration": "20 minuter",
+        "detail": "Läs dina anteckningar och behåll bara en förbättringspunkt för de tre kommande dagarna."
+      },
+      {
+        "label": "Dag 5 till 6",
+        "duration": "20 minuter",
+        "detail": "Upprepa exakt samma struktur utan extra variation."
+      },
+      {
+        "label": "Dag 7",
+        "duration": "20 minuter",
+        "detail": "Se om tabbar eller träffsäkerhet blev bättre och gör bara en justering till nästa vecka."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Räcker 20 minuters träning?",
+        "answer": "Ja, om den är regelbunden och innehåller övningar som överförs direkt till partier, inte bara passivt lärande."
+      },
+      {
+        "question": "Ska jag lägga alla 20 minuter på taktik?",
+        "answer": "Oftast inte. En blandning av brädtydlighet, taktisk överföring och kort genomgång fungerar bättre för nybörjare."
+      },
+      {
+        "question": "Hur länge ska jag behålla samma plan?",
+        "answer": "Minst en vecka. Ständiga byten gör framstegen omöjliga att läsa."
+      },
+      {
+        "question": "Vad ska jag följa?",
+        "answer": "Tabbar per parti, träffsäkerhet i återgivningen och den feltyp som återkommer oftast."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Se hur den här korta rutinen passar i en längre plan."
+      },
+      {
+        "reason": "Balansera taktiskt arbete och brädtydlighet."
+      },
+      {
+        "reason": "Håll genomgången enkel och produktiv."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Så analyserar nybörjare sina partier",
+    "h1": "Så analyserar nybörjare sina schackpartier",
+    "description": "Gå igenom dina partier, förstå dina misstag och välj en tydlig sak att träna.",
+    "primaryKeyword": "analysera schackpartier som nybörjare",
+    "secondaryKeywords": [
+      "partianalys för nybörjare",
+      "gå igenom egna partier",
+      "självanalys i schack",
+      "analysera tabbar",
+      "rutin efter partiet"
+    ],
+    "painPoint": "Din analys går för fort, blir rörig eller full av motorvarianter.",
+    "ctaLabel": "Analysera nästa parti",
+    "quickAnswer": "Hitta var partiet vände, sätt namn på feltypen och välj en rättelse. Titta på motorn först efter att du själv granskat ställningen.",
+    "keyTakeaways": [
+      "Avsluta varje analys med en handling, inte en lång lista motordrag.",
+      "Att namnge feltypen hjälper dig välja övning.",
+      "Försök bygga upp nyckelställningen ur minnet."
+    ],
+    "whoThisIsFor": [
+      "Spelare som går igenom partier men inte vet vad som händer sedan.",
+      "Nybörjare som ser värderingen hoppa utan att förstå varför.",
+      "Alla som vill ha en enklare vana efter partiet."
+    ],
+    "timeToRead": "7 minuters läsning",
+    "introParagraphs": [
+      "Börja med en fråga: vilket misstag ändrade partiet? En motorvärdering ensam säger inte vad du ska träna.",
+      "Bygg upp nyckelställningen, namnge misstaget och välj morgondagens övning utifrån det."
+    ],
+    "startHereTitle": "Börja här: analysslingan för nybörjare",
+    "startHereSteps": [
+      "Hitta första ögonblicket då ställningen ändrades kraftigt.",
+      "Bygg upp den ställningen ur minnet innan du kollar motorn.",
+      "Klassificera misstaget som seende, minne, räkning eller tidshantering.",
+      "Fråga vilken signal som borde ha fått dig att sakta ner.",
+      "Gör om svaret till en övning för nästa pass."
+    ],
+    "drillSectionTitle": "Enkla analysövningar",
+    "drillCards": [
+      {
+        "title": "Bygg upp nyckelställningen",
+        "description": "Bygg upp ställningen för den största tabben ur minnet innan du kontrollerar den.",
+        "duration": "5 minuter",
+        "goal": "Minnas ställningen innan du ser svaret.",
+        "ctaLabel": "Bygg upp ögonblicket"
+      },
+      {
+        "title": "Märk feltypen",
+        "description": "Märk varje stort misstag som seende, minne, räkning eller tidsnöd.",
+        "duration": "3 minuter",
+        "goal": "Veta vad du ska träna härnäst.",
+        "ctaLabel": "Märk feltypen"
+      },
+      {
+        "title": "Analys med en rättelse",
+        "description": "Avsluta analysen med en tydlig rättelse till i morgon.",
+        "duration": "2 minuter",
+        "goal": "Sluta med ett användbart nästa steg.",
+        "ctaLabel": "Välj en rättelse"
+      }
+    ],
+    "comparisonTitle": "Nyttig mot onyttig analys",
+    "comparisonSummary": "Du behöver inte studera varje drag. Hitta den tydligaste lärdomen till din nästa övning.",
+    "comparisonRows": [
+      {
+        "label": "Motoranvändning",
+        "struggling": "Du startar motorn direkt.",
+        "stronger": "Du ställer din egen diagnos innan du kontrollerar."
+      },
+      {
+        "label": "Resultat",
+        "struggling": "Du slutar med många kommentarer och ingen handling.",
+        "stronger": "Du slutar med en övning eller en justerad lista."
+      },
+      {
+        "label": "Minne",
+        "struggling": "Ställningen försvinner direkt efter partiet.",
+        "stronger": "Du bygger upp den igen och ser misstaget tydligare."
+      }
+    ],
+    "mistakes": [
+      "Analysera bara med motorvarianter utan egen diagnos.",
+      "Försöka analysera varje drag lika djupt.",
+      "Inte namnge feltypen.",
+      "Avsluta analysen utan att välja nästa övning."
+    ],
+    "mistakesCallout": "Gå inte igenom varje motorvariant. Namnge misstaget och träna rättelsen.",
+    "planTitle": "7 dagars analysvana",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "10 minuter",
+        "detail": "Gå igenom ett parti och hitta bara den första stora vändpunkten."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "12 minuter",
+        "detail": "Bygg upp den ställningen ur minnet innan du kollar motorn."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minuter",
+        "detail": "Koppla varje stort misstag till en typ och räkna vilken som återkommer mest."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 minuter",
+        "detail": "Välj nästa pass första övning utifrån den vanligaste feltypen."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Ska nybörjare använda motor?",
+        "answer": "Ja, men efter ditt eget diagnosförsök. Annars blir analysen passiv."
+      },
+      {
+        "question": "Hur många misstag ska jag granska efter ett parti?",
+        "answer": "Ett till tre stora vändpunkter räcker för de flesta nybörjare."
+      },
+      {
+        "question": "Vad ska jag anteckna efter analysen?",
+        "answer": "Feltyp, missad signal och en övning eller listjustering till nästa gång."
+      },
+      {
+        "question": "Hur hjälper Memory Chess analysen?",
+        "answer": "Det hjälper dig bygga upp viktiga ställningar, så att analysen blir mer exakt."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Passa in analysen i en rutin som inte blir övermäktig."
+      },
+      {
+        "reason": "Gör analysresultaten till anti-tabbövningar."
+      },
+      {
+        "reason": "Minns och bygg upp nyckelögonblick efter partiet."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Hur många schackproblem ska en nybörjare lösa per dag?",
+    "h1": "Hur många schackproblem ska en nybörjare lösa per dag?",
+    "description": "Välj ett dagligt antal problem som förbättrar taktiken och lämnar tid för minne, partier och analys.",
+    "primaryKeyword": "hur många schackproblem per dag",
+    "secondaryKeywords": [
+      "dagligt antal problem",
+      "problemrutin för nybörjare",
+      "hur mycket taktik per dag",
+      "för många schackproblem",
+      "taktikmängd för nybörjare"
+    ],
+    "painPoint": "Du löser många problem men vet inte om de hjälper dina partier.",
+    "ctaLabel": "Balansera problem och spel",
+    "quickAnswer": "För de flesta nybörjare räcker ett kort dagligt pass. Sluta medan du tänker klart och lämna tid för partier, minne och analys.",
+    "keyTakeaways": [
+      "Problemens kvalitet betyder mer än antalet.",
+      "För många problem tar tid från partier och analys.",
+      "Din ideala mängd ska lämna tid att spela eller analysera."
+    ],
+    "whoThisIsFor": [
+      "Spelare vars hela studieplan består av problem.",
+      "Nybörjare som vill ha en tydlig problemrutin.",
+      "Alla som vill balansera problem och spelpraktik."
+    ],
+    "timeToRead": "7 minuters läsning",
+    "introParagraphs": [
+      "Det finns inget perfekt tal för alla. För få problem bromsar mönsterlärandet, för många lämnar ingen tid för annat nyttigt.",
+      "Lös tillräckligt för att hålla dig skarp och använd resten av tiden till brädminne, partier och analys."
+    ],
+    "startHereTitle": "Välj en rimlig daglig mängd",
+    "startHereSteps": [
+      "Bestäm om problemen är din uppvärmning, ditt huvudblock eller din överföringskontroll.",
+      "Behåll en kort runda Memory Chess före eller efter för brädtydlighet.",
+      "Sluta när svaren blir hastiga i stället för att jaga ett större tal.",
+      "Bygg dagligen upp ett missat taktiskt ögonblick från ett riktigt parti.",
+      "Ändra mängden först när du kontrollerat om dina fel i partier förändras."
+    ],
+    "drillSectionTitle": "Övningar som gör problemen nyttigare",
+    "drillCards": [
+      {
+        "title": "Uppvärmning plus återgivning",
+        "description": "Kombinera en kort återgivningsövning med ett måttligt problemblock i stället för att börja kallt.",
+        "duration": "10 minuter",
+        "goal": "Koppla problemträning till riktigt spel.",
+        "ctaLabel": "Lägg till återgivning"
+      },
+      {
+        "title": "Signalkontroll efter varje problem",
+        "description": "Fråga vilken varningssignal som gjorde taktiken möjlig innan du ser lösningen.",
+        "duration": "5 minuter",
+        "goal": "Märka varför en ställning innehåller taktik.",
+        "ctaLabel": "Kontrollera signalen"
+      },
+      {
+        "title": "Bygg upp en partitaktik",
+        "description": "Gör en missad partitaktik till ett problem som du löser efter att ha byggt upp ställningen.",
+        "duration": "5 minuter",
+        "goal": "Använda taktik från dina egna partier.",
+        "ctaLabel": "Bygg upp taktiken"
+      }
+    ],
+    "comparisonTitle": "För få, för många och lagom",
+    "comparisonSummary": "Rätt mängd håller taktiken skarp och lämnar ändå tid att spela.",
+    "comparisonRows": [
+      {
+        "label": "Mönsterigenkänning",
+        "struggling": "För lite träning gör vanlig taktik främmande.",
+        "stronger": "Ett måttligt dagligt block håller mönstren färska."
+      },
+      {
+        "label": "Överföring",
+        "struggling": "För många problem lämnar ingen tid för brädkänsla eller analys.",
+        "stronger": "Din rutin behåller återgivning och arbete med riktiga ställningar."
+      },
+      {
+        "label": "Trötthet",
+        "struggling": "Senare problem blir hastiga gissningar.",
+        "stronger": "Du slutar medan besluten fortfarande är rena."
+      }
+    ],
+    "mistakes": [
+      "Använda antalet problem som enda kvalitetsmått.",
+      "Lösa taktik utan någon överföring till partier.",
+      "Fortsätta långt efter att fokus sjunkit.",
+      "Tränga undan analys och brädkänsla."
+    ],
+    "mistakesCallout": "Fler problem är inte alltid bättre. Kontrollera om de hjälper dina riktiga partier.",
+    "planTitle": "7 dagars balansplan",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "15 minuter",
+        "detail": "Använd ett litet problemblock och lägg en kort återgivningsövning före."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "15 minuter",
+        "detail": "Lägg till en signalkontroll efter varje problem för att se varför taktiken fanns."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minuter",
+        "detail": "Bygg upp en missad partitaktik och jämför med hur du klarar problem."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 till 20 minuter",
+        "detail": "Ändra mängden bara om svaren förblir noggranna och det finns tid kvar att spela."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hur många problem per dag räcker för en nybörjare?",
+        "answer": "Tillräckligt för att vanlig taktik ska kännas bekant och för att lämna tid till minne och partier. För många räcker ett kort dagligt pass."
+      },
+      {
+        "question": "Kan för många problem skada?",
+        "answer": "Indirekt, ja. De kan tränga undan brädkänsla, återgivning och analys som behövs för verklig överföring."
+      },
+      {
+        "question": "Problem före eller efter partier?",
+        "answer": "Båda fungerar, men en liten uppvärmning plus ett överföringssteg efteråt brukar fungera bra."
+      },
+      {
+        "question": "Vad ska jag följa?",
+        "answer": "Om tabbar och missad enkel taktik minskar, inte bara hur många problem du löst."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Förstå varför framgång i problem inte räcker."
+      },
+      {
+        "reason": "Passa in problemen i en balanserad kort rutin."
+      },
+      {
+        "reason": "Lär dig vanliga mönster i stället för att öka antalet."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Övningar i mönsterigenkänning i schack",
+    "h1": "Övningar i mönsterigenkänning för nybörjare",
+    "description": "Enkla övningar för att se vanliga schackmönster och hitta nyttiga idéer snabbare.",
+    "primaryKeyword": "övningar mönsterigenkänning schack",
+    "secondaryKeywords": [
+      "mönsterigenkänning i schack",
+      "träna taktiska motiv",
+      "övningar i taktiska mönster",
+      "schackmönster för nybörjare",
+      "minnas schackmotiv"
+    ],
+    "painPoint": "Varje ställning känns ny, så du ser taktiska idéer för sent.",
+    "ctaLabel": "Träna mönster",
+    "quickAnswer": "Ett mönster är en bekant uppställning av pjäser och rutor. Upprepa samma sorts mönster tills du snabbt ser idén bakom det.",
+    "keyTakeaways": [
+      "Ett mönster innehåller både formen på brädet och idén den skapar.",
+      "Brädminnet hjälper dig se mönster under press.",
+      "Upprepa några vanliga mönster innan du lägger till många nya."
+    ],
+    "whoThisIsFor": [
+      "Spelare som löser taktik men inte ser samma former i partier.",
+      "Nybörjare som vill ha mer struktur än slumpmässiga problem.",
+      "Alla som fortfarande tycker att ställningar ser röriga ut."
+    ],
+    "timeToRead": "7 minuters läsning",
+    "introParagraphs": [
+      "Mönsterigenkänning gör en ställning bekant. En form på brädet kan peka på en gaffel, bindning, fångad pjäs eller svag ruta innan du börjar räkna.",
+      "Börja med en liten grupp vanliga mönster. Bygg upp varje ställning ur minnet för att minnas pjäserna och rutorna som bär idén."
+    ],
+    "startHereTitle": "Börja med ett mönster i taget",
+    "startHereSteps": [
+      "Välj en mönstertyp, till exempel gafflar, bindningar eller angrepp på oskyddade pjäser.",
+      "Studera formen och bygg upp den ur minnet, inte bara från ett stillastående diagram.",
+      "Namnge rutorna och försvararna som bär mönstret.",
+      "Kör en runda Memory Chess för att befästa ren återgivning.",
+      "Gå igenom ett färskt parti och hitta var ett liknande mönster dök upp eller saknades."
+    ],
+    "drillSectionTitle": "Enkla övningar i mönsterigenkänning",
+    "drillCards": [
+      {
+        "title": "Bygg upp ett mönster",
+        "description": "Bygg upp ett schackmönster ur minnet och namnge nyckelpjäser och rutor.",
+        "duration": "5 minuter",
+        "goal": "Koppla mönstret till ett tydligt brädminne.",
+        "ctaLabel": "Bygg upp mönstret"
+      },
+      {
+        "title": "Upprepa en familj",
+        "description": "Upprepa flera exempel på samma mönster innan du byter typ.",
+        "duration": "5 minuter",
+        "goal": "Göra formen på brädet bekant.",
+        "ctaLabel": "Upprepa en familj"
+      },
+      {
+        "title": "Hitta det i dina partier",
+        "description": "Gå igenom ett färskt parti och hitta var samma mönster dök upp.",
+        "duration": "5 minuter",
+        "goal": "Koppla mönsterträning till riktiga ställningar.",
+        "ctaLabel": "Sök i dina partier"
+      }
+    ],
+    "comparisonTitle": "Slumpmässig taktik mot verklig mönsterigenkänning",
+    "comparisonSummary": "Mönster hjälper när du märker dem innan du börjar räkna långt.",
+    "comparisonRows": [
+      {
+        "label": "Träningens struktur",
+        "struggling": "Du hoppar hela tiden mellan orelaterade mönster.",
+        "stronger": "Du upprepar en mönstertyp tills den känns bekant."
+      },
+      {
+        "label": "Brädminne",
+        "struggling": "Du kan idén men inte rutorna som bär den.",
+        "stronger": "Du minns detaljerna som får mönstret att fungera."
+      },
+      {
+        "label": "Riktiga partier",
+        "struggling": "Mönstren stannar i problemen.",
+        "stronger": "Du märker deras tidiga tecken i ett pågående parti."
+      }
+    ],
+    "mistakes": [
+      "Lära sig bara mönstrets namn utan att förstå formen.",
+      "Byta mönstertyp för ofta.",
+      "Strunta i rutorna och försvararna som bär mönstret.",
+      "Hoppa över partianalysen efter mönsterträningen."
+    ],
+    "mistakesCallout": "Lägg inte till variation för snabbt. Upprepa en mönstertyp tills den känns bekant.",
+    "planTitle": "7 dagars mönsterplan",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "10 minuter",
+        "detail": "Välj en mönstertyp och bygg upp flera exempel ur minnet."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "12 minuter",
+        "detail": "Lägg till rutnamn och räkning av försvarare i varje exempel."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minuter",
+        "detail": "Kör en runda Memory Chess före mönsterträningen så att brädet blir tydligare."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 minuter",
+        "detail": "Sök i dina senaste partier efter samma mönster och notera var det dök upp eller nästan dök upp."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Vad är mönsterigenkänning i schack?",
+        "answer": "Att se en bekant form på brädet och snabbt minnas idén som brukar fungera där."
+      },
+      {
+        "question": "Hur tränar nybörjare mönsterigenkänning?",
+        "answer": "Genom att upprepa en liten uppsättning mönster, bygga upp ställningar ur minnet och leta efter dem i riktiga partier."
+      },
+      {
+        "question": "Räcker problem för mönster?",
+        "answer": "Inte alltid. De hjälper, men att upprepa samma typ och analysera partier gör dem verkligt användbara."
+      },
+      {
+        "question": "Varför blanda Memory Chess med mönsterträning?",
+        "answer": "För att det är lättare att se mönster när hela brädet är tydligt i minnet."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bygg ett starkare minneslager för mönsterlärandet."
+      },
+      {
+        "reason": "Balansera mönsterträning med ett rimligt antal problem."
+      },
+      {
+        "reason": "Använd de mönster du studerat i riktiga partier."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Räkneövningar i schack för nybörjare",
+    "h1": "Räkneövningar i schack för nybörjare",
+    "description": "Enkla övningar för att jämföra drag och följa korta varianter utan att tappa bort dig.",
+    "primaryKeyword": "räkneövningar schack",
+    "secondaryKeywords": [
+      "schackräkning för nybörjare",
+      "räkna drag framåt",
+      "övningar för att hålla varianten",
+      "träna kandidatdrag",
+      "visualisering och räkning"
+    ],
+    "painPoint": "Du börjar räkna och blandar snart ihop dragen eller tappar ställningen.",
+    "ctaLabel": "Träna ren räkning",
+    "quickAnswer": "Jämför bara ett eller två möjliga drag i början. Håll brädet tydligt i huvudet och kontrollera direkt.",
+    "keyTakeaways": [
+      "Två tydliga varianter är bättre än fem röriga.",
+      "Tydlig visualisering ger ren räkning.",
+      "Kontrollera direkt efter varje övning."
+    ],
+    "whoThisIsFor": [
+      "Spelare som vet att de bör räkna men snabbt tappar varianten.",
+      "Nybörjare som drar på känsla i skarpa ställningar.",
+      "Alla som vill använda minnesträning i riktiga beslut."
+    ],
+    "timeToRead": "7 minuters läsning",
+    "introParagraphs": [
+      "Räkning är helt enkelt att fråga: ”Om jag drar hit, vad händer då?” Det svåra är att hålla brädet tydligt.",
+      "Brädminne och visualisering gör räkningen lättare. Träna dem tillsammans i stället för var för sig."
+    ],
+    "startHereTitle": "Börja med två möjliga drag",
+    "startHereSteps": [
+      "Välj högst två kandidatdrag ur en ställning.",
+      "Föreställ dig en variant på två halvdrag och sammanfatta den i en mening.",
+      "Kör en runda Memory Chess så att grundbrädet hålls skarpt.",
+      "Gå tillbaka till utgångsställningen och jämför de två varianterna lugnt.",
+      "Kontrollera direkt och säg om felet kom från bilden av brädet eller från dragordningen."
+    ],
+    "drillSectionTitle": "Enkla räkneövningar",
+    "drillCards": [
+      {
+        "title": "Jämför två kandidater",
+        "description": "Håll två rimliga drag och jämför deras korta taktiska följder.",
+        "duration": "6 minuter",
+        "goal": "Jämföra drag utan att behöva minnas för mycket.",
+        "ctaLabel": "Jämför två varianter"
+      },
+      {
+        "title": "Minns först, räkna sedan",
+        "description": "Kör en kort återgivningsrunda före variantarbetet för ett renare bräde.",
+        "duration": "4 minuter",
+        "goal": "Hålla brädet innan du följer en följd.",
+        "ctaLabel": "Minns före räkningen"
+      },
+      {
+        "title": "Variant i en mening",
+        "description": "Sammanfatta grenen i en mening innan du kontrollerar.",
+        "duration": "4 minuter",
+        "goal": "Hålla följden tydlig och lätt att förklara.",
+        "ctaLabel": "Sammanfatta grenen"
+      }
+    ],
+    "comparisonTitle": "Rörig mot ren räkning",
+    "comparisonSummary": "Jaga inte långa varianter ännu. Gör först de korta exakta.",
+    "comparisonRows": [
+      {
+        "label": "Kandidatdrag",
+        "struggling": "Du överväger för många drag samtidigt.",
+        "stronger": "Du jämför några få rimliga drag."
+      },
+      {
+        "label": "Bild av brädet",
+        "struggling": "Den nya ställningen blir suddig snabbt.",
+        "stronger": "Du håller nyckelrutor och försvarare stabila i minnet."
+      },
+      {
+        "label": "Kontroll",
+        "struggling": "Du vet inte varför varianten föll ihop.",
+        "stronger": "Du ser om felet kom från minne, dragordning eller bedömning."
+      }
+    ],
+    "mistakes": [
+      "Försöka räkna för många grenar samtidigt.",
+      "Hoppa över valet av kandidater och räkna allt.",
+      "Inte kontrollera direkt efter varianten.",
+      "Bortse från ett svagt brädminne."
+    ],
+    "mistakesCallout": "Räkna inte långt ännu. En tydlig variant på två drag är nyttigare än en lång och rörig.",
+    "planTitle": "7 dagars räkneplan",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "10 minuter",
+        "detail": "Endast jämförelser av två kandidater med direkt kontroll."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "12 minuter",
+        "detail": "Lägg till en runda Memory Chess före räknearbetet."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minuter",
+        "detail": "Sammanfatta varje gren i en mening innan du kontrollerar."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 minuter",
+        "detail": "Ta med processen till snabbschack: pausa i skarpa lägen och håll få kandidater."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hur förbättrar en nybörjare sin räkning?",
+        "answer": "Färre kandidater, snabb kontroll och bättre visualisering och minne under variantarbetet."
+      },
+      {
+        "question": "Ska jag räkna längre?",
+        "answer": "Först när nuvarande djup är pålitligt. Noggrannhet slår ambition."
+      },
+      {
+        "question": "Varför faller mina varianter ihop?",
+        "answer": "Ofta för att bilden av brädet inte är stabil nog eller för att du håller för många kandidater samtidigt."
+      },
+      {
+        "question": "Hjälper Memory Chess räkningen?",
+        "answer": "Ja. Bättre återgivning gör det mycket lättare att hålla uppkomna ställningar medan du räknar."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Stärk lagret som håller varianterna under räkningen."
+      },
+      {
+        "reason": "Se brädet tydligare innan du förlänger varianterna."
+      },
+      {
+        "reason": "Använd en enklare beslutsprocess för renare räkning."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Så tänker nybörjare i schack",
+    "h1": "Så tänker nybörjare i schack",
+    "description": "Använd en enkel process vid varje drag för att kolla hot, jämföra alternativ och sköta tiden.",
+    "primaryKeyword": "hur man tänker i schack",
+    "secondaryKeywords": [
+      "tankeprocess för nybörjare",
+      "vad ska man tänka på i schack",
+      "beslut i schack",
+      "checklista före draget",
+      "enkel tankeprocess"
+    ],
+    "painPoint": "Du drar för snabbt eller tänker för länge och är ändå osäker.",
+    "ctaLabel": "Träna en enkel dragprocess",
+    "quickAnswer": "Använd samma korta process vid varje drag: kolla motståndarens hot, välj ett till tre drag och säkerställ att valet är säkert.",
+    "keyTakeaways": [
+      "En kort process är lättare att använda än en lång lista.",
+      "Hotkontrollen kommer alltid före dragvalet.",
+      "Ta mer tid när ställningen blir farlig."
+    ],
+    "whoThisIsFor": [
+      "Spelare som gissar i lugna ställningar och låser sig i skarpa.",
+      "Nybörjare som behöver en tydlig process vid varje drag.",
+      "Alla som vill besluta renare under press."
+    ],
+    "timeToRead": "7 minuters läsning",
+    "introParagraphs": [
+      "Nybörjare undrar ofta vad starka spelare tänker på. Svaret kan låta komplicerat, men din process måste vara kort nog att användas varje gång.",
+      "Börja med hot, välj få möjliga drag och kontrollera att det slutliga valet är säkert."
+    ],
+    "startHereTitle": "Börja här: processen i fyra steg",
+    "startHereSteps": [
+      "Kontrollera först motståndarens starkaste hot.",
+      "Nämn ett till tre realistiska kandidatdrag.",
+      "Kontrollera att ditt planerade drag är säkert och inte lämnar någon pjäs oskyddad.",
+      "Fråga om ställningen är lugn nog att dra i eller skarp nog att sakta ner i.",
+      "Se efter partiet var processen brast."
+    ],
+    "drillSectionTitle": "Övningar för lugnare beslut",
+    "drillCards": [
+      {
+        "title": "Utlösaren ”motståndaren först”",
+        "description": "Börja varje träningsställning med att nämna motståndarens forcerande möjligheter.",
+        "duration": "3 minuter",
+        "goal": "Göra hotkontrollen automatisk i stället för valfri.",
+        "ctaLabel": "Börja med hoten"
+      },
+      {
+        "title": "Gräns på tre kandidater",
+        "description": "Tillåt dig aldrig fler än tre kandidatdrag i en träningsställning.",
+        "duration": "4 minuter",
+        "goal": "Minska överflödiga alternativ och grubbel.",
+        "ctaLabel": "Begränsa kandidaterna"
+      },
+      {
+        "title": "Säkerhetskänslokoll",
+        "description": "Titta på ett drag och fråga om du verkligen var säker eller bara trött på att tänka.",
+        "duration": "4 minuter",
+        "goal": "Märka när du drar av utmattning.",
+        "ctaLabel": "Kolla din säkerhet"
+      }
+    ],
+    "comparisonTitle": "En enkel dragprocess",
+    "comparisonSummary": "Den bästa tankeprocessen är den du kan använda även med klockan igång.",
+    "comparisonRows": [
+      {
+        "label": "Hantera hot",
+        "struggling": "Du tänker först på din egen plan.",
+        "stronger": "Du börjar med motståndarens starkaste hot."
+      },
+      {
+        "label": "Kandidatdrag",
+        "struggling": "Du hoppar mellan för många möjligheter.",
+        "stronger": "Du håller en liten, realistisk uppsättning kandidater."
+      },
+      {
+        "label": "Tidsanvändning",
+        "struggling": "Du ger varje drag lika mycket uppmärksamhet.",
+        "stronger": "Du saktar ner när spänning, taktik eller kungssäkerhet ändras."
+      }
+    ],
+    "mistakes": [
+      "Använda en lång lista du aldrig följer i partier.",
+      "Tänka på din egen plan innan du kollar hot.",
+      "Låta kandidatlistan bli för stor.",
+      "Förväxla trötthet med säkerhet."
+    ],
+    "mistakesCallout": "Lägg inte till fler kontroller. Använd en kort process du kan upprepa vid varje drag.",
+    "planTitle": "7 dagars finslipning av processen",
+    "planSteps": [
+      {
+        "label": "Dag 1 till 2",
+        "duration": "10 minuter",
+        "detail": "Använd bara utlösaren ”motståndaren först” och gränsen på tre kandidater."
+      },
+      {
+        "label": "Dag 3 till 4",
+        "duration": "12 minuter",
+        "detail": "Lägg till en kort runda Memory Chess så att brädet är tydligare när du beslutar."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minuter",
+        "detail": "Se om din senaste tabbe kom av hotkontrollen eller av för många kandidater."
+      },
+      {
+        "label": "Dag 6 till 7",
+        "duration": "15 minuter",
+        "detail": "Använd hela processen i snabbschack och notera vilket steg som brister under press."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Vad ska en nybörjare tänka på i schack?",
+        "answer": "Börja med motståndarens hot, välj ett till tre möjliga drag och kontrollera att det slutliga valet är säkert."
+      },
+      {
+        "question": "Hur många kandidatdrag ska man hålla?",
+        "answer": "Oftast ett till tre. Fler överbelastar ofta nybörjare och sänker beslutskvaliteten."
+      },
+      {
+        "question": "Varför låser jag mig trots att jag kan processen?",
+        "answer": "Ofta för att brädet inte är tydligt nog eller för att för många kandidater är öppna. Enklare ställningar och minnesträning hjälper."
+      },
+      {
+        "question": "Kan en tankeprocess hindra tabbar?",
+        "answer": "Ja, särskilt när den tvingar fram hotkontrollen före dragvalet."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Använd en tydligare anti-tabblista om du fortfarande tappar material."
+      },
+      {
+        "reason": "Räkna renare för att jämföra möjliga drag."
+      },
+      {
+        "reason": "Känn igen rutor snabbare under din dragprocess."
+      }
+    ]
+  }
+]

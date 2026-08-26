@@ -79,7 +79,7 @@ export const EN_LEARN_GOALS: LearnGoal[] = LEARN_GOAL_IDS.map((id) => ({
  *
  * Add a locale here in the same commit that adds its content.<locale>.ts.
  */
-const TRANSLATED_LEARN_LOCALES = new Set<Locale>(["ru", "zh-CN", "pt-BR", "es", "de", "fr", "it"]);
+const TRANSLATED_LEARN_LOCALES = new Set<Locale>(["ru", "zh-CN", "pt-BR", "es", "de", "fr", "it", "tr"]);
 
 export function hasLearnTranslation(locale: string): boolean {
   return locale === DEFAULT_LOCALE || TRANSLATED_LEARN_LOCALES.has(locale as Locale);

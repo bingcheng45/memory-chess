@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Als Anfänger im Schach besser werden",
+    "h1": "Als Anfänger im Schach besser werden",
+    "description": "Folge einem einfachen Plan, um das Brett besser zu sehen, Stellungen zu behalten und sicherere Züge zu machen.",
+    "primaryKeyword": "im Schach besser werden",
+    "secondaryKeywords": [
+      "Schach Trainingsplan",
+      "Schachtraining für Anfänger",
+      "Schachroutine für Anfänger",
+      "weniger Patzer im Schach",
+      "Brettgefühl"
+    ],
+    "painPoint": "Du weißt nicht, was du üben sollst oder wo du anfangen musst.",
+    "ctaLabel": "Anfängerrunde starten",
+    "quickAnswer": "Nutze eine kurze tägliche Routine: Brettgefühl üben, Gedächtnis trainieren, eine Partie spielen und einen Fehler nachbereiten. 20 bis 30 Minuten am Tag reichen.",
+    "keyTakeaways": [
+      "Das Brett zu sehen und zu behalten zählt mehr als viele Eröffnungen auswendig zu lernen.",
+      "Kurzes tägliches Üben wirkt besser als seltene lange Einheiten.",
+      "Verfolge deine Fehler und deine Erinnerungsgenauigkeit, nicht nur die Wertungszahl."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die die Regeln kennen und trotzdem Figuren einstellen.",
+      "Anfänger, die Aufgaben gut lösen, in Partien aber straucheln.",
+      "Alle, die nicht wissen, was sie zuerst lernen sollen."
+    ],
+    "timeToRead": "9 Min. Lesezeit",
+    "introParagraphs": [
+      "Die meisten Anfänger brauchen keine weiteren Eröffnungen, Videos oder Kurse. Sie müssen das Brett im Blick behalten und prüfen, ob ein Zug sicher ist, bevor sie ihn machen.",
+      "Memory Chess hilft dir, beides zu üben. Je besser du das Brett behältst, desto leichter fallen Schachgebote, Schlagzüge und Drohungen auf."
+    ],
+    "startHereTitle": "Starte mit dieser Anfängerroutine",
+    "startHereSteps": [
+      "Nimm dir 3 Minuten, überfliege ein Brett und benenne angegriffene, gedeckte und ungedeckte Figuren.",
+      "Spiele eine Runde Memory Chess mit 8 Figuren und 10 Sekunden Betrachtungszeit.",
+      "Sieh dir zwei kurze taktische Stellungen an und sprich Schachgebote, Schlagzüge und Drohungen aus, bevor du einen Zug wählst.",
+      "Spiele eine Schnellpartie. Ordne jeden großen Fehler als Sicht-, Gedächtnis- oder Zeitproblem ein.",
+      "Notiere eine Sache, die du morgen noch einmal üben willst."
+    ],
+    "drillSectionTitle": "Einfache Übungen für bessere Partien",
+    "drillCards": [
+      {
+        "title": "Brettcheck in 10 Sekunden",
+        "description": "Nimm eine einfache Aufstellung und finde jede ungedeckte Figur, bevor die Zeit abläuft.",
+        "duration": "3 Minuten",
+        "goal": "Eine Sicherheitsprüfung vor jedem Zug aufbauen.",
+        "ctaLabel": "Brettcheck starten"
+      },
+      {
+        "title": "Dieselbe Stellung wiederholen",
+        "description": "Spiele dieselbe Stellung zweimal, um einen Gedächtnisfehler zu finden und zu korrigieren.",
+        "duration": "5 Minuten",
+        "goal": "Genau die Figur oder das Feld finden, das du vergessen hast.",
+        "ctaLabel": "Wiederholung üben"
+      },
+      {
+        "title": "Von der Partie zur Übung",
+        "description": "Baue nach einer Schnellpartie die Fehlerstellung im Kopf nach, bevor du sie analysierst.",
+        "duration": "7 Minuten",
+        "goal": "Deine echten Fehler das Training steuern lassen.",
+        "ctaLabel": "Übertragung starten"
+      }
+    ],
+    "comparisonTitle": "So spielt ein Anfänger, der sich verbessert hat",
+    "comparisonSummary": "Du musst nicht fünf Züge weit sehen. Fang damit an, das aktuelle Brett klar zu sehen und vor dem Zug kurz innezuhalten.",
+    "comparisonRows": [
+      {
+        "label": "Vor dem Zug",
+        "struggling": "Du schaust nur auf deine eigene Idee.",
+        "stronger": "Du prüfst zuerst die Drohungen des Gegners."
+      },
+      {
+        "label": "In der Taktik",
+        "struggling": "Deine Variante verschwindet nach einem Abtausch.",
+        "stronger": "Du hältst die wichtigen Felder, während du zwei Züge vergleichst."
+      },
+      {
+        "label": "Nach Niederlagen",
+        "struggling": "Du startest sofort die nächste Partie.",
+        "stronger": "Du benennst den Fehler und übst ihn morgen."
+      }
+    ],
+    "mistakes": [
+      "Zwischen zufälligen Inhalten springen, statt eine Routine zwei Wochen durchzuhalten.",
+      "Eröffnungen lernen, bevor das Brettgefühl steht.",
+      "Zu viele Partien spielen, ohne danach kurz zu notieren.",
+      "Gedächtnistraining als etwas vom echten Schach Getrenntes behandeln."
+    ],
+    "mistakesCallout": "Stürze dich nicht ins Fortgeschrittene. Die meisten Anfänger verlieren durch übersehene Ein-Zug-Drohungen, nicht durch vergessene Eröffnungsvarianten.",
+    "planTitle": "30-Tage-Plan für Anfänger",
+    "planSteps": [
+      {
+        "label": "Woche 1",
+        "duration": "20 Minuten am Tag",
+        "detail": "Nutze denselben Brettcheck und spiele vor jeder Partiesitzung eine kurze Runde Memory Chess."
+      },
+      {
+        "label": "Woche 2",
+        "duration": "25 Minuten am Tag",
+        "detail": "Ergänze eine zweite Erinnerungsrunde und notiere, ob jeder Fehler an Sicht, Erinnerung oder Nervosität lag."
+      },
+      {
+        "label": "Woche 3",
+        "duration": "25 bis 30 Minuten am Tag",
+        "detail": "Dieselben Übungen, aber kürzere Einprägezeit, damit sauberes Erinnern unter Druck gelingt."
+      },
+      {
+        "label": "Woche 4",
+        "duration": "30 Minuten am Tag",
+        "detail": "Prüfe, ob die Patzer pro Partie sinken, und behalte nur die Einstellungen, die sich am besten übertragen haben."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Wie viele Minuten sollte ein Anfänger täglich trainieren?",
+        "answer": "20 bis 30 konzentrierte Minuten reichen, wenn du Brettgefühl, Gedächtnis und eine echte Stellung verbindest."
+      },
+      {
+        "question": "Warum überträgt sich mein Aufgabenkönnen nicht in die Partie?",
+        "answer": "Eine Aufgabe beginnt, wenn die Taktik schon da ist. In der Partie musst du die Veränderung erst bemerken, deshalb zählen Erinnerung und Sicherheitsprüfungen viel mehr."
+      },
+      {
+        "question": "Soll ich früh Eröffnungen auswendig lernen?",
+        "answer": "Zuerst nur die Grundprinzipien. Die meisten Anfänger gewinnen mehr, wenn sie Drohungen früher sehen und Stellungen klarer halten."
+      },
+      {
+        "question": "Welche Kennzahl zeigt Fortschritt am schnellsten?",
+        "answer": "Verfolge Patzer pro Partie und die Erinnerungsgenauigkeit in Memory Chess. Sie bewegen sich meist vor der Wertungszahl."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Nimm das, wenn dein Hauptproblem eingestellte Figuren sind."
+      },
+      {
+        "reason": "Vertiefe die Gewohnheit, vor dem Zug Drohungen zu prüfen."
+      },
+      {
+        "reason": "Baue ein festeres Brett im Kopf, damit Taktik nicht zerfällt."
+      },
+      {
+        "reason": "Trainiere das Erinnern direkt, wenn du Figurenstandorte vergisst."
+      },
+      {
+        "reason": "Nimm eine kürzere Routine, wenn du eine einfachere Tagesstruktur brauchst."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Visualisierungsübungen im Schach für Anfänger",
+    "h1": "Visualisierungsübungen, die Anfänger täglich machen können",
+    "description": "Mach einfache Visualisierungsübungen, um das Brett zu behalten und Züge klarer vor dir zu sehen.",
+    "primaryKeyword": "Visualisierungsübungen Schach",
+    "secondaryKeywords": [
+      "Visualisierungstraining Schach",
+      "Züge vorausberechnen",
+      "Brettvisualisierung",
+      "Vorbereitung auf Blindschach",
+      "Schach im Kopf"
+    ],
+    "painPoint": "Du verlierst die Figuren aus dem Blick, wenn du die nächsten Züge vor dir sehen willst.",
+    "ctaLabel": "Visualisierung üben",
+    "quickAnswer": "Merke dir zuerst ein Brett, ohne etwas zu bewegen. Stell dir dann einen Zug nach dem anderen vor. Eine ganze Blindpartie brauchst du nicht.",
+    "keyTakeaways": [
+      "Kurzes tägliches Üben wirkt besser als seltene lange Einheiten.",
+      "Prüfe nach jedem Versuch dein vorgestelltes Brett.",
+      "Sieh einen Zug klar vor dir, bevor du längere Varianten versuchst."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die nach einem Abtausch die Variante verlieren.",
+      "Anfänger, die ohne Blick aufs Brett den Faden verlieren.",
+      "Alle, die schrittweise zum Blindschach wollen."
+    ],
+    "timeToRead": "8 Min. Lesezeit",
+    "introParagraphs": [
+      "Visualisieren heißt, sich vorzustellen, wie sich das Brett nach einem Zug verändert. Für Anfänger geht es einfach darum, zwei Züge zu vergleichen, ohne die Figuren zu verlieren.",
+      "Memory Chess zeigt dir, welche Figuren oder Felder du vergisst. Danach kannst du dieselbe Art Stellung noch einmal üben."
+    ],
+    "startHereTitle": "Starte mit diesen Visualisierungsschritten",
+    "startHereSteps": [
+      "Benenne 60 Sekunden lang jede Figur und jedes Feld auf einem ruhenden Brett.",
+      "Schließe die Augen und baue das Brett im Kopf nach, bevor du prüfst.",
+      "Stell dir einen legalen Zug für jede Seite vor, ohne Figuren anzufassen.",
+      "Spiele eine Runde Memory Chess mit mittlerer Figurenzahl und strengem Timer.",
+      "Prüfe die Stellung und wiederhole erst, wenn du weißt, was gefehlt hat."
+    ],
+    "drillSectionTitle": "Einfache Visualisierungsübungen",
+    "drillCards": [
+      {
+        "title": "Momentaufnahme des Bretts",
+        "description": "Merke dir das Brett und setze dann jede Figur auf das richtige Feld.",
+        "duration": "4 Minuten",
+        "goal": "Das Brett behalten, bevor du dir Züge vorstellst.",
+        "ctaLabel": "Momentaufnahme üben"
+      },
+      {
+        "title": "Ein Zug pro Seite",
+        "description": "Merke dir das Brett, stell dir je einen Zug vor und prüfe deine Antwort.",
+        "duration": "5 Minuten",
+        "goal": "Lernen, das Brett im Kopf zu aktualisieren.",
+        "ctaLabel": "Einen Zug üben"
+      },
+      {
+        "title": "Erinnern unter Druck",
+        "description": "Wenn dein Erinnern sitzt, nimm weniger Zeit zum Einprägen.",
+        "duration": "5 Minuten",
+        "goal": "Klares Erinnern auch in schnellen Partien.",
+        "ctaLabel": "Druck erhöhen"
+      }
+    ],
+    "comparisonTitle": "So fühlt sich schwache Visualisierung an",
+    "comparisonSummary": "Es wirkt wie ein Rechenproblem, oft verblasst aber nur das Bild des Bretts zu schnell.",
+    "comparisonRows": [
+      {
+        "label": "Kandidatenzüge",
+        "struggling": "Du kannst einen Zug nennen, aber nicht die Stellung danach.",
+        "stronger": "Du vergleichst zwei mögliche Stellungen vor dem Zug."
+      },
+      {
+        "label": "Taktisches Gewühl",
+        "struggling": "Nach Abtauschen ist dein Kopf leer.",
+        "stronger": "Du hältst wichtige Felder und Drohungen lange genug für eine ruhige Entscheidung."
+      },
+      {
+        "label": "Rückmeldung",
+        "struggling": "Du weißt nicht, welches Feld genau gefehlt hat.",
+        "stronger": "Du erkennst, ob der Fehler von einer Linie, Reihe oder einem vergessenen Verteidiger kam."
+      }
+    ],
+    "mistakes": [
+      "Tiefe Blindberechnung versuchen, bevor das statische Erinnern sitzt.",
+      "Bei jedem Rechenversuch die Figuren anfassen.",
+      "Einmal pro Woche üben statt in einem kurzen täglichen Block.",
+      "Nicht prüfen, ob das vorgestellte Brett dem echten entspricht."
+    ],
+    "mistakesCallout": "Jage noch keinen langen Varianten hinterher. Sieh zuerst den ersten Zug klar vor dir.",
+    "planTitle": "7-Tage-Visualisierungsplan",
+    "planSteps": [
+      {
+        "label": "Tag 1",
+        "duration": "10 Minuten",
+        "detail": "Nur Momentaufnahmen des ruhenden Bretts mit sofortiger Prüfung."
+      },
+      {
+        "label": "Tag 2 bis 3",
+        "duration": "12 Minuten",
+        "detail": "Ergänze je einen vorgestellten Zug und notiere, welche Felder zuerst verschwinden."
+      },
+      {
+        "label": "Tag 4 bis 5",
+        "duration": "15 Minuten",
+        "detail": "Verkürze das Zeitfenster in Memory Chess bei gleicher Figurenzahl."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 Minuten",
+        "detail": "Übertrage die Übung in eine Schnellpartie: Pausiere vor jeder taktischen Entscheidung und benenne die entstehende Stellung."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Wie lange dauert es, bis sich die Visualisierung verbessert?",
+        "answer": "Die meisten Anfänger merken nach zwei bis vier Wochen kurzer, regelmäßiger Übung ein saubereres Erinnern."
+      },
+      {
+        "question": "Helfen Visualisierungsübungen im Blitz?",
+        "answer": "Ja. Wer das Brett im Kopf schneller aktualisiert, sieht Schachgebote, Schlagzüge und Drohungen auch unter Zeitdruck leichter."
+      },
+      {
+        "question": "Geht Visualisierung ohne Blindschach?",
+        "answer": "Ja. Erinnern auf Zeit und Ein-Zug-Übungen reichen für eine echte Anfängerbasis."
+      },
+      {
+        "question": "Was, wenn ich Figurenstandorte weiter vergesse?",
+        "answer": "Nimm weniger Figuren, prüfe häufiger und wiederhole die Stellung, bis dein Erinnern klar ist."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Nimm das, wenn statisches Erinnern und ein Zug sicher sitzen."
+      },
+      {
+        "reason": "Trainiere den weiteren Blick, wenn du Figuren am Rand übersiehst."
+      },
+      {
+        "reason": "Verbinde Visualisierung mit einer einfachen Drohungsprüfung."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Übungen fürs Brettgefühl, um weniger zu patzen",
+    "h1": "Übungen fürs Brettgefühl für Anfänger",
+    "description": "Nutze einfache Übungen, um Drohungen zu erkennen, Figuren zu schützen und weniger Patzer zu machen.",
+    "primaryKeyword": "Brettgefühl im Schach",
+    "secondaryKeywords": [
+      "Übungen fürs Brettgefühl",
+      "weniger Patzer im Schach",
+      "Drohungen erkennen",
+      "taktische Aufmerksamkeit",
+      "typische Anfängerfehler"
+    ],
+    "painPoint": "Du konzentrierst dich auf eine Brettseite und übersiehst eine einfache Drohung woanders.",
+    "ctaLabel": "Brettgefühl-Übung starten",
+    "quickAnswer": "Suche vor jedem Zug nach Schachgeboten, Schlagzügen, Drohungen und ungedeckten Figuren. Gedächtnistraining hilft, beim Absuchen alle Figuren präsent zu halten.",
+    "keyTakeaways": [
+      "Brettgefühl ist eine Gewohnheit, die man lernen kann.",
+      "Auf lose Figuren zu achten ist für Anfänger oft die schnellste Verbesserung.",
+      "Gedächtnistraining hilft, das ganze Brett im Blick zu behalten."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die trotz Grundtaktik weiter Figuren einstellen.",
+      "Anfänger, die schnell ziehen und den Patzer erst nach dem Schlagzug merken.",
+      "Alle, die eine klare Liste vor jedem Zug brauchen."
+    ],
+    "timeToRead": "8 Min. Lesezeit",
+    "introParagraphs": [
+      "Wenn jemand sagt „das habe ich nicht gesehen“, hat er meist gezogen, bevor er das ganze Brett angeschaut hat.",
+      "Diese Übungen zeigen dir, wohin du schauen sollst. Beginne mit ungedeckten Figuren und mit Zügen, die Schach bieten, schlagen oder drohen."
+    ],
+    "startHereTitle": "Starte hier: der Prüfkreis vor dem Zug",
+    "startHereSteps": [
+      "Benenne vor jedem Zug Schachgebote, Schlagzüge und Drohungen für beide Seiten.",
+      "Markiere jede ungedeckte Figur und sage, ob sie wirklich sicher ist oder nur so aussieht.",
+      "Spiele eine kurze Runde Memory Chess, um Feld-Figur-Erinnerung zu schärfen.",
+      "Sieh dir einen aktuellen Patzer an und finde die genau übersehene Drohung.",
+      "Wiederhole dieselbe Liste in der nächsten Schnellpartie, ohne sie zu kürzen."
+    ],
+    "drillSectionTitle": "Brettgefühl-Übungen für echte Partien",
+    "drillCards": [
+      {
+        "title": "Inventur loser Figuren",
+        "description": "Überfliege das Brett und finde vor dem Zug jede ungedeckte Figur.",
+        "duration": "3 Minuten",
+        "goal": "Die häufigste Patzerquelle früh abfangen.",
+        "ctaLabel": "Inventur machen"
+      },
+      {
+        "title": "Drohung nachstellen",
+        "description": "Baue die Stellung deines letzten Patzers nach und finde die stärkste Drohung des Gegners, bevor du in die Partie schaust.",
+        "duration": "5 Minuten",
+        "goal": "Dem Kopf zeigen, wie die übersehene Drohung im Kontext aussah.",
+        "ctaLabel": "Drohung nachstellen"
+      },
+      {
+        "title": "Schnelles Felderinnern",
+        "description": "Nimm ein kurzes Zeitfenster, damit das Brett beim Absuchen im Kopf komplett bleibt.",
+        "duration": "4 Minuten",
+        "goal": "Figurenstandorte behalten, während du das Brett absuchst.",
+        "ctaLabel": "Erinnern beschleunigen"
+      }
+    ],
+    "comparisonTitle": "Schwaches gegen starkes Brettgefühl",
+    "comparisonSummary": "Der Unterschied zeigt sich meist, bevor das Rechnen überhaupt beginnt.",
+    "comparisonRows": [
+      {
+        "label": "Aufmerksamkeit",
+        "struggling": "Du starrst auf eine taktische Idee.",
+        "stronger": "Du überfliegst das ganze Brett, bevor du einen Plan wählst."
+      },
+      {
+        "label": "Sicherheitsprüfung",
+        "struggling": "Du hältst eine gedeckte Figur für sicher.",
+        "stronger": "Du zählst Angreifer und Verteidiger, bevor du dem Feld traust."
+      },
+      {
+        "label": "Zeitdruck",
+        "struggling": "Je schärfer die Stellung, desto schneller ziehst du.",
+        "stronger": "Du wirst langsamer, wenn Schachgebote, Schlagzüge oder Drohungen auftauchen."
+      }
+    ],
+    "mistakes": [
+      "Nur die eigene Idee prüfen und die Drohungen des Gegners ignorieren.",
+      "Eine gedeckte Figur für sicher halten, ohne die ganze Folge zu rechnen.",
+      "Zu schnell ziehen, sobald die Stellung taktisch wird.",
+      "Nach der Partie nie die Fehlerart benennen."
+    ],
+    "mistakesCallout": "Mehr Aufgaben reparieren kein hastiges Absuchen. Mach vor jedem Zug dieselbe kurze Prüfung.",
+    "planTitle": "7-Tage-Neustart fürs Brettgefühl",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "12 Minuten",
+        "detail": "Nur Inventur loser Figuren und das Absuchen nach Schach, Schlagzug und Drohung."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "15 Minuten",
+        "detail": "Ergänze vor deinen Partien eine Runde Memory Chess, damit das Absuchen auf einem saubereren Brett im Kopf passiert."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "15 Minuten",
+        "detail": "Sieh dir drei aktuelle Patzer an und benenne in jeder Stellung das übersehene Signal."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 bis 20 Minuten",
+        "detail": "Spiele Schnellschach und nutze die volle Liste bei jedem Zug, der Spannung oder Königssicherheit verändert."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Wie verbessert man Brettgefühl am schnellsten?",
+        "answer": "Nutze in jeder Partie dieselbe Liste vor dem Zug, bis sie automatisch läuft: Schach, Schlagzüge, Drohungen, lose Figuren."
+      },
+      {
+        "question": "Warum patze ich, obwohl ich Taktik kenne?",
+        "answer": "Weil die Ebene darunter schwach ist. Taktik hilft erst, wenn du die Stellung richtig wahrgenommen hast."
+      },
+      {
+        "question": "Wie oft sollte ich Patzer nachbereiten?",
+        "answer": "Nach jeder Partie. Eine kurze Nachbereitungsgewohnheit überträgt sich viel schneller als ein wöchentlicher Marathon."
+      },
+      {
+        "question": "Helfen Gedächtnisübungen dem Brettgefühl?",
+        "answer": "Ja. Schnelleres Erinnern macht es leichter, beim Absuchen das ganze Brett präsent zu halten."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Nimm den vollen Anti-Patzer-Leitfaden, wenn Sichtfehler Material kosten."
+      },
+      {
+        "reason": "Verstehe, warum taktisches Können unter Partiedruck versagt."
+      },
+      {
+        "reason": "Sieh, wie Brettgefühl in eine komplette Anfängerroutine passt."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Gedächtnistraining im Schach für schnelleres Erinnern",
+    "h1": "Gedächtnistraining im Schach für den Fortschritt von Anfängern",
+    "description": "Nutze einfache Gedächtnisübungen, um Stellungen zu behalten, Muster zu bemerken und Zügen klarer zu folgen.",
+    "primaryKeyword": "Gedächtnistraining Schach",
+    "secondaryKeywords": [
+      "Gedächtnisübungen Schach",
+      "Schachstellungen merken",
+      "Mustererkennung im Schach",
+      "Brett-Erinnerungstraining",
+      "Konzentration im Schach"
+    ],
+    "painPoint": "Du vergisst, wo die Figuren stehen, während du über die nächsten Züge nachdenkst.",
+    "ctaLabel": "Gedächtnis-Challenge starten",
+    "quickAnswer": "Gedächtnistraining hilft dir, nützliche Stellungen zu behalten, während sich die Figuren verändern. Es geht nicht darum, möglichst viele Zufallsbretter zu lernen.",
+    "keyTakeaways": [
+      "Am Anfang zählt Genauigkeit mehr als Tempo.",
+      "Eine Stellung zu wiederholen hilft, einen Gedächtnisfehler nach dem anderen zu finden.",
+      "Setze Gedächtnisübungen vor Berechnung oder Partieanalyse."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die nach einer starken Antwort ihren Plan vergessen.",
+      "Anfänger, die Schlüsselstellungen aus jüngsten Partien nicht nachbauen können.",
+      "Alle, die bei vielen aktiven Figuren ins Straucheln geraten."
+    ],
+    "timeToRead": "8 Min. Lesezeit",
+    "introParagraphs": [
+      "Schachgedächtnis ist eine praktische Fähigkeit. Ziel ist, ein klares Bild des Bretts lange genug zu halten, um in Ruhe zu wählen.",
+      "Memory Chess gibt dir einen einfachen Kreislauf: schauen, merken, prüfen, noch einmal versuchen."
+    ],
+    "startHereTitle": "Starte mit dieser Gedächtnisroutine",
+    "startHereSteps": [
+      "Beginne mit einer einfachen Stellung und präge sie dir 10 Sekunden ein.",
+      "Baue das Brett nach und notiere das erste Feld oder die erste Figur, die dir gefehlt hat.",
+      "Wiederhole dieselbe Stellung einmal, damit die Korrektur sichtbar wird.",
+      "Ergänze eine kurze taktische Variante aus der eingeprägten Aufstellung.",
+      "Verfolge sowohl Genauigkeit als auch die Art des Gedächtnisfehlers."
+    ],
+    "drillSectionTitle": "Gedächtnisübungen für echte Partien",
+    "drillCards": [
+      {
+        "title": "Eine Stellung wiederholen",
+        "description": "Präge dir eine Stellung ein, baue sie nach und wiederhole sie einmal mit denselben Einstellungen.",
+        "duration": "5 Minuten",
+        "goal": "Einen klaren Gedächtnisfehler finden, den du beheben kannst.",
+        "ctaLabel": "Stellung wiederholen"
+      },
+      {
+        "title": "Ankerpunkte",
+        "description": "Achte zuerst auf Königsstellung, lose Figuren und die Spannung im Zentrum, dann auf den Rest.",
+        "duration": "4 Minuten",
+        "goal": "Zuerst das Wichtigste der Stellung behalten.",
+        "ctaLabel": "Ankerpunkte üben"
+      },
+      {
+        "title": "Erinnern und rechnen",
+        "description": "Rechne nach dem Nachbauen eine kurze Variante, bevor du prüfst.",
+        "duration": "6 Minuten",
+        "goal": "Die Brett-Erinnerung beim Rechnen nutzen.",
+        "ctaLabel": "Variante ergänzen"
+      }
+    ],
+    "comparisonTitle": "So sieht schwaches Erinnern in Partien aus",
+    "comparisonSummary": "Das Brett kann vertraut wirken und trotzdem zu verschwommen sein, um das Rechnen zu tragen.",
+    "comparisonRows": [
+      {
+        "label": "Variante halten",
+        "struggling": "Du verlierst die Ausgangsstellung, sobald du einen neuen Kandidatenzug prüfst.",
+        "stronger": "Du kehrst nach einer Variante genau zur Grundstellung zurück."
+      },
+      {
+        "label": "Mustergedächtnis",
+        "struggling": "Du erinnerst die taktische Idee, aber nicht die genauen Verteidiger.",
+        "stronger": "Du erinnerst Idee und die Felder, die sie tragen."
+      },
+      {
+        "label": "Qualität der Analyse",
+        "struggling": "Die Analyse bleibt vage, weil die Stellung sofort weg ist.",
+        "stronger": "Du baust Schlüsselmomente nach und lernst schneller."
+      }
+    ],
+    "mistakes": [
+      "Die Schwierigkeit in zu großen Sprüngen erhöhen.",
+      "Tempo messen und Genauigkeit ignorieren.",
+      "Fehler nicht protokollieren, sodass wiederkehrende Schwächen verborgen bleiben.",
+      "Gedächtnisübungen als getrennt vom taktischen Spiel behandeln."
+    ],
+    "mistakesCallout": "Mach die Stellung nicht schwerer, solange dein Erinnern unklar ist. Senke die Schwierigkeit und baue zuerst Genauigkeit auf.",
+    "planTitle": "7-Tage-Gedächtnisblock",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "10 Minuten",
+        "detail": "Wiederhole einfache Stellungen und benenne jeden Gedächtnisfehler."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "12 Minuten",
+        "detail": "Ergänze Ankerpunkte, um zuerst Könige, lose Figuren und Zentrumsspannung zu behalten."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "12 Minuten",
+        "detail": "Ergänze nach jedem korrekten Nachbau eine kurze Zugfolge."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 Minuten",
+        "detail": "Verkürze den Timer leicht bei gleicher Figurenzahl und übertrage die Arbeit in die Analyse einer Schnellpartie."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Verbessert Gedächtnistraining echte Partien?",
+        "answer": "Ja, wenn es mit Berechnung oder Analyse verbunden wird. Besseres Erinnern hält taktische Varianten unter Druck klarer."
+      },
+      {
+        "question": "Wie viele Stellungen pro Einheit?",
+        "answer": "Für Anfänger reichen sechs bis zwölf sorgfältige Versuche, sofern du Fehler prüfst statt zu hetzen."
+      },
+      {
+        "question": "Zufallsbretter oder echte Partiemuster?",
+        "answer": "Beides. Zufallsbretter schärfen das reine Erinnern, echte Strukturen übertragen sich besser."
+      },
+      {
+        "question": "Was, wenn die Genauigkeit stagniert?",
+        "answer": "Nimm eine Woche lang weniger Figuren, behebe eine Fehlerart und ergänze Figuren erst, wenn das Erinnern wieder klar ist."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Nimm das, wenn dir Zugfolgen schwer im Kopf bleiben."
+      },
+      {
+        "reason": "Bring Gedächtnis und eine sinnvolle Aufgabenmenge ins Gleichgewicht."
+      },
+      {
+        "reason": "Verbinde Brett-Erinnerung mit gängigen Schachmustern."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Blindschach-Training für Anfänger",
+    "h1": "Blindschach für Anfänger, Schritt für Schritt",
+    "description": "Lerne Blindschach in kleinen Schritten, die die Vorstellungskraft stärken, ohne das Training zu überfrachten.",
+    "primaryKeyword": "Blindschach Training",
+    "secondaryKeywords": [
+      "Blindschach für Anfänger",
+      "Brett im Kopf",
+      "Visualisierungsübungen",
+      "rechnen ohne Figuren zu bewegen",
+      "Konzentrationsübungen"
+    ],
+    "painPoint": "Du verlierst das Brett, sobald du nicht mehr hinschaust.",
+    "ctaLabel": "Blindtraining starten",
+    "quickAnswer": "Beginne mit einer einfachen Stellung. Merke sie dir, stell dir je einen Zug vor und prüfe. Eine ganze Blindpartie erst, wenn diese Schritte leicht fallen.",
+    "keyTakeaways": [
+      "Blindschach baut man Schritt für Schritt auf.",
+      "Die Antwort zu prüfen zählt mehr, als schwerere Stellungen zu versuchen.",
+      "Blindübungen für Anfänger sind Visualisierungsübungen mit weniger Hilfe vom Brett."
+    ],
+    "whoThisIsFor": [
+      "Wer bessere Vorstellungskraft will, ohne mit einer ganzen Blindpartie zu starten.",
+      "Anfänger, die nach ein bis zwei vorgestellten Zügen die Felder verlieren.",
+      "Wer ein klareres Bild des Bretts halten will."
+    ],
+    "timeToRead": "8 Min. Lesezeit",
+    "introParagraphs": [
+      "Der größte Fehler ist, zu früh eine ganze Blindpartie zu versuchen. Das führt meist zu Frust statt Fortschritt.",
+      "Geh Schritt für Schritt: Brett sehen, merken, einen Zug vorstellen, prüfen und die visuelle Hilfe langsam reduzieren."
+    ],
+    "startHereTitle": "Starte hier: eine sichere Steigerung",
+    "startHereSteps": [
+      "Präge dir eine kleine Stellung ein und baue sie nach, bevor du dir Züge vorstellst.",
+      "Rechne je einen Zug pro Seite, ohne Figuren anzufassen.",
+      "Prüfe jede Abweichung sofort, statt weiterzumachen.",
+      "Spiele eine Runde Memory Chess mit etwas kürzerem Zeitfenster.",
+      "Ergänze erst einen weiteren Zug, wenn die aktuelle Variante klar ist."
+    ],
+    "drillSectionTitle": "Einfache Blindschach-Übungen",
+    "drillCards": [
+      {
+        "title": "Erst nachbauen, dann ziehen",
+        "description": "Stell dir keine Züge vor, solange die Ausgangsstellung nicht sicher steht.",
+        "duration": "4 Minuten",
+        "goal": "Klares Erinnern aufbauen, bevor Züge dazukommen.",
+        "ctaLabel": "Erst nachbauen"
+      },
+      {
+        "title": "Ein Zug pro Seite",
+        "description": "Stell dir einen Zug von Weiß und eine Antwort von Schwarz vor und prüfe das neue Brett.",
+        "duration": "5 Minuten",
+        "goal": "Die Stellung im Kopf aktualisieren, ohne hinzusehen.",
+        "ctaLabel": "Zwei Züge vorstellen"
+      },
+      {
+        "title": "Kurzes Zeitfenster",
+        "description": "Nimm weniger Betrachtungszeit, um das Brett schneller zu behalten.",
+        "duration": "4 Minuten",
+        "goal": "Aufs Blindspiel vorbereiten, ohne das ganze Brett zu verstecken.",
+        "ctaLabel": "Fenster verkürzen"
+      }
+    ],
+    "comparisonTitle": "Ein sichererer Weg zum Blindschach",
+    "comparisonSummary": "Frag dich, ob du einen Zug mehr klar siehst als vorher. Eine ganze Blindpartie brauchst du noch nicht.",
+    "comparisonRows": [
+      {
+        "label": "Ausgangspunkt",
+        "struggling": "Du springst direkt ins volle Blindspiel.",
+        "stronger": "Du behältst die Ausgangsstellung, bevor Züge dazukommen."
+      },
+      {
+        "label": "Prüfung",
+        "struggling": "Du vertraust einem verschwommenen Brett im Kopf.",
+        "stronger": "Du prüfst jede vorgestellte Änderung und korrigierst sofort."
+      },
+      {
+        "label": "Qualität der Einheit",
+        "struggling": "Du übst, bis die Konzentration zusammenbricht.",
+        "stronger": "Du hörst auf, solange die Genauigkeit hoch ist."
+      }
+    ],
+    "mistakes": [
+      "Zu früh ganze Blindpartien versuchen.",
+      "Die Prüfung überspringen und falschen Brettbildern vertrauen.",
+      "Züge ergänzen, bevor kurze Varianten klar sind.",
+      "Zu lange am Stück üben und den Fokus verbrennen."
+    ],
+    "mistakesCallout": "Spring nicht zu einer viel schwereren Aufgabe. Nimm jedes Mal etwas weniger Hilfe vom Brett.",
+    "planTitle": "7-Tage-Vorbereitungsblock",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "10 Minuten",
+        "detail": "Nur Stellungen aus dem Gedächtnis nachbauen und sofort prüfen."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "12 Minuten",
+        "detail": "Ergänze je einen Zug pro Seite und halte die Stellungen einfach."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "12 Minuten",
+        "detail": "Verkürze das Zeitfenster in Memory Chess bei gleicher Figurenzahl."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 Minuten",
+        "detail": "Versuche kurze Zwei-Zug-Folgen nur, wenn die Ein-Zug-Übung sitzt."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Ist Blindschach für Anfänger sinnvoll?",
+        "answer": "Ja, in kurzen kontrollierten Übungen. Es stärkt die Vorstellungskraft, die normale Partien trägt."
+      },
+      {
+        "question": "Wie oft sollte ich Blindübungen machen?",
+        "answer": "Zwei bis vier kurze Einheiten pro Woche reichen, kombiniert mit Spielen und Nachbereitung."
+      },
+      {
+        "question": "Was ist die beste erste Übung?",
+        "answer": "Eine einfache Stellung aus dem Gedächtnis nachbauen und je einen Zug vorstellen, bevor du prüfst."
+      },
+      {
+        "question": "Woran merke ich Fortschritt?",
+        "answer": "Du hältst mehr Felder genau, aktualisierst das Brett länger und machst in normalen Partien weniger Sichtfehler."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Halte die Basis stabil, statt zum fortgeschrittenen Blindspiel zu springen."
+      },
+      {
+        "reason": "Kombiniere Blindarbeit mit Übungen zum Variantenhalten."
+      },
+      {
+        "reason": "Nutze klarere Vorstellungskraft, um mögliche Züge zu vergleichen."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Arbeitsgedächtnis-Übungen für Schachspieler",
+    "h1": "Arbeitsgedächtnis-Übungen für Schachanfänger",
+    "description": "Nutze einfache Übungen, um Zugfolgen zu behalten, Optionen zu vergleichen und klarer zu entscheiden.",
+    "primaryKeyword": "Arbeitsgedächtnis Übungen",
+    "secondaryKeywords": [
+      "Arbeitsgedächtnis im Schach",
+      "Berechnungstraining",
+      "Konzentrationsübungen",
+      "Beständigkeit im Schach",
+      "mentale Ausdauer im Schach"
+    ],
+    "painPoint": "Du vergisst die erste Zugfolge, während du über eine zweite nachdenkst.",
+    "ctaLabel": "Gedächtnisroutine starten",
+    "quickAnswer": "Das Arbeitsgedächtnis hilft dir, ein paar Zugfolgen gleichzeitig zu halten. Halte die Zahl klein und prüfe jede klar.",
+    "keyTakeaways": [
+      "Drei klare Optionen sind besser als sechs verworrene.",
+      "Eine kurze Zusammenfassung laut hilft, jede Variante zu behalten.",
+      "Übe mit echten Stellungen und nutze die Fähigkeit in Partien."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die die erste Variante nach der zweiten vergessen.",
+      "Anfänger, die die Zugreihenfolge verwechseln.",
+      "Alle, die müde mehr taktische Fehler machen."
+    ],
+    "timeToRead": "8 Min. Lesezeit",
+    "introParagraphs": [
+      "Das Arbeitsgedächtnis hält mögliche Züge, während du sie vergleichst. Im Schach musst du die Ausgangsstellung und ein bis zwei kurze Varianten behalten, ohne sie zu vermischen.",
+      "Memory Chess hilft dir, die Ausgangsstellung zu behalten. Ist dieses Bild klar, fällt das Verfolgen der nächsten Züge leichter."
+    ],
+    "startHereTitle": "Starte mit zwei kurzen Varianten",
+    "startHereSteps": [
+      "Wähle eine Stellung und nenne drei Kandidatenzüge, ohne das Brett anzufassen.",
+      "Rechne jede Variante zwei Halbzüge und fasse das Ergebnis in einem Satz zusammen.",
+      "Spiele eine Runde Memory Chess, um die Grundstellung aufzufrischen.",
+      "Kehre zur Stellung zurück und vergleiche die Zugfolgen erneut.",
+      "Schreibe einen Satz dazu, wo dir die Variante entglitten ist."
+    ],
+    "drillSectionTitle": "Arbeitsgedächtnis-Übungen im Schach",
+    "drillCards": [
+      {
+        "title": "Drei Varianten in einem Satz",
+        "description": "Halte kurz drei Kandidatenzüge und beschreibe jeden Zweig in einem Satz.",
+        "duration": "6 Minuten",
+        "goal": "Jede Zugfolge klar halten, statt weitere hinzuzufügen.",
+        "ctaLabel": "Drei Varianten halten"
+      },
+      {
+        "title": "Erinnerungs-Reset",
+        "description": "Spiele zwischen Rechenversuchen eine Runde Memory Chess, damit die Grundstellung stabil bleibt.",
+        "duration": "4 Minuten",
+        "goal": "Die Ausgangsstellung behalten, bevor du Zügen folgst.",
+        "ctaLabel": "Brett zurücksetzen"
+      },
+      {
+        "title": "Vergleich nach der Variante",
+        "description": "Kehre zur Ausgangsstellung zurück und vergleiche die Zweige nach kurzer Pause.",
+        "duration": "5 Minuten",
+        "goal": "Zwischen Grundbrett und jeder Variante wechseln, ohne sie zu vermischen.",
+        "ctaLabel": "Optionen vergleichen"
+      }
+    ],
+    "comparisonTitle": "Wenn du zu viel behalten willst",
+    "comparisonSummary": "Ist das Gedächtnis voll, wird die Variante unklar und die Zugreihenfolge gerät durcheinander.",
+    "comparisonRows": [
+      {
+        "label": "Kandidatenzüge",
+        "struggling": "Du willst zu viele Optionen gleichzeitig halten.",
+        "stronger": "Du hältst weniger Varianten, aber jede bleibt länger genau."
+      },
+      {
+        "label": "Zugreihenfolge",
+        "struggling": "Die Zweige verschwimmen ineinander.",
+        "stronger": "Jede Variante bleibt getrennt und leicht vergleichbar."
+      },
+      {
+        "label": "Ermüdung",
+        "struggling": "Gegen Ende bricht die Entscheidungsqualität ein.",
+        "stronger": "Du hältst einen einfacheren Ablauf, wenn die Energie sinkt."
+      }
+    ],
+    "mistakes": [
+      "Zu viele Zugfolgen gleichzeitig halten wollen.",
+      "Die kurze Zusammenfassung nach jeder Variante auslassen.",
+      "Nur Aufgaben lösen und die Fähigkeit nie in Partien nutzen.",
+      "Weitermachen, wenn du zu müde für klares Denken bist."
+    ],
+    "mistakesCallout": "Ergänze noch keine Varianten. Halte wenige klar, bevor du sie verlängerst.",
+    "planTitle": "7-Tage-Arbeitsgedächtnisblock",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "10 Minuten",
+        "detail": "Nutze nur zwei Zugfolgen und erkläre jede laut."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "12 Minuten",
+        "detail": "Ergänze einen Memory-Chess-Reset zwischen Versuchen, damit die Ausgangsstellung sauber bleibt."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "12 Minuten",
+        "detail": "Ergänze eine dritte Option nur, wenn die ersten beiden genau bleiben."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 Minuten",
+        "detail": "Nutze die Routine in einer Schnellpartie. Pausiere an schweren Stellen und benenne deine möglichen Züge klar."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Überträgt sich Arbeitsgedächtnistraining aufs Schach?",
+        "answer": "Es kann, vor allem wenn es an Stellungen, Variantenführung und Analyse hängt statt an allgemeinen Gehirnspielen."
+      },
+      {
+        "question": "Wie sollten Anfänger das aufbauen?",
+        "answer": "In kurzen Einheiten, die mögliche Züge, Brett-Erinnerung und eine echte Stellung verbinden."
+      },
+      {
+        "question": "Wie verfolge ich Fortschritt einfach?",
+        "answer": "Zähle, wie viele Zugfolgen du halten kannst und wie oft du den Faden verlierst."
+      },
+      {
+        "question": "Soll das Taktiktraining ersetzen?",
+        "answer": "Nein. Es ergänzt es und hilft, Varianten beim Lösen und Spielen klarer zu halten."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Nutze ein besseres Arbeitsgedächtnis, um mögliche Züge zu vergleichen."
+      },
+      {
+        "reason": "Stärke die Erinnerungsebene unter der Variantenführung."
+      },
+      {
+        "reason": "Nutze einen einfacheren Ablauf, um Arbeitsgedächtnis nicht zu verschwenden."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Wie du im Schach aufhörst zu patzen",
+    "h1": "Wie du im Schach aufhörst zu patzen",
+    "description": "Nutze eine kurze Sicherheitsprüfung, um Drohungen zu sehen, lose Figuren zu schützen und in Partien weniger zu patzen.",
+    "primaryKeyword": "im Schach aufhören zu patzen",
+    "secondaryKeywords": [
+      "Patzer vermeiden",
+      "keine Figuren mehr einstellen",
+      "Drohungsprüfung",
+      "Sicherheitsliste Schach",
+      "weniger einfache Fehler"
+    ],
+    "painPoint": "Du verstehst die Ideen im Schach und verlierst trotzdem Figuren an einfache Drohungen.",
+    "ctaLabel": "Anti-Patzer-Übung starten",
+    "quickAnswer": "Prüfe vor jedem Zug die Drohungen des Gegners, suche ungedeckte Figuren und stelle sicher, dass dein Zug sicher ist. Gedächtnistraining hilft, das ganze Brett präsent zu halten.",
+    "keyTakeaways": [
+      "Die meisten Anfängerpatzer entstehen, weil ein Teil des Bretts übersehen wird.",
+      "Die Sicherheitsliste muss kurz genug sein, um Zeitdruck zu überstehen.",
+      "Wiederhole deine Fehler, bis du schnell siehst, was du übersehen hast."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die immer wieder auf Ein-Zug-Taktiken hereinfallen.",
+      "Anfänger, die in Partien schlechter abschneiden als in Aufgaben.",
+      "Alle, die eine ruhige Routine für jeden Zug wollen."
+    ],
+    "timeToRead": "8 Min. Lesezeit",
+    "introParagraphs": [
+      "Viele Patzer entstehen, weil du ziehst, bevor du die ganze Stellung geprüft hast. Du kannst auch den Überblick verlieren, wo eine Figur gedeckt ist.",
+      "Eine kurze Routine ersetzt Panik und Raten. Nutze dieselben Prüfungen, sobald die Stellung scharf wird."
+    ],
+    "startHereTitle": "Starte hier: die Anti-Patzer-Liste",
+    "startHereSteps": [
+      "Frage, welche Schachgebote, Schlagzüge und Drohungen der Gegner gerade hat.",
+      "Finde jede ungedeckte Figur oder Figur mit zu vielen Aufgaben.",
+      "Prüfe erst danach, ob dein geplanter Zug sicher ist.",
+      "Spiele vor deinen Partien eine kurze Runde Memory Chess, um das Erinnern zu schärfen.",
+      "Schreibe nach jedem Patzer das übersehene Signal in einem Satz auf."
+    ],
+    "drillSectionTitle": "Einfache Anti-Patzer-Übungen",
+    "drillCards": [
+      {
+        "title": "Erst die Gegnerseite prüfen",
+        "description": "Beginne jede Stellung mit den stärksten Drohungen des Gegners.",
+        "duration": "3 Minuten",
+        "goal": "Die Idee des Gegners vor der eigenen prüfen.",
+        "ctaLabel": "Von der Gegnerseite prüfen"
+      },
+      {
+        "title": "Alarm für lose Figuren",
+        "description": "Nenne vor dem Zug jede ungedeckte Figur oder Figur mit zu vielen Aufgaben.",
+        "duration": "4 Minuten",
+        "goal": "Die leichtesten Materialverluste früh abfangen.",
+        "ctaLabel": "Alarm aktivieren"
+      },
+      {
+        "title": "Patzer-Wiederholung",
+        "description": "Wiederhole deine eigenen Patzerstellungen, bis die übersehene Drohung offensichtlich wird.",
+        "duration": "6 Minuten",
+        "goal": "Aus Stellungen lernen, die echte Niederlagen verursacht haben.",
+        "ctaLabel": "Patzer wiederholen"
+      }
+    ],
+    "comparisonTitle": "Was sich ändert, wenn Patzer seltener werden",
+    "comparisonSummary": "Die Partien werden nicht plötzlich perfekt. Sie werden ruhiger, und mehr Niederlagen haben nachvollziehbare Gründe statt Ein-Zug-Katastrophen.",
+    "comparisonRows": [
+      {
+        "label": "Zeitpunkt des Zuges",
+        "struggling": "Du ziehst, sobald du einen Plan siehst.",
+        "stronger": "Du ziehst erst nach einer kurzen Sicherheitsprüfung."
+      },
+      {
+        "label": "Gefahrenblick",
+        "struggling": "Du bemerkst die Taktik erst, wenn sie eintritt.",
+        "stronger": "Du erkennst das taktische Muster, bevor du dich festlegst."
+      },
+      {
+        "label": "Nachbereitung",
+        "struggling": "Die Niederlage wirkt zufällig.",
+        "stronger": "Du benennst schnell das genau übersehene Anzeichen."
+      }
+    ],
+    "mistakes": [
+      "Patzer nur durch langsameres Ziehen abstellen wollen.",
+      "Weitere Eröffnungen lernen, während die Drohungsprüfung noch schwach ist.",
+      "Engine-Varianten ansehen, ohne das wirklich übersehene Signal zu finden.",
+      "Ignorieren, wie Zeitdruck die Brett-Erinnerung schwächt."
+    ],
+    "mistakesCallout": "Langsamer ziehen reicht nicht. Nutze jedes Mal dieselbe kurze Sicherheitsprüfung.",
+    "planTitle": "7-Tage-Anti-Patzer-Neustart",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "10 Minuten",
+        "detail": "Nur die Gegnerseiten-Prüfung und der Alarm für lose Figuren."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "12 Minuten",
+        "detail": "Ergänze vor jeder Partiesitzung eine Runde Memory Chess, damit das Brett im Kopf sauberer bleibt."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "15 Minuten",
+        "detail": "Wiederhole drei aktuelle Patzer und ordne das übersehene Signal jeweils ein."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 Minuten",
+        "detail": "Nutze die volle Liste im Schnellschach und verfolge Patzer pro Partie, nicht nur das Endergebnis."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Warum stelle ich immer wieder Figuren ein?",
+        "answer": "Meist weil die Prüfung vor dem Zug unvollständig ist. Du kannst die Taktik kennen und trotzdem nicht das ganze Brett prüfen."
+      },
+      {
+        "question": "Reicht es, langsamer zu ziehen?",
+        "answer": "Nur wenn du die zusätzliche Zeit für eine klare Sicherheitsprüfung nutzt. Auf das Brett starren ohne Plan hilft nicht."
+      },
+      {
+        "question": "Helfen Gedächtnisübungen wirklich gegen Patzer?",
+        "answer": "Ja. Klareres Erinnern macht es leichter, Drohungen zu bemerken, während sich das Brett verändert."
+      },
+      {
+        "question": "Was sollte ich verfolgen?",
+        "answer": "Patzer pro Partie, übersehene lose Figuren und ob die übersehene Drohung an der Prüfung oder an der Berechnung lag."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Baue ein stabileres Absuchen auf, um Patzer zu verhindern."
+      },
+      {
+        "reason": "Sieh, warum taktisches Können bei schwachem Brettüberblick einbricht."
+      },
+      {
+        "reason": "Füge die Anti-Patzer-Arbeit in eine komplette Anfängerroutine ein."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Warum sich die Aufgaben-Wertung nicht auf Partien überträgt",
+    "h1": "Warum sich deine Aufgaben-Wertung nicht auf Partien überträgt",
+    "description": "Erfahre, warum sich Aufgaben anders anfühlen als echte Partien und wie Brettgefühl, Gedächtnis und Analyse die Lücke schließen.",
+    "primaryKeyword": "Aufgaben-Wertung überträgt sich nicht auf Partien",
+    "secondaryKeywords": [
+      "Aufgaben-Wertung gegen Partie-Wertung",
+      "Taktik überträgt sich nicht",
+      "Aufgabenkönnen in echten Partien",
+      "warum bin ich in Aufgaben besser als in Partien",
+      "Brettgefühl"
+    ],
+    "painPoint": "Du löst Aufgaben gut, übersiehst in Partien aber weiter Taktik.",
+    "ctaLabel": "Für echte Partien trainieren",
+    "quickAnswer": "Eine Aufgabe sagt dir, dass es eine Taktik gibt. Eine Partie nicht. Du musst die Gefahr selbst bemerken, das Brett behalten und wissen, wann du langsamer wirst.",
+    "keyTakeaways": [
+      "Eine Aufgabe sagt dir, dass es etwas zu lösen gibt.",
+      "In der Partie musst du den gefährlichen Moment selbst finden.",
+      "Besseres Brettgefühl und Gedächtnis lassen dich Taktik früher sehen."
+    ],
+    "whoThisIsFor": [
+      "Spieler mit erstaunlich hoher Aufgaben-Wertung und flacher Partie-Wertung.",
+      "Anfänger, die Taktik nach der Partie sehen, nicht währenddessen.",
+      "Alle, die Aufgaben-Ideen nicht in Partien nutzen können."
+    ],
+    "timeToRead": "8 Min. Lesezeit",
+    "introParagraphs": [
+      "Das ist ein häufiges Anfängerproblem. Du löst Aufgaben, in Partien gibt es aber weiter verlorene Figuren, übersehene Drohungen und hastige Züge.",
+      "Mehr Aufgaben lösen das oft nicht. Du musst auch bemerken, wann eine Stellung gefährlich wird, und dir vorstellen, was nach jeder Wahl passiert."
+    ],
+    "startHereTitle": "Verbinde zuerst Aufgaben und Partien",
+    "startHereSteps": [
+      "Überfliege vor dem Lösen 2 Minuten ein Brett nach Schachgeboten, Schlagzügen und Drohungen.",
+      "Ergänze eine Runde Memory Chess, damit das Bild des Bretts unter Druck stabil bleibt.",
+      "Frage nach einer Aufgabe, welches Signal dir in einer echten Partie gesagt hätte, langsamer zu werden.",
+      "Sieh dir einen aktuellen Partiepatzer an und vergleiche ihn mit einer ähnlichen Aufgabe.",
+      "Spiele pro Einheit mindestens eine Schnellpartie, um zu testen, ob die Prüfung vor dem Zug hält."
+    ],
+    "drillSectionTitle": "Übungen, die Aufgaben mit Partien verbinden",
+    "drillCards": [
+      {
+        "title": "Finde das Warnsignal",
+        "description": "Suche das Warnsignal, bevor du die Taktik suchst.",
+        "duration": "4 Minuten",
+        "goal": "Gefährliche Stellungen früher bemerken.",
+        "ctaLabel": "Signal zuerst üben"
+      },
+      {
+        "title": "Erinnern vor dem Rechnen",
+        "description": "Spiele vor den Aufgaben eine kurze Runde Memory Chess, damit das Brett klarer wirkt.",
+        "duration": "4 Minuten",
+        "goal": "Musterübung mit echtem Spiel verbinden.",
+        "ctaLabel": "Erinnern schärfen"
+      },
+      {
+        "title": "Partiestellung nachstellen",
+        "description": "Stelle einen übersehenen taktischen Moment aus deiner Partie nach und löse ihn wie eine Aufgabe.",
+        "duration": "6 Minuten",
+        "goal": "Taktiktraining wieder nach echten Stellungen aussehen lassen.",
+        "ctaLabel": "Übersehene Taktik nachstellen"
+      }
+    ],
+    "comparisonTitle": "Aufgaben und Partien: Was ändert sich?",
+    "comparisonSummary": "Der taktische Zug kann identisch sein, die geistige Aufgabe ist es nicht.",
+    "comparisonRows": [
+      {
+        "label": "Aufgabenstellung",
+        "struggling": "Die Partie sagt dir nicht, dass es eine Taktik gibt.",
+        "stronger": "Du bemerkst das Signal, dass sich die Spannung gerade verändert hat."
+      },
+      {
+        "label": "Klarheit des Bretts",
+        "struggling": "Die Variante verschwimmt, sobald mehrere Figuren ziehen.",
+        "stronger": "Du hältst wichtige Felder und Verteidiger im Gedächtnis aktiv."
+      },
+      {
+        "label": "Entscheidungstempo",
+        "struggling": "Du ziehst normal schnell, wenn die Stellung gefährlich wird.",
+        "stronger": "Du wirst langsamer, wenn Schachgebote, Schlagzüge oder Drohungen auftauchen."
+      }
+    ],
+    "mistakes": [
+      "Aufgaben lösen ohne jeden Übertragungsschritt in die Partie.",
+      "Annehmen, taktisches Wissen allein verhindere Patzer.",
+      "Nie nachbereiten, warum eine Stellung gefährlich wurde.",
+      "Brettgefühl als getrennt von Taktik behandeln."
+    ],
+    "mistakesCallout": "Ergänze nicht nur mehr Aufgaben. Übe auch, taktische Momente in deinen eigenen Partien zu bemerken.",
+    "planTitle": "7-Tage-Übertragungsblock",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "12 Minuten",
+        "detail": "Ergänze bei jeder Aufgabensitzung den Gedanken „erst das Signal, dann die Lösung“."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "12 Minuten",
+        "detail": "Spiele vor Aufgaben oder Schnellschach eine kurze Runde Memory Chess."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "15 Minuten",
+        "detail": "Stelle drei übersehene taktische Momente aus deinen Partien nach."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 bis 20 Minuten",
+        "detail": "Spiele Schnellschach und halte dich zurück, sobald die Stellung forciert oder taktisch gespannt wird."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Warum bin ich in Aufgaben besser als in Partien?",
+        "answer": "Weil die Aufgabe dir schon sagt, dass es eine Taktik zu finden gibt. Die Partie tut das nicht."
+      },
+      {
+        "question": "Soll ich mit Aufgaben aufhören?",
+        "answer": "Nein. Behalte sie, ergänze aber Brettgefühl, Erinnern und das Nachstellen von Partiestellungen, damit sich die Muster übertragen."
+      },
+      {
+        "question": "Welche Übertragungsübung ist die beste?",
+        "answer": "Eine übersehene Taktik aus deiner Partie nachstellen und sie lösen, nachdem du die Stellung aus dem Gedächtnis nachgebaut hast."
+      },
+      {
+        "question": "Wie messe ich die Übertragung?",
+        "answer": "Verfolge, ob Patzer pro Partie und übersehene einfache Taktiken sinken, nicht nur ob die Aufgaben-Wertung steigt."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Nutze das für eine kürzere Anti-Patzer-Liste für echte Partien."
+      },
+      {
+        "reason": "Stärke die Prüfgewohnheit, die Taktik sichtbar macht."
+      },
+      {
+        "reason": "Wähle eine Aufgabenmenge, die Zeit fürs Spielen lässt."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Wie du im Schach das ganze Brett siehst",
+    "h1": "Wie du das ganze Schachbrett siehst",
+    "description": "Nutze ein einfaches Absuchen, um entfernte Figuren zu bemerken, Drohungen zu sehen und Tunnelblick zu vermeiden.",
+    "primaryKeyword": "im Schach das ganze Brett sehen",
+    "secondaryKeywords": [
+      "Brettüberblick",
+      "Tunnelblick im Schach vermeiden",
+      "das ganze Brett sehen",
+      "Übungen zum Absuchen",
+      "peripherer Blick am Brett"
+    ],
+    "painPoint": "Du konzentrierst dich auf einen Bereich und übersiehst eine Drohung woanders.",
+    "ctaLabel": "Gesamtüberblick trainieren",
+    "quickAnswer": "Prüfe vor jedem Zug beide Könige, ungedeckte Figuren, das Zentrum und die Ränder. Gedächtnistraining hilft, mehr Brett präsent zu halten.",
+    "keyTakeaways": [
+      "Tunnelblick heißt, die Aufmerksamkeit hängt in einem Bereich fest.",
+      "Randfiguren zu prüfen ist für Anfänger besonders nützlich.",
+      "Eine klare Erinnerung ans Brett erleichtert das Absuchen."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die Taktik nur auf einer Brettseite bemerken.",
+      "Anfänger, die Läufer, Türme oder ferne Drohungen übersehen.",
+      "Alle, die sich in offenen Stellungen eingeengt fühlen."
+    ],
+    "timeToRead": "7 Min. Lesezeit",
+    "introParagraphs": [
+      "Viele Anfänger schauen nur auf Figuren nahe ihrem geplanten Zug. So übersieht man leicht ferne Läufer, Türme und Drohungen.",
+      "Du musst nicht länger aufs Brett starren. Nutze dasselbe einfache Absuchen für jeden wichtigen Bereich."
+    ],
+    "startHereTitle": "Starte hier: den Blick weiten",
+    "startHereSteps": [
+      "Prüfe beide Könige und die Linien, die auf sie zeigen.",
+      "Suche ungedeckte Figuren zuerst im Zentrum, dann an den Rändern.",
+      "Verfolge Läufer und Türme über ihre ganzen Linien, nicht nur bis zum Zielfeld.",
+      "Spiele eine Runde Memory Chess, damit das ganze Brett präsenter bleibt.",
+      "Frage dich vor dem Zug, welchen Teil des Bretts du noch nicht angeschaut hast."
+    ],
+    "drillSectionTitle": "Übungen gegen den Tunnelblick",
+    "drillCards": [
+      {
+        "title": "Randdurchgang",
+        "description": "Prüfe vor jedem Zug Ecken- und Randfiguren.",
+        "duration": "3 Minuten",
+        "goal": "Drohungen außerhalb deines Fokus abfangen.",
+        "ctaLabel": "Ränder abgehen"
+      },
+      {
+        "title": "Linien nachziehen",
+        "description": "Verfolge jede Läufer- und Turmlinie vollständig, statt nur ein Zielfeld anzuschauen.",
+        "duration": "4 Minuten",
+        "goal": "Bei jedem Durchgang mehr Brett abdecken.",
+        "ctaLabel": "Ganze Linien verfolgen"
+      },
+      {
+        "title": "Erinnern des ganzen Bretts",
+        "description": "Nutze Memory Chess mit mittlerer Figurenzahl und beschreibe das Brett danach nach Zonen.",
+        "duration": "5 Minuten",
+        "goal": "Mehr Brett auf einmal behalten.",
+        "ctaLabel": "Nach Zonen erinnern"
+      }
+    ],
+    "comparisonTitle": "Tunnelblick gegen Gesamtüberblick",
+    "comparisonSummary": "Du musst nicht überall gleich lange hinschauen. Du darfst nur nichts Wichtiges übersehen.",
+    "comparisonRows": [
+      {
+        "label": "Blickweg",
+        "struggling": "Du starrst auf eine Figurengruppe.",
+        "stronger": "Du gehst die Risikozonen in fester Reihenfolge durch."
+      },
+      {
+        "label": "Weitreichende Figuren",
+        "struggling": "Du vergisst Läufer und Türme abseits des Geschehens.",
+        "stronger": "Du verfolgst ihre ganzen Linien, bevor du einem Zug traust."
+      },
+      {
+        "label": "Brettzonen",
+        "struggling": "Du überspringst die ruhig wirkende Seite.",
+        "stronger": "Du prüfst die ruhige Seite vor dem Zug."
+      }
+    ],
+    "mistakes": [
+      "Denken, Gesamtüberblick heiße länger schauen statt besser absuchen.",
+      "Die Ränder ignorieren, weil das Zentrum dringender wirkt.",
+      "Linien weitreichender Figuren nicht vollständig verfolgen.",
+      "Mehr Brett absuchen wollen, bevor du die Figuren klar behalten kannst."
+    ],
+    "mistakesCallout": "Zusätzliche Bedenkzeit hilft ohne klares Absuchen nicht. Prüfe das Brett jedes Mal in derselben Reihenfolge.",
+    "planTitle": "7-Tage-Plan fürs Absuchen",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "10 Minuten",
+        "detail": "Nur Königsprüfung, lose Figuren und Randdurchgang."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "12 Minuten",
+        "detail": "Ergänze das vollständige Verfolgen der Läufer- und Turmlinien."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "12 Minuten",
+        "detail": "Nutze Memory Chess und erinnere das Brett nach Zonen statt in zufälliger Reihenfolge."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 Minuten",
+        "detail": "Übertrage das Absuchen ins Schnellschach und notiere bei einem Patzer, welche Zone den Fehler verursacht hat."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Warum übersehe ich Figuren auf der anderen Brettseite?",
+        "answer": "Weil deine Aufmerksamkeit zu lokal ist. Eine feste Reihenfolge wirkt besser, als darauf zu hoffen, alles von selbst zu bemerken."
+      },
+      {
+        "question": "Hilft Memory Chess dem Brettüberblick?",
+        "answer": "Ja. Es trainiert, mehr Brett im Gedächtnis aktiv zu halten statt nur den taktischen Brennpunkt."
+      },
+      {
+        "question": "Soll ich die Ränder bei jedem Zug prüfen?",
+        "answer": "Ja, gerade als Anfänger. Viele billige Patzer verstecken sich in Randfiguren und langen Linien."
+      },
+      {
+        "question": "Woran merke ich Fortschritt?",
+        "answer": "Du übersiehst weniger ferne Drohungen und wirst seltener von Läufern, Türmen und Abzügen überrascht."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Verbinde den Gesamtüberblick mit einer stabileren Sicherheitsliste."
+      },
+      {
+        "reason": "Verbessere das Brett im Kopf, damit weites Absuchen leichter fällt."
+      },
+      {
+        "reason": "Erkenne Felder schneller, damit breites Absuchen weniger Kraft kostet."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Koordinatentraining für schnelleren Brettüberblick",
+    "h1": "Koordinatentraining im Schach für Anfänger",
+    "description": "Lerne Feldnamen schneller und erleichtere dir Absuchen, Notation und Visualisierung.",
+    "primaryKeyword": "Koordinatentraining Schach",
+    "secondaryKeywords": [
+      "Notationstraining Schach",
+      "Schachkoordinaten lernen",
+      "Felder schneller erkennen",
+      "Feldbewusstsein am Brett",
+      "Übungen zu Feldnamen"
+    ],
+    "painPoint": "Du brauchst Zeit, um einen Feldnamen herzuleiten, oder verwechselst Felder oft.",
+    "ctaLabel": "Feldnamen üben",
+    "quickAnswer": "Koordinaten sind die Namen der 64 Felder. Sie zu kennen erleichtert Absuchen, Vorstellen von Zügen und Nachbereitung.",
+    "keyTakeaways": [
+      "Felder schnell zu erkennen erleichtert das Absuchen.",
+      "Übe Koordinaten mit echten Stellungen.",
+      "Zum Start reichen die Grundnamen der Felder."
+    ],
+    "whoThisIsFor": [
+      "Anfänger, die Linien und Reihen noch langsam abzählen.",
+      "Spieler, die Absuchen und Visualisierung beschleunigen wollen.",
+      "Alle, denen Notation unübersichtlich vorkommt."
+    ],
+    "timeToRead": "7 Min. Lesezeit",
+    "introParagraphs": [
+      "Koordinaten nützen mehr als nur für Bücher und Zuglisten. Felder schnell zu erkennen hilft Brettgefühl, Gedächtnis und Analyse.",
+      "Wenn du die Feldnamen kennst, wird das Brett zu einer klaren Karte statt zu einer Ansammlung vager Bereiche."
+    ],
+    "startHereTitle": "Starte mit Feldnamen am echten Brett",
+    "startHereSteps": [
+      "Wähle eine Linie oder Reihe und sprich die Feldnamen laut aus.",
+      "Nenne beim Nachbauen einer Memory-Chess-Stellung das Feld jeder Figur.",
+      "Nimm eine Stellung aus einer aktuellen Partie und benenne Angreifer und Verteidiger nach Feld.",
+      "Übe Läufer, Türme und Springersprünge über Koordinaten, nicht nur nach Gefühl.",
+      "Schließe mit einem schnellen Durchgang ab, bei dem jede lose Figur nach Feld benannt wird."
+    ],
+    "drillSectionTitle": "Koordinatenübungen, die im Spiel helfen",
+    "drillCards": [
+      {
+        "title": "Figur und Feld",
+        "description": "Baue ein Brett nach und nenne jede Figur mit Namen und Feld.",
+        "duration": "4 Minuten",
+        "goal": "Feldnamen mit den zu behaltenden Figuren verknüpfen.",
+        "ctaLabel": "Jedes Feld benennen"
+      },
+      {
+        "title": "Lange Linien benennen",
+        "description": "Verfolge Läufer- und Turmlinien und nenne die Felder, die sie beherrschen.",
+        "duration": "4 Minuten",
+        "goal": "Koordinaten beim vollständigen Absuchen nutzbar machen.",
+        "ctaLabel": "Linien nach Feldern"
+      },
+      {
+        "title": "Springersprünge kartieren",
+        "description": "Wähle ein Springerfeld und nenne schnell alle legalen Zielfelder.",
+        "duration": "3 Minuten",
+        "goal": "Springerzüge und Zielfelder schneller erkennen.",
+        "ctaLabel": "Sprünge kartieren"
+      }
+    ],
+    "comparisonTitle": "Felder langsam oder schnell erkennen",
+    "comparisonSummary": "Koordinaten verbessern nicht alles im Schach, machen aber mehrere Fähigkeiten leichter.",
+    "comparisonRows": [
+      {
+        "label": "Absuchen",
+        "struggling": "Du kennst die Form, aber nicht die Feldnamen.",
+        "stronger": "Du erkennst Drohungen und Verteidiger genauer und schneller."
+      },
+      {
+        "label": "Visualisierung",
+        "struggling": "Vorgestellte Züge bleiben vage.",
+        "stronger": "Die entstehende Stellung lässt sich leichter beschreiben und halten."
+      },
+      {
+        "label": "Nachbereitung",
+        "struggling": "Notizen nach der Partie bleiben unscharf.",
+        "stronger": "Du beschreibst den Schlüsselmoment klar genug, um ihn später zu studieren."
+      }
+    ],
+    "mistakes": [
+      "Feldnamen ohne echte Stellungen üben.",
+      "Notationsregeln auswendig lernen ohne Beispiele am Brett.",
+      "Linien weitreichender Figuren beim Üben ignorieren.",
+      "Die Gewohnheit fallen lassen, sobald die Grundnotation vertraut ist."
+    ],
+    "mistakesCallout": "Wiederhole nicht nur Feldnamen. Nutze sie mit echten Figuren und Stellungen.",
+    "planTitle": "7-Tage-Aufwärmplan",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "8 Minuten",
+        "detail": "Nenne jede Figur und ihr Feld, während du eine Memory-Chess-Stellung nachbaust."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "10 Minuten",
+        "detail": "Ergänze das Benennen langer Läufer- und Turmlinien."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "10 Minuten",
+        "detail": "Übe die Springersprung-Karte und Sicherheit auf den Zentrumsfeldern."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "12 Minuten",
+        "detail": "Nutze Feldnamen beim vollständigen Absuchen und bespreche danach eine wichtige Stellung nur mit Feldnamen."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Sind Koordinaten für Anfänger wirklich wichtig?",
+        "answer": "Ja, wenn sie Brettüberblick, Visualisierung und Nachbereitung beschleunigen. Perfekte Notation brauchst du nicht, schnelles Erkennen hilft aber."
+      },
+      {
+        "question": "Wie lernt man Koordinaten am besten?",
+        "answer": "Mit echten Stellungen und Figuren statt durch isoliertes Wiederholen von Notation."
+      },
+      {
+        "question": "Hilft mir das gegen Patzer?",
+        "answer": "Indirekt ja. Schnelleres Erkennen macht Absuchen und Drohungsprüfungen präziser."
+      },
+      {
+        "question": "Wie lange sollte ich Koordinaten üben?",
+        "answer": "Fünf bis zehn konzentrierte Minuten reichen, wenn die Übung an echter Brettarbeit hängt."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Nutze Koordinaten für ein breiteres Absuchen des ganzen Bretts."
+      },
+      {
+        "reason": "Mache Aktualisierungen im Kopf feldgenauer."
+      },
+      {
+        "reason": "Nutze Feldnamen, um deinen Ablauf unter Druck zu vereinfachen."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Täglicher 20-Minuten-Schachplan für Anfänger",
+    "h1": "Ein täglicher 20-Minuten-Schachplan für Anfänger",
+    "description": "Folge einem einfachen 20-Minuten-Plan mit Brettarbeit, Gedächtnisübungen, Spielen und kurzer Nachbereitung.",
+    "primaryKeyword": "täglicher 20-Minuten-Schachplan",
+    "secondaryKeywords": [
+      "tägliche Schachroutine für Anfänger",
+      "kurzer Schach-Lernplan",
+      "in 20 Minuten im Schach besser werden",
+      "Trainingsplan für Anfänger",
+      "Routine mit Aufgaben und Analyse"
+    ],
+    "painPoint": "Du willst besser werden, aber die meisten Schachpläne kosten zu viel Zeit.",
+    "ctaLabel": "20-Minuten-Plan starten",
+    "quickAnswer": "Gib jeweils ein paar Minuten für Brettgefühl, Gedächtnis, Taktik und Nachbereitung. Halte die Routine kurz genug, um sie auch müde zu schaffen.",
+    "keyTakeaways": [
+      "Oft üben zählt mehr als lange üben.",
+      "Nutze sowohl Übungen als auch echte Stellungen.",
+      "Eine kurze Nachbereitung hilft dem Training von morgen."
+    ],
+    "whoThisIsFor": [
+      "Anfänger mit wenig Zeit, aber regelmäßiger Motivation.",
+      "Spieler, die zu anspruchsvolle Pläne abbrechen.",
+      "Alle, die eine wiederholbare Tagesroutine wollen."
+    ],
+    "timeToRead": "7 Min. Lesezeit",
+    "introParagraphs": [
+      "Viele Lernpläne funktionieren nur mit viel Freizeit. Ein brauchbarer Plan muss auch an einem vollen Tag funktionieren.",
+      "Diese 20-Minuten-Routine behält eine Übung, eine echte Stellung und eine kurze Nachbereitung."
+    ],
+    "startHereTitle": "Deine 20-Minuten-Schachroutine",
+    "startHereSteps": [
+      "Nimm 4 Minuten für eine Brettgefühl- oder Erinnerungsübung.",
+      "Nimm 6 Minuten für eine Memory-Chess-Folge mit denselben Einstellungen über eine ganze Woche.",
+      "Nimm 6 Minuten für Taktik oder eine Stellung aus einer echten Partie.",
+      "Nimm 4 Minuten, um aufzuschreiben, was heute misslang und was hielt.",
+      "Halte die Struktur mindestens 7 Tage fest, bevor du sie anpasst."
+    ],
+    "drillSectionTitle": "Übungen, die in einen kurzen Plan passen",
+    "drillCards": [
+      {
+        "title": "Aufwärmen mit Erinnern",
+        "description": "Nutze eine kurze Runde Memory Chess als Anker für die ganze Einheit.",
+        "duration": "6 Minuten",
+        "goal": "Jede Einheit mit demselben Gedächtnis-Aufwärmen beginnen.",
+        "ctaLabel": "Aufwärmen starten"
+      },
+      {
+        "title": "Drohungsprüfung im Sprint",
+        "description": "Suche eine Stellung nach Schachgeboten, Schlagzügen, Drohungen und losen Figuren ab.",
+        "duration": "4 Minuten",
+        "goal": "Die Übertragung in Partien verbessern, fast ohne Zeitaufwand.",
+        "ctaLabel": "Drohungsprüfung machen"
+      },
+      {
+        "title": "Notizkreis",
+        "description": "Schreibe einen Satz über die Art des Fehlers, den du heute gemacht hast.",
+        "duration": "4 Minuten",
+        "goal": "Die Lektion von heute für morgen nutzen.",
+        "ctaLabel": "Eine Lektion notieren"
+      }
+    ],
+    "comparisonTitle": "Eine Routine, die du durchhältst",
+    "comparisonSummary": "Die beste Routine ist die, die du in einer normalen Woche wiederholen kannst.",
+    "comparisonRows": [
+      {
+        "label": "Tageslast",
+        "struggling": "Du versuchst zu viele Lernformen auf einmal.",
+        "stronger": "Du wiederholst einen kompakten Kreis, der täglich die Basis abdeckt."
+      },
+      {
+        "label": "Übertragung",
+        "struggling": "Du schaust oder liest nur und übst nicht.",
+        "stronger": "Jede Einheit enthält Übung, die du in Partien nutzt."
+      },
+      {
+        "label": "Nachbereitung",
+        "struggling": "Fehler verschwinden, weil nichts notiert wird.",
+        "stronger": "Jeder Tag endet mit einer Notiz für morgen."
+      }
+    ],
+    "mistakes": [
+      "Fortgeschrittene Pläne kopieren, die nicht durchzuhalten sind.",
+      "Alle 20 Minuten für passive Inhalte nutzen.",
+      "Die Routine alle zwei Tage ändern.",
+      "Die Nachbereitung überspringen, weil sie klein wirkt."
+    ],
+    "mistakesCallout": "Mach den Plan nicht größer. Mach ihn leicht genug zum Wiederholen.",
+    "planTitle": "20-Minuten-Routine über 7 Tage",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 3",
+        "duration": "20 Minuten",
+        "detail": "Behalte dieselben Memory-Chess-Einstellungen und dasselbe Prüfformat für Beständigkeit."
+      },
+      {
+        "label": "Tag 4",
+        "duration": "20 Minuten",
+        "detail": "Lies deine Notizen und behalte nur einen Korrekturpunkt für die nächsten drei Tage."
+      },
+      {
+        "label": "Tag 5 bis 6",
+        "duration": "20 Minuten",
+        "detail": "Wiederhole genau dieselbe Struktur ohne zusätzliche Abwechslung."
+      },
+      {
+        "label": "Tag 7",
+        "duration": "20 Minuten",
+        "detail": "Prüfe, ob Patzer oder Erinnerungsgenauigkeit besser wurden, und mach nur eine Anpassung für die nächste Woche."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Reichen 20 Minuten Schachtraining?",
+        "answer": "Ja, wenn sie regelmäßig sind und Übungen enthalten, die sich direkt in Partien übertragen, nicht nur passives Lernen."
+      },
+      {
+        "question": "Soll ich alle 20 Minuten für Taktik nutzen?",
+        "answer": "Meist nicht. Eine Mischung aus Brettklarheit, taktischer Übertragung und kurzer Nachbereitung wirkt bei Anfängern besser."
+      },
+      {
+        "question": "Wie lange denselben Plan behalten?",
+        "answer": "Mindestens eine Woche. Ständiges Wechseln macht Fortschritt unlesbar."
+      },
+      {
+        "question": "Was sollte ich verfolgen?",
+        "answer": "Patzer pro Partie, Erinnerungsgenauigkeit und die Fehlerart, die am häufigsten auftritt."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sieh, wie diese kurze Routine in einen längeren Plan passt."
+      },
+      {
+        "reason": "Bring taktische Arbeit und Brettklarheit ins Gleichgewicht."
+      },
+      {
+        "reason": "Halte den Nachbereitungsblock einfach und produktiv."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Wie Anfänger ihre Schachpartien analysieren",
+    "h1": "Wie Anfänger ihre Schachpartien analysieren",
+    "description": "Bereite deine Partien nach, verstehe deine Fehler und wähle eine klare Sache zum Üben.",
+    "primaryKeyword": "Schachpartien analysieren als Anfänger",
+    "secondaryKeywords": [
+      "Partieanalyse für Anfänger",
+      "Schachpartien nachbereiten",
+      "Selbstanalyse im Schach",
+      "Patzer analysieren",
+      "Routine nach der Partie"
+    ],
+    "painPoint": "Deine Analyse ist zu schnell, zu unübersichtlich oder voller Engine-Varianten.",
+    "ctaLabel": "Nächste Partie nachbereiten",
+    "quickAnswer": "Finde, wo die Partie kippte, benenne die Fehlerart und wähle eine Korrektur. Schau die Engine erst an, nachdem du die Stellung selbst geprüft hast.",
+    "keyTakeaways": [
+      "Beende jede Analyse mit einer Handlung, nicht mit einer langen Liste von Engine-Zügen.",
+      "Die Fehlerart zu benennen hilft bei der Wahl der Übung.",
+      "Versuche, die Schlüsselstellung aus dem Gedächtnis nachzubauen."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die Partien nachbereiten, aber nicht wissen, was danach kommt.",
+      "Anfänger, die die Bewertung springen sehen, aber nicht verstehen warum.",
+      "Alle, die eine einfachere Gewohnheit nach der Partie wollen."
+    ],
+    "timeToRead": "7 Min. Lesezeit",
+    "introParagraphs": [
+      "Beginne mit einer Frage: Welcher Fehler hat die Partie verändert? Eine Engine-Bewertung allein erklärt nicht, was du üben musst.",
+      "Baue die Schlüsselstellung nach, benenne den Fehler und wähle daraus die Übung für morgen."
+    ],
+    "startHereTitle": "Starte hier: der Analysekreis für Anfänger",
+    "startHereSteps": [
+      "Finde den ersten Moment, in dem sich die Stellung stark verändert hat.",
+      "Baue diese Stellung aus dem Gedächtnis nach, bevor du die Engine prüfst.",
+      "Ordne den Fehler als Sicht, Erinnerung, Berechnung oder Zeitmanagement ein.",
+      "Frage, welches Signal dir gesagt hätte, langsamer zu werden.",
+      "Mach aus der Antwort eine Übung für deine nächste Einheit."
+    ],
+    "drillSectionTitle": "Einfache Analyseübungen",
+    "drillCards": [
+      {
+        "title": "Schlüsselstellung nachbauen",
+        "description": "Baue die Stellung des Hauptpatzers aus dem Gedächtnis nach, bevor du sie prüfst.",
+        "duration": "5 Minuten",
+        "goal": "Die Stellung erinnern, bevor du die Antwort siehst.",
+        "ctaLabel": "Moment nachbauen"
+      },
+      {
+        "title": "Fehlerart markieren",
+        "description": "Benenne jeden großen Fehler als Sicht, Gedächtnis, Berechnung oder Zeitnot.",
+        "duration": "3 Minuten",
+        "goal": "Wissen, was als Nächstes zu üben ist.",
+        "ctaLabel": "Fehlerart markieren"
+      },
+      {
+        "title": "Analyse mit einer Korrektur",
+        "description": "Beende die Analyse mit einer klaren Korrektur für morgen.",
+        "duration": "2 Minuten",
+        "goal": "Mit einem nützlichen nächsten Schritt abschließen.",
+        "ctaLabel": "Eine Korrektur wählen"
+      }
+    ],
+    "comparisonTitle": "Nützliche gegen nutzlose Analyse",
+    "comparisonSummary": "Du musst nicht jeden Zug studieren. Finde die klarste Lektion für deine nächste Übung.",
+    "comparisonRows": [
+      {
+        "label": "Engine-Nutzung",
+        "struggling": "Du springst sofort zur Engine.",
+        "stronger": "Du stellst die Diagnose selbst, bevor du prüfst."
+      },
+      {
+        "label": "Ergebnis",
+        "struggling": "Du endest mit vielen Kommentaren und ohne Handlung.",
+        "stronger": "Du endest mit einer Übung oder einer Anpassung der Liste."
+      },
+      {
+        "label": "Gedächtnis",
+        "struggling": "Die Stellung ist nach der Partie sofort weg.",
+        "stronger": "Du baust die Stellung nach und siehst den Fehler klarer."
+      }
+    ],
+    "mistakes": [
+      "Nur mit Engine-Varianten analysieren, ohne Selbstdiagnose.",
+      "Jeden Zug gleich ausführlich analysieren wollen.",
+      "Die Fehlerart nicht benennen.",
+      "Die Analyse ohne Wahl der nächsten Übung beenden."
+    ],
+    "mistakesCallout": "Geh nicht jede Engine-Variante durch. Benenne den Fehler und übe die Korrektur.",
+    "planTitle": "7-Tage-Analysegewohnheit",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "10 Minuten",
+        "detail": "Bereite eine Partie nach und finde nur den ersten großen Wendepunkt."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "12 Minuten",
+        "detail": "Baue diese Stellung aus dem Gedächtnis nach, bevor du die Engine prüfst."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "12 Minuten",
+        "detail": "Ordne jeden großen Fehler einer Art zu und zähle, welche am häufigsten vorkommt."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 Minuten",
+        "detail": "Wähle anhand der häufigsten Fehlerart die erste Übung deiner nächsten Einheit."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Sollen Anfänger die Engine nutzen?",
+        "answer": "Ja, aber erst nach dem eigenen Diagnoseversuch. Sonst bleibt die Analyse passiv."
+      },
+      {
+        "question": "Wie viele Fehler nach einer Partie prüfen?",
+        "answer": "Ein bis drei große Wendepunkte reichen den meisten Anfängern."
+      },
+      {
+        "question": "Was nach der Analyse notieren?",
+        "answer": "Fehlerart, übersehenes Signal und eine Übung oder Listenanpassung fürs nächste Mal."
+      },
+      {
+        "question": "Wie hilft Memory Chess bei der Analyse?",
+        "answer": "Es hilft dir, wichtige Stellungen nachzubauen, sodass deine Analyse genauer wird."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Füge die Analyse in eine Routine ein, die nicht überfordert."
+      },
+      {
+        "reason": "Mach aus Analyseergebnissen Anti-Patzer-Übungen."
+      },
+      {
+        "reason": "Erinnere und baue Schlüsselmomente nach der Partie nach."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Wie viele Schachaufgaben sollten Anfänger täglich lösen?",
+    "h1": "Wie viele Schachaufgaben sollten Anfänger täglich lösen?",
+    "description": "Wähle eine tägliche Aufgabenmenge, die Taktik verbessert und Zeit für Gedächtnis, Partien und Analyse lässt.",
+    "primaryKeyword": "wie viele Schachaufgaben pro Tag",
+    "secondaryKeywords": [
+      "tägliche Aufgabenmenge",
+      "Aufgabenroutine für Anfänger",
+      "wie viel Taktik pro Tag",
+      "zu viele Aufgaben",
+      "Taktikumfang für Anfänger"
+    ],
+    "painPoint": "Du löst viele Aufgaben, weißt aber nicht, ob sie deinen Partien helfen.",
+    "ctaLabel": "Aufgaben und Praxis ausbalancieren",
+    "quickAnswer": "Für die meisten Anfänger reicht eine kurze tägliche Einheit. Hör auf, solange du klar denkst, und lass Zeit für Partien, Gedächtnis und Analyse.",
+    "keyTakeaways": [
+      "Die Qualität der Aufgaben zählt mehr als die Menge.",
+      "Zu viele Aufgaben nehmen Zeit von Partien und Analyse.",
+      "Deine ideale Menge sollte Zeit fürs Spielen oder Nachbereiten lassen."
+    ],
+    "whoThisIsFor": [
+      "Spieler, deren ganzer Lernplan aus Aufgaben besteht.",
+      "Anfänger, die eine klare Aufgabenroutine wollen.",
+      "Alle, die Aufgaben und Partiepraxis ausbalancieren wollen."
+    ],
+    "timeToRead": "7 Min. Lesezeit",
+    "introParagraphs": [
+      "Es gibt keine perfekte Zahl für alle. Zu wenige Aufgaben bremsen das Musterlernen, zu viele lassen keine Zeit für anderes Nützliches.",
+      "Löse genug, um scharf zu bleiben, und nutze die restliche Zeit für Brett-Erinnerung, Partien und Analyse."
+    ],
+    "startHereTitle": "Wähle eine sinnvolle Tagesmenge",
+    "startHereSteps": [
+      "Entscheide, ob Aufgaben dein Aufwärmen, dein Hauptblock oder deine Übertragungsprüfung sind.",
+      "Behalte eine kurze Runde Memory Chess davor oder danach für Brettklarheit.",
+      "Hör auf, wenn deine Antworten hastig werden, statt einer größeren Zahl nachzujagen.",
+      "Bereite täglich einen übersehenen taktischen Moment aus einer echten Partie nach.",
+      "Ändere die Menge erst, wenn du geprüft hast, ob sich deine Partiefehler verändern."
+    ],
+    "drillSectionTitle": "Übungen, die Aufgaben nützlicher machen",
+    "drillCards": [
+      {
+        "title": "Aufwärmen plus Erinnern",
+        "description": "Kombiniere eine kurze Erinnerungsübung mit einem moderaten Aufgabenblock, statt kalt zu starten.",
+        "duration": "10 Minuten",
+        "goal": "Aufgabenpraxis mit echtem Spiel verbinden.",
+        "ctaLabel": "Erinnern ergänzen"
+      },
+      {
+        "title": "Signalprüfung nach jeder Aufgabe",
+        "description": "Frage, welches Warnsignal die Taktik möglich gemacht hat, bevor du die Lösung ansiehst.",
+        "duration": "5 Minuten",
+        "goal": "Bemerken, warum eine Stellung Taktik enthält.",
+        "ctaLabel": "Signal prüfen"
+      },
+      {
+        "title": "Partie-Taktik nachstellen",
+        "description": "Mach aus einer übersehenen Partie-Taktik eine Aufgabe, die du nach dem Nachbauen löst.",
+        "duration": "5 Minuten",
+        "goal": "Taktik aus den eigenen Partien nutzen.",
+        "ctaLabel": "Taktik nachstellen"
+      }
+    ],
+    "comparisonTitle": "Zu wenige, zu viele und genug Aufgaben",
+    "comparisonSummary": "Die richtige Menge hält deine Taktik scharf und lässt trotzdem Zeit fürs Spielen.",
+    "comparisonRows": [
+      {
+        "label": "Mustererkennung",
+        "struggling": "Zu wenig Übung lässt gängige Taktik fremd wirken.",
+        "stronger": "Ein moderater Tagesblock hält Muster frisch."
+      },
+      {
+        "label": "Übertragung",
+        "struggling": "Zu viele Aufgaben lassen keine Zeit für Brettgefühl oder Analyse.",
+        "stronger": "Deine Routine enthält weiter Erinnern und Arbeit an Partiestellungen."
+      },
+      {
+        "label": "Ermüdung",
+        "struggling": "Späte Aufgaben werden zu hastigem Raten.",
+        "stronger": "Du hörst auf, solange die Entscheidungen sauber sind."
+      }
+    ],
+    "mistakes": [
+      "Die Aufgabenzahl als einziges Qualitätsmaß nutzen.",
+      "Taktik lösen ohne jede Übertragung in Partien.",
+      "Weitermachen, lange nachdem der Fokus gesunken ist.",
+      "Analyse und Brettgefühl verdrängen."
+    ],
+    "mistakesCallout": "Mehr Aufgaben sind nicht immer besser. Prüfe, ob sie deinen echten Partien helfen.",
+    "planTitle": "7-Tage-Ausgleichsplan",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "15 Minuten",
+        "detail": "Nutze einen kleinen Aufgabenblock und ergänze davor eine kurze Erinnerungsübung."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "15 Minuten",
+        "detail": "Ergänze nach jeder Aufgabe eine Signalprüfung, um zu bemerken, warum die Taktik da war."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "15 Minuten",
+        "detail": "Stelle eine übersehene Partie-Taktik nach und vergleiche sie mit deiner Aufgabenleistung."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 bis 20 Minuten",
+        "detail": "Ändere die Menge nur, wenn deine Antworten sorgfältig bleiben und noch Zeit fürs Spielen bleibt."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Wie viele Aufgaben pro Tag reichen Anfängern?",
+        "answer": "So viele, dass gängige Taktik vertraut bleibt und Zeit für Gedächtnis und Partien bleibt. Für viele reicht eine kurze Tageseinheit."
+      },
+      {
+        "question": "Können zu viele Aufgaben schaden?",
+        "answer": "Indirekt ja. Sie können Brettgefühl, Erinnern und Analyse verdrängen, die für echte Übertragung nötig sind."
+      },
+      {
+        "question": "Aufgaben vor oder nach Partien?",
+        "answer": "Beides geht, aber ein kleines Aufwärmen plus ein Übertragungsschritt danach funktioniert oft gut."
+      },
+      {
+        "question": "Was sollte ich verfolgen?",
+        "answer": "Ob Patzer und übersehene einfache Taktiken sinken, nicht nur wie viele Aufgaben du geschafft hast."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Verstehe, warum Erfolg bei Aufgaben allein nicht reicht."
+      },
+      {
+        "reason": "Füge Aufgaben in eine ausgewogene kurze Routine ein."
+      },
+      {
+        "reason": "Lerne gängige Muster, statt nur die Menge zu erhöhen."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Übungen zur Mustererkennung im Schach",
+    "h1": "Übungen zur Mustererkennung für Anfänger",
+    "description": "Nutze einfache Übungen, um gängige Schachmuster zu erkennen und nützliche Ideen schneller zu sehen.",
+    "primaryKeyword": "Übungen zur Mustererkennung im Schach",
+    "secondaryKeywords": [
+      "Mustererkennung im Schach",
+      "Training taktischer Motive",
+      "Übungen zu taktischen Mustern",
+      "Schachmuster für Anfänger",
+      "Schachmotive merken"
+    ],
+    "painPoint": "Jede Stellung wirkt neu, deshalb bemerkst du taktische Ideen zu spät.",
+    "ctaLabel": "Muster trainieren",
+    "quickAnswer": "Ein Muster ist eine vertraute Anordnung von Figuren und Feldern. Wiederhole dieselbe Musterart, bis du die dahinterliegende Idee schnell siehst.",
+    "keyTakeaways": [
+      "Ein Muster umfasst die Form am Brett und die Idee, die sie erzeugt.",
+      "Brett-Erinnerung hilft, Muster unter Zeitdruck zu bemerken.",
+      "Wiederhole ein paar gängige Muster, bevor du viele neue ergänzt."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die Taktik lösen, ähnliche Formen in Partien aber nicht bemerken.",
+      "Anfänger, die mehr Struktur wollen als zufällige Aufgaben.",
+      "Alle, denen Stellungen visuell noch chaotisch vorkommen."
+    ],
+    "timeToRead": "7 Min. Lesezeit",
+    "introParagraphs": [
+      "Mustererkennung macht eine Stellung vertraut. Eine Form am Brett kann auf Gabel, Fesselung, gefangene Figur oder schwaches Feld hindeuten, bevor du alles rechnest.",
+      "Beginne mit einer kleinen Gruppe gängiger Muster. Baue jede Stellung aus dem Gedächtnis nach, um die Figuren und Felder zu behalten, die die Idee tragen."
+    ],
+    "startHereTitle": "Starte mit einem Muster nach dem anderen",
+    "startHereSteps": [
+      "Wähle eine Musterart, etwa Gabeln, Fesselungen oder Angriffe auf ungedeckte Figuren.",
+      "Studiere die Form und baue sie aus dem Gedächtnis nach, nicht nur vom festen Diagramm.",
+      "Benenne die Felder und Verteidiger, die das Muster tragen.",
+      "Spiele eine Runde Memory Chess, um sauberes Erinnern zu festigen.",
+      "Bereite eine aktuelle Partie nach und finde, wo ein ähnliches Muster auftauchte oder fehlte."
+    ],
+    "drillSectionTitle": "Einfache Übungen zur Mustererkennung",
+    "drillCards": [
+      {
+        "title": "Ein Muster nachbauen",
+        "description": "Baue ein Schachmuster aus dem Gedächtnis nach und benenne die wichtigsten Figuren und Felder.",
+        "duration": "5 Minuten",
+        "goal": "Das Muster mit einer klaren Brett-Erinnerung verbinden.",
+        "ctaLabel": "Muster nachbauen"
+      },
+      {
+        "title": "Wiederholung einer Familie",
+        "description": "Wiederhole mehrere Beispiele desselben Musters, bevor du die Art wechselst.",
+        "duration": "5 Minuten",
+        "goal": "Die Form am Brett vertraut machen.",
+        "ctaLabel": "Eine Familie wiederholen"
+      },
+      {
+        "title": "In der eigenen Partie finden",
+        "description": "Geh eine aktuelle Partie durch und finde, wo dasselbe Muster auftauchte.",
+        "duration": "5 Minuten",
+        "goal": "Musterübung mit echten Stellungen verbinden.",
+        "ctaLabel": "In eigenen Partien suchen"
+      }
+    ],
+    "comparisonTitle": "Zufällige Taktik gegen echte Mustererkennung",
+    "comparisonSummary": "Muster nützen, wenn du sie bemerkst, bevor du lange zu rechnen beginnst.",
+    "comparisonRows": [
+      {
+        "label": "Trainingsstruktur",
+        "struggling": "Du wechselst ständig zwischen unverwandten Mustern.",
+        "stronger": "Du wiederholst eine Musterart, bis sie vertraut ist."
+      },
+      {
+        "label": "Brett-Erinnerung",
+        "struggling": "Du kennst die Idee, aber nicht die Felder, die sie tragen.",
+        "stronger": "Du erinnerst die Details, die das Muster funktionieren lassen."
+      },
+      {
+        "label": "Echte Partien",
+        "struggling": "Muster bleiben in Aufgaben gefangen.",
+        "stronger": "Du bemerkst ihre frühen Anzeichen in laufenden Partien."
+      }
+    ],
+    "mistakes": [
+      "Nur den Namen des Musters lernen, ohne die Form zu verstehen.",
+      "Zu oft die Musterart wechseln.",
+      "Die Felder und Verteidiger ignorieren, die das Muster tragen.",
+      "Nach dem Mustertraining die Partieanalyse auslassen."
+    ],
+    "mistakesCallout": "Ergänze Abwechslung nicht zu schnell. Wiederhole eine Musterart, bis sie vertraut ist.",
+    "planTitle": "7-Tage-Musterplan",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "10 Minuten",
+        "detail": "Wähle eine Musterart und baue mehrere Beispiele aus dem Gedächtnis nach."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "12 Minuten",
+        "detail": "Ergänze bei jedem Beispiel Feldnamen und das Zählen der Verteidiger."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "12 Minuten",
+        "detail": "Spiele vor der Musterübung eine Runde Memory Chess, damit das Brett klarer wirkt."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 Minuten",
+        "detail": "Durchsuche deine letzten Partien nach demselben Muster und notiere, wo es auftauchte oder fast auftauchte."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Was ist Mustererkennung im Schach?",
+        "answer": "Eine vertraute Form am Brett zu sehen und schnell die Idee zu erinnern, die dort meist funktioniert."
+      },
+      {
+        "question": "Wie trainieren Anfänger Mustererkennung?",
+        "answer": "Eine kleine Menge Muster wiederholen, die Stellungen aus dem Gedächtnis nachbauen und sie in echten Partien suchen."
+      },
+      {
+        "question": "Reichen Aufgaben für Mustererkennung?",
+        "answer": "Nicht immer. Sie helfen, aber dieselbe Musterart zu wiederholen und Partien nachzubereiten macht sie erst nutzbar."
+      },
+      {
+        "question": "Warum Memory Chess mit Musterübungen mischen?",
+        "answer": "Weil Mustererkennung leichter fällt, wenn das ganze Brett im Gedächtnis klarer bleibt."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Baue eine stärkere Erinnerungsebene fürs Musterlernen."
+      },
+      {
+        "reason": "Bring Musterübung und eine sinnvolle Aufgabenmenge ins Gleichgewicht."
+      },
+      {
+        "reason": "Nutze die studierten Muster in echten Partien."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Rechenübungen im Schach für Anfänger",
+    "h1": "Rechenübungen im Schach für Anfänger",
+    "description": "Nutze einfache Rechenübungen, um Züge zu vergleichen und kurzen Varianten zu folgen, ohne den Faden zu verlieren.",
+    "primaryKeyword": "Rechenübungen Schach",
+    "secondaryKeywords": [
+      "Schachberechnung für Anfänger",
+      "Züge vorausrechnen",
+      "Übungen zum Variantenhalten",
+      "Kandidatenzüge üben",
+      "Visualisierung und Berechnung"
+    ],
+    "painPoint": "Du beginnst zu rechnen und verwechselst bald die Züge oder verlierst die Stellung.",
+    "ctaLabel": "Klares Rechnen üben",
+    "quickAnswer": "Vergleiche anfangs nur einen oder zwei mögliche Züge. Halte das Brett im Kopf klar und prüfe sofort.",
+    "keyTakeaways": [
+      "Zwei klare Zugfolgen sind besser als fünf verworrene.",
+      "Klare Visualisierung führt zu klarem Rechnen.",
+      "Prüfe direkt nach jeder Übung."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die wissen, dass sie rechnen sollten, aber die Variante schnell verlieren.",
+      "Anfänger, die in scharfen Stellungen nach Gefühl ziehen.",
+      "Alle, die Gedächtnisübung in echten Entscheidungen nutzen wollen."
+    ],
+    "timeToRead": "7 Min. Lesezeit",
+    "introParagraphs": [
+      "Rechnen heißt schlicht zu fragen: „Wenn ich hierhin ziehe, was passiert dann?“ Schwierig ist, dabei das Brett klar zu halten.",
+      "Brett-Erinnerung und Visualisierung erleichtern das Rechnen. Übe beides gemeinsam statt getrennt."
+    ],
+    "startHereTitle": "Starte mit zwei möglichen Zügen",
+    "startHereSteps": [
+      "Wähle höchstens zwei Kandidatenzüge aus einer Stellung.",
+      "Stell dir eine Variante über zwei Halbzüge vor und fasse sie in einem Satz zusammen.",
+      "Nutze eine Runde Memory Chess, damit das Grundbrett scharf bleibt.",
+      "Kehre zur Ausgangsstellung zurück und vergleiche die beiden Varianten in Ruhe.",
+      "Prüfe sofort und benenne, ob der Fehler im Brettbild oder in der Zugreihenfolge lag."
+    ],
+    "drillSectionTitle": "Einfache Rechenübungen",
+    "drillCards": [
+      {
+        "title": "Zwei Kandidaten vergleichen",
+        "description": "Halte zwei sinnvolle Züge und vergleiche ihre kurzen taktischen Folgen.",
+        "duration": "6 Minuten",
+        "goal": "Züge vergleichen, ohne zu viel behalten zu müssen.",
+        "ctaLabel": "Zwei Varianten vergleichen"
+      },
+      {
+        "title": "Erst erinnern, dann rechnen",
+        "description": "Nutze vor der Variantenarbeit eine kurze Erinnerungsrunde für ein saubereres Brett.",
+        "duration": "4 Minuten",
+        "goal": "Das Brett behalten, bevor du einer Zugfolge folgst.",
+        "ctaLabel": "Vor den Varianten erinnern"
+      },
+      {
+        "title": "Variante in einem Satz",
+        "description": "Fasse den Zweig in einem Satz zusammen, bevor du prüfst.",
+        "duration": "4 Minuten",
+        "goal": "Die Zugfolge klar und leicht erklärbar halten.",
+        "ctaLabel": "Zweig zusammenfassen"
+      }
+    ],
+    "comparisonTitle": "Unordentliches gegen sauberes Rechnen",
+    "comparisonSummary": "Jage noch keinen langen Varianten hinterher. Mach zuerst kurze Varianten genau.",
+    "comparisonRows": [
+      {
+        "label": "Kandidatenzüge",
+        "struggling": "Du erwägst zu viele Züge gleichzeitig.",
+        "stronger": "Du vergleichst wenige sinnvolle Züge."
+      },
+      {
+        "label": "Brettbild",
+        "struggling": "Die entstehende Stellung verschwimmt schnell.",
+        "stronger": "Du hältst wichtige Felder und Verteidiger stabil im Gedächtnis."
+      },
+      {
+        "label": "Prüfung",
+        "struggling": "Du weißt nicht, warum die Variante scheiterte.",
+        "stronger": "Du erkennst, ob der Fehler von Gedächtnis, Zugreihenfolge oder Einschätzung kam."
+      }
+    ],
+    "mistakes": [
+      "Zu viele Zweige gleichzeitig rechnen wollen.",
+      "Die Auswahl der Kandidaten überspringen und alles rechnen.",
+      "Nicht sofort nach der Variante prüfen.",
+      "Ein schwaches Brettgedächtnis ignorieren."
+    ],
+    "mistakesCallout": "Rechne noch nicht viele Züge voraus. Eine klare Zwei-Zug-Variante nützt mehr als eine lange verworrene.",
+    "planTitle": "7-Tage-Rechenplan für Anfänger",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "10 Minuten",
+        "detail": "Nur Vergleiche zweier Kandidaten mit sofortiger Prüfung."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "12 Minuten",
+        "detail": "Ergänze vor der Rechenarbeit eine Runde Memory Chess."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "12 Minuten",
+        "detail": "Fasse jeden Zweig in einem Satz zusammen, bevor du prüfst."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 Minuten",
+        "detail": "Übertrage den Ablauf ins Schnellschach: Pausiere an taktisch scharfen Stellen und halte die Kandidatenmenge klein."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Wie verbessern Anfänger ihre Berechnung?",
+        "answer": "Wenige Kandidaten, schnelle Prüfung und bessere Visualisierung und Erinnerung unter der Variantenarbeit."
+      },
+      {
+        "question": "Soll ich weiter vorausrechnen?",
+        "answer": "Erst wenn die aktuelle Tiefe verlässlich ist. Genauigkeit schlägt Ehrgeiz."
+      },
+      {
+        "question": "Warum brechen meine Varianten zusammen?",
+        "answer": "Oft weil das Brettbild nicht stabil genug ist oder zu viele Kandidaten gleichzeitig aktiv sind."
+      },
+      {
+        "question": "Hilft Memory Chess beim Rechnen?",
+        "answer": "Ja. Bessere Erinnerung macht es viel leichter, entstehende Stellungen während der Berechnung zu halten."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Verbessere die Ebene, die Varianten hinter der Berechnung hält."
+      },
+      {
+        "reason": "Sieh das Brett klarer, bevor du längeren Varianten folgst."
+      },
+      {
+        "reason": "Nutze einen einfacheren Entscheidungsablauf für saubereres Rechnen."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Wie Anfänger im Schach denken sollten",
+    "h1": "Wie Anfänger im Schach denken sollten",
+    "description": "Nutze einen einfachen Ablauf pro Zug, um Drohungen zu prüfen, Optionen zu vergleichen und die Zeit im Griff zu behalten.",
+    "primaryKeyword": "im Schach richtig denken",
+    "secondaryKeywords": [
+      "Denkprozess für Anfänger",
+      "woran im Schach denken",
+      "Entscheidungen im Schach",
+      "Checkliste vor dem Zug",
+      "einfacher Denkablauf"
+    ],
+    "painPoint": "Du ziehst zu schnell oder denkst zu lange und bist trotzdem unsicher.",
+    "ctaLabel": "Einfachen Zugablauf üben",
+    "quickAnswer": "Nutze bei jedem Zug denselben kurzen Ablauf: Drohungen des Gegners prüfen, einen bis drei Züge wählen und sicherstellen, dass die Wahl sicher ist.",
+    "keyTakeaways": [
+      "Ein kurzer Ablauf ist leichter zu nutzen als eine lange Liste.",
+      "Die Drohungsprüfung kommt immer vor der Zugwahl.",
+      "Nimm dir mehr Zeit, wenn die Stellung gefährlich wird."
+    ],
+    "whoThisIsFor": [
+      "Spieler, die in ruhigen Stellungen raten und in scharfen erstarren.",
+      "Anfänger, die für jeden Zug einen klaren Ablauf brauchen.",
+      "Alle, die unter Zeitdruck sauberer entscheiden wollen."
+    ],
+    "timeToRead": "7 Min. Lesezeit",
+    "introParagraphs": [
+      "Anfänger fragen sich oft, woran starke Spieler denken. Die Antwort kann kompliziert klingen, aber dein Ablauf muss kurz genug sein, um ihn jedes Mal zu nutzen.",
+      "Beginne mit Drohungen, wähle wenige mögliche Züge und prüfe, ob die endgültige Wahl sicher ist."
+    ],
+    "startHereTitle": "Starte hier: der Vier-Schritte-Ablauf",
+    "startHereSteps": [
+      "Prüfe zuerst die stärksten Drohungen des Gegners.",
+      "Nenne einen bis drei realistische Kandidatenzüge.",
+      "Prüfe, ob dein geplanter Zug sicher ist und keine Figur ungedeckt lässt.",
+      "Frage, ob die Stellung ruhig genug zum Ziehen oder scharf genug zum Langsamerwerden ist.",
+      "Sieh nach der Partie nach, an welcher Stelle der Ablauf gerissen ist."
+    ],
+    "drillSectionTitle": "Übungen für ruhigere Entscheidungen",
+    "drillCards": [
+      {
+        "title": "Auslöser „Gegner zuerst“",
+        "description": "Beginne jede Trainingsstellung damit, die forcierten Möglichkeiten des Gegners zu nennen.",
+        "duration": "3 Minuten",
+        "goal": "Die Drohungsprüfung automatisch statt optional machen.",
+        "ctaLabel": "Mit Drohungen beginnen"
+      },
+      {
+        "title": "Grenze von drei Kandidaten",
+        "description": "Erlaube dir in einer Trainingsstellung nie mehr als drei Kandidatenzüge.",
+        "duration": "4 Minuten",
+        "goal": "Zu viele Optionen und Grübeln reduzieren.",
+        "ctaLabel": "Kandidaten begrenzen"
+      },
+      {
+        "title": "Sicherheitscheck",
+        "description": "Sieh dir einen Zug an und frage, ob du wirklich sicher warst oder nur müde vom Denken.",
+        "duration": "4 Minuten",
+        "goal": "Bemerken, wenn du nur aus Erschöpfung ziehst.",
+        "ctaLabel": "Sicherheit prüfen"
+      }
+    ],
+    "comparisonTitle": "Ein einfacher Zugablauf",
+    "comparisonSummary": "Der beste Denkprozess ist der, den du auch bei laufender Uhr noch nutzen kannst.",
+    "comparisonRows": [
+      {
+        "label": "Umgang mit Drohungen",
+        "struggling": "Du denkst zuerst an deinen Plan.",
+        "stronger": "Du beginnst mit den stärksten Drohungen des Gegners."
+      },
+      {
+        "label": "Kandidatenzüge",
+        "struggling": "Du springst zwischen zu vielen Möglichkeiten.",
+        "stronger": "Du hältst eine kleine, realistische Kandidatenmenge."
+      },
+      {
+        "label": "Zeiteinsatz",
+        "struggling": "Du gibst jedem Zug dieselbe Aufmerksamkeit.",
+        "stronger": "Du wirst langsamer, wenn sich Spannung, Taktik oder Königssicherheit ändern."
+      }
+    ],
+    "mistakes": [
+      "Eine lange Liste nutzen, der du in echten Partien nie folgst.",
+      "An den eigenen Plan denken, bevor du Drohungen prüfst.",
+      "Die Kandidatenliste zu groß werden lassen.",
+      "Müdigkeit mit Sicherheit verwechseln."
+    ],
+    "mistakesCallout": "Ergänze keine weiteren Prüfungen. Nutze einen kurzen Ablauf, den du bei jedem Zug wiederholen kannst.",
+    "planTitle": "7-Tage-Feinschliff für den Ablauf",
+    "planSteps": [
+      {
+        "label": "Tag 1 bis 2",
+        "duration": "10 Minuten",
+        "detail": "Nutze nur den Auslöser „Gegner zuerst“ und die Grenze von drei Kandidaten."
+      },
+      {
+        "label": "Tag 3 bis 4",
+        "duration": "12 Minuten",
+        "detail": "Ergänze eine kurze Runde Memory Chess, damit das Brett beim Entscheiden klarer ist."
+      },
+      {
+        "label": "Tag 5",
+        "duration": "12 Minuten",
+        "detail": "Prüfe, ob dein letzter Patzer an der Drohungsprüfung oder an zu vielen Kandidaten lag."
+      },
+      {
+        "label": "Tag 6 bis 7",
+        "duration": "15 Minuten",
+        "detail": "Nutze den vollen Ablauf im Schnellschach und notiere, welcher Schritt unter Zeitdruck reißt."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Woran sollten Anfänger im Schach denken?",
+        "answer": "Beginne mit den Drohungen des Gegners, wähle einen bis drei mögliche Züge und prüfe, ob die endgültige Wahl sicher ist."
+      },
+      {
+        "question": "Wie viele Kandidatenzüge sind sinnvoll?",
+        "answer": "Meist einer bis drei. Mehr überfordert Anfänger oft und senkt die Entscheidungsqualität."
+      },
+      {
+        "question": "Warum erstarre ich, obwohl ich den Ablauf kenne?",
+        "answer": "Oft weil das Brett nicht klar genug ist oder zu viele Kandidaten offen sind. Einfachere Stellungen und Erinnerungsarbeit helfen."
+      },
+      {
+        "question": "Kann ein Denkablauf Patzer verhindern?",
+        "answer": "Ja, besonders wenn er die Drohungsprüfung vor die Zugwahl zwingt."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Nutze eine ausdrücklichere Anti-Patzer-Liste, wenn der Ablauf weiter Material verliert."
+      },
+      {
+        "reason": "Nutze klareres Rechnen, um mögliche Züge zu vergleichen."
+      },
+      {
+        "reason": "Erkenne Felder schneller während deines Zugablaufs."
+      }
+    ]
+  }
+]

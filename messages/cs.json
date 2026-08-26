@@ -361,5 +361,43 @@
     "bannerCta": "Zobrazit novinky",
     "bannerLabel": "Aktualizace Memory Chess",
     "entriesInEnglish": "Poznámky k vydání vycházejí v angličtině."
+  },
+  "learnArticle": {
+    "faqLabel": "Časté dotazy",
+    "whatChangesTitle": "Co se zlepší nejdřív",
+    "trackThisWeekTitle": "Co tento týden sledovat",
+    "trackThisWeekBody": "Vyberte jediné jednoduché měřítko: přehmaty na partii, počet správně vybavených pozic, nebo kolik tahů si dokážete jasně představit.",
+    "startHereSummary": "Tyto kroky můžete zkusit ještě dnes.",
+    "drillsSummary": "Každé cvičení vám dá procvičit lekci přímo v Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situace",
+      "before": "Před tréninkem",
+      "after": "Po tréninku"
+    },
+    "mistakesTitle": "Časté chyby, kterým se vyhnout",
+    "whatToDoInsteadTitle": "Co dělat místo toho",
+    "planSummary": "Projděte tyto kroky dřív, než trénink ztížíte nebo prodloužíte.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Méně přehmatů",
+        "description": "Získejte návyk rychleji kontrolovat hrozby a přestaňte v jednoduchých pozicích nechávat figurky zdarma.",
+        "accent": "Kontrola hrozeb"
+      },
+      "visualization": {
+        "label": "Lepší představivost",
+        "description": "Udržte si šachovnici v hlavě déle, aby byl výpočet klidnější a jasnější.",
+        "accent": "Šachovnice v hlavě"
+      },
+      "memory": {
+        "label": "Trénink paměti",
+        "description": "Zlepšete vybavování pozic a udržení vzorců, aniž byste z tréninku udělali domácí úkol z teorie.",
+        "accent": "Vybavování a udržení"
+      },
+      "routine": {
+        "label": "Denní rutina",
+        "description": "Používejte krátký plán, který spojuje cvičení, partie a rozbor.",
+        "accent": "Pravidelnost"
+      }
+    }
   }
 }

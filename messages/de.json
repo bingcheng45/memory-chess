@@ -361,5 +361,43 @@
     "bannerCta": "Neuerungen ansehen",
     "bannerLabel": "Update für Memory Chess",
     "entriesInEnglish": "Die Versionshinweise erscheinen auf Englisch."
+  },
+  "learnArticle": {
+    "faqLabel": "Häufige Fragen",
+    "whatChangesTitle": "Was sich zuerst verbessert",
+    "trackThisWeekTitle": "Was du diese Woche verfolgen solltest",
+    "trackThisWeekBody": "Wähle eine einzige einfache Messgröße: Patzer pro Partie, korrekt erinnerte Stellungen oder wie viele Züge du klar vor dir siehst.",
+    "startHereSummary": "Diese Schritte kannst du heute ausprobieren.",
+    "drillsSummary": "Jede Übung lässt dich das Gelernte direkt in Memory Chess anwenden.",
+    "comparisonColumns": {
+      "situation": "Situation",
+      "before": "Vor dem Training",
+      "after": "Nach dem Training"
+    },
+    "mistakesTitle": "Häufige Fehler, die du vermeiden solltest",
+    "whatToDoInsteadTitle": "Was du stattdessen tun solltest",
+    "planSummary": "Arbeite diese Schritte ab, bevor du das Training schwerer oder länger machst.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Patzer reduzieren",
+        "description": "Gewöhne dir an, Drohungen schneller zu prüfen, und stelle in einfachen Stellungen keine Figuren mehr ein.",
+        "accent": "Drohungen prüfen"
+      },
+      "visualization": {
+        "label": "Vorstellungskraft verbessern",
+        "description": "Halte das Brett länger im Kopf, damit das Rechnen ruhiger und klarer wird.",
+        "accent": "Brett im Kopf behalten"
+      },
+      "memory": {
+        "label": "Gedächtnis trainieren",
+        "description": "Verbessere Stellungserinnerung und Musterbehalt, ohne das Training in Theoriehausaufgaben zu verwandeln.",
+        "accent": "Erinnern und Behalten"
+      },
+      "routine": {
+        "label": "Eine tägliche Routine aufbauen",
+        "description": "Nutze einen kurzen Plan aus Übungen, Partien und Nachbereitung.",
+        "accent": "Beständigkeit"
+      }
+    }
   }
 }

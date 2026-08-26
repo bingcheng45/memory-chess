@@ -361,5 +361,43 @@
     "bannerCta": "Se hvad der er nyt",
     "bannerLabel": "Memory Chess-opdatering",
     "entriesInEnglish": "Udgivelsesnoterne offentliggøres på engelsk."
+  },
+  "learnArticle": {
+    "faqLabel": "Ofte stillede spørgsmål",
+    "whatChangesTitle": "Hvad der bliver bedre først",
+    "trackThisWeekTitle": "Hvad du følger med i denne uge",
+    "trackThisWeekBody": "Vælg ét enkelt mål: fejl per parti, antal korrekt gengivne stillinger, eller hvor mange træk du kan se tydeligt for dig.",
+    "startHereSummary": "De her trin kan du prøve allerede i dag.",
+    "drillsSummary": "Hver øvelse lader dig træne lektionen direkte i Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situation",
+      "before": "Før træning",
+      "after": "Efter træning"
+    },
+    "mistakesTitle": "Almindelige fejl, du bør undgå",
+    "whatToDoInsteadTitle": "Gør det her i stedet",
+    "planSummary": "Gå de her trin igennem, før du gør træningen sværere eller længere.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Færre fejl",
+        "description": "Få vanen med at tjekke trusler hurtigere, og hold op med at forære brikker væk i simple stillinger.",
+        "accent": "Trusselstjek"
+      },
+      "visualization": {
+        "label": "Bedre visualisering",
+        "description": "Hold brættet i hovedet længere, så beregningen bliver roligere og klarere.",
+        "accent": "Brættet i hovedet"
+      },
+      "memory": {
+        "label": "Træn hukommelsen",
+        "description": "Forbedr din genkaldelse af stillinger og mønstre uden at træningen bliver teorilektier.",
+        "accent": "Genkaldelse og hukommelse"
+      },
+      "routine": {
+        "label": "Byg en daglig rutine",
+        "description": "Brug en kort plan, der blander øvelser, partier og gennemgang.",
+        "accent": "Vedholdenhed"
+      }
+    }
   }
 }

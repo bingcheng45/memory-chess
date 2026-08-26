@@ -361,5 +361,43 @@
     "bannerCta": "Katso mitä uutta",
     "bannerLabel": "Memory Chess -päivitys",
     "entriesInEnglish": "Julkaisutiedot julkaistaan englanniksi."
+  },
+  "learnArticle": {
+    "faqLabel": "Usein kysyttyä",
+    "whatChangesTitle": "Mikä paranee ensin",
+    "trackThisWeekTitle": "Mitä seurata tällä viikolla",
+    "trackThisWeekBody": "Valitse yksi yksinkertainen mittari: virheet per peli, oikein muistetut asemat, tai kuinka monta siirtoa näet selvästi mielessäsi.",
+    "startHereSummary": "Nämä askeleet voit kokeilla jo tänään.",
+    "drillsSummary": "Jokainen harjoitus antaa soveltaa opitun suoraan Memory Chessissä.",
+    "comparisonColumns": {
+      "situation": "Tilanne",
+      "before": "Ennen harjoittelua",
+      "after": "Harjoittelun jälkeen"
+    },
+    "mistakesTitle": "Yleisiä virheitä, joita kannattaa välttää",
+    "whatToDoInsteadTitle": "Tee sen sijaan näin",
+    "planSummary": "Käy nämä askeleet läpi ennen kuin teet harjoittelusta vaikeampaa tai pidempää.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Vähemmän kömmähdyksiä",
+        "description": "Opettele tarkistamaan uhat nopeammin äläkä jätä nappuloita ilmaiseksi yksinkertaisissa asemissa.",
+        "accent": "Uhkien tarkistus"
+      },
+      "visualization": {
+        "label": "Parempi hahmotus",
+        "description": "Pidä lauta mielessäsi pidempään, jolloin laskeminen tuntuu rauhallisemmalta ja selkeämmältä.",
+        "accent": "Lauta mielessä"
+      },
+      "memory": {
+        "label": "Harjoita muistia",
+        "description": "Paranna asemien muistamista ja kuvioiden mieleen jäämistä ilman että harjoittelusta tulee teorialäksyjä.",
+        "accent": "Muistaminen ja säilyminen"
+      },
+      "routine": {
+        "label": "Rakenna päivittäinen rutiini",
+        "description": "Käytä lyhyttä suunnitelmaa, jossa yhdistyvät harjoitukset, pelit ja läpikäynti.",
+        "accent": "Säännöllisyys"
+      }
+    }
   }
 }

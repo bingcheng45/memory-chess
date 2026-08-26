@@ -361,5 +361,43 @@
     "bannerCta": "Bekijk wat er nieuw is",
     "bannerLabel": "Memory Chess-update",
     "entriesInEnglish": "De release-aantekeningen verschijnen in het Engels."
+  },
+  "learnArticle": {
+    "faqLabel": "Veelgestelde vragen",
+    "whatChangesTitle": "Wat het eerst verbetert",
+    "trackThisWeekTitle": "Wat je deze week bijhoudt",
+    "trackThisWeekBody": "Kies één eenvoudige maat: blunders per partij, correct herinnerde stellingen, of hoeveel zetten je helder voor je ziet.",
+    "startHereSummary": "Deze stappen kun je vandaag al proberen.",
+    "drillsSummary": "Bij elke oefening pas je de les meteen toe in Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situatie",
+      "before": "Voor het oefenen",
+      "after": "Na het oefenen"
+    },
+    "mistakesTitle": "Veelgemaakte fouten om te vermijden",
+    "whatToDoInsteadTitle": "Wat je in plaats daarvan doet",
+    "planSummary": "Werk deze stappen af voordat je het oefenen zwaarder of langer maakt.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Minder blunders",
+        "description": "Maak er een gewoonte van dreigingen sneller te checken en geef in simpele stellingen geen stukken meer weg.",
+        "accent": "Dreigingen checken"
+      },
+      "visualization": {
+        "label": "Beter voorstellingsvermogen",
+        "description": "Houd het bord langer in je hoofd, zodat rekenen rustiger en helderder wordt.",
+        "accent": "Bord in je hoofd"
+      },
+      "memory": {
+        "label": "Geheugen trainen",
+        "description": "Verbeter het herinneren van stellingen en het onthouden van patronen zonder van je training theoriehuiswerk te maken.",
+        "accent": "Herinneren en onthouden"
+      },
+      "routine": {
+        "label": "Een dagelijkse routine",
+        "description": "Gebruik een kort plan met oefeningen, partijen en nabespreking.",
+        "accent": "Regelmaat"
+      }
+    }
   }
 }

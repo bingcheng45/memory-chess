@@ -361,5 +361,43 @@
     "bannerCta": "Xem có gì mới",
     "bannerLabel": "Cập nhật Memory Chess",
     "entriesInEnglish": "Ghi chú phát hành được đăng bằng tiếng Anh."
+  },
+  "learnArticle": {
+    "faqLabel": "Câu hỏi thường gặp",
+    "whatChangesTitle": "Điều tiến bộ trước tiên",
+    "trackThisWeekTitle": "Nên theo dõi gì trong tuần này",
+    "trackThisWeekBody": "Chọn một chỉ số đơn giản: số nước đi hớ mỗi ván, số thế cờ nhớ đúng, hoặc bạn hình dung rõ được bao nhiêu nước.",
+    "startHereSummary": "Bạn có thể thử những bước này ngay hôm nay.",
+    "drillsSummary": "Mỗi bài tập cho bạn luyện ngay điều vừa đọc trong Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Tình huống",
+      "before": "Trước khi luyện",
+      "after": "Sau khi luyện"
+    },
+    "mistakesTitle": "Những lỗi phổ biến nên tránh",
+    "whatToDoInsteadTitle": "Nên làm gì thay vào đó",
+    "planSummary": "Hãy đi qua các bước này trước khi làm bài luyện khó hơn hoặc dài hơn.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Giảm sai lầm",
+        "description": "Tạo thói quen kiểm tra đe dọa nhanh hơn và đừng để quân bị bắt không trong những thế đơn giản.",
+        "accent": "Kiểm tra đe dọa"
+      },
+      "visualization": {
+        "label": "Hình dung tốt hơn",
+        "description": "Giữ bàn cờ trong đầu lâu hơn để việc tính toán trở nên bình tĩnh và rõ ràng hơn.",
+        "accent": "Bàn cờ trong đầu"
+      },
+      "memory": {
+        "label": "Rèn trí nhớ",
+        "description": "Cải thiện khả năng nhớ thế cờ và giữ lại các mẫu hình mà không biến việc luyện tập thành học thuộc lý thuyết.",
+        "accent": "Nhớ lại và ghi nhớ"
+      },
+      "routine": {
+        "label": "Xây thói quen hằng ngày",
+        "description": "Dùng một kế hoạch ngắn kết hợp bài tập, ván đấu và xem lại.",
+        "accent": "Đều đặn"
+      }
+    }
   }
 }

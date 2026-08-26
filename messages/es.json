@@ -361,5 +361,43 @@
     "bannerCta": "Ver novedades",
     "bannerLabel": "Actualización de Memory Chess",
     "entriesInEnglish": "Las notas de versión se publican en inglés."
+  },
+  "learnArticle": {
+    "faqLabel": "Preguntas frecuentes",
+    "whatChangesTitle": "Qué mejora primero",
+    "trackThisWeekTitle": "Qué medir esta semana",
+    "trackThisWeekBody": "Elige una sola medida sencilla: errores por partida, tableros recordados correctamente o cuántas jugadas puedes visualizar con claridad.",
+    "startHereSummary": "Puedes probar estos pasos hoy mismo.",
+    "drillsSummary": "Cada ejercicio te deja practicar la lección en Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situación",
+      "before": "Antes de practicar",
+      "after": "Después de practicar"
+    },
+    "mistakesTitle": "Errores habituales que conviene evitar",
+    "whatToDoInsteadTitle": "Qué hacer en su lugar",
+    "planSummary": "Sigue estos pasos antes de hacer la práctica más difícil o más larga.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Reducir los errores graves",
+        "description": "Adquiere el hábito de comprobar amenazas más rápido y deja de colgar piezas en posiciones sencillas.",
+        "accent": "Comprobar amenazas"
+      },
+      "visualization": {
+        "label": "Mejorar la visualización",
+        "description": "Mantén el tablero en la cabeza durante más tiempo para que calcular resulte más tranquilo y claro.",
+        "accent": "Control mental del tablero"
+      },
+      "memory": {
+        "label": "Entrenar la memoria",
+        "description": "Mejora el recuerdo del tablero y la retención de patrones sin convertir el entrenamiento en deberes de teoría.",
+        "accent": "Recuerdo y retención"
+      },
+      "routine": {
+        "label": "Crear una rutina diaria",
+        "description": "Usa un plan corto que combine ejercicios, partidas y revisión.",
+        "accent": "Constancia"
+      }
+    }
   }
 }

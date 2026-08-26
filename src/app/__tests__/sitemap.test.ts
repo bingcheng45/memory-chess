@@ -1,5 +1,5 @@
 import sitemap from "@/app/sitemap";
-import { LEARN_PAGES } from "@/lib/seo/learnPages";
+import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
 
 describe("sitemap", () => {
   it("includes static routes, learn article URLs, and the learn hub timestamp", async () => {

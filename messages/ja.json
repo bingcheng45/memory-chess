@@ -361,5 +361,43 @@
     "bannerCta": "新着をチェック",
     "bannerLabel": "Memory Chess のアップデート",
     "entriesInEnglish": "リリースノートは英語で公開しています。"
+  },
+  "learnArticle": {
+    "faqLabel": "よくあるご質問",
+    "whatChangesTitle": "最初に伸びるところ",
+    "trackThisWeekTitle": "今週の記録項目",
+    "trackThisWeekBody": "シンプルな指標をひとつ選びましょう。1 局あたりのミス数、正しく再現できた局面の数、あるいは何手先まではっきり思い描けるか。",
+    "startHereSummary": "今日から試せるステップです。",
+    "drillsSummary": "どのドリルも、学んだことをそのまま Memory Chess で練習できます。",
+    "comparisonColumns": {
+      "situation": "場面",
+      "before": "練習前",
+      "after": "練習後"
+    },
+    "mistakesTitle": "よくある失敗",
+    "whatToDoInsteadTitle": "代わりにやること",
+    "planSummary": "練習を難しくしたり長くしたりする前に、この手順を踏んでください。",
+    "goals": {
+      "reduce-blunders": {
+        "label": "うっかりミスを減らす",
+        "description": "狙いを素早く確認する習慣をつけ、簡単な局面で駒をタダで渡さないようにします。",
+        "accent": "狙いの確認"
+      },
+      "visualization": {
+        "label": "イメージ力を高める",
+        "description": "盤面を長く頭に保てるようにして、読みを落ち着いて明確に進められるようにします。",
+        "accent": "頭の中の盤面"
+      },
+      "memory": {
+        "label": "記憶力を鍛える",
+        "description": "局面の再現力とパターンの定着を高めます。定跡の暗記に変えてしまわずに。",
+        "accent": "再現と定着"
+      },
+      "routine": {
+        "label": "毎日の習慣をつくる",
+        "description": "ドリル・対局・振り返りを組み合わせた短いプランを使います。",
+        "accent": "継続"
+      }
+    }
   }
 }

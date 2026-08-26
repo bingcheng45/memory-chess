@@ -11,25 +11,28 @@ import {
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import {
-  LEARN_GOALS,
-  LEARN_PAGES,
   type LearnComparisonRow,
   type LearnPageContent,
-} from "@/lib/seo/learnPages";
+} from "@/lib/seo/learn/schema";
+import type { LearnGoal } from "@/lib/seo/learn";
 import LearnArticleTracking from "@/components/learn/LearnArticleTracking";
 
 const SITE_URL = "https://thememorychess.com";
 
 type LearnArticleProps = {
   page: LearnPageContent;
+  goals: LearnGoal[];
+  /** Every article in the same locale, used to resolve the "read next" links. */
+  allPages: LearnPageContent[];
+  locale: string;
 };
 
 function toAbsoluteUrl(pathname: string): string {
   return `${SITE_URL}${pathname}`;
 }
 
-function formatDate(value: string): string {
-  return new Intl.DateTimeFormat("en-US", {
+function formatDate(value: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -37,10 +40,13 @@ function formatDate(value: string): string {
   }).format(new Date(value));
 }
 
-function buildRelatedPageData(page: LearnPageContent) {
+function buildRelatedPageData(
+  page: LearnPageContent,
+  allPages: LearnPageContent[],
+) {
   return page.relatedArticles
     .map((entry) => {
-      const relatedPage = LEARN_PAGES.find(
+      const relatedPage = allPages.find(
         (candidate) => candidate.slug === entry.slug,
       );
 
@@ -72,12 +78,18 @@ function renderComparisonRows(rows: LearnComparisonRow[]) {
   ));
 }
 
-export default function LearnArticleRich({ page }: LearnArticleProps) {
-  const goal = LEARN_GOALS[page.goal];
+export default function LearnArticleRich({
+  page,
+  goals,
+  allPages,
+  locale,
+}: LearnArticleProps) {
+  const goalsById = new Map(goals.map((entry) => [entry.id, entry]));
+  const goal = goalsById.get(page.goal)!;
   const articlePath = `/learn/${page.slug}`;
   const articleUrl = toAbsoluteUrl(articlePath);
   const socialImageUrl = `${articleUrl}/opengraph-image`;
-  const relatedPages = buildRelatedPageData(page);
+  const relatedPages = buildRelatedPageData(page, allPages);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -220,7 +232,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
           </p>
           <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-text-muted">
             <time dateTime={page.updatedAt}>
-              Updated {formatDate(page.updatedAt)}
+              Updated {formatDate(page.updatedAt, locale)}
             </time>
             <span>Reviewed by {page.reviewedBy}</span>
           </div>
@@ -523,7 +535,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
             {relatedPages.map((entry) => (
               <article key={entry.slug} className="py-5">
                 <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
-                  {LEARN_GOALS[entry.page.goal].label}
+                  {goalsById.get(entry.page.goal)?.label}
                 </p>
                 <h3 className="mt-1 text-lg font-semibold text-white">
                   {entry.page.title}
@@ -616,8 +628,8 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
               and one useful way to track progress.
             </p>
             <p>
-              Published {formatDate(page.publishedAt)}. Last reviewed and
-              updated {formatDate(page.updatedAt)} by {page.reviewedBy}.
+              Published {formatDate(page.publishedAt, locale)}. Last reviewed and
+              updated {formatDate(page.updatedAt, locale)} by {page.reviewedBy}.
             </p>
           </div>
 

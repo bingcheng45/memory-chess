@@ -1,7 +1,13 @@
 import type { ComponentProps } from "react";
 import { render, screen } from "@/test-utils/intl";
 import LearnArticleRich from "@/components/learn/LearnArticleRich";
-import { getLearnPageBySlug } from "@/lib/seo/learnPages";
+import { EN_LEARN_PAGES, EN_LEARN_GOALS } from "@/lib/seo/learn";
+
+function getLearnPageBySlug(slug: string) {
+  const page = EN_LEARN_PAGES.find((entry) => entry.slug === slug);
+  if (!page) throw new Error(`Unknown learn slug: ${slug}`);
+  return page;
+}
 
 jest.mock("next/link", () => {
   function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
@@ -48,7 +54,12 @@ describe("LearnArticleRich", () => {
   it("renders the direct answer, practice ideas, and reference links", () => {
     const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
 
-    const { container } = render(<LearnArticleRich page={page} />);
+    const { container } = render(<LearnArticleRich
+        page={page}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+        locale="en"
+      />);
 
     expect(screen.getByText("Start here")).toBeInTheDocument();
     expect(
@@ -96,7 +107,12 @@ describe("LearnArticleRich", () => {
   it("renders clear links to the next guides", () => {
     const page = getLearnPageBySlug("how-to-stop-blundering-in-chess");
 
-    render(<LearnArticleRich page={page} />);
+    render(<LearnArticleRich
+        page={page}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+        locale="en"
+      />);
 
     expect(
       screen.getByRole("heading", { name: "What to learn next" }),

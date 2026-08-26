@@ -361,5 +361,43 @@
     "bannerCta": "Se vad som är nytt",
     "bannerLabel": "Memory Chess-uppdatering",
     "entriesInEnglish": "Versionsanteckningarna publiceras på engelska."
+  },
+  "learnArticle": {
+    "faqLabel": "Vanliga frågor",
+    "whatChangesTitle": "Vad som förbättras först",
+    "trackThisWeekTitle": "Vad du följer upp den här veckan",
+    "trackThisWeekBody": "Välj ett enda enkelt mått: misstag per parti, korrekt återgivna ställningar, eller hur många drag du ser tydligt framför dig.",
+    "startHereSummary": "De här stegen kan du testa redan i dag.",
+    "drillsSummary": "Varje övning låter dig träna lektionen direkt i Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situation",
+      "before": "Före träning",
+      "after": "Efter träning"
+    },
+    "mistakesTitle": "Vanliga misstag att undvika",
+    "whatToDoInsteadTitle": "Gör så här i stället",
+    "planSummary": "Gå igenom de här stegen innan du gör träningen svårare eller längre.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Färre misstag",
+        "description": "Skaffa vanan att kolla hot snabbare och sluta ge bort pjäser i enkla ställningar.",
+        "accent": "Hotkontroll"
+      },
+      "visualization": {
+        "label": "Bättre visualisering",
+        "description": "Håll brädet i huvudet längre så att beräkningen känns lugnare och tydligare.",
+        "accent": "Brädet i huvudet"
+      },
+      "memory": {
+        "label": "Träna minnet",
+        "description": "Förbättra minnet av ställningar och mönster utan att träningen blir teoriläxor.",
+        "accent": "Minne och behållning"
+      },
+      "routine": {
+        "label": "Bygg en daglig rutin",
+        "description": "Använd en kort plan som blandar övningar, partier och genomgång.",
+        "accent": "Uthållighet"
+      }
+    }
   }
 }

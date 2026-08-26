@@ -361,5 +361,43 @@
     "bannerCta": "看看有什麼新變化",
     "bannerLabel": "Memory Chess 更新",
     "entriesInEnglish": "版本說明以英文發布。"
+  },
+  "learnArticle": {
+    "faqLabel": "常見問題",
+    "whatChangesTitle": "最先進步的是什麼",
+    "trackThisWeekTitle": "這週記錄什麼",
+    "trackThisWeekBody": "只挑一個簡單的指標：每局的失誤次數、正確重建的棋局數量，或者你能清楚想像出幾步棋。",
+    "startHereSummary": "這些步驟今天就能試。",
+    "drillsSummary": "每個練習都能讓你把學到的內容直接用在 Memory Chess 裡。",
+    "comparisonColumns": {
+      "situation": "情況",
+      "before": "練習前",
+      "after": "練習後"
+    },
+    "mistakesTitle": "常見的錯誤",
+    "whatToDoInsteadTitle": "應該怎麼做",
+    "planSummary": "在把練習變難或變長之前，先走完這幾步。",
+    "goals": {
+      "reduce-blunders": {
+        "label": "減少失誤",
+        "description": "養成更快檢查威脅的習慣，別再在簡單局面裡白送棋子。",
+        "accent": "威脅檢查"
+      },
+      "visualization": {
+        "label": "提升盤面想像",
+        "description": "把棋盤在腦中多留一會兒，讓算路變得更從容、更清楚。",
+        "accent": "腦中的棋盤"
+      },
+      "memory": {
+        "label": "訓練記憶力",
+        "description": "提升棋局回想與棋形記憶，同時不讓訓練變成背理論。",
+        "accent": "回想與記憶"
+      },
+      "routine": {
+        "label": "建立每日習慣",
+        "description": "使用一個把練習、對局與檢討結合起來的簡短計畫。",
+        "accent": "持之以恆"
+      }
+    }
   }
 }

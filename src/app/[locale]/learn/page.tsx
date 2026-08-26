@@ -4,6 +4,7 @@ import { buildAlternates, localizedPath } from "@/lib/seo/alternates";
 
 const SITE_URL = "https://thememorychess.com";
 import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
+import { getLearnPages, getLearnGoals } from "@/lib/seo/learn";
 
 export async function generateMetadata({
   params,
@@ -29,6 +30,16 @@ export async function generateMetadata({
   };
 }
 
-export default function LearnHubPage() {
-  return <LearnHubPageContent />;
+export default async function LearnHubPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const [allPages, goals] = await Promise.all([
+    getLearnPages(locale),
+    getLearnGoals(locale),
+  ]);
+
+  return <LearnHubPageContent allPages={allPages} goals={goals} />;
 }

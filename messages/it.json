@@ -361,5 +361,43 @@
     "bannerCta": "Guarda le novità",
     "bannerLabel": "Aggiornamento di Memory Chess",
     "entriesInEnglish": "Le note di rilascio sono pubblicate in inglese."
+  },
+  "learnArticle": {
+    "faqLabel": "Domande frequenti",
+    "whatChangesTitle": "Cosa migliora per primo",
+    "trackThisWeekTitle": "Cosa misurare questa settimana",
+    "trackThisWeekBody": "Scegli una sola misura semplice: errori gravi per partita, scacchiere ricordate correttamente, oppure quante mosse riesci a visualizzare con chiarezza.",
+    "startHereSummary": "Puoi provare questi passaggi già oggi.",
+    "drillsSummary": "Ogni esercizio ti fa mettere in pratica la lezione in Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situazione",
+      "before": "Prima dell’allenamento",
+      "after": "Dopo l’allenamento"
+    },
+    "mistakesTitle": "Errori comuni da evitare",
+    "whatToDoInsteadTitle": "Cosa fare invece",
+    "planSummary": "Segui questi passaggi prima di rendere l’allenamento più difficile o più lungo.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Ridurre gli errori gravi",
+        "description": "Costruisci l’abitudine a controllare le minacce più in fretta e smetti di lasciare pezzi indifesi in posizioni semplici.",
+        "accent": "Controllo delle minacce"
+      },
+      "visualization": {
+        "label": "Migliorare la visualizzazione",
+        "description": "Tieni la scacchiera in mente più a lungo, così il calcolo diventa più calmo e più chiaro.",
+        "accent": "Controllo mentale della scacchiera"
+      },
+      "memory": {
+        "label": "Allenare la memoria",
+        "description": "Migliora il richiamo della scacchiera e la ritenzione degli schemi senza trasformare l’allenamento in compiti di teoria.",
+        "accent": "Richiamo e ritenzione"
+      },
+      "routine": {
+        "label": "Costruire una routine quotidiana",
+        "description": "Usa un piano breve che unisca esercizi, partite e revisione.",
+        "accent": "Costanza"
+      }
+    }
   }
 }

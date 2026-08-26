@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { findLearnPageBySlug, LEARN_GOALS } from "@/lib/seo/learnPages";
+import { getLearnPage, getLearnGoals } from "@/lib/seo/learn";
 
 export const size = {
   width: 1200,
@@ -11,14 +11,15 @@ export const contentType = "image/png";
 type LearnOpenGraphImageProps = {
   params: Promise<{
     slug: string;
+    locale: string;
   }>;
 };
 
 export default async function LearnOpenGraphImage({
   params,
 }: LearnOpenGraphImageProps) {
-  const { slug } = await params;
-  const page = findLearnPageBySlug(slug);
+  const { slug, locale } = await params;
+  const page = await getLearnPage(slug, locale);
 
   if (!page) {
     return new ImageResponse(
@@ -42,7 +43,8 @@ export default async function LearnOpenGraphImage({
     );
   }
 
-  const goal = LEARN_GOALS[page.goal];
+  const goals = await getLearnGoals(locale);
+  const goal = goals.find((entry) => entry.id === page.goal);
 
   return new ImageResponse(
     (
@@ -80,7 +82,7 @@ export default async function LearnOpenGraphImage({
               textTransform: "none",
             }}
           >
-            {goal.label}
+            {goal?.label}
           </div>
           <div>Memory Chess guide</div>
         </div>

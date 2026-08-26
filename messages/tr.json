@@ -361,5 +361,43 @@
     "bannerCta": "Yenilikleri gör",
     "bannerLabel": "Memory Chess güncellemesi",
     "entriesInEnglish": "Sürüm notları İngilizce yayımlanır."
+  },
+  "learnArticle": {
+    "faqLabel": "Sık sorulan sorular",
+    "whatChangesTitle": "Önce ne gelişir",
+    "trackThisWeekTitle": "Bu hafta neyi takip etmeli",
+    "trackThisWeekBody": "Tek bir basit ölçüt seç: oyun başına hata sayısı, doğru hatırlanan konum sayısı, ya da kaç hamleyi zihninde net görebildiğin.",
+    "startHereSummary": "Bu adımları bugün deneyebilirsin.",
+    "drillsSummary": "Her alıştırma, öğrendiğini doğrudan Memory Chess’te uygulamanı sağlar.",
+    "comparisonColumns": {
+      "situation": "Durum",
+      "before": "Çalışmadan önce",
+      "after": "Çalışmadan sonra"
+    },
+    "mistakesTitle": "Kaçınılması gereken yaygın hatalar",
+    "whatToDoInsteadTitle": "Bunun yerine ne yapmalı",
+    "planSummary": "Çalışmayı zorlaştırmadan ya da uzatmadan önce bu adımları tamamla.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Hataları azalt",
+        "description": "Tehditleri daha hızlı kontrol etme alışkanlığı kazan ve basit konumlarda taş vermeyi bırak.",
+        "accent": "Tehdit kontrolü"
+      },
+      "visualization": {
+        "label": "Görselleştirmeyi geliştir",
+        "description": "Tahtayı zihninde daha uzun tut, böylece hesaplama daha sakin ve daha net olur.",
+        "accent": "Zihinde tahta"
+      },
+      "memory": {
+        "label": "Hafızayı çalıştır",
+        "description": "Konumları hatırlamanı ve örüntüleri akılda tutmanı geliştir; antrenmanı teori ödevine çevirmeden.",
+        "accent": "Hatırlama ve akılda tutma"
+      },
+      "routine": {
+        "label": "Günlük rutin kur",
+        "description": "Alıştırma, oyun ve gözden geçirmeyi birleştiren kısa bir plan kullan.",
+        "accent": "Süreklilik"
+      }
+    }
   }
 }

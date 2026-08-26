@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import { render, screen } from "@/test-utils/intl";
 import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
+import { EN_LEARN_PAGES, EN_LEARN_GOALS } from "@/lib/seo/learn";
 
 jest.mock("next/link", () => {
   function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
@@ -32,7 +33,7 @@ jest.mock("@/components/ui/Footer", () => {
 
 describe("LearnHubPageContent", () => {
   it("uses the shared editorial layout and plain guidance", () => {
-    const { container } = render(<LearnHubPageContent />);
+    const { container } = render(<LearnHubPageContent allPages={EN_LEARN_PAGES} goals={EN_LEARN_GOALS} />);
 
     expect(
       screen.getByRole("heading", {

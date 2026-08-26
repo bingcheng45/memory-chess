@@ -361,5 +361,43 @@
     "bannerCta": "看看有什么新变化",
     "bannerLabel": "Memory Chess 更新",
     "entriesInEnglish": "版本说明以英文发布。"
+  },
+  "learnArticle": {
+    "faqLabel": "常见问题",
+    "whatChangesTitle": "最先提升的是什么",
+    "trackThisWeekTitle": "这周记录什么",
+    "trackThisWeekBody": "只选一个简单的指标：每局的失误次数、正确还原的棋局数量，或者你能清晰想象出几步棋。",
+    "startHereSummary": "这些步骤今天就能试。",
+    "drillsSummary": "每个练习都能让你把学到的内容直接用在 Memory Chess 里。",
+    "comparisonColumns": {
+      "situation": "情况",
+      "before": "练习前",
+      "after": "练习后"
+    },
+    "mistakesTitle": "常见的错误",
+    "whatToDoInsteadTitle": "应该怎么做",
+    "planSummary": "在把练习变难或变长之前，先走完这几步。",
+    "goals": {
+      "reduce-blunders": {
+        "label": "减少失误",
+        "description": "养成更快检查威胁的习惯，别再在简单局面里白送棋子。",
+        "accent": "威胁检查"
+      },
+      "visualization": {
+        "label": "提升盘面想象",
+        "description": "把棋盘在脑中多留一会儿，让计算变得更从容、更清晰。",
+        "accent": "脑中的棋盘"
+      },
+      "memory": {
+        "label": "训练记忆力",
+        "description": "提升棋局回想和棋形记忆，同时不让训练变成背理论。",
+        "accent": "回想与记忆"
+      },
+      "routine": {
+        "label": "建立每日习惯",
+        "description": "使用一个把练习、对局和复盘结合起来的简短计划。",
+        "accent": "坚持"
+      }
+    }
   }
 }

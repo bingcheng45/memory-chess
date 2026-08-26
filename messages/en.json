@@ -361,5 +361,43 @@
     "bannerCta": "See what's new",
     "bannerLabel": "Memory Chess update",
     "entriesInEnglish": "Release notes are published in English."
+  },
+  "learnArticle": {
+    "faqLabel": "FAQ",
+    "whatChangesTitle": "What improves first",
+    "trackThisWeekTitle": "What to track this week",
+    "trackThisWeekBody": "Choose one simple measure: blunders per game, correct board recalls, or how many moves you can picture clearly.",
+    "startHereSummary": "You can try these steps today.",
+    "drillsSummary": "Each drill lets you practise the lesson in Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situation",
+      "before": "Before practice",
+      "after": "After practice"
+    },
+    "mistakesTitle": "Common mistakes to avoid",
+    "whatToDoInsteadTitle": "What to do instead",
+    "planSummary": "Follow these steps before making the practice harder or longer.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Reduce blunders",
+        "description": "Build a faster threat-check habit and stop hanging pieces in simple positions.",
+        "accent": "Threat checks"
+      },
+      "visualization": {
+        "label": "Improve visualization",
+        "description": "Hold the board in your head longer so calculation feels calmer and clearer.",
+        "accent": "Mental board control"
+      },
+      "memory": {
+        "label": "Train memory",
+        "description": "Improve board recall and pattern retention without turning training into theory homework.",
+        "accent": "Recall and retention"
+      },
+      "routine": {
+        "label": "Build a daily routine",
+        "description": "Use a short plan that combines drills, games, and review.",
+        "accent": "Consistency"
+      }
+    }
   }
 }

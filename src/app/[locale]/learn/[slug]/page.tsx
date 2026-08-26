@@ -2,39 +2,61 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import LearnArticleRich from '@/components/learn/LearnArticleRich';
 import { buildLearnPageMetadata } from '@/lib/seo/learnMetadata';
-import { findLearnPageBySlug, LEARN_PAGES } from '@/lib/seo/learnPages';
+import { getLearnPage, getLearnPages, getLearnGoals, isLearnSlug, LEARN_SLUGS } from '@/lib/seo/learn';
 
 type LearnArticlePageProps = {
   params: Promise<{
     slug: string;
+    locale: string;
   }>;
 };
 
+/**
+ * Slugs are language-neutral, so the same 16 params apply to every locale and
+ * Next fans them out across the [locale] segment itself.
+ */
 export function generateStaticParams() {
-  return LEARN_PAGES.map((page) => ({ slug: page.slug }));
+  return LEARN_SLUGS.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: LearnArticlePageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, locale } = await params;
 
-  if (!findLearnPageBySlug(slug)) {
+  if (!isLearnSlug(slug)) {
     notFound();
   }
 
-  return buildLearnPageMetadata(slug);
-}
-
-export default async function LearnArticlePage({
-  params,
-}: LearnArticlePageProps) {
-  const { slug } = await params;
-  const page = findLearnPageBySlug(slug);
+  const page = await getLearnPage(slug, locale);
 
   if (!page) {
     notFound();
   }
 
-  return <LearnArticleRich page={page} />;
+  return buildLearnPageMetadata(page, locale);
+}
+
+export default async function LearnArticlePage({
+  params,
+}: LearnArticlePageProps) {
+  const { slug, locale } = await params;
+  const [allPages, goals] = await Promise.all([
+    getLearnPages(locale),
+    getLearnGoals(locale),
+  ]);
+  const page = allPages.find((entry) => entry.slug === slug);
+
+  if (!page) {
+    notFound();
+  }
+
+  return (
+    <LearnArticleRich
+      page={page}
+      goals={goals}
+      allPages={allPages}
+      locale={locale}
+    />
+  );
 }

@@ -361,5 +361,43 @@
     "bannerCta": "Vezi noutățile",
     "bannerLabel": "Actualizare Memory Chess",
     "entriesInEnglish": "Notele de versiune sunt publicate în engleză."
+  },
+  "learnArticle": {
+    "faqLabel": "Întrebări frecvente",
+    "whatChangesTitle": "Ce se îmbunătățește primul",
+    "trackThisWeekTitle": "Ce să urmărești săptămâna asta",
+    "trackThisWeekBody": "Alege o singură măsură simplă: gafe pe partidă, poziții reținute corect, sau câte mutări vezi clar în minte.",
+    "startHereSummary": "Poți încerca acești pași chiar azi.",
+    "drillsSummary": "Fiecare exercițiu îți permite să aplici lecția direct în Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situație",
+      "before": "Înainte de antrenament",
+      "after": "După antrenament"
+    },
+    "mistakesTitle": "Greșeli frecvente de evitat",
+    "whatToDoInsteadTitle": "Ce să faci în schimb",
+    "planSummary": "Parcurge acești pași înainte să faci antrenamentul mai greu sau mai lung.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Mai puține gafe",
+        "description": "Formează-ți obiceiul de a verifica amenințările mai repede și nu mai lăsa piese în priză în poziții simple.",
+        "accent": "Verificarea amenințărilor"
+      },
+      "visualization": {
+        "label": "Vizualizare mai bună",
+        "description": "Ține tabla în minte mai mult timp, ca să calculezi mai calm și mai clar.",
+        "accent": "Tabla în minte"
+      },
+      "memory": {
+        "label": "Antrenează memoria",
+        "description": "Îmbunătățește-ți reamintirea pozițiilor și reținerea tiparelor fără să transformi antrenamentul în teme de teorie.",
+        "accent": "Reamintire și reținere"
+      },
+      "routine": {
+        "label": "Construiește o rutină zilnică",
+        "description": "Folosește un plan scurt care combină exerciții, partide și analiză.",
+        "accent": "Consecvență"
+      }
+    }
   }
 }

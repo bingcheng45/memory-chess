@@ -361,5 +361,43 @@
     "bannerCta": "Voir les nouveautés",
     "bannerLabel": "Mise à jour de Memory Chess",
     "entriesInEnglish": "Les notes de version sont publiées en anglais."
+  },
+  "learnArticle": {
+    "faqLabel": "FAQ",
+    "whatChangesTitle": "Ce qui progresse en premier",
+    "trackThisWeekTitle": "Ce qu’il faut suivre cette semaine",
+    "trackThisWeekBody": "Choisissez une seule mesure simple : gaffes par partie, échiquiers correctement restitués, ou nombre de coups que vous visualisez nettement.",
+    "startHereSummary": "Vous pouvez essayer ces étapes dès aujourd’hui.",
+    "drillsSummary": "Chaque exercice vous permet de mettre la leçon en pratique dans Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situation",
+      "before": "Avant l’entraînement",
+      "after": "Après l’entraînement"
+    },
+    "mistakesTitle": "Erreurs courantes à éviter",
+    "whatToDoInsteadTitle": "Que faire à la place",
+    "planSummary": "Suivez ces étapes avant de rendre l’entraînement plus difficile ou plus long.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Réduire les gaffes",
+        "description": "Prenez l’habitude de vérifier les menaces plus vite et arrêtez de laisser des pièces en prise dans des positions simples.",
+        "accent": "Vérification des menaces"
+      },
+      "visualization": {
+        "label": "Améliorer la visualisation",
+        "description": "Gardez l’échiquier en tête plus longtemps pour que le calcul devienne plus calme et plus net.",
+        "accent": "Maîtrise mentale de l’échiquier"
+      },
+      "memory": {
+        "label": "Travailler la mémoire",
+        "description": "Améliorez le rappel de l’échiquier et la rétention des motifs sans transformer l’entraînement en devoirs de théorie.",
+        "accent": "Rappel et rétention"
+      },
+      "routine": {
+        "label": "Installer une routine quotidienne",
+        "description": "Suivez un plan court qui mêle exercices, parties et analyse.",
+        "accent": "Régularité"
+      }
+    }
   }
 }

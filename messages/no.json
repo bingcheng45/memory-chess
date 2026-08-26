@@ -361,5 +361,43 @@
     "bannerCta": "Se hva som er nytt",
     "bannerLabel": "Memory Chess-oppdatering",
     "entriesInEnglish": "Versjonsnotatene publiseres på engelsk."
+  },
+  "learnArticle": {
+    "faqLabel": "Vanlige spørsmål",
+    "whatChangesTitle": "Hva som blir bedre først",
+    "trackThisWeekTitle": "Hva du følger med på denne uken",
+    "trackThisWeekBody": "Velg ett enkelt mål: bommerter per parti, antall riktig gjengitte stillinger, eller hvor mange trekk du ser tydelig for deg.",
+    "startHereSummary": "Disse stegene kan du prøve allerede i dag.",
+    "drillsSummary": "Hver øvelse lar deg trene leksjonen direkte i Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situasjon",
+      "before": "Før trening",
+      "after": "Etter trening"
+    },
+    "mistakesTitle": "Vanlige feil å unngå",
+    "whatToDoInsteadTitle": "Gjør dette i stedet",
+    "planSummary": "Gå gjennom disse stegene før du gjør treningen vanskeligere eller lengre.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Færre bommerter",
+        "description": "Få vanen med å sjekke trusler raskere, og slutt å gi bort brikker i enkle stillinger.",
+        "accent": "Trusselsjekk"
+      },
+      "visualization": {
+        "label": "Bedre visualisering",
+        "description": "Hold brettet i hodet lenger, så beregningen blir roligere og klarere.",
+        "accent": "Brettet i hodet"
+      },
+      "memory": {
+        "label": "Tren hukommelsen",
+        "description": "Forbedre gjenkalling av stillinger og mønstre uten at treningen blir teorilekser.",
+        "accent": "Gjenkalling og hukommelse"
+      },
+      "routine": {
+        "label": "Bygg en daglig rutine",
+        "description": "Bruk en kort plan som kombinerer øvelser, partier og gjennomgang.",
+        "accent": "Jevnlighet"
+      }
+    }
   }
 }

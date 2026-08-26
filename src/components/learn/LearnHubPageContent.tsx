@@ -6,12 +6,8 @@ import {
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import { useTranslations } from "next-intl";
-import {
-  getLearnPagesByGoal,
-  LEARN_GOALS,
-  LEARN_PAGES,
-  type LearnGoalId,
-} from "@/lib/seo/learnPages";
+import type { LearnPageContent } from "@/lib/seo/learn/schema";
+import type { LearnGoal } from "@/lib/seo/learn";
 
 const SITE_URL = "https://thememorychess.com";
 
@@ -23,57 +19,65 @@ const QUICK_STARTS = [
   { id: "losingPosition", href: "/learn/chess-visualization-exercises" },
 ] as const;
 
-const goalEntries = Object.entries(LEARN_GOALS) as Array<
-  [LearnGoalId, (typeof LEARN_GOALS)[LearnGoalId]]
->;
 
-const learnHubSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "CollectionPage",
-      "@id": `${SITE_URL}/learn#webpage`,
-      url: `${SITE_URL}/learn`,
-      name: "Chess Learning Center for Beginners",
-      description:
-        "Practical beginner chess guides for board vision, visualization, memory, calculation, blunder prevention, and daily practice.",
-      isPartOf: {
-        "@type": "WebSite",
-        "@id": `${SITE_URL}/#website`,
-        name: "Memory Chess",
-        url: SITE_URL,
-      },
-      mainEntity: { "@id": `${SITE_URL}/learn#guides` },
-    },
-    {
-      "@type": "ItemList",
-      "@id": `${SITE_URL}/learn#guides`,
-      name: "Memory Chess learning guides",
-      numberOfItems: LEARN_PAGES.length,
-      itemListElement: LEARN_PAGES.map((page, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: page.title,
-        url: `${SITE_URL}/learn/${page.slug}`,
-      })),
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Learn",
-          item: `${SITE_URL}/learn`,
+function buildLearnHubSchema(allPages: LearnPageContent[]) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}/learn#webpage`,
+        url: `${SITE_URL}/learn`,
+        name: "Chess Learning Center for Beginners",
+        description:
+          "Practical beginner chess guides for board vision, visualization, memory, calculation, blunder prevention, and daily practice.",
+        isPartOf: {
+          "@type": "WebSite",
+          "@id": `${SITE_URL}/#website`,
+          name: "Memory Chess",
+          url: SITE_URL,
         },
-      ],
-    },
-  ],
+        mainEntity: { "@id": `${SITE_URL}/learn#guides` },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${SITE_URL}/learn#guides`,
+        name: "Memory Chess learning guides",
+        numberOfItems: allPages.length,
+        itemListElement: allPages.map((page, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: page.title,
+          url: `${SITE_URL}/learn/${page.slug}`,
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Learn",
+            item: `${SITE_URL}/learn`,
+          },
+        ],
+      },
+    ],
+  };
+}
+
+type LearnHubProps = {
+  allPages: LearnPageContent[];
+  goals: LearnGoal[];
 };
 
-export default function LearnHubPageContent() {
+export default function LearnHubPageContent({
+  allPages,
+  goals,
+}: LearnHubProps) {
   const t = useTranslations("learnHub");
+  const learnHubSchema = buildLearnHubSchema(allPages);
   return (
     <EditorialPageShell>
       <EditorialHero
@@ -143,7 +147,7 @@ export default function LearnHubPageContent() {
         >
           <div className="mb-3">
             <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>
-              All {LEARN_PAGES.length} guides
+              All {allPages.length} guides
             </p>
             <h2
               id="choose-goal-heading"
@@ -155,8 +159,9 @@ export default function LearnHubPageContent() {
             </p>
           </div>
 
-          {goalEntries.map(([goalId, goal]) => {
-            const pages = getLearnPagesByGoal(goalId);
+          {goals.map((goal) => {
+            const goalId = goal.id;
+            const pages = allPages.filter((page) => page.goal === goalId);
 
             return (
               <section

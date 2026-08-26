@@ -361,5 +361,43 @@
     "bannerCta": "Lihat yang baru",
     "bannerLabel": "Pembaruan Memory Chess",
     "entriesInEnglish": "Catatan rilis diterbitkan dalam bahasa Inggris."
+  },
+  "learnArticle": {
+    "faqLabel": "Pertanyaan umum",
+    "whatChangesTitle": "Yang membaik lebih dulu",
+    "trackThisWeekTitle": "Yang perlu dipantau minggu ini",
+    "trackThisWeekBody": "Pilih satu ukuran sederhana: blunder per partai, posisi yang berhasil diingat dengan benar, atau berapa langkah yang bisa Anda bayangkan dengan jelas.",
+    "startHereSummary": "Langkah-langkah ini bisa Anda coba hari ini.",
+    "drillsSummary": "Setiap latihan membuat Anda langsung mempraktikkan pelajarannya di Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situasi",
+      "before": "Sebelum latihan",
+      "after": "Setelah latihan"
+    },
+    "mistakesTitle": "Kesalahan umum yang perlu dihindari",
+    "whatToDoInsteadTitle": "Yang sebaiknya dilakukan",
+    "planSummary": "Jalani langkah-langkah ini sebelum membuat latihan lebih sulit atau lebih lama.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Kurangi blunder",
+        "description": "Bangun kebiasaan memeriksa ancaman lebih cepat dan berhenti membiarkan bidak tergantung di posisi sederhana.",
+        "accent": "Cek ancaman"
+      },
+      "visualization": {
+        "label": "Perbaiki visualisasi",
+        "description": "Tahan gambaran papan di kepala lebih lama supaya perhitungan terasa lebih tenang dan jernih.",
+        "accent": "Papan di kepala"
+      },
+      "memory": {
+        "label": "Latih ingatan",
+        "description": "Tingkatkan kemampuan mengingat posisi dan menahan pola tanpa mengubah latihan jadi PR teori.",
+        "accent": "Mengingat dan menahan"
+      },
+      "routine": {
+        "label": "Bangun rutinitas harian",
+        "description": "Gunakan rencana singkat yang memadukan latihan, partai, dan tinjauan.",
+        "accent": "Konsistensi"
+      }
+    }
   }
 }

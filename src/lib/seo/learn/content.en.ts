@@ -1,289 +1,16 @@
-const PUBLISHED_AT = "2026-03-06T00:00:00.000Z";
-const UPDATED_AT = "2026-08-17T00:00:00.000Z";
+import type { BuildGuideInput } from "./schema";
 
-export const LEARN_GOALS = {
-  "reduce-blunders": {
-    label: "Reduce blunders",
-    description:
-      "Build a faster threat-check habit and stop hanging pieces in simple positions.",
-    accent: "Threat checks",
-    href: "/learn/how-to-stop-blundering-in-chess",
-  },
-  visualization: {
-    label: "Improve visualization",
-    description:
-      "Hold the board in your head longer so calculation feels calmer and clearer.",
-    accent: "Mental board control",
-    href: "/learn/chess-visualization-exercises",
-  },
-  memory: {
-    label: "Train memory",
-    description:
-      "Improve board recall and pattern retention without turning training into theory homework.",
-    accent: "Recall and retention",
-    href: "/learn/chess-memory-training",
-  },
-  routine: {
-    label: "Build a daily routine",
-    description: "Use a short plan that combines drills, games, and review.",
-    accent: "Consistency",
-    href: "/learn/20-minute-daily-chess-study-plan",
-  },
-} as const;
-
-export type LearnGoalId = keyof typeof LEARN_GOALS;
-
-export type LearnFaq = {
-  question: string;
-  answer: string;
-};
-
-export type LearnDrillCard = {
-  title: string;
-  description: string;
-  duration: string;
-  goal: string;
-  ctaLabel: string;
-  href: "/game";
-};
-
-export type LearnComparisonRow = {
-  label: string;
-  struggling: string;
-  stronger: string;
-};
-
-export type LearnPlanStep = {
-  label: string;
-  duration: string;
-  detail: string;
-};
-
-export type LearnSource = {
-  title: string;
-  url: string;
-  note: string;
-};
-
-export type LearnRelatedArticle = {
-  slug: string;
-  reason: string;
-};
-
-export type LearnContentSection = {
-  id: string;
-  title: string;
-  eyebrow?: string;
-  summary?: string;
-  paragraphs?: string[];
-  bullets?: string[];
-  orderedBullets?: string[];
-  callout?: {
-    title: string;
-    body: string;
-  };
-  drillCards?: LearnDrillCard[];
-  comparisonRows?: LearnComparisonRow[];
-  comparisonColumns?: [string, string, string];
-  planSteps?: LearnPlanStep[];
-};
-
-export type LearnTableOfContentsItem = {
-  id: string;
-  label: string;
-};
-
-export type LearnPageContent = {
-  slug: string;
-  goal: LearnGoalId;
-  title: string;
-  h1: string;
-  description: string;
-  primaryKeyword: string;
-  secondaryKeywords: string[];
-  painPoint: string;
-  ctaLabel: string;
-  ctaHref: "/game";
-  publishedAt: string;
-  updatedAt: string;
-  reviewedBy: string;
-  quickAnswer: string;
-  keyTakeaways: string[];
-  whoThisIsFor: string[];
-  timeToRead: string;
-  difficulty: "Beginner" | "Beginner to Intermediate";
-  featured: boolean;
-  tableOfContents: LearnTableOfContentsItem[];
-  contentSections: LearnContentSection[];
-  faq: LearnFaq[];
-  relatedArticles: LearnRelatedArticle[];
-  relatedDrills: LearnDrillCard[];
-  sources: LearnSource[];
-};
-
-type BuildGuideInput = {
-  slug: string;
-  goal: LearnGoalId;
-  title: string;
-  h1: string;
-  description: string;
-  primaryKeyword: string;
-  secondaryKeywords: string[];
-  painPoint: string;
-  ctaLabel: string;
-  quickAnswer: string;
-  keyTakeaways: string[];
-  whoThisIsFor: string[];
-  timeToRead: string;
-  difficulty: LearnPageContent["difficulty"];
-  featured?: boolean;
-  introParagraphs: string[];
-  startHereTitle: string;
-  startHereSteps: string[];
-  drillSectionTitle: string;
-  drillCards: LearnDrillCard[];
-  comparisonTitle: string;
-  comparisonSummary: string;
-  comparisonRows: LearnComparisonRow[];
-  mistakes: string[];
-  mistakesCallout: string;
-  planTitle: string;
-  planSteps: LearnPlanStep[];
-  faq: LearnFaq[];
-  relatedArticles: LearnRelatedArticle[];
-  relatedDrills?: LearnDrillCard[];
-  sources?: LearnSource[];
-};
-
-const EDITORIAL_REVIEWER = "Memory Chess Editorial Team";
-
-const CHESS_MEMORY_SOURCE: LearnSource = {
-  title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-  url: "https://doi.org/10.1006/cogp.1996.0011",
-  note: "Gobet and Simon's research on how skilled players use chunks and templates to encode chess positions.",
-};
-
-const CHESS_RECOGNITION_SOURCE: LearnSource = {
-  title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
-  url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
-  note: "Research comparing recognition and calculation in time-constrained grandmaster play.",
-};
-
-const RETRIEVAL_PRACTICE_SOURCE: LearnSource = {
-  title: "Test-Enhanced Learning: Taking Memory Tests Improves Retention",
-  url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
-  note: "Experimental research showing that active recall can improve later retention more than repeated study.",
-};
-
-const SPACED_PRACTICE_SOURCE: LearnSource = {
-  title: "Distributed Practice in Verbal Recall Tasks",
-  url: "https://doi.org/10.1037/0033-2909.132.3.354",
-  note: "A quantitative review of how spacing practice affects long-term retention.",
-};
-
-const GOAL_SOURCES: Record<LearnGoalId, LearnSource[]> = {
-  "reduce-blunders": [CHESS_RECOGNITION_SOURCE, CHESS_MEMORY_SOURCE],
-  visualization: [CHESS_MEMORY_SOURCE, CHESS_RECOGNITION_SOURCE],
-  memory: [CHESS_MEMORY_SOURCE, RETRIEVAL_PRACTICE_SOURCE],
-  routine: [SPACED_PRACTICE_SOURCE, RETRIEVAL_PRACTICE_SOURCE],
-};
-
-function buildTableOfContents(
-  sections: LearnContentSection[],
-  faq: LearnFaq[],
-) {
-  const baseItems = sections.map((section) => ({
-    id: section.id,
-    label: section.title,
-  }));
-
-  if (faq.length > 0) {
-    baseItems.push({ id: "faq", label: "FAQ" });
-  }
-
-  return baseItems;
-}
-
-function buildGuide(input: BuildGuideInput): LearnPageContent {
-  const sections: LearnContentSection[] = [
-    {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: LEARN_GOALS[input.goal].accent,
-      paragraphs: input.introParagraphs,
-      callout: {
-        title: "What to track this week",
-        body: "Choose one simple measure: blunders per game, correct board recalls, or how many moves you can picture clearly.",
-      },
-    },
-    {
-      id: "start-here",
-      title: input.startHereTitle,
-      summary: "You can try these steps today.",
-      orderedBullets: input.startHereSteps,
-    },
-    {
-      id: "drills",
-      title: input.drillSectionTitle,
-      summary: "Each drill lets you practise the lesson in Memory Chess.",
-      drillCards: input.drillCards,
-    },
-    {
-      id: "comparison",
-      title: input.comparisonTitle,
-      summary: input.comparisonSummary,
-      comparisonColumns: ["Situation", "Before practice", "After practice"],
-      comparisonRows: input.comparisonRows,
-    },
-    {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
-      bullets: input.mistakes,
-      callout: {
-        title: "What to do instead",
-        body: input.mistakesCallout,
-      },
-    },
-    {
-      id: "plan",
-      title: input.planTitle,
-      summary:
-        "Follow these steps before making the practice harder or longer.",
-      planSteps: input.planSteps,
-    },
-  ];
-
-  return {
-    slug: input.slug,
-    goal: input.goal,
-    title: input.title,
-    h1: input.h1,
-    description: input.description,
-    primaryKeyword: input.primaryKeyword,
-    secondaryKeywords: input.secondaryKeywords,
-    painPoint: input.painPoint,
-    ctaLabel: input.ctaLabel,
-    ctaHref: "/game",
-    publishedAt: PUBLISHED_AT,
-    updatedAt: UPDATED_AT,
-    reviewedBy: EDITORIAL_REVIEWER,
-    quickAnswer: input.quickAnswer,
-    keyTakeaways: input.keyTakeaways,
-    whoThisIsFor: input.whoThisIsFor,
-    timeToRead: input.timeToRead,
-    difficulty: input.difficulty,
-    featured: Boolean(input.featured),
-    tableOfContents: buildTableOfContents(sections, input.faq),
-    contentSections: sections,
-    faq: input.faq,
-    relatedArticles: input.relatedArticles,
-    relatedDrills: input.relatedDrills ?? input.drillCards,
-    sources: [...GOAL_SOURCES[input.goal], ...(input.sources ?? [])],
-  };
-}
-
-export const LEARN_PAGES: LearnPageContent[] = [
-  buildGuide({
+/**
+ * English Learn articles: the source of truth every other locale is
+ * translated from.
+ *
+ * Language-neutral fields -- `slug`, `goal`, `featured`, `ctaHref`, and the
+ * slugs inside `relatedArticles` -- must stay byte-identical across locales.
+ * Slugs in particular are English everywhere so inbound links keep resolving;
+ * scripts/validate-learn-content.mjs enforces that.
+ */
+export const EN_GUIDES: BuildGuideInput[] = [
+  {
     slug: "how-to-get-better-at-chess-for-beginners",
     goal: "routine",
     title: "How to Get Better at Chess for Beginners",
@@ -465,8 +192,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         note: "Useful for identifying recurring beginner pain points around scattered study habits.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "chess-visualization-exercises",
     goal: "visualization",
     title: "Chess Visualization Exercises for Beginners",
@@ -640,8 +367,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         note: "Useful as a mainstream comparison point showing the topic is active but often under-structured for beginners.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "chess-board-vision-drills",
     goal: "reduce-blunders",
     title: "Chess Board Vision Drills to Cut Blunders",
@@ -817,8 +544,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         note: "A useful example of common advice about avoiding blunders.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "chess-memory-training",
     goal: "memory",
     title: "Chess Memory Training Drills for Faster Recall",
@@ -987,8 +714,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         reason: "Connect board memory to common chess patterns.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "blindfold-chess-training-for-beginners",
     goal: "visualization",
     title: "Blindfold Chess Training for Beginners",
@@ -1160,8 +887,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         note: "Useful reference for the link between blindfold-style training and broader chess skill development.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "working-memory-exercises-for-chess",
     goal: "memory",
     title: "Working Memory Exercises for Chess Players",
@@ -1325,8 +1052,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
           "Use a simpler thought process so working memory is not wasted.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "how-to-stop-blundering-in-chess",
     goal: "reduce-blunders",
     title: "How to Stop Blundering in Chess",
@@ -1493,8 +1220,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         reason: "Plug anti-blunder work into a complete beginner routine.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "why-puzzle-rating-doesnt-transfer-to-games",
     goal: "reduce-blunders",
     title: "Why Puzzle Rating Doesn't Transfer to Games",
@@ -1665,8 +1392,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         note: "A discussion about why puzzle scores and game results can feel very different.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "how-to-see-the-whole-board-in-chess",
     goal: "visualization",
     title: "How to See the Whole Board in Chess",
@@ -1830,8 +1557,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
           "Build faster square recognition so broad scans are less mentally expensive.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "chess-coordinates-practice",
     goal: "visualization",
     title: "Chess Coordinates Practice for Faster Board Awareness",
@@ -2003,8 +1730,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         note: "Useful for understanding how beginners often underrate coordinates until they affect board clarity.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "20-minute-daily-chess-study-plan",
     goal: "routine",
     title: "20-Minute Daily Chess Study Plan for Beginners",
@@ -2167,8 +1894,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         reason: "Keep the review block simple and productive.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "how-to-analyze-chess-games-for-beginners",
     goal: "routine",
     title: "How to Analyze Chess Games for Beginners",
@@ -2334,8 +2061,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         reason: "Remember and rebuild key moments after the game.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "how-many-chess-puzzles-a-day",
     goal: "routine",
     title: "How Many Chess Puzzles a Day Should Beginners Do?",
@@ -2502,8 +2229,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
           "Learn common patterns instead of only increasing the number of puzzles.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "chess-pattern-recognition-drills",
     goal: "memory",
     title: "Chess Pattern Recognition Drills",
@@ -2669,8 +2396,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
         reason: "Use the patterns you study in real games.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "chess-calculation-exercises-for-beginners",
     goal: "visualization",
     title: "Chess Calculation Exercises for Beginners",
@@ -2834,8 +2561,8 @@ export const LEARN_PAGES: LearnPageContent[] = [
           "Use a simpler in-game decision process to support cleaner calculation.",
       },
     ],
-  }),
-  buildGuide({
+  },
+  {
     slug: "how-to-think-in-chess-for-beginners",
     goal: "routine",
     title: "How to Think in Chess for Beginners",
@@ -3001,43 +2728,5 @@ export const LEARN_PAGES: LearnPageContent[] = [
         reason: "Recognise squares faster during your move routine.",
       },
     ],
-  }),
+  },
 ];
-
-export function getLearnPageBySlug(slug: string): LearnPageContent {
-  const page = LEARN_PAGES.find((entry) => entry.slug === slug);
-
-  if (!page) {
-    throw new Error(`Unknown learn page slug: ${slug}`);
-  }
-
-  return page;
-}
-
-export function findLearnPageBySlug(
-  slug: string,
-): LearnPageContent | undefined {
-  return LEARN_PAGES.find((entry) => entry.slug === slug);
-}
-
-export function isLearnSlug(slug: string): boolean {
-  return LEARN_PAGES.some((entry) => entry.slug === slug);
-}
-
-export function getLearnPagesByGoal(goal: LearnGoalId): LearnPageContent[] {
-  return LEARN_PAGES.filter((page) => page.goal === goal);
-}
-
-export function getFeaturedLearnPages(limit = 4): LearnPageContent[] {
-  return LEARN_PAGES.filter((page) => page.featured).slice(0, limit);
-}
-
-export function getNewestLearnPages(limit = 4): LearnPageContent[] {
-  return [...LEARN_PAGES]
-    .sort(
-      (left, right) =>
-        new Date(right.updatedAt).getTime() -
-        new Date(left.updatedAt).getTime(),
-    )
-    .slice(0, limit);
-}

@@ -361,5 +361,43 @@
     "bannerCta": "Zobacz nowości",
     "bannerLabel": "Aktualizacja Memory Chess",
     "entriesInEnglish": "Informacje o wydaniach publikujemy po angielsku."
+  },
+  "learnArticle": {
+    "faqLabel": "Częste pytania",
+    "whatChangesTitle": "Co poprawia się najpierw",
+    "trackThisWeekTitle": "Co mierzyć w tym tygodniu",
+    "trackThisWeekBody": "Wybierz jedną prostą miarę: gafy na partię, poprawnie odtworzone pozycje albo liczbę ruchów, które widzisz wyraźnie w głowie.",
+    "startHereSummary": "Te kroki możesz wypróbować już dziś.",
+    "drillsSummary": "Każde ćwiczenie pozwala przećwiczyć lekcję w Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Sytuacja",
+      "before": "Przed treningiem",
+      "after": "Po treningu"
+    },
+    "mistakesTitle": "Częste błędy, których warto unikać",
+    "whatToDoInsteadTitle": "Co zrobić zamiast tego",
+    "planSummary": "Przejdź te kroki, zanim zaczniesz utrudniać albo wydłużać trening.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Mniej gaf",
+        "description": "Wyrób nawyk szybszego sprawdzania zagrożeń i przestań wystawiać bierki w prostych pozycjach.",
+        "accent": "Sprawdzanie zagrożeń"
+      },
+      "visualization": {
+        "label": "Lepsza wyobraźnia",
+        "description": "Utrzymuj szachownicę w głowie dłużej, dzięki czemu liczenie wariantów staje się spokojniejsze i wyraźniejsze.",
+        "accent": "Szachownica w głowie"
+      },
+      "memory": {
+        "label": "Trening pamięci",
+        "description": "Popraw odtwarzanie pozycji i zapamiętywanie wzorców, nie zamieniając treningu w naukę teorii.",
+        "accent": "Odtwarzanie i zapamiętywanie"
+      },
+      "routine": {
+        "label": "Codzienna rutyna",
+        "description": "Korzystaj z krótkiego planu łączącego ćwiczenia, partie i analizę.",
+        "accent": "Systematyczność"
+      }
+    }
   }
 }

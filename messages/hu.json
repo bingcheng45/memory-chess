@@ -361,5 +361,43 @@
     "bannerCta": "Nézd meg, mi újult meg",
     "bannerLabel": "Memory Chess frissítés",
     "entriesInEnglish": "A kiadási jegyzetek angolul jelennek meg."
+  },
+  "learnArticle": {
+    "faqLabel": "Gyakori kérdések",
+    "whatChangesTitle": "Ami először javul",
+    "trackThisWeekTitle": "Mit érdemes követni ezen a héten",
+    "trackThisWeekBody": "Válassz egyetlen egyszerű mérőszámot: hibák játszmánként, helyesen felidézett állások, vagy hogy hány lépést látsz tisztán magad előtt.",
+    "startHereSummary": "Ezeket a lépéseket már ma kipróbálhatod.",
+    "drillsSummary": "Minden gyakorlat engedi, hogy a tanultakat rögtön a Memory Chessben alkalmazd.",
+    "comparisonColumns": {
+      "situation": "Helyzet",
+      "before": "Gyakorlás előtt",
+      "after": "Gyakorlás után"
+    },
+    "mistakesTitle": "Gyakori hibák, amiket érdemes elkerülni",
+    "whatToDoInsteadTitle": "Ehelyett ezt csináld",
+    "planSummary": "Vedd végig ezeket a lépéseket, mielőtt nehezebbé vagy hosszabbá tennéd a gyakorlást.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Kevesebb baki",
+        "description": "Szokj rá, hogy gyorsabban ellenőrzöd a fenyegetéseket, és ne hagyj bábut ingyen egyszerű állásokban.",
+        "accent": "Fenyegetések ellenőrzése"
+      },
+      "visualization": {
+        "label": "Jobb vizualizáció",
+        "description": "Tartsd a táblát tovább a fejedben, így a számolás nyugodtabb és tisztább lesz.",
+        "accent": "A tábla a fejedben"
+      },
+      "memory": {
+        "label": "Memóriaedzés",
+        "description": "Javítsd az állások felidézését és a minták megjegyzését anélkül, hogy az edzés elméleti házi feladattá válna.",
+        "accent": "Felidézés és megtartás"
+      },
+      "routine": {
+        "label": "Napi rutin kialakítása",
+        "description": "Használj rövid tervet, ami gyakorlatokat, játszmákat és átnézést kombinál.",
+        "accent": "Következetesség"
+      }
+    }
   }
 }

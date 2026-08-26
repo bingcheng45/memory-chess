@@ -361,5 +361,43 @@
     "bannerCta": "새로운 소식 보기",
     "bannerLabel": "Memory Chess 업데이트",
     "entriesInEnglish": "릴리스 노트는 영어로 게시됩니다."
+  },
+  "learnArticle": {
+    "faqLabel": "자주 묻는 질문",
+    "whatChangesTitle": "가장 먼저 좋아지는 것",
+    "trackThisWeekTitle": "이번 주에 기록할 것",
+    "trackThisWeekBody": "간단한 지표 하나만 고르세요. 한 판당 실수 횟수, 정확히 떠올린 국면 수, 또는 몇 수까지 또렷이 그려지는지.",
+    "startHereSummary": "오늘 바로 해볼 수 있는 단계입니다.",
+    "drillsSummary": "모든 훈련은 배운 내용을 Memory Chess에서 바로 연습하게 해 줍니다.",
+    "comparisonColumns": {
+      "situation": "상황",
+      "before": "훈련 전",
+      "after": "훈련 후"
+    },
+    "mistakesTitle": "흔히 하는 실수",
+    "whatToDoInsteadTitle": "대신 이렇게 하세요",
+    "planSummary": "훈련을 더 어렵거나 길게 만들기 전에 이 단계를 먼저 거치세요.",
+    "goals": {
+      "reduce-blunders": {
+        "label": "실수 줄이기",
+        "description": "위협을 더 빨리 확인하는 습관을 들이고, 쉬운 국면에서 기물을 그냥 내주지 마세요.",
+        "accent": "위협 점검"
+      },
+      "visualization": {
+        "label": "시각화 높이기",
+        "description": "판을 머릿속에 더 오래 붙잡아, 수읽기가 차분하고 또렷해지게 만드세요.",
+        "accent": "머릿속의 판"
+      },
+      "memory": {
+        "label": "기억력 훈련",
+        "description": "국면 회상과 패턴 기억을 끌어올리되, 훈련이 이론 암기가 되지 않게 하세요.",
+        "accent": "회상과 유지"
+      },
+      "routine": {
+        "label": "매일의 루틴 만들기",
+        "description": "훈련, 실전, 복기를 묶은 짧은 계획을 쓰세요.",
+        "accent": "꾸준함"
+      }
+    }
   }
 }

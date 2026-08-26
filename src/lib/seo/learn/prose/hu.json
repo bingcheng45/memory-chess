@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Így fejlődj sakkban kezdőként",
+    "h1": "Így fejlődj sakkban kezdőként",
+    "description": "Kövess egy egyszerű tervet: lásd jobban a táblát, jegyezd meg az állásokat, és lépj biztonságosabban.",
+    "primaryKeyword": "hogyan fejlődj sakkban",
+    "secondaryKeywords": [
+      "sakkfejlődési terv",
+      "sakkedzés kezdőknek",
+      "kezdő sakkrutin",
+      "kevesebb baki sakkban",
+      "táblalátás"
+    ],
+    "painPoint": "Nem tudod, mit gyakorolj, vagy hol kezdd.",
+    "ctaLabel": "Indíts egy kezdő kört",
+    "quickAnswer": "Használj rövid napi rutint: gyakorold a táblalátást, edzd az emlékezeted, játssz egy partit, és nézz át egy hibát. Ismételd napi 20-30 percen át.",
+    "keyTakeaways": [
+      "A tábla látása és megjegyzése többet ér, mint sok megnyitás bemagolása.",
+      "A rövid napi gyakorlás jobban működik, mint a ritka hosszú alkalmak.",
+      "Kövesd a hibáidat és a felidézés pontosságát, ne csak az értékszámot."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik tudják a szabályokat, de még mindig elajándékozzák a bábukat.",
+      "Kezdők, akik jól oldanak feladatokat, de partiban küzdenek.",
+      "Bárki, aki nem tudja, mit tanuljon először."
+    ],
+    "timeToRead": "9 perc olvasás",
+    "introParagraphs": [
+      "A legtöbb kezdőnek nem több megnyitásra, videóra vagy tanfolyamra van szüksége. Követnie kell a táblát, és lépés előtt ellenőriznie, hogy a lépés biztonságos-e.",
+      "A Memory Chess mindkét készség gyakorlásában segít. A jobb táblaemlékezet könnyebbé teszi a sakkok, ütések és fenyegetések észrevételét."
+    ],
+    "startHereTitle": "Kezdd ezzel a kezdő rutinnal",
+    "startHereSteps": [
+      "Szánj 3 percet a tábla átnézésére, és nevezd meg a támadott, védett és védtelen bábukat.",
+      "Játssz egy kör Memory Chesst 8 bábuval és 10 másodperc nézési idővel.",
+      "Dolgozz át két rövid taktikai állást, és lépésválasztás előtt mondd ki a sakkokat, ütéseket és fenyegetéseket.",
+      "Játssz egy rapid partit. Minden nagy hibát jelölj látásnak, emlékezetnek vagy időzavarnak.",
+      "Írj le egy dolgot, amit holnap újra gyakorolsz."
+    ],
+    "drillSectionTitle": "Egyszerű gyakorlatok jobb partikhoz",
+    "drillCards": [
+      {
+        "title": "10 másodperces táblaátnézés",
+        "description": "Használj könnyű állást, és találd meg minden védtelen bábut, mielőtt lejár az idő.",
+        "duration": "3 perc",
+        "goal": "Biztonsági ellenőrzés kialakítása minden lépés előtt.",
+        "ctaLabel": "Indítsd az átnézést"
+      },
+      {
+        "title": "Ugyanaz az állás ismét",
+        "description": "Játszd le ugyanazt az állást kétszer, hogy megtalálj és kijavíts egy emlékezethibát.",
+        "duration": "5 perc",
+        "goal": "Pontosan megtalálni az elfelejtett bábut vagy mezőt.",
+        "ctaLabel": "Gyakorold az ismételt felidézést"
+      },
+      {
+        "title": "Átvitel partiból gyakorlatba",
+        "description": "Rapid parti után képzeld el azt az állást, ahol hibáztál, mielőtt elemzed.",
+        "duration": "7 perc",
+        "goal": "Hagyd, hogy a valódi hibák irányítsák az edzést.",
+        "ctaLabel": "Kezdd az átviteli gyakorlatot"
+      }
+    ],
+    "comparisonTitle": "Így néz ki a jobb kezdő játék",
+    "comparisonSummary": "Nem kell öt lépéssel előre látnod. Először lásd tisztán a jelenlegi állást, és lépés előtt állj meg egy pillanatra.",
+    "comparisonRows": [
+      {
+        "label": "Lépés előtt",
+        "struggling": "Csak a saját ötletedet nézed.",
+        "stronger": "Először az ellenfél fenyegetéseit ellenőrzöd."
+      },
+      {
+        "label": "Taktika közben",
+        "struggling": "A változat egy csere után eltűnik.",
+        "stronger": "Két lépés összehasonlítása közben is látod a kulcsmezőket."
+      },
+      {
+        "label": "Vereség után",
+        "struggling": "Azonnal új partit indítasz.",
+        "stronger": "Megnevezed a hibát, és holnap gyakorlod."
+      }
+    ],
+    "mistakes": [
+      "Véletlenszerű anyagok között ugrálni ahelyett, hogy két hétig kitartanál egy rutin mellett.",
+      "Megnyitásokat tanulni, mielőtt a táblalátás stabil lenne.",
+      "Túl sok partit játszani rövid utólagos jegyzetek nélkül.",
+      "Az emlékezetgyakorlást a valódi sakktól különállónak tekinteni."
+    ],
+    "mistakesCallout": "Ne siess a haladó anyaghoz. A legtöbb kezdő egylépéses fenyegetések elnézése miatt veszít, nem elfelejtett megnyitásváltozat miatt.",
+    "planTitle": "30 napos kezdő terv",
+    "planSteps": [
+      {
+        "label": "1. hét",
+        "duration": "napi 20 perc",
+        "detail": "Használd ugyanazt az átnézést, és minden játékalkalom előtt játssz egy rövid kör Memory Chesst."
+      },
+      {
+        "label": "2. hét",
+        "duration": "napi 25 perc",
+        "detail": "Adj hozzá még egy felidézési kört, és jegyezd fel, hogy a hiba látásból, emlékezetből vagy pánikból eredt-e."
+      },
+      {
+        "label": "3. hét",
+        "duration": "napi 25-30 perc",
+        "detail": "Ugyanazok a gyakorlatok, de rövidítsd a megjegyzési időt, hogy a felidézés nyomás alatt is tiszta maradjon."
+      },
+      {
+        "label": "4. hét",
+        "duration": "napi 30 perc",
+        "detail": "Ellenőrizd, csökken-e a partinkénti bakik száma, és csak a legjobban átvihető beállításokat tartsd meg."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Naponta hány percet gyakoroljon egy kezdő?",
+        "answer": "Koncentrált 20-30 perc elég, ha ötvözöd a táblalátást, az emlékezetet és egy valódi állást."
+      },
+      {
+        "question": "Miért nem megy át a feladatmegoldó tudásom a partikba?",
+        "answer": "A feladat akkor kezdődik, amikor a taktika már létezik. Partiban előbb észre kell venned a változást, ezért a felidézés és a biztonsági ellenőrzés sokkal többet számít."
+      },
+      {
+        "question": "Tanuljak korán megnyitásokat?",
+        "answer": "Eleinte csak az alapelveket. A legtöbb kezdő többet nyer abból, ha korábban látja a fenyegetéseket, és tisztábban tartja az állást."
+      },
+      {
+        "question": "Melyik mutató jelzi leggyorsabban a fejlődést?",
+        "answer": "A partinkénti bakik és a Memory Chess felidézési pontossága. Ezek általában az értékszám előtt mozdulnak."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Ezt használd, ha a fő gondod a bábuk elajándékozása."
+      },
+      {
+        "reason": "Mélyítsd el a lépés előtti fenyegetésellenőrzés szokását."
+      },
+      {
+        "reason": "Építs erősebb fejben tartott táblát, hogy a taktika ne essen szét."
+      },
+      {
+        "reason": "Gyakorold közvetlenül a felidézést, ha elfelejted a bábuk helyét."
+      },
+      {
+        "reason": "Válassz rövidebb rutint, ha egyszerűbb napi szerkezetet szeretnél."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Sakkvizualizációs gyakorlatok kezdőknek",
+    "h1": "Napi sakkvizualizációs gyakorlatok",
+    "description": "Próbálj ki egyszerű vizualizációs gyakorlatokat, hogy megjegyezd a táblát és tisztábban lásd a lépéseket.",
+    "primaryKeyword": "sakkvizualizációs gyakorlatok",
+    "secondaryKeywords": [
+      "vizualizációs edzés sakkban",
+      "lépések előre számolása",
+      "a tábla elképzelése",
+      "felkészülés a vak sakkra",
+      "sakk a fejben"
+    ],
+    "painPoint": "Elveszíted a bábuk fonalát, amikor a következő lépéseket próbálod elképzelni.",
+    "ctaLabel": "Gyakorold a vizualizációt",
+    "quickAnswer": "Először jegyezz meg egy táblát mozgatás nélkül. Aztán képzelj el egyszerre egy lépést. Nem kell egész partit vakon játszanod.",
+    "keyTakeaways": [
+      "A rövid napi gyakorlás jobb, mint a ritka hosszú alkalmak.",
+      "Minden próbálkozás után ellenőrizd az elképzelt táblát.",
+      "Láss tisztán egy lépést, mielőtt hosszabb változatokkal próbálkozol."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik egy csere után elveszítik a változatot.",
+      "Kezdők, akik elakadnak, ha nem látják a táblát.",
+      "Bárki, aki lépésről lépésre közelítene a vak sakkhoz."
+    ],
+    "timeToRead": "8 perc olvasás",
+    "introParagraphs": [
+      "A vizualizáció azt jelenti, hogy elképzeled, hogyan változik a tábla egy lépés után. Kezdőként a cél csak annyi, hogy két lehetséges lépést össze tudj hasonlítani anélkül, hogy elveszítenéd a bábukat.",
+      "A Memory Chess megmutatja, mely bábukat vagy mezőket felejted el. Utána újra gyakorolhatod ugyanazt az állástípust."
+    ],
+    "startHereTitle": "Kezdd ezekkel a vizualizációs lépésekkel",
+    "startHereSteps": [
+      "Nevezd meg 60 másodpercen át minden bábut és mezőt egy álló táblán.",
+      "Csukd be a szemed, és ellenőrzés előtt építsd fel a táblát a fejedben.",
+      "Képzelj el mindkét félnek egy szabályos lépést, a bábuk érintése nélkül.",
+      "Játssz egy kör Memory Chesst közepes bábuszámmal és szoros idővel.",
+      "Ellenőrizd az állást, és csak akkor ismételd, ha tudod, mit felejtettél el."
+    ],
+    "drillSectionTitle": "Könnyű vizualizációs gyakorlatok",
+    "drillCards": [
+      {
+        "title": "Pillanatkép az álló tábláról",
+        "description": "Jegyezd meg a táblát, majd tedd vissza minden bábut a helyes mezőre.",
+        "duration": "4 perc",
+        "goal": "Megjegyezni a táblát, mielőtt lépéseket képzelsz el.",
+        "ctaLabel": "Kezdd a pillanatképet"
+      },
+      {
+        "title": "Egy lépés mindkét félnek",
+        "description": "Jegyezd meg a táblát, képzelj el mindkét félnek egy lépést, majd ellenőrizd a választ.",
+        "duration": "5 perc",
+        "goal": "Megtanulni fejben frissíteni a táblát.",
+        "ctaLabel": "Gyakorold a frissítést"
+      },
+      {
+        "title": "Felidézés nyomás alatt",
+        "description": "Ha a felidézés pontos, rövidítsd a tábla nézési idejét.",
+        "duration": "5 perc",
+        "goal": "Tiszta felidézést használni gyorsabb partikban.",
+        "ctaLabel": "Adj hozzá nyomást"
+      }
+    ],
+    "comparisonTitle": "Milyen érzés a gyenge vizualizáció",
+    "comparisonSummary": "Számolási gondnak tűnik, de gyakran csak a tábla képe halványul el túl gyorsan.",
+    "comparisonRows": [
+      {
+        "label": "Jelöltlépések",
+        "struggling": "Meg tudod nevezni a lépést, de a keletkező állást nem látod tisztán.",
+        "stronger": "Lépés előtt két lehetséges állást hasonlítasz össze."
+      },
+      {
+        "label": "Taktikai zűrzavar",
+        "struggling": "Cserék után kiürül a fejed.",
+        "stronger": "Elég sokáig megtartod a fontos mezőket és fenyegetéseket a nyugodt döntéshez."
+      },
+      {
+        "label": "Edzési visszajelzés",
+        "struggling": "Nem tudod, pontosan melyik mezőt felejtetted el.",
+        "stronger": "Észreveszed, hogy a hiba egy oszlopból, egy sorból vagy egy hiányzó védőből eredt."
+      }
+    ],
+    "mistakes": [
+      "Mély vak számolás, mielőtt a statikus felidézés stabil lenne.",
+      "A bábuk tényleges mozgatása minden számolási kísérletnél.",
+      "Heti egy gyakorlás rövid napi blokk helyett.",
+      "Nem ellenőrizni, hogy az elképzelt tábla egyezik-e a valósággal."
+    ],
+    "mistakesCallout": "Ne hajszolj még hosszabb változatokat. Először lásd tisztán az első lépést.",
+    "planTitle": "7 napos vizualizációs haladás",
+    "planSteps": [
+      {
+        "label": "1. nap",
+        "duration": "10 perc",
+        "detail": "Csak álló táblás pillanatképek, azonnali ellenőrzéssel."
+      },
+      {
+        "label": "2-3. nap",
+        "duration": "12 perc",
+        "detail": "Adj hozzá félenként egy elképzelt lépést, és figyeld, mely mezők tűnnek el először."
+      },
+      {
+        "label": "4-5. nap",
+        "duration": "15 perc",
+        "detail": "Rövidítsd a Memory Chess nézési idejét ugyanannyi bábuval."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15 perc",
+        "detail": "Vidd át a gyakorlatot egy rapid partiba: minden taktikai döntés előtt állj meg, és mondd ki a keletkező állást."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Mennyi idő alatt javul a vizualizáció?",
+        "answer": "A legtöbb kezdő két-négy hét rövid, rendszeres gyakorlás után tisztább felidézést tapasztal."
+      },
+      {
+        "question": "Segítenek ezek a gyakorlatok villámsakkban?",
+        "answer": "Igen. A fejben tartott tábla gyorsabb frissítése megkönnyíti a sakkok, ütések és fenyegetések észrevételét időzavarban."
+      },
+      {
+        "question": "Lehet vizualizációt gyakorolni vak sakk nélkül?",
+        "answer": "Igen. Az időre végzett felidézés és az egylépéses frissítési gyakorlatok elég valódi alapot adnak."
+      },
+      {
+        "question": "Mit tegyek, ha folyton elfelejtem a bábuk helyét?",
+        "answer": "Használj kevesebb bábut, ellenőrizz gyakrabban, és ismételd ugyanazt az állást, amíg a felidézés tiszta nem lesz."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Akkor használd, ha a statikus és az egylépéses felidézés már stabil."
+      },
+      {
+        "reason": "Szélesítsd a táblafigyelmet, ha a szélső bábukat elnézed."
+      },
+      {
+        "reason": "Kösd össze a vizualizációt egy egyszerű fenyegetésellenőrzéssel."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Táblalátási gyakorlatok a bakik ellen",
+    "h1": "Táblalátási gyakorlatok kezdőknek",
+    "description": "Egyszerű gyakorlatokkal vedd észre a fenyegetéseket, védd a bábuidat, és hibázz kevesebbet.",
+    "primaryKeyword": "táblalátás",
+    "secondaryKeywords": [
+      "táblalátási gyakorlatok",
+      "kevesebb baki sakkban",
+      "fenyegetések észrevétele sakkban",
+      "taktikai éberség",
+      "kezdő hibák sakkban"
+    ],
+    "painPoint": "A tábla egy részére figyelsz, és máshol elnézel egy egyszerű fenyegetést.",
+    "ctaLabel": "Indíts egy táblalátási gyakorlatot",
+    "quickAnswer": "Minden lépés előtt keresd a sakkokat, ütéseket, fenyegetéseket és a védtelen bábukat. Az emlékezetgyakorlás segít az átnézés közben fejben tartani az összes bábut.",
+    "keyTakeaways": [
+      "A táblalátás megtanulható szokás.",
+      "A védtelen bábukra figyelés gyakran a leggyorsabb javulás.",
+      "Az emlékezetgyakorlás segít követni az egész táblát."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik ismerik az alaptaktikát, mégis bábut vesztenek.",
+      "Kezdők, akik gyorsan lépnek, és csak ütés után látják a hibát.",
+      "Bárki, akinek világos lista kell minden lépés előtt."
+    ],
+    "timeToRead": "8 perc olvasás",
+    "introParagraphs": [
+      "Amikor valaki azt mondja, «nem láttam», rendszerint azelőtt lépett, hogy az egész táblát ellenőrizte volna.",
+      "Ezek a gyakorlatok megtanítják, hová nézz. Kezdd a védtelen bábukkal és azokkal a lépésekkel, amelyek sakkot adnak, ütnek vagy fenyegetést hoznak létre."
+    ],
+    "startHereTitle": "Kezdd itt: a lépés előtti ellenőrzés",
+    "startHereSteps": [
+      "Minden lépés előtt nevezd meg mindkét fél sakkjait, ütéseit és fenyegetéseit.",
+      "Jelölj meg minden védtelen bábut, és mondd meg, valóban biztonságban van-e, vagy csak annak tűnik.",
+      "Játssz egy rövid kör Memory Chesst, hogy szorosabb legyen a mező és a bábu kapcsolata.",
+      "Nézz át egy friss bakit, és határozd meg pontosan az elnézett fenyegetést.",
+      "Ismételd meg ugyanazt a listát a következő rapid partiban, rövidítés nélkül."
+    ],
+    "drillSectionTitle": "Táblalátási gyakorlatok valódi partikhoz",
+    "drillCards": [
+      {
+        "title": "Védtelen bábuk leltára",
+        "description": "Nézd át a táblát, és lépés előtt jelöld meg minden védtelen bábut.",
+        "duration": "3 perc",
+        "goal": "Korán elkapni a bakik leggyakoribb forrását.",
+        "ctaLabel": "Végezd el a leltárt"
+      },
+      {
+        "title": "A fenyegetés újrajátszása",
+        "description": "Építsd fel újra a legutóbbi bakis állásodat, és a parti megtekintése előtt keresd meg az ellenfél legerősebb fenyegetését.",
+        "duration": "5 perc",
+        "goal": "Megtanulni, hogyan nézett ki az elnézett fenyegetés a maga környezetében.",
+        "ctaLabel": "Játssz újra egy fenyegetést"
+      },
+      {
+        "title": "Gyors mezőfelidézés",
+        "description": "Használj rövid nézési időt, hogy a tábla átnézés közben is egyben maradjon.",
+        "duration": "4 perc",
+        "goal": "Átnézés közben is emlékezni a bábuk helyére.",
+        "ctaLabel": "Gyorsítsd a felidézést"
+      }
+    ],
+    "comparisonTitle": "Gyenge és erős táblalátás",
+    "comparisonSummary": "A különbség általában már a számolás megkezdése előtt látszik.",
+    "comparisonRows": [
+      {
+        "label": "Figyelem",
+        "struggling": "Egyetlen taktikai ötletet bámulsz.",
+        "stronger": "Terv választása előtt átnézed az egész táblát."
+      },
+      {
+        "label": "Biztonsági ellenőrzés",
+        "struggling": "Feltételezed, hogy a védett bábu biztonságban van.",
+        "stronger": "Megszámolod a támadókat és a védőket, mielőtt megbízol a mezőben."
+      },
+      {
+        "label": "Időnyomás",
+        "struggling": "Gyorsabban lépsz, ahogy az állás élesedik.",
+        "stronger": "Lassítasz, ha sakkok, ütések vagy fenyegetések jelennek meg."
+      }
+    ],
+    "mistakes": [
+      "Csak a saját ötleted ellenőrzése, az ellenfél fenyegetéseinek figyelmen kívül hagyása.",
+      "Védett bábut biztonságosnak venni a teljes csere kiszámolása nélkül.",
+      "Túl gyorsan lépni, amint az állás taktikaivá válik.",
+      "Sosem megnevezni a hiba típusát a parti után."
+    ],
+    "mistakesCallout": "Több feladat nem javítja ki a kapkodó átnézést. Minden lépés előtt ismételd ugyanazt a rövid ellenőrzést.",
+    "planTitle": "7 napos táblalátás-újraindítás",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "12 perc",
+        "detail": "Csak védtelen bábuk leltára és sakk-ütés-fenyegetés átnézés."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "15 perc",
+        "detail": "A partik előtt adj hozzá egy kör Memory Chesst, hogy az átnézés tisztább fejben tartott táblán történjen."
+      },
+      {
+        "label": "5. nap",
+        "duration": "15 perc",
+        "detail": "Nézz át három friss bakit, és nevezd meg minden állásban az elnézett jelet."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15-20 perc",
+        "detail": "Játssz rapidot, és használd a teljes listát minden olyan lépésnél, amely megváltoztatja a feszültséget vagy a király biztonságát."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Mi a leggyorsabb módja a táblalátás javításának?",
+        "answer": "Használd ugyanazt a listát minden lépés előtt, amíg automatikussá nem válik: sakkok, ütések, fenyegetések és védtelen bábuk."
+      },
+      {
+        "question": "Miért hibázom, pedig ismerem a taktikát?",
+        "answer": "Mert a táblakövetés rétege gyenge. A taktika csak azután segít, hogy helyesen érzékeled az állást."
+      },
+      {
+        "question": "Milyen gyakran nézzem át a bakijaimat?",
+        "answer": "Minden parti után. A rövid átnézési szokás sokkal gyorsabban épül be, mint egy hosszú heti alkalom."
+      },
+      {
+        "question": "Segítenek az emlékezetgyakorlatok a táblalátásban?",
+        "answer": "Igen. A gyorsabb bábufelidézés megkönnyíti, hogy átnézés közben az egész táblát figyelemben tartsd."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Használd a teljes baki elleni útmutatót, ha a látáshibák anyagba kerülnek."
+      },
+      {
+        "reason": "Értsd meg, miért omlik össze a taktika valódi nyomás alatt."
+      },
+      {
+        "reason": "Nézd meg, hol illeszkedik a táblalátás a teljes kezdő rutinba."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Sakk-emlékezet edzése a gyorsabb felidézésért",
+    "h1": "Sakk-emlékezet edzése kezdőknek",
+    "description": "Egyszerű emlékezetgyakorlatokkal jegyezz meg állásokat, vedd észre a mintákat, és kövesd tisztábban a lépéseket.",
+    "primaryKeyword": "sakk-emlékezet edzése",
+    "secondaryKeywords": [
+      "sakk emlékezetgyakorlatok",
+      "sakkállások megjegyzése",
+      "mintafelismerés sakkban",
+      "táblafelidézés edzése",
+      "koncentráció sakkban"
+    ],
+    "painPoint": "Elfelejted, hol állnak a bábuk, miközben a következő lépéseken gondolkodsz.",
+    "ctaLabel": "Indíts egy emlékezetkihívást",
+    "quickAnswer": "Az emlékezetedzés abban segít, hogy hasznos állásokat tarts meg, miközben a bábuk változnak. Nem arról szól, hogy minél több véletlen táblát magolj be.",
+    "keyTakeaways": [
+      "Eleinte a pontosság többet számít a sebességnél.",
+      "Egy állás ismétlése egyszerre egy emlékezethiba kijavítását teszi lehetővé.",
+      "Az emlékezetgyakorlást tedd a számolás vagy az elemzés elé."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik egy erős válasz után elfelejtik a tervüket.",
+      "Kezdők, akik nem tudják újraépíteni a partijaik kulcsállásait.",
+      "Bárki, aki sok aktív bábunál elakad."
+    ],
+    "timeToRead": "8 perc olvasás",
+    "introParagraphs": [
+      "A sakk-emlékezet gyakorlati készség. A cél az, hogy elég sokáig tarts meg egy tiszta képet a tábláról ahhoz, hogy nyugodtan válassz lépést.",
+      "A Memory Chess egyszerű kört ad: nézd, jegyezd meg, ellenőrizd, és próbáld újra."
+    ],
+    "startHereTitle": "Kezdd ezzel az emlékezetrutinnal",
+    "startHereSteps": [
+      "Indulj egy egyszerű állásból, és jegyezd meg 10 másodpercig.",
+      "Építsd fel újra a táblát, és jegyezd fel az első elveszített mezőt vagy bábut.",
+      "Ismételd meg egyszer ugyanazt az állást, hogy látható legyen a javítás.",
+      "Adj hozzá egy rövid taktikai változatot a megjegyzett felállásból.",
+      "Kövesd a pontosságot és az elkövetett emlékezethiba típusát is."
+    ],
+    "drillSectionTitle": "Emlékezetgyakorlatok valódi partikhoz",
+    "drillCards": [
+      {
+        "title": "Egy állás ismétlése",
+        "description": "Jegyezz meg egy állást, építsd fel újra, majd ismételd meg egyszer ugyanazokkal a beállításokkal.",
+        "duration": "5 perc",
+        "goal": "Egy tiszta, javítható emlékezethibát találni.",
+        "ctaLabel": "Ismételj egy állást"
+      },
+      {
+        "title": "Felidézés horgonypontokkal",
+        "description": "Először a királyok helyére, a védtelen bábukra és a centrum feszültségére figyelj.",
+        "duration": "4 perc",
+        "goal": "Először az állás legfontosabb részeit megjegyezni.",
+        "ctaLabel": "Gyakorold a horgonypontokat"
+      },
+      {
+        "title": "Előbb felidézés, aztán számolás",
+        "description": "A tábla újraépítése után ellenőrzés előtt számolj ki egy rövid változatot.",
+        "duration": "6 perc",
+        "goal": "Használni a táblaemlékezetet számolás közben.",
+        "ctaLabel": "Adj hozzá egy változatot"
+      }
+    ],
+    "comparisonTitle": "Így néz ki a gyenge felidézés partiban",
+    "comparisonSummary": "A tábla ismerősnek tűnhet, mégis túl homályos ahhoz, hogy elbírja a számolást.",
+    "comparisonRows": [
+      {
+        "label": "A változat megtartása",
+        "struggling": "Elveszíted a kiindulási állást, miközben egy másik jelöltlépést mérlegelsz.",
+        "stronger": "Egy változat után pontosan visszatérsz a kiindulási álláshoz."
+      },
+      {
+        "label": "Mintaemlékezet",
+        "struggling": "Emlékszel a taktikai ötletre, de a védőkre nem.",
+        "stronger": "Emlékszel az ötletre és a mezőkre is, amelyek működővé teszik."
+      },
+      {
+        "label": "Az elemzés minősége",
+        "struggling": "Az elemzés homályos marad, mert az állás azonnal eltűnik.",
+        "stronger": "Újraépíted a kulcspillanatokat, és gyorsabban tanulsz."
+      }
+    ],
+    "mistakes": [
+      "Túl nagy nehézségi ugrások a szintedhez képest.",
+      "A sebesség mérése a pontosság figyelmen kívül hagyásával.",
+      "Hibanapló hiánya, így az ismétlődő gyengeségek rejtve maradnak.",
+      "Az emlékezetgyakorlatokat a taktikai játéktól különállónak tekinteni."
+    ],
+    "mistakesCallout": "Ne nehezítsd az állást, amíg a felidézés bizonytalan. Csökkentsd a nehézséget, és először a pontosságot építsd fel.",
+    "planTitle": "7 napos emlékezetblokk",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "10 perc",
+        "detail": "Ismételj egyszerű állásokat, és nevezz meg minden emlékezethibát."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "12 perc",
+        "detail": "Adj hozzá horgonypontokat, hogy először a királyokra, a védtelen bábukra és a centrum feszültségére emlékezz."
+      },
+      {
+        "label": "5. nap",
+        "duration": "12 perc",
+        "detail": "Minden helyes újraépítés után adj hozzá egy rövid lépéssort."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15 perc",
+        "detail": "Rövidítsd kissé az időt ugyanannyi bábuval, majd vidd át a munkát egy rapid parti elemzésébe."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Javítja az emlékezetedzés a valódi partikat?",
+        "answer": "Igen, ha számolással vagy elemzéssel párosítod. A jobb felidézés nyomás alatt is tisztábban tartja a változatokat."
+      },
+      {
+        "question": "Hány állást gyakoroljak alkalmanként?",
+        "answer": "Kezdőknek hat-tizenkét gondos próbálkozás elég, ha ellenőrzöd a hibákat és nem kapkodsz."
+      },
+      {
+        "question": "Véletlen táblák vagy valódi szerkezetek?",
+        "answer": "Mindkettő. A véletlen táblák a tiszta felidézést élesítik, a valódi szerkezetek az átvitelt javítják."
+      },
+      {
+        "question": "Mi van, ha a pontosság megreked?",
+        "answer": "Egy hétig használj kevesebb bábut, javíts ki egy hibatípust, és csak akkor adj hozzá bábukat, ha a felidézés újra tiszta."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Ezt használd, ha nehezen jegyzed meg a lépéssorokat."
+      },
+      {
+        "reason": "Egyensúlyozd az emlékezetet ésszerű feladatmennyiséggel."
+      },
+      {
+        "reason": "Kösd a táblaemlékezetet a gyakori mintákhoz."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Vak sakk edzés kezdőknek",
+    "h1": "Vak sakk kezdőknek, lépésről lépésre",
+    "description": "Tanuld a vak sakkot apró lépésekben, amelyek javítják a vizualizációt anélkül, hogy elárasztanának.",
+    "primaryKeyword": "vak sakk edzés",
+    "secondaryKeywords": [
+      "vak sakk kezdőknek",
+      "a fejben tartott tábla edzése",
+      "sakkvizualizációs gyakorlatok",
+      "számolás bábumozgatás nélkül",
+      "koncentrációs gyakorlatok sakkban"
+    ],
+    "painPoint": "Elveszíted a táblát, amint már nem nézed.",
+    "ctaLabel": "Kezdd a vak gyakorlást",
+    "quickAnswer": "Indulj egyszerű állásból. Jegyezd meg, képzelj el mindkét félnek egy lépést, és ellenőrizd. Egész vak partit csak akkor próbálj, ha ezek a lépések már könnyűek.",
+    "keyTakeaways": [
+      "A vak sakk lépésről lépésre épül fel.",
+      "A válasz ellenőrzése többet ér, mint nehezebb állásokkal próbálkozni.",
+      "Kezdőknek a vak gyakorlatok kevesebb táblasegítséggel végzett vizualizációs gyakorlatok."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik jobb vizualizációt akarnak anélkül, hogy egész vak partival kezdenék.",
+      "Kezdők, akik egy-két elképzelt lépés után elveszítik a mezőket.",
+      "Bárki, aki tisztább képet akar a tábláról a fejében."
+    ],
+    "timeToRead": "8 perc olvasás",
+    "introParagraphs": [
+      "A legnagyobb hiba túl korán megpróbálni egy egész vak partit. Ez általában frusztrációt hoz, nem fejlődést.",
+      "Haladj lépésről lépésre: lásd a táblát, jegyezd meg, képzelj el egy lépést, ellenőrizd, és lassan csökkentsd a vizuális segítséget."
+    ],
+    "startHereTitle": "Kezdd itt: biztonságos út a vak sakkhoz",
+    "startHereSteps": [
+      "Jegyezz meg egy kis állást, és építsd fel újra, mielőtt bármilyen lépést elképzelnél.",
+      "Számolj ki mindkét félnek egy lépést a bábuk érintése nélkül.",
+      "Minden eltérést azonnal ellenőrizz, ahelyett hogy tovább erőltetnéd.",
+      "Játssz egy kör Memory Chesst kicsit rövidebb nézési idővel.",
+      "Csak akkor adj hozzá még egy lépést, ha a jelenlegi változat tiszta."
+    ],
+    "drillSectionTitle": "Könnyű vak sakk gyakorlatok",
+    "drillCards": [
+      {
+        "title": "Előbb építsd fel, aztán lépj",
+        "description": "Ne képzelj el lépéseket, amíg a kiindulási állás nem teljesen stabil.",
+        "duration": "4 perc",
+        "goal": "Tiszta felidézést építeni, mielőtt lépéseket adsz hozzá.",
+        "ctaLabel": "Előbb építsd fel a táblát"
+      },
+      {
+        "title": "Egy lépés mindkét félnek",
+        "description": "Képzelj el egy világos lépést és egy sötét választ, majd ellenőrizd az új táblát.",
+        "duration": "5 perc",
+        "goal": "Frissíteni az állást a tábla nézése nélkül.",
+        "ctaLabel": "Képzelj el két lépést"
+      },
+      {
+        "title": "Rövid nézési idő",
+        "description": "Csökkentsd a nézési időt, hogy gyorsabban tanuld meg megjegyezni a táblát.",
+        "duration": "4 perc",
+        "goal": "Felkészülni a vak sakkra a teljes tábla elrejtése nélkül.",
+        "ctaLabel": "Rövidítsd az időt"
+      }
+    ],
+    "comparisonTitle": "Biztonságosabb módja a vak sakk gyakorlásának",
+    "comparisonSummary": "Kérdezd meg, látsz-e egy lépéssel tisztábban, mint korábban. Egész vak partira még nincs szükség.",
+    "comparisonRows": [
+      {
+        "label": "Kiindulópont",
+        "struggling": "Egyből teljes vak játékba ugrasz.",
+        "stronger": "Lépések hozzáadása előtt megjegyzed a kiindulási táblát."
+      },
+      {
+        "label": "Ellenőrzés",
+        "struggling": "Homályos fejben tartott táblában bízol.",
+        "stronger": "Minden elképzelt frissítést ellenőrzöl, és azonnal javítasz."
+      },
+      {
+        "label": "Az alkalom minősége",
+        "struggling": "Addig gyakorolsz, amíg a koncentráció összeomlik.",
+        "stronger": "Akkor hagyod abba, amikor a fejben tartott pontosság még magas."
+      }
+    ],
+    "mistakes": [
+      "Túl korán teljes vak partikkal próbálkozni.",
+      "Az ellenőrzés kihagyása és hibás fejben tartott táblákban bízni.",
+      "Lépéseket hozzáadni, mielőtt a rövid változatok tiszták lennének.",
+      "Egy alkalommal túl sokáig gyakorolni, és elégetni a figyelmet."
+    ],
+    "mistakesCallout": "Ne ugorj sokkal nehezebb feladatra. Minden alkalommal csak kicsit csökkentsd a tábla segítségét.",
+    "planTitle": "7 napos vak felkészülési blokk",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "10 perc",
+        "detail": "Csak állások újraépítése emlékezetből, azonnali ellenőrzéssel."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "12 perc",
+        "detail": "Adj hozzá félenként egy lépést, és tartsd egyszerűen az állásokat."
+      },
+      {
+        "label": "5. nap",
+        "duration": "12 perc",
+        "detail": "Rövidítsd a Memory Chess nézési idejét ugyanannyi bábuval."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15 perc",
+        "detail": "Próbálj néhány kétlépéses sort, de csak ha az egylépéses munka pontos."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hasznos a vak sakk kezdőknek?",
+        "answer": "Igen, rövid, kontrollált gyakorlatokban. Erősíti azt a vizualizációt, amely a rendes partikat is támogatja."
+      },
+      {
+        "question": "Milyen gyakran csináljak vak gyakorlatokat?",
+        "answer": "Heti két-négy rövid alkalom elég, rendszeres játék és elemzés mellett."
+      },
+      {
+        "question": "Mi a legjobb első vak gyakorlat?",
+        "answer": "Egy egyszerű állás újraépítése emlékezetből, és ellenőrzés előtt egy lépés elképzelése mindkét félnek."
+      },
+      {
+        "question": "Honnan tudom, hogy fejlődöm?",
+        "answer": "Több mezőt tartasz meg helyesen, hosszabban frissíted a táblát, és rendes partikban kevesebb látáshibát vétesz."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Tartsd erősen az alapokat, ahelyett hogy haladó vak játékra ugranál."
+      },
+      {
+        "reason": "Párosítsd a vak munkát változattartó gyakorlatokkal."
+      },
+      {
+        "reason": "Használj tisztább vizualizációt a lépések összehasonlításához."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Munkamemória-gyakorlatok sakkozóknak",
+    "h1": "Munkamemória-gyakorlatok kezdőknek",
+    "description": "Egyszerű gyakorlatok lépéssorok megjegyzéséhez, lehetőségek összehasonlításához és tisztább döntésekhez.",
+    "primaryKeyword": "munkamemória-gyakorlatok",
+    "secondaryKeywords": [
+      "munkamemória a sakkban",
+      "számolási edzés sakkban",
+      "koncentrációs gyakorlatok sakkban",
+      "kiegyensúlyozottabb sakkjáték",
+      "mentális állóképesség sakkban"
+    ],
+    "painPoint": "Elfelejted az első lépéssort, miközben egy másikon gondolkodsz.",
+    "ctaLabel": "Indíts egy emlékezetrutint",
+    "quickAnswer": "A munkamemória lehetővé teszi, hogy néhány lehetséges lépéssort tarts fejben. Tartsd alacsonyan a számukat, és ellenőrizd mindegyiket tisztán.",
+    "keyTakeaways": [
+      "Három tiszta választás jobb, mint hat zavaros.",
+      "Egy rövid, hangosan kimondott összefoglaló segít megjegyezni minden változatot.",
+      "Gyakorolj valódi állásokon, és használd a készséget partikban."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik a másodikat vizsgálva elveszítik az első változatot.",
+      "Kezdők, akik összekeverik a lépéssorrendet.",
+      "Bárki, aki fáradtan több taktikai hibát vét."
+    ],
+    "timeToRead": "8 perc olvasás",
+    "introParagraphs": [
+      "A munkamemória lehetővé teszi, hogy a lehetséges lépéseket fejben tartsd, miközben összehasonlítod őket. Sakkban emlékezned kell a kiindulási állásra és egy-két rövid változatra anélkül, hogy összekevernéd őket.",
+      "A Memory Chess segít megjegyezni a kiindulási állást. Ha ez a kép tiszta, a következő lépések követése könnyebbé válik."
+    ],
+    "startHereTitle": "Kezdd két rövid lépéssorral",
+    "startHereSteps": [
+      "Válassz egy állást, és a tábla érintése nélkül sorolj fel három jelöltlépést.",
+      "Számolj ki minden változatot két félépésre, és foglald össze az eredményt egy mondatban.",
+      "Játssz egy felidézési kört a Memory Chessben, hogy felfrissítsd az alapállást.",
+      "Térj vissza az álláshoz, és hasonlítsd össze újra a lehetséges sorokat.",
+      "Írj egy mondatot arról, hol szakadt meg a változat megtartása."
+    ],
+    "drillSectionTitle": "Munkamemória-gyakorlatok a sakkhoz",
+    "drillCards": [
+      {
+        "title": "Három változat összefoglalása",
+        "description": "Tarts röviden három jelöltlépést, és írd le mindegyik ágat egy mondatban.",
+        "duration": "6 perc",
+        "goal": "Minden sort tisztán tartani ahelyett, hogy továbbiakat adnál hozzá.",
+        "ctaLabel": "Tarts három változatot"
+      },
+      {
+        "title": "Felidézés-visszaállítás",
+        "description": "Iktass be egy kör Memory Chesst a számolási próbálkozások közé, hogy az alaptábla stabil maradjon.",
+        "duration": "4 perc",
+        "goal": "Megjegyezni a kiindulási állást, mielőtt lépéseket követsz.",
+        "ctaLabel": "Állítsd vissza a táblát"
+      },
+      {
+        "title": "Összehasonlítás a változat után",
+        "description": "Térj vissza a kiindulási álláshoz, és rövid szünet után hasonlítsd össze az ágakat.",
+        "duration": "5 perc",
+        "goal": "Az alapállás és a változatok között váltani anélkül, hogy összekevernéd őket.",
+        "ctaLabel": "Hasonlítsd össze a lehetőségeket"
+      }
+    ],
+    "comparisonTitle": "Amikor túl sokat próbálsz megjegyezni",
+    "comparisonSummary": "Ha megtelik az emlékezet, a változat elmosódik, és a lépéssorrend összekeveredik.",
+    "comparisonRows": [
+      {
+        "label": "Jelöltlépések",
+        "struggling": "Túl sok lehetőséget próbálsz egyszerre tartani.",
+        "stronger": "Kevesebb változatot tartasz, de mindegyik tovább marad pontos."
+      },
+      {
+        "label": "Lépéssorrend",
+        "struggling": "Az ágak összefolynak.",
+        "stronger": "Minden változat külön marad, és könnyű összehasonlítani."
+      },
+      {
+        "label": "Fáradtság",
+        "struggling": "A döntések minősége a parti végén összeomlik.",
+        "stronger": "Egyszerűbb és tisztább folyamatot tartasz, ahogy csökken az energia."
+      }
+    ],
+    "mistakes": [
+      "Túl sok lépéssort próbálni egyszerre megjegyezni.",
+      "Kihagyni a rövid összefoglalót minden változat után.",
+      "Csak feladatokat megoldani, és sosem használni a készséget partikban.",
+      "Folytatni, pedig már túl fáradt vagy a tiszta gondolkodáshoz."
+    ],
+    "mistakesCallout": "Még ne adj hozzá változatokat. Tarts kevés változatot tisztán, mielőtt meghosszabbítanád őket.",
+    "planTitle": "7 napos munkamemória-blokk",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "10 perc",
+        "detail": "Csak két lépéssort használj, és mindegyiket magyarázd el hangosan."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "12 perc",
+        "detail": "Iktass be Memory Chess visszaállítást a próbálkozások közé, hogy a kiindulási állás tiszta maradjon."
+      },
+      {
+        "label": "5. nap",
+        "duration": "12 perc",
+        "detail": "Csak akkor adj hozzá harmadik lehetőséget, ha az első kettő pontos marad."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15 perc",
+        "detail": "Használd a rutint egy rapid partiban. Nehéz pillanatokban állj meg, és nevezd meg tisztán a lehetséges lépéseket."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Átvihetők a munkamemória-gyakorlatok a sakkba?",
+        "answer": "Lehetnek, különösen ha közvetlenül állásokhoz, a változatok megtartásához és elemzéshez kötöd őket, nem általános agytornához."
+      },
+      {
+        "question": "Hogyan építse fel ezt egy kezdő?",
+        "answer": "Rövid alkalmakkal, amelyek ötvözik a lehetséges lépéseket, a táblaemlékezetet és egy valódi partiállást."
+      },
+      {
+        "question": "Hogyan mérjem egyszerűen a fejlődést?",
+        "answer": "Jegyezd fel, hány sort tudsz megtartani, és milyen gyakran veszíted el a fonalat."
+      },
+      {
+        "question": "Helyettesíti ez a taktikai edzést?",
+        "answer": "Nem. Kiegészíti azzal, hogy megoldás és játék közben tisztábban tartja a változatokat."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Használj jobb munkamemóriát a lehetséges lépések összehasonlításához."
+      },
+      {
+        "reason": "Erősítsd a változattartás alatti felidézési réteget."
+      },
+      {
+        "reason": "Használj egyszerűbb gondolkodási folyamatot, hogy ne vesszen kárba a munkamemória."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Így hagyd abba a bakizást sakkban",
+    "h1": "Így hagyd abba a bakizást sakkban",
+    "description": "Használj rövid biztonsági ellenőrzést, hogy észrevedd a fenyegetéseket, megvédd a bábuidat, és kevesebbet hibázz.",
+    "primaryKeyword": "hogyan hagyd abba a bakizást sakkban",
+    "secondaryKeywords": [
+      "bakik megelőzése sakkban",
+      "ne ajándékozz el bábukat",
+      "fenyegetésellenőrzés sakkban",
+      "biztonsági lista sakkban",
+      "kevesebb egyszerű hiba sakkban"
+    ],
+    "painPoint": "Érted a sakk gondolatait, mégis egyszerű fenyegetésekre veszítesz bábut.",
+    "ctaLabel": "Indíts egy baki elleni gyakorlatot",
+    "quickAnswer": "Minden lépés előtt ellenőrizd az ellenfél fenyegetéseit, keresd a védtelen bábukat, és győződj meg róla, hogy a lépésed biztonságos. Az emlékezetgyakorlás segít fejben tartani az egész táblát.",
+    "keyTakeaways": [
+      "A kezdő bakik többsége abból ered, hogy a tábla egy része kimarad.",
+      "A biztonsági listának elég rövidnek kell lennie ahhoz, hogy időnyomásban is működjön.",
+      "Játszd újra a hibáidat, amíg gyorsan meg nem látod, mit néztél el."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik újra és újra egylépéses taktikába futnak.",
+      "Kezdők, akik partiban gyengébbnek érzik magukat, mint feladatokban.",
+      "Bárki, aki nyugodt rutint akar minden lépéshez."
+    ],
+    "timeToRead": "8 perc olvasás",
+    "introParagraphs": [
+      "Sok baki abból ered, hogy azelőtt lépsz, hogy az egész állást ellenőrizted volna. Az is előfordul, hogy szem elől téveszted, hol van védve egy bábu.",
+      "Egy rövid rutin felváltja a pánikot és a találgatást. Használd ugyanazokat az ellenőrzéseket, amikor az állás élesedik."
+    ],
+    "startHereTitle": "Kezdd itt: a baki elleni lista",
+    "startHereSteps": [
+      "Kérdezd meg, milyen sakkjai, ütései és fenyegetései vannak most az ellenfélnek.",
+      "Keresd meg minden védtelen vagy túlterhelt bábut.",
+      "Csak ezután ellenőrizd, hogy a tervezett lépésed biztonságos-e.",
+      "Partik előtt játssz egy rövid kör Memory Chesst az élesebb bábufelidézésért.",
+      "Minden baki után írd le egy mondatban az elnézett jelet."
+    ],
+    "drillSectionTitle": "Egyszerű baki elleni gyakorlatok",
+    "drillCards": [
+      {
+        "title": "Átnézés az ellenfél oldaláról",
+        "description": "Minden állást az ellenfél legerősebb fenyegetéseinek ellenőrzésével kezdj.",
+        "duration": "3 perc",
+        "goal": "Az ellenfél ötletére gondolni a sajátod előtt.",
+        "ctaLabel": "Nézz át a másik oldalról"
+      },
+      {
+        "title": "Védtelen bábuk riasztása",
+        "description": "Lépés előtt nevezz meg minden védtelen vagy túlterhelt bábut.",
+        "duration": "4 perc",
+        "goal": "Korán elkapni a legkönnyebb anyagvesztéseket.",
+        "ctaLabel": "Indítsd a riasztást"
+      },
+      {
+        "title": "Baki-visszajátszó kör",
+        "description": "Játszd újra a saját bakis állásaidat, amíg az elnézett fenyegetés nyilvánvalóvá nem válik.",
+        "duration": "6 perc",
+        "goal": "Tanulni azokból az állásokból, amelyek valóban partikba kerültek.",
+        "ctaLabel": "Játszd újra a bakidat"
+      }
+    ],
+    "comparisonTitle": "Mi változik, ha kevesebb a baki",
+    "comparisonSummary": "A partik nem lesznek hirtelen hibátlanok. Nyugodtabbak lesznek, és a vereségeknek érthető okuk lesz, nem egy egylépéses katasztrófa.",
+    "comparisonRows": [
+      {
+        "label": "A lépés pillanata",
+        "struggling": "Lépsz, amint meglátsz egy tervet.",
+        "stronger": "Csak egy rövid biztonsági kör után lépsz."
+      },
+      {
+        "label": "Fenyegetés-tudatosság",
+        "struggling": "A taktikát akkor látod, amikor már bekövetkezett.",
+        "stronger": "Felismered a taktikai formát, mielőtt elköteleződnél."
+      },
+      {
+        "label": "Parti utáni átnézés",
+        "struggling": "A vereség véletlenszerűnek tűnik.",
+        "stronger": "Gyorsan megnevezed, pontosan melyik jelet nézted el."
+      }
+    ],
+    "mistakes": [
+      "Megpróbálni a bakikat pusztán lassabb játékkal megszüntetni.",
+      "Több megnyitást tanulni, miközben a fenyegetésellenőrzés szokása még gyenge.",
+      "Motorváltozatokat nézni anélkül, hogy megneveznéd a valóban elnézett jelet.",
+      "Figyelmen kívül hagyni, hogy az időnyomás gyengíti a felidézést."
+    ],
+    "mistakesCallout": "A lassabb játék nem elég. Használd minden alkalommal ugyanazt a rövid biztonsági ellenőrzést.",
+    "planTitle": "7 napos baki elleni újraindítás",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "10 perc",
+        "detail": "Csak átnézés az ellenfél oldaláról és védtelen bábuk riasztása."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "12 perc",
+        "detail": "Minden játékalkalom előtt adj hozzá egy kör Memory Chesst a tisztább állásképért."
+      },
+      {
+        "label": "5. nap",
+        "duration": "15 perc",
+        "detail": "Játssz újra három friss bakit, és sorold be mindegyikben az elnézett jelet."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15 perc",
+        "detail": "Használd a teljes listát rapid partikban, és kövesd a partinkénti bakikat, ne csak az eredményt."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Miért ajándékozok el folyton bábukat?",
+        "answer": "Rendszerint azért, mert a lépés előtti átnézés hiányos. Lehet, hogy ismered a taktikát, de nem nézed át az egész táblát lépés előtt."
+      },
+      {
+        "question": "Elég, ha lassabban játszom?",
+        "answer": "Csak akkor, ha a plusz időt tiszta biztonsági ellenőrzésre fordítod. A tábla céltalan bámulása nem segít."
+      },
+      {
+        "question": "Tényleg segítenek az emlékezetgyakorlatok a bakik ellen?",
+        "answer": "Igen. A tisztább bábufelidézés megkönnyíti a fenyegetések észrevételét, miközben az állás változik."
+      },
+      {
+        "question": "Mit kövessek, hogy kevesebbet bakizzak?",
+        "answer": "A partinkénti bakikat, az elnézett védtelen bábukat, és azt, hogy az elszalasztott fenyegetés rossz átnézésből vagy rossz számolásból eredt-e."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Építs erősebb táblaátnézést a bakik megelőzéséhez."
+      },
+      {
+        "reason": "Nézd meg, miért omlik össze a taktika gyenge táblakövetésnél."
+      },
+      {
+        "reason": "Kösd a baki elleni munkát egy teljes kezdő rutinhoz."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Miért nem megy át a feladatértékszám a partikba",
+    "h1": "Miért nem megy át a feladatértékszámod a partikba",
+    "description": "Értsd meg, miért más a feladatmegoldó tudás, mint a valódi parti, és hogyan zárja a rést a táblalátás, az emlékezet és az elemzés.",
+    "primaryKeyword": "miért nem megy át a feladatértékszám a partikba",
+    "secondaryKeywords": [
+      "feladatértékszám és partiértékszám",
+      "a taktika nem megy át partiba",
+      "feladattudás valódi partikban",
+      "miért vagyok jobb feladatokban",
+      "táblalátás sakkban"
+    ],
+    "painPoint": "Jól oldod meg a feladatokat, de valódi partikban elnézed a taktikát.",
+    "ctaLabel": "Edzz valódi partikra",
+    "quickAnswer": "A feladat elárulja, hogy van taktika. A parti nem. Észre kell venned a veszélyt, meg kell jegyezned a táblát, és tudnod kell, mikor lassíts.",
+    "keyTakeaways": [
+      "A feladat közli, hogy van megoldandó probléma.",
+      "Partiban neked kell megtalálnod a veszélyes pillanatot.",
+      "A jobb táblalátás és emlékezet korábban mutatja meg a taktikát."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akiknek magas a feladatértékszáma, de a partiértékszám nem mozdul.",
+      "Kezdők, akik a taktikát a parti után látják, nem közben.",
+      "Bárki, aki nem tudja partiban használni a feladatok ötleteit."
+    ],
+    "timeToRead": "8 perc olvasás",
+    "introParagraphs": [
+      "Ez gyakori kezdő gond. Megoldod a feladatokat, de a partikban továbbra is van elvesztett bábu, elnézett fenyegetés és kapkodó lépés.",
+      "Több feladat nem mindig oldja meg. Azt is észre kell venned, mikor válik veszélyessé az állás, és el kell képzelned, mi történik minden választás után."
+    ],
+    "startHereTitle": "Kezdd a feladatok és a partik összekötésével",
+    "startHereSteps": [
+      "Feladatmegoldás előtt szánj 2 percet a tábla átnézésére sakkok, ütések és fenyegetések után.",
+      "Adj hozzá egy kör Memory Chesst, hogy a tábla képe nyomás alatt is stabil maradjon.",
+      "Feladat után kérdezd meg, melyik jel szólt volna arról, hogy partiban lassíts.",
+      "Nézz át egy friss bakit, és hasonlítsd össze egy hasonló taktikai feladattal.",
+      "Alkalmanként játssz legalább egy rapid partit, hogy lásd, kitart-e a lépés előtti átnézés."
+    ],
+    "drillSectionTitle": "Gyakorlatok, amelyek összekötik a feladatokat és a partikat",
+    "drillCards": [
+      {
+        "title": "Keresd a figyelmeztető jelet",
+        "description": "Mielőtt megkeresnéd a taktikát, keresd meg a figyelmeztető jelet.",
+        "duration": "4 perc",
+        "goal": "Korábban észrevenni a veszélyes állásokat.",
+        "ctaLabel": "Előbb a jelet gyakorold"
+      },
+      {
+        "title": "Felidézés a számolás előtt",
+        "description": "Feladatok előtt játssz egy gyors kör Memory Chesst, hogy a tábla tisztább legyen.",
+        "duration": "4 perc",
+        "goal": "Összekötni a mintamunkát a valódi játékkal.",
+        "ctaLabel": "Előbb élesítsd a felidézést"
+      },
+      {
+        "title": "Partiállás újrajátszása",
+        "description": "Építsd fel a saját partidból egy elnézett taktikai pillanatot, és oldd meg feladatként.",
+        "duration": "6 perc",
+        "goal": "Újra valódi állásokhoz közelíteni a taktikai edzést.",
+        "ctaLabel": "Játszd újra az elnézett taktikát"
+      }
+    ],
+    "comparisonTitle": "Feladatok és partik: mi változik?",
+    "comparisonSummary": "A taktikai lépés lehet ugyanaz, de a fejben végzett feladat nem.",
+    "comparisonRows": [
+      {
+        "label": "A probléma kerete",
+        "struggling": "A parti nem árulja el, hogy van taktika.",
+        "stronger": "Észreveszed a jelet, hogy a feszültség éppen megváltozott."
+      },
+      {
+        "label": "A tábla tisztasága",
+        "struggling": "A változat elmosódik, ha több bábu mozdul.",
+        "stronger": "Emlékezetben tartod a fontos mezőket és a védőket."
+      },
+      {
+        "label": "A döntés üteme",
+        "struggling": "Ugyanolyan tempóban lépsz, amikor az állás veszélyessé válik.",
+        "stronger": "Lassítasz, amikor sakkok, ütések vagy fenyegetések jelennek meg."
+      }
+    ],
+    "mistakes": [
+      "Feladatokat oldani a partik felé vezető lépés nélkül.",
+      "Feltételezni, hogy a taktikai tudás önmagában megelőzi a bakikat.",
+      "Sosem megnézni, miért vált veszélyessé egy állás.",
+      "A táblalátást a taktikától különállónak tekinteni."
+    ],
+    "mistakesCallout": "Ne csak több feladatot adj hozzá. Gyakorold a taktikai pillanatok észrevételét a saját partijaidban is.",
+    "planTitle": "7 napos átviteli blokk",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "12 perc",
+        "detail": "Minden feladatalkalomhoz add hozzá a jel keresését a megoldás előtt."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "12 perc",
+        "detail": "Feladatok vagy rapid játék előtt játssz egy rövid kör Memory Chesst."
+      },
+      {
+        "label": "5. nap",
+        "duration": "15 perc",
+        "detail": "Játssz újra három elnézett taktikai pillanatot a saját partijaidból."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15-20 perc",
+        "detail": "Játssz rapidot, és állítsd meg magad, valahányszor az állás kényszerítővé vagy taktikailag feszültté válik."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Miért vagyok jobb feladatokban, mint partiban?",
+        "answer": "Mert a feladat már előre közli, hogy van megtalálható taktika. A valódi parti nem."
+      },
+      {
+        "question": "Hagyjam abba a feladatmegoldást?",
+        "answer": "Nem. Tartsd meg, de add hozzá a táblalátást, a felidézést és a partiállások újrajátszását, hogy a minták átmenjenek."
+      },
+      {
+        "question": "Mi a legjobb átviteli gyakorlat?",
+        "answer": "Újrajátszani egy elnézett taktikát a saját partidból, és megoldani azután, hogy emlékezetből felépítetted az állást."
+      },
+      {
+        "question": "Hogyan mérem az átvitelt?",
+        "answer": "Nézd, csökken-e a partinkénti bakik és az elnézett egyszerű taktikák száma, nem csak azt, emelkedik-e a feladatértékszám."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Ezzel építs rövidebb baki elleni listát a partikhoz."
+      },
+      {
+        "reason": "Erősítsd az átnézési szokást, amely láthatóvá teszi a taktikát."
+      },
+      {
+        "reason": "Válassz olyan feladatmennyiséget, amely hagy időt a játékra."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Így látod az egész táblát sakkban",
+    "h1": "Így látod az egész sakktáblát",
+    "description": "Egyszerű átnézéssel vedd észre a távoli bábukat, lásd a fenyegetéseket, és kerüld el az alagútlátást.",
+    "primaryKeyword": "az egész tábla látása sakkban",
+    "secondaryKeywords": [
+      "táblatudatosság sakkban",
+      "az alagútlátás elkerülése",
+      "az egész tábla látása",
+      "átnézési gyakorlatok sakkban",
+      "perifériás táblalátás"
+    ],
+    "painPoint": "Egy területre koncentrálsz, és máshol elnézel egy fenyegetést.",
+    "ctaLabel": "Edzd az egész tábla látását",
+    "quickAnswer": "Minden lépés előtt ellenőrizd mindkét királyt, a védtelen bábukat, a centrumot és a széleket. Az emlékezetgyakorlás segít többet fejben tartani a tábláról.",
+    "keyTakeaways": [
+      "Az alagútlátás azt jelenti, hogy a figyelem egy területen ragad.",
+      "A szélső bábuk ellenőrzése különösen hasznos kezdőknek.",
+      "A tábla tiszta emléke megkönnyíti az átnézést."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik csak a tábla egyik oldalán veszik észre a taktikát.",
+      "Kezdők, akik elnézik a futókat, bástyákat vagy a távoli fenyegetéseket.",
+      "Bárki, aki szűkösnek érzi a nyílt állásokat."
+    ],
+    "timeToRead": "7 perc olvasás",
+    "introParagraphs": [
+      "Sok kezdő csak a tervezett lépés közelében lévő bábukat nézi. Így könnyen elnézi a távoli futókat, bástyákat és fenyegetéseket.",
+      "Nem kell tovább bámulnod a táblát. Használd ugyanazt az egyszerű átnézést minden fontos terület ellenőrzésére."
+    ],
+    "startHereTitle": "Kezdd itt: szélesítsd az átnézést",
+    "startHereSteps": [
+      "Ellenőrizd mindkét királyt és a feléjük mutató vonalakat.",
+      "Keresd a védtelen bábukat először a centrumban, aztán a széleken.",
+      "A futókat és bástyákat végig kövesd a vonalukon, ne csak a téged érdeklő mezőig.",
+      "Játssz egy kör Memory Chesst, hogy az egész tábla könnyebben elérhető legyen a figyelmedben.",
+      "Lépés előtt kérdezd meg, a tábla melyik részét nem nézted még meg."
+    ],
+    "drillSectionTitle": "Gyakorlatok az alagútlátás ellen",
+    "drillCards": [
+      {
+        "title": "Szélek átfésülése",
+        "description": "Minden lépés előtt ellenőrizd a sarkokban és a széleken álló bábukat.",
+        "duration": "3 perc",
+        "goal": "Elkapni a fenyegetéseket azon a területen kívül, amire koncentrálsz.",
+        "ctaLabel": "Fésüld át a széleket"
+      },
+      {
+        "title": "Hatásvonalak újranézése",
+        "description": "Kövesd végig minden futó és bástya vonalát, ne csak egy célmezőt nézz.",
+        "duration": "4 perc",
+        "goal": "Minden átnézésnél többet lefedni a tábláról.",
+        "ctaLabel": "Kövesd végig a vonalakat"
+      },
+      {
+        "title": "Az egész tábla felidézése",
+        "description": "Használj Memory Chesst közepes bábuszámmal, majd mondd fel a táblát zónánként.",
+        "duration": "5 perc",
+        "goal": "Egyszerre többet megjegyezni a tábláról.",
+        "ctaLabel": "Idézd fel zónánként"
+      }
+    ],
+    "comparisonTitle": "Alagútlátás és az egész tábla tudatossága",
+    "comparisonSummary": "Nem kell mindenhová ugyanannyi ideig nézned. Csak arra ügyelj, hogy semmi fontos ne maradjon ki.",
+    "comparisonRows": [
+      {
+        "label": "A figyelem útja",
+        "struggling": "Egy bábucsoportot bámulsz.",
+        "stronger": "Állandó sorrendben járod végig a kockázatos területeket."
+      },
+      {
+        "label": "Nagy hatótávú bábuk",
+        "struggling": "Elfelejted a küzdelemtől távoli futókat és bástyákat.",
+        "stronger": "Végignézed a teljes vonalukat, mielőtt megbíznál egy lépésben."
+      },
+      {
+        "label": "A tábla zónái",
+        "struggling": "Kihagyod azt az oldalt, amely nyugodtnak tűnik.",
+        "stronger": "Lépés előtt a nyugodt oldalt is ellenőrzöd."
+      }
+    ],
+    "mistakes": [
+      "Azt hinni, hogy az egész tábla látása hosszabb nézést jelent, nem jobb átnézést.",
+      "Figyelmen kívül hagyni a széleket, mert a centrum sürgetőbbnek tűnik.",
+      "Nem végigkövetni a nagy hatótávú bábuk vonalait.",
+      "Szélesebben átnézni akarni, mielőtt tisztán emlékeznél a bábukra."
+    ],
+    "mistakesCallout": "A plusz gondolkodási idő nem segít tiszta átnézés nélkül. Minden alkalommal ugyanabban a sorrendben ellenőrizd a táblát.",
+    "planTitle": "7 napos teljes átnézési terv",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "10 perc",
+        "detail": "Csak királyellenőrzés, védtelen bábuk és a szélek átfésülése."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "12 perc",
+        "detail": "Add hozzá a futó- és bástyavonalak teljes végigkövetését."
+      },
+      {
+        "label": "5. nap",
+        "duration": "12 perc",
+        "detail": "Használj Memory Chesst, és zónánként idézd fel a táblát véletlen sorrend helyett."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15 perc",
+        "detail": "Vidd át az átnézést rapid partikba, és baki esetén jegyezd fel, melyik zóna okozta az elnézést."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Miért nézem el folyton a tábla másik oldalán álló bábukat?",
+        "answer": "Mert a figyelmed túl helyi. A rögzített átnézési sorrend jobb, mint remélni, hogy magadtól mindent észreveszel."
+      },
+      {
+        "question": "Segít a Memory Chess az egész tábla tudatosságában?",
+        "answer": "Igen. Arra tanít, hogy a tábla nagyobb részét tartsd aktívan az emlékezetedben, ne csak a taktikai gócot."
+      },
+      {
+        "question": "Minden lépésnél nézzem a széleket?",
+        "answer": "Igen, különösen kezdőként. Sok olcsó baki a szélső bábukban és a hosszú vonalakban rejtőzik."
+      },
+      {
+        "question": "Honnan tudom, hogy javul az átnézés?",
+        "answer": "Kevesebb távoli fenyegetést nézel el, és kevésbé lepnek meg a futók, bástyák és a felfedett támadások."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Párosítsd az egész tábla tudatosságát egy erősebb biztonsági listával."
+      },
+      {
+        "reason": "Javítsd a fejben tartott táblát, hogy könnyebb legyen a szélesebb átnézés."
+      },
+      {
+        "reason": "Ismerd fel gyorsabban a mezőket, hogy a széles átnézés kevesebbe kerüljön."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Koordinátagyakorlás a gyorsabb tájékozódásért",
+    "h1": "Sakk-koordináták gyakorlása kezdőknek",
+    "description": "Tanuld meg gyorsabban a mezőneveket, és tedd könnyebbé az átnézést, a jelölést és a vizualizációt.",
+    "primaryKeyword": "sakk-koordináták gyakorlása",
+    "secondaryKeywords": [
+      "sakkjelölés gyakorlása",
+      "sakk-koordináták tanulása",
+      "mezők gyorsabb felismerése",
+      "a tábla mezőinek tudatosítása",
+      "mezőnevek gyakorlása"
+    ],
+    "painPoint": "Időbe telik kitalálnod egy mező nevét, vagy gyakran összekevered a mezőket.",
+    "ctaLabel": "Gyakorold a mezőneveket",
+    "quickAnswer": "A koordináták a 64 mező nevei. Ha ismered őket, könnyebb a tábla átnézése, a lépések elképzelése és a partik elemzése.",
+    "keyTakeaways": [
+      "A mezők gyors felismerése megkönnyíti az átnézést.",
+      "A koordinátákat valódi állásokon gyakorold.",
+      "A kezdéshez elegendők az alapvető mezőnevek."
+    ],
+    "whoThisIsFor": [
+      "Kezdők, akik még lassan számolják az oszlopokat és sorokat.",
+      "Játékosok, akik gyorsabban akarnak átnézni és vizualizálni.",
+      "Bárki, akinek zavaros a sakkjelölés."
+    ],
+    "timeToRead": "7 perc olvasás",
+    "introParagraphs": [
+      "A koordináták többet jelentenek a könyveknél és lépéslistáknál. A mezők gyors felismerése segíti a táblalátást, az emlékezetet és az elemzést.",
+      "Ha ismered a mezőneveket, a tábla tiszta térképpé válik a homályos területek halmaza helyett."
+    ],
+    "startHereTitle": "Kezdd a mezőnevekkel valódi táblán",
+    "startHereSteps": [
+      "Válassz egy oszlopot vagy sort, és mondd ki hangosan a mezőneveket.",
+      "Egy Memory Chess állás újraépítése közben mondd ki minden bábu mezőjét.",
+      "Végy egy friss állást, és mezőnév szerint nevezd meg a fő támadókat és védőket.",
+      "A futókat, bástyákat és a huszárugrásokat koordináták szerint gyakorold, ne csak szemre.",
+      "Zárj egy gyors átnézéssel, amelyben minden védtelen bábut mezőnév szerint nevezel meg."
+    ],
+    "drillSectionTitle": "Játékban is hasznos koordinátagyakorlatok",
+    "drillCards": [
+      {
+        "title": "Bábu és mező megnevezése",
+        "description": "Építs fel egy táblát, és nevezz meg minden bábut a mezőjével együtt.",
+        "duration": "4 perc",
+        "goal": "Összekötni a mezőneveket a megjegyzendő bábukkal.",
+        "ctaLabel": "Nevezd meg minden mezőt"
+      },
+      {
+        "title": "Hosszú vonalak megnevezése",
+        "description": "Kövesd a futó- és bástyavonalakat, és mondd ki a mezőket, amelyekre hatnak.",
+        "duration": "4 perc",
+        "goal": "Hasznossá tenni a koordinátákat a teljes átnézés során.",
+        "ctaLabel": "Kövesd a vonalakat mezőnként"
+      },
+      {
+        "title": "Huszárugrások térképe",
+        "description": "Válassz egy huszármezőt, és mondd ki gyorsan az összes szabályos célmezőt.",
+        "duration": "3 perc",
+        "goal": "Gyorsabban felismerni a huszárlépéseket és a célmezőket.",
+        "ctaLabel": "Térképezd fel az ugrásokat"
+      }
+    ],
+    "comparisonTitle": "Lassú és gyors mezőfelismerés",
+    "comparisonSummary": "A koordináták nem javítanak mindent a sakkodban, de több készséget megkönnyítenek.",
+    "comparisonRows": [
+      {
+        "label": "Tábla átnézése",
+        "struggling": "Felismered az alakzatot, de a mezőneveket nem.",
+        "stronger": "Pontosabban és gyorsabban azonosítod a fenyegetéseket és a védőket."
+      },
+      {
+        "label": "Vizualizáció",
+        "struggling": "Az elképzelt lépések homályosak maradnak.",
+        "stronger": "A keletkező állást könnyebb leírni és megtartani."
+      },
+      {
+        "label": "Elemzés",
+        "struggling": "A parti utáni jegyzetek zavarosak maradnak.",
+        "stronger": "Elég világosan leírod a kulcspillanatot ahhoz, hogy később tanulmányozd."
+      }
+    ],
+    "mistakes": [
+      "Mezőneveket gyakorolni valódi állások nélkül.",
+      "Jelölési szabályokat magolni táblás példák nélkül.",
+      "Figyelmen kívül hagyni a nagy hatótávú bábuk vonalait gyakorlás közben.",
+      "Feladni a szokást, amint az alapjelölés ismerőssé válik."
+    ],
+    "mistakesCallout": "Ne csak ismételgesd a mezőneveket. Használd őket valódi bábukkal és állásokkal.",
+    "planTitle": "7 napos koordináta-bemelegítés",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "8 perc",
+        "detail": "Egy Memory Chess állás újraépítése közben nevezz meg minden bábut és mezőjét."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "10 perc",
+        "detail": "Add hozzá a hosszú vonalak megnevezését futókra és bástyákra."
+      },
+      {
+        "label": "5. nap",
+        "duration": "10 perc",
+        "detail": "Gyakorold a huszárugrások térképét és a centrummezők biztos ismeretét."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "12 perc",
+        "detail": "Használj mezőneveket egy teljes átnézés során, majd elemezz egy fontos állást kizárólag mezőnevekkel."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Tényleg számítanak a koordináták a kezdőknek?",
+        "answer": "Igen, ha gyorsítják a tájékozódást, a vizualizációt és az elemzést. Tökéletes jelölés nem kell, de a gyors felismerés segít."
+      },
+      {
+        "question": "Mi a legjobb módja a koordináták megtanulásának?",
+        "answer": "Tanuld a mezőneveket valódi állásokkal és bábukkal, ne csak a jelölést ismételgesd."
+      },
+      {
+        "question": "Segít ez abban, hogy kevesebbet bakizzak?",
+        "answer": "Közvetve igen. A gyors mezőfelismerés pontosabbá teszi az átnézést és a fenyegetésellenőrzést."
+      },
+      {
+        "question": "Meddig gyakoroljam a koordinátákat?",
+        "answer": "Öt-tíz koncentrált perc elég, ha a gyakorlat valódi táblamunkához kapcsolódik."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Használd a koordinátákat a szélesebb átnézés támogatására."
+      },
+      {
+        "reason": "Tedd pontossá a fejben végzett frissítéseket mezőről mezőre."
+      },
+      {
+        "reason": "Használd a mezőneveket a nyomás alatti gondolkodás egyszerűsítésére."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Napi 20 perces sakkterv kezdőknek",
+    "h1": "Napi 20 perces sakkterv kezdőknek",
+    "description": "Kövess egy egyszerű 20 perces tervet: táblamunka, emlékezet, partik és rövid átnézés.",
+    "primaryKeyword": "napi 20 perces sakkterv",
+    "secondaryKeywords": [
+      "napi sakkrutin kezdőknek",
+      "rövid sakktanulási terv",
+      "fejlődés napi 20 percben",
+      "edzésprogram kezdőknek",
+      "feladat- és elemzési rutin"
+    ],
+    "painPoint": "Fejlődni szeretnél, de a legtöbb sakkterv túl sok időt kér.",
+    "ctaLabel": "Indítsd a 20 perces tervet",
+    "quickAnswer": "Szánj néhány percet a tábla érzetére, az emlékezetre, a taktikára és az átnézésre. Tartsd elég rövidre a rutint, hogy fáradtan is menjen.",
+    "keyTakeaways": [
+      "A gyakori gyakorlás többet ér, mint a hosszú gyakorlás.",
+      "Használj gyakorlatokat és valódi állásokat is.",
+      "A rövid átnézés segíti a holnapi edzést."
+    ],
+    "whoThisIsFor": [
+      "Kezdők, akiknek kevés az idejük, de állandó a motivációjuk.",
+      "Játékosok, akik feladják a túl terhes terveket.",
+      "Bárki, aki ismételhető napi rutint szeretne."
+    ],
+    "timeToRead": "7 perc olvasás",
+    "introParagraphs": [
+      "Sok tanulási terv csak sok szabadidővel működik. Egy használható tervnek zsúfolt napon is mennie kell.",
+      "Ez a 20 perces rutin megtart egy gyakorlatot, egy valódi állást és egy rövid átnézést."
+    ],
+    "startHereTitle": "A te 20 perces sakkrutinod",
+    "startHereSteps": [
+      "Szánj 4 percet egy táblaérzet- vagy felidézési gyakorlatra.",
+      "Szánj 6 percet egy kör Memory Chessre, egész héten ugyanazokkal a beállításokkal.",
+      "Szánj 6 percet taktikára vagy egy valódi parti állására.",
+      "Szánj 4 percet annak leírására, mi ment ma rosszul, és mi tartott ki.",
+      "Tartsd meg a szerkezetet legalább 7 napig, mielőtt módosítasz."
+    ],
+    "drillSectionTitle": "Gyakorlatok, amelyek beleférnek egy rövid tervbe",
+    "drillCards": [
+      {
+        "title": "Bemelegítés felidézéssel",
+        "description": "Használj egy rövid kör Memory Chesst az egész alkalom horgonyaként.",
+        "duration": "6 perc",
+        "goal": "Minden alkalmat ugyanazzal az emlékezeti bemelegítéssel kezdeni.",
+        "ctaLabel": "Kezdd a bemelegítést"
+      },
+      {
+        "title": "Gyors fenyegetésellenőrzés",
+        "description": "Nézz át egy állást sakkok, ütések, fenyegetések és védtelen bábuk szempontjából.",
+        "duration": "4 perc",
+        "goal": "Javítani a partikba való átvitelt szinte időveszteség nélkül.",
+        "ctaLabel": "Végezd el az ellenőrzést"
+      },
+      {
+        "title": "Jegyzetkör",
+        "description": "Írj egy mondatot arról, milyen típusú hibát vétettél ma.",
+        "duration": "4 perc",
+        "goal": "Holnap használni a mai tanulságot.",
+        "ctaLabel": "Írj le egy tanulságot"
+      }
+    ],
+    "comparisonTitle": "Olyan rutin, amelyet tényleg tartasz",
+    "comparisonSummary": "A legjobb rutin az, amelyet egy hétköznapi héten meg tudsz ismételni.",
+    "comparisonRows": [
+      {
+        "label": "Napi terhelés",
+        "struggling": "Túl sok tanulási formát próbálsz egyszerre.",
+        "stronger": "Egy tömör kört ismételsz, amely naponta lefedi az alapokat."
+      },
+      {
+        "label": "Átvitel",
+        "struggling": "Csak nézed vagy olvasod, de nem gyakorolsz.",
+        "stronger": "Minden alkalom tartalmaz egy gyakorlatot, amit partiban használsz."
+      },
+      {
+        "label": "Átnézés",
+        "struggling": "A hibák eltűnnek, mert semmit sem írsz le.",
+        "stronger": "Minden nap egy holnapra szóló jegyzettel zárul."
+      }
+    ],
+    "mistakes": [
+      "Haladó terveket másolni, amelyeket nem tudsz tartani.",
+      "A teljes 20 percet passzív anyagra fordítani.",
+      "Kétnaponta rutint váltani.",
+      "Kihagyni az átnézést, mert apróságnak tűnik."
+    ],
+    "mistakesCallout": "Ne növeld a tervet. Tedd elég könnyűvé, hogy ismételhető legyen.",
+    "planTitle": "20 perces rutin 7 napon át",
+    "planSteps": [
+      {
+        "label": "1-3. nap",
+        "duration": "20 perc",
+        "detail": "A következetesség érdekében tartsd meg ugyanazokat a Memory Chess beállításokat és ugyanazt az ellenőrzési formát."
+      },
+      {
+        "label": "4. nap",
+        "duration": "20 perc",
+        "detail": "Olvasd át a jegyzeteidet, és csak egy javítandó pontot tarts meg a következő három napra."
+      },
+      {
+        "label": "5-6. nap",
+        "duration": "20 perc",
+        "detail": "Ismételd pontosan ugyanazt a szerkezetet, extra változatosság nélkül."
+      },
+      {
+        "label": "7. nap",
+        "duration": "20 perc",
+        "detail": "Nézd meg, javult-e a bakik száma vagy a felidézési pontosság, és csak egyetlen módosítást tegyél a jövő hétre."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Elég a napi 20 perc edzés?",
+        "answer": "Igen, ha rendszeres, és olyan gyakorlatokat tartalmaz, amelyek közvetlenül átmennek a partikba, nem csak passzív tanulást."
+      },
+      {
+        "question": "A teljes 20 percet taktikára fordítsam?",
+        "answer": "Általában nem. A táblatisztaság, a taktikai átvitel és a rövid átnézés keveréke jobban működik kezdőknél."
+      },
+      {
+        "question": "Meddig tartsam ugyanazt a tervet?",
+        "answer": "Legalább egy hétig. Az állandó váltás olvashatatlanná teszi a fejlődést."
+      },
+      {
+        "question": "Mit érdemes követnem?",
+        "answer": "A partinkénti bakikat, a felidézési pontosságot és a leggyakrabban visszatérő hibatípust."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Nézd meg, hol illeszkedik ez a rövid rutin egy hosszabb tervbe."
+      },
+      {
+        "reason": "Egyensúlyozd a taktikai munkát és a táblatisztaságot."
+      },
+      {
+        "reason": "Tartsd egyszerűnek és hasznosnak az átnézési részt."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Így elemzik a kezdők a saját partijaikat",
+    "h1": "Így elemzik a kezdők a saját sakkpartijaikat",
+    "description": "Nézd át a partijaidat, értsd meg a hibáidat, és válassz egy világos dolgot gyakorlásra.",
+    "primaryKeyword": "sakkpartik elemzése kezdőknek",
+    "secondaryKeywords": [
+      "partielemzés kezdőknek",
+      "saját partik átnézése",
+      "önelemzés sakkban",
+      "bakik elemzése",
+      "parti utáni rutin"
+    ],
+    "painPoint": "Az elemzésed túl gyors, kusza, vagy tele van motorváltozatokkal.",
+    "ctaLabel": "Elemezd a következő partit",
+    "quickAnswer": "Találd meg, hol fordult a parti, nevezd meg a hibatípust, és válassz egy javítást. A motort csak azután nézd, hogy magad megvizsgáltad az állást.",
+    "keyTakeaways": [
+      "Minden elemzést cselekvéssel zárj, ne hosszú motorlépéslistával.",
+      "A hibatípus megnevezése segít gyakorlatot választani.",
+      "Próbáld emlékezetből felépíteni a kulcsállást."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik átnézik a partikat, de nem tudják, mi jön ezután.",
+      "Kezdők, akik látják ugrálni az értékelést, de nem értik, miért.",
+      "Bárki, aki egyszerűbb parti utáni szokást szeretne."
+    ],
+    "timeToRead": "7 perc olvasás",
+    "introParagraphs": [
+      "Kezdd egy kérdéssel: melyik hiba változtatta meg a partit? A motor értékelése önmagában nem árulja el, mit kell gyakorolnod.",
+      "Építsd fel a kulcsállást, nevezd meg a hibát, és ebből válaszd a holnapi gyakorlatot."
+    ],
+    "startHereTitle": "Kezdd itt: a kezdő elemzési kör",
+    "startHereSteps": [
+      "Találd meg az első pillanatot, amikor az állás sokat változott.",
+      "Építsd fel azt az állást emlékezetből, mielőtt a motort néznéd.",
+      "Sorold be a hibát látásnak, emlékezetnek, számolásnak vagy időbeosztásnak.",
+      "Kérdezd meg, melyik jel szólt volna arról, hogy lassíts.",
+      "Alakítsd a választ gyakorlattá a következő alkalomra."
+    ],
+    "drillSectionTitle": "Egyszerű elemzési gyakorlatok",
+    "drillCards": [
+      {
+        "title": "Építsd fel a kulcsállást",
+        "description": "Ellenőrzés előtt építsd fel emlékezetből a fő baki állását.",
+        "duration": "5 perc",
+        "goal": "Megjegyezni az állást, mielőtt látod a választ.",
+        "ctaLabel": "Építsd fel azt a pillanatot"
+      },
+      {
+        "title": "Címkézd a hibatípust",
+        "description": "Minden nagy hibát jelölj látásnak, emlékezetnek, számolásnak vagy időzavarnak.",
+        "duration": "3 perc",
+        "goal": "Tudni, mit gyakorolj ezután.",
+        "ctaLabel": "Címkézd a hibatípust"
+      },
+      {
+        "title": "Elemzés egyetlen javítással",
+        "description": "Zárd az elemzést egyetlen világos javítással holnapra.",
+        "duration": "2 perc",
+        "goal": "Hasznos következő lépéssel zárni.",
+        "ctaLabel": "Válassz egy javítást"
+      }
+    ],
+    "comparisonTitle": "Hasznos és haszontalan elemzés",
+    "comparisonSummary": "Nem kell minden lépést tanulmányoznod. Találd meg a legvilágosabb tanulságot a következő gyakorlathoz.",
+    "comparisonRows": [
+      {
+        "label": "A motor használata",
+        "struggling": "Azonnal megnyitod a motort.",
+        "stronger": "Ellenőrzés előtt magad állítod fel a diagnózist."
+      },
+      {
+        "label": "Eredmény",
+        "struggling": "Sok megjegyzéssel és semmilyen cselekvéssel zársz.",
+        "stronger": "Egy gyakorlattal vagy a lista módosításával zársz."
+      },
+      {
+        "label": "Emlékezet",
+        "struggling": "Az állás rögtön a parti után eltűnik.",
+        "stronger": "Újraépíted, és tisztábban látod a hibát."
+      }
+    ],
+    "mistakes": [
+      "Csak motorváltozatokkal elemezni saját diagnózis nélkül.",
+      "Minden lépést ugyanolyan mélyen próbálni elemezni.",
+      "Nem megnevezni a hibatípust.",
+      "Úgy befejezni az elemzést, hogy nem választasz következő gyakorlatot."
+    ],
+    "mistakesCallout": "Ne járd végig az összes motorváltozatot. Nevezd meg a hibát, és gyakorold a javítást.",
+    "planTitle": "7 napos elemzési szokás",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "10 perc",
+        "detail": "Nézz át egy partit, és csak az első nagy fordulópontot keresd meg."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "12 perc",
+        "detail": "Építsd fel azt az állást emlékezetből, mielőtt a motort néznéd."
+      },
+      {
+        "label": "5. nap",
+        "duration": "12 perc",
+        "detail": "Sorolj minden nagy hibát egy típushoz, és számold meg, melyik tér vissza a leggyakrabban."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15 perc",
+        "detail": "A leggyakoribb hibatípus alapján válaszd ki a következő alkalom első gyakorlatát."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Használjanak a kezdők motort?",
+        "answer": "Igen, de a saját diagnózis megkísérlése után. Különben az elemzés passzív marad."
+      },
+      {
+        "question": "Hány hibát nézzek át egy parti után?",
+        "answer": "A legtöbb kezdőnek egy-három nagy fordulópont elég."
+      },
+      {
+        "question": "Mit írjak fel az elemzés után?",
+        "answer": "A hibatípust, az elnézett jelet, és egy gyakorlatot vagy listamódosítást a következő alkalomra."
+      },
+      {
+        "question": "Hogyan segíti a Memory Chess az elemzést?",
+        "answer": "Segít újraépíteni a fontos állásokat, így az elemzés pontosabb lesz."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Illeszd az elemzést olyan rutinba, amely nem terhel túl."
+      },
+      {
+        "reason": "Alakítsd az elemzés eredményeit baki elleni gyakorlatokká."
+      },
+      {
+        "reason": "Jegyezd meg és építsd újra a kulcspillanatokat a parti után."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Hány sakkfeladatot oldjon meg naponta egy kezdő?",
+    "h1": "Hány sakkfeladatot oldjon meg naponta egy kezdő?",
+    "description": "Válassz olyan napi feladatmennyiséget, amely fejleszti a taktikát, és hagy időt az emlékezetre, a partikra és az elemzésre.",
+    "primaryKeyword": "hány sakkfeladat naponta",
+    "secondaryKeywords": [
+      "napi feladatmennyiség",
+      "kezdő feladatrutin",
+      "mennyi taktika naponta",
+      "túl sok sakkfeladat",
+      "kezdő taktikai mennyiség"
+    ],
+    "painPoint": "Sok feladatot oldasz meg, de nem tudod, segítenek-e a partijaidban.",
+    "ctaLabel": "Egyensúlyozd a feladatokat és a játékot",
+    "quickAnswer": "A legtöbb kezdőnek elég egy rövid napi alkalom. Állj le, amíg tisztán gondolkodsz, és hagyj időt a partikra, az emlékezetre és az elemzésre.",
+    "keyTakeaways": [
+      "A feladatok minősége többet számít a mennyiségnél.",
+      "A túl sok feladat elveszi az időt a partiktól és az elemzéstől.",
+      "Az ideális mennyiség hagyjon időt játékra vagy elemzésre."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akiknek az egész tanulási terve feladatokból áll.",
+      "Kezdők, akik világos feladatrutint szeretnének.",
+      "Bárki, aki egyensúlyozná a feladatokat és a játékot."
+    ],
+    "timeToRead": "7 perc olvasás",
+    "introParagraphs": [
+      "Nincs mindenkinek tökéletes szám. A túl kevés feladat lassítja a mintatanulást, a túl sok nem hagy időt másra.",
+      "Oldj meg annyit, hogy éles maradj, a maradék időt pedig fordítsd táblaemlékezetre, partikra és elemzésre."
+    ],
+    "startHereTitle": "Válassz észszerű napi mennyiséget",
+    "startHereSteps": [
+      "Döntsd el, hogy a feladatok a bemelegítésed, a fő blokkod vagy az átviteli ellenőrzésed.",
+      "Tarts meg egy rövid kör Memory Chesst előtte vagy utána a táblatisztaságért.",
+      "Állj le, amikor a válaszaid kapkodóvá válnak, ahelyett hogy nagyobb számot hajszolnál.",
+      "Naponta építs újra egy elnézett taktikai pillanatot valódi partiból.",
+      "Csak akkor változtass a mennyiségen, ha ellenőrizted, változnak-e a partihibáid."
+    ],
+    "drillSectionTitle": "Gyakorlatok, amelyek hasznosabbá teszik a feladatokat",
+    "drillCards": [
+      {
+        "title": "Bemelegítés és felidézés",
+        "description": "Hidegindítás helyett kösd össze egy rövid felidézési gyakorlattal a mérsékelt feladatblokkot.",
+        "duration": "10 perc",
+        "goal": "Összekötni a feladatmegoldást a valódi játékkal.",
+        "ctaLabel": "Adj hozzá felidézést"
+      },
+      {
+        "title": "Jelellenőrzés minden feladat után",
+        "description": "Mielőtt megnéznéd a megoldást, kérdezd meg, melyik figyelmeztető jel tette lehetővé a taktikát.",
+        "duration": "5 perc",
+        "goal": "Észrevenni, miért van taktika egy állásban.",
+        "ctaLabel": "Ellenőrizd a jelet"
+      },
+      {
+        "title": "Partitaktika újraépítése",
+        "description": "Alakíts egy elnézett partitaktikát feladattá, amelyet az állás felépítése után oldasz meg.",
+        "duration": "5 perc",
+        "goal": "A saját partijaid taktikáját használni.",
+        "ctaLabel": "Építsd újra a taktikát"
+      }
+    ],
+    "comparisonTitle": "Túl kevés, túl sok és épp elég",
+    "comparisonSummary": "A megfelelő mennyiség élesen tartja a taktikát, és mégis hagy időt a játékra.",
+    "comparisonRows": [
+      {
+        "label": "Mintafelismerés",
+        "struggling": "A túl kevés gyakorlástól idegennek tűnik a szokásos taktika.",
+        "stronger": "A mérsékelt napi blokk frissen tartja a mintákat."
+      },
+      {
+        "label": "Átvitel",
+        "struggling": "A túl sok feladat nem hagy időt a táblaérzetre vagy az elemzésre.",
+        "stronger": "A rutinodban megmarad a felidézés és a valódi állásokkal végzett munka."
+      },
+      {
+        "label": "Fáradtság",
+        "struggling": "A későbbi feladatok kapkodó találgatássá válnak.",
+        "stronger": "Akkor állsz le, amikor a döntések még tiszták."
+      }
+    ],
+    "mistakes": [
+      "A feladatszámot egyetlen minőségi mérőszámként használni.",
+      "Taktikát oldani a partikba való átvitel nélkül.",
+      "Sokáig folytatni azután, hogy a figyelem csökkent.",
+      "Kiszorítani az elemzést és a táblaérzetet."
+    ],
+    "mistakesCallout": "A több feladat nem mindig jobb. Ellenőrizd, segítenek-e a valódi partijaidban.",
+    "planTitle": "7 napos egyensúlyterv",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "15 perc",
+        "detail": "Használj kis feladatblokkot, és tegyél elé egy rövid felidézési gyakorlatot."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "15 perc",
+        "detail": "Minden feladat után adj hozzá jelellenőrzést, hogy lásd, miért volt ott a taktika."
+      },
+      {
+        "label": "5. nap",
+        "duration": "15 perc",
+        "detail": "Építs újra egy elnézett partitaktikát, és hasonlítsd össze a feladatokban nyújtott teljesítményeddel."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15-20 perc",
+        "detail": "Csak akkor változtass a mennyiségen, ha a válaszaid gondosak maradnak, és marad idő játékra."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hány feladat elég naponta egy kezdőnek?",
+        "answer": "Annyi, hogy a szokásos taktika ismerős maradjon, és maradjon idő emlékezetre és partikra. Sokaknak elég egy rövid napi alkalom."
+      },
+      {
+        "question": "Árthat a túl sok feladat?",
+        "answer": "Közvetve igen. Kiszoríthatja a táblaérzetet, a felidézést és az elemzést, amelyek a valódi átvitelhez kellenek."
+      },
+      {
+        "question": "Feladatok a partik előtt vagy után?",
+        "answer": "Mindkettő működik, de a kis bemelegítés és az utána következő átviteli lépés gyakran jól bevált."
+      },
+      {
+        "question": "Mit kövessek?",
+        "answer": "Azt, csökken-e a bakik és az elnézett egyszerű taktikák száma, nem csak azt, hány feladatot oldottál meg."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Értsd meg, miért nem elég önmagában a feladatokban elért siker."
+      },
+      {
+        "reason": "Illeszd a feladatokat kiegyensúlyozott, rövid rutinba."
+      },
+      {
+        "reason": "Tanuld meg a gyakori mintákat a mennyiség növelése helyett."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Mintafelismerő gyakorlatok sakkban",
+    "h1": "Mintafelismerő gyakorlatok kezdőknek",
+    "description": "Egyszerű gyakorlatokkal vedd észre a gyakori sakkmintákat, és lásd gyorsabban a hasznos ötleteket.",
+    "primaryKeyword": "sakk mintafelismerő gyakorlatok",
+    "secondaryKeywords": [
+      "mintafelismerés sakkban",
+      "taktikai motívumok edzése",
+      "taktikai minta gyakorlatok",
+      "sakkminták kezdőknek",
+      "sakkmotívumok megjegyzése"
+    ],
+    "painPoint": "Minden állás újnak tűnik, ezért túl későn látod a taktikai ötleteket.",
+    "ctaLabel": "Gyakorold a mintákat",
+    "quickAnswer": "A minta a bábuk és mezők ismerős elrendezése. Ismételd ugyanazt a mintatípust, amíg gyorsan meg nem látod a mögötte lévő ötletet.",
+    "keyTakeaways": [
+      "A minta magában foglalja a tábla alakzatát és az általa létrehozott ötletet is.",
+      "A táblaemlékezet segít nyomás alatt észrevenni a mintákat.",
+      "Ismételj néhány gyakori mintát, mielőtt sok újat adnál hozzá."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik megoldják a taktikát, de partiban nem látják ugyanazokat az alakzatokat.",
+      "Kezdők, akik több szerkezetet akarnak a véletlen feladatoknál.",
+      "Bárki, akinek az állások még mindig zsúfoltnak tűnnek."
+    ],
+    "timeToRead": "7 perc olvasás",
+    "introParagraphs": [
+      "A mintafelismerés ismerőssé teszi az állást. A tábla egy alakzata már a számolás előtt jelezhet villát, kötést, csapdába esett bábut vagy gyenge mezőt.",
+      "Kezdj egy kis csoport gyakori mintával. Építsd fel minden állást emlékezetből, hogy megjegyezd az ötletet hordozó bábukat és mezőket."
+    ],
+    "startHereTitle": "Kezdj egyszerre egy mintával",
+    "startHereSteps": [
+      "Válassz egy mintatípust, például villákat, kötéseket vagy védtelen bábuk elleni támadásokat.",
+      "Tanulmányozd az alakzatot, és építsd fel emlékezetből, ne csak álló ábráról.",
+      "Nevezd meg a mintát hordozó mezőket és védőket.",
+      "Játssz egy kör Memory Chesst a tiszta felidézés rögzítéséért.",
+      "Nézz át egy friss partit, és keresd meg, hol jelent meg vagy hiányzott hasonló minta."
+    ],
+    "drillSectionTitle": "Egyszerű mintafelismerő gyakorlatok",
+    "drillCards": [
+      {
+        "title": "Építs fel egy mintát",
+        "description": "Építs fel egy sakkmintát emlékezetből, és nevezd meg a kulcsbábukat és mezőket.",
+        "duration": "5 perc",
+        "goal": "Összekötni a mintát tiszta táblaemlékezettel.",
+        "ctaLabel": "Építsd fel a mintát"
+      },
+      {
+        "title": "Ismételj egy családot",
+        "description": "Ismételj több példát ugyanarra a mintára, mielőtt típust váltasz.",
+        "duration": "5 perc",
+        "goal": "Ismerőssé tenni a tábla alakzatát.",
+        "ctaLabel": "Ismételj egy családot"
+      },
+      {
+        "title": "Keresd meg a saját partijaidban",
+        "description": "Nézz át egy friss partit, és keresd meg, hol jelent meg ugyanaz a minta.",
+        "duration": "5 perc",
+        "goal": "Összekötni a mintamunkát valódi állásokkal.",
+        "ctaLabel": "Keresd a partijaidban"
+      }
+    ],
+    "comparisonTitle": "Véletlen taktika és valódi mintafelismerés",
+    "comparisonSummary": "A minták akkor segítenek, ha azelőtt veszed észre őket, hogy hosszan számolni kezdenél.",
+    "comparisonRows": [
+      {
+        "label": "Az edzés szerkezete",
+        "struggling": "Folyton össze nem függő minták között ugrálsz.",
+        "stronger": "Egy mintatípust ismételsz, amíg ismerőssé nem válik."
+      },
+      {
+        "label": "Táblaemlékezet",
+        "struggling": "Ismered az ötletet, de a hordozó mezőket nem.",
+        "stronger": "Megjegyzed azokat a részleteket, amelyek működővé teszik a mintát."
+      },
+      {
+        "label": "Valódi partik",
+        "struggling": "A minták beszorulnak a feladatokba.",
+        "stronger": "Észreveszed a korai jeleiket egy folyó partiban."
+      }
+    ],
+    "mistakes": [
+      "Csak a minta nevét megtanulni az alakzat megértése nélkül.",
+      "Túl gyakran váltani mintatípust.",
+      "Figyelmen kívül hagyni a mintát hordozó mezőket és védőket.",
+      "Kihagyni a partielemzést a mintamunka után."
+    ],
+    "mistakesCallout": "Ne adj hozzá túl gyorsan változatosságot. Ismételj egy mintatípust, amíg ismerőssé nem válik.",
+    "planTitle": "7 napos mintaterv",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "10 perc",
+        "detail": "Válassz egy mintatípust, és építs fel több példát emlékezetből."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "12 perc",
+        "detail": "Minden példához add hozzá a mezőneveket és a védők megszámolását."
+      },
+      {
+        "label": "5. nap",
+        "duration": "12 perc",
+        "detail": "A mintamunka előtt játssz egy kör Memory Chesst, hogy tisztább legyen a tábla."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15 perc",
+        "detail": "Keresd ugyanazt a mintát a legutóbbi partijaidban, és jegyezd fel, hol jelent meg vagy majdnem megjelent."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Mi a mintafelismerés a sakkban?",
+        "answer": "Ismerős alakzatot látni a táblán, és gyorsan felidézni az ötletet, amely ott általában működik."
+      },
+      {
+        "question": "Hogyan gyakorolják a kezdők a mintafelismerést?",
+        "answer": "Egy kis mintakészlet ismétlésével, az állások emlékezetből való felépítésével és a minták keresésével valódi partikban."
+      },
+      {
+        "question": "Elegek a feladatok a mintákhoz?",
+        "answer": "Nem mindig. Segítenek, de az azonos típus ismétlése és a partik átnézése teszi őket igazán használhatóvá."
+      },
+      {
+        "question": "Miért érdemes a Memory Chesst a mintamunkával párosítani?",
+        "answer": "Mert könnyebb felismerni a mintát, ha az egész tábla tisztán marad az emlékezetben."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Építs erősebb emlékezeti réteget a mintatanuláshoz."
+      },
+      {
+        "reason": "Egyensúlyozd a mintamunkát ésszerű feladatmennyiséggel."
+      },
+      {
+        "reason": "Használd a tanult mintákat valódi partikban."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Sakk számolási gyakorlatok kezdőknek",
+    "h1": "Sakk számolási gyakorlatok kezdőknek",
+    "description": "Egyszerű gyakorlatok lépések összehasonlításához és rövid változatok követéséhez anélkül, hogy elvesznél.",
+    "primaryKeyword": "sakk számolási gyakorlatok",
+    "secondaryKeywords": [
+      "sakkszámolás kezdőknek",
+      "lépések előre számolása",
+      "változattartó gyakorlatok",
+      "jelöltlépések gyakorlása",
+      "vizualizáció és számolás"
+    ],
+    "painPoint": "Elkezdesz számolni, de hamar összekevered a lépéseket vagy elveszíted az állást.",
+    "ctaLabel": "Gyakorold a tiszta számolást",
+    "quickAnswer": "Eleinte csak egy-két lehetséges lépést hasonlíts össze. Tartsd tisztán a táblát a fejedben, és ellenőrizz azonnal.",
+    "keyTakeaways": [
+      "Két tiszta változat jobb, mint öt zavaros.",
+      "A tiszta vizualizáció tiszta számolást eredményez.",
+      "Minden gyakorlat után azonnal ellenőrizz."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik tudják, hogy számolniuk kellene, de hamar elveszítik a változatot.",
+      "Kezdők, akik éles állásokban megérzésre lépnek.",
+      "Bárki, aki valódi döntésekben akarja használni az emlékezetgyakorlást."
+    ],
+    "timeToRead": "7 perc olvasás",
+    "introParagraphs": [
+      "A számolás egyszerűen annyi: «Ha ide lépek, mi történik?» A nehéz rész a tábla tisztán tartása.",
+      "A táblaemlékezet és a vizualizáció megkönnyíti a számolást. Együtt gyakorold őket, ne külön."
+    ],
+    "startHereTitle": "Kezdd két lehetséges lépéssel",
+    "startHereSteps": [
+      "Válassz legfeljebb két jelöltlépést egy állásból.",
+      "Képzelj el egy változatot két félépésre, és foglald össze egy mondatban.",
+      "Játssz egy kör Memory Chesst, hogy az alaptábla éles maradjon.",
+      "Térj vissza a kiindulási álláshoz, és nyugodtan hasonlítsd össze a két változatot.",
+      "Ellenőrizz azonnal, és mondd meg, a hiba a tábla képéből vagy a lépéssorrendből eredt-e."
+    ],
+    "drillSectionTitle": "Egyszerű számolási gyakorlatok",
+    "drillCards": [
+      {
+        "title": "Hasonlíts össze két jelöltet",
+        "description": "Tarts két értelmes lépést, és hasonlítsd össze a rövid taktikai következményeiket.",
+        "duration": "6 perc",
+        "goal": "Lépéseket összehasonlítani anélkül, hogy túl sokat kellene megjegyezni.",
+        "ctaLabel": "Hasonlíts össze két változatot"
+      },
+      {
+        "title": "Előbb felidézés, aztán számolás",
+        "description": "A változatmunka előtt végezz egy rövid felidézési kört a tisztább tábláért.",
+        "duration": "4 perc",
+        "goal": "Megtartani a táblát, mielőtt egy sort követnél.",
+        "ctaLabel": "Idézd fel a számolás előtt"
+      },
+      {
+        "title": "Változat egy mondatban",
+        "description": "Ellenőrzés előtt foglald össze az ágat egy mondatban.",
+        "duration": "4 perc",
+        "goal": "Tisztán és könnyen elmagyarázhatóan tartani a sort.",
+        "ctaLabel": "Foglald össze az ágat"
+      }
+    ],
+    "comparisonTitle": "Zavaros és tiszta számolás",
+    "comparisonSummary": "Ne hajszolj még hosszú változatokat. Először a rövideket tedd pontossá.",
+    "comparisonRows": [
+      {
+        "label": "Jelöltlépések",
+        "struggling": "Túl sok lépést mérlegelsz egyszerre.",
+        "stronger": "Néhány értelmes lépést hasonlítasz össze."
+      },
+      {
+        "label": "A tábla képe",
+        "struggling": "A keletkező állás gyorsan elmosódik.",
+        "stronger": "Stabilan tartod emlékezetben a kulcsmezőket és a védőket."
+      },
+      {
+        "label": "Ellenőrzés",
+        "struggling": "Nem tudod, miért omlott össze a változat.",
+        "stronger": "Látod, hogy a hiba emlékezetből, lépéssorrendből vagy értékelésből eredt."
+      }
+    ],
+    "mistakes": [
+      "Túl sok ágat próbálni egyszerre kiszámolni.",
+      "Kihagyni a jelöltek kiválasztását, és mindent kiszámolni.",
+      "Nem ellenőrizni közvetlenül a változat után.",
+      "Figyelmen kívül hagyni a gyenge táblaemlékezetet."
+    ],
+    "mistakesCallout": "Ne számolj még messzire. Egy tiszta kétlépéses változat hasznosabb, mint egy hosszú és zavaros.",
+    "planTitle": "7 napos számolási terv",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "10 perc",
+        "detail": "Csak két jelölt összehasonlítása, azonnali ellenőrzéssel."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "12 perc",
+        "detail": "A számolási munka előtt adj hozzá egy kör Memory Chesst."
+      },
+      {
+        "label": "5. nap",
+        "duration": "12 perc",
+        "detail": "Ellenőrzés előtt foglald össze minden ágat egy mondatban."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15 perc",
+        "detail": "Vidd át a folyamatot rapid partikba: éles pillanatokban állj meg, és tarts kevés jelöltet."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hogyan javítja egy kezdő a számolását?",
+        "answer": "Kevesebb jelölt, gyors ellenőrzés, valamint jobb vizualizáció és emlékezet a változatmunka alatt."
+      },
+      {
+        "question": "Számoljak messzebbre?",
+        "answer": "Csak akkor, ha a jelenlegi mélység megbízható. A pontosság többet ér a nagyravágyásnál."
+      },
+      {
+        "question": "Miért omlanak össze a változataim?",
+        "answer": "Gyakran azért, mert a tábla képe nem elég stabil, vagy mert túl sok jelöltet tartasz egyszerre."
+      },
+      {
+        "question": "Segít a Memory Chess a számolásban?",
+        "answer": "Igen. A jobb felidézés sokkal könnyebbé teszi a számolás közben keletkező állások megtartását."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Erősítsd azt a réteget, amely a számolás alatt tartja a változatokat."
+      },
+      {
+        "reason": "Lásd tisztábban a táblát, mielőtt meghosszabbítanád a változatokat."
+      },
+      {
+        "reason": "Használj egyszerűbb döntési folyamatot a tisztább számolásért."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Így gondolkodnak a kezdők sakkban",
+    "h1": "Így gondolkodnak a kezdők sakkban",
+    "description": "Használj minden lépésnél egyszerű folyamatot: ellenőrizd a fenyegetéseket, hasonlítsd össze a lehetőségeket, és oszd be az időt.",
+    "primaryKeyword": "hogyan gondolkodj sakkban",
+    "secondaryKeywords": [
+      "gondolkodási folyamat kezdőknek",
+      "mire gondolj sakkban",
+      "döntéshozatal sakkban",
+      "lépés előtti ellenőrzőlista",
+      "egyszerű gondolkodási folyamat"
+    ],
+    "painPoint": "Vagy túl gyorsan lépsz, vagy túl sokáig gondolkodsz, és mégis bizonytalan vagy.",
+    "ctaLabel": "Gyakorolj egyszerű lépésfolyamatot",
+    "quickAnswer": "Minden lépésnél ugyanazt a rövid folyamatot használd: ellenőrizd az ellenfél fenyegetéseit, válassz egy-három lépést, és győződj meg róla, hogy a választás biztonságos.",
+    "keyTakeaways": [
+      "A rövid folyamatot könnyebb használni, mint egy hosszú listát.",
+      "A fenyegetésellenőrzés mindig megelőzi a lépés kiválasztását.",
+      "Ha veszélyessé válik az állás, szánj rá több időt."
+    ],
+    "whoThisIsFor": [
+      "Játékosok, akik nyugodt állásokban találgatnak, élesekben pedig lefagynak.",
+      "Kezdők, akiknek minden lépéshez világos folyamat kell.",
+      "Bárki, aki nyomás alatt tisztábban akar dönteni."
+    ],
+    "timeToRead": "7 perc olvasás",
+    "introParagraphs": [
+      "A kezdők gyakran töprengenek azon, mire gondolnak az erős játékosok. A válasz bonyolultnak hangozhat, de a te folyamatodnak elég rövidnek kell lennie ahhoz, hogy minden alkalommal használd.",
+      "Kezdd a fenyegetésekkel, válassz kevés lehetséges lépést, és ellenőrizd, hogy a végső választás biztonságos."
+    ],
+    "startHereTitle": "Kezdd itt: a négylépéses folyamat",
+    "startHereSteps": [
+      "Először ellenőrizd az ellenfél legerősebb fenyegetéseit.",
+      "Nevezz meg egy-három reális jelöltlépést.",
+      "Ellenőrizd, hogy a tervezett lépés biztonságos, és nem hagy védtelenül bábut.",
+      "Kérdezd meg, elég nyugodt-e az állás a lépéshez, vagy elég éles a lassításhoz.",
+      "A parti után nézd meg, hol szakadt meg a folyamat."
+    ],
+    "drillSectionTitle": "Gyakorlatok a nyugodtabb döntésekhez",
+    "drillCards": [
+      {
+        "title": "Az «előbb az ellenfél» kiváltó",
+        "description": "Minden gyakorlóállást az ellenfél kényszerítő lehetőségeinek megnevezésével kezdj.",
+        "duration": "3 perc",
+        "goal": "Automatikussá tenni a fenyegetésellenőrzést, ne választhatóvá.",
+        "ctaLabel": "Kezdd a fenyegetésekkel"
+      },
+      {
+        "title": "Három jelölt határa",
+        "description": "Gyakorlóállásban soha ne engedj meg magadnak háromnál több jelöltlépést.",
+        "duration": "4 perc",
+        "goal": "Csökkenteni a túl sok lehetőséget és a rágódást.",
+        "ctaLabel": "Korlátozd a jelölteket"
+      },
+      {
+        "title": "Bizonyosság-ellenőrzés",
+        "description": "Nézz meg egy lépést, és kérdezd meg, valóban biztos voltál-e, vagy csak belefáradtál a gondolkodásba.",
+        "duration": "4 perc",
+        "goal": "Észrevenni, mikor lépsz kimerültségből.",
+        "ctaLabel": "Ellenőrizd a bizonyosságot"
+      }
+    ],
+    "comparisonTitle": "Egy egyszerű lépésfolyamat",
+    "comparisonSummary": "A legjobb gondolkodási folyamat az, amelyet ketyegő óra mellett is használni tudsz.",
+    "comparisonRows": [
+      {
+        "label": "A fenyegetések kezelése",
+        "struggling": "Először a saját tervedre gondolsz.",
+        "stronger": "Az ellenfél legerősebb fenyegetéseivel kezdesz."
+      },
+      {
+        "label": "Jelöltlépések",
+        "struggling": "Túl sok lehetőség között ugrálsz.",
+        "stronger": "Kicsi és reális jelöltkészletet tartasz."
+      },
+      {
+        "label": "Időbeosztás",
+        "struggling": "Minden lépésre ugyanannyi figyelmet fordítasz.",
+        "stronger": "Lassítasz, ha változik a feszültség, a taktika vagy a király biztonsága."
+      }
+    ],
+    "mistakes": [
+      "Hosszú listát használni, amelyet partiban sosem követsz.",
+      "A saját tervedre gondolni a fenyegetések ellenőrzése előtt.",
+      "Hagyni, hogy a jelöltlista túl nagyra nőjön.",
+      "Összekeverni a fáradtságot a bizonyossággal."
+    ],
+    "mistakesCallout": "Ne adj hozzá további ellenőrzéseket. Használj rövid folyamatot, amelyet minden lépésnél meg tudsz ismételni.",
+    "planTitle": "7 napos folyamatfinomítás",
+    "planSteps": [
+      {
+        "label": "1-2. nap",
+        "duration": "10 perc",
+        "detail": "Csak az «előbb az ellenfél» kiváltót és a három jelölt határát használd."
+      },
+      {
+        "label": "3-4. nap",
+        "duration": "12 perc",
+        "detail": "Adj hozzá egy rövid kör Memory Chesst, hogy döntés közben tisztább legyen a tábla."
+      },
+      {
+        "label": "5. nap",
+        "duration": "12 perc",
+        "detail": "Nézd meg, a legutóbbi bakid a fenyegetésellenőrzésből vagy a túl sok jelöltből eredt-e."
+      },
+      {
+        "label": "6-7. nap",
+        "duration": "15 perc",
+        "detail": "Használd a teljes folyamatot rapid partikban, és jegyezd fel, melyik lépés szakad meg nyomás alatt."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Mire gondoljon egy kezdő sakkban?",
+        "answer": "Kezdd az ellenfél fenyegetéseivel, válassz egy-három lehetséges lépést, és ellenőrizd, hogy a végső választás biztonságos."
+      },
+      {
+        "question": "Hány jelöltlépést tartsak?",
+        "answer": "Általában egyet-hármat. Ennél több gyakran túlterheli a kezdőket, és rontja a döntések minőségét."
+      },
+      {
+        "question": "Miért fagyok le, pedig ismerem a folyamatot?",
+        "answer": "Gyakran azért, mert a tábla nem elég tiszta, vagy mert túl sok jelölt marad nyitva. Az egyszerűbb állások és az emlékezetmunka segítenek."
+      },
+      {
+        "question": "Megelőzheti a gondolkodási folyamat a bakikat?",
+        "answer": "Igen, különösen ha kikényszeríti a fenyegetésellenőrzést a lépés kiválasztása előtt."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Használj kifejezettebb baki elleni listát, ha még mindig anyagot vesztesz."
+      },
+      {
+        "reason": "Számolj tisztábban a lehetséges lépések összehasonlításához."
+      },
+      {
+        "reason": "Ismerd fel gyorsabban a mezőket a lépésfolyamatod során."
+      }
+    ]
+  }
+]

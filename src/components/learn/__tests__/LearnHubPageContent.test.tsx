@@ -1,5 +1,5 @@
 import type { ComponentProps } from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "@/test-utils/intl";
 import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
 
 jest.mock("next/link", () => {

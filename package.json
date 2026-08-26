@@ -28,6 +28,7 @@
     "google-auth-library": "^9.15.1",
     "lucide-react": "^0.487.0",
     "next": "15.2.8",
+    "next-intl": "^4.13.7",
     "node-fetch": "^3.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

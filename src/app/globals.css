@@ -36,6 +36,16 @@ body {
   position: relative;
 }
 
+/*
+ * Simplified Chinese uses the platform UI font rather than a downloaded CJK
+ * webfont -- see src/lib/fonts.ts for why. Applied to <body> by the locale
+ * layout, so it overrides the variable before `body` reads it.
+ */
+.font-locale-cjk {
+  --font-geist-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+}
+
 /* Game container styles for responsive layout */
 .game-container {
   width: 100%;

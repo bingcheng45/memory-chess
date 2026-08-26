@@ -1,5 +1,5 @@
-import { render, screen, within } from "@testing-library/react";
-import ChangelogPage from "@/app/changelog/page";
+import { render, screen, within } from "@/test-utils/intl";
+import ChangelogPage from "@/app/[locale]/changelog/page";
 
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {

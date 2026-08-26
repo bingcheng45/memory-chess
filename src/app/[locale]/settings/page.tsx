@@ -2,8 +2,7 @@
 
 import React from 'react';
 import { useSettingsStore } from '@/stores/settingsStore';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { Link, useRouter } from "@/i18n/navigation";
 import PageHeader from '@/components/ui/PageHeader';
 
 export default function SettingsPage() {

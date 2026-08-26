@@ -5,7 +5,7 @@ import { GameState } from "@/lib/types/game";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import {
   Dialog,
   DialogContent,

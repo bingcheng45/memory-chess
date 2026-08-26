@@ -15,7 +15,7 @@ import {
 } from '@/lib/utils/timeFormatting';
 import { LeaderboardEntry } from '@/types/leaderboard';
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect, useRef } from "react";
 
 // Interface for entry details from URL params

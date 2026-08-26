@@ -1,5 +1,5 @@
 import type { ComponentProps } from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "@/test-utils/intl";
 import LearnArticleRich from "@/components/learn/LearnArticleRich";
 import { getLearnPageBySlug } from "@/lib/seo/learnPages";
 

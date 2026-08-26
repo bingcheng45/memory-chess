@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@/test-utils/intl";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
 import {
   CHANGELOG_ANNOUNCEMENT_DURATION_MS,

@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import PrivacyPage from "@/app/privacy/page";
+import { render, screen } from "@/test-utils/intl";
+import PrivacyPage from "@/app/[locale]/privacy/page";
 
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {

@@ -6,7 +6,7 @@ import LeaderboardTable from '@/components/leaderboard/LeaderboardTable';
 import PageHeader from '@/components/ui/PageHeader';
 import { LeaderboardEntry } from '@/types/leaderboard';
 import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import { Button } from '@/components/ui/button';
 import { ACTIVE_GAME_FRAME_WIDTH } from '@/hooks/useResponsiveBoard';
 

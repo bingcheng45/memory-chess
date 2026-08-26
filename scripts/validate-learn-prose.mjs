@@ -130,6 +130,59 @@ for (const locale of files) {
   }
 }
 
+/**
+ * Script-purity check.
+ *
+ * A single character from the wrong script -- a CJK glyph mid-word in a Cyrillic
+ * sentence, say -- is invisible in review and survives every structural check.
+ * This caught exactly that during the Russian pass. Each locale declares the
+ * scripts it may contain; anything outside them is flagged.
+ */
+const SCRIPT_RANGES = {
+  cyrillic: /[\u0400-\u04FF]/,
+  devanagari: /[\u0900-\u097F]/,
+  cjk: /[\u3000-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uFF00-\uFFEF]/,
+  hangul: /[\uAC00-\uD7AF\u1100-\u11FF]/,
+  arabic: /[\u0600-\u06FF]/,
+};
+
+/** Scripts each locale is allowed to use, beyond Latin and shared punctuation. */
+const ALLOWED_SCRIPTS = {
+  ru: ["cyrillic"],
+  hi: ["devanagari"],
+  ja: ["cjk"],
+  ko: ["hangul", "cjk"],
+  "zh-CN": ["cjk"],
+  "zh-TW": ["cjk"],
+};
+
+for (const locale of files) {
+  const allowed = new Set(ALLOWED_SCRIPTS[locale] ?? []);
+  const forbidden = Object.entries(SCRIPT_RANGES).filter(
+    ([name]) => !allowed.has(name),
+  );
+
+  const walk = (value, path) => {
+    if (Array.isArray(value)) {
+      value.forEach((v, i) => walk(v, `${path}[${i}]`));
+    } else if (value && typeof value === "object") {
+      for (const [k, v] of Object.entries(value)) walk(v, `${path}.${k}`);
+    } else if (typeof value === "string") {
+      for (const [name, pattern] of forbidden) {
+        const hit = value.match(pattern);
+        if (hit) {
+          problems.push(
+            `[${locale}] ${path}: stray ${name} character "${hit[0]}" in "${value.slice(0, 60)}"`,
+          );
+          break;
+        }
+      }
+    }
+  };
+
+  walk(load(locale), "articles");
+}
+
 if (problems.length > 0) {
   console.error(problems.slice(0, 40).join("\n"));
   if (problems.length > 40) {

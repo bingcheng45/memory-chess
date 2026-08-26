@@ -80,7 +80,10 @@ export default function PageHeader({
       {/* Language switcher, mirrored to the left of the sound control */}
       {showLanguageSettings && (
         <div className={`absolute top-1/2 -translate-y-1/2 ${getLanguagePositionClass()}`}>
-          <LanguageSettings className="flex w-[46px] justify-start sm:w-[50px]" />
+          {/* Auto width: the globe + code pill is wider than the sound circle.
+              Both still anchor to their respective edges at equal insets, and
+              the title is centred independently of either control. */}
+          <LanguageSettings className="flex justify-start" />
         </div>
       )}
 

@@ -1,9 +1,16 @@
 "use client";
 
-import { useState, useEffect, useRef, useTransition } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useTransition,
+} from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
+import { Globe } from "lucide-react";
 import { useClickAway } from "@/hooks/useClickAway";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import {
@@ -17,12 +24,19 @@ interface LanguageSettingsProps {
   className?: string;
 }
 
+type Anchor = { top: number; left: number };
+
 /**
- * Language switcher for the top-left of PageHeader, built as the deliberate
- * mirror of SoundSettings on the right: same button geometry, same glass
- * treatment, same popover motion. The circle shows the active locale badge
- * rather than a globe -- a globe tells you the control exists but never tells
- * you which language you are currently in.
+ * Language switcher for the top-left of PageHeader.
+ *
+ * The button pairs a globe with the active locale code: the globe says "this
+ * control is about language", the code says which one you are already in.
+ *
+ * Both surfaces render through a portal on document.body. The header sits
+ * inside positioned ancestors and the chess board paints an overlay at z-20,
+ * so a popover positioned inside the header is trapped in its stacking context
+ * and disappears behind the board mid-game no matter how high its z-index is.
+ * Portalling escapes that entirely.
  */
 export default function LanguageSettings({
   className = "",
@@ -36,10 +50,11 @@ export default function LanguageSettings({
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [anchor, setAnchor] = useState<Anchor | null>(null);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Mounted check, for the mobile sheet portal
   useEffect(() => {
     setIsMounted(true);
     return () => setIsMounted(false);
@@ -56,14 +71,36 @@ export default function LanguageSettings({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // The portal is positioned in viewport coordinates, so it has to follow the
+  // button when the page scrolls or resizes.
+  const positionMenu = useCallback(() => {
+    const button = buttonRef.current;
+    if (!button) return;
+
+    const rect = button.getBoundingClientRect();
+    setAnchor({ top: rect.bottom + 8, left: rect.left });
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen || isMobile) return;
+
+    positionMenu();
+    window.addEventListener("scroll", positionMenu, true);
+    window.addEventListener("resize", positionMenu);
+    return () => {
+      window.removeEventListener("scroll", positionMenu, true);
+      window.removeEventListener("resize", positionMenu);
+    };
+  }, [isOpen, isMobile, positionMenu]);
+
   useClickAway(wrapperRef, () => {
     if (isOpen && !isMobile) {
       setIsOpen(false);
     }
   });
 
-  // Close on Escape -- the popover traps nothing, so this is the only way out
-  // for keyboard users who opened it and changed their mind.
+  // Close on Escape -- the menu traps nothing, so this is the only way out for
+  // keyboard users who opened it and changed their mind.
   useEffect(() => {
     if (!isOpen) return;
 
@@ -82,7 +119,8 @@ export default function LanguageSettings({
 
     // `pathname` from @/i18n/navigation is already locale-stripped, so this
     // keeps the reader on the same page in their new language. next-intl
-    // persists the choice to a NEXT_LOCALE cookie.
+    // persists the choice to a NEXT_LOCALE cookie, which the middleware then
+    // treats as an explicit choice that outranks any auto-detection.
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
     });
@@ -102,11 +140,12 @@ export default function LanguageSettings({
         key={option.code}
         onClick={() => handleSelect(option.code)}
         lang={option.code}
-        aria-current={isActive ? "true" : undefined}
+        role="menuitemradio"
+        aria-checked={isActive}
         className={`flex w-full items-center justify-between gap-3 rounded-md px-3 py-2 text-left text-sm transition-colors ${
           isActive
-            ? "bg-bg-light/60 text-peach-500"
-            : "text-text-secondary hover:bg-bg-light/40 hover:text-text-primary"
+            ? "bg-peach-500/15 text-peach-500"
+            : "text-text-secondary hover:bg-bg-light hover:text-text-primary"
         }`}
       >
         <span className="whitespace-nowrap">{option.label}</span>
@@ -134,67 +173,72 @@ export default function LanguageSettings({
     );
   };
 
+  const menuItems = (
+    <div className="flex flex-col gap-0.5">
+      {localeOptions.map(renderOption)}
+    </div>
+  );
+
   return (
     <div ref={wrapperRef} className={`relative ${className}`}>
       <motion.button
+        ref={buttonRef}
         onClick={() => setIsOpen((open) => !open)}
-        whileTap={{ scale: 0.9 }}
+        whileTap={{ scale: 0.94 }}
         disabled={isPending}
-        className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-card/30 backdrop-blur-sm transition-all hover:bg-bg-card/50 disabled:opacity-60 sm:h-10 sm:w-10"
+        className="flex h-9 items-center gap-1.5 rounded-full bg-bg-card/30 px-2.5 backdrop-blur-sm transition-all hover:bg-bg-card/50 disabled:opacity-60 sm:h-10 sm:px-3"
         aria-label={t("change", { language: LOCALE_LABELS[locale] })}
         title={t("current", { language: LOCALE_LABELS[locale] })}
         aria-expanded={isOpen}
         aria-haspopup="menu"
       >
+        <Globe
+          className="h-4 w-4 text-text-secondary sm:h-[18px] sm:w-[18px]"
+          aria-hidden="true"
+        />
         <motion.span
           key={locale}
-          initial={{ scale: 1 }}
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
+          initial={{ opacity: 0.6 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.25 }}
           className="text-xs font-semibold tracking-wide text-text-secondary sm:text-sm"
         >
           {LOCALE_BADGES[locale]}
         </motion.span>
       </motion.button>
 
-      {/* Desktop popover -- mirrors the volume slider's anchoring, left instead of right */}
-      <AnimatePresence>
-        {!isMobile && isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.2 }}
-            role="menu"
-            aria-label={t("select")}
-            className="absolute z-10 rounded-lg bg-bg-card/90 p-2 shadow-lg backdrop-blur-sm"
-            style={{
-              top: "100%",
-              left: 0,
-              marginTop: "8px",
-              width: "max-content",
-              minWidth: "11rem",
-            }}
-          >
-            <div className="flex flex-col gap-0.5">
-              {localeOptions.map(renderOption)}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Mobile bottom sheet -- ten rows in a 36px-anchored popover is unusable */}
       {isMounted &&
-        isMobile &&
         createPortal(
           <AnimatePresence>
-            {isOpen && (
+            {isOpen && !isMobile && anchor && (
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 6 }}
+                transition={{ duration: 0.18 }}
+                role="menu"
+                aria-label={t("select")}
+                // Solid, not translucent: at 90% the chess board read straight
+                // through the menu and the labels became hard to scan.
+                className="fixed z-[99990] rounded-lg border border-bg-light bg-bg-card p-2 shadow-2xl shadow-black/60"
+                style={{
+                  top: anchor.top,
+                  left: anchor.left,
+                  minWidth: "11rem",
+                  width: "max-content",
+                }}
+              >
+                {menuItems}
+              </motion.div>
+            )}
+
+            {isOpen && isMobile && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="fixed inset-0 z-[99998] flex items-end bg-black/60 backdrop-blur-sm"
+                className="fixed inset-0 z-[99998] flex items-end bg-black/70"
                 onClick={() => setIsOpen(false)}
               >
                 <motion.div
@@ -204,13 +248,11 @@ export default function LanguageSettings({
                   transition={{ type: "spring", stiffness: 320, damping: 32 }}
                   role="menu"
                   aria-label={t("select")}
-                  className="max-h-[80vh] w-full overflow-y-auto rounded-t-2xl bg-bg-card p-4 pb-8 shadow-xl"
+                  className="max-h-[80vh] w-full overflow-y-auto rounded-t-2xl border-t border-bg-light bg-bg-card p-4 pb-8 shadow-2xl"
                   onClick={(event) => event.stopPropagation()}
                 >
                   <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-bg-light" />
-                  <div className="flex flex-col gap-1">
-                    {localeOptions.map(renderOption)}
-                  </div>
+                  {menuItems}
                 </motion.div>
               </motion.div>
             )}

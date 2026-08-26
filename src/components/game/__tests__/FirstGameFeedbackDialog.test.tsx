@@ -4,7 +4,7 @@ import {
   render,
   screen,
   waitFor,
-} from "@testing-library/react";
+} from "@/test-utils/intl";
 import FirstGameFeedbackDialog, {
   FEEDBACK_COOLDOWN_MS,
   FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY,

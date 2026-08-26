@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, within } from "@/test-utils/intl";
 import ResultBoardComparison from "@/components/game/ResultBoardComparison";
 
 jest.mock("@/hooks/useResponsiveBoard", () => ({

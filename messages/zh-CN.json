@@ -113,5 +113,134 @@
         }
       ]
     }
+  },
+  "game": {
+    "meta": {
+      "title": "在线玩 Memory Chess",
+      "description": "在线玩 Memory Chess，通过限时挑战训练棋盘视野、记忆力和国际象棋的棋形识别能力。",
+      "socialTitle": "在线玩 Memory Chess",
+      "socialDescription": "通过互动式限时挑战，训练你的国际象棋盘面想象力和记忆力。"
+    },
+    "hud": {
+      "time": "用时",
+      "submit": "提交",
+      "loading": "正在加载游戏…",
+      "status": "对局状态",
+      "controls": "对局操作",
+      "complete": "对局结束",
+      "flash": "完成！"
+    },
+    "config": {
+      "title": "对局设置",
+      "presetsLabel": "难度预设",
+      "presetSummary": "{pieces} 子 / {seconds} 秒",
+      "customLabel": "自定义设置",
+      "pieceCount": "棋子数量",
+      "memorizeTime": "记忆时间",
+      "seconds": "{seconds} 秒",
+      "start": "开始训练",
+      "lastGame": "上一局：还原用时 {time} 秒，准确率 {accuracy}%"
+    },
+    "presets": {
+      "easy": {
+        "label": "简单",
+        "description": "只有双方的王，适合入门"
+      },
+      "medium": {
+        "label": "中等",
+        "description": "几颗棋子，记忆时间也比较宽裕"
+      },
+      "hard": {
+        "label": "困难",
+        "description": "棋子更多，记忆时间更短"
+      },
+      "grandmaster": {
+        "label": "特级大师",
+        "description": "为拥有照相式记忆的高手准备"
+      }
+    },
+    "memorize": {
+      "title": "记住这个棋局",
+      "skip": "跳过",
+      "hint": "计时结束后棋盘会被清空"
+    },
+    "place": {
+      "title": "摆放棋子",
+      "subtitle": "选择棋子类型和颜色",
+      "whitePieces": "白方棋子",
+      "blackPieces": "黑方棋子",
+      "selectWhite": "选择白方棋子",
+      "selectBlack": "选择黑方棋子",
+      "hint": "点击格子放置棋子，再次点击可移除"
+    },
+    "stats": {
+      "title": "对局数据",
+      "currentTime": "当前用时",
+      "piecesToMemorize": "待记忆棋子",
+      "averageAccuracy": "平均准确率"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ 满分！✨",
+        "excellent": "记忆力超群！",
+        "great": "表现出色！",
+        "wellDone": "做得不错！",
+        "goodEffort": "有进步！",
+        "keepPracticing": "继续加油！"
+      },
+      "accuracy": "准确率",
+      "piecesCorrectCaption": "颗棋子正确",
+      "piecesCorrect": "正确棋子",
+      "memorizationTime": "记忆时间",
+      "solutionTime": "还原用时",
+      "recallSpeed": "回忆速度",
+      "piecesPerSecond": "{value} 子/秒",
+      "actions": "结果操作",
+      "tryAgain": "再来一局",
+      "newGame": "新对局",
+      "submitToLeaderboard": "提交到排行榜",
+      "viewLeaderboard": "查看排行榜",
+      "dialog": {
+        "submitTitle": "提交到排行榜",
+        "submitDescription": "填写要显示在排行榜上的名字。",
+        "successTitle": "成绩已提交！",
+        "successDescription": "你的成绩已成功提交到排行榜。",
+        "playerName": "玩家名称",
+        "playerNamePlaceholder": "请输入你的名字",
+        "error": "错误：{message}",
+        "submitFailed": "成绩提交失败",
+        "cancel": "取消",
+        "submit": "提交成绩",
+        "submitting": "提交中…",
+        "thanks": "感谢参与，{name}！"
+      }
+    },
+    "comparison": {
+      "title": "回顾你的棋局",
+      "subtitle": "把你记住的和你提交的对照一下。",
+      "unavailable": "暂时无法对比棋盘。",
+      "ariaLabel": "棋盘对比",
+      "correct": "正确",
+      "incorrect": "错误",
+      "missed": "遗漏",
+      "originalBoard": "需要记住的棋局",
+      "submittedBoard": "你提交的棋局"
+    },
+    "feedback": {
+      "title": "感谢你玩 Memory Chess！",
+      "prompt": "你会给这个游戏打几分？",
+      "placeholder": "说说哪里做得好，或者你希望改进什么…",
+      "notNow": "暂不评价",
+      "sentTitle": "谢谢你帮助我们改进",
+      "sentBody": "我们已经收到你的反馈。",
+      "done": "完成",
+      "commentLabel": "玩下来感觉如何？怎样会更好？",
+      "commentOptional": "（选填）",
+      "starRating": "{count, plural, other {# 星}}",
+      "chooseRating": "请先选择星级评分。",
+      "sendFailed": "反馈发送失败。请重试，或选择“暂不评价”。",
+      "send": "提交反馈",
+      "sending": "发送中…"
+    }
   }
 }

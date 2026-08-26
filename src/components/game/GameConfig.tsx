@@ -4,47 +4,33 @@ import { useState, useEffect } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import { Button } from "@/components/ui/button";
 import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 interface GameConfigProps {
   readonly onStart?: (pieceCount: number, memorizeTime: number) => void;
 }
 
-// Define difficulty presets
+// Difficulty presets. `id` is the stable identifier: it is the selection key,
+// the `?difficulty=` URL parameter, and the value the leaderboard stores. It
+// must never be translated -- the label and description come from the
+// `game.presets` messages instead.
+const CUSTOM_PRESET_ID = 'custom';
+
 interface DifficultyPreset {
-  name: string;
+  id: 'easy' | 'medium' | 'hard' | 'grandmaster';
   pieceCount: number;
   memorizeTime: number;
-  description: string;
 }
 
 const DIFFICULTY_PRESETS: DifficultyPreset[] = [
-  {
-    name: 'Easy',
-    pieceCount: 2,
-    memorizeTime: 10,
-    description: 'Just kings - perfect for starting out'
-  },
-  {
-    name: 'Medium',
-    pieceCount: 6,
-    memorizeTime: 10,
-    description: 'A few pieces with comfortable time to memorize'
-  },
-  {
-    name: 'Hard',
-    pieceCount: 12,
-    memorizeTime: 8,
-    description: 'More pieces with less time to memorize'
-  },
-  {
-    name: 'Grandmaster',
-    pieceCount: 20,
-    memorizeTime: 5,
-    description: 'For chess masters with photographic memory'
-  }
+  { id: 'easy', pieceCount: 2, memorizeTime: 10 },
+  { id: 'medium', pieceCount: 6, memorizeTime: 10 },
+  { id: 'hard', pieceCount: 12, memorizeTime: 8 },
+  { id: 'grandmaster', pieceCount: 20, memorizeTime: 5 },
 ];
 
 export default function GameConfig({ onStart }: GameConfigProps) {
+  const t = useTranslations('game');
   const { 
     startGame, 
     gameState
@@ -60,14 +46,15 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   
   // Set the initial difficulty from URL parameters if available
   useEffect(() => {
-    if (difficultyParam && ['easy', 'medium', 'hard', 'grandmaster'].includes(difficultyParam)) {
-      // Find the matching preset
+    if (difficultyParam) {
+      // Match on the stable id, so a deep link like ?difficulty=hard keeps
+      // working in every locale.
       const preset = DIFFICULTY_PRESETS.find(
-        preset => preset.name.toLowerCase() === difficultyParam
+        preset => preset.id === difficultyParam
       );
-      
+
       if (preset) {
-        setSelectedPreset(preset.name);
+        setSelectedPreset(preset.id);
         setPieceCount(preset.pieceCount);
         setMemorizeTime(preset.memorizeTime);
       }
@@ -82,16 +69,16 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     );
     
     if (matchingPreset) {
-      setSelectedPreset(matchingPreset.name);
+      setSelectedPreset(matchingPreset.id);
     } else {
-      setSelectedPreset("custom");
+      setSelectedPreset(CUSTOM_PRESET_ID);
     }
   }, [pieceCount, memorizeTime]);
   
   function handlePresetSelect(presetId: string) {
     setSelectedPreset(presetId);
     
-    const selectedPreset = DIFFICULTY_PRESETS.find((preset) => preset.name === presetId);
+    const selectedPreset = DIFFICULTY_PRESETS.find((preset) => preset.id === presetId);
     if (selectedPreset) {
       setPieceCount(selectedPreset.pieceCount);
       setMemorizeTime(selectedPreset.memorizeTime);
@@ -108,40 +95,44 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   
   return (
     <div className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-5 sm:p-7 shadow-xl">
-      <h2 className="mb-5 text-center text-2xl font-bold text-text-primary">Game Configuration</h2>
+      <h2 className="mb-5 text-center text-2xl font-bold text-text-primary">{t('config.title')}</h2>
       
       <div className="mb-5">
-        <h3 className="mb-3 text-sm font-medium text-text-secondary">Difficulty Presets</h3>
+        <h3 className="mb-3 text-sm font-medium text-text-secondary">{t('config.presetsLabel')}</h3>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           {DIFFICULTY_PRESETS.map((preset) => (
             <Button
-              key={preset.name}
-              onClick={() => handlePresetSelect(preset.name)}
-              variant={selectedPreset === preset.name ? "secondary" : "ghost"}
+              key={preset.id}
+              onClick={() => handlePresetSelect(preset.id)}
+              variant={selectedPreset === preset.id ? "secondary" : "ghost"}
               className={`flex h-auto flex-col items-center justify-center p-2.5 transition-all duration-200 ease-in-out border ${
-                selectedPreset === preset.name 
+                selectedPreset === preset.id
                   ? 'border-peach-500 bg-peach-500/20 text-text-primary shadow-sm hover:bg-peach-500/25 hover:border-peach-500/70' 
                   : 'border-transparent text-text-secondary hover:border-peach-500/30 hover:bg-peach-500/15 hover:text-white hover:shadow-sm'
               }`}
-              aria-pressed={selectedPreset === preset.name}
+              aria-pressed={selectedPreset === preset.id}
             >
-              <span className="font-medium">{preset.name}</span>
+              <span className="font-medium">{t(`presets.${preset.id}.label`)}</span>
               <div className="mt-1 text-xs opacity-70">
-                {preset.pieceCount} pcs / {preset.memorizeTime}s
+                {t('config.presetSummary', {
+                  pieces: preset.pieceCount,
+                  seconds: preset.memorizeTime,
+                })}
               </div>
             </Button>
           ))}
         </div>
         <div className="mt-2 text-xs text-text-muted">
-          {selectedPreset && selectedPreset !== 'custom' && DIFFICULTY_PRESETS.find(p => p.name === selectedPreset)?.description}
-          {selectedPreset === 'custom' && "Custom settings"}
+          {selectedPreset && selectedPreset !== CUSTOM_PRESET_ID
+            ? t(`presets.${selectedPreset}.description`)
+            : t('config.customLabel')}
         </div>
       </div>
       
       <div className="mb-5">
         <div className="mb-3 flex items-center justify-between">
           <label htmlFor="pieceCount" className="text-sm font-medium text-text-secondary">
-            Number of Pieces
+            {t('config.pieceCount')}
           </label>
           <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark">
             {pieceCount}
@@ -176,10 +167,10 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       <div className="mb-6">
         <div className="mb-3 flex items-center justify-between">
           <label htmlFor="memorizeTime" className="text-sm font-medium text-text-secondary">
-            Memorization Time
+            {t('config.memorizeTime')}
           </label>
           <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark">
-            {memorizeTime}s
+            {t('config.seconds', { seconds: memorizeTime })}
           </span>
         </div>
         <input
@@ -202,9 +193,9 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           }}
         />
         <div className="mt-4 flex justify-between text-xs text-text-muted">
-          <span>2s</span>
-          <span>17s</span>
-          <span>32s</span>
+          <span>{t('config.seconds', { seconds: 2 })}</span>
+          <span>{t('config.seconds', { seconds: 17 })}</span>
+          <span>{t('config.seconds', { seconds: 32 })}</span>
         </div>
       </div>
       
@@ -214,21 +205,21 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         size="sm"
         className="w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
       >
-        Start Training
+        {t('config.start')}
       </Button>
       
       {gameState.completionTime !== undefined && (
         <div className="mt-4 text-center text-sm text-text-secondary">
           <p>
-            Last game: 
             {(() => {
               const seconds = Math.floor(gameState.completionTime);
-              const milliseconds = Math.round((gameState.completionTime - seconds) * 1000).toString().padStart(3, '0');
-              return (
-                <>
-                  {seconds}<span className="text-xs">{milliseconds}</span>s solution time with {gameState.accuracy}% accuracy
-                </>
-              );
+              const milliseconds = Math.round((gameState.completionTime - seconds) * 1000)
+                .toString()
+                .padStart(3, '0');
+              return t('config.lastGame', {
+                time: `${seconds}.${milliseconds}`,
+                accuracy: gameState.accuracy ?? 0,
+              });
             })()}
           </p>
         </div>

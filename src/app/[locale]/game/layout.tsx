@@ -1,27 +1,33 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { getTranslations } from 'next-intl/server';
+import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
 
 const siteUrl = 'https://thememorychess.com';
 
-export const metadata: Metadata = {
-  title: 'Play Memory Chess Online',
-  description:
-    'Play Memory Chess online to train board visualization, recall, and chess pattern recognition with timed memory challenges.',
-  alternates: {
-    canonical: '/game',
-  },
-  openGraph: {
-    title: 'Play Memory Chess Online',
-    description:
-      'Train your chess visualization and memory with interactive timed challenges.',
-    url: `${siteUrl}/game`,
-  },
-  twitter: {
-    title: 'Play Memory Chess Online',
-    description:
-      'Train your chess visualization and memory with interactive timed challenges.',
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'game.meta' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: buildAlternates('/game', locale),
+    openGraph: {
+      title: t('socialTitle'),
+      description: t('socialDescription'),
+      url: `${siteUrl}${localizedPath('/game', locale)}`,
+    },
+    twitter: {
+      title: t('socialTitle'),
+      description: t('socialDescription'),
+    },
+  };
+}
 
 export default function GameLayout({
   children,

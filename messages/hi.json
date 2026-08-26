@@ -113,5 +113,134 @@
         }
       ]
     }
+  },
+  "game": {
+    "meta": {
+      "title": "Memory Chess ऑनलाइन खेलें",
+      "description": "बोर्ड विज़ुअलाइज़ेशन, याददाश्त और शतरंज पैटर्न पहचान का अभ्यास करने के लिए Memory Chess ऑनलाइन खेलें, समयबद्ध चुनौतियों के साथ।",
+      "socialTitle": "Memory Chess ऑनलाइन खेलें",
+      "socialDescription": "इंटरैक्टिव समयबद्ध चुनौतियों से अपनी शतरंज कल्पना-शक्ति और स्मृति का अभ्यास करें।"
+    },
+    "hud": {
+      "time": "समय",
+      "submit": "सबमिट करें",
+      "loading": "गेम लोड हो रहा है...",
+      "status": "गेम की स्थिति",
+      "controls": "गेम कंट्रोल",
+      "complete": "गेम पूरा हुआ",
+      "flash": "हो गया!"
+    },
+    "config": {
+      "title": "गेम सेटिंग",
+      "presetsLabel": "कठिनाई स्तर",
+      "presetSummary": "{pieces} मोहरे / {seconds} से.",
+      "customLabel": "अपनी सेटिंग",
+      "pieceCount": "मोहरों की संख्या",
+      "memorizeTime": "याद करने का समय",
+      "seconds": "{seconds} से.",
+      "start": "अभ्यास शुरू करें",
+      "lastGame": "पिछला गेम: {time} से. में हल, {accuracy}% सटीकता के साथ"
+    },
+    "presets": {
+      "easy": {
+        "label": "आसान",
+        "description": "सिर्फ़ राजा — शुरुआत के लिए बढ़िया"
+      },
+      "medium": {
+        "label": "मध्यम",
+        "description": "कुछ मोहरे और याद करने के लिए आरामदायक समय"
+      },
+      "hard": {
+        "label": "कठिन",
+        "description": "ज़्यादा मोहरे और याद करने के लिए कम समय"
+      },
+      "grandmaster": {
+        "label": "ग्रैंडमास्टर",
+        "description": "फ़ोटोग्राफ़िक याददाश्त वाले शतरंज उस्तादों के लिए"
+      }
+    },
+    "memorize": {
+      "title": "स्थिति याद करें",
+      "skip": "छोड़ें",
+      "hint": "समय ख़त्म होते ही बोर्ड ख़ाली हो जाएगा"
+    },
+    "place": {
+      "title": "मोहरे रखें",
+      "subtitle": "प्रकार और रंग चुनें",
+      "whitePieces": "सफ़ेद मोहरे",
+      "blackPieces": "काले मोहरे",
+      "selectWhite": "सफ़ेद मोहरे चुनें",
+      "selectBlack": "काले मोहरे चुनें",
+      "hint": "मोहरा जोड़ने या हटाने के लिए किसी खाने पर टैप करें"
+    },
+    "stats": {
+      "title": "गेम आँकड़े",
+      "currentTime": "मौजूदा समय",
+      "piecesToMemorize": "याद करने के मोहरे",
+      "averageAccuracy": "औसत सटीकता"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ पूरे अंक! ✨",
+        "excellent": "शानदार याददाश्त!",
+        "great": "बहुत बढ़िया!",
+        "wellDone": "शाबाश!",
+        "goodEffort": "अच्छी कोशिश!",
+        "keepPracticing": "अभ्यास जारी रखें!"
+      },
+      "accuracy": "सटीकता",
+      "piecesCorrectCaption": "मोहरे सही",
+      "piecesCorrect": "सही मोहरे",
+      "memorizationTime": "याद करने का समय",
+      "solutionTime": "हल करने का समय",
+      "recallSpeed": "याद करने की गति",
+      "piecesPerSecond": "{value} मोहरे/से.",
+      "actions": "नतीजे से जुड़े विकल्प",
+      "tryAgain": "फिर कोशिश करें",
+      "newGame": "नया गेम",
+      "submitToLeaderboard": "लीडरबोर्ड पर भेजें",
+      "viewLeaderboard": "लीडरबोर्ड देखें",
+      "dialog": {
+        "submitTitle": "लीडरबोर्ड पर भेजें",
+        "submitDescription": "लीडरबोर्ड पर दिखने वाला अपना नाम लिखें।",
+        "successTitle": "स्कोर भेज दिया गया!",
+        "successDescription": "आपका स्कोर लीडरबोर्ड पर सफलतापूर्वक भेज दिया गया है।",
+        "playerName": "खिलाड़ी का नाम",
+        "playerNamePlaceholder": "अपना नाम लिखें",
+        "error": "त्रुटि: {message}",
+        "submitFailed": "स्कोर नहीं भेजा जा सका",
+        "cancel": "रद्द करें",
+        "submit": "स्कोर भेजें",
+        "submitting": "भेजा जा रहा है...",
+        "thanks": "भाग लेने के लिए धन्यवाद, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "अपनी स्थिति देखें",
+      "subtitle": "आपने जो याद किया और जो भेजा, उनकी तुलना करें।",
+      "unavailable": "बोर्ड तुलना उपलब्ध नहीं है।",
+      "ariaLabel": "बोर्ड तुलना",
+      "correct": "सही",
+      "incorrect": "ग़लत",
+      "missed": "छूटा",
+      "originalBoard": "याद करने वाली स्थिति",
+      "submittedBoard": "आपकी भेजी गई स्थिति"
+    },
+    "feedback": {
+      "title": "Memory Chess खेलने के लिए धन्यवाद!",
+      "prompt": "आप गेम को कितने अंक देंगे?",
+      "placeholder": "बताएँ क्या अच्छा लगा या आप क्या बदलना चाहेंगे...",
+      "notNow": "अभी नहीं",
+      "sentTitle": "बेहतर बनाने में मदद के लिए धन्यवाद",
+      "sentBody": "आपकी प्रतिक्रिया मिल गई है।",
+      "done": "हो गया",
+      "commentLabel": "खेलने में कैसा लगा, और क्या बेहतर बना सकता है?",
+      "commentOptional": "(वैकल्पिक)",
+      "starRating": "{count, plural, one {# स्टार} other {# स्टार}}",
+      "chooseRating": "कृपया स्टार से एक रेटिंग चुनें।",
+      "sendFailed": "हम आपकी प्रतिक्रिया नहीं भेज सके। फिर कोशिश करें या “अभी नहीं” चुनें।",
+      "send": "प्रतिक्रिया भेजें",
+      "sending": "भेजा जा रहा है..."
+    }
   }
 }

@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react';
 import type { BoardDimensions } from '@/hooks/useResponsiveBoard';
 
+import { useTranslations } from "next-intl";
 interface ActiveGameLayoutProps {
   readonly dimensions: BoardDimensions;
   readonly status: ReactNode;
@@ -16,6 +17,7 @@ export default function ActiveGameLayout({
   board,
   controls,
 }: ActiveGameLayoutProps) {
+  const t = useTranslations("game");
   const frameStyle = { width: `${dimensions.size}px`, maxWidth: '100%' };
 
   return (
@@ -23,7 +25,7 @@ export default function ActiveGameLayout({
       <section
         className="h-[88px] w-full shrink-0 overflow-hidden"
         style={frameStyle}
-        aria-label="Game status"
+        aria-label={t("hud.status")}
       >
         {status}
       </section>
@@ -35,7 +37,7 @@ export default function ActiveGameLayout({
       <section
         className="w-full py-2 sm:py-3"
         style={frameStyle}
-        aria-label="Game controls"
+        aria-label={t("hud.controls")}
       >
         {controls}
       </section>

@@ -18,6 +18,7 @@ import { Badge } from '@/components/ui/badge';
 import type { BoardDimensions } from '@/hooks/useResponsiveBoard';
 import ActiveGameLayout from './ActiveGameLayout';
 
+import { useTranslations } from "next-intl";
 // Define maximum piece limits for standard chess
 const PIECE_LIMITS: Record<PieceType, number> = {
   pawn: 8,
@@ -42,6 +43,7 @@ export default function ResponsiveInteractiveBoard({
   dimensions,
   status,
 }: ResponsiveInteractiveBoardProps) {
+  const t = useTranslations("game");
   const [selectedPosition, setSelectedPosition] = useState<Position | null>(null);
   const [selectedPieceType, setSelectedPieceType] = useState<PieceType>('pawn');
   const [selectedPieceColor, setSelectedPieceColor] = useState<PieceColor>('white');
@@ -124,8 +126,8 @@ export default function ResponsiveInteractiveBoard({
         <>
           <div className="flex h-10 items-center justify-between">
             <div>
-              <h2 className="text-sm font-medium sm:text-base">Place Pieces</h2>
-              <p className="text-[11px] text-muted-foreground sm:text-xs">Select type and color</p>
+              <h2 className="text-sm font-medium sm:text-base">{t("place.title")}</h2>
+              <p className="text-[11px] text-muted-foreground sm:text-xs">{t("place.subtitle")}</p>
             </div>
 
             <div className="flex items-center gap-2">
@@ -140,7 +142,7 @@ export default function ResponsiveInteractiveBoard({
                           ? 'bg-gradient-to-br from-peach-400 to-peach-600 shadow-lg'
                           : 'bg-neutral-400/40 hover:bg-neutral-200/50'
                       }`}
-                      aria-label="Select white pieces"
+                      aria-label={t("place.selectWhite")}
                     >
                       <span
                         className={`h-6 w-6 rounded-full ${
@@ -152,7 +154,7 @@ export default function ResponsiveInteractiveBoard({
                     </button>
                   </TooltipTrigger>
                   <TooltipContent side="bottom">
-                    <p className="text-xs">White pieces</p>
+                    <p className="text-xs">{t("place.whitePieces")}</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -168,7 +170,7 @@ export default function ResponsiveInteractiveBoard({
                           ? 'bg-gradient-to-br from-peach-400 to-peach-600 shadow-lg'
                           : 'bg-neutral-400/40 hover:bg-neutral-200/50'
                       }`}
-                      aria-label="Select black pieces"
+                      aria-label={t("place.selectBlack")}
                     >
                       <span
                         className={`h-6 w-6 rounded-full ${
@@ -180,7 +182,7 @@ export default function ResponsiveInteractiveBoard({
                     </button>
                   </TooltipTrigger>
                   <TooltipContent side="bottom">
-                    <p className="text-xs">Black pieces</p>
+                    <p className="text-xs">{t("place.blackPieces")}</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -241,9 +243,7 @@ export default function ResponsiveInteractiveBoard({
             })}
           </div>
 
-          <p className="mt-1.5 text-center text-[11px] text-muted-foreground sm:text-xs">
-            Tap a square to add a piece or remove one
-          </p>
+          <p className="mt-1.5 text-center text-[11px] text-muted-foreground sm:text-xs">{t("place.hint")}</p>
         </>
       }
     />

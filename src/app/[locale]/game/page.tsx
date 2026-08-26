@@ -27,8 +27,10 @@ import {
 } from '@/hooks/useResponsiveBoard';
 import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
 
+import { useTranslations } from "next-intl";
 // Component to handle URL parameters
 function GamePageContent() {
+  const t = useTranslations("game");
   const router = useRouter();
   const searchParams = useSearchParams();
   const analytics = useAnalytics();
@@ -373,9 +375,7 @@ function GamePageContent() {
                 dimensions={activeBoardDimensions}
                 status={
                   <div className="relative flex h-full items-center justify-center px-3 sm:px-4">
-                    <div className="text-center text-sm font-medium sm:text-base">
-                      Time
-                      <div className="font-mono text-2xl font-bold leading-tight sm:text-3xl">
+                    <div className="text-center text-sm font-medium sm:text-base">{t("hud.time")}<div className="font-mono text-2xl font-bold leading-tight sm:text-3xl">
                         {(() => {
                           if (typeof elapsedTime !== 'number' || isNaN(elapsedTime)) {
                             return formatTimeWithMilliseconds(0);
@@ -391,9 +391,7 @@ function GamePageContent() {
                       variant="outline"
                       size="sm"
                       className="absolute right-0 top-1/2 h-9 -translate-y-1/2 border-peach-500/30 bg-peach-500/10 px-3 text-sm text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
-                    >
-                      Submit
-                    </Button>
+                    >{t("hud.submit")}</Button>
                   </div>
                 }
                 playerSolution={solutionPieces}
@@ -463,9 +461,10 @@ function GamePageContent() {
 }
 
 export default function GamePage() {
+  const t = useTranslations("game");
   return (
     <ErrorBoundary>
-      <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading game...</div>}>
+      <Suspense fallback={<div className="flex items-center justify-center min-h-screen">{t("hud.loading")}</div>}>
         <GamePageContent />
       </Suspense>
     </ErrorBoundary>

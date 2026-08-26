@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -33,6 +34,7 @@ interface GameResultProps {
 }
 
 export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
+  const t = useTranslations("game.result");
   const { gameState } = useGameStore();
 
   // Leaderboard submission state
@@ -178,12 +180,12 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const getResultMessage = () => {
     const accuracy = gameState.accuracy || 0;
 
-    if (accuracy === 100) return "✨ Perfect Score! ✨";
-    if (accuracy >= 90) return "Excellent Memory!";
-    if (accuracy >= 80) return "Great Job!";
-    if (accuracy >= 70) return "Well Done!";
-    if (accuracy >= 50) return "Good Effort!";
-    return "Keep Practicing!";
+    if (accuracy === 100) return t("messages.perfect");
+    if (accuracy >= 90) return t("messages.excellent");
+    if (accuracy >= 80) return t("messages.great");
+    if (accuracy >= 70) return t("messages.wellDone");
+    if (accuracy >= 50) return t("messages.goodEffort");
+    return t("messages.keepPracticing");
   };
 
   // Get color class based on accuracy
@@ -246,14 +248,14 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to submit to leaderboard");
+        throw new Error(errorData.error || t("dialog.submitFailed"));
       }
 
       setSubmitSuccess(true);
     } catch (err) {
       console.error("Error submitting to leaderboard:", err);
       setSubmitError(
-        err instanceof Error ? err.message : "Failed to submit score",
+        err instanceof Error ? err.message : t("dialog.submitFailed"),
       );
     } finally {
       setIsSubmitting(false);
@@ -267,8 +269,13 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const solutionTimeParts = formatTimeParts(gameState.completionTime || 0);
   const recallSpeed =
     gameState.completionTime && gameState.completionTime > 0
-      ? `${((gameState.pieceCount * (accuracy / 100)) / memorizationTime).toFixed(1)} pieces/sec`
-      : "0.0 pieces/sec";
+      ? t("piecesPerSecond", {
+          value: (
+            (gameState.pieceCount * (accuracy / 100)) /
+            memorizationTime
+          ).toFixed(1),
+        })
+      : t("piecesPerSecond", { value: "0.0" });
   const leaderboardEligible = isEligibleForLeaderboard();
 
   return (
@@ -287,7 +294,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         <div className="mt-4 flex items-end justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.16em] text-text-secondary">
-              Accuracy
+              {t("accuracy")}
             </p>
             <p
               className={`text-4xl font-bold leading-none sm:text-5xl ${getAccuracyColor(accuracy)}`}
@@ -305,7 +312,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               )}{" "}
               / {piecesInfo.totalPieces}
             </span>
-            pieces correct
+            {t("piecesCorrectCaption")}
           </p>
         </div>
 
@@ -326,25 +333,25 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
 
         <dl className="mt-5 grid grid-cols-2 gap-2 lg:grid-cols-4">
           <div className="rounded-lg bg-bg-light/45 p-3">
-            <dt className="text-xs text-text-secondary">Pieces Correct</dt>
+            <dt className="text-xs text-text-secondary">{t("piecesCorrect")}</dt>
             <dd className="mt-1 font-semibold text-text-primary">
               {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
             </dd>
           </div>
           <div className="rounded-lg bg-bg-light/45 p-3">
-            <dt className="text-xs text-text-secondary">Memorization Time</dt>
+            <dt className="text-xs text-text-secondary">{t("memorizationTime")}</dt>
             <dd className="mt-1 font-semibold text-text-primary">
               <TimeDisplay {...memorizationTimeParts} />
             </dd>
           </div>
           <div className="rounded-lg bg-bg-light/45 p-3">
-            <dt className="text-xs text-text-secondary">Solution Time</dt>
+            <dt className="text-xs text-text-secondary">{t("solutionTime")}</dt>
             <dd className="mt-1 font-semibold text-text-primary">
               <TimeDisplay {...solutionTimeParts} />
             </dd>
           </div>
           <div className="rounded-lg bg-bg-light/45 p-3">
-            <dt className="text-xs text-text-secondary">Recall Speed</dt>
+            <dt className="text-xs text-text-secondary">{t("recallSpeed")}</dt>
             <dd className="mt-1 text-sm font-semibold text-text-primary sm:text-base">
               {recallSpeed}
             </dd>
@@ -352,7 +359,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         </dl>
 
         <nav
-          aria-label="Result actions"
+          aria-label={t("actions")}
           className="mt-5 grid grid-cols-2 gap-2 border-t border-bg-light pt-5 lg:grid-cols-4"
         >
           <Button
@@ -364,7 +371,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                 : "h-10 w-full border border-gray-600 px-3"
             }
           >
-            Try Again
+            {t("tryAgain")}
           </Button>
 
           <Button
@@ -376,7 +383,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                 : "h-10 w-full border-peach-500/30 bg-peach-500/10 px-3 text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
             }
           >
-            New Game
+            {t("newGame")}
           </Button>
 
           {leaderboardEligible && (
@@ -385,7 +392,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               variant="outline"
               className="h-10 w-full border-green-500/30 bg-green-500/10 px-3 text-green-500 hover:bg-green-500/20 hover:text-green-500"
             >
-              Submit to Leaderboard
+              {t("submitToLeaderboard")}
             </Button>
           )}
 
@@ -397,7 +404,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               variant="ghost"
               className="h-10 w-full border-0 px-3 text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
             >
-              View Leaderboard
+              {t("viewLeaderboard")}
             </Button>
           </Link>
         </nav>
@@ -428,12 +435,12 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         <DialogContent className="bg-bg-card border border-bg-light text-text-primary">
           <DialogHeader>
             <DialogTitle className="text-text-primary">
-              {submitSuccess ? "Score Submitted!" : "Submit to Leaderboard"}
+              {submitSuccess ? t("dialog.successTitle") : t("dialog.submitTitle")}
             </DialogTitle>
             <DialogDescription className="text-text-secondary">
               {submitSuccess
-                ? "Your score has been successfully submitted to the leaderboard."
-                : "Enter your name to be displayed on the leaderboard."}
+                ? t("dialog.successDescription")
+                : t("dialog.submitDescription")}
             </DialogDescription>
           </DialogHeader>
 
@@ -441,20 +448,22 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
             <div className="space-y-4 py-4">
               <div className="space-y-2">
                 <Label htmlFor="player-name" className="text-text-secondary">
-                  Player Name
+                  {t("dialog.playerName")}
                 </Label>
                 <Input
                   id="player-name"
                   value={playerName}
                   onChange={(e) => setPlayerName(e.target.value)}
-                  placeholder="Enter your name"
+                  placeholder={t("dialog.playerNamePlaceholder")}
                   disabled={isSubmitting}
                   className="bg-bg-light border-bg-light text-text-primary focus:border-green-500/50 focus:ring-green-500/30"
                 />
               </div>
 
               {submitError && (
-                <div className="text-sm text-red-500">Error: {submitError}</div>
+                <div className="text-sm text-red-500">
+                  {t("dialog.error", { message: submitError })}
+                </div>
               )}
 
               <div className="flex justify-end gap-2">
@@ -464,14 +473,14 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                   disabled={isSubmitting}
                   className="bg-bg-light text-text-secondary border-bg-light hover:bg-bg-light/80 hover:text-text-primary"
                 >
-                  Cancel
+                  {t("dialog.cancel")}
                 </Button>
                 <Button
                   onClick={submitToLeaderboard}
                   disabled={!playerName.trim() || isSubmitting}
                   className="bg-green-500 text-white hover:text-white hover:bg-green-600"
                 >
-                  {isSubmitting ? "Submitting..." : "Submit Score"}
+                  {isSubmitting ? t("dialog.submitting") : t("dialog.submit")}
                 </Button>
               </div>
             </div>
@@ -498,7 +507,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
 
               <div className="text-center">
                 <p className="text-text-primary">
-                  Thanks for participating, {playerName}!
+                  {t("dialog.thanks", { name: playerName })}
                 </p>
               </div>
 
@@ -514,7 +523,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                   })()}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round(((gameState.accuracy || 0) * gameState.pieceCount) / 100)}&totalWrongPieces=${piecesInfo.totalWrong}`}
                 >
                   <Button className="bg-green-500 text-white hover:text-white hover:bg-green-600">
-                    View Leaderboard
+                    {t("viewLeaderboard")}
                   </Button>
                 </Link>
               </div>

@@ -113,5 +113,134 @@
         }
       ]
     }
+  },
+  "game": {
+    "meta": {
+      "title": "Gioca a Memory Chess online",
+      "description": "Gioca a Memory Chess online per allenare visione della scacchiera, memoria e riconoscimento degli schemi con sfide a tempo.",
+      "socialTitle": "Gioca a Memory Chess online",
+      "socialDescription": "Allena visualizzazione e memoria scacchistica con sfide interattive a tempo."
+    },
+    "hud": {
+      "time": "Tempo",
+      "submit": "Invia",
+      "loading": "Caricamento della partita...",
+      "status": "Stato della partita",
+      "controls": "Comandi della partita",
+      "complete": "Partita completata",
+      "flash": "FINITO!"
+    },
+    "config": {
+      "title": "Configurazione della partita",
+      "presetsLabel": "Livelli predefiniti",
+      "presetSummary": "{pieces} pz / {seconds} s",
+      "customLabel": "Impostazioni personalizzate",
+      "pieceCount": "Numero di pezzi",
+      "memorizeTime": "Tempo di memorizzazione",
+      "seconds": "{seconds} s",
+      "start": "Inizia ad allenarti",
+      "lastGame": "Ultima partita: {time} s di risoluzione con il {accuracy}% di precisione"
+    },
+    "presets": {
+      "easy": {
+        "label": "Facile",
+        "description": "Solo i re: perfetto per iniziare"
+      },
+      "medium": {
+        "label": "Medio",
+        "description": "Pochi pezzi e tempo comodo per memorizzare"
+      },
+      "hard": {
+        "label": "Difficile",
+        "description": "Più pezzi e meno tempo per memorizzare"
+      },
+      "grandmaster": {
+        "label": "Gran maestro",
+        "description": "Per maestri di scacchi con memoria fotografica"
+      }
+    },
+    "memorize": {
+      "title": "Memorizza la posizione",
+      "skip": "Salta",
+      "hint": "La scacchiera si svuoterà allo scadere del tempo"
+    },
+    "place": {
+      "title": "Posiziona i pezzi",
+      "subtitle": "Scegli tipo e colore",
+      "whitePieces": "Pezzi bianchi",
+      "blackPieces": "Pezzi neri",
+      "selectWhite": "Seleziona i pezzi bianchi",
+      "selectBlack": "Seleziona i pezzi neri",
+      "hint": "Tocca una casa per aggiungere o togliere un pezzo"
+    },
+    "stats": {
+      "title": "Statistiche",
+      "currentTime": "Tempo attuale",
+      "piecesToMemorize": "Pezzi da memorizzare",
+      "averageAccuracy": "Precisione media"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Punteggio perfetto! ✨",
+        "excellent": "Memoria eccellente!",
+        "great": "Ottimo lavoro!",
+        "wellDone": "Ben fatto!",
+        "goodEffort": "Bel tentativo!",
+        "keepPracticing": "Continua ad allenarti!"
+      },
+      "accuracy": "Precisione",
+      "piecesCorrectCaption": "pezzi corretti",
+      "piecesCorrect": "Pezzi corretti",
+      "memorizationTime": "Tempo di memorizzazione",
+      "solutionTime": "Tempo di risoluzione",
+      "recallSpeed": "Velocità di richiamo",
+      "piecesPerSecond": "{value} pezzi/s",
+      "actions": "Azioni sul risultato",
+      "tryAgain": "Riprova",
+      "newGame": "Nuova partita",
+      "submitToLeaderboard": "Invia alla classifica",
+      "viewLeaderboard": "Vedi la classifica",
+      "dialog": {
+        "submitTitle": "Invia alla classifica",
+        "submitDescription": "Inserisci il nome da mostrare in classifica.",
+        "successTitle": "Punteggio inviato!",
+        "successDescription": "Il tuo punteggio è stato inviato correttamente alla classifica.",
+        "playerName": "Nome del giocatore",
+        "playerNamePlaceholder": "Inserisci il tuo nome",
+        "error": "Errore: {message}",
+        "submitFailed": "Impossibile inviare il punteggio",
+        "cancel": "Annulla",
+        "submit": "Invia punteggio",
+        "submitting": "Invio...",
+        "thanks": "Grazie per aver partecipato, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Rivedi la tua posizione",
+      "subtitle": "Confronta ciò che hai memorizzato con ciò che hai inviato.",
+      "unavailable": "Confronto delle scacchiere non disponibile.",
+      "ariaLabel": "Confronto delle scacchiere",
+      "correct": "Corretto",
+      "incorrect": "Sbagliato",
+      "missed": "Mancante",
+      "originalBoard": "Posizione da ricordare",
+      "submittedBoard": "La posizione che hai inviato"
+    },
+    "feedback": {
+      "title": "Grazie per aver giocato a Memory Chess!",
+      "prompt": "Che voto daresti al gioco?",
+      "placeholder": "Raccontaci cosa ha funzionato o cosa cambieresti...",
+      "notNow": "Non ora",
+      "sentTitle": "Grazie per aiutarci a migliorare",
+      "sentBody": "Abbiamo ricevuto il tuo commento.",
+      "done": "Fatto",
+      "commentLabel": "Com’è andata la partita e cosa la renderebbe migliore?",
+      "commentOptional": "(facoltativo)",
+      "starRating": "{count, plural, one {# stella} many {# stelle} other {# stelle}}",
+      "chooseRating": "Scegli una valutazione in stelle.",
+      "sendFailed": "Non siamo riusciti a inviare il tuo commento. Riprova o scegli «Non ora».",
+      "send": "Invia il commento",
+      "sending": "Invio..."
+    }
   }
 }

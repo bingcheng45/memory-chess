@@ -113,5 +113,134 @@
         }
       ]
     }
+  },
+  "game": {
+    "meta": {
+      "title": "Juega a Memory Chess online",
+      "description": "Juega a Memory Chess online para entrenar la visualización del tablero, la memoria y el reconocimiento de patrones con retos cronometrados.",
+      "socialTitle": "Juega a Memory Chess online",
+      "socialDescription": "Entrena tu visualización y tu memoria ajedrecística con retos interactivos y cronometrados."
+    },
+    "hud": {
+      "time": "Tiempo",
+      "submit": "Enviar",
+      "loading": "Cargando la partida...",
+      "status": "Estado de la partida",
+      "controls": "Controles de la partida",
+      "complete": "Partida completada",
+      "flash": "¡FIN!"
+    },
+    "config": {
+      "title": "Configuración de la partida",
+      "presetsLabel": "Niveles predefinidos",
+      "presetSummary": "{pieces} pzs / {seconds} s",
+      "customLabel": "Ajustes personalizados",
+      "pieceCount": "Número de piezas",
+      "memorizeTime": "Tiempo de memorización",
+      "seconds": "{seconds} s",
+      "start": "Empezar a entrenar",
+      "lastGame": "Última partida: {time} s de resolución con un {accuracy} % de precisión"
+    },
+    "presets": {
+      "easy": {
+        "label": "Fácil",
+        "description": "Solo los reyes: perfecto para empezar"
+      },
+      "medium": {
+        "label": "Medio",
+        "description": "Unas pocas piezas y tiempo de sobra para memorizar"
+      },
+      "hard": {
+        "label": "Difícil",
+        "description": "Más piezas y menos tiempo para memorizar"
+      },
+      "grandmaster": {
+        "label": "Gran maestro",
+        "description": "Para maestros del ajedrez con memoria fotográfica"
+      }
+    },
+    "memorize": {
+      "title": "Memoriza la posición",
+      "skip": "Saltar",
+      "hint": "El tablero se vaciará cuando acabe el tiempo"
+    },
+    "place": {
+      "title": "Coloca las piezas",
+      "subtitle": "Elige tipo y color",
+      "whitePieces": "Piezas blancas",
+      "blackPieces": "Piezas negras",
+      "selectWhite": "Seleccionar piezas blancas",
+      "selectBlack": "Seleccionar piezas negras",
+      "hint": "Toca una casilla para añadir o quitar una pieza"
+    },
+    "stats": {
+      "title": "Estadísticas",
+      "currentTime": "Tiempo actual",
+      "piecesToMemorize": "Piezas por memorizar",
+      "averageAccuracy": "Precisión media"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ ¡Puntuación perfecta! ✨",
+        "excellent": "¡Memoria excelente!",
+        "great": "¡Muy bien!",
+        "wellDone": "¡Bien hecho!",
+        "goodEffort": "¡Buen intento!",
+        "keepPracticing": "¡Sigue practicando!"
+      },
+      "accuracy": "Precisión",
+      "piecesCorrectCaption": "piezas correctas",
+      "piecesCorrect": "Piezas correctas",
+      "memorizationTime": "Tiempo de memorización",
+      "solutionTime": "Tiempo de resolución",
+      "recallSpeed": "Velocidad de recuerdo",
+      "piecesPerSecond": "{value} piezas/s",
+      "actions": "Acciones del resultado",
+      "tryAgain": "Reintentar",
+      "newGame": "Nueva partida",
+      "submitToLeaderboard": "Enviar a la clasificación",
+      "viewLeaderboard": "Ver la clasificación",
+      "dialog": {
+        "submitTitle": "Enviar a la clasificación",
+        "submitDescription": "Escribe tu nombre para que aparezca en la clasificación.",
+        "successTitle": "¡Puntuación enviada!",
+        "successDescription": "Tu puntuación se ha enviado correctamente a la clasificación.",
+        "playerName": "Nombre del jugador",
+        "playerNamePlaceholder": "Escribe tu nombre",
+        "error": "Error: {message}",
+        "submitFailed": "No se pudo enviar la puntuación",
+        "cancel": "Cancelar",
+        "submit": "Enviar puntuación",
+        "submitting": "Enviando...",
+        "thanks": "¡Gracias por participar, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Revisa tu posición",
+      "subtitle": "Compara lo que memorizaste con lo que enviaste.",
+      "unavailable": "La comparación de tableros no está disponible.",
+      "ariaLabel": "Comparación de tableros",
+      "correct": "Correcta",
+      "incorrect": "Incorrecta",
+      "missed": "Olvidada",
+      "originalBoard": "Posición que debías recordar",
+      "submittedBoard": "La posición que enviaste"
+    },
+    "feedback": {
+      "title": "¡Gracias por jugar a Memory Chess!",
+      "prompt": "¿Cómo valorarías el juego?",
+      "placeholder": "Cuéntanos qué te ha gustado o qué cambiarías...",
+      "notNow": "Ahora no",
+      "sentTitle": "Gracias por ayudarnos a mejorar",
+      "sentBody": "Hemos recibido tus comentarios.",
+      "done": "Listo",
+      "commentLabel": "¿Qué tal ha ido la partida y qué la mejoraría?",
+      "commentOptional": "(opcional)",
+      "starRating": "{count, plural, one {# estrella} many {# estrellas} other {# estrellas}}",
+      "chooseRating": "Elige una puntuación con estrellas.",
+      "sendFailed": "No hemos podido enviar tus comentarios. Inténtalo de nuevo o elige Ahora no.",
+      "send": "Enviar comentarios",
+      "sending": "Enviando..."
+    }
   }
 }

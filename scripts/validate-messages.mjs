@@ -10,6 +10,7 @@
  * Usage: node scripts/validate-messages.mjs
  */
 import { readFileSync } from "node:fs";
+import { IntlMessageFormat } from "intl-messageformat";
 
 const LOCALES = [
   "en",
@@ -86,6 +87,73 @@ for (const locale of LOCALES) {
       if (String(base[key]).includes(term) && !String(current[key]).includes(term)) {
         problems.push(`[${locale}] lost protected term "${term}" at ${key}`);
       }
+    }
+  }
+}
+
+/**
+ * Compile every message in every locale.
+ *
+ * Catches malformed ICU (an unbalanced brace, a mistyped `plural`) which
+ * otherwise only surfaces as a runtime throw on the page that uses it. Also
+ * catches plural messages whose categories do not cover the locale: Russian
+ * needs one/few/many, Turkish and Chinese need only `other`, and a message
+ * translated by pattern-matching English one/other silently renders the wrong
+ * form for most numbers.
+ */
+const PLURAL_PROBE_COUNTS = [0, 1, 2, 5, 21];
+
+for (const locale of LOCALES) {
+  const flat = flatten(catalogues[locale]);
+
+  for (const [key, message] of Object.entries(flat)) {
+    if (typeof message !== "string") continue;
+
+    // `{name}` arguments take values; `<tag>` rich-text markers must be
+    // functions, so they are probed separately.
+    const argNames = [...message.matchAll(/\{\s*(\w+)\s*[,}]/g)].map((m) => m[1]);
+    const tagNames = [...message.matchAll(/<(\w+)>/g)].map((m) => m[1]);
+
+    const args = {
+      ...Object.fromEntries(
+        argNames.map((name) => [name, name === "count" ? 1 : "x"]),
+      ),
+      ...Object.fromEntries(tagNames.map((name) => [name, (chunks) => chunks])),
+    };
+
+    try {
+      const formatter = new IntlMessageFormat(message, locale);
+
+      if (/\{\s*\w+\s*,\s*plural/.test(message)) {
+        for (const count of PLURAL_PROBE_COUNTS) {
+          formatter.format({ ...args, count });
+        }
+
+        // Formatting alone will not catch a missing category: ICU silently
+        // falls back to `other`, so a Russian message written with only
+        // English's one/other renders "5 звезды" instead of "5 звёзд" and
+        // never throws. Compare the declared categories against CLDR.
+        const body = message.slice(message.indexOf("plural"));
+        const declared = new Set(
+          [...body.matchAll(/(?:^|[\s}])(zero|one|two|few|many|other)\s*\{/g)].map(
+            (m) => m[1],
+          ),
+        );
+        const required = new Intl.PluralRules(locale, { type: "cardinal" })
+          .resolvedOptions().pluralCategories;
+        const missing = required.filter((category) => !declared.has(category));
+
+        if (missing.length > 0) {
+          problems.push(
+            `[${locale}] plural at ${key} is missing ${missing.join(", ")} ` +
+              `(${locale} needs ${required.join(", ")})`,
+          );
+        }
+      } else {
+        formatter.format(args);
+      }
+    } catch (error) {
+      problems.push(`[${locale}] ICU error at ${key}: ${error.message}`);
     }
   }
 }

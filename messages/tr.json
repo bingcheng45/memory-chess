@@ -113,5 +113,134 @@
         }
       ]
     }
+  },
+  "game": {
+    "meta": {
+      "title": "Memory Chess’i çevrimiçi oyna",
+      "description": "Tahta görselleştirmeni, hatırlamanı ve satranç örüntülerini tanımanı süreli görevlerle geliştirmek için Memory Chess’i çevrimiçi oyna.",
+      "socialTitle": "Memory Chess’i çevrimiçi oyna",
+      "socialDescription": "Satranç görselleştirmeni ve hafızanı etkileşimli, süreli görevlerle geliştir."
+    },
+    "hud": {
+      "time": "Süre",
+      "submit": "Gönder",
+      "loading": "Oyun yükleniyor...",
+      "status": "Oyun durumu",
+      "controls": "Oyun kontrolleri",
+      "complete": "Oyun tamamlandı",
+      "flash": "BİTTİ!"
+    },
+    "config": {
+      "title": "Oyun ayarları",
+      "presetsLabel": "Zorluk seviyeleri",
+      "presetSummary": "{pieces} taş / {seconds} sn",
+      "customLabel": "Özel ayarlar",
+      "pieceCount": "Taş sayısı",
+      "memorizeTime": "Ezberleme süresi",
+      "seconds": "{seconds} sn",
+      "start": "Antrenmana başla",
+      "lastGame": "Son oyun: {time} sn çözüm süresi, %{accuracy} isabet"
+    },
+    "presets": {
+      "easy": {
+        "label": "Kolay",
+        "description": "Sadece şahlar — başlangıç için ideal"
+      },
+      "medium": {
+        "label": "Orta",
+        "description": "Birkaç taş ve ezberlemek için rahat bir süre"
+      },
+      "hard": {
+        "label": "Zor",
+        "description": "Daha çok taş, daha az ezberleme süresi"
+      },
+      "grandmaster": {
+        "label": "Büyükusta",
+        "description": "Fotografik hafızası olan satranç ustaları için"
+      }
+    },
+    "memorize": {
+      "title": "Konumu ezberle",
+      "skip": "Atla",
+      "hint": "Süre bittiğinde tahta boşalacak"
+    },
+    "place": {
+      "title": "Taşları yerleştir",
+      "subtitle": "Tür ve renk seç",
+      "whitePieces": "Beyaz taşlar",
+      "blackPieces": "Siyah taşlar",
+      "selectWhite": "Beyaz taşları seç",
+      "selectBlack": "Siyah taşları seç",
+      "hint": "Taş eklemek ya da kaldırmak için bir kareye dokun"
+    },
+    "stats": {
+      "title": "İstatistikler",
+      "currentTime": "Geçen süre",
+      "piecesToMemorize": "Ezberlenecek taş",
+      "averageAccuracy": "Ortalama isabet"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Kusursuz skor! ✨",
+        "excellent": "Muhteşem hafıza!",
+        "great": "Harika iş!",
+        "wellDone": "Aferin!",
+        "goodEffort": "İyi deneme!",
+        "keepPracticing": "Çalışmaya devam!"
+      },
+      "accuracy": "İsabet",
+      "piecesCorrectCaption": "taş doğru",
+      "piecesCorrect": "Doğru taş",
+      "memorizationTime": "Ezberleme süresi",
+      "solutionTime": "Çözüm süresi",
+      "recallSpeed": "Hatırlama hızı",
+      "piecesPerSecond": "{value} taş/sn",
+      "actions": "Sonuç işlemleri",
+      "tryAgain": "Tekrar dene",
+      "newGame": "Yeni oyun",
+      "submitToLeaderboard": "Sıralamaya gönder",
+      "viewLeaderboard": "Sıralamayı gör",
+      "dialog": {
+        "submitTitle": "Sıralamaya gönder",
+        "submitDescription": "Sıralamada görünecek adını yaz.",
+        "successTitle": "Skor gönderildi!",
+        "successDescription": "Skorun sıralamaya başarıyla eklendi.",
+        "playerName": "Oyuncu adı",
+        "playerNamePlaceholder": "Adını yaz",
+        "error": "Hata: {message}",
+        "submitFailed": "Skor gönderilemedi",
+        "cancel": "Vazgeç",
+        "submit": "Skoru gönder",
+        "submitting": "Gönderiliyor...",
+        "thanks": "Katıldığın için teşekkürler, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Konumunu incele",
+      "subtitle": "Ezberlediğinle gönderdiğini karşılaştır.",
+      "unavailable": "Tahta karşılaştırması kullanılamıyor.",
+      "ariaLabel": "Tahta karşılaştırması",
+      "correct": "Doğru",
+      "incorrect": "Yanlış",
+      "missed": "Atlanan",
+      "originalBoard": "Hatırlanacak konum",
+      "submittedBoard": "Gönderdiğin konum"
+    },
+    "feedback": {
+      "title": "Memory Chess oynadığın için teşekkürler!",
+      "prompt": "Oyuna kaç puan verirsin?",
+      "placeholder": "Neyin iyi gittiğini ya da neyi değiştireceğini yaz...",
+      "notNow": "Şimdi değil",
+      "sentTitle": "Gelişmemize yardım ettiğin için teşekkürler",
+      "sentBody": "Görüşün bize ulaştı.",
+      "done": "Tamam",
+      "commentLabel": "Oynarken neler hissettin, neyi daha iyi yapardık?",
+      "commentOptional": "(isteğe bağlı)",
+      "starRating": "{count, plural, one {# yıldız} other {# yıldız}}",
+      "chooseRating": "Lütfen yıldızla bir puan seç.",
+      "sendFailed": "Görüşünü gönderemedik. Tekrar dene ya da “Şimdi değil”i seç.",
+      "send": "Görüşünü gönder",
+      "sending": "Gönderiliyor..."
+    }
   }
 }

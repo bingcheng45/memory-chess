@@ -10,12 +10,14 @@ import { playSound } from "@/lib/utils/soundEffects";
 import type { BoardDimensions } from "@/hooks/useResponsiveBoard";
 import ActiveGameLayout from "./ActiveGameLayout";
 
+import { useTranslations } from "next-intl";
 interface ResponsiveMemorizationBoardProps {
   readonly dimensions: BoardDimensions;
 }
 export default function ResponsiveMemorizationBoard({
   dimensions,
 }: ResponsiveMemorizationBoardProps) {
+  const t = useTranslations("game");
   const { chess, gameState, endMemorizationPhase, startSolutionPhase } =
     useGameStore();
   const [pieces, setPieces] = useState<ChessPiece[]>([]);
@@ -109,9 +111,7 @@ export default function ResponsiveMemorizationBoard({
       status={
         <div className="relative flex h-full items-center justify-center px-2 sm:px-3">
           <div className="w-[calc(100%-88px)] max-w-64 text-center">
-            <div className="mb-0.5 text-sm font-bold text-text-primary sm:text-base">
-              Memorize the Position
-            </div>
+            <div className="mb-0.5 text-sm font-bold text-text-primary sm:text-base">{t("memorize.title")}</div>
 
             <div
               className={`text-3xl font-bold leading-none transition-colors sm:text-4xl ${getUrgencyClass()}`}
@@ -139,9 +139,7 @@ export default function ResponsiveMemorizationBoard({
             variant="outline"
             size="sm"
             className="absolute right-2 top-1/2 h-9 -translate-y-1/2 border-peach-500/30 bg-peach-500/10 px-2 text-xs text-peach-500 hover:bg-peach-500/20 hover:text-peach-500 sm:right-3 sm:text-sm"
-          >
-            Skip
-          </Button>
+          >{t("memorize.skip")}</Button>
         </div>
       }
       board={
@@ -154,9 +152,7 @@ export default function ResponsiveMemorizationBoard({
         />
       }
       controls={
-        <p className="text-center text-xs text-text-secondary">
-          The board will clear when the timer ends
-        </p>
+        <p className="text-center text-xs text-text-secondary">{t("memorize.hint")}</p>
       }
     />
   );

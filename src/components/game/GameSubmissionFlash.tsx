@@ -2,16 +2,18 @@
 
 import { motion } from 'framer-motion';
 
+import { useTranslations } from "next-intl";
 export const GAME_SUBMISSION_FLASH_DURATION_MS = 1000;
 const transitionDurationSeconds = GAME_SUBMISSION_FLASH_DURATION_MS / 1000;
 
 export default function GameSubmissionFlash() {
+  const t = useTranslations("game");
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
       role="status"
       aria-live="assertive"
-      aria-label="Game complete"
+      aria-label={t("hud.complete")}
     >
       <motion.div
         className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-white"
@@ -63,9 +65,7 @@ export default function GameSubmissionFlash() {
         initial={{ opacity: 0, scale: 0.65 }}
         animate={{ opacity: [0, 1, 1, 0], scale: [0.65, 1.08, 1, 1] }}
         transition={{ duration: transitionDurationSeconds, times: [0, 0.25, 0.7, 1], ease: 'easeOut' }}
-      >
-        GAME!
-      </motion.span>
+      >{t("hud.flash")}</motion.span>
     </div>
   );
 }

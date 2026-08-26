@@ -113,5 +113,134 @@
         }
       ]
     }
+  },
+  "game": {
+    "meta": {
+      "title": "Memory Chess online spielen",
+      "description": "Spiele Memory Chess online und trainiere Brettvorstellung, Erinnerung und Mustererkennung im Schach mit Aufgaben auf Zeit.",
+      "socialTitle": "Memory Chess online spielen",
+      "socialDescription": "Trainiere Vorstellungskraft und Gedächtnis im Schach mit interaktiven Aufgaben auf Zeit."
+    },
+    "hud": {
+      "time": "Zeit",
+      "submit": "Abgeben",
+      "loading": "Spiel wird geladen...",
+      "status": "Spielstatus",
+      "controls": "Spielsteuerung",
+      "complete": "Spiel beendet",
+      "flash": "FERTIG!"
+    },
+    "config": {
+      "title": "Spieleinstellungen",
+      "presetsLabel": "Schwierigkeitsstufen",
+      "presetSummary": "{pieces} Fig. / {seconds} s",
+      "customLabel": "Eigene Einstellungen",
+      "pieceCount": "Anzahl der Figuren",
+      "memorizeTime": "Einprägezeit",
+      "seconds": "{seconds} s",
+      "start": "Training starten",
+      "lastGame": "Letzte Partie: {time} s Lösungszeit bei {accuracy} % Genauigkeit"
+    },
+    "presets": {
+      "easy": {
+        "label": "Leicht",
+        "description": "Nur die Könige – ideal für den Einstieg"
+      },
+      "medium": {
+        "label": "Mittel",
+        "description": "Ein paar Figuren mit entspannter Einprägezeit"
+      },
+      "hard": {
+        "label": "Schwer",
+        "description": "Mehr Figuren bei kürzerer Einprägezeit"
+      },
+      "grandmaster": {
+        "label": "Großmeister",
+        "description": "Für Schachmeister mit fotografischem Gedächtnis"
+      }
+    },
+    "memorize": {
+      "title": "Präge dir die Stellung ein",
+      "skip": "Überspringen",
+      "hint": "Das Brett wird geleert, sobald die Zeit abläuft"
+    },
+    "place": {
+      "title": "Figuren setzen",
+      "subtitle": "Art und Farbe wählen",
+      "whitePieces": "Weiße Figuren",
+      "blackPieces": "Schwarze Figuren",
+      "selectWhite": "Weiße Figuren auswählen",
+      "selectBlack": "Schwarze Figuren auswählen",
+      "hint": "Tippe auf ein Feld, um eine Figur zu setzen oder zu entfernen"
+    },
+    "stats": {
+      "title": "Statistik",
+      "currentTime": "Aktuelle Zeit",
+      "piecesToMemorize": "Einzuprägende Figuren",
+      "averageAccuracy": "Durchschnittliche Genauigkeit"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Perfektes Ergebnis! ✨",
+        "excellent": "Hervorragendes Gedächtnis!",
+        "great": "Klasse gemacht!",
+        "wellDone": "Gut gemacht!",
+        "goodEffort": "Guter Versuch!",
+        "keepPracticing": "Weiter üben!"
+      },
+      "accuracy": "Genauigkeit",
+      "piecesCorrectCaption": "Figuren richtig",
+      "piecesCorrect": "Richtige Figuren",
+      "memorizationTime": "Einprägezeit",
+      "solutionTime": "Lösungszeit",
+      "recallSpeed": "Abruftempo",
+      "piecesPerSecond": "{value} Figuren/s",
+      "actions": "Aktionen zum Ergebnis",
+      "tryAgain": "Nochmal",
+      "newGame": "Neue Partie",
+      "submitToLeaderboard": "In die Bestenliste eintragen",
+      "viewLeaderboard": "Bestenliste ansehen",
+      "dialog": {
+        "submitTitle": "In die Bestenliste eintragen",
+        "submitDescription": "Gib deinen Namen ein, der in der Bestenliste erscheinen soll.",
+        "successTitle": "Ergebnis eingetragen!",
+        "successDescription": "Dein Ergebnis wurde erfolgreich in die Bestenliste eingetragen.",
+        "playerName": "Spielername",
+        "playerNamePlaceholder": "Namen eingeben",
+        "error": "Fehler: {message}",
+        "submitFailed": "Ergebnis konnte nicht übermittelt werden",
+        "cancel": "Abbrechen",
+        "submit": "Ergebnis senden",
+        "submitting": "Wird gesendet...",
+        "thanks": "Danke fürs Mitmachen, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Deine Stellung im Rückblick",
+      "subtitle": "Vergleiche, was du dir eingeprägt hast, mit dem, was du abgegeben hast.",
+      "unavailable": "Brettvergleich nicht verfügbar.",
+      "ariaLabel": "Brettvergleich",
+      "correct": "Richtig",
+      "incorrect": "Falsch",
+      "missed": "Fehlt",
+      "originalBoard": "Zu merkende Stellung",
+      "submittedBoard": "Deine abgegebene Stellung"
+    },
+    "feedback": {
+      "title": "Danke, dass du Memory Chess gespielt hast!",
+      "prompt": "Wie würdest du das Spiel bewerten?",
+      "placeholder": "Erzähl uns, was gut lief oder was du ändern würdest...",
+      "notNow": "Jetzt nicht",
+      "sentTitle": "Danke, dass du uns hilfst, besser zu werden",
+      "sentBody": "Dein Feedback ist angekommen.",
+      "done": "Fertig",
+      "commentLabel": "Wie hat sich das Spielen angefühlt, und was würde es besser machen?",
+      "commentOptional": "(optional)",
+      "starRating": "{count, plural, one {# Stern} other {# Sterne}}",
+      "chooseRating": "Bitte wähle eine Sternebewertung.",
+      "sendFailed": "Wir konnten dein Feedback nicht senden. Versuch es noch einmal oder wähle „Jetzt nicht“.",
+      "send": "Feedback senden",
+      "sending": "Wird gesendet..."
+    }
   }
 }

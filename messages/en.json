@@ -113,5 +113,134 @@
         }
       ]
     }
+  },
+  "game": {
+    "meta": {
+      "title": "Play Memory Chess Online",
+      "description": "Play Memory Chess online to train board visualization, recall, and chess pattern recognition with timed memory challenges.",
+      "socialTitle": "Play Memory Chess Online",
+      "socialDescription": "Train your chess visualization and memory with interactive timed challenges."
+    },
+    "hud": {
+      "time": "Time",
+      "submit": "Submit",
+      "loading": "Loading game...",
+      "status": "Game status",
+      "controls": "Game controls",
+      "complete": "Game complete",
+      "flash": "GAME!"
+    },
+    "config": {
+      "title": "Game Configuration",
+      "presetsLabel": "Difficulty Presets",
+      "presetSummary": "{pieces} pcs / {seconds}s",
+      "customLabel": "Custom settings",
+      "pieceCount": "Number of Pieces",
+      "memorizeTime": "Memorization Time",
+      "seconds": "{seconds}s",
+      "start": "Start Training",
+      "lastGame": "Last game: {time}s solution time with {accuracy}% accuracy"
+    },
+    "presets": {
+      "easy": {
+        "label": "Easy",
+        "description": "Just kings - perfect for starting out"
+      },
+      "medium": {
+        "label": "Medium",
+        "description": "A few pieces with comfortable time to memorize"
+      },
+      "hard": {
+        "label": "Hard",
+        "description": "More pieces with less time to memorize"
+      },
+      "grandmaster": {
+        "label": "Grandmaster",
+        "description": "For chess masters with photographic memory"
+      }
+    },
+    "memorize": {
+      "title": "Memorize the Position",
+      "skip": "Skip",
+      "hint": "The board will clear when the timer ends"
+    },
+    "place": {
+      "title": "Place Pieces",
+      "subtitle": "Select type and color",
+      "whitePieces": "White pieces",
+      "blackPieces": "Black pieces",
+      "selectWhite": "Select white pieces",
+      "selectBlack": "Select black pieces",
+      "hint": "Tap a square to add a piece or remove one"
+    },
+    "stats": {
+      "title": "Game Stats",
+      "currentTime": "Current Time",
+      "piecesToMemorize": "Pieces to Memorize",
+      "averageAccuracy": "Average Accuracy"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Perfect Score! ✨",
+        "excellent": "Excellent Memory!",
+        "great": "Great Job!",
+        "wellDone": "Well Done!",
+        "goodEffort": "Good Effort!",
+        "keepPracticing": "Keep Practicing!"
+      },
+      "accuracy": "Accuracy",
+      "piecesCorrectCaption": "pieces correct",
+      "piecesCorrect": "Pieces Correct",
+      "memorizationTime": "Memorization Time",
+      "solutionTime": "Solution Time",
+      "recallSpeed": "Recall Speed",
+      "piecesPerSecond": "{value} pieces/sec",
+      "actions": "Result actions",
+      "tryAgain": "Try Again",
+      "newGame": "New Game",
+      "submitToLeaderboard": "Submit to Leaderboard",
+      "viewLeaderboard": "View Leaderboard",
+      "dialog": {
+        "submitTitle": "Submit to Leaderboard",
+        "submitDescription": "Enter your name to be displayed on the leaderboard.",
+        "successTitle": "Score Submitted!",
+        "successDescription": "Your score has been successfully submitted to the leaderboard.",
+        "playerName": "Player Name",
+        "playerNamePlaceholder": "Enter your name",
+        "error": "Error: {message}",
+        "submitFailed": "Failed to submit score",
+        "cancel": "Cancel",
+        "submit": "Submit Score",
+        "submitting": "Submitting...",
+        "thanks": "Thanks for participating, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Review Your Position",
+      "subtitle": "Compare what you memorized with what you submitted.",
+      "unavailable": "Board comparison unavailable.",
+      "ariaLabel": "Board comparison",
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "missed": "Missed",
+      "originalBoard": "Position to Remember",
+      "submittedBoard": "Your Submitted Position"
+    },
+    "feedback": {
+      "title": "Thanks for playing Memory Chess!",
+      "prompt": "How would you rate the game?",
+      "placeholder": "Tell us what worked well or what you would change...",
+      "notNow": "Not now",
+      "sentTitle": "Thank you for helping us improve",
+      "sentBody": "Your feedback has been received.",
+      "done": "Done",
+      "commentLabel": "How did playing feel, and what would make it better?",
+      "commentOptional": "(optional)",
+      "starRating": "{count, plural, one {# star} other {# stars}}",
+      "chooseRating": "Please choose a star rating.",
+      "sendFailed": "We could not send your feedback. Please try again or choose Not now.",
+      "send": "Send feedback",
+      "sending": "Sending..."
+    }
   }
 }

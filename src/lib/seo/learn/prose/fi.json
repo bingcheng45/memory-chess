@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Näin kehityt shakissa aloittelijana",
+    "h1": "Näin kehityt shakissa aloittelijana",
+    "description": "Noudata yksinkertaista suunnitelmaa: näe lauta paremmin, muista asemat ja pelaa turvallisempia siirtoja.",
+    "primaryKeyword": "miten kehittyä shakissa",
+    "secondaryKeywords": [
+      "shakin kehityssuunnitelma",
+      "shakkiharjoittelu aloittelijalle",
+      "aloittelijan shakkirutiini",
+      "vähemmän virheitä shakissa",
+      "laudan hahmottaminen"
+    ],
+    "painPoint": "Et tiedä, mitä harjoitella tai mistä aloittaa.",
+    "ctaLabel": "Aloita aloittelijan kierros",
+    "quickAnswer": "Käytä lyhyttä päivittäistä rutiinia: harjoita laudan hahmottamista, harjoita muistia, pelaa peli ja käy läpi yksi virhe. Toista 20–30 minuuttia päivässä.",
+    "keyTakeaways": [
+      "Laudan näkeminen ja muistaminen merkitsee enemmän kuin monien avausten opettelu.",
+      "Lyhyt päivittäinen harjoittelu toimii paremmin kuin harvat pitkät sessiot.",
+      "Seuraa virheitäsi ja muistamisen tarkkuutta, älä vain ratingia."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka osaavat säännöt mutta antavat yhä nappuloita ilmaiseksi.",
+      "Aloittelijat, jotka ratkovat tehtäviä hyvin mutta kompuroivat peleissä.",
+      "Kaikki, jotka eivät tiedä mitä opiskella ensin."
+    ],
+    "timeToRead": "9 minuutin luku",
+    "introParagraphs": [
+      "Useimmat aloittelijat eivät tarvitse lisää avauksia, videoita tai kursseja. He tarvitsevat laudan seuraamista ja siirron turvallisuuden tarkistamista ennen pelaamista.",
+      "Memory Chess auttaa harjoittelemaan molempia taitoja. Kun lauta pysyy muistissa paremmin, shakit, lyönnit ja uhat on helpompi huomata."
+    ],
+    "startHereTitle": "Aloita tällä aloittelijan rutiinilla",
+    "startHereSteps": [
+      "Käytä 3 minuuttia laudan silmäilyyn ja nimeä hyökätyt, suojatut ja suojaamattomat nappulat.",
+      "Pelaa yksi kierros Memory Chessiä 8 nappulalla ja 10 sekunnin katseluajalla.",
+      "Käy läpi kaksi lyhyttä taktista asemaa ja sano ääneen shakit, lyönnit ja uhat ennen siirron valintaa.",
+      "Pelaa yksi pikapeli. Merkitse jokainen suuri virhe hahmottamisen, muistin tai aikapulan aiheuttamaksi.",
+      "Kirjoita yksi asia, jota harjoittelet uudestaan huomenna."
+    ],
+    "drillSectionTitle": "Yksinkertaisia harjoituksia parempiin peleihin",
+    "drillCards": [
+      {
+        "title": "Laudan silmäily 10 sekunnissa",
+        "description": "Käytä helppoa asetelmaa ja löydä jokainen suojaamaton nappula ennen ajan loppumista.",
+        "duration": "3 minuuttia",
+        "goal": "Rakentaa turvatarkistus ennen jokaista siirtoa.",
+        "ctaLabel": "Aloita silmäilykierros"
+      },
+      {
+        "title": "Saman aseman toisto",
+        "description": "Pelaa sama asema kahdesti, jotta löydät ja korjaat yhden muistivirheen.",
+        "duration": "5 minuuttia",
+        "goal": "Löytää täsmälleen unohtamasi nappula tai ruutu.",
+        "ctaLabel": "Harjoittele toistoa"
+      },
+      {
+        "title": "Siirto pelistä harjoitukseen",
+        "description": "Kuvittele pikapelin jälkeen asema, jossa erehdyit, ennen kuin analysoit sen.",
+        "duration": "7 minuuttia",
+        "goal": "Antaa oikeiden virheiden ohjata harjoittelua.",
+        "ctaLabel": "Aloita siirtoharjoitus"
+      }
+    ],
+    "comparisonTitle": "Miltä parempi aloittelijan peli näyttää",
+    "comparisonSummary": "Sinun ei tarvitse nähdä viittä siirtoa eteenpäin. Näe ensin nykyinen asema selvästi ja pysähdy hetkeksi ennen siirtoa.",
+    "comparisonRows": [
+      {
+        "label": "Ennen siirtoa",
+        "struggling": "Katsot vain omaa ideaasi.",
+        "stronger": "Tarkistat ensin vastustajan uhat."
+      },
+      {
+        "label": "Taktisessa tilanteessa",
+        "struggling": "Muunnelma katoaa yhden vaihdon jälkeen.",
+        "stronger": "Näet avainruudut samalla kun vertaat kahta siirtoa."
+      },
+      {
+        "label": "Tappion jälkeen",
+        "struggling": "Aloitat heti uuden pelin.",
+        "stronger": "Nimeät virheen ja harjoittelet sitä huomenna."
+      }
+    ],
+    "mistakes": [
+      "Hyppiminen satunnaisen materiaalin välillä sen sijaan, että pitäisi yhtä rutiinia kaksi viikkoa.",
+      "Avausten opiskelu ennen kuin laudan hahmottaminen on vakaata.",
+      "Liian monta peliä ilman lyhyitä muistiinpanoja jälkeenpäin.",
+      "Muistiharjoittelun pitäminen erillään oikeasta shakista."
+    ],
+    "mistakesCallout": "Älä kiirehdi edistyneeseen opiskeluun. Useimmat aloittelijat häviävät ohitettuihin yhden siirron uhkiin, eivät unohtuneeseen avausmuunnelmaan.",
+    "planTitle": "30 päivän aloittelijasuunnitelma",
+    "planSteps": [
+      {
+        "label": "Viikko 1",
+        "duration": "20 minuuttia päivässä",
+        "detail": "Käytä samaa silmäilyä ja pelaa lyhyt kierros Memory Chessiä ennen jokaista pelisessiota."
+      },
+      {
+        "label": "Viikko 2",
+        "duration": "25 minuuttia päivässä",
+        "detail": "Lisää toinen muistikierros ja merkitse, johtuiko virhe hahmottamisesta, muistista vai paniikista."
+      },
+      {
+        "label": "Viikko 3",
+        "duration": "25–30 minuuttia päivässä",
+        "detail": "Samat harjoitukset, mutta lyhennä muistamisaikaa, jotta muistaminen pysyy puhtaana paineessa."
+      },
+      {
+        "label": "Viikko 4",
+        "duration": "30 minuuttia päivässä",
+        "detail": "Tarkista, laskeeko virheiden määrä pelissä, ja säilytä vain parhaiten siirtyneet asetukset."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kuinka monta minuuttia päivässä aloittelijan kannattaa harjoitella?",
+        "answer": "Keskittyneet 20–30 minuuttia riittää, kun yhdistät laudan hahmottamisen, muistin ja yhden oikean aseman."
+      },
+      {
+        "question": "Miksi tehtävätaitoni ei siirry peleihin?",
+        "answer": "Tehtävä alkaa, kun taktiikka on jo olemassa. Pelissä sinun pitää ensin huomata muutos, joten muistaminen ja turvatarkistukset painavat paljon enemmän."
+      },
+      {
+        "question": "Kannattaako avauksia opetella aikaisin?",
+        "answer": "Aluksi vain perusperiaatteet. Useimmat aloittelijat hyötyvät enemmän siitä, että näkevät uhat aiemmin ja pitävät aseman selkeämpänä."
+      },
+      {
+        "question": "Mikä mittari näyttää kehityksen nopeimmin?",
+        "answer": "Virheet peliä kohti ja Memory Chessin muistamistarkkuus. Ne liikkuvat yleensä ennen ratingia."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Käytä tätä, jos päähuolesi on nappuloiden antaminen ilmaiseksi."
+      },
+      {
+        "reason": "Syvennä tapaa tarkistaa uhat ennen siirtoa."
+      },
+      {
+        "reason": "Rakenna vahvempi lauta päähän, jotta taktiikka pysyy kasassa."
+      },
+      {
+        "reason": "Harjoittele muistamista suoraan, jos unohdat nappuloiden paikat."
+      },
+      {
+        "reason": "Valitse lyhyempi rutiini, jos haluat yksinkertaisemman päivärakenteen."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Shakin visualisointiharjoituksia aloittelijoille",
+    "h1": "Päivittäisiä shakin visualisointiharjoituksia",
+    "description": "Kokeile yksinkertaisia visualisointiharjoituksia, jotta muistat laudan ja näet siirrot selvemmin.",
+    "primaryKeyword": "shakin visualisointiharjoitukset",
+    "secondaryKeywords": [
+      "visualisoinnin harjoittelu shakissa",
+      "siirtojen laskeminen eteenpäin",
+      "laudan visualisointi",
+      "sokkoshakkiin valmistautuminen",
+      "shakki päässä"
+    ],
+    "painPoint": "Menetät nappuloiden seurannan, kun yrität kuvitella seuraavia siirtoja.",
+    "ctaLabel": "Harjoittele visualisointia",
+    "quickAnswer": "Muista ensin lauta ilman että siirrät mitään. Kuvittele sitten yksi siirto kerrallaan. Sinun ei tarvitse pelata kokonaista sokkopeliä.",
+    "keyTakeaways": [
+      "Lyhyt päivittäinen harjoittelu toimii paremmin kuin harvat pitkät sessiot.",
+      "Tarkista kuvittelemasi lauta jokaisen yrityksen jälkeen.",
+      "Näe yksi siirto selvästi ennen kuin kokeilet pidempiä muunnelmia."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka menettävät muunnelman yhden vaihdon jälkeen.",
+      "Aloittelijat, joilla on vaikeaa ilman laudan näkemistä.",
+      "Kaikki, jotka haluavat lähestyä sokkoshakkia askel kerrallaan."
+    ],
+    "timeToRead": "8 minuutin luku",
+    "introParagraphs": [
+      "Visualisointi tarkoittaa sen kuvittelemista, miten lauta muuttuu siirron jälkeen. Aloittelijalle tavoite on vain vertailla kahta siirtoa menettämättä nappuloiden seurantaa.",
+      "Memory Chess näyttää, mitkä nappulat tai ruudut unohdat. Sitten voit harjoitella samaa asematyyppiä uudestaan."
+    ],
+    "startHereTitle": "Aloita näillä visualisointiaskeleilla",
+    "startHereSteps": [
+      "Nimeä 60 sekunnin ajan jokainen nappula ja ruutu paikallaan olevalta laudalta.",
+      "Sulje silmät ja rakenna lauta mielessäsi ennen tarkistusta.",
+      "Kuvittele yksi sallittu siirto kummallekin puolelle koskematta nappuloihin.",
+      "Pelaa yksi kierros Memory Chessiä kohtuullisella nappulamäärällä ja tiukalla ajalla.",
+      "Varmista asema ja toista vasta, kun tiedät mitä unohdit."
+    ],
+    "drillSectionTitle": "Helppoja visualisointiharjoituksia",
+    "drillCards": [
+      {
+        "title": "Laudan tilannekuva",
+        "description": "Muista lauta ja aseta sitten jokainen nappula oikealle ruudulle.",
+        "duration": "4 minuuttia",
+        "goal": "Muistaa lauta ennen siirtojen kuvittelua.",
+        "ctaLabel": "Aloita tilannekuva"
+      },
+      {
+        "title": "Yksi siirto kummallekin",
+        "description": "Muista lauta, kuvittele yksi siirto kummallekin puolelle ja tarkista vastaus.",
+        "duration": "5 minuuttia",
+        "goal": "Oppia päivittämään lauta päässä.",
+        "ctaLabel": "Harjoittele päivitystä"
+      },
+      {
+        "title": "Muistaminen paineessa",
+        "description": "Kun muistaminen on tarkkaa, lyhennä laudan katseluaikaa.",
+        "duration": "5 minuuttia",
+        "goal": "Käyttää puhdasta muistamista nopeissa peleissä.",
+        "ctaLabel": "Lisää painetta"
+      }
+    ],
+    "comparisonTitle": "Miltä heikko visualisointi tuntuu",
+    "comparisonSummary": "Se tuntuu laskuongelmalta, mutta usein laudan kuva vain haalistuu liian nopeasti.",
+    "comparisonRows": [
+      {
+        "label": "Ehdokassiirrot",
+        "struggling": "Osaat nimetä siirron mutta et näe syntyvää asemaa selvästi.",
+        "stronger": "Vertaat kahta mahdollista asemaa ennen siirtoa."
+      },
+      {
+        "label": "Taktinen sekasotku",
+        "struggling": "Pää menee tyhjäksi vaihtojen jälkeen.",
+        "stronger": "Pidät tärkeät ruudut ja uhat mielessä tarpeeksi kauan rauhalliseen päätökseen."
+      },
+      {
+        "label": "Harjoittelun palaute",
+        "struggling": "Et tiedä, minkä ruudun täsmälleen unohdit.",
+        "stronger": "Huomaat, tuliko virhe linjasta, riviltä vai puuttuvasta puolustajasta."
+      }
+    ],
+    "mistakes": [
+      "Syvä sokkolaskenta ennen kuin staattinen muistaminen on vakaata.",
+      "Nappuloiden siirtäminen oikeasti jokaisella laskuyrityksellä.",
+      "Harjoittelu kerran viikossa lyhyen päivittäisen jakson sijaan.",
+      "Kuvitellun laudan tarkistamatta jättäminen."
+    ],
+    "mistakesCallout": "Älä jahtaa vielä pidempiä muunnelmia. Näe ensin ensimmäinen siirto selvästi.",
+    "planTitle": "7 päivän visualisointipolku",
+    "planSteps": [
+      {
+        "label": "Päivä 1",
+        "duration": "10 minuuttia",
+        "detail": "Vain laudan tilannekuvia ja välitön tarkistus."
+      },
+      {
+        "label": "Päivä 2–3",
+        "duration": "12 minuuttia",
+        "detail": "Lisää yksi kuviteltu siirto kummallekin ja seuraa, mitkä ruudut katoavat ensin."
+      },
+      {
+        "label": "Päivä 4–5",
+        "duration": "15 minuuttia",
+        "detail": "Lyhennä katseluaikaa Memory Chessissä samalla nappulamäärällä."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15 minuuttia",
+        "detail": "Vie harjoitus yhteen pikapeliin: pysähdy ennen jokaista taktista päätöstä ja kuvaile syntyvä asema."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kuinka kauan visualisoinnin kehittyminen kestää?",
+        "answer": "Useimmat aloittelijat huomaavat puhtaamman muistamisen kahden–neljän viikon lyhyen ja säännöllisen harjoittelun jälkeen."
+      },
+      {
+        "question": "Auttavatko harjoitukset pikapeleissä?",
+        "answer": "Kyllä. Nopeampi laudan päivitys päässä tekee shakeista, lyönneistä ja uhista helpommin huomattavia aikapaineessa."
+      },
+      {
+        "question": "Voiko visualisointia harjoitella ilman sokkoshakkia?",
+        "answer": "Voi. Ajastettu muistaminen ja yhden siirron päivitysharjoitukset riittävät oikeaan perustaan."
+      },
+      {
+        "question": "Mitä teen, jos unohdan jatkuvasti nappuloiden paikat?",
+        "answer": "Käytä vähemmän nappuloita, tarkista useammin ja toista samaa asemaa, kunnes muistaminen on puhdasta."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Käytä tätä, kun staattinen ja yhden siirron muistaminen tuntuu vakaalta."
+      },
+      {
+        "reason": "Laajenna laudan hahmotusta, jos nappulat reunoilla jäävät huomaamatta."
+      },
+      {
+        "reason": "Yhdistä visualisointi yksinkertaiseen uhkien tarkistukseen."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Laudan hahmotusharjoituksia virheitä vastaan",
+    "h1": "Laudan hahmotusharjoituksia aloittelijoille",
+    "description": "Käytä yksinkertaisia harjoituksia, jotta huomaat uhat, suojaat nappulat ja teet vähemmän virheitä.",
+    "primaryKeyword": "laudan hahmottaminen",
+    "secondaryKeywords": [
+      "laudan hahmotusharjoitukset",
+      "vähemmän virheitä shakissa",
+      "uhkien huomaaminen shakissa",
+      "taktinen valppaus",
+      "aloittelijan virheet shakissa"
+    ],
+    "painPoint": "Keskityt yhteen laudan osaan ja ohitat yksinkertaisen uhan muualla.",
+    "ctaLabel": "Aloita hahmotusharjoitus",
+    "quickAnswer": "Etsi ennen jokaista siirtoa shakit, lyönnit, uhat ja suojaamattomat nappulat. Muistiharjoittelu auttaa pitämään kaikki nappulat mielessä silmäilyn aikana.",
+    "keyTakeaways": [
+      "Laudan hahmottaminen on opittava tapa.",
+      "Suojaamattomien nappuloiden huomaaminen on usein nopein parannus.",
+      "Muistiharjoittelu auttaa seuraamaan koko lautaa."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka osaavat perustaktiikan mutta menettävät silti nappuloita.",
+      "Aloittelijat, jotka pelaavat nopeasti ja huomaavat virheen vasta lyönnin jälkeen.",
+      "Kaikki, jotka tarvitsevat selkeän listan ennen siirtoa."
+    ],
+    "timeToRead": "8 minuutin luku",
+    "introParagraphs": [
+      "Kun joku sanoo «en nähnyt sitä», siirto on yleensä pelattu ennen koko laudan tarkistusta.",
+      "Nämä harjoitukset opettavat, mihin katsoa. Aloita suojaamattomista nappuloista ja siirroista, jotka antavat shakin, lyövät tai luovat uhan."
+    ],
+    "startHereTitle": "Aloita tästä: tarkistus ennen siirtoa",
+    "startHereSteps": [
+      "Nimeä ennen jokaista siirtoa molempien puolten shakit, lyönnit ja uhat.",
+      "Merkitse jokainen suojaamaton nappula ja sano, onko se aidosti turvassa vai vain näyttää siltä.",
+      "Pelaa lyhyt kierros Memory Chessiä tiivistääksesi ruudun ja nappulan yhteyttä.",
+      "Käy läpi yksi tuore virhe ja osoita täsmälleen ohitettu uhka.",
+      "Toista sama lista seuraavassa pikapelissä lyhentämättä sitä."
+    ],
+    "drillSectionTitle": "Hahmotusharjoituksia oikeisiin peleihin",
+    "drillCards": [
+      {
+        "title": "Suojaamattomien nappuloiden lasku",
+        "description": "Silmäile lauta ja osoita jokainen suojaamaton nappula ennen siirtoa.",
+        "duration": "3 minuuttia",
+        "goal": "Napata yleisin virheiden lähde ajoissa.",
+        "ctaLabel": "Tee laskenta"
+      },
+      {
+        "title": "Uhan toisto",
+        "description": "Rakenna viimeisin virheasemasi uudelleen ja etsi vastustajan vahvin uhka ennen kuin katsot pelin.",
+        "duration": "5 minuuttia",
+        "goal": "Oppia, miltä ohitettu uhka näytti asiayhteydessä.",
+        "ctaLabel": "Toista yksi uhka"
+      },
+      {
+        "title": "Nopea ruutujen muistaminen",
+        "description": "Käytä lyhyttä katseluaikaa, jotta lauta pysyy ehjänä silmäilyn aikana.",
+        "duration": "4 minuuttia",
+        "goal": "Muistaa nappuloiden paikat silmäillessäsi.",
+        "ctaLabel": "Nopeuta muistamista"
+      }
+    ],
+    "comparisonTitle": "Heikko ja vahva laudan hahmottaminen",
+    "comparisonSummary": "Ero näkyy yleensä jo ennen kuin laskeminen alkaa.",
+    "comparisonRows": [
+      {
+        "label": "Huomio",
+        "struggling": "Tuijotat yhtä taktista ideaa.",
+        "stronger": "Silmäilet koko laudan ennen suunnitelman valintaa."
+      },
+      {
+        "label": "Turvatarkistukset",
+        "struggling": "Oletat suojatun nappulan olevan turvassa.",
+        "stronger": "Lasket hyökkääjät ja puolustajat ennen kuin luotat ruutuun."
+      },
+      {
+        "label": "Aikapaine",
+        "struggling": "Pelaat nopeammin, kun asema terävöityy.",
+        "stronger": "Hidastat, kun shakit, lyönnit tai uhat ilmestyvät."
+      }
+    ],
+    "mistakes": [
+      "Vain oman idean tarkistaminen ja vastustajan uhkien ohittaminen.",
+      "Suojatun nappulan pitäminen turvassa laskematta koko vaihtoa.",
+      "Liian nopea pelaaminen heti kun asema muuttuu taktiseksi.",
+      "Virhetyypin nimeämättä jättäminen pelin jälkeen."
+    ],
+    "mistakesCallout": "Lisää tehtäviä ei korjaa hätäistä silmäilyä. Toista sama lyhyt tarkistus ennen jokaista siirtoa.",
+    "planTitle": "7 päivän hahmotuksen nollaus",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "12 minuuttia",
+        "detail": "Vain suojaamattomien nappuloiden laskenta ja shakkien, lyöntien ja uhkien silmäily."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "15 minuuttia",
+        "detail": "Lisää kierros Memory Chessiä ennen pelejä, jotta silmäily tapahtuu puhtaammalla laudalla päässä."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "15 minuuttia",
+        "detail": "Käy läpi kolme tuoretta virhettä ja nimeä ohitettu merkki jokaisessa asemassa."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15–20 minuuttia",
+        "detail": "Pelaa pikashakkia ja käytä koko listaa jokaisessa siirrossa, joka muuttaa jännitettä tai kuninkaan turvallisuutta."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Mikä on nopein tapa parantaa laudan hahmottamista?",
+        "answer": "Käytä samaa listaa ennen jokaista siirtoa, kunnes se muuttuu automaattiseksi: shakit, lyönnit, uhat ja suojaamattomat nappulat."
+      },
+      {
+        "question": "Miksi teen virheitä, vaikka osaan taktiikkaa?",
+        "answer": "Koska laudan seurannan kerros on heikko. Taktiikka auttaa vasta kun havaitset aseman oikein."
+      },
+      {
+        "question": "Kuinka usein virheet kannattaa käydä läpi?",
+        "answer": "Jokaisen pelin jälkeen. Lyhyt läpikäyntitapa siirtyy paljon nopeammin kuin viikoittainen pitkä sessio."
+      },
+      {
+        "question": "Auttavatko muistiharjoitukset hahmottamista?",
+        "answer": "Kyllä. Nopeampi nappuloiden muistaminen helpottaa koko laudan pitämistä huomiossa silmäilyn aikana."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Käytä koko virheenestoprosessia, kun hahmotusvirheet maksavat materiaalia."
+      },
+      {
+        "reason": "Ymmärrä, miksi taktinen taito romahtaa oikeassa paineessa."
+      },
+      {
+        "reason": "Katso, mihin laudan hahmottaminen sopii kokonaisessa rutiinissa."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Shakkimuistin harjoittelu nopeampaan muistamiseen",
+    "h1": "Shakkimuistin harjoittelu aloittelijoille",
+    "description": "Käytä yksinkertaisia muistiharjoituksia asemien muistamiseen, kuvioiden huomaamiseen ja siirtojen selkeään seuraamiseen.",
+    "primaryKeyword": "shakkimuistin harjoittelu",
+    "secondaryKeywords": [
+      "shakin muistiharjoitukset",
+      "shakkiasemien muistaminen",
+      "kuvioiden tunnistus shakissa",
+      "laudan muistamisen harjoittelu",
+      "keskittyminen shakissa"
+    ],
+    "painPoint": "Unohdat nappuloiden paikat, kun mietit seuraavia siirtoja.",
+    "ctaLabel": "Aloita muistihaaste",
+    "quickAnswer": "Muistiharjoittelu auttaa pitämään hyödylliset asemat mielessä, kun nappulat vaihtuvat. Kyse ei ole mahdollisimman monen satunnaisen laudan opettelusta.",
+    "keyTakeaways": [
+      "Alussa tarkkuus merkitsee enemmän kuin nopeus.",
+      "Saman aseman toistaminen antaa korjata yhden muistivirheen kerrallaan.",
+      "Sijoita muistiharjoittelu ennen laskemista tai analyysia."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka unohtavat suunnitelmansa yhden vahvan vastauksen jälkeen.",
+      "Aloittelijat, jotka eivät saa rakennettua peliensä avainasemia uudelleen.",
+      "Kaikki, joilla on vaikeaa monen nappulan tilanteissa."
+    ],
+    "timeToRead": "8 minuutin luku",
+    "introParagraphs": [
+      "Shakkimuisti on käytännön taito. Tavoitteena on pitää laudasta selkeä kuva tarpeeksi kauan, jotta voit valita siirron rauhassa.",
+      "Memory Chess antaa yksinkertaisen kierron: katso, muista, tarkista ja yritä uudestaan."
+    ],
+    "startHereTitle": "Aloita tällä muistirutiinilla",
+    "startHereSteps": [
+      "Aloita yksinkertaisesta asemasta ja muista se 10 sekuntia.",
+      "Rakenna lauta uudelleen ja merkitse ensimmäinen menetetty ruutu tai nappula.",
+      "Toista sama asema kerran, jotta korjaus tulee näkyviin.",
+      "Lisää lyhyt taktinen muunnelma muistetusta asetelmasta.",
+      "Seuraa sekä tarkkuutta että tekemäsi muistivirheen tyyppiä."
+    ],
+    "drillSectionTitle": "Muistiharjoituksia oikeisiin peleihin",
+    "drillCards": [
+      {
+        "title": "Yhden aseman toisto",
+        "description": "Muista yksi asema, rakenna se uudelleen ja toista sitten kerran samoilla asetuksilla.",
+        "duration": "5 minuuttia",
+        "goal": "Löytää yksi selkeä muistivirhe korjattavaksi.",
+        "ctaLabel": "Toista yksi asema"
+      },
+      {
+        "title": "Muistaminen ankkurikohtien kautta",
+        "description": "Keskity ensin kuninkaiden paikkoihin, suojaamattomiin nappuloihin ja keskustan jännitteeseen.",
+        "duration": "4 minuuttia",
+        "goal": "Muistaa aseman tärkeimmät osat ensin.",
+        "ctaLabel": "Harjoittele ankkurikohtia"
+      },
+      {
+        "title": "Ensin muista, sitten laske",
+        "description": "Laske laudan uudelleenrakentamisen jälkeen yksi lyhyt muunnelma ennen tarkistusta.",
+        "duration": "6 minuuttia",
+        "goal": "Käyttää laudan muistia laskemisen aikana.",
+        "ctaLabel": "Lisää muunnelma"
+      }
+    ],
+    "comparisonTitle": "Miltä heikko muistaminen näyttää peleissä",
+    "comparisonSummary": "Lauta voi tuntua tutulta ja silti olla liian sumea kantamaan laskemista.",
+    "comparisonRows": [
+      {
+        "label": "Muunnelman pitäminen",
+        "struggling": "Menetät lähtöaseman, kun mietit uutta ehdokassiirtoa.",
+        "stronger": "Palaat tarkasti lähtöasemaan muunnelman jälkeen."
+      },
+      {
+        "label": "Kuviomuisti",
+        "struggling": "Muistat taktisen idean mutta et puolustajia.",
+        "stronger": "Muistat idean ja ruudut, jotka tekevät siitä toimivan."
+      },
+      {
+        "label": "Analyysin laatu",
+        "struggling": "Analyysi jää epämääräiseksi, koska asema katoaa heti.",
+        "stronger": "Rakennat avainhetket uudelleen ja opit nopeammin."
+      }
+    ],
+    "mistakes": [
+      "Liian suuret vaikeushypyt nykyiselle tasolle.",
+      "Nopeuden mittaaminen tarkkuuden kustannuksella.",
+      "Virhelokin puuttuminen, jolloin toistuvat heikkoudet jäävät piiloon.",
+      "Muistiharjoitusten pitäminen erillään taktisesta pelistä."
+    ],
+    "mistakesCallout": "Älä vaikeuta asemaa, kun muistaminen on vielä epäselvää. Laske vaikeutta ja rakenna ensin tarkkuus.",
+    "planTitle": "7 päivän muistijakso",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "10 minuuttia",
+        "detail": "Toista yksinkertaisia asemia ja nimeä jokainen muistivirhe."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "12 minuuttia",
+        "detail": "Lisää ankkurikohdat, jotta muistat ensin kuninkaat, suojaamattomat nappulat ja keskustan jännitteen."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "12 minuuttia",
+        "detail": "Lisää lyhyt siirtosarja jokaisen oikean uudelleenrakennuksen jälkeen."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15 minuuttia",
+        "detail": "Lyhennä aikaa hieman samalla nappulamäärällä ja vie työ sitten yhden pikapelin analyysiin."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Parantaako muistiharjoittelu oikeita pelejä?",
+        "answer": "Kyllä, kun se yhdistetään laskemiseen tai analyysiin. Parempi muistaminen pitää muunnelmat selkeämpinä paineessa."
+      },
+      {
+        "question": "Kuinka monta asemaa yhdellä kerralla?",
+        "answer": "Aloittelijalle kuusi–kaksitoista huolellista yritystä riittää, kun tarkistat virheet etkä kiirehdi."
+      },
+      {
+        "question": "Satunnaiset laudat vai oikeat rakenteet?",
+        "answer": "Molemmat. Satunnaiset terävöittävät puhdasta muistamista, oikeat rakenteet parantavat siirtymää peliin."
+      },
+      {
+        "question": "Entä jos tarkkuus pysähtyy?",
+        "answer": "Käytä viikon ajan vähemmän nappuloita, korjaa yksi virhetyyppi ja lisää nappuloita vasta kun muistaminen on taas puhdasta."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Käytä tätä, jos siirtosarjojen muistaminen on vaikeaa."
+      },
+      {
+        "reason": "Tasapainota muisti järkevällä määrällä tehtäviä."
+      },
+      {
+        "reason": "Yhdistä laudan muisti yleisiin kuvioihin."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Sokkoshakin harjoittelu aloittelijoille",
+    "h1": "Sokkoshakki aloittelijalle, askel kerrallaan",
+    "description": "Opettele sokkoshakkia pienin askelin, jotka parantavat visualisointia ilman ylikuormitusta.",
+    "primaryKeyword": "sokkoshakin harjoittelu",
+    "secondaryKeywords": [
+      "sokkoshakki aloittelijoille",
+      "laudan harjoittelu päässä",
+      "shakin visualisointiharjoitukset",
+      "laskeminen ilman nappuloiden siirtämistä",
+      "keskittymisharjoitukset shakissa"
+    ],
+    "painPoint": "Menetät laudan heti, kun lakkaat katsomasta sitä.",
+    "ctaLabel": "Aloita sokkoharjoittelu",
+    "quickAnswer": "Aloita yksinkertaisesta asemasta. Muista se, kuvittele yksi siirto kummallekin puolelle ja tarkista. Kokeile kokonaista sokkopeliä vasta, kun nämä askeleet tuntuvat helpoilta.",
+    "keyTakeaways": [
+      "Sokkoshakki rakentuu askel kerrallaan.",
+      "Vastauksen tarkistaminen merkitsee enemmän kuin vaikeampien asemien kokeilu.",
+      "Aloittelijan sokkoharjoitukset ovat visualisointiharjoituksia pienemmällä laudan tuella."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka haluavat paremman visualisoinnin ilman kokonaista sokkopeliä.",
+      "Aloittelijat, jotka menettävät ruudut yhden tai kahden kuvitellun siirron jälkeen.",
+      "Kaikki, jotka haluavat selkeämmän laudan kuvan päähänsä."
+    ],
+    "timeToRead": "8 minuutin luku",
+    "introParagraphs": [
+      "Suurin virhe on kokeilla kokonaista sokkopeliä liian aikaisin. Se tuottaa yleensä turhautumista eikä edistystä.",
+      "Etene askel kerrallaan: näe lauta, muista se, kuvittele siirto, tarkista ja vähennä näköapua hitaasti."
+    ],
+    "startHereTitle": "Aloita tästä: turvallinen polku sokkoshakkiin",
+    "startHereSteps": [
+      "Muista pieni asema ja rakenna se uudelleen ennen kuin kuvittelet yhtään siirtoa.",
+      "Laske yksi siirto kummallekin puolelle koskematta nappuloihin.",
+      "Tarkista jokainen ristiriita heti sen sijaan, että jatkaisit väkisin.",
+      "Pelaa kierros Memory Chessiä hieman lyhyemmällä katseluajalla.",
+      "Lisää yksi siirto vasta, kun nykyinen muunnelma on selkeä."
+    ],
+    "drillSectionTitle": "Helppoja sokkoshakin harjoituksia",
+    "drillCards": [
+      {
+        "title": "Rakenna ennen siirtoja",
+        "description": "Älä kuvittele siirtoja ennen kuin lähtöasema on täysin vakaa.",
+        "duration": "4 minuuttia",
+        "goal": "Rakentaa selkeä muistaminen ennen siirtojen lisäämistä.",
+        "ctaLabel": "Rakenna lauta ensin"
+      },
+      {
+        "title": "Yksi siirto kummallekin",
+        "description": "Kuvittele valkean siirto ja mustan vastaus ja tarkista sitten uusi lauta.",
+        "duration": "5 minuuttia",
+        "goal": "Päivittää asema katsomatta lautaa.",
+        "ctaLabel": "Kuvittele kaksi siirtoa"
+      },
+      {
+        "title": "Lyhyt katseluaika",
+        "description": "Vähennä katseluaikaa, jotta opit muistamaan laudan nopeammin.",
+        "duration": "4 minuuttia",
+        "goal": "Valmistautua sokkoshakkiin peittämättä koko lautaa.",
+        "ctaLabel": "Lyhennä aikaa"
+      }
+    ],
+    "comparisonTitle": "Turvallisempi tapa harjoitella sokkoshakkia",
+    "comparisonSummary": "Kysy, näetkö yhden siirron selvemmin kuin aiemmin. Kokonaista sokkopeliä ei vielä tarvita.",
+    "comparisonRows": [
+      {
+        "label": "Lähtökohta",
+        "struggling": "Hyppäät suoraan täyteen sokkopeliin.",
+        "stronger": "Muistat lähtöaseman ennen siirtojen lisäämistä."
+      },
+      {
+        "label": "Tarkistaminen",
+        "struggling": "Luotat sumeaan lautaan päässäsi.",
+        "stronger": "Tarkistat jokaisen kuvitellun päivityksen ja korjaat heti."
+      },
+      {
+        "label": "Session laatu",
+        "struggling": "Harjoittelet kunnes keskittyminen romahtaa.",
+        "stronger": "Lopetat, kun tarkkuus päässä on yhä hyvä."
+      }
+    ],
+    "mistakes": [
+      "Kokonaisten sokkopelien kokeilu liian aikaisin.",
+      "Tarkistuksen ohittaminen ja väärään lautaan luottaminen.",
+      "Siirtojen lisääminen ennen kuin lyhyet muunnelmat ovat selkeitä.",
+      "Liian pitkä harjoittelu yhdellä kertaa ja keskittymisen polttaminen."
+    ],
+    "mistakesCallout": "Älä hyppää paljon vaikeampaan tehtävään. Vähennä laudan tukea vain hieman kerrallaan.",
+    "planTitle": "7 päivän sokkovalmistelu",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "10 minuuttia",
+        "detail": "Rakenna asemia vain muistista ja tarkista heti."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "12 minuuttia",
+        "detail": "Lisää yksi siirto kummallekin ja pidä asemat yksinkertaisina."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "12 minuuttia",
+        "detail": "Lyhennä katseluaikaa Memory Chessissä samalla nappulamäärällä."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15 minuuttia",
+        "detail": "Kokeile paria kahden siirron sarjaa vain, jos yhden siirron työ on tarkkaa."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Onko sokkoshakista hyötyä aloittelijalle?",
+        "answer": "On, lyhyinä ja hallittuina harjoituksina. Se vahvistaa visualisointia, joka tukee tavallisia pelejä."
+      },
+      {
+        "question": "Kuinka usein sokkoharjoituksia kannattaa tehdä?",
+        "answer": "Kaksi–neljä lyhyttä sessiota viikossa riittää, kun mukana on säännöllistä pelaamista ja analyysia."
+      },
+      {
+        "question": "Mikä on paras ensimmäinen sokkoharjoitus?",
+        "answer": "Rakentaa yksinkertainen asema muistista ja kuvitella yksi siirto kummallekin ennen tarkistusta."
+      },
+      {
+        "question": "Mistä tiedän kehittyväni?",
+        "answer": "Pidät useamman ruudun oikein, päivität lautaa pidempään ja teet vähemmän hahmotusvirheitä tavallisissa peleissä."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Pidä perusta vahvana sen sijaan, että hyppäisit edistyneeseen sokkopeliin."
+      },
+      {
+        "reason": "Yhdistä sokkotyö muunnelman pitämisen harjoituksiin."
+      },
+      {
+        "reason": "Käytä selkeämpää visualisointia siirtojen vertailuun."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Työmuistiharjoituksia shakinpelaajille",
+    "h1": "Työmuistiharjoituksia aloittelijoille",
+    "description": "Yksinkertaisia harjoituksia siirtosarjojen muistamiseen, vaihtoehtojen vertailuun ja selkeämpiin päätöksiin.",
+    "primaryKeyword": "työmuistiharjoitukset",
+    "secondaryKeywords": [
+      "työmuisti shakissa",
+      "laskemisen harjoittelu shakissa",
+      "keskittymisharjoitukset shakissa",
+      "tasaisempi shakkipeli",
+      "henkinen kestävyys shakissa"
+    ],
+    "painPoint": "Unohdat ensimmäisen siirtosarjan, kun mietit toista.",
+    "ctaLabel": "Aloita muistirutiini",
+    "quickAnswer": "Työmuisti auttaa pitämään mielessä muutaman mahdollisen siirtosarjan. Pidä määrä pienenä ja tarkista jokainen selvästi.",
+    "keyTakeaways": [
+      "Kolme selkeää vaihtoehtoa on parempi kuin kuusi sekavaa.",
+      "Lyhyt ääneen sanottu tiivistys auttaa muistamaan jokaisen muunnelman.",
+      "Harjoittele oikeilla asemilla ja käytä taitoa peleissä."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka menettävät ensimmäisen muunnelman toista tutkiessaan.",
+      "Aloittelijat, jotka sekoittavat siirtojärjestyksen.",
+      "Kaikki, jotka tekevät väsyneenä enemmän taktisia virheitä."
+    ],
+    "timeToRead": "8 minuutin luku",
+    "introParagraphs": [
+      "Työmuisti auttaa pitämään mahdolliset siirrot mielessä samalla kun vertaat niitä. Shakissa pitää muistaa lähtöasema ja yksi tai kaksi lyhyttä muunnelmaa sekoittamatta niitä.",
+      "Memory Chess auttaa muistamaan lähtöaseman. Kun se kuva on selkeä, seuraavien siirtojen seuraaminen helpottuu."
+    ],
+    "startHereTitle": "Aloita kahdella lyhyellä siirtosarjalla",
+    "startHereSteps": [
+      "Valitse yksi asema ja luettele kolme ehdokassiirtoa koskematta lautaan.",
+      "Laske jokainen muunnelma kahden puolisiirron verran ja tiivistä tulos yhteen lauseeseen.",
+      "Pelaa Memory Chessin muistikierros virkistääksesi lähtöaseman.",
+      "Palaa asemaan ja vertaa mahdollisia sarjoja uudelleen.",
+      "Kirjoita yksi lause siitä, missä muunnelman pitäminen katkesi."
+    ],
+    "drillSectionTitle": "Työmuistiharjoituksia shakkiin",
+    "drillCards": [
+      {
+        "title": "Kolmen muunnelman tiivistys",
+        "description": "Pidä lyhyesti mielessä kolme ehdokassiirtoa ja kuvaa jokainen haara yhdellä lauseella.",
+        "duration": "6 minuuttia",
+        "goal": "Pitää jokainen sarja selkeänä sen sijaan, että lisäisi uusia.",
+        "ctaLabel": "Pidä kolme muunnelmaa"
+      },
+      {
+        "title": "Muistin nollaus",
+        "description": "Lisää laskuyritysten väliin yksi Memory Chess -kierros, jotta perusasema pysyy vakaana.",
+        "duration": "4 minuuttia",
+        "goal": "Muistaa lähtöasema ennen siirtojen seuraamista.",
+        "ctaLabel": "Nollaa lauta"
+      },
+      {
+        "title": "Vertailu muunnelman jälkeen",
+        "description": "Palaa lähtöasemaan ja vertaa haaroja lyhyen tauon jälkeen.",
+        "duration": "5 minuuttia",
+        "goal": "Siirtyä perusaseman ja muunnelmien välillä sekoittamatta niitä.",
+        "ctaLabel": "Vertaa vaihtoehtoja"
+      }
+    ],
+    "comparisonTitle": "Kun yrität muistaa liikaa",
+    "comparisonSummary": "Kun muisti täyttyy, muunnelma hämärtyy ja siirtojärjestys menee sekaisin.",
+    "comparisonRows": [
+      {
+        "label": "Ehdokassiirrot",
+        "struggling": "Yrität pitää liian montaa vaihtoehtoa yhtä aikaa.",
+        "stronger": "Pidät vähemmän muunnelmia, mutta jokainen pysyy oikeana pidempään."
+      },
+      {
+        "label": "Siirtojärjestys",
+        "struggling": "Haarat sekoittuvat keskenään.",
+        "stronger": "Jokainen muunnelma pysyy erillään ja on helppo vertailla."
+      },
+      {
+        "label": "Väsymys",
+        "struggling": "Päätösten laatu romahtaa pelin loppupuolella.",
+        "stronger": "Pidät yksinkertaisemman ja selkeämmän prosessin, kun energia laskee."
+      }
+    ],
+    "mistakes": [
+      "Liian monen siirtosarjan muistaminen yhtä aikaa.",
+      "Lyhyen tiivistyksen ohittaminen jokaisen muunnelman jälkeen.",
+      "Vain tehtävien ratkominen ilman taidon käyttöä peleissä.",
+      "Jatkaminen, vaikka olet liian väsynyt ajattelemaan selkeästi."
+    ],
+    "mistakesCallout": "Älä lisää vielä muunnelmia. Pidä harvat muunnelmat selkeinä ennen kuin pidennät niitä.",
+    "planTitle": "7 päivän työmuistijakso",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "10 minuuttia",
+        "detail": "Käytä vain kahta siirtosarjaa ja selitä molemmat ääneen."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "12 minuuttia",
+        "detail": "Lisää yritysten väliin Memory Chess -nollaus, jotta lähtöasema pysyy puhtaana."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "12 minuuttia",
+        "detail": "Lisää kolmas vaihtoehto vain, jos kaksi ensimmäistä pysyvät oikeina."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15 minuuttia",
+        "detail": "Käytä rutiinia yhdessä pikapelissä. Pysähdy vaikeissa kohdissa ja nimeä mahdolliset siirrot selvästi."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Siirtyvätkö työmuistiharjoitukset shakkiin?",
+        "answer": "Voivat siirtyä, etenkin kun ne liittyvät suoraan asemiin, muunnelmien pitämiseen ja analyysiin eivätkä yleisiin aivopeleihin."
+      },
+      {
+        "question": "Miten aloittelijan kannattaa rakentaa tämä?",
+        "answer": "Lyhyillä sessioilla, joissa yhdistyvät mahdolliset siirrot, laudan muisti ja yksi oikea peliasema."
+      },
+      {
+        "question": "Miten kehitystä seuraa helposti?",
+        "answer": "Merkitse, montako sarjaa pystyt pitämään ja kuinka usein menetät langan."
+      },
+      {
+        "question": "Korvaako tämä taktiikkaharjoittelun?",
+        "answer": "Ei. Se täydentää sitä pitämällä muunnelmat selkeämpinä ratkoessa ja pelatessa."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Käytä parempaa työmuistia mahdollisten siirtojen vertailuun."
+      },
+      {
+        "reason": "Vahvista muistamisen kerrosta muunnelmien pitämisen alla."
+      },
+      {
+        "reason": "Käytä yksinkertaisempaa ajatteluprosessia, jotta työmuisti ei mene hukkaan."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Näin lopetat karkeat virheet shakissa",
+    "h1": "Näin lopetat karkeat virheet shakissa",
+    "description": "Käytä lyhyttä turvatarkistusta, jotta huomaat uhat, suojaat nappulat ja teet vähemmän virheitä.",
+    "primaryKeyword": "miten lopettaa virheiden tekeminen shakissa",
+    "secondaryKeywords": [
+      "virheiden ehkäisy shakissa",
+      "nappuloiden antamisen lopettaminen",
+      "uhkien tarkistus shakissa",
+      "shakin turvalista",
+      "yksinkertaisten virheiden vähentäminen"
+    ],
+    "painPoint": "Ymmärrät shakin ideat mutta menetät silti nappuloita yksinkertaisiin uhkiin.",
+    "ctaLabel": "Aloita virheenestoharjoitus",
+    "quickAnswer": "Tarkista ennen jokaista siirtoa vastustajan uhat, etsi suojaamattomat nappulat ja varmista, että siirtosi on turvallinen. Muistiharjoittelu auttaa pitämään koko laudan mielessä.",
+    "keyTakeaways": [
+      "Useimmat aloittelijan virheet johtuvat laudan osan ohittamisesta.",
+      "Turvalistan pitää olla tarpeeksi lyhyt kestääkseen aikapaineen.",
+      "Toista virheesi, kunnes näet nopeasti mitä ohitit."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka lankeavat toistuvasti yhden siirron taktiikkaan.",
+      "Aloittelijat, jotka tuntevat pelaavansa huonommin kuin ratkovat tehtäviä.",
+      "Kaikki, jotka haluavat rauhallisen rutiinin jokaiseen siirtoon."
+    ],
+    "timeToRead": "8 minuutin luku",
+    "introParagraphs": [
+      "Monet virheet syntyvät, kun siirrät ennen koko aseman tarkistusta. Voit myös menettää käsityksen siitä, missä nappula on suojattu.",
+      "Lyhyt rutiini korvaa paniikin ja arvailun. Käytä samoja tarkistuksia, kun asema terävöityy."
+    ],
+    "startHereTitle": "Aloita tästä: virheenestolista",
+    "startHereSteps": [
+      "Kysy, mitä shakkeja, lyöntejä ja uhkia vastustajalla on juuri nyt.",
+      "Etsi jokainen suojaamaton tai liikaa kuormitettu nappula.",
+      "Tarkista vasta sitten, onko suunnittelemasi siirto turvallinen.",
+      "Pelaa lyhyt kierros Memory Chessiä ennen pelejä terävöittääksesi nappuloiden muistamista.",
+      "Kirjoita jokaisen virheen jälkeen ohitettu merkki yhdellä lauseella."
+    ],
+    "drillSectionTitle": "Yksinkertaisia virheenestoharjoituksia",
+    "drillCards": [
+      {
+        "title": "Silmäily vastustajan puolelta",
+        "description": "Aloita jokainen asema tarkistamalla vastustajan vahvimmat uhat.",
+        "duration": "3 minuuttia",
+        "goal": "Ajatella vastustajan ideaa ennen omaa.",
+        "ctaLabel": "Silmäile toiselta puolelta"
+      },
+      {
+        "title": "Suojaamattomien nappuloiden hälytys",
+        "description": "Nimeä ennen siirtoa jokainen suojaamaton tai ylikuormitettu nappula.",
+        "duration": "4 minuuttia",
+        "goal": "Napata helpoimmat materiaalitappiot ajoissa.",
+        "ctaLabel": "Aja hälytys"
+      },
+      {
+        "title": "Virheiden toistokierto",
+        "description": "Toista omia virheasemiasi, kunnes ohitettu uhka tulee selväksi.",
+        "duration": "6 minuuttia",
+        "goal": "Oppia asemista, jotka oikeasti maksoivat pelejä.",
+        "ctaLabel": "Toista virheesi"
+      }
+    ],
+    "comparisonTitle": "Mikä muuttuu, kun virheet vähenevät",
+    "comparisonSummary": "Pelit eivät muutu yhtäkkiä virheettömiksi. Ne rauhoittuvat, ja tappioilla on ymmärrettävät syyt yhden siirron katastrofin sijaan.",
+    "comparisonRows": [
+      {
+        "label": "Siirron hetki",
+        "struggling": "Siirrät heti kun näet suunnitelman.",
+        "stronger": "Siirrät vasta lyhyen turvakierroksen jälkeen."
+      },
+      {
+        "label": "Uhkien huomaaminen",
+        "struggling": "Näet taktiikan vasta kun se osui.",
+        "stronger": "Tunnistat taktisen muodon ennen sitoutumista."
+      },
+      {
+        "label": "Pelin jälkeinen läpikäynti",
+        "struggling": "Tappio tuntuu sattumalta.",
+        "stronger": "Nimeät nopeasti täsmälleen ohitetun merkin."
+      }
+    ],
+    "mistakes": [
+      "Virheiden poistaminen vain hitaammin pelaamalla.",
+      "Lisää avauksia, vaikka uhkien tarkistus on yhä heikko.",
+      "Moottorin muunnelmien selaaminen ilman oikeasti ohitetun merkin tunnistamista.",
+      "Sen ohittaminen, että aikapaine heikentää muistamista."
+    ],
+    "mistakesCallout": "Hitaammin pelaaminen ei riitä. Käytä joka kerta samaa lyhyttä turvatarkistusta.",
+    "planTitle": "7 päivän virheeneston nollaus",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "10 minuuttia",
+        "detail": "Vain silmäily vastustajan puolelta ja suojaamattomien nappuloiden hälytys."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "12 minuuttia",
+        "detail": "Lisää kierros Memory Chessiä ennen jokaista pelisessiota, jotta aseman kuva pysyy puhtaampana."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "15 minuuttia",
+        "detail": "Toista kolme tuoretta virhettä ja luokittele ohitettu merkki jokaisessa."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15 minuuttia",
+        "detail": "Käytä koko listaa pikapeleissä ja seuraa virheitä peliä kohti pelkän tuloksen sijaan."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Miksi annan jatkuvasti nappuloita ilmaiseksi?",
+        "answer": "Yleensä siksi, että siirtoa edeltävä silmäily on puutteellinen. Saatat osata taktiikan mutta et tarkista koko lautaa ennen siirtoa."
+      },
+      {
+        "question": "Riittääkö, että pelaan hitaammin?",
+        "answer": "Vain jos käytät lisäajan selkeään turvatarkistukseen. Laudan tuijottaminen ilman suunnitelmaa ei auta."
+      },
+      {
+        "question": "Auttavatko muistiharjoitukset todella virheisiin?",
+        "answer": "Kyllä. Puhtaampi nappuloiden muistaminen helpottaa uhkien huomaamista, kun asema muuttuu."
+      },
+      {
+        "question": "Mitä kannattaa seurata, jotta virheitä olisi vähemmän?",
+        "answer": "Virheitä peliä kohti, ohitettuja suojaamattomia nappuloita ja sitä, tuliko ohitettu uhka epäonnistuneesta silmäilystä vai laskemisesta."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Rakenna vahvempi laudan silmäily virheiden estämiseksi."
+      },
+      {
+        "reason": "Katso, miksi taktinen taito romahtaa, kun laudan seuranta on heikkoa."
+      },
+      {
+        "reason": "Liitä virheenestotyö kokonaiseen aloittelijan rutiiniin."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Miksi tehtävärating ei siirry peleihin",
+    "h1": "Miksi tehtäväratingisi ei siirry peleihin",
+    "description": "Ymmärrä, miksi tehtävätaito tuntuu eri asialta kuin oikeat pelit ja miten laudan hahmottaminen, muisti ja analyysi kuroo eron umpeen.",
+    "primaryKeyword": "miksi tehtävärating ei siirry peleihin",
+    "secondaryKeywords": [
+      "tehtävärating vastaan shakkirating",
+      "taktiikka ei siirry peleihin",
+      "tehtävätaito oikeissa peleissä",
+      "miksi olen parempi tehtävissä",
+      "laudan hahmottaminen shakissa"
+    ],
+    "painPoint": "Ratkot tehtäviä hyvin mutta ohitat taktiikkaa oikeissa peleissä.",
+    "ctaLabel": "Harjoittele oikeita pelejä varten",
+    "quickAnswer": "Tehtävä kertoo, että taktiikka on olemassa. Peli ei kerro. Sinun pitää huomata vaara, muistaa lauta ja tietää milloin hidastaa.",
+    "keyTakeaways": [
+      "Tehtävä kertoo, että ratkaistavaa on.",
+      "Pelissä sinun pitää löytää vaarallinen hetki itse.",
+      "Parempi hahmottaminen ja muisti näyttävät taktiikan aiemmin."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, joilla on korkea tehtävärating mutta tasainen pelirating.",
+      "Aloittelijat, jotka näkevät taktiikan pelin jälkeen eivätkä pelin aikana.",
+      "Kaikki, jotka eivät saa tehtävien ideoita käyttöön peleissä."
+    ],
+    "timeToRead": "8 minuutin luku",
+    "introParagraphs": [
+      "Tämä on yleinen aloittelijan ongelma. Ratkot tehtäviä, mutta peleissä on yhä menetettyjä nappuloita, ohitettuja uhkia ja hätiköityjä siirtoja.",
+      "Lisää tehtäviä ei aina korjaa sitä. Sinun pitää myös huomata, milloin asema muuttuu vaaralliseksi, ja kuvitella mitä seuraa kustakin valinnasta."
+    ],
+    "startHereTitle": "Aloita yhdistämällä tehtävät peleihin",
+    "startHereSteps": [
+      "Käytä ennen tehtäviä 2 minuuttia laudan silmäilyyn shakkien, lyöntien ja uhkien varalta.",
+      "Lisää yksi kierros Memory Chessiä, jotta laudan kuva pysyy vakaana paineessa.",
+      "Kysy tehtävän jälkeen, mikä merkki olisi käskenyt hidastaa oikeassa pelissä.",
+      "Käy läpi yksi tuore virhe ja vertaa sitä samankaltaiseen taktiseen tehtävään.",
+      "Pelaa vähintään yksi pikapeli per sessio nähdäksesi, kestääkö siirtoa edeltävä silmäily."
+    ],
+    "drillSectionTitle": "Harjoituksia, jotka yhdistävät tehtävät peleihin",
+    "drillCards": [
+      {
+        "title": "Etsi varoitusmerkki",
+        "description": "Etsi varoitusmerkki ennen kuin yrität löytää taktiikan.",
+        "duration": "4 minuuttia",
+        "goal": "Huomata vaaralliset asemat aiemmin.",
+        "ctaLabel": "Harjoittele ensin merkkiä"
+      },
+      {
+        "title": "Muistaminen ennen laskemista",
+        "description": "Pelaa nopea kierros Memory Chessiä ennen tehtäviä, jotta lauta tuntuu selkeämmältä.",
+        "duration": "4 minuuttia",
+        "goal": "Yhdistää kuviotyö oikeaan peliin.",
+        "ctaLabel": "Terävöitä ensin muistaminen"
+      },
+      {
+        "title": "Peliaseman toisto",
+        "description": "Rakenna ohitettu taktinen hetki omasta pelistäsi ja ratkaise se tehtävänä.",
+        "duration": "6 minuuttia",
+        "goal": "Saada taktiikkaharjoittelu muistuttamaan taas oikeita asemia.",
+        "ctaLabel": "Toista ohitettu taktiikka"
+      }
+    ],
+    "comparisonTitle": "Tehtävät ja pelit: mikä muuttuu?",
+    "comparisonSummary": "Taktinen siirto voi olla sama, mutta henkinen tehtävä ei ole.",
+    "comparisonRows": [
+      {
+        "label": "Ongelman kehys",
+        "struggling": "Peli ei kerro, että taktiikka on olemassa.",
+        "stronger": "Huomaat merkin siitä, että jännite juuri muuttui."
+      },
+      {
+        "label": "Laudan selkeys",
+        "struggling": "Muunnelma hämärtyy, kun useampi nappula liikkuu.",
+        "stronger": "Pidät tärkeät ruudut ja puolustajat muistissa."
+      },
+      {
+        "label": "Päätöksen ajoitus",
+        "struggling": "Pelaat normaalivauhtia, vaikka asema muuttuu vaaralliseksi.",
+        "stronger": "Hidastat, kun shakit, lyönnit tai uhat ilmestyvät."
+      }
+    ],
+    "mistakes": [
+      "Tehtävien ratkominen ilman askelta kohti pelejä.",
+      "Oletus, että pelkkä taktinen tieto estää virheet.",
+      "Sen tarkastelun ohittaminen, miksi asema muuttui vaaralliseksi.",
+      "Laudan hahmottamisen pitäminen erillään taktiikasta."
+    ],
+    "mistakesCallout": "Älä vain lisää tehtäviä. Harjoittele myös taktisten hetkien huomaamista omissa peleissäsi.",
+    "planTitle": "7 päivän siirtymäjakso",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "12 minuuttia",
+        "detail": "Lisää jokaiseen tehtäväsessioon merkin miettiminen ennen ratkaisua."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "12 minuuttia",
+        "detail": "Pelaa lyhyt kierros Memory Chessiä ennen tehtäviä tai pikapelejä."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "15 minuuttia",
+        "detail": "Toista kolme ohitettua taktista hetkeä omista peleistäsi."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15–20 minuuttia",
+        "detail": "Pelaa pikashakkia ja pysäytä itsesi aina, kun asema muuttuu pakottavaksi tai taktisesti kireäksi."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Miksi olen parempi tehtävissä kuin peleissä?",
+        "answer": "Koska tehtävä kertoo jo valmiiksi, että taktiikkaa on löydettävissä. Oikea peli ei kerro."
+      },
+      {
+        "question": "Pitäisikö minun lopettaa tehtävien ratkominen?",
+        "answer": "Ei. Pidä ne, mutta lisää laudan hahmottamista, muistamista ja peliasemien toistoa, jotta kuviot siirtyvät."
+      },
+      {
+        "question": "Mikä on paras siirtymäharjoitus?",
+        "answer": "Toistaa ohitettu taktiikka omasta pelistä ja ratkaista se, kun olet rakentanut aseman muistista."
+      },
+      {
+        "question": "Miten mittaan siirtymää?",
+        "answer": "Katso, vähenevätkö virheet peliä kohti ja ohitetut yksinkertaiset taktiikat, ei vain nouseeko tehtävärating."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Käytä tätä lyhyemmän virheenestolistan rakentamiseen."
+      },
+      {
+        "reason": "Vahvista silmäilytapaa, joka tekee taktiikasta näkyvää."
+      },
+      {
+        "reason": "Valitse tehtävämäärä, joka jättää aikaa pelaamiseen."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Näin näet koko laudan shakissa",
+    "h1": "Näin näet koko shakkilaudan",
+    "description": "Käytä yksinkertaista silmäilyä huomataksesi kaukaiset nappulat, nähdäksesi uhat ja välttääksesi putkinäön.",
+    "primaryKeyword": "koko laudan näkeminen shakissa",
+    "secondaryKeywords": [
+      "laudan hahmotus shakissa",
+      "putkinäön välttäminen shakissa",
+      "koko laudan näkeminen",
+      "silmäilyharjoitukset shakissa",
+      "laudan reunanäkö"
+    ],
+    "painPoint": "Keskityt yhteen alueeseen ja ohitat uhan muualla.",
+    "ctaLabel": "Harjoittele koko laudan näkemistä",
+    "quickAnswer": "Tarkista ennen jokaista siirtoa molemmat kuninkaat, suojaamattomat nappulat, keskusta ja reunat. Muistiharjoittelu auttaa pitämään suuremman osan laudasta mielessä.",
+    "keyTakeaways": [
+      "Putkinäkö tarkoittaa, että huomio jumittuu yhdelle alueelle.",
+      "Reunanappuloiden tarkistus on erityisen hyödyllistä aloittelijoille.",
+      "Selkeä laudan muisti helpottaa silmäilyä."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka huomaavat taktiikan vain laudan toisella puolella.",
+      "Aloittelijat, joilta jäävät lähetit, tornit tai kaukaiset uhat huomaamatta.",
+      "Kaikki, joilla on ahdas olo avoimissa asemissa."
+    ],
+    "timeToRead": "7 minuutin luku",
+    "introParagraphs": [
+      "Monet aloittelijat katsovat vain suunnitellun siirron lähellä olevia nappuloita. Silloin kaukaiset lähetit, tornit ja uhat jäävät helposti huomaamatta.",
+      "Sinun ei tarvitse tuijottaa lautaa pidempään. Käytä samaa yksinkertaista silmäilyä jokaisen tärkeän alueen tarkistamiseen."
+    ],
+    "startHereTitle": "Aloita tästä: laajenna silmäilyä",
+    "startHereSteps": [
+      "Tarkista molemmat kuninkaat ja niitä kohti osoittavat linjat.",
+      "Etsi suojaamattomat nappulat ensin keskustasta, sitten reunoilta.",
+      "Käy lähetit ja tornit koko linjaltaan, ei vain kiinnostavaan ruutuun asti.",
+      "Pelaa kierros Memory Chessiä, jotta koko lauta pysyy paremmin huomiossa.",
+      "Kysy ennen siirtoa, mitä laudan osaa et ole vielä katsonut."
+    ],
+    "drillSectionTitle": "Harjoituksia putkinäköä vastaan",
+    "drillCards": [
+      {
+        "title": "Reunanappuloiden pyyhkäisy",
+        "description": "Tarkista kulmien ja reunojen nappulat ennen jokaista siirtoa.",
+        "duration": "3 minuuttia",
+        "goal": "Napata uhat keskittymisalueesi ulkopuolelta.",
+        "ctaLabel": "Pyyhkäise reunat"
+      },
+      {
+        "title": "Vaikutuslinjojen läpikäynti",
+        "description": "Käy jokainen lähetin ja tornin linja kokonaan sen sijaan, että katsot yhtä kohderuutua.",
+        "duration": "4 minuuttia",
+        "goal": "Kattaa enemmän lautaa jokaisella silmäilyllä.",
+        "ctaLabel": "Käy linjat kokonaan"
+      },
+      {
+        "title": "Koko laudan muistaminen",
+        "description": "Käytä Memory Chessiä kohtuullisella nappulamäärällä ja luettele lauta alue kerrallaan.",
+        "duration": "5 minuuttia",
+        "goal": "Muistaa suurempi osa laudasta kerralla.",
+        "ctaLabel": "Muista alueittain"
+      }
+    ],
+    "comparisonTitle": "Putkinäkö ja koko laudan hahmotus",
+    "comparisonSummary": "Sinun ei tarvitse katsoa kaikkialle yhtä kauan. Varmista vain, ettei mitään tärkeää jää huomaamatta.",
+    "comparisonRows": [
+      {
+        "label": "Huomion polku",
+        "struggling": "Tuijotat yhtä nappularyhmää.",
+        "stronger": "Käyt riskialueet läpi samassa järjestyksessä."
+      },
+      {
+        "label": "Pitkän kantaman nappulat",
+        "struggling": "Unohdat lähetit ja tornit kaukana tapahtumista.",
+        "stronger": "Käyt niiden koko linjat läpi ennen kuin luotat siirtoon."
+      },
+      {
+        "label": "Laudan alueet",
+        "struggling": "Ohitat puolen, joka näyttää rauhalliselta.",
+        "stronger": "Tarkistat rauhallisen puolen ennen siirtoa."
+      }
+    ],
+    "mistakes": [
+      "Luulla, että koko laudan näkeminen tarkoittaa pidempään katsomista eikä parempaa silmäilyä.",
+      "Reunojen ohittaminen, koska keskusta tuntuu kiireellisemmältä.",
+      "Pitkän kantaman nappuloiden linjojen jättäminen kesken.",
+      "Yritys silmäillä laajemmin ennen kuin muistat nappulat selvästi."
+    ],
+    "mistakesCallout": "Lisäaika ei auta ilman selkeää silmäilyä. Tarkista lauta joka kerta samassa järjestyksessä.",
+    "planTitle": "7 päivän koko laudan silmäilysuunnitelma",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "10 minuuttia",
+        "detail": "Vain kuninkaiden tarkistus, suojaamattomat nappulat ja reunojen pyyhkäisy."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "12 minuuttia",
+        "detail": "Lisää lähettien ja tornien linjojen täysi läpikäynti."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "12 minuuttia",
+        "detail": "Käytä Memory Chessiä ja muista lauta alueittain satunnaisen järjestyksen sijaan."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15 minuuttia",
+        "detail": "Vie silmäily pikapeleihin ja merkitse virheen sattuessa, mikä alue aiheutti sen."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Miksi ohitan jatkuvasti nappulat laudan toisella puolella?",
+        "answer": "Koska huomiosi on liian paikallinen. Kiinteä silmäilyjärjestys on parempi kuin toivoa, että huomaat kaiken itsestään."
+      },
+      {
+        "question": "Auttaako Memory Chess koko laudan hahmottamisessa?",
+        "answer": "Kyllä. Se harjoittaa pitämään suuremman osan laudasta muistissa, ei vain taktista keskipistettä."
+      },
+      {
+        "question": "Pitääkö reunat tarkistaa joka siirrolla?",
+        "answer": "Kyllä, erityisesti aloittelijana. Moni halpa virhe piilee reunanappuloissa ja pitkillä linjoilla."
+      },
+      {
+        "question": "Mistä tiedän, että silmäily paranee?",
+        "answer": "Ohitat vähemmän kaukaisia uhkia etkä yllätys lähettien, tornien ja paljastushyökkäysten kohdalla ole yhtä usein."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Yhdistä koko laudan hahmotus vahvempaan turvalistaan."
+      },
+      {
+        "reason": "Paranna päässä olevaa lautaa, jotta laajempi silmäily helpottuu."
+      },
+      {
+        "reason": "Tunnista ruudut nopeammin, jotta laaja silmäily kuormittaa vähemmän."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Koordinaattiharjoittelu nopeampaan hahmottamiseen",
+    "h1": "Shakin koordinaattiharjoittelu aloittelijoille",
+    "description": "Opi ruutujen nimet nopeammin ja tee silmäilystä, merkinnästä ja visualisoinnista helpompaa.",
+    "primaryKeyword": "shakin koordinaattiharjoittelu",
+    "secondaryKeywords": [
+      "shakkimerkinnän harjoittelu",
+      "shakin koordinaattien opettelu",
+      "ruutujen nopeampi tunnistus",
+      "laudan ruutujen hahmotus",
+      "ruutujen nimeämisharjoitukset"
+    ],
+    "painPoint": "Ruudun nimen keksiminen vie aikaa tai sekoitat ruudut usein.",
+    "ctaLabel": "Harjoittele ruutujen nimiä",
+    "quickAnswer": "Koordinaatit ovat 64 ruudun nimet. Niiden osaaminen helpottaa laudan silmäilyä, siirtojen kuvittelua ja pelien läpikäyntiä.",
+    "keyTakeaways": [
+      "Ruutujen nopea tunnistus helpottaa silmäilyä.",
+      "Harjoittele koordinaatteja oikeilla asemilla.",
+      "Aluksi riittävät ruutujen perusnimet."
+    ],
+    "whoThisIsFor": [
+      "Aloittelijat, jotka laskevat linjoja ja rivejä yhä hitaasti.",
+      "Pelaajat, jotka haluavat nopeampaa silmäilyä ja visualisointia.",
+      "Kaikki, joista shakkimerkintä tuntuu sekavalta."
+    ],
+    "timeToRead": "7 minuutin luku",
+    "introParagraphs": [
+      "Koordinaatit ovat muutakin kuin kirjoja ja siirtolistoja. Ruutujen nopea tunnistus auttaa hahmottamista, muistia ja pelien läpikäyntiä.",
+      "Kun tunnet ruutujen nimet, lauta muuttuu selkeäksi kartaksi epämääräisten alueiden sijaan."
+    ],
+    "startHereTitle": "Aloita ruutujen nimistä oikealla laudalla",
+    "startHereSteps": [
+      "Valitse yksi linja tai rivi ja sano ruutujen nimet ääneen.",
+      "Sano jokaisen nappulan ruutu, kun rakennat Memory Chess -asemaa.",
+      "Ota tuore asema ja nimeä tärkeimmät hyökkääjät ja puolustajat ruuduittain.",
+      "Harjoittele lähettejä, torneja ja ratsun hyppyjä koordinaateilla, ei vain silmillä.",
+      "Päätä nopeaan silmäilyyn, jossa jokainen suojaamaton nappula nimetään ruudun mukaan."
+    ],
+    "drillSectionTitle": "Koordinaattiharjoituksia, joista on hyötyä pelissä",
+    "drillCards": [
+      {
+        "title": "Nappulan ja ruudun nimeäminen",
+        "description": "Rakenna lauta ja nimeä jokainen nappula ruutuineen.",
+        "duration": "4 minuuttia",
+        "goal": "Yhdistää ruutujen nimet muistettaviin nappuloihin.",
+        "ctaLabel": "Nimeä jokainen ruutu"
+      },
+      {
+        "title": "Pitkien linjojen nimeäminen",
+        "description": "Käy lähettien ja tornien linjat läpi ja sano ruudut, joihin ne vaikuttavat.",
+        "duration": "4 minuuttia",
+        "goal": "Tehdä koordinaateista hyödyllisiä koko laudan silmäilyssä.",
+        "ctaLabel": "Käy linjat ruuduittain"
+      },
+      {
+        "title": "Ratsun hyppyjen kartta",
+        "description": "Valitse yksi ratsun ruutu ja sano nopeasti kaikki sallitut kohderuudut.",
+        "duration": "3 minuuttia",
+        "goal": "Tunnistaa ratsun siirrot ja kohderuudut nopeammin.",
+        "ctaLabel": "Kartoita hypyt"
+      }
+    ],
+    "comparisonTitle": "Hidas ja nopea ruutujen tunnistus",
+    "comparisonSummary": "Koordinaatit eivät paranna kaikkea shakissasi, mutta ne helpottavat useita taitoja.",
+    "comparisonRows": [
+      {
+        "label": "Laudan silmäily",
+        "struggling": "Tunnistat muodon mutta et ruutujen nimiä.",
+        "stronger": "Osoitat uhat ja puolustajat tarkemmin ja nopeammin."
+      },
+      {
+        "label": "Visualisointi",
+        "struggling": "Kuvitellut siirrot tuntuvat epämääräisiltä.",
+        "stronger": "Syntyvä asema on helpompi kuvata ja pitää mielessä."
+      },
+      {
+        "label": "Läpikäynti",
+        "struggling": "Pelin jälkeiset muistiinpanot jäävät sumeiksi.",
+        "stronger": "Kuvaat avainhetken tarpeeksi selvästi, jotta voit palata siihen myöhemmin."
+      }
+    ],
+    "mistakes": [
+      "Ruutujen nimien harjoittelu ilman oikeita asemia.",
+      "Merkintäsääntöjen opettelu ilman esimerkkejä laudalla.",
+      "Pitkän kantaman nappuloiden linjojen ohittaminen harjoitellessa.",
+      "Tavan hylkääminen heti, kun perusmerkintä tuntuu tutulta."
+    ],
+    "mistakesCallout": "Älä vain toista ruutujen nimiä. Käytä niitä oikeiden nappuloiden ja asemien kanssa.",
+    "planTitle": "7 päivän koordinaattilämmittely",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "8 minuuttia",
+        "detail": "Nimeä jokainen nappula ja ruutu, kun rakennat Memory Chess -asemaa."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "10 minuuttia",
+        "detail": "Lisää pitkien linjojen nimeäminen läheteille ja torneille."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "10 minuuttia",
+        "detail": "Harjoittele ratsun hyppyjen karttaa ja sujuvuutta keskustan ruuduilla."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "12 minuuttia",
+        "detail": "Käytä ruutujen nimiä koko laudan silmäilyssä ja käy sitten yksi tärkeä asema läpi pelkillä ruutujen nimillä."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Onko koordinaateilla oikeasti väliä aloittelijalle?",
+        "answer": "On, kun ne nopeuttavat hahmottamista, visualisointia ja läpikäyntiä. Täydellistä merkintää ei tarvita, mutta nopea tunnistus auttaa."
+      },
+      {
+        "question": "Mikä on paras tapa opetella koordinaatit?",
+        "answer": "Opettele ruutujen nimet oikeilla asemilla ja nappuloilla sen sijaan, että toistaisit pelkkää merkintää."
+      },
+      {
+        "question": "Auttaako tämä vähentämään virheitä?",
+        "answer": "Epäsuorasti kyllä. Nopea ruutujen tunnistus tekee silmäilystä ja uhkien tarkistuksesta täsmällisempää."
+      },
+      {
+        "question": "Kuinka kauan koordinaatteja kannattaa harjoitella?",
+        "answer": "Viisi–kymmenen keskittynyttä minuuttia riittää, kun harjoitus liittyy oikeaan lautatyöhön."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Käytä koordinaatteja laajemman silmäilyn tukena."
+      },
+      {
+        "reason": "Tee päässä tehtävistä päivityksistä tarkkoja ruutu kerrallaan."
+      },
+      {
+        "reason": "Käytä ruutujen nimiä ajattelun yksinkertaistamiseen paineessa."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Päivittäinen 20 minuutin shakkisuunnitelma aloittelijalle",
+    "h1": "Päivittäinen 20 minuutin shakkisuunnitelma aloittelijalle",
+    "description": "Noudata yksinkertaista 20 minuutin suunnitelmaa: lautatyö, muisti, pelit ja lyhyt läpikäynti.",
+    "primaryKeyword": "päivittäinen 20 minuutin shakkisuunnitelma",
+    "secondaryKeywords": [
+      "aloittelijan päivittäinen shakkirutiini",
+      "lyhyt shakin opiskelusuunnitelma",
+      "kehity 20 minuutissa päivässä",
+      "aloittelijan harjoitusohjelma",
+      "tehtävien ja läpikäynnin rutiini"
+    ],
+    "painPoint": "Haluat kehittyä, mutta useimmat shakkisuunnitelmat vievät liikaa aikaa.",
+    "ctaLabel": "Aloita 20 minuutin suunnitelma",
+    "quickAnswer": "Anna muutama minuutti kullekin: laudan tuntumalle, muistille, taktiikalle ja läpikäynnille. Pidä rutiini niin lyhyenä, että jaksat sen väsyneenäkin.",
+    "keyTakeaways": [
+      "Usein harjoittelu merkitsee enemmän kuin pitkä harjoittelu.",
+      "Käytä sekä harjoituksia että oikeita asemia.",
+      "Lyhyt läpikäynti auttaa huomista harjoitusta."
+    ],
+    "whoThisIsFor": [
+      "Aloittelijat, joilla on vähän aikaa mutta tasainen motivaatio.",
+      "Pelaajat, jotka luopuvat liian raskaista suunnitelmista.",
+      "Kaikki, jotka haluavat toistettavan päivärutiinin."
+    ],
+    "timeToRead": "7 minuutin luku",
+    "introParagraphs": [
+      "Monet opiskelusuunnitelmat toimivat vain runsaalla vapaa-ajalla. Käyttökelpoisen suunnitelman pitää toimia myös kiireisenä päivänä.",
+      "Tämä 20 minuutin rutiini säilyttää yhden harjoituksen, yhden oikean aseman ja lyhyen läpikäynnin."
+    ],
+    "startHereTitle": "20 minuutin shakkirutiinisi",
+    "startHereSteps": [
+      "Käytä 4 minuuttia laudan tuntuman tai muistamisen harjoitukseen.",
+      "Käytä 6 minuuttia Memory Chess -kierrokseen samoilla asetuksilla koko viikon.",
+      "Käytä 6 minuuttia taktiikkaan tai oikean pelin asemaan.",
+      "Käytä 4 minuuttia sen kirjaamiseen, mikä meni tänään pieleen ja mikä piti.",
+      "Pidä rakenne vähintään 7 päivää ennen muutoksia."
+    ],
+    "drillSectionTitle": "Harjoituksia, jotka mahtuvat lyhyeen suunnitelmaan",
+    "drillCards": [
+      {
+        "title": "Lämmittely muistamisella",
+        "description": "Käytä lyhyttä Memory Chess -kierrosta koko session ankkurina.",
+        "duration": "6 minuuttia",
+        "goal": "Aloittaa jokainen sessio samalla muistilämmittelyllä.",
+        "ctaLabel": "Aloita lämmittely"
+      },
+      {
+        "title": "Uhkatarkistuksen pikaerä",
+        "description": "Silmäile asema shakkien, lyöntien, uhkien ja suojaamattomien nappuloiden varalta.",
+        "duration": "4 minuuttia",
+        "goal": "Parantaa siirtymää peleihin lähes ilman ajankäyttöä.",
+        "ctaLabel": "Tee uhkatarkistus"
+      },
+      {
+        "title": "Muistiinpanokierros",
+        "description": "Kirjoita yksi lause siitä, minkä tyyppisen virheen teit tänään.",
+        "duration": "4 minuuttia",
+        "goal": "Käyttää tämän päivän oppi huomenna.",
+        "ctaLabel": "Kirjaa yksi oppi"
+      }
+    ],
+    "comparisonTitle": "Rutiini, jonka oikeasti pidät",
+    "comparisonSummary": "Paras rutiini on se, jonka pystyt toistamaan tavallisena viikkona.",
+    "comparisonRows": [
+      {
+        "label": "Päivittäinen kuorma",
+        "struggling": "Yrität liian montaa opiskelutapaa kerralla.",
+        "stronger": "Toistat tiivistä kierrosta, joka kattaa perusteet joka päivä."
+      },
+      {
+        "label": "Siirtymä peliin",
+        "struggling": "Vain katselet tai luet etkä harjoittele.",
+        "stronger": "Jokaisessa sessiossa on harjoitus, jota käytät peleissä."
+      },
+      {
+        "label": "Läpikäynti",
+        "struggling": "Virheet katoavat, koska mitään ei kirjata.",
+        "stronger": "Jokainen päivä päättyy huomiseen tarkoitettuun muistiinpanoon."
+      }
+    ],
+    "mistakes": [
+      "Edistyneiden suunnitelmien kopiointi, joita ei jaksa pitää.",
+      "Kaikkien 20 minuutin käyttäminen passiiviseen sisältöön.",
+      "Rutiinin vaihtaminen joka toinen päivä.",
+      "Läpikäynnin ohittaminen, koska se tuntuu pieneltä."
+    ],
+    "mistakesCallout": "Älä kasvata suunnitelmaa. Tee siitä tarpeeksi kevyt toistettavaksi.",
+    "planTitle": "20 minuutin rutiini 7 päivän ajan",
+    "planSteps": [
+      {
+        "label": "Päivä 1–3",
+        "duration": "20 minuuttia",
+        "detail": "Pidä johdonmukaisuuden vuoksi samat Memory Chess -asetukset ja sama tarkistusmuoto."
+      },
+      {
+        "label": "Päivä 4",
+        "duration": "20 minuuttia",
+        "detail": "Lue muistiinpanosi ja pidä vain yksi korjauskohta seuraaviksi kolmeksi päiväksi."
+      },
+      {
+        "label": "Päivä 5–6",
+        "duration": "20 minuuttia",
+        "detail": "Toista täsmälleen sama rakenne ilman ylimääräistä vaihtelua."
+      },
+      {
+        "label": "Päivä 7",
+        "duration": "20 minuuttia",
+        "detail": "Tarkista, paranivatko virheet tai muistamistarkkuus, ja tee vain yksi muutos seuraavaa viikkoa varten."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Riittääkö 20 minuutin harjoittelu?",
+        "answer": "Riittää, jos se on säännöllistä ja sisältää harjoituksia, jotka siirtyvät suoraan peleihin eikä vain passiivista opiskelua."
+      },
+      {
+        "question": "Pitäisikö kaikki 20 minuuttia käyttää taktiikkaan?",
+        "answer": "Yleensä ei. Laudan selkeyden, taktisen siirtymän ja lyhyen läpikäynnin yhdistelmä toimii aloittelijalla paremmin."
+      },
+      {
+        "question": "Kuinka kauan samaa suunnitelmaa kannattaa pitää?",
+        "answer": "Vähintään viikko. Jatkuva vaihtaminen tekee kehityksestä mahdotonta lukea."
+      },
+      {
+        "question": "Mitä minun pitäisi seurata?",
+        "answer": "Virheitä peliä kohti, muistamistarkkuutta ja useimmin toistuvaa virhetyyppiä."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Katso, mihin tämä lyhyt rutiini sopii pidemmässä suunnitelmassa."
+      },
+      {
+        "reason": "Tasapainota taktinen työ ja laudan selkeys."
+      },
+      {
+        "reason": "Pidä läpikäyntiosuus yksinkertaisena ja tuottavana."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Näin aloittelija analysoi omat pelinsä",
+    "h1": "Näin aloittelija analysoi omat shakkipelinsä",
+    "description": "Käy pelisi läpi, ymmärrä virheet ja valitse yksi selkeä asia harjoiteltavaksi.",
+    "primaryKeyword": "shakkipelien analysointi aloittelijalle",
+    "secondaryKeywords": [
+      "pelin analyysi aloittelijalle",
+      "omien pelien läpikäynti",
+      "itseanalyysi shakissa",
+      "virheiden analysointi",
+      "pelin jälkeinen rutiini"
+    ],
+    "painPoint": "Analyysisi on liian nopea, sekava tai täynnä moottorin muunnelmia.",
+    "ctaLabel": "Analysoi seuraava peli",
+    "quickAnswer": "Etsi kohta, jossa peli kääntyi, nimeä virhetyyppi ja valitse yksi korjaus. Katso moottoria vasta kun olet itse tutkinut aseman.",
+    "keyTakeaways": [
+      "Päätä jokainen analyysi toimintaan, ei pitkään listaan moottorin siirtoja.",
+      "Virhetyypin nimeäminen auttaa valitsemaan harjoituksen.",
+      "Yritä rakentaa avainasema muistista."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka käyvät pelejä läpi mutta eivät tiedä mitä sitten.",
+      "Aloittelijat, jotka näkevät arvion hyppäävän ymmärtämättä miksi.",
+      "Kaikki, jotka haluavat yksinkertaisemman tavan pelin jälkeen."
+    ],
+    "timeToRead": "7 minuutin luku",
+    "introParagraphs": [
+      "Aloita yhdellä kysymyksellä: mikä virhe muutti pelin? Pelkkä moottorin arvio ei kerro, mitä pitäisi harjoitella.",
+      "Rakenna avainasema, nimeä virhe ja valitse sen perusteella huomisen harjoitus."
+    ],
+    "startHereTitle": "Aloita tästä: aloittelijan analyysikierros",
+    "startHereSteps": [
+      "Etsi ensimmäinen hetki, jossa asema muuttui paljon.",
+      "Rakenna se asema muistista ennen kuin katsot moottoria.",
+      "Luokittele virhe hahmottamiseksi, muistiksi, laskemiseksi tai ajankäytöksi.",
+      "Kysy, mikä merkki olisi käskenyt hidastaa.",
+      "Muunna vastaus harjoitukseksi seuraavaan sessioon."
+    ],
+    "drillSectionTitle": "Yksinkertaisia analyysiharjoituksia",
+    "drillCards": [
+      {
+        "title": "Rakenna avainasema",
+        "description": "Rakenna päävirheen asema muistista ennen kuin tarkistat sen.",
+        "duration": "5 minuuttia",
+        "goal": "Muistaa asema ennen vastauksen näkemistä.",
+        "ctaLabel": "Rakenna se hetki"
+      },
+      {
+        "title": "Merkitse virhetyyppi",
+        "description": "Merkitse jokainen suuri virhe hahmottamiseksi, muistiksi, laskemiseksi tai aikapulaksi.",
+        "duration": "3 minuuttia",
+        "goal": "Tietää, mitä harjoitella seuraavaksi.",
+        "ctaLabel": "Merkitse virhetyyppi"
+      },
+      {
+        "title": "Analyysi yhdellä korjauksella",
+        "description": "Päätä analyysi yhteen selkeään korjaukseen huomista varten.",
+        "duration": "2 minuuttia",
+        "goal": "Lopettaa hyödylliseen seuraavaan askeleeseen.",
+        "ctaLabel": "Valitse yksi korjaus"
+      }
+    ],
+    "comparisonTitle": "Hyödyllinen ja hyödytön analyysi",
+    "comparisonSummary": "Sinun ei tarvitse tutkia jokaista siirtoa. Etsi selkein oppi seuraavaa harjoitusta varten.",
+    "comparisonRows": [
+      {
+        "label": "Moottorin käyttö",
+        "struggling": "Avaat moottorin heti.",
+        "stronger": "Teet oman arviosi ennen tarkistusta."
+      },
+      {
+        "label": "Lopputulos",
+        "struggling": "Päädyt moniin kommentteihin ilman toimintaa.",
+        "stronger": "Päädyt harjoitukseen tai listan säätöön."
+      },
+      {
+        "label": "Muisti",
+        "struggling": "Asema katoaa heti pelin jälkeen.",
+        "stronger": "Rakennat sen uudelleen ja näet virheen selvemmin."
+      }
+    ],
+    "mistakes": [
+      "Analysointi vain moottorin muunnelmilla ilman omaa arviota.",
+      "Yritys analysoida jokainen siirto yhtä syvästi.",
+      "Virhetyypin nimeämättä jättäminen.",
+      "Analyysin lopettaminen ilman seuraavan harjoituksen valintaa."
+    ],
+    "mistakesCallout": "Älä käy läpi jokaista moottorin muunnelmaa. Nimeä virhe ja harjoittele korjaus.",
+    "planTitle": "7 päivän analyysitapa",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "10 minuuttia",
+        "detail": "Käy läpi yksi peli ja etsi vain ensimmäinen suuri käännekohta."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "12 minuuttia",
+        "detail": "Rakenna se asema muistista ennen moottorin katsomista."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "12 minuuttia",
+        "detail": "Liitä jokainen suuri virhe tyyppiin ja laske, mikä toistuu useimmin."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15 minuuttia",
+        "detail": "Valitse seuraavan session ensimmäinen harjoitus yleisimmän virhetyypin perusteella."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kannattaako aloittelijan käyttää moottoria?",
+        "answer": "Kannattaa, mutta vasta oman arvion jälkeen. Muuten analyysi jää passiiviseksi."
+      },
+      {
+        "question": "Kuinka monta virhettä pelin jälkeen kannattaa katsoa?",
+        "answer": "Yhdestä kolmeen suurta käännekohtaa riittää useimmille aloittelijoille."
+      },
+      {
+        "question": "Mitä analyysin jälkeen kannattaa kirjata?",
+        "answer": "Virhetyyppi, ohitettu merkki ja yksi harjoitus tai listan säätö seuraavaa kertaa varten."
+      },
+      {
+        "question": "Miten Memory Chess auttaa analyysissä?",
+        "answer": "Se auttaa rakentamaan tärkeät asemat uudelleen, jolloin analyysi on tarkempaa."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sijoita analyysi rutiiniin, joka ei kuormita liikaa."
+      },
+      {
+        "reason": "Muunna analyysin tulokset virheenestoharjoituksiksi."
+      },
+      {
+        "reason": "Muista ja rakenna avainhetket pelin jälkeen."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Kuinka monta shakkitehtävää aloittelijan kannattaa ratkoa päivässä?",
+    "h1": "Kuinka monta shakkitehtävää aloittelijan kannattaa ratkoa päivässä?",
+    "description": "Valitse päivittäinen tehtävämäärä, joka parantaa taktiikkaa ja jättää aikaa muistille, peleille ja analyysille.",
+    "primaryKeyword": "kuinka monta shakkitehtävää päivässä",
+    "secondaryKeywords": [
+      "päivittäinen tehtävämäärä",
+      "aloittelijan tehtävärutiini",
+      "kuinka paljon taktiikkaa päivässä",
+      "liikaa shakkitehtäviä",
+      "aloittelijan taktiikkamäärä"
+    ],
+    "painPoint": "Ratkot paljon tehtäviä mutta et tiedä, auttavatko ne peleissäsi.",
+    "ctaLabel": "Tasapainota tehtävät ja pelaaminen",
+    "quickAnswer": "Useimmille aloittelijoille riittää lyhyt päivittäinen sessio. Lopeta kun ajattelet vielä selkeästi ja jätä aikaa peleille, muistille ja analyysille.",
+    "keyTakeaways": [
+      "Tehtävien laatu merkitsee enemmän kuin määrä.",
+      "Liian monta tehtävää vie aikaa peleiltä ja analyysiltä.",
+      "Ihanteellinen määrä jättää aikaa pelaamiseen tai läpikäyntiin."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, joiden koko opiskelusuunnitelma on tehtäviä.",
+      "Aloittelijat, jotka haluavat selkeän tehtävärutiinin.",
+      "Kaikki, jotka haluavat tasapainottaa tehtävät ja pelaamisen."
+    ],
+    "timeToRead": "7 minuutin luku",
+    "introParagraphs": [
+      "Kaikille sopivaa täydellistä lukua ei ole. Liian harvat tehtävät hidastavat kuvioiden oppimista, liian monet eivät jätä aikaa muulle hyödylliselle.",
+      "Ratko sen verran, että pysyt terävänä, ja käytä loppuaika laudan muistiin, peleihin ja analyysiin."
+    ],
+    "startHereTitle": "Valitse järkevä päivämäärä",
+    "startHereSteps": [
+      "Päätä, ovatko tehtävät lämmittely, pääjakso vai siirtymän tarkistus.",
+      "Pidä lyhyt Memory Chess -kierros ennen tai jälkeen laudan selkeyden vuoksi.",
+      "Lopeta kun vastaukset muuttuvat hätäisiksi sen sijaan, että jahtaisit isompaa lukua.",
+      "Rakenna joka päivä yksi ohitettu taktinen hetki oikeasta pelistä.",
+      "Muuta määrää vasta kun olet tarkistanut, muuttuvatko peliesi virheet."
+    ],
+    "drillSectionTitle": "Harjoituksia, jotka tekevät tehtävistä hyödyllisempiä",
+    "drillCards": [
+      {
+        "title": "Lämmittely ja muistaminen",
+        "description": "Yhdistä lyhyt muistiharjoitus kohtuulliseen tehtäväjaksoon sen sijaan, että aloittaisit kylmiltään.",
+        "duration": "10 minuuttia",
+        "goal": "Yhdistää tehtävät oikeaan peliin.",
+        "ctaLabel": "Lisää muistaminen"
+      },
+      {
+        "title": "Merkin tarkistus jokaisen tehtävän jälkeen",
+        "description": "Kysy ennen ratkaisun näkemistä, mikä varoitusmerkki teki taktiikan mahdolliseksi.",
+        "duration": "5 minuuttia",
+        "goal": "Huomata, miksi asemassa on taktiikkaa.",
+        "ctaLabel": "Tarkista merkki"
+      },
+      {
+        "title": "Rakenna pelin taktiikka uudelleen",
+        "description": "Muunna pelissä ohitettu taktiikka tehtäväksi, jonka ratkot rakennettuasi aseman.",
+        "duration": "5 minuuttia",
+        "goal": "Käyttää omien peliesi taktiikkaa.",
+        "ctaLabel": "Rakenna taktiikka"
+      }
+    ],
+    "comparisonTitle": "Liian vähän, liian paljon ja sopivasti",
+    "comparisonSummary": "Oikea määrä pitää taktiikan terävänä ja jättää silti aikaa pelaamiseen.",
+    "comparisonRows": [
+      {
+        "label": "Kuvioiden tunnistus",
+        "struggling": "Liian vähäinen harjoittelu tekee tavallisesta taktiikasta vierasta.",
+        "stronger": "Kohtuullinen päiväjakso pitää kuviot tuoreina."
+      },
+      {
+        "label": "Siirtymä peliin",
+        "struggling": "Liian monta tehtävää ei jätä aikaa laudan tuntumalle tai analyysille.",
+        "stronger": "Rutiinissasi säilyy muistaminen ja oikeiden asemien työstö."
+      },
+      {
+        "label": "Väsymys",
+        "struggling": "Myöhemmät tehtävät muuttuvat hätäiseksi arvailuksi.",
+        "stronger": "Lopetat, kun päätökset ovat vielä puhtaita."
+      }
+    ],
+    "mistakes": [
+      "Tehtävämäärän käyttäminen ainoana laadun mittarina.",
+      "Taktiikan ratkominen ilman siirtymää peleihin.",
+      "Jatkaminen pitkään keskittymisen laskun jälkeen.",
+      "Analyysin ja laudan tuntuman syrjäyttäminen."
+    ],
+    "mistakesCallout": "Enemmän tehtäviä ei ole aina parempi. Tarkista, auttavatko ne oikeissa peleissäsi.",
+    "planTitle": "7 päivän tasapainosuunnitelma",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "15 minuuttia",
+        "detail": "Käytä pientä tehtäväjaksoa ja lisää sen eteen lyhyt muistiharjoitus."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "15 minuuttia",
+        "detail": "Lisää merkin tarkistus jokaisen tehtävän jälkeen nähdäksesi, miksi taktiikka oli olemassa."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "15 minuuttia",
+        "detail": "Rakenna pelissä ohitettu taktiikka ja vertaa sitä tehtäväsuorituksiisi."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15–20 minuuttia",
+        "detail": "Muuta määrää vain, jos vastaukset pysyvät huolellisina ja pelaamiseen jää aikaa."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kuinka monta tehtävää päivässä riittää aloittelijalle?",
+        "answer": "Sen verran, että tavallinen taktiikka pysyy tuttuna ja aikaa jää muistille ja peleille. Monille riittää lyhyt päivittäinen sessio."
+      },
+      {
+        "question": "Voiko liian monesta tehtävästä olla haittaa?",
+        "answer": "Epäsuorasti kyllä. Ne voivat syrjäyttää laudan tuntuman, muistamisen ja analyysin, joita oikea siirtymä vaatii."
+      },
+      {
+        "question": "Tehtävät ennen vai jälkeen pelien?",
+        "answer": "Molemmat toimivat, mutta pieni lämmittely ja jälkikäteinen siirtymäaskel toimivat usein hyvin."
+      },
+      {
+        "question": "Mitä minun pitäisi seurata?",
+        "answer": "Vähenevätkö virheet ja ohitetut yksinkertaiset taktiikat, ei vain montako tehtävää ratkoit."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Ymmärrä, miksi menestys tehtävissä ei yksin riitä."
+      },
+      {
+        "reason": "Sijoita tehtävät tasapainoiseen lyhyeen rutiiniin."
+      },
+      {
+        "reason": "Opettele yleiset kuviot määrän kasvattamisen sijaan."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Kuvioiden tunnistusharjoituksia shakissa",
+    "h1": "Kuvioiden tunnistusharjoituksia aloittelijoille",
+    "description": "Käytä yksinkertaisia harjoituksia yleisten shakkikuvioiden huomaamiseen ja hyödyllisten ideoiden nopeampaan näkemiseen.",
+    "primaryKeyword": "shakin kuvioiden tunnistusharjoitukset",
+    "secondaryKeywords": [
+      "kuvioiden tunnistus shakissa",
+      "taktisten aiheiden harjoittelu",
+      "taktisten kuvioiden harjoitukset",
+      "shakkikuviot aloittelijoille",
+      "shakkiaiheiden muistaminen"
+    ],
+    "painPoint": "Jokainen asema tuntuu uudelta, joten näet taktiset ideat liian myöhään.",
+    "ctaLabel": "Harjoittele kuvioita",
+    "quickAnswer": "Kuvio on tuttu nappuloiden ja ruutujen asetelma. Toista samaa kuviotyyppiä, kunnes näet nopeasti sen takana olevan idean.",
+    "keyTakeaways": [
+      "Kuvioon kuuluu sekä muoto laudalla että idea, jonka se luo.",
+      "Laudan muisti auttaa huomaamaan kuviot paineessa.",
+      "Toista muutamaa yleistä kuviota ennen kuin lisäät monta uutta."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka ratkovat taktiikkaa mutta eivät näe samoja muotoja peleissä.",
+      "Aloittelijat, jotka haluavat enemmän rakennetta kuin satunnaisia tehtäviä.",
+      "Kaikki, joista asemat näyttävät yhä sekavilta."
+    ],
+    "timeToRead": "7 minuutin luku",
+    "introParagraphs": [
+      "Kuvioiden tunnistus tekee asemasta tutun. Muoto laudalla voi viitata haarukkaan, sidontaan, loukkuun jääneeseen nappulaan tai heikkoon ruutuun jo ennen laskemista.",
+      "Aloita pienestä joukosta yleisiä kuvioita. Rakenna jokainen asema muistista, jotta muistat nappulat ja ruudut, jotka kantavat idean."
+    ],
+    "startHereTitle": "Aloita yksi kuvio kerrallaan",
+    "startHereSteps": [
+      "Valitse yksi kuviotyyppi, esimerkiksi haarukat, sidonnat tai hyökkäykset suojaamattomiin nappuloihin.",
+      "Tutki muoto ja rakenna se muistista, ei vain paikallaan olevasta kaaviosta.",
+      "Nimeä ruudut ja puolustajat, jotka kantavat kuviota.",
+      "Pelaa kierros Memory Chessiä vahvistaaksesi puhdasta muistamista.",
+      "Käy läpi tuore peli ja etsi, missä samankaltainen kuvio ilmeni tai puuttui."
+    ],
+    "drillSectionTitle": "Yksinkertaisia kuvioharjoituksia",
+    "drillCards": [
+      {
+        "title": "Rakenna kuvio",
+        "description": "Rakenna shakkikuvio muistista ja nimeä avainnappulat ja ruudut.",
+        "duration": "5 minuuttia",
+        "goal": "Yhdistää kuvio selkeään laudan muistiin.",
+        "ctaLabel": "Rakenna kuvio"
+      },
+      {
+        "title": "Toista yksi perhe",
+        "description": "Toista useita saman kuvion esimerkkejä ennen tyypin vaihtoa.",
+        "duration": "5 minuuttia",
+        "goal": "Tehdä laudan muodosta tuttu.",
+        "ctaLabel": "Toista yksi perhe"
+      },
+      {
+        "title": "Etsi se omista peleistäsi",
+        "description": "Käy tuore peli läpi ja etsi, missä sama kuvio ilmeni.",
+        "duration": "5 minuuttia",
+        "goal": "Yhdistää kuviotyö oikeisiin asemiin.",
+        "ctaLabel": "Etsi peleistäsi"
+      }
+    ],
+    "comparisonTitle": "Satunnainen taktiikka ja aito kuvioiden tunnistus",
+    "comparisonSummary": "Kuviot auttavat, kun huomaat ne ennen kuin alat laskea pitkälle.",
+    "comparisonRows": [
+      {
+        "label": "Harjoittelun rakenne",
+        "struggling": "Hyppelet jatkuvasti toisiinsa liittymättömien kuvioiden välillä.",
+        "stronger": "Toistat yhtä kuviotyyppiä, kunnes se tuntuu tutulta."
+      },
+      {
+        "label": "Laudan muisti",
+        "struggling": "Tiedät idean mutta et ruutuja, jotka kantavat sitä.",
+        "stronger": "Muistat yksityiskohdat, jotka saavat kuvion toimimaan."
+      },
+      {
+        "label": "Oikeat pelit",
+        "struggling": "Kuviot jäävät tehtäviin.",
+        "stronger": "Huomaat niiden varhaiset merkit käynnissä olevassa pelissä."
+      }
+    ],
+    "mistakes": [
+      "Vain kuvion nimen opettelu ilman muodon ymmärtämistä.",
+      "Kuviotyypin vaihtaminen liian usein.",
+      "Kuviota kantavien ruutujen ja puolustajien ohittaminen.",
+      "Pelin läpikäynnin ohittaminen kuviotyön jälkeen."
+    ],
+    "mistakesCallout": "Älä lisää vaihtelua liian nopeasti. Toista yhtä kuviotyyppiä, kunnes se tuntuu tutulta.",
+    "planTitle": "7 päivän kuviosuunnitelma",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "10 minuuttia",
+        "detail": "Valitse yksi kuviotyyppi ja rakenna useita esimerkkejä muistista."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "12 minuuttia",
+        "detail": "Lisää jokaiseen esimerkkiin ruutujen nimet ja puolustajien laskeminen."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "12 minuuttia",
+        "detail": "Pelaa kierros Memory Chessiä ennen kuviotyötä, jotta lauta on selkeämpi."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15 minuuttia",
+        "detail": "Etsi samaa kuviota viimeaikaisista peleistäsi ja merkitse, missä se ilmeni tai melkein ilmeni."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Mitä kuvioiden tunnistus shakissa tarkoittaa?",
+        "answer": "Tutun muodon näkemistä laudalla ja siihen yleensä sopivan idean nopeaa muistamista."
+      },
+      {
+        "question": "Miten aloittelija harjoittelee kuvioiden tunnistusta?",
+        "answer": "Toistamalla pientä kuviojoukkoa, rakentamalla asemat muistista ja etsimällä niitä oikeista peleistä."
+      },
+      {
+        "question": "Riittävätkö tehtävät kuvioihin?",
+        "answer": "Eivät aina. Ne auttavat, mutta saman tyypin toistaminen ja pelien läpikäynti tekee niistä oikeasti käyttökelpoisia."
+      },
+      {
+        "question": "Miksi yhdistää Memory Chess kuviotyöhön?",
+        "answer": "Koska kuvion tunnistaminen on helpompaa, kun koko lauta pysyy selkeänä muistissa."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Rakenna vahvempi muistikerros kuvioiden oppimiseen."
+      },
+      {
+        "reason": "Tasapainota kuviotyö järkevällä tehtävämäärällä."
+      },
+      {
+        "reason": "Käytä opiskelemiasi kuvioita oikeissa peleissä."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Shakin laskuharjoituksia aloittelijoille",
+    "h1": "Shakin laskuharjoituksia aloittelijoille",
+    "description": "Yksinkertaisia harjoituksia siirtojen vertailuun ja lyhyiden muunnelmien seuraamiseen ilman langan menettämistä.",
+    "primaryKeyword": "shakin laskuharjoitukset",
+    "secondaryKeywords": [
+      "shakin laskeminen aloittelijalle",
+      "siirtojen laskeminen eteenpäin",
+      "muunnelman pitämisen harjoitukset",
+      "ehdokassiirtojen harjoittelu",
+      "visualisointi ja laskeminen"
+    ],
+    "painPoint": "Aloitat laskemisen ja sekoitat pian siirrot tai menetät aseman.",
+    "ctaLabel": "Harjoittele puhdasta laskemista",
+    "quickAnswer": "Vertaa aluksi vain yhtä tai kahta mahdollista siirtoa. Pidä lauta selkeänä päässäsi ja tarkista heti.",
+    "keyTakeaways": [
+      "Kaksi selkeää muunnelmaa on parempi kuin viisi sekavaa.",
+      "Selkeä visualisointi tuottaa puhdasta laskemista.",
+      "Tarkista heti jokaisen harjoituksen jälkeen."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka tietävät laskevansa liian vähän mutta menettävät muunnelman nopeasti.",
+      "Aloittelijat, jotka siirtävät tunteella terävissä asemissa.",
+      "Kaikki, jotka haluavat käyttää muistiharjoittelua oikeissa päätöksissä."
+    ],
+    "timeToRead": "7 minuutin luku",
+    "introParagraphs": [
+      "Laskeminen on yksinkertaisesti kysymys: «Jos siirrän tähän, mitä tapahtuu?» Vaikeaa on pitää lauta selkeänä.",
+      "Laudan muisti ja visualisointi helpottavat laskemista. Harjoittele niitä yhdessä, älä erikseen."
+    ],
+    "startHereTitle": "Aloita kahdesta mahdollisesta siirrosta",
+    "startHereSteps": [
+      "Valitse asemasta enintään kaksi ehdokassiirtoa.",
+      "Kuvittele muunnelma kahden puolisiirron verran ja tiivistä se yhteen lauseeseen.",
+      "Pelaa kierros Memory Chessiä, jotta perusasema pysyy terävänä.",
+      "Palaa lähtöasemaan ja vertaa kahta muunnelmaa rauhassa.",
+      "Tarkista heti ja kerro, tuliko virhe laudan kuvasta vai siirtojärjestyksestä."
+    ],
+    "drillSectionTitle": "Yksinkertaisia laskuharjoituksia",
+    "drillCards": [
+      {
+        "title": "Vertaa kahta ehdokasta",
+        "description": "Pidä mielessä kaksi järkevää siirtoa ja vertaa niiden lyhyitä taktisia seurauksia.",
+        "duration": "6 minuuttia",
+        "goal": "Vertailla siirtoja ilman liikaa muistettavaa.",
+        "ctaLabel": "Vertaa kahta muunnelmaa"
+      },
+      {
+        "title": "Muista ensin, laske sitten",
+        "description": "Tee lyhyt muistikierros ennen muunnelmatyötä puhtaamman laudan vuoksi.",
+        "duration": "4 minuuttia",
+        "goal": "Pitää lauta ennen sarjan seuraamista.",
+        "ctaLabel": "Muista ennen laskemista"
+      },
+      {
+        "title": "Muunnelma yhdessä lauseessa",
+        "description": "Tiivistä haara yhteen lauseeseen ennen tarkistusta.",
+        "duration": "4 minuuttia",
+        "goal": "Pitää sarja selkeänä ja helposti selitettävänä.",
+        "ctaLabel": "Tiivistä haara"
+      }
+    ],
+    "comparisonTitle": "Sekava ja puhdas laskeminen",
+    "comparisonSummary": "Älä jahtaa vielä pitkiä muunnelmia. Tee ensin lyhyistä tarkkoja.",
+    "comparisonRows": [
+      {
+        "label": "Ehdokassiirrot",
+        "struggling": "Harkitset liian montaa siirtoa kerralla.",
+        "stronger": "Vertaat paria järkevää siirtoa."
+      },
+      {
+        "label": "Laudan kuva",
+        "struggling": "Syntyvä asema hämärtyy nopeasti.",
+        "stronger": "Pidät avainruudut ja puolustajat vakaina muistissa."
+      },
+      {
+        "label": "Tarkistus",
+        "struggling": "Et tiedä, miksi muunnelma romahti.",
+        "stronger": "Näet, tuliko virhe muistista, siirtojärjestyksestä vai arviosta."
+      }
+    ],
+    "mistakes": [
+      "Liian monen haaran laskeminen kerralla.",
+      "Ehdokkaiden valinnan ohittaminen ja kaiken laskeminen.",
+      "Tarkistamatta jättäminen heti muunnelman jälkeen.",
+      "Heikon laudan muistin ohittaminen."
+    ],
+    "mistakesCallout": "Älä laske vielä pitkälle. Selkeä kahden siirron muunnelma on hyödyllisempi kuin pitkä ja sekava.",
+    "planTitle": "7 päivän laskusuunnitelma",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "10 minuuttia",
+        "detail": "Vain kahden ehdokkaan vertailua ja välitön tarkistus."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "12 minuuttia",
+        "detail": "Lisää kierros Memory Chessiä ennen laskutyötä."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "12 minuuttia",
+        "detail": "Tiivistä jokainen haara yhteen lauseeseen ennen tarkistusta."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15 minuuttia",
+        "detail": "Vie tapa pikapeleihin: pysähdy terävissä kohdissa ja pidä ehdokkaita vähän."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Miten aloittelija parantaa laskemistaan?",
+        "answer": "Vähemmän ehdokkaita, nopea tarkistus sekä parempi visualisointi ja muisti muunnelmatyön alla."
+      },
+      {
+        "question": "Pitäisikö laskea pidemmälle?",
+        "answer": "Vasta kun nykyinen syvyys on luotettava. Tarkkuus voittaa kunnianhimon."
+      },
+      {
+        "question": "Miksi muunnelmani romahtavat?",
+        "answer": "Usein siksi, ettei laudan kuva ole tarpeeksi vakaa tai koska pidät liian montaa ehdokasta yhtä aikaa."
+      },
+      {
+        "question": "Auttaako Memory Chess laskemisessa?",
+        "answer": "Kyllä. Parempi muistaminen tekee syntyvien asemien pitämisestä paljon helpompaa laskun aikana."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Vahvista kerrosta, joka pitää muunnelmat laskemisen alla."
+      },
+      {
+        "reason": "Näe lauta selkeämmin ennen muunnelmien pidentämistä."
+      },
+      {
+        "reason": "Käytä yksinkertaisempaa päätösprosessia puhtaampaan laskemiseen."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Näin aloittelija ajattelee shakissa",
+    "h1": "Näin aloittelija ajattelee shakissa",
+    "description": "Käytä jokaisella siirrolla yksinkertaista prosessia: tarkista uhat, vertaa vaihtoehtoja ja hallitse aikaa.",
+    "primaryKeyword": "miten ajatella shakissa",
+    "secondaryKeywords": [
+      "aloittelijan ajatteluprosessi",
+      "mitä ajatella shakissa",
+      "päätöksenteko shakissa",
+      "tarkistuslista ennen siirtoa",
+      "yksinkertainen ajatteluprosessi"
+    ],
+    "painPoint": "Siirrät liian nopeasti tai mietit liian kauan, ja olet silti epävarma.",
+    "ctaLabel": "Harjoittele yksinkertaista siirtoprosessia",
+    "quickAnswer": "Käytä jokaisella siirrolla samaa lyhyttä prosessia: tarkista vastustajan uhat, valitse yhdestä kolmeen siirtoa ja varmista, että valinta on turvallinen.",
+    "keyTakeaways": [
+      "Lyhyttä prosessia on helpompi käyttää kuin pitkää listaa.",
+      "Uhkien tarkistus tulee aina ennen siirron valintaa.",
+      "Käytä enemmän aikaa, kun asema muuttuu vaaralliseksi."
+    ],
+    "whoThisIsFor": [
+      "Pelaajat, jotka arvailevat rauhallisissa asemissa ja jähmettyvät terävissä.",
+      "Aloittelijat, jotka tarvitsevat selkeän prosessin joka siirrolle.",
+      "Kaikki, jotka haluavat päättää puhtaammin paineessa."
+    ],
+    "timeToRead": "7 minuutin luku",
+    "introParagraphs": [
+      "Aloittelijat miettivät usein, mitä vahvat pelaajat ajattelevat. Vastaus voi kuulostaa monimutkaiselta, mutta prosessisi pitää olla tarpeeksi lyhyt käytettäväksi joka kerta.",
+      "Aloita uhista, valitse muutama mahdollinen siirto ja tarkista, että lopullinen valinta on turvallinen."
+    ],
+    "startHereTitle": "Aloita tästä: nelivaiheinen prosessi",
+    "startHereSteps": [
+      "Tarkista ensin vastustajan vahvimmat uhat.",
+      "Nimeä yhdestä kolmeen realistista ehdokassiirtoa.",
+      "Tarkista, että suunnittelemasi siirto on turvallinen eikä jätä nappulaa suojaamatta.",
+      "Kysy, onko asema tarpeeksi rauhallinen siirtoon vai tarpeeksi terävä hidastamiseen.",
+      "Katso pelin jälkeen, missä prosessi katkesi."
+    ],
+    "drillSectionTitle": "Harjoituksia rauhallisempiin päätöksiin",
+    "drillCards": [
+      {
+        "title": "Laukaisin «vastustaja ensin»",
+        "description": "Aloita jokainen harjoitusasema nimeämällä vastustajan pakottavat mahdollisuudet.",
+        "duration": "3 minuuttia",
+        "goal": "Tehdä uhkien tarkistuksesta automaattinen eikä valinnainen.",
+        "ctaLabel": "Aloita uhista"
+      },
+      {
+        "title": "Kolmen ehdokkaan raja",
+        "description": "Älä salli itsellesi koskaan yli kolmea ehdokassiirtoa harjoitusasemassa.",
+        "duration": "4 minuuttia",
+        "goal": "Vähentää liiallisia vaihtoehtoja ja jahkailua.",
+        "ctaLabel": "Rajaa ehdokkaat"
+      },
+      {
+        "title": "Varmuuden tarkistus",
+        "description": "Katso siirtoa ja kysy, olitko oikeasti varma vai vain väsynyt miettimään.",
+        "duration": "4 minuuttia",
+        "goal": "Huomata, milloin siirrät uupumuksesta.",
+        "ctaLabel": "Tarkista varmuus"
+      }
+    ],
+    "comparisonTitle": "Yksinkertainen siirtoprosessi",
+    "comparisonSummary": "Paras ajatteluprosessi on se, jota pystyt käyttämään myös kellon käydessä.",
+    "comparisonRows": [
+      {
+        "label": "Uhkien käsittely",
+        "struggling": "Mietit ensin omaa suunnitelmaasi.",
+        "stronger": "Aloitat vastustajan vahvimmista uhista."
+      },
+      {
+        "label": "Ehdokassiirrot",
+        "struggling": "Hyppelet liian monen vaihtoehdon välillä.",
+        "stronger": "Pidät pienen ja realistisen ehdokasjoukon."
+      },
+      {
+        "label": "Ajankäyttö",
+        "struggling": "Annat jokaiselle siirrolle saman huomion.",
+        "stronger": "Hidastat, kun jännite, taktiikka tai kuninkaan turvallisuus muuttuu."
+      }
+    ],
+    "mistakes": [
+      "Pitkän listan käyttö, jota et koskaan noudata peleissä.",
+      "Oman suunnitelman miettiminen ennen uhkien tarkistusta.",
+      "Ehdokaslistan päästäminen liian suureksi.",
+      "Väsymyksen sekoittaminen varmuuteen."
+    ],
+    "mistakesCallout": "Älä lisää uusia tarkistuksia. Käytä lyhyttä prosessia, jonka voit toistaa joka siirrolla.",
+    "planTitle": "7 päivän prosessin hiominen",
+    "planSteps": [
+      {
+        "label": "Päivä 1–2",
+        "duration": "10 minuuttia",
+        "detail": "Käytä vain laukaisinta «vastustaja ensin» ja kolmen ehdokkaan rajaa."
+      },
+      {
+        "label": "Päivä 3–4",
+        "duration": "12 minuuttia",
+        "detail": "Lisää lyhyt kierros Memory Chessiä, jotta lauta on selkeämpi päätöshetkellä."
+      },
+      {
+        "label": "Päivä 5",
+        "duration": "12 minuuttia",
+        "detail": "Katso, tuliko viimeisin virheesi uhkien tarkistuksesta vai liiasta ehdokasmäärästä."
+      },
+      {
+        "label": "Päivä 6–7",
+        "duration": "15 minuuttia",
+        "detail": "Käytä koko prosessia pikashakissa ja merkitse, mikä vaihe pettää paineessa."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Mitä aloittelijan pitäisi ajatella shakissa?",
+        "answer": "Aloita vastustajan uhista, valitse yhdestä kolmeen mahdollista siirtoa ja tarkista, että lopullinen valinta on turvallinen."
+      },
+      {
+        "question": "Kuinka monta ehdokassiirtoa kannattaa pitää?",
+        "answer": "Yleensä yhdestä kolmeen. Useampi kuormittaa aloittelijaa ja laskee päätösten laatua."
+      },
+      {
+        "question": "Miksi jähmetyn, vaikka osaan prosessin?",
+        "answer": "Usein siksi, ettei lauta ole tarpeeksi selkeä tai koska liian moni ehdokas on auki. Yksinkertaisemmat asemat ja muistityö auttavat."
+      },
+      {
+        "question": "Voiko ajatteluprosessi estää virheitä?",
+        "answer": "Voi, erityisesti kun se pakottaa uhkien tarkistuksen ennen siirron valintaa."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Käytä selkeämpää virheenestolistaa, jos menetät yhä materiaalia."
+      },
+      {
+        "reason": "Laske puhtaammin vertaillaksesi mahdollisia siirtoja."
+      },
+      {
+        "reason": "Tunnista ruudut nopeammin siirtoprosessisi aikana."
+      }
+    ]
+  }
+]

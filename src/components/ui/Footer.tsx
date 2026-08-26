@@ -1,9 +1,13 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const t = useTranslations("common");
+  // Passed as a string on purpose: ICU would format a bare number argument
+  // with grouping separators and render the year as "2,026".
+  const currentYear = String(new Date().getFullYear());
 
   return (
     <footer className="w-full py-10 mt-10 border-t border-bg-light">
@@ -13,19 +17,19 @@ export default function Footer() {
             href="/changelog"
             className="text-peach-500 transition-colors hover:text-peach-400"
           >
-            Changelog
+            {t("nav.changelog")}
           </Link>
           <Link
             href="/contact-us"
             className="text-peach-500 transition-colors hover:text-peach-400"
           >
-            Contact Us
+            {t("nav.contactUs")}
           </Link>
           <Link
             href="/privacy"
             className="text-peach-500 transition-colors hover:text-peach-400"
           >
-            Privacy
+            {t("nav.privacy")}
           </Link>
         </div>
 
@@ -38,7 +42,7 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               <img
-                alt="Memory Chess - Train your spatial visualization with chess | Product Hunt"
+                alt={t("footer.productHuntAlt")}
                 width="250"
                 height="54"
                 src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=957046&theme=dark&period=daily&t=1771899006529"
@@ -53,7 +57,7 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               <img
-                alt="Memory Chess - Train your spatial visualization with chess | Product Hunt"
+                alt={t("footer.productHuntAlt")}
                 width="250"
                 height="54"
                 src="https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=957046&theme=dark&period=weekly&topic_id=204&t=1771899006529"
@@ -71,7 +75,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-text-secondary hover:text-peach-500 transition-colors p-2"
-            aria-label="Follow us on Twitter/X"
+            aria-label={t("footer.followOnX")}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +95,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-6 text-center text-text-secondary text-sm">
-          <p>&copy; {currentYear} Memory Chess. All rights reserved.</p>
+          <p>{t("footer.copyright", { year: currentYear })}</p>
         </div>
       </div>
     </footer>

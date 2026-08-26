@@ -9,6 +9,7 @@ import OtherAppsSection from "@/components/ui/OtherAppsSection";
 import VideoSection from "@/components/ui/VideoSection";
 import Footer from "@/components/ui/Footer";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { formatNumber } from "@/lib/utils";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 import { PieceColor, PieceType } from "@/types/chess";
@@ -23,29 +24,13 @@ import {
   TrendingUp,
 } from "lucide-react";
 
+// Copy lives in the `home.howItWorks.steps` messages; only the ordinal and the
+// icon are language-neutral and stay here.
 const memorySteps = [
-  {
-    label: "01",
-    title: "Observe",
-    description:
-      "Study where each piece sits. Look for groups, lines, and useful empty spaces.",
-    icon: Eye,
-  },
-  {
-    label: "02",
-    title: "Recreate",
-    description:
-      "When the board clears, place every piece back on the square you remember.",
-    icon: Brain,
-  },
-  {
-    label: "03",
-    title: "Improve",
-    description:
-      "Check your score, see what you missed, and try again with more pieces or less time.",
-    icon: TrendingUp,
-  },
-];
+  { id: "observe", label: "01", icon: Eye },
+  { id: "recreate", label: "02", icon: Brain },
+  { id: "improve", label: "03", icon: TrendingUp },
+] as const;
 
 // prettier-ignore
 const memoryBoardSquares: Array<{ type: PieceType; color: PieceColor } | null> = [
@@ -60,6 +45,7 @@ const memoryBoardSquares: Array<{ type: PieceType; color: PieceColor } | null> =
 ];
 
 export default function Home() {
+  const t = useTranslations("home");
   const [totalPlays, setTotalPlays] = useState<number | null>(null);
 
   const websiteSchema = {
@@ -116,7 +102,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl font-extrabold text-text-primary"
           >
-            Train Your Chess Memory and Visualization
+            {t("hero.title")}
           </motion.h1>
 
           <motion.p
@@ -125,8 +111,7 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="max-w-2xl text-lg text-text-secondary"
           >
-            Memorize a chess position, rebuild it from memory, and get an
-            instant score. Improve your board vision one round at a time.
+            {t("hero.subtitle")}
           </motion.p>
 
           <motion.p
@@ -135,15 +120,16 @@ export default function Home() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="max-w-2xl text-lg text-text-secondary"
           >
-            Free to play, with no account needed. You can also compare your
-            score on the{" "}
-            <Link
-              href="/leaderboard"
-              className="underline hover:text-peach-500"
-            >
-              leaderboard
-            </Link>
-            .
+            {t.rich("hero.freeToPlay", {
+              link: (chunks) => (
+                <Link
+                  href="/leaderboard"
+                  className="underline hover:text-peach-500"
+                >
+                  {chunks}
+                </Link>
+              ),
+            })}
           </motion.p>
 
           <motion.h2
@@ -152,8 +138,9 @@ export default function Home() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-xl font-bold text-peach-500"
           >
-            Games played:{" "}
-            {totalPlays !== null ? formatNumber(totalPlays) : "..."}
+            {t("hero.gamesPlayed", {
+              count: totalPlays !== null ? formatNumber(totalPlays) : "...",
+            })}
           </motion.h2>
 
           <motion.div
@@ -168,7 +155,7 @@ export default function Home() {
                 size="sm"
                 className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
               >
-                Play Memory Chess
+                {t("cta.play")}
               </Button>
             </Link>
 
@@ -178,7 +165,7 @@ export default function Home() {
                 size="sm"
                 className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 hover:text-peach-500 px-3 py-1.5 text-sm"
               >
-                View Leaderboard
+                {t("cta.leaderboard")}
               </Button>
             </Link>
           </motion.div>
@@ -199,16 +186,15 @@ export default function Home() {
                     <Sparkles className="h-4 w-4 text-peach-400" />
                   </span>
                   <p className="text-sm font-medium uppercase tracking-[0.18em] text-peach-300">
-                    How it works
+                    {t("howItWorks.eyebrow")}
                   </p>
                 </div>
 
                 <h2 className="max-w-xl text-3xl font-bold leading-tight text-text-primary sm:text-4xl">
-                  A Simple Workout for Your Chess Memory
+                  {t("howItWorks.title")}
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-7 text-text-muted">
-                  Every round has three simple steps: study the position,
-                  rebuild it, and learn from your score.
+                  {t("howItWorks.subtitle")}
                 </p>
 
                 <div className="mt-10 grid gap-4">
@@ -217,7 +203,7 @@ export default function Home() {
 
                     return (
                       <motion.div
-                        key={step.title}
+                        key={step.id}
                         whileInView={{ opacity: 1, x: 0 }}
                         initial={{ opacity: 0, x: -18 }}
                         viewport={{ once: true, amount: 0.4 }}
@@ -238,11 +224,11 @@ export default function Home() {
                               {step.label}
                             </span>
                             <h3 className="text-xl font-semibold text-text-primary">
-                              {step.title}
+                              {t(`howItWorks.steps.${step.id}.title`)}
                             </h3>
                           </div>
                           <p className="max-w-xl text-sm leading-6 text-text-muted">
-                            {step.description}
+                            {t(`howItWorks.steps.${step.id}.description`)}
                           </p>
                         </div>
                       </motion.div>
@@ -288,9 +274,9 @@ export default function Home() {
                     })}
                   </div>
                   <div className="mx-auto mt-4 flex max-w-sm items-center justify-between text-xs text-text-muted">
-                    <span>Study the board</span>
+                    <span>{t("board.study")}</span>
                     <span className="h-px flex-1 bg-white/10 mx-3" />
-                    <span>Rebuild from memory</span>
+                    <span>{t("board.rebuild")}</span>
                   </div>
                 </div>
 
@@ -301,22 +287,20 @@ export default function Home() {
                     </span>
                     <div>
                       <p className="text-sm font-medium text-teal-300">
-                        Learning Center
+                        {t("learn.eyebrow")}
                       </p>
                       <h3 className="text-xl font-bold leading-snug text-text-primary">
-                        Simple Chess Guides
+                        {t("learn.title")}
                       </h3>
                     </div>
                   </div>
                   <p className="mb-5 text-sm leading-6 text-text-muted">
-                    Learn practical ways to improve board vision, visualization,
-                    calculation, and memory. Each guide includes drills you can
-                    try right away.
+                    {t("learn.description")}
                   </p>
                   <div className="grid gap-3">
                     <Link href="/learn" className="group">
                       <Button className="w-full justify-between bg-peach-500 text-bg-dark hover:bg-peach-400">
-                        Browse Chess Guides
+                        {t("learn.browseCta")}
                         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                       </Button>
                     </Link>
@@ -328,7 +312,7 @@ export default function Home() {
                         variant="outline"
                         className="w-full justify-between border-white/15 bg-white/[0.03] text-text-primary hover:bg-white/[0.07] hover:text-peach-300"
                       >
-                        Start with the Beginner Guide
+                        {t("learn.beginnerCta")}
                         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                       </Button>
                     </Link>
@@ -345,7 +329,7 @@ export default function Home() {
                 size="lg"
                 className="bg-peach-500 hover:bg-peach-600 text-white px-6 py-2.5 text-base font-medium"
               >
-                Play a Free Round
+                {t("cta.playFree")}
               </Button>
             </Link>
           </div>

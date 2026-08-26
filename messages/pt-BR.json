@@ -1,1 +1,117 @@
-{}
+{
+  "common": {
+    "nav": {
+      "changelog": "Novidades",
+      "contactUs": "Fale conosco",
+      "privacy": "Privacidade"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Todos os direitos reservados.",
+      "followOnX": "Siga a gente no Twitter/X",
+      "productHuntAlt": "Memory Chess - Treine sua visualização espacial com xadrez | Product Hunt"
+    },
+    "sound": {
+      "mute": "Desativar som",
+      "unmute": "Ativar som",
+      "on": "Som ativado",
+      "off": "Som desativado",
+      "volume": "Volume"
+    },
+    "language": {
+      "change": "Mudar idioma. Idioma atual: {language}",
+      "current": "Idioma: {language}",
+      "select": "Escolher idioma"
+    },
+    "otherApps": {
+      "title": "Mais apps do criador",
+      "visitWebsite": "Visitar o site →",
+      "iconAlt": "Ícone do app {name}"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Treine sua memória e visualização no xadrez",
+      "subtitle": "Memorize uma posição de xadrez, reconstrua de memória e receba uma pontuação na hora. Melhore sua visão de tabuleiro a cada rodada.",
+      "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>.",
+      "gamesPlayed": "Partidas jogadas: {count}"
+    },
+    "cta": {
+      "play": "Jogar Memory Chess",
+      "leaderboard": "Ver o ranking",
+      "playFree": "Jogar uma rodada grátis"
+    },
+    "video": {
+      "title": "Veja como o Memory Chess funciona",
+      "subtitle": "Um guia rápido para estudar o tabuleiro, reconstruir a posição e conferir sua pontuação.",
+      "iframeTitle": "Como jogar Memory Chess",
+      "credit": "Vídeo: “A New Way To Train Your Vision”, de Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Como funciona",
+      "title": "Um treino simples para a sua memória no xadrez",
+      "subtitle": "Cada rodada tem três passos simples: estude a posição, reconstrua e aprenda com a sua pontuação.",
+      "steps": {
+        "observe": {
+          "title": "Observe",
+          "description": "Repare onde cada peça está. Procure grupos, linhas e casas vazias que sirvam de referência."
+        },
+        "recreate": {
+          "title": "Reconstrua",
+          "description": "Quando o tabuleiro esvaziar, coloque cada peça de volta na casa que você lembrar."
+        },
+        "improve": {
+          "title": "Evolua",
+          "description": "Veja sua pontuação, confira o que passou batido e tente de novo com mais peças ou menos tempo."
+        }
+      }
+    },
+    "board": {
+      "study": "Estude o tabuleiro",
+      "rebuild": "Reconstrua de memória"
+    },
+    "learn": {
+      "eyebrow": "Central de aprendizado",
+      "title": "Guias de xadrez descomplicados",
+      "description": "Aprenda formas práticas de melhorar visão de tabuleiro, visualização, cálculo e memória. Cada guia traz exercícios para você testar na hora.",
+      "browseCta": "Ver os guias de xadrez",
+      "beginnerCta": "Comece pelo guia para iniciantes"
+    },
+    "faq": {
+      "title": "Perguntas sobre o Memory Chess",
+      "items": [
+        {
+          "question": "O que é o Memory Chess?",
+          "answer": "O Memory Chess é um jogo gratuito de memória de tabuleiro. Você estuda uma posição de xadrez por pouco tempo, reconstrói de memória e recebe uma pontuação com base em quantas peças colocou no lugar certo."
+        },
+        {
+          "question": "Como eu jogo?",
+          "answer": "Escolha quantas peças você quer e quanto tempo quer estudar o tabuleiro. Quando a posição sumir, recoloque as peças nas casas que você lembrar. Envie sua resposta para ver sua precisão e seu tempo."
+        },
+        {
+          "question": "Iniciantes conseguem jogar Memory Chess?",
+          "answer": "Sim. Você não precisa saber aberturas nem calcular lances. Comece com menos peças e mais tempo de estudo e aumente a dificuldade quando se sentir pronto."
+        },
+        {
+          "question": "Como isso treina a visualização no xadrez?",
+          "answer": "Cada rodada é uma prática focada em segurar a posição na cabeça e lembrar onde cada peça fica. Sua pontuação mostra quais posições saem fácil e onde você precisa treinar mais."
+        },
+        {
+          "question": "No que prestar atenção ao memorizar o tabuleiro?",
+          "answer": "Comece por referências fáceis, como reis, damas, cantos e casas das bordas. Depois procure grupos, linhas, diagonais e espaços vazios, em vez de tentar lembrar cada peça isoladamente."
+        },
+        {
+          "question": "Como deixo o jogo mais difícil?",
+          "answer": "Adicione mais peças, reduza o tempo de estudo ou esconda as coordenadas do tabuleiro. Mude um ajuste de cada vez para perceber o que faz mais diferença."
+        },
+        {
+          "question": "O Memory Chess é gratuito?",
+          "answer": "Sim. Dá para jogar de graça sem criar conta. Colocar um nome no ranking é opcional."
+        },
+        {
+          "question": "Com que frequência devo treinar?",
+          "answer": "Algumas rodadas focadas com regularidade já é um bom começo. Mantenha as sessões curtas o bastante para conseguir estudar cada posição com calma."
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { useTranslations } from "next-intl";
 import {
   Accordion,
   AccordionContent,
@@ -8,50 +9,20 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const faqs = [
-  {
-    question: "What is Memory Chess?",
-    answer:
-      "Memory Chess is a free board-memory game. You study a chess position for a short time, rebuild it from memory, and get a score based on how many pieces you placed correctly.",
-  },
-  {
-    question: "How do I play?",
-    answer:
-      "Choose how many pieces you want and how long you want to study the board. When the position disappears, place the pieces back on the squares you remember. Submit your answer to see your accuracy and time.",
-  },
-  {
-    question: "Can beginners play Memory Chess?",
-    answer:
-      "Yes. You do not need to know chess openings or calculate moves. Start with fewer pieces and more study time, then make the game harder when you feel ready.",
-  },
-  {
-    question: "How does it train chess visualization?",
-    answer:
-      "Each round gives you focused practice holding a chess position in your mind and recalling where the pieces belong. Your score shows which positions feel easy and where you need more practice.",
-  },
-  {
-    question: "What should I look for when memorizing the board?",
-    answer:
-      "Start with easy anchors such as kings, queens, corners, and edge squares. Then look for groups, lines, diagonals, and empty spaces instead of trying to remember every piece on its own.",
-  },
-  {
-    question: "How can I make the game harder?",
-    answer:
-      "Add more pieces, shorten the study time, or hide the board coordinates. Change one setting at a time so you can see what makes the biggest difference.",
-  },
-  {
-    question: "Is Memory Chess free?",
-    answer:
-      "Yes. You can play for free without creating an account. Adding a name to the leaderboard is optional.",
-  },
-  {
-    question: "How often should I practice?",
-    answer:
-      "A few focused rounds on a regular schedule is a good place to start. Keep sessions short enough that you can still study each position carefully.",
-  },
-] as const;
+type Faq = {
+  question: string;
+  answer: string;
+};
 
 export default function FaqSection() {
+  const t = useTranslations("home.faq");
+
+  // Read as raw so the FAQ list stays one array in the message file rather than
+  // a set of numbered keys that drift apart between locales.
+  const faqs = t.raw("items") as Faq[];
+
+  // Built from the translated copy on purpose: the structured data should match
+  // what the page actually says, so each locale gets its own FAQ rich result.
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -68,7 +39,7 @@ export default function FaqSection() {
   return (
     <section className="mx-auto mt-8 w-full max-w-4xl border-t border-bg-light px-2 py-12 sm:px-4 md:py-16">
       <h2 className="mb-8 text-center text-2xl font-bold text-text-primary sm:mb-10 sm:text-3xl">
-        Questions About Memory Chess
+        {t("title")}
       </h2>
 
       <Script

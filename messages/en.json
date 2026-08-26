@@ -1,1 +1,117 @@
-{}
+{
+  "common": {
+    "nav": {
+      "changelog": "Changelog",
+      "contactUs": "Contact Us",
+      "privacy": "Privacy"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. All rights reserved.",
+      "followOnX": "Follow us on Twitter/X",
+      "productHuntAlt": "Memory Chess - Train your spatial visualization with chess | Product Hunt"
+    },
+    "sound": {
+      "mute": "Mute sound",
+      "unmute": "Unmute sound",
+      "on": "Sound On",
+      "off": "Sound Off",
+      "volume": "Volume"
+    },
+    "language": {
+      "change": "Change language, current language {language}",
+      "current": "Language: {language}",
+      "select": "Select language"
+    },
+    "otherApps": {
+      "title": "More Apps from the Creator",
+      "visitWebsite": "Visit website →",
+      "iconAlt": "{name} app icon"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Train Your Chess Memory and Visualization",
+      "subtitle": "Memorize a chess position, rebuild it from memory, and get an instant score. Improve your board vision one round at a time.",
+      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
+      "gamesPlayed": "Games played: {count}"
+    },
+    "cta": {
+      "play": "Play Memory Chess",
+      "leaderboard": "View Leaderboard",
+      "playFree": "Play a Free Round"
+    },
+    "video": {
+      "title": "See How Memory Chess Works",
+      "subtitle": "Watch a quick guide to studying the board, rebuilding the position, and checking your score.",
+      "iframeTitle": "How to Play Memory Chess",
+      "credit": "Video: “A New Way To Train Your Vision” by Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "title": "A Simple Workout for Your Chess Memory",
+      "subtitle": "Every round has three simple steps: study the position, rebuild it, and learn from your score.",
+      "steps": {
+        "observe": {
+          "title": "Observe",
+          "description": "Study where each piece sits. Look for groups, lines, and useful empty spaces."
+        },
+        "recreate": {
+          "title": "Recreate",
+          "description": "When the board clears, place every piece back on the square you remember."
+        },
+        "improve": {
+          "title": "Improve",
+          "description": "Check your score, see what you missed, and try again with more pieces or less time."
+        }
+      }
+    },
+    "board": {
+      "study": "Study the board",
+      "rebuild": "Rebuild from memory"
+    },
+    "learn": {
+      "eyebrow": "Learning Center",
+      "title": "Simple Chess Guides",
+      "description": "Learn practical ways to improve board vision, visualization, calculation, and memory. Each guide includes drills you can try right away.",
+      "browseCta": "Browse Chess Guides",
+      "beginnerCta": "Start with the Beginner Guide"
+    },
+    "faq": {
+      "title": "Questions About Memory Chess",
+      "items": [
+        {
+          "question": "What is Memory Chess?",
+          "answer": "Memory Chess is a free board-memory game. You study a chess position for a short time, rebuild it from memory, and get a score based on how many pieces you placed correctly."
+        },
+        {
+          "question": "How do I play?",
+          "answer": "Choose how many pieces you want and how long you want to study the board. When the position disappears, place the pieces back on the squares you remember. Submit your answer to see your accuracy and time."
+        },
+        {
+          "question": "Can beginners play Memory Chess?",
+          "answer": "Yes. You do not need to know chess openings or calculate moves. Start with fewer pieces and more study time, then make the game harder when you feel ready."
+        },
+        {
+          "question": "How does it train chess visualization?",
+          "answer": "Each round gives you focused practice holding a chess position in your mind and recalling where the pieces belong. Your score shows which positions feel easy and where you need more practice."
+        },
+        {
+          "question": "What should I look for when memorizing the board?",
+          "answer": "Start with easy anchors such as kings, queens, corners, and edge squares. Then look for groups, lines, diagonals, and empty spaces instead of trying to remember every piece on its own."
+        },
+        {
+          "question": "How can I make the game harder?",
+          "answer": "Add more pieces, shorten the study time, or hide the board coordinates. Change one setting at a time so you can see what makes the biggest difference."
+        },
+        {
+          "question": "Is Memory Chess free?",
+          "answer": "Yes. You can play for free without creating an account. Adding a name to the leaderboard is optional."
+        },
+        {
+          "question": "How often should I practice?",
+          "answer": "A few focused rounds on a regular schedule is a good place to start. Keep sessions short enough that you can still study each position carefully."
+        }
+      ]
+    }
+  }
+}

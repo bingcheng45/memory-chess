@@ -1,1 +1,117 @@
-{}
+{
+  "common": {
+    "nav": {
+      "changelog": "Yenilikler",
+      "contactUs": "Bize ulaşın",
+      "privacy": "Gizlilik"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Tüm hakları saklıdır.",
+      "followOnX": "Bizi Twitter/X’te takip edin",
+      "productHuntAlt": "Memory Chess - Satrançla uzamsal görselleştirmeni geliştir | Product Hunt"
+    },
+    "sound": {
+      "mute": "Sesi kapat",
+      "unmute": "Sesi aç",
+      "on": "Ses açık",
+      "off": "Ses kapalı",
+      "volume": "Ses düzeyi"
+    },
+    "language": {
+      "change": "Dili değiştir. Geçerli dil: {language}",
+      "current": "Dil: {language}",
+      "select": "Dil seçin"
+    },
+    "otherApps": {
+      "title": "Geliştiricinin diğer uygulamaları",
+      "visitWebsite": "Siteye git →",
+      "iconAlt": "{name} uygulama simgesi"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Satranç hafızanı ve görselleştirmeni geliştir",
+      "subtitle": "Bir satranç konumunu ezberle, hafızandan yeniden kur ve anında puan al. Tahta görüşünü her turda biraz daha güçlendir.",
+      "freeToPlay": "Ücretsiz, hesap açmaya gerek yok. Puanını <link>sıralama tablosunda</link> da karşılaştırabilirsin.",
+      "gamesPlayed": "Oynanan oyun: {count}"
+    },
+    "cta": {
+      "play": "Memory Chess oyna",
+      "leaderboard": "Sıralamayı gör",
+      "playFree": "Ücretsiz bir tur oyna"
+    },
+    "video": {
+      "title": "Memory Chess nasıl çalışıyor?",
+      "subtitle": "Tahtayı incelemek, konumu yeniden kurmak ve puanını değerlendirmek için kısa bir rehber.",
+      "iframeTitle": "Memory Chess nasıl oynanır",
+      "credit": "Video: “A New Way To Train Your Vision”, Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Nasıl çalışır",
+      "title": "Satranç hafızan için basit bir antrenman",
+      "subtitle": "Her tur üç basit adımdan oluşur: konumu incele, yeniden kur ve puanından ders çıkar.",
+      "steps": {
+        "observe": {
+          "title": "Gözlemle",
+          "description": "Her taşın nerede durduğuna dikkat et. Grupları, hatları ve işine yarayacak boş kareleri ara."
+        },
+        "recreate": {
+          "title": "Yeniden kur",
+          "description": "Tahta boşaldığında her taşı hatırladığın kareye geri koy."
+        },
+        "improve": {
+          "title": "Geliştir",
+          "description": "Puanına bak, neyi kaçırdığını gör ve daha çok taşla ya da daha az süreyle yeniden dene."
+        }
+      }
+    },
+    "board": {
+      "study": "Tahtayı incele",
+      "rebuild": "Hafızandan yeniden kur"
+    },
+    "learn": {
+      "eyebrow": "Öğrenme merkezi",
+      "title": "Sade satranç rehberleri",
+      "description": "Tahta görüşünü, görselleştirmeni, hesaplamanı ve hafızanı geliştirmenin pratik yollarını öğren. Her rehberde hemen deneyebileceğin alıştırmalar var.",
+      "browseCta": "Satranç rehberlerine göz at",
+      "beginnerCta": "Yeni başlayanlar rehberiyle başla"
+    },
+    "faq": {
+      "title": "Memory Chess hakkında sorular",
+      "items": [
+        {
+          "question": "Memory Chess nedir?",
+          "answer": "Memory Chess, ücretsiz bir tahta hafızası oyunudur. Bir satranç konumunu kısa süre incelersin, hafızandan yeniden kurarsın ve doğru yerleştirdiğin taş sayısına göre puan alırsın."
+        },
+        {
+          "question": "Nasıl oynanır?",
+          "answer": "Kaç taş istediğini ve tahtayı ne kadar süre inceleyeceğini seç. Konum kaybolduğunda taşları hatırladığın karelere geri yerleştir. Cevabını gönderip isabetini ve süreni gör."
+        },
+        {
+          "question": "Yeni başlayanlar Memory Chess oynayabilir mi?",
+          "answer": "Evet. Açılış bilmene ya da hamle hesaplamana gerek yok. Az taş ve daha uzun inceleme süresiyle başla, hazır hissettiğinde zorluğu artır."
+        },
+        {
+          "question": "Satranç görselleştirmesini nasıl geliştirir?",
+          "answer": "Her tur, bir konumu zihninde tutmak ve taşların yerini hatırlamak üzerine odaklı bir alıştırmadır. Puanın hangi konumların kolay geldiğini ve nerede daha çok çalışman gerektiğini gösterir."
+        },
+        {
+          "question": "Tahtayı ezberlerken neye bakmalıyım?",
+          "answer": "Şahlar, vezirler, köşeler ve kenar kareleri gibi kolay referans noktalarıyla başla. Sonra her taşı tek tek hatırlamaya çalışmak yerine grupları, hatları, çaprazları ve boş alanları ara."
+        },
+        {
+          "question": "Oyunu nasıl zorlaştırabilirim?",
+          "answer": "Daha çok taş ekle, inceleme süresini kısalt ya da tahta koordinatlarını gizle. Hangisinin daha çok fark yarattığını görmek için her seferinde tek bir ayarı değiştir."
+        },
+        {
+          "question": "Memory Chess ücretsiz mi?",
+          "answer": "Evet. Hesap açmadan ücretsiz oynayabilirsin. Sıralama tablosuna isim eklemek isteğe bağlı."
+        },
+        {
+          "question": "Ne sıklıkla çalışmalıyım?",
+          "answer": "Düzenli aralıklarla birkaç odaklı tur iyi bir başlangıçtır. Her konumu dikkatle inceleyebilecek kadar kısa seanslar tut."
+        }
+      ]
+    }
+  }
+}

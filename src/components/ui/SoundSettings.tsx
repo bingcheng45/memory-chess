@@ -10,6 +10,7 @@ import {
   playSound,
 } from "@/lib/utils/soundEffects";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useClickAway } from "@/hooks/useClickAway";
 import { createPortal } from "react-dom";
 
@@ -18,6 +19,7 @@ interface SoundSettingsProps {
 }
 
 export default function SoundSettings({ className = "" }: SoundSettingsProps) {
+  const t = useTranslations("common.sound");
   const [soundOn, setSoundOn] = useState(true);
   const [volume, setVolumeState] = useState(DEFAULT_SOUND_VOLUME);
   const [showSlider, setShowSlider] = useState(false);
@@ -125,9 +127,9 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
 
       // Play a sound to confirm sound is on
       playSound("click");
-      showToastNotification("Sound On");
+      showToastNotification(t("on"));
     } else {
-      showToastNotification("Sound Off");
+      showToastNotification(t("off"));
     }
   };
 
@@ -169,8 +171,8 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
         onClick={handleSoundToggle}
         whileTap={{ scale: 0.9 }}
         className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-bg-card/30 backdrop-blur-sm hover:bg-bg-card/50 transition-all"
-        aria-label={soundOn ? "Mute sound" : "Unmute sound"}
-        title={soundOn ? "Mute sound" : "Unmute sound"}
+        aria-label={soundOn ? t("mute") : t("unmute")}
+        title={soundOn ? t("mute") : t("unmute")}
       >
         <motion.div
           initial={{ scale: 1 }}
@@ -245,7 +247,7 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
                 style={{
                   backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${volume * 100}%, #222222 ${volume * 100}%, #222222 100%)`,
                 }}
-                aria-label="Volume"
+                aria-label={t("volume")}
               />
               <span className="text-sm font-medium text-text-primary">
                 {Math.round(volume * 100)}%

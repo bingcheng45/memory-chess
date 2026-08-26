@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useTransition } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 import { useClickAway } from "@/hooks/useClickAway";
@@ -27,6 +27,7 @@ interface LanguageSettingsProps {
 export default function LanguageSettings({
   className = "",
 }: LanguageSettingsProps) {
+  const t = useTranslations("common.language");
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const router = useRouter();
@@ -140,8 +141,8 @@ export default function LanguageSettings({
         whileTap={{ scale: 0.9 }}
         disabled={isPending}
         className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-card/30 backdrop-blur-sm transition-all hover:bg-bg-card/50 disabled:opacity-60 sm:h-10 sm:w-10"
-        aria-label={`Change language, current language ${LOCALE_LABELS[locale]}`}
-        title={`Language: ${LOCALE_LABELS[locale]}`}
+        aria-label={t("change", { language: LOCALE_LABELS[locale] })}
+        title={t("current", { language: LOCALE_LABELS[locale] })}
         aria-expanded={isOpen}
         aria-haspopup="menu"
       >
@@ -165,7 +166,7 @@ export default function LanguageSettings({
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
             role="menu"
-            aria-label="Select language"
+            aria-label={t("select")}
             className="absolute z-10 rounded-lg bg-bg-card/90 p-2 shadow-lg backdrop-blur-sm"
             style={{
               top: "100%",
@@ -202,7 +203,7 @@ export default function LanguageSettings({
                   exit={{ y: "100%" }}
                   transition={{ type: "spring", stiffness: 320, damping: 32 }}
                   role="menu"
-                  aria-label="Select language"
+                  aria-label={t("select")}
                   className="max-h-[80vh] w-full overflow-y-auto rounded-t-2xl bg-bg-card p-4 pb-8 shadow-xl"
                   onClick={(event) => event.stopPropagation()}
                 >

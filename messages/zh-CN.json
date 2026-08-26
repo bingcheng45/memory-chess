@@ -1,1 +1,117 @@
-{}
+{
+  "common": {
+    "nav": {
+      "changelog": "更新日志",
+      "contactUs": "联系我们",
+      "privacy": "隐私政策"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. 保留所有权利。",
+      "followOnX": "在 Twitter/X 上关注我们",
+      "productHuntAlt": "Memory Chess - 用国际象棋训练空间想象力 | Product Hunt"
+    },
+    "sound": {
+      "mute": "静音",
+      "unmute": "开启声音",
+      "on": "声音已开启",
+      "off": "声音已关闭",
+      "volume": "音量"
+    },
+    "language": {
+      "change": "切换语言。当前语言：{language}",
+      "current": "语言：{language}",
+      "select": "选择语言"
+    },
+    "otherApps": {
+      "title": "作者的其他应用",
+      "visitWebsite": "访问网站 →",
+      "iconAlt": "{name} 应用图标"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "训练你的国际象棋记忆与盘面想象力",
+      "subtitle": "记住一个棋局，凭记忆还原它，立刻得到评分。每一轮都让你的棋盘视野更清晰。",
+      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。",
+      "gamesPlayed": "已进行对局：{count}"
+    },
+    "cta": {
+      "play": "开始玩 Memory Chess",
+      "leaderboard": "查看排行榜",
+      "playFree": "免费玩一局"
+    },
+    "video": {
+      "title": "看看 Memory Chess 怎么玩",
+      "subtitle": "一段简短指南：如何观察棋盘、还原棋局，以及看懂你的得分。",
+      "iframeTitle": "Memory Chess 玩法介绍",
+      "credit": "视频：《A New Way To Train Your Vision》，作者 Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "玩法说明",
+      "title": "一套简单的棋盘记忆训练",
+      "subtitle": "每一轮只有三个简单步骤：观察棋局、还原棋局、从得分中总结。",
+      "steps": {
+        "observe": {
+          "title": "观察",
+          "description": "记住每颗棋子的位置。留意棋子的组合、线路，以及可作参照的空格。"
+        },
+        "recreate": {
+          "title": "还原",
+          "description": "棋盘清空后，把每颗棋子放回你记得的格子上。"
+        },
+        "improve": {
+          "title": "提升",
+          "description": "查看得分，找出漏掉的地方，再用更多棋子或更短时间试一次。"
+        }
+      }
+    },
+    "board": {
+      "study": "观察棋盘",
+      "rebuild": "凭记忆还原"
+    },
+    "learn": {
+      "eyebrow": "学习中心",
+      "title": "简明国际象棋指南",
+      "description": "学习提升棋盘视野、盘面想象、计算能力和记忆力的实用方法。每篇指南都附有可以马上上手的练习。",
+      "browseCta": "浏览国际象棋指南",
+      "beginnerCta": "从新手指南开始"
+    },
+    "faq": {
+      "title": "关于 Memory Chess 的常见问题",
+      "items": [
+        {
+          "question": "Memory Chess 是什么？",
+          "answer": "Memory Chess 是一款免费的棋盘记忆游戏。你先用很短的时间观察一个棋局，然后凭记忆把它还原，并根据摆对的棋子数量获得评分。"
+        },
+        {
+          "question": "怎么玩？",
+          "answer": "先选择棋子数量和观察棋盘的时长。棋局消失后，把棋子放回你记得的格子上。提交答案即可看到准确率和用时。"
+        },
+        {
+          "question": "新手可以玩 Memory Chess 吗？",
+          "answer": "可以。你不需要懂开局，也不用计算着法。先从较少的棋子和较长的观察时间开始，觉得有把握了再增加难度。"
+        },
+        {
+          "question": "它是怎么训练盘面想象力的？",
+          "answer": "每一轮都是针对性的练习：把棋局记在脑中，并回忆每颗棋子的位置。得分会告诉你哪些棋局轻松上手，哪些还需要多加练习。"
+        },
+        {
+          "question": "记棋盘时应该看什么？",
+          "answer": "先从容易定位的参照物入手，比如王、后、四角和边线格。然后去找棋子的组合、直线、斜线和空白区域，而不是逐个去记每颗棋子。"
+        },
+        {
+          "question": "怎样提高难度？",
+          "answer": "增加棋子数量、缩短观察时间，或隐藏棋盘坐标。每次只改动一项设置，这样才能看出哪一项影响最大。"
+        },
+        {
+          "question": "Memory Chess 免费吗？",
+          "answer": "免费。无需注册即可游玩。是否在排行榜上留名由你自己决定。"
+        },
+        {
+          "question": "应该多久练一次？",
+          "answer": "保持规律，每次专注地玩几轮，就是很好的开始。每次时间别太长，确保你还能认真观察每一个棋局。"
+        }
+      ]
+    }
+  }
+}

@@ -1,1 +1,117 @@
-{}
+{
+  "common": {
+    "nav": {
+      "changelog": "Nouveautés",
+      "contactUs": "Nous contacter",
+      "privacy": "Confidentialité"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Tous droits réservés.",
+      "followOnX": "Suivez-nous sur Twitter/X",
+      "productHuntAlt": "Memory Chess - Entraînez votre visualisation spatiale avec les échecs | Product Hunt"
+    },
+    "sound": {
+      "mute": "Couper le son",
+      "unmute": "Activer le son",
+      "on": "Son activé",
+      "off": "Son coupé",
+      "volume": "Volume"
+    },
+    "language": {
+      "change": "Changer de langue. Langue actuelle : {language}",
+      "current": "Langue : {language}",
+      "select": "Choisir une langue"
+    },
+    "otherApps": {
+      "title": "Autres applis du créateur",
+      "visitWebsite": "Voir le site →",
+      "iconAlt": "Icône de l’appli {name}"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Entraînez votre mémoire et votre visualisation aux échecs",
+      "subtitle": "Mémorisez une position d’échecs, reconstituez-la de mémoire et obtenez un score immédiat. Améliorez votre vision de l’échiquier partie après partie.",
+      "freeToPlay": "Gratuit, sans création de compte. Vous pouvez aussi comparer votre score dans le <link>classement</link>.",
+      "gamesPlayed": "Parties jouées : {count}"
+    },
+    "cta": {
+      "play": "Jouer à Memory Chess",
+      "leaderboard": "Voir le classement",
+      "playFree": "Jouer une manche gratuite"
+    },
+    "video": {
+      "title": "Découvrez comment fonctionne Memory Chess",
+      "subtitle": "Un guide rapide pour étudier l’échiquier, reconstituer la position et analyser votre score.",
+      "iframeTitle": "Comment jouer à Memory Chess",
+      "credit": "Vidéo : « A New Way To Train Your Vision », par Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Comment ça marche",
+      "title": "Un entraînement simple pour votre mémoire échiquéenne",
+      "subtitle": "Chaque manche suit trois étapes simples : étudier la position, la reconstituer et apprendre de votre score.",
+      "steps": {
+        "observe": {
+          "title": "Observer",
+          "description": "Repérez où se trouve chaque pièce. Cherchez des groupes, des lignes et des cases vides utiles."
+        },
+        "recreate": {
+          "title": "Reconstituer",
+          "description": "Quand l’échiquier se vide, replacez chaque pièce sur la case dont vous vous souvenez."
+        },
+        "improve": {
+          "title": "Progresser",
+          "description": "Regardez votre score, voyez ce qui vous a échappé et recommencez avec plus de pièces ou moins de temps."
+        }
+      }
+    },
+    "board": {
+      "study": "Étudier l’échiquier",
+      "rebuild": "Reconstituer de mémoire"
+    },
+    "learn": {
+      "eyebrow": "Espace d’apprentissage",
+      "title": "Des guides d’échecs accessibles",
+      "description": "Découvrez des méthodes concrètes pour améliorer votre vision de l’échiquier, votre visualisation, votre calcul et votre mémoire. Chaque guide propose des exercices à essayer tout de suite.",
+      "browseCta": "Parcourir les guides",
+      "beginnerCta": "Commencer par le guide débutant"
+    },
+    "faq": {
+      "title": "Questions sur Memory Chess",
+      "items": [
+        {
+          "question": "Qu’est-ce que Memory Chess ?",
+          "answer": "Memory Chess est un jeu de mémoire gratuit basé sur l’échiquier. Vous étudiez une position d’échecs pendant un court instant, vous la reconstituez de mémoire et vous obtenez un score selon le nombre de pièces correctement placées."
+        },
+        {
+          "question": "Comment jouer ?",
+          "answer": "Choisissez le nombre de pièces et la durée d’étude de l’échiquier. Quand la position disparaît, replacez les pièces sur les cases dont vous vous souvenez. Validez votre réponse pour voir votre précision et votre temps."
+        },
+        {
+          "question": "Les débutants peuvent-ils jouer à Memory Chess ?",
+          "answer": "Oui. Nul besoin de connaître les ouvertures ni de calculer des coups. Commencez avec peu de pièces et davantage de temps d’étude, puis corsez la difficulté quand vous vous sentez prêt."
+        },
+        {
+          "question": "En quoi cela entraîne-t-il la visualisation ?",
+          "answer": "Chaque manche est un entraînement ciblé : garder une position en tête et se rappeler où vont les pièces. Votre score montre quelles positions vous viennent facilement et où il faut encore travailler."
+        },
+        {
+          "question": "Que regarder pour mémoriser l’échiquier ?",
+          "answer": "Commencez par des repères simples : rois, dames, coins et cases de bord. Cherchez ensuite les groupes, les lignes, les diagonales et les zones vides plutôt que de retenir chaque pièce isolément."
+        },
+        {
+          "question": "Comment rendre le jeu plus difficile ?",
+          "answer": "Ajoutez des pièces, réduisez le temps d’étude ou masquez les coordonnées de l’échiquier. Ne changez qu’un réglage à la fois pour voir ce qui pèse le plus."
+        },
+        {
+          "question": "Memory Chess est-il gratuit ?",
+          "answer": "Oui. Vous pouvez jouer gratuitement sans créer de compte. Ajouter un nom au classement est facultatif."
+        },
+        {
+          "question": "À quelle fréquence s’entraîner ?",
+          "answer": "Quelques manches bien concentrées, à un rythme régulier, constituent un bon point de départ. Gardez des sessions assez courtes pour continuer à étudier chaque position avec attention."
+        }
+      ]
+    }
+  }
+}

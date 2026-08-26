@@ -1,1 +1,117 @@
-{}
+{
+  "common": {
+    "nav": {
+      "changelog": "Novità",
+      "contactUs": "Contattaci",
+      "privacy": "Privacy"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Tutti i diritti riservati.",
+      "followOnX": "Seguici su Twitter/X",
+      "productHuntAlt": "Memory Chess - Allena la tua visualizzazione spaziale con gli scacchi | Product Hunt"
+    },
+    "sound": {
+      "mute": "Disattiva l’audio",
+      "unmute": "Attiva l’audio",
+      "on": "Audio attivo",
+      "off": "Audio disattivato",
+      "volume": "Volume"
+    },
+    "language": {
+      "change": "Cambia lingua. Lingua attuale: {language}",
+      "current": "Lingua: {language}",
+      "select": "Scegli la lingua"
+    },
+    "otherApps": {
+      "title": "Altre app del creatore",
+      "visitWebsite": "Vai al sito →",
+      "iconAlt": "Icona dell’app {name}"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Allena la tua memoria e visualizzazione negli scacchi",
+      "subtitle": "Memorizza una posizione, ricostruiscila a memoria e ricevi subito un punteggio. Migliora la tua visione della scacchiera turno dopo turno.",
+      "freeToPlay": "Gratis e senza bisogno di un account. Puoi anche confrontare il tuo punteggio nella <link>classifica</link>.",
+      "gamesPlayed": "Partite giocate: {count}"
+    },
+    "cta": {
+      "play": "Gioca a Memory Chess",
+      "leaderboard": "Vedi la classifica",
+      "playFree": "Gioca un turno gratis"
+    },
+    "video": {
+      "title": "Guarda come funziona Memory Chess",
+      "subtitle": "Una guida veloce per studiare la scacchiera, ricostruire la posizione e leggere il tuo punteggio.",
+      "iframeTitle": "Come giocare a Memory Chess",
+      "credit": "Video: «A New Way To Train Your Vision», di Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Come funziona",
+      "title": "Un allenamento semplice per la tua memoria scacchistica",
+      "subtitle": "Ogni turno ha tre passaggi semplici: studia la posizione, ricostruiscila e impara dal tuo punteggio.",
+      "steps": {
+        "observe": {
+          "title": "Osserva",
+          "description": "Nota dove si trova ogni pezzo. Cerca gruppi, linee e case vuote che ti facciano da riferimento."
+        },
+        "recreate": {
+          "title": "Ricostruisci",
+          "description": "Quando la scacchiera si svuota, rimetti ogni pezzo sulla casa che ricordi."
+        },
+        "improve": {
+          "title": "Migliora",
+          "description": "Controlla il punteggio, guarda cosa ti è sfuggito e riprova con più pezzi o meno tempo."
+        }
+      }
+    },
+    "board": {
+      "study": "Studia la scacchiera",
+      "rebuild": "Ricostruisci a memoria"
+    },
+    "learn": {
+      "eyebrow": "Area didattica",
+      "title": "Guide di scacchi semplici",
+      "description": "Scopri modi pratici per migliorare visione della scacchiera, visualizzazione, calcolo e memoria. Ogni guida include esercizi da provare subito.",
+      "browseCta": "Sfoglia le guide",
+      "beginnerCta": "Inizia dalla guida per principianti"
+    },
+    "faq": {
+      "title": "Domande su Memory Chess",
+      "items": [
+        {
+          "question": "Che cos’è Memory Chess?",
+          "answer": "Memory Chess è un gioco di memoria gratuito sulla scacchiera. Studi una posizione per un breve momento, la ricostruisci a memoria e ricevi un punteggio in base a quanti pezzi hai messo al posto giusto."
+        },
+        {
+          "question": "Come si gioca?",
+          "answer": "Scegli quanti pezzi vuoi e quanto tempo dedicare allo studio della scacchiera. Quando la posizione scompare, rimetti i pezzi sulle case che ricordi. Invia la risposta per vedere precisione e tempo."
+        },
+        {
+          "question": "I principianti possono giocare a Memory Chess?",
+          "answer": "Sì. Non serve conoscere le aperture né calcolare le mosse. Parti con pochi pezzi e più tempo di studio, poi alza la difficoltà quando ti senti pronto."
+        },
+        {
+          "question": "In che modo allena la visualizzazione?",
+          "answer": "Ogni turno è pratica mirata: tenere una posizione in mente e ricordare dove va ogni pezzo. Il punteggio ti mostra quali posizioni ti risultano facili e dove serve allenarsi di più."
+        },
+        {
+          "question": "A cosa fare attenzione quando memorizzo?",
+          "answer": "Parti da riferimenti semplici come re, donne, angoli e case di bordo. Poi cerca gruppi, linee, diagonali e spazi vuoti, invece di ricordare ogni pezzo singolarmente."
+        },
+        {
+          "question": "Come rendo il gioco più difficile?",
+          "answer": "Aggiungi pezzi, riduci il tempo di studio o nascondi le coordinate della scacchiera. Cambia un’impostazione alla volta, così vedi quale incide di più."
+        },
+        {
+          "question": "Memory Chess è gratuito?",
+          "answer": "Sì. Puoi giocare gratis senza creare un account. Aggiungere un nome alla classifica è facoltativo."
+        },
+        {
+          "question": "Ogni quanto dovrei allenarmi?",
+          "answer": "Qualche turno ben concentrato con regolarità è un buon punto di partenza. Tieni le sessioni abbastanza brevi da riuscire a studiare ogni posizione con attenzione."
+        }
+      ]
+    }
+  }
+}

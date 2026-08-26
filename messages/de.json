@@ -1,1 +1,117 @@
-{}
+{
+  "common": {
+    "nav": {
+      "changelog": "Neuerungen",
+      "contactUs": "Kontakt",
+      "privacy": "Datenschutz"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Alle Rechte vorbehalten.",
+      "followOnX": "Folge uns auf Twitter/X",
+      "productHuntAlt": "Memory Chess - Trainiere dein räumliches Vorstellungsvermögen mit Schach | Product Hunt"
+    },
+    "sound": {
+      "mute": "Ton ausschalten",
+      "unmute": "Ton einschalten",
+      "on": "Ton an",
+      "off": "Ton aus",
+      "volume": "Lautstärke"
+    },
+    "language": {
+      "change": "Sprache wechseln. Aktuelle Sprache: {language}",
+      "current": "Sprache: {language}",
+      "select": "Sprache auswählen"
+    },
+    "otherApps": {
+      "title": "Weitere Apps des Entwicklers",
+      "visitWebsite": "Zur Website →",
+      "iconAlt": "App-Symbol von {name}"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Trainiere dein Schachgedächtnis und deine Vorstellungskraft",
+      "subtitle": "Präge dir eine Schachstellung ein, baue sie aus dem Gedächtnis wieder auf und erhalte sofort eine Bewertung. Verbessere dein Brettgefühl Runde für Runde.",
+      "freeToPlay": "Kostenlos und ohne Konto. Deinen Punktestand kannst du auch in der <link>Bestenliste</link> vergleichen.",
+      "gamesPlayed": "Gespielte Partien: {count}"
+    },
+    "cta": {
+      "play": "Memory Chess spielen",
+      "leaderboard": "Bestenliste ansehen",
+      "playFree": "Kostenlose Runde spielen"
+    },
+    "video": {
+      "title": "So funktioniert Memory Chess",
+      "subtitle": "Eine kurze Anleitung: das Brett einprägen, die Stellung wieder aufbauen und den Punktestand auswerten.",
+      "iframeTitle": "Wie man Memory Chess spielt",
+      "credit": "Video: „A New Way To Train Your Vision“ von Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "So funktioniert es",
+      "title": "Ein einfaches Workout für dein Schachgedächtnis",
+      "subtitle": "Jede Runde hat drei einfache Schritte: Stellung einprägen, wieder aufbauen und aus dem Ergebnis lernen.",
+      "steps": {
+        "observe": {
+          "title": "Beobachten",
+          "description": "Präge dir ein, wo jede Figur steht. Achte auf Gruppen, Linien und hilfreiche leere Felder."
+        },
+        "recreate": {
+          "title": "Nachbauen",
+          "description": "Wenn das Brett leer ist, stelle jede Figur auf das Feld zurück, an das du dich erinnerst."
+        },
+        "improve": {
+          "title": "Verbessern",
+          "description": "Sieh dir dein Ergebnis an, prüfe, was gefehlt hat, und versuch es erneut – mit mehr Figuren oder weniger Zeit."
+        }
+      }
+    },
+    "board": {
+      "study": "Brett einprägen",
+      "rebuild": "Aus dem Gedächtnis aufbauen"
+    },
+    "learn": {
+      "eyebrow": "Lernbereich",
+      "title": "Verständliche Schach-Guides",
+      "description": "Lerne praktische Wege, um Brettgefühl, Vorstellungskraft, Berechnung und Gedächtnis zu verbessern. Jeder Guide enthält Übungen, die du sofort ausprobieren kannst.",
+      "browseCta": "Schach-Guides ansehen",
+      "beginnerCta": "Mit dem Einsteiger-Guide starten"
+    },
+    "faq": {
+      "title": "Fragen zu Memory Chess",
+      "items": [
+        {
+          "question": "Was ist Memory Chess?",
+          "answer": "Memory Chess ist ein kostenloses Gedächtnisspiel rund ums Schachbrett. Du prägst dir eine Stellung kurz ein, baust sie aus dem Gedächtnis wieder auf und bekommst eine Bewertung danach, wie viele Figuren richtig standen."
+        },
+        {
+          "question": "Wie spiele ich?",
+          "answer": "Wähle, wie viele Figuren du möchtest und wie lange du das Brett studieren willst. Wenn die Stellung verschwindet, setze die Figuren auf die Felder zurück, an die du dich erinnerst. Schicke deine Lösung ab, um Genauigkeit und Zeit zu sehen."
+        },
+        {
+          "question": "Können auch Anfänger Memory Chess spielen?",
+          "answer": "Ja. Du musst keine Eröffnungen kennen und keine Züge berechnen. Fang mit wenigen Figuren und mehr Zeit an und erhöhe die Schwierigkeit, wenn du dich bereit fühlst."
+        },
+        {
+          "question": "Wie trainiert das die Schach-Vorstellungskraft?",
+          "answer": "Jede Runde ist gezieltes Training darin, eine Stellung im Kopf zu behalten und zu erinnern, wohin die Figuren gehören. Dein Ergebnis zeigt, welche Stellungen leichtfallen und wo du mehr üben solltest."
+        },
+        {
+          "question": "Worauf sollte ich beim Einprägen achten?",
+          "answer": "Beginne mit einfachen Ankern wie Königen, Damen, Ecken und Randfeldern. Suche dann nach Gruppen, Linien, Diagonalen und leeren Bereichen, statt jede Figur einzeln merken zu wollen."
+        },
+        {
+          "question": "Wie mache ich das Spiel schwerer?",
+          "answer": "Nimm mehr Figuren, verkürze die Einprägezeit oder blende die Brettkoordinaten aus. Ändere immer nur eine Einstellung, damit du siehst, was den größten Unterschied macht."
+        },
+        {
+          "question": "Ist Memory Chess kostenlos?",
+          "answer": "Ja. Du kannst kostenlos und ohne Konto spielen. Ein Name in der Bestenliste ist freiwillig."
+        },
+        {
+          "question": "Wie oft sollte ich üben?",
+          "answer": "Ein paar konzentrierte Runden in regelmäßigen Abständen sind ein guter Anfang. Halte die Einheiten kurz genug, dass du jede Stellung noch sorgfältig studieren kannst."
+        }
+      ]
+    }
+  }
+}

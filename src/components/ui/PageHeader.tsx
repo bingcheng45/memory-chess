@@ -50,17 +50,11 @@ export default function PageHeader({
 
   // Horizontal mirror of getPositionClass(), so the language control sits at
   // the same inset from the left edge as the sound control does from the right
-  // and the title stays optically centred.
-  //
-  // Note: the sound side's `md:right-30` is not a real Tailwind class (30 is
-  // absent from the default spacing scale and tailwind.config.js does not
-  // extend it), so between `md` and `lg` the sound button actually renders at
-  // `sm:right-14`. This mirrors that *effective* geometry rather than copying
-  // the dead class, which is what keeps the two sides aligned.
+  // and the title stays optically centred. Keep the two in sync.
   const getLanguagePositionClass = (): string => {
     switch(pageType) {
       case 'game-config':
-        return "left-6 sm:left-14 lg:left-48";
+        return "left-6 sm:left-14 md:left-30 lg:left-48";
       case 'game-result':
         return "left-6 sm:left-16 md:left-32 lg:left-52";
       case 'game-memorize-solution':

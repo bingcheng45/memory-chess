@@ -8,6 +8,13 @@ module.exports = {
   ],
   theme: {
   	extend: {
+  		spacing: {
+  			// 7.5rem, the step between Tailwind's 28 (7rem) and 32 (8rem).
+  			// PageHeader's game-config progression (6 / 14 / 30 / 48) assumed
+  			// this existed; without it `md:right-30` silently did nothing and
+  			// the control stayed at the `sm` inset through the whole md range.
+  			'30': '7.5rem',
+  		},
   		colors: {
   			'bg-dark': '#0A0A0A',
   			'bg-card': '#141414',

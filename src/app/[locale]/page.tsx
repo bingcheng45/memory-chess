@@ -13,7 +13,6 @@ import { useTranslations } from "next-intl";
 import { formatNumber } from "@/lib/utils";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 import { PieceColor, PieceType } from "@/types/chess";
-import Script from "next/script";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -87,13 +86,16 @@ export default function Home() {
         <div className="flex justify-center mb-8">
           <PageHeader showSoundSettings={false} />
         </div>
-        <Script
-          id="website-schema"
+        {/*
+          Plain script tag, not next/script: `strategy="afterInteractive"`
+          keeps the JSON-LD out of the served HTML entirely, so crawlers only
+          see it if they execute JS. This matches how the Learn pages already
+          emit their structured data.
+        */}
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
-        >
-          {JSON.stringify(websiteSchema)}
-        </Script>
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
 
         <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">
           <motion.h1

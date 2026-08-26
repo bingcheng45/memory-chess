@@ -1,6 +1,5 @@
 "use client";
 
-import Script from "next/script";
 import { useTranslations } from "next-intl";
 import {
   Accordion,
@@ -42,13 +41,16 @@ export default function FaqSection() {
         {t("title")}
       </h2>
 
-      <Script
-        id="faq-schema"
+      {/*
+        Plain script tag, not next/script: `strategy="afterInteractive"` keeps
+        the JSON-LD out of the served HTML entirely, so crawlers only see it if
+        they execute JS. This matches how the Learn pages already emit their
+        structured data.
+      */}
+      <script
         type="application/ld+json"
-        strategy="afterInteractive"
-      >
-        {JSON.stringify(faqSchema)}
-      </Script>
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <Accordion type="single" collapsible className="w-full">
         {faqs.map((faq, index) => (

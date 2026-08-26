@@ -1,6 +1,6 @@
 import createMiddleware from "next-intl/middleware";
 import { NextRequest } from "next/server";
-import { routing, LOCALES } from "@/i18n/routing";
+import { routing, LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
 
 const handleI18nRouting = createMiddleware(routing);
@@ -38,11 +38,25 @@ export default function middleware(request: NextRequest) {
   // gap when both are silent.
   const hasExplicitChoice = request.cookies.has(LOCALE_COOKIE);
   const acceptLanguage = request.headers.get("accept-language");
+  const crawler = isCrawler(request.headers.get("user-agent"));
+
+  // Crawlers get the URL they asked for. Google's guidance for locale-adaptive
+  // sites is to let hreflang do the routing rather than redirect on a header,
+  // and Googlebot does crawl with varying `Accept-Language` values -- without
+  // this, a crawl of `/` carrying `Accept-Language: hu` would 307 to `/hu` and
+  // the canonical English home would answer redirects instead of content. A
+  // locale prefix in the path still wins, so `/hu` is unaffected.
+  if (crawler && !hasExplicitChoice) {
+    const headers = new Headers(request.headers);
+    headers.set("accept-language", DEFAULT_LOCALE);
+
+    return handleI18nRouting(
+      new NextRequest(request.url, { headers, method: request.method }),
+    );
+  }
 
   const shouldUseCountryHint =
-    !hasExplicitChoice &&
-    !hasSupportedLanguage(acceptLanguage) &&
-    !isCrawler(request.headers.get("user-agent"));
+    !hasExplicitChoice && !hasSupportedLanguage(acceptLanguage);
 
   if (shouldUseCountryHint) {
     // Vercel and Cloudflare expose the edge geo country under different

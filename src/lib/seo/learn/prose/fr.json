@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Comment progresser aux échecs quand on débute",
+    "h1": "Comment progresser aux échecs quand on débute",
+    "description": "Suivez un plan simple pour mieux voir l'échiquier, retenir les positions et jouer des coups plus sûrs.",
+    "primaryKeyword": "comment progresser aux échecs",
+    "secondaryKeywords": [
+      "plan de progression aux échecs",
+      "entraînement échecs débutant",
+      "routine d'échecs pour débutants",
+      "réduire les gaffes aux échecs",
+      "vision de l'échiquier"
+    ],
+    "painPoint": "Vous ne savez pas quoi travailler ni par où commencer.",
+    "ctaLabel": "Commencer une partie débutant",
+    "quickAnswer": "Adoptez une courte routine quotidienne : travaillez la vision de l'échiquier, entraînez votre mémoire, jouez une partie et revoyez une erreur. Répétez 20 à 30 minutes par jour.",
+    "keyTakeaways": [
+      "Voir et retenir l'échiquier compte plus que mémoriser de nombreuses ouvertures.",
+      "Une courte pratique quotidienne vaut mieux que de rares longues séances.",
+      "Suivez vos erreurs et votre précision de rappel, pas seulement votre classement."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui connaissent les règles mais laissent encore des pièces en prise.",
+      "Les débutants performants aux exercices mais en difficulté en partie.",
+      "Toute personne qui ne sait pas quoi étudier en premier."
+    ],
+    "timeToRead": "9 min de lecture",
+    "introParagraphs": [
+      "La plupart des débutants n'ont pas besoin de plus d'ouvertures, de vidéos ou de cours. Ils doivent suivre l'échiquier et vérifier qu'un coup est sûr avant de le jouer.",
+      "Memory Chess aide à travailler ces deux compétences. Un meilleur rappel de l'échiquier rend les échecs, les prises et les menaces plus faciles à repérer."
+    ],
+    "startHereTitle": "Commencez par cette routine de débutant",
+    "startHereSteps": [
+      "Passez 3 minutes à balayer un échiquier en nommant les pièces attaquées, défendues et en prise.",
+      "Faites une manche de Memory Chess avec 8 pièces et une fenêtre de 10 secondes.",
+      "Travaillez deux positions tactiques courtes en énonçant échecs, prises et menaces avant de choisir un coup.",
+      "Jouez une partie rapide. Classez chaque grosse erreur en vision, mémoire ou manque de temps.",
+      "Notez une chose à retravailler demain."
+    ],
+    "drillSectionTitle": "Exercices simples pour de meilleures parties",
+    "drillCards": [
+      {
+        "title": "Balayage en 10 secondes",
+        "description": "Utilisez une position facile et trouvez toutes les pièces non protégées avant la fin du temps.",
+        "duration": "3 minutes",
+        "goal": "Installer un contrôle de sécurité avant chaque coup.",
+        "ctaLabel": "Lancer un balayage"
+      },
+      {
+        "title": "Rappel de la même position",
+        "description": "Jouez deux fois la même position pour repérer et corriger une erreur de mémoire.",
+        "duration": "5 minutes",
+        "goal": "Identifier la pièce ou la case exacte que vous avez oubliée.",
+        "ctaLabel": "Répéter un rappel"
+      },
+      {
+        "title": "Transfert partie vers exercice",
+        "description": "Après une partie rapide, imaginez la position où vous avez fauté avant de l'analyser.",
+        "duration": "7 minutes",
+        "goal": "Guider votre travail par vos vraies erreurs.",
+        "ctaLabel": "Travailler le transfert"
+      }
+    ],
+    "comparisonTitle": "À quoi ressemble un meilleur jeu de débutant",
+    "comparisonSummary": "Inutile de voir cinq coups à l'avance. Commencez par voir clairement la position actuelle et prenez un instant avant de jouer.",
+    "comparisonRows": [
+      {
+        "label": "Avant de jouer",
+        "struggling": "Vous ne regardez que votre propre idée.",
+        "stronger": "Vous vérifiez d'abord les menaces de l'adversaire."
+      },
+      {
+        "label": "Pendant la tactique",
+        "struggling": "Votre variante disparaît après un échange.",
+        "stronger": "Vous visualisez les cases clés en comparant deux coups possibles."
+      },
+      {
+        "label": "Après une défaite",
+        "struggling": "Vous relancez aussitôt une partie.",
+        "stronger": "Vous nommez l'erreur et la travaillez demain."
+      }
+    ],
+    "mistakes": [
+      "Sauter d'un contenu à l'autre au lieu de répéter une routine pendant deux semaines.",
+      "Étudier les ouvertures avant que la vision de l'échiquier soit stable.",
+      "Enchaîner les parties sans courte note après coup.",
+      "Traiter le travail de mémoire comme séparé des échecs réels."
+    ],
+    "mistakesCallout": "Ne vous précipitez pas vers l'étude avancée. La plupart des débutants perdent en manquant une menace en un coup, pas en oubliant une variante d'ouverture.",
+    "planTitle": "Plan débutant sur 30 jours",
+    "planSteps": [
+      {
+        "label": "Semaine 1",
+        "duration": "20 minutes par jour",
+        "detail": "Gardez le même balayage et faites une courte manche de Memory Chess avant chaque session de jeu."
+      },
+      {
+        "label": "Semaine 2",
+        "duration": "25 minutes par jour",
+        "detail": "Ajoutez une deuxième manche de rappel et notez si chaque erreur venait de la vision, du rappel ou de la panique."
+      },
+      {
+        "label": "Semaine 3",
+        "duration": "25 à 30 minutes par jour",
+        "detail": "Gardez les mêmes exercices mais réduisez le temps de mémorisation pour un rappel net sous pression."
+      },
+      {
+        "label": "Semaine 4",
+        "duration": "30 minutes par jour",
+        "detail": "Vérifiez si les gaffes par partie diminuent et ne gardez que les réglages qui se sont le mieux transférés."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Combien de minutes un débutant doit-il s'entraîner chaque jour ?",
+        "answer": "20 à 30 minutes concentrées suffisent si vous combinez vision de l'échiquier, mémoire et une vraie position."
+      },
+      {
+        "question": "Pourquoi mes exercices ne se transfèrent-ils pas en partie ?",
+        "answer": "Les exercices commencent une fois la tactique présente. En partie, il faut d'abord remarquer le changement, donc le rappel et les contrôles de sécurité comptent bien plus."
+      },
+      {
+        "question": "Dois-je mémoriser des ouvertures tôt ?",
+        "answer": "Seulement les principes de base au début. La plupart des débutants gagnent plus à voir les menaces plus tôt et à tenir les positions plus clairement."
+      },
+      {
+        "question": "Quel indicateur suivre pour mesurer les progrès ?",
+        "answer": "Suivez les gaffes par partie et la précision de rappel dans Memory Chess. Ils évoluent généralement avant le classement."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "À utiliser si votre problème principal est de laisser des pièces en prise."
+      },
+      {
+        "reason": "Approfondissez l'habitude de vérifier les menaces avant de jouer."
+      },
+      {
+        "reason": "Construisez un échiquier mental plus solide pour tenir les tactiques."
+      },
+      {
+        "reason": "Travaillez directement le rappel si vous oubliez l'emplacement des pièces."
+      },
+      {
+        "reason": "Suivez une routine plus courte si vous voulez une structure quotidienne plus simple."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Exercices de visualisation aux échecs pour débutants",
+    "h1": "Exercices de visualisation aux échecs à faire chaque jour",
+    "description": "Essayez des exercices simples de visualisation pour retenir l'échiquier et imaginer les coups plus clairement.",
+    "primaryKeyword": "exercices de visualisation aux échecs",
+    "secondaryKeywords": [
+      "entraînement à la visualisation aux échecs",
+      "calculer des coups à l'avance",
+      "visualisation de l'échiquier",
+      "préparation à l'aveugle",
+      "pratique mentale des échecs"
+    ],
+    "painPoint": "Vous perdez le fil des pièces dès que vous imaginez les coups suivants.",
+    "ctaLabel": "Travailler la visualisation",
+    "quickAnswer": "Retenez d'abord un échiquier sans rien déplacer. Ensuite, imaginez un coup à la fois. Nul besoin de jouer une partie entière à l'aveugle.",
+    "keyTakeaways": [
+      "Une courte pratique quotidienne vaut mieux que de rares longues séances.",
+      "Vérifiez votre échiquier imaginé après chaque tentative.",
+      "Imaginez un coup clairement avant de tenter des variantes plus longues."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui perdent une variante après un seul échange.",
+      "Les débutants en difficulté dès qu'ils ne voient plus l'échiquier.",
+      "Toute personne qui veut aborder les échecs à l'aveugle par étapes."
+    ],
+    "timeToRead": "8 min de lecture",
+    "introParagraphs": [
+      "Visualiser, c'est imaginer comment l'échiquier change après un coup. Pour un débutant, le but est simplement de comparer deux coups possibles sans perdre le fil des pièces.",
+      "Memory Chess montre quelles pièces ou cases vous oubliez. Vous pouvez ensuite retravailler le même type de position."
+    ],
+    "startHereTitle": "Commencez par ces étapes de visualisation",
+    "startHereSteps": [
+      "Nommez chaque pièce et chaque case d'un échiquier fixe pendant 60 secondes.",
+      "Fermez les yeux et reconstruisez l'échiquier mentalement avant de vérifier.",
+      "Imaginez un coup légal pour chaque camp sans toucher aux pièces.",
+      "Faites une manche de Memory Chess avec un nombre modéré de pièces et un chrono strict.",
+      "Vérifiez la position et ne recommencez qu'après avoir identifié votre oubli."
+    ],
+    "drillSectionTitle": "Exercices de visualisation faciles",
+    "drillCards": [
+      {
+        "title": "Instantané d'échiquier",
+        "description": "Retenez l'échiquier, puis replacez chaque pièce sur la bonne case.",
+        "duration": "4 minutes",
+        "goal": "Retenir l'échiquier avant d'imaginer des coups.",
+        "ctaLabel": "Commencer l'instantané"
+      },
+      {
+        "title": "Un coup de chaque côté",
+        "description": "Retenez l'échiquier, imaginez un coup pour chaque camp, puis vérifiez.",
+        "duration": "5 minutes",
+        "goal": "Apprendre à mettre à jour l'échiquier dans sa tête.",
+        "ctaLabel": "Travailler la mise à jour"
+      },
+      {
+        "title": "Rappel sous pression",
+        "description": "Une fois votre rappel fiable, réduisez le temps de mémorisation.",
+        "duration": "5 minutes",
+        "goal": "Garder un rappel net dans les parties rapides.",
+        "ctaLabel": "Ajouter de la pression"
+      }
+    ],
+    "comparisonTitle": "Ce que l'on ressent avec une visualisation faible",
+    "comparisonSummary": "Cela ressemble à un problème de calcul, mais souvent l'image de l'échiquier s'efface trop vite.",
+    "comparisonRows": [
+      {
+        "label": "Coups candidats",
+        "struggling": "Vous nommez un coup mais pas clairement la position obtenue.",
+        "stronger": "Vous comparez deux positions possibles avant de jouer."
+      },
+      {
+        "label": "Chaos tactique",
+        "struggling": "Votre esprit se vide après les échanges.",
+        "stronger": "Vous tenez les cases et menaces importantes assez longtemps pour décider calmement."
+      },
+      {
+        "label": "Retour d'entraînement",
+        "struggling": "Vous ignorez quelle case exacte vous avez oubliée.",
+        "stronger": "Vous repérez si l'erreur venait d'une colonne, d'une rangée ou d'un défenseur manquant."
+      }
+    ],
+    "mistakes": [
+      "Tenter un calcul à l'aveugle profond avant que le rappel statique soit stable.",
+      "Déplacer physiquement les pièces à chaque tentative de calcul.",
+      "S'entraîner une fois par semaine au lieu de répéter un court bloc quotidien.",
+      "Ne pas vérifier si l'échiquier imaginé correspond à la réalité."
+    ],
+    "mistakesCallout": "Ne cherchez pas encore des variantes plus longues. Imaginez d'abord le premier coup clairement.",
+    "planTitle": "Progression de visualisation sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1",
+        "duration": "10 minutes",
+        "detail": "Uniquement des instantanés d'échiquier avec vérification immédiate."
+      },
+      {
+        "label": "Jour 2 à 3",
+        "duration": "12 minutes",
+        "detail": "Ajoutez un coup imaginé par camp et notez quelles cases disparaissent en premier."
+      },
+      {
+        "label": "Jour 4 à 5",
+        "duration": "15 minutes",
+        "detail": "Réduisez la fenêtre de mémorisation dans Memory Chess en gardant le même nombre de pièces."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 minutes",
+        "detail": "Transférez l'exercice dans une partie rapide en marquant une pause avant chaque décision tactique et en nommant la position obtenue."
+      }
+    ],
+    "faq": [
+      {
+        "question": "En combien de temps la visualisation s'améliore-t-elle ?",
+        "answer": "La plupart des débutants notent un rappel plus net au bout de deux à quatre semaines de pratique courte et régulière."
+      },
+      {
+        "question": "Ces exercices aident-ils en blitz ?",
+        "answer": "Oui. Mettre à jour l'échiquier mental plus vite rend échecs, prises et menaces plus faciles à voir sous pression."
+      },
+      {
+        "question": "Peut-on travailler la visualisation sans jouer à l'aveugle ?",
+        "answer": "Oui. Le rappel chronométré et les mises à jour d'un coup suffisent à bâtir une vraie base."
+      },
+      {
+        "question": "Que faire si j'oublie sans cesse l'emplacement des pièces ?",
+        "answer": "Utilisez moins de pièces, vérifiez plus souvent et répétez la position jusqu'à ce que le rappel soit net."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "À utiliser quand le rappel statique et à un coup est stable."
+      },
+      {
+        "reason": "Élargissez votre vision si vous manquez les pièces sur les bords."
+      },
+      {
+        "reason": "Associez la visualisation à un contrôle de menaces simple."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Exercices de vision de l'échiquier contre les gaffes",
+    "h1": "Exercices de vision de l'échiquier pour débutants",
+    "description": "Utilisez des exercices simples pour repérer les menaces, protéger vos pièces et faire moins de gaffes.",
+    "primaryKeyword": "vision de l'échiquier",
+    "secondaryKeywords": [
+      "exercices de vision de l'échiquier",
+      "réduire les gaffes aux échecs",
+      "repérer les menaces aux échecs",
+      "vigilance tactique aux échecs",
+      "erreurs de débutant aux échecs"
+    ],
+    "painPoint": "Vous vous concentrez sur une zone de l'échiquier et manquez une menace simple ailleurs.",
+    "ctaLabel": "Commencer un exercice de vision",
+    "quickAnswer": "Avant chaque coup, cherchez les échecs, les prises, les menaces et les pièces non protégées. Le travail de mémoire aide à garder toutes les pièces en tête pendant le balayage.",
+    "keyTakeaways": [
+      "La vision de l'échiquier est une habitude qui s'apprend.",
+      "Repérer les pièces en prise est souvent la correction la plus rapide.",
+      "Le travail de mémoire aide à suivre l'échiquier entier."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui laissent des pièces en prise malgré des bases tactiques.",
+      "Les débutants qui jouent vite et voient la gaffe après la prise.",
+      "Toute personne qui a besoin d'une liste claire avant chaque coup."
+    ],
+    "timeToRead": "8 min de lecture",
+    "introParagraphs": [
+      "Quand un joueur dit « je ne l'ai pas vu », il a souvent joué avant d'examiner tout l'échiquier.",
+      "Ces exercices vous apprennent où regarder. Commencez par les pièces non protégées et les coups qui donnent échec, prennent ou créent une menace."
+    ],
+    "startHereTitle": "Commencez ici : la boucle de vision avant le coup",
+    "startHereSteps": [
+      "Nommez échecs, prises et menaces des deux camps avant chaque coup.",
+      "Repérez chaque pièce non défendue et dites si elle est vraiment sûre ou seulement en apparence.",
+      "Faites une courte manche de Memory Chess pour affiner le lien case-pièce.",
+      "Revoyez une gaffe récente et identifiez la menace exacte manquée.",
+      "Reprenez la même liste dans votre prochaine partie rapide sans la raccourcir."
+    ],
+    "drillSectionTitle": "Exercices de vision pour les vraies parties",
+    "drillCards": [
+      {
+        "title": "Inventaire des pièces en prise",
+        "description": "Balayez l'échiquier et repérez chaque pièce non défendue avant de jouer.",
+        "duration": "3 minutes",
+        "goal": "Attraper tôt la source la plus fréquente de gaffes.",
+        "ctaLabel": "Lancer l'inventaire"
+      },
+      {
+        "title": "Rejouer la menace",
+        "description": "Recréez votre dernière position de gaffe et trouvez la menace la plus forte de l'adversaire avant de vérifier.",
+        "duration": "5 minutes",
+        "goal": "Apprendre à quoi ressemblait la menace manquée en contexte.",
+        "ctaLabel": "Rejouer une menace"
+      },
+      {
+        "title": "Rappel rapide des cases",
+        "description": "Utilisez une fenêtre courte pour que l'échiquier reste intact pendant le balayage.",
+        "duration": "4 minutes",
+        "goal": "Retenir l'emplacement des pièces pendant le balayage.",
+        "ctaLabel": "Accélérer le rappel"
+      }
+    ],
+    "comparisonTitle": "Vision faible contre vision solide",
+    "comparisonSummary": "La différence se voit généralement avant même le début du calcul.",
+    "comparisonRows": [
+      {
+        "label": "Attention",
+        "struggling": "Vous fixez une seule idée tactique.",
+        "stronger": "Vous balayez tout l'échiquier avant de choisir un plan."
+      },
+      {
+        "label": "Contrôles de sécurité",
+        "struggling": "Vous supposez qu'une pièce défendue est sûre.",
+        "stronger": "Vous comptez attaquants et défenseurs avant de faire confiance à la case."
+      },
+      {
+        "label": "Pression du temps",
+        "struggling": "Vous jouez plus vite quand la position devient tendue.",
+        "stronger": "Vous ralentissez quand apparaissent échecs, prises ou menaces."
+      }
+    ],
+    "mistakes": [
+      "Ne vérifier que sa propre idée en ignorant les menaces adverses.",
+      "Croire qu'une pièce défendue est sûre sans compter toute la séquence.",
+      "Jouer trop vite dès que la position devient tactique.",
+      "Ne jamais nommer le type d'erreur après une partie."
+    ],
+    "mistakesCallout": "Faire plus d'exercices ne corrigera pas un balayage précipité. Répétez le même contrôle court avant chaque coup.",
+    "planTitle": "Remise à niveau de la vision en 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "12 minutes",
+        "detail": "Uniquement l'inventaire des pièces en prise et le balayage échecs-prises-menaces."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "15 minutes",
+        "detail": "Ajoutez une manche de Memory Chess avant vos parties pour balayer sur un échiquier mental plus net."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "15 minutes",
+        "detail": "Revoyez trois gaffes récentes et nommez le signal manqué dans chaque position."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 à 20 minutes",
+        "detail": "Jouez en rapide et appliquez toute la liste à chaque coup qui change la tension ou la sécurité du roi."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Quel est le moyen le plus rapide d'améliorer sa vision de l'échiquier ?",
+        "answer": "Utiliser la même liste avant chaque coup jusqu'à ce qu'elle devienne automatique : échecs, prises, menaces et pièces en prise."
+      },
+      {
+        "question": "Pourquoi je fais des gaffes alors que je connais les tactiques ?",
+        "answer": "Parce que la couche de suivi de l'échiquier est faible. La tactique n'aide qu'après avoir bien perçu la position."
+      },
+      {
+        "question": "À quelle fréquence revoir mes gaffes ?",
+        "answer": "Après chaque partie. Une courte habitude de revue transfère bien plus vite qu'une longue séance hebdomadaire."
+      },
+      {
+        "question": "Les exercices de mémoire aident-ils la vision ?",
+        "answer": "Oui. Un rappel plus rapide permet de garder tout l'échiquier présent pendant le balayage."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Utilisez le guide anti-gaffes complet quand les erreurs de vision coûtent du matériel."
+      },
+      {
+        "reason": "Comprenez pourquoi la tactique échoue souvent sous la pression réelle."
+      },
+      {
+        "reason": "Voyez comment la vision s'intègre dans une routine complète de débutant."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Entraînement de la mémoire aux échecs pour un rappel plus rapide",
+    "h1": "Entraînement de la mémoire aux échecs pour progresser",
+    "description": "Utilisez des exercices simples pour retenir les positions, repérer les motifs et suivre les coups plus clairement.",
+    "primaryKeyword": "entraînement de la mémoire aux échecs",
+    "secondaryKeywords": [
+      "exercices de mémoire aux échecs",
+      "mémoriser des positions d'échecs",
+      "reconnaissance de motifs aux échecs",
+      "entraînement au rappel de l'échiquier",
+      "concentration aux échecs"
+    ],
+    "painPoint": "Vous oubliez où sont les pièces pendant que vous réfléchissez aux coups suivants.",
+    "ctaLabel": "Commencer un défi de mémoire",
+    "quickAnswer": "L'entraînement de la mémoire aide à retenir des positions utiles pendant que les pièces changent. Il ne s'agit pas de mémoriser le plus d'échiquiers possible.",
+    "keyTakeaways": [
+      "La précision compte plus que la vitesse au début.",
+      "Répéter une position permet de corriger une erreur de mémoire à la fois.",
+      "Placez le travail de mémoire avant le calcul ou l'analyse de partie."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui oublient leur plan après une réponse forte.",
+      "Les débutants incapables de reconstruire les positions clés de leurs parties.",
+      "Toute personne en difficulté quand de nombreuses pièces sont actives."
+    ],
+    "timeToRead": "8 min de lecture",
+    "introParagraphs": [
+      "La mémoire aux échecs est une compétence pratique. Le but est de garder une image nette de l'échiquier assez longtemps pour choisir un coup calmement.",
+      "Memory Chess propose une boucle simple : regarder, retenir, vérifier et recommencer."
+    ],
+    "startHereTitle": "Commencez par cette routine de mémoire",
+    "startHereSteps": [
+      "Partez d'une position simple et mémorisez-la pendant 10 secondes.",
+      "Reconstruisez l'échiquier et notez la première case ou pièce perdue.",
+      "Répétez la même position une fois pour rendre la correction visible.",
+      "Ajoutez une courte variante tactique à partir de la position mémorisée.",
+      "Suivez à la fois la précision et le type d'erreur de mémoire commise."
+    ],
+    "drillSectionTitle": "Exercices de mémoire pour les vraies parties",
+    "drillCards": [
+      {
+        "title": "Répétition d'une position",
+        "description": "Mémorisez une position, reconstruisez-la, puis répétez-la une fois avec les mêmes réglages.",
+        "duration": "5 minutes",
+        "goal": "Trouver une erreur de mémoire nette et corrigible.",
+        "ctaLabel": "Répéter une position"
+      },
+      {
+        "title": "Rappel par points d'ancrage",
+        "description": "Concentrez-vous sur la place des rois, les pièces en prise et la tension centrale avant le reste.",
+        "duration": "4 minutes",
+        "goal": "Retenir d'abord les éléments les plus importants.",
+        "ctaLabel": "Travailler les ancrages"
+      },
+      {
+        "title": "Rappel puis calcul",
+        "description": "Après avoir reconstruit l'échiquier, calculez une courte variante avant de vérifier.",
+        "duration": "6 minutes",
+        "goal": "Utiliser sa mémoire de l'échiquier pendant le calcul.",
+        "ctaLabel": "Ajouter une variante"
+      }
+    ],
+    "comparisonTitle": "À quoi ressemble un rappel faible en partie",
+    "comparisonSummary": "L'échiquier peut sembler familier tout en restant trop flou pour soutenir le calcul.",
+    "comparisonRows": [
+      {
+        "label": "Suivi des variantes",
+        "struggling": "Vous perdez la position initiale en examinant un autre coup candidat.",
+        "stronger": "Vous revenez précisément à la position de départ après avoir exploré une variante."
+      },
+      {
+        "label": "Mémoire des motifs",
+        "struggling": "Vous retenez l'idée tactique mais pas les défenseurs exacts.",
+        "stronger": "Vous retenez l'idée et les cases qui la rendent possible."
+      },
+      {
+        "label": "Qualité de l'analyse",
+        "struggling": "Votre analyse reste vague car la position disparaît aussitôt.",
+        "stronger": "Vous reconstruisez les moments clés et en tirez plus vite des leçons."
+      }
+    ],
+    "mistakes": [
+      "Faire des sauts de difficulté trop grands pour votre niveau.",
+      "Mesurer la vitesse en ignorant la précision.",
+      "Ne pas noter ses erreurs, ce qui laisse les faiblesses invisibles.",
+      "Traiter les exercices de mémoire comme séparés du jeu tactique."
+    ],
+    "mistakesCallout": "N'augmentez pas la difficulté tant que votre rappel reste flou. Baissez le niveau et bâtissez d'abord la précision.",
+    "planTitle": "Bloc de mémoire sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "10 minutes",
+        "detail": "Répétez des positions simples et nommez chaque erreur de mémoire."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "12 minutes",
+        "detail": "Ajoutez les points d'ancrage pour retenir d'abord les rois, les pièces en prise et la tension centrale."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "12 minutes",
+        "detail": "Ajoutez une courte séquence de coups après chaque reconstruction réussie."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 minutes",
+        "detail": "Réduisez légèrement le chrono en gardant le nombre de pièces, puis transférez le travail dans l'analyse d'une partie rapide."
+      }
+    ],
+    "faq": [
+      {
+        "question": "L'entraînement de la mémoire améliore-t-il les vraies parties ?",
+        "answer": "Oui, s'il est associé au calcul ou à l'analyse. Un meilleur rappel garde les variantes plus nettes sous pression."
+      },
+      {
+        "question": "Combien de positions travailler par séance ?",
+        "answer": "Pour un débutant, six à douze tentatives soignées suffisent si vous vérifiez vos erreurs au lieu de vous précipiter."
+      },
+      {
+        "question": "Faut-il travailler des échiquiers aléatoires ou de vraies structures ?",
+        "answer": "Les deux. L'aléatoire aiguise le rappel brut, les vraies structures améliorent le transfert."
+      },
+      {
+        "question": "Que faire si la précision stagne ?",
+        "answer": "Utilisez moins de pièces pendant une semaine, corrigez un type d'erreur, puis rajoutez des pièces quand le rappel redevient net."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "À utiliser si vous avez du mal à retenir des séquences de coups."
+      },
+      {
+        "reason": "Équilibrez mémoire et nombre d'exercices tactiques."
+      },
+      {
+        "reason": "Reliez la mémoire de l'échiquier aux motifs courants."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Échecs à l'aveugle : entraînement pour débutants",
+    "h1": "Échecs à l'aveugle pour débutants, une étape à la fois",
+    "description": "Apprenez les échecs à l'aveugle par petites étapes qui améliorent la visualisation sans décourager.",
+    "primaryKeyword": "entraînement aux échecs à l'aveugle",
+    "secondaryKeywords": [
+      "échecs à l'aveugle pour débutants",
+      "entraînement de l'échiquier mental",
+      "exercices de visualisation aux échecs",
+      "calculer sans déplacer les pièces",
+      "exercices de concentration aux échecs"
+    ],
+    "painPoint": "Vous perdez le fil de l'échiquier dès que vous cessez de le regarder.",
+    "ctaLabel": "Commencer la pratique à l'aveugle",
+    "quickAnswer": "Partez d'une position simple. Retenez-la, imaginez un coup pour chaque camp et vérifiez. Ne tentez une partie complète à l'aveugle que lorsque ces étapes deviennent faciles.",
+    "keyTakeaways": [
+      "Les échecs à l'aveugle se construisent étape par étape.",
+      "Vérifier sa réponse compte plus que viser des positions plus dures.",
+      "Pour un débutant, l'aveugle est un exercice de visualisation avec moins d'aide visuelle."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui veulent mieux visualiser sans commencer par une partie à l'aveugle.",
+      "Les débutants qui perdent les cases après un ou deux coups imaginés.",
+      "Toute personne qui veut garder une image mentale plus nette."
+    ],
+    "timeToRead": "8 min de lecture",
+    "introParagraphs": [
+      "La plus grosse erreur est de tenter une partie à l'aveugle trop tôt. Cela produit souvent de la frustration plutôt que des progrès.",
+      "Avancez pas à pas : voir l'échiquier, le retenir, imaginer un coup, vérifier, puis réduire lentement l'aide visuelle."
+    ],
+    "startHereTitle": "Commencez ici : une progression sûre vers l'aveugle",
+    "startHereSteps": [
+      "Mémorisez une petite position et reconstruisez-la avant d'imaginer le moindre coup.",
+      "Calculez un coup pour chaque camp sans toucher aux pièces.",
+      "Vérifiez immédiatement chaque écart au lieu de continuer.",
+      "Faites une manche de Memory Chess avec une fenêtre un peu plus courte.",
+      "N'ajoutez un coup que lorsque la variante actuelle est nette."
+    ],
+    "drillSectionTitle": "Exercices d'aveugle accessibles",
+    "drillCards": [
+      {
+        "title": "Reconstruire avant de bouger",
+        "description": "N'imaginez aucun coup tant que la position de départ n'est pas parfaitement stable.",
+        "duration": "4 minutes",
+        "goal": "Bâtir un rappel net avant d'ajouter des coups.",
+        "ctaLabel": "Reconstruire d'abord"
+      },
+      {
+        "title": "Un coup pour chaque camp",
+        "description": "Imaginez un coup des Blancs et une réponse des Noirs, puis vérifiez la nouvelle position.",
+        "duration": "5 minutes",
+        "goal": "Mettre à jour la position sans regarder l'échiquier.",
+        "ctaLabel": "Imaginer deux coups"
+      },
+      {
+        "title": "Temps de vue réduit",
+        "description": "Réduisez le temps d'affichage pour apprendre à retenir l'échiquier plus vite.",
+        "duration": "4 minutes",
+        "goal": "Préparer l'aveugle sans masquer tout l'échiquier.",
+        "ctaLabel": "Raccourcir la fenêtre"
+      }
+    ],
+    "comparisonTitle": "Une façon plus sûre de travailler l'aveugle",
+    "comparisonSummary": "Demandez-vous si vous imaginez un coup de plus qu'avant. Nul besoin de jouer déjà une partie complète à l'aveugle.",
+    "comparisonRows": [
+      {
+        "label": "Point de départ",
+        "struggling": "Vous vous lancez directement dans une partie à l'aveugle.",
+        "stronger": "Vous retenez la position de départ avant d'ajouter des coups."
+      },
+      {
+        "label": "Vérification",
+        "struggling": "Vous faites confiance à un échiquier mental flou.",
+        "stronger": "Vous vérifiez chaque mise à jour imaginée et la corrigez aussitôt."
+      },
+      {
+        "label": "Qualité de séance",
+        "struggling": "Vous continuez jusqu'à l'effondrement de la concentration.",
+        "stronger": "Vous arrêtez tant que la précision mentale reste élevée."
+      }
+    ],
+    "mistakes": [
+      "Tenter des parties complètes à l'aveugle trop tôt.",
+      "Sauter la vérification et se fier à un échiquier mental faux.",
+      "Ajouter des coups avant que les courtes variantes soient nettes.",
+      "S'entraîner trop longtemps et épuiser sa concentration."
+    ],
+    "mistakesCallout": "Ne sautez pas vers une tâche bien plus dure. Réduisez un peu l'aide visuelle à chaque fois.",
+    "planTitle": "Bloc de préparation à l'aveugle sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "10 minutes",
+        "detail": "Reconstruisez uniquement des positions de mémoire, puis vérifiez aussitôt."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "12 minutes",
+        "detail": "Ajoutez un coup pour chaque camp et gardez des positions simples."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "12 minutes",
+        "detail": "Raccourcissez la fenêtre dans Memory Chess en gardant le nombre de pièces."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 minutes",
+        "detail": "Tentez quelques séquences de deux coups seulement si le travail à un coup est précis."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Les échecs à l'aveugle sont-ils utiles aux débutants ?",
+        "answer": "Oui, en exercices courts et encadrés. Ils renforcent la visualisation qui soutient les parties normales."
+      },
+      {
+        "question": "À quelle fréquence pratiquer l'aveugle ?",
+        "answer": "Deux à quatre courtes séances par semaine suffisent, combinées à du jeu et de l'analyse réguliers."
+      },
+      {
+        "question": "Quel est le meilleur premier exercice à l'aveugle ?",
+        "answer": "Reconstruire une position simple de mémoire et imaginer un coup pour chaque camp avant de vérifier."
+      },
+      {
+        "question": "Comment savoir si je progresse ?",
+        "answer": "Vous retiendrez plus de cases correctement, tiendrez la position plus longtemps et ferez moins de gaffes de vision en partie."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Gardez des bases solides plutôt que de sauter à l'aveugle avancé."
+      },
+      {
+        "reason": "Associez le travail à l'aveugle à des exercices de suivi de variantes."
+      },
+      {
+        "reason": "Utilisez une visualisation plus nette pour comparer les coups possibles."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Exercices de mémoire de travail pour joueurs d'échecs",
+    "h1": "Exercices de mémoire de travail pour débutants aux échecs",
+    "description": "Utilisez des exercices simples pour retenir des séquences de coups, comparer vos choix et décider plus clairement.",
+    "primaryKeyword": "exercices de mémoire de travail",
+    "secondaryKeywords": [
+      "mémoire de travail aux échecs",
+      "entraînement au calcul aux échecs",
+      "exercices de concentration aux échecs",
+      "améliorer sa régularité aux échecs",
+      "endurance mentale aux échecs"
+    ],
+    "painPoint": "Vous oubliez la première séquence de coups en réfléchissant à une autre.",
+    "ctaLabel": "Commencer une routine de mémoire",
+    "quickAnswer": "La mémoire de travail permet de tenir quelques séquences possibles en tête. Gardez-en peu et vérifiez chacune clairement.",
+    "keyTakeaways": [
+      "Trois choix nets valent mieux que six confus.",
+      "Un court résumé à voix haute aide à retenir chaque variante.",
+      "Travaillez sur de vraies positions et réutilisez la compétence en partie."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui oublient la première variante en explorant la seconde.",
+      "Les débutants qui confondent l'ordre des coups.",
+      "Toute personne qui commet plus d'erreurs tactiques en étant fatiguée."
+    ],
+    "timeToRead": "8 min de lecture",
+    "introParagraphs": [
+      "La mémoire de travail permet de garder des coups possibles en tête pour les comparer. Aux échecs, il faut retenir la position de départ et une ou deux courtes variantes sans les mélanger.",
+      "Memory Chess vous aide à retenir la position de départ. Quand cette image est nette, suivre les coups suivants devient plus facile."
+    ],
+    "startHereTitle": "Commencez par deux courtes séquences",
+    "startHereSteps": [
+      "Choisissez une position et listez trois coups candidats sans toucher à l'échiquier.",
+      "Calculez chaque variante sur deux demi-coups et résumez le résultat en une phrase.",
+      "Faites une manche de rappel Memory Chess pour rafraîchir la position de base.",
+      "Revenez à la position et comparez de nouveau les séquences possibles.",
+      "Écrivez une phrase sur l'endroit où le suivi des variantes a lâché."
+    ],
+    "drillSectionTitle": "Exercices de mémoire de travail aux échecs",
+    "drillCards": [
+      {
+        "title": "Résumé en trois variantes",
+        "description": "Tenez brièvement trois coups candidats et décrivez chaque branche en une phrase.",
+        "duration": "6 minutes",
+        "goal": "Garder chaque séquence nette plutôt que d'en ajouter.",
+        "ctaLabel": "Tenir trois variantes"
+      },
+      {
+        "title": "Réinitialisation du rappel",
+        "description": "Intercalez une manche de Memory Chess entre deux calculs pour garder l'échiquier de base stable.",
+        "duration": "4 minutes",
+        "goal": "Retenir la position de départ avant de suivre les coups.",
+        "ctaLabel": "Réinitialiser l'échiquier"
+      },
+      {
+        "title": "Comparaison après coup",
+        "description": "Revenez à la position de départ et comparez les branches après un court délai.",
+        "duration": "5 minutes",
+        "goal": "Naviguer entre la position de base et chaque variante sans les mélanger.",
+        "ctaLabel": "Comparer vos choix"
+      }
+    ],
+    "comparisonTitle": "Quand on essaie de retenir trop de choses",
+    "comparisonSummary": "Quand la mémoire est saturée, la variante devient floue et l'ordre des coups se mélange.",
+    "comparisonRows": [
+      {
+        "label": "Coups candidats",
+        "struggling": "Vous tentez de tenir trop d'options à la fois.",
+        "stronger": "Vous tenez moins de variantes, mais chacune reste juste plus longtemps."
+      },
+      {
+        "label": "Ordre des coups",
+        "struggling": "Les branches se contaminent entre elles.",
+        "stronger": "Chaque variante reste distincte et facile à comparer."
+      },
+      {
+        "label": "Fatigue",
+        "struggling": "La qualité des décisions s'effondre en fin de partie.",
+        "stronger": "Vous gardez un processus plus simple et net quand l'énergie baisse."
+      }
+    ],
+    "mistakes": [
+      "Vouloir retenir trop de séquences à la fois.",
+      "Sauter le court résumé après chaque variante.",
+      "Ne faire que des exercices sans jamais réutiliser la compétence en partie.",
+      "Continuer alors que la fatigue empêche de penser clairement."
+    ],
+    "mistakesCallout": "N'ajoutez pas encore de variantes. Gardez-en peu et nettes avant de les allonger.",
+    "planTitle": "Bloc de mémoire de travail sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "10 minutes",
+        "detail": "Utilisez seulement deux séquences et expliquez chacune à voix haute."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "12 minutes",
+        "detail": "Ajoutez une réinitialisation Memory Chess entre les tentatives pour garder la position de départ nette."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "12 minutes",
+        "detail": "Ajoutez un troisième choix seulement si les deux premiers restent justes."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 minutes",
+        "detail": "Appliquez la routine dans une partie rapide. Faites une pause aux moments durs et nommez clairement vos coups possibles."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Ces exercices se transfèrent-ils vraiment aux échecs ?",
+        "answer": "Oui, surtout quand ils sont liés à des positions, au suivi de variantes et à l'analyse plutôt qu'à des jeux cérébraux génériques."
+      },
+      {
+        "question": "Comment structurer ce travail quand on débute ?",
+        "answer": "Faites des séances courtes combinant coups possibles, mémoire de l'échiquier et une vraie position de partie."
+      },
+      {
+        "question": "Comment mesurer simplement les progrès ?",
+        "answer": "Notez combien de séquences vous retenez et à quelle fréquence vous perdez le fil."
+      },
+      {
+        "question": "Cela remplace-t-il l'entraînement tactique ?",
+        "answer": "Non. Cela le complète en gardant les variantes plus nettes pendant la résolution ou la partie."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Utilisez une meilleure mémoire de travail pour comparer les coups possibles."
+      },
+      {
+        "reason": "Renforcez la couche de rappel sous le suivi des variantes."
+      },
+      {
+        "reason": "Adoptez un processus de réflexion plus simple pour ne pas gaspiller la mémoire de travail."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Comment arrêter de faire des gaffes aux échecs",
+    "h1": "Comment arrêter de faire des gaffes aux échecs",
+    "description": "Utilisez un court contrôle de sécurité pour repérer les menaces, protéger vos pièces et faire moins de gaffes.",
+    "primaryKeyword": "arrêter de faire des gaffes aux échecs",
+    "secondaryKeywords": [
+      "éviter les gaffes aux échecs",
+      "ne plus laisser de pièces en prise",
+      "contrôle des menaces aux échecs",
+      "liste de sécurité aux échecs",
+      "réduire les erreurs simples aux échecs"
+    ],
+    "painPoint": "Vous comprenez les idées du jeu mais perdez encore des pièces sur des menaces simples.",
+    "ctaLabel": "Commencer un exercice anti-gaffes",
+    "quickAnswer": "Avant chaque coup, examinez les menaces adverses, cherchez les pièces non protégées et assurez-vous que votre coup est sûr. Le travail de mémoire aide à garder tout l'échiquier en tête.",
+    "keyTakeaways": [
+      "La plupart des gaffes de débutant viennent d'une partie de l'échiquier ignorée.",
+      "Une liste de sécurité doit être assez courte pour survivre à la pression du temps.",
+      "Rejouez vos erreurs jusqu'à voir vite ce que vous aviez manqué."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui subissent des tactiques en un coup à répétition.",
+      "Les débutants qui se sentent moins bons en partie qu'aux exercices.",
+      "Toute personne qui veut une routine calme utilisable à chaque coup."
+    ],
+    "timeToRead": "8 min de lecture",
+    "introParagraphs": [
+      "Beaucoup de gaffes viennent d'un coup joué avant d'avoir examiné toute la position. On peut aussi perdre de vue où une pièce est défendue.",
+      "Une routine courte remplace la panique et les suppositions. Utilisez les mêmes contrôles dès que la position devient tendue."
+    ],
+    "startHereTitle": "Commencez ici : la liste anti-gaffes",
+    "startHereSteps": [
+      "Demandez-vous quels échecs, prises et menaces l'adversaire a maintenant.",
+      "Repérez chaque pièce non protégée ou surchargée de tâches.",
+      "Vérifiez seulement ensuite que votre coup prévu est sûr.",
+      "Faites une courte manche de Memory Chess avant vos parties pour affiner le rappel.",
+      "Après chaque gaffe, notez le signal manqué en une phrase."
+    ],
+    "drillSectionTitle": "Exercices anti-gaffes simples",
+    "drillCards": [
+      {
+        "title": "Balayage côté adverse",
+        "description": "Commencez chaque position en examinant les menaces les plus fortes de l'adversaire.",
+        "duration": "3 minutes",
+        "goal": "Penser à l'idée de l'adversaire avant la vôtre.",
+        "ctaLabel": "Balayer côté adverse"
+      },
+      {
+        "title": "Alerte pièces en prise",
+        "description": "Énoncez chaque pièce non protégée ou surchargée avant de jouer.",
+        "duration": "4 minutes",
+        "goal": "Attraper tôt les pertes de matériel les plus faciles.",
+        "ctaLabel": "Lancer l'alerte"
+      },
+      {
+        "title": "Boucle de rejeu de gaffes",
+        "description": "Rejouez vos positions de gaffe jusqu'à ce que la menace manquée saute aux yeux.",
+        "duration": "6 minutes",
+        "goal": "Apprendre des positions qui ont causé vos vraies défaites.",
+        "ctaLabel": "Rejouer votre gaffe"
+      }
+    ],
+    "comparisonTitle": "Ce qui change quand les gaffes diminuent",
+    "comparisonSummary": "Les parties ne deviennent pas parfaites d'un coup. Elles deviennent plus calmes, et vos défaites ont des causes compréhensibles plutôt qu'un désastre en un coup.",
+    "comparisonRows": [
+      {
+        "label": "Moment de jouer",
+        "struggling": "Vous jouez dès que vous voyez un plan.",
+        "stronger": "Vous ne jouez qu'après un court passage de sécurité."
+      },
+      {
+        "label": "Perception des menaces",
+        "struggling": "Vous voyez la tactique une fois qu'elle est tombée.",
+        "stronger": "Vous reconnaissez la forme tactique avant de vous engager."
+      },
+      {
+        "label": "Analyse après partie",
+        "struggling": "La défaite semble aléatoire.",
+        "stronger": "Vous nommez vite l'indice précis que vous aviez manqué."
+      }
+    ],
+    "mistakes": [
+      "Croire qu'il suffit de jouer plus lentement pour éliminer les gaffes.",
+      "Mémoriser plus d'ouvertures alors que le contrôle des menaces est encore faible.",
+      "Regarder les variantes du moteur sans identifier le vrai signal manqué.",
+      "Ignorer que la pression du temps affaiblit le rappel."
+    ],
+    "mistakesCallout": "Jouer plus lentement ne suffit pas. Utilisez le même court contrôle de sécurité à chaque fois.",
+    "planTitle": "Remise à zéro anti-gaffes en 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "10 minutes",
+        "detail": "Uniquement le balayage côté adverse et l'alerte pièces en prise."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "12 minutes",
+        "detail": "Ajoutez une manche de Memory Chess avant chaque session pour un état de l'échiquier plus net."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "15 minutes",
+        "detail": "Rejouez trois gaffes récentes et classez le signal manqué dans chacune."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 minutes",
+        "detail": "Appliquez toute la liste en parties rapides et suivez les gaffes par partie plutôt que le seul résultat."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Pourquoi je laisse sans cesse des pièces en prise ?",
+        "answer": "Généralement parce que le balayage avant le coup est incomplet. Vous connaissez la tactique mais n'examinez pas tout l'échiquier avant de jouer."
+      },
+      {
+        "question": "Suffit-il de jouer plus lentement ?",
+        "answer": "Seulement si vous utilisez ce temps pour un contrôle de sécurité clair. Fixer l'échiquier sans méthode n'aidera pas."
+      },
+      {
+        "question": "Les exercices de mémoire aident-ils vraiment ?",
+        "answer": "Oui. Un rappel plus net facilite la détection des menaces pendant que l'échiquier change."
+      },
+      {
+        "question": "Que suivre pour faire moins de gaffes ?",
+        "answer": "Suivez les gaffes par partie, les pièces en prise oubliées et si la menace manquée venait d'un balayage ou d'un calcul raté."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Renforcez le balayage de l'échiquier pour prévenir les gaffes."
+      },
+      {
+        "reason": "Voyez pourquoi la tactique s'effondre quand le suivi de l'échiquier est faible."
+      },
+      {
+        "reason": "Intégrez le travail anti-gaffes dans une routine complète de débutant."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Pourquoi votre niveau aux exercices ne se transfère pas en partie",
+    "h1": "Pourquoi votre niveau aux exercices ne se transfère pas en partie",
+    "description": "Comprenez pourquoi la tactique semble différente en partie et comment vision, mémoire et analyse comblent l'écart.",
+    "primaryKeyword": "pourquoi les exercices ne se transfèrent pas en partie",
+    "secondaryKeywords": [
+      "classement exercices contre classement partie",
+      "tactique qui ne se transfère pas",
+      "compétence tactique en vraie partie",
+      "pourquoi je suis meilleur aux exercices",
+      "vision de l'échiquier aux échecs"
+    ],
+    "painPoint": "Vous résolvez bien les exercices mais manquez les tactiques en partie.",
+    "ctaLabel": "S'entraîner pour les vraies parties",
+    "quickAnswer": "Un exercice vous dit qu'une tactique existe. Une partie non. Vous devez repérer le danger, retenir l'échiquier et savoir quand ralentir.",
+    "keyTakeaways": [
+      "Un exercice annonce qu'il y a un problème à résoudre.",
+      "En partie, c'est à vous de trouver le moment dangereux.",
+      "Une meilleure vision et une meilleure mémoire font remarquer les tactiques plus tôt."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs au classement d'exercices élevé mais au classement de partie plat.",
+      "Les débutants qui voient la tactique après la partie, pas pendant.",
+      "Toute personne incapable de réutiliser ses idées d'exercices en partie."
+    ],
+    "timeToRead": "8 min de lecture",
+    "introParagraphs": [
+      "C'est un problème fréquent chez les débutants. Vous résolvez des exercices, mais vos parties contiennent encore pièces perdues, menaces manquées et coups précipités.",
+      "Faire plus d'exercices n'y changera rien. Il faut aussi repérer quand une position devient dangereuse et imaginer ce qui suit chaque choix."
+    ],
+    "startHereTitle": "Commencez par relier exercices et parties",
+    "startHereSteps": [
+      "Avant les exercices, passez 2 minutes à balayer un échiquier pour les échecs, prises et menaces.",
+      "Ajoutez une manche de Memory Chess pour garder l'image de l'échiquier stable sous pression.",
+      "Après un exercice, demandez quel signal vous aurait dit de ralentir en partie.",
+      "Revoyez une gaffe récente et comparez-la à un exercice tactique similaire.",
+      "Jouez au moins une partie rapide par séance pour tester si le balayage tient."
+    ],
+    "drillSectionTitle": "Exercices qui relient tactique et partie",
+    "drillCards": [
+      {
+        "title": "Trouver le signal d'alerte",
+        "description": "Cherchez le signal d'alerte avant d'essayer de trouver la tactique.",
+        "duration": "4 minutes",
+        "goal": "Repérer les positions dangereuses plus tôt.",
+        "ctaLabel": "Travailler le signal"
+      },
+      {
+        "title": "Rappel avant calcul",
+        "description": "Faites une manche rapide de Memory Chess avant les exercices pour un échiquier plus net.",
+        "duration": "4 minutes",
+        "goal": "Relier le travail de motifs au jeu réel.",
+        "ctaLabel": "Affûter le rappel"
+      },
+      {
+        "title": "Rejeu d'une position de partie",
+        "description": "Rejouez un moment tactique manqué de votre partie et résolvez-le comme un exercice.",
+        "duration": "6 minutes",
+        "goal": "Redonner à la tactique le goût des vraies positions.",
+        "ctaLabel": "Rejouer la tactique manquée"
+      }
+    ],
+    "comparisonTitle": "Exercices et parties : qu'est-ce qui change ?",
+    "comparisonSummary": "Le coup tactique peut être identique, mais la tâche mentale ne l'est pas.",
+    "comparisonRows": [
+      {
+        "label": "Cadrage du problème",
+        "struggling": "La partie ne vous dit pas qu'une tactique existe.",
+        "stronger": "Vous repérez le signal qui indique un changement de tension."
+      },
+      {
+        "label": "Netteté de l'échiquier",
+        "struggling": "La variante se brouille dès que plusieurs pièces bougent.",
+        "stronger": "Vous gardez en mémoire les cases et défenseurs importants."
+      },
+      {
+        "label": "Rythme de décision",
+        "struggling": "Vous jouez à vitesse normale quand la position devient dangereuse.",
+        "stronger": "Vous ralentissez quand apparaissent échecs, prises ou menaces."
+      }
+    ],
+    "mistakes": [
+      "Faire des exercices sans aucune étape de transfert vers les parties.",
+      "Croire que la seule connaissance tactique empêche les gaffes.",
+      "Ne jamais analyser pourquoi une position est devenue dangereuse.",
+      "Traiter la vision de l'échiquier comme séparée de la tactique."
+    ],
+    "mistakesCallout": "N'ajoutez pas seulement des exercices. Entraînez-vous aussi à repérer les moments tactiques dans vos propres parties.",
+    "planTitle": "Bloc de transfert sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "12 minutes",
+        "detail": "Ajoutez le réflexe signal-avant-solution à chaque séance d'exercices."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "12 minutes",
+        "detail": "Faites une courte manche de Memory Chess avant les exercices ou le jeu rapide."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "15 minutes",
+        "detail": "Rejouez trois moments tactiques manqués dans vos propres parties."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 à 20 minutes",
+        "detail": "Jouez en rapide et arrêtez-vous dès que la position devient forcée ou tendue."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Pourquoi suis-je meilleur aux exercices qu'en partie ?",
+        "answer": "Parce qu'un exercice vous dit déjà qu'il y a une tactique à trouver. Une vraie partie non."
+      },
+      {
+        "question": "Dois-je arrêter les exercices ?",
+        "answer": "Non. Gardez-les, mais ajoutez vision, rappel et rejeu de positions de partie pour que les motifs se transfèrent."
+      },
+      {
+        "question": "Quel est le meilleur exercice de transfert ?",
+        "answer": "Rejouer une tactique manquée de votre partie et la résoudre après avoir reconstruit la position de mémoire."
+      },
+      {
+        "question": "Comment mesurer le transfert ?",
+        "answer": "Regardez si les gaffes par partie et les tactiques simples manquées diminuent, pas seulement si le classement d'exercices monte."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "À utiliser pour bâtir une liste anti-gaffes plus courte pour les vraies parties."
+      },
+      {
+        "reason": "Renforcez l'habitude de balayage qui rend les tactiques visibles."
+      },
+      {
+        "reason": "Choisissez un volume d'exercices qui laisse du temps pour jouer."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Comment voir tout l'échiquier aux échecs",
+    "h1": "Comment voir tout l'échiquier",
+    "description": "Utilisez un balayage simple pour repérer les pièces lointaines, voir les menaces et éviter la vision tunnel.",
+    "primaryKeyword": "voir tout l'échiquier aux échecs",
+    "secondaryKeywords": [
+      "conscience de l'échiquier",
+      "éviter la vision tunnel aux échecs",
+      "voir tout l'échiquier",
+      "exercices de balayage aux échecs",
+      "vision périphérique de l'échiquier"
+    ],
+    "painPoint": "Vous vous concentrez sur une zone et manquez une menace ailleurs.",
+    "ctaLabel": "Travailler la vision globale",
+    "quickAnswer": "Avant chaque coup, vérifiez les deux rois, les pièces non protégées, le centre et les bords. Le travail de mémoire aide à garder plus d'échiquier en tête.",
+    "keyTakeaways": [
+      "La vision tunnel, c'est une attention bloquée sur une zone.",
+      "Vérifier les pièces des bords est particulièrement utile aux débutants.",
+      "Une mémoire nette de l'échiquier facilite le balayage."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui ne voient la tactique que d'un côté de l'échiquier.",
+      "Les débutants qui manquent fous, tours ou menaces lointaines.",
+      "Toute personne qui se sent à l'étroit dans les positions ouvertes."
+    ],
+    "timeToRead": "7 min de lecture",
+    "introParagraphs": [
+      "Beaucoup de débutants ne regardent que les pièces proches du coup envisagé. Les fous, tours et menaces lointaines passent alors inaperçus.",
+      "Inutile de fixer l'échiquier plus longtemps. Utilisez le même balayage simple pour vérifier chaque zone importante."
+    ],
+    "startHereTitle": "Commencez ici : élargir le balayage",
+    "startHereSteps": [
+      "Vérifiez les deux rois et les lignes qui pointent vers eux.",
+      "Cherchez les pièces non protégées d'abord au centre, puis sur les bords.",
+      "Parcourez fous et tours sur toute leur ligne, pas seulement la case qui vous intéresse.",
+      "Faites une manche de Memory Chess pour garder tout l'échiquier plus disponible.",
+      "Avant de jouer, demandez-vous quelle partie de l'échiquier vous n'avez pas encore regardée."
+    ],
+    "drillSectionTitle": "Exercices contre la vision tunnel",
+    "drillCards": [
+      {
+        "title": "Balayage des bords",
+        "description": "Vérifiez les pièces des coins et des bords avant chaque coup.",
+        "duration": "3 minutes",
+        "goal": "Attraper les menaces hors de votre zone de concentration.",
+        "ctaLabel": "Balayer les bords"
+      },
+      {
+        "title": "Rejeu des lignes de vue",
+        "description": "Tracez entièrement chaque ligne de fou et de tour au lieu de fixer une seule case cible.",
+        "duration": "4 minutes",
+        "goal": "Couvrir plus d'échiquier à chaque balayage.",
+        "ctaLabel": "Tracer les lignes"
+      },
+      {
+        "title": "Rappel de l'échiquier entier",
+        "description": "Utilisez Memory Chess avec un nombre modéré de pièces puis énoncez l'échiquier par zone.",
+        "duration": "5 minutes",
+        "goal": "Retenir plus d'échiquier à la fois.",
+        "ctaLabel": "Rappeler par zone"
+      }
+    ],
+    "comparisonTitle": "Vision tunnel contre vision globale",
+    "comparisonSummary": "Inutile de regarder partout aussi longtemps. Assurez-vous seulement de ne rien manquer d'important.",
+    "comparisonRows": [
+      {
+        "label": "Trajet de l'attention",
+        "struggling": "Vous fixez un seul groupe de pièces.",
+        "stronger": "Vous touchez les zones à risque dans un ordre constant."
+      },
+      {
+        "label": "Pièces à longue portée",
+        "struggling": "Vous oubliez les fous et tours éloignés de l'action.",
+        "stronger": "Vous parcourez toutes leurs lignes avant de jouer."
+      },
+      {
+        "label": "Zones de l'échiquier",
+        "struggling": "Vous sautez le côté qui paraît calme.",
+        "stronger": "Vous vérifiez le côté calme avant de jouer."
+      }
+    ],
+    "mistakes": [
+      "Croire que la vision globale consiste à regarder plus longtemps plutôt qu'à mieux balayer.",
+      "Ignorer les bords parce que le centre paraît plus urgent.",
+      "Ne pas parcourir entièrement les lignes des pièces à longue portée.",
+      "Vouloir balayer plus large avant de savoir retenir les pièces clairement."
+    ],
+    "mistakesCallout": "Plus de temps de réflexion n'aidera pas sans un balayage clair. Vérifiez l'échiquier dans le même ordre à chaque fois.",
+    "planTitle": "Plan de balayage global sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "10 minutes",
+        "detail": "Uniquement les contrôles des rois, des pièces en prise et le balayage des bords."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "12 minutes",
+        "detail": "Ajoutez le tracé complet des lignes de fous et de tours."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "12 minutes",
+        "detail": "Utilisez Memory Chess et rappelez l'échiquier par zones plutôt qu'au hasard."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 minutes",
+        "detail": "Transférez le balayage en parties rapides et notez quelle zone a causé l'oubli lors d'une gaffe."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Pourquoi je manque sans cesse les pièces à l'autre bout ?",
+        "answer": "Parce que votre attention est trop locale. Un ordre de balayage fixe vaut mieux qu'espérer tout remarquer naturellement."
+      },
+      {
+        "question": "Memory Chess aide-t-il la vision globale ?",
+        "answer": "Oui. Il entraîne à garder plus d'échiquier actif en mémoire, pas seulement le point chaud tactique."
+      },
+      {
+        "question": "Faut-il regarder les bords à chaque coup ?",
+        "answer": "Oui, surtout en débutant. Beaucoup de gaffes faciles se cachent dans les pièces de bord et les lignes longues."
+      },
+      {
+        "question": "Comment savoir si le balayage s'améliore ?",
+        "answer": "Vous manquerez moins de menaces lointaines et serez moins surpris par les fous, tours et attaques à la découverte."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Associez la vision globale à une liste de sécurité plus solide."
+      },
+      {
+        "reason": "Améliorez l'échiquier mental pour balayer plus large sans effort."
+      },
+      {
+        "reason": "Reconnaissez les cases plus vite pour un balayage moins coûteux."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Travailler les coordonnées pour mieux voir l'échiquier",
+    "h1": "Travailler les coordonnées aux échecs quand on débute",
+    "description": "Apprenez plus vite le nom des cases et facilitez balayage, notation et visualisation.",
+    "primaryKeyword": "exercices de coordonnées aux échecs",
+    "secondaryKeywords": [
+      "exercices de notation aux échecs",
+      "apprendre les coordonnées aux échecs",
+      "reconnaître les cases plus vite",
+      "conscience des cases de l'échiquier",
+      "nommer les cases aux échecs"
+    ],
+    "painPoint": "Il vous faut du temps pour retrouver le nom d'une case, ou vous les confondez souvent.",
+    "ctaLabel": "Travailler le nom des cases",
+    "quickAnswer": "Les coordonnées sont les noms des 64 cases. Les connaître facilite le balayage, l'imagination des coups et l'analyse des parties.",
+    "keyTakeaways": [
+      "Reconnaître vite les cases facilite le balayage.",
+      "Travaillez les coordonnées sur de vraies positions.",
+      "Les noms de base des cases suffisent pour commencer."
+    ],
+    "whoThisIsFor": [
+      "Les débutants qui comptent encore lentement colonnes et rangées.",
+      "Les joueurs qui veulent balayer et visualiser plus vite.",
+      "Toute personne qui trouve la notation confuse."
+    ],
+    "timeToRead": "7 min de lecture",
+    "introParagraphs": [
+      "Les coordonnées servent à bien plus qu'aux livres et aux listes de coups. Les reconnaître vite aide la vision, la mémoire et l'analyse.",
+      "Quand vous connaissez le nom des cases, l'échiquier devient une carte nette au lieu d'un ensemble de zones vagues."
+    ],
+    "startHereTitle": "Commencez par les noms de cases sur un vrai échiquier",
+    "startHereSteps": [
+      "Choisissez une colonne ou une rangée et nommez les cases à voix haute.",
+      "Énoncez la case de chaque pièce en reconstruisant une position Memory Chess.",
+      "Prenez une position récente et nommez attaquants et défenseurs par case.",
+      "Travaillez fous, tours et sauts de cavalier par coordonnées, pas seulement à vue.",
+      "Terminez par un balayage rapide où chaque pièce en prise est nommée par sa case."
+    ],
+    "drillSectionTitle": "Exercices de coordonnées utiles en partie",
+    "drillCards": [
+      {
+        "title": "Nommer pièce et case",
+        "description": "Reconstruisez un échiquier et nommez chaque pièce avec sa case.",
+        "duration": "4 minutes",
+        "goal": "Relier les noms de cases aux pièces à retenir.",
+        "ctaLabel": "Nommer chaque case"
+      },
+      {
+        "title": "Nommer les lignes longues",
+        "description": "Tracez les lignes de fous et de tours en énonçant les cases influencées.",
+        "duration": "4 minutes",
+        "goal": "Rendre les coordonnées utiles pendant le balayage complet.",
+        "ctaLabel": "Tracer par case"
+      },
+      {
+        "title": "Cartographie des sauts de cavalier",
+        "description": "Choisissez une case de cavalier et nommez vite toutes ses destinations légales.",
+        "duration": "3 minutes",
+        "goal": "Reconnaître plus vite les coups de cavalier et leurs cibles.",
+        "ctaLabel": "Cartographier les sauts"
+      }
+    ],
+    "comparisonTitle": "Reconnaissance lente contre reconnaissance rapide",
+    "comparisonSummary": "Les coordonnées n'améliorent pas tout votre jeu, mais elles facilitent plusieurs compétences.",
+    "comparisonRows": [
+      {
+        "label": "Balayage",
+        "struggling": "Vous voyez la forme mais pas le nom des cases.",
+        "stronger": "Vous identifiez menaces et défenseurs plus vite et plus précisément."
+      },
+      {
+        "label": "Visualisation",
+        "struggling": "Les coups imaginés restent vagues.",
+        "stronger": "La position obtenue devient plus facile à décrire et à tenir."
+      },
+      {
+        "label": "Analyse",
+        "struggling": "Vos notes après partie restent floues.",
+        "stronger": "Vous décrivez le moment clé assez précisément pour l'étudier plus tard."
+      }
+    ],
+    "mistakes": [
+      "Travailler les noms de cases sans vraies positions.",
+      "Vouloir mémoriser les règles de notation sans exemples sur l'échiquier.",
+      "Ignorer les lignes des pièces longues en travaillant les cases.",
+      "Abandonner l'habitude dès que la notation devient familière."
+    ],
+    "mistakesCallout": "Ne répétez pas seulement des noms de cases. Utilisez-les avec de vraies pièces et positions.",
+    "planTitle": "Échauffement coordonnées sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "8 minutes",
+        "detail": "Nommez chaque pièce et sa case en reconstruisant une position Memory Chess."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "10 minutes",
+        "detail": "Ajoutez le nommage des lignes longues pour fous et tours."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "10 minutes",
+        "detail": "Travaillez les sauts de cavalier et l'aisance sur les cases centrales."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "12 minutes",
+        "detail": "Utilisez les noms de cases pendant un balayage complet, puis analysez une position importante uniquement par cases."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Les coordonnées comptent-elles vraiment pour un débutant ?",
+        "answer": "Oui, quand elles accélèrent la vision, la visualisation et l'analyse. La notation parfaite n'est pas requise, mais la rapidité aide."
+      },
+      {
+        "question": "Quelle est la meilleure façon d'apprendre les coordonnées ?",
+        "answer": "Apprenez les noms de cases avec de vraies positions et de vraies pièces plutôt qu'en répétant la notation seule."
+      },
+      {
+        "question": "Cela m'aidera-t-il à moins gaffer ?",
+        "answer": "Indirectement, oui. Reconnaître vite les cases rend balayages et contrôles de menaces plus précis."
+      },
+      {
+        "question": "Combien de temps travailler les coordonnées ?",
+        "answer": "Cinq à dix minutes concentrées suffisent quand l'exercice est lié à un vrai travail sur l'échiquier."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Utilisez les coordonnées pour soutenir un balayage plus large."
+      },
+      {
+        "reason": "Rendez les mises à jour mentales plus précises, case par case."
+      },
+      {
+        "reason": "Utilisez le nommage des cases pour simplifier votre réflexion sous pression."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Plan d'étude quotidien de 20 minutes pour débutants",
+    "h1": "Un plan d'échecs quotidien de 20 minutes pour débutants",
+    "description": "Suivez un plan simple de 20 minutes : échiquier, mémoire, parties et courte analyse.",
+    "primaryKeyword": "plan d'échecs quotidien de 20 minutes",
+    "secondaryKeywords": [
+      "routine d'échecs quotidienne pour débutants",
+      "plan d'étude court aux échecs",
+      "progresser en 20 minutes par jour",
+      "programme d'entraînement débutant",
+      "routine exercices et analyse"
+    ],
+    "painPoint": "Vous voulez progresser, mais la plupart des plans d'échecs prennent trop de temps.",
+    "ctaLabel": "Démarrer le plan de 20 minutes",
+    "quickAnswer": "Consacrez quelques minutes à la vision de l'échiquier, à la mémoire, à la tactique et à l'analyse. Gardez la routine assez courte pour la tenir même fatigué.",
+    "keyTakeaways": [
+      "S'entraîner souvent compte plus que s'entraîner longtemps.",
+      "Utilisez à la fois des exercices et de vraies positions.",
+      "Une courte analyse aide l'entraînement du lendemain."
+    ],
+    "whoThisIsFor": [
+      "Les débutants avec peu de temps mais une motivation régulière.",
+      "Les joueurs qui abandonnent les plans trop exigeants.",
+      "Toute personne qui veut une routine quotidienne reproductible."
+    ],
+    "timeToRead": "7 min de lecture",
+    "introParagraphs": [
+      "Beaucoup de plans d'étude ne marchent qu'avec beaucoup de temps libre. Un plan utile doit tenir même lors d'une journée chargée.",
+      "Cette routine de 20 minutes garde un exercice, une vraie position et une courte analyse."
+    ],
+    "startHereTitle": "Votre routine d'échecs de 20 minutes",
+    "startHereSteps": [
+      "Consacrez 4 minutes à un exercice de vision ou de rappel.",
+      "Consacrez 6 minutes à une manche de Memory Chess avec les mêmes réglages toute la semaine.",
+      "Consacrez 6 minutes à la tactique ou à une position tirée d'une vraie partie.",
+      "Consacrez 4 minutes à noter ce qui a échoué aujourd'hui et ce qui a tenu.",
+      "Gardez la structure au moins 7 jours avant de l'ajuster."
+    ],
+    "drillSectionTitle": "Des exercices qui tiennent dans un plan court",
+    "drillCards": [
+      {
+        "title": "Échauffement par rappel",
+        "description": "Utilisez une courte manche de Memory Chess comme point d'ancrage de la séance.",
+        "duration": "6 minutes",
+        "goal": "Commencer chaque séance par le même échauffement de mémoire.",
+        "ctaLabel": "Lancer l'échauffement"
+      },
+      {
+        "title": "Sprint de contrôle des menaces",
+        "description": "Balayez une position pour trouver échecs, prises, menaces et pièces en prise.",
+        "duration": "4 minutes",
+        "goal": "Améliorer le transfert en partie sans presque coûter de temps.",
+        "ctaLabel": "Contrôler les menaces"
+      },
+      {
+        "title": "Boucle de notes",
+        "description": "Écrivez une phrase sur le type d'erreur commise aujourd'hui.",
+        "duration": "4 minutes",
+        "goal": "Réutiliser la leçon du jour demain.",
+        "ctaLabel": "Noter une leçon"
+      }
+    ],
+    "comparisonTitle": "Une routine que vous tiendrez",
+    "comparisonSummary": "La meilleure routine est celle que vous pouvez répéter dans une semaine normale.",
+    "comparisonRows": [
+      {
+        "label": "Charge quotidienne",
+        "struggling": "Vous tentez trop de formes d'étude à la fois.",
+        "stronger": "Vous répétez une boucle compacte qui couvre l'essentiel chaque jour."
+      },
+      {
+        "label": "Transfert",
+        "struggling": "Vous regardez ou lisez sans pratiquer.",
+        "stronger": "Chaque séance contient un exercice réutilisable en partie."
+      },
+      {
+        "label": "Analyse",
+        "struggling": "Les erreurs disparaissent car rien n'est noté.",
+        "stronger": "Chaque jour se termine par une note pour demain."
+      }
+    ],
+    "mistakes": [
+      "Copier des plans avancés impossibles à tenir.",
+      "Consacrer les 20 minutes à du contenu passif.",
+      "Changer la routine tous les deux jours.",
+      "Sauter l'analyse parce qu'elle paraît minime."
+    ],
+    "mistakesCallout": "N'agrandissez pas le plan. Rendez-le assez léger pour être répété.",
+    "planTitle": "Routine de 20 minutes sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 3",
+        "duration": "20 minutes",
+        "detail": "Gardez les mêmes réglages Memory Chess et le même format de contrôle pour la régularité."
+      },
+      {
+        "label": "Jour 4",
+        "duration": "20 minutes",
+        "detail": "Relisez vos notes et ne gardez qu'un point de correction pour les trois jours suivants."
+      },
+      {
+        "label": "Jour 5 à 6",
+        "duration": "20 minutes",
+        "detail": "Répétez exactement la même structure sans ajouter de variété."
+      },
+      {
+        "label": "Jour 7",
+        "duration": "20 minutes",
+        "detail": "Vérifiez si les gaffes ou la précision de rappel se sont améliorées et faites un seul ajustement pour la semaine suivante."
+      }
+    ],
+    "faq": [
+      {
+        "question": "20 minutes d'entraînement suffisent-elles ?",
+        "answer": "Oui, si elles sont régulières et contiennent des exercices qui se transfèrent directement en partie, pas seulement du contenu passif."
+      },
+      {
+        "question": "Dois-je consacrer les 20 minutes à la tactique ?",
+        "answer": "Généralement non. Un mélange de vision, de transfert tactique et de courte analyse marche mieux chez les débutants."
+      },
+      {
+        "question": "Combien de temps garder le même plan ?",
+        "answer": "Au moins une semaine. Changer sans cesse rend les progrès illisibles."
+      },
+      {
+        "question": "Que dois-je suivre ?",
+        "answer": "Les gaffes par partie, la précision de rappel et le type d'erreur qui revient le plus souvent."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Voyez comment cette courte routine s'insère dans un plan plus long."
+      },
+      {
+        "reason": "Équilibrez travail tactique et vision de l'échiquier."
+      },
+      {
+        "reason": "Gardez le bloc d'analyse simple et productif."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Comment analyser ses parties d'échecs quand on débute",
+    "h1": "Comment analyser ses parties d'échecs quand on débute",
+    "description": "Analysez vos parties, comprenez vos erreurs et choisissez une chose claire à travailler.",
+    "primaryKeyword": "analyser ses parties d'échecs débutant",
+    "secondaryKeywords": [
+      "analyse de partie pour débutants",
+      "revoir ses parties d'échecs",
+      "auto-analyse aux échecs",
+      "analyser ses gaffes",
+      "routine après la partie"
+    ],
+    "painPoint": "Votre analyse est trop rapide, trop confuse ou noyée dans les variantes du moteur.",
+    "ctaLabel": "Analyser la prochaine partie",
+    "quickAnswer": "Trouvez où la partie a basculé, nommez le type d'erreur et choisissez une correction. Ne consultez le moteur qu'après avoir examiné la position vous-même.",
+    "keyTakeaways": [
+      "Terminez chaque analyse par une action, pas par une longue liste de coups du moteur.",
+      "Nommer le type d'erreur aide à choisir l'exercice.",
+      "Essayez de reconstruire la position clé de mémoire."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui revoient leurs parties sans savoir quoi faire ensuite.",
+      "Les débutants qui voient l'évaluation bouger sans comprendre pourquoi.",
+      "Toute personne qui veut une habitude d'après-partie plus simple."
+    ],
+    "timeToRead": "7 min de lecture",
+    "introParagraphs": [
+      "Commencez par une question : quelle erreur a changé la partie ? Une évaluation de moteur seule n'explique pas quoi travailler.",
+      "Reconstruisez la position clé, nommez l'erreur et tirez-en l'exercice de demain."
+    ],
+    "startHereTitle": "Commencez ici : la boucle d'analyse du débutant",
+    "startHereSteps": [
+      "Trouvez le premier moment où la position a beaucoup changé.",
+      "Reconstruisez cette position de mémoire avant de consulter le moteur.",
+      "Classez l'erreur en vision, mémoire, calcul ou gestion du temps.",
+      "Demandez-vous quel signal aurait dû vous faire ralentir.",
+      "Transformez la réponse en exercice pour votre prochaine séance."
+    ],
+    "drillSectionTitle": "Exercices d'analyse simples",
+    "drillCards": [
+      {
+        "title": "Reconstruire la position clé",
+        "description": "Reconstruisez de mémoire la position de la gaffe principale avant de la vérifier.",
+        "duration": "5 minutes",
+        "goal": "Retenir la position avant de voir la réponse.",
+        "ctaLabel": "Reconstruire le moment"
+      },
+      {
+        "title": "Étiqueter le type d'erreur",
+        "description": "Classez chaque grosse erreur en vision, mémoire, calcul ou manque de temps.",
+        "duration": "3 minutes",
+        "goal": "Savoir quoi travailler ensuite.",
+        "ctaLabel": "Étiqueter l'erreur"
+      },
+      {
+        "title": "Analyse à une correction",
+        "description": "Terminez l'analyse par une correction claire pour demain.",
+        "duration": "2 minutes",
+        "goal": "Finir avec une prochaine étape utile.",
+        "ctaLabel": "Choisir une correction"
+      }
+    ],
+    "comparisonTitle": "Analyse utile contre analyse inutile",
+    "comparisonSummary": "Inutile d'étudier chaque coup. Trouvez la leçon la plus claire pour votre prochain exercice.",
+    "comparisonRows": [
+      {
+        "label": "Usage du moteur",
+        "struggling": "Vous ouvrez le moteur immédiatement.",
+        "stronger": "Vous faites votre diagnostic avant de vérifier."
+      },
+      {
+        "label": "Résultat",
+        "struggling": "Vous finissez avec beaucoup de commentaires et aucune action.",
+        "stronger": "Vous finissez avec un exercice ou un ajustement de votre liste."
+      },
+      {
+        "label": "Mémoire",
+        "struggling": "La position s'efface dès la fin de la partie.",
+        "stronger": "Vous la reconstruisez et voyez l'erreur plus clairement."
+      }
+    ],
+    "mistakes": [
+      "Analyser uniquement avec les variantes du moteur, sans auto-diagnostic.",
+      "Vouloir analyser chaque coup avec la même profondeur.",
+      "Ne pas nommer le type d'erreur.",
+      "Terminer l'analyse sans choisir le prochain exercice."
+    ],
+    "mistakesCallout": "Ne parcourez pas toutes les variantes du moteur. Nommez l'erreur et travaillez la correction.",
+    "planTitle": "Habitude d'analyse sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "10 minutes",
+        "detail": "Analysez une partie et trouvez seulement le premier grand tournant."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "12 minutes",
+        "detail": "Reconstruisez cette position de mémoire avant de consulter le moteur."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "12 minutes",
+        "detail": "Classez chaque grosse erreur par type et comptez laquelle revient le plus."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 minutes",
+        "detail": "Choisissez le premier exercice de votre prochaine séance selon le type d'erreur le plus fréquent."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Un débutant doit-il utiliser le moteur ?",
+        "answer": "Oui, mais après avoir tenté son propre diagnostic. Sinon l'analyse reste passive."
+      },
+      {
+        "question": "Combien d'erreurs examiner après une partie ?",
+        "answer": "Un à trois grands tournants suffisent à la plupart des débutants."
+      },
+      {
+        "question": "Que noter après l'analyse ?",
+        "answer": "Le type d'erreur, le signal manqué et un exercice ou un ajustement de liste pour la prochaine fois."
+      },
+      {
+        "question": "Comment Memory Chess aide-t-il à l'analyse ?",
+        "answer": "Il vous aide à reconstruire les positions importantes, ce qui rend votre analyse plus précise."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Intégrez l'analyse dans une routine qui ne surcharge pas."
+      },
+      {
+        "reason": "Transformez les résultats d'analyse en exercices anti-gaffes."
+      },
+      {
+        "reason": "Retenez et reconstruisez les moments clés après la partie."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Combien d'exercices d'échecs faire par jour ?",
+    "h1": "Combien d'exercices d'échecs un débutant doit-il faire par jour ?",
+    "description": "Choisissez un volume quotidien qui améliore la tactique et laisse du temps pour la mémoire, les parties et l'analyse.",
+    "primaryKeyword": "combien d'exercices d'échecs par jour",
+    "secondaryKeywords": [
+      "volume quotidien d'exercices",
+      "routine d'exercices pour débutants",
+      "combien de tactique par jour",
+      "trop d'exercices d'échecs",
+      "volume tactique débutant"
+    ],
+    "painPoint": "Vous faites beaucoup d'exercices sans savoir s'ils aident vos parties.",
+    "ctaLabel": "Équilibrer exercices et pratique",
+    "quickAnswer": "Pour la plupart des débutants, une courte séance quotidienne suffit. Arrêtez tant que votre esprit est clair et gardez du temps pour les parties, la mémoire et l'analyse.",
+    "keyTakeaways": [
+      "La qualité des exercices compte plus que la quantité.",
+      "Trop d'exercices prennent le temps des parties et de l'analyse.",
+      "Votre volume idéal doit laisser du temps pour jouer ou analyser."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs dont tout le plan d'étude se résume aux exercices.",
+      "Les débutants qui veulent une routine d'exercices claire.",
+      "Toute personne qui veut équilibrer exercices et pratique."
+    ],
+    "timeToRead": "7 min de lecture",
+    "introParagraphs": [
+      "Il n'existe pas de chiffre parfait pour tout le monde. Trop peu d'exercices ralentit l'apprentissage des motifs, trop d'exercices ne laisse plus de temps pour le reste.",
+      "Faites-en assez pour rester affûté et utilisez le reste du temps pour la mémoire de l'échiquier, les parties et l'analyse."
+    ],
+    "startHereTitle": "Choisissez un volume quotidien sensé",
+    "startHereSteps": [
+      "Décidez si les exercices sont votre échauffement, votre bloc principal ou votre test de transfert.",
+      "Gardez une courte manche de Memory Chess avant ou après pour la netteté de l'échiquier.",
+      "Arrêtez quand vos réponses deviennent précipitées, au lieu de courir après un chiffre.",
+      "Reconstruisez chaque jour un moment tactique manqué d'une vraie partie.",
+      "Ne changez le volume qu'après avoir vérifié si vos erreurs en partie évoluent."
+    ],
+    "drillSectionTitle": "Exercices qui rendent la tactique plus utile",
+    "drillCards": [
+      {
+        "title": "Échauffement plus rappel",
+        "description": "Combinez un court exercice de rappel avec un bloc tactique modéré au lieu de démarrer à froid.",
+        "duration": "10 minutes",
+        "goal": "Relier la tactique au vrai jeu.",
+        "ctaLabel": "Ajouter le rappel"
+      },
+      {
+        "title": "Contrôle du signal après chaque exercice",
+        "description": "Demandez quel signal d'alerte rendait la tactique possible avant de voir la solution.",
+        "duration": "5 minutes",
+        "goal": "Remarquer pourquoi une position contient une tactique.",
+        "ctaLabel": "Vérifier le signal"
+      },
+      {
+        "title": "Rejouer une tactique de partie",
+        "description": "Transformez une tactique manquée en exercice que vous résolvez après avoir reconstruit la position.",
+        "duration": "5 minutes",
+        "goal": "Utiliser la tactique de vos propres parties.",
+        "ctaLabel": "Rejouer la tactique"
+      }
+    ],
+    "comparisonTitle": "Trop peu, trop, et juste assez d'exercices",
+    "comparisonSummary": "Le bon volume garde votre tactique affûtée tout en laissant du temps pour jouer.",
+    "comparisonRows": [
+      {
+        "label": "Reconnaissance de motifs",
+        "struggling": "Trop peu de pratique rend les tactiques courantes étrangères.",
+        "stronger": "Un bloc quotidien modéré garde les motifs frais."
+      },
+      {
+        "label": "Transfert",
+        "struggling": "Trop d'exercices ne laissent pas de temps pour la vision ou l'analyse.",
+        "stronger": "Votre routine garde du rappel et du travail sur de vraies positions."
+      },
+      {
+        "label": "Fatigue",
+        "struggling": "Les derniers exercices deviennent des devinettes précipitées.",
+        "stronger": "Vous arrêtez tant que vos décisions restent nettes."
+      }
+    ],
+    "mistakes": [
+      "Prendre le nombre d'exercices comme seule mesure de qualité.",
+      "Résoudre des tactiques sans aucun transfert en partie.",
+      "Continuer longtemps après la baisse de concentration.",
+      "Écraser l'analyse et la vision de l'échiquier."
+    ],
+    "mistakesCallout": "Plus d'exercices n'est pas toujours mieux. Vérifiez s'ils aident vos vraies parties.",
+    "planTitle": "Plan d'équilibre sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "15 minutes",
+        "detail": "Utilisez un petit bloc d'exercices précédé d'un court exercice de rappel."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "15 minutes",
+        "detail": "Ajoutez un contrôle du signal après chaque exercice pour voir pourquoi la tactique existait."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "15 minutes",
+        "detail": "Rejouez une tactique manquée en partie et comparez-la à vos résultats aux exercices."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 à 20 minutes",
+        "detail": "Ne changez le volume que si vos réponses restent soignées et qu'il reste du temps pour jouer."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Combien d'exercices par jour pour un débutant ?",
+        "answer": "Assez pour garder les tactiques courantes familières tout en laissant du temps pour la mémoire et les parties. Une courte séance quotidienne suffit souvent."
+      },
+      {
+        "question": "Trop d'exercices peuvent-ils nuire ?",
+        "answer": "Indirectement, oui. Ils peuvent écraser la vision, le rappel et l'analyse, nécessaires au vrai transfert."
+      },
+      {
+        "question": "Avant ou après les parties ?",
+        "answer": "Les deux fonctionnent, mais un petit échauffement suivi d'une étape de transfert marche souvent bien."
+      },
+      {
+        "question": "Que dois-je suivre ?",
+        "answer": "Le recul des gaffes et des tactiques simples manquées, pas seulement le nombre d'exercices réalisés."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Comprenez pourquoi réussir les exercices ne suffit pas."
+      },
+      {
+        "reason": "Intégrez les exercices dans une courte routine équilibrée."
+      },
+      {
+        "reason": "Apprenez les motifs courants plutôt que d'augmenter le volume."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Exercices de reconnaissance de motifs aux échecs",
+    "h1": "Exercices de reconnaissance de motifs pour débutants",
+    "description": "Utilisez des exercices simples pour repérer les motifs courants et voir les bonnes idées plus vite.",
+    "primaryKeyword": "exercices de reconnaissance de motifs aux échecs",
+    "secondaryKeywords": [
+      "reconnaissance de motifs aux échecs",
+      "entraînement aux thèmes tactiques",
+      "exercices de motifs tactiques",
+      "motifs d'échecs pour débutants",
+      "mémoriser les thèmes d'échecs"
+    ],
+    "painPoint": "Chaque position paraît nouvelle, donc vous voyez les idées tactiques trop tard.",
+    "ctaLabel": "Travailler les motifs",
+    "quickAnswer": "Un motif est un agencement familier de pièces et de cases. Répétez le même type de motif jusqu'à en voir vite l'idée sous-jacente.",
+    "keyTakeaways": [
+      "Un motif, c'est la forme sur l'échiquier et l'idée qu'elle produit.",
+      "La mémoire de l'échiquier aide à repérer les motifs sous pression.",
+      "Répétez quelques motifs courants avant d'en ajouter beaucoup."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui résolvent des tactiques mais ne voient pas les mêmes formes en partie.",
+      "Les débutants qui veulent plus de structure que des exercices au hasard.",
+      "Toute personne pour qui les positions restent visuellement confuses."
+    ],
+    "timeToRead": "7 min de lecture",
+    "introParagraphs": [
+      "La reconnaissance de motifs rend une position familière. Une forme peut signaler une fourchette, un clouage, une pièce piégée ou une case faible avant tout calcul.",
+      "Commencez par un petit groupe de motifs courants. Reconstruisez chaque position de mémoire pour retenir les pièces et cases qui portent l'idée."
+    ],
+    "startHereTitle": "Commencez par un motif à la fois",
+    "startHereSteps": [
+      "Choisissez un type de motif : fourchettes, clouages ou attaques sur pièces non protégées.",
+      "Étudiez la forme et reconstruisez-la de mémoire, pas seulement à partir d'un diagramme fixe.",
+      "Nommez les cases et les défenseurs qui font tenir le motif.",
+      "Faites une manche de Memory Chess pour consolider un rappel net.",
+      "Analysez une partie récente et trouvez où un motif semblable est apparu ou a manqué."
+    ],
+    "drillSectionTitle": "Exercices simples de reconnaissance de motifs",
+    "drillCards": [
+      {
+        "title": "Reconstruire un motif",
+        "description": "Reconstruisez un motif de mémoire et nommez les pièces et cases clés.",
+        "duration": "5 minutes",
+        "goal": "Relier le motif à un rappel net de l'échiquier.",
+        "ctaLabel": "Reconstruire un motif"
+      },
+      {
+        "title": "Répéter une famille",
+        "description": "Répétez plusieurs exemples du même motif avant de changer de type.",
+        "duration": "5 minutes",
+        "goal": "Rendre la forme familière sur l'échiquier.",
+        "ctaLabel": "Répéter une famille"
+      },
+      {
+        "title": "Le trouver dans vos parties",
+        "description": "Parcourez une partie récente et trouvez où le même motif est apparu.",
+        "duration": "5 minutes",
+        "goal": "Relier le travail de motifs aux vraies positions.",
+        "ctaLabel": "Chercher dans vos parties"
+      }
+    ],
+    "comparisonTitle": "Tactique au hasard contre vraie reconnaissance de motifs",
+    "comparisonSummary": "Les motifs servent quand vous les repérez avant de vous lancer dans un long calcul.",
+    "comparisonRows": [
+      {
+        "label": "Structure d'entraînement",
+        "struggling": "Vous passez sans cesse d'un motif sans lien à un autre.",
+        "stronger": "Vous répétez un type de motif jusqu'à ce qu'il devienne familier."
+      },
+      {
+        "label": "Mémoire de l'échiquier",
+        "struggling": "Vous connaissez l'idée mais pas les cases qui la portent.",
+        "stronger": "Vous retenez les détails qui rendent le motif fonctionnel."
+      },
+      {
+        "label": "Vraies parties",
+        "struggling": "Les motifs restent enfermés dans les exercices.",
+        "stronger": "Vous en repérez les premiers signes en partie."
+      }
+    ],
+    "mistakes": [
+      "Apprendre seulement le nom du motif sans en comprendre la forme.",
+      "Changer trop souvent de type de motif.",
+      "Ignorer les cases et défenseurs qui portent le motif.",
+      "Sauter l'analyse de partie après le travail de motifs."
+    ],
+    "mistakesCallout": "N'ajoutez pas de variété trop vite. Répétez un type de motif jusqu'à ce qu'il devienne familier.",
+    "planTitle": "Plan de motifs sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "10 minutes",
+        "detail": "Choisissez un type de motif et reconstruisez plusieurs exemples de mémoire."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "12 minutes",
+        "detail": "Ajoutez le nom des cases et le comptage des défenseurs à chaque exemple."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "12 minutes",
+        "detail": "Faites une manche de Memory Chess avant le travail de motifs pour un échiquier plus net."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 minutes",
+        "detail": "Parcourez vos parties récentes à la recherche du même motif et notez où il est apparu ou a failli apparaître."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Qu'est-ce que la reconnaissance de motifs aux échecs ?",
+        "answer": "C'est voir une forme familière sur l'échiquier et se rappeler vite l'idée qui y fonctionne généralement."
+      },
+      {
+        "question": "Comment un débutant travaille-t-il les motifs ?",
+        "answer": "En répétant un petit ensemble de motifs, en reconstruisant les positions de mémoire et en les cherchant dans de vraies parties."
+      },
+      {
+        "question": "Les exercices suffisent-ils pour les motifs ?",
+        "answer": "Pas toujours. Ils aident, mais répéter le même type et analyser ses parties les rend réellement utilisables."
+      },
+      {
+        "question": "Pourquoi mélanger Memory Chess et travail de motifs ?",
+        "answer": "Parce que reconnaître un motif est plus facile quand tout l'échiquier reste net en mémoire."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bâtissez une couche de rappel plus solide pour l'apprentissage des motifs."
+      },
+      {
+        "reason": "Équilibrez travail de motifs et volume d'exercices raisonnable."
+      },
+      {
+        "reason": "Utilisez les motifs étudiés dans de vraies parties."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Exercices de calcul aux échecs pour débutants",
+    "h1": "Exercices de calcul aux échecs pour débutants",
+    "description": "Utilisez des exercices simples pour comparer des coups et suivre de courtes variantes sans perdre le fil.",
+    "primaryKeyword": "exercices de calcul aux échecs",
+    "secondaryKeywords": [
+      "calcul aux échecs pour débutants",
+      "calculer des coups à l'avance",
+      "exercices pour tenir une variante",
+      "travailler les coups candidats",
+      "visualisation et calcul"
+    ],
+    "painPoint": "Vous commencez à calculer et vous mélangez vite les coups ou perdez la position.",
+    "ctaLabel": "Travailler un calcul net",
+    "quickAnswer": "Au début, ne comparez qu'un ou deux coups possibles. Gardez l'échiquier net en tête et vérifiez aussitôt.",
+    "keyTakeaways": [
+      "Deux séquences nettes valent mieux que cinq confuses.",
+      "Une visualisation nette donne un calcul net.",
+      "Vérifiez juste après chaque exercice."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui savent qu'il faut calculer mais perdent vite la variante.",
+      "Les débutants qui jouent à l'instinct dans les positions tendues.",
+      "Toute personne qui veut relier mémoire et vraies décisions."
+    ],
+    "timeToRead": "7 min de lecture",
+    "introParagraphs": [
+      "Calculer, c'est simplement demander : « Si je joue ici, que se passe-t-il ? » La difficulté est de garder l'échiquier net.",
+      "La mémoire de l'échiquier et la visualisation facilitent le calcul. Travaillez-les ensemble plutôt que séparément."
+    ],
+    "startHereTitle": "Commencez par deux coups possibles",
+    "startHereSteps": [
+      "Choisissez au plus deux coups candidats dans une position.",
+      "Imaginez une variante sur deux demi-coups et résumez-la en une phrase.",
+      "Faites une manche de Memory Chess pour garder l'échiquier de base net.",
+      "Revenez à la position initiale et comparez calmement les deux variantes.",
+      "Vérifiez aussitôt et dites si l'erreur venait de l'image ou de l'ordre des coups."
+    ],
+    "drillSectionTitle": "Exercices de calcul simples",
+    "drillCards": [
+      {
+        "title": "Comparer deux candidats",
+        "description": "Tenez deux coups sensés et comparez leurs courtes suites tactiques.",
+        "duration": "6 minutes",
+        "goal": "Comparer des coups sans trop en retenir.",
+        "ctaLabel": "Comparer deux variantes"
+      },
+      {
+        "title": "Rappeler puis calculer",
+        "description": "Faites une courte manche de rappel avant de travailler les variantes.",
+        "duration": "4 minutes",
+        "goal": "Retenir l'échiquier avant de suivre une séquence.",
+        "ctaLabel": "Rappeler d'abord"
+      },
+      {
+        "title": "Variante en une phrase",
+        "description": "Résumez la branche en une phrase avant de vérifier.",
+        "duration": "4 minutes",
+        "goal": "Garder la séquence nette et facile à expliquer.",
+        "ctaLabel": "Résumer la branche"
+      }
+    ],
+    "comparisonTitle": "Calcul confus contre calcul net",
+    "comparisonSummary": "Ne cherchez pas encore de longues variantes. Rendez d'abord les courtes exactes.",
+    "comparisonRows": [
+      {
+        "label": "Coups candidats",
+        "struggling": "Vous envisagez trop de coups à la fois.",
+        "stronger": "Vous comparez peu de coups sensés."
+      },
+      {
+        "label": "Image de l'échiquier",
+        "struggling": "La position obtenue se brouille vite.",
+        "stronger": "Vous gardez cases clés et défenseurs stables en mémoire."
+      },
+      {
+        "label": "Vérification",
+        "struggling": "Vous ignorez pourquoi la variante a échoué.",
+        "stronger": "Vous voyez si l'erreur venait de la mémoire, de l'ordre des coups ou de l'évaluation."
+      }
+    ],
+    "mistakes": [
+      "Vouloir calculer trop de branches à la fois.",
+      "Sauter le choix des candidats et tout calculer.",
+      "Ne pas vérifier juste après la variante.",
+      "Ignorer une mémoire d'échiquier faible."
+    ],
+    "mistakesCallout": "Ne calculez pas encore loin. Une variante nette de deux coups vaut mieux qu'une longue et confuse.",
+    "planTitle": "Plan de calcul sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "10 minutes",
+        "detail": "Uniquement des comparaisons de deux candidats avec vérification immédiate."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "12 minutes",
+        "detail": "Ajoutez une manche de Memory Chess avant le travail de calcul."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "12 minutes",
+        "detail": "Résumez chaque branche en une phrase avant de vérifier."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 minutes",
+        "detail": "Transférez le procédé en parties rapides : marquez une pause dans les moments tendus et gardez peu de candidats."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Comment un débutant améliore-t-il son calcul ?",
+        "answer": "Peu de candidats, vérification rapide, et une meilleure visualisation et mémoire sous le travail de variantes."
+      },
+      {
+        "question": "Dois-je calculer plus loin ?",
+        "answer": "Seulement quand la profondeur actuelle est fiable. La précision prime sur l'ambition."
+      },
+      {
+        "question": "Pourquoi mes variantes s'effondrent-elles ?",
+        "answer": "Souvent parce que l'image de l'échiquier n'est pas assez stable ou que trop de candidats sont actifs."
+      },
+      {
+        "question": "Memory Chess aide-t-il au calcul ?",
+        "answer": "Oui. Un meilleur rappel rend bien plus facile la tenue des positions obtenues pendant le calcul."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Renforcez la couche qui tient les variantes pendant le calcul."
+      },
+      {
+        "reason": "Voyez l'échiquier plus clairement avant d'allonger les variantes."
+      },
+      {
+        "reason": "Adoptez un processus de décision plus simple pour un calcul plus net."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Comment réfléchir aux échecs quand on débute",
+    "h1": "Comment réfléchir aux échecs quand on débute",
+    "description": "Utilisez un processus simple à chaque coup : vérifier les menaces, comparer les options et gérer votre temps.",
+    "primaryKeyword": "comment réfléchir aux échecs",
+    "secondaryKeywords": [
+      "processus de réflexion pour débutants",
+      "à quoi penser aux échecs",
+      "décisions aux échecs",
+      "liste à vérifier avant de jouer",
+      "méthode de réflexion simple"
+    ],
+    "painPoint": "Vous jouez trop vite ou réfléchissez trop longtemps, et restez incertain.",
+    "ctaLabel": "Travailler un processus simple",
+    "quickAnswer": "À chaque coup, suivez le même processus court : vérifier les menaces adverses, choisir un à trois coups et s'assurer que le choix est sûr.",
+    "keyTakeaways": [
+      "Un processus court s'utilise plus facilement qu'une longue liste.",
+      "Le contrôle des menaces vient toujours avant le choix du coup.",
+      "Prenez plus de temps quand la position devient dangereuse."
+    ],
+    "whoThisIsFor": [
+      "Les joueurs qui devinent dans les positions calmes et se figent dans les positions tendues.",
+      "Les débutants qui ont besoin d'un processus clair à chaque coup.",
+      "Toute personne qui veut décider plus proprement sous pression."
+    ],
+    "timeToRead": "7 min de lecture",
+    "introParagraphs": [
+      "Les débutants se demandent souvent à quoi pensent les forts joueurs. La réponse peut sembler compliquée, mais votre processus doit être assez court pour être utilisé à chaque fois.",
+      "Commencez par les menaces, choisissez peu de coups possibles et vérifiez que le coup retenu est sûr."
+    ],
+    "startHereTitle": "Commencez ici : le processus en quatre étapes",
+    "startHereSteps": [
+      "Examinez d'abord les menaces les plus fortes de l'adversaire.",
+      "Nommez un à trois coups candidats réalistes.",
+      "Vérifiez que votre coup prévu est sûr et ne laisse aucune pièce en prise.",
+      "Demandez si la position est assez calme pour jouer ou assez tendue pour ralentir.",
+      "Après la partie, cherchez à quel endroit le processus a lâché."
+    ],
+    "drillSectionTitle": "Exercices pour décider plus calmement",
+    "drillCards": [
+      {
+        "title": "Déclencheur « adversaire d'abord »",
+        "description": "Commencez chaque position d'entraînement en nommant les possibilités forcées de l'adversaire.",
+        "duration": "3 minutes",
+        "goal": "Rendre le contrôle des menaces automatique plutôt qu'optionnel.",
+        "ctaLabel": "Commencer par les menaces"
+      },
+      {
+        "title": "Limite de trois candidats",
+        "description": "Ne vous autorisez jamais plus de trois coups candidats dans une position d'entraînement.",
+        "duration": "4 minutes",
+        "goal": "Réduire les options excessives et la rumination.",
+        "ctaLabel": "Limiter les candidats"
+      },
+      {
+        "title": "Contrôle de certitude",
+        "description": "Regardez un coup et demandez si vous étiez vraiment sûr ou seulement fatigué de réfléchir.",
+        "duration": "4 minutes",
+        "goal": "Repérer quand vous jouez par épuisement.",
+        "ctaLabel": "Vérifier la certitude"
+      }
+    ],
+    "comparisonTitle": "Un processus simple à chaque coup",
+    "comparisonSummary": "Le meilleur processus est celui que vous pouvez encore appliquer pendule en marche.",
+    "comparisonRows": [
+      {
+        "label": "Gestion des menaces",
+        "struggling": "Vous pensez d'abord à votre plan.",
+        "stronger": "Vous commencez par les menaces les plus fortes de l'adversaire."
+      },
+      {
+        "label": "Coups candidats",
+        "struggling": "Vous sautez entre trop de possibilités.",
+        "stronger": "Vous gardez un petit ensemble de candidats réalistes."
+      },
+      {
+        "label": "Gestion du temps",
+        "struggling": "Vous accordez la même attention à chaque coup.",
+        "stronger": "Vous ralentissez quand la tension, la tactique ou la sécurité du roi changent."
+      }
+    ],
+    "mistakes": [
+      "Utiliser une longue liste que vous n'appliquez jamais en partie.",
+      "Penser à son plan avant de vérifier les menaces.",
+      "Laisser la liste de candidats devenir trop grande.",
+      "Confondre fatigue et certitude."
+    ],
+    "mistakesCallout": "N'ajoutez pas d'autres contrôles. Utilisez un processus court, répétable à chaque coup.",
+    "planTitle": "Affinage du processus sur 7 jours",
+    "planSteps": [
+      {
+        "label": "Jour 1 à 2",
+        "duration": "10 minutes",
+        "detail": "Utilisez seulement le déclencheur « adversaire d'abord » et la limite de trois candidats."
+      },
+      {
+        "label": "Jour 3 à 4",
+        "duration": "12 minutes",
+        "detail": "Ajoutez une courte manche de Memory Chess pour un échiquier plus net au moment de décider."
+      },
+      {
+        "label": "Jour 5",
+        "duration": "12 minutes",
+        "detail": "Vérifiez si votre dernière gaffe venait du contrôle des menaces ou d'un excès de candidats."
+      },
+      {
+        "label": "Jour 6 à 7",
+        "duration": "15 minutes",
+        "detail": "Appliquez tout le processus en rapide et notez quelle étape lâche sous pression."
+      }
+    ],
+    "faq": [
+      {
+        "question": "À quoi un débutant doit-il penser aux échecs ?",
+        "answer": "Commencez par les menaces de l'adversaire, choisissez un à trois coups possibles et vérifiez que le coup retenu est sûr."
+      },
+      {
+        "question": "Combien de coups candidats retenir ?",
+        "answer": "En général un à trois. Au-delà, cela surcharge souvent les débutants et dégrade les décisions."
+      },
+      {
+        "question": "Pourquoi je me fige malgré ce processus ?",
+        "answer": "Souvent parce que l'échiquier n'est pas assez net ou que trop de candidats restent ouverts. Des positions plus simples et du travail de mémoire aident."
+      },
+      {
+        "question": "Un processus peut-il éviter les gaffes ?",
+        "answer": "Oui, surtout s'il impose le contrôle des menaces avant le choix du coup."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Utilisez une liste anti-gaffes plus explicite si le processus laisse encore filer du matériel."
+      },
+      {
+        "reason": "Calculez plus proprement pour comparer les coups possibles."
+      },
+      {
+        "reason": "Reconnaissez les cases plus vite pendant votre processus."
+      }
+    ]
+  }
+]

@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Cum progresezi la șah ca începător",
+    "h1": "Cum progresezi la șah ca începător",
+    "description": "Urmează un plan simplu pentru a vedea mai bine tabla, a reține pozițiile și a juca mutări mai sigure.",
+    "primaryKeyword": "cum să progresezi la șah",
+    "secondaryKeywords": [
+      "plan de progres la șah",
+      "antrenament de șah pentru începători",
+      "rutină de șah pentru începători",
+      "mai puține gafe la șah",
+      "vederea tablei"
+    ],
+    "painPoint": "Nu știi ce să exersezi sau de unde să începi.",
+    "ctaLabel": "Începe o rundă pentru începători",
+    "quickAnswer": "Folosește o rutină zilnică scurtă: exersează vederea tablei, antrenează memoria, joacă o partidă și analizează o greșeală. Repetă 20 până la 30 de minute pe zi.",
+    "keyTakeaways": [
+      "A vedea și a reține tabla contează mai mult decât a învăța multe deschideri.",
+      "Exersatul scurt zilnic funcționează mai bine decât sesiunile lungi și rare.",
+      "Urmărește greșelile și acuratețea reamintirii, nu doar ratingul."
+    ],
+    "whoThisIsFor": [
+      "Jucători care știu regulile, dar încă lasă piese în priză.",
+      "Începători care se descurcă la probleme, dar au dificultăți în partide.",
+      "Oricine nu știe ce să studieze mai întâi."
+    ],
+    "timeToRead": "9 minute de citit",
+    "introParagraphs": [
+      "Majoritatea începătorilor nu au nevoie de mai multe deschideri, videoclipuri sau cursuri. Au nevoie să urmărească tabla și să verifice că mutarea e sigură înainte de a o juca.",
+      "Memory Chess te ajută să exersezi ambele abilități. O memorie mai bună a tablei face șahurile, capturile și amenințările mai ușor de observat."
+    ],
+    "startHereTitle": "Începe cu această rutină pentru începători",
+    "startHereSteps": [
+      "Alocă 3 minute scanării tablei și numește piesele atacate, apărate și neapărate.",
+      "Joacă o rundă Memory Chess cu 8 piese și 10 secunde de vizualizare.",
+      "Lucrează două poziții tactice scurte și spune cu voce tare șahurile, capturile și amenințările înainte de a alege mutarea.",
+      "Joacă o partidă rapidă. Marchează fiecare greșeală mare drept vedere, memorie sau criză de timp.",
+      "Notează un lucru de exersat din nou mâine."
+    ],
+    "drillSectionTitle": "Exerciții simple pentru partide mai bune",
+    "drillCards": [
+      {
+        "title": "Scanare de tablă în 10 secunde",
+        "description": "Folosește o poziție ușoară și găsește fiecare piesă neapărată înainte să expire timpul.",
+        "duration": "3 minute",
+        "goal": "Să construiești o verificare de siguranță înainte de fiecare mutare.",
+        "ctaLabel": "Pornește scanarea"
+      },
+      {
+        "title": "Repetarea aceleiași poziții",
+        "description": "Joacă aceeași poziție de două ori ca să găsești și să corectezi o greșeală de memorie.",
+        "duration": "5 minute",
+        "goal": "Să identifici exact piesa sau pătratul uitat.",
+        "ctaLabel": "Exersează reamintirea"
+      },
+      {
+        "title": "Transferul din partidă în exercițiu",
+        "description": "După o partidă rapidă, imaginează-ți poziția în care ai greșit înainte să o analizezi.",
+        "duration": "7 minute",
+        "goal": "Să lași greșelile reale să-ți ghideze antrenamentul.",
+        "ctaLabel": "Începe exercițiul de transfer"
+      }
+    ],
+    "comparisonTitle": "Cum arată un joc mai bun de începător",
+    "comparisonSummary": "Nu trebuie să vezi cinci mutări în avans. Vezi mai întâi clar poziția actuală și oprește-te o clipă înainte de mutare.",
+    "comparisonRows": [
+      {
+        "label": "Înainte de mutare",
+        "struggling": "Te uiți doar la ideea ta.",
+        "stronger": "Verifici mai întâi amenințările adversarului."
+      },
+      {
+        "label": "În tactică",
+        "struggling": "Varianta dispare după un schimb.",
+        "stronger": "Vezi pătratele-cheie în timp ce compari două mutări."
+      },
+      {
+        "label": "După o înfrângere",
+        "struggling": "Începi imediat altă partidă.",
+        "stronger": "Numești greșeala și o exersezi mâine."
+      }
+    ],
+    "mistakes": [
+      "Sari între materiale aleatorii în loc să ții o rutină două săptămâni.",
+      "Studiezi deschideri înainte ca vederea tablei să fie stabilă.",
+      "Joci prea multe partide fără note scurte după ele.",
+      "Tratezi antrenamentul de memorie ca ceva separat de șahul real."
+    ],
+    "mistakesCallout": "Nu te grăbi spre studiul avansat. Majoritatea începătorilor pierd din amenințări într-o mutare, nu dintr-o variantă de deschidere uitată.",
+    "planTitle": "Plan de 30 de zile pentru începători",
+    "planSteps": [
+      {
+        "label": "Săptămâna 1",
+        "duration": "20 de minute pe zi",
+        "detail": "Folosește aceeași scanare și joacă o rundă scurtă de Memory Chess înainte de fiecare sesiune de joc."
+      },
+      {
+        "label": "Săptămâna 2",
+        "duration": "25 de minute pe zi",
+        "detail": "Adaugă o a doua rundă de reamintire și notează dacă greșeala a venit din vedere, memorie sau panică."
+      },
+      {
+        "label": "Săptămâna 3",
+        "duration": "25 până la 30 de minute pe zi",
+        "detail": "Aceleași exerciții, dar scurtează timpul de memorare ca reamintirea să rămână curată sub presiune."
+      },
+      {
+        "label": "Săptămâna 4",
+        "duration": "30 de minute pe zi",
+        "detail": "Verifică dacă gafele pe partidă scad și păstrează doar setările care s-au transferat cel mai bine."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Câte minute pe zi ar trebui să exerseze un începător?",
+        "answer": "20 până la 30 de minute concentrate sunt suficiente dacă îmbini vederea tablei, memoria și o poziție reală."
+      },
+      {
+        "question": "De ce nu se transferă abilitatea de la probleme în partide?",
+        "answer": "Problemele încep când tactica există deja. În partidă trebuie mai întâi să observi schimbarea, deci reamintirea și verificările de siguranță contează mult mai mult."
+      },
+      {
+        "question": "Ar trebui să învăț deschideri devreme?",
+        "answer": "La început doar principiile de bază. Majoritatea începătorilor câștigă mai mult văzând amenințările mai devreme și ținând poziția mai clară."
+      },
+      {
+        "question": "Care indicator arată cel mai repede progresul?",
+        "answer": "Gafele pe partidă și acuratețea reamintirii în Memory Chess. De obicei se mișcă înaintea ratingului."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Folosește acest articol dacă problema principală e că lași piese în priză."
+      },
+      {
+        "reason": "Aprofundează obiceiul de a verifica amenințările înainte de mutare."
+      },
+      {
+        "reason": "Construiește o tablă mentală mai solidă ca tactica să nu se destrame."
+      },
+      {
+        "reason": "Antrenează direct reamintirea dacă uiți pozițiile pieselor."
+      },
+      {
+        "reason": "Urmează o rutină mai scurtă dacă vrei o structură zilnică mai simplă."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Exerciții de vizualizare la șah pentru începători",
+    "h1": "Exerciții zilnice de vizualizare la șah",
+    "description": "Încearcă exerciții simple de vizualizare pentru a reține tabla și a vedea mutările mai clar.",
+    "primaryKeyword": "exerciții de vizualizare la șah",
+    "secondaryKeywords": [
+      "antrenament de vizualizare la șah",
+      "calculul mutărilor în avans",
+      "vizualizarea tablei",
+      "pregătire pentru șahul la orb",
+      "șah în minte"
+    ],
+    "painPoint": "Pierzi șirul pieselor când încerci să-ți imaginezi mutările următoare.",
+    "ctaLabel": "Exersează vizualizarea",
+    "quickAnswer": "Reține mai întâi o tablă fără să muți nimic. Apoi imaginează-ți câte o mutare pe rând. Nu trebuie să joci o partidă întreagă la orb.",
+    "keyTakeaways": [
+      "Exersatul scurt zilnic funcționează mai bine decât sesiunile lungi și rare.",
+      "Verifică tabla imaginată după fiecare încercare.",
+      "Vezi clar o mutare înainte să încerci variante mai lungi."
+    ],
+    "whoThisIsFor": [
+      "Jucători care pierd varianta după un singur schimb.",
+      "Începători care se blochează când nu văd tabla.",
+      "Oricine vrea să abordeze șahul la orb pas cu pas."
+    ],
+    "timeToRead": "8 minute de citit",
+    "introParagraphs": [
+      "Vizualizarea înseamnă să-ți imaginezi cum se schimbă tabla după o mutare. Pentru începători, scopul e doar să compari două mutări fără să pierzi șirul pieselor.",
+      "Memory Chess îți arată ce piese sau pătrate uiți. Apoi poți exersa din nou același tip de poziție."
+    ],
+    "startHereTitle": "Începe cu acești pași de vizualizare",
+    "startHereSteps": [
+      "Numește fiecare piesă și pătrat de pe o tablă statică timp de 60 de secunde.",
+      "Închide ochii și reconstruiește tabla în minte înainte de verificare.",
+      "Imaginează-ți câte o mutare legală pentru fiecare parte, fără să atingi piesele.",
+      "Joacă o rundă Memory Chess cu un număr moderat de piese și timp strâns.",
+      "Verifică poziția și repetă doar după ce știi ce ai uitat."
+    ],
+    "drillSectionTitle": "Exerciții ușoare de vizualizare",
+    "drillCards": [
+      {
+        "title": "Instantaneu de tablă statică",
+        "description": "Reține tabla, apoi așază fiecare piesă pe pătratul corect.",
+        "duration": "4 minute",
+        "goal": "Să reții tabla înainte de a-ți imagina mutări.",
+        "ctaLabel": "Începe instantaneul"
+      },
+      {
+        "title": "O mutare de fiecare parte",
+        "description": "Reține tabla, imaginează-ți o mutare pentru fiecare parte, apoi verifică răspunsul.",
+        "duration": "5 minute",
+        "goal": "Să înveți să actualizezi tabla în minte.",
+        "ctaLabel": "Exersează actualizarea"
+      },
+      {
+        "title": "Reamintire sub presiune",
+        "description": "Când reamintirea e exactă, scurtează timpul de vizualizare a tablei.",
+        "duration": "5 minute",
+        "goal": "Să folosești o reamintire clară în partide rapide.",
+        "ctaLabel": "Adaugă presiune"
+      }
+    ],
+    "comparisonTitle": "Cum se simte o vizualizare slabă",
+    "comparisonSummary": "Pare o problemă de calcul, dar adesea imaginea tablei se estompează prea repede.",
+    "comparisonRows": [
+      {
+        "label": "Mutări candidate",
+        "struggling": "Poți numi o mutare, dar nu vezi clar poziția rezultată.",
+        "stronger": "Compari două poziții posibile înainte de mutare."
+      },
+      {
+        "label": "Haos tactic",
+        "struggling": "Mintea se golește după schimburi.",
+        "stronger": "Ții pătratele și amenințările importante destul de mult ca să decizi calm."
+      },
+      {
+        "label": "Feedback din antrenament",
+        "struggling": "Nu știi exact ce pătrat ai uitat.",
+        "stronger": "Observi dacă greșeala a venit dintr-o coloană, o linie sau un apărător lipsă."
+      }
+    ],
+    "mistakes": [
+      "Calcul profund la orb înainte ca reamintirea statică să fie stabilă.",
+      "Mutarea fizică a pieselor la fiecare încercare de calcul.",
+      "Exersatul o dată pe săptămână în loc de un bloc scurt zilnic.",
+      "Neverificarea faptului că tabla imaginată corespunde realității."
+    ],
+    "mistakesCallout": "Nu urmări încă variante mai lungi. Vezi mai întâi clar prima mutare.",
+    "planTitle": "Progresie de vizualizare în 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1",
+        "duration": "10 minute",
+        "detail": "Doar instantanee de tablă statică și verificare imediată."
+      },
+      {
+        "label": "Ziua 2 până la 3",
+        "duration": "12 minute",
+        "detail": "Adaugă o mutare imaginată de fiecare parte și urmărește ce pătrate dispar primele."
+      },
+      {
+        "label": "Ziua 4 până la 5",
+        "duration": "15 minute",
+        "detail": "Scurtează timpul de vizualizare în Memory Chess păstrând același număr de piese."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 minute",
+        "detail": "Mută exercițiul într-o partidă rapidă: oprește-te înainte de fiecare decizie tactică și descrie poziția care apare."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Cât durează până se îmbunătățește vizualizarea?",
+        "answer": "Majoritatea începătorilor observă o reamintire mai curată în două până la patru săptămâni de exersat scurt și constant."
+      },
+      {
+        "question": "Ajută aceste exerciții la blitz?",
+        "answer": "Da. Actualizarea mai rapidă a tablei mentale face șahurile, capturile și amenințările mai ușor de observat sub presiunea timpului."
+      },
+      {
+        "question": "Pot exersa vizualizarea fără șah la orb?",
+        "answer": "Da. Reamintirea cronometrată și exercițiile cu o mutare sunt suficiente pentru o bază reală."
+      },
+      {
+        "question": "Ce fac dacă tot uit pozițiile pieselor?",
+        "answer": "Folosește mai puține piese, verifică mai des și repetă aceeași poziție până când reamintirea e curată."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Folosește-l când reamintirea statică și cea cu o mutare sunt stabile."
+      },
+      {
+        "reason": "Lărgește atenția pe tablă dacă ratezi piese la margini."
+      },
+      {
+        "reason": "Combină vizualizarea cu o verificare simplă a amenințărilor."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Exerciții de vedere a tablei împotriva gafelor",
+    "h1": "Exerciții de vedere a tablei pentru începători",
+    "description": "Folosește exerciții simple ca să observi amenințările, să-ți protejezi piesele și să faci mai puține gafe.",
+    "primaryKeyword": "vederea tablei",
+    "secondaryKeywords": [
+      "exerciții de vedere a tablei",
+      "mai puține gafe la șah",
+      "observarea amenințărilor la șah",
+      "vigilență tactică",
+      "greșeli de începător la șah"
+    ],
+    "painPoint": "Te concentrezi pe o zonă a tablei și ratezi o amenințare simplă în altă parte.",
+    "ctaLabel": "Începe un exercițiu de vedere",
+    "quickAnswer": "Înainte de fiecare mutare caută șahuri, capturi, amenințări și piese neapărate. Antrenamentul de memorie te ajută să ții toate piesele în minte în timpul scanării.",
+    "keyTakeaways": [
+      "Vederea tablei e un obicei care se poate învăța.",
+      "Atenția la piesele neapărate e adesea cea mai rapidă îmbunătățire.",
+      "Antrenamentul de memorie te ajută să urmărești toată tabla."
+    ],
+    "whoThisIsFor": [
+      "Jucători care știu tactica de bază, dar tot pierd piese.",
+      "Începători care joacă repede și văd gafa abia după captură.",
+      "Oricine are nevoie de o listă clară înainte de fiecare mutare."
+    ],
+    "timeToRead": "8 minute de citit",
+    "introParagraphs": [
+      "Când cineva spune «nu am văzut», de obicei a mutat înainte să verifice toată tabla.",
+      "Aceste exerciții te învață unde să te uiți. Începe cu piesele neapărate și cu mutările care dau șah, captează sau creează o amenințare."
+    ],
+    "startHereTitle": "Începe aici: bucla de verificare înainte de mutare",
+    "startHereSteps": [
+      "Numește șahurile, capturile și amenințările ambelor părți înainte de fiecare mutare.",
+      "Marchează fiecare piesă neapărată și spune dacă e chiar în siguranță sau doar pare.",
+      "Joacă o rundă scurtă de Memory Chess ca să întărești legătura dintre pătrat și piesă.",
+      "Analizează o gafă recentă și identifică exact amenințarea ratată.",
+      "Repetă aceeași listă în următoarea partidă rapidă, fără să o scurtezi."
+    ],
+    "drillSectionTitle": "Exerciții de vedere pentru partide reale",
+    "drillCards": [
+      {
+        "title": "Inventarul pieselor neapărate",
+        "description": "Scanează tabla și identifică fiecare piesă neapărată înainte de mutare.",
+        "duration": "3 minute",
+        "goal": "Să prinzi devreme cea mai frecventă sursă de gafe.",
+        "ctaLabel": "Fă inventarul"
+      },
+      {
+        "title": "Rejucarea amenințării",
+        "description": "Reconstruiește ultima poziție cu gafă și găsește cea mai puternică amenințare a adversarului înainte să vezi partida.",
+        "duration": "5 minute",
+        "goal": "Să înveți cum arăta amenințarea ratată în context.",
+        "ctaLabel": "Rejoacă o amenințare"
+      },
+      {
+        "title": "Reamintire rapidă a pătratelor",
+        "description": "Folosește un timp scurt de vizualizare ca tabla să rămână intactă în timp ce scanezi.",
+        "duration": "4 minute",
+        "goal": "Să reții pozițiile pieselor în timp ce scanezi.",
+        "ctaLabel": "Accelerează reamintirea"
+      }
+    ],
+    "comparisonTitle": "Vedere slabă și vedere puternică a tablei",
+    "comparisonSummary": "Diferența se vede de obicei înainte ca să înceapă calculul.",
+    "comparisonRows": [
+      {
+        "label": "Atenția",
+        "struggling": "Te uiți fix la o singură idee tactică.",
+        "stronger": "Scanezi toată tabla înainte să alegi un plan."
+      },
+      {
+        "label": "Verificări de siguranță",
+        "struggling": "Presupui că o piesă apărată e în siguranță.",
+        "stronger": "Numeri atacatorii și apărătorii înainte să ai încredere în pătrat."
+      },
+      {
+        "label": "Presiunea timpului",
+        "struggling": "Joci mai repede pe măsură ce poziția se ascute.",
+        "stronger": "Încetinești când apar șahuri, capturi sau amenințări."
+      }
+    ],
+    "mistakes": [
+      "Să verifici doar ideea ta și să ignori amenințările adversarului.",
+      "Să consideri sigură o piesă apărată fără să numeri tot schimbul.",
+      "Să joci prea repede când poziția devine tactică.",
+      "Să nu numești niciodată tipul greșelii după partidă."
+    ],
+    "mistakesCallout": "Mai multe probleme nu repară o scanare grăbită. Repetă aceeași verificare scurtă înainte de fiecare mutare.",
+    "planTitle": "Resetarea vederii tablei în 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "12 minute",
+        "detail": "Doar inventarul pieselor neapărate și scanarea de șahuri, capturi și amenințări."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "15 minute",
+        "detail": "Adaugă o rundă Memory Chess înainte de partide, ca scanarea să se facă pe o tablă mentală mai curată."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "15 minute",
+        "detail": "Revezi trei gafe recente și numește semnalul ratat în fiecare poziție."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 până la 20 de minute",
+        "detail": "Joacă rapid și folosește toată lista la fiecare mutare care schimbă tensiunea sau siguranța regelui."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Care e cel mai rapid mod de a îmbunătăți vederea tablei?",
+        "answer": "Folosește aceeași listă înainte de fiecare mutare până devine automată: șahuri, capturi, amenințări și piese neapărate."
+      },
+      {
+        "question": "De ce fac gafe deși știu tactica?",
+        "answer": "Pentru că stratul de urmărire a tablei e slab. Tactica ajută abia după ce percepi corect poziția."
+      },
+      {
+        "question": "Cât de des ar trebui să-mi revăd gafele?",
+        "answer": "După fiecare partidă. Un obicei scurt de analiză se transferă mult mai repede decât o sesiune lungă săptămânală."
+      },
+      {
+        "question": "Ajută exercițiile de memorie la vederea tablei?",
+        "answer": "Da. O reamintire mai rapidă a pieselor face mai ușoară menținerea întregii table în atenție în timpul scanării."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Folosește ghidul complet anti-gafe când greșelile de vedere costă material."
+      },
+      {
+        "reason": "Înțelege de ce tactica cedează sub presiunea reală."
+      },
+      {
+        "reason": "Vezi unde se potrivește vederea tablei într-o rutină completă."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Antrenament de memorie la șah pentru reamintire mai rapidă",
+    "h1": "Antrenament de memorie la șah pentru începători",
+    "description": "Folosește exerciții simple de memorie ca să reții poziții, să observi modele și să urmărești mutările mai clar.",
+    "primaryKeyword": "antrenament de memorie la șah",
+    "secondaryKeywords": [
+      "exerciții de memorie la șah",
+      "memorarea pozițiilor de șah",
+      "recunoașterea modelelor la șah",
+      "antrenarea reamintirii tablei",
+      "concentrare la șah"
+    ],
+    "painPoint": "Uiți unde sunt piesele în timp ce te gândești la mutările următoare.",
+    "ctaLabel": "Începe o provocare de memorie",
+    "quickAnswer": "Antrenamentul de memorie te ajută să reții poziții utile în timp ce piesele se schimbă. Nu e vorba de a memora cât mai multe table aleatorii.",
+    "keyTakeaways": [
+      "La început acuratețea contează mai mult decât viteza.",
+      "Repetarea unei poziții îți permite să corectezi câte o greșeală de memorie.",
+      "Pune antrenamentul de memorie înaintea calculului sau analizei."
+    ],
+    "whoThisIsFor": [
+      "Jucători care își uită planul după un răspuns puternic.",
+      "Începători care nu pot reconstrui pozițiile-cheie din partidele lor.",
+      "Oricine se descurcă greu când sunt multe piese active."
+    ],
+    "timeToRead": "8 minute de citit",
+    "introParagraphs": [
+      "Memoria la șah e o abilitate practică. Scopul e să ții o imagine clară a tablei destul de mult ca să alegi calm mutarea.",
+      "Memory Chess îți oferă o buclă simplă: privește, reține, verifică și încearcă din nou."
+    ],
+    "startHereTitle": "Începe cu această rutină de memorie",
+    "startHereSteps": [
+      "Începe cu o poziție simplă și memoreaz-o 10 secunde.",
+      "Reconstruiește tabla și notează primul pătrat sau prima piesă pierdută.",
+      "Repetă aceeași poziție o dată ca să vezi corectura.",
+      "Adaugă o variantă tactică scurtă din poziția memorată.",
+      "Urmărește atât acuratețea, cât și tipul greșelii de memorie făcute."
+    ],
+    "drillSectionTitle": "Exerciții de memorie pentru partide reale",
+    "drillCards": [
+      {
+        "title": "Repetarea unei poziții",
+        "description": "Memorează o poziție, reconstruiește-o, apoi repet-o o dată cu aceleași setări.",
+        "duration": "5 minute",
+        "goal": "Să găsești o greșeală de memorie clară pe care s-o corectezi.",
+        "ctaLabel": "Repetă o poziție"
+      },
+      {
+        "title": "Reamintire prin puncte de ancorare",
+        "description": "Concentrează-te întâi pe poziția regilor, piesele neapărate și tensiunea din centru.",
+        "duration": "4 minute",
+        "goal": "Să reții mai întâi părțile cele mai importante ale poziției.",
+        "ctaLabel": "Exersează ancorele"
+      },
+      {
+        "title": "Întâi reamintește, apoi calculează",
+        "description": "După ce reconstruiești tabla, calculează o variantă scurtă înainte de verificare.",
+        "duration": "6 minute",
+        "goal": "Să folosești memoria tablei în timpul calculului.",
+        "ctaLabel": "Adaugă o variantă"
+      }
+    ],
+    "comparisonTitle": "Cum arată reamintirea slabă în partide",
+    "comparisonSummary": "Tabla poate părea familiară și totuși prea neclară ca să susțină calculul.",
+    "comparisonRows": [
+      {
+        "label": "Ținerea variantei",
+        "struggling": "Pierzi poziția inițială când analizezi altă mutare candidată.",
+        "stronger": "Revii exact la poziția inițială după ce parcurgi o variantă."
+      },
+      {
+        "label": "Memoria modelelor",
+        "struggling": "Ții minte ideea tactică, dar nu și apărătorii.",
+        "stronger": "Ții minte ideea și pătratele care o fac posibilă."
+      },
+      {
+        "label": "Calitatea analizei",
+        "struggling": "Analiza rămâne vagă pentru că poziția dispare imediat.",
+        "stronger": "Reconstruiești momentele-cheie și înveți mai repede."
+      }
+    ],
+    "mistakes": [
+      "Salturi de dificultate prea mari pentru nivelul tău.",
+      "Măsurarea vitezei ignorând acuratețea.",
+      "Lipsa unui jurnal de greșeli, așa că slăbiciunile repetate rămân ascunse.",
+      "Tratarea exercițiilor de memorie ca separate de jocul tactic."
+    ],
+    "mistakesCallout": "Nu îngreuna poziția cât timp reamintirea e neclară. Scade dificultatea și construiește întâi acuratețea.",
+    "planTitle": "Bloc de memorie de 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "10 minute",
+        "detail": "Repetă poziții simple și numește fiecare greșeală de memorie."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "12 minute",
+        "detail": "Adaugă puncte de ancorare ca să reții întâi regii, piesele neapărate și tensiunea din centru."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "12 minute",
+        "detail": "Adaugă o secvență scurtă de mutări după fiecare reconstrucție corectă."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 minute",
+        "detail": "Scurtează puțin timpul păstrând numărul de piese, apoi du munca în analiza unei partide rapide."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Îmbunătățește antrenamentul de memorie partidele reale?",
+        "answer": "Da, când e combinat cu calculul sau analiza. O reamintire mai bună ține variantele mai clare sub presiune."
+      },
+      {
+        "question": "Câte poziții pe sesiune?",
+        "answer": "Pentru începători, șase până la douăsprezece încercări atente sunt suficiente dacă verifici greșelile în loc să te grăbești."
+      },
+      {
+        "question": "Table aleatorii sau structuri reale?",
+        "answer": "Ambele. Cele aleatorii ascut reamintirea pură, structurile reale îmbunătățesc transferul."
+      },
+      {
+        "question": "Ce fac dacă acuratețea stagnează?",
+        "answer": "Folosește mai puține piese o săptămână, corectează un tip de greșeală și adaugă piese doar când reamintirea redevine curată."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Folosește-l dacă îți e greu să reții secvențe de mutări."
+      },
+      {
+        "reason": "Echilibrează memoria cu un număr rezonabil de probleme."
+      },
+      {
+        "reason": "Leagă memoria tablei de modelele frecvente."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Antrenament de șah la orb pentru începători",
+    "h1": "Șah la orb pentru începători, pas cu pas",
+    "description": "Învață șahul la orb prin pași mici care îmbunătățesc vizualizarea fără să te copleșească.",
+    "primaryKeyword": "antrenament de șah la orb",
+    "secondaryKeywords": [
+      "șah la orb pentru începători",
+      "antrenarea tablei mentale",
+      "exerciții de vizualizare la șah",
+      "calcul fără mutarea pieselor",
+      "exerciții de concentrare la șah"
+    ],
+    "painPoint": "Pierzi tabla imediat ce nu te mai uiți la ea.",
+    "ctaLabel": "Începe antrenamentul la orb",
+    "quickAnswer": "Începe cu o poziție simplă. Reține-o, imaginează-ți o mutare de fiecare parte și verifică. Încearcă o partidă întreagă la orb abia când pașii aceștia devin ușori.",
+    "keyTakeaways": [
+      "Șahul la orb se construiește pas cu pas.",
+      "Verificarea răspunsului contează mai mult decât pozițiile mai grele.",
+      "Pentru începători, exercițiile la orb sunt exerciții de vizualizare cu mai puțin ajutor de la tablă."
+    ],
+    "whoThisIsFor": [
+      "Jucători care vor o vizualizare mai bună fără să înceapă cu o partidă la orb.",
+      "Începători care pierd pătratele după una sau două mutări imaginate.",
+      "Oricine vrea o imagine mentală mai clară a tablei."
+    ],
+    "timeToRead": "8 minute de citit",
+    "introParagraphs": [
+      "Cea mai mare greșeală e să încerci prea devreme o partidă întreagă la orb. De obicei aduce frustrare în loc de progres.",
+      "Mergi pas cu pas: vezi tabla, reține-o, imaginează-ți o mutare, verifică și redu treptat ajutorul vizual."
+    ],
+    "startHereTitle": "Începe aici: o progresie sigură spre șahul la orb",
+    "startHereSteps": [
+      "Memorează o poziție mică și reconstruiește-o înainte să-ți imaginezi vreo mutare.",
+      "Calculează o mutare de fiecare parte fără să atingi piesele.",
+      "Verifică imediat orice nepotrivire în loc să mergi mai departe.",
+      "Joacă o rundă Memory Chess cu un timp de vizualizare puțin mai scurt.",
+      "Adaugă încă o mutare doar când varianta actuală e clară."
+    ],
+    "drillSectionTitle": "Exerciții accesibile de șah la orb",
+    "drillCards": [
+      {
+        "title": "Reconstruiește înainte de mutare",
+        "description": "Nu-ți imagina mutări până când poziția inițială nu e complet stabilă.",
+        "duration": "4 minute",
+        "goal": "Să construiești o reamintire clară înainte de a adăuga mutări.",
+        "ctaLabel": "Reconstruiește întâi tabla"
+      },
+      {
+        "title": "O mutare de fiecare parte",
+        "description": "Imaginează-ți o mutare a albului și un răspuns al negrului, apoi verifică noua poziție.",
+        "duration": "5 minute",
+        "goal": "Să actualizezi poziția fără să te uiți la tablă.",
+        "ctaLabel": "Imaginează două mutări"
+      },
+      {
+        "title": "Timp scurt de vizualizare",
+        "description": "Redu timpul de vizualizare ca să înveți să reții tabla mai repede.",
+        "duration": "4 minute",
+        "goal": "Să te pregătești pentru orb fără să ascunzi toată tabla.",
+        "ctaLabel": "Scurtează timpul"
+      }
+    ],
+    "comparisonTitle": "Un mod mai sigur de a exersa șahul la orb",
+    "comparisonSummary": "Întreabă-te dacă vezi clar cu o mutare mai mult decât înainte. O partidă întreagă la orb încă nu e necesară.",
+    "comparisonRows": [
+      {
+        "label": "Punctul de plecare",
+        "struggling": "Sari direct în joc complet la orb.",
+        "stronger": "Reții poziția inițială înainte să adaugi mutări."
+      },
+      {
+        "label": "Verificarea",
+        "struggling": "Te încrezi într-o tablă mentală neclară.",
+        "stronger": "Verifici fiecare actualizare imaginată și o corectezi imediat."
+      },
+      {
+        "label": "Calitatea sesiunii",
+        "struggling": "Exersezi până se prăbușește concentrarea.",
+        "stronger": "Te oprești cât timp acuratețea mentală e încă ridicată."
+      }
+    ],
+    "mistakes": [
+      "Încercarea prea devreme a partidelor complete la orb.",
+      "Sărirea verificării și încrederea în table mentale greșite.",
+      "Adăugarea de mutări înainte ca variantele scurte să fie clare.",
+      "Exersatul prea lung într-o singură sesiune și epuizarea concentrării."
+    ],
+    "mistakesCallout": "Nu sări la o sarcină mult mai grea. Redu de fiecare dată doar puțin ajutorul tablei.",
+    "planTitle": "Bloc de pregătire pentru orb, 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "10 minute",
+        "detail": "Doar reconstruirea pozițiilor din memorie, urmată de verificare imediată."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "12 minute",
+        "detail": "Adaugă o mutare de fiecare parte și păstrează pozițiile simple."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "12 minute",
+        "detail": "Scurtează timpul de vizualizare în Memory Chess păstrând numărul de piese."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 minute",
+        "detail": "Încearcă câteva secvențe de două mutări doar dacă lucrul cu o mutare e exact."
+      }
+    ],
+    "faq": [
+      {
+        "question": "E util șahul la orb pentru începători?",
+        "answer": "Da, în exerciții scurte și controlate. Întărește vizualizarea care susține partidele obișnuite."
+      },
+      {
+        "question": "Cât de des să fac exerciții la orb?",
+        "answer": "Două până la patru sesiuni scurte pe săptămână sunt suficiente, combinate cu joc și analiză regulate."
+      },
+      {
+        "question": "Care e cel mai bun prim exercițiu la orb?",
+        "answer": "Să reconstruiești o poziție simplă din memorie și să-ți imaginezi o mutare de fiecare parte înainte de verificare."
+      },
+      {
+        "question": "Cum știu că progresez?",
+        "answer": "Vei ține corect mai multe pătrate, vei actualiza tabla mai mult timp și vei face mai puține greșeli de vedere în partidele obișnuite."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Păstrează baza solidă în loc să sari la joc avansat la orb."
+      },
+      {
+        "reason": "Combină lucrul la orb cu exerciții de ținere a variantei."
+      },
+      {
+        "reason": "Folosește o vizualizare mai clară ca să compari mutările."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Exerciții de memorie de lucru pentru jucătorii de șah",
+    "h1": "Exerciții de memorie de lucru pentru începători",
+    "description": "Exerciții simple ca să reții secvențe de mutări, să compari opțiuni și să decizi mai clar.",
+    "primaryKeyword": "exerciții de memorie de lucru",
+    "secondaryKeywords": [
+      "memoria de lucru la șah",
+      "antrenament de calcul la șah",
+      "exerciții de concentrare la șah",
+      "constanță mai bună la șah",
+      "rezistență mentală la șah"
+    ],
+    "painPoint": "Uiți prima secvență de mutări în timp ce te gândești la alta.",
+    "ctaLabel": "Începe o rutină de memorie",
+    "quickAnswer": "Memoria de lucru îți permite să ții câteva secvențe posibile în minte. Păstrează numărul mic și verifică fiecare secvență clar.",
+    "keyTakeaways": [
+      "Trei opțiuni clare sunt mai bune decât șase confuze.",
+      "Un rezumat scurt spus cu voce tare ajută la reținerea fiecărei variante.",
+      "Exersează pe poziții reale și folosește abilitatea în partide."
+    ],
+    "whoThisIsFor": [
+      "Jucători care pierd prima variantă când o explorează pe a doua.",
+      "Începători care încurcă ordinea mutărilor.",
+      "Oricine face mai multe greșeli tactice când e obosit."
+    ],
+    "timeToRead": "8 minute de citit",
+    "introParagraphs": [
+      "Memoria de lucru îți permite să ții mutările posibile în minte în timp ce le compari. La șah trebuie să reții poziția inițială și una sau două variante scurte fără să le amesteci.",
+      "Memory Chess te ajută să reții poziția inițială. Când imaginea aceea e clară, urmărirea mutărilor următoare devine mai ușoară."
+    ],
+    "startHereTitle": "Începe cu două secvențe scurte",
+    "startHereSteps": [
+      "Alege o poziție și enumeră trei mutări candidate fără să atingi tabla.",
+      "Calculează fiecare variantă pe două semimutări și rezumă rezultatul într-o propoziție.",
+      "Joacă o rundă de reamintire în Memory Chess ca să împrospătezi poziția de bază.",
+      "Revino la poziție și compară din nou secvențele posibile.",
+      "Scrie o propoziție despre locul unde s-a rupt ținerea variantei."
+    ],
+    "drillSectionTitle": "Exerciții de memorie de lucru pentru șah",
+    "drillCards": [
+      {
+        "title": "Rezumatul a trei variante",
+        "description": "Ține scurt trei mutări candidate și descrie fiecare ramură într-o propoziție.",
+        "duration": "6 minute",
+        "goal": "Să ții fiecare secvență clară în loc să adaugi altele.",
+        "ctaLabel": "Ține trei variante"
+      },
+      {
+        "title": "Resetarea reamintirii",
+        "description": "Intercalează o rundă Memory Chess între încercările de calcul ca poziția de bază să rămână stabilă.",
+        "duration": "4 minute",
+        "goal": "Să reții poziția inițială înainte de a urmări mutările.",
+        "ctaLabel": "Resetează tabla"
+      },
+      {
+        "title": "Comparație după variantă",
+        "description": "Revino la poziția inițială și compară ramurile după o scurtă pauză.",
+        "duration": "5 minute",
+        "goal": "Să treci între poziția de bază și variante fără să le amesteci.",
+        "ctaLabel": "Compară opțiunile"
+      }
+    ],
+    "comparisonTitle": "Când încerci să reții prea mult",
+    "comparisonSummary": "Când memoria se umple, varianta devine neclară și ordinea mutărilor se amestecă.",
+    "comparisonRows": [
+      {
+        "label": "Mutări candidate",
+        "struggling": "Încerci să ții prea multe opțiuni deodată.",
+        "stronger": "Ții mai puține variante, dar fiecare rămâne corectă mai mult timp."
+      },
+      {
+        "label": "Ordinea mutărilor",
+        "struggling": "Ramurile se amestecă între ele.",
+        "stronger": "Fiecare variantă rămâne separată și ușor de comparat."
+      },
+      {
+        "label": "Oboseala",
+        "struggling": "Calitatea deciziilor scade spre finalul partidei.",
+        "stronger": "Păstrezi un proces mai simplu și mai clar când energia scade."
+      }
+    ],
+    "mistakes": [
+      "Să încerci să reții prea multe secvențe deodată.",
+      "Să sari peste rezumatul scurt după fiecare variantă.",
+      "Să rezolvi doar probleme și să nu folosești abilitatea în partide.",
+      "Să continui deși ești prea obosit ca să gândești clar."
+    ],
+    "mistakesCallout": "Nu adăuga încă variante. Ține puține variante clare înainte să le lungești.",
+    "planTitle": "Bloc de memorie de lucru, 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "10 minute",
+        "detail": "Folosește doar două secvențe și explică fiecare cu voce tare."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "12 minute",
+        "detail": "Adaugă o resetare Memory Chess între încercări ca poziția inițială să rămână curată."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "12 minute",
+        "detail": "Adaugă a treia opțiune doar dacă primele două rămân corecte."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 minute",
+        "detail": "Folosește rutina într-o partidă rapidă. Oprește-te în momentele grele și numește clar mutările posibile."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Se transferă exercițiile de memorie de lucru în jocul de șah?",
+        "answer": "Pot, mai ales când sunt legate direct de poziții, de ținerea variantelor și de analiză, nu de jocuri generale pentru minte."
+      },
+      {
+        "question": "Cum ar trebui să structureze un începător acest lucru?",
+        "answer": "Sesiuni scurte care combină mutări posibile, memoria tablei și o poziție reală de partidă."
+      },
+      {
+        "question": "Cum urmăresc simplu progresul?",
+        "answer": "Notează câte secvențe poți ține și cât de des pierzi firul."
+      },
+      {
+        "question": "Înlocuiește antrenamentul tactic?",
+        "answer": "Nu. Îl completează, ținând variantele mai clare când rezolvi sau joci."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Folosește o memorie de lucru mai bună ca să compari mutările."
+      },
+      {
+        "reason": "Întărește stratul de reamintire de sub ținerea variantelor."
+      },
+      {
+        "reason": "Folosește un proces de gândire mai simplu ca să nu risipești memoria de lucru."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Cum să nu mai faci gafe la șah",
+    "h1": "Cum să nu mai faci gafe la șah",
+    "description": "Folosește o verificare scurtă de siguranță ca să observi amenințările, să-ți aperi piesele și să greșești mai rar.",
+    "primaryKeyword": "cum să nu mai faci gafe la șah",
+    "secondaryKeywords": [
+      "prevenirea gafelor la șah",
+      "să nu mai lași piese în priză",
+      "verificarea amenințărilor la șah",
+      "listă de siguranță la șah",
+      "reducerea greșelilor simple la șah"
+    ],
+    "painPoint": "Înțelegi ideile din șah, dar tot pierzi piese la amenințări simple.",
+    "ctaLabel": "Începe un exercițiu anti-gafe",
+    "quickAnswer": "Înainte de fiecare mutare verifică amenințările adversarului, caută piesele neapărate și asigură-te că mutarea ta e sigură. Antrenamentul de memorie te ajută să ții toată tabla în minte.",
+    "keyTakeaways": [
+      "Majoritatea gafelor de începător vin din ratarea unei părți a tablei.",
+      "Lista de siguranță trebuie să fie destul de scurtă ca să reziste presiunii timpului.",
+      "Rejoacă-ți greșelile până când vezi repede ce ai ratat."
+    ],
+    "whoThisIsFor": [
+      "Jucători care cad repetat în tactici de o mutare.",
+      "Începători care se simt mai slabi în partide decât la probleme.",
+      "Oricine vrea o rutină calmă pentru fiecare mutare."
+    ],
+    "timeToRead": "8 minute de citit",
+    "introParagraphs": [
+      "Multe gafe apar pentru că muți înainte să verifici toată poziția. Poți pierde și din vedere unde e apărată o piesă.",
+      "O rutină scurtă înlocuiește panica și ghicitul. Folosește aceleași verificări când poziția se ascute."
+    ],
+    "startHereTitle": "Începe aici: lista anti-gafe",
+    "startHereSteps": [
+      "Întreabă ce șahuri, capturi și amenințări are adversarul chiar acum.",
+      "Găsește fiecare piesă neapărată sau supraîncărcată.",
+      "Abia apoi verifică dacă mutarea plănuită e sigură.",
+      "Joacă o rundă scurtă de Memory Chess înainte de partide pentru o reamintire mai ascuțită.",
+      "După fiecare gafă, scrie semnalul ratat într-o propoziție."
+    ],
+    "drillSectionTitle": "Exerciții simple anti-gafe",
+    "drillCards": [
+      {
+        "title": "Scanare dinspre adversar",
+        "description": "Începe fiecare poziție verificând cele mai puternice amenințări ale adversarului.",
+        "duration": "3 minute",
+        "goal": "Să te gândești la ideea adversarului înaintea celei proprii.",
+        "ctaLabel": "Scanează dinspre adversar"
+      },
+      {
+        "title": "Alarma pieselor neapărate",
+        "description": "Numește fiecare piesă neapărată sau supraîncărcată înainte de mutare.",
+        "duration": "4 minute",
+        "goal": "Să prinzi devreme cele mai simple pierderi de material.",
+        "ctaLabel": "Pornește alarma"
+      },
+      {
+        "title": "Bucla de rejucare a gafelor",
+        "description": "Rejoacă propriile poziții cu gafe până când amenințarea ratată devine evidentă.",
+        "duration": "6 minute",
+        "goal": "Să înveți din pozițiile care chiar te-au costat partide.",
+        "ctaLabel": "Rejoacă-ți gafa"
+      }
+    ],
+    "comparisonTitle": "Ce se schimbă când gafele scad",
+    "comparisonSummary": "Partidele nu devin brusc perfecte. Devin mai calme, iar înfrângerile au motive de înțeles, nu un dezastru dintr-o mutare.",
+    "comparisonRows": [
+      {
+        "label": "Momentul mutării",
+        "struggling": "Muți imediat ce vezi un plan.",
+        "stronger": "Muți abia după o scurtă verificare de siguranță."
+      },
+      {
+        "label": "Conștientizarea amenințărilor",
+        "struggling": "Vezi tactica după ce a căzut.",
+        "stronger": "Recunoști forma tactică înainte să te angajezi."
+      },
+      {
+        "label": "Analiza de după partidă",
+        "struggling": "Înfrângerea pare întâmplătoare.",
+        "stronger": "Numești repede exact semnalul ratat."
+      }
+    ],
+    "mistakes": [
+      "Să încerci să elimini gafele doar jucând mai lent.",
+      "Să înveți mai multe deschideri cât timp obiceiul verificării amenințărilor e slab.",
+      "Să te uiți la variantele motorului fără să identifici semnalul chiar ratat.",
+      "Să ignori faptul că presiunea timpului slăbește reamintirea."
+    ],
+    "mistakesCallout": "Să joci mai lent nu e de ajuns. Folosește de fiecare dată aceeași verificare scurtă de siguranță.",
+    "planTitle": "Resetare anti-gafe în 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "10 minute",
+        "detail": "Doar scanarea dinspre adversar și alarma pieselor neapărate."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "12 minute",
+        "detail": "Adaugă o rundă Memory Chess înainte de fiecare sesiune de joc pentru o imagine mai curată a poziției."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "15 minute",
+        "detail": "Rejoacă trei gafe recente și clasifică semnalul ratat în fiecare."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 minute",
+        "detail": "Folosește lista completă în partide rapide și urmărește gafele pe partidă, nu doar rezultatul."
+      }
+    ],
+    "faq": [
+      {
+        "question": "De ce las mereu piese în priză?",
+        "answer": "De obicei pentru că scanarea dinainte de mutare e incompletă. Poate știi tactica, dar nu verifici toată tabla înainte să muți."
+      },
+      {
+        "question": "E suficient să joc mai lent?",
+        "answer": "Doar dacă folosești timpul în plus pentru o verificare clară de siguranță. Să privești tabla fără plan nu ajută."
+      },
+      {
+        "question": "Ajută cu adevărat exercițiile de memorie împotriva gafelor?",
+        "answer": "Da. O reamintire mai curată a pieselor face mai ușoară observarea amenințărilor când poziția se schimbă."
+      },
+      {
+        "question": "Ce ar trebui să urmăresc ca să greșesc mai rar?",
+        "answer": "Gafele pe partidă, piesele neapărate ratate și dacă amenințarea scăpată a venit dintr-o scanare sau dintr-un calcul eșuat."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Construiește o scanare mai solidă a tablei ca să previi gafele."
+      },
+      {
+        "reason": "Vezi de ce tactica cedează când urmărirea tablei e slabă."
+      },
+      {
+        "reason": "Leagă munca anti-gafe de o rutină completă pentru începători."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "De ce ratingul la probleme nu se transferă în partide",
+    "h1": "De ce ratingul tău la probleme nu se transferă în partide",
+    "description": "Află de ce abilitatea la probleme pare diferită de partidele reale și cum vederea tablei, memoria și analiza acoperă diferența.",
+    "primaryKeyword": "de ce ratingul la probleme nu se transferă în partide",
+    "secondaryKeywords": [
+      "rating la probleme versus rating de partidă",
+      "tactica nu se transferă în partide",
+      "abilitatea la probleme în partide reale",
+      "de ce sunt mai bun la probleme",
+      "vederea tablei la șah"
+    ],
+    "painPoint": "Rezolvi bine problemele, dar ratezi tactica în partidele reale.",
+    "ctaLabel": "Antrenează-te pentru partide reale",
+    "quickAnswer": "O problemă îți spune că tactica există. O partidă nu. Trebuie să observi pericolul, să reții tabla și să știi când să încetinești.",
+    "keyTakeaways": [
+      "O problemă îți spune că există ceva de rezolvat.",
+      "Într-o partidă trebuie să găsești singur momentul periculos.",
+      "O vedere și o memorie mai bune îți arată tactica mai devreme."
+    ],
+    "whoThisIsFor": [
+      "Jucători cu rating mare la probleme, dar cu rating de partidă stagnant.",
+      "Începători care văd tactica după partidă, nu în timpul ei.",
+      "Oricine nu poate folosi ideile din probleme în partide reale."
+    ],
+    "timeToRead": "8 minute de citit",
+    "introParagraphs": [
+      "E o problemă frecventă la începători. Rezolvi probleme, dar partidele conțin în continuare piese pierdute, amenințări ratate și mutări grăbite.",
+      "Mai multe probleme nu rezolvă mereu asta. Trebuie și să observi când poziția devine periculoasă și să-ți imaginezi ce urmează după fiecare alegere."
+    ],
+    "startHereTitle": "Începe prin a lega problemele de partide",
+    "startHereSteps": [
+      "Înainte de probleme, alocă 2 minute scanării tablei după șahuri, capturi și amenințări.",
+      "Adaugă o rundă Memory Chess ca imaginea tablei să rămână stabilă sub presiune.",
+      "După o problemă, întreabă ce semnal ți-ar fi spus să încetinești într-o partidă.",
+      "Analizează o gafă recentă și compar-o cu o problemă tactică asemănătoare.",
+      "Joacă cel puțin o partidă rapidă pe sesiune ca să vezi dacă scanarea dinaintea mutării rezistă."
+    ],
+    "drillSectionTitle": "Exerciții care leagă problemele de partide",
+    "drillCards": [
+      {
+        "title": "Găsește semnalul de avertizare",
+        "description": "Caută semnalul de avertizare înainte să încerci să găsești tactica.",
+        "duration": "4 minute",
+        "goal": "Să observi mai devreme pozițiile periculoase.",
+        "ctaLabel": "Antrenează întâi semnalul"
+      },
+      {
+        "title": "Reamintire înainte de calcul",
+        "description": "Joacă o rundă rapidă de Memory Chess înainte de probleme ca tabla să pară mai clară.",
+        "duration": "4 minute",
+        "goal": "Să legi lucrul pe modele de jocul real.",
+        "ctaLabel": "Ascute întâi reamintirea"
+      },
+      {
+        "title": "Rejucarea unei poziții din partidă",
+        "description": "Reconstruiește un moment tactic ratat din partida ta și rezolvă-l ca pe o problemă.",
+        "duration": "6 minute",
+        "goal": "Să faci antrenamentul tactic să semene din nou cu pozițiile reale.",
+        "ctaLabel": "Rejoacă tactica ratată"
+      }
+    ],
+    "comparisonTitle": "Probleme și partide: ce se schimbă?",
+    "comparisonSummary": "Mutarea tactică poate fi identică, dar sarcina mentală nu.",
+    "comparisonRows": [
+      {
+        "label": "Cadrul problemei",
+        "struggling": "Partida nu îți spune că există tactică.",
+        "stronger": "Observi semnalul că tensiunea tocmai s-a schimbat."
+      },
+      {
+        "label": "Claritatea tablei",
+        "struggling": "Varianta se estompează când se mișcă mai multe piese.",
+        "stronger": "Ții în memorie pătratele importante și apărătorii."
+      },
+      {
+        "label": "Ritmul deciziei",
+        "struggling": "Joci în ritm obișnuit când poziția devine periculoasă.",
+        "stronger": "Încetinești când apar șahuri, capturi sau amenințări."
+      }
+    ],
+    "mistakes": [
+      "Să rezolvi probleme fără niciun pas către partide.",
+      "Să presupui că doar cunoștințele tactice previn gafele.",
+      "Să nu analizezi niciodată de ce o poziție a devenit periculoasă.",
+      "Să tratezi vederea tablei ca ceva separat de tactică."
+    ],
+    "mistakesCallout": "Nu adăuga doar mai multe probleme. Exersează și observarea momentelor tactice din partidele tale.",
+    "planTitle": "Bloc de transfer, 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "12 minute",
+        "detail": "Adaugă gândirea la semnal înaintea soluției în fiecare sesiune de probleme."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "12 minute",
+        "detail": "Joacă o rundă scurtă de Memory Chess înainte de probleme sau de partide rapide."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "15 minute",
+        "detail": "Rejoacă trei momente tactice ratate din propriile partide."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 până la 20 de minute",
+        "detail": "Joacă rapid și oprește-te de fiecare dată când poziția devine forțată sau tensionată tactic."
+      }
+    ],
+    "faq": [
+      {
+        "question": "De ce sunt mai bun la probleme decât în partide?",
+        "answer": "Pentru că problema îți spune deja că există o tactică de găsit. O partidă reală nu."
+      },
+      {
+        "question": "Ar trebui să mă opresc din rezolvat probleme?",
+        "answer": "Nu. Păstrează-le, dar adaugă vederea tablei, reamintirea și rejucarea pozițiilor din partide ca modelele să se transfere."
+      },
+      {
+        "question": "Care e cel mai bun exercițiu de transfer?",
+        "answer": "Să rejoci o tactică ratată din partida ta și să o rezolvi după ce reconstruiești poziția din memorie."
+      },
+      {
+        "question": "Cum măsor transferul?",
+        "answer": "Urmărește dacă scad gafele pe partidă și tacticile simple ratate, nu doar dacă crește ratingul la probleme."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Folosește-l ca să construiești o listă anti-gafe mai scurtă pentru partide."
+      },
+      {
+        "reason": "Întărește obiceiul de scanare care face tactica vizibilă."
+      },
+      {
+        "reason": "Alege un număr de probleme care lasă timp pentru joc."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Cum vezi toată tabla la șah",
+    "h1": "Cum vezi toată tabla de șah",
+    "description": "Folosește o scanare simplă ca să observi piesele îndepărtate, să vezi amenințările și să eviți vederea în tunel.",
+    "primaryKeyword": "cum să vezi toată tabla la șah",
+    "secondaryKeywords": [
+      "conștientizarea tablei la șah",
+      "evitarea vederii în tunel",
+      "să vezi toată tabla",
+      "exerciții de scanare la șah",
+      "vederea periferică a tablei"
+    ],
+    "painPoint": "Te concentrezi pe o zonă și ratezi o amenințare în altă parte.",
+    "ctaLabel": "Antrenează vederea de ansamblu",
+    "quickAnswer": "Înainte de fiecare mutare verifică ambii regi, piesele neapărate, centrul și marginile. Antrenamentul de memorie te ajută să ții mai mult din tablă în minte.",
+    "keyTakeaways": [
+      "Vederea în tunel înseamnă că atenția rămâne blocată într-o zonă.",
+      "Verificarea pieselor de la margine e deosebit de utilă începătorilor.",
+      "O memorie clară a tablei face scanarea mai ușoară."
+    ],
+    "whoThisIsFor": [
+      "Jucători care observă tactica doar pe o parte a tablei.",
+      "Începători care ratează nebuni, turnuri sau amenințări îndepărtate.",
+      "Oricine se simte înghesuit în pozițiile deschise."
+    ],
+    "timeToRead": "7 minute de citit",
+    "introParagraphs": [
+      "Mulți începători se uită doar la piesele din apropierea mutării plănuite. Astfel, nebunii, turnurile și amenințările îndepărtate se ratează ușor.",
+      "Nu trebuie să privești tabla mai mult timp. Folosește aceeași scanare simplă ca să verifici fiecare zonă importantă."
+    ],
+    "startHereTitle": "Începe aici: lărgește scanarea",
+    "startHereSteps": [
+      "Verifică ambii regi și liniile care duc spre ei.",
+      "Caută piesele neapărate întâi în centru, apoi la margini.",
+      "Parcurge nebunii și turnurile pe toată linia, nu doar până la pătratul care te interesează.",
+      "Joacă o rundă Memory Chess ca toată tabla să rămână mai disponibilă în atenție.",
+      "Înainte de mutare întreabă ce parte a tablei nu ai privit încă."
+    ],
+    "drillSectionTitle": "Exerciții împotriva vederii în tunel",
+    "drillCards": [
+      {
+        "title": "Verificarea marginilor",
+        "description": "Verifică piesele din colțuri și de la margini înainte de fiecare mutare.",
+        "duration": "3 minute",
+        "goal": "Să prinzi amenințările din afara zonei pe care te concentrezi.",
+        "ctaLabel": "Verifică marginile"
+      },
+      {
+        "title": "Parcurgerea liniilor de acțiune",
+        "description": "Parcurge complet fiecare linie de nebun și de turn, nu doar un pătrat-țintă.",
+        "duration": "4 minute",
+        "goal": "Să acoperi mai mult din tablă la fiecare scanare.",
+        "ctaLabel": "Parcurge liniile"
+      },
+      {
+        "title": "Reamintirea întregii table",
+        "description": "Folosește Memory Chess cu un număr moderat de piese, apoi descrie tabla pe zone.",
+        "duration": "5 minute",
+        "goal": "Să reții mai mult din tablă deodată.",
+        "ctaLabel": "Reamintește pe zone"
+      }
+    ],
+    "comparisonTitle": "Vedere în tunel și conștientizarea întregii table",
+    "comparisonSummary": "Nu trebuie să privești peste tot la fel de mult. Asigură-te doar că nu ratezi ceva important.",
+    "comparisonRows": [
+      {
+        "label": "Traseul atenției",
+        "struggling": "Privești fix un grup de piese.",
+        "stronger": "Parcurgi zonele de risc într-o ordine constantă."
+      },
+      {
+        "label": "Piesele cu rază lungă",
+        "struggling": "Uiți nebunii și turnurile departe de acțiune.",
+        "stronger": "Le parcurgi liniile complet înainte să ai încredere într-o mutare."
+      },
+      {
+        "label": "Zonele tablei",
+        "struggling": "Sari peste partea care pare liniștită.",
+        "stronger": "Verifici partea liniștită înainte de mutare."
+      }
+    ],
+    "mistakes": [
+      "Să crezi că vederea de ansamblu înseamnă să privești mai mult în loc să scanezi mai bine.",
+      "Să ignori marginile pentru că centrul pare mai urgent.",
+      "Să nu parcurgi complet liniile pieselor cu rază lungă.",
+      "Să încerci să scanezi mai larg înainte să reții clar piesele."
+    ],
+    "mistakesCallout": "Timpul suplimentar de gândire nu ajută fără o scanare clară. Verifică tabla de fiecare dată în aceeași ordine.",
+    "planTitle": "Plan de scanare completă, 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "10 minute",
+        "detail": "Doar verificarea regilor, a pieselor neapărate și a marginilor."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "12 minute",
+        "detail": "Adaugă parcurgerea completă a liniilor de nebun și de turn."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "12 minute",
+        "detail": "Folosește Memory Chess și reamintește tabla pe zone, nu în ordine aleatorie."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 minute",
+        "detail": "Du scanarea în partidele rapide și notează ce zonă a cauzat ratarea când apare o gafă."
+      }
+    ],
+    "faq": [
+      {
+        "question": "De ce ratez mereu piese din partea cealaltă a tablei?",
+        "answer": "Pentru că atenția e prea locală. O ordine fixă de scanare e mai bună decât speranța că observi totul de la sine."
+      },
+      {
+        "question": "Ajută Memory Chess la conștientizarea întregii table?",
+        "answer": "Da. Te antrenează să ții mai mult din tablă activ în memorie, nu doar punctul tactic fierbinte."
+      },
+      {
+        "question": "Trebuie să verific marginile la fiecare mutare?",
+        "answer": "Da, mai ales ca începător. Multe gafe ieftine se ascund în piesele de la margine și pe liniile lungi."
+      },
+      {
+        "question": "Cum știu că scanarea se îmbunătățește?",
+        "answer": "Vei rata mai puține amenințări îndepărtate și vei fi mai puțin surprins de nebuni, turnuri și atacuri descoperite."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Combină conștientizarea întregii table cu o listă de siguranță mai solidă."
+      },
+      {
+        "reason": "Îmbunătățește tabla mentală ca scanarea largă să fie mai ușoară."
+      },
+      {
+        "reason": "Recunoaște pătratele mai repede ca scanările largi să coste mai puțin."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Exersarea coordonatelor pentru orientare mai rapidă",
+    "h1": "Exersarea coordonatelor de șah pentru începători",
+    "description": "Învață mai repede numele pătratelor și fă mai ușoare scanarea, notația și vizualizarea.",
+    "primaryKeyword": "exersarea coordonatelor de șah",
+    "secondaryKeywords": [
+      "exersarea notației de șah",
+      "învățarea coordonatelor de șah",
+      "recunoașterea mai rapidă a pătratelor",
+      "conștientizarea pătratelor tablei",
+      "exerciții de numire a pătratelor"
+    ],
+    "painPoint": "Îți ia timp să afli numele unui pătrat sau confunzi des pătratele.",
+    "ctaLabel": "Exersează numele pătratelor",
+    "quickAnswer": "Coordonatele sunt numele celor 64 de pătrate. Cunoașterea lor face mai ușoare scanarea tablei, imaginarea mutărilor și analiza partidelor.",
+    "keyTakeaways": [
+      "Recunoașterea rapidă a pătratelor face scanarea mai ușoară.",
+      "Exersează coordonatele pe poziții reale.",
+      "Ca să începi, sunt suficiente numele de bază ale pătratelor."
+    ],
+    "whoThisIsFor": [
+      "Începători care încă numără încet coloanele și liniile.",
+      "Jucători care vor să scaneze și să vizualizeze mai repede.",
+      "Oricine găsește notația de șah confuză."
+    ],
+    "timeToRead": "7 minute de citit",
+    "introParagraphs": [
+      "Coordonatele sunt mai mult decât cărți și liste de mutări. Recunoașterea rapidă a pătratelor ajută vederea tablei, memoria și analiza.",
+      "Când știi numele pătratelor, tabla devine o hartă clară în loc de un ansamblu de zone vagi."
+    ],
+    "startHereTitle": "Începe cu numele pătratelor pe o tablă reală",
+    "startHereSteps": [
+      "Alege o coloană sau o linie și spune numele pătratelor cu voce tare.",
+      "Spune pătratul fiecărei piese în timp ce reconstruiești o poziție Memory Chess.",
+      "Ia o poziție recentă și numește principalii atacatori și apărători după pătrat.",
+      "Exersează nebunii, turnurile și săriturile calului prin coordonate, nu doar vizual.",
+      "Încheie cu o scanare rapidă în care fiecare piesă neapărată e numită după pătrat."
+    ],
+    "drillSectionTitle": "Exerciții de coordonate utile în joc",
+    "drillCards": [
+      {
+        "title": "Numirea piesei și a pătratului",
+        "description": "Reconstruiește o tablă și numește fiecare piesă cu pătratul ei.",
+        "duration": "4 minute",
+        "goal": "Să legi numele pătratelor de piesele pe care trebuie să le reții.",
+        "ctaLabel": "Numește fiecare pătrat"
+      },
+      {
+        "title": "Numirea liniilor lungi",
+        "description": "Parcurge liniile de nebun și de turn și spune pătratele pe care le influențează.",
+        "duration": "4 minute",
+        "goal": "Să faci coordonatele utile în scanările complete.",
+        "ctaLabel": "Parcurge liniile pe pătrate"
+      },
+      {
+        "title": "Harta săriturilor calului",
+        "description": "Alege un pătrat al calului și numește rapid toate destinațiile legale.",
+        "duration": "3 minute",
+        "goal": "Să recunoști mai repede mutările calului și pătratele-țintă.",
+        "ctaLabel": "Cartografiază săriturile"
+      }
+    ],
+    "comparisonTitle": "Recunoaștere lentă și rapidă a pătratelor",
+    "comparisonSummary": "Coordonatele nu îmbunătățesc fiecare parte a șahului tău, dar fac mai ușoare mai multe abilități.",
+    "comparisonRows": [
+      {
+        "label": "Scanarea tablei",
+        "struggling": "Recunoști forma, dar nu numele pătratelor.",
+        "stronger": "Identifici amenințările și apărătorii mai precis și mai repede."
+      },
+      {
+        "label": "Vizualizarea",
+        "struggling": "Mutările imaginate rămân vagi.",
+        "stronger": "Poziția rezultată devine mai ușor de descris și de ținut minte."
+      },
+      {
+        "label": "Analiza",
+        "struggling": "Notele de după partidă rămân neclare.",
+        "stronger": "Descrii momentul-cheie destul de clar ca să-l studiezi mai târziu."
+      }
+    ],
+    "mistakes": [
+      "Să exersezi numele pătratelor fără poziții reale.",
+      "Să memorezi regulile notației fără exemple pe tablă.",
+      "Să ignori liniile pieselor cu rază lungă în timp ce exersezi.",
+      "Să renunți la obicei imediat ce notația de bază devine familiară."
+    ],
+    "mistakesCallout": "Nu repeta doar numele pătratelor. Folosește-le cu piese și poziții reale.",
+    "planTitle": "Încălzire de coordonate, 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "8 minute",
+        "detail": "Numește fiecare piesă și pătratul ei în timp ce reconstruiești o poziție Memory Chess."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "10 minute",
+        "detail": "Adaugă numirea liniilor lungi pentru nebuni și turnuri."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "10 minute",
+        "detail": "Exersează harta săriturilor calului și fluența pe pătratele centrale."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "12 minute",
+        "detail": "Folosește numele pătratelor într-o scanare completă, apoi analizează o poziție importantă doar prin pătrate."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Contează cu adevărat coordonatele pentru începători?",
+        "answer": "Da, când accelerează orientarea pe tablă, vizualizarea și analiza. Nu ai nevoie de notație perfectă, dar recunoașterea rapidă ajută."
+      },
+      {
+        "question": "Care e cel mai bun mod de a învăța coordonatele?",
+        "answer": "Învață numele pătratelor cu poziții și piese reale, nu repetând doar notația."
+      },
+      {
+        "question": "Mă va ajuta să fac mai puține gafe?",
+        "answer": "Indirect, da. Recunoașterea rapidă a pătratelor face scanările și verificările de amenințări mai precise."
+      },
+      {
+        "question": "Cât ar trebui să exersez coordonatele?",
+        "answer": "Cinci până la zece minute concentrate sunt suficiente când exercițiul e legat de lucrul real pe tablă."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Folosește coordonatele ca să susții o scanare mai largă."
+      },
+      {
+        "reason": "Fă actualizările mentale precise, pătrat cu pătrat."
+      },
+      {
+        "reason": "Folosește numele pătratelor ca să-ți simplifici gândirea sub presiune."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Plan zilnic de șah de 20 de minute pentru începători",
+    "h1": "Un plan zilnic de șah de 20 de minute pentru începători",
+    "description": "Urmează un plan simplu de 20 de minute cu lucru pe tablă, memorie, partide și o analiză scurtă.",
+    "primaryKeyword": "plan zilnic de șah de 20 de minute",
+    "secondaryKeywords": [
+      "rutină zilnică de șah pentru începători",
+      "plan scurt de studiu la șah",
+      "progres în 20 de minute pe zi",
+      "program de antrenament pentru începători",
+      "rutină de probleme și analiză"
+    ],
+    "painPoint": "Vrei să progresezi, dar majoritatea planurilor de șah cer prea mult timp.",
+    "ctaLabel": "Începe planul de 20 de minute",
+    "quickAnswer": "Alocă câteva minute pentru simțul tablei, memorie, tactică și analiză. Ține rutina destul de scurtă ca să o poți face și obosit.",
+    "keyTakeaways": [
+      "A exersa des contează mai mult decât a exersa mult.",
+      "Folosește atât exerciții, cât și poziții reale.",
+      "O analiză scurtă ajută antrenamentul de mâine."
+    ],
+    "whoThisIsFor": [
+      "Începători cu puțin timp, dar cu motivație constantă.",
+      "Jucători care renunță la planuri prea solicitante.",
+      "Oricine vrea o rutină zilnică repetabilă."
+    ],
+    "timeToRead": "7 minute de citit",
+    "introParagraphs": [
+      "Multe planuri de studiu funcționează doar cu mult timp liber. Un plan util trebuie să meargă și într-o zi aglomerată.",
+      "Această rutină de 20 de minute păstrează un exercițiu, o poziție reală și o analiză scurtă."
+    ],
+    "startHereTitle": "Rutina ta de șah de 20 de minute",
+    "startHereSteps": [
+      "Alocă 4 minute unui exercițiu de simț al tablei sau de reamintire.",
+      "Alocă 6 minute unei runde Memory Chess cu aceleași setări toată săptămâna.",
+      "Alocă 6 minute tacticii sau unei poziții dintr-o partidă reală.",
+      "Alocă 4 minute pentru a scrie ce a mers prost azi și ce a rezistat.",
+      "Păstrează structura cel puțin 7 zile înainte să o ajustezi."
+    ],
+    "drillSectionTitle": "Exerciții care încap într-un plan scurt",
+    "drillCards": [
+      {
+        "title": "Încălzire cu reamintire",
+        "description": "Folosește o rundă scurtă de Memory Chess drept ancoră pentru toată sesiunea.",
+        "duration": "6 minute",
+        "goal": "Să începi fiecare sesiune cu aceeași încălzire de memorie.",
+        "ctaLabel": "Începe încălzirea"
+      },
+      {
+        "title": "Verificare rapidă a amenințărilor",
+        "description": "Scanează o poziție după șahuri, capturi, amenințări și piese neapărate.",
+        "duration": "4 minute",
+        "goal": "Să îmbunătățești transferul în partide aproape fără cost de timp.",
+        "ctaLabel": "Fă verificarea"
+      },
+      {
+        "title": "Ciclul de notițe",
+        "description": "Scrie o propoziție despre tipul greșelii făcute azi.",
+        "duration": "4 minute",
+        "goal": "Să folosești mâine lecția de azi.",
+        "ctaLabel": "Notează o lecție"
+      }
+    ],
+    "comparisonTitle": "O rutină pe care chiar o menții",
+    "comparisonSummary": "Cea mai bună rutină e cea pe care o poți repeta într-o săptămână obișnuită.",
+    "comparisonRows": [
+      {
+        "label": "Volumul zilnic",
+        "struggling": "Încerci prea multe forme de studiu deodată.",
+        "stronger": "Repeți un ciclu compact care acoperă bazele în fiecare zi."
+      },
+      {
+        "label": "Transferul",
+        "struggling": "Doar privești sau citești fără să exersezi.",
+        "stronger": "Fiecare sesiune conține un exercițiu pe care îl folosești în partide."
+      },
+      {
+        "label": "Analiza",
+        "struggling": "Greșelile dispar pentru că nu notezi nimic.",
+        "stronger": "Fiecare zi se încheie cu o notă pentru mâine."
+      }
+    ],
+    "mistakes": [
+      "Să copiezi planuri avansate pe care nu le poți menține.",
+      "Să folosești toate cele 20 de minute pentru conținut pasiv.",
+      "Să schimbi rutina o dată la două zile.",
+      "Să sari peste analiză pentru că pare măruntă."
+    ],
+    "mistakesCallout": "Nu mări planul. Fă-l destul de ușor ca să-l poți repeta.",
+    "planTitle": "Rutina de 20 de minute timp de 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 3",
+        "duration": "20 de minute",
+        "detail": "Pentru consecvență, păstrează aceleași setări Memory Chess și același format de verificare."
+      },
+      {
+        "label": "Ziua 4",
+        "duration": "20 de minute",
+        "detail": "Citește-ți notițele și păstrează un singur punct de corectat pentru următoarele trei zile."
+      },
+      {
+        "label": "Ziua 5 până la 6",
+        "duration": "20 de minute",
+        "detail": "Repetă exact aceeași structură fără variație suplimentară."
+      },
+      {
+        "label": "Ziua 7",
+        "duration": "20 de minute",
+        "detail": "Verifică dacă gafele sau acuratețea reamintirii s-au îmbunătățit și fă o singură ajustare pentru săptămâna următoare."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Sunt de ajuns 20 de minute de antrenament?",
+        "answer": "Da, dacă sunt constante și conțin exerciții care se transferă direct în partide, nu doar învățare pasivă."
+      },
+      {
+        "question": "Să folosesc toate cele 20 de minute pentru tactică?",
+        "answer": "De obicei nu. Un amestec de claritate a tablei, transfer tactic și analiză scurtă funcționează mai bine pentru începători."
+      },
+      {
+        "question": "Cât timp să păstrez același plan?",
+        "answer": "Cel puțin o săptămână. Schimbările continue fac progresul imposibil de citit."
+      },
+      {
+        "question": "Ce ar trebui să urmăresc?",
+        "answer": "Gafele pe partidă, acuratețea reamintirii și tipul de greșeală care apare cel mai des."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Vezi unde se potrivește această rutină scurtă într-un plan mai lung."
+      },
+      {
+        "reason": "Echilibrează munca tactică și claritatea tablei."
+      },
+      {
+        "reason": "Ține blocul de analiză simplu și productiv."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Cum își analizează începătorii propriile partide",
+    "h1": "Cum își analizează începătorii propriile partide de șah",
+    "description": "Revezi-ți partidele, înțelege greșelile și alege un singur lucru clar de exersat.",
+    "primaryKeyword": "analiza partidelor de șah pentru începători",
+    "secondaryKeywords": [
+      "analiza partidei pentru începători",
+      "revizuirea propriilor partide",
+      "autoanaliză la șah",
+      "analiza gafelor",
+      "rutină după partidă"
+    ],
+    "painPoint": "Analiza ta e prea rapidă, dezordonată sau plină de variante de motor.",
+    "ctaLabel": "Analizează partida următoare",
+    "quickAnswer": "Găsește unde s-a răsturnat partida, numește tipul greșelii și alege o corectură. Deschide motorul abia după ce ai examinat singur poziția.",
+    "keyTakeaways": [
+      "Încheie fiecare analiză cu o acțiune, nu cu o listă lungă de mutări de motor.",
+      "Numirea tipului de greșeală te ajută să alegi exercițiul.",
+      "Încearcă să reconstruiești poziția-cheie din memorie."
+    ],
+    "whoThisIsFor": [
+      "Jucători care își revăd partidele, dar nu știu ce urmează.",
+      "Începători care văd evaluarea sărind fără să înțeleagă de ce.",
+      "Oricine vrea un obicei mai simplu după partidă."
+    ],
+    "timeToRead": "7 minute de citit",
+    "introParagraphs": [
+      "Începe cu o întrebare: ce greșeală a schimbat partida? Doar evaluarea motorului nu îți spune ce să exersezi.",
+      "Reconstruiește poziția-cheie, numește greșeala și alege de acolo exercițiul de mâine."
+    ],
+    "startHereTitle": "Începe aici: bucla de analiză pentru începători",
+    "startHereSteps": [
+      "Găsește primul moment în care poziția s-a schimbat mult.",
+      "Reconstruiește acea poziție din memorie înainte să verifici motorul.",
+      "Clasifică greșeala ca vedere, memorie, calcul sau gestionarea timpului.",
+      "Întreabă ce semnal ar fi trebuit să te facă să încetinești.",
+      "Transformă răspunsul într-un exercițiu pentru sesiunea următoare."
+    ],
+    "drillSectionTitle": "Exerciții simple de analiză",
+    "drillCards": [
+      {
+        "title": "Reconstruiește poziția-cheie",
+        "description": "Reconstruiește din memorie poziția gafei principale înainte să o verifici.",
+        "duration": "5 minute",
+        "goal": "Să reții poziția înainte să vezi răspunsul.",
+        "ctaLabel": "Reconstruiește momentul"
+      },
+      {
+        "title": "Etichetează tipul greșelii",
+        "description": "Etichetează fiecare greșeală mare drept vedere, memorie, calcul sau criză de timp.",
+        "duration": "3 minute",
+        "goal": "Să știi ce să exersezi în continuare.",
+        "ctaLabel": "Etichetează greșeala"
+      },
+      {
+        "title": "Analiză cu o singură corectură",
+        "description": "Încheie analiza cu o corectură clară pentru mâine.",
+        "duration": "2 minute",
+        "goal": "Să închei cu un pas următor util.",
+        "ctaLabel": "Alege o corectură"
+      }
+    ],
+    "comparisonTitle": "Analiză utilă și analiză inutilă",
+    "comparisonSummary": "Nu trebuie să studiezi fiecare mutare. Găsește cea mai clară lecție pentru exercițiul următor.",
+    "comparisonRows": [
+      {
+        "label": "Folosirea motorului",
+        "struggling": "Deschizi motorul imediat.",
+        "stronger": "Faci propriul diagnostic înainte de verificare."
+      },
+      {
+        "label": "Rezultatul",
+        "struggling": "Termini cu multe comentarii și fără acțiune.",
+        "stronger": "Termini cu un exercițiu sau cu o ajustare a listei."
+      },
+      {
+        "label": "Memoria",
+        "struggling": "Poziția dispare imediat după partidă.",
+        "stronger": "O reconstruiești și vezi greșeala mai clar."
+      }
+    ],
+    "mistakes": [
+      "Să analizezi doar cu variantele motorului, fără diagnostic propriu.",
+      "Să încerci să analizezi fiecare mutare la fel de adânc.",
+      "Să nu numești tipul greșelii.",
+      "Să închei analiza fără să alegi exercițiul următor."
+    ],
+    "mistakesCallout": "Nu parcurge fiecare variantă de motor. Numește greșeala și exersează corectura.",
+    "planTitle": "Obicei de analiză în 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "10 minute",
+        "detail": "Revezi o partidă și găsește doar primul punct mare de răsturnare."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "12 minute",
+        "detail": "Reconstruiește acea poziție din memorie înainte să consulți motorul."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "12 minute",
+        "detail": "Atribuie fiecărei greșeli mari un tip și numără care apare cel mai des."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 minute",
+        "detail": "Alege primul exercițiu al sesiunii următoare în funcție de cel mai frecvent tip de greșeală."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Ar trebui începătorii să folosească motorul?",
+        "answer": "Da, dar după propria încercare de diagnostic. Altfel analiza rămâne pasivă."
+      },
+      {
+        "question": "Câte greșeli să revăd după o partidă?",
+        "answer": "Una până la trei răsturnări mari sunt suficiente pentru majoritatea începătorilor."
+      },
+      {
+        "question": "Ce să notez după analiză?",
+        "answer": "Tipul greșelii, semnalul ratat și un exercițiu sau o ajustare a listei pentru data viitoare."
+      },
+      {
+        "question": "Cum ajută Memory Chess la analiză?",
+        "answer": "Te ajută să reconstruiești pozițiile importante, așa că analiza devine mai precisă."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Așază analiza într-o rutină care nu copleșește."
+      },
+      {
+        "reason": "Transformă rezultatele analizei în exerciții anti-gafe."
+      },
+      {
+        "reason": "Reține și reconstruiește momentele-cheie după partidă."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Câte probleme de șah ar trebui să rezolve zilnic un începător?",
+    "h1": "Câte probleme de șah ar trebui să rezolve zilnic un începător?",
+    "description": "Alege un număr zilnic de probleme care îmbunătățește tactica și lasă timp pentru memorie, partide și analiză.",
+    "primaryKeyword": "câte probleme de șah pe zi",
+    "secondaryKeywords": [
+      "numărul zilnic de probleme",
+      "rutină de probleme pentru începători",
+      "câtă tactică pe zi",
+      "prea multe probleme de șah",
+      "volum tactic pentru începători"
+    ],
+    "painPoint": "Rezolvi multe probleme, dar nu știi dacă te ajută în partide.",
+    "ctaLabel": "Echilibrează problemele și jocul",
+    "quickAnswer": "Pentru majoritatea începătorilor, o sesiune zilnică scurtă e suficientă. Oprește-te cât timp gândești clar și lasă timp pentru partide, memorie și analiză.",
+    "keyTakeaways": [
+      "Calitatea problemelor contează mai mult decât numărul.",
+      "Prea multe probleme iau timp de la partide și analiză.",
+      "Numărul ideal ar trebui să lase timp pentru joc sau analiză."
+    ],
+    "whoThisIsFor": [
+      "Jucători al căror plan de studiu e format doar din probleme.",
+      "Începători care vor o rutină clară de probleme.",
+      "Oricine vrea să echilibreze problemele și practica de joc."
+    ],
+    "timeToRead": "7 minute de citit",
+    "introParagraphs": [
+      "Nu există un număr perfect pentru toată lumea. Prea puține probleme încetinesc învățarea modelelor, prea multe nu lasă timp pentru altceva util.",
+      "Rezolvă cât să rămâi ascuțit și folosește restul timpului pentru memoria tablei, partide și analiză."
+    ],
+    "startHereTitle": "Alege un număr zilnic rezonabil",
+    "startHereSteps": [
+      "Decide dacă problemele sunt încălzirea, blocul principal sau verificarea transferului.",
+      "Păstrează o rundă scurtă de Memory Chess înainte sau după, pentru claritatea tablei.",
+      "Oprește-te când răspunsurile devin grăbite, în loc să urmărești un număr mai mare.",
+      "Reconstruiește zilnic un moment tactic ratat dintr-o partidă reală.",
+      "Schimbă numărul abia după ce verifici dacă greșelile din partide se schimbă."
+    ],
+    "drillSectionTitle": "Exerciții care fac problemele mai utile",
+    "drillCards": [
+      {
+        "title": "Încălzire plus reamintire",
+        "description": "Combină un exercițiu scurt de reamintire cu un bloc moderat de probleme, în loc să începi la rece.",
+        "duration": "10 minute",
+        "goal": "Să legi rezolvarea problemelor de jocul real.",
+        "ctaLabel": "Adaugă reamintirea"
+      },
+      {
+        "title": "Verificarea semnalului după fiecare problemă",
+        "description": "Înainte să vezi soluția, întreabă ce semnal de avertizare a făcut tactica posibilă.",
+        "duration": "5 minute",
+        "goal": "Să observi de ce o poziție conține tactică.",
+        "ctaLabel": "Verifică semnalul"
+      },
+      {
+        "title": "Reconstruiește o tactică din partidă",
+        "description": "Transformă o tactică ratată în partidă într-o problemă pe care o rezolvi după ce reconstruiești poziția.",
+        "duration": "5 minute",
+        "goal": "Să folosești tactica din propriile partide.",
+        "ctaLabel": "Reconstruiește tactica"
+      }
+    ],
+    "comparisonTitle": "Prea puține, prea multe și exact cât trebuie",
+    "comparisonSummary": "Numărul potrivit îți ține tactica ascuțită și îți lasă totuși timp de joc.",
+    "comparisonRows": [
+      {
+        "label": "Recunoașterea modelelor",
+        "struggling": "Prea puțin exercițiu face tactica obișnuită să pară străină.",
+        "stronger": "Un bloc zilnic moderat menține modelele proaspete."
+      },
+      {
+        "label": "Transferul",
+        "struggling": "Prea multe probleme nu lasă timp pentru simțul tablei sau analiză.",
+        "stronger": "Rutina ta păstrează reamintirea și lucrul pe poziții reale."
+      },
+      {
+        "label": "Oboseala",
+        "struggling": "Problemele de la final devin ghiceli grăbite.",
+        "stronger": "Te oprești cât timp deciziile sunt încă curate."
+      }
+    ],
+    "mistakes": [
+      "Să folosești numărul de probleme drept unica măsură a calității.",
+      "Să rezolvi tactică fără niciun transfer în partide.",
+      "Să continui mult după ce concentrarea a scăzut.",
+      "Să elimini analiza și simțul tablei."
+    ],
+    "mistakesCallout": "Mai multe probleme nu e mereu mai bine. Verifică dacă te ajută în partidele reale.",
+    "planTitle": "Plan de echilibru, 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "15 minute",
+        "detail": "Folosește un bloc mic de probleme și pune înaintea lui un exercițiu scurt de reamintire."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "15 minute",
+        "detail": "Adaugă o verificare a semnalului după fiecare problemă ca să vezi de ce exista tactica."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "15 minute",
+        "detail": "Reconstruiește o tactică ratată din partidă și compar-o cu rezultatele tale la probleme."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 până la 20 de minute",
+        "detail": "Schimbă numărul doar dacă răspunsurile rămân atente și mai rămâne timp de joc."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Câte probleme pe zi sunt suficiente pentru un începător?",
+        "answer": "Atâtea cât tactica obișnuită să rămână familiară și să mai rămână timp pentru memorie și partide. Pentru mulți, o sesiune zilnică scurtă e suficientă."
+      },
+      {
+        "question": "Pot prea multe probleme să dăuneze?",
+        "answer": "Indirect, da. Pot elimina simțul tablei, reamintirea și analiza, necesare pentru un transfer real."
+      },
+      {
+        "question": "Probleme înainte sau după partide?",
+        "answer": "Ambele funcționează, dar o încălzire mică plus un pas de transfer după partidă merge adesea bine."
+      },
+      {
+        "question": "Ce ar trebui să urmăresc?",
+        "answer": "Dacă scad gafele și tacticile simple ratate, nu doar câte probleme ai rezolvat."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Înțelege de ce succesul la probleme nu e suficient."
+      },
+      {
+        "reason": "Așază problemele într-o rutină scurtă și echilibrată."
+      },
+      {
+        "reason": "Învață modelele frecvente în loc să crești numărul."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Exerciții de recunoaștere a modelelor la șah",
+    "h1": "Exerciții de recunoaștere a modelelor pentru începători",
+    "description": "Folosește exerciții simple ca să observi modelele frecvente de șah și să vezi mai repede ideile utile.",
+    "primaryKeyword": "exerciții de recunoaștere a modelelor la șah",
+    "secondaryKeywords": [
+      "recunoașterea modelelor la șah",
+      "antrenarea motivelor tactice",
+      "exerciții de modele tactice",
+      "modele de șah pentru începători",
+      "memorarea motivelor de șah"
+    ],
+    "painPoint": "Fiecare poziție pare nouă, așa că vezi ideile tactice prea târziu.",
+    "ctaLabel": "Antrenează modelele",
+    "quickAnswer": "Un model e o așezare familiară de piese și pătrate. Repetă același tip de model până vezi repede ideea din spatele lui.",
+    "keyTakeaways": [
+      "Un model include forma de pe tablă și ideea pe care o creează.",
+      "Memoria tablei te ajută să observi modelele sub presiune.",
+      "Repetă câteva modele frecvente înainte să adaugi multe altele noi."
+    ],
+    "whoThisIsFor": [
+      "Jucători care rezolvă tactică, dar nu văd aceleași forme în partide.",
+      "Începători care vor mai multă structură decât probleme aleatorii.",
+      "Oricine încă vede pozițiile ca fiind vizual încâlcite."
+    ],
+    "timeToRead": "7 minute de citit",
+    "introParagraphs": [
+      "Recunoașterea modelelor face o poziție familiară. O formă de pe tablă poate indica o furculiță, o legătură, o piesă prinsă sau un pătrat slab înainte să începi calculul.",
+      "Începe cu un grup mic de modele frecvente. Reconstruiește fiecare poziție din memorie ca să reții piesele și pătratele care susțin ideea."
+    ],
+    "startHereTitle": "Începe cu un model pe rând",
+    "startHereSteps": [
+      "Alege un tip de model, de exemplu furculițe, legături sau atacuri asupra pieselor neapărate.",
+      "Studiază forma și reconstruiește-o din memorie, nu doar dintr-o diagramă statică.",
+      "Numește pătratele și apărătorii care susțin modelul.",
+      "Joacă o rundă Memory Chess ca să fixezi o reamintire curată.",
+      "Analizează o partidă recentă și găsește unde a apărut sau a lipsit un model asemănător."
+    ],
+    "drillSectionTitle": "Exerciții simple de recunoaștere a modelelor",
+    "drillCards": [
+      {
+        "title": "Reconstruiește un model",
+        "description": "Reconstruiește din memorie un model de șah și numește piesele și pătratele-cheie.",
+        "duration": "5 minute",
+        "goal": "Să legi modelul de o memorie clară a tablei.",
+        "ctaLabel": "Reconstruiește modelul"
+      },
+      {
+        "title": "Repetă o familie",
+        "description": "Repetă mai multe exemple ale aceluiași model înainte să schimbi tipul.",
+        "duration": "5 minute",
+        "goal": "Să faci forma de pe tablă familiară.",
+        "ctaLabel": "Repetă o familie"
+      },
+      {
+        "title": "Găsește-l în partidele tale",
+        "description": "Parcurge o partidă recentă și găsește unde a apărut același model.",
+        "duration": "5 minute",
+        "goal": "Să legi lucrul pe modele de pozițiile reale.",
+        "ctaLabel": "Caută în partidele tale"
+      }
+    ],
+    "comparisonTitle": "Tactică aleatorie și recunoaștere reală a modelelor",
+    "comparisonSummary": "Modelele ajută atunci când le observi înainte să începi un calcul lung.",
+    "comparisonRows": [
+      {
+        "label": "Structura antrenamentului",
+        "struggling": "Sari continuu între modele fără legătură.",
+        "stronger": "Repeți un tip de model până devine familiar."
+      },
+      {
+        "label": "Memoria tablei",
+        "struggling": "Știi ideea, dar nu și pătratele care o susțin.",
+        "stronger": "Reții detaliile care fac modelul să funcționeze."
+      },
+      {
+        "label": "Partide reale",
+        "struggling": "Modelele rămân blocate în probleme.",
+        "stronger": "Le observi semnele timpurii într-o partidă în desfășurare."
+      }
+    ],
+    "mistakes": [
+      "Să înveți doar numele modelului fără să înțelegi forma.",
+      "Să schimbi prea des tipul de model.",
+      "Să ignori pătratele și apărătorii care susțin modelul.",
+      "Să sari peste analiza partidei după lucrul pe modele."
+    ],
+    "mistakesCallout": "Nu adăuga varietate prea repede. Repetă un tip de model până devine familiar.",
+    "planTitle": "Plan de modele, 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "10 minute",
+        "detail": "Alege un tip de model și reconstruiește mai multe exemple din memorie."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "12 minute",
+        "detail": "Adaugă la fiecare exemplu numele pătratelor și numărarea apărătorilor."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "12 minute",
+        "detail": "Joacă o rundă Memory Chess înainte de lucrul pe modele, ca tabla să fie mai clară."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 minute",
+        "detail": "Caută același model în partidele recente și notează unde a apărut sau aproape a apărut."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Ce este recunoașterea modelelor la șah?",
+        "answer": "Să vezi o formă familiară pe tablă și să-ți amintești repede ideea care funcționează de obicei acolo."
+      },
+      {
+        "question": "Cum antrenează începătorii recunoașterea modelelor?",
+        "answer": "Repetând un set mic de modele, reconstruind pozițiile din memorie și căutându-le în partide reale."
+      },
+      {
+        "question": "Sunt suficiente problemele pentru modele?",
+        "answer": "Nu întotdeauna. Ajută, dar repetarea aceluiași tip și analiza partidelor le fac cu adevărat utilizabile."
+      },
+      {
+        "question": "De ce să combini Memory Chess cu lucrul pe modele?",
+        "answer": "Pentru că recunoașterea unui model e mai ușoară când toată tabla rămâne clară în memorie."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Construiește un strat de reamintire mai solid pentru învățarea modelelor."
+      },
+      {
+        "reason": "Echilibrează lucrul pe modele cu un număr rezonabil de probleme."
+      },
+      {
+        "reason": "Folosește modelele studiate în partide reale."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Exerciții de calcul la șah pentru începători",
+    "h1": "Exerciții de calcul la șah pentru începători",
+    "description": "Exerciții simple pentru compararea mutărilor și urmărirea variantelor scurte fără să pierzi firul.",
+    "primaryKeyword": "exerciții de calcul la șah",
+    "secondaryKeywords": [
+      "calculul la șah pentru începători",
+      "calculul mutărilor în avans",
+      "exerciții de ținere a variantei",
+      "antrenarea mutărilor candidate",
+      "vizualizare și calcul"
+    ],
+    "painPoint": "Începi să calculezi și în scurt timp încurci mutările sau pierzi poziția.",
+    "ctaLabel": "Exersează un calcul curat",
+    "quickAnswer": "La început compară doar una sau două mutări posibile. Ține tabla clară în minte și verifică imediat.",
+    "keyTakeaways": [
+      "Două variante clare sunt mai bune decât cinci confuze.",
+      "O vizualizare clară duce la un calcul curat.",
+      "Verifică imediat după fiecare exercițiu."
+    ],
+    "whoThisIsFor": [
+      "Jucători care știu că ar trebui să calculeze, dar pierd repede varianta.",
+      "Începători care mută din intuiție în poziții ascuțite.",
+      "Oricine vrea să folosească antrenamentul de memorie în decizii reale."
+    ],
+    "timeToRead": "7 minute de citit",
+    "introParagraphs": [
+      "Calculul înseamnă pur și simplu să întrebi: «Dacă mut aici, ce se întâmplă?» Partea grea e să ții tabla clară.",
+      "Memoria tablei și vizualizarea fac calculul mai ușor. Antrenează-le împreună, nu separat."
+    ],
+    "startHereTitle": "Începe cu două mutări posibile",
+    "startHereSteps": [
+      "Alege cel mult două mutări candidate dintr-o poziție.",
+      "Imaginează-ți o variantă pe două semimutări și rezum-o într-o propoziție.",
+      "Joacă o rundă Memory Chess ca poziția de bază să rămână clară.",
+      "Revino la poziția inițială și compară calm cele două variante.",
+      "Verifică imediat și spune dacă greșeala a venit din imaginea tablei sau din ordinea mutărilor."
+    ],
+    "drillSectionTitle": "Exerciții simple de calcul",
+    "drillCards": [
+      {
+        "title": "Compară două mutări candidate",
+        "description": "Ține două mutări rezonabile și compară consecințele lor tactice scurte.",
+        "duration": "6 minute",
+        "goal": "Să compari mutări fără să reții prea multe.",
+        "ctaLabel": "Compară două variante"
+      },
+      {
+        "title": "Întâi reamintește, apoi calculează",
+        "description": "Fă o rundă scurtă de reamintire înainte de lucrul pe variante, pentru o tablă mai curată.",
+        "duration": "4 minute",
+        "goal": "Să ții tabla înainte să urmărești o secvență.",
+        "ctaLabel": "Reamintește înainte de calcul"
+      },
+      {
+        "title": "Varianta într-o propoziție",
+        "description": "Rezumă ramura într-o propoziție înainte de verificare.",
+        "duration": "4 minute",
+        "goal": "Să ții secvența clară și ușor de explicat.",
+        "ctaLabel": "Rezumă ramura"
+      }
+    ],
+    "comparisonTitle": "Calcul dezordonat și calcul curat",
+    "comparisonSummary": "Nu urmări încă variante lungi. Fă mai întâi exacte variantele scurte.",
+    "comparisonRows": [
+      {
+        "label": "Mutări candidate",
+        "struggling": "Iei în calcul prea multe mutări deodată.",
+        "stronger": "Compari câteva mutări rezonabile."
+      },
+      {
+        "label": "Imaginea tablei",
+        "struggling": "Poziția rezultată se estompează repede.",
+        "stronger": "Ții pătratele-cheie și apărătorii stabili în memorie."
+      },
+      {
+        "label": "Verificarea",
+        "struggling": "Nu știi de ce s-a prăbușit varianta.",
+        "stronger": "Vezi dacă greșeala a venit din memorie, din ordinea mutărilor sau din evaluare."
+      }
+    ],
+    "mistakes": [
+      "Să încerci să calculezi prea multe ramuri deodată.",
+      "Să sari peste alegerea candidatelor și să calculezi totul.",
+      "Să nu verifici imediat după variantă.",
+      "Să ignori o memorie slabă a tablei."
+    ],
+    "mistakesCallout": "Nu calcula încă departe. O variantă clară de două mutări e mai utilă decât una lungă și încâlcită.",
+    "planTitle": "Plan de calcul, 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "10 minute",
+        "detail": "Doar comparații între două mutări candidate, cu verificare imediată."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "12 minute",
+        "detail": "Adaugă o rundă Memory Chess înainte de lucrul pe calcul."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "12 minute",
+        "detail": "Rezumă fiecare ramură într-o propoziție înainte de verificare."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 minute",
+        "detail": "Du procedeul în partidele rapide: oprește-te în momentele ascuțite și ține puține candidate."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Cum își îmbunătățește un începător calculul?",
+        "answer": "Mai puține candidate, verificare rapidă și o vizualizare și o memorie mai bune sub lucrul pe variante."
+      },
+      {
+        "question": "Ar trebui să calculez mai departe?",
+        "answer": "Abia când adâncimea actuală e sigură. Acuratețea bate ambiția."
+      },
+      {
+        "question": "De ce mi se prăbușesc variantele?",
+        "answer": "Adesea pentru că imaginea tablei nu e destul de stabilă sau pentru că ții prea multe candidate deodată."
+      },
+      {
+        "question": "Ajută Memory Chess la calcul?",
+        "answer": "Da. O reamintire mai bună face mult mai ușoară ținerea pozițiilor care apar în timpul calculului."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Întărește stratul care ține variantele sub calcul."
+      },
+      {
+        "reason": "Vezi tabla mai clar înainte să lungești variantele."
+      },
+      {
+        "reason": "Folosește un proces de decizie mai simplu pentru un calcul mai curat."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Cum gândesc începătorii la șah",
+    "h1": "Cum gândesc începătorii la șah",
+    "description": "Folosește la fiecare mutare un proces simplu: verifică amenințările, compară opțiunile și gestionează timpul.",
+    "primaryKeyword": "cum să gândești la șah",
+    "secondaryKeywords": [
+      "proces de gândire pentru începători",
+      "la ce să te gândești la șah",
+      "luarea deciziilor la șah",
+      "listă de verificat înainte de mutare",
+      "proces de gândire simplu"
+    ],
+    "painPoint": "Muți prea repede sau gândești prea mult și tot rămâi nesigur.",
+    "ctaLabel": "Exersează un proces simplu de mutare",
+    "quickAnswer": "La fiecare mutare folosește același proces scurt: verifică amenințările adversarului, alege una până la trei mutări și asigură-te că alegerea e sigură.",
+    "keyTakeaways": [
+      "Un proces scurt e mai ușor de folosit decât o listă lungă.",
+      "Verificarea amenințărilor vine mereu înaintea alegerii mutării.",
+      "Alocă mai mult timp când poziția devine periculoasă."
+    ],
+    "whoThisIsFor": [
+      "Jucători care ghicesc în poziții liniștite și înțepenesc în cele ascuțite.",
+      "Începători care au nevoie de un proces clar la fiecare mutare.",
+      "Oricine vrea să decidă mai curat sub presiune."
+    ],
+    "timeToRead": "7 minute de citit",
+    "introParagraphs": [
+      "Începătorii se întreabă adesea la ce se gândesc jucătorii puternici. Răspunsul poate suna complicat, dar procesul tău trebuie să fie destul de scurt ca să-l folosești de fiecare dată.",
+      "Începe cu amenințările, alege câteva mutări posibile și verifică dacă alegerea finală e sigură."
+    ],
+    "startHereTitle": "Începe aici: procesul în patru pași",
+    "startHereSteps": [
+      "Verifică mai întâi cele mai puternice amenințări ale adversarului.",
+      "Numește una până la trei mutări candidate realiste.",
+      "Verifică dacă mutarea plănuită e sigură și nu lasă nicio piesă neapărată.",
+      "Întreabă dacă poziția e destul de liniștită ca să muți sau destul de ascuțită ca să încetinești.",
+      "După partidă, vezi unde s-a rupt procesul."
+    ],
+    "drillSectionTitle": "Exerciții pentru decizii mai calme",
+    "drillCards": [
+      {
+        "title": "Declanșatorul «întâi adversarul»",
+        "description": "Începe fiecare poziție de antrenament numind posibilitățile forțate ale adversarului.",
+        "duration": "3 minute",
+        "goal": "Să faci verificarea amenințărilor automată, nu opțională.",
+        "ctaLabel": "Începe cu amenințările"
+      },
+      {
+        "title": "Limita de trei candidate",
+        "description": "Nu-ți permite niciodată mai mult de trei mutări candidate într-o poziție de antrenament.",
+        "duration": "4 minute",
+        "goal": "Să reduci opțiunile în exces și ezitarea.",
+        "ctaLabel": "Limitează candidatele"
+      },
+      {
+        "title": "Verificarea siguranței de sine",
+        "description": "Uită-te la o mutare și întreabă dacă erai chiar sigur sau doar obosit de gândit.",
+        "duration": "4 minute",
+        "goal": "Să observi când muți din epuizare.",
+        "ctaLabel": "Verifică siguranța"
+      }
+    ],
+    "comparisonTitle": "Un proces simplu de mutare",
+    "comparisonSummary": "Cel mai bun proces de gândire e cel pe care îl poți folosi și cu ceasul pornit.",
+    "comparisonRows": [
+      {
+        "label": "Gestionarea amenințărilor",
+        "struggling": "Te gândești întâi la planul tău.",
+        "stronger": "Începi cu cele mai puternice amenințări ale adversarului."
+      },
+      {
+        "label": "Mutări candidate",
+        "struggling": "Sari între prea multe posibilități.",
+        "stronger": "Ții un set mic și realist de candidate."
+      },
+      {
+        "label": "Folosirea timpului",
+        "struggling": "Acorzi fiecărei mutări aceeași atenție.",
+        "stronger": "Încetinești când se schimbă tensiunea, tactica sau siguranța regelui."
+      }
+    ],
+    "mistakes": [
+      "Să folosești o listă lungă pe care nu o urmezi niciodată în partide.",
+      "Să te gândești la planul tău înainte să verifici amenințările.",
+      "Să lași lista de candidate să crească prea mult.",
+      "Să confunzi oboseala cu siguranța."
+    ],
+    "mistakesCallout": "Nu adăuga alte verificări. Folosește un proces scurt pe care îl poți repeta la fiecare mutare.",
+    "planTitle": "Reglarea procesului în 7 zile",
+    "planSteps": [
+      {
+        "label": "Ziua 1 până la 2",
+        "duration": "10 minute",
+        "detail": "Folosește doar declanșatorul «întâi adversarul» și limita de trei candidate."
+      },
+      {
+        "label": "Ziua 3 până la 4",
+        "duration": "12 minute",
+        "detail": "Adaugă o rundă scurtă de Memory Chess ca tabla să fie mai clară când decizi."
+      },
+      {
+        "label": "Ziua 5",
+        "duration": "12 minute",
+        "detail": "Vezi dacă ultima gafă a venit din verificarea amenințărilor sau din prea multe candidate."
+      },
+      {
+        "label": "Ziua 6 până la 7",
+        "duration": "15 minute",
+        "detail": "Folosește tot procesul în partide rapide și notează ce pas cedează sub presiune."
+      }
+    ],
+    "faq": [
+      {
+        "question": "La ce ar trebui să se gândească un începător la șah?",
+        "answer": "Începe cu amenințările adversarului, alege una până la trei mutări posibile și verifică dacă alegerea finală e sigură."
+      },
+      {
+        "question": "Câte mutări candidate să ții?",
+        "answer": "De obicei una până la trei. Mai multe îi copleșesc pe începători și scad calitatea deciziilor."
+      },
+      {
+        "question": "De ce înțepenesc deși știu procesul?",
+        "answer": "Adesea pentru că tabla nu e destul de clară sau pentru că prea multe candidate rămân deschise. Pozițiile mai simple și lucrul pe memorie ajută."
+      },
+      {
+        "question": "Poate un proces de gândire să prevină gafele?",
+        "answer": "Da, mai ales când impune verificarea amenințărilor înaintea alegerii mutării."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Folosește o listă anti-gafe mai explicită dacă tot pierzi material."
+      },
+      {
+        "reason": "Calculează mai curat ca să compari mutările posibile."
+      },
+      {
+        "reason": "Recunoaște pătratele mai repede în timpul procesului tău."
+      }
+    ]
+  }
+]

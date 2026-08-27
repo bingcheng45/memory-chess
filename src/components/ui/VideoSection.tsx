@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useAnalytics } from "@/lib/utils/analyticsTracker";
 
 export default function VideoSection() {
+  const t = useTranslations("home.video");
   const analytics = useAnalytics();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [videoStarted, setVideoStarted] = useState(false);
@@ -257,12 +259,11 @@ export default function VideoSection() {
   return (
     <div className="w-full max-w-4xl mx-auto py-12 px-2 sm:px-4 mt-4 mb-8 border-t border-bg-light">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-text-primary">
-        See How Memory Chess Works
+        {t("title")}
       </h2>
 
       <p className="text-text-secondary text-center max-w-2xl mx-auto mb-8 text-sm sm:text-base">
-        Watch a quick guide to studying the board, rebuilding the position, and
-        checking your score.
+        {t("subtitle")}
       </p>
 
       <div className="relative w-full pb-[56.25%] overflow-hidden rounded-xl shadow-lg border border-bg-light bg-bg-card">
@@ -271,7 +272,7 @@ export default function VideoSection() {
           ref={iframeRef}
           className="absolute top-0 left-0 w-full h-full"
           src="https://www.youtube.com/embed/p4xFVJTyJZg?enablejsapi=1&origin=https://thememorychess.com&playsinline=1&modestbranding=1&rel=0&controls=1"
-          title="How to Play Memory Chess"
+          title={t("iframeTitle")}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -280,7 +281,7 @@ export default function VideoSection() {
       </div>
 
       <div className="mt-6 text-center text-text-secondary text-xs italic">
-        Video: &ldquo;A New Way To Train Your Vision&rdquo; by Colin Galen
+        {t("credit")}
       </div>
     </div>
   );

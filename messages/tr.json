@@ -1,0 +1,490 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Yenilikler",
+      "contactUs": "Bize ulaşın",
+      "privacy": "Gizlilik"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Tüm hakları saklıdır.",
+      "followOnX": "Bizi Twitter/X’te takip edin",
+      "productHuntAlt": "Memory Chess - Satrançla uzamsal görselleştirmeni geliştir | Product Hunt"
+    },
+    "sound": {
+      "mute": "Sesi kapat",
+      "unmute": "Sesi aç",
+      "on": "Ses açık",
+      "off": "Ses kapalı",
+      "volume": "Ses düzeyi"
+    },
+    "language": {
+      "change": "Dili değiştir. Geçerli dil: {language}",
+      "current": "Dil: {language}",
+      "select": "Dil seçin"
+    },
+    "otherApps": {
+      "title": "Geliştiricinin diğer uygulamaları",
+      "visitWebsite": "Siteye git →",
+      "iconAlt": "{name} uygulama simgesi"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Memory Chess: ücretsiz satranç hafıza ve görselleştirme oyunu",
+      "description": "Bir satranç konumunu ezberleyin, hafızanızdan yeniden kurun ve anında puan alın. Tahta görüşü, görselleştirme ve mekânsal hafıza için ücretsiz oynayın.",
+      "socialTitle": "Memory Chess: ücretsiz satranç hafıza ve görselleştirme oyunu",
+      "socialDescription": "Bir konumu ezberleyin, yeniden kurun ve anında puan alın. Hesap gerekmeden ücretsiz oynayın.",
+      "twitterTitle": "Memory Chess: ücretsiz satranç hafıza oyunu",
+      "twitterDescription": "Bir konumu ezberleyin, yeniden kurun ve tahta görüşünüzü her turda geliştirin."
+    },
+    "hero": {
+      "title": "Satranç hafızanı ve görselleştirmeni geliştir",
+      "subtitle": "Bir satranç konumunu ezberle, hafızandan yeniden kur ve anında puan al. Tahta görüşünü her turda biraz daha güçlendir.",
+      "freeToPlay": "Ücretsiz, hesap açmaya gerek yok. Puanını <link>sıralama tablosunda</link> da karşılaştırabilirsin.",
+      "gamesPlayed": "Oynanan oyun: {count}"
+    },
+    "cta": {
+      "play": "Memory Chess oyna",
+      "leaderboard": "Sıralamayı gör",
+      "playFree": "Ücretsiz bir tur oyna"
+    },
+    "video": {
+      "title": "Memory Chess nasıl çalışıyor?",
+      "subtitle": "Tahtayı incelemek, konumu yeniden kurmak ve puanını değerlendirmek için kısa bir rehber.",
+      "iframeTitle": "Memory Chess nasıl oynanır",
+      "credit": "Video: “A New Way To Train Your Vision”, Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Nasıl çalışır",
+      "title": "Satranç hafızan için basit bir antrenman",
+      "subtitle": "Her tur üç basit adımdan oluşur: konumu incele, yeniden kur ve puanından ders çıkar.",
+      "steps": {
+        "observe": {
+          "title": "Gözlemle",
+          "description": "Her taşın nerede durduğuna dikkat et. Grupları, hatları ve işine yarayacak boş kareleri ara."
+        },
+        "recreate": {
+          "title": "Yeniden kur",
+          "description": "Tahta boşaldığında her taşı hatırladığın kareye geri koy."
+        },
+        "improve": {
+          "title": "Geliştir",
+          "description": "Puanına bak, neyi kaçırdığını gör ve daha çok taşla ya da daha az süreyle yeniden dene."
+        }
+      }
+    },
+    "board": {
+      "study": "Tahtayı incele",
+      "rebuild": "Hafızandan yeniden kur"
+    },
+    "learn": {
+      "eyebrow": "Öğrenme merkezi",
+      "title": "Sade satranç rehberleri",
+      "description": "Tahta görüşünü, görselleştirmeni, hesaplamanı ve hafızanı geliştirmenin pratik yollarını öğren. Her rehberde hemen deneyebileceğin alıştırmalar var.",
+      "browseCta": "Satranç rehberlerine göz at",
+      "beginnerCta": "Yeni başlayanlar rehberiyle başla"
+    },
+    "faq": {
+      "title": "Memory Chess hakkında sorular",
+      "items": [
+        {
+          "question": "Memory Chess nedir?",
+          "answer": "Memory Chess, ücretsiz bir tahta hafızası oyunudur. Bir satranç konumunu kısa süre incelersin, hafızandan yeniden kurarsın ve doğru yerleştirdiğin taş sayısına göre puan alırsın."
+        },
+        {
+          "question": "Nasıl oynanır?",
+          "answer": "Kaç taş istediğini ve tahtayı ne kadar süre inceleyeceğini seç. Konum kaybolduğunda taşları hatırladığın karelere geri yerleştir. Cevabını gönderip isabetini ve süreni gör."
+        },
+        {
+          "question": "Yeni başlayanlar Memory Chess oynayabilir mi?",
+          "answer": "Evet. Açılış bilmene ya da hamle hesaplamana gerek yok. Az taş ve daha uzun inceleme süresiyle başla, hazır hissettiğinde zorluğu artır."
+        },
+        {
+          "question": "Satranç görselleştirmesini nasıl geliştirir?",
+          "answer": "Her tur, bir konumu zihninde tutmak ve taşların yerini hatırlamak üzerine odaklı bir alıştırmadır. Puanın hangi konumların kolay geldiğini ve nerede daha çok çalışman gerektiğini gösterir."
+        },
+        {
+          "question": "Tahtayı ezberlerken neye bakmalıyım?",
+          "answer": "Şahlar, vezirler, köşeler ve kenar kareleri gibi kolay referans noktalarıyla başla. Sonra her taşı tek tek hatırlamaya çalışmak yerine grupları, hatları, çaprazları ve boş alanları ara."
+        },
+        {
+          "question": "Oyunu nasıl zorlaştırabilirim?",
+          "answer": "Daha çok taş ekle, inceleme süresini kısalt ya da tahta koordinatlarını gizle. Hangisinin daha çok fark yarattığını görmek için her seferinde tek bir ayarı değiştir."
+        },
+        {
+          "question": "Memory Chess ücretsiz mi?",
+          "answer": "Evet. Hesap açmadan ücretsiz oynayabilirsin. Sıralama tablosuna isim eklemek isteğe bağlı."
+        },
+        {
+          "question": "Ne sıklıkla çalışmalıyım?",
+          "answer": "Düzenli aralıklarla birkaç odaklı tur iyi bir başlangıçtır. Her konumu dikkatle inceleyebilecek kadar kısa seanslar tut."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Memory Chess’i çevrimiçi oyna",
+      "description": "Tahta görselleştirmeni, hatırlamanı ve satranç örüntülerini tanımanı süreli görevlerle geliştirmek için Memory Chess’i çevrimiçi oyna.",
+      "socialTitle": "Memory Chess’i çevrimiçi oyna",
+      "socialDescription": "Satranç görselleştirmeni ve hafızanı etkileşimli, süreli görevlerle geliştir."
+    },
+    "hud": {
+      "time": "Süre",
+      "submit": "Gönder",
+      "loading": "Oyun yükleniyor...",
+      "status": "Oyun durumu",
+      "controls": "Oyun kontrolleri",
+      "complete": "Oyun tamamlandı",
+      "flash": "BİTTİ!"
+    },
+    "config": {
+      "title": "Oyun ayarları",
+      "presetsLabel": "Zorluk seviyeleri",
+      "presetSummary": "{pieces} taş / {seconds} sn",
+      "customLabel": "Özel ayarlar",
+      "pieceCount": "Taş sayısı",
+      "memorizeTime": "Ezberleme süresi",
+      "seconds": "{seconds} sn",
+      "start": "Antrenmana başla",
+      "lastGame": "Son oyun: {time} sn çözüm süresi, %{accuracy} isabet"
+    },
+    "presets": {
+      "easy": {
+        "label": "Kolay",
+        "description": "Sadece şahlar — başlangıç için ideal"
+      },
+      "medium": {
+        "label": "Orta",
+        "description": "Birkaç taş ve ezberlemek için rahat bir süre"
+      },
+      "hard": {
+        "label": "Zor",
+        "description": "Daha çok taş, daha az ezberleme süresi"
+      },
+      "grandmaster": {
+        "label": "Büyükusta",
+        "description": "Fotografik hafızası olan satranç ustaları için"
+      }
+    },
+    "memorize": {
+      "title": "Konumu ezberle",
+      "skip": "Atla",
+      "hint": "Süre bittiğinde tahta boşalacak"
+    },
+    "place": {
+      "title": "Taşları yerleştir",
+      "subtitle": "Tür ve renk seç",
+      "whitePieces": "Beyaz taşlar",
+      "blackPieces": "Siyah taşlar",
+      "selectWhite": "Beyaz taşları seç",
+      "selectBlack": "Siyah taşları seç",
+      "hint": "Taş eklemek ya da kaldırmak için bir kareye dokun"
+    },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "beyaz piyon",
+          "knight": "beyaz at",
+          "bishop": "beyaz fil",
+          "rook": "beyaz kale",
+          "queen": "beyaz vezir",
+          "king": "beyaz şah"
+        },
+        "black": {
+          "pawn": "siyah piyon",
+          "knight": "siyah at",
+          "bishop": "siyah fil",
+          "rook": "siyah kale",
+          "queen": "siyah vezir",
+          "king": "siyah şah"
+        }
+      },
+      "feedback": {
+        "correct": "doğru",
+        "incorrect": "yanlış",
+        "missing": "eksik"
+      },
+      "squareWithPiece": "{square}: {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Seç: {piece}"
+    },
+    "stats": {
+      "title": "İstatistikler",
+      "currentTime": "Geçen süre",
+      "piecesToMemorize": "Ezberlenecek taş",
+      "averageAccuracy": "Ortalama isabet"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Kusursuz skor! ✨",
+        "excellent": "Muhteşem hafıza!",
+        "great": "Harika iş!",
+        "wellDone": "Aferin!",
+        "goodEffort": "İyi deneme!",
+        "keepPracticing": "Çalışmaya devam!"
+      },
+      "accuracy": "İsabet",
+      "piecesCorrectCaption": "taş doğru",
+      "piecesCorrect": "Doğru taş",
+      "memorizationTime": "Ezberleme süresi",
+      "solutionTime": "Çözüm süresi",
+      "recallSpeed": "Hatırlama hızı",
+      "piecesPerSecond": "{value} taş/sn",
+      "actions": "Sonuç işlemleri",
+      "tryAgain": "Tekrar dene",
+      "newGame": "Yeni oyun",
+      "submitToLeaderboard": "Sıralamaya gönder",
+      "viewLeaderboard": "Sıralamayı gör",
+      "dialog": {
+        "submitTitle": "Sıralamaya gönder",
+        "submitDescription": "Sıralamada görünecek adını yaz.",
+        "successTitle": "Skor gönderildi!",
+        "successDescription": "Skorun sıralamaya başarıyla eklendi.",
+        "playerName": "Oyuncu adı",
+        "playerNamePlaceholder": "Adını yaz",
+        "error": "Hata: {message}",
+        "submitFailed": "Skor gönderilemedi",
+        "cancel": "Vazgeç",
+        "submit": "Skoru gönder",
+        "submitting": "Gönderiliyor...",
+        "thanks": "Katıldığın için teşekkürler, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Konumunu incele",
+      "subtitle": "Ezberlediğinle gönderdiğini karşılaştır.",
+      "unavailable": "Tahta karşılaştırması kullanılamıyor.",
+      "ariaLabel": "Tahta karşılaştırması",
+      "correct": "Doğru",
+      "incorrect": "Yanlış",
+      "missed": "Atlanan",
+      "originalBoard": "Hatırlanacak konum",
+      "submittedBoard": "Gönderdiğin konum"
+    },
+    "feedback": {
+      "title": "Memory Chess oynadığın için teşekkürler!",
+      "description": "Deneyimin nasıldı? Geri bildirimin her antrenmanı daha iyi hâle getiriyor.",
+      "prompt": "Oyuna kaç puan verirsin?",
+      "placeholder": "Neyin iyi gittiğini ya da neyi değiştireceğini yaz...",
+      "notNow": "Şimdi değil",
+      "sentTitle": "Gelişmemize yardım ettiğin için teşekkürler",
+      "sentBody": "Görüşün bize ulaştı.",
+      "done": "Tamam",
+      "commentLabel": "Oynarken neler hissettin, neyi daha iyi yapardık?",
+      "commentOptional": "(isteğe bağlı)",
+      "starRating": "{count, plural, one {# yıldız} other {# yıldız}}",
+      "chooseRating": "Lütfen yıldızla bir puan seç.",
+      "sendFailed": "Görüşünü gönderemedik. Tekrar dene ya da “Şimdi değil”i seç.",
+      "send": "Görüşünü gönder",
+      "sending": "Gönderiliyor..."
+    }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess sıralaması",
+      "description": "Memory Chess’in en iyi oyuncularını zorluk, isabet, ezberleme hızı ve çözüm süresine göre gör.",
+      "socialTitle": "Memory Chess sıralaması",
+      "socialDescription": "Oyuncuların hafıza ve görselleştirme görevlerinde nasıl sıralandığını gör."
+    },
+    "title": "Memory Chess sıralaması",
+    "subtitle": "Tahtayı görselleştirerek öğren. Zihinsel hassasiyet ve hızda dünyanın en iyileriyle yarış.",
+    "claimRank": "Sıradaki yerini al",
+    "footnote": "Yalnızca ilk 200 gösteriliyor. İsabet, ezberleme süresi ve çözüm hızına göre sıralanır.",
+    "loading": "Sıralama yükleniyor…",
+    "unavailableTitle": "Sıralama geçici olarak kullanılamıyor",
+    "unavailableBody": "Sıralama servisi şu anda çevrimdışı. Oyun verilerin yerel olarak kaydedilmeye devam ediyor.",
+    "unavailableNote": "Kesintisiz oynamaya devam edebilirsin.",
+    "retryLater": "Lütfen daha sonra tekrar dene",
+    "errorLoading": "Sıralama yüklenirken hata oluştu: {error}",
+    "errors": {
+      "timeout": "İstek zaman aşımına uğradı. Lütfen daha sonra tekrar dene.",
+      "parse": "Sunucu yanıtı çözümlenemedi. Lütfen daha sonra tekrar dene.",
+      "status": "İstek {status} durumuyla başarısız oldu",
+      "unexpected": "Beklenmeyen bir hata oluştu"
+    },
+    "emptyTitle": "İlk şampiyon sen ol!",
+    "emptyBody": "Bu sıralamada henüz kayıt yok",
+    "emptyCta": "Hafızanı sına ve zirvedeki yerini al! Hemen bir oyun oyna ve adını Memory Chess tarihine yazdır.",
+    "startPlaying": "Oynamaya başla",
+    "you": "Sen",
+    "columns": {
+      "rank": "Sıra",
+      "player": "Oyuncu",
+      "pieces": "Taş",
+      "memorizeTime": "Ezberleme süresi",
+      "solutionTime": "Çözüm süresi",
+      "date": "Tarih"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess ayarları",
+      "description": "Memory Chess oyununun ayarlarını ve tercihlerini özelleştir."
+    },
+    "difficulty": "Zorluk",
+    "memorizationTime": "Ezberleme süresi: {seconds} saniye",
+    "seconds": "{seconds} sn",
+    "showCoordinates": "Tahta koordinatlarını göster",
+    "home": "Ana sayfa",
+    "playGame": "Oyna"
+  },
+  "contact": {
+    "meta": {
+      "title": "Memory Chess ile iletişim",
+      "description": "Görüş, özellik önerisi veya iş birliği için Memory Chess ile iletişime geç.",
+      "socialTitle": "Memory Chess ile iletişim",
+      "socialDescription": "Memory Chess’e görüş, özellik önerisi ve iş birliği talebi gönder."
+    },
+    "title": "Bize ulaşın",
+    "sentTitle": "Mesaj gönderildi!",
+    "sentBody": "Yazdığın için teşekkürler. Kısa süre içinde döneceğiz.",
+    "redirecting": "Ana sayfaya yönlendiriliyor…",
+    "name": "Ad",
+    "namePlaceholder": "Adın",
+    "email": "E-posta",
+    "emailPlaceholder": "adresin@ornek.com",
+    "inquiryType": "Konu türü",
+    "inquiryPlaceholder": "Konu türünü seç",
+    "message": "Mesaj",
+    "messagePlaceholder": "Mesajını buraya yaz…",
+    "send": "Mesajı gönder",
+    "sending": "Gönderiliyor…",
+    "types": {
+      "feedback": "Görüş",
+      "featureRequest": "Özellik önerisi",
+      "general": "Genel soru",
+      "business": "İş fırsatı"
+    },
+    "validation": {
+      "nameTooShort": "Ad en az 2 karakter olmalı.",
+      "emailInvalid": "Geçerli bir e-posta adresi gir.",
+      "typeRequired": "Bir konu türü seç.",
+      "messageTooShort": "Mesaj en az 10 karakter olmalı."
+    },
+    "errors": {
+      "submitFailed": "Form gönderilemedi{details}",
+      "generic": "Form gönderilirken bir hata oluştu. Lütfen tekrar dene."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Satrancı adım adım öğren",
+      "description": "Yeni başlayanlar için pratik satranç rehberleri: tahta görüşü, görselleştirme, hafıza, hesaplama, hata önleme ve günlük çalışma."
+    },
+    "title": "Satrancı adım adım öğren",
+    "startBeginner": "Yeni başlayanlar rehberini aç",
+    "playCta": "Memory Chess oyna",
+    "startHere": "Buradan başla",
+    "pickNext": "Sonraki adımını seç",
+    "chooseGoal": "Bir hedef seç",
+    "readRecallPlay": "Oku, hatırla, oyna",
+    "turnIdea": "Bir fikri pratiğe dönüştür",
+    "startRound": "Bir hafıza turu başlat",
+    "eyebrow": "Memory Chess ile öğrenin",
+    "heroDescription": "Neyi geliştirmek istediğinizi seçin. Her rehber işe yarar bir fikri sade bir dille anlatır, ardından kısa bir alıştırma verir.",
+    "pickNextDescription": "Şu anki oyununuza en çok benzeyen cümleyi seçin. Kusursuz bir sıra yok; istediğiniz zaman yol değiştirebilirsiniz.",
+    "allGuides": "{count} rehberin tamamı",
+    "chooseGoalDescription": "Her yol basit bir ilk alıştırmadan başlayıp daha eksiksiz bir çalışma alışkanlığına ilerler.",
+    "guideNumber": "Rehber {number}",
+    "turnIdeaDescription": "Bir rehber okuyun, fikir tazeyken kısa bir tur oynayın, sonra neyi kolay hatırladığınızı ve neyin bir deneme daha gerektirdiğini fark edin.",
+    "paths": {
+      "newToChess": {
+        "label": "Satranca yeni başlayan",
+        "title": "Basit bir gelişim planı kur",
+        "description": "Temellerle başla, sonra işine yarayan bir fikri her gün tekrarlayabileceğin bir alışkanlığa dönüştür."
+      },
+      "missingThreats": {
+        "label": "Basit tehditleri kaçırıyorsun",
+        "title": "Tüm tahtayı tarama alışkanlığı kazan",
+        "description": "Hamleden önce korumasız taşları, saldırıları ve tehlikeyi fark etmek için kısa bir kontrol rutini kullan."
+      },
+      "losingPosition": {
+        "label": "Konumu zihninde kaybediyorsun",
+        "title": "Görselleştirmeni ve hatırlamanı güçlendir",
+        "description": "Daha uzun hamle dizileri eklemeden önce tahtanın küçük ama doğru bir görüntüsünü zihninde tutmayı çalış."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Yenilikler",
+      "description": "Memory Chess’in en yeni özelliklerini, iyileştirmelerini ve düzeltmelerini resmi değişiklik günlüğünde gör.",
+      "socialTitle": "Memory Chess yenilikleri",
+      "socialDescription": "Memory Chess’in en yeni özelliklerini, iyileştirmelerini ve düzeltmelerini gör."
+    },
+    "title": "Yenilikler",
+    "latest": "En son",
+    "bannerCta": "Yenilikleri gör",
+    "bannerLabel": "Memory Chess güncellemesi",
+    "eyebrow": "Güncellemeler",
+    "changesIn": "{version} sürümündeki değişiklikler"
+  },
+  "learnArticle": {
+    "faqLabel": "Sık sorulan sorular",
+    "whatChangesTitle": "Önce ne gelişir",
+    "trackThisWeekTitle": "Bu hafta neyi takip etmeli",
+    "trackThisWeekBody": "Tek bir basit ölçüt seç: oyun başına hata sayısı, doğru hatırlanan konum sayısı, ya da kaç hamleyi zihninde net görebildiğin.",
+    "startHereSummary": "Bu adımları bugün deneyebilirsin.",
+    "drillsSummary": "Her alıştırma, öğrendiğini doğrudan Memory Chess’te uygulamanı sağlar.",
+    "comparisonColumns": {
+      "situation": "Durum",
+      "before": "Çalışmadan önce",
+      "after": "Çalışmadan sonra"
+    },
+    "mistakesTitle": "Kaçınılması gereken yaygın hatalar",
+    "whatToDoInsteadTitle": "Bunun yerine ne yapmalı",
+    "planSummary": "Çalışmayı zorlaştırmadan ya da uzatmadan önce bu adımları tamamla.",
+    "breadcrumbHome": "Ana sayfa",
+    "breadcrumbLearn": "Öğren",
+    "eyebrow": "Sade satranç rehberi",
+    "updated": "{date} tarihinde güncellendi",
+    "reviewedBy": "{name} tarafından incelendi",
+    "startHere": "Buradan başlayın",
+    "whatYouWillLearn": "Neler öğreneceksiniz",
+    "whoThisIsFor": "Kimler için",
+    "browseAllGuides": "Tüm rehberlere göz atın",
+    "onThisPage": "Bu sayfada",
+    "aimFor": "Hedef:",
+    "tryItNow": "Hemen deneyin",
+    "tryItNowTitle": "Okumaya devam etmeden önce kısa bir tur oynayın.",
+    "tryItNowBody": "Adımları tazeyken uygulayın, sonra fark ettiğiniz somut bir şeyle geri dönün.",
+    "startTrainingRound": "Antrenman turu başlat",
+    "keepLearning": "Öğrenmeye devam edin",
+    "whatToLearnNext": "Sırada ne öğrenmeli",
+    "whatToLearnNextBody": "Çözmek istediğiniz bir sonraki soruna en uygun rehberi seçin.",
+    "readThisGuide": "Bu rehberi oku",
+    "putItOnTheBoard": "Tahtaya taşıyın",
+    "practiceTitle": "Memory Chess ile çalışın",
+    "practiceBody": "Az önce öğrendiğinizi pekiştirmek için kısa bir alıştırma yapın.",
+    "goalLabel": "Amaç:",
+    "commonQuestions": "Sık sorulan sorular",
+    "editorialNotes": "Editör notları",
+    "aboutThisGuide": "Bu rehber hakkında",
+    "aboutBody": "Memory Chess rehberleri yeni başlayanlar ve gelişmekte olan oyuncular için yazılır. Her rehber size doğrudan bir yanıt, uygulanabilir adımlar ve ilerlemeyi izlemenin işe yarar bir yolunu sunar.",
+    "publishedLine": "{published} tarihinde yayımlandı. Son olarak {updated} tarihinde {reviewer} tarafından gözden geçirildi ve güncellendi.",
+    "referenceLinks": "Kaynak bağlantıları",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Hataları azalt",
+        "description": "Tehditleri daha hızlı kontrol etme alışkanlığı kazan ve basit konumlarda taş vermeyi bırak.",
+        "accent": "Tehdit kontrolü"
+      },
+      "visualization": {
+        "label": "Görselleştirmeyi geliştir",
+        "description": "Tahtayı zihninde daha uzun tut, böylece hesaplama daha sakin ve daha net olur.",
+        "accent": "Zihinde tahta"
+      },
+      "memory": {
+        "label": "Hafızayı çalıştır",
+        "description": "Konumları hatırlamanı ve örüntüleri akılda tutmanı geliştir; antrenmanı teori ödevine çevirmeden.",
+        "accent": "Hatırlama ve akılda tutma"
+      },
+      "routine": {
+        "label": "Günlük rutin kur",
+        "description": "Alıştırma, oyun ve gözden geçirmeyi birleştiren kısa bir plan kullan.",
+        "accent": "Süreklilik"
+      }
+    }
+  }
+}

@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Yeni başlayanlar için satrançta nasıl gelişilir",
+    "h1": "Yeni başlayanlar için satrançta nasıl gelişilir",
+    "description": "Tahtayı daha iyi görmek, konumları hatırlamak ve daha güvenli hamleler yapmak için basit bir plan izleyin.",
+    "primaryKeyword": "satrançta nasıl gelişilir",
+    "secondaryKeywords": [
+      "satranç gelişim planı",
+      "yeni başlayanlar için satranç çalışması",
+      "başlangıç satranç rutini",
+      "satrançta hataları azaltmak",
+      "tahta görüşü"
+    ],
+    "painPoint": "Neyi çalışacağınızdan ya da nereden başlayacağınızdan emin değilsiniz.",
+    "ctaLabel": "Başlangıç turuna başla",
+    "quickAnswer": "Kısa bir günlük rutin kullanın: tahta görüşü çalışın, hafızanızı geliştirin, bir oyun oynayın ve bir hatayı gözden geçirin. Günde 20-30 dakika tekrarlayın.",
+    "keyTakeaways": [
+      "Tahtayı görmek ve hatırlamak, çok sayıda açılış ezberlemekten önemlidir.",
+      "Kısa ve günlük çalışma, seyrek uzun seanslardan daha iyi işler.",
+      "Sadece puanınızı değil, hatalarınızı ve hatırlama doğruluğunuzu takip edin."
+    ],
+    "whoThisIsFor": [
+      "Kuralları bilen ama hâlâ taş veren oyuncular.",
+      "Bulmacalarda iyi olup oyunlarda zorlanan yeni başlayanlar.",
+      "Önce neyi çalışacağını bilmeyen herkes."
+    ],
+    "timeToRead": "9 dakikalık okuma",
+    "introParagraphs": [
+      "Yeni başlayanların çoğunun daha fazla açılışa, videoya ya da kursa ihtiyacı yoktur. Tahtayı takip etmeleri ve oynamadan önce hamlenin güvenli olduğunu kontrol etmeleri gerekir.",
+      "Memory Chess her iki beceriyi de çalışmanıza yardım eder. Daha iyi tahta hatırlama; şahları, almaları ve tehditleri fark etmeyi kolaylaştırır."
+    ],
+    "startHereTitle": "Bu başlangıç rutiniyle başlayın",
+    "startHereSteps": [
+      "3 dakikanızı tahtayı tarayıp saldırılan, korunan ve korumasız taşları adlandırmaya ayırın.",
+      "8 taş ve 10 saniyelik bakma süresiyle bir Memory Chess turu yapın.",
+      "İki kısa taktik konum çalışın; hamleyi seçmeden önce şahları, almaları ve tehditleri sesli söyleyin.",
+      "Bir hızlı oyun oynayın. Her büyük hatayı görüş, hafıza ya da zaman sıkıntısı olarak işaretleyin.",
+      "Yarın tekrar çalışacağınız tek bir şeyi not edin."
+    ],
+    "drillSectionTitle": "Daha iyi oyunlar için basit çalışmalar",
+    "drillCards": [
+      {
+        "title": "10 saniyelik tahta taraması",
+        "description": "Kolay bir kurulum kullanın ve süre bitmeden korumasız her taşı bulun.",
+        "duration": "3 dakika",
+        "goal": "Her hamleden önce bir güvenlik kontrolü oluşturmak.",
+        "ctaLabel": "Tarama turuna başla"
+      },
+      {
+        "title": "Aynı konumu tekrar hatırlama",
+        "description": "Aynı konumu iki kez oynayarak bir hafıza hatasını bulup düzeltin.",
+        "duration": "5 dakika",
+        "goal": "Unuttuğunuz taşı ya da kareyi tam olarak bulmak.",
+        "ctaLabel": "Tekrar hatırlamayı çalış"
+      },
+      {
+        "title": "Oyundan çalışmaya aktarım",
+        "description": "Hızlı bir oyundan sonra, hata yaptığınız konumu incelemeden önce zihninizde canlandırın.",
+        "duration": "7 dakika",
+        "goal": "Çalışmanızı gerçek hatalarınızla yönlendirmek.",
+        "ctaLabel": "Aktarım çalışmasına başla"
+      }
+    ],
+    "comparisonTitle": "Daha iyi bir başlangıç oyunu nasıl görünür",
+    "comparisonSummary": "Beş hamle ileriyi görmeniz gerekmez. Önce mevcut tahtayı net görün ve oynamadan önce bir an durun.",
+    "comparisonRows": [
+      {
+        "label": "Hamleden önce",
+        "struggling": "Sadece kendi fikrinize bakıyorsunuz.",
+        "stronger": "Önce rakibin tehditlerini kontrol ediyorsunuz."
+      },
+      {
+        "label": "Taktik sırasında",
+        "struggling": "Varyantınız bir değişimden sonra kayboluyor.",
+        "stronger": "İki olası hamleyi karşılaştırırken kilit kareleri canlandırabiliyorsunuz."
+      },
+      {
+        "label": "Yenilgiden sonra",
+        "struggling": "Hemen yeni bir oyun başlatıyorsunuz.",
+        "stronger": "Hatayı adlandırıp yarın onu çalışıyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Bir rutini iki hafta tekrarlamak yerine rastgele içerikler arasında gezinmek.",
+      "Tahta görüşü oturmadan açılış çalışmak.",
+      "Kısa oyun sonu notları almadan çok fazla oyun oynamak.",
+      "Hafıza çalışmasını gerçek satrançtan ayrı görmek."
+    ],
+    "mistakesCallout": "İleri seviye çalışmaya koşmayın. Yeni başlayanların çoğu açılış varyantını unuttuğu için değil, tek hamlelik tehditleri kaçırdığı için kaybeder.",
+    "planTitle": "30 günlük başlangıç planı",
+    "planSteps": [
+      {
+        "label": "1. hafta",
+        "duration": "günde 20 dakika",
+        "detail": "Aynı tahta taramasını kullanın ve her oyun seansından önce kısa bir Memory Chess turu yapın."
+      },
+      {
+        "label": "2. hafta",
+        "duration": "günde 25 dakika",
+        "detail": "İkinci bir hatırlama turu ekleyin ve her hatanın görüş, hatırlama ya da panikten mi geldiğini not edin."
+      },
+      {
+        "label": "3. hafta",
+        "duration": "günde 25-30 dakika",
+        "detail": "Aynı çalışmaları kullanın ama ezberleme süresini kısaltın ki hatırlama baskı altında da net olsun."
+      },
+      {
+        "label": "4. hafta",
+        "duration": "günde 30 dakika",
+        "detail": "Oyun başına hataların azalıp azalmadığını inceleyin ve yalnızca en iyi aktarılan ayarları koruyun."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Yeni başlayanlar günde kaç dakika çalışmalı?",
+        "answer": "Tahta görüşü, hafıza ve bir gerçek konumu birleştirdiğinizde odaklı 20-30 dakika yeterlidir."
+      },
+      {
+        "question": "Bulmaca becerim neden oyunlara aktarılmıyor?",
+        "answer": "Bulmacalar taktik zaten varken başlar. Oyunda önce tahtadaki değişimi fark etmeniz gerekir; bu yüzden hatırlama ve güvenlik kontrolleri çok daha önemlidir."
+      },
+      {
+        "question": "Erken açılış ezberlemeli miyim?",
+        "answer": "Başta yalnızca temel ilkeleri. Yeni başlayanların çoğu tehditleri daha erken görmekten ve konumları daha net tutmaktan daha çok kazanır."
+      },
+      {
+        "question": "İlerlemeyi ölçmenin en hızlı yolu nedir?",
+        "answer": "Oyun başına hataları ve Memory Chess hatırlama doğruluğunu takip edin. Bunlar genelde puandan önce hareket eder."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Asıl sorununuz taş vermekse bunu kullanın."
+      },
+      {
+        "reason": "Hamleden önce tehdit kontrolü alışkanlığını derinleştirin."
+      },
+      {
+        "reason": "Taktiklerin dağılmaması için daha güçlü bir zihinsel tahta kurun."
+      },
+      {
+        "reason": "Taşların yerini unutuyorsanız doğrudan hatırlamayı çalışın."
+      },
+      {
+        "reason": "Daha basit bir günlük yapı istiyorsanız daha kısa bir rutin izleyin."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Yeni başlayanlar için satranç görselleştirme alıştırmaları",
+    "h1": "Her gün yapılabilecek satranç görselleştirme alıştırmaları",
+    "description": "Tahtayı hatırlamak ve hamleleri daha net canlandırmak için basit görselleştirme alıştırmaları deneyin.",
+    "primaryKeyword": "satranç görselleştirme alıştırmaları",
+    "secondaryKeywords": [
+      "satrançta görselleştirme çalışması",
+      "hamleleri önceden hesaplamak",
+      "tahta görselleştirme",
+      "körleme hazırlığı",
+      "zihinsel satranç pratiği"
+    ],
+    "painPoint": "Sonraki hamleleri canlandırmaya çalışırken taşların izini kaybediyorsunuz.",
+    "ctaLabel": "Görselleştirmeyi çalış",
+    "quickAnswer": "Önce hiçbir şeyi oynatmadan bir tahtayı hatırlayın. Sonra tek tek hamleleri canlandırın. Tam bir körleme oyun oynamanız gerekmez.",
+    "keyTakeaways": [
+      "Kısa ve günlük çalışma, seyrek uzun seanslardan daha iyi işler.",
+      "Her denemeden sonra zihnindeki tahtayı kontrol edin.",
+      "Daha uzun varyantlara geçmeden önce tek hamleyi net canlandırın."
+    ],
+    "whoThisIsFor": [
+      "Bir değişimden sonra varyantı kaybeden oyuncular.",
+      "Tahtaya bakamayınca zorlanan yeni başlayanlar.",
+      "Körleme satranca adım adım yaklaşmak isteyen herkes."
+    ],
+    "timeToRead": "8 dakikalık okuma",
+    "introParagraphs": [
+      "Görselleştirme, bir hamleden sonra tahtanın nasıl değiştiğini canlandırmaktır. Yeni başlayan için amaç, taşların izini kaybetmeden iki olası hamleyi karşılaştırabilmektir.",
+      "Memory Chess hangi taşları ya da kareleri unuttuğunuzu gösterir. Sonra aynı tür konumu tekrar çalışabilirsiniz."
+    ],
+    "startHereTitle": "Bu görselleştirme adımlarıyla başlayın",
+    "startHereSteps": [
+      "Sabit bir tahtadaki her taşı ve kareyi 60 saniye boyunca adlandırın.",
+      "Gözlerinizi kapatın ve kontrol etmeden önce tahtayı zihninizde yeniden kurun.",
+      "Taşlara dokunmadan her iki taraf için birer kurallı hamle canlandırın.",
+      "Orta düzeyde taş sayısı ve sıkı süreyle bir Memory Chess turu yapın.",
+      "Konumu doğrulayın ve neyi unuttuğunuzu bilmeden tekrar etmeyin."
+    ],
+    "drillSectionTitle": "Kolay görselleştirme çalışmaları",
+    "drillCards": [
+      {
+        "title": "Sabit tahta anlık görüntüsü",
+        "description": "Tahtayı hatırlayın, sonra her taşı doğru kareye yerleştirin.",
+        "duration": "4 dakika",
+        "goal": "Hamle canlandırmaya başlamadan tahtayı hatırlamak.",
+        "ctaLabel": "Anlık görüntüye başla"
+      },
+      {
+        "title": "Her taraf için bir hamle",
+        "description": "Tahtayı hatırlayın, her taraf için bir hamle canlandırın, sonra kontrol edin.",
+        "duration": "5 dakika",
+        "goal": "Tahtayı zihinde güncellemeyi öğrenmek.",
+        "ctaLabel": "Güncellemeyi çalış"
+      },
+      {
+        "title": "Baskı altında hatırlama",
+        "description": "Hatırlamanız doğrulaştığında tahtaya bakma süresini azaltın.",
+        "duration": "5 dakika",
+        "goal": "Hızlı oyunlarda net hatırlamayı kullanmak.",
+        "ctaLabel": "Baskı ekle"
+      }
+    ],
+    "comparisonTitle": "Zayıf görselleştirme neye benzer",
+    "comparisonSummary": "Hesaplama sorunu gibi hissettirir ama çoğu zaman tahta görüntüsü çok çabuk soluyordur.",
+    "comparisonRows": [
+      {
+        "label": "Aday hamleler",
+        "struggling": "Bir hamleyi söyleyebiliyorsunuz ama ortaya çıkan tahtayı net göremiyorsunuz.",
+        "stronger": "Oynamadan önce iki olası konumu karşılaştırabiliyorsunuz."
+      },
+      {
+        "label": "Taktik karmaşa",
+        "struggling": "Değişimlerden sonra zihniniz boşalıyor.",
+        "stronger": "Sakin karar verecek kadar uzun süre önemli kareleri ve tehditleri tutuyorsunuz."
+      },
+      {
+        "label": "Çalışma geri bildirimi",
+        "struggling": "Tam olarak hangi kareyi unuttuğunuzu bilmiyorsunuz.",
+        "stronger": "Hatanın bir dikeyden, yataydan ya da eksik korumadan gelip gelmediğini yakalıyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Sabit hatırlama oturmadan derin körleme hesap denemek.",
+      "Her hesap denemesinde taşları fiziksel olarak oynatmak.",
+      "Kısa bir günlük blok yerine haftada bir çalışmak.",
+      "Canlandırdığınız tahtanın gerçekle uyuşup uyuşmadığını kontrol etmemek."
+    ],
+    "mistakesCallout": "Henüz daha uzun varyantların peşinden gitmeyin. Önce ilk hamleyi net canlandırın.",
+    "planTitle": "7 günlük görselleştirme ilerlemesi",
+    "planSteps": [
+      {
+        "label": "1. gün",
+        "duration": "10 dakika",
+        "detail": "Yalnızca sabit tahta görüntüleri ve anında doğrulama."
+      },
+      {
+        "label": "2-3. gün",
+        "duration": "12 dakika",
+        "detail": "Her taraf için bir canlandırılmış hamle ekleyin ve önce hangi karelerin kaybolduğunu izleyin."
+      },
+      {
+        "label": "4-5. gün",
+        "duration": "15 dakika",
+        "detail": "Taş sayısını sabit tutarak Memory Chess'te bakma süresini kısaltın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15 dakika",
+        "detail": "Çalışmayı bir hızlı oyuna taşıyın: her taktik karardan önce durun ve ortaya çıkacak tahtayı adlandırın."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Satranç görselleştirmesi ne kadar sürede gelişir?",
+        "answer": "Yeni başlayanların çoğu, kısa ve düzenli çalışmayla iki-dört hafta içinde daha net hatırlama fark eder."
+      },
+      {
+        "question": "Görselleştirme çalışmaları yıldırım oyunlara yarar mı?",
+        "answer": "Evet. Zihinsel tahtayı daha hızlı güncellemek, baskı altında şah, alma ve tehditleri fark etmeyi kolaylaştırır."
+      },
+      {
+        "question": "Körleme oynamadan görselleştirme çalışılabilir mi?",
+        "answer": "Evet. Süreli hatırlama ve tek hamlelik güncelleme çalışmaları gerçek bir temel kurmaya yeter."
+      },
+      {
+        "question": "Taşların yerini sürekli unutuyorsam ne yapmalıyım?",
+        "answer": "Daha az taş kullanın, daha sık kontrol edin ve hatırlamanız netleşene kadar aynı konumu tekrarlayın."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sabit ve tek hamlelik hatırlama oturduğunda bunu kullanın."
+      },
+      {
+        "reason": "Kenarlardaki taşları kaçırıyorsanız tahta farkındalığını genişletin."
+      },
+      {
+        "reason": "Görselleştirmeyi basit bir tehdit kontrolüyle birleştirin."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Hataları azaltmak için tahta görüşü çalışmaları",
+    "h1": "Yeni başlayanlar için tahta görüşü çalışmaları",
+    "description": "Tehditleri fark etmek, taşlarınızı korumak ve daha az hata yapmak için basit tahta görüşü çalışmaları kullanın.",
+    "primaryKeyword": "tahta görüşü",
+    "secondaryKeywords": [
+      "tahta görüşü çalışmaları",
+      "satrançta hataları azaltmak",
+      "satrançta tehditleri fark etmek",
+      "satrançta taktik dikkat",
+      "yeni başlayan satranç hataları"
+    ],
+    "painPoint": "Tahtanın bir bölgesine odaklanıp başka yerdeki basit bir tehdidi kaçırıyorsunuz.",
+    "ctaLabel": "Tahta görüşü çalışmasına başla",
+    "quickAnswer": "Her hamleden önce şahları, almaları, tehditleri ve korumasız taşları arayın. Hafıza çalışması, tararken tüm taşları akılda tutmanıza yardım eder.",
+    "keyTakeaways": [
+      "Tahta görüşü öğrenilebilir bir alışkanlıktır.",
+      "Korumasız taş farkındalığı çoğu zaman en hızlı düzeltmedir.",
+      "Hafıza çalışması tüm tahtayı takip etmenize yardım eder."
+    ],
+    "whoThisIsFor": [
+      "Temel taktikleri bildiği hâlde taş veren oyuncular.",
+      "Hızlı oynayıp hatayı ancak alma yapıldıktan sonra gören yeni başlayanlar.",
+      "Her hamleden önce net bir listeye ihtiyaç duyan herkes."
+    ],
+    "timeToRead": "8 dakikalık okuma",
+    "introParagraphs": [
+      "Bir oyuncu «göremedim» dediğinde, genellikle tüm tahtayı kontrol etmeden oynamıştır.",
+      "Tahta görüşü çalışmaları nereye bakacağınızı öğretir. Korumasız taşlarla ve şah çeken, alan ya da tehdit yaratan hamlelerle başlayın."
+    ],
+    "startHereTitle": "Buradan başlayın: hamle öncesi tahta görüşü döngüsü",
+    "startHereSteps": [
+      "Her hamleden önce iki taraf için de şahları, almaları ve tehditleri adlandırın.",
+      "Korumasız her taşı işaretleyin ve gerçekten güvenli mi yoksa öyle mi göründüğünü söyleyin.",
+      "Kare-taş hatırlamasını sıkılaştırmak için kısa bir Memory Chess turu yapın.",
+      "Son hatalarınızdan birini inceleyin ve kaçırdığınız tehdidi tam olarak belirleyin.",
+      "Aynı listeyi bir sonraki hızlı oyununuzda kısaltmadan tekrarlayın."
+    ],
+    "drillSectionTitle": "Gerçek oyunlar için tahta görüşü çalışmaları",
+    "drillCards": [
+      {
+        "title": "Korumasız taş envanteri",
+        "description": "Tahtayı tarayın ve oynamadan önce korumasız her taşı belirleyin.",
+        "duration": "3 dakika",
+        "goal": "En yaygın hata kaynağını erken yakalamak.",
+        "ctaLabel": "Envantere başla"
+      },
+      {
+        "title": "Tehdidi tekrar oynama",
+        "description": "Son hata konumunuzu yeniden kurun ve oyuna bakmadan rakibin en güçlü tehdidini bulun.",
+        "duration": "5 dakika",
+        "goal": "Kaçan tehdidin bağlamda nasıl göründüğünü öğretmek.",
+        "ctaLabel": "Bir tehdidi tekrar oyna"
+      },
+      {
+        "title": "Hızlı kare hatırlama",
+        "description": "Kısa bir bakma süresi kullanın ki tararken tahta zihninizde bozulmasın.",
+        "duration": "4 dakika",
+        "goal": "Tararken taşların yerini hatırlamak.",
+        "ctaLabel": "Hatırlamayı hızlandır"
+      }
+    ],
+    "comparisonTitle": "Zayıf tahta görüşü ile güçlü tahta görüşü",
+    "comparisonSummary": "Fark genellikle hesaplama başlamadan önce görünür.",
+    "comparisonRows": [
+      {
+        "label": "Dikkat",
+        "struggling": "Tek bir taktik fikre kilitleniyorsunuz.",
+        "stronger": "Plan seçmeden önce tüm tahtayı tarıyorsunuz."
+      },
+      {
+        "label": "Güvenlik kontrolleri",
+        "struggling": "Korunan bir taşı güvenli sayıyorsunuz.",
+        "stronger": "Kareye güvenmeden önce saldıranları ve koruyanları sayıyorsunuz."
+      },
+      {
+        "label": "Zaman baskısı",
+        "struggling": "Konum sertleştikçe daha hızlı oynuyorsunuz.",
+        "stronger": "Şah, alma ya da tehdit belirdiğinde yavaşlıyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Yalnızca kendi fikrinizi kontrol edip rakibin tehditlerini yok saymak.",
+      "Tüm taktik diziyi saymadan korunan bir taşı güvenli varsaymak.",
+      "Konum taktikleşince fazla hızlı oynamak.",
+      "Oyundan sonra hata türünü hiç adlandırmamak."
+    ],
+    "mistakesCallout": "Daha fazla bulmaca aceleci bir taramayı düzeltmez. Her hamleden önce aynı kısa kontrolü tekrarlayın.",
+    "planTitle": "7 günlük tahta görüşü yenilenmesi",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "12 dakika",
+        "detail": "Yalnızca korumasız taş envanteri ve şah-alma-tehdit taraması."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "15 dakika",
+        "detail": "Oyunlarınızdan önce bir Memory Chess turu ekleyin ki tarama daha net bir zihinsel tahtada olsun."
+      },
+      {
+        "label": "5. gün",
+        "duration": "15 dakika",
+        "detail": "Son üç hatanızı inceleyin ve her konumda kaçan sinyali adlandırın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15-20 dakika",
+        "detail": "Hızlı oynayın ve gerilimi ya da şah güvenliğini değiştiren her hamlede tüm listeyi kullanın."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Tahta görüşünü geliştirmenin en hızlı yolu nedir?",
+        "answer": "Otomatikleşene kadar her oyunda aynı hamle öncesi listeyi kullanmak: şahlar, almalar, tehditler ve korumasız taşlar."
+      },
+      {
+        "question": "Taktikleri bildiğim hâlde neden hata yapıyorum?",
+        "answer": "Çünkü tahtayı takip etme katmanı zayıf. Taktik, ancak konumu doğru algıladıktan sonra işe yarar."
+      },
+      {
+        "question": "Hatalarımı ne sıklıkla incelemeliyim?",
+        "answer": "Her oyundan sonra. Kısa bir inceleme alışkanlığı, haftalık uzun bir seanstan çok daha hızlı aktarım sağlar."
+      },
+      {
+        "question": "Hafıza çalışmaları tahta görüşüne yarar mı?",
+        "answer": "Evet. Daha hızlı taş hatırlama, tararken tüm tahtayı dikkatte tutmayı kolaylaştırır."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Görüş hataları malzemeye mal oluyorsa tam hata önleme rehberini kullanın."
+      },
+      {
+        "reason": "Taktik becerinin canlı baskı altında neden çöktüğünü anlayın."
+      },
+      {
+        "reason": "Tahta görüşünün tam bir başlangıç rutininde nereye oturduğunu görün."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Daha hızlı hatırlama için satranç hafıza çalışmaları",
+    "h1": "Gelişim için satranç hafıza çalışması",
+    "description": "Konumları hatırlamak, örüntüleri fark etmek ve hamleleri daha net izlemek için basit hafıza çalışmaları kullanın.",
+    "primaryKeyword": "satranç hafıza çalışması",
+    "secondaryKeywords": [
+      "satranç hafıza alıştırmaları",
+      "satranç konumlarını ezberlemek",
+      "satrançta örüntü tanıma",
+      "tahta hatırlama çalışması",
+      "satrançta konsantrasyon"
+    ],
+    "painPoint": "Sonraki hamleleri düşünürken taşların nerede olduğunu unutuyorsunuz.",
+    "ctaLabel": "Hafıza görevine başla",
+    "quickAnswer": "Satranç hafıza çalışması, taşlar değişirken yararlı konumları hatırlamanıza yardım eder. Mümkün olduğunca çok rastgele tahta ezberlemek değildir.",
+    "keyTakeaways": [
+      "Başta doğruluk hızdan önemlidir.",
+      "Bir konumu tekrarlamak, her seferinde tek bir hafıza hatasını bulmanızı sağlar.",
+      "Hafıza çalışmasını hesaplama ya da oyun incelemesinden önce yapın."
+    ],
+    "whoThisIsFor": [
+      "Güçlü bir yanıttan sonra planını unutan oyuncular.",
+      "Son oyunlarındaki kilit konumları yeniden kuramayan yeni başlayanlar.",
+      "Çok sayıda taş aktifken zorlanan herkes."
+    ],
+    "timeToRead": "8 dakikalık okuma",
+    "introParagraphs": [
+      "Satrançta hafıza pratik bir beceridir. Amaç, sakin bir hamle seçecek kadar uzun süre net bir tahta görüntüsü tutmaktır.",
+      "Memory Chess basit bir döngü sunar: bak, hatırla, kontrol et ve tekrar dene."
+    ],
+    "startHereTitle": "Bu hafıza rutiniyle başlayın",
+    "startHereSteps": [
+      "Basit bir konumla başlayın ve 10 saniye ezberleyin.",
+      "Tahtayı yeniden kurun ve kaybettiğiniz ilk kareyi ya da taşı not edin.",
+      "Düzeltmenin görünür olması için aynı konumu bir kez tekrarlayın.",
+      "Ezberlenen kurulumdan kısa bir taktik varyant ekleyin.",
+      "Hem doğruluğu hem yaptığınız hafıza hatasının türünü takip edin."
+    ],
+    "drillSectionTitle": "Gerçek oyunlar için hafıza çalışmaları",
+    "drillCards": [
+      {
+        "title": "Tek konum tekrarı",
+        "description": "Bir konumu ezberleyin, yeniden kurun, sonra aynı ayarlarla bir kez tekrarlayın.",
+        "duration": "5 dakika",
+        "goal": "Düzeltebileceğiniz net bir hafıza hatası bulmak.",
+        "ctaLabel": "Bir konumu tekrarla"
+      },
+      {
+        "title": "Örüntü çapasıyla hatırlama",
+        "description": "Her şeyden önce şahların yerine, korumasız taşlara ve merkez gerilimine odaklanın.",
+        "duration": "4 dakika",
+        "goal": "Konumun en önemli parçalarını önce hatırlamak.",
+        "ctaLabel": "Çapaları çalış"
+      },
+      {
+        "title": "Önce hatırla, sonra hesapla",
+        "description": "Tahtayı yeniden kurduktan sonra, doğrulamadan önce kısa bir varyant hesaplayın.",
+        "duration": "6 dakika",
+        "goal": "Hesaplarken tahta hafızanızı kullanmak.",
+        "ctaLabel": "Aktarım varyantı ekle"
+      }
+    ],
+    "comparisonTitle": "Zayıf hatırlama oyunlarda nasıl görünür",
+    "comparisonSummary": "Tahta tanıdık gelse de hesaplamayı taşıyamayacak kadar bulanık olabilir.",
+    "comparisonRows": [
+      {
+        "label": "Varyant takibi",
+        "struggling": "Yeni bir aday hamleyi düşünürken asıl konumu kaybediyorsunuz.",
+        "stronger": "Bir varyantı inceledikten sonra çıkış konumuna doğru şekilde dönebiliyorsunuz."
+      },
+      {
+        "label": "Örüntü hafızası",
+        "struggling": "Taktik fikri hatırlıyorsunuz ama koruyucuları değil.",
+        "stronger": "Hem fikri hem de onu mümkün kılan kareleri hatırlıyorsunuz."
+      },
+      {
+        "label": "İnceleme kalitesi",
+        "struggling": "Konum hemen kaybolduğu için incelemeniz belirsiz kalıyor.",
+        "stronger": "Kilit anları yeniden kurup daha hızlı öğreniyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Seviyeniz için fazla büyük zorluk sıçramaları yapmak.",
+      "Doğruluğu yok sayıp hızı ölçmek.",
+      "Hata kaydı tutmayıp tekrar eden zayıflıkları gizli bırakmak.",
+      "Hafıza çalışmasını taktik oyundan ayrı görmek."
+    ],
+    "mistakesCallout": "Hatırlamanız hâlâ belirsizken konumu zorlaştırmayın. Zorluğu düşürüp önce doğruluğu kurun.",
+    "planTitle": "7 günlük hafıza bloğu",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "10 dakika",
+        "detail": "Basit konumları tekrarlayın ve her hafıza hatasını adlandırın."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "12 dakika",
+        "detail": "Şahları, korumasız taşları ve merkez gerilimini önce hatırlamak için örüntü çapaları ekleyin."
+      },
+      {
+        "label": "5. gün",
+        "duration": "12 dakika",
+        "detail": "Her doğru yeniden kurumdan sonra kısa bir hamle dizisi ekleyin."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15 dakika",
+        "detail": "Taş sayısını sabit tutup süreyi biraz kısaltın, sonra çalışmayı bir hızlı oyun incelemesine taşıyın."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Satranç hafıza çalışması gerçek oyunları geliştirir mi?",
+        "answer": "Evet, hesaplama ya da incelemeyle birleştirildiğinde. Daha iyi hatırlama, baskı altında varyantları daha net tutar."
+      },
+      {
+        "question": "Seans başına kaç konum çalışmalıyım?",
+        "answer": "Yeni başlayanlar için, acele etmek yerine hataları doğruladığınızda altı-on iki özenli deneme yeterlidir."
+      },
+      {
+        "question": "Rastgele tahtalar mı gerçek oyun örüntüleri mi?",
+        "answer": "İkisi de. Rastgele tahtalar ham hatırlamayı keskinleştirir, gerçek yapılar aktarımı iyileştirir."
+      },
+      {
+        "question": "Doğruluk takılırsa ne yapmalıyım?",
+        "answer": "Bir hafta daha az taş kullanın, tek bir hata türünü düzeltin ve hatırlama netleşince taş ekleyin."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Hamle dizilerini hatırlamakta zorlanıyorsanız bunu kullanın."
+      },
+      {
+        "reason": "Hafıza çalışmasıyla yararlı bir bulmaca miktarını dengeleyin."
+      },
+      {
+        "reason": "Tahta hafızasını yaygın satranç örüntülerine bağlayın."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Yeni başlayanlar için körleme satranç çalışması",
+    "h1": "Yeni başlayanlar için körleme satranç, adım adım",
+    "description": "Görselleştirmeyi geliştiren, bunaltmayan küçük adımlarla körleme satrancı öğrenin.",
+    "primaryKeyword": "körleme satranç çalışması",
+    "secondaryKeywords": [
+      "yeni başlayanlar için körleme satranç",
+      "zihinsel tahta çalışması",
+      "satranç görselleştirme alıştırmaları",
+      "taşları oynatmadan hesaplamak",
+      "satrançta odaklanma alıştırmaları"
+    ],
+    "painPoint": "Tahtaya bakmayı bırakır bırakmaz izini kaybediyorsunuz.",
+    "ctaLabel": "Körleme çalışmasına başla",
+    "quickAnswer": "Basit bir konumla başlayın. Onu hatırlayın, her taraf için bir hamle canlandırın ve kontrol edin. Bu adımlar kolaylaşana kadar tam körleme oyun denemeyin.",
+    "keyTakeaways": [
+      "Körleme satranç adım adım kurulan bir beceridir.",
+      "Cevabınızı doğrulamak, daha zor konumlar denemekten önemlidir.",
+      "Yeni başlayan için körleme çalışmaları, daha az tahta yardımıyla yapılan görselleştirme çalışmalarıdır."
+    ],
+    "whoThisIsFor": [
+      "Tam körleme oyunla başlamadan daha iyi görselleştirmek isteyen oyuncular.",
+      "Bir-iki canlandırılmış hamleden sonra kareleri kaybeden yeni başlayanlar.",
+      "Zihninde daha net bir tahta görüntüsü tutmak isteyen herkes."
+    ],
+    "timeToRead": "8 dakikalık okuma",
+    "introParagraphs": [
+      "En büyük hata, tam körleme oyunu çok erken denemektir. Bu genellikle ilerleme yerine hayal kırıklığı yaratır.",
+      "Adım adım ilerleyin: tahtayı görün, hatırlayın, bir hamle canlandırın, doğrulayın ve görsel yardımı yavaşça azaltın."
+    ],
+    "startHereTitle": "Buradan başlayın: güvenli bir körleme ilerlemesi",
+    "startHereSteps": [
+      "Küçük bir konumu ezberleyin ve hamle canlandırmadan önce yeniden kurun.",
+      "Taşlara dokunmadan her taraf için bir hamle hesaplayın.",
+      "Devam etmek yerine her uyuşmazlığı hemen doğrulayın.",
+      "Biraz daha kısa bir bakma süresiyle bir Memory Chess turu yapın.",
+      "Mevcut varyant netleştiğinde yalnızca bir hamle daha ekleyin."
+    ],
+    "drillSectionTitle": "Kolay körleme satranç çalışmaları",
+    "drillCards": [
+      {
+        "title": "Oynatmadan önce yeniden kur",
+        "description": "Başlangıç konumu tamamen oturmadan hamle canlandırmayın.",
+        "duration": "4 dakika",
+        "goal": "Hamle eklemeden önce net tahta hatırlaması kurmak.",
+        "ctaLabel": "Önce tahtayı kur"
+      },
+      {
+        "title": "Her taraf için bir hamle",
+        "description": "Beyaz için bir hamle ve Siyah için bir yanıt canlandırın, sonra yeni tahtayı doğrulayın.",
+        "duration": "5 dakika",
+        "goal": "Tahtaya bakmadan konumu güncellemek.",
+        "ctaLabel": "İki hamle canlandır"
+      },
+      {
+        "title": "Kısa bakma süresi",
+        "description": "Tahtayı daha hızlı hatırlamayı öğrenmek için bakma süresini azaltın.",
+        "duration": "4 dakika",
+        "goal": "Tüm tahtayı gizlemeden körlemeye hazırlanmak.",
+        "ctaLabel": "Süreyi kısalt"
+      }
+    ],
+    "comparisonTitle": "Körleme satrancı çalışmanın daha güvenli yolu",
+    "comparisonSummary": "Öncekinden bir hamle daha net canlandırabiliyor musunuz diye sorun. Henüz tam körleme oyun oynamanız gerekmez.",
+    "comparisonRows": [
+      {
+        "label": "Başlangıç noktası",
+        "struggling": "Doğrudan tam körleme oyuna atlıyorsunuz.",
+        "stronger": "Hamle eklemeden önce başlangıç tahtasını hatırlıyorsunuz."
+      },
+      {
+        "label": "Doğrulama",
+        "struggling": "Bulanık bir zihinsel tahtaya güveniyorsunuz.",
+        "stronger": "Canlandırdığınız her güncellemeyi doğrulayıp hemen düzeltiyorsunuz."
+      },
+      {
+        "label": "Seans kalitesi",
+        "struggling": "Odak çökene kadar çalışıyorsunuz.",
+        "stronger": "Zihinsel doğruluk hâlâ yüksekken duruyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Tam körleme oyunları çok erken denemek.",
+      "Doğrulamayı atlayıp yanlış zihinsel tahtalara güvenmek.",
+      "Kısa varyantlar netleşmeden hamle eklemek.",
+      "Tek seansta çok uzun çalışıp odağı tüketmek."
+    ],
+    "mistakesCallout": "Çok daha zor bir göreve atlamayın. Her seferinde tahtadan gelen yardımı biraz azaltın.",
+    "planTitle": "7 günlük körleme hazırlık bloğu",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "10 dakika",
+        "detail": "Yalnızca konumları hafızadan yeniden kurun, sonra hemen kontrol edin."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "12 dakika",
+        "detail": "Her taraf için bir hamle ekleyin ve konumları basit tutun."
+      },
+      {
+        "label": "5. gün",
+        "duration": "12 dakika",
+        "detail": "Taş sayısını sabit tutarak Memory Chess'te bakma süresini kısaltın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15 dakika",
+        "detail": "Tek hamlelik çalışma doğruysa birkaç iki hamlelik dizi deneyin."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Körleme satranç yeni başlayanlara yarar mı?",
+        "answer": "Evet, kısa ve kontrollü çalışmalarda. Normal oyunları destekleyen görselleştirme becerilerini güçlendirir."
+      },
+      {
+        "question": "Körleme çalışmalarını ne sıklıkla yapmalıyım?",
+        "answer": "Düzenli oyun ve incelemeyle birleştirildiğinde haftada iki-dört kısa seans yeterlidir."
+      },
+      {
+        "question": "En iyi ilk körleme alıştırması nedir?",
+        "answer": "Basit bir konumu hafızadan yeniden kurmak ve kontrol etmeden önce her taraf için bir hamle canlandırmak."
+      },
+      {
+        "question": "Geliştiğimi nasıl anlarım?",
+        "answer": "Daha çok kareyi doğru tutar, tahtayı daha uzun süre günceller ve normal oyunlarda daha az görüş hatası yaparsınız."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "İleri körlemeye atlamak yerine temel çalışmanızı sağlam tutun."
+      },
+      {
+        "reason": "Körleme çalışmasını varyant tutma alıştırmalarıyla eşleştirin."
+      },
+      {
+        "reason": "Olası hamleleri karşılaştırmak için daha net görselleştirme kullanın."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Satranç oyuncuları için işleyen bellek alıştırmaları",
+    "h1": "Yeni başlayanlar için işleyen bellek alıştırmaları",
+    "description": "Hamle dizilerini hatırlamak, seçenekleri karşılaştırmak ve daha net karar vermek için basit alıştırmalar kullanın.",
+    "primaryKeyword": "işleyen bellek alıştırmaları",
+    "secondaryKeywords": [
+      "satrançta işleyen bellek",
+      "satranç hesaplama çalışması",
+      "satrançta konsantrasyon alıştırmaları",
+      "satrançta istikrarı artırmak",
+      "satrançta zihinsel dayanıklılık"
+    ],
+    "painPoint": "Başka bir diziyi düşünürken ilk hamle dizisini unutuyorsunuz.",
+    "ctaLabel": "Hafıza rutinine başla",
+    "quickAnswer": "İşleyen bellek, birkaç olası hamle dizisini akılda tutmanızı sağlar. Sayıyı az tutun ve her birini net doğrulayın.",
+    "keyTakeaways": [
+      "Üç net seçenek, altı karışık seçenekten iyidir.",
+      "Kısa bir sözlü özet her varyantı hatırlamaya yardım eder.",
+      "Gerçek konumlarla çalışın ve beceriyi oyunlarda kullanın."
+    ],
+    "whoThisIsFor": [
+      "İkinciyi incelerken ilk varyantı unutan oyuncular.",
+      "Hamle sırasını karıştıran yeni başlayanlar.",
+      "Yorgunken daha çok taktik hatası yapan herkes."
+    ],
+    "timeToRead": "8 dakikalık okuma",
+    "introParagraphs": [
+      "İşleyen bellek, olası hamleleri karşılaştırırken akılda tutmanızı sağlar. Satrançta başlangıç tahtasını ve bir-iki kısa varyantı karıştırmadan hatırlamanız gerekir.",
+      "Memory Chess başlangıç tahtasını hatırlamanıza yardım eder. O görüntü netleştiğinde sonraki hamleleri izlemek kolaylaşır."
+    ],
+    "startHereTitle": "İki kısa hamle dizisiyle başlayın",
+    "startHereSteps": [
+      "Bir konum seçin ve tahtaya dokunmadan üç aday hamle sayın.",
+      "Her varyantı iki yarım hamle hesaplayın ve sonucu tek cümlede özetleyin.",
+      "Temel konum becerisini tazelemek için bir Memory Chess hatırlama turu yapın.",
+      "Konuma dönün ve olası hamle dizilerini yeniden karşılaştırın.",
+      "Varyant takibinin nerede koptuğuna dair tek bir cümle yazın."
+    ],
+    "drillSectionTitle": "Satranç için işleyen bellek çalışmaları",
+    "drillCards": [
+      {
+        "title": "Üç varyant özeti",
+        "description": "Üç aday hamleyi kısaca tutun ve her dalı tek cümleyle anlatın.",
+        "duration": "6 dakika",
+        "goal": "Sayı eklemek yerine her diziyi net tutmak.",
+        "ctaLabel": "Üç varyant tut"
+      },
+      {
+        "title": "Hatırlama sıfırlaması",
+        "description": "Temel tahtayı sabit tutmak için varyant hesapları arasına bir Memory Chess turu koyun.",
+        "duration": "4 dakika",
+        "goal": "Hamleleri izlemeden önce başlangıç konumunu hatırlamak.",
+        "ctaLabel": "Tahtayı sıfırla"
+      },
+      {
+        "title": "Varyant sonrası karşılaştırma",
+        "description": "Başlangıç konumuna dönün ve kısa bir aradan sonra dalları karşılaştırın.",
+        "duration": "5 dakika",
+        "goal": "Başlangıç tahtasıyla varyantlar arasında karıştırmadan geçmek.",
+        "ctaLabel": "Seçeneklerini karşılaştır"
+      }
+    ],
+    "comparisonTitle": "Çok fazla şey hatırlamaya çalıştığınızda",
+    "comparisonSummary": "Bellek dolduğunda varyant belirsizleşir ve hamle sırası karışır.",
+    "comparisonRows": [
+      {
+        "label": "Aday hamleler",
+        "struggling": "Aynı anda çok fazla seçenek tutmaya çalışıyorsunuz.",
+        "stronger": "Daha az varyant tutuyorsunuz ama her biri daha uzun süre doğru kalıyor."
+      },
+      {
+        "label": "Hamle sırası",
+        "struggling": "Dallar birbirine karışıyor.",
+        "stronger": "Her varyant ayrı ve karşılaştırması kolay kalıyor."
+      },
+      {
+        "label": "Yorgunluk",
+        "struggling": "Oyunun sonunda karar kalitesi çöküyor.",
+        "stronger": "Enerji düşerken daha basit ve net bir süreç koruyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Aynı anda çok fazla hamle dizisi hatırlamaya çalışmak.",
+      "Her varyanttan sonra kısa sözlü özeti atlamak.",
+      "Yalnızca bulmaca çözüp beceriyi oyunlarda hiç kullanmamak.",
+      "Net düşünemeyecek kadar yorgunken devam etmek."
+    ],
+    "mistakesCallout": "Henüz varyant eklemeyin. Uzatmadan önce az sayıda varyantı net tutun.",
+    "planTitle": "7 günlük işleyen bellek bloğu",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "10 dakika",
+        "detail": "Yalnızca iki hamle dizisi kullanın ve her birini sesli anlatın."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "12 dakika",
+        "detail": "Başlangıç konumu temiz kalsın diye denemeler arasına bir Memory Chess sıfırlaması ekleyin."
+      },
+      {
+        "label": "5. gün",
+        "duration": "12 dakika",
+        "detail": "İlk ikisi doğru kalıyorsa üçüncü bir seçenek ekleyin."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15 dakika",
+        "detail": "Rutini bir hızlı oyunda kullanın. Zor anlarda durun ve olası hamlelerinizi net adlandırın."
+      }
+    ],
+    "faq": [
+      {
+        "question": "İşleyen bellek alıştırmaları satranç performansına aktarılır mı?",
+        "answer": "Genel zihin oyunları yerine konumlara, varyant takibine ve oyun incelemesine bağlandığında aktarılabilir."
+      },
+      {
+        "question": "Yeni başlayanlar bu çalışmayı nasıl kurmalı?",
+        "answer": "Olası hamleleri, tahta hafızasını ve gerçek bir oyun konumunu birleştiren kısa seanslar kullanın."
+      },
+      {
+        "question": "İlerlemeyi ölçmenin basit yolu nedir?",
+        "answer": "Kaç hamle dizisini hatırlayabildiğinizi ve ne sıklıkla yerinizi kaybettiğinizi izleyin."
+      },
+      {
+        "question": "Bu, taktik çalışmasının yerini alır mı?",
+        "answer": "Hayır. Çözerken ya da oynarken varyantları daha net tutarak taktiği tamamlar."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Olası hamleleri karşılaştırmak için daha iyi işleyen bellek kullanın."
+      },
+      {
+        "reason": "Varyant takibinin altındaki hatırlama katmanını güçlendirin."
+      },
+      {
+        "reason": "İşleyen bellek boşa gitmesin diye daha basit bir düşünce süreci kullanın."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Satrançta hata yapmayı nasıl bırakırsınız",
+    "h1": "Satrançta hata yapmayı nasıl bırakırsınız",
+    "description": "Tehditleri fark etmek, korumasız taşları güvene almak ve daha az hata yapmak için kısa bir güvenlik kontrolü kullanın.",
+    "primaryKeyword": "satrançta hata yapmayı bırakmak",
+    "secondaryKeywords": [
+      "satrançta hata önleme",
+      "taş vermeyi bırakmak",
+      "satrançta tehdit kontrolü",
+      "satranç güvenlik listesi",
+      "satrançta basit hataları azaltmak"
+    ],
+    "painPoint": "Satranç fikirlerini anlıyorsunuz ama hâlâ basit tehditlere taş veriyorsunuz.",
+    "ctaLabel": "Hata önleme çalışmasına başla",
+    "quickAnswer": "Her hamleden önce rakibin tehditlerini kontrol edin, korumasız taşları arayın ve hamlenizin güvenli olduğundan emin olun. Hafıza çalışması tüm tahtayı akılda tutmanıza yardım eder.",
+    "keyTakeaways": [
+      "Yeni başlayan hatalarının çoğu tahtanın bir bölümünü kaçırmaktan gelir.",
+      "Güvenlik listesi, zaman baskısında ayakta kalacak kadar kısa olmalı.",
+      "Kaçırdığınızı hızlıca görene kadar hatalarınızı tekrar oynayın."
+    ],
+    "whoThisIsFor": [
+      "Tek hamlelik taktiklere sürekli taş veren oyuncular.",
+      "Oyunlarda bulmacalardan daha kötü hisseden yeni başlayanlar.",
+      "Her seferinde kullanabileceği sakin bir hamle rutini isteyen herkes."
+    ],
+    "timeToRead": "8 dakikalık okuma",
+    "introParagraphs": [
+      "Birçok hata, tüm konumu kontrol etmeden oynamaktan doğar. Bir taşın nerede korunduğunun da izini kaybedebilirsiniz.",
+      "Kısa bir rutin, panik ve tahmini ortadan kaldırır. Konum sertleştiğinde hep aynı kontrolleri kullanın."
+    ],
+    "startHereTitle": "Buradan başlayın: hata önleme listesi",
+    "startHereSteps": [
+      "Rakibin şu anda hangi şah, alma ve tehditlere sahip olduğunu sorun.",
+      "Korumasız ya da fazla görevli her taşı bulun.",
+      "Ancak ondan sonra planladığınız hamlenin güvenli olduğunu kontrol edin.",
+      "Taş hatırlamasını keskinleştirmek için oyunlardan önce kısa bir Memory Chess turu yapın.",
+      "Her hatadan sonra kaçırdığınız sinyali tek cümleyle yazın."
+    ],
+    "drillSectionTitle": "Basit hata önleme çalışmaları",
+    "drillCards": [
+      {
+        "title": "Önce rakip taraması",
+        "description": "Her konuma rakibin en güçlü tehditlerini kontrol ederek başlayın.",
+        "duration": "3 dakika",
+        "goal": "Kendi fikrinizden önce rakibin fikrini düşünmeyi hatırlamak.",
+        "ctaLabel": "Rakip tarafından tara"
+      },
+      {
+        "title": "Korumasız taş alarmı",
+        "description": "Oynamadan önce korumasız ya da fazla görevli her taşı sesli söyleyin.",
+        "duration": "4 dakika",
+        "goal": "En kolay malzeme kayıplarını erken yakalamak.",
+        "ctaLabel": "Alarmı çalıştır"
+      },
+      {
+        "title": "Hata tekrar döngüsü",
+        "description": "Kaçan tehdit belirginleşene kadar kendi hata konumlarınızı tekrar oynayın.",
+        "duration": "6 dakika",
+        "goal": "Gerçek kayıplarınıza yol açan konumlardan öğrenmek.",
+        "ctaLabel": "Hatanı tekrar oyna"
+      }
+    ],
+    "comparisonTitle": "Hatalar azalmaya başlayınca ne değişir",
+    "comparisonSummary": "Oyunlar birdenbire kusursuz olmaz. Daha sakin olur ve kayıplarınız tek hamlelik felaketler yerine anlaşılır nedenlerle gelir.",
+    "comparisonRows": [
+      {
+        "label": "Hamleyi bırakma",
+        "struggling": "Bir plan görür görmez oynuyorsunuz.",
+        "stronger": "Hamleyi ancak kısa bir güvenlik geçişinden sonra bırakıyorsunuz."
+      },
+      {
+        "label": "Tehdit farkındalığı",
+        "struggling": "Taktiği geldikten sonra fark ediyorsunuz.",
+        "stronger": "Taahhüt etmeden önce taktik biçimi tanıyorsunuz."
+      },
+      {
+        "label": "Oyun sonrası inceleme",
+        "struggling": "Yenilgi rastgele hissettiriyor.",
+        "stronger": "Kaçırdığınız işareti hızlıca adlandırabiliyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Hataları yalnızca daha yavaş oynayarak yok etmeye çalışmak.",
+      "Tehdit kontrolü alışkanlığı zayıfken daha çok açılış ezberlemek.",
+      "Gerçek kaçan sinyali belirlemeden motor varyantlarını incelemek.",
+      "Zaman baskısının hatırlamayı zayıflattığını yok saymak."
+    ],
+    "mistakesCallout": "Daha yavaş oynamak yeterli değil. Her seferinde aynı kısa güvenlik kontrolünü kullanın.",
+    "planTitle": "7 günlük hata önleme sıfırlaması",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "10 dakika",
+        "detail": "Yalnızca önce rakip taraması ve korumasız taş alarmı çalışmaları."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "12 dakika",
+        "detail": "Tahta durumu daha temiz kalsın diye her oyun seansından önce bir Memory Chess turu ekleyin."
+      },
+      {
+        "label": "5. gün",
+        "duration": "15 dakika",
+        "detail": "Son üç hatanızı tekrar oynayın ve her birinde kaçan sinyali sınıflandırın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15 dakika",
+        "detail": "Hızlı oyunlarda tüm listeyi kullanın ve yalnızca sonucu değil oyun başına hataları takip edin."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Satrançta neden sürekli taş veriyorum?",
+        "answer": "Genellikle hamle öncesi tarama eksik olduğu için. Taktiği biliyor olabilirsiniz ama oynamadan önce tüm tahtayı kontrol etmiyorsunuz."
+      },
+      {
+        "question": "Hataları bırakmak için sadece yavaş mı oynamalıyım?",
+        "answer": "Yalnızca fazladan zamanı net bir güvenlik kontrolü için kullanırsanız. Plansız tahtaya bakmak işe yaramaz."
+      },
+      {
+        "question": "Hafıza çalışmaları hatalara gerçekten yarar mı?",
+        "answer": "Evet. Daha temiz taş hatırlama, tahta değişirken tehditleri fark etmeyi kolaylaştırır."
+      },
+      {
+        "question": "Daha az hata için neyi takip etmeliyim?",
+        "answer": "Oyun başına hataları, gözden kaçan korumasız taşları ve kaçan tehdidin başarısız bir taramadan mı hesaptan mı geldiğini takip edin."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Hataları önlemek için daha güçlü bir tahta taraması kurun."
+      },
+      {
+        "reason": "Tahta takibi zayıfken taktik becerinin neden çöktüğünü görün."
+      },
+      {
+        "reason": "Hata önleme çalışmasını tam bir başlangıç rutinine bağlayın."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Bulmaca puanınız neden oyunlara aktarılmıyor",
+    "h1": "Bulmaca puanınız neden oyunlara aktarılmıyor",
+    "description": "Bulmaca becerisinin gerçek oyunlardan neden farklı hissettirdiğini ve tahta görüşü, hafıza ve incelemenin bu farkı nasıl kapattığını öğrenin.",
+    "primaryKeyword": "bulmaca puanı neden oyunlara aktarılmıyor",
+    "secondaryKeywords": [
+      "bulmaca puanı ile satranç puanı",
+      "taktiklerin oyunlara aktarılmaması",
+      "gerçek oyunlarda bulmaca becerisi",
+      "neden bulmacalarda daha iyiyim",
+      "satrançta tahta görüşü"
+    ],
+    "painPoint": "Bulmacaları iyi çözüyorsunuz ama gerçek oyunlarda taktikleri kaçırıyorsunuz.",
+    "ctaLabel": "Gerçek oyunlar için çalış",
+    "quickAnswer": "Bulmaca size bir taktik olduğunu söyler. Gerçek oyun söylemez. Tehlikeyi fark etmeli, tahtayı hatırlamalı ve ne zaman yavaşlayacağınızı bilmelisiniz.",
+    "keyTakeaways": [
+      "Bulmaca, çözülecek bir problem olduğunu size söyler.",
+      "Oyunda tehlikeli anı kendiniz bulmalısınız.",
+      "Daha iyi tahta görüşü ve hafıza taktikleri daha erken fark ettirir."
+    ],
+    "whoThisIsFor": [
+      "Bulmaca puanı şaşırtıcı derecede yüksek ama oyun puanı sabit olan oyuncular.",
+      "Taktiği oyun sırasında değil sonrasında gören yeni başlayanlar.",
+      "Bulmaca fikirlerini gerçek oyunlarda kullanamayan herkes."
+    ],
+    "timeToRead": "8 dakikalık okuma",
+    "introParagraphs": [
+      "Bu, yeni başlayanlarda yaygın bir sorundur. Bulmaca çözersiniz ama gerçek oyunlarda hâlâ taş kaybı, kaçan tehditler ve aceleci hamleler vardır.",
+      "Daha çok bulmaca çözmek bunu düzeltmeyebilir. Ayrıca bir konumun ne zaman tehlikeli hâle geldiğini fark etmeli ve her seçimden sonra ne olacağını canlandırmalısınız."
+    ],
+    "startHereTitle": "Bulmacaları oyunlara bağlayarak başlayın",
+    "startHereSteps": [
+      "Bulmaca çözmeden önce 2 dakika tahtayı şah, alma ve tehditler için tarayın.",
+      "Baskı altında tahta görüntüsü sabit kalsın diye bir Memory Chess turu ekleyin.",
+      "Bir bulmacadan sonra, gerçek oyunda hangi sinyalin size yavaşlamayı söyleyeceğini sorun.",
+      "Son oyunlarınızdaki bir hatayı inceleyin ve benzer bir taktik bulmacayla karşılaştırın.",
+      "Hamle öncesi taramanın dayanıp dayanmadığını görmek için her seansta en az bir hızlı oyun oynayın."
+    ],
+    "drillSectionTitle": "Bulmacaları oyunlara bağlayan çalışmalar",
+    "drillCards": [
+      {
+        "title": "Uyarı işaretini bul",
+        "description": "Taktiği bulmaya çalışmadan önce uyarı işaretini arayın.",
+        "duration": "4 dakika",
+        "goal": "Tehlikeli konumları daha erken fark etmek.",
+        "ctaLabel": "Önce sinyali çalış"
+      },
+      {
+        "title": "Hesaplamadan önce hatırlama",
+        "description": "Tahta daha net hissettirsin diye bulmacalardan önce hızlı bir Memory Chess turu oynayın.",
+        "duration": "4 dakika",
+        "goal": "Örüntü çalışmasını gerçek oyuna bağlamak.",
+        "ctaLabel": "Önce hatırlamayı keskinleştir"
+      },
+      {
+        "title": "Oyun konumunu tekrar oynama",
+        "description": "Kendi oyununuzdan kaçan bir taktik anını tekrar oynayın ve bulmaca gibi çözün.",
+        "duration": "6 dakika",
+        "goal": "Taktik çalışmasını yeniden gerçek konumlara benzetmek.",
+        "ctaLabel": "Kaçan taktiği tekrar oyna"
+      }
+    ],
+    "comparisonTitle": "Bulmacalar ve oyunlar: ne değişir?",
+    "comparisonSummary": "Taktik hamle aynı olabilir ama zihinsel görev aynı değildir.",
+    "comparisonRows": [
+      {
+        "label": "Problemin çerçevesi",
+        "struggling": "Oyun size bir taktik olduğunu söylemez.",
+        "stronger": "Gerilimin değiştiğini gösteren sinyali fark edersiniz."
+      },
+      {
+        "label": "Tahta netliği",
+        "struggling": "Birden çok taş oynayınca varyant bulanıklaşır.",
+        "stronger": "Önemli kareleri ve koruyucuları hafızada aktif tutarsınız."
+      },
+      {
+        "label": "Karar zamanlaması",
+        "struggling": "Konum tehlikeli hâle gelince normal hızda oynarsınız.",
+        "stronger": "Şah, alma ya da tehdit belirince yavaşlarsınız."
+      }
+    ],
+    "mistakes": [
+      "Oyunlara aktarım adımı olmadan bulmaca çözmek.",
+      "Taktik bilgisinin tek başına hataları önleyeceğini varsaymak.",
+      "Bir oyun konumunun neden tehlikeli hâle geldiğini hiç incelememek.",
+      "Tahta görüşünü taktikten ayrı görmek."
+    ],
+    "mistakesCallout": "Yalnızca daha fazla bulmaca eklemeyin. Kendi oyunlarınızdaki taktik anları fark etmeyi de çalışın.",
+    "planTitle": "7 günlük bulmaca aktarım bloğu",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "12 dakika",
+        "detail": "Her bulmaca seansına çözümden önce sinyal düşüncesini ekleyin."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "12 dakika",
+        "detail": "Bulmacalardan ya da hızlı oyundan önce kısa bir Memory Chess turu kullanın."
+      },
+      {
+        "label": "5. gün",
+        "duration": "15 dakika",
+        "detail": "Kendi oyunlarınızdan kaçan üç taktik anı tekrar oynayın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15-20 dakika",
+        "detail": "Hızlı oynayın ve konum zorlayıcı ya da taktik olarak gergin olduğunda kendinizi durdurun."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Neden bulmacalarda oyunlardan daha iyiyim?",
+        "answer": "Çünkü bulmaca size bulunacak bir taktik olduğunu zaten söylüyor. Gerçek oyun söylemiyor."
+      },
+      {
+        "question": "Bulmaca çözmeyi bırakmalı mıyım?",
+        "answer": "Hayır. Onları koruyun ama örüntüler aktarılsın diye tahta görüşü, hatırlama ve oyun konumu tekrarı ekleyin."
+      },
+      {
+        "question": "En iyi aktarım çalışması nedir?",
+        "answer": "Kendi oyununuzdan kaçan bir taktiği tekrar oynamak ve konumu hafızadan kurduktan sonra çözmek."
+      },
+      {
+        "question": "Aktarımı nasıl ölçerim?",
+        "answer": "Yalnızca bulmaca puanının yükselmesine değil, oyun başına hataların ve kaçan basit taktiklerin azalmasına bakın."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Gerçek oyunlar için daha kısa bir hata önleme listesi kurmakta bunu kullanın."
+      },
+      {
+        "reason": "Taktikleri görünür kılan tarama alışkanlığını güçlendirin."
+      },
+      {
+        "reason": "Oyunlara zaman bırakan bir bulmaca miktarı seçin."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Satrançta tüm tahtayı nasıl görürsünüz",
+    "h1": "Tüm satranç tahtasını nasıl görürsünüz",
+    "description": "Uzaktaki taşları fark etmek, tehditleri görmek ve tünel görüşünden kaçınmak için basit bir tahta taraması kullanın.",
+    "primaryKeyword": "satrançta tüm tahtayı görmek",
+    "secondaryKeywords": [
+      "satranç tahta farkındalığı",
+      "satrançta tünel görüşünü bırakmak",
+      "tüm tahtayı görmek",
+      "satranç tarama çalışmaları",
+      "çevresel tahta görüşü"
+    ],
+    "painPoint": "Bir bölgeye odaklanıp başka yerdeki bir tehdidi kaçırıyorsunuz.",
+    "ctaLabel": "Tüm tahta görüşünü çalış",
+    "quickAnswer": "Her hamleden önce iki şahı, korumasız taşları, merkezi ve kenarları kontrol edin. Hafıza çalışması tahtanın daha fazlasını akılda tutmanıza yardım eder.",
+    "keyTakeaways": [
+      "Tünel görüşü, dikkatin tek bir bölgede sıkışmasıdır.",
+      "Kenar taşı kontrolleri yeni başlayanlar için özellikle yararlıdır.",
+      "Tahtanın net bir hafızası taramayı kolaylaştırır."
+    ],
+    "whoThisIsFor": [
+      "Taktiği yalnızca tahtanın bir yanında fark eden oyuncular.",
+      "Filleri, kaleleri ya da uzak tehditleri kaçıran yeni başlayanlar.",
+      "Açık konumlarda zihnen sıkışmış hisseden herkes."
+    ],
+    "timeToRead": "7 dakikalık okuma",
+    "introParagraphs": [
+      "Birçok yeni başlayan yalnızca planladığı hamlenin yakınındaki taşlara bakar. Bu, uzaktaki filleri, kaleleri ve tehditleri kolayca kaçırtır.",
+      "Tahtaya daha uzun bakmanız gerekmez. Her önemli bölgeyi kontrol etmek için aynı basit taramayı kullanın."
+    ],
+    "startHereTitle": "Buradan başlayın: taramayı genişletin",
+    "startHereSteps": [
+      "İki şahı ve onlara doğru uzanan hatları kontrol edin.",
+      "Korumasız taşları önce merkezde, sonra kenarlarda arayın.",
+      "Filleri ve kaleleri yalnızca ilgilendiğiniz kareye değil, tüm hatları boyunca tarayın.",
+      "Tüm tahta dikkatte daha erişilir kalsın diye bir Memory Chess turu yapın.",
+      "Oynamadan önce tahtanın hangi bölümüne henüz bakmadığınızı sorun."
+    ],
+    "drillSectionTitle": "Tünel görüşünü bırakma çalışmaları",
+    "drillCards": [
+      {
+        "title": "Kenar taşı taraması",
+        "description": "Her hamleden önce köşe ve kenar taşlarını kontrol edin.",
+        "duration": "3 dakika",
+        "goal": "Odaklandığınız bölgenin dışındaki tehditleri yakalamak.",
+        "ctaLabel": "Kenarları tara"
+      },
+      {
+        "title": "Görüş hattı tekrarı",
+        "description": "Yalnızca tek bir hedef kareye bakmak yerine her fil ve kale hattını baştan sona izleyin.",
+        "duration": "4 dakika",
+        "goal": "Her taramada tahtanın daha fazlasını kontrol etmek.",
+        "ctaLabel": "Hatları baştan sona izle"
+      },
+      {
+        "title": "Tüm tahta hatırlaması",
+        "description": "Orta düzeyde taş sayısıyla Memory Chess kullanın, sonra tahtayı bölge bölge sayın.",
+        "duration": "5 dakika",
+        "goal": "Bir seferde tahtanın daha fazlasını hatırlamak.",
+        "ctaLabel": "Bölge bölge hatırla"
+      }
+    ],
+    "comparisonTitle": "Tünel görüşü ile tüm tahta farkındalığı",
+    "comparisonSummary": "Her yere aynı süre bakmanız gerekmez. Önemli bir şeyi kaçırmadığınızdan emin olun.",
+    "comparisonRows": [
+      {
+        "label": "Dikkat yolu",
+        "struggling": "Tek bir taş kümesine kilitleniyorsunuz.",
+        "stronger": "Ana risk bölgelerine tutarlı bir sırayla dokunuyorsunuz."
+      },
+      {
+        "label": "Uzun menzilli taşlar",
+        "struggling": "Aksiyondan uzak fil ve kaleleri unutuyorsunuz.",
+        "stronger": "Bir hamleye güvenmeden önce tüm hatlarını tarıyorsunuz."
+      },
+      {
+        "label": "Tahta bölgeleri",
+        "struggling": "Sakin görünen tarafı atlıyorsunuz.",
+        "stronger": "Oynamadan önce sakin tarafı kontrol ediyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Tüm tahta görüşünü daha iyi taramak yerine daha uzun bakmak sanmak.",
+      "Merkez daha acil göründüğü için kenarları yok saymak.",
+      "Uzun menzilli taş hatlarını baştan sona izlememek.",
+      "Taşları net hatırlayamadan tahtanın daha fazlasını taramaya çalışmak."
+    ],
+    "mistakesCallout": "Net bir tarama olmadan fazladan düşünme süresi işe yaramaz. Tahtayı her seferinde aynı sırayla kontrol edin.",
+    "planTitle": "7 günlük tüm tahta tarama planı",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "10 dakika",
+        "detail": "Yalnızca şah kontrolleri, korumasız taş kontrolleri ve kenar taşı taramaları."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "12 dakika",
+        "detail": "Taramaya fil ve kale hatlarının tam izlenmesini ekleyin."
+      },
+      {
+        "label": "5. gün",
+        "duration": "12 dakika",
+        "detail": "Memory Chess kullanın ve tahtayı rastgele sıra yerine bölgelere göre hatırlayın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15 dakika",
+        "detail": "Taramayı hızlı oyunlara taşıyın ve bir hata olduğunda hangi bölgenin kaçırmaya yol açtığını not edin."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Tahtanın diğer tarafındaki taşları neden kaçırıyorum?",
+        "answer": "Çünkü dikkatiniz fazla yerel. Sabit bir tarama sırası, her şeyi doğal olarak fark etmeyi ummaktan iyidir."
+      },
+      {
+        "question": "Memory Chess tüm tahta farkındalığına yarar mı?",
+        "answer": "Evet. Yalnızca taktik odağı değil, tahtanın daha fazlasını hafızada aktif tutmayı çalıştırır."
+      },
+      {
+        "question": "Her hamlede kenarlara bakmalı mıyım?",
+        "answer": "Evet, özellikle yeni başlayanken. Birçok ucuz hata kenar taşlarında ve uzun hatlarda saklanır."
+      },
+      {
+        "question": "Taramanın geliştiğini nasıl anlarım?",
+        "answer": "Daha az uzak tehdit kaçırır ve filler, kaleler ve keşif saldırıları sizi daha az şaşırtır."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Tüm tahta farkındalığını daha güçlü bir güvenlik listesiyle eşleştirin."
+      },
+      {
+        "reason": "Geniş tarama kolaylaşsın diye zihinsel tahtayı geliştirin."
+      },
+      {
+        "reason": "Geniş taramalar daha az yorucu olsun diye kareleri daha hızlı tanıyın."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Daha hızlı tahta farkındalığı için koordinat çalışması",
+    "h1": "Yeni başlayanlar için satranç koordinat çalışması",
+    "description": "Kare adlarını daha hızlı öğrenin; tarama, notasyon ve görselleştirmeyi kolaylaştırın.",
+    "primaryKeyword": "satranç koordinat çalışması",
+    "secondaryKeywords": [
+      "satranç notasyonu çalışması",
+      "satranç koordinatlarını öğrenmek",
+      "kareleri daha hızlı tanımak",
+      "tahtadaki kare farkındalığı",
+      "satrançta kare adlandırma çalışmaları"
+    ],
+    "painPoint": "Bir karenin adını çıkarmak için zamana ihtiyacınız var ya da kareleri sık karıştırıyorsunuz.",
+    "ctaLabel": "Kare adlarını çalış",
+    "quickAnswer": "Koordinatlar 64 karenin adıdır. Onları öğrenmek tarama, hamle canlandırma ve oyun incelemeyi kolaylaştırır.",
+    "keyTakeaways": [
+      "Kareleri hızlı tanımak taramaları kolaylaştırır.",
+      "Koordinatları gerçek konumlarla çalışın.",
+      "Başlamak için yalnızca temel kare adları yeter."
+    ],
+    "whoThisIsFor": [
+      "Dikeyleri ve yatayları hâlâ yavaş sayan yeni başlayanlar.",
+      "Tarama ve görselleştirmenin hızlanmasını isteyen oyuncular.",
+      "Satranç notasyonunu kafa karıştırıcı bulan herkes."
+    ],
+    "timeToRead": "7 dakikalık okuma",
+    "introParagraphs": [
+      "Koordinatlar yalnızca kitaplar ve hamle listeleri için değildir. Kareleri hızlı tanımak tahta görüşüne, hafızaya ve oyun incelemesine yardım eder.",
+      "Kare adlarını bildiğinizde tahta, belirsiz bölgeler yığını yerine net bir haritaya dönüşür."
+    ],
+    "startHereTitle": "Gerçek bir tahtada kare adlarıyla başlayın",
+    "startHereSteps": [
+      "Bir dikey ya da yatay örüntü seçin ve kareleri sesli adlandırın.",
+      "Bir Memory Chess konumunu yeniden kurarken her taşın karesini söyleyin.",
+      "Son oyunlarınızdan bir konum alın ve kilit saldıran ve koruyanları kareyle adlandırın.",
+      "Filleri, kaleleri ve at sıçramalarını yalnızca görerek değil koordinatla çalışın.",
+      "Korumasız her taşın kareyle adlandırıldığı hızlı bir tahta taramasıyla bitirin."
+    ],
+    "drillSectionTitle": "Gerçek oyuna yarayan koordinat çalışmaları",
+    "drillCards": [
+      {
+        "title": "Taş-kare adlandırma",
+        "description": "Bir tahtayı yeniden kurun ve her taşı adı ve karesiyle söyleyin.",
+        "duration": "4 dakika",
+        "goal": "Kare adlarını hatırlamanız gereken taşlara bağlamak.",
+        "ctaLabel": "Her kareyi adlandır"
+      },
+      {
+        "title": "Uzun hat adlandırma",
+        "description": "Fil ve kale hatlarını izleyin ve etkiledikleri kareleri söyleyin.",
+        "duration": "4 dakika",
+        "goal": "Koordinatları tam tahta taramalarında yararlı kılmak.",
+        "ctaLabel": "Hatları kareyle izle"
+      },
+      {
+        "title": "At sıçraması haritası",
+        "description": "Bir at karesi seçin ve tüm kurallı varış karelerini hızlıca adlandırın.",
+        "duration": "3 dakika",
+        "goal": "At hamlelerini ve hedef kareleri daha hızlı tanımak.",
+        "ctaLabel": "Sıçramaları haritala"
+      }
+    ],
+    "comparisonTitle": "Yavaş kare tanıma ile hızlı kare tanıma",
+    "comparisonSummary": "Koordinatlar satrancınızın her yanını iyileştirmez ama birkaç beceriyi kolaylaştırır.",
+    "comparisonRows": [
+      {
+        "label": "Tahta taraması",
+        "struggling": "Biçimi biliyorsunuz ama kare adlarını değil.",
+        "stronger": "Tehditleri ve koruyanları daha kesin ve hızlı belirliyorsunuz."
+      },
+      {
+        "label": "Görselleştirme",
+        "struggling": "Canlandırılan hamleler belirsiz kalıyor.",
+        "stronger": "Ortaya çıkan tahtayı anlatmak ve tutmak kolaylaşıyor."
+      },
+      {
+        "label": "İnceleme",
+        "struggling": "Oyun sonrası notlar bulanık kalıyor.",
+        "stronger": "Kilit anı sonradan çalışacak kadar net anlatabiliyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Kare adlarını gerçek konumlar olmadan çalışmak.",
+      "Canlı tahta örnekleri olmadan notasyon kurallarını ezberlemeye çalışmak.",
+      "Kare adlarını çalışırken uzun menzilli taş hatlarını yok saymak.",
+      "Temel notasyon tanıdık gelince alışkanlığı bırakmak."
+    ],
+    "mistakesCallout": "Yalnızca kare adlarını tekrarlamayın. Onları gerçek taşlar ve konumlarla kullanın.",
+    "planTitle": "7 günlük koordinat ısınma planı",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "8 dakika",
+        "detail": "Bir Memory Chess konumunu yeniden kurarken her taşı ve karesini adlandırın."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "10 dakika",
+        "detail": "Filler ve kaleler için uzun hat adlandırmasını ekleyin."
+      },
+      {
+        "label": "5. gün",
+        "duration": "10 dakika",
+        "detail": "At sıçraması haritalamasını ve merkez karelerde akıcılığı çalışın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "12 dakika",
+        "detail": "Tam bir tahta taraması sırasında kare adlarını kullanın, sonra önemli bir konumu yalnızca kare adlarıyla inceleyin."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Koordinatlar yeni başlayanlar için gerçekten önemli mi?",
+        "answer": "Evet, tahta farkındalığını, görselleştirmeyi ve incelemeyi hızlandırdığında. Kusursuz notasyon gerekmez ama hızlı kare tanıma yarar."
+      },
+      {
+        "question": "Koordinatları öğrenmenin en iyi yolu nedir?",
+        "answer": "Notasyonu tek başına tekrarlamak yerine kare adlarını gerçek konumlar ve taşlarla öğrenin."
+      },
+      {
+        "question": "Bu, hata yapmayı bırakmama yardım eder mi?",
+        "answer": "Dolaylı olarak evet. Hızlı kare tanıma, taramaları ve tehdit kontrollerini daha kesin yapar."
+      },
+      {
+        "question": "Koordinatları ne kadar çalışmalıyım?",
+        "answer": "Çalışma gerçek tahta işine bağlıysa beş-on odaklı dakika yeterlidir."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Tüm tahtanın daha geniş taranmasını desteklemek için koordinatları kullanın."
+      },
+      {
+        "reason": "Zihinsel tahta güncellemelerini kare kare daha kesin yapın."
+      },
+      {
+        "reason": "Baskı altında düşüncenizi basitleştirmek için kare adlandırmayı kullanın."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Yeni başlayanlar için günlük 20 dakikalık satranç planı",
+    "h1": "Yeni başlayanlar için günlük 20 dakikalık satranç planı",
+    "description": "Tahta çalışması, hafıza, oyunlar ve kısa incelemeden oluşan basit bir 20 dakikalık planı izleyin.",
+    "primaryKeyword": "günlük 20 dakikalık satranç planı",
+    "secondaryKeywords": [
+      "yeni başlayanlar için günlük satranç rutini",
+      "kısa satranç çalışma planı",
+      "günde 20 dakikada gelişmek",
+      "başlangıç antrenman programı",
+      "bulmaca ve inceleme rutini"
+    ],
+    "painPoint": "Gelişmek istiyorsunuz ama çoğu satranç planı fazla zaman alıyor.",
+    "ctaLabel": "20 dakikalık plana başla",
+    "quickAnswer": "Birkaç dakikayı tahta hissine, hafızaya, taktiğe ve incelemeye ayırın. Rutini yorgunken bile yapabileceğiniz kadar kısa tutun.",
+    "keyTakeaways": [
+      "Sık çalışmak, uzun çalışmaktan önemlidir.",
+      "Hem alıştırmaları hem gerçek konumları kullanın.",
+      "Kısa bir inceleme yarınki çalışmaya yardım eder."
+    ],
+    "whoThisIsFor": [
+      "Az zamanı olan ama düzenli motivasyonu olan yeni başlayanlar.",
+      "Fazla zorlu planları bırakan oyuncular.",
+      "Tekrarlanabilir bir günlük rutin isteyen herkes."
+    ],
+    "timeToRead": "7 dakikalık okuma",
+    "introParagraphs": [
+      "Birçok çalışma planı yalnızca bol boş zamanla işler. İşe yarayan bir plan, yoğun bir günde de yürümelidir.",
+      "Bu 20 dakikalık rutin bir alıştırmayı, bir gerçek konumu ve kısa bir incelemeyi korur."
+    ],
+    "startHereTitle": "20 dakikalık satranç rutininiz",
+    "startHereSteps": [
+      "4 dakikayı tahta hissi ya da hatırlama alıştırmasına ayırın.",
+      "6 dakikayı, tüm hafta aynı ayarlarla yapılan bir Memory Chess turuna ayırın.",
+      "6 dakikayı taktiğe ya da gerçek bir oyundan gelen konuma ayırın.",
+      "4 dakikayı bugün nelerin bozulduğunu ve nelerin tuttuğunu yazmaya ayırın.",
+      "Yapıyı değiştirmeden önce en az 7 gün koruyun."
+    ],
+    "drillSectionTitle": "Kısa bir plana sığan çalışmalar",
+    "drillCards": [
+      {
+        "title": "Hatırlamayla ısınma",
+        "description": "Tüm seansın çapası olarak kısa bir Memory Chess turu kullanın.",
+        "duration": "6 dakika",
+        "goal": "Her seansa aynı hafıza ısınmasıyla başlamak.",
+        "ctaLabel": "Isınmaya başla"
+      },
+      {
+        "title": "Tehdit kontrolü sprinti",
+        "description": "Bir konumu şah, alma, tehdit ve korumasız taşlar için tarayın.",
+        "duration": "4 dakika",
+        "goal": "Neredeyse hiç zaman harcamadan oyuna aktarımı iyileştirmek.",
+        "ctaLabel": "Tehdit kontrolü yap"
+      },
+      {
+        "title": "Not döngüsü",
+        "description": "Bugün yaptığınız hata türü hakkında tek bir cümle yazın.",
+        "duration": "4 dakika",
+        "goal": "Bugünün dersini yarın kullanmak.",
+        "ctaLabel": "Bir ders not et"
+      }
+    ],
+    "comparisonTitle": "Sürdürebileceğiniz bir rutin",
+    "comparisonSummary": "En iyi rutin, normal bir haftada tekrarlayabildiğinizdir.",
+    "comparisonRows": [
+      {
+        "label": "Günlük yük",
+        "struggling": "Aynı anda çok fazla çalışma biçimi deniyorsunuz.",
+        "stronger": "Temelleri her gün kapsayan sıkı bir döngüyü tekrarlıyorsunuz."
+      },
+      {
+        "label": "Aktarım",
+        "struggling": "Sadece izliyor ya da okuyorsunuz, çalışmıyorsunuz.",
+        "stronger": "Her seansta oyunlarda kullandığınız bir çalışma var."
+      },
+      {
+        "label": "İnceleme",
+        "struggling": "Hiçbir şey yazılmadığı için hatalar kayboluyor.",
+        "stronger": "Her gün yarın için bir notla bitiyor."
+      }
+    ],
+    "mistakes": [
+      "Sürdürülemeyecek ileri seviye planları kopyalamak.",
+      "20 dakikanın tamamını pasif içeriğe harcamak.",
+      "Rutini iki günde bir değiştirmek.",
+      "Küçük göründüğü için incelemeyi atlamak."
+    ],
+    "mistakesCallout": "Planı büyütmeyin. Tekrarlanacak kadar hafif yapın.",
+    "planTitle": "7 gün boyunca 20 dakikalık rutin",
+    "planSteps": [
+      {
+        "label": "1-3. gün",
+        "duration": "20 dakika",
+        "detail": "Tutarlılık için aynı Memory Chess ayarlarını ve aynı kontrol biçimini koruyun."
+      },
+      {
+        "label": "4. gün",
+        "duration": "20 dakika",
+        "detail": "Notlarınızı okuyun ve sonraki üç gün için yalnızca bir düzeltme noktası tutun."
+      },
+      {
+        "label": "5-6. gün",
+        "duration": "20 dakika",
+        "detail": "Ek çeşitlilik olmadan tam olarak aynı yapıyı tekrarlayın."
+      },
+      {
+        "label": "7. gün",
+        "duration": "20 dakika",
+        "detail": "Hataların ya da hatırlama doğruluğunun iyileşip iyileşmediğine bakın ve sonraki hafta için tek bir ayarlama yapın."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Günde 20 dakika satranç çalışması yeterli mi?",
+        "answer": "Düzenliyse ve yalnızca pasif öğrenme değil, doğrudan oyuna aktarılan çalışmalar içeriyorsa evet."
+      },
+      {
+        "question": "20 dakikanın tamamını taktiğe mi ayırmalıyım?",
+        "answer": "Genelde hayır. Tahta netliği, taktik aktarımı ve kısa incelemenin karışımı yeni başlayanlarda daha iyi işler."
+      },
+      {
+        "question": "Aynı planı ne kadar korumalıyım?",
+        "answer": "En az bir hafta. Sürekli değiştirmek ilerlemeyi okunmaz kılar."
+      },
+      {
+        "question": "Neyi takip etmeliyim?",
+        "answer": "Oyun başına hataları, hatırlama doğruluğunu ve en sık görülen hata türünü."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bu kısa rutinin daha uzun bir plana nasıl oturduğunu görün."
+      },
+      {
+        "reason": "Taktik çalışmasıyla tahta netliğini dengeleyin."
+      },
+      {
+        "reason": "İnceleme bloğunu basit ve verimli tutun."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Yeni başlayanlar satranç oyunlarını nasıl inceler",
+    "h1": "Yeni başlayanlar satranç oyunlarını nasıl inceler",
+    "description": "Oyunlarınızı inceleyin, hatalarınızı anlayın ve çalışmak için net bir şey seçin.",
+    "primaryKeyword": "yeni başlayanlar için satranç oyunu incelemesi",
+    "secondaryKeywords": [
+      "yeni başlayanlar için oyun analizi",
+      "satranç oyunlarını gözden geçirmek",
+      "satrançta kendini incelemek",
+      "hataları incelemek",
+      "oyun sonrası rutin"
+    ],
+    "painPoint": "İncelemeniz çok hızlı, çok dağınık ya da motor varyantlarıyla dolu.",
+    "ctaLabel": "Sonraki oyunu incele",
+    "quickAnswer": "Oyunun nerede döndüğünü bulun, hata türünü adlandırın ve bir düzeltme seçin. Motora ancak konumu kendiniz incelendikten sonra bakın.",
+    "keyTakeaways": [
+      "Her incelemeyi uzun bir motor hamleleri listesiyle değil bir eylemle bitirin.",
+      "Hata türünü adlandırmak çalışma seçimine yardım eder.",
+      "Kilit konumu hafızadan yeniden kurmayı deneyin."
+    ],
+    "whoThisIsFor": [
+      "Oyunlarını inceleyip sonrasında ne yapacağını bilmeyen oyuncular.",
+      "Değerlendirmenin sıçradığını görüp nedenini anlamayan yeni başlayanlar.",
+      "Daha basit bir oyun sonrası alışkanlığı isteyen herkes."
+    ],
+    "timeToRead": "7 dakikalık okuma",
+    "introParagraphs": [
+      "Bir soruyla başlayın: hangi hata oyunu değiştirdi? Tek başına motor değerlendirmesi neyi çalışmanız gerektiğini açıklamaz.",
+      "Kilit konumu yeniden kurun, hatayı adlandırın ve bundan yarının çalışmasını çıkarın."
+    ],
+    "startHereTitle": "Buradan başlayın: yeni başlayan inceleme döngüsü",
+    "startHereSteps": [
+      "Konumun çok değiştiği ilk anı bulun.",
+      "Motora bakmadan önce o konumu hafızadan yeniden kurun.",
+      "Hatayı görüş, hafıza, hesaplama ya da zaman yönetimi olarak sınıflandırın.",
+      "Hangi sinyalin size yavaşlamayı söyleyeceğini sorun.",
+      "Cevabı bir sonraki seansınız için bir çalışmaya dönüştürün."
+    ],
+    "drillSectionTitle": "Basit inceleme çalışmaları",
+    "drillCards": [
+      {
+        "title": "Kilit konumu yeniden kur",
+        "description": "Ana hatanın konumunu kontrol etmeden önce hafızadan yeniden kurun.",
+        "duration": "5 dakika",
+        "goal": "Cevabı görmeden önce konumu hatırlamak.",
+        "ctaLabel": "Anı yeniden kur"
+      },
+      {
+        "title": "Hata türünü etiketle",
+        "description": "Her büyük hatayı görüş, hafıza, hesaplama ya da zaman sıkıntısı olarak adlandırın.",
+        "duration": "3 dakika",
+        "goal": "Sırada neyi çalışacağınızı bilmek.",
+        "ctaLabel": "Hata türünü etiketle"
+      },
+      {
+        "title": "Tek düzeltmeli inceleme",
+        "description": "İncelemeyi yarın için net bir düzeltmeyle bitirin.",
+        "duration": "2 dakika",
+        "goal": "Yararlı bir sonraki adımla kapatmak.",
+        "ctaLabel": "Bir düzeltme seç"
+      }
+    ],
+    "comparisonTitle": "Yararlı inceleme ile yararsız inceleme",
+    "comparisonSummary": "Her hamleyi çalışmanız gerekmez. Bir sonraki çalışmanız için en net dersi bulun.",
+    "comparisonRows": [
+      {
+        "label": "Motor kullanımı",
+        "struggling": "Hemen motora atlıyorsunuz.",
+        "stronger": "Kontrol etmeden önce teşhisi kendiniz koyuyorsunuz."
+      },
+      {
+        "label": "Sonuç",
+        "struggling": "Çok yorumla ve eylemsiz bitiriyorsunuz.",
+        "stronger": "Bir çalışmayla ya da listenizde bir düzeltmeyle bitiriyorsunuz."
+      },
+      {
+        "label": "Hafıza",
+        "struggling": "Konum oyundan hemen sonra kayboluyor.",
+        "stronger": "Konumu yeniden kurup hatayı daha net görüyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Kendi teşhisiniz olmadan yalnızca motor varyantlarıyla incelemek.",
+      "Her hamleyi aynı derinlikte incelemeye çalışmak.",
+      "Hata türünü adlandırmamak.",
+      "İncelemeyi bir sonraki çalışmayı seçmeden bitirmek."
+    ],
+    "mistakesCallout": "Her motor varyantını gezmeyin. Hatayı adlandırın ve düzeltmeyi çalışın.",
+    "planTitle": "7 günlük inceleme alışkanlığı",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "10 dakika",
+        "detail": "Bir oyunu inceleyin ve yalnızca ilk büyük dönüm noktasını bulun."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "12 dakika",
+        "detail": "Motora bakmadan önce o konumu hafızadan yeniden kurun."
+      },
+      {
+        "label": "5. gün",
+        "duration": "12 dakika",
+        "detail": "Her büyük hatayı bir türe bağlayın ve hangisinin en sık geldiğini sayın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15 dakika",
+        "detail": "En sık görülen hata türüne göre bir sonraki seansınızın ilk çalışmasını seçin."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Yeni başlayanlar motor kullanmalı mı?",
+        "answer": "Evet, ama kendi teşhis denemesinden sonra. Yoksa inceleme pasif kalır."
+      },
+      {
+        "question": "Bir oyundan sonra kaç hatayı incelemeli?",
+        "answer": "Çoğu yeni başlayan için bir ila üç büyük dönüm noktası yeterlidir."
+      },
+      {
+        "question": "İncelemeden sonra ne not almalıyım?",
+        "answer": "Hata türünü, kaçırılan sinyali ve bir sonraki sefer için bir çalışmayı ya da liste ayarlamasını."
+      },
+      {
+        "question": "Memory Chess incelemeye nasıl yardım eder?",
+        "answer": "Önemli konumları yeniden kurmanıza yardım eder, böylece incelemeniz daha kesin olur."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "İncelemeyi bunaltmayan bir rutine yerleştirin."
+      },
+      {
+        "reason": "İnceleme sonuçlarını hata önleme çalışmalarına dönüştürün."
+      },
+      {
+        "reason": "Oyun sonrası kilit anları hatırlayın ve yeniden kurun."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Yeni başlayanlar günde kaç satranç bulmacası çözmeli?",
+    "h1": "Yeni başlayanlar günde kaç satranç bulmacası çözmeli?",
+    "description": "Taktiği geliştiren, hafıza, oyun ve incelemeye zaman bırakan bir günlük bulmaca miktarı seçin.",
+    "primaryKeyword": "günde kaç satranç bulmacası",
+    "secondaryKeywords": [
+      "günlük bulmaca miktarı",
+      "yeni başlayanlar için bulmaca rutini",
+      "günde ne kadar taktik",
+      "çok fazla satranç bulmacası",
+      "yeni başlayan taktik hacmi"
+    ],
+    "painPoint": "Çok bulmaca çözüyorsunuz ama oyunlarınıza yarayıp yaramadığını bilmiyorsunuz.",
+    "ctaLabel": "Bulmaca ve pratiği dengele",
+    "quickAnswer": "Yeni başlayanların çoğu için kısa bir günlük seans yeterlidir. Net düşünürken durun ve oyunlara, hafızaya ve incelemeye zaman bırakın.",
+    "keyTakeaways": [
+      "Bulmacaların kalitesi miktarından önemlidir.",
+      "Çok fazla bulmaca, oyunlardan ve incelemeden zaman alır.",
+      "İdeal miktarınız oynamaya ya da incelemeye zaman bırakmalı."
+    ],
+    "whoThisIsFor": [
+      "Tüm çalışma planı bulmacalardan ibaret olan oyuncular.",
+      "Net bir bulmaca rutini isteyen yeni başlayanlar.",
+      "Bulmaca ve oyun pratiğini dengelemek isteyen herkes."
+    ],
+    "timeToRead": "7 dakikalık okuma",
+    "introParagraphs": [
+      "Herkes için mükemmel bir sayı yoktur. Çok az bulmaca örüntü öğrenimini yavaşlatır, çok fazlası başka yararlı şeylere zaman bırakmaz.",
+      "Keskin kalacak kadar çözün ve kalan zamanı tahta hatırlaması, oyunlar ve inceleme için kullanın."
+    ],
+    "startHereTitle": "Anlamlı bir günlük miktar seçin",
+    "startHereSteps": [
+      "Bulmacaların ısınmanız mı, ana bloğunuz mu yoksa aktarım kontrolünüz mü olduğuna karar verin.",
+      "Tahta netliği için öncesinde ya da sonrasında kısa bir Memory Chess turu koruyun.",
+      "Daha büyük bir sayı peşinde koşmak yerine yanıtlarınız aceleleşince durun.",
+      "Her gün gerçek bir oyundan kaçan bir taktik anı yeniden kurun.",
+      "Oyun hatalarınızın değişip değişmediğini kontrol etmeden miktarı değiştirmeyin."
+    ],
+    "drillSectionTitle": "Bulmacaları daha yararlı kılan çalışmalar",
+    "drillCards": [
+      {
+        "title": "Isınma artı hatırlama",
+        "description": "Soğuk başlamak yerine kısa bir hatırlama çalışmasını orta düzey bir bulmaca bloğuyla birleştirin.",
+        "duration": "10 dakika",
+        "goal": "Bulmaca pratiğini gerçek oyuna bağlamak.",
+        "ctaLabel": "Hatırlama ekle"
+      },
+      {
+        "title": "Her bulmacadan sonra sinyal kontrolü",
+        "description": "Çözümü görmeden önce taktiği mümkün kılan uyarı sinyalini sorun.",
+        "duration": "5 dakika",
+        "goal": "Bir konumun neden taktik içerdiğini fark etmek.",
+        "ctaLabel": "Sinyali kontrol et"
+      },
+      {
+        "title": "Oyun taktiğini yeniden kur",
+        "description": "Kaçan bir oyun taktiğini, yeniden kurduktan sonra çözeceğiniz bir bulmacaya dönüştürün.",
+        "duration": "5 dakika",
+        "goal": "Kendi oyunlarınızdaki taktikleri kullanmak.",
+        "ctaLabel": "Taktiği yeniden kur"
+      }
+    ],
+    "comparisonTitle": "Çok az, çok fazla ve yeterli bulmaca",
+    "comparisonSummary": "Doğru miktar taktiğinizi keskin tutar ve yine de oynamaya zaman bırakır.",
+    "comparisonRows": [
+      {
+        "label": "Örüntü tanıma",
+        "struggling": "Çok az pratik, yaygın taktikleri yabancı kılar.",
+        "stronger": "Orta düzey bir günlük blok örüntüleri taze tutar."
+      },
+      {
+        "label": "Aktarım",
+        "struggling": "Çok fazla bulmaca, tahta hissine ya da incelemeye zaman bırakmaz.",
+        "stronger": "Rutininiz hatırlamayı ve oyun konumu çalışmasını korur."
+      },
+      {
+        "label": "Yorgunluk",
+        "struggling": "Geç bulmacalar aceleci tahminlere dönüşür.",
+        "stronger": "Kararlar temizken durursunuz."
+      }
+    ],
+    "mistakes": [
+      "Bulmaca sayısını tek kalite ölçüsü olarak kullanmak.",
+      "Oyunlara hiç aktarım olmadan taktik çözmek.",
+      "Odak düştükten çok sonra devam etmek.",
+      "İncelemeyi ve tahta hissini sıkıştırmak."
+    ],
+    "mistakesCallout": "Daha fazla bulmaca her zaman daha iyi değildir. Gerçek oyunlarınıza yarayıp yaramadığını kontrol edin.",
+    "planTitle": "7 günlük denge planı",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "15 dakika",
+        "detail": "Küçük bir bulmaca bloğu kullanın ve öncesine kısa bir hatırlama çalışması ekleyin."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "15 dakika",
+        "detail": "Taktiğin neden orada olduğunu fark etmek için her bulmacadan sonra sinyal kontrolü ekleyin."
+      },
+      {
+        "label": "5. gün",
+        "duration": "15 dakika",
+        "detail": "Kaçan bir oyun taktiğini yeniden kurun ve bulmaca performansınızla karşılaştırın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15-20 dakika",
+        "detail": "Yanıtlarınız özenli kalıyorsa ve oynamaya zaman kalıyorsa miktarı değiştirin."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Yeni başlayanlar için günde kaç bulmaca yeterli?",
+        "answer": "Yaygın taktikleri tanıdık tutacak ve hafızaya ve oyunlara zaman bırakacak kadar. Çoğu için kısa bir günlük seans yeter."
+      },
+      {
+        "question": "Çok fazla bulmaca zarar verebilir mi?",
+        "answer": "Dolaylı olarak evet. Gerçek aktarım için gereken tahta hissini, hatırlamayı ve incelemeyi sıkıştırabilir."
+      },
+      {
+        "question": "Bulmacalar oyunlardan önce mi sonra mı?",
+        "answer": "İkisi de olur ama küçük bir ısınma artı sonrasında bir aktarım adımı çoğu zaman iyi işler."
+      },
+      {
+        "question": "Neyi takip etmeliyim?",
+        "answer": "Yalnızca kaç bulmaca yaptığınızı değil, hataların ve kaçan basit taktiklerin azalıp azalmadığını."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bulmacalarda başarılı olmanın neden yetmediğini anlayın."
+      },
+      {
+        "reason": "Bulmacaları dengeli ve kısa bir rutine yerleştirin."
+      },
+      {
+        "reason": "Miktarı artırmak yerine yaygın örüntüleri öğrenin."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Satrançta örüntü tanıma çalışmaları",
+    "h1": "Yeni başlayanlar için örüntü tanıma çalışmaları",
+    "description": "Yaygın satranç örüntülerini fark etmek ve yararlı fikirleri daha hızlı görmek için basit çalışmalar kullanın.",
+    "primaryKeyword": "satrançta örüntü tanıma çalışmaları",
+    "secondaryKeywords": [
+      "satrançta örüntü tanıma",
+      "taktik motif çalışması",
+      "taktik örüntü alıştırmaları",
+      "yeni başlayanlar için satranç örüntüleri",
+      "satranç motiflerini ezberlemek"
+    ],
+    "painPoint": "Her konum yeni görünüyor, bu yüzden taktik fikirleri geç fark ediyorsunuz.",
+    "ctaLabel": "Örüntüleri çalış",
+    "quickAnswer": "Örüntü, taşların ve karelerin tanıdık bir düzenidir. Altındaki fikri hızla görene kadar aynı örüntü türünü tekrarlayın.",
+    "keyTakeaways": [
+      "Örüntü, tahtadaki biçim ve onun ürettiği fikirdir.",
+      "Tahta hatırlaması, baskı altında örüntüleri fark etmeye yardım eder.",
+      "Çok sayıda yeni örüntü eklemeden önce birkaç yaygın örüntüyü tekrarlayın."
+    ],
+    "whoThisIsFor": [
+      "Taktik çözen ama oyunlarda benzer biçimleri fark etmeyen oyuncular.",
+      "Rastgele bulmacalardan daha çok yapı isteyen yeni başlayanlar.",
+      "Konumları hâlâ görsel olarak karışık bulan herkes."
+    ],
+    "timeToRead": "7 dakikalık okuma",
+    "introParagraphs": [
+      "Örüntü tanıma bir konumu tanıdık kılar. Tahtadaki bir biçim, siz hesaplamaya başlamadan önce çatalı, şişi, sıkışmış bir taşı ya da zayıf bir kareyi işaret edebilir.",
+      "Küçük bir yaygın örüntü grubuyla başlayın. Fikri taşıyan taşları ve kareleri tutmak için her konumu hafızadan yeniden kurun."
+    ],
+    "startHereTitle": "Tek seferde bir örüntüyle başlayın",
+    "startHereSteps": [
+      "Bir örüntü türü seçin: çatallar, şişler ya da korumasız taşlara saldırılar.",
+      "Biçimi inceleyin ve yalnızca sabit diyagramdan değil, hafızadan yeniden kurun.",
+      "Örüntüyü taşıyan kareleri ve koruyanları adlandırın.",
+      "Temiz hatırlamayı pekiştirmek için bir Memory Chess turu oynayın.",
+      "Son bir oyunu inceleyin ve benzer bir örüntünün nerede belirdiğini ya da eksik kaldığını bulun."
+    ],
+    "drillSectionTitle": "Basit örüntü tanıma çalışmaları",
+    "drillCards": [
+      {
+        "title": "Bir örüntüyü yeniden kur",
+        "description": "Bir satranç örüntüsünü hafızadan yeniden kurun ve kilit taşları ve kareleri adlandırın.",
+        "duration": "5 dakika",
+        "goal": "Örüntüyü net bir tahta hatırlamasına bağlamak.",
+        "ctaLabel": "Örüntüyü yeniden kur"
+      },
+      {
+        "title": "Bir aileyi tekrarla",
+        "description": "Tür değiştirmeden önce aynı örüntünün birkaç örneğini tekrarlayın.",
+        "duration": "5 dakika",
+        "goal": "Tahtadaki biçimi tanıdık kılmak.",
+        "ctaLabel": "Bir aileyi tekrarla"
+      },
+      {
+        "title": "Kendi oyununda bul",
+        "description": "Son bir oyunu gözden geçirin ve aynı örüntünün nerede belirdiğini bulun.",
+        "duration": "5 dakika",
+        "goal": "Örüntü çalışmasını gerçek konumlara bağlamak.",
+        "ctaLabel": "Kendi oyunlarında ara"
+      }
+    ],
+    "comparisonTitle": "Rastgele taktik ile gerçek örüntü tanıma",
+    "comparisonSummary": "Örüntüler, uzun bir hesaplamaya başlamadan önce fark ettiğinizde işe yarar.",
+    "comparisonRows": [
+      {
+        "label": "Çalışma yapısı",
+        "struggling": "İlgisiz örüntüler arasında sürekli geçiş yapıyorsunuz.",
+        "stronger": "Tanıdık gelene kadar bir örüntü türünü tekrarlıyorsunuz."
+      },
+      {
+        "label": "Tahta hatırlaması",
+        "struggling": "Fikri biliyorsunuz ama onu taşıyan kareleri değil.",
+        "stronger": "Örüntüyü işler kılan ayrıntıları hatırlıyorsunuz."
+      },
+      {
+        "label": "Gerçek oyunlar",
+        "struggling": "Örüntüler bulmacalarda sıkışıp kalıyor.",
+        "stronger": "Devam eden oyunlarda erken işaretlerini fark ediyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Biçimi anlamadan yalnızca örüntünün adını öğrenmek.",
+      "Örüntü türünü çok sık değiştirmek.",
+      "Örüntüyü taşıyan kareleri ve koruyanları yok saymak.",
+      "Örüntü çalışmasından sonra oyun incelemesini atlamak."
+    ],
+    "mistakesCallout": "Çeşitliliği çok hızlı eklemeyin. Tanıdık gelene kadar bir örüntü türünü tekrarlayın.",
+    "planTitle": "7 günlük örüntü planı",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "10 dakika",
+        "detail": "Bir örüntü türü seçin ve birkaç örneği hafızadan yeniden kurun."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "12 dakika",
+        "detail": "Her örneğe kare adlarını ve koruyucu saymayı ekleyin."
+      },
+      {
+        "label": "5. gün",
+        "duration": "12 dakika",
+        "detail": "Tahta daha net görünsün diye örüntü çalışmasından önce bir Memory Chess turu oynayın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15 dakika",
+        "detail": "Son oyunlarınızı aynı örüntü için tarayın ve nerede belirdiğini ya da az kalsın belireceğini not edin."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Satrançta örüntü tanıma nedir?",
+        "answer": "Tahtada tanıdık bir biçimi görmek ve orada genellikle işe yarayan fikri hızla hatırlamaktır."
+      },
+      {
+        "question": "Yeni başlayanlar örüntü tanımayı nasıl çalışır?",
+        "answer": "Küçük bir örüntü kümesini tekrarlayarak, konumları hafızadan yeniden kurarak ve onları gerçek oyunlarda arayarak."
+      },
+      {
+        "question": "Örüntü tanıma için bulmacalar yeterli mi?",
+        "answer": "Her zaman değil. Yardımcı olurlar ama aynı türü tekrarlamak ve oyunları incelemek onları gerçekten kullanılabilir kılar."
+      },
+      {
+        "question": "Memory Chess'i neden örüntü çalışmasıyla birleştirmeli?",
+        "answer": "Çünkü tüm tahta hafızada daha net kaldığında örüntü tanımak kolaylaşır."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Örüntü öğrenimi için daha güçlü bir hatırlama katmanı kurun."
+      },
+      {
+        "reason": "Örüntü çalışmasıyla makul bir bulmaca miktarını dengeleyin."
+      },
+      {
+        "reason": "Çalıştığınız örüntüleri gerçek oyunlarda kullanın."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Yeni başlayanlar için satranç hesaplama alıştırmaları",
+    "h1": "Yeni başlayanlar için satranç hesaplama alıştırmaları",
+    "description": "Hamleleri karşılaştırmak ve kısa varyantları kaybetmeden izlemek için basit hesaplama alıştırmaları kullanın.",
+    "primaryKeyword": "satranç hesaplama alıştırmaları",
+    "secondaryKeywords": [
+      "yeni başlayanlar için satranç hesaplaması",
+      "hamleleri önceden hesaplamak",
+      "varyant tutma alıştırmaları",
+      "aday hamle çalışması",
+      "görselleştirme ve hesaplama"
+    ],
+    "painPoint": "Hesaplamaya başlıyorsunuz ama kısa sürede hamleleri karıştırıyor ya da konumu kaybediyorsunuz.",
+    "ctaLabel": "Net hesaplamayı çalış",
+    "quickAnswer": "Başta yalnızca bir ya da iki olası hamleyi karşılaştırın. Tahtayı zihninizde net tutun ve hemen doğrulayın.",
+    "keyTakeaways": [
+      "İki net hamle dizisi, beş karışık diziden iyidir.",
+      "Net görselleştirme net hesaplama getirir.",
+      "Her alıştırmadan hemen sonra doğrulayın."
+    ],
+    "whoThisIsFor": [
+      "Hesaplaması gerektiğini bilen ama varyantı çabuk kaybeden oyuncular.",
+      "Sert konumlarda sezgiyle oynayan yeni başlayanlar.",
+      "Hafıza çalışmasını gerçek kararlarda kullanmak isteyen herkes."
+    ],
+    "timeToRead": "7 dakikalık okuma",
+    "introParagraphs": [
+      "Hesaplama basitçe şunu sormaktır: «Buraya oynarsam ne olur?» Zor olan, tahtayı net tutmaktır.",
+      "Tahta hatırlaması ve görselleştirme hesaplamayı kolaylaştırır. İkisini ayrı ayrı değil birlikte çalışın."
+    ],
+    "startHereTitle": "İki olası hamleyle başlayın",
+    "startHereSteps": [
+      "Bir konumdan en fazla iki aday hamle seçin.",
+      "Bir varyantı iki yarım hamle canlandırın ve tek cümlede özetleyin.",
+      "Temel tahta keskin kalsın diye bir Memory Chess turu kullanın.",
+      "Başlangıç konumuna dönün ve iki varyantı sakince karşılaştırın.",
+      "Hemen doğrulayın ve hatanın tahta görüntüsünden mi hamle sırasından mı geldiğini söyleyin."
+    ],
+    "drillSectionTitle": "Basit hesaplama alıştırmaları",
+    "drillCards": [
+      {
+        "title": "İki adayı karşılaştır",
+        "description": "İki makul hamleyi tutun ve kısa taktik sonuçlarını karşılaştırın.",
+        "duration": "6 dakika",
+        "goal": "Fazla şey tutmadan hamleleri karşılaştırmak.",
+        "ctaLabel": "İki varyantı karşılaştır"
+      },
+      {
+        "title": "Önce hatırla, sonra hesapla",
+        "description": "Varyant çalışmasından önce daha temiz bir tahta için kısa bir hatırlama turu kullanın.",
+        "duration": "4 dakika",
+        "goal": "Bir diziyi izlemeden önce tahtayı tutmak.",
+        "ctaLabel": "Varyanttan önce hatırla"
+      },
+      {
+        "title": "Tek cümlelik varyant",
+        "description": "Doğrulamadan önce dalı tek cümlede özetleyin.",
+        "duration": "4 dakika",
+        "goal": "Diziyi net ve anlatması kolay tutmak.",
+        "ctaLabel": "Dalı özetle"
+      }
+    ],
+    "comparisonTitle": "Dağınık hesaplama ile temiz hesaplama",
+    "comparisonSummary": "Henüz uzun varyantların peşinden gitmeyin. Önce kısa varyantları doğru yapın.",
+    "comparisonRows": [
+      {
+        "label": "Aday hamleler",
+        "struggling": "Aynı anda çok fazla hamle düşünüyorsunuz.",
+        "stronger": "Az sayıda makul hamleyi karşılaştırıyorsunuz."
+      },
+      {
+        "label": "Tahta görüntüsü",
+        "struggling": "Ortaya çıkan konum çabuk bulanıklaşıyor.",
+        "stronger": "Önemli kareleri ve koruyanları hafızada sabit tutuyorsunuz."
+      },
+      {
+        "label": "Doğrulama",
+        "struggling": "Varyantın neden çöktüğünü bilmiyorsunuz.",
+        "stronger": "Hatanın hafızadan mı, hamle sırasından mı yoksa değerlendirmeden mi geldiğini görüyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Aynı anda çok fazla dalı hesaplamaya çalışmak.",
+      "Aday seçimini atlayıp her şeyi hesaplamak.",
+      "Varyanttan hemen sonra doğrulamamak.",
+      "Zayıf bir tahta hafızasını yok saymak."
+    ],
+    "mistakesCallout": "Henüz çok ileri hesaplamayın. Net bir iki hamlelik varyant, uzun ve karışık olandan yararlıdır.",
+    "planTitle": "7 günlük hesaplama planı",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "10 dakika",
+        "detail": "Yalnızca iki aday karşılaştırması ve anında doğrulama."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "12 dakika",
+        "detail": "Hesaplama çalışmasından önce bir Memory Chess turu ekleyin."
+      },
+      {
+        "label": "5. gün",
+        "duration": "12 dakika",
+        "detail": "Doğrulamadan önce her dalı tek cümlede özetleyin."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15 dakika",
+        "detail": "Akışı hızlı satranca taşıyın: taktik olarak sert yerlerde durun ve aday sayısını küçük tutun."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Yeni başlayanlar hesaplamayı nasıl geliştirir?",
+        "answer": "Az aday, hızlı doğrulama ve varyant çalışmasının altında daha iyi görselleştirme ve hatırlama."
+      },
+      {
+        "question": "Daha ileri hesaplamalı mıyım?",
+        "answer": "Ancak mevcut derinlik güvenilir olduğunda. Doğruluk hırstan önemlidir."
+      },
+      {
+        "question": "Varyantlarım neden çöküyor?",
+        "answer": "Çoğu zaman tahta görüntüsü yeterince sabit olmadığı ya da aynı anda çok fazla aday aktif olduğu için."
+      },
+      {
+        "question": "Memory Chess hesaplamaya yarar mı?",
+        "answer": "Evet. Daha iyi hatırlama, hesaplarken ortaya çıkan konumları tutmayı çok kolaylaştırır."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Hesaplamanın arkasındaki varyantları tutan katmanı geliştirin."
+      },
+      {
+        "reason": "Daha uzun varyantlara geçmeden tahtayı daha net görün."
+      },
+      {
+        "reason": "Daha temiz hesaplama için daha basit bir karar akışı kullanın."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Yeni başlayanlar satrançta nasıl düşünmeli",
+    "h1": "Yeni başlayanlar satrançta nasıl düşünmeli",
+    "description": "Tehditleri kontrol etmek, seçenekleri karşılaştırmak ve zamanı yönetmek için her hamlede basit bir akış kullanın.",
+    "primaryKeyword": "satrançta nasıl düşünülür",
+    "secondaryKeywords": [
+      "yeni başlayanlar için düşünce süreci",
+      "satrançta ne düşünmeli",
+      "satrançta karar verme",
+      "hamle öncesi kontrol listesi",
+      "basit düşünce akışı"
+    ],
+    "painPoint": "Ya çok hızlı oynuyorsunuz ya çok uzun düşünüyorsunuz ve yine de emin değilsiniz.",
+    "ctaLabel": "Basit hamle akışını çalış",
+    "quickAnswer": "Her hamlede aynı kısa akışı kullanın: rakibin tehditlerini kontrol edin, bir ila üç hamle seçin ve seçiminizin güvenli olduğundan emin olun.",
+    "keyTakeaways": [
+      "Kısa bir akışı kullanmak uzun bir listeden kolaydır.",
+      "Tehdit kontrolü her zaman hamle seçiminden önce gelir.",
+      "Konum tehlikeli hâle geldiğinde daha çok zaman ayırın."
+    ],
+    "whoThisIsFor": [
+      "Sakin konumlarda tahmin eden, sert konumlarda donan oyuncular.",
+      "Her hamle için net bir akışa ihtiyaç duyan yeni başlayanlar.",
+      "Baskı altında daha temiz karar vermek isteyen herkes."
+    ],
+    "timeToRead": "7 dakikalık okuma",
+    "introParagraphs": [
+      "Yeni başlayanlar sık sık güçlü oyuncuların ne düşündüğünü merak eder. Yanıt karmaşık gelebilir ama akışınız her seferinde kullanacak kadar kısa olmalı.",
+      "Tehditlerle başlayın, az sayıda olası hamle seçin ve son seçimin güvenli olduğunu kontrol edin."
+    ],
+    "startHereTitle": "Buradan başlayın: dört adımlı akış",
+    "startHereSteps": [
+      "Önce rakibin en güçlü tehditlerini kontrol edin.",
+      "Bir ila üç gerçekçi aday hamle adlandırın.",
+      "Planladığınız hamlenin güvenli olduğunu ve hiçbir taşı korumasız bırakmadığını kontrol edin.",
+      "Konum oynamak için yeterince sakin mi yoksa yavaşlamak için yeterince sert mi diye sorun.",
+      "Oyundan sonra akışın nerede koptuğuna bakın."
+    ],
+    "drillSectionTitle": "Daha sakin kararlar için çalışmalar",
+    "drillCards": [
+      {
+        "title": "«Önce rakip» tetikleyicisi",
+        "description": "Her çalışma konumuna rakibin zorlayıcı olanaklarını adlandırarak başlayın.",
+        "duration": "3 dakika",
+        "goal": "Tehdit kontrolünü isteğe bağlı değil otomatik yapmak.",
+        "ctaLabel": "Tehditlerle başla"
+      },
+      {
+        "title": "Üç aday sınırı",
+        "description": "Bir çalışma konumunda kendinize asla üçten fazla aday hamle tanımayın.",
+        "duration": "4 dakika",
+        "goal": "Aşırı seçeneği ve takılıp kalmayı azaltmak.",
+        "ctaLabel": "Adayları sınırla"
+      },
+      {
+        "title": "Eminlik kontrolü",
+        "description": "Bir hamleye bakın ve gerçekten emin miydiniz yoksa düşünmekten yorulmuş muydunuz diye sorun.",
+        "duration": "4 dakika",
+        "goal": "Yorgunluktan oynadığınızı fark etmek.",
+        "ctaLabel": "Eminliği kontrol et"
+      }
+    ],
+    "comparisonTitle": "Basit bir hamle akışı",
+    "comparisonSummary": "En iyi düşünce süreci, saat işlerken bile kullanabildiğinizdir.",
+    "comparisonRows": [
+      {
+        "label": "Tehdit yönetimi",
+        "struggling": "Önce kendi planınızı düşünüyorsunuz.",
+        "stronger": "Rakibin en güçlü tehditleriyle başlıyorsunuz."
+      },
+      {
+        "label": "Aday hamleler",
+        "struggling": "Çok fazla olasılık arasında geziniyorsunuz.",
+        "stronger": "Küçük ve gerçekçi bir aday kümesi tutuyorsunuz."
+      },
+      {
+        "label": "Zaman kullanımı",
+        "struggling": "Her hamleye aynı dikkati veriyorsunuz.",
+        "stronger": "Gerilim, taktik ya da şah güvenliği değişince yavaşlıyorsunuz."
+      }
+    ],
+    "mistakes": [
+      "Gerçek oyunlarda hiç izlemediğiniz uzun bir liste kullanmak.",
+      "Tehditleri kontrol etmeden kendi planınızı düşünmek.",
+      "Aday listesinin fazla büyümesine izin vermek.",
+      "Yorgunluğu eminlikle karıştırmak."
+    ],
+    "mistakesCallout": "Başka kontroller eklemeyin. Her hamlede tekrarlayabileceğiniz kısa bir akış kullanın.",
+    "planTitle": "7 günlük akış ince ayarı",
+    "planSteps": [
+      {
+        "label": "1-2. gün",
+        "duration": "10 dakika",
+        "detail": "Yalnızca «önce rakip» tetikleyicisini ve üç aday sınırını kullanın."
+      },
+      {
+        "label": "3-4. gün",
+        "duration": "12 dakika",
+        "detail": "Karar verirken tahta daha net olsun diye kısa bir Memory Chess turu ekleyin."
+      },
+      {
+        "label": "5. gün",
+        "duration": "12 dakika",
+        "detail": "Son hatanızın tehdit kontrolünden mi yoksa fazla adaydan mı geldiğine bakın."
+      },
+      {
+        "label": "6-7. gün",
+        "duration": "15 dakika",
+        "detail": "Tüm akışı hızlı satrançta kullanın ve baskı altında hangi adımın koptuğunu not edin."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Yeni başlayanlar satrançta ne düşünmeli?",
+        "answer": "Rakibin tehditleriyle başlayın, bir ila üç olası hamle seçin ve son seçimin güvenli olduğunu kontrol edin."
+      },
+      {
+        "question": "Kaç aday hamle tutmalı?",
+        "answer": "Genellikle bir ila üç. Fazlası yeni başlayanları zorlar ve karar kalitesini düşürür."
+      },
+      {
+        "question": "Akışı bildiğim hâlde neden donuyorum?",
+        "answer": "Çoğu zaman tahta yeterince net olmadığı ya da çok fazla aday açık kaldığı için. Daha basit konumlar ve hafıza çalışması yardımcı olur."
+      },
+      {
+        "question": "Bir düşünce akışı hataları önleyebilir mi?",
+        "answer": "Evet, özellikle tehdit kontrolünü hamle seçiminden önce zorunlu kılıyorsa."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Akış hâlâ malzeme kaybettiriyorsa daha açık bir hata önleme listesi kullanın."
+      },
+      {
+        "reason": "Olası hamleleri karşılaştırmak için daha net hesaplama kullanın."
+      },
+      {
+        "reason": "Hamle akışınız sırasında kareleri daha hızlı tanıyın."
+      }
+    ]
+  }
+]

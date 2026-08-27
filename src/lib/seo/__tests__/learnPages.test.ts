@@ -1,9 +1,19 @@
 import {
-  getFeaturedLearnPages,
-  getLearnPageBySlug,
-  LEARN_PAGES,
+  EN_LEARN_PAGES as LEARN_PAGES,
   type LearnPageContent,
-} from "@/lib/seo/learnPages";
+} from "@/lib/seo/learn";
+
+// The registry helpers moved to per-locale resolvers; these keep the existing
+// assertions working against the English set.
+function getLearnPageBySlug(slug: string): LearnPageContent {
+  const page = LEARN_PAGES.find((entry) => entry.slug === slug);
+  if (!page) throw new Error(`Unknown learn slug: ${slug}`);
+  return page;
+}
+
+function getFeaturedLearnPages(limit = 4): LearnPageContent[] {
+  return LEARN_PAGES.filter((page) => page.featured).slice(0, limit);
+}
 
 function getVisibleCopy(page: LearnPageContent): string[] {
   return [

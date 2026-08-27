@@ -1,0 +1,226 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess snakker nå ditt språk",
+    "summary": "Spillet og alle guidene under Lær finnes nå på 24 språk, og nettstedet starter på ditt.",
+    "groups": [
+      {
+        "title": "24 språk",
+        "changes": [
+          "Memory Chess finnes nå på 24 språk: engelsk, spansk, russisk, brasiliansk portugisisk, tysk, fransk, hindi, italiensk, forenklet kinesisk, tyrkisk, svensk, nederlandsk, polsk, indonesisk, norsk, finsk, rumensk, vietnamesisk, tsjekkisk, japansk, koreansk, tradisjonell kinesisk, dansk og ungarsk.",
+          "Alt du leser mens du spiller, er oversatt – fra hjemmesiden og innstillingene til tidtakeren, resultatskjermen, topplisten og disse nyhetene."
+        ]
+      },
+      {
+        "title": "Alle 16 guidene under Lær, på alle språk",
+        "changes": [
+          {
+            "segments": [
+              "Hver eneste guide under ",
+              {
+                "text": "Lær"
+              },
+              " er oversatt i sin helhet. Øvingsstegene, drillene, ukeplanen og spørsmålene til slutt leses naturlig på ditt språk, med sjakkuttrykk som passer måten spillere faktisk snakker på."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Bytt språk når du vil",
+        "changes": [
+          "En globus øverst på hver side åpner språklisten. Hvert språk står skrevet på sitt eget språk, så du finner ditt uten å lese engelsk først.",
+          "Når du velger et språk, blir du stående nøyaktig der du var, og Memory Chess husker valget ditt til neste gang du er innom."
+        ]
+      },
+      {
+        "title": "Vi prøver å treffe riktig før du spør",
+        "changes": [
+          "Nye besøkende starter nå på språket nettleseren eller regionen deres foreslår, når vi har det. Er gjettet feil, ligger globusen klar til å rette det opp."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Jevnere partier, tydeligere resultater",
+    "summary": "Brettet står stødig, tilfeldige stillinger gir mer mening, og resultatene er lettere å gå gjennom.",
+    "groups": [
+      {
+        "title": "Stødigere spilling",
+        "changes": [
+          "Takk til hjelpsomme spillere som ga tilbakemelding: brettet blir nå stående på samme sted når innlæringen slutter og utplasseringen begynner. Kontrollene og brikkevelgeren står også på linje med brettet.",
+          "Sideoverskrifter, lydkontroller og avstander holder seg mer konsekvente gjennom hele partiet. Brikkene og koordinatene på brettet kan ikke lenger markeres ved et uhell."
+        ]
+      },
+      {
+        "title": "Bedre tilfeldige stillinger",
+        "changes": [
+          "Takk til en spiller som meldte fra om dette på Reddit: tilfeldige stillinger setter ikke lenger kongene ved siden av hverandre, to løpere for samme side på ruter med lik farge, bønder på første eller åttende rad, eller begge kongene i sjakk."
+        ]
+      },
+      {
+        "title": "Tydeligere resultater",
+        "changes": [
+          "Etter hvert parti kan du nå sammenligne stillingen du skulle huske, med brettet du sendte inn. Tydelige markører viser riktige, feil og bommede brikker.",
+          "Treffsikkerheten din og de viktigste knappene for omkamp og toppliste ligger nå samlet øverst i resultatet. Bommede brikker vises med en tydelig svart, stiplet ramme, mens brettet fortsatt er synlig under."
+        ]
+      },
+      {
+        "title": "En tydeligere avslutning",
+        "changes": [
+          "Når du sender inn, stopper tidtakeren i ett sekund, så du rekker å se den låste tiden din og det ferdige brettet før resultatet dukker opp. Et kjapt FERDIG!-glimt markerer slutten på runden, og tidtakeren for utplassering viser nå millisekunder."
+        ]
+      },
+      {
+        "title": "Litt statistikk til alle!",
+        "description": "Her er et øyeblikksbilde av innsendingene til den offentlige topplisten fram til 16. august 2026.",
+        "tables": [
+          {
+            "caption": "Treffsikkerhet",
+            "columns": [
+              "Innsendinger til topplisten",
+              "Til og med 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Gjennomsnittlig treffsikkerhet",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Andel perfekte resultater",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Gjennomsnittlig treffsikkerhet på Middels",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Andel perfekte resultater på Middels",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Gjennomsnittlig treffsikkerhet på Vanskelig",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Gjennomsnittlig treffsikkerhet på Stormester",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Innsendingstempo",
+            "columns": [
+              "Løsningstid ved perfekt resultat",
+              "Til og med 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Alle vanskelighetsgrader, median",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Lett, median",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Middels, median",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Blant 50 gjentatte kombinasjoner av spillernavn og vanskelighetsgrad hadde 33 en raskere siste løsning og 17 en tregere. Treffsikkerheten ble klart bedre totalt sett, men å bruke mer tid kan også gi et bedre resultat. Tallene dekker frivillige innsendinger til topplisten, ikke hvert eneste parti, og topplisten for Lett viser bare de 200 beste oppføringene."
+      },
+      {
+        "title": "Takk for at du spiller",
+        "changes": [
+          {
+            "segments": [
+              "Tusen takk til alle som har hjulpet Memory Chess med å nå over 800 spillere i måneden og mer enn 32 000 spilte partier. Vi er spesielt takknemlige for alle som har delt idéer, oppmuntring og feilmeldinger via ",
+              {
+                "text": "Kontakt oss-siden"
+              },
+              " eller tilbakemeldingsskjemaet etter partiet. Hvert parti og hver melding hjelper Memory Chess å vokse videre."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Lær mer. Spill jevnere.",
+    "summary": "Nye guider, en tydeligere hjemmeside, roligere lyd og en enkel måte å gi tilbakemelding på.",
+    "groups": [
+      {
+        "title": "Lær og bli bedre",
+        "changes": [
+          "Utforsk nye, lettfattelige guider for sjakkhukommelse og visualisering.",
+          "Den oppfriskede hjemmesiden forklarer nå hvordan Memory Chess trener romhukommelsen din."
+        ]
+      },
+      {
+        "title": "Hverdagsforbedringer",
+        "changes": [
+          "Spilling på mobil, brikkeoppsett og plasseringer på topplisten er mer pålitelige.",
+          "Spillydene starter nå på et mildere volum på 10 %."
+        ]
+      },
+      {
+        "title": "Tilbakemelding og oppdateringer",
+        "changes": [
+          "Du kan nå gi spillet karakter etter at du har spilt, og se nye versjoner under Nyheter. Spørsmålet om tilbakemelding dukker opp maks én gang om dagen.",
+          "En ny personvernside forklarer lagrede innstillinger, analyse, tilbakemeldinger og framtidige annonser på enkelt språk."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Det føles bedre å velge brikker",
+    "summary": "Å velge hvite eller svarte brikker er nå tydeligere og enklere.",
+    "groups": [
+      {
+        "title": "Brikkevalg",
+        "changes": [
+          "Fargevelgeren har fått et friskt, nytt utseende.",
+          "Det er lettere å se hvilken farge du har valgt.",
+          "Knappene føles jevnere og mer konsekvente."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Bedre på mobil",
+    "summary": "Memory Chess er nå enklere og mer behagelig å spille på en liten skjerm.",
+    "groups": [
+      {
+        "title": "Spilling på mobil",
+        "changes": [
+          "Spillet, tidtakeren og Hopp over-knappen passer bedre på små skjermer.",
+          "Trykk og avstander føles bedre på mobil.",
+          "Lydene oppfører seg bedre gjennom hele partiet."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "La hukommelsesspillene begynne!",
+    "summary": "Den første versjonen av Memory Chess er klar til å spilles.",
+    "groups": [
+      {
+        "title": "Den aller første versjonen",
+        "changes": [
+          "Husk en sjakkstilling, og gjenskap den så fra hukommelsen.",
+          "Velg vanskelighetsgrad, antall brikker, tid og brettkoordinater.",
+          "Se poengsummen og tiden din etter hvert parti."
+        ]
+      }
+    ]
+  }
+]

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@/test-utils/intl";
 import GameResult from "@/components/game/GameResult";
 
 const mockGameState = {

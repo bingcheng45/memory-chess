@@ -1,0 +1,490 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Nieuw",
+      "contactUs": "Contact",
+      "privacy": "Privacy"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Alle rechten voorbehouden.",
+      "followOnX": "Volg ons op Twitter/X",
+      "productHuntAlt": "Memory Chess - Train je ruimtelijk voorstellingsvermogen met schaken | Product Hunt"
+    },
+    "sound": {
+      "mute": "Geluid uitzetten",
+      "unmute": "Geluid aanzetten",
+      "on": "Geluid aan",
+      "off": "Geluid uit",
+      "volume": "Volume"
+    },
+    "language": {
+      "change": "Taal wijzigen. Huidige taal: {language}",
+      "current": "Taal: {language}",
+      "select": "Kies een taal"
+    },
+    "otherApps": {
+      "title": "Meer apps van de maker",
+      "visitWebsite": "Bekijk de site →",
+      "iconAlt": "App-icoon van {name}"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Memory Chess: gratis spel voor schaakgeheugen en visualisatie",
+      "description": "Onthoud een schaakstelling, bouw haar uit je geheugen op en krijg meteen een score. Speel gratis om bordvisie, visualisatie en ruimtelijk geheugen te trainen.",
+      "socialTitle": "Memory Chess: gratis spel voor schaakgeheugen en visualisatie",
+      "socialDescription": "Onthoud een stelling, bouw haar op en krijg meteen een score. Gratis spelen, zonder account.",
+      "twitterTitle": "Memory Chess: gratis schaakgeheugenspel",
+      "twitterDescription": "Onthoud een stelling, bouw haar op en verbeter je bordvisie ronde na ronde."
+    },
+    "hero": {
+      "title": "Train je schaakgeheugen en je voorstellingsvermogen",
+      "subtitle": "Onthoud een schaakstelling, bouw die uit je hoofd weer op en krijg meteen een score. Verbeter je bordoverzicht ronde na ronde.",
+      "freeToPlay": "Gratis te spelen, zonder account. Je kunt je score ook vergelijken op de <link>ranglijst</link>.",
+      "gamesPlayed": "Gespeelde partijen: {count}"
+    },
+    "cta": {
+      "play": "Speel Memory Chess",
+      "leaderboard": "Bekijk de ranglijst",
+      "playFree": "Speel een gratis ronde"
+    },
+    "video": {
+      "title": "Zo werkt Memory Chess",
+      "subtitle": "Een korte uitleg over het bestuderen van het bord, het opnieuw opbouwen van de stelling en het lezen van je score.",
+      "iframeTitle": "Zo speel je Memory Chess",
+      "credit": "Video: ‘A New Way To Train Your Vision’ van Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Hoe het werkt",
+      "title": "Een simpele training voor je schaakgeheugen",
+      "subtitle": "Elke ronde bestaat uit drie eenvoudige stappen: bestudeer de stelling, bouw die opnieuw op en leer van je score.",
+      "steps": {
+        "observe": {
+          "title": "Kijken",
+          "description": "Let op waar elk stuk staat. Zoek naar groepjes, lijnen en lege velden die je als houvast kunt gebruiken."
+        },
+        "recreate": {
+          "title": "Opbouwen",
+          "description": "Zodra het bord leeg is, zet je elk stuk terug op het veld dat je je herinnert."
+        },
+        "improve": {
+          "title": "Verbeteren",
+          "description": "Bekijk je score, zie wat je miste en probeer het opnieuw met meer stukken of minder tijd."
+        }
+      }
+    },
+    "board": {
+      "study": "Bestudeer het bord",
+      "rebuild": "Bouw op uit je hoofd"
+    },
+    "learn": {
+      "eyebrow": "Leercentrum",
+      "title": "Heldere schaakgidsen",
+      "description": "Ontdek praktische manieren om je bordoverzicht, voorstellingsvermogen, rekenwerk en geheugen te verbeteren. Elke gids bevat oefeningen die je meteen kunt proberen.",
+      "browseCta": "Bekijk de schaakgidsen",
+      "beginnerCta": "Begin met de beginnersgids"
+    },
+    "faq": {
+      "title": "Vragen over Memory Chess",
+      "items": [
+        {
+          "question": "Wat is Memory Chess?",
+          "answer": "Memory Chess is een gratis geheugenspel op het schaakbord. Je bestudeert een stelling korte tijd, bouwt die uit je hoofd weer op en krijgt een score op basis van hoeveel stukken je goed hebt neergezet."
+        },
+        {
+          "question": "Hoe speel ik het?",
+          "answer": "Kies hoeveel stukken je wilt en hoe lang je het bord wilt bestuderen. Zodra de stelling verdwijnt, zet je de stukken terug op de velden die je je herinnert. Verstuur je antwoord om je nauwkeurigheid en tijd te zien."
+        },
+        {
+          "question": "Kunnen beginners Memory Chess spelen?",
+          "answer": "Ja. Je hoeft geen openingen te kennen en geen varianten te berekenen. Begin met minder stukken en meer tijd, en maak het moeilijker zodra je er klaar voor bent."
+        },
+        {
+          "question": "Hoe traint dit je schaakvisualisatie?",
+          "answer": "Elke ronde is gerichte oefening in het vasthouden van een stelling in je hoofd en het onthouden waar de stukken horen. Je score laat zien welke stellingen makkelijk gaan en waar je meer moet oefenen."
+        },
+        {
+          "question": "Waar moet ik op letten bij het onthouden?",
+          "answer": "Begin met eenvoudige ankerpunten zoals koningen, dames, hoeken en randvelden. Zoek daarna naar groepjes, lijnen, diagonalen en lege ruimtes in plaats van elk stuk apart te onthouden."
+        },
+        {
+          "question": "Hoe maak ik het spel moeilijker?",
+          "answer": "Voeg stukken toe, verkort de kijktijd of verberg de bordcoördinaten. Verander één instelling tegelijk, dan zie je wat het meeste uitmaakt."
+        },
+        {
+          "question": "Is Memory Chess gratis?",
+          "answer": "Ja. Je kunt gratis spelen zonder account. Een naam op de ranglijst zetten is optioneel."
+        },
+        {
+          "question": "Hoe vaak moet ik oefenen?",
+          "answer": "Een paar geconcentreerde rondes op vaste momenten is een goed begin. Houd de sessies kort genoeg om elke stelling nog rustig te kunnen bekijken."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Speel Memory Chess online",
+      "description": "Speel Memory Chess online en train bordvisualisatie, geheugen en patroonherkenning in het schaken met opdrachten op tijd.",
+      "socialTitle": "Speel Memory Chess online",
+      "socialDescription": "Train je schaakvisualisatie en je geheugen met interactieve opdrachten op tijd."
+    },
+    "hud": {
+      "time": "Tijd",
+      "submit": "Verstuur",
+      "loading": "Spel wordt geladen…",
+      "status": "Spelstatus",
+      "controls": "Spelbediening",
+      "complete": "Partij afgerond",
+      "flash": "KLAAR!"
+    },
+    "config": {
+      "title": "Spelinstellingen",
+      "presetsLabel": "Moeilijkheidsgraden",
+      "presetSummary": "{pieces} st. / {seconds} s",
+      "customLabel": "Eigen instellingen",
+      "pieceCount": "Aantal stukken",
+      "memorizeTime": "Kijktijd",
+      "seconds": "{seconds} s",
+      "start": "Start de training",
+      "lastGame": "Vorige partij: {time} s oplostijd met {accuracy}% nauwkeurigheid"
+    },
+    "presets": {
+      "easy": {
+        "label": "Makkelijk",
+        "description": "Alleen de koningen – ideaal om te beginnen"
+      },
+      "medium": {
+        "label": "Gemiddeld",
+        "description": "Een paar stukken met ruim de tijd om te onthouden"
+      },
+      "hard": {
+        "label": "Moeilijk",
+        "description": "Meer stukken en minder tijd om te onthouden"
+      },
+      "grandmaster": {
+        "label": "Grootmeester",
+        "description": "Voor schaakmeesters met een fotografisch geheugen"
+      }
+    },
+    "memorize": {
+      "title": "Onthoud de stelling",
+      "skip": "Overslaan",
+      "hint": "Het bord wordt leeggemaakt zodra de tijd om is"
+    },
+    "place": {
+      "title": "Plaats de stukken",
+      "subtitle": "Kies soort en kleur",
+      "whitePieces": "Witte stukken",
+      "blackPieces": "Zwarte stukken",
+      "selectWhite": "Witte stukken kiezen",
+      "selectBlack": "Zwarte stukken kiezen",
+      "hint": "Tik op een veld om een stuk te plaatsen of weg te halen"
+    },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "witte pion",
+          "knight": "wit paard",
+          "bishop": "witte loper",
+          "rook": "witte toren",
+          "queen": "witte dame",
+          "king": "witte koning"
+        },
+        "black": {
+          "pawn": "zwarte pion",
+          "knight": "zwart paard",
+          "bishop": "zwarte loper",
+          "rook": "zwarte toren",
+          "queen": "zwarte dame",
+          "king": "zwarte koning"
+        }
+      },
+      "feedback": {
+        "correct": "correct",
+        "incorrect": "onjuist",
+        "missing": "ontbreekt"
+      },
+      "squareWithPiece": "{square} met {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "{piece} selecteren"
+    },
+    "stats": {
+      "title": "Statistieken",
+      "currentTime": "Huidige tijd",
+      "piecesToMemorize": "Te onthouden stukken",
+      "averageAccuracy": "Gemiddelde nauwkeurigheid"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Alles goed! ✨",
+        "excellent": "Uitstekend geheugen!",
+        "great": "Sterk gedaan!",
+        "wellDone": "Goed gedaan!",
+        "goodEffort": "Goede poging!",
+        "keepPracticing": "Blijf oefenen!"
+      },
+      "accuracy": "Nauwkeurigheid",
+      "piecesCorrectCaption": "stukken goed",
+      "piecesCorrect": "Goede stukken",
+      "memorizationTime": "Kijktijd",
+      "solutionTime": "Oplostijd",
+      "recallSpeed": "Herinneringssnelheid",
+      "piecesPerSecond": "{value} stukken/s",
+      "actions": "Acties bij het resultaat",
+      "tryAgain": "Opnieuw",
+      "newGame": "Nieuwe partij",
+      "submitToLeaderboard": "Naar de ranglijst sturen",
+      "viewLeaderboard": "Bekijk de ranglijst",
+      "dialog": {
+        "submitTitle": "Naar de ranglijst sturen",
+        "submitDescription": "Vul de naam in die op de ranglijst komt te staan.",
+        "successTitle": "Score verstuurd!",
+        "successDescription": "Je score is toegevoegd aan de ranglijst.",
+        "playerName": "Spelersnaam",
+        "playerNamePlaceholder": "Vul je naam in",
+        "error": "Fout: {message}",
+        "submitFailed": "Score versturen is mislukt",
+        "cancel": "Annuleren",
+        "submit": "Score versturen",
+        "submitting": "Versturen…",
+        "thanks": "Bedankt voor het meedoen, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Bekijk je stelling terug",
+      "subtitle": "Vergelijk wat je onthouden hebt met wat je hebt ingestuurd.",
+      "unavailable": "Bordvergelijking niet beschikbaar.",
+      "ariaLabel": "Bordvergelijking",
+      "correct": "Goed",
+      "incorrect": "Fout",
+      "missed": "Gemist",
+      "originalBoard": "De te onthouden stelling",
+      "submittedBoard": "Jouw ingestuurde stelling"
+    },
+    "feedback": {
+      "title": "Bedankt voor het spelen van Memory Chess!",
+      "description": "Hoe was het? Jouw feedback maakt elke trainingssessie beter.",
+      "prompt": "Welk cijfer geef je het spel?",
+      "placeholder": "Vertel ons wat goed werkte of wat je zou veranderen…",
+      "notNow": "Niet nu",
+      "sentTitle": "Bedankt dat je ons helpt verbeteren",
+      "sentBody": "We hebben je reactie ontvangen.",
+      "done": "Klaar",
+      "commentLabel": "Hoe voelde het spelen, en wat zou het beter maken?",
+      "commentOptional": "(optioneel)",
+      "starRating": "{count, plural, one {# ster} other {# sterren}}",
+      "chooseRating": "Kies een beoordeling in sterren.",
+      "sendFailed": "We konden je reactie niet versturen. Probeer het opnieuw of kies Niet nu.",
+      "send": "Reactie versturen",
+      "sending": "Versturen…"
+    }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess-ranglijst",
+      "description": "Bekijk de beste Memory Chess-spelers op moeilijkheidsgraad, nauwkeurigheid, kijksnelheid en oplostijd.",
+      "socialTitle": "Memory Chess-ranglijst",
+      "socialDescription": "Zie hoe spelers scoren in de geheugen- en visualisatie-uitdagingen."
+    },
+    "title": "Memory Chess-ranglijst",
+    "subtitle": "Beheers het bord met visualisatie. Neem het op tegen de besten ter wereld in mentale precisie en snelheid.",
+    "claimRank": "Claim je plek",
+    "footnote": "Alleen de top 200 wordt getoond. Gerangschikt op nauwkeurigheid, kijktijd en oplossnelheid.",
+    "loading": "Ranglijst wordt geladen…",
+    "unavailableTitle": "Ranglijst tijdelijk niet beschikbaar",
+    "unavailableBody": "De ranglijstdienst is nu offline. Je spelgegevens worden nog steeds lokaal opgeslagen.",
+    "unavailableNote": "Je kunt gewoon doorspelen.",
+    "retryLater": "Probeer het later opnieuw",
+    "errorLoading": "Fout bij het laden van de ranglijst: {error}",
+    "errors": {
+      "timeout": "De aanvraag is verlopen. Probeer het later opnieuw.",
+      "parse": "Het antwoord van de server kon niet worden gelezen. Probeer het later opnieuw.",
+      "status": "Aanvraag mislukt met status {status}",
+      "unexpected": "Er is een onverwachte fout opgetreden"
+    },
+    "emptyTitle": "Word de eerste kampioen!",
+    "emptyBody": "Nog geen resultaten op deze ranglijst",
+    "emptyCta": "Daag je geheugen uit en verover de eerste plaats! Speel nu een partij en zet je naam in de geschiedenis van Memory Chess.",
+    "startPlaying": "Begin met spelen",
+    "you": "Jij",
+    "columns": {
+      "rank": "Plek",
+      "player": "Speler",
+      "pieces": "Stukken",
+      "memorizeTime": "Kijktijd",
+      "solutionTime": "Oplostijd",
+      "date": "Datum"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess-instellingen",
+      "description": "Pas de instellingen en voorkeuren van je Memory Chess-spel aan."
+    },
+    "difficulty": "Moeilijkheidsgraad",
+    "memorizationTime": "Kijktijd: {seconds} seconden",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Bordcoördinaten tonen",
+    "home": "Home",
+    "playGame": "Spelen"
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact met Memory Chess",
+      "description": "Neem contact op met Memory Chess voor feedback, functieverzoeken of zakelijke vragen.",
+      "socialTitle": "Contact met Memory Chess",
+      "socialDescription": "Stuur feedback, functieverzoeken en samenwerkingsvragen naar Memory Chess."
+    },
+    "title": "Contact",
+    "sentTitle": "Bericht verzonden!",
+    "sentBody": "Bedankt voor je bericht. We reageren snel.",
+    "redirecting": "Doorsturen naar de homepage…",
+    "name": "Naam",
+    "namePlaceholder": "Je naam",
+    "email": "E-mail",
+    "emailPlaceholder": "jouw.adres@voorbeeld.nl",
+    "inquiryType": "Soort vraag",
+    "inquiryPlaceholder": "Kies het soort vraag",
+    "message": "Bericht",
+    "messagePlaceholder": "Typ hier je bericht…",
+    "send": "Bericht versturen",
+    "sending": "Versturen…",
+    "types": {
+      "feedback": "Feedback",
+      "featureRequest": "Functieverzoek",
+      "general": "Algemene vraag",
+      "business": "Zakelijke kans"
+    },
+    "validation": {
+      "nameTooShort": "De naam moet minstens 2 tekens hebben.",
+      "emailInvalid": "Voer een geldig e-mailadres in.",
+      "typeRequired": "Kies een soort vraag.",
+      "messageTooShort": "Het bericht moet minstens 10 tekens hebben."
+    },
+    "errors": {
+      "submitFailed": "Het formulier kon niet worden verzonden{details}",
+      "generic": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Leer schaken, stap voor duidelijke stap",
+      "description": "Praktische schaakgidsen voor beginners: bordoverzicht, visualisatie, geheugen, rekenwerk, blunders voorkomen en dagelijks oefenen."
+    },
+    "title": "Leer schaken, stap voor duidelijke stap",
+    "startBeginner": "Start de beginnersgids",
+    "playCta": "Speel Memory Chess",
+    "startHere": "Begin hier",
+    "pickNext": "Kies je volgende stap",
+    "chooseGoal": "Kies een doel",
+    "readRecallPlay": "Lezen, herinneren, spelen",
+    "turnIdea": "Maak van één idee oefening",
+    "startRound": "Start een geheugenronde",
+    "eyebrow": "Leren met Memory Chess",
+    "heroDescription": "Kies wat je wilt verbeteren. Elke gids legt één bruikbaar idee uit in gewone taal en geeft je daarna een korte oefening.",
+    "pickNextDescription": "Kies de zin die het meest op je huidige spel lijkt. Er is geen perfecte volgorde en je kunt altijd van pad wisselen.",
+    "allGuides": "Alle {count} gidsen",
+    "chooseGoalDescription": "Elk pad gaat van een eenvoudige eerste oefening naar een completere oefengewoonte.",
+    "guideNumber": "Gids {number}",
+    "turnIdeaDescription": "Lees één gids, speel een korte ronde zolang het idee vers is, en let daarna op wat makkelijk bleef hangen en wat nog een poging nodig heeft.",
+    "paths": {
+      "newToChess": {
+        "label": "Nieuw met schaken",
+        "title": "Bouw een eenvoudig verbeterplan",
+        "description": "Begin bij de basis en maak daarna van één bruikbaar idee een dagelijkse gewoonte die je kunt herhalen."
+      },
+      "missingThreats": {
+        "label": "Je mist eenvoudige dreigingen",
+        "title": "Train je blik over het hele bord",
+        "description": "Gebruik een korte checkroutine om losse stukken, aanvallen en gevaar op te merken voor je zet."
+      },
+      "losingPosition": {
+        "label": "Je verliest de stelling in je hoofd",
+        "title": "Versterk visualisatie en geheugen",
+        "description": "Oefen met het vasthouden van een klein, kloppend beeld van het bord voor je langere zettenreeksen toevoegt."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Nieuw",
+      "description": "Bekijk de nieuwste functies, verbeteringen en oplossingen van Memory Chess in het officiële overzicht.",
+      "socialTitle": "Nieuw in Memory Chess",
+      "socialDescription": "Bekijk de nieuwste functies, verbeteringen en oplossingen van Memory Chess."
+    },
+    "title": "Nieuw",
+    "latest": "Nieuwste",
+    "bannerCta": "Bekijk wat er nieuw is",
+    "bannerLabel": "Memory Chess-update",
+    "eyebrow": "Updates",
+    "changesIn": "Wijzigingen in versie {version}"
+  },
+  "learnArticle": {
+    "faqLabel": "Veelgestelde vragen",
+    "whatChangesTitle": "Wat het eerst verbetert",
+    "trackThisWeekTitle": "Wat je deze week bijhoudt",
+    "trackThisWeekBody": "Kies één eenvoudige maat: blunders per partij, correct herinnerde stellingen, of hoeveel zetten je helder voor je ziet.",
+    "startHereSummary": "Deze stappen kun je vandaag al proberen.",
+    "drillsSummary": "Bij elke oefening pas je de les meteen toe in Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situatie",
+      "before": "Voor het oefenen",
+      "after": "Na het oefenen"
+    },
+    "mistakesTitle": "Veelgemaakte fouten om te vermijden",
+    "whatToDoInsteadTitle": "Wat je in plaats daarvan doet",
+    "planSummary": "Werk deze stappen af voordat je het oefenen zwaarder of langer maakt.",
+    "breadcrumbHome": "Home",
+    "breadcrumbLearn": "Leren",
+    "eyebrow": "Eenvoudige schaakgids",
+    "updated": "Bijgewerkt op {date}",
+    "reviewedBy": "Beoordeeld door {name}",
+    "startHere": "Begin hier",
+    "whatYouWillLearn": "Wat je gaat leren",
+    "whoThisIsFor": "Voor wie dit is",
+    "browseAllGuides": "Bekijk alle gidsen",
+    "onThisPage": "Op deze pagina",
+    "aimFor": "Doel:",
+    "tryItNow": "Probeer het nu",
+    "tryItNowTitle": "Speel een korte ronde voordat je verder leest.",
+    "tryItNowBody": "Gebruik de stappen zolang ze vers zijn en kom terug met één concrete observatie.",
+    "startTrainingRound": "Start een trainingsronde",
+    "keepLearning": "Blijf leren",
+    "whatToLearnNext": "Wat je hierna leert",
+    "whatToLearnNextBody": "Kies de gids die het best past bij het volgende probleem dat je wilt oplossen.",
+    "readThisGuide": "Lees deze gids",
+    "putItOnTheBoard": "Breng het naar het bord",
+    "practiceTitle": "Oefenen in Memory Chess",
+    "practiceBody": "Gebruik één korte oefening om te oefenen wat je net hebt geleerd.",
+    "goalLabel": "Doel:",
+    "commonQuestions": "Veelgestelde vragen",
+    "editorialNotes": "Redactionele notities",
+    "aboutThisGuide": "Over deze gids",
+    "aboutBody": "De gidsen van Memory Chess zijn geschreven voor beginners en spelers die zich ontwikkelen. Elke gids geeft je een direct antwoord, praktische stappen en één bruikbare manier om je voortgang te volgen.",
+    "publishedLine": "Gepubliceerd op {published}. Laatst beoordeeld en bijgewerkt op {updated} door {reviewer}.",
+    "referenceLinks": "Bronnen en links",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Minder blunders",
+        "description": "Maak er een gewoonte van dreigingen sneller te checken en geef in simpele stellingen geen stukken meer weg.",
+        "accent": "Dreigingen checken"
+      },
+      "visualization": {
+        "label": "Beter voorstellingsvermogen",
+        "description": "Houd het bord langer in je hoofd, zodat rekenen rustiger en helderder wordt.",
+        "accent": "Bord in je hoofd"
+      },
+      "memory": {
+        "label": "Geheugen trainen",
+        "description": "Verbeter het herinneren van stellingen en het onthouden van patronen zonder van je training theoriehuiswerk te maken.",
+        "accent": "Herinneren en onthouden"
+      },
+      "routine": {
+        "label": "Een dagelijkse routine",
+        "description": "Gebruik een kort plan met oefeningen, partijen en nabespreking.",
+        "accent": "Regelmaat"
+      }
+    }
+  }
+}

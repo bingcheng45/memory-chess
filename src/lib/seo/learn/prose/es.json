@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Cómo mejorar en ajedrez siendo principiante",
+    "h1": "Cómo mejorar en ajedrez siendo principiante",
+    "description": "Sigue un plan sencillo para ver mejor el tablero, recordar posiciones y jugar movimientos más seguros.",
+    "primaryKeyword": "cómo mejorar en ajedrez",
+    "secondaryKeywords": [
+      "plan de mejora en ajedrez",
+      "entrenamiento para principiantes",
+      "rutina de ajedrez para principiantes",
+      "reducir errores en ajedrez",
+      "visión del tablero"
+    ],
+    "painPoint": "No sabes qué practicar ni por dónde empezar.",
+    "ctaLabel": "Empezar una ronda para principiantes",
+    "quickAnswer": "Usa una rutina diaria corta: practica la visión del tablero, entrena la memoria, juega una partida y repasa un error. Repítelo de 20 a 30 minutos al día.",
+    "keyTakeaways": [
+      "Ver y recordar el tablero importa más que memorizar muchas aperturas.",
+      "La práctica diaria corta funciona mejor que las sesiones largas y esporádicas.",
+      "Sigue tus errores y tu precisión de memoria, no solo el elo."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que conocen las reglas pero siguen colgando piezas.",
+      "Principiantes a quienes se les dan bien los ejercicios pero no las partidas.",
+      "Quien no sabe qué estudiar primero."
+    ],
+    "timeToRead": "9 min de lectura",
+    "introParagraphs": [
+      "La mayoría de los principiantes no necesita más aperturas, vídeos ni cursos. Necesita seguir el tablero y comprobar que la jugada es segura antes de hacerla.",
+      "Memory Chess te ayuda a practicar ambas cosas. Cuanto mejor recuerdas el tablero, más fácil es detectar jaques, capturas y amenazas."
+    ],
+    "startHereTitle": "Empieza con esta rutina para principiantes",
+    "startHereSteps": [
+      "Dedica 3 minutos a recorrer un tablero y nombrar las piezas atacadas, defendidas y colgadas.",
+      "Juega una ronda de Memory Chess con 8 piezas y 10 segundos de observación.",
+      "Mira dos posiciones tácticas cortas y di los jaques, capturas y amenazas antes de elegir jugada.",
+      "Juega una partida rápida. Marca cada error grande como visión, memoria o apuro de tiempo.",
+      "Apunta una cosa para volver a practicar mañana."
+    ],
+    "drillSectionTitle": "Ejercicios sencillos para jugar mejor",
+    "drillCards": [
+      {
+        "title": "Barrido de 10 segundos",
+        "description": "Usa una posición sencilla y encuentra todas las piezas sin defender antes de que acabe el tiempo.",
+        "duration": "3 minutos",
+        "goal": "Crear una comprobación de seguridad antes de cada jugada.",
+        "ctaLabel": "Hacer un barrido"
+      },
+      {
+        "title": "Repetir la misma posición",
+        "description": "Juega la misma posición dos veces para encontrar y corregir un error de memoria.",
+        "duration": "5 minutos",
+        "goal": "Descubrir qué pieza o casilla olvidaste exactamente.",
+        "ctaLabel": "Entrenar la repetición"
+      },
+      {
+        "title": "De la partida al ejercicio",
+        "description": "Tras una partida rápida, recrea mentalmente la posición del error antes de repasarla.",
+        "duration": "7 minutos",
+        "goal": "Dejar que tus errores reales guíen la práctica.",
+        "ctaLabel": "Empezar la transferencia"
+      }
+    ],
+    "comparisonTitle": "Cómo juega un principiante que ha mejorado",
+    "comparisonSummary": "No necesitas ver cinco jugadas por delante. Empieza por ver bien el tablero actual y hacer una pausa antes de mover.",
+    "comparisonRows": [
+      {
+        "label": "Antes de mover",
+        "struggling": "Solo miras tu propia idea.",
+        "stronger": "Primero compruebas las amenazas del rival."
+      },
+      {
+        "label": "En la táctica",
+        "struggling": "Tu línea desaparece tras un cambio.",
+        "stronger": "Mantienes las casillas clave mientras comparas dos jugadas."
+      },
+      {
+        "label": "Tras perder",
+        "struggling": "Empiezas otra partida de inmediato.",
+        "stronger": "Nombras el error y lo practicas mañana."
+      }
+    ],
+    "mistakes": [
+      "Saltar entre contenidos sueltos en vez de repetir una rutina durante dos semanas.",
+      "Estudiar aperturas antes de tener firme la visión del tablero.",
+      "Jugar demasiadas partidas sin notas breves después.",
+      "Tratar la memoria como algo aparte del ajedrez de verdad."
+    ],
+    "mistakesCallout": "No corras hacia el material avanzado. La mayoría de los principiantes pierde por no ver amenazas de una jugada, no por olvidar una variante.",
+    "planTitle": "Plan de 30 días para principiantes",
+    "planSteps": [
+      {
+        "label": "Semana 1",
+        "duration": "20 minutos al día",
+        "detail": "Usa siempre el mismo barrido y juega una ronda corta de Memory Chess antes de cada sesión de partidas."
+      },
+      {
+        "label": "Semana 2",
+        "duration": "25 minutos al día",
+        "detail": "Añade una segunda ronda de memoria y anota si cada error fue de visión, de recuerdo o de nervios."
+      },
+      {
+        "label": "Semana 3",
+        "duration": "25 a 30 minutos al día",
+        "detail": "Los mismos ejercicios, pero con menos tiempo de memorización, para que el recuerdo limpio ocurra bajo presión."
+      },
+      {
+        "label": "Semana 4",
+        "duration": "30 minutos al día",
+        "detail": "Comprueba si bajan los errores por partida y quédate solo con los ajustes que mejor se transfirieron."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Cuántos minutos al día debe entrenar un principiante?",
+        "answer": "De 20 a 30 minutos concentrados bastan si combinas visión del tablero, memoria y una posición real."
+      },
+      {
+        "question": "¿Por qué mis ejercicios no se trasladan a las partidas?",
+        "answer": "El ejercicio empieza cuando la táctica ya existe. En la partida debes notar primero el cambio en el tablero, así que el recuerdo y las comprobaciones pesan mucho más."
+      },
+      {
+        "question": "¿Debo memorizar aperturas pronto?",
+        "answer": "Al principio solo los principios básicos. La mayoría de los principiantes gana más viendo antes las amenazas y sosteniendo mejor las posiciones."
+      },
+      {
+        "question": "¿Qué métrica muestra antes el progreso?",
+        "answer": "Sigue los errores por partida y la precisión de recuerdo en Memory Chess. Suelen moverse antes que el elo."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa esto si tu problema principal es colgar piezas."
+      },
+      {
+        "reason": "Profundiza en el hábito de comprobar amenazas antes de mover."
+      },
+      {
+        "reason": "Construye un tablero mental más firme para que la táctica no se derrumbe."
+      },
+      {
+        "reason": "Entrena el recuerdo directamente si olvidas dónde están las piezas."
+      },
+      {
+        "reason": "Sigue una rutina más corta si necesitas una estructura diaria más simple."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Ejercicios de visualización de ajedrez para principiantes",
+    "h1": "Ejercicios de visualización que un principiante puede hacer a diario",
+    "description": "Haz ejercicios sencillos de visualización para recordar el tablero e imaginar las jugadas con más claridad.",
+    "primaryKeyword": "ejercicios de visualización de ajedrez",
+    "secondaryKeywords": [
+      "entrenamiento de visualización en ajedrez",
+      "calcular jugadas por adelantado",
+      "visualización del tablero",
+      "preparación para jugar a ciegas",
+      "ajedrez mental"
+    ],
+    "painPoint": "Pierdes de vista las piezas cuando intentas imaginar las siguientes jugadas.",
+    "ctaLabel": "Practicar visualización",
+    "quickAnswer": "Primero recuerda un tablero sin mover nada. Luego imagina una jugada cada vez. No necesitas jugar una partida entera a ciegas.",
+    "keyTakeaways": [
+      "La práctica diaria corta funciona mejor que las sesiones largas y esporádicas.",
+      "Comprueba el tablero imaginado después de cada intento.",
+      "Imagina bien una jugada antes de intentar líneas más largas."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que pierden la línea tras un cambio.",
+      "Principiantes que se bloquean cuando no pueden mirar el tablero.",
+      "Quien quiere llegar al ajedrez a ciegas paso a paso."
+    ],
+    "timeToRead": "8 min de lectura",
+    "introParagraphs": [
+      "Visualizar es imaginar cómo cambia el tablero después de una jugada. Para un principiante, el objetivo es simplemente comparar dos jugadas sin perder de vista las piezas.",
+      "Memory Chess te muestra qué piezas o casillas olvidas. Después puedes practicar el mismo tipo de posición otra vez."
+    ],
+    "startHereTitle": "Empieza con estos pasos de visualización",
+    "startHereSteps": [
+      "Nombra cada pieza y casilla de un tablero quieto durante 60 segundos.",
+      "Cierra los ojos y reconstruye el tablero en tu mente antes de comprobarlo.",
+      "Imagina una jugada legal para cada bando sin tocar las piezas.",
+      "Juega una ronda de Memory Chess con un número medio de piezas y cronómetro estricto.",
+      "Verifica la posición y repite solo cuando sepas qué olvidaste."
+    ],
+    "drillSectionTitle": "Ejercicios fáciles de visualización",
+    "drillCards": [
+      {
+        "title": "Foto del tablero quieto",
+        "description": "Recuerda el tablero y luego coloca cada pieza en su casilla.",
+        "duration": "4 minutos",
+        "goal": "Recordar el tablero antes de empezar a imaginar jugadas.",
+        "ctaLabel": "Entrenar la foto"
+      },
+      {
+        "title": "Una jugada por bando",
+        "description": "Recuerda el tablero, imagina una jugada por bando y comprueba tu respuesta.",
+        "duration": "5 minutos",
+        "goal": "Aprender a actualizar el tablero en la cabeza.",
+        "ctaLabel": "Entrenar una jugada"
+      },
+      {
+        "title": "Recuerdo bajo presión",
+        "description": "Cuando tu recuerdo sea preciso, usa menos tiempo para memorizar.",
+        "duration": "5 minutos",
+        "goal": "Mantener el recuerdo claro en partidas rápidas.",
+        "ctaLabel": "Añadir presión"
+      }
+    ],
+    "comparisonTitle": "Cómo se siente una visualización débil",
+    "comparisonSummary": "Parece un problema de cálculo, pero a menudo es la imagen del tablero que se desvanece demasiado rápido.",
+    "comparisonRows": [
+      {
+        "label": "Jugadas candidatas",
+        "struggling": "Sabes decir una jugada, pero no la posición que deja.",
+        "stronger": "Puedes comparar dos posiciones posibles antes de mover."
+      },
+      {
+        "label": "Lío táctico",
+        "struggling": "Se te queda la mente en blanco tras los cambios.",
+        "stronger": "Sostienes las casillas y amenazas importantes lo bastante para decidir con calma."
+      },
+      {
+        "label": "Retroalimentación",
+        "struggling": "No sabes qué casilla olvidaste exactamente.",
+        "stronger": "Detectas si el fallo vino de una columna, una fila o un defensor olvidado."
+      }
+    ],
+    "mistakes": [
+      "Intentar cálculo profundo a ciegas antes de tener firme el recuerdo estático.",
+      "Mover las piezas físicamente en cada intento de cálculo.",
+      "Practicar una vez por semana en vez de un bloque diario corto.",
+      "No comprobar si el tablero imaginado coincide con el real."
+    ],
+    "mistakesCallout": "Todavía no persigas líneas largas. Primero imagina con claridad la primera jugada.",
+    "planTitle": "Progresión de visualización en 7 días",
+    "planSteps": [
+      {
+        "label": "Día 1",
+        "duration": "10 minutos",
+        "detail": "Solo fotos del tablero quieto, con verificación inmediata."
+      },
+      {
+        "label": "Días 2 y 3",
+        "duration": "12 minutos",
+        "detail": "Añade una jugada imaginada por bando y anota qué casillas desaparecen primero."
+      },
+      {
+        "label": "Días 4 y 5",
+        "duration": "15 minutos",
+        "detail": "Reduce la ventana de observación en Memory Chess manteniendo el número de piezas."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 minutos",
+        "detail": "Lleva el ejercicio a una partida rápida: haz una pausa antes de cada decisión táctica y nombra la posición resultante."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Cuánto tarda en mejorar la visualización?",
+        "answer": "La mayoría de los principiantes nota un recuerdo del tablero más limpio en dos a cuatro semanas de práctica corta y constante."
+      },
+      {
+        "question": "¿Los ejercicios de visualización ayudan en el blitz?",
+        "answer": "Sí. Actualizar el tablero mental más rápido facilita ver jaques, capturas y amenazas bajo presión de tiempo."
+      },
+      {
+        "question": "¿Se puede entrenar la visualización sin jugar a ciegas?",
+        "answer": "Sí. El recuerdo cronometrado y los ejercicios de una jugada bastan para construir una base real."
+      },
+      {
+        "question": "¿Y si sigo olvidando dónde están las piezas?",
+        "answer": "Usa menos piezas, comprueba más a menudo y repite la posición hasta que el recuerdo sea claro."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa esto cuando el recuerdo estático y de una jugada estén firmes."
+      },
+      {
+        "reason": "Entrena una visión más amplia si pierdes piezas en los bordes."
+      },
+      {
+        "reason": "Combina la visualización con una comprobación sencilla de amenazas."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Ejercicios de visión del tablero para cometer menos errores",
+    "h1": "Ejercicios de visión del tablero para principiantes",
+    "description": "Usa ejercicios sencillos de visión para detectar amenazas, proteger tus piezas y cometer menos errores.",
+    "primaryKeyword": "visión del tablero en ajedrez",
+    "secondaryKeywords": [
+      "ejercicios de visión del tablero",
+      "reducir errores en ajedrez",
+      "detectar amenazas en ajedrez",
+      "atención táctica",
+      "errores típicos de principiante"
+    ],
+    "painPoint": "Te concentras en una zona del tablero y se te escapa una amenaza sencilla en otra.",
+    "ctaLabel": "Empezar un ejercicio de visión",
+    "quickAnswer": "Antes de cada jugada, busca jaques, capturas, amenazas y piezas sin defender. La práctica de memoria te ayuda a tener todas las piezas presentes mientras recorres el tablero.",
+    "keyTakeaways": [
+      "La visión del tablero es un hábito que se aprende.",
+      "Fijarse en las piezas sueltas suele ser el arreglo más rápido para un principiante.",
+      "La práctica de memoria ayuda a seguir todo el tablero."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que siguen colgando piezas aunque conocen la táctica básica.",
+      "Principiantes que juegan rápido y ven el error solo tras la captura.",
+      "Quien necesita una lista clara antes de cada jugada."
+    ],
+    "timeToRead": "8 min de lectura",
+    "introParagraphs": [
+      "Cuando alguien dice «no lo vi», suele haber movido antes de mirar todo el tablero.",
+      "Los ejercicios de visión enseñan dónde mirar. Empieza por las piezas sin defender y por las jugadas que dan jaque, capturan o crean una amenaza."
+    ],
+    "startHereTitle": "Empieza aquí: el ciclo de visión antes de mover",
+    "startHereSteps": [
+      "Antes de cada jugada, nombra jaques, capturas y amenazas de ambos bandos.",
+      "Marca cada pieza indefensa y di si está realmente segura o solo lo parece.",
+      "Juega una ronda corta de Memory Chess para afinar el recuerdo casilla-pieza.",
+      "Repasa un error reciente e identifica la amenaza exacta que se te pasó.",
+      "Repite la misma lista en tu siguiente partida rápida, sin acortarla."
+    ],
+    "drillSectionTitle": "Ejercicios de visión para partidas reales",
+    "drillCards": [
+      {
+        "title": "Inventario de piezas sueltas",
+        "description": "Recorre el tablero e identifica cada pieza indefensa antes de mover.",
+        "duration": "3 minutos",
+        "goal": "Detectar pronto la fuente más común de errores del principiante.",
+        "ctaLabel": "Hacer el inventario"
+      },
+      {
+        "title": "Repetición de la amenaza",
+        "description": "Recrea la posición de tu último error y encuentra la amenaza más fuerte del rival antes de mirar la partida.",
+        "duration": "5 minutos",
+        "goal": "Enseñar al cerebro cómo se veía la amenaza perdida en su contexto.",
+        "ctaLabel": "Repetir una amenaza"
+      },
+      {
+        "title": "Recuerdo rápido de casillas",
+        "description": "Usa una ventana corta para que el tablero deba mantenerse entero mientras lo recorres.",
+        "duration": "4 minutos",
+        "goal": "Recordar dónde están las piezas mientras recorres el tablero.",
+        "ctaLabel": "Acelerar el recuerdo"
+      }
+    ],
+    "comparisonTitle": "Visión débil frente a visión firme",
+    "comparisonSummary": "La diferencia suele notarse antes incluso de empezar a calcular.",
+    "comparisonRows": [
+      {
+        "label": "Atención",
+        "struggling": "Te quedas fijado en una idea táctica.",
+        "stronger": "Recorres todo el tablero antes de elegir un plan."
+      },
+      {
+        "label": "Comprobaciones",
+        "struggling": "Das por segura una pieza defendida.",
+        "stronger": "Cuentas atacantes y defensores antes de fiarte de la casilla."
+      },
+      {
+        "label": "Apuro de tiempo",
+        "struggling": "Cuanto más aguda la posición, más rápido mueves.",
+        "stronger": "Vas más despacio cuando aparecen jaques, capturas o amenazas."
+      }
+    ],
+    "mistakes": [
+      "Comprobar solo tu idea e ignorar las amenazas del rival.",
+      "Dar por segura una pieza defendida sin contar toda la secuencia.",
+      "Jugar demasiado rápido cuando la posición se vuelve táctica.",
+      "No nombrar nunca el tipo de error tras la partida."
+    ],
+    "mistakesCallout": "Más ejercicios no arreglan un barrido apresurado. Haz la misma comprobación corta antes de cada jugada.",
+    "planTitle": "Reinicio de visión en 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "12 minutos",
+        "detail": "Solo inventario de piezas sueltas y barrido de jaques, capturas y amenazas."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "15 minutos",
+        "detail": "Añade una ronda de Memory Chess antes de tus partidas para recorrer un tablero mental más limpio."
+      },
+      {
+        "label": "Día 5",
+        "duration": "15 minutos",
+        "detail": "Repasa tres errores recientes y nombra la señal perdida en cada posición."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 a 20 minutos",
+        "detail": "Juega rápidas y usa la lista completa en cada jugada que cambie la tensión o la seguridad del rey."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Cuál es la forma más rápida de mejorar la visión del tablero?",
+        "answer": "Usa la misma lista antes de cada jugada en todas tus partidas hasta que sea automática: jaques, capturas, amenazas y piezas sueltas."
+      },
+      {
+        "question": "¿Por qué cometo errores aunque conozco la táctica?",
+        "answer": "Porque la capa que sigue el tablero es débil. La táctica solo ayuda después de haber visto bien la posición."
+      },
+      {
+        "question": "¿Con qué frecuencia repasar mis errores?",
+        "answer": "Después de cada partida. Un hábito corto de repaso se transfiere mucho más rápido que un atracón semanal."
+      },
+      {
+        "question": "¿Los ejercicios de memoria ayudan a la visión?",
+        "answer": "Sí. Recordar las piezas más rápido facilita mantener todo el tablero en la atención mientras lo recorres."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa la guía completa contra errores cuando los fallos de visión cuestan material."
+      },
+      {
+        "reason": "Entiende por qué la habilidad táctica falla bajo la presión de la partida."
+      },
+      {
+        "reason": "Mira cómo encaja la visión del tablero en una rutina completa."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Entrenamiento de memoria en ajedrez para recordar más rápido",
+    "h1": "Entrenamiento de memoria en ajedrez para el progreso del principiante",
+    "description": "Usa ejercicios sencillos de memoria para recordar posiciones, notar patrones y seguir las jugadas con más claridad.",
+    "primaryKeyword": "entrenamiento de memoria en ajedrez",
+    "secondaryKeywords": [
+      "ejercicios de memoria en ajedrez",
+      "memorizar posiciones de ajedrez",
+      "reconocimiento de patrones",
+      "entrenar el recuerdo del tablero",
+      "concentración en ajedrez"
+    ],
+    "painPoint": "Olvidas dónde están las piezas mientras piensas en las siguientes jugadas.",
+    "ctaLabel": "Empezar un reto de memoria",
+    "quickAnswer": "El entrenamiento de memoria te ayuda a recordar posiciones útiles mientras las piezas cambian. No se trata de memorizar tantos tableros aleatorios como sea posible.",
+    "keyTakeaways": [
+      "Al principio, la precisión importa más que la velocidad.",
+      "Repetir una posición ayuda a encontrar un error de memoria cada vez.",
+      "Usa la memoria antes del cálculo o del repaso de partidas."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que olvidan su plan tras una respuesta fuerte.",
+      "Principiantes que no logran reconstruir posiciones de partidas recientes.",
+      "Quien se atasca cuando hay muchas piezas activas."
+    ],
+    "timeToRead": "8 min de lectura",
+    "introParagraphs": [
+      "La memoria en ajedrez es una habilidad práctica. El objetivo es sostener una imagen clara del tablero el tiempo suficiente para elegir con calma.",
+      "Memory Chess ofrece un ciclo sencillo: mirar, recordar, comprobar y volver a intentarlo."
+    ],
+    "startHereTitle": "Empieza con esta rutina de memoria",
+    "startHereSteps": [
+      "Empieza con una posición sencilla y memorízala durante 10 segundos.",
+      "Recrea el tablero y anota la primera casilla o pieza que perdiste.",
+      "Repite la misma posición una vez para que la corrección se haga visible.",
+      "Añade una línea táctica corta desde la posición memorizada.",
+      "Anota tanto la precisión como el tipo de error de memoria."
+    ],
+    "drillSectionTitle": "Ejercicios de memoria para partidas reales",
+    "drillCards": [
+      {
+        "title": "Repetición de una posición",
+        "description": "Memoriza una posición, reconstrúyela y repítela una vez con los mismos ajustes.",
+        "duration": "5 minutos",
+        "goal": "Encontrar un error de memoria claro que puedas corregir.",
+        "ctaLabel": "Repetir una posición"
+      },
+      {
+        "title": "Anclas de patrón",
+        "description": "Fíjate primero en los reyes, las piezas sueltas y la tensión central antes de recordar el resto.",
+        "duration": "4 minutos",
+        "goal": "Recordar primero lo más importante de la posición.",
+        "ctaLabel": "Entrenar las anclas"
+      },
+      {
+        "title": "Recordar y calcular",
+        "description": "Tras reconstruir el tablero, calcula una línea corta antes de verificar.",
+        "duration": "6 minutos",
+        "goal": "Usar la memoria del tablero mientras calculas.",
+        "ctaLabel": "Añadir una línea"
+      }
+    ],
+    "comparisonTitle": "Cómo se ve un recuerdo débil en la partida",
+    "comparisonSummary": "El tablero puede resultarte familiar y aun así estar demasiado borroso para sostener el cálculo.",
+    "comparisonRows": [
+      {
+        "label": "Seguir la línea",
+        "struggling": "Pierdes la posición original al considerar otra jugada candidata.",
+        "stronger": "Vuelves a la posición base con precisión tras explorar una línea."
+      },
+      {
+        "label": "Memoria de patrones",
+        "struggling": "Recuerdas la idea táctica pero no los defensores exactos.",
+        "stronger": "Recuerdas la idea y las casillas que la hacen funcionar."
+      },
+      {
+        "label": "Calidad del repaso",
+        "struggling": "El repaso queda vago porque la posición se esfuma.",
+        "stronger": "Reconstruyes los momentos clave y aprendes más rápido."
+      }
+    ],
+    "mistakes": [
+      "Subir la dificultad a saltos demasiado grandes para tu nivel.",
+      "Medir la velocidad e ignorar la precisión.",
+      "No registrar los errores, dejando ocultas las debilidades repetidas.",
+      "Tratar la memoria como algo aparte del juego táctico."
+    ],
+    "mistakesCallout": "No hagas la posición más difícil mientras tu recuerdo siga poco claro. Baja la dificultad y construye precisión primero.",
+    "planTitle": "Bloque de memoria de 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "10 minutos",
+        "detail": "Repite posiciones sencillas y nombra cada error de memoria."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "12 minutos",
+        "detail": "Añade anclas para recordar primero reyes, piezas sueltas y tensión central."
+      },
+      {
+        "label": "Día 5",
+        "duration": "12 minutos",
+        "detail": "Añade una secuencia corta de jugadas tras cada reconstrucción correcta."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 minutos",
+        "detail": "Acorta un poco el cronómetro manteniendo el número de piezas y lleva el trabajo al repaso de una partida rápida."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿El entrenamiento de memoria mejora las partidas reales?",
+        "answer": "Sí, cuando se combina con cálculo o repaso. Recordar mejor mantiene las líneas tácticas más claras bajo presión."
+      },
+      {
+        "question": "¿Cuántas posiciones entrenar por sesión?",
+        "answer": "Para un principiante, de seis a doce intentos cuidadosos bastan si verificas los errores en vez de correr."
+      },
+      {
+        "question": "¿Entrenar tableros aleatorios o patrones de partida?",
+        "answer": "Ambos. Los aleatorios afinan el recuerdo puro; las estructuras reales se transfieren mejor."
+      },
+      {
+        "question": "¿Y si la precisión se estanca?",
+        "answer": "Usa menos piezas durante una semana, corrige un tipo de error y añade piezas solo cuando el recuerdo vuelva a ser claro."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa esto si te cuesta recordar secuencias de jugadas."
+      },
+      {
+        "reason": "Equilibra la memoria con una cantidad útil de ejercicios."
+      },
+      {
+        "reason": "Conecta la memoria del tablero con los patrones habituales."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Entrenamiento de ajedrez a ciegas para principiantes",
+    "h1": "Ajedrez a ciegas para principiantes, paso a paso",
+    "description": "Aprende ajedrez a ciegas en pasos pequeños que mejoran la visualización sin volver la práctica abrumadora.",
+    "primaryKeyword": "entrenamiento de ajedrez a ciegas",
+    "secondaryKeywords": [
+      "ajedrez a ciegas para principiantes",
+      "tablero mental",
+      "ejercicios de visualización",
+      "calcular sin mover piezas",
+      "ejercicios de concentración"
+    ],
+    "painPoint": "Pierdes el tablero en cuanto dejas de mirarlo.",
+    "ctaLabel": "Empezar práctica a ciegas",
+    "quickAnswer": "Empieza con una posición sencilla. Recuérdala, imagina una jugada por bando y comprueba. Prueba una partida entera a ciegas solo cuando estos pasos sean fáciles.",
+    "keyTakeaways": [
+      "El ajedrez a ciegas es una habilidad que se construye paso a paso.",
+      "Comprobar la respuesta importa más que intentar posiciones más difíciles.",
+      "Los ejercicios a ciegas para principiantes son ejercicios de visualización con menos ayuda del tablero."
+    ],
+    "whoThisIsFor": [
+      "Quien quiere mejor visualización sin empezar por una partida entera a ciegas.",
+      "Principiantes que pierden las casillas tras una o dos jugadas imaginadas.",
+      "Quien quiere sostener una imagen más clara del tablero."
+    ],
+    "timeToRead": "8 min de lectura",
+    "introParagraphs": [
+      "El error más grande es intentar una partida entera a ciegas demasiado pronto. Suele generar frustración en vez de progreso.",
+      "Ve paso a paso: mira el tablero, recuérdalo, imagina una jugada, compruébala y reduce poco a poco la ayuda visual."
+    ],
+    "startHereTitle": "Empieza aquí: una progresión segura",
+    "startHereSteps": [
+      "Memoriza una posición pequeña y reconstrúyela antes de imaginar jugadas.",
+      "Calcula una jugada por bando sin tocar las piezas.",
+      "Verifica cada discrepancia al momento en vez de seguir adelante.",
+      "Juega una ronda de Memory Chess con una ventana de observación algo más corta.",
+      "Añade una jugada más solo cuando la línea actual sea clara."
+    ],
+    "drillSectionTitle": "Ejercicios fáciles de ajedrez a ciegas",
+    "drillCards": [
+      {
+        "title": "Reconstruir antes de mover",
+        "description": "No imagines jugadas hasta que la posición inicial esté totalmente estable.",
+        "duration": "4 minutos",
+        "goal": "Construir un recuerdo claro antes de añadir jugadas.",
+        "ctaLabel": "Reconstruir primero"
+      },
+      {
+        "title": "Una jugada por bando",
+        "description": "Imagina una jugada de las blancas y una respuesta de las negras, y verifica el nuevo tablero.",
+        "duration": "5 minutos",
+        "goal": "Actualizar la posición en la mente sin mirar el tablero.",
+        "ctaLabel": "Imaginar dos jugadas"
+      },
+      {
+        "title": "Ventana corta",
+        "description": "Usa menos tiempo de observación para aprender a recordar el tablero más rápido.",
+        "duration": "4 minutos",
+        "goal": "Prepararte para el juego a ciegas sin ocultar todo el tablero.",
+        "ctaLabel": "Acortar la ventana"
+      }
+    ],
+    "comparisonTitle": "Un camino más seguro hacia el ajedrez a ciegas",
+    "comparisonSummary": "Pregúntate si puedes imaginar una jugada más que antes. Todavía no necesitas una partida entera a ciegas.",
+    "comparisonRows": [
+      {
+        "label": "Punto de partida",
+        "struggling": "Saltas directo al juego a ciegas completo.",
+        "stronger": "Recuerdas la posición inicial antes de añadir jugadas."
+      },
+      {
+        "label": "Verificación",
+        "struggling": "Te fías de un tablero mental borroso.",
+        "stronger": "Verificas cada actualización imaginada y la corriges al momento."
+      },
+      {
+        "label": "Calidad de la sesión",
+        "struggling": "Entrenas hasta que la concentración se derrumba.",
+        "stronger": "Paras mientras la precisión mental sigue alta."
+      }
+    ],
+    "mistakes": [
+      "Intentar partidas enteras a ciegas demasiado pronto.",
+      "Ignorar la verificación y fiarte de tableros mentales incorrectos.",
+      "Añadir jugadas antes de que las líneas cortas sean claras.",
+      "Practicar demasiado en una sesión y quemar el foco."
+    ],
+    "mistakesCallout": "No saltes a una tarea mucho más difícil. Usa un poco menos de ayuda del tablero cada vez.",
+    "planTitle": "Bloque de preparación de 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "10 minutos",
+        "detail": "Solo reconstruir posiciones de memoria y comprobarlas enseguida."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "12 minutos",
+        "detail": "Añade una jugada por bando y mantén las posiciones sencillas."
+      },
+      {
+        "label": "Día 5",
+        "duration": "12 minutos",
+        "detail": "Acorta la ventana de observación en Memory Chess manteniendo el número de piezas."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 minutos",
+        "detail": "Prueba algunas secuencias de dos jugadas solo si la práctica de una jugada es precisa."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿El ajedrez a ciegas es útil para principiantes?",
+        "answer": "Sí, en ejercicios cortos y controlados. Fortalece la visualización que sostiene las partidas normales."
+      },
+      {
+        "question": "¿Con qué frecuencia hacer ejercicios a ciegas?",
+        "answer": "De dos a cuatro sesiones cortas por semana bastan si las combinas con partidas y repaso."
+      },
+      {
+        "question": "¿Cuál es el mejor primer ejercicio?",
+        "answer": "Reconstruir una posición sencilla de memoria e imaginar una jugada por bando antes de comprobar."
+      },
+      {
+        "question": "¿Cómo sé que estoy mejorando?",
+        "answer": "Sostienes más casillas con precisión, actualizas el tablero durante más tiempo y cometes menos errores de visión."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Mantén firme la base en vez de saltar al juego a ciegas avanzado."
+      },
+      {
+        "reason": "Combina el trabajo a ciegas con ejercicios de sostener la línea."
+      },
+      {
+        "reason": "Usa una visualización más clara para comparar jugadas posibles."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Ejercicios de memoria de trabajo para ajedrecistas",
+    "h1": "Ejercicios de memoria de trabajo para principiantes en ajedrez",
+    "description": "Usa ejercicios sencillos para recordar secuencias de jugadas, comparar opciones y decidir con más claridad.",
+    "primaryKeyword": "ejercicios de memoria de trabajo",
+    "secondaryKeywords": [
+      "memoria de trabajo en ajedrez",
+      "entrenamiento de cálculo",
+      "ejercicios de concentración",
+      "regularidad en ajedrez",
+      "resistencia mental en ajedrez"
+    ],
+    "painPoint": "Olvidas la primera secuencia mientras piensas en otra.",
+    "ctaLabel": "Empezar una rutina de memoria",
+    "quickAnswer": "La memoria de trabajo te ayuda a sostener unas pocas secuencias de jugadas. Mantén el número pequeño y comprueba cada una con claridad.",
+    "keyTakeaways": [
+      "Tres opciones claras son mejores que seis confusas.",
+      "Un resumen corto en voz alta ayuda a recordar cada línea.",
+      "Practica con posiciones reales y usa la habilidad en las partidas."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que olvidan la primera línea tras explorar la segunda.",
+      "Principiantes que confunden el orden de jugadas.",
+      "Quien comete más errores tácticos cuando está cansado."
+    ],
+    "timeToRead": "8 min de lectura",
+    "introParagraphs": [
+      "La memoria de trabajo sostiene las jugadas posibles mientras las comparas. En ajedrez debes recordar la posición inicial y una o dos líneas cortas sin mezclarlas.",
+      "Memory Chess te ayuda a recordar la posición inicial. Cuando esa imagen es clara, seguir las jugadas siguientes resulta más fácil."
+    ],
+    "startHereTitle": "Empieza con dos secuencias cortas",
+    "startHereSteps": [
+      "Elige una posición y enumera tres jugadas candidatas sin tocar el tablero.",
+      "Calcula cada línea dos medias jugadas y resume el resultado en una frase.",
+      "Juega una ronda de Memory Chess para refrescar la posición base.",
+      "Vuelve a la posición y compara de nuevo las secuencias posibles.",
+      "Escribe una frase sobre dónde se rompió el seguimiento de la línea."
+    ],
+    "drillSectionTitle": "Ejercicios de memoria de trabajo en ajedrez",
+    "drillCards": [
+      {
+        "title": "Tres líneas en una frase",
+        "description": "Sostén brevemente tres jugadas candidatas y describe cada rama en una frase.",
+        "duration": "6 minutos",
+        "goal": "Mantener clara cada secuencia en vez de añadir más.",
+        "ctaLabel": "Sostener tres líneas"
+      },
+      {
+        "title": "Reinicio del recuerdo",
+        "description": "Usa una ronda de Memory Chess entre intentos para mantener estable la posición base.",
+        "duration": "4 minutos",
+        "goal": "Recordar la posición inicial antes de seguir las jugadas.",
+        "ctaLabel": "Reiniciar el tablero"
+      },
+      {
+        "title": "Comparación tras la línea",
+        "description": "Vuelve a la posición inicial y compara las ramas tras una pausa corta.",
+        "duration": "5 minutos",
+        "goal": "Moverte entre el tablero base y cada línea sin mezclarlas.",
+        "ctaLabel": "Comparar tus opciones"
+      }
+    ],
+    "comparisonTitle": "Cuando intentas recordar demasiado",
+    "comparisonSummary": "Con la memoria llena, la línea se vuelve confusa y se mezcla el orden de jugadas.",
+    "comparisonRows": [
+      {
+        "label": "Jugadas candidatas",
+        "struggling": "Intentas sostener demasiadas opciones a la vez.",
+        "stronger": "Sostienes menos líneas, pero cada una se mantiene precisa más tiempo."
+      },
+      {
+        "label": "Orden de jugadas",
+        "struggling": "Las ramas se mezclan entre sí.",
+        "stronger": "Cada línea queda separada y es fácil de comparar."
+      },
+      {
+        "label": "Fatiga",
+        "struggling": "La calidad de decisión se derrumba al final de la partida.",
+        "stronger": "Mantienes un proceso más simple según baja la energía."
+      }
+    ],
+    "mistakes": [
+      "Intentar sostener demasiadas secuencias a la vez.",
+      "Saltarte el resumen corto en voz alta tras cada línea.",
+      "Practicar solo ejercicios y no usar nunca la habilidad en partidas.",
+      "Continuar cuando ya estás demasiado cansado para pensar con claridad."
+    ],
+    "mistakesCallout": "Todavía no añadas líneas. Mantén pocas líneas claras antes de alargarlas.",
+    "planTitle": "Bloque de memoria de trabajo de 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "10 minutos",
+        "detail": "Usa solo dos secuencias y explica cada una en voz alta."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "12 minutos",
+        "detail": "Añade un reinicio con Memory Chess entre intentos para mantener limpia la posición inicial."
+      },
+      {
+        "label": "Día 5",
+        "duration": "12 minutos",
+        "detail": "Añade una tercera opción solo si las dos primeras siguen precisas."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 minutos",
+        "detail": "Usa la rutina en una partida rápida. Haz una pausa en los momentos difíciles y nombra con claridad tus jugadas posibles."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿La memoria de trabajo se transfiere al ajedrez?",
+        "answer": "Puede hacerlo, sobre todo cuando está ligada a posiciones, seguimiento de líneas y repaso, y no a juegos genéricos de cerebro."
+      },
+      {
+        "question": "¿Cómo debe estructurar esta práctica un principiante?",
+        "answer": "Con sesiones cortas que combinen jugadas posibles, memoria del tablero y una posición real."
+      },
+      {
+        "question": "¿Cómo seguir el progreso de forma sencilla?",
+        "answer": "Anota cuántas secuencias puedes sostener y con qué frecuencia pierdes el hilo."
+      },
+      {
+        "question": "¿Debe sustituir al entrenamiento táctico?",
+        "answer": "No. Debe complementarlo, ayudándote a mantener las líneas más claras al resolver o jugar."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa una mejor memoria de trabajo para comparar jugadas posibles."
+      },
+      {
+        "reason": "Fortalece la capa de recuerdo que sostiene el seguimiento de líneas."
+      },
+      {
+        "reason": "Usa un proceso más simple para no malgastar memoria de trabajo."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Cómo dejar de cometer errores graves en ajedrez",
+    "h1": "Cómo dejar de cometer errores graves en ajedrez",
+    "description": "Usa una comprobación corta para detectar amenazas, proteger piezas sueltas y fallar menos en partidas reales.",
+    "primaryKeyword": "cómo dejar de cometer errores en ajedrez",
+    "secondaryKeywords": [
+      "prevenir errores en ajedrez",
+      "dejar de colgar piezas",
+      "comprobación de amenazas",
+      "lista de seguridad en ajedrez",
+      "reducir errores simples"
+    ],
+    "painPoint": "Entiendes las ideas del ajedrez pero sigues perdiendo piezas por amenazas sencillas.",
+    "ctaLabel": "Empezar ejercicio contra errores",
+    "quickAnswer": "Antes de cada jugada, comprueba las amenazas del rival, busca piezas sin defender y asegúrate de que tu jugada es segura. La memoria te ayuda a tener presente todo el tablero.",
+    "keyTakeaways": [
+      "La mayoría de los errores de principiante vienen de no ver parte del tablero.",
+      "La lista de seguridad debe ser corta para sobrevivir al apuro de tiempo.",
+      "Repite tus errores hasta ver rápido lo que se te pasó."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que caen una y otra vez en tácticas de una jugada.",
+      "Principiantes que rinden peor en partidas que en ejercicios.",
+      "Quien quiere una rutina tranquila para usar siempre."
+    ],
+    "timeToRead": "8 min de lectura",
+    "introParagraphs": [
+      "Muchos errores ocurren porque mueves antes de mirar toda la posición. También puedes perder de vista dónde está defendida una pieza.",
+      "Una rutina corta sustituye al pánico y a las conjeturas. Usa las mismas comprobaciones siempre que la posición se ponga aguda."
+    ],
+    "startHereTitle": "Empieza aquí: la lista contra errores",
+    "startHereSteps": [
+      "Pregunta qué jaques, capturas y amenazas tiene el rival ahora mismo.",
+      "Encuentra cada pieza sin defender o con demasiadas tareas.",
+      "Solo entonces comprueba que tu jugada prevista es segura.",
+      "Juega una ronda corta de Memory Chess antes de tus partidas para afinar el recuerdo.",
+      "Tras cada error, escribe la señal perdida en una frase."
+    ],
+    "drillSectionTitle": "Ejercicios sencillos contra errores",
+    "drillCards": [
+      {
+        "title": "Barrido desde el lado rival",
+        "description": "Empieza cada posición comprobando las amenazas más fuertes del rival.",
+        "duration": "3 minutos",
+        "goal": "Acordarte de comprobar la idea del rival antes que la tuya.",
+        "ctaLabel": "Barrer desde el otro lado"
+      },
+      {
+        "title": "Alarma de pieza suelta",
+        "description": "Antes de mover, nombra cada pieza sin defender o con demasiadas tareas.",
+        "duration": "4 minutos",
+        "goal": "Detectar pronto las pérdidas de material más fáciles.",
+        "ctaLabel": "Activar la alarma"
+      },
+      {
+        "title": "Ciclo de repetición del error",
+        "description": "Repite las posiciones de tus propios errores hasta que la amenaza perdida sea obvia.",
+        "duration": "6 minutos",
+        "goal": "Aprender de las posiciones que causaron derrotas reales.",
+        "ctaLabel": "Repetir tu error"
+      }
+    ],
+    "comparisonTitle": "Qué cambia cuando bajan los errores",
+    "comparisonSummary": "Las partidas no se vuelven perfectas de golpe. Se vuelven más tranquilas, y más derrotas tienen motivos comprensibles en vez de desastres de una jugada.",
+    "comparisonRows": [
+      {
+        "label": "Momento de mover",
+        "struggling": "Mueves en cuanto ves un plan.",
+        "stronger": "Solo sueltas la jugada tras una comprobación corta."
+      },
+      {
+        "label": "Percepción de amenaza",
+        "struggling": "Ves la táctica después de que ocurra.",
+        "stronger": "Reconoces la forma táctica antes de comprometerte."
+      },
+      {
+        "label": "Repaso posterior",
+        "struggling": "La derrota parece aleatoria.",
+        "stronger": "Nombras rápido el indicador exacto que se te pasó."
+      }
+    ],
+    "mistakes": [
+      "Intentar eliminar errores simplemente moviendo más despacio.",
+      "Memorizar más aperturas mientras el hábito de comprobar amenazas sigue débil.",
+      "Repasar líneas de motor sin identificar la señal realmente perdida.",
+      "Ignorar cómo el apuro de tiempo debilita el recuerdo del tablero."
+    ],
+    "mistakesCallout": "Mover más despacio no basta. Usa la misma comprobación corta cada vez.",
+    "planTitle": "Reinicio contra errores en 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "10 minutos",
+        "detail": "Solo el barrido desde el lado rival y la alarma de pieza suelta."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "12 minutos",
+        "detail": "Añade una ronda de Memory Chess antes de cada sesión para mantener más limpio el tablero mental."
+      },
+      {
+        "label": "Día 5",
+        "duration": "15 minutos",
+        "detail": "Repite tres errores recientes y clasifica la señal perdida en cada uno."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 minutos",
+        "detail": "Usa la lista completa en partidas rápidas y sigue los errores por partida, no solo el resultado final."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Por qué sigo colgando piezas?",
+        "answer": "Normalmente porque el barrido previo a la jugada está incompleto. Puedes conocer la táctica y aun así no comprobar todo el tablero antes de mover."
+      },
+      {
+        "question": "¿Basta con mover más despacio?",
+        "answer": "Solo si usas el tiempo extra en una comprobación clara. Mirar el tablero sin un plan no ayuda."
+      },
+      {
+        "question": "¿De verdad ayudan los ejercicios de memoria?",
+        "answer": "Sí. Recordar las piezas con más claridad facilita notar amenazas mientras el tablero cambia."
+      },
+      {
+        "question": "¿Qué debo seguir para fallar menos?",
+        "answer": "Sigue los errores por partida, los descuidos con piezas sueltas y si la amenaza perdida vino de un fallo de barrido o de cálculo."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Construye un barrido más firme para prevenir errores."
+      },
+      {
+        "reason": "Mira por qué la habilidad táctica se derrumba con un seguimiento débil del tablero."
+      },
+      {
+        "reason": "Encaja el trabajo contra errores en una rutina completa."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Por qué el elo de ejercicios no se traslada a las partidas",
+    "h1": "Por qué tu elo de ejercicios no se traslada a las partidas",
+    "description": "Descubre por qué resolver ejercicios se siente distinto de jugar y cómo la visión, la memoria y el repaso cierran esa distancia.",
+    "primaryKeyword": "por qué el elo de ejercicios no se traslada a las partidas",
+    "secondaryKeywords": [
+      "elo de ejercicios frente a elo de partidas",
+      "la táctica no se traslada a las partidas",
+      "habilidad táctica en partidas reales",
+      "por qué soy mejor en ejercicios que en partidas",
+      "visión del tablero"
+    ],
+    "painPoint": "Resuelves bien los ejercicios pero sigues perdiendo tácticas en las partidas.",
+    "ctaLabel": "Entrenar para partidas reales",
+    "quickAnswer": "Un ejercicio te dice que hay una táctica. Una partida no. Tienes que notar el peligro, recordar el tablero y saber cuándo ir más despacio.",
+    "keyTakeaways": [
+      "El ejercicio te avisa de que hay algo que resolver.",
+      "La partida te obliga a encontrar tú mismo el momento peligroso.",
+      "Mejor visión y memoria te ayudan a notar tácticas antes."
+    ],
+    "whoThisIsFor": [
+      "Jugadores con un elo de ejercicios alto y un elo de partidas plano.",
+      "Principiantes que ven la táctica después de la partida, no durante.",
+      "Quien no logra usar las ideas de los ejercicios en las partidas."
+    ],
+    "timeToRead": "8 min de lectura",
+    "introParagraphs": [
+      "Es un problema común del principiante. Resuelves ejercicios, pero las partidas siguen teniendo piezas perdidas, amenazas ignoradas y jugadas apresuradas.",
+      "Hacer más ejercicios puede no arreglarlo. También necesitas notar cuándo la posición se vuelve peligrosa e imaginar qué ocurre tras cada elección."
+    ],
+    "startHereTitle": "Empieza conectando ejercicios y partidas",
+    "startHereSteps": [
+      "Antes de resolver, dedica 2 minutos a recorrer un tablero buscando jaques, capturas y amenazas.",
+      "Añade una ronda de Memory Chess para que la imagen del tablero se mantenga estable bajo presión.",
+      "Tras un ejercicio, pregúntate qué señal te habría dicho que fueras más despacio en una partida real.",
+      "Repasa un error reciente y compáralo con un ejercicio táctico parecido.",
+      "Juega al menos una partida rápida por sesión para probar si sobrevive el barrido previo."
+    ],
+    "drillSectionTitle": "Ejercicios que conectan la táctica con la partida",
+    "drillCards": [
+      {
+        "title": "Encuentra la señal de aviso",
+        "description": "Busca la señal de aviso antes de intentar encontrar la táctica.",
+        "duration": "4 minutos",
+        "goal": "Notar antes las posiciones peligrosas.",
+        "ctaLabel": "Entrenar la señal"
+      },
+      {
+        "title": "Recuerdo antes del cálculo",
+        "description": "Juega una ronda rápida de Memory Chess antes de los ejercicios para que el tablero se sienta más claro.",
+        "duration": "4 minutos",
+        "goal": "Conectar la práctica de patrones con el juego real.",
+        "ctaLabel": "Afinar el recuerdo"
+      },
+      {
+        "title": "Repetición de posición de partida",
+        "description": "Repite un momento táctico perdido de tu propia partida y resuélvelo como si fuera un ejercicio.",
+        "duration": "6 minutos",
+        "goal": "Hacer que el entrenamiento táctico vuelva a parecerse a posiciones reales.",
+        "ctaLabel": "Repetir la táctica perdida"
+      }
+    ],
+    "comparisonTitle": "Ejercicios y partidas: ¿qué cambia?",
+    "comparisonSummary": "La jugada táctica puede ser idéntica, pero la tarea mental no lo es.",
+    "comparisonRows": [
+      {
+        "label": "Planteamiento",
+        "struggling": "La partida no te avisa de que existe una táctica.",
+        "stronger": "Notas la señal de que la tensión acaba de cambiar."
+      },
+      {
+        "label": "Claridad del tablero",
+        "struggling": "La línea se difumina en cuanto se mueven varias piezas.",
+        "stronger": "Mantienes activas en memoria las casillas y defensores importantes."
+      },
+      {
+        "label": "Ritmo de decisión",
+        "struggling": "Mueves a velocidad normal cuando la posición se vuelve peligrosa.",
+        "stronger": "Vas más despacio cuando aparecen jaques, capturas o amenazas."
+      }
+    ],
+    "mistakes": [
+      "Hacer ejercicios sin ningún paso de transferencia a las partidas.",
+      "Suponer que el conocimiento táctico por sí solo evita los errores.",
+      "No repasar nunca por qué la posición se volvió peligrosa.",
+      "Tratar la visión del tablero como algo aparte de la táctica."
+    ],
+    "mistakesCallout": "No añadas solo más ejercicios. Practica también notar los momentos tácticos en tus propias partidas.",
+    "planTitle": "Bloque de transferencia de 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "12 minutos",
+        "detail": "Añade el pensamiento «primero la señal, luego la solución» a cada sesión de ejercicios."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "12 minutos",
+        "detail": "Usa una ronda corta de Memory Chess antes de los ejercicios o de las partidas rápidas."
+      },
+      {
+        "label": "Día 5",
+        "duration": "15 minutos",
+        "detail": "Repite tres momentos tácticos perdidos en tus propias partidas."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 a 20 minutos",
+        "detail": "Juega rápidas y detente siempre que la posición se vuelva forzada o tácticamente tensa."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Por qué soy mejor en ejercicios que en partidas?",
+        "answer": "Porque el ejercicio ya te dice que hay una táctica que encontrar. La partida no."
+      },
+      {
+        "question": "¿Debo dejar de hacer ejercicios?",
+        "answer": "No. Consérvalos, pero añade visión del tablero, recuerdo y repetición de posiciones de partida para que los patrones se transfieran."
+      },
+      {
+        "question": "¿Cuál es el mejor ejercicio de transferencia?",
+        "answer": "Repetir una táctica perdida de tu partida y resolverla tras reconstruir la posición de memoria."
+      },
+      {
+        "question": "¿Cómo mido la transferencia?",
+        "answer": "Comprueba si bajan los errores por partida y las tácticas simples perdidas, no solo si sube el elo de ejercicios."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa esto para montar una lista contra errores más corta para las partidas."
+      },
+      {
+        "reason": "Fortalece el hábito de barrido que hace visibles las tácticas."
+      },
+      {
+        "reason": "Elige una cantidad de ejercicios que deje tiempo para jugar."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Cómo ver todo el tablero en ajedrez",
+    "h1": "Cómo ver todo el tablero de ajedrez",
+    "description": "Usa un barrido sencillo para notar piezas lejanas, detectar amenazas y evitar la visión de túnel.",
+    "primaryKeyword": "cómo ver todo el tablero en ajedrez",
+    "secondaryKeywords": [
+      "conciencia del tablero",
+      "evitar la visión de túnel",
+      "ver todo el tablero",
+      "ejercicios de barrido",
+      "visión periférica en el tablero"
+    ],
+    "painPoint": "Te concentras en una zona y se te escapa una amenaza en otra.",
+    "ctaLabel": "Entrenar la visión completa",
+    "quickAnswer": "Antes de cada jugada, comprueba ambos reyes, las piezas sin defender, el centro y los bordes. La memoria te ayuda a tener presente más tablero.",
+    "keyTakeaways": [
+      "La visión de túnel es la atención atrapada en una zona.",
+      "Comprobar las piezas del borde es especialmente útil para principiantes.",
+      "Un recuerdo claro del tablero facilita el barrido."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que solo notan tácticas en un lado del tablero.",
+      "Principiantes que pierden alfiles, torres o amenazas lejanas.",
+      "Quien se siente agobiado en posiciones abiertas."
+    ],
+    "timeToRead": "7 min de lectura",
+    "introParagraphs": [
+      "Muchos principiantes miran solo las piezas cercanas a su jugada prevista. Así es fácil perder alfiles, torres y amenazas lejanas.",
+      "No necesitas mirar el tablero más tiempo. Usa el mismo barrido sencillo para comprobar cada zona importante."
+    ],
+    "startHereTitle": "Empieza aquí: amplía el barrido",
+    "startHereSteps": [
+      "Comprueba ambos reyes y las líneas que apuntan hacia ellos.",
+      "Busca piezas sin defender primero en el centro y luego en los bordes.",
+      "Recorre alfiles y torres por sus líneas completas, no solo hasta la casilla que te interesa.",
+      "Juega una ronda de Memory Chess para que todo el tablero esté más disponible en la atención.",
+      "Antes de mover, pregúntate qué parte del tablero no has mirado todavía."
+    ],
+    "drillSectionTitle": "Ejercicios contra la visión de túnel",
+    "drillCards": [
+      {
+        "title": "Barrido de bordes",
+        "description": "Comprueba las piezas de esquina y de borde antes de cada jugada.",
+        "duration": "3 minutos",
+        "goal": "Detectar amenazas fuera de la zona en la que estás concentrado.",
+        "ctaLabel": "Barrer los bordes"
+      },
+      {
+        "title": "Repetición de líneas",
+        "description": "Recorre cada línea de alfil y torre por completo en vez de mirar solo una casilla objetivo.",
+        "duration": "4 minutos",
+        "goal": "Cubrir más tablero en cada barrido.",
+        "ctaLabel": "Recorrer líneas enteras"
+      },
+      {
+        "title": "Recuerdo de todo el tablero",
+        "description": "Usa Memory Chess con un número medio de piezas y luego describe el tablero por zonas.",
+        "duration": "5 minutos",
+        "goal": "Recordar más tablero a la vez.",
+        "ctaLabel": "Recordar por zonas"
+      }
+    ],
+    "comparisonTitle": "Visión de túnel frente a conciencia completa",
+    "comparisonSummary": "No necesitas mirar todo el mismo tiempo. Necesitas no dejar pasar nada importante.",
+    "comparisonRows": [
+      {
+        "label": "Recorrido de la atención",
+        "struggling": "Te quedas mirando un grupo de piezas.",
+        "stronger": "Pasas por las zonas de riesgo en un orden constante."
+      },
+      {
+        "label": "Piezas de largo alcance",
+        "struggling": "Olvidas alfiles y torres lejos de la acción.",
+        "stronger": "Recorres sus líneas completas antes de fiarte de una jugada."
+      },
+      {
+        "label": "Zonas del tablero",
+        "struggling": "Te saltas el lado que parece tranquilo.",
+        "stronger": "Compruebas el lado tranquilo antes de mover."
+      }
+    ],
+    "mistakes": [
+      "Creer que ver todo el tablero es mirar más tiempo en vez de barrer mejor.",
+      "Ignorar los bordes porque el centro parece más urgente.",
+      "No recorrer del todo las líneas de las piezas de largo alcance.",
+      "Intentar barrer más tablero antes de recordar las piezas con claridad."
+    ],
+    "mistakesCallout": "El tiempo extra de reflexión no ayuda sin un barrido claro. Comprueba el tablero siempre en el mismo orden.",
+    "planTitle": "Plan de barrido de 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "10 minutos",
+        "detail": "Solo comprobación de reyes, de piezas sueltas y barrido de bordes."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "12 minutos",
+        "detail": "Añade el recorrido completo de las líneas de alfiles y torres."
+      },
+      {
+        "label": "Día 5",
+        "duration": "12 minutos",
+        "detail": "Usa Memory Chess y recuerda el tablero por zonas, no en orden aleatorio."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 minutos",
+        "detail": "Lleva el barrido a las rápidas y anota qué zona causó el fallo cuando cometas un error."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Por qué se me escapan piezas del otro lado del tablero?",
+        "answer": "Porque tu atención es demasiado local. Un orden fijo de barrido funciona mejor que esperar notarlo todo por instinto."
+      },
+      {
+        "question": "¿Memory Chess ayuda a la conciencia del tablero?",
+        "answer": "Sí. Te entrena a mantener más tablero activo en memoria, no solo el foco táctico."
+      },
+      {
+        "question": "¿Debo mirar los bordes en cada jugada?",
+        "answer": "Sí, sobre todo como principiante. Muchos errores baratos se esconden en piezas de borde y líneas largas."
+      },
+      {
+        "question": "¿Cómo sé que el barrido mejora?",
+        "answer": "Se te escapan menos amenazas lejanas y te sorprenden menos los alfiles, las torres y los descubiertos."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Combina la conciencia del tablero con una lista de seguridad más firme."
+      },
+      {
+        "reason": "Mejora el tablero mental para que el barrido amplio sea más fácil."
+      },
+      {
+        "reason": "Reconoce casillas más rápido para que el barrido cueste menos esfuerzo."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Práctica de coordenadas para leer el tablero más rápido",
+    "h1": "Práctica de coordenadas de ajedrez para principiantes",
+    "description": "Aprende antes los nombres de las casillas y facilita el barrido, la notación y la visualización.",
+    "primaryKeyword": "práctica de coordenadas de ajedrez",
+    "secondaryKeywords": [
+      "práctica de notación de ajedrez",
+      "aprender las coordenadas del tablero",
+      "reconocer casillas más rápido",
+      "conciencia de las casillas",
+      "ejercicios de nombres de casillas"
+    ],
+    "painPoint": "Necesitas tiempo para deducir el nombre de una casilla o las confundes a menudo.",
+    "ctaLabel": "Practicar nombres de casillas",
+    "quickAnswer": "Las coordenadas son los nombres de las 64 casillas. Aprenderlas facilita recorrer el tablero, imaginar jugadas y repasar partidas.",
+    "keyTakeaways": [
+      "Reconocer casillas rápido facilita el barrido.",
+      "Practica las coordenadas con posiciones reales.",
+      "Para empezar bastan los nombres básicos."
+    ],
+    "whoThisIsFor": [
+      "Principiantes que aún cuentan columnas y filas despacio.",
+      "Jugadores que quieren un barrido y una visualización más rápidos.",
+      "Quien encuentra confusa la notación."
+    ],
+    "timeToRead": "7 min de lectura",
+    "introParagraphs": [
+      "Las coordenadas sirven para más que libros y listas de jugadas. Reconocer casillas rápido ayuda a la visión, la memoria y el repaso.",
+      "Cuando conoces los nombres de las casillas, el tablero se convierte en un mapa claro en vez de un conjunto de zonas difusas."
+    ],
+    "startHereTitle": "Empieza con nombres de casillas en un tablero real",
+    "startHereSteps": [
+      "Elige una columna o fila y di los nombres de las casillas en voz alta.",
+      "Di la casilla de cada pieza mientras reconstruyes una posición en Memory Chess.",
+      "Usa una posición de una partida reciente y nombra atacantes y defensores por casilla.",
+      "Practica alfiles, torres y saltos de caballo por coordenadas, no solo a ojo.",
+      "Termina con un barrido rápido en el que cada pieza suelta se nombra por casilla."
+    ],
+    "drillSectionTitle": "Ejercicios de coordenadas que ayudan al juego",
+    "drillCards": [
+      {
+        "title": "Pieza y casilla",
+        "description": "Reconstruye un tablero y di cada pieza por nombre y casilla.",
+        "duration": "4 minutos",
+        "goal": "Conectar los nombres de casillas con las piezas que debes recordar.",
+        "ctaLabel": "Nombrar cada casilla"
+      },
+      {
+        "title": "Nombres de líneas largas",
+        "description": "Recorre líneas de alfil y torre y di las casillas que controlan.",
+        "duration": "4 minutos",
+        "goal": "Hacer útiles las coordenadas durante barridos completos.",
+        "ctaLabel": "Recorrer por casillas"
+      },
+      {
+        "title": "Mapa de saltos de caballo",
+        "description": "Elige una casilla de caballo y nombra rápido todos los destinos legales.",
+        "duration": "3 minutos",
+        "goal": "Reconocer antes las jugadas de caballo y sus casillas objetivo.",
+        "ctaLabel": "Mapear los saltos"
+      }
+    ],
+    "comparisonTitle": "Reconocer casillas despacio o rápido",
+    "comparisonSummary": "Las coordenadas no mejoran todo tu ajedrez, pero hacen más fáciles varias habilidades.",
+    "comparisonRows": [
+      {
+        "label": "Barrido",
+        "struggling": "Conoces la forma pero no los nombres de las casillas.",
+        "stronger": "Identificas amenazas y defensores con más precisión y rapidez."
+      },
+      {
+        "label": "Visualización",
+        "struggling": "Las jugadas imaginadas resultan vagas.",
+        "stronger": "La posición resultante es más fácil de describir y sostener."
+      },
+      {
+        "label": "Repaso",
+        "struggling": "Las notas tras la partida quedan difusas.",
+        "stronger": "Describes el momento clave con claridad suficiente para estudiarlo luego."
+      }
+    ],
+    "mistakes": [
+      "Practicar nombres de casillas sin usar posiciones reales.",
+      "Intentar memorizar reglas de notación sin ejemplos en el tablero.",
+      "Ignorar las líneas de las piezas de largo alcance al practicar casillas.",
+      "Abandonar el hábito en cuanto la notación básica se hace familiar."
+    ],
+    "mistakesCallout": "No repitas solo los nombres de las casillas. Úsalos con piezas y posiciones reales.",
+    "planTitle": "Plan de calentamiento de 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "8 minutos",
+        "detail": "Di cada pieza y casilla mientras reconstruyes una posición en Memory Chess."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "10 minutos",
+        "detail": "Añade la nominación de líneas largas de alfiles y torres."
+      },
+      {
+        "label": "Día 5",
+        "duration": "10 minutos",
+        "detail": "Practica el mapa de saltos de caballo y la soltura con las casillas centrales."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "12 minutos",
+        "detail": "Usa nombres de casillas en un barrido completo y luego repasa una posición importante solo con nombres de casillas."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Importan de verdad las coordenadas a un principiante?",
+        "answer": "Importan cuando aceleran la lectura del tablero, la visualización y el repaso. No necesitas notación perfecta, pero reconocer casillas rápido ayuda."
+      },
+      {
+        "question": "¿Cuál es la mejor forma de aprenderlas?",
+        "answer": "Aprender los nombres con posiciones y piezas reales en vez de repetir notación aislada."
+      },
+      {
+        "question": "¿Me ayudará a cometer menos errores?",
+        "answer": "Indirectamente, sí. Reconocer casillas más rápido hace más precisos los barridos y las comprobaciones."
+      },
+      {
+        "question": "¿Cuánto tiempo practicar coordenadas?",
+        "answer": "De cinco a diez minutos concentrados bastan cuando el ejercicio está ligado al trabajo real con el tablero."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa las coordenadas para apoyar un barrido más amplio del tablero."
+      },
+      {
+        "reason": "Haz más precisas las actualizaciones mentales por casilla."
+      },
+      {
+        "reason": "Usa los nombres de casillas para simplificar tu proceso bajo presión."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Plan diario de ajedrez de 20 minutos para principiantes",
+    "h1": "Un plan diario de ajedrez de 20 minutos para principiantes",
+    "description": "Sigue un plan sencillo de 20 minutos con práctica de tablero, memoria, partidas y un repaso rápido.",
+    "primaryKeyword": "plan diario de ajedrez de 20 minutos",
+    "secondaryKeywords": [
+      "rutina diaria de ajedrez para principiantes",
+      "plan corto de estudio de ajedrez",
+      "mejorar en ajedrez en 20 minutos",
+      "horario de ajedrez para principiantes",
+      "rutina con ejercicios y repaso"
+    ],
+    "painPoint": "Quieres mejorar, pero la mayoría de los planes de ajedrez ocupa demasiado tiempo.",
+    "ctaLabel": "Empezar el plan de 20 minutos",
+    "quickAnswer": "Dedica unos minutos a la visión del tablero, la memoria, la táctica y el repaso. Mantén la rutina corta para poder hacerla incluso cansado.",
+    "keyTakeaways": [
+      "Practicar a menudo importa más que practicar mucho rato.",
+      "Usa tanto ejercicios como posiciones reales.",
+      "Un repaso rápido ayuda a la práctica de mañana."
+    ],
+    "whoThisIsFor": [
+      "Principiantes con poco tiempo pero motivación constante.",
+      "Jugadores que abandonan planes demasiado exigentes.",
+      "Quien quiere una rutina diaria que pueda repetir."
+    ],
+    "timeToRead": "7 min de lectura",
+    "introParagraphs": [
+      "Muchos planes de estudio solo funcionan cuando tienes mucho tiempo libre. Un plan útil también debe funcionar en un día ajetreado.",
+      "Esta rutina de 20 minutos mantiene un ejercicio, una posición real y un repaso rápido."
+    ],
+    "startHereTitle": "Tu rutina de ajedrez de 20 minutos",
+    "startHereSteps": [
+      "Dedica 4 minutos a un ejercicio de visión del tablero o de recuerdo.",
+      "Dedica 6 minutos a una secuencia de Memory Chess con los mismos ajustes durante una semana.",
+      "Dedica 6 minutos a táctica o a una posición de una partida real.",
+      "Dedica 4 minutos a escribir qué falló y qué se sostuvo hoy.",
+      "Mantén la estructura fija al menos 7 días antes de ajustarla."
+    ],
+    "drillSectionTitle": "Ejercicios que caben en un plan diario corto",
+    "drillCards": [
+      {
+        "title": "Calentamiento de recuerdo",
+        "description": "Usa una ronda corta de Memory Chess como ancla de toda la sesión.",
+        "duration": "6 minutos",
+        "goal": "Empezar cada sesión con el mismo calentamiento de memoria.",
+        "ctaLabel": "Empezar el calentamiento"
+      },
+      {
+        "title": "Sprint de comprobación",
+        "description": "Recorre una posición buscando jaques, capturas, amenazas y piezas sueltas.",
+        "duration": "4 minutos",
+        "goal": "Mejorar la transferencia a las partidas sin añadir mucho tiempo.",
+        "ctaLabel": "Hacer una comprobación"
+      },
+      {
+        "title": "Ciclo de nota de repaso",
+        "description": "Escribe una frase sobre el tipo de error que has cometido hoy.",
+        "duration": "4 minutos",
+        "goal": "Usar la lección de hoy para guiar la práctica de mañana.",
+        "ctaLabel": "Anotar una lección"
+      }
+    ],
+    "comparisonTitle": "Una rutina que puedes mantener",
+    "comparisonSummary": "La mejor rutina es la que puedes repetir en una semana normal.",
+    "comparisonRows": [
+      {
+        "label": "Carga diaria",
+        "struggling": "Intentas demasiadas formas de estudio a la vez.",
+        "stronger": "Repites un ciclo compacto que cubre lo básico cada día."
+      },
+      {
+        "label": "Transferencia",
+        "struggling": "Solo miras o lees y no practicas.",
+        "stronger": "Cada sesión incluye práctica que puedes usar en las partidas."
+      },
+      {
+        "label": "Repaso",
+        "struggling": "Los errores desaparecen porque no hay registro.",
+        "stronger": "Cada día termina con una nota para mañana."
+      }
+    ],
+    "mistakes": [
+      "Copiar horarios avanzados imposibles de sostener.",
+      "Usar los 20 minutos en contenido pasivo.",
+      "Cambiar la rutina cada dos días.",
+      "Saltarte el repaso porque parece poca cosa."
+    ],
+    "mistakesCallout": "No hagas el plan más grande. Hazlo lo bastante fácil para repetirlo.",
+    "planTitle": "Rutina de 20 minutos durante 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 a 3",
+        "duration": "20 minutos",
+        "detail": "Mantén los mismos ajustes de Memory Chess y el mismo formato de comprobación para ganar constancia."
+      },
+      {
+        "label": "Día 4",
+        "duration": "20 minutos",
+        "detail": "Relee tus notas y quédate con un único punto de corrección para los tres días siguientes."
+      },
+      {
+        "label": "Días 5 y 6",
+        "duration": "20 minutos",
+        "detail": "Repite exactamente la misma estructura sin añadir variedad."
+      },
+      {
+        "label": "Día 7",
+        "duration": "20 minutos",
+        "detail": "Comprueba si mejoraron los errores o la precisión de recuerdo y haz solo un ajuste para la semana siguiente."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Bastan 20 minutos de estudio?",
+        "answer": "Bastan si son constantes e incluyen ejercicios que se transfieren directamente a las partidas, no solo estudio pasivo."
+      },
+      {
+        "question": "¿Debo usar los 20 minutos en táctica?",
+        "answer": "Normalmente no. Una mezcla de claridad del tablero, transferencia táctica y repaso corto funciona mejor para principiantes."
+      },
+      {
+        "question": "¿Cuánto mantener el mismo plan?",
+        "answer": "Al menos una semana. Cambiarlo constantemente hace imposible leer el progreso."
+      },
+      {
+        "question": "¿Qué debo seguir?",
+        "answer": "Sigue los errores por partida, la precisión de recuerdo y el tipo de error que más cometes."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Mira cómo encaja esta rutina corta en un plan más largo."
+      },
+      {
+        "reason": "Equilibra el trabajo táctico con el de claridad del tablero."
+      },
+      {
+        "reason": "Mantén el bloque de repaso simple y productivo."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Cómo analizar tus partidas de ajedrez siendo principiante",
+    "h1": "Cómo analizar tus partidas de ajedrez siendo principiante",
+    "description": "Repasa tus partidas, entiende tus errores y elige una cosa clara para practicar después.",
+    "primaryKeyword": "cómo analizar partidas de ajedrez siendo principiante",
+    "secondaryKeywords": [
+      "repaso de partidas para principiantes",
+      "cómo repasar partidas de ajedrez",
+      "autoanálisis en ajedrez",
+      "analizar errores en ajedrez",
+      "rutina posterior a la partida"
+    ],
+    "painPoint": "Tu repaso resulta demasiado rápido, demasiado confuso o lleno de líneas de motor.",
+    "ctaLabel": "Repasar tu próxima partida",
+    "quickAnswer": "Encuentra dónde cambió la partida, nombra el tipo de error y elige una cosa que corregir. Consulta el motor después de mirar la posición por tu cuenta.",
+    "keyTakeaways": [
+      "Termina cada repaso con una acción, no con una lista larga de jugadas del motor.",
+      "Nombrar el tipo de error ayuda a elegir qué practicar.",
+      "Intenta reconstruir la posición clave de memoria."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que repasan partidas pero no saben qué hacer después.",
+      "Principiantes que ven cambiar la evaluación pero no entienden por qué.",
+      "Quien quiere un hábito posterior más sencillo."
+    ],
+    "timeToRead": "7 min de lectura",
+    "introParagraphs": [
+      "Empieza con una pregunta: ¿qué error cambió la partida? La evaluación del motor por sí sola no explica qué debes practicar.",
+      "Reconstruye la posición clave, nombra el error y úsalo para elegir el ejercicio de mañana."
+    ],
+    "startHereTitle": "Empieza aquí: el ciclo de repaso del principiante",
+    "startHereSteps": [
+      "Encuentra el primer momento en que la posición cambió bruscamente.",
+      "Reconstruye esa posición de memoria antes de consultar el motor.",
+      "Clasifica el error como visión, recuerdo, cálculo o gestión del tiempo.",
+      "Pregúntate qué señal te habría dicho que fueras más despacio.",
+      "Convierte la respuesta en un ejercicio para tu próxima sesión."
+    ],
+    "drillSectionTitle": "Ejercicios sencillos de repaso",
+    "drillCards": [
+      {
+        "title": "Reconstruir la posición clave",
+        "description": "Recrea de memoria la posición del error principal antes de repasarla.",
+        "duration": "5 minutos",
+        "goal": "Recordar la posición antes de mirar la respuesta.",
+        "ctaLabel": "Reconstruir el momento"
+      },
+      {
+        "title": "Etiqueta del tipo de error",
+        "description": "Nombra cada error grande como visión, memoria, cálculo o apuro de tiempo.",
+        "duration": "3 minutos",
+        "goal": "Saber qué practicar después.",
+        "ctaLabel": "Etiquetar el error"
+      },
+      {
+        "title": "Repaso de una corrección",
+        "description": "Termina el repaso con una corrección clara para la práctica de mañana.",
+        "duration": "2 minutos",
+        "goal": "Acabar con un siguiente paso útil.",
+        "ctaLabel": "Elegir una corrección"
+      }
+    ],
+    "comparisonTitle": "Repaso útil frente a repaso inútil",
+    "comparisonSummary": "No necesitas estudiar cada jugada. Encuentra la lección más clara para tu próxima práctica.",
+    "comparisonRows": [
+      {
+        "label": "Uso del motor",
+        "struggling": "Vas directo al motor.",
+        "stronger": "Diagnosticas el error tú mismo antes de comprobar."
+      },
+      {
+        "label": "Resultado",
+        "struggling": "Terminas con muchos comentarios y ninguna acción.",
+        "stronger": "Terminas con un ejercicio o un ajuste en la lista."
+      },
+      {
+        "label": "Memoria",
+        "struggling": "La posición desaparece en cuanto acaba la partida.",
+        "stronger": "Reconstruyes la posición y ves el error con más claridad."
+      }
+    ],
+    "mistakes": [
+      "Repasar solo con líneas de motor y sin autodiagnóstico.",
+      "Intentar analizar cada jugada con el mismo detalle.",
+      "No nombrar el tipo de error.",
+      "Terminar el repaso sin elegir el siguiente ejercicio."
+    ],
+    "mistakesCallout": "No repases cada línea del motor. Nombra el error y practica la corrección.",
+    "planTitle": "Hábito de repaso de 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "10 minutos",
+        "detail": "Repasa una partida e identifica solo el primer gran punto de inflexión."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "12 minutos",
+        "detail": "Reconstruye esa posición de memoria antes de consultar el motor."
+      },
+      {
+        "label": "Día 5",
+        "duration": "12 minutos",
+        "detail": "Clasifica cada error grande por tipo y cuenta cuál aparece más."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 minutos",
+        "detail": "Usa el tipo de error más común para elegir el primer ejercicio de tu próximo entrenamiento."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Deben los principiantes usar el motor?",
+        "answer": "Sí, pero solo tras intentar diagnosticar el error por su cuenta. Si no, el repaso se queda pasivo."
+      },
+      {
+        "question": "¿Cuántos errores repasar tras una partida?",
+        "answer": "De uno a tres puntos de inflexión bastan para la mayoría de los principiantes."
+      },
+      {
+        "question": "¿Qué anotar tras el análisis?",
+        "answer": "Anota el tipo de error, la señal perdida y un ejercicio o ajuste de lista para la próxima vez."
+      },
+      {
+        "question": "¿Cómo ayuda Memory Chess al análisis?",
+        "answer": "Te ayuda a reconstruir posiciones importantes, así tu repaso es más preciso."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Encaja el repaso en una rutina que no se vuelva abrumadora."
+      },
+      {
+        "reason": "Convierte los hallazgos del repaso en ejercicios contra errores."
+      },
+      {
+        "reason": "Recuerda y reconstruye los momentos clave tras la partida."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "¿Cuántos ejercicios de ajedrez al día debe hacer un principiante?",
+    "h1": "¿Cuántos ejercicios de ajedrez deben hacer los principiantes al día?",
+    "description": "Elige una cantidad diaria de ejercicios que mejore la táctica y deje tiempo para memoria, partidas y repaso.",
+    "primaryKeyword": "cuántos ejercicios de ajedrez al día",
+    "secondaryKeywords": [
+      "cantidad diaria de ejercicios",
+      "rutina de ejercicios para principiantes",
+      "cuánta táctica al día",
+      "exceso de ejercicios",
+      "volumen de táctica para principiantes"
+    ],
+    "painPoint": "Haces muchos ejercicios pero no sabes si están ayudando a tus partidas.",
+    "ctaLabel": "Equilibrar ejercicios y práctica",
+    "quickAnswer": "Una sesión diaria corta basta para la mayoría de los principiantes. Para mientras sigues pensando con claridad y deja tiempo para partidas, memoria y repaso.",
+    "keyTakeaways": [
+      "La calidad de los ejercicios importa más que la cantidad.",
+      "Demasiados ejercicios quitan tiempo a las partidas y al repaso.",
+      "Tu cantidad ideal debe dejar tiempo para jugar o repasar."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que usan los ejercicios como plan de estudio completo.",
+      "Principiantes que quieren una rutina clara.",
+      "Quien intenta equilibrar ejercicios y práctica real."
+    ],
+    "timeToRead": "7 min de lectura",
+    "introParagraphs": [
+      "No hay un número perfecto para todos. Muy pocos ejercicios frenan el aprendizaje de patrones; demasiados no dejan tiempo para otra práctica útil.",
+      "Haz los suficientes para mantenerte afilado y dedica el resto a la memoria del tablero, las partidas y el repaso."
+    ],
+    "startHereTitle": "Elige una cantidad diaria útil",
+    "startHereSteps": [
+      "Decide si los ejercicios son tu calentamiento, tu bloque principal o tu comprobación de transferencia.",
+      "Mantén una ronda corta de Memory Chess antes o después para conservar la claridad del tablero.",
+      "Para cuando tus respuestas se vuelvan apresuradas en vez de perseguir un número mayor.",
+      "Repasa cada día un momento táctico perdido de una partida real.",
+      "Cambia la cantidad solo tras comprobar si tus errores en partidas están cambiando."
+    ],
+    "drillSectionTitle": "Ejercicios que hacen más útil la táctica",
+    "drillCards": [
+      {
+        "title": "Calentamiento con recuerdo",
+        "description": "Combina un ejercicio corto de recuerdo con un bloque moderado de táctica en vez de empezar en frío.",
+        "duration": "10 minutos",
+        "goal": "Conectar la práctica táctica con el juego real.",
+        "ctaLabel": "Sumar recuerdo a la táctica"
+      },
+      {
+        "title": "Comprobación de la señal",
+        "description": "Pregunta qué señal de aviso hizo posible la táctica antes de mirar la respuesta.",
+        "duration": "5 minutos",
+        "goal": "Notar por qué una posición tiene táctica.",
+        "ctaLabel": "Comprobar la señal"
+      },
+      {
+        "title": "Repetición de táctica de partida",
+        "description": "Convierte una táctica perdida en un ejercicio que resuelves tras reconstruir el tablero.",
+        "duration": "5 minutos",
+        "goal": "Usar tácticas de tus propias partidas.",
+        "ctaLabel": "Repetir una táctica"
+      }
+    ],
+    "comparisonTitle": "Pocos ejercicios, demasiados y los justos",
+    "comparisonSummary": "La cantidad correcta mantiene la táctica afilada y aún deja tiempo para jugar.",
+    "comparisonRows": [
+      {
+        "label": "Reconocimiento de patrones",
+        "struggling": "Con poca práctica, las tácticas comunes resultan extrañas.",
+        "stronger": "Un bloque diario moderado mantiene frescos los patrones."
+      },
+      {
+        "label": "Transferencia",
+        "struggling": "Demasiados ejercicios no dejan tiempo para visión ni repaso.",
+        "stronger": "Tu rutina aún incluye recuerdo y trabajo con posiciones de partida."
+      },
+      {
+        "label": "Fatiga",
+        "struggling": "Los últimos ejercicios se vuelven conjeturas apresuradas.",
+        "stronger": "Paras mientras las decisiones siguen limpias."
+      }
+    ],
+    "mistakes": [
+      "Usar la cantidad como única medida de calidad del estudio.",
+      "Hacer táctica sin ninguna transferencia a las partidas.",
+      "Continuar mucho después de que baje la concentración.",
+      "Desplazar el repaso y el trabajo de visión del tablero."
+    ],
+    "mistakesCallout": "Más ejercicios no siempre es mejor. Comprueba si están ayudando a tus partidas reales.",
+    "planTitle": "Plan de equilibrio de 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "15 minutos",
+        "detail": "Usa un bloque pequeño de ejercicios y añade antes un ejercicio corto de recuerdo."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "15 minutos",
+        "detail": "Añade una comprobación de señal tras cada ejercicio para notar por qué existía la táctica."
+      },
+      {
+        "label": "Día 5",
+        "duration": "15 minutos",
+        "detail": "Repite una táctica perdida en una partida y compárala con tu rendimiento en ejercicios."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 a 20 minutos",
+        "detail": "Cambia la cantidad solo si tus respuestas siguen siendo cuidadosas y aún queda tiempo para jugar."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Cuántos ejercicios al día bastan para un principiante?",
+        "answer": "Los suficientes para mantener familiares las tácticas comunes, dejando tiempo para memoria y partidas. Una sesión diaria corta basta para muchos."
+      },
+      {
+        "question": "¿Pueden perjudicar demasiados ejercicios?",
+        "answer": "Indirectamente, sí. Pueden desplazar la visión, el recuerdo y el repaso necesarios para la transferencia real."
+      },
+      {
+        "question": "¿Hacer ejercicios antes o después de las partidas?",
+        "answer": "Ambas cosas funcionan, pero un calentamiento pequeño más un paso de transferencia después suele ir bien."
+      },
+      {
+        "question": "¿Qué debo seguir?",
+        "answer": "Comprueba si bajan los errores y las tácticas simples perdidas, no solo cuántos ejercicios completaste."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Entiende por qué el éxito en ejercicios por sí solo no basta."
+      },
+      {
+        "reason": "Encaja los ejercicios en una rutina corta y equilibrada."
+      },
+      {
+        "reason": "Aprende patrones comunes en vez de solo aumentar la cantidad."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Ejercicios de reconocimiento de patrones en ajedrez",
+    "h1": "Ejercicios de reconocimiento de patrones para principiantes",
+    "description": "Usa ejercicios sencillos para reconocer patrones habituales y detectar ideas útiles más rápido.",
+    "primaryKeyword": "ejercicios de reconocimiento de patrones en ajedrez",
+    "secondaryKeywords": [
+      "reconocimiento de patrones en ajedrez",
+      "entrenar motivos tácticos",
+      "ejercicios de patrones tácticos",
+      "patrones de ajedrez para principiantes",
+      "memorizar motivos de ajedrez"
+    ],
+    "painPoint": "Cada posición parece nueva, así que ves las ideas tácticas demasiado tarde.",
+    "ctaLabel": "Entrenar patrones",
+    "quickAnswer": "Un patrón es un conjunto familiar de piezas y casillas. Repite el mismo tipo de patrón hasta ver rápido la idea que hay detrás.",
+    "keyTakeaways": [
+      "Un patrón incluye la forma en el tablero y la idea que genera.",
+      "La memoria del tablero ayuda a detectar patrones bajo presión.",
+      "Repite unos pocos patrones habituales antes de añadir muchos nuevos."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que resuelven tácticas pero no reconocen formas parecidas en partida.",
+      "Principiantes que quieren más estructura que ejercicios aleatorios.",
+      "Quien todavía ve las posiciones visualmente caóticas."
+    ],
+    "timeToRead": "7 min de lectura",
+    "introParagraphs": [
+      "El reconocimiento de patrones hace que una posición resulte familiar. Una forma en el tablero puede sugerir un tenedor, una clavada, una pieza atrapada o una casilla débil antes de calcular todo.",
+      "Empieza con un grupo pequeño de patrones habituales. Reconstruye cada posición de memoria para recordar las piezas y casillas que hacen funcionar la idea."
+    ],
+    "startHereTitle": "Empieza con un patrón cada vez",
+    "startHereSteps": [
+      "Elige un tipo de patrón, como tenedores, clavadas o ataques a piezas sin defender.",
+      "Estudia la forma y reconstrúyela de memoria, no solo desde un diagrama fijo.",
+      "Nombra las casillas y los defensores que hacen funcionar el patrón.",
+      "Juega una ronda de Memory Chess para reforzar un recuerdo limpio del tablero.",
+      "Repasa una partida reciente y busca dónde apareció o se te escapó un patrón parecido."
+    ],
+    "drillSectionTitle": "Ejercicios sencillos de patrones",
+    "drillCards": [
+      {
+        "title": "Reconstruir un patrón",
+        "description": "Recrea un patrón de memoria y nombra las piezas y casillas clave.",
+        "duration": "5 minutos",
+        "goal": "Conectar el patrón con un recuerdo claro del tablero.",
+        "ctaLabel": "Reconstruir un patrón"
+      },
+      {
+        "title": "Repetición de una familia",
+        "description": "Repite varios ejemplos del mismo patrón antes de cambiar de tipo.",
+        "duration": "5 minutos",
+        "goal": "Hacer familiar la forma en el tablero.",
+        "ctaLabel": "Repetir una familia"
+      },
+      {
+        "title": "Búscalo en tu partida",
+        "description": "Revisa una partida reciente y encuentra dónde apareció el mismo patrón.",
+        "duration": "5 minutos",
+        "goal": "Usar la práctica de patrones con posiciones reales.",
+        "ctaLabel": "Buscar en tus partidas"
+      }
+    ],
+    "comparisonTitle": "Táctica aleatoria frente a reconocimiento real",
+    "comparisonSummary": "Los patrones son útiles cuando los notas antes de empezar un cálculo largo.",
+    "comparisonRows": [
+      {
+        "label": "Estructura del entrenamiento",
+        "struggling": "Vas saltando entre patrones sin relación.",
+        "stronger": "Repites un tipo de patrón hasta que resulta familiar."
+      },
+      {
+        "label": "Recuerdo del tablero",
+        "struggling": "Conoces la idea pero no las casillas exactas que la sostienen.",
+        "stronger": "Recuerdas los detalles estructurales que hacen funcionar el patrón."
+      },
+      {
+        "label": "Partidas reales",
+        "struggling": "Los patrones se quedan atrapados en los ejercicios.",
+        "stronger": "Notas sus señales tempranas en partidas en vivo."
+      }
+    ],
+    "mistakes": [
+      "Aprender solo el nombre del patrón sin entender la forma.",
+      "Cambiar de tipo de patrón con demasiada frecuencia.",
+      "Ignorar las casillas y defensores que hacen funcionar el patrón.",
+      "Saltarse el repaso de partidas tras entrenar patrones."
+    ],
+    "mistakesCallout": "No añadas variedad demasiado rápido. Repite un tipo de patrón hasta que resulte familiar.",
+    "planTitle": "Plan de patrones de 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "10 minutos",
+        "detail": "Elige un tipo de patrón y reconstruye varios ejemplos de memoria."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "12 minutos",
+        "detail": "Añade la nominación de casillas y el conteo de defensores en cada ejemplo."
+      },
+      {
+        "label": "Día 5",
+        "duration": "12 minutos",
+        "detail": "Juega una ronda de Memory Chess antes de la práctica de patrones para que el tablero se sienta más claro."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 minutos",
+        "detail": "Busca el mismo patrón en tus partidas recientes y anota dónde apareció o casi apareció."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Qué es el reconocimiento de patrones en ajedrez?",
+        "answer": "Es ver una forma familiar en el tablero y recordar rápido la idea que suele funcionar ahí."
+      },
+      {
+        "question": "¿Cómo entrenan los principiantes el reconocimiento?",
+        "answer": "Repitiendo un conjunto pequeño de patrones, reconstruyendo las posiciones de memoria y buscándolos en partidas reales."
+      },
+      {
+        "question": "¿Bastan los ejercicios para reconocer patrones?",
+        "answer": "No siempre. Ayudan, pero repetir el mismo tipo y repasar partidas hace que el patrón sea realmente utilizable."
+      },
+      {
+        "question": "¿Por qué mezclar Memory Chess con patrones?",
+        "answer": "Porque reconocer patrones es más fácil cuando todo el tablero está más claro en la memoria."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Construye una capa de recuerdo más fuerte para aprender patrones."
+      },
+      {
+        "reason": "Equilibra la práctica de patrones con una cantidad útil de ejercicios."
+      },
+      {
+        "reason": "Usa en tus partidas los patrones que estudias."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Ejercicios de cálculo de ajedrez para principiantes",
+    "h1": "Ejercicios de cálculo de ajedrez para principiantes",
+    "description": "Usa ejercicios sencillos de cálculo para comparar jugadas y seguir líneas cortas sin perderte.",
+    "primaryKeyword": "ejercicios de cálculo de ajedrez",
+    "secondaryKeywords": [
+      "cálculo de ajedrez para principiantes",
+      "calcular jugadas por adelantado",
+      "ejercicios para seguir líneas",
+      "práctica de jugadas candidatas",
+      "visualización y cálculo"
+    ],
+    "painPoint": "Empiezas a calcular y enseguida confundes las jugadas o pierdes la posición.",
+    "ctaLabel": "Practicar un cálculo claro",
+    "quickAnswer": "Al principio compara solo una o dos jugadas posibles. Mantén el tablero claro en la mente y comprueba la respuesta enseguida.",
+    "keyTakeaways": [
+      "Dos secuencias claras son mejores que cinco confusas.",
+      "Una visualización clara lleva a un cálculo claro.",
+      "Comprueba la respuesta justo después de cada ejercicio."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que saben que deberían calcular pero pierden la línea rápido.",
+      "Principiantes que mueven por instinto en posiciones agudas.",
+      "Quien quiere usar la memoria en decisiones reales."
+    ],
+    "timeToRead": "7 min de lectura",
+    "introParagraphs": [
+      "Calcular es simplemente preguntarse: «si muevo aquí, ¿qué pasa?». Lo difícil es mantener el tablero claro mientras sigues las jugadas.",
+      "La memoria del tablero y la visualización facilitan el cálculo. Entrena ambas juntas en vez de tratarlas como tareas separadas."
+    ],
+    "startHereTitle": "Empieza con dos jugadas posibles",
+    "startHereSteps": [
+      "Elige como mucho dos jugadas candidatas de una posición.",
+      "Imagina una línea durante dos medias jugadas y resúmela en una frase.",
+      "Usa una ronda de Memory Chess para mantener afilado el tablero base.",
+      "Vuelve a la posición original y compara las dos líneas con calma.",
+      "Verifica enseguida y señala si el fallo estuvo en la imagen del tablero o en el orden de jugadas."
+    ],
+    "drillSectionTitle": "Ejercicios sencillos de cálculo",
+    "drillCards": [
+      {
+        "title": "Comparar dos candidatas",
+        "description": "Sostén dos jugadas razonables y compara sus futuros tácticos cortos.",
+        "duration": "6 minutos",
+        "goal": "Comparar jugadas sin intentar recordar demasiado.",
+        "ctaLabel": "Comparar dos líneas"
+      },
+      {
+        "title": "Recordar y luego calcular",
+        "description": "Usa una ronda corta de recuerdo antes del trabajo de líneas para tener el tablero más limpio.",
+        "duration": "4 minutos",
+        "goal": "Recordar el tablero antes de seguir una secuencia.",
+        "ctaLabel": "Recordar antes de calcular"
+      },
+      {
+        "title": "Resumen en una frase",
+        "description": "Resume la rama en una frase antes de comprobarla.",
+        "duration": "4 minutos",
+        "goal": "Mantener la secuencia clara y fácil de explicar.",
+        "ctaLabel": "Resumir la rama"
+      }
+    ],
+    "comparisonTitle": "Cálculo desordenado frente a cálculo limpio",
+    "comparisonSummary": "Todavía no persigas líneas largas. Primero haz precisas las líneas cortas.",
+    "comparisonRows": [
+      {
+        "label": "Jugadas candidatas",
+        "struggling": "Consideras demasiadas jugadas a la vez.",
+        "stronger": "Comparas un número pequeño de jugadas sensatas."
+      },
+      {
+        "label": "Imagen del tablero",
+        "struggling": "La posición resultante se difumina rápido.",
+        "stronger": "Mantienes estables en memoria las casillas clave y los defensores."
+      },
+      {
+        "label": "Verificación",
+        "struggling": "No sabes por qué falló la línea.",
+        "stronger": "Distingues si el fallo vino de la memoria, del orden de jugadas o del juicio."
+      }
+    ],
+    "mistakes": [
+      "Intentar calcular demasiadas ramas a la vez.",
+      "Saltarte la selección de candidatas y calcularlo todo.",
+      "No verificar justo después de la línea.",
+      "Ignorar una memoria débil del tablero."
+    ],
+    "mistakesCallout": "Todavía no calcules muchas jugadas por delante. Una línea clara de dos jugadas vale más que una larga y confusa.",
+    "planTitle": "Plan de cálculo de 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "10 minutos",
+        "detail": "Solo comparaciones de dos candidatas con verificación inmediata."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "12 minutos",
+        "detail": "Añade una ronda de Memory Chess antes del trabajo de cálculo."
+      },
+      {
+        "label": "Día 5",
+        "duration": "12 minutos",
+        "detail": "Resume cada rama en una frase antes de comprobarla."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 minutos",
+        "detail": "Lleva el proceso a las rápidas parando en los momentos tácticos y manteniendo pocas candidatas."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Cómo mejora un principiante el cálculo?",
+        "answer": "Manteniendo pocas candidatas, verificando rápido y mejorando la visualización y el recuerdo que sostienen las líneas."
+      },
+      {
+        "question": "¿Debo calcular más jugadas por delante?",
+        "answer": "Solo cuando la profundidad actual sea fiable. La precisión vale más que la ambición."
+      },
+      {
+        "question": "¿Por qué se derrumban mis líneas?",
+        "answer": "A menudo porque la imagen del tablero no es estable o hay demasiadas candidatas activas a la vez."
+      },
+      {
+        "question": "¿Ayuda Memory Chess al cálculo?",
+        "answer": "Sí. Un recuerdo más fuerte facilita mucho sostener las posiciones resultantes durante el cálculo."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Mejora la capa que sostiene las líneas detrás del cálculo."
+      },
+      {
+        "reason": "Imagina el tablero con más claridad antes de seguir líneas largas."
+      },
+      {
+        "reason": "Usa un proceso de decisión más simple para sostener un cálculo más limpio."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Cómo pensar en ajedrez siendo principiante",
+    "h1": "Cómo pensar en ajedrez siendo principiante",
+    "description": "Usa una rutina sencilla para comprobar amenazas, comparar opciones y gestionar el tiempo sin pensar de más.",
+    "primaryKeyword": "cómo pensar en ajedrez",
+    "secondaryKeywords": [
+      "proceso de pensamiento para principiantes",
+      "en qué pensar en ajedrez",
+      "toma de decisiones en ajedrez",
+      "lista antes de mover",
+      "rutina sencilla de pensamiento"
+    ],
+    "painPoint": "Mueves demasiado rápido, o piensas demasiado y sigues sin estar seguro.",
+    "ctaLabel": "Practicar una rutina sencilla",
+    "quickAnswer": "Usa la misma rutina corta en cada jugada: comprueba las amenazas del rival, elige de una a tres jugadas y asegúrate de que la elección final es segura.",
+    "keyTakeaways": [
+      "Una rutina corta es más fácil de usar que una lista larga.",
+      "La comprobación de amenazas va siempre antes de elegir jugada.",
+      "Dedica más tiempo cuando la posición se vuelve peligrosa."
+    ],
+    "whoThisIsFor": [
+      "Jugadores que adivinan en posiciones tranquilas y se bloquean en las agudas.",
+      "Principiantes que necesitan una rutina clara para cada jugada.",
+      "Quien quiere decisiones más limpias bajo presión de tiempo."
+    ],
+    "timeToRead": "7 min de lectura",
+    "introParagraphs": [
+      "Los principiantes suelen preguntarse en qué piensan los jugadores fuertes. La respuesta puede sonar complicada, pero tu rutina debe ser lo bastante corta para usarla siempre.",
+      "Empieza por las amenazas, elige unas pocas jugadas posibles y comprueba que la elección final es segura."
+    ],
+    "startHereTitle": "Empieza aquí: la rutina de cuatro pasos",
+    "startHereSteps": [
+      "Comprueba primero las amenazas más fuertes del rival.",
+      "Enumera de una a tres jugadas candidatas realistas.",
+      "Comprueba que tu jugada prevista es segura y no deja ninguna pieza sin defender.",
+      "Pregúntate si la posición está lo bastante tranquila para mover o lo bastante aguda para ir despacio.",
+      "Tras la partida, repasa dónde se rompió la rutina."
+    ],
+    "drillSectionTitle": "Ejercicios para decisiones más tranquilas",
+    "drillCards": [
+      {
+        "title": "Disparador del rival primero",
+        "description": "Empieza cada posición de entrenamiento nombrando las opciones forzadas del rival.",
+        "duration": "3 minutos",
+        "goal": "Hacer automática la comprobación de amenazas en vez de opcional.",
+        "ctaLabel": "Empezar por las amenazas"
+      },
+      {
+        "title": "Límite de tres candidatas",
+        "description": "No te permitas más de tres jugadas candidatas en una posición de entrenamiento.",
+        "duration": "4 minutos",
+        "goal": "Reducir el exceso de opciones y el pensar de más.",
+        "ctaLabel": "Limitar las candidatas"
+      },
+      {
+        "title": "Repaso de confianza",
+        "description": "Repasa una jugada y pregúntate si estabas seguro de verdad o solo cansado de pensar.",
+        "duration": "4 minutos",
+        "goal": "Notar cuándo mueves solo por cansancio.",
+        "ctaLabel": "Repasar la confianza"
+      }
+    ],
+    "comparisonTitle": "Una rutina sencilla para cada jugada",
+    "comparisonSummary": "El mejor proceso es el que aún puedes usar con el reloj corriendo.",
+    "comparisonRows": [
+      {
+        "label": "Gestión de amenazas",
+        "struggling": "Piensas primero en tu plan.",
+        "stronger": "Empiezas por las amenazas más fuertes del rival."
+      },
+      {
+        "label": "Jugadas candidatas",
+        "struggling": "Saltas entre demasiadas posibilidades.",
+        "stronger": "Mantienes un conjunto pequeño y realista de candidatas."
+      },
+      {
+        "label": "Uso del tiempo",
+        "struggling": "Dedicas la misma atención a cada jugada.",
+        "stronger": "Vas más despacio cuando cambia la tensión, la táctica o la seguridad del rey."
+      }
+    ],
+    "mistakes": [
+      "Usar una lista larga que nunca sigues en partidas reales.",
+      "Pensar en tu plan antes de comprobar las amenazas.",
+      "Dejar que la lista de candidatas crezca demasiado.",
+      "Confundir el cansancio con la confianza."
+    ],
+    "mistakesCallout": "No añadas más comprobaciones a la lista. Usa una rutina corta que puedas repetir en cada jugada.",
+    "planTitle": "Ajuste del proceso en 7 días",
+    "planSteps": [
+      {
+        "label": "Días 1 y 2",
+        "duration": "10 minutos",
+        "detail": "Usa solo el disparador del rival primero y el límite de tres candidatas."
+      },
+      {
+        "label": "Días 3 y 4",
+        "duration": "12 minutos",
+        "detail": "Añade una ronda corta de Memory Chess para tener el tablero más claro al decidir."
+      },
+      {
+        "label": "Día 5",
+        "duration": "12 minutos",
+        "detail": "Repasa si tu último error vino de fallar la comprobación de amenazas o de confusión entre candidatas."
+      },
+      {
+        "label": "Días 6 y 7",
+        "duration": "15 minutos",
+        "detail": "Usa la rutina completa en rápidas y anota qué paso se rompe bajo presión de tiempo."
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿En qué debe pensar un principiante?",
+        "answer": "Empieza por las amenazas del rival, elige de una a tres jugadas posibles y comprueba que la elección final es segura."
+      },
+      {
+        "question": "¿Cuántas jugadas candidatas considerar?",
+        "answer": "Normalmente de una a tres. Más suele saturar al principiante y empeora la decisión."
+      },
+      {
+        "question": "¿Por qué me bloqueo aunque conozco la rutina?",
+        "answer": "A menudo porque el tablero no está lo bastante claro o hay demasiadas candidatas. Posiciones más simples y trabajo de recuerdo ayudan."
+      },
+      {
+        "question": "¿Puede una rutina evitar los errores?",
+        "answer": "Sí, sobre todo cuando obliga a comprobar amenazas antes de elegir jugada."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa una lista contra errores más explícita cuando el proceso siga perdiendo material."
+      },
+      {
+        "reason": "Usa un cálculo más claro para comparar jugadas posibles."
+      },
+      {
+        "reason": "Reconoce casillas más rápido durante tu rutina."
+      }
+    ]
+  }
+]

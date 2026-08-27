@@ -14,6 +14,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { FEEDBACK_MAX_LENGTH, type FeedbackSubmission } from "@/lib/feedback";
 
+import { useTranslations } from "next-intl";
 export const FEEDBACK_PROMPT_DELAY_MS = 800;
 export const FEEDBACK_COOLDOWN_MS = 24 * 60 * 60 * 1_000;
 export const FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY =
@@ -64,6 +65,7 @@ function writeNextEligibleAt(fromTime = Date.now()): void {
 export default function FirstGameFeedbackDialog({
   game,
 }: FirstGameFeedbackDialogProps) {
+  const t = useTranslations("game.feedback");
   const [isOpen, setIsOpen] = useState(false);
   const [rating, setRating] = useState<number | null>(null);
   const [feedback, setFeedback] = useState("");
@@ -100,7 +102,7 @@ export default function FirstGameFeedbackDialog({
     event.preventDefault();
 
     if (rating === null) {
-      setSubmitError("Please choose a star rating.");
+      setSubmitError(t("chooseRating"));
       return;
     }
 
@@ -121,14 +123,14 @@ export default function FirstGameFeedbackDialog({
       });
 
       if (!response.ok) {
-        throw new Error("Feedback submission failed");
+        throw new Error(t("sendFailed"));
       }
 
       writeNextEligibleAt();
       setSubmitSuccess(true);
     } catch {
       setSubmitError(
-        "We could not send your feedback. Please try again or choose Not now.",
+        t("sendFailed"),
       );
     } finally {
       setIsSubmitting(false);
@@ -144,37 +146,24 @@ export default function FirstGameFeedbackDialog({
               ✓
             </div>
             <DialogHeader className="text-center sm:text-center">
-              <DialogTitle className="text-xl text-text-primary">
-                Thank you for helping us improve
-              </DialogTitle>
-              <DialogDescription className="text-text-muted">
-                Your feedback has been received.
-              </DialogDescription>
+              <DialogTitle className="text-xl text-text-primary">{t("sentTitle")}</DialogTitle>
+              <DialogDescription className="text-text-muted">{t("sentBody")}</DialogDescription>
             </DialogHeader>
             <Button
               type="button"
               onClick={() => handleOpenChange(false)}
               className="bg-peach-500 text-white hover:bg-peach-600 hover:text-white"
-            >
-              Done
-            </Button>
+            >{t("done")}</Button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             <DialogHeader className="pr-8 text-left">
-              <DialogTitle className="text-xl text-text-primary">
-                Thanks for playing Memory Chess!
-              </DialogTitle>
-              <DialogDescription className="leading-6 text-text-muted">
-                How was your experience? Your feedback helps make each training
-                session better.
-              </DialogDescription>
+              <DialogTitle className="text-xl text-text-primary">{t("title")}</DialogTitle>
+              <DialogDescription className="leading-6 text-text-muted">{t("description")}</DialogDescription>
             </DialogHeader>
 
             <fieldset className="space-y-3">
-              <legend className="text-sm font-medium text-text-secondary">
-                How would you rate the game?
-              </legend>
+              <legend className="text-sm font-medium text-text-secondary">{t("prompt")}</legend>
               <div className="flex items-center gap-2" role="radiogroup">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <label
@@ -191,7 +180,7 @@ export default function FirstGameFeedbackDialog({
                         setSubmitError(null);
                       }}
                       className="sr-only"
-                      aria-label={`${star} ${star === 1 ? "star" : "stars"}`}
+                      aria-label={t("starRating", { count: star })}
                     />
                     <Star
                       aria-hidden="true"
@@ -211,8 +200,10 @@ export default function FirstGameFeedbackDialog({
                 htmlFor="game-feedback"
                 className="text-sm font-medium text-text-secondary"
               >
-                How did playing feel, and what would make it better?{" "}
-                <span className="font-normal text-text-muted">(optional)</span>
+                {t("commentLabel")}{" "}
+                <span className="font-normal text-text-muted">
+                  {t("commentOptional")}
+                </span>
               </label>
               <Textarea
                 id="game-feedback"
@@ -220,7 +211,7 @@ export default function FirstGameFeedbackDialog({
                 onChange={(event) => setFeedback(event.target.value)}
                 maxLength={FEEDBACK_MAX_LENGTH}
                 rows={5}
-                placeholder="Tell us what worked well or what you would change..."
+                placeholder={t("placeholder")}
                 disabled={isSubmitting}
                 className="resize-none border-bg-light bg-bg-dark/60 text-text-primary placeholder:text-text-muted focus-visible:ring-peach-500"
               />
@@ -242,15 +233,13 @@ export default function FirstGameFeedbackDialog({
                 onClick={() => handleOpenChange(false)}
                 disabled={isSubmitting}
                 className="text-text-secondary hover:bg-bg-light hover:text-white"
-              >
-                Not now
-              </Button>
+              >{t("notNow")}</Button>
               <Button
                 type="submit"
                 disabled={isSubmitting}
                 className="bg-peach-500 text-white hover:bg-peach-600 hover:text-white"
               >
-                {isSubmitting ? "Sending..." : "Send feedback"}
+                {isSubmitting ? t("sending") : t("send")}
               </Button>
             </DialogFooter>
           </form>

@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { useResponsiveBoard } from "@/hooks/useResponsiveBoard";
 import { fenToChessPieces } from "@/utils/chessPieces";
 import { comparePositions } from "@/utils/positionComparator";
+import { useTranslations } from "next-intl";
 import ResponsiveChessBoard, {
   type SquareFeedbackMap,
   type SquareFeedbackStatus,
@@ -20,6 +21,7 @@ export default function ResultBoardComparison({
   originalPosition,
   userPosition,
 }: ResultBoardComparisonProps) {
+  const t = useTranslations("game");
   const dimensions = useResponsiveBoard(280, 420);
 
   const comparison = useMemo(() => {
@@ -60,15 +62,11 @@ export default function ResultBoardComparison({
   if (!comparison) {
     return (
       <section
-        aria-label="Board comparison"
+        aria-label={t("comparison.ariaLabel")}
         className="w-full rounded-lg border border-bg-light bg-bg-card/60 px-4 py-6 text-center"
       >
-        <h3 className="text-lg font-semibold text-text-primary">
-          Review Your Position
-        </h3>
-        <p className="mt-1 text-sm text-text-secondary">
-          Board comparison unavailable.
-        </p>
+        <h3 className="text-lg font-semibold text-text-primary">{t("comparison.title")}</h3>
+        <p className="mt-1 text-sm text-text-secondary">{t("comparison.unavailable")}</p>
       </section>
     );
   }
@@ -85,11 +83,9 @@ export default function ResultBoardComparison({
           id="result-comparison-heading"
           className="text-xl font-bold text-text-primary sm:text-2xl"
         >
-          Review Your Position
+          {t("comparison.title")}
         </h3>
-        <p className="mt-1 text-sm text-text-secondary">
-          Compare what you memorized with what you submitted.
-        </p>
+        <p className="mt-1 text-sm text-text-secondary">{t("comparison.subtitle")}</p>
       </div>
 
       <div className="mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-text-secondary sm:text-sm">
@@ -97,25 +93,19 @@ export default function ResultBoardComparison({
           <span
             className="h-3 w-3 rounded-sm border-2 border-green-500"
             aria-hidden="true"
-          />
-          Correct
-        </span>
+          />{t("comparison.correct")}</span>
         <span className="inline-flex items-center gap-1.5">
           <span
             className="h-3 w-3 rounded-sm border-2 border-red-500"
             aria-hidden="true"
-          />
-          Incorrect
-        </span>
+          />{t("comparison.incorrect")}</span>
         <span className="inline-flex items-center gap-1.5">
           <span
             className="flex h-3 w-3 items-center justify-center rounded-sm border border-amber-500 bg-transparent"
             aria-hidden="true"
           >
             <span className="h-1.5 w-1.5 rounded-[1px] border border-dotted border-black" />
-          </span>
-          Missed
-        </span>
+          </span>{t("comparison.missed")}</span>
       </div>
 
       <div className="grid w-full grid-cols-1 justify-items-center gap-6 lg:grid-cols-2 lg:gap-6">
@@ -123,9 +113,7 @@ export default function ResultBoardComparison({
           className="flex w-full flex-col items-center"
           data-result-board="target"
         >
-          <figcaption className="mb-2 flex h-8 items-center text-sm font-semibold text-text-primary sm:text-base">
-            Position to Remember
-          </figcaption>
+          <figcaption className="mb-2 flex h-8 items-center text-sm font-semibold text-text-primary sm:text-base">{t("comparison.originalBoard")}</figcaption>
           <div style={boardFrameStyle}>
             <ResponsiveChessBoard
               pieces={comparison.originalPieces}
@@ -140,9 +128,7 @@ export default function ResultBoardComparison({
           className="flex w-full flex-col items-center"
           data-result-board="submitted"
         >
-          <figcaption className="mb-2 flex h-8 items-center text-sm font-semibold text-text-primary sm:text-base">
-            Your Submitted Position
-          </figcaption>
+          <figcaption className="mb-2 flex h-8 items-center text-sm font-semibold text-text-primary sm:text-base">{t("comparison.submittedBoard")}</figcaption>
           <div style={boardFrameStyle}>
             <ResponsiveChessBoard
               pieces={comparison.userPieces}

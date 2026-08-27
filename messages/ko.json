@@ -1,0 +1,490 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "업데이트 소식",
+      "contactUs": "문의하기",
+      "privacy": "개인정보"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. 모든 권리 보유.",
+      "followOnX": "트위터/X에서 팔로우하기",
+      "productHuntAlt": "Memory Chess - 체스로 공간 시각화 능력을 훈련하세요 | Product Hunt"
+    },
+    "sound": {
+      "mute": "소리 끄기",
+      "unmute": "소리 켜기",
+      "on": "소리 켜짐",
+      "off": "소리 꺼짐",
+      "volume": "음량"
+    },
+    "language": {
+      "change": "언어 변경. 현재 언어: {language}",
+      "current": "언어: {language}",
+      "select": "언어 선택"
+    },
+    "otherApps": {
+      "title": "제작자의 다른 앱",
+      "visitWebsite": "웹사이트 보기 →",
+      "iconAlt": "{name} 앱 아이콘"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Memory Chess: 무료 체스 기억력·시각화 게임",
+      "description": "체스 포지션을 외우고 기억만으로 다시 세우면 바로 점수가 나옵니다. 무료로 즐기며 판을 보는 능력, 시각화, 공간 기억을 훈련하세요.",
+      "socialTitle": "Memory Chess: 무료 체스 기억력·시각화 게임",
+      "socialDescription": "포지션을 외우고 다시 세우면 바로 점수가 나옵니다. 계정 없이 무료로 즐기세요.",
+      "twitterTitle": "Memory Chess: 무료 체스 기억력 게임",
+      "twitterDescription": "포지션을 외우고 다시 세우며 한 판씩 판을 보는 능력을 키우세요."
+    },
+    "hero": {
+      "title": "체스 기억력과 시각화 능력을 훈련하세요",
+      "subtitle": "체스 국면을 외우고 기억만으로 다시 배치하면 바로 점수가 나옵니다. 한 판씩 판 전체를 보는 눈을 키워 보세요.",
+      "freeToPlay": "계정 없이 무료로 즐길 수 있습니다. <link>리더보드</link>에서 점수를 비교할 수도 있습니다.",
+      "gamesPlayed": "플레이한 게임 수: {count}"
+    },
+    "cta": {
+      "play": "Memory Chess 플레이",
+      "leaderboard": "리더보드 보기",
+      "playFree": "무료로 한 판 해보기"
+    },
+    "video": {
+      "title": "Memory Chess가 어떻게 동작하는지 보기",
+      "subtitle": "판을 살펴보고, 국면을 다시 세우고, 점수를 읽는 방법을 짧게 안내합니다.",
+      "iframeTitle": "Memory Chess 하는 방법",
+      "credit": "영상: Colin Galen의 “A New Way To Train Your Vision”"
+    },
+    "howItWorks": {
+      "eyebrow": "이렇게 동작합니다",
+      "title": "체스 기억력을 위한 간단한 훈련",
+      "subtitle": "한 판은 세 단계로 이뤄집니다. 국면을 살피고, 다시 세우고, 점수에서 배웁니다.",
+      "steps": {
+        "observe": {
+          "title": "관찰하기",
+          "description": "각 기물이 어디에 있는지 살펴보세요. 기물 무리, 라인, 기준이 될 만한 빈 칸을 찾아보세요."
+        },
+        "recreate": {
+          "title": "다시 세우기",
+          "description": "판이 비워지면 기억나는 칸에 기물을 하나씩 되돌려 놓습니다."
+        },
+        "improve": {
+          "title": "실력 올리기",
+          "description": "점수를 확인하고 놓친 부분을 찾은 뒤, 기물을 늘리거나 시간을 줄여 다시 도전해 보세요."
+        }
+      }
+    },
+    "board": {
+      "study": "판을 살펴보기",
+      "rebuild": "기억으로 다시 세우기"
+    },
+    "learn": {
+      "eyebrow": "학습 센터",
+      "title": "이해하기 쉬운 체스 가이드",
+      "description": "판을 보는 눈, 시각화, 수읽기, 기억력을 키우는 실용적인 방법을 배워 보세요. 모든 가이드에는 바로 해볼 수 있는 훈련이 담겨 있습니다.",
+      "browseCta": "체스 가이드 둘러보기",
+      "beginnerCta": "입문자 가이드로 시작하기"
+    },
+    "faq": {
+      "title": "Memory Chess에 대한 질문",
+      "items": [
+        {
+          "question": "Memory Chess는 무엇인가요?",
+          "answer": "Memory Chess는 무료 판 기억 게임입니다. 체스 국면을 짧게 살펴본 뒤 기억만으로 다시 배치하면, 올바르게 놓은 기물 수에 따라 점수가 매겨집니다."
+        },
+        {
+          "question": "어떻게 플레이하나요?",
+          "answer": "기물 수와 판을 살펴볼 시간을 고르세요. 국면이 사라지면 기억나는 칸에 기물을 되돌려 놓습니다. 답을 제출하면 정확도와 소요 시간을 확인할 수 있습니다."
+        },
+        {
+          "question": "초보자도 Memory Chess를 할 수 있나요?",
+          "answer": "할 수 있습니다. 오프닝을 알거나 수를 계산할 필요가 없습니다. 기물 수는 적게, 시간은 넉넉하게 시작한 뒤 익숙해지면 난이도를 올리세요."
+        },
+        {
+          "question": "체스 시각화 훈련에 어떻게 도움이 되나요?",
+          "answer": "매 판이 국면을 머릿속에 붙잡고 기물 위치를 떠올리는 집중 훈련입니다. 점수를 보면 어떤 국면이 수월하고 어디를 더 연습해야 하는지 알 수 있습니다."
+        },
+        {
+          "question": "판을 외울 때 무엇을 봐야 하나요?",
+          "answer": "킹, 퀸, 모서리, 가장자리 칸처럼 기준이 되는 것부터 시작하세요. 그다음에는 기물을 하나씩 외우기보다 무리, 라인, 대각선, 빈 공간을 찾아보세요."
+        },
+        {
+          "question": "난이도를 어떻게 올리나요?",
+          "answer": "기물을 늘리거나, 살펴보는 시간을 줄이거나, 판의 좌표를 숨기면 됩니다. 어느 쪽이 가장 큰 차이를 만드는지 보려면 설정은 한 번에 하나씩 바꾸세요."
+        },
+        {
+          "question": "Memory Chess는 무료인가요?",
+          "answer": "네. 계정을 만들지 않고 무료로 즐길 수 있습니다. 리더보드에 이름을 올리는 것은 선택 사항입니다."
+        },
+        {
+          "question": "얼마나 자주 연습해야 하나요?",
+          "answer": "집중해서 몇 판씩 꾸준히 하는 것이 좋은 시작입니다. 매 국면을 차분히 살펴볼 수 있을 만큼 짧게 유지하세요."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Memory Chess 온라인 플레이",
+      "description": "Memory Chess를 온라인으로 플레이하며 시간 제한 과제로 판 시각화, 기억력, 체스 패턴 인식을 훈련하세요.",
+      "socialTitle": "Memory Chess 온라인 플레이",
+      "socialDescription": "시간 제한이 있는 인터랙티브 과제로 체스 시각화와 기억력을 훈련하세요."
+    },
+    "hud": {
+      "time": "시간",
+      "submit": "제출",
+      "loading": "게임을 불러오는 중…",
+      "status": "게임 상태",
+      "controls": "게임 조작",
+      "complete": "게임 종료",
+      "flash": "완료!"
+    },
+    "config": {
+      "title": "게임 설정",
+      "presetsLabel": "난이도 프리셋",
+      "presetSummary": "기물 {pieces}개 / {seconds}초",
+      "customLabel": "사용자 설정",
+      "pieceCount": "기물 수",
+      "memorizeTime": "암기 시간",
+      "seconds": "{seconds}초",
+      "start": "훈련 시작",
+      "lastGame": "지난 게임: 풀이 시간 {time}초, 정확도 {accuracy}%"
+    },
+    "presets": {
+      "easy": {
+        "label": "쉬움",
+        "description": "킹만 — 시작하기에 딱 좋습니다"
+      },
+      "medium": {
+        "label": "보통",
+        "description": "적당한 수의 기물과 여유로운 암기 시간"
+      },
+      "hard": {
+        "label": "어려움",
+        "description": "기물은 더 많고 암기 시간은 더 짧게"
+      },
+      "grandmaster": {
+        "label": "그랜드마스터",
+        "description": "사진 기억력을 가진 체스 고수를 위한 난이도"
+      }
+    },
+    "memorize": {
+      "title": "국면을 외우세요",
+      "skip": "건너뛰기",
+      "hint": "시간이 끝나면 판이 비워집니다"
+    },
+    "place": {
+      "title": "기물 배치하기",
+      "subtitle": "종류와 색을 고르세요",
+      "whitePieces": "백 기물",
+      "blackPieces": "흑 기물",
+      "selectWhite": "백 기물 선택",
+      "selectBlack": "흑 기물 선택",
+      "hint": "칸을 누르면 기물을 놓거나 뺄 수 있습니다"
+    },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "백 폰",
+          "knight": "백 나이트",
+          "bishop": "백 비숍",
+          "rook": "백 룩",
+          "queen": "백 퀸",
+          "king": "백 킹"
+        },
+        "black": {
+          "pawn": "흑 폰",
+          "knight": "흑 나이트",
+          "bishop": "흑 비숍",
+          "rook": "흑 룩",
+          "queen": "흑 퀸",
+          "king": "흑 킹"
+        }
+      },
+      "feedback": {
+        "correct": "정답",
+        "incorrect": "오답",
+        "missing": "누락"
+      },
+      "squareWithPiece": "{square}에 {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "{piece} 선택"
+    },
+    "stats": {
+      "title": "게임 통계",
+      "currentTime": "현재 시간",
+      "piecesToMemorize": "외울 기물 수",
+      "averageAccuracy": "평균 정확도"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ 만점! ✨",
+        "excellent": "훌륭한 기억력!",
+        "great": "아주 잘했어요!",
+        "wellDone": "잘했어요!",
+        "goodEffort": "좋은 시도예요!",
+        "keepPracticing": "계속 연습해 보세요!"
+      },
+      "accuracy": "정확도",
+      "piecesCorrectCaption": "개 기물 정답",
+      "piecesCorrect": "맞힌 기물",
+      "memorizationTime": "암기 시간",
+      "solutionTime": "풀이 시간",
+      "recallSpeed": "회상 속도",
+      "piecesPerSecond": "초당 {value}개",
+      "actions": "결과 관련 작업",
+      "tryAgain": "다시 하기",
+      "newGame": "새 게임",
+      "submitToLeaderboard": "리더보드에 등록",
+      "viewLeaderboard": "리더보드 보기",
+      "dialog": {
+        "submitTitle": "리더보드에 등록",
+        "submitDescription": "리더보드에 표시할 이름을 입력하세요.",
+        "successTitle": "점수가 등록되었습니다!",
+        "successDescription": "점수가 리더보드에 성공적으로 등록되었습니다.",
+        "playerName": "플레이어 이름",
+        "playerNamePlaceholder": "이름을 입력하세요",
+        "error": "오류: {message}",
+        "submitFailed": "점수를 등록하지 못했습니다",
+        "cancel": "취소",
+        "submit": "점수 등록",
+        "submitting": "등록 중…",
+        "thanks": "참여해 주셔서 감사합니다, {name}님!"
+      }
+    },
+    "comparison": {
+      "title": "내 국면 되돌아보기",
+      "subtitle": "외운 내용과 제출한 내용을 비교해 보세요.",
+      "unavailable": "판 비교를 사용할 수 없습니다.",
+      "ariaLabel": "판 비교",
+      "correct": "정답",
+      "incorrect": "오답",
+      "missed": "누락",
+      "originalBoard": "외워야 했던 국면",
+      "submittedBoard": "제출한 국면"
+    },
+    "feedback": {
+      "title": "Memory Chess를 플레이해 주셔서 감사합니다!",
+      "description": "플레이해 보니 어떠셨나요? 남겨 주신 의견이 다음 훈련을 더 좋게 만듭니다.",
+      "prompt": "게임을 어떻게 평가하시겠어요?",
+      "placeholder": "좋았던 점이나 바꾸고 싶은 점을 알려주세요…",
+      "notNow": "나중에",
+      "sentTitle": "개선에 도움을 주셔서 감사합니다",
+      "sentBody": "의견이 잘 전달되었습니다.",
+      "done": "완료",
+      "commentLabel": "플레이하면서 어떠셨나요? 무엇이 더 나아지면 좋을까요?",
+      "commentOptional": "(선택 사항)",
+      "starRating": "{count, plural, other {별 #개}}",
+      "chooseRating": "별점을 선택해 주세요.",
+      "sendFailed": "의견을 보내지 못했습니다. 다시 시도하시거나 ‘나중에’를 선택해 주세요.",
+      "send": "의견 보내기",
+      "sending": "보내는 중…"
+    }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess 리더보드",
+      "description": "난이도, 정확도, 암기 속도, 풀이 시간별로 Memory Chess 상위 플레이어를 확인하세요.",
+      "socialTitle": "Memory Chess 리더보드",
+      "socialDescription": "기억력과 시각화 과제에서 플레이어들이 어떻게 순위에 오르는지 확인하세요."
+    },
+    "title": "Memory Chess 순위",
+    "subtitle": "시각화로 보드를 익혀 보세요. 머릿속 정확도와 속도로 세계 최고의 플레이어들과 겨뤄 보세요.",
+    "claimRank": "당신의 순위를 차지하세요",
+    "footnote": "상위 200명만 표시됩니다. 정확도, 암기 시간, 풀이 속도 순입니다.",
+    "loading": "리더보드를 불러오는 중…",
+    "unavailableTitle": "리더보드를 일시적으로 사용할 수 없습니다",
+    "unavailableBody": "리더보드 서비스가 현재 중단되었습니다. 게임 데이터는 계속 로컬에 저장됩니다.",
+    "unavailableNote": "중단 없이 계속 플레이할 수 있습니다.",
+    "retryLater": "잠시 후 다시 시도해 주세요",
+    "errorLoading": "순위를 불러오는 중 오류가 발생했습니다: {error}",
+    "errors": {
+      "timeout": "요청 시간이 초과되었습니다. 잠시 후 다시 시도해 주세요.",
+      "parse": "서버 응답을 해석하지 못했습니다. 잠시 후 다시 시도해 주세요.",
+      "status": "요청이 {status} 상태로 실패했습니다",
+      "unexpected": "예기치 않은 오류가 발생했습니다"
+    },
+    "emptyTitle": "첫 번째 챔피언이 되어 보세요!",
+    "emptyBody": "이 리더보드에는 아직 기록이 없습니다",
+    "emptyCta": "기억력에 도전해 정상을 차지하세요! 지금 플레이하고 Memory Chess 역사에 이름을 남겨 보세요.",
+    "startPlaying": "지금 플레이 시작",
+    "you": "나",
+    "columns": {
+      "rank": "순위",
+      "player": "플레이어",
+      "pieces": "기물 수",
+      "memorizeTime": "암기 시간",
+      "solutionTime": "풀이 시간",
+      "date": "날짜"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess 설정",
+      "description": "Memory Chess 게임 설정과 환경설정을 원하는 대로 바꾸세요."
+    },
+    "difficulty": "난이도",
+    "memorizationTime": "암기 시간: {seconds}초",
+    "seconds": "{seconds}초",
+    "showCoordinates": "판 좌표 표시",
+    "home": "홈",
+    "playGame": "게임 하기"
+  },
+  "contact": {
+    "meta": {
+      "title": "Memory Chess에 문의하기",
+      "description": "의견, 기능 제안, 비즈니스 문의는 Memory Chess로 보내주세요.",
+      "socialTitle": "Memory Chess에 문의하기",
+      "socialDescription": "Memory Chess에 의견, 기능 제안, 제휴 문의를 보내세요."
+    },
+    "title": "문의하기",
+    "sentTitle": "메시지를 보냈습니다!",
+    "sentBody": "연락해 주셔서 감사합니다. 곧 답변드리겠습니다.",
+    "redirecting": "홈으로 이동하는 중…",
+    "name": "이름",
+    "namePlaceholder": "이름을 입력하세요",
+    "email": "이메일",
+    "emailPlaceholder": "your.email@example.com",
+    "inquiryType": "문의 유형",
+    "inquiryPlaceholder": "문의 유형을 선택하세요",
+    "message": "메시지",
+    "messagePlaceholder": "여기에 메시지를 적어주세요…",
+    "send": "메시지 보내기",
+    "sending": "보내는 중…",
+    "types": {
+      "feedback": "의견",
+      "featureRequest": "기능 제안",
+      "general": "일반 문의",
+      "business": "비즈니스 제안"
+    },
+    "validation": {
+      "nameTooShort": "이름은 2자 이상이어야 합니다.",
+      "emailInvalid": "올바른 이메일 주소를 입력하세요.",
+      "typeRequired": "문의 유형을 선택하세요.",
+      "messageTooShort": "메시지는 10자 이상이어야 합니다."
+    },
+    "errors": {
+      "submitFailed": "양식을 제출하지 못했습니다{details}",
+      "generic": "양식을 제출하는 중 오류가 발생했습니다. 다시 시도해 주세요."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "체스를 한 걸음씩 또렷하게 배우기",
+      "description": "초보자를 위한 실용 체스 가이드: 판을 보는 눈, 시각화, 기억력, 수읽기, 실수 줄이기, 매일 훈련."
+    },
+    "title": "체스를 한 걸음씩 또렷하게 배우기",
+    "startBeginner": "입문자 가이드 시작하기",
+    "playCta": "Memory Chess 플레이",
+    "startHere": "여기서 시작하세요",
+    "pickNext": "다음 단계를 고르세요",
+    "chooseGoal": "목표를 고르세요",
+    "readRecallPlay": "읽고, 떠올리고, 두기",
+    "turnIdea": "하나의 아이디어를 훈련으로",
+    "startRound": "기억 라운드 시작하기",
+    "eyebrow": "Memory Chess와 함께 배우기",
+    "heroDescription": "무엇을 개선하고 싶은지 고르세요. 각 가이드는 쉬운 말로 유용한 아이디어 하나를 설명한 뒤, 짧은 훈련을 하나 제안합니다.",
+    "pickNextDescription": "지금 자신의 대국과 가장 비슷한 문장을 고르세요. 완벽한 순서는 없고, 언제든 경로를 바꿀 수 있습니다.",
+    "allGuides": "전체 {count}개 가이드",
+    "chooseGoalDescription": "모든 경로는 간단한 첫 연습에서 시작해 더 완성된 훈련 습관으로 이어집니다.",
+    "guideNumber": "가이드 {number}",
+    "turnIdeaDescription": "가이드를 하나 읽고, 기억이 생생할 때 짧은 대국을 한 판 둔 다음, 무엇이 쉽게 기억됐고 무엇이 한 번 더 필요한지 살펴보세요.",
+    "paths": {
+      "newToChess": {
+        "label": "체스가 처음이라면",
+        "title": "간단한 향상 계획 세우기",
+        "description": "기본기부터 시작한 뒤, 쓸모 있는 아이디어 하나를 매일 반복할 수 있는 습관으로 만드세요."
+      },
+      "missingThreats": {
+        "label": "간단한 위협을 놓친다면",
+        "title": "판 전체를 훑는 습관 기르기",
+        "description": "짧은 점검 루틴으로 두기 전에 무방비 기물, 상대의 공격, 위험을 알아채세요."
+      },
+      "losingPosition": {
+        "label": "머릿속에서 국면이 흐트러진다면",
+        "title": "시각화와 회상 능력 강화하기",
+        "description": "긴 수순을 더하기 전에, 판의 작고 정확한 그림을 머릿속에 유지하는 연습을 하세요."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "업데이트 소식",
+      "description": "공식 변경 기록에서 Memory Chess의 최신 기능, 개선 사항, 수정 내역을 확인하세요.",
+      "socialTitle": "Memory Chess 업데이트 소식",
+      "socialDescription": "Memory Chess의 최신 기능, 개선 사항, 수정 내역을 확인하세요."
+    },
+    "title": "업데이트 소식",
+    "latest": "최신",
+    "bannerCta": "새로운 소식 보기",
+    "bannerLabel": "Memory Chess 업데이트",
+    "eyebrow": "업데이트",
+    "changesIn": "버전 {version} 변경 사항"
+  },
+  "learnArticle": {
+    "faqLabel": "자주 묻는 질문",
+    "whatChangesTitle": "가장 먼저 좋아지는 것",
+    "trackThisWeekTitle": "이번 주에 기록할 것",
+    "trackThisWeekBody": "간단한 지표 하나만 고르세요. 한 판당 실수 횟수, 정확히 떠올린 국면 수, 또는 몇 수까지 또렷이 그려지는지.",
+    "startHereSummary": "오늘 바로 해볼 수 있는 단계입니다.",
+    "drillsSummary": "모든 훈련은 배운 내용을 Memory Chess에서 바로 연습하게 해 줍니다.",
+    "comparisonColumns": {
+      "situation": "상황",
+      "before": "훈련 전",
+      "after": "훈련 후"
+    },
+    "mistakesTitle": "흔히 하는 실수",
+    "whatToDoInsteadTitle": "대신 이렇게 하세요",
+    "planSummary": "훈련을 더 어렵거나 길게 만들기 전에 이 단계를 먼저 거치세요.",
+    "breadcrumbHome": "홈",
+    "breadcrumbLearn": "학습",
+    "eyebrow": "쉬운 체스 가이드",
+    "updated": "{date} 업데이트",
+    "reviewedBy": "검수: {name}",
+    "startHere": "여기서 시작하세요",
+    "whatYouWillLearn": "배우게 될 내용",
+    "whoThisIsFor": "이런 분께 좋습니다",
+    "browseAllGuides": "모든 가이드 보기",
+    "onThisPage": "이 페이지의 내용",
+    "aimFor": "목표:",
+    "tryItNow": "지금 해보기",
+    "tryItNowTitle": "계속 읽기 전에 짧은 대국을 한 판 두어 보세요.",
+    "tryItNowBody": "기억이 생생할 때 단계를 적용해 보고, 구체적으로 알아차린 것 하나를 가지고 돌아오세요.",
+    "startTrainingRound": "훈련 시작하기",
+    "keepLearning": "계속 배우기",
+    "whatToLearnNext": "다음에 배울 것",
+    "whatToLearnNextBody": "다음에 해결하고 싶은 문제에 가장 잘 맞는 가이드를 고르세요.",
+    "readThisGuide": "이 가이드 읽기",
+    "putItOnTheBoard": "체스판에서 써보기",
+    "practiceTitle": "Memory Chess에서 연습하기",
+    "practiceBody": "짧은 훈련으로 방금 배운 내용을 그대로 연습해 보세요.",
+    "goalLabel": "목표:",
+    "commonQuestions": "자주 묻는 질문",
+    "editorialNotes": "편집자 노트",
+    "aboutThisGuide": "이 가이드에 대하여",
+    "aboutBody": "Memory Chess 가이드는 초보자와 실력을 키워가는 기사를 위해 쓰였습니다. 각 가이드는 명확한 답, 실천 가능한 단계, 그리고 진전을 확인할 수 있는 방법 하나를 제시합니다.",
+    "publishedLine": "{published} 게시. {updated}에 {reviewer}이(가) 최종 검토·수정했습니다.",
+    "referenceLinks": "참고 링크",
+    "goals": {
+      "reduce-blunders": {
+        "label": "실수 줄이기",
+        "description": "위협을 더 빨리 확인하는 습관을 들이고, 쉬운 국면에서 기물을 그냥 내주지 마세요.",
+        "accent": "위협 점검"
+      },
+      "visualization": {
+        "label": "시각화 높이기",
+        "description": "판을 머릿속에 더 오래 붙잡아, 수읽기가 차분하고 또렷해지게 만드세요.",
+        "accent": "머릿속의 판"
+      },
+      "memory": {
+        "label": "기억력 훈련",
+        "description": "국면 회상과 패턴 기억을 끌어올리되, 훈련이 이론 암기가 되지 않게 하세요.",
+        "accent": "회상과 유지"
+      },
+      "routine": {
+        "label": "매일의 루틴 만들기",
+        "description": "훈련, 실전, 복기를 묶은 짧은 계획을 쓰세요.",
+        "accent": "꾸준함"
+      }
+    }
+  }
+}

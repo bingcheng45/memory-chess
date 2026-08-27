@@ -16,6 +16,7 @@ describe("changelog data", () => {
 
     expect(releaseTimes).toEqual([...releaseTimes].sort((a, b) => b - a));
     expect(CHANGELOG_ENTRIES.map((entry) => entry.version)).toEqual([
+      "1.2.2",
       "1.2.1",
       "1.2.0",
       "1.1.0",
@@ -33,7 +34,7 @@ describe("changelog data", () => {
   });
 
   it("uses stable version anchors", () => {
-    expect(getChangelogEntryId("1.2.1")).toBe("v1-2-1");
+    expect(getChangelogEntryId("1.2.2")).toBe("v1-2-2");
   });
 
   it("keeps an announcement active for exactly 30 days", () => {

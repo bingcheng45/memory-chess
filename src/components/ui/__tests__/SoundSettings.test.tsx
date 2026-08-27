@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@/test-utils/intl";
 import SoundSettings from "@/components/ui/SoundSettings";
 import { DEFAULT_SOUND_VOLUME, setVolume } from "@/lib/utils/soundEffects";
 

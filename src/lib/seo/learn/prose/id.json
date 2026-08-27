@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Cara pemula menjadi lebih baik dalam catur",
+    "h1": "Cara pemula menjadi lebih baik dalam catur",
+    "description": "Ikuti rencana sederhana untuk melihat papan lebih jelas, mengingat posisi, dan melangkah lebih aman.",
+    "primaryKeyword": "cara meningkatkan kemampuan catur",
+    "secondaryKeywords": [
+      "rencana peningkatan catur",
+      "latihan catur untuk pemula",
+      "rutinitas catur pemula",
+      "mengurangi blunder catur",
+      "penglihatan papan"
+    ],
+    "painPoint": "Anda tidak yakin harus berlatih apa atau mulai dari mana.",
+    "ctaLabel": "Mulai ronde pemula",
+    "quickAnswer": "Gunakan rutinitas harian singkat: latih penglihatan papan, latih ingatan, mainkan satu partai, dan tinjau satu kesalahan. Ulangi 20 sampai 30 menit sehari.",
+    "keyTakeaways": [
+      "Melihat dan mengingat papan lebih penting daripada menghafal banyak pembukaan.",
+      "Latihan singkat setiap hari lebih efektif daripada sesi panjang yang jarang.",
+      "Catat kesalahan dan akurasi ingatan Anda, bukan hanya rating."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang paham aturan tetapi masih memberi bidak gratis.",
+      "Pemula yang jago soal tetapi kesulitan dalam partai.",
+      "Siapa pun yang tidak tahu harus belajar apa lebih dulu."
+    ],
+    "timeToRead": "9 menit membaca",
+    "introParagraphs": [
+      "Sebagian besar pemula tidak butuh lebih banyak pembukaan, video, atau kursus. Mereka perlu mengikuti keadaan papan dan memastikan langkahnya aman sebelum dimainkan.",
+      "Memory Chess membantu melatih keduanya. Ingatan papan yang lebih baik membuat sekak, tangkapan, dan ancaman lebih mudah terlihat."
+    ],
+    "startHereTitle": "Mulai dengan rutinitas pemula ini",
+    "startHereSteps": [
+      "Luangkan 3 menit memindai papan dan sebutkan bidak yang diserang, dilindungi, dan tak terlindungi.",
+      "Jalankan satu ronde Memory Chess dengan 8 bidak dan waktu lihat 10 detik.",
+      "Kerjakan dua posisi taktis singkat, sebutkan sekak, tangkapan, dan ancaman sebelum memilih langkah.",
+      "Mainkan satu partai rapid. Tandai setiap kesalahan besar sebagai penglihatan, ingatan, atau kekurangan waktu.",
+      "Tulis satu hal untuk dilatih lagi besok."
+    ],
+    "drillSectionTitle": "Latihan sederhana untuk partai yang lebih baik",
+    "drillCards": [
+      {
+        "title": "Pindai papan 10 detik",
+        "description": "Gunakan susunan mudah dan temukan setiap bidak tak terlindungi sebelum waktu habis.",
+        "duration": "3 menit",
+        "goal": "Membentuk pemeriksaan keamanan sebelum setiap langkah.",
+        "ctaLabel": "Jalankan pemindaian"
+      },
+      {
+        "title": "Ulangi posisi yang sama",
+        "description": "Mainkan posisi yang sama dua kali agar Anda menemukan dan memperbaiki satu kesalahan ingatan.",
+        "duration": "5 menit",
+        "goal": "Menemukan bidak atau petak persis yang Anda lupakan.",
+        "ctaLabel": "Latih pengulangan ingatan"
+      },
+      {
+        "title": "Alih dari partai ke latihan",
+        "description": "Setelah partai rapid, bayangkan posisi saat Anda keliru sebelum menganalisisnya.",
+        "duration": "7 menit",
+        "goal": "Membiarkan kesalahan nyata menentukan latihan Anda.",
+        "ctaLabel": "Mulai latihan pengalihan"
+      }
+    ],
+    "comparisonTitle": "Seperti apa permainan pemula yang membaik",
+    "comparisonSummary": "Anda tidak perlu melihat lima langkah ke depan. Lihat dulu papan saat ini dengan jelas dan berhenti sejenak sebelum melangkah.",
+    "comparisonRows": [
+      {
+        "label": "Sebelum melangkah",
+        "struggling": "Anda hanya melihat ide sendiri.",
+        "stronger": "Anda memeriksa ancaman lawan lebih dulu."
+      },
+      {
+        "label": "Saat taktik",
+        "struggling": "Perhitungan hilang setelah satu tukar bidak.",
+        "stronger": "Anda bisa membayangkan petak kunci sambil membandingkan dua langkah."
+      },
+      {
+        "label": "Setelah kalah",
+        "struggling": "Anda langsung memulai partai berikutnya.",
+        "stronger": "Anda menamai kesalahannya dan melatihnya besok."
+      }
+    ],
+    "mistakes": [
+      "Melompat antar materi acak alih-alih menjalankan satu rutinitas selama dua minggu.",
+      "Belajar pembukaan sebelum penglihatan papan stabil.",
+      "Bermain terlalu banyak partai tanpa catatan singkat setelahnya.",
+      "Menganggap latihan ingatan terpisah dari catur sungguhan."
+    ],
+    "mistakesCallout": "Jangan buru-buru ke materi tingkat lanjut. Kebanyakan pemula kalah karena melewatkan ancaman satu langkah, bukan karena lupa variasi pembukaan.",
+    "planTitle": "Rencana 30 hari untuk pemula",
+    "planSteps": [
+      {
+        "label": "Minggu 1",
+        "duration": "20 menit sehari",
+        "detail": "Gunakan pemindaian papan yang sama dan mainkan satu ronde singkat Memory Chess sebelum tiap sesi bermain."
+      },
+      {
+        "label": "Minggu 2",
+        "duration": "25 menit sehari",
+        "detail": "Tambah satu ronde ingatan lagi dan catat apakah tiap kesalahan berasal dari penglihatan, ingatan, atau panik."
+      },
+      {
+        "label": "Minggu 3",
+        "duration": "25 sampai 30 menit sehari",
+        "detail": "Latihan tetap sama, tetapi persingkat waktu menghafal agar ingatan tetap bersih di bawah tekanan."
+      },
+      {
+        "label": "Minggu 4",
+        "duration": "30 menit sehari",
+        "detail": "Periksa apakah blunder per partai menurun dan simpan hanya pengaturan yang paling terasa terbawa ke partai."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Berapa menit sehari pemula harus berlatih?",
+        "answer": "20 sampai 30 menit yang fokus sudah cukup bila Anda menggabungkan penglihatan papan, ingatan, dan satu posisi nyata."
+      },
+      {
+        "question": "Kenapa kemampuan soal saya tidak terbawa ke partai?",
+        "answer": "Soal dimulai ketika taktiknya sudah ada. Dalam partai Anda harus lebih dulu menyadari perubahan di papan, jadi ingatan dan pemeriksaan keamanan jauh lebih penting."
+      },
+      {
+        "question": "Perlukah menghafal pembukaan sejak awal?",
+        "answer": "Cukup prinsip dasarnya dulu. Kebanyakan pemula lebih untung dari melihat ancaman lebih cepat dan menjaga posisi tetap jelas."
+      },
+      {
+        "question": "Ukuran kemajuan apa yang paling cepat terlihat?",
+        "answer": "Blunder per partai dan akurasi ingatan di Memory Chess. Keduanya biasanya bergerak sebelum rating."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Gunakan ini jika masalah utama Anda adalah memberi bidak gratis."
+      },
+      {
+        "reason": "Perdalam kebiasaan memeriksa ancaman sebelum melangkah."
+      },
+      {
+        "reason": "Bangun papan mental yang lebih kuat agar taktik tidak buyar."
+      },
+      {
+        "reason": "Latih ingatan langsung jika Anda lupa letak bidak."
+      },
+      {
+        "reason": "Ikuti rutinitas lebih singkat jika Anda ingin struktur harian yang sederhana."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Latihan visualisasi catur untuk pemula",
+    "h1": "Latihan visualisasi catur yang bisa dilakukan setiap hari",
+    "description": "Coba latihan visualisasi sederhana untuk mengingat papan dan membayangkan langkah lebih jelas.",
+    "primaryKeyword": "latihan visualisasi catur",
+    "secondaryKeywords": [
+      "pelatihan visualisasi catur",
+      "menghitung langkah ke depan",
+      "visualisasi papan catur",
+      "persiapan catur buta",
+      "latihan catur dalam pikiran"
+    ],
+    "painPoint": "Anda kehilangan jejak bidak saat mencoba membayangkan langkah berikutnya.",
+    "ctaLabel": "Latih visualisasi",
+    "quickAnswer": "Ingat dulu papan tanpa memindahkan apa pun. Lalu bayangkan satu langkah setiap kali. Anda tidak perlu bermain satu partai penuh secara buta.",
+    "keyTakeaways": [
+      "Latihan singkat setiap hari lebih efektif daripada sesi panjang yang jarang.",
+      "Periksa papan bayangan Anda setelah setiap percobaan.",
+      "Bayangkan satu langkah dengan jelas sebelum mencoba variasi lebih panjang."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang kehilangan variasi setelah satu tukar bidak.",
+      "Pemula yang kesulitan saat tidak bisa melihat papan.",
+      "Siapa pun yang ingin mencoba catur buta selangkah demi selangkah."
+    ],
+    "timeToRead": "8 menit membaca",
+    "introParagraphs": [
+      "Visualisasi berarti membayangkan bagaimana papan berubah setelah sebuah langkah. Bagi pemula, tujuannya cukup membandingkan dua langkah tanpa kehilangan jejak bidak.",
+      "Memory Chess menunjukkan bidak atau petak mana yang Anda lupakan. Setelah itu Anda bisa melatih jenis posisi yang sama lagi."
+    ],
+    "startHereTitle": "Mulai dengan langkah visualisasi ini",
+    "startHereSteps": [
+      "Sebutkan setiap bidak dan petak pada papan diam selama 60 detik.",
+      "Pejamkan mata dan bangun ulang papan dalam pikiran sebelum memeriksanya.",
+      "Bayangkan satu langkah sah untuk tiap pihak tanpa menyentuh bidak.",
+      "Jalankan satu ronde Memory Chess dengan jumlah bidak sedang dan waktu ketat.",
+      "Verifikasi posisinya dan ulangi hanya setelah Anda tahu apa yang terlupa."
+    ],
+    "drillSectionTitle": "Latihan visualisasi yang mudah",
+    "drillCards": [
+      {
+        "title": "Potret papan diam",
+        "description": "Ingat papan, lalu letakkan setiap bidak di petak yang benar.",
+        "duration": "4 menit",
+        "goal": "Mengingat papan sebelum membayangkan langkah.",
+        "ctaLabel": "Mulai latihan potret"
+      },
+      {
+        "title": "Satu langkah tiap pihak",
+        "description": "Ingat papan, bayangkan satu langkah untuk tiap pihak, lalu periksa jawabannya.",
+        "duration": "5 menit",
+        "goal": "Belajar memperbarui papan dalam pikiran.",
+        "ctaLabel": "Latih pembaruan satu langkah"
+      },
+      {
+        "title": "Ingatan di bawah tekanan",
+        "description": "Setelah ingatan Anda akurat, persingkat waktu melihat papan.",
+        "duration": "5 menit",
+        "goal": "Memakai ingatan bersih dalam partai cepat.",
+        "ctaLabel": "Tambah tekanan"
+      }
+    ],
+    "comparisonTitle": "Bagaimana rasanya visualisasi yang lemah",
+    "comparisonSummary": "Terasa seperti masalah perhitungan, padahal sering kali gambaran papan memudar terlalu cepat.",
+    "comparisonRows": [
+      {
+        "label": "Langkah kandidat",
+        "struggling": "Anda bisa menyebut langkah tetapi tidak melihat posisi hasilnya dengan jelas.",
+        "stronger": "Anda bisa membandingkan dua posisi sebelum melangkah."
+      },
+      {
+        "label": "Kekacauan taktis",
+        "struggling": "Pikiran kosong setelah tukar bidak.",
+        "stronger": "Anda menahan petak dan ancaman penting cukup lama untuk memutuskan dengan tenang."
+      },
+      {
+        "label": "Umpan balik latihan",
+        "struggling": "Anda tidak tahu petak mana yang terlupa.",
+        "stronger": "Anda menangkap apakah kesalahan berasal dari lajur, baris, atau pelindung yang hilang."
+      }
+    ],
+    "mistakes": [
+      "Menghitung buta secara dalam sebelum ingatan statis stabil.",
+      "Memindahkan bidak sungguhan pada setiap percobaan hitung.",
+      "Berlatih seminggu sekali alih-alih blok harian yang singkat.",
+      "Tidak memeriksa apakah papan bayangan cocok dengan kenyataan."
+    ],
+    "mistakesCallout": "Jangan kejar variasi panjang dulu. Bayangkan dulu langkah pertama dengan jelas.",
+    "planTitle": "Perkembangan visualisasi 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1",
+        "duration": "10 menit",
+        "detail": "Hanya potret papan diam dengan verifikasi langsung."
+      },
+      {
+        "label": "Hari 2 sampai 3",
+        "duration": "12 menit",
+        "detail": "Tambahkan satu langkah bayangan tiap pihak dan perhatikan petak mana yang hilang lebih dulu."
+      },
+      {
+        "label": "Hari 4 sampai 5",
+        "duration": "15 menit",
+        "detail": "Persingkat waktu lihat di Memory Chess dengan jumlah bidak tetap."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 menit",
+        "detail": "Bawa latihan ke satu partai rapid: berhenti sebelum tiap keputusan taktis dan sebutkan posisi yang akan muncul."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Berapa lama sampai visualisasi membaik?",
+        "answer": "Kebanyakan pemula merasakan ingatan yang lebih bersih dalam dua sampai empat minggu latihan singkat dan rutin."
+      },
+      {
+        "question": "Apakah latihan ini membantu dalam blitz?",
+        "answer": "Ya. Memperbarui papan mental lebih cepat membuat sekak, tangkapan, dan ancaman lebih mudah terlihat saat waktu mepet."
+      },
+      {
+        "question": "Bisakah melatih visualisasi tanpa catur buta?",
+        "answer": "Bisa. Ingatan berwaktu dan latihan pembaruan satu langkah sudah cukup untuk membangun dasar yang nyata."
+      },
+      {
+        "question": "Bagaimana jika saya terus lupa letak bidak?",
+        "answer": "Kurangi jumlah bidak, periksa lebih sering, dan ulangi posisi yang sama sampai ingatan Anda bersih."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Gunakan ini saat ingatan statis dan satu langkah sudah stabil."
+      },
+      {
+        "reason": "Perluas kesadaran papan jika Anda melewatkan bidak di tepi."
+      },
+      {
+        "reason": "Gabungkan visualisasi dengan pemeriksaan ancaman sederhana."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Latihan penglihatan papan untuk mengurangi blunder",
+    "h1": "Latihan penglihatan papan untuk pemula",
+    "description": "Gunakan latihan sederhana untuk melihat ancaman, melindungi bidak, dan lebih jarang blunder.",
+    "primaryKeyword": "penglihatan papan",
+    "secondaryKeywords": [
+      "latihan penglihatan papan",
+      "mengurangi blunder catur",
+      "melihat ancaman dalam catur",
+      "kewaspadaan taktis",
+      "kesalahan pemula catur"
+    ],
+    "painPoint": "Anda fokus pada satu sisi papan dan melewatkan ancaman sederhana di tempat lain.",
+    "ctaLabel": "Mulai latihan penglihatan papan",
+    "quickAnswer": "Sebelum setiap langkah, cari sekak, tangkapan, ancaman, dan bidak tak terlindungi. Latihan ingatan membantu Anda menahan semua bidak dalam pikiran saat memindai.",
+    "keyTakeaways": [
+      "Penglihatan papan adalah kebiasaan yang bisa dipelajari.",
+      "Kewaspadaan pada bidak tak terlindungi sering menjadi perbaikan tercepat.",
+      "Latihan ingatan membantu Anda mengikuti seluruh papan."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang paham taktik dasar tetapi masih kehilangan bidak.",
+      "Pemula yang bermain cepat dan baru sadar setelah bidak dimakan.",
+      "Siapa pun yang butuh daftar jelas sebelum tiap langkah."
+    ],
+    "timeToRead": "8 menit membaca",
+    "introParagraphs": [
+      "Saat seseorang berkata «saya tidak melihatnya», biasanya ia melangkah sebelum memeriksa seluruh papan.",
+      "Latihan ini mengajarkan ke mana harus melihat. Mulailah dari bidak tak terlindungi serta langkah yang memberi sekak, menangkap, atau membuat ancaman."
+    ],
+    "startHereTitle": "Mulai di sini: putaran periksa sebelum melangkah",
+    "startHereSteps": [
+      "Sebutkan sekak, tangkapan, dan ancaman kedua pihak sebelum tiap langkah.",
+      "Tandai setiap bidak tak terlindungi dan katakan apakah benar aman atau hanya tampak aman.",
+      "Jalankan satu ronde singkat Memory Chess untuk mengeratkan kaitan petak dan bidak.",
+      "Tinjau satu blunder terbaru dan tentukan persis ancaman yang terlewat.",
+      "Ulangi daftar yang sama pada partai rapid berikutnya tanpa memangkasnya."
+    ],
+    "drillSectionTitle": "Latihan penglihatan papan untuk partai nyata",
+    "drillCards": [
+      {
+        "title": "Inventaris bidak tak terlindungi",
+        "description": "Pindai papan dan tandai setiap bidak tak terlindungi sebelum melangkah.",
+        "duration": "3 menit",
+        "goal": "Menangkap sumber blunder paling umum sejak awal.",
+        "ctaLabel": "Jalankan inventaris"
+      },
+      {
+        "title": "Ulang ancaman",
+        "description": "Bangun kembali posisi blunder terakhir Anda dan cari ancaman terkuat lawan sebelum melihat partainya.",
+        "duration": "5 menit",
+        "goal": "Mempelajari bagaimana ancaman yang terlewat itu terlihat dalam konteks.",
+        "ctaLabel": "Ulang satu ancaman"
+      },
+      {
+        "title": "Ingatan petak cepat",
+        "description": "Gunakan waktu lihat singkat agar papan tetap utuh saat Anda memindai.",
+        "duration": "4 menit",
+        "goal": "Mengingat letak bidak sambil memindai.",
+        "ctaLabel": "Percepat ingatan"
+      }
+    ],
+    "comparisonTitle": "Penglihatan papan lemah dan kuat",
+    "comparisonSummary": "Perbedaannya biasanya sudah terlihat sebelum perhitungan dimulai.",
+    "comparisonRows": [
+      {
+        "label": "Perhatian",
+        "struggling": "Anda terpaku pada satu ide taktis.",
+        "stronger": "Anda memindai seluruh papan sebelum memilih rencana."
+      },
+      {
+        "label": "Pemeriksaan keamanan",
+        "struggling": "Anda menganggap bidak yang dilindungi pasti aman.",
+        "stronger": "Anda menghitung penyerang dan pelindung sebelum mempercayai petak itu."
+      },
+      {
+        "label": "Tekanan waktu",
+        "struggling": "Anda makin cepat melangkah saat posisi menajam.",
+        "stronger": "Anda melambat saat muncul sekak, tangkapan, atau ancaman."
+      }
+    ],
+    "mistakes": [
+      "Hanya memeriksa ide sendiri dan mengabaikan ancaman lawan.",
+      "Menganggap bidak yang dilindungi aman tanpa menghitung seluruh rangkaian tukar.",
+      "Bermain terlalu cepat begitu posisi menjadi taktis.",
+      "Tidak pernah menamai jenis kesalahan setelah partai."
+    ],
+    "mistakesCallout": "Menambah soal tidak akan memperbaiki pemindaian yang terburu-buru. Ulangi pemeriksaan singkat yang sama sebelum tiap langkah.",
+    "planTitle": "Penyetelan ulang penglihatan papan 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "12 menit",
+        "detail": "Hanya inventaris bidak tak terlindungi dan pemindaian sekak-tangkapan-ancaman."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "15 menit",
+        "detail": "Tambahkan satu ronde Memory Chess sebelum bermain agar pemindaian dilakukan di papan mental yang lebih bersih."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "15 menit",
+        "detail": "Tinjau tiga blunder terbaru dan sebutkan sinyal yang terlewat pada tiap posisi."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 sampai 20 menit",
+        "detail": "Mainkan rapid dan pakai seluruh daftar pada tiap langkah yang mengubah ketegangan atau keamanan raja."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Apa cara tercepat memperbaiki penglihatan papan?",
+        "answer": "Gunakan daftar yang sama sebelum tiap langkah sampai menjadi otomatis: sekak, tangkapan, ancaman, dan bidak tak terlindungi."
+      },
+      {
+        "question": "Mengapa saya blunder padahal paham taktik?",
+        "answer": "Karena lapisan pelacakan papan masih lemah. Taktik baru berguna setelah Anda menangkap posisinya dengan benar."
+      },
+      {
+        "question": "Seberapa sering meninjau blunder saya?",
+        "answer": "Setelah setiap partai. Kebiasaan tinjauan singkat jauh lebih cepat terbawa daripada tinjauan panjang mingguan."
+      },
+      {
+        "question": "Apakah latihan ingatan membantu penglihatan papan?",
+        "answer": "Ya. Ingatan bidak yang lebih cepat memudahkan menahan seluruh papan dalam perhatian saat memindai."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Gunakan panduan antiblunder lengkap saat kesalahan penglihatan memakan materi."
+      },
+      {
+        "reason": "Pahami mengapa kemampuan taktis runtuh di bawah tekanan nyata."
+      },
+      {
+        "reason": "Lihat posisi penglihatan papan dalam rutinitas pemula yang utuh."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Latihan ingatan catur untuk ingatan yang lebih cepat",
+    "h1": "Latihan ingatan catur untuk pemula",
+    "description": "Gunakan latihan ingatan sederhana untuk mengingat posisi, mengenali pola, dan mengikuti langkah lebih jelas.",
+    "primaryKeyword": "latihan ingatan catur",
+    "secondaryKeywords": [
+      "latihan memori catur",
+      "menghafal posisi catur",
+      "pengenalan pola catur",
+      "melatih ingatan papan",
+      "konsentrasi dalam catur"
+    ],
+    "painPoint": "Anda lupa letak bidak saat memikirkan langkah berikutnya.",
+    "ctaLabel": "Mulai tantangan ingatan",
+    "quickAnswer": "Latihan ingatan membantu Anda menahan posisi yang berguna saat bidak berubah. Ini bukan soal menghafal sebanyak mungkin papan acak.",
+    "keyTakeaways": [
+      "Di awal, ketepatan lebih penting daripada kecepatan.",
+      "Mengulang satu posisi memungkinkan Anda memperbaiki satu kesalahan ingatan setiap kali.",
+      "Letakkan latihan ingatan sebelum perhitungan atau analisis."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang lupa rencananya setelah satu jawaban kuat.",
+      "Pemula yang tidak bisa membangun ulang posisi kunci dari partainya.",
+      "Siapa pun yang kesulitan saat banyak bidak aktif."
+    ],
+    "timeToRead": "8 menit membaca",
+    "introParagraphs": [
+      "Ingatan dalam catur adalah keterampilan praktis. Tujuannya menahan gambaran papan yang jelas cukup lama agar Anda bisa memilih langkah dengan tenang.",
+      "Memory Chess memberi putaran sederhana: lihat, ingat, periksa, dan coba lagi."
+    ],
+    "startHereTitle": "Mulai dengan rutinitas ingatan ini",
+    "startHereSteps": [
+      "Mulai dari posisi sederhana dan hafalkan selama 10 detik.",
+      "Bangun ulang papan dan catat petak atau bidak pertama yang hilang.",
+      "Ulangi posisi yang sama sekali agar perbaikannya terlihat.",
+      "Tambahkan satu variasi taktis singkat dari susunan yang dihafal.",
+      "Catat ketepatan sekaligus jenis kesalahan ingatan yang Anda buat."
+    ],
+    "drillSectionTitle": "Latihan ingatan untuk partai nyata",
+    "drillCards": [
+      {
+        "title": "Pengulangan satu posisi",
+        "description": "Hafalkan satu posisi, bangun ulang, lalu ulangi sekali dengan pengaturan sama.",
+        "duration": "5 menit",
+        "goal": "Menemukan satu kesalahan ingatan yang jelas untuk diperbaiki.",
+        "ctaLabel": "Ulangi satu posisi"
+      },
+      {
+        "title": "Ingatan lewat titik jangkar",
+        "description": "Fokus dulu pada letak raja, bidak tak terlindungi, dan ketegangan di tengah.",
+        "duration": "4 menit",
+        "goal": "Mengingat bagian terpenting posisi lebih dulu.",
+        "ctaLabel": "Latih titik jangkar"
+      },
+      {
+        "title": "Ingat dulu, hitung kemudian",
+        "description": "Setelah membangun ulang papan, hitung satu variasi singkat sebelum memeriksa.",
+        "duration": "6 menit",
+        "goal": "Memakai ingatan papan saat menghitung.",
+        "ctaLabel": "Tambah variasi"
+      }
+    ],
+    "comparisonTitle": "Seperti apa ingatan lemah dalam partai",
+    "comparisonSummary": "Papan bisa terasa akrab tetapi tetap terlalu kabur untuk menopang perhitungan.",
+    "comparisonRows": [
+      {
+        "label": "Menahan variasi",
+        "struggling": "Anda kehilangan posisi awal saat menimbang langkah kandidat lain.",
+        "stronger": "Anda kembali tepat ke posisi awal setelah menelusuri satu variasi."
+      },
+      {
+        "label": "Ingatan pola",
+        "struggling": "Anda ingat ide taktisnya tetapi tidak pelindungnya.",
+        "stronger": "Anda ingat idenya dan petak yang membuatnya bekerja."
+      },
+      {
+        "label": "Kualitas analisis",
+        "struggling": "Analisis terasa kabur karena posisinya langsung hilang.",
+        "stronger": "Anda membangun ulang momen kunci dan belajar lebih cepat."
+      }
+    ],
+    "mistakes": [
+      "Lompatan kesulitan yang terlalu besar untuk level Anda.",
+      "Mengukur kecepatan sambil mengabaikan ketepatan.",
+      "Tidak mencatat kesalahan sehingga kelemahan berulang tetap tersembunyi.",
+      "Menganggap latihan ingatan terpisah dari permainan taktis."
+    ],
+    "mistakesCallout": "Jangan mempersulit posisi selagi ingatan Anda belum jelas. Turunkan kesulitan dan bangun ketepatan dulu.",
+    "planTitle": "Blok ingatan 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "10 menit",
+        "detail": "Ulangi posisi sederhana dan sebutkan tiap kesalahan ingatan."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "12 menit",
+        "detail": "Tambahkan titik jangkar agar Anda mengingat raja, bidak tak terlindungi, dan ketegangan tengah lebih dulu."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "12 menit",
+        "detail": "Tambahkan satu rangkaian langkah singkat setelah tiap pembangunan ulang yang benar."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 menit",
+        "detail": "Persingkat sedikit waktunya dengan jumlah bidak tetap, lalu bawa hasilnya ke analisis satu partai rapid."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Apakah latihan ingatan memperbaiki partai nyata?",
+        "answer": "Ya, bila dipadukan dengan perhitungan atau analisis. Ingatan yang lebih baik menjaga variasi tetap jelas di bawah tekanan."
+      },
+      {
+        "question": "Berapa posisi per sesi?",
+        "answer": "Untuk pemula, enam sampai dua belas percobaan yang cermat sudah cukup asal Anda memverifikasi kesalahan alih-alih terburu-buru."
+      },
+      {
+        "question": "Papan acak atau pola partai nyata?",
+        "answer": "Keduanya. Papan acak mengasah ingatan murni, struktur nyata memperbaiki pengalihan ke partai."
+      },
+      {
+        "question": "Bagaimana jika ketepatan mandek?",
+        "answer": "Pakai bidak lebih sedikit selama seminggu, perbaiki satu jenis kesalahan, dan tambah bidak hanya setelah ingatan kembali bersih."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Gunakan ini jika Anda kesulitan mengingat rangkaian langkah."
+      },
+      {
+        "reason": "Seimbangkan latihan ingatan dengan jumlah soal yang wajar."
+      },
+      {
+        "reason": "Hubungkan ingatan papan dengan pola catur yang umum."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Latihan catur buta untuk pemula",
+    "h1": "Catur buta untuk pemula, selangkah demi selangkah",
+    "description": "Pelajari catur buta lewat langkah kecil yang memperbaiki visualisasi tanpa membuat kewalahan.",
+    "primaryKeyword": "latihan catur buta",
+    "secondaryKeywords": [
+      "catur buta untuk pemula",
+      "melatih papan mental",
+      "latihan visualisasi catur",
+      "menghitung tanpa memindahkan bidak",
+      "latihan fokus catur"
+    ],
+    "painPoint": "Anda kehilangan jejak papan begitu berhenti melihatnya.",
+    "ctaLabel": "Mulai latihan buta",
+    "quickAnswer": "Mulai dari posisi sederhana. Ingat posisinya, bayangkan satu langkah tiap pihak, lalu periksa. Coba partai buta penuh hanya setelah langkah-langkah ini terasa mudah.",
+    "keyTakeaways": [
+      "Catur buta adalah keterampilan yang dibangun bertahap.",
+      "Memeriksa jawaban lebih penting daripada mencoba posisi yang lebih sulit.",
+      "Latihan buta untuk pemula adalah latihan visualisasi dengan bantuan papan yang lebih sedikit."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang ingin visualisasi lebih baik tanpa langsung bermain buta.",
+      "Pemula yang kehilangan petak setelah satu atau dua langkah bayangan.",
+      "Siapa pun yang ingin gambaran papan lebih jelas dalam pikiran."
+    ],
+    "timeToRead": "8 menit membaca",
+    "introParagraphs": [
+      "Kesalahan terbesar adalah mencoba partai buta penuh terlalu dini. Hasilnya biasanya frustrasi, bukan kemajuan.",
+      "Ambil satu langkah setiap kali: lihat papan, ingat, bayangkan satu langkah, periksa, lalu kurangi bantuan visual perlahan."
+    ],
+    "startHereTitle": "Mulai di sini: tahapan buta yang aman",
+    "startHereSteps": [
+      "Hafalkan posisi kecil dan bangun ulang sebelum membayangkan langkah apa pun.",
+      "Hitung satu langkah tiap pihak tanpa menyentuh bidak.",
+      "Verifikasi setiap ketidakcocokan seketika alih-alih memaksa lanjut.",
+      "Jalankan satu ronde Memory Chess dengan waktu lihat sedikit lebih pendek.",
+      "Tambah satu langkah lagi hanya bila variasi saat ini sudah jelas."
+    ],
+    "drillSectionTitle": "Latihan catur buta yang mudah",
+    "drillCards": [
+      {
+        "title": "Bangun ulang sebelum melangkah",
+        "description": "Jangan membayangkan langkah sampai posisi awal benar-benar stabil.",
+        "duration": "4 menit",
+        "goal": "Membangun ingatan papan yang jelas sebelum menambah langkah.",
+        "ctaLabel": "Bangun papan dulu"
+      },
+      {
+        "title": "Satu langkah tiap pihak",
+        "description": "Bayangkan satu langkah Putih dan satu jawaban Hitam, lalu verifikasi papan barunya.",
+        "duration": "5 menit",
+        "goal": "Memperbarui posisi tanpa melihat papan.",
+        "ctaLabel": "Bayangkan dua langkah"
+      },
+      {
+        "title": "Waktu lihat pendek",
+        "description": "Kurangi waktu lihat agar Anda belajar mengingat papan lebih cepat.",
+        "duration": "4 menit",
+        "goal": "Bersiap untuk catur buta tanpa menutupi seluruh papan.",
+        "ctaLabel": "Persingkat waktu"
+      }
+    ],
+    "comparisonTitle": "Cara lebih aman melatih catur buta",
+    "comparisonSummary": "Tanyakan apakah Anda bisa membayangkan satu langkah lebih jelas dari sebelumnya. Partai buta penuh belum diperlukan.",
+    "comparisonRows": [
+      {
+        "label": "Titik awal",
+        "struggling": "Anda langsung terjun ke partai buta penuh.",
+        "stronger": "Anda mengingat papan awal sebelum menambah langkah."
+      },
+      {
+        "label": "Verifikasi",
+        "struggling": "Anda memercayai papan mental yang kabur.",
+        "stronger": "Anda memverifikasi tiap pembaruan bayangan dan memperbaikinya segera."
+      },
+      {
+        "label": "Kualitas sesi",
+        "struggling": "Anda berlatih sampai fokus runtuh.",
+        "stronger": "Anda berhenti selagi ketepatan mental masih tinggi."
+      }
+    ],
+    "mistakes": [
+      "Mencoba partai buta penuh terlalu dini.",
+      "Melewatkan verifikasi dan memercayai papan mental yang salah.",
+      "Menambah langkah sebelum variasi pendek jelas.",
+      "Berlatih terlalu lama dalam satu sesi dan menghabiskan fokus."
+    ],
+    "mistakesCallout": "Jangan melompat ke tugas yang jauh lebih sulit. Kurangi bantuan papan sedikit demi sedikit.",
+    "planTitle": "Blok persiapan buta 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "10 menit",
+        "detail": "Hanya membangun ulang posisi dari ingatan lalu memeriksanya segera."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "12 menit",
+        "detail": "Tambahkan satu langkah tiap pihak dan jaga posisi tetap sederhana."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "12 menit",
+        "detail": "Persingkat waktu lihat di Memory Chess dengan jumlah bidak tetap."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 menit",
+        "detail": "Coba beberapa rangkaian dua langkah hanya jika latihan satu langkah sudah akurat."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Apakah catur buta berguna bagi pemula?",
+        "answer": "Ya, dalam latihan singkat dan terkendali. Ia memperkuat visualisasi yang menopang partai biasa."
+      },
+      {
+        "question": "Seberapa sering latihan buta dilakukan?",
+        "answer": "Dua sampai empat sesi singkat per minggu sudah cukup bila dipadukan dengan bermain dan menganalisis secara rutin."
+      },
+      {
+        "question": "Apa latihan buta pertama yang terbaik?",
+        "answer": "Membangun ulang posisi sederhana dari ingatan dan membayangkan satu langkah tiap pihak sebelum memeriksa."
+      },
+      {
+        "question": "Bagaimana tahu saya berkembang?",
+        "answer": "Anda menahan lebih banyak petak dengan benar, memperbarui papan lebih lama, dan lebih jarang blunder penglihatan dalam partai biasa."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Jaga fondasi tetap kuat alih-alih melompat ke catur buta tingkat lanjut."
+      },
+      {
+        "reason": "Padukan latihan buta dengan latihan menahan variasi."
+      },
+      {
+        "reason": "Gunakan visualisasi yang lebih jelas untuk membandingkan langkah."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Latihan memori kerja untuk pemain catur",
+    "h1": "Latihan memori kerja untuk pemula",
+    "description": "Latihan sederhana untuk mengingat rangkaian langkah, membandingkan pilihan, dan memutuskan lebih jelas.",
+    "primaryKeyword": "latihan memori kerja",
+    "secondaryKeywords": [
+      "memori kerja dalam catur",
+      "latihan perhitungan catur",
+      "latihan konsentrasi catur",
+      "konsistensi bermain catur",
+      "daya tahan mental catur"
+    ],
+    "painPoint": "Anda lupa rangkaian langkah pertama saat memikirkan rangkaian lain.",
+    "ctaLabel": "Mulai rutinitas ingatan",
+    "quickAnswer": "Memori kerja membantu Anda menahan beberapa rangkaian langkah. Jaga jumlahnya sedikit dan periksa masing-masing dengan jelas.",
+    "keyTakeaways": [
+      "Tiga pilihan yang jelas lebih baik daripada enam yang membingungkan.",
+      "Ringkasan singkat yang diucapkan membantu mengingat tiap variasi.",
+      "Berlatihlah dengan posisi nyata dan pakai keterampilannya dalam partai."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang lupa variasi pertama saat menelusuri yang kedua.",
+      "Pemula yang tertukar urutan langkahnya.",
+      "Siapa pun yang lebih sering salah taktik saat lelah."
+    ],
+    "timeToRead": "8 menit membaca",
+    "introParagraphs": [
+      "Memori kerja membantu Anda menahan langkah-langkah yang mungkin sambil membandingkannya. Dalam catur, Anda perlu mengingat papan awal dan satu atau dua variasi pendek tanpa tertukar.",
+      "Memory Chess membantu Anda mengingat papan awal. Saat gambaran itu jelas, mengikuti langkah berikutnya menjadi lebih mudah."
+    ],
+    "startHereTitle": "Mulai dengan dua rangkaian langkah pendek",
+    "startHereSteps": [
+      "Pilih satu posisi dan sebutkan tiga langkah kandidat tanpa menyentuh papan.",
+      "Hitung tiap variasi sejauh dua setengah langkah dan rangkum hasilnya dalam satu kalimat.",
+      "Jalankan satu ronde ingatan Memory Chess untuk menyegarkan posisi dasarnya.",
+      "Kembali ke posisi itu dan bandingkan lagi rangkaian yang mungkin.",
+      "Tulis satu kalimat tentang di mana pelacakan variasi Anda putus."
+    ],
+    "drillSectionTitle": "Latihan memori kerja untuk catur",
+    "drillCards": [
+      {
+        "title": "Ringkasan tiga variasi",
+        "description": "Tahan tiga langkah kandidat sebentar dan jelaskan tiap cabang dalam satu kalimat.",
+        "duration": "6 menit",
+        "goal": "Menjaga tiap rangkaian tetap jelas alih-alih menambah jumlahnya.",
+        "ctaLabel": "Tahan tiga variasi"
+      },
+      {
+        "title": "Setel ulang ingatan",
+        "description": "Sisipkan satu ronde Memory Chess di antara percobaan hitung agar papan dasar tetap stabil.",
+        "duration": "4 menit",
+        "goal": "Mengingat posisi awal sebelum mengikuti langkah.",
+        "ctaLabel": "Setel ulang papan"
+      },
+      {
+        "title": "Bandingkan setelah variasi",
+        "description": "Kembali ke posisi awal dan bandingkan cabangnya setelah jeda singkat.",
+        "duration": "5 menit",
+        "goal": "Berpindah antara papan dasar dan tiap variasi tanpa tertukar.",
+        "ctaLabel": "Bandingkan pilihan Anda"
+      }
+    ],
+    "comparisonTitle": "Saat Anda mencoba mengingat terlalu banyak",
+    "comparisonSummary": "Ketika ingatan penuh, variasi menjadi kabur dan urutan langkah tertukar.",
+    "comparisonRows": [
+      {
+        "label": "Langkah kandidat",
+        "struggling": "Anda mencoba menahan terlalu banyak pilihan sekaligus.",
+        "stronger": "Anda menahan lebih sedikit variasi, tetapi tiap variasi bertahan lebih lama."
+      },
+      {
+        "label": "Urutan langkah",
+        "struggling": "Cabang-cabangnya saling bercampur.",
+        "stronger": "Tiap variasi tetap terpisah dan mudah dibandingkan."
+      },
+      {
+        "label": "Kelelahan",
+        "struggling": "Kualitas keputusan runtuh di akhir partai.",
+        "stronger": "Anda menjaga proses yang lebih sederhana dan jelas saat energi menurun."
+      }
+    ],
+    "mistakes": [
+      "Mencoba mengingat terlalu banyak rangkaian sekaligus.",
+      "Melewatkan ringkasan singkat setelah tiap variasi.",
+      "Hanya mengerjakan soal dan tidak pernah memakai keterampilannya dalam partai.",
+      "Melanjutkan padahal terlalu lelah untuk berpikir jernih."
+    ],
+    "mistakesCallout": "Jangan menambah variasi dulu. Jaga sedikit variasi tetap jelas sebelum memperpanjangnya.",
+    "planTitle": "Blok memori kerja 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "10 menit",
+        "detail": "Pakai hanya dua rangkaian langkah dan jelaskan tiap rangkaian dengan suara keras."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "12 menit",
+        "detail": "Sisipkan penyetelan ulang Memory Chess di antara percobaan agar posisi awal tetap bersih."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "12 menit",
+        "detail": "Tambah pilihan ketiga hanya jika dua yang pertama tetap akurat."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 menit",
+        "detail": "Pakai rutinitas ini dalam satu partai rapid. Berhenti di momen sulit dan sebutkan langkah-langkah yang mungkin dengan jelas."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Apakah latihan memori kerja terbawa ke permainan catur?",
+        "answer": "Bisa, terutama bila terkait langsung dengan posisi, pelacakan variasi, dan analisis, bukan permainan otak umum."
+      },
+      {
+        "question": "Bagaimana pemula menyusun latihan ini?",
+        "answer": "Sesi singkat yang menggabungkan langkah yang mungkin, ingatan papan, dan satu posisi partai nyata."
+      },
+      {
+        "question": "Cara sederhana melacak kemajuan?",
+        "answer": "Catat berapa rangkaian yang bisa Anda tahan dan seberapa sering Anda kehilangan jejak."
+      },
+      {
+        "question": "Apakah ini menggantikan latihan taktik?",
+        "answer": "Tidak. Ia melengkapinya dengan menjaga variasi tetap jelas saat Anda memecahkan soal atau bermain."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Pakai memori kerja yang lebih baik untuk membandingkan langkah."
+      },
+      {
+        "reason": "Perkuat lapisan ingatan di bawah pelacakan variasi."
+      },
+      {
+        "reason": "Gunakan proses berpikir yang lebih sederhana agar memori kerja tidak terbuang."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Cara berhenti blunder dalam catur",
+    "h1": "Cara berhenti blunder dalam catur",
+    "description": "Pakai pemeriksaan keamanan singkat untuk melihat ancaman, melindungi bidak, dan lebih jarang blunder.",
+    "primaryKeyword": "cara berhenti blunder dalam catur",
+    "secondaryKeywords": [
+      "mencegah blunder catur",
+      "berhenti memberi bidak gratis",
+      "pemeriksaan ancaman catur",
+      "daftar keamanan catur",
+      "mengurangi kesalahan sederhana catur"
+    ],
+    "painPoint": "Anda paham ide caturnya, tetapi masih kehilangan bidak karena ancaman sederhana.",
+    "ctaLabel": "Mulai latihan antiblunder",
+    "quickAnswer": "Sebelum tiap langkah, periksa ancaman lawan, cari bidak tak terlindungi, dan pastikan langkah Anda aman. Latihan ingatan membantu menahan seluruh papan dalam pikiran.",
+    "keyTakeaways": [
+      "Kebanyakan blunder pemula muncul karena satu bagian papan terlewat.",
+      "Daftar keamanan harus cukup pendek agar bertahan di bawah tekanan waktu.",
+      "Ulangi kesalahan Anda sampai Anda cepat melihat apa yang terlewat."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang berulang kali terkena taktik satu langkah.",
+      "Pemula yang merasa lebih buruk dalam partai daripada dalam soal.",
+      "Siapa pun yang ingin rutinitas tenang untuk tiap langkah."
+    ],
+    "timeToRead": "8 menit membaca",
+    "introParagraphs": [
+      "Banyak blunder terjadi karena Anda melangkah sebelum memeriksa seluruh posisi. Anda juga bisa lupa di mana sebuah bidak terlindungi.",
+      "Rutinitas singkat menggantikan panik dan tebakan. Pakai pemeriksaan yang sama begitu posisi menajam."
+    ],
+    "startHereTitle": "Mulai di sini: daftar antiblunder",
+    "startHereSteps": [
+      "Tanyakan sekak, tangkapan, dan ancaman apa yang lawan miliki sekarang.",
+      "Temukan setiap bidak tak terlindungi atau yang terlalu banyak tugas.",
+      "Baru setelah itu periksa apakah langkah rencana Anda aman.",
+      "Jalankan satu ronde singkat Memory Chess sebelum bermain agar ingatan bidak tajam.",
+      "Setelah tiap blunder, tulis sinyal yang terlewat dalam satu kalimat."
+    ],
+    "drillSectionTitle": "Latihan antiblunder sederhana",
+    "drillCards": [
+      {
+        "title": "Pindai dari sisi lawan",
+        "description": "Mulai tiap posisi dengan memeriksa ancaman terkuat lawan.",
+        "duration": "3 menit",
+        "goal": "Memikirkan ide lawan sebelum ide sendiri.",
+        "ctaLabel": "Pindai dari sisi lawan"
+      },
+      {
+        "title": "Alarm bidak tak terlindungi",
+        "description": "Sebutkan tiap bidak tak terlindungi atau terlalu terbebani sebelum melangkah.",
+        "duration": "4 menit",
+        "goal": "Menangkap kehilangan materi termudah sejak awal.",
+        "ctaLabel": "Jalankan alarm"
+      },
+      {
+        "title": "Putaran ulang blunder",
+        "description": "Ulangi posisi blunder Anda sampai ancaman yang terlewat menjadi jelas.",
+        "duration": "6 menit",
+        "goal": "Belajar dari posisi yang benar-benar membuat Anda kalah.",
+        "ctaLabel": "Ulangi blunder Anda"
+      }
+    ],
+    "comparisonTitle": "Apa yang berubah saat blunder berkurang",
+    "comparisonSummary": "Partai tidak langsung menjadi sempurna. Partai menjadi lebih tenang, dan kekalahan punya sebab yang bisa dipahami, bukan bencana satu langkah.",
+    "comparisonRows": [
+      {
+        "label": "Saat melepas langkah",
+        "struggling": "Anda melangkah begitu melihat sebuah rencana.",
+        "stronger": "Anda melangkah hanya setelah pemeriksaan keamanan singkat."
+      },
+      {
+        "label": "Kesadaran ancaman",
+        "struggling": "Anda melihat taktiknya setelah terlambat.",
+        "stronger": "Anda mengenali bentuk taktisnya sebelum berkomitmen."
+      },
+      {
+        "label": "Tinjauan setelah partai",
+        "struggling": "Kekalahan terasa acak.",
+        "stronger": "Anda cepat menyebut sinyal persis yang terlewat."
+      }
+    ],
+    "mistakes": [
+      "Mencoba menghilangkan blunder hanya dengan melangkah lebih lambat.",
+      "Menghafal lebih banyak pembukaan saat kebiasaan memeriksa ancaman masih lemah.",
+      "Melihat variasi mesin tanpa menentukan sinyal yang benar-benar terlewat.",
+      "Mengabaikan bahwa tekanan waktu melemahkan ingatan."
+    ],
+    "mistakesCallout": "Melangkah lebih lambat saja tidak cukup. Pakai pemeriksaan keamanan singkat yang sama setiap kali.",
+    "planTitle": "Penyetelan ulang antiblunder 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "10 menit",
+        "detail": "Hanya pindai dari sisi lawan dan alarm bidak tak terlindungi."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "12 menit",
+        "detail": "Tambahkan satu ronde Memory Chess sebelum tiap sesi bermain agar keadaan papan lebih bersih."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "15 menit",
+        "detail": "Ulangi tiga blunder terbaru dan kelompokkan sinyal yang terlewat pada masing-masing."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 menit",
+        "detail": "Pakai daftar penuh dalam partai rapid dan catat blunder per partai, bukan hanya hasil akhirnya."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kenapa saya terus memberi bidak gratis?",
+        "answer": "Biasanya karena pemindaian sebelum langkah belum lengkap. Anda mungkin paham taktiknya tetapi tidak memeriksa seluruh papan sebelum melangkah."
+      },
+      {
+        "question": "Apakah cukup melangkah lebih lambat?",
+        "answer": "Hanya jika waktu tambahan itu dipakai untuk pemeriksaan keamanan yang jelas. Menatap papan tanpa rencana tidak membantu."
+      },
+      {
+        "question": "Apakah latihan ingatan benar-benar membantu?",
+        "answer": "Ya. Ingatan bidak yang bersih memudahkan melihat ancaman saat papan berubah."
+      },
+      {
+        "question": "Apa yang perlu dicatat agar blunder berkurang?",
+        "answer": "Blunder per partai, bidak tak terlindungi yang terlewat, dan apakah ancaman yang lolos berasal dari pemindaian atau perhitungan yang gagal."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bangun pemindaian papan yang lebih kuat untuk mencegah blunder."
+      },
+      {
+        "reason": "Lihat mengapa kemampuan taktis runtuh saat pelacakan papan lemah."
+      },
+      {
+        "reason": "Sambungkan kerja antiblunder ke rutinitas pemula yang utuh."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Kenapa rating soal tidak terbawa ke partai",
+    "h1": "Kenapa rating soal Anda tidak terbawa ke partai",
+    "description": "Pahami kenapa kemampuan soal terasa berbeda dari partai nyata dan bagaimana penglihatan papan, ingatan, serta analisis menutup jaraknya.",
+    "primaryKeyword": "kenapa rating soal tidak terbawa ke partai",
+    "secondaryKeywords": [
+      "rating soal versus rating catur",
+      "taktik tidak terbawa ke partai",
+      "kemampuan soal dalam partai nyata",
+      "kenapa saya lebih baik di soal",
+      "penglihatan papan dalam catur"
+    ],
+    "painPoint": "Anda mengerjakan soal dengan baik tetapi tetap melewatkan taktik dalam partai nyata.",
+    "ctaLabel": "Berlatih untuk partai nyata",
+    "quickAnswer": "Soal memberi tahu bahwa taktiknya ada. Partai tidak. Anda harus menyadari bahayanya, mengingat papan, dan tahu kapan harus melambat.",
+    "keyTakeaways": [
+      "Soal memberi tahu bahwa ada masalah untuk dipecahkan.",
+      "Dalam partai, Anda sendiri yang harus menemukan momen berbahaya.",
+      "Penglihatan papan dan ingatan yang lebih baik membuat taktik terlihat lebih cepat."
+    ],
+    "whoThisIsFor": [
+      "Pemain dengan rating soal tinggi tetapi rating partai stagnan.",
+      "Pemula yang melihat taktik setelah partai, bukan saat bermain.",
+      "Siapa pun yang tidak bisa memakai ide soal dalam partai nyata."
+    ],
+    "timeToRead": "8 menit membaca",
+    "introParagraphs": [
+      "Ini masalah umum pemula. Anda memecahkan soal, tetapi partai nyata masih berisi bidak yang hilang, ancaman terlewat, dan langkah tergesa.",
+      "Menambah soal belum tentu memperbaikinya. Anda juga perlu menyadari kapan posisi menjadi berbahaya dan membayangkan apa yang terjadi setelah tiap pilihan."
+    ],
+    "startHereTitle": "Mulai dengan menghubungkan soal dan partai",
+    "startHereSteps": [
+      "Sebelum mengerjakan soal, luangkan 2 menit memindai papan untuk sekak, tangkapan, dan ancaman.",
+      "Tambahkan satu ronde Memory Chess agar gambaran papan tetap stabil di bawah tekanan.",
+      "Setelah satu soal, tanyakan sinyal apa yang seharusnya membuat Anda melambat dalam partai.",
+      "Tinjau satu blunder terbaru dan bandingkan dengan soal taktis serupa.",
+      "Mainkan minimal satu partai rapid tiap sesi untuk menguji apakah pemindaian sebelum langkah bertahan."
+    ],
+    "drillSectionTitle": "Latihan yang menghubungkan soal dan partai",
+    "drillCards": [
+      {
+        "title": "Temukan tanda peringatan",
+        "description": "Cari tanda peringatannya sebelum mencoba menemukan taktiknya.",
+        "duration": "4 menit",
+        "goal": "Menyadari posisi berbahaya lebih cepat.",
+        "ctaLabel": "Latih sinyalnya dulu"
+      },
+      {
+        "title": "Ingat sebelum menghitung",
+        "description": "Mainkan satu ronde cepat Memory Chess sebelum soal agar papan terasa lebih jelas.",
+        "duration": "4 menit",
+        "goal": "Menghubungkan latihan pola dengan permainan nyata.",
+        "ctaLabel": "Tajamkan ingatan dulu"
+      },
+      {
+        "title": "Ulang posisi dari partai",
+        "description": "Bangun ulang momen taktis yang terlewat dari partai Anda dan pecahkan seperti soal.",
+        "duration": "6 menit",
+        "goal": "Membuat latihan taktik terasa seperti posisi nyata lagi.",
+        "ctaLabel": "Ulangi taktik yang terlewat"
+      }
+    ],
+    "comparisonTitle": "Soal dan partai: apa bedanya?",
+    "comparisonSummary": "Langkah taktisnya bisa sama persis, tetapi tugas mentalnya tidak.",
+    "comparisonRows": [
+      {
+        "label": "Kerangka masalah",
+        "struggling": "Partai tidak memberi tahu bahwa ada taktik.",
+        "stronger": "Anda menyadari sinyal bahwa ketegangan baru saja berubah."
+      },
+      {
+        "label": "Kejelasan papan",
+        "struggling": "Variasi mengabur begitu beberapa bidak bergerak.",
+        "stronger": "Anda menahan petak penting dan pelindung dalam ingatan."
+      },
+      {
+        "label": "Waktu keputusan",
+        "struggling": "Anda melangkah dengan kecepatan biasa saat posisi berbahaya.",
+        "stronger": "Anda melambat saat muncul sekak, tangkapan, atau ancaman."
+      }
+    ],
+    "mistakes": [
+      "Mengerjakan soal tanpa langkah pengalihan ke partai.",
+      "Menganggap pengetahuan taktik saja mencegah blunder.",
+      "Tidak pernah meninjau kenapa sebuah posisi menjadi berbahaya.",
+      "Menganggap penglihatan papan terpisah dari taktik."
+    ],
+    "mistakesCallout": "Jangan hanya menambah soal. Latih juga menyadari momen taktis dalam partai Anda sendiri.",
+    "planTitle": "Blok pengalihan 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "12 menit",
+        "detail": "Tambahkan kebiasaan memikirkan sinyal sebelum solusi pada tiap sesi soal."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "12 menit",
+        "detail": "Mainkan satu ronde singkat Memory Chess sebelum soal atau partai rapid."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "15 menit",
+        "detail": "Ulangi tiga momen taktis yang terlewat dari partai Anda sendiri."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 sampai 20 menit",
+        "detail": "Mainkan rapid dan hentikan diri Anda setiap kali posisi menjadi memaksa atau tegang secara taktis."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kenapa saya lebih baik di soal daripada di partai?",
+        "answer": "Karena soal sudah memberi tahu bahwa ada taktik yang harus dicari. Partai nyata tidak."
+      },
+      {
+        "question": "Haruskah saya berhenti mengerjakan soal?",
+        "answer": "Tidak. Pertahankan, tetapi tambahkan penglihatan papan, ingatan, dan pengulangan posisi partai agar polanya terbawa."
+      },
+      {
+        "question": "Apa latihan pengalihan terbaik?",
+        "answer": "Mengulang taktik yang terlewat dari partai Anda dan memecahkannya setelah membangun ulang posisi dari ingatan."
+      },
+      {
+        "question": "Bagaimana mengukur pengalihannya?",
+        "answer": "Lihat apakah blunder per partai dan taktik sederhana yang terlewat menurun, bukan hanya apakah rating soal naik."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Gunakan ini untuk menyusun daftar antiblunder yang lebih pendek."
+      },
+      {
+        "reason": "Perkuat kebiasaan memindai yang membuat taktik terlihat."
+      },
+      {
+        "reason": "Pilih jumlah soal yang menyisakan waktu untuk bermain."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Cara melihat seluruh papan dalam catur",
+    "h1": "Cara melihat seluruh papan catur",
+    "description": "Gunakan pemindaian sederhana untuk menyadari bidak jauh, melihat ancaman, dan menghindari penglihatan sempit.",
+    "primaryKeyword": "melihat seluruh papan dalam catur",
+    "secondaryKeywords": [
+      "kesadaran papan catur",
+      "menghindari penglihatan sempit",
+      "melihat seluruh papan",
+      "latihan pemindaian catur",
+      "penglihatan tepi papan"
+    ],
+    "painPoint": "Anda fokus pada satu area dan melewatkan ancaman di tempat lain.",
+    "ctaLabel": "Latih penglihatan seluruh papan",
+    "quickAnswer": "Sebelum tiap langkah, periksa kedua raja, bidak tak terlindungi, pusat, dan tepi. Latihan ingatan membantu menahan lebih banyak bagian papan dalam pikiran.",
+    "keyTakeaways": [
+      "Penglihatan sempit berarti perhatian tersangkut di satu area.",
+      "Memeriksa bidak di tepi sangat berguna bagi pemula.",
+      "Ingatan papan yang jelas membuat pemindaian lebih ringan."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang hanya menyadari taktik di satu sisi papan.",
+      "Pemula yang sering melewatkan gajah, benteng, atau ancaman jauh.",
+      "Siapa pun yang merasa sempit dalam posisi terbuka."
+    ],
+    "timeToRead": "7 menit membaca",
+    "introParagraphs": [
+      "Banyak pemula hanya melihat bidak di sekitar langkah yang direncanakan. Akibatnya gajah, benteng, dan ancaman jauh mudah terlewat.",
+      "Anda tidak perlu menatap papan lebih lama. Gunakan pemindaian sederhana yang sama untuk memeriksa tiap area penting."
+    ],
+    "startHereTitle": "Mulai di sini: perlebar pemindaian",
+    "startHereSteps": [
+      "Periksa kedua raja dan garis yang mengarah ke sana.",
+      "Cari bidak tak terlindungi lebih dulu di pusat, lalu di tepi.",
+      "Telusuri gajah dan benteng di sepanjang garisnya, bukan hanya petak yang Anda incar.",
+      "Jalankan satu ronde Memory Chess agar seluruh papan lebih mudah ditahan dalam perhatian.",
+      "Sebelum melangkah, tanyakan bagian papan mana yang belum Anda lihat."
+    ],
+    "drillSectionTitle": "Latihan melawan penglihatan sempit",
+    "drillCards": [
+      {
+        "title": "Sapuan bidak tepi",
+        "description": "Periksa bidak di sudut dan tepi sebelum tiap langkah.",
+        "duration": "3 menit",
+        "goal": "Menangkap ancaman di luar area fokus Anda.",
+        "ctaLabel": "Sapu bagian tepi"
+      },
+      {
+        "title": "Telusuri garis pandang",
+        "description": "Telusuri tiap garis gajah dan benteng sepenuhnya, bukan hanya satu petak sasaran.",
+        "duration": "4 menit",
+        "goal": "Memeriksa lebih banyak papan pada tiap pemindaian.",
+        "ctaLabel": "Telusuri garis penuh"
+      },
+      {
+        "title": "Ingatan seluruh papan",
+        "description": "Gunakan Memory Chess dengan jumlah bidak sedang lalu sebutkan papan per zona.",
+        "duration": "5 menit",
+        "goal": "Mengingat lebih banyak bagian papan sekaligus.",
+        "ctaLabel": "Ingat per zona"
+      }
+    ],
+    "comparisonTitle": "Penglihatan sempit dan kesadaran seluruh papan",
+    "comparisonSummary": "Anda tidak perlu melihat semua tempat sama lama. Pastikan saja tidak ada yang penting terlewat.",
+    "comparisonRows": [
+      {
+        "label": "Jalur perhatian",
+        "struggling": "Anda menatap satu kelompok bidak.",
+        "stronger": "Anda menyentuh area berisiko dalam urutan yang konsisten."
+      },
+      {
+        "label": "Bidak jarak jauh",
+        "struggling": "Anda melupakan gajah dan benteng yang jauh dari keramaian.",
+        "stronger": "Anda memindai garis penuhnya sebelum memercayai sebuah langkah."
+      },
+      {
+        "label": "Zona papan",
+        "struggling": "Anda melewati sisi yang terasa tenang.",
+        "stronger": "Anda memeriksa sisi yang tenang sebelum melangkah."
+      }
+    ],
+    "mistakes": [
+      "Mengira penglihatan seluruh papan berarti melihat lebih lama, bukan memindai lebih baik.",
+      "Mengabaikan tepi karena pusat terasa lebih mendesak.",
+      "Tidak menelusuri garis bidak jarak jauh sepenuhnya.",
+      "Mencoba memindai lebih luas sebelum bisa mengingat bidak dengan jelas."
+    ],
+    "mistakesCallout": "Waktu berpikir tambahan tidak membantu tanpa pemindaian yang jelas. Periksa papan dengan urutan yang sama setiap kali.",
+    "planTitle": "Rencana pemindaian seluruh papan 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "10 menit",
+        "detail": "Hanya pemeriksaan raja, bidak tak terlindungi, dan sapuan bidak tepi."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "12 menit",
+        "detail": "Tambahkan penelusuran penuh garis gajah dan benteng."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "12 menit",
+        "detail": "Gunakan Memory Chess dan ingat papan per zona alih-alih acak."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 menit",
+        "detail": "Bawa pemindaian ke partai rapid dan catat zona mana yang menyebabkan kelalaian saat terjadi blunder."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kenapa saya terus melewatkan bidak di seberang papan?",
+        "answer": "Karena perhatian Anda terlalu lokal. Urutan pemindaian yang tetap lebih andal daripada berharap semuanya terlihat sendiri."
+      },
+      {
+        "question": "Apakah Memory Chess membantu kesadaran seluruh papan?",
+        "answer": "Ya. Ia melatih Anda menahan lebih banyak bagian papan dalam ingatan, bukan hanya titik panas taktis."
+      },
+      {
+        "question": "Perlukah memeriksa tepi tiap langkah?",
+        "answer": "Perlu, terutama sebagai pemula. Banyak blunder murah bersembunyi di bidak tepi dan garis panjang."
+      },
+      {
+        "question": "Bagaimana tahu pemindaian membaik?",
+        "answer": "Anda lebih jarang melewatkan ancaman jauh dan tidak sering terkejut oleh gajah, benteng, dan serangan terbuka."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Padukan kesadaran seluruh papan dengan daftar keamanan yang lebih kuat."
+      },
+      {
+        "reason": "Perbaiki papan mental agar pemindaian luas terasa lebih ringan."
+      },
+      {
+        "reason": "Kenali petak lebih cepat agar pemindaian luas tidak melelahkan."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Latihan koordinat untuk kesadaran papan yang lebih cepat",
+    "h1": "Latihan koordinat catur untuk pemula",
+    "description": "Pelajari nama petak lebih cepat dan permudah pemindaian, notasi, serta visualisasi.",
+    "primaryKeyword": "latihan koordinat catur",
+    "secondaryKeywords": [
+      "latihan notasi catur",
+      "belajar koordinat catur",
+      "mengenali petak lebih cepat",
+      "kesadaran petak papan",
+      "latihan menyebut nama petak"
+    ],
+    "painPoint": "Anda butuh waktu untuk menentukan nama petak atau sering tertukar.",
+    "ctaLabel": "Latih nama petak",
+    "quickAnswer": "Koordinat adalah nama dari 64 petak. Menguasainya mempermudah pemindaian papan, membayangkan langkah, dan meninjau partai.",
+    "keyTakeaways": [
+      "Mengenali petak dengan cepat mempermudah pemindaian.",
+      "Latih koordinat dengan posisi nyata.",
+      "Untuk memulai, nama petak dasar sudah cukup."
+    ],
+    "whoThisIsFor": [
+      "Pemula yang masih lambat menghitung lajur dan baris.",
+      "Pemain yang ingin pemindaian dan visualisasi lebih cepat.",
+      "Siapa pun yang menganggap notasi catur membingungkan."
+    ],
+    "timeToRead": "7 menit membaca",
+    "introParagraphs": [
+      "Koordinat berguna lebih dari sekadar buku dan daftar langkah. Mengenali petak dengan cepat membantu penglihatan papan, ingatan, dan tinjauan partai.",
+      "Saat Anda tahu nama petaknya, papan berubah menjadi peta yang jelas alih-alih kumpulan area samar."
+    ],
+    "startHereTitle": "Mulai dari nama petak di papan nyata",
+    "startHereSteps": [
+      "Pilih satu lajur atau baris dan sebutkan nama petaknya dengan suara keras.",
+      "Sebutkan petak tiap bidak saat Anda membangun ulang posisi Memory Chess.",
+      "Ambil satu posisi terbaru dan sebut penyerang serta pelindung utama berdasarkan petak.",
+      "Latih gajah, benteng, dan lompatan kuda lewat koordinat, bukan hanya dengan melihat.",
+      "Akhiri dengan pemindaian cepat yang menyebut tiap bidak tak terlindungi berdasarkan petak."
+    ],
+    "drillSectionTitle": "Latihan koordinat yang berguna dalam permainan",
+    "drillCards": [
+      {
+        "title": "Sebut bidak dan petak",
+        "description": "Bangun ulang papan dan sebut tiap bidak lengkap dengan petaknya.",
+        "duration": "4 menit",
+        "goal": "Menghubungkan nama petak dengan bidak yang harus diingat.",
+        "ctaLabel": "Sebut tiap petak"
+      },
+      {
+        "title": "Sebut garis panjang",
+        "description": "Telusuri garis gajah dan benteng lalu sebutkan petak yang dipengaruhinya.",
+        "duration": "4 menit",
+        "goal": "Membuat koordinat berguna saat memindai seluruh papan.",
+        "ctaLabel": "Telusuri garis per petak"
+      },
+      {
+        "title": "Peta lompatan kuda",
+        "description": "Pilih satu petak kuda dan sebutkan semua petak tujuan yang sah dengan cepat.",
+        "duration": "3 menit",
+        "goal": "Mengenali langkah kuda dan petak sasaran lebih cepat.",
+        "ctaLabel": "Petakan lompatannya"
+      }
+    ],
+    "comparisonTitle": "Mengenali petak dengan lambat dan cepat",
+    "comparisonSummary": "Koordinat tidak memperbaiki semua bagian permainan Anda, tetapi mempermudah beberapa keterampilan.",
+    "comparisonRows": [
+      {
+        "label": "Pemindaian papan",
+        "struggling": "Anda mengenali bentuknya tetapi tidak nama petaknya.",
+        "stronger": "Anda menunjuk ancaman dan pelindung lebih tepat dan cepat."
+      },
+      {
+        "label": "Visualisasi",
+        "struggling": "Langkah bayangan terasa samar.",
+        "stronger": "Posisi hasilnya lebih mudah dijelaskan dan ditahan."
+      },
+      {
+        "label": "Tinjauan",
+        "struggling": "Catatan setelah partai tetap kabur.",
+        "stronger": "Anda menggambarkan momen kunci cukup jelas untuk dipelajari nanti."
+      }
+    ],
+    "mistakes": [
+      "Melatih nama petak tanpa posisi nyata.",
+      "Menghafal aturan notasi tanpa contoh di papan.",
+      "Mengabaikan garis bidak jarak jauh saat melatih nama petak.",
+      "Meninggalkan kebiasaan ini begitu notasi dasar terasa akrab."
+    ],
+    "mistakesCallout": "Jangan hanya mengulang nama petak. Gunakan bersama bidak dan posisi nyata.",
+    "planTitle": "Pemanasan koordinat 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "8 menit",
+        "detail": "Sebut tiap bidak dan petaknya saat membangun ulang posisi Memory Chess."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "10 menit",
+        "detail": "Tambahkan penyebutan garis panjang untuk gajah dan benteng."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "10 menit",
+        "detail": "Latih peta lompatan kuda dan kelancaran pada petak-petak pusat."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "12 menit",
+        "detail": "Gunakan nama petak saat memindai seluruh papan, lalu tinjau satu posisi penting hanya dengan nama petak."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Apakah koordinat benar-benar penting bagi pemula?",
+        "answer": "Penting bila mempercepat kesadaran papan, visualisasi, dan tinjauan. Notasi sempurna tidak wajib, tetapi pengenalan cepat membantu."
+      },
+      {
+        "question": "Apa cara terbaik mempelajari koordinat?",
+        "answer": "Pelajari nama petak lewat posisi dan bidak nyata alih-alih mengulang notasi saja."
+      },
+      {
+        "question": "Apakah ini membantu saya berhenti blunder?",
+        "answer": "Secara tidak langsung, ya. Pengenalan petak yang cepat membuat pemindaian dan pemeriksaan ancaman lebih tepat."
+      },
+      {
+        "question": "Berapa lama melatih koordinat?",
+        "answer": "Lima sampai sepuluh menit yang fokus sudah cukup bila latihannya terkait dengan kerja nyata di papan."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Gunakan koordinat untuk menopang pemindaian yang lebih luas."
+      },
+      {
+        "reason": "Buat pembaruan di kepala lebih tepat petak demi petak."
+      },
+      {
+        "reason": "Pakai penyebutan petak untuk menyederhanakan berpikir di bawah tekanan."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Rencana catur harian 20 menit untuk pemula",
+    "h1": "Rencana catur harian 20 menit untuk pemula",
+    "description": "Ikuti rencana 20 menit yang sederhana: kerja papan, ingatan, partai, dan tinjauan singkat.",
+    "primaryKeyword": "rencana catur harian 20 menit",
+    "secondaryKeywords": [
+      "rutinitas catur harian pemula",
+      "rencana belajar catur singkat",
+      "berkembang dalam 20 menit sehari",
+      "program latihan pemula",
+      "rutinitas soal dan tinjauan"
+    ],
+    "painPoint": "Anda ingin berkembang, tetapi kebanyakan rencana catur memakan terlalu banyak waktu.",
+    "ctaLabel": "Mulai rencana 20 menit",
+    "quickAnswer": "Berikan beberapa menit untuk rasa papan, ingatan, taktik, dan tinjauan. Jaga rutinitasnya cukup singkat agar tetap bisa dijalani saat lelah.",
+    "keyTakeaways": [
+      "Berlatih sering lebih penting daripada berlatih lama.",
+      "Gunakan latihan sekaligus posisi nyata.",
+      "Tinjauan singkat membantu latihan besok."
+    ],
+    "whoThisIsFor": [
+      "Pemula dengan waktu sedikit tetapi motivasi tetap.",
+      "Pemain yang menyerah pada rencana yang terlalu berat.",
+      "Siapa pun yang ingin rutinitas harian yang bisa diulang."
+    ],
+    "timeToRead": "7 menit membaca",
+    "introParagraphs": [
+      "Banyak rencana belajar hanya berjalan bila waktu luang berlimpah. Rencana yang berguna harus tetap jalan di hari yang padat.",
+      "Rutinitas 20 menit ini mempertahankan satu latihan, satu posisi nyata, dan satu tinjauan singkat."
+    ],
+    "startHereTitle": "Rutinitas catur 20 menit Anda",
+    "startHereSteps": [
+      "Luangkan 4 menit untuk latihan rasa papan atau ingatan.",
+      "Luangkan 6 menit untuk satu ronde Memory Chess dengan pengaturan sama sepanjang minggu.",
+      "Luangkan 6 menit untuk taktik atau posisi dari partai nyata.",
+      "Luangkan 4 menit untuk menulis apa yang gagal hari ini dan apa yang bertahan.",
+      "Pertahankan struktur ini minimal 7 hari sebelum menyesuaikannya."
+    ],
+    "drillSectionTitle": "Latihan yang muat dalam rencana singkat",
+    "drillCards": [
+      {
+        "title": "Pemanasan dengan ingatan",
+        "description": "Gunakan satu ronde singkat Memory Chess sebagai penambat seluruh sesi.",
+        "duration": "6 menit",
+        "goal": "Memulai tiap sesi dengan pemanasan ingatan yang sama.",
+        "ctaLabel": "Mulai pemanasan"
+      },
+      {
+        "title": "Sprint pemeriksaan ancaman",
+        "description": "Pindai posisi untuk sekak, tangkapan, ancaman, dan bidak tak terlindungi.",
+        "duration": "4 menit",
+        "goal": "Meningkatkan pengalihan ke partai hampir tanpa biaya waktu.",
+        "ctaLabel": "Lakukan pemeriksaan ancaman"
+      },
+      {
+        "title": "Putaran catatan",
+        "description": "Tulis satu kalimat tentang jenis kesalahan yang Anda buat hari ini.",
+        "duration": "4 menit",
+        "goal": "Memakai pelajaran hari ini besok.",
+        "ctaLabel": "Catat satu pelajaran"
+      }
+    ],
+    "comparisonTitle": "Rutinitas yang benar-benar Anda jalani",
+    "comparisonSummary": "Rutinitas terbaik adalah yang bisa Anda ulang dalam minggu biasa.",
+    "comparisonRows": [
+      {
+        "label": "Beban harian",
+        "struggling": "Anda mencoba terlalu banyak bentuk belajar sekaligus.",
+        "stronger": "Anda mengulang satu putaran ringkas yang menutup dasar setiap hari."
+      },
+      {
+        "label": "Pengalihan ke partai",
+        "struggling": "Anda hanya menonton atau membaca tanpa berlatih.",
+        "stronger": "Tiap sesi berisi latihan yang Anda pakai dalam partai."
+      },
+      {
+        "label": "Tinjauan",
+        "struggling": "Kesalahan hilang karena tidak ada yang dicatat.",
+        "stronger": "Tiap hari berakhir dengan catatan untuk besok."
+      }
+    ],
+    "mistakes": [
+      "Menyalin rencana tingkat lanjut yang tidak bisa dijalani.",
+      "Memakai seluruh 20 menit untuk materi pasif.",
+      "Mengganti rutinitas tiap dua hari.",
+      "Melewatkan tinjauan karena terasa kecil."
+    ],
+    "mistakesCallout": "Jangan membesarkan rencananya. Buat cukup ringan untuk diulang.",
+    "planTitle": "Rutinitas 20 menit selama 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 3",
+        "duration": "20 menit",
+        "detail": "Demi konsistensi, pertahankan pengaturan Memory Chess dan format pemeriksaan yang sama."
+      },
+      {
+        "label": "Hari 4",
+        "duration": "20 menit",
+        "detail": "Baca catatan Anda dan simpan hanya satu poin perbaikan untuk tiga hari berikutnya."
+      },
+      {
+        "label": "Hari 5 sampai 6",
+        "duration": "20 menit",
+        "detail": "Ulangi struktur yang persis sama tanpa variasi tambahan."
+      },
+      {
+        "label": "Hari 7",
+        "duration": "20 menit",
+        "detail": "Periksa apakah blunder atau akurasi ingatan membaik dan lakukan hanya satu penyesuaian untuk minggu depan."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Apakah 20 menit latihan cukup?",
+        "answer": "Cukup, bila rutin dan berisi latihan yang langsung terbawa ke partai, bukan hanya belajar pasif."
+      },
+      {
+        "question": "Perlukah 20 menit itu semuanya untuk taktik?",
+        "answer": "Biasanya tidak. Campuran kejelasan papan, pengalihan taktis, dan tinjauan singkat lebih cocok untuk pemula."
+      },
+      {
+        "question": "Berapa lama mempertahankan rencana yang sama?",
+        "answer": "Minimal satu minggu. Terus berganti membuat kemajuan sulit dibaca."
+      },
+      {
+        "question": "Apa yang perlu saya catat?",
+        "answer": "Blunder per partai, akurasi ingatan, dan jenis kesalahan yang paling sering muncul."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Lihat posisi rutinitas singkat ini dalam rencana yang lebih panjang."
+      },
+      {
+        "reason": "Seimbangkan latihan taktik dan kejelasan papan."
+      },
+      {
+        "reason": "Jaga blok tinjauan tetap sederhana dan produktif."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Cara pemula menganalisis partai catur sendiri",
+    "h1": "Cara pemula menganalisis partai catur sendiri",
+    "description": "Tinjau partai Anda, pahami kesalahannya, dan pilih satu hal jelas untuk dilatih.",
+    "primaryKeyword": "analisis partai catur untuk pemula",
+    "secondaryKeywords": [
+      "analisis partai bagi pemula",
+      "meninjau partai sendiri",
+      "analisis diri dalam catur",
+      "menganalisis blunder",
+      "rutinitas setelah partai"
+    ],
+    "painPoint": "Analisis Anda terlalu cepat, berantakan, atau penuh variasi mesin.",
+    "ctaLabel": "Tinjau partai berikutnya",
+    "quickAnswer": "Temukan di mana partai berbalik, sebutkan jenis kesalahannya, dan pilih satu perbaikan. Buka mesin hanya setelah Anda memeriksa posisinya sendiri.",
+    "keyTakeaways": [
+      "Akhiri tiap tinjauan dengan tindakan, bukan daftar panjang langkah mesin.",
+      "Menamai jenis kesalahan membantu memilih latihan.",
+      "Coba bangun ulang posisi kunci dari ingatan."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang meninjau partai tetapi tidak tahu langkah selanjutnya.",
+      "Pemula yang melihat evaluasi melonjak tanpa paham sebabnya.",
+      "Siapa pun yang ingin kebiasaan setelah partai yang lebih sederhana."
+    ],
+    "timeToRead": "7 menit membaca",
+    "introParagraphs": [
+      "Mulai dari satu pertanyaan: kesalahan mana yang mengubah partai? Evaluasi mesin saja tidak menjelaskan apa yang perlu dilatih.",
+      "Bangun ulang posisi kunci, sebutkan kesalahannya, dan tentukan latihan besok dari situ."
+    ],
+    "startHereTitle": "Mulai di sini: putaran tinjauan untuk pemula",
+    "startHereSteps": [
+      "Temukan momen pertama saat posisi berubah drastis.",
+      "Bangun ulang posisi itu dari ingatan sebelum membuka mesin.",
+      "Golongkan kesalahannya sebagai penglihatan, ingatan, perhitungan, atau pengelolaan waktu.",
+      "Tanyakan sinyal apa yang seharusnya membuat Anda melambat.",
+      "Ubah jawabannya menjadi latihan untuk sesi berikutnya."
+    ],
+    "drillSectionTitle": "Latihan tinjauan yang sederhana",
+    "drillCards": [
+      {
+        "title": "Bangun ulang posisi kunci",
+        "description": "Bangun ulang posisi blunder utama dari ingatan sebelum memeriksanya.",
+        "duration": "5 menit",
+        "goal": "Mengingat posisinya sebelum melihat jawabannya.",
+        "ctaLabel": "Bangun ulang momen itu"
+      },
+      {
+        "title": "Tandai jenis kesalahan",
+        "description": "Tandai tiap kesalahan besar sebagai penglihatan, ingatan, perhitungan, atau kekurangan waktu.",
+        "duration": "3 menit",
+        "goal": "Tahu apa yang harus dilatih berikutnya.",
+        "ctaLabel": "Tandai jenis kesalahan"
+      },
+      {
+        "title": "Tinjauan satu perbaikan",
+        "description": "Akhiri tinjauan dengan satu perbaikan yang jelas untuk besok.",
+        "duration": "2 menit",
+        "goal": "Menutup dengan langkah berikutnya yang berguna.",
+        "ctaLabel": "Pilih satu perbaikan"
+      }
+    ],
+    "comparisonTitle": "Tinjauan yang berguna dan yang sia-sia",
+    "comparisonSummary": "Anda tidak perlu mempelajari tiap langkah. Cari pelajaran paling jelas untuk latihan berikutnya.",
+    "comparisonRows": [
+      {
+        "label": "Penggunaan mesin",
+        "struggling": "Anda langsung membuka mesin.",
+        "stronger": "Anda membuat diagnosis sendiri sebelum memeriksanya."
+      },
+      {
+        "label": "Hasil",
+        "struggling": "Anda berakhir dengan banyak komentar tanpa tindakan.",
+        "stronger": "Anda berakhir dengan satu latihan atau satu penyesuaian daftar."
+      },
+      {
+        "label": "Ingatan",
+        "struggling": "Posisinya hilang begitu partai selesai.",
+        "stronger": "Anda membangunnya ulang dan melihat kesalahannya lebih jelas."
+      }
+    ],
+    "mistakes": [
+      "Menganalisis hanya dengan variasi mesin tanpa diagnosis sendiri.",
+      "Mencoba menganalisis tiap langkah dengan kedalaman yang sama.",
+      "Tidak menamai jenis kesalahannya.",
+      "Mengakhiri tinjauan tanpa memilih latihan berikutnya."
+    ],
+    "mistakesCallout": "Jangan menelusuri tiap variasi mesin. Sebutkan kesalahannya dan latih perbaikannya.",
+    "planTitle": "Kebiasaan tinjauan 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "10 menit",
+        "detail": "Tinjau satu partai dan temukan hanya titik balik besar pertama."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "12 menit",
+        "detail": "Bangun ulang posisi itu dari ingatan sebelum membuka mesin."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "12 menit",
+        "detail": "Golongkan tiap kesalahan besar ke satu jenis dan hitung mana yang paling sering."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 menit",
+        "detail": "Pilih latihan pertama sesi berikutnya berdasarkan jenis kesalahan yang paling sering."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Apakah pemula sebaiknya memakai mesin?",
+        "answer": "Ya, tetapi setelah mencoba diagnosis sendiri. Kalau tidak, tinjauannya menjadi pasif."
+      },
+      {
+        "question": "Berapa kesalahan yang ditinjau setelah partai?",
+        "answer": "Satu sampai tiga titik balik besar sudah cukup bagi kebanyakan pemula."
+      },
+      {
+        "question": "Apa yang dicatat setelah tinjauan?",
+        "answer": "Jenis kesalahan, sinyal yang terlewat, dan satu latihan atau penyesuaian daftar untuk lain kali."
+      },
+      {
+        "question": "Bagaimana Memory Chess membantu tinjauan?",
+        "answer": "Ia membantu Anda membangun ulang posisi penting sehingga tinjauan menjadi lebih tepat."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Tempatkan tinjauan dalam rutinitas yang tidak memberatkan."
+      },
+      {
+        "reason": "Ubah hasil tinjauan menjadi latihan antiblunder."
+      },
+      {
+        "reason": "Ingat dan bangun ulang momen kunci setelah partai."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Berapa soal catur sehari untuk pemula?",
+    "h1": "Berapa soal catur yang perlu dikerjakan pemula tiap hari?",
+    "description": "Pilih jumlah soal harian yang menajamkan taktik dan menyisakan waktu untuk ingatan, partai, dan tinjauan.",
+    "primaryKeyword": "berapa soal catur sehari",
+    "secondaryKeywords": [
+      "jumlah soal harian",
+      "rutinitas soal untuk pemula",
+      "berapa banyak taktik per hari",
+      "terlalu banyak soal catur",
+      "porsi taktik pemula"
+    ],
+    "painPoint": "Anda mengerjakan banyak soal tetapi tidak tahu apakah itu membantu partai Anda.",
+    "ctaLabel": "Seimbangkan soal dan permainan",
+    "quickAnswer": "Bagi kebanyakan pemula, satu sesi harian yang singkat sudah cukup. Berhentilah selagi pikiran masih jernih dan sisakan waktu untuk partai, ingatan, dan tinjauan.",
+    "keyTakeaways": [
+      "Kualitas soal lebih penting daripada jumlahnya.",
+      "Terlalu banyak soal memakan waktu untuk partai dan tinjauan.",
+      "Jumlah ideal Anda harus menyisakan waktu untuk bermain atau meninjau."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang seluruh rencana belajarnya hanya soal.",
+      "Pemula yang ingin rutinitas soal yang jelas.",
+      "Siapa pun yang ingin menyeimbangkan soal dan praktik bermain."
+    ],
+    "timeToRead": "7 menit membaca",
+    "introParagraphs": [
+      "Tidak ada angka sempurna untuk semua orang. Terlalu sedikit soal memperlambat pembelajaran pola, terlalu banyak tidak menyisakan waktu untuk hal berguna lainnya.",
+      "Kerjakan secukupnya agar tetap tajam dan pakai sisa waktunya untuk ingatan papan, partai, dan tinjauan."
+    ],
+    "startHereTitle": "Pilih jumlah harian yang masuk akal",
+    "startHereSteps": [
+      "Tentukan apakah soal adalah pemanasan, blok utama, atau pemeriksaan pengalihan Anda.",
+      "Sisipkan satu ronde singkat Memory Chess sebelum atau sesudahnya demi kejelasan papan.",
+      "Berhentilah saat jawaban Anda mulai tergesa alih-alih mengejar angka lebih besar.",
+      "Setiap hari bangun ulang satu momen taktis yang terlewat dari partai nyata.",
+      "Ubah jumlahnya hanya setelah memeriksa apakah kesalahan dalam partai berubah."
+    ],
+    "drillSectionTitle": "Latihan yang membuat soal lebih berguna",
+    "drillCards": [
+      {
+        "title": "Pemanasan plus ingatan",
+        "description": "Gabungkan latihan ingatan singkat dengan blok soal secukupnya alih-alih memulai dingin.",
+        "duration": "10 menit",
+        "goal": "Menghubungkan latihan soal dengan permainan nyata.",
+        "ctaLabel": "Tambahkan ingatan"
+      },
+      {
+        "title": "Periksa sinyal tiap soal",
+        "description": "Sebelum melihat solusinya, tanyakan tanda peringatan apa yang memungkinkan taktik itu.",
+        "duration": "5 menit",
+        "goal": "Menyadari kenapa sebuah posisi mengandung taktik.",
+        "ctaLabel": "Periksa sinyalnya"
+      },
+      {
+        "title": "Bangun ulang taktik partai",
+        "description": "Ubah taktik yang terlewat dalam partai menjadi soal yang Anda pecahkan setelah membangun ulang posisinya.",
+        "duration": "5 menit",
+        "goal": "Memakai taktik dari partai Anda sendiri.",
+        "ctaLabel": "Bangun ulang taktiknya"
+      }
+    ],
+    "comparisonTitle": "Terlalu sedikit, terlalu banyak, dan pas",
+    "comparisonSummary": "Jumlah yang tepat menjaga taktik tetap tajam dan tetap menyisakan waktu bermain.",
+    "comparisonRows": [
+      {
+        "label": "Pengenalan pola",
+        "struggling": "Latihan terlalu sedikit membuat taktik umum terasa asing.",
+        "stronger": "Blok harian secukupnya menjaga pola tetap segar."
+      },
+      {
+        "label": "Pengalihan ke partai",
+        "struggling": "Terlalu banyak soal tidak menyisakan waktu untuk rasa papan atau tinjauan.",
+        "stronger": "Rutinitas Anda tetap memuat ingatan dan kerja posisi nyata."
+      },
+      {
+        "label": "Kelelahan",
+        "struggling": "Soal-soal belakangan berubah jadi tebakan tergesa.",
+        "stronger": "Anda berhenti selagi keputusan masih bersih."
+      }
+    ],
+    "mistakes": [
+      "Memakai jumlah soal sebagai satu-satunya ukuran kualitas.",
+      "Memecahkan taktik tanpa pengalihan ke partai.",
+      "Melanjutkan jauh setelah fokus menurun.",
+      "Menggeser waktu untuk tinjauan dan rasa papan."
+    ],
+    "mistakesCallout": "Lebih banyak soal tidak selalu lebih baik. Periksa apakah soal itu membantu partai nyata Anda.",
+    "planTitle": "Rencana keseimbangan 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "15 menit",
+        "detail": "Pakai blok soal kecil dan tambahkan latihan ingatan singkat sebelumnya."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "15 menit",
+        "detail": "Tambahkan pemeriksaan sinyal setelah tiap soal untuk melihat kenapa taktiknya ada."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "15 menit",
+        "detail": "Bangun ulang satu taktik yang terlewat dalam partai dan bandingkan dengan hasil Anda di soal."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 sampai 20 menit",
+        "detail": "Ubah jumlahnya hanya jika jawaban tetap cermat dan masih ada waktu untuk bermain."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Berapa soal per hari yang cukup bagi pemula?",
+        "answer": "Cukup untuk membuat taktik umum terasa akrab sambil menyisakan waktu untuk ingatan dan partai. Bagi banyak orang, satu sesi harian singkat sudah cukup."
+      },
+      {
+        "question": "Bisakah terlalu banyak soal merugikan?",
+        "answer": "Secara tidak langsung, ya. Soal bisa menggeser rasa papan, ingatan, dan tinjauan yang dibutuhkan untuk pengalihan nyata."
+      },
+      {
+        "question": "Soal sebelum atau sesudah partai?",
+        "answer": "Keduanya bisa, tetapi pemanasan kecil ditambah langkah pengalihan setelahnya sering bekerja baik."
+      },
+      {
+        "question": "Apa yang perlu saya catat?",
+        "answer": "Apakah blunder dan taktik sederhana yang terlewat menurun, bukan hanya berapa soal yang Anda kerjakan."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Pahami kenapa sukses di soal saja tidak cukup."
+      },
+      {
+        "reason": "Tempatkan soal dalam rutinitas singkat yang seimbang."
+      },
+      {
+        "reason": "Pelajari pola umum alih-alih menambah jumlah soal."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Latihan pengenalan pola dalam catur",
+    "h1": "Latihan pengenalan pola untuk pemula",
+    "description": "Gunakan latihan sederhana untuk menyadari pola catur umum dan melihat ide berguna lebih cepat.",
+    "primaryKeyword": "latihan pengenalan pola catur",
+    "secondaryKeywords": [
+      "pengenalan pola dalam catur",
+      "latihan motif taktis",
+      "latihan pola taktis",
+      "pola catur untuk pemula",
+      "mengingat motif catur"
+    ],
+    "painPoint": "Tiap posisi terasa baru, sehingga Anda melihat ide taktis terlalu lambat.",
+    "ctaLabel": "Latih pola",
+    "quickAnswer": "Pola adalah susunan bidak dan petak yang sudah akrab. Ulangi jenis pola yang sama sampai Anda cepat melihat ide di baliknya.",
+    "keyTakeaways": [
+      "Pola mencakup bentuk di papan sekaligus ide yang dihasilkannya.",
+      "Ingatan papan membantu Anda menyadari pola di bawah tekanan.",
+      "Ulangi beberapa pola umum sebelum menambah banyak pola baru."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang bisa memecahkan taktik tetapi tidak melihat bentuk serupa dalam partai.",
+      "Pemula yang ingin struktur lebih daripada soal acak.",
+      "Siapa pun yang masih merasa posisi terlihat berantakan."
+    ],
+    "timeToRead": "7 menit membaca",
+    "introParagraphs": [
+      "Pengenalan pola membuat posisi terasa akrab. Sebuah bentuk di papan bisa menandakan garpu, pin, bidak terjebak, atau petak lemah sebelum Anda mulai menghitung.",
+      "Mulailah dari kelompok kecil pola umum. Bangun ulang tiap posisi dari ingatan agar Anda menahan bidak dan petak yang menopang idenya."
+    ],
+    "startHereTitle": "Mulai dari satu pola dalam satu waktu",
+    "startHereSteps": [
+      "Pilih satu jenis pola, misalnya garpu, pin, atau serangan ke bidak tak terlindungi.",
+      "Pelajari bentuknya dan bangun ulang dari ingatan, bukan hanya dari diagram diam.",
+      "Sebutkan petak dan pelindung yang menopang pola itu.",
+      "Mainkan satu ronde Memory Chess untuk memantapkan ingatan yang bersih.",
+      "Tinjau satu partai terbaru dan temukan di mana pola serupa muncul atau justru hilang."
+    ],
+    "drillSectionTitle": "Latihan pengenalan pola yang sederhana",
+    "drillCards": [
+      {
+        "title": "Bangun ulang satu pola",
+        "description": "Bangun ulang sebuah pola catur dari ingatan dan sebutkan bidak serta petak kuncinya.",
+        "duration": "5 menit",
+        "goal": "Menghubungkan pola dengan ingatan papan yang jelas.",
+        "ctaLabel": "Bangun ulang polanya"
+      },
+      {
+        "title": "Ulangi satu keluarga",
+        "description": "Ulangi beberapa contoh pola yang sama sebelum berganti jenis.",
+        "duration": "5 menit",
+        "goal": "Membuat bentuk di papan terasa akrab.",
+        "ctaLabel": "Ulangi satu keluarga"
+      },
+      {
+        "title": "Temukan dalam partai Anda",
+        "description": "Telusuri satu partai terbaru dan temukan di mana pola yang sama muncul.",
+        "duration": "5 menit",
+        "goal": "Menghubungkan latihan pola dengan posisi nyata.",
+        "ctaLabel": "Cari dalam partai Anda"
+      }
+    ],
+    "comparisonTitle": "Taktik acak dan pengenalan pola yang sesungguhnya",
+    "comparisonSummary": "Pola berguna ketika Anda menyadarinya sebelum mulai menghitung panjang.",
+    "comparisonRows": [
+      {
+        "label": "Struktur latihan",
+        "struggling": "Anda terus berpindah antar pola yang tidak berhubungan.",
+        "stronger": "Anda mengulang satu jenis pola sampai terasa akrab."
+      },
+      {
+        "label": "Ingatan papan",
+        "struggling": "Anda tahu idenya tetapi tidak petak yang menopangnya.",
+        "stronger": "Anda mengingat detail yang membuat pola itu bekerja."
+      },
+      {
+        "label": "Partai nyata",
+        "struggling": "Pola tetap terkurung dalam soal.",
+        "stronger": "Anda menyadari tanda awalnya dalam partai yang sedang berjalan."
+      }
+    ],
+    "mistakes": [
+      "Hanya menghafal nama pola tanpa memahami bentuknya.",
+      "Terlalu sering berganti jenis pola.",
+      "Mengabaikan petak dan pelindung yang menopang pola.",
+      "Melewatkan tinjauan partai setelah latihan pola."
+    ],
+    "mistakesCallout": "Jangan menambah variasi terlalu cepat. Ulangi satu jenis pola sampai terasa akrab.",
+    "planTitle": "Rencana pola 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "10 menit",
+        "detail": "Pilih satu jenis pola dan bangun ulang beberapa contohnya dari ingatan."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "12 menit",
+        "detail": "Tambahkan nama petak dan penghitungan pelindung pada tiap contoh."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "12 menit",
+        "detail": "Mainkan satu ronde Memory Chess sebelum latihan pola agar papan terasa lebih jelas."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 menit",
+        "detail": "Telusuri partai terbaru Anda untuk pola yang sama dan catat di mana ia muncul atau nyaris muncul."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Apa itu pengenalan pola dalam catur?",
+        "answer": "Melihat bentuk yang akrab di papan dan cepat mengingat ide yang biasanya berhasil di sana."
+      },
+      {
+        "question": "Bagaimana pemula melatih pengenalan pola?",
+        "answer": "Dengan mengulang sekelompok kecil pola, membangun ulang posisinya dari ingatan, dan mencarinya dalam partai nyata."
+      },
+      {
+        "question": "Apakah soal saja cukup untuk pola?",
+        "answer": "Tidak selalu. Soal membantu, tetapi mengulang jenis yang sama dan meninjau partai membuatnya benar-benar terpakai."
+      },
+      {
+        "question": "Kenapa menggabungkan Memory Chess dengan latihan pola?",
+        "answer": "Karena mengenali pola lebih mudah saat seluruh papan tetap jelas dalam ingatan."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bangun lapisan ingatan yang lebih kuat untuk mempelajari pola."
+      },
+      {
+        "reason": "Seimbangkan latihan pola dengan jumlah soal yang wajar."
+      },
+      {
+        "reason": "Gunakan pola yang Anda pelajari dalam partai nyata."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Latihan perhitungan catur untuk pemula",
+    "h1": "Latihan perhitungan catur untuk pemula",
+    "description": "Latihan sederhana untuk membandingkan langkah dan mengikuti variasi pendek tanpa kehilangan jejak.",
+    "primaryKeyword": "latihan perhitungan catur",
+    "secondaryKeywords": [
+      "perhitungan catur untuk pemula",
+      "menghitung langkah ke depan",
+      "latihan menahan variasi",
+      "latihan langkah kandidat",
+      "visualisasi dan perhitungan"
+    ],
+    "painPoint": "Anda mulai menghitung lalu segera tertukar langkah atau kehilangan posisinya.",
+    "ctaLabel": "Latih perhitungan yang bersih",
+    "quickAnswer": "Pada awalnya bandingkan hanya satu atau dua langkah. Jaga papan tetap jelas dalam pikiran dan periksa segera.",
+    "keyTakeaways": [
+      "Dua variasi yang jelas lebih baik daripada lima yang membingungkan.",
+      "Visualisasi yang jelas menghasilkan perhitungan yang bersih.",
+      "Periksa segera setelah tiap latihan."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang tahu harus menghitung tetapi cepat kehilangan variasinya.",
+      "Pemula yang melangkah dengan naluri di posisi tajam.",
+      "Siapa pun yang ingin memakai latihan ingatan pada keputusan nyata."
+    ],
+    "timeToRead": "7 menit membaca",
+    "introParagraphs": [
+      "Menghitung sebenarnya hanya bertanya: «Kalau saya melangkah ke sini, apa yang terjadi?» Bagian sulitnya adalah menjaga papan tetap jelas.",
+      "Ingatan papan dan visualisasi membuat perhitungan lebih mudah. Latih keduanya bersama, bukan terpisah."
+    ],
+    "startHereTitle": "Mulai dengan dua langkah yang mungkin",
+    "startHereSteps": [
+      "Pilih paling banyak dua langkah kandidat dari sebuah posisi.",
+      "Bayangkan satu variasi sejauh dua setengah langkah dan rangkum dalam satu kalimat.",
+      "Jalankan satu ronde Memory Chess agar papan dasar tetap tajam.",
+      "Kembali ke posisi awal dan bandingkan kedua variasinya dengan tenang.",
+      "Periksa segera dan sebutkan apakah kesalahannya berasal dari gambaran papan atau urutan langkah."
+    ],
+    "drillSectionTitle": "Latihan perhitungan yang sederhana",
+    "drillCards": [
+      {
+        "title": "Bandingkan dua kandidat",
+        "description": "Tahan dua langkah yang masuk akal dan bandingkan akibat taktis singkatnya.",
+        "duration": "6 menit",
+        "goal": "Membandingkan langkah tanpa harus mengingat terlalu banyak.",
+        "ctaLabel": "Bandingkan dua variasi"
+      },
+      {
+        "title": "Ingat dulu, hitung kemudian",
+        "description": "Lakukan ronde ingatan singkat sebelum menghitung variasi agar papan lebih bersih.",
+        "duration": "4 menit",
+        "goal": "Menahan papan sebelum mengikuti rangkaian.",
+        "ctaLabel": "Ingat sebelum menghitung"
+      },
+      {
+        "title": "Variasi dalam satu kalimat",
+        "description": "Rangkum cabangnya dalam satu kalimat sebelum memeriksanya.",
+        "duration": "4 menit",
+        "goal": "Menjaga rangkaian tetap jelas dan mudah dijelaskan.",
+        "ctaLabel": "Rangkum cabangnya"
+      }
+    ],
+    "comparisonTitle": "Perhitungan berantakan dan perhitungan bersih",
+    "comparisonSummary": "Jangan kejar variasi panjang dulu. Buat variasi pendek menjadi akurat lebih dahulu.",
+    "comparisonRows": [
+      {
+        "label": "Langkah kandidat",
+        "struggling": "Anda mempertimbangkan terlalu banyak langkah sekaligus.",
+        "stronger": "Anda membandingkan beberapa langkah yang masuk akal."
+      },
+      {
+        "label": "Gambaran papan",
+        "struggling": "Posisi hasilnya cepat mengabur.",
+        "stronger": "Anda menahan petak kunci dan pelindung tetap stabil dalam ingatan."
+      },
+      {
+        "label": "Pemeriksaan",
+        "struggling": "Anda tidak tahu kenapa variasinya runtuh.",
+        "stronger": "Anda melihat apakah kesalahannya dari ingatan, urutan langkah, atau penilaian."
+      }
+    ],
+    "mistakes": [
+      "Mencoba menghitung terlalu banyak cabang sekaligus.",
+      "Melewatkan pemilihan kandidat dan menghitung segalanya.",
+      "Tidak memeriksa segera setelah variasi.",
+      "Mengabaikan ingatan papan yang lemah."
+    ],
+    "mistakesCallout": "Jangan menghitung jauh dulu. Variasi dua langkah yang jelas lebih berguna daripada yang panjang dan berantakan.",
+    "planTitle": "Rencana perhitungan 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "10 menit",
+        "detail": "Hanya perbandingan dua kandidat dengan pemeriksaan langsung."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "12 menit",
+        "detail": "Tambahkan satu ronde Memory Chess sebelum kerja perhitungan."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "12 menit",
+        "detail": "Rangkum tiap cabang dalam satu kalimat sebelum memeriksanya."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 menit",
+        "detail": "Bawa alurnya ke partai rapid: berhenti di titik tajam dan jaga jumlah kandidat tetap sedikit."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Bagaimana pemula memperbaiki perhitungannya?",
+        "answer": "Sedikit kandidat, pemeriksaan cepat, serta visualisasi dan ingatan yang lebih baik di bawah kerja variasi."
+      },
+      {
+        "question": "Perlukah saya menghitung lebih jauh?",
+        "answer": "Hanya setelah kedalaman saat ini dapat diandalkan. Ketepatan mengalahkan ambisi."
+      },
+      {
+        "question": "Kenapa variasi saya runtuh?",
+        "answer": "Sering karena gambaran papan belum cukup stabil atau terlalu banyak kandidat yang ditahan sekaligus."
+      },
+      {
+        "question": "Apakah Memory Chess membantu perhitungan?",
+        "answer": "Ya. Ingatan yang lebih baik membuat posisi yang muncul selama perhitungan jauh lebih mudah ditahan."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Perkuat lapisan yang menahan variasi di balik perhitungan."
+      },
+      {
+        "reason": "Lihat papan lebih jelas sebelum memperpanjang variasi."
+      },
+      {
+        "reason": "Gunakan alur keputusan yang lebih sederhana untuk perhitungan lebih bersih."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Cara berpikir dalam catur bagi pemula",
+    "h1": "Cara berpikir dalam catur bagi pemula",
+    "description": "Gunakan alur sederhana pada tiap langkah untuk memeriksa ancaman, membandingkan pilihan, dan mengatur waktu.",
+    "primaryKeyword": "cara berpikir dalam catur",
+    "secondaryKeywords": [
+      "proses berpikir untuk pemula",
+      "apa yang dipikirkan dalam catur",
+      "pengambilan keputusan dalam catur",
+      "daftar periksa sebelum melangkah",
+      "alur berpikir sederhana"
+    ],
+    "painPoint": "Anda melangkah terlalu cepat atau berpikir terlalu lama, dan tetap ragu.",
+    "ctaLabel": "Latih alur langkah sederhana",
+    "quickAnswer": "Gunakan alur singkat yang sama pada tiap langkah: periksa ancaman lawan, pilih satu sampai tiga langkah, dan pastikan pilihan itu aman.",
+    "keyTakeaways": [
+      "Alur singkat lebih mudah dipakai daripada daftar panjang.",
+      "Pemeriksaan ancaman selalu mendahului pemilihan langkah.",
+      "Luangkan lebih banyak waktu saat posisi menjadi berbahaya."
+    ],
+    "whoThisIsFor": [
+      "Pemain yang menebak di posisi tenang dan membeku di posisi tajam.",
+      "Pemula yang butuh alur jelas untuk tiap langkah.",
+      "Siapa pun yang ingin memutuskan lebih bersih di bawah tekanan."
+    ],
+    "timeToRead": "7 menit membaca",
+    "introParagraphs": [
+      "Pemula sering penasaran apa yang dipikirkan pemain kuat. Jawabannya bisa terdengar rumit, tetapi alur Anda harus cukup singkat agar dipakai setiap kali.",
+      "Mulai dari ancaman, pilih sedikit langkah yang mungkin, dan pastikan pilihan akhirnya aman."
+    ],
+    "startHereTitle": "Mulai di sini: alur empat langkah",
+    "startHereSteps": [
+      "Periksa dulu ancaman terkuat lawan.",
+      "Sebutkan satu sampai tiga langkah kandidat yang realistis.",
+      "Pastikan langkah rencana Anda aman dan tidak meninggalkan bidak tak terlindungi.",
+      "Tanyakan apakah posisinya cukup tenang untuk melangkah atau cukup tajam untuk melambat.",
+      "Setelah partai, lihat di bagian mana alur itu putus."
+    ],
+    "drillSectionTitle": "Latihan untuk keputusan yang lebih tenang",
+    "drillCards": [
+      {
+        "title": "Pemicu «lawan dulu»",
+        "description": "Mulai tiap posisi latihan dengan menyebut kemungkinan memaksa dari lawan.",
+        "duration": "3 menit",
+        "goal": "Membuat pemeriksaan ancaman menjadi otomatis, bukan pilihan.",
+        "ctaLabel": "Mulai dari ancaman"
+      },
+      {
+        "title": "Batas tiga kandidat",
+        "description": "Jangan pernah izinkan lebih dari tiga langkah kandidat dalam posisi latihan.",
+        "duration": "4 menit",
+        "goal": "Mengurangi kelebihan pilihan dan berputar-putar.",
+        "ctaLabel": "Batasi kandidat"
+      },
+      {
+        "title": "Periksa rasa yakin",
+        "description": "Lihat sebuah langkah dan tanyakan apakah Anda benar-benar yakin atau hanya lelah berpikir.",
+        "duration": "4 menit",
+        "goal": "Menyadari saat Anda melangkah karena kelelahan.",
+        "ctaLabel": "Periksa keyakinan"
+      }
+    ],
+    "comparisonTitle": "Alur langkah yang sederhana",
+    "comparisonSummary": "Proses berpikir terbaik adalah yang masih bisa Anda pakai saat jam berjalan.",
+    "comparisonRows": [
+      {
+        "label": "Menangani ancaman",
+        "struggling": "Anda memikirkan rencana sendiri lebih dulu.",
+        "stronger": "Anda mulai dari ancaman terkuat lawan."
+      },
+      {
+        "label": "Langkah kandidat",
+        "struggling": "Anda melompat di antara terlalu banyak kemungkinan.",
+        "stronger": "Anda menjaga kumpulan kandidat tetap kecil dan realistis."
+      },
+      {
+        "label": "Penggunaan waktu",
+        "struggling": "Anda memberi perhatian sama pada tiap langkah.",
+        "stronger": "Anda melambat saat ketegangan, taktik, atau keamanan raja berubah."
+      }
+    ],
+    "mistakes": [
+      "Memakai daftar panjang yang tidak pernah Anda ikuti dalam partai.",
+      "Memikirkan rencana sendiri sebelum memeriksa ancaman.",
+      "Membiarkan daftar kandidat membesar.",
+      "Menyamakan kelelahan dengan keyakinan."
+    ],
+    "mistakesCallout": "Jangan menambah pemeriksaan lain. Pakai alur singkat yang bisa Anda ulang pada tiap langkah.",
+    "planTitle": "Penyetelan alur 7 hari",
+    "planSteps": [
+      {
+        "label": "Hari 1 sampai 2",
+        "duration": "10 menit",
+        "detail": "Pakai hanya pemicu «lawan dulu» dan batas tiga kandidat."
+      },
+      {
+        "label": "Hari 3 sampai 4",
+        "duration": "12 menit",
+        "detail": "Tambahkan satu ronde singkat Memory Chess agar papan lebih jelas saat memutuskan."
+      },
+      {
+        "label": "Hari 5",
+        "duration": "12 menit",
+        "detail": "Periksa apakah blunder terakhir Anda berasal dari pemeriksaan ancaman atau terlalu banyak kandidat."
+      },
+      {
+        "label": "Hari 6 sampai 7",
+        "duration": "15 menit",
+        "detail": "Pakai alur penuh dalam partai rapid dan catat langkah mana yang putus di bawah tekanan."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Apa yang harus dipikirkan pemula dalam catur?",
+        "answer": "Mulai dari ancaman lawan, pilih satu sampai tiga langkah yang mungkin, dan pastikan pilihan akhirnya aman."
+      },
+      {
+        "question": "Berapa langkah kandidat yang perlu ditahan?",
+        "answer": "Biasanya satu sampai tiga. Lebih dari itu sering membebani pemula dan menurunkan kualitas keputusan."
+      },
+      {
+        "question": "Kenapa saya tetap membeku padahal tahu alurnya?",
+        "answer": "Sering karena papannya belum cukup jelas atau terlalu banyak kandidat terbuka. Posisi lebih sederhana dan latihan ingatan membantu."
+      },
+      {
+        "question": "Bisakah alur berpikir mencegah blunder?",
+        "answer": "Bisa, terutama bila memaksa pemeriksaan ancaman sebelum pemilihan langkah."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Pakai daftar antiblunder yang lebih tegas jika materi masih hilang."
+      },
+      {
+        "reason": "Hitung lebih bersih untuk membandingkan langkah yang mungkin."
+      },
+      {
+        "reason": "Kenali petak lebih cepat selama alur langkah Anda."
+      }
+    ]
+  }
+]

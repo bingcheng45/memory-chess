@@ -1,0 +1,490 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "更新日志",
+      "contactUs": "联系我们",
+      "privacy": "隐私政策"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. 保留所有权利。",
+      "followOnX": "在 Twitter/X 上关注我们",
+      "productHuntAlt": "Memory Chess - 用国际象棋训练空间想象力 | Product Hunt"
+    },
+    "sound": {
+      "mute": "静音",
+      "unmute": "开启声音",
+      "on": "声音已开启",
+      "off": "声音已关闭",
+      "volume": "音量"
+    },
+    "language": {
+      "change": "切换语言。当前语言：{language}",
+      "current": "语言：{language}",
+      "select": "选择语言"
+    },
+    "otherApps": {
+      "title": "作者的其他应用",
+      "visitWebsite": "访问网站 →",
+      "iconAlt": "{name} 应用图标"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Memory Chess：免费国际象棋记忆与想象力游戏",
+      "description": "记住一个国际象棋局面，凭记忆还原它，并立刻得到评分。免费游玩，训练棋盘视野、想象力和空间记忆。",
+      "socialTitle": "Memory Chess：免费国际象棋记忆与想象力游戏",
+      "socialDescription": "记住一个局面，把它还原出来，立刻得到评分。免费游玩，无需注册账号。",
+      "twitterTitle": "Memory Chess：免费国际象棋记忆游戏",
+      "twitterDescription": "记住一个局面，把它还原出来，一局一局提升你的棋盘视野。"
+    },
+    "hero": {
+      "title": "训练你的国际象棋记忆与盘面想象力",
+      "subtitle": "记住一个棋局，凭记忆还原它，立刻得到评分。每一轮都让你的棋盘视野更清晰。",
+      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。",
+      "gamesPlayed": "已进行对局：{count}"
+    },
+    "cta": {
+      "play": "开始玩 Memory Chess",
+      "leaderboard": "查看排行榜",
+      "playFree": "免费玩一局"
+    },
+    "video": {
+      "title": "看看 Memory Chess 怎么玩",
+      "subtitle": "一段简短指南：如何观察棋盘、还原棋局，以及看懂你的得分。",
+      "iframeTitle": "Memory Chess 玩法介绍",
+      "credit": "视频：《A New Way To Train Your Vision》，作者 Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "玩法说明",
+      "title": "一套简单的棋盘记忆训练",
+      "subtitle": "每一轮只有三个简单步骤：观察棋局、还原棋局、从得分中总结。",
+      "steps": {
+        "observe": {
+          "title": "观察",
+          "description": "记住每颗棋子的位置。留意棋子的组合、线路，以及可作参照的空格。"
+        },
+        "recreate": {
+          "title": "还原",
+          "description": "棋盘清空后，把每颗棋子放回你记得的格子上。"
+        },
+        "improve": {
+          "title": "提升",
+          "description": "查看得分，找出漏掉的地方，再用更多棋子或更短时间试一次。"
+        }
+      }
+    },
+    "board": {
+      "study": "观察棋盘",
+      "rebuild": "凭记忆还原"
+    },
+    "learn": {
+      "eyebrow": "学习中心",
+      "title": "简明国际象棋指南",
+      "description": "学习提升棋盘视野、盘面想象、计算能力和记忆力的实用方法。每篇指南都附有可以马上上手的练习。",
+      "browseCta": "浏览国际象棋指南",
+      "beginnerCta": "从新手指南开始"
+    },
+    "faq": {
+      "title": "关于 Memory Chess 的常见问题",
+      "items": [
+        {
+          "question": "Memory Chess 是什么？",
+          "answer": "Memory Chess 是一款免费的棋盘记忆游戏。你先用很短的时间观察一个棋局，然后凭记忆把它还原，并根据摆对的棋子数量获得评分。"
+        },
+        {
+          "question": "怎么玩？",
+          "answer": "先选择棋子数量和观察棋盘的时长。棋局消失后，把棋子放回你记得的格子上。提交答案即可看到准确率和用时。"
+        },
+        {
+          "question": "新手可以玩 Memory Chess 吗？",
+          "answer": "可以。你不需要懂开局，也不用计算着法。先从较少的棋子和较长的观察时间开始，觉得有把握了再增加难度。"
+        },
+        {
+          "question": "它是怎么训练盘面想象力的？",
+          "answer": "每一轮都是针对性的练习：把棋局记在脑中，并回忆每颗棋子的位置。得分会告诉你哪些棋局轻松上手，哪些还需要多加练习。"
+        },
+        {
+          "question": "记棋盘时应该看什么？",
+          "answer": "先从容易定位的参照物入手，比如王、后、四角和边线格。然后去找棋子的组合、直线、斜线和空白区域，而不是逐个去记每颗棋子。"
+        },
+        {
+          "question": "怎样提高难度？",
+          "answer": "增加棋子数量、缩短观察时间，或隐藏棋盘坐标。每次只改动一项设置，这样才能看出哪一项影响最大。"
+        },
+        {
+          "question": "Memory Chess 免费吗？",
+          "answer": "免费。无需注册即可游玩。是否在排行榜上留名由你自己决定。"
+        },
+        {
+          "question": "应该多久练一次？",
+          "answer": "保持规律，每次专注地玩几轮，就是很好的开始。每次时间别太长，确保你还能认真观察每一个棋局。"
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "在线玩 Memory Chess",
+      "description": "在线玩 Memory Chess，通过限时挑战训练棋盘视野、记忆力和国际象棋的棋形识别能力。",
+      "socialTitle": "在线玩 Memory Chess",
+      "socialDescription": "通过互动式限时挑战，训练你的国际象棋盘面想象力和记忆力。"
+    },
+    "hud": {
+      "time": "用时",
+      "submit": "提交",
+      "loading": "正在加载游戏…",
+      "status": "对局状态",
+      "controls": "对局操作",
+      "complete": "对局结束",
+      "flash": "完成！"
+    },
+    "config": {
+      "title": "对局设置",
+      "presetsLabel": "难度预设",
+      "presetSummary": "{pieces} 子 / {seconds} 秒",
+      "customLabel": "自定义设置",
+      "pieceCount": "棋子数量",
+      "memorizeTime": "记忆时间",
+      "seconds": "{seconds} 秒",
+      "start": "开始训练",
+      "lastGame": "上一局：还原用时 {time} 秒，准确率 {accuracy}%"
+    },
+    "presets": {
+      "easy": {
+        "label": "简单",
+        "description": "只有双方的王，适合入门"
+      },
+      "medium": {
+        "label": "中等",
+        "description": "几颗棋子，记忆时间也比较宽裕"
+      },
+      "hard": {
+        "label": "困难",
+        "description": "棋子更多，记忆时间更短"
+      },
+      "grandmaster": {
+        "label": "特级大师",
+        "description": "为拥有照相式记忆的高手准备"
+      }
+    },
+    "memorize": {
+      "title": "记住这个棋局",
+      "skip": "跳过",
+      "hint": "计时结束后棋盘会被清空"
+    },
+    "place": {
+      "title": "摆放棋子",
+      "subtitle": "选择棋子类型和颜色",
+      "whitePieces": "白方棋子",
+      "blackPieces": "黑方棋子",
+      "selectWhite": "选择白方棋子",
+      "selectBlack": "选择黑方棋子",
+      "hint": "点击格子放置棋子，再次点击可移除"
+    },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "白方兵",
+          "knight": "白方马",
+          "bishop": "白方象",
+          "rook": "白方车",
+          "queen": "白方后",
+          "king": "白方王"
+        },
+        "black": {
+          "pawn": "黑方兵",
+          "knight": "黑方马",
+          "bishop": "黑方象",
+          "rook": "黑方车",
+          "queen": "黑方后",
+          "king": "黑方王"
+        }
+      },
+      "feedback": {
+        "correct": "正确",
+        "incorrect": "错误",
+        "missing": "遗漏"
+      },
+      "squareWithPiece": "{square}：{piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "选择{piece}"
+    },
+    "stats": {
+      "title": "对局数据",
+      "currentTime": "当前用时",
+      "piecesToMemorize": "待记忆棋子",
+      "averageAccuracy": "平均准确率"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ 满分！✨",
+        "excellent": "记忆力超群！",
+        "great": "表现出色！",
+        "wellDone": "做得不错！",
+        "goodEffort": "有进步！",
+        "keepPracticing": "继续加油！"
+      },
+      "accuracy": "准确率",
+      "piecesCorrectCaption": "颗棋子正确",
+      "piecesCorrect": "正确棋子",
+      "memorizationTime": "记忆时间",
+      "solutionTime": "还原用时",
+      "recallSpeed": "回忆速度",
+      "piecesPerSecond": "{value} 子/秒",
+      "actions": "结果操作",
+      "tryAgain": "再来一局",
+      "newGame": "新对局",
+      "submitToLeaderboard": "提交到排行榜",
+      "viewLeaderboard": "查看排行榜",
+      "dialog": {
+        "submitTitle": "提交到排行榜",
+        "submitDescription": "填写要显示在排行榜上的名字。",
+        "successTitle": "成绩已提交！",
+        "successDescription": "你的成绩已成功提交到排行榜。",
+        "playerName": "玩家名称",
+        "playerNamePlaceholder": "请输入你的名字",
+        "error": "错误：{message}",
+        "submitFailed": "成绩提交失败",
+        "cancel": "取消",
+        "submit": "提交成绩",
+        "submitting": "提交中…",
+        "thanks": "感谢参与，{name}！"
+      }
+    },
+    "comparison": {
+      "title": "回顾你的棋局",
+      "subtitle": "把你记住的和你提交的对照一下。",
+      "unavailable": "暂时无法对比棋盘。",
+      "ariaLabel": "棋盘对比",
+      "correct": "正确",
+      "incorrect": "错误",
+      "missed": "遗漏",
+      "originalBoard": "需要记住的棋局",
+      "submittedBoard": "你提交的棋局"
+    },
+    "feedback": {
+      "title": "感谢你玩 Memory Chess！",
+      "description": "这次体验如何？你的反馈能让每一次训练都更好。",
+      "prompt": "你会给这个游戏打几分？",
+      "placeholder": "说说哪里做得好，或者你希望改进什么…",
+      "notNow": "暂不评价",
+      "sentTitle": "谢谢你帮助我们改进",
+      "sentBody": "我们已经收到你的反馈。",
+      "done": "完成",
+      "commentLabel": "玩下来感觉如何？怎样会更好？",
+      "commentOptional": "（选填）",
+      "starRating": "{count, plural, other {# 星}}",
+      "chooseRating": "请先选择星级评分。",
+      "sendFailed": "反馈发送失败。请重试，或选择“暂不评价”。",
+      "send": "提交反馈",
+      "sending": "发送中…"
+    }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess 排行榜",
+      "description": "按难度、准确率、记忆速度和还原用时查看 Memory Chess 的顶尖玩家。",
+      "socialTitle": "Memory Chess 排行榜",
+      "socialDescription": "看看玩家在记忆与盘面想象挑战中的排名情况。"
+    },
+    "title": "Memory Chess 排名",
+    "subtitle": "用可视化掌控棋盘。在心算的精准与速度上与全球高手一较高下。",
+    "claimRank": "抢占你的排名",
+    "footnote": "仅显示前 200 名。按准确率、记忆时间和还原速度排序。",
+    "loading": "正在加载排行榜…",
+    "unavailableTitle": "排行榜暂时无法使用",
+    "unavailableBody": "排行榜服务目前离线。你的对局数据仍会保存在本地。",
+    "unavailableNote": "你可以继续游玩，不受影响。",
+    "retryLater": "请稍后再试",
+    "errorLoading": "加载排名时出错：{error}",
+    "errors": {
+      "timeout": "请求超时，请稍后再试。",
+      "parse": "无法解析服务器响应，请稍后再试。",
+      "status": "请求失败，状态码 {status}",
+      "unexpected": "发生了意外错误"
+    },
+    "emptyTitle": "来当第一个冠军吧！",
+    "emptyBody": "这个排行榜还没有任何记录",
+    "emptyCta": "挑战你的记忆力，登上榜首吧！立即来一局，把你的名字写进 Memory Chess 的历史。",
+    "startPlaying": "立即开始游玩",
+    "you": "你",
+    "columns": {
+      "rank": "排名",
+      "player": "玩家",
+      "pieces": "棋子数",
+      "memorizeTime": "记忆时间",
+      "solutionTime": "还原用时",
+      "date": "日期"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess 设置",
+      "description": "自定义你的 Memory Chess 游戏设置和偏好。"
+    },
+    "difficulty": "难度",
+    "memorizationTime": "记忆时间：{seconds} 秒",
+    "seconds": "{seconds} 秒",
+    "showCoordinates": "显示棋盘坐标",
+    "home": "首页",
+    "playGame": "开始游戏"
+  },
+  "contact": {
+    "meta": {
+      "title": "联系 Memory Chess",
+      "description": "如需反馈、功能建议或商务合作，请联系 Memory Chess。",
+      "socialTitle": "联系 Memory Chess",
+      "socialDescription": "向 Memory Chess 发送反馈、功能建议和合作意向。"
+    },
+    "title": "联系我们",
+    "sentTitle": "消息已发送！",
+    "sentBody": "感谢你的来信，我们会尽快回复。",
+    "redirecting": "正在跳转到首页…",
+    "name": "称呼",
+    "namePlaceholder": "你的称呼",
+    "email": "电子邮箱",
+    "emailPlaceholder": "your.email@example.com",
+    "inquiryType": "咨询类型",
+    "inquiryPlaceholder": "请选择咨询类型",
+    "message": "留言",
+    "messagePlaceholder": "在这里写下你的留言…",
+    "send": "发送消息",
+    "sending": "发送中…",
+    "types": {
+      "feedback": "反馈",
+      "featureRequest": "功能建议",
+      "general": "一般咨询",
+      "business": "商务合作"
+    },
+    "validation": {
+      "nameTooShort": "称呼至少需要 2 个字符。",
+      "emailInvalid": "请输入有效的电子邮箱地址。",
+      "typeRequired": "请选择咨询类型。",
+      "messageTooShort": "留言至少需要 10 个字符。"
+    },
+    "errors": {
+      "submitFailed": "表单提交失败{details}",
+      "generic": "提交表单时出错，请再试一次。"
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "一步一步把国际象棋学清楚",
+      "description": "面向初学者的实用国际象棋指南：棋盘视野、盘面想象、记忆力、计算、减少失误和日常练习。"
+    },
+    "title": "一步一步把国际象棋学清楚",
+    "startBeginner": "开始新手指南",
+    "playCta": "开始玩 Memory Chess",
+    "startHere": "从这里开始",
+    "pickNext": "选择你的下一步",
+    "chooseGoal": "选一个目标",
+    "readRecallPlay": "阅读、回想、上手",
+    "turnIdea": "把一个想法变成练习",
+    "startRound": "开始一轮记忆训练",
+    "eyebrow": "跟 Memory Chess 一起学",
+    "heroDescription": "选择你想提升的方面。每篇指南用通俗的语言讲清一个有用的思路，然后给你一个简短的练习。",
+    "pickNextDescription": "选择最像你当前棋局的那句话。没有完美的顺序，你随时可以换一条路径。",
+    "allGuides": "全部 {count} 篇指南",
+    "chooseGoalDescription": "每条路径都从一个简单的入门练习开始，逐步走向更完整的训练习惯。",
+    "guideNumber": "指南 {number}",
+    "turnIdeaDescription": "读完一篇指南后，趁着印象还新鲜下一局短棋，然后留意哪些内容容易记住、哪些还需要再练一次。",
+    "paths": {
+      "newToChess": {
+        "label": "刚接触国际象棋",
+        "title": "制定一份简单的进步计划",
+        "description": "先从基本功入手，再把一个有用的方法变成可以每天重复的习惯。"
+      },
+      "missingThreats": {
+        "label": "总是漏看简单的威胁",
+        "title": "训练扫视全盘的习惯",
+        "description": "用一套简短的检查流程，在落子前发现无保护的棋子、对方的攻击和潜在危险。"
+      },
+      "losingPosition": {
+        "label": "棋局在脑中容易散掉",
+        "title": "强化盘面想象与回忆",
+        "description": "先练习在脑中保持一小块准确的棋盘图像，再逐步加长着法序列。"
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "更新日志",
+      "description": "在官方更新日志中查看 Memory Chess 的最新功能、改进和修复。",
+      "socialTitle": "Memory Chess 更新日志",
+      "socialDescription": "查看 Memory Chess 的最新功能、改进和修复。"
+    },
+    "title": "更新日志",
+    "latest": "最新",
+    "bannerCta": "看看有什么新变化",
+    "bannerLabel": "Memory Chess 更新",
+    "eyebrow": "更新",
+    "changesIn": "版本 {version} 的更新内容"
+  },
+  "learnArticle": {
+    "faqLabel": "常见问题",
+    "whatChangesTitle": "最先提升的是什么",
+    "trackThisWeekTitle": "这周记录什么",
+    "trackThisWeekBody": "只选一个简单的指标：每局的失误次数、正确还原的棋局数量，或者你能清晰想象出几步棋。",
+    "startHereSummary": "这些步骤今天就能试。",
+    "drillsSummary": "每个练习都能让你把学到的内容直接用在 Memory Chess 里。",
+    "comparisonColumns": {
+      "situation": "情况",
+      "before": "练习前",
+      "after": "练习后"
+    },
+    "mistakesTitle": "常见的错误",
+    "whatToDoInsteadTitle": "应该怎么做",
+    "planSummary": "在把练习变难或变长之前，先走完这几步。",
+    "breadcrumbHome": "首页",
+    "breadcrumbLearn": "学习",
+    "eyebrow": "简明国际象棋指南",
+    "updated": "更新于 {date}",
+    "reviewedBy": "审校：{name}",
+    "startHere": "从这里开始",
+    "whatYouWillLearn": "你将学到什么",
+    "whoThisIsFor": "适合谁阅读",
+    "browseAllGuides": "浏览全部指南",
+    "onThisPage": "本页内容",
+    "aimFor": "目标：",
+    "tryItNow": "现在就试试",
+    "tryItNowTitle": "继续阅读之前，先下一局短棋。",
+    "tryItNowBody": "趁步骤还新鲜时用一遍，然后带着一个具体的发现回来。",
+    "startTrainingRound": "开始一轮训练",
+    "keepLearning": "继续学习",
+    "whatToLearnNext": "接下来学什么",
+    "whatToLearnNextBody": "选择最贴合你下一个想解决的问题的指南。",
+    "readThisGuide": "阅读这篇指南",
+    "putItOnTheBoard": "把它用到棋盘上",
+    "practiceTitle": "在 Memory Chess 中练习",
+    "practiceBody": "用一个简短的练习来巩固刚学到的内容。",
+    "goalLabel": "目标：",
+    "commonQuestions": "常见问题",
+    "editorialNotes": "编辑说明",
+    "aboutThisGuide": "关于这篇指南",
+    "aboutBody": "Memory Chess 的指南是为初学者和正在进步的棋手撰写的。每篇都给出直接的答案、可执行的步骤，以及一个实用的进步衡量方式。",
+    "publishedLine": "发布于 {published}。最近一次审校与更新为 {updated}，审校人 {reviewer}。",
+    "referenceLinks": "参考链接",
+    "goals": {
+      "reduce-blunders": {
+        "label": "减少失误",
+        "description": "养成更快检查威胁的习惯，别再在简单局面里白送棋子。",
+        "accent": "威胁检查"
+      },
+      "visualization": {
+        "label": "提升盘面想象",
+        "description": "把棋盘在脑中多留一会儿，让计算变得更从容、更清晰。",
+        "accent": "脑中的棋盘"
+      },
+      "memory": {
+        "label": "训练记忆力",
+        "description": "提升棋局回想和棋形记忆，同时不让训练变成背理论。",
+        "accent": "回想与记忆"
+      },
+      "routine": {
+        "label": "建立每日习惯",
+        "description": "使用一个把练习、对局和复盘结合起来的简短计划。",
+        "accent": "坚持"
+      }
+    }
+  }
+}

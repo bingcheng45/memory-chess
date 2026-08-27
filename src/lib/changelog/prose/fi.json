@@ -1,0 +1,226 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess puhuu nyt sinun kieltäsi",
+    "summary": "Peli ja jokainen Opi-opas ovat nyt saatavilla 24 kielellä, ja sivusto avautuu sinun kielelläsi.",
+    "groups": [
+      {
+        "title": "24 kieltä",
+        "changes": [
+          "Memory Chess on nyt saatavilla 24 kielellä: englanti, espanja, venäjä, brasilianportugali, saksa, ranska, hindi, italia, yksinkertaistettu kiina, turkki, ruotsi, hollanti, puola, indonesia, norja, suomi, romania, vietnam, tšekki, japani, korea, perinteinen kiina, tanska ja unkari.",
+          "Kaikki, mitä luet pelatessasi, on käännetty: etusivu, asetukset, ajastin, tulosnäkymä, tulostaulukko ja tämä Uutta-sivu."
+        ]
+      },
+      {
+        "title": "Kaikki 16 opasta, jokaisella kielellä",
+        "changes": [
+          {
+            "segments": [
+              "Jokainen opas osiossa ",
+              {
+                "text": "Opi"
+              },
+              " on käännetty kokonaan. Harjoitusaskeleet, treenit, viikkosuunnitelma ja lopun kysymykset kuulostavat luontevilta omalla kielelläsi, ja shakkitermit vastaavat sitä, miten pelaajat niistä oikeasti puhuvat."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Vaihda kieltä milloin haluat",
+        "changes": [
+          "Jokaisen sivun yläreunassa oleva maapallokuvake avaa kielilistan. Jokainen kieli on kirjoitettu omalla nimellään, joten löydät omasi ilman että sinun tarvitsee ensin lukea englantia.",
+          "Kielen valitseminen jättää sinut täsmälleen samaan kohtaan, ja Memory Chess muistaa valintasi seuraavalla käynnilläsi."
+        ]
+      },
+      {
+        "title": "Yritämme osua oikeaan jo ennen kuin kysyt",
+        "changes": [
+          "Uudet kävijät aloittavat nyt sillä kielellä, jota heidän selaimensa tai alueensa ehdottaa, aina kun se on saatavilla. Jos arvaus menee pieleen, maapallokuvake on heti käden ulottuvilla."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Sujuvampia pelejä, selkeämpiä tuloksia",
+    "summary": "Lauta pysyy paikallaan, satunnaiset asemat ovat järkevämpiä ja tuloksia on helpompi käydä läpi.",
+    "groups": [
+      {
+        "title": "Vakaampi pelikokemus",
+        "changes": [
+          "Pelaajilta saadun hyödyllisen palautteen ansiosta lauta pysyy nyt samassa kohdassa, kun muistiinpainaminen päättyy ja nappuloiden asettaminen alkaa. Myös säätimet ja nappulavalitsin asettuvat linjaan laudan kanssa.",
+          "Sivujen otsikot, äänisäätimet ja välistykset pysyvät johdonmukaisempina pelin edetessä. Laudan nappuloita ja koordinaattimerkintöjä ei voi enää vahingossa valita tekstinä."
+        ]
+      },
+      {
+        "title": "Parempia satunnaisia asemia",
+        "changes": [
+          "Kiitos pelaajan, joka ilmoitti tästä Redditissä: satunnaiset asemat eivät enää sijoita kuninkaita vierekkäin, saman puolen kahta lähettiä samanvärisille ruuduille, sotilaita ensimmäiselle tai kahdeksannelle riville eivätkä molempia kuninkaita shakkiin."
+        ]
+      },
+      {
+        "title": "Selkeämmät tulokset",
+        "changes": [
+          "Jokaisen pelin jälkeen voit nyt verrata muistettavaa asemaa siihen lautaan, jonka lähetit. Selkeät merkinnät näyttävät, mitkä nappulat menivät oikein, mitkä väärin ja mitkä jäivät huomaamatta.",
+          "Tarkkuutesi sekä tärkeimmät uuden pelin ja tulostaulukon painikkeet ovat nyt yhdessä tulosten yläreunassa. Huomaamatta jääneet nappulat merkitään selkeällä mustalla katkoviivareunuksella, ja lauta näkyy edelleen niiden alta."
+        ]
+      },
+      {
+        "title": "Selkeämpi päätös",
+        "changes": [
+          "Kun lähetät vastauksesi, ajastin pysähtyy sekunniksi, jotta ehdit nähdä lukitun aikasi ja lopullisen lautasi ennen tuloksia. Nopea VALMIS!-välähdys merkitsee kierroksen päättymistä, ja asettelun ajastin näyttää nyt myös millisekunnit."
+        ]
+      },
+      {
+        "title": "Vähän tilastoja kaikille!",
+        "description": "Tässä on tilannekuva julkisista tulostaulukkolähetyksistä 16. elokuuta 2026 asti.",
+        "tables": [
+          {
+            "caption": "Tarkkuus",
+            "columns": [
+              "Tulostaulukkolähetykset",
+              "Vuoden 2025 loppuun",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Keskimääräinen tarkkuus",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Täysien pisteiden osuus",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Keskitaso: keskimääräinen tarkkuus",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Keskitaso: täysien pisteiden osuus",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Vaikea: keskimääräinen tarkkuus",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Suurmestari: keskimääräinen tarkkuus",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Lähetysnopeus",
+            "columns": [
+              "Ratkaisuaika täysillä pisteillä",
+              "Vuoden 2025 loppuun",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Kaikki vaikeustasot, mediaani",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Helppo, mediaani",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Keskitaso, mediaani",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Viidestäkymmenestä toistuvasta pelaajanimen ja vaikeustason yhdistelmästä 33:lla viimeisin ratkaisu oli nopeampi ja 17:llä hitaampi. Tarkkuus parani kokonaisuutena selvästi, mutta myös ajan käyttäminen voi johtaa parempaan tulokseen. Luvut kattavat vapaaehtoiset tulostaulukkolähetykset, eivät jokaista peliä, ja Helppo-tason tulostaulukossa näkyy vain 200 parasta merkintää."
+      },
+      {
+        "title": "Kiitos, että pelaat",
+        "changes": [
+          {
+            "segments": [
+              "Suuri kiitos kaikille, joiden ansiosta Memory Chess on saavuttanut yli 800 kuukausittaista pelaajaa ja yli 32 000 pelattua peliä. Olemme erityisen kiitollisia kaikille, jotka ovat jakaneet ideoita, kannustusta ja virheilmoituksia ",
+              {
+                "text": "Ota yhteyttä -sivun"
+              },
+              " tai pelin päätteeksi näkyvän palautelomakkeen kautta. Jokainen peli ja jokainen viesti auttaa Memory Chessiä kasvamaan."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Opi enemmän. Pelaa sujuvammin.",
+    "summary": "Uusia oppaita, selkeämpi etusivu, hiljaisemmat äänet ja helppo tapa antaa palautetta.",
+    "groups": [
+      {
+        "title": "Opi ja kehity",
+        "changes": [
+          "Tutustu uusiin, helposti seurattaviin oppaisiin shakkimuistista ja hahmottamisesta.",
+          "Uudistettu etusivu kertoo nyt, miten Memory Chess harjoittaa avaruudellista muistiasi."
+        ]
+      },
+      {
+        "title": "Arjen parannuksia",
+        "changes": [
+          "Mobiilipelaaminen, nappula-asetelmat ja tulostaulukon sijoitukset toimivat luotettavammin.",
+          "Pelin äänet alkavat nyt lempeämmällä 10 %:n äänenvoimakkuudella."
+        ]
+      },
+      {
+        "title": "Palaute ja päivitykset",
+        "changes": [
+          "Voit nyt arvioida pelin pelaamisen jälkeen ja nähdä uudet julkaisut Uutta-sivulla. Palautekysely näkyy korkeintaan kerran päivässä.",
+          "Uusi Tietosuoja-sivu kertoo selkeällä kielellä tallennetuista asetuksista, analytiikasta, palautteesta ja tulevista mainoksista."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Nappuloiden valinta tuntuu paremmalta",
+    "summary": "Valkeiden ja mustien nappuloiden valitseminen on nyt selkeämpää ja helpompaa.",
+    "groups": [
+      {
+        "title": "Nappuloiden valinta",
+        "changes": [
+          "Värivalitsimella on uusi, raikas ulkoasu.",
+          "Näet helpommin, minkä värin valitsit.",
+          "Painikkeet tuntuvat nyt sujuvammilta ja yhtenäisemmiltä."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Parempi puhelimella",
+    "summary": "Memory Chessiä on nyt helpompi ja mukavampi pelata pienellä näytöllä.",
+    "groups": [
+      {
+        "title": "Mobiilipelaaminen",
+        "changes": [
+          "Peli, ajastin ja Ohita-painike sopivat paremmin pienille näytöille.",
+          "Napautukset ja välistykset tuntuvat paremmilta mobiilissa.",
+          "Äänet toimivat paremmin pelin eri vaiheissa."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Muistipelit alkakoot!",
+    "summary": "Memory Chessin ensimmäinen versio on valmis pelattavaksi.",
+    "groups": [
+      {
+        "title": "Ensimmäinen julkaisu",
+        "changes": [
+          "Paina shakkiasema mieleen ja rakenna se sitten muistista.",
+          "Valitse vaikeustaso, nappuloiden määrä, aika ja laudan koordinaatit.",
+          "Näe tuloksesi ja aikasi jokaisen pelin jälkeen."
+        ]
+      }
+    ]
+  }
+]

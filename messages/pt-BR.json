@@ -1,0 +1,490 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Novidades",
+      "contactUs": "Fale conosco",
+      "privacy": "Privacidade"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Todos os direitos reservados.",
+      "followOnX": "Siga a gente no Twitter/X",
+      "productHuntAlt": "Memory Chess - Treine sua visualização espacial com xadrez | Product Hunt"
+    },
+    "sound": {
+      "mute": "Desativar som",
+      "unmute": "Ativar som",
+      "on": "Som ativado",
+      "off": "Som desativado",
+      "volume": "Volume"
+    },
+    "language": {
+      "change": "Mudar idioma. Idioma atual: {language}",
+      "current": "Idioma: {language}",
+      "select": "Escolher idioma"
+    },
+    "otherApps": {
+      "title": "Mais apps do criador",
+      "visitWebsite": "Visitar o site →",
+      "iconAlt": "Ícone do app {name}"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Memory Chess: jogo grátis de memória e visualização no xadrez",
+      "description": "Memorize uma posição de xadrez, reconstrua-a de memória e receba uma pontuação na hora. Jogue de graça para treinar visão do tabuleiro, visualização e memória espacial.",
+      "socialTitle": "Memory Chess: jogo grátis de memória e visualização no xadrez",
+      "socialDescription": "Memorize uma posição, reconstrua-a e receba uma pontuação na hora. Jogue de graça, sem criar conta.",
+      "twitterTitle": "Memory Chess: jogo grátis de memória no xadrez",
+      "twitterDescription": "Memorize uma posição, reconstrua-a e melhore sua visão do tabuleiro rodada após rodada."
+    },
+    "hero": {
+      "title": "Treine sua memória e visualização no xadrez",
+      "subtitle": "Memorize uma posição de xadrez, reconstrua de memória e receba uma pontuação na hora. Melhore sua visão de tabuleiro a cada rodada.",
+      "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>.",
+      "gamesPlayed": "Partidas jogadas: {count}"
+    },
+    "cta": {
+      "play": "Jogar Memory Chess",
+      "leaderboard": "Ver o ranking",
+      "playFree": "Jogar uma rodada grátis"
+    },
+    "video": {
+      "title": "Veja como o Memory Chess funciona",
+      "subtitle": "Um guia rápido para estudar o tabuleiro, reconstruir a posição e conferir sua pontuação.",
+      "iframeTitle": "Como jogar Memory Chess",
+      "credit": "Vídeo: “A New Way To Train Your Vision”, de Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Como funciona",
+      "title": "Um treino simples para a sua memória no xadrez",
+      "subtitle": "Cada rodada tem três passos simples: estude a posição, reconstrua e aprenda com a sua pontuação.",
+      "steps": {
+        "observe": {
+          "title": "Observe",
+          "description": "Repare onde cada peça está. Procure grupos, linhas e casas vazias que sirvam de referência."
+        },
+        "recreate": {
+          "title": "Reconstrua",
+          "description": "Quando o tabuleiro esvaziar, coloque cada peça de volta na casa que você lembrar."
+        },
+        "improve": {
+          "title": "Evolua",
+          "description": "Veja sua pontuação, confira o que passou batido e tente de novo com mais peças ou menos tempo."
+        }
+      }
+    },
+    "board": {
+      "study": "Estude o tabuleiro",
+      "rebuild": "Reconstrua de memória"
+    },
+    "learn": {
+      "eyebrow": "Central de aprendizado",
+      "title": "Guias de xadrez descomplicados",
+      "description": "Aprenda formas práticas de melhorar visão de tabuleiro, visualização, cálculo e memória. Cada guia traz exercícios para você testar na hora.",
+      "browseCta": "Ver os guias de xadrez",
+      "beginnerCta": "Comece pelo guia para iniciantes"
+    },
+    "faq": {
+      "title": "Perguntas sobre o Memory Chess",
+      "items": [
+        {
+          "question": "O que é o Memory Chess?",
+          "answer": "O Memory Chess é um jogo gratuito de memória de tabuleiro. Você estuda uma posição de xadrez por pouco tempo, reconstrói de memória e recebe uma pontuação com base em quantas peças colocou no lugar certo."
+        },
+        {
+          "question": "Como eu jogo?",
+          "answer": "Escolha quantas peças você quer e quanto tempo quer estudar o tabuleiro. Quando a posição sumir, recoloque as peças nas casas que você lembrar. Envie sua resposta para ver sua precisão e seu tempo."
+        },
+        {
+          "question": "Iniciantes conseguem jogar Memory Chess?",
+          "answer": "Sim. Você não precisa saber aberturas nem calcular lances. Comece com menos peças e mais tempo de estudo e aumente a dificuldade quando se sentir pronto."
+        },
+        {
+          "question": "Como isso treina a visualização no xadrez?",
+          "answer": "Cada rodada é uma prática focada em segurar a posição na cabeça e lembrar onde cada peça fica. Sua pontuação mostra quais posições saem fácil e onde você precisa treinar mais."
+        },
+        {
+          "question": "No que prestar atenção ao memorizar o tabuleiro?",
+          "answer": "Comece por referências fáceis, como reis, damas, cantos e casas das bordas. Depois procure grupos, linhas, diagonais e espaços vazios, em vez de tentar lembrar cada peça isoladamente."
+        },
+        {
+          "question": "Como deixo o jogo mais difícil?",
+          "answer": "Adicione mais peças, reduza o tempo de estudo ou esconda as coordenadas do tabuleiro. Mude um ajuste de cada vez para perceber o que faz mais diferença."
+        },
+        {
+          "question": "O Memory Chess é gratuito?",
+          "answer": "Sim. Dá para jogar de graça sem criar conta. Colocar um nome no ranking é opcional."
+        },
+        {
+          "question": "Com que frequência devo treinar?",
+          "answer": "Algumas rodadas focadas com regularidade já é um bom começo. Mantenha as sessões curtas o bastante para conseguir estudar cada posição com calma."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Jogue Memory Chess online",
+      "description": "Jogue Memory Chess online para treinar visualização de tabuleiro, memória e reconhecimento de padrões no xadrez com desafios cronometrados.",
+      "socialTitle": "Jogue Memory Chess online",
+      "socialDescription": "Treine sua visualização e memória no xadrez com desafios interativos e cronometrados."
+    },
+    "hud": {
+      "time": "Tempo",
+      "submit": "Enviar",
+      "loading": "Carregando o jogo...",
+      "status": "Status da partida",
+      "controls": "Controles da partida",
+      "complete": "Partida concluída",
+      "flash": "FIM!"
+    },
+    "config": {
+      "title": "Configuração da partida",
+      "presetsLabel": "Níveis prontos",
+      "presetSummary": "{pieces} pçs / {seconds} s",
+      "customLabel": "Configuração personalizada",
+      "pieceCount": "Número de peças",
+      "memorizeTime": "Tempo de memorização",
+      "seconds": "{seconds} s",
+      "start": "Começar o treino",
+      "lastGame": "Última partida: {time} s de resolução com {accuracy}% de precisão"
+    },
+    "presets": {
+      "easy": {
+        "label": "Fácil",
+        "description": "Só os reis: perfeito para começar"
+      },
+      "medium": {
+        "label": "Médio",
+        "description": "Algumas peças e tempo tranquilo para memorizar"
+      },
+      "hard": {
+        "label": "Difícil",
+        "description": "Mais peças e menos tempo para memorizar"
+      },
+      "grandmaster": {
+        "label": "Grande mestre",
+        "description": "Para mestres do xadrez com memória fotográfica"
+      }
+    },
+    "memorize": {
+      "title": "Memorize a posição",
+      "skip": "Pular",
+      "hint": "O tabuleiro será limpo quando o tempo acabar"
+    },
+    "place": {
+      "title": "Posicione as peças",
+      "subtitle": "Escolha o tipo e a cor",
+      "whitePieces": "Peças brancas",
+      "blackPieces": "Peças pretas",
+      "selectWhite": "Selecionar peças brancas",
+      "selectBlack": "Selecionar peças pretas",
+      "hint": "Toque em uma casa para adicionar ou remover uma peça"
+    },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "peão branco",
+          "knight": "cavalo branco",
+          "bishop": "bispo branco",
+          "rook": "torre branca",
+          "queen": "dama branca",
+          "king": "rei branco"
+        },
+        "black": {
+          "pawn": "peão preto",
+          "knight": "cavalo preto",
+          "bishop": "bispo preto",
+          "rook": "torre preta",
+          "queen": "dama preta",
+          "king": "rei preto"
+        }
+      },
+      "feedback": {
+        "correct": "correto",
+        "incorrect": "incorreto",
+        "missing": "ausente"
+      },
+      "squareWithPiece": "{square} com {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Selecionar {piece}"
+    },
+    "stats": {
+      "title": "Estatísticas",
+      "currentTime": "Tempo atual",
+      "piecesToMemorize": "Peças para memorizar",
+      "averageAccuracy": "Precisão média"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Pontuação perfeita! ✨",
+        "excellent": "Memória excelente!",
+        "great": "Mandou bem!",
+        "wellDone": "Muito bom!",
+        "goodEffort": "Boa tentativa!",
+        "keepPracticing": "Continue treinando!"
+      },
+      "accuracy": "Precisão",
+      "piecesCorrectCaption": "peças corretas",
+      "piecesCorrect": "Peças corretas",
+      "memorizationTime": "Tempo de memorização",
+      "solutionTime": "Tempo de resolução",
+      "recallSpeed": "Velocidade de recordação",
+      "piecesPerSecond": "{value} peças/s",
+      "actions": "Ações do resultado",
+      "tryAgain": "Tentar de novo",
+      "newGame": "Nova partida",
+      "submitToLeaderboard": "Enviar para o ranking",
+      "viewLeaderboard": "Ver o ranking",
+      "dialog": {
+        "submitTitle": "Enviar para o ranking",
+        "submitDescription": "Digite seu nome para aparecer no ranking.",
+        "successTitle": "Pontuação enviada!",
+        "successDescription": "Sua pontuação foi enviada para o ranking com sucesso.",
+        "playerName": "Nome do jogador",
+        "playerNamePlaceholder": "Digite seu nome",
+        "error": "Erro: {message}",
+        "submitFailed": "Não foi possível enviar a pontuação",
+        "cancel": "Cancelar",
+        "submit": "Enviar pontuação",
+        "submitting": "Enviando...",
+        "thanks": "Obrigado por participar, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Revise sua posição",
+      "subtitle": "Compare o que você memorizou com o que enviou.",
+      "unavailable": "A comparação de tabuleiros não está disponível.",
+      "ariaLabel": "Comparação de tabuleiros",
+      "correct": "Correta",
+      "incorrect": "Incorreta",
+      "missed": "Esquecida",
+      "originalBoard": "Posição para lembrar",
+      "submittedBoard": "A posição que você enviou"
+    },
+    "feedback": {
+      "title": "Obrigado por jogar Memory Chess!",
+      "description": "O que achou? Seu feedback ajuda a melhorar cada sessão de treino.",
+      "prompt": "Como você avaliaria o jogo?",
+      "placeholder": "Conte o que funcionou bem ou o que você mudaria...",
+      "notNow": "Agora não",
+      "sentTitle": "Obrigado por ajudar a melhorar",
+      "sentBody": "Recebemos o seu comentário.",
+      "done": "Pronto",
+      "commentLabel": "Como foi jogar e o que deixaria melhor?",
+      "commentOptional": "(opcional)",
+      "starRating": "{count, plural, one {# estrela} many {# estrelas} other {# estrelas}}",
+      "chooseRating": "Escolha uma avaliação em estrelas.",
+      "sendFailed": "Não conseguimos enviar seu comentário. Tente de novo ou escolha Agora não.",
+      "send": "Enviar comentário",
+      "sending": "Enviando..."
+    }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Ranking do Memory Chess",
+      "description": "Veja os melhores jogadores do Memory Chess por dificuldade, precisão, velocidade de memorização e tempo de resolução.",
+      "socialTitle": "Ranking do Memory Chess",
+      "socialDescription": "Veja como os jogadores se classificam nos desafios de memória e visualização."
+    },
+    "title": "Ranking do Memory Chess",
+    "subtitle": "Domine o tabuleiro pela visualização. Dispute com os melhores do mundo em precisão mental e velocidade.",
+    "claimRank": "Garanta sua posição",
+    "footnote": "Exibindo apenas os 200 melhores. Ordenados por precisão, tempo de memorização e velocidade de resolução.",
+    "loading": "Carregando o ranking...",
+    "unavailableTitle": "Ranking temporariamente indisponível",
+    "unavailableBody": "O serviço de ranking está fora do ar no momento. Seus dados de jogo continuam sendo salvos localmente.",
+    "unavailableNote": "Você pode continuar jogando normalmente.",
+    "retryLater": "Tente novamente mais tarde",
+    "errorLoading": "Erro ao carregar o ranking: {error}",
+    "errors": {
+      "timeout": "O tempo da solicitação esgotou. Tente novamente mais tarde.",
+      "parse": "Não foi possível interpretar a resposta do servidor. Tente novamente mais tarde.",
+      "status": "A solicitação falhou com o status {status}",
+      "unexpected": "Ocorreu um erro inesperado"
+    },
+    "emptyTitle": "Seja o primeiro campeão!",
+    "emptyBody": "Ainda não há registros neste ranking",
+    "emptyCta": "Desafie sua memória e conquiste o topo! Jogue uma partida agora e grave seu nome na história do Memory Chess.",
+    "startPlaying": "Comece a jogar",
+    "you": "Você",
+    "columns": {
+      "rank": "Posição",
+      "player": "Jogador",
+      "pieces": "Peças",
+      "memorizeTime": "Tempo de memorização",
+      "solutionTime": "Tempo de resolução",
+      "date": "Data"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Configurações do Memory Chess",
+      "description": "Personalize as configurações e preferências do seu jogo Memory Chess."
+    },
+    "difficulty": "Dificuldade",
+    "memorizationTime": "Tempo de memorização: {seconds} segundos",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Mostrar as coordenadas do tabuleiro",
+    "home": "Início",
+    "playGame": "Jogar"
+  },
+  "contact": {
+    "meta": {
+      "title": "Fale com o Memory Chess",
+      "description": "Fale com o Memory Chess para enviar comentários, sugestões de recursos ou propostas comerciais.",
+      "socialTitle": "Fale com o Memory Chess",
+      "socialDescription": "Envie comentários, sugestões de recursos e propostas de parceria para o Memory Chess."
+    },
+    "title": "Fale conosco",
+    "sentTitle": "Mensagem enviada!",
+    "sentBody": "Obrigado pelo contato. Responderemos em breve.",
+    "redirecting": "Redirecionando para a página inicial...",
+    "name": "Nome",
+    "namePlaceholder": "Seu nome",
+    "email": "E-mail",
+    "emailPlaceholder": "seu.email@exemplo.com",
+    "inquiryType": "Tipo de contato",
+    "inquiryPlaceholder": "Escolha o tipo de contato",
+    "message": "Mensagem",
+    "messagePlaceholder": "Escreva sua mensagem aqui...",
+    "send": "Enviar mensagem",
+    "sending": "Enviando...",
+    "types": {
+      "feedback": "Comentário",
+      "featureRequest": "Sugestão de recurso",
+      "general": "Dúvida geral",
+      "business": "Oportunidade de negócio"
+    },
+    "validation": {
+      "nameTooShort": "O nome precisa ter pelo menos 2 caracteres.",
+      "emailInvalid": "Digite um e-mail válido.",
+      "typeRequired": "Escolha um tipo de contato.",
+      "messageTooShort": "A mensagem precisa ter pelo menos 10 caracteres."
+    },
+    "errors": {
+      "submitFailed": "Não foi possível enviar o formulário{details}",
+      "generic": "Ocorreu um erro ao enviar o formulário. Tente novamente."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Aprenda xadrez um passo claro de cada vez",
+      "description": "Guias práticos de xadrez para iniciantes: visão de tabuleiro, visualização, memória, cálculo, prevenção de erros e prática diária."
+    },
+    "title": "Aprenda xadrez um passo claro de cada vez",
+    "startBeginner": "Comece o guia para iniciantes",
+    "playCta": "Jogar Memory Chess",
+    "startHere": "Comece aqui",
+    "pickNext": "Escolha o próximo passo",
+    "chooseGoal": "Escolha um objetivo",
+    "readRecallPlay": "Leia, lembre, jogue",
+    "turnIdea": "Transforme uma ideia em prática",
+    "startRound": "Comece uma rodada de memória",
+    "eyebrow": "Aprenda com o Memory Chess",
+    "heroDescription": "Escolha o que você quer melhorar. Cada guia explica uma ideia útil em linguagem simples e depois propõe um exercício curto.",
+    "pickNextDescription": "Escolha a frase que mais se parece com o seu jogo atual. Não existe ordem perfeita, e você pode mudar de caminho quando quiser.",
+    "allGuides": "Todos os {count} guias",
+    "chooseGoalDescription": "Cada caminho vai de um primeiro exercício simples até um hábito de treino mais completo.",
+    "guideNumber": "Guia {number}",
+    "turnIdeaDescription": "Leia um guia, jogue uma partida curta enquanto a ideia está fresca e perceba o que foi fácil lembrar e o que precisa de outra tentativa.",
+    "paths": {
+      "newToChess": {
+        "label": "Novo no xadrez",
+        "title": "Monte um plano de evolução simples",
+        "description": "Comece pelos fundamentos e transforme uma ideia útil num hábito diário que dá para repetir."
+      },
+      "missingThreats": {
+        "label": "Deixando passar ameaças simples",
+        "title": "Treine a varredura do tabuleiro inteiro",
+        "description": "Use uma rotina curta de checagem para notar peças soltas, ataques e perigos antes de jogar."
+      },
+      "losingPosition": {
+        "label": "Perdendo a posição na cabeça",
+        "title": "Fortaleça visualização e memória",
+        "description": "Pratique manter uma imagem pequena e precisa do tabuleiro antes de acrescentar sequências de lances mais longas."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Novidades",
+      "description": "Veja os recursos, melhorias e correções mais recentes do Memory Chess no registro oficial.",
+      "socialTitle": "Novidades do Memory Chess",
+      "socialDescription": "Veja os recursos, melhorias e correções mais recentes do Memory Chess."
+    },
+    "title": "Novidades",
+    "latest": "Mais recente",
+    "bannerCta": "Ver novidades",
+    "bannerLabel": "Atualização do Memory Chess",
+    "eyebrow": "Atualizações",
+    "changesIn": "Mudanças da versão {version}"
+  },
+  "learnArticle": {
+    "faqLabel": "Perguntas frequentes",
+    "whatChangesTitle": "O que melhora primeiro",
+    "trackThisWeekTitle": "O que acompanhar esta semana",
+    "trackThisWeekBody": "Escolha uma medida simples: erros graves por partida, tabuleiros lembrados corretamente ou quantos lances você consegue visualizar com clareza.",
+    "startHereSummary": "Você pode testar estes passos hoje.",
+    "drillsSummary": "Cada exercício deixa você praticar a lição no Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situação",
+      "before": "Antes de treinar",
+      "after": "Depois de treinar"
+    },
+    "mistakesTitle": "Erros comuns a evitar",
+    "whatToDoInsteadTitle": "O que fazer no lugar",
+    "planSummary": "Siga estes passos antes de deixar o treino mais difícil ou mais longo.",
+    "breadcrumbHome": "Início",
+    "breadcrumbLearn": "Aprender",
+    "eyebrow": "Guia de xadrez simples",
+    "updated": "Atualizado em {date}",
+    "reviewedBy": "Revisado por {name}",
+    "startHere": "Comece aqui",
+    "whatYouWillLearn": "O que você vai aprender",
+    "whoThisIsFor": "Para quem é",
+    "browseAllGuides": "Ver todos os guias",
+    "onThisPage": "Nesta página",
+    "aimFor": "Objetivo:",
+    "tryItNow": "Experimente agora",
+    "tryItNowTitle": "Jogue uma partida curta antes de continuar lendo.",
+    "tryItNowBody": "Use os passos enquanto estão frescos e volte com algo concreto que você percebeu.",
+    "startTrainingRound": "Começar uma rodada de treino",
+    "keepLearning": "Continue aprendendo",
+    "whatToLearnNext": "O que aprender em seguida",
+    "whatToLearnNextBody": "Escolha o guia que melhor combina com o próximo problema que você quer resolver.",
+    "readThisGuide": "Ler este guia",
+    "putItOnTheBoard": "Leve para o tabuleiro",
+    "practiceTitle": "Pratique no Memory Chess",
+    "practiceBody": "Use um exercício curto para praticar o que você acabou de aprender.",
+    "goalLabel": "Meta:",
+    "commonQuestions": "Perguntas comuns",
+    "editorialNotes": "Notas editoriais",
+    "aboutThisGuide": "Sobre este guia",
+    "aboutBody": "Os guias do Memory Chess são escritos para iniciantes e jogadores em evolução. Cada guia dá uma resposta direta, passos práticos e uma forma útil de acompanhar o progresso.",
+    "publishedLine": "Publicado em {published}. Revisado e atualizado pela última vez em {updated} por {reviewer}.",
+    "referenceLinks": "Links de referência",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Reduzir erros graves",
+        "description": "Crie o hábito de checar ameaças mais rápido e pare de deixar peças penduradas em posições simples.",
+        "accent": "Checagem de ameaças"
+      },
+      "visualization": {
+        "label": "Melhorar a visualização",
+        "description": "Segure o tabuleiro na cabeça por mais tempo para que o cálculo fique mais calmo e claro.",
+        "accent": "Controle mental do tabuleiro"
+      },
+      "memory": {
+        "label": "Treinar a memória",
+        "description": "Melhore a lembrança do tabuleiro e a retenção de padrões sem transformar o treino em lição de teoria.",
+        "accent": "Lembrança e retenção"
+      },
+      "routine": {
+        "label": "Criar uma rotina diária",
+        "description": "Use um plano curto que combine exercícios, partidas e revisão.",
+        "accent": "Constância"
+      }
+    }
+  }
+}

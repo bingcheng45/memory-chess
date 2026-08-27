@@ -1,130 +1,142 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import {
   EditorialActionLink,
   EditorialHero,
   EditorialPageShell,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
-import {
-  getLearnPagesByGoal,
-  LEARN_GOALS,
-  LEARN_PAGES,
-  type LearnGoalId,
-} from "@/lib/seo/learnPages";
+import { useTranslations } from "next-intl";
+import type { LearnPageContent } from "@/lib/seo/learn/schema";
+import type { LearnGoal } from "@/lib/seo/learn";
+import { learnContentLocale } from "@/lib/seo/learn";
+import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 
 const SITE_URL = "https://thememorychess.com";
 
+// `id` keys into the `learnHub.paths` messages; `href` is language-neutral.
+// Slugs stay English across every locale so inbound links keep working.
 const QUICK_STARTS = [
-  {
-    label: "New to chess",
-    title: "Build a simple improvement plan",
-    description:
-      "Start with the fundamentals, then turn one useful idea into a repeatable daily habit.",
-    href: "/learn/how-to-get-better-at-chess-for-beginners",
-  },
-  {
-    label: "Missing simple threats",
-    title: "Train your whole-board scan",
-    description:
-      "Use a short checking routine to notice loose pieces, attacks, and danger before you move.",
-    href: "/learn/chess-board-vision-drills",
-  },
-  {
-    label: "Losing the position in your head",
-    title: "Strengthen visualization and recall",
-    description:
-      "Practice holding a small, accurate picture of the board before adding longer move sequences.",
-    href: "/learn/chess-visualization-exercises",
-  },
+  { id: "newToChess", href: "/learn/how-to-get-better-at-chess-for-beginners" },
+  { id: "missingThreats", href: "/learn/chess-board-vision-drills" },
+  { id: "losingPosition", href: "/learn/chess-visualization-exercises" },
 ] as const;
 
-const goalEntries = Object.entries(LEARN_GOALS) as Array<
-  [LearnGoalId, (typeof LEARN_GOALS)[LearnGoalId]]
->;
 
-const learnHubSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "CollectionPage",
-      "@id": `${SITE_URL}/learn#webpage`,
-      url: `${SITE_URL}/learn`,
-      name: "Chess Learning Center for Beginners",
-      description:
-        "Practical beginner chess guides for board vision, visualization, memory, calculation, blunder prevention, and daily practice.",
-      isPartOf: {
-        "@type": "WebSite",
-        "@id": `${SITE_URL}/#website`,
-        name: "Memory Chess",
-        url: SITE_URL,
-      },
-      mainEntity: { "@id": `${SITE_URL}/learn#guides` },
-    },
-    {
-      "@type": "ItemList",
-      "@id": `${SITE_URL}/learn#guides`,
-      name: "Memory Chess learning guides",
-      numberOfItems: LEARN_PAGES.length,
-      itemListElement: LEARN_PAGES.map((page, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: page.title,
-        url: `${SITE_URL}/learn/${page.slug}`,
-      })),
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Learn",
-          item: `${SITE_URL}/learn`,
-        },
-      ],
-    },
-  ],
+type LearnHubSchemaInput = {
+  allPages: LearnPageContent[];
+  locale: string;
+  name: string;
+  description: string;
 };
 
-export default function LearnHubPageContent() {
+/**
+ * Page-scoped nodes carry the active locale so the hub's JSON-LD agrees with
+ * its own canonical and with the sitemap. The WebSite node keeps the bare
+ * origin -- it is one entity for the whole site, not one per language.
+ */
+function buildLearnHubSchema({
+  allPages,
+  locale,
+  name,
+  description,
+}: LearnHubSchemaInput) {
+  const homeUrl = localizedUrl("/", locale);
+  const hubUrl = localizedUrl("/learn", locale);
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${hubUrl}#webpage`,
+        url: hubUrl,
+        name,
+        description,
+        inLanguage: languageTag(locale),
+        isPartOf: {
+          "@type": "WebSite",
+          "@id": `${SITE_URL}/#website`,
+          name: "Memory Chess",
+          url: SITE_URL,
+        },
+        mainEntity: { "@id": `${hubUrl}#guides` },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${hubUrl}#guides`,
+        name: "Memory Chess learning guides",
+        numberOfItems: allPages.length,
+        itemListElement: allPages.map((page, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: page.title,
+          url: localizedUrl(`/learn/${page.slug}`, locale),
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: homeUrl },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Learn",
+            item: hubUrl,
+          },
+        ],
+      },
+    ],
+  };
+}
+
+type LearnHubProps = {
+  allPages: LearnPageContent[];
+  goals: LearnGoal[];
+  locale: string;
+};
+
+export default function LearnHubPageContent({
+  allPages,
+  goals,
+  locale,
+}: LearnHubProps) {
+  const t = useTranslations("learnHub");
+  const learnHubSchema = buildLearnHubSchema({
+    allPages,
+    locale: learnContentLocale(locale),
+    name: t("meta.title"),
+    description: t("meta.description"),
+  });
   return (
     <EditorialPageShell>
       <EditorialHero
-        eyebrow="Learn with Memory Chess"
-        title="Learn Chess One Clear Step at a Time"
-        description="Choose what you want to improve. Each guide explains one useful idea in plain English, then gives you a short drill to try."
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        description={t("heroDescription")}
       >
         <div className="mt-7 flex flex-wrap justify-center gap-3">
-          <EditorialActionLink href="/learn/how-to-get-better-at-chess-for-beginners">
-            Start the beginner guide
-          </EditorialActionLink>
-          <EditorialActionLink href="/game" variant="secondary">
-            Play Memory Chess
-          </EditorialActionLink>
+          <EditorialActionLink href="/learn/how-to-get-better-at-chess-for-beginners">{t("startBeginner")}</EditorialActionLink>
+          <EditorialActionLink href="/game" variant="secondary">{t("playCta")}</EditorialActionLink>
         </div>
       </EditorialHero>
 
       <div className={EDITORIAL_STYLES.wideColumn}>
         <section aria-labelledby="next-step-heading" className="pb-10 sm:pb-12">
           <div className="mb-7">
-            <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>Start here</p>
+            <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>{t("startHere")}</p>
             <h2
               id="next-step-heading"
               className={EDITORIAL_STYLES.sectionTitle}
-            >
-              Pick Your Next Step
-            </h2>
+            >{t("pickNext")}</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
-              Choose the sentence that sounds most like your current game. There
-              is no perfect order, and you can change paths at any time.
+              {t("pickNextDescription")}
             </p>
           </div>
 
           <ol className="border-y border-white/10">
             {QUICK_STARTS.map((item, index) => (
               <li
-                key={item.href}
+                key={item.id}
                 className="border-b border-white/10 last:border-b-0"
               >
                 <Link
@@ -136,13 +148,13 @@ export default function LearnHubPageContent() {
                   </span>
                   <span>
                     <span className="block text-sm font-medium text-peach-300">
-                      {item.label}
+                      {t(`paths.${item.id}.label`)}
                     </span>
                     <span className="mt-1 block text-xl font-semibold tracking-tight text-white">
-                      {item.title}
+                      {t(`paths.${item.id}.title`)}
                     </span>
                     <span className="mt-2 block text-sm leading-6 text-text-muted sm:text-base sm:leading-7">
-                      {item.description}
+                      {t(`paths.${item.id}.description`)}
                     </span>
                   </span>
                   <span
@@ -163,22 +175,20 @@ export default function LearnHubPageContent() {
         >
           <div className="mb-3">
             <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>
-              All {LEARN_PAGES.length} guides
+              {t("allGuides", { count: allPages.length })}
             </p>
             <h2
               id="choose-goal-heading"
               className={EDITORIAL_STYLES.sectionTitle}
-            >
-              Choose a Goal
-            </h2>
+            >{t("chooseGoal")}</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
-              Each path moves from a simple first exercise toward a more
-              complete practice habit.
+              {t("chooseGoalDescription")}
             </p>
           </div>
 
-          {goalEntries.map(([goalId, goal]) => {
-            const pages = getLearnPagesByGoal(goalId);
+          {goals.map((goal) => {
+            const goalId = goal.id;
+            const pages = allPages.filter((page) => page.goal === goalId);
 
             return (
               <section
@@ -208,7 +218,9 @@ export default function LearnHubPageContent() {
                         className="group grid gap-2 py-5 sm:grid-cols-[6rem_1fr_auto] sm:items-start sm:gap-5"
                       >
                         <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
-                          Guide {String(index + 1).padStart(2, "0")}
+                          {t("guideNumber", {
+                            number: String(index + 1).padStart(2, "0"),
+                          })}
                         </span>
                         <span>
                           <span className="block text-lg font-semibold leading-6 text-white transition-colors group-hover:text-peach-200">
@@ -237,20 +249,13 @@ export default function LearnHubPageContent() {
         </section>
 
         <section className="border-t border-white/10 pt-10 text-center sm:pt-12">
-          <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>
-            Read, recall, play
-          </p>
-          <h2 className="text-2xl font-semibold tracking-tight text-white">
-            Turn one idea into practice
-          </h2>
+          <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>{t("readRecallPlay")}</p>
+          <h2 className="text-2xl font-semibold tracking-tight text-white">{t("turnIdea")}</h2>
           <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-text-muted">
-            Read one guide, play one short round while the idea is fresh, then
-            notice what was easy to remember and what needs another try.
+            {t("turnIdeaDescription")}
           </p>
           <div className="mt-6 flex justify-center">
-            <EditorialActionLink href="/game">
-              Start a memory round
-            </EditorialActionLink>
+            <EditorialActionLink href="/game">{t("startRound")}</EditorialActionLink>
           </div>
         </section>
       </div>

@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess parle maintenant votre langue",
+    "summary": "Le jeu et tous les guides d’Apprendre sont désormais disponibles en 24 langues, et le site démarre dans la vôtre.",
+    "groups": [
+      {
+        "title": "24 langues",
+        "changes": [
+          "Memory Chess est maintenant disponible en 24 langues : anglais, espagnol, russe, portugais brésilien, allemand, français, hindi, italien, chinois simplifié, turc, suédois, néerlandais, polonais, indonésien, norvégien, finnois, roumain, vietnamien, tchèque, japonais, coréen, chinois traditionnel, danois et hongrois.",
+          "Tout ce que vous lisez en jouant est traduit : la page d’accueil, les paramètres, le chrono, l’écran de résultats, le classement et même ces nouveautés."
+        ]
+      },
+      {
+        "title": "Les 16 guides d’Apprendre, dans toutes les langues",
+        "changes": [
+          {
+            "segments": [
+              "Chaque guide de la section ",
+              {
+                "text": "Apprendre"
+              },
+              " a été entièrement traduit. Les étapes à suivre, les exercices, le plan de la semaine et les questions finales se lisent naturellement dans votre langue, avec des termes d’échecs qui correspondent à la façon dont les joueurs parlent vraiment."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Changez de langue quand vous voulez",
+        "changes": [
+          "Un globe en haut de chaque page ouvre la liste des langues. Chaque langue est écrite dans son propre nom, pour que vous trouviez la vôtre sans passer par l’anglais.",
+          "Choisir une langue vous laisse exactement là où vous étiez, et Memory Chess se souvient de votre choix lors de votre prochaine visite."
+        ]
+      },
+      {
+        "title": "Nous essayons de deviner juste avant même que vous demandiez",
+        "changes": [
+          "Les nouveaux visiteurs démarrent désormais dans la langue suggérée par leur navigateur ou leur région, quand nous la proposons. Si la supposition est mauvaise, le globe est juste là pour corriger le tir."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Des parties plus fluides, des résultats plus clairs",
+    "summary": "Votre échiquier ne bouge plus, les positions aléatoires ont davantage de sens et les résultats sont plus faciles à relire.",
+    "groups": [
+      {
+        "title": "Un jeu plus stable",
+        "changes": [
+          "Grâce aux retours de joueurs, l’échiquier reste maintenant au même endroit quand la mémorisation s’arrête et que le placement commence. Les commandes et le sélecteur de pièces s’alignent eux aussi sur l’échiquier.",
+          "Les en-têtes de page, les commandes de son et les espacements restent plus cohérents au fil de la partie. Les pièces et les coordonnées de l’échiquier ne peuvent plus être sélectionnées par erreur."
+        ]
+      },
+      {
+        "title": "De meilleures positions aléatoires",
+        "changes": [
+          "Grâce à un joueur qui l’a signalé sur Reddit, les positions aléatoires ne placent plus les rois côte à côte, ni deux fous d’un même camp sur des cases de même couleur, ni des pions sur la première ou la huitième rangée, ni les deux rois en échec."
+        ]
+      },
+      {
+        "title": "Des résultats plus clairs",
+        "changes": [
+          "Après chaque partie, vous pouvez maintenant comparer la position que vous avez mémorisée avec l’échiquier que vous avez validé. Des repères nets montrent les pièces correctes, incorrectes et oubliées.",
+          "Votre précision ainsi que les actions principales de rejeu et de classement restent désormais groupées en haut des résultats. Les pièces oubliées sont entourées d’un contour noir en pointillés, tout en laissant l’échiquier visible en dessous."
+        ]
+      },
+      {
+        "title": "Une fin de manche plus nette",
+        "changes": [
+          "Quand vous validez, le chrono se fige une seconde pour vous laisser voir votre temps définitif et votre échiquier final avant l’affichage des résultats. Un bref « TERMINÉ ! » marque la fin de la manche, et le chrono de placement affiche maintenant les millisecondes."
+        ]
+      },
+      {
+        "title": "Quelques statistiques pour tout le monde !",
+        "description": "Voici un aperçu des envois au classement public jusqu’au 16 août 2026.",
+        "tables": [
+          {
+            "caption": "Précision",
+            "columns": ["Envois au classement", "Jusqu’à fin 2025", "2026"],
+            "rows": [
+              {
+                "label": "Précision moyenne",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Taux de score parfait",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Précision moyenne en Moyen",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Taux de score parfait en Moyen",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Précision moyenne en Difficile",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Précision moyenne en Grand maître",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Vitesse d’envoi",
+            "columns": [
+              "Temps de résolution d’un score parfait",
+              "Jusqu’à fin 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Toutes difficultés, médiane",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Facile, médiane",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Moyen, médiane",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Sur 50 combinaisons de nom de joueur et de difficulté revenues plusieurs fois, 33 ont donné une résolution plus rapide au dernier essai et 17 une résolution plus lente. La précision a nettement progressé dans l’ensemble, mais prendre plus de temps peut aussi mener à un meilleur score. Ces chiffres portent sur les envois volontaires au classement, pas sur toutes les parties, et le classement Facile se limite à ses 200 premières entrées."
+      },
+      {
+        "title": "Merci de jouer",
+        "changes": [
+          {
+            "segments": [
+              "Un immense merci à toutes celles et ceux qui ont permis à Memory Chess de dépasser les 800 joueurs par mois et les 32 000 parties jouées. Nous remercions tout particulièrement celles et ceux qui nous ont envoyé leurs idées, leurs encouragements et leurs signalements de bugs via la page ",
+              {
+                "text": "Nous contacter"
+              },
+              " ou le formulaire de retour de fin de partie. Chaque partie et chaque message aident Memory Chess à grandir."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Apprenez davantage. Jouez plus confortablement.",
+    "summary": "De nouveaux guides, une page d’accueil plus claire, des sons plus discrets et un moyen simple de nous écrire.",
+    "groups": [
+      {
+        "title": "Apprendre et progresser",
+        "changes": [
+          "Découvrez de nouveaux guides faciles à suivre sur la mémoire et la visualisation aux échecs.",
+          "La page d’accueil, repensée, explique maintenant comment Memory Chess entraîne votre mémoire spatiale."
+        ]
+      },
+      {
+        "title": "Améliorations du quotidien",
+        "changes": [
+          "Le jeu sur mobile, la mise en place des pièces et le classement sont plus fiables.",
+          "Les sons du jeu démarrent maintenant à un volume plus doux de 10 %."
+        ]
+      },
+      {
+        "title": "Retours et nouveautés",
+        "changes": [
+          "Vous pouvez maintenant noter le jeu après une partie et suivre les nouvelles versions dans les Nouveautés. La demande de retour apparaît au maximum une fois par jour.",
+          "Une nouvelle page Confidentialité explique en mots simples les réglages enregistrés, les statistiques d’usage, vos retours et les futures publicités."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Choisir ses pièces devient plus agréable",
+    "summary": "Choisir les pièces blanches ou noires est maintenant plus clair et plus simple.",
+    "groups": [
+      {
+        "title": "Choix des pièces",
+        "changes": [
+          "Le sélecteur de couleur fait peau neuve.",
+          "On voit plus facilement quelle couleur vous avez choisie.",
+          "Les boutons sont plus fluides et plus cohérents."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Mieux sur téléphone",
+    "summary": "Memory Chess est maintenant plus simple et plus confortable à jouer sur petit écran.",
+    "groups": [
+      {
+        "title": "Jeu sur mobile",
+        "changes": [
+          "Le jeu, le chrono et le bouton Passer s’adaptent mieux aux petits écrans.",
+          "Les appuis et les espacements sont plus agréables sur mobile.",
+          "Les sons se comportent mieux au fil de la partie."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Que les parties de mémoire commencent !",
+    "summary": "La toute première version de Memory Chess est prête à jouer.",
+    "groups": [
+      {
+        "title": "La première version",
+        "changes": [
+          "Mémorisez une position d’échecs, puis reconstituez-la de mémoire.",
+          "Choisissez votre difficulté, le nombre de pièces, le temps et les coordonnées de l’échiquier.",
+          "Découvrez votre score et votre temps après chaque partie."
+        ]
+      }
+    ]
+  }
+]

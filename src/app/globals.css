@@ -36,6 +36,35 @@ body {
   position: relative;
 }
 
+/*
+ * CJK locales use the platform UI font rather than a downloaded webfont -- see
+ * src/lib/fonts.ts for why. Applied to <body> by the locale layout, so the
+ * variable is overridden before `body` reads it.
+ *
+ * Each script gets its own stack: a Simplified Chinese face renders some
+ * Traditional characters with the wrong regional glyph shapes, and Japanese
+ * kanji differ again from both.
+ */
+.font-locale-zh-cn {
+  --font-geist-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+}
+
+.font-locale-zh-tw {
+  --font-geist-sans: "PingFang TC", "Hiragino Sans CNS", "Microsoft JhengHei",
+    "Noto Sans CJK TC", "Source Han Sans TC", sans-serif;
+}
+
+.font-locale-ja {
+  --font-geist-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic UI", "Meiryo", "Noto Sans CJK JP", sans-serif;
+}
+
+.font-locale-ko {
+  --font-geist-sans: "Apple SD Gothic Neo", "Malgun Gothic",
+    "Noto Sans CJK KR", "Nanum Gothic", sans-serif;
+}
+
 /* Game container styles for responsive layout */
 .game-container {
   width: 100%;

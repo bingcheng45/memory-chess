@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { analyticsTracker } from '@/lib/utils/analyticsTracker';
-import type { LearnPageContent } from '@/lib/seo/learnPages';
+import type { LearnPageContent } from '@/lib/seo/learn/schema';
 
 type LearnArticleTrackingProps = {
   page: LearnPageContent;

@@ -2,6 +2,7 @@
 
 import React, { useMemo, useRef, useState, useCallback } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import type { BoardDimensions } from "@/hooks/useResponsiveBoard";
 import { ChessPiece, Position } from "@/types/chess";
 import { getPieceImageUrl } from "@/utils/chessPieces";
@@ -34,6 +35,22 @@ export default function ResponsiveChessBoard({
   renderOverlay,
   squareFeedback,
 }: ResponsiveChessBoardProps) {
+  const t = useTranslations("game.board");
+
+  /**
+   * Screen-reader description of a piece, e.g. "white pawn".
+   *
+   * Colour and type are internal enum values, so the colour+piece phrase is
+   * looked up whole rather than composed from two keys. Composing it would
+   * force every gendered language to agree an adjective with a noun it cannot
+   * see -- German needs "weisser Bauer" but "weisse Dame", Russian "белая
+   * пешка" but "белый конь" -- which no single template can express.
+   */
+  const describePiece = useCallback(
+    (piece: ChessPiece) => t(`pieces.${piece.color}.${piece.type}`),
+    [t],
+  );
+
   // Touch handling state
   const [lastTapPosition, setLastTapPosition] = useState<string | null>(null);
   const [lastTapTime, setLastTapTime] = useState<number>(0);
@@ -213,7 +230,20 @@ export default function ResponsiveChessBoard({
                 onKeyDown={handleKeyDown}
                 tabIndex={isInteractive ? 0 : -1}
                 role={isInteractive ? "button" : "presentation"}
-                aria-label={`${squareName}${piece ? ` with ${piece.color} ${piece.type}` : ""}${feedback ? `, ${feedback}` : ""}`}
+                aria-label={(() => {
+                  const base = piece
+                    ? t("squareWithPiece", {
+                        square: squareName,
+                        piece: describePiece(piece),
+                      })
+                    : squareName;
+                  return feedback
+                    ? t("squareWithFeedback", {
+                        label: base,
+                        feedback: t(`feedback.${feedback}`),
+                      })
+                    : base;
+                })()}
                 data-coordinate={squareName}
                 data-feedback={feedback}
                 className="flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
@@ -256,7 +286,7 @@ export default function ResponsiveChessBoard({
                   <div className="pointer-events-none">
                     <Image
                       src={getPieceImageUrl(piece.type, piece.color)}
-                      alt={`${piece.color} ${piece.type}`}
+                      alt={describePiece(piece)}
                       width={pieceSize}
                       height={pieceSize}
                       className="transform-gpu drop-shadow-sm"

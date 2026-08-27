@@ -1,0 +1,490 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "更新紀錄",
+      "contactUs": "聯絡我們",
+      "privacy": "隱私權"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. 保留一切權利。",
+      "followOnX": "在 Twitter/X 上追蹤我們",
+      "productHuntAlt": "Memory Chess - 用西洋棋訓練空間想像力 | Product Hunt"
+    },
+    "sound": {
+      "mute": "靜音",
+      "unmute": "開啟音效",
+      "on": "音效已開啟",
+      "off": "音效已關閉",
+      "volume": "音量"
+    },
+    "language": {
+      "change": "切換語言。目前語言：{language}",
+      "current": "語言：{language}",
+      "select": "選擇語言"
+    },
+    "otherApps": {
+      "title": "作者的其他應用程式",
+      "visitWebsite": "前往網站 →",
+      "iconAlt": "{name} 應用程式圖示"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Memory Chess：免費西洋棋記憶與想像力遊戲",
+      "description": "記住一個西洋棋局面，憑記憶把它還原，立刻拿到分數。免費遊玩，訓練棋盤視野、想像力與空間記憶。",
+      "socialTitle": "Memory Chess：免費西洋棋記憶與想像力遊戲",
+      "socialDescription": "記住一個局面，把它還原，立刻拿到分數。免費遊玩，不必註冊帳號。",
+      "twitterTitle": "Memory Chess：免費西洋棋記憶遊戲",
+      "twitterDescription": "記住一個局面，把它還原，一局一局提升你的棋盤視野。"
+    },
+    "hero": {
+      "title": "訓練你的西洋棋記憶力與盤面想像力",
+      "subtitle": "記住一個棋局，憑記憶重新擺回來，立刻取得分數。每一輪都讓你的棋盤視野更清楚。",
+      "freeToPlay": "免費遊玩，不必註冊。你也可以在<link>排行榜</link>上比較自己的成績。",
+      "gamesPlayed": "已進行對局：{count}"
+    },
+    "cta": {
+      "play": "開始玩 Memory Chess",
+      "leaderboard": "查看排行榜",
+      "playFree": "免費玩一局"
+    },
+    "video": {
+      "title": "看看 Memory Chess 怎麼玩",
+      "subtitle": "一段簡短導覽：如何觀察棋盤、重建棋局，以及看懂你的分數。",
+      "iframeTitle": "Memory Chess 玩法介紹",
+      "credit": "影片：Colin Galen《A New Way To Train Your Vision》"
+    },
+    "howItWorks": {
+      "eyebrow": "玩法說明",
+      "title": "一套簡單的棋盤記憶訓練",
+      "subtitle": "每一輪只有三個簡單步驟：觀察棋局、重建棋局、從分數中檢討。",
+      "steps": {
+        "observe": {
+          "title": "觀察",
+          "description": "記住每顆棋子的位置。留意棋子的組合、線路，以及可當作參考點的空格。"
+        },
+        "recreate": {
+          "title": "重建",
+          "description": "棋盤清空後，把每顆棋子放回你記得的格子上。"
+        },
+        "improve": {
+          "title": "進步",
+          "description": "查看分數，找出漏掉的地方，再用更多棋子或更短時間挑戰一次。"
+        }
+      }
+    },
+    "board": {
+      "study": "觀察棋盤",
+      "rebuild": "憑記憶重建"
+    },
+    "learn": {
+      "eyebrow": "學習中心",
+      "title": "淺顯易懂的西洋棋指南",
+      "description": "學習提升棋盤視野、盤面想像、算路與記憶力的實用方法。每篇指南都附有可以馬上上手的練習。",
+      "browseCta": "瀏覽西洋棋指南",
+      "beginnerCta": "從新手指南開始"
+    },
+    "faq": {
+      "title": "關於 Memory Chess 的常見問題",
+      "items": [
+        {
+          "question": "Memory Chess 是什麼？",
+          "answer": "Memory Chess 是一款免費的棋盤記憶遊戲。你先用很短的時間觀察一個棋局，接著憑記憶把它重建起來，並依照擺對的棋子數量取得分數。"
+        },
+        {
+          "question": "要怎麼玩？",
+          "answer": "先選擇棋子數量和觀察棋盤的時間。棋局消失後，把棋子放回你記得的格子上。送出答案就能看到準確率與所花時間。"
+        },
+        {
+          "question": "新手可以玩 Memory Chess 嗎？",
+          "answer": "可以。你不需要懂開局，也不用算棋。先從較少的棋子和較長的觀察時間開始，覺得有把握了再提高難度。"
+        },
+        {
+          "question": "這如何訓練盤面想像力？",
+          "answer": "每一輪都是針對性的練習：把棋局記在腦中，並回想每顆棋子的位置。分數會告訴你哪些棋局上手輕鬆，哪些還需要多加練習。"
+        },
+        {
+          "question": "記棋盤時該注意什麼？",
+          "answer": "先從容易定位的參考點著手，例如王、后、四角和邊線格。接著去找棋子的組合、直線、斜線和空白區域，而不是逐顆去背每個棋子。"
+        },
+        {
+          "question": "要怎麼提高難度？",
+          "answer": "增加棋子數量、縮短觀察時間，或隱藏棋盤座標。每次只調整一項設定，才看得出哪一項影響最大。"
+        },
+        {
+          "question": "Memory Chess 免費嗎？",
+          "answer": "免費。不必註冊即可遊玩。是否要在排行榜上留名由你自己決定。"
+        },
+        {
+          "question": "應該多久練習一次？",
+          "answer": "維持規律，每次專注玩幾輪，就是很好的開始。每次時間別太長，確保你還能仔細觀察每一個棋局。"
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "線上遊玩 Memory Chess",
+      "description": "線上遊玩 Memory Chess，透過計時挑戰訓練棋盤想像力、記憶力與西洋棋的棋形辨識能力。",
+      "socialTitle": "線上遊玩 Memory Chess",
+      "socialDescription": "透過互動式計時挑戰，訓練你的西洋棋盤面想像力與記憶力。"
+    },
+    "hud": {
+      "time": "用時",
+      "submit": "送出",
+      "loading": "正在載入遊戲…",
+      "status": "對局狀態",
+      "controls": "對局操作",
+      "complete": "對局結束",
+      "flash": "完成！"
+    },
+    "config": {
+      "title": "對局設定",
+      "presetsLabel": "難度預設",
+      "presetSummary": "{pieces} 子 / {seconds} 秒",
+      "customLabel": "自訂設定",
+      "pieceCount": "棋子數量",
+      "memorizeTime": "記憶時間",
+      "seconds": "{seconds} 秒",
+      "start": "開始訓練",
+      "lastGame": "上一局：重建用時 {time} 秒，準確率 {accuracy}%"
+    },
+    "presets": {
+      "easy": {
+        "label": "簡單",
+        "description": "只有雙方的王，適合入門"
+      },
+      "medium": {
+        "label": "中等",
+        "description": "幾顆棋子，記憶時間也比較充裕"
+      },
+      "hard": {
+        "label": "困難",
+        "description": "棋子更多，記憶時間更短"
+      },
+      "grandmaster": {
+        "label": "特級大師",
+        "description": "為擁有照相式記憶的高手準備"
+      }
+    },
+    "memorize": {
+      "title": "記住這個棋局",
+      "skip": "略過",
+      "hint": "計時結束後棋盤會被清空"
+    },
+    "place": {
+      "title": "擺放棋子",
+      "subtitle": "選擇棋子種類與顏色",
+      "whitePieces": "白方棋子",
+      "blackPieces": "黑方棋子",
+      "selectWhite": "選擇白方棋子",
+      "selectBlack": "選擇黑方棋子",
+      "hint": "點一下格子可放置棋子，再點一次可移除"
+    },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "白方兵",
+          "knight": "白方騎士",
+          "bishop": "白方主教",
+          "rook": "白方城堡",
+          "queen": "白方皇后",
+          "king": "白方國王"
+        },
+        "black": {
+          "pawn": "黑方兵",
+          "knight": "黑方騎士",
+          "bishop": "黑方主教",
+          "rook": "黑方城堡",
+          "queen": "黑方皇后",
+          "king": "黑方國王"
+        }
+      },
+      "feedback": {
+        "correct": "正確",
+        "incorrect": "錯誤",
+        "missing": "遺漏"
+      },
+      "squareWithPiece": "{square}：{piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "選擇{piece}"
+    },
+    "stats": {
+      "title": "對局數據",
+      "currentTime": "目前用時",
+      "piecesToMemorize": "待記憶棋子",
+      "averageAccuracy": "平均準確率"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ 滿分！✨",
+        "excellent": "記憶力超群！",
+        "great": "表現出色！",
+        "wellDone": "做得不錯！",
+        "goodEffort": "有進步！",
+        "keepPracticing": "繼續加油！"
+      },
+      "accuracy": "準確率",
+      "piecesCorrectCaption": "顆棋子正確",
+      "piecesCorrect": "正確棋子",
+      "memorizationTime": "記憶時間",
+      "solutionTime": "重建用時",
+      "recallSpeed": "回想速度",
+      "piecesPerSecond": "{value} 子/秒",
+      "actions": "結果操作",
+      "tryAgain": "再來一局",
+      "newGame": "新對局",
+      "submitToLeaderboard": "送出到排行榜",
+      "viewLeaderboard": "查看排行榜",
+      "dialog": {
+        "submitTitle": "送出到排行榜",
+        "submitDescription": "填寫要顯示在排行榜上的名稱。",
+        "successTitle": "成績已送出！",
+        "successDescription": "你的成績已成功送出到排行榜。",
+        "playerName": "玩家名稱",
+        "playerNamePlaceholder": "請輸入你的名稱",
+        "error": "錯誤：{message}",
+        "submitFailed": "成績送出失敗",
+        "cancel": "取消",
+        "submit": "送出成績",
+        "submitting": "送出中…",
+        "thanks": "感謝參與，{name}！"
+      }
+    },
+    "comparison": {
+      "title": "回顧你的棋局",
+      "subtitle": "把你記住的和你送出的對照一下。",
+      "unavailable": "暫時無法比較棋盤。",
+      "ariaLabel": "棋盤比較",
+      "correct": "正確",
+      "incorrect": "錯誤",
+      "missed": "遺漏",
+      "originalBoard": "需要記住的棋局",
+      "submittedBoard": "你送出的棋局"
+    },
+    "feedback": {
+      "title": "感謝你玩 Memory Chess！",
+      "description": "這次體驗如何？你的回饋能讓每一次訓練都更好。",
+      "prompt": "你會給這款遊戲幾分？",
+      "placeholder": "說說哪裡做得好，或者你希望改進什麼…",
+      "notNow": "暫不評分",
+      "sentTitle": "謝謝你幫助我們改進",
+      "sentBody": "我們已經收到你的意見。",
+      "done": "完成",
+      "commentLabel": "玩起來感覺如何？怎樣會更好？",
+      "commentOptional": "（選填）",
+      "starRating": "{count, plural, other {# 顆星}}",
+      "chooseRating": "請先選擇星級評分。",
+      "sendFailed": "意見送出失敗。請重試，或選擇「暫不評分」。",
+      "send": "送出意見",
+      "sending": "送出中…"
+    }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess 排行榜",
+      "description": "依難度、準確率、記憶速度與重建用時查看 Memory Chess 的頂尖玩家。",
+      "socialTitle": "Memory Chess 排行榜",
+      "socialDescription": "看看玩家在記憶與盤面想像挑戰中的排名。"
+    },
+    "title": "Memory Chess 排名",
+    "subtitle": "用視覺化掌控棋盤。在心算的精準與速度上與全球高手一較高下。",
+    "claimRank": "搶下你的名次",
+    "footnote": "僅顯示前 200 名。依準確率、記憶時間與重建速度排序。",
+    "loading": "正在載入排行榜…",
+    "unavailableTitle": "排行榜暫時無法使用",
+    "unavailableBody": "排行榜服務目前離線。你的對局資料仍會儲存在本機。",
+    "unavailableNote": "你可以繼續遊玩，不受影響。",
+    "retryLater": "請稍後再試",
+    "errorLoading": "載入排名時發生錯誤：{error}",
+    "errors": {
+      "timeout": "要求逾時，請稍後再試。",
+      "parse": "無法解析伺服器回應，請稍後再試。",
+      "status": "要求失敗，狀態碼 {status}",
+      "unexpected": "發生了非預期的錯誤"
+    },
+    "emptyTitle": "來當第一位冠軍吧！",
+    "emptyBody": "這個排行榜還沒有任何紀錄",
+    "emptyCta": "挑戰你的記憶力，登上榜首吧！立即來一局，把你的名字寫進 Memory Chess 的歷史。",
+    "startPlaying": "立即開始遊玩",
+    "you": "你",
+    "columns": {
+      "rank": "名次",
+      "player": "玩家",
+      "pieces": "棋子數",
+      "memorizeTime": "記憶時間",
+      "solutionTime": "重建用時",
+      "date": "日期"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess 設定",
+      "description": "自訂你的 Memory Chess 遊戲設定與偏好。"
+    },
+    "difficulty": "難度",
+    "memorizationTime": "記憶時間：{seconds} 秒",
+    "seconds": "{seconds} 秒",
+    "showCoordinates": "顯示棋盤座標",
+    "home": "首頁",
+    "playGame": "開始遊戲"
+  },
+  "contact": {
+    "meta": {
+      "title": "聯絡 Memory Chess",
+      "description": "如需回饋、功能建議或商務合作，歡迎聯絡 Memory Chess。",
+      "socialTitle": "聯絡 Memory Chess",
+      "socialDescription": "向 Memory Chess 傳送回饋、功能建議與合作提案。"
+    },
+    "title": "聯絡我們",
+    "sentTitle": "訊息已送出！",
+    "sentBody": "感謝你的來信，我們會盡快回覆。",
+    "redirecting": "正在轉往首頁…",
+    "name": "稱呼",
+    "namePlaceholder": "你的稱呼",
+    "email": "電子郵件",
+    "emailPlaceholder": "your.email@example.com",
+    "inquiryType": "詢問類型",
+    "inquiryPlaceholder": "請選擇詢問類型",
+    "message": "訊息",
+    "messagePlaceholder": "在這裡寫下你的訊息…",
+    "send": "送出訊息",
+    "sending": "傳送中…",
+    "types": {
+      "feedback": "回饋",
+      "featureRequest": "功能建議",
+      "general": "一般詢問",
+      "business": "商務合作"
+    },
+    "validation": {
+      "nameTooShort": "稱呼至少需要 2 個字元。",
+      "emailInvalid": "請輸入有效的電子郵件地址。",
+      "typeRequired": "請選擇詢問類型。",
+      "messageTooShort": "訊息至少需要 10 個字元。"
+    },
+    "errors": {
+      "submitFailed": "表單送出失敗{details}",
+      "generic": "送出表單時發生錯誤，請再試一次。"
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "一步一步把西洋棋學清楚",
+      "description": "給初學者的實用西洋棋指南：棋盤視野、盤面想像、記憶力、算路、減少失誤與每日練習。"
+    },
+    "title": "一步一步把西洋棋學清楚",
+    "startBeginner": "開始新手指南",
+    "playCta": "開始玩 Memory Chess",
+    "startHere": "從這裡開始",
+    "pickNext": "選擇你的下一步",
+    "chooseGoal": "選一個目標",
+    "readRecallPlay": "閱讀、回想、上手",
+    "turnIdea": "把一個想法變成練習",
+    "startRound": "開始一輪記憶訓練",
+    "eyebrow": "跟 Memory Chess 一起學",
+    "heroDescription": "選擇你想提升的方面。每篇指南用淺白的語言講清一個有用的觀念，然後給你一個簡短的練習。",
+    "pickNextDescription": "選擇最像你目前棋局的那句話。沒有完美的順序，你隨時可以換一條路徑。",
+    "allGuides": "全部 {count} 篇指南",
+    "chooseGoalDescription": "每條路徑都從一個簡單的入門練習開始，逐步走向更完整的訓練習慣。",
+    "guideNumber": "指南 {number}",
+    "turnIdeaDescription": "讀完一篇指南後，趁印象還新鮮下一局短棋，然後留意哪些內容容易記住、哪些還需要再練一次。",
+    "paths": {
+      "newToChess": {
+        "label": "剛接觸西洋棋",
+        "title": "擬定一份簡單的進步計畫",
+        "description": "先從基本功著手，再把一個有用的方法變成可以每天重複的習慣。"
+      },
+      "missingThreats": {
+        "label": "常常漏看簡單的威脅",
+        "title": "訓練掃視全盤的習慣",
+        "description": "用一套簡短的檢查流程，在落子前發現沒有保護的棋子、對方的攻擊與潛在危險。"
+      },
+      "losingPosition": {
+        "label": "棋局在腦中容易散掉",
+        "title": "強化盤面想像與回想",
+        "description": "先練習在腦中保持一小塊準確的棋盤影像，再逐步加長著法序列。"
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "更新紀錄",
+      "description": "在官方更新紀錄中查看 Memory Chess 的最新功能、改進與修正。",
+      "socialTitle": "Memory Chess 更新紀錄",
+      "socialDescription": "查看 Memory Chess 的最新功能、改進與修正。"
+    },
+    "title": "更新紀錄",
+    "latest": "最新",
+    "bannerCta": "看看有什麼新變化",
+    "bannerLabel": "Memory Chess 更新",
+    "eyebrow": "更新",
+    "changesIn": "版本 {version} 的更新內容"
+  },
+  "learnArticle": {
+    "faqLabel": "常見問題",
+    "whatChangesTitle": "最先進步的是什麼",
+    "trackThisWeekTitle": "這週記錄什麼",
+    "trackThisWeekBody": "只挑一個簡單的指標：每局的失誤次數、正確重建的棋局數量，或者你能清楚想像出幾步棋。",
+    "startHereSummary": "這些步驟今天就能試。",
+    "drillsSummary": "每個練習都能讓你把學到的內容直接用在 Memory Chess 裡。",
+    "comparisonColumns": {
+      "situation": "情況",
+      "before": "練習前",
+      "after": "練習後"
+    },
+    "mistakesTitle": "常見的錯誤",
+    "whatToDoInsteadTitle": "應該怎麼做",
+    "planSummary": "在把練習變難或變長之前，先走完這幾步。",
+    "breadcrumbHome": "首頁",
+    "breadcrumbLearn": "學習",
+    "eyebrow": "簡明西洋棋指南",
+    "updated": "更新於 {date}",
+    "reviewedBy": "審校：{name}",
+    "startHere": "從這裡開始",
+    "whatYouWillLearn": "你將學到什麼",
+    "whoThisIsFor": "適合誰閱讀",
+    "browseAllGuides": "瀏覽全部指南",
+    "onThisPage": "本頁內容",
+    "aimFor": "目標：",
+    "tryItNow": "現在就試試",
+    "tryItNowTitle": "繼續閱讀之前，先下一局短棋。",
+    "tryItNowBody": "趁步驟還新鮮時用一遍，然後帶著一個具體的發現回來。",
+    "startTrainingRound": "開始一輪訓練",
+    "keepLearning": "繼續學習",
+    "whatToLearnNext": "接下來學什麼",
+    "whatToLearnNextBody": "選擇最貼合你下一個想解決的問題的指南。",
+    "readThisGuide": "閱讀這篇指南",
+    "putItOnTheBoard": "把它用到棋盤上",
+    "practiceTitle": "在 Memory Chess 中練習",
+    "practiceBody": "用一個簡短的練習來鞏固剛學到的內容。",
+    "goalLabel": "目標：",
+    "commonQuestions": "常見問題",
+    "editorialNotes": "編輯說明",
+    "aboutThisGuide": "關於這篇指南",
+    "aboutBody": "Memory Chess 的指南是為初學者和正在進步的棋手撰寫的。每篇都給出直接的答案、可執行的步驟，以及一個實用的進步衡量方式。",
+    "publishedLine": "發布於 {published}。最近一次審校與更新為 {updated}，審校人 {reviewer}。",
+    "referenceLinks": "參考連結",
+    "goals": {
+      "reduce-blunders": {
+        "label": "減少失誤",
+        "description": "養成更快檢查威脅的習慣，別再在簡單局面裡白送棋子。",
+        "accent": "威脅檢查"
+      },
+      "visualization": {
+        "label": "提升盤面想像",
+        "description": "把棋盤在腦中多留一會兒，讓算路變得更從容、更清楚。",
+        "accent": "腦中的棋盤"
+      },
+      "memory": {
+        "label": "訓練記憶力",
+        "description": "提升棋局回想與棋形記憶，同時不讓訓練變成背理論。",
+        "accent": "回想與記憶"
+      },
+      "routine": {
+        "label": "建立每日習慣",
+        "description": "使用一個把練習、對局與檢討結合起來的簡短計畫。",
+        "accent": "持之以恆"
+      }
+    }
+  }
+}

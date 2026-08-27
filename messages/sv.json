@@ -1,0 +1,490 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Nyheter",
+      "contactUs": "Kontakta oss",
+      "privacy": "Integritet"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Med ensamrätt.",
+      "followOnX": "Följ oss på Twitter/X",
+      "productHuntAlt": "Memory Chess - Träna din spatiala visualisering med schack | Product Hunt"
+    },
+    "sound": {
+      "mute": "Stäng av ljudet",
+      "unmute": "Slå på ljudet",
+      "on": "Ljud på",
+      "off": "Ljud av",
+      "volume": "Volym"
+    },
+    "language": {
+      "change": "Byt språk. Nuvarande språk: {language}",
+      "current": "Språk: {language}",
+      "select": "Välj språk"
+    },
+    "otherApps": {
+      "title": "Fler appar från skaparen",
+      "visitWebsite": "Besök webbplatsen →",
+      "iconAlt": "Appikon för {name}"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Memory Chess: gratis spel för schackminne och visualisering",
+      "description": "Memorera en schackställning, bygg upp den ur minnet och få poäng direkt. Spela gratis för att träna brädseende, visualisering och rumsligt minne.",
+      "socialTitle": "Memory Chess: gratis spel för schackminne och visualisering",
+      "socialDescription": "Memorera en ställning, bygg upp den och få poäng direkt. Spela gratis utan konto.",
+      "twitterTitle": "Memory Chess: gratis spel för schackminne",
+      "twitterDescription": "Memorera en ställning, bygg upp den och förbättra ditt brädseende runda för runda."
+    },
+    "hero": {
+      "title": "Träna ditt schackminne och din visualisering",
+      "subtitle": "Memorera en schackställning, bygg upp den ur minnet och få poäng direkt. Förbättra din brädkänsla omgång för omgång.",
+      "freeToPlay": "Gratis att spela, inget konto behövs. Du kan också jämföra din poäng på <link>topplistan</link>.",
+      "gamesPlayed": "Spelade partier: {count}"
+    },
+    "cta": {
+      "play": "Spela Memory Chess",
+      "leaderboard": "Visa topplistan",
+      "playFree": "Spela en gratis omgång"
+    },
+    "video": {
+      "title": "Se hur Memory Chess fungerar",
+      "subtitle": "En snabb guide till att studera brädet, bygga upp ställningen och tolka din poäng.",
+      "iframeTitle": "Så spelar du Memory Chess",
+      "credit": "Video: ”A New Way To Train Your Vision” av Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Så fungerar det",
+      "title": "Ett enkelt träningspass för ditt schackminne",
+      "subtitle": "Varje omgång har tre enkla steg: studera ställningen, bygg upp den och lär av din poäng.",
+      "steps": {
+        "observe": {
+          "title": "Observera",
+          "description": "Lägg märke till var varje pjäs står. Leta efter grupper, linjer och tomma rutor du kan använda som hållpunkter."
+        },
+        "recreate": {
+          "title": "Återskapa",
+          "description": "När brädet töms placerar du varje pjäs på den ruta du minns."
+        },
+        "improve": {
+          "title": "Förbättra",
+          "description": "Titta på din poäng, se vad du missade och försök igen med fler pjäser eller kortare tid."
+        }
+      }
+    },
+    "board": {
+      "study": "Studera brädet",
+      "rebuild": "Bygg upp ur minnet"
+    },
+    "learn": {
+      "eyebrow": "Lärcenter",
+      "title": "Enkla schackguider",
+      "description": "Lär dig praktiska sätt att förbättra brädkänsla, visualisering, beräkning och minne. Varje guide har övningar du kan testa direkt.",
+      "browseCta": "Bläddra bland guiderna",
+      "beginnerCta": "Börja med nybörjarguiden"
+    },
+    "faq": {
+      "title": "Frågor om Memory Chess",
+      "items": [
+        {
+          "question": "Vad är Memory Chess?",
+          "answer": "Memory Chess är ett gratis minnesspel på schackbrädet. Du studerar en ställning en kort stund, bygger upp den ur minnet och får poäng utifrån hur många pjäser du placerade rätt."
+        },
+        {
+          "question": "Hur spelar jag?",
+          "answer": "Välj hur många pjäser du vill ha och hur länge du vill studera brädet. När ställningen försvinner placerar du tillbaka pjäserna på de rutor du minns. Skicka in ditt svar för att se träffsäkerhet och tid."
+        },
+        {
+          "question": "Kan nybörjare spela Memory Chess?",
+          "answer": "Ja. Du behöver varken kunna öppningar eller räkna varianter. Börja med färre pjäser och längre tid, och höj svårighetsgraden när du känner dig redo."
+        },
+        {
+          "question": "Hur tränar det schackvisualisering?",
+          "answer": "Varje omgång är fokuserad träning i att hålla en ställning i huvudet och minnas var pjäserna hör hemma. Poängen visar vilka ställningar som känns lätta och var du behöver öva mer."
+        },
+        {
+          "question": "Vad ska jag titta efter när jag memorerar brädet?",
+          "answer": "Börja med enkla hållpunkter som kungar, damer, hörn och kantrutor. Leta sedan efter grupper, linjer, diagonaler och tomma ytor i stället för att minnas varje pjäs för sig."
+        },
+        {
+          "question": "Hur gör jag spelet svårare?",
+          "answer": "Lägg till fler pjäser, korta ner studietiden eller dölj brädets koordinater. Ändra en inställning i taget så ser du vad som gör störst skillnad."
+        },
+        {
+          "question": "Är Memory Chess gratis?",
+          "answer": "Ja. Du kan spela gratis utan att skapa konto. Att lägga till ett namn på topplistan är frivilligt."
+        },
+        {
+          "question": "Hur ofta bör jag öva?",
+          "answer": "Några fokuserade omgångar med jämna mellanrum är en bra början. Håll passen så korta att du fortfarande orkar studera varje ställning noggrant."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Spela Memory Chess online",
+      "description": "Spela Memory Chess online och träna brädvisualisering, minne och mönsterigenkänning i schack med tidsatta utmaningar.",
+      "socialTitle": "Spela Memory Chess online",
+      "socialDescription": "Träna din schackvisualisering och ditt minne med interaktiva, tidsatta utmaningar."
+    },
+    "hud": {
+      "time": "Tid",
+      "submit": "Skicka in",
+      "loading": "Laddar spelet ...",
+      "status": "Spelstatus",
+      "controls": "Spelkontroller",
+      "complete": "Partiet klart",
+      "flash": "KLART!"
+    },
+    "config": {
+      "title": "Spelinställningar",
+      "presetsLabel": "Svårighetsnivåer",
+      "presetSummary": "{pieces} pjäser / {seconds} s",
+      "customLabel": "Egna inställningar",
+      "pieceCount": "Antal pjäser",
+      "memorizeTime": "Memoreringstid",
+      "seconds": "{seconds} s",
+      "start": "Starta träningen",
+      "lastGame": "Senaste partiet: {time} s lösningstid med {accuracy} % träffsäkerhet"
+    },
+    "presets": {
+      "easy": {
+        "label": "Lätt",
+        "description": "Bara kungarna – perfekt för att komma igång"
+      },
+      "medium": {
+        "label": "Medel",
+        "description": "Några pjäser med gott om tid att memorera"
+      },
+      "hard": {
+        "label": "Svår",
+        "description": "Fler pjäser och kortare tid att memorera"
+      },
+      "grandmaster": {
+        "label": "Stormästare",
+        "description": "För schackmästare med fotografiskt minne"
+      }
+    },
+    "memorize": {
+      "title": "Memorera ställningen",
+      "skip": "Hoppa över",
+      "hint": "Brädet töms när tiden går ut"
+    },
+    "place": {
+      "title": "Placera pjäserna",
+      "subtitle": "Välj typ och färg",
+      "whitePieces": "Vita pjäser",
+      "blackPieces": "Svarta pjäser",
+      "selectWhite": "Välj vita pjäser",
+      "selectBlack": "Välj svarta pjäser",
+      "hint": "Tryck på en ruta för att lägga till eller ta bort en pjäs"
+    },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "vit bonde",
+          "knight": "vit springare",
+          "bishop": "vit löpare",
+          "rook": "vitt torn",
+          "queen": "vit dam",
+          "king": "vit kung"
+        },
+        "black": {
+          "pawn": "svart bonde",
+          "knight": "svart springare",
+          "bishop": "svart löpare",
+          "rook": "svart torn",
+          "queen": "svart dam",
+          "king": "svart kung"
+        }
+      },
+      "feedback": {
+        "correct": "rätt",
+        "incorrect": "fel",
+        "missing": "saknas"
+      },
+      "squareWithPiece": "{square} med {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Välj {piece}"
+    },
+    "stats": {
+      "title": "Statistik",
+      "currentTime": "Aktuell tid",
+      "piecesToMemorize": "Pjäser att memorera",
+      "averageAccuracy": "Snittträffsäkerhet"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Full pott! ✨",
+        "excellent": "Utmärkt minne!",
+        "great": "Snyggt jobbat!",
+        "wellDone": "Bra gjort!",
+        "goodEffort": "Bra försök!",
+        "keepPracticing": "Fortsätt öva!"
+      },
+      "accuracy": "Träffsäkerhet",
+      "piecesCorrectCaption": "pjäser rätt",
+      "piecesCorrect": "Rätta pjäser",
+      "memorizationTime": "Memoreringstid",
+      "solutionTime": "Lösningstid",
+      "recallSpeed": "Minneshastighet",
+      "piecesPerSecond": "{value} pjäser/s",
+      "actions": "Åtgärder för resultatet",
+      "tryAgain": "Försök igen",
+      "newGame": "Nytt parti",
+      "submitToLeaderboard": "Skicka till topplistan",
+      "viewLeaderboard": "Visa topplistan",
+      "dialog": {
+        "submitTitle": "Skicka till topplistan",
+        "submitDescription": "Skriv namnet som ska visas på topplistan.",
+        "successTitle": "Resultatet skickat!",
+        "successDescription": "Ditt resultat har lagts till på topplistan.",
+        "playerName": "Spelarnamn",
+        "playerNamePlaceholder": "Skriv ditt namn",
+        "error": "Fel: {message}",
+        "submitFailed": "Det gick inte att skicka resultatet",
+        "cancel": "Avbryt",
+        "submit": "Skicka resultatet",
+        "submitting": "Skickar ...",
+        "thanks": "Tack för att du var med, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Gå igenom din ställning",
+      "subtitle": "Jämför det du memorerade med det du skickade in.",
+      "unavailable": "Brädjämförelsen är inte tillgänglig.",
+      "ariaLabel": "Brädjämförelse",
+      "correct": "Rätt",
+      "incorrect": "Fel",
+      "missed": "Missad",
+      "originalBoard": "Ställningen att minnas",
+      "submittedBoard": "Ställningen du skickade in"
+    },
+    "feedback": {
+      "title": "Tack för att du spelade Memory Chess!",
+      "description": "Hur kändes det? Din feedback gör varje träningspass bättre.",
+      "prompt": "Vilket betyg ger du spelet?",
+      "placeholder": "Berätta vad som fungerade bra eller vad du skulle ändra ...",
+      "notNow": "Inte nu",
+      "sentTitle": "Tack för att du hjälper oss bli bättre",
+      "sentBody": "Vi har tagit emot din återkoppling.",
+      "done": "Klar",
+      "commentLabel": "Hur kändes det att spela, och vad skulle göra det bättre?",
+      "commentOptional": "(valfritt)",
+      "starRating": "{count, plural, one {# stjärna} other {# stjärnor}}",
+      "chooseRating": "Välj ett betyg i stjärnor.",
+      "sendFailed": "Vi kunde inte skicka din återkoppling. Försök igen eller välj Inte nu.",
+      "send": "Skicka återkoppling",
+      "sending": "Skickar ..."
+    }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess topplista",
+      "description": "Se de bästa Memory Chess-spelarna efter svårighetsgrad, träffsäkerhet, memoreringstempo och lösningstid.",
+      "socialTitle": "Memory Chess topplista",
+      "socialDescription": "Se hur spelare rankas i minnes- och visualiseringsutmaningarna."
+    },
+    "title": "Memory Chess-rankning",
+    "subtitle": "Behärska brädet med visualisering. Tävla mot världens bästa i mental precision och snabbhet.",
+    "claimRank": "Ta din plats",
+    "footnote": "Visar endast de 200 bästa. Rankade efter träffsäkerhet, memoreringstid och lösningstempo.",
+    "loading": "Laddar topplistan ...",
+    "unavailableTitle": "Topplistan är tillfälligt otillgänglig",
+    "unavailableBody": "Topplistetjänsten är offline just nu. Dina speldata sparas fortfarande lokalt.",
+    "unavailableNote": "Du kan fortsätta spela utan avbrott.",
+    "retryLater": "Försök igen senare",
+    "errorLoading": "Fel vid inläsning av rankningen: {error}",
+    "errors": {
+      "timeout": "Begäran tog för lång tid. Försök igen senare.",
+      "parse": "Det gick inte att tolka serverns svar. Försök igen senare.",
+      "status": "Begäran misslyckades med status {status}",
+      "unexpected": "Ett oväntat fel inträffade"
+    },
+    "emptyTitle": "Bli den första mästaren!",
+    "emptyBody": "Inga resultat på den här topplistan ännu",
+    "emptyCta": "Utmana ditt minne och ta förstaplatsen! Spela en omgång nu och skriv in ditt namn i historien om Memory Chess.",
+    "startPlaying": "Börja spela",
+    "you": "Du",
+    "columns": {
+      "rank": "Plats",
+      "player": "Spelare",
+      "pieces": "Pjäser",
+      "memorizeTime": "Memoreringstid",
+      "solutionTime": "Lösningstid",
+      "date": "Datum"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess-inställningar",
+      "description": "Anpassa inställningar och preferenser för ditt Memory Chess-spel."
+    },
+    "difficulty": "Svårighetsgrad",
+    "memorizationTime": "Memoreringstid: {seconds} sekunder",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Visa brädets koordinater",
+    "home": "Start",
+    "playGame": "Spela"
+  },
+  "contact": {
+    "meta": {
+      "title": "Kontakta Memory Chess",
+      "description": "Kontakta Memory Chess för återkoppling, funktionsönskemål eller affärsförfrågningar.",
+      "socialTitle": "Kontakta Memory Chess",
+      "socialDescription": "Skicka återkoppling, funktionsönskemål och samarbetsförfrågningar till Memory Chess."
+    },
+    "title": "Kontakta oss",
+    "sentTitle": "Meddelandet är skickat!",
+    "sentBody": "Tack för att du hörde av dig. Vi återkommer snart.",
+    "redirecting": "Omdirigerar till startsidan ...",
+    "name": "Namn",
+    "namePlaceholder": "Ditt namn",
+    "email": "E-post",
+    "emailPlaceholder": "din.adress@exempel.se",
+    "inquiryType": "Typ av ärende",
+    "inquiryPlaceholder": "Välj typ av ärende",
+    "message": "Meddelande",
+    "messagePlaceholder": "Skriv ditt meddelande här ...",
+    "send": "Skicka meddelande",
+    "sending": "Skickar ...",
+    "types": {
+      "feedback": "Återkoppling",
+      "featureRequest": "Funktionsönskemål",
+      "general": "Allmän fråga",
+      "business": "Affärsmöjlighet"
+    },
+    "validation": {
+      "nameTooShort": "Namnet måste ha minst 2 tecken.",
+      "emailInvalid": "Ange en giltig e-postadress.",
+      "typeRequired": "Välj en typ av ärende.",
+      "messageTooShort": "Meddelandet måste ha minst 10 tecken."
+    },
+    "errors": {
+      "submitFailed": "Det gick inte att skicka formuläret{details}",
+      "generic": "Ett fel inträffade när formuläret skickades. Försök igen."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Lär dig schack ett tydligt steg i taget",
+      "description": "Praktiska schackguider för nybörjare: brädkänsla, visualisering, minne, beräkning, färre misstag och daglig träning."
+    },
+    "title": "Lär dig schack ett tydligt steg i taget",
+    "startBeginner": "Starta nybörjarguiden",
+    "playCta": "Spela Memory Chess",
+    "startHere": "Börja här",
+    "pickNext": "Välj ditt nästa steg",
+    "chooseGoal": "Välj ett mål",
+    "readRecallPlay": "Läs, minns, spela",
+    "turnIdea": "Gör en idé till träning",
+    "startRound": "Starta en minnesomgång",
+    "eyebrow": "Lär dig med Memory Chess",
+    "heroDescription": "Välj vad du vill bli bättre på. Varje guide förklarar en användbar idé på enkelt språk och ger dig sedan en kort övning.",
+    "pickNextDescription": "Välj meningen som liknar ditt nuvarande spel mest. Det finns ingen perfekt ordning, och du kan byta spår när du vill.",
+    "allGuides": "Alla {count} guider",
+    "chooseGoalDescription": "Varje spår går från en enkel första övning till en mer komplett träningsvana.",
+    "guideNumber": "Guide {number}",
+    "turnIdeaDescription": "Läs en guide, spela en kort runda medan idén är färsk och lägg sedan märke till vad som var lätt att minnas och vad som behöver ett försök till.",
+    "paths": {
+      "newToChess": {
+        "label": "Ny på schack",
+        "title": "Bygg en enkel utvecklingsplan",
+        "description": "Börja med grunderna och gör sedan en användbar idé till en daglig vana du kan upprepa."
+      },
+      "missingThreats": {
+        "label": "Missar enkla hot",
+        "title": "Träna att svepa hela brädet",
+        "description": "Använd en kort kontrollrutin för att upptäcka oskyddade pjäser, angrepp och faror innan du drar."
+      },
+      "losingPosition": {
+        "label": "Tappar ställningen i huvudet",
+        "title": "Stärk visualisering och minne",
+        "description": "Öva på att hålla en liten, korrekt bild av brädet innan du lägger till längre dragföljder."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Nyheter",
+      "description": "Se de senaste funktionerna, förbättringarna och rättningarna i Memory Chess i den officiella ändringsloggen.",
+      "socialTitle": "Nyheter i Memory Chess",
+      "socialDescription": "Se de senaste funktionerna, förbättringarna och rättningarna i Memory Chess."
+    },
+    "title": "Nyheter",
+    "latest": "Senaste",
+    "bannerCta": "Se vad som är nytt",
+    "bannerLabel": "Memory Chess-uppdatering",
+    "eyebrow": "Uppdateringar",
+    "changesIn": "Ändringar i version {version}"
+  },
+  "learnArticle": {
+    "faqLabel": "Vanliga frågor",
+    "whatChangesTitle": "Vad som förbättras först",
+    "trackThisWeekTitle": "Vad du följer upp den här veckan",
+    "trackThisWeekBody": "Välj ett enda enkelt mått: misstag per parti, korrekt återgivna ställningar, eller hur många drag du ser tydligt framför dig.",
+    "startHereSummary": "De här stegen kan du testa redan i dag.",
+    "drillsSummary": "Varje övning låter dig träna lektionen direkt i Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situation",
+      "before": "Före träning",
+      "after": "Efter träning"
+    },
+    "mistakesTitle": "Vanliga misstag att undvika",
+    "whatToDoInsteadTitle": "Gör så här i stället",
+    "planSummary": "Gå igenom de här stegen innan du gör träningen svårare eller längre.",
+    "breadcrumbHome": "Start",
+    "breadcrumbLearn": "Lär dig",
+    "eyebrow": "Enkel schackguide",
+    "updated": "Uppdaterad {date}",
+    "reviewedBy": "Granskad av {name}",
+    "startHere": "Börja här",
+    "whatYouWillLearn": "Det här lär du dig",
+    "whoThisIsFor": "Vem den passar",
+    "browseAllGuides": "Se alla guider",
+    "onThisPage": "På den här sidan",
+    "aimFor": "Mål:",
+    "tryItNow": "Testa nu",
+    "tryItNowTitle": "Spela en kort runda innan du läser vidare.",
+    "tryItNowBody": "Använd stegen medan de är färska och kom tillbaka med en konkret sak du lade märke till.",
+    "startTrainingRound": "Starta en träningsrunda",
+    "keepLearning": "Fortsätt lära dig",
+    "whatToLearnNext": "Vad du lär dig härnäst",
+    "whatToLearnNextBody": "Välj guiden som passar bäst för nästa problem du vill lösa.",
+    "readThisGuide": "Läs den här guiden",
+    "putItOnTheBoard": "Ta det till brädet",
+    "practiceTitle": "Träna i Memory Chess",
+    "practiceBody": "Använd en kort övning för att träna det du precis lärt dig.",
+    "goalLabel": "Mål:",
+    "commonQuestions": "Vanliga frågor",
+    "editorialNotes": "Redaktionella noteringar",
+    "aboutThisGuide": "Om den här guiden",
+    "aboutBody": "Guiderna från Memory Chess är skrivna för nybörjare och spelare som utvecklas. Varje guide ger dig ett direkt svar, praktiska steg och ett användbart sätt att följa dina framsteg.",
+    "publishedLine": "Publicerad {published}. Senast granskad och uppdaterad {updated} av {reviewer}.",
+    "referenceLinks": "Källor och länkar",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Färre misstag",
+        "description": "Skaffa vanan att kolla hot snabbare och sluta ge bort pjäser i enkla ställningar.",
+        "accent": "Hotkontroll"
+      },
+      "visualization": {
+        "label": "Bättre visualisering",
+        "description": "Håll brädet i huvudet längre så att beräkningen känns lugnare och tydligare.",
+        "accent": "Brädet i huvudet"
+      },
+      "memory": {
+        "label": "Träna minnet",
+        "description": "Förbättra minnet av ställningar och mönster utan att träningen blir teoriläxor.",
+        "accent": "Minne och behållning"
+      },
+      "routine": {
+        "label": "Bygg en daglig rutin",
+        "description": "Använd en kort plan som blandar övningar, partier och genomgång.",
+        "accent": "Uthållighet"
+      }
+    }
+  }
+}

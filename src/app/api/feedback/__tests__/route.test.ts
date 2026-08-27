@@ -2,6 +2,7 @@
 
 import { POST } from "@/app/api/feedback/route";
 import { appendGoogleSheetRow } from "@/lib/server/googleSheets";
+import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 
 jest.mock("@/lib/server/googleSheets", () => ({
   appendGoogleSheetRow: jest.fn(),
@@ -49,7 +50,7 @@ describe("POST /api/feedback", () => {
         "medium",
         9,
         12.5,
-        "1.2.1",
+        LATEST_CHANGELOG_ENTRY.version,
       ],
       valueInputOption: "RAW",
     });

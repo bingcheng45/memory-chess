@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import {
   Accordion,
   AccordionContent,
@@ -11,25 +12,26 @@ import {
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import {
-  LEARN_GOALS,
-  LEARN_PAGES,
   type LearnComparisonRow,
   type LearnPageContent,
-} from "@/lib/seo/learnPages";
+} from "@/lib/seo/learn/schema";
+import type { LearnGoal } from "@/lib/seo/learn";
+import { learnContentLocale } from "@/lib/seo/learn";
+import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import LearnArticleTracking from "@/components/learn/LearnArticleTracking";
 
 const SITE_URL = "https://thememorychess.com";
 
 type LearnArticleProps = {
   page: LearnPageContent;
+  goals: LearnGoal[];
+  /** Every article in the same locale, used to resolve the "read next" links. */
+  allPages: LearnPageContent[];
+  locale: string;
 };
 
-function toAbsoluteUrl(pathname: string): string {
-  return `${SITE_URL}${pathname}`;
-}
-
-function formatDate(value: string): string {
-  return new Intl.DateTimeFormat("en-US", {
+function formatDate(value: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -37,10 +39,13 @@ function formatDate(value: string): string {
   }).format(new Date(value));
 }
 
-function buildRelatedPageData(page: LearnPageContent) {
+function buildRelatedPageData(
+  page: LearnPageContent,
+  allPages: LearnPageContent[],
+) {
   return page.relatedArticles
     .map((entry) => {
-      const relatedPage = LEARN_PAGES.find(
+      const relatedPage = allPages.find(
         (candidate) => candidate.slug === entry.slug,
       );
 
@@ -72,12 +77,26 @@ function renderComparisonRows(rows: LearnComparisonRow[]) {
   ));
 }
 
-export default function LearnArticleRich({ page }: LearnArticleProps) {
-  const goal = LEARN_GOALS[page.goal];
-  const articlePath = `/learn/${page.slug}`;
-  const articleUrl = toAbsoluteUrl(articlePath);
+export default function LearnArticleRich({
+  page,
+  goals,
+  allPages,
+  locale,
+}: LearnArticleProps) {
+  const t = useTranslations("learnArticle");
+  const goalsById = new Map(goals.map((entry) => [entry.id, entry]));
+  const goal = goalsById.get(page.goal)!;
+  // Page-scoped identifiers follow the locale the reader is actually on, so
+  // the JSON-LD agrees with the localized canonical instead of claiming the
+  // German page is the English document. Organization nodes below stay on the
+  // bare origin: publisher and author are one entity site-wide, and a
+  // per-locale @id would split one organization into twenty-four.
+  const contentLocale = learnContentLocale(locale);
+  const homeUrl = localizedUrl("/", contentLocale);
+  const hubUrl = localizedUrl("/learn", contentLocale);
+  const articleUrl = localizedUrl(`/learn/${page.slug}`, contentLocale);
   const socialImageUrl = `${articleUrl}/opengraph-image`;
-  const relatedPages = buildRelatedPageData(page);
+  const relatedPages = buildRelatedPageData(page, allPages);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -96,19 +115,19 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
         },
         datePublished: page.publishedAt,
         dateModified: page.updatedAt,
-        inLanguage: "en-US",
+        inLanguage: languageTag(contentLocale),
         isAccessibleForFree: true,
         articleSection: goal.label,
         author: {
           "@type": "Organization",
           "@id": `${SITE_URL}/#editorial-team`,
           name: "Memory Chess Editorial Team",
-          url: `${SITE_URL}/learn`,
+          url: hubUrl,
         },
         reviewedBy: {
           "@type": "Organization",
           name: page.reviewedBy,
-          url: `${SITE_URL}/learn`,
+          url: hubUrl,
         },
         publisher: {
           "@type": "Organization",
@@ -132,7 +151,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
         description: page.description,
         isPartOf: {
           "@type": "CollectionPage",
-          "@id": `${SITE_URL}/learn#webpage`,
+          "@id": `${hubUrl}#webpage`,
         },
         mainEntity: { "@id": `${articleUrl}#article` },
         breadcrumb: { "@id": `${articleUrl}#breadcrumb` },
@@ -141,12 +160,12 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
         "@type": "BreadcrumbList",
         "@id": `${articleUrl}#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 1, name: "Home", item: homeUrl },
           {
             "@type": "ListItem",
             position: 2,
             name: "Learn",
-            item: `${SITE_URL}/learn`,
+            item: hubUrl,
           },
           {
             "@type": "ListItem",
@@ -177,7 +196,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
           <ol className="flex flex-wrap items-center gap-2">
             <li>
               <Link href="/" className="transition-colors hover:text-peach-300">
-                Home
+                {t("breadcrumbHome")}
               </Link>
             </li>
             <li aria-hidden="true" className="text-white/30">
@@ -188,7 +207,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
                 href="/learn"
                 className="transition-colors hover:text-peach-300"
               >
-                Learn
+                {t("breadcrumbLearn")}
               </Link>
             </li>
             <li aria-hidden="true" className="text-white/30">
@@ -209,9 +228,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
             </span>
             <span className="text-xs text-text-muted">{page.difficulty}</span>
           </div>
-          <p className={`${EDITORIAL_STYLES.eyebrow} mb-4`}>
-            Simple chess guide
-          </p>
+          <p className={`${EDITORIAL_STYLES.eyebrow} mb-4`}>{t("eyebrow")}</p>
           <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
             {page.h1}
           </h1>
@@ -220,9 +237,9 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
           </p>
           <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-text-muted">
             <time dateTime={page.updatedAt}>
-              Updated {formatDate(page.updatedAt)}
+              {t("updated", { date: formatDate(page.updatedAt, locale) })}
             </time>
-            <span>Reviewed by {page.reviewedBy}</span>
+            <span>{t("reviewedBy", { name: page.reviewedBy })}</span>
           </div>
         </header>
 
@@ -231,7 +248,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
           className={`${EDITORIAL_STYLES.callout} mb-10 sm:mb-12`}
         >
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            Start here
+            {t("startHere")}
           </p>
           <h2
             id="quick-answer-heading"
@@ -242,7 +259,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
           <div className="mt-6 grid gap-6 sm:grid-cols-2 sm:gap-8">
             <div>
               <h3 className="text-sm font-semibold text-white">
-                What you will learn
+                {t("whatYouWillLearn")}
               </h3>
               <ul className="mt-3 space-y-2.5">
                 {page.keyTakeaways.map((takeaway) => (
@@ -261,7 +278,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
             </div>
             <div>
               <h3 className="text-sm font-semibold text-white">
-                Who this is for
+                {t("whoThisIsFor")}
               </h3>
               <ul className="mt-3 space-y-2.5">
                 {page.whoThisIsFor.map((item) => (
@@ -291,7 +308,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
               variant="secondary"
               trackingName="hero-secondary"
             >
-              Browse all guides
+              {t("browseAllGuides")}
             </EditorialActionLink>
           </div>
         </section>
@@ -304,7 +321,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
             id="on-this-page-heading"
             className={`${EDITORIAL_STYLES.subsectionTitle} mb-4`}
           >
-            On this page
+            {t("onThisPage")}
           </p>
           <ol className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
             {page.tableOfContents.map((item, index) => (
@@ -408,7 +425,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
                       </p>
                       <p className="mt-3 text-sm leading-6 text-text-muted">
                         <span className="font-medium text-text-secondary">
-                          Aim for:
+                          {t("aimFor")}
                         </span>{" "}
                         {drill.goal}
                       </p>
@@ -486,23 +503,22 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
             {sectionIndex === 1 ? (
               <aside className="mt-8 border-y border-peach-500/20 py-6">
                 <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-2`}>
-                  Try it now
+                  {t("tryItNow")}
                 </p>
                 <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                   <div className="max-w-xl">
                     <h3 className="text-lg font-semibold text-white">
-                      Play one short round before you keep reading.
+                      {t("tryItNowTitle")}
                     </h3>
                     <p className="mt-2 text-sm leading-6 text-text-muted">
-                      Use the steps while they are fresh, then return with one
-                      concrete thing you noticed.
+                      {t("tryItNowBody")}
                     </p>
                   </div>
                   <EditorialActionLink
                     href={page.ctaHref}
                     trackingName="mid-article"
                   >
-                    Start a training round
+                    {t("startTrainingRound")}
                   </EditorialActionLink>
                 </div>
               </aside>
@@ -512,18 +528,19 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
 
         <section className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            Keep learning
+            {t("keepLearning")}
           </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>What to learn next</h2>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>
+            {t("whatToLearnNext")}
+          </h2>
           <p className="mt-3 text-base leading-7 text-text-muted">
-            Choose the guide that best matches the next problem you want to
-            solve.
+            {t("whatToLearnNextBody")}
           </p>
           <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
             {relatedPages.map((entry) => (
               <article key={entry.slug} className="py-5">
                 <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
-                  {LEARN_GOALS[entry.page.goal].label}
+                  {goalsById.get(entry.page.goal)?.label}
                 </p>
                 <h3 className="mt-1 text-lg font-semibold text-white">
                   {entry.page.title}
@@ -536,7 +553,7 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
                   data-learn-link={entry.slug}
                   className={`${EDITORIAL_STYLES.link} mt-3 inline-block text-sm`}
                 >
-                  Read this guide
+                  {t("readThisGuide")}
                 </Link>
               </article>
             ))}
@@ -545,13 +562,11 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
 
         <section className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            Put it on the board
+            {t("putItOnTheBoard")}
           </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            Practice in Memory Chess
-          </h2>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>{t("practiceTitle")}</h2>
           <p className="mt-3 text-base leading-7 text-text-muted">
-            Use one short drill to practise what you just learned.
+            {t("practiceBody")}
           </p>
           <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
             {page.relatedDrills.map((drill) => (
@@ -566,7 +581,9 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
                   {drill.description}
                 </p>
                 <p className="mt-2 text-sm leading-6 text-text-muted">
-                  <span className="font-medium text-text-secondary">Goal:</span>{" "}
+                  <span className="font-medium text-text-secondary">
+                    {t("goalLabel")}
+                  </span>{" "}
                   {drill.goal}
                 </p>
                 <Link
@@ -583,9 +600,9 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
 
         <section id="faq" className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            Common questions
+            {t("commonQuestions")}
           </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>FAQ</h2>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>{t("faqLabel")}</h2>
           <Accordion type="single" collapsible className="mt-6 w-full">
             {page.faq.map((entry, index) => (
               <AccordionItem
@@ -606,23 +623,24 @@ export default function LearnArticleRich({ page }: LearnArticleProps) {
 
         <section className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            Editorial notes
+            {t("editorialNotes")}
           </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>About this guide</h2>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>
+            {t("aboutThisGuide")}
+          </h2>
           <div className="mt-5 max-w-[68ch] space-y-4 text-sm leading-7 text-text-muted sm:text-base">
+            <p>{t("aboutBody")}</p>
             <p>
-              Memory Chess guides are written for beginners and improving
-              players. Each guide gives you a direct answer, practical steps,
-              and one useful way to track progress.
-            </p>
-            <p>
-              Published {formatDate(page.publishedAt)}. Last reviewed and
-              updated {formatDate(page.updatedAt)} by {page.reviewedBy}.
+              {t("publishedLine", {
+                published: formatDate(page.publishedAt, locale),
+                updated: formatDate(page.updatedAt, locale),
+                reviewer: page.reviewedBy,
+              })}
             </p>
           </div>
 
           <h2 className="mt-9 text-xl font-semibold tracking-tight text-white">
-            Reference links
+            {t("referenceLinks")}
           </h2>
           <ul className="mt-4 divide-y divide-white/10 border-y border-white/10">
             {page.sources.map((source) => (

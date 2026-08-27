@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import PageHeader from "@/components/ui/PageHeader";
 import Footer from "@/components/ui/Footer";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";

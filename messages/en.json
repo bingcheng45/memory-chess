@@ -1,0 +1,490 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Changelog",
+      "contactUs": "Contact Us",
+      "privacy": "Privacy"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. All rights reserved.",
+      "followOnX": "Follow us on Twitter/X",
+      "productHuntAlt": "Memory Chess - Train your spatial visualization with chess | Product Hunt"
+    },
+    "sound": {
+      "mute": "Mute sound",
+      "unmute": "Unmute sound",
+      "on": "Sound On",
+      "off": "Sound Off",
+      "volume": "Volume"
+    },
+    "language": {
+      "change": "Change language, current language {language}",
+      "current": "Language: {language}",
+      "select": "Select language"
+    },
+    "otherApps": {
+      "title": "More Apps from the Creator",
+      "visitWebsite": "Visit website →",
+      "iconAlt": "{name} app icon"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Memory Chess: Free Chess Memory and Visualization Game",
+      "description": "Memorize a chess position, rebuild it from memory, and get an instant score. Play free to train board vision, visualization, and spatial memory.",
+      "socialTitle": "Memory Chess: Free Chess Memory and Visualization Game",
+      "socialDescription": "Memorize a chess position, rebuild it, and get an instant score. Play free with no account needed.",
+      "twitterTitle": "Memory Chess: Free Chess Memory Game",
+      "twitterDescription": "Memorize a chess position, rebuild it, and improve your board vision one round at a time."
+    },
+    "hero": {
+      "title": "Train Your Chess Memory and Visualization",
+      "subtitle": "Memorize a chess position, rebuild it from memory, and get an instant score. Improve your board vision one round at a time.",
+      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
+      "gamesPlayed": "Games played: {count}"
+    },
+    "cta": {
+      "play": "Play Memory Chess",
+      "leaderboard": "View Leaderboard",
+      "playFree": "Play a Free Round"
+    },
+    "video": {
+      "title": "See How Memory Chess Works",
+      "subtitle": "Watch a quick guide to studying the board, rebuilding the position, and checking your score.",
+      "iframeTitle": "How to Play Memory Chess",
+      "credit": "Video: “A New Way To Train Your Vision” by Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "title": "A Simple Workout for Your Chess Memory",
+      "subtitle": "Every round has three simple steps: study the position, rebuild it, and learn from your score.",
+      "steps": {
+        "observe": {
+          "title": "Observe",
+          "description": "Study where each piece sits. Look for groups, lines, and useful empty spaces."
+        },
+        "recreate": {
+          "title": "Recreate",
+          "description": "When the board clears, place every piece back on the square you remember."
+        },
+        "improve": {
+          "title": "Improve",
+          "description": "Check your score, see what you missed, and try again with more pieces or less time."
+        }
+      }
+    },
+    "board": {
+      "study": "Study the board",
+      "rebuild": "Rebuild from memory"
+    },
+    "learn": {
+      "eyebrow": "Learning Center",
+      "title": "Simple Chess Guides",
+      "description": "Learn practical ways to improve board vision, visualization, calculation, and memory. Each guide includes drills you can try right away.",
+      "browseCta": "Browse Chess Guides",
+      "beginnerCta": "Start with the Beginner Guide"
+    },
+    "faq": {
+      "title": "Questions About Memory Chess",
+      "items": [
+        {
+          "question": "What is Memory Chess?",
+          "answer": "Memory Chess is a free board-memory game. You study a chess position for a short time, rebuild it from memory, and get a score based on how many pieces you placed correctly."
+        },
+        {
+          "question": "How do I play?",
+          "answer": "Choose how many pieces you want and how long you want to study the board. When the position disappears, place the pieces back on the squares you remember. Submit your answer to see your accuracy and time."
+        },
+        {
+          "question": "Can beginners play Memory Chess?",
+          "answer": "Yes. You do not need to know chess openings or calculate moves. Start with fewer pieces and more study time, then make the game harder when you feel ready."
+        },
+        {
+          "question": "How does it train chess visualization?",
+          "answer": "Each round gives you focused practice holding a chess position in your mind and recalling where the pieces belong. Your score shows which positions feel easy and where you need more practice."
+        },
+        {
+          "question": "What should I look for when memorizing the board?",
+          "answer": "Start with easy anchors such as kings, queens, corners, and edge squares. Then look for groups, lines, diagonals, and empty spaces instead of trying to remember every piece on its own."
+        },
+        {
+          "question": "How can I make the game harder?",
+          "answer": "Add more pieces, shorten the study time, or hide the board coordinates. Change one setting at a time so you can see what makes the biggest difference."
+        },
+        {
+          "question": "Is Memory Chess free?",
+          "answer": "Yes. You can play for free without creating an account. Adding a name to the leaderboard is optional."
+        },
+        {
+          "question": "How often should I practice?",
+          "answer": "A few focused rounds on a regular schedule is a good place to start. Keep sessions short enough that you can still study each position carefully."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Play Memory Chess Online",
+      "description": "Play Memory Chess online to train board visualization, recall, and chess pattern recognition with timed memory challenges.",
+      "socialTitle": "Play Memory Chess Online",
+      "socialDescription": "Train your chess visualization and memory with interactive timed challenges."
+    },
+    "hud": {
+      "time": "Time",
+      "submit": "Submit",
+      "loading": "Loading game...",
+      "status": "Game status",
+      "controls": "Game controls",
+      "complete": "Game complete",
+      "flash": "GAME!"
+    },
+    "config": {
+      "title": "Game Configuration",
+      "presetsLabel": "Difficulty Presets",
+      "presetSummary": "{pieces} pcs / {seconds}s",
+      "customLabel": "Custom settings",
+      "pieceCount": "Number of Pieces",
+      "memorizeTime": "Memorization Time",
+      "seconds": "{seconds}s",
+      "start": "Start Training",
+      "lastGame": "Last game: {time}s solution time with {accuracy}% accuracy"
+    },
+    "presets": {
+      "easy": {
+        "label": "Easy",
+        "description": "Just kings - perfect for starting out"
+      },
+      "medium": {
+        "label": "Medium",
+        "description": "A few pieces with comfortable time to memorize"
+      },
+      "hard": {
+        "label": "Hard",
+        "description": "More pieces with less time to memorize"
+      },
+      "grandmaster": {
+        "label": "Grandmaster",
+        "description": "For chess masters with photographic memory"
+      }
+    },
+    "memorize": {
+      "title": "Memorize the Position",
+      "skip": "Skip",
+      "hint": "The board will clear when the timer ends"
+    },
+    "place": {
+      "title": "Place Pieces",
+      "subtitle": "Select type and color",
+      "whitePieces": "White pieces",
+      "blackPieces": "Black pieces",
+      "selectWhite": "Select white pieces",
+      "selectBlack": "Select black pieces",
+      "hint": "Tap a square to add a piece or remove one"
+    },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "white pawn",
+          "knight": "white knight",
+          "bishop": "white bishop",
+          "rook": "white rook",
+          "queen": "white queen",
+          "king": "white king"
+        },
+        "black": {
+          "pawn": "black pawn",
+          "knight": "black knight",
+          "bishop": "black bishop",
+          "rook": "black rook",
+          "queen": "black queen",
+          "king": "black king"
+        }
+      },
+      "feedback": {
+        "correct": "correct",
+        "incorrect": "incorrect",
+        "missing": "missing"
+      },
+      "squareWithPiece": "{square} with {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Select {piece}"
+    },
+    "stats": {
+      "title": "Game Stats",
+      "currentTime": "Current Time",
+      "piecesToMemorize": "Pieces to Memorize",
+      "averageAccuracy": "Average Accuracy"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Perfect Score! ✨",
+        "excellent": "Excellent Memory!",
+        "great": "Great Job!",
+        "wellDone": "Well Done!",
+        "goodEffort": "Good Effort!",
+        "keepPracticing": "Keep Practicing!"
+      },
+      "accuracy": "Accuracy",
+      "piecesCorrectCaption": "pieces correct",
+      "piecesCorrect": "Pieces Correct",
+      "memorizationTime": "Memorization Time",
+      "solutionTime": "Solution Time",
+      "recallSpeed": "Recall Speed",
+      "piecesPerSecond": "{value} pieces/sec",
+      "actions": "Result actions",
+      "tryAgain": "Try Again",
+      "newGame": "New Game",
+      "submitToLeaderboard": "Submit to Leaderboard",
+      "viewLeaderboard": "View Leaderboard",
+      "dialog": {
+        "submitTitle": "Submit to Leaderboard",
+        "submitDescription": "Enter your name to be displayed on the leaderboard.",
+        "successTitle": "Score Submitted!",
+        "successDescription": "Your score has been successfully submitted to the leaderboard.",
+        "playerName": "Player Name",
+        "playerNamePlaceholder": "Enter your name",
+        "error": "Error: {message}",
+        "submitFailed": "Failed to submit score",
+        "cancel": "Cancel",
+        "submit": "Submit Score",
+        "submitting": "Submitting...",
+        "thanks": "Thanks for participating, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Review Your Position",
+      "subtitle": "Compare what you memorized with what you submitted.",
+      "unavailable": "Board comparison unavailable.",
+      "ariaLabel": "Board comparison",
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "missed": "Missed",
+      "originalBoard": "Position to Remember",
+      "submittedBoard": "Your Submitted Position"
+    },
+    "feedback": {
+      "title": "Thanks for playing Memory Chess!",
+      "description": "How was your experience? Your feedback helps make each training session better.",
+      "prompt": "How would you rate the game?",
+      "placeholder": "Tell us what worked well or what you would change...",
+      "notNow": "Not now",
+      "sentTitle": "Thank you for helping us improve",
+      "sentBody": "Your feedback has been received.",
+      "done": "Done",
+      "commentLabel": "How did playing feel, and what would make it better?",
+      "commentOptional": "(optional)",
+      "starRating": "{count, plural, one {# star} other {# stars}}",
+      "chooseRating": "Please choose a star rating.",
+      "sendFailed": "We could not send your feedback. Please try again or choose Not now.",
+      "send": "Send feedback",
+      "sending": "Sending..."
+    }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess Leaderboard",
+      "description": "View top Memory Chess players by difficulty, accuracy, memorization speed, and solution time.",
+      "socialTitle": "Memory Chess Leaderboard",
+      "socialDescription": "See how players rank in memory-based chess visualization challenges."
+    },
+    "title": "Memory Chess Rankings",
+    "subtitle": "Master the board through visualization. Compete against the world's best in mental precision and speed.",
+    "claimRank": "Claim Your Rank",
+    "footnote": "Displaying top 200 only. Ranked by accuracy, memorization time, and solution speed.",
+    "loading": "Loading leaderboard data...",
+    "unavailableTitle": "Leaderboard Temporarily Unavailable",
+    "unavailableBody": "The leaderboard service is currently offline. Your game data is still being saved locally.",
+    "unavailableNote": "You can continue playing without disruption.",
+    "retryLater": "Please try again later",
+    "errorLoading": "Error loading leaderboard: {error}",
+    "errors": {
+      "timeout": "Request timed out. Please try again later.",
+      "parse": "Failed to parse server response. Please try again later.",
+      "status": "Request failed with status {status}",
+      "unexpected": "An unexpected error occurred"
+    },
+    "emptyTitle": "Be the First Champion!",
+    "emptyBody": "No entries on this leaderboard yet",
+    "emptyCta": "Challenge your memory skills and claim your spot at the top! Play a game now and etch your name in Memory Chess history.",
+    "startPlaying": "Start Playing Now",
+    "you": "You",
+    "columns": {
+      "rank": "Rank",
+      "player": "Player",
+      "pieces": "Pieces",
+      "memorizeTime": "Memorize Time",
+      "solutionTime": "Solution Time",
+      "date": "Date"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess Settings",
+      "description": "Customize your Memory Chess game settings and preferences."
+    },
+    "difficulty": "Difficulty",
+    "memorizationTime": "Memorization Time: {seconds} seconds",
+    "seconds": "{seconds}s",
+    "showCoordinates": "Show board coordinates",
+    "home": "Home",
+    "playGame": "Play Game"
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact Memory Chess",
+      "description": "Contact Memory Chess for feedback, feature requests, or business inquiries.",
+      "socialTitle": "Contact Memory Chess",
+      "socialDescription": "Send feedback, feature requests, and partnership inquiries to Memory Chess."
+    },
+    "title": "Contact Us",
+    "sentTitle": "Message Sent!",
+    "sentBody": "Thank you for reaching out. We'll get back to you soon.",
+    "redirecting": "Redirecting to homepage...",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "your.email@example.com",
+    "inquiryType": "Inquiry Type",
+    "inquiryPlaceholder": "Select inquiry type",
+    "message": "Message",
+    "messagePlaceholder": "Type your message here...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "types": {
+      "feedback": "Feedback",
+      "featureRequest": "Feature Request",
+      "general": "General Inquiry",
+      "business": "Business Opportunity"
+    },
+    "validation": {
+      "nameTooShort": "Name must be at least 2 characters.",
+      "emailInvalid": "Please enter a valid email address.",
+      "typeRequired": "Please select an inquiry type.",
+      "messageTooShort": "Message must be at least 10 characters."
+    },
+    "errors": {
+      "submitFailed": "Failed to submit form{details}",
+      "generic": "An error occurred while submitting the form. Please try again."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Learn Chess One Clear Step at a Time",
+      "description": "Practical beginner chess guides for board vision, visualization, memory, calculation, blunder prevention, and daily practice."
+    },
+    "title": "Learn Chess One Clear Step at a Time",
+    "startBeginner": "Start the beginner guide",
+    "playCta": "Play Memory Chess",
+    "startHere": "Start here",
+    "pickNext": "Pick Your Next Step",
+    "chooseGoal": "Choose a Goal",
+    "readRecallPlay": "Read, recall, play",
+    "turnIdea": "Turn one idea into practice",
+    "startRound": "Start a memory round",
+    "eyebrow": "Learn with Memory Chess",
+    "heroDescription": "Choose what you want to improve. Each guide explains one useful idea in plain language, then gives you a short drill to try.",
+    "pickNextDescription": "Choose the sentence that sounds most like your current game. There is no perfect order, and you can change paths at any time.",
+    "allGuides": "All {count} guides",
+    "chooseGoalDescription": "Each path moves from a simple first exercise toward a more complete practice habit.",
+    "guideNumber": "Guide {number}",
+    "turnIdeaDescription": "Read one guide, play one short round while the idea is fresh, then notice what was easy to remember and what needs another try.",
+    "paths": {
+      "newToChess": {
+        "label": "New to chess",
+        "title": "Build a simple improvement plan",
+        "description": "Start with the fundamentals, then turn one useful idea into a repeatable daily habit."
+      },
+      "missingThreats": {
+        "label": "Missing simple threats",
+        "title": "Train your whole-board scan",
+        "description": "Use a short checking routine to notice loose pieces, attacks, and danger before you move."
+      },
+      "losingPosition": {
+        "label": "Losing the position in your head",
+        "title": "Strengthen visualization and recall",
+        "description": "Practice holding a small, accurate picture of the board before adding longer move sequences."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Changelog",
+      "description": "See the latest Memory Chess features, improvements, and fixes in the official changelog.",
+      "socialTitle": "Memory Chess Changelog",
+      "socialDescription": "See the latest Memory Chess features, improvements, and fixes."
+    },
+    "title": "Changelog",
+    "latest": "Latest",
+    "bannerCta": "See what's new",
+    "bannerLabel": "Memory Chess update",
+    "eyebrow": "What is new",
+    "changesIn": "Changes in version {version}"
+  },
+  "learnArticle": {
+    "faqLabel": "FAQ",
+    "whatChangesTitle": "What improves first",
+    "trackThisWeekTitle": "What to track this week",
+    "trackThisWeekBody": "Choose one simple measure: blunders per game, correct board recalls, or how many moves you can picture clearly.",
+    "startHereSummary": "You can try these steps today.",
+    "drillsSummary": "Each drill lets you practise the lesson in Memory Chess.",
+    "comparisonColumns": {
+      "situation": "Situation",
+      "before": "Before practice",
+      "after": "After practice"
+    },
+    "mistakesTitle": "Common mistakes to avoid",
+    "whatToDoInsteadTitle": "What to do instead",
+    "planSummary": "Follow these steps before making the practice harder or longer.",
+    "breadcrumbHome": "Home",
+    "breadcrumbLearn": "Learn",
+    "eyebrow": "Simple chess guide",
+    "updated": "Updated {date}",
+    "reviewedBy": "Reviewed by {name}",
+    "startHere": "Start here",
+    "whatYouWillLearn": "What you will learn",
+    "whoThisIsFor": "Who this is for",
+    "browseAllGuides": "Browse all guides",
+    "onThisPage": "On this page",
+    "aimFor": "Aim for:",
+    "tryItNow": "Try it now",
+    "tryItNowTitle": "Play one short round before you keep reading.",
+    "tryItNowBody": "Use the steps while they are fresh, then return with one concrete thing you noticed.",
+    "startTrainingRound": "Start a training round",
+    "keepLearning": "Keep learning",
+    "whatToLearnNext": "What to learn next",
+    "whatToLearnNextBody": "Choose the guide that best matches the next problem you want to solve.",
+    "readThisGuide": "Read this guide",
+    "putItOnTheBoard": "Put it on the board",
+    "practiceTitle": "Practice in Memory Chess",
+    "practiceBody": "Use one short drill to practise what you just learned.",
+    "goalLabel": "Goal:",
+    "commonQuestions": "Common questions",
+    "editorialNotes": "Editorial notes",
+    "aboutThisGuide": "About this guide",
+    "aboutBody": "Memory Chess guides are written for beginners and improving players. Each guide gives you a direct answer, practical steps, and one useful way to track progress.",
+    "publishedLine": "Published {published}. Last reviewed and updated {updated} by {reviewer}.",
+    "referenceLinks": "Reference links",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Reduce blunders",
+        "description": "Build a faster threat-check habit and stop hanging pieces in simple positions.",
+        "accent": "Threat checks"
+      },
+      "visualization": {
+        "label": "Improve visualization",
+        "description": "Hold the board in your head longer so calculation feels calmer and clearer.",
+        "accent": "Mental board control"
+      },
+      "memory": {
+        "label": "Train memory",
+        "description": "Improve board recall and pattern retention without turning training into theory homework.",
+        "accent": "Recall and retention"
+      },
+      "routine": {
+        "label": "Build a daily routine",
+        "description": "Use a short plan that combines drills, games, and review.",
+        "accent": "Consistency"
+      }
+    }
+  }
+}

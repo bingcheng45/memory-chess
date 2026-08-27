@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess parla la tua lingua",
+    "summary": "Il gioco e tutte le guide di Impara sono ora disponibili in 24 lingue, e il sito si apre nella tua.",
+    "groups": [
+      {
+        "title": "24 lingue",
+        "changes": [
+          "Memory Chess ora è disponibile in 24 lingue: inglese, spagnolo, russo, portoghese brasiliano, tedesco, francese, hindi, italiano, cinese semplificato, turco, svedese, olandese, polacco, indonesiano, norvegese, finlandese, rumeno, vietnamita, ceco, giapponese, coreano, cinese tradizionale, danese e ungherese.",
+          "Tutto quello che leggi mentre giochi è tradotto: dalla home page e dalle impostazioni al conteggio del tempo, alla schermata dei risultati, alla classifica e a queste Novità."
+        ]
+      },
+      {
+        "title": "Tutte le 16 guide di Impara, in ogni lingua",
+        "changes": [
+          {
+            "segments": [
+              "Ogni guida di ",
+              {
+                "text": "Impara"
+              },
+              " è stata tradotta per intero. I passaggi pratici, gli esercizi, il piano settimanale e le domande finali si leggono in modo naturale nella tua lingua, con termini scacchistici che rispecchiano il modo in cui i giocatori parlano davvero."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Cambia lingua quando vuoi",
+        "changes": [
+          "Un mappamondo in cima a ogni pagina apre l’elenco delle lingue. Ogni lingua è scritta nel suo nome, così trovi la tua senza dover passare dall’inglese.",
+          "Quando scegli una lingua resti esattamente dove eri, e Memory Chess ricorda la tua scelta alla visita successiva."
+        ]
+      },
+      {
+        "title": "Proviamo a indovinare prima che tu lo chieda",
+        "changes": [
+          "Chi arriva per la prima volta parte nella lingua suggerita dal browser o dalla regione, quando è tra quelle disponibili. Se l’ipotesi è sbagliata, il mappamondo è lì a portata di mano per correggerla."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Partite più fluide, risultati più chiari",
+    "summary": "La scacchiera resta ferma, le posizioni casuali hanno più senso e i risultati sono più facili da rivedere.",
+    "groups": [
+      {
+        "title": "Un gioco più stabile",
+        "changes": [
+          "Grazie ai preziosi suggerimenti dei giocatori, la scacchiera ora resta nello stesso punto quando la memorizzazione finisce e inizia il posizionamento. Anche i comandi e il selettore dei pezzi sono allineati alla scacchiera.",
+          "Intestazioni delle pagine, comandi dell’audio e spaziature restano più coerenti mentre avanzi nella partita. I pezzi e le coordinate della scacchiera non si possono più selezionare per sbaglio."
+        ]
+      },
+      {
+        "title": "Posizioni casuali migliori",
+        "changes": [
+          "Grazie a un giocatore che l’ha segnalato su Reddit, le posizioni casuali non mettono più i re uno accanto all’altro, due alfieri dello stesso schieramento su case dello stesso colore, pedoni sulla prima o sull’ottava traversa, né entrambi i re sotto scacco."
+        ]
+      },
+      {
+        "title": "Risultati più chiari",
+        "changes": [
+          "Dopo ogni partita puoi confrontare la posizione che hai memorizzato con la scacchiera che hai inviato. Marcatori ben visibili indicano i pezzi corretti, quelli sbagliati e quelli mancanti.",
+          "La tua precisione e le azioni principali per rigiocare e per la classifica ora restano insieme in cima ai risultati. I pezzi mancanti hanno un contorno nero tratteggiato ben leggibile, mentre la scacchiera resta visibile sotto."
+        ]
+      },
+      {
+        "title": "Un finale più chiaro",
+        "changes": [
+          "Quando invii, il tempo si ferma per un secondo così puoi vedere il tempo bloccato e la scacchiera finale prima che compaiano i risultati. Un rapido lampo FINITO! segna la fine del turno, e il tempo di posizionamento ora mostra i millisecondi."
+        ]
+      },
+      {
+        "title": "Un po’ di statistiche per tutti!",
+        "description": "Ecco un’istantanea degli invii pubblici in classifica fino al 16 agosto 2026.",
+        "tables": [
+          {
+            "caption": "Precisione",
+            "columns": ["Invii in classifica", "Fino al 2025", "2026"],
+            "rows": [
+              {
+                "label": "Precisione media",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Percentuale di punteggi perfetti",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Precisione media in Medio",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Percentuale di punteggi perfetti in Medio",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Precisione media in Difficile",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Precisione media in Gran maestro",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Velocità di invio",
+            "columns": [
+              "Tempo di risoluzione con punteggio perfetto",
+              "Fino al 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Tutte le difficoltà, mediana",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Facile, mediana",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Medio, mediana",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Su 50 combinazioni ripetute di nome del giocatore e difficoltà, 33 hanno avuto una risoluzione più veloce all’ultimo tentativo e 17 una più lenta. Nel complesso la precisione è migliorata molto, ma anche prendersi più tempo può portare a un punteggio migliore. Questi dati riguardano gli invii volontari in classifica, non tutte le partite, e la classifica Facile è limitata ai primi 200 risultati."
+      },
+      {
+        "title": "Grazie per aver giocato",
+        "changes": [
+          {
+            "segments": [
+              "Un grazie enorme a tutti coloro che hanno aiutato Memory Chess a superare gli 800 giocatori al mese e le 32.000 partite giocate. Siamo particolarmente grati a chi ci ha scritto idee, incoraggiamenti e segnalazioni di problemi dalla pagina ",
+              {
+                "text": "Contattaci"
+              },
+              " o dal modulo dei commenti a fine partita. Ogni partita e ogni messaggio aiutano Memory Chess a crescere."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Impara di più. Gioca meglio.",
+    "summary": "Nuove guide, una home page più chiara, suoni più discreti e un modo semplice per dirci la tua.",
+    "groups": [
+      {
+        "title": "Impara e migliora",
+        "changes": [
+          "Scopri nuove guide semplici da seguire su memoria e visualizzazione negli scacchi.",
+          "La home page rinnovata ora spiega come Memory Chess allena la tua memoria spaziale."
+        ]
+      },
+      {
+        "title": "Miglioramenti di ogni giorno",
+        "changes": [
+          "Il gioco da cellulare, la disposizione dei pezzi e le posizioni in classifica sono più affidabili.",
+          "I suoni della partita ora partono a un volume più discreto del 10%."
+        ]
+      },
+      {
+        "title": "Commenti e aggiornamenti",
+        "changes": [
+          "Ora puoi valutare il gioco dopo aver giocato e vedere le nuove versioni nelle Novità. La richiesta di commenti compare al massimo una volta al giorno.",
+          "Una nuova pagina Privacy spiega con parole semplici le impostazioni salvate, le statistiche d’uso, i commenti e le pubblicità future."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Scegliere i pezzi è più piacevole",
+    "summary": "Scegliere i pezzi bianchi o neri ora è più chiaro e più semplice.",
+    "groups": [
+      {
+        "title": "Selezione dei pezzi",
+        "changes": [
+          "Il selettore dei colori ha un aspetto tutto nuovo.",
+          "È più facile capire quale colore hai scelto.",
+          "I pulsanti ora sono più fluidi e più coerenti."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Meglio sul cellulare",
+    "summary": "Memory Chess ora è più semplice e più comodo da giocare su schermi piccoli.",
+    "groups": [
+      {
+        "title": "Gioco da cellulare",
+        "changes": [
+          "Il gioco, il conteggio del tempo e il pulsante Salta si adattano meglio agli schermi piccoli.",
+          "Tocchi e spaziature funzionano meglio da cellulare.",
+          "I suoni si comportano meglio mentre avanzi nella partita."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Che i giochi di memoria abbiano inizio!",
+    "summary": "La prima versione di Memory Chess è pronta da giocare.",
+    "groups": [
+      {
+        "title": "La prima versione",
+        "changes": [
+          "Memorizza una posizione di scacchi, poi ricostruiscila a memoria.",
+          "Scegli difficoltà, numero di pezzi, tempo e coordinate della scacchiera.",
+          "Vedi il tuo punteggio e il tuo tempo dopo ogni partita."
+        ]
+      }
+    ]
+  }
+]

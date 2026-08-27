@@ -1,0 +1,490 @@
+{
+  "common": {
+    "nav": {
+      "changelog": "Uutta",
+      "contactUs": "Ota yhteyttä",
+      "privacy": "Tietosuoja"
+    },
+    "footer": {
+      "copyright": "© {year} Memory Chess. Kaikki oikeudet pidätetään.",
+      "followOnX": "Seuraa meitä Twitterissä/X:ssä",
+      "productHuntAlt": "Memory Chess - Harjoita avaruudellista hahmotusta shakin avulla | Product Hunt"
+    },
+    "sound": {
+      "mute": "Mykistä äänet",
+      "unmute": "Ota äänet käyttöön",
+      "on": "Äänet päällä",
+      "off": "Äänet pois",
+      "volume": "Äänenvoimakkuus"
+    },
+    "language": {
+      "change": "Vaihda kieltä. Nykyinen kieli: {language}",
+      "current": "Kieli: {language}",
+      "select": "Valitse kieli"
+    },
+    "otherApps": {
+      "title": "Tekijän muut sovellukset",
+      "visitWebsite": "Siirry sivustolle →",
+      "iconAlt": "Sovelluksen {name} kuvake"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Memory Chess: ilmainen peli shakkimuistiin ja visualisointiin",
+      "description": "Opettele shakkiasema ulkoa, rakenna se muistista ja saa pisteet heti. Pelaa ilmaiseksi ja harjoita laudan hahmottamista, visualisointia ja tilamuistia.",
+      "socialTitle": "Memory Chess: ilmainen peli shakkimuistiin ja visualisointiin",
+      "socialDescription": "Opettele asema ulkoa, rakenna se uudelleen ja saa pisteet heti. Pelaa ilmaiseksi ilman tiliä.",
+      "twitterTitle": "Memory Chess: ilmainen shakkimuistipeli",
+      "twitterDescription": "Opettele asema, rakenna se uudelleen ja paranna laudan hahmottamista kierros kerrallaan."
+    },
+    "hero": {
+      "title": "Harjoita shakkimuistiasi ja hahmotustasi",
+      "subtitle": "Paina mieleen shakkiasema, rakenna se uudelleen muistista ja saat pisteet heti. Paranna laudan hahmotusta kierros kerrallaan.",
+      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>.",
+      "gamesPlayed": "Pelattuja pelejä: {count}"
+    },
+    "cta": {
+      "play": "Pelaa Memory Chessiä",
+      "leaderboard": "Katso tulostaulukko",
+      "playFree": "Pelaa ilmainen kierros"
+    },
+    "video": {
+      "title": "Katso, miten Memory Chess toimii",
+      "subtitle": "Lyhyt opas laudan tutkimiseen, aseman rakentamiseen ja tuloksen tulkintaan.",
+      "iframeTitle": "Näin pelaat Memory Chessiä",
+      "credit": "Video: ”A New Way To Train Your Vision”, Colin Galen"
+    },
+    "howItWorks": {
+      "eyebrow": "Näin se toimii",
+      "title": "Yksinkertainen treeni shakkimuistille",
+      "subtitle": "Jokaisessa kierroksessa on kolme yksinkertaista vaihetta: tutki asema, rakenna se uudelleen ja opi tuloksesta.",
+      "steps": {
+        "observe": {
+          "title": "Havainnoi",
+          "description": "Huomaa, missä kukin nappula on. Etsi ryhmiä, linjoja ja tyhjiä ruutuja, jotka toimivat kiintopisteinä."
+        },
+        "recreate": {
+          "title": "Rakenna uudelleen",
+          "description": "Kun lauta tyhjenee, aseta jokainen nappula muistamaasi ruutuun."
+        },
+        "improve": {
+          "title": "Kehity",
+          "description": "Katso tuloksesi, selvitä mikä meni ohi, ja yritä uudelleen useammalla nappulalla tai lyhyemmällä ajalla."
+        }
+      }
+    },
+    "board": {
+      "study": "Tutki lautaa",
+      "rebuild": "Rakenna muistista"
+    },
+    "learn": {
+      "eyebrow": "Oppimiskeskus",
+      "title": "Selkeät shakkioppaat",
+      "description": "Opi käytännön keinoja parantaa laudan hahmotusta, mielikuvitusta, laskentaa ja muistia. Jokaisessa oppaassa on harjoituksia, jotka voit kokeilla heti.",
+      "browseCta": "Selaa shakkioppaita",
+      "beginnerCta": "Aloita aloittelijan oppaasta"
+    },
+    "faq": {
+      "title": "Kysymyksiä Memory Chessistä",
+      "items": [
+        {
+          "question": "Mikä Memory Chess on?",
+          "answer": "Memory Chess on ilmainen laudan muistipeli. Tutkit shakkiasemaa hetken, rakennat sen uudelleen muistista ja saat pisteet sen mukaan, kuinka monta nappulaa asetit oikein."
+        },
+        {
+          "question": "Miten peliä pelataan?",
+          "answer": "Valitse nappuloiden määrä ja se, kuinka kauan haluat tutkia lautaa. Kun asema katoaa, aseta nappulat takaisin muistamiisi ruutuihin. Lähetä vastauksesi, niin näet tarkkuuden ja ajan."
+        },
+        {
+          "question": "Voivatko aloittelijat pelata Memory Chessiä?",
+          "answer": "Kyllä. Sinun ei tarvitse tuntea avauksia tai laskea muunnelmia. Aloita harvemmilla nappuloilla ja pidemmällä ajalla, ja nosta vaikeustasoa kun tunnet olevasi valmis."
+        },
+        {
+          "question": "Miten tämä harjoittaa shakin hahmottamista?",
+          "answer": "Jokainen kierros on kohdennettua harjoitusta aseman pitämisessä mielessä ja nappuloiden paikkojen muistamisessa. Tulos näyttää, mitkä asemat sujuvat helposti ja missä tarvitset lisää harjoitusta."
+        },
+        {
+          "question": "Mihin kannattaa kiinnittää huomiota lautaa muistaessa?",
+          "answer": "Aloita helpoista kiintopisteistä: kuninkaat, kuningattaret, kulmat ja reunaruudut. Etsi sitten ryhmiä, linjoja, viistolinjoja ja tyhjiä alueita sen sijaan, että muistaisit jokaisen nappulan erikseen."
+        },
+        {
+          "question": "Miten teen pelistä vaikeamman?",
+          "answer": "Lisää nappuloita, lyhennä tutkimisaikaa tai piilota laudan koordinaatit. Muuta yhtä asetusta kerrallaan, niin näet mikä vaikuttaa eniten."
+        },
+        {
+          "question": "Onko Memory Chess ilmainen?",
+          "answer": "Kyllä. Voit pelata ilmaiseksi ilman tiliä. Nimen lisääminen tulostaulukkoon on vapaaehtoista."
+        },
+        {
+          "question": "Kuinka usein kannattaa harjoitella?",
+          "answer": "Muutama keskittynyt kierros säännöllisesti on hyvä alku. Pidä harjoitukset niin lyhyinä, että jaksat yhä tutkia jokaisen aseman huolellisesti."
+        }
+      ]
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "Pelaa Memory Chessiä verkossa",
+      "description": "Pelaa Memory Chessiä verkossa ja harjoita laudan hahmottamista, muistia ja shakin kuviontunnistusta aikarajoitetuilla haasteilla.",
+      "socialTitle": "Pelaa Memory Chessiä verkossa",
+      "socialDescription": "Harjoita shakin hahmottamista ja muistia vuorovaikutteisilla aikarajoitetuilla haasteilla."
+    },
+    "hud": {
+      "time": "Aika",
+      "submit": "Lähetä",
+      "loading": "Ladataan peliä…",
+      "status": "Pelin tila",
+      "controls": "Pelin säätimet",
+      "complete": "Peli päättyi",
+      "flash": "VALMIS!"
+    },
+    "config": {
+      "title": "Pelin asetukset",
+      "presetsLabel": "Vaikeustasot",
+      "presetSummary": "{pieces} nappulaa / {seconds} s",
+      "customLabel": "Omat asetukset",
+      "pieceCount": "Nappuloiden määrä",
+      "memorizeTime": "Muistiinpainamisaika",
+      "seconds": "{seconds} s",
+      "start": "Aloita harjoitus",
+      "lastGame": "Edellinen peli: ratkaisuaika {time} s, tarkkuus {accuracy} %"
+    },
+    "presets": {
+      "easy": {
+        "label": "Helppo",
+        "description": "Vain kuninkaat – täydellinen aloitukseen"
+      },
+      "medium": {
+        "label": "Keskitaso",
+        "description": "Muutama nappula ja reilusti aikaa painaa mieleen"
+      },
+      "hard": {
+        "label": "Vaikea",
+        "description": "Enemmän nappuloita ja vähemmän aikaa"
+      },
+      "grandmaster": {
+        "label": "Suurmestari",
+        "description": "Shakkimestareille, joilla on valokuvamuisti"
+      }
+    },
+    "memorize": {
+      "title": "Paina asema mieleen",
+      "skip": "Ohita",
+      "hint": "Lauta tyhjenee, kun aika loppuu"
+    },
+    "place": {
+      "title": "Aseta nappulat",
+      "subtitle": "Valitse tyyppi ja väri",
+      "whitePieces": "Valkeat nappulat",
+      "blackPieces": "Mustat nappulat",
+      "selectWhite": "Valitse valkeat nappulat",
+      "selectBlack": "Valitse mustat nappulat",
+      "hint": "Napauta ruutua lisätäksesi tai poistaaksesi nappulan"
+    },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "valkoinen sotilas",
+          "knight": "valkoinen ratsu",
+          "bishop": "valkoinen lähetti",
+          "rook": "valkoinen torni",
+          "queen": "valkoinen kuningatar",
+          "king": "valkoinen kuningas"
+        },
+        "black": {
+          "pawn": "musta sotilas",
+          "knight": "musta ratsu",
+          "bishop": "musta lähetti",
+          "rook": "musta torni",
+          "queen": "musta kuningatar",
+          "king": "musta kuningas"
+        }
+      },
+      "feedback": {
+        "correct": "oikein",
+        "incorrect": "väärin",
+        "missing": "puuttuu"
+      },
+      "squareWithPiece": "{square}: {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Valitse: {piece}"
+    },
+    "stats": {
+      "title": "Tilastot",
+      "currentTime": "Kulunut aika",
+      "piecesToMemorize": "Muistettavat nappulat",
+      "averageAccuracy": "Keskimääräinen tarkkuus"
+    },
+    "result": {
+      "messages": {
+        "perfect": "✨ Täydet pisteet! ✨",
+        "excellent": "Erinomainen muisti!",
+        "great": "Hienoa työtä!",
+        "wellDone": "Hyvin tehty!",
+        "goodEffort": "Hyvä yritys!",
+        "keepPracticing": "Jatka harjoittelua!"
+      },
+      "accuracy": "Tarkkuus",
+      "piecesCorrectCaption": "nappulaa oikein",
+      "piecesCorrect": "Oikeat nappulat",
+      "memorizationTime": "Muistiinpainamisaika",
+      "solutionTime": "Ratkaisuaika",
+      "recallSpeed": "Palautusnopeus",
+      "piecesPerSecond": "{value} nappulaa/s",
+      "actions": "Tulokseen liittyvät toiminnot",
+      "tryAgain": "Yritä uudelleen",
+      "newGame": "Uusi peli",
+      "submitToLeaderboard": "Lähetä tulostaulukkoon",
+      "viewLeaderboard": "Katso tulostaulukko",
+      "dialog": {
+        "submitTitle": "Lähetä tulostaulukkoon",
+        "submitDescription": "Kirjoita nimi, joka näkyy tulostaulukossa.",
+        "successTitle": "Tulos lähetetty!",
+        "successDescription": "Tuloksesi lisättiin tulostaulukkoon.",
+        "playerName": "Pelaajan nimi",
+        "playerNamePlaceholder": "Kirjoita nimesi",
+        "error": "Virhe: {message}",
+        "submitFailed": "Tuloksen lähettäminen epäonnistui",
+        "cancel": "Peruuta",
+        "submit": "Lähetä tulos",
+        "submitting": "Lähetetään…",
+        "thanks": "Kiitos osallistumisesta, {name}!"
+      }
+    },
+    "comparison": {
+      "title": "Käy asemasi läpi",
+      "subtitle": "Vertaa muistamaasi siihen, minkä lähetit.",
+      "unavailable": "Lautojen vertailu ei ole käytettävissä.",
+      "ariaLabel": "Lautojen vertailu",
+      "correct": "Oikein",
+      "incorrect": "Väärin",
+      "missed": "Jäi huomaamatta",
+      "originalBoard": "Muistettava asema",
+      "submittedBoard": "Lähettämäsi asema"
+    },
+    "feedback": {
+      "title": "Kiitos, että pelasit Memory Chessiä!",
+      "description": "Miltä peli tuntui? Palautteesi auttaa parantamaan jokaista harjoituskertaa.",
+      "prompt": "Minkä arvosanan antaisit pelille?",
+      "placeholder": "Kerro, mikä toimi hyvin tai mitä muuttaisit…",
+      "notNow": "Ei nyt",
+      "sentTitle": "Kiitos, että autat meitä kehittymään",
+      "sentBody": "Palautteesi on vastaanotettu.",
+      "done": "Valmis",
+      "commentLabel": "Miltä pelaaminen tuntui, ja mikä tekisi siitä parempaa?",
+      "commentOptional": "(vapaaehtoinen)",
+      "starRating": "{count, plural, one {# tähti} other {# tähteä}}",
+      "chooseRating": "Valitse arvosana tähdillä.",
+      "sendFailed": "Palautteen lähettäminen ei onnistunut. Yritä uudelleen tai valitse Ei nyt.",
+      "send": "Lähetä palaute",
+      "sending": "Lähetetään…"
+    }
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Memory Chess -tulostaulukko",
+      "description": "Katso Memory Chessin parhaat pelaajat vaikeustason, tarkkuuden, muistiinpainamisnopeuden ja ratkaisuajan mukaan.",
+      "socialTitle": "Memory Chess -tulostaulukko",
+      "socialDescription": "Katso, miten pelaajat sijoittuvat muisti- ja hahmotushaasteissa."
+    },
+    "title": "Memory Chess -sijoitukset",
+    "subtitle": "Hallitse lautaa visualisoinnin avulla. Kilpaile maailman parhaita vastaan tarkkuudessa ja nopeudessa.",
+    "claimRank": "Lunasta sijoituksesi",
+    "footnote": "Näytetään vain 200 parasta. Järjestys: tarkkuus, muistiinpainamisaika ja ratkaisunopeus.",
+    "loading": "Ladataan tulostaulukkoa…",
+    "unavailableTitle": "Tulostaulukko ei ole juuri nyt käytettävissä",
+    "unavailableBody": "Tulostaulukkopalvelu on tällä hetkellä poissa käytöstä. Pelitietosi tallentuvat edelleen paikallisesti.",
+    "unavailableNote": "Voit jatkaa pelaamista normaalisti.",
+    "retryLater": "Yritä myöhemmin uudelleen",
+    "errorLoading": "Virhe sijoitusten lataamisessa: {error}",
+    "errors": {
+      "timeout": "Pyyntö aikakatkaistiin. Yritä myöhemmin uudelleen.",
+      "parse": "Palvelimen vastausta ei voitu lukea. Yritä myöhemmin uudelleen.",
+      "status": "Pyyntö epäonnistui, tila {status}",
+      "unexpected": "Tapahtui odottamaton virhe"
+    },
+    "emptyTitle": "Ole ensimmäinen mestari!",
+    "emptyBody": "Tässä tulostaulukossa ei ole vielä merkintöjä",
+    "emptyCta": "Haasta muistisi ja nouse kärkeen! Pelaa peli nyt ja kirjoita nimesi Memory Chessin historiaan.",
+    "startPlaying": "Aloita pelaaminen",
+    "you": "Sinä",
+    "columns": {
+      "rank": "Sija",
+      "player": "Pelaaja",
+      "pieces": "Nappulat",
+      "memorizeTime": "Muistiinpainamisaika",
+      "solutionTime": "Ratkaisuaika",
+      "date": "Päivä"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Memory Chess -asetukset",
+      "description": "Muokkaa Memory Chess -pelisi asetuksia ja mieltymyksiä."
+    },
+    "difficulty": "Vaikeustaso",
+    "memorizationTime": "Muistiinpainamisaika: {seconds} sekuntia",
+    "seconds": "{seconds} s",
+    "showCoordinates": "Näytä laudan koordinaatit",
+    "home": "Etusivu",
+    "playGame": "Pelaa"
+  },
+  "contact": {
+    "meta": {
+      "title": "Ota yhteyttä Memory Chessiin",
+      "description": "Ota yhteyttä Memory Chessiin palautteen, ominaisuustoiveiden tai liiketoiminta-asioiden merkeissä.",
+      "socialTitle": "Ota yhteyttä Memory Chessiin",
+      "socialDescription": "Lähetä palautetta, ominaisuustoiveita ja yhteistyöpyyntöjä Memory Chessille."
+    },
+    "title": "Ota yhteyttä",
+    "sentTitle": "Viesti lähetetty!",
+    "sentBody": "Kiitos yhteydenotosta. Vastaamme pian.",
+    "redirecting": "Ohjataan etusivulle…",
+    "name": "Nimi",
+    "namePlaceholder": "Nimesi",
+    "email": "Sähköposti",
+    "emailPlaceholder": "sinun.osoite@esimerkki.fi",
+    "inquiryType": "Yhteydenoton aihe",
+    "inquiryPlaceholder": "Valitse aihe",
+    "message": "Viesti",
+    "messagePlaceholder": "Kirjoita viestisi tähän…",
+    "send": "Lähetä viesti",
+    "sending": "Lähetetään…",
+    "types": {
+      "feedback": "Palaute",
+      "featureRequest": "Ominaisuustoive",
+      "general": "Yleinen kysymys",
+      "business": "Liiketoimintamahdollisuus"
+    },
+    "validation": {
+      "nameTooShort": "Nimessä on oltava vähintään 2 merkkiä.",
+      "emailInvalid": "Anna kelvollinen sähköpostiosoite.",
+      "typeRequired": "Valitse yhteydenoton aihe.",
+      "messageTooShort": "Viestissä on oltava vähintään 10 merkkiä."
+    },
+    "errors": {
+      "submitFailed": "Lomakkeen lähettäminen epäonnistui{details}",
+      "generic": "Lomaketta lähetettäessä tapahtui virhe. Yritä uudelleen."
+    }
+  },
+  "learnHub": {
+    "meta": {
+      "title": "Opi shakkia selkeä askel kerrallaan",
+      "description": "Käytännönläheiset shakkioppaat aloittelijoille: laudan hahmotus, visualisointi, muisti, laskenta, virheiden välttäminen ja päivittäinen harjoittelu."
+    },
+    "title": "Opi shakkia selkeä askel kerrallaan",
+    "startBeginner": "Aloita aloittelijan opas",
+    "playCta": "Pelaa Memory Chessiä",
+    "startHere": "Aloita tästä",
+    "pickNext": "Valitse seuraava askel",
+    "chooseGoal": "Valitse tavoite",
+    "readRecallPlay": "Lue, muista, pelaa",
+    "turnIdea": "Muuta yksi idea harjoitukseksi",
+    "startRound": "Aloita muistikierros",
+    "eyebrow": "Opi Memory Chessin kanssa",
+    "heroDescription": "Valitse, mitä haluat parantaa. Jokainen opas selittää yhden hyödyllisen ajatuksen selkeällä kielellä ja antaa sitten lyhyen harjoituksen.",
+    "pickNextDescription": "Valitse lause, joka muistuttaa eniten nykyistä peliäsi. Täydellistä järjestystä ei ole, ja voit vaihtaa polkua milloin tahansa.",
+    "allGuides": "Kaikki {count} opasta",
+    "chooseGoalDescription": "Jokainen polku etenee yksinkertaisesta ensimmäisestä harjoituksesta kohti täydempää harjoittelutapaa.",
+    "guideNumber": "Opas {number}",
+    "turnIdeaDescription": "Lue yksi opas, pelaa lyhyt kierros ajatuksen ollessa tuore ja huomaa sitten, mikä oli helppo muistaa ja mikä vaatii vielä yhden yrityksen.",
+    "paths": {
+      "newToChess": {
+        "label": "Uusi shakin parissa",
+        "title": "Rakenna yksinkertainen kehityssuunnitelma",
+        "description": "Aloita perusteista ja tee sitten yhdestä hyödyllisestä ideasta toistettava päivittäinen tapa."
+      },
+      "missingThreats": {
+        "label": "Yksinkertaiset uhat jäävät huomaamatta",
+        "title": "Harjoittele koko laudan silmäilyä",
+        "description": "Käytä lyhyttä tarkistusrutiinia huomataksesi suojaamattomat nappulat, hyökkäykset ja vaarat ennen siirtoa."
+      },
+      "losingPosition": {
+        "label": "Asema katoaa mielestä",
+        "title": "Vahvista visualisointia ja muistia",
+        "description": "Harjoittele pitämään laudasta pieni ja tarkka kuva ennen kuin lisäät pidempiä siirtosarjoja."
+      }
+    }
+  },
+  "changelog": {
+    "meta": {
+      "title": "Uutta",
+      "description": "Katso Memory Chessin uusimmat ominaisuudet, parannukset ja korjaukset virallisesta muutoslokista.",
+      "socialTitle": "Uutta Memory Chessissä",
+      "socialDescription": "Katso Memory Chessin uusimmat ominaisuudet, parannukset ja korjaukset."
+    },
+    "title": "Uutta",
+    "latest": "Uusin",
+    "bannerCta": "Katso mitä uutta",
+    "bannerLabel": "Memory Chess -päivitys",
+    "eyebrow": "Päivitykset",
+    "changesIn": "Version {version} muutokset"
+  },
+  "learnArticle": {
+    "faqLabel": "Usein kysyttyä",
+    "whatChangesTitle": "Mikä paranee ensin",
+    "trackThisWeekTitle": "Mitä seurata tällä viikolla",
+    "trackThisWeekBody": "Valitse yksi yksinkertainen mittari: virheet per peli, oikein muistetut asemat, tai kuinka monta siirtoa näet selvästi mielessäsi.",
+    "startHereSummary": "Nämä askeleet voit kokeilla jo tänään.",
+    "drillsSummary": "Jokainen harjoitus antaa soveltaa opitun suoraan Memory Chessissä.",
+    "comparisonColumns": {
+      "situation": "Tilanne",
+      "before": "Ennen harjoittelua",
+      "after": "Harjoittelun jälkeen"
+    },
+    "mistakesTitle": "Yleisiä virheitä, joita kannattaa välttää",
+    "whatToDoInsteadTitle": "Tee sen sijaan näin",
+    "planSummary": "Käy nämä askeleet läpi ennen kuin teet harjoittelusta vaikeampaa tai pidempää.",
+    "breadcrumbHome": "Etusivu",
+    "breadcrumbLearn": "Opi",
+    "eyebrow": "Selkeä shakkiopas",
+    "updated": "Päivitetty {date}",
+    "reviewedBy": "Tarkistanut {name}",
+    "startHere": "Aloita tästä",
+    "whatYouWillLearn": "Mitä opit",
+    "whoThisIsFor": "Kenelle tämä sopii",
+    "browseAllGuides": "Selaa kaikkia oppaita",
+    "onThisPage": "Tällä sivulla",
+    "aimFor": "Tavoite:",
+    "tryItNow": "Kokeile heti",
+    "tryItNowTitle": "Pelaa lyhyt kierros ennen kuin jatkat lukemista.",
+    "tryItNowBody": "Käytä vaiheita niiden ollessa tuoreita ja palaa yhden konkreettisen havainnon kanssa.",
+    "startTrainingRound": "Aloita harjoituskierros",
+    "keepLearning": "Jatka oppimista",
+    "whatToLearnNext": "Mitä opit seuraavaksi",
+    "whatToLearnNextBody": "Valitse opas, joka sopii parhaiten seuraavaan ongelmaan, jonka haluat ratkaista.",
+    "readThisGuide": "Lue tämä opas",
+    "putItOnTheBoard": "Vie se laudalle",
+    "practiceTitle": "Harjoittele Memory Chessissä",
+    "practiceBody": "Käytä lyhyttä harjoitusta juuri oppimasi vahvistamiseen.",
+    "goalLabel": "Tavoite:",
+    "commonQuestions": "Yleisiä kysymyksiä",
+    "editorialNotes": "Toimituksen huomiot",
+    "aboutThisGuide": "Tietoa tästä oppaasta",
+    "aboutBody": "Memory Chessin oppaat on kirjoitettu aloittelijoille ja kehittyville pelaajille. Jokainen opas antaa suoran vastauksen, käytännön askeleet ja yhden hyödyllisen tavan seurata edistymistä.",
+    "publishedLine": "Julkaistu {published}. Viimeksi tarkistanut ja päivittänyt {updated} {reviewer}.",
+    "referenceLinks": "Lähteet ja linkit",
+    "goals": {
+      "reduce-blunders": {
+        "label": "Vähemmän kömmähdyksiä",
+        "description": "Opettele tarkistamaan uhat nopeammin äläkä jätä nappuloita ilmaiseksi yksinkertaisissa asemissa.",
+        "accent": "Uhkien tarkistus"
+      },
+      "visualization": {
+        "label": "Parempi hahmotus",
+        "description": "Pidä lauta mielessäsi pidempään, jolloin laskeminen tuntuu rauhallisemmalta ja selkeämmältä.",
+        "accent": "Lauta mielessä"
+      },
+      "memory": {
+        "label": "Harjoita muistia",
+        "description": "Paranna asemien muistamista ja kuvioiden mieleen jäämistä ilman että harjoittelusta tulee teorialäksyjä.",
+        "accent": "Muistaminen ja säilyminen"
+      },
+      "routine": {
+        "label": "Rakenna päivittäinen rutiini",
+        "description": "Käytä lyhyttä suunnitelmaa, jossa yhdistyvät harjoitukset, pelit ja läpikäynti.",
+        "accent": "Säännöllisyys"
+      }
+    }
+  }
+}

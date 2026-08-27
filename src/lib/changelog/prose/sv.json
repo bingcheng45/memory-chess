@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess talar nu ditt språk",
+    "summary": "Spelet och varje guide i Lärcenter finns nu på 24 språk, och sajten startar på ditt.",
+    "groups": [
+      {
+        "title": "24 språk",
+        "changes": [
+          "Memory Chess finns nu på 24 språk: engelska, spanska, ryska, brasiliansk portugisiska, tyska, franska, hindi, italienska, förenklad kinesiska, turkiska, svenska, nederländska, polska, indonesiska, norska, finska, rumänska, vietnamesiska, tjeckiska, japanska, koreanska, traditionell kinesiska, danska och ungerska.",
+          "Allt du läser medan du spelar är översatt, från startsidan och inställningarna till tiduret, resultatskärmen, topplistan och den här sidan med nyheter."
+        ]
+      },
+      {
+        "title": "Alla 16 guider i Lärcenter, på varje språk",
+        "changes": [
+          {
+            "segments": [
+              "Varje guide i ",
+              {
+                "text": "Lärcenter"
+              },
+              " är översatt i sin helhet. Stegen att komma igång, övningarna, veckoplanen och frågorna på slutet läser sig naturligt på ditt språk, med schacktermer som matchar hur spelare faktiskt uttrycker sig."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Byt språk när du vill",
+        "changes": [
+          "En jordglob högst upp på varje sida öppnar språklistan. Varje språk står skrivet med sitt eget namn, så du hittar ditt utan att först behöva läsa engelska.",
+          "När du väljer språk stannar du kvar exakt där du var, och Memory Chess kommer ihåg ditt val till nästa gång du besöker sajten."
+        ]
+      },
+      {
+        "title": "Vi försöker gissa rätt innan du hinner fråga",
+        "changes": [
+          "Nya besökare startar nu på det språk som webbläsaren eller regionen föreslår, när vi har det. Blir gissningen fel finns jordgloben där för att rätta till det."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Smidigare partier, tydligare resultat",
+    "summary": "Brädet står stilla, slumpade ställningar blir mer meningsfulla och resultaten är lättare att gå igenom.",
+    "groups": [
+      {
+        "title": "Stabilare spelkänsla",
+        "changes": [
+          "Tack vare bra återkoppling från spelare stannar brädet nu på samma plats när memoreringen tar slut och placeringen börjar. Kontrollerna och pjäsväljaren ligger i linje med brädet.",
+          "Sidrubriker, ljudkontroller och avstånd hålls nu mer enhetliga medan du rör dig genom partiet. Pjäser och beteckningar på brädet går inte längre att markera av misstag."
+        ]
+      },
+      {
+        "title": "Bättre slumpade ställningar",
+        "changes": [
+          "Tack vare en spelare som rapporterade det här på Reddit placerar slumpade ställningar inte längre kungarna intill varandra, två löpare för samma sida på rutor med samma färg, bönder på första eller åttonde raden, eller båda kungarna i schack."
+        ]
+      },
+      {
+        "title": "Tydligare resultat",
+        "changes": [
+          "Efter varje parti kan du nu jämföra ställningen du memorerade med brädet du skickade in. Tydliga markeringar visar rätta, felaktiga och missade pjäser.",
+          "Din träffsäkerhet och de viktigaste knapparna för att spela igen och gå till topplistan hålls nu samlade högst upp i resultatet. Missade pjäser visas med en tydlig svart prickad kontur medan brädet fortfarande syns under."
+        ]
+      },
+      {
+        "title": "Ett tydligare avslut",
+        "changes": [
+          "När du skickar in stannar tiduret i en sekund så att du hinner se din låsta tid och det färdiga brädet innan resultatet dyker upp. En snabb KLART!-blinkning markerar slutet på omgången, och placeringstiduret visar nu millisekunder."
+        ]
+      },
+      {
+        "title": "Lite statistik till alla!",
+        "description": "Här är en ögonblicksbild av de inskickade resultaten på de publika topplistorna fram till 16 augusti 2026.",
+        "tables": [
+          {
+            "caption": "Träffsäkerhet",
+            "columns": [
+              "Inskickade topplisteresultat",
+              "Fram till 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Snittträffsäkerhet",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Andel full pott",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Snittträffsäkerhet på Medel",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Andel full pott på Medel",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Snittträffsäkerhet på Svår",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Snittträffsäkerhet på Stormästare",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Inskickningstempo",
+            "columns": ["Lösningstid vid full pott", "Fram till 2025", "2026"],
+            "rows": [
+              {
+                "label": "Alla svårighetsgrader, median",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Lätt, median",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Medel, median",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Bland 50 upprepade kombinationer av spelarnamn och svårighetsgrad hade 33 en snabbare senaste lösning och 17 en långsammare. Träffsäkerheten förbättrades tydligt överlag, men att ta mer tid på sig kan också ge ett bättre resultat. Siffrorna gäller frivilligt inskickade topplisteresultat, inte varje parti, och topplistan för Lätt visar bara sina 200 bästa resultat."
+      },
+      {
+        "title": "Tack för att du spelar",
+        "changes": [
+          {
+            "segments": [
+              "Ett stort tack till alla som hjälpt Memory Chess att nå över 800 spelare i månaden och mer än 32 000 spelade partier. Vi är särskilt tacksamma mot alla som delat med sig av idéer, uppmuntran och buggrapporter via ",
+              {
+                "text": "Kontakta oss-sidan"
+              },
+              " eller återkopplingsformuläret efter partiet. Varje parti och varje meddelande hjälper Memory Chess att växa vidare."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Lär dig mer. Spela smidigare.",
+    "summary": "Nya guider, en tydligare startsida, dämpade ljud och ett enkelt sätt att dela din återkoppling.",
+    "groups": [
+      {
+        "title": "Lär dig och bli bättre",
+        "changes": [
+          "Utforska nya, lättföljda guider för schackminne och visualisering.",
+          "Den uppfräschade startsidan förklarar nu hur Memory Chess tränar ditt rumsliga minne."
+        ]
+      },
+      {
+        "title": "Förbättringar i vardagen",
+        "changes": [
+          "Spel på mobilen, pjäsuppställningar och placeringar på topplistan är mer pålitliga.",
+          "Spelljuden startar nu på en mjukare volym på 10 %."
+        ]
+      },
+      {
+        "title": "Återkoppling och uppdateringar",
+        "changes": [
+          "Du kan nu betygsätta spelet efter att du spelat och se nya versioner under Nyheter. Frågan om återkoppling dyker upp högst en gång om dagen.",
+          "En ny integritetssida förklarar sparade inställningar, analys, återkoppling och framtida annonser på enkelt språk."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Skönare att välja pjäser",
+    "summary": "Det är nu tydligare och enklare att välja vita eller svarta pjäser.",
+    "groups": [
+      {
+        "title": "Pjäsval",
+        "changes": [
+          "Färgväljaren har fått ett nytt utseende.",
+          "Det är lättare att se vilken färg du har valt.",
+          "Knapparna känns nu smidigare och mer enhetliga."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Bättre i mobilen",
+    "summary": "Memory Chess är nu enklare och bekvämare att spela på en liten skärm.",
+    "groups": [
+      {
+        "title": "Spel på mobilen",
+        "changes": [
+          "Spelet, tiduret och knappen Hoppa över får bättre plats på små skärmar.",
+          "Tryck och avstånd känns bättre i mobilen.",
+          "Ljuden uppför sig bättre medan du rör dig genom partiet."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Låt minnesspelen börja!",
+    "summary": "Den första versionen av Memory Chess är klar att spela.",
+    "groups": [
+      {
+        "title": "Den första versionen",
+        "changes": [
+          "Memorera en schackställning och bygg sedan upp den ur minnet.",
+          "Välj svårighetsgrad, antal pjäser, tid och brädets koordinater.",
+          "Se din poäng och din tid efter varje parti."
+        ]
+      }
+    ]
+  }
+]

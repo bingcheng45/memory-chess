@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 type OtherApp = { name: string; href: string; icon: string };
 
@@ -24,6 +25,8 @@ function withUtm(url: string) {
 }
 
 export default function OtherAppsSection() {
+  const t = useTranslations("common.otherApps");
+
   return (
     <section
       id="other-apps"
@@ -36,7 +39,7 @@ export default function OtherAppsSection() {
         viewport={{ once: true }}
         variants={fadeUp}
       >
-        More Apps from the Creator
+        {t("title")}
       </motion.h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -55,7 +58,7 @@ export default function OtherAppsSection() {
             <div className="h-12 w-12 rounded-xl bg-white p-0.5 shadow-md ring-1 ring-black/5 overflow-hidden">
               <Image
                 src={app.icon}
-                alt={`${app.name} app icon`}
+                alt={t("iconAlt", { name: app.name })}
                 width={48}
                 height={48}
                 className="h-full w-full rounded-[10px] object-cover"
@@ -63,7 +66,7 @@ export default function OtherAppsSection() {
             </div>
             <div>
               <div className="font-medium text-text-primary">{app.name}</div>
-              <div className="text-sm text-text-secondary">Visit website →</div>
+              <div className="text-sm text-text-secondary">{t("visitWebsite")}</div>
             </div>
           </motion.a>
         ))}

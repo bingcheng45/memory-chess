@@ -1,7 +1,8 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import SoundSettings from './SoundSettings';
+import LanguageSettings from './LanguageSettings';
 
 type PageType = 'game-config' | 'game-memorize-solution' | 'game-result' | 'other';
 
@@ -10,14 +11,16 @@ interface PageHeaderProps {
   className?: string;
   style?: React.CSSProperties;
   showSoundSettings?: boolean;
+  showLanguageSettings?: boolean;
   pageType?: PageType;
 }
 
-export default function PageHeader({ 
-  onBackClick, 
+export default function PageHeader({
+  onBackClick,
   className = '',
   style,
   showSoundSettings = true,
+  showLanguageSettings = true,
   pageType = 'other'
 }: PageHeaderProps) {
   const handleBackClick = (e: React.MouseEvent) => {
@@ -45,6 +48,22 @@ export default function PageHeader({
     }
   };
 
+  // Horizontal mirror of getPositionClass(), so the language control sits at
+  // the same inset from the left edge as the sound control does from the right
+  // and the title stays optically centred. Keep the two in sync.
+  const getLanguagePositionClass = (): string => {
+    switch(pageType) {
+      case 'game-config':
+        return "left-6 sm:left-14 md:left-30 lg:left-48";
+      case 'game-result':
+        return "left-6 sm:left-16 md:left-32 lg:left-52";
+      case 'game-memorize-solution':
+      case 'other':
+      default:
+        return "left-0";
+    }
+  };
+
   return (
     <div className={`relative w-full max-w-4xl mb-8 px-1 ${className}`} style={style}>
       {/* Title centered in the available space */}
@@ -58,6 +77,16 @@ export default function PageHeader({
         </Link>
       </div>
       
+      {/* Language switcher, mirrored to the left of the sound control */}
+      {showLanguageSettings && (
+        <div className={`absolute top-1/2 -translate-y-1/2 ${getLanguagePositionClass()}`}>
+          {/* Auto width: the globe + code pill is wider than the sound circle.
+              Both still anchor to their respective edges at equal insets, and
+              the title is centred independently of either control. */}
+          <LanguageSettings className="flex justify-start" />
+        </div>
+      )}
+
       {/* Sound settings with positioning based on page type */}
       {showSoundSettings && (
         <div className={`absolute top-1/2 -translate-y-1/2 ${getPositionClass()}`}>

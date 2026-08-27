@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Sådan bliver du bedre til skak som begynder",
+    "h1": "Sådan bliver du bedre til skak som begynder",
+    "description": "Følg en enkel plan for at se brættet bedre, huske stillinger og spille mere sikre træk.",
+    "primaryKeyword": "blive bedre til skak",
+    "secondaryKeywords": [
+      "plan for skakudvikling",
+      "skaktræning for begyndere",
+      "skakrutine for begyndere",
+      "færre bommerter i skak",
+      "brætsyn"
+    ],
+    "painPoint": "Du er ikke sikker på, hvad du skal træne, eller hvor du skal begynde.",
+    "ctaLabel": "Start en begynderrunde",
+    "quickAnswer": "Brug en kort daglig rutine: træn brætsyn, træn hukommelsen, spil et parti og gennemgå én fejl. Gentag 20 til 30 minutter om dagen.",
+    "keyTakeaways": [
+      "At se og huske brættet betyder mere end at lære mange åbninger.",
+      "Kort daglig træning virker bedre end sjældne lange sessioner.",
+      "Følg dine fejl og din genkaldelsespræcision, ikke kun ratingen."
+    ],
+    "whoThisIsFor": [
+      "Spillere der kan reglerne, men stadig forærer brikker væk.",
+      "Begyndere der klarer opgaver, men kæmper i partier.",
+      "Alle der ikke ved, hvad de skal lære først."
+    ],
+    "timeToRead": "9 minutters læsning",
+    "introParagraphs": [
+      "De fleste begyndere har ikke brug for flere åbninger, videoer eller kurser. De har brug for at følge brættet og tjekke, at trækket er sikkert, før de spiller det.",
+      "Memory Chess hjælper dig med at træne begge færdigheder. Bedre hukommelse for stillingen gør skak, slag og trusler lettere at få øje på."
+    ],
+    "startHereTitle": "Start med denne begynderrutine",
+    "startHereSteps": [
+      "Brug 3 minutter på at skanne brættet og nævne angrebne, dækkede og udækkede brikker.",
+      "Spil én runde Memory Chess med 8 brikker og 10 sekunders visning.",
+      "Arbejd med to korte taktiske stillinger, og sig skak, slag og trusler højt, før du vælger træk.",
+      "Spil ét hurtigparti. Marker hver stor fejl som syn, hukommelse eller tidnød.",
+      "Skriv én ting ned, du vil træne igen i morgen."
+    ],
+    "drillSectionTitle": "Enkle øvelser til bedre partier",
+    "drillCards": [
+      {
+        "title": "Brætskanning på 10 sekunder",
+        "description": "Brug en let opstilling og find hver udækket brik, før tiden løber ud.",
+        "duration": "3 minutter",
+        "goal": "At opbygge et sikkerhedstjek før hvert træk.",
+        "ctaLabel": "Kør en skanningsrunde"
+      },
+      {
+        "title": "Gentag samme stilling",
+        "description": "Spil samme stilling to gange, så du finder og retter én hukommelsesfejl.",
+        "duration": "5 minutter",
+        "goal": "At finde præcis den brik eller det felt, du glemte.",
+        "ctaLabel": "Træn gentaget genkaldelse"
+      },
+      {
+        "title": "Fra parti til øvelse",
+        "description": "Efter et hurtigparti forestiller du dig stillingen, hvor du fejlede, før du analyserer den.",
+        "duration": "7 minutter",
+        "goal": "At lade de rigtige fejl styre træningen.",
+        "ctaLabel": "Start overførselsøvelse"
+      }
+    ],
+    "comparisonTitle": "Sådan ser bedre begynderspil ud",
+    "comparisonSummary": "Du behøver ikke se fem træk frem. Se først den nuværende stilling klart, og hold en pause før trækket.",
+    "comparisonRows": [
+      {
+        "label": "Før trækket",
+        "struggling": "Du kigger kun på din egen idé.",
+        "stronger": "Du tjekker modstanderens trusler først."
+      },
+      {
+        "label": "Under taktik",
+        "struggling": "Varianten forsvinder efter én afbytning.",
+        "stronger": "Du ser nøglefelterne, mens du sammenligner to træk."
+      },
+      {
+        "label": "Efter nederlag",
+        "struggling": "Du starter straks et nyt parti.",
+        "stronger": "Du sætter navn på fejlen og træner den i morgen."
+      }
+    ],
+    "mistakes": [
+      "At springe mellem tilfældigt materiale i stedet for at holde én rutine i to uger.",
+      "At studere åbninger, før brætsynet er stabilt.",
+      "At spille for mange partier uden korte noter bagefter.",
+      "At se hukommelsestræning som noget andet end rigtig skak."
+    ],
+    "mistakesCallout": "Skynd dig ikke videre til avanceret stof. De fleste begyndere taber på oversete trusler i ét træk, ikke på en glemt åbningsvariant.",
+    "planTitle": "30-dages plan for begyndere",
+    "planSteps": [
+      {
+        "label": "Uge 1",
+        "duration": "20 minutter om dagen",
+        "detail": "Brug den samme brætskanning, og spil en kort runde Memory Chess før hver spilsession."
+      },
+      {
+        "label": "Uge 2",
+        "duration": "25 minutter om dagen",
+        "detail": "Tilføj endnu en genkaldelsesrunde, og notér om fejlen kom fra syn, hukommelse eller panik."
+      },
+      {
+        "label": "Uge 3",
+        "duration": "25 til 30 minutter om dagen",
+        "detail": "Samme øvelser, men forkort huskningstiden, så genkaldelsen forbliver ren under pres."
+      },
+      {
+        "label": "Uge 4",
+        "duration": "30 minutter om dagen",
+        "detail": "Tjek om bommerterne pr. parti falder, og behold kun de indstillinger, der overførte sig bedst."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvor mange minutter om dagen bør en begynder træne?",
+        "answer": "Fokuserede 20 til 30 minutter er nok, når du kombinerer brætsyn, hukommelse og én rigtig stilling."
+      },
+      {
+        "question": "Hvorfor overføres min opgavefærdighed ikke til partier?",
+        "answer": "Opgaver begynder, når taktikken allerede findes. I et parti skal du først bemærke ændringen, så genkaldelse og sikkerhedstjek betyder langt mere."
+      },
+      {
+        "question": "Skal jeg lære åbninger tidligt?",
+        "answer": "Kun grundprincipperne i starten. De fleste begyndere får mere ud af at se trusler tidligere og holde stillingen klarere."
+      },
+      {
+        "question": "Hvilket mål viser fremgang hurtigst?",
+        "answer": "Bommerter pr. parti og genkaldelsespræcisionen i Memory Chess. De rykker sig oftest før ratingen."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Brug denne, hvis dit hovedproblem er at forære brikker væk."
+      },
+      {
+        "reason": "Gå dybere med vanen at tjekke trusler før trækket."
+      },
+      {
+        "reason": "Byg et stærkere bræt i hovedet, så taktikken hænger sammen."
+      },
+      {
+        "reason": "Træn genkaldelse direkte, hvis du glemmer brikkernes placering."
+      },
+      {
+        "reason": "Følg en kortere rutine, hvis du vil have en enklere dagsstruktur."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Visualiseringsøvelser i skak for begyndere",
+    "h1": "Daglige visualiseringsøvelser i skak",
+    "description": "Prøv enkle visualiseringsøvelser for at huske brættet og se trækkene tydeligere.",
+    "primaryKeyword": "visualiseringsøvelser skak",
+    "secondaryKeywords": [
+      "visualiseringstræning i skak",
+      "regne træk frem",
+      "visualisere brættet",
+      "forberedelse til blindskak",
+      "skak i hovedet"
+    ],
+    "painPoint": "Du mister overblikket over brikkerne, når du prøver at forestille dig de næste træk.",
+    "ctaLabel": "Træn visualisering",
+    "quickAnswer": "Husk først et bræt uden at flytte noget. Forestil dig derefter ét træk ad gangen. Du behøver ikke spille et helt parti blindt.",
+    "keyTakeaways": [
+      "Kort daglig træning virker bedre end sjældne lange sessioner.",
+      "Tjek det bræt, du forestillede dig, efter hvert forsøg.",
+      "Se ét træk tydeligt, før du prøver længere varianter."
+    ],
+    "whoThisIsFor": [
+      "Spillere der mister varianten efter én afbytning.",
+      "Begyndere der går i stå, når de ikke kan se brættet.",
+      "Alle der vil nærme sig blindskak trin for trin."
+    ],
+    "timeToRead": "8 minutters læsning",
+    "introParagraphs": [
+      "Visualisering betyder at forestille sig, hvordan brættet ændrer sig efter et træk. For begyndere er målet blot at sammenligne to træk uden at miste brikkerne.",
+      "Memory Chess viser, hvilke brikker eller felter du glemmer. Derefter kan du træne samme slags stilling igen."
+    ],
+    "startHereTitle": "Start med disse visualiseringstrin",
+    "startHereSteps": [
+      "Nævn hver brik og hvert felt på et stillestående bræt i 60 sekunder.",
+      "Luk øjnene og genopbyg brættet i hovedet, før du tjekker.",
+      "Forestil dig ét lovligt træk for hver side uden at røre brikkerne.",
+      "Spil en runde Memory Chess med et moderat antal brikker og stram tid.",
+      "Bekræft stillingen, og gentag først, når du ved, hvad du glemte."
+    ],
+    "drillSectionTitle": "Lette visualiseringsøvelser",
+    "drillCards": [
+      {
+        "title": "Øjebliksbillede af brættet",
+        "description": "Husk brættet, og placer derefter hver brik på det rigtige felt.",
+        "duration": "4 minutter",
+        "goal": "At huske brættet, før du forestiller dig træk.",
+        "ctaLabel": "Start øjebliksbilledet"
+      },
+      {
+        "title": "Ét træk per side",
+        "description": "Husk brættet, forestil dig ét træk per side, og tjek så svaret.",
+        "duration": "5 minutter",
+        "goal": "At lære at opdatere brættet i hovedet.",
+        "ctaLabel": "Træn trækopdatering"
+      },
+      {
+        "title": "Genkaldelse under pres",
+        "description": "Når genkaldelsen er præcis, forkort tiden du får lov at se brættet.",
+        "duration": "5 minutter",
+        "goal": "At bruge ren genkaldelse i hurtigere partier.",
+        "ctaLabel": "Tilføj pres"
+      }
+    ],
+    "comparisonTitle": "Sådan føles svag visualisering",
+    "comparisonSummary": "Det ligner et regneproblem, men ofte falmer billedet af brættet bare for hurtigt.",
+    "comparisonRows": [
+      {
+        "label": "Kandidattræk",
+        "struggling": "Du kan nævne et træk, men ikke se den nye stilling tydeligt.",
+        "stronger": "Du sammenligner to mulige stillinger, før du trækker."
+      },
+      {
+        "label": "Taktisk kaos",
+        "struggling": "Hovedet bliver tomt efter afbytninger.",
+        "stronger": "Du holder vigtige felter og trusler længe nok til at vælge roligt."
+      },
+      {
+        "label": "Feedback fra træningen",
+        "struggling": "Du ved ikke præcis, hvilket felt du glemte.",
+        "stronger": "Du fanger, om fejlen kom fra en linje, en række eller en manglende forsvarer."
+      }
+    ],
+    "mistakes": [
+      "Dyb blindregning, før statisk genkaldelse er stabil.",
+      "At flytte brikkerne fysisk ved hvert regneforsøg.",
+      "At træne én gang om ugen i stedet for en kort daglig blok.",
+      "Ikke at tjekke om det forestillede bræt passer med virkeligheden."
+    ],
+    "mistakesCallout": "Jag ikke længere varianter endnu. Se først det første træk tydeligt.",
+    "planTitle": "7-dages visualiseringsforløb",
+    "planSteps": [
+      {
+        "label": "Dag 1",
+        "duration": "10 minutter",
+        "detail": "Kun øjebliksbilleder af brættet med tjek med det samme."
+      },
+      {
+        "label": "Dag 2 til 3",
+        "duration": "12 minutter",
+        "detail": "Tilføj ét forestillet træk per side, og hold øje med hvilke felter der forsvinder først."
+      },
+      {
+        "label": "Dag 4 til 5",
+        "duration": "15 minutter",
+        "detail": "Forkort visningstiden i Memory Chess med samme antal brikker."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Tag øvelsen med i et hurtigparti: stop før hver taktisk beslutning og beskriv den stilling, der opstår."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvor lang tid tager det, før visualiseringen bliver bedre?",
+        "answer": "De fleste begyndere mærker renere genkaldelse efter to til fire ugers kort og regelmæssig træning."
+      },
+      {
+        "question": "Hjælper øvelserne i lynskak?",
+        "answer": "Ja. Hurtigere opdatering af brættet i hovedet gør skak, slag og trusler lettere at se under tidspres."
+      },
+      {
+        "question": "Kan man træne visualisering uden blindskak?",
+        "answer": "Ja. Genkaldelse på tid og øvelser med ét træk er nok til et rigtigt fundament."
+      },
+      {
+        "question": "Hvad gør jeg, hvis jeg bliver ved med at glemme brikkernes placering?",
+        "answer": "Brug færre brikker, tjek oftere, og gentag samme stilling, indtil genkaldelsen er ren."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Brug denne, når statisk genkaldelse og ét træk sidder fast."
+      },
+      {
+        "reason": "Udvid brætopmærksomheden, hvis du overser brikker ved kanterne."
+      },
+      {
+        "reason": "Kombinér visualisering med et enkelt trusselstjek."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Brætsynsøvelser mod bommerter",
+    "h1": "Brætsynsøvelser for begyndere",
+    "description": "Brug enkle øvelser til at se trusler, beskytte dine brikker og lave færre bommerter.",
+    "primaryKeyword": "brætsyn",
+    "secondaryKeywords": [
+      "brætsynsøvelser",
+      "færre bommerter i skak",
+      "se trusler i skak",
+      "taktisk årvågenhed",
+      "begynderfejl i skak"
+    ],
+    "painPoint": "Du fokuserer på ét område af brættet og overser en simpel trussel et andet sted.",
+    "ctaLabel": "Start en brætsynsøvelse",
+    "quickAnswer": "Led efter skak, slag, trusler og udækkede brikker før hvert træk. Hukommelsestræning hjælper dig med at holde alle brikker i hovedet, mens du skanner.",
+    "keyTakeaways": [
+      "Brætsyn er en vane, du kan lære.",
+      "Opmærksomhed på udækkede brikker er ofte den hurtigste forbedring.",
+      "Hukommelsestræning hjælper dig med at følge hele brættet."
+    ],
+    "whoThisIsFor": [
+      "Spillere der kan grundlæggende taktik, men alligevel mister brikker.",
+      "Begyndere der spiller hurtigt og først ser fejlen efter slaget.",
+      "Alle der har brug for en klar liste før hvert træk."
+    ],
+    "timeToRead": "8 minutters læsning",
+    "introParagraphs": [
+      "Når nogen siger «det så jeg ikke», er trækket som regel spillet, før hele brættet blev tjekket.",
+      "Øvelserne lærer dig, hvor du skal kigge. Start med udækkede brikker og med træk, der giver skak, slår eller skaber en trussel."
+    ],
+    "startHereTitle": "Start her: tjekket før trækket",
+    "startHereSteps": [
+      "Nævn skak, slag og trusler for begge sider før hvert træk.",
+      "Marker hver udækket brik, og sig om den er reelt sikker eller bare ser sådan ud.",
+      "Spil en kort runde Memory Chess for at styrke koblingen mellem felt og brik.",
+      "Gennemgå én nylig bommert, og peg præcist på den oversete trussel.",
+      "Gentag samme liste i næste hurtigparti uden at forkorte den."
+    ],
+    "drillSectionTitle": "Brætsynsøvelser til rigtige partier",
+    "drillCards": [
+      {
+        "title": "Optælling af udækkede brikker",
+        "description": "Skan brættet og peg på hver udækket brik, før du trækker.",
+        "duration": "3 minutter",
+        "goal": "At fange den hyppigste kilde til bommerter tidligt.",
+        "ctaLabel": "Kør optællingen"
+      },
+      {
+        "title": "Spil truslen om igen",
+        "description": "Genopbyg din seneste bommertstilling og find modstanderens stærkeste trussel, før du ser partiet.",
+        "duration": "5 minutter",
+        "goal": "At lære hvordan den oversete trussel så ud i sammenhængen.",
+        "ctaLabel": "Spil en trussel om"
+      },
+      {
+        "title": "Hurtig feltgenkaldelse",
+        "description": "Brug kort visningstid, så brættet forbliver helt, mens du skanner.",
+        "duration": "4 minutter",
+        "goal": "At huske brikkernes placering, mens du skanner.",
+        "ctaLabel": "Sæt tempo på genkaldelsen"
+      }
+    ],
+    "comparisonTitle": "Svagt og stærkt brætsyn",
+    "comparisonSummary": "Forskellen ses som regel, allerede før regningen går i gang.",
+    "comparisonRows": [
+      {
+        "label": "Opmærksomhed",
+        "struggling": "Du stirrer på én taktisk idé.",
+        "stronger": "Du skanner hele brættet, før du vælger plan."
+      },
+      {
+        "label": "Sikkerhedstjek",
+        "struggling": "Du antager at en dækket brik er sikker.",
+        "stronger": "Du tæller angribere og forsvarere, før du stoler på feltet."
+      },
+      {
+        "label": "Tidspres",
+        "struggling": "Du spiller hurtigere, når stillingen skærpes.",
+        "stronger": "Du sætter farten ned, når skak, slag eller trusler dukker op."
+      }
+    ],
+    "mistakes": [
+      "Kun at tjekke sin egen idé og se bort fra modstanderens trusler.",
+      "At regne en dækket brik for sikker uden at tælle hele afbytningen.",
+      "At spille for hurtigt, så snart stillingen bliver taktisk.",
+      "Aldrig at sætte navn på fejltypen efter partiet."
+    ],
+    "mistakesCallout": "Flere opgaver retter ikke en forhastet skanning. Gentag det samme korte tjek før hvert træk.",
+    "planTitle": "7-dages nulstilling af brætsynet",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "12 minutter",
+        "detail": "Kun optælling af udækkede brikker og skanning efter skak, slag og trusler."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "15 minutter",
+        "detail": "Tilføj en runde Memory Chess før partierne, så skanningen sker på et renere bræt i hovedet."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minutter",
+        "detail": "Gennemgå tre nylige bommerter, og nævn det oversete signal i hver stilling."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 til 20 minutter",
+        "detail": "Spil hurtigskak, og brug hele listen ved hvert træk, der ændrer spænding eller kongesikkerhed."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvad er den hurtigste måde at forbedre brætsynet på?",
+        "answer": "Brug den samme liste før hvert træk, indtil den bliver automatisk: skak, slag, trusler og udækkede brikker."
+      },
+      {
+        "question": "Hvorfor laver jeg bommerter, selvom jeg kan taktik?",
+        "answer": "Fordi laget, der følger brættet, er svagt. Taktik hjælper først, når du opfatter stillingen rigtigt."
+      },
+      {
+        "question": "Hvor tit skal jeg gennemgå mine bommerter?",
+        "answer": "Efter hvert parti. En kort gennemgangsvane overføres meget hurtigere end en lang ugentlig session."
+      },
+      {
+        "question": "Hjælper hukommelsesøvelser på brætsynet?",
+        "answer": "Ja. Hurtigere brikgenkaldelse gør det lettere at holde hele brættet i opmærksomheden, mens du skanner."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Brug hele guiden mod bommerter, når synsfejl koster materiale."
+      },
+      {
+        "reason": "Forstå hvorfor taktik bryder sammen under rigtigt pres."
+      },
+      {
+        "reason": "Se hvor brætsyn passer ind i en komplet begynderrutine."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Hukommelsestræning i skak til hurtigere genkaldelse",
+    "h1": "Hukommelsestræning i skak for begyndere",
+    "description": "Brug enkle hukommelsesøvelser til at huske stillinger, se mønstre og følge træk tydeligere.",
+    "primaryKeyword": "hukommelsestræning skak",
+    "secondaryKeywords": [
+      "hukommelsesøvelser skak",
+      "huske skakstillinger",
+      "mønstergenkendelse i skak",
+      "træne brætgenkaldelse",
+      "koncentration i skak"
+    ],
+    "painPoint": "Du glemmer, hvor brikkerne står, mens du tænker på de næste træk.",
+    "ctaLabel": "Start en hukommelsesudfordring",
+    "quickAnswer": "Hukommelsestræning hjælper dig med at holde nyttige stillinger, mens brikkerne skifter. Det handler ikke om at lære flest mulige tilfældige stillinger udenad.",
+    "keyTakeaways": [
+      "I starten betyder præcision mere end fart.",
+      "At gentage én stilling lader dig rette én hukommelsesfejl ad gangen.",
+      "Læg hukommelsestræningen før beregning eller analyse."
+    ],
+    "whoThisIsFor": [
+      "Spillere der mister planen efter ét stærkt svar.",
+      "Begyndere der ikke kan genskabe nøglestillinger fra deres partier.",
+      "Alle der kæmper, når mange brikker er i spil."
+    ],
+    "timeToRead": "8 minutters læsning",
+    "introParagraphs": [
+      "Skakhukommelse er en praktisk færdighed. Målet er at holde et klart billede af brættet længe nok til at vælge træk i ro.",
+      "Memory Chess giver en simpel sløjfe: se, husk, tjek og prøv igen."
+    ],
+    "startHereTitle": "Start med denne hukommelsesrutine",
+    "startHereSteps": [
+      "Start med en simpel stilling, og husk den i 10 sekunder.",
+      "Genopbyg brættet, og notér det første felt eller den første brik, du mistede.",
+      "Gentag samme stilling én gang, så rettelsen bliver synlig.",
+      "Tilføj en kort taktisk variant fra den huskede opstilling.",
+      "Følg både præcisionen og hvilken slags hukommelsesfejl du lavede."
+    ],
+    "drillSectionTitle": "Hukommelsesøvelser til rigtige partier",
+    "drillCards": [
+      {
+        "title": "Gentag én stilling",
+        "description": "Husk én stilling, genopbyg den, og gentag så én gang med samme indstillinger.",
+        "duration": "5 minutter",
+        "goal": "At finde én tydelig hukommelsesfejl, du kan rette.",
+        "ctaLabel": "Gentag én stilling"
+      },
+      {
+        "title": "Genkaldelse via ankerpunkter",
+        "description": "Fokusér først på kongernes placering, udækkede brikker og spændingen i centrum.",
+        "duration": "4 minutter",
+        "goal": "At huske stillingens vigtigste dele først.",
+        "ctaLabel": "Træn ankerpunkter"
+      },
+      {
+        "title": "Husk først, regn så",
+        "description": "Regn en kort variant, efter du har genopbygget brættet, og tjek derefter.",
+        "duration": "6 minutter",
+        "goal": "At bruge brætthukommelsen, mens du regner.",
+        "ctaLabel": "Tilføj en variant"
+      }
+    ],
+    "comparisonTitle": "Sådan ser svag genkaldelse ud i partier",
+    "comparisonSummary": "Brættet kan føles bekendt og alligevel være for sløret til at bære beregning.",
+    "comparisonRows": [
+      {
+        "label": "At holde varianten",
+        "struggling": "Du mister udgangsstillingen, mens du overvejer et nyt kandidattræk.",
+        "stronger": "Du vender præcist tilbage til udgangsstillingen efter en variant."
+      },
+      {
+        "label": "Mønsterhukommelse",
+        "struggling": "Du husker den taktiske idé, men ikke forsvarerne.",
+        "stronger": "Du husker både idéen og de felter, der gør den mulig."
+      },
+      {
+        "label": "Analysens kvalitet",
+        "struggling": "Analysen bliver vag, fordi stillingen forsvinder med det samme.",
+        "stronger": "Du genopbygger nøgleøjeblikke og lærer hurtigere."
+      }
+    ],
+    "mistakes": [
+      "For store spring i sværhedsgrad i forhold til dit niveau.",
+      "At måle fart og se bort fra præcision.",
+      "Ingen fejllog, så gentagne svagheder forbliver skjulte.",
+      "At se hukommelsesøvelser som adskilt fra taktisk spil."
+    ],
+    "mistakesCallout": "Gør ikke stillingen sværere, mens genkaldelsen er uklar. Sænk sværhedsgraden og byg præcisionen først.",
+    "planTitle": "7-dages hukommelsesblok",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Gentag simple stillinger, og nævn hver hukommelsesfejl."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Tilføj ankerpunkter, så du husker konger, udækkede brikker og centrumspænding først."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Tilføj en kort trækrække efter hver korrekt genopbygning."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Forkort tiden lidt med samme antal brikker, og tag så arbejdet med i analysen af ét hurtigparti."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Forbedrer hukommelsestræning rigtige partier?",
+        "answer": "Ja, når den kombineres med beregning eller analyse. Bedre genkaldelse holder varianterne tydeligere under pres."
+      },
+      {
+        "question": "Hvor mange stillinger per session?",
+        "answer": "For begyndere er seks til tolv omhyggelige forsøg nok, hvis du tjekker fejlene i stedet for at haste."
+      },
+      {
+        "question": "Tilfældige stillinger eller rigtige strukturer?",
+        "answer": "Begge dele. Tilfældige skærper ren genkaldelse, rigtige strukturer forbedrer overførslen."
+      },
+      {
+        "question": "Hvad hvis præcisionen går i stå?",
+        "answer": "Brug færre brikker i en uge, ret én fejltype, og tilføj først brikker, når genkaldelsen igen er ren."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Brug denne, hvis du har svært ved at huske trækrækker."
+      },
+      {
+        "reason": "Balancér hukommelsen med et fornuftigt antal opgaver."
+      },
+      {
+        "reason": "Kobl brætthukommelsen til almindelige mønstre."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Blindskakstræning for begyndere",
+    "h1": "Blindskak for begyndere, ét skridt ad gangen",
+    "description": "Lær blindskak i små skridt, der forbedrer visualiseringen uden at overvælde dig.",
+    "primaryKeyword": "blindskakstræning",
+    "secondaryKeywords": [
+      "blindskak for begyndere",
+      "træne brættet i hovedet",
+      "visualiseringsøvelser skak",
+      "regne uden at flytte brikker",
+      "koncentrationsøvelser skak"
+    ],
+    "painPoint": "Du mister brættet, så snart du holder op med at kigge på det.",
+    "ctaLabel": "Start blindtræning",
+    "quickAnswer": "Start med en simpel stilling. Husk den, forestil dig ét træk per side, og tjek. Prøv først et helt blindparti, når trinnene føles lette.",
+    "keyTakeaways": [
+      "Blindskak bygges op skridt for skridt.",
+      "At tjekke svaret betyder mere end at prøve sværere stillinger.",
+      "Begynderøvelser i blindskak er visualiseringsøvelser med mindre hjælp fra brættet."
+    ],
+    "whoThisIsFor": [
+      "Spillere der vil visualisere bedre uden at starte med et helt blindparti.",
+      "Begyndere der mister felter efter et eller to forestillede træk.",
+      "Alle der vil have et tydeligere billede af brættet i hovedet."
+    ],
+    "timeToRead": "8 minutters læsning",
+    "introParagraphs": [
+      "Den største fejl er at prøve et helt blindparti for tidligt. Det giver som regel frustration i stedet for fremgang.",
+      "Tag ét skridt ad gangen: se brættet, husk det, forestil dig et træk, tjek, og reducér langsomt den visuelle hjælp."
+    ],
+    "startHereTitle": "Start her: en tryg vej mod blindskak",
+    "startHereSteps": [
+      "Husk en lille stilling, og genopbyg den, før du forestiller dig nogen træk.",
+      "Regn ét træk per side uden at røre brikkerne.",
+      "Tjek hver uoverensstemmelse med det samme i stedet for at fortsætte.",
+      "Spil en runde Memory Chess med lidt kortere visningstid.",
+      "Tilføj først ét træk mere, når den nuværende variant er tydelig."
+    ],
+    "drillSectionTitle": "Lette blindskaksøvelser",
+    "drillCards": [
+      {
+        "title": "Genopbyg før du trækker",
+        "description": "Forestil dig ingen træk, før udgangsstillingen er helt stabil.",
+        "duration": "4 minutter",
+        "goal": "At opbygge tydelig genkaldelse, før du tilføjer træk.",
+        "ctaLabel": "Genopbyg brættet først"
+      },
+      {
+        "title": "Ét træk per side",
+        "description": "Forestil dig et træk for hvid og et svar for sort, og tjek så det nye bræt.",
+        "duration": "5 minutter",
+        "goal": "At opdatere stillingen uden at kigge på brættet.",
+        "ctaLabel": "Forestil dig to træk"
+      },
+      {
+        "title": "Kort visningstid",
+        "description": "Reducér visningstiden, så du lærer at huske brættet hurtigere.",
+        "duration": "4 minutter",
+        "goal": "At forberede blindskak uden at skjule hele brættet.",
+        "ctaLabel": "Forkort tiden"
+      }
+    ],
+    "comparisonTitle": "En tryggere måde at træne blindskak på",
+    "comparisonSummary": "Spørg om du ser ét træk mere tydeligt end før. Et helt blindparti er ikke nødvendigt endnu.",
+    "comparisonRows": [
+      {
+        "label": "Udgangspunkt",
+        "struggling": "Du kaster dig direkte ud i fuldt blindspil.",
+        "stronger": "Du husker udgangsstillingen, før du tilføjer træk."
+      },
+      {
+        "label": "Kontrol",
+        "struggling": "Du stoler på et sløret bræt i hovedet.",
+        "stronger": "Du tjekker hver forestillet opdatering og retter med det samme."
+      },
+      {
+        "label": "Sessionens kvalitet",
+        "struggling": "Du træner, indtil koncentrationen bryder sammen.",
+        "stronger": "Du stopper, mens præcisionen i hovedet stadig er høj."
+      }
+    ],
+    "mistakes": [
+      "At prøve hele blindpartier for tidligt.",
+      "At springe kontrollen over og stole på forkerte bræt i hovedet.",
+      "At tilføje træk, før korte varianter er tydelige.",
+      "At træne for længe i én session og brænde fokus af."
+    ],
+    "mistakesCallout": "Spring ikke til en meget sværere opgave. Reducér hjælpen fra brættet lidt ad gangen.",
+    "planTitle": "7-dages blindforberedelse",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Genopbyg kun stillinger fra hukommelsen, og tjek med det samme."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Tilføj ét træk per side, og hold stillingerne enkle."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Forkort visningstiden i Memory Chess med samme antal brikker."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Prøv et par to-træks rækker, men kun hvis arbejdet med ét træk er præcist."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Er blindskak nyttigt for begyndere?",
+        "answer": "Ja, i korte kontrollerede øvelser. Det styrker den visualisering, der understøtter almindelige partier."
+      },
+      {
+        "question": "Hvor tit bør jeg lave blindøvelser?",
+        "answer": "To til fire korte sessioner om ugen er nok sammen med regelmæssigt spil og analyse."
+      },
+      {
+        "question": "Hvad er den bedste første blindøvelse?",
+        "answer": "At genopbygge en simpel stilling fra hukommelsen og forestille sig ét træk per side før kontrollen."
+      },
+      {
+        "question": "Hvordan ved jeg, at jeg bliver bedre?",
+        "answer": "Du holder flere felter korrekt, opdaterer brættet længere og laver færre synsfejl i almindelige partier."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Hold fundamentet stærkt i stedet for at springe til avanceret blindspil."
+      },
+      {
+        "reason": "Kombinér blindarbejde med øvelser i at holde varianten."
+      },
+      {
+        "reason": "Brug tydeligere visualisering til at sammenligne træk."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Arbejdshukommelsesøvelser for skakspillere",
+    "h1": "Arbejdshukommelsesøvelser for begyndere",
+    "description": "Enkle øvelser til at huske trækrækker, sammenligne muligheder og beslutte dig tydeligere.",
+    "primaryKeyword": "arbejdshukommelsesøvelser",
+    "secondaryKeywords": [
+      "arbejdshukommelse i skak",
+      "regnetræning skak",
+      "koncentrationsøvelser skak",
+      "mere stabilt skakspil",
+      "mental udholdenhed i skak"
+    ],
+    "painPoint": "Du glemmer den første trækrække, mens du tænker på en anden.",
+    "ctaLabel": "Start en hukommelsesrutine",
+    "quickAnswer": "Arbejdshukommelsen lader dig holde et par mulige trækrækker i hovedet. Hold antallet lavt, og tjek hver række tydeligt.",
+    "keyTakeaways": [
+      "Tre tydelige valg er bedre end seks forvirrende.",
+      "En kort mundtlig opsummering hjælper dig med at huske hver variant.",
+      "Træn på rigtige stillinger, og brug færdigheden i partier."
+    ],
+    "whoThisIsFor": [
+      "Spillere der mister den første variant, når de undersøger en anden.",
+      "Begyndere der bytter om på trækrækkefølgen.",
+      "Alle der laver flere taktiske fejl, når de er trætte."
+    ],
+    "timeToRead": "8 minutters læsning",
+    "introParagraphs": [
+      "Arbejdshukommelsen lader dig holde mulige træk i hovedet, mens du sammenligner dem. I skak skal du huske udgangsstillingen og en eller to korte varianter uden at blande dem.",
+      "Memory Chess hjælper dig med at huske udgangsstillingen. Når det billede er tydeligt, bliver det lettere at følge de næste træk."
+    ],
+    "startHereTitle": "Start med to korte trækrækker",
+    "startHereSteps": [
+      "Vælg én stilling, og nævn tre kandidattræk uden at røre brættet.",
+      "Regn hver variant to halvtræk, og opsummer resultatet i én sætning.",
+      "Spil en genkaldelsesrunde i Memory Chess for at friske grundstillingen op.",
+      "Gå tilbage til stillingen, og sammenlign de mulige rækker igen.",
+      "Skriv én sætning om, hvor grebet om varianten røg."
+    ],
+    "drillSectionTitle": "Arbejdshukommelsesøvelser til skak",
+    "drillCards": [
+      {
+        "title": "Opsummering af tre varianter",
+        "description": "Hold kort tre kandidattræk, og beskriv hver gren i én sætning.",
+        "duration": "6 minutter",
+        "goal": "At holde hver række tydelig i stedet for at tilføje flere.",
+        "ctaLabel": "Hold tre varianter"
+      },
+      {
+        "title": "Nulstil genkaldelsen",
+        "description": "Læg en runde Memory Chess ind mellem regneforsøgene, så grundbrættet forbliver stabilt.",
+        "duration": "4 minutter",
+        "goal": "At huske udgangsstillingen, før du følger træk.",
+        "ctaLabel": "Nulstil brættet"
+      },
+      {
+        "title": "Sammenlign efter varianten",
+        "description": "Gå tilbage til udgangsstillingen, og sammenlign grenene efter en kort pause.",
+        "duration": "5 minutter",
+        "goal": "At skifte mellem grundstilling og varianter uden at blande dem.",
+        "ctaLabel": "Sammenlign valgene"
+      }
+    ],
+    "comparisonTitle": "Når du prøver at huske for meget",
+    "comparisonSummary": "Når hukommelsen er fyldt, bliver varianten uklar, og trækrækkefølgen blandes sammen.",
+    "comparisonRows": [
+      {
+        "label": "Kandidattræk",
+        "struggling": "Du prøver at holde for mange muligheder på én gang.",
+        "stronger": "Du holder færre varianter, men hver bliver korrekt længere."
+      },
+      {
+        "label": "Trækrækkefølge",
+        "struggling": "Grenene flyder sammen.",
+        "stronger": "Hver variant holdes adskilt og er let at sammenligne."
+      },
+      {
+        "label": "Træthed",
+        "struggling": "Beslutningernes kvalitet falder sent i partiet.",
+        "stronger": "Du holder en enklere og tydeligere proces, når energien falder."
+      }
+    ],
+    "mistakes": [
+      "At prøve at huske for mange trækrækker på én gang.",
+      "At springe den korte opsummering over efter hver variant.",
+      "Kun at løse opgaver og aldrig bruge færdigheden i partier.",
+      "At fortsætte, selvom du er for træt til at tænke klart."
+    ],
+    "mistakesCallout": "Tilføj ikke flere varianter endnu. Hold få varianter tydelige, før du forlænger dem.",
+    "planTitle": "7-dages arbejdshukommelsesblok",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Brug kun to trækrækker, og forklar hver af dem højt."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Læg en Memory Chess-nulstilling ind mellem forsøgene, så udgangsstillingen forbliver ren."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Tilføj et tredje valg, men kun hvis de to første forbliver korrekte."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Brug rutinen i ét hurtigparti. Stop i svære øjeblikke, og nævn de mulige træk tydeligt."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Overføres arbejdshukommelsesøvelser til skakspillet?",
+        "answer": "Det kan de, især når de knyttes direkte til stillinger, det at holde varianter og analyse i stedet for generelle hjernespil."
+      },
+      {
+        "question": "Hvordan bør en begynder bygge det op?",
+        "answer": "Korte sessioner, der kombinerer mulige træk, brætthukommelse og én rigtig partistilling."
+      },
+      {
+        "question": "Hvordan måler jeg fremgang enkelt?",
+        "answer": "Notér hvor mange rækker du kan holde, og hvor tit du mister tråden."
+      },
+      {
+        "question": "Erstatter det taktiktræning?",
+        "answer": "Nej. Det supplerer den ved at holde varianterne tydeligere, mens du løser og spiller."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Brug bedre arbejdshukommelse til at sammenligne mulige træk."
+      },
+      {
+        "reason": "Styrk genkaldelseslaget under det at holde varianter."
+      },
+      {
+        "reason": "Brug en enklere tankeproces, så arbejdshukommelsen ikke går til spilde."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Sådan stopper du med at lave bommerter i skak",
+    "h1": "Sådan stopper du med at lave bommerter i skak",
+    "description": "Brug et kort sikkerhedstjek til at se trusler, beskytte brikker og lave færre bommerter.",
+    "primaryKeyword": "stoppe med bommerter i skak",
+    "secondaryKeywords": [
+      "forebygge bommerter i skak",
+      "stoppe med at forære brikker væk",
+      "trusselstjek i skak",
+      "sikkerhedsliste i skak",
+      "færre simple fejl i skak"
+    ],
+    "painPoint": "Du forstår idéerne, men mister stadig brikker til simple trusler.",
+    "ctaLabel": "Start en øvelse mod bommerter",
+    "quickAnswer": "Tjek modstanderens trusler før hvert træk, led efter udækkede brikker, og sørg for at dit træk er sikkert. Hukommelsestræning hjælper dig med at holde hele brættet i hovedet.",
+    "keyTakeaways": [
+      "De fleste begynderbommerter skyldes, at en del af brættet overses.",
+      "Sikkerhedslisten skal være kort nok til at overleve tidspres.",
+      "Spil dine fejl om, indtil du hurtigt kan se, hvad du overså."
+    ],
+    "whoThisIsFor": [
+      "Spillere der gang på gang går i taktik på ét træk.",
+      "Begyndere der føler sig dårligere i partier end i opgaver.",
+      "Alle der vil have en rolig rutine til hvert træk."
+    ],
+    "timeToRead": "8 minutters læsning",
+    "introParagraphs": [
+      "Mange bommerter opstår, fordi du trækker, før du har tjekket hele stillingen. Du kan også miste overblikket over, hvor en brik er dækket.",
+      "En kort rutine erstatter panik og gætteri. Brug de samme tjek, når stillingen skærpes."
+    ],
+    "startHereTitle": "Start her: listen mod bommerter",
+    "startHereSteps": [
+      "Spørg hvilke skak, slag og trusler modstanderen har lige nu.",
+      "Find hver udækket eller overbelastet brik.",
+      "Tjek først derefter om dit planlagte træk er sikkert.",
+      "Spil en kort runde Memory Chess før partierne for skarpere brikhukommelse.",
+      "Skriv efter hver bommert det oversete signal i én sætning."
+    ],
+    "drillSectionTitle": "Enkle øvelser mod bommerter",
+    "drillCards": [
+      {
+        "title": "Skan fra modstanderens side",
+        "description": "Start hver stilling med at tjekke modstanderens stærkeste trusler.",
+        "duration": "3 minutter",
+        "goal": "At tænke på modstanderens idé før din egen.",
+        "ctaLabel": "Skan fra den anden side"
+      },
+      {
+        "title": "Alarm for udækkede brikker",
+        "description": "Nævn hver udækket eller overbelastet brik, før du trækker.",
+        "duration": "4 minutter",
+        "goal": "At fange de letteste materialetab tidligt.",
+        "ctaLabel": "Kør alarmen"
+      },
+      {
+        "title": "Sløjfe med bommertgentagelse",
+        "description": "Spil dine egne bommertstillinger om, indtil den oversete trussel bliver tydelig.",
+        "duration": "6 minutter",
+        "goal": "At lære af stillinger, der faktisk kostede dig partier.",
+        "ctaLabel": "Spil din bommert om"
+      }
+    ],
+    "comparisonTitle": "Hvad ændrer sig, når bommerterne bliver færre",
+    "comparisonSummary": "Partierne bliver ikke pludselig fejlfrie. De bliver roligere, og nederlagene får forståelige grunde i stedet for én katastrofe.",
+    "comparisonRows": [
+      {
+        "label": "Når du trækker",
+        "struggling": "Du trækker, så snart du ser en plan.",
+        "stronger": "Du trækker først efter en kort sikkerhedsrunde."
+      },
+      {
+        "label": "Trusselsbevidsthed",
+        "struggling": "Du ser taktikken, efter den har ramt.",
+        "stronger": "Du genkender den taktiske form, før du binder dig."
+      },
+      {
+        "label": "Gennemgang efter partiet",
+        "struggling": "Nederlaget føles tilfældigt.",
+        "stronger": "Du kan hurtigt nævne præcis det signal, du overså."
+      }
+    ],
+    "mistakes": [
+      "At prøve at fjerne bommerter kun ved at spille langsommere.",
+      "At lære flere åbninger, mens vanen med trusselstjek stadig er svag.",
+      "At kigge motorvarianter igennem uden at pege på det reelt oversete signal.",
+      "At se bort fra at tidspres svækker genkaldelsen."
+    ],
+    "mistakesCallout": "At spille langsommere er ikke nok. Brug det samme korte sikkerhedstjek hver gang.",
+    "planTitle": "7-dages nulstilling mod bommerter",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Kun skanning fra modstanderens side og alarm for udækkede brikker."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Tilføj en runde Memory Chess før hver spilsession for et renere billede af stillingen."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minutter",
+        "detail": "Spil tre nylige bommerter om, og klassificer det oversete signal i hver af dem."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Brug hele listen i hurtigpartier, og følg bommerter pr. parti i stedet for kun resultatet."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvorfor bliver jeg ved med at forære brikker væk?",
+        "answer": "Som regel fordi skanningen før trækket er ufuldstændig. Du kan måske taktikken, men tjekker ikke hele brættet, før du trækker."
+      },
+      {
+        "question": "Er det nok at spille langsommere?",
+        "answer": "Kun hvis du bruger tiden på et tydeligt sikkerhedstjek. At stirre planløst på brættet hjælper ikke."
+      },
+      {
+        "question": "Hjælper hukommelsesøvelser virkelig mod bommerter?",
+        "answer": "Ja. Renere brikhukommelse gør det lettere at se trusler, mens stillingen ændrer sig."
+      },
+      {
+        "question": "Hvad skal jeg følge for at lave færre bommerter?",
+        "answer": "Bommerter pr. parti, oversete udækkede brikker og om den oversete trussel kom af en dårlig skanning eller dårlig beregning."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Byg en stærkere brætskanning for at forebygge bommerter."
+      },
+      {
+        "reason": "Se hvorfor taktikken bryder sammen, når du følger brættet dårligt."
+      },
+      {
+        "reason": "Kobl arbejdet mod bommerter til en komplet begynderrutine."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Hvorfor opgaveratingen ikke følger med i partier",
+    "h1": "Hvorfor din opgaverating ikke følger med i partier",
+    "description": "Forstå hvorfor opgavefærdighed føles anderledes end rigtige partier, og hvordan brætsyn, hukommelse og analyse lukker hullet.",
+    "primaryKeyword": "hvorfor opgaverating ikke følger med i partier",
+    "secondaryKeywords": [
+      "opgaverating mod skakrating",
+      "taktik der ikke overføres",
+      "opgavefærdighed i rigtige partier",
+      "hvorfor er jeg bedre til opgaver",
+      "brætsyn i skak"
+    ],
+    "painPoint": "Du løser opgaver godt, men overser taktik i rigtige partier.",
+    "ctaLabel": "Træn til rigtige partier",
+    "quickAnswer": "En opgave fortæller dig, at taktikken findes. Et parti gør ikke. Du skal bemærke faren, huske brættet og vide, hvornår du skal sætte farten ned.",
+    "keyTakeaways": [
+      "En opgave fortæller, at der er noget at løse.",
+      "I et parti skal du selv finde det farlige øjeblik.",
+      "Bedre brætsyn og hukommelse viser dig taktikken tidligere."
+    ],
+    "whoThisIsFor": [
+      "Spillere med høj opgaverating, men flad partirating.",
+      "Begyndere der ser taktikken efter partiet i stedet for under.",
+      "Alle der ikke får brugt idéerne fra opgaver i rigtige partier."
+    ],
+    "timeToRead": "8 minutters læsning",
+    "introParagraphs": [
+      "Det er et almindeligt begynderproblem. Du løser opgaver, men partierne rummer stadig tabte brikker, oversete trusler og forhastede træk.",
+      "Flere opgaver løser det ikke altid. Du skal også bemærke, hvornår stillingen bliver farlig, og forestille dig hvad der sker efter hvert valg."
+    ],
+    "startHereTitle": "Start med at forbinde opgaver og partier",
+    "startHereSteps": [
+      "Brug 2 minutter på at skanne brættet efter skak, slag og trusler, før du løser opgaver.",
+      "Tilføj en runde Memory Chess, så billedet af brættet forbliver stabilt under pres.",
+      "Spørg efter hver opgave, hvilket signal der burde have fået dig til at sætte farten ned i et parti.",
+      "Gennemgå én nylig bommert, og sammenlign den med en lignende taktisk opgave.",
+      "Spil mindst ét hurtigparti per session for at se, om skanningen før trækket holder."
+    ],
+    "drillSectionTitle": "Øvelser der forbinder opgaver og partier",
+    "drillCards": [
+      {
+        "title": "Find advarselssignalet",
+        "description": "Led efter advarselssignalet, før du prøver at finde taktikken.",
+        "duration": "4 minutter",
+        "goal": "At bemærke farlige stillinger tidligere.",
+        "ctaLabel": "Træn signalet først"
+      },
+      {
+        "title": "Genkaldelse før beregning",
+        "description": "Spil en hurtig runde Memory Chess før opgaverne, så brættet føles tydeligere.",
+        "duration": "4 minutter",
+        "goal": "At koble mønsterarbejde til rigtigt spil.",
+        "ctaLabel": "Skærp genkaldelsen først"
+      },
+      {
+        "title": "Spil en partistilling om",
+        "description": "Genopbyg et overset taktisk øjeblik fra dit eget parti, og løs det som en opgave.",
+        "duration": "6 minutter",
+        "goal": "At få taktiktræningen til at ligne rigtige stillinger igen.",
+        "ctaLabel": "Spil den oversete taktik om"
+      }
+    ],
+    "comparisonTitle": "Opgaver mod partier: hvad ændrer sig?",
+    "comparisonSummary": "Det taktiske træk kan være det samme, men den mentale opgave er det ikke.",
+    "comparisonRows": [
+      {
+        "label": "Rammen om problemet",
+        "struggling": "Partiet fortæller ikke, at der findes taktik.",
+        "stronger": "Du bemærker signalet om, at spændingen lige har ændret sig."
+      },
+      {
+        "label": "Brættets klarhed",
+        "struggling": "Varianten sløres, når flere brikker flytter sig.",
+        "stronger": "Du holder de vigtige felter og forsvarere i hukommelsen."
+      },
+      {
+        "label": "Timing i beslutningen",
+        "struggling": "Du spiller i normalt tempo, når stillingen bliver farlig.",
+        "stronger": "Du sætter farten ned, når skak, slag eller trusler dukker op."
+      }
+    ],
+    "mistakes": [
+      "At løse opgaver uden noget skridt mod partier.",
+      "At antage at taktisk viden alene forhindrer bommerter.",
+      "Aldrig at undersøge hvorfor en stilling blev farlig.",
+      "At se brætsyn som noget andet end taktik."
+    ],
+    "mistakesCallout": "Tilføj ikke bare flere opgaver. Træn også at bemærke taktiske øjeblikke i dine egne partier.",
+    "planTitle": "7-dages overførselsblok",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "12 minutter",
+        "detail": "Tilføj signaltænkningen før løsningen i hver opgavesession."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Spil en kort runde Memory Chess før opgaver eller hurtigskak."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minutter",
+        "detail": "Spil tre oversete taktiske øjeblikke fra dine egne partier om."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 til 20 minutter",
+        "detail": "Spil hurtigskak, og stop dig selv hver gang stillingen bliver tvungen eller taktisk spændt."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvorfor er jeg bedre til opgaver end i partier?",
+        "answer": "Fordi en opgave allerede fortæller, at der er taktik at finde. Et rigtigt parti gør det ikke."
+      },
+      {
+        "question": "Skal jeg holde op med at løse opgaver?",
+        "answer": "Nej. Behold dem, men tilføj brætsyn, genkaldelse og gentagelse af partistillinger, så mønstrene overføres."
+      },
+      {
+        "question": "Hvad er den bedste overførselsøvelse?",
+        "answer": "At spille en overset taktik fra dit eget parti om og løse den, efter du har genopbygget stillingen fra hukommelsen."
+      },
+      {
+        "question": "Hvordan måler jeg overførslen?",
+        "answer": "Se om bommerter pr. parti og oversete simple taktikker falder, ikke kun om opgaveratingen stiger."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Brug den til at bygge en kortere liste mod bommerter."
+      },
+      {
+        "reason": "Styrk skannevanen, der gør taktikken synlig."
+      },
+      {
+        "reason": "Vælg et antal opgaver, der levner tid til at spille."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Sådan ser du hele brættet i skak",
+    "h1": "Sådan ser du hele skakbrættet",
+    "description": "Brug en enkel skanning til at bemærke fjerne brikker, se trusler og undgå tunnelsyn.",
+    "primaryKeyword": "se hele brættet i skak",
+    "secondaryKeywords": [
+      "brætopmærksomhed i skak",
+      "undgå tunnelsyn i skak",
+      "se hele brættet",
+      "skanningsøvelser skak",
+      "perifert brætsyn"
+    ],
+    "painPoint": "Du fokuserer på ét område og overser en trussel et andet sted.",
+    "ctaLabel": "Træn syn for hele brættet",
+    "quickAnswer": "Tjek begge konger, udækkede brikker, centrum og kanterne før hvert træk. Hukommelsestræning hjælper dig med at holde mere af brættet i hovedet.",
+    "keyTakeaways": [
+      "Tunnelsyn betyder, at opmærksomheden sidder fast i ét område.",
+      "At tjekke kantbrikker er særligt nyttigt for begyndere.",
+      "En tydelig hukommelse af brættet gør skanningen lettere."
+    ],
+    "whoThisIsFor": [
+      "Spillere der kun bemærker taktik på den ene side af brættet.",
+      "Begyndere der overser løbere, tårne eller fjerne trusler.",
+      "Alle der føler sig indeklemte i åbne stillinger."
+    ],
+    "timeToRead": "7 minutters læsning",
+    "introParagraphs": [
+      "Mange begyndere kigger kun på brikkerne nær det træk, de har planlagt. Så overses fjerne løbere, tårne og trusler let.",
+      "Du behøver ikke stirre længere på brættet. Brug den samme enkle skanning til at tjekke hvert vigtigt område."
+    ],
+    "startHereTitle": "Start her: udvid skanningen",
+    "startHereSteps": [
+      "Tjek begge konger og de linjer, der peger mod dem.",
+      "Led efter udækkede brikker først i centrum, derefter langs kanterne.",
+      "Følg løbere og tårne hele linjen igennem, ikke kun til det felt du interesserer dig for.",
+      "Spil en runde Memory Chess, så hele brættet er lettere tilgængeligt i opmærksomheden.",
+      "Spørg før trækket, hvilken del af brættet du endnu ikke har set på."
+    ],
+    "drillSectionTitle": "Øvelser mod tunnelsyn",
+    "drillCards": [
+      {
+        "title": "Gennemgang af kanterne",
+        "description": "Tjek brikkerne i hjørnerne og langs kanterne før hvert træk.",
+        "duration": "3 minutter",
+        "goal": "At fange trusler uden for det område, du fokuserer på.",
+        "ctaLabel": "Gennemgå kanterne"
+      },
+      {
+        "title": "Gennemgang af sigtelinjer",
+        "description": "Følg hver løber- og tårnlinje helt ud i stedet for kun at se ét målfelt.",
+        "duration": "4 minutter",
+        "goal": "At dække mere af brættet ved hver skanning.",
+        "ctaLabel": "Følg hele linjer"
+      },
+      {
+        "title": "Genkaldelse af hele brættet",
+        "description": "Brug Memory Chess med et moderat antal brikker, og beskriv derefter brættet zone for zone.",
+        "duration": "5 minutter",
+        "goal": "At huske mere af brættet på én gang.",
+        "ctaLabel": "Genkald zonevis"
+      }
+    ],
+    "comparisonTitle": "Tunnelsyn og opmærksomhed på hele brættet",
+    "comparisonSummary": "Du behøver ikke kigge lige længe alle steder. Sørg bare for ikke at overse noget vigtigt.",
+    "comparisonRows": [
+      {
+        "label": "Opmærksomhedens vej",
+        "struggling": "Du stirrer på én klynge brikker.",
+        "stronger": "Du gennemgår risikoområderne i samme rækkefølge hver gang."
+      },
+      {
+        "label": "Langtrækkende brikker",
+        "struggling": "Du glemmer løbere og tårne langt fra handlingen.",
+        "stronger": "Du følger hele deres linjer, før du stoler på et træk."
+      },
+      {
+        "label": "Brættets zoner",
+        "struggling": "Du springer den side over, der virker rolig.",
+        "stronger": "Du tjekker den rolige side, før du trækker."
+      }
+    ],
+    "mistakes": [
+      "At tro at syn for hele brættet betyder at kigge længere frem for at skanne bedre.",
+      "At se bort fra kanterne, fordi centrum føles mere presserende.",
+      "Ikke at følge de langtrækkende brikkers linjer helt ud.",
+      "At ville skanne bredere, før du kan huske brikkerne tydeligt."
+    ],
+    "mistakesCallout": "Ekstra betænkningstid hjælper ikke uden en tydelig skanning. Tjek brættet i samme rækkefølge hver gang.",
+    "planTitle": "7-dages plan for skanning af hele brættet",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Kun kongetjek, udækkede brikker og gennemgang af kanterne."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Tilføj fuld gennemgang af løber- og tårnlinjer."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Brug Memory Chess, og genkald brættet zonevis i stedet for tilfældigt."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Tag skanningen med i hurtigpartier, og notér ved en bommert hvilken zone der forårsagede det."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvorfor overser jeg hele tiden brikker på den anden side?",
+        "answer": "Fordi opmærksomheden er for lokal. En fast skanningsrækkefølge er bedre end at håbe, at du bemærker alt."
+      },
+      {
+        "question": "Hjælper Memory Chess på opmærksomheden for hele brættet?",
+        "answer": "Ja. Det træner dig i at holde mere af brættet aktivt i hukommelsen, ikke kun det taktiske brændpunkt."
+      },
+      {
+        "question": "Skal jeg tjekke kanterne ved hvert træk?",
+        "answer": "Ja, især som begynder. Mange billige bommerter gemmer sig i kantbrikker og lange linjer."
+      },
+      {
+        "question": "Hvordan ved jeg, at skanningen bliver bedre?",
+        "answer": "Du overser færre fjerne trusler og bliver mindre overrasket af løbere, tårne og afdækkede angreb."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Kombinér syn for hele brættet med en stærkere sikkerhedsliste."
+      },
+      {
+        "reason": "Forbedr brættet i hovedet, så bredere skanning bliver lettere."
+      },
+      {
+        "reason": "Genkend felter hurtigere, så brede skanninger koster mindre."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Koordinattræning til hurtigere overblik",
+    "h1": "Træning i skakkoordinater for begyndere",
+    "description": "Lær feltnavnene hurtigere, og gør skanning, notation og visualisering lettere.",
+    "primaryKeyword": "koordinattræning skak",
+    "secondaryKeywords": [
+      "notationstræning skak",
+      "lære skakkoordinater",
+      "genkende felter hurtigere",
+      "opmærksomhed på felterne",
+      "øvelser i feltnavne"
+    ],
+    "painPoint": "Du skal bruge tid på at finde et feltnavn, eller du bytter ofte rundt på felter.",
+    "ctaLabel": "Træn feltnavne",
+    "quickAnswer": "Koordinater er navnene på de 64 felter. At kunne dem gør skanning, forestilling af træk og gennemgang af partier lettere.",
+    "keyTakeaways": [
+      "At genkende felter hurtigt gør skanningen lettere.",
+      "Træn koordinater med rigtige stillinger.",
+      "Til at starte med rækker de grundlæggende feltnavne."
+    ],
+    "whoThisIsFor": [
+      "Begyndere der stadig tæller linjer og rækker langsomt.",
+      "Spillere der vil skanne og visualisere hurtigere.",
+      "Alle der synes skaknotation er forvirrende."
+    ],
+    "timeToRead": "7 minutters læsning",
+    "introParagraphs": [
+      "Koordinater er mere end bøger og træklister. At genkende felter hurtigt hjælper brætsyn, hukommelse og gennemgang.",
+      "Når du kan feltnavnene, bliver brættet et tydeligt kort i stedet for en samling vage områder."
+    ],
+    "startHereTitle": "Start med feltnavne på et rigtigt bræt",
+    "startHereSteps": [
+      "Vælg én linje eller række, og sig feltnavnene højt.",
+      "Sig hver briks felt, mens du genopbygger en Memory Chess-stilling.",
+      "Tag en nylig stilling, og nævn de vigtigste angribere og forsvarere efter felt.",
+      "Træn løbere, tårne og springerhop via koordinater, ikke kun med øjnene.",
+      "Slut med en hurtig skanning, hvor hver udækket brik nævnes efter felt."
+    ],
+    "drillSectionTitle": "Koordinatøvelser der hjælper i spillet",
+    "drillCards": [
+      {
+        "title": "Navngiv brik og felt",
+        "description": "Genopbyg et bræt, og nævn hver brik med dens felt.",
+        "duration": "4 minutter",
+        "goal": "At koble feltnavne til de brikker, du skal huske.",
+        "ctaLabel": "Navngiv hvert felt"
+      },
+      {
+        "title": "Navngiv lange linjer",
+        "description": "Følg løber- og tårnlinjer, og sig de felter de påvirker.",
+        "duration": "4 minutter",
+        "goal": "At gøre koordinater nyttige under hele skanninger.",
+        "ctaLabel": "Følg linjer felt for felt"
+      },
+      {
+        "title": "Kort over springerhop",
+        "description": "Vælg ét springerfelt, og nævn hurtigt alle lovlige målfelter.",
+        "duration": "3 minutter",
+        "goal": "At genkende springertræk og målfelter hurtigere.",
+        "ctaLabel": "Kortlæg hoppene"
+      }
+    ],
+    "comparisonTitle": "Langsom og hurtig feltgenkendelse",
+    "comparisonSummary": "Koordinater forbedrer ikke alt i din skak, men gør flere færdigheder lettere.",
+    "comparisonRows": [
+      {
+        "label": "Brætskanning",
+        "struggling": "Du genkender formen, men ikke feltnavnene.",
+        "stronger": "Du udpeger trusler og forsvarere mere præcist og hurtigere."
+      },
+      {
+        "label": "Visualisering",
+        "struggling": "Forestillede træk føles vage.",
+        "stronger": "Den stilling der opstår, bliver lettere at beskrive og holde fast i."
+      },
+      {
+        "label": "Gennemgang",
+        "struggling": "Noterne efter partiet forbliver uklare.",
+        "stronger": "Du beskriver nøgleøjeblikket tydeligt nok til at studere det senere."
+      }
+    ],
+    "mistakes": [
+      "At træne feltnavne uden rigtige stillinger.",
+      "At lære notationsregler udenad uden eksempler på brættet.",
+      "At se bort fra de langtrækkende brikkers linjer under træningen.",
+      "At droppe vanen, så snart grundnotationen føles kendt."
+    ],
+    "mistakesCallout": "Gentag ikke bare feltnavne. Brug dem sammen med rigtige brikker og stillinger.",
+    "planTitle": "7-dages koordinatopvarmning",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "8 minutter",
+        "detail": "Nævn hver brik og dens felt, mens du genopbygger en Memory Chess-stilling."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "10 minutter",
+        "detail": "Tilføj navngivning af lange linjer for løbere og tårne."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "10 minutter",
+        "detail": "Træn kortet over springerhop og sikkerheden på centrumfelterne."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "12 minutter",
+        "detail": "Brug feltnavne i en fuld skanning, og gennemgå derefter én vigtig stilling kun med feltnavne."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Betyder koordinater virkelig noget for begyndere?",
+        "answer": "Ja, når de gør overblik, visualisering og gennemgang hurtigere. Perfekt notation er ikke nødvendig, men hurtig genkendelse hjælper."
+      },
+      {
+        "question": "Hvad er den bedste måde at lære koordinater på?",
+        "answer": "Lær feltnavne med rigtige stillinger og brikker i stedet for kun at gentage notation."
+      },
+      {
+        "question": "Hjælper det mig med at lave færre bommerter?",
+        "answer": "Indirekte, ja. Hurtig feltgenkendelse gør skanninger og trusselstjek mere præcise."
+      },
+      {
+        "question": "Hvor længe bør jeg træne koordinater?",
+        "answer": "Fem til ti fokuserede minutter er nok, når øvelsen hænger sammen med rigtigt brætarbejde."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Brug koordinater til at understøtte en bredere skanning."
+      },
+      {
+        "reason": "Gør opdateringerne i hovedet præcise felt for felt."
+      },
+      {
+        "reason": "Brug feltnavne til at forenkle tænkningen under pres."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Daglig 20-minutters skakplan for begyndere",
+    "h1": "En daglig 20-minutters skakplan for begyndere",
+    "description": "Følg en enkel 20-minutters plan med brætarbejde, hukommelse, partier og en kort gennemgang.",
+    "primaryKeyword": "daglig 20-minutters skakplan",
+    "secondaryKeywords": [
+      "daglig skakrutine for begyndere",
+      "kort studieplan i skak",
+      "blive bedre på 20 minutter om dagen",
+      "træningsprogram for begyndere",
+      "rutine med opgaver og gennemgang"
+    ],
+    "painPoint": "Du vil gerne blive bedre, men de fleste skakplaner tager for lang tid.",
+    "ctaLabel": "Start 20-minutters planen",
+    "quickAnswer": "Afsæt et par minutter til brætfornemmelse, hukommelse, taktik og gennemgang. Hold rutinen kort nok til, at du kan klare den selv når du er træt.",
+    "keyTakeaways": [
+      "At træne ofte betyder mere end at træne længe.",
+      "Brug både øvelser og rigtige stillinger.",
+      "En kort gennemgang hjælper morgendagens træning."
+    ],
+    "whoThisIsFor": [
+      "Begyndere med lidt tid, men stabil motivation.",
+      "Spillere der opgiver for krævende planer.",
+      "Alle der vil have en daglig rutine, de kan gentage."
+    ],
+    "timeToRead": "7 minutters læsning",
+    "introParagraphs": [
+      "Mange studieplaner fungerer kun med masser af fritid. En brugbar plan skal også virke på en travl dag.",
+      "Denne 20-minutters rutine bevarer én øvelse, én rigtig stilling og én kort gennemgang."
+    ],
+    "startHereTitle": "Din 20-minutters skakrutine",
+    "startHereSteps": [
+      "Brug 4 minutter på en øvelse i brætfornemmelse eller genkaldelse.",
+      "Brug 6 minutter på en runde Memory Chess med samme indstillinger hele ugen.",
+      "Brug 6 minutter på taktik eller en stilling fra et rigtigt parti.",
+      "Brug 4 minutter på at skrive, hvad der gik galt i dag, og hvad der holdt.",
+      "Behold strukturen i mindst 7 dage, før du justerer."
+    ],
+    "drillSectionTitle": "Øvelser der kan være i en kort plan",
+    "drillCards": [
+      {
+        "title": "Varm op med genkaldelse",
+        "description": "Brug en kort runde Memory Chess som anker for hele sessionen.",
+        "duration": "6 minutter",
+        "goal": "At starte hver session med samme hukommelsesopvarmning.",
+        "ctaLabel": "Start opvarmningen"
+      },
+      {
+        "title": "Hurtigt trusselstjek",
+        "description": "Skan en stilling efter skak, slag, trusler og udækkede brikker.",
+        "duration": "4 minutter",
+        "goal": "At forbedre overførslen til partier næsten uden tidsforbrug.",
+        "ctaLabel": "Lav trusselstjekket"
+      },
+      {
+        "title": "Noterunde",
+        "description": "Skriv én sætning om den type fejl, du lavede i dag.",
+        "duration": "4 minutter",
+        "goal": "At bruge dagens lære i morgen.",
+        "ctaLabel": "Skriv én lære ned"
+      }
+    ],
+    "comparisonTitle": "En rutine du faktisk holder fast i",
+    "comparisonSummary": "Den bedste rutine er den, du kan gentage i en almindelig uge.",
+    "comparisonRows": [
+      {
+        "label": "Daglig belastning",
+        "struggling": "Du prøver for mange læringsformer på én gang.",
+        "stronger": "Du gentager en kompakt sløjfe, der dækker grundlaget hver dag."
+      },
+      {
+        "label": "Overførsel",
+        "struggling": "Du ser eller læser bare uden at træne.",
+        "stronger": "Hver session indeholder en øvelse, du bruger i partier."
+      },
+      {
+        "label": "Gennemgang",
+        "struggling": "Fejlene forsvinder, fordi der ikke bliver skrevet noget ned.",
+        "stronger": "Hver dag slutter med en note til i morgen."
+      }
+    ],
+    "mistakes": [
+      "At kopiere avancerede planer, du ikke kan holde.",
+      "At bruge alle 20 minutter på passivt stof.",
+      "At skifte rutine hver anden dag.",
+      "At springe gennemgangen over, fordi den virker lille."
+    ],
+    "mistakesCallout": "Gør ikke planen større. Gør den let nok til at gentage.",
+    "planTitle": "20-minutters rutine i 7 dage",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 3",
+        "duration": "20 minutter",
+        "detail": "Behold de samme Memory Chess-indstillinger og samme tjekformat for konsistens."
+      },
+      {
+        "label": "Dag 4",
+        "duration": "20 minutter",
+        "detail": "Læs dine noter, og behold kun ét forbedringspunkt til de næste tre dage."
+      },
+      {
+        "label": "Dag 5 til 6",
+        "duration": "20 minutter",
+        "detail": "Gentag præcis samme struktur uden ekstra variation."
+      },
+      {
+        "label": "Dag 7",
+        "duration": "20 minutter",
+        "detail": "Tjek om bommerter eller genkaldelsespræcision blev bedre, og lav kun én justering til næste uge."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Er 20 minutters træning nok?",
+        "answer": "Ja, hvis den er regelmæssig og indeholder øvelser, der overføres direkte til partier, ikke kun passiv læring."
+      },
+      {
+        "question": "Skal jeg bruge alle 20 minutter på taktik?",
+        "answer": "Som regel ikke. En blanding af brætklarhed, taktisk overførsel og kort gennemgang virker bedre for begyndere."
+      },
+      {
+        "question": "Hvor længe skal jeg holde fast i samme plan?",
+        "answer": "Mindst en uge. Konstante skift gør fremgangen umulig at aflæse."
+      },
+      {
+        "question": "Hvad bør jeg følge?",
+        "answer": "Bommerter pr. parti, genkaldelsespræcision og den fejltype, der optræder oftest."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Se hvor denne korte rutine passer ind i en længere plan."
+      },
+      {
+        "reason": "Balancér taktisk arbejde og brætklarhed."
+      },
+      {
+        "reason": "Hold gennemgangen enkel og produktiv."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Sådan analyserer begyndere deres egne partier",
+    "h1": "Sådan analyserer begyndere deres egne skakpartier",
+    "description": "Gennemgå dine partier, forstå fejlene, og vælg én tydelig ting at træne.",
+    "primaryKeyword": "analysere skakpartier som begynder",
+    "secondaryKeywords": [
+      "partianalyse for begyndere",
+      "gennemgå egne partier",
+      "selvanalyse i skak",
+      "analysere bommerter",
+      "rutine efter partiet"
+    ],
+    "painPoint": "Din analyse går for hurtigt, bliver rodet eller fyldt med motorvarianter.",
+    "ctaLabel": "Analysér næste parti",
+    "quickAnswer": "Find hvor partiet vendte, sæt navn på fejltypen, og vælg én rettelse. Kig først på motoren, når du selv har undersøgt stillingen.",
+    "keyTakeaways": [
+      "Afslut hver analyse med en handling, ikke en lang liste motortræk.",
+      "At navngive fejltypen hjælper dig med at vælge øvelse.",
+      "Prøv at genopbygge nøglestillingen fra hukommelsen."
+    ],
+    "whoThisIsFor": [
+      "Spillere der gennemgår partier, men ikke ved hvad der så skal ske.",
+      "Begyndere der ser vurderingen hoppe uden at forstå hvorfor.",
+      "Alle der vil have en enklere vane efter partiet."
+    ],
+    "timeToRead": "7 minutters læsning",
+    "introParagraphs": [
+      "Start med ét spørgsmål: hvilken fejl ændrede partiet? Motorens vurdering alene siger ikke, hvad du skal træne.",
+      "Genopbyg nøglestillingen, sæt navn på fejlen, og vælg morgendagens øvelse ud fra det."
+    ],
+    "startHereTitle": "Start her: analysesløjfen for begyndere",
+    "startHereSteps": [
+      "Find det første øjeblik, hvor stillingen ændrede sig meget.",
+      "Genopbyg den stilling fra hukommelsen, før du tjekker motoren.",
+      "Klassificér fejlen som syn, hukommelse, beregning eller tidsforbrug.",
+      "Spørg hvilket signal der burde have fået dig til at sætte farten ned.",
+      "Lav svaret om til en øvelse til næste session."
+    ],
+    "drillSectionTitle": "Enkle analyseøvelser",
+    "drillCards": [
+      {
+        "title": "Genopbyg nøglestillingen",
+        "description": "Genopbyg stillingen for hovedbommerten fra hukommelsen, før du tjekker den.",
+        "duration": "5 minutter",
+        "goal": "At huske stillingen, før du ser svaret.",
+        "ctaLabel": "Genopbyg øjeblikket"
+      },
+      {
+        "title": "Markér fejltypen",
+        "description": "Markér hver stor fejl som syn, hukommelse, beregning eller tidnød.",
+        "duration": "3 minutter",
+        "goal": "At vide hvad du skal træne som det næste.",
+        "ctaLabel": "Markér fejltypen"
+      },
+      {
+        "title": "Analyse med én rettelse",
+        "description": "Afslut analysen med én tydelig rettelse til i morgen.",
+        "duration": "2 minutter",
+        "goal": "At slutte med et brugbart næste skridt.",
+        "ctaLabel": "Vælg én rettelse"
+      }
+    ],
+    "comparisonTitle": "Nyttig og unyttig analyse",
+    "comparisonSummary": "Du behøver ikke studere hvert træk. Find den tydeligste lære til næste øvelse.",
+    "comparisonRows": [
+      {
+        "label": "Brug af motoren",
+        "struggling": "Du åbner motoren med det samme.",
+        "stronger": "Du stiller din egen diagnose, før du tjekker."
+      },
+      {
+        "label": "Resultat",
+        "struggling": "Du ender med mange kommentarer og ingen handling.",
+        "stronger": "Du ender med en øvelse eller en justering af listen."
+      },
+      {
+        "label": "Hukommelse",
+        "struggling": "Stillingen forsvinder lige efter partiet.",
+        "stronger": "Du genopbygger den og ser fejlen tydeligere."
+      }
+    ],
+    "mistakes": [
+      "At analysere kun med motorvarianter uden egen diagnose.",
+      "At prøve at analysere hvert træk lige dybt.",
+      "Ikke at navngive fejltypen.",
+      "At afslutte analysen uden at vælge næste øvelse."
+    ],
+    "mistakesCallout": "Gennemgå ikke hver motorvariant. Sæt navn på fejlen, og træn rettelsen.",
+    "planTitle": "7-dages analysevane",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Gennemgå ét parti, og find kun det første store vendepunkt."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Genopbyg den stilling fra hukommelsen, før du tjekker motoren."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Knyt hver stor fejl til en type, og tæl hvilken der går oftest igen."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Vælg næste sessions første øvelse ud fra den hyppigste fejltype."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Bør begyndere bruge motor?",
+        "answer": "Ja, men efter eget diagnoseforsøg. Ellers bliver analysen passiv."
+      },
+      {
+        "question": "Hvor mange fejl skal jeg gennemgå efter et parti?",
+        "answer": "Et til tre store vendepunkter er nok for de fleste begyndere."
+      },
+      {
+        "question": "Hvad bør jeg notere efter analysen?",
+        "answer": "Fejltype, overset signal og en øvelse eller listejustering til næste gang."
+      },
+      {
+        "question": "Hvordan hjælper Memory Chess analysen?",
+        "answer": "Det hjælper dig med at genopbygge vigtige stillinger, så analysen bliver mere præcis."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sæt analysen ind i en rutine, der ikke overvælder."
+      },
+      {
+        "reason": "Lav analyseresultaterne om til øvelser mod bommerter."
+      },
+      {
+        "reason": "Husk og genopbyg nøgleøjeblikke efter partiet."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Hvor mange skakopgaver bør en begynder løse dagligt?",
+    "h1": "Hvor mange skakopgaver bør en begynder løse dagligt?",
+    "description": "Vælg et dagligt antal opgaver, der forbedrer taktikken og levner tid til hukommelse, partier og analyse.",
+    "primaryKeyword": "hvor mange skakopgaver om dagen",
+    "secondaryKeywords": [
+      "dagligt antal opgaver",
+      "opgaverutine for begyndere",
+      "hvor meget taktik om dagen",
+      "for mange skakopgaver",
+      "taktikmængde for begyndere"
+    ],
+    "painPoint": "Du løser mange opgaver, men ved ikke om de hjælper i dine partier.",
+    "ctaLabel": "Balancér opgaver og spil",
+    "quickAnswer": "For de fleste begyndere er en kort daglig session nok. Stop mens du tænker klart, og levn tid til partier, hukommelse og analyse.",
+    "keyTakeaways": [
+      "Opgavernes kvalitet betyder mere end antallet.",
+      "For mange opgaver tager tid fra partier og analyse.",
+      "Din ideelle mængde bør levne tid til at spille eller analysere."
+    ],
+    "whoThisIsFor": [
+      "Spillere hvis hele studieplan består af opgaver.",
+      "Begyndere der vil have en tydelig opgaverutine.",
+      "Alle der vil balancere opgaver og spillepraksis."
+    ],
+    "timeToRead": "7 minutters læsning",
+    "introParagraphs": [
+      "Der findes ikke ét perfekt tal for alle. For få opgaver bremser mønsterlæringen, for mange levner ikke tid til andet nyttigt.",
+      "Løs nok til at holde dig skarp, og brug resten af tiden på brætthukommelse, partier og analyse."
+    ],
+    "startHereTitle": "Vælg en fornuftig daglig mængde",
+    "startHereSteps": [
+      "Beslut om opgaverne er din opvarmning, hovedblok eller overførselstjek.",
+      "Behold en kort runde Memory Chess før eller efter for brætklarhed.",
+      "Stop når svarene bliver forhastede i stedet for at jagte et større tal.",
+      "Genopbyg dagligt ét overset taktisk øjeblik fra et rigtigt parti.",
+      "Skift først mængden, når du har tjekket om fejlene i partierne ændrer sig."
+    ],
+    "drillSectionTitle": "Øvelser der gør opgaverne mere nyttige",
+    "drillCards": [
+      {
+        "title": "Opvarmning plus genkaldelse",
+        "description": "Kombinér en kort genkaldelsesøvelse med en moderat opgaveblok i stedet for at starte koldt.",
+        "duration": "10 minutter",
+        "goal": "At koble opgaveløsning til rigtigt spil.",
+        "ctaLabel": "Tilføj genkaldelse"
+      },
+      {
+        "title": "Signaltjek efter hver opgave",
+        "description": "Spørg hvilket advarselssignal der gjorde taktikken mulig, før du ser løsningen.",
+        "duration": "5 minutter",
+        "goal": "At bemærke hvorfor en stilling indeholder taktik.",
+        "ctaLabel": "Tjek signalet"
+      },
+      {
+        "title": "Genopbyg en partitaktik",
+        "description": "Lav en overset partitaktik om til en opgave, du løser efter at have genopbygget stillingen.",
+        "duration": "5 minutter",
+        "goal": "At bruge taktik fra dine egne partier.",
+        "ctaLabel": "Genopbyg taktikken"
+      }
+    ],
+    "comparisonTitle": "For få, for mange og tilpas",
+    "comparisonSummary": "Den rigtige mængde holder taktikken skarp og levner stadig tid til at spille.",
+    "comparisonRows": [
+      {
+        "label": "Mønstergenkendelse",
+        "struggling": "For lidt træning gør almindelig taktik fremmed.",
+        "stronger": "En moderat daglig blok holder mønstrene friske."
+      },
+      {
+        "label": "Overførsel",
+        "struggling": "For mange opgaver levner ikke tid til brætfornemmelse eller analyse.",
+        "stronger": "Din rutine beholder genkaldelse og arbejde med rigtige stillinger."
+      },
+      {
+        "label": "Træthed",
+        "struggling": "De sene opgaver bliver til forhastet gætteri.",
+        "stronger": "Du stopper, mens beslutningerne stadig er rene."
+      }
+    ],
+    "mistakes": [
+      "At bruge antallet af opgaver som eneste mål for kvalitet.",
+      "At løse taktik uden nogen overførsel til partier.",
+      "At fortsætte længe efter at fokus er faldet.",
+      "At fortrænge analyse og brætfornemmelse."
+    ],
+    "mistakesCallout": "Flere opgaver er ikke altid bedre. Tjek om de hjælper i dine rigtige partier.",
+    "planTitle": "7-dages balanceplan",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "15 minutter",
+        "detail": "Brug en lille opgaveblok, og læg en kort genkaldelsesøvelse foran."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "15 minutter",
+        "detail": "Tilføj et signaltjek efter hver opgave for at se, hvorfor taktikken var der."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minutter",
+        "detail": "Genopbyg en overset partitaktik, og sammenlign den med hvordan du klarer opgaver."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 til 20 minutter",
+        "detail": "Skift kun mængden, hvis svarene forbliver omhyggelige, og der stadig er tid til at spille."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvor mange opgaver om dagen er nok for en begynder?",
+        "answer": "Nok til at almindelig taktik forbliver kendt, og der stadig er tid til hukommelse og partier. For mange er en kort daglig session nok."
+      },
+      {
+        "question": "Kan for mange opgaver skade?",
+        "answer": "Indirekte, ja. De kan fortrænge brætfornemmelse, genkaldelse og analyse, som kræves til rigtig overførsel."
+      },
+      {
+        "question": "Opgaver før eller efter partier?",
+        "answer": "Begge dele virker, men en lille opvarmning plus et overførselsskridt bagefter fungerer ofte godt."
+      },
+      {
+        "question": "Hvad bør jeg følge?",
+        "answer": "Om bommerter og oversete simple taktikker falder, ikke kun hvor mange opgaver du løste."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Forstå hvorfor succes med opgaver alene ikke er nok."
+      },
+      {
+        "reason": "Sæt opgaverne ind i en kort og balanceret rutine."
+      },
+      {
+        "reason": "Lær almindelige mønstre i stedet for at øge antallet."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Øvelser i mønstergenkendelse i skak",
+    "h1": "Øvelser i mønstergenkendelse for begyndere",
+    "description": "Brug enkle øvelser til at få øje på almindelige skakmønstre og finde nyttige idéer hurtigere.",
+    "primaryKeyword": "øvelser mønstergenkendelse skak",
+    "secondaryKeywords": [
+      "mønstergenkendelse i skak",
+      "træne taktiske motiver",
+      "øvelser i taktiske mønstre",
+      "skakmønstre for begyndere",
+      "huske skakmotiver"
+    ],
+    "painPoint": "Hver stilling føles ny, så du ser de taktiske idéer for sent.",
+    "ctaLabel": "Træn mønstre",
+    "quickAnswer": "Et mønster er en velkendt opstilling af brikker og felter. Gentag samme slags mønster, indtil du hurtigt ser idéen bag.",
+    "keyTakeaways": [
+      "Et mønster rummer både formen på brættet og den idé, den skaber.",
+      "Brætthukommelsen hjælper dig med at se mønstre under pres.",
+      "Gentag et par almindelige mønstre, før du tilføjer mange nye."
+    ],
+    "whoThisIsFor": [
+      "Spillere der løser taktik, men ikke ser de samme former i partier.",
+      "Begyndere der vil have mere struktur end tilfældige opgaver.",
+      "Alle der stadig synes stillinger ser rodede ud."
+    ],
+    "timeToRead": "7 minutters læsning",
+    "introParagraphs": [
+      "Mønstergenkendelse gør en stilling velkendt. En form på brættet kan pege på en gaffel, en binding, en fanget brik eller et svagt felt, før du begynder at regne.",
+      "Start med en lille gruppe almindelige mønstre. Genopbyg hver stilling fra hukommelsen, så du husker de brikker og felter, der bærer idéen."
+    ],
+    "startHereTitle": "Start med ét mønster ad gangen",
+    "startHereSteps": [
+      "Vælg én mønstertype, for eksempel gafler, bindinger eller angreb på udækkede brikker.",
+      "Studér formen, og genopbyg den fra hukommelsen, ikke kun ud fra et stillestående diagram.",
+      "Nævn de felter og forsvarere, der bærer mønsteret.",
+      "Spil en runde Memory Chess for at fastholde ren genkaldelse.",
+      "Gennemgå et nyligt parti, og find hvor et lignende mønster dukkede op eller manglede."
+    ],
+    "drillSectionTitle": "Enkle øvelser i mønstergenkendelse",
+    "drillCards": [
+      {
+        "title": "Genopbyg et mønster",
+        "description": "Genopbyg et skakmønster fra hukommelsen, og nævn nøglebrikkerne og felterne.",
+        "duration": "5 minutter",
+        "goal": "At koble mønsteret til en tydelig hukommelse af brættet.",
+        "ctaLabel": "Genopbyg mønsteret"
+      },
+      {
+        "title": "Gentag én familie",
+        "description": "Gentag flere eksempler på samme mønster, før du skifter type.",
+        "duration": "5 minutter",
+        "goal": "At gøre formen på brættet velkendt.",
+        "ctaLabel": "Gentag én familie"
+      },
+      {
+        "title": "Find det i dine egne partier",
+        "description": "Gennemgå et nyligt parti, og find hvor det samme mønster dukkede op.",
+        "duration": "5 minutter",
+        "goal": "At koble mønsterarbejde til rigtige stillinger.",
+        "ctaLabel": "Søg i dine partier"
+      }
+    ],
+    "comparisonTitle": "Tilfældig taktik og ægte mønstergenkendelse",
+    "comparisonSummary": "Mønstre hjælper, når du bemærker dem, før du begynder at regne langt.",
+    "comparisonRows": [
+      {
+        "label": "Træningens struktur",
+        "struggling": "Du springer hele tiden mellem urelaterede mønstre.",
+        "stronger": "Du gentager én mønstertype, indtil den føles velkendt."
+      },
+      {
+        "label": "Brætthukommelse",
+        "struggling": "Du kender idéen, men ikke de felter der bærer den.",
+        "stronger": "Du husker de detaljer, der får mønsteret til at virke."
+      },
+      {
+        "label": "Rigtige partier",
+        "struggling": "Mønstrene bliver i opgaverne.",
+        "stronger": "Du bemærker deres tidlige tegn i et igangværende parti."
+      }
+    ],
+    "mistakes": [
+      "Kun at lære mønsterets navn uden at forstå formen.",
+      "At skifte mønstertype for ofte.",
+      "At se bort fra de felter og forsvarere, der bærer mønsteret.",
+      "At springe partigennemgangen over efter mønsterarbejdet."
+    ],
+    "mistakesCallout": "Tilføj ikke variation for hurtigt. Gentag én mønstertype, indtil den føles velkendt.",
+    "planTitle": "7-dages mønsterplan",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Vælg én mønstertype, og genopbyg flere eksempler fra hukommelsen."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Tilføj feltnavne og optælling af forsvarere til hvert eksempel."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Spil en runde Memory Chess før mønsterarbejdet, så brættet bliver tydeligere."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Søg efter samme mønster i dine seneste partier, og notér hvor det dukkede op eller næsten dukkede op."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvad er mønstergenkendelse i skak?",
+        "answer": "At se en velkendt form på brættet og hurtigt huske den idé, der som regel virker der."
+      },
+      {
+        "question": "Hvordan træner begyndere mønstergenkendelse?",
+        "answer": "Ved at gentage et lille sæt mønstre, genopbygge stillinger fra hukommelsen og lede efter dem i rigtige partier."
+      },
+      {
+        "question": "Er opgaver nok til mønstre?",
+        "answer": "Ikke altid. De hjælper, men at gentage samme type og gennemgå partier gør dem først rigtigt brugbare."
+      },
+      {
+        "question": "Hvorfor kombinere Memory Chess med mønsterarbejde?",
+        "answer": "Fordi det er lettere at genkende mønstre, når hele brættet forbliver tydeligt i hukommelsen."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Byg et stærkere hukommelseslag til mønsterlæring."
+      },
+      {
+        "reason": "Balancér mønsterarbejde med et fornuftigt antal opgaver."
+      },
+      {
+        "reason": "Brug de mønstre du har studeret i rigtige partier."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Beregningsøvelser i skak for begyndere",
+    "h1": "Beregningsøvelser i skak for begyndere",
+    "description": "Enkle øvelser til at sammenligne træk og følge korte varianter uden at miste tråden.",
+    "primaryKeyword": "beregningsøvelser skak",
+    "secondaryKeywords": [
+      "beregning i skak for begyndere",
+      "regne træk frem",
+      "øvelser i at holde varianten",
+      "træne kandidattræk",
+      "visualisering og beregning"
+    ],
+    "painPoint": "Du begynder at regne og bytter snart rundt på trækkene eller mister stillingen.",
+    "ctaLabel": "Træn ren beregning",
+    "quickAnswer": "Sammenlign kun ét eller to mulige træk i starten. Hold brættet tydeligt i hovedet, og tjek med det samme.",
+    "keyTakeaways": [
+      "To tydelige varianter er bedre end fem forvirrende.",
+      "Tydelig visualisering giver ren beregning.",
+      "Tjek med det samme efter hver øvelse."
+    ],
+    "whoThisIsFor": [
+      "Spillere der ved de bør regne, men mister varianten hurtigt.",
+      "Begyndere der trækker på fornemmelse i skarpe stillinger.",
+      "Alle der vil bruge hukommelsestræning i rigtige beslutninger."
+    ],
+    "timeToRead": "7 minutters læsning",
+    "introParagraphs": [
+      "Beregning er ganske enkelt at spørge: «Hvis jeg trækker her, hvad sker der så?» Det svære er at holde brættet tydeligt.",
+      "Brætthukommelse og visualisering gør beregningen lettere. Træn dem sammen i stedet for hver for sig."
+    ],
+    "startHereTitle": "Start med to mulige træk",
+    "startHereSteps": [
+      "Vælg højst to kandidattræk fra en stilling.",
+      "Forestil dig en variant på to halvtræk, og opsummer den i én sætning.",
+      "Spil en runde Memory Chess, så grundbrættet forbliver skarpt.",
+      "Gå tilbage til udgangsstillingen, og sammenlign de to varianter roligt.",
+      "Tjek med det samme, og sig om fejlen kom fra billedet af brættet eller fra trækrækkefølgen."
+    ],
+    "drillSectionTitle": "Enkle beregningsøvelser",
+    "drillCards": [
+      {
+        "title": "Sammenlign to kandidater",
+        "description": "Hold to fornuftige træk, og sammenlign deres korte taktiske følger.",
+        "duration": "6 minutter",
+        "goal": "At sammenligne træk uden at skulle huske for meget.",
+        "ctaLabel": "Sammenlign to varianter"
+      },
+      {
+        "title": "Husk først, regn så",
+        "description": "Tag en kort genkaldelsesrunde før variantarbejdet for et renere bræt.",
+        "duration": "4 minutter",
+        "goal": "At holde brættet, før du følger en række.",
+        "ctaLabel": "Husk før beregningen"
+      },
+      {
+        "title": "Variant i én sætning",
+        "description": "Opsummer grenen i én sætning, før du tjekker.",
+        "duration": "4 minutter",
+        "goal": "At holde rækken tydelig og let at forklare.",
+        "ctaLabel": "Opsummer grenen"
+      }
+    ],
+    "comparisonTitle": "Rodet og ren beregning",
+    "comparisonSummary": "Jag ikke lange varianter endnu. Gør de korte præcise først.",
+    "comparisonRows": [
+      {
+        "label": "Kandidattræk",
+        "struggling": "Du overvejer for mange træk på én gang.",
+        "stronger": "Du sammenligner et par fornuftige træk."
+      },
+      {
+        "label": "Billedet af brættet",
+        "struggling": "Den stilling der opstår, sløres hurtigt.",
+        "stronger": "Du holder nøglefelter og forsvarere stabile i hukommelsen."
+      },
+      {
+        "label": "Kontrol",
+        "struggling": "Du ved ikke hvorfor varianten brød sammen.",
+        "stronger": "Du ser om fejlen kom fra hukommelse, trækrækkefølge eller vurdering."
+      }
+    ],
+    "mistakes": [
+      "At prøve at regne for mange grene på én gang.",
+      "At springe valget af kandidater over og regne alt.",
+      "Ikke at tjekke lige efter varianten.",
+      "At se bort fra en svag brætthukommelse."
+    ],
+    "mistakesCallout": "Regn ikke langt endnu. En tydelig variant på to træk er mere nyttig end en lang og rodet.",
+    "planTitle": "7-dages beregningsplan",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Kun sammenligninger af to kandidater med kontrol med det samme."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Tilføj en runde Memory Chess før beregningsarbejdet."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Opsummer hver gren i én sætning, før du tjekker."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Tag processen med i hurtigpartier: stop i skarpe øjeblikke, og hold få kandidater."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvordan forbedrer en begynder sin beregning?",
+        "answer": "Færre kandidater, hurtig kontrol og bedre visualisering og hukommelse under variantarbejdet."
+      },
+      {
+        "question": "Bør jeg regne længere frem?",
+        "answer": "Først når den nuværende dybde er pålidelig. Præcision slår ambition."
+      },
+      {
+        "question": "Hvorfor bryder mine varianter sammen?",
+        "answer": "Ofte fordi billedet af brættet ikke er stabilt nok, eller fordi du holder for mange kandidater på én gang."
+      },
+      {
+        "question": "Hjælper Memory Chess på beregningen?",
+        "answer": "Ja. Bedre genkaldelse gør det meget lettere at holde de stillinger, der opstår under beregningen."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Styrk det lag, der holder varianterne under beregningen."
+      },
+      {
+        "reason": "Se brættet tydeligere, før du forlænger varianterne."
+      },
+      {
+        "reason": "Brug en enklere beslutningsproces til renere beregning."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Sådan tænker begyndere i skak",
+    "h1": "Sådan tænker begyndere i skak",
+    "description": "Brug en enkel proces ved hvert træk til at tjekke trusler, sammenligne muligheder og styre tiden.",
+    "primaryKeyword": "hvordan man tænker i skak",
+    "secondaryKeywords": [
+      "tankeproces for begyndere",
+      "hvad skal man tænke på i skak",
+      "beslutninger i skak",
+      "tjekliste før trækket",
+      "enkel tankeproces"
+    ],
+    "painPoint": "Du trækker for hurtigt eller tænker for længe og er stadig usikker.",
+    "ctaLabel": "Træn en enkel trækproces",
+    "quickAnswer": "Brug den samme korte proces ved hvert træk: tjek modstanderens trusler, vælg ét til tre træk, og sørg for at valget er sikkert.",
+    "keyTakeaways": [
+      "En kort proces er lettere at bruge end en lang liste.",
+      "Trusselstjekket kommer altid før valget af træk.",
+      "Brug mere tid, når stillingen bliver farlig."
+    ],
+    "whoThisIsFor": [
+      "Spillere der gætter i rolige stillinger og går i stå i skarpe.",
+      "Begyndere der har brug for en tydelig proces ved hvert træk.",
+      "Alle der vil vælge renere under pres."
+    ],
+    "timeToRead": "7 minutters læsning",
+    "introParagraphs": [
+      "Begyndere undrer sig ofte over, hvad stærke spillere tænker på. Svaret kan lyde kompliceret, men din proces skal være kort nok til at bruge hver gang.",
+      "Start med truslerne, vælg få mulige træk, og tjek at det endelige valg er sikkert."
+    ],
+    "startHereTitle": "Start her: processen i fire trin",
+    "startHereSteps": [
+      "Tjek først modstanderens stærkeste trusler.",
+      "Nævn ét til tre realistiske kandidattræk.",
+      "Tjek at det træk du planlægger er sikkert og ikke efterlader nogen brik udækket.",
+      "Spørg om stillingen er rolig nok til at trække eller skarp nok til at sætte farten ned.",
+      "Se efter partiet, hvor processen brød sammen."
+    ],
+    "drillSectionTitle": "Øvelser til roligere beslutninger",
+    "drillCards": [
+      {
+        "title": "Udløseren «modstanderen først»",
+        "description": "Start hver træningsstilling med at nævne modstanderens tvungne muligheder.",
+        "duration": "3 minutter",
+        "goal": "At gøre trusselstjekket automatisk i stedet for valgfrit.",
+        "ctaLabel": "Start med truslerne"
+      },
+      {
+        "title": "Grænse på tre kandidater",
+        "description": "Tillad dig aldrig mere end tre kandidattræk i en træningsstilling.",
+        "duration": "4 minutter",
+        "goal": "At reducere for mange muligheder og tøven.",
+        "ctaLabel": "Begræns kandidaterne"
+      },
+      {
+        "title": "Tjek din sikkerhed",
+        "description": "Se på et træk, og spørg om du var reelt sikker eller bare træt af at tænke.",
+        "duration": "4 minutter",
+        "goal": "At bemærke når du trækker af udmattelse.",
+        "ctaLabel": "Tjek sikkerheden"
+      }
+    ],
+    "comparisonTitle": "En enkel trækproces",
+    "comparisonSummary": "Den bedste tankeproces er den, du kan bruge selv med uret i gang.",
+    "comparisonRows": [
+      {
+        "label": "Håndtering af trusler",
+        "struggling": "Du tænker først på din egen plan.",
+        "stronger": "Du starter med modstanderens stærkeste trusler."
+      },
+      {
+        "label": "Kandidattræk",
+        "struggling": "Du springer mellem for mange muligheder.",
+        "stronger": "Du holder et lille og realistisk sæt kandidater."
+      },
+      {
+        "label": "Tidsforbrug",
+        "struggling": "Du giver hvert træk lige meget opmærksomhed.",
+        "stronger": "Du sætter farten ned, når spænding, taktik eller kongesikkerhed ændrer sig."
+      }
+    ],
+    "mistakes": [
+      "At bruge en lang liste, du aldrig følger i partier.",
+      "At tænke på din egen plan, før du tjekker truslerne.",
+      "At lade kandidatlisten blive for stor.",
+      "At forveksle træthed med sikkerhed."
+    ],
+    "mistakesCallout": "Tilføj ikke flere tjek. Brug en kort proces, du kan gentage ved hvert træk.",
+    "planTitle": "7-dages finjustering af processen",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Brug kun udløseren «modstanderen først» og grænsen på tre kandidater."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Tilføj en kort runde Memory Chess, så brættet er tydeligere når du beslutter."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Se om din seneste bommert kom fra trusselstjekket eller fra for mange kandidater."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Brug hele processen i hurtigskak, og notér hvilket trin der svigter under pres."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvad bør en begynder tænke på i skak?",
+        "answer": "Start med modstanderens trusler, vælg ét til tre mulige træk, og tjek at det endelige valg er sikkert."
+      },
+      {
+        "question": "Hvor mange kandidattræk bør man holde?",
+        "answer": "Som regel ét til tre. Flere overbelaster ofte begyndere og sænker kvaliteten af beslutningerne."
+      },
+      {
+        "question": "Hvorfor går jeg i stå, selvom jeg kender processen?",
+        "answer": "Ofte fordi brættet ikke er tydeligt nok, eller fordi for mange kandidater står åbne. Enklere stillinger og hukommelsesarbejde hjælper."
+      },
+      {
+        "question": "Kan en tankeproces forhindre bommerter?",
+        "answer": "Ja, især når den tvinger trusselstjekket til at komme før valget af træk."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Brug en tydeligere liste mod bommerter, hvis du stadig taber materiale."
+      },
+      {
+        "reason": "Regn renere for at sammenligne mulige træk."
+      },
+      {
+        "reason": "Genkend felter hurtigere under din trækproces."
+      }
+    ]
+  }
+]

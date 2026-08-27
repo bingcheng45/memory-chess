@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Slik blir du bedre i sjakk som nybegynner",
+    "h1": "Slik blir du bedre i sjakk som nybegynner",
+    "description": "Følg en enkel plan for å se brettet bedre, huske stillinger og spille tryggere trekk.",
+    "primaryKeyword": "bli bedre i sjakk",
+    "secondaryKeywords": [
+      "plan for sjakkutvikling",
+      "sjakktrening for nybegynnere",
+      "sjakkrutine for nybegynnere",
+      "færre tabber i sjakk",
+      "brettsyn"
+    ],
+    "painPoint": "Du vet ikke hva du skal trene på eller hvor du skal begynne.",
+    "ctaLabel": "Start en nybegynnerrunde",
+    "quickAnswer": "Bruk en kort daglig rutine: tren brettsyn, tren hukommelsen, spill et parti og gå gjennom én feil. Gjenta 20 til 30 minutter om dagen.",
+    "keyTakeaways": [
+      "Å se og huske brettet betyr mer enn å pugge mange åpninger.",
+      "Kort daglig trening virker bedre enn sjeldne lange økter.",
+      "Følg med på feilene dine og hvor nøyaktig du husker, ikke bare ratingen."
+    ],
+    "whoThisIsFor": [
+      "Spillere som kan reglene, men fortsatt gir bort brikker.",
+      "Nybegynnere som klarer oppgaver, men sliter i partier.",
+      "Alle som ikke vet hva de skal lære først."
+    ],
+    "timeToRead": "9 minutters lesing",
+    "introParagraphs": [
+      "De fleste nybegynnere trenger ikke flere åpninger, videoer eller kurs. De trenger å følge med på brettet og sjekke at trekket er trygt før de spiller det.",
+      "Memory Chess hjelper deg å trene begge ferdighetene. Bedre hukommelse for stillingen gjør sjakker, slag og trusler lettere å se."
+    ],
+    "startHereTitle": "Start med denne nybegynnerrutinen",
+    "startHereSteps": [
+      "Bruk 3 minutter på å skanne brettet og nevne angrepne, dekkede og ubeskyttede brikker.",
+      "Spill én runde Memory Chess med 8 brikker og 10 sekunders visning.",
+      "Gå gjennom to korte taktiske stillinger, og si sjakker, slag og trusler før du velger trekk.",
+      "Spill ett hurtigparti. Merk hver store feil som syn, hukommelse eller tidsnød.",
+      "Skriv ned én ting du skal trene på igjen i morgen."
+    ],
+    "drillSectionTitle": "Enkle øvelser for bedre partier",
+    "drillCards": [
+      {
+        "title": "Brettskann på 10 sekunder",
+        "description": "Bruk et enkelt oppsett og finn hver ubeskyttet brikke før tiden går ut.",
+        "duration": "3 minutter",
+        "goal": "Bygge en sikkerhetssjekk før hvert trekk.",
+        "ctaLabel": "Kjør en skannerunde"
+      },
+      {
+        "title": "Gjenta samme stilling",
+        "description": "Spill samme stilling to ganger for å finne og rette én hukommelsesfeil.",
+        "duration": "5 minutter",
+        "goal": "Finne nøyaktig hvilken brikke eller rute du glemte.",
+        "ctaLabel": "Tren gjentatt gjenkalling"
+      },
+      {
+        "title": "Fra parti til øvelse",
+        "description": "Etter et hurtigparti ser du for deg stillingen der du feilet før du analyserer den.",
+        "duration": "7 minutter",
+        "goal": "La de virkelige feilene styre treningen.",
+        "ctaLabel": "Start overføringsøvelse"
+      }
+    ],
+    "comparisonTitle": "Slik ser bedre nybegynnerspill ut",
+    "comparisonSummary": "Du trenger ikke se fem trekk fram. Se først dagens stilling tydelig, og ta en pause før du trekker.",
+    "comparisonRows": [
+      {
+        "label": "Før trekket",
+        "struggling": "Du ser bare på din egen idé.",
+        "stronger": "Du sjekker motstanderens trusler først."
+      },
+      {
+        "label": "Under taktikk",
+        "struggling": "Varianten forsvinner etter én avbytting.",
+        "stronger": "Du ser nøkkelrutene mens du sammenligner to trekk."
+      },
+      {
+        "label": "Etter tap",
+        "struggling": "Du starter et nytt parti med én gang.",
+        "stronger": "Du setter navn på feilen og trener den i morgen."
+      }
+    ],
+    "mistakes": [
+      "Hoppe mellom tilfeldig materiale i stedet for å holde én rutine i to uker.",
+      "Studere åpninger før brettsynet er stabilt.",
+      "Spille for mange partier uten korte notater etterpå.",
+      "Se hukommelsestrening som noe annet enn ekte sjakk."
+    ],
+    "mistakesCallout": "Ikke skynd deg til avansert stoff. De fleste nybegynnere taper på oversette trusler i ett trekk, ikke på en glemt åpningsvariant.",
+    "planTitle": "30-dagersplan for nybegynnere",
+    "planSteps": [
+      {
+        "label": "Uke 1",
+        "duration": "20 minutter om dagen",
+        "detail": "Bruk samme brettskann og spill en kort runde Memory Chess før hver spilløkt."
+      },
+      {
+        "label": "Uke 2",
+        "duration": "25 minutter om dagen",
+        "detail": "Legg til en ny gjenkallingsrunde og noter om feilen kom av syn, hukommelse eller panikk."
+      },
+      {
+        "label": "Uke 3",
+        "duration": "25 til 30 minutter om dagen",
+        "detail": "Samme øvelser, men kort ned tiden du husker stillingen, så gjenkallingen holder seg ren under press."
+      },
+      {
+        "label": "Uke 4",
+        "duration": "30 minutter om dagen",
+        "detail": "Sjekk om tabbene per parti går ned, og behold bare innstillingene som overførte seg best."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvor mange minutter om dagen bør en nybegynner trene?",
+        "answer": "Fokuserte 20 til 30 minutter holder når du kombinerer brettsyn, hukommelse og én ekte stilling."
+      },
+      {
+        "question": "Hvorfor overføres ikke oppgaveferdigheten til partier?",
+        "answer": "Oppgaver starter når taktikken allerede finnes. I et parti må du først merke endringen, så gjenkalling og sikkerhetssjekker betyr mye mer."
+      },
+      {
+        "question": "Bør jeg pugge åpninger tidlig?",
+        "answer": "Bare grunnprinsippene i starten. De fleste nybegynnere tjener mer på å se trusler tidligere og holde stillingen tydeligere."
+      },
+      {
+        "question": "Hvilket mål viser framgang raskest?",
+        "answer": "Tabber per parti og treffsikkerheten i Memory Chess. De beveger seg som regel før ratingen."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bruk denne hvis hovedproblemet er at du gir bort brikker."
+      },
+      {
+        "reason": "Gå dypere i vanen med å sjekke trusler før trekket."
+      },
+      {
+        "reason": "Bygg et sterkere brett i hodet, så taktikken holder."
+      },
+      {
+        "reason": "Tren gjenkalling direkte hvis du glemmer hvor brikkene står."
+      },
+      {
+        "reason": "Følg en kortere rutine hvis du vil ha en enklere dagsstruktur."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Visualiseringsøvelser i sjakk for nybegynnere",
+    "h1": "Daglige visualiseringsøvelser i sjakk",
+    "description": "Prøv enkle visualiseringsøvelser for å huske brettet og se trekk tydeligere.",
+    "primaryKeyword": "visualiseringsøvelser sjakk",
+    "secondaryKeywords": [
+      "visualiseringstrening i sjakk",
+      "regne trekk framover",
+      "visualisere brettet",
+      "forberedelse til blindsjakk",
+      "sjakk i hodet"
+    ],
+    "painPoint": "Du mister oversikten over brikkene når du prøver å se for deg neste trekk.",
+    "ctaLabel": "Tren visualisering",
+    "quickAnswer": "Husk først et brett uten å flytte noe. Se deretter for deg ett trekk om gangen. Du trenger ikke spille et helt parti blindt.",
+    "keyTakeaways": [
+      "Kort daglig trening virker bedre enn sjeldne lange økter.",
+      "Sjekk det du så for deg etter hvert forsøk.",
+      "Se ett trekk tydelig før du prøver lengre varianter."
+    ],
+    "whoThisIsFor": [
+      "Spillere som mister varianten etter én avbytting.",
+      "Nybegynnere som sliter når de ikke ser brettet.",
+      "Alle som vil nærme seg blindsjakk steg for steg."
+    ],
+    "timeToRead": "8 minutters lesing",
+    "introParagraphs": [
+      "Visualisering betyr å se for seg hvordan brettet endrer seg etter et trekk. For nybegynnere er målet bare å sammenligne to trekk uten å miste brikkene.",
+      "Memory Chess viser hvilke brikker eller ruter du glemmer. Så kan du trene samme type stilling om igjen."
+    ],
+    "startHereTitle": "Start med disse visualiseringsstegene",
+    "startHereSteps": [
+      "Nevn hver brikke og rute på et stillestående brett i 60 sekunder.",
+      "Lukk øynene og bygg opp brettet i hodet før du sjekker.",
+      "Se for deg ett lovlig trekk for hver side uten å ta på brikkene.",
+      "Spill en runde Memory Chess med moderat antall brikker og stram tid.",
+      "Bekreft stillingen og gjenta først når du vet hva du glemte."
+    ],
+    "drillSectionTitle": "Enkle visualiseringsøvelser",
+    "drillCards": [
+      {
+        "title": "Stillbilde av brettet",
+        "description": "Husk brettet, og sett så hver brikke på riktig rute.",
+        "duration": "4 minutter",
+        "goal": "Huske brettet før du ser for deg trekk.",
+        "ctaLabel": "Start stillbildet"
+      },
+      {
+        "title": "Ett trekk per side",
+        "description": "Husk brettet, se for deg ett trekk per side og sjekk svaret.",
+        "duration": "5 minutter",
+        "goal": "Lære å oppdatere brettet i hodet.",
+        "ctaLabel": "Tren trekkoppdatering"
+      },
+      {
+        "title": "Gjenkalling under press",
+        "description": "Når gjenkallingen er nøyaktig, kort ned tiden du får se brettet.",
+        "duration": "5 minutter",
+        "goal": "Bruke ren gjenkalling i raskere partier.",
+        "ctaLabel": "Legg til press"
+      }
+    ],
+    "comparisonTitle": "Slik kjennes svak visualisering",
+    "comparisonSummary": "Det ligner et regneproblem, men ofte blekner bildet av brettet for fort.",
+    "comparisonRows": [
+      {
+        "label": "Kandidattrekk",
+        "struggling": "Du kan nevne et trekk, men ikke se stillingen etterpå tydelig.",
+        "stronger": "Du sammenligner to mulige stillinger før du trekker."
+      },
+      {
+        "label": "Taktisk kaos",
+        "struggling": "Hodet blir tomt etter avbyttinger.",
+        "stronger": "Du holder viktige ruter og trusler lenge nok til å velge i ro."
+      },
+      {
+        "label": "Tilbakemelding fra trening",
+        "struggling": "Du vet ikke nøyaktig hvilken rute du glemte.",
+        "stronger": "Du merker om feilen kom fra en linje, en rad eller en manglende forsvarer."
+      }
+    ],
+    "mistakes": [
+      "Dyp blindregning før statisk gjenkalling er stabil.",
+      "Flytte brikkene fysisk ved hvert regneforsøk.",
+      "Trene én gang i uka i stedet for en kort daglig bolk.",
+      "Ikke sjekke om brettet du så for deg stemmer med virkeligheten."
+    ],
+    "mistakesCallout": "Ikke jag lengre varianter ennå. Se først det første trekket tydelig.",
+    "planTitle": "7-dagers visualiseringsplan",
+    "planSteps": [
+      {
+        "label": "Dag 1",
+        "duration": "10 minutter",
+        "detail": "Bare stillbilder av brettet med kontroll med én gang."
+      },
+      {
+        "label": "Dag 2 til 3",
+        "duration": "12 minutter",
+        "detail": "Legg til ett tenkt trekk per side og følg med på hvilke ruter som forsvinner først."
+      },
+      {
+        "label": "Dag 4 til 5",
+        "duration": "15 minutter",
+        "detail": "Kort ned visningstiden i Memory Chess med samme antall brikker."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Ta øvelsen med i et hurtigparti: stopp før hvert taktisk valg og beskriv stillingen som kommer."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvor lang tid tar det før visualiseringen blir bedre?",
+        "answer": "De fleste nybegynnere merker renere gjenkalling etter to til fire uker med kort, jevn trening."
+      },
+      {
+        "question": "Hjelper øvelsene i lynsjakk?",
+        "answer": "Ja. Raskere oppdatering av brettet i hodet gjør sjakker, slag og trusler lettere å se under tidspress."
+      },
+      {
+        "question": "Kan man trene visualisering uten blindsjakk?",
+        "answer": "Ja. Gjenkalling på tid og øvelser med ett trekk holder for et ekte grunnlag."
+      },
+      {
+        "question": "Hva gjør jeg hvis jeg stadig glemmer hvor brikkene står?",
+        "answer": "Bruk færre brikker, sjekk oftere og gjenta samme stilling til gjenkallingen er ren."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bruk denne når statisk gjenkalling og ett trekk sitter."
+      },
+      {
+        "reason": "Utvid brettoppmerksomheten hvis du mister brikker i kantene."
+      },
+      {
+        "reason": "Kombiner visualisering med en enkel trusselsjekk."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Brettsynsøvelser mot tabber",
+    "h1": "Brettsynsøvelser for nybegynnere",
+    "description": "Bruk enkle øvelser for å se trusler, beskytte brikker og gjøre færre tabber.",
+    "primaryKeyword": "brettsyn",
+    "secondaryKeywords": [
+      "brettsynsøvelser",
+      "færre tabber i sjakk",
+      "se trusler i sjakk",
+      "taktisk årvåkenhet",
+      "nybegynnerfeil i sjakk"
+    ],
+    "painPoint": "Du fokuserer på én del av brettet og overser en enkel trussel et annet sted.",
+    "ctaLabel": "Start en brettsynsøvelse",
+    "quickAnswer": "Se etter sjakker, slag, trusler og ubeskyttede brikker før hvert trekk. Hukommelsestrening hjelper deg å holde alle brikkene i hodet mens du skanner.",
+    "keyTakeaways": [
+      "Brettsyn er en vane du kan lære.",
+      "Å være våken for ubeskyttede brikker er ofte den raskeste forbedringen.",
+      "Hukommelsestrening hjelper deg å følge hele brettet."
+    ],
+    "whoThisIsFor": [
+      "Spillere som kan grunnleggende taktikk, men likevel mister brikker.",
+      "Nybegynnere som spiller fort og ser tabben først etter slaget.",
+      "Alle som trenger en tydelig liste før hvert trekk."
+    ],
+    "timeToRead": "8 minutters lesing",
+    "introParagraphs": [
+      "Når noen sier «jeg så det ikke», har trekket som regel blitt spilt før hele brettet ble sjekket.",
+      "Disse øvelsene lærer deg hvor du skal se. Start med ubeskyttede brikker og trekk som gir sjakk, slår eller lager en trussel."
+    ],
+    "startHereTitle": "Start her: sjekken før trekket",
+    "startHereSteps": [
+      "Nevn sjakker, slag og trusler for begge sider før hvert trekk.",
+      "Merk hver ubeskyttet brikke og si om den er trygg eller bare ser trygg ut.",
+      "Spill en kort runde Memory Chess for å stramme koblingen mellom rute og brikke.",
+      "Gå gjennom én fersk tabbe og pek ut nøyaktig trusselen du overså.",
+      "Gjenta samme liste i neste hurtigparti uten å korte den ned."
+    ],
+    "drillSectionTitle": "Brettsynsøvelser for ekte partier",
+    "drillCards": [
+      {
+        "title": "Opptelling av ubeskyttede brikker",
+        "description": "Skann brettet og pek ut hver ubeskyttet brikke før du trekker.",
+        "duration": "3 minutter",
+        "goal": "Fange den vanligste tabbekilden tidlig.",
+        "ctaLabel": "Kjør opptellingen"
+      },
+      {
+        "title": "Spill trusselen om igjen",
+        "description": "Bygg opp den siste tabbestillingen og finn motstanderens sterkeste trussel før du ser på partiet.",
+        "duration": "5 minutter",
+        "goal": "Lære hvordan den oversette trusselen så ut i sammenhengen.",
+        "ctaLabel": "Spill om en trussel"
+      },
+      {
+        "title": "Rask rutegjenkalling",
+        "description": "Bruk kort visningstid så brettet holder seg helt mens du skanner.",
+        "duration": "4 minutter",
+        "goal": "Huske hvor brikkene står mens du skanner.",
+        "ctaLabel": "Få opp farten"
+      }
+    ],
+    "comparisonTitle": "Svakt mot sterkt brettsyn",
+    "comparisonSummary": "Forskjellen synes som regel før regningen i det hele tatt starter.",
+    "comparisonRows": [
+      {
+        "label": "Oppmerksomhet",
+        "struggling": "Du stirrer på én taktisk idé.",
+        "stronger": "Du skanner hele brettet før du velger plan."
+      },
+      {
+        "label": "Sikkerhetssjekker",
+        "struggling": "Du antar at en dekket brikke er trygg.",
+        "stronger": "Du teller angripere og forsvarere før du stoler på ruten."
+      },
+      {
+        "label": "Tidspress",
+        "struggling": "Du spiller raskere når stillingen skjerpes.",
+        "stronger": "Du senker farten når sjakker, slag eller trusler dukker opp."
+      }
+    ],
+    "mistakes": [
+      "Bare sjekke din egen idé og overse motstanderens trusler.",
+      "Anta at en dekket brikke er trygg uten å telle hele avbyttingen.",
+      "Spille for fort så snart stillingen blir taktisk.",
+      "Aldri sette navn på feiltypen etter partiet."
+    ],
+    "mistakesCallout": "Flere oppgaver fikser ikke en forhastet skanning. Gjenta samme korte sjekk før hvert trekk.",
+    "planTitle": "7-dagers omstart av brettsynet",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "12 minutter",
+        "detail": "Bare opptelling av ubeskyttede brikker og skanning etter sjakk, slag og trusler."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "15 minutter",
+        "detail": "Legg til en runde Memory Chess før partiene, så skanningen skjer på et renere brett i hodet."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minutter",
+        "detail": "Gå gjennom tre ferske tabber og nevn det oversette signalet i hver stilling."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 til 20 minutter",
+        "detail": "Spill hurtigsjakk og bruk hele listen på hvert trekk som endrer spenning eller kongesikkerhet."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hva er den raskeste måten å bedre brettsynet på?",
+        "answer": "Bruk samme liste før hvert trekk til den går av seg selv: sjakker, slag, trusler og ubeskyttede brikker."
+      },
+      {
+        "question": "Hvorfor tabber jeg selv om jeg kan taktikk?",
+        "answer": "Fordi laget som følger brettet er svakt. Taktikk hjelper først når du oppfatter stillingen riktig."
+      },
+      {
+        "question": "Hvor ofte bør jeg gå gjennom tabbene mine?",
+        "answer": "Etter hvert parti. En kort gjennomgangsvane overføres mye raskere enn en lang ukentlig økt."
+      },
+      {
+        "question": "Hjelper hukommelsesøvelser på brettsynet?",
+        "answer": "Ja. Raskere brikkegjenkalling gjør det lettere å holde hele brettet i oppmerksomheten mens du skanner."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bruk hele tabbeguiden når synsfeil koster materiell."
+      },
+      {
+        "reason": "Forstå hvorfor taktikk svikter under ekte press."
+      },
+      {
+        "reason": "Se hvor brettsynet passer inn i en komplett nybegynnerrutine."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Hukommelsestrening i sjakk for raskere gjenkalling",
+    "h1": "Hukommelsestrening i sjakk for nybegynnere",
+    "description": "Bruk enkle hukommelsesøvelser for å huske stillinger, se mønstre og følge trekk tydeligere.",
+    "primaryKeyword": "hukommelsestrening sjakk",
+    "secondaryKeywords": [
+      "hukommelsesøvelser sjakk",
+      "huske sjakkstillinger",
+      "mønstergjenkjenning i sjakk",
+      "trene brettgjenkalling",
+      "konsentrasjon i sjakk"
+    ],
+    "painPoint": "Du glemmer hvor brikkene står mens du tenker på de neste trekkene.",
+    "ctaLabel": "Start en hukommelsesutfordring",
+    "quickAnswer": "Hukommelsestrening hjelper deg å holde nyttige stillinger mens brikkene endrer seg. Det handler ikke om å pugge flest mulig tilfeldige stillinger.",
+    "keyTakeaways": [
+      "I starten betyr nøyaktighet mer enn fart.",
+      "Å gjenta én stilling lar deg rette én hukommelsesfeil om gangen.",
+      "Legg hukommelsestreningen før regning eller analyse."
+    ],
+    "whoThisIsFor": [
+      "Spillere som mister planen etter ett sterkt svar.",
+      "Nybegynnere som ikke klarer å gjenskape nøkkelstillinger fra partiene sine.",
+      "Alle som sliter når mange brikker er i spill."
+    ],
+    "timeToRead": "8 minutters lesing",
+    "introParagraphs": [
+      "Sjakkhukommelse er en praktisk ferdighet. Målet er å holde et tydelig bilde av brettet lenge nok til å velge trekk i ro.",
+      "Memory Chess gir en enkel sløyfe: se, husk, sjekk og prøv igjen."
+    ],
+    "startHereTitle": "Start med denne hukommelsesrutinen",
+    "startHereSteps": [
+      "Start med en enkel stilling og husk den i 10 sekunder.",
+      "Bygg opp brettet igjen og noter den første ruten eller brikken du mistet.",
+      "Gjenta samme stilling én gang så rettelsen blir synlig.",
+      "Legg til en kort taktisk variant fra oppstillingen du husket.",
+      "Følg både nøyaktighet og hvilken type hukommelsesfeil du gjorde."
+    ],
+    "drillSectionTitle": "Hukommelsesøvelser for ekte partier",
+    "drillCards": [
+      {
+        "title": "Gjenta én stilling",
+        "description": "Husk én stilling, bygg den opp igjen og gjenta så én gang med samme innstillinger.",
+        "duration": "5 minutter",
+        "goal": "Finne én tydelig hukommelsesfeil du kan rette.",
+        "ctaLabel": "Gjenta én stilling"
+      },
+      {
+        "title": "Gjenkalling via ankerpunkter",
+        "description": "Se først på kongenes plassering, ubeskyttede brikker og spenningen i sentrum.",
+        "duration": "4 minutter",
+        "goal": "Huske de viktigste delene av stillingen først.",
+        "ctaLabel": "Tren ankerpunkter"
+      },
+      {
+        "title": "Husk først, regn så",
+        "description": "Etter at du har bygd opp brettet, regner du én kort variant før du sjekker.",
+        "duration": "6 minutter",
+        "goal": "Bruke brettminnet mens du regner.",
+        "ctaLabel": "Legg til en variant"
+      }
+    ],
+    "comparisonTitle": "Slik ser svak gjenkalling ut i partier",
+    "comparisonSummary": "Brettet kan kjennes kjent og likevel være for uklart til å bære regning.",
+    "comparisonRows": [
+      {
+        "label": "Holde varianten",
+        "struggling": "Du mister utgangsstillingen mens du vurderer et nytt kandidattrekk.",
+        "stronger": "Du kommer nøyaktig tilbake til utgangsstillingen etter en variant."
+      },
+      {
+        "label": "Mønsterhukommelse",
+        "struggling": "Du husker den taktiske ideen, men ikke forsvarerne.",
+        "stronger": "Du husker både ideen og rutene som gjør den mulig."
+      },
+      {
+        "label": "Kvalitet på analysen",
+        "struggling": "Analysen blir vag fordi stillingen forsvinner med én gang.",
+        "stronger": "Du bygger opp nøkkeløyeblikk igjen og lærer raskere."
+      }
+    ],
+    "mistakes": [
+      "For store hopp i vanskegrad for nivået ditt.",
+      "Måle fart og overse nøyaktighet.",
+      "Ikke føre feillogg, så gjentakende svakheter forblir skjult.",
+      "Se hukommelsesøvelser som noe annet enn taktisk spill."
+    ],
+    "mistakesCallout": "Ikke gjør stillingen vanskeligere mens gjenkallingen er uklar. Senk nivået og bygg nøyaktighet først.",
+    "planTitle": "7-dagers hukommelsesbolk",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Gjenta enkle stillinger og nevn hver hukommelsesfeil."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Legg til ankerpunkter så du husker konger, ubeskyttede brikker og sentrumsspenning først."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Legg til en kort trekkrekke etter hver riktig gjenoppbygging."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Kort tiden litt med samme antall brikker, og ta så arbeidet inn i analysen av ett hurtigparti."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Forbedrer hukommelsestrening ekte partier?",
+        "answer": "Ja, når den kombineres med regning eller analyse. Bedre gjenkalling holder variantene tydeligere under press."
+      },
+      {
+        "question": "Hvor mange stillinger per økt?",
+        "answer": "For nybegynnere holder seks til tolv nøye forsøk hvis du sjekker feilene i stedet for å stresse."
+      },
+      {
+        "question": "Tilfeldige brett eller ekte strukturer?",
+        "answer": "Begge. Tilfeldige skjerper ren gjenkalling, ekte strukturer bedrer overføringen."
+      },
+      {
+        "question": "Hva om nøyaktigheten stopper opp?",
+        "answer": "Bruk færre brikker i en uke, rett én feiltype og legg til brikker først når gjenkallingen er ren igjen."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bruk denne hvis du sliter med å huske trekkrekker."
+      },
+      {
+        "reason": "Balanser hukommelsen med et fornuftig antall oppgaver."
+      },
+      {
+        "reason": "Knytt brettminnet til vanlige mønstre."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Blindsjakktrening for nybegynnere",
+    "h1": "Blindsjakk for nybegynnere, ett steg om gangen",
+    "description": "Lær blindsjakk i små steg som bedrer visualiseringen uten å bli overveldende.",
+    "primaryKeyword": "blindsjakktrening",
+    "secondaryKeywords": [
+      "blindsjakk for nybegynnere",
+      "trene brettet i hodet",
+      "visualiseringsøvelser sjakk",
+      "regne uten å flytte brikker",
+      "konsentrasjonsøvelser sjakk"
+    ],
+    "painPoint": "Du mister brettet så snart du slutter å se på det.",
+    "ctaLabel": "Start blindtrening",
+    "quickAnswer": "Start med en enkel stilling. Husk den, se for deg ett trekk per side og sjekk. Prøv et helt blindparti først når stegene føles lette.",
+    "keyTakeaways": [
+      "Blindsjakk bygges steg for steg.",
+      "Å sjekke svaret betyr mer enn å prøve vanskeligere stillinger.",
+      "Blindøvelser for nybegynnere er visualiseringsøvelser med mindre hjelp fra brettet."
+    ],
+    "whoThisIsFor": [
+      "Spillere som vil visualisere bedre uten å starte med et helt blindparti.",
+      "Nybegynnere som mister ruter etter ett eller to tenkte trekk.",
+      "Alle som vil ha et tydeligere bilde av brettet i hodet."
+    ],
+    "timeToRead": "8 minutters lesing",
+    "introParagraphs": [
+      "Den største feilen er å prøve et helt blindparti for tidlig. Det gir som regel frustrasjon i stedet for framgang.",
+      "Ta ett steg om gangen: se brettet, husk det, se for deg et trekk, sjekk og reduser den visuelle hjelpen sakte."
+    ],
+    "startHereTitle": "Start her: en trygg vei mot blindsjakk",
+    "startHereSteps": [
+      "Husk en liten stilling og bygg den opp igjen før du ser for deg noen trekk.",
+      "Regn ett trekk per side uten å ta på brikkene.",
+      "Sjekk hvert avvik med én gang i stedet for å presse videre.",
+      "Spill en runde Memory Chess med litt kortere visningstid.",
+      "Legg til ett trekk til først når den nåværende varianten er tydelig."
+    ],
+    "drillSectionTitle": "Enkle blindsjakkøvelser",
+    "drillCards": [
+      {
+        "title": "Bygg opp før du trekker",
+        "description": "Ikke se for deg trekk før utgangsstillingen er helt stabil.",
+        "duration": "4 minutter",
+        "goal": "Bygge tydelig gjenkalling før du legger til trekk.",
+        "ctaLabel": "Bygg opp brettet først"
+      },
+      {
+        "title": "Ett trekk per side",
+        "description": "Se for deg et trekk for hvit og et svar for svart, og sjekk så det nye brettet.",
+        "duration": "5 minutter",
+        "goal": "Oppdatere stillingen uten å se på brettet.",
+        "ctaLabel": "Se for deg to trekk"
+      },
+      {
+        "title": "Kort visningstid",
+        "description": "Reduser visningstiden så du lærer å huske brettet raskere.",
+        "duration": "4 minutter",
+        "goal": "Forberede blindsjakk uten å skjule hele brettet.",
+        "ctaLabel": "Kort ned tiden"
+      }
+    ],
+    "comparisonTitle": "En tryggere måte å trene blindsjakk på",
+    "comparisonSummary": "Spør om du ser ett trekk mer tydelig enn før. Et helt blindparti trengs ikke ennå.",
+    "comparisonRows": [
+      {
+        "label": "Startpunkt",
+        "struggling": "Du hopper rett i fullt blindspill.",
+        "stronger": "Du husker utgangsstillingen før du legger til trekk."
+      },
+      {
+        "label": "Kontroll",
+        "struggling": "Du stoler på et uklart brett i hodet.",
+        "stronger": "Du sjekker hver tenkt oppdatering og retter med én gang."
+      },
+      {
+        "label": "Kvalitet på økten",
+        "struggling": "Du trener til konsentrasjonen ryker.",
+        "stronger": "Du stopper mens nøyaktigheten i hodet fortsatt er høy."
+      }
+    ],
+    "mistakes": [
+      "Prøve hele blindpartier for tidlig.",
+      "Hoppe over kontrollen og stole på feil brett i hodet.",
+      "Legge til trekk før korte varianter er tydelige.",
+      "Trene for lenge i én økt og brenne opp fokuset."
+    ],
+    "mistakesCallout": "Ikke hopp til en mye vanskeligere oppgave. Reduser hjelpen fra brettet litt om gangen.",
+    "planTitle": "7-dagers blindforberedelse",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Bare bygg opp stillinger fra hukommelsen og sjekk med én gang."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Legg til ett trekk per side og hold stillingene enkle."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Kort ned visningstiden i Memory Chess med samme antall brikker."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Prøv et par to-trekks rekker, men bare hvis arbeidet med ett trekk er nøyaktig."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Er blindsjakk nyttig for nybegynnere?",
+        "answer": "Ja, i korte kontrollerte øvelser. Det styrker visualiseringen som støtter vanlige partier."
+      },
+      {
+        "question": "Hvor ofte bør jeg gjøre blindøvelser?",
+        "answer": "To til fire korte økter i uka holder sammen med jevnlig spill og analyse."
+      },
+      {
+        "question": "Hva er den beste første blindøvelsen?",
+        "answer": "Bygge opp en enkel stilling fra hukommelsen og se for deg ett trekk per side før kontrollen."
+      },
+      {
+        "question": "Hvordan vet jeg at jeg blir bedre?",
+        "answer": "Du holder flere ruter riktig, oppdaterer brettet lenger og gjør færre synsfeil i vanlige partier."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Hold grunnlaget sterkt i stedet for å hoppe til avansert blindspill."
+      },
+      {
+        "reason": "Kombiner blindarbeid med øvelser som holder varianten."
+      },
+      {
+        "reason": "Bruk tydeligere visualisering til å sammenligne trekk."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Arbeidsminneøvelser for sjakkspillere",
+    "h1": "Arbeidsminneøvelser for nybegynnere",
+    "description": "Enkle øvelser for å huske trekkrekker, sammenligne valg og bestemme deg tydeligere.",
+    "primaryKeyword": "arbeidsminneøvelser",
+    "secondaryKeywords": [
+      "arbeidsminne i sjakk",
+      "regnetrening sjakk",
+      "konsentrasjonsøvelser sjakk",
+      "jevnere sjakkspill",
+      "mental utholdenhet i sjakk"
+    ],
+    "painPoint": "Du glemmer den første trekkrekken mens du tenker på en annen.",
+    "ctaLabel": "Start en hukommelsesrutine",
+    "quickAnswer": "Arbeidsminnet lar deg holde et par mulige trekkrekker i hodet. Hold antallet lavt og sjekk hver rekke tydelig.",
+    "keyTakeaways": [
+      "Tre tydelige valg er bedre enn seks forvirrende.",
+      "En kort oppsummering høyt hjelper deg å huske hver variant.",
+      "Tren på ekte stillinger og bruk ferdigheten i partier."
+    ],
+    "whoThisIsFor": [
+      "Spillere som mister den første varianten når de ser på en andre.",
+      "Nybegynnere som blander trekkrekkefølgen.",
+      "Alle som gjør flere taktiske feil når de er slitne."
+    ],
+    "timeToRead": "8 minutters lesing",
+    "introParagraphs": [
+      "Arbeidsminnet lar deg holde mulige trekk i hodet mens du sammenligner dem. I sjakk må du huske utgangsstillingen og én eller to korte varianter uten å blande dem.",
+      "Memory Chess hjelper deg å huske utgangsstillingen. Når det bildet er tydelig, blir det lettere å følge de neste trekkene."
+    ],
+    "startHereTitle": "Start med to korte trekkrekker",
+    "startHereSteps": [
+      "Velg én stilling og list opp tre kandidattrekk uten å ta på brettet.",
+      "Regn hver variant to halvtrekk og oppsummer utfallet i én setning.",
+      "Spill en gjenkallingsrunde i Memory Chess for å friske opp grunnstillingen.",
+      "Gå tilbake til stillingen og sammenlign de mulige rekkene på nytt.",
+      "Skriv én setning om hvor du mistet grepet om varianten."
+    ],
+    "drillSectionTitle": "Arbeidsminneøvelser for sjakk",
+    "drillCards": [
+      {
+        "title": "Oppsummer tre varianter",
+        "description": "Hold kort tre kandidattrekk og beskriv hver gren i én setning.",
+        "duration": "6 minutter",
+        "goal": "Holde hver rekke tydelig i stedet for å legge til flere.",
+        "ctaLabel": "Hold tre varianter"
+      },
+      {
+        "title": "Nullstill gjenkallingen",
+        "description": "Legg inn en runde Memory Chess mellom regneforsøkene så grunnstillingen holder seg stabil.",
+        "duration": "4 minutter",
+        "goal": "Huske utgangsstillingen før du følger trekk.",
+        "ctaLabel": "Nullstill brettet"
+      },
+      {
+        "title": "Sammenlign etter varianten",
+        "description": "Gå tilbake til utgangsstillingen og sammenlign grenene etter en kort pause.",
+        "duration": "5 minutter",
+        "goal": "Veksle mellom grunnstilling og varianter uten å blande dem.",
+        "ctaLabel": "Sammenlign valgene"
+      }
+    ],
+    "comparisonTitle": "Når du prøver å huske for mye",
+    "comparisonSummary": "Når hukommelsen er full, blir varianten uklar og trekkrekkefølgen blandes.",
+    "comparisonRows": [
+      {
+        "label": "Kandidattrekk",
+        "struggling": "Du prøver å holde for mange valg samtidig.",
+        "stronger": "Du holder færre varianter, men hver holder seg riktig lenger."
+      },
+      {
+        "label": "Trekkrekkefølge",
+        "struggling": "Grenene flyter sammen.",
+        "stronger": "Hver variant holdes atskilt og er lett å sammenligne."
+      },
+      {
+        "label": "Tretthet",
+        "struggling": "Kvaliteten på valgene faller sent i partiet.",
+        "stronger": "Du holder en enklere og tydeligere prosess når energien synker."
+      }
+    ],
+    "mistakes": [
+      "Prøve å huske for mange trekkrekker samtidig.",
+      "Hoppe over den korte oppsummeringen etter hver variant.",
+      "Bare løse oppgaver og aldri bruke ferdigheten i partier.",
+      "Fortsette selv om du er for sliten til å tenke klart."
+    ],
+    "mistakesCallout": "Ikke legg til flere varianter ennå. Hold få varianter tydelige før du forlenger dem.",
+    "planTitle": "7-dagers arbeidsminnebolk",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Bruk bare to trekkrekker og forklar hver av dem høyt."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Legg inn en Memory Chess-nullstilling mellom forsøkene så utgangsstillingen holder seg ren."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Legg til et tredje valg bare hvis de to første holder seg riktige."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Bruk rutinen i ett hurtigparti. Stopp i vanskelige øyeblikk og nevn de mulige trekkene tydelig."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Overføres arbeidsminneøvelser til sjakkspillet?",
+        "answer": "De kan det, særlig når de knyttes direkte til stillinger, det å holde varianter og analyse i stedet for generelle hjernespill."
+      },
+      {
+        "question": "Hvordan bør en nybegynner legge det opp?",
+        "answer": "Korte økter som kombinerer mulige trekk, brettminne og én ekte partistilling."
+      },
+      {
+        "question": "Hvordan måler jeg framgang enkelt?",
+        "answer": "Noter hvor mange rekker du klarer å holde og hvor ofte du mister tråden."
+      },
+      {
+        "question": "Erstatter det taktikktrening?",
+        "answer": "Nei. Det utfyller den ved å holde variantene tydeligere mens du løser og spiller."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bruk bedre arbeidsminne til å sammenligne mulige trekk."
+      },
+      {
+        "reason": "Styrk gjenkallingslaget under det å holde varianter."
+      },
+      {
+        "reason": "Bruk en enklere tankeprosess så arbeidsminnet ikke går til spille."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Slik slutter du å tabbe i sjakk",
+    "h1": "Slik slutter du å tabbe i sjakk",
+    "description": "Bruk en kort sikkerhetssjekk for å se trusler, beskytte brikker og tabbe mindre.",
+    "primaryKeyword": "slutte å tabbe i sjakk",
+    "secondaryKeywords": [
+      "forebygge tabber i sjakk",
+      "slutte å gi bort brikker",
+      "trusselsjekk i sjakk",
+      "sikkerhetsliste i sjakk",
+      "færre enkle feil i sjakk"
+    ],
+    "painPoint": "Du forstår ideene, men mister likevel brikker på enkle trusler.",
+    "ctaLabel": "Start en anti-tabbeøvelse",
+    "quickAnswer": "Sjekk motstanderens trusler før hvert trekk, se etter ubeskyttede brikker og forsikre deg om at trekket ditt er trygt. Hukommelsestrening hjelper deg å holde hele brettet i hodet.",
+    "keyTakeaways": [
+      "De fleste nybegynnertabber kommer av at en del av brettet overses.",
+      "Sikkerhetslisten må være kort nok til å overleve tidspress.",
+      "Spill om feilene dine til du raskt ser hva du overså."
+    ],
+    "whoThisIsFor": [
+      "Spillere som gang på gang går på taktikk i ett trekk.",
+      "Nybegynnere som føler seg dårligere i partier enn i oppgaver.",
+      "Alle som vil ha en rolig rutine til hvert trekk."
+    ],
+    "timeToRead": "8 minutters lesing",
+    "introParagraphs": [
+      "Mange tabber skjer fordi du trekker før du har sjekket hele stillingen. Du kan også miste oversikten over hvor en brikke er dekket.",
+      "En kort rutine erstatter panikk og gjetting. Bruk samme sjekker når stillingen skjerpes."
+    ],
+    "startHereTitle": "Start her: anti-tabbelisten",
+    "startHereSteps": [
+      "Spør hvilke sjakker, slag og trusler motstanderen har akkurat nå.",
+      "Finn hver ubeskyttet eller overbelastet brikke.",
+      "Først da sjekker du om trekket du planlegger er trygt.",
+      "Spill en kort runde Memory Chess før partiene for skarpere brikkeminne.",
+      "Etter hver tabbe skriver du det oversette signalet i én setning."
+    ],
+    "drillSectionTitle": "Enkle anti-tabbeøvelser",
+    "drillCards": [
+      {
+        "title": "Skann fra motstanderens side",
+        "description": "Start hver stilling med å sjekke motstanderens sterkeste trusler.",
+        "duration": "3 minutter",
+        "goal": "Tenke på motstanderens idé før din egen.",
+        "ctaLabel": "Skann fra andre siden"
+      },
+      {
+        "title": "Alarm for ubeskyttede brikker",
+        "description": "Nevn hver ubeskyttet eller overbelastet brikke før du trekker.",
+        "duration": "4 minutter",
+        "goal": "Fange de enkleste materielltapene tidlig.",
+        "ctaLabel": "Kjør alarmen"
+      },
+      {
+        "title": "Sløyfe for tabbeomspilling",
+        "description": "Spill om dine egne tabbestillinger til den oversette trusselen blir opplagt.",
+        "duration": "6 minutter",
+        "goal": "Lære av stillinger som faktisk kostet deg partier.",
+        "ctaLabel": "Spill om tabben din"
+      }
+    ],
+    "comparisonTitle": "Hva endrer seg når tabbene blir færre",
+    "comparisonSummary": "Partiene blir ikke plutselig feilfrie. De blir roligere, og tapene får forståelige grunner i stedet for én katastrofe.",
+    "comparisonRows": [
+      {
+        "label": "Når du trekker",
+        "struggling": "Du trekker så snart du ser en plan.",
+        "stronger": "Du trekker først etter en kort sikkerhetsrunde."
+      },
+      {
+        "label": "Trusselbevissthet",
+        "struggling": "Du ser taktikken etter at den har slått til.",
+        "stronger": "Du kjenner igjen den taktiske formen før du binder deg."
+      },
+      {
+        "label": "Gjennomgang etter partiet",
+        "struggling": "Tapet føles tilfeldig.",
+        "stronger": "Du kan raskt nevne akkurat hvilket signal du overså."
+      }
+    ],
+    "mistakes": [
+      "Prøve å fjerne tabber bare ved å spille saktere.",
+      "Pugge flere åpninger mens trusselsjekken fortsatt er svak.",
+      "Se på motorvarianter uten å peke ut det faktisk oversette signalet.",
+      "Overse at tidspress svekker gjenkallingen."
+    ],
+    "mistakesCallout": "Å spille saktere er ikke nok. Bruk samme korte sikkerhetssjekk hver gang.",
+    "planTitle": "7-dagers anti-tabbeomstart",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Bare skann fra motstanderens side og alarm for ubeskyttede brikker."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Legg til en runde Memory Chess før hver spilløkt for et renere bilde av stillingen."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minutter",
+        "detail": "Spill om tre ferske tabber og sorter det oversette signalet i hver av dem."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Bruk hele listen i hurtigpartier og følg tabber per parti i stedet for bare resultatet."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvorfor gir jeg stadig bort brikker?",
+        "answer": "Som regel fordi skanningen før trekket er ufullstendig. Du kan taktikken, men sjekker ikke hele brettet før du trekker."
+      },
+      {
+        "question": "Holder det å spille saktere?",
+        "answer": "Bare hvis du bruker tiden på en tydelig sikkerhetssjekk. Å stirre planløst på brettet hjelper ikke."
+      },
+      {
+        "question": "Hjelper hukommelsesøvelser virkelig mot tabber?",
+        "answer": "Ja. Renere brikkeminne gjør det lettere å se trusler mens stillingen endrer seg."
+      },
+      {
+        "question": "Hva bør jeg følge for å tabbe mindre?",
+        "answer": "Tabber per parti, oversette ubeskyttede brikker og om den oversette trusselen kom av dårlig skanning eller dårlig regning."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bygg en sterkere brettskanning for å forebygge tabber."
+      },
+      {
+        "reason": "Se hvorfor taktikken ryker når du følger brettet dårlig."
+      },
+      {
+        "reason": "Koble anti-tabbearbeidet til en komplett nybegynnerrutine."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Hvorfor oppgaveratingen ikke følger med i partier",
+    "h1": "Hvorfor oppgaveratingen din ikke følger med i partier",
+    "description": "Forstå hvorfor oppgaveferdighet føles annerledes enn ekte partier, og hvordan brettsyn, hukommelse og analyse tetter gapet.",
+    "primaryKeyword": "hvorfor oppgaverating ikke følger med i partier",
+    "secondaryKeywords": [
+      "oppgaverating mot sjakkrating",
+      "taktikk som ikke overføres",
+      "oppgaveferdighet i ekte partier",
+      "hvorfor er jeg bedre på oppgaver",
+      "brettsyn i sjakk"
+    ],
+    "painPoint": "Du løser oppgaver godt, men overser taktikk i ekte partier.",
+    "ctaLabel": "Tren for ekte partier",
+    "quickAnswer": "En oppgave sier at taktikken finnes. Et parti gjør det ikke. Du må merke faren, huske brettet og vite når du skal senke farten.",
+    "keyTakeaways": [
+      "En oppgave forteller at det finnes noe å løse.",
+      "I et parti må du finne det farlige øyeblikket selv.",
+      "Bedre brettsyn og hukommelse lar deg se taktikken tidligere."
+    ],
+    "whoThisIsFor": [
+      "Spillere med høy oppgaverating, men flat partirating.",
+      "Nybegynnere som ser taktikken etter partiet, ikke under.",
+      "Alle som ikke får brukt ideene fra oppgaver i ekte partier."
+    ],
+    "timeToRead": "8 minutters lesing",
+    "introParagraphs": [
+      "Dette er et vanlig nybegynnerproblem. Du løser oppgaver, men partiene inneholder fortsatt tapte brikker, oversette trusler og forhastede trekk.",
+      "Flere oppgaver løser det ikke alltid. Du må også merke når stillingen blir farlig og se for deg hva som skjer etter hvert valg."
+    ],
+    "startHereTitle": "Start med å koble oppgaver til partier",
+    "startHereSteps": [
+      "Bruk 2 minutter på å skanne brettet etter sjakker, slag og trusler før du løser oppgaver.",
+      "Legg til en runde Memory Chess så bildet av brettet holder seg stabilt under press.",
+      "Spør etter hver oppgave hvilket signal som burde fått deg til å senke farten i et parti.",
+      "Gå gjennom én fersk tabbe og sammenlign den med en lignende taktisk oppgave.",
+      "Spill minst ett hurtigparti per økt for å se om skanningen før trekket holder."
+    ],
+    "drillSectionTitle": "Øvelser som kobler oppgaver til partier",
+    "drillCards": [
+      {
+        "title": "Finn varselsignalet",
+        "description": "Let etter varselsignalet før du prøver å finne taktikken.",
+        "duration": "4 minutter",
+        "goal": "Merke farlige stillinger tidligere.",
+        "ctaLabel": "Tren signalet først"
+      },
+      {
+        "title": "Gjenkalling før regning",
+        "description": "Spill en rask runde Memory Chess før oppgavene så brettet føles tydeligere.",
+        "duration": "4 minutter",
+        "goal": "Koble mønsterarbeid til ekte spill.",
+        "ctaLabel": "Skjerp gjenkallingen først"
+      },
+      {
+        "title": "Spill om en partistilling",
+        "description": "Bygg opp et oversett taktisk øyeblikk fra ditt eget parti og løs det som en oppgave.",
+        "duration": "6 minutter",
+        "goal": "Få taktikktreningen til å ligne ekte stillinger igjen.",
+        "ctaLabel": "Spill om taktikken du overså"
+      }
+    ],
+    "comparisonTitle": "Oppgaver mot partier: hva endrer seg?",
+    "comparisonSummary": "Det taktiske trekket kan være identisk, men den mentale oppgaven er det ikke.",
+    "comparisonRows": [
+      {
+        "label": "Rammen rundt problemet",
+        "struggling": "Partiet sier ikke at det finnes taktikk.",
+        "stronger": "Du merker signalet om at spenningen nettopp endret seg."
+      },
+      {
+        "label": "Hvor tydelig brettet er",
+        "struggling": "Varianten blir uklar når flere brikker beveger seg.",
+        "stronger": "Du holder viktige ruter og forsvarere i minnet."
+      },
+      {
+        "label": "Tempo i valgene",
+        "struggling": "Du spiller i vanlig tempo når stillingen blir farlig.",
+        "stronger": "Du senker farten når sjakker, slag eller trusler dukker opp."
+      }
+    ],
+    "mistakes": [
+      "Løse oppgaver uten noe steg mot partier.",
+      "Anta at taktisk kunnskap alene hindrer tabber.",
+      "Aldri se på hvorfor en stilling ble farlig.",
+      "Se brettsyn som noe annet enn taktikk."
+    ],
+    "mistakesCallout": "Ikke bare legg til flere oppgaver. Tren også på å merke taktiske øyeblikk i dine egne partier.",
+    "planTitle": "7-dagers overføringsbolk",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "12 minutter",
+        "detail": "Legg til signaltenkningen før løsningen i hver oppgaveøkt."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Spill en kort runde Memory Chess før oppgaver eller hurtigsjakk."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minutter",
+        "detail": "Spill om tre oversette taktiske øyeblikk fra dine egne partier."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 til 20 minutter",
+        "detail": "Spill hurtigsjakk og stopp deg selv hver gang stillingen blir tvingende eller taktisk spent."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvorfor er jeg bedre på oppgaver enn i partier?",
+        "answer": "Fordi en oppgave allerede sier at det finnes taktikk å finne. Et ekte parti gjør det ikke."
+      },
+      {
+        "question": "Bør jeg slutte med oppgaver?",
+        "answer": "Nei. Behold dem, men legg til brettsyn, gjenkalling og omspilling av partistillinger så mønstrene overføres."
+      },
+      {
+        "question": "Hva er den beste overføringsøvelsen?",
+        "answer": "Å spille om en oversett taktikk fra ditt eget parti og løse den etter at du har bygd opp stillingen fra hukommelsen."
+      },
+      {
+        "question": "Hvordan måler jeg overføringen?",
+        "answer": "Se om tabber per parti og oversett enkel taktikk går ned, ikke bare om oppgaveratingen stiger."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bruk dette til å lage en kortere anti-tabbeliste for partier."
+      },
+      {
+        "reason": "Styrk skannevanen som gjør taktikken synlig."
+      },
+      {
+        "reason": "Velg et antall oppgaver som gir tid til å spille."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Slik ser du hele brettet i sjakk",
+    "h1": "Slik ser du hele sjakkbrettet",
+    "description": "Bruk en enkel skanning for å merke fjerne brikker, se trusler og unngå tunnelsyn.",
+    "primaryKeyword": "se hele brettet i sjakk",
+    "secondaryKeywords": [
+      "brettbevissthet i sjakk",
+      "unngå tunnelsyn i sjakk",
+      "se hele brettet",
+      "skanneøvelser sjakk",
+      "perifert brettsyn"
+    ],
+    "painPoint": "Du fokuserer på ett område og overser en trussel et annet sted.",
+    "ctaLabel": "Tren helhetssyn",
+    "quickAnswer": "Sjekk begge kongene, ubeskyttede brikker, sentrum og kantene før hvert trekk. Hukommelsestrening hjelper deg å holde mer av brettet i hodet.",
+    "keyTakeaways": [
+      "Tunnelsyn betyr at oppmerksomheten sitter fast i ett område.",
+      "Å sjekke kantbrikker er spesielt nyttig for nybegynnere.",
+      "Et tydelig minne av brettet gjør skanningen lettere."
+    ],
+    "whoThisIsFor": [
+      "Spillere som bare merker taktikk på én side av brettet.",
+      "Nybegynnere som overser løpere, tårn eller fjerne trusler.",
+      "Alle som føler seg trange i åpne stillinger."
+    ],
+    "timeToRead": "7 minutters lesing",
+    "introParagraphs": [
+      "Mange nybegynnere ser bare på brikkene nær trekket de planlegger. Da er det lett å overse fjerne løpere, tårn og trusler.",
+      "Du trenger ikke å stirre lenger på brettet. Bruk den samme enkle skanningen for å sjekke hvert viktig område."
+    ],
+    "startHereTitle": "Start her: utvid skanningen",
+    "startHereSteps": [
+      "Sjekk begge kongene og linjene som peker mot dem.",
+      "Se etter ubeskyttede brikker først i sentrum, så langs kantene.",
+      "Følg løpere og tårn langs hele linjen, ikke bare ruten du bryr deg om.",
+      "Spill en runde Memory Chess så hele brettet er lettere tilgjengelig i oppmerksomheten.",
+      "Spør før trekket hvilken del av brettet du ennå ikke har sett på."
+    ],
+    "drillSectionTitle": "Øvelser mot tunnelsyn",
+    "drillCards": [
+      {
+        "title": "Sveip over kantene",
+        "description": "Sjekk brikkene i hjørnene og langs kantene før hvert trekk.",
+        "duration": "3 minutter",
+        "goal": "Fange trusler utenfor området du fokuserer på.",
+        "ctaLabel": "Sveip kantene"
+      },
+      {
+        "title": "Følg siktlinjene på nytt",
+        "description": "Følg hver løper- og tårnlinje helt ut i stedet for bare å se på én målrute.",
+        "duration": "4 minutter",
+        "goal": "Dekke mer av brettet i hver skanning.",
+        "ctaLabel": "Følg hele linjer"
+      },
+      {
+        "title": "Gjenkalling av hele brettet",
+        "description": "Bruk Memory Chess med moderat antall brikker og beskriv så brettet sone for sone.",
+        "duration": "5 minutter",
+        "goal": "Huske mer av brettet på én gang.",
+        "ctaLabel": "Gjenkall sonevis"
+      }
+    ],
+    "comparisonTitle": "Tunnelsyn mot helhetssyn",
+    "comparisonSummary": "Du trenger ikke se like lenge overalt. Bare pass på at du ikke overser noe viktig.",
+    "comparisonRows": [
+      {
+        "label": "Oppmerksomhetens vei",
+        "struggling": "Du stirrer på én klynge brikker.",
+        "stronger": "Du går gjennom risikoområdene i samme rekkefølge."
+      },
+      {
+        "label": "Langtrekkende brikker",
+        "struggling": "Du glemmer løpere og tårn langt fra handlingen.",
+        "stronger": "Du følger hele linjene deres før du stoler på et trekk."
+      },
+      {
+        "label": "Soner på brettet",
+        "struggling": "Du hopper over siden som virker rolig.",
+        "stronger": "Du sjekker den rolige siden før du trekker."
+      }
+    ],
+    "mistakes": [
+      "Tro at helhetssyn betyr å se lenger i stedet for å skanne bedre.",
+      "Overse kantene fordi sentrum føles mer akutt.",
+      "Ikke følge linjene til langtrekkende brikker helt ut.",
+      "Prøve å skanne bredere før du husker brikkene tydelig."
+    ],
+    "mistakesCallout": "Ekstra tenketid hjelper ikke uten en tydelig skanning. Sjekk brettet i samme rekkefølge hver gang.",
+    "planTitle": "7-dagers plan for helhetsskanning",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Bare kongesjekker, ubeskyttede brikker og kantsveip."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Legg til full gjennomgang av løper- og tårnlinjer."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Bruk Memory Chess og gjenkall brettet sonevis i stedet for tilfeldig."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Ta skanningen med i hurtigpartier og noter hvilken sone som forårsaket bommen ved en tabbe."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvorfor overser jeg stadig brikker på andre siden?",
+        "answer": "Fordi oppmerksomheten er for lokal. En fast skannerekkefølge er bedre enn å håpe at du merker alt."
+      },
+      {
+        "question": "Hjelper Memory Chess på helhetssynet?",
+        "answer": "Ja. Det trener deg til å holde mer av brettet aktivt i minnet, ikke bare det taktiske brennpunktet."
+      },
+      {
+        "question": "Bør jeg sjekke kantene hvert trekk?",
+        "answer": "Ja, særlig som nybegynner. Mange billige tabber gjemmer seg i kantbrikker og lange linjer."
+      },
+      {
+        "question": "Hvordan vet jeg at skanningen blir bedre?",
+        "answer": "Du overser færre fjerne trusler og blir mindre overrasket av løpere, tårn og avdekkede angrep."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Kombiner helhetssyn med en sterkere sikkerhetsliste."
+      },
+      {
+        "reason": "Bedre brettet i hodet så bredere skanning blir lettere."
+      },
+      {
+        "reason": "Kjenn igjen ruter raskere så brede skanninger koster mindre."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Koordinattrening for raskere brettoversikt",
+    "h1": "Trening på sjakkoordinater for nybegynnere",
+    "description": "Lær rutenavnene raskere og gjør skanning, notasjon og visualisering enklere.",
+    "primaryKeyword": "koordinattrening sjakk",
+    "secondaryKeywords": [
+      "notasjonstrening sjakk",
+      "lære sjakkoordinater",
+      "kjenne igjen ruter raskere",
+      "bevissthet om rutene",
+      "øvelser i rutenavn"
+    ],
+    "painPoint": "Du bruker tid på å finne et rutenavn, eller blander ofte ruter.",
+    "ctaLabel": "Tren rutenavn",
+    "quickAnswer": "Koordinater er navnene på de 64 rutene. Å kunne dem gjør skanning, det å se trekk for seg og analyse enklere.",
+    "keyTakeaways": [
+      "Å kjenne igjen ruter raskt gjør skanningen lettere.",
+      "Tren koordinater med ekte stillinger.",
+      "For å starte holder det med de grunnleggende rutenavnene."
+    ],
+    "whoThisIsFor": [
+      "Nybegynnere som fortsatt teller linjer og rader sakte.",
+      "Spillere som vil skanne og visualisere raskere.",
+      "Alle som synes notasjon er forvirrende."
+    ],
+    "timeToRead": "7 minutters lesing",
+    "introParagraphs": [
+      "Koordinater er mer enn bøker og trekklister. Å kjenne igjen ruter raskt hjelper brettsyn, hukommelse og analyse.",
+      "Når du kan rutenavnene, blir brettet et tydelig kart i stedet for en samling vage områder."
+    ],
+    "startHereTitle": "Start med rutenavn på et ekte brett",
+    "startHereSteps": [
+      "Velg én linje eller rad og si rutenavnene høyt.",
+      "Si ruten til hver brikke mens du bygger opp en Memory Chess-stilling.",
+      "Ta en fersk stilling og nevn viktige angripere og forsvarere etter rute.",
+      "Tren løpere, tårn og springerhopp via koordinater, ikke bare med øynene.",
+      "Avslutt med en rask skanning der hver ubeskyttet brikke nevnes etter rute."
+    ],
+    "drillSectionTitle": "Koordinatøvelser som hjelper i spill",
+    "drillCards": [
+      {
+        "title": "Nevn brikke og rute",
+        "description": "Bygg opp et brett og nevn hver brikke med navn og rute.",
+        "duration": "4 minutter",
+        "goal": "Koble rutenavn til brikkene du må huske.",
+        "ctaLabel": "Nevn hver rute"
+      },
+      {
+        "title": "Nevn lange linjer",
+        "description": "Følg løper- og tårnlinjer og si rutene de virker på.",
+        "duration": "4 minutter",
+        "goal": "Gjøre koordinater nyttige under hele skanninger.",
+        "ctaLabel": "Følg linjer etter rute"
+      },
+      {
+        "title": "Kart over springerhopp",
+        "description": "Velg én springerrute og nevn raskt alle lovlige målruter.",
+        "duration": "3 minutter",
+        "goal": "Kjenne igjen springertrekk og målruter raskere.",
+        "ctaLabel": "Kartlegg hoppene"
+      }
+    ],
+    "comparisonTitle": "Treg mot rask rutegjenkjenning",
+    "comparisonSummary": "Koordinater bedrer ikke alt i sjakken din, men gjør flere ferdigheter enklere.",
+    "comparisonRows": [
+      {
+        "label": "Brettskanning",
+        "struggling": "Du kjenner formen, men ikke rutenavnene.",
+        "stronger": "Du peker ut trusler og forsvarere mer presist og raskere."
+      },
+      {
+        "label": "Visualisering",
+        "struggling": "Trekk du ser for deg føles vage.",
+        "stronger": "Stillingen som oppstår blir lettere å beskrive og holde."
+      },
+      {
+        "label": "Analyse",
+        "struggling": "Notatene etter partiet blir uklare.",
+        "stronger": "Du beskriver nøkkeløyeblikket tydelig nok til å studere det senere."
+      }
+    ],
+    "mistakes": [
+      "Trene rutenavn uten ekte stillinger.",
+      "Pugge notasjonsregler uten eksempler på brettet.",
+      "Overse linjene til langtrekkende brikker under treningen.",
+      "Droppe vanen så snart grunnleggende notasjon føles kjent."
+    ],
+    "mistakesCallout": "Ikke bare gjenta rutenavn. Bruk dem med ekte brikker og stillinger.",
+    "planTitle": "7-dagers koordinatoppvarming",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "8 minutter",
+        "detail": "Nevn hver brikke og rute mens du bygger opp en Memory Chess-stilling."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "10 minutter",
+        "detail": "Legg til navngiving av lange linjer for løpere og tårn."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "10 minutter",
+        "detail": "Tren kartet over springerhopp og flyt på sentrumsrutene."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "12 minutter",
+        "detail": "Bruk rutenavn i en full skanning, og analyser så én viktig stilling bare med rutenavn."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Betyr koordinater virkelig noe for nybegynnere?",
+        "answer": "Ja, når de gjør brettoversikt, visualisering og analyse raskere. Perfekt notasjon trengs ikke, men rask gjenkjenning hjelper."
+      },
+      {
+        "question": "Hva er den beste måten å lære koordinater på?",
+        "answer": "Lær rutenavn med ekte stillinger og brikker i stedet for bare å gjenta notasjon."
+      },
+      {
+        "question": "Hjelper det meg å tabbe mindre?",
+        "answer": "Indirekte, ja. Raskere rutegjenkjenning gjør skanninger og trusselsjekker mer presise."
+      },
+      {
+        "question": "Hvor lenge bør jeg trene koordinater?",
+        "answer": "Fem til ti fokuserte minutter holder når øvelsen henger sammen med ekte brettarbeid."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bruk koordinater til å støtte en bredere skanning."
+      },
+      {
+        "reason": "Gjør oppdateringene i hodet presise rute for rute."
+      },
+      {
+        "reason": "Bruk rutenavn til å forenkle tenkningen under press."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Daglig 20-minutters sjakkplan for nybegynnere",
+    "h1": "En daglig 20-minutters sjakkplan for nybegynnere",
+    "description": "Følg en enkel 20-minutters plan med brettarbeid, hukommelse, partier og kort gjennomgang.",
+    "primaryKeyword": "daglig 20-minutters sjakkplan",
+    "secondaryKeywords": [
+      "daglig sjakkrutine for nybegynnere",
+      "kort studieplan i sjakk",
+      "bli bedre på 20 minutter om dagen",
+      "treningsopplegg for nybegynnere",
+      "rutine med oppgaver og analyse"
+    ],
+    "painPoint": "Du vil bli bedre, men de fleste sjakkplaner tar for mye tid.",
+    "ctaLabel": "Start 20-minutters planen",
+    "quickAnswer": "Gi noen minutter hver til brettfølelse, hukommelse, taktikk og gjennomgang. Hold rutinen kort nok til å klare den selv når du er sliten.",
+    "keyTakeaways": [
+      "Å trene ofte betyr mer enn å trene lenge.",
+      "Bruk både øvelser og ekte stillinger.",
+      "En kort gjennomgang hjelper morgendagens trening."
+    ],
+    "whoThisIsFor": [
+      "Nybegynnere med lite tid, men jevn motivasjon.",
+      "Spillere som gir opp for krevende planer.",
+      "Alle som vil ha en daglig rutine de kan gjenta."
+    ],
+    "timeToRead": "7 minutters lesing",
+    "introParagraphs": [
+      "Mange studieplaner fungerer bare med mye fritid. En brukbar plan må fungere også på en travel dag.",
+      "Denne 20-minutters rutinen beholder én øvelse, én ekte stilling og én kort gjennomgang."
+    ],
+    "startHereTitle": "Din 20-minutters sjakkrutine",
+    "startHereSteps": [
+      "Bruk 4 minutter på en øvelse i brettfølelse eller gjenkalling.",
+      "Bruk 6 minutter på en runde Memory Chess med samme innstillinger hele uka.",
+      "Bruk 6 minutter på taktikk eller en stilling fra et ekte parti.",
+      "Bruk 4 minutter på å skrive hva som gikk galt i dag og hva som holdt.",
+      "Behold strukturen i minst 7 dager før du justerer."
+    ],
+    "drillSectionTitle": "Øvelser som får plass i en kort plan",
+    "drillCards": [
+      {
+        "title": "Varm opp med gjenkalling",
+        "description": "Bruk en kort runde Memory Chess som anker for hele økten.",
+        "duration": "6 minutter",
+        "goal": "Starte hver økt med samme hukommelsesoppvarming.",
+        "ctaLabel": "Start oppvarmingen"
+      },
+      {
+        "title": "Rask trusselsjekk",
+        "description": "Skann en stilling etter sjakker, slag, trusler og ubeskyttede brikker.",
+        "duration": "4 minutter",
+        "goal": "Bedre overføringen til partier nesten uten tidsbruk.",
+        "ctaLabel": "Gjør trusselsjekken"
+      },
+      {
+        "title": "Notatrunde",
+        "description": "Skriv én setning om hvilken type feil du gjorde i dag.",
+        "duration": "4 minutter",
+        "goal": "Bruke dagens lærdom i morgen.",
+        "ctaLabel": "Skriv én lærdom"
+      }
+    ],
+    "comparisonTitle": "En rutine du faktisk holder",
+    "comparisonSummary": "Den beste rutinen er den du kan gjenta i en vanlig uke.",
+    "comparisonRows": [
+      {
+        "label": "Daglig belastning",
+        "struggling": "Du prøver for mange læringsformer samtidig.",
+        "stronger": "Du gjentar en kompakt sløyfe som dekker grunnlaget hver dag."
+      },
+      {
+        "label": "Overføring",
+        "struggling": "Du bare ser eller leser uten å trene.",
+        "stronger": "Hver økt har en øvelse du bruker i partier."
+      },
+      {
+        "label": "Gjennomgang",
+        "struggling": "Feilene forsvinner fordi ingenting skrives ned.",
+        "stronger": "Hver dag slutter med et notat til i morgen."
+      }
+    ],
+    "mistakes": [
+      "Kopiere avanserte planer du ikke klarer å holde.",
+      "Bruke alle 20 minutter på passivt stoff.",
+      "Bytte rutine annenhver dag.",
+      "Hoppe over gjennomgangen fordi den virker liten."
+    ],
+    "mistakesCallout": "Ikke gjør planen større. Gjør den lett nok til å gjenta.",
+    "planTitle": "20-minutters rutine i 7 dager",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 3",
+        "duration": "20 minutter",
+        "detail": "Behold samme innstillinger i Memory Chess og samme sjekkform for konsistens."
+      },
+      {
+        "label": "Dag 4",
+        "duration": "20 minutter",
+        "detail": "Les notatene dine og behold bare ett forbedringspunkt for de neste tre dagene."
+      },
+      {
+        "label": "Dag 5 til 6",
+        "duration": "20 minutter",
+        "detail": "Gjenta nøyaktig samme struktur uten ekstra variasjon."
+      },
+      {
+        "label": "Dag 7",
+        "duration": "20 minutter",
+        "detail": "Sjekk om tabber eller treffsikkerhet ble bedre, og gjør bare én justering til neste uke."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Holder 20 minutters trening?",
+        "answer": "Ja, hvis den er jevn og inneholder øvelser som overføres rett til partier, ikke bare passiv læring."
+      },
+      {
+        "question": "Bør jeg bruke alle 20 minutter på taktikk?",
+        "answer": "Som regel ikke. En blanding av brettklarhet, taktisk overføring og kort gjennomgang virker bedre for nybegynnere."
+      },
+      {
+        "question": "Hvor lenge bør jeg holde samme plan?",
+        "answer": "Minst en uke. Stadige bytter gjør framgangen umulig å lese."
+      },
+      {
+        "question": "Hva bør jeg følge med på?",
+        "answer": "Tabber per parti, treffsikkerhet i gjenkallingen og feiltypen som går oftest igjen."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Se hvor denne korte rutinen passer inn i en lengre plan."
+      },
+      {
+        "reason": "Balanser taktisk arbeid og brettklarhet."
+      },
+      {
+        "reason": "Hold gjennomgangen enkel og nyttig."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Slik analyserer nybegynnere sine egne partier",
+    "h1": "Slik analyserer nybegynnere sine egne sjakkpartier",
+    "description": "Gå gjennom partiene dine, forstå feilene og velg én tydelig ting å trene på.",
+    "primaryKeyword": "analysere sjakkpartier som nybegynner",
+    "secondaryKeywords": [
+      "partianalyse for nybegynnere",
+      "gå gjennom egne partier",
+      "selvanalyse i sjakk",
+      "analysere tabber",
+      "rutine etter partiet"
+    ],
+    "painPoint": "Analysen din går for fort, blir rotete eller full av motorvarianter.",
+    "ctaLabel": "Analyser neste parti",
+    "quickAnswer": "Finn hvor partiet snudde, sett navn på feiltypen og velg én rettelse. Se på motoren først etter at du har vurdert stillingen selv.",
+    "keyTakeaways": [
+      "Avslutt hver analyse med en handling, ikke en lang liste med motortrekk.",
+      "Å navngi feiltypen hjelper deg å velge øvelse.",
+      "Prøv å bygge opp nøkkelstillingen fra hukommelsen."
+    ],
+    "whoThisIsFor": [
+      "Spillere som går gjennom partier, men ikke vet hva som skjer videre.",
+      "Nybegynnere som ser vurderingen hoppe uten å forstå hvorfor.",
+      "Alle som vil ha en enklere vane etter partiet."
+    ],
+    "timeToRead": "7 minutters lesing",
+    "introParagraphs": [
+      "Start med ett spørsmål: hvilken feil endret partiet? Motorens vurdering alene sier ikke hva du bør trene på.",
+      "Bygg opp nøkkelstillingen, sett navn på feilen og velg morgendagens øvelse ut fra det."
+    ],
+    "startHereTitle": "Start her: analysesløyfen for nybegynnere",
+    "startHereSteps": [
+      "Finn det første øyeblikket der stillingen endret seg mye.",
+      "Bygg opp den stillingen fra hukommelsen før du sjekker motoren.",
+      "Klassifiser feilen som syn, hukommelse, regning eller tidsbruk.",
+      "Spør hvilket signal som burde fått deg til å senke farten.",
+      "Gjør svaret om til en øvelse for neste økt."
+    ],
+    "drillSectionTitle": "Enkle analyseøvelser",
+    "drillCards": [
+      {
+        "title": "Bygg opp nøkkelstillingen",
+        "description": "Bygg opp stillingen for hovedtabben fra hukommelsen før du sjekker den.",
+        "duration": "5 minutter",
+        "goal": "Huske stillingen før du ser svaret.",
+        "ctaLabel": "Bygg opp øyeblikket"
+      },
+      {
+        "title": "Merk feiltypen",
+        "description": "Merk hver store feil som syn, hukommelse, regning eller tidsnød.",
+        "duration": "3 minutter",
+        "goal": "Vite hva du bør trene på videre.",
+        "ctaLabel": "Merk feiltypen"
+      },
+      {
+        "title": "Analyse med én rettelse",
+        "description": "Avslutt analysen med én tydelig rettelse til i morgen.",
+        "duration": "2 minutter",
+        "goal": "Slutte med et nyttig neste steg.",
+        "ctaLabel": "Velg én rettelse"
+      }
+    ],
+    "comparisonTitle": "Nyttig mot unyttig analyse",
+    "comparisonSummary": "Du trenger ikke studere hvert trekk. Finn den tydeligste lærdommen til neste øvelse.",
+    "comparisonRows": [
+      {
+        "label": "Bruk av motoren",
+        "struggling": "Du åpner motoren med én gang.",
+        "stronger": "Du stiller din egen diagnose før du sjekker."
+      },
+      {
+        "label": "Resultat",
+        "struggling": "Du ender med mange kommentarer og ingen handling.",
+        "stronger": "Du ender med en øvelse eller en justert liste."
+      },
+      {
+        "label": "Hukommelse",
+        "struggling": "Stillingen forsvinner rett etter partiet.",
+        "stronger": "Du bygger den opp igjen og ser feilen tydeligere."
+      }
+    ],
+    "mistakes": [
+      "Analysere bare med motorvarianter uten egen diagnose.",
+      "Prøve å analysere hvert trekk like dypt.",
+      "Ikke navngi feiltypen.",
+      "Avslutte analysen uten å velge neste øvelse."
+    ],
+    "mistakesCallout": "Ikke gå gjennom hver motorvariant. Sett navn på feilen og tren rettelsen.",
+    "planTitle": "7-dagers analysevane",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Gå gjennom ett parti og finn bare det første store vendepunktet."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Bygg opp den stillingen fra hukommelsen før du sjekker motoren."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Knytt hver store feil til en type og tell hvilken som går oftest igjen."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Velg første øvelse i neste økt ut fra den vanligste feiltypen."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Bør nybegynnere bruke motor?",
+        "answer": "Ja, men etter eget diagnoseforsøk. Ellers blir analysen passiv."
+      },
+      {
+        "question": "Hvor mange feil bør jeg gå gjennom etter et parti?",
+        "answer": "Ett til tre store vendepunkter holder for de fleste nybegynnere."
+      },
+      {
+        "question": "Hva bør jeg notere etter analysen?",
+        "answer": "Feiltype, oversett signal og en øvelse eller listejustering til neste gang."
+      },
+      {
+        "question": "Hvordan hjelper Memory Chess analysen?",
+        "answer": "Det hjelper deg å bygge opp viktige stillinger, så analysen blir mer presis."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sett analysen inn i en rutine som ikke overvelder."
+      },
+      {
+        "reason": "Gjør analyseresultatene om til anti-tabbeøvelser."
+      },
+      {
+        "reason": "Husk og bygg opp nøkkeløyeblikk etter partiet."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Hvor mange sjakkoppgaver bør en nybegynner løse daglig?",
+    "h1": "Hvor mange sjakkoppgaver bør en nybegynner løse daglig?",
+    "description": "Velg et daglig antall oppgaver som bedrer taktikken og gir tid til hukommelse, partier og analyse.",
+    "primaryKeyword": "hvor mange sjakkoppgaver per dag",
+    "secondaryKeywords": [
+      "daglig antall oppgaver",
+      "oppgaverutine for nybegynnere",
+      "hvor mye taktikk per dag",
+      "for mange sjakkoppgaver",
+      "taktikkmengde for nybegynnere"
+    ],
+    "painPoint": "Du løser mange oppgaver, men vet ikke om de hjelper i partiene.",
+    "ctaLabel": "Balanser oppgaver og spill",
+    "quickAnswer": "For de fleste nybegynnere holder en kort daglig økt. Stopp mens du tenker klart, og hold av tid til partier, hukommelse og analyse.",
+    "keyTakeaways": [
+      "Kvaliteten på oppgavene betyr mer enn antallet.",
+      "For mange oppgaver tar tid fra partier og analyse.",
+      "Din ideelle mengde bør gi tid til å spille eller analysere."
+    ],
+    "whoThisIsFor": [
+      "Spillere som har oppgaver som hele studieplanen.",
+      "Nybegynnere som vil ha en tydelig oppgaverutine.",
+      "Alle som vil balansere oppgaver og spilling."
+    ],
+    "timeToRead": "7 minutters lesing",
+    "introParagraphs": [
+      "Det finnes ikke ett perfekt tall for alle. For få oppgaver bremser mønsterlæringen, for mange gir ikke tid til annet nyttig.",
+      "Løs nok til å holde deg skjerpet, og bruk resten av tiden på brettminne, partier og analyse."
+    ],
+    "startHereTitle": "Velg en fornuftig daglig mengde",
+    "startHereSteps": [
+      "Bestem om oppgavene er oppvarming, hovedbolk eller overføringssjekk.",
+      "Behold en kort runde Memory Chess før eller etter for brettklarhet.",
+      "Stopp når svarene blir forhastede i stedet for å jage et større tall.",
+      "Bygg opp ett oversett taktisk øyeblikk fra et ekte parti hver dag.",
+      "Endre mengden først når du har sjekket om feilene i partiene endrer seg."
+    ],
+    "drillSectionTitle": "Øvelser som gjør oppgavene mer nyttige",
+    "drillCards": [
+      {
+        "title": "Oppvarming pluss gjenkalling",
+        "description": "Kombiner en kort gjenkallingsøvelse med en moderat oppgavebolk i stedet for å starte kaldt.",
+        "duration": "10 minutter",
+        "goal": "Koble oppgaveløsing til ekte spill.",
+        "ctaLabel": "Legg til gjenkalling"
+      },
+      {
+        "title": "Signalsjekk etter hver oppgave",
+        "description": "Spør hvilket varselsignal som gjorde taktikken mulig før du ser løsningen.",
+        "duration": "5 minutter",
+        "goal": "Merke hvorfor en stilling inneholder taktikk.",
+        "ctaLabel": "Sjekk signalet"
+      },
+      {
+        "title": "Bygg opp en partitaktikk",
+        "description": "Gjør en oversett partitaktikk om til en oppgave du løser etter å ha bygd opp stillingen.",
+        "duration": "5 minutter",
+        "goal": "Bruke taktikk fra dine egne partier.",
+        "ctaLabel": "Bygg opp taktikken"
+      }
+    ],
+    "comparisonTitle": "For få, for mange og akkurat passe",
+    "comparisonSummary": "Riktig mengde holder taktikken skarp og gir likevel tid til å spille.",
+    "comparisonRows": [
+      {
+        "label": "Mønstergjenkjenning",
+        "struggling": "For lite trening gjør vanlig taktikk fremmed.",
+        "stronger": "En moderat daglig bolk holder mønstrene ferske."
+      },
+      {
+        "label": "Overføring",
+        "struggling": "For mange oppgaver gir ikke tid til brettfølelse eller analyse.",
+        "stronger": "Rutinen din beholder gjenkalling og arbeid med ekte stillinger."
+      },
+      {
+        "label": "Tretthet",
+        "struggling": "Senere oppgaver blir forhastet gjetting.",
+        "stronger": "Du stopper mens valgene fortsatt er rene."
+      }
+    ],
+    "mistakes": [
+      "Bruke antall oppgaver som eneste mål på kvalitet.",
+      "Løse taktikk uten noen overføring til partier.",
+      "Fortsette lenge etter at fokuset har falt.",
+      "Presse ut analyse og brettfølelse."
+    ],
+    "mistakesCallout": "Flere oppgaver er ikke alltid bedre. Sjekk om de hjelper i de ekte partiene dine.",
+    "planTitle": "7-dagers balanseplan",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "15 minutter",
+        "detail": "Bruk en liten oppgavebolk og legg en kort gjenkallingsøvelse foran."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "15 minutter",
+        "detail": "Legg til en signalsjekk etter hver oppgave for å se hvorfor taktikken var der."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "15 minutter",
+        "detail": "Bygg opp en oversett partitaktikk og sammenlign med hvordan du gjør det i oppgaver."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 til 20 minutter",
+        "detail": "Endre mengden bare hvis svarene holder seg nøye og det fortsatt er tid til å spille."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvor mange oppgaver per dag holder for en nybegynner?",
+        "answer": "Nok til at vanlig taktikk føles kjent, og som gir tid til hukommelse og partier. For mange holder en kort daglig økt."
+      },
+      {
+        "question": "Kan for mange oppgaver skade?",
+        "answer": "Indirekte, ja. De kan presse ut brettfølelse, gjenkalling og analyse som trengs for ekte overføring."
+      },
+      {
+        "question": "Oppgaver før eller etter partier?",
+        "answer": "Begge fungerer, men en liten oppvarming pluss et overføringssteg etterpå fungerer ofte godt."
+      },
+      {
+        "question": "Hva bør jeg følge med på?",
+        "answer": "Om tabber og oversett enkel taktikk går ned, ikke bare hvor mange oppgaver du løste."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Forstå hvorfor suksess i oppgaver alene ikke holder."
+      },
+      {
+        "reason": "Sett oppgavene inn i en kort og balansert rutine."
+      },
+      {
+        "reason": "Lær vanlige mønstre i stedet for å øke antallet."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Øvelser i mønstergjenkjenning i sjakk",
+    "h1": "Øvelser i mønstergjenkjenning for nybegynnere",
+    "description": "Bruk enkle øvelser for å se vanlige sjakkmønstre og finne nyttige ideer raskere.",
+    "primaryKeyword": "øvelser mønstergjenkjenning sjakk",
+    "secondaryKeywords": [
+      "mønstergjenkjenning i sjakk",
+      "trene taktiske motiver",
+      "øvelser i taktiske mønstre",
+      "sjakkmønstre for nybegynnere",
+      "huske sjakkmotiver"
+    ],
+    "painPoint": "Hver stilling føles ny, så du ser taktiske ideer for sent.",
+    "ctaLabel": "Tren mønstre",
+    "quickAnswer": "Et mønster er en kjent plassering av brikker og ruter. Gjenta samme type mønster til du raskt ser ideen bak.",
+    "keyTakeaways": [
+      "Et mønster rommer både formen på brettet og ideen den skaper.",
+      "Brettminnet hjelper deg å se mønstre under press.",
+      "Gjenta noen vanlige mønstre før du legger til mange nye."
+    ],
+    "whoThisIsFor": [
+      "Spillere som løser taktikk, men ikke ser de samme formene i partier.",
+      "Nybegynnere som vil ha mer struktur enn tilfeldige oppgaver.",
+      "Alle som fortsatt synes stillinger ser rotete ut."
+    ],
+    "timeToRead": "7 minutters lesing",
+    "introParagraphs": [
+      "Mønstergjenkjenning gjør en stilling kjent. En form på brettet kan peke mot gaffel, binding, en fanget brikke eller en svak rute før du begynner å regne.",
+      "Start med en liten gruppe vanlige mønstre. Bygg opp hver stilling fra hukommelsen for å huske brikkene og rutene som bærer ideen."
+    ],
+    "startHereTitle": "Start med ett mønster om gangen",
+    "startHereSteps": [
+      "Velg én mønstertype, for eksempel gafler, bindinger eller angrep på ubeskyttede brikker.",
+      "Studer formen og bygg den opp fra hukommelsen, ikke bare fra et stillestående diagram.",
+      "Nevn rutene og forsvarerne som bærer mønsteret.",
+      "Spill en runde Memory Chess for å feste ren gjenkalling.",
+      "Gå gjennom et ferskt parti og finn hvor et lignende mønster dukket opp eller manglet."
+    ],
+    "drillSectionTitle": "Enkle øvelser i mønstergjenkjenning",
+    "drillCards": [
+      {
+        "title": "Bygg opp et mønster",
+        "description": "Bygg opp et sjakkmønster fra hukommelsen og nevn nøkkelbrikkene og rutene.",
+        "duration": "5 minutter",
+        "goal": "Koble mønsteret til et tydelig brettminne.",
+        "ctaLabel": "Bygg opp mønsteret"
+      },
+      {
+        "title": "Gjenta én familie",
+        "description": "Gjenta flere eksempler på samme mønster før du bytter type.",
+        "duration": "5 minutter",
+        "goal": "Gjøre formen på brettet kjent.",
+        "ctaLabel": "Gjenta én familie"
+      },
+      {
+        "title": "Finn det i egne partier",
+        "description": "Gå gjennom et ferskt parti og finn hvor det samme mønsteret dukket opp.",
+        "duration": "5 minutter",
+        "goal": "Koble mønsterarbeid til ekte stillinger.",
+        "ctaLabel": "Let i dine partier"
+      }
+    ],
+    "comparisonTitle": "Tilfeldig taktikk mot ekte mønstergjenkjenning",
+    "comparisonSummary": "Mønstre hjelper når du merker dem før du begynner å regne langt.",
+    "comparisonRows": [
+      {
+        "label": "Struktur i treningen",
+        "struggling": "Du hopper stadig mellom mønstre uten sammenheng.",
+        "stronger": "Du gjentar én mønstertype til den føles kjent."
+      },
+      {
+        "label": "Brettminne",
+        "struggling": "Du kan ideen, men ikke rutene som bærer den.",
+        "stronger": "Du husker detaljene som får mønsteret til å virke."
+      },
+      {
+        "label": "Ekte partier",
+        "struggling": "Mønstrene blir værende i oppgavene.",
+        "stronger": "Du merker de tidlige tegnene i et pågående parti."
+      }
+    ],
+    "mistakes": [
+      "Bare lære navnet på mønsteret uten å forstå formen.",
+      "Bytte mønstertype for ofte.",
+      "Overse rutene og forsvarerne som bærer mønsteret.",
+      "Hoppe over partianalysen etter mønsterarbeidet."
+    ],
+    "mistakesCallout": "Ikke legg til variasjon for raskt. Gjenta én mønstertype til den føles kjent.",
+    "planTitle": "7-dagers mønsterplan",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Velg én mønstertype og bygg opp flere eksempler fra hukommelsen."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Legg til rutenavn og telling av forsvarere i hvert eksempel."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Spill en runde Memory Chess før mønsterarbeidet så brettet blir tydeligere."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Let etter samme mønster i de siste partiene og noter hvor det dukket opp eller nesten dukket opp."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hva er mønstergjenkjenning i sjakk?",
+        "answer": "Å se en kjent form på brettet og raskt huske ideen som som regel virker der."
+      },
+      {
+        "question": "Hvordan trener nybegynnere mønstergjenkjenning?",
+        "answer": "Ved å gjenta et lite sett mønstre, bygge opp stillinger fra hukommelsen og lete etter dem i ekte partier."
+      },
+      {
+        "question": "Holder oppgaver for mønstre?",
+        "answer": "Ikke alltid. De hjelper, men å gjenta samme type og analysere partier gjør dem virkelig brukbare."
+      },
+      {
+        "question": "Hvorfor kombinere Memory Chess med mønsterarbeid?",
+        "answer": "Fordi det er lettere å gjenkjenne mønstre når hele brettet holder seg tydelig i minnet."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bygg et sterkere hukommelseslag for mønsterlæring."
+      },
+      {
+        "reason": "Balanser mønsterarbeid med et fornuftig antall oppgaver."
+      },
+      {
+        "reason": "Bruk mønstrene du har studert i ekte partier."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Regneøvelser i sjakk for nybegynnere",
+    "h1": "Regneøvelser i sjakk for nybegynnere",
+    "description": "Enkle øvelser for å sammenligne trekk og følge korte varianter uten å miste tråden.",
+    "primaryKeyword": "regneøvelser sjakk",
+    "secondaryKeywords": [
+      "sjakkregning for nybegynnere",
+      "regne trekk framover",
+      "øvelser for å holde varianten",
+      "trene kandidattrekk",
+      "visualisering og regning"
+    ],
+    "painPoint": "Du begynner å regne og blander snart trekkene eller mister stillingen.",
+    "ctaLabel": "Tren ren regning",
+    "quickAnswer": "Sammenlign bare ett eller to mulige trekk i starten. Hold brettet tydelig i hodet og sjekk med én gang.",
+    "keyTakeaways": [
+      "To tydelige varianter er bedre enn fem rotete.",
+      "Tydelig visualisering gir ren regning.",
+      "Sjekk med én gang etter hver øvelse."
+    ],
+    "whoThisIsFor": [
+      "Spillere som vet at de bør regne, men mister varianten raskt.",
+      "Nybegynnere som trekker på følelse i skarpe stillinger.",
+      "Alle som vil bruke hukommelsestrening i ekte valg."
+    ],
+    "timeToRead": "7 minutters lesing",
+    "introParagraphs": [
+      "Regning er rett og slett å spørre: «Hvis jeg trekker hit, hva skjer da?» Det vanskelige er å holde brettet tydelig.",
+      "Brettminne og visualisering gjør regningen enklere. Tren dem sammen, ikke hver for seg."
+    ],
+    "startHereTitle": "Start med to mulige trekk",
+    "startHereSteps": [
+      "Velg høyst to kandidattrekk fra en stilling.",
+      "Se for deg en variant på to halvtrekk og oppsummer den i én setning.",
+      "Spill en runde Memory Chess så grunnbrettet holder seg skarpt.",
+      "Gå tilbake til utgangsstillingen og sammenlign de to variantene i ro.",
+      "Sjekk med én gang og si om feilen kom fra bildet av brettet eller fra trekkrekkefølgen."
+    ],
+    "drillSectionTitle": "Enkle regneøvelser",
+    "drillCards": [
+      {
+        "title": "Sammenlign to kandidater",
+        "description": "Hold to fornuftige trekk og sammenlign de korte taktiske følgene.",
+        "duration": "6 minutter",
+        "goal": "Sammenligne trekk uten å måtte huske for mye.",
+        "ctaLabel": "Sammenlign to varianter"
+      },
+      {
+        "title": "Husk først, regn så",
+        "description": "Ta en kort gjenkallingsrunde før variantarbeidet for et renere brett.",
+        "duration": "4 minutter",
+        "goal": "Holde brettet før du følger en rekke.",
+        "ctaLabel": "Husk før regningen"
+      },
+      {
+        "title": "Variant i én setning",
+        "description": "Oppsummer grenen i én setning før du sjekker.",
+        "duration": "4 minutter",
+        "goal": "Holde rekken tydelig og lett å forklare.",
+        "ctaLabel": "Oppsummer grenen"
+      }
+    ],
+    "comparisonTitle": "Rotete mot ren regning",
+    "comparisonSummary": "Ikke jag lange varianter ennå. Gjør de korte nøyaktige først.",
+    "comparisonRows": [
+      {
+        "label": "Kandidattrekk",
+        "struggling": "Du vurderer for mange trekk samtidig.",
+        "stronger": "Du sammenligner et par fornuftige trekk."
+      },
+      {
+        "label": "Bildet av brettet",
+        "struggling": "Stillingen som oppstår blir uklar fort.",
+        "stronger": "Du holder nøkkelruter og forsvarere stabilt i minnet."
+      },
+      {
+        "label": "Kontroll",
+        "struggling": "Du vet ikke hvorfor varianten falt sammen.",
+        "stronger": "Du ser om feilen kom fra hukommelse, trekkrekkefølge eller vurdering."
+      }
+    ],
+    "mistakes": [
+      "Prøve å regne for mange grener samtidig.",
+      "Hoppe over valget av kandidater og regne alt.",
+      "Ikke sjekke rett etter varianten.",
+      "Overse et svakt brettminne."
+    ],
+    "mistakesCallout": "Ikke regn langt ennå. En tydelig to-trekks variant er mer nyttig enn en lang og rotete.",
+    "planTitle": "7-dagers regneplan",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Bare sammenligning av to kandidater med kontroll med én gang."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Legg til en runde Memory Chess før regnearbeidet."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Oppsummer hver gren i én setning før du sjekker."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Ta prosessen med i hurtigpartier: stopp i skarpe øyeblikk og hold få kandidater."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hvordan bedrer en nybegynner regningen?",
+        "answer": "Færre kandidater, rask kontroll og bedre visualisering og hukommelse under variantarbeidet."
+      },
+      {
+        "question": "Bør jeg regne lenger fram?",
+        "answer": "Først når dagens dybde er pålitelig. Nøyaktighet slår ambisjon."
+      },
+      {
+        "question": "Hvorfor faller variantene mine sammen?",
+        "answer": "Ofte fordi bildet av brettet ikke er stabilt nok, eller fordi du holder for mange kandidater samtidig."
+      },
+      {
+        "question": "Hjelper Memory Chess på regningen?",
+        "answer": "Ja. Bedre gjenkalling gjør det mye lettere å holde stillingene som oppstår mens du regner."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Styrk laget som holder variantene under regningen."
+      },
+      {
+        "reason": "Se brettet tydeligere før du forlenger variantene."
+      },
+      {
+        "reason": "Bruk en enklere valgprosess for renere regning."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Slik tenker nybegynnere i sjakk",
+    "h1": "Slik tenker nybegynnere i sjakk",
+    "description": "Bruk en enkel prosess ved hvert trekk for å sjekke trusler, sammenligne valg og styre tiden.",
+    "primaryKeyword": "hvordan tenke i sjakk",
+    "secondaryKeywords": [
+      "tankeprosess for nybegynnere",
+      "hva bør man tenke på i sjakk",
+      "valg i sjakk",
+      "sjekkliste før trekket",
+      "enkel tankeprosess"
+    ],
+    "painPoint": "Du trekker for fort eller tenker for lenge, og er likevel usikker.",
+    "ctaLabel": "Tren en enkel trekkprosess",
+    "quickAnswer": "Bruk samme korte prosess ved hvert trekk: sjekk motstanderens trusler, velg ett til tre trekk og forsikre deg om at valget er trygt.",
+    "keyTakeaways": [
+      "En kort prosess er lettere å bruke enn en lang liste.",
+      "Trusselsjekken kommer alltid før trekkvalget.",
+      "Bruk mer tid når stillingen blir farlig."
+    ],
+    "whoThisIsFor": [
+      "Spillere som gjetter i rolige stillinger og låser seg i skarpe.",
+      "Nybegynnere som trenger en tydelig prosess ved hvert trekk.",
+      "Alle som vil velge renere under press."
+    ],
+    "timeToRead": "7 minutters lesing",
+    "introParagraphs": [
+      "Nybegynnere lurer ofte på hva sterke spillere tenker på. Svaret kan høres komplisert ut, men prosessen din må være kort nok til å brukes hver gang.",
+      "Start med trusler, velg få mulige trekk og sjekk at det endelige valget er trygt."
+    ],
+    "startHereTitle": "Start her: prosessen i fire steg",
+    "startHereSteps": [
+      "Sjekk motstanderens sterkeste trusler først.",
+      "Nevn ett til tre realistiske kandidattrekk.",
+      "Sjekk at trekket du planlegger er trygt og ikke lar noen brikke stå ubeskyttet.",
+      "Spør om stillingen er rolig nok til å trekke, eller skarp nok til å senke farten.",
+      "Se etter partiet hvor prosessen røk."
+    ],
+    "drillSectionTitle": "Øvelser for roligere valg",
+    "drillCards": [
+      {
+        "title": "Utløseren «motstanderen først»",
+        "description": "Start hver treningsstilling med å nevne motstanderens tvingende muligheter.",
+        "duration": "3 minutter",
+        "goal": "Gjøre trusselsjekken automatisk i stedet for valgfri.",
+        "ctaLabel": "Start med truslene"
+      },
+      {
+        "title": "Grense på tre kandidater",
+        "description": "Tillat deg aldri mer enn tre kandidattrekk i en treningsstilling.",
+        "duration": "4 minutter",
+        "goal": "Redusere for mange valg og grubling.",
+        "ctaLabel": "Begrens kandidatene"
+      },
+      {
+        "title": "Sjekk hvor sikker du var",
+        "description": "Se på et trekk og spør om du var virkelig sikker eller bare lei av å tenke.",
+        "duration": "4 minutter",
+        "goal": "Merke når du trekker av utmattelse.",
+        "ctaLabel": "Sjekk sikkerheten"
+      }
+    ],
+    "comparisonTitle": "En enkel trekkprosess",
+    "comparisonSummary": "Den beste tankeprosessen er den du klarer å bruke selv med klokka i gang.",
+    "comparisonRows": [
+      {
+        "label": "Håndtering av trusler",
+        "struggling": "Du tenker på din egen plan først.",
+        "stronger": "Du starter med motstanderens sterkeste trusler."
+      },
+      {
+        "label": "Kandidattrekk",
+        "struggling": "Du hopper mellom for mange muligheter.",
+        "stronger": "Du holder et lite og realistisk sett kandidater."
+      },
+      {
+        "label": "Tidsbruk",
+        "struggling": "Du gir hvert trekk like mye oppmerksomhet.",
+        "stronger": "Du senker farten når spenning, taktikk eller kongesikkerhet endres."
+      }
+    ],
+    "mistakes": [
+      "Bruke en lang liste du aldri følger i partier.",
+      "Tenke på egen plan før du sjekker trusler.",
+      "La kandidatlisten bli for stor.",
+      "Forveksle tretthet med sikkerhet."
+    ],
+    "mistakesCallout": "Ikke legg til flere sjekker. Bruk en kort prosess du kan gjenta ved hvert trekk.",
+    "planTitle": "7-dagers finpuss av prosessen",
+    "planSteps": [
+      {
+        "label": "Dag 1 til 2",
+        "duration": "10 minutter",
+        "detail": "Bruk bare utløseren «motstanderen først» og grensen på tre kandidater."
+      },
+      {
+        "label": "Dag 3 til 4",
+        "duration": "12 minutter",
+        "detail": "Legg til en kort runde Memory Chess så brettet er tydeligere når du velger."
+      },
+      {
+        "label": "Dag 5",
+        "duration": "12 minutter",
+        "detail": "Se om siste tabbe kom av trusselsjekken eller av for mange kandidater."
+      },
+      {
+        "label": "Dag 6 til 7",
+        "duration": "15 minutter",
+        "detail": "Bruk hele prosessen i hurtigsjakk og noter hvilket steg som ryker under press."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Hva bør en nybegynner tenke på i sjakk?",
+        "answer": "Start med motstanderens trusler, velg ett til tre mulige trekk og sjekk at det endelige valget er trygt."
+      },
+      {
+        "question": "Hvor mange kandidattrekk bør man holde?",
+        "answer": "Som regel ett til tre. Flere overbelaster gjerne nybegynnere og senker kvaliteten på valgene."
+      },
+      {
+        "question": "Hvorfor låser jeg meg selv om jeg kan prosessen?",
+        "answer": "Ofte fordi brettet ikke er tydelig nok, eller fordi for mange kandidater står åpne. Enklere stillinger og hukommelsesarbeid hjelper."
+      },
+      {
+        "question": "Kan en tankeprosess hindre tabber?",
+        "answer": "Ja, særlig når den tvinger fram trusselsjekken før trekkvalget."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Bruk en tydeligere anti-tabbeliste hvis du fortsatt mister materiell."
+      },
+      {
+        "reason": "Regn renere for å sammenligne mulige trekk."
+      },
+      {
+        "reason": "Kjenn igjen ruter raskere under trekkprosessen."
+      }
+    ]
+  }
+]

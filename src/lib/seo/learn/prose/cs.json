@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Jak se zlepšit v šachu jako začátečník",
+    "h1": "Jak se zlepšit v šachu jako začátečník",
+    "description": "Držte se jednoduchého plánu: lépe vidět šachovnici, pamatovat si pozice a hrát bezpečnější tahy.",
+    "primaryKeyword": "jak se zlepšit v šachu",
+    "secondaryKeywords": [
+      "plán zlepšení v šachu",
+      "šachový trénink pro začátečníky",
+      "šachová rutina pro začátečníky",
+      "méně chyb v šachu",
+      "vidění šachovnice"
+    ],
+    "painPoint": "Nevíte, co trénovat ani kde začít.",
+    "ctaLabel": "Spustit kolo pro začátečníky",
+    "quickAnswer": "Používejte krátkou denní rutinu: trénujte vidění šachovnice, paměť, zahrajte partii a rozeberte jednu chybu. Opakujte 20 až 30 minut denně.",
+    "keyTakeaways": [
+      "Vidět a pamatovat si šachovnici je důležitější než učit se mnoho zahájení.",
+      "Krátký denní trénink funguje lépe než vzácné dlouhé bloky.",
+      "Sledujte své chyby a přesnost vybavování, nejen rating."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří znají pravidla, ale stále dávají figury zadarmo.",
+      "Začátečníci, kterým jdou úlohy, ale v partiích tápou.",
+      "Každý, kdo neví, co studovat jako první."
+    ],
+    "timeToRead": "9 minut čtení",
+    "introParagraphs": [
+      "Většina začátečníků nepotřebuje další zahájení, videa ani kurzy. Potřebují sledovat šachovnici a před tahem ověřit, že je bezpečný.",
+      "Memory Chess pomáhá trénovat obě dovednosti. Lepší paměť na pozici usnadní všímat si šachů, braní a hrozeb."
+    ],
+    "startHereTitle": "Začněte touto rutinou pro začátečníky",
+    "startHereSteps": [
+      "Věnujte 3 minuty přehledu šachovnice a pojmenujte napadené, kryté a nekryté figury.",
+      "Zahrajte jedno kolo Memory Chess s 8 figurami a 10 sekundami na prohlédnutí.",
+      "Projděte dvě krátké taktické pozice a před volbou tahu nahlas řekněte šachy, braní a hrozby.",
+      "Zahrajte jednu rapid partii. Každou velkou chybu označte jako vidění, paměť nebo časovou tíseň.",
+      "Zapište si jednu věc k opakování na zítra."
+    ],
+    "drillSectionTitle": "Jednoduchá cvičení pro lepší partie",
+    "drillCards": [
+      {
+        "title": "Přehled šachovnice za 10 sekund",
+        "description": "Použijte jednoduché rozestavení a najděte každou nekrytou figuru, než vyprší čas.",
+        "duration": "3 minuty",
+        "goal": "Vytvořit bezpečnostní kontrolu před každým tahem.",
+        "ctaLabel": "Spustit přehled"
+      },
+      {
+        "title": "Opakování stejné pozice",
+        "description": "Zahrajte stejnou pozici dvakrát, abyste našli a opravili jednu chybu paměti.",
+        "duration": "5 minut",
+        "goal": "Najít přesně tu figuru nebo pole, které jste zapomněli.",
+        "ctaLabel": "Trénovat opakované vybavení"
+      },
+      {
+        "title": "Přenos z partie do cvičení",
+        "description": "Po rapid partii si nejdřív představte pozici, kde jste chybovali, a teprve pak ji rozeberte.",
+        "duration": "7 minut",
+        "goal": "Nechat skutečné chyby řídit trénink.",
+        "ctaLabel": "Spustit přenosové cvičení"
+      }
+    ],
+    "comparisonTitle": "Jak vypadá lepší hra začátečníka",
+    "comparisonSummary": "Nemusíte vidět pět tahů dopředu. Nejdřív jasně vidět současnou pozici a před tahem se na chvíli zastavit.",
+    "comparisonRows": [
+      {
+        "label": "Před tahem",
+        "struggling": "Díváte se jen na vlastní nápad.",
+        "stronger": "Nejdřív kontrolujete hrozby soupeře."
+      },
+      {
+        "label": "Během taktiky",
+        "struggling": "Varianta zmizí po jedné výměně.",
+        "stronger": "Při porovnávání dvou tahů si držíte klíčová pole."
+      },
+      {
+        "label": "Po prohře",
+        "struggling": "Hned spustíte další partii.",
+        "stronger": "Pojmenujete chybu a zítra ji trénujete."
+      }
+    ],
+    "mistakes": [
+      "Skákání mezi náhodnými materiály místo dvou týdnů jedné rutiny.",
+      "Studium zahájení dřív, než je vidění šachovnice stabilní.",
+      "Příliš mnoho partií bez krátkých poznámek po nich.",
+      "Vnímání paměťového tréninku jako něčeho odděleného od skutečného šachu."
+    ],
+    "mistakesCallout": "Nespěchejte k pokročilé látce. Většina začátečníků prohrává kvůli přehlédnutým jednotahovým hrozbám, ne kvůli zapomenuté variantě zahájení.",
+    "planTitle": "30denní plán pro začátečníky",
+    "planSteps": [
+      {
+        "label": "Týden 1",
+        "duration": "20 minut denně",
+        "detail": "Používejte stejný přehled šachovnice a před každou herní sérií zahrajte krátké kolo Memory Chess."
+      },
+      {
+        "label": "Týden 2",
+        "duration": "25 minut denně",
+        "detail": "Přidejte druhé kolo vybavování a zapisujte, zda chyba vznikla z vidění, paměti nebo paniky."
+      },
+      {
+        "label": "Týden 3",
+        "duration": "25 až 30 minut denně",
+        "detail": "Stejná cvičení, ale zkraťte čas na zapamatování, aby vybavení zůstalo čisté i pod tlakem."
+      },
+      {
+        "label": "Týden 4",
+        "duration": "30 minut denně",
+        "detail": "Ověřte, zda počet chyb na partii klesá, a ponechte jen nastavení, která se nejlépe přenesla."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kolik minut denně by měl začátečník trénovat?",
+        "answer": "Soustředěných 20 až 30 minut stačí, když spojíte vidění šachovnice, paměť a jednu skutečnou pozici."
+      },
+      {
+        "question": "Proč se moje dovednost z úloh nepřenáší do partií?",
+        "answer": "Úloha začíná, když taktika už existuje. V partii musíte změnu na šachovnici nejdřív zaznamenat, takže paměť a bezpečnostní kontroly hrají mnohem větší roli."
+      },
+      {
+        "question": "Mám se brzy učit zahájení?",
+        "answer": "Zpočátku jen základní principy. Většina začátečníků víc získá tím, že hrozby uvidí dřív a pozici si udrží jasnější."
+      },
+      {
+        "question": "Který ukazatel nejrychleji ukáže pokrok?",
+        "answer": "Počet chyb na partii a přesnost vybavování v Memory Chess. Obvykle se hýbou dřív než rating."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sáhněte sem, pokud je hlavním problémem dávání figur zadarmo."
+      },
+      {
+        "reason": "Prohlubte návyk kontrolovat hrozby před tahem."
+      },
+      {
+        "reason": "Postavte silnější šachovnici v hlavě, aby taktika držela."
+      },
+      {
+        "reason": "Trénujte vybavování přímo, pokud zapomínáte polohu figur."
+      },
+      {
+        "reason": "Zvolte kratší rutinu, pokud chcete jednodušší denní strukturu."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Cvičení šachové vizualizace pro začátečníky",
+    "h1": "Denní cvičení šachové vizualizace",
+    "description": "Vyzkoušejte jednoduchá cvičení vizualizace, abyste si pamatovali šachovnici a viděli tahy jasněji.",
+    "primaryKeyword": "cvičení šachové vizualizace",
+    "secondaryKeywords": [
+      "trénink vizualizace v šachu",
+      "počítání tahů dopředu",
+      "vizualizace šachovnice",
+      "příprava na hru naslepo",
+      "šach v hlavě"
+    ],
+    "painPoint": "Ztrácíte přehled o figurách, jakmile si chcete představit další tahy.",
+    "ctaLabel": "Trénovat vizualizaci",
+    "quickAnswer": "Nejdřív si zapamatujte šachovnici bez pohybu figur. Pak si představujte jeden tah po druhém. Nemusíte hrát celou partii naslepo.",
+    "keyTakeaways": [
+      "Krátký denní trénink funguje lépe než vzácné dlouhé bloky.",
+      "Po každém pokusu si představenou pozici zkontrolujte.",
+      "Nejdřív jasně vidět jeden tah, pak zkoušet delší varianty."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří po jedné výměně ztratí variantu.",
+      "Začátečníci, kteří tápou, když nevidí šachovnici.",
+      "Každý, kdo chce ke hře naslepo postupovat po krocích."
+    ],
+    "timeToRead": "8 minut čtení",
+    "introParagraphs": [
+      "Vizualizace znamená představit si, jak se šachovnice po tahu změní. Pro začátečníka je cílem jen porovnat dva tahy, aniž by ztratil přehled o figurách.",
+      "Memory Chess ukáže, které figury nebo pole zapomínáte. Pak můžete stejný typ pozice zopakovat."
+    ],
+    "startHereTitle": "Začněte těmito kroky vizualizace",
+    "startHereSteps": [
+      "Po 60 sekund pojmenujte každou figuru a pole na statické šachovnici.",
+      "Zavřete oči a před kontrolou si pozici znovu poskládejte v hlavě.",
+      "Představte si jeden legální tah za každou stranu, aniž byste se dotkli figur.",
+      "Zahrajte kolo Memory Chess se středním počtem figur a přísným časem.",
+      "Ověřte pozici a opakujte až poté, co víte, co jste zapomněli."
+    ],
+    "drillSectionTitle": "Snadná cvičení vizualizace",
+    "drillCards": [
+      {
+        "title": "Snímek statické pozice",
+        "description": "Zapamatujte si pozici a pak umístěte každou figuru na správné pole.",
+        "duration": "4 minuty",
+        "goal": "Zapamatovat si pozici dřív, než si představíte tahy.",
+        "ctaLabel": "Spustit snímek"
+      },
+      {
+        "title": "Jeden tah za každou stranu",
+        "description": "Zapamatujte si pozici, představte si jeden tah za každou stranu a pak zkontrolujte odpověď.",
+        "duration": "5 minut",
+        "goal": "Naučit se aktualizovat šachovnici v hlavě.",
+        "ctaLabel": "Trénovat aktualizaci"
+      },
+      {
+        "title": "Vybavování pod tlakem",
+        "description": "Jakmile je vybavování přesné, zkraťte čas na prohlédnutí pozice.",
+        "duration": "5 minut",
+        "goal": "Používat čisté vybavování v rychlejších partiích.",
+        "ctaLabel": "Přidat tlak"
+      }
+    ],
+    "comparisonTitle": "Jak se projevuje slabá vizualizace",
+    "comparisonSummary": "Vypadá to jako problém s počítáním, ale obraz šachovnice často jen bledne příliš rychle.",
+    "comparisonRows": [
+      {
+        "label": "Kandidátské tahy",
+        "struggling": "Umíte tah pojmenovat, ale výslednou pozici nevidíte jasně.",
+        "stronger": "Před tahem porovnáte dvě možné pozice."
+      },
+      {
+        "label": "Taktický zmatek",
+        "struggling": "Po výměnách máte v hlavě prázdno.",
+        "stronger": "Držíte důležitá pole a hrozby dost dlouho na klidné rozhodnutí."
+      },
+      {
+        "label": "Zpětná vazba z tréninku",
+        "struggling": "Nevíte, které pole jste přesně zapomněli.",
+        "stronger": "Poznáte, zda chyba vznikla ze sloupce, řady nebo chybějícího obránce."
+      }
+    ],
+    "mistakes": [
+      "Hluboké počítání naslepo dřív, než je statické vybavování stabilní.",
+      "Fyzické přesouvání figur při každém pokusu o výpočet.",
+      "Trénink jednou týdně místo krátkého denního bloku.",
+      "Neověřování, zda si představená pozice odpovídá skutečnosti."
+    ],
+    "mistakesCallout": "Zatím se nehoňte za delšími variantami. Nejdřív si jasně představte první tah.",
+    "planTitle": "Sedmidenní postup vizualizace",
+    "planSteps": [
+      {
+        "label": "Den 1",
+        "duration": "10 minut",
+        "detail": "Pouze snímky statické pozice s okamžitou kontrolou."
+      },
+      {
+        "label": "Den 2 až 3",
+        "duration": "12 minut",
+        "detail": "Přidejte jeden představený tah za stranu a sledujte, která pole mizí první."
+      },
+      {
+        "label": "Den 4 až 5",
+        "duration": "15 minut",
+        "detail": "Zkraťte čas na prohlédnutí v Memory Chess při stejném počtu figur."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 minut",
+        "detail": "Přeneste cvičení do rapid partie: před každým taktickým rozhodnutím se zastavte a popište vznikající pozici."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Jak dlouho trvá, než se vizualizace zlepší?",
+        "answer": "Většina začátečníků pozoruje čistší vybavování po dvou až čtyřech týdnech krátkého pravidelného tréninku."
+      },
+      {
+        "question": "Pomáhají tato cvičení v bleskovém šachu?",
+        "answer": "Ano. Rychlejší aktualizace pozice v hlavě usnadní všímat si šachů, braní a hrozeb v časové tísni."
+      },
+      {
+        "question": "Jde trénovat vizualizaci bez hry naslepo?",
+        "answer": "Ano. Vybavování na čas a cvičení s jedním tahem stačí na skutečný základ."
+      },
+      {
+        "question": "Co dělat, když si stále nepamatuji polohu figur?",
+        "answer": "Použijte méně figur, kontrolujte častěji a opakujte stejnou pozici, dokud vybavování nebude čisté."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sáhněte sem, až bude statické a jednotahové vybavování stabilní."
+      },
+      {
+        "reason": "Rozšiřte vnímání šachovnice, pokud vám unikají figury u okraje."
+      },
+      {
+        "reason": "Spojte vizualizaci s jednoduchou kontrolou hrozeb."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Cvičení vidění šachovnice proti chybám",
+    "h1": "Cvičení vidění šachovnice pro začátečníky",
+    "description": "Používejte jednoduchá cvičení, abyste viděli hrozby, chránili figury a dělali méně chyb.",
+    "primaryKeyword": "vidění šachovnice",
+    "secondaryKeywords": [
+      "cvičení vidění šachovnice",
+      "méně chyb v šachu",
+      "všímat si hrozeb v šachu",
+      "taktická ostražitost",
+      "chyby začátečníků v šachu"
+    ],
+    "painPoint": "Soustředíte se na jednu část šachovnice a přehlédnete jednoduchou hrozbu jinde.",
+    "ctaLabel": "Spustit cvičení vidění",
+    "quickAnswer": "Před každým tahem hledejte šachy, braní, hrozby a nekryté figury. Paměťový trénink pomáhá držet všechny figury v hlavě, zatímco šachovnici procházíte.",
+    "keyTakeaways": [
+      "Vidění šachovnice je návyk, který se dá naučit.",
+      "Pozornost k nekrytým figurám bývá nejrychlejší zlepšení.",
+      "Paměťový trénink pomáhá sledovat celou šachovnici."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří znají základní taktiku, a přesto ztrácejí figury.",
+      "Začátečníci, kteří hrají rychle a chybu vidí až po braní.",
+      "Každý, kdo potřebuje jasný seznam před tahem."
+    ],
+    "timeToRead": "8 minut čtení",
+    "introParagraphs": [
+      "Když někdo řekne „neviděl jsem to“, obvykle zahrál dřív, než prohlédl celou šachovnici.",
+      "Tato cvičení učí, kam se dívat. Začněte u nekrytých figur a u tahů, které dávají šach, berou nebo tvoří hrozbu."
+    ],
+    "startHereTitle": "Začněte tady: kontrola před tahem",
+    "startHereSteps": [
+      "Před každým tahem pojmenujte šachy, braní a hrozby obou stran.",
+      "Označte každou nekrytou figuru a řekněte, zda je opravdu bezpečná, nebo to jen tak vypadá.",
+      "Zahrajte krátké kolo Memory Chess, aby se utáhla vazba pole a figura.",
+      "Rozeberte jednu nedávnou chybu a určete přesně přehlédnutou hrozbu.",
+      "Zopakujte stejný seznam v další rapid partii bez zkracování."
+    ],
+    "drillSectionTitle": "Cvičení vidění pro skutečné partie",
+    "drillCards": [
+      {
+        "title": "Inventura nekrytých figur",
+        "description": "Projděte šachovnici a před tahem označte každou nekrytou figuru.",
+        "duration": "3 minuty",
+        "goal": "Zachytit nejčastější zdroj chyb včas.",
+        "ctaLabel": "Spustit inventuru"
+      },
+      {
+        "title": "Přehrání hrozby",
+        "description": "Postavte znovu pozici své poslední chyby a najděte nejsilnější hrozbu soupeře dřív, než se podíváte do partie.",
+        "duration": "5 minut",
+        "goal": "Naučit se, jak přehlédnutá hrozba vypadala v kontextu.",
+        "ctaLabel": "Přehrát hrozbu"
+      },
+      {
+        "title": "Rychlé vybavení polí",
+        "description": "Použijte krátký čas na prohlédnutí, aby pozice zůstala celistvá, zatímco ji procházíte.",
+        "duration": "4 minuty",
+        "goal": "Pamatovat si polohu figur během procházení.",
+        "ctaLabel": "Zrychlit vybavování"
+      }
+    ],
+    "comparisonTitle": "Slabé versus silné vidění šachovnice",
+    "comparisonSummary": "Rozdíl je obvykle vidět ještě dřív, než začne počítání.",
+    "comparisonRows": [
+      {
+        "label": "Pozornost",
+        "struggling": "Zíráte na jeden taktický nápad.",
+        "stronger": "Před volbou plánu projdete celou šachovnici."
+      },
+      {
+        "label": "Bezpečnostní kontroly",
+        "struggling": "Předpokládáte, že krytá figura je bezpečná.",
+        "stronger": "Než poli uvěříte, spočítáte útočníky a obránce."
+      },
+      {
+        "label": "Časový tlak",
+        "struggling": "Hrajete rychleji, jak se pozice zostřuje.",
+        "stronger": "Zpomalíte, když se objeví šachy, braní nebo hrozby."
+      }
+    ],
+    "mistakes": [
+      "Kontrolovat jen vlastní nápad a ignorovat hrozby soupeře.",
+      "Považovat krytou figuru za bezpečnou bez spočítání celé výměny.",
+      "Hrát příliš rychle, jakmile je pozice taktická.",
+      "Nikdy po partii nepojmenovat typ chyby."
+    ],
+    "mistakesCallout": "Více úloh uspěchaný přehled nespraví. Před každým tahem opakujte stejnou krátkou kontrolu.",
+    "planTitle": "Sedmidenní restart vidění",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "12 minut",
+        "detail": "Pouze inventura nekrytých figur a přehled šachů, braní a hrozeb."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "15 minut",
+        "detail": "Přidejte kolo Memory Chess před partiemi, ať přehled probíhá na čistší šachovnici v hlavě."
+      },
+      {
+        "label": "Den 5",
+        "duration": "15 minut",
+        "detail": "Projděte tři nedávné chyby a v každé pozici pojmenujte přehlédnutý signál."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 až 20 minut",
+        "detail": "Hrajte rapid a použijte celý seznam u každého tahu, který mění napětí nebo bezpečnost krále."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Jak nejrychleji zlepšit vidění šachovnice?",
+        "answer": "Používejte stejný seznam před každým tahem, dokud nezautomatizuje: šachy, braní, hrozby a nekryté figury."
+      },
+      {
+        "question": "Proč chybuji, i když znám taktiku?",
+        "answer": "Protože vrstva sledování šachovnice je slabá. Taktika pomůže až poté, co pozici správně vnímáte."
+      },
+      {
+        "question": "Jak často rozebírat své chyby?",
+        "answer": "Po každé partii. Krátký návyk rozboru se přenáší mnohem rychleji než týdenní maraton."
+      },
+      {
+        "question": "Pomáhají paměťová cvičení vidění?",
+        "answer": "Ano. Rychlejší vybavování figur usnadní držet celou šachovnici v pozornosti během procházení."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sáhněte po kompletním návodu proti chybám, když vás vidění stojí materiál."
+      },
+      {
+        "reason": "Pochopte, proč taktika selhává pod skutečným tlakem."
+      },
+      {
+        "reason": "Podívejte se, kam vidění šachovnice zapadá v celé rutině."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Trénink šachové paměti pro rychlejší vybavování",
+    "h1": "Trénink šachové paměti pro začátečníky",
+    "description": "Používejte jednoduchá paměťová cvičení, abyste si pamatovali pozice, všímali si vzorců a jasněji sledovali tahy.",
+    "primaryKeyword": "trénink šachové paměti",
+    "secondaryKeywords": [
+      "paměťová cvičení v šachu",
+      "zapamatování šachových pozic",
+      "rozpoznávání vzorců v šachu",
+      "trénink vybavování pozice",
+      "soustředění v šachu"
+    ],
+    "painPoint": "Zapomínáte, kde figury stojí, zatímco přemýšlíte o dalších tazích.",
+    "ctaLabel": "Spustit paměťovou výzvu",
+    "quickAnswer": "Trénink paměti pomáhá udržet užitečné pozice, i když se figury mění. Nejde o zapamatování co nejvíce náhodných pozic.",
+    "keyTakeaways": [
+      "Na začátku je přesnost důležitější než rychlost.",
+      "Opakování jedné pozice umožní opravit vždy jednu chybu paměti.",
+      "Paměťový trénink zařaďte před počítání nebo rozbor."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří po jedné silné odpovědi zapomenou plán.",
+      "Začátečníci, kteří nedokážou znovu postavit klíčové pozice ze svých partií.",
+      "Každý, kdo tápe, když je v akci mnoho figur."
+    ],
+    "timeToRead": "8 minut čtení",
+    "introParagraphs": [
+      "Šachová paměť je praktická dovednost. Cílem je udržet jasný obraz pozice dost dlouho na klidnou volbu tahu.",
+      "Memory Chess nabízí jednoduchou smyčku: podívat se, zapamatovat, ověřit a zkusit znovu."
+    ],
+    "startHereTitle": "Začněte touto paměťovou rutinou",
+    "startHereSteps": [
+      "Začněte jednoduchou pozicí a zapamatujte si ji na 10 sekund.",
+      "Postavte pozici znovu a zapište první ztracené pole nebo figuru.",
+      "Zopakujte stejnou pozici jednou, aby byla oprava vidět.",
+      "Přidejte krátkou taktickou variantu z zapamatovaného rozestavení.",
+      "Sledujte přesnost i typ chyby paměti, kterou jste udělali."
+    ],
+    "drillSectionTitle": "Paměťová cvičení pro skutečné partie",
+    "drillCards": [
+      {
+        "title": "Opakování jedné pozice",
+        "description": "Zapamatujte si jednu pozici, postavte ji znovu a pak ji jednou zopakujte se stejným nastavením.",
+        "duration": "5 minut",
+        "goal": "Najít jednu jasnou chybu paměti k opravě.",
+        "ctaLabel": "Zopakovat jednu pozici"
+      },
+      {
+        "title": "Vybavování přes záchytné body",
+        "description": "Nejdřív se soustřeďte na polohu králů, nekryté figury a napětí v centru.",
+        "duration": "4 minuty",
+        "goal": "Zapamatovat si nejdůležitější části pozice jako první.",
+        "ctaLabel": "Trénovat záchytné body"
+      },
+      {
+        "title": "Nejdřív vybavit, pak počítat",
+        "description": "Po opětovném postavení pozice spočítejte krátkou variantu, teprve pak ověřte.",
+        "duration": "6 minut",
+        "goal": "Používat paměť na pozici během počítání.",
+        "ctaLabel": "Přidat variantu"
+      }
+    ],
+    "comparisonTitle": "Jak vypadá slabé vybavování v partiích",
+    "comparisonSummary": "Pozice může působit povědomě a přesto být příliš rozmazaná, aby unesla počítání.",
+    "comparisonRows": [
+      {
+        "label": "Držení varianty",
+        "struggling": "Při zvažování jiného kandidátského tahu ztratíte výchozí pozici.",
+        "stronger": "Po projití varianty se přesně vrátíte k výchozí pozici."
+      },
+      {
+        "label": "Paměť na vzorce",
+        "struggling": "Pamatujete si taktický nápad, ale ne obránce.",
+        "stronger": "Pamatujete si nápad i pole, která ho umožňují."
+      },
+      {
+        "label": "Kvalita rozboru",
+        "struggling": "Rozbor je mlhavý, protože pozice hned zmizí.",
+        "stronger": "Klíčové momenty znovu postavíte a učíte se rychleji."
+      }
+    ],
+    "mistakes": [
+      "Příliš velké skoky obtížnosti na vaši úroveň.",
+      "Měřit rychlost a ignorovat přesnost.",
+      "Nevést záznam chyb, takže opakované slabiny zůstanou skryté.",
+      "Vnímat paměťová cvičení odděleně od taktické hry."
+    ],
+    "mistakesCallout": "Nezvyšujte obtížnost, dokud je vybavování nejasné. Snižte ji a nejdřív si vybudujte přesnost.",
+    "planTitle": "Sedmidenní paměťový blok",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "10 minut",
+        "detail": "Opakujte jednoduché pozice a pojmenujte každou chybu paměti."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "12 minut",
+        "detail": "Přidejte záchytné body, ať si nejdřív pamatujete krále, nekryté figury a napětí v centru."
+      },
+      {
+        "label": "Den 5",
+        "duration": "12 minut",
+        "detail": "Po každém správném postavení přidejte krátkou sekvenci tahů."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 minut",
+        "detail": "Mírně zkraťte čas při stejném počtu figur a pak práci přeneste do rozboru jedné rapid partie."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Zlepšuje paměťový trénink skutečné partie?",
+        "answer": "Ano, pokud ho spojíte s počítáním nebo rozborem. Lepší vybavování drží varianty jasnější pod tlakem."
+      },
+      {
+        "question": "Kolik pozic trénovat na jedno sezení?",
+        "answer": "Pro začátečníky stačí šest až dvanáct pečlivých pokusů, pokud chyby ověřujete a nespěcháte."
+      },
+      {
+        "question": "Náhodné pozice, nebo skutečné struktury?",
+        "answer": "Obojí. Náhodné brousí čisté vybavování, skutečné struktury zlepšují přenos."
+      },
+      {
+        "question": "Co když se přesnost zastaví?",
+        "answer": "Na týden použijte méně figur, opravte jeden typ chyby a figury přidávejte, až bude vybavování zase čisté."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sáhněte sem, pokud si těžko pamatujete sekvence tahů."
+      },
+      {
+        "reason": "Vyvažte paměť rozumným množstvím úloh."
+      },
+      {
+        "reason": "Propojte paměť na pozici s běžnými vzorci."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Trénink hry naslepo pro začátečníky",
+    "h1": "Hra naslepo pro začátečníky, krok za krokem",
+    "description": "Učte se hru naslepo v malých krocích, které zlepšují vizualizaci a nezahltí vás.",
+    "primaryKeyword": "trénink hry naslepo",
+    "secondaryKeywords": [
+      "hra naslepo pro začátečníky",
+      "trénink pozice v hlavě",
+      "cvičení vizualizace v šachu",
+      "počítání bez posouvání figur",
+      "cvičení soustředění v šachu"
+    ],
+    "painPoint": "Ztratíte přehled o pozici, jakmile se na ni přestanete dívat.",
+    "ctaLabel": "Spustit trénink naslepo",
+    "quickAnswer": "Začněte jednoduchou pozicí. Zapamatujte si ji, představte si jeden tah za stranu a zkontrolujte. Celou partii naslepo zkoušejte, až budou tyto kroky snadné.",
+    "keyTakeaways": [
+      "Hra naslepo se buduje krok za krokem.",
+      "Ověření odpovědi je důležitější než těžší pozice.",
+      "Cvičení naslepo pro začátečníky jsou cvičení vizualizace s menší pomocí šachovnice."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří chtějí lepší vizualizaci bez celé partie naslepo.",
+      "Začátečníci, kterým po jednom dvou představených tazích mizí pole.",
+      "Každý, kdo chce jasnější obraz pozice v hlavě."
+    ],
+    "timeToRead": "8 minut čtení",
+    "introParagraphs": [
+      "Největší chybou je zkoušet celou partii naslepo příliš brzy. Obvykle to přinese frustraci místo pokroku.",
+      "Postupujte po krocích: uvidět pozici, zapamatovat si ji, představit si tah, ověřit a pomalu ubírat vizuální pomoc."
+    ],
+    "startHereTitle": "Začněte tady: bezpečný postup ke hře naslepo",
+    "startHereSteps": [
+      "Zapamatujte si malou pozici a postavte ji znovu dřív, než si představíte jakýkoli tah.",
+      "Spočítejte jeden tah za každou stranu bez dotýkání figur.",
+      "Každou neshodu ověřte hned, místo abyste pokračovali.",
+      "Zahrajte kolo Memory Chess s o něco kratším časem na prohlédnutí.",
+      "Další tah přidejte, až bude současná varianta jasná."
+    ],
+    "drillSectionTitle": "Snadná cvičení hry naslepo",
+    "drillCards": [
+      {
+        "title": "Nejdřív postavit, pak táhnout",
+        "description": "Nepředstavujte si tahy, dokud není výchozí pozice zcela stabilní.",
+        "duration": "4 minuty",
+        "goal": "Vybudovat jasné vybavování dřív, než přidáte tahy.",
+        "ctaLabel": "Nejdřív postavit pozici"
+      },
+      {
+        "title": "Jeden tah za každou stranu",
+        "description": "Představte si tah bílého a odpověď černého a pak ověřte novou pozici.",
+        "duration": "5 minut",
+        "goal": "Aktualizovat pozici bez pohledu na šachovnici.",
+        "ctaLabel": "Představit si dva tahy"
+      },
+      {
+        "title": "Kratší čas na prohlédnutí",
+        "description": "Zkraťte čas na prohlédnutí, ať se naučíte pozici pamatovat rychleji.",
+        "duration": "4 minuty",
+        "goal": "Připravit se na hru naslepo bez zakrytí celé šachovnice.",
+        "ctaLabel": "Zkrátit čas"
+      }
+    ],
+    "comparisonTitle": "Bezpečnější způsob tréninku hry naslepo",
+    "comparisonSummary": "Ptejte se, zda vidíte jasně o jeden tah víc než dřív. Celá partie naslepo zatím není potřeba.",
+    "comparisonRows": [
+      {
+        "label": "Výchozí bod",
+        "struggling": "Vrhnete se rovnou do plné hry naslepo.",
+        "stronger": "Před přidáváním tahů si zapamatujete výchozí pozici."
+      },
+      {
+        "label": "Ověřování",
+        "struggling": "Věříte rozmazané pozici v hlavě.",
+        "stronger": "Každou představenou aktualizaci ověříte a hned opravíte."
+      },
+      {
+        "label": "Kvalita tréninku",
+        "struggling": "Trénujete, dokud soustředění nespadne.",
+        "stronger": "Končíte, dokud je přesnost v hlavě vysoká."
+      }
+    ],
+    "mistakes": [
+      "Zkoušet celé partie naslepo příliš brzy.",
+      "Vynechávat ověření a věřit chybné pozici v hlavě.",
+      "Přidávat tahy dřív, než jsou krátké varianty jasné.",
+      "Trénovat v jednom bloku příliš dlouho a vyčerpat soustředění."
+    ],
+    "mistakesCallout": "Neskákejte k mnohem těžšímu úkolu. Pokaždé uberte jen kousek pomoci ze šachovnice.",
+    "planTitle": "Sedmidenní příprava na hru naslepo",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "10 minut",
+        "detail": "Pouze stavění pozic z paměti a okamžitá kontrola."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "12 minut",
+        "detail": "Přidejte jeden tah za stranu a držte pozice jednoduché."
+      },
+      {
+        "label": "Den 5",
+        "duration": "12 minut",
+        "detail": "Zkraťte čas na prohlédnutí v Memory Chess při stejném počtu figur."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 minut",
+        "detail": "Zkuste pár dvoutahových sekvencí, jen pokud je práce s jedním tahem přesná."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Je hra naslepo pro začátečníky užitečná?",
+        "answer": "Ano, v krátkých řízených cvičeních. Posiluje vizualizaci, o kterou se opírají běžné partie."
+      },
+      {
+        "question": "Jak často dělat cvičení naslepo?",
+        "answer": "Dvě až čtyři krátká sezení týdně stačí v kombinaci s pravidelnou hrou a rozborem."
+      },
+      {
+        "question": "Jaké je nejlepší první cvičení naslepo?",
+        "answer": "Postavit jednoduchou pozici z paměti a před kontrolou si představit jeden tah za každou stranu."
+      },
+      {
+        "question": "Jak poznám, že se lepším?",
+        "answer": "Udržíte správně víc polí, aktualizujete pozici déle a v běžných partiích uděláte méně chyb z vidění."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Držte základy pevné místo skoku k pokročilé hře naslepo."
+      },
+      {
+        "reason": "Spojte práci naslepo s cvičeními na držení varianty."
+      },
+      {
+        "reason": "Použijte jasnější vizualizaci k porovnávání tahů."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Cvičení pracovní paměti pro šachisty",
+    "h1": "Cvičení pracovní paměti pro začátečníky",
+    "description": "Jednoduchá cvičení, jak si pamatovat sekvence tahů, porovnávat možnosti a rozhodovat se jasněji.",
+    "primaryKeyword": "cvičení pracovní paměti",
+    "secondaryKeywords": [
+      "pracovní paměť v šachu",
+      "trénink počítání v šachu",
+      "cvičení soustředění v šachu",
+      "vyrovnanější šachový výkon",
+      "psychická výdrž v šachu"
+    ],
+    "painPoint": "Zapomenete první sekvenci tahů, zatímco přemýšlíte o jiné.",
+    "ctaLabel": "Spustit paměťovou rutinu",
+    "quickAnswer": "Pracovní paměť vám umožní držet pár možných sekvencí. Držte jich málo a každou jasně ověřte.",
+    "keyTakeaways": [
+      "Tři jasné volby jsou lepší než šest zmatených.",
+      "Krátké nahlas vyslovené shrnutí pomáhá pamatovat si každou variantu.",
+      "Trénujte na skutečných pozicích a dovednost používejte v partiích."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří při zkoumání druhé varianty ztratí první.",
+      "Začátečníci, kteří si pletou pořadí tahů.",
+      "Každý, kdo dělá víc taktických chyb, když je unavený."
+    ],
+    "timeToRead": "8 minut čtení",
+    "introParagraphs": [
+      "Pracovní paměť vám umožní držet možné tahy, zatímco je porovnáváte. V šachu si musíte pamatovat výchozí pozici a jednu či dvě krátké varianty, aniž byste je zaměnili.",
+      "Memory Chess pomáhá zapamatovat si výchozí pozici. Když je ten obraz jasný, sledování dalších tahů je snazší."
+    ],
+    "startHereTitle": "Začněte dvěma krátkými sekvencemi",
+    "startHereSteps": [
+      "Vyberte jednu pozici a bez doteku šachovnice vyjmenujte tři kandidátské tahy.",
+      "Každou variantu spočítejte na dva půltahy a výsledek shrňte jednou větou.",
+      "Zahrajte kolo vybavování v Memory Chess, ať si osvěžíte výchozí pozici.",
+      "Vraťte se k pozici a znovu porovnejte možné sekvence.",
+      "Napište jednu větu o tom, kde se držení varianty zlomilo."
+    ],
+    "drillSectionTitle": "Cvičení pracovní paměti pro šach",
+    "drillCards": [
+      {
+        "title": "Shrnutí tří variant",
+        "description": "Krátce držte tři kandidátské tahy a každou větev popište jednou větou.",
+        "duration": "6 minut",
+        "goal": "Držet každou sekvenci jasnou místo přidávání dalších.",
+        "ctaLabel": "Držet tři varianty"
+      },
+      {
+        "title": "Reset vybavování",
+        "description": "Mezi pokusy o počítání vložte jedno kolo Memory Chess, ať zůstane výchozí pozice stabilní.",
+        "duration": "4 minuty",
+        "goal": "Pamatovat si výchozí pozici dřív, než sledujete tahy.",
+        "ctaLabel": "Resetovat pozici"
+      },
+      {
+        "title": "Porovnání po variantě",
+        "description": "Vraťte se k výchozí pozici a po krátké pauze porovnejte větve.",
+        "duration": "5 minut",
+        "goal": "Přecházet mezi výchozí pozicí a variantami bez záměny.",
+        "ctaLabel": "Porovnat možnosti"
+      }
+    ],
+    "comparisonTitle": "Když si chcete pamatovat příliš mnoho",
+    "comparisonSummary": "Když je paměť plná, varianta se rozmaže a pořadí tahů se poplete.",
+    "comparisonRows": [
+      {
+        "label": "Kandidátské tahy",
+        "struggling": "Snažíte se držet příliš mnoho možností naráz.",
+        "stronger": "Držíte méně variant, ale každá vydrží přesná déle."
+      },
+      {
+        "label": "Pořadí tahů",
+        "struggling": "Větve se navzájem prolínají.",
+        "stronger": "Každá varianta zůstává oddělená a snadno srovnatelná."
+      },
+      {
+        "label": "Únava",
+        "struggling": "Kvalita rozhodnutí se v závěru partie hroutí.",
+        "stronger": "Se sníženou energií držíte jednodušší a jasnější postup."
+      }
+    ],
+    "mistakes": [
+      "Snažit se pamatovat příliš mnoho sekvencí naráz.",
+      "Vynechávat krátké shrnutí po každé variantě.",
+      "Řešit jen úlohy a dovednost nikdy nepoužít v partiích.",
+      "Pokračovat, i když jste příliš unavení na jasné myšlení."
+    ],
+    "mistakesCallout": "Zatím nepřidávejte další varianty. Držte málo variant jasných, než je začnete prodlužovat.",
+    "planTitle": "Sedmidenní blok pracovní paměti",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "10 minut",
+        "detail": "Používejte jen dvě sekvence a každou vysvětlete nahlas."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "12 minut",
+        "detail": "Mezi pokusy vložte reset Memory Chess, ať zůstane výchozí pozice čistá."
+      },
+      {
+        "label": "Den 5",
+        "duration": "12 minut",
+        "detail": "Třetí možnost přidejte jen tehdy, pokud první dvě zůstávají přesné."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 minut",
+        "detail": "Použijte rutinu v jedné rapid partii. V těžkých momentech se zastavte a jasně pojmenujte možné tahy."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Přenášejí se cvičení pracovní paměti do šachu?",
+        "answer": "Mohou, zvlášť když je přímo navážete na pozice, držení variant a rozbor, ne na obecné mozkové hry."
+      },
+      {
+        "question": "Jak si to má začátečník poskládat?",
+        "answer": "Krátká sezení, která spojují možné tahy, paměť na pozici a jednu skutečnou partiovou pozici."
+      },
+      {
+        "question": "Jak jednoduše sledovat pokrok?",
+        "answer": "Zapisujte, kolik sekvencí udržíte a jak často ztratíte nit."
+      },
+      {
+        "question": "Nahradí to taktický trénink?",
+        "answer": "Ne. Doplňuje ho tím, že drží varianty jasnější při řešení i při hře."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Využijte lepší pracovní paměť k porovnávání tahů."
+      },
+      {
+        "reason": "Posilte vrstvu vybavování pod držením variant."
+      },
+      {
+        "reason": "Použijte jednodušší postup myšlení, ať se pracovní paměť neplýtvá."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Jak přestat dělat hrubé chyby v šachu",
+    "h1": "Jak přestat dělat hrubé chyby v šachu",
+    "description": "Používejte krátkou bezpečnostní kontrolu, abyste viděli hrozby, chránili figury a chybovali méně.",
+    "primaryKeyword": "jak přestat chybovat v šachu",
+    "secondaryKeywords": [
+      "prevence chyb v šachu",
+      "přestat dávat figury zadarmo",
+      "kontrola hrozeb v šachu",
+      "bezpečnostní seznam v šachu",
+      "méně jednoduchých chyb v šachu"
+    ],
+    "painPoint": "Rozumíte šachovým myšlenkám, ale stále ztrácíte figury kvůli jednoduchým hrozbám.",
+    "ctaLabel": "Spustit cvičení proti chybám",
+    "quickAnswer": "Před každým tahem zkontrolujte hrozby soupeře, najděte nekryté figury a ujistěte se, že je váš tah bezpečný. Paměťový trénink pomáhá držet celou šachovnici v hlavě.",
+    "keyTakeaways": [
+      "Většina chyb začátečníků vzniká z přehlédnuté části šachovnice.",
+      "Bezpečnostní seznam musí být dost krátký, aby přežil časový tlak.",
+      "Přehrávejte své chyby, dokud rychle neuvidíte, co jste přehlédli."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří opakovaně naletí na jednotahovou taktiku.",
+      "Začátečníci, kterým jde hra hůř než úlohy.",
+      "Každý, kdo chce klidný postup použitelný u každého tahu."
+    ],
+    "timeToRead": "8 minut čtení",
+    "introParagraphs": [
+      "Mnoho chyb vzniká tím, že táhnete dřív, než prohlédnete celou pozici. Můžete také ztratit přehled, kde je figura kryta.",
+      "Krátký postup nahradí paniku a hádání. Používejte stejné kontroly, jakmile se pozice zostří."
+    ],
+    "startHereTitle": "Začněte tady: seznam proti chybám",
+    "startHereSteps": [
+      "Zeptejte se, jaké šachy, braní a hrozby má soupeř právě teď.",
+      "Najděte každou nekrytou nebo přetíženou figuru.",
+      "Teprve poté ověřte, že je plánovaný tah bezpečný.",
+      "Před partiemi zahrajte krátké kolo Memory Chess pro ostřejší vybavování figur.",
+      "Po každé chybě zapište přehlédnutý signál jednou větou."
+    ],
+    "drillSectionTitle": "Jednoduchá cvičení proti chybám",
+    "drillCards": [
+      {
+        "title": "Přehled ze strany soupeře",
+        "description": "Každou pozici začněte kontrolou nejsilnějších hrozeb soupeře.",
+        "duration": "3 minuty",
+        "goal": "Myslet na nápad soupeře dřív než na vlastní.",
+        "ctaLabel": "Projít z druhé strany"
+      },
+      {
+        "title": "Alarm nekrytých figur",
+        "description": "Před tahem vyjmenujte každou nekrytou nebo přetíženou figuru.",
+        "duration": "4 minuty",
+        "goal": "Zachytit nejsnazší ztráty materiálu včas.",
+        "ctaLabel": "Spustit alarm"
+      },
+      {
+        "title": "Smyčka přehrávání chyb",
+        "description": "Přehrávejte vlastní chybné pozice, dokud přehlédnutá hrozba nebude zjevná.",
+        "duration": "6 minut",
+        "goal": "Učit se z pozic, které vás skutečně stály partie.",
+        "ctaLabel": "Přehrát svou chybu"
+      }
+    ],
+    "comparisonTitle": "Co se změní, když chyb ubývá",
+    "comparisonSummary": "Partie nebudou najednou bezchybné. Budou klidnější a prohry budou mít pochopitelné důvody místo jednotahové katastrofy.",
+    "comparisonRows": [
+      {
+        "label": "Okamžik tahu",
+        "struggling": "Táhnete, jakmile uvidíte plán.",
+        "stronger": "Táhnete až po krátké bezpečnostní kontrole."
+      },
+      {
+        "label": "Vnímání hrozeb",
+        "struggling": "Taktiku vidíte, až když přijde.",
+        "stronger": "Taktický tvar rozpoznáte dřív, než se rozhodnete."
+      },
+      {
+        "label": "Rozbor po partii",
+        "struggling": "Prohra působí náhodně.",
+        "stronger": "Rychle pojmenujete přesný přehlédnutý signál."
+      }
+    ],
+    "mistakes": [
+      "Snažit se odstranit chyby jen pomalejší hrou.",
+      "Učit se další zahájení, když je návyk kontroly hrozeb ještě slabý.",
+      "Procházet varianty enginu bez určení skutečně přehlédnutého signálu.",
+      "Ignorovat, že časový tlak oslabuje vybavování."
+    ],
+    "mistakesCallout": "Pomalejší hra nestačí. Pokaždé použijte stejnou krátkou bezpečnostní kontrolu.",
+    "planTitle": "Sedmidenní restart proti chybám",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "10 minut",
+        "detail": "Pouze přehled ze strany soupeře a alarm nekrytých figur."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "12 minut",
+        "detail": "Před každou herní sérií přidejte kolo Memory Chess pro čistší obraz pozice."
+      },
+      {
+        "label": "Den 5",
+        "duration": "15 minut",
+        "detail": "Přehrajte tři nedávné chyby a v každé zařaďte přehlédnutý signál."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 minut",
+        "detail": "Použijte celý seznam v rapid partiích a sledujte chyby na partii, ne jen výsledek."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Proč pořád dávám figury zadarmo?",
+        "answer": "Obvykle proto, že přehled před tahem není úplný. Taktiku možná znáte, ale před tahem neprohlédnete celou šachovnici."
+      },
+      {
+        "question": "Stačí hrát pomaleji?",
+        "answer": "Jen pokud ten čas využijete na jasnou bezpečnostní kontrolu. Bezcílné zírání na pozici nepomůže."
+      },
+      {
+        "question": "Pomáhají paměťová cvičení opravdu proti chybám?",
+        "answer": "Ano. Čistší vybavování figur usnadní všímat si hrozeb, když se pozice mění."
+      },
+      {
+        "question": "Co sledovat, aby chyb ubylo?",
+        "answer": "Chyby na partii, přehlédnuté nekryté figury a to, zda hrozba unikla kvůli špatnému přehledu, nebo špatnému počítání."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Postavte silnější přehled šachovnice, abyste chybám předešli."
+      },
+      {
+        "reason": "Podívejte se, proč taktika selhává při slabém sledování pozice."
+      },
+      {
+        "reason": "Zapojte práci proti chybám do celé rutiny začátečníka."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Proč se rating z úloh nepřenáší do partií",
+    "h1": "Proč se váš rating z úloh nepřenáší do partií",
+    "description": "Zjistěte, proč se dovednost z úloh liší od skutečných partií a jak mezeru uzavře vidění šachovnice, paměť a rozbor.",
+    "primaryKeyword": "proč se rating z úloh nepřenáší do partií",
+    "secondaryKeywords": [
+      "rating úloh versus šachový rating",
+      "taktika se nepřenáší do partií",
+      "dovednost z úloh ve skutečných partiích",
+      "proč jsem lepší v úlohách",
+      "vidění šachovnice"
+    ],
+    "painPoint": "Úlohy řešíte dobře, ale ve skutečných partiích taktiku přehlédnete.",
+    "ctaLabel": "Trénovat na skutečné partie",
+    "quickAnswer": "Úloha vám řekne, že taktika existuje. Partie ne. Musíte si všimnout nebezpečí, pamatovat si pozici a vědět, kdy zpomalit.",
+    "keyTakeaways": [
+      "Úloha oznamuje, že je co řešit.",
+      "V partii musíte nebezpečný okamžik najít sami.",
+      "Lepší vidění šachovnice a paměť vám ukážou taktiku dřív."
+    ],
+    "whoThisIsFor": [
+      "Hráči s vysokým ratingem v úlohách, ale stagnujícím ratingem v partiích.",
+      "Začátečníci, kteří taktiku vidí až po partii.",
+      "Každý, kdo nápady z úloh neumí použít v partii."
+    ],
+    "timeToRead": "8 minut čtení",
+    "introParagraphs": [
+      "Jde o častý problém začátečníků. Úlohy řešíte, ale v partiích stále ztrácíte figury, přehlížíte hrozby a hrajete uspěchaně.",
+      "Víc úloh to nemusí spravit. Musíte také poznat, kdy se pozice stává nebezpečnou, a představit si, co přijde po každé volbě."
+    ],
+    "startHereTitle": "Začněte propojením úloh a partií",
+    "startHereSteps": [
+      "Před řešením úloh věnujte 2 minuty přehledu šachovnice na šachy, braní a hrozby.",
+      "Přidejte kolo Memory Chess, aby obraz pozice zůstal stabilní pod tlakem.",
+      "Po úloze se ptejte, který signál by vás v partii měl přimět zpomalit.",
+      "Rozeberte jednu nedávnou chybu a srovnejte ji s podobnou taktickou úlohou.",
+      "Zahrajte v každém bloku aspoň jednu rapid partii a ověřte, zda přehled před tahem vydrží."
+    ],
+    "drillSectionTitle": "Cvičení, která propojí úlohy a partie",
+    "drillCards": [
+      {
+        "title": "Najděte varovný signál",
+        "description": "Než začnete hledat taktiku, hledejte varovný signál.",
+        "duration": "4 minuty",
+        "goal": "Všímat si nebezpečných pozic dřív.",
+        "ctaLabel": "Trénovat nejdřív signál"
+      },
+      {
+        "title": "Vybavování před počítáním",
+        "description": "Zahrajte před úlohami rychlé kolo Memory Chess, ať je pozice jasnější.",
+        "duration": "4 minuty",
+        "goal": "Propojit práci se vzorci se skutečnou hrou.",
+        "ctaLabel": "Nejdřív zostřit vybavování"
+      },
+      {
+        "title": "Přehrání pozice z partie",
+        "description": "Postavte znovu přehlédnutý taktický moment ze své partie a vyřešte ho jako úlohu.",
+        "duration": "6 minut",
+        "goal": "Vrátit taktickému tréninku podobu skutečných pozic.",
+        "ctaLabel": "Přehrát přehlédnutou taktiku"
+      }
+    ],
+    "comparisonTitle": "Úlohy versus partie: co se mění?",
+    "comparisonSummary": "Taktický tah může být stejný, ale mentální úkol nikoli.",
+    "comparisonRows": [
+      {
+        "label": "Zadání problému",
+        "struggling": "Partie vám neřekne, že taktika existuje.",
+        "stronger": "Všimnete si signálu, že se právě změnilo napětí."
+      },
+      {
+        "label": "Jasnost pozice",
+        "struggling": "Varianta se rozmaže, jakmile se pohne víc figur.",
+        "stronger": "Držíte v paměti důležitá pole a obránce."
+      },
+      {
+        "label": "Načasování rozhodnutí",
+        "struggling": "Hrajete běžným tempem, i když je pozice nebezpečná.",
+        "stronger": "Zpomalíte, jakmile se objeví šachy, braní nebo hrozby."
+      }
+    ],
+    "mistakes": [
+      "Řešit úlohy bez jakéhokoli kroku směrem k partiím.",
+      "Předpokládat, že samotná znalost taktiky zabrání chybám.",
+      "Nikdy nerozebrat, proč se pozice stala nebezpečnou.",
+      "Vnímat vidění šachovnice odděleně od taktiky."
+    ],
+    "mistakesCallout": "Nepřidávejte jen další úlohy. Trénujte i všímání si taktických momentů ve vlastních partiích.",
+    "planTitle": "Sedmidenní přenosový blok",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "12 minut",
+        "detail": "Do každého bloku úloh přidejte hledání signálu před řešením."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "12 minut",
+        "detail": "Před úlohami nebo rapidem zahrajte krátké kolo Memory Chess."
+      },
+      {
+        "label": "Den 5",
+        "duration": "15 minut",
+        "detail": "Přehrajte tři přehlédnuté taktické momenty ze svých partií."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 až 20 minut",
+        "detail": "Hrajte rapid a zastavte se pokaždé, když se pozice stane vynucenou nebo takticky napjatou."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Proč jsem lepší v úlohách než v partiích?",
+        "answer": "Protože úloha už dopředu říká, že je co najít. Skutečná partie ne."
+      },
+      {
+        "question": "Mám přestat řešit úlohy?",
+        "answer": "Ne. Nechte si je, ale přidejte vidění šachovnice, vybavování a přehrávání pozic z partií, ať se vzorce přenesou."
+      },
+      {
+        "question": "Jaké je nejlepší přenosové cvičení?",
+        "answer": "Přehrát přehlédnutou taktiku z vlastní partie a vyřešit ji poté, co pozici postavíte z paměti."
+      },
+      {
+        "question": "Jak přenos měřit?",
+        "answer": "Sledujte, zda klesají chyby na partii a přehlédnuté jednoduché taktiky, ne jen zda roste rating z úloh."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Použijte to k sestavení kratšího seznamu proti chybám."
+      },
+      {
+        "reason": "Posilte návyk přehledu, díky kterému je taktika vidět."
+      },
+      {
+        "reason": "Zvolte počet úloh, který nechá čas na hraní."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Jak vidět celou šachovnici",
+    "h1": "Jak vidět celou šachovnici",
+    "description": "Použijte jednoduchý přehled, abyste si všimli vzdálených figur, viděli hrozby a vyhnuli se tunelovému vidění.",
+    "primaryKeyword": "vidět celou šachovnici",
+    "secondaryKeywords": [
+      "vnímání šachovnice",
+      "jak se zbavit tunelového vidění",
+      "vidět celou pozici",
+      "cvičení přehledu šachovnice",
+      "periferní vidění šachovnice"
+    ],
+    "painPoint": "Soustředíte se na jednu oblast a hrozbu jinde přehlédnete.",
+    "ctaLabel": "Trénovat vidění celé šachovnice",
+    "quickAnswer": "Před každým tahem zkontrolujte oba krále, nekryté figury, centrum a okraje. Paměťový trénink pomáhá udržet v hlavě větší část pozice.",
+    "keyTakeaways": [
+      "Tunelové vidění znamená, že pozornost uvázla v jedné oblasti.",
+      "Kontrola figur u okraje je pro začátečníky obzvlášť užitečná.",
+      "Jasná paměť na pozici usnadní přehled."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří taktiku vidí jen na jedné straně šachovnice.",
+      "Začátečníci, kterým unikají střelci, věže nebo vzdálené hrozby.",
+      "Každý, komu je v otevřených pozicích těsno."
+    ],
+    "timeToRead": "7 minut čtení",
+    "introParagraphs": [
+      "Mnoho začátečníků se dívá jen na figury poblíž zamýšleného tahu. Vzdálení střelci, věže a hrozby proto snadno uniknou.",
+      "Nemusíte na pozici koukat déle. Použijte stejný jednoduchý přehled a zkontrolujte každou důležitou oblast."
+    ],
+    "startHereTitle": "Začněte tady: rozšiřte přehled",
+    "startHereSteps": [
+      "Zkontrolujte oba krále a linie mířící k nim.",
+      "Nekryté figury hledejte nejdřív v centru, pak u okrajů.",
+      "Střelce a věže projděte po celé linii, ne jen k poli, které vás zajímá.",
+      "Zahrajte kolo Memory Chess, ať je celá pozice snáz dostupná v pozornosti.",
+      "Před tahem se zeptejte, kterou část šachovnice jste ještě neviděli."
+    ],
+    "drillSectionTitle": "Cvičení proti tunelovému vidění",
+    "drillCards": [
+      {
+        "title": "Kontrola okrajů",
+        "description": "Před každým tahem zkontrolujte figury v rozích a u okrajů.",
+        "duration": "3 minuty",
+        "goal": "Zachytit hrozby mimo oblast, na kterou se soustředíte.",
+        "ctaLabel": "Zkontrolovat okraje"
+      },
+      {
+        "title": "Projití linií",
+        "description": "Projděte každou linii střelce a věže celou, ne jen jedno cílové pole.",
+        "duration": "4 minuty",
+        "goal": "Při každém přehledu pokrýt víc šachovnice.",
+        "ctaLabel": "Projít celé linie"
+      },
+      {
+        "title": "Vybavení celé pozice",
+        "description": "Použijte Memory Chess se středním počtem figur a pak pozici popište po zónách.",
+        "duration": "5 minut",
+        "goal": "Zapamatovat si najednou větší část pozice.",
+        "ctaLabel": "Vybavovat po zónách"
+      }
+    ],
+    "comparisonTitle": "Tunelové vidění versus vnímání celé šachovnice",
+    "comparisonSummary": "Nemusíte se dívat všude stejně dlouho. Stačí, že nic důležitého nepřehlédnete.",
+    "comparisonRows": [
+      {
+        "label": "Dráha pozornosti",
+        "struggling": "Zíráte na jeden shluk figur.",
+        "stronger": "Rizikové zóny procházíte v ustáleném pořadí."
+      },
+      {
+        "label": "Dálkové figury",
+        "struggling": "Zapomínáte na střelce a věže daleko od dění.",
+        "stronger": "Než tahu uvěříte, projdete jejich celé linie."
+      },
+      {
+        "label": "Zóny šachovnice",
+        "struggling": "Přeskakujete stranu, která působí klidně.",
+        "stronger": "Klidnou stranu zkontrolujete před tahem."
+      }
+    ],
+    "mistakes": [
+      "Myslet si, že vidět celou šachovnici znamená dívat se déle místo procházet lépe.",
+      "Ignorovat okraje, protože centrum působí naléhavěji.",
+      "Neprojít linie dálkových figur celé.",
+      "Chtít procházet víc, než si dokážete figury jasně pamatovat."
+    ],
+    "mistakesCallout": "Víc času na přemýšlení bez jasného přehledu nepomůže. Kontrolujte pozici pokaždé ve stejném pořadí.",
+    "planTitle": "Sedmidenní plán celkového přehledu",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "10 minut",
+        "detail": "Pouze kontrola králů, nekrytých figur a okrajů."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "12 minut",
+        "detail": "Přidejte úplné projití linií střelců a věží."
+      },
+      {
+        "label": "Den 5",
+        "duration": "12 minut",
+        "detail": "Použijte Memory Chess a pozici si vybavujte po zónách místo náhodně."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 minut",
+        "detail": "Přeneste přehled do rapid partií a při chybě si zapište, která zóna ji způsobila."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Proč mi pořád unikají figury na druhé straně?",
+        "answer": "Protože je vaše pozornost příliš lokální. Pevné pořadí přehledu je lepší než doufat, že si všeho všimnete sami."
+      },
+      {
+        "question": "Pomáhá Memory Chess vnímání celé šachovnice?",
+        "answer": "Ano. Učí vás držet v paměti větší část pozice, ne jen taktické ohnisko."
+      },
+      {
+        "question": "Mám okraje kontrolovat každý tah?",
+        "answer": "Ano, hlavně jako začátečník. Řada laciných chyb se skrývá u okrajových figur a dlouhých linií."
+      },
+      {
+        "question": "Jak poznám, že se přehled lepší?",
+        "answer": "Uniká vám méně vzdálených hrozeb a méně vás překvapí střelci, věže a odkryté útoky."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Spojte vnímání celé šachovnice se silnějším bezpečnostním seznamem."
+      },
+      {
+        "reason": "Zlepšete pozici v hlavě, ať je širší přehled snazší."
+      },
+      {
+        "reason": "Poznávejte pole rychleji, ať široký přehled tolik nestojí."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Trénink souřadnic pro rychlejší orientaci",
+    "h1": "Trénink šachových souřadnic pro začátečníky",
+    "description": "Naučte se názvy polí rychleji a usnadněte si přehled, zápis i vizualizaci.",
+    "primaryKeyword": "trénink šachových souřadnic",
+    "secondaryKeywords": [
+      "trénink šachového zápisu",
+      "učení šachových souřadnic",
+      "rychlejší rozpoznávání polí",
+      "vnímání polí na šachovnici",
+      "cvičení na názvy polí"
+    ],
+    "painPoint": "Název pole vám chvíli trvá, nebo si pole často pletete.",
+    "ctaLabel": "Trénovat názvy polí",
+    "quickAnswer": "Souřadnice jsou názvy 64 polí. Jejich znalost usnadní přehled pozice, představování tahů i rozbor partií.",
+    "keyTakeaways": [
+      "Rychlé rozpoznávání polí usnadňuje přehled.",
+      "Souřadnice trénujte na skutečných pozicích.",
+      "Na začátek stačí základní názvy polí."
+    ],
+    "whoThisIsFor": [
+      "Začátečníci, kteří sloupce a řady stále počítají pomalu.",
+      "Hráči, kteří chtějí rychlejší přehled a vizualizaci.",
+      "Každý, komu je šachový zápis nejasný."
+    ],
+    "timeToRead": "7 minut čtení",
+    "introParagraphs": [
+      "Souřadnice jsou víc než knihy a seznamy tahů. Rychlé rozpoznávání polí pomáhá vidění šachovnice, paměti i rozboru.",
+      "Když znáte názvy polí, šachovnice se stane přehlednou mapou místo souboru mlhavých oblastí."
+    ],
+    "startHereTitle": "Začněte názvy polí na skutečné šachovnici",
+    "startHereSteps": [
+      "Vyberte jeden sloupec nebo řadu a názvy polí říkejte nahlas.",
+      "Při stavění pozice z Memory Chess říkejte pole každé figury.",
+      "Vezměte nedávnou pozici a klíčové útočníky i obránce pojmenujte podle polí.",
+      "Střelce, věže a skoky jezdce trénujte přes souřadnice, ne jen očima.",
+      "Zakončete rychlým přehledem, kde každou nekrytou figuru pojmenujete podle pole."
+    ],
+    "drillSectionTitle": "Cvičení souřadnic užitečná ve hře",
+    "drillCards": [
+      {
+        "title": "Pojmenování figury a pole",
+        "description": "Postavte pozici a každou figuru pojmenujte i s jejím polem.",
+        "duration": "4 minuty",
+        "goal": "Spojit názvy polí s figurami, které si máte pamatovat.",
+        "ctaLabel": "Pojmenovat každé pole"
+      },
+      {
+        "title": "Pojmenování dlouhých linií",
+        "description": "Projděte linie střelců a věží a říkejte pole, na která působí.",
+        "duration": "4 minuty",
+        "goal": "Udělat souřadnice užitečné při celkovém přehledu.",
+        "ctaLabel": "Projít linie po polích"
+      },
+      {
+        "title": "Mapa skoků jezdce",
+        "description": "Vyberte jedno pole jezdce a rychle vyjmenujte všechna legální cílová pole.",
+        "duration": "3 minuty",
+        "goal": "Rychleji poznávat tahy jezdce a cílová pole.",
+        "ctaLabel": "Zmapovat skoky"
+      }
+    ],
+    "comparisonTitle": "Pomalé versus rychlé rozpoznávání polí",
+    "comparisonSummary": "Souřadnice nezlepší každou část vaší hry, ale několik dovedností výrazně usnadní.",
+    "comparisonRows": [
+      {
+        "label": "Přehled pozice",
+        "struggling": "Znáte tvar, ale ne názvy polí.",
+        "stronger": "Hrozby a obránce určíte přesněji a rychleji."
+      },
+      {
+        "label": "Vizualizace",
+        "struggling": "Představené tahy působí mlhavě.",
+        "stronger": "Vzniklou pozici snáz popíšete a udržíte."
+      },
+      {
+        "label": "Rozbor",
+        "struggling": "Poznámky po partii zůstávají neurčité.",
+        "stronger": "Klíčový moment popíšete dost jasně, abyste se k němu vrátili."
+      }
+    ],
+    "mistakes": [
+      "Trénovat názvy polí bez skutečných pozic.",
+      "Učit se pravidla zápisu bez příkladů na šachovnici.",
+      "Ignorovat linie dálkových figur při tréninku polí.",
+      "Opustit návyk, jakmile je základní zápis známý."
+    ],
+    "mistakesCallout": "Neopakujte jen názvy polí. Používejte je se skutečnými figurami a pozicemi.",
+    "planTitle": "Sedmidenní rozehřátí souřadnic",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "8 minut",
+        "detail": "Při stavění pozice z Memory Chess pojmenujte každou figuru a její pole."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "10 minut",
+        "detail": "Přidejte pojmenování dlouhých linií pro střelce a věže."
+      },
+      {
+        "label": "Den 5",
+        "duration": "10 minut",
+        "detail": "Trénujte mapu skoků jezdce a jistotu na centrálních polích."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "12 minut",
+        "detail": "Použijte názvy polí při celém přehledu a pak jednu důležitou pozici rozeberte jen pomocí polí."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Jsou souřadnice pro začátečníky opravdu důležité?",
+        "answer": "Ano, když zrychlují orientaci, vizualizaci a rozbor. Dokonalý zápis nepotřebujete, ale rychlé rozpoznání pomáhá."
+      },
+      {
+        "question": "Jak se souřadnice nejlépe učit?",
+        "answer": "Učte se názvy polí na skutečných pozicích a figurách místo opakování samotného zápisu."
+      },
+      {
+        "question": "Pomůže mi to méně chybovat?",
+        "answer": "Nepřímo ano. Rychlé rozpoznávání polí zpřesní přehled i kontrolu hrozeb."
+      },
+      {
+        "question": "Jak dlouho souřadnice trénovat?",
+        "answer": "Pět až deset soustředěných minut stačí, pokud je cvičení spojené se skutečnou prací na šachovnici."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Použijte souřadnice k podpoře širšího přehledu."
+      },
+      {
+        "reason": "Zpřesněte aktualizace v hlavě pole po poli."
+      },
+      {
+        "reason": "Použijte názvy polí ke zjednodušení myšlení pod tlakem."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Denní 20minutový šachový plán pro začátečníky",
+    "h1": "Denní 20minutový šachový plán pro začátečníky",
+    "description": "Držte se jednoduchého 20minutového plánu: práce s pozicí, paměť, partie a krátký rozbor.",
+    "primaryKeyword": "denní 20minutový šachový plán",
+    "secondaryKeywords": [
+      "denní šachová rutina pro začátečníky",
+      "krátký plán studia šachu",
+      "zlepšování za 20 minut denně",
+      "tréninkový program pro začátečníky",
+      "rutina úloh a rozboru"
+    ],
+    "painPoint": "Chcete se zlepšovat, ale většina šachových plánů zabere příliš času.",
+    "ctaLabel": "Spustit 20minutový plán",
+    "quickAnswer": "Věnujte pár minut citu pro pozici, paměti, taktice a rozboru. Držte rutinu dost krátkou, ať ji zvládnete i unavení.",
+    "keyTakeaways": [
+      "Trénovat často je důležitější než trénovat dlouho.",
+      "Používejte cvičení i skutečné pozice.",
+      "Krátký rozbor pomůže zítřejšímu tréninku."
+    ],
+    "whoThisIsFor": [
+      "Začátečníci s málem času, ale stálou motivací.",
+      "Hráči, kteří příliš náročné plány vzdají.",
+      "Každý, kdo chce opakovatelnou denní rutinu."
+    ],
+    "timeToRead": "7 minut čtení",
+    "introParagraphs": [
+      "Mnoho studijních plánů funguje jen s hodně volného času. Použitelný plán musí fungovat i v nabitý den.",
+      "Tato 20minutová rutina zachovává jedno cvičení, jednu skutečnou pozici a krátký rozbor."
+    ],
+    "startHereTitle": "Vaše 20minutová šachová rutina",
+    "startHereSteps": [
+      "Věnujte 4 minuty cvičení na cit pro pozici nebo vybavování.",
+      "Věnujte 6 minut kolu Memory Chess se stejným nastavením po celý týden.",
+      "Věnujte 6 minut taktice nebo pozici ze skutečné partie.",
+      "Věnujte 4 minuty zápisu toho, co dnes selhalo a co vydrželo.",
+      "Držte tuto strukturu aspoň 7 dní, než ji upravíte."
+    ],
+    "drillSectionTitle": "Cvičení, která se vejdou do krátkého plánu",
+    "drillCards": [
+      {
+        "title": "Rozehřátí vybavováním",
+        "description": "Použijte krátké kolo Memory Chess jako kotvu celého bloku.",
+        "duration": "6 minut",
+        "goal": "Začínat každý blok stejným paměťovým rozehřátím.",
+        "ctaLabel": "Spustit rozehřátí"
+      },
+      {
+        "title": "Rychlá kontrola hrozeb",
+        "description": "Projděte pozici na šachy, braní, hrozby a nekryté figury.",
+        "duration": "4 minuty",
+        "goal": "Zlepšit přenos do partií skoro bez ztráty času.",
+        "ctaLabel": "Udělat kontrolu hrozeb"
+      },
+      {
+        "title": "Kolečko poznámek",
+        "description": "Napište jednu větu o typu chyby, kterou jste dnes udělali.",
+        "duration": "4 minuty",
+        "goal": "Použít dnešní poznatek zítra.",
+        "ctaLabel": "Zapsat jeden poznatek"
+      }
+    ],
+    "comparisonTitle": "Rutina, kterou skutečně udržíte",
+    "comparisonSummary": "Nejlepší rutina je ta, kterou zopakujete v běžném týdnu.",
+    "comparisonRows": [
+      {
+        "label": "Denní zátěž",
+        "struggling": "Zkoušíte příliš mnoho forem studia naráz.",
+        "stronger": "Opakujete kompaktní smyčku, která denně pokryje základy."
+      },
+      {
+        "label": "Přenos",
+        "struggling": "Jen se díváte nebo čtete a netrénujete.",
+        "stronger": "Každý blok obsahuje cvičení, které použijete v partiích."
+      },
+      {
+        "label": "Rozbor",
+        "struggling": "Chyby mizí, protože si nic nezapisujete.",
+        "stronger": "Každý den končí poznámkou na zítřek."
+      }
+    ],
+    "mistakes": [
+      "Kopírovat pokročilé plány, které neudržíte.",
+      "Věnovat všech 20 minut pasivnímu obsahu.",
+      "Měnit rutinu každé dva dny.",
+      "Vynechávat rozbor, protože působí drobně."
+    ],
+    "mistakesCallout": "Nedělejte plán větší. Udělejte ho dost lehký na opakování.",
+    "planTitle": "20minutová rutina po 7 dní",
+    "planSteps": [
+      {
+        "label": "Den 1 až 3",
+        "duration": "20 minut",
+        "detail": "Kvůli konzistenci držte stejné nastavení Memory Chess a stejný formát kontroly."
+      },
+      {
+        "label": "Den 4",
+        "duration": "20 minut",
+        "detail": "Přečtěte si poznámky a nechte si jen jeden bod k nápravě na další tři dny."
+      },
+      {
+        "label": "Den 5 až 6",
+        "duration": "20 minut",
+        "detail": "Zopakujte přesně stejnou strukturu bez další pestrosti."
+      },
+      {
+        "label": "Den 7",
+        "duration": "20 minut",
+        "detail": "Ověřte, zda se zlepšily chyby nebo přesnost vybavování, a udělejte jen jednu úpravu na další týden."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Stačí 20 minut tréninku?",
+        "answer": "Ano, pokud jsou pravidelné a obsahují cvičení, která se přímo přenášejí do partií, ne jen pasivní učení."
+      },
+      {
+        "question": "Mám všech 20 minut věnovat taktice?",
+        "answer": "Většinou ne. Kombinace jasnosti pozice, taktického přenosu a krátkého rozboru funguje u začátečníků lépe."
+      },
+      {
+        "question": "Jak dlouho držet stejný plán?",
+        "answer": "Aspoň týden. Neustálé změny udělají pokrok nečitelným."
+      },
+      {
+        "question": "Co si mám zapisovat?",
+        "answer": "Chyby na partii, přesnost vybavování a typ chyby, který se objevuje nejčastěji."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Podívejte se, kam tato krátká rutina zapadá v delším plánu."
+      },
+      {
+        "reason": "Vyvažte taktickou práci a jasnost pozice."
+      },
+      {
+        "reason": "Držte blok rozboru jednoduchý a produktivní."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Jak si začátečník rozebere vlastní partie",
+    "h1": "Jak si začátečník rozebere vlastní šachové partie",
+    "description": "Projděte své partie, pochopte chyby a vyberte jednu jasnou věc k tréninku.",
+    "primaryKeyword": "rozbor šachových partií pro začátečníky",
+    "secondaryKeywords": [
+      "rozbor partie pro začátečníky",
+      "procházení vlastních partií",
+      "vlastní rozbor v šachu",
+      "rozbor chyb",
+      "rutina po partii"
+    ],
+    "painPoint": "Váš rozbor je příliš rychlý, chaotický nebo plný variant enginu.",
+    "ctaLabel": "Rozebrat další partii",
+    "quickAnswer": "Najděte, kde se partie zlomila, pojmenujte typ chyby a vyberte jednu nápravu. Engine otevřete až poté, co pozici sami prozkoumáte.",
+    "keyTakeaways": [
+      "Každý rozbor ukončete akcí, ne dlouhým seznamem tahů enginu.",
+      "Pojmenování typu chyby pomáhá vybrat cvičení.",
+      "Zkuste klíčovou pozici postavit z paměti."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří partie procházejí, ale nevědí, co dál.",
+      "Začátečníci, kteří vidí skok hodnocení, ale nechápou proč.",
+      "Každý, kdo chce jednodušší návyk po partii."
+    ],
+    "timeToRead": "7 minut čtení",
+    "introParagraphs": [
+      "Začněte jednou otázkou: která chyba změnila partii? Samotné hodnocení enginu neřekne, co máte trénovat.",
+      "Postavte klíčovou pozici, pojmenujte chybu a z toho vyberte zítřejší cvičení."
+    ],
+    "startHereTitle": "Začněte tady: rozborová smyčka pro začátečníky",
+    "startHereSteps": [
+      "Najděte první okamžik, kdy se pozice výrazně změnila.",
+      "Postavte tu pozici z paměti dřív, než se podíváte do enginu.",
+      "Zařaďte chybu jako vidění, paměť, počítání nebo hospodaření s časem.",
+      "Zeptejte se, který signál vás měl přimět zpomalit.",
+      "Odpověď proměňte ve cvičení pro další blok."
+    ],
+    "drillSectionTitle": "Jednoduchá rozborová cvičení",
+    "drillCards": [
+      {
+        "title": "Postavit klíčovou pozici",
+        "description": "Pozici hlavní chyby postavte z paměti dřív, než ji zkontrolujete.",
+        "duration": "5 minut",
+        "goal": "Zapamatovat si pozici dřív, než uvidíte odpověď.",
+        "ctaLabel": "Postavit ten moment"
+      },
+      {
+        "title": "Označit typ chyby",
+        "description": "Každou velkou chybu označte jako vidění, paměť, počítání nebo časovou tíseň.",
+        "duration": "3 minuty",
+        "goal": "Vědět, co trénovat dál.",
+        "ctaLabel": "Označit typ chyby"
+      },
+      {
+        "title": "Rozbor s jednou nápravou",
+        "description": "Ukončete rozbor jednou jasnou nápravou na zítra.",
+        "duration": "2 minuty",
+        "goal": "Skončit užitečným dalším krokem.",
+        "ctaLabel": "Vybrat jednu nápravu"
+      }
+    ],
+    "comparisonTitle": "Užitečný versus neužitečný rozbor",
+    "comparisonSummary": "Nemusíte studovat každý tah. Najděte nejjasnější poznatek pro další cvičení.",
+    "comparisonRows": [
+      {
+        "label": "Použití enginu",
+        "struggling": "Engine otevřete hned.",
+        "stronger": "Nejdřív si stanovíte vlastní diagnózu."
+      },
+      {
+        "label": "Výsledek",
+        "struggling": "Skončíte s hromadou komentářů a bez akce.",
+        "stronger": "Skončíte cvičením nebo úpravou seznamu."
+      },
+      {
+        "label": "Paměť",
+        "struggling": "Pozice hned po partii zmizí.",
+        "stronger": "Postavíte ji znovu a chybu uvidíte jasněji."
+      }
+    ],
+    "mistakes": [
+      "Rozebírat jen podle variant enginu bez vlastní diagnózy.",
+      "Snažit se rozebrat každý tah stejně hluboko.",
+      "Nepojmenovat typ chyby.",
+      "Ukončit rozbor bez volby dalšího cvičení."
+    ],
+    "mistakesCallout": "Neprocházejte každou variantu enginu. Pojmenujte chybu a trénujte nápravu.",
+    "planTitle": "Sedmidenní návyk rozboru",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "10 minut",
+        "detail": "Projděte jednu partii a najděte jen první velký zlom."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "12 minut",
+        "detail": "Tu pozici postavte z paměti dřív, než se podíváte do enginu."
+      },
+      {
+        "label": "Den 5",
+        "duration": "12 minut",
+        "detail": "Každou velkou chybu zařaďte k typu a spočítejte, který se objevuje nejčastěji."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 minut",
+        "detail": "Podle nejčastějšího typu chyby vyberte první cvičení dalšího bloku."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Mají začátečníci používat engine?",
+        "answer": "Ano, ale až po vlastním pokusu o diagnózu. Jinak zůstane rozbor pasivní."
+      },
+      {
+        "question": "Kolik chyb po partii procházet?",
+        "answer": "Většině začátečníků stačí jeden až tři velké zlomy."
+      },
+      {
+        "question": "Co si po rozboru zapsat?",
+        "answer": "Typ chyby, přehlédnutý signál a cvičení nebo úpravu seznamu na příště."
+      },
+      {
+        "question": "Jak Memory Chess pomáhá rozboru?",
+        "answer": "Pomáhá znovu postavit důležité pozice, takže je rozbor přesnější."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Zasaďte rozbor do rutiny, která nezahltí."
+      },
+      {
+        "reason": "Proměňte výsledky rozboru ve cvičení proti chybám."
+      },
+      {
+        "reason": "Zapamatujte si a znovu postavte klíčové momenty po partii."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Kolik šachových úloh denně má řešit začátečník?",
+    "h1": "Kolik šachových úloh denně má řešit začátečník?",
+    "description": "Zvolte denní počet úloh, který zlepší taktiku a nechá čas na paměť, partie a rozbor.",
+    "primaryKeyword": "kolik šachových úloh denně",
+    "secondaryKeywords": [
+      "denní počet úloh",
+      "rutina úloh pro začátečníky",
+      "kolik taktiky denně",
+      "příliš mnoho šachových úloh",
+      "objem taktiky pro začátečníky"
+    ],
+    "painPoint": "Řešíte hodně úloh, ale nevíte, jestli pomáhají vašim partiím.",
+    "ctaLabel": "Vyvážit úlohy a hraní",
+    "quickAnswer": "Většině začátečníků stačí krátký denní blok. Skončete, dokud myslíte jasně, a nechte si čas na partie, paměť a rozbor.",
+    "keyTakeaways": [
+      "Kvalita úloh je důležitější než jejich počet.",
+      "Příliš mnoho úloh ukrajuje čas partiím a rozboru.",
+      "Ideální počet by měl nechat čas na hraní nebo rozbor."
+    ],
+    "whoThisIsFor": [
+      "Hráči, jejichž celý studijní plán tvoří úlohy.",
+      "Začátečníci, kteří chtějí jasnou rutinu úloh.",
+      "Každý, kdo chce vyvážit úlohy a hraní."
+    ],
+    "timeToRead": "7 minut čtení",
+    "introParagraphs": [
+      "Neexistuje jedno ideální číslo pro všechny. Příliš málo úloh zpomalí učení vzorců, příliš mnoho nenechá čas na ostatní užitečné věci.",
+      "Řešte tolik, abyste zůstali ostří, a zbytek času věnujte paměti na pozici, partiím a rozboru."
+    ],
+    "startHereTitle": "Zvolte rozumný denní počet",
+    "startHereSteps": [
+      "Rozhodněte, zda jsou úlohy rozehřátí, hlavní blok, nebo kontrola přenosu.",
+      "Před nimi nebo po nich si nechte krátké kolo Memory Chess kvůli jasnosti pozice.",
+      "Skončete, jakmile jsou odpovědi uspěchané, místo honby za větším číslem.",
+      "Každý den znovu postavte jeden přehlédnutý taktický moment ze skutečné partie.",
+      "Počet měňte až poté, co ověříte, zda se mění chyby v partiích."
+    ],
+    "drillSectionTitle": "Cvičení, díky kterým jsou úlohy užitečnější",
+    "drillCards": [
+      {
+        "title": "Rozehřátí plus vybavování",
+        "description": "Spojte krátké cvičení vybavování s přiměřeným blokem úloh místo studeného startu.",
+        "duration": "10 minut",
+        "goal": "Propojit řešení úloh se skutečnou hrou.",
+        "ctaLabel": "Přidat vybavování"
+      },
+      {
+        "title": "Kontrola signálu po každé úloze",
+        "description": "Než uvidíte řešení, zeptejte se, který varovný signál taktiku umožnil.",
+        "duration": "5 minut",
+        "goal": "Všímat si, proč pozice obsahuje taktiku.",
+        "ctaLabel": "Ověřit signál"
+      },
+      {
+        "title": "Znovu postavit taktiku z partie",
+        "description": "Přehlédnutou taktiku z partie proměňte v úlohu, kterou vyřešíte po postavení pozice.",
+        "duration": "5 minut",
+        "goal": "Využít taktiku z vlastních partií.",
+        "ctaLabel": "Postavit taktiku"
+      }
+    ],
+    "comparisonTitle": "Příliš málo, příliš mnoho a tak akorát",
+    "comparisonSummary": "Správný počet udrží taktiku ostrou a přesto nechá čas na hraní.",
+    "comparisonRows": [
+      {
+        "label": "Rozpoznávání vzorců",
+        "struggling": "Příliš málo tréninku dělá běžnou taktiku cizí.",
+        "stronger": "Přiměřený denní blok drží vzorce svěží."
+      },
+      {
+        "label": "Přenos",
+        "struggling": "Příliš mnoho úloh nenechá čas na cit pro pozici ani rozbor.",
+        "stronger": "Vaše rutina si drží vybavování i práci se skutečnými pozicemi."
+      },
+      {
+        "label": "Únava",
+        "struggling": "Pozdější úlohy se mění v uspěchané hádání.",
+        "stronger": "Končíte, dokud jsou rozhodnutí čistá."
+      }
+    ],
+    "mistakes": [
+      "Brát počet úloh jako jediné měřítko kvality.",
+      "Řešit taktiku bez jakéhokoli přenosu do partií.",
+      "Pokračovat dlouho po poklesu soustředění.",
+      "Vytlačit rozbor a cit pro pozici."
+    ],
+    "mistakesCallout": "Víc úloh není vždy lépe. Ověřte, zda pomáhají vašim skutečným partiím.",
+    "planTitle": "Sedmidenní plán rovnováhy",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "15 minut",
+        "detail": "Použijte malý blok úloh a předřaďte mu krátké cvičení vybavování."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "15 minut",
+        "detail": "Po každé úloze přidejte kontrolu signálu, ať vidíte, proč taktika existovala."
+      },
+      {
+        "label": "Den 5",
+        "duration": "15 minut",
+        "detail": "Postavte přehlédnutou taktiku z partie a porovnejte ji se svým výkonem v úlohách."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 až 20 minut",
+        "detail": "Počet měňte jen tehdy, když odpovědi zůstávají pečlivé a zbývá čas na hraní."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kolik úloh denně stačí začátečníkovi?",
+        "answer": "Tolik, aby běžná taktika zůstala známá a zbyl čas na paměť a partie. Mnoha lidem stačí krátký denní blok."
+      },
+      {
+        "question": "Může příliš mnoho úloh škodit?",
+        "answer": "Nepřímo ano. Mohou vytlačit cit pro pozici, vybavování a rozbor, které jsou potřeba pro skutečný přenos."
+      },
+      {
+        "question": "Úlohy před partiemi, nebo po nich?",
+        "answer": "Funguje obojí, ale malé rozehřátí plus přenosový krok po partii se často osvědčí."
+      },
+      {
+        "question": "Co mám sledovat?",
+        "answer": "Zda klesají chyby a přehlédnuté jednoduché taktiky, ne jen kolik úloh jste vyřešili."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Pochopte, proč úspěch v úlohách sám o sobě nestačí."
+      },
+      {
+        "reason": "Zasaďte úlohy do vyvážené krátké rutiny."
+      },
+      {
+        "reason": "Učte se běžné vzorce místo zvyšování počtu."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Cvičení rozpoznávání vzorců v šachu",
+    "h1": "Cvičení rozpoznávání vzorců pro začátečníky",
+    "description": "Používejte jednoduchá cvičení, abyste si všímali běžných šachových vzorců a rychleji viděli užitečné nápady.",
+    "primaryKeyword": "cvičení rozpoznávání vzorců v šachu",
+    "secondaryKeywords": [
+      "rozpoznávání vzorců v šachu",
+      "trénink taktických motivů",
+      "cvičení taktických vzorců",
+      "šachové vzorce pro začátečníky",
+      "zapamatování šachových motivů"
+    ],
+    "painPoint": "Každá pozice působí nově, takže taktické nápady vidíte pozdě.",
+    "ctaLabel": "Trénovat vzorce",
+    "quickAnswer": "Vzorec je známé uspořádání figur a polí. Opakujte stejný druh vzorce, dokud rychle neuvidíte myšlenku za ním.",
+    "keyTakeaways": [
+      "Vzorec zahrnuje tvar na šachovnici i myšlenku, kterou vytváří.",
+      "Paměť na pozici pomáhá všímat si vzorců pod tlakem.",
+      "Zopakujte pár běžných vzorců dřív, než přidáte mnoho nových."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří taktiku vyřeší, ale stejné tvary v partiích nevidí.",
+      "Začátečníci, kteří chtějí víc struktury než náhodné úlohy.",
+      "Každý, komu pozice stále připadají vizuálně chaotické."
+    ],
+    "timeToRead": "7 minut čtení",
+    "introParagraphs": [
+      "Rozpoznávání vzorců udělá pozici známou. Tvar na šachovnici může napovědět vidličku, vazbu, uvězněnou figuru nebo slabé pole ještě dřív, než začnete počítat.",
+      "Začněte malou skupinou běžných vzorců. Každou pozici postavte z paměti, ať si zapamatujete figury a pole, která myšlenku nesou."
+    ],
+    "startHereTitle": "Začněte jedním vzorcem po druhém",
+    "startHereSteps": [
+      "Vyberte jeden druh vzorce, například vidličky, vazby nebo útoky na nekryté figury.",
+      "Prostudujte tvar a postavte ho z paměti, ne jen ze statického diagramu.",
+      "Pojmenujte pole a obránce, kteří vzorec nesou.",
+      "Zahrajte kolo Memory Chess, ať se čisté vybavování ustálí.",
+      "Projděte nedávnou partii a najděte, kde se podobný vzorec objevil nebo chyběl."
+    ],
+    "drillSectionTitle": "Jednoduchá cvičení na vzorce",
+    "drillCards": [
+      {
+        "title": "Postavit vzorec",
+        "description": "Postavte šachový vzorec z paměti a pojmenujte klíčové figury a pole.",
+        "duration": "5 minut",
+        "goal": "Spojit vzorec s jasnou pamětí na pozici.",
+        "ctaLabel": "Postavit vzorec"
+      },
+      {
+        "title": "Zopakovat jednu rodinu",
+        "description": "Zopakujte několik příkladů stejného vzorce, než změníte druh.",
+        "duration": "5 minut",
+        "goal": "Udělat tvar na šachovnici známým.",
+        "ctaLabel": "Zopakovat rodinu"
+      },
+      {
+        "title": "Najít ho ve vlastních partiích",
+        "description": "Projděte nedávnou partii a najděte, kde se stejný vzorec objevil.",
+        "duration": "5 minut",
+        "goal": "Spojit práci se vzorci se skutečnými pozicemi.",
+        "ctaLabel": "Hledat ve svých partiích"
+      }
+    ],
+    "comparisonTitle": "Náhodná taktika versus skutečné rozpoznávání vzorců",
+    "comparisonSummary": "Vzorce pomáhají, když si jich všimnete dřív, než začnete dlouze počítat.",
+    "comparisonRows": [
+      {
+        "label": "Struktura tréninku",
+        "struggling": "Neustále skáčete mezi nesouvisejícími vzorci.",
+        "stronger": "Opakujete jeden druh vzorce, dokud nezdomácní."
+      },
+      {
+        "label": "Paměť na pozici",
+        "struggling": "Znáte myšlenku, ale ne pole, která ji nesou.",
+        "stronger": "Pamatujete si detaily, díky nimž vzorec funguje."
+      },
+      {
+        "label": "Skutečné partie",
+        "struggling": "Vzorce zůstávají uzavřené v úlohách.",
+        "stronger": "Všímáte si jejich raných náznaků v probíhající partii."
+      }
+    ],
+    "mistakes": [
+      "Naučit se jen název vzorce bez pochopení tvaru.",
+      "Měnit druh vzorce příliš často.",
+      "Ignorovat pole a obránce, kteří vzorec nesou.",
+      "Vynechat rozbor partie po práci se vzorci."
+    ],
+    "mistakesCallout": "Nepřidávejte pestrost příliš rychle. Opakujte jeden druh vzorce, dokud nezdomácní.",
+    "planTitle": "Sedmidenní plán vzorců",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "10 minut",
+        "detail": "Vyberte jeden druh vzorce a postavte několik příkladů z paměti."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "12 minut",
+        "detail": "Ke každému příkladu přidejte názvy polí a počítání obránců."
+      },
+      {
+        "label": "Den 5",
+        "duration": "12 minut",
+        "detail": "Před prací se vzorci zahrajte kolo Memory Chess, ať je pozice jasnější."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 minut",
+        "detail": "Prohledejte nedávné partie na stejný vzorec a zapište, kde se objevil nebo se objevit mohl."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Co je rozpoznávání vzorců v šachu?",
+        "answer": "Vidět na šachovnici známý tvar a rychle si vybavit myšlenku, která tam obvykle funguje."
+      },
+      {
+        "question": "Jak začátečníci trénují rozpoznávání vzorců?",
+        "answer": "Opakováním malé sady vzorců, stavěním pozic z paměti a jejich hledáním ve skutečných partiích."
+      },
+      {
+        "question": "Stačí na vzorce úlohy?",
+        "answer": "Ne vždy. Pomáhají, ale teprve opakování stejného druhu a rozbor partií je udělá skutečně použitelnými."
+      },
+      {
+        "question": "Proč kombinovat Memory Chess s prací na vzorcích?",
+        "answer": "Protože rozpoznat vzorec je snazší, když celá pozice zůstává jasná v paměti."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Postavte silnější paměťovou vrstvu pro učení vzorců."
+      },
+      {
+        "reason": "Vyvažte práci se vzorci rozumným množstvím úloh."
+      },
+      {
+        "reason": "Použijte naučené vzorce ve skutečných partiích."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Cvičení počítání v šachu pro začátečníky",
+    "h1": "Cvičení počítání v šachu pro začátečníky",
+    "description": "Jednoduchá cvičení, jak porovnávat tahy a sledovat krátké varianty bez ztráty přehledu.",
+    "primaryKeyword": "cvičení počítání v šachu",
+    "secondaryKeywords": [
+      "počítání v šachu pro začátečníky",
+      "počítání tahů dopředu",
+      "cvičení na držení varianty",
+      "trénink kandidátských tahů",
+      "vizualizace a počítání"
+    ],
+    "painPoint": "Začnete počítat a brzy si tahy popletete nebo ztratíte pozici.",
+    "ctaLabel": "Trénovat čisté počítání",
+    "quickAnswer": "Zpočátku porovnávejte jen jeden nebo dva možné tahy. Držte pozici jasně v hlavě a hned ověřte.",
+    "keyTakeaways": [
+      "Dvě jasné varianty jsou lepší než pět zmatených.",
+      "Jasná vizualizace vede k čistému počítání.",
+      "Ověřujte hned po každém cvičení."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří vědí, že mají počítat, ale variantu rychle ztratí.",
+      "Začátečníci, kteří v ostrých pozicích hrají podle citu.",
+      "Každý, kdo chce paměťový trénink využít při skutečných rozhodnutích."
+    ],
+    "timeToRead": "7 minut čtení",
+    "introParagraphs": [
+      "Počítání znamená prostě zeptat se: „Když zahraju sem, co se stane?“ Těžké je udržet pozici jasnou.",
+      "Paměť na pozici a vizualizace počítání usnadňují. Trénujte je společně, ne odděleně."
+    ],
+    "startHereTitle": "Začněte dvěma možnými tahy",
+    "startHereSteps": [
+      "Z pozice vyberte nejvýš dva kandidátské tahy.",
+      "Představte si variantu na dva půltahy a shrňte ji jednou větou.",
+      "Zahrajte kolo Memory Chess, ať zůstane základní pozice ostrá.",
+      "Vraťte se k výchozí pozici a obě varianty v klidu porovnejte.",
+      "Hned ověřte a pojmenujte, zda chyba vznikla z obrazu pozice, nebo z pořadí tahů."
+    ],
+    "drillSectionTitle": "Jednoduchá cvičení počítání",
+    "drillCards": [
+      {
+        "title": "Porovnat dva kandidáty",
+        "description": "Držte dva smysluplné tahy a porovnejte jejich krátké taktické důsledky.",
+        "duration": "6 minut",
+        "goal": "Porovnávat tahy bez nutnosti pamatovat si příliš mnoho.",
+        "ctaLabel": "Porovnat dvě varianty"
+      },
+      {
+        "title": "Nejdřív vybavit, pak počítat",
+        "description": "Před prací s variantami zahrajte krátké kolo vybavování pro čistší pozici.",
+        "duration": "4 minuty",
+        "goal": "Udržet pozici, než začnete sledovat sekvenci.",
+        "ctaLabel": "Vybavit před počítáním"
+      },
+      {
+        "title": "Varianta v jedné větě",
+        "description": "Než ověříte, shrňte větev jednou větou.",
+        "duration": "4 minuty",
+        "goal": "Držet sekvenci jasnou a snadno vysvětlitelnou.",
+        "ctaLabel": "Shrnout větev"
+      }
+    ],
+    "comparisonTitle": "Zmatené versus čisté počítání",
+    "comparisonSummary": "Zatím se nehoňte za dlouhými variantami. Nejdřív ať jsou krátké přesné.",
+    "comparisonRows": [
+      {
+        "label": "Kandidátské tahy",
+        "struggling": "Zvažujete příliš mnoho tahů naráz.",
+        "stronger": "Porovnáváte pár smysluplných tahů."
+      },
+      {
+        "label": "Obraz pozice",
+        "struggling": "Vzniklá pozice se rychle rozmaže.",
+        "stronger": "Držíte klíčová pole a obránce v paměti stabilně."
+      },
+      {
+        "label": "Ověření",
+        "struggling": "Nevíte, proč se varianta zhroutila.",
+        "stronger": "Vidíte, zda chyba vznikla z paměti, pořadí tahů, nebo hodnocení."
+      }
+    ],
+    "mistakes": [
+      "Snažit se počítat příliš mnoho větví naráz.",
+      "Vynechat výběr kandidátů a počítat všechno.",
+      "Neověřit hned po variantě.",
+      "Ignorovat slabou paměť na pozici."
+    ],
+    "mistakesCallout": "Zatím nepočítejte daleko. Jasná dvoutahová varianta je užitečnější než dlouhá a zmatená.",
+    "planTitle": "Sedmidenní plán počítání",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "10 minut",
+        "detail": "Pouze porovnání dvou kandidátů s okamžitým ověřením."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "12 minut",
+        "detail": "Před počítáním přidejte kolo Memory Chess."
+      },
+      {
+        "label": "Den 5",
+        "duration": "12 minut",
+        "detail": "Každou větev před ověřením shrňte jednou větou."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 minut",
+        "detail": "Přeneste postup do rapid partií: v ostrých místech se zastavte a držte málo kandidátů."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Jak si začátečník zlepší počítání?",
+        "answer": "Málo kandidátů, rychlé ověření a lepší vizualizace i paměť pod prací s variantami."
+      },
+      {
+        "question": "Mám počítat dál dopředu?",
+        "answer": "Až bude současná hloubka spolehlivá. Přesnost je víc než ambice."
+      },
+      {
+        "question": "Proč se mi varianty hroutí?",
+        "answer": "Často proto, že obraz pozice není dost stabilní nebo držíte příliš mnoho kandidátů naráz."
+      },
+      {
+        "question": "Pomáhá Memory Chess počítání?",
+        "answer": "Ano. Lepší vybavování výrazně usnadní držet vznikající pozice během počítání."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Posilte vrstvu, která pod počítáním drží varianty."
+      },
+      {
+        "reason": "Vidět pozici jasněji dřív, než varianty prodloužíte."
+      },
+      {
+        "reason": "Použijte jednodušší rozhodovací postup pro čistší počítání."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Jak přemýšlet v šachu jako začátečník",
+    "h1": "Jak přemýšlet v šachu jako začátečník",
+    "description": "Používejte u každého tahu jednoduchý postup: zkontrolovat hrozby, porovnat možnosti a hlídat čas.",
+    "primaryKeyword": "jak přemýšlet v šachu",
+    "secondaryKeywords": [
+      "myšlenkový postup pro začátečníky",
+      "na co myslet v šachu",
+      "rozhodování v šachu",
+      "seznam před tahem",
+      "jednoduchý myšlenkový postup"
+    ],
+    "painPoint": "Hrajete příliš rychle nebo přemýšlíte příliš dlouho, a stejně si nejste jistí.",
+    "ctaLabel": "Trénovat jednoduchý postup",
+    "quickAnswer": "U každého tahu použijte stejný krátký postup: zkontrolujte hrozby soupeře, vyberte jeden až tři tahy a ujistěte se, že je volba bezpečná.",
+    "keyTakeaways": [
+      "Krátký postup se používá snadněji než dlouhý seznam.",
+      "Kontrola hrozeb vždy předchází volbě tahu.",
+      "Když se pozice stane nebezpečnou, věnujte jí víc času."
+    ],
+    "whoThisIsFor": [
+      "Hráči, kteří v klidných pozicích hádají a v ostrých ztuhnou.",
+      "Začátečníci, kteří potřebují jasný postup u každého tahu.",
+      "Každý, kdo se chce pod tlakem rozhodovat čistěji."
+    ],
+    "timeToRead": "7 minut čtení",
+    "introParagraphs": [
+      "Začátečníky často zajímá, na co myslí silní hráči. Odpověď může znít složitě, ale váš postup musí být dost krátký, abyste ho použili pokaždé.",
+      "Začněte hrozbami, vyberte pár možných tahů a ověřte, že je konečná volba bezpečná."
+    ],
+    "startHereTitle": "Začněte tady: postup ve čtyřech krocích",
+    "startHereSteps": [
+      "Nejdřív zkontrolujte nejsilnější hrozby soupeře.",
+      "Jmenujte jeden až tři realistické kandidátské tahy.",
+      "Ověřte, že je plánovaný tah bezpečný a nenechá žádnou figuru nekrytou.",
+      "Zeptejte se, zda je pozice dost klidná na tah, nebo dost ostrá na zpomalení.",
+      "Po partii se podívejte, kde se postup zlomil."
+    ],
+    "drillSectionTitle": "Cvičení pro klidnější rozhodování",
+    "drillCards": [
+      {
+        "title": "Spouštěč „nejdřív soupeř“",
+        "description": "Každou tréninkovou pozici začněte jmenováním vynucených možností soupeře.",
+        "duration": "3 minuty",
+        "goal": "Udělat kontrolu hrozeb automatickou, ne volitelnou.",
+        "ctaLabel": "Začít hrozbami"
+      },
+      {
+        "title": "Limit tří kandidátů",
+        "description": "V tréninkové pozici si nikdy nedovolte víc než tři kandidátské tahy.",
+        "duration": "4 minuty",
+        "goal": "Omezit nadbytek možností a přešlapování.",
+        "ctaLabel": "Omezit kandidáty"
+      },
+      {
+        "title": "Kontrola jistoty",
+        "description": "Podívejte se na tah a zeptejte se, zda jste si byli opravdu jistí, nebo jen unavení z přemýšlení.",
+        "duration": "4 minuty",
+        "goal": "Všimnout si, kdy hrajete z vyčerpání.",
+        "ctaLabel": "Ověřit jistotu"
+      }
+    ],
+    "comparisonTitle": "Jednoduchý postup u tahu",
+    "comparisonSummary": "Nejlepší myšlenkový postup je ten, který použijete i při běžících hodinách.",
+    "comparisonRows": [
+      {
+        "label": "Práce s hrozbami",
+        "struggling": "Nejdřív myslíte na vlastní plán.",
+        "stronger": "Začínáte nejsilnějšími hrozbami soupeře."
+      },
+      {
+        "label": "Kandidátské tahy",
+        "struggling": "Skáčete mezi příliš mnoha možnostmi.",
+        "stronger": "Držíte malou realistickou sadu kandidátů."
+      },
+      {
+        "label": "Hospodaření s časem",
+        "struggling": "Každému tahu věnujete stejnou pozornost.",
+        "stronger": "Zpomalíte, když se mění napětí, taktika nebo bezpečnost krále."
+      }
+    ],
+    "mistakes": [
+      "Používat dlouhý seznam, který v partiích stejně nedodržíte.",
+      "Myslet na vlastní plán dřív, než zkontrolujete hrozby.",
+      "Nechat seznam kandidátů příliš narůst.",
+      "Zaměnit únavu za jistotu."
+    ],
+    "mistakesCallout": "Nepřidávejte další kontroly. Používejte krátký postup, který zopakujete u každého tahu.",
+    "planTitle": "Sedmidenní ladění postupu",
+    "planSteps": [
+      {
+        "label": "Den 1 až 2",
+        "duration": "10 minut",
+        "detail": "Používejte jen spouštěč „nejdřív soupeř“ a limit tří kandidátů."
+      },
+      {
+        "label": "Den 3 až 4",
+        "duration": "12 minut",
+        "detail": "Přidejte krátké kolo Memory Chess, ať je pozice při rozhodování jasnější."
+      },
+      {
+        "label": "Den 5",
+        "duration": "12 minut",
+        "detail": "Zjistěte, zda vaše poslední chyba vznikla z kontroly hrozeb, nebo z přemíry kandidátů."
+      },
+      {
+        "label": "Den 6 až 7",
+        "duration": "15 minut",
+        "detail": "Použijte celý postup v rapidu a zapište, který krok pod tlakem selhává."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Na co má začátečník v šachu myslet?",
+        "answer": "Začněte hrozbami soupeře, vyberte jeden až tři možné tahy a ověřte, že je konečná volba bezpečná."
+      },
+      {
+        "question": "Kolik kandidátských tahů si držet?",
+        "answer": "Obvykle jeden až tři. Víc začátečníky zpravidla zahltí a sníží kvalitu rozhodnutí."
+      },
+      {
+        "question": "Proč ztuhnu, i když postup znám?",
+        "answer": "Často proto, že pozice není dost jasná nebo je otevřených příliš mnoho kandidátů. Pomohou jednodušší pozice a paměťová práce."
+      },
+      {
+        "question": "Může myšlenkový postup zabránit chybám?",
+        "answer": "Ano, hlavně když vynutí kontrolu hrozeb před volbou tahu."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Sáhněte po jasnějším seznamu proti chybám, pokud stále ztrácíte materiál."
+      },
+      {
+        "reason": "Počítejte čistěji, ať porovnáte možné tahy."
+      },
+      {
+        "reason": "Poznávejte pole rychleji během svého postupu."
+      }
+    ]
+  }
+]

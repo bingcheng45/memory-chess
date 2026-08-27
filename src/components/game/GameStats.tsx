@@ -3,7 +3,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 
+import { useTranslations } from "next-intl";
 export default function GameStats() {
+  const t = useTranslations("game");
   const { gameState, getBestTime, getAverageAccuracy } = useGameStore();
   const [timer, setTimer] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -51,11 +53,11 @@ export default function GameStats() {
   
   return (
     <div className="rounded-xl border border-bg-light bg-bg-card p-6 shadow-xl">
-      <h2 className="mb-6 text-xl font-bold text-text-primary">Game Stats</h2>
+      <h2 className="mb-6 text-xl font-bold text-text-primary">{t("stats.title")}</h2>
       
       <div className="space-y-5">
         <div>
-          <p className="text-sm font-medium text-text-secondary">Current Time</p>
+          <p className="text-sm font-medium text-text-secondary">{t("stats.currentTime")}</p>
           <p className="text-2xl font-bold text-text-primary">{formatTime(timer)}</p>
         </div>
         
@@ -67,12 +69,12 @@ export default function GameStats() {
         )}
         
         <div>
-          <p className="text-sm font-medium text-text-secondary">Pieces to Memorize</p>
+          <p className="text-sm font-medium text-text-secondary">{t("stats.piecesToMemorize")}</p>
           <p className="text-2xl font-bold text-text-primary">{gameState.pieceCount}</p>
         </div>
         
         <div>
-          <p className="text-sm font-medium text-text-secondary">Average Accuracy</p>
+          <p className="text-sm font-medium text-text-secondary">{t("stats.averageAccuracy")}</p>
           <p className="text-2xl font-bold text-text-primary">{averageAccuracy}%</p>
         </div>
       </div>

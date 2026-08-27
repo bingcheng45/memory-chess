@@ -1,0 +1,2280 @@
+[
+  {
+    "slug": "how-to-get-better-at-chess-for-beginners",
+    "title": "Come migliorare a scacchi da principianti",
+    "h1": "Come migliorare a scacchi da principianti",
+    "description": "Segui un piano semplice per vedere meglio la scacchiera, ricordare le posizioni e giocare mosse più sicure.",
+    "primaryKeyword": "come migliorare a scacchi",
+    "secondaryKeywords": [
+      "piano di miglioramento a scacchi",
+      "allenamento scacchi per principianti",
+      "routine di scacchi per principianti",
+      "ridurre le svista a scacchi",
+      "visione della scacchiera"
+    ],
+    "painPoint": "Non sai cosa allenare né da dove cominciare.",
+    "ctaLabel": "Inizia una partita per principianti",
+    "quickAnswer": "Usa una breve routine quotidiana: allena la visione della scacchiera, la memoria, gioca una partita e rivedi un errore. Ripeti per 20-30 minuti al giorno.",
+    "keyTakeaways": [
+      "Vedere e ricordare la scacchiera conta più che memorizzare molte aperture.",
+      "Una pratica breve e quotidiana funziona meglio di rare sessioni lunghe.",
+      "Traccia gli errori e la precisione di richiamo, non solo il punteggio."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che conoscono le regole ma lasciano ancora pezzi in presa.",
+      "Principianti bravi negli esercizi ma in difficoltà nelle partite.",
+      "Chi non sa da cosa iniziare a studiare."
+    ],
+    "timeToRead": "9 min di lettura",
+    "introParagraphs": [
+      "Alla maggior parte dei principianti non servono altre aperture, video o corsi. Serve seguire la scacchiera e verificare che una mossa sia sicura prima di giocarla.",
+      "Memory Chess aiuta ad allenare entrambe le abilità. Un richiamo migliore rende scacchi, catture e minacce più facili da notare."
+    ],
+    "startHereTitle": "Inizia con questa routine per principianti",
+    "startHereSteps": [
+      "Dedica 3 minuti a scansionare una scacchiera nominando i pezzi attaccati, difesi e in presa.",
+      "Fai un turno di Memory Chess con 8 pezzi e una finestra di 10 secondi.",
+      "Lavora su due brevi posizioni tattiche dicendo scacchi, catture e minacce prima di scegliere.",
+      "Gioca una partita rapid. Classifica ogni grosso errore come visione, memoria o gestione del tempo.",
+      "Annota una cosa da riallenare domani."
+    ],
+    "drillSectionTitle": "Esercizi semplici per partite migliori",
+    "drillCards": [
+      {
+        "title": "Scansione in 10 secondi",
+        "description": "Usa una posizione facile e trova ogni pezzo non protetto prima che scada il tempo.",
+        "duration": "3 minuti",
+        "goal": "Creare un controllo di sicurezza prima di ogni mossa.",
+        "ctaLabel": "Avvia la scansione"
+      },
+      {
+        "title": "Richiamo della stessa posizione",
+        "description": "Gioca due volte la stessa posizione per trovare e correggere un errore di memoria.",
+        "duration": "5 minuti",
+        "goal": "Individuare il pezzo o la casa esatta dimenticata.",
+        "ctaLabel": "Ripeti un richiamo"
+      },
+      {
+        "title": "Trasferimento dalla partita all'esercizio",
+        "description": "Dopo una partita rapid, immagina la posizione dell'errore prima di analizzarla.",
+        "duration": "7 minuti",
+        "goal": "Guidare l'allenamento con i tuoi errori reali.",
+        "ctaLabel": "Allena il trasferimento"
+      }
+    ],
+    "comparisonTitle": "Com'è un gioco migliore da principiante",
+    "comparisonSummary": "Non serve vedere cinque mosse avanti. Inizia vedendo bene la posizione attuale e prenditi un attimo prima di muovere.",
+    "comparisonRows": [
+      {
+        "label": "Prima di muovere",
+        "struggling": "Guardi solo la tua idea.",
+        "stronger": "Controlli prima le minacce dell'avversario."
+      },
+      {
+        "label": "Durante la tattica",
+        "struggling": "La variante svanisce dopo un cambio.",
+        "stronger": "Visualizzi le case chiave mentre confronti due mosse possibili."
+      },
+      {
+        "label": "Dopo una sconfitta",
+        "struggling": "Avvii subito un'altra partita.",
+        "stronger": "Dai un nome all'errore e lo alleni domani."
+      }
+    ],
+    "mistakes": [
+      "Saltare da un contenuto all'altro invece di ripetere una routine per due settimane.",
+      "Studiare aperture prima che la visione della scacchiera sia stabile.",
+      "Giocare troppe partite senza brevi note finali.",
+      "Trattare l'allenamento della memoria come separato dagli scacchi veri."
+    ],
+    "mistakesCallout": "Non correre allo studio avanzato. La maggior parte dei principianti perde per minacce in una mossa, non per una variante d'apertura dimenticata.",
+    "planTitle": "Piano per principianti in 30 giorni",
+    "planSteps": [
+      {
+        "label": "Settimana 1",
+        "duration": "20 minuti al giorno",
+        "detail": "Usa la stessa scansione e fai un breve turno di Memory Chess prima di ogni sessione di gioco."
+      },
+      {
+        "label": "Settimana 2",
+        "duration": "25 minuti al giorno",
+        "detail": "Aggiungi un secondo turno di richiamo e annota se l'errore veniva da visione, richiamo o panico."
+      },
+      {
+        "label": "Settimana 3",
+        "duration": "25-30 minuti al giorno",
+        "detail": "Usa gli stessi esercizi ma riduci il tempo di memorizzazione per un richiamo pulito sotto pressione."
+      },
+      {
+        "label": "Settimana 4",
+        "duration": "30 minuti al giorno",
+        "detail": "Verifica se le svista per partita calano e tieni solo le impostazioni che si sono trasferite meglio."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Quanti minuti al giorno dovrebbe allenarsi un principiante?",
+        "answer": "20-30 minuti concentrati bastano se unisci visione della scacchiera, memoria e una posizione reale."
+      },
+      {
+        "question": "Perché gli esercizi non si trasferiscono nelle partite?",
+        "answer": "Gli esercizi partono quando la tattica esiste già. In partita devi prima notare il cambiamento, quindi richiamo e controlli di sicurezza contano molto di più."
+      },
+      {
+        "question": "Devo memorizzare aperture presto?",
+        "answer": "All'inizio solo i principi di base. La maggior parte dei principianti guadagna di più vedendo prima le minacce e tenendo le posizioni più chiare."
+      },
+      {
+        "question": "Qual è l'indicatore più rapido dei progressi?",
+        "answer": "Traccia le svista per partita e la precisione di richiamo in Memory Chess. Di solito si muovono prima del punteggio."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usalo se il problema principale è lasciare pezzi in presa."
+      },
+      {
+        "reason": "Approfondisci l'abitudine di controllare le minacce prima di muovere."
+      },
+      {
+        "reason": "Costruisci una scacchiera mentale più solida per tenere le tattiche."
+      },
+      {
+        "reason": "Allena direttamente il richiamo se dimentichi dove sono i pezzi."
+      },
+      {
+        "reason": "Segui una routine più breve se vuoi una struttura quotidiana più semplice."
+      }
+    ]
+  },
+  {
+    "slug": "chess-visualization-exercises",
+    "title": "Esercizi di visualizzazione a scacchi per principianti",
+    "h1": "Esercizi di visualizzazione a scacchi da fare ogni giorno",
+    "description": "Prova esercizi semplici di visualizzazione per ricordare la scacchiera e immaginare le mosse più chiaramente.",
+    "primaryKeyword": "esercizi di visualizzazione a scacchi",
+    "secondaryKeywords": [
+      "allenamento alla visualizzazione a scacchi",
+      "calcolare mosse in anticipo",
+      "visualizzazione della scacchiera",
+      "preparazione alla cieca",
+      "pratica mentale degli scacchi"
+    ],
+    "painPoint": "Perdi il filo dei pezzi quando provi a immaginare le mosse successive.",
+    "ctaLabel": "Allena la visualizzazione",
+    "quickAnswer": "Prima ricorda una scacchiera senza muovere nulla. Poi immagina una mossa alla volta. Non serve giocare un'intera partita alla cieca.",
+    "keyTakeaways": [
+      "Una pratica breve e quotidiana funziona meglio di rare sessioni lunghe.",
+      "Verifica la scacchiera immaginata dopo ogni tentativo.",
+      "Immagina bene una mossa prima di provare varianti più lunghe."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che perdono la variante dopo un solo cambio.",
+      "Principianti in difficoltà quando non possono guardare la scacchiera.",
+      "Chi vuole avvicinarsi agli scacchi alla cieca per gradi."
+    ],
+    "timeToRead": "8 min di lettura",
+    "introParagraphs": [
+      "Visualizzare significa immaginare come cambia la scacchiera dopo una mossa. Per un principiante, l'obiettivo è confrontare due mosse possibili senza perdere il filo.",
+      "Memory Chess mostra quali pezzi o case dimentichi. Puoi poi riallenare lo stesso tipo di posizione."
+    ],
+    "startHereTitle": "Inizia con questi passi di visualizzazione",
+    "startHereSteps": [
+      "Nomina ogni pezzo e casa da una scacchiera ferma per 60 secondi.",
+      "Chiudi gli occhi e ricostruisci la scacchiera nella mente prima di verificare.",
+      "Immagina una mossa legale per ciascun colore senza toccare i pezzi.",
+      "Fai un turno di Memory Chess con un numero moderato di pezzi e un timer stretto.",
+      "Verifica la posizione e ripeti solo dopo aver capito cosa hai dimenticato."
+    ],
+    "drillSectionTitle": "Esercizi di visualizzazione facili",
+    "drillCards": [
+      {
+        "title": "Istantanea della scacchiera",
+        "description": "Ricorda la scacchiera, poi rimetti ogni pezzo sulla casa giusta.",
+        "duration": "4 minuti",
+        "goal": "Ricordare la scacchiera prima di immaginare mosse.",
+        "ctaLabel": "Avvia l'istantanea"
+      },
+      {
+        "title": "Una mossa per colore",
+        "description": "Ricorda la scacchiera, immagina una mossa per colore, poi verifica.",
+        "duration": "5 minuti",
+        "goal": "Imparare ad aggiornare la scacchiera nella mente.",
+        "ctaLabel": "Allena l'aggiornamento"
+      },
+      {
+        "title": "Richiamo sotto pressione",
+        "description": "Quando il richiamo è preciso, riduci il tempo di memorizzazione.",
+        "duration": "5 minuti",
+        "goal": "Usare un richiamo pulito nelle partite veloci.",
+        "ctaLabel": "Aggiungi pressione"
+      }
+    ],
+    "comparisonTitle": "Come ci si sente con una visualizzazione debole",
+    "comparisonSummary": "Sembra un problema di calcolo, ma spesso è l'immagine della scacchiera che svanisce troppo in fretta.",
+    "comparisonRows": [
+      {
+        "label": "Mosse candidate",
+        "struggling": "Sai nominare una mossa ma non la posizione risultante.",
+        "stronger": "Confronti due posizioni possibili prima di muovere."
+      },
+      {
+        "label": "Caos tattico",
+        "struggling": "La mente si svuota dopo i cambi.",
+        "stronger": "Tieni case e minacce importanti abbastanza a lungo per decidere con calma."
+      },
+      {
+        "label": "Riscontro dell'allenamento",
+        "struggling": "Non sai quale casa esatta hai dimenticato.",
+        "stronger": "Capisci se l'errore veniva da una colonna, una traversa o un difensore mancante."
+      }
+    ],
+    "mistakes": [
+      "Provare calcoli profondi alla cieca prima che il richiamo statico sia stabile.",
+      "Muovere fisicamente i pezzi a ogni tentativo di calcolo.",
+      "Allenarsi una volta a settimana invece di ripetere un breve blocco quotidiano.",
+      "Non verificare se la scacchiera immaginata corrisponde alla realtà."
+    ],
+    "mistakesCallout": "Non inseguire ancora varianti più lunghe. Prima immagina bene la prima mossa.",
+    "planTitle": "Progressione di visualizzazione in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1",
+        "duration": "10 minuti",
+        "detail": "Solo istantanee della scacchiera con verifica immediata."
+      },
+      {
+        "label": "Giorno 2-3",
+        "duration": "12 minuti",
+        "detail": "Aggiungi una mossa immaginata per colore e nota quali case svaniscono prima."
+      },
+      {
+        "label": "Giorno 4-5",
+        "duration": "15 minuti",
+        "detail": "Riduci la finestra di memorizzazione in Memory Chess mantenendo lo stesso numero di pezzi."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15 minuti",
+        "detail": "Trasferisci l'esercizio in una partita rapid fermandoti prima di ogni decisione tattica e nominando la posizione risultante."
+      }
+    ],
+    "faq": [
+      {
+        "question": "In quanto tempo migliora la visualizzazione?",
+        "answer": "La maggior parte dei principianti nota un richiamo più pulito dopo due-quattro settimane di pratica breve e costante."
+      },
+      {
+        "question": "Questi esercizi aiutano nel blitz?",
+        "answer": "Sì. Aggiornare più in fretta la scacchiera mentale rende scacchi, catture e minacce più visibili sotto pressione."
+      },
+      {
+        "question": "Si può allenare la visualizzazione senza giocare alla cieca?",
+        "answer": "Sì. Richiamo a tempo ed esercizi di aggiornamento in una mossa bastano per costruire una vera base."
+      },
+      {
+        "question": "Cosa fare se dimentico sempre dove sono i pezzi?",
+        "answer": "Usa meno pezzi, verifica più spesso e ripeti la posizione finché il richiamo non è pulito."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usalo quando il richiamo statico e a una mossa è stabile."
+      },
+      {
+        "reason": "Allarga la visione se perdi i pezzi ai bordi."
+      },
+      {
+        "reason": "Unisci la visualizzazione a un semplice controllo delle minacce."
+      }
+    ]
+  },
+  {
+    "slug": "chess-board-vision-drills",
+    "title": "Esercizi di visione della scacchiera contro le svista",
+    "h1": "Esercizi di visione della scacchiera per principianti",
+    "description": "Usa esercizi semplici per notare le minacce, proteggere i pezzi e commettere meno svista.",
+    "primaryKeyword": "visione della scacchiera",
+    "secondaryKeywords": [
+      "esercizi di visione della scacchiera",
+      "ridurre le svista a scacchi",
+      "notare le minacce a scacchi",
+      "attenzione tattica a scacchi",
+      "errori dei principianti a scacchi"
+    ],
+    "painPoint": "Ti concentri su una zona della scacchiera e perdi una minaccia semplice altrove.",
+    "ctaLabel": "Inizia un esercizio di visione",
+    "quickAnswer": "Prima di ogni mossa cerca scacchi, catture, minacce e pezzi non protetti. L'allenamento della memoria aiuta a tenere tutti i pezzi in mente durante la scansione.",
+    "keyTakeaways": [
+      "La visione della scacchiera è un'abitudine che si impara.",
+      "Notare i pezzi in presa è spesso la correzione più rapida.",
+      "L'allenamento della memoria aiuta a seguire tutta la scacchiera."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che lasciano pezzi in presa pur conoscendo le tattiche di base.",
+      "Principianti che giocano in fretta e vedono la svista solo dopo la cattura.",
+      "Chi ha bisogno di una lista chiara prima di ogni mossa."
+    ],
+    "timeToRead": "8 min di lettura",
+    "introParagraphs": [
+      "Quando un giocatore dice «non l'ho visto», spesso ha mosso prima di controllare tutta la scacchiera.",
+      "Questi esercizi insegnano dove guardare. Inizia dai pezzi non protetti e dalle mosse che danno scacco, catturano o creano una minaccia."
+    ],
+    "startHereTitle": "Inizia qui: il ciclo di visione prima della mossa",
+    "startHereSteps": [
+      "Nomina scacchi, catture e minacce di entrambi i colori prima di ogni mossa.",
+      "Segna ogni pezzo indifeso e dì se è davvero sicuro o solo in apparenza.",
+      "Fai un breve turno di Memory Chess per affinare il legame casa-pezzo.",
+      "Rivedi una svista recente e individua la minaccia esatta persa.",
+      "Ripeti la stessa lista nella prossima partita rapid senza accorciarla."
+    ],
+    "drillSectionTitle": "Esercizi di visione per partite vere",
+    "drillCards": [
+      {
+        "title": "Inventario dei pezzi in presa",
+        "description": "Scansiona la scacchiera e individua ogni pezzo indifeso prima di muovere.",
+        "duration": "3 minuti",
+        "goal": "Cogliere presto la causa più comune di svista.",
+        "ctaLabel": "Avvia l'inventario"
+      },
+      {
+        "title": "Riproposizione della minaccia",
+        "description": "Ricrea l'ultima posizione della svista e trova la minaccia più forte dell'avversario prima di verificare.",
+        "duration": "5 minuti",
+        "goal": "Imparare com'era la minaccia persa nel contesto.",
+        "ctaLabel": "Rivivi una minaccia"
+      },
+      {
+        "title": "Richiamo rapido delle case",
+        "description": "Usa una finestra breve così la scacchiera resta intatta mentre la scansioni.",
+        "duration": "4 minuti",
+        "goal": "Ricordare la posizione dei pezzi durante la scansione.",
+        "ctaLabel": "Accelera il richiamo"
+      }
+    ],
+    "comparisonTitle": "Visione debole contro visione solida",
+    "comparisonSummary": "La differenza si vede di solito prima ancora che inizi il calcolo.",
+    "comparisonRows": [
+      {
+        "label": "Attenzione",
+        "struggling": "Fissi una sola idea tattica.",
+        "stronger": "Scansioni tutta la scacchiera prima di scegliere un piano."
+      },
+      {
+        "label": "Controlli di sicurezza",
+        "struggling": "Dai per sicuro un pezzo difeso.",
+        "stronger": "Conti attaccanti e difensori prima di fidarti della casa."
+      },
+      {
+        "label": "Pressione del tempo",
+        "struggling": "Giochi più in fretta quando la posizione si fa tesa.",
+        "stronger": "Rallenti quando compaiono scacchi, catture o minacce."
+      }
+    ],
+    "mistakes": [
+      "Controllare solo la propria idea ignorando le minacce avversarie.",
+      "Dare per sicuro un pezzo difeso senza contare l'intera sequenza.",
+      "Giocare troppo in fretta appena la posizione diventa tattica.",
+      "Non dare mai un nome al tipo di errore dopo la partita."
+    ],
+    "mistakesCallout": "Altri esercizi non correggeranno una scansione affrettata. Ripeti lo stesso breve controllo prima di ogni mossa.",
+    "planTitle": "Ripartenza della visione in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "12 minuti",
+        "detail": "Solo inventario dei pezzi in presa e scansione scacchi-catture-minacce."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "15 minuti",
+        "detail": "Aggiungi un turno di Memory Chess prima delle partite per scansionare su una scacchiera mentale più pulita."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "15 minuti",
+        "detail": "Rivedi tre svista recenti e nomina il segnale perso in ogni posizione."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15-20 minuti",
+        "detail": "Gioca rapid e usa tutta la lista a ogni mossa che cambia la tensione o la sicurezza del re."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Qual è il modo più rapido per migliorare la visione della scacchiera?",
+        "answer": "Usare la stessa lista prima di ogni mossa finché non diventa automatica: scacchi, catture, minacce e pezzi in presa."
+      },
+      {
+        "question": "Perché faccio svista pur conoscendo le tattiche?",
+        "answer": "Perché il livello di tracciamento della scacchiera è debole. La tattica aiuta solo dopo aver percepito bene la posizione."
+      },
+      {
+        "question": "Ogni quanto rivedere le mie svista?",
+        "answer": "Dopo ogni partita. Una breve abitudine di revisione trasferisce molto più in fretta di una lunga sessione settimanale."
+      },
+      {
+        "question": "Gli esercizi di memoria aiutano la visione?",
+        "answer": "Sì. Un richiamo più rapido permette di tenere attiva tutta la scacchiera durante la scansione."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa la guida anti-svista completa quando gli errori di visione costano materiale."
+      },
+      {
+        "reason": "Capisci perché la tattica spesso crolla sotto la pressione reale."
+      },
+      {
+        "reason": "Vedi come la visione si inserisce in una routine completa per principianti."
+      }
+    ]
+  },
+  {
+    "slug": "chess-memory-training",
+    "title": "Allenamento della memoria a scacchi per un richiamo più rapido",
+    "h1": "Allenamento della memoria a scacchi per migliorare",
+    "description": "Usa esercizi semplici per ricordare le posizioni, notare gli schemi e seguire le mosse più chiaramente.",
+    "primaryKeyword": "allenamento della memoria a scacchi",
+    "secondaryKeywords": [
+      "esercizi di memoria a scacchi",
+      "memorizzare posizioni di scacchi",
+      "riconoscimento di schemi a scacchi",
+      "allenamento al richiamo della scacchiera",
+      "concentrazione a scacchi"
+    ],
+    "painPoint": "Dimentichi dove sono i pezzi mentre pensi alle mosse successive.",
+    "ctaLabel": "Inizia una sfida di memoria",
+    "quickAnswer": "L'allenamento della memoria aiuta a ricordare posizioni utili mentre i pezzi cambiano. Non si tratta di memorizzare quante più scacchiere casuali possibile.",
+    "keyTakeaways": [
+      "All'inizio la precisione conta più della velocità.",
+      "Ripetere una posizione permette di correggere un errore di memoria alla volta.",
+      "Metti la memoria prima del calcolo o dell'analisi."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che perdono il piano dopo una risposta forte.",
+      "Principianti che non riescono a ricostruire le posizioni chiave delle loro partite.",
+      "Chi è in difficoltà quando molti pezzi sono attivi."
+    ],
+    "timeToRead": "8 min di lettura",
+    "introParagraphs": [
+      "La memoria a scacchi è un'abilità pratica. L'obiettivo è tenere un'immagine chiara della scacchiera abbastanza a lungo da scegliere con calma.",
+      "Memory Chess offre un ciclo semplice: guarda, ricorda, verifica e riprova."
+    ],
+    "startHereTitle": "Inizia con questa routine di memoria",
+    "startHereSteps": [
+      "Parti da una posizione semplice e memorizzala per 10 secondi.",
+      "Ricostruisci la scacchiera e annota la prima casa o il primo pezzo perso.",
+      "Ripeti la stessa posizione una volta per rendere visibile la correzione.",
+      "Aggiungi una breve variante tattica dalla posizione memorizzata.",
+      "Traccia sia la precisione sia il tipo di errore di memoria commesso."
+    ],
+    "drillSectionTitle": "Esercizi di memoria per partite vere",
+    "drillCards": [
+      {
+        "title": "Ripetizione di una posizione",
+        "description": "Memorizza una posizione, ricostruiscila, poi ripetila una volta con le stesse impostazioni.",
+        "duration": "5 minuti",
+        "goal": "Trovare un errore di memoria chiaro e correggibile.",
+        "ctaLabel": "Ripeti una posizione"
+      },
+      {
+        "title": "Richiamo per punti di ancoraggio",
+        "description": "Concentrati su posizione dei re, pezzi in presa e tensione centrale prima del resto.",
+        "duration": "4 minuti",
+        "goal": "Ricordare prima le parti più importanti.",
+        "ctaLabel": "Allena gli ancoraggi"
+      },
+      {
+        "title": "Richiamo poi calcolo",
+        "description": "Dopo aver ricostruito la scacchiera, calcola una breve variante prima di verificare.",
+        "duration": "6 minuti",
+        "goal": "Usare la memoria della scacchiera durante il calcolo.",
+        "ctaLabel": "Aggiungi una variante"
+      }
+    ],
+    "comparisonTitle": "Com'è un richiamo debole in partita",
+    "comparisonSummary": "La scacchiera può sembrare familiare pur restando troppo sfocata per sostenere il calcolo.",
+    "comparisonRows": [
+      {
+        "label": "Tracciamento delle varianti",
+        "struggling": "Perdi la posizione iniziale mentre valuti un'altra mossa candidata.",
+        "stronger": "Torni con precisione alla posizione di partenza dopo aver esplorato una variante."
+      },
+      {
+        "label": "Memoria degli schemi",
+        "struggling": "Ricordi l'idea tattica ma non i difensori esatti.",
+        "stronger": "Ricordi l'idea e le case che la rendono possibile."
+      },
+      {
+        "label": "Qualità dell'analisi",
+        "struggling": "L'analisi resta vaga perché la posizione svanisce subito.",
+        "stronger": "Ricostruisci i momenti chiave e impari più in fretta."
+      }
+    ],
+    "mistakes": [
+      "Fare salti di difficoltà troppo grandi per il tuo livello.",
+      "Misurare la velocità ignorando la precisione.",
+      "Non annotare gli errori, lasciando invisibili le debolezze ricorrenti.",
+      "Trattare gli esercizi di memoria come separati dal gioco tattico."
+    ],
+    "mistakesCallout": "Non aumentare la difficoltà finché il richiamo resta poco chiaro. Abbassa il livello e costruisci prima la precisione.",
+    "planTitle": "Blocco di memoria in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "10 minuti",
+        "detail": "Ripeti posizioni semplici e nomina ogni errore di memoria."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "12 minuti",
+        "detail": "Aggiungi i punti di ancoraggio per ricordare prima re, pezzi in presa e tensione centrale."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "12 minuti",
+        "detail": "Aggiungi una breve sequenza di mosse dopo ogni ricostruzione corretta."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15 minuti",
+        "detail": "Riduci leggermente il timer mantenendo il numero di pezzi, poi porta il lavoro nell'analisi di una partita rapid."
+      }
+    ],
+    "faq": [
+      {
+        "question": "L'allenamento della memoria migliora le partite vere?",
+        "answer": "Sì, se abbinato al calcolo o all'analisi. Un richiamo migliore tiene le varianti più chiare sotto pressione."
+      },
+      {
+        "question": "Quante posizioni allenare per sessione?",
+        "answer": "Per un principiante, da sei a dodici tentativi curati bastano se verifichi gli errori invece di correre."
+      },
+      {
+        "question": "Meglio scacchiere casuali o strutture reali?",
+        "answer": "Entrambe. Le casuali affinano il richiamo grezzo, le strutture reali migliorano il trasferimento."
+      },
+      {
+        "question": "Cosa fare se la precisione si blocca?",
+        "answer": "Usa meno pezzi per una settimana, correggi un tipo di errore e aggiungi pezzi solo quando il richiamo torna pulito."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usalo se fatichi a ricordare sequenze di mosse."
+      },
+      {
+        "reason": "Bilancia memoria e numero di esercizi tattici."
+      },
+      {
+        "reason": "Collega la memoria della scacchiera agli schemi comuni."
+      }
+    ]
+  },
+  {
+    "slug": "blindfold-chess-training-for-beginners",
+    "title": "Scacchi alla cieca: allenamento per principianti",
+    "h1": "Scacchi alla cieca per principianti, un passo alla volta",
+    "description": "Impara gli scacchi alla cieca per piccoli passi che migliorano la visualizzazione senza scoraggiarti.",
+    "primaryKeyword": "allenamento agli scacchi alla cieca",
+    "secondaryKeywords": [
+      "scacchi alla cieca per principianti",
+      "allenamento della scacchiera mentale",
+      "esercizi di visualizzazione a scacchi",
+      "calcolare senza muovere i pezzi",
+      "esercizi di concentrazione a scacchi"
+    ],
+    "painPoint": "Perdi il filo della scacchiera appena smetti di guardarla.",
+    "ctaLabel": "Inizia la pratica alla cieca",
+    "quickAnswer": "Parti da una posizione semplice. Ricordala, immagina una mossa per colore e verifica. Prova una partita intera alla cieca solo quando questi passi diventano facili.",
+    "keyTakeaways": [
+      "Gli scacchi alla cieca si costruiscono un passo alla volta.",
+      "Verificare la risposta conta più che tentare posizioni più difficili.",
+      "Per un principiante, la cieca è visualizzazione con meno aiuto visivo."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che vogliono visualizzare meglio senza partire da una partita alla cieca.",
+      "Principianti che perdono le case dopo una o due mosse immaginate.",
+      "Chi vuole tenere un'immagine mentale più nitida."
+    ],
+    "timeToRead": "8 min di lettura",
+    "introParagraphs": [
+      "L'errore più grande è tentare troppo presto una partita intera alla cieca. Spesso produce frustrazione invece di progressi.",
+      "Procedi per gradi: vedi la scacchiera, ricordala, immagina una mossa, verifica e riduci lentamente l'aiuto visivo."
+    ],
+    "startHereTitle": "Inizia qui: una progressione sicura verso la cieca",
+    "startHereSteps": [
+      "Memorizza una posizione piccola e ricostruiscila prima di immaginare qualsiasi mossa.",
+      "Calcola una mossa per colore senza toccare i pezzi.",
+      "Verifica subito ogni discrepanza invece di andare avanti.",
+      "Fai un turno di Memory Chess con una finestra leggermente più corta.",
+      "Aggiungi una mossa solo quando la variante attuale è chiara."
+    ],
+    "drillSectionTitle": "Esercizi alla cieca accessibili",
+    "drillCards": [
+      {
+        "title": "Ricostruire prima di muovere",
+        "description": "Non immaginare mosse finché la posizione di partenza non è del tutto stabile.",
+        "duration": "4 minuti",
+        "goal": "Costruire un richiamo pulito prima di aggiungere mosse.",
+        "ctaLabel": "Ricostruisci prima"
+      },
+      {
+        "title": "Una mossa per colore",
+        "description": "Immagina una mossa del Bianco e una risposta del Nero, poi verifica la nuova posizione.",
+        "duration": "5 minuti",
+        "goal": "Aggiornare la posizione senza guardare la scacchiera.",
+        "ctaLabel": "Immagina due mosse"
+      },
+      {
+        "title": "Tempo di visione ridotto",
+        "description": "Riduci il tempo di visione per imparare a ricordare la scacchiera più in fretta.",
+        "duration": "4 minuti",
+        "goal": "Prepararsi alla cieca senza nascondere tutta la scacchiera.",
+        "ctaLabel": "Accorcia la finestra"
+      }
+    ],
+    "comparisonTitle": "Un modo più sicuro di allenare la cieca",
+    "comparisonSummary": "Chiediti se immagini una mossa in più rispetto a prima. Non serve ancora giocare una partita intera alla cieca.",
+    "comparisonRows": [
+      {
+        "label": "Punto di partenza",
+        "struggling": "Ti butti subito su una partita alla cieca.",
+        "stronger": "Ricordi la posizione iniziale prima di aggiungere mosse."
+      },
+      {
+        "label": "Verifica",
+        "struggling": "Ti fidi di una scacchiera mentale sfocata.",
+        "stronger": "Verifichi ogni aggiornamento immaginato e lo correggi subito."
+      },
+      {
+        "label": "Qualità della sessione",
+        "struggling": "Continui fino al crollo della concentrazione.",
+        "stronger": "Ti fermi finché la precisione mentale resta alta."
+      }
+    ],
+    "mistakes": [
+      "Tentare partite intere alla cieca troppo presto.",
+      "Saltare la verifica e fidarsi di scacchiere mentali sbagliate.",
+      "Aggiungere mosse prima che le varianti brevi siano chiare.",
+      "Allenarsi troppo a lungo bruciando la concentrazione."
+    ],
+    "mistakesCallout": "Non saltare a un compito molto più difficile. Riduci un po' l'aiuto visivo ogni volta.",
+    "planTitle": "Blocco di preparazione alla cieca in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "10 minuti",
+        "detail": "Ricostruisci solo posizioni a memoria, poi verifica subito."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "12 minuti",
+        "detail": "Aggiungi una mossa per colore e tieni le posizioni semplici."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "12 minuti",
+        "detail": "Accorcia la finestra in Memory Chess mantenendo il numero di pezzi."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15 minuti",
+        "detail": "Prova qualche sequenza di due mosse solo se il lavoro a una mossa è preciso."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Gli scacchi alla cieca sono utili ai principianti?",
+        "answer": "Sì, in esercizi brevi e controllati. Rafforzano la visualizzazione che sostiene le partite normali."
+      },
+      {
+        "question": "Ogni quanto fare esercizi alla cieca?",
+        "answer": "Due-quattro sessioni brevi a settimana bastano se unite a gioco e analisi regolari."
+      },
+      {
+        "question": "Qual è il miglior primo esercizio alla cieca?",
+        "answer": "Ricostruire una posizione semplice a memoria e immaginare una mossa per colore prima di verificare."
+      },
+      {
+        "question": "Come capisco se sto migliorando?",
+        "answer": "Ricorderai più case correttamente, terrai la posizione più a lungo e farai meno svista di visione in partita."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Tieni solide le basi invece di saltare alla cieca avanzata."
+      },
+      {
+        "reason": "Unisci il lavoro alla cieca a esercizi di tenuta delle varianti."
+      },
+      {
+        "reason": "Usa una visualizzazione più nitida per confrontare le mosse possibili."
+      }
+    ]
+  },
+  {
+    "slug": "working-memory-exercises-for-chess",
+    "title": "Esercizi di memoria di lavoro per giocatori di scacchi",
+    "h1": "Esercizi di memoria di lavoro per principianti a scacchi",
+    "description": "Usa esercizi semplici per ricordare sequenze di mosse, confrontare le scelte e decidere più chiaramente.",
+    "primaryKeyword": "esercizi di memoria di lavoro",
+    "secondaryKeywords": [
+      "memoria di lavoro a scacchi",
+      "allenamento al calcolo a scacchi",
+      "esercizi di concentrazione a scacchi",
+      "migliorare la costanza a scacchi",
+      "resistenza mentale a scacchi"
+    ],
+    "painPoint": "Dimentichi la prima sequenza di mosse mentre ne pensi un'altra.",
+    "ctaLabel": "Inizia una routine di memoria",
+    "quickAnswer": "La memoria di lavoro ti permette di tenere in mente poche sequenze possibili. Tienile poche e verificale chiaramente.",
+    "keyTakeaways": [
+      "Tre scelte chiare valgono più di sei confuse.",
+      "Un breve riassunto ad alta voce aiuta a ricordare ogni variante.",
+      "Allenati su posizioni vere e riusa l'abilità in partita."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che dimenticano la prima variante mentre esplorano la seconda.",
+      "Principianti che confondono l'ordine delle mosse.",
+      "Chi commette più errori tattici quando è stanco."
+    ],
+    "timeToRead": "8 min di lettura",
+    "introParagraphs": [
+      "La memoria di lavoro permette di tenere in mente mosse possibili e confrontarle. A scacchi devi ricordare la posizione di partenza e una o due varianti brevi senza confonderle.",
+      "Memory Chess ti aiuta a ricordare la posizione di partenza. Quando quell'immagine è nitida, seguire le mosse successive diventa più facile."
+    ],
+    "startHereTitle": "Inizia con due sequenze brevi",
+    "startHereSteps": [
+      "Scegli una posizione ed elenca tre mosse candidate senza toccare la scacchiera.",
+      "Calcola ogni variante per due semimosse e riassumi l'esito in una frase.",
+      "Fai un turno di richiamo Memory Chess per rinfrescare la posizione di base.",
+      "Torna alla posizione e confronta di nuovo le sequenze possibili.",
+      "Scrivi una frase su dove il tracciamento delle varianti ha ceduto."
+    ],
+    "drillSectionTitle": "Esercizi di memoria di lavoro a scacchi",
+    "drillCards": [
+      {
+        "title": "Riassunto in tre varianti",
+        "description": "Tieni brevemente tre mosse candidate e descrivi ogni ramo in una frase.",
+        "duration": "6 minuti",
+        "goal": "Tenere ogni sequenza chiara invece di aggiungerne altre.",
+        "ctaLabel": "Tieni tre varianti"
+      },
+      {
+        "title": "Reset del richiamo",
+        "description": "Inserisci un turno di Memory Chess tra due calcoli per tenere stabile la scacchiera di base.",
+        "duration": "4 minuti",
+        "goal": "Ricordare la posizione di partenza prima di seguire le mosse.",
+        "ctaLabel": "Reimposta la scacchiera"
+      },
+      {
+        "title": "Confronto dopo la variante",
+        "description": "Torna alla posizione di partenza e confronta i rami dopo una breve pausa.",
+        "duration": "5 minuti",
+        "goal": "Muoversi tra posizione base e varianti senza confonderle.",
+        "ctaLabel": "Confronta le scelte"
+      }
+    ],
+    "comparisonTitle": "Quando provi a ricordare troppo",
+    "comparisonSummary": "Quando la memoria è satura, la variante si annebbia e l'ordine delle mosse si confonde.",
+    "comparisonRows": [
+      {
+        "label": "Mosse candidate",
+        "struggling": "Provi a tenere troppe opzioni insieme.",
+        "stronger": "Tieni meno varianti, ma ognuna resta corretta più a lungo."
+      },
+      {
+        "label": "Ordine delle mosse",
+        "struggling": "I rami si contaminano tra loro.",
+        "stronger": "Ogni variante resta distinta e facile da confrontare."
+      },
+      {
+        "label": "Stanchezza",
+        "struggling": "La qualità delle decisioni crolla a fine partita.",
+        "stronger": "Mantieni un processo più semplice e chiaro quando cala l'energia."
+      }
+    ],
+    "mistakes": [
+      "Provare a ricordare troppe sequenze insieme.",
+      "Saltare il breve riassunto dopo ogni variante.",
+      "Fare solo esercizi senza mai riusare l'abilità in partita.",
+      "Continuare quando la stanchezza impedisce di pensare chiaramente."
+    ],
+    "mistakesCallout": "Non aggiungere altre varianti. Tienine poche e chiare prima di allungarle.",
+    "planTitle": "Blocco di memoria di lavoro in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "10 minuti",
+        "detail": "Usa solo due sequenze e spiega ognuna ad alta voce."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "12 minuti",
+        "detail": "Aggiungi un reset Memory Chess tra i tentativi per tenere pulita la posizione di partenza."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "12 minuti",
+        "detail": "Aggiungi una terza scelta solo se le prime due restano corrette."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15 minuti",
+        "detail": "Usa la routine in una partita rapid. Fermati nei momenti difficili e nomina chiaramente le mosse possibili."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Questi esercizi si trasferiscono davvero agli scacchi?",
+        "answer": "Sì, soprattutto se legati a posizioni, tracciamento delle varianti e analisi invece che a giochi mentali generici."
+      },
+      {
+        "question": "Come strutturare questo lavoro da principiante?",
+        "answer": "Sessioni brevi che uniscono mosse possibili, memoria della scacchiera e una posizione reale di partita."
+      },
+      {
+        "question": "Come misurare i progressi in modo semplice?",
+        "answer": "Annota quante sequenze riesci a tenere e quanto spesso perdi il filo."
+      },
+      {
+        "question": "Sostituisce l'allenamento tattico?",
+        "answer": "No. Lo completa tenendo le varianti più chiare mentre risolvi o giochi."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa una memoria di lavoro migliore per confrontare le mosse possibili."
+      },
+      {
+        "reason": "Rafforza il livello di richiamo sotto il tracciamento delle varianti."
+      },
+      {
+        "reason": "Adotta un processo di pensiero più semplice per non sprecare memoria di lavoro."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-stop-blundering-in-chess",
+    "title": "Come smettere di fare svista a scacchi",
+    "h1": "Come smettere di fare svista a scacchi",
+    "description": "Usa un breve controllo di sicurezza per notare le minacce, proteggere i pezzi e fare meno svista.",
+    "primaryKeyword": "come smettere di fare svista a scacchi",
+    "secondaryKeywords": [
+      "prevenire le svista a scacchi",
+      "smettere di lasciare pezzi in presa",
+      "controllo delle minacce a scacchi",
+      "lista di sicurezza a scacchi",
+      "ridurre gli errori semplici a scacchi"
+    ],
+    "painPoint": "Capisci le idee del gioco ma perdi ancora pezzi per minacce semplici.",
+    "ctaLabel": "Inizia un esercizio anti-svista",
+    "quickAnswer": "Prima di ogni mossa controlla le minacce avversarie, cerca i pezzi non protetti e verifica che la tua mossa sia sicura. L'allenamento della memoria aiuta a tenere in mente tutta la scacchiera.",
+    "keyTakeaways": [
+      "La maggior parte delle svista da principiante nasce da una parte di scacchiera ignorata.",
+      "Una lista di sicurezza deve essere abbastanza breve da reggere la pressione del tempo.",
+      "Rigioca i tuoi errori finché non vedi in fretta cosa avevi perso."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che subiscono ripetutamente tattiche in una mossa.",
+      "Principianti che si sentono peggiori in partita che negli esercizi.",
+      "Chi vuole una routine calma da usare a ogni mossa."
+    ],
+    "timeToRead": "8 min di lettura",
+    "introParagraphs": [
+      "Molte svista nascono da una mossa giocata prima di controllare tutta la posizione. Si può anche perdere di vista dove un pezzo è difeso.",
+      "Una routine breve sostituisce panico e supposizioni. Usa gli stessi controlli quando la posizione si fa tesa."
+    ],
+    "startHereTitle": "Inizia qui: la lista anti-svista",
+    "startHereSteps": [
+      "Chiediti quali scacchi, catture e minacce ha ora l'avversario.",
+      "Trova ogni pezzo non protetto o con troppi compiti.",
+      "Solo dopo verifica che la mossa prevista sia sicura.",
+      "Fai un breve turno di Memory Chess prima delle partite per affinare il richiamo.",
+      "Dopo ogni svista, scrivi in una frase il segnale perso."
+    ],
+    "drillSectionTitle": "Esercizi anti-svista semplici",
+    "drillCards": [
+      {
+        "title": "Scansione dal lato avversario",
+        "description": "Inizia ogni posizione controllando le minacce più forti dell'avversario.",
+        "duration": "3 minuti",
+        "goal": "Pensare all'idea dell'avversario prima della tua.",
+        "ctaLabel": "Scansiona dall'altro lato"
+      },
+      {
+        "title": "Allarme pezzi in presa",
+        "description": "Nomina ogni pezzo non protetto o sovraccarico prima di muovere.",
+        "duration": "4 minuti",
+        "goal": "Cogliere presto le perdite di materiale più facili.",
+        "ctaLabel": "Attiva l'allarme"
+      },
+      {
+        "title": "Ciclo di riproposizione delle svista",
+        "description": "Rigioca le tue posizioni di svista finché la minaccia persa non diventa evidente.",
+        "duration": "6 minuti",
+        "goal": "Imparare dalle posizioni che hanno causato le tue sconfitte.",
+        "ctaLabel": "Rigioca la tua svista"
+      }
+    ],
+    "comparisonTitle": "Cosa cambia quando le svista calano",
+    "comparisonSummary": "Le partite non diventano perfette all'improvviso. Diventano più calme e le sconfitte hanno cause comprensibili invece di un disastro in una mossa.",
+    "comparisonRows": [
+      {
+        "label": "Momento di muovere",
+        "struggling": "Muovi appena vedi un piano.",
+        "stronger": "Muovi solo dopo un breve passaggio di sicurezza."
+      },
+      {
+        "label": "Percezione delle minacce",
+        "struggling": "Vedi la tattica dopo che è arrivata.",
+        "stronger": "Riconosci la forma tattica prima di impegnarti."
+      },
+      {
+        "label": "Analisi post-partita",
+        "struggling": "La sconfitta sembra casuale.",
+        "stronger": "Nomini in fretta l'indizio esatto che avevi perso."
+      }
+    ],
+    "mistakes": [
+      "Credere che basti muovere più lentamente per eliminare le svista.",
+      "Memorizzare altre aperture mentre il controllo delle minacce è ancora debole.",
+      "Guardare le varianti del motore senza individuare il vero segnale perso.",
+      "Ignorare che la pressione del tempo indebolisce il richiamo."
+    ],
+    "mistakesCallout": "Muovere più lentamente non basta. Usa lo stesso breve controllo di sicurezza ogni volta.",
+    "planTitle": "Azzeramento anti-svista in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "10 minuti",
+        "detail": "Solo scansione dal lato avversario e allarme pezzi in presa."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "12 minuti",
+        "detail": "Aggiungi un turno di Memory Chess prima di ogni sessione per uno stato della scacchiera più pulito."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "15 minuti",
+        "detail": "Rigioca tre svista recenti e classifica il segnale perso in ciascuna."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15 minuti",
+        "detail": "Usa tutta la lista nelle partite rapid e traccia le svista per partita invece del solo risultato."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Perché lascio sempre pezzi in presa?",
+        "answer": "Di solito perché la scansione prima della mossa è incompleta. Conosci la tattica ma non controlli tutta la scacchiera prima di muovere."
+      },
+      {
+        "question": "Basta muovere più lentamente?",
+        "answer": "Solo se usi quel tempo per un chiaro controllo di sicurezza. Fissare la scacchiera senza metodo non aiuta."
+      },
+      {
+        "question": "Gli esercizi di memoria aiutano davvero?",
+        "answer": "Sì. Un richiamo più pulito rende più facile notare le minacce mentre la scacchiera cambia."
+      },
+      {
+        "question": "Cosa tracciare per fare meno svista?",
+        "answer": "Traccia le svista per partita, i pezzi in presa dimenticati e se la minaccia persa veniva da una scansione o da un calcolo fallito."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Rafforza la scansione della scacchiera per prevenire le svista."
+      },
+      {
+        "reason": "Vedi perché la tattica crolla quando il tracciamento è debole."
+      },
+      {
+        "reason": "Inserisci il lavoro anti-svista in una routine completa per principianti."
+      }
+    ]
+  },
+  {
+    "slug": "why-puzzle-rating-doesnt-transfer-to-games",
+    "title": "Perché il punteggio negli esercizi non si trasferisce alle partite",
+    "h1": "Perché il tuo punteggio negli esercizi non si trasferisce alle partite",
+    "description": "Scopri perché la tattica sembra diversa in partita e come visione, memoria e analisi colmano il divario.",
+    "primaryKeyword": "perché gli esercizi non si trasferiscono alle partite",
+    "secondaryKeywords": [
+      "punteggio esercizi contro punteggio partite",
+      "tattica che non si trasferisce",
+      "abilità tattica nelle partite vere",
+      "perché sono più bravo negli esercizi",
+      "visione della scacchiera a scacchi"
+    ],
+    "painPoint": "Risolvi bene gli esercizi ma perdi le tattiche nelle partite vere.",
+    "ctaLabel": "Allenati per le partite vere",
+    "quickAnswer": "Un esercizio ti dice che c'è una tattica. Una partita no. Devi notare il pericolo, ricordare la scacchiera e sapere quando rallentare.",
+    "keyTakeaways": [
+      "Un esercizio annuncia che c'è un problema da risolvere.",
+      "In partita devi trovare tu il momento pericoloso.",
+      "Visione e memoria migliori fanno notare le tattiche prima."
+    ],
+    "whoThisIsFor": [
+      "Giocatori con punteggio negli esercizi alto ma punteggio in partita fermo.",
+      "Principianti che vedono la tattica dopo la partita, non durante.",
+      "Chi non riesce a usare le idee degli esercizi in partita."
+    ],
+    "timeToRead": "8 min di lettura",
+    "introParagraphs": [
+      "È un problema comune tra i principianti. Risolvi esercizi, ma le partite contengono ancora pezzi persi, minacce mancate e mosse affrettate.",
+      "Fare più esercizi potrebbe non bastare. Devi anche notare quando una posizione diventa pericolosa e immaginare cosa succede dopo ogni scelta."
+    ],
+    "startHereTitle": "Inizia collegando esercizi e partite",
+    "startHereSteps": [
+      "Prima degli esercizi, dedica 2 minuti a scansionare una scacchiera per scacchi, catture e minacce.",
+      "Aggiungi un turno di Memory Chess per tenere stabile l'immagine della scacchiera sotto pressione.",
+      "Dopo un esercizio, chiediti quale segnale ti avrebbe detto di rallentare in partita.",
+      "Rivedi una svista recente e confrontala con un esercizio tattico simile.",
+      "Gioca almeno una partita rapid per sessione per verificare se la scansione regge."
+    ],
+    "drillSectionTitle": "Esercizi che collegano tattica e partita",
+    "drillCards": [
+      {
+        "title": "Trova il segnale d'allarme",
+        "description": "Cerca il segnale d'allarme prima di provare a trovare la tattica.",
+        "duration": "4 minuti",
+        "goal": "Notare prima le posizioni pericolose.",
+        "ctaLabel": "Allena prima il segnale"
+      },
+      {
+        "title": "Richiamo prima del calcolo",
+        "description": "Fai un rapido turno di Memory Chess prima degli esercizi per una scacchiera più nitida.",
+        "duration": "4 minuti",
+        "goal": "Collegare il lavoro sugli schemi al gioco reale.",
+        "ctaLabel": "Affina prima il richiamo"
+      },
+      {
+        "title": "Riproposizione di una posizione di partita",
+        "description": "Rigioca un momento tattico perso nella tua partita e risolvilo come un esercizio.",
+        "duration": "6 minuti",
+        "goal": "Ridare all'allenamento tattico il sapore delle posizioni vere.",
+        "ctaLabel": "Rigioca la tattica persa"
+      }
+    ],
+    "comparisonTitle": "Esercizi e partite: cosa cambia?",
+    "comparisonSummary": "La mossa tattica può essere identica, ma il compito mentale no.",
+    "comparisonRows": [
+      {
+        "label": "Impostazione del problema",
+        "struggling": "La partita non ti dice che esiste una tattica.",
+        "stronger": "Noti il segnale che indica un cambio di tensione."
+      },
+      {
+        "label": "Nitidezza della scacchiera",
+        "struggling": "La variante si annebbia quando si muovono più pezzi.",
+        "stronger": "Tieni in memoria le case e i difensori importanti."
+      },
+      {
+        "label": "Tempi di decisione",
+        "struggling": "Giochi a velocità normale quando la posizione diventa pericolosa.",
+        "stronger": "Rallenti quando compaiono scacchi, catture o minacce."
+      }
+    ],
+    "mistakes": [
+      "Fare esercizi senza alcun passaggio di trasferimento alle partite.",
+      "Credere che la sola conoscenza tattica eviti le svista.",
+      "Non analizzare mai perché una posizione è diventata pericolosa.",
+      "Trattare la visione della scacchiera come separata dalla tattica."
+    ],
+    "mistakesCallout": "Non aggiungere solo altri esercizi. Allenati anche a notare i momenti tattici nelle tue partite.",
+    "planTitle": "Blocco di trasferimento in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "12 minuti",
+        "detail": "Aggiungi il riflesso segnale-prima-della-soluzione a ogni sessione di esercizi."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "12 minuti",
+        "detail": "Fai un breve turno di Memory Chess prima degli esercizi o del gioco rapid."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "15 minuti",
+        "detail": "Rigioca tre momenti tattici persi nelle tue partite."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15-20 minuti",
+        "detail": "Gioca rapid e fermati ogni volta che la posizione diventa forzata o tatticamente tesa."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Perché sono più bravo negli esercizi che in partita?",
+        "answer": "Perché un esercizio ti dice già che c'è una tattica da trovare. Una partita vera no."
+      },
+      {
+        "question": "Devo smettere di fare esercizi?",
+        "answer": "No. Tienili, ma aggiungi visione, richiamo e riproposizione di posizioni di partita perché gli schemi si trasferiscano."
+      },
+      {
+        "question": "Qual è il miglior esercizio di trasferimento?",
+        "answer": "Rigiocare una tattica persa nella tua partita e risolverla dopo aver ricostruito la posizione a memoria."
+      },
+      {
+        "question": "Come misuro il trasferimento?",
+        "answer": "Guarda se calano le svista per partita e le tattiche semplici perse, non solo se sale il punteggio negli esercizi."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usalo per costruire una lista anti-svista più breve per le partite vere."
+      },
+      {
+        "reason": "Rafforza l'abitudine di scansione che rende visibili le tattiche."
+      },
+      {
+        "reason": "Scegli un volume di esercizi che lasci tempo per giocare."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-see-the-whole-board-in-chess",
+    "title": "Come vedere tutta la scacchiera a scacchi",
+    "h1": "Come vedere tutta la scacchiera",
+    "description": "Usa una scansione semplice per notare i pezzi lontani, vedere le minacce ed evitare la visione a tunnel.",
+    "primaryKeyword": "vedere tutta la scacchiera a scacchi",
+    "secondaryKeywords": [
+      "consapevolezza della scacchiera",
+      "evitare la visione a tunnel a scacchi",
+      "vedere tutta la scacchiera",
+      "esercizi di scansione a scacchi",
+      "visione periferica della scacchiera"
+    ],
+    "painPoint": "Ti concentri su una zona e perdi una minaccia altrove.",
+    "ctaLabel": "Allena la visione globale",
+    "quickAnswer": "Prima di ogni mossa controlla entrambi i re, i pezzi non protetti, il centro e i bordi. L'allenamento della memoria aiuta a tenere in mente più scacchiera.",
+    "keyTakeaways": [
+      "La visione a tunnel è attenzione bloccata su una zona.",
+      "Controllare i pezzi ai bordi è particolarmente utile ai principianti.",
+      "Una memoria nitida della scacchiera rende la scansione più facile."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che notano la tattica solo su un lato della scacchiera.",
+      "Principianti che perdono alfieri, torri o minacce lontane.",
+      "Chi si sente mentalmente stretto nelle posizioni aperte."
+    ],
+    "timeToRead": "7 min di lettura",
+    "introParagraphs": [
+      "Molti principianti guardano solo i pezzi vicini alla mossa che hanno in mente. Così alfieri, torri e minacce lontane passano inosservati.",
+      "Non serve fissare la scacchiera più a lungo. Usa la stessa scansione semplice per controllare ogni zona importante."
+    ],
+    "startHereTitle": "Inizia qui: allarga la scansione",
+    "startHereSteps": [
+      "Controlla entrambi i re e le linee che puntano verso di loro.",
+      "Cerca i pezzi non protetti prima al centro, poi ai bordi.",
+      "Percorri alfieri e torri lungo tutte le loro linee, non solo la casa che ti interessa.",
+      "Fai un turno di Memory Chess per tenere più disponibile tutta la scacchiera.",
+      "Prima di muovere, chiediti quale parte della scacchiera non hai ancora guardato."
+    ],
+    "drillSectionTitle": "Esercizi contro la visione a tunnel",
+    "drillCards": [
+      {
+        "title": "Scansione dei bordi",
+        "description": "Controlla i pezzi negli angoli e ai bordi prima di ogni mossa.",
+        "duration": "3 minuti",
+        "goal": "Cogliere le minacce fuori dalla zona su cui sei concentrato.",
+        "ctaLabel": "Scansiona i bordi"
+      },
+      {
+        "title": "Riproposizione delle linee di vista",
+        "description": "Traccia per intero ogni linea di alfiere e torre invece di guardare una sola casa obiettivo.",
+        "duration": "4 minuti",
+        "goal": "Coprire più scacchiera a ogni scansione.",
+        "ctaLabel": "Traccia le linee"
+      },
+      {
+        "title": "Richiamo dell'intera scacchiera",
+        "description": "Usa Memory Chess con un numero moderato di pezzi e poi enuncia la scacchiera per zone.",
+        "duration": "5 minuti",
+        "goal": "Ricordare più scacchiera in una volta.",
+        "ctaLabel": "Richiama per zone"
+      }
+    ],
+    "comparisonTitle": "Visione a tunnel contro visione globale",
+    "comparisonSummary": "Non serve guardare ovunque per lo stesso tempo. Assicurati solo di non perdere nulla di importante.",
+    "comparisonRows": [
+      {
+        "label": "Percorso dell'attenzione",
+        "struggling": "Fissi un solo gruppo di pezzi.",
+        "stronger": "Tocchi le zone a rischio in un ordine costante."
+      },
+      {
+        "label": "Pezzi a lungo raggio",
+        "struggling": "Dimentichi alfieri e torri lontani dall'azione.",
+        "stronger": "Percorri tutte le loro linee prima di fidarti di una mossa."
+      },
+      {
+        "label": "Zone della scacchiera",
+        "struggling": "Salti il lato che sembra tranquillo.",
+        "stronger": "Controlli il lato tranquillo prima di muovere."
+      }
+    ],
+    "mistakes": [
+      "Pensare che la visione globale significhi guardare più a lungo invece che scansionare meglio.",
+      "Ignorare i bordi perché il centro sembra più urgente.",
+      "Non tracciare per intero le linee dei pezzi a lungo raggio.",
+      "Voler scansionare più largo prima di saper ricordare bene i pezzi."
+    ],
+    "mistakesCallout": "Più tempo di riflessione non aiuta senza una scansione chiara. Controlla la scacchiera sempre nello stesso ordine.",
+    "planTitle": "Piano di scansione globale in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "10 minuti",
+        "detail": "Solo controlli dei re, dei pezzi in presa e scansione dei bordi."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "12 minuti",
+        "detail": "Aggiungi il tracciamento completo delle linee di alfieri e torri."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "12 minuti",
+        "detail": "Usa Memory Chess e richiama la scacchiera per zone invece che a caso."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15 minuti",
+        "detail": "Porta la scansione nelle partite rapid e annota quale zona ha causato la dimenticanza quando avviene una svista."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Perché perdo sempre i pezzi dall'altra parte della scacchiera?",
+        "answer": "Perché la tua attenzione è troppo locale. Un ordine di scansione fisso è meglio che sperare di notare tutto."
+      },
+      {
+        "question": "Memory Chess aiuta la visione globale?",
+        "answer": "Sì. Allena a tenere attiva in memoria più scacchiera, non solo il punto caldo tattico."
+      },
+      {
+        "question": "Devo guardare i bordi a ogni mossa?",
+        "answer": "Sì, soprattutto da principiante. Molte svista facili si nascondono nei pezzi ai bordi e nelle linee lunghe."
+      },
+      {
+        "question": "Come capisco se la scansione migliora?",
+        "answer": "Perderai meno minacce lontane e sarai meno sorpreso da alfieri, torri e attacchi di scoperta."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Unisci la visione globale a una lista di sicurezza più solida."
+      },
+      {
+        "reason": "Migliora la scacchiera mentale per scansionare più largo senza sforzo."
+      },
+      {
+        "reason": "Riconosci le case più in fretta per scansioni meno costose."
+      }
+    ]
+  },
+  {
+    "slug": "chess-coordinates-practice",
+    "title": "Esercizi sulle coordinate per una scacchiera più chiara",
+    "h1": "Esercizi sulle coordinate degli scacchi per principianti",
+    "description": "Impara più in fretta i nomi delle case e rendi più facili scansione, notazione e visualizzazione.",
+    "primaryKeyword": "esercizi sulle coordinate degli scacchi",
+    "secondaryKeywords": [
+      "esercizi di notazione scacchistica",
+      "imparare le coordinate degli scacchi",
+      "riconoscere le case più in fretta",
+      "consapevolezza delle case della scacchiera",
+      "nominare le case a scacchi"
+    ],
+    "painPoint": "Ti serve tempo per ricavare il nome di una casa, o spesso le confondi.",
+    "ctaLabel": "Allena i nomi delle case",
+    "quickAnswer": "Le coordinate sono i nomi delle 64 case. Conoscerle rende più facili scansione, visualizzazione e analisi.",
+    "keyTakeaways": [
+      "Riconoscere in fretta le case rende più facile la scansione.",
+      "Allena le coordinate su posizioni vere.",
+      "Per iniziare bastano i nomi base delle case."
+    ],
+    "whoThisIsFor": [
+      "Principianti che contano ancora lentamente colonne e traverse.",
+      "Giocatori che vogliono scansionare e visualizzare più in fretta.",
+      "Chi trova confusa la notazione scacchistica."
+    ],
+    "timeToRead": "7 min di lettura",
+    "introParagraphs": [
+      "Le coordinate servono a molto più che a libri ed elenchi di mosse. Riconoscerle in fretta aiuta visione, memoria e analisi.",
+      "Quando conosci i nomi delle case, la scacchiera diventa una mappa chiara invece di un insieme di zone vaghe."
+    ],
+    "startHereTitle": "Inizia con i nomi delle case su una scacchiera vera",
+    "startHereSteps": [
+      "Scegli una colonna o una traversa e nomina le case ad alta voce.",
+      "Enuncia la casa di ogni pezzo mentre ricostruisci una posizione Memory Chess.",
+      "Prendi una posizione recente e nomina attaccanti e difensori per casa.",
+      "Allena alfieri, torri e salti di cavallo per coordinate, non solo a vista.",
+      "Chiudi con una scansione rapida in cui ogni pezzo in presa è nominato per casa."
+    ],
+    "drillSectionTitle": "Esercizi sulle coordinate utili in partita",
+    "drillCards": [
+      {
+        "title": "Nominare pezzo e casa",
+        "description": "Ricostruisci una scacchiera e chiama ogni pezzo con nome e casa.",
+        "duration": "4 minuti",
+        "goal": "Collegare i nomi delle case ai pezzi da ricordare.",
+        "ctaLabel": "Nomina ogni casa"
+      },
+      {
+        "title": "Nominare le linee lunghe",
+        "description": "Traccia le linee di alfieri e torri dicendo le case che influenzano.",
+        "duration": "4 minuti",
+        "goal": "Rendere utili le coordinate nelle scansioni complete.",
+        "ctaLabel": "Traccia per casa"
+      },
+      {
+        "title": "Mappa dei salti di cavallo",
+        "description": "Scegli una casa del cavallo e nomina in fretta tutte le destinazioni legali.",
+        "duration": "3 minuti",
+        "goal": "Riconoscere più in fretta mosse e obiettivi del cavallo.",
+        "ctaLabel": "Mappa i salti"
+      }
+    ],
+    "comparisonTitle": "Riconoscimento lento contro riconoscimento rapido",
+    "comparisonSummary": "Le coordinate non miglioreranno ogni parte del tuo gioco, ma rendono più facili diverse abilità.",
+    "comparisonRows": [
+      {
+        "label": "Scansione",
+        "struggling": "Conosci la forma ma non i nomi delle case.",
+        "stronger": "Individui minacce e difensori più in fretta e con precisione."
+      },
+      {
+        "label": "Visualizzazione",
+        "struggling": "Le mosse immaginate restano vaghe.",
+        "stronger": "La posizione risultante diventa più facile da descrivere e tenere."
+      },
+      {
+        "label": "Analisi",
+        "struggling": "Le note dopo la partita restano confuse.",
+        "stronger": "Descrivi il momento chiave abbastanza bene da studiarlo dopo."
+      }
+    ],
+    "mistakes": [
+      "Allenare i nomi delle case senza posizioni vere.",
+      "Voler memorizzare le regole di notazione senza esempi sulla scacchiera.",
+      "Ignorare le linee dei pezzi lunghi mentre alleni le case.",
+      "Abbandonare l'abitudine appena la notazione diventa familiare."
+    ],
+    "mistakesCallout": "Non ripetere solo nomi di case. Usali con pezzi e posizioni vere.",
+    "planTitle": "Riscaldamento sulle coordinate in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "8 minuti",
+        "detail": "Nomina ogni pezzo e la sua casa mentre ricostruisci una posizione Memory Chess."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "10 minuti",
+        "detail": "Aggiungi la denominazione delle linee lunghe per alfieri e torri."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "10 minuti",
+        "detail": "Allena la mappa dei salti di cavallo e la scioltezza sulle case centrali."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "12 minuti",
+        "detail": "Usa i nomi delle case durante una scansione completa, poi analizza una posizione importante solo per case."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Le coordinate contano davvero per un principiante?",
+        "answer": "Sì, quando accelerano visione, visualizzazione e analisi. Non serve una notazione perfetta, ma la rapidità aiuta."
+      },
+      {
+        "question": "Qual è il modo migliore per impararle?",
+        "answer": "Impara i nomi delle case con posizioni e pezzi veri invece di ripetere la notazione da sola."
+      },
+      {
+        "question": "Mi aiuterà a fare meno svista?",
+        "answer": "Indirettamente sì. Riconoscere in fretta le case rende scansioni e controlli delle minacce più precisi."
+      },
+      {
+        "question": "Quanto allenare le coordinate?",
+        "answer": "Cinque-dieci minuti concentrati bastano quando l'esercizio è legato a un vero lavoro sulla scacchiera."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa le coordinate per sostenere una scansione più ampia."
+      },
+      {
+        "reason": "Rendi gli aggiornamenti mentali più precisi, casa per casa."
+      },
+      {
+        "reason": "Usa i nomi delle case per semplificare il pensiero sotto pressione."
+      }
+    ]
+  },
+  {
+    "slug": "20-minute-daily-chess-study-plan",
+    "title": "Piano di studio quotidiano di 20 minuti per principianti",
+    "h1": "Un piano di scacchi quotidiano di 20 minuti per principianti",
+    "description": "Segui un piano semplice di 20 minuti tra scacchiera, memoria, partite e breve analisi.",
+    "primaryKeyword": "piano di scacchi quotidiano di 20 minuti",
+    "secondaryKeywords": [
+      "routine quotidiana di scacchi per principianti",
+      "piano di studio breve a scacchi",
+      "migliorare in 20 minuti al giorno",
+      "programma di allenamento per principianti",
+      "routine tra esercizi e analisi"
+    ],
+    "painPoint": "Vuoi migliorare, ma la maggior parte dei piani di scacchi richiede troppo tempo.",
+    "ctaLabel": "Avvia il piano da 20 minuti",
+    "quickAnswer": "Dedica pochi minuti a visione della scacchiera, memoria, tattica e analisi. Tieni la routine abbastanza breve da farla anche stanco.",
+    "keyTakeaways": [
+      "Allenarsi spesso conta più che allenarsi a lungo.",
+      "Usa sia esercizi sia posizioni vere.",
+      "Una breve analisi aiuta l'allenamento di domani."
+    ],
+    "whoThisIsFor": [
+      "Principianti con poco tempo ma motivazione costante.",
+      "Giocatori che abbandonano i piani troppo impegnativi.",
+      "Chi vuole una routine quotidiana ripetibile."
+    ],
+    "timeToRead": "7 min di lettura",
+    "introParagraphs": [
+      "Molti piani di studio funzionano solo con molto tempo libero. Un piano utile deve reggere anche in una giornata piena.",
+      "Questa routine da 20 minuti tiene un esercizio, una posizione vera e una breve analisi."
+    ],
+    "startHereTitle": "La tua routine di scacchi da 20 minuti",
+    "startHereSteps": [
+      "Dedica 4 minuti a un esercizio di visione o di richiamo.",
+      "Dedica 6 minuti a un turno di Memory Chess con le stesse impostazioni per tutta la settimana.",
+      "Dedica 6 minuti alla tattica o a una posizione di una partita vera.",
+      "Dedica 4 minuti ad annotare cosa è andato storto oggi e cosa ha retto.",
+      "Tieni la struttura almeno 7 giorni prima di modificarla."
+    ],
+    "drillSectionTitle": "Esercizi che stanno in un piano breve",
+    "drillCards": [
+      {
+        "title": "Riscaldamento con il richiamo",
+        "description": "Usa un breve turno di Memory Chess come ancoraggio dell'intera sessione.",
+        "duration": "6 minuti",
+        "goal": "Iniziare ogni sessione con lo stesso riscaldamento di memoria.",
+        "ctaLabel": "Avvia il riscaldamento"
+      },
+      {
+        "title": "Sprint del controllo minacce",
+        "description": "Scansiona una posizione cercando scacchi, catture, minacce e pezzi in presa.",
+        "duration": "4 minuti",
+        "goal": "Migliorare il trasferimento in partita quasi senza costo di tempo.",
+        "ctaLabel": "Controlla le minacce"
+      },
+      {
+        "title": "Ciclo di note",
+        "description": "Scrivi una frase sul tipo di errore commesso oggi.",
+        "duration": "4 minuti",
+        "goal": "Riusare domani la lezione di oggi.",
+        "ctaLabel": "Annota una lezione"
+      }
+    ],
+    "comparisonTitle": "Una routine che riuscirai a mantenere",
+    "comparisonSummary": "La routine migliore è quella che puoi ripetere in una settimana normale.",
+    "comparisonRows": [
+      {
+        "label": "Carico quotidiano",
+        "struggling": "Provi troppe forme di studio insieme.",
+        "stronger": "Ripeti un ciclo compatto che copre le basi ogni giorno."
+      },
+      {
+        "label": "Trasferimento",
+        "struggling": "Guardi o leggi senza praticare.",
+        "stronger": "Ogni sessione contiene un esercizio riutilizzabile in partita."
+      },
+      {
+        "label": "Analisi",
+        "struggling": "Gli errori svaniscono perché non annoti nulla.",
+        "stronger": "Ogni giorno finisce con una nota per domani."
+      }
+    ],
+    "mistakes": [
+      "Copiare piani avanzati impossibili da mantenere.",
+      "Usare tutti i 20 minuti per contenuti passivi.",
+      "Cambiare la routine ogni due giorni.",
+      "Saltare l'analisi perché sembra poca cosa."
+    ],
+    "mistakesCallout": "Non ingrandire il piano. Rendilo abbastanza leggero da ripetere.",
+    "planTitle": "Routine da 20 minuti in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-3",
+        "duration": "20 minuti",
+        "detail": "Tieni le stesse impostazioni Memory Chess e lo stesso formato di controllo per costanza."
+      },
+      {
+        "label": "Giorno 4",
+        "duration": "20 minuti",
+        "detail": "Rileggi le note e tieni un solo punto di correzione per i tre giorni successivi."
+      },
+      {
+        "label": "Giorno 5-6",
+        "duration": "20 minuti",
+        "detail": "Ripeti esattamente la stessa struttura senza aggiungere varietà."
+      },
+      {
+        "label": "Giorno 7",
+        "duration": "20 minuti",
+        "detail": "Verifica se svista o precisione di richiamo sono migliorate e fai un solo aggiustamento per la settimana dopo."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Bastano 20 minuti di allenamento?",
+        "answer": "Sì, se sono costanti e contengono esercizi che si trasferiscono direttamente in partita, non solo contenuti passivi."
+      },
+      {
+        "question": "Devo usare tutti i 20 minuti per la tattica?",
+        "answer": "Di solito no. Un mix di visione, trasferimento tattico e breve analisi funziona meglio per i principianti."
+      },
+      {
+        "question": "Per quanto tenere lo stesso piano?",
+        "answer": "Almeno una settimana. Cambiare di continuo rende i progressi illeggibili."
+      },
+      {
+        "question": "Cosa dovrei tracciare?",
+        "answer": "Le svista per partita, la precisione di richiamo e il tipo di errore che torna più spesso."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Vedi come questa breve routine si inserisce in un piano più lungo."
+      },
+      {
+        "reason": "Bilancia lavoro tattico e visione della scacchiera."
+      },
+      {
+        "reason": "Tieni il blocco di analisi semplice e produttivo."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-analyze-chess-games-for-beginners",
+    "title": "Come analizzare le proprie partite da principianti",
+    "h1": "Come analizzare le proprie partite di scacchi da principianti",
+    "description": "Rivedi le tue partite, capisci gli errori e scegli una cosa chiara da allenare.",
+    "primaryKeyword": "analizzare partite di scacchi da principiante",
+    "secondaryKeywords": [
+      "analisi di partita per principianti",
+      "rivedere le proprie partite",
+      "autoanalisi a scacchi",
+      "analizzare le proprie svista",
+      "routine dopo la partita"
+    ],
+    "painPoint": "La tua analisi è troppo veloce, troppo confusa o piena di varianti del motore.",
+    "ctaLabel": "Analizza la prossima partita",
+    "quickAnswer": "Trova dove la partita è cambiata, nomina il tipo di errore e scegli una correzione. Guarda il motore solo dopo aver esaminato tu la posizione.",
+    "keyTakeaways": [
+      "Chiudi ogni analisi con un'azione, non con un lungo elenco di mosse del motore.",
+      "Nominare il tipo di errore aiuta a scegliere l'esercizio.",
+      "Prova a ricostruire a memoria la posizione chiave."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che rivedono le partite senza sapere cosa fare dopo.",
+      "Principianti che vedono muoversi la valutazione senza capire perché.",
+      "Chi vuole un'abitudine dopo la partita più semplice."
+    ],
+    "timeToRead": "7 min di lettura",
+    "introParagraphs": [
+      "Parti da una domanda: quale errore ha cambiato la partita? Una valutazione del motore da sola non spiega cosa allenare.",
+      "Ricostruisci la posizione chiave, nomina l'errore e ricavane l'esercizio di domani."
+    ],
+    "startHereTitle": "Inizia qui: il ciclo di analisi del principiante",
+    "startHereSteps": [
+      "Trova il primo momento in cui la posizione è cambiata molto.",
+      "Ricostruisci quella posizione a memoria prima di controllare il motore.",
+      "Classifica l'errore come visione, memoria, calcolo o gestione del tempo.",
+      "Chiediti quale segnale avrebbe dovuto farti rallentare.",
+      "Trasforma la risposta in un esercizio per la prossima sessione."
+    ],
+    "drillSectionTitle": "Esercizi di analisi semplici",
+    "drillCards": [
+      {
+        "title": "Ricostruire la posizione chiave",
+        "description": "Ricostruisci a memoria la posizione della svista principale prima di verificarla.",
+        "duration": "5 minuti",
+        "goal": "Ricordare la posizione prima di vedere la risposta.",
+        "ctaLabel": "Ricostruisci il momento"
+      },
+      {
+        "title": "Etichettare il tipo di errore",
+        "description": "Classifica ogni grosso errore come visione, memoria, calcolo o tempo.",
+        "duration": "3 minuti",
+        "goal": "Sapere cosa allenare dopo.",
+        "ctaLabel": "Etichetta l'errore"
+      },
+      {
+        "title": "Analisi con una sola correzione",
+        "description": "Chiudi l'analisi con una correzione chiara per domani.",
+        "duration": "2 minuti",
+        "goal": "Finire con un passo successivo utile.",
+        "ctaLabel": "Scegli una correzione"
+      }
+    ],
+    "comparisonTitle": "Analisi utile contro analisi inutile",
+    "comparisonSummary": "Non serve studiare ogni mossa. Trova la lezione più chiara per il prossimo esercizio.",
+    "comparisonRows": [
+      {
+        "label": "Uso del motore",
+        "struggling": "Apri subito il motore.",
+        "stronger": "Fai la tua diagnosi prima di verificare."
+      },
+      {
+        "label": "Risultato",
+        "struggling": "Finisci con molti commenti e nessuna azione.",
+        "stronger": "Finisci con un esercizio o un aggiustamento della lista."
+      },
+      {
+        "label": "Memoria",
+        "struggling": "La posizione svanisce appena finita la partita.",
+        "stronger": "La ricostruisci e vedi l'errore più chiaramente."
+      }
+    ],
+    "mistakes": [
+      "Analizzare solo con le varianti del motore, senza autodiagnosi.",
+      "Voler analizzare ogni mossa con la stessa profondità.",
+      "Non dare un nome al tipo di errore.",
+      "Chiudere l'analisi senza scegliere il prossimo esercizio."
+    ],
+    "mistakesCallout": "Non scorrere tutte le varianti del motore. Nomina l'errore e allena la correzione.",
+    "planTitle": "Abitudine di analisi in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "10 minuti",
+        "detail": "Analizza una partita e trova solo la prima grande svolta."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "12 minuti",
+        "detail": "Ricostruisci quella posizione a memoria prima di consultare il motore."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "12 minuti",
+        "detail": "Classifica ogni grosso errore per tipo e conta quale torna più spesso."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15 minuti",
+        "detail": "Scegli il primo esercizio della prossima sessione in base al tipo di errore più frequente."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Un principiante dovrebbe usare il motore?",
+        "answer": "Sì, ma dopo aver tentato la propria diagnosi. Altrimenti l'analisi resta passiva."
+      },
+      {
+        "question": "Quanti errori esaminare dopo una partita?",
+        "answer": "Da uno a tre grandi punti di svolta bastano alla maggior parte dei principianti."
+      },
+      {
+        "question": "Cosa annotare dopo l'analisi?",
+        "answer": "Il tipo di errore, il segnale perso e un esercizio o un aggiustamento della lista per la prossima volta."
+      },
+      {
+        "question": "Come aiuta Memory Chess nell'analisi?",
+        "answer": "Ti aiuta a ricostruire le posizioni importanti, rendendo l'analisi più precisa."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Inserisci l'analisi in una routine che non sovraccarica."
+      },
+      {
+        "reason": "Trasforma i risultati dell'analisi in esercizi anti-svista."
+      },
+      {
+        "reason": "Ricorda e ricostruisci i momenti chiave dopo la partita."
+      }
+    ]
+  },
+  {
+    "slug": "how-many-chess-puzzles-a-day",
+    "title": "Quanti esercizi di scacchi fare ogni giorno?",
+    "h1": "Quanti esercizi di scacchi dovrebbe fare un principiante ogni giorno?",
+    "description": "Scegli un volume quotidiano che migliori la tattica e lasci tempo per memoria, partite e analisi.",
+    "primaryKeyword": "quanti esercizi di scacchi al giorno",
+    "secondaryKeywords": [
+      "volume quotidiano di esercizi",
+      "routine di esercizi per principianti",
+      "quanta tattica al giorno",
+      "troppi esercizi di scacchi",
+      "volume tattico per principianti"
+    ],
+    "painPoint": "Fai molti esercizi ma non sai se aiutano le tue partite.",
+    "ctaLabel": "Bilancia esercizi e pratica",
+    "quickAnswer": "Per la maggior parte dei principianti basta una breve sessione quotidiana. Fermati finché pensi con lucidità e lascia tempo per partite, memoria e analisi.",
+    "keyTakeaways": [
+      "La qualità degli esercizi conta più della quantità.",
+      "Troppi esercizi tolgono tempo a partite e analisi.",
+      "Il tuo volume ideale deve lasciare tempo per giocare o analizzare."
+    ],
+    "whoThisIsFor": [
+      "Giocatori il cui intero piano di studio sono gli esercizi.",
+      "Principianti che vogliono una routine chiara di esercizi.",
+      "Chi vuole bilanciare esercizi e pratica in partita."
+    ],
+    "timeToRead": "7 min di lettura",
+    "introParagraphs": [
+      "Non esiste un numero perfetto per tutti. Troppi pochi esercizi rallentano l'apprendimento degli schemi, troppi non lasciano tempo per il resto.",
+      "Fanne abbastanza da restare affilato e usa il tempo restante per memoria della scacchiera, partite e analisi."
+    ],
+    "startHereTitle": "Scegli un volume quotidiano sensato",
+    "startHereSteps": [
+      "Decidi se gli esercizi sono il riscaldamento, il blocco principale o il test di trasferimento.",
+      "Tieni un breve turno di Memory Chess prima o dopo per la nitidezza della scacchiera.",
+      "Fermati quando le risposte diventano affrettate, invece di rincorrere un numero.",
+      "Ricostruisci ogni giorno un momento tattico perso in una partita vera.",
+      "Cambia il volume solo dopo aver verificato se i tuoi errori in partita cambiano."
+    ],
+    "drillSectionTitle": "Esercizi che rendono la tattica più utile",
+    "drillCards": [
+      {
+        "title": "Riscaldamento più richiamo",
+        "description": "Unisci un breve esercizio di richiamo a un blocco tattico moderato invece di partire a freddo.",
+        "duration": "10 minuti",
+        "goal": "Collegare la tattica al gioco vero.",
+        "ctaLabel": "Aggiungi il richiamo"
+      },
+      {
+        "title": "Controllo del segnale dopo ogni esercizio",
+        "description": "Chiediti quale segnale d'allarme rendeva possibile la tattica prima di vedere la soluzione.",
+        "duration": "5 minuti",
+        "goal": "Notare perché una posizione contiene una tattica.",
+        "ctaLabel": "Verifica il segnale"
+      },
+      {
+        "title": "Rigiocare una tattica di partita",
+        "description": "Trasforma una tattica persa in un esercizio da risolvere dopo aver ricostruito la posizione.",
+        "duration": "5 minuti",
+        "goal": "Usare la tattica delle tue partite.",
+        "ctaLabel": "Rigioca la tattica"
+      }
+    ],
+    "comparisonTitle": "Troppo pochi, troppi e quanto basta",
+    "comparisonSummary": "Il volume giusto tiene la tattica affilata lasciando comunque tempo per giocare.",
+    "comparisonRows": [
+      {
+        "label": "Riconoscimento degli schemi",
+        "struggling": "Troppa poca pratica rende estranee le tattiche comuni.",
+        "stronger": "Un blocco quotidiano moderato tiene freschi gli schemi."
+      },
+      {
+        "label": "Trasferimento",
+        "struggling": "Troppi esercizi non lasciano tempo per visione o analisi.",
+        "stronger": "La tua routine mantiene richiamo e lavoro su posizioni vere."
+      },
+      {
+        "label": "Stanchezza",
+        "struggling": "Gli ultimi esercizi diventano tentativi affrettati.",
+        "stronger": "Ti fermi finché le decisioni restano pulite."
+      }
+    ],
+    "mistakes": [
+      "Usare il numero di esercizi come unica misura di qualità.",
+      "Risolvere tattiche senza alcun trasferimento in partita.",
+      "Continuare molto dopo il calo della concentrazione.",
+      "Schiacciare analisi e visione della scacchiera."
+    ],
+    "mistakesCallout": "Più esercizi non è sempre meglio. Verifica se aiutano le tue partite vere.",
+    "planTitle": "Piano di equilibrio in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "15 minuti",
+        "detail": "Usa un piccolo blocco di esercizi preceduto da un breve esercizio di richiamo."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "15 minuti",
+        "detail": "Aggiungi un controllo del segnale dopo ogni esercizio per capire perché la tattica c'era."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "15 minuti",
+        "detail": "Rigioca una tattica persa in partita e confrontala con i tuoi risultati negli esercizi."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15-20 minuti",
+        "detail": "Cambia il volume solo se le risposte restano curate e resta tempo per giocare."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Quanti esercizi al giorno per un principiante?",
+        "answer": "Abbastanza da tenere familiari le tattiche comuni lasciando tempo per memoria e partite. Spesso basta una breve sessione quotidiana."
+      },
+      {
+        "question": "Troppi esercizi possono danneggiare?",
+        "answer": "Indirettamente sì. Possono schiacciare visione, richiamo e analisi, necessari per il vero trasferimento."
+      },
+      {
+        "question": "Prima o dopo le partite?",
+        "answer": "Entrambe funzionano, ma un piccolo riscaldamento più un passaggio di trasferimento dopo spesso funziona bene."
+      },
+      {
+        "question": "Cosa dovrei tracciare?",
+        "answer": "Se calano le svista e le tattiche semplici perse, non solo quanti esercizi hai fatto."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Capisci perché riuscire negli esercizi non basta."
+      },
+      {
+        "reason": "Inserisci gli esercizi in una breve routine equilibrata."
+      },
+      {
+        "reason": "Impara gli schemi comuni invece di aumentare il volume."
+      }
+    ]
+  },
+  {
+    "slug": "chess-pattern-recognition-drills",
+    "title": "Esercizi di riconoscimento degli schemi a scacchi",
+    "h1": "Esercizi di riconoscimento degli schemi per principianti",
+    "description": "Usa esercizi semplici per notare gli schemi comuni e vedere prima le idee utili.",
+    "primaryKeyword": "esercizi di riconoscimento degli schemi a scacchi",
+    "secondaryKeywords": [
+      "riconoscimento degli schemi a scacchi",
+      "allenamento sui temi tattici",
+      "esercizi sugli schemi tattici",
+      "schemi di scacchi per principianti",
+      "memorizzare i temi degli scacchi"
+    ],
+    "painPoint": "Ogni posizione sembra nuova, quindi vedi le idee tattiche troppo tardi.",
+    "ctaLabel": "Allena gli schemi",
+    "quickAnswer": "Uno schema è una disposizione familiare di pezzi e case. Ripeti lo stesso tipo di schema finché non ne vedi in fretta l'idea di fondo.",
+    "keyTakeaways": [
+      "Uno schema è la forma sulla scacchiera e l'idea che produce.",
+      "La memoria della scacchiera aiuta a notare gli schemi sotto pressione.",
+      "Ripeti pochi schemi comuni prima di aggiungerne molti."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che risolvono tattiche ma non notano le stesse forme in partita.",
+      "Principianti che vogliono più struttura di esercizi casuali.",
+      "Chi trova le posizioni ancora visivamente confuse."
+    ],
+    "timeToRead": "7 min di lettura",
+    "introParagraphs": [
+      "Il riconoscimento degli schemi rende familiare una posizione. Una forma può indicare una forchetta, un'inchiodatura, un pezzo intrappolato o una casa debole prima di ogni calcolo.",
+      "Inizia con un piccolo gruppo di schemi comuni. Ricostruisci ogni posizione a memoria per fissare i pezzi e le case che reggono l'idea."
+    ],
+    "startHereTitle": "Inizia con uno schema alla volta",
+    "startHereSteps": [
+      "Scegli un tipo di schema: forchette, inchiodature o attacchi a pezzi non protetti.",
+      "Studia la forma e ricostruiscila a memoria, non solo da un diagramma fisso.",
+      "Nomina le case e i difensori che reggono lo schema.",
+      "Fai un turno di Memory Chess per consolidare un richiamo pulito.",
+      "Rivedi una partita recente e trova dove è comparso o è mancato uno schema simile."
+    ],
+    "drillSectionTitle": "Esercizi semplici sugli schemi",
+    "drillCards": [
+      {
+        "title": "Ricostruire uno schema",
+        "description": "Ricostruisci uno schema a memoria e nomina i pezzi e le case chiave.",
+        "duration": "5 minuti",
+        "goal": "Collegare lo schema a un richiamo nitido della scacchiera.",
+        "ctaLabel": "Ricostruisci uno schema"
+      },
+      {
+        "title": "Ripetere una famiglia",
+        "description": "Ripeti più esempi dello stesso schema prima di cambiare tipo.",
+        "duration": "5 minuti",
+        "goal": "Rendere familiare la forma sulla scacchiera.",
+        "ctaLabel": "Ripeti una famiglia"
+      },
+      {
+        "title": "Trovarlo nelle tue partite",
+        "description": "Scorri una partita recente e trova dove è comparso lo stesso schema.",
+        "duration": "5 minuti",
+        "goal": "Collegare il lavoro sugli schemi alle posizioni vere.",
+        "ctaLabel": "Cerca nelle tue partite"
+      }
+    ],
+    "comparisonTitle": "Tattica casuale contro vero riconoscimento degli schemi",
+    "comparisonSummary": "Gli schemi servono quando li noti prima di iniziare un lungo calcolo.",
+    "comparisonRows": [
+      {
+        "label": "Struttura dell'allenamento",
+        "struggling": "Passi di continuo tra schemi scollegati.",
+        "stronger": "Ripeti un tipo di schema finché non diventa familiare."
+      },
+      {
+        "label": "Memoria della scacchiera",
+        "struggling": "Conosci l'idea ma non le case che la reggono.",
+        "stronger": "Ricordi i dettagli che rendono funzionante lo schema."
+      },
+      {
+        "label": "Partite vere",
+        "struggling": "Gli schemi restano chiusi negli esercizi.",
+        "stronger": "Ne noti i primi segnali in partita."
+      }
+    ],
+    "mistakes": [
+      "Imparare solo il nome dello schema senza capirne la forma.",
+      "Cambiare troppo spesso tipo di schema.",
+      "Ignorare le case e i difensori che reggono lo schema.",
+      "Saltare l'analisi di partita dopo il lavoro sugli schemi."
+    ],
+    "mistakesCallout": "Non aggiungere varietà troppo in fretta. Ripeti un tipo di schema finché non diventa familiare.",
+    "planTitle": "Piano sugli schemi in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "10 minuti",
+        "detail": "Scegli un tipo di schema e ricostruisci a memoria più esempi."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "12 minuti",
+        "detail": "Aggiungi i nomi delle case e il conteggio dei difensori a ogni esempio."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "12 minuti",
+        "detail": "Fai un turno di Memory Chess prima del lavoro sugli schemi per una scacchiera più nitida."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15 minuti",
+        "detail": "Cerca lo stesso schema nelle tue partite recenti e annota dove è comparso o quasi comparso."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Cos'è il riconoscimento degli schemi a scacchi?",
+        "answer": "Vedere una forma familiare sulla scacchiera e ricordare in fretta l'idea che di solito lì funziona."
+      },
+      {
+        "question": "Come allena gli schemi un principiante?",
+        "answer": "Ripetendo un piccolo insieme di schemi, ricostruendo le posizioni a memoria e cercandole in partite vere."
+      },
+      {
+        "question": "Gli esercizi bastano per gli schemi?",
+        "answer": "Non sempre. Aiutano, ma ripetere lo stesso tipo e analizzare le partite li rende davvero utilizzabili."
+      },
+      {
+        "question": "Perché unire Memory Chess al lavoro sugli schemi?",
+        "answer": "Perché riconoscere uno schema è più facile quando tutta la scacchiera resta nitida in memoria."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Costruisci un livello di richiamo più solido per imparare gli schemi."
+      },
+      {
+        "reason": "Bilancia lavoro sugli schemi e volume ragionevole di esercizi."
+      },
+      {
+        "reason": "Usa gli schemi studiati nelle partite vere."
+      }
+    ]
+  },
+  {
+    "slug": "chess-calculation-exercises-for-beginners",
+    "title": "Esercizi di calcolo a scacchi per principianti",
+    "h1": "Esercizi di calcolo a scacchi per principianti",
+    "description": "Usa esercizi semplici per confrontare mosse e seguire varianti brevi senza perdere il filo.",
+    "primaryKeyword": "esercizi di calcolo a scacchi",
+    "secondaryKeywords": [
+      "calcolo a scacchi per principianti",
+      "calcolare mosse in anticipo",
+      "esercizi per tenere una variante",
+      "allenare le mosse candidate",
+      "visualizzazione e calcolo"
+    ],
+    "painPoint": "Inizi a calcolare e presto confondi le mosse o perdi la posizione.",
+    "ctaLabel": "Allena un calcolo pulito",
+    "quickAnswer": "All'inizio confronta solo una o due mosse possibili. Tieni la scacchiera nitida in mente e verifica subito.",
+    "keyTakeaways": [
+      "Due sequenze chiare valgono più di cinque confuse.",
+      "Una visualizzazione nitida dà un calcolo nitido.",
+      "Verifica subito dopo ogni esercizio."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che sanno di dover calcolare ma perdono presto la variante.",
+      "Principianti che muovono d'istinto nelle posizioni tese.",
+      "Chi vuole collegare memoria e decisioni vere."
+    ],
+    "timeToRead": "7 min di lettura",
+    "introParagraphs": [
+      "Calcolare significa semplicemente chiedersi: «Se muovo qui, cosa succede?» La difficoltà è tenere nitida la scacchiera.",
+      "Memoria della scacchiera e visualizzazione facilitano il calcolo. Allenale insieme invece che separatamente."
+    ],
+    "startHereTitle": "Inizia con due mosse possibili",
+    "startHereSteps": [
+      "Scegli al massimo due mosse candidate in una posizione.",
+      "Immagina una variante per due semimosse e riassumila in una frase.",
+      "Fai un turno di Memory Chess per tenere nitida la scacchiera di base.",
+      "Torna alla posizione iniziale e confronta con calma le due varianti.",
+      "Verifica subito e dì se l'errore veniva dall'immagine o dall'ordine delle mosse."
+    ],
+    "drillSectionTitle": "Esercizi di calcolo semplici",
+    "drillCards": [
+      {
+        "title": "Confrontare due candidate",
+        "description": "Tieni due mosse sensate e confronta le loro brevi conseguenze tattiche.",
+        "duration": "6 minuti",
+        "goal": "Confrontare mosse senza dover ricordare troppo.",
+        "ctaLabel": "Confronta due varianti"
+      },
+      {
+        "title": "Prima richiamo, poi calcolo",
+        "description": "Fai un breve turno di richiamo prima di lavorare sulle varianti.",
+        "duration": "4 minuti",
+        "goal": "Ricordare la scacchiera prima di seguire una sequenza.",
+        "ctaLabel": "Richiama prima"
+      },
+      {
+        "title": "Variante in una frase",
+        "description": "Riassumi il ramo in una frase prima di verificare.",
+        "duration": "4 minuti",
+        "goal": "Tenere la sequenza chiara e facile da spiegare.",
+        "ctaLabel": "Riassumi il ramo"
+      }
+    ],
+    "comparisonTitle": "Calcolo confuso contro calcolo pulito",
+    "comparisonSummary": "Non inseguire ancora varianti lunghe. Rendi prima esatte quelle brevi.",
+    "comparisonRows": [
+      {
+        "label": "Mosse candidate",
+        "struggling": "Consideri troppe mosse insieme.",
+        "stronger": "Confronti poche mosse sensate."
+      },
+      {
+        "label": "Immagine della scacchiera",
+        "struggling": "La posizione risultante si annebbia in fretta.",
+        "stronger": "Tieni stabili in memoria case chiave e difensori."
+      },
+      {
+        "label": "Verifica",
+        "struggling": "Non sai perché la variante è fallita.",
+        "stronger": "Capisci se l'errore veniva da memoria, ordine delle mosse o valutazione."
+      }
+    ],
+    "mistakes": [
+      "Voler calcolare troppi rami insieme.",
+      "Saltare la scelta delle candidate e calcolare tutto.",
+      "Non verificare subito dopo la variante.",
+      "Ignorare una memoria della scacchiera debole."
+    ],
+    "mistakesCallout": "Non calcolare ancora lontano. Una variante nitida di due mosse vale più di una lunga e confusa.",
+    "planTitle": "Piano di calcolo in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "10 minuti",
+        "detail": "Solo confronti tra due candidate con verifica immediata."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "12 minuti",
+        "detail": "Aggiungi un turno di Memory Chess prima del lavoro di calcolo."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "12 minuti",
+        "detail": "Riassumi ogni ramo in una frase prima di verificare."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15 minuti",
+        "detail": "Porta il procedimento nelle partite rapid: fermati nei momenti tesi e tieni poche candidate."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Come migliora il calcolo un principiante?",
+        "answer": "Poche candidate, verifica rapida e una migliore visualizzazione e memoria sotto il lavoro sulle varianti."
+      },
+      {
+        "question": "Devo calcolare più a fondo?",
+        "answer": "Solo quando la profondità attuale è affidabile. La precisione batte l'ambizione."
+      },
+      {
+        "question": "Perché le mie varianti crollano?",
+        "answer": "Spesso perché l'immagine della scacchiera non è abbastanza stabile o ci sono troppe candidate attive."
+      },
+      {
+        "question": "Memory Chess aiuta nel calcolo?",
+        "answer": "Sì. Un richiamo migliore rende molto più facile tenere le posizioni risultanti durante il calcolo."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Rafforza il livello che tiene le varianti durante il calcolo."
+      },
+      {
+        "reason": "Vedi la scacchiera più chiaramente prima di allungare le varianti."
+      },
+      {
+        "reason": "Adotta un processo decisionale più semplice per un calcolo più pulito."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-think-in-chess-for-beginners",
+    "title": "Come ragionare a scacchi da principianti",
+    "h1": "Come ragionare a scacchi da principianti",
+    "description": "Usa un processo semplice a ogni mossa: controlla le minacce, confronta le opzioni e gestisci il tempo.",
+    "primaryKeyword": "come ragionare a scacchi",
+    "secondaryKeywords": [
+      "processo di pensiero per principianti",
+      "a cosa pensare a scacchi",
+      "decisioni a scacchi",
+      "lista da controllare prima di muovere",
+      "metodo di pensiero semplice"
+    ],
+    "painPoint": "Muovi troppo in fretta o pensi troppo a lungo, e resti incerto.",
+    "ctaLabel": "Allena un processo semplice",
+    "quickAnswer": "A ogni mossa segui lo stesso breve processo: controlla le minacce avversarie, scegli da una a tre mosse e verifica che la scelta sia sicura.",
+    "keyTakeaways": [
+      "Un processo breve si usa più facilmente di una lunga lista.",
+      "Il controllo delle minacce viene sempre prima della scelta della mossa.",
+      "Prenditi più tempo quando la posizione diventa pericolosa."
+    ],
+    "whoThisIsFor": [
+      "Giocatori che tirano a indovinare nelle posizioni calme e si bloccano in quelle tese.",
+      "Principianti che hanno bisogno di un processo chiaro a ogni mossa.",
+      "Chi vuole decidere in modo più pulito sotto pressione."
+    ],
+    "timeToRead": "7 min di lettura",
+    "introParagraphs": [
+      "I principianti si chiedono spesso a cosa pensino i giocatori forti. La risposta può sembrare complicata, ma il tuo processo deve essere abbastanza breve da usarlo ogni volta.",
+      "Inizia dalle minacce, scegli poche mosse possibili e verifica che la scelta finale sia sicura."
+    ],
+    "startHereTitle": "Inizia qui: il processo in quattro passi",
+    "startHereSteps": [
+      "Controlla prima le minacce più forti dell'avversario.",
+      "Nomina da una a tre mosse candidate realistiche.",
+      "Verifica che la mossa prevista sia sicura e non lasci pezzi in presa.",
+      "Chiediti se la posizione è abbastanza calma per muovere o abbastanza tesa per rallentare.",
+      "Dopo la partita, cerca dove il processo ha ceduto."
+    ],
+    "drillSectionTitle": "Esercizi per decidere con più calma",
+    "drillCards": [
+      {
+        "title": "Innesco «prima l'avversario»",
+        "description": "Inizia ogni posizione di allenamento nominando le possibilità forzate dell'avversario.",
+        "duration": "3 minuti",
+        "goal": "Rendere automatico il controllo delle minacce invece che opzionale.",
+        "ctaLabel": "Inizia dalle minacce"
+      },
+      {
+        "title": "Limite di tre candidate",
+        "description": "Non concederti mai più di tre mosse candidate in una posizione di allenamento.",
+        "duration": "4 minuti",
+        "goal": "Ridurre le opzioni eccessive e il rimuginare.",
+        "ctaLabel": "Limita le candidate"
+      },
+      {
+        "title": "Controllo di certezza",
+        "description": "Guarda una mossa e chiediti se eri davvero sicuro o solo stanco di pensare.",
+        "duration": "4 minuti",
+        "goal": "Notare quando muovi per sfinimento.",
+        "ctaLabel": "Verifica la certezza"
+      }
+    ],
+    "comparisonTitle": "Un processo semplice a ogni mossa",
+    "comparisonSummary": "Il processo migliore è quello che riesci ad applicare anche con l'orologio in moto.",
+    "comparisonRows": [
+      {
+        "label": "Gestione delle minacce",
+        "struggling": "Pensi prima al tuo piano.",
+        "stronger": "Inizi dalle minacce più forti dell'avversario."
+      },
+      {
+        "label": "Mosse candidate",
+        "struggling": "Salti tra troppe possibilità.",
+        "stronger": "Tieni un piccolo insieme di candidate realistiche."
+      },
+      {
+        "label": "Gestione del tempo",
+        "struggling": "Dai la stessa attenzione a ogni mossa.",
+        "stronger": "Rallenti quando cambiano tensione, tattica o sicurezza del re."
+      }
+    ],
+    "mistakes": [
+      "Usare una lunga lista che in partita non applichi mai.",
+      "Pensare al proprio piano prima di controllare le minacce.",
+      "Lasciare che la lista di candidate diventi troppo grande.",
+      "Confondere stanchezza e certezza."
+    ],
+    "mistakesCallout": "Non aggiungere altri controlli. Usa un processo breve e ripetibile a ogni mossa.",
+    "planTitle": "Messa a punto del processo in 7 giorni",
+    "planSteps": [
+      {
+        "label": "Giorno 1-2",
+        "duration": "10 minuti",
+        "detail": "Usa solo l'innesco «prima l'avversario» e il limite di tre candidate."
+      },
+      {
+        "label": "Giorno 3-4",
+        "duration": "12 minuti",
+        "detail": "Aggiungi un breve turno di Memory Chess per una scacchiera più nitida al momento di decidere."
+      },
+      {
+        "label": "Giorno 5",
+        "duration": "12 minuti",
+        "detail": "Verifica se la tua ultima svista veniva dal controllo delle minacce o da troppe candidate."
+      },
+      {
+        "label": "Giorno 6-7",
+        "duration": "15 minuti",
+        "detail": "Applica tutto il processo nelle rapid e annota quale passo cede sotto pressione."
+      }
+    ],
+    "faq": [
+      {
+        "question": "A cosa dovrebbe pensare un principiante a scacchi?",
+        "answer": "Inizia dalle minacce dell'avversario, scegli da una a tre mosse possibili e verifica che la scelta finale sia sicura."
+      },
+      {
+        "question": "Quante mosse candidate tenere?",
+        "answer": "Di solito da una a tre. Oltre, spesso sovraccarica i principianti e peggiora le decisioni."
+      },
+      {
+        "question": "Perché mi blocco anche conoscendo il processo?",
+        "answer": "Spesso perché la scacchiera non è abbastanza nitida o restano troppe candidate aperte. Posizioni più semplici e lavoro di memoria aiutano."
+      },
+      {
+        "question": "Un processo può evitare le svista?",
+        "answer": "Sì, soprattutto se impone il controllo delle minacce prima della scelta della mossa."
+      }
+    ],
+    "relatedArticles": [
+      {
+        "reason": "Usa una lista anti-svista più esplicita se il processo lascia ancora perdere materiale."
+      },
+      {
+        "reason": "Calcola in modo più pulito per confrontare le mosse possibili."
+      },
+      {
+        "reason": "Riconosci le case più in fretta durante il tuo processo."
+      }
+    ]
+  }
+]

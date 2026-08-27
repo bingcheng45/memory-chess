@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npm run validate && next build",
     "start": "next start",
     "lint": "next lint",
+    "validate": "npm run validate:messages && npm run validate:learn",
     "validate:messages": "node scripts/validate-messages.mjs",
     "validate:learn": "node scripts/validate-learn-prose.mjs",
     "postinstall": "npm install @vercel/analytics@1.5.0 @vercel/speed-insights@1.2.0 --no-save"

@@ -47,6 +47,42 @@ describe("buildLearnPageMetadata", () => {
     expect(authors[0]).toMatchObject({ name: "Memory Chess Editorial Team" });
   });
 
+  it("points a translated article at its own localized social card", () => {
+    // The opengraph-image route lives under [locale] and renders the
+    // translated title, so an unprefixed URL hands social crawlers the
+    // English card for a German page. Crawlers are deliberately pinned to
+    // English by the middleware, so they cannot recover the right one.
+    const page = pageFor("how-to-stop-blundering-in-chess");
+    const metadata = buildLearnPageMetadata(page, "de");
+
+    const openGraph = metadata.openGraph;
+    const images = Array.isArray(openGraph?.images)
+      ? openGraph.images
+      : [openGraph?.images];
+    const twitterImages = Array.isArray(metadata.twitter?.images)
+      ? metadata.twitter.images
+      : [metadata.twitter?.images];
+
+    expect(images[0]).toMatchObject({
+      url: "https://thememorychess.com/de/learn/how-to-stop-blundering-in-chess/opengraph-image",
+    });
+    expect(twitterImages[0]).toBe(
+      "https://thememorychess.com/de/learn/how-to-stop-blundering-in-chess/opengraph-image",
+    );
+  });
+
+  it("keeps the social card unprefixed for English", () => {
+    const page = pageFor("how-to-stop-blundering-in-chess");
+    const openGraph = buildLearnPageMetadata(page, "en").openGraph;
+    const images = Array.isArray(openGraph?.images)
+      ? openGraph.images
+      : [openGraph?.images];
+
+    expect(images[0]).toMatchObject({
+      url: "https://thememorychess.com/learn/how-to-stop-blundering-in-chess/opengraph-image",
+    });
+  });
+
   it("keeps metadata complete for every published guide", () => {
     for (const page of LEARN_PAGES) {
       const metadata = buildLearnPageMetadata(page, "en");

@@ -41,8 +41,14 @@ export function buildLearnPageMetadata(
   page: LearnPageContent,
   locale: string,
 ): Metadata {
-  const pageUrl = `${SITE_URL}${localizedPath(`/learn/${page.slug}`, locale)}`;
-  const imageUrl = `${SITE_URL}/learn/${page.slug}/opengraph-image`;
+  // The social card route lives under [locale] and renders the translated
+  // title, so it has to carry the same prefix the canonical does -- otherwise
+  // /de/learn/... advertises the English card. An untranslated locale serves
+  // English prose and canonicalises to English, so its card is English too.
+  const contentLocale = hasLearnTranslation(locale) ? locale : DEFAULT_LOCALE;
+  const articlePath = localizedPath(`/learn/${page.slug}`, contentLocale);
+  const pageUrl = `${SITE_URL}${articlePath}`;
+  const imageUrl = `${SITE_URL}${articlePath}/opengraph-image`;
 
   return {
     title: page.title,

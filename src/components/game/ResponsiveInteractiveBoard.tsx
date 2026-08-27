@@ -211,12 +211,14 @@ export default function ResponsiveInteractiveBoard({
                             ? 'border border-primary/70 bg-secondary/70 shadow-sm hover:bg-secondary/70'
                             : 'hover:bg-accent'
                         } ${isDisabled ? 'opacity-40' : ''}`}
-                        aria-label={`Select ${type}`}
+                        aria-label={t("board.selectPiece", {
+                          piece: t(`board.pieces.${selectedPieceColor}.${type}`),
+                        })}
                       >
                         <div className="relative mb-0.5 h-6 w-6 sm:mb-1 sm:h-7 sm:w-7">
                           <Image
                             src={getPieceImageUrl(type, selectedPieceColor)}
-                            alt={`${selectedPieceColor} ${type}`}
+                            alt={t(`board.pieces.${selectedPieceColor}.${type}`)}
                             fill
                             sizes="(max-width: 640px) 24px, 28px"
                             className="object-contain"

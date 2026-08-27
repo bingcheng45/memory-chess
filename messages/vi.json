@@ -181,6 +181,34 @@
       "selectBlack": "Chọn quân đen",
       "hint": "Chạm vào một ô để đặt hoặc gỡ quân cờ"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "tốt trắng",
+          "knight": "mã trắng",
+          "bishop": "tượng trắng",
+          "rook": "xe trắng",
+          "queen": "hậu trắng",
+          "king": "vua trắng"
+        },
+        "black": {
+          "pawn": "tốt đen",
+          "knight": "mã đen",
+          "bishop": "tượng đen",
+          "rook": "xe đen",
+          "queen": "hậu đen",
+          "king": "vua đen"
+        }
+      },
+      "feedback": {
+        "correct": "đúng",
+        "incorrect": "sai",
+        "missing": "thiếu"
+      },
+      "squareWithPiece": "{square} có {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Chọn {piece}"
+    },
     "stats": {
       "title": "Thống kê",
       "currentTime": "Thời gian hiện tại",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Cảm ơn bạn đã chơi Memory Chess!",
+      "description": "Trải nghiệm của bạn thế nào? Phản hồi của bạn giúp mỗi buổi luyện tập tốt hơn.",
       "prompt": "Bạn đánh giá trò chơi thế nào?",
       "placeholder": "Cho chúng tôi biết điều gì đã tốt hoặc bạn muốn thay đổi gì…",
       "notNow": "Để sau",
@@ -259,6 +288,7 @@
       "socialDescription": "Xem thứ hạng của người chơi trong các thử thách ghi nhớ và hình dung."
     },
     "title": "Xếp hạng Memory Chess",
+    "subtitle": "Làm chủ bàn cờ bằng khả năng hình dung. Tranh tài với những người giỏi nhất thế giới về độ chính xác và tốc độ tư duy.",
     "claimRank": "Giành lấy thứ hạng của bạn",
     "footnote": "Chỉ hiển thị 200 vị trí đầu. Xếp theo độ chính xác, thời gian ghi nhớ và tốc độ hoàn thành.",
     "loading": "Đang tải bảng xếp hạng…",
@@ -266,8 +296,16 @@
     "unavailableBody": "Dịch vụ bảng xếp hạng hiện đang ngoại tuyến. Dữ liệu ván đấu của bạn vẫn được lưu cục bộ.",
     "unavailableNote": "Bạn vẫn có thể chơi tiếp bình thường.",
     "retryLater": "Vui lòng thử lại sau",
+    "errorLoading": "Lỗi khi tải bảng xếp hạng: {error}",
+    "errors": {
+      "timeout": "Yêu cầu đã hết thời gian chờ. Vui lòng thử lại sau.",
+      "parse": "Không thể đọc phản hồi từ máy chủ. Vui lòng thử lại sau.",
+      "status": "Yêu cầu thất bại với trạng thái {status}",
+      "unexpected": "Đã xảy ra lỗi không mong muốn"
+    },
     "emptyTitle": "Hãy là nhà vô địch đầu tiên!",
     "emptyBody": "Bảng xếp hạng này chưa có mục nào",
+    "emptyCta": "Thử thách trí nhớ của bạn và giành vị trí dẫn đầu! Chơi một ván ngay bây giờ và ghi tên bạn vào lịch sử Memory Chess.",
     "startPlaying": "Bắt đầu chơi",
     "you": "Bạn",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Vui lòng nhập địa chỉ email hợp lệ.",
       "typeRequired": "Vui lòng chọn loại liên hệ.",
       "messageTooShort": "Nội dung phải có ít nhất 10 ký tự."
+    },
+    "errors": {
+      "submitFailed": "Không thể gửi biểu mẫu{details}",
+      "generic": "Đã xảy ra lỗi khi gửi biểu mẫu. Vui lòng thử lại."
     }
   },
   "learnHub": {

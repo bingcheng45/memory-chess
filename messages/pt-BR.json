@@ -181,6 +181,34 @@
       "selectBlack": "Selecionar peças pretas",
       "hint": "Toque em uma casa para adicionar ou remover uma peça"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "peão branco",
+          "knight": "cavalo branco",
+          "bishop": "bispo branco",
+          "rook": "torre branca",
+          "queen": "dama branca",
+          "king": "rei branco"
+        },
+        "black": {
+          "pawn": "peão preto",
+          "knight": "cavalo preto",
+          "bishop": "bispo preto",
+          "rook": "torre preta",
+          "queen": "dama preta",
+          "king": "rei preto"
+        }
+      },
+      "feedback": {
+        "correct": "correto",
+        "incorrect": "incorreto",
+        "missing": "ausente"
+      },
+      "squareWithPiece": "{square} com {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Selecionar {piece}"
+    },
     "stats": {
       "title": "Estatísticas",
       "currentTime": "Tempo atual",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Obrigado por jogar Memory Chess!",
+      "description": "O que achou? Seu feedback ajuda a melhorar cada sessão de treino.",
       "prompt": "Como você avaliaria o jogo?",
       "placeholder": "Conte o que funcionou bem ou o que você mudaria...",
       "notNow": "Agora não",
@@ -259,6 +288,7 @@
       "socialDescription": "Veja como os jogadores se classificam nos desafios de memória e visualização."
     },
     "title": "Ranking do Memory Chess",
+    "subtitle": "Domine o tabuleiro pela visualização. Dispute com os melhores do mundo em precisão mental e velocidade.",
     "claimRank": "Garanta sua posição",
     "footnote": "Exibindo apenas os 200 melhores. Ordenados por precisão, tempo de memorização e velocidade de resolução.",
     "loading": "Carregando o ranking...",
@@ -266,8 +296,16 @@
     "unavailableBody": "O serviço de ranking está fora do ar no momento. Seus dados de jogo continuam sendo salvos localmente.",
     "unavailableNote": "Você pode continuar jogando normalmente.",
     "retryLater": "Tente novamente mais tarde",
+    "errorLoading": "Erro ao carregar o ranking: {error}",
+    "errors": {
+      "timeout": "O tempo da solicitação esgotou. Tente novamente mais tarde.",
+      "parse": "Não foi possível interpretar a resposta do servidor. Tente novamente mais tarde.",
+      "status": "A solicitação falhou com o status {status}",
+      "unexpected": "Ocorreu um erro inesperado"
+    },
     "emptyTitle": "Seja o primeiro campeão!",
     "emptyBody": "Ainda não há registros neste ranking",
+    "emptyCta": "Desafie sua memória e conquiste o topo! Jogue uma partida agora e grave seu nome na história do Memory Chess.",
     "startPlaying": "Comece a jogar",
     "you": "Você",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Digite um e-mail válido.",
       "typeRequired": "Escolha um tipo de contato.",
       "messageTooShort": "A mensagem precisa ter pelo menos 10 caracteres."
+    },
+    "errors": {
+      "submitFailed": "Não foi possível enviar o formulário{details}",
+      "generic": "Ocorreu um erro ao enviar o formulário. Tente novamente."
     }
   },
   "learnHub": {

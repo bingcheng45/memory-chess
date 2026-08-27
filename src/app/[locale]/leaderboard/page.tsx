@@ -65,7 +65,7 @@ function LeaderboardContent() {
           signal: controller.signal
         }).catch(err => {
           if (err.name === 'AbortError') {
-            throw new Error('Request timed out. Please try again later.');
+            throw new Error(t('errors.timeout'));
           }
           throw err;
         });
@@ -73,34 +73,32 @@ function LeaderboardContent() {
         clearTimeout(timeoutId);
         
         const result = await response.json().catch(() => {
-          throw new Error('Failed to parse server response. Please try again later.');
+          throw new Error(t('errors.parse'));
         });
         
         if (!response.ok || result.error) {
           // If the API returns an error but with status 200, we'll still catch it here
-          throw new Error(result.error || `Request failed with status ${response.status}`);
+          throw new Error(result.error || t('errors.status', { status: response.status }));
         }
         
         setLeaderboardData(result.data || []);
       } catch (err) {
         console.error('Error fetching leaderboard data:', err);
-        setError(err instanceof Error ? err.message : 'An unexpected error occurred');
+        setError(err instanceof Error ? err.message : t('errors.unexpected'));
       } finally {
         setIsLoading(false);
       }
     }
     
     fetchLeaderboardData();
-  }, [activeTab]);
+  }, [activeTab, t]);
 
   return (
     <div className="flex flex-col items-center justify-center space-y-8">
       <h1 className="text-3xl font-bold text-peach-400">{t("title")}</h1>
       
       <div className="max-w-2xl space-y-2">
-        <p className="text-lg text-text-secondary text-center">
-          Master the board through visualization. Compete against the world&apos;s best in mental precision and speed.
-        </p>
+        <p className="text-lg text-text-secondary text-center">{t("subtitle")}</p>
       </div>
       
       <Tabs 
@@ -181,7 +179,7 @@ function LeaderboardLoading() {
           />
         </div>
         <div className="flex flex-col items-center justify-center space-y-8">
-          <h1 className="text-3xl font-bold text-peach-400">Memory Chess Rankings</h1>
+          <h1 className="text-3xl font-bold text-peach-400">{t("title")}</h1>
           <div className="max-w-2xl space-y-2">
             <p className="text-lg text-text-secondary text-center">{t("loading")}</p>
           </div>

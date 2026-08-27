@@ -181,6 +181,34 @@
       "selectBlack": "Schwarze Figuren auswählen",
       "hint": "Tippe auf ein Feld, um eine Figur zu setzen oder zu entfernen"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "weißer Bauer",
+          "knight": "weißer Springer",
+          "bishop": "weißer Läufer",
+          "rook": "weißer Turm",
+          "queen": "weiße Dame",
+          "king": "weißer König"
+        },
+        "black": {
+          "pawn": "schwarzer Bauer",
+          "knight": "schwarzer Springer",
+          "bishop": "schwarzer Läufer",
+          "rook": "schwarzer Turm",
+          "queen": "schwarze Dame",
+          "king": "schwarzer König"
+        }
+      },
+      "feedback": {
+        "correct": "richtig",
+        "incorrect": "falsch",
+        "missing": "fehlt"
+      },
+      "squareWithPiece": "{square}: {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Auswählen: {piece}"
+    },
     "stats": {
       "title": "Statistik",
       "currentTime": "Aktuelle Zeit",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Danke, dass du Memory Chess gespielt hast!",
+      "description": "Wie war es für dich? Dein Feedback macht jede Trainingseinheit besser.",
       "prompt": "Wie würdest du das Spiel bewerten?",
       "placeholder": "Erzähl uns, was gut lief oder was du ändern würdest...",
       "notNow": "Jetzt nicht",
@@ -259,6 +288,7 @@
       "socialDescription": "Sieh, wie sich Spielerinnen und Spieler in den Gedächtnis- und Vorstellungsaufgaben schlagen."
     },
     "title": "Rangliste von Memory Chess",
+    "subtitle": "Beherrsche das Brett durch Visualisierung. Miss dich mit den Besten der Welt in mentaler Präzision und Geschwindigkeit.",
     "claimRank": "Sichere dir deinen Platz",
     "footnote": "Es werden nur die besten 200 gezeigt. Sortiert nach Genauigkeit, Einprägezeit und Lösungstempo.",
     "loading": "Bestenliste wird geladen...",
@@ -266,8 +296,16 @@
     "unavailableBody": "Der Bestenlisten-Dienst ist gerade offline. Deine Spieldaten werden weiterhin lokal gespeichert.",
     "unavailableNote": "Du kannst ohne Unterbrechung weiterspielen.",
     "retryLater": "Bitte versuche es später erneut",
+    "errorLoading": "Fehler beim Laden der Rangliste: {error}",
+    "errors": {
+      "timeout": "Zeitüberschreitung der Anfrage. Bitte versuche es später erneut.",
+      "parse": "Die Antwort des Servers konnte nicht gelesen werden. Bitte versuche es später erneut.",
+      "status": "Anfrage fehlgeschlagen mit Status {status}",
+      "unexpected": "Ein unerwarteter Fehler ist aufgetreten"
+    },
     "emptyTitle": "Werde die erste Nummer eins!",
     "emptyBody": "In dieser Bestenliste gibt es noch keine Einträge",
+    "emptyCta": "Fordere dein Gedächtnis heraus und sichere dir den ersten Platz! Spiele jetzt eine Partie und schreibe deinen Namen in die Geschichte von Memory Chess.",
     "startPlaying": "Jetzt spielen",
     "you": "Du",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Bitte gib eine gültige E-Mail-Adresse ein.",
       "typeRequired": "Bitte wähle eine Art der Anfrage.",
       "messageTooShort": "Die Nachricht muss mindestens 10 Zeichen haben."
+    },
+    "errors": {
+      "submitFailed": "Das Formular konnte nicht gesendet werden{details}",
+      "generic": "Beim Senden des Formulars ist ein Fehler aufgetreten. Bitte versuche es erneut."
     }
   },
   "learnHub": {

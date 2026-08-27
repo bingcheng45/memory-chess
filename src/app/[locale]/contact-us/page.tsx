@@ -70,7 +70,7 @@ export default function ContactUs() {
           type: 'manual',
           message: t('validation.typeRequired')
         });
-        setFormError('Please select an inquiry type.');
+        setFormError(t('validation.typeRequired'));
         throw new Error('Inquiry type is required');
       }
       
@@ -88,7 +88,7 @@ export default function ContactUs() {
       if (!response.ok) {
         // Get detailed error information from response if available
         const errorDetails = result.details ? `: ${result.details}` : '';
-        setFormError(`Failed to submit form${errorDetails}`);
+        setFormError(t('errors.submitFailed', { details: errorDetails }));
         
         // Log additional debug info if available
         if (result.debug) {
@@ -111,7 +111,7 @@ export default function ContactUs() {
       console.error('Error submitting form:', error);
       // If no specific error was set, set a generic one
       if (!formError) {
-        setFormError('An error occurred while submitting the form. Please try again.');
+        setFormError(t('errors.generic'));
       }
     } finally {
       setIsSubmitting(false);

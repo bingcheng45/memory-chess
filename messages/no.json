@@ -181,6 +181,34 @@
       "selectBlack": "Velg svarte brikker",
       "hint": "Trykk på et felt for å sette ut eller fjerne en brikke"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "hvit bonde",
+          "knight": "hvit springer",
+          "bishop": "hvit løper",
+          "rook": "hvitt tårn",
+          "queen": "hvit dronning",
+          "king": "hvit konge"
+        },
+        "black": {
+          "pawn": "svart bonde",
+          "knight": "svart springer",
+          "bishop": "svart løper",
+          "rook": "svart tårn",
+          "queen": "svart dronning",
+          "king": "svart konge"
+        }
+      },
+      "feedback": {
+        "correct": "riktig",
+        "incorrect": "feil",
+        "missing": "mangler"
+      },
+      "squareWithPiece": "{square} med {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Velg {piece}"
+    },
     "stats": {
       "title": "Statistikk",
       "currentTime": "Nåværende tid",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Takk for at du spilte Memory Chess!",
+      "description": "Hvordan opplevdes det? Tilbakemeldingen din gjør hver treningsøkt bedre.",
       "prompt": "Hvilken karakter gir du spillet?",
       "placeholder": "Fortell oss hva som fungerte bra, eller hva du ville endret …",
       "notNow": "Ikke nå",
@@ -259,6 +288,7 @@
       "socialDescription": "Se hvordan spillere rangeres i hukommelses- og visualiseringsoppgavene."
     },
     "title": "Memory Chess-rangering",
+    "subtitle": "Behersk brettet gjennom visualisering. Konkurrer mot verdens beste i mental presisjon og hastighet.",
     "claimRank": "Ta plassen din",
     "footnote": "Viser bare de 200 beste. Rangert etter treffsikkerhet, innlæringstid og løsningstempo.",
     "loading": "Laster topplisten …",
@@ -266,8 +296,16 @@
     "unavailableBody": "Topplistetjenesten er nede akkurat nå. Spilldataene dine lagres fortsatt lokalt.",
     "unavailableNote": "Du kan spille videre uten avbrudd.",
     "retryLater": "Prøv igjen senere",
+    "errorLoading": "Feil ved lasting av rangeringen: {error}",
+    "errors": {
+      "timeout": "Forespørselen tok for lang tid. Prøv igjen senere.",
+      "parse": "Kunne ikke tolke svaret fra serveren. Prøv igjen senere.",
+      "status": "Forespørselen mislyktes med status {status}",
+      "unexpected": "Det oppsto en uventet feil"
+    },
     "emptyTitle": "Bli den første mesteren!",
     "emptyBody": "Ingen oppføringer på denne topplisten ennå",
+    "emptyCta": "Utfordre hukommelsen din og ta førsteplassen! Spill en runde nå og skriv navnet ditt inn i historien om Memory Chess.",
     "startPlaying": "Begynn å spille",
     "you": "Du",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Skriv inn en gyldig e-postadresse.",
       "typeRequired": "Velg en type henvendelse.",
       "messageTooShort": "Meldingen må ha minst 10 tegn."
+    },
+    "errors": {
+      "submitFailed": "Kunne ikke sende skjemaet{details}",
+      "generic": "Det oppsto en feil da skjemaet ble sendt. Prøv igjen."
     }
   },
   "learnHub": {

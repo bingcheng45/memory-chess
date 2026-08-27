@@ -152,7 +152,7 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
           </>
         ) : (
           <>
-            <p className="text-red-400">Error loading leaderboard: {error}</p>
+            <p className="text-red-400">{t("errorLoading", { error })}</p>
             <p className="mt-2 text-text-secondary">{t("retryLater")}</p>
           </>
         )}
@@ -178,10 +178,7 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
         </div>
         <h3 className="text-xl font-bold text-peach-400 mb-2">{t("emptyTitle")}</h3>
         <p className="text-lg text-text-secondary mb-2">{t("emptyBody")}</p>
-        <p className="text-text-muted mb-4">
-          Challenge your memory skills and claim your spot at the top! 
-          Play a game now and etch your name in Memory Chess history.
-        </p>
+        <p className="text-text-muted mb-4">{t("emptyCta")}</p>
         <Link href={`/game?difficulty=${activeTab || 'medium'}`} className="inline-block">
           <Button 
             variant="outline"

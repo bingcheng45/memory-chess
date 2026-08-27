@@ -181,6 +181,34 @@
       "selectBlack": "Zwarte stukken kiezen",
       "hint": "Tik op een veld om een stuk te plaatsen of weg te halen"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "witte pion",
+          "knight": "wit paard",
+          "bishop": "witte loper",
+          "rook": "witte toren",
+          "queen": "witte dame",
+          "king": "witte koning"
+        },
+        "black": {
+          "pawn": "zwarte pion",
+          "knight": "zwart paard",
+          "bishop": "zwarte loper",
+          "rook": "zwarte toren",
+          "queen": "zwarte dame",
+          "king": "zwarte koning"
+        }
+      },
+      "feedback": {
+        "correct": "correct",
+        "incorrect": "onjuist",
+        "missing": "ontbreekt"
+      },
+      "squareWithPiece": "{square} met {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "{piece} selecteren"
+    },
     "stats": {
       "title": "Statistieken",
       "currentTime": "Huidige tijd",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Bedankt voor het spelen van Memory Chess!",
+      "description": "Hoe was het? Jouw feedback maakt elke trainingssessie beter.",
       "prompt": "Welk cijfer geef je het spel?",
       "placeholder": "Vertel ons wat goed werkte of wat je zou veranderen…",
       "notNow": "Niet nu",
@@ -259,6 +288,7 @@
       "socialDescription": "Zie hoe spelers scoren in de geheugen- en visualisatie-uitdagingen."
     },
     "title": "Memory Chess-ranglijst",
+    "subtitle": "Beheers het bord met visualisatie. Neem het op tegen de besten ter wereld in mentale precisie en snelheid.",
     "claimRank": "Claim je plek",
     "footnote": "Alleen de top 200 wordt getoond. Gerangschikt op nauwkeurigheid, kijktijd en oplossnelheid.",
     "loading": "Ranglijst wordt geladen…",
@@ -266,8 +296,16 @@
     "unavailableBody": "De ranglijstdienst is nu offline. Je spelgegevens worden nog steeds lokaal opgeslagen.",
     "unavailableNote": "Je kunt gewoon doorspelen.",
     "retryLater": "Probeer het later opnieuw",
+    "errorLoading": "Fout bij het laden van de ranglijst: {error}",
+    "errors": {
+      "timeout": "De aanvraag is verlopen. Probeer het later opnieuw.",
+      "parse": "Het antwoord van de server kon niet worden gelezen. Probeer het later opnieuw.",
+      "status": "Aanvraag mislukt met status {status}",
+      "unexpected": "Er is een onverwachte fout opgetreden"
+    },
     "emptyTitle": "Word de eerste kampioen!",
     "emptyBody": "Nog geen resultaten op deze ranglijst",
+    "emptyCta": "Daag je geheugen uit en verover de eerste plaats! Speel nu een partij en zet je naam in de geschiedenis van Memory Chess.",
     "startPlaying": "Begin met spelen",
     "you": "Jij",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Voer een geldig e-mailadres in.",
       "typeRequired": "Kies een soort vraag.",
       "messageTooShort": "Het bericht moet minstens 10 tekens hebben."
+    },
+    "errors": {
+      "submitFailed": "Het formulier kon niet worden verzonden{details}",
+      "generic": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw."
     }
   },
   "learnHub": {

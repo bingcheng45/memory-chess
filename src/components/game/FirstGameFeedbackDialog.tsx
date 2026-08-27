@@ -159,10 +159,7 @@ export default function FirstGameFeedbackDialog({
           <form onSubmit={handleSubmit} className="space-y-5">
             <DialogHeader className="pr-8 text-left">
               <DialogTitle className="text-xl text-text-primary">{t("title")}</DialogTitle>
-              <DialogDescription className="leading-6 text-text-muted">
-                How was your experience? Your feedback helps make each training
-                session better.
-              </DialogDescription>
+              <DialogDescription className="leading-6 text-text-muted">{t("description")}</DialogDescription>
             </DialogHeader>
 
             <fieldset className="space-y-3">

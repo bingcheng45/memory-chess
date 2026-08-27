@@ -181,6 +181,34 @@
       "selectBlack": "Pilih bidak hitam",
       "hint": "Ketuk kotak untuk menambah atau menghapus bidak"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "pion putih",
+          "knight": "kuda putih",
+          "bishop": "gajah putih",
+          "rook": "benteng putih",
+          "queen": "menteri putih",
+          "king": "raja putih"
+        },
+        "black": {
+          "pawn": "pion hitam",
+          "knight": "kuda hitam",
+          "bishop": "gajah hitam",
+          "rook": "benteng hitam",
+          "queen": "menteri hitam",
+          "king": "raja hitam"
+        }
+      },
+      "feedback": {
+        "correct": "benar",
+        "incorrect": "salah",
+        "missing": "tidak ada"
+      },
+      "squareWithPiece": "{square} dengan {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Pilih {piece}"
+    },
     "stats": {
       "title": "Statistik",
       "currentTime": "Waktu berjalan",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Terima kasih sudah memainkan Memory Chess!",
+      "description": "Bagaimana pengalamanmu? Masukanmu membantu membuat setiap sesi latihan lebih baik.",
       "prompt": "Berapa nilai Anda untuk permainan ini?",
       "placeholder": "Ceritakan apa yang sudah bagus atau apa yang ingin Anda ubah…",
       "notNow": "Nanti saja",
@@ -259,6 +288,7 @@
       "socialDescription": "Lihat posisi para pemain dalam tantangan ingatan dan visualisasi."
     },
     "title": "Peringkat Memory Chess",
+    "subtitle": "Kuasai papan lewat visualisasi. Bersaing dengan yang terbaik di dunia dalam ketepatan dan kecepatan berpikir.",
     "claimRank": "Raih peringkatmu",
     "footnote": "Hanya menampilkan 200 teratas. Diurutkan berdasarkan akurasi, waktu menghafal, dan kecepatan penyelesaian.",
     "loading": "Memuat papan peringkat…",
@@ -266,8 +296,16 @@
     "unavailableBody": "Layanan papan peringkat sedang offline. Data permainanmu tetap tersimpan secara lokal.",
     "unavailableNote": "Kamu bisa terus bermain tanpa gangguan.",
     "retryLater": "Silakan coba lagi nanti",
+    "errorLoading": "Gagal memuat peringkat: {error}",
+    "errors": {
+      "timeout": "Permintaan melebihi batas waktu. Coba lagi nanti.",
+      "parse": "Tidak dapat membaca respons server. Coba lagi nanti.",
+      "status": "Permintaan gagal dengan status {status}",
+      "unexpected": "Terjadi kesalahan yang tidak terduga"
+    },
     "emptyTitle": "Jadilah juara pertama!",
     "emptyBody": "Belum ada catatan di papan peringkat ini",
+    "emptyCta": "Uji daya ingatmu dan rebut posisi teratas! Mainkan satu permainan sekarang dan catat namamu dalam sejarah Memory Chess.",
     "startPlaying": "Mulai bermain",
     "you": "Kamu",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Masukkan alamat email yang valid.",
       "typeRequired": "Pilih jenis pertanyaan.",
       "messageTooShort": "Pesan harus minimal 10 karakter."
+    },
+    "errors": {
+      "submitFailed": "Gagal mengirim formulir{details}",
+      "generic": "Terjadi kesalahan saat mengirim formulir. Silakan coba lagi."
     }
   },
   "learnHub": {

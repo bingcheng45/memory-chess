@@ -181,6 +181,34 @@
       "selectBlack": "Sötét bábuk kiválasztása",
       "hint": "Koppints egy mezőre bábu elhelyezéséhez vagy eltávolításához"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "világos gyalog",
+          "knight": "világos huszár",
+          "bishop": "világos futó",
+          "rook": "világos bástya",
+          "queen": "világos vezér",
+          "king": "világos király"
+        },
+        "black": {
+          "pawn": "sötét gyalog",
+          "knight": "sötét huszár",
+          "bishop": "sötét futó",
+          "rook": "sötét bástya",
+          "queen": "sötét vezér",
+          "king": "sötét király"
+        }
+      },
+      "feedback": {
+        "correct": "helyes",
+        "incorrect": "helytelen",
+        "missing": "hiányzik"
+      },
+      "squareWithPiece": "{square}: {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Kiválasztás: {piece}"
+    },
     "stats": {
       "title": "Statisztikák",
       "currentTime": "Eltelt idő",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Köszönjük, hogy Memory Chesst játszottál!",
+      "description": "Milyen volt? A visszajelzésed minden gyakorlást jobbá tesz.",
       "prompt": "Hogyan értékelnéd a játékot?",
       "placeholder": "Írd meg, mi működött jól, vagy min változtatnál…",
       "notNow": "Most nem",
@@ -259,6 +288,7 @@
       "socialDescription": "Nézd meg, hogyan állnak a játékosok a memória- és vizualizációs feladatokban."
     },
     "title": "Memory Chess rangsor",
+    "subtitle": "Sajátítsd el a táblát vizualizációval. Mérd össze a tudásod a világ legjobbjaival gondolati pontosságban és gyorsaságban.",
     "claimRank": "Foglald el a helyed",
     "footnote": "Csak a legjobb 200 látszik. Rendezés pontosság, memorizálási idő és megoldási tempó szerint.",
     "loading": "Ranglista betöltése…",
@@ -266,8 +296,16 @@
     "unavailableBody": "A ranglista szolgáltatás most nem működik. A játékadataid továbbra is helyben mentődnek.",
     "unavailableNote": "Zavartalanul játszhatsz tovább.",
     "retryLater": "Próbáld újra később",
+    "errorLoading": "Hiba a rangsor betöltésekor: {error}",
+    "errors": {
+      "timeout": "A kérés túllépte az időkorlátot. Próbáld újra később.",
+      "parse": "A szerver válasza nem volt értelmezhető. Próbáld újra később.",
+      "status": "A kérés {status} állapottal meghiúsult",
+      "unexpected": "Váratlan hiba történt"
+    },
     "emptyTitle": "Legyél te az első bajnok!",
     "emptyBody": "Ezen a ranglistán még nincs bejegyzés",
+    "emptyCta": "Tedd próbára az emlékezeted, és szerezd meg az első helyet! Játssz egy partit most, és írd be a neved a Memory Chess történetébe.",
     "startPlaying": "Kezdj játszani",
     "you": "Te",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Adj meg érvényes e-mail-címet.",
       "typeRequired": "Válaszd ki a megkeresés típusát.",
       "messageTooShort": "Az üzenet legalább 10 karakter legyen."
+    },
+    "errors": {
+      "submitFailed": "Az űrlapot nem sikerült elküldeni{details}",
+      "generic": "Hiba történt az űrlap elküldésekor. Próbáld újra."
     }
   },
   "learnHub": {

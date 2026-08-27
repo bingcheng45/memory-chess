@@ -181,6 +181,34 @@
       "selectBlack": "選擇黑方棋子",
       "hint": "點一下格子可放置棋子，再點一次可移除"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "白方兵",
+          "knight": "白方騎士",
+          "bishop": "白方主教",
+          "rook": "白方城堡",
+          "queen": "白方皇后",
+          "king": "白方國王"
+        },
+        "black": {
+          "pawn": "黑方兵",
+          "knight": "黑方騎士",
+          "bishop": "黑方主教",
+          "rook": "黑方城堡",
+          "queen": "黑方皇后",
+          "king": "黑方國王"
+        }
+      },
+      "feedback": {
+        "correct": "正確",
+        "incorrect": "錯誤",
+        "missing": "遺漏"
+      },
+      "squareWithPiece": "{square}：{piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "選擇{piece}"
+    },
     "stats": {
       "title": "對局數據",
       "currentTime": "目前用時",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "感謝你玩 Memory Chess！",
+      "description": "這次體驗如何？你的回饋能讓每一次訓練都更好。",
       "prompt": "你會給這款遊戲幾分？",
       "placeholder": "說說哪裡做得好，或者你希望改進什麼…",
       "notNow": "暫不評分",
@@ -259,6 +288,7 @@
       "socialDescription": "看看玩家在記憶與盤面想像挑戰中的排名。"
     },
     "title": "Memory Chess 排名",
+    "subtitle": "用視覺化掌控棋盤。在心算的精準與速度上與全球高手一較高下。",
     "claimRank": "搶下你的名次",
     "footnote": "僅顯示前 200 名。依準確率、記憶時間與重建速度排序。",
     "loading": "正在載入排行榜…",
@@ -266,8 +296,16 @@
     "unavailableBody": "排行榜服務目前離線。你的對局資料仍會儲存在本機。",
     "unavailableNote": "你可以繼續遊玩，不受影響。",
     "retryLater": "請稍後再試",
+    "errorLoading": "載入排名時發生錯誤：{error}",
+    "errors": {
+      "timeout": "要求逾時，請稍後再試。",
+      "parse": "無法解析伺服器回應，請稍後再試。",
+      "status": "要求失敗，狀態碼 {status}",
+      "unexpected": "發生了非預期的錯誤"
+    },
     "emptyTitle": "來當第一位冠軍吧！",
     "emptyBody": "這個排行榜還沒有任何紀錄",
+    "emptyCta": "挑戰你的記憶力，登上榜首吧！立即來一局，把你的名字寫進 Memory Chess 的歷史。",
     "startPlaying": "立即開始遊玩",
     "you": "你",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "請輸入有效的電子郵件地址。",
       "typeRequired": "請選擇詢問類型。",
       "messageTooShort": "訊息至少需要 10 個字元。"
+    },
+    "errors": {
+      "submitFailed": "表單送出失敗{details}",
+      "generic": "送出表單時發生錯誤，請再試一次。"
     }
   },
   "learnHub": {

@@ -6,7 +6,7 @@
       "privacy": "개인정보"
     },
     "footer": {
-      "copyright": "© {year} Memory Chess. All rights reserved.",
+      "copyright": "© {year} Memory Chess. 모든 권리 보유.",
       "followOnX": "트위터/X에서 팔로우하기",
       "productHuntAlt": "Memory Chess - 체스로 공간 시각화 능력을 훈련하세요 | Product Hunt"
     },
@@ -181,6 +181,34 @@
       "selectBlack": "흑 기물 선택",
       "hint": "칸을 누르면 기물을 놓거나 뺄 수 있습니다"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "백 폰",
+          "knight": "백 나이트",
+          "bishop": "백 비숍",
+          "rook": "백 룩",
+          "queen": "백 퀸",
+          "king": "백 킹"
+        },
+        "black": {
+          "pawn": "흑 폰",
+          "knight": "흑 나이트",
+          "bishop": "흑 비숍",
+          "rook": "흑 룩",
+          "queen": "흑 퀸",
+          "king": "흑 킹"
+        }
+      },
+      "feedback": {
+        "correct": "정답",
+        "incorrect": "오답",
+        "missing": "누락"
+      },
+      "squareWithPiece": "{square}에 {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "{piece} 선택"
+    },
     "stats": {
       "title": "게임 통계",
       "currentTime": "현재 시간",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Memory Chess를 플레이해 주셔서 감사합니다!",
+      "description": "플레이해 보니 어떠셨나요? 남겨 주신 의견이 다음 훈련을 더 좋게 만듭니다.",
       "prompt": "게임을 어떻게 평가하시겠어요?",
       "placeholder": "좋았던 점이나 바꾸고 싶은 점을 알려주세요…",
       "notNow": "나중에",
@@ -259,6 +288,7 @@
       "socialDescription": "기억력과 시각화 과제에서 플레이어들이 어떻게 순위에 오르는지 확인하세요."
     },
     "title": "Memory Chess 순위",
+    "subtitle": "시각화로 보드를 익혀 보세요. 머릿속 정확도와 속도로 세계 최고의 플레이어들과 겨뤄 보세요.",
     "claimRank": "당신의 순위를 차지하세요",
     "footnote": "상위 200명만 표시됩니다. 정확도, 암기 시간, 풀이 속도 순입니다.",
     "loading": "리더보드를 불러오는 중…",
@@ -266,8 +296,16 @@
     "unavailableBody": "리더보드 서비스가 현재 중단되었습니다. 게임 데이터는 계속 로컬에 저장됩니다.",
     "unavailableNote": "중단 없이 계속 플레이할 수 있습니다.",
     "retryLater": "잠시 후 다시 시도해 주세요",
+    "errorLoading": "순위를 불러오는 중 오류가 발생했습니다: {error}",
+    "errors": {
+      "timeout": "요청 시간이 초과되었습니다. 잠시 후 다시 시도해 주세요.",
+      "parse": "서버 응답을 해석하지 못했습니다. 잠시 후 다시 시도해 주세요.",
+      "status": "요청이 {status} 상태로 실패했습니다",
+      "unexpected": "예기치 않은 오류가 발생했습니다"
+    },
     "emptyTitle": "첫 번째 챔피언이 되어 보세요!",
     "emptyBody": "이 리더보드에는 아직 기록이 없습니다",
+    "emptyCta": "기억력에 도전해 정상을 차지하세요! 지금 플레이하고 Memory Chess 역사에 이름을 남겨 보세요.",
     "startPlaying": "지금 플레이 시작",
     "you": "나",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "올바른 이메일 주소를 입력하세요.",
       "typeRequired": "문의 유형을 선택하세요.",
       "messageTooShort": "메시지는 10자 이상이어야 합니다."
+    },
+    "errors": {
+      "submitFailed": "양식을 제출하지 못했습니다{details}",
+      "generic": "양식을 제출하는 중 오류가 발생했습니다. 다시 시도해 주세요."
     }
   },
   "learnHub": {

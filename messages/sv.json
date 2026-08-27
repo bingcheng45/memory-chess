@@ -181,6 +181,34 @@
       "selectBlack": "Välj svarta pjäser",
       "hint": "Tryck på en ruta för att lägga till eller ta bort en pjäs"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "vit bonde",
+          "knight": "vit springare",
+          "bishop": "vit löpare",
+          "rook": "vitt torn",
+          "queen": "vit dam",
+          "king": "vit kung"
+        },
+        "black": {
+          "pawn": "svart bonde",
+          "knight": "svart springare",
+          "bishop": "svart löpare",
+          "rook": "svart torn",
+          "queen": "svart dam",
+          "king": "svart kung"
+        }
+      },
+      "feedback": {
+        "correct": "rätt",
+        "incorrect": "fel",
+        "missing": "saknas"
+      },
+      "squareWithPiece": "{square} med {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Välj {piece}"
+    },
     "stats": {
       "title": "Statistik",
       "currentTime": "Aktuell tid",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Tack för att du spelade Memory Chess!",
+      "description": "Hur kändes det? Din feedback gör varje träningspass bättre.",
       "prompt": "Vilket betyg ger du spelet?",
       "placeholder": "Berätta vad som fungerade bra eller vad du skulle ändra ...",
       "notNow": "Inte nu",
@@ -259,6 +288,7 @@
       "socialDescription": "Se hur spelare rankas i minnes- och visualiseringsutmaningarna."
     },
     "title": "Memory Chess-rankning",
+    "subtitle": "Behärska brädet med visualisering. Tävla mot världens bästa i mental precision och snabbhet.",
     "claimRank": "Ta din plats",
     "footnote": "Visar endast de 200 bästa. Rankade efter träffsäkerhet, memoreringstid och lösningstempo.",
     "loading": "Laddar topplistan ...",
@@ -266,8 +296,16 @@
     "unavailableBody": "Topplistetjänsten är offline just nu. Dina speldata sparas fortfarande lokalt.",
     "unavailableNote": "Du kan fortsätta spela utan avbrott.",
     "retryLater": "Försök igen senare",
+    "errorLoading": "Fel vid inläsning av rankningen: {error}",
+    "errors": {
+      "timeout": "Begäran tog för lång tid. Försök igen senare.",
+      "parse": "Det gick inte att tolka serverns svar. Försök igen senare.",
+      "status": "Begäran misslyckades med status {status}",
+      "unexpected": "Ett oväntat fel inträffade"
+    },
     "emptyTitle": "Bli den första mästaren!",
     "emptyBody": "Inga resultat på den här topplistan ännu",
+    "emptyCta": "Utmana ditt minne och ta förstaplatsen! Spela en omgång nu och skriv in ditt namn i historien om Memory Chess.",
     "startPlaying": "Börja spela",
     "you": "Du",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Ange en giltig e-postadress.",
       "typeRequired": "Välj en typ av ärende.",
       "messageTooShort": "Meddelandet måste ha minst 10 tecken."
+    },
+    "errors": {
+      "submitFailed": "Det gick inte att skicka formuläret{details}",
+      "generic": "Ett fel inträffade när formuläret skickades. Försök igen."
     }
   },
   "learnHub": {

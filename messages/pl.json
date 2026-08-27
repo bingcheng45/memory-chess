@@ -181,6 +181,34 @@
       "selectBlack": "Wybierz czarne bierki",
       "hint": "Dotknij pola, aby postawić lub usunąć bierkę"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "biały pionek",
+          "knight": "biały skoczek",
+          "bishop": "biały goniec",
+          "rook": "biała wieża",
+          "queen": "biały hetman",
+          "king": "biały król"
+        },
+        "black": {
+          "pawn": "czarny pionek",
+          "knight": "czarny skoczek",
+          "bishop": "czarny goniec",
+          "rook": "czarna wieża",
+          "queen": "czarny hetman",
+          "king": "czarny król"
+        }
+      },
+      "feedback": {
+        "correct": "poprawnie",
+        "incorrect": "niepoprawnie",
+        "missing": "brak"
+      },
+      "squareWithPiece": "{square}: {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Wybierz: {piece}"
+    },
     "stats": {
       "title": "Statystyki",
       "currentTime": "Bieżący czas",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Dziękujemy za grę w Memory Chess!",
+      "description": "Jak Ci poszło? Twoja opinia pomaga ulepszyć każdy trening.",
       "prompt": "Jak oceniasz grę?",
       "placeholder": "Napisz, co się sprawdziło albo co byś zmienił…",
       "notNow": "Nie teraz",
@@ -259,6 +288,7 @@
       "socialDescription": "Sprawdź, jak gracze wypadają w zadaniach na pamięć i wyobraźnię."
     },
     "title": "Ranking Memory Chess",
+    "subtitle": "Opanuj szachownicę dzięki wizualizacji. Rywalizuj z najlepszymi na świecie w precyzji i szybkości myślenia.",
     "claimRank": "Zajmij swoje miejsce",
     "footnote": "Wyświetlane jest tylko 200 najlepszych wyników. Sortowanie według celności, czasu zapamiętywania i tempa rozwiązania.",
     "loading": "Wczytywanie rankingu...",
@@ -266,8 +296,16 @@
     "unavailableBody": "Usługa rankingu jest teraz offline. Dane twoich partii nadal zapisują się lokalnie.",
     "unavailableNote": "Możesz grać dalej bez przeszkód.",
     "retryLater": "Spróbuj ponownie później",
+    "errorLoading": "Błąd podczas wczytywania rankingu: {error}",
+    "errors": {
+      "timeout": "Upłynął limit czasu żądania. Spróbuj ponownie później.",
+      "parse": "Nie udało się odczytać odpowiedzi serwera. Spróbuj ponownie później.",
+      "status": "Żądanie nie powiodło się ze statusem {status}",
+      "unexpected": "Wystąpił nieoczekiwany błąd"
+    },
     "emptyTitle": "Zostań pierwszym mistrzem!",
     "emptyBody": "W tym rankingu nie ma jeszcze wpisów",
+    "emptyCta": "Sprawdź swoją pamięć i zajmij pierwsze miejsce! Zagraj teraz i zapisz swoje imię w historii Memory Chess.",
     "startPlaying": "Zacznij grać",
     "you": "Ty",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Podaj poprawny adres e-mail.",
       "typeRequired": "Wybierz rodzaj sprawy.",
       "messageTooShort": "Wiadomość musi mieć co najmniej 10 znaków."
+    },
+    "errors": {
+      "submitFailed": "Nie udało się wysłać formularza{details}",
+      "generic": "Podczas wysyłania formularza wystąpił błąd. Spróbuj ponownie."
     }
   },
   "learnHub": {

@@ -181,6 +181,34 @@
       "selectBlack": "Selectează piesele negre",
       "hint": "Atinge un pătrat ca să adaugi sau să scoți o piesă"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "pion alb",
+          "knight": "cal alb",
+          "bishop": "nebun alb",
+          "rook": "turn alb",
+          "queen": "damă albă",
+          "king": "rege alb"
+        },
+        "black": {
+          "pawn": "pion negru",
+          "knight": "cal negru",
+          "bishop": "nebun negru",
+          "rook": "turn negru",
+          "queen": "damă neagră",
+          "king": "rege negru"
+        }
+      },
+      "feedback": {
+        "correct": "corect",
+        "incorrect": "incorect",
+        "missing": "lipsă"
+      },
+      "squareWithPiece": "{square} cu {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Selectează {piece}"
+    },
     "stats": {
       "title": "Statistici",
       "currentTime": "Timp curent",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Mulțumim că ai jucat Memory Chess!",
+      "description": "Cum ți s-a părut? Feedbackul tău ajută la îmbunătățirea fiecărei sesiuni de antrenament.",
       "prompt": "Ce notă i-ai da jocului?",
       "placeholder": "Spune-ne ce a mers bine sau ce ai schimba…",
       "notNow": "Nu acum",
@@ -259,6 +288,7 @@
       "socialDescription": "Vezi cum se clasează jucătorii în provocările de memorie și vizualizare."
     },
     "title": "Clasament Memory Chess",
+    "subtitle": "Stăpânește tabla prin vizualizare. Concurează cu cei mai buni din lume la precizie mentală și viteză.",
     "claimRank": "Revendică-ți locul",
     "footnote": "Se afișează doar primii 200. Ordonați după precizie, timp de memorare și viteză de rezolvare.",
     "loading": "Se încarcă clasamentul…",
@@ -266,8 +296,16 @@
     "unavailableBody": "Serviciul de clasament este momentan offline. Datele partidelor tale se salvează în continuare local.",
     "unavailableNote": "Poți juca mai departe fără probleme.",
     "retryLater": "Încearcă din nou mai târziu",
+    "errorLoading": "Eroare la încărcarea clasamentului: {error}",
+    "errors": {
+      "timeout": "Cererea a expirat. Încearcă din nou mai târziu.",
+      "parse": "Răspunsul serverului nu a putut fi citit. Încearcă din nou mai târziu.",
+      "status": "Cererea a eșuat cu starea {status}",
+      "unexpected": "A apărut o eroare neașteptată"
+    },
     "emptyTitle": "Fii primul campion!",
     "emptyBody": "Încă nu există înregistrări în acest clasament",
+    "emptyCta": "Pune-ți memoria la încercare și cucerește primul loc! Joacă o partidă acum și scrie-ți numele în istoria Memory Chess.",
     "startPlaying": "Începe să joci",
     "you": "Tu",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Introdu o adresă de e-mail validă.",
       "typeRequired": "Alege tipul solicitării.",
       "messageTooShort": "Mesajul trebuie să aibă cel puțin 10 caractere."
+    },
+    "errors": {
+      "submitFailed": "Formularul nu a putut fi trimis{details}",
+      "generic": "A apărut o eroare la trimiterea formularului. Încearcă din nou."
     }
   },
   "learnHub": {

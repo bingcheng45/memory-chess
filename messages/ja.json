@@ -6,7 +6,7 @@
       "privacy": "プライバシー"
     },
     "footer": {
-      "copyright": "© {year} Memory Chess. All rights reserved.",
+      "copyright": "© {year} Memory Chess. 無断転載を禁じます。",
       "followOnX": "Twitter/X でフォローする",
       "productHuntAlt": "Memory Chess - チェスで空間イメージ力を鍛えよう | Product Hunt"
     },
@@ -181,6 +181,34 @@
       "selectBlack": "黒の駒を選択",
       "hint": "マスをタップすると駒を置いたり外したりできます"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "白のポーン",
+          "knight": "白のナイト",
+          "bishop": "白のビショップ",
+          "rook": "白のルーク",
+          "queen": "白のクイーン",
+          "king": "白のキング"
+        },
+        "black": {
+          "pawn": "黒のポーン",
+          "knight": "黒のナイト",
+          "bishop": "黒のビショップ",
+          "rook": "黒のルーク",
+          "queen": "黒のクイーン",
+          "king": "黒のキング"
+        }
+      },
+      "feedback": {
+        "correct": "正解",
+        "incorrect": "不正解",
+        "missing": "未配置"
+      },
+      "squareWithPiece": "{square}に{piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "{piece}を選択"
+    },
     "stats": {
       "title": "ゲーム統計",
       "currentTime": "経過時間",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Memory Chess で遊んでいただきありがとうございます！",
+      "description": "遊んでみていかがでしたか？ いただいた声が毎回のトレーニングをより良くします。",
       "prompt": "このゲームを評価してください",
       "placeholder": "良かった点や、変えたほうがいい点をお聞かせください…",
       "notNow": "あとで",
@@ -259,6 +288,7 @@
       "socialDescription": "記憶とイメージ力の課題でプレイヤーがどう並ぶかをご覧ください。"
     },
     "title": "Memory Chess ランキング",
+    "subtitle": "イメージする力で盤面を身につけましょう。頭の中の正確さとスピードで世界の強豪と競い合えます。",
     "claimRank": "順位を勝ち取る",
     "footnote": "上位 200 件のみ表示しています。正答率、記憶時間、解答の速さの順です。",
     "loading": "ランキングを読み込み中…",
@@ -266,8 +296,16 @@
     "unavailableBody": "ランキングのサービスが現在停止しています。ゲームのデータはローカルに保存され続けます。",
     "unavailableNote": "そのまま続けてプレイできます。",
     "retryLater": "しばらくしてからもう一度お試しください",
+    "errorLoading": "ランキングの読み込みでエラーが発生しました: {error}",
+    "errors": {
+      "timeout": "リクエストがタイムアウトしました。しばらくしてからもう一度お試しください。",
+      "parse": "サーバーの応答を読み取れませんでした。しばらくしてからもう一度お試しください。",
+      "status": "リクエストがステータス {status} で失敗しました",
+      "unexpected": "予期しないエラーが発生しました"
+    },
     "emptyTitle": "最初のチャンピオンになりましょう！",
     "emptyBody": "このランキングにはまだ記録がありません",
+    "emptyCta": "記憶力に挑戦して、トップの座を手に入れましょう！今すぐプレイして、Memory Chess の歴史に名前を刻んでください。",
     "startPlaying": "今すぐプレイする",
     "you": "あなた",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "有効なメールアドレスを入力してください。",
       "typeRequired": "お問い合わせの種類を選んでください。",
       "messageTooShort": "メッセージは 10 文字以上で入力してください。"
+    },
+    "errors": {
+      "submitFailed": "フォームを送信できませんでした{details}",
+      "generic": "フォームの送信中にエラーが発生しました。もう一度お試しください。"
     }
   },
   "learnHub": {

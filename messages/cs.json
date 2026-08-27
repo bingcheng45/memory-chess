@@ -181,6 +181,34 @@
       "selectBlack": "Vybrat černé figurky",
       "hint": "Klepnutím na pole figurku přidáte nebo odeberete"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "bílý pěšec",
+          "knight": "bílý jezdec",
+          "bishop": "bílý střelec",
+          "rook": "bílá věž",
+          "queen": "bílá dáma",
+          "king": "bílý král"
+        },
+        "black": {
+          "pawn": "černý pěšec",
+          "knight": "černý jezdec",
+          "bishop": "černý střelec",
+          "rook": "černá věž",
+          "queen": "černá dáma",
+          "king": "černý král"
+        }
+      },
+      "feedback": {
+        "correct": "správně",
+        "incorrect": "špatně",
+        "missing": "chybí"
+      },
+      "squareWithPiece": "{square}: {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Vybrat: {piece}"
+    },
     "stats": {
       "title": "Statistiky",
       "currentTime": "Aktuální čas",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Díky, že jste si zahráli Memory Chess!",
+      "description": "Jaké to bylo? Vaše zpětná vazba pomáhá vylepšit každý trénink.",
       "prompt": "Jak byste hru ohodnotili?",
       "placeholder": "Napište, co fungovalo dobře nebo co byste změnili…",
       "notNow": "Teď ne",
@@ -259,6 +288,7 @@
       "socialDescription": "Zjistěte, jak si hráči vedou v úlohách na paměť a představivost."
     },
     "title": "Žebříček Memory Chess",
+    "subtitle": "Ovládněte šachovnici pomocí vizualizace. Změřte síly s nejlepšími na světě v přesnosti a rychlosti myšlení.",
     "claimRank": "Získejte své místo",
     "footnote": "Zobrazuje se jen 200 nejlepších. Řazeno podle přesnosti, času na zapamatování a rychlosti řešení.",
     "loading": "Načítání žebříčku...",
@@ -266,8 +296,16 @@
     "unavailableBody": "Služba žebříčku je právě offline. Data vašich partií se dál ukládají lokálně.",
     "unavailableNote": "Můžete bez omezení hrát dál.",
     "retryLater": "Zkuste to prosím později",
+    "errorLoading": "Chyba při načítání žebříčku: {error}",
+    "errors": {
+      "timeout": "Vypršel časový limit požadavku. Zkuste to prosím později.",
+      "parse": "Odpověď serveru se nepodařilo přečíst. Zkuste to prosím později.",
+      "status": "Požadavek selhal se stavem {status}",
+      "unexpected": "Došlo k neočekávané chybě"
+    },
     "emptyTitle": "Buďte prvním šampionem!",
     "emptyBody": "V tomto žebříčku zatím nejsou žádné záznamy",
+    "emptyCta": "Vyzkoušejte svou paměť a získejte první místo! Zahrajte si teď a zapište své jméno do historie Memory Chess.",
     "startPlaying": "Začít hrát",
     "you": "Vy",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Zadejte platnou e-mailovou adresu.",
       "typeRequired": "Vyberte typ dotazu.",
       "messageTooShort": "Zpráva musí mít alespoň 10 znaků."
+    },
+    "errors": {
+      "submitFailed": "Formulář se nepodařilo odeslat{details}",
+      "generic": "Při odesílání formuláře došlo k chybě. Zkuste to prosím znovu."
     }
   },
   "learnHub": {

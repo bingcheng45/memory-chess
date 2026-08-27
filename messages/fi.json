@@ -181,6 +181,34 @@
       "selectBlack": "Valitse mustat nappulat",
       "hint": "Napauta ruutua lisätäksesi tai poistaaksesi nappulan"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "valkoinen sotilas",
+          "knight": "valkoinen ratsu",
+          "bishop": "valkoinen lähetti",
+          "rook": "valkoinen torni",
+          "queen": "valkoinen kuningatar",
+          "king": "valkoinen kuningas"
+        },
+        "black": {
+          "pawn": "musta sotilas",
+          "knight": "musta ratsu",
+          "bishop": "musta lähetti",
+          "rook": "musta torni",
+          "queen": "musta kuningatar",
+          "king": "musta kuningas"
+        }
+      },
+      "feedback": {
+        "correct": "oikein",
+        "incorrect": "väärin",
+        "missing": "puuttuu"
+      },
+      "squareWithPiece": "{square}: {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Valitse: {piece}"
+    },
     "stats": {
       "title": "Tilastot",
       "currentTime": "Kulunut aika",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Kiitos, että pelasit Memory Chessiä!",
+      "description": "Miltä peli tuntui? Palautteesi auttaa parantamaan jokaista harjoituskertaa.",
       "prompt": "Minkä arvosanan antaisit pelille?",
       "placeholder": "Kerro, mikä toimi hyvin tai mitä muuttaisit…",
       "notNow": "Ei nyt",
@@ -259,6 +288,7 @@
       "socialDescription": "Katso, miten pelaajat sijoittuvat muisti- ja hahmotushaasteissa."
     },
     "title": "Memory Chess -sijoitukset",
+    "subtitle": "Hallitse lautaa visualisoinnin avulla. Kilpaile maailman parhaita vastaan tarkkuudessa ja nopeudessa.",
     "claimRank": "Lunasta sijoituksesi",
     "footnote": "Näytetään vain 200 parasta. Järjestys: tarkkuus, muistiinpainamisaika ja ratkaisunopeus.",
     "loading": "Ladataan tulostaulukkoa…",
@@ -266,8 +296,16 @@
     "unavailableBody": "Tulostaulukkopalvelu on tällä hetkellä poissa käytöstä. Pelitietosi tallentuvat edelleen paikallisesti.",
     "unavailableNote": "Voit jatkaa pelaamista normaalisti.",
     "retryLater": "Yritä myöhemmin uudelleen",
+    "errorLoading": "Virhe sijoitusten lataamisessa: {error}",
+    "errors": {
+      "timeout": "Pyyntö aikakatkaistiin. Yritä myöhemmin uudelleen.",
+      "parse": "Palvelimen vastausta ei voitu lukea. Yritä myöhemmin uudelleen.",
+      "status": "Pyyntö epäonnistui, tila {status}",
+      "unexpected": "Tapahtui odottamaton virhe"
+    },
     "emptyTitle": "Ole ensimmäinen mestari!",
     "emptyBody": "Tässä tulostaulukossa ei ole vielä merkintöjä",
+    "emptyCta": "Haasta muistisi ja nouse kärkeen! Pelaa peli nyt ja kirjoita nimesi Memory Chessin historiaan.",
     "startPlaying": "Aloita pelaaminen",
     "you": "Sinä",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Anna kelvollinen sähköpostiosoite.",
       "typeRequired": "Valitse yhteydenoton aihe.",
       "messageTooShort": "Viestissä on oltava vähintään 10 merkkiä."
+    },
+    "errors": {
+      "submitFailed": "Lomakkeen lähettäminen epäonnistui{details}",
+      "generic": "Lomaketta lähetettäessä tapahtui virhe. Yritä uudelleen."
     }
   },
   "learnHub": {

@@ -181,6 +181,34 @@
       "selectBlack": "Select black pieces",
       "hint": "Tap a square to add a piece or remove one"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "white pawn",
+          "knight": "white knight",
+          "bishop": "white bishop",
+          "rook": "white rook",
+          "queen": "white queen",
+          "king": "white king"
+        },
+        "black": {
+          "pawn": "black pawn",
+          "knight": "black knight",
+          "bishop": "black bishop",
+          "rook": "black rook",
+          "queen": "black queen",
+          "king": "black king"
+        }
+      },
+      "feedback": {
+        "correct": "correct",
+        "incorrect": "incorrect",
+        "missing": "missing"
+      },
+      "squareWithPiece": "{square} with {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Select {piece}"
+    },
     "stats": {
       "title": "Game Stats",
       "currentTime": "Current Time",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Thanks for playing Memory Chess!",
+      "description": "How was your experience? Your feedback helps make each training session better.",
       "prompt": "How would you rate the game?",
       "placeholder": "Tell us what worked well or what you would change...",
       "notNow": "Not now",
@@ -259,6 +288,7 @@
       "socialDescription": "See how players rank in memory-based chess visualization challenges."
     },
     "title": "Memory Chess Rankings",
+    "subtitle": "Master the board through visualization. Compete against the world's best in mental precision and speed.",
     "claimRank": "Claim Your Rank",
     "footnote": "Displaying top 200 only. Ranked by accuracy, memorization time, and solution speed.",
     "loading": "Loading leaderboard data...",
@@ -266,8 +296,16 @@
     "unavailableBody": "The leaderboard service is currently offline. Your game data is still being saved locally.",
     "unavailableNote": "You can continue playing without disruption.",
     "retryLater": "Please try again later",
+    "errorLoading": "Error loading leaderboard: {error}",
+    "errors": {
+      "timeout": "Request timed out. Please try again later.",
+      "parse": "Failed to parse server response. Please try again later.",
+      "status": "Request failed with status {status}",
+      "unexpected": "An unexpected error occurred"
+    },
     "emptyTitle": "Be the First Champion!",
     "emptyBody": "No entries on this leaderboard yet",
+    "emptyCta": "Challenge your memory skills and claim your spot at the top! Play a game now and etch your name in Memory Chess history.",
     "startPlaying": "Start Playing Now",
     "you": "You",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Please enter a valid email address.",
       "typeRequired": "Please select an inquiry type.",
       "messageTooShort": "Message must be at least 10 characters."
+    },
+    "errors": {
+      "submitFailed": "Failed to submit form{details}",
+      "generic": "An error occurred while submitting the form. Please try again."
     }
   },
   "learnHub": {

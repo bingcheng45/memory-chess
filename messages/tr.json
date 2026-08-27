@@ -181,6 +181,34 @@
       "selectBlack": "Siyah taşları seç",
       "hint": "Taş eklemek ya da kaldırmak için bir kareye dokun"
     },
+    "board": {
+      "pieces": {
+        "white": {
+          "pawn": "beyaz piyon",
+          "knight": "beyaz at",
+          "bishop": "beyaz fil",
+          "rook": "beyaz kale",
+          "queen": "beyaz vezir",
+          "king": "beyaz şah"
+        },
+        "black": {
+          "pawn": "siyah piyon",
+          "knight": "siyah at",
+          "bishop": "siyah fil",
+          "rook": "siyah kale",
+          "queen": "siyah vezir",
+          "king": "siyah şah"
+        }
+      },
+      "feedback": {
+        "correct": "doğru",
+        "incorrect": "yanlış",
+        "missing": "eksik"
+      },
+      "squareWithPiece": "{square}: {piece}",
+      "squareWithFeedback": "{label}, {feedback}",
+      "selectPiece": "Seç: {piece}"
+    },
     "stats": {
       "title": "İstatistikler",
       "currentTime": "Geçen süre",
@@ -236,6 +264,7 @@
     },
     "feedback": {
       "title": "Memory Chess oynadığın için teşekkürler!",
+      "description": "Deneyimin nasıldı? Geri bildirimin her antrenmanı daha iyi hâle getiriyor.",
       "prompt": "Oyuna kaç puan verirsin?",
       "placeholder": "Neyin iyi gittiğini ya da neyi değiştireceğini yaz...",
       "notNow": "Şimdi değil",
@@ -259,6 +288,7 @@
       "socialDescription": "Oyuncuların hafıza ve görselleştirme görevlerinde nasıl sıralandığını gör."
     },
     "title": "Memory Chess sıralaması",
+    "subtitle": "Tahtayı görselleştirerek öğren. Zihinsel hassasiyet ve hızda dünyanın en iyileriyle yarış.",
     "claimRank": "Sıradaki yerini al",
     "footnote": "Yalnızca ilk 200 gösteriliyor. İsabet, ezberleme süresi ve çözüm hızına göre sıralanır.",
     "loading": "Sıralama yükleniyor…",
@@ -266,8 +296,16 @@
     "unavailableBody": "Sıralama servisi şu anda çevrimdışı. Oyun verilerin yerel olarak kaydedilmeye devam ediyor.",
     "unavailableNote": "Kesintisiz oynamaya devam edebilirsin.",
     "retryLater": "Lütfen daha sonra tekrar dene",
+    "errorLoading": "Sıralama yüklenirken hata oluştu: {error}",
+    "errors": {
+      "timeout": "İstek zaman aşımına uğradı. Lütfen daha sonra tekrar dene.",
+      "parse": "Sunucu yanıtı çözümlenemedi. Lütfen daha sonra tekrar dene.",
+      "status": "İstek {status} durumuyla başarısız oldu",
+      "unexpected": "Beklenmeyen bir hata oluştu"
+    },
     "emptyTitle": "İlk şampiyon sen ol!",
     "emptyBody": "Bu sıralamada henüz kayıt yok",
+    "emptyCta": "Hafızanı sına ve zirvedeki yerini al! Hemen bir oyun oyna ve adını Memory Chess tarihine yazdır.",
     "startPlaying": "Oynamaya başla",
     "you": "Sen",
     "columns": {
@@ -323,6 +361,10 @@
       "emailInvalid": "Geçerli bir e-posta adresi gir.",
       "typeRequired": "Bir konu türü seç.",
       "messageTooShort": "Mesaj en az 10 karakter olmalı."
+    },
+    "errors": {
+      "submitFailed": "Form gönderilemedi{details}",
+      "generic": "Form gönderilirken bir hata oluştu. Lütfen tekrar dene."
     }
   },
   "learnHub": {

@@ -41,5 +41,7 @@ export default async function LearnHubPage({
     getLearnGoals(locale),
   ]);
 
-  return <LearnHubPageContent allPages={allPages} goals={goals} />;
+  return (
+    <LearnHubPageContent allPages={allPages} goals={goals} locale={locale} />
+  );
 }

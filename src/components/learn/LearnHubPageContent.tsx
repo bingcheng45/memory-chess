@@ -8,6 +8,8 @@ import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import { useTranslations } from "next-intl";
 import type { LearnPageContent } from "@/lib/seo/learn/schema";
 import type { LearnGoal } from "@/lib/seo/learn";
+import { learnContentLocale } from "@/lib/seo/learn";
+import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 
 const SITE_URL = "https://thememorychess.com";
 
@@ -20,46 +22,66 @@ const QUICK_STARTS = [
 ] as const;
 
 
-function buildLearnHubSchema(allPages: LearnPageContent[]) {
+type LearnHubSchemaInput = {
+  allPages: LearnPageContent[];
+  locale: string;
+  name: string;
+  description: string;
+};
+
+/**
+ * Page-scoped nodes carry the active locale so the hub's JSON-LD agrees with
+ * its own canonical and with the sitemap. The WebSite node keeps the bare
+ * origin -- it is one entity for the whole site, not one per language.
+ */
+function buildLearnHubSchema({
+  allPages,
+  locale,
+  name,
+  description,
+}: LearnHubSchemaInput) {
+  const homeUrl = localizedUrl("/", locale);
+  const hubUrl = localizedUrl("/learn", locale);
+
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": `${SITE_URL}/learn#webpage`,
-        url: `${SITE_URL}/learn`,
-        name: "Chess Learning Center for Beginners",
-        description:
-          "Practical beginner chess guides for board vision, visualization, memory, calculation, blunder prevention, and daily practice.",
+        "@id": `${hubUrl}#webpage`,
+        url: hubUrl,
+        name,
+        description,
+        inLanguage: languageTag(locale),
         isPartOf: {
           "@type": "WebSite",
           "@id": `${SITE_URL}/#website`,
           name: "Memory Chess",
           url: SITE_URL,
         },
-        mainEntity: { "@id": `${SITE_URL}/learn#guides` },
+        mainEntity: { "@id": `${hubUrl}#guides` },
       },
       {
         "@type": "ItemList",
-        "@id": `${SITE_URL}/learn#guides`,
+        "@id": `${hubUrl}#guides`,
         name: "Memory Chess learning guides",
         numberOfItems: allPages.length,
         itemListElement: allPages.map((page, index) => ({
           "@type": "ListItem",
           position: index + 1,
           name: page.title,
-          url: `${SITE_URL}/learn/${page.slug}`,
+          url: localizedUrl(`/learn/${page.slug}`, locale),
         })),
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 1, name: "Home", item: homeUrl },
           {
             "@type": "ListItem",
             position: 2,
             name: "Learn",
-            item: `${SITE_URL}/learn`,
+            item: hubUrl,
           },
         ],
       },
@@ -70,14 +92,21 @@ function buildLearnHubSchema(allPages: LearnPageContent[]) {
 type LearnHubProps = {
   allPages: LearnPageContent[];
   goals: LearnGoal[];
+  locale: string;
 };
 
 export default function LearnHubPageContent({
   allPages,
   goals,
+  locale,
 }: LearnHubProps) {
   const t = useTranslations("learnHub");
-  const learnHubSchema = buildLearnHubSchema(allPages);
+  const learnHubSchema = buildLearnHubSchema({
+    allPages,
+    locale: learnContentLocale(locale),
+    name: t("meta.title"),
+    description: t("meta.description"),
+  });
   return (
     <EditorialPageShell>
       <EditorialHero

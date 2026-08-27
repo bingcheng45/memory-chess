@@ -91,6 +91,18 @@ export function learnLocales(): Locale[] {
 }
 
 /**
+ * The locale a Learn page's content and URLs actually resolve to.
+ *
+ * An untranslated locale serves English prose and canonicalises to the English
+ * URL, so its social card, structured data and breadcrumbs have to say English
+ * too. Every consumer that builds a Learn URL goes through this, so the
+ * canonical and the JSON-LD cannot drift apart.
+ */
+export function learnContentLocale(locale: string): string {
+  return hasLearnTranslation(locale) ? locale : DEFAULT_LOCALE;
+}
+
+/**
  * A locale's translated prose. Structural fields are deliberately absent --
  * slug, goal, difficulty, featured, drill hrefs, relatedArticles slugs and
  * source urls all come from the English guide, so a translation physically

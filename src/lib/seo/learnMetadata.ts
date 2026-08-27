@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { hasLearnTranslation, learnLocales } from '@/lib/seo/learn';
+import { hasLearnTranslation, learnContentLocale, learnLocales } from '@/lib/seo/learn';
 import type { LearnPageContent } from '@/lib/seo/learn/schema';
 import { localizedPath } from '@/lib/seo/alternates';
 import { DEFAULT_LOCALE } from '@/i18n/routing';
@@ -45,7 +45,7 @@ export function buildLearnPageMetadata(
   // title, so it has to carry the same prefix the canonical does -- otherwise
   // /de/learn/... advertises the English card. An untranslated locale serves
   // English prose and canonicalises to English, so its card is English too.
-  const contentLocale = hasLearnTranslation(locale) ? locale : DEFAULT_LOCALE;
+  const contentLocale = learnContentLocale(locale);
   const articlePath = localizedPath(`/learn/${page.slug}`, contentLocale);
   const pageUrl = `${SITE_URL}${articlePath}`;
   const imageUrl = `${SITE_URL}${articlePath}/opengraph-image`;

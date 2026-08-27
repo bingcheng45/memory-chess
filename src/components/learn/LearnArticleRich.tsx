@@ -15,6 +15,8 @@ import {
   type LearnPageContent,
 } from "@/lib/seo/learn/schema";
 import type { LearnGoal } from "@/lib/seo/learn";
+import { learnContentLocale } from "@/lib/seo/learn";
+import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import LearnArticleTracking from "@/components/learn/LearnArticleTracking";
 
 const SITE_URL = "https://thememorychess.com";
@@ -26,10 +28,6 @@ type LearnArticleProps = {
   allPages: LearnPageContent[];
   locale: string;
 };
-
-function toAbsoluteUrl(pathname: string): string {
-  return `${SITE_URL}${pathname}`;
-}
 
 function formatDate(value: string, locale: string): string {
   return new Intl.DateTimeFormat(locale, {
@@ -86,8 +84,15 @@ export default function LearnArticleRich({
 }: LearnArticleProps) {
   const goalsById = new Map(goals.map((entry) => [entry.id, entry]));
   const goal = goalsById.get(page.goal)!;
-  const articlePath = `/learn/${page.slug}`;
-  const articleUrl = toAbsoluteUrl(articlePath);
+  // Page-scoped identifiers follow the locale the reader is actually on, so
+  // the JSON-LD agrees with the localized canonical instead of claiming the
+  // German page is the English document. Organization nodes below stay on the
+  // bare origin: publisher and author are one entity site-wide, and a
+  // per-locale @id would split one organization into twenty-four.
+  const contentLocale = learnContentLocale(locale);
+  const homeUrl = localizedUrl("/", contentLocale);
+  const hubUrl = localizedUrl("/learn", contentLocale);
+  const articleUrl = localizedUrl(`/learn/${page.slug}`, contentLocale);
   const socialImageUrl = `${articleUrl}/opengraph-image`;
   const relatedPages = buildRelatedPageData(page, allPages);
 
@@ -108,19 +113,19 @@ export default function LearnArticleRich({
         },
         datePublished: page.publishedAt,
         dateModified: page.updatedAt,
-        inLanguage: "en-US",
+        inLanguage: languageTag(contentLocale),
         isAccessibleForFree: true,
         articleSection: goal.label,
         author: {
           "@type": "Organization",
           "@id": `${SITE_URL}/#editorial-team`,
           name: "Memory Chess Editorial Team",
-          url: `${SITE_URL}/learn`,
+          url: hubUrl,
         },
         reviewedBy: {
           "@type": "Organization",
           name: page.reviewedBy,
-          url: `${SITE_URL}/learn`,
+          url: hubUrl,
         },
         publisher: {
           "@type": "Organization",
@@ -144,7 +149,7 @@ export default function LearnArticleRich({
         description: page.description,
         isPartOf: {
           "@type": "CollectionPage",
-          "@id": `${SITE_URL}/learn#webpage`,
+          "@id": `${hubUrl}#webpage`,
         },
         mainEntity: { "@id": `${articleUrl}#article` },
         breadcrumb: { "@id": `${articleUrl}#breadcrumb` },
@@ -153,12 +158,12 @@ export default function LearnArticleRich({
         "@type": "BreadcrumbList",
         "@id": `${articleUrl}#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 1, name: "Home", item: homeUrl },
           {
             "@type": "ListItem",
             position: 2,
             name: "Learn",
-            item: `${SITE_URL}/learn`,
+            item: hubUrl,
           },
           {
             "@type": "ListItem",

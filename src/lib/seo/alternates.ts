@@ -15,6 +15,31 @@ export function localizedPath(path: string, locale: string): string {
     : `/${locale}${normalized}`;
 }
 
+const SITE_URL = "https://thememorychess.com";
+
+/**
+ * Absolute locale-prefixed URL for a route.
+ *
+ * The home page stays bare (`https://thememorychess.com`, no trailing slash)
+ * for English, because that is the identifier the site has always published in
+ * its structured data and changing it would fork the entity graph.
+ */
+export function localizedUrl(path: string, locale: string): string {
+  const localized = localizedPath(path, locale);
+  return localized === "/" ? SITE_URL : `${SITE_URL}${localized}`;
+}
+
+/**
+ * BCP-47 tag for schema.org `inLanguage` and the `lang` attribute.
+ *
+ * Every locale we ship is already a valid tag. English is qualified to `en-US`
+ * because that is what the site has always published and what the source copy
+ * is written in.
+ */
+export function languageTag(locale: string): string {
+  return locale === DEFAULT_LOCALE ? "en-US" : locale;
+}
+
 /**
  * hreflang block for a single route across all locales, plus the canonical for
  * the locale currently being rendered.

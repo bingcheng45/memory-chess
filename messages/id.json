@@ -375,7 +375,8 @@
     "latest": "Terbaru",
     "bannerCta": "Lihat yang baru",
     "bannerLabel": "Pembaruan Memory Chess",
-    "entriesInEnglish": "Catatan rilis diterbitkan dalam bahasa Inggris."
+    "eyebrow": "Pembaruan",
+    "changesIn": "Perubahan di versi {version}"
   },
   "learnArticle": {
     "faqLabel": "Pertanyaan umum",

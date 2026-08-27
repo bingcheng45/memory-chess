@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess teď mluví vaším jazykem",
+    "summary": "Hra i všichni průvodci v Učení jsou nově ve 24 jazycích a web se rovnou spustí v tom vašem.",
+    "groups": [
+      {
+        "title": "24 jazyků",
+        "changes": [
+          "Memory Chess je teď k dispozici ve 24 jazycích: angličtina, španělština, ruština, brazilská portugalština, němčina, francouzština, hindština, italština, zjednodušená čínština, turečtina, švédština, nizozemština, polština, indonéština, norština, finština, rumunština, vietnamština, čeština, japonština, korejština, tradiční čínština, dánština a maďarština.",
+          "Přeložené je všechno, co při hraní čtete: od úvodní stránky a Nastavení až po časomíru, obrazovku s výsledky, žebříček a tyto Novinky."
+        ]
+      },
+      {
+        "title": "Všech 16 průvodců v Učení, a to v každém jazyce",
+        "changes": [
+          {
+            "segments": [
+              "Každý průvodce v sekci ",
+              {
+                "text": "Učení"
+              },
+              " je přeložený celý. Kroky na začátek, cvičení, týdenní plán i otázky na konci znějí ve vašem jazyce přirozeně a šachové názvosloví odpovídá tomu, jak o hře hráči opravdu mluví."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Jazyk přepnete, kdykoli budete chtít",
+        "changes": [
+          "Glóbus v horní části každé stránky otevře seznam jazyků. Každý jazyk je psaný svým vlastním názvem, takže ten svůj najdete, aniž byste museli nejdřív číst anglicky.",
+          "Po volbě jazyka zůstanete přesně tam, kde jste byli, a Memory Chess si vaši volbu zapamatuje i na příští návštěvu."
+        ]
+      },
+      {
+        "title": "Snažíme se trefit dřív, než si řeknete",
+        "changes": [
+          "Noví návštěvníci teď začínají v jazyce, který napoví jejich prohlížeč nebo region, pokud ho máme k dispozici. Když se odhad netrefí, glóbus je hned po ruce."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Plynulejší hraní, přehlednější výsledky",
+    "summary": "Šachovnice se vám nehne, náhodné pozice dávají větší smysl a výsledky se lépe procházejí.",
+    "groups": [
+      {
+        "title": "Klidnější průběh hry",
+        "changes": [
+          "Díky podnětům od hráčů zůstává šachovnice na stejném místě i ve chvíli, kdy končí zapamatování a začíná rozestavování. Ovládání a výběr figurek jsou nově zarovnané se šachovnicí.",
+          "Záhlaví stránek, ovládání zvuku i rozestupy zůstávají během hry jednotnější. Figurky a popisky na šachovnici už omylem neoznačíte."
+        ]
+      },
+      {
+        "title": "Lepší náhodné pozice",
+        "changes": [
+          "Díky hráči, který nám to nahlásil na Redditu, náhodné pozice už nestaví krále vedle sebe, dva střelce jedné strany na pole stejné barvy, pěšce na první nebo osmou řadu ani oba krále do šachu."
+        ]
+      },
+      {
+        "title": "Přehlednější výsledky",
+        "changes": [
+          "Po každé partii si můžete porovnat pozici, kterou jste si zapamatovali, s šachovnicí, kterou jste odeslali. Jasné značky ukážou správné, špatné i vynechané figurky.",
+          "Přesnost a hlavní tlačítka pro novou partii a žebříček jsou teď pohromadě v horní části výsledků. Vynechané figurky mají zřetelný černý tečkovaný obrys a šachovnice pod nimi zůstává vidět."
+        ]
+      },
+      {
+        "title": "Zřetelnější konec kola",
+        "changes": [
+          "Po odeslání se časomíra na vteřinu zastaví, abyste stihli vidět svůj zapsaný čas a finální šachovnici ještě před výsledky. Konec kola označí krátké bliknutí HOTOVO! a čas při rozestavování nově ukazuje i milisekundy."
+        ]
+      },
+      {
+        "title": "Trocha statistik pro všechny!",
+        "description": "Tady je přehled veřejných zápisů do žebříčku k 16. srpnu 2026.",
+        "tables": [
+          {
+            "caption": "Přesnost",
+            "columns": ["Zápisy do žebříčku", "Do konce roku 2025", "2026"],
+            "rows": [
+              {
+                "label": "Průměrná přesnost",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Podíl plných počtů",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Průměrná přesnost, obtížnost Střední",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Podíl plných počtů, obtížnost Střední",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Průměrná přesnost, obtížnost Těžká",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Průměrná přesnost, obtížnost Velmistr",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Rychlost odeslání",
+            "columns": [
+              "Čas řešení při plném počtu",
+              "Do konce roku 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Všechny obtížnosti, medián",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Lehká, medián",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Střední, medián",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Z 50 kombinací opakovaného jména hráče a obtížnosti mělo 33 poslední řešení rychlejší a 17 pomalejší. Přesnost se celkově výrazně zlepšila, ale k lepšímu skóre může vést i to, že si dáte víc času. Čísla se týkají dobrovolných zápisů do žebříčku, ne všech odehraných partií, a žebříček obtížnosti Lehká je omezený na 200 nejlepších záznamů."
+      },
+      {
+        "title": "Díky, že hrajete",
+        "changes": [
+          {
+            "segments": [
+              "Obrovské díky všem, díky kterým Memory Chess překonalo hranici 800 hráčů měsíčně a 32 000 odehraných partií. Zvlášť děkujeme každému, kdo nám poslal nápad, povzbuzení nebo hlášení chyby přes stránku ",
+              {
+                "text": "Kontakt"
+              },
+              " nebo přes formulář se zpětnou vazbou po partii. Každá partie i každá zpráva pomáhají Memory Chess růst."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Víc se naučte. Hrajte plynuleji.",
+    "summary": "Nové návody, přehlednější úvodní stránka, tišší zvuky a snadný způsob, jak poslat zpětnou vazbu.",
+    "groups": [
+      {
+        "title": "Učte se a zlepšujte se",
+        "changes": [
+          "Prozkoumejte nové, srozumitelné průvodce šachovou pamětí a představivostí.",
+          "Obnovená úvodní stránka teď vysvětluje, jak Memory Chess trénuje vaši prostorovou paměť."
+        ]
+      },
+      {
+        "title": "Vylepšení pro každodenní hraní",
+        "changes": [
+          "Hraní na mobilu, rozestavení figurek i pořadí v žebříčku jsou spolehlivější.",
+          "Zvuky hry teď začínají na jemnějších 10 % hlasitosti."
+        ]
+      },
+      {
+        "title": "Zpětná vazba a novinky",
+        "changes": [
+          "Po dohrání můžete hru ohodnotit a nová vydání najdete v Novinkách. Výzva ke zpětné vazbě se objeví nejvýš jednou denně.",
+          "Nová stránka Soukromí srozumitelně vysvětluje uložená nastavení, analytiku, zpětnou vazbu i budoucí reklamy."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Výběr figurek je příjemnější",
+    "summary": "Volba bílých nebo černých figurek je teď jasnější a snazší.",
+    "groups": [
+      {
+        "title": "Výběr figurek",
+        "changes": [
+          "Výběr barvy má svěží nový vzhled.",
+          "Líp poznáte, kterou barvu jste si zvolili.",
+          "Tlačítka reagují plynuleji a jednotněji."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Lepší na telefonu",
+    "summary": "Memory Chess se teď na malé obrazovce hraje snadněji a pohodlněji.",
+    "groups": [
+      {
+        "title": "Hraní na mobilu",
+        "changes": [
+          "Hra, časomíra i tlačítko Přeskočit se na malé obrazovky vejdou lépe.",
+          "Klepání a rozestupy jsou na mobilu příjemnější.",
+          "Zvuky se v průběhu hry chovají spolehlivěji."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Ať paměťové hry začnou!",
+    "summary": "První verze Memory Chess je připravená ke hraní.",
+    "groups": [
+      {
+        "title": "První vydání",
+        "changes": [
+          "Zapamatujte si šachovou pozici a pak ji poskládejte po paměti.",
+          "Zvolte si obtížnost, počet figurek, čas i souřadnice šachovnice.",
+          "Po každé partii uvidíte své skóre a čas."
+        ]
+      }
+    ]
+  }
+]

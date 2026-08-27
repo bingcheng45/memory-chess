@@ -375,7 +375,8 @@
     "latest": "Mới nhất",
     "bannerCta": "Xem có gì mới",
     "bannerLabel": "Cập nhật Memory Chess",
-    "entriesInEnglish": "Ghi chú phát hành được đăng bằng tiếng Anh."
+    "eyebrow": "Cập nhật",
+    "changesIn": "Thay đổi trong phiên bản {version}"
   },
   "learnArticle": {
     "faqLabel": "Câu hỏi thường gặp",

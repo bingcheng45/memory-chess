@@ -1,0 +1,226 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess spreekt nu jouw taal",
+    "summary": "Het spel en alle gidsen bij Leren zijn nu beschikbaar in 24 talen, en de site start meteen in de jouwe.",
+    "groups": [
+      {
+        "title": "24 talen",
+        "changes": [
+          "Memory Chess is nu beschikbaar in 24 talen: Engels, Spaans, Russisch, Braziliaans Portugees, Duits, Frans, Hindi, Italiaans, vereenvoudigd Chinees, Turks, Zweeds, Nederlands, Pools, Indonesisch, Noors, Fins, Roemeens, Vietnamees, Tsjechisch, Japans, Koreaans, traditioneel Chinees, Deens en Hongaars.",
+          "Alles wat je tijdens het spelen leest is vertaald: van de homepagina en de instellingen tot de tijd, het resultaatscherm, de ranglijst en dit overzicht."
+        ]
+      },
+      {
+        "title": "Alle 16 gidsen bij Leren, in elke taal",
+        "changes": [
+          {
+            "segments": [
+              "Elke gids bij ",
+              {
+                "text": "Leren"
+              },
+              " is volledig vertaald. De praktische stappen, de oefeningen, het weekplan en de vragen aan het eind lezen allemaal natuurlijk in jouw taal, met schaaktermen zoals spelers ze echt gebruiken."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Wissel van taal wanneer je wilt",
+        "changes": [
+          "Bovenaan elke pagina opent een wereldbol de lijst met talen. Elke taal staat er in haar eigen naam, zodat je de jouwe kunt vinden zonder eerst Engels te lezen.",
+          "Kies je een taal, dan blijf je precies waar je was, en Memory Chess onthoudt je keuze voor je volgende bezoek."
+        ]
+      },
+      {
+        "title": "We proberen het goed te raden voordat je het vraagt",
+        "changes": [
+          "Nieuwe bezoekers beginnen nu in de taal die hun browser of regio aangeeft, als we die hebben. Klopt de gok niet, dan staat de wereldbol klaar om het te corrigeren."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Soepeler spelen, duidelijkere resultaten",
+    "summary": "Je bord blijft stabiel, willekeurige stellingen kloppen beter en je resultaten zijn makkelijker terug te kijken.",
+    "groups": [
+      {
+        "title": "Rustiger speelverloop",
+        "changes": [
+          "Dankzij nuttige feedback van spelers blijft het bord nu op dezelfde plek staan wanneer het onthouden stopt en het plaatsen begint. Ook de bediening en de stukkenkiezer lopen netjes in lijn met het bord.",
+          "Paginakoppen, geluidsknoppen en witruimte blijven nu consistenter terwijl je door de partij gaat. Stukken en labels op het bord kun je niet meer per ongeluk selecteren."
+        ]
+      },
+      {
+        "title": "Betere willekeurige stellingen",
+        "changes": [
+          "Dankzij een speler die dit op Reddit meldde, zetten willekeurige stellingen de koningen niet meer naast elkaar, plaatsen ze geen twee lopers van dezelfde partij op velden van dezelfde kleur, geen pionnen op de eerste of achtste rij, en staan niet allebei de koningen schaak."
+        ]
+      },
+      {
+        "title": "Duidelijkere resultaten",
+        "changes": [
+          "Na elke partij kun je nu de stelling die je onthouden hebt vergelijken met het bord dat je hebt ingestuurd. Duidelijke markeringen tonen goede, foute en gemiste stukken.",
+          "Je nauwkeurigheid en de belangrijkste knoppen voor opnieuw spelen en de ranglijst staan nu samen bovenaan je resultaat. Gemiste stukken krijgen een duidelijke zwarte stippellijn, terwijl het bord eronder zichtbaar blijft."
+        ]
+      },
+      {
+        "title": "Een duidelijker slot",
+        "changes": [
+          "Als je verstuurt, staat de tijd één seconde stil, zodat je je vastgelegde tijd en je eindstelling nog ziet voordat het resultaat verschijnt. Een korte flits met KLAAR! markeert het einde van de ronde, en de plaatsingstijd toont nu ook milliseconden."
+        ]
+      },
+      {
+        "title": "Wat cijfers voor iedereen!",
+        "description": "Dit is een momentopname van de openbare inzendingen voor de ranglijst tot en met 16 augustus 2026.",
+        "tables": [
+          {
+            "caption": "Nauwkeurigheid",
+            "columns": [
+              "Inzendingen voor de ranglijst",
+              "Tot en met 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Gemiddelde nauwkeurigheid",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Percentage foutloze scores",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Gemiddelde nauwkeurigheid op Gemiddeld",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Percentage foutloze scores op Gemiddeld",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Gemiddelde nauwkeurigheid op Moeilijk",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Gemiddelde nauwkeurigheid op Grootmeester",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Inzendsnelheid",
+            "columns": [
+              "Oplostijd bij een foutloze score",
+              "Tot en met 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Alle moeilijkheidsgraden, mediaan",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Makkelijk, mediaan",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Gemiddeld, mediaan",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Van de 50 herhaalde combinaties van spelersnaam en moeilijkheidsgraad hadden er 33 een snellere laatste oplossing en 17 een tragere. De nauwkeurigheid ging over de hele linie flink vooruit, maar meer tijd nemen kan ook tot een betere score leiden. Deze cijfers gaan over vrijwillige inzendingen voor de ranglijst, niet over elke partij, en de ranglijst voor Makkelijk toont alleen de top 200."
+      },
+      {
+        "title": "Bedankt voor het spelen",
+        "changes": [
+          {
+            "segments": [
+              "Heel veel dank aan iedereen die Memory Chess heeft geholpen naar meer dan 800 spelers per maand en ruim 32.000 gespeelde partijen. We zijn vooral dankbaar voor iedereen die ideeën, aanmoediging en foutmeldingen deelde via de ",
+              {
+                "text": "pagina Contact"
+              },
+              " of het feedbackformulier na de partij. Elke partij en elk bericht helpt Memory Chess groeien."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Meer leren. Soepeler spelen.",
+    "summary": "Nieuwe gidsen, een duidelijkere homepagina, zachtere geluiden en een makkelijke manier om feedback te geven.",
+    "groups": [
+      {
+        "title": "Leren en verbeteren",
+        "changes": [
+          "Ontdek nieuwe, makkelijk te volgen gidsen voor schaakgeheugen en visualisatie.",
+          "De vernieuwde homepagina legt nu uit hoe Memory Chess je ruimtelijk geheugen traint."
+        ]
+      },
+      {
+        "title": "Verbeteringen voor elke dag",
+        "changes": [
+          "Spelen op mobiel, het opstellen van de stukken en de plekken op de ranglijst werken betrouwbaarder.",
+          "Spelgeluiden beginnen nu op een zachter volume van 10%."
+        ]
+      },
+      {
+        "title": "Feedback en updates",
+        "changes": [
+          "Je kunt het spel nu na het spelen een cijfer geven en nieuwe versies bekijken op de pagina Nieuw. De vraag om feedback verschijnt hooguit één keer per dag.",
+          "Een nieuwe privacypagina legt in gewone taal uit wat er gebeurt met opgeslagen instellingen, statistieken, feedback en toekomstige advertenties."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Stukken kiezen voelt beter",
+    "summary": "Witte of zwarte stukken kiezen is nu duidelijker en makkelijker.",
+    "groups": [
+      {
+        "title": "Stukken kiezen",
+        "changes": [
+          "De kleurkiezer heeft een frisse nieuwe look.",
+          "Je ziet nu beter welke kleur je hebt gekozen.",
+          "Knoppen voelen soepeler en consistenter aan."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Beter op je telefoon",
+    "summary": "Memory Chess is nu makkelijker en prettiger te spelen op een klein scherm.",
+    "groups": [
+      {
+        "title": "Spelen op mobiel",
+        "changes": [
+          "Het spel, de tijd en de knop Overslaan passen beter op kleine schermen.",
+          "Tikken en witruimte voelen prettiger op mobiel.",
+          "Geluiden gedragen zich beter terwijl je door de partij gaat."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Laat de geheugenspellen beginnen!",
+    "summary": "De eerste versie van Memory Chess is klaar om te spelen.",
+    "groups": [
+      {
+        "title": "De eerste versie",
+        "changes": [
+          "Onthoud een schaakstelling en bouw die daarna uit je hoofd weer op.",
+          "Kies je moeilijkheidsgraad, het aantal stukken, de tijd en de bordcoördinaten.",
+          "Bekijk na elke partij je score en je tijd."
+        ]
+      }
+    ]
+  }
+]

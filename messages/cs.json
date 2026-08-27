@@ -375,7 +375,8 @@
     "latest": "Nejnovější",
     "bannerCta": "Zobrazit novinky",
     "bannerLabel": "Aktualizace Memory Chess",
-    "entriesInEnglish": "Poznámky k vydání vycházejí v angličtině."
+    "eyebrow": "Aktualizace",
+    "changesIn": "Změny ve verzi {version}"
   },
   "learnArticle": {
     "faqLabel": "Časté dotazy",

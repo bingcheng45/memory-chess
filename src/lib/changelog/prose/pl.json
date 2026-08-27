@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess mówi teraz twoim językiem",
+    "summary": "Gra i wszystkie przewodniki z działu Nauka są dostępne w 24 językach, a strona od razu startuje w twoim.",
+    "groups": [
+      {
+        "title": "24 języki",
+        "changes": [
+          "Memory Chess jest teraz dostępne w 24 językach: angielskim, hiszpańskim, rosyjskim, brazylijskim portugalskim, niemieckim, francuskim, hindi, włoskim, chińskim uproszczonym, tureckim, szwedzkim, niderlandzkim, polskim, indonezyjskim, norweskim, fińskim, rumuńskim, wietnamskim, czeskim, japońskim, koreańskim, chińskim tradycyjnym, duńskim i węgierskim.",
+          "Przetłumaczone jest wszystko, co czytasz w trakcie gry: od strony głównej i ustawień po zegar, ekran wyniku, ranking i tę listę nowości."
+        ]
+      },
+      {
+        "title": "Wszystkie 16 przewodników, w każdym języku",
+        "changes": [
+          {
+            "segments": [
+              "Każdy przewodnik w dziale ",
+              {
+                "text": "Nauka"
+              },
+              " został przetłumaczony w całości. Kroki do wypróbowania, ćwiczenia, tygodniowy plan i pytania na końcu brzmią naturalnie w twoim języku, a terminy szachowe są takie, jakich naprawdę używają gracze."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Zmieniaj język, kiedy chcesz",
+        "changes": [
+          "Globus na górze każdej strony otwiera listę języków. Każdy język zapisany jest własną nazwą, więc znajdziesz swój bez czytania po angielsku.",
+          "Po wybraniu języka zostajesz dokładnie tam, gdzie byłeś, a Memory Chess zapamiętuje twój wybór na kolejną wizytę."
+        ]
+      },
+      {
+        "title": "Staramy się trafić, zanim zapytasz",
+        "changes": [
+          "Nowi gracze zaczynają teraz w języku podpowiadanym przez przeglądarkę lub region, o ile go mamy. Jeśli zgadniemy źle, globus jest pod ręką."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Płynniejsza gra, czytelniejsze wyniki",
+    "summary": "Szachownica nie skacze, losowe pozycje mają więcej sensu, a wyniki łatwiej przejrzeć.",
+    "groups": [
+      {
+        "title": "Spokojniejsza rozgrywka",
+        "changes": [
+          "Dzięki podpowiedziom graczy szachownica zostaje teraz w tym samym miejscu, gdy kończy się zapamiętywanie i zaczyna ustawianie bierek. Sterowanie i wybór bierek też są z nią wyrównane.",
+          "Nagłówki stron, sterowanie dźwiękiem i odstępy trzymają się teraz spójnie przez całą partię. Bierek i opisów na szachownicy nie da się już przypadkiem zaznaczyć."
+        ]
+      },
+      {
+        "title": "Lepsze losowe pozycje",
+        "changes": [
+          "Dzięki graczowi, który zgłosił to w serwisie Reddit, losowe pozycje nie ustawiają już królów obok siebie, dwóch gońców jednej strony na polach tego samego koloru, pionów w pierwszym lub ósmym rzędzie ani obu królów w szachu."
+        ]
+      },
+      {
+        "title": "Czytelniejsze wyniki",
+        "changes": [
+          "Po każdej partii możesz porównać pozycję, którą zapamiętywałeś, z szachownicą, którą wysłałeś. Wyraźne oznaczenia pokazują bierki poprawne, błędne i pominięte.",
+          "Celność oraz główne przyciski powtórki i rankingu trzymają się teraz razem na górze wyniku. Pominięte bierki mają czytelny czarny kropkowany obrys, a szachownica pozostaje pod nim widoczna."
+        ]
+      },
+      {
+        "title": "Wyraźniejsze zakończenie",
+        "changes": [
+          "Po wysłaniu odpowiedzi zegar zatrzymuje się na sekundę, żebyś zdążył zobaczyć zapisany czas i końcową szachownicę, zanim pojawi się wynik. Koniec rundy sygnalizuje krótki napis GOTOWE!, a zegar ustawiania bierek pokazuje teraz milisekundy."
+        ]
+      },
+      {
+        "title": "Trochę statystyk dla wszystkich!",
+        "description": "Oto migawka publicznych wyników wysłanych do rankingu do 16 sierpnia 2026 roku.",
+        "tables": [
+          {
+            "caption": "Celność",
+            "columns": ["Wyniki wysłane do rankingu", "Do końca 2025", "2026"],
+            "rows": [
+              {
+                "label": "Średnia celność",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Odsetek kompletów punktów",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Średni – średnia celność",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Średni – odsetek kompletów punktów",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Trudny – średnia celność",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Arcymistrz – średnia celność",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Szybkość rozwiązania",
+            "columns": [
+              "Czas rozwiązania przy komplecie punktów",
+              "Do końca 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Wszystkie poziomy, mediana",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Łatwy, mediana",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Średni, mediana",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Wśród 50 powtórzonych par nazwy gracza i poziomu trudności 33 miały szybsze ostatnie rozwiązanie, a 17 wolniejsze. Celność wyraźnie wzrosła, ale poświęcenie większej ilości czasu też potrafi dać lepszy wynik. Te liczby obejmują wyniki wysłane do rankingu dobrowolnie, a nie każdą partię, a ranking poziomu Łatwy ogranicza się do 200 najlepszych wpisów."
+      },
+      {
+        "title": "Dziękujemy za grę",
+        "changes": [
+          {
+            "segments": [
+              "Ogromne podziękowania dla wszystkich, dzięki którym Memory Chess ma ponad 800 graczy miesięcznie i ponad 32 000 rozegranych partii. Szczególnie dziękujemy każdemu, kto podzielił się pomysłem, dobrym słowem albo zgłoszeniem błędu przez ",
+              {
+                "text": "stronę Kontakt"
+              },
+              " lub formularz opinii po partii. Każda partia i każda wiadomość pomagają Memory Chess się rozwijać."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Więcej nauki. Płynniejsza gra.",
+    "summary": "Nowe przewodniki, czytelniejsza strona główna, cichsze dźwięki i łatwy sposób na przesłanie opinii.",
+    "groups": [
+      {
+        "title": "Ucz się i rób postępy",
+        "changes": [
+          "Poznaj nowe, przystępne przewodniki o szachowej pamięci i wyobraźni.",
+          "Odświeżona strona główna wyjaśnia, jak Memory Chess trenuje twoją pamięć przestrzenną."
+        ]
+      },
+      {
+        "title": "Usprawnienia na co dzień",
+        "changes": [
+          "Gra na telefonie, ustawianie bierek i miejsca w rankingu działają pewniej.",
+          "Dźwięki w grze zaczynają teraz od łagodnych 10% głośności."
+        ]
+      },
+      {
+        "title": "Opinie i aktualizacje",
+        "changes": [
+          "Po partii możesz teraz ocenić grę, a nowe wydania zobaczysz w dziale Nowości. Prośba o opinię pojawia się najwyżej raz dziennie.",
+          "Nowa strona Prywatność prostym językiem wyjaśnia zapisywane ustawienia, analitykę, opinie i przyszłe reklamy."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Wybieranie bierek jest przyjemniejsze",
+    "summary": "Wybór białych lub czarnych bierek jest teraz czytelniejszy i łatwiejszy.",
+    "groups": [
+      {
+        "title": "Wybór bierek",
+        "changes": [
+          "Wybór koloru ma świeży wygląd.",
+          "Łatwiej zobaczyć, który kolor wybrałeś.",
+          "Przyciski działają płynniej i spójniej."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Lepiej na telefonie",
+    "summary": "W Memory Chess gra się teraz łatwiej i wygodniej na małym ekranie.",
+    "groups": [
+      {
+        "title": "Gra na telefonie",
+        "changes": [
+          "Gra, zegar i przycisk Pomiń lepiej mieszczą się na małych ekranach.",
+          "Dotknięcia i odstępy są wygodniejsze na telefonie.",
+          "Dźwięki zachowują się lepiej na kolejnych etapach partii."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Zaczynamy grę na pamięć!",
+    "summary": "Pierwsza wersja Memory Chess jest gotowa do gry.",
+    "groups": [
+      {
+        "title": "Pierwsze wydanie",
+        "changes": [
+          "Zapamiętaj pozycję szachową, a potem odtwórz ją z pamięci.",
+          "Wybierz trudność, liczbę bierek, czas i współrzędne szachownicy.",
+          "Po każdej partii zobacz swój wynik i czas."
+        ]
+      }
+    ]
+  }
+]

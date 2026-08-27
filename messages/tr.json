@@ -375,7 +375,8 @@
     "latest": "En son",
     "bannerCta": "Yenilikleri gör",
     "bannerLabel": "Memory Chess güncellemesi",
-    "entriesInEnglish": "Sürüm notları İngilizce yayımlanır."
+    "eyebrow": "Güncellemeler",
+    "changesIn": "{version} sürümündeki değişiklikler"
   },
   "learnArticle": {
     "faqLabel": "Sık sorulan sorular",

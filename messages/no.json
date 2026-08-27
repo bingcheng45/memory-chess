@@ -375,7 +375,8 @@
     "latest": "Nyeste",
     "bannerCta": "Se hva som er nytt",
     "bannerLabel": "Memory Chess-oppdatering",
-    "entriesInEnglish": "Versjonsnotatene publiseres på engelsk."
+    "eyebrow": "Oppdateringer",
+    "changesIn": "Endringer i versjon {version}"
   },
   "learnArticle": {
     "faqLabel": "Vanlige spørsmål",

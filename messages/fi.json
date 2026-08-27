@@ -375,7 +375,8 @@
     "latest": "Uusin",
     "bannerCta": "Katso mitä uutta",
     "bannerLabel": "Memory Chess -päivitys",
-    "entriesInEnglish": "Julkaisutiedot julkaistaan englanniksi."
+    "eyebrow": "Päivitykset",
+    "changesIn": "Version {version} muutokset"
   },
   "learnArticle": {
     "faqLabel": "Usein kysyttyä",

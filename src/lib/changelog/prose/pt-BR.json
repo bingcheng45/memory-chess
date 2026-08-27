@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "O Memory Chess agora fala a sua língua",
+    "summary": "O jogo e todos os guias do Aprender agora estão em 24 idiomas, e o site já começa no seu.",
+    "groups": [
+      {
+        "title": "24 idiomas",
+        "changes": [
+          "O Memory Chess agora está disponível em 24 idiomas: inglês, espanhol, russo, português do Brasil, alemão, francês, híndi, italiano, chinês simplificado, turco, sueco, neerlandês, polonês, indonésio, norueguês, finlandês, romeno, vietnamita, tcheco, japonês, coreano, chinês tradicional, dinamarquês e húngaro.",
+          "Tudo o que você lê enquanto joga está traduzido: da página inicial e das configurações ao cronômetro, à tela de resultados, ao ranking e a estas novidades."
+        ]
+      },
+      {
+        "title": "Os 16 guias do Aprender, em todos os idiomas",
+        "changes": [
+          {
+            "segments": [
+              "Todos os guias do ",
+              {
+                "text": "Aprender"
+              },
+              " foram traduzidos por completo. Os passos de prática, os exercícios, o plano semanal e as perguntas do final soam naturais no seu idioma, com termos de xadrez iguais aos que os jogadores realmente usam."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Troque de idioma quando quiser",
+        "changes": [
+          "Um globo no topo de todas as páginas abre a lista de idiomas. Cada idioma aparece escrito no próprio nome, então você encontra o seu sem precisar ler em inglês antes.",
+          "Ao escolher um idioma, você continua exatamente onde estava, e o Memory Chess lembra da sua escolha na próxima visita."
+        ]
+      },
+      {
+        "title": "A gente tenta acertar antes de você pedir",
+        "changes": [
+          "Quem chega agora já começa no idioma sugerido pelo navegador ou pela região, sempre que temos esse idioma. Se o palpite estiver errado, o globo está ali do lado para corrigir."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Partidas mais fluidas, resultados mais claros",
+    "summary": "Seu tabuleiro fica firme no lugar, as posições aleatórias fazem mais sentido e os resultados ficaram mais fáceis de revisar.",
+    "groups": [
+      {
+        "title": "Jogo mais estável",
+        "changes": [
+          "Graças aos comentários de jogadores, o tabuleiro agora continua no mesmo lugar quando a memorização termina e o posicionamento começa. Os controles e o seletor de peças também ficam alinhados com o tabuleiro.",
+          "Os cabeçalhos das páginas, os controles de som e os espaçamentos ficaram mais consistentes conforme você avança na partida. As peças e os rótulos do tabuleiro não podem mais ser selecionados sem querer."
+        ]
+      },
+      {
+        "title": "Posições aleatórias melhores",
+        "changes": [
+          "Graças a um jogador que relatou isso no Reddit, as posições aleatórias não colocam mais os reis lado a lado, dois bispos do mesmo lado em casas da mesma cor, peões na primeira ou na oitava fileira, nem os dois reis em xeque."
+        ]
+      },
+      {
+        "title": "Resultados mais claros",
+        "changes": [
+          "Depois de cada partida, você já pode comparar a posição que memorizou com o tabuleiro que enviou. Marcadores claros mostram as peças certas, as erradas e as que faltaram.",
+          "A sua precisão e as ações principais de repetir a partida e ver o ranking agora ficam juntas no topo dos resultados. As peças que faltaram aparecem com um contorno pontilhado preto bem visível, sem esconder o tabuleiro embaixo."
+        ]
+      },
+      {
+        "title": "Um fim de partida mais claro",
+        "changes": [
+          "Quando você envia, o cronômetro para por um segundo para você ver o tempo travado e o tabuleiro final antes de os resultados aparecerem. Um FIM! rápido pisca para marcar o fim da rodada, e o cronômetro de posicionamento agora mostra os milissegundos."
+        ]
+      },
+      {
+        "title": "Umas estatísticas para todo mundo!",
+        "description": "Este é um retrato dos envios públicos para o ranking até 16 de agosto de 2026.",
+        "tables": [
+          {
+            "caption": "Precisão",
+            "columns": ["Envios para o ranking", "Até 2025", "2026"],
+            "rows": [
+              {
+                "label": "Precisão média",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Taxa de pontuação perfeita",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Precisão média no Médio",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Taxa de pontuação perfeita no Médio",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Precisão média no Difícil",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Precisão média no Grande mestre",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Velocidade dos envios",
+            "columns": [
+              "Tempo de resolução com pontuação perfeita",
+              "Até 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Todas as dificuldades, mediana",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Fácil, mediana",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Médio, mediana",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Entre 50 combinações repetidas de nome de jogador e dificuldade, 33 tiveram uma resolução mais rápida na última tentativa e 17 tiveram uma mais lenta. A precisão melhorou muito no geral, mas levar mais tempo também pode render uma pontuação melhor. Estes números cobrem apenas os envios voluntários para o ranking, não todas as partidas, e o ranking do Fácil mostra somente as 200 melhores marcas."
+      },
+      {
+        "title": "Obrigado por jogar",
+        "changes": [
+          {
+            "segments": [
+              "Um obrigado enorme a todo mundo que ajudou o Memory Chess a chegar a mais de 800 jogadores por mês e mais de 32.000 partidas jogadas. Somos especialmente gratos a quem compartilhou ideias, incentivo e relatos de erros pela página ",
+              {
+                "text": "Fale conosco"
+              },
+              " ou pelo formulário de comentários do fim da partida. Cada partida e cada mensagem ajudam o Memory Chess a crescer."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Aprenda mais. Jogue melhor.",
+    "summary": "Novos guias, uma página inicial mais clara, sons mais suaves e um jeito fácil de enviar comentários.",
+    "groups": [
+      {
+        "title": "Aprenda e evolua",
+        "changes": [
+          "Explore novos guias fáceis de acompanhar sobre memória e visualização no xadrez.",
+          "A página inicial repaginada agora explica como o Memory Chess treina a sua memória espacial."
+        ]
+      },
+      {
+        "title": "Melhorias do dia a dia",
+        "changes": [
+          "O jogo no celular, a montagem das peças e as classificações do ranking ficaram mais confiáveis.",
+          "Os sons do jogo agora começam em um volume mais suave, de 10%."
+        ]
+      },
+      {
+        "title": "Comentários e atualizações",
+        "changes": [
+          "Agora você pode avaliar o jogo depois de jogar e acompanhar os lançamentos nas Novidades. O convite para comentar aparece no máximo uma vez por dia.",
+          "Uma nova página de Privacidade explica em linguagem simples as configurações salvas, a análise de uso, os comentários e os anúncios futuros."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Escolher as peças ficou melhor",
+    "summary": "Escolher as peças brancas ou pretas agora é mais claro e mais fácil.",
+    "groups": [
+      {
+        "title": "Seleção de peças",
+        "changes": [
+          "O seletor de cores ganhou um visual novo.",
+          "Ficou mais fácil ver qual cor você escolheu.",
+          "Os botões agora respondem de um jeito mais suave e consistente."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Melhor no celular",
+    "summary": "Agora o Memory Chess é mais fácil e mais confortável de jogar em telas pequenas.",
+    "groups": [
+      {
+        "title": "Jogo no celular",
+        "changes": [
+          "O jogo, o cronômetro e o botão Pular se encaixam melhor em telas pequenas.",
+          "Os toques e os espaçamentos ficaram mais agradáveis no celular.",
+          "Os sons se comportam melhor conforme você avança na partida."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Que comecem os jogos de memória!",
+    "summary": "A primeira versão do Memory Chess está pronta para jogar.",
+    "groups": [
+      {
+        "title": "A primeira versão",
+        "changes": [
+          "Memorize uma posição de xadrez e depois reconstrua tudo de memória.",
+          "Escolha a dificuldade, o número de peças, o tempo e as coordenadas do tabuleiro.",
+          "Veja sua pontuação e seu tempo depois de cada partida."
+        ]
+      }
+    ]
+  }
+]

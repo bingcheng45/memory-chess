@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess spricht jetzt deine Sprache",
+    "summary": "Das Spiel und alle Leitfäden im Lernbereich gibt es jetzt in 24 Sprachen – und die Seite startet gleich in deiner.",
+    "groups": [
+      {
+        "title": "24 Sprachen",
+        "changes": [
+          "Memory Chess gibt es jetzt in 24 Sprachen: Englisch, Spanisch, Russisch, brasilianisches Portugiesisch, Deutsch, Französisch, Hindi, Italienisch, vereinfachtes Chinesisch, Türkisch, Schwedisch, Niederländisch, Polnisch, Indonesisch, Norwegisch, Finnisch, Rumänisch, Vietnamesisch, Tschechisch, Japanisch, Koreanisch, traditionelles Chinesisch, Dänisch und Ungarisch.",
+          "Alles, was du beim Spielen liest, ist übersetzt: von der Startseite und den Einstellungen bis zur Zeitanzeige, dem Ergebnisbildschirm, der Bestenliste und diesen Neuerungen."
+        ]
+      },
+      {
+        "title": "Alle 16 Leitfäden, in jeder Sprache",
+        "changes": [
+          {
+            "segments": [
+              "Jeder Leitfaden im Bereich ",
+              {
+                "text": "Lernen"
+              },
+              " wurde vollständig übersetzt. Die Schritte zum Ausprobieren, die Übungen, der Wochenplan und die Fragen am Ende lesen sich in deiner Sprache ganz natürlich – mit Schachbegriffen, wie Spielerinnen und Spieler sie wirklich verwenden."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Wechsle die Sprache, wann du willst",
+        "changes": [
+          "Oben auf jeder Seite öffnet ein Globus die Sprachliste. Jede Sprache steht dort in ihrem eigenen Namen, damit du deine findest, ohne vorher Englisch lesen zu müssen.",
+          "Wenn du eine Sprache wählst, bleibst du genau dort, wo du warst – und Memory Chess merkt sich deine Wahl bis zum nächsten Besuch."
+        ]
+      },
+      {
+        "title": "Wir versuchen, es gleich richtig zu treffen",
+        "changes": [
+          "Neue Besucherinnen und Besucher starten jetzt in der Sprache, die ihr Browser oder ihre Region nahelegt, sofern wir sie haben. Falls wir danebenliegen, ist der Globus gleich da, um es zu ändern."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Ruhigere Partien, klarere Ergebnisse",
+    "summary": "Dein Brett bleibt ruhig, Zufallsstellungen ergeben mehr Sinn, und Ergebnisse lassen sich leichter nachvollziehen.",
+    "groups": [
+      {
+        "title": "Ruhigeres Spielgefühl",
+        "changes": [
+          "Dank hilfreicher Rückmeldungen von Spielerinnen und Spielern bleibt das Brett jetzt an derselben Stelle, wenn das Einprägen endet und das Setzen beginnt. Auch die Steuerung und die Figurenauswahl sind sauber am Brett ausgerichtet.",
+          "Seitenüberschriften, Tonsteuerung und Abstände bleiben jetzt einheitlicher, während du durch die Partie gehst. Figuren und Beschriftungen auf dem Brett lassen sich nicht mehr versehentlich markieren."
+        ]
+      },
+      {
+        "title": "Bessere Zufallsstellungen",
+        "changes": [
+          "Dank eines Spielers, der das auf Reddit gemeldet hat, stellen Zufallsstellungen die Könige nicht mehr nebeneinander, geben einer Seite nicht mehr zwei Läufer auf derselben Feldfarbe, setzen keine Bauern mehr auf die erste oder achte Reihe und lassen nicht mehr beide Könige im Schach stehen."
+        ]
+      },
+      {
+        "title": "Klarere Ergebnisse",
+        "changes": [
+          "Nach jeder Partie kannst du jetzt die Stellung, die du dir eingeprägt hast, mit dem Brett vergleichen, das du abgegeben hast. Deutliche Markierungen zeigen richtige, falsche und fehlende Figuren.",
+          "Deine Genauigkeit und die wichtigsten Aktionen für eine neue Runde und die Bestenliste stehen jetzt gemeinsam oben im Ergebnis. Fehlende Figuren bekommen einen klaren schwarzen, gepunkteten Rahmen, während das Brett darunter sichtbar bleibt."
+        ]
+      },
+      {
+        "title": "Ein klarerer Abschluss",
+        "changes": [
+          "Wenn du abgibst, hält die Zeit eine Sekunde lang an, damit du deine festgehaltene Zeit und dein fertiges Brett sehen kannst, bevor das Ergebnis erscheint. Ein kurzes „FERTIG!“ blitzt zum Ende der Runde auf, und die Zeitanzeige beim Setzen zeigt jetzt Millisekunden."
+        ]
+      },
+      {
+        "title": "Ein paar Statistiken für alle!",
+        "description": "Hier ist eine Momentaufnahme der öffentlichen Einträge in der Bestenliste bis zum 16. August 2026.",
+        "tables": [
+          {
+            "caption": "Genauigkeit",
+            "columns": ["Einträge in der Bestenliste", "Bis 2025", "2026"],
+            "rows": [
+              {
+                "label": "Durchschnittliche Genauigkeit",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Anteil perfekter Ergebnisse",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Mittel: durchschnittliche Genauigkeit",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Mittel: Anteil perfekter Ergebnisse",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Schwer: durchschnittliche Genauigkeit",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Großmeister: durchschnittliche Genauigkeit",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Tempo der Einträge",
+            "columns": [
+              "Lösungszeit bei perfektem Ergebnis",
+              "Bis 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Alle Schwierigkeiten, Median",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Leicht, Median",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Mittel, Median",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Bei 50 wiederholten Kombinationen aus Spielername und Schwierigkeit war die jüngste Lösung 33-mal schneller und 17-mal langsamer. Die Genauigkeit hat sich insgesamt deutlich verbessert, aber auch mehr Zeit kann zu einem besseren Ergebnis führen. Diese Zahlen umfassen nur die freiwilligen Einträge in der Bestenliste, nicht jede Partie, und die Bestenliste für Leicht zeigt nur ihre besten 200 Einträge."
+      },
+      {
+        "title": "Danke, dass du spielst",
+        "changes": [
+          {
+            "segments": [
+              "Ein großes Dankeschön an alle, die dazu beigetragen haben, dass Memory Chess mehr als 800 Spielerinnen und Spieler pro Monat und über 32.000 gespielte Partien erreicht hat. Besonders dankbar sind wir allen, die Ideen, Ermutigung und Fehlermeldungen über die ",
+              {
+                "text": "Kontaktseite"
+              },
+              " oder das Feedback-Formular am Ende der Partie mit uns geteilt haben. Jede Partie und jede Nachricht hilft Memory Chess beim Wachsen."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Mehr lernen. Ruhiger spielen.",
+    "summary": "Neue Leitfäden, eine klarere Startseite, leisere Töne und ein einfacher Weg, uns Feedback zu geben.",
+    "groups": [
+      {
+        "title": "Lernen und besser werden",
+        "changes": [
+          "Entdecke neue, leicht verständliche Leitfäden für Schachgedächtnis und Vorstellungskraft.",
+          "Die überarbeitete Startseite erklärt jetzt, wie Memory Chess dein räumliches Gedächtnis trainiert."
+        ]
+      },
+      {
+        "title": "Verbesserungen für den Alltag",
+        "changes": [
+          "Das Spielen auf dem Handy, die Figurenaufstellungen und die Platzierungen in der Bestenliste laufen zuverlässiger.",
+          "Spielgeräusche starten jetzt mit sanfteren 10 % Lautstärke."
+        ]
+      },
+      {
+        "title": "Feedback und Updates",
+        "changes": [
+          "Du kannst das Spiel jetzt nach einer Runde bewerten und neue Versionen unter „Neuerungen“ nachlesen. Die Frage nach deinem Feedback erscheint höchstens einmal pro Tag.",
+          "Eine neue Datenschutzseite erklärt in einfacher Sprache, welche Einstellungen gespeichert werden und wie es sich mit Analyse, Feedback und künftiger Werbung verhält."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Figuren auswählen fühlt sich besser an",
+    "summary": "Weiße oder schwarze Figuren zu wählen ist jetzt klarer und einfacher.",
+    "groups": [
+      {
+        "title": "Figurenauswahl",
+        "changes": [
+          "Die Farbauswahl hat einen frischen neuen Look.",
+          "Du erkennst jetzt leichter, welche Farbe du gewählt hast.",
+          "Die Buttons fühlen sich weicher und einheitlicher an."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Besser auf dem Handy",
+    "summary": "Memory Chess lässt sich jetzt einfacher und angenehmer auf kleinen Bildschirmen spielen.",
+    "groups": [
+      {
+        "title": "Spielen auf dem Handy",
+        "changes": [
+          "Spiel, Zeitanzeige und der Button „Überspringen“ passen besser auf kleine Bildschirme.",
+          "Tippen und Abstände fühlen sich auf dem Handy besser an.",
+          "Töne verhalten sich im Verlauf der Partie zuverlässiger."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Lass die Gedächtnisspiele beginnen!",
+    "summary": "Die erste Version von Memory Chess ist spielbereit.",
+    "groups": [
+      {
+        "title": "Die erste Version",
+        "changes": [
+          "Präge dir eine Schachstellung ein und baue sie dann aus dem Gedächtnis wieder auf.",
+          "Wähle Schwierigkeit, Anzahl der Figuren, Zeit und Brettkoordinaten.",
+          "Sieh dir nach jeder Partie deinen Punktestand und deine Zeit an."
+        ]
+      }
+    ]
+  }
+]

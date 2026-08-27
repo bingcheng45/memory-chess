@@ -375,7 +375,8 @@
     "latest": "Nieuwste",
     "bannerCta": "Bekijk wat er nieuw is",
     "bannerLabel": "Memory Chess-update",
-    "entriesInEnglish": "De release-aantekeningen verschijnen in het Engels."
+    "eyebrow": "Updates",
+    "changesIn": "Wijzigingen in versie {version}"
   },
   "learnArticle": {
     "faqLabel": "Veelgestelde vragen",

@@ -375,7 +375,8 @@
     "latest": "Latest",
     "bannerCta": "See what's new",
     "bannerLabel": "Memory Chess update",
-    "entriesInEnglish": "Release notes are published in English."
+    "eyebrow": "What is new",
+    "changesIn": "Changes in version {version}"
   },
   "learnArticle": {
     "faqLabel": "FAQ",

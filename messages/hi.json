@@ -375,7 +375,8 @@
     "latest": "नवीनतम",
     "bannerCta": "नया क्या है देखें",
     "bannerLabel": "Memory Chess अपडेट",
-    "entriesInEnglish": "रिलीज़ नोट्स अंग्रेज़ी में प्रकाशित होते हैं।"
+    "eyebrow": "अपडेट",
+    "changesIn": "वर्शन {version} में हुए बदलाव"
   },
   "learnArticle": {
     "faqLabel": "अक्सर पूछे जाने वाले सवाल",

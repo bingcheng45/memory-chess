@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess kini berbicara dalam bahasa Anda",
+    "summary": "Permainan dan seluruh panduan Belajar kini tersedia dalam 24 bahasa, dan situsnya langsung terbuka dalam bahasa Anda.",
+    "groups": [
+      {
+        "title": "24 bahasa",
+        "changes": [
+          "Memory Chess kini tersedia dalam 24 bahasa: Inggris, Spanyol, Rusia, Portugis Brasil, Jerman, Prancis, Hindi, Italia, Tionghoa Sederhana, Turki, Swedia, Belanda, Polandia, Indonesia, Norwegia, Finlandia, Rumania, Vietnam, Ceko, Jepang, Korea, Tionghoa Tradisional, Denmark, dan Hongaria.",
+          "Semua yang Anda baca saat bermain sudah diterjemahkan, mulai dari beranda dan pengaturan sampai penghitung waktu, layar hasil, papan peringkat, dan halaman Yang Baru ini."
+        ]
+      },
+      {
+        "title": "Semua 16 panduan Belajar, dalam setiap bahasa",
+        "changes": [
+          {
+            "segments": [
+              "Setiap panduan di ",
+              {
+                "text": "Belajar"
+              },
+              " sudah diterjemahkan sepenuhnya. Langkah-langkah praktiknya, latihannya, rencana mingguannya, dan pertanyaan di bagian akhir semuanya terbaca wajar dalam bahasa Anda, dengan istilah catur yang sesuai dengan cara pemain menyebutnya sehari-hari."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Ganti bahasa kapan pun Anda mau",
+        "changes": [
+          "Ikon bola dunia di bagian atas setiap halaman membuka daftar bahasa. Setiap bahasa ditulis dengan namanya sendiri, jadi Anda bisa menemukan bahasa Anda tanpa perlu membaca bahasa Inggris lebih dulu.",
+          "Memilih bahasa tidak memindahkan Anda dari halaman yang sedang dibuka, dan Memory Chess mengingat pilihan Anda saat berkunjung lagi."
+        ]
+      },
+      {
+        "title": "Kami berusaha menebaknya dengan tepat sejak awal",
+        "changes": [
+          "Pengunjung baru kini langsung masuk ke bahasa yang disarankan peramban atau wilayahnya, selama bahasa itu tersedia. Kalau tebakannya meleset, ikon bola dunia siap membantu Anda menggantinya."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Permainan lebih mulus, hasil lebih jelas",
+    "summary": "Papan Anda tetap diam di tempat, posisi acak jadi lebih masuk akal, dan hasil lebih mudah ditinjau.",
+    "groups": [
+      {
+        "title": "Permainan yang lebih stabil",
+        "changes": [
+          "Berkat masukan dari para pemain, papan kini tetap berada di tempat yang sama saat waktu menghafal berakhir dan giliran meletakkan bidak dimulai. Kontrol dan pemilih bidak pun sejajar dengan papan.",
+          "Judul halaman, kontrol suara, dan jarak antarelemen kini lebih konsisten selama Anda bermain. Bidak dan label papan juga tidak lagi bisa tersorot tanpa sengaja."
+        ]
+      },
+      {
+        "title": "Posisi acak yang lebih baik",
+        "changes": [
+          "Berkat seorang pemain yang melaporkannya di Reddit, posisi acak tidak lagi menempatkan dua raja bersebelahan, dua gajah sewarna petak untuk satu pihak, pion di baris pertama atau kedelapan, atau kedua raja dalam keadaan sekak."
+        ]
+      },
+      {
+        "title": "Hasil yang lebih jelas",
+        "changes": [
+          "Setelah setiap permainan, Anda kini bisa membandingkan posisi yang Anda hafal dengan papan yang Anda kirim. Penanda yang jelas menunjukkan bidak yang benar, salah, dan terlewat.",
+          "Akurasi Anda serta tombol utama untuk mengulang dan membuka papan peringkat kini berkumpul di bagian atas hasil. Bidak yang terlewat ditandai garis putus-putus hitam yang jelas, sementara papan tetap terlihat di baliknya."
+        ]
+      },
+      {
+        "title": "Penutup ronde yang lebih jelas",
+        "changes": [
+          "Saat Anda mengirim jawaban, penghitung waktu berhenti selama satu detik sehingga Anda sempat melihat waktu final dan papan terakhir Anda sebelum hasil muncul. Kilatan SELESAI! menandai akhir ronde, dan penghitung waktu saat meletakkan bidak kini menampilkan milidetik."
+        ]
+      },
+      {
+        "title": "Sedikit statistik untuk semua!",
+        "description": "Berikut cuplikan data pengiriman papan peringkat publik sampai 16 Agustus 2026.",
+        "tables": [
+          {
+            "caption": "Akurasi",
+            "columns": ["Pengiriman papan peringkat", "Sampai 2025", "2026"],
+            "rows": [
+              {
+                "label": "Akurasi rata-rata",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Tingkat skor sempurna",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Akurasi rata-rata tingkat Sedang",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Tingkat skor sempurna di Sedang",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Akurasi rata-rata tingkat Sulit",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Akurasi rata-rata tingkat Grandmaster",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Kecepatan pengiriman",
+            "columns": [
+              "Waktu penyelesaian untuk skor sempurna",
+              "Sampai 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Semua tingkat kesulitan, median",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Mudah, median",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Sedang, median",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Dari 50 kombinasi nama pemain dan tingkat kesulitan yang berulang, 33 di antaranya punya waktu penyelesaian terakhir yang lebih cepat dan 17 lebih lambat. Akurasi meningkat pesat secara keseluruhan, tetapi meluangkan waktu lebih lama juga bisa menghasilkan skor yang lebih baik. Angka-angka ini hanya mencakup pengiriman sukarela ke papan peringkat, bukan setiap permainan, dan papan peringkat Mudah dibatasi pada 200 catatan teratasnya."
+      },
+      {
+        "title": "Terima kasih sudah bermain",
+        "changes": [
+          {
+            "segments": [
+              "Terima kasih banyak untuk semua orang yang membantu Memory Chess mencapai lebih dari 800 pemain per bulan dan lebih dari 32.000 permainan dimainkan. Kami sangat berterima kasih kepada semua yang berbagi ide, semangat, dan laporan bug lewat halaman ",
+              {
+                "text": "Hubungi Kami"
+              },
+              " atau lewat formulir masukan di akhir permainan. Setiap permainan dan setiap pesan membantu Memory Chess terus berkembang."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Belajar lebih banyak. Bermain lebih mulus.",
+    "summary": "Panduan baru, beranda yang lebih jelas, suara yang lebih lembut, dan cara mudah untuk berbagi masukan.",
+    "groups": [
+      {
+        "title": "Belajar dan berkembang",
+        "changes": [
+          "Jelajahi panduan baru yang mudah diikuti untuk ingatan dan visualisasi catur.",
+          "Beranda yang telah diperbarui kini menjelaskan bagaimana Memory Chess melatih ingatan ruang Anda."
+        ]
+      },
+      {
+        "title": "Peningkatan sehari-hari",
+        "changes": [
+          "Permainan di ponsel, susunan bidak, dan peringkat di papan peringkat kini lebih andal.",
+          "Suara permainan kini dimulai pada volume 10% yang lebih lembut."
+        ]
+      },
+      {
+        "title": "Masukan dan pembaruan",
+        "changes": [
+          "Anda kini bisa menilai permainan setelah bermain dan melihat rilis terbaru di halaman Yang Baru. Ajakan memberi masukan muncul paling banyak sekali sehari.",
+          "Halaman Privasi yang baru menjelaskan pengaturan tersimpan, analitik, masukan, dan iklan di masa depan dengan bahasa sederhana."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Memilih bidak terasa lebih enak",
+    "summary": "Memilih bidak putih atau hitam kini lebih jelas dan lebih mudah.",
+    "groups": [
+      {
+        "title": "Pemilihan bidak",
+        "changes": [
+          "Pemilih warna punya tampilan baru yang segar.",
+          "Warna yang Anda pilih kini lebih mudah terlihat.",
+          "Tombol-tombolnya terasa lebih mulus dan lebih konsisten."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Lebih nyaman di ponsel",
+    "summary": "Memory Chess kini lebih mudah dan lebih nyaman dimainkan di layar kecil.",
+    "groups": [
+      {
+        "title": "Bermain di ponsel",
+        "changes": [
+          "Papan permainan, penghitung waktu, dan tombol Lewati kini lebih pas di layar kecil.",
+          "Ketukan dan jarak antarelemen terasa lebih nyaman di ponsel.",
+          "Suara kini bekerja lebih rapi sepanjang permainan."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Saatnya bermain dengan ingatan!",
+    "summary": "Versi pertama Memory Chess siap dimainkan.",
+    "groups": [
+      {
+        "title": "Rilis pertama",
+        "changes": [
+          "Hafalkan sebuah posisi catur, lalu bangun ulang dari ingatan.",
+          "Pilih tingkat kesulitan, jumlah bidak, waktu, dan label papan.",
+          "Lihat skor dan waktu Anda setelah setiap permainan."
+        ]
+      }
+    ]
+  }
+]

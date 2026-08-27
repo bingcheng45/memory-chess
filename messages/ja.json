@@ -375,7 +375,8 @@
     "latest": "最新",
     "bannerCta": "新着をチェック",
     "bannerLabel": "Memory Chess のアップデート",
-    "entriesInEnglish": "リリースノートは英語で公開しています。"
+    "eyebrow": "アップデート",
+    "changesIn": "バージョン {version} の変更点"
   },
   "learnArticle": {
     "faqLabel": "よくあるご質問",

@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess giờ nói ngôn ngữ của bạn",
+    "summary": "Trò chơi và mọi hướng dẫn trong mục Học nay có sẵn bằng 24 ngôn ngữ, và trang web sẽ mở bằng ngôn ngữ của bạn.",
+    "groups": [
+      {
+        "title": "24 ngôn ngữ",
+        "changes": [
+          "Memory Chess hiện có 24 ngôn ngữ: tiếng Anh, tiếng Tây Ban Nha, tiếng Nga, tiếng Bồ Đào Nha Brazil, tiếng Đức, tiếng Pháp, tiếng Hindi, tiếng Ý, tiếng Trung giản thể, tiếng Thổ Nhĩ Kỳ, tiếng Thụy Điển, tiếng Hà Lan, tiếng Ba Lan, tiếng Indonesia, tiếng Na Uy, tiếng Phần Lan, tiếng Romania, tiếng Việt, tiếng Séc, tiếng Nhật, tiếng Hàn, tiếng Trung phồn thể, tiếng Đan Mạch và tiếng Hungary.",
+          "Mọi thứ bạn đọc khi chơi đều đã được dịch, từ trang chủ và cài đặt cho đến đồng hồ, màn hình kết quả, bảng xếp hạng và cả trang Có gì mới này."
+        ]
+      },
+      {
+        "title": "Cả 16 hướng dẫn trong mục Học, bằng mọi ngôn ngữ",
+        "changes": [
+          {
+            "segments": [
+              "Mọi hướng dẫn trong mục ",
+              {
+                "text": "Học"
+              },
+              " đều đã được dịch trọn vẹn. Các bước thực hành, bài tập, kế hoạch theo tuần và phần câu hỏi ở cuối bài đều đọc lên tự nhiên bằng ngôn ngữ của bạn, với thuật ngữ cờ vua đúng như cách kỳ thủ vẫn nói."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Đổi ngôn ngữ bất cứ lúc nào bạn muốn",
+        "changes": [
+          "Biểu tượng quả địa cầu ở đầu mỗi trang sẽ mở danh sách ngôn ngữ. Mỗi ngôn ngữ được viết bằng chính tên gọi của nó, nên bạn tìm được ngôn ngữ của mình mà không cần đọc tiếng Anh trước.",
+          "Khi chọn một ngôn ngữ, bạn vẫn ở đúng chỗ cũ, và Memory Chess sẽ nhớ lựa chọn đó cho lần ghé thăm sau."
+        ]
+      },
+      {
+        "title": "Chúng tôi cố đoán đúng trước khi bạn phải chọn",
+        "changes": [
+          "Người mới ghé thăm giờ sẽ bắt đầu bằng ngôn ngữ mà trình duyệt hoặc khu vực của bạn gợi ý, nếu chúng tôi có ngôn ngữ đó. Nếu đoán sai, quả địa cầu luôn ở ngay đó để bạn chỉnh lại."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Ván chơi mượt hơn, kết quả rõ hơn",
+    "summary": "Bàn cờ của bạn đứng yên một chỗ, thế cờ ngẫu nhiên hợp lý hơn, và kết quả dễ xem lại hơn.",
+    "groups": [
+      {
+        "title": "Ván chơi ổn định hơn",
+        "changes": [
+          "Nhờ những góp ý hữu ích từ người chơi, bàn cờ nay giữ nguyên vị trí khi chuyển từ lúc ghi nhớ sang lúc đặt quân. Các nút điều khiển và bảng chọn quân cũng thẳng hàng với bàn cờ.",
+          "Tiêu đề trang, nút chỉnh âm thanh và khoảng cách bố cục nay đồng nhất hơn khi bạn đi qua từng bước của ván đấu. Quân cờ và nhãn trên bàn cờ không còn bị bôi chọn ngoài ý muốn."
+        ]
+      },
+      {
+        "title": "Thế cờ ngẫu nhiên hợp lý hơn",
+        "changes": [
+          "Nhờ một người chơi đã phản ánh trên Reddit, thế cờ ngẫu nhiên không còn đặt hai vua cạnh nhau, hai tượng cùng bên trên ô cùng màu, tốt ở hàng 1 hoặc hàng 8, hay cả hai vua đều đang bị chiếu."
+        ]
+      },
+      {
+        "title": "Kết quả rõ ràng hơn",
+        "changes": [
+          "Sau mỗi ván, bạn có thể so sánh thế cờ đã ghi nhớ với bàn cờ mình đã gửi. Các dấu hiệu rõ ràng cho biết quân nào đúng, quân nào sai và quân nào bị bỏ sót.",
+          "Độ chính xác cùng các nút chính để chơi lại và xem bảng xếp hạng nay nằm chung ở đầu phần kết quả. Quân bị bỏ sót được viền nét đứt màu đen rõ ràng, còn bàn cờ bên dưới vẫn nhìn thấy được."
+        ]
+      },
+      {
+        "title": "Một cái kết rõ ràng hơn",
+        "changes": [
+          "Khi bạn gửi đáp án, đồng hồ dừng lại một giây để bạn kịp thấy thời gian đã chốt và bàn cờ cuối cùng trước khi kết quả hiện ra. Dòng chữ XONG! chớp lên đánh dấu vòng chơi kết thúc, và đồng hồ ở bước đặt quân nay hiện cả mili giây."
+        ]
+      },
+      {
+        "title": "Vài con số cho tất cả mọi người!",
+        "description": "Đây là bức tranh nhanh về các lượt gửi lên bảng xếp hạng công khai tính đến ngày 16 tháng 8 năm 2026.",
+        "tables": [
+          {
+            "caption": "Độ chính xác",
+            "columns": ["Lượt gửi lên bảng xếp hạng", "Đến hết 2025", "2026"],
+            "rows": [
+              {
+                "label": "Độ chính xác trung bình",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Tỷ lệ đạt điểm tuyệt đối",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Độ chính xác trung bình ở mức Trung bình",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Tỷ lệ điểm tuyệt đối ở mức Trung bình",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Độ chính xác trung bình ở mức Khó",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Độ chính xác trung bình ở mức Đại kiện tướng",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Tốc độ hoàn thành",
+            "columns": [
+              "Thời gian hoàn thành khi đạt điểm tuyệt đối",
+              "Đến hết 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Tất cả độ khó, trung vị",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Mức Dễ, trung vị",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Mức Trung bình, trung vị",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Trong 50 cặp tên người chơi và độ khó lặp lại, 33 cặp có lần hoàn thành gần nhất nhanh hơn và 17 cặp chậm hơn. Độ chính xác nhìn chung tiến bộ rõ rệt, nhưng dành thêm thời gian cũng có thể mang lại điểm cao hơn. Các con số này chỉ tính những lượt tự nguyện gửi lên bảng xếp hạng, không phải mọi ván chơi, và bảng xếp hạng mức Dễ chỉ giữ 200 vị trí đầu."
+      },
+      {
+        "title": "Cảm ơn bạn đã chơi",
+        "changes": [
+          {
+            "segments": [
+              "Xin cảm ơn thật nhiều tất cả những ai đã giúp Memory Chess đạt hơn 800 người chơi mỗi tháng và hơn 32.000 ván đã chơi. Chúng tôi đặc biệt biết ơn những người đã chia sẻ ý tưởng, lời động viên và báo lỗi qua trang ",
+              {
+                "text": "Liên hệ"
+              },
+              " hoặc biểu mẫu góp ý cuối ván. Mỗi ván chơi và mỗi lời nhắn đều giúp Memory Chess lớn lên."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Học nhiều hơn. Chơi mượt hơn.",
+    "summary": "Hướng dẫn mới, trang chủ rõ ràng hơn, âm thanh nhẹ nhàng hơn và một cách dễ dàng để gửi góp ý.",
+    "groups": [
+      {
+        "title": "Học và tiến bộ",
+        "changes": [
+          "Khám phá những hướng dẫn mới, dễ theo, về trí nhớ và khả năng hình dung trong cờ vua.",
+          "Trang chủ được làm mới nay giải thích cách Memory Chess rèn trí nhớ không gian của bạn."
+        ]
+      },
+      {
+        "title": "Cải tiến cho việc chơi hằng ngày",
+        "changes": [
+          "Chơi trên điện thoại, cách xếp quân cờ và thứ hạng trên bảng xếp hạng đều đáng tin cậy hơn.",
+          "Âm thanh trong ván đấu nay bắt đầu ở mức âm lượng nhẹ nhàng 10%."
+        ]
+      },
+      {
+        "title": "Góp ý và cập nhật",
+        "changes": [
+          "Bạn có thể đánh giá trò chơi sau khi chơi và xem các bản phát hành mới ở trang Có gì mới. Lời mời góp ý xuất hiện nhiều nhất một lần mỗi ngày.",
+          "Trang Quyền riêng tư mới giải thích bằng ngôn ngữ dễ hiểu về các cài đặt được lưu, dữ liệu phân tích, góp ý và quảng cáo trong tương lai."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Chọn quân cờ dễ chịu hơn",
+    "summary": "Việc chọn quân trắng hay quân đen nay rõ ràng và dễ dàng hơn.",
+    "groups": [
+      {
+        "title": "Chọn quân cờ",
+        "changes": [
+          "Bảng chọn màu quân có diện mạo mới.",
+          "Bạn dễ nhận ra mình đang chọn màu nào hơn.",
+          "Các nút bấm nay mượt mà và đồng nhất hơn."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Chơi tốt hơn trên điện thoại",
+    "summary": "Memory Chess nay dễ chơi và thoải mái hơn trên màn hình nhỏ.",
+    "groups": [
+      {
+        "title": "Chơi trên điện thoại",
+        "changes": [
+          "Bàn cờ, đồng hồ và nút Bỏ qua vừa vặn hơn với màn hình nhỏ.",
+          "Thao tác chạm và khoảng cách bố cục dễ chịu hơn trên điện thoại.",
+          "Âm thanh hoạt động ổn định hơn khi bạn đi qua từng bước của ván đấu."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Bắt đầu những ván cờ trí nhớ nào!",
+    "summary": "Phiên bản đầu tiên của Memory Chess đã sẵn sàng để chơi.",
+    "groups": [
+      {
+        "title": "Bản phát hành đầu tiên",
+        "changes": [
+          "Ghi nhớ một thế cờ, rồi dựng lại nó từ trí nhớ.",
+          "Chọn độ khó, số quân cờ, thời gian và tọa độ bàn cờ.",
+          "Xem điểm số và thời gian sau mỗi ván."
+        ]
+      }
+    ]
+  }
+]

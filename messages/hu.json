@@ -375,7 +375,8 @@
     "latest": "Legutóbbi",
     "bannerCta": "Nézd meg, mi újult meg",
     "bannerLabel": "Memory Chess frissítés",
-    "entriesInEnglish": "A kiadási jegyzetek angolul jelennek meg."
+    "eyebrow": "Frissítések",
+    "changesIn": "A(z) {version} verzió változásai"
   },
   "learnArticle": {
     "faqLabel": "Gyakori kérdések",

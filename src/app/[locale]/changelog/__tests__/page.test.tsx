@@ -1,5 +1,7 @@
 import { render, screen, within } from "@/test-utils/intl";
 import ChangelogPage from "@/app/[locale]/changelog/page";
+import esMessages from "../../../../../messages/es.json";
+import { CHANGELOG_ENTRIES } from "@/lib/changelog";
 
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
@@ -59,5 +61,28 @@ describe("ChangelogPage", () => {
     expect(screen.getByText("August 16, 2026")).toBeInTheDocument();
     expect(screen.getByText("August 15, 2026")).toBeInTheDocument();
     expect(screen.getByText("Changelog footer")).toBeInTheDocument();
+  });
+
+  it("renders a non-English locale from the prose overlay, keeping versions and links", () => {
+    render(<ChangelogPage />, { locale: "es", messages: esMessages });
+
+    // Prose is Spanish...
+    expect(
+      screen.getByRole("heading", { name: "24 idiomas" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText(/reported this on Reddit/),
+    ).not.toBeInTheDocument();
+
+    // ...while versions, dates and hrefs still come from the English entries.
+    expect(
+      screen
+        .getAllByRole("heading", { name: /^v\d+\.\d+\.\d+$/ })
+        .map((heading) => heading.textContent),
+    ).toEqual(CHANGELOG_ENTRIES.map((entry) => `v${entry.version}`));
+    expect(screen.getByText("August 27, 2026")).toBeInTheDocument();
+    expect(
+      screen.getAllByRole("link").map((link) => link.getAttribute("href")),
+    ).toEqual(["/es/learn", "/es/contact-us"]);
   });
 });

@@ -375,7 +375,8 @@
     "latest": "Последняя",
     "bannerCta": "Смотреть, что нового",
     "bannerLabel": "Обновление Memory Chess",
-    "entriesInEnglish": "Примечания к выпускам публикуются на английском языке."
+    "eyebrow": "Обновления",
+    "changesIn": "Изменения в версии {version}"
   },
   "learnArticle": {
     "faqLabel": "Частые вопросы",

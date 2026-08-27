@@ -1,0 +1,226 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess vorbește acum limba ta",
+    "summary": "Jocul și toate ghidurile din secțiunea Învață sunt acum disponibile în 24 de limbi, iar site-ul pornește direct în limba ta.",
+    "groups": [
+      {
+        "title": "24 de limbi",
+        "changes": [
+          "Memory Chess este acum disponibil în 24 de limbi: engleză, spaniolă, rusă, portugheză braziliană, germană, franceză, hindi, italiană, chineză simplificată, turcă, suedeză, olandeză, poloneză, indoneziană, norvegiană, finlandeză, română, vietnameză, cehă, japoneză, coreeană, chineză tradițională, daneză și maghiară.",
+          "Tot ce citești în timp ce joci este tradus, de la pagina principală și setări până la cronometru, ecranul de rezultate, clasament și această pagină de noutăți."
+        ]
+      },
+      {
+        "title": "Toate cele 16 ghiduri din Învață, în fiecare limbă",
+        "changes": [
+          {
+            "segments": [
+              "Fiecare ghid din ",
+              {
+                "text": "Învață"
+              },
+              " a fost tradus integral. Pașii de practică, exercițiile, planul săptămânal și întrebările de la final sună natural în limba ta, cu termeni de șah așa cum îi folosesc chiar jucătorii."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Schimbă limba oricând vrei",
+        "changes": [
+          "Un glob din partea de sus a fiecărei pagini deschide lista de limbi. Fiecare limbă este scrisă în propriul ei nume, ca să o găsești pe a ta fără să treci mai întâi prin engleză.",
+          "Când alegi o limbă, rămâi exact acolo unde erai, iar Memory Chess îți ține minte alegerea și la următoarea vizită."
+        ]
+      },
+      {
+        "title": "Încercăm să nimerim limba potrivită din prima",
+        "changes": [
+          "Vizitatorii noi pornesc acum în limba sugerată de browser sau de regiune, atunci când o avem. Dacă am ghicit greșit, globul este chiar acolo, la îndemână."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Partide mai fluide, rezultate mai clare",
+    "summary": "Tabla nu se mai mișcă, pozițiile aleatorii au mai multă logică, iar rezultatele sunt mai ușor de urmărit.",
+    "groups": [
+      {
+        "title": "Joc mai stabil",
+        "changes": [
+          "Datorită părerilor primite de la jucători, tabla rămâne acum în același loc când se termină memorarea și începe așezarea pieselor. Comenzile și selectorul de piese se aliniază și ele cu tabla.",
+          "Titlurile paginilor, comenzile de sunet și spațierea rămân mai consecvente pe parcursul partidei. Piesele și etichetele de pe tablă nu mai pot fi selectate din greșeală."
+        ]
+      },
+      {
+        "title": "Poziții aleatorii mai bune",
+        "changes": [
+          "Datorită unui jucător care ne-a semnalat asta pe Reddit, pozițiile aleatorii nu mai așază regii unul lângă altul, nu mai pun doi nebuni ai aceleiași tabere pe pătrate de aceeași culoare, nu mai pun pioni pe linia întâi sau pe linia a opta și nu mai lasă ambii regi în șah."
+        ]
+      },
+      {
+        "title": "Rezultate mai clare",
+        "changes": [
+          "După fiecare partidă poți compara poziția pe care ai memorat-o cu tabla pe care ai trimis-o. Marcaje clare arată piesele corecte, greșite și omise.",
+          "Precizia ta și acțiunile principale, adică reluarea partidei și clasamentul, stau acum împreună, sus, în rezultate. Piesele omise sunt marcate cu un contur negru punctat, iar tabla rămâne vizibilă dedesubt."
+        ]
+      },
+      {
+        "title": "Un final mai clar",
+        "changes": [
+          "Când trimiți răspunsul, cronometrul se oprește o secundă, ca să-ți vezi timpul înregistrat și tabla finală înainte să apară rezultatele. Un scurt „GATA!” marchează încheierea rundei, iar cronometrul de așezare arată acum și milisecundele."
+        ]
+      },
+      {
+        "title": "Câteva statistici pentru toată lumea!",
+        "description": "Iată o privire de ansamblu asupra rezultatelor trimise public în clasament până pe 16 august 2026.",
+        "tables": [
+          {
+            "caption": "Precizie",
+            "columns": [
+              "Rezultate trimise în clasament",
+              "Până în 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Precizie medie",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Rata punctajelor perfecte",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Precizie medie la nivelul Mediu",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Rata punctajelor perfecte la nivelul Mediu",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Precizie medie la nivelul Dificil",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Precizie medie la nivelul Mare maestru",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Viteza de trimitere",
+            "columns": [
+              "Timp de rezolvare la punctaj perfect",
+              "Până în 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Toate nivelurile, mediană",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Ușor, mediană",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Mediu, mediană",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Din 50 de combinații repetate de nume de jucător și nivel de dificultate, 33 au avut un timp de rezolvare mai bun la ultima încercare, iar 17 unul mai slab. Precizia a crescut mult în ansamblu, dar și un timp de gândire mai lung poate duce la un punctaj mai bun. Cifrele acoperă doar rezultatele trimise voluntar în clasament, nu toate partidele, iar clasamentul pentru nivelul Ușor afișează doar primele 200 de rezultate."
+      },
+      {
+        "title": "Mulțumim că joci",
+        "changes": [
+          {
+            "segments": [
+              "Mulțumim din suflet tuturor celor care au ajutat Memory Chess să ajungă la peste 800 de jucători pe lună și la peste 32.000 de partide jucate. Le suntem recunoscători mai ales celor care ne-au trimis idei, încurajări și semnalări de erori prin pagina ",
+              {
+                "text": "Contact"
+              },
+              " sau prin formularul de păreri de la finalul partidei. Fiecare partidă și fiecare mesaj ajută Memory Chess să crească."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Învață mai mult. Joacă mai lin.",
+    "summary": "Ghiduri noi, o pagină principală mai clară, sunete mai discrete și o cale simplă de a ne trimite păreri.",
+    "groups": [
+      {
+        "title": "Învață și progresează",
+        "changes": [
+          "Descoperă ghiduri noi, ușor de urmărit, despre memoria și vizualizarea la șah.",
+          "Pagina principală, reînnoită, explică acum cum îți antrenează Memory Chess memoria spațială."
+        ]
+      },
+      {
+        "title": "Îmbunătățiri de zi cu zi",
+        "changes": [
+          "Jocul pe telefon, așezarea pieselor și clasarea în clasament sunt mai fiabile.",
+          "Sunetele din joc pornesc acum la un volum mai blând, de 10%."
+        ]
+      },
+      {
+        "title": "Păreri și actualizări",
+        "changes": [
+          "Acum poți da o notă jocului după ce joci și poți vedea fiecare versiune nouă în pagina Noutăți. Invitația de a lăsa o părere apare cel mult o dată pe zi.",
+          "O nouă pagină de Confidențialitate explică pe înțelesul tuturor ce setări se salvează, ce analize folosim, cum tratăm părerile și cum vor arăta reclamele pe viitor."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Alegerea pieselor se simte mai bine",
+    "summary": "Alegerea pieselor albe sau negre este acum mai clară și mai ușoară.",
+    "groups": [
+      {
+        "title": "Alegerea pieselor",
+        "changes": [
+          "Selectorul de culoare are un aspect nou.",
+          "Se vede mai ușor ce culoare ai ales.",
+          "Butoanele răspund mai fin și mai unitar."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Mai bine pe telefon",
+    "summary": "Memory Chess este acum mai ușor și mai comod de jucat pe ecrane mici.",
+    "groups": [
+      {
+        "title": "Joc pe telefon",
+        "changes": [
+          "Jocul, cronometrul și butonul „Sari peste” încap mai bine pe ecrane mici.",
+          "Atingerile și spațierea se simt mai bine pe telefon.",
+          "Sunetele se comportă mai bine pe parcursul partidei."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Să înceapă jocurile de memorie!",
+    "summary": "Prima versiune a jocului Memory Chess este gata de jucat.",
+    "groups": [
+      {
+        "title": "Prima versiune",
+        "changes": [
+          "Memorează o poziție de șah, apoi reconstruiește-o din memorie.",
+          "Alege-ți dificultatea, numărul de piese, timpul și coordonatele tablei.",
+          "Vezi-ți punctajul și timpul după fiecare partidă."
+        ]
+      }
+    ]
+  }
+]

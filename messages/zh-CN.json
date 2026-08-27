@@ -375,7 +375,8 @@
     "latest": "最新",
     "bannerCta": "看看有什么新变化",
     "bannerLabel": "Memory Chess 更新",
-    "entriesInEnglish": "版本说明以英文发布。"
+    "eyebrow": "更新",
+    "changesIn": "版本 {version} 的更新内容"
   },
   "learnArticle": {
     "faqLabel": "常见问题",

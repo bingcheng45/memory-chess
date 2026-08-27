@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess artık senin dilinde",
+    "summary": "Oyunun tamamı ve her Öğren rehberi artık 24 dilde; site de doğrudan senin dilinde açılıyor.",
+    "groups": [
+      {
+        "title": "24 dil",
+        "changes": [
+          "Memory Chess artık 24 dilde oynanıyor: İngilizce, İspanyolca, Rusça, Brezilya Portekizcesi, Almanca, Fransızca, Hintçe, İtalyanca, Basitleştirilmiş Çince, Türkçe, İsveççe, Felemenkçe, Lehçe, Endonezce, Norveççe, Fince, Rumence, Vietnamca, Çekçe, Japonca, Korece, Geleneksel Çince, Danca ve Macarca.",
+          "Oynarken gördüğün her şey çevrildi: ana sayfa ve ayarlardan süre sayacına, sonuç ekranına, sıralama tablosuna ve bu Yenilikler sayfasına kadar."
+        ]
+      },
+      {
+        "title": "16 Öğren rehberinin tamamı, her dilde",
+        "changes": [
+          {
+            "segments": [
+              "Artık ",
+              {
+                "text": "Öğren"
+              },
+              " bölümündeki her rehber baştan sona çevrildi. Alıştırma adımları, egzersizler, haftalık plan ve sonundaki sorular kendi dilinde doğal okunuyor; satranç terimleri de oyuncuların gerçekte kullandığı gibi."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "İstediğin an dili değiştir",
+        "changes": [
+          "Her sayfanın üstündeki dünya simgesi dil listesini açar. Her dil kendi adıyla yazılı, yani önce İngilizce okumana gerek kalmadan kendi dilini bulabilirsin.",
+          "Dil seçtiğinde kaldığın yerden devam edersin ve Memory Chess bir sonraki ziyaretinde seçimini hatırlar."
+        ]
+      },
+      {
+        "title": "Sen sormadan doğrusunu bulmaya çalışıyoruz",
+        "changes": [
+          "Siteye ilk gelenler, elimizde varsa tarayıcılarının ya da bölgelerinin işaret ettiği dille başlıyor. Tahminimiz yanlışsa dünya simgesi hemen orada, tek dokunuşla düzeltebilirsin."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Daha akıcı oyunlar, daha net sonuçlar",
+    "summary": "Tahtan yerinde duruyor, rastgele konumlar daha mantıklı ve sonuçları incelemek çok daha kolay.",
+    "groups": [
+      {
+        "title": "Daha oturaklı bir oyun akışı",
+        "changes": [
+          "Oyuncuların değerli geri bildirimleri sayesinde tahta artık ezberleme bitip yerleştirme başladığında aynı yerde kalıyor. Kontroller ve taş seçici de tahtayla hizalı duruyor.",
+          "Sayfa başlıkları, ses kontrolleri ve boşluklar oyun boyunca daha tutarlı kalıyor. Tahtadaki taşlar ve etiketler artık yanlışlıkla seçilemiyor."
+        ]
+      },
+      {
+        "title": "Daha iyi rastgele konumlar",
+        "changes": [
+          "Bunu Reddit’te bildiren bir oyuncu sayesinde rastgele konumlar artık şahları yan yana koymuyor, bir tarafa aynı renk karede iki fil vermiyor, piyonları birinci ya da sekizinci yatay sıraya yerleştirmiyor ve iki şahı birden şah altında bırakmıyor."
+        ]
+      },
+      {
+        "title": "Daha net sonuçlar",
+        "changes": [
+          "Her oyundan sonra ezberlediğin konumla gönderdiğin tahtayı karşılaştırabiliyorsun. Net işaretler doğru, yanlış ve atlanan taşları gösteriyor.",
+          "İsabetin ile tekrar oynama ve sıralama işlemleri artık sonuçların en üstünde bir arada duruyor. Atlanan taşlar siyah noktalı belirgin bir çerçeveyle gösteriliyor, tahta da altında görünmeye devam ediyor."
+        ]
+      },
+      {
+        "title": "Daha net bir bitiş",
+        "changes": [
+          "Gönder’e bastığında sayaç bir saniye duruyor; böylece sonuçlar gelmeden önce kilitlenen süreni ve son tahtanı görebiliyorsun. Turun bittiğini kısa bir BİTTİ! yazısı duyuruyor ve yerleştirme sayacı artık milisaniyeleri de gösteriyor."
+        ]
+      },
+      {
+        "title": "Herkes için biraz istatistik!",
+        "description": "İşte 16 Ağustos 2026’ya kadar yapılan herkese açık sıralama gönderimlerinden bir kesit.",
+        "tables": [
+          {
+            "caption": "İsabet",
+            "columns": ["Sıralama gönderimleri", "2025 sonuna kadar", "2026"],
+            "rows": [
+              {
+                "label": "Ortalama isabet",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Kusursuz skor oranı",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Orta seviyede ortalama isabet",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Orta seviyede kusursuz skor oranı",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Zor seviyede ortalama isabet",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Büyükusta seviyesinde ortalama isabet",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Gönderim hızı",
+            "columns": [
+              "Kusursuz skorun çözüm süresi",
+              "2025 sonuna kadar",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Tüm zorluklar, ortanca",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Kolay, ortanca",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Orta, ortanca",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Aynı oyuncu adı ve zorluk ikilisinin tekrarlandığı 50 durumda, 33’ünde en son çözüm daha hızlı, 17’sinde daha yavaştı. İsabet genel olarak belirgin biçimde arttı, ama tahtaya biraz daha uzun zaman ayırmak da daha iyi bir skor getirebiliyor. Bu rakamlar her oyunu değil, gönüllü sıralama gönderimlerini kapsıyor ve Kolay sıralaması yalnızca ilk 200 kaydı içeriyor."
+      },
+      {
+        "title": "Oynadığın için teşekkürler",
+        "changes": [
+          {
+            "segments": [
+              "Memory Chess’in ayda 800’den fazla oyuncuya ve 32.000’in üzerinde oynanan oyuna ulaşmasına yardım eden herkese çok teşekkür ederiz. Özellikle fikirlerini, desteğini ve hata bildirimlerini ",
+              {
+                "text": "Bize ulaşın sayfası"
+              },
+              " ya da oyun sonundaki görüş formu üzerinden paylaşan herkese minnettarız. Her oyun ve her mesaj Memory Chess’in büyümesine katkı sağlıyor."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Daha çok öğren. Daha akıcı oyna.",
+    "summary": "Yeni rehberler, daha anlaşılır bir ana sayfa, daha yumuşak sesler ve görüş bildirmenin kolay bir yolu.",
+    "groups": [
+      {
+        "title": "Öğren ve ilerle",
+        "changes": [
+          "Satranç hafızası ve görselleştirme için hazırlanmış, takip etmesi kolay yeni rehberleri keşfet.",
+          "Yenilenen ana sayfa artık Memory Chess’in uzamsal hafızanı nasıl çalıştırdığını anlatıyor."
+        ]
+      },
+      {
+        "title": "Günlük hayatı kolaylaştıran iyileştirmeler",
+        "changes": [
+          "Mobilde oynamak, taş dizilimleri ve sıralama tablosundaki yerler artık daha güvenilir.",
+          "Oyun sesleri artık daha yumuşak bir %10 ses düzeyinde başlıyor."
+        ]
+      },
+      {
+        "title": "Görüşler ve güncellemeler",
+        "changes": [
+          "Oynadıktan sonra oyuna puan verebilir, yeni sürümleri Yenilikler sayfasında görebilirsin. Görüş sorusu günde en fazla bir kez çıkıyor.",
+          "Yeni Gizlilik sayfası kaydedilen ayarları, analizleri, görüşleri ve ileride çıkabilecek reklamları sade bir dille anlatıyor."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Taş seçmek artık daha keyifli",
+    "summary": "Beyaz ya da siyah taşları seçmek artık çok daha net ve kolay.",
+    "groups": [
+      {
+        "title": "Taş seçimi",
+        "changes": [
+          "Renk seçicinin görünümü baştan yenilendi.",
+          "Hangi rengi seçtiğini görmek artık daha kolay.",
+          "Düğmeler daha akıcı ve daha tutarlı."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Telefonlarda daha iyi",
+    "summary": "Memory Chess’i küçük ekranda oynamak artık daha kolay ve daha rahat.",
+    "groups": [
+      {
+        "title": "Mobilde oyun",
+        "changes": [
+          "Oyun, sayaç ve Atla düğmesi küçük ekranlara daha iyi sığıyor.",
+          "Dokunuşlar ve boşluklar mobilde daha rahat.",
+          "Sesler oyun boyunca daha düzgün davranıyor."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Hafıza oyunları başlasın!",
+    "summary": "Memory Chess’in ilk sürümü oynamaya hazır.",
+    "groups": [
+      {
+        "title": "İlk sürüm",
+        "changes": [
+          "Bir satranç konumunu ezberle, sonra hafızandan yeniden kur.",
+          "Zorluğunu, taş sayını, süreni ve tahta koordinatlarını seç.",
+          "Her oyundan sonra puanını ve süreni gör."
+        ]
+      }
+    ]
+  }
+]

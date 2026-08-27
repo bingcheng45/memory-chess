@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "Memory Chess taler nu dit sprog",
+    "summary": "Spillet og alle guider i Læringscenter findes nu på 24 sprog, og siden starter på dit.",
+    "groups": [
+      {
+        "title": "24 sprog",
+        "changes": [
+          "Memory Chess findes nu på 24 sprog: engelsk, spansk, russisk, brasiliansk portugisisk, tysk, fransk, hindi, italiensk, forenklet kinesisk, tyrkisk, svensk, nederlandsk, polsk, indonesisk, norsk, finsk, rumænsk, vietnamesisk, tjekkisk, japansk, koreansk, traditionelt kinesisk, dansk og ungarsk.",
+          "Alt det, du læser undervejs, er oversat – fra forsiden og indstillingerne til timeren, resultatskærmen, ranglisten og denne side med nyheder."
+        ]
+      },
+      {
+        "title": "Alle 16 guider i Læringscenter, på alle sprog",
+        "changes": [
+          {
+            "segments": [
+              "Alle guider i ",
+              {
+                "text": "Læringscenter"
+              },
+              " er oversat i deres fulde længde. Trinnene du starter med, øvelserne, ugeplanen og spørgsmålene til sidst læses naturligt på dit sprog, med skakudtryk der passer til, hvordan spillere faktisk taler."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Skift sprog når du vil",
+        "changes": [
+          "En globus øverst på hver side åbner sproglisten. Hvert sprog står skrevet med sit eget navn, så du kan finde dit uden først at skulle læse engelsk.",
+          "Når du vælger et sprog, bliver du præcis der, hvor du var, og Memory Chess husker dit valg til næste gang du kigger forbi."
+        ]
+      },
+      {
+        "title": "Vi prøver at ramme rigtigt, før du spørger",
+        "changes": [
+          "Nye besøgende starter nu på det sprog, som deres browser eller region foreslår, når vi har det. Er gættet forkert, sidder globussen lige der og kan rette det."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Roligere partier, tydeligere resultater",
+    "summary": "Brættet står stille, tilfældige stillinger giver mere mening, og resultaterne er lettere at gennemgå.",
+    "groups": [
+      {
+        "title": "Mere stabilt spil",
+        "changes": [
+          "Takket være gode tilbagemeldinger fra spillere bliver brættet nu stående det samme sted, når indlæringen slutter, og placeringen begynder. Kontrollerne og brikvælgeren flugter også med brættet.",
+          "Overskrifter, lydknapper og afstande holdes nu mere ensartede, mens du bevæger dig gennem partiet. Brikker og feltnavne på brættet kan ikke længere markeres ved et uheld."
+        ]
+      },
+      {
+        "title": "Bedre tilfældige stillinger",
+        "changes": [
+          "Takket være en spiller, der skrev om det på Reddit, placerer tilfældige stillinger ikke længere kongerne ved siden af hinanden, to løbere for samme side på felter med samme farve, bønder på første eller ottende række, eller begge konger i skak."
+        ]
+      },
+      {
+        "title": "Tydeligere resultater",
+        "changes": [
+          "Efter hvert parti kan du nu sammenligne den stilling, du huskede, med det bræt, du sendte. Tydelige markeringer viser rigtige, forkerte og oversete brikker.",
+          "Din præcision og de vigtigste knapper til at spille igen og gå til ranglisten holdes nu samlet øverst i resultatet. Oversete brikker vises med en tydelig sort, stiplet kant, mens brættet stadig kan ses nedenunder."
+        ]
+      },
+      {
+        "title": "En tydeligere afslutning",
+        "changes": [
+          "Når du sender dit svar, står timeren stille i et sekund, så du kan nå at se din låste tid og det færdige bræt, før resultatet dukker op. Et hurtigt FÆRDIG!-glimt markerer slutningen på runden, og timeren under placeringen viser nu millisekunder."
+        ]
+      },
+      {
+        "title": "Lidt statistik til alle!",
+        "description": "Her er et øjebliksbillede af de offentlige ranglisteresultater frem til 16. august 2026.",
+        "tables": [
+          {
+            "caption": "Præcision",
+            "columns": [
+              "Indsendte ranglisteresultater",
+              "Til og med 2025",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Gennemsnitlig præcision",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Andel med fuldt hus",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Gennemsnitlig præcision på Mellem",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Andel med fuldt hus på Mellem",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Gennemsnitlig præcision på Svær",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Gennemsnitlig præcision på Stormester",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Indsendelsestempo",
+            "columns": ["Løsningstid ved fuldt hus", "Til og med 2025", "2026"],
+            "rows": [
+              {
+                "label": "Alle sværhedsgrader, median",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Let, median",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Mellem, median",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Blandt 50 gentagne kombinationer af spillernavn og sværhedsgrad havde 33 en hurtigere seneste løsning og 17 en langsommere. Præcisionen blev tydeligt bedre overordnet set, men det kan også give en bedre score at bruge mere tid. Tallene dækker frivilligt indsendte ranglisteresultater, ikke hvert eneste parti, og ranglisten for Let viser kun sine 200 bedste resultater."
+      },
+      {
+        "title": "Tak fordi du spiller",
+        "changes": [
+          {
+            "segments": [
+              "Tusind tak til alle, der har hjulpet Memory Chess med at nå over 800 spillere om måneden og mere end 32.000 spillede partier. Vi er især taknemmelige for alle, der har delt idéer, opmuntring og fejlrapporter via ",
+              {
+                "text": "Kontakt os"
+              },
+              "-siden eller tilbagemeldingen efter partiet. Hvert parti og hver besked hjælper Memory Chess med at vokse."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Lær mere. Spil lettere.",
+    "summary": "Nye guider, en tydeligere forside, blidere lyd og en nem måde at sende tilbagemeldinger på.",
+    "groups": [
+      {
+        "title": "Lær og bliv bedre",
+        "changes": [
+          "Udforsk nye, letforståelige guider til skakhukommelse og visualisering.",
+          "Den fornyede forside forklarer nu, hvordan Memory Chess træner din rumlige hukommelse."
+        ]
+      },
+      {
+        "title": "Forbedringer i hverdagen",
+        "changes": [
+          "Spil på mobil, brikopstillinger og placeringer på ranglisten er blevet mere pålidelige.",
+          "Spillets lyde starter nu ved en mere afdæmpet lydstyrke på 10 %."
+        ]
+      },
+      {
+        "title": "Tilbagemeldinger og opdateringer",
+        "changes": [
+          "Du kan nu bedømme spillet, når du har spillet, og se nye udgivelser under Nyheder. Spørgsmålet om en tilbagemelding vises højst én gang om dagen.",
+          "En ny side om Privatliv forklarer i almindeligt sprog, hvad der gemmes af indstillinger, statistik, tilbagemeldinger og fremtidige annoncer."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Det er blevet rarere at vælge brikker",
+    "summary": "Det er nu tydeligere og lettere at vælge hvide eller sorte brikker.",
+    "groups": [
+      {
+        "title": "Valg af brikker",
+        "changes": [
+          "Farvevælgeren har fået et friskt nyt udseende.",
+          "Det er lettere at se, hvilken farve du har valgt.",
+          "Knapperne føles nu mere flydende og ensartede."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Bedre på mobilen",
+    "summary": "Memory Chess er nu lettere og mere behageligt at spille på en lille skærm.",
+    "groups": [
+      {
+        "title": "Spil på mobil",
+        "changes": [
+          "Spillet, timeren og knappen Spring over passer bedre til små skærme.",
+          "Tryk og afstande føles bedre på mobilen.",
+          "Lydene opfører sig bedre, mens du bevæger dig gennem partiet."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Så går hukommelsesspillet i gang!",
+    "summary": "Den første version af Memory Chess er klar til at spille.",
+    "groups": [
+      {
+        "title": "Den første udgave",
+        "changes": [
+          "Husk en skakstilling, og genskab den så fra hukommelsen.",
+          "Vælg sværhedsgrad, antal brikker, tid og brættets koordinater.",
+          "Se din score og din tid efter hvert parti."
+        ]
+      }
+    ]
+  }
+]

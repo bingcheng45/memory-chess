@@ -375,7 +375,8 @@
     "latest": "Cea mai recentă",
     "bannerCta": "Vezi noutățile",
     "bannerLabel": "Actualizare Memory Chess",
-    "entriesInEnglish": "Notele de versiune sunt publicate în engleză."
+    "eyebrow": "Actualizări",
+    "changesIn": "Modificări în versiunea {version}"
   },
   "learnArticle": {
     "faqLabel": "Întrebări frecvente",

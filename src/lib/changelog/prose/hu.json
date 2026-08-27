@@ -1,0 +1,222 @@
+[
+  {
+    "version": "1.2.2",
+    "title": "A Memory Chess mostantól a te nyelveden beszél",
+    "summary": "A játék és a Tanulás minden útmutatója elérhető 24 nyelven, az oldal pedig rögtön a tiéden indul.",
+    "groups": [
+      {
+        "title": "24 nyelv",
+        "changes": [
+          "A Memory Chess mostantól 24 nyelven érhető el: angol, spanyol, orosz, brazil portugál, német, francia, hindi, olasz, egyszerűsített kínai, török, svéd, holland, lengyel, indonéz, norvég, finn, román, vietnami, cseh, japán, koreai, hagyományos kínai, dán és magyar.",
+          "Minden le van fordítva, amit játék közben olvasol: a főoldaltól és a beállításoktól az időmérőn, az eredményképernyőn és a ranglistán át egészen az Újdonságok oldalig."
+        ]
+      },
+      {
+        "title": "Mind a 16 útmutató, minden nyelven",
+        "changes": [
+          {
+            "segments": [
+              "A ",
+              {
+                "text": "Tanulás"
+              },
+              " rész minden útmutatóját teljes egészében lefordítottuk. A kipróbálható lépések, a gyakorlatok, a heti terv és a végén szereplő kérdések is természetesen olvashatók a saját nyelveden, olyan sakk-kifejezésekkel, ahogyan a játékosok tényleg beszélnek."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Válts nyelvet, amikor csak szeretnél",
+        "changes": [
+          "Minden oldal tetején egy földgömb nyitja meg a nyelvek listáját. Minden nyelv a saját nevén szerepel, így angolul olvasás nélkül is megtalálod a sajátodat.",
+          "Ha nyelvet választasz, pontosan ott maradsz, ahol voltál, és a Memory Chess a következő látogatásodkor is emlékszik a döntésedre."
+        ]
+      },
+      {
+        "title": "Igyekszünk eltalálni, mielőtt kérnéd",
+        "changes": [
+          "Az új látogatók mostantól azon a nyelven indulnak, amelyet a böngészőjük vagy a régiójuk javasol, ha az megvan nálunk. Ha a tipp mégsem talál, a földgömb ott van, hogy javíthasd."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "title": "Gördülékenyebb játék, átláthatóbb eredmények",
+    "summary": "A tábla a helyén marad, a véletlen állások értelmesebbek, az eredményeket pedig könnyebb átnézni.",
+    "groups": [
+      {
+        "title": "Stabilabb játékmenet",
+        "changes": [
+          "A játékosok hasznos visszajelzéseinek köszönhetően a tábla ugyanott marad, amikor a memorizálás véget ér, és kezdődik a bábuk elhelyezése. A vezérlők és a bábuválasztó is a táblához igazodnak.",
+          "Az oldalfejlécek, a hangvezérlők és a térközök egységesebbek maradnak, ahogy haladsz a játékban. A tábla bábuit és feliratait pedig már nem lehet véletlenül kijelölni."
+        ]
+      },
+      {
+        "title": "Jobb véletlen állások",
+        "changes": [
+          "Köszönjük annak a játékosnak, aki ezt a Redditen jelezte: a véletlen állásokban már nem áll egymás mellett a két király, egy oldal nem kap két azonos színű mezőn álló futót, nem kerül gyalog az első vagy a nyolcadik sorra, és nem lehet mindkét király sakkban."
+        ]
+      },
+      {
+        "title": "Átláthatóbb eredmények",
+        "changes": [
+          "Minden játszma után összevetheted a megjegyzett állást azzal a táblával, amelyet beküldtél. Jól látható jelölések mutatják a helyes, a hibás és a kimaradt bábukat.",
+          "A pontosságod és a legfontosabb műveletek – az újrajátszás és a ranglista – mostantól együtt, az eredmény tetején maradnak. A kimaradt bábukat jól látható fekete pontozott körvonal jelöli, a tábla pedig végig látszik alatta."
+        ]
+      },
+      {
+        "title": "Tisztább lezárás",
+        "changes": [
+          "Beküldéskor az időmérő egy másodpercre megáll, így megnézheted a rögzített idődet és a végleges tábládat, mielőtt megjelenik az eredmény. Egy gyors KÉSZ! felirat jelzi a kör végét, az elhelyezés időmérője pedig már ezredmásodperceket is mutat."
+        ]
+      },
+      {
+        "title": "Egy kis statisztika mindenkinek!",
+        "description": "Íme egy pillanatkép a nyilvános ranglistára beküldött eredményekről 2026. augusztus 16-ig.",
+        "tables": [
+          {
+            "caption": "Pontosság",
+            "columns": [
+              "Ranglistára beküldött eredmények",
+              "2025 végéig",
+              "2026"
+            ],
+            "rows": [
+              {
+                "label": "Átlagos pontosság",
+                "values": ["72.3%", "89.1%"]
+              },
+              {
+                "label": "Hibátlan eredmények aránya",
+                "values": ["56.4%", "77.3%"]
+              },
+              {
+                "label": "Közepes: átlagos pontosság",
+                "values": ["65.6%", "75.7%"]
+              },
+              {
+                "label": "Közepes: hibátlan eredmények aránya",
+                "values": ["35.4%", "52.5%"]
+              },
+              {
+                "label": "Nehéz: átlagos pontosság",
+                "values": ["50.0%", "72.9%"]
+              },
+              {
+                "label": "Nagymester: átlagos pontosság",
+                "values": ["21.7%", "52.3%"]
+              }
+            ]
+          },
+          {
+            "caption": "Beküldési sebesség",
+            "columns": ["Hibátlan megoldás ideje", "2025 végéig", "2026"],
+            "rows": [
+              {
+                "label": "Minden nehézség, medián",
+                "values": ["5.42s", "5.42s"]
+              },
+              {
+                "label": "Könnyű, medián",
+                "values": ["4.86s", "4.85s"]
+              },
+              {
+                "label": "Közepes, medián",
+                "values": ["15.88s", "17.60s"]
+              }
+            ]
+          }
+        ],
+        "note": "Az 50 ismétlődő játékosnév- és nehézségkombináció közül 33-nál lett gyorsabb a legutóbbi megoldás, 17-nél pedig lassabb. A pontosság összességében sokat javult, de a több ráfordított idő is jobb eredményhez vezethet. Ezek a számok az önkéntes ranglistás beküldésekre vonatkoznak, nem minden játszmára, a Könnyű ranglista pedig csak a legjobb 200 bejegyzést mutatja."
+      },
+      {
+        "title": "Köszönjük, hogy játszol",
+        "changes": [
+          {
+            "segments": [
+              "Nagyon köszönjük mindenkinek, akinek köszönhetően a Memory Chess elérte a havi 800 játékost és a 32 000 lejátszott játszmát. Külön hálásak vagyunk azoknak, akik ötleteket, biztatást és hibajelzéseket küldtek a ",
+              {
+                "text": "Kapcsolat oldalon"
+              },
+              " vagy a játék végi visszajelzési űrlapon keresztül. Minden játszma és minden üzenet segít abban, hogy a Memory Chess tovább fejlődjön."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Tanulj többet. Játssz gördülékenyebben.",
+    "summary": "Új útmutatók, áttekinthetőbb főoldal, halkabb hangok és egyszerű módja annak, hogy megoszd a véleményed.",
+    "groups": [
+      {
+        "title": "Tanulás és fejlődés",
+        "changes": [
+          "Fedezd fel az új, könnyen követhető útmutatókat a sakkmemóriáról és a vizualizációról.",
+          "A megújult főoldal mostantól elmagyarázza, hogyan edzi a Memory Chess a téri emlékezetedet."
+        ]
+      },
+      {
+        "title": "Mindennapi fejlesztések",
+        "changes": [
+          "A mobilos játék, a bábuk felállítása és a ranglista helyezései megbízhatóbbak lettek.",
+          "A játék hangjai mostantól kíméletesebb, 10%-os hangerőn indulnak."
+        ]
+      },
+      {
+        "title": "Visszajelzés és frissítések",
+        "changes": [
+          "Játék után értékelheted a játékot, az új kiadásokat pedig megnézheted az Újdonságok oldalon. A visszajelzést kérő ablak naponta legfeljebb egyszer jelenik meg.",
+          "Egy új Adatvédelem oldal egyszerű nyelven mutatja be a mentett beállításokat, az analitikát, a visszajelzéseket és a későbbi hirdetéseket."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Kellemesebb bábuválasztás",
+    "summary": "A világos és a sötét bábuk közötti választás áttekinthetőbb és egyszerűbb lett.",
+    "groups": [
+      {
+        "title": "Bábuválasztás",
+        "changes": [
+          "A színválasztó új külsőt kapott.",
+          "Jobban látszik, melyik színt választottad.",
+          "A gombok gördülékenyebbnek és egységesebbnek hatnak."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "title": "Jobb telefonon",
+    "summary": "A Memory Chesst mostantól egyszerűbb és kényelmesebb kis képernyőn játszani.",
+    "groups": [
+      {
+        "title": "Mobilos játék",
+        "changes": [
+          "A játék, az időmérő és a Kihagyás gomb jobban elfér a kis képernyőn.",
+          "A koppintások és a térközök kellemesebbek lettek mobilon.",
+          "A hangok jobban viselkednek, ahogy haladsz a játékban."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Kezdődjön a memóriajáték!",
+    "summary": "Elkészült a Memory Chess első verziója.",
+    "groups": [
+      {
+        "title": "Az első kiadás",
+        "changes": [
+          "Jegyezz meg egy sakkállást, majd építsd fel emlékezetből.",
+          "Válaszd ki a nehézséget, a bábuk számát, az időt és a tábla koordinátáit.",
+          "Minden játszma után látod a pontszámodat és az idődet."
+        ]
+      }
+    ]
+  }
+]

@@ -375,7 +375,8 @@
     "latest": "Dernière",
     "bannerCta": "Voir les nouveautés",
     "bannerLabel": "Mise à jour de Memory Chess",
-    "entriesInEnglish": "Les notes de version sont publiées en anglais."
+    "eyebrow": "Mises à jour",
+    "changesIn": "Changements de la version {version}"
   },
   "learnArticle": {
     "faqLabel": "FAQ",

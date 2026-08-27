@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import {
   Accordion,
@@ -82,6 +83,7 @@ export default function LearnArticleRich({
   allPages,
   locale,
 }: LearnArticleProps) {
+  const t = useTranslations("learnArticle");
   const goalsById = new Map(goals.map((entry) => [entry.id, entry]));
   const goal = goalsById.get(page.goal)!;
   // Page-scoped identifiers follow the locale the reader is actually on, so
@@ -194,7 +196,7 @@ export default function LearnArticleRich({
           <ol className="flex flex-wrap items-center gap-2">
             <li>
               <Link href="/" className="transition-colors hover:text-peach-300">
-                Home
+                {t("breadcrumbHome")}
               </Link>
             </li>
             <li aria-hidden="true" className="text-white/30">
@@ -205,7 +207,7 @@ export default function LearnArticleRich({
                 href="/learn"
                 className="transition-colors hover:text-peach-300"
               >
-                Learn
+                {t("breadcrumbLearn")}
               </Link>
             </li>
             <li aria-hidden="true" className="text-white/30">
@@ -226,9 +228,7 @@ export default function LearnArticleRich({
             </span>
             <span className="text-xs text-text-muted">{page.difficulty}</span>
           </div>
-          <p className={`${EDITORIAL_STYLES.eyebrow} mb-4`}>
-            Simple chess guide
-          </p>
+          <p className={`${EDITORIAL_STYLES.eyebrow} mb-4`}>{t("eyebrow")}</p>
           <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
             {page.h1}
           </h1>
@@ -237,9 +237,9 @@ export default function LearnArticleRich({
           </p>
           <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-text-muted">
             <time dateTime={page.updatedAt}>
-              Updated {formatDate(page.updatedAt, locale)}
+              {t("updated", { date: formatDate(page.updatedAt, locale) })}
             </time>
-            <span>Reviewed by {page.reviewedBy}</span>
+            <span>{t("reviewedBy", { name: page.reviewedBy })}</span>
           </div>
         </header>
 
@@ -248,7 +248,7 @@ export default function LearnArticleRich({
           className={`${EDITORIAL_STYLES.callout} mb-10 sm:mb-12`}
         >
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            Start here
+            {t("startHere")}
           </p>
           <h2
             id="quick-answer-heading"
@@ -259,7 +259,7 @@ export default function LearnArticleRich({
           <div className="mt-6 grid gap-6 sm:grid-cols-2 sm:gap-8">
             <div>
               <h3 className="text-sm font-semibold text-white">
-                What you will learn
+                {t("whatYouWillLearn")}
               </h3>
               <ul className="mt-3 space-y-2.5">
                 {page.keyTakeaways.map((takeaway) => (
@@ -278,7 +278,7 @@ export default function LearnArticleRich({
             </div>
             <div>
               <h3 className="text-sm font-semibold text-white">
-                Who this is for
+                {t("whoThisIsFor")}
               </h3>
               <ul className="mt-3 space-y-2.5">
                 {page.whoThisIsFor.map((item) => (
@@ -308,7 +308,7 @@ export default function LearnArticleRich({
               variant="secondary"
               trackingName="hero-secondary"
             >
-              Browse all guides
+              {t("browseAllGuides")}
             </EditorialActionLink>
           </div>
         </section>
@@ -321,7 +321,7 @@ export default function LearnArticleRich({
             id="on-this-page-heading"
             className={`${EDITORIAL_STYLES.subsectionTitle} mb-4`}
           >
-            On this page
+            {t("onThisPage")}
           </p>
           <ol className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
             {page.tableOfContents.map((item, index) => (
@@ -425,7 +425,7 @@ export default function LearnArticleRich({
                       </p>
                       <p className="mt-3 text-sm leading-6 text-text-muted">
                         <span className="font-medium text-text-secondary">
-                          Aim for:
+                          {t("aimFor")}
                         </span>{" "}
                         {drill.goal}
                       </p>
@@ -503,23 +503,22 @@ export default function LearnArticleRich({
             {sectionIndex === 1 ? (
               <aside className="mt-8 border-y border-peach-500/20 py-6">
                 <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-2`}>
-                  Try it now
+                  {t("tryItNow")}
                 </p>
                 <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                   <div className="max-w-xl">
                     <h3 className="text-lg font-semibold text-white">
-                      Play one short round before you keep reading.
+                      {t("tryItNowTitle")}
                     </h3>
                     <p className="mt-2 text-sm leading-6 text-text-muted">
-                      Use the steps while they are fresh, then return with one
-                      concrete thing you noticed.
+                      {t("tryItNowBody")}
                     </p>
                   </div>
                   <EditorialActionLink
                     href={page.ctaHref}
                     trackingName="mid-article"
                   >
-                    Start a training round
+                    {t("startTrainingRound")}
                   </EditorialActionLink>
                 </div>
               </aside>
@@ -529,12 +528,13 @@ export default function LearnArticleRich({
 
         <section className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            Keep learning
+            {t("keepLearning")}
           </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>What to learn next</h2>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>
+            {t("whatToLearnNext")}
+          </h2>
           <p className="mt-3 text-base leading-7 text-text-muted">
-            Choose the guide that best matches the next problem you want to
-            solve.
+            {t("whatToLearnNextBody")}
           </p>
           <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
             {relatedPages.map((entry) => (
@@ -553,7 +553,7 @@ export default function LearnArticleRich({
                   data-learn-link={entry.slug}
                   className={`${EDITORIAL_STYLES.link} mt-3 inline-block text-sm`}
                 >
-                  Read this guide
+                  {t("readThisGuide")}
                 </Link>
               </article>
             ))}
@@ -562,13 +562,11 @@ export default function LearnArticleRich({
 
         <section className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            Put it on the board
+            {t("putItOnTheBoard")}
           </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            Practice in Memory Chess
-          </h2>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>{t("practiceTitle")}</h2>
           <p className="mt-3 text-base leading-7 text-text-muted">
-            Use one short drill to practise what you just learned.
+            {t("practiceBody")}
           </p>
           <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
             {page.relatedDrills.map((drill) => (
@@ -583,7 +581,9 @@ export default function LearnArticleRich({
                   {drill.description}
                 </p>
                 <p className="mt-2 text-sm leading-6 text-text-muted">
-                  <span className="font-medium text-text-secondary">Goal:</span>{" "}
+                  <span className="font-medium text-text-secondary">
+                    {t("goalLabel")}
+                  </span>{" "}
                   {drill.goal}
                 </p>
                 <Link
@@ -600,9 +600,9 @@ export default function LearnArticleRich({
 
         <section id="faq" className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            Common questions
+            {t("commonQuestions")}
           </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>FAQ</h2>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>{t("faqLabel")}</h2>
           <Accordion type="single" collapsible className="mt-6 w-full">
             {page.faq.map((entry, index) => (
               <AccordionItem
@@ -623,23 +623,24 @@ export default function LearnArticleRich({
 
         <section className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            Editorial notes
+            {t("editorialNotes")}
           </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>About this guide</h2>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>
+            {t("aboutThisGuide")}
+          </h2>
           <div className="mt-5 max-w-[68ch] space-y-4 text-sm leading-7 text-text-muted sm:text-base">
+            <p>{t("aboutBody")}</p>
             <p>
-              Memory Chess guides are written for beginners and improving
-              players. Each guide gives you a direct answer, practical steps,
-              and one useful way to track progress.
-            </p>
-            <p>
-              Published {formatDate(page.publishedAt, locale)}. Last reviewed and
-              updated {formatDate(page.updatedAt, locale)} by {page.reviewedBy}.
+              {t("publishedLine", {
+                published: formatDate(page.publishedAt, locale),
+                updated: formatDate(page.updatedAt, locale),
+                reviewer: page.reviewedBy,
+              })}
             </p>
           </div>
 
           <h2 className="mt-9 text-xl font-semibold tracking-tight text-white">
-            Reference links
+            {t("referenceLinks")}
           </h2>
           <ul className="mt-4 divide-y divide-white/10 border-y border-white/10">
             {page.sources.map((source) => (

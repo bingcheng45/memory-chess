@@ -110,9 +110,9 @@ export default function LearnHubPageContent({
   return (
     <EditorialPageShell>
       <EditorialHero
-        eyebrow="Learn with Memory Chess"
+        eyebrow={t("eyebrow")}
         title={t("title")}
-        description="Choose what you want to improve. Each guide explains one useful idea in plain English, then gives you a short drill to try."
+        description={t("heroDescription")}
       >
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <EditorialActionLink href="/learn/how-to-get-better-at-chess-for-beginners">{t("startBeginner")}</EditorialActionLink>
@@ -129,8 +129,7 @@ export default function LearnHubPageContent({
               className={EDITORIAL_STYLES.sectionTitle}
             >{t("pickNext")}</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
-              Choose the sentence that sounds most like your current game. There
-              is no perfect order, and you can change paths at any time.
+              {t("pickNextDescription")}
             </p>
           </div>
 
@@ -176,15 +175,14 @@ export default function LearnHubPageContent({
         >
           <div className="mb-3">
             <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>
-              All {allPages.length} guides
+              {t("allGuides", { count: allPages.length })}
             </p>
             <h2
               id="choose-goal-heading"
               className={EDITORIAL_STYLES.sectionTitle}
             >{t("chooseGoal")}</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
-              Each path moves from a simple first exercise toward a more
-              complete practice habit.
+              {t("chooseGoalDescription")}
             </p>
           </div>
 
@@ -220,7 +218,9 @@ export default function LearnHubPageContent({
                         className="group grid gap-2 py-5 sm:grid-cols-[6rem_1fr_auto] sm:items-start sm:gap-5"
                       >
                         <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
-                          Guide {String(index + 1).padStart(2, "0")}
+                          {t("guideNumber", {
+                            number: String(index + 1).padStart(2, "0"),
+                          })}
                         </span>
                         <span>
                           <span className="block text-lg font-semibold leading-6 text-white transition-colors group-hover:text-peach-200">
@@ -252,8 +252,7 @@ export default function LearnHubPageContent({
           <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>{t("readRecallPlay")}</p>
           <h2 className="text-2xl font-semibold tracking-tight text-white">{t("turnIdea")}</h2>
           <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-text-muted">
-            Read one guide, play one short round while the idea is fresh, then
-            notice what was easy to remember and what needs another try.
+            {t("turnIdeaDescription")}
           </p>
           <div className="mt-6 flex justify-center">
             <EditorialActionLink href="/game">{t("startRound")}</EditorialActionLink>

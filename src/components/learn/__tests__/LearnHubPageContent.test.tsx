@@ -2,6 +2,26 @@ import type { ComponentProps } from "react";
 import { render, screen } from "@/test-utils/intl";
 import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
 import { EN_LEARN_PAGES, EN_LEARN_GOALS } from "@/lib/seo/learn";
+import enMessages from "../../../../messages/en.json";
+
+/** See LearnArticle.test.tsx -- every leaf becomes a unique marker. */
+function markerCatalogue(value: unknown, keyPath = ""): unknown {
+  if (Array.isArray(value)) {
+    return value.map((item, i) => markerCatalogue(item, `${keyPath}[${i}]`));
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([k, v]) => [
+        k,
+        markerCatalogue(v, keyPath ? `${keyPath}.${k}` : k),
+      ]),
+    );
+  }
+  const args = [...String(value).matchAll(/\{\s*(\w+)\s*\}/g)]
+    .map((m) => `{${m[1]}}`)
+    .join(" ");
+  return `\u00ab${keyPath}\u00bb${args ? ` ${args}` : ""}`;
+}
 
 jest.mock("next/link", () => {
   function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
@@ -139,5 +159,56 @@ describe("LearnHubPageContent", () => {
       `https://thememorychess.com/learn/${EN_LEARN_PAGES[0].slug}`,
     );
     expect(breadcrumb.itemListElement[0].item).toBe("https://thememorychess.com");
+  });
+  it("reads every piece of hub chrome from the catalogue", () => {
+    // The hub previously showed a German title above an English eyebrow and an
+    // English promise that each guide is written "in plain English". Rendered
+    // against a marker catalogue, anything still hard-coded has no marker.
+    const { container } = render(
+      <LearnHubPageContent
+        allPages={EN_LEARN_PAGES}
+        goals={EN_LEARN_GOALS}
+        locale="en"
+      />,
+      {
+        locale: "en",
+        messages: markerCatalogue(enMessages) as Record<string, unknown>,
+      },
+    );
+
+    const text = container.textContent ?? "";
+
+    for (const key of [
+      "eyebrow",
+      "title",
+      "heroDescription",
+      "startBeginner",
+      "playCta",
+      "startHere",
+      "pickNext",
+      "pickNextDescription",
+      "allGuides",
+      "chooseGoal",
+      "chooseGoalDescription",
+      "guideNumber",
+      "readRecallPlay",
+      "turnIdea",
+      "turnIdeaDescription",
+      "startRound",
+    ]) {
+      expect(text).toContain(`\u00ablearnHub.${key}\u00bb`);
+    }
+
+    for (const literal of [
+      "Learn with Memory Chess",
+      "plain English",
+      "plain language",
+      "All 16 guides",
+      "Guide 01",
+      "There\u2019s no perfect order",
+      "complete practice habit",
+    ]) {
+      expect(text).not.toContain(literal);
+    }
   });
 });

@@ -117,12 +117,24 @@ export default function LanguageSettings({
 
     if (nextLocale === locale) return;
 
-    // `pathname` from @/i18n/navigation is already locale-stripped, so this
-    // keeps the reader on the same page in their new language. next-intl
-    // persists the choice to a NEXT_LOCALE cookie, which the middleware then
-    // treats as an explicit choice that outranks any auto-detection.
+    // `pathname` from @/i18n/navigation is already locale-stripped, but it is
+    // *only* the path -- the query and hash are not in it. Replacing with the
+    // bare pathname silently drops them, which resets the preset behind
+    // `/game?difficulty=hard&pieceCount=8`, discards the entry-identifying
+    // params on a shared `/leaderboard?player=...` result, and throws away the
+    // `#faq` anchor a reader was parked on. Read them off the live location at
+    // click time rather than via `useSearchParams`, which would force every
+    // page hosting the header into a client-side rendering bailout.
+    const { search, hash } =
+      typeof window === "undefined"
+        ? { search: "", hash: "" }
+        : window.location;
+    const href = `${pathname}${search}${hash}`;
+
+    // next-intl persists the choice to a NEXT_LOCALE cookie, which the
+    // middleware then treats as an explicit choice that outranks detection.
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
+      router.replace(href, { locale: nextLocale });
     });
   };
 

@@ -40,6 +40,50 @@ export interface ChangelogTable {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "1.2.2",
+    publishedAt: "2026-08-27T12:00:00.000+08:00",
+    title: "Memory Chess now speaks your language",
+    summary:
+      "The game and every Learn guide are now available in 24 languages, and the site starts in yours.",
+    groups: [
+      {
+        title: "24 languages",
+        changes: [
+          "Memory Chess is now available in 24 languages: English, Spanish, Russian, Brazilian Portuguese, German, French, Hindi, Italian, Simplified Chinese, Turkish, Swedish, Dutch, Polish, Indonesian, Norwegian, Finnish, Romanian, Vietnamese, Czech, Japanese, Korean, Traditional Chinese, Danish, and Hungarian.",
+          "Everything you read while playing is translated, from the home page and settings to the timer, the results screen, the leaderboard, and this changelog.",
+        ],
+      },
+      {
+        title: "All 16 Learn guides, in every language",
+        changes: [
+          {
+            segments: [
+              "Every guide in ",
+              {
+                text: "Learn",
+                href: "/learn",
+              },
+              " has been translated in full. The practice steps, the drills, the weekly plan, and the questions at the end all read naturally in your language, with chess terms that match how players actually speak it.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Switch language whenever you like",
+        changes: [
+          "A globe at the top of every page opens the language list. Each language is written in its own name, so you can find yours without reading English first.",
+          "Choosing a language keeps you exactly where you were, and Memory Chess remembers your choice the next time you visit.",
+        ],
+      },
+      {
+        title: "We try to get it right before you ask",
+        changes: [
+          "New visitors now start in the language their browser or region suggests, whenever we have it. If the guess is wrong, the globe is right there to fix it.",
+        ],
+      },
+    ],
+  },
+  {
     version: "1.2.1",
     publishedAt: "2026-08-16T12:00:00.000+08:00",
     title: "Smoother games, clearer results",

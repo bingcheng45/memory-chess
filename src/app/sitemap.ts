@@ -43,7 +43,7 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   },
   {
     path: "/changelog",
-    sourceFile: "src/lib/changelog.ts",
+    sourceFile: "src/lib/changelog/index.ts",
     changeFrequency: "monthly",
     priority: 0.6,
   },

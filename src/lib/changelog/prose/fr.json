@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Vous avez trouvé le bug du cavalier. Merci.",
+    "summary": "Deux messages laissés dans la boîte à retours étaient bel et bien des bugs : le premier comptait discrètement de bonnes réponses comme fausses, le second avalait des pièces quand vous les posiez vite. Les deux sont corrigés et, tant qu’à faire, l’échiquier est plus stable et plus rapide.",
+    "groups": [
+      {
+        "title": "Le cavalier compté comme un roi",
+        "description": "L’un de vous a écrit : « Le système ne voit pas le cavalier placé et indique qu’il a été oublié. » C’était exactement ça, et c’était même pire que ça en avait l’air.",
+        "changes": [
+          "Chaque cavalier que vous posiez était enregistré comme un roi : un cavalier sur la bonne case était donc compté faux. Reconstituez parfaitement une position de six pièces contenant un cavalier, et vous obteniez 67%.",
+          "Il pouvait en emporter une seconde avec lui. Dès qu’un cavalier avait pris une case en tant que roi, le roi ou le cavalier suivant de cette couleur n’apparaissait tout simplement plus, sans un mot.",
+          "Les cavaliers sont redevenus des cavaliers. Une reconstitution parfaite vaut 100%, comme cela aurait toujours dû être le cas."
+        ],
+        "note": "Si vos scores vous semblaient chiches, ils l’étaient. Désolés."
+      },
+      {
+        "title": "Des pièces qui disparaissaient quand vous jouiez vite",
+        "description": "Un autre message : « les pièces que j’avais posées sur l’échiquier au départ ne correspondent pas exactement à la position envoyée… surtout si j’en pose certaines rapidement. » Exact, là aussi.",
+        "changes": [
+          "Un minuteur caché bridait les touchers : quand ils s’enchaînaient de près, il jetait les premiers. Touchez huit cases rapidement, et quatre d’entre elles n’avaient jamais eu lieu.",
+          "Chaque toucher est désormais pris en compte, aussi vite que vous alliez.",
+          "Retirer une pièce juste après l’avoir posée fonctionne aussi. Avant, c’était ignoré pendant une demi-seconde."
+        ]
+      },
+      {
+        "title": "Un échiquier qui ne bouge plus",
+        "changes": [
+          "L’échiquier ne saute ni ne glisse plus quand le chrono se termine et que c’est à vous de placer. Il reste exactement là où il était.",
+          "La mémorisation et le placement ne défilent plus. L’échiquier est dimensionné pour l’écran que vous avez vraiment : il n’y a donc plus rien vers quoi défiler.",
+          "Sur téléphone, l’échiquier est plus grand et se tient à 4px du bord au lieu de 15px, ce qui rend les cases plus faciles à toucher. Le chrono et le plateau de pièces s’alignent maintenant sur les bords de l’échiquier au lieu de déborder plus large que lui."
+        ]
+      },
+      {
+        "title": "Plus vif sous le doigt",
+        "changes": [
+          "Auparavant, chaque toucher attendait 50 millisecondes avant que quoi que ce soit ne se produise, que vous soyez pressé ou non. Cette pause a disparu.",
+          "L’échiquier se redessine aussi moins souvent. Suivre un toucher ne redessine plus les 64 cases, et la surbrillance de la case sélectionnée n’anime que les deux propriétés qui changent réellement.",
+          "L’anneau qui marque la case touchée est maintenant tracé sur ses quatre côtés. Il ne l’avait jamais été que sur deux."
+        ]
+      },
+      {
+        "title": "Rangement",
+        "changes": [
+          "Avant, on disait à l’échiquier quelle taille prendre, à partir d’une estimation écrite à la main de la place dont tout le reste avait besoin. Cinq copies de cette estimation devaient s’accorder entre elles, et elles ont divergé : c’est ainsi qu’une bonne partie de ce qui précède est passée inaperçue. L’échiquier mesure désormais la place dont il dispose, et l’estimation a disparu, avec 73 lignes de code.",
+          "Une ligne en anglais était restée sur l’écran de mémorisation, oubliée par la version en 24 langues. Elle compte maintenant vos pièces dans toutes, avec le bon pluriel."
+        ],
+        "note": "Les deux bugs ci-dessus viennent de la boîte à retours affichée après une partie. Si quelque chose vous semble étrange, dites-le-nous : c’est de loin le moyen le plus rapide de le faire corriger."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess parle maintenant votre langue",
     "summary": "Le jeu et tous les guides d’Apprendre sont désormais disponibles en 24 langues, et le site démarre dans la vôtre.",

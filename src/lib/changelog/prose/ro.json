@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Ai găsit bugul cu calul. Mulțumim.",
+    "summary": "Două mesaje lăsate în caseta de feedback s-au dovedit a fi buguri adevărate: unul marca pe tăcute răspunsurile corecte ca fiind greșite, celălalt înghițea piese când le așezai repede. Amândouă sunt rezolvate și, tot fiind pe acolo, tabla stă mai cuminte și răspunde mai repede.",
+    "groups": [
+      {
+        "title": "Calul punctat ca rege",
+        "description": "Unul dintre voi a scris: „Sistemul nu vede calul așezat și arată că a fost ratat”. Exact așa era – și era chiar mai rău decât părea.",
+        "changes": [
+          "Fiecare cal pe care îl așezai era înregistrat ca rege, așa că un cal pe pătratul corect era marcat drept greșit. Reconstruiai perfect o poziție cu șase piese și un cal, iar scorul ieșea 67%.",
+          "Putea trage după el și o a doua piesă. Odată ce un cal ocupase un pătrat pe post de rege, următorul rege sau cal de aceeași culoare pur și simplu nu mai apărea deloc, fără niciun semn.",
+          "Caii sunt din nou cai. O reconstrucție perfectă înseamnă 100%, așa cum ar fi trebuit dintotdeauna."
+        ],
+        "note": "Dacă scorurile tale păreau zgârcite, chiar erau. Ne pare rău."
+      },
+      {
+        "title": "Piese care dispăreau când jucai repede",
+        "description": "Alt mesaj: „piesele pe care le-am pus pe tablă la început nu sunt exact poziția trimisă… mai ales dacă pun câteva piese repede”. Tot exact.",
+        "changes": [
+          "Un cronometru ascuns încetinea atingerile și, când veneau una după alta, le arunca pe cele dinainte. Atingi repede opt pătrate – și patru dintre ele nu s-au întâmplat niciodată.",
+          "Acum fiecare atingere ajunge, oricât de repede ai merge.",
+          "Merge și să scoți o piesă imediat după ce ai pus-o. Înainte, asta era ignorată timp de o jumătate de secundă."
+        ]
+      },
+      {
+        "title": "O tablă care stă pe loc",
+        "changes": [
+          "Tabla nu mai sare și nu mai alunecă atunci când se termină timpul și e rândul tău să așezi. Rămâne exact unde era.",
+          "Memorarea și așezarea nu mai derulează. Tabla e dimensionată după ecranul pe care îl ai cu adevărat, așa că nu mai e nimic spre care să derulezi.",
+          "Pe telefon tabla e mai mare și stă la 4px de margine în loc de 15px, așa că pătratele sunt mai ușor de nimerit. Cronometrul și tava cu piese se aliniază acum la marginile tablei, în loc să iasă mai late decât ea."
+        ]
+      },
+      {
+        "title": "Mai iute sub deget",
+        "changes": [
+          "Înainte, fiecare atingere aștepta 50 de milisecunde până să se întâmple ceva, fie că te grăbeai, fie că nu. Pauza aceea a dispărut.",
+          "Tabla se redesenează și mai rar. Urmărirea unei atingeri nu mai redesenează toate cele 64 de pătrate, iar evidențierea pătratului selectat animează doar cele două proprietăți care chiar se schimbă.",
+          "Inelul care marchează pătratul atins e desenat acum pe toate cele patru laturi. Până acum fusese mereu doar pe două."
+        ]
+      },
+      {
+        "title": "Curățenie",
+        "changes": [
+          "Înainte i se spunea tablei ce dimensiune să aibă, calculată dintr-o estimare scrisă de mână despre cât loc îi trebuie la tot restul. Cinci copii ale acelei estimări trebuiau să se potrivească între ele, dar s-au îndepărtat una de alta; așa a trecut neobservată bună parte din cele de mai sus. Acum tabla își măsoară singură spațiul, iar estimarea a dispărut împreună cu 73 de linii de cod.",
+          "O linie rătăcită în engleză de pe ecranul de memorare scăpase de lansarea în 24 de limbi. Acum îți numără piesele în toate, la pluralul corect."
+        ],
+        "note": "Ambele buguri de mai sus au venit din caseta de feedback de după partidă. Dacă ți se pare că ceva nu e în regulă, spune-ne — e de departe cea mai rapidă cale ca acel lucru să fie reparat."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess vorbește acum limba ta",
     "summary": "Jocul și toate ghidurile din secțiunea Învață sunt acum disponibile în 24 de limbi, iar site-ul pornește direct în limba ta.",

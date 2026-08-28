@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Du fandt springer-fejlen. Tak.",
+    "summary": "To beskeder i feedbackfeltet viste sig at være rigtige fejl: den ene talte stille og roligt rigtige svar som forkerte, den anden åd brikker, når du satte dem hurtigt. Begge er rettet, og når vi nu var i gang, står brættet mere roligt og reagerer hurtigere.",
+    "groups": [
+      {
+        "title": "Springeren, der blev talt som konge",
+        "description": "En af jer skrev: »Systemet ser ikke den placerede springer og viser, at den er blevet overset.« Det passede præcist – og det var værre, end det så ud.",
+        "changes": [
+          "Hver springer, du satte, blev gemt som konge, så en springer på det rigtige felt blev talt som forkert. Genskabte du en stilling med seks brikker og én springer helt perfekt, fik du 67%.",
+          "Den kunne tage en brik mere med i faldet. Så snart en springer havde taget et felt som konge, dukkede den næste konge eller springer i samme farve slet ikke op – uden et ord.",
+          "Springere er springere igen. En perfekt genskabt stilling giver 100%, som den altid burde have gjort."
+        ],
+        "note": "Hvis dine resultater så nærige ud, var de det. Undskyld."
+      },
+      {
+        "title": "Brikker der forsvandt, når du spillede hurtigt",
+        "description": "En anden besked: »de brikker, jeg oprindeligt satte på brættet, er ikke helt den stilling, der bliver sendt ind ... især hvis jeg sætter nogle brikker hurtigt.« Også helt rigtigt.",
+        "changes": [
+          "En skjult timer bremsede dine tryk, og når de kom tæt på hinanden, smed den de tidligste væk. Tryk hurtigt på otte felter, og fire af dem havde aldrig fundet sted.",
+          "Nu lander hvert eneste tryk, uanset hvor hurtigt du går til den.",
+          "Det virker også at fjerne en brik lige efter, du har sat den. Før blev det ignoreret i et halvt sekund."
+        ]
+      },
+      {
+        "title": "Et bræt der bliver stående",
+        "changes": [
+          "Brættet hopper eller glider ikke længere, når tiden løber ud, og det er din tur til at placere. Det bliver præcis, hvor det var.",
+          "Der skal ikke længere scrolles, mens du husker og placerer. Brættet får størrelse efter den skærm, du rent faktisk har, så der er ikke noget at scrolle hen til.",
+          "På en telefon er brættet større og sidder 4px fra kanten i stedet for 15px, så felterne er lettere at ramme. Timeren og brikbakken flugter nu med brættets kanter i stedet for at være bredere end det."
+        ]
+      },
+      {
+        "title": "Hurtigere under fingeren",
+        "changes": [
+          "Før ventede hvert tryk 50 millisekunder, før der overhovedet skete noget – uanset om du havde travlt eller ej. Den pause er væk.",
+          "Brættet gentegnes også sjældnere. At holde styr på et tryk gentegner ikke længere alle 64 felter, og markeringen af det valgte felt animerer kun de to egenskaber, der rent faktisk ændrer sig.",
+          "Ringen om det felt, du trykkede på, tegnes nu hele vejen rundt. Den havde altid kun været på to sider."
+        ]
+      },
+      {
+        "title": "Oprydning",
+        "changes": [
+          "Før fik brættet at vide, hvor stort det skulle være, regnet ud fra et håndskrevet gæt på, hvor meget plads alt det andet havde brug for. Fem kopier af det gæt skulle stemme overens, og de gled fra hinanden – og det er sådan, en god del af ovenstående gik ubemærket hen. Nu måler brættet selv, hvor meget plads det har, og gættet er væk sammen med 73 linjer kode.",
+          "En enkelt engelsk linje på huskeskærmen var sluppet uden om udgivelsen på 24 sprog. Den tæller nu dine brikker på dem alle, i den rigtige flertalsform."
+        ],
+        "note": "Begge fejl ovenfor kom fra feedbackfeltet efter et spil. Hvis noget føles forkert, så sig til – det er langt den hurtigste vej til at få det rettet."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess taler nu dit sprog",
     "summary": "Spillet og alle guider i Læringscenter findes nu på 24 sprog, og siden starter på dit.",

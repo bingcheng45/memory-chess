@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Du hast den Springer-Bug gefunden. Danke dafür.",
+    "summary": "Zwei Nachrichten aus dem Feedback-Feld waren echte Fehler: Der eine hat stillschweigend richtige Antworten als falsch gewertet, der andere hat Figuren verschluckt, wenn du sie schnell gesetzt hast. Beide sind behoben – und weil wir schon dabei waren, steht das Brett jetzt ruhiger und reagiert schneller.",
+    "groups": [
+      {
+        "title": "Der Springer, der als König gewertet wurde",
+        "description": "Jemand von euch schrieb: „Das System sieht den gesetzten Springer nicht und zeigt an, dass er fehlt.“ Genau so war es – und es war sogar schlimmer, als es aussah.",
+        "changes": [
+          "Jeder Springer, den du gesetzt hast, wurde als König gespeichert. Ein Springer auf dem richtigen Feld galt damit als falsch. Wer eine Stellung aus sechs Figuren mit einem Springer darin perfekt nachbaute, bekam 67%.",
+          "Er konnte eine zweite Figur mitreißen: Sobald ein Springer ein Feld als König belegt hatte, tauchte der nächste König oder Springer derselben Farbe klanglos gar nicht mehr auf.",
+          "Springer sind wieder Springer. Ein perfekter Nachbau ergibt 100%, so wie es immer hätte sein sollen."
+        ],
+        "note": "Wenn deine Ergebnisse geizig aussahen – das waren sie. Entschuldige bitte."
+      },
+      {
+        "title": "Figuren, die beim schnellen Spielen verschwanden",
+        "description": "Noch eine Nachricht: „die Figuren, die ich ursprünglich aufs Brett gestellt habe, sind nicht genau die abgeschickte Stellung … besonders wenn ich ein paar Figuren schnell setze.“ Auch das stimmte genau.",
+        "changes": [
+          "Ein verstecktes Zeitfenster hat das Tippen gedrosselt: Kamen zwei Tipper dicht hintereinander, warf es den früheren weg. Tippe acht Felder schnell an – und vier davon hat es nie gegeben.",
+          "Jeder Tipp kommt jetzt an, egal wie schnell du bist.",
+          "Eine Figur direkt nach dem Setzen wieder zu entfernen, klappt ebenfalls. Das wurde vorher eine halbe Sekunde lang ignoriert."
+        ]
+      },
+      {
+        "title": "Ein Brett, das an Ort und Stelle bleibt",
+        "changes": [
+          "Das Brett springt und rutscht nicht mehr, wenn die Zeit abläuft und du mit dem Setzen dran bist. Es bleibt genau dort, wo es war.",
+          "Einprägen und Setzen scrollen nicht mehr. Das Brett richtet sich nach dem Bildschirm, den du wirklich hast – es gibt also nichts, wohin man scrollen müsste.",
+          "Auf dem Handy ist das Brett größer und sitzt 4px vom Rand entfernt statt 15px, sodass die Felder leichter zu treffen sind. Die Zeitanzeige und die Figurenleiste schließen jetzt bündig mit den Kanten des Bretts ab, statt breiter zu geraten als es."
+        ]
+      },
+      {
+        "title": "Schneller unter dem Finger",
+        "changes": [
+          "Früher wartete jeder Tipp 50 Millisekunden, bevor überhaupt etwas passierte – ob du es eilig hattest oder nicht. Diese Pause ist weg.",
+          "Das Brett zeichnet sich außerdem seltener neu. Einen Tipp zu verfolgen, rendert nicht mehr alle 64 Felder neu, und die Hervorhebung des ausgewählten Feldes animiert nur noch die zwei Eigenschaften, die sich wirklich ändern.",
+          "Der Ring um das angetippte Feld wird jetzt auf allen vier Seiten gezeichnet. Bisher waren es immer nur zwei."
+        ]
+      },
+      {
+        "title": "Aufräumarbeiten",
+        "changes": [
+          "Früher wurde dem Brett vorgeschrieben, wie groß es zu sein hat – berechnet aus einer von Hand geschriebenen Schätzung, wie viel Platz alles andere braucht. Fünf Kopien dieser Schätzung mussten zueinander passen, und sie liefen auseinander. Genau deshalb ist ein guter Teil des Obigen so lange unbemerkt geblieben. Jetzt misst das Brett selbst, wie viel Platz es hat, und die Schätzung ist verschwunden – zusammen mit 73 Zeilen Code.",
+          "Eine einzelne englische Zeile auf dem Einprägen-Bildschirm hatte die Veröffentlichung in 24 Sprachen verpasst. Sie zählt deine Figuren jetzt in allen davon, im richtigen Plural."
+        ],
+        "note": "Beide Fehler von oben kamen aus dem Feedback-Feld nach einer Partie. Wenn sich etwas falsch anfühlt, sag uns Bescheid – das ist mit Abstand der schnellste Weg, es beheben zu lassen."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess spricht jetzt deine Sprache",
     "summary": "Das Spiel und alle Leitfäden im Lernbereich gibt es jetzt in 24 Sprachen – und die Seite startet gleich in deiner.",

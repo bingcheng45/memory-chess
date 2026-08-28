@@ -28,6 +28,7 @@ describe("ChangelogPage", () => {
     });
 
     expect(versionHeadings.map((heading) => heading.textContent)).toEqual([
+      "v1.2.3",
       "v1.2.2",
       "v1.2.1",
       "v1.2.0",

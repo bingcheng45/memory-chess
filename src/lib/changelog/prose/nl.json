@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Jij hebt de paardenbug gevonden. Dank je wel.",
+    "summary": "Twee berichten uit het feedbackvak bleken echte bugs te zijn: de ene rekende goede antwoorden stilletjes fout, de andere at stukken op als je ze snel neerzette. Allebei verholpen — en nu we er toch waren, staat het bord stiller en reageert het sneller.",
+    "groups": [
+      {
+        "title": "Het paard dat als koning werd geteld",
+        "description": "Iemand van jullie schreef: “Het systeem ziet het geplaatste paard niet en geeft aan dat het gemist is.” Precies goed gezien, en het was erger dan het leek.",
+        "changes": [
+          "Elk paard dat je neerzette werd opgeslagen als koning, dus een paard op het juiste veld gold als fout. Bouwde je een stelling van zes stukken met één paard erin perfect na, dan kreeg je 67%.",
+          "Het kon een tweede stuk meesleuren. Zodra een paard een veld als koning had bezet, verscheen de volgende koning of het volgende paard van die kleur zonder enige melding helemaal niet meer.",
+          "Paarden zijn weer paarden. Een perfecte stelling levert 100% op, zoals het altijd had gemoeten."
+        ],
+        "note": "Als je scores krenterig leken, dan waren ze dat ook. Sorry daarvoor."
+      },
+      {
+        "title": "Stukken die verdwenen als je snel speelde",
+        "description": "Nog een bericht: “de stukken die ik eerst op het bord zette zijn niet precies de ingestuurde stelling… vooral als ik een paar stukken snel neerzet.” Ook helemaal raak.",
+        "changes": [
+          "Een verborgen timer remde je tikken af en gooide de eerdere weg als ze kort op elkaar kwamen. Tik snel op acht velden en vier daarvan hadden nooit plaatsgevonden.",
+          "Elke tik komt nu aan, hoe snel je ook gaat.",
+          "Een stuk meteen na het plaatsen weer weghalen werkt ook. Dat werd vroeger een halve seconde lang genegeerd."
+        ]
+      },
+      {
+        "title": "Een bord dat blijft staan",
+        "changes": [
+          "Het bord springt of schuift niet meer als de tijd om is en jij aan zet bent om te plaatsen. Het blijft precies waar het stond.",
+          "Onthouden en plaatsen scrollen niet meer. Het bord past zich aan het scherm aan dat je echt hebt, dus er valt niets weg te scrollen.",
+          "Op een telefoon is het bord groter en staat het 4px van de rand in plaats van 15px, zodat de velden makkelijker te raken zijn. De timer en de stukkenbalk lopen nu gelijk met de randen van het bord in plaats van er breder uit te steken."
+        ]
+      },
+      {
+        "title": "Sneller onder je vinger",
+        "changes": [
+          "Vroeger wachtte elke tik 50 milliseconden voordat er iets gebeurde, of je nu haast had of niet. Die pauze is weg.",
+          "Het bord tekent zichzelf ook minder vaak opnieuw. Een tik bijhouden rendert niet langer alle 64 velden opnieuw, en de markering van het geselecteerde veld animeert alleen de twee eigenschappen die echt veranderen.",
+          "De ring om het veld waarop je tikte wordt nu aan alle vier de zijden getekend. Dat was altijd maar aan twee kanten."
+        ]
+      },
+      {
+        "title": "Opruimwerk",
+        "changes": [
+          "Vroeger kreeg het bord te horen hoe groot het moest zijn, berekend uit een met de hand geschreven schatting van hoeveel ruimte al het andere nodig had. Vijf kopieën van die schatting moesten met elkaar kloppen, en ze groeiden uit elkaar — zo is een flink deel van het bovenstaande onopgemerkt gebleven. Het bord meet nu zelf hoeveel ruimte het heeft, en de schatting is verdwenen, samen met 73 regels code.",
+          "Eén losse Engelse regel op het onthoudscherm was aan de release in 24 talen ontsnapt. Hij telt je stukken nu in alle 24, met het juiste meervoud."
+        ],
+        "note": "Allebei de bugs hierboven kwamen uit het feedbackvak na een partij. Voelt er iets niet goed, laat het ons weten — dat is verreweg de snelste manier om het opgelost te krijgen."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess spreekt nu jouw taal",
     "summary": "Het spel en alle gidsen bij Leren zijn nu beschikbaar in 24 talen, en de site start meteen in de jouwe.",

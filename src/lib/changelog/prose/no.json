@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Du fant springer-feilen. Takk.",
+    "summary": "To meldinger i tilbakemeldingsfeltet viste seg å være ekte feil: den ene merket i stillhet riktige svar som gale, den andre spiste brikker når du satte dem ut raskt. Begge er rettet, og siden vi først var inne, står brettet roligere og svarer raskere.",
+    "groups": [
+      {
+        "title": "Springeren som ble regnet som konge",
+        "description": "En av dere skrev: «Systemet ser ikke springeren jeg har satt ut, og viser at den er glemt.» Helt riktig – og det var verre enn det så ut.",
+        "changes": [
+          "Hver springer du satte ut, ble lagret som konge, så en springer på riktig felt ble regnet som feil. Bygde du opp en stilling med seks brikker og én springer helt perfekt, fikk du 67%.",
+          "Den kunne dra med seg en brikke til. Så snart en springer hadde tatt et felt som konge, dukket ikke den neste kongen eller springeren i samme farge opp i det hele tatt – uten et pip.",
+          "Springere er springere igjen. En perfekt gjenoppbygd stilling gir 100%, slik den alltid burde ha gjort."
+        ],
+        "note": "Hvis resultatene dine så gjerrige ut, var de det. Beklager."
+      },
+      {
+        "title": "Brikker som forsvant når du spilte fort",
+        "description": "En annen melding: «brikkene jeg opprinnelig satte på brettet, er ikke helt den stillingen som blir sendt inn ... særlig hvis jeg setter ut noen brikker fort.» Også helt riktig.",
+        "changes": [
+          "En skjult timer bremset trykkene dine, og kom de tett på hverandre, kastet den de første. Trykk raskt på åtte felter, og fire av dem hadde aldri skjedd.",
+          "Nå treffer hvert eneste trykk, uansett hvor fort du går fram.",
+          "Å fjerne en brikke rett etter at du har satt den ut, fungerer også. Før ble det ignorert i et halvt sekund."
+        ]
+      },
+      {
+        "title": "Et brett som blir stående",
+        "changes": [
+          "Brettet hopper eller sklir ikke lenger når tiden går ut og det er din tur til å plassere. Det blir stående nøyaktig der det var.",
+          "Husking og plassering ruller ikke lenger. Brettet får størrelse etter skjermen du faktisk har, så det finnes ikke noe å rulle til.",
+          "På telefon er brettet større og ligger 4px fra kanten i stedet for 15px, så feltene er lettere å treffe. Timeren og brikkeraden flukter nå med kantene på brettet i stedet for å bli bredere enn det."
+        ]
+      },
+      {
+        "title": "Kjappere under fingeren",
+        "changes": [
+          "Før ventet hvert trykk 50 millisekunder før noe som helst skjedde, enten du hadde det travelt eller ikke. Den pausen er borte.",
+          "Brettet tegnes også opp sjeldnere. Å holde styr på et trykk gjengir ikke lenger alle 64 feltene på nytt, og markeringen av det valgte feltet animerer bare de to egenskapene som faktisk endrer seg.",
+          "Ringen rundt feltet du trykket på, tegnes nå på alle fire sider. Den hadde alltid vært på to."
+        ]
+      },
+      {
+        "title": "Opprydding",
+        "changes": [
+          "Før fikk brettet beskjed om hvor stort det skulle være, regnet ut fra et håndskrevet anslag over hvor mye plass alt det andre trengte. Fem kopier av det anslaget måtte stemme med hverandre, og de gled fra hverandre – det er slik en god del av det over gikk upåaktet hen. Nå måler brettet selv hvor mye plass det har, og anslaget er borte sammen med 73 linjer kode.",
+          "En enkelt engelsk linje på huskeskjermen hadde sluppet unna lanseringen på 24 språk. Den teller nå brikkene dine på alle sammen, i riktig flertallsform."
+        ],
+        "note": "Begge feilene over kom fra tilbakemeldingsfeltet etter en runde. Hvis noe føles feil, si fra – det er den desidert raskeste veien til at det blir rettet."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess snakker nå ditt språk",
     "summary": "Spillet og alle guidene under Lær finnes nå på 24 språk, og nettstedet starter på ditt.",

@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "At hatasını sen buldun. Teşekkürler.",
+    "summary": "Geri bildirim kutusuna bırakılan iki not gerçek birer hata çıktı: biri doğru cevapları sessizce yanlış işaretliyordu, diğeri taşları hızlı yerleştirdiğinde onları yiyordu. İkisi de düzeldi; hazır oradayken tahta daha sabit ve daha hızlı hâle geldi.",
+    "groups": [
+      {
+        "title": "Şah diye sayılan at",
+        "description": "İçinizden biri şöyle yazmıştı: “Sistem yerleştirdiğim atı görmüyor ve atlanmış gibi gösteriyor.” Tam olarak öyleydi ve göründüğünden de kötüydü.",
+        "changes": [
+          "Yerleştirdiğin her at şah olarak kaydediliyordu, yani doğru karedeki bir at yanlış sayılıyordu. İçinde bir at olan altı taşlık bir konumu kusursuz kurduğunda 67% alıyordun.",
+          "Yanında ikinci bir taşı da götürebiliyordu. Bir at bir kareyi şah olarak sahiplendiğinde, o rengin sıradaki şahı ya da atı hiç ses çıkarmadan hiç görünmüyordu.",
+          "Atlar yeniden at oldu. Kusursuz bir kurulum 100% alıyor, en baştan beri olması gerektiği gibi."
+        ],
+        "note": "Puanların cimri göründüyse gerçekten öyleydi. Kusura bakma."
+      },
+      {
+        "title": "Hızlı oynayınca kaybolan taşlar",
+        "description": "Başka bir not: “tahtaya en başta koyduğum taşlar gönderilen konumla tam olarak aynı değil… özellikle bazı taşları hızlı koyarsam.” Bu da tamamen doğruydu.",
+        "changes": [
+          "Gizli bir sayaç dokunuşları kısıtlıyordu; dokunuşlar birbirine yakın geldiğinde öncekileri atıyordu. Sekiz kareye hızlıca dokun, dördü hiç olmamış sayılıyordu.",
+          "Artık ne kadar hızlı gidersen git, her dokunuş yerine ulaşıyor.",
+          "Bir taşı koyduktan hemen sonra kaldırmak da çalışıyor. Eskiden bu yarım saniye boyunca yok sayılıyordu."
+        ]
+      },
+      {
+        "title": "Yerinde duran bir tahta",
+        "changes": [
+          "Süre bitip yerleştirme sırası sana geldiğinde tahta artık zıplamıyor, kaymıyor. Tam olduğu yerde kalıyor.",
+          "Ezberleme ve yerleştirme artık kaydırmıyor. Tahta gerçekten sahip olduğun ekrana göre boyutlanıyor, dolayısıyla kaydırılacak bir şey de kalmıyor.",
+          "Telefonda tahta daha büyük ve kenardan 15px yerine 4px uzakta duruyor; böylece karelere denk getirmek daha kolay. Sayaç ve taş rafı artık tahtadan daha geniş taşmak yerine tahtanın kenarlarıyla hizalanıyor."
+        ]
+      },
+      {
+        "title": "Parmağın altında daha hızlı",
+        "changes": [
+          "Eskiden her dokunuş, sen acele etsen de etmesen de, herhangi bir şey olmadan önce 50 milisaniye bekliyordu. O duraklama gitti.",
+          "Tahta ayrıca daha az yeniden çiziliyor. Bir dokunuşu takip etmek artık 64 karenin tamamını yeniden oluşturmuyor ve seçili karenin vurgusu yalnızca gerçekten değişen iki özelliği canlandırıyor.",
+          "Dokunduğun kareyi işaretleyen çerçeve artık dört kenarın hepsinde çiziliyor. Bugüne kadar hep iki kenardaydı."
+        ]
+      },
+      {
+        "title": "Toparlanma",
+        "changes": [
+          "Eskiden tahtaya ne kadar büyük olacağı söyleniyordu; bu da diğer her şeyin ne kadar yer istediğine dair elle yazılmış bir tahminden hesaplanıyordu. Bu tahminin beş kopyası birbiriyle uyuşmak zorundaydı ama zamanla birbirinden ayrıldılar; yukarıdakilerin çoğunun fark edilmemesinin sebebi de bu. Artık tahta sahip olduğu alanı kendisi ölçüyor, tahmin ise 73 satır kodla birlikte gitti.",
+          "Ezberleme ekranındaki tek bir İngilizce satır 24 dilli sürümden kaçmıştı. Artık taşlarını hepsinde, doğru çoğul biçimiyle sayıyor."
+        ],
+        "note": "Yukarıdaki iki hata da oyun sonrasındaki geri bildirim kutusundan geldi. Bir şey ters geliyorsa bize yaz — düzeltilmesinin açık ara en hızlı yolu bu."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess artık senin dilinde",
     "summary": "Oyunun tamamı ve her Öğren rehberi artık 24 dilde; site de doğrudan senin dilinde açılıyor.",

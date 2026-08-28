@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Hai trovato il bug del cavallo. Grazie.",
+    "summary": "Due messaggi lasciati nel riquadro dei feedback si sono rivelati bug veri: uno segnava in silenzio come sbagliate delle risposte corrette, l’altro mangiava i pezzi quando li posizionavi in fretta. Sono stati risolti entrambi e, già che c’eravamo, la scacchiera è più stabile e più reattiva.",
+    "groups": [
+      {
+        "title": "Il cavallo contato come re",
+        "description": "Uno di voi ha scritto: «Il sistema non vede il cavallo posizionato e indica che è stato mancato». Era esattamente così, e la cosa era pure peggiore di quanto sembrasse.",
+        "changes": [
+          "Ogni cavallo che posizionavi veniva registrato come re, quindi un cavallo sulla casa giusta risultava sbagliato. Ricostruivi alla perfezione una posizione di sei pezzi con dentro un cavallo e ottenevi il 67%.",
+          "Poteva portarsi dietro un secondo pezzo. Una volta che un cavallo aveva occupato una casa come re, il re o il cavallo successivo di quel colore semplicemente non compariva più, senza dire nulla.",
+          "I cavalli tornano a essere cavalli. Una ricostruzione perfetta vale il 100%, come sarebbe sempre dovuto essere."
+        ],
+        "note": "Se i tuoi punteggi sembravano avari, lo erano davvero. Ci dispiace."
+      },
+      {
+        "title": "Pezzi che sparivano quando giocavi veloce",
+        "description": "Un altro messaggio: «i pezzi che avevo messo sulla scacchiera all’inizio non sono esattamente quelli della posizione inviata… soprattutto se metto qualche pezzo velocemente». Anche qui, giusto in pieno.",
+        "changes": [
+          "Un timer nascosto frenava i tocchi e, quando arrivavano ravvicinati, buttava via i primi. Toccavi otto case in fretta e quattro di quei tocchi non erano mai esistiti.",
+          "Ora ogni tocco arriva a destinazione, per quanto veloce tu vada.",
+          "Anche togliere un pezzo subito dopo averlo messo funziona. Prima veniva ignorato per mezzo secondo."
+        ]
+      },
+      {
+        "title": "Una scacchiera che resta ferma",
+        "changes": [
+          "La scacchiera non salta e non scivola più quando il tempo finisce ed è il tuo turno di posizionare. Resta esattamente dov’era.",
+          "Memorizzazione e posizionamento non scorrono più. La scacchiera è dimensionata sullo schermo che hai davvero, quindi non c’è nulla verso cui scorrere.",
+          "Sul telefono la scacchiera è più grande e sta a 4px dal bordo invece che a 15px, così le case sono più facili da toccare. Il timer e il vassoio dei pezzi ora si allineano ai bordi della scacchiera invece di allargarsi oltre."
+        ]
+      },
+      {
+        "title": "Più pronta sotto il dito",
+        "changes": [
+          "Prima ogni tocco aspettava 50 millisecondi prima che succedesse qualcosa, che tu avessi fretta o no. Quella pausa non c’è più.",
+          "La scacchiera si ridisegna anche meno spesso. Tenere traccia di un tocco non ridisegna più tutte e 64 le case, e l’evidenziazione della casa selezionata anima solo le due proprietà che cambiano davvero.",
+          "L’anello che segna la casa toccata ora è disegnato su tutti e quattro i lati. Prima era sempre stato solo su due."
+        ]
+      },
+      {
+        "title": "Pulizie",
+        "changes": [
+          "Alla scacchiera veniva detto quanto essere grande, in base a una stima scritta a mano dello spazio che serviva a tutto il resto. Cinque copie di quella stima dovevano coincidere tra loro, e col tempo si sono allontanate: ecco perché buona parte di quanto sopra è passata inosservata. Ora la scacchiera misura lo spazio che ha, e la stima è sparita insieme a 73 righe di codice.",
+          "Una riga in inglese rimasta nella schermata di memorizzazione era sfuggita al rilascio in 24 lingue. Ora conta i tuoi pezzi in tutte, con il plurale giusto."
+        ],
+        "note": "Entrambi i bug qui sopra sono arrivati dal riquadro dei feedback dopo una partita. Se qualcosa non ti torna, scrivicelo: è di gran lunga il modo più rapido per farlo sistemare."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess parla la tua lingua",
     "summary": "Il gioco e tutte le guide di Impara sono ora disponibili in 24 lingue, e il sito si apre nella tua.",

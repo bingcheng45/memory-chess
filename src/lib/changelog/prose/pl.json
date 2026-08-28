@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Znaleźliście błąd ze skoczkiem. Dziękujemy.",
+    "summary": "Dwie wiadomości zostawione w okienku opinii okazały się prawdziwymi błędami: jeden po cichu uznawał poprawne odpowiedzi za złe, drugi połykał bierki, gdy ustawiałeś je szybko. Oba są naprawione, a przy okazji szachownica stoi spokojniej i reaguje szybciej.",
+    "groups": [
+      {
+        "title": "Skoczek liczony jak król",
+        "description": "Ktoś z was napisał: „System nie widzi ustawionego skoczka i pokazuje, że został pominięty”. Dokładnie tak było – a nawet gorzej, niż to wyglądało.",
+        "changes": [
+          "Każdy skoczek, którego ustawiłeś, zapisywał się jako król, więc skoczek na właściwym polu był liczony jako błąd. Odtworzyłeś idealnie pozycję z sześciu bierek z jednym skoczkiem – i dostawałeś 67%.",
+          "Mógł pociągnąć za sobą drugą bierkę. Gdy skoczek zajął już pole jako król, kolejny król lub skoczek tego koloru po prostu w ogóle się nie pojawiał, bez słowa.",
+          "Skoczki znowu są skoczkami. Idealne odtworzenie daje 100%, tak jak zawsze powinno."
+        ],
+        "note": "Jeśli twoje wyniki wydawały się skąpe, faktycznie takie były. Przepraszamy."
+      },
+      {
+        "title": "Bierki, które znikały przy szybkiej grze",
+        "description": "Kolejna wiadomość: „bierki, które na początku postawiłem na szachownicy, to nie dokładnie ta wysłana pozycja… zwłaszcza gdy stawiam kilka bierek szybko”. Też w punkt.",
+        "changes": [
+          "Ukryty licznik dławił dotknięcia i wyrzucał te wcześniejsze, gdy następowały blisko siebie. Dotknij szybko ośmiu pól, a czterech z nich nigdy nie było.",
+          "Teraz każde dotknięcie trafia, jakkolwiek szybko grasz.",
+          "Zdjęcie bierki tuż po jej postawieniu też działa. Wcześniej było ignorowane przez pół sekundy."
+        ]
+      },
+      {
+        "title": "Szachownica, która stoi w miejscu",
+        "changes": [
+          "Szachownica nie podskakuje już ani nie zjeżdża, gdy kończy się czas i przychodzi twoja kolej na ustawianie. Zostaje dokładnie tam, gdzie była.",
+          "Zapamiętywanie i ustawianie już się nie przewijają. Szachownica dopasowuje się do ekranu, który naprawdę masz, więc nie ma dokąd przewijać.",
+          "Na telefonie szachownica jest większa i dzieli ją od krawędzi 4px zamiast 15px, więc łatwiej trafić w pola. Zegar i taca z bierkami równają się teraz do krawędzi szachownicy, zamiast wystawać poza nią."
+        ]
+      },
+      {
+        "title": "Szybciej pod palcem",
+        "changes": [
+          "Kiedyś każde dotknięcie czekało 50 milisekund, zanim cokolwiek się wydarzyło – niezależnie od tego, czy się spieszyłeś. Tej pauzy już nie ma.",
+          "Szachownica przerysowuje się też rzadziej. Śledzenie dotknięcia nie renderuje już od nowa wszystkich 64 pól, a podświetlenie wybranego pola animuje tylko te dwie właściwości, które naprawdę się zmieniają.",
+          "Obramowanie pola, którego dotknąłeś, rysuje się teraz ze wszystkich czterech stron. Wcześniej zawsze było tylko z dwóch."
+        ]
+      },
+      {
+        "title": "Porządki",
+        "changes": [
+          "Kiedyś to szachownicy mówiło się, jak ma być duża – na podstawie ręcznie zapisanego szacunku, ile miejsca potrzebuje cała reszta. Pięć kopii tego szacunku musiało się ze sobą zgadzać, a one się rozjechały; właśnie dlatego spora część powyższych rzeczy pozostała niezauważona. Teraz szachownica sama mierzy, ile ma miejsca, a szacunek zniknął razem z 73 wierszami kodu.",
+          "Jeden zabłąkany angielski wiersz na ekranie zapamiętywania umknął wydaniu w 24 językach. Teraz liczy twoje bierki we wszystkich, w poprawnej liczbie mnogiej."
+        ],
+        "note": "Oba powyższe błędy przyszły z okienka opinii po partii. Jeśli coś ci nie gra, napisz do nas – to zdecydowanie najszybsza droga do naprawy."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess mówi teraz twoim językiem",
     "summary": "Gra i wszystkie przewodniki z działu Nauka są dostępne w 24 językach, a strona od razu startuje w twoim.",

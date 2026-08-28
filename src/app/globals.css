@@ -78,6 +78,17 @@ body {
 html.game-fixed {
   overflow: hidden;
   overscroll-behavior: none;
+  /*
+    Hiding the overflow says the document has nothing to scroll. It does not
+    say the finger may not drag, and on iOS that drag is handled before any of
+    it: the page rubber-bands and Safari's toolbar slides. `touch-action` is
+    the property that actually declines the gesture.
+
+    Vertical panning is the one being refused. Pinch-zoom is kept, because
+    taking it away would leave anyone who needs to magnify the board with no
+    way to do it. Taps are unaffected either way.
+  */
+  touch-action: pan-x pinch-zoom;
 }
 
 body.game-fixed {
@@ -87,6 +98,7 @@ body.game-fixed {
   flex-direction: column;
   overflow: hidden;
   overscroll-behavior: none;
+  touch-action: pan-x pinch-zoom;
 }
 
 /* Game container styles for responsive layout */

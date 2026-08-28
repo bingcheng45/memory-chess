@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-import { stat } from "fs/promises";
-import path from "path";
+import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { LEARN_SLUGS, UPDATED_AT, learnLocales } from "@/lib/seo/learn";
 import { LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
@@ -9,7 +8,27 @@ const SITE_URL = "https://thememorychess.com";
 
 type SitemapEntryConfig = {
   path: string;
-  sourceFile: string;
+  /**
+   * When this page's content last meaningfully changed, as an ISO date.
+   *
+   * Stated rather than derived. It was read from the source file's mtime,
+   * which is right on a working copy and wrong everywhere it matters: a
+   * deployment builds from a fresh clone, and a checkout stamps every file
+   * with the time it was written, so every page claimed to have changed at
+   * the moment of the deploy -- and again at the next one, whether or not
+   * anything about it had changed. A date that always says "just now" is one
+   * a crawler learns to disregard.
+   *
+   * A file's own history is not much better: it moves for a renamed variable
+   * or a padding class as readily as for a rewrite. Nobody but the author
+   * knows which edits a reader would care about, so the author says.
+   *
+   * Update these when the page's content changes, the same discipline the
+   * changelog and the learn articles already keep. A date left too long is a
+   * page crawled a little less often; there is no other cost, and none of the
+   * dishonesty of a date that moves on its own.
+   */
+  lastModified: string;
   changeFrequency: NonNullable<
     MetadataRoute.Sitemap[number]["changeFrequency"]
   >;
@@ -19,37 +38,37 @@ type SitemapEntryConfig = {
 const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   {
     path: "/",
-    sourceFile: "src/app/[locale]/page.tsx",
+    lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "weekly",
     priority: 1.0,
   },
   {
     path: "/game",
-    sourceFile: "src/app/[locale]/game/page.tsx",
+    lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "weekly",
     priority: 0.9,
   },
   {
     path: "/leaderboard",
-    sourceFile: "src/app/[locale]/leaderboard/page.tsx",
+    lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "daily",
     priority: 0.8,
   },
   {
     path: "/contact-us",
-    sourceFile: "src/app/[locale]/contact-us/page.tsx",
+    lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "monthly",
     priority: 0.5,
   },
   {
     path: "/changelog",
-    sourceFile: "src/lib/changelog/index.ts",
+    lastModified: LATEST_CHANGELOG_ENTRY.publishedAt,
     changeFrequency: "monthly",
     priority: 0.6,
   },
   {
     path: "/privacy",
-    sourceFile: "src/app/[locale]/privacy/page.tsx",
+    lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "yearly",
     priority: 0.4,
   },
@@ -61,17 +80,6 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
  * a duplicate-content signal.
  */
 const ENGLISH_ONLY_PATHS = new Set(["/privacy"]);
-
-async function getLastModified(sourceFile: string): Promise<Date> {
-  const filePath = path.join(process.cwd(), sourceFile);
-
-  try {
-    const fileStats = await stat(filePath);
-    return fileStats.mtime;
-  } catch {
-    return new Date();
-  }
-}
 
 /** hreflang block for one route across the locales that genuinely differ. */
 function alternatesFor(routePath: string, locales: readonly string[]) {
@@ -85,23 +93,20 @@ function alternatesFor(routePath: string, locales: readonly string[]) {
   };
 }
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticEntries: MetadataRoute.Sitemap = (
-    await Promise.all(
-      SITEMAP_ENTRIES.map(async (entry) => {
-        const lastModified = await getLastModified(entry.sourceFile);
-        const locales = ENGLISH_ONLY_PATHS.has(entry.path) ? ["en"] : LOCALES;
+export default function sitemap(): MetadataRoute.Sitemap {
+  const staticEntries: MetadataRoute.Sitemap = SITEMAP_ENTRIES.flatMap(
+    (entry) => {
+      const locales = ENGLISH_ONLY_PATHS.has(entry.path) ? ["en"] : LOCALES;
 
-        return locales.map((locale) => ({
-          url: `${SITE_URL}${localizedPath(entry.path, locale)}`,
-          lastModified,
-          changeFrequency: entry.changeFrequency,
-          priority: entry.priority,
-          alternates: alternatesFor(entry.path, locales),
-        }));
-      }),
-    )
-  ).flat();
+      return locales.map((locale) => ({
+        url: `${SITE_URL}${localizedPath(entry.path, locale)}`,
+        lastModified: new Date(entry.lastModified),
+        changeFrequency: entry.changeFrequency,
+        priority: entry.priority,
+        alternates: alternatesFor(entry.path, locales),
+      }));
+    },
+  );
 
   // Learn covers only the locales with a real translated article set. The rest
   // fall back to English at runtime and must not appear as separate URLs.

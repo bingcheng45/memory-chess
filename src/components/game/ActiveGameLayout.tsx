@@ -56,10 +56,30 @@ export default function ActiveGameLayout({
    */
   const boardAreaRef = useRef<HTMLDivElement>(null);
   const boardArea = useElementSize(boardAreaRef);
-  const rowStyle = { width: `${boardSizeForArea(boardArea)}px`, maxWidth: '100%' };
+  const boardSize = boardSizeForArea(boardArea);
+  const rowStyle = { width: `${boardSize}px`, maxWidth: '100%' };
+
+  /**
+   * Hold the board's area to the board itself.
+   *
+   * The area takes the height the two rows leave over, and the board fits a
+   * square inside it. On a tall screen that square runs out of width first, so
+   * the area is left taller than the board -- and, the board being centred in
+   * it, the surplus lands as equal bands above and below, pushing the timer
+   * and the palette away from the board they describe. On a tall phone that
+   * was 70px either side.
+   *
+   * Capping the area at the board collects the surplus outside the group
+   * instead, where the column's centring shares it above and below the whole
+   * thing. Reading the height back gives the same figure, so this settles
+   * rather than oscillating.
+   */
+  const boardAreaStyle = boardSize
+    ? { maxHeight: `${boardSize}px` }
+    : undefined;
 
   return (
-    <div className="flex h-full w-full flex-col items-center gap-2">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-2">
       {/*
         The two rows are a fixed height rather than being sized by their
         contents, because memorising and placing put very different things in
@@ -83,6 +103,7 @@ export default function ActiveGameLayout({
       <div
         ref={boardAreaRef}
         className="flex min-h-0 w-full flex-1 items-center justify-center"
+        style={boardAreaStyle}
       >
         {board}
       </div>

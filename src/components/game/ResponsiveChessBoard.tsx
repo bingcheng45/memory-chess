@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState, useCallback } from "react";
+import React, { useMemo, useCallback } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import type { BoardDimensions } from "@/hooks/useResponsiveBoard";
@@ -51,10 +51,6 @@ export default function ResponsiveChessBoard({
     [t],
   );
 
-  // Touch handling state
-  const [lastTapPosition, setLastTapPosition] = useState<string | null>(null);
-  const [lastTapTime, setLastTapTime] = useState<number>(0);
-  const touchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const { size, squareSize, pieceSize, fontSize, padding } = dimensions;
 
@@ -105,7 +101,10 @@ export default function ResponsiveChessBoard({
         : isHighlighted
           ? "2px solid rgba(0, 200, 0, 0.5)"
           : "none",
-      transition: "all 0.15s ease-in-out",
+      // Opt out of the browser's double-tap-to-zoom delay so a tap reaches the
+      // game immediately, while still allowing the page to be panned.
+      touchAction: "manipulation" as const,
+      transition: "outline 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
       boxShadow: feedback ? feedbackShadow[feedback] : "none",
     };
   };
@@ -118,52 +117,22 @@ export default function ResponsiveChessBoard({
     color: "black",
   };
 
-  // Handle square click with debounce for touch events
+  /**
+   * Handle activation of a square.
+   *
+   * Squares listen for `click` only. A mouse click and a touch tap both
+   * produce exactly one click event, so every gesture reaches the game once
+   * on desktop and on mobile alike. Listening for `touchend` as well used to
+   * double up, which was previously papered over with a timer that dropped
+   * taps instead.
+   */
   const handleSquareClick = useCallback(
     (file: number, rank: number) => {
       if (!isInteractive || isLoading || !onSquareClick) return;
 
-      const position: Position = {
-        file,
-        rank,
-      };
-
-      const squareKey = `${file}-${rank}`;
-      const currentTime = Date.now();
-
-      // Prevent rapid double-taps on mobile
-      if (lastTapPosition === squareKey && currentTime - lastTapTime < 500) {
-        console.log("Preventing rapid tap on same square", squareKey);
-        return;
-      }
-
-      // Handle case where rapid taps occur on different squares
-      if (lastTapPosition !== squareKey && currentTime - lastTapTime < 300) {
-        console.log("Detected rapid tap on different square", squareKey);
-
-        // Clear any pending timeouts
-        if (touchTimeoutRef.current) {
-          clearTimeout(touchTimeoutRef.current);
-          touchTimeoutRef.current = null;
-        }
-
-        // Wait a bit to ensure the previous tap was processed
-        touchTimeoutRef.current = setTimeout(() => {
-          setLastTapPosition(squareKey);
-          setLastTapTime(currentTime);
-          console.log("Processing delayed tap on", squareKey);
-          onSquareClick(position);
-        }, 50);
-
-        return;
-      }
-
-      // Normal tap handling
-      setLastTapPosition(squareKey);
-      setLastTapTime(currentTime);
-      onSquareClick(position);
+      onSquareClick({ file, rank });
     },
-    [isInteractive, isLoading, onSquareClick, lastTapPosition, lastTapTime],
+    [isInteractive, isLoading, onSquareClick],
   );
 
   // Find piece at a specific position
@@ -209,24 +178,11 @@ export default function ResponsiveChessBoard({
               }
             };
 
-            // Handle touch events explicitly
-            const handleTouchStart = (e: React.TouchEvent) => {
-              // Prevent default to avoid double-triggering with click
-              e.preventDefault();
-            };
-
-            const handleTouchEnd = (e: React.TouchEvent) => {
-              e.preventDefault();
-              handleSquareClick(file, rank);
-            };
-
             return (
               <div
                 key={`${file}-${rank}`}
                 style={squareStyle}
                 onClick={() => handleSquareClick(file, rank)}
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
                 onKeyDown={handleKeyDown}
                 tabIndex={isInteractive ? 0 : -1}
                 role={isInteractive ? "button" : "presentation"}

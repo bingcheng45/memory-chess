@@ -108,11 +108,10 @@ body {
 
 /* Mobile optimizations */
 @media (max-width: 640px) {
-  .container {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  
+  /* The small-screen gutter lives on each container as `px-1 sm:px-4`. A bare
+     `.container` rule here is unlayered, so it outranks Tailwind's utilities
+     layer and silently overrode any padding set that way. */
+
   /* Smaller text on mobile */
   h1 {
     font-size: 1.75rem !important;

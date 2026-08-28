@@ -442,7 +442,7 @@ function GamePageContent() {
     <main className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
       {isSubmissionFlashVisible && <GameSubmissionFlash />}
 
-      <div className="container mx-auto flex min-h-[calc(100dvh-2.5rem-1px)] flex-col items-center justify-start p-4">
+      <div className="container mx-auto flex min-h-[calc(100dvh-2.5rem-1px)] flex-col items-center justify-start px-1 py-4 sm:px-4">
         <PageHeader
           onBackClick={handleBack}
           pageType="game-memorize-solution"

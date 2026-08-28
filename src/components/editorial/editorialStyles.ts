@@ -7,7 +7,7 @@
  */
 export const EDITORIAL_STYLES = {
   page: "min-h-screen bg-bg-dark text-text-primary",
-  main: "container mx-auto max-w-4xl px-4 py-8 sm:py-10",
+  main: "container mx-auto max-w-4xl px-1 sm:px-4 py-8 sm:py-10",
   brand: "mb-10 flex justify-center",
   readingColumn: "mx-auto max-w-2xl",
   wideColumn: "mx-auto max-w-3xl",

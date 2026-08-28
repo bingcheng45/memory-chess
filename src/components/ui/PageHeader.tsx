@@ -65,7 +65,7 @@ export default function PageHeader({
   };
 
   return (
-    <div className={`relative w-full max-w-4xl mb-8 px-1 ${className}`} style={style}>
+    <div className={`relative w-full max-w-4xl mb-8 ${className}`} style={style}>
       {/* Title centered in the available space */}
       <div className="flex items-center justify-center">
         <Link 

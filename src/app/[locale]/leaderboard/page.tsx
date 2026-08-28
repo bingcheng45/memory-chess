@@ -168,7 +168,7 @@ function LeaderboardLoading() {
   const t = useTranslations("leaderboard");
   return (
     <div className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
-      <main className="container mx-auto px-4 pb-8 pt-4">
+      <main className="container mx-auto px-1 sm:px-4 pb-8 pt-4">
         <div className="flex justify-center mb-8">
           <PageHeader
             pageType="game-memorize-solution"
@@ -196,7 +196,7 @@ function LeaderboardLoading() {
 export default function LeaderboardPage() {
   return (
     <div className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
-      <main className="container mx-auto px-4 pb-8 pt-4">
+      <main className="container mx-auto px-1 sm:px-4 pb-8 pt-4">
         <div className="flex justify-center mb-8">
           <PageHeader
             pageType="game-memorize-solution"

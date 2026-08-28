@@ -38,7 +38,7 @@ const linkClassName =
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-bg-dark text-text-primary">
-      <main className="container mx-auto max-w-4xl px-4 py-8 sm:py-10">
+      <main className="container mx-auto max-w-4xl px-1 sm:px-4 py-8 sm:py-10">
         <div className="mb-10 flex justify-center">
           <PageHeader showSoundSettings={false} className="mb-0" />
         </div>

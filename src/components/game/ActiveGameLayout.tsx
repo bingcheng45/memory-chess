@@ -87,8 +87,12 @@ export default function ActiveGameLayout({
         {board}
       </div>
 
+      {/* This padding is the whole of the gap between the board and what sits
+          under it, the board filling its area exactly. Wider screens used to
+          take an extra 4px, which read as the controls having drifted away
+          from the board they belong to. */}
       <section
-        className={`${CONTROLS_ROW_HEIGHT} w-full shrink-0 py-2 sm:py-3`}
+        className={`${CONTROLS_ROW_HEIGHT} w-full shrink-0 py-2`}
         style={rowStyle}
         aria-label={t("hud.controls")}
       >

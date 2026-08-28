@@ -1,16 +1,6 @@
 import { render, screen, within } from "@/test-utils/intl";
 import ResultBoardComparison from "@/components/game/ResultBoardComparison";
 
-jest.mock("@/hooks/useResponsiveBoard", () => ({
-  useResponsiveBoard: () => ({
-    size: 320,
-    squareSize: 40,
-    pieceSize: 32,
-    fontSize: { coordinates: 10, pieceSelector: 12 },
-    padding: 5,
-  }),
-}));
-
 jest.mock("@/components/game/ResponsiveChessBoard", () => {
   function MockResponsiveChessBoard({
     pieces,

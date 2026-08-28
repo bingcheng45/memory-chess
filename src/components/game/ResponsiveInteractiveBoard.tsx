@@ -15,7 +15,6 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { Badge } from '@/components/ui/badge';
-import type { BoardDimensions } from '@/hooks/useResponsiveBoard';
 import ActiveGameLayout from './ActiveGameLayout';
 
 import { useTranslations } from "next-intl";
@@ -33,14 +32,12 @@ interface ResponsiveInteractiveBoardProps {
   readonly playerSolution: ChessPiece[];
   readonly onPlacePiece: (piece: ChessPiece) => void;
   readonly onRemovePiece: (position: Position) => void;
-  readonly dimensions: BoardDimensions;
   readonly status: ReactNode;
 }
 export default function ResponsiveInteractiveBoard({
   playerSolution,
   onPlacePiece,
   onRemovePiece,
-  dimensions,
   status,
 }: ResponsiveInteractiveBoardProps) {
   const t = useTranslations("game");
@@ -118,7 +115,6 @@ export default function ResponsiveInteractiveBoard({
   
   return (
     <ActiveGameLayout
-      dimensions={dimensions}
       status={status}
       board={
         <ResponsiveChessBoard
@@ -127,7 +123,6 @@ export default function ResponsiveInteractiveBoard({
           isInteractive={true}
           onSquareClick={handleSquareClick}
           showCoordinates={true}
-          dimensions={dimensions}
         />
       }
       controls={

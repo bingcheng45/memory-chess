@@ -21,10 +21,6 @@ import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizatio
 import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
 import { formatTimeWithMilliseconds } from '@/utils/timer';
 import PageHeader from '@/components/ui/PageHeader';
-import {
-  ACTIVE_GAME_RESERVED_HEIGHT,
-  useResponsiveBoard,
-} from '@/hooks/useResponsiveBoard';
 import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
 
 import { useTranslations } from "next-intl";
@@ -77,7 +73,6 @@ function GamePageContent() {
   const [isSubmissionFlashVisible, setIsSubmissionFlashVisible] = useState(false);
   const solutionStartTimeRef = useRef<number | null>(null);
   const submissionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const activeBoardDimensions = useResponsiveBoard(280, 600, ACTIVE_GAME_RESERVED_HEIGHT);
   
   // Track initial page load
   useEffect(() => {
@@ -338,8 +333,12 @@ function GamePageContent() {
   const renderGameContent = () => {
     console.log('Rendering game content for phase:', gamePhase);
     
-    // Shared container for consistent width and centering across all phases
+    // Shared container for consistent width and centering across all phases.
+    // The active phases also take the full height they are given, so the board
+    // can be sized from the space left over instead of from a guess at how
+    // tall everything else is.
     const containerClass = "w-full max-w-4xl mx-auto flex flex-col items-center justify-center";
+    const activePhaseClass = `${containerClass} min-h-0 flex-1`;
     
     switch (gamePhase) {
       case GamePhase.CONFIGURATION:
@@ -360,19 +359,18 @@ function GamePageContent() {
         
       case GamePhase.MEMORIZATION:
         return (
-          <div className={containerClass}>
+          <div className={activePhaseClass}>
             <ErrorBoundary>
-              <ResponsiveMemorizationBoard dimensions={activeBoardDimensions} />
+              <ResponsiveMemorizationBoard />
             </ErrorBoundary>
           </div>
         );
         
       case GamePhase.SOLUTION:
         return (
-          <div className={containerClass}>
+          <div className={activePhaseClass}>
             <ErrorBoundary>
               <ResponsiveInteractiveBoard
-                dimensions={activeBoardDimensions}
                 status={
                   <div className="relative flex h-full items-center justify-center px-3 sm:px-4">
                     <div className="text-center text-sm font-medium sm:text-base">{t("hud.time")}<div className="font-mono text-2xl font-bold leading-tight sm:text-3xl">
@@ -437,21 +435,33 @@ function GamePageContent() {
     }
   };
   
+  // Memorising and placing are meant to be played without scrolling: the board
+  // is sized from the room that is actually left, so the screen holds exactly
+  // what fits. Configuration and the result page are ordinary scrolling pages.
+  const isActivePhase =
+    gamePhase === GamePhase.MEMORIZATION || gamePhase === GamePhase.SOLUTION;
+
   return (
-    <main className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
+    <main
+      className={`bg-bg-dark text-text-primary ${
+        isActivePhase
+          ? 'h-[calc(100dvh-2.5rem-1px)] overflow-hidden'
+          : 'min-h-[calc(100dvh-2.5rem-1px)]'
+      }`}
+    >
       {isSubmissionFlashVisible && <GameSubmissionFlash />}
 
-      <div className="container mx-auto flex min-h-[calc(100dvh-2.5rem-1px)] flex-col items-center justify-start px-1 py-2 sm:px-4 sm:py-4">
+      <div
+        className={`container mx-auto flex flex-col items-center justify-start px-1 py-2 sm:px-4 sm:py-4 ${
+          isActivePhase ? 'h-full' : 'min-h-[calc(100dvh-2.5rem-1px)]'
+        }`}
+      >
         <PageHeader
           onBackClick={handleBack}
           pageType="game-memorize-solution"
           className="!mb-3"
           style={{
-            // Match the board exactly. The CSS-only frame width has to guess
-            // the reserved height, and that guess differs between the compact
-            // and full layouts; the measured board size never drifts from it.
-            width: `${activeBoardDimensions.size}px`,
-            maxWidth: '100%'
+            maxWidth: '600px'
           }}
         />
 

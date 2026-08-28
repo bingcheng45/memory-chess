@@ -2,15 +2,6 @@ import { useState } from "react";
 import { fireEvent, screen, render } from "@/test-utils/intl";
 import ResponsiveInteractiveBoard from "@/components/game/ResponsiveInteractiveBoard";
 import type { ChessPiece, PieceColor, PieceType, Position } from "@/types/chess";
-import type { BoardDimensions } from "@/hooks/useResponsiveBoard";
-
-const dimensions: BoardDimensions = {
-  size: 480,
-  squareSize: 60,
-  pieceSize: 45,
-  padding: 4,
-  fontSize: { coordinates: 10, pieceSelector: 12 },
-};
 
 /**
  * Drives the board the way the game page does: the parent owns the placed
@@ -28,7 +19,6 @@ function Harness({ onChange }: { onChange?: (pieces: ChessPiece[]) => void }) {
 
   return (
     <ResponsiveInteractiveBoard
-      dimensions={dimensions}
       status={null}
       playerSolution={pieces}
       onPlacePiece={(piece) => update([...pieces, piece])}

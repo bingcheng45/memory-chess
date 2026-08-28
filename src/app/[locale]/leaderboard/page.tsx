@@ -8,7 +8,6 @@ import { LeaderboardEntry } from '@/types/leaderboard';
 import { useSearchParams } from 'next/navigation';
 import { Link } from "@/i18n/navigation";
 import { Button } from '@/components/ui/button';
-import { ACTIVE_GAME_FRAME_WIDTH } from '@/hooks/useResponsiveBoard';
 
 import { useTranslations } from "next-intl";
 // Interface for entry details from URL params
@@ -173,8 +172,7 @@ function LeaderboardLoading() {
           <PageHeader
             pageType="game-memorize-solution"
             style={{
-              width: ACTIVE_GAME_FRAME_WIDTH,
-              maxWidth: '100%',
+              maxWidth: '600px',
             }}
           />
         </div>
@@ -201,12 +199,11 @@ export default function LeaderboardPage() {
           <PageHeader
             pageType="game-memorize-solution"
             style={{
-              width: ACTIVE_GAME_FRAME_WIDTH,
-              maxWidth: '100%',
+              maxWidth: '600px',
             }}
           />
         </div>
-        
+
         <Suspense fallback={<LeaderboardLoading />}>
           <LeaderboardContent />
         </Suspense>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo } from "react";
-import { useResponsiveBoard } from "@/hooks/useResponsiveBoard";
 import { fenToChessPieces } from "@/utils/chessPieces";
 import { comparePositions } from "@/utils/positionComparator";
 import { useTranslations } from "next-intl";
@@ -22,17 +21,6 @@ export default function ResultBoardComparison({
   userPosition,
 }: ResultBoardComparisonProps) {
   const t = useTranslations("game");
-  /**
-   * The cap is the width of one column of the two-up comparison: the
-   * `max-w-4xl` shell (896px) less the 24px grid gap, halved. Capping lower
-   * than that left the boards short of the page gutter on a phone, where the
-   * grid is a single column and the board should run the full width.
-   *
-   * The board draws its squares at an absolute size, so this has to stay at or
-   * below the real column width -- a larger board clamped by `max-width` would
-   * push its squares outside the clip.
-   */
-  const dimensions = useResponsiveBoard(280, 436);
 
   const comparison = useMemo(() => {
     if (!originalPosition || !userPosition) return null;
@@ -81,11 +69,6 @@ export default function ResultBoardComparison({
     );
   }
 
-  const boardFrameStyle = {
-    width: `${dimensions.size}px`,
-    maxWidth: "100%",
-  };
-
   return (
     <section aria-labelledby="result-comparison-heading" className="w-full">
       <div className="mb-4 text-center">
@@ -124,12 +107,11 @@ export default function ResultBoardComparison({
           data-result-board="target"
         >
           <figcaption className="mb-2 flex h-8 items-center text-sm font-semibold text-text-primary sm:text-base">{t("comparison.originalBoard")}</figcaption>
-          <div style={boardFrameStyle}>
+          <div className="w-full">
             <ResponsiveChessBoard
               pieces={comparison.originalPieces}
               isInteractive={false}
               showCoordinates={true}
-              dimensions={dimensions}
             />
           </div>
         </figure>
@@ -139,12 +121,11 @@ export default function ResultBoardComparison({
           data-result-board="submitted"
         >
           <figcaption className="mb-2 flex h-8 items-center text-sm font-semibold text-text-primary sm:text-base">{t("comparison.submittedBoard")}</figcaption>
-          <div style={boardFrameStyle}>
+          <div className="w-full">
             <ResponsiveChessBoard
               pieces={comparison.userPieces}
               isInteractive={false}
               showCoordinates={true}
-              dimensions={dimensions}
               squareFeedback={comparison.feedback}
             />
           </div>

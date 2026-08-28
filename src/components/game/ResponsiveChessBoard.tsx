@@ -1,18 +1,21 @@
 "use client";
 
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo, useCallback, useRef } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import type { BoardDimensions } from "@/hooks/useResponsiveBoard";
+import { useElementSize } from "@/hooks/useElementSize";
 import { ChessPiece, Position } from "@/types/chess";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 
 /**
  * Square size, in pixels, below which the board is treated as compact. Every
- * phone in portrait sits under this once the board has taken its 92% of the
- * viewport width; tablets and desktops sit above it.
+ * phone in portrait sits under this once the board has taken the width the
+ * page gutter leaves it; tablets and desktops sit above it.
  */
 const COMPACT_SQUARE_SIZE = 56;
+
+/** Beyond this the board stops growing and simply centres in its space. */
+const MAX_BOARD_SIZE = 600;
 
 export type SquareFeedbackStatus = "correct" | "incorrect" | "missing";
 export type SquareFeedbackMap = Readonly<Record<string, SquareFeedbackStatus>>;
@@ -24,7 +27,6 @@ interface ResponsiveChessBoardProps {
   onSquareClick?: (position: Position) => void;
   isLoading?: boolean;
   showCoordinates?: boolean;
-  dimensions: BoardDimensions;
   renderOverlay?: (squareSize: number) => React.ReactNode;
   squareFeedback?: SquareFeedbackMap;
 }
@@ -36,7 +38,6 @@ export default function ResponsiveChessBoard({
   onSquareClick,
   isLoading = false,
   showCoordinates = true,
-  dimensions,
   renderOverlay,
   squareFeedback,
 }: ResponsiveChessBoardProps) {
@@ -57,7 +58,37 @@ export default function ResponsiveChessBoard({
   );
 
 
-  const { size, squareSize, pieceSize, fontSize, padding } = dimensions;
+  /**
+   * The board is sized by CSS -- a square that grows to fill whatever box it
+   * is given -- and then measures itself, rather than being told a pixel size
+   * worked out from the viewport.
+   *
+   * Working the size out ahead of time means restating elsewhere how tall the
+   * rest of the screen is, and that restatement drifts: a row that grows by a
+   * few pixels leaves the board overflowing or short, with nothing to say so.
+   * Measuring asks the browser what it actually did.
+   */
+  const areaRef = useRef<HTMLDivElement>(null);
+  const area = useElementSize(areaRef);
+
+  /**
+   * A square cannot be expressed with `aspect-ratio` alone here: a block that
+   * is told to fill its width keeps that width when `max-height` clamps it,
+   * and comes out oblong. Taking the smaller of the two measured sides gives a
+   * square that fits either way.
+   *
+   * Where the area has no height of its own -- a column that is as tall as
+   * whatever it contains -- the width is the only constraint.
+   */
+  const size = Math.min(
+    area.width,
+    area.height > 0 ? area.height : area.width,
+    MAX_BOARD_SIZE,
+  );
+
+  const squareSize = size / 8;
+  const padding = Math.max(4, Math.floor(squareSize / 8));
+  const fontSize = { coordinates: Math.max(8, Math.floor(squareSize / 4)) };
 
   // Files and ranks for coordinate labels
   const files = useMemo(() => ["a", "b", "c", "d", "e", "f", "g", "h"], []);
@@ -68,9 +99,7 @@ export default function ResponsiveChessBoard({
     () => ({
       width: `${size}px`,
       height: `${size}px`,
-      maxWidth: "100%",
       boxSizing: "border-box" as const,
-      margin: "0 auto", // Ensure centering
       userSelect: "none" as const,
       WebkitUserSelect: "none" as const,
     }),
@@ -104,8 +133,10 @@ export default function ResponsiveChessBoard({
     } as const;
 
     return {
-      width: `${squareSize}px`,
-      height: `${squareSize}px`,
+      // The grid gives each square its cell; filling it keeps the squares
+      // exact even before the board has been measured.
+      width: "100%",
+      height: "100%",
       backgroundColor: isDark ? "var(--board-dark)" : "var(--board-light)",
       border: "1px solid rgba(0, 0, 0, 0.15)",
       position: "relative" as const,
@@ -161,7 +192,11 @@ export default function ResponsiveChessBoard({
 
   return (
     <div
-      className="game-container relative mx-auto select-none overflow-hidden rounded-lg shadow-lg"
+      ref={areaRef}
+      className="flex h-full w-full items-center justify-center"
+    >
+    <div
+      className="game-container relative select-none overflow-hidden rounded-lg shadow-lg"
       style={boardStyle}
       onDragStart={(event) => event.preventDefault()}
     >
@@ -254,15 +289,16 @@ export default function ResponsiveChessBoard({
                   </span>
                 )}
 
-                {/* Chess piece */}
+                {/* Chess piece, sized as a fraction of its square so it does
+                    not depend on the board having been measured yet. */}
                 {piece && (
-                  <div className="pointer-events-none">
+                  <div className="pointer-events-none relative h-4/5 w-4/5">
                     <Image
                       src={getPieceImageUrl(piece.type, piece.color)}
                       alt={describePiece(piece)}
-                      width={pieceSize}
-                      height={pieceSize}
-                      className="transform-gpu drop-shadow-sm"
+                      fill
+                      sizes="(max-width: 640px) 12vw, 80px"
+                      className="transform-gpu object-contain drop-shadow-sm"
                       priority={true}
                       draggable={false}
                     />
@@ -278,6 +314,7 @@ export default function ResponsiveChessBoard({
       {renderOverlay && (
         <div className="absolute inset-0 z-20">{renderOverlay(squareSize)}</div>
       )}
+    </div>
     </div>
   );
 }

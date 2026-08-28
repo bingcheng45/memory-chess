@@ -1,6 +1,9 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useRef, type ReactNode } from 'react';
+
+import { useElementSize } from '@/hooks/useElementSize';
+import { boardSizeForArea } from './ResponsiveChessBoard';
 
 import { useTranslations } from "next-intl";
 
@@ -24,6 +27,19 @@ export default function ActiveGameLayout({
 }: ActiveGameLayoutProps) {
   const t = useTranslations("game");
 
+  /**
+   * The timer and the palette are held to the board's width so the controls
+   * line up with the squares they act on. Left to fill the column they run
+   * far wider than the board on a desktop, which reads as the screen having
+   * drifted apart.
+   *
+   * The width comes from measuring the same area the board measures, through
+   * the same rule, so the two cannot disagree.
+   */
+  const boardAreaRef = useRef<HTMLDivElement>(null);
+  const boardArea = useElementSize(boardAreaRef);
+  const rowStyle = { width: `${boardSizeForArea(boardArea)}px`, maxWidth: '100%' };
+
   return (
     <div className="flex h-full w-full flex-col items-center gap-2">
       {/*
@@ -37,6 +53,7 @@ export default function ActiveGameLayout({
       */}
       <section
         className="h-20 w-full shrink-0 overflow-hidden sm:h-[88px]"
+        style={rowStyle}
         aria-label={t("hud.status")}
       >
         {status}
@@ -45,12 +62,16 @@ export default function ActiveGameLayout({
       {/* min-h-0 lets this shrink below its content's natural size, which is
           what allows the board to be bounded by the space left over rather
           than pushing the page taller. */}
-      <div className="flex min-h-0 w-full flex-1 items-center justify-center">
+      <div
+        ref={boardAreaRef}
+        className="flex min-h-0 w-full flex-1 items-center justify-center"
+      >
         {board}
       </div>
 
       <section
         className="h-[136px] w-full shrink-0 py-2 sm:h-[150px] sm:py-3"
+        style={rowStyle}
         aria-label={t("hud.controls")}
       >
         {controls}

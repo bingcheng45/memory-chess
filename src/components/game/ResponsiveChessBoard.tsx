@@ -17,6 +17,27 @@ const COMPACT_SQUARE_SIZE = 56;
 /** Beyond this the board stops growing and simply centres in its space. */
 const MAX_BOARD_SIZE = 600;
 
+/**
+ * The size of the board that fits an area.
+ *
+ * A square cannot be expressed with `aspect-ratio` alone here: a block told to
+ * fill its width keeps that width when `max-height` clamps it, and comes out
+ * oblong. Taking the smaller of the two sides gives a square that fits either
+ * way. Where the area has no height of its own -- a column as tall as whatever
+ * it contains -- width is the only constraint.
+ *
+ * Exported so the rows above and below the board can be given the same width
+ * without restating the rule; the whole point of measuring is that one place
+ * decides.
+ */
+export function boardSizeForArea(area: { width: number; height: number }) {
+  return Math.min(
+    area.width,
+    area.height > 0 ? area.height : area.width,
+    MAX_BOARD_SIZE,
+  );
+}
+
 export type SquareFeedbackStatus = "correct" | "incorrect" | "missing";
 export type SquareFeedbackMap = Readonly<Record<string, SquareFeedbackStatus>>;
 
@@ -71,20 +92,7 @@ export default function ResponsiveChessBoard({
   const areaRef = useRef<HTMLDivElement>(null);
   const area = useElementSize(areaRef);
 
-  /**
-   * A square cannot be expressed with `aspect-ratio` alone here: a block that
-   * is told to fill its width keeps that width when `max-height` clamps it,
-   * and comes out oblong. Taking the smaller of the two measured sides gives a
-   * square that fits either way.
-   *
-   * Where the area has no height of its own -- a column that is as tall as
-   * whatever it contains -- the width is the only constraint.
-   */
-  const size = Math.min(
-    area.width,
-    area.height > 0 ? area.height : area.width,
-    MAX_BOARD_SIZE,
-  );
+  const size = boardSizeForArea(area);
 
   const squareSize = size / 8;
   const padding = Math.max(4, Math.floor(squareSize / 8));

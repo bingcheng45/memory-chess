@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Konumu ezberle",
       "skip": "Atla",
-      "hint": "Süre bittiğinde tahta boşalacak"
+      "hint": "Süre bittiğinde tahta boşalacak",
+      "rememberPieces": "{count, plural, one {Taşı ezberle} other {# taşın hepsini ezberle}}"
     },
     "place": {
       "title": "Taşları yerleştir",

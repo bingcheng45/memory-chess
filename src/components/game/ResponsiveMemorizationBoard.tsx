@@ -123,7 +123,7 @@ export default function ResponsiveMemorizationBoard() {
             </div>
 
             <div className="mt-1 truncate text-xs text-text-secondary">
-              Remember all {gameState.pieceCount} pieces
+              {t("memorize.rememberPieces", { count: gameState.pieceCount })}
             </div>
           </div>
 

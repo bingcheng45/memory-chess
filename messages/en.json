@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Memorize the Position",
       "skip": "Skip",
-      "hint": "The board will clear when the timer ends"
+      "hint": "The board will clear when the timer ends",
+      "rememberPieces": "{count, plural, one {Remember the piece} other {Remember all # pieces}}"
     },
     "place": {
       "title": "Place Pieces",

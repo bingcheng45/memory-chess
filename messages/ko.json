@@ -170,7 +170,8 @@
     "memorize": {
       "title": "국면을 외우세요",
       "skip": "건너뛰기",
-      "hint": "시간이 끝나면 판이 비워집니다"
+      "hint": "시간이 끝나면 판이 비워집니다",
+      "rememberPieces": "{count, plural, other {기물 #개를 모두 외우세요}}"
     },
     "place": {
       "title": "기물 배치하기",

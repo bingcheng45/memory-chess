@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Zapamiętaj pozycję",
       "skip": "Pomiń",
-      "hint": "Szachownica opustoszeje, gdy skończy się czas"
+      "hint": "Szachownica opustoszeje, gdy skończy się czas",
+      "rememberPieces": "{count, plural, one {Zapamiętaj bierkę} few {Zapamiętaj wszystkie # bierki} many {Zapamiętaj wszystkich # bierek} other {Zapamiętaj # bierki}}"
     },
     "place": {
       "title": "Ustaw bierki",

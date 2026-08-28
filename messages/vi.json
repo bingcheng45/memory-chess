@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Ghi nhớ thế cờ",
       "skip": "Bỏ qua",
-      "hint": "Bàn cờ sẽ trống khi hết giờ"
+      "hint": "Bàn cờ sẽ trống khi hết giờ",
+      "rememberPieces": "{count, plural, other {Ghi nhớ tất cả # quân cờ}}"
     },
     "place": {
       "title": "Đặt quân cờ",

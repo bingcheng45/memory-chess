@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Präge dir die Stellung ein",
       "skip": "Überspringen",
-      "hint": "Das Brett wird geleert, sobald die Zeit abläuft"
+      "hint": "Das Brett wird geleert, sobald die Zeit abläuft",
+      "rememberPieces": "{count, plural, one {Präge dir die Figur ein} other {Präge dir alle # Figuren ein}}"
     },
     "place": {
       "title": "Figuren setzen",

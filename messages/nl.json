@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Onthoud de stelling",
       "skip": "Overslaan",
-      "hint": "Het bord wordt leeggemaakt zodra de tijd om is"
+      "hint": "Het bord wordt leeggemaakt zodra de tijd om is",
+      "rememberPieces": "{count, plural, one {Onthoud het stuk} other {Onthoud alle # stukken}}"
     },
     "place": {
       "title": "Plaats de stukken",

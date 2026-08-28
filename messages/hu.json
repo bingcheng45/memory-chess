@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Jegyezd meg az állást",
       "skip": "Kihagyás",
-      "hint": "A tábla kiürül, amint lejár az idő"
+      "hint": "A tábla kiürül, amint lejár az idő",
+      "rememberPieces": "{count, plural, one {Jegyezd meg a bábut} other {Jegyezd meg mind a # bábut}}"
     },
     "place": {
       "title": "Helyezd el a bábukat",

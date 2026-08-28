@@ -22,7 +22,17 @@ export default function ResultBoardComparison({
   userPosition,
 }: ResultBoardComparisonProps) {
   const t = useTranslations("game");
-  const dimensions = useResponsiveBoard(280, 420);
+  /**
+   * The cap is the width of one column of the two-up comparison: the
+   * `max-w-4xl` shell (896px) less the 24px grid gap, halved. Capping lower
+   * than that left the boards short of the page gutter on a phone, where the
+   * grid is a single column and the board should run the full width.
+   *
+   * The board draws its squares at an absolute size, so this has to stay at or
+   * below the real column width -- a larger board clamped by `max-width` would
+   * push its squares outside the clip.
+   */
+  const dimensions = useResponsiveBoard(280, 436);
 
   const comparison = useMemo(() => {
     if (!originalPosition || !userPosition) return null;

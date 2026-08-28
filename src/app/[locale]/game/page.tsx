@@ -481,9 +481,20 @@ function GamePageContent() {
     >
       {isSubmissionFlashVisible && <GameSubmissionFlash />}
 
+      {/*
+        `h-full`, not `min-h-full`. A minimum does not make a height definite,
+        and everything below here asks for a percentage of it: the column's
+        own `h-full`, and the board area it hands the board. Under a minimum
+        those resolve to `auto`, the column falls to its floor, and the board
+        area lands on exactly MIN_BOARD_SIZE however much room the screen has
+        -- which then sets the width of the timer and palette rows.
+
+        A viewport too short for the column is still reachable: the column
+        overflows this box and `main` above scrolls to it.
+      */}
       <div
         className={`container mx-auto flex flex-col items-center justify-start px-1 py-2 sm:px-4 sm:py-4 ${
-          isActivePhase ? 'min-h-full' : PAGE_BELOW_BANNER_MIN_HEIGHT
+          isActivePhase ? 'h-full' : PAGE_BELOW_BANNER_MIN_HEIGHT
         }`}
       >
         <PageHeader

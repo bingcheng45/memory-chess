@@ -4,6 +4,7 @@ import React, { useMemo, useCallback, useRef } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useElementSize } from "@/hooks/useElementSize";
+import { MAX_BOARD_SIZE } from "@/lib/layout";
 import { ChessPiece, Position } from "@/types/chess";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 
@@ -14,8 +15,20 @@ import { getPieceImageUrl } from "@/utils/chessPieces";
  */
 const COMPACT_SQUARE_SIZE = 56;
 
-/** Beyond this the board stops growing and simply centres in its space. */
-const MAX_BOARD_SIZE = 600;
+/** Ring around the selected square, thinner where a square is compact. */
+const SELECTION_RING_WIDTH = 2;
+const SELECTION_RING_WIDTH_COMPACT = 1;
+
+/** Ring marking a square correct, wrong or missed on the review boards. */
+const FEEDBACK_RING_WIDTH = 3;
+
+/** Coordinate labels, as a fraction of a square, with a legible floor. */
+const COORDINATE_FONT_DIVISOR = 4;
+const COORDINATE_FONT_MIN = 8;
+
+/** Inset of the coordinate labels from the square's corner. */
+const COORDINATE_INSET_DIVISOR = 8;
+const COORDINATE_INSET_MIN = 4;
 
 /**
  * The size of the board that fits an area.
@@ -95,8 +108,16 @@ export default function ResponsiveChessBoard({
   const size = boardSizeForArea(area);
 
   const squareSize = size / 8;
-  const padding = Math.max(4, Math.floor(squareSize / 8));
-  const fontSize = { coordinates: Math.max(8, Math.floor(squareSize / 4)) };
+  const padding = Math.max(
+    COORDINATE_INSET_MIN,
+    Math.floor(squareSize / COORDINATE_INSET_DIVISOR),
+  );
+  const fontSize = {
+    coordinates: Math.max(
+      COORDINATE_FONT_MIN,
+      Math.floor(squareSize / COORDINATE_FONT_DIVISOR),
+    ),
+  };
 
   // Files and ranks for coordinate labels
   const files = useMemo(() => ["a", "b", "c", "d", "e", "f", "g", "h"], []);
@@ -123,7 +144,10 @@ export default function ResponsiveChessBoard({
    * A phone in portrait lands around a 43px square and gets the thinner ring;
    * a tablet or desktop board reaches the 75px square cap and gets the full 2px.
    */
-  const selectionRingWidth = squareSize < COMPACT_SQUARE_SIZE ? 1 : 2;
+  const selectionRingWidth =
+    squareSize < COMPACT_SQUARE_SIZE
+      ? SELECTION_RING_WIDTH_COMPACT
+      : SELECTION_RING_WIDTH;
 
   // Calculate square styles
   const getSquareStyle = (file: number, rank: number) => {
@@ -135,9 +159,9 @@ export default function ResponsiveChessBoard({
 
     const feedback = squareFeedback?.[`${file}-${rank}`];
     const feedbackShadow = {
-      correct: "inset 0 0 0 3px rgba(34, 197, 94, 0.9)",
-      incorrect: "inset 0 0 0 3px rgba(239, 68, 68, 0.95)",
-      missing: "inset 0 0 0 3px rgba(245, 158, 11, 0.95)",
+      correct: `inset 0 0 0 ${FEEDBACK_RING_WIDTH}px rgba(34, 197, 94, 0.9)`,
+      incorrect: `inset 0 0 0 ${FEEDBACK_RING_WIDTH}px rgba(239, 68, 68, 0.95)`,
+      missing: `inset 0 0 0 ${FEEDBACK_RING_WIDTH}px rgba(245, 158, 11, 0.95)`,
     } as const;
 
     return {

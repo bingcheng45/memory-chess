@@ -21,6 +21,7 @@ import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizatio
 import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
 import { formatTimeWithMilliseconds } from '@/utils/timer';
 import PageHeader from '@/components/ui/PageHeader';
+import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
 
 import { useTranslations } from "next-intl";
@@ -461,14 +462,14 @@ function GamePageContent() {
       className={`bg-bg-dark text-text-primary ${
         isActivePhase
           ? 'min-h-0 flex-1 overflow-hidden'
-          : 'min-h-[calc(100dvh-2.5rem-1px)]'
+          : PAGE_BELOW_BANNER_MIN_HEIGHT
       }`}
     >
       {isSubmissionFlashVisible && <GameSubmissionFlash />}
 
       <div
         className={`container mx-auto flex flex-col items-center justify-start px-1 py-2 sm:px-4 sm:py-4 ${
-          isActivePhase ? 'h-full' : 'min-h-[calc(100dvh-2.5rem-1px)]'
+          isActivePhase ? 'h-full' : PAGE_BELOW_BANNER_MIN_HEIGHT
         }`}
       >
         <PageHeader
@@ -476,7 +477,7 @@ function GamePageContent() {
           pageType="game-memorize-solution"
           className="!mb-3"
           style={{
-            maxWidth: '600px'
+            maxWidth: MAX_BOARD_SIZE_PX
           }}
         />
 

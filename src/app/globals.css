@@ -65,6 +65,30 @@ body {
     "Noto Sans CJK KR", "Nanum Gothic", sans-serif;
 }
 
+/*
+  Memorising and placing are played on a screen that does not move: the board
+  is sized to the room left over, so there is nothing below to scroll to.
+
+  Hiding the overflow is not enough on iOS, where a page whose content fits
+  still rubber-bands, and where dragging shows or hides Safari's toolbar and
+  changes the viewport under the layout. Pinning the scrolling element stops
+  both. The height then comes from the flex column rather than from a figure
+  for how tall the notification banner happens to be.
+*/
+html.game-fixed {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body.game-fixed {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 /* Game container styles for responsive layout */
 .game-container {
   width: 100%;

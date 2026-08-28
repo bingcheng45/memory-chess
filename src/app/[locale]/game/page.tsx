@@ -74,6 +74,27 @@ function GamePageContent() {
   const solutionStartTimeRef = useRef<number | null>(null);
   const submissionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   
+  // Memorising and placing are played without scrolling: the board is sized
+  // from the room that is actually left, so the screen holds exactly what
+  // fits. Configuration and the result page are ordinary scrolling pages.
+  const isActivePhase =
+    gamePhase === GamePhase.MEMORIZATION || gamePhase === GamePhase.SOLUTION;
+
+  useEffect(() => {
+    if (!isActivePhase) return;
+
+    // Pinning the scrolling element, rather than only hiding its overflow,
+    // is what stops iOS rubber-banding a page whose content already fits.
+    const { documentElement, body } = document;
+    documentElement.classList.add('game-fixed');
+    body.classList.add('game-fixed');
+
+    return () => {
+      documentElement.classList.remove('game-fixed');
+      body.classList.remove('game-fixed');
+    };
+  }, [isActivePhase]);
+
   // Track initial page load
   useEffect(() => {
     analytics.trackFeatureUsage('game_page', 'view');
@@ -435,17 +456,11 @@ function GamePageContent() {
     }
   };
   
-  // Memorising and placing are meant to be played without scrolling: the board
-  // is sized from the room that is actually left, so the screen holds exactly
-  // what fits. Configuration and the result page are ordinary scrolling pages.
-  const isActivePhase =
-    gamePhase === GamePhase.MEMORIZATION || gamePhase === GamePhase.SOLUTION;
-
   return (
     <main
       className={`bg-bg-dark text-text-primary ${
         isActivePhase
-          ? 'h-[calc(100dvh-2.5rem-1px)] overflow-hidden'
+          ? 'min-h-0 flex-1 overflow-hidden'
           : 'min-h-[calc(100dvh-2.5rem-1px)]'
       }`}
     >

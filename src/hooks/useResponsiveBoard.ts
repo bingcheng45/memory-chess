@@ -20,7 +20,7 @@ export const SMALL_SCREEN_MAX_WIDTH = 640;
  * correspondingly less.
  */
 export const ACTIVE_GAME_RESERVED_HEIGHT = 384;
-export const ACTIVE_GAME_RESERVED_HEIGHT_COMPACT = 344;
+export const ACTIVE_GAME_RESERVED_HEIGHT_COMPACT = 360;
 
 /**
  * Horizontal gutter between the page content and the screen edge on small

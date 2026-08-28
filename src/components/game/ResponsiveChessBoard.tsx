@@ -101,6 +101,12 @@ export default function ResponsiveChessBoard({
         : isHighlighted
           ? "2px solid rgba(0, 200, 0, 0.5)"
           : "none",
+      // Draw the ring inside the square. An outline sits outside the box by
+      // default, where the squares painted after it -- the ones to the right
+      // and below -- cover it, and where the board's overflow clip cuts it off
+      // along the outer files and ranks, so only its top and left edges
+      // survived.
+      outlineOffset: "-2px",
       // Opt out of the browser's double-tap-to-zoom delay so a tap reaches the
       // game immediately, while still allowing the page to be panned.
       touchAction: "manipulation" as const,

@@ -7,6 +7,13 @@ import type { BoardDimensions } from "@/hooks/useResponsiveBoard";
 import { ChessPiece, Position } from "@/types/chess";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 
+/**
+ * Square size, in pixels, below which the board is treated as compact. Every
+ * phone in portrait sits under this once the board has taken its 92% of the
+ * viewport width; tablets and desktops sit above it.
+ */
+const COMPACT_SQUARE_SIZE = 56;
+
 export type SquareFeedbackStatus = "correct" | "incorrect" | "missing";
 export type SquareFeedbackMap = Readonly<Record<string, SquareFeedbackStatus>>;
 
@@ -15,7 +22,6 @@ interface ResponsiveChessBoardProps {
   selectedSquare?: Position | null;
   isInteractive?: boolean;
   onSquareClick?: (position: Position) => void;
-  highlightedSquares?: Set<string>;
   isLoading?: boolean;
   showCoordinates?: boolean;
   dimensions: BoardDimensions;
@@ -28,7 +34,6 @@ export default function ResponsiveChessBoard({
   selectedSquare = null,
   isInteractive = true,
   onSquareClick,
-  highlightedSquares = new Set(),
   isLoading = false,
   showCoordinates = true,
   dimensions,
@@ -72,6 +77,17 @@ export default function ResponsiveChessBoard({
     [size],
   );
 
+  /**
+   * Thickness of the selected-square ring.
+   *
+   * Measured against the square it is drawn in rather than the viewport: the
+   * board is sized continuously from the available space, so the square is
+   * what decides whether a 2px ring reads as a highlight or as a heavy border.
+   * A phone in portrait lands around a 43px square and gets the thinner ring;
+   * a tablet or desktop board reaches the 75px square cap and gets the full 2px.
+   */
+  const selectionRingWidth = squareSize < COMPACT_SQUARE_SIZE ? 1 : 2;
+
   // Calculate square styles
   const getSquareStyle = (file: number, rank: number) => {
     const isDark = (file + rank) % 2 === 1;
@@ -80,9 +96,6 @@ export default function ResponsiveChessBoard({
       selectedSquare.file === file &&
       selectedSquare.rank === rank;
 
-    // Get square name (e.g., "a1")
-    const squareName = `${files[file]}${ranks[rank]}`;
-    const isHighlighted = highlightedSquares.has(squareName);
     const feedback = squareFeedback?.[`${file}-${rank}`];
     const feedbackShadow = {
       correct: "inset 0 0 0 3px rgba(34, 197, 94, 0.9)",
@@ -97,16 +110,14 @@ export default function ResponsiveChessBoard({
       border: "1px solid rgba(0, 0, 0, 0.15)",
       position: "relative" as const,
       outline: isSelected
-        ? "2px solid rgba(0, 128, 255, 0.8)"
-        : isHighlighted
-          ? "2px solid rgba(0, 200, 0, 0.5)"
-          : "none",
+        ? `${selectionRingWidth}px solid rgba(0, 128, 255, 0.8)`
+        : "none",
       // Draw the ring inside the square. An outline sits outside the box by
       // default, where the squares painted after it -- the ones to the right
       // and below -- cover it, and where the board's overflow clip cuts it off
       // along the outer files and ranks, so only its top and left edges
       // survived.
-      outlineOffset: "-2px",
+      outlineOffset: `-${selectionRingWidth}px`,
       // Opt out of the browser's double-tap-to-zoom delay so a tap reaches the
       // game immediately, while still allowing the page to be panned.
       touchAction: "manipulation" as const,

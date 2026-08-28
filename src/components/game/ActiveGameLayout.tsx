@@ -23,7 +23,7 @@ export default function ActiveGameLayout({
   return (
     <div className="flex w-full flex-col items-center gap-2">
       <section
-        className="h-[88px] w-full shrink-0 overflow-hidden"
+        className="h-16 w-full shrink-0 overflow-hidden sm:h-[88px]"
         style={frameStyle}
         aria-label={t("hud.status")}
       >

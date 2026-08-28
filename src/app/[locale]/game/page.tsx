@@ -22,7 +22,6 @@ import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveB
 import { formatTimeWithMilliseconds } from '@/utils/timer';
 import PageHeader from '@/components/ui/PageHeader';
 import {
-  ACTIVE_GAME_FRAME_WIDTH,
   ACTIVE_GAME_RESERVED_HEIGHT,
   useResponsiveBoard,
 } from '@/hooks/useResponsiveBoard';
@@ -442,13 +441,16 @@ function GamePageContent() {
     <main className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
       {isSubmissionFlashVisible && <GameSubmissionFlash />}
 
-      <div className="container mx-auto flex min-h-[calc(100dvh-2.5rem-1px)] flex-col items-center justify-start px-1 py-4 sm:px-4">
+      <div className="container mx-auto flex min-h-[calc(100dvh-2.5rem-1px)] flex-col items-center justify-start px-1 py-2 sm:px-4 sm:py-4">
         <PageHeader
           onBackClick={handleBack}
           pageType="game-memorize-solution"
           className="!mb-3"
           style={{
-            width: ACTIVE_GAME_FRAME_WIDTH,
+            // Match the board exactly. The CSS-only frame width has to guess
+            // the reserved height, and that guess differs between the compact
+            // and full layouts; the measured board size never drifts from it.
+            width: `${activeBoardDimensions.size}px`,
             maxWidth: '100%'
           }}
         />

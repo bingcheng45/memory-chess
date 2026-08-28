@@ -2,7 +2,25 @@
 
 import { useEffect, useState } from 'react';
 
+/**
+ * Width, in pixels, below which the active game uses its compact layout.
+ * Matches Tailwind's `sm` breakpoint so the JS sizing and the `sm:` classes
+ * that shrink the chrome switch at the same point.
+ */
+export const SMALL_SCREEN_MAX_WIDTH = 640;
+
+/**
+ * Vertical space the active game screen needs for everything that is not the
+ * board: header, timer row, piece palette and the page's own padding.
+ *
+ * The board is square, so it takes the smaller of the width and height
+ * budgets -- on a phone the height budget is the smaller one, which means
+ * this number, not the gutter, is what decides how wide the board gets.
+ * The compact layout trims the timer row and the page padding, so it reserves
+ * correspondingly less.
+ */
 export const ACTIVE_GAME_RESERVED_HEIGHT = 384;
+export const ACTIVE_GAME_RESERVED_HEIGHT_COMPACT = 344;
 
 /**
  * Horizontal gutter between the page content and the screen edge on small
@@ -49,11 +67,16 @@ export function useResponsiveBoard(
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       
-      // Keep enough room for the page header and active-game controls.
-      const availableHeight = viewportHeight - reservedHeight;
-      
-      // Leave a small horizontal gutter on mobile screens.
-      const isSmallScreen = viewportWidth < 768;
+      const isSmallScreen = viewportWidth < SMALL_SCREEN_MAX_WIDTH;
+
+      // Keep enough room for the page header and active-game controls. The
+      // compact layout shows a shorter timer row and tighter page padding, so
+      // it hands the board back what it no longer needs.
+      const availableHeight =
+        viewportHeight -
+        (isSmallScreen
+          ? Math.min(reservedHeight, ACTIVE_GAME_RESERVED_HEIGHT_COMPACT)
+          : reservedHeight);
 
       // Calculate the largest square that fits the shared gameplay frame.
       // Small screens reserve a fixed gutter so the board sits flush with the

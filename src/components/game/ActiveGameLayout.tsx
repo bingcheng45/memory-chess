@@ -3,18 +3,23 @@
 import { useRef, type ReactNode } from 'react';
 
 import { useElementSize } from '@/hooks/useElementSize';
-import { MIN_BOARD_SIZE } from '@/lib/layout';
+import { MIN_BOARD_SIZE, MIN_ROW_WIDTH } from '@/lib/layout';
 import { boardSizeForArea } from './ResponsiveChessBoard';
 
 import { useTranslations } from "next-intl";
 
 /**
  * Height of the row above the board, holding the timer and the phase's one
- * action. It must fit the taller of the two: memorising stacks a title, the
- * clock, a progress bar and the piece count, and at 64px that stack was
- * clipped top and bottom.
+ * action. It must fit the taller of the two phases: memorising stacks a
+ * title, the clock, a progress bar and the piece count.
+ *
+ * That stack measures 86px below `sm` and 96px above it. Both earlier figures
+ * -- 64px, then 80px and 88px -- were under it, so the row clipped its own
+ * contents at every width; the margin was small enough to read as a tight
+ * crop rather than a bug. These leave a little room above the measurement so
+ * a locale whose words run taller does not go straight back to clipping.
  */
-const STATUS_ROW_HEIGHT = 'h-20 sm:h-[88px]';
+const STATUS_ROW_HEIGHT = 'h-24 sm:h-[104px]';
 
 /**
  * Height of the row below the board. It must fit the piece palette, which is
@@ -35,7 +40,7 @@ const CONTROLS_ROW_HEIGHT = 'h-[136px] sm:h-[150px]';
  * class name and cannot follow an interpolation, so a class cannot be built
  * from a number -- which is exactly why the pair has to be checked.
  */
-const STATUS_ROW_PX = { base: 80, sm: 88 } as const;
+const STATUS_ROW_PX = { base: 96, sm: 104 } as const;
 const CONTROLS_ROW_PX = { base: 136, sm: 150 } as const;
 const COLUMN_GAP_PX = 8;
 const COLUMN_GAP_COUNT = 2;
@@ -68,7 +73,7 @@ export function activeColumnMinHeight(breakpoint: 'base' | 'sm') {
  * short for it overflows and can be scrolled, rather than silently crushing
  * the one thing the screen is for. Where the room exists this changes nothing.
  */
-const COLUMN_MIN_HEIGHT = 'min-h-[472px] sm:min-h-[494px]';
+const COLUMN_MIN_HEIGHT = 'min-h-[488px] sm:min-h-[510px]';
 
 interface ActiveGameLayoutProps {
   readonly status: ReactNode;
@@ -102,7 +107,14 @@ export default function ActiveGameLayout({
   const boardAreaRef = useRef<HTMLDivElement>(null);
   const boardArea = useElementSize(boardAreaRef);
   const boardSize = boardSizeForArea(boardArea);
-  const rowStyle = { width: `${boardSize}px`, maxWidth: '100%' };
+  const rowStyle = {
+    width: `${boardSize}px`,
+    // Follow the board down only as far as the rows' own contents allow. The
+    // `min()` keeps the floor from becoming an overflow of its own on a
+    // viewport narrower than it.
+    minWidth: `min(${MIN_ROW_WIDTH}px, 100%)`,
+    maxWidth: '100%',
+  };
 
   /**
    * Hold the board's area to the board itself.

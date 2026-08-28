@@ -53,3 +53,24 @@ export const PAGE_BELOW_BANNER_MIN_HEIGHT = 'min-h-[calc(100dvh-2.5rem-1px)]';
  * far better than a board nobody can see.
  */
 export const MIN_BOARD_SIZE = 240;
+
+/**
+ * The narrowest the rows either side of the board may be drawn, in pixels.
+ *
+ * Those rows are held to the board's width so the controls line up with the
+ * squares they act on. That is right until the board reaches its floor, at
+ * which point the rows follow it down and the status row's title wraps to a
+ * second line, overflowing a row whose height is fixed. A 240px board took it
+ * to 120px of text in an 88px box.
+ *
+ * The figure is what the title needs to stay on one line: 175px at its widest
+ * across the locales, 88px reserved beside it for the skip control, and 24px
+ * of padding on the row's inner box -- the title's own `calc(100% - 88px)`
+ * resolves against that inner box, not the row, so the padding counts twice
+ * over if it is left out. 287px, rounded up for locales not sampled.
+ *
+ * Below this the rows stop following the board. They are then wider than it,
+ * which looks looser than the alignment they normally keep, and is much the
+ * lesser of the two.
+ */
+export const MIN_ROW_WIDTH = 304;

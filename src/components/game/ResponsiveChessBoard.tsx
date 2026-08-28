@@ -1,11 +1,55 @@
 "use client";
 
-import React, { useMemo, useRef, useState, useCallback } from "react";
+import React, { useMemo, useCallback, useRef } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import type { BoardDimensions } from "@/hooks/useResponsiveBoard";
+import { useElementSize } from "@/hooks/useElementSize";
+import { MAX_BOARD_SIZE } from "@/lib/layout";
 import { ChessPiece, Position } from "@/types/chess";
 import { getPieceImageUrl } from "@/utils/chessPieces";
+
+/**
+ * Square size, in pixels, below which the board is treated as compact. Every
+ * phone in portrait sits under this once the board has taken the width the
+ * page gutter leaves it; tablets and desktops sit above it.
+ */
+const COMPACT_SQUARE_SIZE = 56;
+
+/** Ring around the selected square, thinner where a square is compact. */
+const SELECTION_RING_WIDTH = 2;
+const SELECTION_RING_WIDTH_COMPACT = 1;
+
+/** Ring marking a square correct, wrong or missed on the review boards. */
+const FEEDBACK_RING_WIDTH = 3;
+
+/** Coordinate labels, as a fraction of a square, with a legible floor. */
+const COORDINATE_FONT_DIVISOR = 4;
+const COORDINATE_FONT_MIN = 8;
+
+/** Inset of the coordinate labels from the square's corner. */
+const COORDINATE_INSET_DIVISOR = 8;
+const COORDINATE_INSET_MIN = 4;
+
+/**
+ * The size of the board that fits an area.
+ *
+ * A square cannot be expressed with `aspect-ratio` alone here: a block told to
+ * fill its width keeps that width when `max-height` clamps it, and comes out
+ * oblong. Taking the smaller of the two sides gives a square that fits either
+ * way. Where the area has no height of its own -- a column as tall as whatever
+ * it contains -- width is the only constraint.
+ *
+ * Exported so the rows above and below the board can be given the same width
+ * without restating the rule; the whole point of measuring is that one place
+ * decides.
+ */
+export function boardSizeForArea(area: { width: number; height: number }) {
+  return Math.min(
+    area.width,
+    area.height > 0 ? area.height : area.width,
+    MAX_BOARD_SIZE,
+  );
+}
 
 export type SquareFeedbackStatus = "correct" | "incorrect" | "missing";
 export type SquareFeedbackMap = Readonly<Record<string, SquareFeedbackStatus>>;
@@ -15,10 +59,8 @@ interface ResponsiveChessBoardProps {
   selectedSquare?: Position | null;
   isInteractive?: boolean;
   onSquareClick?: (position: Position) => void;
-  highlightedSquares?: Set<string>;
   isLoading?: boolean;
   showCoordinates?: boolean;
-  dimensions: BoardDimensions;
   renderOverlay?: (squareSize: number) => React.ReactNode;
   squareFeedback?: SquareFeedbackMap;
 }
@@ -28,10 +70,8 @@ export default function ResponsiveChessBoard({
   selectedSquare = null,
   isInteractive = true,
   onSquareClick,
-  highlightedSquares = new Set(),
   isLoading = false,
   showCoordinates = true,
-  dimensions,
   renderOverlay,
   squareFeedback,
 }: ResponsiveChessBoardProps) {
@@ -51,12 +91,33 @@ export default function ResponsiveChessBoard({
     [t],
   );
 
-  // Touch handling state
-  const [lastTapPosition, setLastTapPosition] = useState<string | null>(null);
-  const [lastTapTime, setLastTapTime] = useState<number>(0);
-  const touchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const { size, squareSize, pieceSize, fontSize, padding } = dimensions;
+  /**
+   * The board is sized by CSS -- a square that grows to fill whatever box it
+   * is given -- and then measures itself, rather than being told a pixel size
+   * worked out from the viewport.
+   *
+   * Working the size out ahead of time means restating elsewhere how tall the
+   * rest of the screen is, and that restatement drifts: a row that grows by a
+   * few pixels leaves the board overflowing or short, with nothing to say so.
+   * Measuring asks the browser what it actually did.
+   */
+  const areaRef = useRef<HTMLDivElement>(null);
+  const area = useElementSize(areaRef);
+
+  const size = boardSizeForArea(area);
+
+  const squareSize = size / 8;
+  const padding = Math.max(
+    COORDINATE_INSET_MIN,
+    Math.floor(squareSize / COORDINATE_INSET_DIVISOR),
+  );
+  const fontSize = {
+    coordinates: Math.max(
+      COORDINATE_FONT_MIN,
+      Math.floor(squareSize / COORDINATE_FONT_DIVISOR),
+    ),
+  };
 
   // Files and ranks for coordinate labels
   const files = useMemo(() => ["a", "b", "c", "d", "e", "f", "g", "h"], []);
@@ -67,14 +128,26 @@ export default function ResponsiveChessBoard({
     () => ({
       width: `${size}px`,
       height: `${size}px`,
-      maxWidth: "100%",
       boxSizing: "border-box" as const,
-      margin: "0 auto", // Ensure centering
       userSelect: "none" as const,
       WebkitUserSelect: "none" as const,
     }),
     [size],
   );
+
+  /**
+   * Thickness of the selected-square ring.
+   *
+   * Measured against the square it is drawn in rather than the viewport: the
+   * board is sized continuously from the available space, so the square is
+   * what decides whether a 2px ring reads as a highlight or as a heavy border.
+   * A phone in portrait lands around a 43px square and gets the thinner ring;
+   * a tablet or desktop board reaches the 75px square cap and gets the full 2px.
+   */
+  const selectionRingWidth =
+    squareSize < COMPACT_SQUARE_SIZE
+      ? SELECTION_RING_WIDTH_COMPACT
+      : SELECTION_RING_WIDTH;
 
   // Calculate square styles
   const getSquareStyle = (file: number, rank: number) => {
@@ -84,28 +157,34 @@ export default function ResponsiveChessBoard({
       selectedSquare.file === file &&
       selectedSquare.rank === rank;
 
-    // Get square name (e.g., "a1")
-    const squareName = `${files[file]}${ranks[rank]}`;
-    const isHighlighted = highlightedSquares.has(squareName);
     const feedback = squareFeedback?.[`${file}-${rank}`];
     const feedbackShadow = {
-      correct: "inset 0 0 0 3px rgba(34, 197, 94, 0.9)",
-      incorrect: "inset 0 0 0 3px rgba(239, 68, 68, 0.95)",
-      missing: "inset 0 0 0 3px rgba(245, 158, 11, 0.95)",
+      correct: `inset 0 0 0 ${FEEDBACK_RING_WIDTH}px rgba(34, 197, 94, 0.9)`,
+      incorrect: `inset 0 0 0 ${FEEDBACK_RING_WIDTH}px rgba(239, 68, 68, 0.95)`,
+      missing: `inset 0 0 0 ${FEEDBACK_RING_WIDTH}px rgba(245, 158, 11, 0.95)`,
     } as const;
 
     return {
-      width: `${squareSize}px`,
-      height: `${squareSize}px`,
+      // The grid gives each square its cell; filling it keeps the squares
+      // exact even before the board has been measured.
+      width: "100%",
+      height: "100%",
       backgroundColor: isDark ? "var(--board-dark)" : "var(--board-light)",
       border: "1px solid rgba(0, 0, 0, 0.15)",
       position: "relative" as const,
       outline: isSelected
-        ? "2px solid rgba(0, 128, 255, 0.8)"
-        : isHighlighted
-          ? "2px solid rgba(0, 200, 0, 0.5)"
-          : "none",
-      transition: "all 0.15s ease-in-out",
+        ? `${selectionRingWidth}px solid rgba(0, 128, 255, 0.8)`
+        : "none",
+      // Draw the ring inside the square. An outline sits outside the box by
+      // default, where the squares painted after it -- the ones to the right
+      // and below -- cover it, and where the board's overflow clip cuts it off
+      // along the outer files and ranks, so only its top and left edges
+      // survived.
+      outlineOffset: `-${selectionRingWidth}px`,
+      // Opt out of the browser's double-tap-to-zoom delay so a tap reaches the
+      // game immediately, while still allowing the page to be panned.
+      touchAction: "manipulation" as const,
+      transition: "outline 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
       boxShadow: feedback ? feedbackShadow[feedback] : "none",
     };
   };
@@ -118,52 +197,22 @@ export default function ResponsiveChessBoard({
     color: "black",
   };
 
-  // Handle square click with debounce for touch events
+  /**
+   * Handle activation of a square.
+   *
+   * Squares listen for `click` only. A mouse click and a touch tap both
+   * produce exactly one click event, so every gesture reaches the game once
+   * on desktop and on mobile alike. Listening for `touchend` as well used to
+   * double up, which was previously papered over with a timer that dropped
+   * taps instead.
+   */
   const handleSquareClick = useCallback(
     (file: number, rank: number) => {
       if (!isInteractive || isLoading || !onSquareClick) return;
 
-      const position: Position = {
-        file,
-        rank,
-      };
-
-      const squareKey = `${file}-${rank}`;
-      const currentTime = Date.now();
-
-      // Prevent rapid double-taps on mobile
-      if (lastTapPosition === squareKey && currentTime - lastTapTime < 500) {
-        console.log("Preventing rapid tap on same square", squareKey);
-        return;
-      }
-
-      // Handle case where rapid taps occur on different squares
-      if (lastTapPosition !== squareKey && currentTime - lastTapTime < 300) {
-        console.log("Detected rapid tap on different square", squareKey);
-
-        // Clear any pending timeouts
-        if (touchTimeoutRef.current) {
-          clearTimeout(touchTimeoutRef.current);
-          touchTimeoutRef.current = null;
-        }
-
-        // Wait a bit to ensure the previous tap was processed
-        touchTimeoutRef.current = setTimeout(() => {
-          setLastTapPosition(squareKey);
-          setLastTapTime(currentTime);
-          console.log("Processing delayed tap on", squareKey);
-          onSquareClick(position);
-        }, 50);
-
-        return;
-      }
-
-      // Normal tap handling
-      setLastTapPosition(squareKey);
-      setLastTapTime(currentTime);
-      onSquareClick(position);
+      onSquareClick({ file, rank });
     },
-    [isInteractive, isLoading, onSquareClick, lastTapPosition, lastTapTime],
+    [isInteractive, isLoading, onSquareClick],
   );
 
   // Find piece at a specific position
@@ -175,7 +224,11 @@ export default function ResponsiveChessBoard({
 
   return (
     <div
-      className="game-container relative mx-auto select-none overflow-hidden rounded-lg shadow-lg"
+      ref={areaRef}
+      className="flex h-full w-full items-center justify-center"
+    >
+    <div
+      className="game-container relative select-none overflow-hidden rounded-lg shadow-lg"
       style={boardStyle}
       onDragStart={(event) => event.preventDefault()}
     >
@@ -209,24 +262,11 @@ export default function ResponsiveChessBoard({
               }
             };
 
-            // Handle touch events explicitly
-            const handleTouchStart = (e: React.TouchEvent) => {
-              // Prevent default to avoid double-triggering with click
-              e.preventDefault();
-            };
-
-            const handleTouchEnd = (e: React.TouchEvent) => {
-              e.preventDefault();
-              handleSquareClick(file, rank);
-            };
-
             return (
               <div
                 key={`${file}-${rank}`}
                 style={squareStyle}
                 onClick={() => handleSquareClick(file, rank)}
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
                 onKeyDown={handleKeyDown}
                 tabIndex={isInteractive ? 0 : -1}
                 role={isInteractive ? "button" : "presentation"}
@@ -281,15 +321,16 @@ export default function ResponsiveChessBoard({
                   </span>
                 )}
 
-                {/* Chess piece */}
+                {/* Chess piece, sized as a fraction of its square so it does
+                    not depend on the board having been measured yet. */}
                 {piece && (
-                  <div className="pointer-events-none">
+                  <div className="pointer-events-none relative h-4/5 w-4/5">
                     <Image
                       src={getPieceImageUrl(piece.type, piece.color)}
                       alt={describePiece(piece)}
-                      width={pieceSize}
-                      height={pieceSize}
-                      className="transform-gpu drop-shadow-sm"
+                      fill
+                      sizes="(max-width: 640px) 12vw, 80px"
+                      className="transform-gpu object-contain drop-shadow-sm"
                       priority={true}
                       draggable={false}
                     />
@@ -305,6 +346,7 @@ export default function ResponsiveChessBoard({
       {renderOverlay && (
         <div className="absolute inset-0 z-20">{renderOverlay(squareSize)}</div>
       )}
+    </div>
     </div>
   );
 }

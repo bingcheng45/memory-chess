@@ -1,4 +1,63 @@
-import { fenToChessPieces } from "@/utils/chessPieces";
+import {
+  fenToChessPieces,
+  mapChessJsPieceToType,
+  pieceTypeToFenChar,
+} from "@/utils/chessPieces";
+import type { PieceColor, PieceType } from "@/types/chess";
+
+const ALL_PIECE_TYPES: readonly PieceType[] = [
+  "pawn",
+  "knight",
+  "bishop",
+  "rook",
+  "queen",
+  "king",
+];
+const ALL_PIECE_COLORS: readonly PieceColor[] = ["white", "black"];
+
+describe("pieceTypeToFenChar", () => {
+  it.each([
+    ["pawn", "P", "p"],
+    ["knight", "N", "n"],
+    ["bishop", "B", "b"],
+    ["rook", "R", "r"],
+    ["queen", "Q", "q"],
+    ["king", "K", "k"],
+  ] as const)("maps %s to %s / %s", (type, white, black) => {
+    expect(pieceTypeToFenChar(type, "white")).toBe(white);
+    expect(pieceTypeToFenChar(type, "black")).toBe(black);
+  });
+
+  it("never encodes a knight as a king", () => {
+    // Regression: deriving the FEN char from the first letter of the type name
+    // turned every knight into a king, so knights were scored as missed.
+    expect(pieceTypeToFenChar("knight", "white")).not.toBe(
+      pieceTypeToFenChar("king", "white"),
+    );
+    expect(pieceTypeToFenChar("knight", "black")).not.toBe(
+      pieceTypeToFenChar("king", "black"),
+    );
+  });
+
+  it("assigns a distinct character to every piece type", () => {
+    const chars = ALL_PIECE_TYPES.map((type) =>
+      pieceTypeToFenChar(type, "white"),
+    );
+
+    expect(new Set(chars).size).toBe(ALL_PIECE_TYPES.length);
+  });
+
+  it("round-trips through mapChessJsPieceToType for every type and color", () => {
+    ALL_PIECE_TYPES.forEach((type) => {
+      ALL_PIECE_COLORS.forEach((color) => {
+        expect(mapChessJsPieceToType(pieceTypeToFenChar(type, color))).toBe(
+          type,
+        );
+      });
+    });
+  });
+});
+
 
 describe("fenToChessPieces", () => {
   it("parses every piece type, color, and board rank", () => {

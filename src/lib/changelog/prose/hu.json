@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Megtaláltátok a huszárhibát. Köszönjük.",
+    "summary": "A visszajelzési dobozban hagyott két üzenetről kiderült, hogy valódi hibák: az egyik csendben rossznak jelölte a helyes válaszokat, a másik megette a bábukat, ha gyorsan helyezted el őket. Mindkettőt kijavítottuk, és ha már ott jártunk, a tábla nyugodtabban áll és gyorsabban reagál.",
+    "groups": [
+      {
+        "title": "A huszár, amit királyként pontoztunk",
+        "description": "Valaki azt írta közületek: „A rendszer nem látja a lerakott huszárt, és azt mutatja, hogy kimaradt.” Pontosan így volt – és még rosszabb, mint amilyennek látszott.",
+        "changes": [
+          "Minden lerakott huszár királyként rögzült, így a jó mezőn álló huszár is hibásnak számított. Ha hibátlanul raktál vissza egy hat bábus állást egyetlen huszárral, 67% lett az eredményed.",
+          "Egy másik bábut is magával ránthatott. Amint egy huszár királyként foglalt el egy mezőt, az adott szín következő királya vagy huszárja szó nélkül meg sem jelent.",
+          "A huszárok újra huszárok. A hibátlan visszarakás 100%, ahogy mindig is kellett volna."
+        ],
+        "note": "Ha fukarnak tűntek az eredményeid, azok is voltak. Elnézést érte."
+      },
+      {
+        "title": "Bábuk, amelyek gyors játéknál eltűntek",
+        "description": "Egy másik üzenet: „a bábuk, amiket eredetileg a táblára tettem, nem pontosan a beküldött állás… főleg, ha gyorsan rakok le néhány bábut.” Ez is telitalálat volt.",
+        "changes": [
+          "Egy rejtett időzítő fogta vissza a koppintásokat, és ha közel értek egymáshoz, eldobta a korábbiakat. Koppints gyorsan nyolc mezőre – és négy közülük meg sem történt.",
+          "Most már minden koppintás célba ér, bármilyen gyors is vagy.",
+          "Az is működik, ha a lerakás után azonnal leveszed a bábut. Ezt korábban fél másodpercig figyelmen kívül hagytuk."
+        ]
+      },
+      {
+        "title": "Tábla, ami a helyén marad",
+        "changes": [
+          "A tábla már nem ugrik és nem csúszik el, amikor lejár az idő, és te következel a lerakással. Pontosan ott marad, ahol volt.",
+          "A megjegyzés és a lerakás már nem görget. A tábla ahhoz a képernyőhöz igazodik, ami valóban a kezedben van, így nincs is hova görgetni.",
+          "Telefonon a tábla nagyobb, és 15px helyett 4px-re van a széltől, így könnyebb eltalálni a mezőket. Az óra és a bábutartó most a tábla széleihez igazodik, ahelyett hogy szélesebbre nyúlna nála."
+        ]
+      },
+      {
+        "title": "Fürgébb az ujjad alatt",
+        "changes": [
+          "Korábban minden koppintás 50 ezredmásodpercet várt, mielőtt bármi történt volna – akár siettél, akár nem. Ez a szünet megszűnt.",
+          "A tábla ritkábban is rajzolódik újra. Egy koppintás követése már nem rendereli újra mind a 64 mezőt, a kijelölt mező kiemelése pedig csak azt a két tulajdonságot animálja, ami tényleg változik.",
+          "A megkoppintott mezőt jelölő keret most mind a négy oldalon látszik. Eddig mindig csak kettőn."
+        ]
+      },
+      {
+        "title": "Nagytakarítás",
+        "changes": [
+          "Korábban mi mondtuk meg a táblának, mekkora legyen – egy kézzel írt becslésből, hogy mennyi helyet kér minden más. Ennek a becslésnek öt másolata volt, és egyezniük kellett volna egymással, csakhogy szétcsúsztak; jórészt ezért maradt észrevétlen a fentiek nagy része. A tábla mostantól maga méri meg, mennyi helye van, a becslés pedig eltűnt 73 sor kóddal együtt.",
+          "Egyetlen angol sor a megjegyzés képernyőn kimaradt a 24 nyelvű kiadásból. Mostantól mindegyiken számolja a bábuidat, a helyes többes számban."
+        ],
+        "note": "A fenti két hiba a játék utáni visszajelzési dobozból érkezett. Ha valami nem stimmel, szólj – messze ez a leggyorsabb út a javításhoz."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "A Memory Chess mostantól a te nyelveden beszél",
     "summary": "A játék és a Tanulás minden útmutatója elérhető 24 nyelven, az oldal pedig rögtön a tiéden indul.",

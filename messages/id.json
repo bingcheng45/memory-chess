@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Hafalkan posisinya",
       "skip": "Lewati",
-      "hint": "Papan akan dikosongkan saat waktu habis"
+      "hint": "Papan akan dikosongkan saat waktu habis",
+      "rememberPieces": "{count, plural, other {Hafalkan semua # bidak}}"
     },
     "place": {
       "title": "Letakkan bidak",

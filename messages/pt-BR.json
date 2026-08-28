@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Memorize a posição",
       "skip": "Pular",
-      "hint": "O tabuleiro será limpo quando o tempo acabar"
+      "hint": "O tabuleiro será limpo quando o tempo acabar",
+      "rememberPieces": "{count, plural, one {Memorize a peça} many {Memorize todas as # peças} other {Memorize todas as # peças}}"
     },
     "place": {
       "title": "Posicione as peças",

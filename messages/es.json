@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Memoriza la posición",
       "skip": "Saltar",
-      "hint": "El tablero se vaciará cuando acabe el tiempo"
+      "hint": "El tablero se vaciará cuando acabe el tiempo",
+      "rememberPieces": "{count, plural, one {Memoriza la pieza} many {Memoriza las # piezas} other {Memoriza las # piezas}}"
     },
     "place": {
       "title": "Coloca las piezas",

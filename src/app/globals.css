@@ -65,6 +65,50 @@ body {
     "Noto Sans CJK KR", "Nanum Gothic", sans-serif;
 }
 
+/*
+  Memorising and placing are played on a screen that does not move: the board
+  is sized to the room left over, so there is nothing below to scroll to.
+
+  Hiding the overflow is not enough on iOS, where a page whose content fits
+  still rubber-bands, and where dragging shows or hides Safari's toolbar and
+  changes the viewport under the layout. Pinning the scrolling element stops
+  both. The height then comes from the flex column rather than from a figure
+  for how tall the notification banner happens to be.
+*/
+html.game-fixed {
+  overflow: hidden;
+  overscroll-behavior: none;
+  /*
+    Hiding the overflow says the document has nothing to scroll. It does not
+    say the finger may not drag, and on iOS that drag is handled before any of
+    it: the page rubber-bands and Safari's toolbar slides. `touch-action` is
+    the property that actually declines the gesture.
+
+    Vertical panning is the one being refused *on the document*. The game's
+    own `main` is a scrolling element and states its own `pan-y`, and the
+    browser intersects touch-action only from the touched node up to the first
+    containing scroller -- so a drag inside the game is settled there and never
+    reaches this rule. What this refuses is the drag that would otherwise
+    rubber-band the page around it.
+
+    Pinch-zoom is kept, because taking it away would leave anyone who needs to
+    magnify the board with no way to do it; it also carries multi-finger
+    panning, so a magnified page can still be moved under the viewport. Taps
+    are unaffected either way.
+  */
+  touch-action: pan-x pinch-zoom;
+}
+
+body.game-fixed {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: pan-x pinch-zoom;
+}
+
 /* Game container styles for responsive layout */
 .game-container {
   width: 100%;
@@ -108,11 +152,10 @@ body {
 
 /* Mobile optimizations */
 @media (max-width: 640px) {
-  .container {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  
+  /* The small-screen gutter lives on each container as `px-1 sm:px-4`. A bare
+     `.container` rule here is unlayered, so it outranks Tailwind's utilities
+     layer and silently overrode any padding set that way. */
+
   /* Smaller text on mobile */
   h1 {
     font-size: 1.75rem !important;

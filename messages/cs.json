@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Zapamatujte si pozici",
       "skip": "Přeskočit",
-      "hint": "Až vyprší čas, šachovnice se vyprázdní"
+      "hint": "Až vyprší čas, šachovnice se vyprázdní",
+      "rememberPieces": "{count, plural, one {Zapamatujte si figurku} few {Zapamatujte si všechny # figurky} many {Zapamatujte si # figurky} other {Zapamatujte si všech # figurek}}"
     },
     "place": {
       "title": "Rozestavte figurky",

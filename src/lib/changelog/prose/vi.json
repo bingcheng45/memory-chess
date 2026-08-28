@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Bạn đã tìm ra lỗi quân mã. Cảm ơn bạn.",
+    "summary": "Hai lời nhắn để lại trong hộp phản hồi hóa ra là lỗi thật: một lỗi âm thầm chấm sai những câu trả lời đúng, lỗi còn lại nuốt mất quân cờ khi bạn đặt nhanh. Cả hai đã được sửa, và nhân tiện bàn cờ cũng đứng yên hơn và phản hồi nhanh hơn.",
+    "groups": [
+      {
+        "title": "Quân mã bị chấm thành quân vua",
+        "description": "Một người trong số các bạn viết: “Hệ thống không thấy quân mã đã đặt và báo là bị bỏ sót.” Đúng y như vậy, và tình hình còn tệ hơn vẻ ngoài của nó.",
+        "changes": [
+          "Mọi quân mã bạn đặt xuống đều được ghi lại thành quân vua, nên một quân mã ở đúng ô vẫn bị tính là sai. Dựng lại hoàn hảo một thế cờ sáu quân có một quân mã, bạn chỉ được 67%.",
+          "Nó còn có thể kéo theo một quân nữa. Khi một quân mã đã chiếm một ô với danh nghĩa quân vua, quân vua hoặc quân mã tiếp theo cùng màu lặng lẽ không hiện ra chút nào.",
+          "Mã lại là mã. Dựng lại hoàn hảo được 100%, đúng như lẽ ra phải vậy ngay từ đầu."
+        ],
+        "note": "Nếu điểm của bạn trông có vẻ keo kiệt thì đúng là như thế thật. Chúng tôi xin lỗi."
+      },
+      {
+        "title": "Quân cờ biến mất khi bạn chơi nhanh",
+        "description": "Một lời nhắn khác: “những quân tôi đặt lên bàn cờ lúc đầu không hoàn toàn giống thế cờ được gửi đi… nhất là khi tôi đặt vài quân thật nhanh.” Cũng chính xác luôn.",
+        "changes": [
+          "Một bộ đếm thời gian ẩn đã hãm bớt các lần chạm, và khi chúng diễn ra sát nhau thì nó bỏ đi những lần chạm trước. Chạm nhanh vào tám ô thì bốn ô trong đó coi như chưa từng xảy ra.",
+          "Giờ mọi cú chạm đều được ghi nhận, dù bạn nhanh đến đâu.",
+          "Gỡ một quân ngay sau khi vừa đặt cũng được. Trước đây thao tác đó bị bỏ qua trong nửa giây."
+        ]
+      },
+      {
+        "title": "Bàn cờ đứng yên một chỗ",
+        "changes": [
+          "Bàn cờ không còn nhảy hay trượt đi khi hết giờ và đến lượt bạn đặt quân. Nó ở nguyên đúng chỗ cũ.",
+          "Phần ghi nhớ và phần đặt quân không còn phải cuộn nữa. Bàn cờ được đo theo đúng màn hình bạn đang có, nên chẳng còn gì để cuộn tới.",
+          "Trên điện thoại, bàn cờ to hơn và cách mép 4px thay vì 15px, nên các ô dễ chạm trúng hơn. Đồng hồ và khay quân giờ thẳng hàng với mép bàn cờ thay vì rộng hơn nó."
+        ]
+      },
+      {
+        "title": "Nhanh hơn dưới ngón tay",
+        "changes": [
+          "Trước đây mỗi lần chạm phải đợi 50 mili giây rồi mới có gì xảy ra, dù bạn có vội hay không. Khoảng dừng đó đã biến mất.",
+          "Bàn cờ cũng vẽ lại ít hơn. Việc theo dõi một cú chạm không còn kết xuất lại cả 64 ô, và phần làm nổi ô đang chọn chỉ chuyển động hai thuộc tính thật sự thay đổi.",
+          "Vòng đánh dấu ô bạn vừa chạm giờ được vẽ đủ bốn cạnh. Từ trước tới nay nó chỉ có ở hai cạnh."
+        ]
+      },
+      {
+        "title": "Dọn dẹp",
+        "changes": [
+          "Trước đây bàn cờ được bảo phải to bao nhiêu, tính từ một con số ước lượng viết tay về chỗ mà mọi thứ còn lại cần đến. Năm bản sao của con số ước lượng ấy phải khớp với nhau, vậy mà chúng lệch dần đi; đó là lý do phần lớn những chuyện ở trên không ai để ý. Giờ bàn cờ tự đo khoảng trống nó có, và con số ước lượng đã biến mất cùng với 73 dòng mã.",
+          "Một dòng tiếng Anh sót lại ở màn hình ghi nhớ đã lọt khỏi bản phát hành 24 ngôn ngữ. Giờ nó đếm số quân của bạn bằng cả 24 ngôn ngữ, với dạng số nhiều đúng."
+        ],
+        "note": "Cả hai lỗi ở trên đều đến từ hộp phản hồi sau ván chơi. Nếu bạn thấy điều gì đó không ổn, hãy nói với chúng tôi — đó là cách nhanh nhất để nó được sửa."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess giờ nói ngôn ngữ của bạn",
     "summary": "Trò chơi và mọi hướng dẫn trong mục Học nay có sẵn bằng 24 ngôn ngữ, và trang web sẽ mở bằng ngôn ngữ của bạn.",

@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Paina asema mieleen",
       "skip": "Ohita",
-      "hint": "Lauta tyhjenee, kun aika loppuu"
+      "hint": "Lauta tyhjenee, kun aika loppuu",
+      "rememberPieces": "{count, plural, one {Paina mieleen tämä nappula} other {Paina mieleen kaikki # nappulaa}}"
     },
     "place": {
       "title": "Aseta nappulat",

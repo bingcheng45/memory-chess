@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo } from "react";
-import { useResponsiveBoard } from "@/hooks/useResponsiveBoard";
 import { fenToChessPieces } from "@/utils/chessPieces";
 import { comparePositions } from "@/utils/positionComparator";
 import { useTranslations } from "next-intl";
@@ -22,7 +21,6 @@ export default function ResultBoardComparison({
   userPosition,
 }: ResultBoardComparisonProps) {
   const t = useTranslations("game");
-  const dimensions = useResponsiveBoard(280, 420);
 
   const comparison = useMemo(() => {
     if (!originalPosition || !userPosition) return null;
@@ -71,11 +69,6 @@ export default function ResultBoardComparison({
     );
   }
 
-  const boardFrameStyle = {
-    width: `${dimensions.size}px`,
-    maxWidth: "100%",
-  };
-
   return (
     <section aria-labelledby="result-comparison-heading" className="w-full">
       <div className="mb-4 text-center">
@@ -114,12 +107,11 @@ export default function ResultBoardComparison({
           data-result-board="target"
         >
           <figcaption className="mb-2 flex h-8 items-center text-sm font-semibold text-text-primary sm:text-base">{t("comparison.originalBoard")}</figcaption>
-          <div style={boardFrameStyle}>
+          <div className="w-full">
             <ResponsiveChessBoard
               pieces={comparison.originalPieces}
               isInteractive={false}
               showCoordinates={true}
-              dimensions={dimensions}
             />
           </div>
         </figure>
@@ -129,12 +121,11 @@ export default function ResultBoardComparison({
           data-result-board="submitted"
         >
           <figcaption className="mb-2 flex h-8 items-center text-sm font-semibold text-text-primary sm:text-base">{t("comparison.submittedBoard")}</figcaption>
-          <div style={boardFrameStyle}>
+          <div className="w-full">
             <ResponsiveChessBoard
               pieces={comparison.userPieces}
               isInteractive={false}
               showCoordinates={true}
-              dimensions={dimensions}
               squareFeedback={comparison.feedback}
             />
           </div>

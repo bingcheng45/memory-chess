@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Du hittade springarbuggen. Tack.",
+    "summary": "Två meddelanden i feedbackrutan visade sig vara riktiga buggar: det ena räknade i tysthet rätta svar som fel, det andra åt upp pjäser när du placerade dem snabbt. Båda är åtgärdade, och när vi ändå var där står brädet stadigare och svarar snabbare.",
+    "groups": [
+      {
+        "title": "Springaren som räknades som kung",
+        "description": "En av er skrev: ”Systemet ser inte springaren jag placerat och visar att den missats.” Precis så var det – och det var värre än det såg ut.",
+        "changes": [
+          "Varje springare du placerade sparades som kung, så en springare på rätt ruta räknades som fel. Byggde du upp en ställning med sex pjäser och en springare helt perfekt fick du 67%.",
+          "Den kunde dra med sig ytterligare en pjäs. Så snart en springare hade tagit en ruta som kung dök nästa kung eller springare i samma färg inte upp alls, utan ett ljud.",
+          "Springare är springare igen. En perfekt uppbyggd ställning ger 100%, som den alltid borde ha gjort."
+        ],
+        "note": "Om dina resultat såg snåla ut var de det. Ledsen för det."
+      },
+      {
+        "title": "Pjäser som försvann när du spelade snabbt",
+        "description": "Ett annat meddelande: ”pjäserna jag först ställde upp på brädet är inte exakt den ställning som skickas in … särskilt om jag ställer upp några pjäser snabbt.” Också helt rätt.",
+        "changes": [
+          "En dold timer bromsade dina tryck, och kom de tätt inpå varandra kastade den de tidigare. Tryck snabbt på åtta rutor och fyra av dem hade aldrig hänt.",
+          "Nu går varje tryck fram, hur snabbt du än går.",
+          "Att ta bort en pjäs direkt efter att du placerat den fungerar också. Förut ignorerades det i en halv sekund."
+        ]
+      },
+      {
+        "title": "Ett bräde som står kvar",
+        "changes": [
+          "Brädet hoppar eller glider inte längre när tiden tar slut och det är din tur att placera. Det står kvar exakt där det var.",
+          "Memorering och placering skrollar inte längre. Brädet anpassas efter skärmen du faktiskt har, så det finns ingenting att skrolla till.",
+          "På en telefon är brädet större och ligger 4px från kanten i stället för 15px, så rutorna är lättare att träffa. Timern och pjäsraden ligger nu i linje med brädets kanter i stället för att sticka ut bredare än det."
+        ]
+      },
+      {
+        "title": "Snabbare under fingret",
+        "changes": [
+          "Förr väntade varje tryck 50 millisekunder innan något alls hände, oavsett om du hade bråttom eller inte. Den pausen är borta.",
+          "Brädet ritas dessutom om mer sällan. Att hålla reda på ett tryck renderar inte längre om alla 64 rutor, och markeringen av den valda rutan animerar bara de två egenskaper som faktiskt ändras.",
+          "Ringen kring rutan du tryckte på ritas nu på alla fyra sidor. Den hade alltid bara funnits på två."
+        ]
+      },
+      {
+        "title": "Städning",
+        "changes": [
+          "Förr fick brädet veta hur stort det skulle vara, uträknat ur en handskriven gissning om hur mycket plats allt annat behövde. Fem kopior av den gissningen måste stämma med varandra, och de gled isär – det är så en hel del av det ovanstående kunde passera obemärkt. Nu mäter brädet själv hur mycket plats det har, och gissningen är borta tillsammans med 73 rader kod.",
+          "En ensam engelsk rad på memoreringsskärmen hade sluppit undan lanseringen på 24 språk. Den räknar nu dina pjäser på alla, i rätt pluralform."
+        ],
+        "note": "Båda buggarna ovan kom in via feedbackrutan efter en omgång. Om något känns fel, säg till – det är den absolut snabbaste vägen till en fix."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess talar nu ditt språk",
     "summary": "Spelet och varje guide i Lärcenter finns nu på 24 språk, och sajten startar på ditt.",

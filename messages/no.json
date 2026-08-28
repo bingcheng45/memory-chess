@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Husk stillingen",
       "skip": "Hopp over",
-      "hint": "Brettet tømmes når tiden er ute"
+      "hint": "Brettet tømmes når tiden er ute",
+      "rememberPieces": "{count, plural, one {Husk brikken} other {Husk alle # brikker}}"
     },
     "place": {
       "title": "Plasser brikkene",

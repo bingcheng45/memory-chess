@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Memorera ställningen",
       "skip": "Hoppa över",
-      "hint": "Brädet töms när tiden går ut"
+      "hint": "Brädet töms när tiden går ut",
+      "rememberPieces": "{count, plural, one {Memorera pjäsen} other {Memorera alla # pjäser}}"
     },
     "place": {
       "title": "Placera pjäserna",

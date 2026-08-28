@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Löysit ratsubugin. Kiitos.",
+    "summary": "Kaksi palautelaatikkoon jätettyä viestiä osoittautuivat oikeiksi bugeiksi: toinen merkitsi hiljaa oikeita vastauksia vääriksi, toinen söi nappuloita, kun asetit niitä nopeasti. Molemmat on korjattu, ja samalla reissulla lauta pysyy paremmin paikallaan ja reagoi nopeammin.",
+    "groups": [
+      {
+        "title": "Ratsu, joka pisteytettiin kuninkaana",
+        "description": "Yksi teistä kirjoitti: ”Järjestelmä ei näe asetettua ratsua ja näyttää, että se on jäänyt puuttumaan.” Juuri näin oli – ja tilanne oli pahempi kuin miltä näytti.",
+        "changes": [
+          "Jokainen asettamasi ratsu tallentui kuninkaana, joten oikeassa ruudussa ollut ratsu merkittiin vääräksi. Kun rakensit kuuden nappulan aseman täydellisesti ja mukana oli yksi ratsu, sait 67%.",
+          "Se saattoi viedä mennessään toisenkin nappulan. Kun ratsu oli kerran vallannut ruudun kuninkaana, saman värin seuraava kuningas tai ratsu ei ilmestynyt lainkaan, sanaakaan sanomatta.",
+          "Ratsut ovat taas ratsuja. Täydellisestä kokoamisesta tulee 100%, kuten olisi aina pitänytkin."
+        ],
+        "note": "Jos tuloksesi näyttivät nuukilta, ne olivat sitä. Pahoittelut."
+      },
+      {
+        "title": "Nappulat, jotka katosivat nopeasti pelatessa",
+        "description": "Toinen viesti: ”laudalle alun perin asettamani nappulat eivät ole täsmälleen sama kuin lähetetty asema… varsinkaan jos asetan joitakin nappuloita nopeasti.” Tämäkin osui täysin oikeaan.",
+        "changes": [
+          "Piilotettu ajastin rajoitti napautuksia, ja kun ne tulivat lähekkäin, se heitti aiemmat menemään. Napauta kahdeksaa ruutua nopeasti – ja neljää niistä ei ollut koskaan tapahtunut.",
+          "Nyt jokainen napautus menee perille, oli vauhtisi mikä tahansa.",
+          "Myös nappulan poistaminen heti asettamisen jälkeen toimii. Aiemmin se jäi puolen sekunnin ajaksi huomiotta."
+        ]
+      },
+      {
+        "title": "Lauta, joka pysyy paikallaan",
+        "changes": [
+          "Lauta ei enää hyppää tai liu’u, kun aika loppuu ja on sinun vuorosi asettaa. Se pysyy täsmälleen siinä, missä oli.",
+          "Mieleen painaminen ja asettaminen eivät enää vieritä. Lauta mitoitetaan sille näytölle, joka sinulla oikeasti on, joten vieritettävää ei ole.",
+          "Puhelimessa lauta on isompi ja jää 4px:n päähän reunasta 15px:n sijaan, joten ruutuihin osuu helpommin. Ajastin ja nappulapaletti asettuvat nyt laudan reunojen tasalle sen sijaan, että levittäytyisivät sitä leveämmälle."
+        ]
+      },
+      {
+        "title": "Nopeampi sormen alla",
+        "changes": [
+          "Ennen jokainen napautus odotti 50 millisekuntia ennen kuin mitään tapahtui, oli sinulla kiire tai ei. Se tauko on poissa.",
+          "Lauta myös piirtyy uudelleen harvemmin. Napautuksen seuraaminen ei enää renderöi kaikkia 64:ää ruutua uudelleen, ja valitun ruudun korostus animoi vain ne kaksi ominaisuutta, jotka oikeasti muuttuvat.",
+          "Napauttamaasi ruutua merkitsevä rengas piirretään nyt kaikille neljälle sivulle. Tähän asti se oli aina vain kahdella."
+        ]
+      },
+      {
+        "title": "Siivousta",
+        "changes": [
+          "Ennen laudalle kerrottiin, minkä kokoinen sen pitää olla, ja koko laskettiin käsin kirjoitetusta arviosta siitä, paljonko tilaa kaikki muu tarvitsee. Viiden arviokopion piti täsmätä keskenään, mutta ne erkanivat toisistaan – juuri siksi iso osa yllä olevasta jäi huomaamatta. Nyt lauta mittaa itse, paljonko tilaa sillä on, ja arvio on poissa yhdessä 73 koodirivin kanssa.",
+          "Yksi yksinäinen englanninkielinen rivi mieleen painamisen näytöllä oli livahtanut 24 kielen julkaisun ohi. Nyt se laskee nappulasi kaikilla kielillä, oikeassa monikkomuodossa."
+        ],
+        "note": "Molemmat yllä olevat bugit tulivat pelin jälkeisestä palautelaatikosta. Jos jokin tuntuu oudolta, kerro meille – se on ylivoimaisesti nopein tapa saada asia korjattua."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess puhuu nyt sinun kieltäsi",
     "summary": "Peli ja jokainen Opi-opas ovat nyt saatavilla 24 kielellä, ja sivusto avautuu sinun kielelläsi.",

@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Anda menemukan bug kuda itu. Terima kasih.",
+    "summary": "Dua pesan yang ditinggalkan di kotak masukan ternyata benar-benar bug: yang satu diam-diam menandai jawaban benar sebagai salah, yang lain menelan bidak ketika Anda meletakkannya dengan cepat. Keduanya sudah diperbaiki, dan sekalian saja papannya kini lebih diam dan lebih cepat.",
+    "groups": [
+      {
+        "title": "Kuda yang dinilai sebagai raja",
+        "description": "Salah satu dari Anda menulis: “Sistem tidak melihat kuda yang sudah diletakkan dan menampilkannya sebagai terlewat.” Tepat sekali, dan keadaannya lebih buruk daripada kelihatannya.",
+        "changes": [
+          "Setiap kuda yang Anda letakkan tercatat sebagai raja, jadi kuda di kotak yang benar pun ditandai salah. Susun ulang posisi enam bidak dengan satu kuda secara sempurna, dan nilai Anda 67%.",
+          "Bidak kedua bisa ikut terbawa. Begitu sebuah kuda menempati kotak sebagai raja, raja atau kuda berikutnya dengan warna yang sama sama sekali tidak muncul, tanpa tanda apa pun.",
+          "Kuda kembali menjadi kuda. Susunan yang sempurna bernilai 100%, sebagaimana mestinya sejak awal."
+        ],
+        "note": "Kalau nilai Anda terasa pelit, memang begitu adanya. Maaf soal itu."
+      },
+      {
+        "title": "Bidak yang hilang saat bermain cepat",
+        "description": "Pesan lain: “bidak yang tadinya saya letakkan di papan tidak persis sama dengan posisi yang dikirim... apalagi kalau saya meletakkan beberapa bidak dengan cepat.” Ini pun tepat.",
+        "changes": [
+          "Ada penghitung waktu tersembunyi yang membatasi ketukan, dan ketika ketukan datang berdekatan, yang lebih awal dibuang. Ketuk delapan kotak dengan cepat, dan empat di antaranya seolah tidak pernah terjadi.",
+          "Kini setiap ketukan diterima, secepat apa pun Anda bergerak.",
+          "Mengangkat bidak tepat setelah meletakkannya juga berhasil. Dulu hal itu diabaikan selama setengah detik."
+        ]
+      },
+      {
+        "title": "Papan yang tetap di tempatnya",
+        "changes": [
+          "Papan tidak lagi melompat atau bergeser ketika waktu habis dan tiba giliran Anda meletakkan bidak. Papan tetap persis di tempatnya.",
+          "Menghafal dan meletakkan tidak lagi menggeser layar. Ukuran papan menyesuaikan layar yang benar-benar Anda punya, jadi tidak ada lagi yang perlu digeser.",
+          "Di ponsel papannya lebih besar dan berjarak 4px dari tepi, bukan 15px, sehingga kotak-kotaknya lebih mudah diketuk. Penghitung waktu dan baki bidak kini sejajar dengan tepi papan, tidak lagi melebar melewatinya."
+        ]
+      },
+      {
+        "title": "Lebih gesit di bawah jari",
+        "changes": [
+          "Dulu setiap ketukan menunggu 50 milidetik sebelum apa pun terjadi, entah Anda sedang terburu-buru atau tidak. Jeda itu sudah hilang.",
+          "Papan juga lebih jarang digambar ulang. Melacak sebuah ketukan tidak lagi merender ulang seluruh 64 kotak, dan sorotan pada kotak terpilih hanya menganimasikan dua properti yang memang berubah.",
+          "Cincin penanda kotak yang Anda ketuk kini digambar di keempat sisinya. Selama ini selalu hanya di dua sisi."
+        ]
+      },
+      {
+        "title": "Beres-beres",
+        "changes": [
+          "Dulu papan diberi tahu harus sebesar apa, dihitung dari perkiraan yang ditulis tangan tentang berapa banyak ruang yang dibutuhkan semua bagian lain. Lima salinan perkiraan itu harus cocok satu sama lain, dan ternyata saling menjauh; begitulah sebagian besar hal di atas luput dari perhatian. Sekarang papan mengukur sendiri ruang yang tersedia, dan perkiraan itu lenyap bersama 73 baris kode.",
+          "Satu baris bahasa Inggris yang tertinggal di layar menghafal lolos dari rilis 24 bahasa. Kini baris itu menghitung bidak Anda dalam semua bahasa tersebut, dengan bentuk jamak yang tepat."
+        ],
+        "note": "Kedua bug di atas datang dari kotak masukan setelah permainan. Kalau ada yang terasa janggal, beri tahu kami — itu cara paling cepat untuk memperbaikinya."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess kini berbicara dalam bahasa Anda",
     "summary": "Permainan dan seluruh panduan Belajar kini tersedia dalam 24 bahasa, dan situsnya langsung terbuka dalam bahasa Anda.",

@@ -27,7 +27,7 @@ export default function SettingsPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-1 sm:px-4 py-8">
         <div className="flex justify-center mb-8">
           <PageHeader onBackClick={handleBack} pageType="other" />
         </div>

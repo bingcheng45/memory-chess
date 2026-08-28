@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Mémorisez la position",
       "skip": "Passer",
-      "hint": "L’échiquier se videra à la fin du chrono"
+      "hint": "L’échiquier se videra à la fin du chrono",
+      "rememberPieces": "{count, plural, one {Mémorisez la pièce} many {Mémorisez les # pièces} other {Mémorisez les # pièces}}"
     },
     "place": {
       "title": "Placez les pièces",

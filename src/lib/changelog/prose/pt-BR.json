@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Você encontrou o bug do cavalo. Obrigado.",
+    "summary": "Dois recados deixados na caixa de feedback eram bugs de verdade: um vinha marcando respostas certas como erradas, sem avisar, e o outro comia peças quando você as colocava rápido. Os dois foram corrigidos e, já que estávamos por lá, o tabuleiro ficou mais firme e mais rápido.",
+    "groups": [
+      {
+        "title": "O cavalo que era contado como rei",
+        "description": "Um de vocês escreveu: “O sistema não vê o cavalo colocado e mostra que ele foi esquecido”. Era exatamente isso — e pior do que parecia.",
+        "changes": [
+          "Todo cavalo que você colocava era registrado como rei, então um cavalo na casa certa aparecia como errado. Se você remontasse com perfeição uma posição de seis peças com um cavalo, tirava 67%.",
+          "E ele ainda podia levar uma segunda peça junto. Depois que um cavalo ocupava uma casa como rei, o rei ou o cavalo seguinte daquela cor simplesmente não aparecia, sem aviso nenhum.",
+          "Cavalos voltaram a ser cavalos. Uma remontagem perfeita vale 100%, como sempre deveria ter valido."
+        ],
+        "note": "Se as suas pontuações pareciam mesquinhas, elas eram mesmo. Desculpe por isso."
+      },
+      {
+        "title": "Peças que sumiam quando você jogava rápido",
+        "description": "Outro recado: “as peças que eu coloquei no tabuleiro no começo não são exatamente a posição enviada… principalmente se eu coloco algumas peças rápido”. Também estava certíssimo.",
+        "changes": [
+          "Um temporizador escondido limitava os toques e, quando eles vinham muito juntos, descartava os primeiros. Você tocava em oito casas rápido e quatro delas nunca tinham acontecido.",
+          "Agora todo toque vale, por mais rápido que você seja.",
+          "Tirar uma peça logo depois de colocá-la também funciona. Antes isso ficava ignorado por meio segundo."
+        ]
+      },
+      {
+        "title": "Um tabuleiro que fica parado",
+        "changes": [
+          "O tabuleiro não pula nem desliza mais quando o tempo acaba e chega a sua vez de posicionar. Ele fica exatamente onde estava.",
+          "Memorizar e posicionar não rolam mais a tela. O tabuleiro é dimensionado para a tela que você realmente tem, então não há para onde rolar.",
+          "No celular o tabuleiro é maior e fica a 4px da borda em vez de 15px, então é mais fácil acertar as casas. O cronômetro e a bandeja de peças agora se alinham às bordas do tabuleiro, em vez de ficarem mais largos que ele."
+        ]
+      },
+      {
+        "title": "Mais rápido sob o dedo",
+        "changes": [
+          "Antes, cada toque esperava 50 milissegundos antes de qualquer coisa acontecer, você estando com pressa ou não. Essa pausa acabou.",
+          "O tabuleiro também é redesenhado menos. Acompanhar um toque não redesenha mais as 64 casas, e o destaque da casa selecionada anima só as duas propriedades que realmente mudam.",
+          "O anel que marca a casa tocada agora é desenhado nos quatro lados. Sempre tinha ficado só em dois."
+        ]
+      },
+      {
+        "title": "Arrumação",
+        "changes": [
+          "Antes o tabuleiro recebia um tamanho pronto, calculado a partir de um palpite escrito à mão sobre quanto espaço todo o resto precisava. Cinco cópias desse palpite tinham que combinar entre si, e elas foram se afastando — foi assim que boa parte do que está acima passou despercebido. Agora o tabuleiro mede o espaço que tem, e o palpite se foi junto com 73 linhas de código.",
+          "Uma linha solta em inglês na tela de memorização tinha escapado do lançamento em 24 idiomas. Agora ela conta as suas peças em todos eles, no plural certo."
+        ],
+        "note": "Os dois bugs acima chegaram pela caixa de feedback que aparece depois da partida. Se algo parecer estranho, conte para a gente — é de longe o jeito mais rápido de resolver."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "O Memory Chess agora fala a sua língua",
     "summary": "O jogo e todos os guias do Aprender agora estão em 24 idiomas, e o site já começa no seu.",

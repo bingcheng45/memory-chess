@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { ChessPiece, PieceType, PieceColor, Position } from '@/types/chess';
 import { v4 as uuidv4 } from 'uuid';
@@ -15,7 +15,6 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { Badge } from '@/components/ui/badge';
-import type { BoardDimensions } from '@/hooks/useResponsiveBoard';
 import ActiveGameLayout from './ActiveGameLayout';
 
 import { useTranslations } from "next-intl";
@@ -33,14 +32,12 @@ interface ResponsiveInteractiveBoardProps {
   readonly playerSolution: ChessPiece[];
   readonly onPlacePiece: (piece: ChessPiece) => void;
   readonly onRemovePiece: (position: Position) => void;
-  readonly dimensions: BoardDimensions;
   readonly status: ReactNode;
 }
 export default function ResponsiveInteractiveBoard({
   playerSolution,
   onPlacePiece,
   onRemovePiece,
-  dimensions,
   status,
 }: ResponsiveInteractiveBoardProps) {
   const t = useTranslations("game");
@@ -48,49 +45,57 @@ export default function ResponsiveInteractiveBoard({
   const [selectedPieceType, setSelectedPieceType] = useState<PieceType>('pawn');
   const [selectedPieceColor, setSelectedPieceColor] = useState<PieceColor>('white');
 
+  /**
+   * Mirror of the placed pieces that is updated as soon as a square is acted
+   * on, rather than on the next render.
+   *
+   * `playerSolution` is a prop, so two activations that land before React
+   * re-renders would both read the same pre-click list: the second would miss
+   * the piece the first just placed and place a duplicate, leaving the board
+   * and the scored position disagreeing. Deciding from the ref keeps every
+   * activation working from the current board.
+   */
+  const placedPiecesRef = useRef<ChessPiece[]>(playerSolution);
+
+  useEffect(() => {
+    placedPiecesRef.current = playerSolution;
+  }, [playerSolution]);
+
   // Handle square click
   const handleSquareClick = (position: Position) => {
-    console.log(`Square clicked: ${position.file}${position.rank} at ${new Date().toISOString()}`);
-    
-    // Check if this is a different position than the last selected position
-    if (selectedPosition && 
-        selectedPosition.file === position.file && 
-        selectedPosition.rank === position.rank) {
-      console.log('Same square clicked again');
-    } else {
-      console.log('New square selection');
-    }
-    
     setSelectedPosition(position);
-    
+
+    const placedPieces = placedPiecesRef.current;
+
     // Check if there's already a piece at this position
-    const existingPiece = playerSolution.find(
+    const existingPiece = placedPieces.find(
       p => p.position.file === position.file && p.position.rank === position.rank
     );
-    
+
     if (existingPiece) {
       // Remove the piece if it exists
-      console.log(`Removing piece at ${position.file}${position.rank}`);
+      placedPiecesRef.current = placedPieces.filter(
+        p => p.position.file !== position.file || p.position.rank !== position.rank
+      );
       onRemovePiece(position);
     } else {
       // Check if we've reached the limit for this piece type and color
-      const currentCount = playerSolution.filter(
+      const currentCount = placedPieces.filter(
         p => p.type === selectedPieceType && p.color === selectedPieceColor
       ).length;
-      
+
       if (currentCount >= PIECE_LIMITS[selectedPieceType]) {
-        console.warn(`Cannot place more than ${PIECE_LIMITS[selectedPieceType]} ${selectedPieceColor} ${selectedPieceType}(s)`);
         return; // Don't place the piece if we've reached the limit
       }
-      
+
       // Place a new piece
-      console.log(`Placing ${selectedPieceColor} ${selectedPieceType} at ${position.file}${position.rank}`);
       const newPiece: ChessPiece = {
         id: uuidv4(),
         type: selectedPieceType,
         color: selectedPieceColor,
         position
       };
+      placedPiecesRef.current = [...placedPieces, newPiece];
       onPlacePiece(newPiece);
     }
   };
@@ -110,7 +115,6 @@ export default function ResponsiveInteractiveBoard({
   
   return (
     <ActiveGameLayout
-      dimensions={dimensions}
       status={status}
       board={
         <ResponsiveChessBoard
@@ -119,7 +123,6 @@ export default function ResponsiveInteractiveBoard({
           isInteractive={true}
           onSquareClick={handleSquareClick}
           showCoordinates={true}
-          dimensions={dimensions}
         />
       }
       controls={

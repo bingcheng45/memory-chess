@@ -37,6 +37,27 @@ if (typeof window !== "undefined") {
     writable: true,
     value: MockIntersectionObserver,
   });
+
+  // jsdom has no layout, so nothing ever changes size. Components that measure
+  // themselves must render sensibly at a zero size, which is what this asserts
+  // by never invoking the callback.
+  class MockResizeObserver {
+    observe() {
+      return null;
+    }
+    unobserve() {
+      return null;
+    }
+    disconnect() {
+      return null;
+    }
+  }
+
+  Object.defineProperty(window, "ResizeObserver", {
+    writable: true,
+    value: MockResizeObserver,
+  });
+  global.ResizeObserver = MockResizeObserver;
 }
 
 // Mock Audio

@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Našli jste chybu s jezdcem. Díky.",
+    "summary": "Dvě zprávy ze schránky zpětné vazby se ukázaly být skutečnými chybami: jedna potichu označovala správné odpovědi za špatné, druhá polykala figurky, když jste je pokládali rychle. Obě jsou opravené, a když jsme už u toho byli, šachovnice se drží klidněji a reaguje rychleji.",
+    "groups": [
+      {
+        "title": "Jezdec, který se počítal jako král",
+        "description": "Jeden z vás napsal: „Systém nevidí položeného jezdce a ukazuje, že chybí.“ Bylo to přesně tak – a dokonce horší, než to vypadalo.",
+        "changes": [
+          "Každý jezdec, kterého jste položili, se uložil jako král, takže jezdec na správném poli byl označen za chybu. Postavili jste dokonale pozici o šesti figurkách s jedním jezdcem – a měli jste 67%.",
+          "Mohl s sebou stáhnout ještě druhou figurku. Jakmile jezdec obsadil pole jako král, další král nebo jezdec téže barvy se beze slova vůbec neobjevil.",
+          "Jezdci jsou zase jezdci. Dokonale postavená pozice má 100%, jak to vždycky mělo být."
+        ],
+        "note": "Pokud vám vaše výsledky připadaly skoupé, opravdu takové byly. Omlouváme se."
+      },
+      {
+        "title": "Figurky, které mizely při rychlé hře",
+        "description": "Další zpráva: „figurky, které jsem původně postavil na šachovnici, nejsou přesně ta odeslaná pozice… hlavně když některé figurky pokládám rychle.“ Také přesně tak.",
+        "changes": [
+          "Skrytý časovač přibrzďoval klepnutí, a když přišla těsně po sobě, ta dřívější zahodil. Klepnete rychle na osm polí – a čtyři z nich se nikdy nestala.",
+          "Teď dorazí každé klepnutí, ať jste jakkoli rychlí.",
+          "Funguje i sebrání figurky hned poté, co jste ji položili. Dřív se to půl sekundy ignorovalo."
+        ]
+      },
+      {
+        "title": "Šachovnice, která zůstane na místě",
+        "changes": [
+          "Šachovnice už neposkočí ani neujede, když vyprší čas a je řada na vás pokládat. Zůstane přesně tam, kde byla.",
+          "Zapamatování ani pokládání se už neposouvají. Šachovnice se přizpůsobí obrazovce, kterou opravdu máte, takže není kam rolovat.",
+          "Na telefonu je šachovnice větší a od okraje ji dělí 4px místo 15px, takže se do polí trefíte snáz. Časomíra a lišta s figurkami teď lícují s okraji šachovnice, místo aby byly širší než ona."
+        ]
+      },
+      {
+        "title": "Rychlejší pod prstem",
+        "changes": [
+          "Dřív každé klepnutí čekalo 50 milisekund, než se vůbec něco stalo, ať jste spěchali, nebo ne. Tahle pauza je pryč.",
+          "Šachovnice se také překresluje méně. Sledování klepnutí už nevykresluje znovu všech 64 polí a zvýraznění vybraného pole animuje jen ty dvě vlastnosti, které se opravdu mění.",
+          "Prstenec označující pole, na které jste klepli, se teď kreslí ze všech čtyř stran. Doteď byl vždycky jen ze dvou."
+        ]
+      },
+      {
+        "title": "Úklid",
+        "changes": [
+          "Šachovnici se dřív říkalo, jak má být velká, a to podle ručně napsaného odhadu, kolik místa potřebuje všechno ostatní. Pět kopií toho odhadu se muselo shodovat, jenže se rozešly – a právě proto zůstala velká část výše popsaného bez povšimnutí. Teď si šachovnice sama změří, kolik místa má, a odhad je pryč spolu se 73 řádky kódu.",
+          "Jeden osamocený anglický řádek na obrazovce zapamatování unikl vydání ve 24 jazycích. Teď počítá vaše figurky ve všech, a se správným množným číslem."
+        ],
+        "note": "Obě chyby výše přišly ze schránky zpětné vazby po hře. Když vám něco nesedí, dejte nám vědět – je to zdaleka nejrychlejší cesta k opravě."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess teď mluví vaším jazykem",
     "summary": "Hra i všichni průvodci v Učení jsou nově ve 24 jazycích a web se rovnou spustí v tom vašem.",

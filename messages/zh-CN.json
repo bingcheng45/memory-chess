@@ -170,7 +170,8 @@
     "memorize": {
       "title": "记住这个棋局",
       "skip": "跳过",
-      "hint": "计时结束后棋盘会被清空"
+      "hint": "计时结束后棋盘会被清空",
+      "rememberPieces": "{count, plural, other {记住全部 # 个棋子}}"
     },
     "place": {
       "title": "摆放棋子",

@@ -16,6 +16,7 @@ describe("changelog data", () => {
 
     expect(releaseTimes).toEqual([...releaseTimes].sort((a, b) => b - a));
     expect(CHANGELOG_ENTRIES.map((entry) => entry.version)).toEqual([
+      "1.2.3",
       "1.2.2",
       "1.2.1",
       "1.2.0",

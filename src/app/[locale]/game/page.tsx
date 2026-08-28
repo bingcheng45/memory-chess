@@ -15,16 +15,13 @@ import { useSoundEffects } from '@/hooks/useSoundEffects';
 import { Chess } from 'chess.js';
 import { v4 as uuidv4 } from 'uuid';
 import { ChessPiece, PieceType } from '@/types/chess';
+import { pieceTypeToFenChar } from '@/utils/chessPieces';
 import { Button } from "@/components/ui/button";
 import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
 import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
 import { formatTimeWithMilliseconds } from '@/utils/timer';
 import PageHeader from '@/components/ui/PageHeader';
-import {
-  ACTIVE_GAME_FRAME_WIDTH,
-  ACTIVE_GAME_RESERVED_HEIGHT,
-  useResponsiveBoard,
-} from '@/hooks/useResponsiveBoard';
+import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
 
 import { useTranslations } from "next-intl";
@@ -77,8 +74,28 @@ function GamePageContent() {
   const [isSubmissionFlashVisible, setIsSubmissionFlashVisible] = useState(false);
   const solutionStartTimeRef = useRef<number | null>(null);
   const submissionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const activeBoardDimensions = useResponsiveBoard(280, 600, ACTIVE_GAME_RESERVED_HEIGHT);
   
+  // Memorising and placing are played without scrolling: the board is sized
+  // from the room that is actually left, so the screen holds exactly what
+  // fits. Configuration and the result page are ordinary scrolling pages.
+  const isActivePhase =
+    gamePhase === GamePhase.MEMORIZATION || gamePhase === GamePhase.SOLUTION;
+
+  useEffect(() => {
+    if (!isActivePhase) return;
+
+    // Pinning the scrolling element, rather than only hiding its overflow,
+    // is what stops iOS rubber-banding a page whose content already fits.
+    const { documentElement, body } = document;
+    documentElement.classList.add('game-fixed');
+    body.classList.add('game-fixed');
+
+    return () => {
+      documentElement.classList.remove('game-fixed');
+      body.classList.remove('game-fixed');
+    };
+  }, [isActivePhase]);
+
   // Track initial page load
   useEffect(() => {
     analytics.trackFeatureUsage('game_page', 'view');
@@ -338,8 +355,16 @@ function GamePageContent() {
   const renderGameContent = () => {
     console.log('Rendering game content for phase:', gamePhase);
     
-    // Shared container for consistent width and centering across all phases
+    // Shared container for consistent width and centering across all phases.
+    // The active phases also take the full height they are given, so the board
+    // can be sized from the space left over instead of from a guess at how
+    // tall everything else is.
     const containerClass = "w-full max-w-4xl mx-auto flex flex-col items-center justify-center";
+    // `flex-1` without `min-h-0`: the wrapper still takes the leftover
+    // height, but no longer shrinks below what ActiveGameLayout says the
+    // board needs. On a viewport too short for that floor it overflows, and
+    // `main` below scrolls to it.
+    const activePhaseClass = `${containerClass} flex-1`;
     
     switch (gamePhase) {
       case GamePhase.CONFIGURATION:
@@ -360,19 +385,18 @@ function GamePageContent() {
         
       case GamePhase.MEMORIZATION:
         return (
-          <div className={containerClass}>
+          <div className={activePhaseClass}>
             <ErrorBoundary>
-              <ResponsiveMemorizationBoard dimensions={activeBoardDimensions} />
+              <ResponsiveMemorizationBoard />
             </ErrorBoundary>
           </div>
         );
         
       case GamePhase.SOLUTION:
         return (
-          <div className={containerClass}>
+          <div className={activePhaseClass}>
             <ErrorBoundary>
               <ResponsiveInteractiveBoard
-                dimensions={activeBoardDimensions}
                 status={
                   <div className="relative flex h-full items-center justify-center px-3 sm:px-4">
                     <div className="text-center text-sm font-medium sm:text-base">{t("hud.time")}<div className="font-mono text-2xl font-bold leading-tight sm:text-3xl">
@@ -399,7 +423,7 @@ function GamePageContent() {
                   setSolutionPieces(prev => [...prev, piece]);
                   // Convert ChessPiece to chess.js format for the game store
                   const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
-                  const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
+                  const pieceCode = pieceTypeToFenChar(piece.type, piece.color);
                   placePiece(square, pieceCode);
                 }}
                 onRemovePiece={(position) => {
@@ -438,17 +462,36 @@ function GamePageContent() {
   };
   
   return (
-    <main className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
+    <main
+      className={`bg-bg-dark text-text-primary ${
+        isActivePhase
+          ? // Where the game fits, this scrolls no more than the clipped
+            // version did -- there is nothing to scroll to. Where it does not
+            // fit, this is the only way to reach the board.
+            //
+            // `main` is the scrolling element, so a drag inside it is settled
+            // by the touch-action stated here: the browser intersects
+            // touch-action from the touched node up to the first containing
+            // scroller and stops there, leaving the document's own refusal
+            // (globals.css) intact for everything outside. `overscroll-contain`
+            // keeps the bounce from chaining out to that document.
+            'min-h-0 flex-1 overflow-y-auto overscroll-contain [touch-action:pan-y_pinch-zoom]'
+          : PAGE_BELOW_BANNER_MIN_HEIGHT
+      }`}
+    >
       {isSubmissionFlashVisible && <GameSubmissionFlash />}
 
-      <div className="container mx-auto flex min-h-[calc(100dvh-2.5rem-1px)] flex-col items-center justify-start p-4">
+      <div
+        className={`container mx-auto flex flex-col items-center justify-start px-1 py-2 sm:px-4 sm:py-4 ${
+          isActivePhase ? 'min-h-full' : PAGE_BELOW_BANNER_MIN_HEIGHT
+        }`}
+      >
         <PageHeader
           onBackClick={handleBack}
           pageType="game-memorize-solution"
           className="!mb-3"
           style={{
-            width: ACTIVE_GAME_FRAME_WIDTH,
-            maxWidth: '100%'
+            maxWidth: MAX_BOARD_SIZE_PX
           }}
         />
 

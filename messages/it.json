@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Memorizza la posizione",
       "skip": "Salta",
-      "hint": "La scacchiera si svuoterà allo scadere del tempo"
+      "hint": "La scacchiera si svuoterà allo scadere del tempo",
+      "rememberPieces": "{count, plural, one {Memorizza il pezzo} many {Memorizza tutti i # pezzi} other {Memorizza tutti i # pezzi}}"
     },
     "place": {
       "title": "Posiziona i pezzi",

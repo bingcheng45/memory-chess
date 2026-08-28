@@ -170,7 +170,8 @@
     "memorize": {
       "title": "局面を覚えてください",
       "skip": "スキップ",
-      "hint": "時間が切れると盤面が消えます"
+      "hint": "時間が切れると盤面が消えます",
+      "rememberPieces": "{count, plural, other {# 個の駒をすべて覚えてください}}"
     },
     "place": {
       "title": "駒を並べる",

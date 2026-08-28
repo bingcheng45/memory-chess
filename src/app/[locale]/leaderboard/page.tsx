@@ -4,11 +4,11 @@ import { useState, useEffect, Suspense } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import LeaderboardTable from '@/components/leaderboard/LeaderboardTable';
 import PageHeader from '@/components/ui/PageHeader';
+import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import { LeaderboardEntry } from '@/types/leaderboard';
 import { useSearchParams } from 'next/navigation';
 import { Link } from "@/i18n/navigation";
 import { Button } from '@/components/ui/button';
-import { ACTIVE_GAME_FRAME_WIDTH } from '@/hooks/useResponsiveBoard';
 
 import { useTranslations } from "next-intl";
 // Interface for entry details from URL params
@@ -167,14 +167,13 @@ function LeaderboardContent() {
 function LeaderboardLoading() {
   const t = useTranslations("leaderboard");
   return (
-    <div className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
-      <main className="container mx-auto px-4 pb-8 pt-4">
+    <div className={`${PAGE_BELOW_BANNER_MIN_HEIGHT} bg-bg-dark text-text-primary`}>
+      <main className="container mx-auto px-1 sm:px-4 pb-8 pt-4">
         <div className="flex justify-center mb-8">
           <PageHeader
             pageType="game-memorize-solution"
             style={{
-              width: ACTIVE_GAME_FRAME_WIDTH,
-              maxWidth: '100%',
+              maxWidth: MAX_BOARD_SIZE_PX,
             }}
           />
         </div>
@@ -195,18 +194,17 @@ function LeaderboardLoading() {
 // Main export - the wrapper with suspense boundary
 export default function LeaderboardPage() {
   return (
-    <div className="min-h-[calc(100dvh-2.5rem-1px)] bg-bg-dark text-text-primary">
-      <main className="container mx-auto px-4 pb-8 pt-4">
+    <div className={`${PAGE_BELOW_BANNER_MIN_HEIGHT} bg-bg-dark text-text-primary`}>
+      <main className="container mx-auto px-1 sm:px-4 pb-8 pt-4">
         <div className="flex justify-center mb-8">
           <PageHeader
             pageType="game-memorize-solution"
             style={{
-              width: ACTIVE_GAME_FRAME_WIDTH,
-              maxWidth: '100%',
+              maxWidth: MAX_BOARD_SIZE_PX,
             }}
           />
         </div>
-        
+
         <Suspense fallback={<LeaderboardLoading />}>
           <LeaderboardContent />
         </Suspense>

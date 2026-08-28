@@ -7,16 +7,10 @@ import ResponsiveChessBoard from "./ResponsiveChessBoard";
 import { fenToChessPieces } from "@/utils/chessPieces";
 import { Button } from "@/components/ui/button";
 import { playSound } from "@/lib/utils/soundEffects";
-import type { BoardDimensions } from "@/hooks/useResponsiveBoard";
 import ActiveGameLayout from "./ActiveGameLayout";
 
 import { useTranslations } from "next-intl";
-interface ResponsiveMemorizationBoardProps {
-  readonly dimensions: BoardDimensions;
-}
-export default function ResponsiveMemorizationBoard({
-  dimensions,
-}: ResponsiveMemorizationBoardProps) {
+export default function ResponsiveMemorizationBoard() {
   const t = useTranslations("game");
   const { chess, gameState, endMemorizationPhase, startSolutionPhase } =
     useGameStore();
@@ -107,7 +101,6 @@ export default function ResponsiveMemorizationBoard({
 
   return (
     <ActiveGameLayout
-      dimensions={dimensions}
       status={
         <div className="relative flex h-full items-center justify-center px-2 sm:px-3">
           <div className="w-[calc(100%-88px)] max-w-64 text-center">
@@ -130,7 +123,7 @@ export default function ResponsiveMemorizationBoard({
             </div>
 
             <div className="mt-1 truncate text-xs text-text-secondary">
-              Remember all {gameState.pieceCount} pieces
+              {t("memorize.rememberPieces", { count: gameState.pieceCount })}
             </div>
           </div>
 
@@ -148,7 +141,6 @@ export default function ResponsiveMemorizationBoard({
           isLoading={isLoading}
           isInteractive={false}
           showCoordinates={true}
-          dimensions={dimensions}
         />
       }
       controls={

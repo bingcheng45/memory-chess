@@ -40,6 +40,60 @@ export interface ChangelogTable {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "1.2.3",
+    publishedAt: "2026-08-28T12:00:00.000+08:00",
+    title: "You found the knight bug. Thank you.",
+    summary:
+      "Two notes left in the feedback box turned out to be real bugs: one had been quietly marking correct answers wrong, the other was eating pieces when you placed them quickly. Both are fixed, and the board is steadier and quicker while we were in there.",
+    groups: [
+      {
+        title: "The knight that was scored as a king",
+        description:
+          "One of you wrote: \"The system doesn't see the placed knight and shows that it has been missed.\" You were exactly right, and it was worse than it looked.",
+        changes: [
+          "Every knight you placed was recorded as a king, so a knight on the right square was marked wrong. Rebuild a six-piece position perfectly with one knight in it and you scored 67%.",
+          "It could take a second piece down with it. Once a knight had claimed a square as a king, the next king or knight of that colour silently failed to appear at all.",
+          "Knights are knights again. A perfect rebuild scores 100%, as it always should have.",
+        ],
+        note: "If your scores looked stingy, they were. Sorry about that.",
+      },
+      {
+        title: "Pieces that vanished when you played fast",
+        description:
+          "Another note: \"the pieces I put on the board originally isn't exactly the submitted position board... especially if I put some pieces fast.\" Also exactly right.",
+        changes: [
+          "A hidden timer was throttling taps, and when they came close together it threw the earlier ones away. Tap eight squares quickly and four of them never happened.",
+          "Every tap now lands, however fast you go.",
+          "Removing a piece straight after placing it works too. That used to be ignored for half a second.",
+        ],
+      },
+      {
+        title: "A board that stays put",
+        changes: [
+          "The board no longer jumps or slides when the timer runs out and it is your turn to place. It stays exactly where it was.",
+          "Memorising and placing no longer scroll. The board is sized to the screen you actually have, so there is nothing to scroll to.",
+          "On a phone the board is bigger and sits 4px from the edge instead of 15px, so the squares are easier to hit. The timer and the piece tray now line up with the board's edges instead of drifting wider than it.",
+        ],
+      },
+      {
+        title: "Quicker under the finger",
+        changes: [
+          "Every tap used to wait 50 milliseconds before anything happened, whether you were rushing or not. That pause is gone.",
+          "The board also redraws less. Keeping track of a tap no longer re-renders all 64 squares, and the selected square's highlight animates only the two properties that actually change.",
+          "The ring marking the square you tapped is now drawn on all four sides. It always had been on two.",
+        ],
+      },
+      {
+        title: "Housekeeping",
+        changes: [
+          "The board used to be told how big to be, worked out from a hand-written guess at how much room everything else needed. Five copies of that guess had to agree with each other, and they drifted apart, which is how a good deal of the above went unnoticed. The board now measures the space it has, and the guess is gone along with 73 lines of code.",
+          "One stray English line on the memorise screen had escaped the 24-language release. It now counts your pieces in all of them, in the right plural.",
+        ],
+        note: "Both of the bugs above came from the feedback box after a game. If something feels off, tell us — it is by far the fastest way to get it fixed.",
+      },
+    ],
+  },
+  {
     version: "1.2.2",
     publishedAt: "2026-08-27T12:00:00.000+08:00",
     title: "Memory Chess now speaks your language",

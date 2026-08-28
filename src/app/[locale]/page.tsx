@@ -82,7 +82,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-bg-dark text-text-primary">
-      <main className="container mx-auto px-4 pb-8 pt-4">
+      <main className="container mx-auto px-1 sm:px-4 pb-8 pt-4">
         <div className="flex justify-center mb-8">
           <PageHeader showSoundSettings={false} />
         </div>

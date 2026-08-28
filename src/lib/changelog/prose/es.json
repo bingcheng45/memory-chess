@@ -1,5 +1,55 @@
 [
   {
+    "version": "1.2.3",
+    "title": "Has encontrado el fallo del caballo. Gracias.",
+    "summary": "Dos mensajes dejados en el buzón de comentarios resultaron ser errores de verdad: uno daba por malas respuestas correctas sin decir nada y el otro se comía piezas cuando las colocabas rápido. Los dos están arreglados y, ya puestos, el tablero está más quieto y responde antes.",
+    "groups": [
+      {
+        "title": "El caballo que se puntuaba como rey",
+        "description": "Uno de vosotros escribió: «El sistema no ve el caballo colocado y muestra que se ha fallado». Tenías toda la razón, y era peor de lo que parecía.",
+        "changes": [
+          "Cada caballo que colocabas se guardaba como rey, así que un caballo en la casilla correcta se marcaba como incorrecto. Si reconstruías a la perfección una posición de seis piezas con un caballo, sacabas un 67%.",
+          "Podía llevarse por delante una segunda pieza. En cuanto un caballo había ocupado una casilla como rey, el siguiente rey o caballo de ese color sencillamente no aparecía, y sin avisar.",
+          "Los caballos vuelven a ser caballos. Una reconstrucción perfecta saca un 100%, como debería haber sido siempre."
+        ],
+        "note": "Si tus resultados parecían tacaños, lo eran. Lo sentimos."
+      },
+      {
+        "title": "Piezas que desaparecían al jugar rápido",
+        "description": "Otro mensaje: «las piezas que puse en el tablero al principio no son exactamente las de la posición enviada… sobre todo si coloco algunas piezas rápido». También acertaba de lleno.",
+        "changes": [
+          "Un temporizador oculto limitaba los toques y, cuando llegaban muy seguidos, descartaba los primeros. Tocabas ocho casillas rápido y cuatro de ellas no habían ocurrido nunca.",
+          "Ahora cuenta cada toque, por rápido que vayas.",
+          "Quitar una pieza justo después de colocarla también funciona. Antes se ignoraba durante medio segundo."
+        ]
+      },
+      {
+        "title": "Un tablero que se queda quieto",
+        "changes": [
+          "El tablero ya no salta ni se desplaza cuando se acaba el tiempo y te toca colocar. Se queda exactamente donde estaba.",
+          "Memorizar y colocar ya no hacen scroll. El tablero se ajusta a la pantalla que tienes de verdad, así que no hay nada hacia donde desplazarse.",
+          "En el móvil el tablero es más grande y queda a 4px del borde en lugar de a 15px, así que es más fácil acertar en las casillas. El cronómetro y la bandeja de piezas se alinean ahora con los bordes del tablero en vez de sobresalir por los lados."
+        ]
+      },
+      {
+        "title": "Más rápido bajo el dedo",
+        "changes": [
+          "Antes, cada toque esperaba 50 milisegundos antes de que pasara nada, tuvieras prisa o no. Esa pausa ha desaparecido.",
+          "El tablero también se redibuja menos. Seguir un toque ya no vuelve a dibujar las 64 casillas, y el resaltado de la casilla seleccionada anima solo las dos propiedades que cambian de verdad.",
+          "El anillo que marca la casilla que has tocado se dibuja ahora por los cuatro lados. Siempre había estado solo en dos."
+        ]
+      },
+      {
+        "title": "Tareas de mantenimiento",
+        "changes": [
+          "Antes al tablero se le decía qué tamaño tener, calculado a partir de una estimación escrita a mano de cuánto sitio necesitaba todo lo demás. Cinco copias de esa estimación tenían que coincidir entre sí, y se fueron separando; así es como buena parte de lo anterior pasó desapercibido. Ahora el tablero mide el espacio que tiene, y la estimación ha desaparecido junto con 73 líneas de código.",
+          "Una línea suelta en inglés en la pantalla de memorización se había librado del lanzamiento en 24 idiomas. Ahora cuenta tus piezas en todos ellos, con el plural correcto."
+        ],
+        "note": "Los dos errores de arriba llegaron por el buzón de comentarios que aparece al terminar una partida. Si algo te chirría, dínoslo: es con diferencia la forma más rápida de arreglarlo."
+      }
+    ]
+  },
+  {
     "version": "1.2.2",
     "title": "Memory Chess ya habla tu idioma",
     "summary": "El juego y todas las guías de Aprender están disponibles en 24 idiomas, y la web arranca en el tuyo.",

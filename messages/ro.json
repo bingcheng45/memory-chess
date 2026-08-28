@@ -170,7 +170,8 @@
     "memorize": {
       "title": "Memorează poziția",
       "skip": "Sari peste",
-      "hint": "Tabla se golește când se termină timpul"
+      "hint": "Tabla se golește când se termină timpul",
+      "rememberPieces": "{count, plural, one {Memorează piesa} few {Memorează toate cele # piese} other {Memorează toate cele # de piese}}"
     },
     "place": {
       "title": "Așază piesele",

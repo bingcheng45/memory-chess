@@ -3,6 +3,7 @@
 import { useRef, type ReactNode } from 'react';
 
 import { useElementSize } from '@/hooks/useElementSize';
+import { MIN_BOARD_SIZE } from '@/lib/layout';
 import { boardSizeForArea } from './ResponsiveChessBoard';
 
 import { useTranslations } from "next-intl";
@@ -24,6 +25,50 @@ const STATUS_ROW_HEIGHT = 'h-20 sm:h-[88px]';
  * not move when the phase changes. See the note in the markup below.
  */
 const CONTROLS_ROW_HEIGHT = 'h-[136px] sm:h-[150px]';
+
+/**
+ * The two rows above as numbers, and the gap between the three children.
+ *
+ * The classes above are what the browser reads; these are the same figures in
+ * a form the floor below can be worked out from, and a test holds the two
+ * spellings to each other. Tailwind's scanner matches the literal text of a
+ * class name and cannot follow an interpolation, so a class cannot be built
+ * from a number -- which is exactly why the pair has to be checked.
+ */
+const STATUS_ROW_PX = { base: 80, sm: 88 } as const;
+const CONTROLS_ROW_PX = { base: 136, sm: 150 } as const;
+const COLUMN_GAP_PX = 8;
+const COLUMN_GAP_COUNT = 2;
+
+/**
+ * The height the column needs to seat both rows and a board worth playing on.
+ *
+ * Exported so the test can derive it rather than restate it.
+ */
+export function activeColumnMinHeight(breakpoint: 'base' | 'sm') {
+  return (
+    STATUS_ROW_PX[breakpoint] +
+    CONTROLS_ROW_PX[breakpoint] +
+    COLUMN_GAP_PX * COLUMN_GAP_COUNT +
+    MIN_BOARD_SIZE
+  );
+}
+
+/**
+ * The floor under the column, as classes.
+ *
+ * Without it the board is whatever the two fixed rows leave over, and on a
+ * short viewport that is nothing: the rows are a constant 232px (254px from
+ * `sm`) before the page's own header and banner are counted, so a phone in
+ * landscape left the board around 15px tall -- and, the rows being held to the
+ * board's width, the timer and palette 15px wide with it. The active phase
+ * locks scrolling, so there was nowhere to reach the board from either.
+ *
+ * Holding the column to a height the board can live in means a viewport too
+ * short for it overflows and can be scrolled, rather than silently crushing
+ * the one thing the screen is for. Where the room exists this changes nothing.
+ */
+const COLUMN_MIN_HEIGHT = 'min-h-[472px] sm:min-h-[494px]';
 
 interface ActiveGameLayoutProps {
   readonly status: ReactNode;
@@ -79,7 +124,9 @@ export default function ActiveGameLayout({
     : undefined;
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-2">
+    <div
+      className={`flex h-full w-full flex-col items-center justify-center gap-2 ${COLUMN_MIN_HEIGHT}`}
+    >
       {/*
         The two rows are a fixed height rather than being sized by their
         contents, because memorising and placing put very different things in

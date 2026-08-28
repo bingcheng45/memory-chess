@@ -360,7 +360,11 @@ function GamePageContent() {
     // can be sized from the space left over instead of from a guess at how
     // tall everything else is.
     const containerClass = "w-full max-w-4xl mx-auto flex flex-col items-center justify-center";
-    const activePhaseClass = `${containerClass} min-h-0 flex-1`;
+    // `flex-1` without `min-h-0`: the wrapper still takes the leftover
+    // height, but no longer shrinks below what ActiveGameLayout says the
+    // board needs. On a viewport too short for that floor it overflows, and
+    // `main` below scrolls to it.
+    const activePhaseClass = `${containerClass} flex-1`;
     
     switch (gamePhase) {
       case GamePhase.CONFIGURATION:
@@ -461,7 +465,17 @@ function GamePageContent() {
     <main
       className={`bg-bg-dark text-text-primary ${
         isActivePhase
-          ? 'min-h-0 flex-1 overflow-hidden'
+          ? // Where the game fits, this scrolls no more than the clipped
+            // version did -- there is nothing to scroll to. Where it does not
+            // fit, this is the only way to reach the board.
+            //
+            // `main` is the scrolling element, so a drag inside it is settled
+            // by the touch-action stated here: the browser intersects
+            // touch-action from the touched node up to the first containing
+            // scroller and stops there, leaving the document's own refusal
+            // (globals.css) intact for everything outside. `overscroll-contain`
+            // keeps the bounce from chaining out to that document.
+            'min-h-0 flex-1 overflow-y-auto overscroll-contain [touch-action:pan-y_pinch-zoom]'
           : PAGE_BELOW_BANNER_MIN_HEIGHT
       }`}
     >
@@ -469,7 +483,7 @@ function GamePageContent() {
 
       <div
         className={`container mx-auto flex flex-col items-center justify-start px-1 py-2 sm:px-4 sm:py-4 ${
-          isActivePhase ? 'h-full' : PAGE_BELOW_BANNER_MIN_HEIGHT
+          isActivePhase ? 'min-h-full' : PAGE_BELOW_BANNER_MIN_HEIGHT
         }`}
       >
         <PageHeader

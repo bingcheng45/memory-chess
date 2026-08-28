@@ -37,3 +37,19 @@ export const MAX_BOARD_SIZE_PX = `${MAX_BOARD_SIZE}px`;
  * of a class name and cannot follow an interpolation.
  */
 export const PAGE_BELOW_BANNER_MIN_HEIGHT = 'min-h-[calc(100dvh-2.5rem-1px)]';
+
+/**
+ * The smallest board worth playing on, in pixels -- a 30px square, about the
+ * width of a fingertip.
+ *
+ * The active phases size the board from the room left over, which is right
+ * until there is no room. A short viewport -- a phone held in landscape, a
+ * desktop window dragged flat -- can leave the two fixed rows consuming the
+ * whole screen, and the board is handed what remains: at 844x390 that was
+ * around 15px, with the timer and palette narrowed to match it.
+ *
+ * This is the floor the layout refuses to go under. Below it the column keeps
+ * its height and the page scrolls instead, which is worse than fitting but
+ * far better than a board nobody can see.
+ */
+export const MIN_BOARD_SIZE = 240;

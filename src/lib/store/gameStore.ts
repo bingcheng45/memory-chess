@@ -571,9 +571,18 @@ export const useGameStore = create<GameStore>()(
           
           console.log(`Placing ${color} ${type} on ${square}`);
           
-          // Place the piece
-          chess.put({ type, color }, square as Square);
-          
+          // Place the piece. chess.put returns false instead of throwing when
+          // the placement is rejected (for example a second king of one color),
+          // so the result has to be checked or the piece is dropped silently.
+          const placed = chess.put({ type, color }, square as Square);
+
+          if (!placed) {
+            console.error(
+              `Rejected placement of ${color} ${type} on ${square}: the board did not accept the piece`
+            );
+            return;
+          }
+
           // Update the state
           set((state) => {
             const newState = {

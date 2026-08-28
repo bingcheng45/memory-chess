@@ -15,6 +15,7 @@ import { useSoundEffects } from '@/hooks/useSoundEffects';
 import { Chess } from 'chess.js';
 import { v4 as uuidv4 } from 'uuid';
 import { ChessPiece, PieceType } from '@/types/chess';
+import { pieceTypeToFenChar } from '@/utils/chessPieces';
 import { Button } from "@/components/ui/button";
 import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
 import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
@@ -399,7 +400,7 @@ function GamePageContent() {
                   setSolutionPieces(prev => [...prev, piece]);
                   // Convert ChessPiece to chess.js format for the game store
                   const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
-                  const pieceCode = piece.color === 'white' ? piece.type.charAt(0).toUpperCase() : piece.type.charAt(0).toLowerCase();
+                  const pieceCode = pieceTypeToFenChar(piece.type, piece.color);
                   placePiece(square, pieceCode);
                 }}
                 onRemovePiece={(position) => {

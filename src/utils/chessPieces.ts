@@ -94,6 +94,33 @@ export function mapChessJsPieceToType(piece: string): PieceType {
   return mapping[piece.toLowerCase()] || "pawn";
 }
 
+const PIECE_TYPE_TO_FEN_CHAR: Readonly<Record<PieceType, string>> = {
+  pawn: "p",
+  knight: "n",
+  bishop: "b",
+  rook: "r",
+  queen: "q",
+  king: "k",
+};
+
+/**
+ * Maps a PieceType and color to its FEN character, the inverse of
+ * mapChessJsPieceToType. White pieces are uppercase, black lowercase.
+ *
+ * Knight maps to "n" because chess notation reserves "k" for the king.
+ * Deriving the character from the first letter of the type name instead
+ * silently turns every knight into a king.
+ *
+ * @param type The type of the piece
+ * @param color The color of the piece
+ * @returns The FEN character for the piece
+ */
+export function pieceTypeToFenChar(type: PieceType, color: PieceColor): string {
+  const char = PIECE_TYPE_TO_FEN_CHAR[type];
+
+  return color === "white" ? char.toUpperCase() : char;
+}
+
 /**
  * Converts the piece-placement section of a FEN string into UI chess pieces.
  * Throws when the board portion is malformed so callers can show a fallback.

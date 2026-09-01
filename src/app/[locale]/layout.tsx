@@ -16,6 +16,10 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
 import { ADSENSE_SCRIPT_URL } from "@/lib/adsense";
+import {
+  AHREFS_ANALYTICS_KEY,
+  AHREFS_ANALYTICS_SCRIPT_URL,
+} from "@/lib/ahrefs";
 import { routing, type Locale } from "@/i18n/routing";
 import { getSansFontClass, geistMono } from "@/lib/fonts";
 import { buildAlternates } from "@/lib/seo/alternates";
@@ -151,6 +155,11 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <head>
         <script async src={ADSENSE_SCRIPT_URL} crossOrigin="anonymous" />
+        <script
+          async
+          src={AHREFS_ANALYTICS_SCRIPT_URL}
+          data-key={AHREFS_ANALYTICS_KEY}
+        />
       </head>
       <body
         className={`${getSansFontClass(locale as Locale)} ${geistMono.variable} min-h-screen bg-bg-dark text-text-primary antialiased`}

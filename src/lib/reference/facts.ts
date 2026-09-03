@@ -24,6 +24,9 @@ export const PRESET_FACTS = RANKED_DIFFICULTIES.map((difficulty) => ({
 export const PIECE_COUNT_RANGE = { min: 2, max: 32 } as const;
 export const MEMORIZE_SECONDS_RANGE = { min: 2, max: 32 } as const;
 
+/** Rows the leaderboard query fetches per difficulty. */
+export const LEADERBOARD_ROW_LIMIT = 200;
+
 export type AccuracyBandKey =
   | "perfect"
   | "excellent"

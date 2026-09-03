@@ -1,12 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { ChevronDown } from "lucide-react";
 
 type Faq = {
   question: string;
@@ -52,22 +47,25 @@ export default function FaqSection() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <Accordion type="single" collapsible className="w-full">
-        {faqs.map((faq, index) => (
-          <AccordionItem
-            key={faq.question}
-            value={`item-${index + 1}`}
-            className="border-bg-light"
-          >
-            <AccordionTrigger className="px-2 py-3 text-left text-base font-medium text-text-primary hover:text-peach-500 sm:py-4 sm:text-lg">
+      {/*
+        Native details/summary instead of the Radix accordion: Radix unmounts
+        closed content, so the served HTML carried the questions and none of
+        the answers. Here every answer is in the DOM and toggling works with
+        no JavaScript at all.
+      */}
+      <div className="w-full">
+        {faqs.map((faq) => (
+          <details key={faq.question} className="group border-b border-bg-light">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-2 py-3 text-left text-base font-medium text-text-primary transition-all hover:text-peach-500 sm:py-4 sm:text-lg [&::-webkit-details-marker]:hidden">
               {faq.question}
-            </AccordionTrigger>
-            <AccordionContent className="px-2 pb-6 text-sm leading-6 text-text-secondary sm:text-base sm:leading-7">
+              <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
+            </summary>
+            <p className="px-2 pb-6 text-sm leading-6 text-text-secondary sm:text-base sm:leading-7">
               {faq.answer}
-            </AccordionContent>
-          </AccordionItem>
+            </p>
+          </details>
         ))}
-      </Accordion>
+      </div>
     </section>
   );
 }

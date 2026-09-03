@@ -72,6 +72,23 @@ export function EditorialHero({
   );
 }
 
+export function EditorialSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className={EDITORIAL_STYLES.section}>
+      <h2 className={EDITORIAL_STYLES.sectionTitle}>{title}</h2>
+      <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        {children}
+      </div>
+    </section>
+  );
+}
+
 export function EditorialActionLink({
   href,
   children,

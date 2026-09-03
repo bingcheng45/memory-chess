@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import {
   EditorialHero,
   EditorialPageShell,
+  EditorialSection,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 
@@ -46,9 +47,7 @@ export default function AboutPage() {
       />
 
       <div className={EDITORIAL_STYLES.readingColumn}>
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>Who runs this site</h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="Who runs this site">
             <p>
               I am Bing Cheng, a solo developer. I design, code, and maintain
               everything on Memory Chess myself. There is no team and no company
@@ -76,12 +75,9 @@ export default function AboutPage() {
               help cover the hosting costs, and nothing on the site is locked
               behind a payment or a signup.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>Why the game exists</h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="Why the game exists">
             <p>
               Most chess improvement advice points beginners at openings,
               puzzles, and courses. In my experience the earlier problem sits
@@ -98,12 +94,9 @@ export default function AboutPage() {
               the public leaderboard and measure yourself against everyone
               else.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>How a round works</h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="How a round works">
             <p>
               You choose how many pieces to face and how long you may study
               them. The presets range from Easy, two pieces with ten seconds,
@@ -134,14 +127,9 @@ export default function AboutPage() {
               </Link>{" "}
               in under a minute.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            How the Learn guides are written
-          </h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="How the Learn guides are written">
             <p>
               The{" "}
               <Link href="/learn" className={EDITORIAL_STYLES.link}>
@@ -166,14 +154,9 @@ export default function AboutPage() {
               mistakes I see most often, and a short plan that fits in twenty
               minutes a day.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            Where the site has been
-          </h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="Where the site has been">
             <p>
               The first release went live in March 2025 as a bare version of
               the game. Mobile play and piece selection followed within weeks.
@@ -186,12 +169,9 @@ export default function AboutPage() {
               fixes. I keep it honest because I use it myself to remember what
               changed and when.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>Get in touch</h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="Get in touch">
             <p>
               Write to me at{" "}
               <a
@@ -215,8 +195,7 @@ export default function AboutPage() {
               </Link>{" "}
               cover how the site handles data and what you agree to by playing.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
       </div>
     </EditorialPageShell>
   );

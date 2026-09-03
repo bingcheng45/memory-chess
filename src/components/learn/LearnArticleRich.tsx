@@ -126,6 +126,7 @@ export default function LearnArticleRich({
         },
         reviewedBy: {
           "@type": "Person",
+          "@id": `${SITE_URL}/about#bing-cheng`,
           name: page.reviewedBy,
           url: `${SITE_URL}/about`,
         },

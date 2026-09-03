@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import {
   EditorialHero,
   EditorialPageShell,
+  EditorialSection,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 
@@ -41,9 +42,7 @@ export default function TermsPage() {
       />
 
       <div className={EDITORIAL_STYLES.readingColumn}>
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>The service</h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="The service">
             <p>
               Memory Chess is a free browser game for training board memory. I
               provide it as-is and as-available, with no warranty of any kind.
@@ -58,12 +57,9 @@ export default function TermsPage() {
               sensible ceiling on what can go wrong here is losing a score you
               cared about, and I still try hard to prevent that.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>Acceptable use</h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="Acceptable use">
             <p>
               Play fairly and leave the site working for everyone else. Do not
               attack, overload, or probe the service, scrape it at volume, or
@@ -80,12 +76,9 @@ export default function TermsPage() {
               With no accounts to ban, removing bad entries and blocking abuse
               at the edge is the enforcement I have, and I use it.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>The leaderboard</h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="The leaderboard">
             <p>
               Submitting a score to the leaderboard is optional. Anything you
               submit there is public. The name attached to a score is whatever
@@ -105,14 +98,9 @@ export default function TermsPage() {
               not produced by a person playing the game. I remove entries to
               keep the board honest, not to curate who wins.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            Content and intellectual property
-          </h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="Content and intellectual property">
             <p>
               The site&apos;s own content, including the game, the Learn
               guides, the design, and the code that runs it, belongs to me. You
@@ -131,14 +119,9 @@ export default function TermsPage() {
               credit. Player feedback has shaped real releases before, and the
               changelog records what came of it.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            Third-party services
-          </h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="Third-party services">
             <p>
               The site runs on a small set of external services. Google AdSense
               serves the ads that keep it free. Google Analytics, Vercel
@@ -150,14 +133,9 @@ export default function TermsPage() {
               </Link>{" "}
               explains what data each one touches and the choices you have.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            Changes to these terms
-          </h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="Changes to these terms">
             <p>
               I may update these terms when the site or its services change. The
               current version always lives at this address, and continuing to
@@ -165,12 +143,9 @@ export default function TermsPage() {
               For anything that meaningfully affects players, such as a change
               to how the leaderboard works, I note it in the changelog as well.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>Contact</h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        <EditorialSection title="Contact">
             <p>
               Questions about these terms, or a leaderboard entry you want
               reviewed or removed, go to{" "}
@@ -182,8 +157,7 @@ export default function TermsPage() {
               </a>
               . I answer them myself.
             </p>
-          </div>
-        </section>
+        </EditorialSection>
       </div>
     </EditorialPageShell>
   );

@@ -233,6 +233,7 @@ describe("LearnArticleRich", () => {
     expect(article.author["@id"]).toBe(
       "https://thememorychess.com/about#bing-cheng",
     );
+    expect(article.reviewedBy["@id"]).toBe(article.author["@id"]);
   });
 
   it("reads every piece of article chrome from the catalogue", () => {

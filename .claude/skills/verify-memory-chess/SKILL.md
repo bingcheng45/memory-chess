@@ -83,7 +83,7 @@ rm -rf .verify
 
 ## Helpers
 
-All in [`helpers/`](helpers/), all executable, invocations shown above: `serve.sh` (launch and teardown), `doctor.sh` (health check), `cdp.mjs` (browser driver), `drive-game-round.mjs` (worked drive script), `ssr-words.sh` (non-JS crawler word floor).
+All in [`helpers/`](helpers/), invocations shown above. The four run directly; `drive-game-round.mjs` is a module `cdp.mjs` imports, so it carries no shebang and is not executable: `serve.sh` (launch and teardown), `doctor.sh` (health check), `cdp.mjs` (browser driver), `drive-game-round.mjs` (worked drive script), `ssr-words.sh` (non-JS crawler word floor).
 
 ## Maintenance
 

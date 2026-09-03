@@ -18,7 +18,7 @@ describe("FaqSection", () => {
     expect(screen.getByText("Is Memory Chess free?")).toBeInTheDocument();
   });
 
-  it("serves every answer in the rendered markup, not just on toggle", () => {
+  it("keeps every answer in the DOM whether its item is open or closed", () => {
     // The Radix accordion unmounted closed items, so the served HTML carried
     // eight questions and zero answers. Every answer must be in the DOM
     // whether or not its item is open.

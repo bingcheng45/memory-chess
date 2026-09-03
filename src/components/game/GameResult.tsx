@@ -1,6 +1,7 @@
 "use client";
 
 import { useGameStore } from "@/lib/store/gameStore";
+import { accuracyBandKey } from "@/lib/reference/facts";
 import { GameState } from "@/lib/types/game";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
@@ -176,17 +177,8 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     );
   };
 
-  // Get a message based on accuracy
-  const getResultMessage = () => {
-    const accuracy = gameState.accuracy || 0;
-
-    if (accuracy === 100) return t("messages.perfect");
-    if (accuracy >= 90) return t("messages.excellent");
-    if (accuracy >= 80) return t("messages.great");
-    if (accuracy >= 70) return t("messages.wellDone");
-    if (accuracy >= 50) return t("messages.goodEffort");
-    return t("messages.keepPracticing");
-  };
+  const getResultMessage = () =>
+    t(`messages.${accuracyBandKey(gameState.accuracy || 0)}`);
 
   // Get color class based on accuracy
   const getAccuracyColor = (accuracy: number) => {

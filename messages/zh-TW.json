@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "學習",
+      "about": "關於",
       "changelog": "更新紀錄",
       "contactUs": "聯絡我們",
-      "privacy": "隱私權"
+      "privacy": "隱私權",
+      "terms": "服務條款"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 保留一切權利。",

@@ -3,6 +3,15 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
+const FOOTER_LINKS = [
+  { href: "/learn", labelKey: "nav.learn" },
+  { href: "/about", labelKey: "nav.about" },
+  { href: "/changelog", labelKey: "nav.changelog" },
+  { href: "/contact-us", labelKey: "nav.contactUs" },
+  { href: "/privacy", labelKey: "nav.privacy" },
+  { href: "/terms", labelKey: "nav.terms" },
+] as const;
+
 export default function Footer() {
   const t = useTranslations("common");
   // Passed as a string on purpose: ICU would format a bare number argument
@@ -13,24 +22,15 @@ export default function Footer() {
     <footer className="w-full py-10 mt-10 border-t border-bg-light">
       <div className="container mx-auto px-1 sm:px-4">
         <div className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-3">
-          <Link
-            href="/changelog"
-            className="text-peach-500 transition-colors hover:text-peach-400"
-          >
-            {t("nav.changelog")}
-          </Link>
-          <Link
-            href="/contact-us"
-            className="text-peach-500 transition-colors hover:text-peach-400"
-          >
-            {t("nav.contactUs")}
-          </Link>
-          <Link
-            href="/privacy"
-            className="text-peach-500 transition-colors hover:text-peach-400"
-          >
-            {t("nav.privacy")}
-          </Link>
+          {FOOTER_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-peach-500 transition-colors hover:text-peach-400"
+            >
+              {t(link.labelKey)}
+            </Link>
+          ))}
         </div>
 
         {/* Product Hunt Badges */}

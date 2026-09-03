@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "学ぶ",
+      "about": "サイトについて",
       "changelog": "更新履歴",
       "contactUs": "お問い合わせ",
-      "privacy": "プライバシー"
+      "privacy": "プライバシー",
+      "terms": "利用規約"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 無断転載を禁じます。",

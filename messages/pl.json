@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "Nauka",
+      "about": "O stronie",
       "changelog": "Nowości",
       "contactUs": "Kontakt",
-      "privacy": "Prywatność"
+      "privacy": "Prywatność",
+      "terms": "Regulamin"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Wszelkie prawa zastrzeżone.",

@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "Belajar",
+      "about": "Tentang",
       "changelog": "Yang Baru",
       "contactUs": "Hubungi Kami",
-      "privacy": "Privasi"
+      "privacy": "Privasi",
+      "terms": "Ketentuan"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Seluruh hak cipta dilindungi.",

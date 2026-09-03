@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "Öğren",
+      "about": "Hakkında",
       "changelog": "Yenilikler",
       "contactUs": "Bize ulaşın",
-      "privacy": "Gizlilik"
+      "privacy": "Gizlilik",
+      "terms": "Koşullar"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tüm hakları saklıdır.",

@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "सीखें",
+      "about": "परिचय",
       "changelog": "नया क्या है",
       "contactUs": "संपर्क करें",
-      "privacy": "गोपनीयता"
+      "privacy": "गोपनीयता",
+      "terms": "शर्तें"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. सर्वाधिकार सुरक्षित।",

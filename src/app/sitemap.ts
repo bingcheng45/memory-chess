@@ -68,18 +68,30 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   },
   {
     path: "/privacy",
-    lastModified: "2026-08-28T00:00:00.000Z",
+    lastModified: "2026-09-03T00:00:00.000Z",
     changeFrequency: "yearly",
     priority: 0.4,
+  },
+  {
+    path: "/about",
+    lastModified: "2026-09-03T00:00:00.000Z",
+    changeFrequency: "monthly",
+    priority: 0.5,
+  },
+  {
+    path: "/terms",
+    lastModified: "2026-09-03T00:00:00.000Z",
+    changeFrequency: "yearly",
+    priority: 0.3,
   },
 ];
 
 /**
- * The privacy policy is still English-only, so it is listed once rather than
- * per locale. Announcing 24 URLs that all serve the same English text would be
- * a duplicate-content signal.
+ * The privacy policy, about page, and terms are still English-only, so each is
+ * listed once rather than per locale. Announcing 24 URLs that all serve the
+ * same English text would be a duplicate-content signal.
  */
-const ENGLISH_ONLY_PATHS = new Set(["/privacy"]);
+const ENGLISH_ONLY_PATHS = new Set(["/privacy", "/about", "/terms"]);
 
 /** hreflang block for one route across the locales that genuinely differ. */
 function alternatesFor(routePath: string, locales: readonly string[]) {

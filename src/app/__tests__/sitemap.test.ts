@@ -49,6 +49,20 @@ describe("sitemap", () => {
     );
   });
 
+  it("lists the English-only pages once, not once per locale", async () => {
+    // /about and /terms serve identical English text on every locale prefix.
+    // Announcing 24 copies of each would be a duplicate-content signal, the
+    // same reasoning already applied to /privacy.
+    const entries = await sitemap();
+    const urls = entries.map((entry) => entry.url);
+
+    for (const path of ["/about", "/terms", "/privacy"]) {
+      expect(
+        urls.filter((url) => url.endsWith(path)),
+      ).toEqual([`https://thememorychess.com${path}`]);
+    }
+  });
+
   it("leaves settings out, the one route that asks not to be indexed", async () => {
     const entries = await sitemap();
 

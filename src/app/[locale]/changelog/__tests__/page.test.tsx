@@ -11,14 +11,6 @@ jest.mock("@/components/ui/PageHeader", () => {
   return MockPageHeader;
 });
 
-jest.mock("@/components/ui/Footer", () => {
-  function MockFooter() {
-    return <div>Changelog footer</div>;
-  }
-
-  return MockFooter;
-});
-
 describe("ChangelogPage", () => {
   it("renders every release in newest-first order", () => {
     render(<ChangelogPage />);
@@ -61,7 +53,6 @@ describe("ChangelogPage", () => {
     expect(within(speedTable).getByText("17.60s")).toBeInTheDocument();
     expect(screen.getByText("August 16, 2026")).toBeInTheDocument();
     expect(screen.getByText("August 15, 2026")).toBeInTheDocument();
-    expect(screen.getByText("Changelog footer")).toBeInTheDocument();
   });
 
   it("renders a non-English locale from the prose overlay, keeping versions and links", () => {

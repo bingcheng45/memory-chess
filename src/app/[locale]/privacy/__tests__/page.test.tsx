@@ -9,14 +9,6 @@ jest.mock("@/components/ui/PageHeader", () => {
   return MockPageHeader;
 });
 
-jest.mock("@/components/ui/Footer", () => {
-  function MockFooter() {
-    return <div>Privacy footer</div>;
-  }
-
-  return MockFooter;
-});
-
 describe("PrivacyPage", () => {
   it("explains data use, cookies, advertising, and user choices", () => {
     render(<PrivacyPage />);
@@ -41,7 +33,6 @@ describe("PrivacyPage", () => {
     expect(
       screen.getByRole("link", { name: "Memory Chess contact form" }),
     ).toHaveAttribute("href", "/contact-us");
-    expect(screen.getByText("Privacy footer")).toBeInTheDocument();
   });
 
   it("names the controller, the DART cookie, and GDPR and CCPA rights", () => {

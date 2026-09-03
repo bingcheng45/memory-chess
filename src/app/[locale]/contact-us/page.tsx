@@ -6,7 +6,6 @@ import { z } from 'zod';
 import { useForm, ControllerRenderProps } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import PageHeader from '@/components/ui/PageHeader';
-import Footer from '@/components/ui/Footer';
 import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
 import {
@@ -231,8 +230,6 @@ export default function ContactUs() {
         </div>
       </div>
       
-      {/* Footer */}
-      <Footer />
     </div>
   );
 } 

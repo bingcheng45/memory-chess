@@ -7,7 +7,6 @@ import PageHeader from "@/components/ui/PageHeader";
 import FaqSection from "@/components/ui/FaqSection";
 import OtherAppsSection from "@/components/ui/OtherAppsSection";
 import VideoSection from "@/components/ui/VideoSection";
-import Footer from "@/components/ui/Footer";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { formatNumber } from "@/lib/utils";
@@ -344,8 +343,6 @@ export default function Home() {
         <OtherAppsSection />
       </main>
 
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

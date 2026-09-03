@@ -15,6 +15,7 @@ const SpeedInsights = dynamic(() =>
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
+import Footer from "@/components/ui/Footer";
 import { ADSENSE_SCRIPT_URL } from "@/lib/adsense";
 import {
   AHREFS_ANALYTICS_KEY,
@@ -167,6 +168,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <ChangelogBanner />
           {children}
+          <Footer />
           <Analytics />
           <SpeedInsights />
           <GoogleAnalytics gaId="G-R8BM9EMY9J" />

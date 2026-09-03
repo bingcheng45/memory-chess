@@ -109,6 +109,17 @@ body.game-fixed {
   touch-action: pan-x pinch-zoom;
 }
 
+/*
+  The pinned body is a fixed flex column, so any sibling rendered after the
+  game (the reference prose, the footer) becomes a flex item that cannot
+  shrink below its content height and squeezes the board toward its 240px
+  floor. The class only exists after JS starts a round, so the served HTML
+  always carries the guarded content.
+*/
+body.game-fixed [data-below-game] {
+  display: none;
+}
+
 /* Game container styles for responsive layout */
 .game-container {
   width: 100%;

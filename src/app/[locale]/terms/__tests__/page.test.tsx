@@ -9,14 +9,6 @@ jest.mock("@/components/ui/PageHeader", () => {
   return MockPageHeader;
 });
 
-jest.mock("@/components/ui/Footer", () => {
-  function MockFooter() {
-    return <div>Terms footer</div>;
-  }
-
-  return MockFooter;
-});
-
 describe("TermsPage", () => {
   it("states the deal plainly and links the privacy policy", () => {
     render(<TermsPage />);
@@ -33,6 +25,5 @@ describe("TermsPage", () => {
     expect(
       screen.getByRole("link", { name: "privacy policy" }),
     ).toHaveAttribute("href", "/privacy");
-    expect(screen.getByText("Terms footer")).toBeInTheDocument();
   });
 });

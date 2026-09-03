@@ -9,14 +9,6 @@ jest.mock("@/components/ui/PageHeader", () => {
   return MockPageHeader;
 });
 
-jest.mock("@/components/ui/Footer", () => {
-  function MockFooter() {
-    return <div>About footer</div>;
-  }
-
-  return MockFooter;
-});
-
 describe("AboutPage", () => {
   it("names the developer and links the site's real pages", () => {
     render(<AboutPage />);
@@ -38,6 +30,5 @@ describe("AboutPage", () => {
     expect(
       screen.getByRole("link", { name: "terms of service" }),
     ).toHaveAttribute("href", "/terms");
-    expect(screen.getByText("About footer")).toBeInTheDocument();
   });
 });

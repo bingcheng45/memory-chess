@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
-import Footer from "@/components/ui/Footer";
 import PageHeader from "@/components/ui/PageHeader";
 
 const siteUrl = "https://thememorychess.com";
@@ -322,7 +321,6 @@ export default function PrivacyPage() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }

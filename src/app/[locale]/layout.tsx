@@ -121,7 +121,7 @@ export async function generateMetadata({
 
     // Content type
     metadataBase: new URL(siteUrl),
-    creator: "Memory Chess Team",
+    creator: "Bing Cheng",
     publisher: "Memory Chess",
   };
 }

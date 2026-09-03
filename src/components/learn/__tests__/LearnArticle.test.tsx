@@ -231,7 +231,7 @@ describe("LearnArticleRich", () => {
       "https://thememorychess.com/#organization",
     );
     expect(article.author["@id"]).toBe(
-      "https://thememorychess.com/#editorial-team",
+      "https://thememorychess.com/about#bing-cheng",
     );
   });
 

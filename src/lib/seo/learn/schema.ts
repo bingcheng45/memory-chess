@@ -144,7 +144,10 @@ export type BuildGuideInput = {
   sources?: LearnSource[];
 };
 
-const EDITORIAL_REVIEWER = "Memory Chess Editorial Team";
+// A named person with a page behind the name. The guides used to credit a
+// pseudonymous "Editorial Team" whose JSON-LD id resolved to /learn, which
+// says nothing about who writes.
+const EDITORIAL_REVIEWER = "Bing Cheng";
 
 const CHESS_MEMORY_SOURCE: LearnSource = {
   title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",

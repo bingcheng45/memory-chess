@@ -119,15 +119,15 @@ export default function LearnArticleRich({
         isAccessibleForFree: true,
         articleSection: goal.label,
         author: {
-          "@type": "Organization",
-          "@id": `${SITE_URL}/#editorial-team`,
-          name: "Memory Chess Editorial Team",
-          url: hubUrl,
+          "@type": "Person",
+          "@id": `${SITE_URL}/about#bing-cheng`,
+          name: "Bing Cheng",
+          url: `${SITE_URL}/about`,
         },
         reviewedBy: {
-          "@type": "Organization",
+          "@type": "Person",
           name: page.reviewedBy,
-          url: hubUrl,
+          url: `${SITE_URL}/about`,
         },
         publisher: {
           "@type": "Organization",

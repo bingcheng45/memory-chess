@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
+import LeaderboardReference from '@/components/reference/LeaderboardReference';
 
 const siteUrl = 'https://thememorychess.com';
 
@@ -29,6 +30,19 @@ export async function generateMetadata({
   };
 }
 
-export default function LeaderboardLayout({ children }: { children: ReactNode }) {
-  return children;
+export default async function LeaderboardLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  return (
+    <>
+      {children}
+      <LeaderboardReference locale={locale} />
+    </>
+  );
 }

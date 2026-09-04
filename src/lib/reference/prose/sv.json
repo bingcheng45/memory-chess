@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Så fungerar Memory Chess",
+    "intro": "Varje omgång följer samma tre steg. Siffrorna på den här sidan är de som spelet faktiskt använder. De hämtas från samma kod som styr brädet och kan därför inte skilja sig från det du spelar.",
+    "phases": {
+      "heading": "Omgångens tre faser",
+      "memorize": {
+        "title": "Memorera",
+        "body": "En ställning visas på ett fullt bräde under ett bestämt antal sekunder. Inget rör sig och inget är dolt. Du kan avsluta fasen i förtid med Hoppa över, och klockan registrerar hur länge du faktiskt tittade, inte hur lång tid du fick."
+      },
+      "place": {
+        "title": "Placera",
+        "body": "Brädet töms. Du väljer pjästyp och färg, trycker på en ruta för att sätta ner en pjäs och trycker på den igen för att ta bort den. Här finns ingen tidsgräns, men klockan går från det att brädet töms tills du skickar in."
+      },
+      "score": {
+        "title": "Poäng",
+        "body": "Ditt bräde jämförs ruta för ruta med originalet. Du ser vilka pjäser som var rätt, vilka som var fel och vilka du missade, sida vid sida med ställningen du fick se."
+      }
+    },
+    "presets": {
+      "heading": "De fyra svårighetsnivåerna",
+      "intro": "Varje nivå bestämmer två saker: hur många pjäser som står på brädet och hur många sekunder du får titta på dem. Antalet pjäser inkluderar båda kungarna.",
+      "columns": {
+        "preset": "Nivå",
+        "pieces": "Pjäser",
+        "time": "Memoreringstid",
+        "trains": "Vad den tränar"
+      },
+      "seconds": "{seconds} s",
+      "trains": {
+        "easy": "Två kungar och ingenting annat. Nivån lär dig gränssnittet och visar tydligt om du kan hålla två rutor i huvudet under tidspress.",
+        "medium": "6 pjäser är ungefär vad de flesta kan hålla i minnet utan något system. Det är på den här nivån som det börjar löna sig att gruppera.",
+        "hard": "12 pjäser på 8 sekunder är mer än rent minnesomfång. Du måste gruppera pjäserna i former i stället för att minnas dem en i taget.",
+        "grandmaster": "20 pjäser på 5 sekunder är en fjärdedels sekund per pjäs. Ingen läser en sådan ställning ruta för ruta. Nivån belönar den som ser bondekedjor och pjäsgrupper som enheter."
+      },
+      "custom": {
+        "title": "Egna inställningar",
+        "body": "De två reglagen rör sig oberoende av nivåerna. Antalet pjäser går från {minPieces} till {maxPieces} och memoreringstiden från {minSeconds} till {maxSeconds} sekunder. Topplistan känner igen en omgång på dess antal pjäser, så varje annat antal än de fyra förvalda gör den till en omgång med egna inställningar, och sådana omgångar hamnar aldrig på topplistan."
+      }
+    },
+    "scoring": {
+      "heading": "Så poängsätts en omgång",
+      "match": "En pjäs räknas som rätt bara när allt stämmer med originalet: rutan den står på, pjästypen och färgen. En springare på rätt ruta men i fel färg ger inga delpoäng, den är fel.",
+      "accuracy": "Träffsäkerheten är andelen av originalets pjäser som du återgav exakt, uttryckt i procent, minus 10 poäng för varje pjäs du placerade utöver ställningens antal. Den går aldrig under 0.",
+      "wrong": "Fel pjäser är de pjäser i originalet som du inte återgav, plus alla pjäser du placerade utöver ställningens antal. Att placera fler pjäser än ställningen innehöll kostar dubbelt, en gång i antalet fel och en gång som avdrag på träffsäkerheten.",
+      "bandsIntro": "Meddelandet på resultatskärmen följer direkt av din träffsäkerhet:",
+      "bands": {
+        "perfect": "alla pjäser rätt",
+        "excellent": "minst {threshold} % träffsäkerhet",
+        "great": "minst {threshold} % träffsäkerhet",
+        "wellDone": "minst {threshold} % träffsäkerhet",
+        "goodEffort": "minst {threshold} % träffsäkerhet",
+        "keepPracticing": "under {threshold} % träffsäkerhet"
+      },
+      "ranking": "På topplistan sorteras raderna först efter antal rätta pjäser, sedan efter minst antal fel pjäser, sedan efter kortast memoreringstid och sist efter kortast lösningstid. Träffsäkerhet väger tyngre än snabbhet, och snabbhet skiljer bara spelare åt som fick samma poäng."
+    },
+    "positions": {
+      "heading": "Vilken sorts ställning du får",
+      "intro": "Ställningarna genereras nya för varje omgång i stället för att hämtas från riktiga partier, men de är inte slumpvisa pjäshögar. Varje ställning spelet visar uppfyller alla dessa regler:",
+      "rules": {
+        "king-count": "Alltid exakt en kung av varje färg, även på nivån med 2 pjäser.",
+        "adjacent-kings": "De två kungarna står aldrig på angränsande rutor.",
+        "pawn-back-rank": "Ingen bonde står någonsin på första eller åttonde raden.",
+        "piece-inventory": "Ingen sida har någonsin fler pjäser av en typ än ett riktigt schackset: 8 bönder, 2 springare, 2 löpare, 2 torn och 1 dam.",
+        "bishop-color-complex": "En sidas två löpare står aldrig på rutor av samma färg.",
+        "simultaneous-check": "Båda kungarna står aldrig i schack samtidigt.",
+        "checked-side-not-to-move": "Om en kung står i schack är det den sidan som har draget.",
+        "piece-count": "Brädet innehåller exakt det antal pjäser som nivån anger.",
+        "invalid-fen": "Ställningen är en giltig schackställning som går att ställa upp på ett bräde."
+      },
+      "distribution": "Pjäserna utöver de två kungarna delas så jämnt som antalet tillåter, och vit får den udda pjäsen. Typerna dras i samma proportioner som ett riktigt schackset, så bönder är den vanligaste pjäsen du ser och damer den ovanligaste.",
+      "outro": "Generatorn gör nya försök tills en ställning klarar alla reglerna ovan. Om det inte lyckas faller den tillbaka på utgångsställningen, nedskuren till det begärda antalet pjäser, så att en omgång alltid kan börja."
+    }
+  },
+  "leaderboard": {
+    "heading": "Så avgörs placeringarna",
+    "body": "Varje rad är en avslutad omgång som skickats in från resultatskärmen. Topplistan känner igen en omgång på dess antal pjäser, så bara omgångar med de fyra förvalda antalen kan komma med. Allt annat räknas som en omgång med egna inställningar och utesluts, vilket gör att varje tabell jämför omgångar spelade under samma villkor.",
+    "order": "Inom en tabell sorteras raderna efter antal rätta pjäser, sedan efter minst antal fel pjäser, sedan efter kortast memoreringstid och sist efter kortast lösningstid. Memoreringstiden är den tid du faktiskt använde, inte den nivån gav dig, så det lönar sig att avsluta memoreringsfasen i förtid.",
+    "columnsNote": "Pjäskolumnen visar antal rätta pjäser av ställningens totala antal. En upphöjd siffra efter talet anger pjäser placerade utöver det antalet.",
+    "sectionIntro": "Varje nivå har en egen tabell som visar dess {limit} bästa omgångar."
+  },
+  "contact": {
+    "heading": "Vart ditt meddelande tar vägen",
+    "body": "Formuläret skriver direkt till ett kalkylblad som personen bakom Memory Chess läser. Det finns ingen supportavdelning och inget ärendenummer. Svaren kommer från en riktig inkorg, oftast inom några dagar.",
+    "typesIntro": "Formuläret ber dig välja en av fyra ärendetyper:",
+    "types": {
+      "feedback": "Något som kändes fel, förvirrande eller långsammare än det borde vara. Ange vilken svårighetsnivå och vilken fas det gällde.",
+      "featureRequest": "Något som spelet inte gör ännu. Ändringsloggen visar vad som redan har släppts.",
+      "general": "Allt som inte passar in under de andra tre.",
+      "business": "Partnerskap, sponsring och licensiering."
+    },
+    "privacyNote": "Ditt namn, din e-postadress, ärendetypen och meddelandet lagras med en tidsstämpel. Inget annat samlas in på den här sidan och inget av det säljs."
+  }
+}

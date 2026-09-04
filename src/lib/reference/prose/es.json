@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Cómo funciona Memory Chess",
+    "intro": "Cada ronda sigue los mismos tres pasos. Los números de esta página son los que el juego usa de verdad; se leen del mismo código que hace funcionar el tablero, así que no pueden diferir de lo que juegas.",
+    "phases": {
+      "heading": "Las tres fases de una ronda",
+      "memorize": {
+        "title": "Memorización",
+        "body": "Una posición aparece en un tablero completo durante un número fijo de segundos. Nada se mueve y nada está oculto. Puedes terminar la fase antes de tiempo con el botón Saltar, y el reloj registra cuánto miraste en realidad, no el tiempo que se te dio."
+      },
+      "place": {
+        "title": "Colocación",
+        "body": "El tablero se vacía. Eliges un tipo de pieza y un color, y luego tocas una casilla para poner una pieza o la vuelves a tocar para retirarla. Aquí no hay límite de tiempo, pero el reloj corre desde que el tablero se vacía hasta que envías tu respuesta."
+      },
+      "score": {
+        "title": "Puntuación",
+        "body": "Tu tablero se compara casilla por casilla con el original. Ves qué piezas fueron correctas, cuáles incorrectas y cuáles olvidaste, al lado de la posición que se te mostró."
+      }
+    },
+    "presets": {
+      "heading": "Las cuatro dificultades predefinidas",
+      "intro": "Cada dificultad fija dos cosas: cuántas piezas hay en el tablero y cuántos segundos tienes para mirarlas. El número de piezas incluye a los dos reyes.",
+      "columns": {
+        "preset": "Dificultad",
+        "pieces": "Piezas",
+        "time": "Tiempo de observación",
+        "trains": "Qué entrena"
+      },
+      "seconds": "{seconds}s",
+      "trains": {
+        "easy": "Dos reyes y nada más. Enseña la interfaz y te da una medida limpia de si puedes retener dos casillas bajo presión de tiempo.",
+        "medium": "Seis piezas es más o menos lo que la mayoría retiene sin un sistema. Es la dificultad donde agrupar piezas empieza a dar frutos.",
+        "hard": "Doce piezas en ocho segundos supera la memoria bruta. Tienes que agrupar las piezas en formas en lugar de recordarlas una a una.",
+        "grandmaster": "Veinte piezas en cinco segundos es un cuarto de segundo por pieza. Nadie lee esto casilla por casilla; premia ver las cadenas de peones y los grupos de piezas como unidades."
+      },
+      "custom": {
+        "title": "Configuración personalizada",
+        "body": "Los dos controles deslizantes se mueven con independencia de las dificultades predefinidas. El número de piezas va de {minPieces} a {maxPieces} y el tiempo de observación de {minSeconds} a {maxSeconds} segundos. La clasificación reconoce una ronda por su número de piezas, así que cualquier cantidad distinta de las cuatro predefinidas la convierte en una partida personalizada, y las partidas personalizadas quedan fuera de la clasificación."
+      }
+    },
+    "scoring": {
+      "heading": "Cómo se puntúa una ronda",
+      "match": "Una pieza cuenta como correcta solo cuando todo en ella coincide con el original: la casilla que ocupa, su tipo y su color. Un caballo en la casilla correcta pero del color equivocado no suma a medias: es incorrecto.",
+      "accuracy": "La precisión es el porcentaje de piezas del original que reprodujiste con exactitud, menos diez puntos por cada pieza colocada por encima del número de la posición. Nunca baja de cero.",
+      "wrong": "Las piezas incorrectas son las piezas del original que no reprodujiste, más las colocadas por encima del número de la posición. Colocar más piezas de las que tenía la posición te cuesta doble: una vez en el recuento de incorrectas y otra como penalización de precisión.",
+      "bandsIntro": "El mensaje de la pantalla de resultados sale directamente de tu precisión:",
+      "bands": {
+        "perfect": "todas las piezas correctas",
+        "excellent": "al menos un {threshold}% de precisión",
+        "great": "al menos un {threshold}% de precisión",
+        "wellDone": "al menos un {threshold}% de precisión",
+        "goodEffort": "al menos un {threshold}% de precisión",
+        "keepPracticing": "menos de un {threshold}% de precisión"
+      },
+      "ranking": "En la clasificación, las entradas se ordenan primero por piezas correctas, luego por menos piezas incorrectas, luego por menor tiempo de observación y por último por menor tiempo de resolución. La precisión pesa más que la velocidad, y la velocidad solo separa a jugadores con la misma puntuación."
+    },
+    "positions": {
+      "heading": "Qué tipo de posición recibes",
+      "intro": "Las posiciones se generan nuevas para cada ronda en lugar de tomarse de partidas reales, pero no son montones de piezas al azar. Toda posición que el juego muestra cumple todas estas reglas:",
+      "rules": {
+        "king-count": "Exactamente un rey de cada color, siempre, incluso en la dificultad de dos piezas.",
+        "adjacent-kings": "Los dos reyes nunca están en casillas adyacentes.",
+        "pawn-back-rank": "Ningún peón está nunca en la primera ni en la octava fila.",
+        "piece-inventory": "Ningún bando tiene nunca más piezas de un tipo que un juego real: ocho peones, dos caballos, dos alfiles, dos torres y una dama.",
+        "bishop-color-complex": "Los dos alfiles de un bando nunca están en casillas del mismo color.",
+        "simultaneous-check": "Los dos reyes nunca están en jaque a la vez.",
+        "checked-side-not-to-move": "Si un rey está en jaque, le toca mover a ese bando.",
+        "piece-count": "El tablero tiene exactamente el número de piezas que pidió la dificultad.",
+        "invalid-fen": "La posición es una posición legal de ajedrez que se puede montar en un tablero."
+      },
+      "distribution": "Las piezas más allá de los dos reyes se reparten tan a partes iguales como el número lo permite, y las blancas se llevan la pieza impar. Los tipos se sortean en las proporciones de un juego real, así que los peones son la pieza que más verás y las damas la más rara.",
+      "outro": "El generador lo intenta una y otra vez hasta que una posición cumple todas las reglas anteriores. Si no lo consigue, recurre a la posición inicial recortada al número de piezas pedido, de modo que la ronda siempre empieza."
+    }
+  },
+  "leaderboard": {
+    "heading": "Cómo se deciden estas clasificaciones",
+    "body": "Cada fila es una ronda completada y enviada desde la pantalla de resultados. La clasificación reconoce una ronda por su número de piezas, así que solo entran las rondas con los cuatro números predefinidos; cualquier otra es una partida personalizada y queda excluida, lo que hace que cada tabla compare rondas jugadas en las mismas condiciones.",
+    "order": "Dentro de cada tabla, las entradas se ordenan por piezas correctas, luego por menos piezas incorrectas, luego por menor tiempo de observación y por último por menor tiempo de resolución. El tiempo de observación es el que realmente gastaste, no el que permitía la dificultad, así que terminar antes la fase de memorización tiene su recompensa.",
+    "columnsNote": "La columna de piezas muestra las piezas correctas sobre el total de la posición. Un número en superíndice a continuación cuenta las piezas colocadas por encima de ese total.",
+    "sectionIntro": "Cada dificultad tiene su propia tabla, con sus {limit} mejores rondas."
+  },
+  "contact": {
+    "heading": "Adónde va tu mensaje",
+    "body": "El formulario escribe directamente en una hoja de cálculo que lee la persona que lleva Memory Chess. No hay servicio de soporte ni número de ticket. Las respuestas llegan desde un buzón real, normalmente en unos días.",
+    "typesIntro": "El formulario te pide elegir uno de los cuatro tipos de consulta:",
+    "types": {
+      "feedback": "Algo que te pareció incorrecto, confuso o más lento de lo que debería. Indica la dificultad y la fase.",
+      "featureRequest": "Algo que el juego todavía no hace. Las novedades muestran lo que ya se ha publicado.",
+      "general": "Cualquier cosa que no encaje en los otros tres.",
+      "business": "Colaboraciones, patrocinio y licencias."
+    },
+    "privacyNote": "Tu nombre, tu correo, el tipo de consulta y el mensaje se guardan con una marca de tiempo. En esta página no se recoge nada más y nada de esto se vende."
+  }
+}

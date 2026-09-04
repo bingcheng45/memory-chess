@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Cum funcționează Memory Chess",
+    "intro": "Fiecare rundă urmează aceiași trei pași. Numerele de pe această pagină sunt chiar cele pe care le folosește jocul; sunt citite din același cod care rulează tabla, așa că nu pot ajunge să difere de ceea ce joci.",
+    "phases": {
+      "heading": "Cele trei faze ale unei runde",
+      "memorize": {
+        "title": "Memorează",
+        "body": "O poziție apare pe o tablă întreagă pentru un număr fix de secunde. Nimic nu se mișcă și nimic nu este ascuns. Poți încheia faza mai devreme cu Sari peste, iar cronometrul reține cât ai privit de fapt, nu timpul care ți s-a acordat."
+      },
+      "place": {
+        "title": "Așază piesele",
+        "body": "Tabla se golește. Alegi un tip de piesă și o culoare, apoi atingi un pătrat ca să așezi piesa sau îl atingi din nou ca să o iei înapoi. Aici nu există limită de timp, dar cronometrul merge din momentul în care tabla se golește până când trimiți răspunsul."
+      },
+      "score": {
+        "title": "Primește scorul",
+        "body": "Tabla ta este comparată pătrat cu pătrat cu originalul. Vezi care piese au fost corecte, care au fost greșite și care ți-au scăpat, alături de poziția care ți s-a arătat."
+      }
+    },
+    "presets": {
+      "heading": "Cele patru niveluri de dificultate presetate",
+      "intro": "Fiecare nivel presetat stabilește două lucruri: câte piese sunt pe tablă și câte secunde ai ca să le privești. Numărul de piese îi include și pe cei doi regi.",
+      "columns": {
+        "preset": "Nivel",
+        "pieces": "Piese",
+        "time": "Timp de memorare",
+        "trains": "Ce antrenează"
+      },
+      "seconds": "{seconds}s",
+      "trains": {
+        "easy": "Doi regi și nimic altceva. Te învață interfața și îți arată limpede dacă poți reține două pătrate sub presiunea timpului.",
+        "medium": "Șase piese reprezintă cam atât cât rețin majoritatea oamenilor fără o metodă. Acesta este nivelul la care gruparea pieselor începe să dea roade.",
+        "hard": "Douăsprezece piese în opt secunde depășesc memoria brută. Trebuie să grupezi piesele în forme, nu să le reții una câte una.",
+        "grandmaster": "Douăzeci de piese în cinci secunde înseamnă un sfert de secundă pentru fiecare piesă. Nimeni nu citește așa ceva pătrat cu pătrat; nivelul răsplătește capacitatea de a vedea lanțurile de pioni și grupurile de piese ca unități întregi."
+      },
+      "custom": {
+        "title": "Setări personalizate",
+        "body": "Cele două glisoare se mișcă independent de nivelurile presetate. Numărul de piese merge de la {minPieces} la {maxPieces}, iar timpul de memorare de la {minSeconds} la {maxSeconds} secunde. Clasamentul recunoaște o rundă după numărul ei de piese, așa că orice număr diferit de cele patru valori presetate o transformă într-o partidă personalizată, iar partidele personalizate rămân în afara clasamentului."
+      }
+    },
+    "scoring": {
+      "heading": "Cum se punctează o rundă",
+      "match": "O piesă se consideră corectă doar atunci când totul la ea corespunde originalului: pătratul pe care stă, tipul și culoarea. Un cal pe pătratul potrivit, dar de culoarea greșită, nu primește punctaj parțial; este greșit.",
+      "accuracy": "Precizia este procentul din piesele originale pe care le-ai reprodus exact, din care se scad zece puncte pentru fiecare piesă așezată peste numărul de piese al poziției. Nu coboară niciodată sub zero.",
+      "wrong": "Piesele greșite sunt piesele originale pe care nu ai reușit să le reproduci, plus orice piese așezate peste numărul de piese al poziției. Dacă așezi mai multe piese decât avea poziția, plătești de două ori: o dată la numărul de piese greșite și o dată ca penalizare de precizie.",
+      "bandsIntro": "Mesajul de pe ecranul de rezultat vine direct din precizia ta:",
+      "bands": {
+        "perfect": "toate piesele corecte",
+        "excellent": "precizie de cel puțin {threshold}%",
+        "great": "precizie de cel puțin {threshold}%",
+        "wellDone": "precizie de cel puțin {threshold}%",
+        "goodEffort": "precizie de cel puțin {threshold}%",
+        "keepPracticing": "precizie sub {threshold}%"
+      },
+      "ranking": "În clasament, intrările sunt ordonate mai întâi după piesele corecte, apoi după cele mai puține piese greșite, apoi după cel mai scurt timp de memorare, apoi după cel mai scurt timp de rezolvare. Precizia contează mai mult decât viteza, iar viteza îi desparte doar pe jucătorii cu același punctaj."
+    },
+    "positions": {
+      "heading": "Ce fel de poziție primești",
+      "intro": "Pozițiile sunt generate de la zero pentru fiecare rundă, nu preluate din partide reale, dar nu sunt grămezi întâmplătoare de piese. Fiecare poziție pe care ți-o arată jocul respectă toate aceste reguli:",
+      "rules": {
+        "king-count": "Exact un rege de fiecare culoare, întotdeauna, inclusiv la nivelul cu două piese.",
+        "adjacent-kings": "Cei doi regi nu stau niciodată pe pătrate alăturate.",
+        "pawn-back-rank": "Niciun pion nu stă vreodată pe linia întâi sau pe linia a opta.",
+        "piece-inventory": "Nicio tabără nu are vreodată mai multe piese de un tip decât conține un set real: opt pioni, doi cai, doi nebuni, două turnuri, o damă.",
+        "bishop-color-complex": "Cei doi nebuni ai unei tabere nu stau niciodată pe pătrate de aceeași culoare.",
+        "simultaneous-check": "Cei doi regi nu sunt niciodată în șah în același timp.",
+        "checked-side-not-to-move": "Dacă un rege este în șah, este rândul acelei tabere să mute.",
+        "piece-count": "Tabla conține exact numărul de piese cerut de nivelul ales.",
+        "invalid-fen": "Poziția este o poziție legală de șah, care poate fi așezată pe o tablă."
+      },
+      "distribution": "Piesele de dincolo de cei doi regi se împart cât de egal permite numărul, iar piesa fără pereche îi revine albului. Tipurile sunt alese în proporțiile unui set real, așa că pionii sunt piesele pe care le vei vedea cel mai des, iar damele cel mai rar.",
+      "outro": "Generatorul încearcă în mod repetat până când o poziție trece de toate regulile de mai sus. Dacă nu reușește, revine la poziția inițială a jocului, redusă la numărul de piese cerut, astfel încât o rundă începe întotdeauna."
+    }
+  },
+  "leaderboard": {
+    "heading": "Cum se stabilesc aceste clasamente",
+    "body": "Fiecare rând este o rundă încheiată, trimisă de pe ecranul de rezultat. Clasamentul recunoaște o rundă după numărul ei de piese, așa că doar rundele jucate la cele patru valori presetate sunt eligibile; orice altceva este o partidă personalizată și este exclusă, iar astfel fiecare tabel compară runde jucate în condiții asemănătoare.",
+    "order": "În cadrul unui tabel, intrările sunt sortate după piesele corecte, apoi după cele mai puține piese greșite, apoi după cel mai scurt timp de memorare, apoi după cel mai scurt timp de rezolvare. Timpul de memorare este cel petrecut de fapt, nu cel permis de nivelul ales, așa că merită să închei mai devreme faza de memorare.",
+    "columnsNote": "Coloana de piese arată piesele corecte din totalul poziției. Un număr scris ca exponent imediat după ea numără piesele așezate peste acest total.",
+    "sectionIntro": "Fiecare nivel presetat are propriul tabel, care arată cele mai bune {limit} runde ale sale."
+  },
+  "contact": {
+    "heading": "Unde ajunge mesajul tău",
+    "body": "Formularul scrie direct într-un tabel pe care îl citește persoana care se ocupă de Memory Chess. Nu există un birou de asistență și niciun număr de tichet. Răspunsurile vin dintr-o căsuță de e-mail reală, de obicei în câteva zile.",
+    "typesIntro": "Formularul îți cere să alegi unul dintre cele patru tipuri de solicitări:",
+    "types": {
+      "feedback": "Ceva care ți s-a părut greșit, derutant sau mai lent decât ar trebui. Spune la ce dificultate și în ce fază.",
+      "featureRequest": "Ceva ce jocul nu face încă. Jurnalul de modificări arată ce a fost deja lansat.",
+      "general": "Orice nu se încadrează în celelalte trei tipuri.",
+      "business": "Parteneriate, sponsorizări și licențiere."
+    },
+    "privacyNote": "Numele tău, adresa de e-mail, tipul solicitării și mesajul sunt stocate împreună cu data și ora trimiterii. Nimic altceva nu se colectează pe această pagină și nimic din toate acestea nu se vinde."
+  }
+}

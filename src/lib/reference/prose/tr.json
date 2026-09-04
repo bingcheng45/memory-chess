@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Memory Chess nasıl çalışır",
+    "intro": "Her tur aynı üç adımdan oluşur. Bu sayfadaki sayılar, oyunun gerçekten kullandığı sayılardır; tahtayı çalıştıran kodun kendisinden okunur, bu yüzden oynadığınızdan sapamaz.",
+    "phases": {
+      "heading": "Bir turun üç aşaması",
+      "memorize": {
+        "title": "Ezberleme",
+        "body": "Bir konum, sabit bir saniye boyunca tam tahtada görünür. Hiçbir şey hareket etmez ve hiçbir şey gizlenmez. Bu aşamayı Atla ile erken bitirebilirsiniz ve saat, size verilen süreyi değil, gerçekten baktığınız süreyi kaydeder."
+      },
+      "place": {
+        "title": "Yerleştirme",
+        "body": "Tahta temizlenir. Bir taş türü ve rengi seçer, ardından bir kareye dokunarak taş koyar ya da tekrar dokunarak geri alırsınız. Burada süre sınırı yoktur, ama saat tahtanın temizlendiği andan gönderdiğiniz ana kadar işler."
+      },
+      "score": {
+        "title": "Puanlama",
+        "body": "Tahtanız orijinaliyle kare kare karşılaştırılır. Hangi taşların doğru, hangilerinin yanlış olduğunu ve hangilerini atladığınızı, size gösterilen konumun yanında görürsünüz."
+      }
+    },
+    "presets": {
+      "heading": "Dört zorluk seviyesi",
+      "intro": "Her seviye iki şeyi belirler: tahtada kaç taş olduğunu ve onlara kaç saniye bakabileceğinizi. Taş sayısına her iki şah da dahildir.",
+      "columns": {
+        "preset": "Seviye",
+        "pieces": "Taşlar",
+        "time": "Bakma süresi",
+        "trains": "Neyi geliştirir"
+      },
+      "seconds": "{seconds} sn",
+      "trains": {
+        "easy": "Sadece iki şah, başka hiçbir şey yok. Arayüzü öğretir ve zaman baskısı altında iki kareyi tutup tutamadığınıza dair net bir fikir verir.",
+        "medium": "Altı taş, çoğu insanın sistemsiz tutabildiği kapasiteye yakındır. Öbekleme yapmanın işe yaramaya başladığı seviye budur.",
+        "hard": "Sekiz saniyede on iki taş, ham kapasitenin ötesindedir. Taşları tek tek hatırlamak yerine şekiller halinde gruplamanız gerekir.",
+        "grandmaster": "Beş saniyede yirmi taş, taş başına çeyrek saniye eder. Bunu kimse kare kare okumaz; bu seviye piyon zincirlerini ve taş kümelerini tek birim olarak görmeyi ödüllendirir."
+      },
+      "custom": {
+        "title": "Özel ayarlar",
+        "body": "İki kaydırıcı da seviyelerden bağımsız hareket eder. Taş sayısı {minPieces} ile {maxPieces} arasında, bakma süresi {minSeconds} ile {maxSeconds} saniye arasında değişir. Lider tablosu bir turu taş sayısına göre tanır, bu yüzden dört sabit sayının dışındaki her sayı turu özel oyun yapar ve özel oyunlar lider tablosuna girmez."
+      }
+    },
+    "scoring": {
+      "heading": "Bir tur nasıl puanlanır",
+      "match": "Bir taş, yalnızca her şey orijinaliyle eşleştiğinde doğru sayılır: durduğu kare, türü ve rengi. Doğru karedeki yanlış renkli bir at kısmi puan değildir, yanlıştır.",
+      "accuracy": "Doğruluk, tam olarak yeniden oluşturduğunuz orijinal taşların yüzde olarak oranıdır; konumun taş sayısının ötesinde yerleştirdiğiniz her taş için on puan düşülür. Hiçbir zaman sıfırın altına inmez.",
+      "wrong": "Yanlış taşlar, yeniden oluşturamadığınız orijinal taşlar artı konumun taş sayısının ötesinde yerleştirdiğiniz taşlardır. Konumun içerdiğinden fazla taş yerleştirmek size iki kez zarar verir: bir kez yanlış sayısında, bir kez doğruluk cezasında.",
+      "bandsIntro": "Sonuç ekranındaki mesaj doğrudan doğruluğunuzdan gelir:",
+      "bands": {
+        "perfect": "her taş doğru",
+        "excellent": "en az %{threshold} doğruluk",
+        "great": "en az %{threshold} doğruluk",
+        "wellDone": "en az %{threshold} doğruluk",
+        "goodEffort": "en az %{threshold} doğruluk",
+        "keepPracticing": "%{threshold} doğruluğun altında"
+      },
+      "ranking": "Lider tablosunda kayıtlar önce doğru taşlara, sonra en az yanlış taşa, sonra en kısa bakma süresine, son olarak en kısa çözüm süresine göre sıralanır. Doğruluk hızdan önce gelir, hız yalnızca aynı skoru alan oyuncuları ayırır."
+    },
+    "positions": {
+      "heading": "Ne tür bir konum alırsınız",
+      "intro": "Konumlar gerçek partilerden alınmaz, her tur için yeniden üretilir, ama rastgele taş yığınları değildir. Oyunun gösterdiği her konum şu kuralların tümünü karşılar:",
+      "rules": {
+        "king-count": "Her zaman her renkten tam olarak bir şah, iki taşlık seviyede bile.",
+        "adjacent-kings": "İki şah asla komşu karelerde durmaz.",
+        "pawn-back-rank": "Hiçbir piyon birinci ya da sekizinci sırada durmaz.",
+        "piece-inventory": "Hiçbir taraf, gerçek bir takımın içerdiğinden fazla taşa sahip olmaz: sekiz piyon, iki at, iki fil, iki kale, bir vezir.",
+        "bishop-color-complex": "Bir tarafın iki fili asla aynı renkteki karelerde durmaz.",
+        "simultaneous-check": "İki şah asla aynı anda şah altında olmaz.",
+        "checked-side-not-to-move": "Bir şah şahtaysa, sıra o tarafın hamlesindedir.",
+        "piece-count": "Tahta, seçilen seviyenin istediği kadar taş içerir.",
+        "invalid-fen": "Konum, bir tahtanın kurulabileceği yasal bir satranç konumudur."
+      },
+      "distribution": "İki şahın dışındaki taşlar, sayının izin verdiği kadar eşit paylaştırılır, fazla taşı beyaz alır. Türler gerçek bir takımın oranlarında seçilir, bu yüzden en sık göreceğiniz taş piyon, en nadir göreceğiniz ise vezirdir.",
+      "outro": "Üretici, bir konum yukarıdaki tüm kuralları geçene kadar tekrar tekrar dener. Başaramazsa, istenen taş sayısına kırpılmış başlangıç düzenine döner, böylece bir tur her zaman başlar."
+    }
+  },
+  "leaderboard": {
+    "heading": "Bu sıralama nasıl belirlenir",
+    "body": "Her satır, sonuç ekranından gönderilmiş tamamlanmış bir turdur. Lider tablosu bir turu taş sayısına göre tanır, bu yüzden yalnızca dört sabit taş sayısındaki turlar uygundur; geri kalan her şey özel oyun sayılır ve dışarıda bırakılır, bu da her tablonun benzer koşullarda oynanmış turları karşılaştırmasını sağlar.",
+    "order": "Bir tablo içinde kayıtlar doğru taşlara, sonra en az yanlış taşa, sonra en kısa bakma süresine, sonra en kısa çözüm süresine göre sıralanır. Bakma süresi, seviyenin izin verdiği değil, gerçekten harcadığınız süredir, bu yüzden ezberleme aşamasını erken bitirmenin bir değeri vardır.",
+    "columnsNote": "Taş sütunu, konumun toplamından doğru taşları gösterir. Sonrasındaki üst simge sayı, bu toplamın ötesinde yerleştirilen taşları sayar.",
+    "sectionIntro": "Her seviyenin, en iyi {limit} turunu gösteren kendi tablosu vardır."
+  },
+  "contact": {
+    "heading": "Mesajınız nereye gider",
+    "body": "Form, doğrudan Memory Chess'i yöneten kişinin okuduğu bir e-tabloya yazar. Destek masası ya da talep numarası yoktur. Yanıtlar gerçek bir gelen kutusundan gelir, genellikle birkaç gün içinde.",
+    "typesIntro": "Form, dört başvuru türünden birini seçmenizi ister:",
+    "types": {
+      "feedback": "Yanlış, kafa karıştırıcı ya da olması gerekenden yavaş hissettiren bir şey. Hangi zorluk ve hangi aşama olduğunu belirtin.",
+      "featureRequest": "Oyunun henüz yapmadığı bir şey. Değişiklik günlüğü şimdiye kadar neyin yayınlandığını gösterir.",
+      "general": "Diğer üçüne uymayan her şey.",
+      "business": "Ortaklıklar, sponsorluk ve lisanslama."
+    },
+    "privacyNote": "Adınız, e-postanız, başvuru türünüz ve mesajınız bir zaman damgasıyla saklanır. Bu sayfada başka hiçbir şey toplanmaz ve hiçbiri satılmaz."
+  }
+}

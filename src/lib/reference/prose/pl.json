@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Jak działa Memory Chess",
+    "intro": "Każda runda przebiega w tych samych trzech krokach. Liczby na tej stronie to te, których gra faktycznie używa; pochodzą z tego samego kodu, który obsługuje szachownicę, więc nie mogą odbiegać od tego, w co grasz.",
+    "phases": {
+      "heading": "Trzy fazy rundy",
+      "memorize": {
+        "title": "Zapamiętywanie",
+        "body": "Pozycja pojawia się na pełnej szachownicy na ustaloną liczbę sekund. Nic się nie rusza i nic nie jest ukryte. Fazę możesz zakończyć wcześniej przyciskiem Pomiń, a zegar zapisuje czas, przez który faktycznie patrzyłeś, a nie czas, który dostałeś."
+      },
+      "place": {
+        "title": "Ustawianie",
+        "body": "Szachownica się czyści. Wybierasz typ i kolor figury, a potem stukasz w pole, by postawić bierkę, albo stukasz ponownie, by ją zabrać. Nie ma tu limitu czasu, ale zegar biegnie od momentu wyczyszczenia szachownicy do momentu przesłania odpowiedzi."
+      },
+      "score": {
+        "title": "Ocena",
+        "body": "Twoja szachownica jest porównywana pole po polu z oryginałem. Widzisz, które bierki były dobre, które złe, a które pominąłeś, obok pozycji, która została ci pokazana."
+      }
+    },
+    "presets": {
+      "heading": "Cztery poziomy trudności",
+      "intro": "Każdy poziom ustala dwie rzeczy: liczbę bierek na szachownicy i liczbę sekund, przez które możesz na nie patrzeć. Liczba bierek obejmuje obu królów.",
+      "columns": {
+        "preset": "Poziom",
+        "pieces": "Bierki",
+        "time": "Czas podglądu",
+        "trains": "Co trenuje"
+      },
+      "seconds": "{seconds} s",
+      "trains": {
+        "easy": "Dwaj królowie i nic więcej. Uczy interfejsu i daje jasną odpowiedź, czy potrafisz utrzymać w pamięci dwa pola pod presją czasu.",
+        "medium": "Sześć bierek to mniej więcej zasięg, jaki większość ludzi utrzymuje bez żadnego systemu. To poziom, na którym zaczyna się opłacać grupowanie w bloki.",
+        "hard": "Dwanaście bierek w osiem sekund wykracza poza naturalny zasięg pamięci. Musisz grupować bierki w kształty, zamiast zapamiętywać je pojedynczo.",
+        "grandmaster": "Dwadzieścia bierek w pięć sekund to ćwierć sekundy na bierkę. Nikt nie czyta tego pole po polu; ten poziom nagradza dostrzeganie łańcuchów pionów i skupisk bierek jako pojedynczych całości."
+      },
+      "custom": {
+        "title": "Ustawienia niestandardowe",
+        "body": "Oba suwaki poruszają się niezależnie od poziomów. Liczba bierek biegnie od {minPieces} do {maxPieces}, a czas podglądu od {minSeconds} do {maxSeconds} sekund. Ranking rozpoznaje rundę po liczbie bierek, więc każda liczba inna niż te z czterech poziomów czyni grę niestandardową, a gry niestandardowe nie trafiają do rankingu."
+      }
+    },
+    "scoring": {
+      "heading": "Jak liczone są wyniki rundy",
+      "match": "Bierka liczy się jako poprawna tylko wtedy, gdy wszystko się zgadza z oryginałem: pole, na którym stoi, jej typ i jej kolor. Skoczek na właściwym polu w złym kolorze nie jest zaliczany częściowo, to błąd.",
+      "accuracy": "Dokładność to odsetek oryginalnych bierek, które odtworzyłeś dokładnie, wyrażony w procentach, pomniejszony o dziesięć punktów za każdą bierkę postawioną ponad liczbę bierek w pozycji. Nigdy nie spada poniżej zera.",
+      "wrong": "Błędne bierki to te oryginalne bierki, których nie odtworzyłeś, plus wszystkie bierki postawione ponad liczbę bierek w pozycji. Postawienie większej liczby bierek niż zawierała pozycja kosztuje cię podwójnie: raz jako błędna bierka, raz jako kara do dokładności.",
+      "bandsIntro": "Komunikat na ekranie wyniku wynika wprost z twojej dokładności:",
+      "bands": {
+        "perfect": "wszystkie bierki poprawne",
+        "excellent": "co najmniej {threshold}% dokładności",
+        "great": "co najmniej {threshold}% dokładności",
+        "wellDone": "co najmniej {threshold}% dokładności",
+        "goodEffort": "co najmniej {threshold}% dokładności",
+        "keepPracticing": "poniżej {threshold}% dokładności"
+      },
+      "ranking": "W rankingu wpisy są uporządkowane najpierw według liczby poprawnych bierek, potem według najmniejszej liczby błędnych bierek, potem według najkrótszego czasu podglądu, a na końcu według najkrótszego czasu rozwiązania. Dokładność jest ważniejsza od szybkości, a szybkość rozstrzyga tylko między graczami z takim samym wynikiem."
+    },
+    "positions": {
+      "heading": "Jaką pozycję dostajesz",
+      "intro": "Pozycje są generowane od nowa dla każdej rundy, a nie brane z prawdziwych partii, ale nie są przypadkowym stosem bierek. Każda pozycja pokazana w grze spełnia wszystkie te zasady:",
+      "rules": {
+        "king-count": "Dokładnie jeden król każdego koloru, zawsze, także w wariancie dwubierkowym.",
+        "adjacent-kings": "Dwaj królowie nigdy nie stoją na sąsiednich polach.",
+        "pawn-back-rank": "Żaden pion nigdy nie stoi na pierwszym ani ósmym rzędzie.",
+        "piece-inventory": "Żadna strona nigdy nie ma więcej bierek danego typu, niż zawiera prawdziwy komplet: osiem pionów, dwa skoczki, dwa gońce, dwie wieże, jeden hetman.",
+        "bishop-color-complex": "Dwaj gońce jednej strony nigdy nie stoją na polach tego samego koloru.",
+        "simultaneous-check": "Obaj królowie nigdy nie są w szachu jednocześnie.",
+        "checked-side-not-to-move": "Jeśli król jest w szachu, to właśnie ta strona ma teraz ruch.",
+        "piece-count": "Szachownica zawiera dokładnie tyle bierek, ile wymaga wybrany poziom.",
+        "invalid-fen": "Pozycja jest legalną pozycją szachową, którą można ustawić na szachownicy."
+      },
+      "distribution": "Bierki poza dwoma królami są dzielone tak równo, jak pozwala ich liczba, przy czym białe dostają nieparzystą bierkę. Typy są losowane w proporcjach, jakie zawiera prawdziwy komplet, więc piony są bierką, którą zobaczysz najczęściej, a hetman najrzadziej.",
+      "outro": "Generator próbuje wielokrotnie, aż pozycja spełni wszystkie powyższe zasady. Jeśli mu się nie uda, wraca do ustawienia początkowego przyciętego do wymaganej liczby bierek, więc runda zawsze się zaczyna."
+    }
+  },
+  "leaderboard": {
+    "heading": "Jak ustalana jest ta klasyfikacja",
+    "body": "Każdy wiersz to ukończona runda przesłana z ekranu wyniku. Ranking rozpoznaje rundę po liczbie bierek, więc kwalifikują się tylko rundy o czterech liczbach bierek z poziomów; wszystko inne to gra niestandardowa i zostaje wykluczone, co sprawia, że każda tabela porównuje rundy rozegrane w takich samych warunkach.",
+    "order": "W obrębie tabeli wpisy są sortowane według poprawnych bierek, potem według najmniejszej liczby błędnych bierek, potem według najkrótszego czasu podglądu, potem według najkrótszego czasu rozwiązania. Czas podglądu to czas, który faktycznie wykorzystałeś, a nie ten, na jaki pozwalał poziom, więc wcześniejsze zakończenie fazy zapamiętywania też się liczy.",
+    "columnsNote": "Kolumna z bierkami pokazuje poprawne bierki na tle łącznej liczby bierek w pozycji. Cyfra w indeksie górnym po niej liczy bierki postawione ponad tę liczbę.",
+    "sectionIntro": "Każdy poziom ma własną tabelę, pokazującą jego najlepsze {limit} rund."
+  },
+  "contact": {
+    "heading": "Dokąd trafia twoja wiadomość",
+    "body": "Formularz zapisuje dane wprost do arkusza kalkulacyjnego, który czyta osoba prowadząca Memory Chess. Nie ma tu działu wsparcia ani numeru zgłoszenia. Odpowiedzi przychodzą z prawdziwej skrzynki, zwykle w ciągu kilku dni.",
+    "typesIntro": "Formularz prosi o wybranie jednego z czterech typów zapytania:",
+    "types": {
+      "feedback": "Coś, co wydało się nie tak, było niejasne albo wolniejsze, niż powinno. Podaj, który poziom trudności i którą fazę.",
+      "featureRequest": "Coś, czego gra jeszcze nie robi. Lista zmian pokazuje, co już zostało wdrożone.",
+      "general": "Cokolwiek, co nie pasuje do pozostałych trzech.",
+      "business": "Partnerstwa, sponsoring i licencjonowanie."
+    },
+    "privacyNote": "Twoje imię, e-mail, typ zapytania i wiadomość są przechowywane wraz ze znacznikiem czasu. Nic więcej nie jest zbierane na tej stronie i nic z tego nie jest sprzedawane."
+  }
+}

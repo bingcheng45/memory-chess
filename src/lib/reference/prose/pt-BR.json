@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Como o Memory Chess funciona",
+    "intro": "Toda rodada segue os mesmos três passos. Os números desta página são os que o jogo realmente usa; eles vêm do mesmo código que controla o tabuleiro, então nunca divergem do que você joga.",
+    "phases": {
+      "heading": "As três fases de uma rodada",
+      "memorize": {
+        "title": "Memorizar",
+        "body": "Uma posição aparece em um tabuleiro completo por um número fixo de segundos. Nada se move e nada fica escondido. Você pode encerrar a fase antes com o botão Pular, e o cronômetro registra quanto tempo você realmente observou, não o tempo que recebeu."
+      },
+      "place": {
+        "title": "Montar",
+        "body": "O tabuleiro é esvaziado. Você escolhe o tipo e a cor da peça e toca em uma casa para colocá-la, ou toca de novo para retirá-la. Aqui não há limite de tempo, mas o cronômetro corre do momento em que o tabuleiro esvazia até o envio."
+      },
+      "score": {
+        "title": "Pontuar",
+        "body": "Seu tabuleiro é comparado casa por casa com o original. Você vê quais peças estavam certas, quais estavam erradas e quais faltaram, lado a lado com a posição que foi mostrada."
+      }
+    },
+    "presets": {
+      "heading": "Os quatro níveis de dificuldade",
+      "intro": "Cada nível define duas coisas: quantas peças ficam no tabuleiro e quantos segundos você tem para observá-las. A contagem de peças inclui os dois reis.",
+      "columns": {
+        "preset": "Nível",
+        "pieces": "Peças",
+        "time": "Tempo de observação",
+        "trains": "O que treina"
+      },
+      "seconds": "{seconds}s",
+      "trains": {
+        "easy": "Dois reis e nada mais. Ensina a interface e mostra com clareza se você consegue segurar duas casas sob pressão de tempo.",
+        "medium": "Seis peças é mais ou menos o alcance que a maioria das pessoas segura sem nenhum método. É o nível em que agrupar peças começa a compensar.",
+        "hard": "Doze peças em oito segundos passa do alcance bruto da memória. É preciso agrupar as peças em formas em vez de lembrá-las uma a uma.",
+        "grandmaster": "Vinte peças em cinco segundos dá um quarto de segundo por peça. Ninguém lê isso casa por casa; o nível recompensa quem enxerga cadeias de peões e blocos de peças como unidades únicas."
+      },
+      "custom": {
+        "title": "Configurações personalizadas",
+        "body": "Os dois controles deslizantes se movem independentemente dos níveis. O número de peças vai de {minPieces} a {maxPieces}, e o tempo de observação, de {minSeconds} a {maxSeconds} segundos. O ranking reconhece uma rodada pelo número de peças, então qualquer contagem diferente das quatro contagens predefinidas cria uma partida personalizada, e partidas personalizadas ficam fora do ranking."
+      }
+    },
+    "scoring": {
+      "heading": "Como uma rodada é pontuada",
+      "match": "Uma peça só conta como certa quando tudo nela coincide com o original: a casa em que está, o tipo e a cor. Um cavalo na casa certa mas com a cor errada não vale crédito parcial; está errado.",
+      "accuracy": "A precisão é a fração das peças originais que você reproduziu exatamente, em porcentagem, menos dez pontos para cada peça colocada além da contagem da posição. Ela nunca fica abaixo de zero.",
+      "wrong": "As peças erradas são as peças originais que você não reproduziu, mais as peças colocadas além da contagem da posição. Colocar mais peças do que a posição tinha custa duas vezes: uma na contagem de erros e outra como penalidade de precisão.",
+      "bandsIntro": "A mensagem da tela de resultados vem direto da sua precisão:",
+      "bands": {
+        "perfect": "todas as peças certas",
+        "excellent": "pelo menos {threshold}% de precisão",
+        "great": "pelo menos {threshold}% de precisão",
+        "wellDone": "pelo menos {threshold}% de precisão",
+        "goodEffort": "pelo menos {threshold}% de precisão",
+        "keepPracticing": "menos de {threshold}% de precisão"
+      },
+      "ranking": "No ranking, as entradas são ordenadas primeiro pelas peças certas, depois pelo menor número de peças erradas, depois pelo menor tempo de observação e por fim pelo menor tempo de resolução. Precisão vale mais que velocidade, e a velocidade só desempata jogadores com a mesma pontuação."
+    },
+    "positions": {
+      "heading": "Que tipo de posição você recebe",
+      "intro": "As posições são geradas do zero a cada rodada, não tiradas de partidas reais, mas não são montes aleatórios de peças. Toda posição que o jogo mostra respeita todas estas regras:",
+      "rules": {
+        "king-count": "Exatamente um rei de cada cor, sempre, inclusive no nível de duas peças.",
+        "adjacent-kings": "Os dois reis nunca ficam em casas adjacentes.",
+        "pawn-back-rank": "Nenhum peão fica na primeira ou na oitava fileira.",
+        "piece-inventory": "Nenhum lado tem mais peças de um tipo do que um jogo real contém: oito peões, dois cavalos, dois bispos, duas torres, uma dama.",
+        "bishop-color-complex": "Os dois bispos de um mesmo lado nunca ocupam casas da mesma cor.",
+        "simultaneous-check": "Os dois reis nunca estão em xeque ao mesmo tempo.",
+        "checked-side-not-to-move": "Se um rei está em xeque, é a vez desse lado jogar.",
+        "piece-count": "O tabuleiro contém exatamente o número de peças que o nível pediu.",
+        "invalid-fen": "A posição é uma posição legal de xadrez, que pode ser montada em um tabuleiro."
+      },
+      "distribution": "As peças além dos dois reis são divididas da forma mais igual que a contagem permite, e as brancas ficam com a peça ímpar. Os tipos são sorteados nas proporções de um jogo real, então os peões são as peças que você mais verá e as damas, as mais raras.",
+      "outro": "O gerador tenta repetidamente até uma posição passar por todas as regras acima. Se não conseguir, ele recorre à posição inicial do xadrez reduzida ao número de peças pedido, para que a rodada sempre comece."
+    }
+  },
+  "leaderboard": {
+    "heading": "Como estas classificações são decididas",
+    "body": "Cada linha é uma rodada concluída e enviada pela tela de resultados. O ranking reconhece uma rodada pelo número de peças, então só rodadas com as quatro contagens predefinidas podem entrar; qualquer outra coisa é partida personalizada e fica de fora, o que garante que cada tabela compare rodadas jogadas em condições iguais.",
+    "order": "Dentro de uma tabela, as entradas são ordenadas pelas peças certas, depois pelo menor número de peças erradas, depois pelo menor tempo de observação e por fim pelo menor tempo de resolução. O tempo de observação é o que você realmente gastou, não o que o nível permitia, então encerrar a fase de memorização mais cedo vale alguma coisa.",
+    "columnsNote": "A coluna de peças mostra as peças certas em relação ao total da posição. Um número sobrescrito depois dela conta as peças colocadas além desse total.",
+    "sectionIntro": "Cada nível tem sua própria tabela, com as {limit} melhores rodadas."
+  },
+  "contact": {
+    "heading": "Para onde vai a sua mensagem",
+    "body": "O formulário escreve direto em uma planilha que a pessoa responsável pelo Memory Chess lê. Não existe central de suporte nem número de chamado. As respostas vêm de uma caixa de entrada real, normalmente em poucos dias.",
+    "typesIntro": "O formulário pede que você escolha um de quatro tipos de contato:",
+    "types": {
+      "feedback": "Algo que pareceu errado, confuso ou mais lento do que deveria. Diga qual dificuldade e qual fase.",
+      "featureRequest": "Algo que o jogo ainda não faz. As novidades mostram o que já foi lançado.",
+      "general": "Qualquer coisa que não caiba nos outros três.",
+      "business": "Parcerias, patrocínio e licenciamento."
+    },
+    "privacyNote": "Seu nome, e-mail, tipo de contato e mensagem são guardados com data e hora. Nada mais é coletado nesta página, e nada disso é vendido."
+  }
+}

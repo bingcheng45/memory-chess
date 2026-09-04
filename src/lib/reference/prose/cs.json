@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Jak funguje Memory Chess",
+    "intro": "Každé kolo má stejné tři kroky. Čísla na této stránce jsou ta, která hra skutečně používá; načítají se ze stejného kódu, který řídí šachovnici, takže se nemohou lišit od toho, co hrajete.",
+    "phases": {
+      "heading": "Tři fáze kola",
+      "memorize": {
+        "title": "Zapamatování",
+        "body": "Pozice se objeví na celé šachovnici na pevně daný počet sekund. Nic se nehýbe a nic není skryté. Fázi můžete ukončit dřív tlačítkem Přeskočit a hodiny zaznamenávají, jak dlouho jste se skutečně dívali, ne kolik času jste dostali."
+      },
+      "place": {
+        "title": "Umístění",
+        "body": "Šachovnice se vymaže. Vyberete typ a barvu figury, pak klepnutím na pole umístíte figuru, nebo dalším klepnutím ji vezmete zpět. Časový limit tu není, ale hodiny běží od okamžiku vymazání šachovnice až do odeslání."
+      },
+      "score": {
+        "title": "Vyhodnocení",
+        "body": "Vaše šachovnice se porovnává pole po poli s originálem. Vidíte, které figury byly správně, které špatně a které jste vynechali, vedle pozice, která vám byla ukázána."
+      }
+    },
+    "presets": {
+      "heading": "Čtyři úrovně obtížnosti",
+      "intro": "Každá úroveň nastavuje dvě věci: kolik figur je na šachovnici a kolik sekund je máte na pozorování. Počet figur zahrnuje oba krále.",
+      "columns": {
+        "preset": "Úroveň",
+        "pieces": "Figury",
+        "time": "Čas pozorování",
+        "trains": "Co trénuje"
+      },
+      "seconds": "{seconds} s",
+      "trains": {
+        "easy": "Dva králové a nic jiného. Učí ovládání rozhraní a dá vám jasnou odpověď, zda dokážete udržet dvě pole v paměti pod časovým tlakem.",
+        "medium": "Šest figur je zhruba rozsah, který si většina lidí udrží bez jakéhokoli systému. Na této úrovni se začíná vyplácet seskupování do celků.",
+        "hard": "Dvanáct figur za osm sekund přesahuje přirozený rozsah paměti. Musíte figury seskupovat do tvarů, ne si je pamatovat jednu po druhé.",
+        "grandmaster": "Dvacet figur za pět sekund je čtvrt sekundy na figuru. Nikdo to nečte pole po poli; tato úroveň odměňuje vnímání pěšcových řetězců a shluků figur jako jednotlivých celků."
+      },
+      "custom": {
+        "title": "Vlastní nastavení",
+        "body": "Oba posuvníky se pohybují nezávisle na úrovních. Počet figur jde od {minPieces} do {maxPieces} a čas pozorování od {minSeconds} do {maxSeconds} sekund. Žebříček rozpoznává kolo podle počtu figur, takže jakýkoli jiný počet než u čtyř úrovní z něj dělá vlastní hru, a vlastní hry zůstávají mimo žebříček."
+      }
+    },
+    "scoring": {
+      "heading": "Jak se kolo hodnotí",
+      "match": "Figura se počítá jako správná jen tehdy, když se vše shoduje s originálem: pole, na kterém stojí, její typ a její barva. Jezdec na správném poli ve špatné barvě není částečně správně, je to chyba.",
+      "accuracy": "Přesnost je podíl původních figur, které jste přesně reprodukovali, vyjádřený v procentech, snížený o deset bodů za každou figuru navíc umístěnou nad počet v pozici. Nikdy neklesne pod nulu.",
+      "wrong": "Špatné figury jsou ty původní figury, které jste nereprodukovali, plus jakékoli figury umístěné nad počet v pozici. Umístění více figur, než pozice obsahovala, vás stojí dvakrát: jednou jako špatný počet, jednou jako srážka z přesnosti.",
+      "bandsIntro": "Zpráva na obrazovce výsledku vychází přímo z vaší přesnosti:",
+      "bands": {
+        "perfect": "všechny figury správně",
+        "excellent": "alespoň {threshold} % přesnosti",
+        "great": "alespoň {threshold} % přesnosti",
+        "wellDone": "alespoň {threshold} % přesnosti",
+        "goodEffort": "alespoň {threshold} % přesnosti",
+        "keepPracticing": "méně než {threshold} % přesnosti"
+      },
+      "ranking": "V žebříčku jsou záznamy řazeny nejprve podle správných figur, pak podle nejmenšího počtu špatných figur, pak podle nejkratšího času pozorování a nakonec podle nejkratšího času řešení. Přesnost je nadřazena rychlosti a rychlost rozhoduje jen mezi hráči se stejným skóre."
+    },
+    "positions": {
+      "heading": "Jakou pozici dostanete",
+      "intro": "Pozice se generují znovu pro každé kolo, místo aby byly brané ze skutečných partií, ale nejsou to náhodné hromady figur. Každá pozice, kterou hra ukáže, splňuje všechna tato pravidla:",
+      "rules": {
+        "king-count": "Vždy přesně jeden král každé barvy, i u dvoufigurové úrovně.",
+        "adjacent-kings": "Oba králové nikdy nestojí na sousedních polích.",
+        "pawn-back-rank": "Žádný pěšec nikdy nestojí na první ani osmé řadě.",
+        "piece-inventory": "Žádná strana nemá nikdy víc figur daného typu, než obsahuje skutečná sada: osm pěšců, dva jezdce, dva střelce, dvě věže, jednu dámu.",
+        "bishop-color-complex": "Dva střelci jedné strany nikdy nestojí na polích stejné barvy.",
+        "simultaneous-check": "Oba králové nejsou nikdy v šachu současně.",
+        "checked-side-not-to-move": "Pokud je král v šachu, je právě na tahu ta strana.",
+        "piece-count": "Šachovnice obsahuje přesně tolik figur, kolik vyžaduje zvolená úroveň.",
+        "invalid-fen": "Pozice je legální šachová pozice, na kterou lze šachovnici nastavit."
+      },
+      "distribution": "Figury nad rámec dvou králů jsou rozděleny co nejrovnoměrněji podle počtu, přičemž bílý dostává lichou figuru navíc. Typy jsou losovány v poměru, jaký obsahuje skutečná sada, takže pěšci jsou figura, kterou uvidíte nejčastěji, a dáma nejméně často.",
+      "outro": "Generátor to zkouší opakovaně, dokud pozice nesplní všechna pravidla výše. Pokud se mu to nepodaří, vrátí se k počátečnímu postavení oříznutému na požadovaný počet figur, takže kolo vždy začne."
+    }
+  },
+  "leaderboard": {
+    "heading": "Jak se určuje toto pořadí",
+    "body": "Každý řádek je dokončené kolo odeslané z obrazovky výsledku. Žebříček rozpoznává kolo podle počtu figur, takže se počítají jen kola se čtyřmi počty figur z úrovní; cokoli jiného je vlastní hra a je vyloučeno, což zajišťuje, že každá tabulka srovnává kola odehraná za stejných podmínek.",
+    "order": "V rámci tabulky jsou záznamy řazeny podle správných figur, pak podle nejmenšího počtu špatných figur, pak podle nejkratšího času pozorování, pak podle nejkratšího času řešení. Čas pozorování je čas, který jste skutečně strávili, ne ten, který úroveň dovolovala, takže dřívější ukončení fáze zapamatování má svou hodnotu.",
+    "columnsNote": "Sloupec figur ukazuje správné figury z celkového počtu v pozici. Horní index za ním počítá figury umístěné nad tento počet.",
+    "sectionIntro": "Každá úroveň má svou vlastní tabulku s nejlepšími {limit} koly."
+  },
+  "contact": {
+    "heading": "Kam vaše zpráva jde",
+    "body": "Formulář zapisuje přímo do tabulky, kterou čte osoba provozující Memory Chess. Neexistuje žádná podpora ani číslo tiketu. Odpovědi přicházejí ze skutečné schránky, obvykle do několika dnů.",
+    "typesIntro": "Formulář vás požádá o výběr jednoho ze čtyř typů dotazu:",
+    "types": {
+      "feedback": "Něco, co působilo špatně, matoucím nebo pomaleji, než by mělo. Napište, která obtížnost a která fáze.",
+      "featureRequest": "Něco, co hra zatím neumí. Seznam změn ukazuje, co už bylo vydáno.",
+      "general": "Cokoli, co nesedí do ostatních tří.",
+      "business": "Partnerství, sponzoring a licencování."
+    },
+    "privacyNote": "Vaše jméno, e-mail, typ dotazu a zpráva se ukládají s časovým razítkem. Nic dalšího se na této stránce nesbírá a nic z toho se neprodává."
+  }
+}

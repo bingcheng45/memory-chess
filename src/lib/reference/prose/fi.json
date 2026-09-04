@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Näin Memory Chess toimii",
+    "intro": "Jokainen kierros koostuu samoista kolmesta vaiheesta. Tämän sivun luvut ovat samat, joita peli oikeasti käyttää; ne luetaan samasta koodista, joka pyörittää lautaa, joten ne eivät voi erkaantua siitä, mitä pelaat.",
+    "phases": {
+      "heading": "Kierroksen kolme vaihetta",
+      "memorize": {
+        "title": "Mieleenpainaminen",
+        "body": "Asema ilmestyy koko laudalle määrätyksi sekuntimääräksi. Mikään ei liiku eikä mitään piiloteta. Voit päättää vaiheen etuajassa Ohita-painikkeella, ja kello kirjaa sen, kuinka kauan oikeasti katsoit, ei sitä aikaa, joka sinulle annettiin."
+      },
+      "place": {
+        "title": "Asettelu",
+        "body": "Lauta tyhjenee. Valitset nappulan tyypin ja värin ja napautat sitten ruutua asettaaksesi nappulan tai napautat sitä uudelleen ottaaksesi nappulan pois. Aikarajaa ei ole, mutta kello käy siitä hetkestä, kun lauta tyhjenee, siihen asti, kun lähetät vastauksesi."
+      },
+      "score": {
+        "title": "Pisteytys",
+        "body": "Lautaasi verrataan ruutu ruudulta alkuperäiseen. Näet, mitkä nappulat olivat oikein, mitkä väärin ja mitkä jäivät puuttumaan, rinnakkain sinulle näytetyn aseman kanssa."
+      }
+    },
+    "presets": {
+      "heading": "Neljä vaikeustasoa",
+      "intro": "Jokainen vaikeustaso määrää kaksi asiaa: montako nappulaa laudalla on ja montako sekuntia saat katsoa niitä. Nappulamäärä sisältää molemmat kuninkaat.",
+      "columns": {
+        "preset": "Vaikeustaso",
+        "pieces": "Nappulat",
+        "time": "Katseluaika",
+        "trains": "Mitä se harjoittaa"
+      },
+      "seconds": "{seconds} s",
+      "trains": {
+        "easy": "Vain 2 kuningasta, ei mitään muuta. Taso opettaa käyttöliittymän ja näyttää selvästi, pystytkö pitämään 2 ruutua mielessä aikapaineessa.",
+        "medium": "6 nappulaa on suunnilleen se määrä, jonka useimmat pitävät mielessä ilman mitään järjestelmää. Tällä tasolla ryhmittely alkaa kannattaa.",
+        "hard": "12 nappulaa 8 sekunnissa ylittää pelkän muistin kantomatkan. Nappulat on ryhmiteltävä kuvioiksi sen sijaan, että muistaisit ne yksi kerrallaan.",
+        "grandmaster": "20 nappulaa 5 sekunnissa tarkoittaa neljäsosasekuntia nappulaa kohti. Kukaan ei lue tätä ruutu ruudulta; taso palkitsee siitä, että näet sotilasketjut ja nappularyppäät yksittäisinä kokonaisuuksina."
+      },
+      "custom": {
+        "title": "Omat asetukset",
+        "body": "Kaksi liukusäädintä liikkuvat vaikeustasoista riippumatta. Nappulamäärän alaraja on {minPieces} ja yläraja {maxPieces}, ja katseluaika on lyhimmillään {minSeconds} ja pisimmillään {maxSeconds} sekuntia. Tulostaulukko tunnistaa kierroksen nappulamäärästä, joten mikä tahansa muu määrä kuin neljän vaikeustason määrät tekee pelistä omilla asetuksilla pelatun pelin, eivätkä tällaiset pelit koskaan päädy tulostaulukkoon."
+      }
+    },
+    "scoring": {
+      "heading": "Näin kierros pisteytetään",
+      "match": "Nappula lasketaan oikeaksi vain, kun kaikki siinä vastaa alkuperäistä: ruutu, jolla se seisoo, sen tyyppi ja sen väri. Väärän värinen ratsu oikealla ruudulla ei tuo osapisteitä, vaan se on väärin.",
+      "accuracy": "Tarkkuus on prosenttiosuus alkuperäisistä nappuloista, jotka sait täsmälleen oikein, vähennettynä 10 pisteellä jokaisesta nappulasta, jonka asetit yli aseman nappulamäärän. Tarkkuus ei koskaan laske alle nollan.",
+      "wrong": "Väärät nappulat ovat ne alkuperäiset nappulat, joita et saanut palautettua laudalle, sekä kaikki nappulat, jotka asetit yli aseman nappulamäärän. Nappulamäärän ylittäminen maksaa kahdesti: kerran väärien nappuloiden määrässä ja kerran tarkkuussakkona.",
+      "bandsIntro": "Tulosnäytön viesti tulee suoraan tarkkuudestasi:",
+      "bands": {
+        "perfect": "jokainen nappula oikein",
+        "excellent": "tarkkuus vähintään {threshold} %",
+        "great": "tarkkuus vähintään {threshold} %",
+        "wellDone": "tarkkuus vähintään {threshold} %",
+        "goodEffort": "tarkkuus vähintään {threshold} %",
+        "keepPracticing": "tarkkuus alle {threshold} %"
+      },
+      "ranking": "Tulostaulukossa tulokset järjestetään ensin oikeiden nappuloiden määrän mukaan, sitten pienimmän väärien nappuloiden määrän, sitten lyhimmän katseluajan ja lopuksi lyhimmän ratkaisuajan mukaan. Tarkkuus painaa enemmän kuin nopeus, ja nopeus erottelee vain pelaajat, joiden tulos on sama."
+    },
+    "positions": {
+      "heading": "Millaisen aseman saat",
+      "intro": "Asemat luodaan joka kierrokselle uudestaan sen sijaan, että ne poimittaisiin oikeista peleistä, mutta ne eivät ole satunnaisia nappulakasoja. Jokainen pelin näyttämä asema noudattaa kaikkia näitä sääntöjä:",
+      "rules": {
+        "king-count": "Laudalla on aina tasan yksi kummankin värin kuningas, myös 2 nappulan vaikeustasolla.",
+        "adjacent-kings": "Kuninkaat eivät koskaan seiso vierekkäisillä ruuduilla.",
+        "pawn-back-rank": "Yksikään sotilas ei koskaan seiso 1. tai 8. rivillä.",
+        "piece-inventory": "Kummallakaan puolella ei koskaan ole jotakin nappulatyyppiä enempää kuin oikeaan nappulasarjaan kuuluu: 8 sotilasta, 2 ratsua, 2 lähettiä, 2 tornia ja 1 kuningatar.",
+        "bishop-color-complex": "Puolen molemmat lähetit eivät koskaan seiso samanvärisillä ruuduilla.",
+        "simultaneous-check": "Molemmat kuninkaat eivät koskaan ole shakissa yhtä aikaa.",
+        "checked-side-not-to-move": "Jos toinen kuningas on shakissa, siirtovuoro on aina shakissa olevalla puolella.",
+        "piece-count": "Laudalla on täsmälleen se määrä nappuloita, jonka vaikeustaso pyysi.",
+        "invalid-fen": "Asema on laillinen shakkiasema, joka voidaan asettaa laudalle."
+      },
+      "distribution": "Kuninkaiden lisäksi tulevat nappulat jaetaan puolten kesken niin tasan kuin määrä sallii, ja parittomaksi jäävän nappulan saa valkea. Tyypit arvotaan oikean nappulasarjan suhteissa, joten sotilaita näet useimmin ja kuningattaria harvimmin.",
+      "outro": "Generaattori yrittää yhä uudelleen, kunnes asema läpäisee jokaisen yllä olevan säännön. Jos se ei onnistu, peli turvautuu alkuasetelmaan, joka karsitaan pyydettyyn nappulamäärään, joten kierros alkaa aina."
+    }
+  },
+  "leaderboard": {
+    "heading": "Näin sijoitukset ratkaistaan",
+    "body": "Jokainen rivi on tulosnäytöltä lähetetty pelattu kierros. Tulostaulukko tunnistaa kierroksen nappulamäärästä, joten mukaan kelpaavat vain neljän vaikeustason nappulamäärillä pelatut kierrokset; kaikki muu on omilla asetuksilla pelattua peliä ja jää ulkopuolelle. Näin jokainen taulukko vertaa vain samoissa oloissa pelattuja kierroksia.",
+    "order": "Taulukon sisällä tulokset järjestetään oikeiden nappuloiden määrän mukaan, sitten pienimmän väärien nappuloiden määrän, sitten lyhimmän katseluajan ja lopuksi lyhimmän ratkaisuajan mukaan. Katseluaika on aika, jonka oikeasti käytit, ei vaikeustason sallima aika, joten mieleenpainamisvaiheen päättäminen etuajassa kannattaa.",
+    "columnsNote": "Nappulasarake näyttää oikeiden nappuloiden määrän suhteessa aseman kokonaismäärään. Sen perässä oleva yläindeksiluku kertoo, montako nappulaa asetettiin yli tuon kokonaismäärän.",
+    "sectionIntro": "Jokaisella vaikeustasolla on oma taulukkonsa, jossa näkyy sen {limit} parasta kierrosta."
+  },
+  "contact": {
+    "heading": "Minne viestisi menee",
+    "body": "Lomake kirjoittaa suoraan laskentataulukkoon, jota Memory Chessin ylläpitäjä lukee. Tukipalvelua tai tikettinumeroa ei ole. Vastaukset tulevat oikeasta sähköpostilaatikosta, yleensä muutamassa päivässä.",
+    "typesIntro": "Lomake pyytää valitsemaan yhden neljästä yhteydenoton aiheesta:",
+    "types": {
+      "feedback": "Jokin, mikä tuntui väärältä, sekavalta tai hitaammalta kuin pitäisi. Kerro, mikä vaikeustaso ja mikä vaihe oli kyseessä.",
+      "featureRequest": "Jokin, mitä peli ei vielä tee. Muutoslokista näet, mitä on jo julkaistu.",
+      "general": "Kaikki, mikä ei sovi kolmeen muuhun aiheeseen.",
+      "business": "Kumppanuudet, sponsorointi ja lisensointi."
+    },
+    "privacyNote": "Nimesi, sähköpostisi, yhteydenoton aihe ja viestisi tallennetaan aikaleiman kanssa. Tällä sivulla ei kerätä mitään muuta, eikä mitään näistä tiedoista myydä."
+  }
+}

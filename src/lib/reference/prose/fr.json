@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Comment fonctionne Memory Chess",
+    "intro": "Chaque manche suit les trois mêmes étapes. Les chiffres de cette page sont ceux que le jeu utilise réellement : ils sont lus dans le code même qui fait tourner l'échiquier, et ne peuvent donc pas s'écarter de ce que vous jouez.",
+    "phases": {
+      "heading": "Les trois phases d'une manche",
+      "memorize": {
+        "title": "Mémorisation",
+        "body": "Une position apparaît sur un échiquier complet pendant un nombre de secondes fixé. Rien ne bouge et rien n'est caché. Vous pouvez écourter la phase avec le bouton Passer, et le chrono enregistre le temps que vous avez réellement passé à regarder, et non le temps qui vous était accordé."
+      },
+      "place": {
+        "title": "Placement",
+        "body": "L'échiquier se vide. Vous choisissez un type de pièce et une couleur, puis vous touchez une case pour y poser une pièce, ou la touchez de nouveau pour la retirer. Il n'y a pas de limite de temps ici, mais le chrono tourne du moment où l'échiquier se vide jusqu'à ce que vous validiez."
+      },
+      "score": {
+        "title": "Score",
+        "body": "Votre échiquier est comparé case par case avec l'original. Vous voyez quelles pièces étaient justes, lesquelles étaient fausses et lesquelles vous avez oubliées, côte à côte avec la position qui vous avait été montrée."
+      }
+    },
+    "presets": {
+      "heading": "Les quatre niveaux de difficulté prédéfinis",
+      "intro": "Chaque niveau prédéfini fixe deux choses : le nombre de pièces sur l'échiquier et le nombre de secondes dont vous disposez pour les regarder. Le nombre de pièces inclut les deux rois.",
+      "columns": {
+        "preset": "Niveau",
+        "pieces": "Pièces",
+        "time": "Temps de mémorisation",
+        "trains": "Ce qu'il travaille"
+      },
+      "seconds": "{seconds} s",
+      "trains": {
+        "easy": "Deux rois et rien d'autre. Ce niveau vous apprend l'interface et montre clairement si vous savez retenir deux cases sous la pression du chrono.",
+        "medium": "Six pièces, c'est à peu près ce que la plupart des gens retiennent sans méthode. C'est le niveau où regrouper les pièces en blocs commence à payer.",
+        "hard": "Douze pièces en huit secondes dépassent la mémoire brute. Il faut regrouper les pièces en formes plutôt que les retenir une par une.",
+        "grandmaster": "Vingt pièces en cinq secondes, c'est un quart de seconde par pièce. Personne ne lit une telle position case par case ; ce niveau récompense ceux qui voient les chaînes de pions et les groupes de pièces comme des unités."
+      },
+      "custom": {
+        "title": "Réglages personnalisés",
+        "body": "Les deux curseurs se règlent indépendamment des niveaux prédéfinis. Le nombre de pièces va de {minPieces} à {maxPieces} et le temps de mémorisation de {minSeconds} à {maxSeconds} secondes. Le classement identifie une manche par son nombre de pièces : tout nombre différent des quatre valeurs prédéfinies en fait une partie personnalisée, et les parties personnalisées n'entrent pas au classement."
+      }
+    },
+    "scoring": {
+      "heading": "Comment une manche est notée",
+      "match": "Une pièce ne compte comme correcte que si tout en elle correspond à l'original : la case où elle se trouve, son type et sa couleur. Un cavalier sur la bonne case mais de la mauvaise couleur ne rapporte pas de points partiels ; il est faux.",
+      "accuracy": "La précision est la part des pièces d'origine que vous avez reproduites exactement, exprimée en pourcentage, moins dix points pour chaque pièce posée au-delà du nombre que comptait la position. Elle ne descend jamais sous zéro.",
+      "wrong": "Les pièces fausses sont les pièces d'origine que vous n'avez pas reproduites, plus toute pièce posée au-delà du nombre que comptait la position. Poser plus de pièces que la position n'en contenait vous coûte deux fois : une fois dans le compte des pièces fausses et une fois en pénalité de précision.",
+      "bandsIntro": "Le message de l'écran de résultat découle directement de votre précision :",
+      "bands": {
+        "perfect": "toutes les pièces correctes",
+        "excellent": "au moins {threshold} % de précision",
+        "great": "au moins {threshold} % de précision",
+        "wellDone": "au moins {threshold} % de précision",
+        "goodEffort": "au moins {threshold} % de précision",
+        "keepPracticing": "moins de {threshold} % de précision"
+      },
+      "ranking": "Au classement, les entrées sont triées d'abord par pièces correctes, puis par le plus petit nombre de pièces fausses, puis par le temps de mémorisation le plus court, puis par le temps de résolution le plus court. La précision passe avant la vitesse, et la vitesse ne départage que les joueurs à égalité."
+    },
+    "positions": {
+      "heading": "Quel genre de position vous obtenez",
+      "intro": "Les positions sont générées à chaque manche plutôt que tirées de vraies parties, mais ce ne sont pas des amas de pièces posées au hasard. Chaque position que le jeu affiche respecte toutes les règles suivantes :",
+      "rules": {
+        "king-count": "Exactement un roi de chaque couleur, toujours, y compris au niveau à deux pièces.",
+        "adjacent-kings": "Les deux rois ne sont jamais sur des cases adjacentes.",
+        "pawn-back-rank": "Aucun pion ne se trouve jamais sur la première ou la huitième rangée.",
+        "piece-inventory": "Aucun camp n'a jamais plus de pièces d'un type qu'un vrai jeu n'en contient : huit pions, deux cavaliers, deux fous, deux tours, une dame.",
+        "bishop-color-complex": "Les deux fous d'un même camp ne se trouvent jamais sur des cases de la même couleur.",
+        "simultaneous-check": "Les deux rois ne sont jamais en échec en même temps.",
+        "checked-side-not-to-move": "Si un roi est en échec, c'est au camp de ce roi de jouer.",
+        "piece-count": "L'échiquier contient exactement le nombre de pièces demandé par le niveau choisi.",
+        "invalid-fen": "La position est une position d'échecs légale, que l'on peut réellement installer sur un échiquier."
+      },
+      "distribution": "Les pièces au-delà des deux rois sont réparties aussi équitablement que le nombre le permet, les Blancs recevant la pièce en surplus. Les types sont tirés dans les proportions d'un vrai jeu : les pions sont donc les pièces que vous verrez le plus souvent, et les dames les plus rares.",
+      "outro": "Le générateur réessaie jusqu'à ce qu'une position satisfasse toutes les règles ci-dessus. S'il n'y parvient pas, il se rabat sur la position de départ réduite au nombre de pièces demandé, de sorte qu'une manche démarre toujours."
+    }
+  },
+  "leaderboard": {
+    "heading": "Comment ces classements sont établis",
+    "body": "Chaque ligne est une manche terminée, envoyée depuis l'écran de résultat. Le classement identifie une manche par son nombre de pièces : seules les manches jouées aux quatre nombres prédéfinis sont admises ; tout le reste est une partie personnalisée et se trouve exclu, si bien que chaque tableau compare des manches jouées dans les mêmes conditions.",
+    "order": "Dans un tableau, les entrées sont triées par pièces correctes, puis par le plus petit nombre de pièces fausses, puis par le temps de mémorisation le plus court, puis par le temps de résolution le plus court. Le temps de mémorisation est celui que vous avez réellement passé, et non celui que le niveau accordait : écourter la phase de mémorisation a donc de la valeur.",
+    "columnsNote": "La colonne des pièces indique les pièces correctes par rapport au total de la position. Le nombre en exposant qui la suit compte les pièces posées au-delà de ce total.",
+    "sectionIntro": "Chaque niveau prédéfini a son propre tableau, qui montre ses {limit} meilleures manches."
+  },
+  "contact": {
+    "heading": "Où va votre message",
+    "body": "Le formulaire écrit directement dans une feuille de calcul que lit la personne qui s'occupe de Memory Chess. Il n'y a ni service d'assistance ni numéro de ticket. Les réponses viennent d'une vraie boîte mail, en général sous quelques jours.",
+    "typesIntro": "Le formulaire vous demande de choisir l'un des quatre types de demande :",
+    "types": {
+      "feedback": "Quelque chose qui vous a semblé anormal, déroutant ou plus lent qu'il ne devrait. Précisez le niveau de difficulté et la phase concernés.",
+      "featureRequest": "Quelque chose que le jeu ne fait pas encore. Le journal des modifications montre ce qui a déjà été livré.",
+      "general": "Tout ce qui n'entre dans aucune des trois autres catégories.",
+      "business": "Partenariats, sponsoring et licences."
+    },
+    "privacyNote": "Votre nom, votre adresse e-mail, le type de demande et votre message sont enregistrés avec un horodatage. Rien d'autre n'est collecté sur cette page, et rien de tout cela n'est vendu."
+  }
+}

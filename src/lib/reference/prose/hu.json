@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Hogyan működik a Memory Chess",
+    "intro": "Minden kör ugyanazt a három lépést követi. Az oldalon szereplő számok azok, amelyeket a játék ténylegesen használ; ugyanabból a kódból származnak, amely a táblát működteti, így nem térhetnek el attól, amit játszol.",
+    "phases": {
+      "heading": "A kör három szakasza",
+      "memorize": {
+        "title": "Megjegyzés",
+        "body": "Egy állás jelenik meg a teljes táblán, egy rögzített másodpercig. Semmi sem mozdul, és semmi sincs elrejtve. A szakaszt korábban is befejezheted a Kihagyással, és az óra azt rögzíti, mennyi ideig néztél ténylegesen, nem azt, mennyi időt kaptál."
+      },
+      "place": {
+        "title": "Elhelyezés",
+        "body": "A tábla kiürül. Kiválasztod egy bábu típusát és színét, majd egy mezőre koppintva leteszed, vagy újra koppintva visszaveszed. Itt nincs időkorlát, de az óra a tábla kiürülésétől a beküldésig fut."
+      },
+      "score": {
+        "title": "Értékelés",
+        "body": "A táblád mezőnként kerül összehasonlításra az eredetivel. Látod, mely bábuk voltak helyesek, melyek helytelenek, és melyeket hagytál ki, egymás mellett a neked mutatott állással."
+      }
+    },
+    "presets": {
+      "heading": "A négy nehézségi szint",
+      "intro": "Minden szint két dolgot állít be: hány bábu van a táblán, és hány másodpercig nézheted őket. A bábuszám mindkét királyt tartalmazza.",
+      "columns": {
+        "preset": "Szint",
+        "pieces": "Bábuk",
+        "time": "Megtekintési idő",
+        "trains": "Mit fejleszt"
+      },
+      "seconds": "{seconds} mp",
+      "trains": {
+        "easy": "Két király és semmi más. Megtanítja a felületet, és tiszta képet ad arról, hogy idő nyomása alatt meg tudsz-e tartani két mezőt.",
+        "medium": "Hat bábu nagyjából az a terjedelem, amit a legtöbben rendszer nélkül is megtartanak. Ezen a szinten kezd megtérülni a darabolás egységekbe.",
+        "hard": "Tizenkét bábu nyolc másodperc alatt túllépi a nyers terjedelmet. A bábukat alakzatokba kell csoportosítanod ahelyett, hogy egyenként jegyeznéd meg őket.",
+        "grandmaster": "Húsz bábu öt másodperc alatt bábunként negyed másodpercet jelent. Ezt senki sem olvassa mezőnként; ez a szint azt jutalmazza, ha a gyalogláncokat és bábucsoportokat egyetlen egységként látod."
+      },
+      "custom": {
+        "title": "Egyéni beállítások",
+        "body": "A két csúszka egymástól függetlenül mozog a szintektől. A bábuszám {minPieces} és {maxPieces} között, a megtekintési idő {minSeconds} és {maxSeconds} másodperc között mozog. A ranglista a bábuszám alapján ismeri fel a kört, így bármely, a négy szinttől eltérő szám egyéni játékká teszi, az egyéni játékok pedig kimaradnak a ranglistából."
+      }
+    },
+    "scoring": {
+      "heading": "Hogyan pontozzák a kört",
+      "match": "Egy bábu csak akkor számít helyesnek, ha minden megegyezik az eredetivel: a mező, amelyen áll, a típusa és a színe. Egy huszár a helyes mezőn, de rossz színben nem részleges pont, hanem hiba.",
+      "accuracy": "A pontosság az eredeti bábuk azon hányada, amelyet pontosan visszaadtál, százalékban kifejezve, minden, a pozíció darabszámán felül lerakott bábuért tíz pont levonással. Sosem megy nulla alá.",
+      "wrong": "A hibás bábuk azok az eredeti bábuk, amelyeket nem adtál vissza, plusz bármely, a pozíció darabszámán felül lerakott bábu. Ha többet raksz le, mint amennyit az állás tartalmazott, az kétszer fáj: egyszer a hibás számban, egyszer a pontosság levonásában.",
+      "bandsIntro": "Az eredményképernyőn megjelenő üzenet közvetlenül a pontosságodból következik:",
+      "bands": {
+        "perfect": "minden bábu helyes",
+        "excellent": "legalább {threshold}% pontosság",
+        "great": "legalább {threshold}% pontosság",
+        "wellDone": "legalább {threshold}% pontosság",
+        "goodEffort": "legalább {threshold}% pontosság",
+        "keepPracticing": "{threshold}% pontosság alatt"
+      },
+      "ranking": "A ranglistán a bejegyzések elsőként a helyes bábuk szerint, majd a legkevesebb hibás bábu szerint, majd a legrövidebb megtekintési idő szerint, végül a legrövidebb megoldási idő szerint rendeződnek. A pontosság megelőzi a sebességet, a sebesség csak az azonos eredményű játékosok között dönt."
+    },
+    "positions": {
+      "heading": "Milyen állást kapsz",
+      "intro": "Az állások minden körhöz újonnan generálódnak, nem valódi partikból származnak, mégsem véletlenszerű bábuhalmok. Minden állás, amit a játék mutat, megfelel mindezen szabályoknak:",
+      "rules": {
+        "king-count": "Mindig pontosan egy király mindkét színből, még a kétbábus szinten is.",
+        "adjacent-kings": "A két király sosem áll szomszédos mezőkön.",
+        "pawn-back-rank": "Gyalog sosem áll az első vagy a nyolcadik soron.",
+        "piece-inventory": "Egyik oldalnak sincs több bábuja egy típusból, mint amennyit egy valódi készlet tartalmaz: nyolc gyalog, két huszár, két futó, két bástya, egy vezér.",
+        "bishop-color-complex": "Egy oldal két futója sosem áll azonos színű mezőkön.",
+        "simultaneous-check": "A két király sosem áll egyszerre sakkban.",
+        "checked-side-not-to-move": "Ha az egyik király sakkban áll, éppen az az oldal van lépésre.",
+        "piece-count": "A tábla pontosan annyi bábut tartalmaz, amennyit a szint megkövetel.",
+        "invalid-fen": "Az állás olyan szabályos sakkállás, amelyre a tábla beállítható."
+      },
+      "distribution": "A két királyon felüli bábuk a lehető legegyenletesebben oszlanak meg, a páratlan bábut a világos kapja. A típusok egy valódi készlet arányában érkeznek, így a gyalog a leggyakrabban látott bábu, a vezér pedig a legritkább.",
+      "outro": "A generátor újra és újra próbálkozik, amíg egy állás nem teljesíti a fenti szabályok mindegyikét. Ha ez nem sikerül, visszatér a kért bábuszámra vágott kiinduló álláshoz, így egy kör mindig elindul."
+    }
+  },
+  "leaderboard": {
+    "heading": "Hogyan dől el ez a rangsor",
+    "body": "Minden sor egy, az eredményképernyőről beküldött, befejezett kör. A ranglista a bábuszám alapján ismeri fel a kört, így csak a négy szint bábuszámainál elért körök jogosultak; minden más egyéni játéknak számít, és kimarad, ami biztosítja, hogy minden táblázat hasonló feltételek mellett játszott köröket hasonlítson össze.",
+    "order": "Egy táblázaton belül a bejegyzések a helyes bábuk szerint, majd a legkevesebb hibás bábu szerint, majd a legrövidebb megtekintési idő szerint, majd a legrövidebb megoldási idő szerint rendeződnek. A megtekintési idő az, amit ténylegesen elhasználtál, nem az, amit a szint engedélyezett, így a megjegyzési szakasz korai befejezése is számít.",
+    "columnsNote": "A bábuk oszlopa a helyes bábukat mutatja az állás összesített darabszámához viszonyítva. Az utána álló felső indexes szám az e fölött lerakott bábukat számolja.",
+    "sectionIntro": "Minden szintnek saját táblázata van, amely a legjobb {limit} körét mutatja."
+  },
+  "contact": {
+    "heading": "Hová kerül az üzeneted",
+    "body": "Az űrlap közvetlenül egy táblázatba ír, amelyet a Memory Chess üzemeltetője olvas. Nincs ügyfélszolgálat, és nincs jegyszám. A válaszok egy valódi postafiókból érkeznek, általában néhány napon belül.",
+    "typesIntro": "Az űrlap arra kér, hogy a négy megkeresési típus közül válassz egyet:",
+    "types": {
+      "feedback": "Valami, ami rosszul, zavarosan vagy lassabban működött, mint kellene. Írd meg, melyik nehézségi szinten és melyik szakaszban.",
+      "featureRequest": "Valami, amit a játék még nem tud. A changelog mutatja, mi jelent már meg.",
+      "general": "Bármi, ami a másik három közül nem illik sehova.",
+      "business": "Partnerségek, szponzoráció és licencelés."
+    },
+    "privacyNote": "A neved, e-mail-címed, a megkeresés típusa és az üzeneted időbélyeggel együtt kerül tárolásra. Ezen az oldalon semmi mást nem gyűjtünk, és semmit sem adunk el belőle."
+  }
+}

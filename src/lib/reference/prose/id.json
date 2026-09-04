@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Cara kerja Memory Chess",
+    "intro": "Setiap ronde mengikuti tiga langkah yang sama. Angka-angka di halaman ini adalah angka yang benar-benar dipakai game; angka itu dibaca dari kode yang sama yang menjalankan papan, jadi tidak mungkin berbeda dari yang Anda mainkan.",
+    "phases": {
+      "heading": "Tiga fase dalam satu ronde",
+      "memorize": {
+        "title": "Menghafal",
+        "body": "Sebuah posisi muncul di papan penuh selama jumlah detik yang tetap. Tidak ada yang bergerak dan tidak ada yang disembunyikan. Anda bisa mengakhiri fase ini lebih awal dengan Lewati, dan waktu yang dicatat adalah waktu yang benar-benar Anda gunakan untuk melihat, bukan waktu yang diberikan."
+      },
+      "place": {
+        "title": "Menempatkan",
+        "body": "Papan dikosongkan. Anda memilih jenis dan warna bidak, lalu mengetuk sebuah petak untuk meletakkan bidak atau mengetuknya lagi untuk mengambilnya kembali. Tidak ada batas waktu di sini, tetapi waktu berjalan sejak papan dikosongkan hingga Anda mengirimkan jawaban."
+      },
+      "score": {
+        "title": "Penilaian",
+        "body": "Papan Anda dibandingkan petak demi petak dengan posisi aslinya. Anda melihat bidak mana yang benar, mana yang salah, dan mana yang terlewat, berdampingan dengan posisi yang ditunjukkan kepada Anda."
+      }
+    },
+    "presets": {
+      "heading": "Empat tingkat kesulitan",
+      "intro": "Setiap tingkat mengatur dua hal: berapa banyak bidak di papan dan berapa detik Anda diberi waktu untuk melihatnya. Jumlah bidak mencakup kedua raja.",
+      "columns": {
+        "preset": "Tingkat",
+        "pieces": "Bidak",
+        "time": "Waktu lihat",
+        "trains": "Yang dilatih"
+      },
+      "seconds": "{seconds} dtk",
+      "trains": {
+        "easy": "Dua raja dan tidak ada yang lain. Ini mengajarkan antarmuka dan memberi gambaran jelas apakah Anda bisa menahan dua petak dalam ingatan di bawah tekanan waktu.",
+        "medium": "Enam bidak kurang lebih adalah rentang yang bisa ditahan kebanyakan orang tanpa sistem apa pun. Ini tingkat di mana pengelompokan mulai terbayar.",
+        "hard": "Dua belas bidak dalam delapan detik melampaui rentang ingatan mentah. Anda harus mengelompokkan bidak menjadi bentuk-bentuk, bukan mengingatnya satu per satu.",
+        "grandmaster": "Dua puluh bidak dalam lima detik berarti seperempat detik per bidak. Tidak ada yang membacanya petak demi petak; tingkat ini memberi imbalan bagi yang bisa melihat rantai pion dan gerombolan bidak sebagai satu kesatuan."
+      },
+      "custom": {
+        "title": "Pengaturan khusus",
+        "body": "Kedua penggeser bergerak bebas dari tingkat yang ada. Jumlah bidak berkisar dari {minPieces} hingga {maxPieces}, dan waktu lihat dari {minSeconds} hingga {maxSeconds} detik. Papan peringkat mengenali sebuah ronde dari jumlah bidaknya, jadi jumlah selain dari keempat tingkat baku membuatnya jadi permainan khusus, dan permainan khusus tidak masuk papan peringkat."
+      }
+    },
+    "scoring": {
+      "heading": "Cara sebuah ronde dinilai",
+      "match": "Sebuah bidak dihitung benar hanya jika semuanya cocok dengan posisi asli: petak tempatnya berdiri, jenisnya, dan warnanya. Seekor kuda di petak yang benar tapi warna yang salah bukan nilai sebagian, itu salah.",
+      "accuracy": "Akurasi adalah proporsi bidak asli yang berhasil Anda reproduksi dengan tepat, dinyatakan dalam persen, dikurangi sepuluh poin untuk setiap bidak yang Anda tempatkan melebihi jumlah bidak posisi tersebut. Nilainya tidak pernah turun di bawah nol.",
+      "wrong": "Bidak yang salah adalah bidak asli yang gagal Anda reproduksi, ditambah bidak apa pun yang ditempatkan melebihi jumlah bidak posisi tersebut. Menempatkan lebih banyak bidak daripada yang dimiliki posisi merugikan Anda dua kali, sekali dalam jumlah salah dan sekali sebagai pinalti akurasi.",
+      "bandsIntro": "Pesan di layar hasil datang langsung dari akurasi Anda:",
+      "bands": {
+        "perfect": "semua bidak benar",
+        "excellent": "akurasi minimal {threshold}%",
+        "great": "akurasi minimal {threshold}%",
+        "wellDone": "akurasi minimal {threshold}%",
+        "goodEffort": "akurasi minimal {threshold}%",
+        "keepPracticing": "akurasi di bawah {threshold}%"
+      },
+      "ranking": "Di papan peringkat, entri diurutkan berdasarkan bidak benar terlebih dahulu, lalu bidak salah paling sedikit, lalu waktu lihat tersingkat, lalu waktu penyelesaian tersingkat. Akurasi mengalahkan kecepatan, dan kecepatan hanya membedakan pemain yang meraih skor sama."
+    },
+    "positions": {
+      "heading": "Jenis posisi yang Anda dapatkan",
+      "intro": "Posisi dibuat baru untuk setiap ronde, bukan diambil dari partai sungguhan, tetapi bukan berarti tumpukan bidak acak. Setiap posisi yang ditampilkan game memenuhi semua aturan ini:",
+      "rules": {
+        "king-count": "Selalu tepat satu raja dari tiap warna, termasuk pada tingkat dua bidak.",
+        "adjacent-kings": "Kedua raja tidak pernah berada di petak yang bersebelahan.",
+        "pawn-back-rank": "Tidak ada pion yang pernah berdiri di baris pertama atau kedelapan.",
+        "piece-inventory": "Tidak ada pihak yang memiliki bidak dari satu jenis lebih banyak dari yang dimiliki set sungguhan: delapan pion, dua kuda, dua gajah, dua benteng, satu menteri.",
+        "bishop-color-complex": "Kedua gajah satu pihak tidak pernah berada di petak berwarna sama.",
+        "simultaneous-check": "Kedua raja tidak pernah di-sekak bersamaan.",
+        "checked-side-not-to-move": "Jika satu raja di-sekak, giliran jalan memang milik pihak itu.",
+        "piece-count": "Papan berisi tepat jumlah bidak yang diminta tingkat tersebut.",
+        "invalid-fen": "Posisi tersebut adalah posisi catur yang sah, yang bisa disusun di papan."
+      },
+      "distribution": "Bidak selain kedua raja dibagi seimbang sejauh jumlahnya memungkinkan, dengan putih mendapat bidak ganjilnya. Jenis bidak diambil sesuai proporsi yang dimiliki set sungguhan, jadi pion adalah bidak yang paling sering Anda lihat, dan menteri yang paling jarang.",
+      "outro": "Generator mencoba berulang kali sampai sebuah posisi lolos semua aturan di atas. Jika gagal, ia kembali ke susunan awal yang dipangkas sesuai jumlah bidak yang diminta, sehingga sebuah ronde selalu bisa dimulai."
+    }
+  },
+  "leaderboard": {
+    "heading": "Cara peringkat ini ditentukan",
+    "body": "Setiap baris adalah ronde yang selesai dan dikirim dari layar hasil. Papan peringkat mengenali sebuah ronde dari jumlah bidaknya, jadi hanya ronde dengan salah satu dari empat jumlah bidak baku yang memenuhi syarat; selain itu dianggap permainan khusus dan dikecualikan, yang membuat setiap tabel membandingkan ronde yang dimainkan dalam kondisi setara.",
+    "order": "Dalam satu tabel, entri diurutkan berdasarkan bidak benar, lalu bidak salah paling sedikit, lalu waktu lihat tersingkat, lalu waktu penyelesaian tersingkat. Waktu lihat adalah waktu yang benar-benar Anda gunakan, bukan yang diizinkan tingkat tersebut, jadi mengakhiri fase menghafal lebih awal ada nilainya.",
+    "columnsNote": "Kolom bidak menunjukkan bidak benar dari total posisi tersebut. Angka superskrip setelahnya menghitung bidak yang ditempatkan melebihi total itu.",
+    "sectionIntro": "Setiap tingkat punya tabelnya sendiri, menampilkan {limit} ronde terbaiknya."
+  },
+  "contact": {
+    "heading": "Ke mana pesan Anda dikirim",
+    "body": "Formulir ini menulis langsung ke spreadsheet yang dibaca oleh orang yang menjalankan Memory Chess. Tidak ada meja dukungan dan tidak ada nomor tiket. Balasan datang dari kotak masuk sungguhan, biasanya dalam beberapa hari.",
+    "typesIntro": "Formulir meminta Anda memilih salah satu dari empat jenis pertanyaan:",
+    "types": {
+      "feedback": "Sesuatu yang terasa salah, membingungkan, atau lebih lambat dari seharusnya. Sebutkan tingkat kesulitan dan fase mana.",
+      "featureRequest": "Sesuatu yang belum bisa dilakukan game ini. Log perubahan menunjukkan apa yang sudah dirilis.",
+      "general": "Apa pun yang tidak cocok dengan tiga jenis lainnya.",
+      "business": "Kemitraan, sponsor, dan lisensi."
+    },
+    "privacyNote": "Nama, email, jenis pertanyaan, dan pesan Anda disimpan beserta stempel waktu. Tidak ada lagi yang dikumpulkan di halaman ini dan tidak satu pun dijual."
+  }
+}

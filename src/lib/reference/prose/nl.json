@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Zo werkt Memory Chess",
+    "intro": "Elke ronde bestaat uit dezelfde 3 stappen. De getallen op deze pagina zijn de getallen die het spel echt gebruikt; ze worden gelezen uit dezelfde code die het bord aanstuurt en kunnen dus niet afwijken van wat je speelt.",
+    "phases": {
+      "heading": "De 3 fasen van een ronde",
+      "memorize": {
+        "title": "Onthouden",
+        "body": "Een stelling verschijnt een vast aantal seconden op een volledig bord. Er beweegt niets en er is niets verborgen. Met Overslaan kun je de fase eerder beëindigen; de klok registreert hoelang je echt hebt gekeken, niet hoeveel tijd je kreeg."
+      },
+      "place": {
+        "title": "Plaatsen",
+        "body": "Het bord wordt leeggemaakt. Je kiest een stuksoort en een kleur, tikt op een veld om een stuk neer te zetten en tikt nogmaals om het weer weg te halen. Hier is geen tijdslimiet, maar de klok loopt vanaf het moment dat het bord leeg is tot je je oplossing verstuurt."
+      },
+      "score": {
+        "title": "Score",
+        "body": "Jouw bord wordt veld voor veld vergeleken met het origineel. Je ziet welke stukken goed waren, welke fout en welke je hebt gemist, naast de stelling die je te zien kreeg."
+      }
+    },
+    "presets": {
+      "heading": "De 4 moeilijkheidsgraden",
+      "intro": "Elke moeilijkheidsgraad legt 2 dingen vast: hoeveel stukken er op het bord staan en hoeveel seconden je krijgt om ernaar te kijken. Beide koningen tellen mee in het aantal stukken.",
+      "columns": {
+        "preset": "Moeilijkheidsgraad",
+        "pieces": "Stukken",
+        "time": "Kijktijd",
+        "trains": "Wat het traint"
+      },
+      "seconds": "{seconds}s",
+      "trains": {
+        "easy": "Beide koningen en verder niets. Je leert er de interface mee kennen en ziet meteen of je 2 velden kunt vasthouden onder tijdsdruk.",
+        "medium": "6 stukken is ongeveer wat de meeste mensen zonder systeem kunnen vasthouden. Dit is de moeilijkheidsgraad waarop het groeperen van stukken begint te lonen.",
+        "hard": "12 stukken in 8 seconden gaat je pure geheugenspan te boven. Je moet stukken tot vormen groeperen in plaats van ze stuk voor stuk te onthouden.",
+        "grandmaster": "20 stukken in 5 seconden is een kwart seconde per stuk. Niemand leest dit veld voor veld; deze graad beloont wie pionnenketens en groepen stukken als één geheel ziet."
+      },
+      "custom": {
+        "title": "Eigen instellingen",
+        "body": "De 2 schuifregelaars staan los van de moeilijkheidsgraden. Het aantal stukken loopt van {minPieces} tot {maxPieces} en de kijktijd van {minSeconds} tot {maxSeconds} seconden. De ranglijst herkent een ronde aan het aantal stukken; elk ander aantal dan de 4 vaste aantallen maakt er dus een ronde met eigen instellingen van, en die rondes komen niet op de ranglijst."
+      }
+    },
+    "scoring": {
+      "heading": "Hoe een ronde wordt gescoord",
+      "match": "Een stuk telt alleen als goed wanneer alles eraan overeenkomt met het origineel: het veld waarop het staat, de stuksoort en de kleur. Een paard op het juiste veld maar in de verkeerde kleur levert geen halve punten op; het is fout.",
+      "accuracy": "Nauwkeurigheid is het aandeel van de oorspronkelijke stukken dat je exact hebt nagebouwd, als percentage, min 10 punten voor elk stuk dat je boven het aantal van de stelling plaatste. Ze komt nooit onder 0.",
+      "wrong": "Foute stukken zijn de oorspronkelijke stukken die je niet hebt nagebouwd, plus alle stukken die je boven het aantal van de stelling plaatste. Meer stukken plaatsen dan de stelling bevatte kost je dubbel: één keer in het aantal foute stukken en één keer als aftrek op je nauwkeurigheid.",
+      "bandsIntro": "De boodschap op het resultaatscherm volgt rechtstreeks uit je nauwkeurigheid:",
+      "bands": {
+        "perfect": "elk stuk goed",
+        "excellent": "minstens {threshold}% nauwkeurigheid",
+        "great": "minstens {threshold}% nauwkeurigheid",
+        "wellDone": "minstens {threshold}% nauwkeurigheid",
+        "goodEffort": "minstens {threshold}% nauwkeurigheid",
+        "keepPracticing": "minder dan {threshold}% nauwkeurigheid"
+      },
+      "ranking": "Op de ranglijst worden inzendingen eerst gerangschikt op goede stukken, daarna op de minste foute stukken, daarna op de kortste kijktijd en ten slotte op de kortste oplostijd. Nauwkeurigheid gaat boven snelheid; snelheid maakt alleen het verschil tussen spelers met dezelfde score."
+    },
+    "positions": {
+      "heading": "Wat voor stelling je krijgt",
+      "intro": "Stellingen worden voor elke ronde opnieuw gegenereerd en komen niet uit echte partijen, maar het zijn geen willekeurige hopen stukken. Elke stelling die het spel toont voldoet aan al deze regels:",
+      "rules": {
+        "king-count": "Altijd precies 1 koning van elke kleur, ook op de moeilijkheidsgraad met 2 stukken.",
+        "adjacent-kings": "De twee koningen staan nooit op aangrenzende velden.",
+        "pawn-back-rank": "Er staat nooit een pion op de eerste of de achtste rij.",
+        "piece-inventory": "Geen van beide kanten heeft ooit meer stukken van een soort dan een echt schaakspel bevat: 8 pionnen, 2 paarden, 2 lopers, 2 torens en 1 dame.",
+        "bishop-color-complex": "De twee lopers van een kant staan nooit op velden van dezelfde kleur.",
+        "simultaneous-check": "Beide koningen staan nooit tegelijk schaak.",
+        "checked-side-not-to-move": "Staat een koning schaak, dan is die kant aan zet.",
+        "piece-count": "Op het bord staat precies het aantal stukken dat de moeilijkheidsgraad vraagt.",
+        "invalid-fen": "De stelling is een geldige schaakstelling die je zo op een bord kunt opzetten."
+      },
+      "distribution": "De stukken buiten de beide koningen worden zo gelijk verdeeld als het aantal toelaat; bij een oneven aantal krijgt wit het extra stuk. Stuksoorten worden getrokken in de verhoudingen van een echt schaakspel, dus pionnen zie je het vaakst en dames het zeldzaamst.",
+      "outro": "De generator probeert het net zo lang tot een stelling aan alle bovenstaande regels voldoet. Lukt dat niet, dan valt hij terug op de beginopstelling, teruggebracht tot het gevraagde aantal stukken, zodat een ronde altijd start."
+    }
+  },
+  "leaderboard": {
+    "heading": "Hoe deze ranglijsten worden bepaald",
+    "body": "Elke rij is een afgemaakte ronde die vanaf het resultaatscherm is ingestuurd. De ranglijst herkent een ronde aan het aantal stukken; alleen rondes met de 4 vaste aantallen komen dus in aanmerking. Al het andere geldt als ronde met eigen instellingen en valt af, zodat elke tabel rondes vergelijkt die onder gelijke omstandigheden zijn gespeeld.",
+    "order": "Binnen een tabel worden inzendingen gesorteerd op goede stukken, daarna op de minste foute stukken, daarna op de kortste kijktijd en ten slotte op de kortste oplostijd. Kijktijd is de tijd die je echt gebruikte, niet wat de moeilijkheidsgraad toestond; de onthoudfase eerder beëindigen levert dus iets op.",
+    "columnsNote": "De kolom Stukken toont het aantal goede stukken op het totaal van de stelling. Een getal in superscript erachter telt de stukken die boven dat totaal zijn geplaatst.",
+    "sectionIntro": "Elke moeilijkheidsgraad heeft een eigen tabel met de beste {limit} rondes."
+  },
+  "contact": {
+    "heading": "Waar je bericht terechtkomt",
+    "body": "Het formulier schrijft rechtstreeks naar een spreadsheet, en die wordt gelezen door degene die Memory Chess beheert. Er is geen supportafdeling en geen ticketnummer. Antwoorden komen uit een echte inbox, meestal binnen een paar dagen.",
+    "typesIntro": "Het formulier laat je kiezen uit 4 soorten vragen:",
+    "types": {
+      "feedback": "Iets wat fout, verwarrend of trager dan nodig aanvoelde. Vermeld welke moeilijkheidsgraad en welke fase.",
+      "featureRequest": "Iets wat het spel nog niet doet. De pagina Nieuw laat zien wat er al is uitgebracht.",
+      "general": "Alles wat niet bij de andere drie past.",
+      "business": "Partnerschappen, sponsoring en licenties."
+    },
+    "privacyNote": "Je naam, e-mailadres, soort vraag en bericht worden opgeslagen met een tijdstempel. Meer wordt er op deze pagina niet verzameld, en niets ervan wordt verkocht."
+  }
+}

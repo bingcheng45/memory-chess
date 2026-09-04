@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Memory Chess hoạt động như thế nào",
+    "intro": "Mỗi ván đều theo đúng ba bước như nhau. Các con số trên trang này là những con số mà trò chơi thực sự sử dụng; chúng được đọc từ chính đoạn mã vận hành bàn cờ, nên không thể khác với những gì bạn chơi.",
+    "phases": {
+      "heading": "Ba giai đoạn của một ván",
+      "memorize": {
+        "title": "Ghi nhớ",
+        "body": "Một thế cờ xuất hiện trên bàn cờ đầy đủ trong một số giây cố định. Không có gì di chuyển và không có gì bị ẩn. Bạn có thể kết thúc giai đoạn này sớm bằng nút Bỏ qua, và đồng hồ ghi lại thời gian bạn thực sự nhìn, chứ không phải thời gian bạn được cho."
+      },
+      "place": {
+        "title": "Đặt quân",
+        "body": "Bàn cờ được xóa trắng. Bạn chọn loại quân và màu quân, rồi chạm vào một ô để đặt quân xuống hoặc chạm lại để lấy lại. Không có giới hạn thời gian ở đây, nhưng đồng hồ chạy từ lúc bàn cờ được xóa trắng cho đến khi bạn gửi bài."
+      },
+      "score": {
+        "title": "Chấm điểm",
+        "body": "Bàn cờ của bạn được so sánh từng ô một với bản gốc. Bạn thấy quân nào đúng, quân nào sai và quân nào bị bỏ sót, đặt cạnh thế cờ đã được cho bạn xem."
+      }
+    },
+    "presets": {
+      "heading": "Bốn mức độ khó",
+      "intro": "Mỗi mức thiết lập hai điều: có bao nhiêu quân trên bàn cờ và bạn có bao nhiêu giây để nhìn chúng. Số quân bao gồm cả hai vua.",
+      "columns": {
+        "preset": "Mức độ",
+        "pieces": "Số quân",
+        "time": "Thời gian nhìn",
+        "trains": "Rèn luyện gì"
+      },
+      "seconds": "{seconds} giây",
+      "trains": {
+        "easy": "Chỉ hai vua, không gì khác. Mức này dạy bạn cách dùng giao diện và cho biết rõ bạn có giữ được hai ô trong đầu dưới áp lực thời gian hay không.",
+        "medium": "Sáu quân xấp xỉ mức mà hầu hết mọi người giữ được nếu không dùng hệ thống nào. Đây là mức mà việc gom nhóm bắt đầu phát huy tác dụng.",
+        "hard": "Mười hai quân trong tám giây vượt quá sức nhớ thô. Bạn phải gom quân thành các hình dạng thay vì nhớ từng quân một.",
+        "grandmaster": "Hai mươi quân trong năm giây là một phần tư giây cho mỗi quân. Không ai đọc kiểu từng ô một; mức này thưởng cho việc nhìn ra các chuỗi tốt và cụm quân như những khối duy nhất."
+      },
+      "custom": {
+        "title": "Thiết lập tùy chỉnh",
+        "body": "Hai thanh trượt di chuyển độc lập với các mức có sẵn. Số quân chạy từ {minPieces} đến {maxPieces} và thời gian nhìn từ {minSeconds} đến {maxSeconds} giây. Bảng xếp hạng nhận diện một ván qua số quân của nó, nên bất kỳ số quân nào khác bốn mức có sẵn đều biến ván đó thành ván tùy chỉnh, và ván tùy chỉnh không xuất hiện trên bảng xếp hạng."
+      }
+    },
+    "scoring": {
+      "heading": "Một ván được chấm điểm ra sao",
+      "match": "Một quân chỉ được tính là đúng khi mọi thứ về nó khớp với bản gốc: ô nó đứng, loại quân và màu quân. Một quân mã ở đúng ô nhưng sai màu không phải là điểm một phần, đó là sai.",
+      "accuracy": "Độ chính xác là tỷ lệ phần trăm số quân gốc mà bạn tái hiện chính xác, trừ đi mười điểm cho mỗi quân bạn đặt vượt quá số quân của thế cờ. Nó không bao giờ xuống dưới không.",
+      "wrong": "Quân sai là những quân gốc mà bạn không tái hiện được, cộng với bất kỳ quân nào đặt vượt quá số quân của thế cờ. Đặt nhiều quân hơn số quân thế cờ khiến bạn thiệt hai lần: một lần trong số lượng sai và một lần như một hình phạt độ chính xác.",
+      "bandsIntro": "Thông điệp trên màn hình kết quả đến thẳng từ độ chính xác của bạn:",
+      "bands": {
+        "perfect": "mọi quân đều đúng",
+        "excellent": "độ chính xác ít nhất {threshold}%",
+        "great": "độ chính xác ít nhất {threshold}%",
+        "wellDone": "độ chính xác ít nhất {threshold}%",
+        "goodEffort": "độ chính xác ít nhất {threshold}%",
+        "keepPracticing": "độ chính xác dưới {threshold}%"
+      },
+      "ranking": "Trên bảng xếp hạng, các mục được sắp xếp trước tiên theo số quân đúng, sau đó theo số quân sai ít nhất, sau đó theo thời gian nhìn ngắn nhất, cuối cùng theo thời gian giải ngắn nhất. Độ chính xác quan trọng hơn tốc độ, và tốc độ chỉ phân định giữa những người chơi có cùng điểm số."
+    },
+    "positions": {
+      "heading": "Bạn nhận được loại thế cờ nào",
+      "intro": "Thế cờ được tạo mới cho mỗi ván thay vì lấy từ các ván đấu thật, nhưng chúng không phải là những đống quân ngẫu nhiên. Mọi thế cờ trò chơi hiển thị đều thỏa mãn tất cả các quy tắc sau:",
+      "rules": {
+        "king-count": "Luôn có đúng một vua mỗi màu, kể cả ở mức hai quân.",
+        "adjacent-kings": "Hai vua không bao giờ đứng ở các ô liền kề nhau.",
+        "pawn-back-rank": "Không có tốt nào đứng ở hàng thứ nhất hoặc hàng thứ tám.",
+        "piece-inventory": "Không bên nào có nhiều quân một loại hơn số quân trong một bộ thật: tám tốt, hai mã, hai tượng, hai xe, một hậu.",
+        "bishop-color-complex": "Hai tượng của một bên không bao giờ đứng trên các ô cùng màu.",
+        "simultaneous-check": "Hai vua không bao giờ cùng bị chiếu một lúc.",
+        "checked-side-not-to-move": "Nếu một vua đang bị chiếu, đến lượt đi của chính bên đó.",
+        "piece-count": "Bàn cờ chứa đúng số quân mà mức đã chọn yêu cầu.",
+        "invalid-fen": "Thế cờ là một thế cờ hợp lệ mà một bàn cờ có thể được xếp thành."
+      },
+      "distribution": "Các quân ngoài hai vua được chia đều nhất có thể theo số lượng, với bên trắng nhận quân lẻ. Loại quân được chọn theo đúng tỷ lệ của một bộ thật, nên tốt là quân bạn sẽ thấy nhiều nhất, còn hậu là hiếm nhất.",
+      "outro": "Bộ tạo thử lặp đi lặp lại cho đến khi một thế cờ vượt qua mọi quy tắc trên. Nếu không thể, nó quay về thế bố trí khai cuộc được cắt gọt theo đúng số quân yêu cầu, để một ván luôn có thể bắt đầu."
+    }
+  },
+  "leaderboard": {
+    "heading": "Bảng xếp hạng này được quyết định thế nào",
+    "body": "Mỗi hàng là một ván đã hoàn thành được gửi từ màn hình kết quả. Bảng xếp hạng nhận diện một ván qua số quân của nó, nên chỉ những ván ở một trong bốn số quân có sẵn mới đủ điều kiện; mọi thứ khác là ván tùy chỉnh và bị loại, điều này giúp mỗi bảng chỉ so sánh các ván được chơi trong điều kiện giống nhau.",
+    "order": "Trong một bảng, các mục được sắp xếp theo số quân đúng, sau đó theo số quân sai ít nhất, sau đó theo thời gian nhìn ngắn nhất, sau đó theo thời gian giải ngắn nhất. Thời gian nhìn là thời gian bạn thực sự dùng, không phải thời gian mức cho phép, nên việc kết thúc sớm giai đoạn ghi nhớ cũng có giá trị.",
+    "columnsNote": "Cột số quân hiển thị số quân đúng trên tổng số quân của thế cờ. Số ký hiệu trên cao phía sau đếm số quân đặt vượt quá tổng số đó.",
+    "sectionIntro": "Mỗi mức có bảng riêng, hiển thị {limit} ván tốt nhất của mức đó."
+  },
+  "contact": {
+    "heading": "Tin nhắn của bạn sẽ đi đến đâu",
+    "body": "Biểu mẫu ghi thẳng vào một bảng tính mà người vận hành Memory Chess đọc. Không có bộ phận hỗ trợ và không có mã số yêu cầu. Phản hồi đến từ một hộp thư thật, thường trong vài ngày.",
+    "typesIntro": "Biểu mẫu yêu cầu bạn chọn một trong bốn loại yêu cầu:",
+    "types": {
+      "feedback": "Điều gì đó có cảm giác sai, khó hiểu hoặc chậm hơn mức cần thiết. Hãy nói rõ mức độ khó nào và giai đoạn nào.",
+      "featureRequest": "Điều gì đó mà trò chơi chưa làm được. Nhật ký thay đổi cho thấy những gì đã ra mắt.",
+      "general": "Bất cứ điều gì không thuộc ba loại còn lại.",
+      "business": "Hợp tác, tài trợ và cấp phép."
+    },
+    "privacyNote": "Tên, email, loại yêu cầu và tin nhắn của bạn được lưu trữ kèm dấu thời gian. Không có gì khác được thu thập trên trang này và không có gì trong đó được bán."
+  }
+}

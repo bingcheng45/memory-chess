@@ -2,16 +2,9 @@ import { getTranslations } from "next-intl/server";
 
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import {
+  CONTACT_INQUIRY_KEYS,
   getReferenceProse,
-  type ContactInquiryKey,
 } from "@/lib/reference/prose";
-
-const INQUIRY_KEYS: readonly ContactInquiryKey[] = [
-  "feedback",
-  "featureRequest",
-  "general",
-  "business",
-];
 
 export default async function ContactReference({
   locale,
@@ -43,7 +36,7 @@ export default async function ContactReference({
             <p>{prose.typesIntro}</p>
           </div>
           <ul className={`${EDITORIAL_STYLES.body} mt-4 space-y-2`}>
-            {INQUIRY_KEYS.map((key) => (
+            {CONTACT_INQUIRY_KEYS.map((key) => (
               <li key={key}>
                 <span className="font-medium text-text-primary">{t(key)}.</span>{" "}
                 {prose.types[key]}

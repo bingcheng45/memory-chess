@@ -22,13 +22,22 @@ type PhaseProse = {
   body: string;
 };
 
-/** Keys of the contact form's inquiry select, mirrored by `contact.types.*`
- * in the message catalogue. */
-export type ContactInquiryKey =
-  | "feedback"
-  | "featureRequest"
-  | "general"
-  | "business";
+/**
+ * Keys of the contact form's inquiry select, in the order the explainer lists
+ * them, mirrored by `contact.types.*` in the message catalogue.
+ *
+ * The array is the source and the type is derived from it. A hand-written
+ * companion array would render a stale subset the day a fifth inquiry type is
+ * added, and nothing would fail.
+ */
+export const CONTACT_INQUIRY_KEYS = [
+  "feedback",
+  "featureRequest",
+  "general",
+  "business",
+] as const;
+
+export type ContactInquiryKey = (typeof CONTACT_INQUIRY_KEYS)[number];
 
 export type ReferenceProse = {
   game: {

@@ -16,7 +16,7 @@ npm run build
 .claude/skills/verify-memory-chess/helpers/serve.sh start 4517
 ```
 
-`npm run build` runs the message and Learn-prose validators first and fails the build if they fail. `serve.sh start` refuses a port that is already in use, starts `next start` in the background, writes the pid and log to `.verify/server-<port>.pid` and `.verify/server-<port>.log`, and returns once `http://127.0.0.1:<port>/` answers. Teardown is `serve.sh stop 4517`, which kills only the pid it recorded.
+`npm run build` runs the message and Learn-prose validators first and fails the build if they fail. `serve.sh start` refuses a port that is already in use, starts `next start` detached in the background, writes the server's pid and log to `.verify/server-<port>.pid` and `.verify/server-<port>.log`, and returns once `http://127.0.0.1:<port>/` answers. A start that never answers kills what it spawned and removes the pid file, so an existing pid file always names a server that answered on its port. Teardown is `serve.sh stop 4517`, which signals only the process group of the pid it recorded, and only after checking that pid is still the server it started.
 
 Verification works without any env vars. `.env.local` is not committed; without it the Supabase-backed leaderboard and games-played counter degrade gracefully (see Evidence) and the contact form's Google Sheets write fails with a 500. Never copy secrets from a checkout's `.env.local` into any committed file.
 
@@ -79,7 +79,7 @@ This app was rejected by Google AdSense because `/game` server-rendered 8 words 
 rm -rf .verify
 ```
 
-`cdp.mjs` already tears down its own Chrome and profile on both pass and fail. Kill only what you started: `serve.sh stop` kills the recorded pid, never by name. `.verify-evidence/` survives cleanup; after cleanup, confirm your evidence files still exist there. Run cleanup after failed attempts too, so broken runs do not strand a port.
+`cdp.mjs` already tears down its own Chrome and profile on both pass and fail. Kill only what you started: `serve.sh stop` signals only the recorded pid's process group, never by name, and when the recorded pid is dead or was reused by another process it reports the record as stale and clears it without signalling anything. `.verify-evidence/` survives cleanup; after cleanup, confirm your evidence files still exist there. Run cleanup after failed attempts too, so broken runs do not strand a port.
 
 ## Helpers
 

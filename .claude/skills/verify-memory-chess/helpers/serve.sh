@@ -8,6 +8,15 @@ run_dir=$root/.verify
 pid_file=$run_dir/server-$port.pid
 log_file=$run_dir/server-$port.log
 
+pid_command() {
+  # Minimal Linux images ship no ps, and macOS has no /proc.
+  if [ -r "/proc/$1/cmdline" ]; then
+    tr '\0' ' ' <"/proc/$1/cmdline"
+  else
+    ps -p "$1" -o command= 2>/dev/null
+  fi
+}
+
 case $cmd in
   start)
     # Probe by binding, not lsof; minimal Linux images do not ship lsof.
@@ -50,8 +59,21 @@ case $cmd in
       exit 0
     fi
     pid=$(cat "$pid_file")
-    pkill -P "$pid" 2>/dev/null || true
-    kill "$pid" 2>/dev/null || true
+    if ! kill -0 "$pid" 2>/dev/null; then
+      echo "stale pid file; recorded pid $pid is already dead. Removing the record."
+      rm -f "$pid_file"
+      exit 0
+    fi
+    cmd=$(pid_command "$pid" || true)
+    case $cmd in
+      *next-server*) ;;
+      *)
+        echo "stale pid file; pid $pid now belongs to another process ($cmd). Refusing to signal it and removing the record."
+        rm -f "$pid_file"
+        exit 0
+        ;;
+    esac
+    kill -- "-$pid" 2>/dev/null || kill "$pid" 2>/dev/null || true
     rm -f "$pid_file"
     echo "stopped pid $pid"
     ;;

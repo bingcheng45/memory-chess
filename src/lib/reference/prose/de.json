@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "So funktioniert Memory Chess",
+    "intro": "Jede Runde besteht aus denselben 3 Schritten. Die Zahlen auf dieser Seite sind genau die, mit denen das Spiel rechnet; sie werden aus demselben Code gelesen, der auch das Brett steuert, und können deshalb nicht von dem abweichen, was du spielst.",
+    "phases": {
+      "heading": "Die 3 Phasen einer Runde",
+      "memorize": {
+        "title": "Einprägen",
+        "body": "Eine Stellung erscheint für eine feste Zahl von Sekunden auf dem vollen Brett. Nichts bewegt sich, und nichts ist verdeckt. Mit „Überspringen“ kannst du die Phase vorzeitig beenden; die Uhr hält fest, wie lange du tatsächlich hingeschaut hast, nicht wie viel Zeit dir zustand."
+      },
+      "place": {
+        "title": "Setzen",
+        "body": "Das Brett wird geleert. Du wählst Figurenart und Farbe, tippst dann auf ein Feld, um eine Figur zu setzen, oder tippst erneut, um sie wieder zu entfernen. Ein Zeitlimit gibt es hier nicht, aber die Uhr läuft von dem Moment, in dem das Brett geleert wird, bis du deine Lösung abschickst."
+      },
+      "score": {
+        "title": "Auswertung",
+        "body": "Dein Brett wird Feld für Feld mit dem Original verglichen. Du siehst, welche Figuren richtig waren, welche falsch und welche du vergessen hast, direkt neben der Stellung, die dir gezeigt wurde."
+      }
+    },
+    "presets": {
+      "heading": "Die 4 Schwierigkeitsstufen",
+      "intro": "Jede Stufe legt zwei Dinge fest: wie viele Figuren auf dem Brett stehen und wie viele Sekunden du sie betrachten darfst. Die Figurenzahl schließt beide Könige ein.",
+      "columns": {
+        "preset": "Stufe",
+        "pieces": "Figuren",
+        "time": "Einprägezeit",
+        "trains": "Was sie trainiert"
+      },
+      "seconds": "{seconds} s",
+      "trains": {
+        "easy": "2 Könige und sonst nichts. Diese Stufe macht dich mit der Bedienung vertraut und zeigt dir sauber, ob du 2 Felder unter Zeitdruck behalten kannst.",
+        "medium": "6 Figuren entsprechen ungefähr der Spanne, die die meisten ohne System behalten. Auf dieser Stufe zahlt es sich zum ersten Mal aus, Figuren zu Gruppen zusammenzufassen.",
+        "hard": "12 Figuren in 8 Sekunden liegen jenseits der reinen Merkspanne. Du musst Figuren zu Formen gruppieren, statt sie einzeln zu behalten.",
+        "grandmaster": "20 Figuren in 5 Sekunden sind eine Viertelsekunde pro Figur. Niemand liest das Feld für Feld; belohnt wird, wer Bauernketten und Figurengruppen als Einheiten sieht."
+      },
+      "custom": {
+        "title": "Eigene Einstellungen",
+        "body": "Die beiden Regler bewegen sich unabhängig von den Stufen. Die Figurenzahl reicht von {minPieces} bis {maxPieces}, die Einprägezeit von {minSeconds} bis {maxSeconds} Sekunden. Die Bestenliste erkennt eine Runde an ihrer Figurenzahl; jede andere Zahl als die Werte der 4 Stufen macht daraus eine Partie mit eigenen Einstellungen, und solche Partien erscheinen nicht in der Bestenliste."
+      }
+    },
+    "scoring": {
+      "heading": "So wird eine Runde bewertet",
+      "match": "Eine Figur zählt nur dann als richtig, wenn alles an ihr mit dem Original übereinstimmt: das Feld, auf dem sie steht, ihre Art und ihre Farbe. Ein Springer auf dem richtigen Feld in der falschen Farbe gibt keine halben Punkte, er ist falsch.",
+      "accuracy": "Die Genauigkeit ist der Anteil der Originalfiguren, die du exakt wiedergegeben hast, in Prozent, abzüglich 10 Punkten für jede Figur, die du über die Figurenzahl der Stellung hinaus gesetzt hast. Unter 0 fällt sie nie.",
+      "wrong": "Als falsche Figuren zählen die Originalfiguren, die du nicht wiedergegeben hast, plus alle Figuren, die du über die Figurenzahl der Stellung hinaus gesetzt hast. Wer mehr Figuren setzt, als die Stellung enthielt, zahlt doppelt: einmal in der Zahl der falschen Figuren und einmal als Abzug bei der Genauigkeit.",
+      "bandsIntro": "Die Meldung auf dem Ergebnisbildschirm ergibt sich direkt aus deiner Genauigkeit:",
+      "bands": {
+        "perfect": "jede Figur richtig",
+        "excellent": "mindestens {threshold} % Genauigkeit",
+        "great": "mindestens {threshold} % Genauigkeit",
+        "wellDone": "mindestens {threshold} % Genauigkeit",
+        "goodEffort": "mindestens {threshold} % Genauigkeit",
+        "keepPracticing": "unter {threshold} % Genauigkeit"
+      },
+      "ranking": "In der Bestenliste werden die Einträge zuerst nach richtigen Figuren geordnet, dann nach den wenigsten falschen Figuren, dann nach der kürzesten Einprägezeit, dann nach der kürzesten Lösungszeit. Genauigkeit geht vor Tempo, und Tempo trennt nur Spieler mit gleichem Ergebnis."
+    },
+    "positions": {
+      "heading": "Welche Art von Stellung du bekommst",
+      "intro": "Die Stellungen werden für jede Runde neu erzeugt und stammen nicht aus echten Partien, sind aber keine zufälligen Figurenhaufen. Jede Stellung, die das Spiel zeigt, erfüllt alle diese Regeln:",
+      "rules": {
+        "king-count": "Genau 1 König jeder Farbe, immer, auch auf der Stufe mit 2 Figuren.",
+        "adjacent-kings": "Die beiden Könige stehen nie auf benachbarten Feldern.",
+        "pawn-back-rank": "Kein Bauer steht je auf der ersten oder der achten Reihe.",
+        "piece-inventory": "Keine Seite hat je mehr Figuren einer Art, als ein echtes Figurenset enthält: 8 Bauern, 2 Springer, 2 Läufer, 2 Türme, 1 Dame.",
+        "bishop-color-complex": "Die beiden Läufer einer Seite stehen nie auf gleichfarbigen Feldern.",
+        "simultaneous-check": "Nie stehen beide Könige gleichzeitig im Schach.",
+        "checked-side-not-to-move": "Steht ein König im Schach, ist diese Seite am Zug.",
+        "piece-count": "Das Brett enthält genau die Figurenzahl, die die Stufe vorgibt.",
+        "invalid-fen": "Die Stellung ist eine regelkonforme Schachstellung, die sich auf einem Brett aufbauen lässt."
+      },
+      "distribution": "Die Figuren jenseits der beiden Könige werden so gleichmäßig aufgeteilt, wie es die Zahl erlaubt; bei ungerader Zahl erhält Weiß die zusätzliche Figur. Die Figurenarten werden in den Verhältnissen eines echten Figurensets gezogen, deshalb sind Bauern die häufigsten Figuren, die du siehst, und Damen die seltensten.",
+      "outro": "Der Generator versucht es so lange, bis eine Stellung alle Regeln oben erfüllt. Gelingt das nicht, greift er auf die Grundstellung zurück, reduziert auf die gewünschte Figurenzahl, damit eine Runde immer startet."
+    }
+  },
+  "leaderboard": {
+    "heading": "So werden diese Platzierungen ermittelt",
+    "body": "Jede Zeile ist eine abgeschlossene Runde, die vom Ergebnisbildschirm aus eingetragen wurde. Die Bestenliste erkennt eine Runde an ihrer Figurenzahl; zugelassen sind daher nur Runden mit den Figurenzahlen der 4 Stufen. Alles andere ist eine Partie mit eigenen Einstellungen und bleibt außen vor, sodass jede Tabelle nur Runden unter gleichen Bedingungen vergleicht.",
+    "order": "Innerhalb einer Tabelle werden die Einträge nach richtigen Figuren sortiert, dann nach den wenigsten falschen Figuren, dann nach der kürzesten Einprägezeit, dann nach der kürzesten Lösungszeit. Die Einprägezeit ist die Zeit, die du tatsächlich genutzt hast, nicht die, die die Stufe erlaubt hätte; die Einprägephase früh zu beenden lohnt sich also.",
+    "columnsNote": "Die Spalte „Figuren“ zeigt die richtigen Figuren gemessen an der Gesamtzahl der Stellung. Eine hochgestellte Zahl dahinter zählt die Figuren, die über diese Gesamtzahl hinaus gesetzt wurden.",
+    "sectionIntro": "Jede Stufe hat ihre eigene Tabelle mit ihren besten {limit} Runden."
+  },
+  "contact": {
+    "heading": "Wohin deine Nachricht geht",
+    "body": "Das Formular schreibt direkt in ein Tabellendokument, das die Person liest, die Memory Chess betreibt. Es gibt keinen Support-Desk und keine Ticketnummer. Antworten kommen aus einem echten Postfach, meist innerhalb weniger Tage.",
+    "typesIntro": "Im Formular wählst du eine von 4 Anfragearten:",
+    "types": {
+      "feedback": "Etwas, das sich falsch, verwirrend oder langsamer als nötig angefühlt hat. Nenne die Schwierigkeitsstufe und die Phase.",
+      "featureRequest": "Etwas, das das Spiel noch nicht kann. Die Seite „Neuerungen“ zeigt, was schon umgesetzt ist.",
+      "general": "Alles, was zu keiner der 3 anderen Arten passt.",
+      "business": "Partnerschaften, Sponsoring und Lizenzierung."
+    },
+    "privacyNote": "Dein Name, deine E-Mail-Adresse, die Art der Anfrage und deine Nachricht werden mit einem Zeitstempel gespeichert, und nichts davon wird verkauft. Was die Seite selbst erfasst, während du sie besuchst, einschließlich Analyse- und Werbe-Cookies, steht in der Datenschutzerklärung."
+  }
+}

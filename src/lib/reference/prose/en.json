@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "How Memory Chess works",
+    "intro": "Every round is the same three steps. The numbers on this page are the ones the game actually uses; they are read from the same code that runs the board, so they cannot drift from what you play.",
+    "phases": {
+      "heading": "The three phases of a round",
+      "memorize": {
+        "title": "Memorize",
+        "body": "A position appears on a full board for a fixed number of seconds. Nothing moves and nothing is hidden. You can end the phase early with Skip, and the clock records how long you actually looked rather than the time you were given."
+      },
+      "place": {
+        "title": "Place",
+        "body": "The board clears. You pick a piece type and color, then tap a square to put a piece down or tap it again to take it back. There is no time limit here, but the clock runs from the moment the board clears until you submit."
+      },
+      "score": {
+        "title": "Score",
+        "body": "Your board is compared square by square with the original. You see which pieces were right, which were wrong, and which you missed, side by side with the position you were shown."
+      }
+    },
+    "presets": {
+      "heading": "The four difficulty presets",
+      "intro": "Each preset sets two things, how many pieces are on the board and how many seconds you get to look at them. Piece count includes both kings.",
+      "columns": {
+        "preset": "Preset",
+        "pieces": "Pieces",
+        "time": "Look time",
+        "trains": "What it trains"
+      },
+      "seconds": "{seconds}s",
+      "trains": {
+        "easy": "Two kings and nothing else. It teaches the interface and gives you a clean read on whether you can hold two squares under time pressure.",
+        "medium": "Six pieces is roughly the span most people hold without a system. This is the preset where chunking starts to pay off.",
+        "hard": "Twelve pieces in eight seconds is past raw span. You have to group pieces into shapes rather than remember them one at a time.",
+        "grandmaster": "Twenty pieces in five seconds is a quarter of a second per piece. Nobody reads this square by square; it rewards seeing pawn chains and piece clusters as single units."
+      },
+      "custom": {
+        "title": "Custom settings",
+        "body": "The two sliders move independently of the presets. Piece count runs from {minPieces} to {maxPieces} and look time from {minSeconds} to {maxSeconds} seconds. The leaderboard recognizes a round by its piece count, so any count other than the four preset counts makes it a custom game, and custom games stay off the leaderboard."
+      }
+    },
+    "scoring": {
+      "heading": "How a round is scored",
+      "match": "A piece counts as correct only when everything about it matches the original, the square it stands on, its type, and its color. A knight on the right square in the wrong color is not partial credit, it is wrong.",
+      "accuracy": "Accuracy is the share of the original pieces you reproduced exactly, as a percentage, minus ten points for every piece you placed beyond the position's count. It never drops below zero.",
+      "wrong": "Wrong pieces are the original pieces you failed to reproduce, plus any pieces placed beyond the position's count. Placing more pieces than the position held costs you twice, once in the wrong count and once as an accuracy penalty.",
+      "bandsIntro": "The message on the result screen comes straight from your accuracy:",
+      "bands": {
+        "perfect": "every piece correct",
+        "excellent": "at least {threshold}% accuracy",
+        "great": "at least {threshold}% accuracy",
+        "wellDone": "at least {threshold}% accuracy",
+        "goodEffort": "at least {threshold}% accuracy",
+        "keepPracticing": "below {threshold}% accuracy"
+      },
+      "ranking": "On the leaderboard, entries are ordered by correct pieces first, then by fewest wrong pieces, then by shortest look time, then by shortest solution time. Accuracy outranks speed, and speed only separates players who scored the same."
+    },
+    "positions": {
+      "heading": "What kind of position you get",
+      "intro": "Positions are generated fresh for each round rather than taken from real games, but they are not random piles of pieces. Every position the game shows satisfies all of these rules:",
+      "rules": {
+        "king-count": "Exactly one king of each color, always, including on the two-piece preset.",
+        "adjacent-kings": "The two kings are never on adjacent squares.",
+        "pawn-back-rank": "No pawn ever stands on the first or the eighth rank.",
+        "piece-inventory": "No side ever has more pieces of a type than a real set holds, eight pawns, two knights, two bishops, two rooks, one queen.",
+        "bishop-color-complex": "A side's two bishops never sit on same-colored squares.",
+        "simultaneous-check": "Both kings are never in check at the same time.",
+        "checked-side-not-to-move": "If one king is in check, it is that side's turn to move.",
+        "piece-count": "The board holds exactly the number of pieces the preset asked for.",
+        "invalid-fen": "The position is a legal chess position that a board can be set to."
+      },
+      "distribution": "Pieces beyond the two kings are split as evenly as the count allows, with white taking the odd piece. Types are drawn in the proportions a real set holds, so pawns are the most common piece you will see and queens the rarest.",
+      "outro": "The generator tries repeatedly until a position clears every rule above. If it cannot, it falls back to the opening setup trimmed to the requested piece count, so a round always starts."
+    }
+  },
+  "leaderboard": {
+    "heading": "How these rankings are decided",
+    "body": "Every row is a completed round submitted from the result screen. The leaderboard recognizes a round by its piece count, so only rounds at the four preset counts are eligible; anything else is a custom game and is excluded, which keeps each table comparing rounds played under like conditions.",
+    "order": "Within a table, entries are sorted by correct pieces, then by fewest wrong pieces, then by shortest look time, then by shortest solution time. Look time is what you actually spent, not what the preset allowed, so ending the memorize phase early is worth something.",
+    "columnsNote": "The pieces column shows correct pieces out of the position's total. A superscript number after it counts pieces placed beyond that total.",
+    "sectionIntro": "Each preset has its own table, showing its top {limit} rounds."
+  },
+  "contact": {
+    "heading": "Where your message goes",
+    "body": "The form writes straight to a spreadsheet the person who runs Memory Chess reads. There is no support desk and no ticket number. Replies come from a real inbox, usually within a few days.",
+    "typesIntro": "The form asks you to pick one of four inquiry types:",
+    "types": {
+      "feedback": "Something that felt wrong, confusing, or slower than it should be. Say which difficulty and which phase.",
+      "featureRequest": "Something the game does not do yet. The changelog shows what has already shipped.",
+      "general": "Anything that does not fit the other three.",
+      "business": "Partnerships, sponsorship, and licensing."
+    },
+    "privacyNote": "The form stores your name, email, inquiry type, and message with a timestamp, and none of it is sold. What the site itself records while you browse, including analytics and advertising cookies, is set out in the privacy policy."
+  }
+}

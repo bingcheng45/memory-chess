@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "Lær",
+      "about": "Om",
       "changelog": "Nyheder",
       "contactUs": "Kontakt os",
-      "privacy": "Privatliv"
+      "privacy": "Privatliv",
+      "terms": "Vilkår"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle rettigheder forbeholdes.",

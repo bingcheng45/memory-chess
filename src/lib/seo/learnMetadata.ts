@@ -82,7 +82,7 @@ export function buildLearnPageMetadata(
     authors: [
       {
         name: page.reviewedBy,
-        url: `${SITE_URL}/learn`,
+        url: `${SITE_URL}/about`,
       },
     ],
     other: {

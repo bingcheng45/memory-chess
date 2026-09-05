@@ -6,6 +6,8 @@ import {
   SQUARES,
 } from "chess.js";
 
+import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
+
 export type PositionViolation =
   | "invalid-fen"
   | "piece-count"
@@ -343,7 +345,10 @@ export function generateMemorizationPosition(
   requestedPieceCount: number,
   random: RandomSource = Math.random,
 ): Chess | null {
-  const pieceCount = Math.max(2, Math.min(32, requestedPieceCount));
+  const pieceCount = Math.max(
+    PIECE_COUNT_RANGE.min,
+    Math.min(PIECE_COUNT_RANGE.max, requestedPieceCount),
+  );
 
   for (let attempt = 0; attempt < MAX_GENERATION_ATTEMPTS; attempt += 1) {
     const position = generateCandidate(pieceCount, random);

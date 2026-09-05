@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
+import GameReference from '@/components/reference/GameReference';
 
 const siteUrl = 'https://thememorychess.com';
 
@@ -29,10 +30,19 @@ export async function generateMetadata({
   };
 }
 
-export default function GameLayout({
+export default async function GameLayout({
   children,
+  params,
 }: {
   children: ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  return children;
+  const { locale } = await params;
+
+  return (
+    <>
+      {children}
+      <GameReference locale={locale} />
+    </>
+  );
 }

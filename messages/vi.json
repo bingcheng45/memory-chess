@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "Học",
+      "about": "Giới thiệu",
       "changelog": "Có gì mới",
       "contactUs": "Liên hệ",
-      "privacy": "Quyền riêng tư"
+      "privacy": "Quyền riêng tư",
+      "terms": "Điều khoản"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Bảo lưu mọi quyền.",

@@ -1,7 +1,19 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import NextLink from "next/link";
+
 import { Link } from "@/i18n/navigation";
+import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
+
+const FOOTER_LINKS = [
+  { href: "/learn", labelKey: "nav.learn" },
+  { href: "/about", labelKey: "nav.about" },
+  { href: "/changelog", labelKey: "nav.changelog" },
+  { href: "/contact-us", labelKey: "nav.contactUs" },
+  { href: "/privacy", labelKey: "nav.privacy" },
+  { href: "/terms", labelKey: "nav.terms" },
+] as const;
 
 export default function Footer() {
   const t = useTranslations("common");
@@ -10,27 +22,35 @@ export default function Footer() {
   const currentYear = String(new Date().getFullYear());
 
   return (
-    <footer className="w-full py-10 mt-10 border-t border-bg-light">
+    // data-below-game: rendered by the locale layout after the game page, so
+    // while body.game-fixed pins the viewport this would join the pinned flex
+    // column as an unshrinkable item and squeeze the board. The rule in
+    // globals.css hides everything below the game for those phases.
+    <footer
+      data-below-game
+      className="w-full py-10 mt-10 border-t border-bg-light"
+    >
       <div className="container mx-auto px-1 sm:px-4">
         <div className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-3">
-          <Link
-            href="/changelog"
-            className="text-peach-500 transition-colors hover:text-peach-400"
-          >
-            {t("nav.changelog")}
-          </Link>
-          <Link
-            href="/contact-us"
-            className="text-peach-500 transition-colors hover:text-peach-400"
-          >
-            {t("nav.contactUs")}
-          </Link>
-          <Link
-            href="/privacy"
-            className="text-peach-500 transition-colors hover:text-peach-400"
-          >
-            {t("nav.privacy")}
-          </Link>
+          {FOOTER_LINKS.map((link) => {
+            // An English-only page has one URL and it is the bare one. The
+            // locale-aware Link cannot express that: left alone it keeps the
+            // active locale and points a German reader at /de/about, and
+            // forcing locale="en" points at /en/about, which only 307s to
+            // /about because the routing prefixes English as-needed. A plain
+            // link is the one that renders the canonical href.
+            const LinkComponent = isEnglishOnlyPath(link.href) ? NextLink : Link;
+
+            return (
+              <LinkComponent
+                key={link.href}
+                href={link.href}
+                className="text-peach-500 transition-colors hover:text-peach-400"
+              >
+                {t(link.labelKey)}
+              </LinkComponent>
+            );
+          })}
         </div>
 
         {/* Product Hunt Badges */}

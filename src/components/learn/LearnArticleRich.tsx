@@ -1,11 +1,6 @@
 import { useTranslations } from "next-intl";
+import { ChevronDown } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import {
   EditorialActionLink,
   EditorialPageShell,
@@ -119,15 +114,16 @@ export default function LearnArticleRich({
         isAccessibleForFree: true,
         articleSection: goal.label,
         author: {
-          "@type": "Organization",
-          "@id": `${SITE_URL}/#editorial-team`,
-          name: "Memory Chess Editorial Team",
-          url: hubUrl,
+          "@type": "Person",
+          "@id": `${SITE_URL}/about#bing-cheng`,
+          name: "Bing Cheng",
+          url: `${SITE_URL}/about`,
         },
         reviewedBy: {
-          "@type": "Organization",
+          "@type": "Person",
+          "@id": `${SITE_URL}/about#bing-cheng`,
           name: page.reviewedBy,
-          url: hubUrl,
+          url: `${SITE_URL}/about`,
         },
         publisher: {
           "@type": "Organization",
@@ -603,22 +599,28 @@ export default function LearnArticleRich({
             {t("commonQuestions")}
           </p>
           <h2 className={EDITORIAL_STYLES.sectionTitle}>{t("faqLabel")}</h2>
-          <Accordion type="single" collapsible className="mt-6 w-full">
-            {page.faq.map((entry, index) => (
-              <AccordionItem
+          {/*
+            Native details/summary instead of the Radix accordion: Radix
+            unmounts closed content, so the served HTML carried the questions
+            and none of the answers. Here every answer is in the DOM and
+            toggling works with no JavaScript at all.
+          */}
+          <div className="mt-6 w-full">
+            {page.faq.map((entry) => (
+              <details
                 key={entry.question}
-                value={`item-${index}`}
-                className="border-white/10"
+                className="group border-b border-white/10"
               >
-                <AccordionTrigger className="text-left text-base font-semibold leading-6 text-white hover:text-peach-200 hover:no-underline">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-base font-semibold leading-6 text-white transition-all hover:text-peach-200 [&::-webkit-details-marker]:hidden">
                   {entry.question}
-                </AccordionTrigger>
-                <AccordionContent className="max-w-[68ch] text-sm leading-7 text-text-secondary sm:text-base">
+                  <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
+                </summary>
+                <p className="max-w-[68ch] pb-4 text-sm leading-7 text-text-secondary sm:text-base">
                   {entry.answer}
-                </AccordionContent>
-              </AccordionItem>
+                </p>
+              </details>
             ))}
-          </Accordion>
+          </div>
         </section>
 
         <section className={EDITORIAL_STYLES.section}>

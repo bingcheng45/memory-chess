@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
-import Footer from "@/components/ui/Footer";
 import PageHeader from "@/components/ui/PageHeader";
 
 const siteUrl = "https://thememorychess.com";
@@ -55,7 +54,7 @@ export default function PrivacyPage() {
             choices you have.
           </p>
           <p className="mt-3 text-xs text-text-muted">
-            Last updated: August 16, 2026
+            Last updated: September 4, 2026
           </p>
         </header>
 
@@ -69,6 +68,22 @@ export default function PrivacyPage() {
               the leaderboard, and improve the experience. We also use Google
               AdSense, which may use cookies and similar technology for ads when
               advertising is enabled.
+            </p>
+          </section>
+
+          <section className={sectionClassName}>
+            <h2 className={headingClassName}>Who is responsible for your data</h2>
+            <p className={copyClassName}>
+              Memory Chess is run by Bing Cheng, an independent developer, who
+              acts as the data controller for the personal information described
+              in this policy. For any privacy question or request, email{" "}
+              <a
+                href="mailto:bingcheng45@gmail.com"
+                className={linkClassName}
+              >
+                bingcheng45@gmail.com
+              </a>{" "}
+              or use the contact form.
             </p>
           </section>
 
@@ -150,6 +165,12 @@ export default function PrivacyPage() {
               Depending on your location, choices, and settings, ads may be
               personalized or non-personalized. Other Google-certified ad
               vendors may also participate in serving and measuring ads.
+            </p>
+            <p className={copyClassName}>
+              Google is one of these vendors and uses the DoubleClick cookie,
+              also known as the DART cookie, to serve ads based on your visits
+              to this site and other sites on the internet. You can opt out of
+              the DART cookie through Google&apos;s ad settings linked below.
             </p>
             <p className={copyClassName}>
               Learn more about{" "}
@@ -242,6 +263,39 @@ export default function PrivacyPage() {
           </section>
 
           <section className={sectionClassName}>
+            <h2 className={headingClassName}>Your rights under GDPR and CCPA</h2>
+            <p className={copyClassName}>
+              If you are in the European Economic Area or the United Kingdom,
+              the GDPR gives you the rights of access, rectification, erasure,
+              restriction of processing, objection to processing, and data
+              portability. The legal bases we rely on are your consent, for
+              personalized advertising and analytics cookies where consent is
+              required, and our legitimate interests, for running and securing
+              the site, publishing the leaderboard scores you submit, and
+              answering the messages you send. You may withdraw consent at any
+              time through the consent message or your browser settings, and
+              you may lodge a complaint with your local supervisory authority.
+            </p>
+            <p className={copyClassName}>
+              If you are a California resident, the CCPA gives you the right to
+              know what personal information is collected, to request its
+              deletion, and to opt out of its sale or sharing. We do not sell
+              your personal information. Cookies used for personalized
+              advertising may count as sharing under the CCPA, and you can opt
+              out through the consent message, My Ad Center, and YourAdChoices
+              linked above. This is our Do Not Sell or Share My Personal
+              Information notice. To exercise any of these rights, email{" "}
+              <a
+                href="mailto:bingcheng45@gmail.com"
+                className={linkClassName}
+              >
+                bingcheng45@gmail.com
+              </a>
+              .
+            </p>
+          </section>
+
+          <section className={sectionClassName}>
             <h2 className={headingClassName}>Children&apos;s privacy</h2>
             <p className={copyClassName}>
               Memory Chess is a general-audience training game and is not
@@ -267,7 +321,6 @@ export default function PrivacyPage() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }

@@ -13,6 +13,9 @@ const customJestConfig = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   testMatch: ['**/__tests__/**/*.test.[jt]s?(x)'],
+  // Agent worktrees under .claude/ carry a full copy of the repo, so without
+  // this every suite runs twice and a broken worktree fails the real run.
+  testPathIgnorePatterns: ['/node_modules/', '/.claude/'],
 };
 
 /**

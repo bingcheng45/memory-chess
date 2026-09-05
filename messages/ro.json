@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "Învață",
+      "about": "Despre",
       "changelog": "Noutăți",
       "contactUs": "Contact",
-      "privacy": "Confidențialitate"
+      "privacy": "Confidențialitate",
+      "terms": "Termeni"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Toate drepturile rezervate.",

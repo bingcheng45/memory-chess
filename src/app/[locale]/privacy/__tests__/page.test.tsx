@@ -9,14 +9,6 @@ jest.mock("@/components/ui/PageHeader", () => {
   return MockPageHeader;
 });
 
-jest.mock("@/components/ui/Footer", () => {
-  function MockFooter() {
-    return <div>Privacy footer</div>;
-  }
-
-  return MockFooter;
-});
-
 describe("PrivacyPage", () => {
   it("explains data use, cookies, advertising, and user choices", () => {
     render(<PrivacyPage />);
@@ -41,6 +33,30 @@ describe("PrivacyPage", () => {
     expect(
       screen.getByRole("link", { name: "Memory Chess contact form" }),
     ).toHaveAttribute("href", "/contact-us");
-    expect(screen.getByText("Privacy footer")).toBeInTheDocument();
+  });
+
+  it("names the controller, the DART cookie, and GDPR and CCPA rights", () => {
+    render(<PrivacyPage />);
+
+    expect(
+      screen.getByRole("heading", { name: "Who is responsible for your data" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/Bing Cheng/)).toBeInTheDocument();
+    expect(
+      screen.getAllByRole("link", { name: "bingcheng45@gmail.com" }).length,
+    ).toBeGreaterThan(0);
+    expect(screen.getByText(/DoubleClick/)).toBeInTheDocument();
+    expect(screen.getByText(/DART cookie/)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Your rights under GDPR and CCPA" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /access, rectification, erasure, restriction of processing, objection to processing, and data portability/,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Do Not Sell or Share My Personal Information/),
+    ).toBeInTheDocument();
   });
 });

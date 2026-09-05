@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "Tanulás",
+      "about": "Névjegy",
       "changelog": "Újdonságok",
       "contactUs": "Kapcsolat",
-      "privacy": "Adatvédelem"
+      "privacy": "Adatvédelem",
+      "terms": "Feltételek"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Minden jog fenntartva.",

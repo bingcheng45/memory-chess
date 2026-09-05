@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Slik fungerer Memory Chess",
+    "intro": "Hver runde er de samme tre stegene. Tallene på denne siden er de spillet faktisk bruker. De leses fra den samme koden som driver brettet, og kan derfor ikke avvike fra det du spiller.",
+    "phases": {
+      "heading": "De tre fasene i en runde",
+      "memorize": {
+        "title": "Husk",
+        "body": "En stilling vises på et fullt brett i et fast antall sekunder. Ingenting flytter seg, og ingenting er skjult. Du kan avslutte fasen tidlig med Hopp over, og klokken registrerer hvor lenge du faktisk så på brettet, ikke hvor lang tid du fikk."
+      },
+      "place": {
+        "title": "Plasser",
+        "body": "Brettet tømmes. Du velger brikketype og farge, og trykker så på en rute for å sette ut en brikke eller trykker på den igjen for å ta den tilbake. Det er ingen tidsgrense her, men klokken går fra brettet tømmes til du sender inn."
+      },
+      "score": {
+        "title": "Resultat",
+        "body": "Brettet ditt sammenlignes rute for rute med originalen. Du ser hvilke brikker som var riktige, hvilke som var feil, og hvilke du bommet på, side om side med stillingen du ble vist."
+      }
+    },
+    "presets": {
+      "heading": "De fire vanskelighetsgradene",
+      "intro": "Hver vanskelighetsgrad bestemmer to ting: hvor mange brikker som står på brettet, og hvor mange sekunder du får til å se på dem. Antallet brikker inkluderer begge kongene.",
+      "columns": {
+        "preset": "Vanskelighetsgrad",
+        "pieces": "Brikker",
+        "time": "Innlæringstid",
+        "trains": "Hva den trener"
+      },
+      "seconds": "{seconds} s",
+      "trains": {
+        "easy": "2 konger og ingenting annet. Den lærer deg grensesnittet og gir deg et rent svar på om du klarer å holde 2 ruter i hodet under tidspress.",
+        "medium": "6 brikker er omtrent det spennet de fleste klarer å holde uten et system. Dette er vanskelighetsgraden der det begynner å lønne seg å huske i grupper.",
+        "hard": "12 brikker på 8 sekunder er mer enn rent spenn. Du må samle brikkene i mønstre i stedet for å huske dem én og én.",
+        "grandmaster": "20 brikker på 5 sekunder er et kvart sekund per brikke. Ingen leser dette rute for rute; nivået belønner deg for å se bondekjeder og brikkeklynger som samlede enheter."
+      },
+      "custom": {
+        "title": "Egne innstillinger",
+        "body": "De to glidebryterne beveger seg uavhengig av vanskelighetsgradene. Antallet brikker går fra {minPieces} til {maxPieces}, og innlæringstiden fra {minSeconds} til {maxSeconds} sekunder. Topplisten kjenner igjen en runde på antallet brikker, så alle andre antall enn de fire faste gjør runden til et parti med egne innstillinger, og slike partier holdes utenfor topplisten."
+      }
+    },
+    "scoring": {
+      "heading": "Slik poengsettes en runde",
+      "match": "En brikke regnes som riktig bare når alt ved den stemmer med originalen, ruten den står på, typen og fargen. En springer på riktig rute i feil farge gir ikke delvis uttelling, den er feil.",
+      "accuracy": "Treffsikkerheten er andelen av de opprinnelige brikkene du gjenskapte nøyaktig, i prosent, minus 10 poeng for hver brikke du satte ut utover antallet i stillingen. Den går aldri under null.",
+      "wrong": "Feil brikker er de opprinnelige brikkene du ikke gjenskapte, pluss brikkene du satte ut utover antallet i stillingen. Å sette ut flere brikker enn stillingen hadde, koster deg dobbelt, én gang i antallet feil og én gang som trekk i treffsikkerheten.",
+      "bandsIntro": "Meldingen på resultatskjermen kommer rett fra treffsikkerheten din:",
+      "bands": {
+        "perfect": "hver brikke riktig",
+        "excellent": "minst {threshold} % treffsikkerhet",
+        "great": "minst {threshold} % treffsikkerhet",
+        "wellDone": "minst {threshold} % treffsikkerhet",
+        "goodEffort": "minst {threshold} % treffsikkerhet",
+        "keepPracticing": "under {threshold} % treffsikkerhet"
+      },
+      "ranking": "På topplisten sorteres oppføringene etter riktige brikker først, deretter etter færrest feil brikker, deretter etter kortest innlæringstid, og til slutt etter kortest løsningstid. Treffsikkerhet teller mer enn fart, og fart skiller bare spillere med samme resultat."
+    },
+    "positions": {
+      "heading": "Hva slags stilling du får",
+      "intro": "Stillingene lages på nytt for hver runde i stedet for å hentes fra ekte partier, men de er ikke tilfeldige hauger med brikker. Hver stilling spillet viser, oppfyller alle disse reglene:",
+      "rules": {
+        "king-count": "Nøyaktig én konge av hver farge, alltid, også på vanskelighetsgraden med 2 brikker.",
+        "adjacent-kings": "De to kongene står aldri ved siden av hverandre.",
+        "pawn-back-rank": "Ingen bonde står noen gang på første eller åttende rad.",
+        "piece-inventory": "Ingen side har flere brikker av en type enn et ekte sett inneholder, 8 bønder, 2 springere, 2 løpere, 2 tårn og 1 dronning.",
+        "bishop-color-complex": "De to løperne til en side står aldri på ruter med lik farge.",
+        "simultaneous-check": "Begge kongene står aldri i sjakk samtidig.",
+        "checked-side-not-to-move": "Hvis en konge står i sjakk, er det den siden som skal trekke.",
+        "piece-count": "Brettet har nøyaktig så mange brikker som vanskelighetsgraden ba om.",
+        "invalid-fen": "Stillingen er en lovlig sjakkstilling som kan settes opp på et brett."
+      },
+      "distribution": "Brikkene utover de to kongene fordeles så jevnt som antallet tillater, og hvit får brikken som eventuelt blir til overs. Typene trekkes i samme forhold som et ekte sett inneholder, så bønder er brikken du ser oftest, og dronninger den sjeldneste.",
+      "outro": "Generatoren prøver om og om igjen til en stilling oppfyller alle reglene over. Klarer den ikke det, faller den tilbake på utgangsstillingen skåret ned til det ønskede antallet brikker, så en runde starter alltid."
+    }
+  },
+  "leaderboard": {
+    "heading": "Slik avgjøres rangeringen",
+    "body": "Hver rad er en fullført runde sendt inn fra resultatskjermen. Topplisten kjenner igjen en runde på antallet brikker, så bare runder med de fire faste antallene er med; alt annet er et parti med egne innstillinger og holdes utenfor, slik at hver tabell sammenligner runder spilt på like vilkår.",
+    "order": "Innenfor en tabell sorteres oppføringene etter riktige brikker, deretter etter færrest feil brikker, deretter etter kortest innlæringstid, og til slutt etter kortest løsningstid. Innlæringstiden er tiden du faktisk brukte, ikke tiden vanskelighetsgraden ga deg, så det er verdt noe å avslutte huskefasen tidlig.",
+    "columnsNote": "Brikkekolonnen viser riktige brikker av stillingens totale antall. Et hevet tall bak den teller brikker satt ut utover dette antallet.",
+    "sectionIntro": "Hver vanskelighetsgrad har sin egen tabell, som viser de {limit} beste rundene."
+  },
+  "contact": {
+    "heading": "Hvor meldingen din havner",
+    "body": "Skjemaet skriver rett til et regneark som personen bak Memory Chess leser. Det finnes ingen brukerstøtte og ikke noe saksnummer. Svar kommer fra en ekte innboks, som regel i løpet av noen dager.",
+    "typesIntro": "Skjemaet ber deg velge én av fire henvendelsestyper:",
+    "types": {
+      "feedback": "Noe som kjentes feil, forvirrende eller tregere enn det burde være. Si hvilken vanskelighetsgrad og hvilken fase det gjelder.",
+      "featureRequest": "Noe spillet ikke gjør ennå. Nyhetssiden viser hva som allerede er lansert.",
+      "general": "Alt som ikke passer inn under de tre andre.",
+      "business": "Partnerskap, sponsing og lisensiering."
+    },
+    "privacyNote": "Navnet ditt, e-postadressen, henvendelsestypen og meldingen lagres med et tidsstempel, og ingenting av det selges. Det nettstedet selv registrerer mens du surfer, inkludert cookies for analyse og annonsering, står beskrevet i personvernerklæringen."
+  }
+}

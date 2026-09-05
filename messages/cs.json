@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "Výuka",
+      "about": "O webu",
       "changelog": "Novinky",
       "contactUs": "Kontakt",
-      "privacy": "Soukromí"
+      "privacy": "Soukromí",
+      "terms": "Podmínky"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Všechna práva vyhrazena.",

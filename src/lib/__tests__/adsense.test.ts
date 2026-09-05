@@ -19,3 +19,7 @@ describe("AdSense configuration", () => {
     expect(adsTxt).toBe(ADSENSE_ADS_TXT_RECORD);
   });
 });
+
+test("the publisher id is the client id AdSense verifies ownership against", () => {
+  expect(ADSENSE_CLIENT_ID).toBe("ca-pub-9048170183399377");
+});

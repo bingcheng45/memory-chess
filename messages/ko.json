@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "배우기",
+      "about": "소개",
       "changelog": "업데이트 소식",
       "contactUs": "문의하기",
-      "privacy": "개인정보"
+      "privacy": "개인정보",
+      "terms": "이용약관"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 모든 권리 보유.",

@@ -1,9 +1,12 @@
 {
   "common": {
     "nav": {
+      "learn": "Opi",
+      "about": "Tietoa",
       "changelog": "Uutta",
       "contactUs": "Ota yhteyttä",
-      "privacy": "Tietosuoja"
+      "privacy": "Tietosuoja",
+      "terms": "Käyttöehdot"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Kaikki oikeudet pidätetään.",

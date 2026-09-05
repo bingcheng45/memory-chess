@@ -1,0 +1,94 @@
+{
+  "game": {
+    "title": "Come funziona Memory Chess",
+    "intro": "Ogni turno segue gli stessi tre passi. I numeri di questa pagina sono quelli che il gioco usa davvero; vengono letti dallo stesso codice che fa girare la scacchiera, quindi non possono discostarsi da quello che giochi.",
+    "phases": {
+      "heading": "Le tre fasi di un turno",
+      "memorize": {
+        "title": "Memorizza",
+        "body": "Una posizione appare su una scacchiera completa per un numero fisso di secondi. Niente si muove e niente è nascosto. Puoi chiudere la fase in anticipo con Salta, e il cronometro registra quanto hai guardato davvero, non il tempo che ti era stato concesso."
+      },
+      "place": {
+        "title": "Posiziona",
+        "body": "La scacchiera si svuota. Scegli tipo e colore di un pezzo, poi tocchi una casa per metterlo giù o la tocchi di nuovo per toglierlo. Qui non c'è limite di tempo, ma il cronometro corre dal momento in cui la scacchiera si svuota fino all'invio."
+      },
+      "score": {
+        "title": "Punteggio",
+        "body": "La tua scacchiera viene confrontata casa per casa con l'originale. Vedi quali pezzi erano giusti, quali sbagliati e quali ti sono sfuggiti, affiancati alla posizione che ti era stata mostrata."
+      }
+    },
+    "presets": {
+      "heading": "I quattro livelli di difficoltà predefiniti",
+      "intro": "Ogni livello stabilisce due cose: quanti pezzi ci sono sulla scacchiera e quanti secondi hai per guardarli. Il numero di pezzi comprende entrambi i re.",
+      "columns": {
+        "preset": "Livello",
+        "pieces": "Pezzi",
+        "time": "Tempo di memorizzazione",
+        "trains": "Cosa allena"
+      },
+      "seconds": "{seconds}s",
+      "trains": {
+        "easy": "Due re e nient'altro. Insegna l'interfaccia e ti fa capire subito se riesci a tenere a mente due case sotto pressione.",
+        "medium": "Sei pezzi sono più o meno quanti la maggior parte delle persone riesce a tenere a mente senza un metodo. È il livello in cui raggruppare i pezzi comincia a ripagare.",
+        "hard": "Dodici pezzi in otto secondi vanno oltre la pura capacità di memoria. Devi raggruppare i pezzi in forme invece di ricordarli uno alla volta.",
+        "grandmaster": "Venti pezzi in cinque secondi fanno un quarto di secondo per pezzo. Nessuno legge una posizione così casa per casa; premia chi vede catene di pedoni e gruppi di pezzi come unità singole."
+      },
+      "custom": {
+        "title": "Impostazioni personalizzate",
+        "body": "I due cursori si muovono indipendentemente dai livelli predefiniti. Il numero di pezzi va da {minPieces} a {maxPieces} e il tempo di memorizzazione da {minSeconds} a {maxSeconds} secondi. La classifica riconosce un turno dal numero di pezzi, quindi qualsiasi numero diverso dai quattro valori predefiniti rende la partita personalizzata, e le partite personalizzate restano fuori dalla classifica."
+      }
+    },
+    "scoring": {
+      "heading": "Come viene calcolato il punteggio di un turno",
+      "match": "Un pezzo conta come corretto solo quando corrisponde in tutto all'originale: la casa su cui si trova, il tipo e il colore. Un cavallo sulla casa giusta ma del colore sbagliato non vale come parzialmente giusto, è sbagliato.",
+      "accuracy": "La precisione è la quota dei pezzi originali che hai riprodotto esattamente, in percentuale, meno dieci punti per ogni pezzo piazzato oltre il numero della posizione. Non scende mai sotto zero.",
+      "wrong": "I pezzi sbagliati sono i pezzi originali che non hai riprodotto, più i pezzi piazzati oltre il numero della posizione. Piazzare più pezzi di quanti ne conteneva la posizione ti costa due volte, una nel conteggio degli errori e una come penalità sulla precisione.",
+      "bandsIntro": "Il messaggio nella schermata dei risultati deriva direttamente dalla tua precisione:",
+      "bands": {
+        "perfect": "ogni pezzo corretto",
+        "excellent": "almeno il {threshold}% di precisione",
+        "great": "almeno il {threshold}% di precisione",
+        "wellDone": "almeno il {threshold}% di precisione",
+        "goodEffort": "almeno il {threshold}% di precisione",
+        "keepPracticing": "meno del {threshold}% di precisione"
+      },
+      "ranking": "In classifica le voci sono ordinate prima per pezzi corretti, poi per minor numero di pezzi sbagliati, poi per tempo di memorizzazione più breve, poi per tempo di risoluzione più breve. La precisione conta più della velocità, e la velocità distingue solo i giocatori con lo stesso punteggio."
+    },
+    "positions": {
+      "heading": "Che tipo di posizione ricevi",
+      "intro": "Le posizioni vengono generate da zero a ogni turno invece di essere prese da partite reali, ma non sono mucchi di pezzi a caso. Ogni posizione che il gioco mostra rispetta tutte queste regole:",
+      "rules": {
+        "king-count": "Esattamente un re per colore, sempre, anche nel livello da due pezzi.",
+        "adjacent-kings": "I due re non stanno mai su case adiacenti.",
+        "pawn-back-rank": "Nessun pedone sta mai sulla prima o sull'ottava traversa.",
+        "piece-inventory": "Nessun colore ha mai più pezzi di un tipo di quanti ne contenga un set vero: otto pedoni, due cavalli, due alfieri, due torri, una donna.",
+        "bishop-color-complex": "I due alfieri di uno stesso schieramento non stanno mai su case dello stesso colore.",
+        "simultaneous-check": "I due re non sono mai sotto scacco contemporaneamente.",
+        "checked-side-not-to-move": "Se un re è sotto scacco, tocca a quel colore muovere.",
+        "piece-count": "La scacchiera contiene esattamente il numero di pezzi richiesto dal livello.",
+        "invalid-fen": "La posizione è una posizione di scacchi legale, che si può disporre su una scacchiera."
+      },
+      "distribution": "I pezzi oltre i due re sono divisi nel modo più equo che il numero consente, con l'eventuale pezzo in più al Bianco. I tipi sono estratti nelle proporzioni di un set vero, quindi i pedoni sono i pezzi che vedrai più spesso e le donne i più rari.",
+      "outro": "Il generatore riprova finché una posizione non supera tutte le regole qui sopra. Se non ci riesce, ripiega sulla posizione iniziale ridotta al numero di pezzi richiesto, così un turno parte sempre."
+    }
+  },
+  "leaderboard": {
+    "heading": "Come si decidono queste classifiche",
+    "body": "Ogni riga è un turno completato e inviato dalla schermata dei risultati. La classifica riconosce un turno dal numero di pezzi, quindi sono ammessi solo i turni giocati con i quattro valori predefiniti; tutto il resto è una partita personalizzata e viene escluso, così ogni tabella confronta turni giocati in condizioni uguali.",
+    "order": "All'interno di una tabella, le voci sono ordinate per pezzi corretti, poi per minor numero di pezzi sbagliati, poi per tempo di memorizzazione più breve, poi per tempo di risoluzione più breve. Il tempo di memorizzazione è quello che hai speso davvero, non quello concesso dal livello, quindi chiudere in anticipo la fase di memorizzazione vale qualcosa.",
+    "columnsNote": "La colonna dei pezzi mostra i pezzi corretti sul totale della posizione. Il numero in apice che la segue conta i pezzi piazzati oltre quel totale.",
+    "sectionIntro": "Ogni livello ha la sua tabella, con i suoi migliori {limit} turni."
+  },
+  "contact": {
+    "heading": "Dove finisce il tuo messaggio",
+    "body": "Il modulo scrive direttamente in un foglio di calcolo che legge la persona che gestisce Memory Chess. Non c'è un servizio di assistenza né un numero di ticket. Le risposte arrivano da una casella di posta vera, di solito entro pochi giorni.",
+    "typesIntro": "Il modulo ti chiede di scegliere uno dei quattro tipi di richiesta:",
+    "types": {
+      "feedback": "Qualcosa che ti è sembrato sbagliato, confuso o più lento del dovuto. Indica la difficoltà e la fase.",
+      "featureRequest": "Qualcosa che il gioco ancora non fa. La pagina Novità mostra cosa è già stato rilasciato.",
+      "general": "Tutto quello che non rientra negli altri tre.",
+      "business": "Partnership, sponsorizzazioni e licenze."
+    },
+    "privacyNote": "Nome, email, tipo di richiesta e messaggio vengono salvati con data e ora, e niente di tutto questo viene venduto. Quello che il sito stesso registra mentre navighi, compresi i cookie di analisi e pubblicitari, è indicato nell'informativa sulla privacy."
+  }
+}

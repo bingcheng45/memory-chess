@@ -15,7 +15,8 @@ const SpeedInsights = dynamic(() =>
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
-import { ADSENSE_SCRIPT_URL } from "@/lib/adsense";
+import Footer from "@/components/ui/Footer";
+import { ADSENSE_CLIENT_ID, ADSENSE_SCRIPT_URL } from "@/lib/adsense";
 import {
   AHREFS_ANALYTICS_KEY,
   AHREFS_ANALYTICS_SCRIPT_URL,
@@ -106,9 +107,14 @@ export async function generateMetadata({
     },
 
     // Verification for search consoles (add yours when available)
+    // AdSense verifies ownership from this tag. The adsbygoogle script in the
+    // document head and a correct ads.txt both also count, but the tag is the
+    // method Google's own console asks for first and the only one that keeps
+    // working if the script is ever blocked or deferred.
     verification: {
-      // google: 'your-google-site-verification',
-      // bing: 'your-bing-verification',
+      other: {
+        "google-adsense-account": ADSENSE_CLIENT_ID,
+      },
     },
 
     // App information for progressive web app
@@ -121,7 +127,7 @@ export async function generateMetadata({
 
     // Content type
     metadataBase: new URL(siteUrl),
-    creator: "Memory Chess Team",
+    creator: "Bing Cheng",
     publisher: "Memory Chess",
   };
 }
@@ -167,6 +173,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <ChangelogBanner />
           {children}
+          <Footer />
           <Analytics />
           <SpeedInsights />
           <GoogleAnalytics gaId="G-R8BM9EMY9J" />

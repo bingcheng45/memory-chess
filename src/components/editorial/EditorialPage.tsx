@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import PageHeader from "@/components/ui/PageHeader";
-import Footer from "@/components/ui/Footer";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 
 type EditorialPageShellProps = {
@@ -37,7 +36,6 @@ export function EditorialPageShell({
         </div>
         {children}
       </main>
-      <Footer />
     </div>
   );
 }
@@ -69,6 +67,23 @@ export function EditorialHero({
       </p>
       {children}
     </header>
+  );
+}
+
+export function EditorialSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className={EDITORIAL_STYLES.section}>
+      <h2 className={EDITORIAL_STYLES.sectionTitle}>{title}</h2>
+      <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-5`}>
+        {children}
+      </div>
+    </section>
   );
 }
 

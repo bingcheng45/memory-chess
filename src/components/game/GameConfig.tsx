@@ -5,6 +5,10 @@ import { useGameStore } from '@/lib/store/gameStore';
 import { Button } from "@/components/ui/button";
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import {
+  MEMORIZE_SECONDS_RANGE,
+  PIECE_COUNT_RANGE,
+} from '@/lib/reference/facts';
 
 interface GameConfigProps {
   readonly onStart?: (pieceCount: number, memorizeTime: number) => void;
@@ -93,6 +97,11 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     }
   };
   
+  const sliderFill = (value: number, range: { min: number; max: number }) =>
+    ((value - range.min) / (range.max - range.min)) * 100;
+  const pieceFill = sliderFill(pieceCount, PIECE_COUNT_RANGE);
+  const timeFill = sliderFill(memorizeTime, MEMORIZE_SECONDS_RANGE);
+
   return (
     <div className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-5 sm:p-7 shadow-xl">
       <h2 className="mb-5 text-center text-2xl font-bold text-text-primary">{t('config.title')}</h2>
@@ -141,8 +150,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         <input
           id="pieceCount"
           type="range"
-          min="2"
-          max="32"
+          min={PIECE_COUNT_RANGE.min}
+          max={PIECE_COUNT_RANGE.max}
           step="1"
           value={pieceCount}
           onChange={(e) => {
@@ -154,7 +163,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
                      [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
                      [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
           style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((pieceCount - 2) / (32 - 2)) * 100}%, #222222 ${((pieceCount - 2) / (32 - 2)) * 100}%, #222222 100%)`
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${pieceFill}%, #222222 ${pieceFill}%, #222222 100%)`
           }}
         />
         <div className="mt-4 flex justify-between text-xs text-text-muted">
@@ -176,8 +185,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         <input
           id="memorizeTime"
           type="range"
-          min="2"
-          max="32"
+          min={MEMORIZE_SECONDS_RANGE.min}
+          max={MEMORIZE_SECONDS_RANGE.max}
           step="1"
           value={memorizeTime}
           onChange={(e) => {
@@ -189,7 +198,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
                      [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
                      [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
           style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${((memorizeTime - 2) / (32 - 2)) * 100}%, #222222 ${((memorizeTime - 2) / (32 - 2)) * 100}%, #222222 100%)`
+            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${timeFill}%, #222222 ${timeFill}%, #222222 100%)`
           }}
         />
         <div className="mt-4 flex justify-between text-xs text-text-muted">

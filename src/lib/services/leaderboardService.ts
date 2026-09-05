@@ -1,4 +1,5 @@
 import { supabase, checkSupabaseConnection } from '@/lib/supabase';
+import { LEADERBOARD_ROW_LIMIT } from '@/lib/reference/facts';
 import { LeaderboardEntry, LeaderboardSubmission } from '@/types/leaderboard';
 
 export async function getLeaderboard(difficulty: string = 'medium'): Promise<{data: LeaderboardEntry[], error?: string}> {
@@ -27,7 +28,7 @@ export async function getLeaderboard(difficulty: string = 'medium'): Promise<{da
       .order('total_wrong_pieces', { ascending: true, nullsFirst: false })
       .order('memorize_time', { ascending: true })
       .order('solution_time', { ascending: true })
-      .limit(200);
+      .limit(LEADERBOARD_ROW_LIMIT);
       
     if (error) {
       console.error('Supabase query error:', error);

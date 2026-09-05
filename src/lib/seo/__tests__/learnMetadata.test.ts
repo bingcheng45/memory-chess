@@ -44,7 +44,7 @@ describe("buildLearnPageMetadata", () => {
     expect(images[0]).toMatchObject({
       url: "https://thememorychess.com/learn/how-to-stop-blundering-in-chess/opengraph-image",
     });
-    expect(authors[0]).toMatchObject({ name: "Memory Chess Editorial Team" });
+    expect(authors[0]).toMatchObject({ name: "Bing Cheng" });
   });
 
   it("points a translated article at its own localized social card", () => {

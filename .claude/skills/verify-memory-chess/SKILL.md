@@ -16,7 +16,7 @@ npm run build
 .claude/skills/verify-memory-chess/helpers/serve.sh start 4517
 ```
 
-`npm run build` runs the message and Learn-prose validators first and fails the build if they fail. `serve.sh start` refuses a port that is already in use, starts `next start` detached in the background, writes the server's pid and log to `.verify/server-<port>.pid` and `.verify/server-<port>.log`, and returns once `http://127.0.0.1:<port>/` answers. A start that never answers kills what it spawned and removes the pid file, so an existing pid file always names a server that answered on its port. Teardown is `serve.sh stop 4517`, which signals only the process group of the pid it recorded, and only after checking that pid is still the server it started.
+`npm run build` runs the message and Learn-prose validators first and fails the build if they fail. `serve.sh start` refuses a port that is already in use, starts `next start` detached in the background, records the server's pid and start time in `.verify/server-<port>.pid` with its log in `.verify/server-<port>.log`, and returns once `http://127.0.0.1:<port>/` answers. A start that never answers kills what it spawned and removes the pid file, so an existing pid file always names a server that answered on its port. Teardown is `serve.sh stop 4517`, which signals only the process group of the pid it recorded, and only after checking that pid is still the server it started.
 
 Verification works without any env vars. `.env.local` is not committed; without it the Supabase-backed leaderboard and games-played counter degrade gracefully (see Evidence) and the contact form's Google Sheets write fails with a 500. Never copy secrets from a checkout's `.env.local` into any committed file.
 
@@ -26,7 +26,7 @@ Verification works without any env vars. `.env.local` is not committed; without 
 .claude/skills/verify-memory-chess/helpers/doctor.sh 4517
 ```
 
-Read-only. Confirms something listens on the port, that the listener is the server this checkout's `serve.sh` recorded in `.verify/server-<port>.pid` (the recorded pid must be alive and still be a `next-server`), and that `/` answers 200 with "Memory Chess" in the body. A server this checkout's `serve.sh` did not start fails the check even when it was launched from the same directory; another agent may own it, so refuse to drive it. Run doctor first whenever anything looks off, and before reusing a server from an earlier step.
+Read-only. Confirms something listens on the port, that the listener is the server this checkout's `serve.sh` recorded in `.verify/server-<port>.pid` (the recorded pid must be alive and still be the same process instance, checked by start time, so a reused pid never passes), and that `/` answers 200 with "Memory Chess" in the body. A server this checkout's `serve.sh` did not start fails the check even when it was launched from the same directory; another agent may own it, so refuse to drive it. Run doctor first whenever anything looks off, and before reusing a server from an earlier step.
 
 ## Drive
 

@@ -5,48 +5,48 @@ port=${1:-4517}
 root=$(git -C "$(dirname "$0")" rev-parse --show-toplevel)
 pid_file=$root/.verify/server-$port.pid
 
-pid_command() {
-  # Minimal Linux images ship no ps, and macOS has no /proc.
-  if [ -r "/proc/$1/cmdline" ]; then
-    tr '\0' ' ' <"/proc/$1/cmdline"
+pid_start_time() {
+  # Minimal Linux images ship no ps, and macOS has no /proc. The sed strips
+  # the comm field, whose own parentheses break naive field counting.
+  if [ -r "/proc/$1/stat" ]; then
+    sed 's/^.*) //' "/proc/$1/stat" | awk '{print $20}'
   else
-    ps -p "$1" -o command= 2>/dev/null
+    ps -p "$1" -o lstart= 2>/dev/null
   fi
 }
 
-if ! node -e 'const s=require("net").connect(Number(process.argv[1]),"127.0.0.1");s.once("connect",()=>{s.destroy();process.exit(0)});s.once("error",()=>process.exit(1))' "$port"; then
+rc=0
+body=$(curl -fsS "http://127.0.0.1:$port/" 2>/dev/null) || rc=$?
+if [ "$rc" -eq 7 ]; then
   echo "FAIL: nothing is listening on port $port"
+  exit 1
+elif [ "$rc" -ne 0 ]; then
+  echo "FAIL: port $port has a listener but / did not answer 200"
   exit 1
 fi
 
 if [ ! -f "$pid_file" ]; then
-  echo "FAIL: port $port has a listener but $pid_file does not exist"
+  echo "FAIL: port $port answers but $pid_file does not exist"
   echo "This checkout's serve.sh did not start it. Refuse to drive it; it belongs to someone else."
   exit 1
 fi
 
-# Only one process can hold the listen socket, and serve.sh records a pid
-# only for a server that answered on this port, so a live recorded pid that
-# is still a next-server is the listener.
-pid=$(cat "$pid_file")
+# Only one process can hold the listen socket, and serve.sh records a server
+# only once it answered on this port, so a record matching the live process
+# instance means the listener is ours.
+pid=$(sed -n 1p "$pid_file")
+recorded_start=$(sed -n 2p "$pid_file")
 if ! kill -0 "$pid" 2>/dev/null; then
   echo "FAIL: recorded pid $pid is dead, so the listener on port $port is not the server this checkout started"
   echo "Refuse to drive it; run serve.sh stop $port to clear the stale record."
   exit 1
 fi
-case "$(pid_command "$pid")" in
-  *next-server*) ;;
-  *)
-    echo "FAIL: recorded pid $pid is no longer a next-server; the pid was likely reused"
-    echo "Refuse to drive the listener on port $port; run serve.sh stop $port to clear the stale record."
-    exit 1
-    ;;
-esac
-
-body=$(curl -fsS "http://127.0.0.1:$port/" 2>/dev/null) || {
-  echo "FAIL: pid $pid owns port $port but / did not answer 200"
+if [ -z "$recorded_start" ] || [ "$(pid_start_time "$pid" || true)" != "$recorded_start" ]; then
+  echo "FAIL: pid $pid is not the process serve.sh started; the pid was reused after that server died"
+  echo "Refuse to drive the listener on port $port; run serve.sh stop $port to clear the stale record."
   exit 1
-}
+fi
+
 case $body in
   *"Memory Chess"*) ;;
   *)

@@ -20,16 +20,28 @@ case $cmd in
       exit 1
     fi
     mkdir -p "$run_dir"
-    (cd "$root" && nohup node node_modules/.bin/next start -p "$port" >"$log_file" 2>&1 & echo $! >"$pid_file")
+    # Spawn detached so the recorded pid is the server itself leading its own
+    # process group; a backgrounded shell list records a wrapper shell instead.
+    pid=$(cd "$root" && node -e '
+      const { spawn } = require("child_process");
+      const [port, log] = process.argv.slice(1);
+      const fd = require("fs").openSync(log, "w");
+      const child = spawn("node", ["node_modules/.bin/next", "start", "-p", port], { detached: true, stdio: ["ignore", fd, fd] });
+      child.unref();
+      console.log(child.pid);
+    ' "$port" "$log_file")
+    echo "$pid" >"$pid_file"
     for _ in $(seq 1 60); do
       if curl -fsS -o /dev/null "http://127.0.0.1:$port/" 2>/dev/null; then
-        echo "ready on http://127.0.0.1:$port (pid $(cat "$pid_file"), log $log_file)"
+        echo "ready on http://127.0.0.1:$port (pid $pid, log $log_file)"
         exit 0
       fi
       sleep 0.5
     done
-    echo "server did not answer within 30s; log tail:" >&2
+    echo "server did not answer within 30s; killing pid $pid and removing its record; log tail:" >&2
     tail -20 "$log_file" >&2 || true
+    kill -- "-$pid" 2>/dev/null || true
+    rm -f "$pid_file"
     exit 1
     ;;
   stop)

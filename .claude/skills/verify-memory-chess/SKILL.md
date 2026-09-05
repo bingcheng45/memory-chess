@@ -26,7 +26,7 @@ Verification works without any env vars. `.env.local` is not committed; without 
 .claude/skills/verify-memory-chess/helpers/doctor.sh 4517
 ```
 
-Read-only. Confirms something listens on the port, that the listening process's working directory is this checkout (refuse to drive a server you did not start; another agent may own it), and that `/` answers 200 with "Memory Chess" in the body. Run it first whenever anything looks off, and before reusing a server from an earlier step.
+Read-only. Confirms something listens on the port, that the listener is the server this checkout's `serve.sh` recorded in `.verify/server-<port>.pid` (the recorded pid must be alive and still be a `next-server`), and that `/` answers 200 with "Memory Chess" in the body. A server this checkout's `serve.sh` did not start fails the check even when it was launched from the same directory; another agent may own it, so refuse to drive it. Run doctor first whenever anything looks off, and before reusing a server from an earlier step.
 
 ## Drive
 

@@ -10,7 +10,8 @@ log_file=$run_dir/server-$port.log
 
 case $cmd in
   start)
-    if lsof -nP -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1; then
+    # Probe by binding, not lsof; minimal Linux images do not ship lsof.
+    if ! node -e 'const s=require("net").createServer();s.once("error",()=>process.exit(1));s.listen(Number(process.argv[1]),"127.0.0.1",()=>s.close(()=>process.exit(0)))' "$port"; then
       echo "port $port is already in use; pick another port or run doctor.sh $port" >&2
       exit 1
     fi

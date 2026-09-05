@@ -3,6 +3,7 @@ import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { LEARN_SLUGS, UPDATED_AT, learnLocales } from "@/lib/seo/learn";
 import { LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
+import { ENGLISH_ONLY_PATHS } from "@/lib/seo/englishOnly";
 
 const SITE_URL = "https://thememorychess.com";
 
@@ -86,12 +87,6 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   },
 ];
 
-/**
- * The privacy policy, about page, and terms are still English-only, so each is
- * listed once rather than per locale. Announcing 24 URLs that all serve the
- * same English text would be a duplicate-content signal.
- */
-const ENGLISH_ONLY_PATHS = new Set(["/privacy", "/about", "/terms"]);
 
 /** hreflang block for one route across the locales that genuinely differ. */
 function alternatesFor(routePath: string, locales: readonly string[]) {

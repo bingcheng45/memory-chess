@@ -86,7 +86,12 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
         </TabsList>
 
         {RANKED_DIFFICULTIES.map((difficulty) => (
-          <TabsContent key={difficulty} value={difficulty}>
+          <TabsContent
+            key={difficulty}
+            value={difficulty}
+            forceMount
+            className="data-[state=inactive]:hidden"
+          >
             <LeaderboardTable
               data={boards[difficulty].data}
               error={boards[difficulty].error ?? null}

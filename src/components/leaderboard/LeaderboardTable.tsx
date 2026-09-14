@@ -136,21 +136,20 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
         </TableHeader>
         <TableBody>
           {data.map((entry, index) => {
-            // More precise matching with multiple criteria
-            const isHighlighted = entryDetails?.player && (
-              // Match all relevant criteria if available
+            // A name alone matches every round that player submitted, so a row is
+            // only highlighted when the link also carries that round's times.
+            const isHighlighted =
+              entryDetails?.player != null &&
+              entryDetails.memorizeTime != null &&
+              entryDetails.solutionTime != null &&
               entry.player_name === entryDetails.player &&
-              // Match times with a small tolerance to account for precision differences
-              (entryDetails.memorizeTime === null || Math.abs(entry.memorize_time - entryDetails.memorizeTime) < 0.001) &&
-              (entryDetails.solutionTime === null || Math.abs(entry.solution_time - entryDetails.solutionTime) < 0.001) &&
-              // Match piece counts
+              Math.abs(entry.memorize_time - entryDetails.memorizeTime) < 0.001 &&
+              Math.abs(entry.solution_time - entryDetails.solutionTime) < 0.001 &&
               (entryDetails.pieceCount === null || entry.piece_count === entryDetails.pieceCount) &&
               (entryDetails.correctPieces === null || entry.correct_pieces === entryDetails.correctPieces) &&
-              // Match total wrong pieces if available
-              (entryDetails.totalWrongPieces === null || 
-               entry.total_wrong_pieces === undefined || 
-               entry.total_wrong_pieces === entryDetails.totalWrongPieces)
-            );
+              (entryDetails.totalWrongPieces === null ||
+                entry.total_wrong_pieces === undefined ||
+                entry.total_wrong_pieces === entryDetails.totalWrongPieces);
             
             return (
               <TableRow 

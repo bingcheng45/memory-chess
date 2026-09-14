@@ -31,4 +31,14 @@ describe("AboutPage", () => {
       screen.getByRole("link", { name: "terms of service" }),
     ).toHaveAttribute("href", "/terms");
   });
+
+  it("makes no claim the site cannot back up", () => {
+    const { container } = render(<AboutPage />);
+    const text = container.textContent ?? "";
+
+    expect(text).not.toMatch(/games have been played/);
+    expect(text).not.toMatch(/review them/);
+    expect(text).not.toMatch(/guides translated/);
+    expect(text).not.toMatch(/same working shape/);
+  });
 });

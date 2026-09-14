@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { useGameStore } from "@/lib/store/gameStore";
+import { useSettingsStore } from "@/stores/settingsStore";
 import { ChessPiece } from "@/types/chess";
 import ResponsiveChessBoard from "./ResponsiveChessBoard";
 import { fenToChessPieces } from "@/utils/chessPieces";
@@ -14,6 +15,7 @@ export default function ResponsiveMemorizationBoard() {
   const t = useTranslations("game");
   const { chess, gameState, endMemorizationPhase, startSolutionPhase } =
     useGameStore();
+  const showCoordinates = useSettingsStore((state) => state.showCoordinates);
   const [pieces, setPieces] = useState<ChessPiece[]>([]);
   const [timeRemaining, setTimeRemaining] = useState(
     gameState.memorizeTime * 1000,
@@ -140,7 +142,7 @@ export default function ResponsiveMemorizationBoard() {
           pieces={pieces}
           isLoading={isLoading}
           isInteractive={false}
-          showCoordinates={true}
+          showCoordinates={showCoordinates}
         />
       }
       controls={

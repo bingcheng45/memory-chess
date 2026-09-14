@@ -66,7 +66,19 @@ This app was rejected by Google AdSense because `/game` server-rendered 8 words 
 .claude/skills/verify-memory-chess/helpers/ssr-words.sh http://127.0.0.1:4517/game 150
 ```
 
-`ssr-words.sh` curls the route exactly as a non-JS crawler would, strips `<script>`, `<style>`, and all tags, prints `words=<count>` plus the surviving text, and exits 1 if the count is under the floor. Save its output into the evidence directory (`... | tee .verify-evidence/<run>/game.ssr.txt`). Measured baselines on `main` as of 2026-09: `/game` 9 words, `/leaderboard` 18, `/learn/chess-memory-training` 1034. The first two are the open AdSense defect (a fix is in flight on `fix/adsense-low-value-content`), so a 150 floor on them currently fails by design; once that fix lands, keep the 150 floor as the regression guard. Learn articles must clear 300 today.
+`ssr-words.sh` curls the route exactly as a non-JS crawler would, strips `<script>`, `<style>`, and all tags, prints `words=<count>` plus the surviving text, and exits 1 if the count is under the floor. Save its output into the evidence directory (`... | tee .verify-evidence/<run>/game.ssr.txt`). Use it for a quick look at one route.
+
+### The AdSense gate
+
+The site was rejected twice for "Low value content". Any change that adds, removes, or reshapes a page, a sitemap entry, a layout, or translated copy must pass the whole-site audit before it is done:
+
+```bash
+npm run audit:adsense -- --base http://127.0.0.1:4517 --out .verify-evidence/<run>/adsense
+```
+
+It reads `/sitemap.xml`, fetches every listed URL as a non-JS reviewer would, and applies one rule per Google policy item: HTTP 200, listed pages are indexable and self-canonical, at least 300 main-content words (header, nav, and footer excluded; `WORD_FLOOR_EXCEPTIONS` names each short page and why), no text shipped at opacity 0, no loading or placeholder text, one `h1` with a title and description, links to privacy, about, terms, and contact, at most one ad unit, titles and descriptions unique within a language, no two pages of a language sharing more than half their 5-word shingles, no 8-word sentence on more than three pages of a language, hreflang pointing only at listed URLs, no broken internal links, and `ads.txt` naming the publisher. It prints a table per rule and every failing page, writes `audit.json` under `--out`, and exits 1 on any failure.
+
+When a rule fails, fix the page. Change a rule only when the rule is wrong about what Google asks for, in its own commit that says why. Translated Learn prose that no native speaker has reviewed stays out of the sitemap and carries `noindex`; `REVIEWED_LEARN_LOCALES` in `src/lib/seo/learn/index.ts` is the one switch.
 
 ### Without Supabase credentials
 

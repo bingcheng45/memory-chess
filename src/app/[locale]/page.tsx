@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import NextLink from "next/link";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import PageHeader from "@/components/ui/PageHeader";
@@ -264,13 +265,13 @@ export default function Home() {
                     {t("learn.description")}
                   </p>
                   <div className="grid gap-3">
-                    <Link href="/learn" className="group">
+                    <NextLink href="/learn" className="group">
                       <Button className="w-full justify-between bg-peach-500 text-bg-dark hover:bg-peach-400">
                         {t("learn.browseCta")}
                         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                       </Button>
-                    </Link>
-                    <Link
+                    </NextLink>
+                    <NextLink
                       href="/learn/how-to-get-better-at-chess-for-beginners"
                       className="group"
                     >
@@ -281,7 +282,7 @@ export default function Home() {
                         {t("learn.beginnerCta")}
                         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                       </Button>
-                    </Link>
+                    </NextLink>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";

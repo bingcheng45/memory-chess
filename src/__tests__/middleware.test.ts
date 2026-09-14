@@ -46,6 +46,51 @@ beforeEach(() => {
   mockForwarded.length = 0;
 });
 
+describe("middleware on English-only routes", () => {
+  function run(url: string, headers: Record<string, string> = {}, cookie?: string) {
+    const request = new NextRequest(url, { headers: new Headers(headers) });
+    if (cookie) request.cookies.set("NEXT_LOCALE", cookie);
+    return middleware(request);
+  }
+
+  it.each([
+    ["https://thememorychess.com/de/about", "https://thememorychess.com/about"],
+    ["https://thememorychess.com/ja/learn", "https://thememorychess.com/learn"],
+    [
+      "https://thememorychess.com/pt-BR/learn/chess-memory-training?ref=x",
+      "https://thememorychess.com/learn/chess-memory-training?ref=x",
+    ],
+    ["https://thememorychess.com/en/changelog", "https://thememorychess.com/changelog"],
+  ])("permanently redirects %s to the bare URL", (from, to) => {
+    const response = run(from);
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(to);
+    expect(mockForwarded).toHaveLength(0);
+  });
+
+  it("leaves prefixed localized routes to next-intl", () => {
+    run("https://thememorychess.com/de/game");
+    run("https://thememorychess.com/de/learning");
+
+    expect(mockForwarded).toHaveLength(2);
+  });
+
+  it("negotiates a bare English-only route as English whatever the visitor prefers", () => {
+    // A German cookie would otherwise send /about to /de/about, which
+    // redirects back to /about.
+    run(
+      "https://thememorychess.com/learn/chess-memory-training",
+      { "accept-language": "de-DE,de;q=0.9", "user-agent": BROWSER, "x-vercel-ip-country": "DE" },
+      "de",
+    );
+
+    expect(mockForwarded).toHaveLength(1);
+    expect(mockForwarded[0].headers.get("accept-language")).toBe("en");
+    expect(mockForwarded[0].cookies.has("NEXT_LOCALE")).toBe(false);
+  });
+});
+
 describe("middleware locale negotiation", () => {
   it("pins crawlers to the default locale so they get the URL they asked for", () => {
     // Googlebot crawls with varying Accept-Language values. Redirecting on that

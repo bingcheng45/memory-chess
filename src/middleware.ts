@@ -1,11 +1,46 @@
 import createMiddleware from "next-intl/middleware";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { routing, LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
+import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
 
 const handleI18nRouting = createMiddleware(routing);
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
+
+/** `/de/learn/x` -> `/learn/x` when the unprefixed path is English-only. */
+function bareEnglishOnlyPath(pathname: string): string | null {
+  const [, prefix, ...rest] = pathname.split("/");
+  if (!(LOCALES as readonly string[]).includes(prefix)) return null;
+
+  const bare = `/${rest.join("/")}`;
+  return isEnglishOnlyPath(bare) ? bare : null;
+}
+
+/**
+ * next-intl sends an unprefixed path to the cookie or Accept-Language locale,
+ * and for an English-only route that is a redirect back to the prefixed URL
+ * the visitor was just redirected away from: an infinite loop. Negotiating
+ * with no locale cookie and an English header makes next-intl rewrite to the
+ * default locale instead. The visitor's own cookie survives, because next-intl
+ * only writes one when the resolved locale differs from the request's
+ * preference, and here they agree. The hreflang Link header is dropped since
+ * these routes have no alternates to advertise.
+ */
+function routeAsDefaultLocale(request: NextRequest) {
+  const headers = new Headers(request.headers);
+  headers.set("accept-language", DEFAULT_LOCALE);
+
+  const forwarded = new NextRequest(request.url, {
+    headers,
+    method: request.method,
+  });
+  forwarded.cookies.delete(LOCALE_COOKIE);
+
+  const response = handleI18nRouting(forwarded);
+  response.headers.delete("Link");
+  return response;
+}
 
 /**
  * Does `Accept-Language` name any locale we actually ship?
@@ -32,6 +67,17 @@ function hasSupportedLanguage(acceptLanguage: string | null): boolean {
 }
 
 export default function middleware(request: NextRequest) {
+  const bare = bareEnglishOnlyPath(request.nextUrl.pathname);
+  if (bare) {
+    const url = request.nextUrl.clone();
+    url.pathname = bare;
+    return NextResponse.redirect(url, 308);
+  }
+
+  if (isEnglishOnlyPath(request.nextUrl.pathname)) {
+    return routeAsDefaultLocale(request);
+  }
+
   // Priority: an explicit choice (cookie) > the browser's stated preference
   // (Accept-Language) > where the request appears to come from (geo) >
   // English. next-intl already handles the first two, so this only fills the

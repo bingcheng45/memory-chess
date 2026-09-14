@@ -3,7 +3,7 @@ import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { LEARN_SLUGS, UPDATED_AT, reviewedLearnLocales } from "@/lib/seo/learn";
 import { LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
-import { ENGLISH_ONLY_PATHS } from "@/lib/seo/englishOnly";
+import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
 
 const SITE_URL = "https://thememorychess.com";
 
@@ -103,7 +103,7 @@ function alternatesFor(routePath: string, locales: readonly string[]) {
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries: MetadataRoute.Sitemap = SITEMAP_ENTRIES.flatMap(
     (entry) => {
-      const locales = ENGLISH_ONLY_PATHS.has(entry.path) ? ["en"] : LOCALES;
+      const locales = isEnglishOnlyPath(entry.path) ? ["en"] : LOCALES;
 
       return locales.map((locale) => ({
         url: `${SITE_URL}${localizedPath(entry.path, locale)}`,

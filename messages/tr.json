@@ -295,18 +295,11 @@
     "subtitle": "Tahtayı görselleştirerek öğren. Zihinsel hassasiyet ve hızda dünyanın en iyileriyle yarış.",
     "claimRank": "Sıradaki yerini al",
     "footnote": "Yalnızca ilk 200 gösteriliyor. İsabet, ezberleme süresi ve çözüm hızına göre sıralanır.",
-    "loading": "Sıralama yükleniyor…",
     "unavailableTitle": "Sıralama geçici olarak kullanılamıyor",
     "unavailableBody": "Sıralama servisi şu anda çevrimdışı. Oyun verilerin yerel olarak kaydedilmeye devam ediyor.",
     "unavailableNote": "Kesintisiz oynamaya devam edebilirsin.",
     "retryLater": "Lütfen daha sonra tekrar dene",
     "errorLoading": "Sıralama yüklenirken hata oluştu: {error}",
-    "errors": {
-      "timeout": "İstek zaman aşımına uğradı. Lütfen daha sonra tekrar dene.",
-      "parse": "Sunucu yanıtı çözümlenemedi. Lütfen daha sonra tekrar dene.",
-      "status": "İstek {status} durumuyla başarısız oldu",
-      "unexpected": "Beklenmeyen bir hata oluştu"
-    },
     "emptyTitle": "İlk şampiyon sen ol!",
     "emptyBody": "Bu sıralamada henüz kayıt yok",
     "emptyCta": "Hafızanı sına ve zirvedeki yerini al! Hemen bir oyun oyna ve adını Memory Chess tarihine yazdır.",

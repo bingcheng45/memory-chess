@@ -295,18 +295,11 @@
     "subtitle": "Sajátítsd el a táblát vizualizációval. Mérd össze a tudásod a világ legjobbjaival gondolati pontosságban és gyorsaságban.",
     "claimRank": "Foglald el a helyed",
     "footnote": "Csak a legjobb 200 látszik. Rendezés pontosság, memorizálási idő és megoldási tempó szerint.",
-    "loading": "Ranglista betöltése…",
     "unavailableTitle": "A ranglista átmenetileg nem érhető el",
     "unavailableBody": "A ranglista szolgáltatás most nem működik. A játékadataid továbbra is helyben mentődnek.",
     "unavailableNote": "Zavartalanul játszhatsz tovább.",
     "retryLater": "Próbáld újra később",
     "errorLoading": "Hiba a rangsor betöltésekor: {error}",
-    "errors": {
-      "timeout": "A kérés túllépte az időkorlátot. Próbáld újra később.",
-      "parse": "A szerver válasza nem volt értelmezhető. Próbáld újra később.",
-      "status": "A kérés {status} állapottal meghiúsult",
-      "unexpected": "Váratlan hiba történt"
-    },
     "emptyTitle": "Legyél te az első bajnok!",
     "emptyBody": "Ezen a ranglistán még nincs bejegyzés",
     "emptyCta": "Tedd próbára az emlékezeted, és szerezd meg az első helyet! Játssz egy partit most, és írd be a neved a Memory Chess történetébe.",

@@ -295,18 +295,11 @@
     "subtitle": "Domine o tabuleiro pela visualização. Dispute com os melhores do mundo em precisão mental e velocidade.",
     "claimRank": "Garanta sua posição",
     "footnote": "Exibindo apenas os 200 melhores. Ordenados por precisão, tempo de memorização e velocidade de resolução.",
-    "loading": "Carregando o ranking...",
     "unavailableTitle": "Ranking temporariamente indisponível",
     "unavailableBody": "O serviço de ranking está fora do ar no momento. Seus dados de jogo continuam sendo salvos localmente.",
     "unavailableNote": "Você pode continuar jogando normalmente.",
     "retryLater": "Tente novamente mais tarde",
     "errorLoading": "Erro ao carregar o ranking: {error}",
-    "errors": {
-      "timeout": "O tempo da solicitação esgotou. Tente novamente mais tarde.",
-      "parse": "Não foi possível interpretar a resposta do servidor. Tente novamente mais tarde.",
-      "status": "A solicitação falhou com o status {status}",
-      "unexpected": "Ocorreu um erro inesperado"
-    },
     "emptyTitle": "Seja o primeiro campeão!",
     "emptyBody": "Ainda não há registros neste ranking",
     "emptyCta": "Desafie sua memória e conquiste o topo! Jogue uma partida agora e grave seu nome na história do Memory Chess.",

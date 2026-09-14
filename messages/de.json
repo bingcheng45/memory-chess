@@ -295,18 +295,11 @@
     "subtitle": "Beherrsche das Brett durch Visualisierung. Miss dich mit den Besten der Welt in mentaler Präzision und Geschwindigkeit.",
     "claimRank": "Sichere dir deinen Platz",
     "footnote": "Es werden nur die besten 200 gezeigt. Sortiert nach Genauigkeit, Einprägezeit und Lösungstempo.",
-    "loading": "Bestenliste wird geladen...",
     "unavailableTitle": "Bestenliste vorübergehend nicht verfügbar",
     "unavailableBody": "Der Bestenlisten-Dienst ist gerade offline. Deine Spieldaten werden weiterhin lokal gespeichert.",
     "unavailableNote": "Du kannst ohne Unterbrechung weiterspielen.",
     "retryLater": "Bitte versuche es später erneut",
     "errorLoading": "Fehler beim Laden der Rangliste: {error}",
-    "errors": {
-      "timeout": "Zeitüberschreitung der Anfrage. Bitte versuche es später erneut.",
-      "parse": "Die Antwort des Servers konnte nicht gelesen werden. Bitte versuche es später erneut.",
-      "status": "Anfrage fehlgeschlagen mit Status {status}",
-      "unexpected": "Ein unerwarteter Fehler ist aufgetreten"
-    },
     "emptyTitle": "Werde die erste Nummer eins!",
     "emptyBody": "In dieser Bestenliste gibt es noch keine Einträge",
     "emptyCta": "Fordere dein Gedächtnis heraus und sichere dir den ersten Platz! Spiele jetzt eine Partie und schreibe deinen Namen in die Geschichte von Memory Chess.",

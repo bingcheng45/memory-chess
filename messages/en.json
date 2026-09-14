@@ -295,18 +295,11 @@
     "subtitle": "Master the board through visualization. Compete against the world's best in mental precision and speed.",
     "claimRank": "Claim Your Rank",
     "footnote": "Displaying top 200 only. Ranked by accuracy, memorization time, and solution speed.",
-    "loading": "Loading leaderboard data...",
     "unavailableTitle": "Leaderboard Temporarily Unavailable",
     "unavailableBody": "The leaderboard service is currently offline. Your game data is still being saved locally.",
     "unavailableNote": "You can continue playing without disruption.",
     "retryLater": "Please try again later",
     "errorLoading": "Error loading leaderboard: {error}",
-    "errors": {
-      "timeout": "Request timed out. Please try again later.",
-      "parse": "Failed to parse server response. Please try again later.",
-      "status": "Request failed with status {status}",
-      "unexpected": "An unexpected error occurred"
-    },
     "emptyTitle": "Be the First Champion!",
     "emptyBody": "No entries on this leaderboard yet",
     "emptyCta": "Challenge your memory skills and claim your spot at the top! Play a game now and etch your name in Memory Chess history.",

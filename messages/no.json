@@ -295,18 +295,11 @@
     "subtitle": "Behersk brettet gjennom visualisering. Konkurrer mot verdens beste i mental presisjon og hastighet.",
     "claimRank": "Ta plassen din",
     "footnote": "Viser bare de 200 beste. Rangert etter treffsikkerhet, innlæringstid og løsningstempo.",
-    "loading": "Laster topplisten …",
     "unavailableTitle": "Topplisten er midlertidig utilgjengelig",
     "unavailableBody": "Topplistetjenesten er nede akkurat nå. Spilldataene dine lagres fortsatt lokalt.",
     "unavailableNote": "Du kan spille videre uten avbrudd.",
     "retryLater": "Prøv igjen senere",
     "errorLoading": "Feil ved lasting av rangeringen: {error}",
-    "errors": {
-      "timeout": "Forespørselen tok for lang tid. Prøv igjen senere.",
-      "parse": "Kunne ikke tolke svaret fra serveren. Prøv igjen senere.",
-      "status": "Forespørselen mislyktes med status {status}",
-      "unexpected": "Det oppsto en uventet feil"
-    },
     "emptyTitle": "Bli den første mesteren!",
     "emptyBody": "Ingen oppføringer på denne topplisten ennå",
     "emptyCta": "Utfordre hukommelsen din og ta førsteplassen! Spill en runde nå og skriv navnet ditt inn i historien om Memory Chess.",

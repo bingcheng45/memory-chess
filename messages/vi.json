@@ -295,18 +295,11 @@
     "subtitle": "Làm chủ bàn cờ bằng khả năng hình dung. Tranh tài với những người giỏi nhất thế giới về độ chính xác và tốc độ tư duy.",
     "claimRank": "Giành lấy thứ hạng của bạn",
     "footnote": "Chỉ hiển thị 200 vị trí đầu. Xếp theo độ chính xác, thời gian ghi nhớ và tốc độ hoàn thành.",
-    "loading": "Đang tải bảng xếp hạng…",
     "unavailableTitle": "Bảng xếp hạng tạm thời không khả dụng",
     "unavailableBody": "Dịch vụ bảng xếp hạng hiện đang ngoại tuyến. Dữ liệu ván đấu của bạn vẫn được lưu cục bộ.",
     "unavailableNote": "Bạn vẫn có thể chơi tiếp bình thường.",
     "retryLater": "Vui lòng thử lại sau",
     "errorLoading": "Lỗi khi tải bảng xếp hạng: {error}",
-    "errors": {
-      "timeout": "Yêu cầu đã hết thời gian chờ. Vui lòng thử lại sau.",
-      "parse": "Không thể đọc phản hồi từ máy chủ. Vui lòng thử lại sau.",
-      "status": "Yêu cầu thất bại với trạng thái {status}",
-      "unexpected": "Đã xảy ra lỗi không mong muốn"
-    },
     "emptyTitle": "Hãy là nhà vô địch đầu tiên!",
     "emptyBody": "Bảng xếp hạng này chưa có mục nào",
     "emptyCta": "Thử thách trí nhớ của bạn và giành vị trí dẫn đầu! Chơi một ván ngay bây giờ và ghi tên bạn vào lịch sử Memory Chess.",

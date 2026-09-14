@@ -295,18 +295,11 @@
     "subtitle": "用視覺化掌控棋盤。在心算的精準與速度上與全球高手一較高下。",
     "claimRank": "搶下你的名次",
     "footnote": "僅顯示前 200 名。依準確率、記憶時間與重建速度排序。",
-    "loading": "正在載入排行榜…",
     "unavailableTitle": "排行榜暫時無法使用",
     "unavailableBody": "排行榜服務目前離線。你的對局資料仍會儲存在本機。",
     "unavailableNote": "你可以繼續遊玩，不受影響。",
     "retryLater": "請稍後再試",
     "errorLoading": "載入排名時發生錯誤：{error}",
-    "errors": {
-      "timeout": "要求逾時，請稍後再試。",
-      "parse": "無法解析伺服器回應，請稍後再試。",
-      "status": "要求失敗，狀態碼 {status}",
-      "unexpected": "發生了非預期的錯誤"
-    },
     "emptyTitle": "來當第一位冠軍吧！",
     "emptyBody": "這個排行榜還沒有任何紀錄",
     "emptyCta": "挑戰你的記憶力，登上榜首吧！立即來一局，把你的名字寫進 Memory Chess 的歷史。",

@@ -295,18 +295,11 @@
     "subtitle": "Opanuj szachownicę dzięki wizualizacji. Rywalizuj z najlepszymi na świecie w precyzji i szybkości myślenia.",
     "claimRank": "Zajmij swoje miejsce",
     "footnote": "Wyświetlane jest tylko 200 najlepszych wyników. Sortowanie według celności, czasu zapamiętywania i tempa rozwiązania.",
-    "loading": "Wczytywanie rankingu...",
     "unavailableTitle": "Ranking chwilowo niedostępny",
     "unavailableBody": "Usługa rankingu jest teraz offline. Dane twoich partii nadal zapisują się lokalnie.",
     "unavailableNote": "Możesz grać dalej bez przeszkód.",
     "retryLater": "Spróbuj ponownie później",
     "errorLoading": "Błąd podczas wczytywania rankingu: {error}",
-    "errors": {
-      "timeout": "Upłynął limit czasu żądania. Spróbuj ponownie później.",
-      "parse": "Nie udało się odczytać odpowiedzi serwera. Spróbuj ponownie później.",
-      "status": "Żądanie nie powiodło się ze statusem {status}",
-      "unexpected": "Wystąpił nieoczekiwany błąd"
-    },
     "emptyTitle": "Zostań pierwszym mistrzem!",
     "emptyBody": "W tym rankingu nie ma jeszcze wpisów",
     "emptyCta": "Sprawdź swoją pamięć i zajmij pierwsze miejsce! Zagraj teraz i zapisz swoje imię w historii Memory Chess.",

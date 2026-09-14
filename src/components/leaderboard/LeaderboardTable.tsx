@@ -20,7 +20,7 @@ import { useEffect, useRef } from "react";
 
 import { useTranslations } from "next-intl";
 // Interface for entry details from URL params
-interface EntryDetails {
+export interface EntryDetails {
   player: string | null;
   difficulty: string | null;
   memorizeTime: number | null;
@@ -32,7 +32,6 @@ interface EntryDetails {
 
 interface LeaderboardTableProps {
   data: LeaderboardEntry[];
-  isLoading: boolean;
   error: string | null;
   entryDetails?: EntryDetails;
   activeTab?: string;
@@ -109,14 +108,14 @@ const TimeDisplay = ({ time }: { time: string }) => {
   );
 };
 
-export default function LeaderboardTable({ data, isLoading, error, entryDetails, activeTab }: LeaderboardTableProps) {
+export default function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardTableProps) {
   const t = useTranslations("leaderboard");
   // Create a ref to store the highlighted row element
   const highlightedRowRef = useRef<HTMLTableRowElement>(null);
-  
+
   // Scroll to highlighted row when data loads
   useEffect(() => {
-    if (!isLoading && entryDetails?.player && highlightedRowRef.current) {
+    if (entryDetails?.player && highlightedRowRef.current) {
       // Use a small timeout to ensure the DOM is fully updated
       setTimeout(() => {
         highlightedRowRef.current?.scrollIntoView({
@@ -125,17 +124,8 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
         });
       }, 100);
     }
-  }, [isLoading, entryDetails, data]);
-  
-  if (isLoading) {
-    return (
-      <div className="text-center p-8">
-        <div className="animate-spin h-8 w-8 border-4 border-peach-500 rounded-full border-t-transparent mx-auto"></div>
-        <p className="mt-4 text-text-secondary">{t("loading")}</p>
-      </div>
-    );
-  }
-  
+  }, [entryDetails, data]);
+
   if (error) {
     // Check if this is a database connection error and provide a more user-friendly message
     const isConnectionError = error.includes('Database connection unavailable') || 

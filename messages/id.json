@@ -295,18 +295,11 @@
     "subtitle": "Kuasai papan lewat visualisasi. Bersaing dengan yang terbaik di dunia dalam ketepatan dan kecepatan berpikir.",
     "claimRank": "Raih peringkatmu",
     "footnote": "Hanya menampilkan 200 teratas. Diurutkan berdasarkan akurasi, waktu menghafal, dan kecepatan penyelesaian.",
-    "loading": "Memuat papan peringkat…",
     "unavailableTitle": "Papan peringkat sementara tidak tersedia",
     "unavailableBody": "Layanan papan peringkat sedang offline. Data permainanmu tetap tersimpan secara lokal.",
     "unavailableNote": "Kamu bisa terus bermain tanpa gangguan.",
     "retryLater": "Silakan coba lagi nanti",
     "errorLoading": "Gagal memuat peringkat: {error}",
-    "errors": {
-      "timeout": "Permintaan melebihi batas waktu. Coba lagi nanti.",
-      "parse": "Tidak dapat membaca respons server. Coba lagi nanti.",
-      "status": "Permintaan gagal dengan status {status}",
-      "unexpected": "Terjadi kesalahan yang tidak terduga"
-    },
     "emptyTitle": "Jadilah juara pertama!",
     "emptyBody": "Belum ada catatan di papan peringkat ini",
     "emptyCta": "Uji daya ingatmu dan rebut posisi teratas! Mainkan satu permainan sekarang dan catat namamu dalam sejarah Memory Chess.",

@@ -295,18 +295,11 @@
     "subtitle": "Stăpânește tabla prin vizualizare. Concurează cu cei mai buni din lume la precizie mentală și viteză.",
     "claimRank": "Revendică-ți locul",
     "footnote": "Se afișează doar primii 200. Ordonați după precizie, timp de memorare și viteză de rezolvare.",
-    "loading": "Se încarcă clasamentul…",
     "unavailableTitle": "Clasamentul este temporar indisponibil",
     "unavailableBody": "Serviciul de clasament este momentan offline. Datele partidelor tale se salvează în continuare local.",
     "unavailableNote": "Poți juca mai departe fără probleme.",
     "retryLater": "Încearcă din nou mai târziu",
     "errorLoading": "Eroare la încărcarea clasamentului: {error}",
-    "errors": {
-      "timeout": "Cererea a expirat. Încearcă din nou mai târziu.",
-      "parse": "Răspunsul serverului nu a putut fi citit. Încearcă din nou mai târziu.",
-      "status": "Cererea a eșuat cu starea {status}",
-      "unexpected": "A apărut o eroare neașteptată"
-    },
     "emptyTitle": "Fii primul campion!",
     "emptyBody": "Încă nu există înregistrări în acest clasament",
     "emptyCta": "Pune-ți memoria la încercare și cucerește primul loc! Joacă o partidă acum și scrie-ți numele în istoria Memory Chess.",

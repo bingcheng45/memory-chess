@@ -295,18 +295,11 @@
     "subtitle": "Domina la scacchiera con la visualizzazione. Sfida i migliori al mondo in precisione mentale e velocità.",
     "claimRank": "Prenditi il tuo posto",
     "footnote": "Mostrati solo i primi 200. Ordinati per precisione, tempo di memorizzazione e velocità di risoluzione.",
-    "loading": "Caricamento della classifica...",
     "unavailableTitle": "Classifica temporaneamente non disponibile",
     "unavailableBody": "Il servizio classifica al momento è offline. Le tue partite continuano a essere salvate in locale.",
     "unavailableNote": "Puoi continuare a giocare senza problemi.",
     "retryLater": "Riprova più tardi",
     "errorLoading": "Errore nel caricamento della classifica: {error}",
-    "errors": {
-      "timeout": "Richiesta scaduta. Riprova più tardi.",
-      "parse": "Impossibile leggere la risposta del server. Riprova più tardi.",
-      "status": "Richiesta non riuscita con stato {status}",
-      "unexpected": "Si è verificato un errore imprevisto"
-    },
     "emptyTitle": "Diventa il primo campione!",
     "emptyBody": "Non ci sono ancora risultati in questa classifica",
     "emptyCta": "Metti alla prova la tua memoria e conquista il primo posto! Gioca una partita ora e scrivi il tuo nome nella storia di Memory Chess.",

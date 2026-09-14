@@ -295,18 +295,11 @@
     "subtitle": "Beheers het bord met visualisatie. Neem het op tegen de besten ter wereld in mentale precisie en snelheid.",
     "claimRank": "Claim je plek",
     "footnote": "Alleen de top 200 wordt getoond. Gerangschikt op nauwkeurigheid, kijktijd en oplossnelheid.",
-    "loading": "Ranglijst wordt geladen…",
     "unavailableTitle": "Ranglijst tijdelijk niet beschikbaar",
     "unavailableBody": "De ranglijstdienst is nu offline. Je spelgegevens worden nog steeds lokaal opgeslagen.",
     "unavailableNote": "Je kunt gewoon doorspelen.",
     "retryLater": "Probeer het later opnieuw",
     "errorLoading": "Fout bij het laden van de ranglijst: {error}",
-    "errors": {
-      "timeout": "De aanvraag is verlopen. Probeer het later opnieuw.",
-      "parse": "Het antwoord van de server kon niet worden gelezen. Probeer het later opnieuw.",
-      "status": "Aanvraag mislukt met status {status}",
-      "unexpected": "Er is een onverwachte fout opgetreden"
-    },
     "emptyTitle": "Word de eerste kampioen!",
     "emptyBody": "Nog geen resultaten op deze ranglijst",
     "emptyCta": "Daag je geheugen uit en verover de eerste plaats! Speel nu een partij en zet je naam in de geschiedenis van Memory Chess.",

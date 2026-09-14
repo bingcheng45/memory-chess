@@ -295,18 +295,11 @@
     "subtitle": "Maîtrisez l’échiquier par la visualisation. Affrontez les meilleurs du monde en précision mentale et en rapidité.",
     "claimRank": "Réclamez votre place",
     "footnote": "Seuls les 200 premiers sont affichés. Classés par précision, temps de mémorisation et vitesse de résolution.",
-    "loading": "Chargement du classement...",
     "unavailableTitle": "Classement momentanément indisponible",
     "unavailableBody": "Le service de classement est hors ligne pour le moment. Vos parties continuent d’être enregistrées en local.",
     "unavailableNote": "Vous pouvez continuer à jouer sans interruption.",
     "retryLater": "Réessayez plus tard",
     "errorLoading": "Erreur lors du chargement du classement : {error}",
-    "errors": {
-      "timeout": "La requête a expiré. Veuillez réessayer plus tard.",
-      "parse": "Impossible de lire la réponse du serveur. Veuillez réessayer plus tard.",
-      "status": "La requête a échoué avec le statut {status}",
-      "unexpected": "Une erreur inattendue s’est produite"
-    },
     "emptyTitle": "Soyez le premier champion !",
     "emptyBody": "Aucune entrée dans ce classement pour l’instant",
     "emptyCta": "Mettez votre mémoire à l’épreuve et emparez-vous de la première place ! Lancez une partie et inscrivez votre nom dans l’histoire de Memory Chess.",

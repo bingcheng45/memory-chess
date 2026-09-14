@@ -295,18 +295,11 @@
     "subtitle": "Hallitse lautaa visualisoinnin avulla. Kilpaile maailman parhaita vastaan tarkkuudessa ja nopeudessa.",
     "claimRank": "Lunasta sijoituksesi",
     "footnote": "Näytetään vain 200 parasta. Järjestys: tarkkuus, muistiinpainamisaika ja ratkaisunopeus.",
-    "loading": "Ladataan tulostaulukkoa…",
     "unavailableTitle": "Tulostaulukko ei ole juuri nyt käytettävissä",
     "unavailableBody": "Tulostaulukkopalvelu on tällä hetkellä poissa käytöstä. Pelitietosi tallentuvat edelleen paikallisesti.",
     "unavailableNote": "Voit jatkaa pelaamista normaalisti.",
     "retryLater": "Yritä myöhemmin uudelleen",
     "errorLoading": "Virhe sijoitusten lataamisessa: {error}",
-    "errors": {
-      "timeout": "Pyyntö aikakatkaistiin. Yritä myöhemmin uudelleen.",
-      "parse": "Palvelimen vastausta ei voitu lukea. Yritä myöhemmin uudelleen.",
-      "status": "Pyyntö epäonnistui, tila {status}",
-      "unexpected": "Tapahtui odottamaton virhe"
-    },
     "emptyTitle": "Ole ensimmäinen mestari!",
     "emptyBody": "Tässä tulostaulukossa ei ole vielä merkintöjä",
     "emptyCta": "Haasta muistisi ja nouse kärkeen! Pelaa peli nyt ja kirjoita nimesi Memory Chessin historiaan.",

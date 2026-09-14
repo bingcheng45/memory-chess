@@ -163,6 +163,7 @@ const RULES = [
     check: (page) => {
       const problems = [];
       if (/noindex/i.test(page.robots)) problems.push(`listed in sitemap but robots="${page.robots}"`);
+      if (!page.canonical) problems.push("missing canonical");
       if (page.canonical && toLocal(page.canonical).replace(/\/$/, "") !== page.url.replace(/\/$/, "")) {
         problems.push(`canonical points elsewhere: ${page.canonical}`);
       }

@@ -14,7 +14,7 @@ import { Link } from "@/i18n/navigation";
 import { useEffect, useRef } from "react";
 
 import { useFormatter, useTranslations } from "next-intl";
-// Interface for entry details from URL params
+
 export interface EntryDetails {
   player: string | null;
   difficulty: string | null;

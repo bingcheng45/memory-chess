@@ -288,6 +288,7 @@ describe("LearnArticleRich", () => {
       "whoThisIsFor",
       "browseAllGuides",
       "onThisPage",
+      "aimFor",
       "keepLearning",
       "whatToLearnNext",
       "readThisGuide",

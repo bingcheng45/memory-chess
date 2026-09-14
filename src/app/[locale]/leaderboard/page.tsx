@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import LeaderboardTabsFromSearchParams, {
   LeaderboardTabs,
   type LeaderboardBoards,
@@ -14,6 +15,13 @@ export default async function LeaderboardPage() {
   const results = await Promise.all(
     RANKED_DIFFICULTIES.map((difficulty) => getLeaderboard(difficulty)),
   );
+  // A failed revalidation that throws keeps serving the last good page; one that
+  // renders would cache the error for the whole window. A build has no last
+  // good page, so it renders the unavailable state instead.
+  const failure = results.find((result) => result.error);
+  if (failure && process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD) {
+    throw new Error(`Leaderboard refresh failed: ${failure.error}`);
+  }
   const boards = Object.fromEntries(
     RANKED_DIFFICULTIES.map((difficulty, index) => [difficulty, results[index]]),
   ) as LeaderboardBoards;

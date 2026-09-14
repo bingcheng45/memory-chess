@@ -34,9 +34,13 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   const [boards, setBoards] = useState(serverBoards);
   const [activeTab, setActiveTab] = useState<RankedDifficulty>(initialTab);
 
-  // The server boards are up to one revalidation window old; refresh the open
-  // tab so a score submitted moments ago shows up, keeping rows on failure.
+  // The server boards are up to one revalidation window old. A player arriving
+  // from the result screen needs the score they just submitted, so only that
+  // visit refreshes the open tab, and a failed refresh keeps the rows.
+  const isJustSubmitted = Boolean(entryDetails?.player);
+
   useEffect(() => {
+    if (!isJustSubmitted) return;
     const controller = new AbortController();
 
     fetch(`/api/leaderboard?difficulty=${activeTab}`, { signal: controller.signal })
@@ -52,7 +56,7 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
       });
 
     return () => controller.abort();
-  }, [activeTab]);
+  }, [activeTab, isJustSubmitted]);
 
   const activeBoard = boards[activeTab];
 

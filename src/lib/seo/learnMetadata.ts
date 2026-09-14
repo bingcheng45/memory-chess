@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import type { LearnPageContent } from '@/lib/seo/learn/schema';
+import { LEARN_AUTHOR, type LearnPageContent } from '@/lib/seo/learn/schema';
 
 const SITE_URL = 'https://thememorychess.com';
 
@@ -20,7 +20,7 @@ export function buildLearnPageMetadata(page: LearnPageContent): Metadata {
       type: 'article',
       publishedTime: page.publishedAt,
       modifiedTime: page.updatedAt,
-      authors: [page.reviewedBy],
+      authors: [LEARN_AUTHOR.name],
       tags: [page.primaryKeyword, ...page.secondaryKeywords],
       images: [
         {
@@ -38,12 +38,7 @@ export function buildLearnPageMetadata(page: LearnPageContent): Metadata {
       images: [imageUrl],
     },
     keywords: [page.primaryKeyword, ...page.secondaryKeywords],
-    authors: [
-      {
-        name: page.reviewedBy,
-        url: `${SITE_URL}/about`,
-      },
-    ],
+    authors: [{ name: LEARN_AUTHOR.name, url: LEARN_AUTHOR.url }],
     other: {
       'article:section': page.goal,
     },

@@ -106,7 +106,6 @@ export type LearnPageContent = {
   ctaHref: string;
   publishedAt: string;
   updatedAt: string;
-  reviewedBy: string;
   quickAnswer: string;
   keyTakeaways: string[];
   whoThisIsFor: string[];
@@ -156,7 +155,11 @@ export type BuildGuideInput = {
 // A named person with a page behind the name. The guides used to credit a
 // pseudonymous "Editorial Team" whose JSON-LD id resolved to /learn, which
 // says nothing about who writes.
-const EDITORIAL_REVIEWER = "Bing Cheng";
+export const LEARN_AUTHOR = {
+  name: "Bing Cheng",
+  url: "https://thememorychess.com/about",
+  id: "https://thememorychess.com/about#bing-cheng",
+} as const;
 
 const CHESS_MEMORY_SOURCE: LearnSource = {
   title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
@@ -279,7 +282,6 @@ export function buildGuide(
     ctaHref: gameHref(input.drillCards.find((card) => card.setup)?.setup),
     publishedAt: PUBLISHED_AT,
     updatedAt: UPDATED_AT,
-    reviewedBy: EDITORIAL_REVIEWER,
     quickAnswer: input.quickAnswer,
     keyTakeaways: input.keyTakeaways,
     whoThisIsFor: input.whoThisIsFor,

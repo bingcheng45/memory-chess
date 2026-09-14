@@ -8,6 +8,7 @@ import {
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import {
   gameHref,
+  LEARN_AUTHOR,
   type LearnComparisonRow,
   type LearnPageContent,
 } from "@/lib/seo/learn/schema";
@@ -106,15 +107,9 @@ export default function LearnArticleRich({
         articleSection: goal.label,
         author: {
           "@type": "Person",
-          "@id": `${SITE_URL}/about#bing-cheng`,
-          name: "Bing Cheng",
-          url: `${SITE_URL}/about`,
-        },
-        reviewedBy: {
-          "@type": "Person",
-          "@id": `${SITE_URL}/about#bing-cheng`,
-          name: page.reviewedBy,
-          url: `${SITE_URL}/about`,
+          "@id": LEARN_AUTHOR.id,
+          name: LEARN_AUTHOR.name,
+          url: LEARN_AUTHOR.url,
         },
         publisher: {
           "@type": "Organization",
@@ -226,7 +221,6 @@ export default function LearnArticleRich({
             <time dateTime={page.updatedAt}>
               {t("updated", { date: formatDate(page.updatedAt) })}
             </time>
-            <span>{t("reviewedBy", { name: page.reviewedBy })}</span>
           </div>
         </header>
 

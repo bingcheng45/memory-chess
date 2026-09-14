@@ -209,7 +209,6 @@ describe("LearnArticleRich", () => {
       "breadcrumbLearn",
       "eyebrow",
       "updated",
-      "reviewedBy",
       "startHere",
       "whatYouWillLearn",
       "whoThisIsFor",

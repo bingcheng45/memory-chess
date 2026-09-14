@@ -63,7 +63,7 @@ export type LearnPlanStep = {
 export type LearnSource = {
   title: string;
   url: string;
-  note: string;
+  note?: string;
 };
 
 export type LearnRelatedArticle = {
@@ -162,25 +162,21 @@ const EDITORIAL_REVIEWER = "Bing Cheng";
 const CHESS_MEMORY_SOURCE: LearnSource = {
   title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
   url: "https://doi.org/10.1006/cogp.1996.0011",
-  note: "Gobet and Simon's research on how skilled players use chunks and templates to encode chess positions.",
 };
 
 const CHESS_RECOGNITION_SOURCE: LearnSource = {
   title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
   url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
-  note: "Research comparing recognition and calculation in time-constrained grandmaster play.",
 };
 
 const RETRIEVAL_PRACTICE_SOURCE: LearnSource = {
   title: "Test-Enhanced Learning: Taking Memory Tests Improves Retention",
   url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
-  note: "Experimental research showing that active recall can improve later retention more than repeated study.",
 };
 
 const SPACED_PRACTICE_SOURCE: LearnSource = {
   title: "Distributed Practice in Verbal Recall Tasks",
   url: "https://doi.org/10.1037/0033-2909.132.3.354",
-  note: "A quantitative review of how spacing practice affects long-term retention.",
 };
 
 const GOAL_SOURCES: Record<LearnGoalId, LearnSource[]> = {

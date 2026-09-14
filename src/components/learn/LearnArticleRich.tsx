@@ -573,17 +573,21 @@ export default function LearnArticleRich({
           <ul className="mt-4 divide-y divide-white/10 border-y border-white/10">
             {page.sources.map((source) => (
               <li key={source.url} className="py-4">
-                <a
-                  href={source.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={EDITORIAL_STYLES.link}
-                >
-                  {source.title}
-                </a>
-                <p className="mt-2 text-sm leading-6 text-text-muted">
-                  {source.note}
-                </p>
+                <cite className="not-italic">
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={EDITORIAL_STYLES.link}
+                  >
+                    {source.title}
+                  </a>
+                </cite>
+                {source.note ? (
+                  <p className="mt-2 text-sm leading-6 text-text-muted">
+                    {source.note}
+                  </p>
+                ) : null}
               </li>
             ))}
           </ul>

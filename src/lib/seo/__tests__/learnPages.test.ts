@@ -53,7 +53,7 @@ function getVisibleCopy(page: LearnPageContent): string[] {
     ]),
     ...page.faq.flatMap((entry) => [entry.question, entry.answer]),
     ...page.relatedArticles.map((entry) => entry.reason),
-    ...page.sources.map((source) => source.note),
+    ...page.sources.map((source) => source.note ?? ""),
   ].filter(Boolean);
 }
 

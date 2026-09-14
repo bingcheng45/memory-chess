@@ -2,6 +2,10 @@ import {
   EN_LEARN_PAGES as LEARN_PAGES,
   type LearnPageContent,
 } from "@/lib/seo/learn";
+import {
+  MEMORIZE_SECONDS_RANGE,
+  PIECE_COUNT_RANGE,
+} from "@/lib/reference/facts";
 
 // The registry helpers moved to per-locale resolvers; these keep the existing
 // assertions working against the English set.
@@ -113,6 +117,30 @@ describe("learnPages registry", () => {
       }
 
       expect(Math.max(...sentenceWordCounts)).toBeLessThanOrEqual(28);
+    }
+  });
+
+  it("describes every linked drill with the numbers of the round it opens", () => {
+    const drills = LEARN_PAGES.flatMap((page) =>
+      page.contentSections.flatMap((section) => section.drillCards ?? []),
+    );
+    const linked = drills.filter((drill) => drill.setup);
+
+    expect(drills).toHaveLength(48);
+    expect(linked.length).toBeGreaterThan(0);
+
+    for (const drill of linked) {
+      const { pieceCount, memorizeTime } = drill.setup!;
+
+      expect(pieceCount).toBeGreaterThanOrEqual(PIECE_COUNT_RANGE.min);
+      expect(pieceCount).toBeLessThanOrEqual(PIECE_COUNT_RANGE.max);
+      expect(memorizeTime).toBeGreaterThanOrEqual(MEMORIZE_SECONDS_RANGE.min);
+      expect(memorizeTime).toBeLessThanOrEqual(MEMORIZE_SECONDS_RANGE.max);
+
+      for (const copy of [drill.description, drill.ctaLabel]) {
+        expect(copy).toContain(`${pieceCount} pieces`);
+        expect(copy).toContain(`${memorizeTime} seconds`);
+      }
     }
   });
 });

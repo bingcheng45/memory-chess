@@ -1,28 +1,25 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { localizedPath } from "@/lib/seo/alternates";
-import { buildLearnIndexing } from "@/lib/seo/learnMetadata";
+import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
+import { EN_LEARN_GOALS, EN_LEARN_PAGES } from "@/lib/seo/learn";
 
 const SITE_URL = "https://thememorychess.com";
-import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
-import { getLearnPages, getLearnGoals } from "@/lib/seo/learn";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "learnHub.meta" });
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations({
+    locale: DEFAULT_LOCALE,
+    namespace: "learnHub.meta",
+  });
 
   return {
     title: t("title"),
     description: t("description"),
-    ...buildLearnIndexing("/learn", locale),
+    alternates: { canonical: "/learn" },
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: `${SITE_URL}${localizedPath("/learn", locale)}`,
+      url: `${SITE_URL}/learn`,
     },
     twitter: {
       title: t("title"),
@@ -31,18 +28,6 @@ export async function generateMetadata({
   };
 }
 
-export default async function LearnHubPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const [allPages, goals] = await Promise.all([
-    getLearnPages(locale),
-    getLearnGoals(locale),
-  ]);
-
-  return (
-    <LearnHubPageContent allPages={allPages} goals={goals} locale={locale} />
-  );
+export default function LearnHubPage() {
+  return <LearnHubPageContent allPages={EN_LEARN_PAGES} goals={EN_LEARN_GOALS} />;
 }

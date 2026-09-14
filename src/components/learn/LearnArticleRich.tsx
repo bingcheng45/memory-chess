@@ -12,8 +12,6 @@ import {
   type LearnPageContent,
 } from "@/lib/seo/learn/schema";
 import type { LearnGoal } from "@/lib/seo/learn";
-import { isReviewedLearnLocale, learnContentLocale } from "@/lib/seo/learn";
-import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import LearnArticleTracking from "@/components/learn/LearnArticleTracking";
 
 const SITE_URL = "https://thememorychess.com";
@@ -21,13 +19,12 @@ const SITE_URL = "https://thememorychess.com";
 type LearnArticleProps = {
   page: LearnPageContent;
   goals: LearnGoal[];
-  /** Every article in the same locale, used to resolve the "read next" links. */
+  /** Every article, used to resolve the "read next" links. */
   allPages: LearnPageContent[];
-  locale: string;
 };
 
-function formatDate(value: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
+function formatDate(value: string): string {
+  return new Intl.DateTimeFormat("en", {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -77,23 +74,15 @@ export default function LearnArticleRich({
   page,
   goals,
   allPages,
-  locale,
 }: LearnArticleProps) {
   const t = useTranslations("learnArticle");
   const goalsById = new Map(goals.map((entry) => [entry.id, entry]));
   const goal = goalsById.get(page.goal)!;
-  // Page-scoped identifiers follow the locale the reader is actually on, so
-  // the JSON-LD agrees with the localized canonical instead of claiming the
-  // German page is the English document. Organization nodes below stay on the
-  // bare origin: publisher and author are one entity site-wide, and a
-  // per-locale @id would split one organization into twenty-four.
-  const contentLocale = learnContentLocale(locale);
-  const homeUrl = localizedUrl("/", contentLocale);
-  const hubUrl = localizedUrl("/learn", contentLocale);
-  const articleUrl = localizedUrl(`/learn/${page.slug}`, contentLocale);
+  const homeUrl = SITE_URL;
+  const hubUrl = `${SITE_URL}/learn`;
+  const articleUrl = `${hubUrl}/${page.slug}`;
   const socialImageUrl = `${articleUrl}/opengraph-image`;
   const relatedPages = buildRelatedPageData(page, allPages);
-  const isReviewed = isReviewedLearnLocale(contentLocale);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -112,7 +101,7 @@ export default function LearnArticleRich({
         },
         datePublished: page.publishedAt,
         dateModified: page.updatedAt,
-        inLanguage: languageTag(contentLocale),
+        inLanguage: "en-US",
         isAccessibleForFree: true,
         articleSection: goal.label,
         author: {
@@ -121,14 +110,12 @@ export default function LearnArticleRich({
           name: "Bing Cheng",
           url: `${SITE_URL}/about`,
         },
-        ...(isReviewed && {
-          reviewedBy: {
-            "@type": "Person",
-            "@id": `${SITE_URL}/about#bing-cheng`,
-            name: page.reviewedBy,
-            url: `${SITE_URL}/about`,
-          },
-        }),
+        reviewedBy: {
+          "@type": "Person",
+          "@id": `${SITE_URL}/about#bing-cheng`,
+          name: page.reviewedBy,
+          url: `${SITE_URL}/about`,
+        },
         publisher: {
           "@type": "Organization",
           "@id": `${SITE_URL}/#organization`,
@@ -237,11 +224,9 @@ export default function LearnArticleRich({
           </p>
           <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-text-muted">
             <time dateTime={page.updatedAt}>
-              {t("updated", { date: formatDate(page.updatedAt, locale) })}
+              {t("updated", { date: formatDate(page.updatedAt) })}
             </time>
-            {isReviewed ? (
-              <span>{t("reviewedBy", { name: page.reviewedBy })}</span>
-            ) : null}
+            <span>{t("reviewedBy", { name: page.reviewedBy })}</span>
           </div>
         </header>
 

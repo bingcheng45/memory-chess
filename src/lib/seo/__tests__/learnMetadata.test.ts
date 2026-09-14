@@ -10,13 +10,10 @@ function pageFor(slug: string): LearnPageContent {
 
 describe("buildLearnPageMetadata", () => {
   it("builds metadata for the beginner roadmap", () => {
-    const metadata = buildLearnPageMetadata(pageFor("how-to-get-better-at-chess-for-beginners"), "en");
+    const metadata = buildLearnPageMetadata(pageFor("how-to-get-better-at-chess-for-beginners"));
 
     expect(metadata.title).toBe("How to Get Better at Chess for Beginners");
     expect(metadata.description).toContain("beginner chess plan");
-    expect(metadata.alternates?.canonical).toBe(
-      "/learn/how-to-get-better-at-chess-for-beginners",
-    );
     expect(
       metadata.openGraph && "type" in metadata.openGraph
         ? metadata.openGraph.type
@@ -24,8 +21,17 @@ describe("buildLearnPageMetadata", () => {
     ).toBe("article");
   });
 
-  it("adds article timestamps and image metadata", () => {
-    const metadata = buildLearnPageMetadata(pageFor("how-to-stop-blundering-in-chess"), "en");
+  it("is a bare self canonical with no alternates or robots override", () => {
+    const metadata = buildLearnPageMetadata(pageFor("how-to-stop-blundering-in-chess"));
+
+    expect(metadata.alternates).toEqual({
+      canonical: "/learn/how-to-stop-blundering-in-chess",
+    });
+    expect(metadata.robots).toBeUndefined();
+  });
+
+  it("adds article timestamps, author and image metadata", () => {
+    const metadata = buildLearnPageMetadata(pageFor("how-to-stop-blundering-in-chess"));
 
     const openGraph = metadata.openGraph;
     if (!openGraph || !("publishedTime" in openGraph)) {
@@ -35,76 +41,31 @@ describe("buildLearnPageMetadata", () => {
     const images = Array.isArray(openGraph.images)
       ? openGraph.images
       : [openGraph.images];
-    const authors = Array.isArray(metadata.authors)
-      ? metadata.authors
-      : [metadata.authors];
-
-    expect(openGraph.publishedTime).toBe("2026-03-06T00:00:00.000Z");
-    expect(openGraph.modifiedTime).toBe("2026-08-17T00:00:00.000Z");
-    expect(images[0]).toMatchObject({
-      url: "https://thememorychess.com/learn/how-to-stop-blundering-in-chess/opengraph-image",
-    });
-    expect(authors[0]).toMatchObject({ name: "Bing Cheng" });
-  });
-
-  it("points a translated article at its own localized social card", () => {
-    // The opengraph-image route lives under [locale] and renders the
-    // translated title, so an unprefixed URL hands social crawlers the
-    // English card for a German page. Crawlers are deliberately pinned to
-    // English by the middleware, so they cannot recover the right one.
-    const page = pageFor("how-to-stop-blundering-in-chess");
-    const metadata = buildLearnPageMetadata(page, "de");
-
-    const openGraph = metadata.openGraph;
-    const images = Array.isArray(openGraph?.images)
-      ? openGraph.images
-      : [openGraph?.images];
     const twitterImages = Array.isArray(metadata.twitter?.images)
       ? metadata.twitter.images
       : [metadata.twitter?.images];
+    const authors = Array.isArray(metadata.authors)
+      ? metadata.authors
+      : [metadata.authors];
+    const cardUrl =
+      "https://thememorychess.com/learn/how-to-stop-blundering-in-chess/opengraph-image";
 
-    expect(images[0]).toMatchObject({
-      url: "https://thememorychess.com/de/learn/how-to-stop-blundering-in-chess/opengraph-image",
-    });
-    expect(twitterImages[0]).toBe(
-      "https://thememorychess.com/de/learn/how-to-stop-blundering-in-chess/opengraph-image",
-    );
-  });
-
-  it("keeps an unreviewed translation served but out of the index", () => {
-    const page = pageFor("how-to-stop-blundering-in-chess");
-    const german = buildLearnPageMetadata(page, "de");
-    const english = buildLearnPageMetadata(page, "en");
-
-    expect(german.robots).toEqual({ index: false, follow: true });
-    expect(german.alternates).toEqual({
-      canonical: "/de/learn/how-to-stop-blundering-in-chess",
-    });
-    expect(english.robots).toBeUndefined();
-    expect(english.alternates?.languages).toBeUndefined();
-  });
-
-  it("keeps the social card unprefixed for English", () => {
-    const page = pageFor("how-to-stop-blundering-in-chess");
-    const openGraph = buildLearnPageMetadata(page, "en").openGraph;
-    const images = Array.isArray(openGraph?.images)
-      ? openGraph.images
-      : [openGraph?.images];
-
-    expect(images[0]).toMatchObject({
-      url: "https://thememorychess.com/learn/how-to-stop-blundering-in-chess/opengraph-image",
-    });
+    expect(openGraph.publishedTime).toBe("2026-03-06T00:00:00.000Z");
+    expect(openGraph.modifiedTime).toBe("2026-08-17T00:00:00.000Z");
+    expect(images[0]).toMatchObject({ url: cardUrl });
+    expect(twitterImages[0]).toBe(cardUrl);
+    expect(authors[0]).toMatchObject({ name: "Bing Cheng" });
   });
 
   it("keeps metadata complete for every published guide", () => {
     for (const page of LEARN_PAGES) {
-      const metadata = buildLearnPageMetadata(page, "en");
+      const metadata = buildLearnPageMetadata(page);
       const openGraph = metadata.openGraph;
       const twitter = metadata.twitter;
 
       expect(metadata.title).toBe(page.title);
       expect(metadata.description).toBe(page.description);
-      expect(metadata.alternates?.canonical).toBe(`/learn/${page.slug}`);
+      expect(metadata.alternates).toEqual({ canonical: `/learn/${page.slug}` });
       expect(openGraph && "url" in openGraph ? openGraph.url : undefined).toBe(
         `https://thememorychess.com/learn/${page.slug}`,
       );

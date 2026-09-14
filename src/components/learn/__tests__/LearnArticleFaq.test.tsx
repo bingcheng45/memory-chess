@@ -46,9 +46,7 @@ describe("LearnArticleRich FAQ", () => {
         <LearnArticleRich
           page={page}
           goals={EN_LEARN_GOALS}
-          allPages={EN_LEARN_PAGES}
-          locale="en"
-        />,
+          allPages={EN_LEARN_PAGES}        />,
       );
 
       // The FAQPage JSON-LD also carries the answers, so raw textContent

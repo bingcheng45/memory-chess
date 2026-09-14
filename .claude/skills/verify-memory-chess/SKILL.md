@@ -16,7 +16,7 @@ npm run build
 .claude/skills/verify-memory-chess/helpers/serve.sh start 4517
 ```
 
-`npm run build` runs the message and Learn-prose validators first and fails the build if they fail. `serve.sh start` refuses a port that is already in use, starts `next start` detached in the background, records the server's pid and start time in `.verify/server-<port>.pid` with its log in `.verify/server-<port>.log`, and returns once `http://127.0.0.1:<port>/` answers. A start that never answers kills what it spawned and removes the pid file, so an existing pid file always names a server that answered on its port. Teardown is `serve.sh stop 4517`, which signals only the process group of the pid it recorded, and only after checking that pid is still the server it started.
+`npm run build` runs the message validator first and fails the build if it fails. `serve.sh start` refuses a port that is already in use, starts `next start` detached in the background, records the server's pid and start time in `.verify/server-<port>.pid` with its log in `.verify/server-<port>.log`, and returns once `http://127.0.0.1:<port>/` answers. A start that never answers kills what it spawned and removes the pid file, so an existing pid file always names a server that answered on its port. Teardown is `serve.sh stop 4517`, which signals only the process group of the pid it recorded, and only after checking that pid is still the server it started.
 
 Verification works without any env vars. `.env.local` is not committed; without it the Supabase-backed leaderboard and games-played counter degrade gracefully (see Evidence) and the contact form's Google Sheets write fails with a 500. Never copy secrets from a checkout's `.env.local` into any committed file.
 

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
-import { LEARN_SLUGS, UPDATED_AT, reviewedLearnLocales } from "@/lib/seo/learn";
-import { LOCALES } from "@/i18n/routing";
+import { LEARN_SLUGS, UPDATED_AT } from "@/lib/seo/learn";
+import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
 import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
 
@@ -85,14 +85,25 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     changeFrequency: "yearly",
     priority: 0.3,
   },
+  {
+    path: "/learn",
+    lastModified: UPDATED_AT,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  ...LEARN_SLUGS.map((slug) => ({
+    path: `/learn/${slug}`,
+    lastModified: UPDATED_AT,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  })),
 ];
 
-
-/** hreflang block for one route across the locales that genuinely differ. */
-function alternatesFor(routePath: string, locales: readonly string[]) {
+/** hreflang block for one route across every locale. */
+function alternatesFor(routePath: string) {
   return {
     languages: Object.fromEntries(
-      locales.map((locale) => [
+      LOCALES.map((locale) => [
         locale,
         `${SITE_URL}${localizedPath(routePath, locale)}`,
       ]),
@@ -100,43 +111,25 @@ function alternatesFor(routePath: string, locales: readonly string[]) {
   };
 }
 
+function entryFor(
+  entry: SitemapEntryConfig,
+  locale: string,
+): MetadataRoute.Sitemap[number] {
+  return {
+    url: `${SITE_URL}${localizedPath(entry.path, locale)}`,
+    lastModified: new Date(entry.lastModified),
+    changeFrequency: entry.changeFrequency,
+    priority: entry.priority,
+  };
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticEntries: MetadataRoute.Sitemap = SITEMAP_ENTRIES.flatMap(
-    (entry) => {
-      const locales = isEnglishOnlyPath(entry.path) ? ["en"] : LOCALES;
-
-      return locales.map((locale) => ({
-        url: `${SITE_URL}${localizedPath(entry.path, locale)}`,
-        lastModified: new Date(entry.lastModified),
-        changeFrequency: entry.changeFrequency,
-        priority: entry.priority,
-        alternates: alternatesFor(entry.path, locales),
-      }));
-    },
+  return SITEMAP_ENTRIES.flatMap((entry) =>
+    isEnglishOnlyPath(entry.path)
+      ? [entryFor(entry, DEFAULT_LOCALE)]
+      : LOCALES.map((locale) => ({
+          ...entryFor(entry, locale),
+          alternates: alternatesFor(entry.path),
+        })),
   );
-
-  // Learn lists only reviewed locales; see REVIEWED_LEARN_LOCALES.
-  const learnTargets = reviewedLearnLocales();
-  const learnUpdated = new Date(UPDATED_AT);
-
-  const learnHubEntries: MetadataRoute.Sitemap = learnTargets.map((locale) => ({
-    url: `${SITE_URL}${localizedPath("/learn", locale)}`,
-    lastModified: learnUpdated,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-    alternates: alternatesFor("/learn", learnTargets),
-  }));
-
-  const learnArticleEntries: MetadataRoute.Sitemap = LEARN_SLUGS.flatMap(
-    (slug) =>
-      learnTargets.map((locale) => ({
-        url: `${SITE_URL}${localizedPath(`/learn/${slug}`, locale)}`,
-        lastModified: learnUpdated,
-        changeFrequency: "weekly" as const,
-        priority: 0.7,
-        alternates: alternatesFor(`/learn/${slug}`, learnTargets),
-      })),
-  );
-
-  return [...staticEntries, ...learnHubEntries, ...learnArticleEntries];
 }

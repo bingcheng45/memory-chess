@@ -2,9 +2,8 @@ export const PUBLISHED_AT = "2026-03-06T00:00:00.000Z";
 export const UPDATED_AT = "2026-08-17T00:00:00.000Z";
 
 /**
- * Goal ids and their hrefs are language-neutral. The visible label,
- * description and accent live in the `learnArticle.goals` messages so they can
- * follow the locale -- see getLearnGoals() in ./index.
+ * Goal ids and their hrefs. The visible label, description and accent live in
+ * the `learnArticle.goals` messages -- see EN_LEARN_GOALS in ./index.
  */
 export const LEARN_GOAL_IDS = [
   "reduce-blunders",

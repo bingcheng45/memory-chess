@@ -53,7 +53,7 @@ jest.mock("@/components/ui/Footer", () => {
 
 describe("LearnHubPageContent", () => {
   it("uses the shared editorial layout and plain guidance", () => {
-    const { container } = render(<LearnHubPageContent allPages={EN_LEARN_PAGES} goals={EN_LEARN_GOALS} locale="en" />);
+    const { container } = render(<LearnHubPageContent allPages={EN_LEARN_PAGES} goals={EN_LEARN_GOALS} />);
 
     expect(
       screen.getByRole("heading", {
@@ -110,44 +110,11 @@ describe("LearnHubPageContent", () => {
     };
   }
 
-  it("declares the localized hub in its structured data", () => {
-    // The German hub shows German titles. Assigning those titles to English
-    // URLs contradicts the localized canonical and the sitemap entries.
+  it("keeps the hub on its unprefixed URLs", () => {
     const { container } = render(
       <LearnHubPageContent
         allPages={EN_LEARN_PAGES}
-        goals={EN_LEARN_GOALS}
-        locale="de"
-      />,
-      { locale: "de" },
-    );
-
-    const { collection, itemList, breadcrumb } = schemaFor(container);
-    const hub = "https://thememorychess.com/de/learn";
-
-    expect(collection["@id"]).toBe(`${hub}#webpage`);
-    expect(collection.url).toBe(hub);
-    expect(collection.inLanguage).toBe("de");
-    expect(collection.mainEntity["@id"]).toBe(`${hub}#guides`);
-
-    expect(itemList["@id"]).toBe(`${hub}#guides`);
-    for (const entry of itemList.itemListElement) {
-      expect(entry.url).toMatch(/^https:\/\/thememorychess\.com\/de\/learn\//);
-    }
-
-    expect(breadcrumb.itemListElement.map((e: { item: string }) => e.item)).toEqual([
-      "https://thememorychess.com/de",
-      hub,
-    ]);
-  });
-
-  it("keeps the English hub on its unprefixed URLs", () => {
-    const { container } = render(
-      <LearnHubPageContent
-        allPages={EN_LEARN_PAGES}
-        goals={EN_LEARN_GOALS}
-        locale="en"
-      />,
+        goals={EN_LEARN_GOALS}      />,
     );
 
     const { collection, itemList, breadcrumb } = schemaFor(container);
@@ -167,9 +134,7 @@ describe("LearnHubPageContent", () => {
     const { container } = render(
       <LearnHubPageContent
         allPages={EN_LEARN_PAGES}
-        goals={EN_LEARN_GOALS}
-        locale="en"
-      />,
+        goals={EN_LEARN_GOALS}      />,
       {
         locale: "en",
         messages: markerCatalogue(enMessages) as Record<string, unknown>,

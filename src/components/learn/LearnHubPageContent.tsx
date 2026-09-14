@@ -8,10 +8,9 @@ import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import { useTranslations } from "next-intl";
 import type { LearnPageContent } from "@/lib/seo/learn/schema";
 import type { LearnGoal } from "@/lib/seo/learn";
-import { learnContentLocale } from "@/lib/seo/learn";
-import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 
 const SITE_URL = "https://thememorychess.com";
+const HUB_URL = `${SITE_URL}/learn`;
 
 // `id` keys into the `learnHub.paths` messages; `href` is language-neutral.
 // Slugs stay English across every locale so inbound links keep working.
@@ -24,24 +23,16 @@ const QUICK_STARTS = [
 
 type LearnHubSchemaInput = {
   allPages: LearnPageContent[];
-  locale: string;
   name: string;
   description: string;
 };
 
-/**
- * Page-scoped nodes carry the active locale so the hub's JSON-LD agrees with
- * its own canonical and with the sitemap. The WebSite node keeps the bare
- * origin -- it is one entity for the whole site, not one per language.
- */
 function buildLearnHubSchema({
   allPages,
-  locale,
   name,
   description,
 }: LearnHubSchemaInput) {
-  const homeUrl = localizedUrl("/", locale);
-  const hubUrl = localizedUrl("/learn", locale);
+  const hubUrl = HUB_URL;
 
   return {
     "@context": "https://schema.org",
@@ -52,7 +43,7 @@ function buildLearnHubSchema({
         url: hubUrl,
         name,
         description,
-        inLanguage: languageTag(locale),
+        inLanguage: "en-US",
         isPartOf: {
           "@type": "WebSite",
           "@id": `${SITE_URL}/#website`,
@@ -70,13 +61,13 @@ function buildLearnHubSchema({
           "@type": "ListItem",
           position: index + 1,
           name: page.title,
-          url: localizedUrl(`/learn/${page.slug}`, locale),
+          url: `${hubUrl}/${page.slug}`,
         })),
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: homeUrl },
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
           {
             "@type": "ListItem",
             position: 2,
@@ -92,18 +83,15 @@ function buildLearnHubSchema({
 type LearnHubProps = {
   allPages: LearnPageContent[];
   goals: LearnGoal[];
-  locale: string;
 };
 
 export default function LearnHubPageContent({
   allPages,
   goals,
-  locale,
 }: LearnHubProps) {
   const t = useTranslations("learnHub");
   const learnHubSchema = buildLearnHubSchema({
     allPages,
-    locale: learnContentLocale(locale),
     name: t("meta.title"),
     description: t("meta.description"),
   });

@@ -81,9 +81,7 @@ describe("LearnArticleRich", () => {
     const { container } = render(<LearnArticleRich
         page={page}
         goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}
-        locale="en"
-      />);
+        allPages={EN_LEARN_PAGES}      />);
 
     expect(screen.getByText("Start here")).toBeInTheDocument();
     expect(
@@ -141,46 +139,6 @@ describe("LearnArticleRich", () => {
     };
   }
 
-  it("identifies a translated article as the localized page", () => {
-    // A /de/learn/... page that declares the English URL in its JSON-LD
-    // contradicts its own localized canonical, and tells Google the German
-    // page and the English page are the same document.
-    const slug = "how-to-get-better-at-chess-for-beginners";
-    const page = getLearnPageBySlug(slug);
-
-    const { container } = render(
-      <LearnArticleRich
-        page={page}
-        goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}
-        locale="de"
-      />,
-      { locale: "de" },
-    );
-
-    const { article, webPage, breadcrumb, faq } = schemaFor(container);
-    const base = `https://thememorychess.com/de/learn/${slug}`;
-
-    expect(article["@id"]).toBe(`${base}#article`);
-    expect(article.image.url).toBe(`${base}/opengraph-image`);
-    expect(article.inLanguage).toBe("de");
-    expect(article.mainEntityOfPage["@id"]).toBe(`${base}#webpage`);
-
-    expect(webPage["@id"]).toBe(`${base}#webpage`);
-    expect(webPage.url).toBe(base);
-    expect(webPage.isPartOf["@id"]).toBe(
-      "https://thememorychess.com/de/learn#webpage",
-    );
-
-    expect(faq["@id"]).toBe(`${base}#faq-schema`);
-    expect(breadcrumb["@id"]).toBe(`${base}#breadcrumb`);
-    expect(breadcrumb.itemListElement.map((e: { item: string }) => e.item)).toEqual([
-      "https://thememorychess.com/de",
-      "https://thememorychess.com/de/learn",
-      base,
-    ]);
-  });
-
   it("keeps English structured data on the unprefixed URLs", () => {
     const slug = "how-to-get-better-at-chess-for-beginners";
     const page = getLearnPageBySlug(slug);
@@ -189,9 +147,7 @@ describe("LearnArticleRich", () => {
       <LearnArticleRich
         page={page}
         goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}
-        locale="en"
-      />,
+        allPages={EN_LEARN_PAGES}      />,
     );
 
     const { article, webPage, breadcrumb } = schemaFor(container);
@@ -207,9 +163,7 @@ describe("LearnArticleRich", () => {
     );
   });
 
-  it("keeps organization identifiers global across locales", () => {
-    // Publisher and author are one entity site-wide. Prefixing their @id per
-    // locale would split one organization into twenty-four in the graph.
+  it("keeps publisher and author on their site-wide identifiers", () => {
     const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
 
     const { container } = render(
@@ -217,9 +171,7 @@ describe("LearnArticleRich", () => {
         page={page}
         goals={EN_LEARN_GOALS}
         allPages={EN_LEARN_PAGES}
-        locale="ja"
       />,
-      { locale: "ja" },
     );
 
     const { article } = schemaFor(container);
@@ -230,29 +182,6 @@ describe("LearnArticleRich", () => {
     expect(article.author["@id"]).toBe(
       "https://thememorychess.com/about#bing-cheng",
     );
-  });
-
-  it("credits a reviewer only on prose a person has reviewed", () => {
-    const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
-    const renderIn = (locale: string) =>
-      render(
-        <LearnArticleRich
-          page={page}
-          goals={EN_LEARN_GOALS}
-          allPages={EN_LEARN_PAGES}
-          locale={locale}
-        />,
-        { locale },
-      ).container;
-
-    const english = renderIn("en");
-    expect(schemaFor(english).article.reviewedBy["@id"]).toBe(
-      "https://thememorychess.com/about#bing-cheng",
-    );
-    expect(english.textContent).toContain("Bing Cheng");
-
-    const japanese = renderIn("ja");
-    expect(schemaFor(japanese).article.reviewedBy).toBeUndefined();
   });
 
   it("reads every piece of article chrome from the catalogue", () => {
@@ -266,9 +195,7 @@ describe("LearnArticleRich", () => {
       <LearnArticleRich
         page={page}
         goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}
-        locale="en"
-      />,
+        allPages={EN_LEARN_PAGES}      />,
       {
         locale: "en",
         messages: markerCatalogue(enMessages) as Record<string, unknown>,
@@ -337,9 +264,7 @@ describe("LearnArticleRich", () => {
       <LearnArticleRich
         page={page}
         goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}
-        locale="en"
-      />,
+        allPages={EN_LEARN_PAGES}      />,
     );
 
     expect(screen.getByRole("link", { name: playable.ctaLabel })).toHaveAttribute(
@@ -355,9 +280,7 @@ describe("LearnArticleRich", () => {
     render(<LearnArticleRich
         page={page}
         goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}
-        locale="en"
-      />);
+        allPages={EN_LEARN_PAGES}      />);
 
     expect(
       screen.getByRole("heading", { name: "What to learn next" }),

@@ -12,7 +12,6 @@ import { useTranslations } from "next-intl";
 import { formatNumber } from "@/lib/utils";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 import { PieceColor, PieceType } from "@/types/chess";
-import { motion } from "framer-motion";
 import {
   ArrowRight,
   BookOpen,
@@ -97,30 +96,15 @@ export default function Home() {
         />
 
         <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl sm:text-5xl font-extrabold text-text-primary"
-          >
+          <h1 className="animate-in fade-in slide-in-from-top-4 duration-700 text-4xl sm:text-5xl font-extrabold text-text-primary">
             {t("hero.title")}
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="max-w-2xl text-lg text-text-secondary"
-          >
+          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 max-w-2xl text-lg text-text-secondary">
             {t("hero.subtitle")}
-          </motion.p>
+          </p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="max-w-2xl text-lg text-text-secondary"
-          >
+          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 max-w-2xl text-lg text-text-secondary">
             {t.rich("hero.freeToPlay", {
               link: (chunks) => (
                 <Link
@@ -131,25 +115,14 @@ export default function Home() {
                 </Link>
               ),
             })}
-          </motion.p>
+          </p>
 
-          <motion.h2
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-xl font-bold text-peach-500"
-          >
-            {t("hero.gamesPlayed", {
-              count: totalPlays !== null ? formatNumber(totalPlays) : "...",
-            })}
-          </motion.h2>
+          <p className="min-h-7 text-xl font-bold text-peach-500">
+            {totalPlays !== null &&
+              t("hero.gamesPlayed", { count: formatNumber(totalPlays) })}
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="flex flex-col gap-4 sm:flex-row sm:gap-6"
-          >
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 flex flex-col gap-4 sm:flex-row sm:gap-6">
             <Link href="/game">
               <Button
                 variant="secondary"
@@ -169,15 +142,11 @@ export default function Home() {
                 {t("cta.leaderboard")}
               </Button>
             </Link>
-          </motion.div>
+          </div>
 
           <VideoSection />
 
-          <motion.section
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
+          <section
             className="mt-16 w-full max-w-6xl overflow-hidden rounded-lg border border-white/10 bg-[linear-gradient(135deg,rgba(20,20,20,0.96),rgba(10,10,10,0.98)),linear-gradient(90deg,rgba(255,179,128,0.08)_1px,transparent_1px),linear-gradient(0deg,rgba(94,234,212,0.06)_1px,transparent_1px)] bg-[length:auto,48px_48px,48px_48px] shadow-2xl shadow-black/30"
           >
             <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
@@ -203,12 +172,8 @@ export default function Home() {
                     const Icon = step.icon;
 
                     return (
-                      <motion.div
+                      <div
                         key={step.id}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        initial={{ opacity: 0, x: -18 }}
-                        viewport={{ once: true, amount: 0.4 }}
-                        transition={{ duration: 0.45, delay: index * 0.08 }}
                         className="group grid grid-cols-[auto_1fr] gap-4 rounded-lg border border-white/10 bg-white/[0.035] p-4 text-left transition duration-300 hover:border-peach-500/35 hover:bg-white/[0.06]"
                       >
                         <div className="flex flex-col items-center">
@@ -232,7 +197,7 @@ export default function Home() {
                             {t(`howItWorks.steps.${step.id}.description`)}
                           </p>
                         </div>
-                      </motion.div>
+                      </div>
                     );
                   })}
                 </div>
@@ -321,7 +286,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </section>
 
           <div className="mt-8 mb-4">
             <Link href="/game">

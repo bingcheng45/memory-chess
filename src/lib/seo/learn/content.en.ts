@@ -59,18 +59,20 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "10-second board scan",
         description:
-          "Use an easy setup and find every unprotected piece before time runs out.",
+          "Play 4 pieces with 10 seconds to look. While the position is up, say which pieces are unprotected, then rebuild the board.",
         duration: "3 minutes",
-        goal: "Build a safety check before each move.",
-        ctaLabel: "Run a board scan round",
+        goal: "A full rebuild, with the loose pieces named out loud.",
+        ctaLabel: "Play 4 pieces, 10 seconds",
+        setup: { pieceCount: 4, memorizeTime: 10 },
       },
       {
-        title: "Repeat-the-same-position recall",
+        title: "Repeat-the-same-settings recall",
         description:
-          "Play the same position twice so you can find and fix one memory mistake.",
+          "Play 8 pieces with 10 seconds to look, twice in a row. The result screen shows the original beside your board, so you can see the exact piece you dropped.",
         duration: "5 minutes",
         goal: "Find the exact piece or square you forgot.",
-        ctaLabel: "Train repeat recall",
+        ctaLabel: "Play 8 pieces, 10 seconds",
+        setup: { pieceCount: 8, memorizeTime: 10 },
       },
       {
         title: "Game-to-drill transfer block",
@@ -240,10 +242,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "Static board snapshot",
         description:
-          "Remember the board, then place each piece on the correct square.",
+          "Look at 6 pieces for 10 seconds, then place each one back on its square.",
         duration: "4 minutes",
         goal: "Remember the board before you start picturing moves.",
-        ctaLabel: "Start snapshot training",
+        ctaLabel: "Play 6 pieces, 10 seconds",
+        setup: { pieceCount: 6, memorizeTime: 10 },
       },
       {
         title: "One move each side",
@@ -256,10 +259,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "Pressure-window recall",
         description:
-          "Once your recall is accurate, use less time to remember the board.",
+          "Keep 6 pieces but cut the look time to 5 seconds. Do this only once your 10-second rounds are accurate.",
         duration: "5 minutes",
         goal: "Use clear recall in faster games.",
-        ctaLabel: "Add time pressure",
+        ctaLabel: "Play 6 pieces, 5 seconds",
+        setup: { pieceCount: 6, memorizeTime: 5 },
       },
     ],
     comparisonTitle: "What weak visualization feels like",
@@ -428,10 +432,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "Fast-square recall",
         description:
-          "Use a short viewing window so the board has to stay intact while you scan it.",
+          "Play 6 pieces with only 4 seconds to look. The board has to stay intact in your head while you scan it.",
         duration: "4 minutes",
         goal: "Remember piece locations while you scan the board.",
-        ctaLabel: "Speed up recall",
+        ctaLabel: "Play 6 pieces, 4 seconds",
+        setup: { pieceCount: 6, memorizeTime: 4 },
       },
     ],
     comparisonTitle: "Weak board vision vs stronger board vision",
@@ -558,7 +563,7 @@ export const EN_GUIDES: BuildGuideInput[] = [
       "Chess memory training helps you remember useful positions while the pieces change. It is not about memorising as many random boards as possible.",
     keyTakeaways: [
       "Accuracy matters more than speed at first.",
-      "Repeating a position helps you find one memory mistake at a time.",
+      "Repeating the same settings helps you find one memory mistake at a time.",
       "Use memory practice before calculation or game review.",
     ],
     whoThisIsFor: [
@@ -577,35 +582,38 @@ export const EN_GUIDES: BuildGuideInput[] = [
     startHereSteps: [
       "Begin with a simple position and memorise it for 10 seconds.",
       "Recreate the board and note the first square or piece you lost.",
-      "Repeat the same position once so the correction becomes visible.",
+      "Play a second round at the same settings and check whether the same mistake repeats.",
       "Add one short tactical line from the memorized setup.",
       "Track both accuracy and the type of memory error you made.",
     ],
     drillSectionTitle: "Memory drills for real games",
     drillCards: [
       {
-        title: "Single-position repeat",
+        title: "Same-settings repeat",
         description:
-          "Memorize one position, rebuild it, then repeat it once with the same settings.",
+          "Play 6 pieces with 10 seconds to look, then play again at the same settings. Compare the two result screens.",
         duration: "5 minutes",
         goal: "Find one clear memory mistake you can fix.",
-        ctaLabel: "Repeat one position",
+        ctaLabel: "Play 6 pieces, 10 seconds",
+        setup: { pieceCount: 6, memorizeTime: 10 },
       },
       {
         title: "Pattern anchor recall",
         description:
-          "Focus on king location, loose pieces, and central tension before recalling everything else.",
+          "Play 12 pieces with 10 seconds to look. Find both kings first, then the loose pieces, then fill in the rest.",
         duration: "4 minutes",
         goal: "Remember the most important parts of the position first.",
-        ctaLabel: "Train pattern anchors",
+        ctaLabel: "Play 12 pieces, 10 seconds",
+        setup: { pieceCount: 12, memorizeTime: 10 },
       },
       {
         title: "Recall-then-calculate",
         description:
-          "After rebuilding the board, calculate one short line before verifying.",
+          "Play 8 pieces with 10 seconds to look. After you rebuild the board, work out one short line from it before you press submit.",
         duration: "6 minutes",
         goal: "Use your board memory while calculating moves.",
-        ctaLabel: "Add a transfer line",
+        ctaLabel: "Play 8 pieces, 10 seconds",
+        setup: { pieceCount: 8, memorizeTime: 10 },
       },
     ],
     comparisonTitle: "What weak recall looks like in games",
@@ -751,10 +759,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "Rebuild before moving",
         description:
-          "Do not imagine moves until the starting position is fully stable.",
+          "Play 8 pieces with 10 seconds to look and rebuild the whole position. Do not imagine any moves until you can do this cleanly.",
         duration: "4 minutes",
         goal: "Build clear board recall before adding more moves.",
-        ctaLabel: "Rebuild the board first",
+        ctaLabel: "Play 8 pieces, 10 seconds",
+        setup: { pieceCount: 8, memorizeTime: 10 },
       },
       {
         title: "One move for each side",
@@ -766,11 +775,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       },
       {
         title: "Short viewing time",
-        description:
-          "Use less viewing time so you learn to remember the board more quickly.",
+        description: "Keep 8 pieces but drop the look time to 5 seconds.",
         duration: "4 minutes",
         goal: "Prepare for blindfold practice without hiding the whole board.",
-        ctaLabel: "Shorten the window",
+        ctaLabel: "Play 8 pieces, 5 seconds",
+        setup: { pieceCount: 8, memorizeTime: 5 },
       },
     ],
     comparisonTitle: "A safer way to practise blindfold chess",
@@ -930,10 +939,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "Recall reset",
         description:
-          "Use one Memory Chess round between line-calculation attempts to keep the base board stable.",
+          "Between two line-calculation attempts, play one round of 8 pieces with 8 seconds to look, then go back to the lines.",
         duration: "4 minutes",
         goal: "Remember the starting position before following moves.",
-        ctaLabel: "Reset the board",
+        ctaLabel: "Play 8 pieces, 8 seconds",
+        setup: { pieceCount: 8, memorizeTime: 8 },
       },
       {
         title: "Post-line comparison",
@@ -1256,10 +1266,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "Recall before calculation",
         description:
-          "Play a quick Memory Chess round before puzzles so the board feels clearer.",
+          "Before your puzzle block, play one round of 6 pieces with 8 seconds to look.",
         duration: "4 minutes",
         goal: "Connect pattern practice to real play.",
-        ctaLabel: "Sharpen recall first",
+        ctaLabel: "Play 6 pieces, 8 seconds",
+        setup: { pieceCount: 6, memorizeTime: 8 },
       },
       {
         title: "Game-position replay",
@@ -1432,10 +1443,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "Whole-board recall",
         description:
-          "Use Memory Chess with a moderate piece count and then call out the board by zone.",
+          "Play 10 pieces with 10 seconds to look. When the board clears, place the pieces zone by zone: queenside, centre, kingside.",
         duration: "5 minutes",
         goal: "Remember more of the board at one time.",
-        ctaLabel: "Recall by zone",
+        ctaLabel: "Play 10 pieces, 10 seconds",
+        setup: { pieceCount: 10, memorizeTime: 10 },
       },
     ],
     comparisonTitle: "Tunnel vision vs whole-board awareness",
@@ -1579,10 +1591,12 @@ export const EN_GUIDES: BuildGuideInput[] = [
     drillCards: [
       {
         title: "Piece-to-square naming",
-        description: "Rebuild a board and call every piece by name and square.",
+        description:
+          "Play 6 pieces with 12 seconds to look. Say each piece and its square out loud while you look, then place them back.",
         duration: "4 minutes",
         goal: "Connect square names to pieces you need to remember.",
-        ctaLabel: "Name every square",
+        ctaLabel: "Play 6 pieces, 12 seconds",
+        setup: { pieceCount: 6, memorizeTime: 12 },
       },
       {
         title: "Long-range line naming",
@@ -1749,10 +1763,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "Warm-up recall",
         description:
-          "Use one short Memory Chess round as the anchor for the whole session.",
+          "Open every session with one round of 6 pieces and 10 seconds to look.",
         duration: "6 minutes",
         goal: "Start every session with the same board-memory warm-up.",
-        ctaLabel: "Start the warm-up",
+        ctaLabel: "Play 6 pieces, 10 seconds",
+        setup: { pieceCount: 6, memorizeTime: 10 },
       },
       {
         title: "Threat check sprint",
@@ -2007,7 +2022,7 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         question: "How does Memory Chess help game analysis?",
         answer:
-          "It helps you rebuild important positions so your review is more accurate.",
+          "Practising board recall makes it easier to rebuild the key positions from your own games.",
       },
     ],
     relatedArticles: [
@@ -2075,10 +2090,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "Puzzle warm-up plus recall",
         description:
-          "Combine one short recall drill with a modest puzzle block instead of doing puzzles cold.",
+          "Play one round of 6 pieces with 10 seconds to look, then start a modest puzzle block.",
         duration: "10 minutes",
         goal: "Connect puzzle practice to real play.",
-        ctaLabel: "Add recall to tactics",
+        ctaLabel: "Play 6 pieces, 10 seconds",
+        setup: { pieceCount: 6, memorizeTime: 10 },
       },
       {
         title: "Signal check after each puzzle",
@@ -2412,10 +2428,11 @@ export const EN_GUIDES: BuildGuideInput[] = [
       {
         title: "Recall then calculate",
         description:
-          "Use a short recall round before line work so the board is cleaner.",
+          "Before your line work, play one round of 12 pieces with 8 seconds to look.",
         duration: "4 minutes",
         goal: "Remember the board before following a move sequence.",
-        ctaLabel: "Recall before lines",
+        ctaLabel: "Play 12 pieces, 8 seconds",
+        setup: { pieceCount: 12, memorizeTime: 8 },
       },
       {
         title: "Sentence summary line",

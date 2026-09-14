@@ -6,10 +6,12 @@ const PUBLISHER_ID = "pub-9048170183399377";
 const PROD_ORIGIN = "https://thememorychess.com";
 const CONCURRENCY = 8;
 const MIN_MAIN_WORDS = 300;
-const MAX_HIDDEN_SHARE = 0.05;
 const MAX_SIMILARITY = 0.5;
 const SHINGLE = 5;
-const MIN_BOILERPLATE_WORDS = 8;
+const MIN_BOILERPLATE_WORDS = 5;
+const MAX_SHARED_HEADING_PAGES = 3;
+const MAX_SHARED_HEADING_SHARE = 0.5;
+const MIN_TEMPLATE_HEADINGS = 4;
 const MAX_SENTENCE_REPEATS = 3;
 
 /**
@@ -27,6 +29,7 @@ const PLACEHOLDERS = [
   /\blorem ipsum\b/i,
   /\bunder construction\b/i,
   /\bTODO\b/,
+  /no entries on this leaderboard yet/i,
 ];
 
 const TRUST_LINKS = ["/privacy", "/about", "/terms", "/contact-us"];
@@ -48,6 +51,7 @@ function stripBlocks(html, tags) {
 
 function toText(html) {
   return html
+    .replace(/<\/(?:h[1-6]|p|li|td|th|dt|dd|summary|figcaption|blockquote)>/gi, " ¶ ")
     .replace(/<[^>]*>/g, " ")
     .replace(/&[a-zA-Z#0-9]+;/g, " ")
     .replace(/\s+/g, " ")
@@ -90,7 +94,7 @@ function attr(html, pattern) {
 
 function parsePage(url, status, html) {
   const body = stripBlocks(html, ["script", "style", "noscript", "template"]);
-  const main = stripBlocks(body, ["header", "nav", "footer"]);
+  const main = stripBlocks(body, ["nav", "footer"]);
   const mainText = toText(main);
   const path = new URL(url).pathname;
   const localeMatch = path.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)(?=\/|$)/);
@@ -104,8 +108,9 @@ function parsePage(url, status, html) {
     title: attr(html, /<title>([^<]*)<\/title>/i),
     description: attr(html, /<meta name="description" content="([^"]*)"/i),
     h1Count: (body.match(/<h1\b/gi) ?? []).length,
+    headings: [...main.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)].map((m) => toText(m[1]).replace(/¶/g, "").trim()),
     mainText,
-    proseText: toText(stripBlocks(main, ["cite"])),
+    proseText: toText(stripBlocks(main, ["cite", "a"])),
     mainWords: countUnits(mainText),
     hiddenWords: countUnits(hiddenText(main)),
     adUnits: (html.match(/<ins\b[^>]*class="[^"]*adsbygoogle/gi) ?? []).length,
@@ -115,7 +120,7 @@ function parsePage(url, status, html) {
 }
 
 function shingles(text) {
-  const words = text.toLowerCase().split(" ");
+  const words = text.toLowerCase().split(" ").filter((word) => word !== "¶");
   const set = new Set();
   for (let i = 0; i + SHINGLE <= words.length; i += 1) {
     set.add(words.slice(i, i + SHINGLE).join(" "));
@@ -182,10 +187,8 @@ const RULES = [
   {
     id: "hidden-text",
     guideline: "G19 no text hidden from the first paint",
-    check: (page) => {
-      const share = page.hiddenWords / (page.mainWords || 1);
-      return share <= MAX_HIDDEN_SHARE ? [] : [`${page.hiddenWords} of ${page.mainWords} words ship hidden (${Math.round(share * 100)}%)`];
-    },
+    check: (page) =>
+      page.hiddenWords === 0 ? [] : [`${page.hiddenWords} of ${page.mainWords} words ship at opacity 0, display none or visibility hidden`],
   },
   {
     id: "placeholder",
@@ -261,14 +264,14 @@ const RULES = [
   },
   {
     id: "boilerplate",
-    guideline: "G6 no content sentence stamped onto many pages of a language (citations excepted)",
+    guideline: "G6 no content sentence stamped onto many pages of a language (citations and link text excepted)",
     site: (pages) => {
       const problems = new Map();
       const pagesBySentence = new Map();
       for (const page of pages) {
         const sentences = new Set(
           page.proseText
-            .split(/(?<=[.!?。！？])\s+/)
+            .split(/(?<=[.!?。！？])\s+|\s*¶\s*/)
             .filter((s) => countWords(s) >= MIN_BOILERPLATE_WORDS),
         );
         for (const sentence of sentences) {
@@ -283,6 +286,30 @@ const RULES = [
           problems.set(page.url, [
             ...(problems.get(page.url) ?? []),
             `sentence on ${shared.length} pages: "${sentence.slice(0, 90)}"`,
+          ]);
+        }
+      }
+      return problems;
+    },
+  },
+  {
+    id: "heading-template",
+    guideline: "G6 pages of a language do not share one section scaffold",
+    site: (pages) => {
+      const problems = new Map();
+      const pageCountByHeading = new Map();
+      const keyOf = (page, heading) => `${page.locale}|${heading}`;
+      for (const page of pages) {
+        for (const heading of new Set(page.headings)) {
+          pageCountByHeading.set(keyOf(page, heading), (pageCountByHeading.get(keyOf(page, heading)) ?? 0) + 1);
+        }
+      }
+      for (const page of pages) {
+        if (page.headings.length < MIN_TEMPLATE_HEADINGS) continue;
+        const shared = page.headings.filter((heading) => pageCountByHeading.get(keyOf(page, heading)) > MAX_SHARED_HEADING_PAGES);
+        if (shared.length / page.headings.length >= MAX_SHARED_HEADING_SHARE) {
+          problems.set(page.url, [
+            `${shared.length} of ${page.headings.length} section headings each head more than ${MAX_SHARED_HEADING_PAGES} pages: ${shared.join(" / ")}`,
           ]);
         }
       }
@@ -305,16 +332,23 @@ const RULES = [
   },
 ];
 
-async function crawlLinks(pages) {
+const listedKey = (url) => url.replace(/\/$/, "") || base;
+
+async function crawlLinks(pages, listed) {
   const targets = [...new Set(pages.flatMap((page) => page.links))]
     .filter((href) => href.startsWith("/") || href.startsWith(PROD_ORIGIN))
-    .map((href) => toLocal(href.startsWith("/") ? `${base}${href}` : href));
-  const statuses = await pool(targets, async (url) => {
+    .map((href) => toLocal(href.startsWith("/") ? `${base}${href}` : href))
+    .filter((url) => !listed.has(listedKey(url)));
+  const crawled = await pool(targets, async (url) => {
     const res = await fetch(url, { redirect: "follow" });
-    await res.arrayBuffer();
-    return { url, status: res.status };
+    const landsOnListed = listed.has(listedKey(res.url));
+    const html = res.ok && !landsOnListed ? await res.text() : (await res.arrayBuffer(), "");
+    return { url, status: res.status, page: html ? parsePage(res.url, res.status, html) : null };
   });
-  return statuses.filter((s) => s.status !== 200);
+  return {
+    broken: crawled.filter((c) => c.status !== 200),
+    unlisted: crawled.filter((c) => c.page && isIndexable(c.page)).map((c) => c.page),
+  };
 }
 
 async function main() {
@@ -333,10 +367,11 @@ async function main() {
     if (rule.site) for (const [url, messages] of rule.site(indexable, { listed })) add(url, rule.id, messages);
   }
 
-  const broken = await crawlLinks(pages);
+  const { broken, unlisted } = await crawlLinks(pages, listed);
   const adsTxt = await fetch(`${base}/ads.txt`).then((r) => (r.ok ? r.text() : ""));
   const siteProblems = [
     ...broken.map((b) => ({ rule: "broken-link", message: `${b.url} answers ${b.status}` })),
+    ...unlisted.map((p) => ({ rule: "unlisted-indexable", message: `${p.path} is linked and indexable but missing from the sitemap` })),
     ...(adsTxt.includes(PUBLISHER_ID) ? [] : [{ rule: "ads-txt", message: `ads.txt does not list ${PUBLISHER_ID}` }]),
   ];
 

@@ -1,34 +1,37 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { buildAlternates, localizedPath } from "@/lib/seo/alternates";
 import { Link } from "@/i18n/navigation";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
 import {
   EditorialHero,
   EditorialPageShell,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
-import { useLocale, useTranslations } from "next-intl";
-import { LATEST_CHANGELOG_ENTRY, getChangelogEntryId } from "@/lib/changelog";
-import { getLocalizedChangelogEntries } from "@/lib/changelog/localized";
+import { useTranslations } from "next-intl";
+import {
+  CHANGELOG_ENTRIES,
+  LATEST_CHANGELOG_ENTRY,
+  getChangelogEntryId,
+} from "@/lib/changelog";
 
 const siteUrl = "https://thememorychess.com";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "changelog.meta" });
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations({
+    locale: DEFAULT_LOCALE,
+    namespace: "changelog.meta",
+  });
 
   return {
     title: t("title"),
     description: t("description"),
-    alternates: buildAlternates("/changelog", locale),
+    alternates: {
+      canonical: "/changelog",
+    },
     openGraph: {
       title: t("socialTitle"),
       description: t("socialDescription"),
-      url: `${siteUrl}${localizedPath("/changelog", locale)}`,
+      url: `${siteUrl}/changelog`,
     },
     twitter: {
       title: t("socialTitle"),
@@ -46,10 +49,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 
 export default function ChangelogPage() {
   const t = useTranslations("changelog");
-  const locale = useLocale();
-  // Prose only. Versions, dates and link hrefs stay English-sourced -- see
-  // the overlay's rationale in src/lib/changelog/localized.ts.
-  const entries = getLocalizedChangelogEntries(locale);
+  const entries = CHANGELOG_ENTRIES;
   return (
     <EditorialPageShell>
       <EditorialHero

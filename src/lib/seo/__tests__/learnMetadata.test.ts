@@ -71,6 +71,19 @@ describe("buildLearnPageMetadata", () => {
     );
   });
 
+  it("keeps an unreviewed translation served but out of the index", () => {
+    const page = pageFor("how-to-stop-blundering-in-chess");
+    const german = buildLearnPageMetadata(page, "de");
+    const english = buildLearnPageMetadata(page, "en");
+
+    expect(german.robots).toEqual({ index: false, follow: true });
+    expect(german.alternates).toEqual({
+      canonical: "/de/learn/how-to-stop-blundering-in-chess",
+    });
+    expect(english.robots).toBeUndefined();
+    expect(english.alternates?.languages).toBeUndefined();
+  });
+
   it("keeps the social card unprefixed for English", () => {
     const page = pageFor("how-to-stop-blundering-in-chess");
     const openGraph = buildLearnPageMetadata(page, "en").openGraph;

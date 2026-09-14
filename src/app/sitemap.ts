@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
-import { LEARN_SLUGS, UPDATED_AT, learnLocales } from "@/lib/seo/learn";
+import { LEARN_SLUGS, UPDATED_AT, reviewedLearnLocales } from "@/lib/seo/learn";
 import { LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
 import { ENGLISH_ONLY_PATHS } from "@/lib/seo/englishOnly";
@@ -115,9 +115,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   );
 
-  // Learn covers only the locales with a real translated article set. The rest
-  // fall back to English at runtime and must not appear as separate URLs.
-  const learnTargets = learnLocales();
+  // Learn lists only reviewed locales; see REVIEWED_LEARN_LOCALES.
+  const learnTargets = reviewedLearnLocales();
   const learnUpdated = new Date(UPDATED_AT);
 
   const learnHubEntries: MetadataRoute.Sitemap = learnTargets.map((locale) => ({

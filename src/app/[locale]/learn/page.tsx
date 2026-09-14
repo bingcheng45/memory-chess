@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { buildAlternates, localizedPath } from "@/lib/seo/alternates";
+import { localizedPath } from "@/lib/seo/alternates";
+import { buildLearnIndexing } from "@/lib/seo/learnMetadata";
 
 const SITE_URL = "https://thememorychess.com";
 import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
@@ -17,7 +18,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    alternates: buildAlternates("/learn", locale),
+    ...buildLearnIndexing("/learn", locale),
     openGraph: {
       title: t("title"),
       description: t("description"),

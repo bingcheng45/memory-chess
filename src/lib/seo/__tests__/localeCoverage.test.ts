@@ -6,7 +6,7 @@ import { LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import {
   EN_LEARN_PAGES,
   hasLearnTranslation,
-  learnLocales,
+  reviewedLearnLocales,
 } from "@/lib/seo/learn";
 
 const PROSE_DIR = path.join(process.cwd(), "src/lib/seo/learn/prose");
@@ -15,15 +15,12 @@ const NON_DEFAULT_LOCALES = LOCALES.filter(
 );
 
 describe("locale coverage", () => {
-  it("ships translated Learn prose for every locale we advertise", () => {
-    // hasLearnTranslation gates hreflang and the sitemap. A locale that is
-    // advertised but falls back to English prose is duplicate content, so the
-    // gate and the prose files have to agree with the routing table.
+  it("ships translated Learn prose for every locale, and vouches only for reviewed ones", () => {
     for (const locale of NON_DEFAULT_LOCALES) {
       expect(fs.existsSync(path.join(PROSE_DIR, `${locale}.json`))).toBe(true);
       expect(hasLearnTranslation(locale)).toBe(true);
     }
-    expect(learnLocales()).toHaveLength(LOCALES.length);
+    expect(reviewedLearnLocales()).toEqual([DEFAULT_LOCALE]);
   });
 
   it("keeps every prose file aligned with the English article order", () => {
@@ -40,16 +37,16 @@ describe("locale coverage", () => {
     }
   });
 
-  it("emits the full locale matrix in the sitemap", async () => {
+  it("lists the app in every locale but Learn only in reviewed ones", async () => {
     const entries = await sitemap();
     const urls = new Set(entries.map((entry) => entry.url));
 
     for (const locale of NON_DEFAULT_LOCALES) {
-      expect(urls).toContain(`https://thememorychess.com/${locale}/learn`);
       expect(urls).toContain(`https://thememorychess.com/${locale}/game`);
+      expect(urls).not.toContain(`https://thememorychess.com/${locale}/learn`);
 
       for (const page of EN_LEARN_PAGES) {
-        expect(urls).toContain(
+        expect(urls).not.toContain(
           `https://thememorychess.com/${locale}/learn/${page.slug}`,
         );
       }

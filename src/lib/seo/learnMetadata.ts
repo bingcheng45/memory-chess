@@ -1,5 +1,10 @@
 import type { Metadata } from 'next';
-import { hasLearnTranslation, learnContentLocale, learnLocales } from '@/lib/seo/learn';
+import {
+  hasLearnTranslation,
+  isReviewedLearnLocale,
+  learnContentLocale,
+  reviewedLearnLocales,
+} from '@/lib/seo/learn';
 import type { LearnPageContent } from '@/lib/seo/learn/schema';
 import { localizedPath } from '@/lib/seo/alternates';
 import { DEFAULT_LOCALE } from '@/i18n/routing';
@@ -7,28 +12,39 @@ import { DEFAULT_LOCALE } from '@/i18n/routing';
 const SITE_URL = 'https://thememorychess.com';
 
 /**
- * hreflang for a Learn article covers only the locales that actually have a
- * translated article set -- see TRANSLATED_LEARN_LOCALES in ./learn. A locale
- * that falls back to English canonicalises to the English URL instead of
- * claiming a translation that does not exist.
+ * Canonical, hreflang and robots for any Learn route, the hub included.
+ *
+ * hreflang lists only reviewed locales, so it never points a search engine at
+ * a page that asks not to be indexed. An unreviewed translation canonicalises
+ * to itself and is noindexed rather than pointed at English: it is a real
+ * translation, just not one we vouch for. A locale with no translation at all
+ * still canonicalises to the English URL.
  */
-function buildLearnAlternates(slug: string, locale: string): Metadata['alternates'] {
-  const path = `/learn/${slug}`;
-  const translated = learnLocales();
-
+export function buildLearnIndexing(
+  path: string,
+  locale: string,
+): Pick<Metadata, 'alternates' | 'robots'> {
   if (!hasLearnTranslation(locale)) {
-    return { canonical: localizedPath(path, DEFAULT_LOCALE) };
+    return { alternates: { canonical: localizedPath(path, DEFAULT_LOCALE) } };
   }
 
-  const languages = Object.fromEntries(
-    translated.map((l) => [l, localizedPath(path, l)]),
-  ) as Record<string, string>;
+  if (!isReviewedLearnLocale(locale)) {
+    return {
+      alternates: { canonical: localizedPath(path, locale) },
+      robots: { index: false, follow: true },
+    };
+  }
 
+  const reviewed = reviewedLearnLocales();
   return {
-    canonical: localizedPath(path, locale),
-    languages: {
-      ...languages,
-      'x-default': localizedPath(path, DEFAULT_LOCALE),
+    alternates: {
+      canonical: localizedPath(path, locale),
+      ...(reviewed.length > 1 && {
+        languages: {
+          ...Object.fromEntries(reviewed.map((l) => [l, localizedPath(path, l)])),
+          'x-default': localizedPath(path, DEFAULT_LOCALE),
+        },
+      }),
     },
   };
 }
@@ -53,7 +69,7 @@ export function buildLearnPageMetadata(
   return {
     title: page.title,
     description: page.description,
-    alternates: buildLearnAlternates(page.slug, locale),
+    ...buildLearnIndexing(`/learn/${page.slug}`, locale),
     openGraph: {
       title: page.title,
       description: page.description,

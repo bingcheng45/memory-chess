@@ -12,7 +12,7 @@ import {
   type LearnPageContent,
 } from "@/lib/seo/learn/schema";
 import type { LearnGoal } from "@/lib/seo/learn";
-import { learnContentLocale } from "@/lib/seo/learn";
+import { isReviewedLearnLocale, learnContentLocale } from "@/lib/seo/learn";
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import LearnArticleTracking from "@/components/learn/LearnArticleTracking";
 
@@ -93,6 +93,7 @@ export default function LearnArticleRich({
   const articleUrl = localizedUrl(`/learn/${page.slug}`, contentLocale);
   const socialImageUrl = `${articleUrl}/opengraph-image`;
   const relatedPages = buildRelatedPageData(page, allPages);
+  const isReviewed = isReviewedLearnLocale(contentLocale);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -120,12 +121,14 @@ export default function LearnArticleRich({
           name: "Bing Cheng",
           url: `${SITE_URL}/about`,
         },
-        reviewedBy: {
-          "@type": "Person",
-          "@id": `${SITE_URL}/about#bing-cheng`,
-          name: page.reviewedBy,
-          url: `${SITE_URL}/about`,
-        },
+        ...(isReviewed && {
+          reviewedBy: {
+            "@type": "Person",
+            "@id": `${SITE_URL}/about#bing-cheng`,
+            name: page.reviewedBy,
+            url: `${SITE_URL}/about`,
+          },
+        }),
         publisher: {
           "@type": "Organization",
           "@id": `${SITE_URL}/#organization`,
@@ -236,7 +239,9 @@ export default function LearnArticleRich({
             <time dateTime={page.updatedAt}>
               {t("updated", { date: formatDate(page.updatedAt, locale) })}
             </time>
-            <span>{t("reviewedBy", { name: page.reviewedBy })}</span>
+            {isReviewed ? (
+              <span>{t("reviewedBy", { name: page.reviewedBy })}</span>
+            ) : null}
           </div>
         </header>
 

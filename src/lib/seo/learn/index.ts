@@ -83,9 +83,26 @@ export function hasLearnTranslation(locale: string): boolean {
   return locale === DEFAULT_LOCALE || TRANSLATED_LEARN_LOCALES.has(locale as Locale);
 }
 
-/** Locales whose Learn content is genuinely distinct, for hreflang and sitemap. */
-export function learnLocales(): Locale[] {
-  return [DEFAULT_LOCALE, ...TRANSLATED_LEARN_LOCALES];
+/**
+ * Locales whose Learn prose a person has read end to end.
+ *
+ * The 23 translations were produced in one automated pass and nobody who reads
+ * those languages has checked them. They stay served, because a reader is
+ * better off with them than with English, but they are not offered to search
+ * engines and do not carry a reviewer's name. Indexing 368 unreviewed copies of
+ * 16 guides is the scaled, machine-translated pattern Google's spam policy
+ * names. The sitemap, hreflang, robots and byline all read this one set.
+ *
+ * Add a locale here only after a native speaker has reviewed its prose file.
+ */
+const REVIEWED_LEARN_LOCALES: ReadonlySet<string> = new Set([DEFAULT_LOCALE]);
+
+export function isReviewedLearnLocale(locale: string): boolean {
+  return REVIEWED_LEARN_LOCALES.has(locale);
+}
+
+export function reviewedLearnLocales(): Locale[] {
+  return [...REVIEWED_LEARN_LOCALES] as Locale[];
 }
 
 /**

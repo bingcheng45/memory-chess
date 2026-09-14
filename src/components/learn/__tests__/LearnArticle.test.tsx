@@ -230,7 +230,29 @@ describe("LearnArticleRich", () => {
     expect(article.author["@id"]).toBe(
       "https://thememorychess.com/about#bing-cheng",
     );
-    expect(article.reviewedBy["@id"]).toBe(article.author["@id"]);
+  });
+
+  it("credits a reviewer only on prose a person has reviewed", () => {
+    const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
+    const renderIn = (locale: string) =>
+      render(
+        <LearnArticleRich
+          page={page}
+          goals={EN_LEARN_GOALS}
+          allPages={EN_LEARN_PAGES}
+          locale={locale}
+        />,
+        { locale },
+      ).container;
+
+    const english = renderIn("en");
+    expect(schemaFor(english).article.reviewedBy["@id"]).toBe(
+      "https://thememorychess.com/about#bing-cheng",
+    );
+    expect(english.textContent).toContain("Bing Cheng");
+
+    const japanese = renderIn("ja");
+    expect(schemaFor(japanese).article.reviewedBy).toBeUndefined();
   });
 
   it("reads every piece of article chrome from the catalogue", () => {

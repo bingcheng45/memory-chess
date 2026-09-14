@@ -1,12 +1,12 @@
 import {
-  buildGuide,
+  gameHref,
   LEARN_GOAL_HREFS,
   LEARN_GOAL_IDS,
-  type LearnArticleChrome,
   type LearnGoalId,
+  type LearnGuide,
   type LearnPageContent,
 } from "./schema";
-import { EN_GUIDES } from "./content.en";
+import { LEARN_GUIDES } from "./guides";
 import enMessages from "../../../../messages/en.json";
 
 export * from "./schema";
@@ -19,42 +19,26 @@ export type LearnGoal = {
   href: string;
 };
 
-/**
- * Chrome from a plain messages object rather than the request-scoped
- * translator. Keeps the English article set buildable without a next-intl
- * request context, which is what makes it testable and what the sitemap and
- * generateStaticParams use.
- */
-type LearnArticleMessages = (typeof enMessages)["learnArticle"];
+function toPage(guide: LearnGuide): LearnPageContent {
+  const firstRound = guide.sections
+    .flatMap((section) => section.blocks)
+    .flatMap((block) => (block.kind === "drills" ? block.drills : []))
+    .find((drill) => drill.setup)?.setup;
 
-export function chromeFromMessages(
-  messages: LearnArticleMessages,
-): LearnArticleChrome {
   return {
-    faqLabel: messages.faqLabel,
-    whatChangesTitle: messages.whatChangesTitle,
-    startHereSummary: messages.startHereSummary,
-    drillsSummary: messages.drillsSummary,
-    comparisonColumns: [
-      messages.comparisonColumns.situation,
-      messages.comparisonColumns.before,
-      messages.comparisonColumns.after,
+    ...guide,
+    ctaHref: gameHref(firstRound),
+    tableOfContents: [
+      ...guide.sections.map((section) => ({ id: section.id, label: section.title })),
+      ...(guide.faq.length > 0
+        ? [{ id: "faq", label: enMessages.learnArticle.faqLabel }]
+        : []),
     ],
-    mistakesTitle: messages.mistakesTitle,
-    whatToDoInsteadTitle: messages.whatToDoInsteadTitle,
-    planSummary: messages.planSummary,
-    goalAccent: Object.fromEntries(
-      LEARN_GOAL_IDS.map((id) => [id, messages.goals[id].accent]),
-    ) as Record<LearnGoalId, string>,
   };
 }
 
-/** English article set, resolved eagerly and without a request context. */
-export const EN_LEARN_PAGES: LearnPageContent[] = EN_GUIDES.map((guide) =>
-  buildGuide(guide, chromeFromMessages(enMessages.learnArticle)),
-);
+export const EN_LEARN_PAGES: LearnPageContent[] = LEARN_GUIDES.map(toPage);
 
-/** English goals, same rationale as EN_LEARN_PAGES. */
 export const EN_LEARN_GOALS: LearnGoal[] = LEARN_GOAL_IDS.map((id) => ({
   id,
   label: enMessages.learnArticle.goals[id].label,
@@ -64,7 +48,10 @@ export const EN_LEARN_GOALS: LearnGoal[] = LEARN_GOAL_IDS.map((id) => ({
 }));
 
 /** Slugs, needed by the sitemap and generateStaticParams. */
-export const LEARN_SLUGS = EN_GUIDES.map((guide) => guide.slug);
+export const LEARN_SLUGS = LEARN_GUIDES.map((guide) => guide.slug);
+
+/** The most recent guide edit, which is when the hub last changed. */
+export const LEARN_LAST_UPDATED = LEARN_GUIDES.map((guide) => guide.updatedAt).sort().at(-1)!;
 
 export function isLearnSlug(slug: string): boolean {
   return LEARN_SLUGS.includes(slug);

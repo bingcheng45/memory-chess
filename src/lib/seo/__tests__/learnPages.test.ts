@@ -1,5 +1,7 @@
 import {
   EN_LEARN_PAGES as LEARN_PAGES,
+  type LearnBlock,
+  type LearnDrillCard,
   type LearnPageContent,
 } from "@/lib/seo/learn";
 import {
@@ -19,41 +21,43 @@ function getFeaturedLearnPages(limit = 4): LearnPageContent[] {
   return LEARN_PAGES.filter((page) => page.featured).slice(0, limit);
 }
 
+function blockCopy(block: LearnBlock): string[] {
+  switch (block.kind) {
+    case "paragraphs":
+      return block.paragraphs;
+    case "steps":
+      return block.items;
+    case "callout":
+      return [block.title, block.body];
+    case "drills":
+      return block.drills.flatMap((drill) => [drill.title, drill.description, drill.goal, drill.ctaLabel]);
+    case "comparison":
+      return [...block.columns, ...block.rows.flatMap((row) => [row.label, row.struggling, row.stronger])];
+    case "plan":
+      return block.steps.flatMap((step) => [step.label, step.duration, step.detail]);
+  }
+}
+
+function drillsOf(page: LearnPageContent): LearnDrillCard[] {
+  return page.sections
+    .flatMap((section) => section.blocks)
+    .flatMap((block) => (block.kind === "drills" ? block.drills : []));
+}
+
 function getVisibleCopy(page: LearnPageContent): string[] {
   return [
     page.title,
     page.h1,
     page.description,
-    page.painPoint,
     page.ctaLabel,
     page.quickAnswer,
-    ...page.keyTakeaways,
-    ...page.whoThisIsFor,
-    ...page.contentSections.flatMap((section) => [
+    ...(page.keyTakeaways ?? []),
+    ...(page.whoThisIsFor ?? []),
+    ...page.sections.flatMap((section) => [
       section.title,
       section.eyebrow ?? "",
       section.summary ?? "",
-      ...(section.paragraphs ?? []),
-      ...(section.bullets ?? []),
-      ...(section.orderedBullets ?? []),
-      section.callout?.title ?? "",
-      section.callout?.body ?? "",
-      ...(section.drillCards ?? []).flatMap((drill) => [
-        drill.title,
-        drill.description,
-        drill.goal,
-        drill.ctaLabel,
-      ]),
-      ...(section.comparisonRows ?? []).flatMap((row) => [
-        row.label,
-        row.struggling,
-        row.stronger,
-      ]),
-      ...(section.planSteps ?? []).flatMap((step) => [
-        step.label,
-        step.duration,
-        step.detail,
-      ]),
+      ...section.blocks.flatMap(blockCopy),
     ]),
     ...page.faq.flatMap((entry) => [entry.question, entry.answer]),
     ...page.relatedArticles.map((entry) => entry.reason),
@@ -75,7 +79,7 @@ describe("learnPages registry", () => {
     const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
 
     expect(page.quickAnswer).toContain("short daily routine");
-    expect(page.contentSections.length).toBeGreaterThanOrEqual(5);
+    expect(page.sections.length).toBeGreaterThanOrEqual(5);
     expect(page.relatedArticles.length).toBeGreaterThanOrEqual(3);
   });
 
@@ -121,9 +125,7 @@ describe("learnPages registry", () => {
   });
 
   it("describes every linked drill with the numbers of the round it opens", () => {
-    const drills = LEARN_PAGES.flatMap((page) =>
-      page.contentSections.flatMap((section) => section.drillCards ?? []),
-    );
+    const drills = LEARN_PAGES.flatMap(drillsOf);
     const linked = drills.filter((drill) => drill.setup);
 
     expect(drills).toHaveLength(48);

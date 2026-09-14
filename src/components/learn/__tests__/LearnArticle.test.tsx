@@ -217,7 +217,6 @@ describe("LearnArticleRich", () => {
       "aimFor",
       "keepLearning",
       "whatToLearnNext",
-      "readThisGuide",
       "commonQuestions",
       "faqLabel",
       "referenceLinks",
@@ -242,21 +241,27 @@ describe("LearnArticleRich", () => {
 
   it("links a drill to the exact round it describes, and only when the game can play it", () => {
     const base = getLearnPageBySlug("chess-memory-training");
-    const drillSection = base.contentSections.find((section) => section.drillCards)!;
-    const [playable, offBoard] = drillSection.drillCards!;
+    const drillBlock = base.sections
+      .flatMap((section) => section.blocks)
+      .find((block) => block.kind === "drills");
+    if (drillBlock?.kind !== "drills") throw new Error("guide has no drills");
+    const [playable, offBoard] = drillBlock.drills;
     const page = {
       ...base,
-      contentSections: base.contentSections.map((section) =>
-        section === drillSection
-          ? {
-              ...section,
-              drillCards: [
-                { ...playable, setup: { pieceCount: 12, memorizeTime: 8 } },
-                { ...offBoard, setup: undefined },
-              ],
-            }
-          : section,
-      ),
+      sections: base.sections.map((section) => ({
+        ...section,
+        blocks: section.blocks.map((block) =>
+          block === drillBlock
+            ? {
+                kind: "drills" as const,
+                drills: [
+                  { ...playable, setup: { pieceCount: 12, memorizeTime: 8 } },
+                  { ...offBoard, setup: undefined },
+                ],
+              }
+            : block,
+        ),
+      })),
     };
 
     render(
@@ -284,8 +289,11 @@ describe("LearnArticleRich", () => {
     expect(
       screen.getByRole("heading", { name: "What to learn next" }),
     ).toBeInTheDocument();
-    expect(
-      screen.getAllByRole("link", { name: /Read this guide/i }),
-    ).not.toHaveLength(0);
+
+    const next = getLearnPageBySlug(page.relatedArticles[0].slug);
+    expect(screen.getByRole("link", { name: next.title })).toHaveAttribute(
+      "href",
+      `/learn/${next.slug}`,
+    );
   });
 });

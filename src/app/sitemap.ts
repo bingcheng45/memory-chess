@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
-import { LEARN_SLUGS, UPDATED_AT } from "@/lib/seo/learn";
+import { EN_LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";
 import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
 import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
@@ -87,13 +87,13 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   },
   {
     path: "/learn",
-    lastModified: UPDATED_AT,
+    lastModified: LEARN_LAST_UPDATED,
     changeFrequency: "weekly",
     priority: 0.8,
   },
-  ...LEARN_SLUGS.map((slug) => ({
-    path: `/learn/${slug}`,
-    lastModified: UPDATED_AT,
+  ...EN_LEARN_PAGES.map((page) => ({
+    path: `/learn/${page.slug}`,
+    lastModified: page.updatedAt,
     changeFrequency: "weekly" as const,
     priority: 0.7,
   })),

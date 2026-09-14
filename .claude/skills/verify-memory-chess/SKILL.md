@@ -78,7 +78,15 @@ npm run audit:adsense -- --base http://127.0.0.1:4517 --out .verify-evidence/<ru
 
 It reads `/sitemap.xml`, fetches every listed URL as a non-JS reviewer would, and applies one rule per Google policy item: HTTP 200, listed pages are indexable and self-canonical, at least 300 main-content words (header, nav, and footer excluded; `WORD_FLOOR_EXCEPTIONS` names each short page and why), no text shipped at opacity 0, no loading or placeholder text, one `h1` with a title and description, links to privacy, about, terms, and contact, at most one ad unit, titles and descriptions unique within a language, no two pages of a language sharing more than half their 5-word shingles, no 8-word sentence on more than three pages of a language, hreflang pointing only at listed URLs, no broken internal links, and `ads.txt` naming the publisher. It prints a table per rule and every failing page, writes `audit.json` under `--out`, and exits 1 on any failure.
 
-When a rule fails, fix the page. Change a rule only when the rule is wrong about what Google asks for, in its own commit that says why. Translated Learn prose that no native speaker has reviewed stays out of the sitemap and carries `noindex`; `REVIEWED_LEARN_LOCALES` in `src/lib/seo/learn/index.ts` is the one switch.
+When a rule fails, fix the page. Change a rule only when the rule is wrong about what Google asks for, in its own commit that says why. Editorial prose (Learn, the changelog, about, privacy, terms) is English-only with one URL each; the route list in `src/lib/seo/englishOnly.ts` drives the redirects, the sitemap, and the footer links, so a new editorial route goes there rather than into the message catalogues.
+
+A local build proves the leaderboard only against fixture rows. After a deploy, confirm production serves real rankings to a non-JS reader:
+
+```bash
+curl -s https://thememorychess.com/leaderboard | grep -o '<tr' | wc -l
+```
+
+Expect well over 40 rows across the four boards. A count near zero means the page was built or revalidated while Supabase failed, and a crawler is reading the unavailable state.
 
 ### Without Supabase credentials
 

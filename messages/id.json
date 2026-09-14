@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Pertanyaan umum",
     "whatChangesTitle": "Yang membaik lebih dulu",
-    "trackThisWeekTitle": "Yang perlu dipantau minggu ini",
-    "trackThisWeekBody": "Pilih satu ukuran sederhana: blunder per partai, posisi yang berhasil diingat dengan benar, atau berapa langkah yang bisa Anda bayangkan dengan jelas.",
     "startHereSummary": "Langkah-langkah ini bisa Anda coba hari ini.",
     "drillsSummary": "Setiap latihan membuat Anda langsung mempraktikkan pelajarannya di Memory Chess.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Lihat semua panduan",
     "onThisPage": "Di halaman ini",
     "aimFor": "Sasaran:",
-    "tryItNow": "Coba sekarang",
-    "tryItNowTitle": "Mainkan satu ronde singkat sebelum kamu melanjutkan membaca.",
-    "tryItNowBody": "Terapkan langkah-langkahnya selagi masih segar, lalu kembali dengan satu hal konkret yang kamu sadari.",
-    "startTrainingRound": "Mulai ronde latihan",
     "keepLearning": "Terus belajar",
     "whatToLearnNext": "Yang dipelajari selanjutnya",
-    "whatToLearnNextBody": "Pilih panduan yang paling sesuai dengan masalah berikutnya yang ingin kamu selesaikan.",
     "readThisGuide": "Baca panduan ini",
-    "putItOnTheBoard": "Bawa ke papan catur",
-    "practiceTitle": "Berlatih di Memory Chess",
-    "practiceBody": "Gunakan satu latihan singkat untuk mempraktikkan apa yang baru saja kamu pelajari.",
-    "goalLabel": "Tujuan:",
     "commonQuestions": "Pertanyaan umum",
-    "editorialNotes": "Catatan redaksi",
-    "aboutThisGuide": "Tentang panduan ini",
-    "aboutBody": "Panduan Memory Chess ditulis untuk pemula dan pemain yang sedang berkembang. Setiap panduan memberi kamu jawaban langsung, langkah praktis, dan satu cara yang berguna untuk memantau kemajuan.",
-    "publishedLine": "Diterbitkan {published}. Terakhir ditinjau dan diperbarui {updated} oleh {reviewer}.",
     "referenceLinks": "Tautan rujukan",
     "goals": {
       "reduce-blunders": {

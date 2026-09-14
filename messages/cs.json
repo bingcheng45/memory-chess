@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Časté dotazy",
     "whatChangesTitle": "Co se zlepší nejdřív",
-    "trackThisWeekTitle": "Co tento týden sledovat",
-    "trackThisWeekBody": "Vyberte jediné jednoduché měřítko: přehmaty na partii, počet správně vybavených pozic, nebo kolik tahů si dokážete jasně představit.",
     "startHereSummary": "Tyto kroky můžete zkusit ještě dnes.",
     "drillsSummary": "Každé cvičení vám dá procvičit lekci přímo v Memory Chess.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Procházet všechny průvodce",
     "onThisPage": "Na této stránce",
     "aimFor": "Cíl:",
-    "tryItNow": "Vyzkoušejte hned",
-    "tryItNowTitle": "Než budete číst dál, zahrajte si krátké kolo.",
-    "tryItNowBody": "Použijte kroky, dokud jsou čerstvé, a vraťte se s jednou konkrétní věcí, které jste si všimli.",
-    "startTrainingRound": "Spustit tréninkové kolo",
     "keepLearning": "Učte se dál",
     "whatToLearnNext": "Co se naučit dál",
-    "whatToLearnNextBody": "Vyberte průvodce, který nejlépe odpovídá dalšímu problému, který chcete vyřešit.",
     "readThisGuide": "Přečíst tohoto průvodce",
-    "putItOnTheBoard": "Přeneste to na šachovnici",
-    "practiceTitle": "Trénujte v Memory Chess",
-    "practiceBody": "Použijte krátké cvičení a procvičte si to, co jste se právě naučili.",
-    "goalLabel": "Cíl:",
     "commonQuestions": "Časté otázky",
-    "editorialNotes": "Redakční poznámky",
-    "aboutThisGuide": "O tomto průvodci",
-    "aboutBody": "Průvodci Memory Chess jsou psaní pro začátečníky a hráče, kteří se zlepšují. Každý dává přímou odpověď, praktické kroky a jeden užitečný způsob, jak sledovat pokrok.",
-    "publishedLine": "Publikováno {published}. Naposledy zkontroloval a aktualizoval {reviewer} dne {updated}.",
     "referenceLinks": "Zdroje a odkazy",
     "goals": {
       "reduce-blunders": {

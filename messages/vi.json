@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Câu hỏi thường gặp",
     "whatChangesTitle": "Điều tiến bộ trước tiên",
-    "trackThisWeekTitle": "Nên theo dõi gì trong tuần này",
-    "trackThisWeekBody": "Chọn một chỉ số đơn giản: số nước đi hớ mỗi ván, số thế cờ nhớ đúng, hoặc bạn hình dung rõ được bao nhiêu nước.",
     "startHereSummary": "Bạn có thể thử những bước này ngay hôm nay.",
     "drillsSummary": "Mỗi bài tập cho bạn luyện ngay điều vừa đọc trong Memory Chess.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Xem tất cả hướng dẫn",
     "onThisPage": "Trong trang này",
     "aimFor": "Hướng tới:",
-    "tryItNow": "Thử ngay",
-    "tryItNowTitle": "Hãy chơi một ván ngắn trước khi đọc tiếp.",
-    "tryItNowBody": "Áp dụng các bước khi chúng còn mới, rồi quay lại với một điều cụ thể bạn nhận ra.",
-    "startTrainingRound": "Bắt đầu một ván luyện tập",
     "keepLearning": "Tiếp tục học",
     "whatToLearnNext": "Học gì tiếp theo",
-    "whatToLearnNextBody": "Chọn hướng dẫn phù hợp nhất với vấn đề tiếp theo bạn muốn giải quyết.",
     "readThisGuide": "Đọc hướng dẫn này",
-    "putItOnTheBoard": "Đưa lên bàn cờ",
-    "practiceTitle": "Luyện tập trong Memory Chess",
-    "practiceBody": "Dùng một bài tập ngắn để thực hành điều bạn vừa học.",
-    "goalLabel": "Mục tiêu:",
     "commonQuestions": "Câu hỏi thường gặp",
-    "editorialNotes": "Ghi chú biên tập",
-    "aboutThisGuide": "Về hướng dẫn này",
-    "aboutBody": "Các hướng dẫn của Memory Chess được viết cho người mới và những kỳ thủ đang tiến bộ. Mỗi hướng dẫn cho bạn một câu trả lời trực tiếp, các bước thực hành và một cách hữu ích để theo dõi tiến bộ.",
-    "publishedLine": "Đăng ngày {published}. Lần kiểm duyệt và cập nhật gần nhất vào {updated} bởi {reviewer}.",
     "referenceLinks": "Liên kết tham khảo",
     "goals": {
       "reduce-blunders": {

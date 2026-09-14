@@ -36,8 +36,6 @@ export function chromeFromMessages(
   return {
     faqLabel: messages.faqLabel,
     whatChangesTitle: messages.whatChangesTitle,
-    trackThisWeekTitle: messages.trackThisWeekTitle,
-    trackThisWeekBody: messages.trackThisWeekBody,
     startHereSummary: messages.startHereSummary,
     drillsSummary: messages.drillsSummary,
     comparisonColumns: [
@@ -184,10 +182,6 @@ function mergeProse(
       ...entry,
       reason: prose.relatedArticles[i].reason,
     })),
-    relatedDrills: guide.relatedDrills?.map((card, i) => ({
-      ...card,
-      ...prose.drillCards[i],
-    })),
   };
 }
 
@@ -226,8 +220,6 @@ async function loadChrome(locale: string): Promise<LearnArticleChrome> {
   return {
     faqLabel: t("faqLabel"),
     whatChangesTitle: t("whatChangesTitle"),
-    trackThisWeekTitle: t("trackThisWeekTitle"),
-    trackThisWeekBody: t("trackThisWeekBody"),
     startHereSummary: t("startHereSummary"),
     drillsSummary: t("drillsSummary"),
     comparisonColumns: [

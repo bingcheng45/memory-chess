@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Ofte stillede spørgsmål",
     "whatChangesTitle": "Hvad der bliver bedre først",
-    "trackThisWeekTitle": "Hvad du følger med i denne uge",
-    "trackThisWeekBody": "Vælg ét enkelt mål: fejl per parti, antal korrekt gengivne stillinger, eller hvor mange træk du kan se tydeligt for dig.",
     "startHereSummary": "De her trin kan du prøve allerede i dag.",
     "drillsSummary": "Hver øvelse lader dig træne lektionen direkte i Memory Chess.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Se alle guider",
     "onThisPage": "På denne side",
     "aimFor": "Mål:",
-    "tryItNow": "Prøv det nu",
-    "tryItNowTitle": "Spil en kort runde, før du læser videre.",
-    "tryItNowBody": "Brug trinnene mens de er friske, og kom tilbage med én konkret ting, du lagde mærke til.",
-    "startTrainingRound": "Start en træningsrunde",
     "keepLearning": "Bliv ved med at lære",
     "whatToLearnNext": "Hvad du lærer nu",
-    "whatToLearnNextBody": "Vælg den guide, der passer bedst til det næste problem, du vil løse.",
     "readThisGuide": "Læs denne guide",
-    "putItOnTheBoard": "Tag det med til brættet",
-    "practiceTitle": "Træn i Memory Chess",
-    "practiceBody": "Brug en kort øvelse til at træne det, du lige har lært.",
-    "goalLabel": "Mål:",
     "commonQuestions": "Ofte stillede spørgsmål",
-    "editorialNotes": "Redaktionelle noter",
-    "aboutThisGuide": "Om denne guide",
-    "aboutBody": "Guiderne fra Memory Chess er skrevet til begyndere og spillere i udvikling. Hver guide giver dig et direkte svar, praktiske trin og én brugbar måde at følge din fremgang på.",
-    "publishedLine": "Udgivet {published}. Senest gennemgået og opdateret {updated} af {reviewer}.",
     "referenceLinks": "Kilder og links",
     "goals": {
       "reduce-blunders": {

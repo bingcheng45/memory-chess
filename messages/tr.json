@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Sık sorulan sorular",
     "whatChangesTitle": "Önce ne gelişir",
-    "trackThisWeekTitle": "Bu hafta neyi takip etmeli",
-    "trackThisWeekBody": "Tek bir basit ölçüt seç: oyun başına hata sayısı, doğru hatırlanan konum sayısı, ya da kaç hamleyi zihninde net görebildiğin.",
     "startHereSummary": "Bu adımları bugün deneyebilirsin.",
     "drillsSummary": "Her alıştırma, öğrendiğini doğrudan Memory Chess’te uygulamanı sağlar.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Tüm rehberlere göz atın",
     "onThisPage": "Bu sayfada",
     "aimFor": "Hedef:",
-    "tryItNow": "Hemen deneyin",
-    "tryItNowTitle": "Okumaya devam etmeden önce kısa bir tur oynayın.",
-    "tryItNowBody": "Adımları tazeyken uygulayın, sonra fark ettiğiniz somut bir şeyle geri dönün.",
-    "startTrainingRound": "Antrenman turu başlat",
     "keepLearning": "Öğrenmeye devam edin",
     "whatToLearnNext": "Sırada ne öğrenmeli",
-    "whatToLearnNextBody": "Çözmek istediğiniz bir sonraki soruna en uygun rehberi seçin.",
     "readThisGuide": "Bu rehberi oku",
-    "putItOnTheBoard": "Tahtaya taşıyın",
-    "practiceTitle": "Memory Chess ile çalışın",
-    "practiceBody": "Az önce öğrendiğinizi pekiştirmek için kısa bir alıştırma yapın.",
-    "goalLabel": "Amaç:",
     "commonQuestions": "Sık sorulan sorular",
-    "editorialNotes": "Editör notları",
-    "aboutThisGuide": "Bu rehber hakkında",
-    "aboutBody": "Memory Chess rehberleri yeni başlayanlar ve gelişmekte olan oyuncular için yazılır. Her rehber size doğrudan bir yanıt, uygulanabilir adımlar ve ilerlemeyi izlemenin işe yarar bir yolunu sunar.",
-    "publishedLine": "{published} tarihinde yayımlandı. Son olarak {updated} tarihinde {reviewer} tarafından gözden geçirildi ve güncellendi.",
     "referenceLinks": "Kaynak bağlantıları",
     "goals": {
       "reduce-blunders": {

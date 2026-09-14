@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Częste pytania",
     "whatChangesTitle": "Co poprawia się najpierw",
-    "trackThisWeekTitle": "Co mierzyć w tym tygodniu",
-    "trackThisWeekBody": "Wybierz jedną prostą miarę: gafy na partię, poprawnie odtworzone pozycje albo liczbę ruchów, które widzisz wyraźnie w głowie.",
     "startHereSummary": "Te kroki możesz wypróbować już dziś.",
     "drillsSummary": "Każde ćwiczenie pozwala przećwiczyć lekcję w Memory Chess.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Zobacz wszystkie przewodniki",
     "onThisPage": "Na tej stronie",
     "aimFor": "Cel:",
-    "tryItNow": "Wypróbuj teraz",
-    "tryItNowTitle": "Zagraj krótką rundę, zanim będziesz czytać dalej.",
-    "tryItNowBody": "Wykorzystaj kroki, póki są świeże, i wróć z jedną konkretną obserwacją.",
-    "startTrainingRound": "Rozpocznij rundę treningową",
     "keepLearning": "Ucz się dalej",
     "whatToLearnNext": "Czego nauczyć się dalej",
-    "whatToLearnNextBody": "Wybierz przewodnik najlepiej dopasowany do kolejnego problemu, który chcesz rozwiązać.",
     "readThisGuide": "Przeczytaj ten przewodnik",
-    "putItOnTheBoard": "Przenieś to na szachownicę",
-    "practiceTitle": "Ćwicz w Memory Chess",
-    "practiceBody": "Wykorzystaj krótkie ćwiczenie, aby przećwiczyć to, czego się właśnie nauczyłeś.",
-    "goalLabel": "Cel:",
     "commonQuestions": "Częste pytania",
-    "editorialNotes": "Uwagi redakcyjne",
-    "aboutThisGuide": "O tym przewodniku",
-    "aboutBody": "Przewodniki Memory Chess powstają z myślą o początkujących i rozwijających się graczach. Każdy daje bezpośrednią odpowiedź, praktyczne kroki i jeden użyteczny sposób śledzenia postępów.",
-    "publishedLine": "Opublikowano {published}. Ostatnio zweryfikowane i zaktualizowane {updated} przez {reviewer}.",
     "referenceLinks": "Źródła i linki",
     "goals": {
       "reduce-blunders": {

@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Întrebări frecvente",
     "whatChangesTitle": "Ce se îmbunătățește primul",
-    "trackThisWeekTitle": "Ce să urmărești săptămâna asta",
-    "trackThisWeekBody": "Alege o singură măsură simplă: gafe pe partidă, poziții reținute corect, sau câte mutări vezi clar în minte.",
     "startHereSummary": "Poți încerca acești pași chiar azi.",
     "drillsSummary": "Fiecare exercițiu îți permite să aplici lecția direct în Memory Chess.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Vezi toate ghidurile",
     "onThisPage": "Pe această pagină",
     "aimFor": "Țintă:",
-    "tryItNow": "Încearcă acum",
-    "tryItNowTitle": "Joacă o rundă scurtă înainte să continui lectura.",
-    "tryItNowBody": "Folosește pașii cât sunt proaspeți și întoarce-te cu un lucru concret pe care l-ai observat.",
-    "startTrainingRound": "Începe o rundă de antrenament",
     "keepLearning": "Continuă să înveți",
     "whatToLearnNext": "Ce înveți în continuare",
-    "whatToLearnNextBody": "Alege ghidul care se potrivește cel mai bine următoarei probleme pe care vrei să o rezolvi.",
     "readThisGuide": "Citește acest ghid",
-    "putItOnTheBoard": "Du-l pe tablă",
-    "practiceTitle": "Exersează în Memory Chess",
-    "practiceBody": "Folosește un exercițiu scurt ca să pui în practică ce tocmai ai învățat.",
-    "goalLabel": "Obiectiv:",
     "commonQuestions": "Întrebări frecvente",
-    "editorialNotes": "Note editoriale",
-    "aboutThisGuide": "Despre acest ghid",
-    "aboutBody": "Ghidurile Memory Chess sunt scrise pentru începători și pentru jucătorii care progresează. Fiecare ghid îți dă un răspuns direct, pași practici și o metodă utilă de a-ți urmări progresul.",
-    "publishedLine": "Publicat pe {published}. Ultima verificare și actualizare pe {updated} de {reviewer}.",
     "referenceLinks": "Linkuri de referință",
     "goals": {
       "reduce-blunders": {

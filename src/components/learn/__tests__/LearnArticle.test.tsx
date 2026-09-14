@@ -87,9 +87,6 @@ describe("LearnArticleRich", () => {
 
     expect(screen.getByText("Start here")).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: "Practice in Memory Chess" }),
-    ).toBeInTheDocument();
-    expect(
       screen.getByRole("heading", { name: "Reference links" }),
     ).toBeInTheDocument();
     expect(screen.getByText(/Use a short daily routine/i)).toBeInTheDocument();
@@ -269,25 +266,11 @@ describe("LearnArticleRich", () => {
       "whoThisIsFor",
       "browseAllGuides",
       "onThisPage",
-      "aimFor",
-      "tryItNow",
-      "tryItNowTitle",
-      "tryItNowBody",
-      "startTrainingRound",
       "keepLearning",
       "whatToLearnNext",
-      "whatToLearnNextBody",
       "readThisGuide",
-      "putItOnTheBoard",
-      "practiceTitle",
-      "practiceBody",
-      "goalLabel",
       "commonQuestions",
       "faqLabel",
-      "editorialNotes",
-      "aboutThisGuide",
-      "aboutBody",
-      "publishedLine",
       "referenceLinks",
     ]) {
       expect(text).toContain(`\u00ablearnArticle.${key}\u00bb`);
@@ -299,17 +282,48 @@ describe("LearnArticleRich", () => {
       "Simple chess guide",
       "Browse all guides",
       "On this page",
-      "Try it now",
-      "Start a training round",
       "What to learn next",
       "Read this guide",
-      "Practice in Memory Chess",
       "Common questions",
-      "About this guide",
       "Reference links",
     ]) {
       expect(text).not.toContain(literal);
     }
+  });
+
+  it("links a drill to the exact round it describes, and only when the game can play it", () => {
+    const base = getLearnPageBySlug("chess-memory-training");
+    const drillSection = base.contentSections.find((section) => section.drillCards)!;
+    const [playable, offBoard] = drillSection.drillCards!;
+    const page = {
+      ...base,
+      contentSections: base.contentSections.map((section) =>
+        section === drillSection
+          ? {
+              ...section,
+              drillCards: [
+                { ...playable, setup: { pieceCount: 12, memorizeTime: 8 } },
+                { ...offBoard, setup: undefined },
+              ],
+            }
+          : section,
+      ),
+    };
+
+    render(
+      <LearnArticleRich
+        page={page}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+        locale="en"
+      />,
+    );
+
+    expect(screen.getByRole("link", { name: playable.ctaLabel })).toHaveAttribute(
+      "href",
+      "/game?pieceCount=12&memorizeTime=8",
+    );
+    expect(screen.queryByRole("link", { name: offBoard.ctaLabel })).toBeNull();
   });
 
   it("renders clear links to the next guides", () => {

@@ -27,14 +27,26 @@ export type LearnFaq = {
   answer: string;
 };
 
+/** The round a drill is played as. Absent for drills done away from the game. */
+export type LearnGameSetup = {
+  pieceCount: number;
+  memorizeTime: number;
+};
+
 export type LearnDrillCard = {
   title: string;
   description: string;
   duration: string;
   goal: string;
   ctaLabel: string;
-  href: "/game";
+  setup?: LearnGameSetup;
 };
+
+export function gameHref(setup?: LearnGameSetup): string {
+  return setup
+    ? `/game?pieceCount=${setup.pieceCount}&memorizeTime=${setup.memorizeTime}`
+    : "/game";
+}
 
 export type LearnComparisonRow = {
   label: string;
@@ -92,7 +104,7 @@ export type LearnPageContent = {
   secondaryKeywords: string[];
   painPoint: string;
   ctaLabel: string;
-  ctaHref: "/game";
+  ctaHref: string;
   publishedAt: string;
   updatedAt: string;
   reviewedBy: string;
@@ -106,7 +118,6 @@ export type LearnPageContent = {
   contentSections: LearnContentSection[];
   faq: LearnFaq[];
   relatedArticles: LearnRelatedArticle[];
-  relatedDrills: LearnDrillCard[];
   sources: LearnSource[];
 };
 
@@ -140,7 +151,6 @@ export type BuildGuideInput = {
   planSteps: LearnPlanStep[];
   faq: LearnFaq[];
   relatedArticles: LearnRelatedArticle[];
-  relatedDrills?: LearnDrillCard[];
   sources?: LearnSource[];
 };
 
@@ -188,8 +198,6 @@ const GOAL_SOURCES: Record<LearnGoalId, LearnSource[]> = {
 export type LearnArticleChrome = {
   faqLabel: string;
   whatChangesTitle: string;
-  trackThisWeekTitle: string;
-  trackThisWeekBody: string;
   startHereSummary: string;
   drillsSummary: string;
   comparisonColumns: [string, string, string];
@@ -226,10 +234,6 @@ export function buildGuide(
       title: chrome.whatChangesTitle,
       eyebrow: chrome.goalAccent[input.goal],
       paragraphs: input.introParagraphs,
-      callout: {
-        title: chrome.trackThisWeekTitle,
-        body: chrome.trackThisWeekBody,
-      },
     },
     {
       id: "start-here",
@@ -277,7 +281,7 @@ export function buildGuide(
     secondaryKeywords: input.secondaryKeywords,
     painPoint: input.painPoint,
     ctaLabel: input.ctaLabel,
-    ctaHref: "/game",
+    ctaHref: gameHref(input.drillCards.find((card) => card.setup)?.setup),
     publishedAt: PUBLISHED_AT,
     updatedAt: UPDATED_AT,
     reviewedBy: EDITORIAL_REVIEWER,
@@ -291,7 +295,6 @@ export function buildGuide(
     contentSections: sections,
     faq: input.faq,
     relatedArticles: input.relatedArticles,
-    relatedDrills: input.relatedDrills ?? input.drillCards,
     sources: [...GOAL_SOURCES[input.goal], ...(input.sources ?? [])],
   };
 }

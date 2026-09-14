@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Usein kysyttyä",
     "whatChangesTitle": "Mikä paranee ensin",
-    "trackThisWeekTitle": "Mitä seurata tällä viikolla",
-    "trackThisWeekBody": "Valitse yksi yksinkertainen mittari: virheet per peli, oikein muistetut asemat, tai kuinka monta siirtoa näet selvästi mielessäsi.",
     "startHereSummary": "Nämä askeleet voit kokeilla jo tänään.",
     "drillsSummary": "Jokainen harjoitus antaa soveltaa opitun suoraan Memory Chessissä.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Selaa kaikkia oppaita",
     "onThisPage": "Tällä sivulla",
     "aimFor": "Tavoite:",
-    "tryItNow": "Kokeile heti",
-    "tryItNowTitle": "Pelaa lyhyt kierros ennen kuin jatkat lukemista.",
-    "tryItNowBody": "Käytä vaiheita niiden ollessa tuoreita ja palaa yhden konkreettisen havainnon kanssa.",
-    "startTrainingRound": "Aloita harjoituskierros",
     "keepLearning": "Jatka oppimista",
     "whatToLearnNext": "Mitä opit seuraavaksi",
-    "whatToLearnNextBody": "Valitse opas, joka sopii parhaiten seuraavaan ongelmaan, jonka haluat ratkaista.",
     "readThisGuide": "Lue tämä opas",
-    "putItOnTheBoard": "Vie se laudalle",
-    "practiceTitle": "Harjoittele Memory Chessissä",
-    "practiceBody": "Käytä lyhyttä harjoitusta juuri oppimasi vahvistamiseen.",
-    "goalLabel": "Tavoite:",
     "commonQuestions": "Yleisiä kysymyksiä",
-    "editorialNotes": "Toimituksen huomiot",
-    "aboutThisGuide": "Tietoa tästä oppaasta",
-    "aboutBody": "Memory Chessin oppaat on kirjoitettu aloittelijoille ja kehittyville pelaajille. Jokainen opas antaa suoran vastauksen, käytännön askeleet ja yhden hyödyllisen tavan seurata edistymistä.",
-    "publishedLine": "Julkaistu {published}. Viimeksi tarkistanut ja päivittänyt {updated} {reviewer}.",
     "referenceLinks": "Lähteet ja linkit",
     "goals": {
       "reduce-blunders": {

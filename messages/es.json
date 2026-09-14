@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Preguntas frecuentes",
     "whatChangesTitle": "Qué mejora primero",
-    "trackThisWeekTitle": "Qué medir esta semana",
-    "trackThisWeekBody": "Elige una sola medida sencilla: errores por partida, tableros recordados correctamente o cuántas jugadas puedes visualizar con claridad.",
     "startHereSummary": "Puedes probar estos pasos hoy mismo.",
     "drillsSummary": "Cada ejercicio te deja practicar la lección en Memory Chess.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Ver todas las guías",
     "onThisPage": "En esta página",
     "aimFor": "Objetivo:",
-    "tryItNow": "Pruébalo ahora",
-    "tryItNowTitle": "Juega una partida corta antes de seguir leyendo.",
-    "tryItNowBody": "Aplica los pasos mientras están frescos y vuelve con algo concreto que hayas notado.",
-    "startTrainingRound": "Empezar una ronda de entrenamiento",
     "keepLearning": "Sigue aprendiendo",
     "whatToLearnNext": "Qué aprender después",
-    "whatToLearnNextBody": "Elige la guía que mejor se ajuste al siguiente problema que quieras resolver.",
     "readThisGuide": "Leer esta guía",
-    "putItOnTheBoard": "Llévalo al tablero",
-    "practiceTitle": "Practica en Memory Chess",
-    "practiceBody": "Usa un ejercicio corto para practicar lo que acabas de aprender.",
-    "goalLabel": "Meta:",
     "commonQuestions": "Preguntas frecuentes",
-    "editorialNotes": "Notas editoriales",
-    "aboutThisGuide": "Sobre esta guía",
-    "aboutBody": "Las guías de Memory Chess están escritas para principiantes y jugadores en progreso. Cada guía te da una respuesta directa, pasos prácticos y una forma útil de medir tu avance.",
-    "publishedLine": "Publicado el {published}. Revisado y actualizado por última vez el {updated} por {reviewer}.",
     "referenceLinks": "Enlaces de referencia",
     "goals": {
       "reduce-blunders": {

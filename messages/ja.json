@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "よくあるご質問",
     "whatChangesTitle": "最初に伸びるところ",
-    "trackThisWeekTitle": "今週の記録項目",
-    "trackThisWeekBody": "シンプルな指標をひとつ選びましょう。1 局あたりのミス数、正しく再現できた局面の数、あるいは何手先まではっきり思い描けるか。",
     "startHereSummary": "今日から試せるステップです。",
     "drillsSummary": "どのドリルも、学んだことをそのまま Memory Chess で練習できます。",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "すべてのガイドを見る",
     "onThisPage": "このページの内容",
     "aimFor": "ねらい:",
-    "tryItNow": "いま試す",
-    "tryItNowTitle": "読み進める前に、短い一局を指してみましょう。",
-    "tryItNowBody": "手順が新しいうちに使ってみて、気づいたことを一つ持ち帰ってください。",
-    "startTrainingRound": "トレーニングを始める",
     "keepLearning": "学び続ける",
     "whatToLearnNext": "次に学ぶこと",
-    "whatToLearnNextBody": "次に解決したい課題にいちばん合うガイドを選んでください。",
     "readThisGuide": "このガイドを読む",
-    "putItOnTheBoard": "盤の上で試す",
-    "practiceTitle": "Memory Chess で練習する",
-    "practiceBody": "短いドリルで、いま学んだことをそのまま練習しましょう。",
-    "goalLabel": "目標:",
     "commonQuestions": "よくある質問",
-    "editorialNotes": "編集メモ",
-    "aboutThisGuide": "このガイドについて",
-    "aboutBody": "Memory Chess のガイドは、初心者と上達中のプレーヤーのために書かれています。どのガイドも、はっきりした答え、実践できる手順、そして進歩を測る手がかりを一つ示します。",
-    "publishedLine": "{published} 公開。{updated} に {reviewer} が最終確認・更新しました。",
     "referenceLinks": "参考リンク",
     "goals": {
       "reduce-blunders": {

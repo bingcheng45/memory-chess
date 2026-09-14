@@ -63,7 +63,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "3 minutes",
         goal: "Build a safety check before each move.",
         ctaLabel: "Run a board scan round",
-        href: "/game",
       },
       {
         title: "Repeat-the-same-position recall",
@@ -72,7 +71,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Find the exact piece or square you forgot.",
         ctaLabel: "Train repeat recall",
-        href: "/game",
       },
       {
         title: "Game-to-drill transfer block",
@@ -81,7 +79,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "7 minutes",
         goal: "Use your real mistakes to guide your practice.",
         ctaLabel: "Start transfer practice",
-        href: "/game",
       },
     ],
     comparisonTitle: "What better beginner play looks like",
@@ -247,7 +244,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Remember the board before you start picturing moves.",
         ctaLabel: "Start snapshot training",
-        href: "/game",
       },
       {
         title: "One move each side",
@@ -256,7 +252,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Learn to update the board in your head.",
         ctaLabel: "Train one-move updates",
-        href: "/game",
       },
       {
         title: "Pressure-window recall",
@@ -265,7 +260,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Use clear recall in faster games.",
         ctaLabel: "Add time pressure",
-        href: "/game",
       },
     ],
     comparisonTitle: "What weak visualization feels like",
@@ -422,7 +416,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "3 minutes",
         goal: "Catch the most common beginner blunder source early.",
         ctaLabel: "Run loose-piece training",
-        href: "/game",
       },
       {
         title: "Threat replay",
@@ -431,7 +424,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Teach the brain what a missed threat looked like in context.",
         ctaLabel: "Replay a threat",
-        href: "/game",
       },
       {
         title: "Fast-square recall",
@@ -440,7 +432,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Remember piece locations while you scan the board.",
         ctaLabel: "Speed up recall",
-        href: "/game",
       },
     ],
     comparisonTitle: "Weak board vision vs stronger board vision",
@@ -599,7 +590,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Find one clear memory mistake you can fix.",
         ctaLabel: "Repeat one position",
-        href: "/game",
       },
       {
         title: "Pattern anchor recall",
@@ -608,7 +598,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Remember the most important parts of the position first.",
         ctaLabel: "Train pattern anchors",
-        href: "/game",
       },
       {
         title: "Recall-then-calculate",
@@ -617,7 +606,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "6 minutes",
         goal: "Use your board memory while calculating moves.",
         ctaLabel: "Add a transfer line",
-        href: "/game",
       },
     ],
     comparisonTitle: "What weak recall looks like in games",
@@ -767,7 +755,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Build clear board recall before adding more moves.",
         ctaLabel: "Rebuild the board first",
-        href: "/game",
       },
       {
         title: "One move for each side",
@@ -776,7 +763,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Update the position in your mind without looking at the board.",
         ctaLabel: "Picture Two Moves",
-        href: "/game",
       },
       {
         title: "Short viewing time",
@@ -785,7 +771,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Prepare for blindfold practice without hiding the whole board.",
         ctaLabel: "Shorten the window",
-        href: "/game",
       },
     ],
     comparisonTitle: "A safer way to practise blindfold chess",
@@ -941,7 +926,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "6 minutes",
         goal: "Keep each move sequence clear instead of adding more.",
         ctaLabel: "Hold three lines",
-        href: "/game",
       },
       {
         title: "Recall reset",
@@ -950,7 +934,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Remember the starting position before following moves.",
         ctaLabel: "Reset the board",
-        href: "/game",
       },
       {
         title: "Post-line comparison",
@@ -959,7 +942,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Move between the starting board and each possible line without mixing them up.",
         ctaLabel: "Compare Your Choices",
-        href: "/game",
       },
     ],
     comparisonTitle: "When you try to remember too much",
@@ -1107,7 +1089,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "3 minutes",
         goal: "Remember to check your opponent’s idea before your own.",
         ctaLabel: "Scan from the opponent side",
-        href: "/game",
       },
       {
         title: "Loose-piece alarm",
@@ -1116,7 +1097,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Catch the easiest material losses early.",
         ctaLabel: "Run loose-piece alarm",
-        href: "/game",
       },
       {
         title: "Blunder replay loop",
@@ -1125,7 +1105,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "6 minutes",
         goal: "Learn from positions that caused your real losses.",
         ctaLabel: "Replay your blunder",
-        href: "/game",
       },
     ],
     comparisonTitle: "What changes when blunders start dropping",
@@ -1273,7 +1252,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Notice dangerous positions earlier.",
         ctaLabel: "Train the signal first",
-        href: "/game",
       },
       {
         title: "Recall before calculation",
@@ -1282,7 +1260,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Connect pattern practice to real play.",
         ctaLabel: "Sharpen recall first",
-        href: "/game",
       },
       {
         title: "Game-position replay",
@@ -1291,7 +1268,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "6 minutes",
         goal: "Make tactical training feel like real positions again.",
         ctaLabel: "Replay your missed tactic",
-        href: "/game",
       },
     ],
     comparisonTitle: "Puzzles vs games: what changes?",
@@ -1444,7 +1420,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "3 minutes",
         goal: "Catch threats outside the area you are focused on.",
         ctaLabel: "Sweep the edges",
-        href: "/game",
       },
       {
         title: "Line-of-sight replay",
@@ -1453,7 +1428,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Check more of the board during each scan.",
         ctaLabel: "Trace full lines",
-        href: "/game",
       },
       {
         title: "Whole-board recall",
@@ -1462,7 +1436,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Remember more of the board at one time.",
         ctaLabel: "Recall by zone",
-        href: "/game",
       },
     ],
     comparisonTitle: "Tunnel vision vs whole-board awareness",
@@ -1610,7 +1583,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Connect square names to pieces you need to remember.",
         ctaLabel: "Name every square",
-        href: "/game",
       },
       {
         title: "Long-range line naming",
@@ -1619,7 +1591,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Make coordinates useful during full-board scans.",
         ctaLabel: "Trace lines by square",
-        href: "/game",
       },
       {
         title: "Knight jump mapping",
@@ -1628,7 +1599,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "3 minutes",
         goal: "Recognise knight moves and target squares faster.",
         ctaLabel: "Map knight jumps",
-        href: "/game",
       },
     ],
     comparisonTitle: "Slow square recognition vs faster square recognition",
@@ -1783,7 +1753,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "6 minutes",
         goal: "Start every session with the same board-memory warm-up.",
         ctaLabel: "Start the warm-up",
-        href: "/game",
       },
       {
         title: "Threat check sprint",
@@ -1792,7 +1761,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Improve transfer into real games without adding much time.",
         ctaLabel: "Run a threat check",
-        href: "/game",
       },
       {
         title: "Review note loop",
@@ -1801,7 +1769,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Use today’s lesson to guide tomorrow’s practice.",
         ctaLabel: "Log one lesson",
-        href: "/game",
       },
     ],
     comparisonTitle: "A routine you can keep using",
@@ -1948,7 +1915,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Remember the position before checking the answer.",
         ctaLabel: "Rebuild a key moment",
-        href: "/game",
       },
       {
         title: "Mistake-type tag",
@@ -1957,7 +1923,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "3 minutes",
         goal: "Know what to practise next.",
         ctaLabel: "Tag mistake type",
-        href: "/game",
       },
       {
         title: "One-fix review",
@@ -1966,7 +1931,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "2 minutes",
         goal: "Finish with one useful next step.",
         ctaLabel: "Choose one fix",
-        href: "/game",
       },
     ],
     comparisonTitle: "Helpful review vs unhelpful review",
@@ -2115,7 +2079,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "10 minutes",
         goal: "Connect puzzle practice to real play.",
         ctaLabel: "Add recall to tactics",
-        href: "/game",
       },
       {
         title: "Signal check after each puzzle",
@@ -2124,7 +2087,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Notice why a position has a tactic.",
         ctaLabel: "Check the signal",
-        href: "/game",
       },
       {
         title: "Game puzzle replay",
@@ -2133,7 +2095,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Use tactics from your own games.",
         ctaLabel: "Replay a game tactic",
-        href: "/game",
       },
     ],
     comparisonTitle: "Too few puzzles, too many puzzles, and enough puzzles",
@@ -2283,7 +2244,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Connect the pattern to a clear memory of the board.",
         ctaLabel: "Rebuild a Pattern",
-        href: "/game",
       },
       {
         title: "Family repetition",
@@ -2292,7 +2252,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Make the board shape feel familiar.",
         ctaLabel: "Repeat one family",
-        href: "/game",
       },
       {
         title: "Find it in a game",
@@ -2301,7 +2260,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "5 minutes",
         goal: "Use pattern practice with real game positions.",
         ctaLabel: "Hunt in your own games",
-        href: "/game",
       },
     ],
     comparisonTitle: "Random tactics vs real pattern recognition",
@@ -2450,7 +2408,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "6 minutes",
         goal: "Compare moves without trying to remember too much.",
         ctaLabel: "Compare two lines",
-        href: "/game",
       },
       {
         title: "Recall then calculate",
@@ -2459,7 +2416,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Remember the board before following a move sequence.",
         ctaLabel: "Recall before lines",
-        href: "/game",
       },
       {
         title: "Sentence summary line",
@@ -2467,7 +2423,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Keep the move sequence clear and easy to explain.",
         ctaLabel: "Summarize the branch",
-        href: "/game",
       },
     ],
     comparisonTitle: "Messy calculation vs cleaner calculation",
@@ -2615,7 +2570,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "3 minutes",
         goal: "Make threat checks automatic instead of optional.",
         ctaLabel: "Start with threats",
-        href: "/game",
       },
       {
         title: "Three-candidate cap",
@@ -2624,7 +2578,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Reduce overthinking and too many choices.",
         ctaLabel: "Cap the candidates",
-        href: "/game",
       },
       {
         title: "Confidence check replay",
@@ -2633,7 +2586,6 @@ export const EN_GUIDES: BuildGuideInput[] = [
         duration: "4 minutes",
         goal: "Notice when you move only because you are tired of thinking.",
         ctaLabel: "Review confidence",
-        href: "/game",
       },
     ],
     comparisonTitle: "A simple move routine",

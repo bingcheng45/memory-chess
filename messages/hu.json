@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Gyakori kérdések",
     "whatChangesTitle": "Ami először javul",
-    "trackThisWeekTitle": "Mit érdemes követni ezen a héten",
-    "trackThisWeekBody": "Válassz egyetlen egyszerű mérőszámot: hibák játszmánként, helyesen felidézett állások, vagy hogy hány lépést látsz tisztán magad előtt.",
     "startHereSummary": "Ezeket a lépéseket már ma kipróbálhatod.",
     "drillsSummary": "Minden gyakorlat engedi, hogy a tanultakat rögtön a Memory Chessben alkalmazd.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Összes útmutató megtekintése",
     "onThisPage": "Ezen az oldalon",
     "aimFor": "Cél:",
-    "tryItNow": "Próbáld ki most",
-    "tryItNowTitle": "Játssz egy rövid kört, mielőtt tovább olvasol.",
-    "tryItNowBody": "Használd a lépéseket, amíg frissek, és térj vissza egy konkrét megfigyeléssel.",
-    "startTrainingRound": "Gyakorlókör indítása",
     "keepLearning": "Tanulj tovább",
     "whatToLearnNext": "Mit tanulj ezután",
-    "whatToLearnNextBody": "Válaszd azt az útmutatót, amelyik a legjobban illik a következő megoldandó problémádhoz.",
     "readThisGuide": "Útmutató elolvasása",
-    "putItOnTheBoard": "Vidd a táblára",
-    "practiceTitle": "Gyakorolj a Memory Chess játékban",
-    "practiceBody": "Egy rövid gyakorlattal ültesd át a gyakorlatba, amit most tanultál.",
-    "goalLabel": "Cél:",
     "commonQuestions": "Gyakori kérdések",
-    "editorialNotes": "Szerkesztői megjegyzések",
-    "aboutThisGuide": "Erről az útmutatóról",
-    "aboutBody": "A Memory Chess útmutatói kezdőknek és fejlődő játékosoknak készülnek. Mindegyik közvetlen választ, gyakorlati lépéseket és egy használható módszert ad a fejlődés követésére.",
-    "publishedLine": "Megjelent: {published}. Utoljára {updated} napon ellenőrizte és frissítette: {reviewer}.",
     "referenceLinks": "Hivatkozások",
     "goals": {
       "reduce-blunders": {

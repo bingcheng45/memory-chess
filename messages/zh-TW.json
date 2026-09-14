@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "常見問題",
     "whatChangesTitle": "最先進步的是什麼",
-    "trackThisWeekTitle": "這週記錄什麼",
-    "trackThisWeekBody": "只挑一個簡單的指標：每局的失誤次數、正確重建的棋局數量，或者你能清楚想像出幾步棋。",
     "startHereSummary": "這些步驟今天就能試。",
     "drillsSummary": "每個練習都能讓你把學到的內容直接用在 Memory Chess 裡。",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "瀏覽全部指南",
     "onThisPage": "本頁內容",
     "aimFor": "目標：",
-    "tryItNow": "現在就試試",
-    "tryItNowTitle": "繼續閱讀之前，先下一局短棋。",
-    "tryItNowBody": "趁步驟還新鮮時用一遍，然後帶著一個具體的發現回來。",
-    "startTrainingRound": "開始一輪訓練",
     "keepLearning": "繼續學習",
     "whatToLearnNext": "接下來學什麼",
-    "whatToLearnNextBody": "選擇最貼合你下一個想解決的問題的指南。",
     "readThisGuide": "閱讀這篇指南",
-    "putItOnTheBoard": "把它用到棋盤上",
-    "practiceTitle": "在 Memory Chess 中練習",
-    "practiceBody": "用一個簡短的練習來鞏固剛學到的內容。",
-    "goalLabel": "目標：",
     "commonQuestions": "常見問題",
-    "editorialNotes": "編輯說明",
-    "aboutThisGuide": "關於這篇指南",
-    "aboutBody": "Memory Chess 的指南是為初學者和正在進步的棋手撰寫的。每篇都給出直接的答案、可執行的步驟，以及一個實用的進步衡量方式。",
-    "publishedLine": "發布於 {published}。最近一次審校與更新為 {updated}，審校人 {reviewer}。",
     "referenceLinks": "參考連結",
     "goals": {
       "reduce-blunders": {

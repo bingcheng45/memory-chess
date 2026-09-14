@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Veelgestelde vragen",
     "whatChangesTitle": "Wat het eerst verbetert",
-    "trackThisWeekTitle": "Wat je deze week bijhoudt",
-    "trackThisWeekBody": "Kies één eenvoudige maat: blunders per partij, correct herinnerde stellingen, of hoeveel zetten je helder voor je ziet.",
     "startHereSummary": "Deze stappen kun je vandaag al proberen.",
     "drillsSummary": "Bij elke oefening pas je de les meteen toe in Memory Chess.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Bekijk alle gidsen",
     "onThisPage": "Op deze pagina",
     "aimFor": "Doel:",
-    "tryItNow": "Probeer het nu",
-    "tryItNowTitle": "Speel een korte ronde voordat je verder leest.",
-    "tryItNowBody": "Gebruik de stappen zolang ze vers zijn en kom terug met één concrete observatie.",
-    "startTrainingRound": "Start een trainingsronde",
     "keepLearning": "Blijf leren",
     "whatToLearnNext": "Wat je hierna leert",
-    "whatToLearnNextBody": "Kies de gids die het best past bij het volgende probleem dat je wilt oplossen.",
     "readThisGuide": "Lees deze gids",
-    "putItOnTheBoard": "Breng het naar het bord",
-    "practiceTitle": "Oefenen in Memory Chess",
-    "practiceBody": "Gebruik één korte oefening om te oefenen wat je net hebt geleerd.",
-    "goalLabel": "Doel:",
     "commonQuestions": "Veelgestelde vragen",
-    "editorialNotes": "Redactionele notities",
-    "aboutThisGuide": "Over deze gids",
-    "aboutBody": "De gidsen van Memory Chess zijn geschreven voor beginners en spelers die zich ontwikkelen. Elke gids geeft je een direct antwoord, praktische stappen en één bruikbare manier om je voortgang te volgen.",
-    "publishedLine": "Gepubliceerd op {published}. Laatst beoordeeld en bijgewerkt op {updated} door {reviewer}.",
     "referenceLinks": "Bronnen en links",
     "goals": {
       "reduce-blunders": {

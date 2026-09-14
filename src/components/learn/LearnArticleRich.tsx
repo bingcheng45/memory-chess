@@ -7,6 +7,7 @@ import {
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import {
+  gameHref,
   type LearnComparisonRow,
   type LearnPageContent,
 } from "@/lib/seo/learn/schema";
@@ -338,7 +339,7 @@ export default function LearnArticleRich({
           </ol>
         </nav>
 
-        {page.contentSections.map((section, sectionIndex) => (
+        {page.contentSections.map((section) => (
           <section
             key={section.id}
             id={section.id}
@@ -426,13 +427,15 @@ export default function LearnArticleRich({
                         {drill.goal}
                       </p>
                     </div>
-                    <Link
-                      href={drill.href}
-                      data-learn-cta={`section-drill-${section.id}`}
-                      className={`${EDITORIAL_STYLES.link} self-start text-sm`}
-                    >
-                      {drill.ctaLabel}
-                    </Link>
+                    {drill.setup ? (
+                      <Link
+                        href={gameHref(drill.setup)}
+                        data-learn-cta={`section-drill-${section.id}`}
+                        className={`${EDITORIAL_STYLES.link} self-start text-sm`}
+                      >
+                        {drill.ctaLabel}
+                      </Link>
+                    ) : null}
                   </article>
                 ))}
               </div>
@@ -495,30 +498,6 @@ export default function LearnArticleRich({
                 </p>
               </aside>
             ) : null}
-
-            {sectionIndex === 1 ? (
-              <aside className="mt-8 border-y border-peach-500/20 py-6">
-                <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-2`}>
-                  {t("tryItNow")}
-                </p>
-                <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-                  <div className="max-w-xl">
-                    <h3 className="text-lg font-semibold text-white">
-                      {t("tryItNowTitle")}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-text-muted">
-                      {t("tryItNowBody")}
-                    </p>
-                  </div>
-                  <EditorialActionLink
-                    href={page.ctaHref}
-                    trackingName="mid-article"
-                  >
-                    {t("startTrainingRound")}
-                  </EditorialActionLink>
-                </div>
-              </aside>
-            ) : null}
           </section>
         ))}
 
@@ -529,9 +508,6 @@ export default function LearnArticleRich({
           <h2 className={EDITORIAL_STYLES.sectionTitle}>
             {t("whatToLearnNext")}
           </h2>
-          <p className="mt-3 text-base leading-7 text-text-muted">
-            {t("whatToLearnNextBody")}
-          </p>
           <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
             {relatedPages.map((entry) => (
               <article key={entry.slug} className="py-5">
@@ -550,44 +526,6 @@ export default function LearnArticleRich({
                   className={`${EDITORIAL_STYLES.link} mt-3 inline-block text-sm`}
                 >
                   {t("readThisGuide")}
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className={EDITORIAL_STYLES.section}>
-          <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            {t("putItOnTheBoard")}
-          </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>{t("practiceTitle")}</h2>
-          <p className="mt-3 text-base leading-7 text-text-muted">
-            {t("practiceBody")}
-          </p>
-          <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
-            {page.relatedDrills.map((drill) => (
-              <article key={`${page.slug}-${drill.title}`} className="py-5">
-                <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
-                  {drill.duration}
-                </p>
-                <h3 className="mt-1 text-lg font-semibold text-white">
-                  {drill.title}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-text-secondary">
-                  {drill.description}
-                </p>
-                <p className="mt-2 text-sm leading-6 text-text-muted">
-                  <span className="font-medium text-text-secondary">
-                    {t("goalLabel")}
-                  </span>{" "}
-                  {drill.goal}
-                </p>
-                <Link
-                  href={drill.href}
-                  data-learn-cta="end-drill"
-                  className={`${EDITORIAL_STYLES.link} mt-3 inline-block text-sm`}
-                >
-                  {drill.ctaLabel}
                 </Link>
               </article>
             ))}
@@ -624,24 +562,7 @@ export default function LearnArticleRich({
         </section>
 
         <section className={EDITORIAL_STYLES.section}>
-          <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            {t("editorialNotes")}
-          </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            {t("aboutThisGuide")}
-          </h2>
-          <div className="mt-5 max-w-[68ch] space-y-4 text-sm leading-7 text-text-muted sm:text-base">
-            <p>{t("aboutBody")}</p>
-            <p>
-              {t("publishedLine", {
-                published: formatDate(page.publishedAt, locale),
-                updated: formatDate(page.updatedAt, locale),
-                reviewer: page.reviewedBy,
-              })}
-            </p>
-          </div>
-
-          <h2 className="mt-9 text-xl font-semibold tracking-tight text-white">
+          <h2 className="text-xl font-semibold tracking-tight text-white">
             {t("referenceLinks")}
           </h2>
           <ul className="mt-4 divide-y divide-white/10 border-y border-white/10">

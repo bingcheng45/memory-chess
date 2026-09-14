@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "Häufige Fragen",
     "whatChangesTitle": "Was sich zuerst verbessert",
-    "trackThisWeekTitle": "Was du diese Woche verfolgen solltest",
-    "trackThisWeekBody": "Wähle eine einzige einfache Messgröße: Patzer pro Partie, korrekt erinnerte Stellungen oder wie viele Züge du klar vor dir siehst.",
     "startHereSummary": "Diese Schritte kannst du heute ausprobieren.",
     "drillsSummary": "Jede Übung lässt dich das Gelernte direkt in Memory Chess anwenden.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Alle Leitfäden ansehen",
     "onThisPage": "Auf dieser Seite",
     "aimFor": "Ziel:",
-    "tryItNow": "Jetzt ausprobieren",
-    "tryItNowTitle": "Spiele eine kurze Runde, bevor du weiterliest.",
-    "tryItNowBody": "Nutze die Schritte, solange sie frisch sind, und komm mit einer konkreten Beobachtung zurück.",
-    "startTrainingRound": "Trainingsrunde starten",
     "keepLearning": "Weiterlernen",
     "whatToLearnNext": "Was du als Nächstes lernst",
-    "whatToLearnNextBody": "Wähle den Leitfaden, der am besten zum nächsten Problem passt, das du lösen willst.",
     "readThisGuide": "Diesen Leitfaden lesen",
-    "putItOnTheBoard": "Bring es aufs Brett",
-    "practiceTitle": "Üben in Memory Chess",
-    "practiceBody": "Nutze eine kurze Übung, um das gerade Gelernte anzuwenden.",
-    "goalLabel": "Ziel:",
     "commonQuestions": "Häufige Fragen",
-    "editorialNotes": "Redaktionelle Hinweise",
-    "aboutThisGuide": "Über diesen Leitfaden",
-    "aboutBody": "Die Leitfäden von Memory Chess sind für Anfänger und Spieler im Aufbau geschrieben. Jeder Leitfaden gibt dir eine direkte Antwort, praktische Schritte und eine sinnvolle Möglichkeit, deinen Fortschritt zu verfolgen.",
-    "publishedLine": "Veröffentlicht am {published}. Zuletzt geprüft und aktualisiert am {updated} von {reviewer}.",
     "referenceLinks": "Quellen und Links",
     "goals": {
       "reduce-blunders": {

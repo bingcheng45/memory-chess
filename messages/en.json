@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "FAQ",
     "whatChangesTitle": "What improves first",
-    "trackThisWeekTitle": "What to track this week",
-    "trackThisWeekBody": "Choose one simple measure: blunders per game, correct board recalls, or how many moves you can picture clearly.",
     "startHereSummary": "You can try these steps today.",
     "drillsSummary": "Each drill lets you practise the lesson in Memory Chess.",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "Browse all guides",
     "onThisPage": "On this page",
     "aimFor": "Aim for:",
-    "tryItNow": "Try it now",
-    "tryItNowTitle": "Play one short round before you keep reading.",
-    "tryItNowBody": "Use the steps while they are fresh, then return with one concrete thing you noticed.",
-    "startTrainingRound": "Start a training round",
     "keepLearning": "Keep learning",
     "whatToLearnNext": "What to learn next",
-    "whatToLearnNextBody": "Choose the guide that best matches the next problem you want to solve.",
     "readThisGuide": "Read this guide",
-    "putItOnTheBoard": "Put it on the board",
-    "practiceTitle": "Practice in Memory Chess",
-    "practiceBody": "Use one short drill to practise what you just learned.",
-    "goalLabel": "Goal:",
     "commonQuestions": "Common questions",
-    "editorialNotes": "Editorial notes",
-    "aboutThisGuide": "About this guide",
-    "aboutBody": "Memory Chess guides are written for beginners and improving players. Each guide gives you a direct answer, practical steps, and one useful way to track progress.",
-    "publishedLine": "Published {published}. Last reviewed and updated {updated} by {reviewer}.",
     "referenceLinks": "Reference links",
     "goals": {
       "reduce-blunders": {

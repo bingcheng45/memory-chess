@@ -427,8 +427,6 @@
   "learnArticle": {
     "faqLabel": "अक्सर पूछे जाने वाले सवाल",
     "whatChangesTitle": "सबसे पहले क्या सुधरता है",
-    "trackThisWeekTitle": "इस हफ़्ते क्या मापें",
-    "trackThisWeekBody": "कोई एक आसान माप चुनें: हर गेम में हुई भूलें, सही याद की गई स्थितियाँ, या आप कितनी चालें साफ़ देख पाते हैं।",
     "startHereSummary": "ये कदम आप आज ही आज़मा सकते हैं।",
     "drillsSummary": "हर अभ्यास आपको सीखी बात सीधे Memory Chess में आज़माने देता है।",
     "comparisonColumns": {
@@ -450,23 +448,10 @@
     "browseAllGuides": "सभी गाइड देखें",
     "onThisPage": "इस पेज पर",
     "aimFor": "लक्ष्य:",
-    "tryItNow": "अभी आज़माएँ",
-    "tryItNowTitle": "आगे पढ़ने से पहले एक छोटा राउंड खेलिए।",
-    "tryItNowBody": "कदम ताज़ा रहते हुए उन्हें आज़माइए, और एक ठोस बात नोट करके लौटिए।",
-    "startTrainingRound": "अभ्यास राउंड शुरू करें",
     "keepLearning": "सीखते रहिए",
     "whatToLearnNext": "आगे क्या सीखें",
-    "whatToLearnNextBody": "वह गाइड चुनिए जो आपकी अगली समस्या से सबसे अच्छी तरह मेल खाती है।",
     "readThisGuide": "यह गाइड पढ़ें",
-    "putItOnTheBoard": "इसे बोर्ड पर आज़माएँ",
-    "practiceTitle": "Memory Chess में अभ्यास करें",
-    "practiceBody": "अभी सीखी बात का अभ्यास करने के लिए एक छोटा ड्रिल इस्तेमाल कीजिए।",
-    "goalLabel": "लक्ष्य:",
     "commonQuestions": "आम सवाल",
-    "editorialNotes": "संपादकीय टिप्पणी",
-    "aboutThisGuide": "इस गाइड के बारे में",
-    "aboutBody": "Memory Chess की गाइड शुरुआती और आगे बढ़ते खिलाड़ियों के लिए लिखी गई हैं। हर गाइड आपको सीधा जवाब, व्यावहारिक कदम और प्रगति नापने का एक काम का तरीका देती है।",
-    "publishedLine": "{published} को प्रकाशित। आख़िरी बार {updated} को {reviewer} द्वारा समीक्षित और अपडेट किया गया।",
     "referenceLinks": "संदर्भ लिंक",
     "goals": {
       "reduce-blunders": {

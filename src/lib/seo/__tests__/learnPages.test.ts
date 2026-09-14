@@ -73,7 +73,6 @@ describe("learnPages registry", () => {
     expect(page.quickAnswer).toContain("short daily routine");
     expect(page.contentSections.length).toBeGreaterThanOrEqual(5);
     expect(page.relatedArticles.length).toBeGreaterThanOrEqual(3);
-    expect(page.relatedDrills.length).toBeGreaterThanOrEqual(2);
   });
 
   it("returns featured hub pages", () => {

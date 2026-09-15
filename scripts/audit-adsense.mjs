@@ -67,12 +67,34 @@ function countUnits(text) {
   return countWords(text) + Math.round(cjk / 2);
 }
 
+const VOID_TAGS = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"]);
+
+/**
+ * Whether an opening tag hides its content from the first paint: an inline
+ * style, the `hidden` attribute, a Tailwind `hidden` or `invisible` class, or a
+ * Radix panel that its own class hides while inactive. `aria-hidden` is not
+ * hiding; a decorative element without words adds nothing to the count anyway.
+ */
+function hidesContent(attributes) {
+  const value = (name) => attributes.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] ?? null;
+  const style = value("style") ?? "";
+  const classes = value("class") ?? "";
+  const bareAttributes = attributes.replace(/="[^"]*"/g, "");
+  return (
+    /opacity:\s*0(?![.\d])|display:\s*none|visibility:\s*hidden/i.test(style) ||
+    /\shidden(?=\s|$)/i.test(bareAttributes) ||
+    classes.split(/\s+/).some((token) => token === "hidden" || token === "invisible") ||
+    (value("data-state") === "inactive" && classes.includes("data-[state=inactive]:hidden"))
+  );
+}
+
 function hiddenText(html) {
-  const opener = /<(\w+)\b[^>]*style="[^"]*(?:opacity:\s*0(?![.\d])|display:\s*none|visibility:\s*hidden)[^"]*"[^>]*>/gi;
+  const opener = /<([a-zA-Z][\w-]*)((?:\s+[^\s=>/]+(?:="[^"]*")?)*)\s*(\/?)>/g;
   let hidden = "";
   let match;
   while ((match = opener.exec(html))) {
-    const tag = match[1];
+    const [, tag, attributes, selfClosing] = match;
+    if (selfClosing || VOID_TAGS.has(tag.toLowerCase()) || !hidesContent(attributes)) continue;
     const scan = new RegExp(`<${tag}\\b[^>]*>|<\\/${tag}>`, "gi");
     scan.lastIndex = opener.lastIndex;
     let depth = 1;
@@ -188,7 +210,7 @@ const RULES = [
     id: "hidden-text",
     guideline: "G19 no text hidden from the first paint",
     check: (page) =>
-      page.hiddenWords === 0 ? [] : [`${page.hiddenWords} of ${page.mainWords} words ship at opacity 0, display none or visibility hidden`],
+      page.hiddenWords === 0 ? [] : [`${page.hiddenWords} of ${page.mainWords} words ship hidden (inline style, hidden attribute, or hidden class)`],
   },
   {
     id: "placeholder",
@@ -352,8 +374,17 @@ async function crawlLinks(pages, listed) {
 }
 
 async function main() {
-  const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
+  const sitemapResponse = await fetch(`${base}/sitemap.xml`);
+  if (sitemapResponse.status !== 200) {
+    console.error(`Cannot audit: ${base}/sitemap.xml answered HTTP ${sitemapResponse.status}, expected 200`);
+    process.exit(2);
+  }
+  const sitemap = await sitemapResponse.text();
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => toLocal(m[1]));
+  if (!urls.length) {
+    console.error(`Cannot audit: ${base}/sitemap.xml lists no <loc> URLs`);
+    process.exit(2);
+  }
   const listed = new Set(urls.map((u) => u.replace(/\/$/, "") || base));
   const pages = await pool(urls, fetchPage);
   const indexable = pages.filter(isIndexable);

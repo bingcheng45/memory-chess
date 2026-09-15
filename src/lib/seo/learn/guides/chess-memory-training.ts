@@ -103,7 +103,7 @@ const guide: LearnGuide = {
           paragraphs: [
             "If you have never played, start with one round of the 2-piece preset. It is the two kings and nothing else, and it exists to teach the controls: pick a type and colour, tap a square, tap again to remove.",
             "After that the 2-piece preset has nothing left to teach, so the ladder starts at 6.",
-            "Only the first card below is a rung. The other two are four rounds each at settings you are not climbing yet. One tries a shorter look and one a larger count, so you know what is ahead. The climb itself follows the promotion rule: two pieces at a time, and the look only once the count is stable.",
+            "Only the first card below is a rung. The other two are four rounds each at settings you are not climbing yet, so you know what is ahead. The second keeps 6 pieces and shortens the look. The third is the 12-piece preset, which adds pieces and shortens the look together. Treat it as a preview, not a rung. The climb itself follows the promotion rule: two pieces at a time, and the look only once the count is stable.",
           ],
         },
         {

@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Puanlama",
-        "body": "Tahtanız orijinaliyle kare kare karşılaştırılır. Hangi taşların doğru, hangilerinin yanlış olduğunu ve hangilerini atladığınızı, size gösterilen konumun yanında görürsünüz."
+        "body": "Tahtanız orijinaliyle kare kare karşılaştırılır. Hangi taşların doğru, hangilerinin yanlış olduğunu ve hangilerini atladığınızı, size gösterilen konumla birlikte görürsünüz. Geniş ekranlarda iki tahta yan yana, dar ekranlarda alt alta durur."
       }
     },
     "presets": {
@@ -29,9 +29,9 @@
       "seconds": "{seconds} sn",
       "trains": {
         "easy": "Sadece iki şah, başka hiçbir şey yok. Arayüzü öğretir ve zaman baskısı altında iki kareyi tutup tutamadığınıza dair net bir fikir verir.",
-        "medium": "Altı taş, çoğu insanın sistemsiz tutabildiği kapasiteye yakındır. Öbekleme yapmanın işe yaramaya başladığı seviye budur.",
-        "hard": "Sekiz saniyede on iki taş, ham kapasitenin ötesindedir. Taşları tek tek hatırlamak yerine şekiller halinde gruplamanız gerekir.",
-        "grandmaster": "Beş saniyede yirmi taş, taş başına çeyrek saniye eder. Bunu kimse kare kare okumaz; bu seviye piyon zincirlerini ve taş kümelerini tek birim olarak görmeyi ödüllendirir."
+        "medium": "Altı taş, iki şah artı dört başka taş demektir ve bakma süresi iki taşlı seviyedeki gibi on saniyedir.",
+        "hard": "Sekiz saniyede on iki taş, taş başına üçte iki saniye eder; bu yüzden taşları tek tek hatırlamak yerine şekiller halinde gruplamayı deneyin.",
+        "grandmaster": "Beş saniyede yirmi taş, taş başına çeyrek saniye eder; bu yüzden piyon zincirlerini ve taş kümelerini tek birim olarak görmeyi deneyin."
       },
       "custom": {
         "title": "Özel ayarlar",

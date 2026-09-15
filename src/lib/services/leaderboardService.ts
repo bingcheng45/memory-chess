@@ -24,6 +24,7 @@ export async function getLeaderboard(difficulty: string = 'medium'): Promise<{da
       .from('leaderboard_entries')
       .select('*')
       .eq('difficulty', difficulty)
+      .gt('correct_pieces', 0)
       .order('correct_pieces', { ascending: false })
       .order('total_wrong_pieces', { ascending: true, nullsFirst: false })
       .order('memorize_time', { ascending: true })
@@ -69,43 +70,4 @@ export async function submitLeaderboardEntry(entry: LeaderboardSubmission): Prom
   }
   
   return data;
-}
-
-export async function checkLeaderboardRanking(
-  difficulty: string,
-  correctPieces: number,
-  memorizeTime: number,
-  solutionTime: number,
-  totalWrongPieces?: number
-): Promise<number> {
-  // Build the query condition based on the updated sorting criteria
-  let condition = `correct_pieces.gt.${correctPieces}`;
-  
-  // If total_wrong_pieces is provided, use it in the ranking
-  if (totalWrongPieces !== undefined) {
-    condition += `, and(correct_pieces.eq.${correctPieces},total_wrong_pieces.lt.${totalWrongPieces})`;
-    condition += `, and(correct_pieces.eq.${correctPieces},total_wrong_pieces.eq.${totalWrongPieces},memorize_time.lt.${memorizeTime})`;
-    condition += `, and(correct_pieces.eq.${correctPieces},total_wrong_pieces.eq.${totalWrongPieces},memorize_time.eq.${memorizeTime},solution_time.lt.${solutionTime})`;
-  } else {
-    // Fallback to previous logic when totalWrongPieces is not provided
-    condition += `, and(correct_pieces.eq.${correctPieces},memorize_time.lt.${memorizeTime})`;
-    condition += `, and(correct_pieces.eq.${correctPieces},memorize_time.eq.${memorizeTime},solution_time.lt.${solutionTime})`;
-  }
-  if (!supabase) {
-    throw new Error('Supabase is not configured');
-  }
-  
-  const { count, error } = await supabase
-    .from('leaderboard_entries')
-    .select('*', { count: 'exact', head: true })
-    .eq('difficulty', difficulty)
-    .or(condition);
-    
-  if (error) {
-    console.error('Error checking leaderboard ranking:', error);
-    throw new Error('Failed to check leaderboard ranking');
-  }
-  
-  // The rank is one position after all the entries that beat this one
-  return (count || 0) + 1;
 }

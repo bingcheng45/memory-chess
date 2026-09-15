@@ -23,7 +23,8 @@
     "language": {
       "change": "Ganti bahasa. Bahasa saat ini: {language}",
       "current": "Bahasa: {language}",
-      "select": "Pilih bahasa"
+      "select": "Pilih bahasa",
+      "englishOnly": "Halaman ini hanya tersedia dalam bahasa Inggris."
     },
     "otherApps": {
       "title": "Aplikasi lain dari pembuatnya",
@@ -295,18 +296,11 @@
     "subtitle": "Kuasai papan lewat visualisasi. Bersaing dengan yang terbaik di dunia dalam ketepatan dan kecepatan berpikir.",
     "claimRank": "Raih peringkatmu",
     "footnote": "Hanya menampilkan 200 teratas. Diurutkan berdasarkan akurasi, waktu menghafal, dan kecepatan penyelesaian.",
-    "loading": "Memuat papan peringkat…",
     "unavailableTitle": "Papan peringkat sementara tidak tersedia",
     "unavailableBody": "Layanan papan peringkat sedang offline. Data permainanmu tetap tersimpan secara lokal.",
     "unavailableNote": "Kamu bisa terus bermain tanpa gangguan.",
     "retryLater": "Silakan coba lagi nanti",
     "errorLoading": "Gagal memuat peringkat: {error}",
-    "errors": {
-      "timeout": "Permintaan melebihi batas waktu. Coba lagi nanti.",
-      "parse": "Tidak dapat membaca respons server. Coba lagi nanti.",
-      "status": "Permintaan gagal dengan status {status}",
-      "unexpected": "Terjadi kesalahan yang tidak terduga"
-    },
     "emptyTitle": "Jadilah juara pertama!",
     "emptyBody": "Belum ada catatan di papan peringkat ini",
     "emptyCta": "Uji daya ingatmu dan rebut posisi teratas! Mainkan satu permainan sekarang dan catat namamu dalam sejarah Memory Chess.",
@@ -371,124 +365,8 @@
       "generic": "Terjadi kesalahan saat mengirim formulir. Silakan coba lagi."
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "Belajar catur satu langkah jelas setiap kali",
-      "description": "Panduan catur praktis untuk pemula: penglihatan papan, visualisasi, ingatan, perhitungan, mencegah blunder, dan latihan harian."
-    },
-    "title": "Belajar catur satu langkah jelas setiap kali",
-    "startBeginner": "Mulai panduan pemula",
-    "playCta": "Mainkan Memory Chess",
-    "startHere": "Mulai di sini",
-    "pickNext": "Pilih langkah berikutnya",
-    "chooseGoal": "Pilih tujuan",
-    "readRecallPlay": "Baca, ingat, mainkan",
-    "turnIdea": "Ubah satu ide jadi latihan",
-    "startRound": "Mulai satu ronde ingatan",
-    "eyebrow": "Belajar bersama Memory Chess",
-    "heroDescription": "Pilih apa yang ingin kamu tingkatkan. Setiap panduan menjelaskan satu gagasan yang berguna dengan bahasa sederhana, lalu memberi kamu satu latihan singkat.",
-    "pickNextDescription": "Pilih kalimat yang paling mirip dengan permainanmu saat ini. Tidak ada urutan yang sempurna, dan kamu bisa berpindah jalur kapan saja.",
-    "allGuides": "Semua {count} panduan",
-    "chooseGoalDescription": "Setiap jalur bergerak dari latihan pertama yang sederhana menuju kebiasaan berlatih yang lebih lengkap.",
-    "guideNumber": "Panduan {number}",
-    "turnIdeaDescription": "Baca satu panduan, mainkan satu ronde singkat selagi idenya masih segar, lalu perhatikan mana yang mudah diingat dan mana yang perlu dicoba lagi.",
-    "paths": {
-      "newToChess": {
-        "label": "Baru mengenal catur",
-        "title": "Susun rencana peningkatan yang sederhana",
-        "description": "Mulailah dari dasar, lalu ubah satu ide yang berguna menjadi kebiasaan harian yang bisa diulang."
-      },
-      "missingThreats": {
-        "label": "Sering melewatkan ancaman sederhana",
-        "title": "Latih pemindaian seluruh papan",
-        "description": "Gunakan rutinitas pengecekan singkat untuk melihat bidak tanpa perlindungan, serangan, dan bahaya sebelum melangkah."
-      },
-      "losingPosition": {
-        "label": "Kehilangan posisi di kepala",
-        "title": "Perkuat visualisasi dan daya ingat",
-        "description": "Berlatihlah menahan gambaran papan yang kecil dan akurat sebelum menambah rangkaian langkah yang lebih panjang."
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "Yang baru",
-      "description": "Lihat fitur, peningkatan, dan perbaikan terbaru Memory Chess di catatan perubahan resmi.",
-      "socialTitle": "Yang baru di Memory Chess",
-      "socialDescription": "Lihat fitur, peningkatan, dan perbaikan terbaru Memory Chess."
-    },
-    "title": "Yang baru",
-    "latest": "Terbaru",
     "bannerCta": "Lihat yang baru",
-    "bannerLabel": "Pembaruan Memory Chess",
-    "eyebrow": "Pembaruan",
-    "changesIn": "Perubahan di versi {version}"
-  },
-  "learnArticle": {
-    "faqLabel": "Pertanyaan umum",
-    "whatChangesTitle": "Yang membaik lebih dulu",
-    "trackThisWeekTitle": "Yang perlu dipantau minggu ini",
-    "trackThisWeekBody": "Pilih satu ukuran sederhana: blunder per partai, posisi yang berhasil diingat dengan benar, atau berapa langkah yang bisa Anda bayangkan dengan jelas.",
-    "startHereSummary": "Langkah-langkah ini bisa Anda coba hari ini.",
-    "drillsSummary": "Setiap latihan membuat Anda langsung mempraktikkan pelajarannya di Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Situasi",
-      "before": "Sebelum latihan",
-      "after": "Setelah latihan"
-    },
-    "mistakesTitle": "Kesalahan umum yang perlu dihindari",
-    "whatToDoInsteadTitle": "Yang sebaiknya dilakukan",
-    "planSummary": "Jalani langkah-langkah ini sebelum membuat latihan lebih sulit atau lebih lama.",
-    "breadcrumbHome": "Beranda",
-    "breadcrumbLearn": "Belajar",
-    "eyebrow": "Panduan catur sederhana",
-    "updated": "Diperbarui {date}",
-    "reviewedBy": "Ditinjau oleh {name}",
-    "startHere": "Mulai di sini",
-    "whatYouWillLearn": "Yang akan kamu pelajari",
-    "whoThisIsFor": "Untuk siapa panduan ini",
-    "browseAllGuides": "Lihat semua panduan",
-    "onThisPage": "Di halaman ini",
-    "aimFor": "Sasaran:",
-    "tryItNow": "Coba sekarang",
-    "tryItNowTitle": "Mainkan satu ronde singkat sebelum kamu melanjutkan membaca.",
-    "tryItNowBody": "Terapkan langkah-langkahnya selagi masih segar, lalu kembali dengan satu hal konkret yang kamu sadari.",
-    "startTrainingRound": "Mulai ronde latihan",
-    "keepLearning": "Terus belajar",
-    "whatToLearnNext": "Yang dipelajari selanjutnya",
-    "whatToLearnNextBody": "Pilih panduan yang paling sesuai dengan masalah berikutnya yang ingin kamu selesaikan.",
-    "readThisGuide": "Baca panduan ini",
-    "putItOnTheBoard": "Bawa ke papan catur",
-    "practiceTitle": "Berlatih di Memory Chess",
-    "practiceBody": "Gunakan satu latihan singkat untuk mempraktikkan apa yang baru saja kamu pelajari.",
-    "goalLabel": "Tujuan:",
-    "commonQuestions": "Pertanyaan umum",
-    "editorialNotes": "Catatan redaksi",
-    "aboutThisGuide": "Tentang panduan ini",
-    "aboutBody": "Panduan Memory Chess ditulis untuk pemula dan pemain yang sedang berkembang. Setiap panduan memberi kamu jawaban langsung, langkah praktis, dan satu cara yang berguna untuk memantau kemajuan.",
-    "publishedLine": "Diterbitkan {published}. Terakhir ditinjau dan diperbarui {updated} oleh {reviewer}.",
-    "referenceLinks": "Tautan rujukan",
-    "goals": {
-      "reduce-blunders": {
-        "label": "Kurangi blunder",
-        "description": "Bangun kebiasaan memeriksa ancaman lebih cepat dan berhenti membiarkan bidak tergantung di posisi sederhana.",
-        "accent": "Cek ancaman"
-      },
-      "visualization": {
-        "label": "Perbaiki visualisasi",
-        "description": "Tahan gambaran papan di kepala lebih lama supaya perhitungan terasa lebih tenang dan jernih.",
-        "accent": "Papan di kepala"
-      },
-      "memory": {
-        "label": "Latih ingatan",
-        "description": "Tingkatkan kemampuan mengingat posisi dan menahan pola tanpa mengubah latihan jadi PR teori.",
-        "accent": "Mengingat dan menahan"
-      },
-      "routine": {
-        "label": "Bangun rutinitas harian",
-        "description": "Gunakan rencana singkat yang memadukan latihan, partai, dan tinjauan.",
-        "accent": "Konsistensi"
-      }
-    }
+    "bannerLabel": "Pembaruan Memory Chess"
   }
 }

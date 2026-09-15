@@ -2,30 +2,6 @@ import type { ComponentProps } from "react";
 import { render, screen } from "@/test-utils/intl";
 import LearnArticleRich from "@/components/learn/LearnArticleRich";
 import { EN_LEARN_PAGES, EN_LEARN_GOALS } from "@/lib/seo/learn";
-import enMessages from "../../../../messages/en.json";
-
-/**
- * A catalogue whose every leaf is a unique marker, with the original ICU
- * arguments preserved so messages still format. Rendering against it proves a
- * string came from the catalogue: a hard-coded literal has no marker to show.
- */
-function markerCatalogue(value: unknown, keyPath = ""): unknown {
-  if (Array.isArray(value)) {
-    return value.map((item, i) => markerCatalogue(item, `${keyPath}[${i}]`));
-  }
-  if (value && typeof value === "object") {
-    return Object.fromEntries(
-      Object.entries(value).map(([k, v]) => [
-        k,
-        markerCatalogue(v, keyPath ? `${keyPath}.${k}` : k),
-      ]),
-    );
-  }
-  const args = [...String(value).matchAll(/\{\s*(\w+)\s*\}/g)]
-    .map((m) => `{${m[1]}}`)
-    .join(" ");
-  return `«${keyPath}»${args ? ` ${args}` : ""}`;
-}
 
 function getLearnPageBySlug(slug: string) {
   const page = EN_LEARN_PAGES.find((entry) => entry.slug === slug);
@@ -81,14 +57,9 @@ describe("LearnArticleRich", () => {
     const { container } = render(<LearnArticleRich
         page={page}
         goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}
-        locale="en"
-      />);
+        allPages={EN_LEARN_PAGES}      />);
 
     expect(screen.getByText("Start here")).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", { name: "Practice in Memory Chess" }),
-    ).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: "Reference links" }),
     ).toBeInTheDocument();
@@ -144,46 +115,6 @@ describe("LearnArticleRich", () => {
     };
   }
 
-  it("identifies a translated article as the localized page", () => {
-    // A /de/learn/... page that declares the English URL in its JSON-LD
-    // contradicts its own localized canonical, and tells Google the German
-    // page and the English page are the same document.
-    const slug = "how-to-get-better-at-chess-for-beginners";
-    const page = getLearnPageBySlug(slug);
-
-    const { container } = render(
-      <LearnArticleRich
-        page={page}
-        goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}
-        locale="de"
-      />,
-      { locale: "de" },
-    );
-
-    const { article, webPage, breadcrumb, faq } = schemaFor(container);
-    const base = `https://thememorychess.com/de/learn/${slug}`;
-
-    expect(article["@id"]).toBe(`${base}#article`);
-    expect(article.image.url).toBe(`${base}/opengraph-image`);
-    expect(article.inLanguage).toBe("de");
-    expect(article.mainEntityOfPage["@id"]).toBe(`${base}#webpage`);
-
-    expect(webPage["@id"]).toBe(`${base}#webpage`);
-    expect(webPage.url).toBe(base);
-    expect(webPage.isPartOf["@id"]).toBe(
-      "https://thememorychess.com/de/learn#webpage",
-    );
-
-    expect(faq["@id"]).toBe(`${base}#faq-schema`);
-    expect(breadcrumb["@id"]).toBe(`${base}#breadcrumb`);
-    expect(breadcrumb.itemListElement.map((e: { item: string }) => e.item)).toEqual([
-      "https://thememorychess.com/de",
-      "https://thememorychess.com/de/learn",
-      base,
-    ]);
-  });
-
   it("keeps English structured data on the unprefixed URLs", () => {
     const slug = "how-to-get-better-at-chess-for-beginners";
     const page = getLearnPageBySlug(slug);
@@ -192,9 +123,7 @@ describe("LearnArticleRich", () => {
       <LearnArticleRich
         page={page}
         goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}
-        locale="en"
-      />,
+        allPages={EN_LEARN_PAGES}      />,
     );
 
     const { article, webPage, breadcrumb } = schemaFor(container);
@@ -210,9 +139,7 @@ describe("LearnArticleRich", () => {
     );
   });
 
-  it("keeps organization identifiers global across locales", () => {
-    // Publisher and author are one entity site-wide. Prefixing their @id per
-    // locale would split one organization into twenty-four in the graph.
+  it("keeps publisher and author on their site-wide identifiers", () => {
     const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
 
     const { container } = render(
@@ -220,9 +147,7 @@ describe("LearnArticleRich", () => {
         page={page}
         goals={EN_LEARN_GOALS}
         allPages={EN_LEARN_PAGES}
-        locale="ja"
       />,
-      { locale: "ja" },
     );
 
     const { article } = schemaFor(container);
@@ -233,83 +158,90 @@ describe("LearnArticleRich", () => {
     expect(article.author["@id"]).toBe(
       "https://thememorychess.com/about#bing-cheng",
     );
-    expect(article.reviewedBy["@id"]).toBe(article.author["@id"]);
   });
 
-  it("reads every piece of article chrome from the catalogue", () => {
-    // Rendered against a marker catalogue, any string the component still
-    // hard-codes simply will not have a marker in the DOM. This is the
-    // invariant, not a list of today's phrasings: a newly hard-coded heading
-    // fails here without anyone remembering to extend the test.
-    const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
+  it("credits the author under the date and says how the guide was written and checked", () => {
+    const page = getLearnPageBySlug("chess-coordinates-practice");
 
     const { container } = render(
       <LearnArticleRich
         page={page}
         goals={EN_LEARN_GOALS}
         allPages={EN_LEARN_PAGES}
-        locale="en"
       />,
-      {
-        locale: "en",
-        messages: markerCatalogue(enMessages) as Record<string, unknown>,
-      },
     );
 
-    const text = container.textContent ?? "";
+    const byline = container.querySelector("address[data-learn-byline]");
+    expect(byline?.textContent).toBe("By Bing Cheng");
+    expect(byline?.querySelector("a")).toHaveAttribute("href", "/about");
 
-    for (const key of [
-      "breadcrumbHome",
-      "breadcrumbLearn",
-      "eyebrow",
-      "updated",
-      "reviewedBy",
-      "startHere",
-      "whatYouWillLearn",
-      "whoThisIsFor",
-      "browseAllGuides",
-      "onThisPage",
-      "aimFor",
-      "tryItNow",
-      "tryItNowTitle",
-      "tryItNowBody",
-      "startTrainingRound",
-      "keepLearning",
-      "whatToLearnNext",
-      "whatToLearnNextBody",
-      "readThisGuide",
-      "putItOnTheBoard",
-      "practiceTitle",
-      "practiceBody",
-      "goalLabel",
-      "commonQuestions",
-      "faqLabel",
-      "editorialNotes",
-      "aboutThisGuide",
-      "aboutBody",
-      "publishedLine",
-      "referenceLinks",
-    ]) {
-      expect(text).toContain(`\u00ablearnArticle.${key}\u00bb`);
-    }
+    // The note is not contact information, so it sits beside the address,
+    // where the audit's authorship-note exemption finds it by its attribute.
+    const note = container.querySelector("[data-authorship-note]");
+    expect(note?.textContent).toBe(
+      "Written with AI assistance; chess positions checked by script and game facts traced to the code.",
+    );
+    expect(note?.closest("address")).toBeNull();
+    expect(note?.parentElement).toBe(byline?.parentElement);
 
-    // And the English literals they replaced are gone, so nothing is being
-    // rendered twice from both a message and a leftover hard-coded copy.
-    for (const literal of [
-      "Simple chess guide",
-      "Browse all guides",
-      "On this page",
-      "Try it now",
-      "Start a training round",
-      "What to learn next",
-      "Read this guide",
-      "Practice in Memory Chess",
-      "Common questions",
-      "About this guide",
-      "Reference links",
-    ]) {
-      expect(text).not.toContain(literal);
-    }
+    const time = container.querySelector("header time");
+    expect(time?.compareDocumentPosition(byline!)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(byline?.compareDocumentPosition(note!)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+  });
+
+  it("links the settings page from the coordinates guide", () => {
+    const page = getLearnPageBySlug("chess-coordinates-practice");
+
+    render(
+      <LearnArticleRich
+        page={page}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+      />,
+    );
+
+    const links = screen.getAllByRole("link", { name: "the settings page" });
+    expect(links.length).toBeGreaterThanOrEqual(2);
+    for (const link of links) expect(link).toHaveAttribute("href", "/settings");
+  });
+
+  it("links a drill to the exact round it describes, and only when the game can play it", () => {
+    const base = getLearnPageBySlug("chess-memory-training");
+    const drillBlock = base.sections
+      .flatMap((section) => section.blocks)
+      .find((block) => block.kind === "drills");
+    if (drillBlock?.kind !== "drills") throw new Error("guide has no drills");
+    const [playable, offBoard] = drillBlock.drills;
+    const page = {
+      ...base,
+      sections: base.sections.map((section) => ({
+        ...section,
+        blocks: section.blocks.map((block) =>
+          block === drillBlock
+            ? {
+                kind: "drills" as const,
+                drills: [
+                  { ...playable, setup: { pieceCount: 12, memorizeTime: 8 } },
+                  { ...offBoard, setup: undefined },
+                ],
+              }
+            : block,
+        ),
+      })),
+    };
+
+    render(
+      <LearnArticleRich
+        page={page}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}      />,
+    );
+
+    expect(screen.getByRole("link", { name: playable.ctaLabel })).toHaveAttribute(
+      "href",
+      "/game?pieceCount=12&memorizeTime=8",
+    );
+    expect(screen.queryByRole("link", { name: offBoard.ctaLabel })).toBeNull();
   });
 
   it("renders clear links to the next guides", () => {
@@ -318,15 +250,16 @@ describe("LearnArticleRich", () => {
     render(<LearnArticleRich
         page={page}
         goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}
-        locale="en"
-      />);
+        allPages={EN_LEARN_PAGES}      />);
 
     expect(
       screen.getByRole("heading", { name: "What to learn next" }),
     ).toBeInTheDocument();
-    expect(
-      screen.getAllByRole("link", { name: /Read this guide/i }),
-    ).not.toHaveLength(0);
+
+    const next = getLearnPageBySlug(page.relatedArticles[0].slug);
+    expect(screen.getByRole("link", { name: next.title })).toHaveAttribute(
+      "href",
+      `/learn/${next.slug}`,
+    );
   });
 });

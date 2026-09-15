@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Resultat",
-        "body": "Dit bræt sammenlignes felt for felt med originalen. Du ser, hvilke brikker der var rigtige, hvilke der var forkerte, og hvilke du manglede, side om side med den stilling, du fik vist."
+        "body": "Dit bræt sammenlignes felt for felt med originalen. Du ser, hvilke brikker der var rigtige, hvilke der var forkerte, og hvilke du manglede, sammen med den stilling, du fik vist, side om side på brede skærme og under hinanden på smalle."
       }
     },
     "presets": {
@@ -29,9 +29,9 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "To konger og intet andet. Den lærer dig grænsefladen og viser tydeligt, om du kan holde to felter i hovedet under tidspres.",
-        "medium": "6 brikker er omtrent det spænd, de fleste kan holde uden et system. Det er på denne sværhedsgrad, det begynder at betale sig at huske brikkerne i grupper.",
-        "hard": "12 brikker på 8 sekunder overstiger det rå huskespænd. Du er nødt til at samle brikkerne i mønstre i stedet for at huske dem én ad gangen.",
-        "grandmaster": "20 brikker på 5 sekunder er et kvart sekund pr. brik. Ingen læser sådan en stilling felt for felt; den belønner dig for at se bondekæder og grupper af brikker som samlede enheder."
+        "medium": "6 brikker betyder begge konger plus fire andre brikker, med de samme ti sekunder til at se som i sværhedsgraden med to brikker.",
+        "hard": "12 brikker på 8 sekunder giver to tredjedele sekund pr. brik, så prøv at samle brikkerne i mønstre i stedet for at huske dem én ad gangen.",
+        "grandmaster": "20 brikker på 5 sekunder er et kvart sekund pr. brik, så prøv at se bondekæder og grupper af brikker som samlede enheder."
       },
       "custom": {
         "title": "Egne indstillinger",

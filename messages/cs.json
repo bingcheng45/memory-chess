@@ -23,7 +23,8 @@
     "language": {
       "change": "Změnit jazyk. Aktuální jazyk: {language}",
       "current": "Jazyk: {language}",
-      "select": "Vyberte jazyk"
+      "select": "Vyberte jazyk",
+      "englishOnly": "Tato stránka je dostupná pouze v angličtině."
     },
     "otherApps": {
       "title": "Další aplikace autora",
@@ -295,18 +296,11 @@
     "subtitle": "Ovládněte šachovnici pomocí vizualizace. Změřte síly s nejlepšími na světě v přesnosti a rychlosti myšlení.",
     "claimRank": "Získejte své místo",
     "footnote": "Zobrazuje se jen 200 nejlepších. Řazeno podle přesnosti, času na zapamatování a rychlosti řešení.",
-    "loading": "Načítání žebříčku...",
     "unavailableTitle": "Žebříček je dočasně nedostupný",
     "unavailableBody": "Služba žebříčku je právě offline. Data vašich partií se dál ukládají lokálně.",
     "unavailableNote": "Můžete bez omezení hrát dál.",
     "retryLater": "Zkuste to prosím později",
     "errorLoading": "Chyba při načítání žebříčku: {error}",
-    "errors": {
-      "timeout": "Vypršel časový limit požadavku. Zkuste to prosím později.",
-      "parse": "Odpověď serveru se nepodařilo přečíst. Zkuste to prosím později.",
-      "status": "Požadavek selhal se stavem {status}",
-      "unexpected": "Došlo k neočekávané chybě"
-    },
     "emptyTitle": "Buďte prvním šampionem!",
     "emptyBody": "V tomto žebříčku zatím nejsou žádné záznamy",
     "emptyCta": "Vyzkoušejte svou paměť a získejte první místo! Zahrajte si teď a zapište své jméno do historie Memory Chess.",
@@ -371,124 +365,8 @@
       "generic": "Při odesílání formuláře došlo k chybě. Zkuste to prosím znovu."
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "Učte se šachy krok za krokem",
-      "description": "Praktické šachové návody pro začátečníky: přehled na šachovnici, představivost, paměť, výpočet variant, prevence přehmatů a každodenní trénink."
-    },
-    "title": "Učte se šachy krok za krokem",
-    "startBeginner": "Začít návod pro začátečníky",
-    "playCta": "Hrát Memory Chess",
-    "startHere": "Začněte tady",
-    "pickNext": "Vyberte si další krok",
-    "chooseGoal": "Zvolte cíl",
-    "readRecallPlay": "Přečíst, vybavit si, zahrát",
-    "turnIdea": "Proměňte nápad v trénink",
-    "startRound": "Spustit kolo na paměť",
-    "eyebrow": "Učte se s Memory Chess",
-    "heroDescription": "Vyberte si, co chcete zlepšit. Každý průvodce vysvětlí jednu užitečnou myšlenku srozumitelným jazykem a pak vám dá krátké cvičení.",
-    "pickNextDescription": "Vyberte větu, která nejvíc odpovídá vaší současné hře. Neexistuje dokonalé pořadí a cestu můžete kdykoli změnit.",
-    "allGuides": "Všech {count} průvodců",
-    "chooseGoalDescription": "Každá cesta vede od jednoduchého prvního cvičení k ucelenějšímu tréninkovému návyku.",
-    "guideNumber": "Průvodce {number}",
-    "turnIdeaDescription": "Přečtěte si jednoho průvodce, zahrajte si krátké kolo, dokud je myšlenka čerstvá, a pak si všimněte, co se pamatovalo snadno a co chce další pokus.",
-    "paths": {
-      "newToChess": {
-        "label": "Nováček v šachách",
-        "title": "Sestavte si jednoduchý plán zlepšení",
-        "description": "Začněte základy a pak z jedné užitečné myšlenky udělejte opakovatelný denní návyk."
-      },
-      "missingThreats": {
-        "label": "Unikají vám jednoduché hrozby",
-        "title": "Trénujte přehled po celé šachovnici",
-        "description": "Používejte krátkou kontrolní rutinu, abyste si všimli nekrytých figurek, útoků a nebezpečí ještě před tahem."
-      },
-      "losingPosition": {
-        "label": "Ztrácíte pozici v hlavě",
-        "title": "Posilte představivost a vybavování",
-        "description": "Trénujte udržení malého a přesného obrazu šachovnice, než začnete přidávat delší sledy tahů."
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "Novinky",
-      "description": "Podívejte se na nejnovější funkce, vylepšení a opravy Memory Chess v oficiálním přehledu změn.",
-      "socialTitle": "Novinky v Memory Chess",
-      "socialDescription": "Podívejte se na nejnovější funkce, vylepšení a opravy Memory Chess."
-    },
-    "title": "Novinky",
-    "latest": "Nejnovější",
     "bannerCta": "Zobrazit novinky",
-    "bannerLabel": "Aktualizace Memory Chess",
-    "eyebrow": "Aktualizace",
-    "changesIn": "Změny ve verzi {version}"
-  },
-  "learnArticle": {
-    "faqLabel": "Časté dotazy",
-    "whatChangesTitle": "Co se zlepší nejdřív",
-    "trackThisWeekTitle": "Co tento týden sledovat",
-    "trackThisWeekBody": "Vyberte jediné jednoduché měřítko: přehmaty na partii, počet správně vybavených pozic, nebo kolik tahů si dokážete jasně představit.",
-    "startHereSummary": "Tyto kroky můžete zkusit ještě dnes.",
-    "drillsSummary": "Každé cvičení vám dá procvičit lekci přímo v Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Situace",
-      "before": "Před tréninkem",
-      "after": "Po tréninku"
-    },
-    "mistakesTitle": "Časté chyby, kterým se vyhnout",
-    "whatToDoInsteadTitle": "Co dělat místo toho",
-    "planSummary": "Projděte tyto kroky dřív, než trénink ztížíte nebo prodloužíte.",
-    "breadcrumbHome": "Domů",
-    "breadcrumbLearn": "Učení",
-    "eyebrow": "Jednoduchý šachový průvodce",
-    "updated": "Aktualizováno {date}",
-    "reviewedBy": "Zkontroloval {name}",
-    "startHere": "Začněte tady",
-    "whatYouWillLearn": "Co se naučíte",
-    "whoThisIsFor": "Pro koho to je",
-    "browseAllGuides": "Procházet všechny průvodce",
-    "onThisPage": "Na této stránce",
-    "aimFor": "Cíl:",
-    "tryItNow": "Vyzkoušejte hned",
-    "tryItNowTitle": "Než budete číst dál, zahrajte si krátké kolo.",
-    "tryItNowBody": "Použijte kroky, dokud jsou čerstvé, a vraťte se s jednou konkrétní věcí, které jste si všimli.",
-    "startTrainingRound": "Spustit tréninkové kolo",
-    "keepLearning": "Učte se dál",
-    "whatToLearnNext": "Co se naučit dál",
-    "whatToLearnNextBody": "Vyberte průvodce, který nejlépe odpovídá dalšímu problému, který chcete vyřešit.",
-    "readThisGuide": "Přečíst tohoto průvodce",
-    "putItOnTheBoard": "Přeneste to na šachovnici",
-    "practiceTitle": "Trénujte v Memory Chess",
-    "practiceBody": "Použijte krátké cvičení a procvičte si to, co jste se právě naučili.",
-    "goalLabel": "Cíl:",
-    "commonQuestions": "Časté otázky",
-    "editorialNotes": "Redakční poznámky",
-    "aboutThisGuide": "O tomto průvodci",
-    "aboutBody": "Průvodci Memory Chess jsou psaní pro začátečníky a hráče, kteří se zlepšují. Každý dává přímou odpověď, praktické kroky a jeden užitečný způsob, jak sledovat pokrok.",
-    "publishedLine": "Publikováno {published}. Naposledy zkontroloval a aktualizoval {reviewer} dne {updated}.",
-    "referenceLinks": "Zdroje a odkazy",
-    "goals": {
-      "reduce-blunders": {
-        "label": "Méně přehmatů",
-        "description": "Získejte návyk rychleji kontrolovat hrozby a přestaňte v jednoduchých pozicích nechávat figurky zdarma.",
-        "accent": "Kontrola hrozeb"
-      },
-      "visualization": {
-        "label": "Lepší představivost",
-        "description": "Udržte si šachovnici v hlavě déle, aby byl výpočet klidnější a jasnější.",
-        "accent": "Šachovnice v hlavě"
-      },
-      "memory": {
-        "label": "Trénink paměti",
-        "description": "Zlepšete vybavování pozic a udržení vzorců, aniž byste z tréninku udělali domácí úkol z teorie.",
-        "accent": "Vybavování a udržení"
-      },
-      "routine": {
-        "label": "Denní rutina",
-        "description": "Používejte krátký plán, který spojuje cvičení, partie a rozbor.",
-        "accent": "Pravidelnost"
-      }
-    }
+    "bannerLabel": "Aktualizace Memory Chess"
   }
 }

@@ -23,7 +23,8 @@
     "language": {
       "change": "Đổi ngôn ngữ. Ngôn ngữ hiện tại: {language}",
       "current": "Ngôn ngữ: {language}",
-      "select": "Chọn ngôn ngữ"
+      "select": "Chọn ngôn ngữ",
+      "englishOnly": "Trang này chỉ có bằng tiếng Anh."
     },
     "otherApps": {
       "title": "Ứng dụng khác của tác giả",
@@ -295,18 +296,11 @@
     "subtitle": "Làm chủ bàn cờ bằng khả năng hình dung. Tranh tài với những người giỏi nhất thế giới về độ chính xác và tốc độ tư duy.",
     "claimRank": "Giành lấy thứ hạng của bạn",
     "footnote": "Chỉ hiển thị 200 vị trí đầu. Xếp theo độ chính xác, thời gian ghi nhớ và tốc độ hoàn thành.",
-    "loading": "Đang tải bảng xếp hạng…",
     "unavailableTitle": "Bảng xếp hạng tạm thời không khả dụng",
     "unavailableBody": "Dịch vụ bảng xếp hạng hiện đang ngoại tuyến. Dữ liệu ván đấu của bạn vẫn được lưu cục bộ.",
     "unavailableNote": "Bạn vẫn có thể chơi tiếp bình thường.",
     "retryLater": "Vui lòng thử lại sau",
     "errorLoading": "Lỗi khi tải bảng xếp hạng: {error}",
-    "errors": {
-      "timeout": "Yêu cầu đã hết thời gian chờ. Vui lòng thử lại sau.",
-      "parse": "Không thể đọc phản hồi từ máy chủ. Vui lòng thử lại sau.",
-      "status": "Yêu cầu thất bại với trạng thái {status}",
-      "unexpected": "Đã xảy ra lỗi không mong muốn"
-    },
     "emptyTitle": "Hãy là nhà vô địch đầu tiên!",
     "emptyBody": "Bảng xếp hạng này chưa có mục nào",
     "emptyCta": "Thử thách trí nhớ của bạn và giành vị trí dẫn đầu! Chơi một ván ngay bây giờ và ghi tên bạn vào lịch sử Memory Chess.",
@@ -371,124 +365,8 @@
       "generic": "Đã xảy ra lỗi khi gửi biểu mẫu. Vui lòng thử lại."
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "Học cờ vua từng bước rõ ràng",
-      "description": "Hướng dẫn cờ vua thiết thực cho người mới: bao quát bàn cờ, hình dung, ghi nhớ, tính toán, tránh sai lầm và luyện tập hằng ngày."
-    },
-    "title": "Học cờ vua từng bước rõ ràng",
-    "startBeginner": "Bắt đầu hướng dẫn cho người mới",
-    "playCta": "Chơi Memory Chess",
-    "startHere": "Bắt đầu tại đây",
-    "pickNext": "Chọn bước tiếp theo",
-    "chooseGoal": "Chọn một mục tiêu",
-    "readRecallPlay": "Đọc, nhớ lại, chơi",
-    "turnIdea": "Biến một ý tưởng thành bài tập",
-    "startRound": "Bắt đầu một vòng ghi nhớ",
-    "eyebrow": "Học cùng Memory Chess",
-    "heroDescription": "Chọn điều bạn muốn cải thiện. Mỗi hướng dẫn giải thích một ý hữu ích bằng ngôn ngữ dễ hiểu, rồi cho bạn một bài tập ngắn.",
-    "pickNextDescription": "Hãy chọn câu giống nhất với lối chơi hiện tại của bạn. Không có thứ tự hoàn hảo, và bạn có thể đổi hướng bất cứ lúc nào.",
-    "allGuides": "Tất cả {count} hướng dẫn",
-    "chooseGoalDescription": "Mỗi lộ trình đi từ một bài tập đầu tiên đơn giản đến một thói quen luyện tập đầy đủ hơn.",
-    "guideNumber": "Hướng dẫn {number}",
-    "turnIdeaDescription": "Đọc một hướng dẫn, chơi một ván ngắn khi ý tưởng còn mới, rồi để ý xem điều gì dễ nhớ và điều gì cần thử lại.",
-    "paths": {
-      "newToChess": {
-        "label": "Mới chơi cờ vua",
-        "title": "Xây dựng lộ trình tiến bộ đơn giản",
-        "description": "Bắt đầu từ nền tảng, rồi biến một ý tưởng hữu ích thành thói quen hằng ngày có thể lặp lại."
-      },
-      "missingThreats": {
-        "label": "Hay bỏ sót những đe dọa đơn giản",
-        "title": "Rèn thói quen quét toàn bàn cờ",
-        "description": "Dùng một quy trình kiểm tra ngắn để nhận ra quân không được bảo vệ, các đòn tấn công và nguy hiểm trước khi đi."
-      },
-      "losingPosition": {
-        "label": "Mất thế cờ trong đầu",
-        "title": "Củng cố khả năng hình dung và ghi nhớ",
-        "description": "Luyện giữ một hình ảnh nhỏ nhưng chính xác của bàn cờ trước khi thêm các chuỗi nước đi dài hơn."
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "Có gì mới",
-      "description": "Xem các tính năng, cải tiến và sửa lỗi mới nhất của Memory Chess trong nhật ký thay đổi chính thức.",
-      "socialTitle": "Có gì mới ở Memory Chess",
-      "socialDescription": "Xem các tính năng, cải tiến và sửa lỗi mới nhất của Memory Chess."
-    },
-    "title": "Có gì mới",
-    "latest": "Mới nhất",
     "bannerCta": "Xem có gì mới",
-    "bannerLabel": "Cập nhật Memory Chess",
-    "eyebrow": "Cập nhật",
-    "changesIn": "Thay đổi trong phiên bản {version}"
-  },
-  "learnArticle": {
-    "faqLabel": "Câu hỏi thường gặp",
-    "whatChangesTitle": "Điều tiến bộ trước tiên",
-    "trackThisWeekTitle": "Nên theo dõi gì trong tuần này",
-    "trackThisWeekBody": "Chọn một chỉ số đơn giản: số nước đi hớ mỗi ván, số thế cờ nhớ đúng, hoặc bạn hình dung rõ được bao nhiêu nước.",
-    "startHereSummary": "Bạn có thể thử những bước này ngay hôm nay.",
-    "drillsSummary": "Mỗi bài tập cho bạn luyện ngay điều vừa đọc trong Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Tình huống",
-      "before": "Trước khi luyện",
-      "after": "Sau khi luyện"
-    },
-    "mistakesTitle": "Những lỗi phổ biến nên tránh",
-    "whatToDoInsteadTitle": "Nên làm gì thay vào đó",
-    "planSummary": "Hãy đi qua các bước này trước khi làm bài luyện khó hơn hoặc dài hơn.",
-    "breadcrumbHome": "Trang chủ",
-    "breadcrumbLearn": "Học",
-    "eyebrow": "Hướng dẫn cờ vua đơn giản",
-    "updated": "Cập nhật ngày {date}",
-    "reviewedBy": "Người kiểm duyệt: {name}",
-    "startHere": "Bắt đầu ở đây",
-    "whatYouWillLearn": "Bạn sẽ học được gì",
-    "whoThisIsFor": "Dành cho ai",
-    "browseAllGuides": "Xem tất cả hướng dẫn",
-    "onThisPage": "Trong trang này",
-    "aimFor": "Hướng tới:",
-    "tryItNow": "Thử ngay",
-    "tryItNowTitle": "Hãy chơi một ván ngắn trước khi đọc tiếp.",
-    "tryItNowBody": "Áp dụng các bước khi chúng còn mới, rồi quay lại với một điều cụ thể bạn nhận ra.",
-    "startTrainingRound": "Bắt đầu một ván luyện tập",
-    "keepLearning": "Tiếp tục học",
-    "whatToLearnNext": "Học gì tiếp theo",
-    "whatToLearnNextBody": "Chọn hướng dẫn phù hợp nhất với vấn đề tiếp theo bạn muốn giải quyết.",
-    "readThisGuide": "Đọc hướng dẫn này",
-    "putItOnTheBoard": "Đưa lên bàn cờ",
-    "practiceTitle": "Luyện tập trong Memory Chess",
-    "practiceBody": "Dùng một bài tập ngắn để thực hành điều bạn vừa học.",
-    "goalLabel": "Mục tiêu:",
-    "commonQuestions": "Câu hỏi thường gặp",
-    "editorialNotes": "Ghi chú biên tập",
-    "aboutThisGuide": "Về hướng dẫn này",
-    "aboutBody": "Các hướng dẫn của Memory Chess được viết cho người mới và những kỳ thủ đang tiến bộ. Mỗi hướng dẫn cho bạn một câu trả lời trực tiếp, các bước thực hành và một cách hữu ích để theo dõi tiến bộ.",
-    "publishedLine": "Đăng ngày {published}. Lần kiểm duyệt và cập nhật gần nhất vào {updated} bởi {reviewer}.",
-    "referenceLinks": "Liên kết tham khảo",
-    "goals": {
-      "reduce-blunders": {
-        "label": "Giảm sai lầm",
-        "description": "Tạo thói quen kiểm tra đe dọa nhanh hơn và đừng để quân bị bắt không trong những thế đơn giản.",
-        "accent": "Kiểm tra đe dọa"
-      },
-      "visualization": {
-        "label": "Hình dung tốt hơn",
-        "description": "Giữ bàn cờ trong đầu lâu hơn để việc tính toán trở nên bình tĩnh và rõ ràng hơn.",
-        "accent": "Bàn cờ trong đầu"
-      },
-      "memory": {
-        "label": "Rèn trí nhớ",
-        "description": "Cải thiện khả năng nhớ thế cờ và giữ lại các mẫu hình mà không biến việc luyện tập thành học thuộc lý thuyết.",
-        "accent": "Nhớ lại và ghi nhớ"
-      },
-      "routine": {
-        "label": "Xây thói quen hằng ngày",
-        "description": "Dùng một kế hoạch ngắn kết hợp bài tập, ván đấu và xem lại.",
-        "accent": "Đều đặn"
-      }
-    }
+    "bannerLabel": "Cập nhật Memory Chess"
   }
 }

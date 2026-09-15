@@ -16,7 +16,7 @@ npm run build
 .claude/skills/verify-memory-chess/helpers/serve.sh start 4517
 ```
 
-`npm run build` runs the message and Learn-prose validators first and fails the build if they fail. `serve.sh start` refuses a port that is already in use, starts `next start` detached in the background, records the server's pid and start time in `.verify/server-<port>.pid` with its log in `.verify/server-<port>.log`, and returns once `http://127.0.0.1:<port>/` answers. A start that never answers kills what it spawned and removes the pid file, so an existing pid file always names a server that answered on its port. Teardown is `serve.sh stop 4517`, which signals only the process group of the pid it recorded, and only after checking that pid is still the server it started.
+`npm run build` runs the message validator first and fails the build if it fails. `serve.sh start` refuses a port that is already in use, starts `next start` detached in the background, records the server's pid and start time in `.verify/server-<port>.pid` with its log in `.verify/server-<port>.log`, and returns once `http://127.0.0.1:<port>/` answers. A start that never answers kills what it spawned and removes the pid file, so an existing pid file always names a server that answered on its port. Teardown is `serve.sh stop 4517`, which signals only the process group of the pid it recorded, and only after checking that pid is still the server it started.
 
 Verification works without any env vars. `.env.local` is not committed; without it the Supabase-backed leaderboard and games-played counter degrade gracefully (see Evidence) and the contact form's Google Sheets write fails with a 500. Never copy secrets from a checkout's `.env.local` into any committed file.
 
@@ -30,7 +30,7 @@ Read-only. Confirms something listens on the port, that the listener is the serv
 
 ## Drive
 
-Run the cheap layer first: `npx jest` covers the stores, utilities, and SEO structure in seconds (baseline: 29 suites, 151 tests, green). Drive the browser for what Jest cannot see, which is everything below.
+Run the cheap layer first: `npx jest` covers the stores, utilities, and SEO structure in seconds (expect every suite green; from a worktree under `.claude/`, which `jest.config.js` ignores, run `npx jest --testPathIgnorePatterns=/node_modules/`). Drive the browser for what Jest cannot see, which is everything below.
 
 ```bash
 node .claude/skills/verify-memory-chess/helpers/cdp.mjs <drive-script.mjs> \
@@ -66,7 +66,47 @@ This app was rejected by Google AdSense because `/game` server-rendered 8 words 
 .claude/skills/verify-memory-chess/helpers/ssr-words.sh http://127.0.0.1:4517/game 150
 ```
 
-`ssr-words.sh` curls the route exactly as a non-JS crawler would, strips `<script>`, `<style>`, and all tags, prints `words=<count>` plus the surviving text, and exits 1 if the count is under the floor. Save its output into the evidence directory (`... | tee .verify-evidence/<run>/game.ssr.txt`). Measured baselines on `main` as of 2026-09: `/game` 9 words, `/leaderboard` 18, `/learn/chess-memory-training` 1034. The first two are the open AdSense defect (a fix is in flight on `fix/adsense-low-value-content`), so a 150 floor on them currently fails by design; once that fix lands, keep the 150 floor as the regression guard. Learn articles must clear 300 today.
+`ssr-words.sh` curls the route exactly as a non-JS crawler would, strips `<script>`, `<style>`, and all tags, prints `words=<count>` plus the surviving text, and exits 1 if the count is under the floor. Save its output into the evidence directory (`... | tee .verify-evidence/<run>/game.ssr.txt`). Use it for a quick look at one route.
+
+### The AdSense gate
+
+The site was rejected twice for "Low value content". Any change that adds, removes, or reshapes a page, a sitemap entry, a layout, or translated copy must pass the whole-site audit before it is done:
+
+```bash
+npm run audit:adsense -- --base http://127.0.0.1:4517 --out .verify-evidence/<run>/adsense
+```
+
+It reads `/sitemap.xml`, fetches every listed URL as a non-JS reviewer would, and applies one rule per Google policy item:
+
+- HTTP 200.
+- Listed pages are indexable and self-canonical.
+- At least 300 main-content words, with nav and footer excluded. `WORD_FLOOR_EXCEPTIONS` names each short page and why.
+- No hidden text at any viewport. Hidden means an inline `opacity: 0`, `display: none` or `visibility: hidden`, a `hidden` attribute, a bare `hidden` class with no breakpoint display class that shows it again (`sm:block`, `md:flex`, `lg:inline-flex`), a bare `invisible` class with no breakpoint `visible` class (`md:visible`), or a breakpoint `hidden` or `invisible` class such as `md:hidden` or `sm:invisible`. `aria-hidden` is not hidden, and an element with no words counts nothing.
+- No loading or placeholder text.
+- One `h1`, a title, and a description.
+- Links to privacy, about, terms, and contact.
+- At most one ad unit.
+- Titles and descriptions unique within a language.
+- No two pages of a language sharing more than half their 5-word shingles.
+- No sentence of 5 or more words on more than three pages of a language. Citations (`cite`), link text (`a`), and elements marked `data-authorship-note`, such as the guides' AI-assistance note, are excepted. The `<address>` byline is not excepted and counts as prose.
+- No section-heading template. A page with at least 4 `h2` headings fails when half or more of them each head more than three pages of its language.
+- hreflang pointing only at listed URLs, from both the HTML `<link rel="alternate">` tags and the `Link` response header. The two must name the same hreflang codes and the same URL for each; a side with no alternates, such as a missing Link header or one carrying only font preloads, counts as naming none, so a page with alternates on one side only fails and a page with neither passes. URLs compare by origin, path without a trailing slash, and query, with the production origin mapped to `--base`, so `https://thememorychess.com` and `<base>/` are equal.
+- No broken internal links.
+- No unlisted indexable page. A page linked from a listed page that answers 200 without `noindex` must be in the sitemap.
+- `ads.txt` naming the publisher.
+- One 308 to a URL that answers 200. Each tested URL, requested without following redirects, must answer 308, its `Location` (production origin mapped to `--base`) must be the expected URL, and that URL must answer 200 with no further redirect. Two sets are tested. `trailing-slash-redirect` covers every listed URL other than `/` with a slash appended, expecting the listed URL. `locale-prefix-redirect` covers every English-only listed URL under each locale prefix, with and without a trailing slash, expecting the bare English URL, so `/de/about` and `/de/about/` must each go straight to `/about`. English-only means the sitemap entry has no hreflang alternates, the served canonical is the URL itself, and the first locale's prefixed path is not served in translation. Served in translation means a 200 whose page is `noindex` or canonical to itself, as `/de/leaderboard` is, and skips the path; any other answer, such as a 200 canonical to the bare URL or a 404, keeps it so the redirect failure is reported. Locales come from the sitemap alternates, whatever order the `<xhtml:link>` attributes come in. The check also fails when the sitemap yields no locales, or when there are candidates but none is English-only, so it cannot pass having checked nothing. This goes through the real server, so `next.config.ts` redirects, rewrites and `skipTrailingSlashRedirect` are covered, which the middleware unit tests are not. A failure prints the redirect chain it saw, up to 5 hops.
+
+It prints a table per rule and every failing page, writes `audit.json` under `--out`, and exits 1 on any failure. It exits 2 when `/sitemap.xml` does not answer 200 or lists no URLs, since there is nothing to audit.
+
+When a rule fails, fix the page. Change a rule only when the rule is wrong about what Google asks for, in its own commit that says why. Editorial prose (Learn, the changelog, about, privacy, terms) is English-only with one URL each; the route list in `src/lib/seo/englishOnly.ts` drives the redirects, the sitemap, and the footer links, so a new editorial route goes there rather than into the message catalogues.
+
+A local build proves the leaderboard only against fixture rows. After a deploy, confirm production serves real rankings to a non-JS reader:
+
+```bash
+curl -s https://thememorychess.com/leaderboard | grep -o '<tr' | wc -l
+```
+
+Expect well over 40 rows across the four boards. A count near zero means the page was built or revalidated while Supabase failed, and a crawler is reading the unavailable state.
 
 ### Without Supabase credentials
 

@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Penilaian",
-        "body": "Papan Anda dibandingkan petak demi petak dengan posisi aslinya. Anda melihat bidak mana yang benar, mana yang salah, dan mana yang terlewat, berdampingan dengan posisi yang ditunjukkan kepada Anda."
+        "body": "Papan Anda dibandingkan petak demi petak dengan posisi aslinya. Anda melihat bidak mana yang benar, mana yang salah, dan mana yang terlewat, bersama posisi yang ditunjukkan kepada Anda, berdampingan di layar lebar dan bersusun di layar sempit."
       }
     },
     "presets": {
@@ -29,9 +29,9 @@
       "seconds": "{seconds} dtk",
       "trains": {
         "easy": "Dua raja dan tidak ada yang lain. Ini mengajarkan antarmuka dan memberi gambaran jelas apakah Anda bisa menahan dua petak dalam ingatan di bawah tekanan waktu.",
-        "medium": "Enam bidak kurang lebih adalah rentang yang bisa ditahan kebanyakan orang tanpa sistem apa pun. Ini tingkat di mana pengelompokan mulai terbayar.",
-        "hard": "Dua belas bidak dalam delapan detik melampaui rentang ingatan mentah. Anda harus mengelompokkan bidak menjadi bentuk-bentuk, bukan mengingatnya satu per satu.",
-        "grandmaster": "Dua puluh bidak dalam lima detik berarti seperempat detik per bidak. Tidak ada yang membacanya petak demi petak; tingkat ini memberi imbalan bagi yang bisa melihat rantai pion dan gerombolan bidak sebagai satu kesatuan."
+        "medium": "Enam bidak berarti kedua raja ditambah empat bidak lain, dengan waktu melihat sepuluh detik yang sama seperti tingkat dua bidak.",
+        "hard": "Dua belas bidak dalam delapan detik berarti dua pertiga detik per bidak, jadi cobalah mengelompokkan bidak menjadi bentuk-bentuk alih-alih mengingatnya satu per satu.",
+        "grandmaster": "Dua puluh bidak dalam lima detik berarti seperempat detik per bidak, jadi cobalah melihat rantai pion dan gerombolan bidak sebagai satu kesatuan."
       },
       "custom": {
         "title": "Pengaturan khusus",

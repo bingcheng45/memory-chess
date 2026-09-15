@@ -23,7 +23,8 @@
     "language": {
       "change": "Schimbă limba. Limba curentă: {language}",
       "current": "Limbă: {language}",
-      "select": "Alege limba"
+      "select": "Alege limba",
+      "englishOnly": "Această pagină este disponibilă doar în limba engleză."
     },
     "otherApps": {
       "title": "Alte aplicații ale creatorului",
@@ -295,18 +296,11 @@
     "subtitle": "Stăpânește tabla prin vizualizare. Concurează cu cei mai buni din lume la precizie mentală și viteză.",
     "claimRank": "Revendică-ți locul",
     "footnote": "Se afișează doar primii 200. Ordonați după precizie, timp de memorare și viteză de rezolvare.",
-    "loading": "Se încarcă clasamentul…",
     "unavailableTitle": "Clasamentul este temporar indisponibil",
     "unavailableBody": "Serviciul de clasament este momentan offline. Datele partidelor tale se salvează în continuare local.",
     "unavailableNote": "Poți juca mai departe fără probleme.",
     "retryLater": "Încearcă din nou mai târziu",
     "errorLoading": "Eroare la încărcarea clasamentului: {error}",
-    "errors": {
-      "timeout": "Cererea a expirat. Încearcă din nou mai târziu.",
-      "parse": "Răspunsul serverului nu a putut fi citit. Încearcă din nou mai târziu.",
-      "status": "Cererea a eșuat cu starea {status}",
-      "unexpected": "A apărut o eroare neașteptată"
-    },
     "emptyTitle": "Fii primul campion!",
     "emptyBody": "Încă nu există înregistrări în acest clasament",
     "emptyCta": "Pune-ți memoria la încercare și cucerește primul loc! Joacă o partidă acum și scrie-ți numele în istoria Memory Chess.",
@@ -371,124 +365,8 @@
       "generic": "A apărut o eroare la trimiterea formularului. Încearcă din nou."
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "Învață șah pas cu pas",
-      "description": "Ghiduri practice de șah pentru începători: vederea tablei, vizualizare, memorie, calcul, evitarea gafelor și practică zilnică."
-    },
-    "title": "Învață șah pas cu pas",
-    "startBeginner": "Începe ghidul pentru începători",
-    "playCta": "Joacă Memory Chess",
-    "startHere": "Începe aici",
-    "pickNext": "Alege pasul următor",
-    "chooseGoal": "Alege un obiectiv",
-    "readRecallPlay": "Citește, amintește-ți, joacă",
-    "turnIdea": "Transformă o idee în practică",
-    "startRound": "Începe o rundă de memorie",
-    "eyebrow": "Învață cu Memory Chess",
-    "heroDescription": "Alege ce vrei să îmbunătățești. Fiecare ghid explică o idee utilă în cuvinte simple și apoi îți propune un exercițiu scurt.",
-    "pickNextDescription": "Alege propoziția care seamănă cel mai mult cu jocul tău de acum. Nu există o ordine perfectă și poți schimba traseul oricând.",
-    "allGuides": "Toate cele {count} ghiduri",
-    "chooseGoalDescription": "Fiecare traseu pornește de la un prim exercițiu simplu și ajunge la un obicei de antrenament mai complet.",
-    "guideNumber": "Ghidul {number}",
-    "turnIdeaDescription": "Citește un ghid, joacă o rundă scurtă cât timp ideea este proaspătă și observă apoi ce ți-a fost ușor de reținut și ce mai are nevoie de o încercare.",
-    "paths": {
-      "newToChess": {
-        "label": "Începător la șah",
-        "title": "Construiește un plan simplu de progres",
-        "description": "Începe cu bazele, apoi transformă o idee utilă într-un obicei zilnic pe care îl poți repeta."
-      },
-      "missingThreats": {
-        "label": "Îți scapă amenințări simple",
-        "title": "Antrenează scanarea întregii table",
-        "description": "Folosește o rutină scurtă de verificare pentru a observa piese neapărate, atacuri și pericole înainte de a muta."
-      },
-      "losingPosition": {
-        "label": "Pierzi poziția în minte",
-        "title": "Întărește-ți vizualizarea și memoria",
-        "description": "Exersează păstrarea unei imagini mici și exacte a tablei înainte de a adăuga secvențe mai lungi de mutări."
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "Noutăți",
-      "description": "Vezi cele mai noi funcții, îmbunătățiri și remedieri Memory Chess în jurnalul oficial de modificări.",
-      "socialTitle": "Noutăți Memory Chess",
-      "socialDescription": "Vezi cele mai noi funcții, îmbunătățiri și remedieri Memory Chess."
-    },
-    "title": "Noutăți",
-    "latest": "Cea mai recentă",
     "bannerCta": "Vezi noutățile",
-    "bannerLabel": "Actualizare Memory Chess",
-    "eyebrow": "Actualizări",
-    "changesIn": "Modificări în versiunea {version}"
-  },
-  "learnArticle": {
-    "faqLabel": "Întrebări frecvente",
-    "whatChangesTitle": "Ce se îmbunătățește primul",
-    "trackThisWeekTitle": "Ce să urmărești săptămâna asta",
-    "trackThisWeekBody": "Alege o singură măsură simplă: gafe pe partidă, poziții reținute corect, sau câte mutări vezi clar în minte.",
-    "startHereSummary": "Poți încerca acești pași chiar azi.",
-    "drillsSummary": "Fiecare exercițiu îți permite să aplici lecția direct în Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Situație",
-      "before": "Înainte de antrenament",
-      "after": "După antrenament"
-    },
-    "mistakesTitle": "Greșeli frecvente de evitat",
-    "whatToDoInsteadTitle": "Ce să faci în schimb",
-    "planSummary": "Parcurge acești pași înainte să faci antrenamentul mai greu sau mai lung.",
-    "breadcrumbHome": "Acasă",
-    "breadcrumbLearn": "Învață",
-    "eyebrow": "Ghid de șah pe înțelesul tuturor",
-    "updated": "Actualizat pe {date}",
-    "reviewedBy": "Verificat de {name}",
-    "startHere": "Începe aici",
-    "whatYouWillLearn": "Ce vei învăța",
-    "whoThisIsFor": "Cui i se potrivește",
-    "browseAllGuides": "Vezi toate ghidurile",
-    "onThisPage": "Pe această pagină",
-    "aimFor": "Țintă:",
-    "tryItNow": "Încearcă acum",
-    "tryItNowTitle": "Joacă o rundă scurtă înainte să continui lectura.",
-    "tryItNowBody": "Folosește pașii cât sunt proaspeți și întoarce-te cu un lucru concret pe care l-ai observat.",
-    "startTrainingRound": "Începe o rundă de antrenament",
-    "keepLearning": "Continuă să înveți",
-    "whatToLearnNext": "Ce înveți în continuare",
-    "whatToLearnNextBody": "Alege ghidul care se potrivește cel mai bine următoarei probleme pe care vrei să o rezolvi.",
-    "readThisGuide": "Citește acest ghid",
-    "putItOnTheBoard": "Du-l pe tablă",
-    "practiceTitle": "Exersează în Memory Chess",
-    "practiceBody": "Folosește un exercițiu scurt ca să pui în practică ce tocmai ai învățat.",
-    "goalLabel": "Obiectiv:",
-    "commonQuestions": "Întrebări frecvente",
-    "editorialNotes": "Note editoriale",
-    "aboutThisGuide": "Despre acest ghid",
-    "aboutBody": "Ghidurile Memory Chess sunt scrise pentru începători și pentru jucătorii care progresează. Fiecare ghid îți dă un răspuns direct, pași practici și o metodă utilă de a-ți urmări progresul.",
-    "publishedLine": "Publicat pe {published}. Ultima verificare și actualizare pe {updated} de {reviewer}.",
-    "referenceLinks": "Linkuri de referință",
-    "goals": {
-      "reduce-blunders": {
-        "label": "Mai puține gafe",
-        "description": "Formează-ți obiceiul de a verifica amenințările mai repede și nu mai lăsa piese în priză în poziții simple.",
-        "accent": "Verificarea amenințărilor"
-      },
-      "visualization": {
-        "label": "Vizualizare mai bună",
-        "description": "Ține tabla în minte mai mult timp, ca să calculezi mai calm și mai clar.",
-        "accent": "Tabla în minte"
-      },
-      "memory": {
-        "label": "Antrenează memoria",
-        "description": "Îmbunătățește-ți reamintirea pozițiilor și reținerea tiparelor fără să transformi antrenamentul în teme de teorie.",
-        "accent": "Reamintire și reținere"
-      },
-      "routine": {
-        "label": "Construiește o rutină zilnică",
-        "description": "Folosește un plan scurt care combină exerciții, partide și analiză.",
-        "accent": "Consecvență"
-      }
-    }
+    "bannerLabel": "Actualizare Memory Chess"
   }
 }

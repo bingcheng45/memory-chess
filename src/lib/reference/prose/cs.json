@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Vyhodnocení",
-        "body": "Vaše šachovnice se porovnává pole po poli s originálem. Vidíte, které figury byly správně, které špatně a které jste vynechali, vedle pozice, která vám byla ukázána."
+        "body": "Vaše šachovnice se porovnává pole po poli s originálem. Vidíte, které figury byly správně, které špatně a které jste vynechali, spolu s pozicí, která vám byla ukázána, na širokých obrazovkách vedle sebe a na úzkých pod sebou."
       }
     },
     "presets": {
@@ -29,9 +29,9 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "Dva králové a nic jiného. Učí ovládání rozhraní a dá vám jasnou odpověď, zda dokážete udržet dvě pole v paměti pod časovým tlakem.",
-        "medium": "Šest figur je zhruba rozsah, který si většina lidí udrží bez jakéhokoli systému. Na této úrovni se začíná vyplácet seskupování do celků.",
-        "hard": "Dvanáct figur za osm sekund přesahuje přirozený rozsah paměti. Musíte figury seskupovat do tvarů, ne si je pamatovat jednu po druhé.",
-        "grandmaster": "Dvacet figur za pět sekund je čtvrt sekundy na figuru. Nikdo to nečte pole po poli; tato úroveň odměňuje vnímání pěšcových řetězců a shluků figur jako jednotlivých celků."
+        "medium": "Šest figur znamená oba krále a čtyři další figury, se stejnými deseti sekundami na prohlédnutí jako u předvolby se dvěma figurami.",
+        "hard": "Dvanáct figur za osm sekund dává dvě třetiny sekundy na figuru, takže zkuste figury seskupovat do tvarů, místo abyste si je pamatovali jednu po druhé.",
+        "grandmaster": "Dvacet figur za pět sekund je čtvrt sekundy na figuru, takže zkuste vnímat pěšcové řetězce a shluky figur jako jednotlivé celky."
       },
       "custom": {
         "title": "Vlastní nastavení",

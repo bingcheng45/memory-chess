@@ -23,7 +23,8 @@
     "language": {
       "change": "Zmień język. Bieżący język: {language}",
       "current": "Język: {language}",
-      "select": "Wybierz język"
+      "select": "Wybierz język",
+      "englishOnly": "Ta strona jest dostępna tylko po angielsku."
     },
     "otherApps": {
       "title": "Inne aplikacje autora",
@@ -295,18 +296,11 @@
     "subtitle": "Opanuj szachownicę dzięki wizualizacji. Rywalizuj z najlepszymi na świecie w precyzji i szybkości myślenia.",
     "claimRank": "Zajmij swoje miejsce",
     "footnote": "Wyświetlane jest tylko 200 najlepszych wyników. Sortowanie według celności, czasu zapamiętywania i tempa rozwiązania.",
-    "loading": "Wczytywanie rankingu...",
     "unavailableTitle": "Ranking chwilowo niedostępny",
     "unavailableBody": "Usługa rankingu jest teraz offline. Dane twoich partii nadal zapisują się lokalnie.",
     "unavailableNote": "Możesz grać dalej bez przeszkód.",
     "retryLater": "Spróbuj ponownie później",
     "errorLoading": "Błąd podczas wczytywania rankingu: {error}",
-    "errors": {
-      "timeout": "Upłynął limit czasu żądania. Spróbuj ponownie później.",
-      "parse": "Nie udało się odczytać odpowiedzi serwera. Spróbuj ponownie później.",
-      "status": "Żądanie nie powiodło się ze statusem {status}",
-      "unexpected": "Wystąpił nieoczekiwany błąd"
-    },
     "emptyTitle": "Zostań pierwszym mistrzem!",
     "emptyBody": "W tym rankingu nie ma jeszcze wpisów",
     "emptyCta": "Sprawdź swoją pamięć i zajmij pierwsze miejsce! Zagraj teraz i zapisz swoje imię w historii Memory Chess.",
@@ -371,124 +365,8 @@
       "generic": "Podczas wysyłania formularza wystąpił błąd. Spróbuj ponownie."
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "Ucz się szachów krok po kroku",
-      "description": "Praktyczne poradniki szachowe dla początkujących: widzenie szachownicy, wyobraźnia, pamięć, liczenie wariantów, unikanie gaf i codzienna praktyka."
-    },
-    "title": "Ucz się szachów krok po kroku",
-    "startBeginner": "Zacznij poradnik dla początkujących",
-    "playCta": "Zagraj w Memory Chess",
-    "startHere": "Zacznij tutaj",
-    "pickNext": "Wybierz następny krok",
-    "chooseGoal": "Wybierz cel",
-    "readRecallPlay": "Przeczytaj, przypomnij sobie, zagraj",
-    "turnIdea": "Zamień jeden pomysł w praktykę",
-    "startRound": "Rozpocznij rundę na pamięć",
-    "eyebrow": "Ucz się z Memory Chess",
-    "heroDescription": "Wybierz, co chcesz poprawić. Każdy przewodnik wyjaśnia jedną przydatną myśl prostym językiem, a potem daje krótkie ćwiczenie.",
-    "pickNextDescription": "Wybierz zdanie, które najbardziej pasuje do twojej obecnej gry. Nie ma idealnej kolejności i w każdej chwili możesz zmienić ścieżkę.",
-    "allGuides": "Wszystkie {count} przewodników",
-    "chooseGoalDescription": "Każda ścieżka prowadzi od prostego pierwszego ćwiczenia do pełniejszego nawyku treningowego.",
-    "guideNumber": "Przewodnik {number}",
-    "turnIdeaDescription": "Przeczytaj jeden przewodnik, zagraj krótką rundę, póki pomysł jest świeży, a potem zauważ, co łatwo zapamiętałeś, a co wymaga kolejnej próby.",
-    "paths": {
-      "newToChess": {
-        "label": "Początkujący w szachach",
-        "title": "Zbuduj prosty plan rozwoju",
-        "description": "Zacznij od podstaw, a potem zamień jeden przydatny pomysł w powtarzalny codzienny nawyk."
-      },
-      "missingThreats": {
-        "label": "Umykają ci proste zagrożenia",
-        "title": "Ćwicz przegląd całej szachownicy",
-        "description": "Stosuj krótką rutynę sprawdzania, aby przed ruchem zauważyć niebronione bierki, ataki i zagrożenia."
-      },
-      "losingPosition": {
-        "label": "Tracisz pozycję w głowie",
-        "title": "Wzmocnij wyobraźnię i pamięć",
-        "description": "Ćwicz utrzymywanie małego, dokładnego obrazu szachownicy, zanim dołożysz dłuższe sekwencje ruchów."
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "Nowości",
-      "description": "Zobacz najnowsze funkcje, usprawnienia i poprawki Memory Chess w oficjalnej liście zmian.",
-      "socialTitle": "Nowości w Memory Chess",
-      "socialDescription": "Zobacz najnowsze funkcje, usprawnienia i poprawki Memory Chess."
-    },
-    "title": "Nowości",
-    "latest": "Najnowsze",
     "bannerCta": "Zobacz nowości",
-    "bannerLabel": "Aktualizacja Memory Chess",
-    "eyebrow": "Aktualizacje",
-    "changesIn": "Zmiany w wersji {version}"
-  },
-  "learnArticle": {
-    "faqLabel": "Częste pytania",
-    "whatChangesTitle": "Co poprawia się najpierw",
-    "trackThisWeekTitle": "Co mierzyć w tym tygodniu",
-    "trackThisWeekBody": "Wybierz jedną prostą miarę: gafy na partię, poprawnie odtworzone pozycje albo liczbę ruchów, które widzisz wyraźnie w głowie.",
-    "startHereSummary": "Te kroki możesz wypróbować już dziś.",
-    "drillsSummary": "Każde ćwiczenie pozwala przećwiczyć lekcję w Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Sytuacja",
-      "before": "Przed treningiem",
-      "after": "Po treningu"
-    },
-    "mistakesTitle": "Częste błędy, których warto unikać",
-    "whatToDoInsteadTitle": "Co zrobić zamiast tego",
-    "planSummary": "Przejdź te kroki, zanim zaczniesz utrudniać albo wydłużać trening.",
-    "breadcrumbHome": "Strona główna",
-    "breadcrumbLearn": "Nauka",
-    "eyebrow": "Prosty przewodnik szachowy",
-    "updated": "Zaktualizowano {date}",
-    "reviewedBy": "Zweryfikował {name}",
-    "startHere": "Zacznij tutaj",
-    "whatYouWillLearn": "Czego się nauczysz",
-    "whoThisIsFor": "Dla kogo to jest",
-    "browseAllGuides": "Zobacz wszystkie przewodniki",
-    "onThisPage": "Na tej stronie",
-    "aimFor": "Cel:",
-    "tryItNow": "Wypróbuj teraz",
-    "tryItNowTitle": "Zagraj krótką rundę, zanim będziesz czytać dalej.",
-    "tryItNowBody": "Wykorzystaj kroki, póki są świeże, i wróć z jedną konkretną obserwacją.",
-    "startTrainingRound": "Rozpocznij rundę treningową",
-    "keepLearning": "Ucz się dalej",
-    "whatToLearnNext": "Czego nauczyć się dalej",
-    "whatToLearnNextBody": "Wybierz przewodnik najlepiej dopasowany do kolejnego problemu, który chcesz rozwiązać.",
-    "readThisGuide": "Przeczytaj ten przewodnik",
-    "putItOnTheBoard": "Przenieś to na szachownicę",
-    "practiceTitle": "Ćwicz w Memory Chess",
-    "practiceBody": "Wykorzystaj krótkie ćwiczenie, aby przećwiczyć to, czego się właśnie nauczyłeś.",
-    "goalLabel": "Cel:",
-    "commonQuestions": "Częste pytania",
-    "editorialNotes": "Uwagi redakcyjne",
-    "aboutThisGuide": "O tym przewodniku",
-    "aboutBody": "Przewodniki Memory Chess powstają z myślą o początkujących i rozwijających się graczach. Każdy daje bezpośrednią odpowiedź, praktyczne kroki i jeden użyteczny sposób śledzenia postępów.",
-    "publishedLine": "Opublikowano {published}. Ostatnio zweryfikowane i zaktualizowane {updated} przez {reviewer}.",
-    "referenceLinks": "Źródła i linki",
-    "goals": {
-      "reduce-blunders": {
-        "label": "Mniej gaf",
-        "description": "Wyrób nawyk szybszego sprawdzania zagrożeń i przestań wystawiać bierki w prostych pozycjach.",
-        "accent": "Sprawdzanie zagrożeń"
-      },
-      "visualization": {
-        "label": "Lepsza wyobraźnia",
-        "description": "Utrzymuj szachownicę w głowie dłużej, dzięki czemu liczenie wariantów staje się spokojniejsze i wyraźniejsze.",
-        "accent": "Szachownica w głowie"
-      },
-      "memory": {
-        "label": "Trening pamięci",
-        "description": "Popraw odtwarzanie pozycji i zapamiętywanie wzorców, nie zamieniając treningu w naukę teorii.",
-        "accent": "Odtwarzanie i zapamiętywanie"
-      },
-      "routine": {
-        "label": "Codzienna rutyna",
-        "description": "Korzystaj z krótkiego planu łączącego ćwiczenia, partie i analizę.",
-        "accent": "Systematyczność"
-      }
-    }
+    "bannerLabel": "Aktualizacja Memory Chess"
   }
 }

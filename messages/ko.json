@@ -23,7 +23,8 @@
     "language": {
       "change": "언어 변경. 현재 언어: {language}",
       "current": "언어: {language}",
-      "select": "언어 선택"
+      "select": "언어 선택",
+      "englishOnly": "이 페이지는 영어로만 제공됩니다."
     },
     "otherApps": {
       "title": "제작자의 다른 앱",
@@ -295,18 +296,11 @@
     "subtitle": "시각화로 보드를 익혀 보세요. 머릿속 정확도와 속도로 세계 최고의 플레이어들과 겨뤄 보세요.",
     "claimRank": "당신의 순위를 차지하세요",
     "footnote": "상위 200명만 표시됩니다. 정확도, 암기 시간, 풀이 속도 순입니다.",
-    "loading": "리더보드를 불러오는 중…",
     "unavailableTitle": "리더보드를 일시적으로 사용할 수 없습니다",
     "unavailableBody": "리더보드 서비스가 현재 중단되었습니다. 게임 데이터는 계속 로컬에 저장됩니다.",
     "unavailableNote": "중단 없이 계속 플레이할 수 있습니다.",
     "retryLater": "잠시 후 다시 시도해 주세요",
     "errorLoading": "순위를 불러오는 중 오류가 발생했습니다: {error}",
-    "errors": {
-      "timeout": "요청 시간이 초과되었습니다. 잠시 후 다시 시도해 주세요.",
-      "parse": "서버 응답을 해석하지 못했습니다. 잠시 후 다시 시도해 주세요.",
-      "status": "요청이 {status} 상태로 실패했습니다",
-      "unexpected": "예기치 않은 오류가 발생했습니다"
-    },
     "emptyTitle": "첫 번째 챔피언이 되어 보세요!",
     "emptyBody": "이 리더보드에는 아직 기록이 없습니다",
     "emptyCta": "기억력에 도전해 정상을 차지하세요! 지금 플레이하고 Memory Chess 역사에 이름을 남겨 보세요.",
@@ -371,124 +365,8 @@
       "generic": "양식을 제출하는 중 오류가 발생했습니다. 다시 시도해 주세요."
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "체스를 한 걸음씩 또렷하게 배우기",
-      "description": "초보자를 위한 실용 체스 가이드: 판을 보는 눈, 시각화, 기억력, 수읽기, 실수 줄이기, 매일 훈련."
-    },
-    "title": "체스를 한 걸음씩 또렷하게 배우기",
-    "startBeginner": "입문자 가이드 시작하기",
-    "playCta": "Memory Chess 플레이",
-    "startHere": "여기서 시작하세요",
-    "pickNext": "다음 단계를 고르세요",
-    "chooseGoal": "목표를 고르세요",
-    "readRecallPlay": "읽고, 떠올리고, 두기",
-    "turnIdea": "하나의 아이디어를 훈련으로",
-    "startRound": "기억 라운드 시작하기",
-    "eyebrow": "Memory Chess와 함께 배우기",
-    "heroDescription": "무엇을 개선하고 싶은지 고르세요. 각 가이드는 쉬운 말로 유용한 아이디어 하나를 설명한 뒤, 짧은 훈련을 하나 제안합니다.",
-    "pickNextDescription": "지금 자신의 대국과 가장 비슷한 문장을 고르세요. 완벽한 순서는 없고, 언제든 경로를 바꿀 수 있습니다.",
-    "allGuides": "전체 {count}개 가이드",
-    "chooseGoalDescription": "모든 경로는 간단한 첫 연습에서 시작해 더 완성된 훈련 습관으로 이어집니다.",
-    "guideNumber": "가이드 {number}",
-    "turnIdeaDescription": "가이드를 하나 읽고, 기억이 생생할 때 짧은 대국을 한 판 둔 다음, 무엇이 쉽게 기억됐고 무엇이 한 번 더 필요한지 살펴보세요.",
-    "paths": {
-      "newToChess": {
-        "label": "체스가 처음이라면",
-        "title": "간단한 향상 계획 세우기",
-        "description": "기본기부터 시작한 뒤, 쓸모 있는 아이디어 하나를 매일 반복할 수 있는 습관으로 만드세요."
-      },
-      "missingThreats": {
-        "label": "간단한 위협을 놓친다면",
-        "title": "판 전체를 훑는 습관 기르기",
-        "description": "짧은 점검 루틴으로 두기 전에 무방비 기물, 상대의 공격, 위험을 알아채세요."
-      },
-      "losingPosition": {
-        "label": "머릿속에서 국면이 흐트러진다면",
-        "title": "시각화와 회상 능력 강화하기",
-        "description": "긴 수순을 더하기 전에, 판의 작고 정확한 그림을 머릿속에 유지하는 연습을 하세요."
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "업데이트 소식",
-      "description": "공식 변경 기록에서 Memory Chess의 최신 기능, 개선 사항, 수정 내역을 확인하세요.",
-      "socialTitle": "Memory Chess 업데이트 소식",
-      "socialDescription": "Memory Chess의 최신 기능, 개선 사항, 수정 내역을 확인하세요."
-    },
-    "title": "업데이트 소식",
-    "latest": "최신",
     "bannerCta": "새로운 소식 보기",
-    "bannerLabel": "Memory Chess 업데이트",
-    "eyebrow": "업데이트",
-    "changesIn": "버전 {version} 변경 사항"
-  },
-  "learnArticle": {
-    "faqLabel": "자주 묻는 질문",
-    "whatChangesTitle": "가장 먼저 좋아지는 것",
-    "trackThisWeekTitle": "이번 주에 기록할 것",
-    "trackThisWeekBody": "간단한 지표 하나만 고르세요. 한 판당 실수 횟수, 정확히 떠올린 국면 수, 또는 몇 수까지 또렷이 그려지는지.",
-    "startHereSummary": "오늘 바로 해볼 수 있는 단계입니다.",
-    "drillsSummary": "모든 훈련은 배운 내용을 Memory Chess에서 바로 연습하게 해 줍니다.",
-    "comparisonColumns": {
-      "situation": "상황",
-      "before": "훈련 전",
-      "after": "훈련 후"
-    },
-    "mistakesTitle": "흔히 하는 실수",
-    "whatToDoInsteadTitle": "대신 이렇게 하세요",
-    "planSummary": "훈련을 더 어렵거나 길게 만들기 전에 이 단계를 먼저 거치세요.",
-    "breadcrumbHome": "홈",
-    "breadcrumbLearn": "학습",
-    "eyebrow": "쉬운 체스 가이드",
-    "updated": "{date} 업데이트",
-    "reviewedBy": "검수: {name}",
-    "startHere": "여기서 시작하세요",
-    "whatYouWillLearn": "배우게 될 내용",
-    "whoThisIsFor": "이런 분께 좋습니다",
-    "browseAllGuides": "모든 가이드 보기",
-    "onThisPage": "이 페이지의 내용",
-    "aimFor": "목표:",
-    "tryItNow": "지금 해보기",
-    "tryItNowTitle": "계속 읽기 전에 짧은 대국을 한 판 두어 보세요.",
-    "tryItNowBody": "기억이 생생할 때 단계를 적용해 보고, 구체적으로 알아차린 것 하나를 가지고 돌아오세요.",
-    "startTrainingRound": "훈련 시작하기",
-    "keepLearning": "계속 배우기",
-    "whatToLearnNext": "다음에 배울 것",
-    "whatToLearnNextBody": "다음에 해결하고 싶은 문제에 가장 잘 맞는 가이드를 고르세요.",
-    "readThisGuide": "이 가이드 읽기",
-    "putItOnTheBoard": "체스판에서 써보기",
-    "practiceTitle": "Memory Chess에서 연습하기",
-    "practiceBody": "짧은 훈련으로 방금 배운 내용을 그대로 연습해 보세요.",
-    "goalLabel": "목표:",
-    "commonQuestions": "자주 묻는 질문",
-    "editorialNotes": "편집자 노트",
-    "aboutThisGuide": "이 가이드에 대하여",
-    "aboutBody": "Memory Chess 가이드는 초보자와 실력을 키워가는 기사를 위해 쓰였습니다. 각 가이드는 명확한 답, 실천 가능한 단계, 그리고 진전을 확인할 수 있는 방법 하나를 제시합니다.",
-    "publishedLine": "{published} 게시. {updated}에 {reviewer}이(가) 최종 검토·수정했습니다.",
-    "referenceLinks": "참고 링크",
-    "goals": {
-      "reduce-blunders": {
-        "label": "실수 줄이기",
-        "description": "위협을 더 빨리 확인하는 습관을 들이고, 쉬운 국면에서 기물을 그냥 내주지 마세요.",
-        "accent": "위협 점검"
-      },
-      "visualization": {
-        "label": "시각화 높이기",
-        "description": "판을 머릿속에 더 오래 붙잡아, 수읽기가 차분하고 또렷해지게 만드세요.",
-        "accent": "머릿속의 판"
-      },
-      "memory": {
-        "label": "기억력 훈련",
-        "description": "국면 회상과 패턴 기억을 끌어올리되, 훈련이 이론 암기가 되지 않게 하세요.",
-        "accent": "회상과 유지"
-      },
-      "routine": {
-        "label": "매일의 루틴 만들기",
-        "description": "훈련, 실전, 복기를 묶은 짧은 계획을 쓰세요.",
-        "accent": "꾸준함"
-      }
-    }
+    "bannerLabel": "Memory Chess 업데이트"
   }
 }

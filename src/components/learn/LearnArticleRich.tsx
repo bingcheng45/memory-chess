@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import { ChevronDown } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import {
@@ -7,26 +6,30 @@ import {
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import {
+  gameHref,
+  LEARN_AUTHOR,
+  LEARN_AUTHORSHIP_NOTE,
+  type LearnBlock,
   type LearnComparisonRow,
+  type LearnInlineLink,
   type LearnPageContent,
 } from "@/lib/seo/learn/schema";
 import type { LearnGoal } from "@/lib/seo/learn";
-import { learnContentLocale } from "@/lib/seo/learn";
-import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import LearnArticleTracking from "@/components/learn/LearnArticleTracking";
+import { LEARN_ARTICLE_COPY } from "@/lib/seo/learn/copy";
 
 const SITE_URL = "https://thememorychess.com";
+const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
 
 type LearnArticleProps = {
   page: LearnPageContent;
   goals: LearnGoal[];
-  /** Every article in the same locale, used to resolve the "read next" links. */
+  /** Every article, used to resolve the "read next" links. */
   allPages: LearnPageContent[];
-  locale: string;
 };
 
-function formatDate(value: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
+function formatDate(value: string): string {
+  return new Intl.DateTimeFormat("en", {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -53,6 +56,21 @@ function buildRelatedPageData(
   }>;
 }
 
+function withInlineLink(text: string, link?: LearnInlineLink) {
+  const at = link ? text.indexOf(link.phrase) : -1;
+  if (!link || at === -1) return text;
+
+  return (
+    <>
+      {text.slice(0, at)}
+      <Link href={link.href} className={EDITORIAL_STYLES.link}>
+        {link.phrase}
+      </Link>
+      {text.slice(at + link.phrase.length)}
+    </>
+  );
+}
+
 function renderComparisonRows(rows: LearnComparisonRow[]) {
   return rows.map((row) => (
     <tr key={row.label} className="border-t border-white/10">
@@ -72,24 +90,165 @@ function renderComparisonRows(rows: LearnComparisonRow[]) {
   ));
 }
 
+function LearnBlockView({
+  block,
+  sectionId,
+  aimForLabel,
+}: {
+  block: LearnBlock;
+  sectionId: string;
+  aimForLabel: string;
+}) {
+  switch (block.kind) {
+    case "paragraphs":
+      return (
+        <div className="max-w-[68ch] space-y-5 text-base leading-8 text-text-secondary">
+          {block.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{withInlineLink(paragraph, block.link)}</p>
+          ))}
+        </div>
+      );
+    case "steps":
+      return block.ordered ? (
+        <ol className="mt-6 divide-y divide-white/10 border-y border-white/10">
+          {block.items.map((item, index) => (
+            <li
+              key={item}
+              className="grid grid-cols-[2rem_1fr] gap-4 py-5 text-base leading-7 text-text-secondary"
+            >
+              <span className="font-mono text-xs tabular-nums text-peach-400">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <ul className="mt-6 space-y-3">
+          {block.items.map((item) => (
+            <li
+              key={item}
+              className="grid grid-cols-[auto_1fr] gap-3 text-base leading-7 text-text-secondary"
+            >
+              <span
+                aria-hidden="true"
+                className="mt-3 h-1 w-1 rounded-full bg-peach-400"
+              />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    case "drills":
+      return (
+        <div className="mt-7 divide-y divide-white/10 border-y border-white/10">
+          {block.drills.map((drill, index) => (
+            <article
+              key={drill.title}
+              className="grid gap-4 py-6 sm:grid-cols-[2.5rem_1fr_auto] sm:gap-5"
+            >
+              <span className="font-mono text-xs tabular-nums text-peach-400">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
+                  {drill.duration}
+                </p>
+                <h3 className="mt-1 text-lg font-semibold text-white">
+                  {drill.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-text-secondary">
+                  {withInlineLink(drill.description, drill.link)}
+                </p>
+                <p className="mt-3 text-sm leading-6 text-text-muted">
+                  <span className="font-medium text-text-secondary">
+                    {aimForLabel}
+                  </span>{" "}
+                  {drill.goal}
+                </p>
+              </div>
+              {drill.setup ? (
+                <Link
+                  href={gameHref(drill.setup)}
+                  data-learn-cta={`section-drill-${sectionId}`}
+                  className={`${EDITORIAL_STYLES.link} self-start text-sm`}
+                >
+                  {drill.ctaLabel}
+                </Link>
+              ) : null}
+            </article>
+          ))}
+        </div>
+      );
+    case "comparison":
+      return (
+        <div className={`${EDITORIAL_STYLES.tableFrame} mt-7`}>
+          <table className="w-full min-w-[40rem] border-collapse text-left">
+            <thead className="bg-white/[0.03]">
+              <tr>
+                {block.columns.map((column) => (
+                  <th
+                    key={column}
+                    scope="col"
+                    className="px-4 py-3 text-xs font-medium uppercase tracking-wide text-text-muted first:w-1/4"
+                  >
+                    {column}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>{renderComparisonRows(block.rows)}</tbody>
+          </table>
+        </div>
+      );
+    case "plan":
+      return (
+        <ol className="mt-7 divide-y divide-white/10 border-y border-white/10">
+          {block.steps.map((step, index) => (
+            <li
+              key={step.label}
+              className="grid gap-3 py-5 sm:grid-cols-[2.5rem_9rem_1fr] sm:gap-5"
+            >
+              <span className="font-mono text-xs tabular-nums text-peach-400">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
+                  {step.label}
+                </p>
+                <h3 className="mt-1 font-semibold text-white">
+                  {step.duration}
+                </h3>
+              </div>
+              <p className="text-sm leading-7 text-text-secondary">
+                {step.detail}
+              </p>
+            </li>
+          ))}
+        </ol>
+      );
+    case "callout":
+      return (
+        <aside className={`${EDITORIAL_STYLES.callout} mt-7`}>
+          <h3 className={EDITORIAL_STYLES.subsectionTitle}>{block.title}</h3>
+          <p className="mt-2 text-sm leading-7 text-text-secondary sm:text-base">
+            {block.body}
+          </p>
+        </aside>
+      );
+  }
+}
+
 export default function LearnArticleRich({
   page,
   goals,
   allPages,
-  locale,
 }: LearnArticleProps) {
-  const t = useTranslations("learnArticle");
   const goalsById = new Map(goals.map((entry) => [entry.id, entry]));
   const goal = goalsById.get(page.goal)!;
-  // Page-scoped identifiers follow the locale the reader is actually on, so
-  // the JSON-LD agrees with the localized canonical instead of claiming the
-  // German page is the English document. Organization nodes below stay on the
-  // bare origin: publisher and author are one entity site-wide, and a
-  // per-locale @id would split one organization into twenty-four.
-  const contentLocale = learnContentLocale(locale);
-  const homeUrl = localizedUrl("/", contentLocale);
-  const hubUrl = localizedUrl("/learn", contentLocale);
-  const articleUrl = localizedUrl(`/learn/${page.slug}`, contentLocale);
+  const homeUrl = SITE_URL;
+  const hubUrl = `${SITE_URL}/learn`;
+  const articleUrl = `${hubUrl}/${page.slug}`;
   const socialImageUrl = `${articleUrl}/opengraph-image`;
   const relatedPages = buildRelatedPageData(page, allPages);
 
@@ -110,20 +269,14 @@ export default function LearnArticleRich({
         },
         datePublished: page.publishedAt,
         dateModified: page.updatedAt,
-        inLanguage: languageTag(contentLocale),
+        inLanguage: "en-US",
         isAccessibleForFree: true,
         articleSection: goal.label,
         author: {
           "@type": "Person",
-          "@id": `${SITE_URL}/about#bing-cheng`,
-          name: "Bing Cheng",
-          url: `${SITE_URL}/about`,
-        },
-        reviewedBy: {
-          "@type": "Person",
-          "@id": `${SITE_URL}/about#bing-cheng`,
-          name: page.reviewedBy,
-          url: `${SITE_URL}/about`,
+          "@id": LEARN_AUTHOR.id,
+          name: LEARN_AUTHOR.name,
+          url: LEARN_AUTHOR.url,
         },
         publisher: {
           "@type": "Organization",
@@ -137,7 +290,6 @@ export default function LearnArticleRich({
         },
         mainEntityOfPage: { "@id": `${articleUrl}#webpage` },
         keywords: [page.primaryKeyword, ...page.secondaryKeywords].join(", "),
-        about: page.painPoint,
       },
       {
         "@type": "WebPage",
@@ -171,15 +323,19 @@ export default function LearnArticleRich({
           },
         ],
       },
-      {
-        "@type": "FAQPage",
-        "@id": `${articleUrl}#faq-schema`,
-        mainEntity: page.faq.map((entry) => ({
-          "@type": "Question",
-          name: entry.question,
-          acceptedAnswer: { "@type": "Answer", text: entry.answer },
-        })),
-      },
+      ...(page.faq.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${articleUrl}#faq-schema`,
+              mainEntity: page.faq.map((entry) => ({
+                "@type": "Question",
+                name: entry.question,
+                acceptedAnswer: { "@type": "Answer", text: entry.answer },
+              })),
+            },
+          ]
+        : []),
     ],
   };
 
@@ -192,7 +348,7 @@ export default function LearnArticleRich({
           <ol className="flex flex-wrap items-center gap-2">
             <li>
               <Link href="/" className="transition-colors hover:text-peach-300">
-                {t("breadcrumbHome")}
+                {LEARN_ARTICLE_COPY.breadcrumbHome}
               </Link>
             </li>
             <li aria-hidden="true" className="text-white/30">
@@ -203,7 +359,7 @@ export default function LearnArticleRich({
                 href="/learn"
                 className="transition-colors hover:text-peach-300"
               >
-                {t("breadcrumbLearn")}
+                {LEARN_ARTICLE_COPY.breadcrumbLearn}
               </Link>
             </li>
             <li aria-hidden="true" className="text-white/30">
@@ -224,7 +380,7 @@ export default function LearnArticleRich({
             </span>
             <span className="text-xs text-text-muted">{page.difficulty}</span>
           </div>
-          <p className={`${EDITORIAL_STYLES.eyebrow} mb-4`}>{t("eyebrow")}</p>
+          <p className={`${EDITORIAL_STYLES.eyebrow} mb-4`}>{LEARN_ARTICLE_COPY.eyebrow}</p>
           <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
             {page.h1}
           </h1>
@@ -233,10 +389,18 @@ export default function LearnArticleRich({
           </p>
           <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-text-muted">
             <time dateTime={page.updatedAt}>
-              {t("updated", { date: formatDate(page.updatedAt, locale) })}
+              {LEARN_ARTICLE_COPY.updated(formatDate(page.updatedAt))}
             </time>
-            <span>{t("reviewedBy", { name: page.reviewedBy })}</span>
           </div>
+          <address data-learn-byline className="mt-2 text-sm leading-6 text-text-muted not-italic">
+            By{" "}
+            <Link href={AUTHOR_PATH} className={EDITORIAL_STYLES.link}>
+              {LEARN_AUTHOR.name}
+            </Link>
+          </address>
+          <p data-authorship-note className="max-w-2xl text-sm leading-6 text-text-muted">
+            {LEARN_AUTHORSHIP_NOTE}
+          </p>
         </header>
 
         <section
@@ -244,7 +408,7 @@ export default function LearnArticleRich({
           className={`${EDITORIAL_STYLES.callout} mb-10 sm:mb-12`}
         >
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            {t("startHere")}
+            {LEARN_ARTICLE_COPY.startHere}
           </p>
           <h2
             id="quick-answer-heading"
@@ -253,9 +417,10 @@ export default function LearnArticleRich({
             {page.quickAnswer}
           </h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 sm:gap-8">
+            {page.keyTakeaways?.length ? (
             <div>
               <h3 className="text-sm font-semibold text-white">
-                {t("whatYouWillLearn")}
+                {LEARN_ARTICLE_COPY.whatYouWillLearn}
               </h3>
               <ul className="mt-3 space-y-2.5">
                 {page.keyTakeaways.map((takeaway) => (
@@ -272,9 +437,11 @@ export default function LearnArticleRich({
                 ))}
               </ul>
             </div>
+            ) : null}
+            {page.whoThisIsFor?.length ? (
             <div>
               <h3 className="text-sm font-semibold text-white">
-                {t("whoThisIsFor")}
+                {LEARN_ARTICLE_COPY.whoThisIsFor}
               </h3>
               <ul className="mt-3 space-y-2.5">
                 {page.whoThisIsFor.map((item) => (
@@ -291,6 +458,7 @@ export default function LearnArticleRich({
                 ))}
               </ul>
             </div>
+            ) : null}
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
             <EditorialActionLink
@@ -304,7 +472,7 @@ export default function LearnArticleRich({
               variant="secondary"
               trackingName="hero-secondary"
             >
-              {t("browseAllGuides")}
+              {LEARN_ARTICLE_COPY.browseAllGuides}
             </EditorialActionLink>
           </div>
         </section>
@@ -317,7 +485,7 @@ export default function LearnArticleRich({
             id="on-this-page-heading"
             className={`${EDITORIAL_STYLES.subsectionTitle} mb-4`}
           >
-            {t("onThisPage")}
+            {LEARN_ARTICLE_COPY.onThisPage}
           </p>
           <ol className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
             {page.tableOfContents.map((item, index) => (
@@ -338,7 +506,7 @@ export default function LearnArticleRich({
           </ol>
         </nav>
 
-        {page.contentSections.map((section, sectionIndex) => (
+        {page.sections.map((section) => (
           <section
             key={section.id}
             id={section.id}
@@ -358,247 +526,53 @@ export default function LearnArticleRich({
               ) : null}
             </header>
 
-            {section.paragraphs ? (
-              <div className="max-w-[68ch] space-y-5 text-base leading-8 text-text-secondary">
-                {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-            ) : null}
-
-            {section.orderedBullets ? (
-              <ol className="mt-6 divide-y divide-white/10 border-y border-white/10">
-                {section.orderedBullets.map((bullet, index) => (
-                  <li
-                    key={bullet}
-                    className="grid grid-cols-[2rem_1fr] gap-4 py-5 text-base leading-7 text-text-secondary"
-                  >
-                    <span className="font-mono text-xs tabular-nums text-peach-400">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ol>
-            ) : null}
-
-            {section.bullets ? (
-              <ul className="mt-6 space-y-3">
-                {section.bullets.map((bullet) => (
-                  <li
-                    key={bullet}
-                    className="grid grid-cols-[auto_1fr] gap-3 text-base leading-7 text-text-secondary"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="mt-3 h-1 w-1 rounded-full bg-peach-400"
-                    />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-
-            {section.drillCards ? (
-              <div className="mt-7 divide-y divide-white/10 border-y border-white/10">
-                {section.drillCards.map((drill, index) => (
-                  <article
-                    key={drill.title}
-                    className="grid gap-4 py-6 sm:grid-cols-[2.5rem_1fr_auto] sm:gap-5"
-                  >
-                    <span className="font-mono text-xs tabular-nums text-peach-400">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
-                        {drill.duration}
-                      </p>
-                      <h3 className="mt-1 text-lg font-semibold text-white">
-                        {drill.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-6 text-text-secondary">
-                        {drill.description}
-                      </p>
-                      <p className="mt-3 text-sm leading-6 text-text-muted">
-                        <span className="font-medium text-text-secondary">
-                          {t("aimFor")}
-                        </span>{" "}
-                        {drill.goal}
-                      </p>
-                    </div>
-                    <Link
-                      href={drill.href}
-                      data-learn-cta={`section-drill-${section.id}`}
-                      className={`${EDITORIAL_STYLES.link} self-start text-sm`}
-                    >
-                      {drill.ctaLabel}
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            ) : null}
-
-            {section.comparisonRows ? (
-              <div className={`${EDITORIAL_STYLES.tableFrame} mt-7`}>
-                <table className="w-full min-w-[40rem] border-collapse text-left">
-                  <thead className="bg-white/[0.03]">
-                    <tr>
-                      {section.comparisonColumns?.map((column) => (
-                        <th
-                          key={column}
-                          scope="col"
-                          className="px-4 py-3 text-xs font-medium uppercase tracking-wide text-text-muted first:w-1/4"
-                        >
-                          {column}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>{renderComparisonRows(section.comparisonRows)}</tbody>
-                </table>
-              </div>
-            ) : null}
-
-            {section.planSteps ? (
-              <ol className="mt-7 divide-y divide-white/10 border-y border-white/10">
-                {section.planSteps.map((step, index) => (
-                  <li
-                    key={step.label}
-                    className="grid gap-3 py-5 sm:grid-cols-[2.5rem_9rem_1fr] sm:gap-5"
-                  >
-                    <span className="font-mono text-xs tabular-nums text-peach-400">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
-                        {step.label}
-                      </p>
-                      <h3 className="mt-1 font-semibold text-white">
-                        {step.duration}
-                      </h3>
-                    </div>
-                    <p className="text-sm leading-7 text-text-secondary">
-                      {step.detail}
-                    </p>
-                  </li>
-                ))}
-              </ol>
-            ) : null}
-
-            {section.callout ? (
-              <aside className={`${EDITORIAL_STYLES.callout} mt-7`}>
-                <h3 className={EDITORIAL_STYLES.subsectionTitle}>
-                  {section.callout.title}
-                </h3>
-                <p className="mt-2 text-sm leading-7 text-text-secondary sm:text-base">
-                  {section.callout.body}
-                </p>
-              </aside>
-            ) : null}
-
-            {sectionIndex === 1 ? (
-              <aside className="mt-8 border-y border-peach-500/20 py-6">
-                <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-2`}>
-                  {t("tryItNow")}
-                </p>
-                <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-                  <div className="max-w-xl">
-                    <h3 className="text-lg font-semibold text-white">
-                      {t("tryItNowTitle")}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-text-muted">
-                      {t("tryItNowBody")}
-                    </p>
-                  </div>
-                  <EditorialActionLink
-                    href={page.ctaHref}
-                    trackingName="mid-article"
-                  >
-                    {t("startTrainingRound")}
-                  </EditorialActionLink>
-                </div>
-              </aside>
-            ) : null}
+            {section.blocks.map((block, blockIndex) => (
+              <LearnBlockView
+                key={`${section.id}-${blockIndex}`}
+                block={block}
+                sectionId={section.id}
+                aimForLabel={LEARN_ARTICLE_COPY.aimFor}
+              />
+            ))}
           </section>
         ))}
 
         <section className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            {t("keepLearning")}
+            {LEARN_ARTICLE_COPY.keepLearning}
           </p>
           <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            {t("whatToLearnNext")}
+            {LEARN_ARTICLE_COPY.whatToLearnNext}
           </h2>
-          <p className="mt-3 text-base leading-7 text-text-muted">
-            {t("whatToLearnNextBody")}
-          </p>
           <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
             {relatedPages.map((entry) => (
               <article key={entry.slug} className="py-5">
                 <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
                   {goalsById.get(entry.page.goal)?.label}
                 </p>
-                <h3 className="mt-1 text-lg font-semibold text-white">
-                  {entry.page.title}
+                <h3 className="mt-1 text-lg font-semibold">
+                  <Link
+                    href={`/learn/${entry.slug}`}
+                    data-learn-link={entry.slug}
+                    className="text-white transition-colors hover:text-peach-200"
+                  >
+                    {entry.page.title}
+                  </Link>
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-text-muted">
                   {entry.reason}
                 </p>
-                <Link
-                  href={`/learn/${entry.slug}`}
-                  data-learn-link={entry.slug}
-                  className={`${EDITORIAL_STYLES.link} mt-3 inline-block text-sm`}
-                >
-                  {t("readThisGuide")}
-                </Link>
               </article>
             ))}
           </div>
         </section>
 
-        <section className={EDITORIAL_STYLES.section}>
-          <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            {t("putItOnTheBoard")}
-          </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>{t("practiceTitle")}</h2>
-          <p className="mt-3 text-base leading-7 text-text-muted">
-            {t("practiceBody")}
-          </p>
-          <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
-            {page.relatedDrills.map((drill) => (
-              <article key={`${page.slug}-${drill.title}`} className="py-5">
-                <p className="text-xs font-medium uppercase tracking-wider text-peach-300">
-                  {drill.duration}
-                </p>
-                <h3 className="mt-1 text-lg font-semibold text-white">
-                  {drill.title}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-text-secondary">
-                  {drill.description}
-                </p>
-                <p className="mt-2 text-sm leading-6 text-text-muted">
-                  <span className="font-medium text-text-secondary">
-                    {t("goalLabel")}
-                  </span>{" "}
-                  {drill.goal}
-                </p>
-                <Link
-                  href={drill.href}
-                  data-learn-cta="end-drill"
-                  className={`${EDITORIAL_STYLES.link} mt-3 inline-block text-sm`}
-                >
-                  {drill.ctaLabel}
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
-
+        {page.faq.length > 0 ? (
         <section id="faq" className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            {t("commonQuestions")}
+            {LEARN_ARTICLE_COPY.commonQuestions}
           </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>{t("faqLabel")}</h2>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>{LEARN_ARTICLE_COPY.faqLabel}</h2>
           {/*
             Native details/summary instead of the Radix accordion: Radix
             unmounts closed content, so the served HTML carried the questions
@@ -622,46 +596,36 @@ export default function LearnArticleRich({
             ))}
           </div>
         </section>
+        ) : null}
 
+        {page.sources.length > 0 ? (
         <section className={EDITORIAL_STYLES.section}>
-          <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            {t("editorialNotes")}
-          </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            {t("aboutThisGuide")}
-          </h2>
-          <div className="mt-5 max-w-[68ch] space-y-4 text-sm leading-7 text-text-muted sm:text-base">
-            <p>{t("aboutBody")}</p>
-            <p>
-              {t("publishedLine", {
-                published: formatDate(page.publishedAt, locale),
-                updated: formatDate(page.updatedAt, locale),
-                reviewer: page.reviewedBy,
-              })}
-            </p>
-          </div>
-
-          <h2 className="mt-9 text-xl font-semibold tracking-tight text-white">
-            {t("referenceLinks")}
+          <h2 className="text-xl font-semibold tracking-tight text-white">
+            {LEARN_ARTICLE_COPY.referenceLinks}
           </h2>
           <ul className="mt-4 divide-y divide-white/10 border-y border-white/10">
             {page.sources.map((source) => (
               <li key={source.url} className="py-4">
-                <a
-                  href={source.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={EDITORIAL_STYLES.link}
-                >
-                  {source.title}
-                </a>
-                <p className="mt-2 text-sm leading-6 text-text-muted">
-                  {source.note}
-                </p>
+                <cite className="not-italic">
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={EDITORIAL_STYLES.link}
+                  >
+                    {source.title}
+                  </a>
+                </cite>
+                {source.note ? (
+                  <p className="mt-2 text-sm leading-6 text-text-muted">
+                    {source.note}
+                  </p>
+                ) : null}
               </li>
             ))}
           </ul>
         </section>
+        ) : null}
       </article>
 
       <script

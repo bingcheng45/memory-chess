@@ -6,6 +6,7 @@ import {
   EditorialSection,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
+import { EN_LEARN_PAGES } from "@/lib/seo/learn";
 
 const siteUrl = "https://thememorychess.com";
 
@@ -13,9 +14,6 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Who builds Memory Chess, why the game exists, how a round is scored, and how the Learn guides are written.",
-  // Placeholder: replaced with buildAlternates once the page is translated.
-  // Kept as a plain canonical so nothing points at a locale that does not yet
-  // differ in content.
   alternates: {
     canonical: "/about",
   },
@@ -49,9 +47,9 @@ export default function AboutPage() {
       <div className={EDITORIAL_STYLES.readingColumn}>
         <EditorialSection title="Who runs this site">
             <p>
-              I am Bing Cheng, a solo developer. I design, code, and maintain
-              everything on Memory Chess myself. There is no team and no company
-              behind it, just me. I also build{" "}
+              I am Bing Cheng, a solo developer. I run Memory Chess on my own,
+              with AI assistance for the code and the site copy. There is no
+              team and no company behind it. I also build{" "}
               <a href="https://tont.app" className={EDITORIAL_STYLES.link} {...external}>
                 Tont
               </a>
@@ -66,7 +64,7 @@ export default function AboutPage() {
               .
             </p>
             <p>
-              Because one person writes all of it, the site stays small on
+              Because one person runs all of it, the site stays small on
               purpose. One game, a set of training guides, a leaderboard, and a
               changelog that records what actually shipped.
             </p>
@@ -89,9 +87,8 @@ export default function AboutPage() {
               Holding a position in your head is a trainable skill, and there
               were few places to practice it directly. So I built one. Memory
               Chess isolates that one skill and gives it a score, so you can
-              watch it improve. More than 37,000 games have been played on the
-              site so far, and if you want stakes you can put a chosen name on
-              the public leaderboard and measure yourself against everyone
+              watch it improve. If you want stakes, you can put a chosen name
+              on the public leaderboard and measure yourself against everyone
               else.
             </p>
         </EditorialSection>
@@ -135,10 +132,13 @@ export default function AboutPage() {
               <Link href="/learn" className={EDITORIAL_STYLES.link}>
                 Learn library
               </Link>{" "}
-              holds sixteen guides on board vision, visualization, and memory
-              training. I write and review them myself, and I keep them
-              deliberately practical. Each one ends in drills you can run on
-              this site rather than advice you can only nod at.
+              holds {EN_LEARN_PAGES.length} guides on board vision,
+              visualization, and memory training. They are written with AI
+              assistance. Every chess position in them is checked by a script
+              for piece counts, legality, and each attack the text claims.
+              Every statement about how Memory Chess works is traced to the
+              game&apos;s code. Each guide has drills. Some open a round in the game with the right
+              settings. The rest are meant for a real board.
             </p>
             <p>
               Where the guides make claims about memory and learning, they cite
@@ -148,25 +148,19 @@ export default function AboutPage() {
               conducted research of my own, and the guides do not pretend
               otherwise.
             </p>
-            <p>
-              Each guide follows the same working shape. A quick answer up
-              front, a place to start, drills you can run on the board, the
-              mistakes I see most often, and a short plan that fits in twenty
-              minutes a day.
-            </p>
         </EditorialSection>
 
         <EditorialSection title="Where the site has been">
             <p>
               The first release went live in March 2025 as a bare version of
               the game. Mobile play and piece selection followed within weeks.
-              In August 2026 the site grew its Learn library and shipped in 24
-              languages, with all sixteen guides translated. The{" "}
+              The Learn library launched in March 2026, and in August 2026 the
+              game itself began playing in 24 languages. The guides and the
+              changelog are in English. The{" "}
               <Link href="/changelog" className={EDITORIAL_STYLES.link}>
                 changelog
               </Link>{" "}
-              records every release since the beginning, including the bug
-              fixes. I keep it honest because I use it myself to remember what
+              records every versioned release, including the bug fixes. I keep it honest because I use it myself to remember what
               changed and when.
             </p>
         </EditorialSection>

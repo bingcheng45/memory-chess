@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
-import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
+import { localizedPath } from '@/lib/seo/alternates';
+import { robotsFor } from '@/lib/seo/englishOnly';
 import LeaderboardReference from '@/components/reference/LeaderboardReference';
 
 const siteUrl = 'https://thememorychess.com';
@@ -17,7 +18,10 @@ export async function generateMetadata({
   return {
     title: t('title'),
     description: t('description'),
-    alternates: buildAlternates('/leaderboard', locale),
+    // Translated boards are served to readers but indexed only in English, so
+    // no locale advertises another and each canonical points at itself.
+    alternates: { canonical: localizedPath('/leaderboard', locale) },
+    robots: robotsFor('/leaderboard', locale),
     openGraph: {
       title: t('socialTitle'),
       description: t('socialDescription'),

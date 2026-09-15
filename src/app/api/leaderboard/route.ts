@@ -80,7 +80,9 @@ export async function POST(request: NextRequest) {
     }
     
     // Additional validation
-    if (correct_pieces > piece_count || memorize_time <= 0 || solution_time <= 0) {
+    // The board lists only rows with a correct piece; accepting 0 would store
+    // a score nobody can see.
+    if (correct_pieces < 1 || correct_pieces > piece_count || memorize_time <= 0 || solution_time <= 0) {
       return NextResponse.json(
         { error: 'Invalid data values' },
         { status: 400 }

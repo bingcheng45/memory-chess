@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Resultat",
-        "body": "Brettet ditt sammenlignes rute for rute med originalen. Du ser hvilke brikker som var riktige, hvilke som var feil, og hvilke du bommet på, side om side med stillingen du ble vist."
+        "body": "Brettet ditt sammenlignes rute for rute med originalen. Du ser hvilke brikker som var riktige, hvilke som var feil, og hvilke du bommet på, sammen med stillingen du ble vist, side om side på brede skjermer og under hverandre på smale."
       }
     },
     "presets": {
@@ -29,9 +29,9 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "2 konger og ingenting annet. Den lærer deg grensesnittet og gir deg et rent svar på om du klarer å holde 2 ruter i hodet under tidspress.",
-        "medium": "6 brikker er omtrent det spennet de fleste klarer å holde uten et system. Dette er vanskelighetsgraden der det begynner å lønne seg å huske i grupper.",
-        "hard": "12 brikker på 8 sekunder er mer enn rent spenn. Du må samle brikkene i mønstre i stedet for å huske dem én og én.",
-        "grandmaster": "20 brikker på 5 sekunder er et kvart sekund per brikke. Ingen leser dette rute for rute; nivået belønner deg for å se bondekjeder og brikkeklynger som samlede enheter."
+        "medium": "6 brikker betyr begge kongene pluss fire andre brikker, med de samme ti sekundene til å se som på vanskelighetsgraden med to brikker.",
+        "hard": "12 brikker på 8 sekunder gir to tredjedels sekund per brikke, så prøv å samle brikkene i mønstre i stedet for å huske dem én og én.",
+        "grandmaster": "20 brikker på 5 sekunder er et kvart sekund per brikke, så prøv å se bondekjeder og brikkeklynger som samlede enheter."
       },
       "custom": {
         "title": "Egne innstillinger",

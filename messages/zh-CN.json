@@ -23,7 +23,8 @@
     "language": {
       "change": "切换语言。当前语言：{language}",
       "current": "语言：{language}",
-      "select": "选择语言"
+      "select": "选择语言",
+      "englishOnly": "此页面仅提供英文版。"
     },
     "otherApps": {
       "title": "作者的其他应用",
@@ -295,18 +296,11 @@
     "subtitle": "用可视化掌控棋盘。在心算的精准与速度上与全球高手一较高下。",
     "claimRank": "抢占你的排名",
     "footnote": "仅显示前 200 名。按准确率、记忆时间和还原速度排序。",
-    "loading": "正在加载排行榜…",
     "unavailableTitle": "排行榜暂时无法使用",
     "unavailableBody": "排行榜服务目前离线。你的对局数据仍会保存在本地。",
     "unavailableNote": "你可以继续游玩，不受影响。",
     "retryLater": "请稍后再试",
     "errorLoading": "加载排名时出错：{error}",
-    "errors": {
-      "timeout": "请求超时，请稍后再试。",
-      "parse": "无法解析服务器响应，请稍后再试。",
-      "status": "请求失败，状态码 {status}",
-      "unexpected": "发生了意外错误"
-    },
     "emptyTitle": "来当第一个冠军吧！",
     "emptyBody": "这个排行榜还没有任何记录",
     "emptyCta": "挑战你的记忆力，登上榜首吧！立即来一局，把你的名字写进 Memory Chess 的历史。",
@@ -371,124 +365,8 @@
       "generic": "提交表单时出错，请再试一次。"
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "一步一步把国际象棋学清楚",
-      "description": "面向初学者的实用国际象棋指南：棋盘视野、盘面想象、记忆力、计算、减少失误和日常练习。"
-    },
-    "title": "一步一步把国际象棋学清楚",
-    "startBeginner": "开始新手指南",
-    "playCta": "开始玩 Memory Chess",
-    "startHere": "从这里开始",
-    "pickNext": "选择你的下一步",
-    "chooseGoal": "选一个目标",
-    "readRecallPlay": "阅读、回想、上手",
-    "turnIdea": "把一个想法变成练习",
-    "startRound": "开始一轮记忆训练",
-    "eyebrow": "跟 Memory Chess 一起学",
-    "heroDescription": "选择你想提升的方面。每篇指南用通俗的语言讲清一个有用的思路，然后给你一个简短的练习。",
-    "pickNextDescription": "选择最像你当前棋局的那句话。没有完美的顺序，你随时可以换一条路径。",
-    "allGuides": "全部 {count} 篇指南",
-    "chooseGoalDescription": "每条路径都从一个简单的入门练习开始，逐步走向更完整的训练习惯。",
-    "guideNumber": "指南 {number}",
-    "turnIdeaDescription": "读完一篇指南后，趁着印象还新鲜下一局短棋，然后留意哪些内容容易记住、哪些还需要再练一次。",
-    "paths": {
-      "newToChess": {
-        "label": "刚接触国际象棋",
-        "title": "制定一份简单的进步计划",
-        "description": "先从基本功入手，再把一个有用的方法变成可以每天重复的习惯。"
-      },
-      "missingThreats": {
-        "label": "总是漏看简单的威胁",
-        "title": "训练扫视全盘的习惯",
-        "description": "用一套简短的检查流程，在落子前发现无保护的棋子、对方的攻击和潜在危险。"
-      },
-      "losingPosition": {
-        "label": "棋局在脑中容易散掉",
-        "title": "强化盘面想象与回忆",
-        "description": "先练习在脑中保持一小块准确的棋盘图像，再逐步加长着法序列。"
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "更新日志",
-      "description": "在官方更新日志中查看 Memory Chess 的最新功能、改进和修复。",
-      "socialTitle": "Memory Chess 更新日志",
-      "socialDescription": "查看 Memory Chess 的最新功能、改进和修复。"
-    },
-    "title": "更新日志",
-    "latest": "最新",
     "bannerCta": "看看有什么新变化",
-    "bannerLabel": "Memory Chess 更新",
-    "eyebrow": "更新",
-    "changesIn": "版本 {version} 的更新内容"
-  },
-  "learnArticle": {
-    "faqLabel": "常见问题",
-    "whatChangesTitle": "最先提升的是什么",
-    "trackThisWeekTitle": "这周记录什么",
-    "trackThisWeekBody": "只选一个简单的指标：每局的失误次数、正确还原的棋局数量，或者你能清晰想象出几步棋。",
-    "startHereSummary": "这些步骤今天就能试。",
-    "drillsSummary": "每个练习都能让你把学到的内容直接用在 Memory Chess 里。",
-    "comparisonColumns": {
-      "situation": "情况",
-      "before": "练习前",
-      "after": "练习后"
-    },
-    "mistakesTitle": "常见的错误",
-    "whatToDoInsteadTitle": "应该怎么做",
-    "planSummary": "在把练习变难或变长之前，先走完这几步。",
-    "breadcrumbHome": "首页",
-    "breadcrumbLearn": "学习",
-    "eyebrow": "简明国际象棋指南",
-    "updated": "更新于 {date}",
-    "reviewedBy": "审校：{name}",
-    "startHere": "从这里开始",
-    "whatYouWillLearn": "你将学到什么",
-    "whoThisIsFor": "适合谁阅读",
-    "browseAllGuides": "浏览全部指南",
-    "onThisPage": "本页内容",
-    "aimFor": "目标：",
-    "tryItNow": "现在就试试",
-    "tryItNowTitle": "继续阅读之前，先下一局短棋。",
-    "tryItNowBody": "趁步骤还新鲜时用一遍，然后带着一个具体的发现回来。",
-    "startTrainingRound": "开始一轮训练",
-    "keepLearning": "继续学习",
-    "whatToLearnNext": "接下来学什么",
-    "whatToLearnNextBody": "选择最贴合你下一个想解决的问题的指南。",
-    "readThisGuide": "阅读这篇指南",
-    "putItOnTheBoard": "把它用到棋盘上",
-    "practiceTitle": "在 Memory Chess 中练习",
-    "practiceBody": "用一个简短的练习来巩固刚学到的内容。",
-    "goalLabel": "目标：",
-    "commonQuestions": "常见问题",
-    "editorialNotes": "编辑说明",
-    "aboutThisGuide": "关于这篇指南",
-    "aboutBody": "Memory Chess 的指南是为初学者和正在进步的棋手撰写的。每篇都给出直接的答案、可执行的步骤，以及一个实用的进步衡量方式。",
-    "publishedLine": "发布于 {published}。最近一次审校与更新为 {updated}，审校人 {reviewer}。",
-    "referenceLinks": "参考链接",
-    "goals": {
-      "reduce-blunders": {
-        "label": "减少失误",
-        "description": "养成更快检查威胁的习惯，别再在简单局面里白送棋子。",
-        "accent": "威胁检查"
-      },
-      "visualization": {
-        "label": "提升盘面想象",
-        "description": "把棋盘在脑中多留一会儿，让计算变得更从容、更清晰。",
-        "accent": "脑中的棋盘"
-      },
-      "memory": {
-        "label": "训练记忆力",
-        "description": "提升棋局回想和棋形记忆，同时不让训练变成背理论。",
-        "accent": "回想与记忆"
-      },
-      "routine": {
-        "label": "建立每日习惯",
-        "description": "使用一个把练习、对局和复盘结合起来的简短计划。",
-        "accent": "坚持"
-      }
-    }
+    "bannerLabel": "Memory Chess 更新"
   }
 }

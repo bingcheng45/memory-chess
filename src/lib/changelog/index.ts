@@ -106,6 +106,7 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
           "Memory Chess is now available in 24 languages: English, Spanish, Russian, Brazilian Portuguese, German, French, Hindi, Italian, Simplified Chinese, Turkish, Swedish, Dutch, Polish, Indonesian, Norwegian, Finnish, Romanian, Vietnamese, Czech, Japanese, Korean, Traditional Chinese, Danish, and Hungarian.",
           "Everything you read while playing is translated, from the home page and settings to the timer, the results screen, the leaderboard, and this changelog.",
         ],
+        note: "As of September 2026, this changelog is back to English only. The game itself still plays in all 24 languages.",
       },
       {
         title: "All 16 Learn guides, in every language",
@@ -121,6 +122,7 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
             ],
           },
         ],
+        note: "As of September 2026, the Learn guides are in English only, and two of them have been merged into others. Chess board vision drills is now part of How to stop blundering in chess, and Working memory exercises for chess is now part of Chess calculation exercises for beginners. The game itself still plays in all 24 languages.",
       },
       {
         title: "Switch language whenever you like",

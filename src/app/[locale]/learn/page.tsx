@@ -1,47 +1,29 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { buildAlternates, localizedPath } from "@/lib/seo/alternates";
+import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
+import { EN_LEARN_GOALS, EN_LEARN_PAGES } from "@/lib/seo/learn";
+import { LEARN_HUB_COPY } from "@/lib/seo/learn/copy";
 
 const SITE_URL = "https://thememorychess.com";
-import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
-import { getLearnPages, getLearnGoals } from "@/lib/seo/learn";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "learnHub.meta" });
+export function generateMetadata(): Metadata {
+  const { title, description } = LEARN_HUB_COPY.meta;
 
   return {
-    title: t("title"),
-    description: t("description"),
-    alternates: buildAlternates("/learn", locale),
+    title,
+    description,
+    alternates: { canonical: "/learn" },
     openGraph: {
-      title: t("title"),
-      description: t("description"),
-      url: `${SITE_URL}${localizedPath("/learn", locale)}`,
+      title,
+      description,
+      url: `${SITE_URL}/learn`,
     },
     twitter: {
-      title: t("title"),
-      description: t("description"),
+      title,
+      description,
     },
   };
 }
 
-export default async function LearnHubPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const [allPages, goals] = await Promise.all([
-    getLearnPages(locale),
-    getLearnGoals(locale),
-  ]);
-
-  return (
-    <LearnHubPageContent allPages={allPages} goals={goals} locale={locale} />
-  );
+export default function LearnHubPage() {
+  return <LearnHubPageContent allPages={EN_LEARN_PAGES} goals={EN_LEARN_GOALS} />;
 }

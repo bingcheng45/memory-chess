@@ -1,7 +1,13 @@
 import {
   EN_LEARN_PAGES as LEARN_PAGES,
+  type LearnBlock,
+  type LearnDrillCard,
   type LearnPageContent,
 } from "@/lib/seo/learn";
+import {
+  MEMORIZE_SECONDS_RANGE,
+  PIECE_COUNT_RANGE,
+} from "@/lib/reference/facts";
 
 // The registry helpers moved to per-locale resolvers; these keep the existing
 // assertions working against the English set.
@@ -15,45 +21,47 @@ function getFeaturedLearnPages(limit = 4): LearnPageContent[] {
   return LEARN_PAGES.filter((page) => page.featured).slice(0, limit);
 }
 
+function blockCopy(block: LearnBlock): string[] {
+  switch (block.kind) {
+    case "paragraphs":
+      return block.paragraphs;
+    case "steps":
+      return block.items;
+    case "callout":
+      return [block.title, block.body];
+    case "drills":
+      return block.drills.flatMap((drill) => [drill.title, drill.description, drill.goal, drill.ctaLabel]);
+    case "comparison":
+      return [...block.columns, ...block.rows.flatMap((row) => [row.label, row.struggling, row.stronger])];
+    case "plan":
+      return block.steps.flatMap((step) => [step.label, step.duration, step.detail]);
+  }
+}
+
+function drillsOf(page: LearnPageContent): LearnDrillCard[] {
+  return page.sections
+    .flatMap((section) => section.blocks)
+    .flatMap((block) => (block.kind === "drills" ? block.drills : []));
+}
+
 function getVisibleCopy(page: LearnPageContent): string[] {
   return [
     page.title,
     page.h1,
     page.description,
-    page.painPoint,
     page.ctaLabel,
     page.quickAnswer,
-    ...page.keyTakeaways,
-    ...page.whoThisIsFor,
-    ...page.contentSections.flatMap((section) => [
+    ...(page.keyTakeaways ?? []),
+    ...(page.whoThisIsFor ?? []),
+    ...page.sections.flatMap((section) => [
       section.title,
       section.eyebrow ?? "",
       section.summary ?? "",
-      ...(section.paragraphs ?? []),
-      ...(section.bullets ?? []),
-      ...(section.orderedBullets ?? []),
-      section.callout?.title ?? "",
-      section.callout?.body ?? "",
-      ...(section.drillCards ?? []).flatMap((drill) => [
-        drill.title,
-        drill.description,
-        drill.goal,
-        drill.ctaLabel,
-      ]),
-      ...(section.comparisonRows ?? []).flatMap((row) => [
-        row.label,
-        row.struggling,
-        row.stronger,
-      ]),
-      ...(section.planSteps ?? []).flatMap((step) => [
-        step.label,
-        step.duration,
-        step.detail,
-      ]),
+      ...section.blocks.flatMap(blockCopy),
     ]),
     ...page.faq.flatMap((entry) => [entry.question, entry.answer]),
     ...page.relatedArticles.map((entry) => entry.reason),
-    ...page.sources.map((source) => source.note),
+    ...page.sources.map((source) => source.note ?? ""),
   ].filter(Boolean);
 }
 
@@ -71,9 +79,19 @@ describe("learnPages registry", () => {
     const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
 
     expect(page.quickAnswer).toContain("short daily routine");
-    expect(page.contentSections.length).toBeGreaterThanOrEqual(5);
+    expect(page.sections.length).toBeGreaterThanOrEqual(5);
     expect(page.relatedArticles.length).toBeGreaterThanOrEqual(3);
-    expect(page.relatedDrills.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("links every related guide to a guide that still exists", () => {
+    const slugs = new Set(LEARN_PAGES.map((page) => page.slug));
+    const dangling = LEARN_PAGES.flatMap((page) =>
+      page.relatedArticles
+        .filter((entry) => !slugs.has(entry.slug))
+        .map((entry) => `${page.slug} -> ${entry.slug}`),
+    );
+
+    expect(dangling).toEqual([]);
   });
 
   it("returns featured hub pages", () => {
@@ -96,7 +114,7 @@ describe("learnPages registry", () => {
       "false fix",
     ];
 
-    expect(LEARN_PAGES).toHaveLength(16);
+    expect(LEARN_PAGES.length).toBeGreaterThan(0);
 
     for (const page of LEARN_PAGES) {
       const copy = getVisibleCopy(page);
@@ -114,6 +132,27 @@ describe("learnPages registry", () => {
       }
 
       expect(Math.max(...sentenceWordCounts)).toBeLessThanOrEqual(28);
+    }
+  });
+
+  it("describes every linked drill with the numbers of the round it opens", () => {
+    const drills = LEARN_PAGES.flatMap(drillsOf);
+    const linked = drills.filter((drill) => drill.setup);
+
+    expect(linked.length).toBeGreaterThan(0);
+
+    for (const drill of linked) {
+      const { pieceCount, memorizeTime } = drill.setup!;
+
+      expect(pieceCount).toBeGreaterThanOrEqual(PIECE_COUNT_RANGE.min);
+      expect(pieceCount).toBeLessThanOrEqual(PIECE_COUNT_RANGE.max);
+      expect(memorizeTime).toBeGreaterThanOrEqual(MEMORIZE_SECONDS_RANGE.min);
+      expect(memorizeTime).toBeLessThanOrEqual(MEMORIZE_SECONDS_RANGE.max);
+
+      for (const copy of [drill.description, drill.ctaLabel]) {
+        expect(copy).toContain(`${pieceCount} pieces`);
+        expect(copy).toContain(`${memorizeTime} seconds`);
+      }
     }
   });
 });

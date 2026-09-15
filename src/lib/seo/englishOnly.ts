@@ -1,19 +1,60 @@
+import type { Metadata } from "next";
+import { DEFAULT_LOCALE, LOCALE_LABELS, LOCALES } from "@/i18n/routing";
+
+const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } } as const;
+
+/** `/de/leaderboard` -> `/leaderboard`; a path without a locale prefix is returned as is. */
+export function unprefixedPath(pathname: string): string {
+  const [, prefix, ...rest] = pathname.split("/");
+  return (LOCALES as readonly string[]).includes(prefix) ? `/${rest.join("/")}` : pathname;
+}
+
 /**
- * Routes that serve English on every locale.
+ * Routes that exist only in English, each at its bare URL.
  *
- * The privacy policy, about page and terms are one document in one language.
- * Two places act on that fact and they must not disagree: the sitemap lists
- * each once instead of twenty-four times, and the footer links straight to the
- * bare English URL. A locale-aware link would send a German reader to
- * /de/about, which renders the same English text and canonicalises back to
- * /about, so the crawl budget pays for a URL the sitemap deliberately omits.
+ * The long-form editorial pages are written and kept in one language. Serving
+ * them under 23 locale prefixes would publish machine-translated or duplicate
+ * copies, so a prefixed request redirects to the bare URL, the sitemap lists
+ * each once, and links from localized pages point straight at the bare URL.
+ * A route here covers every path beneath it.
  */
-export const ENGLISH_ONLY_PATHS: ReadonlySet<string> = new Set([
-  "/privacy",
+export const ENGLISH_ONLY_ROUTES = [
   "/about",
+  "/privacy",
   "/terms",
-]);
+  "/changelog",
+  "/learn",
+] as const;
+
+/**
+ * Routes served to readers in every locale but indexed only at their English
+ * URL. The translated pages are noindex, so nothing may advertise them: the
+ * sitemap lists the English URL once with no alternates, and the middleware
+ * drops next-intl's hreflang Link header.
+ */
+export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard"] as const;
+
+/** Whether an unprefixed path is served in every locale but indexed only in English. */
+export function isIndexedInDefaultLocaleOnly(path: string): boolean {
+  return (DEFAULT_LOCALE_INDEXED_ROUTES as readonly string[]).includes(path);
+}
+
+/** The robots metadata for a page: noindex on a translation of a route indexed only in English. */
+export function robotsFor(path: string, locale: string): Metadata["robots"] {
+  return isIndexedInDefaultLocaleOnly(path) && locale !== DEFAULT_LOCALE ? NOINDEX_FOLLOW : undefined;
+}
+
+/**
+ * What a link to an English-only page appends to its label on a translated
+ * page, so the reader knows the language changes. Uses the untranslated
+ * native name, so no locale needs a new message.
+ */
+export function englishOnlyLinkSuffix(locale: string): string {
+  return locale === "en" ? "" : ` (${LOCALE_LABELS.en})`;
+}
 
 export function isEnglishOnlyPath(path: string): boolean {
-  return ENGLISH_ONLY_PATHS.has(path);
+  return ENGLISH_ONLY_ROUTES.some(
+    (route) => path === route || path.startsWith(`${route}/`),
+  );
 }

@@ -5,8 +5,7 @@
  * Deliberately not in messages/*.json: src/i18n/request.ts loads the whole
  * catalogue and the locale layout hands it to NextIntlClientProvider
  * unnarrowed, so every key added there ships in the RSC payload on every
- * route. These files are server-imported by the route layouts alone, the same
- * split src/lib/changelog/localized.ts uses.
+ * route. These files are server-imported by the route layouts alone.
  *
  * The Record types over PositionViolation, RankedDifficulty, and
  * AccuracyBandKey are the guard: a locale file missing a rule or band fails

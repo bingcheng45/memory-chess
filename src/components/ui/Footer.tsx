@@ -1,9 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import NextLink from "next/link";
 
 import { Link } from "@/i18n/navigation";
+import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
 
 const FOOTER_LINKS = [
@@ -14,6 +14,8 @@ const FOOTER_LINKS = [
   { href: "/privacy", labelKey: "nav.privacy" },
   { href: "/terms", labelKey: "nav.terms" },
 ] as const;
+
+const FOOTER_LINK_CLASS = "text-peach-500 transition-colors hover:text-peach-400";
 
 export default function Footer() {
   const t = useTranslations("common");
@@ -32,25 +34,22 @@ export default function Footer() {
     >
       <div className="container mx-auto px-1 sm:px-4">
         <div className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-3">
-          {FOOTER_LINKS.map((link) => {
-            // An English-only page has one URL and it is the bare one. The
-            // locale-aware Link cannot express that: left alone it keeps the
-            // active locale and points a German reader at /de/about, and
-            // forcing locale="en" points at /en/about, which only 307s to
-            // /about because the routing prefixes English as-needed. A plain
-            // link is the one that renders the canonical href.
-            const LinkComponent = isEnglishOnlyPath(link.href) ? NextLink : Link;
-
-            return (
-              <LinkComponent
-                key={link.href}
-                href={link.href}
-                className="text-peach-500 transition-colors hover:text-peach-400"
-              >
+          {FOOTER_LINKS.map((link) =>
+            isEnglishOnlyPath(link.href) ? (
+              <EnglishOnlyLink key={link.href} href={link.href} className={FOOTER_LINK_CLASS}>
+                {(suffix) => (
+                  <>
+                    {t(link.labelKey)}
+                    {suffix}
+                  </>
+                )}
+              </EnglishOnlyLink>
+            ) : (
+              <Link key={link.href} href={link.href} className={FOOTER_LINK_CLASS}>
                 {t(link.labelKey)}
-              </LinkComponent>
-            );
-          })}
+              </Link>
+            ),
+          )}
         </div>
 
         {/* Product Hunt Badges */}

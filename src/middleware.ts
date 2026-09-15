@@ -1,11 +1,44 @@
 import createMiddleware from "next-intl/middleware";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { routing, LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
+import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly, unprefixedPath } from "@/lib/seo/englishOnly";
+import { resolveRetiredLearnPath } from "@/lib/seo/learn/retired";
 
 const handleI18nRouting = createMiddleware(routing);
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
+
+/** `/de/learn/x` -> `/learn/x` when the unprefixed path is English-only. */
+function bareEnglishOnlyPath(pathname: string): string | null {
+  const bare = unprefixedPath(pathname);
+  return bare !== pathname && isEnglishOnlyPath(bare) ? bare : null;
+}
+
+/**
+ * next-intl sends an unprefixed path to the cookie or Accept-Language locale,
+ * and for an English-only route that is a redirect back to the prefixed URL
+ * the visitor was just redirected away from: an infinite loop. Negotiating
+ * with no locale cookie and an English header makes next-intl rewrite to the
+ * default locale instead. The visitor's own cookie survives, because next-intl
+ * only writes one when the resolved locale differs from the request's
+ * preference, and here they agree. The hreflang Link header is dropped since
+ * these routes have no alternates to advertise.
+ */
+function routeAsDefaultLocale(request: NextRequest) {
+  const headers = new Headers(request.headers);
+  headers.set("accept-language", DEFAULT_LOCALE);
+
+  const forwarded = new NextRequest(request.url, {
+    headers,
+    method: request.method,
+  });
+  forwarded.cookies.delete(LOCALE_COOKIE);
+
+  const response = handleI18nRouting(forwarded);
+  response.headers.delete("Link");
+  return response;
+}
 
 /**
  * Does `Accept-Language` name any locale we actually ship?
@@ -32,6 +65,38 @@ function hasSupportedLanguage(acceptLanguage: string | null): boolean {
 }
 
 export default function middleware(request: NextRequest) {
+  const response = route(request);
+  // next-intl advertises every locale in a hreflang Link header. For a route
+  // indexed only in English that would point crawlers at noindex pages.
+  if (isIndexedInDefaultLocaleOnly(unprefixedPath(request.nextUrl.pathname))) {
+    response.headers.delete("Link");
+  }
+  return response;
+}
+
+/**
+ * The one URL a path should answer at: no trailing slash, a retired guide's
+ * replacement, and an English-only page without its locale prefix. Resolving
+ * all three together keeps every redirect to a single hop.
+ */
+function canonicalPath(pathname: string): string {
+  const trimmed = pathname.replace(/\/+$/, "") || "/";
+  return resolveRetiredLearnPath(trimmed) ?? bareEnglishOnlyPath(trimmed) ?? trimmed;
+}
+
+function route(request: NextRequest) {
+  const canonical = canonicalPath(request.nextUrl.pathname);
+  if (canonical !== request.nextUrl.pathname) {
+    // NextURL puts the request's trailing slash back on any pathname it is given.
+    const url = new URL(request.url);
+    url.pathname = canonical;
+    return NextResponse.redirect(url, 308);
+  }
+
+  if (isEnglishOnlyPath(request.nextUrl.pathname)) {
+    return routeAsDefaultLocale(request);
+  }
+
   // Priority: an explicit choice (cookie) > the browser's stated preference
   // (Accept-Language) > where the request appears to come from (geo) >
   // English. next-intl already handles the first two, so this only fills the
@@ -87,7 +152,9 @@ export const config = {
    * Run on every path except API routes, Next internals, and any request that
    * looks like a static file. `sitemap.xml` and `robots.txt` are excluded
    * explicitly: they are single-origin documents that already enumerate every
-   * locale themselves, so a locale redirect on them would be wrong.
+   * locale themselves, so a locale redirect on them would be wrong. Next
+   * matches this against the path with its trailing slash removed, so a slashed
+   * skipped path is redirected in next.config.ts instead.
    */
   matcher: ["/((?!api|_next|_vercel|sitemap\\.xml|robots\\.txt|.*\\..*).*)"],
 };

@@ -518,7 +518,7 @@ export default function GamePage() {
   const t = useTranslations("game");
   return (
     <ErrorBoundary>
-      <Suspense fallback={<div className="flex items-center justify-center min-h-screen">{t("hud.loading")}</div>}>
+      <Suspense fallback={<div aria-busy="true" aria-label={t("hud.loading")} className="min-h-screen" />}>
         <GamePageContent />
       </Suspense>
     </ErrorBoundary>

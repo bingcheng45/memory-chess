@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Score",
-        "body": "Jouw bord wordt veld voor veld vergeleken met het origineel. Je ziet welke stukken goed waren, welke fout en welke je hebt gemist, naast de stelling die je te zien kreeg."
+        "body": "Jouw bord wordt veld voor veld vergeleken met het origineel. Je ziet welke stukken goed waren, welke fout en welke je hebt gemist, samen met de stelling die je te zien kreeg, naast elkaar op brede schermen en onder elkaar op smalle."
       }
     },
     "presets": {
@@ -29,9 +29,9 @@
       "seconds": "{seconds}s",
       "trains": {
         "easy": "Beide koningen en verder niets. Je leert er de interface mee kennen en ziet meteen of je 2 velden kunt vasthouden onder tijdsdruk.",
-        "medium": "6 stukken is ongeveer wat de meeste mensen zonder systeem kunnen vasthouden. Dit is de moeilijkheidsgraad waarop het groeperen van stukken begint te lonen.",
-        "hard": "12 stukken in 8 seconden gaat je pure geheugenspan te boven. Je moet stukken tot vormen groeperen in plaats van ze stuk voor stuk te onthouden.",
-        "grandmaster": "20 stukken in 5 seconden is een kwart seconde per stuk. Niemand leest dit veld voor veld; deze graad beloont wie pionnenketens en groepen stukken als één geheel ziet."
+        "medium": "6 stukken zijn beide koningen plus vier andere stukken, met dezelfde tien seconden kijktijd als op de moeilijkheidsgraad met twee stukken.",
+        "hard": "12 stukken in 8 seconden laat twee derde seconde per stuk over, dus probeer stukken tot vormen te groeperen in plaats van ze stuk voor stuk te onthouden.",
+        "grandmaster": "20 stukken in 5 seconden is een kwart seconde per stuk, dus probeer pionnenketens en groepen stukken als één geheel te zien."
       },
       "custom": {
         "title": "Eigen instellingen",

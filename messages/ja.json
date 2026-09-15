@@ -23,7 +23,8 @@
     "language": {
       "change": "言語を変更します。現在の言語：{language}",
       "current": "言語：{language}",
-      "select": "言語を選択"
+      "select": "言語を選択",
+      "englishOnly": "このページは英語でのみご覧いただけます。"
     },
     "otherApps": {
       "title": "制作者のほかのアプリ",
@@ -295,18 +296,11 @@
     "subtitle": "イメージする力で盤面を身につけましょう。頭の中の正確さとスピードで世界の強豪と競い合えます。",
     "claimRank": "順位を勝ち取る",
     "footnote": "上位 200 件のみ表示しています。正答率、記憶時間、解答の速さの順です。",
-    "loading": "ランキングを読み込み中…",
     "unavailableTitle": "ランキングは一時的に利用できません",
     "unavailableBody": "ランキングのサービスが現在停止しています。ゲームのデータはローカルに保存され続けます。",
     "unavailableNote": "そのまま続けてプレイできます。",
     "retryLater": "しばらくしてからもう一度お試しください",
     "errorLoading": "ランキングの読み込みでエラーが発生しました: {error}",
-    "errors": {
-      "timeout": "リクエストがタイムアウトしました。しばらくしてからもう一度お試しください。",
-      "parse": "サーバーの応答を読み取れませんでした。しばらくしてからもう一度お試しください。",
-      "status": "リクエストがステータス {status} で失敗しました",
-      "unexpected": "予期しないエラーが発生しました"
-    },
     "emptyTitle": "最初のチャンピオンになりましょう！",
     "emptyBody": "このランキングにはまだ記録がありません",
     "emptyCta": "記憶力に挑戦して、トップの座を手に入れましょう！今すぐプレイして、Memory Chess の歴史に名前を刻んでください。",
@@ -371,124 +365,8 @@
       "generic": "フォームの送信中にエラーが発生しました。もう一度お試しください。"
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "チェスを一歩ずつ、はっきり学ぶ",
-      "description": "初心者向けの実践的なチェスガイド。盤面を見る力、イメージ力、記憶、読み、うっかりミスの防止、毎日の練習まで。"
-    },
-    "title": "チェスを一歩ずつ、はっきり学ぶ",
-    "startBeginner": "初心者ガイドを始める",
-    "playCta": "Memory Chess で遊ぶ",
-    "startHere": "ここから始める",
-    "pickNext": "次の一歩を選ぶ",
-    "chooseGoal": "目標を選ぶ",
-    "readRecallPlay": "読んで、思い出して、指す",
-    "turnIdea": "ひとつの考えを練習に変える",
-    "startRound": "記憶ラウンドを始める",
-    "eyebrow": "Memory Chess で学ぶ",
-    "heroDescription": "伸ばしたいところを選んでください。各ガイドは役に立つ考え方を一つ、やさしい言葉で説明し、そのあと短いドリルを用意しています。",
-    "pickNextDescription": "いまの自分の対局にいちばん近い一文を選んでください。完璧な順番はなく、途中でいつでも切り替えられます。",
-    "allGuides": "全 {count} 本のガイド",
-    "chooseGoalDescription": "どの道すじも、簡単な最初の練習から、より充実した練習習慣へと進んでいきます。",
-    "guideNumber": "ガイド {number}",
-    "turnIdeaDescription": "ガイドを一本読んだら、記憶が新しいうちに短い一局を指し、覚えやすかったことともう一度試したいことを確かめましょう。",
-    "paths": {
-      "newToChess": {
-        "label": "チェスは初めて",
-        "title": "シンプルな上達プランを作る",
-        "description": "まず基本から始め、役に立つ考えをひとつ、毎日くり返せる習慣に変えていきます。"
-      },
-      "missingThreats": {
-        "label": "簡単な狙いを見落とす",
-        "title": "盤面全体を見渡す習慣を鍛える",
-        "description": "短いチェック手順を使い、指す前にタダ取りされる駒、相手の狙い、危険に気づけるようにします。"
-      },
-      "losingPosition": {
-        "label": "頭の中で局面が崩れる",
-        "title": "イメージ力と記憶を鍛える",
-        "description": "長い手順を足す前に、盤面の小さく正確なイメージを保つ練習をします。"
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "更新履歴",
-      "description": "公式の更新履歴で Memory Chess の最新機能、改善、修正をご覧ください。",
-      "socialTitle": "Memory Chess の更新履歴",
-      "socialDescription": "Memory Chess の最新機能、改善、修正をご覧ください。"
-    },
-    "title": "更新履歴",
-    "latest": "最新",
     "bannerCta": "新着をチェック",
-    "bannerLabel": "Memory Chess のアップデート",
-    "eyebrow": "アップデート",
-    "changesIn": "バージョン {version} の変更点"
-  },
-  "learnArticle": {
-    "faqLabel": "よくあるご質問",
-    "whatChangesTitle": "最初に伸びるところ",
-    "trackThisWeekTitle": "今週の記録項目",
-    "trackThisWeekBody": "シンプルな指標をひとつ選びましょう。1 局あたりのミス数、正しく再現できた局面の数、あるいは何手先まではっきり思い描けるか。",
-    "startHereSummary": "今日から試せるステップです。",
-    "drillsSummary": "どのドリルも、学んだことをそのまま Memory Chess で練習できます。",
-    "comparisonColumns": {
-      "situation": "場面",
-      "before": "練習前",
-      "after": "練習後"
-    },
-    "mistakesTitle": "よくある失敗",
-    "whatToDoInsteadTitle": "代わりにやること",
-    "planSummary": "練習を難しくしたり長くしたりする前に、この手順を踏んでください。",
-    "breadcrumbHome": "ホーム",
-    "breadcrumbLearn": "学ぶ",
-    "eyebrow": "やさしいチェスガイド",
-    "updated": "{date} 更新",
-    "reviewedBy": "監修: {name}",
-    "startHere": "ここから始める",
-    "whatYouWillLearn": "学べること",
-    "whoThisIsFor": "こんな方に",
-    "browseAllGuides": "すべてのガイドを見る",
-    "onThisPage": "このページの内容",
-    "aimFor": "ねらい:",
-    "tryItNow": "いま試す",
-    "tryItNowTitle": "読み進める前に、短い一局を指してみましょう。",
-    "tryItNowBody": "手順が新しいうちに使ってみて、気づいたことを一つ持ち帰ってください。",
-    "startTrainingRound": "トレーニングを始める",
-    "keepLearning": "学び続ける",
-    "whatToLearnNext": "次に学ぶこと",
-    "whatToLearnNextBody": "次に解決したい課題にいちばん合うガイドを選んでください。",
-    "readThisGuide": "このガイドを読む",
-    "putItOnTheBoard": "盤の上で試す",
-    "practiceTitle": "Memory Chess で練習する",
-    "practiceBody": "短いドリルで、いま学んだことをそのまま練習しましょう。",
-    "goalLabel": "目標:",
-    "commonQuestions": "よくある質問",
-    "editorialNotes": "編集メモ",
-    "aboutThisGuide": "このガイドについて",
-    "aboutBody": "Memory Chess のガイドは、初心者と上達中のプレーヤーのために書かれています。どのガイドも、はっきりした答え、実践できる手順、そして進歩を測る手がかりを一つ示します。",
-    "publishedLine": "{published} 公開。{updated} に {reviewer} が最終確認・更新しました。",
-    "referenceLinks": "参考リンク",
-    "goals": {
-      "reduce-blunders": {
-        "label": "うっかりミスを減らす",
-        "description": "狙いを素早く確認する習慣をつけ、簡単な局面で駒をタダで渡さないようにします。",
-        "accent": "狙いの確認"
-      },
-      "visualization": {
-        "label": "イメージ力を高める",
-        "description": "盤面を長く頭に保てるようにして、読みを落ち着いて明確に進められるようにします。",
-        "accent": "頭の中の盤面"
-      },
-      "memory": {
-        "label": "記憶力を鍛える",
-        "description": "局面の再現力とパターンの定着を高めます。定跡の暗記に変えてしまわずに。",
-        "accent": "再現と定着"
-      },
-      "routine": {
-        "label": "毎日の習慣をつくる",
-        "description": "ドリル・対局・振り返りを組み合わせた短いプランを使います。",
-        "accent": "継続"
-      }
-    }
+    "bannerLabel": "Memory Chess のアップデート"
   }
 }

@@ -23,7 +23,8 @@
     "language": {
       "change": "Sprache wechseln. Aktuelle Sprache: {language}",
       "current": "Sprache: {language}",
-      "select": "Sprache auswählen"
+      "select": "Sprache auswählen",
+      "englishOnly": "Diese Seite ist nur auf Englisch verfügbar."
     },
     "otherApps": {
       "title": "Weitere Apps des Entwicklers",
@@ -295,18 +296,11 @@
     "subtitle": "Beherrsche das Brett durch Visualisierung. Miss dich mit den Besten der Welt in mentaler Präzision und Geschwindigkeit.",
     "claimRank": "Sichere dir deinen Platz",
     "footnote": "Es werden nur die besten 200 gezeigt. Sortiert nach Genauigkeit, Einprägezeit und Lösungstempo.",
-    "loading": "Bestenliste wird geladen...",
     "unavailableTitle": "Bestenliste vorübergehend nicht verfügbar",
     "unavailableBody": "Der Bestenlisten-Dienst ist gerade offline. Deine Spieldaten werden weiterhin lokal gespeichert.",
     "unavailableNote": "Du kannst ohne Unterbrechung weiterspielen.",
     "retryLater": "Bitte versuche es später erneut",
     "errorLoading": "Fehler beim Laden der Rangliste: {error}",
-    "errors": {
-      "timeout": "Zeitüberschreitung der Anfrage. Bitte versuche es später erneut.",
-      "parse": "Die Antwort des Servers konnte nicht gelesen werden. Bitte versuche es später erneut.",
-      "status": "Anfrage fehlgeschlagen mit Status {status}",
-      "unexpected": "Ein unerwarteter Fehler ist aufgetreten"
-    },
     "emptyTitle": "Werde die erste Nummer eins!",
     "emptyBody": "In dieser Bestenliste gibt es noch keine Einträge",
     "emptyCta": "Fordere dein Gedächtnis heraus und sichere dir den ersten Platz! Spiele jetzt eine Partie und schreibe deinen Namen in die Geschichte von Memory Chess.",
@@ -371,124 +365,8 @@
       "generic": "Beim Senden des Formulars ist ein Fehler aufgetreten. Bitte versuche es erneut."
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "Schach lernen – ein klarer Schritt nach dem anderen",
-      "description": "Praktische Schach-Guides für Einsteiger: Brettgefühl, Vorstellungskraft, Gedächtnis, Berechnung, Fehlervermeidung und tägliches Üben."
-    },
-    "title": "Schach lernen – ein klarer Schritt nach dem anderen",
-    "startBeginner": "Einsteiger-Guide starten",
-    "playCta": "Memory Chess spielen",
-    "startHere": "Hier starten",
-    "pickNext": "Wähle deinen nächsten Schritt",
-    "chooseGoal": "Wähle ein Ziel",
-    "readRecallPlay": "Lesen, erinnern, spielen",
-    "turnIdea": "Aus einer Idee Übung machen",
-    "startRound": "Eine Gedächtnisrunde starten",
-    "eyebrow": "Lernen mit Memory Chess",
-    "heroDescription": "Wähle, was du verbessern möchtest. Jeder Leitfaden erklärt eine nützliche Idee in einfacher Sprache und gibt dir danach eine kurze Übung.",
-    "pickNextDescription": "Wähle den Satz, der deinem aktuellen Spiel am ähnlichsten klingt. Es gibt keine perfekte Reihenfolge, und du kannst den Weg jederzeit wechseln.",
-    "allGuides": "Alle {count} Leitfäden",
-    "chooseGoalDescription": "Jeder Weg führt von einer einfachen ersten Übung zu einer vollständigeren Trainingsroutine.",
-    "guideNumber": "Leitfaden {number}",
-    "turnIdeaDescription": "Lies einen Leitfaden, spiele eine kurze Runde, solange die Idee frisch ist, und achte darauf, was leicht zu merken war und was noch einen weiteren Versuch braucht.",
-    "paths": {
-      "newToChess": {
-        "label": "Neu im Schach",
-        "title": "Einen einfachen Trainingsplan aufbauen",
-        "description": "Beginne mit den Grundlagen und mache dann aus einer nützlichen Idee eine wiederholbare tägliche Gewohnheit."
-      },
-      "missingThreats": {
-        "label": "Du übersiehst einfache Drohungen",
-        "title": "Den Blick über das ganze Brett trainieren",
-        "description": "Nutze eine kurze Prüfroutine, um ungedeckte Figuren, Angriffe und Gefahren vor dem Zug zu bemerken."
-      },
-      "losingPosition": {
-        "label": "Die Stellung entgleitet dir im Kopf",
-        "title": "Vorstellungskraft und Erinnerung stärken",
-        "description": "Übe, ein kleines, genaues Bild des Bretts zu halten, bevor du längere Zugfolgen ergänzt."
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "Neuerungen",
-      "description": "Sieh dir die neuesten Funktionen, Verbesserungen und Fehlerbehebungen von Memory Chess im offiziellen Changelog an.",
-      "socialTitle": "Neuerungen in Memory Chess",
-      "socialDescription": "Sieh dir die neuesten Funktionen, Verbesserungen und Fehlerbehebungen von Memory Chess an."
-    },
-    "title": "Neuerungen",
-    "latest": "Neueste",
     "bannerCta": "Neuerungen ansehen",
-    "bannerLabel": "Update für Memory Chess",
-    "eyebrow": "Updates",
-    "changesIn": "Änderungen in Version {version}"
-  },
-  "learnArticle": {
-    "faqLabel": "Häufige Fragen",
-    "whatChangesTitle": "Was sich zuerst verbessert",
-    "trackThisWeekTitle": "Was du diese Woche verfolgen solltest",
-    "trackThisWeekBody": "Wähle eine einzige einfache Messgröße: Patzer pro Partie, korrekt erinnerte Stellungen oder wie viele Züge du klar vor dir siehst.",
-    "startHereSummary": "Diese Schritte kannst du heute ausprobieren.",
-    "drillsSummary": "Jede Übung lässt dich das Gelernte direkt in Memory Chess anwenden.",
-    "comparisonColumns": {
-      "situation": "Situation",
-      "before": "Vor dem Training",
-      "after": "Nach dem Training"
-    },
-    "mistakesTitle": "Häufige Fehler, die du vermeiden solltest",
-    "whatToDoInsteadTitle": "Was du stattdessen tun solltest",
-    "planSummary": "Arbeite diese Schritte ab, bevor du das Training schwerer oder länger machst.",
-    "breadcrumbHome": "Startseite",
-    "breadcrumbLearn": "Lernen",
-    "eyebrow": "Einfacher Schach-Leitfaden",
-    "updated": "Aktualisiert am {date}",
-    "reviewedBy": "Geprüft von {name}",
-    "startHere": "Hier starten",
-    "whatYouWillLearn": "Was du lernen wirst",
-    "whoThisIsFor": "Für wen das gedacht ist",
-    "browseAllGuides": "Alle Leitfäden ansehen",
-    "onThisPage": "Auf dieser Seite",
-    "aimFor": "Ziel:",
-    "tryItNow": "Jetzt ausprobieren",
-    "tryItNowTitle": "Spiele eine kurze Runde, bevor du weiterliest.",
-    "tryItNowBody": "Nutze die Schritte, solange sie frisch sind, und komm mit einer konkreten Beobachtung zurück.",
-    "startTrainingRound": "Trainingsrunde starten",
-    "keepLearning": "Weiterlernen",
-    "whatToLearnNext": "Was du als Nächstes lernst",
-    "whatToLearnNextBody": "Wähle den Leitfaden, der am besten zum nächsten Problem passt, das du lösen willst.",
-    "readThisGuide": "Diesen Leitfaden lesen",
-    "putItOnTheBoard": "Bring es aufs Brett",
-    "practiceTitle": "Üben in Memory Chess",
-    "practiceBody": "Nutze eine kurze Übung, um das gerade Gelernte anzuwenden.",
-    "goalLabel": "Ziel:",
-    "commonQuestions": "Häufige Fragen",
-    "editorialNotes": "Redaktionelle Hinweise",
-    "aboutThisGuide": "Über diesen Leitfaden",
-    "aboutBody": "Die Leitfäden von Memory Chess sind für Anfänger und Spieler im Aufbau geschrieben. Jeder Leitfaden gibt dir eine direkte Antwort, praktische Schritte und eine sinnvolle Möglichkeit, deinen Fortschritt zu verfolgen.",
-    "publishedLine": "Veröffentlicht am {published}. Zuletzt geprüft und aktualisiert am {updated} von {reviewer}.",
-    "referenceLinks": "Quellen und Links",
-    "goals": {
-      "reduce-blunders": {
-        "label": "Patzer reduzieren",
-        "description": "Gewöhne dir an, Drohungen schneller zu prüfen, und stelle in einfachen Stellungen keine Figuren mehr ein.",
-        "accent": "Drohungen prüfen"
-      },
-      "visualization": {
-        "label": "Vorstellungskraft verbessern",
-        "description": "Halte das Brett länger im Kopf, damit das Rechnen ruhiger und klarer wird.",
-        "accent": "Brett im Kopf behalten"
-      },
-      "memory": {
-        "label": "Gedächtnis trainieren",
-        "description": "Verbessere Stellungserinnerung und Musterbehalt, ohne das Training in Theoriehausaufgaben zu verwandeln.",
-        "accent": "Erinnern und Behalten"
-      },
-      "routine": {
-        "label": "Eine tägliche Routine aufbauen",
-        "description": "Nutze einen kurzen Plan aus Übungen, Partien und Nachbereitung.",
-        "accent": "Beständigkeit"
-      }
-    }
+    "bannerLabel": "Update für Memory Chess"
   }
 }

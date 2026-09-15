@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Pontuar",
-        "body": "Seu tabuleiro é comparado casa por casa com o original. Você vê quais peças estavam certas, quais estavam erradas e quais faltaram, lado a lado com a posição que foi mostrada."
+        "body": "Seu tabuleiro é comparado casa por casa com o original. Você vê quais peças estavam certas, quais estavam erradas e quais faltaram, junto com a posição que foi mostrada, lado a lado em telas largas e uma acima da outra em telas estreitas."
       }
     },
     "presets": {
@@ -29,9 +29,9 @@
       "seconds": "{seconds}s",
       "trains": {
         "easy": "Dois reis e nada mais. Ensina a interface e mostra com clareza se você consegue segurar duas casas sob pressão de tempo.",
-        "medium": "Seis peças é mais ou menos o alcance que a maioria das pessoas segura sem nenhum método. É o nível em que agrupar peças começa a compensar.",
-        "hard": "Doze peças em oito segundos passa do alcance bruto da memória. É preciso agrupar as peças em formas em vez de lembrá-las uma a uma.",
-        "grandmaster": "Vinte peças em cinco segundos dá um quarto de segundo por peça. Ninguém lê isso casa por casa; o nível recompensa quem enxerga cadeias de peões e blocos de peças como unidades únicas."
+        "medium": "Seis peças são os dois reis mais quatro outras peças, com os mesmos dez segundos para olhar do nível de duas peças.",
+        "hard": "Doze peças em oito segundos dão dois terços de segundo por peça, então tente agrupar as peças em formas em vez de lembrá-las uma a uma.",
+        "grandmaster": "Vinte peças em cinco segundos dá um quarto de segundo por peça, então tente enxergar cadeias de peões e blocos de peças como unidades únicas."
       },
       "custom": {
         "title": "Configurações personalizadas",

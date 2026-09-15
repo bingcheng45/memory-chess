@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/tooltip';
 import { Badge } from '@/components/ui/badge';
 import ActiveGameLayout from './ActiveGameLayout';
+import { useSettingsStore } from '@/stores/settingsStore';
 
 import { useTranslations } from "next-intl";
 // Define maximum piece limits for standard chess
@@ -41,6 +42,7 @@ export default function ResponsiveInteractiveBoard({
   status,
 }: ResponsiveInteractiveBoardProps) {
   const t = useTranslations("game");
+  const showCoordinates = useSettingsStore((state) => state.showCoordinates);
   const [selectedPosition, setSelectedPosition] = useState<Position | null>(null);
   const [selectedPieceType, setSelectedPieceType] = useState<PieceType>('pawn');
   const [selectedPieceColor, setSelectedPieceColor] = useState<PieceColor>('white');
@@ -122,7 +124,7 @@ export default function ResponsiveInteractiveBoard({
           selectedSquare={selectedPosition}
           isInteractive={true}
           onSquareClick={handleSquareClick}
-          showCoordinates={true}
+          showCoordinates={showCoordinates}
         />
       }
       controls={

@@ -1,9 +1,9 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import {
   CHANGELOG_ANNOUNCEMENT_DURATION_MS,
   CHANGELOG_DISMISSAL_STORAGE_KEY,
@@ -90,15 +90,22 @@ export default function ChangelogBanner() {
       className="w-full border-b border-white/10 bg-bg-card text-text-secondary"
     >
       <div className="container relative mx-auto flex min-h-10 items-center justify-center px-12 py-2 text-center text-xs sm:text-sm">
-        <Link
+        <EnglishOnlyLink
           href="/changelog"
           className="group rounded-sm outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-peach-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-card"
         >
-          <span className="font-medium text-text-primary">
-            Memory Chess v{release.version} is here.
-          </span>{" "}
-          <span className="whitespace-nowrap text-peach-400 underline decoration-peach-400/40 underline-offset-4 transition-colors group-hover:text-peach-300">{t("bannerCta")}</span>
-        </Link>
+          {(suffix) => (
+            <>
+              <span className="font-medium text-text-primary">
+                Memory Chess v{release.version} is here.
+              </span>{" "}
+              <span className="whitespace-nowrap text-peach-400 underline decoration-peach-400/40 underline-offset-4 transition-colors group-hover:text-peach-300">
+                {t("bannerCta")}
+                {suffix}
+              </span>
+            </>
+          )}
+        </EnglishOnlyLink>
 
         <button
           type="button"

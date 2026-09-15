@@ -13,9 +13,6 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description:
     "The plain-language terms for playing Memory Chess, submitting leaderboard scores, and using the site's content.",
-  // Placeholder: replaced with buildAlternates once the page is translated.
-  // Kept as a plain canonical so nothing points at a locale that does not yet
-  // differ in content.
   alternates: {
     canonical: "/terms",
   },

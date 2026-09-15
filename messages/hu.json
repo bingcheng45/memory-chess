@@ -23,7 +23,8 @@
     "language": {
       "change": "Nyelvváltás. Jelenlegi nyelv: {language}",
       "current": "Nyelv: {language}",
-      "select": "Válassz nyelvet"
+      "select": "Válassz nyelvet",
+      "englishOnly": "Ez az oldal csak angol nyelven érhető el."
     },
     "otherApps": {
       "title": "A készítő további alkalmazásai",
@@ -295,18 +296,11 @@
     "subtitle": "Sajátítsd el a táblát vizualizációval. Mérd össze a tudásod a világ legjobbjaival gondolati pontosságban és gyorsaságban.",
     "claimRank": "Foglald el a helyed",
     "footnote": "Csak a legjobb 200 látszik. Rendezés pontosság, memorizálási idő és megoldási tempó szerint.",
-    "loading": "Ranglista betöltése…",
     "unavailableTitle": "A ranglista átmenetileg nem érhető el",
     "unavailableBody": "A ranglista szolgáltatás most nem működik. A játékadataid továbbra is helyben mentődnek.",
     "unavailableNote": "Zavartalanul játszhatsz tovább.",
     "retryLater": "Próbáld újra később",
     "errorLoading": "Hiba a rangsor betöltésekor: {error}",
-    "errors": {
-      "timeout": "A kérés túllépte az időkorlátot. Próbáld újra később.",
-      "parse": "A szerver válasza nem volt értelmezhető. Próbáld újra később.",
-      "status": "A kérés {status} állapottal meghiúsult",
-      "unexpected": "Váratlan hiba történt"
-    },
     "emptyTitle": "Legyél te az első bajnok!",
     "emptyBody": "Ezen a ranglistán még nincs bejegyzés",
     "emptyCta": "Tedd próbára az emlékezeted, és szerezd meg az első helyet! Játssz egy partit most, és írd be a neved a Memory Chess történetébe.",
@@ -371,124 +365,8 @@
       "generic": "Hiba történt az űrlap elküldésekor. Próbáld újra."
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "Tanulj sakkozni, egy világos lépéssel egyszerre",
-      "description": "Gyakorlatias sakk-útmutatók kezdőknek: tábla átlátása, vizualizáció, memória, számolás, hibák elkerülése és napi gyakorlás."
-    },
-    "title": "Tanulj sakkozni, egy világos lépéssel egyszerre",
-    "startBeginner": "Kezdd a kezdő útmutatót",
-    "playCta": "Memory Chess játék",
-    "startHere": "Kezdd itt",
-    "pickNext": "Válaszd ki a következő lépést",
-    "chooseGoal": "Válassz célt",
-    "readRecallPlay": "Olvasd, idézd fel, játszd",
-    "turnIdea": "Alakíts egy ötletet gyakorlattá",
-    "startRound": "Indíts egy memóriakört",
-    "eyebrow": "Tanulj a Memory Chess segítségével",
-    "heroDescription": "Válaszd ki, miben szeretnél fejlődni. Minden útmutató egyetlen hasznos gondolatot magyaráz el egyszerű nyelven, majd ad hozzá egy rövid gyakorlatot.",
-    "pickNextDescription": "Válaszd azt a mondatot, amely a leginkább hasonlít a mostani játékodra. Nincs tökéletes sorrend, és bármikor válthatsz útvonalat.",
-    "allGuides": "Mind a {count} útmutató",
-    "chooseGoalDescription": "Minden útvonal egy egyszerű első gyakorlattól halad egy teljesebb gyakorlási szokás felé.",
-    "guideNumber": "{number}. útmutató",
-    "turnIdeaDescription": "Olvass el egy útmutatót, játssz egy rövid kört, amíg friss a gondolat, majd figyeld meg, mit volt könnyű megjegyezni, és mi kíván még egy próbát.",
-    "paths": {
-      "newToChess": {
-        "label": "Új a sakkban",
-        "title": "Építs egyszerű fejlődési tervet",
-        "description": "Kezdd az alapokkal, majd alakíts egy hasznos ötletet ismételhető napi szokássá."
-      },
-      "missingThreats": {
-        "label": "Elkerülik a figyelmed az egyszerű fenyegetések",
-        "title": "Gyakorold az egész tábla átpásztázását",
-        "description": "Használj rövid ellenőrző rutint, hogy lépés előtt észrevedd a fedezetlen bábukat, a támadásokat és a veszélyt."
-      },
-      "losingPosition": {
-        "label": "Fejben elveszíted az állást",
-        "title": "Erősítsd a vizualizációt és a felidézést",
-        "description": "Gyakorold, hogy kicsi, pontos képet tarts a tábláról, mielőtt hosszabb lépéssorokat teszel hozzá."
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "Újdonságok",
-      "description": "Nézd meg a Memory Chess legújabb funkcióit, fejlesztéseit és javításait a hivatalos változásnaplóban.",
-      "socialTitle": "Memory Chess újdonságok",
-      "socialDescription": "Nézd meg a Memory Chess legújabb funkcióit, fejlesztéseit és javításait."
-    },
-    "title": "Újdonságok",
-    "latest": "Legutóbbi",
     "bannerCta": "Nézd meg, mi újult meg",
-    "bannerLabel": "Memory Chess frissítés",
-    "eyebrow": "Frissítések",
-    "changesIn": "A(z) {version} verzió változásai"
-  },
-  "learnArticle": {
-    "faqLabel": "Gyakori kérdések",
-    "whatChangesTitle": "Ami először javul",
-    "trackThisWeekTitle": "Mit érdemes követni ezen a héten",
-    "trackThisWeekBody": "Válassz egyetlen egyszerű mérőszámot: hibák játszmánként, helyesen felidézett állások, vagy hogy hány lépést látsz tisztán magad előtt.",
-    "startHereSummary": "Ezeket a lépéseket már ma kipróbálhatod.",
-    "drillsSummary": "Minden gyakorlat engedi, hogy a tanultakat rögtön a Memory Chessben alkalmazd.",
-    "comparisonColumns": {
-      "situation": "Helyzet",
-      "before": "Gyakorlás előtt",
-      "after": "Gyakorlás után"
-    },
-    "mistakesTitle": "Gyakori hibák, amiket érdemes elkerülni",
-    "whatToDoInsteadTitle": "Ehelyett ezt csináld",
-    "planSummary": "Vedd végig ezeket a lépéseket, mielőtt nehezebbé vagy hosszabbá tennéd a gyakorlást.",
-    "breadcrumbHome": "Kezdőlap",
-    "breadcrumbLearn": "Tanulás",
-    "eyebrow": "Egyszerű sakkútmutató",
-    "updated": "Frissítve: {date}",
-    "reviewedBy": "Ellenőrizte: {name}",
-    "startHere": "Kezdd itt",
-    "whatYouWillLearn": "Mit fogsz megtanulni",
-    "whoThisIsFor": "Kinek szól",
-    "browseAllGuides": "Összes útmutató megtekintése",
-    "onThisPage": "Ezen az oldalon",
-    "aimFor": "Cél:",
-    "tryItNow": "Próbáld ki most",
-    "tryItNowTitle": "Játssz egy rövid kört, mielőtt tovább olvasol.",
-    "tryItNowBody": "Használd a lépéseket, amíg frissek, és térj vissza egy konkrét megfigyeléssel.",
-    "startTrainingRound": "Gyakorlókör indítása",
-    "keepLearning": "Tanulj tovább",
-    "whatToLearnNext": "Mit tanulj ezután",
-    "whatToLearnNextBody": "Válaszd azt az útmutatót, amelyik a legjobban illik a következő megoldandó problémádhoz.",
-    "readThisGuide": "Útmutató elolvasása",
-    "putItOnTheBoard": "Vidd a táblára",
-    "practiceTitle": "Gyakorolj a Memory Chess játékban",
-    "practiceBody": "Egy rövid gyakorlattal ültesd át a gyakorlatba, amit most tanultál.",
-    "goalLabel": "Cél:",
-    "commonQuestions": "Gyakori kérdések",
-    "editorialNotes": "Szerkesztői megjegyzések",
-    "aboutThisGuide": "Erről az útmutatóról",
-    "aboutBody": "A Memory Chess útmutatói kezdőknek és fejlődő játékosoknak készülnek. Mindegyik közvetlen választ, gyakorlati lépéseket és egy használható módszert ad a fejlődés követésére.",
-    "publishedLine": "Megjelent: {published}. Utoljára {updated} napon ellenőrizte és frissítette: {reviewer}.",
-    "referenceLinks": "Hivatkozások",
-    "goals": {
-      "reduce-blunders": {
-        "label": "Kevesebb baki",
-        "description": "Szokj rá, hogy gyorsabban ellenőrzöd a fenyegetéseket, és ne hagyj bábut ingyen egyszerű állásokban.",
-        "accent": "Fenyegetések ellenőrzése"
-      },
-      "visualization": {
-        "label": "Jobb vizualizáció",
-        "description": "Tartsd a táblát tovább a fejedben, így a számolás nyugodtabb és tisztább lesz.",
-        "accent": "A tábla a fejedben"
-      },
-      "memory": {
-        "label": "Memóriaedzés",
-        "description": "Javítsd az állások felidézését és a minták megjegyzését anélkül, hogy az edzés elméleti házi feladattá válna.",
-        "accent": "Felidézés és megtartás"
-      },
-      "routine": {
-        "label": "Napi rutin kialakítása",
-        "description": "Használj rövid tervet, ami gyakorlatokat, játszmákat és átnézést kombinál.",
-        "accent": "Következetesség"
-      }
-    }
+    "bannerLabel": "Memory Chess frissítés"
   }
 }

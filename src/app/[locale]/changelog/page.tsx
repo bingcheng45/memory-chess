@@ -1,38 +1,36 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { buildAlternates, localizedPath } from "@/lib/seo/alternates";
 import { Link } from "@/i18n/navigation";
 import {
   EditorialHero,
   EditorialPageShell,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
-import { useLocale, useTranslations } from "next-intl";
-import { LATEST_CHANGELOG_ENTRY, getChangelogEntryId } from "@/lib/changelog";
-import { getLocalizedChangelogEntries } from "@/lib/changelog/localized";
+import {
+  CHANGELOG_ENTRIES,
+  LATEST_CHANGELOG_ENTRY,
+  getChangelogEntryId,
+} from "@/lib/changelog";
+import { CHANGELOG_PAGE_COPY } from "@/lib/changelog/copy";
 
 const siteUrl = "https://thememorychess.com";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "changelog.meta" });
+export function generateMetadata(): Metadata {
+  const meta = CHANGELOG_PAGE_COPY.meta;
 
   return {
-    title: t("title"),
-    description: t("description"),
-    alternates: buildAlternates("/changelog", locale),
+    title: meta.title,
+    description: meta.description,
+    alternates: {
+      canonical: "/changelog",
+    },
     openGraph: {
-      title: t("socialTitle"),
-      description: t("socialDescription"),
-      url: `${siteUrl}${localizedPath("/changelog", locale)}`,
+      title: meta.socialTitle,
+      description: meta.socialDescription,
+      url: `${siteUrl}/changelog`,
     },
     twitter: {
-      title: t("socialTitle"),
-      description: t("socialDescription"),
+      title: meta.socialTitle,
+      description: meta.socialDescription,
     },
   };
 }
@@ -45,17 +43,13 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 export default function ChangelogPage() {
-  const t = useTranslations("changelog");
-  const locale = useLocale();
-  // Prose only. Versions, dates and link hrefs stay English-sourced -- see
-  // the overlay's rationale in src/lib/changelog/localized.ts.
-  const entries = getLocalizedChangelogEntries(locale);
+  const entries = CHANGELOG_ENTRIES;
   return (
     <EditorialPageShell>
       <EditorialHero
-        eyebrow={t("eyebrow")}
-        title={t("title")}
-        description={t("meta.socialDescription")}
+        eyebrow={CHANGELOG_PAGE_COPY.eyebrow}
+        title={CHANGELOG_PAGE_COPY.title}
+        description={CHANGELOG_PAGE_COPY.meta.socialDescription}
       />
 
       <div className={EDITORIAL_STYLES.readingColumn}>
@@ -76,7 +70,7 @@ export default function ChangelogPage() {
                 </h2>
                 {isLatest && (
                   <span className="rounded-full border border-peach-500/25 bg-peach-500/10 px-2.5 py-1 text-xs font-medium text-peach-300">
-                    {t("latest")}
+                    {CHANGELOG_PAGE_COPY.latest}
                   </span>
                 )}
                 <time
@@ -96,7 +90,7 @@ export default function ChangelogPage() {
 
               <div
                 className="mt-6 space-y-6"
-                aria-label={t("changesIn", { version: entry.version })}
+                aria-label={CHANGELOG_PAGE_COPY.changesIn(entry.version)}
               >
                 {entry.groups.map((group) => (
                   <section key={group.title}>

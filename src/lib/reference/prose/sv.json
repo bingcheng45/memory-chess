@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Poäng",
-        "body": "Ditt bräde jämförs ruta för ruta med originalet. Du ser vilka pjäser som var rätt, vilka som var fel och vilka du missade, sida vid sida med ställningen du fick se."
+        "body": "Ditt bräde jämförs ruta för ruta med originalet. Du ser vilka pjäser som var rätt, vilka som var fel och vilka du missade, tillsammans med ställningen du fick se, sida vid sida på breda skärmar och under varandra på smala."
       }
     },
     "presets": {
@@ -29,9 +29,9 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "Två kungar och ingenting annat. Nivån lär dig gränssnittet och visar tydligt om du kan hålla två rutor i huvudet under tidspress.",
-        "medium": "6 pjäser är ungefär vad de flesta kan hålla i minnet utan något system. Det är på den här nivån som det börjar löna sig att gruppera.",
-        "hard": "12 pjäser på 8 sekunder är mer än rent minnesomfång. Du måste gruppera pjäserna i former i stället för att minnas dem en i taget.",
-        "grandmaster": "20 pjäser på 5 sekunder är en fjärdedels sekund per pjäs. Ingen läser en sådan ställning ruta för ruta. Nivån belönar den som ser bondekedjor och pjäsgrupper som enheter."
+        "medium": "6 pjäser betyder båda kungarna plus fyra andra pjäser, med samma tio sekunder att titta som på nivån med två pjäser.",
+        "hard": "12 pjäser på 8 sekunder ger två tredjedels sekund per pjäs, så försök gruppera pjäserna i former i stället för att minnas dem en i taget.",
+        "grandmaster": "20 pjäser på 5 sekunder är en fjärdedels sekund per pjäs, så försök se bondekedjor och pjäsgrupper som enheter."
       },
       "custom": {
         "title": "Egna inställningar",

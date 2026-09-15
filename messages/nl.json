@@ -23,7 +23,8 @@
     "language": {
       "change": "Taal wijzigen. Huidige taal: {language}",
       "current": "Taal: {language}",
-      "select": "Kies een taal"
+      "select": "Kies een taal",
+      "englishOnly": "Deze pagina is alleen in het Engels beschikbaar."
     },
     "otherApps": {
       "title": "Meer apps van de maker",
@@ -295,18 +296,11 @@
     "subtitle": "Beheers het bord met visualisatie. Neem het op tegen de besten ter wereld in mentale precisie en snelheid.",
     "claimRank": "Claim je plek",
     "footnote": "Alleen de top 200 wordt getoond. Gerangschikt op nauwkeurigheid, kijktijd en oplossnelheid.",
-    "loading": "Ranglijst wordt geladen…",
     "unavailableTitle": "Ranglijst tijdelijk niet beschikbaar",
     "unavailableBody": "De ranglijstdienst is nu offline. Je spelgegevens worden nog steeds lokaal opgeslagen.",
     "unavailableNote": "Je kunt gewoon doorspelen.",
     "retryLater": "Probeer het later opnieuw",
     "errorLoading": "Fout bij het laden van de ranglijst: {error}",
-    "errors": {
-      "timeout": "De aanvraag is verlopen. Probeer het later opnieuw.",
-      "parse": "Het antwoord van de server kon niet worden gelezen. Probeer het later opnieuw.",
-      "status": "Aanvraag mislukt met status {status}",
-      "unexpected": "Er is een onverwachte fout opgetreden"
-    },
     "emptyTitle": "Word de eerste kampioen!",
     "emptyBody": "Nog geen resultaten op deze ranglijst",
     "emptyCta": "Daag je geheugen uit en verover de eerste plaats! Speel nu een partij en zet je naam in de geschiedenis van Memory Chess.",
@@ -371,124 +365,8 @@
       "generic": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw."
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "Leer schaken, stap voor duidelijke stap",
-      "description": "Praktische schaakgidsen voor beginners: bordoverzicht, visualisatie, geheugen, rekenwerk, blunders voorkomen en dagelijks oefenen."
-    },
-    "title": "Leer schaken, stap voor duidelijke stap",
-    "startBeginner": "Start de beginnersgids",
-    "playCta": "Speel Memory Chess",
-    "startHere": "Begin hier",
-    "pickNext": "Kies je volgende stap",
-    "chooseGoal": "Kies een doel",
-    "readRecallPlay": "Lezen, herinneren, spelen",
-    "turnIdea": "Maak van één idee oefening",
-    "startRound": "Start een geheugenronde",
-    "eyebrow": "Leren met Memory Chess",
-    "heroDescription": "Kies wat je wilt verbeteren. Elke gids legt één bruikbaar idee uit in gewone taal en geeft je daarna een korte oefening.",
-    "pickNextDescription": "Kies de zin die het meest op je huidige spel lijkt. Er is geen perfecte volgorde en je kunt altijd van pad wisselen.",
-    "allGuides": "Alle {count} gidsen",
-    "chooseGoalDescription": "Elk pad gaat van een eenvoudige eerste oefening naar een completere oefengewoonte.",
-    "guideNumber": "Gids {number}",
-    "turnIdeaDescription": "Lees één gids, speel een korte ronde zolang het idee vers is, en let daarna op wat makkelijk bleef hangen en wat nog een poging nodig heeft.",
-    "paths": {
-      "newToChess": {
-        "label": "Nieuw met schaken",
-        "title": "Bouw een eenvoudig verbeterplan",
-        "description": "Begin bij de basis en maak daarna van één bruikbaar idee een dagelijkse gewoonte die je kunt herhalen."
-      },
-      "missingThreats": {
-        "label": "Je mist eenvoudige dreigingen",
-        "title": "Train je blik over het hele bord",
-        "description": "Gebruik een korte checkroutine om losse stukken, aanvallen en gevaar op te merken voor je zet."
-      },
-      "losingPosition": {
-        "label": "Je verliest de stelling in je hoofd",
-        "title": "Versterk visualisatie en geheugen",
-        "description": "Oefen met het vasthouden van een klein, kloppend beeld van het bord voor je langere zettenreeksen toevoegt."
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "Nieuw",
-      "description": "Bekijk de nieuwste functies, verbeteringen en oplossingen van Memory Chess in het officiële overzicht.",
-      "socialTitle": "Nieuw in Memory Chess",
-      "socialDescription": "Bekijk de nieuwste functies, verbeteringen en oplossingen van Memory Chess."
-    },
-    "title": "Nieuw",
-    "latest": "Nieuwste",
     "bannerCta": "Bekijk wat er nieuw is",
-    "bannerLabel": "Memory Chess-update",
-    "eyebrow": "Updates",
-    "changesIn": "Wijzigingen in versie {version}"
-  },
-  "learnArticle": {
-    "faqLabel": "Veelgestelde vragen",
-    "whatChangesTitle": "Wat het eerst verbetert",
-    "trackThisWeekTitle": "Wat je deze week bijhoudt",
-    "trackThisWeekBody": "Kies één eenvoudige maat: blunders per partij, correct herinnerde stellingen, of hoeveel zetten je helder voor je ziet.",
-    "startHereSummary": "Deze stappen kun je vandaag al proberen.",
-    "drillsSummary": "Bij elke oefening pas je de les meteen toe in Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Situatie",
-      "before": "Voor het oefenen",
-      "after": "Na het oefenen"
-    },
-    "mistakesTitle": "Veelgemaakte fouten om te vermijden",
-    "whatToDoInsteadTitle": "Wat je in plaats daarvan doet",
-    "planSummary": "Werk deze stappen af voordat je het oefenen zwaarder of langer maakt.",
-    "breadcrumbHome": "Home",
-    "breadcrumbLearn": "Leren",
-    "eyebrow": "Eenvoudige schaakgids",
-    "updated": "Bijgewerkt op {date}",
-    "reviewedBy": "Beoordeeld door {name}",
-    "startHere": "Begin hier",
-    "whatYouWillLearn": "Wat je gaat leren",
-    "whoThisIsFor": "Voor wie dit is",
-    "browseAllGuides": "Bekijk alle gidsen",
-    "onThisPage": "Op deze pagina",
-    "aimFor": "Doel:",
-    "tryItNow": "Probeer het nu",
-    "tryItNowTitle": "Speel een korte ronde voordat je verder leest.",
-    "tryItNowBody": "Gebruik de stappen zolang ze vers zijn en kom terug met één concrete observatie.",
-    "startTrainingRound": "Start een trainingsronde",
-    "keepLearning": "Blijf leren",
-    "whatToLearnNext": "Wat je hierna leert",
-    "whatToLearnNextBody": "Kies de gids die het best past bij het volgende probleem dat je wilt oplossen.",
-    "readThisGuide": "Lees deze gids",
-    "putItOnTheBoard": "Breng het naar het bord",
-    "practiceTitle": "Oefenen in Memory Chess",
-    "practiceBody": "Gebruik één korte oefening om te oefenen wat je net hebt geleerd.",
-    "goalLabel": "Doel:",
-    "commonQuestions": "Veelgestelde vragen",
-    "editorialNotes": "Redactionele notities",
-    "aboutThisGuide": "Over deze gids",
-    "aboutBody": "De gidsen van Memory Chess zijn geschreven voor beginners en spelers die zich ontwikkelen. Elke gids geeft je een direct antwoord, praktische stappen en één bruikbare manier om je voortgang te volgen.",
-    "publishedLine": "Gepubliceerd op {published}. Laatst beoordeeld en bijgewerkt op {updated} door {reviewer}.",
-    "referenceLinks": "Bronnen en links",
-    "goals": {
-      "reduce-blunders": {
-        "label": "Minder blunders",
-        "description": "Maak er een gewoonte van dreigingen sneller te checken en geef in simpele stellingen geen stukken meer weg.",
-        "accent": "Dreigingen checken"
-      },
-      "visualization": {
-        "label": "Beter voorstellingsvermogen",
-        "description": "Houd het bord langer in je hoofd, zodat rekenen rustiger en helderder wordt.",
-        "accent": "Bord in je hoofd"
-      },
-      "memory": {
-        "label": "Geheugen trainen",
-        "description": "Verbeter het herinneren van stellingen en het onthouden van patronen zonder van je training theoriehuiswerk te maken.",
-        "accent": "Herinneren en onthouden"
-      },
-      "routine": {
-        "label": "Een dagelijkse routine",
-        "description": "Gebruik een kort plan met oefeningen, partijen en nabespreking.",
-        "accent": "Regelmaat"
-      }
-    }
+    "bannerLabel": "Memory Chess-update"
   }
 }

@@ -23,7 +23,8 @@
     "language": {
       "change": "Dili değiştir. Geçerli dil: {language}",
       "current": "Dil: {language}",
-      "select": "Dil seçin"
+      "select": "Dil seçin",
+      "englishOnly": "Bu sayfa yalnızca İngilizce olarak mevcuttur."
     },
     "otherApps": {
       "title": "Geliştiricinin diğer uygulamaları",
@@ -295,18 +296,11 @@
     "subtitle": "Tahtayı görselleştirerek öğren. Zihinsel hassasiyet ve hızda dünyanın en iyileriyle yarış.",
     "claimRank": "Sıradaki yerini al",
     "footnote": "Yalnızca ilk 200 gösteriliyor. İsabet, ezberleme süresi ve çözüm hızına göre sıralanır.",
-    "loading": "Sıralama yükleniyor…",
     "unavailableTitle": "Sıralama geçici olarak kullanılamıyor",
     "unavailableBody": "Sıralama servisi şu anda çevrimdışı. Oyun verilerin yerel olarak kaydedilmeye devam ediyor.",
     "unavailableNote": "Kesintisiz oynamaya devam edebilirsin.",
     "retryLater": "Lütfen daha sonra tekrar dene",
     "errorLoading": "Sıralama yüklenirken hata oluştu: {error}",
-    "errors": {
-      "timeout": "İstek zaman aşımına uğradı. Lütfen daha sonra tekrar dene.",
-      "parse": "Sunucu yanıtı çözümlenemedi. Lütfen daha sonra tekrar dene.",
-      "status": "İstek {status} durumuyla başarısız oldu",
-      "unexpected": "Beklenmeyen bir hata oluştu"
-    },
     "emptyTitle": "İlk şampiyon sen ol!",
     "emptyBody": "Bu sıralamada henüz kayıt yok",
     "emptyCta": "Hafızanı sına ve zirvedeki yerini al! Hemen bir oyun oyna ve adını Memory Chess tarihine yazdır.",
@@ -371,124 +365,8 @@
       "generic": "Form gönderilirken bir hata oluştu. Lütfen tekrar dene."
     }
   },
-  "learnHub": {
-    "meta": {
-      "title": "Satrancı adım adım öğren",
-      "description": "Yeni başlayanlar için pratik satranç rehberleri: tahta görüşü, görselleştirme, hafıza, hesaplama, hata önleme ve günlük çalışma."
-    },
-    "title": "Satrancı adım adım öğren",
-    "startBeginner": "Yeni başlayanlar rehberini aç",
-    "playCta": "Memory Chess oyna",
-    "startHere": "Buradan başla",
-    "pickNext": "Sonraki adımını seç",
-    "chooseGoal": "Bir hedef seç",
-    "readRecallPlay": "Oku, hatırla, oyna",
-    "turnIdea": "Bir fikri pratiğe dönüştür",
-    "startRound": "Bir hafıza turu başlat",
-    "eyebrow": "Memory Chess ile öğrenin",
-    "heroDescription": "Neyi geliştirmek istediğinizi seçin. Her rehber işe yarar bir fikri sade bir dille anlatır, ardından kısa bir alıştırma verir.",
-    "pickNextDescription": "Şu anki oyununuza en çok benzeyen cümleyi seçin. Kusursuz bir sıra yok; istediğiniz zaman yol değiştirebilirsiniz.",
-    "allGuides": "{count} rehberin tamamı",
-    "chooseGoalDescription": "Her yol basit bir ilk alıştırmadan başlayıp daha eksiksiz bir çalışma alışkanlığına ilerler.",
-    "guideNumber": "Rehber {number}",
-    "turnIdeaDescription": "Bir rehber okuyun, fikir tazeyken kısa bir tur oynayın, sonra neyi kolay hatırladığınızı ve neyin bir deneme daha gerektirdiğini fark edin.",
-    "paths": {
-      "newToChess": {
-        "label": "Satranca yeni başlayan",
-        "title": "Basit bir gelişim planı kur",
-        "description": "Temellerle başla, sonra işine yarayan bir fikri her gün tekrarlayabileceğin bir alışkanlığa dönüştür."
-      },
-      "missingThreats": {
-        "label": "Basit tehditleri kaçırıyorsun",
-        "title": "Tüm tahtayı tarama alışkanlığı kazan",
-        "description": "Hamleden önce korumasız taşları, saldırıları ve tehlikeyi fark etmek için kısa bir kontrol rutini kullan."
-      },
-      "losingPosition": {
-        "label": "Konumu zihninde kaybediyorsun",
-        "title": "Görselleştirmeni ve hatırlamanı güçlendir",
-        "description": "Daha uzun hamle dizileri eklemeden önce tahtanın küçük ama doğru bir görüntüsünü zihninde tutmayı çalış."
-      }
-    }
-  },
   "changelog": {
-    "meta": {
-      "title": "Yenilikler",
-      "description": "Memory Chess’in en yeni özelliklerini, iyileştirmelerini ve düzeltmelerini resmi değişiklik günlüğünde gör.",
-      "socialTitle": "Memory Chess yenilikleri",
-      "socialDescription": "Memory Chess’in en yeni özelliklerini, iyileştirmelerini ve düzeltmelerini gör."
-    },
-    "title": "Yenilikler",
-    "latest": "En son",
     "bannerCta": "Yenilikleri gör",
-    "bannerLabel": "Memory Chess güncellemesi",
-    "eyebrow": "Güncellemeler",
-    "changesIn": "{version} sürümündeki değişiklikler"
-  },
-  "learnArticle": {
-    "faqLabel": "Sık sorulan sorular",
-    "whatChangesTitle": "Önce ne gelişir",
-    "trackThisWeekTitle": "Bu hafta neyi takip etmeli",
-    "trackThisWeekBody": "Tek bir basit ölçüt seç: oyun başına hata sayısı, doğru hatırlanan konum sayısı, ya da kaç hamleyi zihninde net görebildiğin.",
-    "startHereSummary": "Bu adımları bugün deneyebilirsin.",
-    "drillsSummary": "Her alıştırma, öğrendiğini doğrudan Memory Chess’te uygulamanı sağlar.",
-    "comparisonColumns": {
-      "situation": "Durum",
-      "before": "Çalışmadan önce",
-      "after": "Çalışmadan sonra"
-    },
-    "mistakesTitle": "Kaçınılması gereken yaygın hatalar",
-    "whatToDoInsteadTitle": "Bunun yerine ne yapmalı",
-    "planSummary": "Çalışmayı zorlaştırmadan ya da uzatmadan önce bu adımları tamamla.",
-    "breadcrumbHome": "Ana sayfa",
-    "breadcrumbLearn": "Öğren",
-    "eyebrow": "Sade satranç rehberi",
-    "updated": "{date} tarihinde güncellendi",
-    "reviewedBy": "{name} tarafından incelendi",
-    "startHere": "Buradan başlayın",
-    "whatYouWillLearn": "Neler öğreneceksiniz",
-    "whoThisIsFor": "Kimler için",
-    "browseAllGuides": "Tüm rehberlere göz atın",
-    "onThisPage": "Bu sayfada",
-    "aimFor": "Hedef:",
-    "tryItNow": "Hemen deneyin",
-    "tryItNowTitle": "Okumaya devam etmeden önce kısa bir tur oynayın.",
-    "tryItNowBody": "Adımları tazeyken uygulayın, sonra fark ettiğiniz somut bir şeyle geri dönün.",
-    "startTrainingRound": "Antrenman turu başlat",
-    "keepLearning": "Öğrenmeye devam edin",
-    "whatToLearnNext": "Sırada ne öğrenmeli",
-    "whatToLearnNextBody": "Çözmek istediğiniz bir sonraki soruna en uygun rehberi seçin.",
-    "readThisGuide": "Bu rehberi oku",
-    "putItOnTheBoard": "Tahtaya taşıyın",
-    "practiceTitle": "Memory Chess ile çalışın",
-    "practiceBody": "Az önce öğrendiğinizi pekiştirmek için kısa bir alıştırma yapın.",
-    "goalLabel": "Amaç:",
-    "commonQuestions": "Sık sorulan sorular",
-    "editorialNotes": "Editör notları",
-    "aboutThisGuide": "Bu rehber hakkında",
-    "aboutBody": "Memory Chess rehberleri yeni başlayanlar ve gelişmekte olan oyuncular için yazılır. Her rehber size doğrudan bir yanıt, uygulanabilir adımlar ve ilerlemeyi izlemenin işe yarar bir yolunu sunar.",
-    "publishedLine": "{published} tarihinde yayımlandı. Son olarak {updated} tarihinde {reviewer} tarafından gözden geçirildi ve güncellendi.",
-    "referenceLinks": "Kaynak bağlantıları",
-    "goals": {
-      "reduce-blunders": {
-        "label": "Hataları azalt",
-        "description": "Tehditleri daha hızlı kontrol etme alışkanlığı kazan ve basit konumlarda taş vermeyi bırak.",
-        "accent": "Tehdit kontrolü"
-      },
-      "visualization": {
-        "label": "Görselleştirmeyi geliştir",
-        "description": "Tahtayı zihninde daha uzun tut, böylece hesaplama daha sakin ve daha net olur.",
-        "accent": "Zihinde tahta"
-      },
-      "memory": {
-        "label": "Hafızayı çalıştır",
-        "description": "Konumları hatırlamanı ve örüntüleri akılda tutmanı geliştir; antrenmanı teori ödevine çevirmeden.",
-        "accent": "Hatırlama ve akılda tutma"
-      },
-      "routine": {
-        "label": "Günlük rutin kur",
-        "description": "Alıştırma, oyun ve gözden geçirmeyi birleştiren kısa bir plan kullan.",
-        "accent": "Süreklilik"
-      }
-    }
+    "bannerLabel": "Memory Chess güncellemesi"
   }
 }

@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { getLearnPage, getLearnGoals } from "@/lib/seo/learn";
+import { EN_LEARN_GOALS, EN_LEARN_PAGES } from "@/lib/seo/learn";
 
 export const size = {
   width: 1200,
@@ -11,15 +11,14 @@ export const contentType = "image/png";
 type LearnOpenGraphImageProps = {
   params: Promise<{
     slug: string;
-    locale: string;
   }>;
 };
 
 export default async function LearnOpenGraphImage({
   params,
 }: LearnOpenGraphImageProps) {
-  const { slug, locale } = await params;
-  const page = await getLearnPage(slug, locale);
+  const { slug } = await params;
+  const page = EN_LEARN_PAGES.find((entry) => entry.slug === slug);
 
   if (!page) {
     return new ImageResponse(
@@ -43,8 +42,7 @@ export default async function LearnOpenGraphImage({
     );
   }
 
-  const goals = await getLearnGoals(locale);
-  const goal = goals.find((entry) => entry.id === page.goal);
+  const goal = EN_LEARN_GOALS.find((entry) => entry.id === page.goal);
 
   return new ImageResponse(
     (

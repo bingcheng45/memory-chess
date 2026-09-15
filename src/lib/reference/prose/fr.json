@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Score",
-        "body": "Votre échiquier est comparé case par case avec l'original. Vous voyez quelles pièces étaient justes, lesquelles étaient fausses et lesquelles vous avez oubliées, côte à côte avec la position qui vous avait été montrée."
+        "body": "Votre échiquier est comparé case par case avec l'original. Vous voyez quelles pièces étaient justes, lesquelles étaient fausses et lesquelles vous avez oubliées, à côté de la position qui vous avait été montrée, côte à côte sur les écrans larges et l'une au-dessus de l'autre sur les écrans étroits."
       }
     },
     "presets": {
@@ -29,9 +29,9 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "Deux rois et rien d'autre. Ce niveau vous apprend l'interface et montre clairement si vous savez retenir deux cases sous la pression du chrono.",
-        "medium": "Six pièces, c'est à peu près ce que la plupart des gens retiennent sans méthode. C'est le niveau où regrouper les pièces en blocs commence à payer.",
-        "hard": "Douze pièces en huit secondes dépassent la mémoire brute. Il faut regrouper les pièces en formes plutôt que les retenir une par une.",
-        "grandmaster": "Vingt pièces en cinq secondes, c'est un quart de seconde par pièce. Personne ne lit une telle position case par case ; ce niveau récompense ceux qui voient les chaînes de pions et les groupes de pièces comme des unités."
+        "medium": "Six pièces, ce sont les deux rois plus quatre autres pièces, avec les mêmes dix secondes d'observation qu'au niveau à deux pièces.",
+        "hard": "Douze pièces en huit secondes laissent deux tiers de seconde par pièce, alors essayez de regrouper les pièces en formes plutôt que de les retenir une par une.",
+        "grandmaster": "Vingt pièces en cinq secondes, c'est un quart de seconde par pièce, alors essayez de voir les chaînes de pions et les groupes de pièces comme des unités."
       },
       "custom": {
         "title": "Réglages personnalisés",

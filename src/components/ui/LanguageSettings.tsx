@@ -3,6 +3,7 @@
 import {
   useState,
   useEffect,
+  useId,
   useRef,
   useCallback,
   useTransition,
@@ -19,6 +20,7 @@ import {
   LOCALE_BADGES,
   type Locale,
 } from "@/i18n/routing";
+import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
 
 interface LanguageSettingsProps {
   className?: string;
@@ -46,6 +48,10 @@ export default function LanguageSettings({
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  // An English-only page has no other language to switch to. Letting a pick
+  // through would change nothing visible and still write the locale cookie.
+  const isEnglishOnlyPage = isEnglishOnlyPath(pathname);
+  const englishOnlyNoteId = useId();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -115,7 +121,7 @@ export default function LanguageSettings({
   const handleSelect = (nextLocale: Locale) => {
     setIsOpen(false);
 
-    if (nextLocale === locale) return;
+    if (nextLocale === locale || isEnglishOnlyPage) return;
 
     // `pathname` from @/i18n/navigation is already locale-stripped, but it is
     // *only* the path -- the query and hash are not in it. Replacing with the
@@ -146,6 +152,7 @@ export default function LanguageSettings({
 
   const renderOption = (option: (typeof localeOptions)[number]) => {
     const isActive = option.code === locale;
+    const isUnavailable = isEnglishOnlyPage && !isActive;
 
     return (
       <button
@@ -154,10 +161,14 @@ export default function LanguageSettings({
         lang={option.code}
         role="menuitemradio"
         aria-checked={isActive}
+        disabled={isUnavailable}
+        aria-disabled={isUnavailable || undefined}
         className={`flex w-full items-center justify-between gap-3 rounded-md px-3 py-2 text-left text-sm transition-colors ${
           isActive
             ? "bg-peach-500/15 text-peach-500"
-            : "text-text-secondary hover:bg-bg-light hover:text-text-primary"
+            : isUnavailable
+              ? "cursor-not-allowed text-text-muted opacity-50"
+              : "text-text-secondary hover:bg-bg-light hover:text-text-primary"
         }`}
       >
         <span className="whitespace-nowrap">{option.label}</span>
@@ -187,9 +198,18 @@ export default function LanguageSettings({
 
   const menuItems = (
     <div className="flex flex-col gap-0.5">
+      {isEnglishOnlyPage && (
+        <p
+          id={englishOnlyNoteId}
+          className="max-w-[14rem] px-3 pb-2 text-xs leading-5 text-text-muted"
+        >
+          {t("englishOnly")}
+        </p>
+      )}
       {localeOptions.map(renderOption)}
     </div>
   );
+  const menuDescription = isEnglishOnlyPage ? englishOnlyNoteId : undefined;
 
   return (
     <div ref={wrapperRef} className={`relative ${className}`}>
@@ -230,6 +250,7 @@ export default function LanguageSettings({
                 transition={{ duration: 0.18 }}
                 role="menu"
                 aria-label={t("select")}
+                aria-describedby={menuDescription}
                 // Solid, not translucent: at 90% the chess board read straight
                 // through the menu and the labels became hard to scan.
                 className="fixed z-[99990] overflow-y-auto overscroll-contain rounded-lg border border-bg-light bg-bg-card p-2 shadow-2xl shadow-black/60"
@@ -263,6 +284,7 @@ export default function LanguageSettings({
                   transition={{ type: "spring", stiffness: 320, damping: 32 }}
                   role="menu"
                   aria-label={t("select")}
+                  aria-describedby={menuDescription}
                   className="max-h-[80vh] w-full overflow-y-auto rounded-t-2xl border-t border-bg-light bg-bg-card p-4 pb-8 shadow-2xl"
                   onClick={(event) => event.stopPropagation()}
                 >

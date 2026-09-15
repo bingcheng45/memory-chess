@@ -1,5 +1,6 @@
 import sitemap from "@/app/sitemap";
 import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
+import { LOCALES } from "@/i18n/routing";
 
 describe("sitemap", () => {
   it("includes static routes, learn article URLs, and the learn hub timestamp", async () => {
@@ -14,9 +15,21 @@ describe("sitemap", () => {
     }
     expect(urls).toContain("https://thememorychess.com/changelog");
     expect(urls).toContain("https://thememorychess.com/privacy");
-    expect(new Date(learnHubEntry?.lastModified ?? 0).toISOString()).toBe(
-      "2026-08-17T00:00:00.000Z",
-    );
+    const newestGuide = Math.max(...LEARN_PAGES.map((page) => new Date(page.updatedAt).getTime()));
+    expect(new Date(learnHubEntry?.lastModified ?? 0).getTime()).toBe(newestGuide);
+  });
+
+  it("gives every localized entry an x-default alternate at the English URL", async () => {
+    const entries = await sitemap();
+    const game = entries.filter((entry) => /\/game$/.test(entry.url));
+
+    expect(game).toHaveLength(LOCALES.length);
+    for (const entry of game) {
+      expect(entry.alternates?.languages?.["x-default"]).toBe("https://thememorychess.com/game");
+    }
+    for (const entry of entries.filter((e) => e.alternates)) {
+      expect(Object.keys(entry.alternates?.languages ?? {})).toContain("x-default");
+    }
   });
 
   it("dates every entry, and none of them in the future", async () => {
@@ -60,6 +73,17 @@ describe("sitemap", () => {
       expect(
         urls.filter((url) => url.endsWith(path)),
       ).toEqual([`https://thememorychess.com${path}`]);
+    }
+  });
+
+  it("lists the leaderboard once, in English, with no translated URL or alternates", async () => {
+    const entries = await sitemap();
+    const leaderboard = entries.filter((entry) => /\/leaderboard$/.test(entry.url));
+
+    expect(leaderboard.map((entry) => entry.url)).toEqual(["https://thememorychess.com/leaderboard"]);
+    expect(leaderboard[0].alternates).toBeUndefined();
+    for (const entry of entries) {
+      expect(Object.values(entry.alternates?.languages ?? {}).some((href) => /leaderboard/.test(String(href)))).toBe(false);
     }
   });
 

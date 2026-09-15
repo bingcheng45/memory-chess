@@ -1,0 +1,310 @@
+/** @jest-environment node */
+
+import { execFileSync, spawnSync } from "node:child_process";
+import { mkdtempSync, rmSync, symlinkSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { pathToFileURL } from "node:url";
+
+const AUDIT_PATH = join(__dirname, "..", "audit-adsense.mjs");
+const AUDIT_URL = pathToFileURL(AUDIT_PATH).href;
+
+/**
+ * Runs an export of the real audit script in a separate Node process, since the
+ * script is an ES module Jest does not load, and returns what it printed.
+ */
+function runAudit(expression: string): string {
+  const program = `const audit = await import(${JSON.stringify(AUDIT_URL)}); process.stdout.write(String(${expression}));`;
+  return execFileSync(process.execPath, ["--input-type=module", "-e", program], { encoding: "utf8" });
+}
+
+const hiddenTextOf = (html: string) => runAudit(`audit.hiddenText(${JSON.stringify(html)})`);
+
+describe("audit-adsense hidden text", () => {
+  it.each([
+    ["a bare hidden class", '<p class="hidden text-sm">Five words hidden from readers</p>'],
+    ["a bare invisible class", '<p class="invisible">Five words hidden from readers</p>'],
+    ["a breakpoint hidden class", '<p class="block md:hidden">Five words hidden from readers</p>'],
+    ["a breakpoint hidden class alone", '<p class="lg:hidden">Five words hidden from readers</p>'],
+    ["a small-breakpoint invisible class", '<p class="sm:invisible">Five words hidden from readers</p>'],
+    ["a medium-breakpoint invisible class", '<p class="text-sm md:invisible">Five words hidden from readers</p>'],
+    ["invisible that a breakpoint display class cannot show", '<p class="invisible sm:block">Five words hidden from readers</p>'],
+    ["hidden that a breakpoint visible class cannot show", '<p class="hidden md:visible">Five words hidden from readers</p>'],
+    ["the hidden attribute on an inactive panel", '<div data-state="inactive" hidden="">Five words hidden from readers</div>'],
+  ])("counts text behind %s", (_, html) => {
+    expect(hiddenTextOf(html)).toBe("Five words hidden from readers");
+  });
+
+  it.each([
+    ["hidden shown again from a breakpoint", '<p class="hidden pt-6 sm:block">Five words shown on wide screens</p>'],
+    ["hidden shown again as inline-flex", '<p class="hidden lg:inline-flex">Five words shown on wide screens</p>'],
+    ["invisible made visible from a breakpoint", '<p class="invisible md:visible">Five words shown on wide screens</p>'],
+    ["an inactive panel that only a Radix class would hide", '<div data-state="inactive" class="data-[state=inactive]:hidden">Five words shown on wide screens</div>'],
+    ["aria-hidden", '<p aria-hidden="true">Five words shown on wide screens</p>'],
+  ])("does not count text behind %s", (_, html) => {
+    expect(hiddenTextOf(html)).toBe("");
+  });
+});
+
+describe("audit-adsense hidden-text rule report", () => {
+  it("names every viewport and every way text is hidden", () => {
+    const report = JSON.parse(
+      runAudit(
+        `JSON.stringify((({ guideline, check }) => ({ guideline, messages: check({ hiddenWords: 5, mainWords: 300 }) }))(audit.RULES.find((rule) => rule.id === "hidden-text")))`,
+      ),
+    );
+
+    expect(report.guideline).toBe("G19 no text hidden at any viewport");
+    expect(report.messages).toEqual([
+      "5 of 300 words ship hidden (inline style, hidden attribute, hidden class, or breakpoint-hidden class)",
+    ]);
+  });
+});
+
+describe("audit-adsense command line", () => {
+  it("runs the audit when started through a symlink, so an unreachable base fails loudly", () => {
+    const dir = mkdtempSync(join(tmpdir(), "audit-adsense-"));
+    try {
+      const link = join(dir, "audit-adsense.mjs");
+      symlinkSync(AUDIT_PATH, link);
+
+      const run = spawnSync(process.execPath, [link, "--base", "http://127.0.0.1:1"], { encoding: "utf8" });
+
+      expect(run.stderr).not.toBe("");
+      expect(run.status).toBe(2);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+});
+
+describe("audit-adsense hreflang targets", () => {
+  const LOCAL = "http://127.0.0.1:4517";
+  const htmlAlternates = [
+    '<link rel="alternate" hrefLang="en" href="https://thememorychess.com"/>',
+    '<link rel="alternate" hrefLang="de" href="https://thememorychess.com/de"/>',
+    '<link rel="alternate" hrefLang="x-default" href="https://thememorychess.com"/>',
+  ].join("");
+  const linkHeader = (entries: Array<[string, string]>) =>
+    entries.map(([lang, href]) => `<${href}>; rel="alternate"; hreflang="${lang}"`).join(", ");
+
+  function hreflangProblems(html: string, header?: string): string[] {
+    const page = header === undefined ? `audit.parsePage(url, 200, html)` : `audit.parsePage(url, 200, html, ${JSON.stringify(header)})`;
+    return JSON.parse(
+      runAudit(
+        `(() => { const url = ${JSON.stringify(`${LOCAL}/de`)}; const html = ${JSON.stringify(html)}; const rule = audit.RULES.find((r) => r.id === "hreflang-targets"); return JSON.stringify([...rule.site([${page}], { listed: new Set([${JSON.stringify(LOCAL)}, ${JSON.stringify(`${LOCAL}/de`)}]) }).values()].flat()); })()`,
+      ),
+    );
+  }
+
+  it("passes when the Link header matches the HTML except for a root trailing slash", () => {
+    const header = linkHeader([["en", `${LOCAL}/`], ["de", `${LOCAL}/de`], ["x-default", `${LOCAL}/`]]);
+
+    expect(hreflangProblems(htmlAlternates, header)).toEqual([]);
+  });
+
+  it("ignores Link header entries whose rel is not exactly alternate, even when they carry hreflang", () => {
+    const header = [
+      `<${LOCAL}/fr>; rel="preload"; hreflang="fr"`,
+      '</_next/static/media/font.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2"',
+      `<${LOCAL}/fr>; rel="alternates"; hreflang="fr"`,
+      `<${LOCAL}/fr>; rel=alternates; hreflang=fr`,
+      `<${LOCAL}/fr>; rel="alternate stylesheet"; hreflang="fr"`,
+    ].join(", ");
+
+    expect(hreflangProblems("", header)).toEqual([]);
+  });
+
+  it("passes when neither the HTML nor the Link header names alternates", () => {
+    expect(hreflangProblems("")).toEqual([]);
+  });
+
+  it("fails when the HTML names alternates and the page sends no Link header alternates", () => {
+    expect(hreflangProblems(htmlAlternates)).toEqual([
+      expect.stringContaining(`en header none vs HTML ${LOCAL}/; de header none vs HTML ${LOCAL}/de; x-default header none vs HTML ${LOCAL}/`),
+    ]);
+  });
+
+  it("fails when the Link header names alternates and the HTML names none", () => {
+    const header = linkHeader([["en", `${LOCAL}/`], ["de", `${LOCAL}/de`], ["x-default", `${LOCAL}/`]]);
+
+    expect(hreflangProblems("", header)).toEqual([
+      expect.stringContaining(`en header ${LOCAL}/ vs HTML none; de header ${LOCAL}/de vs HTML none; x-default header ${LOCAL}/ vs HTML none`),
+    ]);
+  });
+
+  it("fails when the Link header names a different URL for a code", () => {
+    const header = linkHeader([["en", `${LOCAL}/`], ["de", `${LOCAL}/`], ["x-default", `${LOCAL}/`]]);
+
+    expect(hreflangProblems(htmlAlternates, header)).toEqual([expect.stringContaining(`de header ${LOCAL}/ vs HTML ${LOCAL}/de`)]);
+  });
+
+  it("fails when the Link header misses a code the HTML names", () => {
+    const header = linkHeader([["en", `${LOCAL}/`], ["de", `${LOCAL}/de`]]);
+
+    expect(hreflangProblems(htmlAlternates, header)).toEqual([expect.stringContaining("x-default header none")]);
+  });
+
+  it("fails when the Link header names a code the HTML does not", () => {
+    const header = linkHeader([["en", `${LOCAL}/`], ["de", `${LOCAL}/de`], ["x-default", `${LOCAL}/`], ["fr", `${LOCAL}/de`]]);
+
+    expect(hreflangProblems(htmlAlternates, header)).toEqual([expect.stringContaining(`fr header ${LOCAL}/de vs HTML none`)]);
+  });
+
+  it("fails when a Link header alternate points at a page the sitemap does not list", () => {
+    const header = linkHeader([["fr", `${LOCAL}/fr`]]);
+
+    expect(hreflangProblems("", header)).toEqual([expect.stringContaining(`fr ${LOCAL}/fr`), expect.stringContaining(`fr header ${LOCAL}/fr vs HTML none`)]);
+  });
+});
+
+describe("audit-adsense single-308 redirect chain", () => {
+  const LOCAL = "http://127.0.0.1:4517";
+  type Hop = { url: string; status: number; location: string | null };
+  const hop = (path: string, status: number, location: string | null = null): Hop => ({ url: `${LOCAL}${path}`, status, location });
+
+  function problemFor(expectedPath: string, hops: Hop[]): string | null {
+    return JSON.parse(runAudit(`JSON.stringify(audit.redirectProblem(${JSON.stringify(hops)}, ${JSON.stringify(`${LOCAL}${expectedPath}`)}))`));
+  }
+
+  it("passes one 308 to the expected URL when that URL answers 200", () => {
+    expect(problemFor("/de/game", [hop("/de/game/", 308, "/de/game"), hop("/de/game", 200)])).toBeNull();
+  });
+
+  it("fails a 308 whose target answers 308 again", () => {
+    expect(problemFor("/de/about", [hop("/de/about/", 308, "/de/about"), hop("/de/about", 308, "/about"), hop("/about", 200)])).toBe(
+      `${LOCAL}/de/about answers 308, expected 200`,
+    );
+  });
+
+  it("fails a 308 to a different URL than expected", () => {
+    expect(problemFor("/about", [hop("/de/about/", 308, "/de/about"), hop("/de/about", 308, "/about"), hop("/about", 200)])).toBe(
+      `redirects to ${LOCAL}/de/about, expected ${LOCAL}/about`,
+    );
+  });
+
+  it("fails a 307", () => {
+    expect(problemFor("/de/game", [hop("/de/game/", 307, "/de/game"), hop("/de/game", 200)])).toBe("answers 307, expected 308");
+  });
+
+  it("fails a 200 that does not redirect", () => {
+    expect(problemFor("/de/game", [hop("/de/game/", 200)])).toBe("answers 200, expected 308");
+  });
+});
+
+describe("audit-adsense English-only derivation", () => {
+  const PROD = "https://thememorychess.com";
+  const LOCAL = "http://127.0.0.1:4517";
+  const alternate = (lang: string, path: string) => `<xhtml:link rel="alternate" hreflang="${lang}" href="${PROD}${path}" />`;
+  const entry = (path: string, alternates = "") => `<url><loc>${PROD}${path}</loc>${alternates}<priority>1</priority></url>`;
+  const sitemap = [
+    '<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    entry("/", [alternate("en", "/"), alternate("de", "/de"), alternate("pt-BR", "/pt-BR"), alternate("x-default", "/")].join("")),
+    entry("/de", [alternate("en", "/"), alternate("de", "/de"), alternate("pt-BR", "/pt-BR"), alternate("x-default", "/")].join("")),
+    entry("/about"),
+    entry("/leaderboard"),
+    entry("/privacy"),
+    "</urlset>",
+  ].join("");
+
+  type Probe = { url: string; status: number; robots: string; canonical: string | null };
+  const probe = (path: string, status: number, robots = "", canonical: string | null = null): Probe => ({
+    url: `${LOCAL}/de${path}`,
+    status,
+    robots,
+    canonical,
+  });
+  const canonicals = { [`${LOCAL}/about`]: `${PROD}/about`, [`${LOCAL}/leaderboard`]: `${PROD}/leaderboard`, [`${LOCAL}/privacy`]: `${PROD}/` };
+  const translatedLeaderboard = probe("/leaderboard", 200, "noindex, follow", `${PROD}/de/leaderboard`);
+
+  function derive(xml: string, probes: Record<string, Probe>) {
+    return JSON.parse(
+      runAudit(
+        `(() => { const entries = audit.parseSitemap(${JSON.stringify(xml)}); const candidates = audit.englishOnlyCandidates(entries, ${JSON.stringify(canonicals)}); return JSON.stringify({ urls: entries.map((e) => e.url), locales: audit.prefixLocales(entries), candidates, englishOnly: audit.englishOnlyUrls(candidates, ${JSON.stringify(probes)}) }); })()`,
+      ),
+    );
+  }
+
+  function coverageProblem(locales: string[], candidates: string[], englishOnly: string[]): string | null {
+    return JSON.parse(runAudit(`JSON.stringify(audit.localeCoverageProblem(${JSON.stringify(locales)}, ${JSON.stringify(candidates)}, ${JSON.stringify(englishOnly)}))`));
+  }
+
+  it("keeps sitemap URLs without alternates whose canonical is bare and whose first-locale prefix is not served in translation", () => {
+    const result = derive(sitemap, { [`${LOCAL}/about`]: probe("/about", 308), [`${LOCAL}/leaderboard`]: translatedLeaderboard });
+
+    expect(result.urls).toEqual([`${LOCAL}/`, `${LOCAL}/de`, `${LOCAL}/about`, `${LOCAL}/leaderboard`, `${LOCAL}/privacy`]);
+    expect(result.locales).toEqual(["de", "pt-BR"]);
+    expect(result.candidates).toEqual([`${LOCAL}/about`, `${LOCAL}/leaderboard`]);
+    expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
+  });
+
+  it("counts a first-locale prefix answering 200 without noindex or a self canonical as English-only", () => {
+    const result = derive(sitemap, { [`${LOCAL}/about`]: probe("/about", 200, "index, follow", `${PROD}/about`), [`${LOCAL}/leaderboard`]: translatedLeaderboard });
+
+    expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
+  });
+
+  it("counts a first-locale prefix answering 404 as English-only", () => {
+    const result = derive(sitemap, { [`${LOCAL}/about`]: probe("/about", 404), [`${LOCAL}/leaderboard`]: translatedLeaderboard });
+
+    expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
+  });
+
+  it("treats a first-locale prefix answering 200 with only a self canonical as served in translation", () => {
+    const result = derive(sitemap, {
+      [`${LOCAL}/about`]: probe("/about", 308),
+      [`${LOCAL}/leaderboard`]: probe("/leaderboard", 200, "index, follow", `${PROD}/de/leaderboard`),
+    });
+
+    expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
+  });
+
+  it("treats a first-locale prefix answering 200 with only noindex as served in translation", () => {
+    const result = derive(sitemap, {
+      [`${LOCAL}/about`]: probe("/about", 308),
+      [`${LOCAL}/leaderboard`]: probe("/leaderboard", 200, "noindex", `${PROD}/leaderboard`),
+    });
+
+    expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
+  });
+
+  it("reads alternates whose attributes come in another order", () => {
+    const reordered = sitemap.replace(/<xhtml:link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g, '<xhtml:link href="$2" hreflang="$1" rel="alternate"/>');
+
+    expect(reordered).not.toBe(sitemap);
+    expect(derive(reordered, {}).locales).toEqual(["de", "pt-BR"]);
+  });
+
+  it("reports a problem when the sitemap yields no locale prefixes", () => {
+    expect(coverageProblem([], [`${LOCAL}/about`], [`${LOCAL}/about`])).toEqual(expect.any(String));
+  });
+
+  it("reports a problem when there are candidates but none is English-only", () => {
+    expect(coverageProblem(["de"], [`${LOCAL}/about`], [])).toEqual(expect.any(String));
+  });
+
+  it("reports nothing when locales and English-only pages were found", () => {
+    expect(coverageProblem(["de"], [`${LOCAL}/about`], [`${LOCAL}/about`])).toBeNull();
+  });
+});
+
+describe("audit-adsense boilerplate prose", () => {
+  it("drops the authorship note, citations and link text but keeps the byline", () => {
+    const html = [
+      "<main>",
+      '<address data-learn-byline="true">By <a href="/about">Bing Cheng</a>.</address>',
+      '<p data-authorship-note="true">Written with AI assistance and checked by script.</p>',
+      "<p>Guide prose stays in the count.</p>",
+      '<cite><a href="https://example.com">A cited paper title</a></cite>',
+      "</main>",
+    ].join("");
+
+    const prose = runAudit(`audit.parsePage("http://127.0.0.1/learn/x", 200, ${JSON.stringify(html)}).proseText`);
+
+    expect(prose).toContain("By");
+    expect(prose).toContain("Guide prose stays in the count.");
+    expect(prose).not.toContain("Written with AI assistance");
+    expect(prose).not.toContain("Bing Cheng");
+    expect(prose).not.toContain("cited paper");
+  });
+});

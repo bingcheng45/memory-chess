@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
-import { LEARN_SLUGS, UPDATED_AT, learnLocales } from "@/lib/seo/learn";
-import { LOCALES } from "@/i18n/routing";
+import { EN_LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";
+import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
-import { ENGLISH_ONLY_PATHS } from "@/lib/seo/englishOnly";
+import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly } from "@/lib/seo/englishOnly";
 
 const SITE_URL = "https://thememorychess.com";
 
@@ -69,13 +69,13 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   },
   {
     path: "/privacy",
-    lastModified: "2026-09-03T00:00:00.000Z",
+    lastModified: "2026-09-15T00:00:00.000Z",
     changeFrequency: "yearly",
     priority: 0.4,
   },
   {
     path: "/about",
-    lastModified: "2026-09-03T00:00:00.000Z",
+    lastModified: "2026-09-15T00:00:00.000Z",
     changeFrequency: "monthly",
     priority: 0.5,
   },
@@ -85,59 +85,54 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     changeFrequency: "yearly",
     priority: 0.3,
   },
+  {
+    path: "/learn",
+    lastModified: LEARN_LAST_UPDATED,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  ...EN_LEARN_PAGES.map((page) => ({
+    path: `/learn/${page.slug}`,
+    lastModified: page.updatedAt,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  })),
 ];
 
-
-/** hreflang block for one route across the locales that genuinely differ. */
-function alternatesFor(routePath: string, locales: readonly string[]) {
+/** hreflang block for one route across every locale, matching buildAlternates. */
+function alternatesFor(routePath: string) {
   return {
-    languages: Object.fromEntries(
-      locales.map((locale) => [
-        locale,
-        `${SITE_URL}${localizedPath(routePath, locale)}`,
-      ]),
-    ),
+    languages: {
+      ...Object.fromEntries(
+        LOCALES.map((locale) => [
+          locale,
+          `${SITE_URL}${localizedPath(routePath, locale)}`,
+        ]),
+      ),
+      "x-default": `${SITE_URL}${localizedPath(routePath, DEFAULT_LOCALE)}`,
+    },
+  };
+}
+
+function entryFor(
+  entry: SitemapEntryConfig,
+  locale: string,
+): MetadataRoute.Sitemap[number] {
+  return {
+    url: `${SITE_URL}${localizedPath(entry.path, locale)}`,
+    lastModified: new Date(entry.lastModified),
+    changeFrequency: entry.changeFrequency,
+    priority: entry.priority,
   };
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticEntries: MetadataRoute.Sitemap = SITEMAP_ENTRIES.flatMap(
-    (entry) => {
-      const locales = ENGLISH_ONLY_PATHS.has(entry.path) ? ["en"] : LOCALES;
-
-      return locales.map((locale) => ({
-        url: `${SITE_URL}${localizedPath(entry.path, locale)}`,
-        lastModified: new Date(entry.lastModified),
-        changeFrequency: entry.changeFrequency,
-        priority: entry.priority,
-        alternates: alternatesFor(entry.path, locales),
-      }));
-    },
+  return SITEMAP_ENTRIES.flatMap((entry) =>
+    isEnglishOnlyPath(entry.path) || isIndexedInDefaultLocaleOnly(entry.path)
+      ? [entryFor(entry, DEFAULT_LOCALE)]
+      : LOCALES.map((locale) => ({
+          ...entryFor(entry, locale),
+          alternates: alternatesFor(entry.path),
+        })),
   );
-
-  // Learn covers only the locales with a real translated article set. The rest
-  // fall back to English at runtime and must not appear as separate URLs.
-  const learnTargets = learnLocales();
-  const learnUpdated = new Date(UPDATED_AT);
-
-  const learnHubEntries: MetadataRoute.Sitemap = learnTargets.map((locale) => ({
-    url: `${SITE_URL}${localizedPath("/learn", locale)}`,
-    lastModified: learnUpdated,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-    alternates: alternatesFor("/learn", learnTargets),
-  }));
-
-  const learnArticleEntries: MetadataRoute.Sitemap = LEARN_SLUGS.flatMap(
-    (slug) =>
-      learnTargets.map((locale) => ({
-        url: `${SITE_URL}${localizedPath(`/learn/${slug}`, locale)}`,
-        lastModified: learnUpdated,
-        changeFrequency: "weekly" as const,
-        priority: 0.7,
-        alternates: alternatesFor(`/learn/${slug}`, learnTargets),
-      })),
-  );
-
-  return [...staticEntries, ...learnHubEntries, ...learnArticleEntries];
 }

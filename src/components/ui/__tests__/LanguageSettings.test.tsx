@@ -48,16 +48,42 @@ describe("LanguageSettings", () => {
   });
 
   it("preserves the hash fragment when switching locale", () => {
-    mockPathname = "/learn/chess-board-vision-drills";
-    window.history.replaceState({}, "", "/learn/chess-board-vision-drills#faq");
+    mockPathname = "/";
+    window.history.replaceState({}, "", "/#faq");
 
     render(<LanguageSettings />);
     openMenuAndPick("Español");
 
-    expect(replace).toHaveBeenCalledWith(
-      "/learn/chess-board-vision-drills#faq",
-      { locale: "es" },
-    );
+    expect(replace).toHaveBeenCalledWith("/#faq", { locale: "es" });
+  });
+
+  it.each(["/about", "/changelog", "/privacy", "/terms", "/learn", "/learn/chess-memory-training"])(
+    "on %s, offers no other language and writes no cookie",
+    (path) => {
+      mockPathname = path;
+      window.history.replaceState({}, "", path);
+      document.cookie = "NEXT_LOCALE=; max-age=0; path=/";
+
+      render(<LanguageSettings />);
+      openMenuAndPick("Deutsch");
+
+      expect(screen.getByText("This page is only available in English.")).toBeInTheDocument();
+      expect(screen.getByRole("menu")).toHaveAccessibleDescription("This page is only available in English.");
+      expect(screen.getByRole("menuitemradio", { name: /Deutsch/ })).toBeDisabled();
+      expect(screen.getByRole("menuitemradio", { name: /English/ })).toBeEnabled();
+      expect(replace).not.toHaveBeenCalled();
+      expect(document.cookie).not.toContain("NEXT_LOCALE");
+    },
+  );
+
+  it("on a translated route, every language stays selectable and no note shows", () => {
+    render(<LanguageSettings />);
+    fireEvent.click(screen.getByRole("button", { name: /change language/i }));
+
+    expect(screen.queryByText("This page is only available in English.")).not.toBeInTheDocument();
+    for (const item of screen.getAllByRole("menuitemradio")) {
+      expect(item).toBeEnabled();
+    }
   });
 
   it("preserves query and hash together", () => {

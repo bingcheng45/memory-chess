@@ -2,26 +2,6 @@ import type { ComponentProps } from "react";
 import { render, screen } from "@/test-utils/intl";
 import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
 import { EN_LEARN_PAGES, EN_LEARN_GOALS } from "@/lib/seo/learn";
-import enMessages from "../../../../messages/en.json";
-
-/** See LearnArticle.test.tsx -- every leaf becomes a unique marker. */
-function markerCatalogue(value: unknown, keyPath = ""): unknown {
-  if (Array.isArray(value)) {
-    return value.map((item, i) => markerCatalogue(item, `${keyPath}[${i}]`));
-  }
-  if (value && typeof value === "object") {
-    return Object.fromEntries(
-      Object.entries(value).map(([k, v]) => [
-        k,
-        markerCatalogue(v, keyPath ? `${keyPath}.${k}` : k),
-      ]),
-    );
-  }
-  const args = [...String(value).matchAll(/\{\s*(\w+)\s*\}/g)]
-    .map((m) => `{${m[1]}}`)
-    .join(" ");
-  return `\u00ab${keyPath}\u00bb${args ? ` ${args}` : ""}`;
-}
 
 jest.mock("next/link", () => {
   function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
@@ -53,7 +33,7 @@ jest.mock("@/components/ui/Footer", () => {
 
 describe("LearnHubPageContent", () => {
   it("uses the shared editorial layout and plain guidance", () => {
-    const { container } = render(<LearnHubPageContent allPages={EN_LEARN_PAGES} goals={EN_LEARN_GOALS} locale="en" />);
+    const { container } = render(<LearnHubPageContent allPages={EN_LEARN_PAGES} goals={EN_LEARN_GOALS} />);
 
     expect(
       screen.getByRole("heading", {
@@ -70,7 +50,7 @@ describe("LearnHubPageContent", () => {
     expect(screen.queryByText(/SEO hub/i)).not.toBeInTheDocument();
     expect(container.querySelectorAll("img")).toHaveLength(0);
     expect(
-      screen.getByText("All 16 guides", { exact: true }),
+      screen.getByText(`All ${EN_LEARN_PAGES.length} guides`, { exact: true }),
     ).toBeInTheDocument();
 
     const allClasses = Array.from(container.querySelectorAll("[class]"))
@@ -91,8 +71,17 @@ describe("LearnHubPageContent", () => {
       (entry: { "@type": string }) => entry["@type"] === "ItemList",
     );
 
-    expect(itemList.numberOfItems).toBe(16);
-    expect(itemList.itemListElement).toHaveLength(16);
+    expect(itemList.numberOfItems).toBe(EN_LEARN_PAGES.length);
+    expect(itemList.itemListElement).toHaveLength(EN_LEARN_PAGES.length);
+  });
+
+  it("describes the goal lists by the order they actually follow", () => {
+    render(<LearnHubPageContent allPages={EN_LEARN_PAGES} goals={EN_LEARN_GOALS} />);
+
+    expect(
+      screen.getByText("Guides in each goal are listed easiest first."),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/complete practice habit/)).not.toBeInTheDocument();
   });
 
   function schemaFor(container: HTMLElement) {
@@ -110,44 +99,11 @@ describe("LearnHubPageContent", () => {
     };
   }
 
-  it("declares the localized hub in its structured data", () => {
-    // The German hub shows German titles. Assigning those titles to English
-    // URLs contradicts the localized canonical and the sitemap entries.
+  it("keeps the hub on its unprefixed URLs", () => {
     const { container } = render(
       <LearnHubPageContent
         allPages={EN_LEARN_PAGES}
-        goals={EN_LEARN_GOALS}
-        locale="de"
-      />,
-      { locale: "de" },
-    );
-
-    const { collection, itemList, breadcrumb } = schemaFor(container);
-    const hub = "https://thememorychess.com/de/learn";
-
-    expect(collection["@id"]).toBe(`${hub}#webpage`);
-    expect(collection.url).toBe(hub);
-    expect(collection.inLanguage).toBe("de");
-    expect(collection.mainEntity["@id"]).toBe(`${hub}#guides`);
-
-    expect(itemList["@id"]).toBe(`${hub}#guides`);
-    for (const entry of itemList.itemListElement) {
-      expect(entry.url).toMatch(/^https:\/\/thememorychess\.com\/de\/learn\//);
-    }
-
-    expect(breadcrumb.itemListElement.map((e: { item: string }) => e.item)).toEqual([
-      "https://thememorychess.com/de",
-      hub,
-    ]);
-  });
-
-  it("keeps the English hub on its unprefixed URLs", () => {
-    const { container } = render(
-      <LearnHubPageContent
-        allPages={EN_LEARN_PAGES}
-        goals={EN_LEARN_GOALS}
-        locale="en"
-      />,
+        goals={EN_LEARN_GOALS}      />,
     );
 
     const { collection, itemList, breadcrumb } = schemaFor(container);
@@ -159,56 +115,5 @@ describe("LearnHubPageContent", () => {
       `https://thememorychess.com/learn/${EN_LEARN_PAGES[0].slug}`,
     );
     expect(breadcrumb.itemListElement[0].item).toBe("https://thememorychess.com");
-  });
-  it("reads every piece of hub chrome from the catalogue", () => {
-    // The hub previously showed a German title above an English eyebrow and an
-    // English promise that each guide is written "in plain English". Rendered
-    // against a marker catalogue, anything still hard-coded has no marker.
-    const { container } = render(
-      <LearnHubPageContent
-        allPages={EN_LEARN_PAGES}
-        goals={EN_LEARN_GOALS}
-        locale="en"
-      />,
-      {
-        locale: "en",
-        messages: markerCatalogue(enMessages) as Record<string, unknown>,
-      },
-    );
-
-    const text = container.textContent ?? "";
-
-    for (const key of [
-      "eyebrow",
-      "title",
-      "heroDescription",
-      "startBeginner",
-      "playCta",
-      "startHere",
-      "pickNext",
-      "pickNextDescription",
-      "allGuides",
-      "chooseGoal",
-      "chooseGoalDescription",
-      "guideNumber",
-      "readRecallPlay",
-      "turnIdea",
-      "turnIdeaDescription",
-      "startRound",
-    ]) {
-      expect(text).toContain(`\u00ablearnHub.${key}\u00bb`);
-    }
-
-    for (const literal of [
-      "Learn with Memory Chess",
-      "plain English",
-      "plain language",
-      "All 16 guides",
-      "Guide 01",
-      "There\u2019s no perfect order",
-      "complete practice habit",
-    ]) {
-      expect(text).not.toContain(literal);
-    }
   });
 });

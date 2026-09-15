@@ -190,9 +190,10 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
 
   // Check if the score is eligible for the leaderboard
   const isEligibleForLeaderboard = () => {
-    // Only standard difficulties are eligible (not custom games)
+    // Only standard difficulties are eligible (not custom games). The board
+    // hides rows with no correct piece, so such a round is not submittable.
     const difficulty = determineDifficulty(gameState.pieceCount);
-    return difficulty !== "custom";
+    return difficulty !== "custom" && (extendedGameState.correctPlacements ?? 0) > 0;
   };
 
   // Prepare leaderboard entry data

@@ -8,19 +8,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { 
-  formatMemorizeTime, 
-  formatSolutionTime,
-  formatDate 
-} from '@/lib/utils/timeFormatting';
 import { LeaderboardEntry } from '@/types/leaderboard';
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { useEffect, useRef } from "react";
 
-import { useTranslations } from "next-intl";
-// Interface for entry details from URL params
-interface EntryDetails {
+import { useFormatter, useTranslations } from "next-intl";
+
+export interface EntryDetails {
   player: string | null;
   difficulty: string | null;
   memorizeTime: number | null;
@@ -32,91 +27,37 @@ interface EntryDetails {
 
 interface LeaderboardTableProps {
   data: LeaderboardEntry[];
-  isLoading: boolean;
   error: string | null;
   entryDetails?: EntryDetails;
   activeTab?: string;
 }
 
-// Consistent time display component
-const TimeDisplay = ({ time }: { time: string }) => {
-  // Extract time parts
-  let minutes = "00";
-  let seconds = "00";
-  let milliseconds = "000";
-  
-  // Handle different time formats
-  if (typeof time === 'string') {
-    // Special handling for decimal format (e.g., "1.245")
-    if (time.includes('.') && !time.includes(':')) {
-      const [secondsPart, msPart] = time.split('.');
-      const totalSeconds = parseInt(secondsPart || "0");
-      minutes = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
-      seconds = (totalSeconds % 60).toString().padStart(2, '0');
-      milliseconds = msPart?.padStart(3, '0') || "000";
-    }
-    // Handle MM:SS:XXX format
-    else if (time.includes(':')) {
-      const parts = time.split(':');
-      
-      // Standard format MM:SS:XXX
-      if (parts.length === 3) {
-        [minutes, seconds, milliseconds] = parts;
-        
-        // Fix for memorize time format where seconds appear as milliseconds ("00:00:010")
-        if (minutes === "00" && seconds === "00" && milliseconds.length === 3) {
-          // Check if milliseconds represents seconds (e.g., "010" means 10 seconds)
-          const msValue = parseInt(milliseconds);
-          if (msValue > 0) {
-            seconds = msValue.toString().padStart(2, '0');
-            milliseconds = "000";
-          }
-        }
-        
-        // Check if milliseconds contains a decimal (e.g., "1.245")
-        if (milliseconds.includes('.')) {
-          const [secPart, msPart] = milliseconds.split('.');
-          if (secPart && secPart !== '0') {
-            // Add the additional seconds to the seconds part
-            seconds = (parseInt(seconds) + parseInt(secPart)).toString().padStart(2, '0');
-          }
-          milliseconds = msPart?.padStart(3, '0') || "000";
-        }
-      } 
-      // Handle MM:SSXXX format (missing second colon)
-      else if (parts.length === 2) {
-        minutes = parts[0];
-        // Check if the second part is longer than 2 characters
-        if (parts[1].length > 2) {
-          seconds = parts[1].substring(0, 2);
-          milliseconds = parts[1].substring(2);
-        } else {
-          seconds = parts[1];
-          milliseconds = "000";
-        }
-      }
-    }
-  }
-  
+export function TimeDisplay({ seconds }: { seconds: number }) {
+  const totalMs = Math.round(seconds * 1000);
+  const minutes = String(Math.floor(totalMs / 60000)).padStart(2, "0");
+  const wholeSeconds = String(Math.floor(totalMs / 1000) % 60).padStart(2, "0");
+  const milliseconds = String(totalMs % 1000).padStart(3, "0");
+
   return (
     <div className="inline-flex items-baseline font-mono">
       <span>{minutes}</span>
       <span>:</span>
-      <span>{seconds}</span>
+      <span>{wholeSeconds}</span>
       <span>:</span>
       <span className="text-xs">{milliseconds}</span>
     </div>
   );
-};
+}
 
-export default function LeaderboardTable({ data, isLoading, error, entryDetails, activeTab }: LeaderboardTableProps) {
+export default function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardTableProps) {
   const t = useTranslations("leaderboard");
+  const format = useFormatter();
   // Create a ref to store the highlighted row element
   const highlightedRowRef = useRef<HTMLTableRowElement>(null);
-  
+
   // Scroll to highlighted row when data loads
   useEffect(() => {
-    if (!isLoading && entryDetails?.player && highlightedRowRef.current) {
+    if (entryDetails?.player && highlightedRowRef.current) {
       // Use a small timeout to ensure the DOM is fully updated
       setTimeout(() => {
         highlightedRowRef.current?.scrollIntoView({
@@ -125,17 +66,8 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
         });
       }, 100);
     }
-  }, [isLoading, entryDetails, data]);
-  
-  if (isLoading) {
-    return (
-      <div className="text-center p-8">
-        <div className="animate-spin h-8 w-8 border-4 border-peach-500 rounded-full border-t-transparent mx-auto"></div>
-        <p className="mt-4 text-text-secondary">{t("loading")}</p>
-      </div>
-    );
-  }
-  
+  }, [entryDetails, data]);
+
   if (error) {
     // Check if this is a database connection error and provide a more user-friendly message
     const isConnectionError = error.includes('Database connection unavailable') || 
@@ -204,21 +136,20 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
         </TableHeader>
         <TableBody>
           {data.map((entry, index) => {
-            // More precise matching with multiple criteria
-            const isHighlighted = entryDetails?.player && (
-              // Match all relevant criteria if available
+            // A name alone matches every round that player submitted, so a row is
+            // only highlighted when the link also carries that round's times.
+            const isHighlighted =
+              entryDetails?.player != null &&
+              entryDetails.memorizeTime != null &&
+              entryDetails.solutionTime != null &&
               entry.player_name === entryDetails.player &&
-              // Match times with a small tolerance to account for precision differences
-              (entryDetails.memorizeTime === null || Math.abs(entry.memorize_time - entryDetails.memorizeTime) < 0.001) &&
-              (entryDetails.solutionTime === null || Math.abs(entry.solution_time - entryDetails.solutionTime) < 0.001) &&
-              // Match piece counts
+              Math.abs(entry.memorize_time - entryDetails.memorizeTime) < 0.001 &&
+              Math.abs(entry.solution_time - entryDetails.solutionTime) < 0.001 &&
               (entryDetails.pieceCount === null || entry.piece_count === entryDetails.pieceCount) &&
               (entryDetails.correctPieces === null || entry.correct_pieces === entryDetails.correctPieces) &&
-              // Match total wrong pieces if available
-              (entryDetails.totalWrongPieces === null || 
-               entry.total_wrong_pieces === undefined || 
-               entry.total_wrong_pieces === entryDetails.totalWrongPieces)
-            );
+              (entryDetails.totalWrongPieces === null ||
+                entry.total_wrong_pieces === undefined ||
+                entry.total_wrong_pieces === entryDetails.totalWrongPieces);
             
             return (
               <TableRow 
@@ -253,13 +184,13 @@ export default function LeaderboardTable({ data, isLoading, error, entryDetails,
                   </span>
                 </TableCell>
                 <TableCell className="text-center">
-                  <TimeDisplay time={formatMemorizeTime(entry.memorize_time)} />
+                  <TimeDisplay seconds={entry.memorize_time} />
                 </TableCell>
                 <TableCell className="text-center">
-                  <TimeDisplay time={formatSolutionTime(entry.solution_time)} />
+                  <TimeDisplay seconds={entry.solution_time} />
                 </TableCell>
                 <TableCell className="text-right text-text-muted">
-                  {formatDate(entry.created_at)}
+                  {format.dateTime(new Date(entry.created_at), { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
                 </TableCell>
               </TableRow>
             );

@@ -1,0 +1,259 @@
+import type { LearnPosition, PieceToken } from "../positions";
+import type { LearnGuide } from "../schema";
+
+const guide: LearnGuide = {
+  slug: "chess-calculation-exercises-for-beginners",
+  goal: "visualization",
+  title: "Chess Calculation Exercises for Beginners Who Lose the Board After Two Moves",
+  h1: "Calculation exercises for beginners who lose the board after two moves",
+  description:
+    "Why short lines collapse, one position with two knight checks to practise on, and exercises for holding a position while the pieces in your head move.",
+  primaryKeyword: "chess calculation exercises",
+  secondaryKeywords: [
+    "beginner chess calculation",
+    "calculate moves ahead chess",
+    "working memory for chess",
+    "candidate move practice",
+    "hold a position in your head",
+  ],
+  ctaLabel: "Open the 8-piece, 10-second round",
+  quickAnswer:
+    "Compare two moves, two plies deep, and say each line out loud before you check it. When a line collapses, check the starting position before you blame the moves.",
+  keyTakeaways: [
+    "A line fails at the piece you stopped seeing, and a piece that never moved is easy to stop seeing.",
+    "Two candidate moves at two plies is enough work for one decision.",
+    "Ask who can capture on each landing square before you imagine the next move.",
+    "Rebuilding a position from an empty board practises holding one with nothing in front of you, which calculation also asks for.",
+  ],
+  whoThisIsFor: [
+    "Players who imagine a move and then cannot say where the defenders are.",
+    "Beginners who play the first move they see in sharp positions.",
+    "Anyone who has been told to calculate and never told what to hold in mind.",
+  ],
+  timeToRead: "8 min read",
+  difficulty: "Beginner to Intermediate",
+  publishedAt: "2026-03-24T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
+  sections: [
+    {
+      id: "where-a-line-breaks",
+      title: "Where a two-move line breaks",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Calculation is holding a position that is not on the board. You see the real board, imagine one move, and now you keep two pictures apart, the one in front of you and the one in your head.",
+            "Each imagined move overwrites a square. Two plies in, four squares have changed, and every piece that did not move has to stay put without any help from your eyes.",
+            "That is where a line can get lost. Not on the moving pieces, which have your attention, but on a queen or a pawn that never moved and quietly guards the square you land on.",
+            "The usual advice is to look further ahead. The useful advice is to keep the base position steady, because a line is only as long as the picture underneath it.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "two-checks-one-works",
+      title: "One position, two knight checks, only one works",
+      summary: "Set this up on a real board. White to move.",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "White: king g1, knight d5, pawns f2, g2 and h3. Black: king e8, queen b5, rook a8, pawns f7, g7 and h7. Eleven pieces, one short of the Hard preset.",
+            "The black queen on b5 attacks the knight on d5 along the fifth rank, so White wants a move that gains time. Two knight checks are available, 1.Nc7+ and 1.Nf6+. Compare them two plies deep.",
+          ],
+        },
+        {
+          kind: "steps",
+          ordered: true,
+          items: [
+            "Say the first line out loud: 1.Nc7+. Now list what the knight on c7 attacks: a8, b5 and e8. That is the rook, the queen and the king.",
+            "Ask which black piece can take on c7. The queen on b5 cannot reach it, the rook on a8 cannot, and the king on e8 is two files away. Black moves the king, and the knight takes the queen on b5 for free.",
+            "Say the second line: 1.Nf6+. It also checks the king on e8. Ask the same question. The pawn on g7 is the only black piece that reaches f6, and it takes the knight for nothing.",
+            "Play both lines on the board and check. If your answer for 1.Nf6+ was wrong, the piece you dropped was the g7 pawn, which never moved and was never going to.",
+          ],
+        },
+        {
+          kind: "callout",
+          title: "The question that saves the line",
+          body: "After every imagined move, ask who can capture on the square you just landed on. It forces you back to the base position instead of running forward.",
+        },
+      ],
+    },
+    {
+      id: "empty-board-reset",
+      title: "The empty-board reset",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "A Memory Chess round asks for one part of calculation on its own. A position appears for a fixed number of seconds, then the board clears, and you rebuild it while the clock runs.",
+            "There is no time limit on the rebuild, but nothing on the empty board reminds you of the queen on b5. One move into a line you are in the same spot, holding pieces the board no longer shows, so a round is a way to practise it.",
+            "The positions are made fresh each round and are random rather than taken from games, so a round does not teach you which moves to look at. It trains holding the picture, nothing more.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
+            {
+              title: "Hold it while the board is empty",
+              description:
+                "4 rounds of 8 pieces, 10 seconds, about 5 minutes. Both kings first, then the pieces you are sure of. Stop before you guess, since each extra piece costs ten accuracy points.",
+              duration: "About 5 minutes",
+              goal: "At least 7 of the 8 correct in three of the four rounds.",
+              ctaLabel: "Play 8 pieces, 10 seconds",
+              setup: { pieceCount: 8, memorizeTime: 10 },
+            },
+            {
+              title: "Rebuild after the line",
+              description:
+                "Set the position from the section above on a board. Calculate both checks, then clear the board and set the position again from memory. Compare with a photo you took first.",
+              duration: "About 5 minutes",
+              goal: "All eleven pieces back on their squares, the g7 pawn included.",
+              ctaLabel: "Set it up at your board",
+            },
+            {
+              title: "Two candidates, one sentence each",
+              description:
+                "Take any position from a game you lost. Pick two moves, follow each for two plies, and finish each with one sentence: what changed, and who guards the landing square.",
+              duration: "About 10 minutes",
+              goal: "Two lines you can say out loud without looking at the board.",
+              ctaLabel: "Use your last lost game",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "how-many-lines-to-hold",
+      title: "How many lines a beginner should hold",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Two. Every extra line is one more picture to keep apart from the base position, so start with the fewest that still give you a comparison.",
+            "Spend working memory on defenders, not on more candidates. Five candidate moves means five defender checks, one for every landing square.",
+            "Add a third candidate only when both of the first two fail for a reason you can state. Keep the depth at two plies until the base position stops drifting.",
+            "When the two moves are both checks or both captures, the comparison is quick, so look for a missed defender before a missed idea.",
+          ],
+        },
+        {
+          kind: "comparison",
+          columns: ["Where it failed", "What it felt like", "What actually happened"],
+          rows: [
+            {
+              label: "The landing square",
+              struggling: "The move looked safe.",
+              stronger: "A piece that never moved guards it, like the g7 pawn covering f6.",
+            },
+            {
+              label: "Move order",
+              struggling: "Both lines blurred into each other.",
+              stronger: "You calculated the second line on top of the first instead of on the base position.",
+            },
+            {
+              label: "Depth",
+              struggling: "Three plies in, nothing was clear.",
+              stronger: "The first two plies were never checked, so the third had nothing to stand on.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "checking-out-loud",
+      title: "Say it, then check it on the board",
+      blocks: [
+        {
+          kind: "steps",
+          ordered: false,
+          items: [
+            "Say the line in full, your move and the reply, before you touch a piece.",
+            "Name the attackers and defenders of the landing square before you imagine the next move.",
+            "Play the line on a real board or an analysis board and compare. Label the miss: a piece you forgot, a move order you swapped, or a judgment you got wrong.",
+            "If the miss was a forgotten piece, that is a base-position problem. Play a round of the empty-board reset, not another puzzle.",
+          ],
+        },
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: "How many moves ahead should a beginner calculate?",
+      answer:
+        "Two plies, your move and the reply, checked for defenders each time. Add depth only once the position stays steady at two plies.",
+    },
+    {
+      question: "Does Memory Chess teach calculation?",
+      answer:
+        "No. It trains one part of calculation, keeping a position steady when nothing on the board reminds you of it. Choosing moves is learned at the board.",
+    },
+    {
+      question: "Why do I forget a piece that never moved?",
+      answer:
+        "Probably because you were tracking the moving pieces. A still piece has no event attached to it, so the base picture has to carry it, and the base picture is what drifts.",
+    },
+  ],
+  relatedArticles: [
+    {
+      slug: "chess-memory-training",
+      reason: "The ladder for holding more pieces through the empty board.",
+    },
+    {
+      slug: "how-to-think-in-chess-for-beginners",
+      reason: "A move routine that decides which two candidates deserve the calculation.",
+    },
+  ],
+  sources: [],
+};
+
+const TWO_CHECKS_WHITE: PieceToken[] = ["Kg1", "Nd5", "f2", "g2", "h3"];
+const TWO_CHECKS_BLACK: PieceToken[] = ["Ke8", "Qb5", "Ra8", "f7", "g7", "h7"];
+
+export const positions: LearnPosition[] = [
+  {
+    id: "two-checks",
+    sectionId: "two-checks-one-works",
+    white: TWO_CHECKS_WHITE,
+    black: TWO_CHECKS_BLACK,
+    claims: [
+      { kind: "pieceCount", count: 11 },
+      { kind: "noCheck" },
+      { kind: "attacks", from: "b5", squares: ["d5"] },
+      { kind: "attackers", square: "f6", side: "b", from: ["g7"] },
+    ],
+  },
+  {
+    id: "two-checks-after-nc7",
+    sectionId: "two-checks-one-works",
+    white: TWO_CHECKS_WHITE,
+    black: TWO_CHECKS_BLACK,
+    line: ["Nc7+"],
+    claims: [
+      { kind: "check" },
+      { kind: "attacks", from: "c7", squares: ["a8", "e8", "b5"] },
+      { kind: "attackers", square: "c7", side: "b", from: [] },
+      { kind: "replies", nonKing: [], then: "Nxb5", undefended: "b5" },
+    ],
+  },
+  {
+    id: "two-checks-after-nf6",
+    sectionId: "two-checks-one-works",
+    white: TWO_CHECKS_WHITE,
+    black: TWO_CHECKS_BLACK,
+    line: ["Nf6+"],
+    claims: [
+      { kind: "check" },
+      { kind: "legal", move: "gxf6" },
+    ],
+  },
+  {
+    id: "two-checks-after-gxf6",
+    sectionId: "two-checks-one-works",
+    white: TWO_CHECKS_WHITE,
+    black: TWO_CHECKS_BLACK,
+    line: ["Nf6+", "gxf6"],
+    claims: [{ kind: "attackers", square: "f6", side: "w", from: [] }],
+  },
+];
+
+export default guide;

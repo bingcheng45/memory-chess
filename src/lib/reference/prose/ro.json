@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Primește scorul",
-        "body": "Tabla ta este comparată pătrat cu pătrat cu originalul. Vezi care piese au fost corecte, care au fost greșite și care ți-au scăpat, alături de poziția care ți s-a arătat."
+        "body": "Tabla ta este comparată pătrat cu pătrat cu originalul. Vezi care piese au fost corecte, care au fost greșite și care ți-au scăpat, împreună cu poziția care ți s-a arătat, alăturate pe ecranele late și una sub alta pe cele înguste."
       }
     },
     "presets": {
@@ -29,9 +29,9 @@
       "seconds": "{seconds}s",
       "trains": {
         "easy": "Doi regi și nimic altceva. Te învață interfața și îți arată limpede dacă poți reține două pătrate sub presiunea timpului.",
-        "medium": "Șase piese reprezintă cam atât cât rețin majoritatea oamenilor fără o metodă. Acesta este nivelul la care gruparea pieselor începe să dea roade.",
-        "hard": "Douăsprezece piese în opt secunde depășesc memoria brută. Trebuie să grupezi piesele în forme, nu să le reții una câte una.",
-        "grandmaster": "Douăzeci de piese în cinci secunde înseamnă un sfert de secundă pentru fiecare piesă. Nimeni nu citește așa ceva pătrat cu pătrat; nivelul răsplătește capacitatea de a vedea lanțurile de pioni și grupurile de piese ca unități întregi."
+        "medium": "Șase piese înseamnă ambii regi plus alte patru piese, cu aceleași zece secunde de privit ca la nivelul cu două piese.",
+        "hard": "Douăsprezece piese în opt secunde înseamnă două treimi de secundă pentru fiecare piesă, așa că încearcă să grupezi piesele în forme în loc să le reții una câte una.",
+        "grandmaster": "Douăzeci de piese în cinci secunde înseamnă un sfert de secundă pentru fiecare piesă, așa că încearcă să vezi lanțurile de pioni și grupurile de piese ca unități întregi."
       },
       "custom": {
         "title": "Setări personalizate",

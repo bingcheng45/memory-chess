@@ -6,7 +6,7 @@ const guide: LearnGuide = {
   goal: "visualization",
   title: "How to See the Whole Board in Chess",
   h1: "How to see the whole chess board",
-  description: "Why a bishop that never moved still wins material, a sweep that starts at the edges, and a 12-piece round with no clusters to lean on.",
+  description: "Why a bishop that never moved still wins material, a sweep that starts at the edges, and a 12-piece round with no plan gathering its pieces.",
   primaryKeyword: "how to see the whole board in chess",
   secondaryKeywords: [
     "chess tunnel vision",
@@ -20,7 +20,7 @@ const guide: LearnGuide = {
   keyTakeaways: [
     "The eye follows the piece that moved, and a long-range piece does its damage by standing still while a blocker moves.",
     "Trace every line to the last square it reaches, because the first piece on the line may be yours and pinned.",
-    "A Memory Chess position is generated with no plan behind it, so it offers none of the clusters a game position lets you lean on.",
+    "A Memory Chess position is generated with no plan behind it, so its pieces are not gathered near the kings or the centre the way a game's are.",
   ],
   whoThisIsFor: [
     "Players who lose material to a bishop or rook that had not moved for many moves.",
@@ -103,7 +103,7 @@ const guide: LearnGuide = {
             "That clustering is why the sweep is needed. It is also why your own games are a poor place to practise the sweep.",
             "Memory Chess builds a fresh position for every round, with no plan behind it. The two kings go on random squares that are never adjacent.",
             "Every other piece goes on a random empty square, limited by the rules of a legal position. No pawn stands on the first or eighth rank, and a side's two bishops stand on opposite colours.",
-            "Nothing in the generator pulls pieces toward the centre or toward the kings. Twelve pieces in eight seconds is one of the game's four presets, and at that size no single cluster holds the position.",
+            "Nothing in the generator pulls pieces toward the centre or toward the kings. Twelve pieces in eight seconds is one of the game's four presets, and no plan gathers its pieces in one part of the board.",
             "So you read the board in zones and carry every zone to the empty board. That is the sweep, done from memory.",
           ],
         },

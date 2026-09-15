@@ -204,7 +204,7 @@ async function fetchPage(url) {
 
 const listedKey = (url) => url.replace(/\/$/, "") || base;
 
-/** Unlike `listedKey`, keeps the query, since two alternates differing only there name different pages. */
+/** Unlike `listedKey`, parses the URL, so a slash before a query is stripped and the root keeps its `/`. */
 function alternateUrl(href) {
   const url = new URL(toLocal(href));
   return `${url.origin}${url.pathname.replace(/(.)\/$/, "$1")}${url.search}`;

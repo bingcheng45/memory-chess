@@ -398,9 +398,6 @@ function guideFacts(): Record<string, string[]> {
     "why-puzzle-rating-doesnt-transfer-to-games": [
       `a hard preset of ${hard.pieceCount} pieces with ${hard.memorizeTime} seconds to look`,
     ],
-    "how-to-see-the-whole-board-in-chess": [
-      `a ${hard.pieceCount}-piece board`,
-    ],
     "20-minute-daily-chess-study-plan": [
       `the medium preset in memory chess is ${medium.pieceCount} pieces with ${medium.memorizeTime} seconds to look`,
     ],

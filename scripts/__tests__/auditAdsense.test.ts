@@ -108,6 +108,7 @@ describe("audit-adsense hreflang targets", () => {
       `<${LOCAL}/fr>; rel="preload"; hreflang="fr"`,
       '</_next/static/media/font.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2"',
       `<${LOCAL}/fr>; rel="alternates"; hreflang="fr"`,
+      `<${LOCAL}/fr>; rel=alternates; hreflang=fr`,
       `<${LOCAL}/fr>; rel="alternate stylesheet"; hreflang="fr"`,
     ].join(", ");
 
@@ -245,6 +246,24 @@ describe("audit-adsense English-only derivation", () => {
 
   it("counts a first-locale prefix answering 404 as English-only", () => {
     const result = derive(sitemap, { [`${LOCAL}/about`]: probe("/about", 404), [`${LOCAL}/leaderboard`]: translatedLeaderboard });
+
+    expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
+  });
+
+  it("treats a first-locale prefix answering 200 with only a self canonical as served in translation", () => {
+    const result = derive(sitemap, {
+      [`${LOCAL}/about`]: probe("/about", 308),
+      [`${LOCAL}/leaderboard`]: probe("/leaderboard", 200, "index, follow", `${PROD}/de/leaderboard`),
+    });
+
+    expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
+  });
+
+  it("treats a first-locale prefix answering 200 with only noindex as served in translation", () => {
+    const result = derive(sitemap, {
+      [`${LOCAL}/about`]: probe("/about", 308),
+      [`${LOCAL}/leaderboard`]: probe("/leaderboard", 200, "noindex", `${PROD}/leaderboard`),
+    });
 
     expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
   });

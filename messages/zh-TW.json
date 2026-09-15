@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "常見問題",
-    "whatChangesTitle": "最先進步的是什麼",
-    "startHereSummary": "這些步驟今天就能試。",
-    "drillsSummary": "每個練習都能讓你把學到的內容直接用在 Memory Chess 裡。",
-    "comparisonColumns": {
-      "situation": "情況",
-      "before": "練習前",
-      "after": "練習後"
-    },
-    "mistakesTitle": "常見的錯誤",
-    "whatToDoInsteadTitle": "應該怎麼做",
-    "planSummary": "在把練習變難或變長之前，先走完這幾步。",
     "breadcrumbHome": "首頁",
     "breadcrumbLearn": "學習",
     "eyebrow": "簡明西洋棋指南",

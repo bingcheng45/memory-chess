@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "Ofte stillede spørgsmål",
-    "whatChangesTitle": "Hvad der bliver bedre først",
-    "startHereSummary": "De her trin kan du prøve allerede i dag.",
-    "drillsSummary": "Hver øvelse lader dig træne lektionen direkte i Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Situation",
-      "before": "Før træning",
-      "after": "Efter træning"
-    },
-    "mistakesTitle": "Almindelige fejl, du bør undgå",
-    "whatToDoInsteadTitle": "Gør det her i stedet",
-    "planSummary": "Gå de her trin igennem, før du gør træningen sværere eller længere.",
     "breadcrumbHome": "Forside",
     "breadcrumbLearn": "Lær",
     "eyebrow": "Enkel skakguide",

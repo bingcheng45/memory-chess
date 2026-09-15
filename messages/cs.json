@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "Časté dotazy",
-    "whatChangesTitle": "Co se zlepší nejdřív",
-    "startHereSummary": "Tyto kroky můžete zkusit ještě dnes.",
-    "drillsSummary": "Každé cvičení vám dá procvičit lekci přímo v Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Situace",
-      "before": "Před tréninkem",
-      "after": "Po tréninku"
-    },
-    "mistakesTitle": "Časté chyby, kterým se vyhnout",
-    "whatToDoInsteadTitle": "Co dělat místo toho",
-    "planSummary": "Projděte tyto kroky dřív, než trénink ztížíte nebo prodloužíte.",
     "breadcrumbHome": "Domů",
     "breadcrumbLearn": "Učení",
     "eyebrow": "Jednoduchý šachový průvodce",

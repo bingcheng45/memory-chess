@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "Usein kysyttyä",
-    "whatChangesTitle": "Mikä paranee ensin",
-    "startHereSummary": "Nämä askeleet voit kokeilla jo tänään.",
-    "drillsSummary": "Jokainen harjoitus antaa soveltaa opitun suoraan Memory Chessissä.",
-    "comparisonColumns": {
-      "situation": "Tilanne",
-      "before": "Ennen harjoittelua",
-      "after": "Harjoittelun jälkeen"
-    },
-    "mistakesTitle": "Yleisiä virheitä, joita kannattaa välttää",
-    "whatToDoInsteadTitle": "Tee sen sijaan näin",
-    "planSummary": "Käy nämä askeleet läpi ennen kuin teet harjoittelusta vaikeampaa tai pidempää.",
     "breadcrumbHome": "Etusivu",
     "breadcrumbLearn": "Opi",
     "eyebrow": "Selkeä shakkiopas",

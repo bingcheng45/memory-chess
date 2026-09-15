@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "Pertanyaan umum",
-    "whatChangesTitle": "Yang membaik lebih dulu",
-    "startHereSummary": "Langkah-langkah ini bisa Anda coba hari ini.",
-    "drillsSummary": "Setiap latihan membuat Anda langsung mempraktikkan pelajarannya di Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Situasi",
-      "before": "Sebelum latihan",
-      "after": "Setelah latihan"
-    },
-    "mistakesTitle": "Kesalahan umum yang perlu dihindari",
-    "whatToDoInsteadTitle": "Yang sebaiknya dilakukan",
-    "planSummary": "Jalani langkah-langkah ini sebelum membuat latihan lebih sulit atau lebih lama.",
     "breadcrumbHome": "Beranda",
     "breadcrumbLearn": "Belajar",
     "eyebrow": "Panduan catur sederhana",

@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "अक्सर पूछे जाने वाले सवाल",
-    "whatChangesTitle": "सबसे पहले क्या सुधरता है",
-    "startHereSummary": "ये कदम आप आज ही आज़मा सकते हैं।",
-    "drillsSummary": "हर अभ्यास आपको सीखी बात सीधे Memory Chess में आज़माने देता है।",
-    "comparisonColumns": {
-      "situation": "स्थिति",
-      "before": "अभ्यास से पहले",
-      "after": "अभ्यास के बाद"
-    },
-    "mistakesTitle": "आम ग़लतियाँ जिनसे बचें",
-    "whatToDoInsteadTitle": "इसके बजाय क्या करें",
-    "planSummary": "अभ्यास को कठिन या लंबा करने से पहले ये कदम पूरे करें।",
     "breadcrumbHome": "होम",
     "breadcrumbLearn": "सीखें",
     "eyebrow": "आसान शतरंज गाइड",

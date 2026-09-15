@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "FAQ",
-    "whatChangesTitle": "What improves first",
-    "startHereSummary": "You can try these steps today.",
-    "drillsSummary": "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
-    "comparisonColumns": {
-      "situation": "Situation",
-      "before": "Before practice",
-      "after": "After practice"
-    },
-    "mistakesTitle": "Common mistakes to avoid",
-    "whatToDoInsteadTitle": "What to do instead",
-    "planSummary": "Follow these steps before making the practice harder or longer.",
     "breadcrumbHome": "Home",
     "breadcrumbLearn": "Learn",
     "eyebrow": "Simple chess guide",

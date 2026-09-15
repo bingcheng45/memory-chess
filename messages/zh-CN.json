@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "常见问题",
-    "whatChangesTitle": "最先提升的是什么",
-    "startHereSummary": "这些步骤今天就能试。",
-    "drillsSummary": "每个练习都能让你把学到的内容直接用在 Memory Chess 里。",
-    "comparisonColumns": {
-      "situation": "情况",
-      "before": "练习前",
-      "after": "练习后"
-    },
-    "mistakesTitle": "常见的错误",
-    "whatToDoInsteadTitle": "应该怎么做",
-    "planSummary": "在把练习变难或变长之前，先走完这几步。",
     "breadcrumbHome": "首页",
     "breadcrumbLearn": "学习",
     "eyebrow": "简明国际象棋指南",

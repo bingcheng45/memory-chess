@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "Sık sorulan sorular",
-    "whatChangesTitle": "Önce ne gelişir",
-    "startHereSummary": "Bu adımları bugün deneyebilirsin.",
-    "drillsSummary": "Her alıştırma, öğrendiğini doğrudan Memory Chess’te uygulamanı sağlar.",
-    "comparisonColumns": {
-      "situation": "Durum",
-      "before": "Çalışmadan önce",
-      "after": "Çalışmadan sonra"
-    },
-    "mistakesTitle": "Kaçınılması gereken yaygın hatalar",
-    "whatToDoInsteadTitle": "Bunun yerine ne yapmalı",
-    "planSummary": "Çalışmayı zorlaştırmadan ya da uzatmadan önce bu adımları tamamla.",
     "breadcrumbHome": "Ana sayfa",
     "breadcrumbLearn": "Öğren",
     "eyebrow": "Sade satranç rehberi",

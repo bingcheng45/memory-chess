@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "Häufige Fragen",
-    "whatChangesTitle": "Was sich zuerst verbessert",
-    "startHereSummary": "Diese Schritte kannst du heute ausprobieren.",
-    "drillsSummary": "Jede Übung lässt dich das Gelernte direkt in Memory Chess anwenden.",
-    "comparisonColumns": {
-      "situation": "Situation",
-      "before": "Vor dem Training",
-      "after": "Nach dem Training"
-    },
-    "mistakesTitle": "Häufige Fehler, die du vermeiden solltest",
-    "whatToDoInsteadTitle": "Was du stattdessen tun solltest",
-    "planSummary": "Arbeite diese Schritte ab, bevor du das Training schwerer oder länger machst.",
     "breadcrumbHome": "Startseite",
     "breadcrumbLearn": "Lernen",
     "eyebrow": "Einfacher Schach-Leitfaden",

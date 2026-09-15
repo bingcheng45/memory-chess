@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "よくあるご質問",
-    "whatChangesTitle": "最初に伸びるところ",
-    "startHereSummary": "今日から試せるステップです。",
-    "drillsSummary": "どのドリルも、学んだことをそのまま Memory Chess で練習できます。",
-    "comparisonColumns": {
-      "situation": "場面",
-      "before": "練習前",
-      "after": "練習後"
-    },
-    "mistakesTitle": "よくある失敗",
-    "whatToDoInsteadTitle": "代わりにやること",
-    "planSummary": "練習を難しくしたり長くしたりする前に、この手順を踏んでください。",
     "breadcrumbHome": "ホーム",
     "breadcrumbLearn": "学ぶ",
     "eyebrow": "やさしいチェスガイド",

@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "자주 묻는 질문",
-    "whatChangesTitle": "가장 먼저 좋아지는 것",
-    "startHereSummary": "오늘 바로 해볼 수 있는 단계입니다.",
-    "drillsSummary": "모든 훈련은 배운 내용을 Memory Chess에서 바로 연습하게 해 줍니다.",
-    "comparisonColumns": {
-      "situation": "상황",
-      "before": "훈련 전",
-      "after": "훈련 후"
-    },
-    "mistakesTitle": "흔히 하는 실수",
-    "whatToDoInsteadTitle": "대신 이렇게 하세요",
-    "planSummary": "훈련을 더 어렵거나 길게 만들기 전에 이 단계를 먼저 거치세요.",
     "breadcrumbHome": "홈",
     "breadcrumbLearn": "학습",
     "eyebrow": "쉬운 체스 가이드",

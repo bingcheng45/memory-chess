@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "Частые вопросы",
-    "whatChangesTitle": "Что улучшается первым",
-    "startHereSummary": "Эти шаги можно попробовать уже сегодня.",
-    "drillsSummary": "Каждое упражнение даёт отработать урок прямо в Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Ситуация",
-      "before": "До тренировки",
-      "after": "После тренировки"
-    },
-    "mistakesTitle": "Частые ошибки, которых стоит избегать",
-    "whatToDoInsteadTitle": "Что делать вместо этого",
-    "planSummary": "Пройдите эти шаги, прежде чем усложнять или удлинять тренировку.",
     "breadcrumbHome": "Главная",
     "breadcrumbLearn": "Обучение",
     "eyebrow": "Простое руководство по шахматам",

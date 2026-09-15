@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "Vanliga frågor",
-    "whatChangesTitle": "Vad som förbättras först",
-    "startHereSummary": "De här stegen kan du testa redan i dag.",
-    "drillsSummary": "Varje övning låter dig träna lektionen direkt i Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Situation",
-      "before": "Före träning",
-      "after": "Efter träning"
-    },
-    "mistakesTitle": "Vanliga misstag att undvika",
-    "whatToDoInsteadTitle": "Gör så här i stället",
-    "planSummary": "Gå igenom de här stegen innan du gör träningen svårare eller längre.",
     "breadcrumbHome": "Start",
     "breadcrumbLearn": "Lär dig",
     "eyebrow": "Enkel schackguide",

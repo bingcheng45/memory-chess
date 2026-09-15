@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "Întrebări frecvente",
-    "whatChangesTitle": "Ce se îmbunătățește primul",
-    "startHereSummary": "Poți încerca acești pași chiar azi.",
-    "drillsSummary": "Fiecare exercițiu îți permite să aplici lecția direct în Memory Chess.",
-    "comparisonColumns": {
-      "situation": "Situație",
-      "before": "Înainte de antrenament",
-      "after": "După antrenament"
-    },
-    "mistakesTitle": "Greșeli frecvente de evitat",
-    "whatToDoInsteadTitle": "Ce să faci în schimb",
-    "planSummary": "Parcurge acești pași înainte să faci antrenamentul mai greu sau mai lung.",
     "breadcrumbHome": "Acasă",
     "breadcrumbLearn": "Învață",
     "eyebrow": "Ghid de șah pe înțelesul tuturor",

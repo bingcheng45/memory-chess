@@ -419,17 +419,6 @@
   },
   "learnArticle": {
     "faqLabel": "Gyakori kérdések",
-    "whatChangesTitle": "Ami először javul",
-    "startHereSummary": "Ezeket a lépéseket már ma kipróbálhatod.",
-    "drillsSummary": "Minden gyakorlat engedi, hogy a tanultakat rögtön a Memory Chessben alkalmazd.",
-    "comparisonColumns": {
-      "situation": "Helyzet",
-      "before": "Gyakorlás előtt",
-      "after": "Gyakorlás után"
-    },
-    "mistakesTitle": "Gyakori hibák, amiket érdemes elkerülni",
-    "whatToDoInsteadTitle": "Ehelyett ezt csináld",
-    "planSummary": "Vedd végig ezeket a lépéseket, mielőtt nehezebbé vagy hosszabbá tennéd a gyakorlást.",
     "breadcrumbHome": "Kezdőlap",
     "breadcrumbLearn": "Tanulás",
     "eyebrow": "Egyszerű sakkútmutató",

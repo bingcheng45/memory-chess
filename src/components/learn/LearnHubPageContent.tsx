@@ -12,8 +12,7 @@ import type { LearnGoal } from "@/lib/seo/learn";
 const SITE_URL = "https://thememorychess.com";
 const HUB_URL = `${SITE_URL}/learn`;
 
-// `id` keys into the `learnHub.paths` messages; `href` is language-neutral.
-// Slugs stay English across every locale so inbound links keep working.
+// `id` keys into the `learnHub.paths` messages.
 const QUICK_STARTS = [
   { id: "newToChess", href: "/learn/how-to-get-better-at-chess-for-beginners" },
   { id: "missingThreats", href: "/learn/how-to-stop-blundering-in-chess" },

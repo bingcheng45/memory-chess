@@ -52,7 +52,3 @@ export const LEARN_SLUGS = LEARN_GUIDES.map((guide) => guide.slug);
 
 /** The most recent guide edit, which is when the hub last changed. */
 export const LEARN_LAST_UPDATED = LEARN_GUIDES.map((guide) => guide.updatedAt).sort().at(-1)!;
-
-export function isLearnSlug(slug: string): boolean {
-  return LEARN_SLUGS.includes(slug);
-}

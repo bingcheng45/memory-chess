@@ -394,8 +394,8 @@
       },
       "missingThreats": {
         "label": "Missing simple threats",
-        "title": "Train your whole-board scan",
-        "description": "Use a short checking routine to notice loose pieces, attacks, and danger before you move."
+        "title": "Stop blundering pieces",
+        "description": "Run a five-step scan for checks, captures, threats and loose pieces before each move, and keep a blunder tally per game."
       },
       "losingPosition": {
         "label": "Losing the position in your head",

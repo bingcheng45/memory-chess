@@ -21,7 +21,7 @@ const guide: LearnGuide = {
     "Find the one move that decided the game. Set that position up from memory, write one sentence on why the move was bad, then run the engine on that position only. Label the mistake and close the game.",
   keyTakeaways: [
     "One decisive move per game. Ignore the rest.",
-    "Write your reason before the engine shows its line, or the engine's reason replaces yours.",
+    "Write your reason before the engine shows its line, or the engine's reason can replace yours.",
     "Label it never looked, looked and misjudged, or knew and rushed, and let the count choose your training.",
   ],
   whoThisIsFor: [
@@ -73,7 +73,7 @@ const guide: LearnGuide = {
           items: [
             "Never looked. Your queen went to h5 and the knight on f6 took it. The knight was there the whole time and your eyes never went to it.",
             "Looked and misjudged. You saw the knight on f6 but counted it as pinned by your bishop on g5. It was pinned only to the queen on d8, and a pinned piece can still move.",
-            "Knew and rushed. You knew h5 was risky, had 30 seconds on the clock, and played it anyway. This is a clock problem, fixed by playing longer games rather than by studying.",
+            "Knew and rushed. You knew h5 was risky, had 30 seconds on the clock, and played it anyway. Treat this as a clock problem, and play longer games before you study more.",
           ],
         },
         {

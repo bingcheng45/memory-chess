@@ -18,7 +18,7 @@ const guide: LearnGuide = {
   ctaLabel: "Play 6 pieces with 10 seconds to look",
   quickAnswer: "Before every move, run one scan in a fixed order. Ask what the last move attacks, what checks, captures and threats your opponent has, which of your pieces is loose, and what your move stops guarding.",
   keyTakeaways: [
-    "A one-move blunder happens when the board in your head and the board on the table disagree.",
+    "Treat a one-move blunder as a sign that the board in your head and the board on the table disagree.",
     "A loose piece is an easy target, so list your loose pieces before your opponent's check finds one.",
     "Keep a blunder tally per game, because rating also moves with openings, endgames and pairings.",
   ],
@@ -40,11 +40,11 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "A puzzle tells you two things before you look. There is a tactic, and it is your move. A game tells you neither, so a fork you would find in a puzzle walks past unseen.",
-            "A one-move blunder needs no deep line to avoid. It happens when the board in your head and the board on the table disagree, and you play a move that only works on the wrong one.",
-            "The disagreement takes three common shapes. The first is the phantom defender, a piece that looks like a guard and cannot act as one.",
+            "A puzzle tells you two things before you look. There is a tactic, and it is your move. A game tells you neither, so a fork you would find in a puzzle can walk past unseen.",
+            "A one-move blunder needs no deep line to avoid. Treat it as a sign that the board in your head and the board on the table disagree. You played a move that only works on the wrong one.",
+            "This guide covers three shapes the disagreement can take. The first is the phantom defender, a piece that looks like a guard and cannot act as one.",
             "Put a White bishop on b5, a Black knight on c6 and the Black king on e8, with d7 empty. The knight seems to guard e5, but it is pinned and cannot legally capture there.",
-            "The second is the forgotten piece, a bishop or rook that has not moved for many moves, so your eye stopped returning to it.",
+            "The second is the forgotten piece, a bishop or rook that has not moved for many moves, so it is easy to stop looking at.",
             "The third is the abandoned job. If the pawn on d2 is the only guard of your knight on c3, pushing d2-d4 leaves the knight loose although the knight never moved.",
           ],
         },
@@ -57,7 +57,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Board vision is less a talent than a scan run in the same order before every move. A fixed order means nothing depends on where your eyes happen to land.",
+            "Treat board vision as a scan run in the same order before every move, not as a talent. A fixed order means nothing depends on where your eyes happen to land.",
           ],
         },
         {
@@ -178,7 +178,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "On a low clock the full scan will not fit, so keep step one and drop the rest. A piece that just moved has fresh targets, and step one also catches any line it opened.",
-            "This is also why the advice to play slower fails on its own. Extra time with no question to answer goes into admiring the move you already wanted.",
+            "This is also why the advice to play slower fails on its own. Extra time is only as useful as the question you spend it on.",
           ],
         },
       ],

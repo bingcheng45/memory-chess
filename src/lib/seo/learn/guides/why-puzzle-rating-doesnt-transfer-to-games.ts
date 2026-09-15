@@ -76,11 +76,11 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "By move 25 your picture of the board is not the board. It is the board as it was a few moves ago, with the recent changes patched in. The patches are where the blunders live.",
+            "By move 25 your picture of the board can lag behind the board. It can be the board as it was a few moves ago, with the recent changes patched in, so check those changes first.",
             "A puzzle never has this problem. The diagram is the position, complete and current. Your puzzle rating has never once been tested on a stale board.",
             "Strong players recall a briefly seen position in chunks, familiar groups of pieces stored as one unit. They rebuild the board from those groups rather than piece by piece.",
             "Memory Chess has a hard preset of 12 pieces with 8 seconds to look. That is two thirds of a second per piece.",
-            "Try saying white knight c3 twelve times in eight seconds. Reading piece by piece runs out of time, so the round only works if you see groups.",
+            "Try saying white knight c3 twelve times in eight seconds. That leaves no time to spare, so try seeing groups instead.",
           ],
         },
         {

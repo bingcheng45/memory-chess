@@ -23,7 +23,7 @@ const guide: LearnGuide = {
     "A line fails at the piece you stopped seeing, and a piece that never moved is easy to stop seeing.",
     "Two candidate moves at two plies is enough work for one decision.",
     "Ask who can capture on each landing square before you imagine the next move.",
-    "Rebuilding a position from an empty board is the same act as holding one while you calculate.",
+    "Rebuilding a position from an empty board practises holding one with nothing in front of you, which calculation also asks for.",
   ],
   whoThisIsFor: [
     "Players who imagine a move and then cannot say where the defenders are.",
@@ -86,8 +86,8 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Memory Chess makes you do the hard half of calculation on its own. A position appears for a fixed number of seconds, then the board clears, and you rebuild it while the clock runs.",
-            "There is no time limit on the rebuild, but nothing on the empty board reminds you of the queen on e6. That is exactly your state one move into a line, and a round trains it directly.",
+            "A Memory Chess round asks for one part of calculation on its own. A position appears for a fixed number of seconds, then the board clears, and you rebuild it while the clock runs.",
+            "There is no time limit on the rebuild, but nothing on the empty board reminds you of the queen on e6. One move into a line you are in the same spot, holding pieces the board no longer shows, so a round is a way to practise it.",
             "The positions are made fresh each round and are random rather than taken from games, so a round does not teach you which moves to look at. It trains holding the picture, nothing more.",
           ],
         },
@@ -130,8 +130,8 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Two. Not because two is a special number but because the third line is the one that overwrites the first.",
-            "Spend working memory on defenders, not on more candidates. Spread it across five candidate moves, and none of them gets the check for defenders.",
+            "Two. Every extra line is one more picture to keep apart from the base position, so start with the fewest that still give you a comparison.",
+            "Spend working memory on defenders, not on more candidates. Five candidate moves means five defender checks, one for every landing square.",
             "Add a third candidate only when both of the first two fail for a reason you can state. Keep the depth at two plies until the base position stops drifting.",
             "When the two moves are both checks or both captures, the comparison is quick, so look for a missed defender before a missed idea.",
           ],
@@ -180,7 +180,7 @@ const guide: LearnGuide = {
     {
       question: "How many moves ahead should a beginner calculate?",
       answer:
-        "Two plies, your move and the reply, checked for defenders each time. Depth comes from holding the position steady, not from ambition.",
+        "Two plies, your move and the reply, checked for defenders each time. Add depth only once the position stays steady at two plies.",
     },
     {
       question: "Does Memory Chess teach calculation?",

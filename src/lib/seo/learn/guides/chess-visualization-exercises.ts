@@ -128,12 +128,12 @@ const guide: LearnGuide = {
             {
               label: "Drifted piece",
               struggling: "A wrong piece one square from a dotted outline.",
-              stronger: "Say the square name out loud during the look. A named square does not drift.",
+              stronger: "Say the square name out loud during the look, so you have a name to check the placement against.",
             },
             {
               label: "Changed piece",
               struggling: "A wrong piece exactly where a piece belonged.",
-              stronger: "Cover-and-move with captures, since captures are where identities swap.",
+              stronger: "Cover-and-move with captures, since a capture changes which pieces are on the board.",
             },
             {
               label: "Phantom piece",
@@ -188,7 +188,7 @@ const guide: LearnGuide = {
     {
       question: "Does the cover-and-move drill need a real board?",
       answer:
-        "No. A diagram on paper or on a screen works, as long as you can cover it. Setting the pieces up by hand does help, because placing the e4 pawn yourself makes it harder to forget.",
+        "No. A diagram on paper or on a screen works, as long as you can cover it. Setting the pieces up by hand is worth trying, since it makes you place the e4 pawn yourself.",
     },
   ],
   relatedArticles: [
@@ -202,7 +202,7 @@ const guide: LearnGuide = {
     },
     {
       slug: "how-to-see-the-whole-board-in-chess",
-      reason: "For the edge pieces that vanish first.",
+      reason: "A sweep that starts with the pieces on the edges.",
     },
   ],
   sources: [],

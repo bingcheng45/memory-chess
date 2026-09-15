@@ -18,8 +18,8 @@ const guide: LearnGuide = {
   ctaLabel: "Play 6 pieces with 20 seconds to look",
   quickAnswer: "Ask three questions in order on every move. What did the last move change, what do I want here, and is my move safe? Move when you can say the answer in one sentence.",
   keyTakeaways: [
-    "Moving instantly and staring for minutes are one failure, a think with no question in it.",
-    "Ask what changed before asking what you want, because a plan you already like narrows what you see.",
+    "Treat moving instantly and staring for minutes as one failure, a think with no question in it.",
+    "Ask what changed before asking what you want, because once you like a plan, it is easy to look only for it.",
     "Stop when the one-sentence reason comes out, because tired and certain can feel alike from the inside.",
   ],
   whoThisIsFor: [
@@ -34,13 +34,13 @@ const guide: LearnGuide = {
   sections: [
     {
       id: "fast-and-slow",
-      title: "Moving too fast and thinking too long are the same mistake",
+      title: "Moving too fast and thinking too long can be the same mistake",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "The instant mover and the long starer look like opposites at the board. Neither has a question to answer, so one plays whatever looks nice and the other waits for a certainty that never comes.",
-            "A routine fixes both because it gives a think a beginning and an end. The beginning is a question you answer by looking. The end is a sentence you can say.",
+            "The instant mover and the long starer look like opposites at the board. Both can be missing a question to answer, so one plays whatever looks nice and the other waits for a certainty that never comes.",
+            "A routine gives a think a beginning and an end, which both are missing. The beginning is a question you answer by looking. The end is a sentence you can say.",
             "Everything in between is short, and it is the same on move five as on move forty.",
           ],
         },
@@ -66,7 +66,7 @@ const guide: LearnGuide = {
             "Question two is to keep the pawn while developing. That aim gives 2...Nc6 and 2...d6, which both defend e5.",
             "A third move, 2...Nf6, hits the undefended pawn on e4 but leaves e5 undefended. It belongs to a different aim, counterattack, so it waits unless you change the aim on purpose.",
             "Question three passes 2...Nc6. It keeps e5 defended, and no other Black piece is attacked, so nothing hangs and the knight goes to c6.",
-            "The order is the point. Ask what you want before asking what changed, and you will see only your plan.",
+            "The order is the point. Ask what you want before asking what changed, and it is easy to see only your plan.",
           ],
         },
       ],
@@ -79,7 +79,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "You are done thinking when one sentence names the move, the aim it serves, and the safety check it passed. “Nc6, it develops and keeps e5, and nothing hangs” is that sentence.",
-            "If a full minute passes and no new candidate has appeared, play the safest developing move on your list. More staring produces the same move with less clock left.",
+            "If a full minute passes and no new candidate has appeared, play the safest developing move on your list. Staring longer with no new candidate only spends clock.",
           ],
         },
         {

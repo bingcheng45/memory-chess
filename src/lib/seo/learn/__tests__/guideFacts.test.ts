@@ -368,6 +368,7 @@ function guideFacts(): Record<string, string[]> {
       `until ${hard.pieceCount} pieces at ${hard.memorizeTime} seconds`,
       `${word(hard.pieceCount)} pieces in ${word(hard.memorizeTime)} seconds leaves two thirds of a second per piece`,
       `piece by piece, ${hard.pieceCount} pieces in ${hard.memorizeTime} seconds leaves two thirds of a second each`,
+      `in three or four chunks it leaves ${word(hard.memorizeTime / 4)} seconds or more each`,
     ],
     "how-many-chess-puzzles-a-day": [
       `one missed piece turns a ${label("perfect")} into ${band(at(5, 6))} at ${at(5, 6)} percent, and a second miss gives ${band(at(4, 6))} at ${at(4, 6)} percent`,

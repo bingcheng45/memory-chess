@@ -61,7 +61,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Look only at the piece you are moving and the square it goes to, and the rest of the board becomes a blur. A Memory Chess round trains the opposite habit, because it gives you the whole position and nothing else.",
+            "If you look only at the piece you are moving and the square it goes to, the rest of the board gets no look at all. A Memory Chess round asks for the opposite, because it gives you the whole position and nothing else.",
             "A round shows a position for a fixed number of seconds, then clears the board and asks you to rebuild it. The game counts a piece as correct only when its square, its type and its colour all match the original.",
             "Placing more pieces than the position had costs points. Put five pieces on a 4-piece round and ten points come off your accuracy, however many of the five are right.",
             "That makes the round a test of what you read, not of what you can guess.",
@@ -153,7 +153,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "A 3-minute game that lasts 40 moves leaves you under 5 seconds a move. The question takes longer than that while it is new, so blitz trains you to skip it.",
+            "A 3-minute game that lasts 40 moves leaves you under 5 seconds a move. The question can take longer than that while it is new, so blitz makes it easy to skip.",
             "Play 15 minutes with a 10-second increment, or longer. One game a day at that speed is enough for this stage.",
             "At 15+10 there is time to ask the question on every move. At 5+0 there is not. That gap is the whole reason this stage exists.",
           ],
@@ -216,9 +216,9 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Openings matter once your pieces stop disappearing for free. Until then a memorised line takes you to move ten with a position you cannot hold in your head.",
+            "Openings matter once your pieces stop disappearing for free. Until then a memorised line can take you to move ten with a position you cannot yet hold in your head.",
             "When you get there, keep it small. For white, play e4 and bring the knights out before the bishops. For black, answer e4 with e5 and d4 with d5.",
-            "Learn the reason for each move before you learn the next one. A move you can explain is one you can still find when your opponent leaves the book.",
+            "Learn the reason for each move before you learn the next one. When your opponent leaves the book, the reasons are what you still have to go on.",
           ],
         },
       ],

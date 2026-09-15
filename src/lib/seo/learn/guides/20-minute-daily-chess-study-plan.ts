@@ -91,7 +91,7 @@ const guide: LearnGuide = {
             "The medium preset in Memory Chess is 6 pieces with 10 seconds to look. Three rounds of it fit in three minutes, with a moment to read each result.",
             "After the 10 seconds the board clears. Placing has no time limit, but the clock runs from the moment the board clears until you submit.",
             "Try Again on the result screen keeps the same settings and generates a new position. The three rounds are three different boards, so none of them can be remembered from yesterday.",
-            "Naming every piece aloud makes the first thing in the session a full read of a board. The puzzles and the game block both start from that habit.",
+            "Naming every piece aloud makes the first thing in the session a full read of a board. The puzzles and the game block ask for the same full read.",
           ],
         },
         {

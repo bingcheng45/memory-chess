@@ -120,7 +120,7 @@ const guide: LearnGuide = {
             {
               title: "Same count, shorter look",
               description:
-                "4 rounds of 6 pieces, 6 seconds, about 3 minutes. The same six pieces with four seconds less to look. This tells you whether you read the board or stare at it.",
+                "4 rounds of 6 pieces, 6 seconds, about 3 minutes. The same six pieces with four seconds less to look. Compare it with the 10-second rounds to see how much those four seconds were doing.",
               duration: "About 3 minutes",
               goal: "Perfect Score in at least two of the four rounds.",
               ctaLabel: "Play 6 pieces, 6 seconds",
@@ -184,7 +184,7 @@ const guide: LearnGuide = {
             "That study used prose passages and says nothing about how long to look at a board. What follows is this guide's suggestion, not its finding: once you have the board, skip, and let the rebuild do the work.",
             "Gobet and Simon showed strong players several boards in a row, a few seconds each, and found they could still recall much of each one. They explain it by familiar chunks, not a bigger raw span.",
             "Memory Chess positions are random, so the chunks you find are geometric rather than chess-typical. A pawn pair on f2 and g2. A king tucked in a corner. Three pieces on one rank.",
-            "Look for those geometric chunks as you climb from 6 pieces to 12. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four chunks it becomes manageable.",
+            "Look for those geometric chunks as you climb from 6 pieces to 12. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four chunks it leaves two seconds or more each.",
           ],
         },
       ],

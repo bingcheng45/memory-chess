@@ -18,7 +18,7 @@ const guide: LearnGuide = {
   ctaLabel: "Play 12 pieces with 8 seconds to look",
   quickAnswer: "Sweep from the edges inward before you look at your own move. Take the long diagonals, then the edge files and ranks, then trace every enemy bishop, rook and queen to its last square.",
   keyTakeaways: [
-    "The eye follows the piece that moved, and a long-range piece does its damage by standing still while a blocker moves.",
+    "It is easy to watch only the piece that moved, and a long-range piece does its damage by standing still while a blocker moves.",
     "Trace every line to the last square it reaches, because the first piece on the line may be yours and pinned.",
     "A Memory Chess position is generated with no plan behind it, so its pieces are not gathered near the kings or the centre the way a game's are.",
   ],
@@ -43,7 +43,7 @@ const guide: LearnGuide = {
             "Black has Kg8, Ra8, Rd8, Bc8, Nf6 and pawns on a7, b7, c7, e6, f7, g7 and h7.",
             "The pawn on e6 is the only piece between the bishop on a2 and f7. The diagonal runs a2, b3, c4, d5, e6 and f7.",
             "Push ...e5 for space in the centre, and Bxf7+ follows. The king cannot take back, because the knight on g5 also covers f7, so White wins a pawn with check.",
-            "Nothing about the bishop changed. A Black pawn moved, and the eye went with it. Long-range pieces win material by standing still while a blocker walks away.",
+            "Nothing about the bishop changed. Only a Black pawn moved. Long-range pieces win material by standing still while a blocker walks away.",
             "Rooks do the same more quietly. A rook can sit on h1 all game until the h-pawns are traded, and then it owns an open file without having moved.",
           ],
         },
@@ -189,7 +189,7 @@ const guide: LearnGuide = {
     },
     {
       slug: "chess-coordinates-practice",
-      reason: "Makes square names automatic, so naming the last square of a line stops slowing the sweep.",
+      reason: "Drills for naming squares without counting, which naming the last square of a line relies on.",
     },
     {
       slug: "how-to-stop-blundering-in-chess",

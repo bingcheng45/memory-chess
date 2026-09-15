@@ -77,7 +77,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The pass mark is six perfect rounds in a row, with both square colours right as well. Do not skip the colours. They save a blindfold game later, because a bishop only ever lives on one colour.",
+            "The pass mark is six perfect rounds in a row, with both square colours right as well. Do not skip the colours. They give you a check in a blindfold game later, because a bishop only ever lives on one colour.",
             "If you cannot name a square's colour without thinking, do the coordinates guide first and come back.",
           ],
         },
@@ -142,7 +142,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The pass mark is two clean replays of ten moves on different days. Clean means every piece on its square, not most of them. A single misplaced pawn in a covered replay becomes a lost piece in a blind game.",
+            "The pass mark is two clean replays of ten moves on different days. Clean means every piece on its square, not most of them. A single misplaced pawn in a covered replay can become a lost piece in a blind game.",
           ],
         },
       ],
@@ -207,7 +207,7 @@ const guide: LearnGuide = {
     {
       question: "What if I picture the board from Black's side?",
       answer:
-        "Pick one orientation and keep it, even when you play Black. White at the bottom matches the way diagrams print, which makes it the easier default. Switching mid-game is the quickest way to lose a bishop.",
+        "Pick one orientation and keep it, even when you play Black. White at the bottom matches the way diagrams print, which makes it the easier default. Switching mid-game is an easy way to lose track of a bishop.",
     },
   ],
   relatedArticles: [

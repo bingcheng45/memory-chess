@@ -22,8 +22,8 @@ const guide: LearnGuide = {
     "Learn a pattern as a shape with squares, not as a name. Set it up, clear the board, rebuild it, then shift it one file and check whether the idea still works.",
   keyTakeaways: [
     "A fork on c7 is three squares, e8, a8 and c7, plus one condition: nothing black can take on c7.",
-    "Rebuilding a shape from an empty board is what turns a puzzle you solved into a shape you notice.",
-    "Memory Chess positions are random, so they train reading clusters fast, not tactics. Use them for the reading.",
+    "Rebuild each shape from an empty board until you can place it without the list, then look for it in your own games.",
+    "Memory Chess positions are random, so use them to practise reading clusters fast, not to learn tactics.",
   ],
   whoThisIsFor: [
     "Players with a decent puzzle rating who still walk into forks in their own games.",
@@ -84,7 +84,7 @@ const guide: LearnGuide = {
           items: [
             "Set the shape up from the list above and look at it for ten seconds. Say the squares out loud: e8, a8, d5, c7.",
             "Clear the board completely, kings included, and set it up again from memory. Check against the list. A piece on the wrong square is wrong, the same rule the game uses.",
-            "Shift the whole shape one file to the right: king f8, rook b8, knight e5, fork square d7. Does the knight still hit both? It does, and saying why makes the geometry yours.",
+            "Shift the whole shape one file to the right: king f8, rook b8, knight e5, fork square d7. Does the knight still hit both? It does. Say why out loud before you go on.",
             "Break the condition. Add a black bishop on c8 and ask whether the fork still works. The bishop takes on d7, so it does not, and now you know what to look for in a game.",
             "Only then open your last three games and look for the shape, even where it never happened. A knight two jumps from a fork square is the shape in its early form.",
           ],
@@ -99,7 +99,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Memory Chess positions are generated fresh for each round and are not taken from games. A round is not built to show you a back-rank mate, so it will not teach you that pattern.",
-            "What it trains is the act underneath pattern recognition, reading a cluster of pieces as one unit. Twenty pieces in five seconds is a quarter of a second per piece, so reading clusters gets you further than reading square by square.",
+            "What you can practise on it is reading a cluster of pieces as one unit. Twenty pieces in five seconds is a quarter of a second per piece, too little to read square by square, so try reading clusters.",
             "The generator draws piece types in the proportions a real set holds: eight pawns, two knights, two bishops, two rooks and one queen per side. Pawns are the most common piece you see and queens the rarest.",
             "That is a clue you can use. On a 12-piece board the ten pieces beyond the kings are split five and five, and about half of them are pawns. Count the pawn chains first, then the odd pieces.",
             "Two more rules shrink the search. A side's two bishops never share a square colour, and no pawn ever stands on the first or eighth rank.",
@@ -139,7 +139,7 @@ const guide: LearnGuide = {
           paragraphs: [
             "Gobet and Simon compared Kasparov's results in simultaneous displays, where he had a fraction of his usual time per move, with his results in normal games. The drop was small.",
             "They read that as evidence that recognising positions, rather than searching deeply, carries most of a strong player's strength.",
-            "For a beginner the lesson is not to skip calculation. It is that the shapes you can rebuild from memory are the ones you notice in time to calculate at all.",
+            "For a beginner the lesson is not to skip calculation. It is to rebuild the shapes from memory, so you know what to look for before you calculate.",
           ],
         },
       ],

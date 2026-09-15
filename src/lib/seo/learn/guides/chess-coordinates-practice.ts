@@ -20,7 +20,7 @@ const guide: LearnGuide = {
   quickAnswer:
     "Counting to a square is the habit to break. Learn eight anchor squares and the colour rule, then play rounds with the board labels on while naming every square, then with the labels hidden.",
   keyTakeaways: [
-    "A square you recognise takes one look. A square you count takes two, and the second one is where you lose the thread.",
+    "A square you count takes two lookups, the file and then the rank. A square you recognise takes one.",
     "The board labels in Memory Chess can be hidden from the settings page, and the result screen always shows them.",
     "Square colour follows one rule you can check in your head.",
     "A knight always lands on the other colour, so the colour rule checks every knight path you name.",
@@ -41,9 +41,9 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "When a commentator says Nd5 and you find d5 by counting four files across and five ranks up, you have done two lookups. The move is gone by the time you finish. The goal is one lookup, seeing d5 the way you see a word, whole, without spelling it.",
+            "When a commentator says Nd5 and you find d5 by counting four files across and five ranks up, you have done two lookups. By the time you finish, the commentator may be on the next move. The goal is one lookup, seeing d5 the way you see a word, whole, without spelling it.",
             "That difference is the whole skill. Nothing about coordinates is hard to understand. What takes practice is making the name and the square arrive together, so you stop translating.",
-            "The drills below force the translation to happen out loud until it stops being a step.",
+            "The drills below have you say the translation out loud, every square, every round.",
           ],
         },
       ],
@@ -195,7 +195,7 @@ const guide: LearnGuide = {
   relatedArticles: [
     {
       slug: "chess-visualization-exercises",
-      reason: "Once squares have names, the picture you hold in a line stops drifting.",
+      reason: "Uses square names to check the picture you hold in a line.",
     },
     {
       slug: "blindfold-chess-training-for-beginners",

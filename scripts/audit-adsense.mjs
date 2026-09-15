@@ -395,15 +395,13 @@ export const RULES = [
         if (dangling.length) {
           messages.push(`${dangling.length} hreflang targets not in the sitemap, e.g. ${dangling[0].lang} ${dangling[0].href}`);
         }
-        if (page.hreflang.length && page.headerHreflang.length) {
-          const html = new Map(page.hreflang.map((alt) => [alt.lang, alternateUrl(alt.href)]));
-          const header = new Map(page.headerHreflang.map((alt) => [alt.lang, alternateUrl(alt.href)]));
-          const disagreeing = [...new Set([...html.keys(), ...header.keys()])].filter((lang) => html.get(lang) !== header.get(lang));
-          if (disagreeing.length) {
-            messages.push(
-              `Link header and HTML hreflang disagree: ${disagreeing.map((lang) => `${lang} header ${header.get(lang) ?? "none"} vs HTML ${html.get(lang) ?? "none"}`).join("; ")}`,
-            );
-          }
+        const html = new Map(page.hreflang.map((alt) => [alt.lang, alternateUrl(alt.href)]));
+        const header = new Map(page.headerHreflang.map((alt) => [alt.lang, alternateUrl(alt.href)]));
+        const disagreeing = [...new Set([...html.keys(), ...header.keys()])].filter((lang) => html.get(lang) !== header.get(lang));
+        if (disagreeing.length) {
+          messages.push(
+            `Link header and HTML hreflang disagree: ${disagreeing.map((lang) => `${lang} header ${header.get(lang) ?? "none"} vs HTML ${html.get(lang) ?? "none"}`).join("; ")}`,
+          );
         }
         if (messages.length) problems.set(page.url, messages);
       }

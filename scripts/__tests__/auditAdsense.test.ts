@@ -111,11 +111,25 @@ describe("audit-adsense hreflang targets", () => {
       `<${LOCAL}/fr>; rel="alternate stylesheet"; hreflang="fr"`,
     ].join(", ");
 
-    expect(hreflangProblems(htmlAlternates, header)).toEqual([]);
+    expect(hreflangProblems("", header)).toEqual([]);
   });
 
-  it("passes when the page sends no Link header", () => {
-    expect(hreflangProblems(htmlAlternates)).toEqual([]);
+  it("passes when neither the HTML nor the Link header names alternates", () => {
+    expect(hreflangProblems("")).toEqual([]);
+  });
+
+  it("fails when the HTML names alternates and the page sends no Link header alternates", () => {
+    expect(hreflangProblems(htmlAlternates)).toEqual([
+      expect.stringContaining(`en header none vs HTML ${LOCAL}/; de header none vs HTML ${LOCAL}/de; x-default header none vs HTML ${LOCAL}/`),
+    ]);
+  });
+
+  it("fails when the Link header names alternates and the HTML names none", () => {
+    const header = linkHeader([["en", `${LOCAL}/`], ["de", `${LOCAL}/de`], ["x-default", `${LOCAL}/`]]);
+
+    expect(hreflangProblems("", header)).toEqual([
+      expect.stringContaining(`en header ${LOCAL}/ vs HTML none; de header ${LOCAL}/de vs HTML none; x-default header ${LOCAL}/ vs HTML none`),
+    ]);
   });
 
   it("fails when the Link header names a different URL for a code", () => {
@@ -139,7 +153,7 @@ describe("audit-adsense hreflang targets", () => {
   it("fails when a Link header alternate points at a page the sitemap does not list", () => {
     const header = linkHeader([["fr", `${LOCAL}/fr`]]);
 
-    expect(hreflangProblems("", header)).toEqual([expect.stringContaining(`fr ${LOCAL}/fr`)]);
+    expect(hreflangProblems("", header)).toEqual([expect.stringContaining(`fr ${LOCAL}/fr`), expect.stringContaining(`fr header ${LOCAL}/fr vs HTML none`)]);
   });
 });
 

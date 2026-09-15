@@ -107,22 +107,68 @@ function attackersOf(chess: Chess, square: Square, side: Side): Square[] {
   return chess.attackers(square, side);
 }
 
+type Claim<K extends PositionClaim["kind"]> = Extract<PositionClaim, { kind: K }>;
+
+const holds = (ok: boolean, detail: string) => (ok ? null : detail);
+
+function noCheckFailure(chess: Chess): string | null {
+  const checked = (["w", "b"] as const).filter((side) =>
+    sideSquares(chess, side).some(
+      (square) => chess.get(square)?.type === "k" && chess.isAttacked(square, other(side)),
+    ),
+  );
+  return holds(checked.length === 0, `king in check: ${checked.join()}`);
+}
+
+function repliesFailure(chess: Chess, claim: Claim<"replies">): string | null {
+  const replies = chess.moves();
+  const nonKing = replies.filter((move) => !move.startsWith("K")).map(withoutMark);
+  if (!sameSet(nonKing, claim.nonKing)) return `non-king replies: ${nonKing.join(" ") || "none"}`;
+  const broken = replies.filter((reply) => {
+    const after = new Chess(chess.fen(), { skipValidation: true });
+    after.move(reply);
+    if (!hasMove(after, claim.then)) return true;
+    if (!claim.undefended) return false;
+    const owner = after.get(claim.undefended)?.color;
+    return !owner || attackersOf(after, claim.undefended, owner).length > 0;
+  });
+  return holds(broken.length === 0, `fails after ${broken.join(" ")}`);
+}
+
+function materialFailure(chess: Chess, claim: Claim<"material">): string | null {
+  const types = (side: Side) =>
+    sideSquares(chess, side)
+      .map((square) => chess.get(square)!.type)
+      .sort()
+      .join("");
+  return holds(types("w") === claim.white && types("b") === claim.black, `white ${types("w")}, black ${types("b")}`);
+}
+
+function attacksFailure(chess: Chess, claim: Claim<"attacks">): string | null {
+  const color = chess.get(claim.from)?.color;
+  if (!color) return `no piece on ${claim.from}`;
+  const missed = claim.squares.filter((square) => !attackersOf(chess, square, color).includes(claim.from));
+  return holds(missed.length === 0, `${claim.from} does not attack ${missed.join()}`);
+}
+
+function reachFailure(chess: Chess, claim: Claim<"reach">): string | null {
+  const color = chess.get(claim.square)?.color;
+  if (!color) return `no piece on ${claim.square}`;
+  const found = SQUARES.filter(
+    (square) => square !== claim.square && attackersOf(chess, square, color).includes(claim.square),
+  );
+  return holds(sameSet(found, claim.squares), `${claim.square} reaches ${found.join()}`);
+}
+
 /** Returns what is wrong with the claim, or null when it holds. */
 function failure(chess: Chess, claim: PositionClaim): string | null {
-  const holds = (ok: boolean, detail: string) => (ok ? null : detail);
   switch (claim.kind) {
     case "pieceCount": {
       const count = SQUARES.filter((square) => chess.get(square)).length;
       return holds(count === claim.count, `${count} pieces, not ${claim.count}`);
     }
-    case "noCheck": {
-      const checked = (["w", "b"] as const).filter((side) =>
-        sideSquares(chess, side).some(
-          (square) => chess.get(square)?.type === "k" && chess.isAttacked(square, other(side)),
-        ),
-      );
-      return holds(checked.length === 0, `king in check: ${checked.join()}`);
-    }
+    case "noCheck":
+      return noCheckFailure(chess);
     case "check":
       return holds(chess.inCheck(), "side to move is not in check");
     case "mate":
@@ -135,12 +181,8 @@ function failure(chess: Chess, claim: PositionClaim): string | null {
       return holds(hasMove(chess, claim.move), `${claim.move} is illegal; moves ${chess.moves().join(" ")}`);
     case "illegal":
       return holds(!hasMove(chess, claim.move), `${claim.move} is legal`);
-    case "attacks": {
-      const color = chess.get(claim.from)?.color;
-      if (!color) return `no piece on ${claim.from}`;
-      const missed = claim.squares.filter((square) => !attackersOf(chess, square, color).includes(claim.from));
-      return holds(missed.length === 0, `${claim.from} does not attack ${missed.join()}`);
-    }
+    case "attacks":
+      return attacksFailure(chess, claim);
     case "attackers": {
       const found = attackersOf(chess, claim.square, claim.side);
       return holds(sameSet(found, claim.from), `${claim.side} attackers of ${claim.square}: ${found.join() || "none"}`);
@@ -153,39 +195,12 @@ function failure(chess: Chess, claim: PositionClaim): string | null {
       const moves = chess.moves({ square: claim.square });
       return holds(moves.length === 0, `${claim.square} can play ${moves.join(" ")}`);
     }
-    case "replies": {
-      const replies = chess.moves();
-      const nonKing = replies.filter((move) => !move.startsWith("K")).map(withoutMark);
-      if (!sameSet(nonKing, claim.nonKing)) return `non-king replies: ${nonKing.join(" ") || "none"}`;
-      const broken = replies.filter((reply) => {
-        const after = new Chess(chess.fen(), { skipValidation: true });
-        after.move(reply);
-        if (!hasMove(after, claim.then)) return true;
-        if (!claim.undefended) return false;
-        const owner = after.get(claim.undefended)?.color;
-        return !owner || attackersOf(after, claim.undefended, owner).length > 0;
-      });
-      return holds(broken.length === 0, `fails after ${broken.join(" ")}`);
-    }
-    case "material": {
-      const types = (side: Side) =>
-        sideSquares(chess, side)
-          .map((square) => chess.get(square)!.type)
-          .sort()
-          .join("");
-      return holds(
-        types("w") === claim.white && types("b") === claim.black,
-        `white ${types("w")}, black ${types("b")}`,
-      );
-    }
-    case "reach": {
-      const color = chess.get(claim.square)?.color;
-      if (!color) return `no piece on ${claim.square}`;
-      const found = SQUARES.filter(
-        (square) => square !== claim.square && attackersOf(chess, square, color).includes(claim.square),
-      );
-      return holds(sameSet(found, claim.squares), `${claim.square} reaches ${found.join()}`);
-    }
+    case "replies":
+      return repliesFailure(chess, claim);
+    case "material":
+      return materialFailure(chess, claim);
+    case "reach":
+      return reachFailure(chess, claim);
     case "squareColour": {
       const wrong = claim.squares.filter((square) => chess.squareColor(square) !== claim.colour);
       return holds(wrong.length === 0, `not ${claim.colour}: ${wrong.join()}`);

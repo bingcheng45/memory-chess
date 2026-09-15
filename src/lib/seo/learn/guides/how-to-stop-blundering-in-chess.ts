@@ -42,7 +42,7 @@ const guide: LearnGuide = {
           paragraphs: [
             "A puzzle tells you two things before you look. There is a tactic, and it is your move. A game tells you neither, so a fork you would find in a puzzle can walk past unseen.",
             "A one-move blunder needs no deep line to avoid. It is a move that works on the board in your head but not on the board on the table.",
-            "This guide covers three shapes the disagreement can take. The first is the phantom defender, a piece that looks like a guard and cannot act as one.",
+            "This guide covers three ways the two boards can differ. The first is the phantom defender, a piece that looks like a guard and cannot act as one.",
             "Put a White bishop on b5, a Black knight on c6 and the Black king on e8, with d7 empty. The knight seems to guard e5, but it is pinned and cannot legally capture there.",
             "The second is the forgotten piece, a bishop or rook that has not moved for many moves, so it is easy to stop looking at.",
             "The third is the abandoned job. If the pawn on d2 is the only guard of your knight on c3, pushing d2-d4 leaves the knight loose although the knight never moved.",

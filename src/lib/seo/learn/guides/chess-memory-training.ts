@@ -96,13 +96,14 @@ const guide: LearnGuide = {
     {
       id: "ladder-six-to-twelve",
       title: "The ladder from 6 pieces to 12",
-      summary: "Each rung is a round you can open from its card. Play the rounds of one rung back to back, then read the promotion rule below.",
+      summary: "The first card is where you climb from. The other two are one-off checks against harder settings, and the promotion rule below sets the pace of the climb.",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "If you have never played, one round of the 2-piece preset first. It is the two kings and nothing else, and it exists to teach the controls: pick a type and colour, tap a square, tap again to remove.",
+            "If you have never played, start with one round of the 2-piece preset. It is the two kings and nothing else, and it exists to teach the controls: pick a type and colour, tap a square, tap again to remove.",
             "After that the 2-piece preset has nothing left to teach, so the ladder starts at 6.",
+            "Only the first card below is a rung. The other two are one round each at settings you are not climbing yet, one shorter look and one larger count, so you know what is ahead. The climb itself follows the promotion rule: two pieces at a time, and the look only once the count is stable.",
           ],
         },
         {

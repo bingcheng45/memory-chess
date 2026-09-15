@@ -399,7 +399,7 @@ function guideFacts(): Record<string, string[]> {
       `a hard preset of ${hard.pieceCount} pieces with ${hard.memorizeTime} seconds to look`,
     ],
     "how-to-see-the-whole-board-in-chess": [
-      `the ${hard.pieceCount}-piece, ${hard.memorizeTime}-second preset`,
+      `a ${hard.pieceCount}-piece board`,
     ],
     "20-minute-daily-chess-study-plan": [
       `the medium preset in memory chess is ${medium.pieceCount} pieces with ${medium.memorizeTime} seconds to look`,

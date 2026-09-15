@@ -50,7 +50,9 @@ describe("buildLearnPageMetadata", () => {
     const cardUrl =
       "https://thememorychess.com/learn/how-to-stop-blundering-in-chess/opengraph-image";
 
-    expect(openGraph.publishedTime).toBe("2026-03-06T00:00:00.000Z");
+    expect(openGraph.publishedTime).toBe(
+      pageFor("how-to-stop-blundering-in-chess").publishedAt,
+    );
     expect(openGraph.modifiedTime).toBe(
       pageFor("how-to-stop-blundering-in-chess").updatedAt,
     );

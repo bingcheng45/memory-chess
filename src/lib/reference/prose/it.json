@@ -29,7 +29,7 @@
       "seconds": "{seconds}s",
       "trains": {
         "easy": "Due re e nient'altro. Insegna l'interfaccia e ti fa capire subito se riesci a tenere a mente due case sotto pressione.",
-        "medium": "Sei pezzi sono più o meno quanti la maggior parte delle persone riesce a tenere a mente senza un metodo. È il livello in cui raggruppare i pezzi comincia a ripagare.",
+        "medium": "Sei pezzi sono i due re più altri quattro pezzi, con gli stessi dieci secondi per guardare del livello a due pezzi. È il livello in cui raggruppare i pezzi comincia a ripagare.",
         "hard": "Dodici pezzi in otto secondi vanno oltre la pura capacità di memoria. Devi raggruppare i pezzi in forme invece di ricordarli uno alla volta.",
         "grandmaster": "Venti pezzi in cinque secondi fanno un quarto di secondo per pezzo. Nessuno legge una posizione così casa per casa; premia chi vede catene di pedoni e gruppi di pezzi come unità singole."
       },

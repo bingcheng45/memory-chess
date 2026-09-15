@@ -29,7 +29,7 @@
       "seconds": "{seconds}s",
       "trains": {
         "easy": "Doi regi și nimic altceva. Te învață interfața și îți arată limpede dacă poți reține două pătrate sub presiunea timpului.",
-        "medium": "Șase piese reprezintă cam atât cât rețin majoritatea oamenilor fără o metodă. Acesta este nivelul la care gruparea pieselor începe să dea roade.",
+        "medium": "Șase piese înseamnă ambii regi plus alte patru piese, cu aceleași zece secunde de privit ca la nivelul cu două piese. Acesta este nivelul la care gruparea pieselor începe să dea roade.",
         "hard": "Douăsprezece piese în opt secunde depășesc memoria brută. Trebuie să grupezi piesele în forme, nu să le reții una câte una.",
         "grandmaster": "Douăzeci de piese în cinci secunde înseamnă un sfert de secundă pentru fiecare piesă. Nimeni nu citește așa ceva pătrat cu pătrat; nivelul răsplătește capacitatea de a vedea lanțurile de pioni și grupurile de piese ca unități întregi."
       },

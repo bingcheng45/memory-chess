@@ -2,26 +2,17 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing, LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
-import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly } from "@/lib/seo/englishOnly";
+import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly, unprefixedPath } from "@/lib/seo/englishOnly";
 import { resolveRetiredLearnPath } from "@/lib/seo/learn/retired";
 
 const handleI18nRouting = createMiddleware(routing);
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 
-/** `/de/leaderboard` -> `/leaderboard`; a path without a locale prefix is returned as is. */
-function unprefixedPath(pathname: string): string {
-  const [, prefix, ...rest] = pathname.split("/");
-  return (LOCALES as readonly string[]).includes(prefix) ? `/${rest.join("/")}` : pathname;
-}
-
 /** `/de/learn/x` -> `/learn/x` when the unprefixed path is English-only. */
 function bareEnglishOnlyPath(pathname: string): string | null {
-  const [, prefix, ...rest] = pathname.split("/");
-  if (!(LOCALES as readonly string[]).includes(prefix)) return null;
-
-  const bare = `/${rest.join("/")}`;
-  return isEnglishOnlyPath(bare) ? bare : null;
+  const bare = unprefixedPath(pathname);
+  return bare !== pathname && isEnglishOnlyPath(bare) ? bare : null;
 }
 
 /**

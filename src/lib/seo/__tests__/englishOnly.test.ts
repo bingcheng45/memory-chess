@@ -1,4 +1,18 @@
-import { ENGLISH_ONLY_ROUTES, englishOnlyLinkSuffix, isEnglishOnlyPath } from "@/lib/seo/englishOnly";
+import { ENGLISH_ONLY_ROUTES, englishOnlyLinkSuffix, isEnglishOnlyPath, unprefixedPath } from "@/lib/seo/englishOnly";
+
+describe("unprefixedPath", () => {
+  it("strips a shipped locale prefix", () => {
+    expect(unprefixedPath("/de/leaderboard")).toBe("/leaderboard");
+    expect(unprefixedPath("/pt-BR/learn/x")).toBe("/learn/x");
+    expect(unprefixedPath("/ja")).toBe("/");
+  });
+
+  it("returns a path without a locale prefix as is", () => {
+    expect(unprefixedPath("/leaderboard")).toBe("/leaderboard");
+    expect(unprefixedPath("/deutsch/learn")).toBe("/deutsch/learn");
+    expect(unprefixedPath("/")).toBe("/");
+  });
+});
 
 describe("englishOnlyLinkSuffix", () => {
   it("adds nothing on an English page", () => {

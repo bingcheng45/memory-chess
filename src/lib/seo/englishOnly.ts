@@ -1,4 +1,10 @@
-import { LOCALE_LABELS } from "@/i18n/routing";
+import { LOCALE_LABELS, LOCALES } from "@/i18n/routing";
+
+/** `/de/leaderboard` -> `/leaderboard`; a path without a locale prefix is returned as is. */
+export function unprefixedPath(pathname: string): string {
+  const [, prefix, ...rest] = pathname.split("/");
+  return (LOCALES as readonly string[]).includes(prefix) ? `/${rest.join("/")}` : pathname;
+}
 
 /**
  * Routes that exist only in English, each at its bare URL.

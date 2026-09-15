@@ -1,4 +1,4 @@
-import { LOCALES } from "@/i18n/routing";
+import { unprefixedPath } from "@/lib/seo/englishOnly";
 
 /**
  * Guides merged into another guide, by old slug. Their URLs were indexed and
@@ -11,13 +11,10 @@ export const RETIRED_LEARN_SLUGS: Readonly<Record<string, string>> = {
 
 /** The live guide path for a retired guide's path, locale prefix or not; null otherwise. */
 export function resolveRetiredLearnPath(pathname: string): string | null {
-  const segments = pathname.split("/").filter(Boolean);
-  const unprefixed = (LOCALES as readonly string[]).includes(segments[0] ?? "")
-    ? segments.slice(1)
-    : segments;
+  const segments = unprefixedPath(pathname).split("/").filter(Boolean);
 
-  if (unprefixed.length !== 2 || unprefixed[0] !== "learn") return null;
+  if (segments.length !== 2 || segments[0] !== "learn") return null;
 
-  const target = RETIRED_LEARN_SLUGS[unprefixed[1]];
+  const target = RETIRED_LEARN_SLUGS[segments[1]];
   return target ? `/learn/${target}` : null;
 }

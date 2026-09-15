@@ -114,7 +114,7 @@ const guide: LearnGuide = {
               description: "Play 3 rounds of 12 pieces with 8 seconds to look. Read the board in three zones, files a to c, d and e, then f to h. Place the pieces zone by zone.",
               duration: "3 rounds, about 5 minutes",
               goal: "Hold both wings at once instead of one cluster.",
-              ctaLabel: "Play 3 rounds of 12 pieces, 8 seconds",
+              ctaLabel: "Play 12 pieces, 8 seconds",
               setup: {
                 pieceCount: 12,
                 memorizeTime: 8,

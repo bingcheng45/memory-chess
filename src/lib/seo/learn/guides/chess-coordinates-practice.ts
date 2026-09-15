@@ -110,7 +110,7 @@ const guide: LearnGuide = {
                 "Turn off Show board coordinates on the settings page, then play 5 rounds of 4 pieces with 12 seconds to look. Say the squares aloud as before and place each piece by finding its square from the nearest anchor, not from the edge.",
               duration: "About 4 minutes",
               goal: "Find a named square on a blank board without running a finger along the edge.",
-              ctaLabel: "Play 5 rounds of 4 pieces, 12 seconds",
+              ctaLabel: "Play 4 pieces, 12 seconds",
               link: { phrase: "the settings page", href: "/settings" },
               setup: {
                 pieceCount: 4,

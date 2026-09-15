@@ -109,7 +109,7 @@ const guide: LearnGuide = {
               description: "Play 5 rounds of 6 pieces with 20 seconds to look. Press Skip the moment you can name all six squares in your head. A skipped round with a miss means you stopped because you were tired.",
               duration: "5 rounds, about 5 minutes",
               goal: "Learn what certainty feels like before the clock decides for you.",
-              ctaLabel: "Play 5 rounds of 6 pieces, 20 seconds",
+              ctaLabel: "Play 6 pieces, 20 seconds",
               setup: {
                 pieceCount: 6,
                 memorizeTime: 20,

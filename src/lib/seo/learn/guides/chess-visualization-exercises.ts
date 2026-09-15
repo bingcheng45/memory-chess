@@ -15,7 +15,7 @@ const guide: LearnGuide = {
     "cover and move drill",
     "mental chess practice",
   ],
-  ctaLabel: "Play 6 pieces, 10 seconds, four rounds",
+  ctaLabel: "Play 6 pieces, 10 seconds",
   quickAnswer:
     "Find out which failure you have before you drill. One 6-piece round shows whether pieces vanish, drift a square, or change identity in your head. Then train that failure with a covered board, one move at a time.",
   keyTakeaways: [
@@ -62,7 +62,7 @@ const guide: LearnGuide = {
                 "Play 4 rounds of 6 pieces with 10 seconds to look. Place the pieces, submit, and write down what each miss was: missed, wrong square, or wrong piece.",
               duration: "About 4 minutes",
               goal: "Learn which of the three failures is yours.",
-              ctaLabel: "Play 6 pieces, 10 seconds, four rounds",
+              ctaLabel: "Play 6 pieces, 10 seconds",
               setup: {
                 pieceCount: 6,
                 memorizeTime: 10,

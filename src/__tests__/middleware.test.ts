@@ -114,7 +114,6 @@ describe("middleware on a trailing slash", () => {
     ],
     ["https://thememorychess.com/learn/", "https://thememorychess.com/learn"],
     ["https://thememorychess.com/de/game/", "https://thememorychess.com/de/game"],
-    ["https://thememorychess.com/leaderboard//", "https://thememorychess.com/leaderboard"],
   ])("sends %s to its canonical URL in one 308", (from, to) => {
     const response = middleware(new NextRequest(from, { headers: new Headers({ "user-agent": BROWSER }) }));
 

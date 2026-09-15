@@ -517,9 +517,9 @@ describe("guide round durations", () => {
       const unchecked = key in UNCHECKED_PLAN_STEPS;
       const match = step.detail.match(PLAN_ROUNDS);
       if (!match) {
-        return /\brounds?\b/i.test(step.detail) && !unchecked
-          ? [`${key}: mentions rounds but not as "N rounds of P pieces, S seconds"`]
-          : [];
+        const mentionsRounds = /\brounds?\b/i.test(step.detail);
+        if (unchecked) return mentionsRounds ? [] : [`${key}: listed as unchecked but no longer mentions rounds`];
+        return mentionsRounds ? [`${key}: mentions rounds but not as "N rounds of P pieces, S seconds"`] : [];
       }
       if (unchecked) return [`${key}: listed as unchecked but states its rounds`];
       const rounds = ROUND_WORDS[match[1].toLowerCase()];

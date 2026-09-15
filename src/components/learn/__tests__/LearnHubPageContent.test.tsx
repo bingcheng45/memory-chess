@@ -70,7 +70,7 @@ describe("LearnHubPageContent", () => {
     expect(screen.queryByText(/SEO hub/i)).not.toBeInTheDocument();
     expect(container.querySelectorAll("img")).toHaveLength(0);
     expect(
-      screen.getByText("All 16 guides", { exact: true }),
+      screen.getByText(`All ${EN_LEARN_PAGES.length} guides`, { exact: true }),
     ).toBeInTheDocument();
 
     const allClasses = Array.from(container.querySelectorAll("[class]"))
@@ -91,8 +91,8 @@ describe("LearnHubPageContent", () => {
       (entry: { "@type": string }) => entry["@type"] === "ItemList",
     );
 
-    expect(itemList.numberOfItems).toBe(16);
-    expect(itemList.itemListElement).toHaveLength(16);
+    expect(itemList.numberOfItems).toBe(EN_LEARN_PAGES.length);
+    expect(itemList.itemListElement).toHaveLength(EN_LEARN_PAGES.length);
   });
 
   function schemaFor(container: HTMLElement) {
@@ -168,7 +168,7 @@ describe("LearnHubPageContent", () => {
       "Learn with Memory Chess",
       "plain English",
       "plain language",
-      "All 16 guides",
+      `All ${EN_LEARN_PAGES.length} guides`,
       "Guide 01",
       "There\u2019s no perfect order",
       "complete practice habit",

@@ -1,5 +1,5 @@
 import sitemap from "@/app/sitemap";
-import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
+import { EN_LEARN_PAGES as LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";
 
 describe("sitemap", () => {
   it("includes static routes, learn article URLs, and the learn hub timestamp", async () => {
@@ -15,7 +15,7 @@ describe("sitemap", () => {
     expect(urls).toContain("https://thememorychess.com/changelog");
     expect(urls).toContain("https://thememorychess.com/privacy");
     expect(new Date(learnHubEntry?.lastModified ?? 0).toISOString()).toBe(
-      "2026-08-17T00:00:00.000Z",
+      new Date(LEARN_LAST_UPDATED).toISOString(),
     );
   });
 

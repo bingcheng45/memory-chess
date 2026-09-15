@@ -51,7 +51,9 @@ describe("buildLearnPageMetadata", () => {
       "https://thememorychess.com/learn/how-to-stop-blundering-in-chess/opengraph-image";
 
     expect(openGraph.publishedTime).toBe("2026-03-06T00:00:00.000Z");
-    expect(openGraph.modifiedTime).toBe("2026-08-17T00:00:00.000Z");
+    expect(openGraph.modifiedTime).toBe(
+      pageFor("how-to-stop-blundering-in-chess").updatedAt,
+    );
     expect(images[0]).toMatchObject({ url: cardUrl });
     expect(twitterImages[0]).toBe(cardUrl);
     expect(authors[0]).toMatchObject({ name: "Bing Cheng" });

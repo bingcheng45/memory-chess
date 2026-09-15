@@ -16,7 +16,7 @@ const HUB_URL = `${SITE_URL}/learn`;
 // Slugs stay English across every locale so inbound links keep working.
 const QUICK_STARTS = [
   { id: "newToChess", href: "/learn/how-to-get-better-at-chess-for-beginners" },
-  { id: "missingThreats", href: "/learn/chess-board-vision-drills" },
+  { id: "missingThreats", href: "/learn/how-to-stop-blundering-in-chess" },
   { id: "losingPosition", href: "/learn/chess-visualization-exercises" },
 ] as const;
 

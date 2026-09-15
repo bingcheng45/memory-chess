@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { routing, LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
 import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
+import { resolveRetiredLearnPath } from "@/lib/seo/learn/retired";
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -67,6 +68,13 @@ function hasSupportedLanguage(acceptLanguage: string | null): boolean {
 }
 
 export default function middleware(request: NextRequest) {
+  const merged = resolveRetiredLearnPath(request.nextUrl.pathname);
+  if (merged) {
+    const url = request.nextUrl.clone();
+    url.pathname = merged;
+    return NextResponse.redirect(url, 308);
+  }
+
   const bare = bareEnglishOnlyPath(request.nextUrl.pathname);
   if (bare) {
     const url = request.nextUrl.clone();

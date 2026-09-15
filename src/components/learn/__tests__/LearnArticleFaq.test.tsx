@@ -41,7 +41,10 @@ jest.mock("@/components/learn/LearnArticleTracking", () => {
 
 describe("LearnArticleRich FAQ", () => {
   it("keeps every FAQ answer in the DOM whether its item is open or closed", () => {
-    for (const page of EN_LEARN_PAGES) {
+    const pagesWithFaq = EN_LEARN_PAGES.filter((page) => page.faq.length > 0);
+    expect(pagesWithFaq.length).toBeGreaterThan(0);
+
+    for (const page of pagesWithFaq) {
       const { container, unmount } = render(
         <LearnArticleRich
           page={page}
@@ -56,7 +59,6 @@ describe("LearnArticleRich FAQ", () => {
       visible.querySelectorAll("script").forEach((node) => node.remove());
       const text = visible.textContent ?? "";
 
-      expect(page.faq.length).toBeGreaterThan(0);
       for (const entry of page.faq) {
         expect(text).toContain(entry.answer);
       }

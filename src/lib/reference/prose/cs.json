@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Vyhodnocení",
-        "body": "Vaše šachovnice se porovnává pole po poli s originálem. Vidíte, které figury byly správně, které špatně a které jste vynechali, vedle pozice, která vám byla ukázána."
+        "body": "Vaše šachovnice se porovnává pole po poli s originálem. Vidíte, které figury byly správně, které špatně a které jste vynechali, spolu s pozicí, která vám byla ukázána, na širokých obrazovkách vedle sebe a na úzkých pod sebou."
       }
     },
     "presets": {

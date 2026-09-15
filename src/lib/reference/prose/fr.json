@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Score",
-        "body": "Votre échiquier est comparé case par case avec l'original. Vous voyez quelles pièces étaient justes, lesquelles étaient fausses et lesquelles vous avez oubliées, côte à côte avec la position qui vous avait été montrée."
+        "body": "Votre échiquier est comparé case par case avec l'original. Vous voyez quelles pièces étaient justes, lesquelles étaient fausses et lesquelles vous avez oubliées, à côté de la position qui vous avait été montrée, côte à côte sur les écrans larges et l'une au-dessus de l'autre sur les écrans étroits."
       }
     },
     "presets": {

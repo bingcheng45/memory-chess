@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Puntuación",
-        "body": "Tu tablero se compara casilla por casilla con el original. Ves qué piezas fueron correctas, cuáles incorrectas y cuáles olvidaste, al lado de la posición que se te mostró."
+        "body": "Tu tablero se compara casilla por casilla con el original. Ves qué piezas fueron correctas, cuáles incorrectas y cuáles olvidaste, junto a la posición que se te mostró, una al lado de la otra en pantallas anchas y una encima de la otra en pantallas estrechas."
       }
     },
     "presets": {

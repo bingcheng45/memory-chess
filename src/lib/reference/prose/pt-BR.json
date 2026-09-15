@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Pontuar",
-        "body": "Seu tabuleiro é comparado casa por casa com o original. Você vê quais peças estavam certas, quais estavam erradas e quais faltaram, lado a lado com a posição que foi mostrada."
+        "body": "Seu tabuleiro é comparado casa por casa com o original. Você vê quais peças estavam certas, quais estavam erradas e quais faltaram, junto com a posição que foi mostrada, lado a lado em telas largas e uma acima da outra em telas estreitas."
       }
     },
     "presets": {

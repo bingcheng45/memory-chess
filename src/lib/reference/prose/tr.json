@@ -14,7 +14,7 @@
       },
       "score": {
         "title": "Puanlama",
-        "body": "Tahtanız orijinaliyle kare kare karşılaştırılır. Hangi taşların doğru, hangilerinin yanlış olduğunu ve hangilerini atladığınızı, size gösterilen konumun yanında görürsünüz."
+        "body": "Tahtanız orijinaliyle kare kare karşılaştırılır. Hangi taşların doğru, hangilerinin yanlış olduğunu ve hangilerini atladığınızı, size gösterilen konumla birlikte görürsünüz. Geniş ekranlarda iki tahta yan yana, dar ekranlarda alt alta durur."
       }
     },
     "presets": {

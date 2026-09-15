@@ -17,9 +17,9 @@ const guide: LearnGuide = {
   ],
   ctaLabel: "Play 6 pieces, 10 seconds",
   quickAnswer:
-    "Find out which failure you have before you drill. One 6-piece round shows whether pieces vanish, drift a square, or change identity in your head. Then train that failure with a covered board, one move at a time.",
+    "Find out which failure you have before you drill. Four 6-piece rounds show whether pieces vanish, drift a square, or change identity in your head. Then train that failure with a covered board, one move at a time.",
   keyTakeaways: [
-    "A 6-piece, 10-second round is a four-minute test of how much picture you hold.",
+    "Four 6-piece, 10-second rounds are a four-minute test of how much picture you hold.",
     "The result board separates a vanished piece from one that landed on the wrong square.",
     "Cover-and-move drills train updating the picture, which a memorize round cannot.",
   ],

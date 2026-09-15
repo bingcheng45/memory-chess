@@ -1,4 +1,4 @@
-import type { LearnPosition } from "../positions";
+import type { LearnPosition, PieceToken } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -277,8 +277,8 @@ const guide: LearnGuide = {
   ],
 };
 
-const PINNED_KNIGHT_WHITE = ["Kg1", "Qd1", "Nf3", "g2"];
-const PINNED_KNIGHT_BLACK = ["Kg8", "Bg4", "e5"];
+const PINNED_KNIGHT_WHITE: PieceToken[] = ["Kg1", "Qd1", "Nf3", "g2"];
+const PINNED_KNIGHT_BLACK: PieceToken[] = ["Kg8", "Bg4", "e5"];
 
 export const positions: LearnPosition[] = [
   {

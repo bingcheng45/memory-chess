@@ -1,4 +1,4 @@
-import type { LearnPosition } from "../positions";
+import type { LearnPosition, PieceToken } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -215,8 +215,8 @@ const guide: LearnGuide = {
   sources: [],
 };
 
-const LOOSE_BISHOP_WHITE = ["Kg1", "Qd1", "Ra1", "Rf1", "Bc1", "Nb1", "Nf3", "a2", "b2", "f2", "g2", "h2"];
-const LOOSE_BISHOP_BLACK = ["Ke8", "Ra8", "Rh8", "Bc8", "Bb4", "a7", "b7", "c7", "f7", "g7", "h7"];
+const LOOSE_BISHOP_WHITE: PieceToken[] = ["Kg1", "Qd1", "Ra1", "Rf1", "Bc1", "Nb1", "Nf3", "a2", "b2", "f2", "g2", "h2"];
+const LOOSE_BISHOP_BLACK: PieceToken[] = ["Ke8", "Ra8", "Rh8", "Bc8", "Bb4", "a7", "b7", "c7", "f7", "g7", "h7"];
 
 export const positions: LearnPosition[] = [
   {

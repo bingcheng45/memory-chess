@@ -1,3 +1,4 @@
+import type { Square } from "chess.js";
 import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
@@ -181,13 +182,13 @@ const guide: LearnGuide = {
   ],
 };
 
-const guardOfC7 = (guard: string): LearnPosition => ({
-  id: `c7-guarded-by-${guard}`,
+const guardOfC7 = (piece: "Q" | "B" | "N", square: Square): LearnPosition => ({
+  id: `c7-guarded-by-${piece}${square}`,
   sectionId: "shape-plus-condition",
   white: ["Kg1"],
-  black: ["Ke8", "Ra8", guard],
+  black: ["Ke8", "Ra8", `${piece}${square}`],
   unstated: ["g1"],
-  claims: [{ kind: "attacks", from: guard.slice(-2), squares: ["c7"] }],
+  claims: [{ kind: "attacks", from: square, squares: ["c7"] }],
 });
 
 export const positions: LearnPosition[] = [
@@ -223,10 +224,10 @@ export const positions: LearnPosition[] = [
       { kind: "attacks", from: "c7", squares: ["a8", "e8"] },
     ],
   },
-  guardOfC7("Qd8"),
-  guardOfC7("Bd8"),
-  guardOfC7("Nb5"),
-  guardOfC7("Ne6"),
+  guardOfC7("Q", "d8"),
+  guardOfC7("B", "d8"),
+  guardOfC7("N", "b5"),
+  guardOfC7("N", "e6"),
   {
     id: "back-rank-mate",
     sectionId: "four-shapes-with-squares",

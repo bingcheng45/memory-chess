@@ -10,7 +10,7 @@ import {
 import { useGameStore } from "@/lib/store/gameStore";
 import { DIFFICULTY_PRESETS } from "@/types/game";
 import { LEARN_GUIDES, LEARN_POSITIONS } from "../guides";
-import type { LearnPosition, PositionClaim, Side } from "../positions";
+import type { LearnPosition, PieceToken, PositionClaim, Side } from "../positions";
 import type { LearnBlock, LearnGuide } from "../schema";
 
 function blockText(block: LearnBlock): string[] {
@@ -58,6 +58,7 @@ function sectionText(guide: LearnGuide, sectionId: string): string {
 }
 
 const PIECE_TYPES: Record<string, PieceSymbol> = { K: "k", Q: "q", R: "r", B: "b", N: "n" };
+const tokenSquare = (token: PieceToken): Square => SQUARES.find((square) => token.endsWith(square))!;
 const other = (side: Side): Side => (side === "w" ? "b" : "w");
 const withoutMark = (san: string) => san.replace(/[+#]$/, "");
 const destination = (san: string) => san.match(/[a-h][1-8]/g)!.at(-1)!;
@@ -77,7 +78,7 @@ function buildPosition(position: LearnPosition): Chess {
     ] as const) {
       for (const token of tokens) {
         const type = token.length === 2 ? "p" : PIECE_TYPES[token[0]];
-        if (!board.put({ type, color }, token.slice(-2) as Square)) {
+        if (!board.put({ type, color }, tokenSquare(token))) {
           throw new Error(`${position.id}: cannot put ${color}${token}`);
         }
       }
@@ -89,8 +90,8 @@ function buildPosition(position: LearnPosition): Chess {
   return chess;
 }
 
-function occupantOf(chess: Chess, square: string): string | null {
-  const piece = chess.get(square as Square);
+function occupantOf(chess: Chess, square: Square): string | null {
+  const piece = chess.get(square);
   return piece ? `${piece.color}${piece.type}` : null;
 }
 
@@ -102,8 +103,8 @@ function hasMove(chess: Chess, san: string): boolean {
   return chess.moves().some((move) => withoutMark(move) === withoutMark(san));
 }
 
-function attackersOf(chess: Chess, square: string, side: Side): string[] {
-  return chess.attackers(square as Square, side);
+function attackersOf(chess: Chess, square: Square, side: Side): Square[] {
+  return chess.attackers(square, side);
 }
 
 /** Returns what is wrong with the claim, or null when it holds. */
@@ -135,7 +136,7 @@ function failure(chess: Chess, claim: PositionClaim): string | null {
     case "illegal":
       return holds(!hasMove(chess, claim.move), `${claim.move} is legal`);
     case "attacks": {
-      const color = chess.get(claim.from as Square)?.color;
+      const color = chess.get(claim.from)?.color;
       if (!color) return `no piece on ${claim.from}`;
       const missed = claim.squares.filter((square) => !attackersOf(chess, square, color).includes(claim.from));
       return holds(missed.length === 0, `${claim.from} does not attack ${missed.join()}`);
@@ -149,7 +150,7 @@ function failure(chess: Chess, claim: PositionClaim): string | null {
       return holds(sameSet(found, claim.squares), `attacked ${claim.side} pieces: ${found.join() || "none"}`);
     }
     case "immobile": {
-      const moves = chess.moves({ square: claim.square as Square });
+      const moves = chess.moves({ square: claim.square });
       return holds(moves.length === 0, `${claim.square} can play ${moves.join(" ")}`);
     }
     case "replies": {
@@ -161,7 +162,7 @@ function failure(chess: Chess, claim: PositionClaim): string | null {
         after.move(reply);
         if (!hasMove(after, claim.then)) return true;
         if (!claim.undefended) return false;
-        const owner = after.get(claim.undefended as Square)?.color;
+        const owner = after.get(claim.undefended)?.color;
         return !owner || attackersOf(after, claim.undefended, owner).length > 0;
       });
       return holds(broken.length === 0, `fails after ${broken.join(" ")}`);
@@ -178,7 +179,7 @@ function failure(chess: Chess, claim: PositionClaim): string | null {
       );
     }
     case "reach": {
-      const color = chess.get(claim.square as Square)?.color;
+      const color = chess.get(claim.square)?.color;
       if (!color) return `no piece on ${claim.square}`;
       const found = SQUARES.filter(
         (square) => square !== claim.square && attackersOf(chess, square, color).includes(claim.square),
@@ -186,7 +187,7 @@ function failure(chess: Chess, claim: PositionClaim): string | null {
       return holds(sameSet(found, claim.squares), `${claim.square} reaches ${found.join()}`);
     }
     case "squareColour": {
-      const wrong = claim.squares.filter((square) => chess.squareColor(square as Square) !== claim.colour);
+      const wrong = claim.squares.filter((square) => chess.squareColor(square) !== claim.colour);
       return holds(wrong.length === 0, `not ${claim.colour}: ${wrong.join()}`);
     }
   }
@@ -247,7 +248,7 @@ describe("guide chess positions", () => {
       const text = sectionText(guide, position.sectionId);
       const unstated = new Set(position.unstated ?? []);
       const stated = [...(position.white ?? []), ...(position.black ?? [])]
-        .map((token) => token.slice(-2))
+        .map(tokenSquare)
         .filter((square) => !unstated.has(square));
       const squares = [...new Set([...stated, ...position.claims.flatMap(claimSquares)])];
 

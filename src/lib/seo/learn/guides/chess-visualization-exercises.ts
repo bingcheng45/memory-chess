@@ -1,4 +1,4 @@
-import type { LearnPosition } from "../positions";
+import type { LearnPosition, PieceToken } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -208,7 +208,7 @@ const guide: LearnGuide = {
   sources: [],
 };
 
-const COVER_BLACK = ["Kg8", "Re8", "Nf6", "e5", "f7", "g7", "h7"];
+const COVER_BLACK: PieceToken[] = ["Kg8", "Re8", "Nf6", "e5", "f7", "g7", "h7"];
 
 export const positions: LearnPosition[] = [
   {

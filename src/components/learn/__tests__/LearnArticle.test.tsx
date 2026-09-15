@@ -195,14 +195,22 @@ describe("LearnArticleRich", () => {
       />,
     );
 
-    const byline = container.querySelector("[data-learn-byline]");
-    expect(byline?.textContent).toBe(
-      "By Bing Cheng. Written with AI assistance; chess positions checked by script and game facts traced to the code.",
-    );
+    const byline = container.querySelector("address[data-learn-byline]");
+    expect(byline?.textContent).toBe("By Bing Cheng");
     expect(byline?.querySelector("a")).toHaveAttribute("href", "/about");
-    // The byline follows the updated date in the header.
+
+    // The note is not contact information, so it sits beside the address,
+    // where the audit's authorship-note exemption finds it by its attribute.
+    const note = container.querySelector("[data-authorship-note]");
+    expect(note?.textContent).toBe(
+      "Written with AI assistance; chess positions checked by script and game facts traced to the code.",
+    );
+    expect(note?.closest("address")).toBeNull();
+    expect(note?.parentElement).toBe(byline?.parentElement);
+
     const time = container.querySelector("header time");
     expect(time?.compareDocumentPosition(byline!)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(byline?.compareDocumentPosition(note!)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
   it("links the settings page from the coordinates guide", () => {

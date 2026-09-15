@@ -393,13 +393,15 @@ export default function LearnArticleRich({
               {t("updated", { date: formatDate(page.updatedAt) })}
             </time>
           </div>
-          <address data-learn-byline className="mt-2 max-w-2xl text-sm leading-6 text-text-muted not-italic">
+          <address data-learn-byline className="mt-2 text-sm leading-6 text-text-muted not-italic">
             By{" "}
             <Link href={AUTHOR_PATH} className={EDITORIAL_STYLES.link}>
               {LEARN_AUTHOR.name}
             </Link>
-            . {LEARN_AUTHORSHIP_NOTE}
           </address>
+          <p data-authorship-note className="max-w-2xl text-sm leading-6 text-text-muted">
+            {LEARN_AUTHORSHIP_NOTE}
+          </p>
         </header>
 
         <section

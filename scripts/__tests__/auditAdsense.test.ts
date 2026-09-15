@@ -38,3 +38,24 @@ describe("audit-adsense hidden text", () => {
     expect(hiddenTextOf(html)).toBe("");
   });
 });
+
+describe("audit-adsense boilerplate prose", () => {
+  it("drops the authorship note, citations and link text but keeps the byline", () => {
+    const html = [
+      "<main>",
+      '<address data-learn-byline="true">By <a href="/about">Bing Cheng</a>.</address>',
+      '<p data-authorship-note="true">Written with AI assistance and checked by script.</p>',
+      "<p>Guide prose stays in the count.</p>",
+      '<cite><a href="https://example.com">A cited paper title</a></cite>',
+      "</main>",
+    ].join("");
+
+    const prose = runAudit(`audit.parsePage("http://127.0.0.1/learn/x", 200, ${JSON.stringify(html)}).proseText`);
+
+    expect(prose).toContain("By");
+    expect(prose).toContain("Guide prose stays in the count.");
+    expect(prose).not.toContain("Written with AI assistance");
+    expect(prose).not.toContain("Bing Cheng");
+    expect(prose).not.toContain("cited paper");
+  });
+});

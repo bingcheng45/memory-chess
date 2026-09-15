@@ -88,7 +88,7 @@ It reads `/sitemap.xml`, fetches every listed URL as a non-JS reviewer would, an
 - At most one ad unit.
 - Titles and descriptions unique within a language.
 - No two pages of a language sharing more than half their 5-word shingles.
-- No sentence of 5 or more words on more than three pages of a language. Citations and link text are excepted.
+- No sentence of 5 or more words on more than three pages of a language. Citations (`cite`), link text (`a`), and elements marked `data-authorship-note`, such as the guides' AI-assistance note, are excepted. The `<address>` byline is not excepted and counts as prose.
 - No section-heading template. A page with at least 4 `h2` headings fails when half or more of them each head more than three pages of its language.
 - hreflang pointing only at listed URLs.
 - No broken internal links.

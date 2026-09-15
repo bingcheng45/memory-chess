@@ -181,7 +181,7 @@ const guide: LearnGuide = {
           paragraphs: [
             "Rebuilding from an empty board is a memory test, and testing helps a memory last. Roediger and Karpicke had students study a passage and then either reread it or take a recall test.",
             "A week later the tested students remembered more than the ones who had reread.",
-            "That study used prose passages and set no timings. What follows is this guide's suggestion, not its finding: once you have the board, skip, and let the rebuild do the work.",
+            "That study used prose passages and says nothing about how long to look at a board. What follows is this guide's suggestion, not its finding: once you have the board, skip, and let the rebuild do the work.",
             "Gobet and Simon showed strong players several boards in a row, a few seconds each, and found they could still recall much of each one. They explain it by familiar chunks, not a bigger raw span.",
             "Memory Chess positions are random, so the chunks you find are geometric rather than chess-typical. A pawn pair on f2 and g2. A king tucked in a corner. Three pieces on one rank.",
             "Look for those geometric chunks as you climb from 6 pieces to 12. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four chunks it becomes manageable.",

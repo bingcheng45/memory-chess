@@ -202,6 +202,9 @@ async function fetchPage(url) {
   return parsePage(url, res.status, res.status === 200 ? await res.text() : "", res.headers.get("link") ?? "");
 }
 
+const listedKey = (url) => url.replace(/\/$/, "") || base;
+
+/** Unlike `listedKey`, keeps the query, since two alternates differing only there name different pages. */
 function alternateUrl(href) {
   const url = new URL(toLocal(href));
   return `${url.origin}${url.pathname.replace(/(.)\/$/, "$1")}${url.search}`;
@@ -234,7 +237,7 @@ export const RULES = [
       const problems = [];
       if (/noindex/i.test(page.robots)) problems.push(`listed in sitemap but robots="${page.robots}"`);
       if (!page.canonical) problems.push("missing canonical");
-      if (page.canonical && toLocal(page.canonical).replace(/\/$/, "") !== page.url.replace(/\/$/, "")) {
+      if (page.canonical && listedKey(toLocal(page.canonical)) !== listedKey(page.url)) {
         problems.push(`canonical points elsewhere: ${page.canonical}`);
       }
       return problems;
@@ -388,7 +391,7 @@ export const RULES = [
       const problems = new Map();
       for (const page of pages) {
         const messages = [];
-        const dangling = [...page.hreflang, ...page.headerHreflang].filter((alt) => !listed.has(toLocal(alt.href).replace(/\/$/, "") || base));
+        const dangling = [...page.hreflang, ...page.headerHreflang].filter((alt) => !listed.has(listedKey(toLocal(alt.href))));
         if (dangling.length) {
           messages.push(`${dangling.length} hreflang targets not in the sitemap, e.g. ${dangling[0].lang} ${dangling[0].href}`);
         }
@@ -408,8 +411,6 @@ export const RULES = [
     },
   },
 ];
-
-const listedKey = (url) => url.replace(/\/$/, "") || base;
 
 async function crawlLinks(pages, listed) {
   const targets = [...new Set(pages.flatMap((page) => page.links))]
@@ -449,7 +450,7 @@ export function prefixLocales(entries) {
 /** Sitemap URLs with no alternates whose served canonical is the bare URL itself. */
 export function englishOnlyCandidates(entries, canonicalByUrl) {
   return entries
-    .filter((entry) => !entry.alternates.length && canonicalByUrl[entry.url] && toLocal(canonicalByUrl[entry.url]).replace(/\/$/, "") === entry.url)
+    .filter((entry) => !entry.alternates.length && canonicalByUrl[entry.url] && listedKey(toLocal(canonicalByUrl[entry.url])) === entry.url)
     .map((entry) => entry.url);
 }
 
@@ -548,7 +549,7 @@ async function main() {
     console.error(`Cannot audit: ${base}/sitemap.xml lists no <loc> URLs`);
     process.exit(2);
   }
-  const listed = new Set(urls.map((u) => u.replace(/\/$/, "") || base));
+  const listed = new Set(urls.map(listedKey));
   const pages = await pool(urls, fetchPage);
   const indexable = pages.filter(isIndexable);
 

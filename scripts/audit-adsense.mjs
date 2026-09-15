@@ -431,7 +431,10 @@ async function crawlLinks(pages, listed) {
 export function parseSitemap(xml) {
   return [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => ({
     url: toLocal(m[1].match(/<loc>([^<]+)<\/loc>/)[1]),
-    alternates: [...m[1].matchAll(/<xhtml:link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map((a) => ({ lang: a[1], href: a[2] })),
+    alternates: [...m[1].matchAll(/<xhtml:link\b([^>]*)>/g)].flatMap(([, attributes]) => {
+      const value = (name) => attributes.match(new RegExp(`\\s${name}="([^"]*)"`))?.[1];
+      return value("rel") === "alternate" && value("hreflang") && value("href") ? [{ lang: value("hreflang"), href: value("href") }] : [];
+    }),
   }));
 }
 
@@ -451,11 +454,22 @@ export function englishOnlyCandidates(entries, canonicalByUrl) {
 }
 
 /**
- * Candidates whose first-locale prefix redirects. A 200 there means the path
- * is served in translation, as the leaderboard is, not English-only.
+ * Candidates whose first-locale prefix is not served in translation. Served in
+ * translation means a 200 whose page is noindex or canonical to itself, as
+ * `/de/leaderboard` is. Any other answer, a 200 canonical to the bare page or a
+ * 404 included, keeps the candidate so `redirectProblem` reports it.
  */
-export function englishOnlyUrls(candidates, firstLocaleStatusByUrl) {
-  return candidates.filter((url) => firstLocaleStatusByUrl[url] === 308);
+export function englishOnlyUrls(candidates, firstLocaleProbeByUrl) {
+  const servedInTranslation = (probe) =>
+    probe?.status === 200 && (/noindex/i.test(probe.robots) || (Boolean(probe.canonical) && listedKey(toLocal(probe.canonical)) === listedKey(probe.url)));
+  return candidates.filter((url) => !servedInTranslation(firstLocaleProbeByUrl[url]));
+}
+
+/** Why the locale-prefix check would pass without checking anything, or null. */
+export function localeCoverageProblem(locales, candidates, englishOnly) {
+  if (!locales.length) return "the sitemap alternates name no prefixed locale, so no locale prefix was checked";
+  if (candidates.length && !englishOnly.length) return `none of ${candidates.length} English-only candidates probed as English-only, so no locale prefix was checked`;
+  return null;
 }
 
 /**
@@ -502,21 +516,22 @@ async function singleRedirects(entries, pages) {
   const locales = prefixLocales(entries);
   const candidates = englishOnlyCandidates(entries, Object.fromEntries(pages.map((page) => [page.url, page.canonical])));
   const localized = (url, locale) => `${base}/${locale}${new URL(url).pathname}`;
-  const firstLocaleStatus = await pool(candidates, async (url) => {
-    const res = await fetch(localized(url, locales[0]), { redirect: "manual" });
-    await res.arrayBuffer();
-    return [url, res.status];
-  });
-  const englishOnly = englishOnlyUrls(candidates, Object.fromEntries(firstLocaleStatus));
+  const firstLocaleProbes = locales.length ? await pool(candidates, async (url) => [url, await fetchPage(localized(url, locales[0]))]) : [];
+  const englishOnly = englishOnlyUrls(candidates, Object.fromEntries(firstLocaleProbes));
   const localeCases = englishOnly.flatMap((url) =>
     locales.flatMap((locale) => [localized(url, locale), `${localized(url, locale)}/`].map((prefixed) => ({ url: prefixed, expected: url }))),
   );
+  const coverage = localeCoverageProblem(locales, candidates, englishOnly);
   return {
     slashChecked: slashCases.length,
     englishOnly: englishOnly.length,
     locales: locales.length,
     localeChecked: localeCases.length,
-    problems: [...(await redirectFailures("trailing-slash-redirect", slashCases)), ...(await redirectFailures("locale-prefix-redirect", localeCases))],
+    problems: [
+      ...(await redirectFailures("trailing-slash-redirect", slashCases)),
+      ...(await redirectFailures("locale-prefix-redirect", localeCases)),
+      ...(coverage ? [{ rule: "locale-prefix-redirect", guideline: "G28 crawlable canonical URLs", message: coverage }] : []),
+    ],
   };
 }
 

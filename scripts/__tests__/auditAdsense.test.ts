@@ -181,24 +181,66 @@ describe("audit-adsense English-only derivation", () => {
     "</urlset>",
   ].join("");
 
-  function derive(canonicals: Record<string, string>, probes: Record<string, number>) {
+  type Probe = { url: string; status: number; robots: string; canonical: string | null };
+  const probe = (path: string, status: number, robots = "", canonical: string | null = null): Probe => ({
+    url: `${LOCAL}/de${path}`,
+    status,
+    robots,
+    canonical,
+  });
+  const canonicals = { [`${LOCAL}/about`]: `${PROD}/about`, [`${LOCAL}/leaderboard`]: `${PROD}/leaderboard`, [`${LOCAL}/privacy`]: `${PROD}/` };
+  const translatedLeaderboard = probe("/leaderboard", 200, "noindex, follow", `${PROD}/de/leaderboard`);
+
+  function derive(xml: string, probes: Record<string, Probe>) {
     return JSON.parse(
       runAudit(
-        `(() => { const entries = audit.parseSitemap(${JSON.stringify(sitemap)}); const candidates = audit.englishOnlyCandidates(entries, ${JSON.stringify(canonicals)}); return JSON.stringify({ urls: entries.map((e) => e.url), locales: audit.prefixLocales(entries), candidates, englishOnly: audit.englishOnlyUrls(candidates, ${JSON.stringify(probes)}) }); })()`,
+        `(() => { const entries = audit.parseSitemap(${JSON.stringify(xml)}); const candidates = audit.englishOnlyCandidates(entries, ${JSON.stringify(canonicals)}); return JSON.stringify({ urls: entries.map((e) => e.url), locales: audit.prefixLocales(entries), candidates, englishOnly: audit.englishOnlyUrls(candidates, ${JSON.stringify(probes)}) }); })()`,
       ),
     );
   }
 
-  it("keeps sitemap URLs without alternates whose canonical is bare and whose first-locale prefix redirects", () => {
-    const result = derive(
-      { [`${LOCAL}/about`]: `${PROD}/about`, [`${LOCAL}/leaderboard`]: `${PROD}/leaderboard`, [`${LOCAL}/privacy`]: `${PROD}/` },
-      { [`${LOCAL}/about`]: 308, [`${LOCAL}/leaderboard`]: 200 },
-    );
+  function coverageProblem(locales: string[], candidates: string[], englishOnly: string[]): string | null {
+    return JSON.parse(runAudit(`JSON.stringify(audit.localeCoverageProblem(${JSON.stringify(locales)}, ${JSON.stringify(candidates)}, ${JSON.stringify(englishOnly)}))`));
+  }
+
+  it("keeps sitemap URLs without alternates whose canonical is bare and whose first-locale prefix is not served in translation", () => {
+    const result = derive(sitemap, { [`${LOCAL}/about`]: probe("/about", 308), [`${LOCAL}/leaderboard`]: translatedLeaderboard });
 
     expect(result.urls).toEqual([`${LOCAL}/`, `${LOCAL}/de`, `${LOCAL}/about`, `${LOCAL}/leaderboard`, `${LOCAL}/privacy`]);
     expect(result.locales).toEqual(["de", "pt-BR"]);
     expect(result.candidates).toEqual([`${LOCAL}/about`, `${LOCAL}/leaderboard`]);
     expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
+  });
+
+  it("counts a first-locale prefix answering 200 without noindex or a self canonical as English-only", () => {
+    const result = derive(sitemap, { [`${LOCAL}/about`]: probe("/about", 200, "index, follow", `${PROD}/about`), [`${LOCAL}/leaderboard`]: translatedLeaderboard });
+
+    expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
+  });
+
+  it("counts a first-locale prefix answering 404 as English-only", () => {
+    const result = derive(sitemap, { [`${LOCAL}/about`]: probe("/about", 404), [`${LOCAL}/leaderboard`]: translatedLeaderboard });
+
+    expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
+  });
+
+  it("reads alternates whose attributes come in another order", () => {
+    const reordered = sitemap.replace(/<xhtml:link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g, '<xhtml:link href="$2" hreflang="$1" rel="alternate"/>');
+
+    expect(reordered).not.toBe(sitemap);
+    expect(derive(reordered, {}).locales).toEqual(["de", "pt-BR"]);
+  });
+
+  it("reports a problem when the sitemap yields no locale prefixes", () => {
+    expect(coverageProblem([], [`${LOCAL}/about`], [`${LOCAL}/about`])).toEqual(expect.any(String));
+  });
+
+  it("reports a problem when there are candidates but none is English-only", () => {
+    expect(coverageProblem(["de"], [`${LOCAL}/about`], [])).toEqual(expect.any(String));
+  });
+
+  it("reports nothing when locales and English-only pages were found", () => {
+    expect(coverageProblem(["de"], [`${LOCAL}/about`], [`${LOCAL}/about`])).toBeNull();
   });
 });
 

@@ -9,14 +9,17 @@ import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import {
   gameHref,
   LEARN_AUTHOR,
+  LEARN_AUTHORSHIP_NOTE,
   type LearnBlock,
   type LearnComparisonRow,
+  type LearnInlineLink,
   type LearnPageContent,
 } from "@/lib/seo/learn/schema";
 import type { LearnGoal } from "@/lib/seo/learn";
 import LearnArticleTracking from "@/components/learn/LearnArticleTracking";
 
 const SITE_URL = "https://thememorychess.com";
+const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
 
 type LearnArticleProps = {
   page: LearnPageContent;
@@ -53,6 +56,21 @@ function buildRelatedPageData(
   }>;
 }
 
+function withInlineLink(text: string, link?: LearnInlineLink) {
+  const at = link ? text.indexOf(link.phrase) : -1;
+  if (!link || at === -1) return text;
+
+  return (
+    <>
+      {text.slice(0, at)}
+      <Link href={link.href} className={EDITORIAL_STYLES.link}>
+        {link.phrase}
+      </Link>
+      {text.slice(at + link.phrase.length)}
+    </>
+  );
+}
+
 function renderComparisonRows(rows: LearnComparisonRow[]) {
   return rows.map((row) => (
     <tr key={row.label} className="border-t border-white/10">
@@ -86,7 +104,7 @@ function LearnBlockView({
       return (
         <div className="max-w-[68ch] space-y-5 text-base leading-8 text-text-secondary">
           {block.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}>{withInlineLink(paragraph, block.link)}</p>
           ))}
         </div>
       );
@@ -140,7 +158,7 @@ function LearnBlockView({
                   {drill.title}
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-text-secondary">
-                  {drill.description}
+                  {withInlineLink(drill.description, drill.link)}
                 </p>
                 <p className="mt-3 text-sm leading-6 text-text-muted">
                   <span className="font-medium text-text-secondary">
@@ -375,6 +393,13 @@ export default function LearnArticleRich({
               {t("updated", { date: formatDate(page.updatedAt) })}
             </time>
           </div>
+          <p data-learn-byline className="mt-2 max-w-2xl text-sm leading-6 text-text-muted">
+            By{" "}
+            <Link href={AUTHOR_PATH} className={EDITORIAL_STYLES.link}>
+              {LEARN_AUTHOR.name}
+            </Link>
+            . {LEARN_AUTHORSHIP_NOTE}
+          </p>
         </header>
 
         <section

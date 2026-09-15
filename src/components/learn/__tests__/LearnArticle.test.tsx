@@ -184,6 +184,43 @@ describe("LearnArticleRich", () => {
     );
   });
 
+  it("credits the author under the date and says how the guide was written and checked", () => {
+    const page = getLearnPageBySlug("chess-coordinates-practice");
+
+    const { container } = render(
+      <LearnArticleRich
+        page={page}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+      />,
+    );
+
+    const byline = container.querySelector("[data-learn-byline]");
+    expect(byline?.textContent).toBe(
+      "By Bing Cheng. Written with AI assistance; chess positions checked by script and game facts traced to the code.",
+    );
+    expect(byline?.querySelector("a")).toHaveAttribute("href", "/about");
+    // The byline follows the updated date in the header.
+    const time = container.querySelector("header time");
+    expect(time?.compareDocumentPosition(byline!)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+  });
+
+  it("links the settings page from the coordinates guide", () => {
+    const page = getLearnPageBySlug("chess-coordinates-practice");
+
+    render(
+      <LearnArticleRich
+        page={page}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+      />,
+    );
+
+    const links = screen.getAllByRole("link", { name: "the settings page" });
+    expect(links.length).toBeGreaterThanOrEqual(2);
+    for (const link of links) expect(link).toHaveAttribute("href", "/settings");
+  });
+
   it("reads every piece of article chrome from the catalogue", () => {
     // Rendered against a marker catalogue, any string the component still
     // hard-codes simply will not have a marker in the DOM. This is the

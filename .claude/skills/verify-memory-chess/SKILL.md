@@ -30,7 +30,7 @@ Read-only. Confirms something listens on the port, that the listener is the serv
 
 ## Drive
 
-Run the cheap layer first: `npx jest` covers the stores, utilities, and SEO structure in seconds (baseline: 29 suites, 151 tests, green). Drive the browser for what Jest cannot see, which is everything below.
+Run the cheap layer first: `npx jest` covers the stores, utilities, and SEO structure in seconds (baseline: 40 suites, 289 tests, green; from a worktree under `.claude/`, which `jest.config.js` ignores, run `npx jest --testPathIgnorePatterns=/node_modules/`). Drive the browser for what Jest cannot see, which is everything below.
 
 ```bash
 node .claude/skills/verify-memory-chess/helpers/cdp.mjs <drive-script.mjs> \
@@ -76,7 +76,26 @@ The site was rejected twice for "Low value content". Any change that adds, remov
 npm run audit:adsense -- --base http://127.0.0.1:4517 --out .verify-evidence/<run>/adsense
 ```
 
-It reads `/sitemap.xml`, fetches every listed URL as a non-JS reviewer would, and applies one rule per Google policy item: HTTP 200, listed pages are indexable and self-canonical, at least 300 main-content words (header, nav, and footer excluded; `WORD_FLOOR_EXCEPTIONS` names each short page and why), no text shipped at opacity 0, no loading or placeholder text, one `h1` with a title and description, links to privacy, about, terms, and contact, at most one ad unit, titles and descriptions unique within a language, no two pages of a language sharing more than half their 5-word shingles, no 8-word sentence on more than three pages of a language, hreflang pointing only at listed URLs, no broken internal links, and `ads.txt` naming the publisher. It prints a table per rule and every failing page, writes `audit.json` under `--out`, and exits 1 on any failure.
+It reads `/sitemap.xml`, fetches every listed URL as a non-JS reviewer would, and applies one rule per Google policy item:
+
+- HTTP 200.
+- Listed pages are indexable and self-canonical.
+- At least 300 main-content words, with nav and footer excluded. `WORD_FLOOR_EXCEPTIONS` names each short page and why.
+- No hidden text. Hidden means an inline `opacity: 0`, `display: none` or `visibility: hidden`, a `hidden` attribute, a bare `hidden` or `invisible` class, or `data-state="inactive"` on an element whose class holds `data-[state=inactive]:hidden`. `aria-hidden` is not hidden.
+- No loading or placeholder text.
+- One `h1`, a title, and a description.
+- Links to privacy, about, terms, and contact.
+- At most one ad unit.
+- Titles and descriptions unique within a language.
+- No two pages of a language sharing more than half their 5-word shingles.
+- No sentence of 5 or more words on more than three pages of a language. Citations and link text are excepted.
+- No section-heading template. A page with at least 4 `h2` headings fails when half or more of them each head more than three pages of its language.
+- hreflang pointing only at listed URLs.
+- No broken internal links.
+- No unlisted indexable page. A page linked from a listed page that answers 200 without `noindex` must be in the sitemap.
+- `ads.txt` naming the publisher.
+
+It prints a table per rule and every failing page, writes `audit.json` under `--out`, and exits 1 on any failure. It exits 2 when `/sitemap.xml` does not answer 200 or lists no URLs, since there is nothing to audit.
 
 When a rule fails, fix the page. Change a rule only when the rule is wrong about what Google asks for, in its own commit that says why. Editorial prose (Learn, the changelog, about, privacy, terms) is English-only with one URL each; the route list in `src/lib/seo/englishOnly.ts` drives the redirects, the sitemap, and the footer links, so a new editorial route goes there rather than into the message catalogues.
 

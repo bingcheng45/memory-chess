@@ -19,7 +19,7 @@ const guide: LearnGuide = {
   keyTakeaways: [
     "Moving instantly and staring for minutes are one failure, a think with no question in it.",
     "Ask what changed before asking what you want, because a plan you already like narrows what you see.",
-    "Stop when the one-sentence reason comes out, because tired and certain feel alike from the inside.",
+    "Stop when the one-sentence reason comes out, because tired and certain can feel alike from the inside.",
   ],
   whoThisIsFor: [
     "Beginners who move on impulse in calm positions and freeze the moment something is attacked.",
@@ -84,7 +84,7 @@ const guide: LearnGuide = {
         {
           kind: "callout",
           title: "Certain or tired?",
-          body: "Tired feels like certainty from the inside, which is why the stop rule is a sentence and not a feeling. If you reach for the piece and the sentence will not come, you were tired.",
+          body: "Tired can feel like certainty from the inside, which is why the stop rule is a sentence and not a feeling. If you reach for the piece and the sentence will not come, keep thinking.",
         },
       ],
     },
@@ -106,7 +106,7 @@ const guide: LearnGuide = {
           drills: [
             {
               title: "Skip when certain",
-              description: "Play 5 rounds of 6 pieces with 20 seconds to look. Press Skip the moment you can name all six squares in your head. A skipped round with a miss means you stopped because you were tired.",
+              description: "Play 5 rounds of 6 pieces with 20 seconds to look. Press Skip the moment you can name all six squares in your head. A skipped round with a miss may mean you stopped early.",
               duration: "5 rounds, about 5 minutes",
               goal: "Learn what certainty feels like before the clock decides for you.",
               ctaLabel: "Play 6 pieces, 20 seconds",

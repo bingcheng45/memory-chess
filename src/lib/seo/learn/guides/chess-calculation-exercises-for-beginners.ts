@@ -129,7 +129,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Two. Not because two is a special number but because the third line is the one that overwrites the first.",
-            "Working memory is not the problem. Spending it on the wrong thing is. Spread across five candidate moves, none of them gets the check for defenders.",
+            "Spend working memory on defenders, not on more candidates. Spread it across five candidate moves, and none of them gets the check for defenders.",
             "Add a third candidate only when both of the first two fail for a reason you can state. Keep the depth at two plies until the base position stops drifting.",
             "When the two moves are both checks or both captures, the comparison is quick, so look for a missed defender before a missed idea.",
           ],

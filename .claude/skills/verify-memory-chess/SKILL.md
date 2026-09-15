@@ -94,6 +94,7 @@ It reads `/sitemap.xml`, fetches every listed URL as a non-JS reviewer would, an
 - No broken internal links.
 - No unlisted indexable page. A page linked from a listed page that answers 200 without `noindex` must be in the sitemap.
 - `ads.txt` naming the publisher.
+- One 308 from a trailing slash. Every listed URL other than `/`, requested with a slash appended and redirects not followed, must answer 308 with a `Location` that resolves to the listed URL, the production origin mapped to `--base`. This goes through the real server, so `next.config.ts` redirects, rewrites and `skipTrailingSlashRedirect` are covered, which the middleware unit tests are not. A failure prints the redirect chain it saw.
 
 It prints a table per rule and every failing page, writes `audit.json` under `--out`, and exits 1 on any failure. It exits 2 when `/sitemap.xml` does not answer 200 or lists no URLs, since there is nothing to audit.
 

@@ -14,6 +14,7 @@ const MAX_SHARED_HEADING_PAGES = 3;
 const MAX_SHARED_HEADING_SHARE = 0.5;
 const MIN_TEMPLATE_HEADINGS = 4;
 const MAX_SENTENCE_REPEATS = 3;
+const MAX_REDIRECT_HOPS = 5;
 
 /**
  * Pages whose job is not prose. Each one states why it may sit under the
@@ -427,6 +428,41 @@ async function crawlLinks(pages, listed) {
   };
 }
 
+/**
+ * Why one response to `<expected>/` fails the single-308 rule, or null when it
+ * is a 308 whose Location resolves to `expected`.
+ */
+export function trailingSlashProblem(expected, { status, location }) {
+  if (status !== 308) return `answers ${status}, expected 308`;
+  const target = location ? toLocal(new URL(location, `${expected}/`).href) : "nowhere";
+  return target === expected ? null : `redirects to ${target}, expected ${expected}`;
+}
+
+async function redirectChain(url) {
+  const hops = [];
+  let current = url;
+  while (current && hops.length < MAX_REDIRECT_HOPS) {
+    const res = await fetch(current, { redirect: "manual" });
+    await res.arrayBuffer();
+    const location = res.headers.get("location");
+    hops.push({ url: current, status: res.status, location });
+    current = res.status >= 300 && res.status < 400 && location ? toLocal(new URL(location, current).href) : null;
+  }
+  return hops;
+}
+
+async function trailingSlashRedirects(urls) {
+  const checked = urls.filter((url) => new URL(url).pathname !== "/");
+  const failures = await pool(checked, async (url) => {
+    const hops = await redirectChain(`${url}/`);
+    const problem = trailingSlashProblem(url, hops[0]);
+    if (!problem) return null;
+    const chain = hops.map((hop) => `${hop.url.replace(base, "")} ${hop.status}`).join(" -> ");
+    return `${url.replace(base, "")}/ ${problem}; chain ${chain}`;
+  });
+  return { checked: checked.length, failures: failures.filter(Boolean) };
+}
+
 async function main() {
   const sitemapResponse = await fetch(`${base}/sitemap.xml`);
   if (sitemapResponse.status !== 200) {
@@ -454,10 +490,12 @@ async function main() {
 
   const { broken, unlisted } = await crawlLinks(pages, listed);
   const adsTxt = await fetch(`${base}/ads.txt`).then((r) => (r.ok ? r.text() : ""));
+  const slashRedirects = await trailingSlashRedirects(urls);
   const siteProblems = [
     ...broken.map((b) => ({ rule: "broken-link", message: `${b.url} answers ${b.status}` })),
     ...unlisted.map((p) => ({ rule: "unlisted-indexable", message: `${p.path} is linked and indexable but missing from the sitemap` })),
     ...(adsTxt.includes(PUBLISHER_ID) ? [] : [{ rule: "ads-txt", message: `ads.txt does not list ${PUBLISHER_ID}` }]),
+    ...slashRedirects.failures.map((message) => ({ rule: "trailing-slash-redirect", guideline: "G28 crawlable canonical URLs", message })),
   ];
 
   const byRule = RULES.map((rule) => {
@@ -469,11 +507,11 @@ async function main() {
   for (const page of pages) locales.set(page.locale, (locales.get(page.locale) ?? 0) + 1);
 
   console.log(`AdSense audit of ${base}`);
-  console.log(`${pages.length} sitemap URLs, ${indexable.length} indexable, ${locales.size} locales, ${broken.length} broken internal links\n`);
+  console.log(`${pages.length} sitemap URLs, ${indexable.length} indexable, ${locales.size} locales, ${broken.length} broken internal links, ${slashRedirects.checked} slashed URLs checked for one 308 (G28 crawlable canonical URLs)\n`);
   console.log("| rule | guideline | failing pages | example |");
   console.log("| --- | --- | ---: | --- |");
   for (const row of byRule) console.log(`| ${row.id} | ${row.guideline} | ${row.failing} | ${row.example.replace(/\|/g, "\\|")} |`);
-  for (const problem of siteProblems) console.log(`| ${problem.rule} | site | 1 | ${problem.message} |`);
+  for (const problem of siteProblems) console.log(`| ${problem.rule} | ${problem.guideline ?? "site"} | 1 | ${problem.message} |`);
 
   const failingPages = pages.filter((page) => findings.get(page.url).length);
   if (failingPages.length) {
@@ -491,7 +529,7 @@ async function main() {
       JSON.stringify(
         {
           base,
-          summary: { urls: pages.length, indexable: indexable.length, locales: Object.fromEntries(locales), broken: broken.length },
+          summary: { urls: pages.length, indexable: indexable.length, locales: Object.fromEntries(locales), broken: broken.length, trailingSlashChecked: slashRedirects.checked },
           rules: byRule,
           siteProblems,
           pages: pages.map(({ mainText, proseText, links, hreflang, headerHreflang, ...rest }) => ({ ...rest, findings: findings.get(rest.url) })),

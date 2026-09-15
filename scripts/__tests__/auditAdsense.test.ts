@@ -132,6 +132,32 @@ describe("audit-adsense hreflang targets", () => {
   });
 });
 
+describe("audit-adsense trailing-slash redirect", () => {
+  const LOCAL = "http://127.0.0.1:4517";
+
+  function problemFor(response: { status: number; location: string | null }): string | null {
+    return JSON.parse(
+      runAudit(`JSON.stringify(audit.trailingSlashProblem(${JSON.stringify(`${LOCAL}/de/game`)}, ${JSON.stringify(response)}))`),
+    );
+  }
+
+  it("passes a 308 to the URL without the slash", () => {
+    expect(problemFor({ status: 308, location: "/de/game" })).toBeNull();
+  });
+
+  it("fails a 307 to the URL without the slash", () => {
+    expect(problemFor({ status: 307, location: "/de/game" })).toBe("answers 307, expected 308");
+  });
+
+  it("fails a 308 to a different path", () => {
+    expect(problemFor({ status: 308, location: "/game/" })).toBe(`redirects to ${LOCAL}/game/, expected ${LOCAL}/de/game`);
+  });
+
+  it("fails a 200 that does not redirect", () => {
+    expect(problemFor({ status: 200, location: null })).toBe("answers 200, expected 308");
+  });
+});
+
 describe("audit-adsense boilerplate prose", () => {
   it("drops the authorship note, citations and link text but keeps the byline", () => {
     const html = [

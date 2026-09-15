@@ -23,7 +23,8 @@
     "language": {
       "change": "言語を変更します。現在の言語：{language}",
       "current": "言語：{language}",
-      "select": "言語を選択"
+      "select": "言語を選択",
+      "englishOnly": "このページは英語でのみご覧いただけます。"
     },
     "otherApps": {
       "title": "制作者のほかのアプリ",

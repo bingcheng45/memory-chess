@@ -23,7 +23,8 @@
     "language": {
       "change": "Đổi ngôn ngữ. Ngôn ngữ hiện tại: {language}",
       "current": "Ngôn ngữ: {language}",
-      "select": "Chọn ngôn ngữ"
+      "select": "Chọn ngôn ngữ",
+      "englishOnly": "Trang này chỉ có bằng tiếng Anh."
     },
     "otherApps": {
       "title": "Ứng dụng khác của tác giả",

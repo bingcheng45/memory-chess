@@ -23,7 +23,8 @@
     "language": {
       "change": "Skift sprog. Nuværende sprog: {language}",
       "current": "Sprog: {language}",
-      "select": "Vælg sprog"
+      "select": "Vælg sprog",
+      "englishOnly": "Denne side findes kun på engelsk."
     },
     "otherApps": {
       "title": "Flere apps fra udvikleren",

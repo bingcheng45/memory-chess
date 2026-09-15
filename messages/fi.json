@@ -23,7 +23,8 @@
     "language": {
       "change": "Vaihda kieltä. Nykyinen kieli: {language}",
       "current": "Kieli: {language}",
-      "select": "Valitse kieli"
+      "select": "Valitse kieli",
+      "englishOnly": "Tämä sivu on saatavilla vain englanniksi."
     },
     "otherApps": {
       "title": "Tekijän muut sovellukset",

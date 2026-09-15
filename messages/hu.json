@@ -23,7 +23,8 @@
     "language": {
       "change": "Nyelvváltás. Jelenlegi nyelv: {language}",
       "current": "Nyelv: {language}",
-      "select": "Válassz nyelvet"
+      "select": "Válassz nyelvet",
+      "englishOnly": "Ez az oldal csak angol nyelven érhető el."
     },
     "otherApps": {
       "title": "A készítő további alkalmazásai",

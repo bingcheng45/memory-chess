@@ -23,7 +23,8 @@
     "language": {
       "change": "언어 변경. 현재 언어: {language}",
       "current": "언어: {language}",
-      "select": "언어 선택"
+      "select": "언어 선택",
+      "englishOnly": "이 페이지는 영어로만 제공됩니다."
     },
     "otherApps": {
       "title": "제작자의 다른 앱",

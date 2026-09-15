@@ -23,7 +23,8 @@
     "language": {
       "change": "Cambia lingua. Lingua attuale: {language}",
       "current": "Lingua: {language}",
-      "select": "Scegli la lingua"
+      "select": "Scegli la lingua",
+      "englishOnly": "Questa pagina è disponibile solo in inglese."
     },
     "otherApps": {
       "title": "Altre app del creatore",

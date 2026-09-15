@@ -23,7 +23,8 @@
     "language": {
       "change": "Byt språk. Nuvarande språk: {language}",
       "current": "Språk: {language}",
-      "select": "Välj språk"
+      "select": "Välj språk",
+      "englishOnly": "Den här sidan finns bara på engelska."
     },
     "otherApps": {
       "title": "Fler appar från skaparen",

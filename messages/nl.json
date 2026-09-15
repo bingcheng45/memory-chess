@@ -23,7 +23,8 @@
     "language": {
       "change": "Taal wijzigen. Huidige taal: {language}",
       "current": "Taal: {language}",
-      "select": "Kies een taal"
+      "select": "Kies een taal",
+      "englishOnly": "Deze pagina is alleen in het Engels beschikbaar."
     },
     "otherApps": {
       "title": "Meer apps van de maker",

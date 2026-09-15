@@ -23,7 +23,8 @@
     "language": {
       "change": "Změnit jazyk. Aktuální jazyk: {language}",
       "current": "Jazyk: {language}",
-      "select": "Vyberte jazyk"
+      "select": "Vyberte jazyk",
+      "englishOnly": "Tato stránka je dostupná pouze v angličtině."
     },
     "otherApps": {
       "title": "Další aplikace autora",

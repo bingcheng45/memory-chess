@@ -23,7 +23,8 @@
     "language": {
       "change": "भाषा बदलें। मौजूदा भाषा: {language}",
       "current": "भाषा: {language}",
-      "select": "भाषा चुनें"
+      "select": "भाषा चुनें",
+      "englishOnly": "यह पृष्ठ केवल अंग्रेज़ी में उपलब्ध है।"
     },
     "otherApps": {
       "title": "इसी डेवलपर के दूसरे ऐप",

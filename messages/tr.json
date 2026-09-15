@@ -23,7 +23,8 @@
     "language": {
       "change": "Dili değiştir. Geçerli dil: {language}",
       "current": "Dil: {language}",
-      "select": "Dil seçin"
+      "select": "Dil seçin",
+      "englishOnly": "Bu sayfa yalnızca İngilizce olarak mevcuttur."
     },
     "otherApps": {
       "title": "Geliştiricinin diğer uygulamaları",

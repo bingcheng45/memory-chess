@@ -23,7 +23,8 @@
     "language": {
       "change": "Schimbă limba. Limba curentă: {language}",
       "current": "Limbă: {language}",
-      "select": "Alege limba"
+      "select": "Alege limba",
+      "englishOnly": "Această pagină este disponibilă doar în limba engleză."
     },
     "otherApps": {
       "title": "Alte aplicații ale creatorului",

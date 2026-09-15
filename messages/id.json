@@ -23,7 +23,8 @@
     "language": {
       "change": "Ganti bahasa. Bahasa saat ini: {language}",
       "current": "Bahasa: {language}",
-      "select": "Pilih bahasa"
+      "select": "Pilih bahasa",
+      "englishOnly": "Halaman ini hanya tersedia dalam bahasa Inggris."
     },
     "otherApps": {
       "title": "Aplikasi lain dari pembuatnya",

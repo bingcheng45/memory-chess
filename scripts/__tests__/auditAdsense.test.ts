@@ -46,6 +46,21 @@ describe("audit-adsense hidden text", () => {
   });
 });
 
+describe("audit-adsense hidden-text rule report", () => {
+  it("names every viewport and every way text is hidden", () => {
+    const report = JSON.parse(
+      runAudit(
+        `JSON.stringify((({ guideline, check }) => ({ guideline, messages: check({ hiddenWords: 5, mainWords: 300 }) }))(audit.RULES.find((rule) => rule.id === "hidden-text")))`,
+      ),
+    );
+
+    expect(report.guideline).toBe("G19 no text hidden at any viewport");
+    expect(report.messages).toEqual([
+      "5 of 300 words ship hidden (inline style, hidden attribute, hidden class, or breakpoint-hidden class)",
+    ]);
+  });
+});
+
 describe("audit-adsense command line", () => {
   it("runs the audit when started through a symlink, so an unreachable base fails loudly", () => {
     const dir = mkdtempSync(join(tmpdir(), "audit-adsense-"));

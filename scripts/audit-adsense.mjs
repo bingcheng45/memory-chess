@@ -84,10 +84,9 @@ const BREAKPOINT = "(?:sm|md|lg|xl|2xl)";
  * `hidden`.
  */
 const HIDING_UTILITIES = [
-  { property: "display", hide: "hidden", show: "block|flex|grid|contents|(?:inline|table)(?:-[a-z-]+)?" },
-  { property: "visibility", hide: "invisible", show: "visible" },
-].map(({ property, hide, show }) => ({
-  property,
+  { hide: "hidden", show: "block|flex|grid|contents|(?:inline|table)(?:-[a-z-]+)?" },
+  { hide: "invisible", show: "visible" },
+].map(({ hide, show }) => ({
   hide,
   hiddenFromBreakpoint: new RegExp(`^${BREAKPOINT}:${hide}$`),
   shownFromBreakpoint: new RegExp(`^${BREAKPOINT}:(?:${show})$`),
@@ -208,7 +207,7 @@ async function pool(items, worker) {
   return results;
 }
 
-const RULES = [
+export const RULES = [
   {
     id: "status",
     guideline: "G11 G28 working navigation, sitemap reaches real pages",
@@ -238,9 +237,9 @@ const RULES = [
   },
   {
     id: "hidden-text",
-    guideline: "G19 no text hidden from the first paint",
+    guideline: "G19 no text hidden at any viewport",
     check: (page) =>
-      page.hiddenWords === 0 ? [] : [`${page.hiddenWords} of ${page.mainWords} words ship hidden (inline style, hidden attribute, or hidden class)`],
+      page.hiddenWords === 0 ? [] : [`${page.hiddenWords} of ${page.mainWords} words ship hidden (inline style, hidden attribute, hidden class, or breakpoint-hidden class)`],
   },
   {
     id: "placeholder",

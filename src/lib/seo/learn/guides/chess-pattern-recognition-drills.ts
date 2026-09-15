@@ -120,7 +120,7 @@ const guide: LearnGuide = {
             {
               title: "The quarter-second board",
               description:
-                "2 rounds of 20 pieces, 5 seconds, about 4 minutes. You will not get them all. The point is to catch the moment you stop reading pieces and start reading shapes.",
+                "2 rounds of 20 pieces, 5 seconds, about 4 minutes. Try it only once 12 pieces at 8 seconds gives you Excellent Memory most rounds. Before that, a round is likely to end in Keep Practicing. Even then you will not get them all. The point is to catch the moment you stop reading pieces and start reading shapes.",
               duration: "About 4 minutes",
               goal: "At least 50 percent on the second round, which the result screen calls Good Effort or better.",
               ctaLabel: "Try 20 pieces, 5 seconds",

@@ -456,7 +456,40 @@ const MINUTES_PER_ROUND: Record<string, number> = {
 
 const ROUND_WORDS: Record<string, number> = { two: 2, three: 3, four: 4, five: 5, six: 6 };
 
+const PLAN_ROUNDS = /(\w+) rounds of (\d+) pieces, (\d+) seconds/i;
+
+/**
+ * Plan steps, as "slug label", whose detail mentions rounds without stating
+ * one session of one setup, so their duration cannot be scaled from
+ * MINUTES_PER_ROUND. Any other step that mentions rounds must match
+ * PLAN_ROUNDS.
+ */
+const UNCHECKED_PLAN_STEPS: Record<string, string> = {
+  "blindfold-chess-training-for-beginners Stage one":
+    "Six perfect rounds in a row is the pass mark, not the day's session.",
+  "chess-visualization-exercises Weeks 1 and 2":
+    "The minutes add a cover-and-move question to the four-minute check.",
+  "chess-visualization-exercises Weeks 5 and 6":
+    "Three perfect rounds out of four is the rule for moving on, and the minutes include cover-and-move.",
+  "how-to-get-better-at-chess-for-beginners Week 4":
+    "Keeps the week 3 rounds without restating how many.",
+};
+
+const planSteps = LEARN_GUIDES.flatMap((guide) =>
+  guide.sections.flatMap((section) =>
+    section.blocks.flatMap((block) =>
+      block.kind === "plan" ? block.steps.map((step) => ({ key: `${guide.slug} ${step.label}`, step })) : [],
+    ),
+  ),
+);
+
 describe("guide round durations", () => {
+  it("lists only real plan steps as unchecked", () => {
+    const keys = new Set(planSteps.map(({ key }) => key));
+
+    expect(Object.keys(UNCHECKED_PLAN_STEPS).filter((key) => !keys.has(key))).toEqual([]);
+  });
+
   it("scales every stated duration from the rounds and one per-round figure per setup", () => {
     const mismatches = LEARN_GUIDES.flatMap((guide) =>
       guide.sections.flatMap((section) =>
@@ -475,21 +508,25 @@ describe("guide round durations", () => {
               return ok ? [] : [`${guide.slug} "${drill.title}" ${setup}: ${rounds} rounds, stated ${stated.join()}, expected ${expected}`];
             });
           }
-          if (block.kind === "plan") {
-            return block.steps.flatMap((step) => {
-              const match = step.detail.match(/(\w+) rounds of (\d+) pieces, (\d+) seconds/i);
-              if (!match) return [];
-              const rounds = ROUND_WORDS[match[1].toLowerCase()];
-              const expected = Math.round(rounds * MINUTES_PER_ROUND[`${match[2]}/${match[3]}`]);
-              const stated = Number(step.duration.match(/^(\d+) minutes/)?.[1]);
-              return stated === expected ? [] : [`${guide.slug} "${step.label}": stated ${stated}, expected ${expected}`];
-            });
-          }
           return [];
         }),
       ),
     );
+    const planMismatches = planSteps.flatMap(({ key, step }) => {
+      const unchecked = key in UNCHECKED_PLAN_STEPS;
+      const match = step.detail.match(PLAN_ROUNDS);
+      if (!match) {
+        return /\brounds?\b/i.test(step.detail) && !unchecked
+          ? [`${key}: mentions rounds but not as "N rounds of P pieces, S seconds"`]
+          : [];
+      }
+      if (unchecked) return [`${key}: listed as unchecked but states its rounds`];
+      const rounds = ROUND_WORDS[match[1].toLowerCase()];
+      const expected = Math.round(rounds * MINUTES_PER_ROUND[`${match[2]}/${match[3]}`]);
+      const stated = Number(step.duration.match(/^(\d+) minutes/)?.[1]);
+      return stated === expected ? [] : [`${key}: stated ${stated}, expected ${expected}`];
+    });
 
-    expect(mismatches).toEqual([]);
+    expect([...mismatches, ...planMismatches]).toEqual([]);
   });
 });

@@ -246,6 +246,14 @@ export const positions: LearnPosition[] = [
       { kind: "legal", move: "gxf6" },
     ],
   },
+  {
+    id: "two-checks-after-gxf6",
+    sectionId: "two-checks-one-works",
+    white: TWO_CHECKS_WHITE,
+    black: TWO_CHECKS_BLACK,
+    line: ["Nf6+", "gxf6"],
+    claims: [{ kind: "attackers", square: "f6", side: "w", from: [] }],
+  },
 ];
 
 export default guide;

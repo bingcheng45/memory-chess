@@ -80,6 +80,11 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
             <TabsTrigger
               key={difficulty}
               value={difficulty}
+              // Radix makes a trigger tabbable only once focus has entered the
+              // list, and the list itself only after hydration, so a served
+              // page had no tab stop at all. The active tab is the stop;
+              // Radix's arrow keys still move between the rest.
+              tabIndex={difficulty === activeTab ? 0 : -1}
               className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
             >{tg(`presets.${difficulty}.label`)}</TabsTrigger>
           ))}

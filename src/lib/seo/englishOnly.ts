@@ -1,3 +1,5 @@
+import { LOCALE_LABELS } from "@/i18n/routing";
+
 /**
  * Routes that exist only in English, each at its bare URL.
  *
@@ -14,6 +16,15 @@ export const ENGLISH_ONLY_ROUTES = [
   "/changelog",
   "/learn",
 ] as const;
+
+/**
+ * What a link to an English-only page appends to its label on a translated
+ * page, so the reader knows the language changes. Uses the untranslated
+ * native name, so no locale needs a new message.
+ */
+export function englishOnlyLinkSuffix(locale: string): string {
+  return locale === "en" ? "" : ` (${LOCALE_LABELS.en})`;
+}
 
 export function isEnglishOnlyPath(path: string): boolean {
   return ENGLISH_ONLY_ROUTES.some(

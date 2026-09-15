@@ -1,10 +1,10 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import NextLink from "next/link";
 
 import { Link } from "@/i18n/navigation";
-import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
+import { englishOnlyLinkSuffix, isEnglishOnlyPath } from "@/lib/seo/englishOnly";
 
 const FOOTER_LINKS = [
   { href: "/learn", labelKey: "nav.learn" },
@@ -17,6 +17,7 @@ const FOOTER_LINKS = [
 
 export default function Footer() {
   const t = useTranslations("common");
+  const locale = useLocale();
   // Passed as a string on purpose: ICU would format a bare number argument
   // with grouping separators and render the year as "2,026".
   const currentYear = String(new Date().getFullYear());
@@ -39,16 +40,28 @@ export default function Footer() {
             // forcing locale="en" points at /en/about, which only 307s to
             // /about because the routing prefixes English as-needed. A plain
             // link is the one that renders the canonical href.
-            const LinkComponent = isEnglishOnlyPath(link.href) ? NextLink : Link;
+            if (isEnglishOnlyPath(link.href)) {
+              return (
+                <NextLink
+                  key={link.href}
+                  href={link.href}
+                  hrefLang="en"
+                  className="text-peach-500 transition-colors hover:text-peach-400"
+                >
+                  {t(link.labelKey)}
+                  {englishOnlyLinkSuffix(locale)}
+                </NextLink>
+              );
+            }
 
             return (
-              <LinkComponent
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-peach-500 transition-colors hover:text-peach-400"
               >
                 {t(link.labelKey)}
-              </LinkComponent>
+              </Link>
             );
           })}
         </div>

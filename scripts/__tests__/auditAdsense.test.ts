@@ -103,6 +103,17 @@ describe("audit-adsense hreflang targets", () => {
     expect(hreflangProblems(htmlAlternates, header)).toEqual([]);
   });
 
+  it("ignores Link header entries whose rel is not exactly alternate, even when they carry hreflang", () => {
+    const header = [
+      `<${LOCAL}/fr>; rel="preload"; hreflang="fr"`,
+      '</_next/static/media/font.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2"',
+      `<${LOCAL}/fr>; rel="alternates"; hreflang="fr"`,
+      `<${LOCAL}/fr>; rel="alternate stylesheet"; hreflang="fr"`,
+    ].join(", ");
+
+    expect(hreflangProblems(htmlAlternates, header)).toEqual([]);
+  });
+
   it("passes when the page sends no Link header", () => {
     expect(hreflangProblems(htmlAlternates)).toEqual([]);
   });

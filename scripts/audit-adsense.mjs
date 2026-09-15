@@ -147,7 +147,7 @@ function attr(html, pattern) {
 function linkHeaderAlternates(header) {
   return [...header.matchAll(/<([^>]*)>([^,]*)/g)].flatMap((m) => {
     const lang = m[2].match(/;\s*hreflang="?([^";\s]+)"?/i)?.[1];
-    return lang && /;\s*rel="?alternate"?/i.test(m[2]) ? [{ lang, href: m[1] }] : [];
+    return lang && /;\s*rel=(?:"alternate"|alternate)\s*(?:;|$)/i.test(m[2]) ? [{ lang, href: m[1] }] : [];
   });
 }
 

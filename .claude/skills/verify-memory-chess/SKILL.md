@@ -30,7 +30,7 @@ Read-only. Confirms something listens on the port, that the listener is the serv
 
 ## Drive
 
-Run the cheap layer first: `npx jest` covers the stores, utilities, and SEO structure in seconds (baseline: 40 suites, 289 tests, green; from a worktree under `.claude/`, which `jest.config.js` ignores, run `npx jest --testPathIgnorePatterns=/node_modules/`). Drive the browser for what Jest cannot see, which is everything below.
+Run the cheap layer first: `npx jest` covers the stores, utilities, and SEO structure in seconds (expect every suite green; from a worktree under `.claude/`, which `jest.config.js` ignores, run `npx jest --testPathIgnorePatterns=/node_modules/`). Drive the browser for what Jest cannot see, which is everything below.
 
 ```bash
 node .claude/skills/verify-memory-chess/helpers/cdp.mjs <drive-script.mjs> \

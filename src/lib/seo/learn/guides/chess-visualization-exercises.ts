@@ -7,7 +7,7 @@ const guide: LearnGuide = {
   title: "Chess Visualization Exercises for Beginners",
   h1: "Chess visualization exercises for when the picture fades two moves in",
   description:
-    "Visualization drills for players who lose the position two moves into a line, with a four-minute check that shows which piece you lose first.",
+    "Visualization drills for players who lose the position two moves into a line, with a four-minute check that shows whether pieces vanish, drift or change identity.",
   primaryKeyword: "chess visualization exercises",
   secondaryKeywords: [
     "chess visualization training",

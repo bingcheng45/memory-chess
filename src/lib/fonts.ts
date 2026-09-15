@@ -25,21 +25,31 @@ const geistSans = Geist({
   subsets: ["latin", "latin-ext"],
 });
 
+/**
+ * Only Geist sans is preloaded. next/font preloads every face this module
+ * declares on every page in every locale, so preloading the faces below put
+ * about 250 KB of fonts most pages never use on the wire alongside the
+ * stylesheet, which on slow mobile connections pushed first paint and LCP back
+ * by over a second. These faces still load on demand, with `swap` fallbacks.
+ */
 export const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin", "latin-ext"],
+  preload: false,
 });
 
 const notoSansCyrillic = Noto_Sans({
   variable: "--font-geist-sans",
   subsets: ["cyrillic", "latin"],
   display: "swap",
+  preload: false,
 });
 
 const notoSansDevanagari = Noto_Sans_Devanagari({
   variable: "--font-geist-sans",
   subsets: ["devanagari", "latin"],
   display: "swap",
+  preload: false,
 });
 
 /** Vietnamese needs its own subset for the stacked tone marks. */
@@ -47,6 +57,7 @@ const notoSansVietnamese = Noto_Sans({
   variable: "--font-geist-sans",
   subsets: ["vietnamese", "latin"],
   display: "swap",
+  preload: false,
 });
 
 /**

@@ -21,8 +21,7 @@ const guide: LearnGuide = {
     "Use a short daily routine in a fixed order. Read the whole board before you think about your move, ask one safety question, play games slow enough to do both, and write one line after each game. Openings come last.",
   keyTakeaways: [
     "Stop leaving pieces where they can be taken for free before you study any opening.",
-    "Read the whole board first, ask one question before every move, then play slowly enough to do both.",
-    "One line after each game tells you which of those three failed.",
+    "One line after each game tells you whether the board reading, the move question or the pace failed.",
   ],
   whoThisIsFor: [
     "You know how the pieces move and lose most games to a piece left hanging.",

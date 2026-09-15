@@ -23,6 +23,7 @@ const guide: LearnGuide = {
     "A square you recognise takes one look. A square you count takes two, and the second one is where you lose the thread.",
     "The board labels in Memory Chess can be hidden from the settings page, and the result screen always shows them.",
     "Square colour follows one rule you can check in your head.",
+    "A knight always lands on the other colour, so the colour rule checks every knight path you name.",
   ],
   whoThisIsFor: [
     "Players who still find c3 by running a finger along the bottom edge.",
@@ -184,11 +185,6 @@ const guide: LearnGuide = {
       question: "Why turn the labels off if the game shows them anyway?",
       answer:
         "Because a label lets you read the square instead of knowing it. With the labels hidden, the only way to put a rook on c3 is to know where c3 is. The result screen brings the labels back, so you still get the check.",
-    },
-    {
-      question: "Is d4 dark or light?",
-      answer:
-        "Dark. d is 4, plus 4 is 8, even. The centre alternates, so its other dark square is e5, and its light ones are e4 and d5.",
     },
     {
       question: "Do I need to learn the board from Black's side?",

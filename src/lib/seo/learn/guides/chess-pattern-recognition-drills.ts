@@ -170,10 +170,6 @@ const guide: LearnGuide = {
       slug: "why-puzzle-rating-doesnt-transfer-to-games",
       reason: "Why the shape shows up in puzzles and not in your games.",
     },
-    {
-      slug: "how-many-chess-puzzles-a-day",
-      reason: "How many puzzles to solve once you are rebuilding shapes instead of guessing.",
-    },
   ],
   sources: [
     {

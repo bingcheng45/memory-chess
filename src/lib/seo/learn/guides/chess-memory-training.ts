@@ -21,6 +21,7 @@ const guide: LearnGuide = {
   keyTakeaways: [
     "A piece scores only when its square, type and colour all match, so a near miss is a miss.",
     "At 6 pieces one missed piece already costs 17 points, so the result bands are blunt at low counts.",
+    "With all six right, one invented piece still shows Excellent Memory, so read the piece count before the message.",
     "Every round is a fresh position, so the only fair comparison is your accuracy across rounds at the same settings.",
   ],
   whoThisIsFor: [

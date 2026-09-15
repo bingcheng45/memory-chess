@@ -267,6 +267,21 @@ describe("board rules the coordinates guide states", () => {
     expect(wrong).toEqual([]);
   });
 
+  it("a knight always lands on the other colour", () => {
+    const board = new Chess();
+    const same = SQUARES.flatMap((from) => {
+      const knight = new Chess();
+      knight.clear();
+      knight.put({ type: "n", color: "w" }, from);
+      return SQUARES.filter(
+        (square) =>
+          knight.attackers(square, "w").includes(from) && board.squareColor(square) === board.squareColor(from),
+      ).map((square) => `${from}-${square}`);
+    });
+
+    expect(same).toEqual([]);
+  });
+
   it("a rook on an empty board sees fourteen squares from any square", () => {
     const counts = SQUARES.map((from) => {
       const board = new Chess();

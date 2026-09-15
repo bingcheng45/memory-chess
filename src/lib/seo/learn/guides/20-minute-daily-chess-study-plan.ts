@@ -19,7 +19,6 @@ const guide: LearnGuide = {
   quickAnswer:
     "Minutes 0 to 3, three rounds of 6 pieces at 10 seconds. Minutes 3 to 10, six puzzles solved slowly with the reply checked. Minutes 10 to 17, one of your games replayed with a single question per move. Minutes 17 to 20, one written line.",
   keyTakeaways: [
-    "Four fixed blocks of 3, 7, 7 and 3 minutes, in the same order every day.",
     "Six puzzles in seven minutes leaves time to say the reply before each move.",
     "The written line is what carries one day into the next.",
   ],

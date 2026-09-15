@@ -20,8 +20,7 @@ const guide: LearnGuide = {
   quickAnswer:
     "A puzzle hands you a fresh diagram, tells you whose move it is, promises there is something to find, and lets you look without cost. A game gives you none of that. The rating measures solving with those four gifts, and games test you without them.",
   keyTakeaways: [
-    "A puzzle promises a tactic, marks the side to move, draws the board fresh and lets you look without cost.",
-    "Games take all four away, and the stale board in your head is the easiest gift to overlook.",
+    "A game takes away all four gifts a puzzle gives, and the stale board in your head is the easiest to overlook.",
     "Scan for preconditions, loose pieces and lined-up pairs, and solve only when one appears.",
   ],
   whoThisIsFor: [

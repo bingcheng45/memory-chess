@@ -22,6 +22,7 @@ const guide: LearnGuide = {
   keyTakeaways: [
     "A line fails at the piece you stopped seeing, and a piece that never moved is the easiest to stop seeing.",
     "Two candidate moves at two plies is enough work for one decision.",
+    "Ask who can capture on each landing square before you imagine the next move.",
     "Rebuilding a position from an empty board is the same act as holding one while you calculate.",
   ],
   whoThisIsFor: [
@@ -196,10 +197,6 @@ const guide: LearnGuide = {
     {
       slug: "chess-memory-training",
       reason: "The ladder for holding more pieces through the empty board.",
-    },
-    {
-      slug: "chess-visualization-exercises",
-      reason: "Move pieces in your head before you have to do it under a clock.",
     },
     {
       slug: "how-to-think-in-chess-for-beginners",

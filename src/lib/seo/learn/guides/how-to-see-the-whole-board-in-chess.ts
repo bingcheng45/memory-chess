@@ -181,10 +181,6 @@ const guide: LearnGuide = {
       question: "What if the sweep makes me too slow?",
       answer: "Keep the order and shorten each step. When nothing on an edge has changed since your last move, a glance confirms it and you move on.",
     },
-    {
-      question: "Why read a memory round in zones?",
-      answer: "Twelve scattered pieces in eight seconds are too many to hold one by one. Three zones turn them into three smaller groups you can carry to the empty board.",
-    },
   ],
   relatedArticles: [
     {

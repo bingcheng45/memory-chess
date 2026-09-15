@@ -23,6 +23,7 @@ const guide: LearnGuide = {
     "Each stage has a pass mark, so you know when to move on and when to repeat.",
     "The position rules the game enforces double as a checklist for a drifting mental board.",
     "The score sheet is allowed at first. Rebuilding the board from it is the skill.",
+    "Scholar's mate is the first replay, because four moves end in a position you can check from memory.",
   ],
   whoThisIsFor: [
     "Players who tried a blindfold game and lost the bishops by move ten.",

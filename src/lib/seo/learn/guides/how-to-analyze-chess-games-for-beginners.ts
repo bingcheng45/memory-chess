@@ -194,6 +194,10 @@ const guide: LearnGuide = {
       slug: "chess-memory-training",
       reason: "More rounds for the never looked label.",
     },
+    {
+      slug: "how-to-stop-blundering-in-chess",
+      reason: "Turns the never looked fix, naming what the last move attacks, into a full scan before each move.",
+    },
   ],
   sources: [],
 };

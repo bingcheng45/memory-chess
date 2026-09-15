@@ -58,17 +58,17 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "White: king g1, knight d5, pawns f2, g2 and h2. Black: king e8, queen e6, rook a8, pawns f7, g7 and h7. Eleven pieces, one short of the Hard preset.",
-            "The black queen on e6 attacks the knight on d5, so White wants a move that gains time. Two knight checks are available, 1.Nc7+ and 1.Nf6+. Compare them two plies deep.",
+            "White: king g1, knight d5, pawns f2, g2 and h2. Black: king e8, queen b5, rook a8, pawns f7, g7 and h7. Eleven pieces, one short of the Hard preset.",
+            "The black queen on b5 attacks the knight on d5 along the fifth rank, so White wants a move that gains time. Two knight checks are available, 1.Nc7+ and 1.Nf6+. Compare them two plies deep.",
           ],
         },
         {
           kind: "steps",
           ordered: true,
           items: [
-            "Say the first line out loud: 1.Nc7+. Now list what the knight on c7 attacks: a8, e8 and e6. That is the rook, the king and the queen.",
-            "Ask which black piece can take on c7. The queen on e6 cannot reach it, the rook on a8 cannot, and the king on e8 is two files away. Black moves the king and loses the queen for a knight.",
-            "Say the second line: 1.Nf6+. It also checks the king on e8. Ask the same question. The pawn on g7 takes on f6, and White has given the knight away for nothing.",
+            "Say the first line out loud: 1.Nc7+. Now list what the knight on c7 attacks: a8, b5 and e8. That is the rook, the queen and the king.",
+            "Ask which black piece can take on c7. The queen on b5 cannot reach it, the rook on a8 cannot, and the king on e8 is two files away. Black moves the king, and the knight takes the queen on b5 for free.",
+            "Say the second line: 1.Nf6+. It also checks the king on e8. Ask the same question. The pawn on g7 is the only black piece that reaches f6, and it takes the knight for nothing.",
             "Play both lines on the board and check. If your answer for 1.Nf6+ was wrong, the piece you dropped was the g7 pawn, which never moved and was never going to.",
           ],
         },
@@ -87,7 +87,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "A Memory Chess round asks for one part of calculation on its own. A position appears for a fixed number of seconds, then the board clears, and you rebuild it while the clock runs.",
-            "There is no time limit on the rebuild, but nothing on the empty board reminds you of the queen on e6. One move into a line you are in the same spot, holding pieces the board no longer shows, so a round is a way to practise it.",
+            "There is no time limit on the rebuild, but nothing on the empty board reminds you of the queen on b5. One move into a line you are in the same spot, holding pieces the board no longer shows, so a round is a way to practise it.",
             "The positions are made fresh each round and are random rather than taken from games, so a round does not teach you which moves to look at. It trains holding the picture, nothing more.",
           ],
         },
@@ -207,7 +207,7 @@ const guide: LearnGuide = {
 };
 
 const TWO_CHECKS_WHITE: PieceToken[] = ["Kg1", "Nd5", "f2", "g2", "h2"];
-const TWO_CHECKS_BLACK: PieceToken[] = ["Ke8", "Qe6", "Ra8", "f7", "g7", "h7"];
+const TWO_CHECKS_BLACK: PieceToken[] = ["Ke8", "Qb5", "Ra8", "f7", "g7", "h7"];
 
 export const positions: LearnPosition[] = [
   {
@@ -218,7 +218,8 @@ export const positions: LearnPosition[] = [
     claims: [
       { kind: "pieceCount", count: 11 },
       { kind: "noCheck" },
-      { kind: "attacks", from: "e6", squares: ["d5"] },
+      { kind: "attacks", from: "b5", squares: ["d5"] },
+      { kind: "attackers", square: "f6", side: "b", from: ["g7"] },
     ],
   },
   {
@@ -229,9 +230,9 @@ export const positions: LearnPosition[] = [
     line: ["Nc7+"],
     claims: [
       { kind: "check" },
-      { kind: "attacks", from: "c7", squares: ["a8", "e8", "e6"] },
+      { kind: "attacks", from: "c7", squares: ["a8", "e8", "b5"] },
       { kind: "attackers", square: "c7", side: "b", from: [] },
-      { kind: "replies", nonKing: [], then: "Nxe6" },
+      { kind: "replies", nonKing: [], then: "Nxb5", undefended: "b5" },
     ],
   },
   {

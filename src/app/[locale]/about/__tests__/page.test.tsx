@@ -44,6 +44,17 @@ describe("AboutPage", () => {
     expect(text).not.toMatch(/I write them myself/);
     expect(text).not.toMatch(/sixteen guides/);
     expect(text).toMatch(/written with AI assistance/);
+    expect(text).not.toMatch(/every release since the beginning/);
+    expect(text).toMatch(/records every versioned release/);
+  });
+
+  it("discloses AI assistance for the site itself, as the guide byline does", () => {
+    const { container } = render(<AboutPage />);
+    const text = container.textContent ?? "";
+
+    expect(text).toMatch(/with AI assistance for the code and the site copy/);
+    expect(text).not.toMatch(/design, code, and maintain everything/);
+    expect(text).not.toMatch(/just me/);
   });
 
   it("counts the guides the Learn library actually holds", () => {

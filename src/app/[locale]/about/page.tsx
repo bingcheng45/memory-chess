@@ -47,9 +47,9 @@ export default function AboutPage() {
       <div className={EDITORIAL_STYLES.readingColumn}>
         <EditorialSection title="Who runs this site">
             <p>
-              I am Bing Cheng, a solo developer. I design, code, and maintain
-              everything on Memory Chess myself. There is no team and no company
-              behind it, just me. I also build{" "}
+              I am Bing Cheng, a solo developer. I run Memory Chess on my own,
+              with AI assistance for the code and the site copy. There is no
+              team and no company behind it. I also build{" "}
               <a href="https://tont.app" className={EDITORIAL_STYLES.link} {...external}>
                 Tont
               </a>
@@ -160,8 +160,7 @@ export default function AboutPage() {
               <Link href="/changelog" className={EDITORIAL_STYLES.link}>
                 changelog
               </Link>{" "}
-              records every release since the beginning, including the bug
-              fixes. I keep it honest because I use it myself to remember what
+              records every versioned release, including the bug fixes. I keep it honest because I use it myself to remember what
               changed and when.
             </p>
         </EditorialSection>

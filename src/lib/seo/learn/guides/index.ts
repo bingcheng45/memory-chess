@@ -1,7 +1,6 @@
 import type { LearnGuide } from "../schema";
 import guide0 from "./how-to-get-better-at-chess-for-beginners";
 import guide1 from "./chess-visualization-exercises";
-import guide2 from "./chess-board-vision-drills";
 import guide3 from "./chess-memory-training";
 import guide4 from "./blindfold-chess-training-for-beginners";
 import guide6 from "./how-to-stop-blundering-in-chess";
@@ -19,7 +18,6 @@ import guide15 from "./how-to-think-in-chess-for-beginners";
 export const LEARN_GUIDES: readonly LearnGuide[] = [
   guide0,
   guide1,
-  guide2,
   guide3,
   guide4,
   guide6,

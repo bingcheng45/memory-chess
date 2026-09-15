@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const PUBLISHER_ID = "pub-9048170183399377";
 const PROD_ORIGIN = "https://thememorychess.com";
@@ -69,26 +70,32 @@ function countUnits(text) {
 
 const VOID_TAGS = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"]);
 
+const BREAKPOINT = "(?:sm|md|lg|xl|2xl)";
+const SHOWN_FROM_BREAKPOINT = new RegExp(`^${BREAKPOINT}:(?:block|flex|grid|contents|visible|(?:inline|table)(?:-[a-z-]+)?)$`);
+const HIDDEN_FROM_BREAKPOINT = new RegExp(`^${BREAKPOINT}:hidden$`);
+
 /**
- * Whether an opening tag hides its content from the first paint: an inline
- * style, the `hidden` attribute, a Tailwind `hidden` or `invisible` class, or a
- * Radix panel that its own class hides while inactive. `aria-hidden` is not
- * hiding; a decorative element without words adds nothing to the count anyway.
+ * Whether an opening tag hides its content at any viewport: an inline style,
+ * the `hidden` attribute, a Tailwind `hidden` or `invisible` class that no
+ * breakpoint class shows again, or a breakpoint `hidden` class such as
+ * `md:hidden`. Text hidden at one width is still hidden text. `aria-hidden` is
+ * not hiding; an element without words adds nothing to the count anyway.
  */
-function hidesContent(attributes) {
+export function hidesContent(attributes) {
   const value = (name) => attributes.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] ?? null;
   const style = value("style") ?? "";
-  const classes = value("class") ?? "";
+  const tokens = (value("class") ?? "").split(/\s+/);
   const bareAttributes = attributes.replace(/="[^"]*"/g, "");
+  const shownFromBreakpoint = tokens.some((token) => SHOWN_FROM_BREAKPOINT.test(token));
   return (
     /opacity:\s*0(?![.\d])|display:\s*none|visibility:\s*hidden/i.test(style) ||
     /\shidden(?=\s|$)/i.test(bareAttributes) ||
-    classes.split(/\s+/).some((token) => token === "hidden" || token === "invisible") ||
-    (value("data-state") === "inactive" && classes.includes("data-[state=inactive]:hidden"))
+    (!shownFromBreakpoint && tokens.some((token) => token === "hidden" || token === "invisible")) ||
+    tokens.some((token) => HIDDEN_FROM_BREAKPOINT.test(token))
   );
 }
 
-function hiddenText(html) {
+export function hiddenText(html) {
   const opener = /<([a-zA-Z][\w-]*)((?:\s+[^\s=>/]+(?:="[^"]*")?)*)\s*(\/?)>/g;
   let hidden = "";
   let match;
@@ -114,7 +121,7 @@ function attr(html, pattern) {
   return html.match(pattern)?.[1]?.trim() ?? null;
 }
 
-function parsePage(url, status, html) {
+export function parsePage(url, status, html) {
   const body = stripBlocks(html, ["script", "style", "noscript", "template"]);
   const main = stripBlocks(body, ["nav", "footer"]);
   const mainText = toText(main);
@@ -453,7 +460,9 @@ async function main() {
   process.exit(failed ? 1 : 0);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(2);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(2);
+  });
+}

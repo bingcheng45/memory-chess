@@ -1,41 +1,36 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { DEFAULT_LOCALE } from "@/i18n/routing";
 import {
   EditorialHero,
   EditorialPageShell,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
-import { useTranslations } from "next-intl";
 import {
   CHANGELOG_ENTRIES,
   LATEST_CHANGELOG_ENTRY,
   getChangelogEntryId,
 } from "@/lib/changelog";
+import { CHANGELOG_PAGE_COPY } from "@/lib/changelog/copy";
 
 const siteUrl = "https://thememorychess.com";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations({
-    locale: DEFAULT_LOCALE,
-    namespace: "changelog.meta",
-  });
+export function generateMetadata(): Metadata {
+  const meta = CHANGELOG_PAGE_COPY.meta;
 
   return {
-    title: t("title"),
-    description: t("description"),
+    title: meta.title,
+    description: meta.description,
     alternates: {
       canonical: "/changelog",
     },
     openGraph: {
-      title: t("socialTitle"),
-      description: t("socialDescription"),
+      title: meta.socialTitle,
+      description: meta.socialDescription,
       url: `${siteUrl}/changelog`,
     },
     twitter: {
-      title: t("socialTitle"),
-      description: t("socialDescription"),
+      title: meta.socialTitle,
+      description: meta.socialDescription,
     },
   };
 }
@@ -48,14 +43,13 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 export default function ChangelogPage() {
-  const t = useTranslations("changelog");
   const entries = CHANGELOG_ENTRIES;
   return (
     <EditorialPageShell>
       <EditorialHero
-        eyebrow={t("eyebrow")}
-        title={t("title")}
-        description={t("meta.socialDescription")}
+        eyebrow={CHANGELOG_PAGE_COPY.eyebrow}
+        title={CHANGELOG_PAGE_COPY.title}
+        description={CHANGELOG_PAGE_COPY.meta.socialDescription}
       />
 
       <div className={EDITORIAL_STYLES.readingColumn}>
@@ -76,7 +70,7 @@ export default function ChangelogPage() {
                 </h2>
                 {isLatest && (
                   <span className="rounded-full border border-peach-500/25 bg-peach-500/10 px-2.5 py-1 text-xs font-medium text-peach-300">
-                    {t("latest")}
+                    {CHANGELOG_PAGE_COPY.latest}
                   </span>
                 )}
                 <time
@@ -96,7 +90,7 @@ export default function ChangelogPage() {
 
               <div
                 className="mt-6 space-y-6"
-                aria-label={t("changesIn", { version: entry.version })}
+                aria-label={CHANGELOG_PAGE_COPY.changesIn(entry.version)}
               >
                 {entry.groups.map((group) => (
                   <section key={group.title}>

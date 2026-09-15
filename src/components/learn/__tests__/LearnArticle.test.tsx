@@ -2,30 +2,6 @@ import type { ComponentProps } from "react";
 import { render, screen } from "@/test-utils/intl";
 import LearnArticleRich from "@/components/learn/LearnArticleRich";
 import { EN_LEARN_PAGES, EN_LEARN_GOALS } from "@/lib/seo/learn";
-import enMessages from "../../../../messages/en.json";
-
-/**
- * A catalogue whose every leaf is a unique marker, with the original ICU
- * arguments preserved so messages still format. Rendering against it proves a
- * string came from the catalogue: a hard-coded literal has no marker to show.
- */
-function markerCatalogue(value: unknown, keyPath = ""): unknown {
-  if (Array.isArray(value)) {
-    return value.map((item, i) => markerCatalogue(item, `${keyPath}[${i}]`));
-  }
-  if (value && typeof value === "object") {
-    return Object.fromEntries(
-      Object.entries(value).map(([k, v]) => [
-        k,
-        markerCatalogue(v, keyPath ? `${keyPath}.${k}` : k),
-      ]),
-    );
-  }
-  const args = [...String(value).matchAll(/\{\s*(\w+)\s*\}/g)]
-    .map((m) => `{${m[1]}}`)
-    .join(" ");
-  return `«${keyPath}»${args ? ` ${args}` : ""}`;
-}
 
 function getLearnPageBySlug(slug: string) {
   const page = EN_LEARN_PAGES.find((entry) => entry.slug === slug);
@@ -227,61 +203,6 @@ describe("LearnArticleRich", () => {
     const links = screen.getAllByRole("link", { name: "the settings page" });
     expect(links.length).toBeGreaterThanOrEqual(2);
     for (const link of links) expect(link).toHaveAttribute("href", "/settings");
-  });
-
-  it("reads every piece of article chrome from the catalogue", () => {
-    // Rendered against a marker catalogue, any string the component still
-    // hard-codes simply will not have a marker in the DOM. This is the
-    // invariant, not a list of today's phrasings: a newly hard-coded heading
-    // fails here without anyone remembering to extend the test.
-    const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
-
-    const { container } = render(
-      <LearnArticleRich
-        page={page}
-        goals={EN_LEARN_GOALS}
-        allPages={EN_LEARN_PAGES}      />,
-      {
-        locale: "en",
-        messages: markerCatalogue(enMessages) as Record<string, unknown>,
-      },
-    );
-
-    const text = container.textContent ?? "";
-
-    for (const key of [
-      "breadcrumbHome",
-      "breadcrumbLearn",
-      "eyebrow",
-      "updated",
-      "startHere",
-      "whatYouWillLearn",
-      "whoThisIsFor",
-      "browseAllGuides",
-      "onThisPage",
-      "aimFor",
-      "keepLearning",
-      "whatToLearnNext",
-      "commonQuestions",
-      "faqLabel",
-      "referenceLinks",
-    ]) {
-      expect(text).toContain(`\u00ablearnArticle.${key}\u00bb`);
-    }
-
-    // And the English literals they replaced are gone, so nothing is being
-    // rendered twice from both a message and a leftover hard-coded copy.
-    for (const literal of [
-      "Simple chess guide",
-      "Browse all guides",
-      "On this page",
-      "What to learn next",
-      "Read this guide",
-      "Common questions",
-      "Reference links",
-    ]) {
-      expect(text).not.toContain(literal);
-    }
   });
 
   it("links a drill to the exact round it describes, and only when the game can play it", () => {

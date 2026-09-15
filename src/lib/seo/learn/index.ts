@@ -7,7 +7,7 @@ import {
   type LearnPageContent,
 } from "./schema";
 import { LEARN_GUIDES } from "./guides";
-import enMessages from "../../../../messages/en.json";
+import { LEARN_ARTICLE_COPY, LEARN_GOAL_COPY } from "./copy";
 
 export * from "./schema";
 
@@ -31,7 +31,7 @@ function toPage(guide: LearnGuide): LearnPageContent {
     tableOfContents: [
       ...guide.sections.map((section) => ({ id: section.id, label: section.title })),
       ...(guide.faq.length > 0
-        ? [{ id: "faq", label: enMessages.learnArticle.faqLabel }]
+        ? [{ id: "faq", label: LEARN_ARTICLE_COPY.faqLabel }]
         : []),
     ],
   };
@@ -41,9 +41,7 @@ export const EN_LEARN_PAGES: LearnPageContent[] = LEARN_GUIDES.map(toPage);
 
 export const EN_LEARN_GOALS: LearnGoal[] = LEARN_GOAL_IDS.map((id) => ({
   id,
-  label: enMessages.learnArticle.goals[id].label,
-  description: enMessages.learnArticle.goals[id].description,
-  accent: enMessages.learnArticle.goals[id].accent,
+  ...LEARN_GOAL_COPY[id],
   href: LEARN_GOAL_HREFS[id],
 }));
 

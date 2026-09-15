@@ -5,20 +5,18 @@ import {
   EditorialPageShell,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
-import { useTranslations } from "next-intl";
 import type { LearnPageContent } from "@/lib/seo/learn/schema";
+import { LEARN_HUB_COPY, type LearnQuickStartId } from "@/lib/seo/learn/copy";
 import type { LearnGoal } from "@/lib/seo/learn";
 
 const SITE_URL = "https://thememorychess.com";
 const HUB_URL = `${SITE_URL}/learn`;
 
-// `id` keys into the `learnHub.paths` messages.
-const QUICK_STARTS = [
+const QUICK_STARTS: ReadonlyArray<{ id: LearnQuickStartId; href: string }> = [
   { id: "newToChess", href: "/learn/how-to-get-better-at-chess-for-beginners" },
   { id: "missingThreats", href: "/learn/how-to-stop-blundering-in-chess" },
   { id: "losingPosition", href: "/learn/chess-visualization-exercises" },
-] as const;
-
+];
 
 type LearnHubSchemaInput = {
   allPages: LearnPageContent[];
@@ -88,35 +86,34 @@ export default function LearnHubPageContent({
   allPages,
   goals,
 }: LearnHubProps) {
-  const t = useTranslations("learnHub");
   const learnHubSchema = buildLearnHubSchema({
     allPages,
-    name: t("meta.title"),
-    description: t("meta.description"),
+    name: LEARN_HUB_COPY.meta.title,
+    description: LEARN_HUB_COPY.meta.description,
   });
   return (
     <EditorialPageShell>
       <EditorialHero
-        eyebrow={t("eyebrow")}
-        title={t("title")}
-        description={t("heroDescription")}
+        eyebrow={LEARN_HUB_COPY.eyebrow}
+        title={LEARN_HUB_COPY.title}
+        description={LEARN_HUB_COPY.heroDescription}
       >
         <div className="mt-7 flex flex-wrap justify-center gap-3">
-          <EditorialActionLink href="/learn/how-to-get-better-at-chess-for-beginners">{t("startBeginner")}</EditorialActionLink>
-          <EditorialActionLink href="/game" variant="secondary">{t("playCta")}</EditorialActionLink>
+          <EditorialActionLink href="/learn/how-to-get-better-at-chess-for-beginners">{LEARN_HUB_COPY.startBeginner}</EditorialActionLink>
+          <EditorialActionLink href="/game" variant="secondary">{LEARN_HUB_COPY.playCta}</EditorialActionLink>
         </div>
       </EditorialHero>
 
       <div className={EDITORIAL_STYLES.wideColumn}>
         <section aria-labelledby="next-step-heading" className="pb-10 sm:pb-12">
           <div className="mb-7">
-            <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>{t("startHere")}</p>
+            <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>{LEARN_HUB_COPY.startHere}</p>
             <h2
               id="next-step-heading"
               className={EDITORIAL_STYLES.sectionTitle}
-            >{t("pickNext")}</h2>
+            >{LEARN_HUB_COPY.pickNext}</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
-              {t("pickNextDescription")}
+              {LEARN_HUB_COPY.pickNextDescription}
             </p>
           </div>
 
@@ -135,13 +132,13 @@ export default function LearnHubPageContent({
                   </span>
                   <span>
                     <span className="block text-sm font-medium text-peach-300">
-                      {t(`paths.${item.id}.label`)}
+                      {LEARN_HUB_COPY.paths[item.id].label}
                     </span>
                     <span className="mt-1 block text-xl font-semibold tracking-tight text-white">
-                      {t(`paths.${item.id}.title`)}
+                      {LEARN_HUB_COPY.paths[item.id].title}
                     </span>
                     <span className="mt-2 block text-sm leading-6 text-text-muted sm:text-base sm:leading-7">
-                      {t(`paths.${item.id}.description`)}
+                      {LEARN_HUB_COPY.paths[item.id].description}
                     </span>
                   </span>
                   <span
@@ -162,14 +159,14 @@ export default function LearnHubPageContent({
         >
           <div className="mb-3">
             <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>
-              {t("allGuides", { count: allPages.length })}
+              {LEARN_HUB_COPY.allGuides(allPages.length)}
             </p>
             <h2
               id="choose-goal-heading"
               className={EDITORIAL_STYLES.sectionTitle}
-            >{t("chooseGoal")}</h2>
+            >{LEARN_HUB_COPY.chooseGoal}</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-text-muted">
-              {t("chooseGoalDescription")}
+              {LEARN_HUB_COPY.chooseGoalDescription}
             </p>
           </div>
 
@@ -205,9 +202,7 @@ export default function LearnHubPageContent({
                         className="group grid gap-2 py-5 sm:grid-cols-[6rem_1fr_auto] sm:items-start sm:gap-5"
                       >
                         <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
-                          {t("guideNumber", {
-                            number: String(index + 1).padStart(2, "0"),
-                          })}
+                          {LEARN_HUB_COPY.guideNumber(String(index + 1).padStart(2, "0"))}
                         </span>
                         <span>
                           <span className="block text-lg font-semibold leading-6 text-white transition-colors group-hover:text-peach-200">
@@ -236,13 +231,13 @@ export default function LearnHubPageContent({
         </section>
 
         <section className="border-t border-white/10 pt-10 text-center sm:pt-12">
-          <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>{t("readRecallPlay")}</p>
-          <h2 className="text-2xl font-semibold tracking-tight text-white">{t("turnIdea")}</h2>
+          <p className={`${EDITORIAL_STYLES.eyebrow} mb-3`}>{LEARN_HUB_COPY.readRecallPlay}</p>
+          <h2 className="text-2xl font-semibold tracking-tight text-white">{LEARN_HUB_COPY.turnIdea}</h2>
           <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-text-muted">
-            {t("turnIdeaDescription")}
+            {LEARN_HUB_COPY.turnIdeaDescription}
           </p>
           <div className="mt-6 flex justify-center">
-            <EditorialActionLink href="/game">{t("startRound")}</EditorialActionLink>
+            <EditorialActionLink href="/game">{LEARN_HUB_COPY.startRound}</EditorialActionLink>
           </div>
         </section>
       </div>

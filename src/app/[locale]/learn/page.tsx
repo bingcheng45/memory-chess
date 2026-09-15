@@ -1,29 +1,25 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
-import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { EN_LEARN_GOALS, EN_LEARN_PAGES } from "@/lib/seo/learn";
+import { LEARN_HUB_COPY } from "@/lib/seo/learn/copy";
 
 const SITE_URL = "https://thememorychess.com";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations({
-    locale: DEFAULT_LOCALE,
-    namespace: "learnHub.meta",
-  });
+export function generateMetadata(): Metadata {
+  const { title, description } = LEARN_HUB_COPY.meta;
 
   return {
-    title: t("title"),
-    description: t("description"),
+    title,
+    description,
     alternates: { canonical: "/learn" },
     openGraph: {
-      title: t("title"),
-      description: t("description"),
+      title,
+      description,
       url: `${SITE_URL}/learn`,
     },
     twitter: {
-      title: t("title"),
-      description: t("description"),
+      title,
+      description,
     },
   };
 }

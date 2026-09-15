@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import { ChevronDown } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import {
@@ -17,6 +16,7 @@ import {
 } from "@/lib/seo/learn/schema";
 import type { LearnGoal } from "@/lib/seo/learn";
 import LearnArticleTracking from "@/components/learn/LearnArticleTracking";
+import { LEARN_ARTICLE_COPY } from "@/lib/seo/learn/copy";
 
 const SITE_URL = "https://thememorychess.com";
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
@@ -244,7 +244,6 @@ export default function LearnArticleRich({
   goals,
   allPages,
 }: LearnArticleProps) {
-  const t = useTranslations("learnArticle");
   const goalsById = new Map(goals.map((entry) => [entry.id, entry]));
   const goal = goalsById.get(page.goal)!;
   const homeUrl = SITE_URL;
@@ -349,7 +348,7 @@ export default function LearnArticleRich({
           <ol className="flex flex-wrap items-center gap-2">
             <li>
               <Link href="/" className="transition-colors hover:text-peach-300">
-                {t("breadcrumbHome")}
+                {LEARN_ARTICLE_COPY.breadcrumbHome}
               </Link>
             </li>
             <li aria-hidden="true" className="text-white/30">
@@ -360,7 +359,7 @@ export default function LearnArticleRich({
                 href="/learn"
                 className="transition-colors hover:text-peach-300"
               >
-                {t("breadcrumbLearn")}
+                {LEARN_ARTICLE_COPY.breadcrumbLearn}
               </Link>
             </li>
             <li aria-hidden="true" className="text-white/30">
@@ -381,7 +380,7 @@ export default function LearnArticleRich({
             </span>
             <span className="text-xs text-text-muted">{page.difficulty}</span>
           </div>
-          <p className={`${EDITORIAL_STYLES.eyebrow} mb-4`}>{t("eyebrow")}</p>
+          <p className={`${EDITORIAL_STYLES.eyebrow} mb-4`}>{LEARN_ARTICLE_COPY.eyebrow}</p>
           <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
             {page.h1}
           </h1>
@@ -390,7 +389,7 @@ export default function LearnArticleRich({
           </p>
           <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-text-muted">
             <time dateTime={page.updatedAt}>
-              {t("updated", { date: formatDate(page.updatedAt) })}
+              {LEARN_ARTICLE_COPY.updated(formatDate(page.updatedAt))}
             </time>
           </div>
           <address data-learn-byline className="mt-2 text-sm leading-6 text-text-muted not-italic">
@@ -409,7 +408,7 @@ export default function LearnArticleRich({
           className={`${EDITORIAL_STYLES.callout} mb-10 sm:mb-12`}
         >
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            {t("startHere")}
+            {LEARN_ARTICLE_COPY.startHere}
           </p>
           <h2
             id="quick-answer-heading"
@@ -421,7 +420,7 @@ export default function LearnArticleRich({
             {page.keyTakeaways?.length ? (
             <div>
               <h3 className="text-sm font-semibold text-white">
-                {t("whatYouWillLearn")}
+                {LEARN_ARTICLE_COPY.whatYouWillLearn}
               </h3>
               <ul className="mt-3 space-y-2.5">
                 {page.keyTakeaways.map((takeaway) => (
@@ -442,7 +441,7 @@ export default function LearnArticleRich({
             {page.whoThisIsFor?.length ? (
             <div>
               <h3 className="text-sm font-semibold text-white">
-                {t("whoThisIsFor")}
+                {LEARN_ARTICLE_COPY.whoThisIsFor}
               </h3>
               <ul className="mt-3 space-y-2.5">
                 {page.whoThisIsFor.map((item) => (
@@ -473,7 +472,7 @@ export default function LearnArticleRich({
               variant="secondary"
               trackingName="hero-secondary"
             >
-              {t("browseAllGuides")}
+              {LEARN_ARTICLE_COPY.browseAllGuides}
             </EditorialActionLink>
           </div>
         </section>
@@ -486,7 +485,7 @@ export default function LearnArticleRich({
             id="on-this-page-heading"
             className={`${EDITORIAL_STYLES.subsectionTitle} mb-4`}
           >
-            {t("onThisPage")}
+            {LEARN_ARTICLE_COPY.onThisPage}
           </p>
           <ol className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
             {page.tableOfContents.map((item, index) => (
@@ -532,7 +531,7 @@ export default function LearnArticleRich({
                 key={`${section.id}-${blockIndex}`}
                 block={block}
                 sectionId={section.id}
-                aimForLabel={t("aimFor")}
+                aimForLabel={LEARN_ARTICLE_COPY.aimFor}
               />
             ))}
           </section>
@@ -540,10 +539,10 @@ export default function LearnArticleRich({
 
         <section className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            {t("keepLearning")}
+            {LEARN_ARTICLE_COPY.keepLearning}
           </p>
           <h2 className={EDITORIAL_STYLES.sectionTitle}>
-            {t("whatToLearnNext")}
+            {LEARN_ARTICLE_COPY.whatToLearnNext}
           </h2>
           <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
             {relatedPages.map((entry) => (
@@ -571,9 +570,9 @@ export default function LearnArticleRich({
         {page.faq.length > 0 ? (
         <section id="faq" className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
-            {t("commonQuestions")}
+            {LEARN_ARTICLE_COPY.commonQuestions}
           </p>
-          <h2 className={EDITORIAL_STYLES.sectionTitle}>{t("faqLabel")}</h2>
+          <h2 className={EDITORIAL_STYLES.sectionTitle}>{LEARN_ARTICLE_COPY.faqLabel}</h2>
           {/*
             Native details/summary instead of the Radix accordion: Radix
             unmounts closed content, so the served HTML carried the questions
@@ -602,7 +601,7 @@ export default function LearnArticleRich({
         {page.sources.length > 0 ? (
         <section className={EDITORIAL_STYLES.section}>
           <h2 className="text-xl font-semibold tracking-tight text-white">
-            {t("referenceLinks")}
+            {LEARN_ARTICLE_COPY.referenceLinks}
           </h2>
           <ul className="mt-4 divide-y divide-white/10 border-y border-white/10">
             {page.sources.map((source) => (

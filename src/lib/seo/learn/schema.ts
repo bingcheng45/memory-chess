@@ -1,6 +1,6 @@
 /**
  * Goal ids and their hrefs. The visible label, description and accent live in
- * the `learnArticle.goals` messages -- see EN_LEARN_GOALS in ./index.
+ * LEARN_GOAL_COPY in ./copy -- see EN_LEARN_GOALS in ./index.
  */
 export const LEARN_GOAL_IDS = [
   "reduce-blunders",

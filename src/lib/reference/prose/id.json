@@ -30,8 +30,8 @@
       "trains": {
         "easy": "Dua raja dan tidak ada yang lain. Ini mengajarkan antarmuka dan memberi gambaran jelas apakah Anda bisa menahan dua petak dalam ingatan di bawah tekanan waktu.",
         "medium": "Enam bidak berarti kedua raja ditambah empat bidak lain, dengan waktu melihat sepuluh detik yang sama seperti tingkat dua bidak.",
-        "hard": "Dua belas bidak dalam delapan detik berarti dua pertiga detik per bidak, jadi mengelompokkan bidak menjadi bentuk-bentuk lebih membantu daripada mengingatnya satu per satu.",
-        "grandmaster": "Dua puluh bidak dalam lima detik berarti seperempat detik per bidak. Tingkat ini memberi imbalan bagi yang bisa melihat rantai pion dan gerombolan bidak sebagai satu kesatuan."
+        "hard": "Dua belas bidak dalam delapan detik berarti dua pertiga detik per bidak, jadi cobalah mengelompokkan bidak menjadi bentuk-bentuk alih-alih mengingatnya satu per satu.",
+        "grandmaster": "Dua puluh bidak dalam lima detik berarti seperempat detik per bidak, jadi cobalah melihat rantai pion dan gerombolan bidak sebagai satu kesatuan."
       },
       "custom": {
         "title": "Pengaturan khusus",

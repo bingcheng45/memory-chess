@@ -30,8 +30,8 @@
       "trains": {
         "easy": "Két király és semmi más. Megtanítja a felületet, és tiszta képet ad arról, hogy idő nyomása alatt meg tudsz-e tartani két mezőt.",
         "medium": "Hat bábu a két királyt és még négy másik bábut jelenti, ugyanannyi, tíz másodperc nézési idővel, mint a kétbábus szinten.",
-        "hard": "Tizenkét bábu nyolc másodperc alatt bábunként kétharmad másodpercet hagy, ezért a bábuk alakzatokba csoportosítása többet segít, mint egyenként megjegyezni őket.",
-        "grandmaster": "Húsz bábu öt másodperc alatt bábunként negyed másodpercet jelent. Ez a szint azt jutalmazza, ha a gyalogláncokat és bábucsoportokat egyetlen egységként látod."
+        "hard": "Tizenkét bábu nyolc másodperc alatt bábunként kétharmad másodpercet hagy, ezért próbáld a bábukat alakzatokba csoportosítani ahelyett, hogy egyenként jegyeznéd meg őket.",
+        "grandmaster": "Húsz bábu öt másodperc alatt bábunként negyed másodpercet jelent, ezért próbáld a gyalogláncokat és bábucsoportokat egyetlen egységként látni."
       },
       "custom": {
         "title": "Egyéni beállítások",

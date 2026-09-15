@@ -30,8 +30,8 @@
       "trains": {
         "easy": "Doi regi și nimic altceva. Te învață interfața și îți arată limpede dacă poți reține două pătrate sub presiunea timpului.",
         "medium": "Șase piese înseamnă ambii regi plus alte patru piese, cu aceleași zece secunde de privit ca la nivelul cu două piese.",
-        "hard": "Douăsprezece piese în opt secunde înseamnă două treimi de secundă pentru fiecare piesă, așa că gruparea pieselor în forme ajută mai mult decât reținerea lor una câte una.",
-        "grandmaster": "Douăzeci de piese în cinci secunde înseamnă un sfert de secundă pentru fiecare piesă. Nivelul răsplătește capacitatea de a vedea lanțurile de pioni și grupurile de piese ca unități întregi."
+        "hard": "Douăsprezece piese în opt secunde înseamnă două treimi de secundă pentru fiecare piesă, așa că încearcă să grupezi piesele în forme în loc să le reții una câte una.",
+        "grandmaster": "Douăzeci de piese în cinci secunde înseamnă un sfert de secundă pentru fiecare piesă, așa că încearcă să vezi lanțurile de pioni și grupurile de piese ca unități întregi."
       },
       "custom": {
         "title": "Setări personalizate",

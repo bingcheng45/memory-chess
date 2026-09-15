@@ -37,7 +37,7 @@ createServer((req, res) => {
     return;
   }
   const unsupported = [...url.searchParams].filter(
-    ([key, value]) => !["select", "order", "limit"].includes(key) && !value.startsWith("eq."),
+    ([key, value]) => !["select", "order", "limit"].includes(key) && !/^(eq|gt)\./.test(value),
   );
   if (unsupported.length) {
     res.writeHead(501, { "content-type": "application/json" });
@@ -46,9 +46,11 @@ createServer((req, res) => {
   }
   const filtered = rows
     .filter((row) =>
-      [...url.searchParams].every(([column, value]) =>
-        value.startsWith("eq.") ? String(row[column]) === value.slice(3) : true,
-      ),
+      [...url.searchParams].every(([column, value]) => {
+        if (value.startsWith("eq.")) return String(row[column]) === value.slice(3);
+        if (value.startsWith("gt.")) return row[column] != null && Number(row[column]) > Number(value.slice(3));
+        return true;
+      }),
     )
     .sort(compare(url.searchParams.get("order") ?? "id"))
     .slice(0, Number(url.searchParams.get("limit") ?? rows.length));

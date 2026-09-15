@@ -24,6 +24,7 @@ export async function getLeaderboard(difficulty: string = 'medium'): Promise<{da
       .from('leaderboard_entries')
       .select('*')
       .eq('difficulty', difficulty)
+      .gt('correct_pieces', 0)
       .order('correct_pieces', { ascending: false })
       .order('total_wrong_pieces', { ascending: true, nullsFirst: false })
       .order('memorize_time', { ascending: true })
@@ -99,6 +100,7 @@ export async function checkLeaderboardRanking(
     .from('leaderboard_entries')
     .select('*', { count: 'exact', head: true })
     .eq('difficulty', difficulty)
+    .gt('correct_pieces', 0)
     .or(condition);
     
   if (error) {

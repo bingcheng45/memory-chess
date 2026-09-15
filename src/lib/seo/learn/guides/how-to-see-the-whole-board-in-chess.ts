@@ -5,182 +5,167 @@ const guide: LearnGuide = {
   goal: "visualization",
   title: "How to See the Whole Board in Chess",
   h1: "How to see the whole chess board",
-  description: "Use a simple board scan to notice distant pieces, spot threats, and avoid tunnel vision.",
+  description: "Why a bishop that never moved still wins material, a sweep that starts at the edges, and a 12-piece round with no clusters to lean on.",
   primaryKeyword: "how to see the whole board in chess",
   secondaryKeywords: [
-    "chess board awareness",
-    "stop tunnel vision in chess",
-    "see the whole board chess",
-    "chess scanning drills",
-    "peripheral board vision chess",
+    "chess tunnel vision",
+    "board awareness chess",
+    "chess scanning habit",
+    "long range pieces chess",
+    "how to notice threats in chess",
   ],
-  ctaLabel: "Train Whole-Board Vision",
-  quickAnswer: "Before every move, check both kings, unprotected pieces, the centre, and the edges. Memory practice helps you keep more of the board in mind.",
+  ctaLabel: "Play 12 pieces with 8 seconds to look",
+  quickAnswer: "Sweep from the edges inward before you look at your own move. Take the long diagonals, then the edge files and ranks, then trace every enemy bishop, rook and queen to its last square.",
   keyTakeaways: [
-    "Tunnel vision means your attention is stuck in one area.",
-    "Edge-piece checks are especially useful for beginners.",
-    "A clear memory of the board makes scanning easier.",
+    "The eye follows the piece that moved, and a long-range piece does its damage by standing still while a blocker moves.",
+    "Trace every line to the last square it reaches, because the first piece on the line may be yours and pinned.",
+    "A Memory Chess position is generated with no plan behind it, so it offers none of the clusters a game position lets you lean on.",
   ],
   whoThisIsFor: [
-    "Players who notice a tactic only on one side of the board.",
-    "Beginners who keep missing bishops, rooks, or distant threats.",
-    "Anyone who feels mentally cramped in open positions.",
+    "Players who lose material to a bishop or rook that had not moved for many moves.",
+    "Anyone whose blunders happen on the side of the board away from the fight.",
+    "Beginners who look at their own move first and at the far corners never.",
   ],
-  timeToRead: "7 min read",
+  timeToRead: "6 min read",
   difficulty: "Beginner",
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Mental board control",
+      id: "bishop-on-a2",
+      title: "The bishop on a2 that nobody was watching",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Many beginners look only at the pieces near their planned move. This makes distant bishops, rooks, and threats easy to miss.",
-            "You do not need to stare at the board for longer. Use the same simple scan to check every important area.",
+            "Set this up with Black to move. White has Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 and pawns on a3, b2, c2, f2, g2 and h2.",
+            "Black has Kg8, Ra8, Rd8, Bc8, Nf6 and pawns on a7, b7, c7, e6, f7, g7 and h7.",
+            "The pawn on e6 is the only piece between the bishop on a2 and f7. The diagonal runs a2, b3, c4, d5, e6 and f7.",
+            "Push ...e5 for space in the centre, and Bxf7+ follows. The king cannot take back, because the knight on g5 also covers f7, so White wins a pawn with check.",
+            "Nothing about the bishop changed. A Black pawn moved, and the eye went with it. Long-range pieces win material by standing still while a blocker walks away.",
+            "Rooks do the same more quietly. A rook can sit on h1 all game until the h-pawns are traded, and then it owns an open file without having moved.",
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Start here: widen the scan",
-      summary: "You can try these steps today.",
+      id: "edge-sweep",
+      title: "The four-corner sweep, in a fixed order",
       blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "The order matters more than the speed. The sweep starts at the edges because those are the squares you never reach when you look outward from your own move.",
+          ],
+        },
         {
           kind: "steps",
           ordered: true,
           items: [
-            "Check both kings and the lines pointing toward them.",
-            "Look for unprotected pieces in the centre first, then on the edges.",
-            "Sweep bishops and rooks across their full lines, not just the destination square you care about.",
-            "Run a Memory Chess round so the whole board stays more available in attention.",
-            "Before moving, ask what part of the board you have not looked at yet.",
+            "The two long diagonals, a1 to h8 and h1 to a8. Find any bishop or queen on them and name what blocks each one.",
+            "The a-file, the h-file, the first rank and the eighth rank. Find any rook or queen on them and trace it to the far end.",
+            "Every enemy bishop, rook and queen, followed to the edge of the board. Say whose piece each blocker is.",
+            "Every enemy knight. Name the squares it reaches, because a sweep along lines never touches them.",
+            "Last, your own move, the square it lands on and the square it leaves behind.",
+          ],
+        },
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Starting at the edges feels backwards. Start from your own move instead, and the far corner becomes the last place you look and the first you skip on a low clock.",
           ],
         },
       ],
     },
     {
-      id: "drills",
-      title: "Drills to stop tunnel vision",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
+      id: "last-square",
+      title: "Name the last square a line reaches, not the first piece on it",
       blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "The usual slip is to stop a trace at the first piece on the line. If that piece is yours, you have not found a blocker. You may have found a pin.",
+            "Put a White rook on e1, a Black knight on e5 and the Black king on e8, with the squares between them empty. The knight cannot move at all.",
+            "So say “that rook sees e8” rather than “that rook is blocked by my knight”. The first version announces the pin, and the second one hides it.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "generated-positions",
+      title: "Why a generated 12-piece position trains the sweep",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "A game position clusters. Pawns lock in the centre, pieces gather near the kings, and a corner can stay empty for twenty moves.",
+            "That clustering is why the sweep is needed. It is also why your own games are a poor place to practise the sweep.",
+            "Memory Chess builds a fresh position for every round, with no plan behind it. The two kings go on random squares that are never adjacent.",
+            "Every other piece goes on a random empty square, limited by the rules of a legal position. No pawn stands on the first or eighth rank, and a side's two bishops stand on opposite colours.",
+            "Nothing in the generator pulls pieces toward the centre or toward the kings. Twelve pieces in eight seconds is one of the game's four presets, and at that size no single cluster holds the position.",
+            "So you read the board in zones and carry every zone to the empty board. That is the sweep, done from memory.",
+          ],
+        },
         {
           kind: "drills",
           drills: [
             {
-              title: "Edge-piece sweep",
-              description: "Check corner and edge pieces before every move.",
-              duration: "3 minutes",
-              goal: "Catch threats outside the area you are focused on.",
-              ctaLabel: "Sweep the edges",
-            },
-            {
-              title: "Line-of-sight replay",
-              description: "Trace each bishop and rook line completely instead of looking only at one target square.",
-              duration: "4 minutes",
-              goal: "Check more of the board during each scan.",
-              ctaLabel: "Trace full lines",
-            },
-            {
-              title: "Whole-board recall",
-              description: "Play 10 pieces with 10 seconds to look. When the board clears, place the pieces zone by zone: queenside, centre, kingside.",
-              duration: "5 minutes",
-              goal: "Remember more of the board at one time.",
-              ctaLabel: "Play 10 pieces, 10 seconds",
+              title: "Zone recall round",
+              description: "Play 3 rounds of 12 pieces with 8 seconds to look. Read the board in three zones, files a to c, d and e, then f to h. Place the pieces zone by zone.",
+              duration: "3 rounds, about 5 minutes",
+              goal: "Hold both wings at once instead of one cluster.",
+              ctaLabel: "Play 3 rounds of 12 pieces, 8 seconds",
               setup: {
-                pieceCount: 10,
-                memorizeTime: 10,
+                pieceCount: 12,
+                memorizeTime: 8,
               },
             },
+            {
+              title: "Edge inventory",
+              description: "Open an annotated game at any middlegame diagram. List every piece on the a-file, the h-file, the first rank and the eighth rank, and write the last square each one reaches.",
+              duration: "4 minutes",
+              goal: "Make the pieces you usually skip the first ones you list.",
+              ctaLabel: "List the edge pieces",
+            },
           ],
         },
       ],
     },
     {
-      id: "comparison",
-      title: "Tunnel vision vs whole-board awareness",
-      summary: "You do not need to look everywhere for the same amount of time. Make sure you do not miss anything important.",
+      id: "far-corner-glance",
+      title: "A last glance at the far corner before you let go",
       blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "The sweep opens your think. This table covers its close, the last look before you release the piece.",
+          ],
+        },
         {
           kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
-          ],
+          columns: ["Moment", "Eyes on the fight", "Eyes on the whole board"],
           rows: [
             {
-              label: "Attention path",
-              struggling: "You stare at one cluster of pieces.",
-              stronger: "You touch the major risk zones in a consistent order.",
+              label: "Opponent's last move",
+              struggling: "You look at the piece that moved and the square it reached.",
+              stronger: "You look at the line it opened behind it and the square it stopped guarding.",
             },
             {
-              label: "Long-range pieces",
-              struggling: "You forget bishops and rooks away from the action.",
-              stronger: "You scan their full lines before trusting a move.",
+              label: "Before you release a piece",
+              struggling: "You check the squares next to your move.",
+              stronger: "You check the corner farthest from your move.",
             },
             {
-              label: "Board zones",
-              struggling: "You skip the side of the board that feels quiet.",
-              stronger: "You check the quiet side before moving.",
+              label: "After a trade",
+              struggling: "You count the material.",
+              stronger: "You re-trace every line the trade opened, for both sides.",
             },
           ],
         },
-      ],
-    },
-    {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
-      blocks: [
         {
-          kind: "steps",
-          ordered: false,
-          items: [
-            "Thinking whole-board vision means looking longer instead of scanning better.",
-            "Ignoring the edges because the center feels more urgent.",
-            "Not tracing long-range piece lines completely.",
-            "Trying to scan more of the board before you can remember the pieces clearly.",
-          ],
-        },
-        {
-          kind: "callout",
-          title: "What to do instead",
-          body: "Extra thinking time will not help without a clear scan. Check the board in the same order each time.",
-        },
-      ],
-    },
-    {
-      id: "plan",
-      title: "7-day whole-board scan plan",
-      summary: "Follow these steps before making the practice harder or longer.",
-      blocks: [
-        {
-          kind: "plan",
-          steps: [
-            {
-              label: "Day 1 to 2",
-              duration: "10 minutes",
-              detail: "Use only king checks, loose-piece checks, and edge-piece sweeps.",
-            },
-            {
-              label: "Day 3 to 4",
-              duration: "12 minutes",
-              detail: "Add full bishop and rook line tracing to the scan.",
-            },
-            {
-              label: "Day 5",
-              duration: "12 minutes",
-              detail: "Use Memory Chess and recall the board by zones instead of random piece order.",
-            },
-            {
-              label: "Day 6 to 7",
-              duration: "15 minutes",
-              detail: "Transfer the scan into rapid games and note which board zone caused the miss when a blunder happens.",
-            },
+          kind: "paragraphs",
+          paragraphs: [
+            "The habit is small. The last thing your eyes touch before a move is the far corner, and the bishop on a2 is the reason why.",
           ],
         },
       ],
@@ -188,46 +173,33 @@ const guide: LearnGuide = {
   ],
   faq: [
     {
-      question: "Why do I keep missing pieces on the other side of the board?",
-      answer: "Because your attention is too local. A fixed scan order is better than hoping you naturally notice everything.",
+      question: "Do I have to sweep on every move?",
+      answer: "Run the full sweep whenever a pawn moves or a piece is traded, because those moves open lines. On other moves, check the edges and the last move.",
     },
     {
-      question: "Does Memory Chess help with whole-board awareness?",
-      answer: "Yes. It trains you to keep more of the board active in memory instead of only the tactical hotspot.",
+      question: "What if the sweep makes me too slow?",
+      answer: "Keep the order and shorten each step. When nothing on an edge has changed since your last move, a glance confirms it and you move on.",
     },
     {
-      question: "Should I look at the edges every move?",
-      answer: "Yes, especially as a beginner. Many cheap blunders hide in edge pieces and long-range lines.",
-    },
-    {
-      question: "How do I know the scan is improving?",
-      answer: "You will miss fewer distant threats and feel less surprised by bishops, rooks, and discovered attacks.",
+      question: "Why read a memory round in zones?",
+      answer: "Twelve scattered pieces in eight seconds are too many to hold one by one. Three zones turn them into three smaller groups you can carry to the empty board.",
     },
   ],
   relatedArticles: [
     {
-      slug: "chess-board-vision-drills",
-      reason: "Pair whole-board awareness with a stronger safety checklist.",
-    },
-    {
       slug: "chess-visualization-exercises",
-      reason: "Improve the mental board so wider scanning feels easier.",
+      reason: "Trains holding a position in your head, which the zone recall round asks for at speed.",
     },
     {
       slug: "chess-coordinates-practice",
-      reason: "Build faster square recognition so broad scans are less mentally expensive.",
-    },
-  ],
-  sources: [
-    {
-      title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-      url: "https://doi.org/10.1006/cogp.1996.0011",
+      reason: "Makes square names automatic, so naming the last square of a line stops slowing the sweep.",
     },
     {
-      title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
-      url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
+      slug: "how-to-stop-blundering-in-chess",
+      reason: "Covers the phantom defender and the loose piece, the other ways your picture of the board goes wrong.",
     },
   ],
+  sources: [],
 };
 
 export default guide;

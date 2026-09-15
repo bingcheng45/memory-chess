@@ -5,179 +5,179 @@ const guide: LearnGuide = {
   goal: "reduce-blunders",
   title: "How to Stop Blundering in Chess",
   h1: "How to stop blundering in chess",
-  description: "Use a short safety check to spot threats, protect loose pieces, and make fewer blunders in real games.",
+  description: "Why pieces drop in games and not in puzzles, a pre-move scan for checks, captures, threats and loose pieces, and drills built from your own losses.",
   primaryKeyword: "how to stop blundering in chess",
   secondaryKeywords: [
-    "chess blunder prevention",
-    "stop hanging pieces",
-    "chess threat check",
-    "chess safety checklist",
-    "reduce simple mistakes in chess",
+    "chess board vision",
+    "loose pieces chess",
+    "checks captures threats",
+    "why do I hang pieces in chess",
+    "chess blunder check",
   ],
-  ctaLabel: "Start an Anti-Blunder Drill",
-  quickAnswer: "Before every move, check your opponent’s threats, look for unprotected pieces, and make sure your move is safe. Memory practice helps you keep the whole board in mind.",
+  ctaLabel: "Play 6 pieces with 10 seconds to look",
+  quickAnswer: "Before every move, run one scan in a fixed order. Ask what the last move attacks, what checks, captures and threats your opponent has, which of your pieces is loose, and what your move stops guarding.",
   keyTakeaways: [
-    "Most beginner blunders come from missing part of the board.",
-    "A safety checklist must be short enough to survive time pressure.",
-    "Replay your mistakes until you can quickly see what you missed.",
+    "A one-move blunder happens when the board in your head and the board on the table disagree.",
+    "A loose piece is the easiest target on the board, so list your loose pieces before your opponent's check finds one.",
+    "Keep a blunder tally per game, because rating also moves with openings, endgames and pairings.",
   ],
   whoThisIsFor: [
-    "Players who hang one-move tactics repeatedly.",
-    "Beginners who feel worse in games than in puzzles.",
-    "Anyone who wants a calm move routine they can use every time.",
+    "Players who solve puzzles well and still lose pieces to a one-move reply.",
+    "Anyone who spots the capture only after letting go of the piece.",
+    "Beginners told to slow down who found that extra time alone changed nothing.",
   ],
-  timeToRead: "8 min read",
+  timeToRead: "7 min read",
   difficulty: "Beginner",
   featured: true,
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Threat checks",
+      id: "puzzle-vs-game",
+      title: "Why pieces drop in games and not in puzzles",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Many blunders happen because you move before checking the full position. You may also lose track of where a piece is defended.",
-            "A short routine replaces panic and guessing. Use the same checks whenever the position becomes sharp.",
+            "A puzzle tells you two things before you look. There is a tactic, and it is your move. A game tells you neither, so a fork you would find in a puzzle walks past unseen.",
+            "A one-move blunder is rarely a calculation error. The board in your head and the board on the table disagree, and you play a move that only works on the wrong one.",
+            "The disagreement takes three common shapes. The first is the phantom defender, a piece that looks like a guard and cannot act as one.",
+            "Put a White bishop on b5, a Black knight on c6 and the Black king on e8, with d7 empty. The knight seems to guard e5, but it is pinned and cannot legally capture there.",
+            "The second is the forgotten piece, a bishop or rook that has not moved for many moves, so your eye stopped returning to it.",
+            "The third is the abandoned job. If the pawn on d2 is the only guard of your knight on c3, pushing d2-d4 leaves the knight loose although the knight never moved.",
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Start here: the anti-blunder checklist",
-      summary: "You can try these steps today.",
+      id: "pre-move-scan",
+      title: "The pre-move scan for checks, captures, threats and loose pieces",
       blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Board vision is less a talent than a scan run in the same order before every move. A fixed order means nothing depends on where your eyes happen to land.",
+          ],
+        },
         {
           kind: "steps",
           ordered: true,
           items: [
-            "Ask what checks, captures, and threats your opponent has right now.",
-            "Find every unprotected piece or piece with too many jobs.",
-            "Only then check that your planned move is safe.",
-            "Use one short Memory Chess round before your games to sharpen piece recall.",
-            "After each blunder, write the missed signal in one sentence.",
-          ],
-        },
-      ],
-    },
-    {
-      id: "drills",
-      title: "Simple anti-blunder drills",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
-      blocks: [
-        {
-          kind: "drills",
-          drills: [
-            {
-              title: "Opponent-first scan",
-              description: "Begin every position by checking the opponent’s strongest threats.",
-              duration: "3 minutes",
-              goal: "Remember to check your opponent’s idea before your own.",
-              ctaLabel: "Scan from the opponent side",
-            },
-            {
-              title: "Loose-piece alarm",
-              description: "Call out every unprotected piece or piece with too many jobs before moving.",
-              duration: "4 minutes",
-              goal: "Catch the easiest material losses early.",
-              ctaLabel: "Run loose-piece alarm",
-            },
-            {
-              title: "Blunder replay loop",
-              description: "Replay your own blunder positions until the missed threat becomes obvious.",
-              duration: "6 minutes",
-              goal: "Learn from positions that caused your real losses.",
-              ctaLabel: "Replay your blunder",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "comparison",
-      title: "What changes when blunders start dropping",
-      summary: "The games do not suddenly become perfect. They become calmer, and more of your losses happen for understandable reasons instead of one-move disasters.",
-      blocks: [
-        {
-          kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
-          ],
-          rows: [
-            {
-              label: "Move release",
-              struggling: "You move as soon as you see a plan.",
-              stronger: "You release the move only after a short safety pass.",
-            },
-            {
-              label: "Threat awareness",
-              struggling: "You notice the tactic after it lands.",
-              stronger: "You recognize the tactical shape before committing.",
-            },
-            {
-              label: "Post-game review",
-              struggling: "The loss feels random.",
-              stronger: "You can name the exact missed indicator quickly.",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
-      blocks: [
-        {
-          kind: "steps",
-          ordered: false,
-          items: [
-            "Trying to eliminate blunders by simply moving slower.",
-            "Memorizing more openings while the threat-check habit is still weak.",
-            "Reviewing engine lines without identifying the actual missed signal.",
-            "Ignoring how time pressure weakens board recall.",
+            "The last move. Name every square the moved piece now attacks, and any line it opened by leaving its old square.",
+            "Your opponent's forcing moves. List every check they could give, every capture they could make, and every move that would attack one of your pieces.",
+            "Your loose pieces. Find each piece with no defender, and each piece attacked more times than it is defended. Say the squares, not a feeling.",
+            "Your intended move. Picture the piece gone from its square, then ask what it was guarding and which line it was blocking.",
+            "Your own forcing moves. Only now look at checks and captures for you, starting with any loose enemy piece.",
           ],
         },
         {
           kind: "callout",
-          title: "What to do instead",
-          body: "Moving more slowly is not enough. Use the same short safety check each time.",
+          title: "Why loose pieces come before your own ideas",
+          body: "A double attack wins material when one of its two targets cannot be saved. Any attack on a loose piece is already a threat, so every loose piece is half a tactic waiting for its second half.",
         },
       ],
     },
     {
-      id: "plan",
-      title: "7-day anti-blunder reset",
-      summary: "Follow these steps before making the practice harder or longer.",
+      id: "loose-bishop-b4",
+      title: "One queen check against a loose bishop on b4",
       blocks: [
         {
-          kind: "plan",
-          steps: [
+          kind: "paragraphs",
+          paragraphs: [
+            "Set this up with White to move. White has Kg1, Qd1, Ra1, Rf1, Bc1, Nb1, Nf3 and pawns on a2, b2, f2, g2 and h2.",
+            "Black has Ke8, Ra8, Rh8, Bc8, Bb4 and pawns on a7, b7, c7, f7, g7 and h7. No Black piece defends the bishop on b4.",
+            "White plays Qa4+. The queen checks along b5, c6 and d7 to the king on e8, and attacks the bishop along the fourth rank.",
+            "Black must answer the check first. Blocking with ...c6, ...b5 or ...Bd7 does not defend b4, and neither does any king move, so Qxb4 follows.",
+            "The scan would have warned Black before the bishop ever reached b4. Step four asks what guards a piece on its new square, and here the honest answer was nothing.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "invented-pieces",
+      title: "What an invented piece costs in a Memory Chess round",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Memory Chess compares your board with the original square by square. A piece scores only when the square, the type and the colour all match.",
+            "Placing more pieces than the position held is charged twice. Each piece beyond the count is counted as wrong and also takes ten points off your accuracy.",
+            "A wrong piece inside the count costs no more than an empty square. Either way one original piece goes unreproduced, so the extra charge lands only on invented pieces.",
+            "That makes a round a clean test of one blunder habit. A seventh piece on a six-piece board is a piece your memory added, the phantom defender in miniature.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
             {
-              label: "Day 1 to 2",
+              title: "No seventh piece",
+              description: "Play 4 rounds of 6 pieces with 10 seconds to look, and replay the same settings from the result screen. Before each submit, count your pieces. If there are seven, remove the one you are least sure you saw.",
+              duration: "4 rounds, about 3 minutes",
+              goal: "Tell a piece you saw from a piece you assumed was there.",
+              ctaLabel: "Play 4 rounds of 6 pieces, 10 seconds",
+              setup: {
+                pieceCount: 6,
+                memorizeTime: 10,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "own-games-drills",
+      title: "Loose-piece and last-move drills from your own lost games",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Both drills use positions from your own games, because the blunders worth studying are the ones you actually make.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
+            {
+              title: "Loose-piece inventory",
+              description: "Set up a middlegame position from one of your games. For each of your pieces, write how many enemy pieces attack it and how many of yours defend it. Circle every zero.",
+              duration: "5 minutes",
+              goal: "See your loose pieces before an opponent's check lands on one.",
+              ctaLabel: "Take the inventory",
+            },
+            {
+              title: "Last-move replay",
+              description: "Replay a game you lost. Before each of your moves, say aloud what the opponent's previous move attacks. Where the answer surprises you, you have found the cause.",
               duration: "10 minutes",
-              detail: "Use only the opponent-first scan and loose-piece alarm drills.",
+              goal: "Learn what a missed threat looked like one move before it landed.",
+              ctaLabel: "Replay the last move",
             },
-            {
-              label: "Day 3 to 4",
-              duration: "12 minutes",
-              detail: "Add one Memory Chess round before every game session so the board state stays cleaner.",
-            },
-            {
-              label: "Day 5",
-              duration: "15 minutes",
-              detail: "Replay three recent blunders and classify the missed signal in each one.",
-            },
-            {
-              label: "Day 6 to 7",
-              duration: "15 minutes",
-              detail: "Use the full checklist in rapid games and track blunders per game rather than final result alone.",
-            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "blunder-tally",
+      title: "A blunder tally beside every result",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "For the tally, a blunder is a move that loses a pawn or more to a reply one or two moves deep. A slow positional slide does not count, because no scan would catch it.",
+            "Write the number next to each result, wins included. Count the move even when your opponent missed the reply, because the habit being measured is yours.",
+            "Rating is a poor gauge of this one habit. It moves with your openings, your endgames and your pairings too, while the tally moves only with the scan.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "low-clock-scan",
+      title: "With under thirty seconds, scan only the last move",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "On a low clock the full scan will not fit, so keep step one and drop the rest. A piece that just moved has fresh targets, and many one-move tactics start from it.",
+            "This is also why the advice to play slower fails on its own. Extra time with no question to answer goes into admiring the move you already wanted.",
           ],
         },
       ],
@@ -185,46 +185,33 @@ const guide: LearnGuide = {
   ],
   faq: [
     {
-      question: "Why do I keep hanging pieces in chess?",
-      answer: "Usually because the pre-move scan is incomplete. You may know the tactic but fail to check the whole board before moving.",
+      question: "Why do I blunder more in games than in puzzles?",
+      answer: "A puzzle announces that a tactic exists and whose move it is, so you search. A game announces nothing, so the searching has to be a habit you bring.",
     },
     {
-      question: "Should I just move slower to stop blundering?",
-      answer: "Only if you use the extra time for a clear safety check. Staring at the board without a plan will not help.",
+      question: "Do I have to run the whole scan on every move?",
+      answer: "Run all five steps after any capture, any check, and any pawn move that opens a line. On a quiet move, steps one and three are the minimum.",
     },
     {
-      question: "Do memory drills really help with blunders?",
-      answer: "Yes. Cleaner piece recall makes it easier to notice threats while the board is changing.",
-    },
-    {
-      question: "What should I track if I want fewer blunders?",
-      answer: "Track blunders per game, loose-piece oversights, and whether the missed threat came from a failed scan or failed calculation.",
+      question: "Should I leave a square empty in a round when I am not sure?",
+      answer: "A guess inside the piece count costs the same as an empty square, and a right guess scores. A guess that takes you past the count costs ten accuracy points on top.",
     },
   ],
   relatedArticles: [
     {
-      slug: "chess-board-vision-drills",
-      reason: "Build a stronger board scan to prevent blunders.",
-    },
-    {
       slug: "why-puzzle-rating-doesnt-transfer-to-games",
-      reason: "See why tactical skill often collapses when board tracking is weak.",
+      reason: "Explains why the tactics you find in puzzles go missing in games, the gap this scan is meant to close.",
     },
     {
-      slug: "how-to-get-better-at-chess-for-beginners",
-      reason: "Plug anti-blunder work into a complete beginner routine.",
+      slug: "how-to-see-the-whole-board-in-chess",
+      reason: "Deals with the forgotten piece, the long-range bishop or rook that beats you from the far side.",
+    },
+    {
+      slug: "how-to-analyze-chess-games-for-beginners",
+      reason: "Shows how to review a lost game so each entry in the tally gets a cause.",
     },
   ],
-  sources: [
-    {
-      title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
-      url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
-    },
-    {
-      title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-      url: "https://doi.org/10.1006/cogp.1996.0011",
-    },
-  ],
+  sources: [],
 };
 
 export default guide;

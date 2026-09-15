@@ -5,178 +5,166 @@ const guide: LearnGuide = {
   goal: "routine",
   title: "How to Think in Chess for Beginners",
   h1: "How to think in chess for beginners",
-  description: "Use a simple move routine to check threats, compare choices, and manage your time without overthinking.",
+  description: "Three questions asked in a fixed order, a stop rule for when to move, and a Memory Chess round that trains the moment you commit.",
   primaryKeyword: "how to think in chess",
   secondaryKeywords: [
     "beginner chess thought process",
     "what to think about in chess",
-    "chess decision making beginners",
-    "chess move checklist",
-    "simple chess thinking routine",
+    "chess candidate moves for beginners",
+    "when to move in chess",
+    "chess time management beginners",
   ],
-  ctaLabel: "Practise a Simple Move Routine",
-  quickAnswer: "Use the same short routine each move: check your opponent’s threats, choose one to three moves, and make sure your final choice is safe.",
+  ctaLabel: "Play 6 pieces with 20 seconds to look",
+  quickAnswer: "Ask three questions in order on every move. What did the last move change, what do I want here, and is my move safe? Move when you can say the answer in one sentence.",
   keyTakeaways: [
-    "A short routine is easier to use than a long checklist.",
-    "Threat checks should always come before move selection.",
-    "Spend more time when the position becomes dangerous.",
+    "Moving instantly and staring for minutes are one failure, a think with no question in it.",
+    "Ask what changed before asking what you want, because a plan you already like narrows what you see.",
+    "Stop when the one-sentence reason comes out, because tired and certain feel alike from the inside.",
   ],
   whoThisIsFor: [
-    "Players who guess in calm positions and freeze in sharp ones.",
-    "Beginners who need a clear routine for every move.",
-    "Anyone who wants cleaner decisions under time pressure.",
+    "Beginners who move on impulse in calm positions and freeze the moment something is attacked.",
+    "Players who have read that they should calculate and do not know what to calculate about.",
+    "Anyone who runs out of clock in ten-minute games without knowing where it went.",
   ],
-  timeToRead: "7 min read",
+  timeToRead: "6 min read",
   difficulty: "Beginner",
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Consistency",
+      id: "fast-and-slow",
+      title: "Moving too fast and thinking too long are the same mistake",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Beginners often wonder what stronger players think about. The answer can sound complicated, but your move routine should be short enough to use every time.",
-            "Start with threats, choose a small number of possible moves, and check that your final choice is safe.",
+            "The instant mover and the long starer look like opposites at the board. Neither has a question to answer, so one plays whatever looks nice and the other waits for a certainty that never comes.",
+            "A routine fixes both because it gives a think a beginning and an end. The beginning is a question you answer by looking. The end is a sentence you can say.",
+            "Everything in between is short, and it is the same on move five as on move forty.",
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Start here: the four-step move routine",
-      summary: "You can try these steps today.",
+      id: "three-questions-in-order",
+      title: "What changed, what do I want, is it safe?",
       blocks: [
         {
           kind: "steps",
           ordered: true,
           items: [
-            "Check the opponent’s strongest threats first.",
-            "List one to three realistic candidate moves.",
-            "Check that your planned move is safe and does not leave a piece unprotected.",
-            "Ask whether the position is calm enough to move or sharp enough to slow down.",
-            "After the game, review where the routine broke down.",
+            "What changed? Take the opponent's last move and name what it now attacks, what line it opened, and what it stopped defending.",
+            "What do I want? Pick one aim for this move, such as developing a piece, defending what is attacked, or improving your worst piece. The aim should give two or three candidates.",
+            "Is it safe? For the candidate you like best, check what it leaves undefended and what it stops guarding. If it fails, try the next candidate before inventing a new plan.",
+          ],
+        },
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Try it after 1.e4 e5 2.Nf3. Question one has a short answer. The knight on f3 attacks the pawn on e5, and no other Black piece is attacked.",
+            "Question two is to keep the pawn while developing. That aim gives 2...Nc6 and 2...d6, which both defend e5.",
+            "A third move, 2...Nf6, hits the undefended pawn on e4 but leaves e5 undefended. It belongs to a different aim, counterattack, so it waits unless you change the aim on purpose.",
+            "Question three passes 2...Nc6. It keeps e5 defended, and no other Black piece is attacked, so nothing hangs and the knight goes to c6.",
+            "The order is the point. Ask what you want before asking what changed, and you will see only your plan.",
           ],
         },
       ],
     },
     {
-      id: "drills",
-      title: "Drills for calmer decisions",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
+      id: "stop-rule",
+      title: "Move when the reason fits in one sentence",
       blocks: [
         {
-          kind: "drills",
-          drills: [
-            {
-              title: "Opponent-first trigger",
-              description: "Start every training position by naming the opponent’s immediate forcing options.",
-              duration: "3 minutes",
-              goal: "Make threat checks automatic instead of optional.",
-              ctaLabel: "Start with threats",
-            },
-            {
-              title: "Three-candidate cap",
-              description: "Never allow yourself more than three candidate moves in one training position.",
-              duration: "4 minutes",
-              goal: "Reduce overthinking and too many choices.",
-              ctaLabel: "Cap the candidates",
-            },
-            {
-              title: "Confidence check replay",
-              description: "Review a move and ask whether you were actually certain or simply tired of thinking.",
-              duration: "4 minutes",
-              goal: "Notice when you move only because you are tired of thinking.",
-              ctaLabel: "Review confidence",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "comparison",
-      title: "A simple move routine",
-      summary: "The best thought process is the one you can still use when the clock is running.",
-      blocks: [
-        {
-          kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
-          ],
-          rows: [
-            {
-              label: "Threat handling",
-              struggling: "You think about your plan first.",
-              stronger: "You start with the opponent’s strongest threats.",
-            },
-            {
-              label: "Candidate moves",
-              struggling: "You bounce across too many possibilities.",
-              stronger: "You keep a small, realistic candidate set.",
-            },
-            {
-              label: "Time usage",
-              struggling: "You spend the same kind of attention on every move.",
-              stronger: "You slow down when tension, tactics, or king safety changes.",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
-      blocks: [
-        {
-          kind: "steps",
-          ordered: false,
-          items: [
-            "Using a long checklist that you never follow in real games.",
-            "Thinking about your own plan before checking threats.",
-            "Letting the candidate list grow too large.",
-            "Confusing fatigue with confidence.",
+          kind: "paragraphs",
+          paragraphs: [
+            "You are done thinking when one sentence names the move, the aim it serves, and the safety check it passed. “Nc6, it develops and keeps e5, and nothing hangs” is that sentence.",
+            "If a full minute passes and no new candidate has appeared, play the safest developing move on your list. More staring produces the same move with less clock left.",
           ],
         },
         {
           kind: "callout",
-          title: "What to do instead",
-          body: "Do not add more checks to the list. Use a short routine you can repeat on every move.",
+          title: "Certain or tired?",
+          body: "Tired feels like certainty from the inside, which is why the stop rule is a sentence and not a feeling. If you reach for the piece and the sentence will not come, you were tired.",
         },
       ],
     },
     {
-      id: "plan",
-      title: "7-day thought-process tune-up",
-      summary: "Follow these steps before making the practice harder or longer.",
+      id: "skip-round",
+      title: "Training the moment you commit with the Skip button",
       blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "In a Memory Chess round, a Skip button ends the phase early while the position is still showing. The game then records how long you actually looked, not the seconds you were given.",
+            "The leaderboard orders rounds by correct pieces, then fewest wrong pieces, and only then by shorter look time. Look time separates only rounds that scored the same.",
+            "So an early Skip pays only when you were right to be sure. That is the same bargain as letting go of a piece in a game.",
+            "A bad skip has a recognisable shape. You have the picture, holding it has become tedious, and you press Skip before checking the last piece.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
+            {
+              title: "Skip when certain",
+              description: "Play 5 rounds of 6 pieces with 20 seconds to look. Press Skip the moment you can name all six squares in your head. A skipped round with a miss means you stopped because you were tired.",
+              duration: "5 rounds, about 5 minutes",
+              goal: "Learn what certainty feels like before the clock decides for you.",
+              ctaLabel: "Play 5 rounds of 6 pieces, 20 seconds",
+              setup: {
+                pieceCount: 6,
+                memorizeTime: 20,
+              },
+            },
+            {
+              title: "One-sentence move",
+              description: "Play a slow game against a computer. Before every move, say the stop-rule sentence out loud with the move, the aim and the safety check. If the sentence will not come, keep thinking.",
+              duration: "15 minutes",
+              goal: "Make the sentence the thing that releases the piece.",
+              ctaLabel: "Say the sentence first",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "clock-budget",
+      title: "Where the clock goes in a 10-minute game",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "The routine is short on purpose, so the clock can go where material changes hands. Here is one budget for a ten-minute game.",
+          ],
+        },
         {
           kind: "plan",
           steps: [
             {
-              label: "Day 1 to 2",
-              duration: "10 minutes",
-              detail: "Use only the opponent-first trigger and three-candidate cap.",
+              label: "Opening moves you know",
+              duration: "5 seconds",
+              detail: "Question one only. If the last move changed nothing you did not expect, play the move you know.",
             },
             {
-              label: "Day 3 to 4",
-              duration: "12 minutes",
-              detail: "Add one short Memory Chess round so the board is clearer during decisions.",
+              label: "Quiet move, nothing attacked",
+              duration: "20 seconds",
+              detail: "All three questions. One candidate is enough when nothing is attacked, so pick the aim and check the move.",
             },
             {
-              label: "Day 5",
-              duration: "12 minutes",
-              detail: "Review whether your last blunder came from threat-check failure or candidate confusion.",
+              label: "After a capture or check",
+              duration: "Up to a minute",
+              detail: "All three questions, and count the exchange to its end before you decide. Stop counting when the captures stop.",
             },
             {
-              label: "Day 6 to 7",
-              duration: "15 minutes",
-              detail: "Use the full four-step routine in rapid play and note which step breaks under time pressure.",
+              label: "Under one minute left",
+              duration: "5 seconds",
+              detail: "Question one only. Say what the last move attacks, answer it if you must, and play.",
             },
+          ],
+        },
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Material changes hands at captures and checks, so a miscount there costs the most. The five-second opening moves are what pay for those minutes.",
           ],
         },
       ],
@@ -184,46 +172,33 @@ const guide: LearnGuide = {
   ],
   faq: [
     {
-      question: "What should beginners think about in chess?",
-      answer: "Start with your opponent’s threats, choose one to three possible moves, and check that your final choice is safe.",
+      question: "How many moves ahead should a beginner think?",
+      answer: "As far as the captures and checks go and no further. On a quiet move that is one move, and after a capture it is until the taking stops.",
     },
     {
-      question: "How many candidate moves should I consider?",
-      answer: "Usually one to three. More than that often overwhelms beginners and reduces decision quality.",
+      question: "What if none of my options feels good?",
+      answer: "Play the safest developing move and spend the saved time on the next move. When every option feels bad, you often have no aim yet, and question two supplies one.",
     },
     {
-      question: "Why do I freeze even when I know the routine?",
-      answer: "Often because the board is not clear enough or the candidate set is too large. Simpler positions and recall work help.",
-    },
-    {
-      question: "Can a thought process stop blunders?",
-      answer: "Yes, especially when it forces threat checks before move selection.",
+      question: "Should I use the routine in blitz?",
+      answer: "Use question one on every move and the other two after captures and checks. The stop rule matters more in blitz, because a long stare costs a bigger share of the clock.",
     },
   ],
   relatedArticles: [
     {
       slug: "how-to-stop-blundering-in-chess",
-      reason: "Use a more explicit anti-blunder checklist when the thought process still leaks material.",
+      reason: "Turns the safety question into a full scan for checks, captures, threats and loose pieces.",
     },
     {
       slug: "chess-calculation-exercises-for-beginners",
-      reason: "Use clearer calculation to compare possible moves.",
+      reason: "Practises the counting that a capture or check asks for before you decide.",
     },
     {
-      slug: "chess-coordinates-practice",
-      reason: "Recognise squares faster during your move routine.",
+      slug: "how-to-analyze-chess-games-for-beginners",
+      reason: "Shows how to find, after the game, which of the three questions you skipped.",
     },
   ],
-  sources: [
-    {
-      title: "Distributed Practice in Verbal Recall Tasks",
-      url: "https://doi.org/10.1037/0033-2909.132.3.354",
-    },
-    {
-      title: "Test-Enhanced Learning: Taking Memory Tests Improves Retention",
-      url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
-    },
-  ],
+  sources: [],
 };
 
 export default guide;

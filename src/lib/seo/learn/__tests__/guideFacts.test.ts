@@ -124,16 +124,22 @@ function repliesFailure(chess: Chess, claim: Claim<"replies">): string | null {
   const replies = chess.moves();
   const nonKing = replies.filter((move) => !move.startsWith("K")).map(withoutMark);
   if (!sameSet(nonKing, claim.nonKing)) return `non-king replies: ${nonKing.join(" ") || "none"}`;
-  const broken = replies.filter((reply) => {
+  const broken = replies.flatMap((reply) => {
     const after = new Chess(chess.fen(), { skipValidation: true });
     after.move(reply);
-    if (!hasMove(after, claim.then)) return true;
-    if (!claim.undefended) return false;
-    const owner = after.get(claim.undefended)?.color;
-    return !owner || attackersOf(after, claim.undefended, owner).length > 0;
+    if (!hasMove(after, claim.then)) return [reply];
+    if (claim.undefended) {
+      const owner = after.get(claim.undefended)?.color;
+      if (!owner || attackersOf(after, claim.undefended, owner).length > 0) return [reply];
+    }
+    after.move(claim.then);
+    const mates = matingMoves(after);
+    return mates.length > 0 ? [`${reply} (${claim.then} allows ${mates.join(" ")})`] : [];
   });
   return holds(broken.length === 0, `fails after ${broken.join(" ")}`);
 }
+
+const matingMoves = (chess: Chess) => chess.moves().filter((move) => move.endsWith("#"));
 
 function materialFailure(chess: Chess, claim: Claim<"material">): string | null {
   const types = (side: Side) =>
@@ -173,6 +179,8 @@ function failure(chess: Chess, claim: PositionClaim): string | null {
       return holds(chess.inCheck(), "side to move is not in check");
     case "mate":
       return holds(chess.isCheckmate(), "not checkmate");
+    case "noMateInOne":
+      return holds(matingMoves(chess).length === 0, `mate in one: ${matingMoves(chess).join(" ")}`);
     case "occupant": {
       const found = occupantOf(chess, claim.square);
       return holds(found === claim.piece, `${claim.square} holds ${found}`);

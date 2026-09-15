@@ -19,6 +19,8 @@ export type PositionClaim =
   | { kind: "noCheck" }
   | { kind: "check" }
   | { kind: "mate" }
+  /** The side to move has no move that mates. */
+  | { kind: "noMateInOne" }
   /** `piece` null means the square is empty. */
   | { kind: "occupant"; square: Square; piece: PieceCode | null }
   | { kind: "legal"; move: string }
@@ -33,8 +35,9 @@ export type PositionClaim =
   | { kind: "immobile"; square: Square }
   /**
    * The side to move's legal replies. The non-king replies are exactly
-   * `nonKing`, and after every reply `then` is legal and `undefended`, when
-   * given, has no defender.
+   * `nonKing`, and after every reply `then` is legal, `undefended`, when
+   * given, has no defender, and once `then` is played the other side has no
+   * move that mates.
    */
   | { kind: "replies"; nonKing: string[]; then: string; undefended?: Square }
   /** Sorted piece types each side has left, such as "kpppr". */

@@ -240,6 +240,7 @@ export const positions: LearnPosition[] = [
       { kind: "illegal", move: "Kxf7" },
       { kind: "attacks", from: "g5", squares: ["f7"] },
       { kind: "attackers", square: "f7", side: "b", from: ["g8"] },
+      { kind: "noMateInOne" },
     ],
   },
   {

@@ -58,7 +58,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "White: king g1, knight d5, pawns f2, g2 and h2. Black: king e8, queen b5, rook a8, pawns f7, g7 and h7. Eleven pieces, one short of the Hard preset.",
+            "White: king g1, knight d5, pawns f2, g2 and h3. Black: king e8, queen b5, rook a8, pawns f7, g7 and h7. Eleven pieces, one short of the Hard preset.",
             "The black queen on b5 attacks the knight on d5 along the fifth rank, so White wants a move that gains time. Two knight checks are available, 1.Nc7+ and 1.Nf6+. Compare them two plies deep.",
           ],
         },
@@ -206,7 +206,7 @@ const guide: LearnGuide = {
   sources: [],
 };
 
-const TWO_CHECKS_WHITE: PieceToken[] = ["Kg1", "Nd5", "f2", "g2", "h2"];
+const TWO_CHECKS_WHITE: PieceToken[] = ["Kg1", "Nd5", "f2", "g2", "h3"];
 const TWO_CHECKS_BLACK: PieceToken[] = ["Ke8", "Qb5", "Ra8", "f7", "g7", "h7"];
 
 export const positions: LearnPosition[] = [

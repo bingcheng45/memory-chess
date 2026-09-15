@@ -237,7 +237,10 @@ export const positions: LearnPosition[] = [
     white: ["Kg1", "Re1", "Nf3", "d3", "f2", "g2", "h2"],
     black: COVER_BLACK,
     line: ["Nxe5"],
-    claims: [{ kind: "attackers", square: "e5", side: "w", from: ["e1"] }],
+    claims: [
+      { kind: "attackers", square: "e5", side: "w", from: ["e1"] },
+      { kind: "noMateInOne" },
+    ],
   },
   {
     id: "cover-and-move-pawn-on-d3-recaptured",
@@ -245,7 +248,10 @@ export const positions: LearnPosition[] = [
     white: ["Kg1", "Re1", "Nf3", "d3", "f2", "g2", "h2"],
     black: COVER_BLACK,
     line: ["Nxe5", "Rxe5", "Rxe5"],
-    claims: [{ kind: "material", white: "kppppr", black: "knppp" }],
+    claims: [
+      { kind: "material", white: "kppppr", black: "knppp" },
+      { kind: "noMateInOne" },
+    ],
   },
 ];
 

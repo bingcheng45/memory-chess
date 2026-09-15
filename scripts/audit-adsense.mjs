@@ -525,9 +525,9 @@ async function singleRedirects(entries, pages) {
   const coverage = localeCoverageProblem(locales, candidates, englishOnly);
   return {
     slashChecked: slashCases.length,
+    localeChecked: localeCases.length,
     englishOnly: englishOnly.length,
     locales: locales.length,
-    localeChecked: localeCases.length,
     problems: [
       ...(await redirectFailures("trailing-slash-redirect", slashCases)),
       ...(await redirectFailures("locale-prefix-redirect", localeCases)),
@@ -536,23 +536,7 @@ async function singleRedirects(entries, pages) {
   };
 }
 
-async function main() {
-  const sitemapResponse = await fetch(`${base}/sitemap.xml`);
-  if (sitemapResponse.status !== 200) {
-    console.error(`Cannot audit: ${base}/sitemap.xml answered HTTP ${sitemapResponse.status}, expected 200`);
-    process.exit(2);
-  }
-  const sitemap = await sitemapResponse.text();
-  const entries = parseSitemap(sitemap);
-  const urls = entries.map((entry) => entry.url);
-  if (!urls.length) {
-    console.error(`Cannot audit: ${base}/sitemap.xml lists no <loc> URLs`);
-    process.exit(2);
-  }
-  const listed = new Set(urls.map(listedKey));
-  const pages = await pool(urls, fetchPage);
-  const indexable = pages.filter(isIndexable);
-
+function ruleFindings(pages, indexable, listed) {
   const findings = new Map(pages.map((page) => [page.url, []]));
   const add = (url, ruleId, messages) => {
     for (const message of messages) findings.get(url).push({ rule: ruleId, message });
@@ -561,25 +545,10 @@ async function main() {
     if (rule.check) for (const page of pages) add(page.url, rule.id, rule.check(page));
     if (rule.site) for (const [url, messages] of rule.site(indexable, { listed })) add(url, rule.id, messages);
   }
+  return findings;
+}
 
-  const { broken, unlisted } = await crawlLinks(pages, listed);
-  const adsTxt = await fetch(`${base}/ads.txt`).then((r) => (r.ok ? r.text() : ""));
-  const redirects = await singleRedirects(entries, pages);
-  const siteProblems = [
-    ...broken.map((b) => ({ rule: "broken-link", message: `${b.url} answers ${b.status}` })),
-    ...unlisted.map((p) => ({ rule: "unlisted-indexable", message: `${p.path} is linked and indexable but missing from the sitemap` })),
-    ...(adsTxt.includes(PUBLISHER_ID) ? [] : [{ rule: "ads-txt", message: `ads.txt does not list ${PUBLISHER_ID}` }]),
-    ...redirects.problems,
-  ];
-
-  const byRule = RULES.map((rule) => {
-    const failing = pages.filter((page) => findings.get(page.url).some((f) => f.rule === rule.id));
-    return { id: rule.id, guideline: rule.guideline, failing: failing.length, example: failing[0] ? `${failing[0].path}: ${findings.get(failing[0].url).find((f) => f.rule === rule.id).message}` : "" };
-  });
-
-  const locales = new Map();
-  for (const page of pages) locales.set(page.locale, (locales.get(page.locale) ?? 0) + 1);
-
+function printReport({ pages, indexable, locales, broken, redirects, byRule, siteProblems, findings, failingPages }) {
   console.log(`AdSense audit of ${base}`);
   console.log(`${pages.length} sitemap URLs, ${indexable.length} indexable, ${locales.size} locales, ${broken.length} broken internal links`);
   console.log(
@@ -589,33 +558,59 @@ async function main() {
   console.log("| --- | --- | ---: | --- |");
   for (const row of byRule) console.log(`| ${row.id} | ${row.guideline} | ${row.failing} | ${row.example.replace(/\|/g, "\\|")} |`);
   for (const problem of siteProblems) console.log(`| ${problem.rule} | ${problem.guideline ?? "site"} | 1 | ${problem.message} |`);
+  if (!failingPages.length) return;
+  console.log("\nFailing pages:");
+  for (const page of failingPages) {
+    console.log(`  ${page.path}`);
+    for (const f of findings.get(page.url)) console.log(`    [${f.rule}] ${f.message}`);
+  }
+}
 
+function writeReport(dir, { pages, indexable, locales, broken, redirects, byRule, siteProblems, findings }) {
+  mkdirSync(dir, { recursive: true });
+  const summary = { urls: pages.length, indexable: indexable.length, locales: Object.fromEntries(locales), broken: broken.length, redirects };
+  const pageRows = pages.map(({ mainText, proseText, links, hreflang, headerHreflang, ...rest }) => ({ ...rest, findings: findings.get(rest.url) }));
+  writeFileSync(join(dir, "audit.json"), JSON.stringify({ base, summary, rules: byRule, siteProblems, pages: pageRows }, null, 2));
+}
+
+async function main() {
+  const sitemapResponse = await fetch(`${base}/sitemap.xml`);
+  if (sitemapResponse.status !== 200) {
+    console.error(`Cannot audit: ${base}/sitemap.xml answered HTTP ${sitemapResponse.status}, expected 200`);
+    process.exit(2);
+  }
+  const entries = parseSitemap(await sitemapResponse.text());
+  const urls = entries.map((entry) => entry.url);
+  if (!urls.length) {
+    console.error(`Cannot audit: ${base}/sitemap.xml lists no <loc> URLs`);
+    process.exit(2);
+  }
+  const listed = new Set(urls.map(listedKey));
+  const pages = await pool(urls, fetchPage);
+  const indexable = pages.filter(isIndexable);
+  const findings = ruleFindings(pages, indexable, listed);
+
+  const { broken, unlisted } = await crawlLinks(pages, listed);
+  const adsTxt = await fetch(`${base}/ads.txt`).then((r) => (r.ok ? r.text() : ""));
+  const { problems: redirectProblems, ...redirects } = await singleRedirects(entries, pages);
+  const siteProblems = [
+    ...broken.map((b) => ({ rule: "broken-link", message: `${b.url} answers ${b.status}` })),
+    ...unlisted.map((p) => ({ rule: "unlisted-indexable", message: `${p.path} is linked and indexable but missing from the sitemap` })),
+    ...(adsTxt.includes(PUBLISHER_ID) ? [] : [{ rule: "ads-txt", message: `ads.txt does not list ${PUBLISHER_ID}` }]),
+    ...redirectProblems,
+  ];
+
+  const byRule = RULES.map((rule) => {
+    const failing = pages.filter((page) => findings.get(page.url).some((f) => f.rule === rule.id));
+    return { id: rule.id, guideline: rule.guideline, failing: failing.length, example: failing[0] ? `${failing[0].path}: ${findings.get(failing[0].url).find((f) => f.rule === rule.id).message}` : "" };
+  });
+  const locales = new Map();
+  for (const page of pages) locales.set(page.locale, (locales.get(page.locale) ?? 0) + 1);
   const failingPages = pages.filter((page) => findings.get(page.url).length);
-  if (failingPages.length) {
-    console.log("\nFailing pages:");
-    for (const page of failingPages) {
-      console.log(`  ${page.path}`);
-      for (const f of findings.get(page.url)) console.log(`    [${f.rule}] ${f.message}`);
-    }
-  }
 
-  if (outDir) {
-    mkdirSync(outDir, { recursive: true });
-    writeFileSync(
-      join(outDir, "audit.json"),
-      JSON.stringify(
-        {
-          base,
-          summary: { urls: pages.length, indexable: indexable.length, locales: Object.fromEntries(locales), broken: broken.length, redirects: { slashChecked: redirects.slashChecked, localeChecked: redirects.localeChecked, englishOnly: redirects.englishOnly, locales: redirects.locales } },
-          rules: byRule,
-          siteProblems,
-          pages: pages.map(({ mainText, proseText, links, hreflang, headerHreflang, ...rest }) => ({ ...rest, findings: findings.get(rest.url) })),
-        },
-        null,
-        2,
-      ),
-    );
-  }
+  const report = { pages, indexable, locales, broken, redirects, byRule, siteProblems, findings, failingPages };
+  printReport(report);
+  if (outDir) writeReport(outDir, report);
 
   const failed = failingPages.length + siteProblems.length;
   console.log(failed ? `\nFAIL: ${failingPages.length} pages and ${siteProblems.length} site checks` : "\nPASS");

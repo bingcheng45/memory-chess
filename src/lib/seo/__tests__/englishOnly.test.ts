@@ -1,4 +1,11 @@
-import { ENGLISH_ONLY_ROUTES, englishOnlyLinkSuffix, isEnglishOnlyPath, unprefixedPath } from "@/lib/seo/englishOnly";
+import {
+  DEFAULT_LOCALE_INDEXED_ROUTES,
+  ENGLISH_ONLY_ROUTES,
+  englishOnlyLinkSuffix,
+  isEnglishOnlyPath,
+  robotsFor,
+  unprefixedPath,
+} from "@/lib/seo/englishOnly";
 
 describe("unprefixedPath", () => {
   it("strips a shipped locale prefix", () => {
@@ -11,6 +18,20 @@ describe("unprefixedPath", () => {
     expect(unprefixedPath("/leaderboard")).toBe("/leaderboard");
     expect(unprefixedPath("/deutsch/learn")).toBe("/deutsch/learn");
     expect(unprefixedPath("/")).toBe("/");
+  });
+});
+
+describe("robotsFor", () => {
+  it("marks every translation of a route indexed only in English noindex", () => {
+    for (const route of DEFAULT_LOCALE_INDEXED_ROUTES) {
+      expect(robotsFor(route, "de")).toMatchObject({ index: false, follow: true, googleBot: { index: false } });
+      expect(robotsFor(route, "en")).toBeUndefined();
+    }
+  });
+
+  it("leaves routes indexed in every locale alone", () => {
+    expect(robotsFor("/game", "de")).toBeUndefined();
+    expect(robotsFor("/", "ja")).toBeUndefined();
   });
 });
 

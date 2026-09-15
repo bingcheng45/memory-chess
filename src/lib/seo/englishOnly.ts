@@ -1,4 +1,7 @@
-import { LOCALE_LABELS, LOCALES } from "@/i18n/routing";
+import type { Metadata } from "next";
+import { DEFAULT_LOCALE, LOCALE_LABELS, LOCALES } from "@/i18n/routing";
+
+const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } } as const;
 
 /** `/de/leaderboard` -> `/leaderboard`; a path without a locale prefix is returned as is. */
 export function unprefixedPath(pathname: string): string {
@@ -34,6 +37,11 @@ export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard"] as const;
 /** Whether an unprefixed path is served in every locale but indexed only in English. */
 export function isIndexedInDefaultLocaleOnly(path: string): boolean {
   return (DEFAULT_LOCALE_INDEXED_ROUTES as readonly string[]).includes(path);
+}
+
+/** The robots metadata for a page: noindex on a translation of a route indexed only in English. */
+export function robotsFor(path: string, locale: string): Metadata["robots"] {
+  return isIndexedInDefaultLocaleOnly(path) && locale !== DEFAULT_LOCALE ? NOINDEX_FOLLOW : undefined;
 }
 
 /**

@@ -217,8 +217,8 @@ const guide: LearnGuide = {
       reason: "Square colours and names without counting, which stage one assumes.",
     },
     {
-      slug: "working-memory-exercises-for-chess",
-      reason: "For holding a longer move list in mind.",
+      slug: "chess-calculation-exercises-for-beginners",
+      reason: "For keeping the starting position steady two moves into a line.",
     },
   ],
   sources: [],

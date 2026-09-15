@@ -138,7 +138,7 @@ const guide: LearnGuide = {
     },
     {
       id: "next-session",
-      title: "Turning the label into tomorrow's first five minutes",
+      title: "Turning the label into tomorrow's first change",
       blocks: [
         {
           kind: "paragraphs",

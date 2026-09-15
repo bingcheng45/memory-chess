@@ -148,7 +148,7 @@ const guide: LearnGuide = {
             "So once you have the board, skip.",
             "Try Again keeps your piece count and look time and generates a new position. You never see the same board twice, which is right for training and wrong for comparing two attempts at one board.",
             "That is why the ladder measures rounds at the same settings rather than attempts at one position. Three perfect rounds in a row is a signal. One perfect round might be an easy draw.",
-            "The result screen shows correct pieces out of the total, a red superscript for any extra pieces, your look time and your solution time. On your submitted board each square is marked correct, incorrect or missed.",
+            "The result screen shows correct pieces out of the total, a red superscript for any extra pieces, your look time and your solution time. On your submitted board, a piece you placed is marked Correct or Incorrect, and an original square you left empty is marked Missed.",
           ],
         },
       ],

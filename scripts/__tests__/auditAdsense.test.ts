@@ -132,29 +132,73 @@ describe("audit-adsense hreflang targets", () => {
   });
 });
 
-describe("audit-adsense trailing-slash redirect", () => {
+describe("audit-adsense single-308 redirect chain", () => {
   const LOCAL = "http://127.0.0.1:4517";
+  type Hop = { url: string; status: number; location: string | null };
+  const hop = (path: string, status: number, location: string | null = null): Hop => ({ url: `${LOCAL}${path}`, status, location });
 
-  function problemFor(response: { status: number; location: string | null }): string | null {
-    return JSON.parse(
-      runAudit(`JSON.stringify(audit.trailingSlashProblem(${JSON.stringify(`${LOCAL}/de/game`)}, ${JSON.stringify(response)}))`),
-    );
+  function problemFor(expectedPath: string, hops: Hop[]): string | null {
+    return JSON.parse(runAudit(`JSON.stringify(audit.redirectProblem(${JSON.stringify(hops)}, ${JSON.stringify(`${LOCAL}${expectedPath}`)}))`));
   }
 
-  it("passes a 308 to the URL without the slash", () => {
-    expect(problemFor({ status: 308, location: "/de/game" })).toBeNull();
+  it("passes one 308 to the expected URL when that URL answers 200", () => {
+    expect(problemFor("/de/game", [hop("/de/game/", 308, "/de/game"), hop("/de/game", 200)])).toBeNull();
   });
 
-  it("fails a 307 to the URL without the slash", () => {
-    expect(problemFor({ status: 307, location: "/de/game" })).toBe("answers 307, expected 308");
+  it("fails a 308 whose target answers 308 again", () => {
+    expect(problemFor("/de/about", [hop("/de/about/", 308, "/de/about"), hop("/de/about", 308, "/about"), hop("/about", 200)])).toBe(
+      `${LOCAL}/de/about answers 308, expected 200`,
+    );
   });
 
-  it("fails a 308 to a different path", () => {
-    expect(problemFor({ status: 308, location: "/game/" })).toBe(`redirects to ${LOCAL}/game/, expected ${LOCAL}/de/game`);
+  it("fails a 308 to a different URL than expected", () => {
+    expect(problemFor("/about", [hop("/de/about/", 308, "/de/about"), hop("/de/about", 308, "/about"), hop("/about", 200)])).toBe(
+      `redirects to ${LOCAL}/de/about, expected ${LOCAL}/about`,
+    );
+  });
+
+  it("fails a 307", () => {
+    expect(problemFor("/de/game", [hop("/de/game/", 307, "/de/game"), hop("/de/game", 200)])).toBe("answers 307, expected 308");
   });
 
   it("fails a 200 that does not redirect", () => {
-    expect(problemFor({ status: 200, location: null })).toBe("answers 200, expected 308");
+    expect(problemFor("/de/game", [hop("/de/game/", 200)])).toBe("answers 200, expected 308");
+  });
+});
+
+describe("audit-adsense English-only derivation", () => {
+  const PROD = "https://thememorychess.com";
+  const LOCAL = "http://127.0.0.1:4517";
+  const alternate = (lang: string, path: string) => `<xhtml:link rel="alternate" hreflang="${lang}" href="${PROD}${path}" />`;
+  const entry = (path: string, alternates = "") => `<url><loc>${PROD}${path}</loc>${alternates}<priority>1</priority></url>`;
+  const sitemap = [
+    '<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    entry("/", [alternate("en", "/"), alternate("de", "/de"), alternate("pt-BR", "/pt-BR"), alternate("x-default", "/")].join("")),
+    entry("/de", [alternate("en", "/"), alternate("de", "/de"), alternate("pt-BR", "/pt-BR"), alternate("x-default", "/")].join("")),
+    entry("/about"),
+    entry("/leaderboard"),
+    entry("/privacy"),
+    "</urlset>",
+  ].join("");
+
+  function derive(canonicals: Record<string, string>, probes: Record<string, number>) {
+    return JSON.parse(
+      runAudit(
+        `(() => { const entries = audit.parseSitemap(${JSON.stringify(sitemap)}); const candidates = audit.englishOnlyCandidates(entries, ${JSON.stringify(canonicals)}); return JSON.stringify({ urls: entries.map((e) => e.url), locales: audit.prefixLocales(entries), candidates, englishOnly: audit.englishOnlyUrls(candidates, ${JSON.stringify(probes)}) }); })()`,
+      ),
+    );
+  }
+
+  it("keeps sitemap URLs without alternates whose canonical is bare and whose first-locale prefix redirects", () => {
+    const result = derive(
+      { [`${LOCAL}/about`]: `${PROD}/about`, [`${LOCAL}/leaderboard`]: `${PROD}/leaderboard`, [`${LOCAL}/privacy`]: `${PROD}/` },
+      { [`${LOCAL}/about`]: 308, [`${LOCAL}/leaderboard`]: 200 },
+    );
+
+    expect(result.urls).toEqual([`${LOCAL}/`, `${LOCAL}/de`, `${LOCAL}/about`, `${LOCAL}/leaderboard`, `${LOCAL}/privacy`]);
+    expect(result.locales).toEqual(["de", "pt-BR"]);
+    expect(result.candidates).toEqual([`${LOCAL}/about`, `${LOCAL}/leaderboard`]);
+    expect(result.englishOnly).toEqual([`${LOCAL}/about`]);
   });
 });
 

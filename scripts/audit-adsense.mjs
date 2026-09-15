@@ -428,14 +428,47 @@ async function crawlLinks(pages, listed) {
   };
 }
 
+export function parseSitemap(xml) {
+  return [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => ({
+    url: toLocal(m[1].match(/<loc>([^<]+)<\/loc>/)[1]),
+    alternates: [...m[1].matchAll(/<xhtml:link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map((a) => ({ lang: a[1], href: a[2] })),
+  }));
+}
+
+/** The hreflang codes served under their own path prefix, in sitemap order. */
+export function prefixLocales(entries) {
+  const locales = entries.flatMap((entry) =>
+    entry.alternates.filter(({ lang, href }) => new RegExp(`^/${lang}(?:/|$)`).test(new URL(href).pathname)).map(({ lang }) => lang),
+  );
+  return [...new Set(locales)];
+}
+
+/** Sitemap URLs with no alternates whose served canonical is the bare URL itself. */
+export function englishOnlyCandidates(entries, canonicalByUrl) {
+  return entries
+    .filter((entry) => !entry.alternates.length && canonicalByUrl[entry.url] && toLocal(canonicalByUrl[entry.url]).replace(/\/$/, "") === entry.url)
+    .map((entry) => entry.url);
+}
+
 /**
- * Why one response to `<expected>/` fails the single-308 rule, or null when it
- * is a 308 whose Location resolves to `expected`.
+ * Candidates whose first-locale prefix redirects. A 200 there means the path
+ * is served in translation, as the leaderboard is, not English-only.
  */
-export function trailingSlashProblem(expected, { status, location }) {
-  if (status !== 308) return `answers ${status}, expected 308`;
-  const target = location ? toLocal(new URL(location, `${expected}/`).href) : "nowhere";
-  return target === expected ? null : `redirects to ${target}, expected ${expected}`;
+export function englishOnlyUrls(candidates, firstLocaleStatusByUrl) {
+  return candidates.filter((url) => firstLocaleStatusByUrl[url] === 308);
+}
+
+/**
+ * Why an observed chain breaks the single-308 rule, or null when its first
+ * response is a 308 to `expected` and `expected` answers 200 directly.
+ */
+export function redirectProblem(hops, expected) {
+  const [first, second] = hops;
+  if (first.status !== 308) return `answers ${first.status}, expected 308`;
+  if (!first.location) return "answers 308 with no location";
+  const target = toLocal(new URL(first.location, first.url).href);
+  if (target !== expected) return `redirects to ${target}, expected ${expected}`;
+  return second?.status === 200 ? null : `${target} answers ${second?.status ?? "nothing"}, expected 200`;
 }
 
 async function redirectChain(url) {
@@ -451,16 +484,40 @@ async function redirectChain(url) {
   return hops;
 }
 
-async function trailingSlashRedirects(urls) {
-  const checked = urls.filter((url) => new URL(url).pathname !== "/");
-  const failures = await pool(checked, async (url) => {
-    const hops = await redirectChain(`${url}/`);
-    const problem = trailingSlashProblem(url, hops[0]);
+async function redirectFailures(rule, cases) {
+  const failures = await pool(cases, async ({ url, expected }) => {
+    const hops = await redirectChain(url);
+    const problem = redirectProblem(hops, expected);
     if (!problem) return null;
     const chain = hops.map((hop) => `${hop.url.replace(base, "")} ${hop.status}`).join(" -> ");
-    return `${url.replace(base, "")}/ ${problem}; chain ${chain}`;
+    return { rule, guideline: "G28 crawlable canonical URLs", message: `${url.replace(base, "")} ${problem}; chain ${chain}` };
   });
-  return { checked: checked.length, failures: failures.filter(Boolean) };
+  return failures.filter(Boolean);
+}
+
+async function singleRedirects(entries, pages) {
+  const slashCases = entries
+    .filter((entry) => new URL(entry.url).pathname !== "/")
+    .map((entry) => ({ url: `${entry.url}/`, expected: entry.url }));
+  const locales = prefixLocales(entries);
+  const candidates = englishOnlyCandidates(entries, Object.fromEntries(pages.map((page) => [page.url, page.canonical])));
+  const localized = (url, locale) => `${base}/${locale}${new URL(url).pathname}`;
+  const firstLocaleStatus = await pool(candidates, async (url) => {
+    const res = await fetch(localized(url, locales[0]), { redirect: "manual" });
+    await res.arrayBuffer();
+    return [url, res.status];
+  });
+  const englishOnly = englishOnlyUrls(candidates, Object.fromEntries(firstLocaleStatus));
+  const localeCases = englishOnly.flatMap((url) =>
+    locales.flatMap((locale) => [localized(url, locale), `${localized(url, locale)}/`].map((prefixed) => ({ url: prefixed, expected: url }))),
+  );
+  return {
+    slashChecked: slashCases.length,
+    englishOnly: englishOnly.length,
+    locales: locales.length,
+    localeChecked: localeCases.length,
+    problems: [...(await redirectFailures("trailing-slash-redirect", slashCases)), ...(await redirectFailures("locale-prefix-redirect", localeCases))],
+  };
 }
 
 async function main() {
@@ -470,7 +527,8 @@ async function main() {
     process.exit(2);
   }
   const sitemap = await sitemapResponse.text();
-  const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => toLocal(m[1]));
+  const entries = parseSitemap(sitemap);
+  const urls = entries.map((entry) => entry.url);
   if (!urls.length) {
     console.error(`Cannot audit: ${base}/sitemap.xml lists no <loc> URLs`);
     process.exit(2);
@@ -490,12 +548,12 @@ async function main() {
 
   const { broken, unlisted } = await crawlLinks(pages, listed);
   const adsTxt = await fetch(`${base}/ads.txt`).then((r) => (r.ok ? r.text() : ""));
-  const slashRedirects = await trailingSlashRedirects(urls);
+  const redirects = await singleRedirects(entries, pages);
   const siteProblems = [
     ...broken.map((b) => ({ rule: "broken-link", message: `${b.url} answers ${b.status}` })),
     ...unlisted.map((p) => ({ rule: "unlisted-indexable", message: `${p.path} is linked and indexable but missing from the sitemap` })),
     ...(adsTxt.includes(PUBLISHER_ID) ? [] : [{ rule: "ads-txt", message: `ads.txt does not list ${PUBLISHER_ID}` }]),
-    ...slashRedirects.failures.map((message) => ({ rule: "trailing-slash-redirect", guideline: "G28 crawlable canonical URLs", message })),
+    ...redirects.problems,
   ];
 
   const byRule = RULES.map((rule) => {
@@ -507,7 +565,10 @@ async function main() {
   for (const page of pages) locales.set(page.locale, (locales.get(page.locale) ?? 0) + 1);
 
   console.log(`AdSense audit of ${base}`);
-  console.log(`${pages.length} sitemap URLs, ${indexable.length} indexable, ${locales.size} locales, ${broken.length} broken internal links, ${slashRedirects.checked} slashed URLs checked for one 308 (G28 crawlable canonical URLs)\n`);
+  console.log(`${pages.length} sitemap URLs, ${indexable.length} indexable, ${locales.size} locales, ${broken.length} broken internal links`);
+  console.log(
+    `single-308 redirects (G28 crawlable canonical URLs): ${redirects.slashChecked} slashed sitemap URLs, ${redirects.localeChecked} locale-prefixed URLs (${redirects.englishOnly} English-only pages x ${redirects.locales} locales x 2)\n`,
+  );
   console.log("| rule | guideline | failing pages | example |");
   console.log("| --- | --- | ---: | --- |");
   for (const row of byRule) console.log(`| ${row.id} | ${row.guideline} | ${row.failing} | ${row.example.replace(/\|/g, "\\|")} |`);
@@ -529,7 +590,7 @@ async function main() {
       JSON.stringify(
         {
           base,
-          summary: { urls: pages.length, indexable: indexable.length, locales: Object.fromEntries(locales), broken: broken.length, trailingSlashChecked: slashRedirects.checked },
+          summary: { urls: pages.length, indexable: indexable.length, locales: Object.fromEntries(locales), broken: broken.length, redirects: { slashChecked: redirects.slashChecked, localeChecked: redirects.localeChecked, englishOnly: redirects.englishOnly, locales: redirects.locales } },
           rules: byRule,
           siteProblems,
           pages: pages.map(({ mainText, proseText, links, hreflang, headerHreflang, ...rest }) => ({ ...rest, findings: findings.get(rest.url) })),

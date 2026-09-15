@@ -81,7 +81,7 @@ It reads `/sitemap.xml`, fetches every listed URL as a non-JS reviewer would, an
 - HTTP 200.
 - Listed pages are indexable and self-canonical.
 - At least 300 main-content words, with nav and footer excluded. `WORD_FLOOR_EXCEPTIONS` names each short page and why.
-- No hidden text at any viewport. Hidden means an inline `opacity: 0`, `display: none` or `visibility: hidden`, a `hidden` attribute, a bare `hidden` or `invisible` class with no breakpoint class that shows it again (`sm:block`, `md:flex`, `lg:inline-flex`, `md:visible`), or a breakpoint `hidden` class such as `md:hidden`. `aria-hidden` is not hidden, and an element with no words counts nothing.
+- No hidden text at any viewport. Hidden means an inline `opacity: 0`, `display: none` or `visibility: hidden`, a `hidden` attribute, a bare `hidden` class with no breakpoint display class that shows it again (`sm:block`, `md:flex`, `lg:inline-flex`), a bare `invisible` class with no breakpoint `visible` class (`md:visible`), or a breakpoint `hidden` or `invisible` class such as `md:hidden` or `sm:invisible`. `aria-hidden` is not hidden, and an element with no words counts nothing.
 - No loading or placeholder text.
 - One `h1`, a title, and a description.
 - Links to privacy, about, terms, and contact.

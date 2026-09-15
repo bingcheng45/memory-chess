@@ -26,6 +26,10 @@ describe("audit-adsense hidden text", () => {
     ["a bare invisible class", '<p class="invisible">Five words hidden from readers</p>'],
     ["a breakpoint hidden class", '<p class="block md:hidden">Five words hidden from readers</p>'],
     ["a breakpoint hidden class alone", '<p class="lg:hidden">Five words hidden from readers</p>'],
+    ["a small-breakpoint invisible class", '<p class="sm:invisible">Five words hidden from readers</p>'],
+    ["a medium-breakpoint invisible class", '<p class="text-sm md:invisible">Five words hidden from readers</p>'],
+    ["invisible that a breakpoint display class cannot show", '<p class="invisible sm:block">Five words hidden from readers</p>'],
+    ["hidden that a breakpoint visible class cannot show", '<p class="hidden md:visible">Five words hidden from readers</p>'],
     ["the hidden attribute on an inactive panel", '<div data-state="inactive" hidden="">Five words hidden from readers</div>'],
   ])("counts text behind %s", (_, html) => {
     expect(hiddenTextOf(html)).toBe("Five words hidden from readers");

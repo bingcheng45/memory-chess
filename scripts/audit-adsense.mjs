@@ -76,27 +76,45 @@ function countUnits(text) {
 const VOID_TAGS = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"]);
 
 const BREAKPOINT = "(?:sm|md|lg|xl|2xl)";
-const SHOWN_FROM_BREAKPOINT = new RegExp(`^${BREAKPOINT}:(?:block|flex|grid|contents|visible|(?:inline|table)(?:-[a-z-]+)?)$`);
-const HIDDEN_FROM_BREAKPOINT = new RegExp(`^${BREAKPOINT}:hidden$`);
+
+/**
+ * The Tailwind utilities that hide an element, one entry per CSS property. A
+ * class shows the element again only for its own property: `sm:block` undoes
+ * `hidden` but not `invisible`, and `md:visible` undoes `invisible` but not
+ * `hidden`.
+ */
+const HIDING_UTILITIES = [
+  { property: "display", hide: "hidden", show: "block|flex|grid|contents|(?:inline|table)(?:-[a-z-]+)?" },
+  { property: "visibility", hide: "invisible", show: "visible" },
+].map(({ property, hide, show }) => ({
+  property,
+  hide,
+  hiddenFromBreakpoint: new RegExp(`^${BREAKPOINT}:${hide}$`),
+  shownFromBreakpoint: new RegExp(`^${BREAKPOINT}:(?:${show})$`),
+}));
 
 /**
  * Whether an opening tag hides its content at any viewport: an inline style,
- * the `hidden` attribute, a Tailwind `hidden` or `invisible` class that no
- * breakpoint class shows again, or a breakpoint `hidden` class such as
- * `md:hidden`. Text hidden at one width is still hidden text. `aria-hidden` is
- * not hiding; an element without words adds nothing to the count anyway.
+ * the `hidden` attribute, a bare `hidden` or `invisible` class that no
+ * breakpoint class for the same property shows again, or a breakpoint class
+ * such as `md:hidden` or `sm:invisible`. Text hidden at one width is still
+ * hidden text. `aria-hidden` is not hiding; an element without words adds
+ * nothing to the count anyway.
  */
 export function hidesContent(attributes) {
   const value = (name) => attributes.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] ?? null;
   const style = value("style") ?? "";
   const tokens = (value("class") ?? "").split(/\s+/);
   const bareAttributes = attributes.replace(/="[^"]*"/g, "");
-  const shownFromBreakpoint = tokens.some((token) => SHOWN_FROM_BREAKPOINT.test(token));
+  const hiddenByClass = HIDING_UTILITIES.some(
+    ({ hide, hiddenFromBreakpoint, shownFromBreakpoint }) =>
+      (tokens.includes(hide) && !tokens.some((token) => shownFromBreakpoint.test(token))) ||
+      tokens.some((token) => hiddenFromBreakpoint.test(token)),
+  );
   return (
     /opacity:\s*0(?![.\d])|display:\s*none|visibility:\s*hidden/i.test(style) ||
     /\shidden(?=\s|$)/i.test(bareAttributes) ||
-    (!shownFromBreakpoint && tokens.some((token) => token === "hidden" || token === "invisible")) ||
-    tokens.some((token) => HIDDEN_FROM_BREAKPOINT.test(token))
+    hiddenByClass
   );
 }
 

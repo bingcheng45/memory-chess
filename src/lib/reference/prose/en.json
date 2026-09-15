@@ -29,7 +29,7 @@
       "seconds": "{seconds}s",
       "trains": {
         "easy": "Two kings and nothing else. It teaches the interface and gives you a clean read on whether you can hold two squares under time pressure.",
-        "medium": "Six pieces means both kings plus four more pieces, with the same ten seconds to look as the two-piece preset. This is the preset where chunking starts to pay off.",
+        "medium": "Six pieces means both kings plus four more pieces, with the same ten seconds to look as the two-piece preset.",
         "hard": "Twelve pieces in eight seconds leaves two thirds of a second per piece, so grouping pieces into shapes helps more than remembering them one at a time.",
         "grandmaster": "Twenty pieces in five seconds is a quarter of a second per piece. It rewards seeing pawn chains and piece clusters as single units."
       },

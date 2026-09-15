@@ -29,7 +29,7 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "2 konger og ingenting annet. Den lærer deg grensesnittet og gir deg et rent svar på om du klarer å holde 2 ruter i hodet under tidspress.",
-        "medium": "6 brikker betyr begge kongene pluss fire andre brikker, med de samme ti sekundene til å se som på vanskelighetsgraden med to brikker. Dette er vanskelighetsgraden der det begynner å lønne seg å huske i grupper.",
+        "medium": "6 brikker betyr begge kongene pluss fire andre brikker, med de samme ti sekundene til å se som på vanskelighetsgraden med to brikker.",
         "hard": "12 brikker på 8 sekunder gir to tredjedels sekund per brikke, så det hjelper mer å samle brikkene i mønstre enn å huske dem én og én.",
         "grandmaster": "20 brikker på 5 sekunder er et kvart sekund per brikke. Nivået belønner deg for å se bondekjeder og brikkeklynger som samlede enheter."
       },

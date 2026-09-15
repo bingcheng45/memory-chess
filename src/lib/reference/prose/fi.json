@@ -29,7 +29,7 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "Vain 2 kuningasta, ei mitään muuta. Taso opettaa käyttöliittymän ja näyttää selvästi, pystytkö pitämään 2 ruutua mielessä aikapaineessa.",
-        "medium": "6 nappulaa tarkoittaa molempia kuninkaita ja neljää muuta nappulaa, ja katseluaikaa on samat kymmenen sekuntia kuin kahden nappulan tasolla. Tällä tasolla ryhmittely alkaa kannattaa.",
+        "medium": "6 nappulaa tarkoittaa molempia kuninkaita ja neljää muuta nappulaa, ja katseluaikaa on samat kymmenen sekuntia kuin kahden nappulan tasolla.",
         "hard": "12 nappulaa 8 sekunnissa jättää kaksi kolmasosaa sekunnista nappulaa kohti, joten nappuloiden ryhmittely kuvioiksi auttaa enemmän kuin niiden muistaminen yksi kerrallaan.",
         "grandmaster": "20 nappulaa 5 sekunnissa tarkoittaa neljäsosasekuntia nappulaa kohti. Taso palkitsee siitä, että näet sotilasketjut ja nappularyppäät yksittäisinä kokonaisuuksina."
       },

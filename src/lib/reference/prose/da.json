@@ -29,7 +29,7 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "To konger og intet andet. Den lærer dig grænsefladen og viser tydeligt, om du kan holde to felter i hovedet under tidspres.",
-        "medium": "6 brikker betyder begge konger plus fire andre brikker, med de samme ti sekunder til at se som i sværhedsgraden med to brikker. Det er på denne sværhedsgrad, det begynder at betale sig at huske brikkerne i grupper.",
+        "medium": "6 brikker betyder begge konger plus fire andre brikker, med de samme ti sekunder til at se som i sværhedsgraden med to brikker.",
         "hard": "12 brikker på 8 sekunder giver to tredjedele sekund pr. brik, så det hjælper mere at samle brikkerne i mønstre end at huske dem én ad gangen.",
         "grandmaster": "20 brikker på 5 sekunder er et kvart sekund pr. brik. Sværhedsgraden belønner dig for at se bondekæder og grupper af brikker som samlede enheder."
       },

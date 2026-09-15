@@ -29,7 +29,7 @@
       "seconds": "{seconds}s",
       "trains": {
         "easy": "Due re e nient'altro. Insegna l'interfaccia e ti fa capire subito se riesci a tenere a mente due case sotto pressione.",
-        "medium": "Sei pezzi sono i due re più altri quattro pezzi, con gli stessi dieci secondi per guardare del livello a due pezzi. È il livello in cui raggruppare i pezzi comincia a ripagare.",
+        "medium": "Sei pezzi sono i due re più altri quattro pezzi, con gli stessi dieci secondi per guardare del livello a due pezzi.",
         "hard": "Dodici pezzi in otto secondi lasciano due terzi di secondo per pezzo, quindi raggruppare i pezzi in forme aiuta più che ricordarli uno alla volta.",
         "grandmaster": "Venti pezzi in cinque secondi fanno un quarto di secondo per pezzo. Premia chi vede catene di pedoni e gruppi di pezzi come unità singole."
       },

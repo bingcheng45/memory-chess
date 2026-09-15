@@ -29,7 +29,7 @@
       "seconds": "{seconds}s",
       "trains": {
         "easy": "Dos reyes y nada más. Enseña la interfaz y te da una medida limpia de si puedes retener dos casillas bajo presión de tiempo.",
-        "medium": "Seis piezas son los dos reyes más otras cuatro piezas, con los mismos diez segundos para mirar que en la dificultad de dos piezas. Es la dificultad donde agrupar piezas empieza a dar frutos.",
+        "medium": "Seis piezas son los dos reyes más otras cuatro piezas, con los mismos diez segundos para mirar que en la dificultad de dos piezas.",
         "hard": "Doce piezas en ocho segundos dejan dos tercios de segundo por pieza, así que agrupar las piezas en formas ayuda más que recordarlas una a una.",
         "grandmaster": "Veinte piezas en cinco segundos es un cuarto de segundo por pieza. Premia ver las cadenas de peones y los grupos de piezas como unidades."
       },

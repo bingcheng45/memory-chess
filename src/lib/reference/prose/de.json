@@ -29,7 +29,7 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "2 Könige und sonst nichts. Diese Stufe macht dich mit der Bedienung vertraut und zeigt dir sauber, ob du 2 Felder unter Zeitdruck behalten kannst.",
-        "medium": "6 Figuren bedeuten beide Könige plus vier weitere Figuren, mit denselben zehn Sekunden zum Ansehen wie auf der Stufe mit zwei Figuren. Auf dieser Stufe zahlt es sich zum ersten Mal aus, Figuren zu Gruppen zusammenzufassen.",
+        "medium": "6 Figuren bedeuten beide Könige plus vier weitere Figuren, mit denselben zehn Sekunden zum Ansehen wie auf der Stufe mit zwei Figuren.",
         "hard": "12 Figuren in 8 Sekunden lassen zwei Drittel einer Sekunde pro Figur, daher hilft es mehr, Figuren zu Formen zu gruppieren, als sie einzeln zu behalten.",
         "grandmaster": "20 Figuren in 5 Sekunden sind eine Viertelsekunde pro Figur. Belohnt wird, wer Bauernketten und Figurengruppen als Einheiten sieht."
       },

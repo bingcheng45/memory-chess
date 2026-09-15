@@ -29,7 +29,7 @@
       "seconds": "{seconds} giây",
       "trains": {
         "easy": "Chỉ hai vua, không gì khác. Mức này dạy bạn cách dùng giao diện và cho biết rõ bạn có giữ được hai ô trong đầu dưới áp lực thời gian hay không.",
-        "medium": "Sáu quân gồm hai vua và bốn quân khác, với cùng mười giây quan sát như mức hai quân. Đây là mức mà việc gom nhóm bắt đầu phát huy tác dụng.",
+        "medium": "Sáu quân gồm hai vua và bốn quân khác, với cùng mười giây quan sát như mức hai quân.",
         "hard": "Mười hai quân trong tám giây tức là hai phần ba giây cho mỗi quân, nên gom quân thành các hình dạng giúp ích hơn là nhớ từng quân một.",
         "grandmaster": "Hai mươi quân trong năm giây là một phần tư giây cho mỗi quân. Mức này thưởng cho việc nhìn ra các chuỗi tốt và cụm quân như những khối duy nhất."
       },

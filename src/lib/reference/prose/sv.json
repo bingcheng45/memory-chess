@@ -29,7 +29,7 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "Två kungar och ingenting annat. Nivån lär dig gränssnittet och visar tydligt om du kan hålla två rutor i huvudet under tidspress.",
-        "medium": "6 pjäser betyder båda kungarna plus fyra andra pjäser, med samma tio sekunder att titta som på nivån med två pjäser. Det är på den här nivån som det börjar löna sig att gruppera.",
+        "medium": "6 pjäser betyder båda kungarna plus fyra andra pjäser, med samma tio sekunder att titta som på nivån med två pjäser.",
         "hard": "12 pjäser på 8 sekunder ger två tredjedels sekund per pjäs, så det hjälper mer att gruppera pjäserna i former än att minnas dem en i taget.",
         "grandmaster": "20 pjäser på 5 sekunder är en fjärdedels sekund per pjäs. Nivån belönar den som ser bondekedjor och pjäsgrupper som enheter."
       },

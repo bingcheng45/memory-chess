@@ -29,7 +29,7 @@
       "seconds": "{seconds} s",
       "trains": {
         "easy": "Dwaj królowie i nic więcej. Uczy interfejsu i daje jasną odpowiedź, czy potrafisz utrzymać w pamięci dwa pola pod presją czasu.",
-        "medium": "Sześć bierek to oba króle i cztery inne bierki, z tymi samymi dziesięcioma sekundami na przyjrzenie się co na poziomie z dwiema bierkami. To poziom, na którym zaczyna się opłacać grupowanie w bloki.",
+        "medium": "Sześć bierek to oba króle i cztery inne bierki, z tymi samymi dziesięcioma sekundami na przyjrzenie się co na poziomie z dwiema bierkami.",
         "hard": "Dwanaście bierek w osiem sekund to dwie trzecie sekundy na bierkę, więc grupowanie bierek w kształty pomaga bardziej niż zapamiętywanie ich pojedynczo.",
         "grandmaster": "Dwadzieścia bierek w pięć sekund to ćwierć sekundy na bierkę. Ten poziom nagradza dostrzeganie łańcuchów pionów i skupisk bierek jako pojedynczych całości."
       },

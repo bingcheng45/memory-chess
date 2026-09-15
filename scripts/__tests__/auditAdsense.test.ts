@@ -1,10 +1,13 @@
 /** @jest-environment node */
 
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
+import { mkdtempSync, rmSync, symlinkSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 
-const AUDIT_URL = pathToFileURL(join(__dirname, "..", "audit-adsense.mjs")).href;
+const AUDIT_PATH = join(__dirname, "..", "audit-adsense.mjs");
+const AUDIT_URL = pathToFileURL(AUDIT_PATH).href;
 
 /**
  * Runs an export of the real audit script in a separate Node process, since the
@@ -36,6 +39,23 @@ describe("audit-adsense hidden text", () => {
     ["aria-hidden", '<p aria-hidden="true">Five words shown on wide screens</p>'],
   ])("does not count text behind %s", (_, html) => {
     expect(hiddenTextOf(html)).toBe("");
+  });
+});
+
+describe("audit-adsense command line", () => {
+  it("runs the audit when started through a symlink, so an unreachable base fails loudly", () => {
+    const dir = mkdtempSync(join(tmpdir(), "audit-adsense-"));
+    try {
+      const link = join(dir, "audit-adsense.mjs");
+      symlinkSync(AUDIT_PATH, link);
+
+      const run = spawnSync(process.execPath, [link, "--base", "http://127.0.0.1:1"], { encoding: "utf8" });
+
+      expect(run.stderr).not.toBe("");
+      expect(run.status).toBe(2);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 });
 

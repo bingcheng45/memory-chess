@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import { writeFileSync, mkdirSync } from "node:fs";
+import { existsSync, writeFileSync, mkdirSync, realpathSync } from "node:fs";
 import { join } from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 
 const PUBLISHER_ID = "pub-9048170183399377";
 const PROD_ORIGIN = "https://thememorychess.com";
@@ -465,7 +465,10 @@ async function main() {
   process.exit(failed ? 1 : 0);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+const entry = process.argv[1];
+const isEntryPoint = Boolean(entry) && existsSync(entry) && realpathSync(fileURLToPath(import.meta.url)) === realpathSync(entry);
+
+if (isEntryPoint) {
   main().catch((error) => {
     console.error(error);
     process.exit(2);

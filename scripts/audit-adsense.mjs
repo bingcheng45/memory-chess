@@ -51,7 +51,7 @@ function stripBlocks(html, tags) {
 
 function toText(html) {
   return html
-    .replace(/<\/(?:h[1-6]|p|li|td|th|dt|dd|summary|figcaption|blockquote)>/gi, " ¶ ")
+    .replace(/<\/(?:h[1-6]|p|div|li|td|th|dt|dd|summary|figcaption|blockquote)>/gi, " ¶ ")
     .replace(/<[^>]*>/g, " ")
     .replace(/&[a-zA-Z#0-9]+;/g, " ")
     .replace(/\s+/g, " ")

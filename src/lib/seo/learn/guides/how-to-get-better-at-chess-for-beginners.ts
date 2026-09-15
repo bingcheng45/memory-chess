@@ -257,7 +257,7 @@ const guide: LearnGuide = {
     },
     {
       slug: "20-minute-daily-chess-study-plan",
-      reason: "The four stages packed into a fixed twenty minutes.",
+      reason: "Twenty fixed minutes of memory rounds, slow puzzles, one replayed game and a written line, without the slow game.",
     },
     {
       slug: "how-to-analyze-chess-games-for-beginners",

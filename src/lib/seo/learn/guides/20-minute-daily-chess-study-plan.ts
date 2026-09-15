@@ -194,7 +194,7 @@ const guide: LearnGuide = {
   relatedArticles: [
     {
       slug: "how-to-get-better-at-chess-for-beginners",
-      reason: "The four stages this timetable is built from, and the order they come in.",
+      reason: "The four stages, including the slow game each day that these twenty minutes leave out.",
     },
     {
       slug: "how-to-analyze-chess-games-for-beginners",

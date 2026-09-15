@@ -104,6 +104,35 @@ describe("middleware on English-only routes", () => {
   });
 });
 
+describe("middleware on a trailing slash", () => {
+  it.each([
+    ["https://thememorychess.com/fr/learn/?utm=1", "https://thememorychess.com/learn?utm=1"],
+    ["https://thememorychess.com/de/about/", "https://thememorychess.com/about"],
+    [
+      "https://thememorychess.com/de/learn/chess-board-vision-drills/?utm=xyz",
+      "https://thememorychess.com/learn/how-to-stop-blundering-in-chess?utm=xyz",
+    ],
+    ["https://thememorychess.com/learn/", "https://thememorychess.com/learn"],
+    ["https://thememorychess.com/de/game/", "https://thememorychess.com/de/game"],
+    ["https://thememorychess.com/leaderboard//", "https://thememorychess.com/leaderboard"],
+  ])("sends %s to its canonical URL in one 308", (from, to) => {
+    const response = middleware(new NextRequest(from, { headers: new Headers({ "user-agent": BROWSER }) }));
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(to);
+    expect(mockForwarded).toHaveLength(0);
+  });
+
+  it("leaves the root path to next-intl", () => {
+    const response = middleware(
+      new NextRequest("https://thememorychess.com/", { headers: new Headers({ "user-agent": GOOGLEBOT }) }),
+    );
+
+    expect(response.status).toBe(200);
+    expect(mockForwarded).toHaveLength(1);
+  });
+});
+
 describe("middleware on the English-indexed leaderboard", () => {
   it.each([
     "https://thememorychess.com/leaderboard",

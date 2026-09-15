@@ -4,187 +4,169 @@ const guide: LearnGuide = {
   slug: "chess-visualization-exercises",
   goal: "visualization",
   title: "Chess Visualization Exercises for Beginners",
-  h1: "Chess visualization exercises beginners can do daily",
-  description: "Try simple chess visualization exercises to remember the board and picture moves more clearly.",
+  h1: "Chess visualization exercises for when the picture fades two moves in",
+  description:
+    "Visualization drills for players who lose the position two moves into a line, with a four-minute check that shows which piece you lose first.",
   primaryKeyword: "chess visualization exercises",
   secondaryKeywords: [
     "chess visualization training",
     "calculate moves ahead",
     "board visualization chess",
-    "blindfold preparation",
+    "cover and move drill",
     "mental chess practice",
   ],
-  ctaLabel: "Practise Visualization",
-  quickAnswer: "First, remember a board without moving anything. Then picture one move at a time. You do not need to play a full game blindfolded.",
+  ctaLabel: "Play 6 pieces, 10 seconds, four rounds",
+  quickAnswer:
+    "Find out which failure you have before you drill. One 6-piece round shows whether pieces vanish, drift a square, or change identity in your head. Then train that failure with a covered board, one move at a time.",
   keyTakeaways: [
-    "Short daily practice works better than rare, long sessions.",
-    "Check your imagined board after every try.",
-    "Picture one move clearly before trying longer lines.",
+    "A 6-piece, 10-second round is a four-minute test of how much picture you hold.",
+    "The result board separates a vanished piece from one that landed on the wrong square.",
+    "Cover-and-move drills train updating the picture, which a memorize round cannot.",
   ],
   whoThisIsFor: [
-    "Players who forget a line after one exchange.",
-    "Beginners who struggle when they cannot look at the board.",
-    "Anyone who wants to try blindfold chess step by step.",
+    "Players who calculate two moves, then look back at the board and start again.",
+    "Anyone who sees the move but not the position it leaves behind.",
   ],
-  timeToRead: "8 min read",
+  timeToRead: "7 min read",
   difficulty: "Beginner",
   featured: true,
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Mental board control",
+      id: "how-the-picture-fails",
+      title: "Three ways the picture fails",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Visualization means picturing how the board changes after a move. For beginners, the goal is simply to compare two possible moves without losing track of the pieces.",
-            "Memory Chess shows which pieces or squares you forget. You can then practise the same kind of position again.",
+            "Visualization is not one skill. When a line goes wrong in your head, one of three things has happened, and each needs a different fix.",
+            "A piece vanishes. You calculated a capture, and two moves later you forgot the capturing piece is still standing there. A piece drifts. The knight went to e5, but your picture keeps it on f3. Or a piece changes identity. A bishop turns into a knight, or a white rook into a black one.",
+            "Memory Chess scores a placed piece as correct only when its square, its type and its colour all match the original. A knight on the right square in the wrong colour is wrong, not partial credit. That strictness is what makes a round useful as a diagnosis rather than as a score.",
+            "After you submit, the result screen shows the position you saw and the one you built. The submitted board marks every square as Correct, Incorrect or Missed, and a missed square shows a dotted outline where the piece belonged.",
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Start with these visualization steps",
-      summary: "You can try these steps today.",
-      blocks: [
-        {
-          kind: "steps",
-          ordered: true,
-          items: [
-            "Name every piece and square from a static board for 60 seconds.",
-            "Close your eyes and rebuild the board in your mind before checking it.",
-            "Imagine one legal move for each side without touching the pieces.",
-            "Run one Memory Chess round with a moderate piece count and strict timer.",
-            "Verify the position and repeat only after you know what you forgot.",
-          ],
-        },
-      ],
-    },
-    {
-      id: "drills",
-      title: "Easy visualization drills",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
+      id: "four-minute-check",
+      title: "The four-minute check",
+      summary: "Play this before any other drill, and again at the end of each week.",
       blocks: [
         {
           kind: "drills",
           drills: [
             {
-              title: "Static board snapshot",
-              description: "Look at 6 pieces for 10 seconds, then place each one back on its square.",
-              duration: "4 minutes",
-              goal: "Remember the board before you start picturing moves.",
-              ctaLabel: "Play 6 pieces, 10 seconds",
+              title: "Six pieces, ten seconds, four rounds",
+              description:
+                "Play 4 rounds of 6 pieces with 10 seconds to look. Place the pieces, submit, and write down what each miss was: missed, wrong square, or wrong piece.",
+              duration: "About 4 minutes",
+              goal: "Learn which of the three failures is yours.",
+              ctaLabel: "Play 6 pieces, 10 seconds, four rounds",
               setup: {
                 pieceCount: 6,
                 memorizeTime: 10,
               },
             },
-            {
-              title: "One move each side",
-              description: "Remember the board, picture one move for each side, then check your answer.",
-              duration: "5 minutes",
-              goal: "Learn to update the board in your head.",
-              ctaLabel: "Train one-move updates",
-            },
-            {
-              title: "Pressure-window recall",
-              description: "Keep 6 pieces but cut the look time to 5 seconds. Do this only once your 10-second rounds are accurate.",
-              duration: "5 minutes",
-              goal: "Use clear recall in faster games.",
-              ctaLabel: "Play 6 pieces, 5 seconds",
-              setup: {
-                pieceCount: 6,
-                memorizeTime: 5,
-              },
-            },
+          ],
+        },
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Read the result board, not the accuracy number. A dotted outline with nothing near it means the piece vanished. A wrong piece one square away from a dotted outline means it drifted. A wrong piece sitting exactly where a piece belonged means you kept the square and lost the identity.",
+            "If you place a seventh piece, accuracy drops ten points for it and it counts as a wrong piece. Treat that as the most serious miss of all. In a game, a phantom piece means you calculate around a defender that does not exist.",
           ],
         },
       ],
     },
     {
-      id: "comparison",
-      title: "What weak visualization feels like",
-      summary: "It may feel like a calculation problem, but often the board picture is fading too quickly.",
+      id: "cover-and-move",
+      title: "Cover and move, the drill a round cannot replace",
+      summary: "A memorize round tests holding a picture. This drill tests changing it.",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Set up this position on a real board or a diagram. White has king g1, rook e1, knight f3 and pawns on e4, f2, g2 and h2. Black has king g8, rook e8, knight f6 and pawns on e5, f7, g7 and h7.",
+            "Cover the board. Now answer without uncovering it. Does 1.Nxe5 win a pawn?",
+          ],
+        },
+        {
+          kind: "steps",
+          ordered: true,
+          items: [
+            "Say the e-file from top to bottom after the capture: rook e8, then e7 and e6 empty, knight e5, pawn e4, then e3 and e2 empty, rook e1.",
+            "Count attackers of e5. The rook on e8 attacks it once.",
+            "Count defenders of e5. The rook on e1 would, but your own pawn on e4 stands in the way. Zero.",
+            "Conclusion. 1.Nxe5 loses a knight for a pawn after 1...Rxe5. Uncover the board and check every square you named.",
+          ],
+        },
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Now move the white pawn from e4 to d3 and ask the same question. This time the e-file behind the knight is empty, so the rook on e1 defends e5. After 1.Nxe5 Rxe5 2.Rxe5 White has won a rook and a pawn for a knight, so Black should not recapture, and 1.Nxe5 wins a clean pawn.",
+            "One pawn moved one square and the answer flipped. The piece people forget is the one blocking their own line, because it never moves in the line they are calculating. Before you judge a capture, say the whole file or diagonal behind it.",
+            "Do this with two positions of your own each day. Take a puzzle you solved yesterday, cover it, say the solution, then name where every piece that moved now stands.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "which-drill-for-which-failure",
+      title: "Which drill fixes which failure",
       blocks: [
         {
           kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
-          ],
+          columns: ["Failure", "What the result board shows", "What to train"],
           rows: [
             {
-              label: "Candidate moves",
-              struggling: "You can name a move but not the resulting board clearly.",
-              stronger: "You can compare two possible positions before moving.",
+              label: "Vanished piece",
+              struggling: "A dotted outline on an empty square.",
+              stronger: "Look in groups. Name the king and everything touching it first, then the outliers.",
             },
             {
-              label: "Tactical chaos",
-              struggling: "Your head goes blank after exchanges.",
-              stronger: "You hold the important squares and threats long enough to decide calmly.",
+              label: "Drifted piece",
+              struggling: "A wrong piece one square from a dotted outline.",
+              stronger: "Say the square name out loud during the look. A named square does not drift.",
             },
             {
-              label: "Training feedback",
-              struggling: "You do not know exactly what square you forgot.",
-              stronger: "You catch whether the error came from a file, rank, or missing defender.",
+              label: "Changed piece",
+              struggling: "A wrong piece exactly where a piece belonged.",
+              stronger: "Cover-and-move with captures, since captures are where identities swap.",
+            },
+            {
+              label: "Phantom piece",
+              struggling: "A seventh piece, and ten accuracy points gone.",
+              stronger: "Count the pieces before you submit. In a line, count captures as you go.",
             },
           ],
         },
       ],
     },
     {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
-      blocks: [
-        {
-          kind: "steps",
-          ordered: false,
-          items: [
-            "Trying deep blindfold calculation before static recall is stable.",
-            "Moving pieces physically during every calculation attempt.",
-            "Practicing once a week instead of repeating a short daily block.",
-            "Not checking whether the imagined board matches reality.",
-          ],
-        },
-        {
-          kind: "callout",
-          title: "What to do instead",
-          body: "Do not chase longer lines yet. First, picture the first move clearly.",
-        },
-      ],
-    },
-    {
-      id: "plan",
-      title: "7-day visualization progression",
-      summary: "Follow these steps before making the practice harder or longer.",
+      id: "six-week-progression",
+      title: "Six weeks with one number to watch",
       blocks: [
         {
           kind: "plan",
           steps: [
             {
-              label: "Day 1",
-              duration: "10 minutes",
-              detail: "Use only static board snapshots and immediate verification.",
+              label: "Weeks 1 and 2",
+              duration: "8 minutes a day",
+              detail:
+                "The four-minute check daily, then one cover-and-move question with a single move. The number to watch is perfect rounds out of four.",
             },
             {
-              label: "Day 2 to 3",
-              duration: "12 minutes",
-              detail: "Add one imagined move per side and track which squares disappear first.",
+              label: "Weeks 3 and 4",
+              duration: "10 minutes a day",
+              detail:
+                "Keep the check. Extend cover-and-move to two moves for each side, always ending by saying the file or diagonal behind the last capture.",
             },
             {
-              label: "Day 4 to 5",
-              duration: "15 minutes",
-              detail: "Lower the viewing window on Memory Chess while keeping piece count stable.",
-            },
-            {
-              label: "Day 6 to 7",
-              duration: "15 minutes",
-              detail: "Transfer the drill into one rapid game by pausing before each tactical decision and naming the resulting board.",
+              label: "Weeks 5 and 6",
+              duration: "12 minutes a day",
+              detail:
+                "Three perfect rounds out of four means the picture holds at six pieces. Move the check to 12 pieces with 8 seconds and start cover-and-move again from one move.",
             },
           ],
         },
@@ -193,51 +175,36 @@ const guide: LearnGuide = {
   ],
   faq: [
     {
-      question: "How long until chess visualization improves?",
-      answer: "Most beginners notice cleaner board recall within two to four weeks of short, consistent practice.",
+      question: "Why not just play more rounds until accuracy goes up?",
+      answer:
+        "Because accuracy hides which failure you have. Two players at 67% on six pieces can have different problems, one dropping outliers and the other swapping identities, and they need different drills.",
     },
     {
-      question: "Do visualization drills help blitz games?",
-      answer: "Yes. Faster mental board updates make checks, captures, and threats easier to spot under time pressure.",
+      question: "Is the 12-piece, 8-second preset a better test?",
+      answer:
+        "Not at first. At twelve pieces most beginners miss half, and a board with six dotted outlines tells you nothing. Six pieces gives one or two misses a round, and one miss is readable.",
     },
     {
-      question: "Can I train visualization without blindfold chess?",
-      answer: "Yes. Timed recall and one-move update drills are enough to build a real beginner foundation.",
-    },
-    {
-      question: "What should I do if I keep forgetting piece locations?",
-      answer: "Use fewer pieces, check more often, and repeat the position until your recall is clear.",
+      question: "Does the cover-and-move drill need a real board?",
+      answer:
+        "No. A diagram on paper or on a screen works, as long as you can cover it. Setting the pieces up by hand does help, because placing the e4 pawn yourself makes it harder to forget.",
     },
   ],
   relatedArticles: [
     {
       slug: "blindfold-chess-training-for-beginners",
-      reason: "Use this after static and one-move recall feel stable.",
+      reason: "When a covered board feels easy, the next step is a whole game without one.",
+    },
+    {
+      slug: "chess-calculation-exercises-for-beginners",
+      reason: "Uses the cover-and-move habit on longer lines.",
     },
     {
       slug: "how-to-see-the-whole-board-in-chess",
-      reason: "Train wider board awareness if you miss pieces at the edges.",
-    },
-    {
-      slug: "chess-board-vision-drills",
-      reason: "Use visualization with a simple threat check.",
+      reason: "For the edge pieces that vanish first.",
     },
   ],
-  sources: [
-    {
-      title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-      url: "https://doi.org/10.1006/cogp.1996.0011",
-    },
-    {
-      title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
-      url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
-    },
-    {
-      title: "The Importance of Visualization in Chess",
-      url: "https://www.chess.com/blog/OnlineChessTeacher/the-importance-of-visualization-in-chess",
-      note: "Useful as a mainstream comparison point showing the topic is active but often under-structured for beginners.",
-    },
-  ],
+  sources: [],
 };
 
 export default guide;

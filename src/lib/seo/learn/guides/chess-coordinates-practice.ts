@@ -4,182 +4,171 @@ const guide: LearnGuide = {
   slug: "chess-coordinates-practice",
   goal: "visualization",
   title: "Chess Coordinates Practice for Faster Board Awareness",
-  h1: "Chess coordinates practice for beginners",
-  description: "Learn chess square names faster and make board scanning, notation, and visualization easier.",
+  h1: "Chess coordinates practice, from counting squares to reading them",
+  description:
+    "Stop counting files and ranks. Eight anchor squares, one colour rule, and Memory Chess rounds with the board labels on and then off.",
   primaryKeyword: "chess coordinates practice",
   secondaryKeywords: [
     "chess notation practice",
     "learn chess coordinates",
-    "faster square recognition chess",
+    "chess square colours",
     "board awareness squares chess",
     "chess square naming drills",
   ],
-  ctaLabel: "Practise Square Names",
-  quickAnswer: "Chess coordinates are the names of the 64 squares. Learning them helps you scan the board, picture moves, and review games more easily.",
+  ctaLabel: "Play 4 pieces, 12 seconds, labels on",
+  quickAnswer:
+    "Counting to a square is the habit to break. Learn eight anchor squares and the colour rule, then play rounds with the board labels on while naming every square, then with the labels hidden.",
   keyTakeaways: [
-    "Fast square recognition makes board scans easier.",
-    "Practise coordinates with real positions.",
-    "You only need the basic square names to begin.",
+    "A square you recognise takes one look. A square you count takes two, and the second one is where you lose the thread.",
+    "The board labels in Memory Chess can be hidden from the settings page, and the result screen always shows them.",
+    "Square colour follows one rule you can check in your head.",
   ],
   whoThisIsFor: [
-    "Beginners who still count files and ranks slowly.",
-    "Players who want board scans and visualization to feel faster.",
-    "Anyone who finds chess notation confusing.",
+    "Players who still find c3 by running a finger along the bottom edge.",
+    "Anyone who loses the thread of a video or a book because the squares come too fast.",
   ],
   timeToRead: "7 min read",
   difficulty: "Beginner",
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Mental board control",
+      id: "counting-is-the-habit",
+      title: "Counting is the habit to break",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Coordinates are useful for more than books and move lists. Fast square recognition helps with board vision, memory, and game review.",
-            "When you know the square names, the board feels like a clear map instead of a group of vague areas.",
+            "When a commentator says Nd5 and you find d5 by counting four files across and five ranks up, you have done two lookups. The move is gone by the time you finish. Fluent players do one. They see d5 the way you see a word, whole, without spelling it.",
+            "That difference is the whole skill. Nothing about coordinates is hard to understand. What takes practice is making the name and the square arrive together, so you stop translating.",
+            "The drills below force the translation to happen out loud until it stops being a step.",
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Start with square names on a real board",
-      summary: "You can try these steps today.",
+      id: "eight-anchor-squares",
+      title: "Eight anchor squares and one colour rule",
       blocks: [
         {
-          kind: "steps",
-          ordered: true,
-          items: [
-            "Pick one file or rank pattern and name the squares out loud.",
-            "Call out the square of every piece while rebuilding a Memory Chess position.",
-            "Use one recent game position and name key attackers and defenders by square.",
-            "Practice bishops, rooks, and knight jumps by coordinates, not only by sight.",
-            "Finish with one rapid board scan where every loose piece is named by square.",
+          kind: "paragraphs",
+          paragraphs: [
+            "You do not learn 64 squares. You learn a few anchors and read the rest from them.",
           ],
         },
-      ],
-    },
-    {
-      id: "drills",
-      title: "Coordinate drills that help real play",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
-      blocks: [
-        {
-          kind: "drills",
-          drills: [
-            {
-              title: "Piece-to-square naming",
-              description: "Play 6 pieces with 12 seconds to look. Say each piece and its square out loud while you look, then place them back.",
-              duration: "4 minutes",
-              goal: "Connect square names to pieces you need to remember.",
-              ctaLabel: "Play 6 pieces, 12 seconds",
-              setup: {
-                pieceCount: 6,
-                memorizeTime: 12,
-              },
-            },
-            {
-              title: "Long-range line naming",
-              description: "Trace bishop and rook lines and say the squares they influence.",
-              duration: "4 minutes",
-              goal: "Make coordinates useful during full-board scans.",
-              ctaLabel: "Trace lines by square",
-            },
-            {
-              title: "Knight jump mapping",
-              description: "Choose one knight square and name all legal destinations quickly.",
-              duration: "3 minutes",
-              goal: "Recognise knight moves and target squares faster.",
-              ctaLabel: "Map knight jumps",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "comparison",
-      title: "Slow square recognition vs faster square recognition",
-      summary: "Coordinates will not improve every part of your chess, but they make several skills easier.",
-      blocks: [
-        {
-          kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
-          ],
-          rows: [
-            {
-              label: "Board scan",
-              struggling: "You know the shape but not the square names.",
-              stronger: "You identify threats and defenders more precisely and faster.",
-            },
-            {
-              label: "Visualization",
-              struggling: "Imagined moves feel vague.",
-              stronger: "The resulting board becomes easier to describe and hold.",
-            },
-            {
-              label: "Review",
-              struggling: "Post-game notes stay fuzzy.",
-              stronger: "You can describe the key moment clearly enough to study it later.",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
-      blocks: [
         {
           kind: "steps",
           ordered: false,
           items: [
-            "Practising square names without using real positions.",
-            "Trying to memorize notation rules without using live board examples.",
-            "Ignoring long-range piece lines while practicing square names.",
-            "Dropping the habit once basic notation becomes familiar.",
+            "The four centre squares. d4 and e5 are dark, e4 and d5 are light. Every other square is a short step from one of them.",
+            "The four corners. a1 is dark and sits at White's left hand. h1 is light, a8 is light, h8 is dark.",
+            "The colour rule. Count the file as a number, a is 1 and h is 8, and add the rank. Even is dark, odd is light. c3 is 3 plus 3, even, dark. g2 is 7 plus 2, odd, light.",
+            "The two long diagonals. a1 to h8 runs on dark squares, h1 to a8 on light. A bishop on the a1 diagonal can never reach the h1 diagonal.",
           ],
         },
         {
-          kind: "callout",
-          title: "What to do instead",
-          body: "Do not only repeat square names. Use them with real pieces and positions.",
+          kind: "paragraphs",
+          paragraphs: [
+            "Test the anchors away from the board. Someone names a square, you say its colour before they finish the word. Ten in a row without a miss and the anchors are in.",
+          ],
         },
       ],
     },
     {
-      id: "plan",
-      title: "7-day coordinate warm-up plan",
-      summary: "Follow these steps before making the practice harder or longer.",
+      id: "labels-on-then-off",
+      title: "Labels on, then labels off",
+      summary:
+        "Memory Chess shows the file letters and rank numbers on every board by default. A switch on the settings page hides them, and that switch is the drill.",
       blocks: [
         {
-          kind: "plan",
-          steps: [
+          kind: "paragraphs",
+          paragraphs: [
+            "The setting is called Show board coordinates, on the settings page, and it is on for everyone until you turn it off. It hides the labels on the memorize board and on the board where you place pieces. The result screen ignores it and always shows both boards labelled, so you can check your placements by name.",
+            "If you use a screen reader, every square announces its name, and a square with a piece on it announces the piece as well. The labels setting does not change that.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
             {
-              label: "Day 1 to 2",
-              duration: "8 minutes",
-              detail: "Name each piece and square while rebuilding a Memory Chess position.",
+              title: "Labels on, say every square",
+              description:
+                "Play 5 rounds of 4 pieces with 12 seconds to look. During the look, say each piece with its square aloud, such as white rook a1. Place them, then check the result board by name.",
+              duration: "About 4 minutes",
+              goal: "Tie every piece you remember to a square name, not to a spot on the board.",
+              ctaLabel: "Play 4 pieces, 12 seconds, labels on",
+              setup: {
+                pieceCount: 4,
+                memorizeTime: 12,
+              },
             },
             {
-              label: "Day 3 to 4",
-              duration: "10 minutes",
-              detail: "Add long-range line naming for bishops and rooks.",
+              title: "Labels off, place by name",
+              description:
+                "Turn off Show board coordinates on the settings page, then play 5 rounds of 4 pieces with 12 seconds to look. Say the squares aloud as before and place each piece by finding its square from the nearest anchor, not from the edge.",
+              duration: "About 4 minutes",
+              goal: "Find a named square on a blank board without running a finger along the edge.",
+              ctaLabel: "Play 4 pieces, 12 seconds, labels off",
+              setup: {
+                pieceCount: 4,
+                memorizeTime: 12,
+              },
+            },
+          ],
+        },
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Four pieces is deliberate. The point is the naming, not the memory load. The round should feel easy to hold, so the only thing under pressure is the square name. When five rounds with the labels off come back all correct, move to 6 pieces with the same 12 seconds.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "knight-paths-and-diagonals",
+      title: "Knight paths and diagonals without a board",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Once squares have names, the next thing is naming what a piece can reach, because that is what you do when you read a game. Do these anywhere, with no board.",
+          ],
+        },
+        {
+          kind: "steps",
+          ordered: false,
+          items: [
+            "Knight from e4. Say all eight squares. c3, c5, d2, d6, f2, f6, g3, g5. Then check with the colour rule. e4 is light, so every one of them must be dark.",
+            "Knight from b1. Only three squares, a3, c3 and d2. Corners and edges cut a knight's reach, which is why a knight on the rim is a poor piece.",
+            "Bishop from c1 along the long dark road. c1, d2, e3, f4, g5, h6. Then the other way, b2 and a3.",
+            "Rook from a1 along the rank to h1 and up the file to a8. Then the same for a rook on d4, which is where you notice that a rook in the centre sees fourteen squares.",
+            "A square and its colour, then its knight squares, then its diagonals. When you can do that for any square in under ten seconds, the coordinates are no longer a step.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "where-counting-costs-you",
+      title: "Where counting costs you",
+      blocks: [
+        {
+          kind: "comparison",
+          columns: ["Situation", "With counting", "With recognition"],
+          rows: [
+            {
+              label: "A video or a stream",
+              struggling: "The commentator is two moves ahead by the time you find the square.",
+              stronger: "You follow the line as it is said.",
             },
             {
-              label: "Day 5",
-              duration: "10 minutes",
-              detail: "Practice knight jump mapping and central-square fluency.",
+              label: "A puzzle solution in text",
+              struggling: "You set the pieces up wrong and the solution makes no sense.",
+              stronger: "You read Rxd7 and see the capture before you touch a piece.",
             },
             {
-              label: "Day 6 to 7",
-              duration: "12 minutes",
-              detail: "Use square names during a full board scan, then review one important position using only square names.",
+              label: "Reviewing your own game",
+              struggling: "Your notes say the knight, the other knight, that pawn.",
+              stronger: "Your notes say Nd5, Nb3 and the e5 pawn, and you can still find them a month later.",
             },
           ],
         },
@@ -188,51 +177,36 @@ const guide: LearnGuide = {
   ],
   faq: [
     {
-      question: "Do chess coordinates really matter for beginners?",
-      answer: "Yes, when they speed up board awareness, visualization, and review. You do not need perfect notation, but faster square recognition helps.",
+      question: "Why turn the labels off if the game shows them anyway?",
+      answer:
+        "Because a label lets you read the square instead of knowing it. With the labels hidden, the only way to put a rook on c3 is to know where c3 is. The result screen brings the labels back, so you still get the check.",
     },
     {
-      question: "What is the best way to learn coordinates?",
-      answer: "Learn square names with real positions and pieces instead of repeating notation alone.",
+      question: "Is d4 dark or light?",
+      answer:
+        "Dark. d is 4, plus 4 is 8, even. The centre alternates, so its other dark square is e5, and its light ones are e4 and d5.",
     },
     {
-      question: "Will this help me stop blundering?",
-      answer: "Indirectly, yes. Faster square recognition makes board scans and threat checks more precise.",
-    },
-    {
-      question: "How long should I practice coordinates?",
-      answer: "Five to ten focused minutes is enough when the drill is tied to real board work.",
+      question: "Do I need to learn the board from Black's side?",
+      answer:
+        "Not for reading notation, since the names do not change. For playing Black over the board, do the same anchor drill with the board turned round, so a1 sits at your top right.",
     },
   ],
   relatedArticles: [
     {
-      slug: "how-to-see-the-whole-board-in-chess",
-      reason: "Use coordinates to support a wider scan of the whole board.",
-    },
-    {
       slug: "chess-visualization-exercises",
-      reason: "Make mental board updates more precise by square.",
+      reason: "Once squares have names, the picture you hold in a line stops drifting.",
     },
     {
-      slug: "how-to-think-in-chess-for-beginners",
-      reason: "Use square naming to simplify your thought process under pressure.",
+      slug: "blindfold-chess-training-for-beginners",
+      reason: "Blindfold play assumes you can name a square's colour without thinking.",
+    },
+    {
+      slug: "how-to-see-the-whole-board-in-chess",
+      reason: "A scan of the whole board is faster when every square has a name.",
     },
   ],
-  sources: [
-    {
-      title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-      url: "https://doi.org/10.1006/cogp.1996.0011",
-    },
-    {
-      title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
-      url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
-    },
-    {
-      title: "How important is chess notation? (r/chessbeginners)",
-      url: "https://www.reddit.com/r/chessbeginners/comments/1egpjmy/how_important_is_chess_notation/",
-      note: "Useful for understanding how beginners often underrate coordinates until they affect board clarity.",
-    },
-  ],
+  sources: [],
 };
 
 export default guide;

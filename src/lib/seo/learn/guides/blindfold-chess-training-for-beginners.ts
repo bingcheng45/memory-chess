@@ -4,186 +4,186 @@ const guide: LearnGuide = {
   slug: "blindfold-chess-training-for-beginners",
   goal: "visualization",
   title: "Blindfold Chess Training for Beginners",
-  h1: "Blindfold chess training for beginners, one step at a time",
-  description: "Learn blindfold chess in small steps that improve visualization without making practice overwhelming.",
+  h1: "Blindfold chess training for beginners, in four stages with a pass mark each",
+  description:
+    "A four-stage route into blindfold chess, from holding two kings without a board to a full game with the score sheet in view.",
   primaryKeyword: "blindfold chess training",
   secondaryKeywords: [
     "blindfold chess for beginners",
+    "how to play blindfold chess",
     "mental board training",
-    "visualization chess drills",
-    "calculate without moving pieces",
+    "replay a game without a board",
     "chess focus exercises",
   ],
-  ctaLabel: "Start Blindfold Practice",
-  quickAnswer: "Start with a simple position. Remember it, picture one move for each side, and check your answer. Try a full blindfold game only when these small steps feel easy.",
+  ctaLabel: "Play 2 pieces, 10 seconds, kings only",
+  quickAnswer:
+    "Do not start with a game. Hold two kings without a board, learn the rules a mental board must obey, then replay a short game covered. Play blind only when each stage passes its test.",
   keyTakeaways: [
-    "Blindfold chess is a skill you build step by step.",
-    "Checking your answer matters more than trying harder positions.",
-    "Beginner blindfold drills are visualization drills with less help from the board.",
+    "Each stage has a pass mark, so you know when to move on and when to repeat.",
+    "The position rules the game enforces double as a checklist for a drifting mental board.",
+    "The score sheet is allowed at first. Rebuilding the board from it is the skill.",
   ],
   whoThisIsFor: [
-    "Players who want better visualization without starting with a full blindfold game.",
-    "Beginners who lose track of squares after one or two imagined moves.",
-    "Anyone who wants to hold a clearer board picture in their mind.",
+    "Players who tried a blindfold game and lost the bishops by move ten.",
+    "Players who can follow a game from notation with a board, but not without one.",
   ],
   timeToRead: "8 min read",
   difficulty: "Beginner to Intermediate",
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Mental board control",
+      id: "why-games-collapse",
+      title: "Why a first blindfold game collapses",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "The biggest mistake is trying a full blindfold game too soon. It often causes frustration instead of progress.",
-            "Take it one step at a time: see the board, remember it, picture a move, check it, and slowly use less visual help.",
+            "A blindfold game does not fail all at once. It fails on one piece, usually one that has not moved. You know where the knights are because you moved them. The bishop on c1 sat still for twelve moves, so it fell out of the picture, and you play as if it is not there.",
+            "So the training has to build the board, not the move list. The four stages below go from two pieces to a full game, and each has a test you either pass or repeat.",
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Start here: a safe blindfold progression",
-      summary: "You can try these steps today.",
+      id: "stage-one-two-kings",
+      title: "Stage one, two kings and nothing else",
       blocks: [
         {
-          kind: "steps",
-          ordered: true,
-          items: [
-            "Memorise a small position and rebuild it before picturing any moves.",
-            "Calculate one move for each side without touching the pieces.",
-            "Verify every mismatch immediately instead of pushing on.",
-            "Run one Memory Chess round with a slightly shorter viewing window.",
-            "Add one more move only when the current line feels clear.",
+          kind: "paragraphs",
+          paragraphs: [
+            "The easiest preset in Memory Chess is 2 pieces, and the position rules guarantee those two are the kings, one of each colour, never on adjacent squares. That makes it the smallest blindfold exercise there is. Two squares, both named, held without a board.",
           ],
         },
-      ],
-    },
-    {
-      id: "drills",
-      title: "Easy blindfold chess drills",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
-      blocks: [
         {
           kind: "drills",
           drills: [
             {
-              title: "Rebuild before moving",
-              description: "Play 8 pieces with 10 seconds to look and rebuild the whole position. Do not imagine any moves until you can do this cleanly.",
-              duration: "4 minutes",
-              goal: "Build clear board recall before adding more moves.",
-              ctaLabel: "Play 8 pieces, 10 seconds",
+              title: "Two kings, eyes shut",
+              description:
+                "Play 6 rounds of 2 pieces with 10 seconds to look. Say both squares aloud, shut your eyes, name the colour of each square, then open them and place the kings.",
+              duration: "About 3 minutes",
+              goal: "Hold two named squares without the board in front of you.",
+              ctaLabel: "Play 2 pieces, 10 seconds, kings only",
               setup: {
-                pieceCount: 8,
+                pieceCount: 2,
                 memorizeTime: 10,
               },
             },
-            {
-              title: "One move for each side",
-              description: "Imagine one move for White and one reply for Black, then verify the new board.",
-              duration: "5 minutes",
-              goal: "Update the position in your mind without looking at the board.",
-              ctaLabel: "Picture Two Moves",
-            },
-            {
-              title: "Short viewing time",
-              description: "Keep 8 pieces but drop the look time to 5 seconds.",
-              duration: "4 minutes",
-              goal: "Prepare for blindfold practice without hiding the whole board.",
-              ctaLabel: "Play 8 pieces, 5 seconds",
-              setup: {
-                pieceCount: 8,
-                memorizeTime: 5,
-              },
-            },
+          ],
+        },
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "The pass mark is six perfect rounds in a row, with both square colours right as well. Square colour is the part beginners skip, and it is the part that saves a blindfold game later, because a bishop only ever lives on one colour.",
+            "If you cannot name a square's colour without thinking, do the coordinates guide first and come back.",
           ],
         },
       ],
     },
     {
-      id: "comparison",
-      title: "A safer way to practise blindfold chess",
-      summary: "Ask whether you can picture one more move clearly than before. You do not need to play a full blindfold game yet.",
+      id: "stage-two-sanity-rules",
+      title: "Stage two, rules a mental board must obey",
       blocks: [
         {
-          kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
-          ],
-          rows: [
-            {
-              label: "Starting point",
-              struggling: "You jump into full blindfold play.",
-              stronger: "You remember the starting board before adding more moves.",
-            },
-            {
-              label: "Verification",
-              struggling: "You trust a blurry mental board.",
-              stronger: "You verify every imagined update and correct it immediately.",
-            },
-            {
-              label: "Session quality",
-              struggling: "You train until focus collapses.",
-              stronger: "You stop while mental accuracy is still high.",
-            },
+          kind: "paragraphs",
+          paragraphs: [
+            "Every position Memory Chess shows passes a fixed set of checks before it reaches the screen. The same checks catch a drifting mental board. When your imagined position breaks one, the picture is wrong, and you rebuild from the last move you are sure of.",
           ],
         },
-      ],
-    },
-    {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
-      blocks: [
         {
           kind: "steps",
           ordered: false,
           items: [
-            "Attempting full blindfold games too early.",
-            "Ignoring verification and trusting incorrect mental boards.",
-            "Adding more moves before short lines are clear.",
-            "Practicing too long in one session and burning focus.",
+            "Exactly one king of each colour.",
+            "The two kings never stand on adjacent squares.",
+            "No pawn on the first rank or the eighth. A pawn you picture on e1 is a pawn you lost track of.",
+            "A side's two bishops never stand on squares of the same colour. If both of Black's bishops are on dark squares in your head, one of them moved and you missed it.",
+            "No side has more of a piece than a set holds. Eight pawns, two knights, two bishops, two rooks, one queen. If you count three black knights, a capture went missing.",
+            "Both kings are never in check at once, and a king in check belongs to the side to move.",
           ],
         },
         {
-          kind: "callout",
-          title: "What to do instead",
-          body: "Do not jump to a much harder task. Use a little less help from the board each time.",
+          kind: "paragraphs",
+          paragraphs: [
+            "Practise the checks on a game you have played. Read the first ten moves from the score, cover the board, and run all six on your picture. Then uncover and count how many pieces sat on the wrong square. The pass mark is a count of zero on two different days.",
+          ],
         },
       ],
     },
     {
-      id: "plan",
-      title: "7-day blindfold preparation block",
-      summary: "Follow these steps before making the practice harder or longer.",
+      id: "stage-three-covered-replay",
+      title: "Stage three, replay a short game under a cloth",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "The first game to replay blind is Scholar's mate, because it is four moves long and ends in a position you can check from memory. 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7 mate.",
+            "Say each move, then say where every piece that has moved now stands. After move four, White has a queen on f7, a bishop on c4 and a pawn on e4. Black has knights on c6 and f6, a pawn on e5, and a king on e8 with no way out.",
+            "Now say why it is mate. The king cannot take on f7 because the bishop on c4 covers that square. d8 holds Black's queen, f8 the bishop, d7 and e7 the pawns. If you can explain that without a board, stage three has started.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
+            {
+              title: "Ten moves under the cloth",
+              description:
+                "Read ten moves of a game you played with the board covered. Name the square of every piece still on the board, then run the stage-two checks before you uncover.",
+              duration: "About 6 minutes",
+              goal: "Rebuild a full board from a move list with no pieces in front of you.",
+              ctaLabel: "Replay ten moves covered",
+            },
+          ],
+        },
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "The pass mark is two clean replays of ten moves on different days. Clean means every piece on its square, not most of them. A single misplaced pawn in a covered replay becomes a lost piece in a blind game.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "stage-four-with-score-sheet",
+      title: "Stage four, a game with the score sheet in view",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Play against a friend or an engine with the board hidden and the move list visible. The list is not cheating. It is the tool you rebuild from. The rule is that you may read the list only to rebuild after a checklist failure, never to find your next move.",
+            "Stop at move 15 the first few times, whatever the position, and set the final position up on a real board from memory. Count the pieces on the wrong square. The pass mark is two games in a row with every piece right at move 15.",
+            "After that, play to the end, and only then take the sheet away.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "how-long-each-stage-takes",
+      title: "How long each stage takes",
       blocks: [
         {
           kind: "plan",
           steps: [
             {
-              label: "Day 1 to 2",
-              duration: "10 minutes",
-              detail: "Only rebuild positions from memory, then check them straight away.",
+              label: "Stage one",
+              duration: "3 minutes a day for a week",
+              detail: "Six perfect two-king rounds in a row, colours included, on two separate days.",
             },
             {
-              label: "Day 3 to 4",
-              duration: "12 minutes",
-              detail: "Add one move for each side and keep the positions simple.",
+              label: "Stage two",
+              duration: "5 minutes a day for a week",
+              detail: "Run the six checks on ten covered moves of a game each day until the count of wrong squares reaches zero twice.",
             },
             {
-              label: "Day 5",
-              duration: "12 minutes",
-              detail: "Shorten the viewing window in Memory Chess and keep the piece count stable.",
+              label: "Stage three",
+              duration: "6 minutes a day for two weeks",
+              detail: "Scholar's mate first, then ten moves of your own games. Two clean replays on different days to pass.",
             },
             {
-              label: "Day 6 to 7",
-              duration: "15 minutes",
-              detail: "Try a few two-move sequences only if one-move practice is accurate.",
+              label: "Stage four",
+              duration: "One game every other day",
+              detail: "Fifteen moves with the sheet in view, checked on a real board, until two games in a row come out clean.",
             },
           ],
         },
@@ -192,51 +192,36 @@ const guide: LearnGuide = {
   ],
   faq: [
     {
-      question: "Is blindfold chess useful for beginners?",
-      answer: "Yes, in short controlled drills. It strengthens the visualization skills that support normal games.",
+      question: "Should I also train with the 6-piece or 12-piece presets?",
+      answer:
+        "Not for blindfold. A game hands you every piece's location through moves you chose, while a random 12-piece position hands you nothing, so it trains recall rather than tracking. Stage one uses 2 pieces because two named squares is the smallest board you can hold, and the rules guarantee they are the kings.",
     },
     {
-      question: "How often should I do blindfold drills?",
-      answer: "Two to four short sessions per week is enough when combined with regular play and review.",
+      question: "Do I need to be a strong player first?",
+      answer:
+        "No. You need to know how every piece moves and the square names without counting. Stage one assumes nothing else. Stage four assumes you can read notation at reading speed.",
     },
     {
-      question: "What is the best first blindfold exercise?",
-      answer: "Rebuild a simple position from memory and picture one move for each side before checking.",
-    },
-    {
-      question: "How do I know I am improving?",
-      answer: "You will hold more squares accurately, update the board longer, and make fewer vision blunders in normal games.",
+      question: "What if I picture the board from Black's side?",
+      answer:
+        "Pick one orientation and keep it, even when you play Black. Most players hold White at the bottom because that is how diagrams print. Switching mid-game is the quickest way to lose a bishop.",
     },
   ],
   relatedArticles: [
     {
       slug: "chess-visualization-exercises",
-      reason: "Keep your foundation work strong instead of skipping to advanced blindfold play.",
+      reason: "Start there if a covered board loses pieces after a single move.",
+    },
+    {
+      slug: "chess-coordinates-practice",
+      reason: "Square colours and names without counting, which stage one assumes.",
     },
     {
       slug: "working-memory-exercises-for-chess",
-      reason: "Pair blindfold work with line-holding exercises.",
-    },
-    {
-      slug: "chess-calculation-exercises-for-beginners",
-      reason: "Use clearer visualization to compare possible moves.",
+      reason: "For holding a longer move list in mind.",
     },
   ],
-  sources: [
-    {
-      title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-      url: "https://doi.org/10.1006/cogp.1996.0011",
-    },
-    {
-      title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
-      url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
-    },
-    {
-      title: "Blindfold Chess Tactics Project",
-      url: "https://www.chess.com/blog/Chessable/blindfold-chess-tactics-project",
-      note: "Useful reference for the link between blindfold-style training and broader chess skill development.",
-    },
-  ],
+  sources: [],
 };
 
 export default guide;

@@ -40,7 +40,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "The instant mover and the long starer look like opposites at the board. Both can be missing a question to answer, so one plays whatever looks nice and the other waits for a certainty that never comes.",
-            "A routine gives a think a beginning and an end, which both are missing. The beginning is a question you answer by looking. The end is a sentence you can say.",
+            "A routine gives a think the beginning and the end that both habits can lack. The beginning is a question you answer by looking. The end is a sentence you can say.",
             "Everything in between is short, and it is the same on move five as on move forty.",
           ],
         },

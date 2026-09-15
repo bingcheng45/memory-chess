@@ -77,7 +77,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The pass mark is six perfect rounds in a row, with both square colours right as well. Do not skip the colours. They give you a check in a blindfold game later, because a bishop only ever lives on one colour.",
+            "The pass mark is six perfect rounds in a row, with both square colours right as well. Do not skip the colours. They let you test your picture in a blindfold game later, because a bishop only ever lives on one colour.",
             "If you cannot name a square's colour without thinking, do the coordinates guide first and come back.",
           ],
         },

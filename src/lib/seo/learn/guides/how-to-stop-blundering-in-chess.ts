@@ -18,7 +18,7 @@ const guide: LearnGuide = {
   ctaLabel: "Play 6 pieces with 10 seconds to look",
   quickAnswer: "Before every move, run one scan in a fixed order. Ask what the last move attacks, what checks, captures and threats your opponent has, which of your pieces is loose, and what your move stops guarding.",
   keyTakeaways: [
-    "Treat a one-move blunder as a sign that the board in your head and the board on the table disagree.",
+    "A one-move blunder is a move that only works on the board in your head.",
     "A loose piece is an easy target, so list your loose pieces before your opponent's check finds one.",
     "Keep a blunder tally per game, because rating also moves with openings, endgames and pairings.",
   ],
@@ -41,7 +41,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "A puzzle tells you two things before you look. There is a tactic, and it is your move. A game tells you neither, so a fork you would find in a puzzle can walk past unseen.",
-            "A one-move blunder needs no deep line to avoid. Treat it as a sign that the board in your head and the board on the table disagree. You played a move that only works on the wrong one.",
+            "A one-move blunder needs no deep line to avoid. It is a move that works on the board in your head but not on the board on the table.",
             "This guide covers three shapes the disagreement can take. The first is the phantom defender, a piece that looks like a guard and cannot act as one.",
             "Put a White bishop on b5, a Black knight on c6 and the Black king on e8, with d7 empty. The knight seems to guard e5, but it is pinned and cannot legally capture there.",
             "The second is the forgotten piece, a bishop or rook that has not moved for many moves, so it is easy to stop looking at.",

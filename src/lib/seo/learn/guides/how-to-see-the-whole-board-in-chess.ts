@@ -103,7 +103,7 @@ const guide: LearnGuide = {
             "That clustering is why the sweep is needed. It is also why your own games are a poor place to practise the sweep.",
             "Memory Chess builds a fresh position for every round, with no plan behind it. The two kings go on random squares that are never adjacent.",
             "Every other piece goes on a random empty square, limited by the rules of a legal position. No pawn stands on the first or eighth rank, and a side's two bishops stand on opposite colours.",
-            "Nothing in the generator pulls pieces toward the centre or toward the kings. Twelve pieces in eight seconds is one of the game's four presets, and no plan gathers its pieces in one part of the board.",
+            "Nothing in the generator pulls pieces toward the centre or toward the kings, so on the 12-piece, 8-second preset they can land anywhere.",
             "So you read the board in zones and carry every zone to the empty board. That is the sweep, done from memory.",
           ],
         },
@@ -189,7 +189,7 @@ const guide: LearnGuide = {
     },
     {
       slug: "chess-coordinates-practice",
-      reason: "Drills for naming squares without counting, which naming the last square of a line relies on.",
+      reason: "Drills for naming a square without counting, so naming the last square of a line does not slow the sweep.",
     },
     {
       slug: "how-to-stop-blundering-in-chess",

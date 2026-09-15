@@ -30,8 +30,8 @@
       "trains": {
         "easy": "Sadece iki şah, başka hiçbir şey yok. Arayüzü öğretir ve zaman baskısı altında iki kareyi tutup tutamadığınıza dair net bir fikir verir.",
         "medium": "Altı taş, iki şah artı dört başka taş demektir ve bakma süresi iki taşlı seviyedeki gibi on saniyedir. Öbekleme yapmanın işe yaramaya başladığı seviye budur.",
-        "hard": "Sekiz saniyede on iki taş, ham kapasitenin ötesindedir. Taşları tek tek hatırlamak yerine şekiller halinde gruplamanız gerekir.",
-        "grandmaster": "Beş saniyede yirmi taş, taş başına çeyrek saniye eder. Bunu kimse kare kare okumaz; bu seviye piyon zincirlerini ve taş kümelerini tek birim olarak görmeyi ödüllendirir."
+        "hard": "Sekiz saniyede on iki taş, taş başına üçte iki saniye eder; bu yüzden taşları şekiller halinde gruplamak, onları tek tek hatırlamaktan daha çok işe yarar.",
+        "grandmaster": "Beş saniyede yirmi taş, taş başına çeyrek saniye eder. Bu seviye piyon zincirlerini ve taş kümelerini tek birim olarak görmeyi ödüllendirir."
       },
       "custom": {
         "title": "Özel ayarlar",

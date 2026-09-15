@@ -30,8 +30,8 @@
       "trains": {
         "easy": "Beide koningen en verder niets. Je leert er de interface mee kennen en ziet meteen of je 2 velden kunt vasthouden onder tijdsdruk.",
         "medium": "6 stukken zijn beide koningen plus vier andere stukken, met dezelfde tien seconden kijktijd als op de moeilijkheidsgraad met twee stukken. Dit is de moeilijkheidsgraad waarop het groeperen van stukken begint te lonen.",
-        "hard": "12 stukken in 8 seconden gaat je pure geheugenspan te boven. Je moet stukken tot vormen groeperen in plaats van ze stuk voor stuk te onthouden.",
-        "grandmaster": "20 stukken in 5 seconden is een kwart seconde per stuk. Niemand leest dit veld voor veld; deze graad beloont wie pionnenketens en groepen stukken als één geheel ziet."
+        "hard": "12 stukken in 8 seconden laat twee derde seconde per stuk over, dus stukken tot vormen groeperen helpt meer dan ze stuk voor stuk onthouden.",
+        "grandmaster": "20 stukken in 5 seconden is een kwart seconde per stuk. Deze graad beloont wie pionnenketens en groepen stukken als één geheel ziet."
       },
       "custom": {
         "title": "Eigen instellingen",

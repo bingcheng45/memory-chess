@@ -41,7 +41,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "When a commentator says Nd5 and you find d5 by counting four files across and five ranks up, you have done two lookups. The move is gone by the time you finish. Fluent players do one. They see d5 the way you see a word, whole, without spelling it.",
+            "When a commentator says Nd5 and you find d5 by counting four files across and five ranks up, you have done two lookups. The move is gone by the time you finish. The goal is one lookup, seeing d5 the way you see a word, whole, without spelling it.",
             "That difference is the whole skill. Nothing about coordinates is hard to understand. What takes practice is making the name and the square arrive together, so you stop translating.",
             "The drills below force the translation to happen out loud until it stops being a step.",
           ],

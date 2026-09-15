@@ -127,9 +127,9 @@ const guide: LearnGuide = {
               setup: { pieceCount: 6, memorizeTime: 6 },
             },
             {
-              title: "Past raw span",
+              title: "Twelve pieces, read in groups",
               description:
-                "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Twelve pieces in eight seconds cannot be read one at a time. Take the kings, then the pawns as chains, then whatever is left.",
+                "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Twelve pieces in eight seconds leaves two thirds of a second per piece, so read them in groups. Take the kings, then the pawns as chains, then whatever is left.",
               duration: "About 6 minutes",
               goal: "Excellent Memory, which at this count means at least 11 of the 12.",
               ctaLabel: "Play 12 pieces, 8 seconds",
@@ -167,7 +167,7 @@ const guide: LearnGuide = {
             "Counts other than 2, 6, 12 and 20 make the round a custom game and keep it off the leaderboard. While you are climbing that does not matter.",
             "Two rounds in a row below Well Done, which is 70 percent: take two pieces away and rebuild the streak there.",
             "Shorten the look only once the count is stable. Changing both at once tells you nothing about which one broke.",
-            "The look slider runs from 2 to 32 seconds. Under 5 seconds even 6 pieces becomes a grouping exercise, so save short looks until 12 pieces at 8 seconds feels ordinary.",
+            "The look slider runs from 2 to 32 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
           ],
         },
       ],
@@ -184,7 +184,7 @@ const guide: LearnGuide = {
             "That study used prose passages and set no timings. What follows is this guide's suggestion, not its finding: once you have the board, skip, and let the rebuild do the work.",
             "Gobet and Simon showed strong players several boards in a row, a few seconds each, and found they could still recall much of each one. They explain it by familiar chunks, not a bigger raw span.",
             "Memory Chess positions are random, so the chunks you find are geometric rather than chess-typical. A pawn pair on f2 and g2. A king tucked in a corner. Three pieces on one rank.",
-            "Those geometric chunks are what carry you from 6 pieces to 12. Piece by piece, 12 pieces in 8 seconds is not possible. In three or four chunks it is.",
+            "Look for those geometric chunks as you climb from 6 pieces to 12. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four chunks it becomes manageable.",
           ],
         },
       ],
@@ -199,7 +199,7 @@ const guide: LearnGuide = {
     {
       question: "Should I go straight to the 20-piece preset?",
       answer:
-        "No. Twenty pieces in five seconds leaves a quarter of a second for each. Until 12 pieces at 8 seconds gives you Excellent Memory most rounds, 20 gives you Keep Practicing and nothing to learn from.",
+        "No. Twenty pieces in five seconds leaves a quarter of a second for each. Until 12 pieces at 8 seconds gives you Excellent Memory most rounds, 20 is likely to end in Keep Practicing with little to learn from.",
     },
     {
       question: "Does the leaderboard care about speed?",

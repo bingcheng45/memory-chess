@@ -67,7 +67,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Four is enough for a month. Each one is a cluster of three to five pieces, and each has exactly one condition to check.",
-            "Notice that the condition is always about a piece that is not part of the shape. That is the piece a puzzle solver never looks for, because in a puzzle it is never there.",
+            "Notice that the condition is always about a piece that is not part of the shape. That piece is easy to skip if you mostly solve puzzles, because a puzzle already promises the tactic works.",
           ],
         },
       ],
@@ -98,7 +98,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Memory Chess positions are generated fresh for each round and are not taken from games. A round is not built to show you a back-rank mate, so it will not teach you that pattern.",
-            "What it trains is the act underneath pattern recognition, reading a cluster of pieces as one unit. Twenty pieces in five seconds is a quarter of a second per piece, too fast to read square by square.",
+            "What it trains is the act underneath pattern recognition, reading a cluster of pieces as one unit. Twenty pieces in five seconds is a quarter of a second per piece, so reading clusters gets you further than reading square by square.",
             "The generator draws piece types in the proportions a real set holds: eight pawns, two knights, two bishops, two rooks and one queen per side. Pawns are the most common piece you see and queens the rarest.",
             "That is a clue you can use. On a 12-piece board the ten pieces beyond the kings are split five and five, and about half of them are pawns. Count the pawn chains first, then the odd pieces.",
             "Two more rules shrink the search. A side's two bishops never share a square colour, and no pawn ever stands on the first or eighth rank.",

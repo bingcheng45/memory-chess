@@ -19,7 +19,7 @@ const guide: LearnGuide = {
   quickAnswer: "Before every move, run one scan in a fixed order. Ask what the last move attacks, what checks, captures and threats your opponent has, which of your pieces is loose, and what your move stops guarding.",
   keyTakeaways: [
     "A one-move blunder happens when the board in your head and the board on the table disagree.",
-    "A loose piece is the easiest target on the board, so list your loose pieces before your opponent's check finds one.",
+    "A loose piece is an easy target, so list your loose pieces before your opponent's check finds one.",
     "Keep a blunder tally per game, because rating also moves with openings, endgames and pairings.",
   ],
   whoThisIsFor: [

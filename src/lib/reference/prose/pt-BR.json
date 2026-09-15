@@ -30,8 +30,8 @@
       "trains": {
         "easy": "Dois reis e nada mais. Ensina a interface e mostra com clareza se você consegue segurar duas casas sob pressão de tempo.",
         "medium": "Seis peças são os dois reis mais quatro outras peças, com os mesmos dez segundos para olhar do nível de duas peças. É o nível em que agrupar peças começa a compensar.",
-        "hard": "Doze peças em oito segundos passa do alcance bruto da memória. É preciso agrupar as peças em formas em vez de lembrá-las uma a uma.",
-        "grandmaster": "Vinte peças em cinco segundos dá um quarto de segundo por peça. Ninguém lê isso casa por casa; o nível recompensa quem enxerga cadeias de peões e blocos de peças como unidades únicas."
+        "hard": "Doze peças em oito segundos dão dois terços de segundo por peça, então agrupar as peças em formas ajuda mais do que lembrá-las uma a uma.",
+        "grandmaster": "Vinte peças em cinco segundos dá um quarto de segundo por peça. O nível recompensa quem enxerga cadeias de peões e blocos de peças como unidades únicas."
       },
       "custom": {
         "title": "Configurações personalizadas",

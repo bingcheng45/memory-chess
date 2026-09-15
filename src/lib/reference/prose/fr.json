@@ -30,8 +30,8 @@
       "trains": {
         "easy": "Deux rois et rien d'autre. Ce niveau vous apprend l'interface et montre clairement si vous savez retenir deux cases sous la pression du chrono.",
         "medium": "Six pièces, ce sont les deux rois plus quatre autres pièces, avec les mêmes dix secondes d'observation qu'au niveau à deux pièces. C'est le niveau où regrouper les pièces en blocs commence à payer.",
-        "hard": "Douze pièces en huit secondes dépassent la mémoire brute. Il faut regrouper les pièces en formes plutôt que les retenir une par une.",
-        "grandmaster": "Vingt pièces en cinq secondes, c'est un quart de seconde par pièce. Personne ne lit une telle position case par case ; ce niveau récompense ceux qui voient les chaînes de pions et les groupes de pièces comme des unités."
+        "hard": "Douze pièces en huit secondes laissent deux tiers de seconde par pièce, si bien que regrouper les pièces en formes aide davantage que les retenir une par une.",
+        "grandmaster": "Vingt pièces en cinq secondes, c'est un quart de seconde par pièce. Ce niveau récompense ceux qui voient les chaînes de pions et les groupes de pièces comme des unités."
       },
       "custom": {
         "title": "Réglages personnalisés",

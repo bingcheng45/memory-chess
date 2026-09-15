@@ -20,7 +20,7 @@ const guide: LearnGuide = {
   quickAnswer:
     "Compare two moves, two plies deep, and say each line out loud before you check it. When a line collapses, check the starting position before you blame the moves.",
   keyTakeaways: [
-    "A line fails at the piece you stopped seeing, and a piece that never moved is the easiest to stop seeing.",
+    "A line fails at the piece you stopped seeing, and a piece that never moved is easy to stop seeing.",
     "Two candidate moves at two plies is enough work for one decision.",
     "Ask who can capture on each landing square before you imagine the next move.",
     "Rebuilding a position from an empty board is the same act as holding one while you calculate.",
@@ -44,7 +44,7 @@ const guide: LearnGuide = {
           paragraphs: [
             "Calculation is holding a position that is not on the board. You see the real board, imagine one move, and now you keep two pictures apart, the one in front of you and the one in your head.",
             "Each imagined move overwrites a square. Two plies in, four squares have changed, and every piece that did not move has to stay put without any help from your eyes.",
-            "That is where a line gets lost. Not on the moving pieces, which have your attention, but on a queen or a pawn that never moved and quietly guards the square you land on.",
+            "That is where a line can get lost. Not on the moving pieces, which have your attention, but on a queen or a pawn that never moved and quietly guards the square you land on.",
             "The usual advice is to look further ahead. The useful advice is to keep the base position steady, because a line is only as long as the picture underneath it.",
           ],
         },
@@ -185,12 +185,12 @@ const guide: LearnGuide = {
     {
       question: "Does Memory Chess teach calculation?",
       answer:
-        "No. It trains the part of calculation that fails first, keeping a position steady when nothing on the board reminds you of it. Choosing moves is learned at the board.",
+        "No. It trains one part of calculation, keeping a position steady when nothing on the board reminds you of it. Choosing moves is learned at the board.",
     },
     {
       question: "Why do I forget a piece that never moved?",
       answer:
-        "Because you were tracking the moving pieces. A still piece has no event attached to it, so the base picture has to carry it, and the base picture is what drifts.",
+        "Probably because you were tracking the moving pieces. A still piece has no event attached to it, so the base picture has to carry it, and the base picture is what drifts.",
     },
   ],
   relatedArticles: [

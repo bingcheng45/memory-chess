@@ -30,8 +30,8 @@
       "trains": {
         "easy": "Dva králové a nic jiného. Učí ovládání rozhraní a dá vám jasnou odpověď, zda dokážete udržet dvě pole v paměti pod časovým tlakem.",
         "medium": "Šest figur znamená oba krále a čtyři další figury, se stejnými deseti sekundami na prohlédnutí jako u předvolby se dvěma figurami. Na této úrovni se začíná vyplácet seskupování do celků.",
-        "hard": "Dvanáct figur za osm sekund přesahuje přirozený rozsah paměti. Musíte figury seskupovat do tvarů, ne si je pamatovat jednu po druhé.",
-        "grandmaster": "Dvacet figur za pět sekund je čtvrt sekundy na figuru. Nikdo to nečte pole po poli; tato úroveň odměňuje vnímání pěšcových řetězců a shluků figur jako jednotlivých celků."
+        "hard": "Dvanáct figur za osm sekund dává dvě třetiny sekundy na figuru, takže seskupování figur do tvarů pomáhá víc než pamatovat si je jednu po druhé.",
+        "grandmaster": "Dvacet figur za pět sekund je čtvrt sekundy na figuru. Tato úroveň odměňuje vnímání pěšcových řetězců a shluků figur jako jednotlivých celků."
       },
       "custom": {
         "title": "Vlastní nastavení",

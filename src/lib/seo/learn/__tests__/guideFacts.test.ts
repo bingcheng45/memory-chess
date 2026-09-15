@@ -365,6 +365,8 @@ function guideFacts(): Record<string, string[]> {
       `the look slider runs from ${MEMORIZE_SECONDS_RANGE.min} to ${MEMORIZE_SECONDS_RANGE.max} seconds`,
       `${word(grandmaster.pieceCount)} pieces in ${word(grandmaster.memorizeTime)} seconds`,
       `until ${hard.pieceCount} pieces at ${hard.memorizeTime} seconds`,
+      `${word(hard.pieceCount)} pieces in ${word(hard.memorizeTime)} seconds leaves two thirds of a second per piece`,
+      `piece by piece, ${hard.pieceCount} pieces in ${hard.memorizeTime} seconds leaves two thirds of a second each`,
     ],
     "how-many-chess-puzzles-a-day": [
       `one missed piece turns a ${label("perfect")} into ${band(at(5, 6))} at ${at(5, 6)} percent, and a second miss gives ${band(at(4, 6))} at ${at(4, 6)} percent`,

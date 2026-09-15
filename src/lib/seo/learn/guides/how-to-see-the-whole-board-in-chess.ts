@@ -56,7 +56,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The order matters more than the speed. The sweep starts at the edges because those are the squares you never reach when you look outward from your own move.",
+            "The order matters more than the speed. The sweep starts at the edges because a look that works outward from your own move reaches them last.",
           ],
         },
         {

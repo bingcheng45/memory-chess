@@ -69,6 +69,16 @@ describe("middleware on English-only routes", () => {
     expect(mockForwarded).toHaveLength(0);
   });
 
+  it("sends a prefixed retired guide straight to the guide that absorbed it in one 308", () => {
+    const response = run("https://thememorychess.com/de/learn/chess-board-vision-drills");
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(
+      "https://thememorychess.com/learn/how-to-stop-blundering-in-chess",
+    );
+    expect(mockForwarded).toHaveLength(0);
+  });
+
   it("leaves prefixed localized routes to next-intl", () => {
     run("https://thememorychess.com/de/game");
     run("https://thememorychess.com/de/learning");

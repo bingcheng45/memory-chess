@@ -132,7 +132,7 @@ function parsePage(url, status, html) {
     h1Count: (body.match(/<h1\b/gi) ?? []).length,
     headings: [...main.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)].map((m) => toText(m[1]).replace(/¶/g, "").trim()),
     mainText,
-    proseText: toText(stripBlocks(main, ["cite", "a"])),
+    proseText: toText(stripBlocks(main, ["cite", "address", "a"])),
     mainWords: countUnits(mainText),
     hiddenWords: countUnits(hiddenText(main)),
     adUnits: (html.match(/<ins\b[^>]*class="[^"]*adsbygoogle/gi) ?? []).length,
@@ -286,7 +286,7 @@ const RULES = [
   },
   {
     id: "boilerplate",
-    guideline: "G6 no content sentence stamped onto many pages of a language (citations and link text excepted)",
+    guideline: "G6 no content sentence stamped onto many pages of a language (citations, bylines and link text excepted)",
     site: (pages) => {
       const problems = new Map();
       const pagesBySentence = new Map();

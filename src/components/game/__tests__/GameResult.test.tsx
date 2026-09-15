@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, within } from "@/test-utils/intl";
 import GameResult from "@/components/game/GameResult";
 
-const mockGameState = {
+const baseGameState = {
   isPlaying: false,
   isMemorizationPhase: false,
   isSolutionPhase: false,
@@ -19,6 +19,8 @@ const mockGameState = {
   originalPosition: "8/8/8/8/8/8/8/P7 w - - 0 1",
   userPosition: "8/8/8/8/8/8/8/P7 w - - 0 1",
 };
+
+let mockGameState = baseGameState;
 
 jest.mock("@/lib/store/gameStore", () => ({
   useGameStore: () => ({ gameState: mockGameState }),
@@ -122,5 +124,22 @@ describe("GameResult", () => {
       screen.getByRole("heading", { name: "Submit to Leaderboard" }),
     ).toBeInTheDocument();
     expect(screen.getByLabelText("Player Name")).toBeInTheDocument();
+  });
+
+  it("offers no submission for a round with no correct piece, which the board would never show", () => {
+    mockGameState = { ...baseGameState, accuracy: 0, correctPlacements: 0 };
+
+    try {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+
+      expect(
+        screen.queryByRole("button", { name: "Submit to Leaderboard" }),
+      ).not.toBeInTheDocument();
+      expect(
+        screen.getByRole("link", { name: "View Leaderboard" }),
+      ).toBeInTheDocument();
+    } finally {
+      mockGameState = baseGameState;
+    }
   });
 });

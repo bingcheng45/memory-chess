@@ -20,7 +20,7 @@ const guide: LearnGuide = {
     "Minutes 0 to 3, three rounds of 6 pieces at 10 seconds. Minutes 3 to 10, six puzzles solved slowly with the reply checked. Minutes 10 to 17, one of your games replayed with a single question per move. Minutes 17 to 20, one written line.",
   keyTakeaways: [
     "Four fixed blocks of 3, 7, 7 and 3 minutes, in the same order every day.",
-    "Slow puzzles with the reply spoken teach more than fast puzzles with a rating attached.",
+    "Six puzzles in seven minutes leaves time to say the reply before each move.",
     "The written line is what carries one day into the next.",
   ],
   whoThisIsFor: [
@@ -41,8 +41,8 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "The plan is short because it has to happen on a Tuesday when you are tired. A plan you skip three days a week is not a plan.",
-            "There is also a memory reason. Practice spread across days is retained better than the same total time in one sitting, and that result holds across many kinds of recall task.",
-            "So the twenty minutes are fixed and the days are what you protect. Five days a week is the target. Seven is fine, three still works.",
+            "Memory research points the same way. In verbal recall studies, practice spread across sessions was retained better than the same practice massed into one sitting.",
+            "So the twenty minutes are fixed and the days are what you protect. Aim for five days a week, and treat a missed day as a reason to start again tomorrow.",
           ],
         },
       ],
@@ -64,7 +64,7 @@ const guide: LearnGuide = {
               label: "Minutes 3 to 10",
               duration: "7 minutes",
               detail:
-                "Six puzzles at about a minute each. Before you play the move, say what your opponent's best reply is.",
+                "Six puzzles at a little over a minute each. Before you play the move, say what your opponent's best reply is.",
             },
             {
               label: "Minutes 10 to 17",
@@ -89,9 +89,10 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The medium preset is 6 pieces for 10 seconds. Six is about the number most people can hold without a system, which is why it works as a warm-up. Easy enough to finish, hard enough to demand full attention.",
-            "After the 10 seconds the board clears. There is no time limit for placing pieces, but the clock runs until you submit, so place what you know and submit.",
-            "Play again keeps the same settings and draws a fresh position each time, so three rounds are three different boards.",
+            "The medium preset in Memory Chess is 6 pieces with 10 seconds to look. Three rounds of it fit in three minutes, with a moment to read each result.",
+            "After the 10 seconds the board clears. Placing has no time limit, but the clock runs from the moment the board clears until you submit.",
+            "Try Again on the result screen keeps the same settings and generates a new position. The three rounds are three different boards, so none of them can be remembered from yesterday.",
+            "Naming every piece aloud makes the first thing in the session a full read of a board. The puzzles and the game block both start from that habit.",
           ],
         },
         {
@@ -121,8 +122,9 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Six puzzles in seven minutes is slow on purpose. The habit being built is not finding the move. It is checking the move against the reply before you play it.",
-            "So for each puzzle, find your move, then say out loud the reply that would refute it if there is one. Only then play it. A wrong answer after that check teaches more than a right answer without it.",
-            "Puzzle ratings on the big sites reward speed. Ignore that for these seven minutes. Your rating there will dip and your games will not.",
+            "So for each puzzle, find your move, then say out loud the reply that would refute it if there is one. Only then play it.",
+            "A wrong answer after that check shows you a reply you could not see. A right answer without it shows you nothing about your checking.",
+            "If a puzzle site shows a rating, ignore it for these seven minutes. The block is measured by whether you said the reply, not by the number.",
           ],
         },
       ],
@@ -135,8 +137,8 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Take your most recent game and replay it from move one. At each of your moves, before you look at what you played, say what the opponent's last move newly attacks.",
-            "You will reach the move where you missed it. That is the only move that matters today. Look at what the board told you and what you did instead.",
-            "Seven minutes covers about 25 moves at this pace. If the game is longer, stop at 25. The missed threat is almost always earlier than that.",
+            "You will reach a move where you missed it. That is the move that matters today. Look at what the board told you and what you did instead.",
+            "Seven minutes is about 15 seconds for each of your moves in a 28-move game. If the game runs longer, stop where the block ends.",
           ],
         },
       ],
@@ -162,10 +164,28 @@ const guide: LearnGuide = {
           kind: "steps",
           ordered: false,
           items: [
-            "If the warm-up rounds finish with every piece right three days running, move to 8 pieces and keep 10 seconds.",
+            "If the warm-up rounds finish with every piece right three days running, switch to the 8-piece round below and keep 10 seconds.",
+            "Eight pieces take longer to place, so play two rounds instead of three and the warm-up still ends at minute 3.",
             "If the puzzles feel easy, raise their difficulty, not their number. Six stays six.",
             "If the written line names the same block every day, give that block an extra minute and take it from the line.",
-            "Everything else stays as it is. The plan works because it is boring.",
+            "Leave the order of the blocks alone. A fixed order means no minutes go on deciding what to do next.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
+            {
+              title: "Two rounds of eight, once six is clean",
+              description:
+                "Play 8 pieces with 10 seconds to look, 2 rounds. Name the pieces in groups of two or three rather than one at a time.",
+              duration: "about 3 minutes",
+              goal: "Two rounds with every piece on the right square.",
+              ctaLabel: "Play 8 pieces, 10 seconds",
+              setup: {
+                pieceCount: 8,
+                memorizeTime: 10,
+              },
+            },
           ],
         },
       ],
@@ -183,14 +203,14 @@ const guide: LearnGuide = {
     },
     {
       slug: "how-many-chess-puzzles-a-day",
-      reason: "Why the puzzle block is six and not sixty.",
+      reason: "How to set a puzzle count when you have more than seven minutes.",
     },
   ],
   sources: [
     {
       title: "Distributed Practice in Verbal Recall Tasks: A Review and Quantitative Synthesis",
       url: "https://doi.org/10.1037/0033-2909.132.3.354",
-      note: "Supports the claim that practice spread across days is retained better than the same total time in one sitting.",
+      note: "Supports the claim that in verbal recall studies, practice spread across sessions was retained better than the same practice massed into one sitting.",
     },
   ],
 };

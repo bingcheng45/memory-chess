@@ -5,7 +5,8 @@ const guide: LearnGuide = {
   goal: "reduce-blunders",
   title: "Why Puzzle Rating Doesn't Transfer to Games",
   h1: "Why your puzzle rating doesn't transfer to games",
-  description: "Learn why puzzle skill can feel different from real games and how board vision, memory, and review can close the gap.",
+  description:
+    "A puzzle hands you four things a game never does. Until you replace them yourself, the rating stays on the puzzle site.",
   primaryKeyword: "why puzzle rating doesn't transfer to games",
   secondaryKeywords: [
     "puzzle rating vs chess rating",
@@ -14,223 +15,153 @@ const guide: LearnGuide = {
     "why am i better at puzzles than games",
     "board vision in chess",
   ],
-  ctaLabel: "Practise for Real Games",
-  quickAnswer: "A puzzle tells you that a tactic is there. A real game does not. You must notice the danger, remember the board, and know when to slow down.",
+  ctaLabel: "Play 12 pieces, 8 seconds",
+  quickAnswer:
+    "A puzzle hands you a fresh diagram, tells you whose move it is, promises there is something to find, and lets you look without cost. A game gives you none of that. The rating measures solving with those four gifts, and games test you without them.",
   keyTakeaways: [
-    "A puzzle tells you there is a problem to solve.",
-    "A game makes you find the dangerous moment yourself.",
-    "Better board vision and memory help you notice tactics sooner.",
+    "A puzzle promises a tactic, marks the side to move, draws the board fresh and lets you look without cost.",
+    "Games take all four away, and the stale board in your head is the one that hurts most.",
+    "Scan for preconditions, loose pieces and lined-up pairs, and solve only when one appears.",
   ],
   whoThisIsFor: [
-    "Players with a surprisingly high puzzle rating but flat game rating.",
-    "Beginners who see tactics after the game, not during it.",
-    "Anyone who cannot use puzzle ideas in real games.",
+    "Your puzzle rating is several hundred points above your game rating.",
+    "You see the tactic on the analysis screen and wonder how you missed it.",
+    "You are about to buy a bigger puzzle set.",
   ],
   timeToRead: "8 min read",
   difficulty: "Beginner",
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Threat checks",
+      id: "the-claim",
+      title: "What a puzzle rating actually measures",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "This is a common beginner problem. You solve puzzles, but real games still include lost pieces, missed threats, and rushed moves.",
-            "Doing more puzzles may not fix it. You also need to notice when a position becomes dangerous and picture what happens after each choice.",
+            "Puzzle rating is a real skill. It measures how reliably you find a winning move once you know one exists. That skill is worth having.",
+            "It is also narrower than it looks. Every rated puzzle is solved under the same conditions, and the rating only ever measures you under them.",
+            "Those conditions are the problem. Every one of them is missing in a game.",
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Start by connecting puzzles to games",
-      summary: "You can try these steps today.",
-      blocks: [
-        {
-          kind: "steps",
-          ordered: true,
-          items: [
-            "Before solving puzzles, spend 2 minutes scanning a board for checks, captures, and threats.",
-            "Add one Memory Chess round so the board image stays stable under pressure.",
-            "After a puzzle, ask what signal would have told you to slow down in a real game.",
-            "Review one recent game blunder and compare it with a similar tactical puzzle.",
-            "Use at least one rapid game each session to test whether the pre-move scan survives.",
-          ],
-        },
-      ],
-    },
-    {
-      id: "drills",
-      title: "Drills that connect puzzles to games",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
-      blocks: [
-        {
-          kind: "drills",
-          drills: [
-            {
-              title: "Find the warning sign",
-              description: "Look for the warning sign before trying to find the tactic.",
-              duration: "4 minutes",
-              goal: "Notice dangerous positions earlier.",
-              ctaLabel: "Train the signal first",
-            },
-            {
-              title: "Recall before calculation",
-              description: "Before your puzzle block, play one round of 6 pieces with 8 seconds to look.",
-              duration: "4 minutes",
-              goal: "Connect pattern practice to real play.",
-              ctaLabel: "Play 6 pieces, 8 seconds",
-              setup: {
-                pieceCount: 6,
-                memorizeTime: 8,
-              },
-            },
-            {
-              title: "Game-position replay",
-              description: "Replay a missed tactical moment from your own game and solve it as if it were a puzzle.",
-              duration: "6 minutes",
-              goal: "Make tactical training feel like real positions again.",
-              ctaLabel: "Replay your missed tactic",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "comparison",
-      title: "Puzzles vs games: what changes?",
-      summary: "The tactical move may be identical, but the mental task is not.",
-      blocks: [
-        {
-          kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
-          ],
-          rows: [
-            {
-              label: "Problem framing",
-              struggling: "The game does not tell you a tactic exists.",
-              stronger: "You notice the signal that tension just changed.",
-            },
-            {
-              label: "Board clarity",
-              struggling: "The line blurs once multiple pieces move.",
-              stronger: "You keep the important squares and defenders active in memory.",
-            },
-            {
-              label: "Decision timing",
-              struggling: "You move at normal speed when the position becomes dangerous.",
-              stronger: "You slow down when checks, captures, or threats appear.",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
+      id: "four-gifts",
+      title: "Four things a puzzle gives you and a game does not",
       blocks: [
         {
           kind: "steps",
           ordered: false,
           items: [
-            "Doing puzzles without any transfer step into games.",
-            "Assuming tactical knowledge alone should prevent blunders.",
-            "Never reviewing why a game position became dangerous.",
-            "Treating board vision as separate from tactics.",
+            "A promise. Something is there. In a game, on most moves, nothing is, and the skill is knowing which move is the exception.",
+            "The side to move, marked. In a game you can spend a minute on a plan and then realise the tactic was your opponent's.",
+            "A fresh diagram. The whole position, drawn once, with every piece equally visible. In a game the position arrived one move at a time over half an hour.",
+            "Looking without cost. Many puzzle modes have no clock at all. In a game every second you spend scanning comes off your own time.",
           ],
         },
         {
-          kind: "callout",
-          title: "What to do instead",
-          body: "Do not only add more puzzles. Practise noticing tactical moments in your own games too.",
+          kind: "paragraphs",
+          paragraphs: [
+            "The third one is the least obvious, so the next section is about it.",
+          ],
         },
       ],
     },
     {
-      id: "plan",
-      title: "7-day puzzle-transfer block",
-      summary: "Follow these steps before making the practice harder or longer.",
+      id: "stale-board",
+      title: "The stale board, the gift that matters most",
       blocks: [
         {
-          kind: "plan",
-          steps: [
+          kind: "paragraphs",
+          paragraphs: [
+            "By move 25 your picture of the board is not the board. It is the board as it was a few moves ago, with the recent changes patched in. The patches are where the blunders live.",
+            "A puzzle never has this problem. The diagram is the position, complete and current. Your puzzle rating has never once been tested on a stale board.",
+            "Strong players recall a briefly seen position in chunks, familiar groups of pieces stored as one unit. They rebuild the board from those groups rather than piece by piece.",
+            "Memory Chess has a hard preset of 12 pieces with 8 seconds to look. That is two thirds of a second per piece.",
+            "Try saying white knight c3 twelve times in eight seconds. Reading piece by piece runs out of time, so the round only works if you see groups.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
             {
-              label: "Day 1 to 2",
-              duration: "12 minutes",
-              detail: "Add signal-before-solution thinking to every puzzle session.",
-            },
-            {
-              label: "Day 3 to 4",
-              duration: "12 minutes",
-              detail: "Use a short Memory Chess round before puzzles or rapid play.",
-            },
-            {
-              label: "Day 5",
-              duration: "15 minutes",
-              detail: "Replay three missed tactical moments from your own games.",
-            },
-            {
-              label: "Day 6 to 7",
-              duration: "15 to 20 minutes",
-              detail: "Play rapid and stop yourself whenever the position becomes forcing or tactically tense.",
+              title: "Twelve pieces, seen as shapes",
+              description:
+                "Play 12 pieces with 8 seconds to look, 3 rounds. Do not read piece by piece. Find the two or three groups, name them, and rebuild from the groups.",
+              duration: "about 5 minutes",
+              goal: "Rounds where the squares marked Missed sit inside a group you saw, not in a corner you never looked at.",
+              ctaLabel: "Play 12 pieces, 8 seconds",
+              setup: {
+                pieceCount: 12,
+                memorizeTime: 8,
+              },
             },
           ],
         },
       ],
     },
+    {
+      id: "what-transfers",
+      title: "The patterns that do cross over, and the condition attached",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Some patterns do show up in games. A knight on c7 forking a king on e8 and a rook on a8. A bishop on g5 pinning a knight on f6 to a queen on d8.",
+            "They transfer under one condition. You have to be looking at the precondition, not the tactic.",
+            "The fork works because nothing guards c7 and your knight on b5 can reach it. The pin works because the knight stands on the diagonal between the bishop and the queen, with e7 empty.",
+            "So the habit that carries puzzles into games is a scan for preconditions. Loose pieces, pieces on the same line as something valuable, a king with no flight squares.",
+            "When one of those is on the board, and only then, you solve the position like a puzzle.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "the-test",
+      title: "A test to run in your next five games",
+      blocks: [
+        {
+          kind: "steps",
+          ordered: true,
+          items: [
+            "Play five games at 15 minutes with a 10-second increment. Not blitz, or the test measures your clock.",
+            "Before each of your moves, say the squares your opponent's last move newly attacks and whether anything on them is loose.",
+            "When you notice a loose piece or a lined-up pair, on either side, mark the move number on paper.",
+            "After each game, run the engine once and list the tactics it found for either side. Compare that list with your marks.",
+            "The tactics you marked and still missed are a calculation problem. The ones you never marked are a scanning problem.",
+          ],
+        },
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "A puzzle does the scanning for you by promising a tactic, so puzzle volume cannot train it. If most missed tactics sit on unmarked moves, more puzzles will not close the gap.",
+          ],
+        },
+      ],
+    },
   ],
-  faq: [
-    {
-      question: "Why am I better at puzzles than games?",
-      answer: "Because a puzzle already tells you that there is a tactic to find. A real game does not.",
-    },
-    {
-      question: "Should I stop doing puzzles?",
-      answer: "No. Keep them, but add board vision, recall, and game-position replay so the patterns transfer.",
-    },
-    {
-      question: "What is the best transfer drill?",
-      answer: "Replay a missed tactic from your own game and solve it after rebuilding the position from memory.",
-    },
-    {
-      question: "How do I measure transfer?",
-      answer: "Track whether blunders per game and missed simple tactics decline, not just whether puzzle rating rises.",
-    },
-  ],
+  faq: [],
   relatedArticles: [
     {
-      slug: "how-to-stop-blundering-in-chess",
-      reason: "Use this to build a shorter anti-blunder checklist for real games.",
-    },
-    {
-      slug: "chess-board-vision-drills",
-      reason: "Strengthen the scanning habit that makes tactics visible.",
-    },
-    {
       slug: "how-many-chess-puzzles-a-day",
-      reason: "Choose a puzzle amount that leaves time for games.",
+      reason: "How many puzzles are still worth doing once you accept this.",
+    },
+    {
+      slug: "how-to-stop-blundering-in-chess",
+      reason: "The precondition scan as a full pre-move checklist.",
+    },
+    {
+      slug: "chess-pattern-recognition-drills",
+      reason: "Training the patterns that do cross over.",
     },
   ],
   sources: [
     {
-      title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
-      url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
-    },
-    {
-      title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-      url: "https://doi.org/10.1006/cogp.1996.0011",
-    },
-    {
-      title: "Puzzle rating vs regular chess rating (r/chess)",
-      url: "https://www.reddit.com/r/chess/comments/mmc874/what_do_you_care_more_about_puzzle_rating_or/",
-      note: "A discussion about why puzzle scores and game results can feel very different.",
+      title: "Perception in Chess",
+      url: "https://doi.org/10.1016/0010-0285(73)90004-2",
+      note: "Supports the claim that strong players recall a briefly seen position in chunks, familiar groups of pieces stored as one unit.",
     },
   ],
 };

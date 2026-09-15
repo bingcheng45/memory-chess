@@ -3,184 +3,172 @@ import type { LearnGuide } from "../schema";
 const guide: LearnGuide = {
   slug: "chess-calculation-exercises-for-beginners",
   goal: "visualization",
-  title: "Chess Calculation Exercises for Beginners",
-  h1: "Chess calculation exercises for beginners",
-  description: "Use simple chess calculation exercises to compare moves and follow short lines without getting lost.",
+  title: "Chess Calculation Exercises for Beginners Who Lose the Board After Two Moves",
+  h1: "Calculation exercises for beginners who lose the board after two moves",
+  description:
+    "Why short lines collapse, one position with two knight checks to practise on, and exercises for holding a position while the pieces in your head move.",
   primaryKeyword: "chess calculation exercises",
   secondaryKeywords: [
     "beginner chess calculation",
     "calculate moves ahead chess",
-    "line tracking chess drills",
+    "working memory for chess",
     "candidate move practice",
-    "chess visualization and calculation",
+    "hold a position in your head",
   ],
-  ctaLabel: "Practise Clear Calculation",
-  quickAnswer: "Compare only one or two possible moves at first. Keep the board clear in your mind and check the answer straight away.",
+  ctaLabel: "Open the 8-piece, 10-second round",
+  quickAnswer:
+    "Compare two moves, two plies deep, and say each line out loud before you check it. When a line collapses, the fault is usually the starting position, not the moves.",
   keyTakeaways: [
-    "Two clear move sequences are better than five confusing ones.",
-    "Clear visualization leads to clearer calculation.",
-    "Check your answer right after each exercise.",
+    "A line fails at the piece you stopped seeing, which is nearly always one that never moved.",
+    "Two candidate moves at two plies is enough work for one decision.",
+    "Rebuilding a position from an empty board is the same act as holding one while you calculate.",
   ],
   whoThisIsFor: [
-    "Players who know they should calculate but lose the line quickly.",
-    "Beginners who move on instinct in sharp positions.",
-    "Anyone who wants to use memory practice in real decisions.",
+    "Players who imagine a move and then cannot say where the defenders are.",
+    "Beginners who play the first move they see in sharp positions.",
+    "Anyone who has been told to calculate and never told what to hold in mind.",
   ],
-  timeToRead: "7 min read",
+  timeToRead: "8 min read",
   difficulty: "Beginner to Intermediate",
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Mental board control",
+      id: "where-a-line-breaks",
+      title: "Where a two-move line breaks",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Calculation simply means asking, “If I move here, what happens next?” The hard part is keeping the board clear while you follow the moves.",
-            "Board memory and visualization make calculation easier. Practise those skills together instead of treating them as separate tasks.",
+            "Calculation is holding a position that is not on the board. You see the real board, imagine one move, and now you keep two pictures apart, the one in front of you and the one in your head.",
+            "Each imagined move overwrites a square. Two plies in, four squares have changed, and every piece that did not move has to stay put without any help from your eyes.",
+            "That is where beginners lose the line. Not on the moving pieces, which have your attention, but on a queen or a pawn that never moved and quietly guards the square you land on.",
+            "The usual advice is to look further ahead. The useful advice is to keep the base position steady, because a line is only as long as the picture underneath it.",
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Start with two possible moves",
-      summary: "You can try these steps today.",
+      id: "two-checks-one-works",
+      title: "One position, two knight checks, only one works",
+      summary: "Set this up on a real board. White to move.",
       blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "White: king g1, knight d5, pawns f2, g2 and h2. Black: king e8, queen e6, rook a8, pawns f7, g7 and h7. Twelve pieces, the same count as the Hard preset.",
+            "The black queen on e6 attacks the knight on d5, so White wants a move that gains time. Two knight checks are available, 1.Nc7+ and 1.Nf6+. Compare them two plies deep.",
+          ],
+        },
         {
           kind: "steps",
           ordered: true,
           items: [
-            "Choose no more than two candidate moves from one position.",
-            "Imagine one line for two plies and summarize it in one sentence.",
-            "Use one Memory Chess round to keep the base board sharp.",
-            "Return to the original position and compare the two lines calmly.",
-            "Verify immediately and label whether the error was in the board image or the move sequence.",
+            "Say the first line out loud: 1.Nc7+. Now list what the knight on c7 attacks: a8, e8 and e6. That is the rook, the king and the queen.",
+            "Ask which black piece can take on c7. The queen on e6 cannot reach it, the rook on a8 cannot, and the king on e8 is two files away. Black moves the king and loses the queen for a knight.",
+            "Say the second line: 1.Nf6+. It also checks the king on e8. Ask the same question. The pawn on g7 takes on f6, and White has given the knight away for nothing.",
+            "Play both lines on the board and check. If your answer for 1.Nf6+ was wrong, the piece you dropped was the g7 pawn, which never moved and was never going to.",
           ],
+        },
+        {
+          kind: "callout",
+          title: "The question that saves the line",
+          body: "After every imagined move, ask who can capture on the square you just landed on. It forces you back to the base position instead of running forward.",
         },
       ],
     },
     {
-      id: "drills",
-      title: "Simple calculation drills",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
+      id: "empty-board-reset",
+      title: "The empty-board reset",
       blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Memory Chess makes you do the hard half of calculation on its own. A position appears for a fixed number of seconds, then the board clears, and you rebuild it while the clock runs.",
+            "There is no time limit on the rebuild, but nothing on the empty board reminds you of the queen on e6. That is exactly your state one move into a line, and a round trains it directly.",
+            "The positions are made fresh each round and are random rather than taken from games, so a round does not teach you which moves to look at. It trains holding the picture, nothing more.",
+          ],
+        },
         {
           kind: "drills",
           drills: [
             {
-              title: "Two-candidate comparison",
-              description: "Hold two reasonable moves and compare their short tactical futures.",
-              duration: "6 minutes",
-              goal: "Compare moves without trying to remember too much.",
-              ctaLabel: "Compare two lines",
+              title: "Hold it while the board is empty",
+              description:
+                "4 rounds of 8 pieces, 10 seconds, about 4 minutes. Both kings first, then the pieces you are sure of. Stop before you guess, since each extra piece costs ten accuracy points.",
+              duration: "About 4 minutes",
+              goal: "At least 7 of the 8 correct in three of the four rounds.",
+              ctaLabel: "Play 8 pieces, 10 seconds",
+              setup: { pieceCount: 8, memorizeTime: 10 },
             },
             {
-              title: "Recall then calculate",
-              description: "Before your line work, play one round of 12 pieces with 8 seconds to look.",
-              duration: "4 minutes",
-              goal: "Remember the board before following a move sequence.",
-              ctaLabel: "Play 12 pieces, 8 seconds",
-              setup: {
-                pieceCount: 12,
-                memorizeTime: 8,
-              },
+              title: "Rebuild after the line",
+              description:
+                "Set the position from the section above on a board. Calculate both checks, then clear the board and set the position again from memory. Compare with a photo you took first.",
+              duration: "About 5 minutes",
+              goal: "All twelve pieces back on their squares, the g7 pawn included.",
+              ctaLabel: "Set it up at your board",
             },
             {
-              title: "Sentence summary line",
-              description: "Summarize the branch in one sentence before checking it.",
-              duration: "4 minutes",
-              goal: "Keep the move sequence clear and easy to explain.",
-              ctaLabel: "Summarize the branch",
+              title: "Two candidates, one sentence each",
+              description:
+                "Take any position from a game you lost. Pick two moves, follow each for two plies, and finish each with one sentence: what changed, and who guards the landing square.",
+              duration: "About 10 minutes",
+              goal: "Two lines you can say out loud without looking at the board.",
+              ctaLabel: "Use your last lost game",
             },
           ],
         },
       ],
     },
     {
-      id: "comparison",
-      title: "Messy calculation vs cleaner calculation",
-      summary: "Do not chase longer lines yet. Make short lines accurate first.",
+      id: "how-many-lines-to-hold",
+      title: "How many lines a beginner should hold",
       blocks: [
         {
-          kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
+          kind: "paragraphs",
+          paragraphs: [
+            "Two. Not because two is a special number but because the third line is the one that overwrites the first.",
+            "Working memory is not the problem. Spending it on the wrong thing is. Spread across five candidate moves, none of them gets the check for defenders.",
+            "Add a third candidate only when both of the first two fail for a reason you can state. Keep the depth at two plies until the base position stops drifting.",
+            "When the two moves are both checks or both captures, the comparison is quick and the mistake is almost always a missed defender, not a missed idea.",
           ],
+        },
+        {
+          kind: "comparison",
+          columns: ["Where it failed", "What it felt like", "What actually happened"],
           rows: [
             {
-              label: "Candidate moves",
-              struggling: "You consider too many moves at once.",
-              stronger: "You compare a small number of sensible moves.",
+              label: "The landing square",
+              struggling: "The move looked safe.",
+              stronger: "A piece that never moved guards it, like the g7 pawn covering f6.",
             },
             {
-              label: "Board image",
-              struggling: "The resulting position gets blurry fast.",
-              stronger: "You keep key squares and defenders stable in memory.",
+              label: "Move order",
+              struggling: "Both lines blurred into each other.",
+              stronger: "You calculated the second line on top of the first instead of on the base position.",
             },
             {
-              label: "Verification",
-              struggling: "You do not know why the line failed.",
-              stronger: "You can tell whether the error came from memory, move order, or judging the position.",
+              label: "Depth",
+              struggling: "Three plies in, nothing was clear.",
+              stronger: "The first two plies were never checked, so the third had nothing to stand on.",
             },
           ],
         },
       ],
     },
     {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
+      id: "checking-out-loud",
+      title: "Say it, then check it on the board",
       blocks: [
         {
           kind: "steps",
           ordered: false,
           items: [
-            "Trying to calculate too many branches at once.",
-            "Skipping candidate-move selection and calculating everything.",
-            "Not verifying immediately after the line.",
-            "Ignoring weak board memory.",
-          ],
-        },
-        {
-          kind: "callout",
-          title: "What to do instead",
-          body: "Do not calculate many moves ahead yet. A clear two-move line is more useful than a confusing long one.",
-        },
-      ],
-    },
-    {
-      id: "plan",
-      title: "7-day beginner calculation plan",
-      summary: "Follow these steps before making the practice harder or longer.",
-      blocks: [
-        {
-          kind: "plan",
-          steps: [
-            {
-              label: "Day 1 to 2",
-              duration: "10 minutes",
-              detail: "Use only two-candidate comparisons with immediate verification.",
-            },
-            {
-              label: "Day 3 to 4",
-              duration: "12 minutes",
-              detail: "Add one Memory Chess round before calculation work.",
-            },
-            {
-              label: "Day 5",
-              duration: "12 minutes",
-              detail: "Summarize each branch in one sentence before checking it.",
-            },
-            {
-              label: "Day 6 to 7",
-              duration: "15 minutes",
-              detail: "Transfer the process into rapid games by pausing at tactically sharp moments and keeping the candidate set small.",
-            },
+            "Say the line in full, your move and the reply, before you touch a piece.",
+            "Name the attackers and defenders of the landing square before you imagine the next move.",
+            "Play the line on a real board or an analysis board and compare. Label the miss: a piece you forgot, a move order you swapped, or a judgment you got wrong.",
+            "If the miss was a forgotten piece, that is a base-position problem. Play a round of the empty-board reset, not another puzzle.",
           ],
         },
       ],
@@ -188,46 +176,36 @@ const guide: LearnGuide = {
   ],
   faq: [
     {
-      question: "How can beginners improve calculation in chess?",
-      answer: "Keep the candidate set small, verify quickly, and improve visualization and recall underneath the line work.",
+      question: "How many moves ahead should a beginner calculate?",
+      answer:
+        "Two plies, your move and the reply, checked for defenders each time. Depth comes from holding the position steady, not from ambition.",
     },
     {
-      question: "Should I calculate more moves ahead?",
-      answer: "Only after the current depth is reliable. Accuracy beats ambition.",
+      question: "Does Memory Chess teach calculation?",
+      answer:
+        "No. It trains the part of calculation that fails first, keeping a position steady when nothing on the board reminds you of it. Choosing moves is learned at the board.",
     },
     {
-      question: "Why do my calculation lines collapse?",
-      answer: "Often because the board image is not stable enough or because too many candidates are active at once.",
-    },
-    {
-      question: "Does Memory Chess help calculation?",
-      answer: "Yes. Stronger board recall makes it much easier to hold resulting positions during line calculation.",
+      question: "Why do I forget a piece that never moved?",
+      answer:
+        "Because you were tracking the moving pieces. A still piece has no event attached to it, so the base picture has to carry it, and the base picture is what drifts.",
     },
   ],
   relatedArticles: [
     {
-      slug: "working-memory-exercises-for-chess",
-      reason: "Improve the line-holding layer behind calculation.",
+      slug: "chess-memory-training",
+      reason: "The ladder for holding more pieces through the empty board.",
     },
     {
       slug: "chess-visualization-exercises",
-      reason: "Picture the board more clearly before following longer lines.",
+      reason: "Move pieces in your head before you have to do it under a clock.",
     },
     {
       slug: "how-to-think-in-chess-for-beginners",
-      reason: "Use a simpler in-game decision process to support cleaner calculation.",
+      reason: "A move routine that decides which two candidates deserve the calculation.",
     },
   ],
-  sources: [
-    {
-      title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-      url: "https://doi.org/10.1006/cogp.1996.0011",
-    },
-    {
-      title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
-      url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
-    },
-  ],
+  sources: [],
 };
 
 export default guide;

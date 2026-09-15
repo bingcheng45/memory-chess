@@ -4,7 +4,6 @@ import guide1 from "./chess-visualization-exercises";
 import guide2 from "./chess-board-vision-drills";
 import guide3 from "./chess-memory-training";
 import guide4 from "./blindfold-chess-training-for-beginners";
-import guide5 from "./working-memory-exercises-for-chess";
 import guide6 from "./how-to-stop-blundering-in-chess";
 import guide7 from "./why-puzzle-rating-doesnt-transfer-to-games";
 import guide8 from "./how-to-see-the-whole-board-in-chess";
@@ -23,7 +22,6 @@ export const LEARN_GUIDES: readonly LearnGuide[] = [
   guide2,
   guide3,
   guide4,
-  guide5,
   guide6,
   guide7,
   guide8,

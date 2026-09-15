@@ -3,180 +3,141 @@ import type { LearnGuide } from "../schema";
 const guide: LearnGuide = {
   slug: "chess-pattern-recognition-drills",
   goal: "memory",
-  title: "Chess Pattern Recognition Drills",
-  h1: "Chess pattern recognition drills for beginners",
-  description: "Use simple drills to recognise common chess patterns and spot useful ideas faster.",
+  title: "Chess Pattern Recognition Drills: Four Shapes to Rebuild From Memory",
+  h1: "Pattern recognition drills: learn four shapes by rebuilding them",
+  description:
+    "Four tactical shapes with their exact squares, a rebuild routine that makes each one stick, and what a random Memory Chess position can and cannot teach about patterns.",
   primaryKeyword: "chess pattern recognition drills",
   secondaryKeywords: [
     "pattern recognition chess",
     "chess motifs training",
-    "tactical pattern drills",
-    "beginner chess patterns",
-    "memorize chess motifs",
+    "knight fork pattern",
+    "back rank mate pattern",
+    "chess chunking",
   ],
-  ctaLabel: "Train Chess Patterns",
-  quickAnswer: "A chess pattern is a familiar group of pieces and squares. Repeat the same type of pattern until you can quickly see the idea behind it.",
+  ctaLabel: "Open the 12-piece, 8-second round",
+  quickAnswer:
+    "Learn a pattern as a shape with squares, not as a name. Set it up, clear the board, rebuild it, then shift it one file and check whether the idea still works.",
   keyTakeaways: [
-    "A pattern includes the board shape and the idea it creates.",
-    "Board memory helps you spot patterns under time pressure.",
-    "Repeat a few common patterns before adding many new ones.",
+    "A fork on c7 is three squares, e8, a8 and c7, plus one condition: nothing black can take on c7.",
+    "Rebuilding a shape from an empty board is what turns a puzzle you solved into a shape you notice.",
+    "Memory Chess positions are random, so they train reading clusters fast, not tactics. Use them for the reading.",
   ],
   whoThisIsFor: [
-    "Players who solve tactics but fail to notice similar shapes in games.",
-    "Beginners who want more structure than random puzzles.",
-    "Anyone whose positions still feel visually chaotic.",
+    "Players with a decent puzzle rating who still walk into forks in their own games.",
+    "Beginners who know the words pin, fork and skewer and could not set one up.",
+    "Anyone who reads a 12-piece board one piece at a time.",
   ],
-  timeToRead: "7 min read",
+  timeToRead: "8 min read",
   difficulty: "Beginner",
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Recall and retention",
+      id: "shape-plus-condition",
+      title: "A pattern is a shape plus one condition",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Pattern recognition makes a position feel familiar. A board shape may suggest a fork, pin, trapped piece, or weak square before you calculate every move.",
-            "Start with a small group of common patterns. Rebuild each position from memory so you remember the pieces and squares that make the idea work.",
+            "The knight fork on c7 is the pattern every beginner meets first. Black king on e8, black rook on a8, and a white knight lands on c7 and hits both.",
+            "That is the shape. The condition is that nothing black can capture on c7. A black queen or bishop on d8 kills the fork, and so does a black knight on b5 or e6.",
+            "Puzzles hand you the shape and guarantee the condition. Games do neither, which is why a puzzle rating and a habit of noticing forks are different things.",
+            "So a pattern drill has two halves. Rebuild the shape until you can place it from memory, then break the condition on purpose and watch the fork fail.",
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Start with one pattern at a time",
-      summary: "You can try these steps today.",
-      blocks: [
-        {
-          kind: "steps",
-          ordered: true,
-          items: [
-            "Choose one pattern type, such as forks, pins, or attacks on unprotected pieces.",
-            "Study the shape and rebuild it from memory, not only from a static diagram.",
-            "Name the squares and defenders that make the pattern work.",
-            "Run one Memory Chess round to reinforce clean board recall.",
-            "Review one recent game to find where a similar pattern appeared or was missed.",
-          ],
-        },
-      ],
-    },
-    {
-      id: "drills",
-      title: "Simple pattern recognition drills",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
-      blocks: [
-        {
-          kind: "drills",
-          drills: [
-            {
-              title: "Rebuild a pattern",
-              description: "Recreate one chess pattern from memory and name the key pieces and squares.",
-              duration: "5 minutes",
-              goal: "Connect the pattern to a clear memory of the board.",
-              ctaLabel: "Rebuild a Pattern",
-            },
-            {
-              title: "Family repetition",
-              description: "Repeat several examples of the same pattern before changing to a new type.",
-              duration: "5 minutes",
-              goal: "Make the board shape feel familiar.",
-              ctaLabel: "Repeat one family",
-            },
-            {
-              title: "Find it in a game",
-              description: "Look through one recent game and find where the same pattern appeared.",
-              duration: "5 minutes",
-              goal: "Use pattern practice with real game positions.",
-              ctaLabel: "Hunt in your own games",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "comparison",
-      title: "Random tactics vs real pattern recognition",
-      summary: "Patterns are useful when you notice them before you start a long calculation.",
-      blocks: [
-        {
-          kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
-          ],
-          rows: [
-            {
-              label: "Training structure",
-              struggling: "You keep changing between unrelated patterns.",
-              stronger: "You repeat one pattern type until it feels familiar.",
-            },
-            {
-              label: "Board recall",
-              struggling: "You know the idea but not the exact squares that support it.",
-              stronger: "You remember the structural details that make the pattern work.",
-            },
-            {
-              label: "Real games",
-              struggling: "Patterns stay trapped inside puzzles.",
-              stronger: "You notice their early warning signs in live games.",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
+      id: "four-shapes-with-squares",
+      title: "Four shapes, with their squares",
       blocks: [
         {
           kind: "steps",
           ordered: false,
           items: [
-            "Learning only a pattern name without understanding the board shape.",
-            "Changing pattern types too often.",
-            "Ignoring the squares and defenders that make the pattern work.",
-            "Skipping game review after pattern training.",
+            "Knight fork on c7. Black king e8, black rook a8, white knight on d5 or b5 ready to jump. Condition: no black piece guards c7.",
+            "Back-rank mate. Black king g8, black pawns f7, g7 and h7, white rook on e1 with the e-file open. Condition: no black piece can capture on e8 or block the eighth rank.",
+            "Bishop pin on b5. Black king e8, black knight c6, white bishop b5. Condition: d7 is empty, so the knight cannot move without exposing the king along the diagonal.",
+            "Smothered mate. Black king h8, black rook g8, black pawns g7 and h7, white knight lands on f7. Condition: nothing black covers f7. The rook and pawns take the king's flight squares themselves.",
           ],
         },
         {
-          kind: "callout",
-          title: "What to do instead",
-          body: "Do not add more variety too quickly. Repeat one pattern type until it is familiar.",
+          kind: "paragraphs",
+          paragraphs: [
+            "Four is enough for a month. Each one is a cluster of three to five pieces, and each has exactly one condition to check.",
+            "Notice that the condition is always about a piece that is not part of the shape. That is the piece a puzzle solver never looks for, because in a puzzle it is never there.",
+          ],
         },
       ],
     },
     {
-      id: "plan",
-      title: "7-day pattern recognition plan",
-      summary: "Follow these steps before making the practice harder or longer.",
+      id: "rebuild-shift-break",
+      title: "Rebuild it, shift it, break it",
+      summary: "The routine for one shape, about 6 minutes at a real board.",
       blocks: [
         {
-          kind: "plan",
-          steps: [
+          kind: "steps",
+          ordered: true,
+          items: [
+            "Set the shape up from the list above and look at it for ten seconds. Say the squares out loud: e8, a8, d5, c7.",
+            "Clear the board completely, kings included, and set it up again from memory. Check against the list. A piece on the wrong square is wrong, the same rule the game uses.",
+            "Shift the whole shape one file to the right: king f8, rook b8, knight e5, fork square d7. Does the knight still hit both? It does, and saying why makes the geometry yours.",
+            "Break the condition. Add a black bishop on c8 and ask whether the fork still works. The bishop takes on d7, so it does not, and now you know what to look for in a game.",
+            "Only then open your last three games and look for the shape, even where it never happened. A knight two jumps from a fork square is the shape in its early form.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "random-boards-and-clusters",
+      title: "What a random 12-piece board teaches, and what it cannot",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Memory Chess positions are generated fresh for each round and are not taken from games. A round is not built to show you a back-rank mate, so it will not teach you that pattern.",
+            "What it trains is the act underneath pattern recognition, reading a cluster of pieces as one unit. Twenty pieces in five seconds is a quarter of a second per piece, and nobody reads that square by square.",
+            "The generator draws piece types in the proportions a real set holds: eight pawns, two knights, two bishops, two rooks and one queen per side. Pawns are the most common piece you see and queens the rarest.",
+            "That is a clue you can use. On a 12-piece board the ten pieces beyond the kings are split five and five, and about half of them are pawns. Count the pawn chains first, then the odd pieces.",
+            "Two more rules shrink the search. A side's two bishops never share a square colour, and no pawn ever stands on the first or eighth rank.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
             {
-              label: "Day 1 to 2",
-              duration: "10 minutes",
-              detail: "Choose one pattern type and rebuild several examples from memory.",
+              title: "Chains first",
+              description:
+                "3 rounds of 12 pieces, 8 seconds, about 4 minutes. Kings first, then each pawn chain as a single shape, then whatever is left. Say the chains as you place them, f2 g3, e6 f7.",
+              duration: "About 4 minutes",
+              goal: "Every pawn on its square. Drop a rook before you drop a chain.",
+              ctaLabel: "Start 12 pieces, 8 seconds",
+              setup: { pieceCount: 12, memorizeTime: 8 },
             },
             {
-              label: "Day 3 to 4",
-              duration: "12 minutes",
-              detail: "Add square naming and defender counting to each example.",
+              title: "The quarter-second board",
+              description:
+                "2 rounds of 20 pieces, 5 seconds, about 4 minutes. You will not get them all. The point is to catch the moment you stop reading pieces and start reading shapes.",
+              duration: "About 4 minutes",
+              goal: "Above 50 percent, which the result screen calls Good Effort, on the second round.",
+              ctaLabel: "Try 20 pieces, 5 seconds",
+              setup: { pieceCount: 20, memorizeTime: 5 },
             },
-            {
-              label: "Day 5",
-              duration: "12 minutes",
-              detail: "Play a Memory Chess round before pattern practice so the board feels clearer.",
-            },
-            {
-              label: "Day 6 to 7",
-              duration: "15 minutes",
-              detail: "Search your recent games for the same pattern and note where it appeared or almost appeared.",
-            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "recognition-over-search",
+      title: "Recognition does more of the work than search",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Gobet and Simon compared Kasparov's results in simultaneous displays, where he had a fraction of his usual time per move, with his results in normal games. The drop was small.",
+            "They read that as evidence that recognising positions, rather than searching deeply, carries most of a strong player's strength.",
+            "For a beginner the lesson is not to skip calculation. It is that the shapes you can rebuild from memory are the ones you notice in time to calculate at all.",
           ],
         },
       ],
@@ -184,44 +145,40 @@ const guide: LearnGuide = {
   ],
   faq: [
     {
-      question: "What is pattern recognition in chess?",
-      answer: "It means seeing a familiar board shape and quickly remembering the idea that often works there.",
+      question: "Is pattern recognition the same as memorising puzzles?",
+      answer:
+        "No. A memorised puzzle is one position. A pattern is a shape that survives being shifted a file, plus a condition you check every time you see it.",
     },
     {
-      question: "How do beginners train pattern recognition?",
-      answer: "Repeat a small set of patterns, rebuild the positions from memory, and look for them in real games.",
+      question: "Can Memory Chess show me real tactical patterns?",
+      answer:
+        "No. Its positions are random and made fresh every round. Use it to practise reading clusters quickly, and learn the shapes themselves at a board.",
     },
     {
-      question: "Are puzzles enough for pattern recognition?",
-      answer: "Not always. Puzzles help, but repeating the same pattern type and reviewing games make it easier to use.",
-    },
-    {
-      question: "Why mix Memory Chess with pattern drills?",
-      answer: "Because pattern recognition is easier when the full board stays clearer in memory.",
+      question: "How many patterns should I learn at once?",
+      answer:
+        "Four, for a month. Add a fifth when you have found each of the four in your own games.",
     },
   ],
   relatedArticles: [
     {
       slug: "chess-memory-training",
-      reason: "Build a stronger recall layer for pattern learning.",
-    },
-    {
-      slug: "how-many-chess-puzzles-a-day",
-      reason: "Balance pattern practice with a useful number of puzzles.",
+      reason: "The ladder that gets you to 12 pieces before you try to read them as chunks.",
     },
     {
       slug: "why-puzzle-rating-doesnt-transfer-to-games",
-      reason: "Use the patterns you study in real games.",
+      reason: "Why the shape shows up in puzzles and not in your games.",
+    },
+    {
+      slug: "how-many-chess-puzzles-a-day",
+      reason: "How many puzzles to solve once you are rebuilding shapes instead of guessing.",
     },
   ],
   sources: [
     {
-      title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-      url: "https://doi.org/10.1006/cogp.1996.0011",
-    },
-    {
-      title: "Test-Enhanced Learning: Taking Memory Tests Improves Retention",
-      url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
+      title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
+      url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
+      note: "Supports the claim that Kasparov's results with far less time per move in simultaneous displays fell only slightly, read as evidence for recognition over search.",
     },
   ],
 };

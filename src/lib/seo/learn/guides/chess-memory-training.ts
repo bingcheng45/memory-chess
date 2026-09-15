@@ -3,193 +3,185 @@ import type { LearnGuide } from "../schema";
 const guide: LearnGuide = {
   slug: "chess-memory-training",
   goal: "memory",
-  title: "Chess Memory Training Drills for Faster Recall",
-  h1: "Chess memory training for beginner improvement",
-  description: "Use simple chess memory drills to remember positions, notice patterns, and follow moves more clearly.",
+  title: "Chess Memory Training: A Ladder Built on the Game's Own Scoring",
+  h1: "Chess memory training that the score can actually measure",
+  description:
+    "How to train position recall with Memory Chess rounds from 2 pieces to 12, using the game's strict square-by-square score to decide when you move up.",
   primaryKeyword: "chess memory training",
   secondaryKeywords: [
     "chess memory drills",
     "memorize chess positions",
-    "pattern recognition chess",
     "board recall training",
-    "chess concentration",
+    "memory chess accuracy",
+    "chess memory game score",
   ],
-  ctaLabel: "Start a Memory Challenge",
-  quickAnswer: "Chess memory training helps you remember useful positions while the pieces change. It is not about memorising as many random boards as possible.",
+  ctaLabel: "Open the 6-piece, 10-second round",
+  quickAnswer:
+    "Train at 6 pieces and 10 seconds until you rebuild the whole board three rounds in a row. Only then add pieces, and only after that shorten the look.",
   keyTakeaways: [
-    "Accuracy matters more than speed at first.",
-    "Repeating the same settings helps you find one memory mistake at a time.",
-    "Use memory practice before calculation or game review.",
+    "A piece scores only when its square, type and colour all match, so a near miss is a miss.",
+    "At 6 pieces one missed piece already costs 17 points, so the result bands are blunt at low counts.",
+    "Every round is a fresh position, so the only fair comparison is your accuracy across rounds at the same settings.",
   ],
   whoThisIsFor: [
-    "Players who forget their plan after one strong reply.",
-    "Beginners who cannot rebuild key positions from recent games.",
-    "Anyone who struggles when many pieces are active.",
+    "Players who lose the position the moment the board clears.",
+    "Anyone who has played a few rounds and does not know whether 4 out of 6 is good.",
+    "Anyone about to jump straight to the 20-piece preset.",
   ],
-  timeToRead: "8 min read",
+  timeToRead: "9 min read",
   difficulty: "Beginner",
   featured: true,
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Recall and retention",
+      id: "score-counts-exact-squares",
+      title: "The score counts exact squares, not a rough picture",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Chess memory is a practical skill. The goal is to hold a clear picture of the board long enough to choose a move calmly.",
-            "Memory Chess gives you a simple loop: look, remember, check, and try again.",
+            "Memory Chess compares your board with the original square by square. A piece counts as correct only when the square, the piece type and the colour all match.",
+            "A white knight on f3 when the original had it on e3 is wrong. A black rook on a8 when that rook was white is wrong. There is no half credit.",
+            "Extra pieces hurt twice. Each piece you place beyond the position's count is listed as wrong and also takes ten points off your accuracy, which never drops below zero.",
+            "So the habit that pays is placing only the pieces you actually remember. One guessed extra piece turns a 6-piece round with five correct from 83 percent into 73.",
+          ],
+        },
+        {
+          kind: "callout",
+          title: "Why I place the kings before anything else",
+          body: "Every position holds exactly one king of each colour, and the two kings are never on adjacent squares. That is two piece types you never have to remember, only two squares.",
+        },
+      ],
+    },
+    {
+      id: "bands-at-six-pieces",
+      title: "What 4 out of 6 means in the result bands",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "The message on the result screen comes straight from your accuracy. 100 percent is Perfect Score, 90 or more is Excellent Memory, 80 is Great Job, 70 is Well Done and 50 is Good Effort.",
+            "Below 50 the screen says Keep Practicing. Those are the only six messages, and the thresholds do not change with piece count.",
+            "At 6 pieces the arithmetic is blunt. Six correct is 100 percent. Five is 83, Great Job. Four is 67, Good Effort. Three is 50, one piece from Keep Practicing.",
+            "Excellent Memory at 6 pieces is out of reach without a perfect board, because five out of six rounds to 83. Only Perfect Score tells you anything at this count.",
+            "At 12 pieces the steps shrink. Eleven correct is 92 and Excellent Memory. Ten is 83. Nine is 75, Well Done. Twelve pieces is where the bands start describing progress.",
+          ],
+        },
+        {
+          kind: "comparison",
+          columns: ["Correct pieces", "At 6 pieces", "At 12 pieces"],
+          rows: [
+            {
+              label: "All but one",
+              struggling: "83 percent, Great Job",
+              stronger: "92 percent, Excellent Memory",
+            },
+            {
+              label: "All but two",
+              struggling: "67 percent, Good Effort",
+              stronger: "83 percent, Great Job",
+            },
+            {
+              label: "All but three",
+              struggling: "50 percent, Good Effort",
+              stronger: "75 percent, Well Done",
+            },
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Start with this memory routine",
-      summary: "You can try these steps today.",
+      id: "ladder-six-to-twelve",
+      title: "The ladder from 6 pieces to 12",
+      summary: "Each rung is a round you can open from its card. Play the rounds of one rung back to back, then read the promotion rule below.",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "If you have never played, one round of the 2-piece preset first. It is the two kings and nothing else, and it exists to teach the controls: pick a type and colour, tap a square, tap again to remove.",
+            "After that the 2-piece preset has nothing left to teach, so the ladder starts at 6.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
+            {
+              title: "The honest baseline",
+              description:
+                "5 rounds of 6 pieces, 10 seconds, about 4 minutes. Kings first, then only the pieces you are sure of, then submit. Do not fill in guesses.",
+              duration: "About 4 minutes",
+              goal: "Three Perfect Score rounds in a row before you add a single piece.",
+              ctaLabel: "Play 6 pieces, 10 seconds",
+              setup: { pieceCount: 6, memorizeTime: 10 },
+            },
+            {
+              title: "Same count, shorter look",
+              description:
+                "4 rounds of 6 pieces, 6 seconds, about 3 minutes. The same six pieces with four seconds less to look. This tells you whether you read the board or stare at it.",
+              duration: "About 3 minutes",
+              goal: "Perfect Score in at least two of the four rounds.",
+              ctaLabel: "Play 6 pieces, 6 seconds",
+              setup: { pieceCount: 6, memorizeTime: 6 },
+            },
+            {
+              title: "Past raw span",
+              description:
+                "4 rounds of 12 pieces, 8 seconds, about 5 minutes. Twelve pieces in eight seconds cannot be read one at a time. Take the kings, then the pawns as chains, then whatever is left.",
+              duration: "About 5 minutes",
+              goal: "Excellent Memory, which at this count means at least 11 of the 12.",
+              ctaLabel: "Play 12 pieces, 8 seconds",
+              setup: { pieceCount: 12, memorizeTime: 8 },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "skip-and-try-again",
+      title: "Skip, Try Again, and what the clock records",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Skip ends the look early. The game records how long you actually looked rather than the time you were given, and that number is what the result screen and the leaderboard use.",
+            "So once you have the board, skip. In my own rounds at 6 pieces I am usually done in five or six seconds, and skipping stops me second-guessing pieces I already had.",
+            "Try Again keeps your piece count and look time and generates a new position. You never see the same board twice, which is right for training and wrong for comparing two attempts at one board.",
+            "That is why the ladder measures rounds at the same settings rather than attempts at one position. Three perfect rounds in a row is a signal. One perfect round might be an easy draw.",
+            "The result screen shows correct pieces out of the total, a red superscript for any extra pieces, your look time and your solution time. On your submitted board each square is marked correct, incorrect or missed.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "promotion-and-demotion",
+      title: "When to add pieces and when to take them away",
       blocks: [
         {
           kind: "steps",
           ordered: true,
           items: [
-            "Begin with a simple position and memorise it for 10 seconds.",
-            "Recreate the board and note the first square or piece you lost.",
-            "Play a second round at the same settings and check whether the same mistake repeats.",
-            "Add one short tactical line from the memorized setup.",
-            "Track both accuracy and the type of memory error you made.",
+            "Three Perfect Score rounds in a row at your current settings: add two pieces. Go 6 to 8, 8 to 10, 10 to 12. The piece slider runs from 2 to 32, so every step exists.",
+            "Counts other than 2, 6, 12 and 20 make the round a custom game and keep it off the leaderboard. While you are climbing that does not matter.",
+            "Two rounds in a row below Well Done, which is 70 percent: take two pieces away and rebuild the streak there.",
+            "Shorten the look only once the count is stable. Changing both at once tells you nothing about which one broke.",
+            "The look slider runs from 2 to 32 seconds. Under 5 seconds even 6 pieces becomes a grouping exercise, so save short looks until 12 pieces at 8 seconds feels ordinary.",
           ],
         },
       ],
     },
     {
-      id: "drills",
-      title: "Memory drills for real games",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
+      id: "why-rebuilding-beats-staring",
+      title: "Why rebuilding the board beats looking at it longer",
       blocks: [
         {
-          kind: "drills",
-          drills: [
-            {
-              title: "Same-settings repeat",
-              description: "Play 6 pieces with 10 seconds to look, then play again at the same settings. Compare the two result screens.",
-              duration: "5 minutes",
-              goal: "Find one clear memory mistake you can fix.",
-              ctaLabel: "Play 6 pieces, 10 seconds",
-              setup: {
-                pieceCount: 6,
-                memorizeTime: 10,
-              },
-            },
-            {
-              title: "Pattern anchor recall",
-              description: "Play 12 pieces with 10 seconds to look. Find both kings first, then the loose pieces, then fill in the rest.",
-              duration: "4 minutes",
-              goal: "Remember the most important parts of the position first.",
-              ctaLabel: "Play 12 pieces, 10 seconds",
-              setup: {
-                pieceCount: 12,
-                memorizeTime: 10,
-              },
-            },
-            {
-              title: "Recall-then-calculate",
-              description: "Play 8 pieces with 10 seconds to look. After you rebuild the board, work out one short line from it before you press submit.",
-              duration: "6 minutes",
-              goal: "Use your board memory while calculating moves.",
-              ctaLabel: "Play 8 pieces, 10 seconds",
-              setup: {
-                pieceCount: 8,
-                memorizeTime: 10,
-              },
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "comparison",
-      title: "What weak recall looks like in games",
-      summary: "The board can feel familiar while still being too blurry to support calculation.",
-      blocks: [
-        {
-          kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
-          ],
-          rows: [
-            {
-              label: "Line tracking",
-              struggling: "You lose the original position while considering a new candidate move.",
-              stronger: "You can return to the base position accurately after exploring a line.",
-            },
-            {
-              label: "Pattern memory",
-              struggling: "You remember a tactic idea but not the exact defenders.",
-              stronger: "You remember both the tactical idea and the squares that make it work.",
-            },
-            {
-              label: "Review quality",
-              struggling: "Your game review feels vague because the position is gone immediately.",
-              stronger: "You can rebuild key moments and learn from them faster.",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
-      blocks: [
-        {
-          kind: "steps",
-          ordered: false,
-          items: [
-            "Using random difficulty jumps that are too large for your current level.",
-            "Measuring speed while ignoring accuracy.",
-            "Skipping error logs so repeated weaknesses stay hidden.",
-            "Treating memory drills as separate from tactical play.",
-          ],
-        },
-        {
-          kind: "callout",
-          title: "What to do instead",
-          body: "Do not make the position harder while your recall is still unclear. Lower the difficulty and build accuracy first.",
-        },
-      ],
-    },
-    {
-      id: "plan",
-      title: "7-day memory training block",
-      summary: "Follow these steps before making the practice harder or longer.",
-      blocks: [
-        {
-          kind: "plan",
-          steps: [
-            {
-              label: "Day 1 to 2",
-              duration: "10 minutes",
-              detail: "Repeat simple positions and name each memory error.",
-            },
-            {
-              label: "Day 3 to 4",
-              duration: "12 minutes",
-              detail: "Add pattern anchors so you remember kings, loose pieces, and central tension first.",
-            },
-            {
-              label: "Day 5",
-              duration: "12 minutes",
-              detail: "Add one short move sequence after each accurate board rebuild.",
-            },
-            {
-              label: "Day 6 to 7",
-              duration: "15 minutes",
-              detail: "Shorten the timer slightly while keeping the piece count stable, then transfer the work into one rapid game review.",
-            },
+          kind: "paragraphs",
+          paragraphs: [
+            "Rebuilding from an empty board is a memory test, and testing is what fixes a memory. Roediger and Karpicke had students study a passage and then either reread it or take a recall test.",
+            "A week later the tested students remembered more than the ones who had reread. Ten seconds of looking followed by a rebuild does more than thirty seconds of looking.",
+            "Gobet and Simon showed strong players several boards in a row, a few seconds each, and found they could still recall much of each one. They explain it by familiar chunks, not a bigger raw span.",
+            "Memory Chess positions are random, so the chunks you find are geometric rather than chess-typical. A pawn pair on f2 and g2. A king tucked in a corner. Three pieces on one rank.",
+            "Those geometric chunks are what carry you from 6 pieces to 12. Piece by piece, 12 pieces in 8 seconds is not possible. In three or four chunks it is.",
           ],
         },
       ],
@@ -197,44 +189,45 @@ const guide: LearnGuide = {
   ],
   faq: [
     {
-      question: "Does chess memory training improve real games?",
-      answer: "Yes, when it is paired with calculation or review. Better recall keeps tactical lines clearer under pressure.",
+      question: "Is 6 pieces in 10 seconds a good score for a beginner?",
+      answer:
+        "It is the medium preset and roughly the span most people hold without a system. Four correct is normal on day one. Six correct three times in a row is the target.",
     },
     {
-      question: "How many positions should I train per session?",
-      answer: "For beginners, six to twelve careful attempts are enough if you verify errors instead of rushing.",
+      question: "Should I go straight to the 20-piece preset?",
+      answer:
+        "No. Twenty pieces in five seconds is a quarter of a second per piece. Until 12 pieces at 8 seconds gives you Excellent Memory most rounds, 20 gives you Keep Practicing and nothing to learn from.",
     },
     {
-      question: "Should I train random boards or real-game patterns?",
-      answer: "Use both. Random boards sharpen raw recall, while real structures improve transfer.",
-    },
-    {
-      question: "What if accuracy stalls?",
-      answer: "Use fewer pieces for a week, fix one type of error, and add more pieces only when recall is clear again.",
+      question: "Does the leaderboard care about speed?",
+      answer:
+        "Only as a tiebreak. Entries are ordered by correct pieces, then fewest wrong pieces, then shortest look time, then shortest solution time.",
     },
   ],
   relatedArticles: [
     {
-      slug: "working-memory-exercises-for-chess",
-      reason: "Use this if you struggle to remember possible move sequences.",
-    },
-    {
-      slug: "how-many-chess-puzzles-a-day",
-      reason: "Balance memory practice with a useful number of puzzles.",
-    },
-    {
       slug: "chess-pattern-recognition-drills",
-      reason: "Connect board memory to common chess patterns.",
+      reason: "Once 12 pieces feels ordinary, learn to read clusters instead of pieces.",
+    },
+    {
+      slug: "chess-calculation-exercises-for-beginners",
+      reason: "Where holding a position while the board is empty pays off in a real game.",
+    },
+    {
+      slug: "chess-visualization-exercises",
+      reason: "Picture the board with no board in front of you at all.",
     },
   ],
   sources: [
     {
-      title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-      url: "https://doi.org/10.1006/cogp.1996.0011",
-    },
-    {
       title: "Test-Enhanced Learning: Taking Memory Tests Improves Retention",
       url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
+      note: "Supports the claim that students who took a recall test remembered more a week later than students who reread the passage.",
+    },
+    {
+      title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
+      url: "https://doi.org/10.1006/cogp.1996.0011",
+      note: "Supports the claim that strong players shown several boards briefly could still recall much of each, explained by chunking rather than raw span.",
     },
   ],
 };

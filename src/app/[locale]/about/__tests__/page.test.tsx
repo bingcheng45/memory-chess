@@ -1,5 +1,6 @@
 import { render, screen } from "@/test-utils/intl";
 import AboutPage from "@/app/[locale]/about/page";
+import { EN_LEARN_PAGES } from "@/lib/seo/learn";
 
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
@@ -40,5 +41,22 @@ describe("AboutPage", () => {
     expect(text).not.toMatch(/review them/);
     expect(text).not.toMatch(/guides translated/);
     expect(text).not.toMatch(/same working shape/);
+    expect(text).not.toMatch(/I write them myself/);
+    expect(text).not.toMatch(/sixteen guides/);
+    expect(text).toMatch(/written with AI assistance/);
+  });
+
+  it("counts the guides the Learn library actually holds", () => {
+    const { container } = render(<AboutPage />);
+
+    expect(container.textContent).toContain(`holds ${EN_LEARN_PAGES.length} guides`);
+  });
+
+  it("dates the Learn library to its March 2026 launch", () => {
+    const { container } = render(<AboutPage />);
+    const text = container.textContent ?? "";
+
+    expect(text).toMatch(/Learn library launched in March 2026/);
+    expect(text).not.toMatch(/August 2026 the site grew its Learn library/);
   });
 });

@@ -6,6 +6,7 @@ import {
   EditorialSection,
 } from "@/components/editorial/EditorialPage";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
+import { EN_LEARN_PAGES } from "@/lib/seo/learn";
 
 const siteUrl = "https://thememorychess.com";
 
@@ -63,7 +64,7 @@ export default function AboutPage() {
               .
             </p>
             <p>
-              Because one person writes all of it, the site stays small on
+              Because one person runs all of it, the site stays small on
               purpose. One game, a set of training guides, a leaderboard, and a
               changelog that records what actually shipped.
             </p>
@@ -131,9 +132,12 @@ export default function AboutPage() {
               <Link href="/learn" className={EDITORIAL_STYLES.link}>
                 Learn library
               </Link>{" "}
-              holds sixteen guides on board vision, visualization, and memory
-              training. I write them myself, and I keep them practical. Each
-              guide has drills. Some open a round in the game with the right
+              holds {EN_LEARN_PAGES.length} guides on board vision,
+              visualization, and memory training. They are written with AI
+              assistance. Every chess position in them is checked by a script
+              for piece counts, legality, and each attack the text claims.
+              Every statement about how Memory Chess works is traced to the
+              game&apos;s code. Each guide has drills. Some open a round in the game with the right
               settings. The rest are meant for a real board.
             </p>
             <p>
@@ -150,9 +154,9 @@ export default function AboutPage() {
             <p>
               The first release went live in March 2025 as a bare version of
               the game. Mobile play and piece selection followed within weeks.
-              In August 2026 the site grew its Learn library, and the game
-              itself now plays in 24 languages. The guides and the changelog
-              are in English. The{" "}
+              The Learn library launched in March 2026, and in August 2026 the
+              game itself began playing in 24 languages. The guides and the
+              changelog are in English. The{" "}
               <Link href="/changelog" className={EDITORIAL_STYLES.link}>
                 changelog
               </Link>{" "}

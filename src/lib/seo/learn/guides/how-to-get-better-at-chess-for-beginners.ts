@@ -64,7 +64,8 @@ const guide: LearnGuide = {
             "Look only at the piece you are moving and the square it goes to, and the rest of the board becomes a blur. A Memory Chess round trains the opposite habit, because it gives you the whole position and nothing else.",
             "A round shows a position for a fixed number of seconds, then clears the board and asks you to rebuild it. The game counts a piece as correct only when its square, its type and its colour all match the original.",
             "Placing more pieces than the position had costs points. Put five pieces on a 4-piece round and ten points come off your accuracy, however many of the five are right.",
-            "That makes the round a test of what you read, not of what you can guess. Testing yourself on material holds it better than studying it again.",
+            "That makes the round a test of what you read, not of what you can guess.",
+            "In one study, students who tested themselves on a passage remembered more days later than students who studied it again, though not five minutes later.",
           ],
         },
         {
@@ -271,7 +272,7 @@ const guide: LearnGuide = {
     {
       title: "Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention",
       url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
-      note: "Supports the claim in stage 1 that testing yourself on material holds it better than studying it again.",
+      note: "Supports the claim in stage 1 that tested students remembered a passage better than restudying students days later, though not after five minutes.",
     },
   ],
 };

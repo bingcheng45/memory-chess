@@ -178,7 +178,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Rebuilding from an empty board is a memory test, and testing is what fixes a memory. Roediger and Karpicke had students study a passage and then either reread it or take a recall test.",
+            "Rebuilding from an empty board is a memory test, and testing helps a memory last. Roediger and Karpicke had students study a passage and then either reread it or take a recall test.",
             "A week later the tested students remembered more than the ones who had reread.",
             "That study used prose passages and set no timings. What follows is this guide's suggestion, not its finding: once you have the board, skip, and let the rebuild do the work.",
             "Gobet and Simon showed strong players several boards in a row, a few seconds each, and found they could still recall much of each one. They explain it by familiar chunks, not a bigger raw span.",

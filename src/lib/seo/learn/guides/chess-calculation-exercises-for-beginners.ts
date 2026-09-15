@@ -56,7 +56,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "White: king g1, knight d5, pawns f2, g2 and h2. Black: king e8, queen e6, rook a8, pawns f7, g7 and h7. Twelve pieces, the same count as the Hard preset.",
+            "White: king g1, knight d5, pawns f2, g2 and h2. Black: king e8, queen e6, rook a8, pawns f7, g7 and h7. Eleven pieces, one short of the Hard preset.",
             "The black queen on e6 attacks the knight on d5, so White wants a move that gains time. Two knight checks are available, 1.Nc7+ and 1.Nf6+. Compare them two plies deep.",
           ],
         },
@@ -106,7 +106,7 @@ const guide: LearnGuide = {
               description:
                 "Set the position from the section above on a board. Calculate both checks, then clear the board and set the position again from memory. Compare with a photo you took first.",
               duration: "About 5 minutes",
-              goal: "All twelve pieces back on their squares, the g7 pawn included.",
+              goal: "All eleven pieces back on their squares, the g7 pawn included.",
               ctaLabel: "Set it up at your board",
             },
             {

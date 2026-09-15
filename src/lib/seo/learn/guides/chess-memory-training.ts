@@ -49,7 +49,7 @@ const guide: LearnGuide = {
         },
         {
           kind: "callout",
-          title: "Why I place the kings before anything else",
+          title: "Why the kings go down first",
           body: "Every position holds exactly one king of each colour, and the two kings are never on adjacent squares. That is two piece types you never have to remember, only two squares.",
         },
       ],
@@ -145,7 +145,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Skip ends the look early. The game records how long you actually looked rather than the time you were given, and that number is what the result screen and the leaderboard use.",
-            "So once you have the board, skip. In my own rounds at 6 pieces I am usually done in five or six seconds, and skipping stops me second-guessing pieces I already had.",
+            "So once you have the board, skip.",
             "Try Again keeps your piece count and look time and generates a new position. You never see the same board twice, which is right for training and wrong for comparing two attempts at one board.",
             "That is why the ladder measures rounds at the same settings rather than attempts at one position. Three perfect rounds in a row is a signal. One perfect round might be an easy draw.",
             "The result screen shows correct pieces out of the total, a red superscript for any extra pieces, your look time and your solution time. On your submitted board each square is marked correct, incorrect or missed.",

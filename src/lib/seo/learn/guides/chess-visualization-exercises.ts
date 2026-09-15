@@ -52,7 +52,7 @@ const guide: LearnGuide = {
     {
       id: "four-minute-check",
       title: "The four-minute check",
-      summary: "Play this before any other drill, and again at the end of each week.",
+      summary: "Play this before any other drill, then every day, as the six-week plan below sets out.",
       blocks: [
         {
           kind: "drills",

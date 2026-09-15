@@ -136,7 +136,6 @@
     "hud": {
       "time": "Waktu",
       "submit": "Kirim",
-      "loading": "Memuat permainan…",
       "status": "Status permainan",
       "controls": "Kontrol permainan",
       "complete": "Permainan selesai",

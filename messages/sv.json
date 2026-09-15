@@ -136,7 +136,6 @@
     "hud": {
       "time": "Tid",
       "submit": "Skicka in",
-      "loading": "Laddar spelet ...",
       "status": "Spelstatus",
       "controls": "Spelkontroller",
       "complete": "Partiet klart",

@@ -136,7 +136,6 @@
     "hud": {
       "time": "Tijd",
       "submit": "Verstuur",
-      "loading": "Spel wordt geladen…",
       "status": "Spelstatus",
       "controls": "Spelbediening",
       "complete": "Partij afgerond",

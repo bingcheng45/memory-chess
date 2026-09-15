@@ -136,7 +136,6 @@
     "hud": {
       "time": "Tempo",
       "submit": "Enviar",
-      "loading": "Carregando o jogo...",
       "status": "Status da partida",
       "controls": "Controles da partida",
       "complete": "Partida concluída",

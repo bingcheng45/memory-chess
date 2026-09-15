@@ -136,7 +136,6 @@
     "hud": {
       "time": "Süre",
       "submit": "Gönder",
-      "loading": "Oyun yükleniyor...",
       "status": "Oyun durumu",
       "controls": "Oyun kontrolleri",
       "complete": "Oyun tamamlandı",

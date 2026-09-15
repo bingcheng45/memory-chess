@@ -136,7 +136,6 @@
     "hud": {
       "time": "Čas",
       "submit": "Odeslat",
-      "loading": "Načítání hry…",
       "status": "Stav partie",
       "controls": "Ovládání hry",
       "complete": "Partie dokončena",

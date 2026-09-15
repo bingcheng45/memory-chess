@@ -136,7 +136,6 @@
     "hud": {
       "time": "Tid",
       "submit": "Send inn",
-      "loading": "Laster spillet …",
       "status": "Spillstatus",
       "controls": "Spillkontroller",
       "complete": "Partiet er ferdig",

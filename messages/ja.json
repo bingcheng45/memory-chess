@@ -136,7 +136,6 @@
     "hud": {
       "time": "時間",
       "submit": "送信",
-      "loading": "ゲームを読み込み中…",
       "status": "ゲームの状態",
       "controls": "ゲーム操作",
       "complete": "ゲーム終了",

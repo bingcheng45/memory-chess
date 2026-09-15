@@ -136,7 +136,6 @@
     "hud": {
       "time": "Aika",
       "submit": "Lähetä",
-      "loading": "Ladataan peliä…",
       "status": "Pelin tila",
       "controls": "Pelin säätimet",
       "complete": "Peli päättyi",

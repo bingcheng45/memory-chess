@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import { Button } from "@/components/ui/button";
-import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import {
   MEMORIZE_SECONDS_RANGE,
@@ -39,31 +38,29 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     startGame, 
     gameState
   } = useGameStore();
-  const searchParams = useSearchParams();
-  
-  // Get difficulty from URL parameters
-  const difficultyParam = searchParams.get('difficulty')?.toLowerCase();
-  
   const [pieceCount, setPieceCount] = useState(6);
   const [memorizeTime, setMemorizeTime] = useState(10);
   const [selectedPreset, setSelectedPreset] = useState("medium");
-  
-  // Set the initial difficulty from URL parameters if available
-  useEffect(() => {
-    if (difficultyParam) {
-      // Match on the stable id, so a deep link like ?difficulty=hard keeps
-      // working in every locale.
-      const preset = DIFFICULTY_PRESETS.find(
-        preset => preset.id === difficultyParam
-      );
 
-      if (preset) {
-        setSelectedPreset(preset.id);
-        setPieceCount(preset.pieceCount);
-        setMemorizeTime(preset.memorizeTime);
-      }
+  // Read ?difficulty= off the live location rather than via useSearchParams,
+  // which would bail /game out of static rendering and leave the served HTML
+  // without this form.
+  useEffect(() => {
+    const difficultyParam = new URLSearchParams(window.location.search)
+      .get('difficulty')
+      ?.toLowerCase();
+    // Match on the stable id, so a deep link like ?difficulty=hard keeps
+    // working in every locale.
+    const preset = DIFFICULTY_PRESETS.find(
+      preset => preset.id === difficultyParam
+    );
+
+    if (preset) {
+      setSelectedPreset(preset.id);
+      setPieceCount(preset.pieceCount);
+      setMemorizeTime(preset.memorizeTime);
     }
-  }, [difficultyParam]);
+  }, []);
   
   // Auto-detect if current settings match a preset
   useEffect(() => {

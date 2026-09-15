@@ -51,7 +51,7 @@ export default function PrivacyPage() {
             choices you have.
           </p>
           <p className="mt-3 text-xs text-text-muted">
-            Last updated: September 4, 2026
+            Last updated: September 15, 2026
           </p>
         </header>
 
@@ -121,9 +121,9 @@ export default function PrivacyPage() {
               Our measurement providers may receive technical and usage
               information such as pages viewed, approximate location, browser
               and device type, referring page, IP address, and performance
-              timings. Memory Chess uses Google Analytics, Vercel Analytics, and
-              Vercel Speed Insights to understand traffic and keep the site fast
-              and reliable.
+              timings. Memory Chess uses Google Analytics, Vercel Analytics,
+              Vercel Speed Insights, and Ahrefs Analytics to understand traffic
+              and keep the site fast and reliable.
             </p>
             <p className={copyClassName}>
               We do not ask these tools to collect the content of your contact
@@ -228,8 +228,8 @@ export default function PrivacyPage() {
               Data is handled by service providers only where needed: Google
               Sheets for contact messages and game feedback, Supabase for game
               statistics and leaderboard entries, Vercel for hosting and
-              performance measurement, and Google for analytics, consent, and
-              advertising. These providers may process data in other countries
+              performance measurement, Ahrefs for analytics, and Google for
+              analytics, consent, and advertising. These providers may process data in other countries
               under their own privacy terms.
             </p>
           </section>

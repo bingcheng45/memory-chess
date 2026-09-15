@@ -90,7 +90,7 @@ It reads `/sitemap.xml`, fetches every listed URL as a non-JS reviewer would, an
 - No two pages of a language sharing more than half their 5-word shingles.
 - No sentence of 5 or more words on more than three pages of a language. Citations (`cite`), link text (`a`), and elements marked `data-authorship-note`, such as the guides' AI-assistance note, are excepted. The `<address>` byline is not excepted and counts as prose.
 - No section-heading template. A page with at least 4 `h2` headings fails when half or more of them each head more than three pages of its language.
-- hreflang pointing only at listed URLs.
+- hreflang pointing only at listed URLs, from both the HTML `<link rel="alternate">` tags and the `Link` response header. When a page sends both, they must name the same hreflang codes and the same URL for each. URLs compare by origin, path without a trailing slash, and query, with the production origin mapped to `--base`, so `https://thememorychess.com` and `<base>/` are equal.
 - No broken internal links.
 - No unlisted indexable page. A page linked from a listed page that answers 200 without `noindex` must be in the sitemap.
 - `ads.txt` naming the publisher.

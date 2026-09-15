@@ -143,7 +143,14 @@ function attr(html, pattern) {
   return html.match(pattern)?.[1]?.trim() ?? null;
 }
 
-export function parsePage(url, status, html) {
+function linkHeaderAlternates(header) {
+  return [...header.matchAll(/<([^>]*)>([^,]*)/g)].flatMap((m) => {
+    const lang = m[2].match(/;\s*hreflang="?([^";\s]+)"?/i)?.[1];
+    return lang && /;\s*rel="?alternate"?/i.test(m[2]) ? [{ lang, href: m[1] }] : [];
+  });
+}
+
+export function parsePage(url, status, html, linkHeader = "") {
   const body = stripBlocks(html, ["script", "style", "noscript", "template"]);
   const main = stripBlocks(body, ["nav", "footer"]);
   const mainText = toText(main);
@@ -167,6 +174,7 @@ export function parsePage(url, status, html) {
     adUnits: (html.match(/<ins\b[^>]*class="[^"]*adsbygoogle/gi) ?? []).length,
     links: [...body.matchAll(/<a\b[^>]*href="([^"#?]*)[^"]*"/gi)].map((m) => m[1]),
     hreflang: [...html.matchAll(/<link rel="alternate" hrefLang="([^"]+)" href="([^"]+)"/gi)].map((m) => ({ lang: m[1], href: m[2] })),
+    headerHreflang: linkHeaderAlternates(linkHeader),
   };
 }
 
@@ -190,7 +198,12 @@ const isIndexable = (page) => page.status === 200 && !/noindex/i.test(page.robot
 
 async function fetchPage(url) {
   const res = await fetch(url, { redirect: "manual" });
-  return parsePage(url, res.status, res.status === 200 ? await res.text() : "");
+  return parsePage(url, res.status, res.status === 200 ? await res.text() : "", res.headers.get("link") ?? "");
+}
+
+function alternateUrl(href) {
+  const url = new URL(toLocal(href));
+  return `${url.origin}${url.pathname.replace(/(.)\/$/, "$1")}${url.search}`;
 }
 
 async function pool(items, worker) {
@@ -369,14 +382,26 @@ export const RULES = [
   },
   {
     id: "hreflang-targets",
-    guideline: "G8 G28 alternates point only at pages the sitemap lists",
+    guideline: "G8 G28 alternates point only at pages the sitemap lists, and the Link header agrees with the HTML",
     site: (pages, { listed }) => {
       const problems = new Map();
       for (const page of pages) {
-        const dangling = page.hreflang.filter((alt) => !listed.has(toLocal(alt.href).replace(/\/$/, "") || base));
+        const messages = [];
+        const dangling = [...page.hreflang, ...page.headerHreflang].filter((alt) => !listed.has(toLocal(alt.href).replace(/\/$/, "") || base));
         if (dangling.length) {
-          problems.set(page.url, [`${dangling.length} hreflang targets not in the sitemap, e.g. ${dangling[0].lang} ${dangling[0].href}`]);
+          messages.push(`${dangling.length} hreflang targets not in the sitemap, e.g. ${dangling[0].lang} ${dangling[0].href}`);
         }
+        if (page.hreflang.length && page.headerHreflang.length) {
+          const html = new Map(page.hreflang.map((alt) => [alt.lang, alternateUrl(alt.href)]));
+          const header = new Map(page.headerHreflang.map((alt) => [alt.lang, alternateUrl(alt.href)]));
+          const disagreeing = [...new Set([...html.keys(), ...header.keys()])].filter((lang) => html.get(lang) !== header.get(lang));
+          if (disagreeing.length) {
+            messages.push(
+              `Link header and HTML hreflang disagree: ${disagreeing.map((lang) => `${lang} header ${header.get(lang) ?? "none"} vs HTML ${html.get(lang) ?? "none"}`).join("; ")}`,
+            );
+          }
+        }
+        if (messages.length) problems.set(page.url, messages);
       }
       return problems;
     },
@@ -469,7 +494,7 @@ async function main() {
           summary: { urls: pages.length, indexable: indexable.length, locales: Object.fromEntries(locales), broken: broken.length },
           rules: byRule,
           siteProblems,
-          pages: pages.map(({ mainText, proseText, links, hreflang, ...rest }) => ({ ...rest, findings: findings.get(rest.url) })),
+          pages: pages.map(({ mainText, proseText, links, hreflang, headerHreflang, ...rest }) => ({ ...rest, findings: findings.get(rest.url) })),
         },
         null,
         2,

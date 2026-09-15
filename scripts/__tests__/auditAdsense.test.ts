@@ -78,6 +78,60 @@ describe("audit-adsense command line", () => {
   });
 });
 
+describe("audit-adsense hreflang targets", () => {
+  const LOCAL = "http://127.0.0.1:4517";
+  const htmlAlternates = [
+    '<link rel="alternate" hrefLang="en" href="https://thememorychess.com"/>',
+    '<link rel="alternate" hrefLang="de" href="https://thememorychess.com/de"/>',
+    '<link rel="alternate" hrefLang="x-default" href="https://thememorychess.com"/>',
+  ].join("");
+  const linkHeader = (entries: Array<[string, string]>) =>
+    entries.map(([lang, href]) => `<${href}>; rel="alternate"; hreflang="${lang}"`).join(", ");
+
+  function hreflangProblems(html: string, header?: string): string[] {
+    const page = header === undefined ? `audit.parsePage(url, 200, html)` : `audit.parsePage(url, 200, html, ${JSON.stringify(header)})`;
+    return JSON.parse(
+      runAudit(
+        `(() => { const url = ${JSON.stringify(`${LOCAL}/de`)}; const html = ${JSON.stringify(html)}; const rule = audit.RULES.find((r) => r.id === "hreflang-targets"); return JSON.stringify([...rule.site([${page}], { listed: new Set([${JSON.stringify(LOCAL)}, ${JSON.stringify(`${LOCAL}/de`)}]) }).values()].flat()); })()`,
+      ),
+    );
+  }
+
+  it("passes when the Link header matches the HTML except for a root trailing slash", () => {
+    const header = linkHeader([["en", `${LOCAL}/`], ["de", `${LOCAL}/de`], ["x-default", `${LOCAL}/`]]);
+
+    expect(hreflangProblems(htmlAlternates, header)).toEqual([]);
+  });
+
+  it("passes when the page sends no Link header", () => {
+    expect(hreflangProblems(htmlAlternates)).toEqual([]);
+  });
+
+  it("fails when the Link header names a different URL for a code", () => {
+    const header = linkHeader([["en", `${LOCAL}/`], ["de", `${LOCAL}/`], ["x-default", `${LOCAL}/`]]);
+
+    expect(hreflangProblems(htmlAlternates, header)).toEqual([expect.stringContaining(`de header ${LOCAL}/ vs HTML ${LOCAL}/de`)]);
+  });
+
+  it("fails when the Link header misses a code the HTML names", () => {
+    const header = linkHeader([["en", `${LOCAL}/`], ["de", `${LOCAL}/de`]]);
+
+    expect(hreflangProblems(htmlAlternates, header)).toEqual([expect.stringContaining("x-default header none")]);
+  });
+
+  it("fails when the Link header names a code the HTML does not", () => {
+    const header = linkHeader([["en", `${LOCAL}/`], ["de", `${LOCAL}/de`], ["x-default", `${LOCAL}/`], ["fr", `${LOCAL}/de`]]);
+
+    expect(hreflangProblems(htmlAlternates, header)).toEqual([expect.stringContaining(`fr header ${LOCAL}/de vs HTML none`)]);
+  });
+
+  it("fails when a Link header alternate points at a page the sitemap does not list", () => {
+    const header = linkHeader([["fr", `${LOCAL}/fr`]]);
+
+    expect(hreflangProblems("", header)).toEqual([expect.stringContaining(`fr ${LOCAL}/fr`)]);
+  });
+});
+
 describe("audit-adsense boilerplate prose", () => {
   it("drops the authorship note, citations and link text but keeps the byline", () => {
     const html = [

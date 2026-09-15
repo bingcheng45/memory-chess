@@ -54,6 +54,17 @@ describe("ChangelogPage", () => {
     expect(screen.getByText("August 15, 2026")).toBeInTheDocument();
   });
 
+  it("says under 1.2.2 that the guides and changelog went back to English", () => {
+    render(<ChangelogPage />);
+
+    expect(
+      screen.getByText(/the Learn guides are in English only, and two of them have been merged/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/this changelog is back to English only/),
+    ).toBeInTheDocument();
+  });
+
   it("renders the English release notes", () => {
     render(<ChangelogPage />);
 

@@ -40,7 +40,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The knight fork on c7 is the pattern every beginner meets first. Black king on e8, black rook on a8, and a white knight lands on c7 and hits both.",
+            "Start with the knight fork on c7. Black king on e8, black rook on a8, and a white knight lands on c7 and hits both.",
             "That is the shape. The condition is that nothing black can capture on c7. A black queen or bishop on d8 kills the fork, and so does a black knight on b5 or e6.",
             "Puzzles hand you the shape and guarantee the condition. Games do neither, which is why a puzzle rating and a habit of noticing forks are different things.",
             "So a pattern drill has two halves. Rebuild the shape until you can place it from memory, then break the condition on purpose and watch the fork fail.",
@@ -97,7 +97,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Memory Chess positions are generated fresh for each round and are not taken from games. A round is not built to show you a back-rank mate, so it will not teach you that pattern.",
-            "What it trains is the act underneath pattern recognition, reading a cluster of pieces as one unit. Twenty pieces in five seconds is a quarter of a second per piece, and nobody reads that square by square.",
+            "What it trains is the act underneath pattern recognition, reading a cluster of pieces as one unit. Twenty pieces in five seconds is a quarter of a second per piece, too fast to read square by square.",
             "The generator draws piece types in the proportions a real set holds: eight pawns, two knights, two bishops, two rooks and one queen per side. Pawns are the most common piece you see and queens the rarest.",
             "That is a clue you can use. On a 12-piece board the ten pieces beyond the kings are split five and five, and about half of them are pawns. Count the pawn chains first, then the odd pieces.",
             "Two more rules shrink the search. A side's two bishops never share a square colour, and no pawn ever stands on the first or eighth rank.",
@@ -120,7 +120,7 @@ const guide: LearnGuide = {
               description:
                 "2 rounds of 20 pieces, 5 seconds, about 4 minutes. You will not get them all. The point is to catch the moment you stop reading pieces and start reading shapes.",
               duration: "About 4 minutes",
-              goal: "Above 50 percent, which the result screen calls Good Effort, on the second round.",
+              goal: "At least 50 percent on the second round, which the result screen calls Good Effort or better.",
               ctaLabel: "Try 20 pieces, 5 seconds",
               setup: { pieceCount: 20, memorizeTime: 5 },
             },
@@ -176,7 +176,8 @@ const guide: LearnGuide = {
   ],
   sources: [
     {
-      title: "Recognition and Look-Ahead Search in Time-Constrained Expert Chess",
+      title:
+        "The Roles of Recognition Processes and Look-Ahead Search in Time-Constrained Expert Problem Solving: Evidence From Grand-Master-Level Chess",
       url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
       note: "Supports the claim that Kasparov's results with far less time per move in simultaneous displays fell only slightly, read as evidence for recognition over search.",
     },

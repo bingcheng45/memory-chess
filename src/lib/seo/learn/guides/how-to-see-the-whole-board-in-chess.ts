@@ -84,7 +84,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The usual slip is to stop a trace at the first piece on the line. If that piece is yours, you have not found a blocker. You may have found a pin.",
+            "One slip is to stop a trace at the first piece on the line. If that piece is yours, you have not found a blocker. You may have found a pin.",
             "Put a White rook on e1, a Black knight on e5 and the Black king on e8, with the squares between them empty. The knight cannot move at all.",
             "So say “that rook sees e8” rather than “that rook is blocked by my knight”. The first version announces the pin, and the second one hides it.",
           ],

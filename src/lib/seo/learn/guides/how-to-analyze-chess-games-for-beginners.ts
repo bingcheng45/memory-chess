@@ -42,7 +42,7 @@ const guide: LearnGuide = {
           paragraphs: [
             "When you lose a piece for nothing, the game turned at that move, whatever came after. Your review is about that move and almost nothing else.",
             "Find it without the engine. It is the move after which you were a piece down, or the move after which you stopped feeling fine.",
-            "If two candidates compete, take the earlier one. The later mistake is often a reaction to the first.",
+            "If two candidates compete, take the earlier one. The later mistake may be a reaction to the first.",
           ],
         },
       ],
@@ -108,7 +108,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Minutes 2 to 4 are the ones most often skipped. A piece you cannot place from memory is a lead. Check whether it was one of the pieces that decided the move.",
+            "Do not skip minutes 2 to 4. A piece you cannot place from memory is a lead. Check whether it was one of the pieces that decided the move.",
             "If it was, the label is probably never looked. If the missing piece stood far from the action, your sentence and the engine will say more.",
             "Memory Chess trains the same rebuild on positions that are not from your games. A position appears for a fixed number of seconds, the board clears, and you put the pieces back.",
             "The result screen then marks squares against the original as Correct, Incorrect or Missed. A square marked Missed is one where the original had a piece and you placed nothing.",
@@ -172,7 +172,7 @@ const guide: LearnGuide = {
     {
       question: "What about my wins?",
       answer:
-        "Review them the same way. A win often contains a move your opponent could have punished. Finding it is cheaper than losing to it next week.",
+        "Review them the same way. A win can still contain a move your opponent could have punished. Finding it is cheaper than losing to it next week.",
     },
     {
       question: "How many games a week should I review?",

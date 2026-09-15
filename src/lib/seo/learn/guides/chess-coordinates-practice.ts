@@ -15,7 +15,7 @@ const guide: LearnGuide = {
     "board awareness squares chess",
     "chess square naming drills",
   ],
-  ctaLabel: "Play 4 pieces, 12 seconds, labels on",
+  ctaLabel: "Play 4 pieces, 12 seconds",
   quickAnswer:
     "Counting to a square is the habit to break. Learn eight anchor squares and the colour rule, then play rounds with the board labels on while naming every square, then with the labels hidden.",
   keyTakeaways: [
@@ -84,8 +84,10 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "The setting is called Show board coordinates, on the settings page, and it is on for everyone until you turn it off. It hides the labels on the memorize board and on the board where you place pieces. The result screen ignores it and always shows both boards labelled, so you can check your placements by name.",
+            "The browser remembers the setting, and a round link cannot change it. Both drill links below open the same round, and only the setting decides whether its labels show.",
             "If you use a screen reader, every square announces its name, and a square with a piece on it announces the piece as well. The labels setting does not change that.",
           ],
+          link: { phrase: "the settings page", href: "/settings" },
         },
         {
           kind: "drills",
@@ -96,7 +98,7 @@ const guide: LearnGuide = {
                 "Play 5 rounds of 4 pieces with 12 seconds to look. During the look, say each piece with its square aloud, such as white rook a1. Place them, then check the result board by name.",
               duration: "About 4 minutes",
               goal: "Tie every piece you remember to a square name, not to a spot on the board.",
-              ctaLabel: "Play 4 pieces, 12 seconds, labels on",
+              ctaLabel: "Play 4 pieces, 12 seconds",
               setup: {
                 pieceCount: 4,
                 memorizeTime: 12,
@@ -108,7 +110,8 @@ const guide: LearnGuide = {
                 "Turn off Show board coordinates on the settings page, then play 5 rounds of 4 pieces with 12 seconds to look. Say the squares aloud as before and place each piece by finding its square from the nearest anchor, not from the edge.",
               duration: "About 4 minutes",
               goal: "Find a named square on a blank board without running a finger along the edge.",
-              ctaLabel: "Play 4 pieces, 12 seconds, labels off",
+              ctaLabel: "Play 5 rounds of 4 pieces, 12 seconds",
+              link: { phrase: "the settings page", href: "/settings" },
               setup: {
                 pieceCount: 4,
                 memorizeTime: 12,
@@ -140,8 +143,8 @@ const guide: LearnGuide = {
           items: [
             "Knight from e4. Say all eight squares. c3, c5, d2, d6, f2, f6, g3, g5. Then check with the colour rule. e4 is light, so every one of them must be dark.",
             "Knight from b1. Only three squares, a3, c3 and d2. Corners and edges cut a knight's reach, which is why a knight on the rim is a poor piece.",
-            "Bishop from c1 along the long dark road. c1, d2, e3, f4, g5, h6. Then the other way, b2 and a3.",
-            "Rook from a1 along the rank to h1 and up the file to a8. Then the same for a rook on d4, which is where you notice that a rook in the centre sees fourteen squares.",
+            "Bishop from c1 along its dark diagonal. c1, d2, e3, f4, g5, h6. Then the other way, b2 and a3.",
+            "Rook from a1 along the rank to h1 and up the file to a8. Then a rook on d4. On an empty board both see fourteen squares, seven along the rank and seven along the file, from any square.",
             "A square and its colour, then its knight squares, then its diagonals. When you can do that for any square in under ten seconds, the coordinates are no longer a step.",
           ],
         },

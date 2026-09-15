@@ -17,9 +17,9 @@ const guide: LearnGuide = {
   ],
   ctaLabel: "Open the 8-piece, 10-second round",
   quickAnswer:
-    "Compare two moves, two plies deep, and say each line out loud before you check it. When a line collapses, the fault is usually the starting position, not the moves.",
+    "Compare two moves, two plies deep, and say each line out loud before you check it. When a line collapses, check the starting position before you blame the moves.",
   keyTakeaways: [
-    "A line fails at the piece you stopped seeing, which is nearly always one that never moved.",
+    "A line fails at the piece you stopped seeing, and a piece that never moved is the easiest to stop seeing.",
     "Two candidate moves at two plies is enough work for one decision.",
     "Rebuilding a position from an empty board is the same act as holding one while you calculate.",
   ],
@@ -42,7 +42,7 @@ const guide: LearnGuide = {
           paragraphs: [
             "Calculation is holding a position that is not on the board. You see the real board, imagine one move, and now you keep two pictures apart, the one in front of you and the one in your head.",
             "Each imagined move overwrites a square. Two plies in, four squares have changed, and every piece that did not move has to stay put without any help from your eyes.",
-            "That is where beginners lose the line. Not on the moving pieces, which have your attention, but on a queen or a pawn that never moved and quietly guards the square you land on.",
+            "That is where a line gets lost. Not on the moving pieces, which have your attention, but on a queen or a pawn that never moved and quietly guards the square you land on.",
             "The usual advice is to look further ahead. The useful advice is to keep the base position steady, because a line is only as long as the picture underneath it.",
           ],
         },
@@ -131,7 +131,7 @@ const guide: LearnGuide = {
             "Two. Not because two is a special number but because the third line is the one that overwrites the first.",
             "Working memory is not the problem. Spending it on the wrong thing is. Spread across five candidate moves, none of them gets the check for defenders.",
             "Add a third candidate only when both of the first two fail for a reason you can state. Keep the depth at two plies until the base position stops drifting.",
-            "When the two moves are both checks or both captures, the comparison is quick and the mistake is almost always a missed defender, not a missed idea.",
+            "When the two moves are both checks or both captures, the comparison is quick, so look for a missed defender before a missed idea.",
           ],
         },
         {

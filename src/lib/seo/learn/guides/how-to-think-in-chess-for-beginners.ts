@@ -177,7 +177,7 @@ const guide: LearnGuide = {
     },
     {
       question: "What if none of my options feels good?",
-      answer: "Play the safest developing move and spend the saved time on the next move. When every option feels bad, you often have no aim yet, and question two supplies one.",
+      answer: "Play the safest developing move and spend the saved time on the next move. When every option feels bad, you may have no aim yet, and question two supplies one.",
     },
     {
       question: "Should I use the routine in blitz?",

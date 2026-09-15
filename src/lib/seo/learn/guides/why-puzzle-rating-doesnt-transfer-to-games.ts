@@ -55,10 +55,10 @@ const guide: LearnGuide = {
           kind: "steps",
           ordered: false,
           items: [
-            "A promise. Something is there. In a game, on most moves, nothing is, and the skill is knowing which move is the exception.",
+            "A promise. Something is there. A game makes no such promise, and the skill is knowing which move is the exception.",
             "The side to move, marked. In a game you can spend a minute on a plan and then realise the tactic was your opponent's.",
             "A fresh diagram. The whole position, drawn once, with every piece equally visible. In a game the position arrived one move at a time over half an hour.",
-            "Looking without cost. Many puzzle modes have no clock at all. In a game every second you spend scanning comes off your own time.",
+            "Looking without cost. A puzzle can run with no clock at all. In a game every second you spend scanning comes off your own time.",
           ],
         },
         {

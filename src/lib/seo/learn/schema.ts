@@ -29,12 +29,20 @@ export type LearnGameSetup = {
   memorizeTime: number;
 };
 
+/** A phrase in a block's own text that links to another page on the site. */
+export type LearnInlineLink = {
+  phrase: string;
+  href: string;
+};
+
 export type LearnDrillCard = {
   title: string;
   description: string;
   duration: string;
   goal: string;
   ctaLabel: string;
+  /** Links `phrase` where it appears in the description. */
+  link?: LearnInlineLink;
   setup?: LearnGameSetup;
 };
 
@@ -74,7 +82,7 @@ export type LearnTableOfContentsItem = {
 
 /** One piece of a section. A section uses only the kinds it needs, in its own order. */
 export type LearnBlock =
-  | { kind: "paragraphs"; paragraphs: string[] }
+  | { kind: "paragraphs"; paragraphs: string[]; link?: LearnInlineLink }
   | { kind: "steps"; ordered: boolean; items: string[] }
   | { kind: "callout"; title: string; body: string }
   | { kind: "drills"; drills: LearnDrillCard[] }
@@ -131,3 +139,7 @@ export const LEARN_AUTHOR = {
   url: "https://thememorychess.com/about",
   id: "https://thememorychess.com/about#bing-cheng",
 } as const;
+
+/** Shown after the author's name on every guide. Learn is English-only. */
+export const LEARN_AUTHORSHIP_NOTE =
+  "Written with AI assistance; chess positions checked by script and game facts traced to the code.";

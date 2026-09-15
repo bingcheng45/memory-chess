@@ -43,7 +43,7 @@ const guide: LearnGuide = {
             "Visualization is not one skill. When a line goes wrong in your head, one of three things has happened, and each needs a different fix.",
             "A piece vanishes. You calculated a capture, and two moves later you forgot the capturing piece is still standing there. A piece drifts. The knight went to e5, but your picture keeps it on f3. Or a piece changes identity. A bishop turns into a knight, or a white rook into a black one.",
             "Memory Chess scores a placed piece as correct only when its square, its type and its colour all match the original. A knight on the right square in the wrong colour is wrong, not partial credit. That strictness is what makes a round useful as a diagnosis rather than as a score.",
-            "After you submit, the result screen shows the position you saw and the one you built. The submitted board marks every square as Correct, Incorrect or Missed, and a missed square shows a dotted outline where the piece belonged.",
+            "After you submit, the result screen shows the position you saw and the one you built. The submitted board marks each piece you placed as Correct or Incorrect. A square you left empty where a piece belonged is marked Missed, with a dotted outline.",
           ],
         },
       ],
@@ -105,7 +105,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Now move the white pawn from e4 to d3 and ask the same question. This time the e-file behind the knight is empty, so the rook on e1 defends e5. After 1.Nxe5 Rxe5 2.Rxe5 White has won a rook and a pawn for a knight, so Black should not recapture, and 1.Nxe5 wins a clean pawn.",
-            "One pawn moved one square and the answer flipped. The piece people forget is the one blocking their own line, because it never moves in the line they are calculating. Before you judge a capture, say the whole file or diagonal behind it.",
+            "One pawn moved one square and the answer flipped. The blocking piece is easy to forget, because it never moves in the line you are calculating. Before you judge a capture, say the whole file or diagonal behind it.",
             "Do this with two positions of your own each day. Take a puzzle you solved yesterday, cover it, say the solution, then name where every piece that moved now stands.",
           ],
         },
@@ -182,7 +182,7 @@ const guide: LearnGuide = {
     {
       question: "Is the 12-piece, 8-second preset a better test?",
       answer:
-        "Not at first. At twelve pieces most beginners miss half, and a board with six dotted outlines tells you nothing. Six pieces gives one or two misses a round, and one miss is readable.",
+        "Not at first. A twelve-piece board covered in dotted outlines is hard to read. At six pieces the misses stay few enough to read one at a time.",
     },
     {
       question: "Does the cover-and-move drill need a real board?",

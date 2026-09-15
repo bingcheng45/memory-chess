@@ -178,7 +178,8 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Rebuilding from an empty board is a memory test, and testing is what fixes a memory. Roediger and Karpicke had students study a passage and then either reread it or take a recall test.",
-            "A week later the tested students remembered more than the ones who had reread. Ten seconds of looking followed by a rebuild does more than thirty seconds of looking.",
+            "A week later the tested students remembered more than the ones who had reread.",
+            "That study used prose passages and set no timings. What follows is this guide's suggestion, not its finding: once you have the board, skip, and let the rebuild do the work.",
             "Gobet and Simon showed strong players several boards in a row, a few seconds each, and found they could still recall much of each one. They explain it by familiar chunks, not a bigger raw span.",
             "Memory Chess positions are random, so the chunks you find are geometric rather than chess-typical. A pawn pair on f2 and g2. A king tucked in a corner. Three pieces on one rank.",
             "Those geometric chunks are what carry you from 6 pieces to 12. Piece by piece, 12 pieces in 8 seconds is not possible. In three or four chunks it is.",
@@ -191,12 +192,12 @@ const guide: LearnGuide = {
     {
       question: "Is 6 pieces in 10 seconds a good score for a beginner?",
       answer:
-        "It is the medium preset and roughly the span most people hold without a system. Four correct is normal on day one. Six correct three times in a row is the target.",
+        "It is the medium preset, a setting rather than a score. Whatever you get on day one, the target there is six correct three rounds in a row.",
     },
     {
       question: "Should I go straight to the 20-piece preset?",
       answer:
-        "No. Twenty pieces in five seconds is a quarter of a second per piece. Until 12 pieces at 8 seconds gives you Excellent Memory most rounds, 20 gives you Keep Practicing and nothing to learn from.",
+        "No. Twenty pieces in five seconds leaves a quarter of a second for each. Until 12 pieces at 8 seconds gives you Excellent Memory most rounds, 20 gives you Keep Practicing and nothing to learn from.",
     },
     {
       question: "Does the leaderboard care about speed?",
@@ -220,7 +221,7 @@ const guide: LearnGuide = {
   ],
   sources: [
     {
-      title: "Test-Enhanced Learning: Taking Memory Tests Improves Retention",
+      title: "Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention",
       url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
       note: "Supports the claim that students who took a recall test remembered more a week later than students who reread the passage.",
     },

@@ -39,7 +39,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "A blindfold game does not fail all at once. It fails on one piece, usually one that has not moved. You know where the knights are because you moved them. The bishop on c1 sat still for twelve moves, so it fell out of the picture, and you play as if it is not there.",
+            "A blindfold game does not fail all at once. It fails on one piece, and a piece that has not moved is the easiest to lose. You know where the knights are because you moved them. The bishop on c1 sat still for twelve moves, so it fell out of the picture, and you play as if it is not there.",
             "So the training has to build the board, not the move list. The four stages below go from two pieces to a full game, and each has a test you either pass or repeat.",
           ],
         },
@@ -75,7 +75,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The pass mark is six perfect rounds in a row, with both square colours right as well. Square colour is the part beginners skip, and it is the part that saves a blindfold game later, because a bishop only ever lives on one colour.",
+            "The pass mark is six perfect rounds in a row, with both square colours right as well. Do not skip the colours. They save a blindfold game later, because a bishop only ever lives on one colour.",
             "If you cannot name a square's colour without thinking, do the coordinates guide first and come back.",
           ],
         },
@@ -98,8 +98,8 @@ const guide: LearnGuide = {
             "Exactly one king of each colour.",
             "The two kings never stand on adjacent squares.",
             "No pawn on the first rank or the eighth. A pawn you picture on e1 is a pawn you lost track of.",
-            "A side's two bishops never stand on squares of the same colour. If both of Black's bishops are on dark squares in your head, one of them moved and you missed it.",
-            "No side has more of a piece than a set holds. Eight pawns, two knights, two bishops, two rooks, one queen. If you count three black knights, a capture went missing.",
+            "A side's two bishops never stand on squares of the same colour. If both of Black's bishops are on dark squares in your head, one of them sits on a wrong square. A bishop never changes colour.",
+            "No side has more of a piece than a set holds. Eight pawns, two knights, two bishops, two rooks, one queen. If you count three black knights, your picture has invented one.",
             "Both kings are never in check at once, and a king in check belongs to the side to move.",
           ],
         },
@@ -107,6 +107,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "Practise the checks on a game you have played. Read the first ten moves from the score, cover the board, and run all six on your picture. Then uncover and count how many pieces sat on the wrong square. The pass mark is a count of zero on two different days.",
+            "Real games have one exception to the bishop and piece-count checks, promotion. A promoted pawn can become a second queen, a third knight, or a bishop on its partner's colour. Look for promotions in the move list before you trust those two checks.",
           ],
         },
       ],
@@ -120,7 +121,7 @@ const guide: LearnGuide = {
           paragraphs: [
             "The first game to replay blind is Scholar's mate, because it is four moves long and ends in a position you can check from memory. 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7 mate.",
             "Say each move, then say where every piece that has moved now stands. After move four, White has a queen on f7, a bishop on c4 and a pawn on e4. Black has knights on c6 and f6, a pawn on e5, and a king on e8 with no way out.",
-            "Now say why it is mate. The king cannot take on f7 because the bishop on c4 covers that square. d8 holds Black's queen, f8 the bishop, d7 and e7 the pawns. If you can explain that without a board, stage three has started.",
+            "Now say why it is mate. The king cannot take on f7 because the bishop on c4 covers that square. d8 holds Black's queen, f8 the bishop and d7 a pawn, and the queen on f7 covers e7. If you can explain that without a board, stage three has started.",
           ],
         },
         {
@@ -204,7 +205,7 @@ const guide: LearnGuide = {
     {
       question: "What if I picture the board from Black's side?",
       answer:
-        "Pick one orientation and keep it, even when you play Black. Most players hold White at the bottom because that is how diagrams print. Switching mid-game is the quickest way to lose a bishop.",
+        "Pick one orientation and keep it, even when you play Black. White at the bottom matches the way diagrams print, which makes it the easier default. Switching mid-game is the quickest way to lose a bishop.",
     },
   ],
   relatedArticles: [

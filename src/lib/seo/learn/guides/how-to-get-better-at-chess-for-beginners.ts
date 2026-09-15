@@ -19,7 +19,7 @@ const guide: LearnGuide = {
   quickAnswer:
     "Use a short daily routine in a fixed order. Read the whole board before you think about your move, ask one safety question, play games slow enough to do both, and write one line after each game. Openings come last.",
   keyTakeaways: [
-    "A piece left where it can be taken for free loses more beginner games than any opening.",
+    "Stop leaving pieces where they can be taken for free before you study any opening.",
     "Read the whole board first, ask one question before every move, then play slowly enough to do both.",
     "One line after each game tells you which of those three failed.",
   ],
@@ -41,8 +41,8 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "A lost piece decides a game at that level whatever happened in the opening. It usually stood on a square where it could be taken for free, and nobody noticed.",
-            "A typical one. Your knight on f3 is pinned to your queen on d1 by a bishop on g4. Black pushes a pawn from e5 to e4, and the pawn attacks the knight.",
+            "A lost piece outweighs whatever the opening gave you. When you lose one, look at where it stood and whether it could be taken for free.",
+            "Here is one example. Your knight on f3 is pinned to your queen on d1 by a bishop on g4. Black pushes a pawn from e5 to e4, and the pawn attacks the knight.",
             "The knight can step away, but then the bishop takes the queen on d1. No opening book fixes that.",
             "Two habits do. Seeing every piece that is currently attacked, and checking your intended move against the reply before you play it.",
           ],
@@ -61,7 +61,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Most beginners see the piece they are moving and the square it goes to. The rest of the board is a blur. A Memory Chess round trains the opposite habit, because it gives you the whole position and nothing else.",
+            "Look only at the piece you are moving and the square it goes to, and the rest of the board becomes a blur. A Memory Chess round trains the opposite habit, because it gives you the whole position and nothing else.",
             "A round shows a position for a fixed number of seconds, then clears the board and asks you to rebuild it. The game counts a piece as correct only when its square, its type and its colour all match the original.",
             "Placing more pieces than the position had costs points. Put five pieces on a 4-piece round and ten points come off your accuracy, however many of the five are right.",
             "That makes the round a test of what you read, not of what you can guess. Testing yourself on material holds it better than studying it again.",
@@ -111,7 +111,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The three rounds above are the whole progression. The count grows from 4 to 6 to 8 while the 10 seconds stay fixed.",
+            "The three drills above are the whole progression. The count grows from 4 to 6 to 8 while the 10 seconds stay fixed.",
           ],
         },
       ],
@@ -141,7 +141,7 @@ const guide: LearnGuide = {
         {
           kind: "callout",
           title: "Why the question works",
-          body: "A beginner blunder is rarely a long calculation gone wrong. It is a piece nobody looked at. The question forces the look on every move.",
+          body: "Avoiding a free capture needs no long calculation, only a look at the right piece. The question forces the look on every move.",
         },
       ],
     },

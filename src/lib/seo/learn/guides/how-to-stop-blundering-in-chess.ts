@@ -40,7 +40,7 @@ const guide: LearnGuide = {
           kind: "paragraphs",
           paragraphs: [
             "A puzzle tells you two things before you look. There is a tactic, and it is your move. A game tells you neither, so a fork you would find in a puzzle walks past unseen.",
-            "A one-move blunder is rarely a calculation error. The board in your head and the board on the table disagree, and you play a move that only works on the wrong one.",
+            "A one-move blunder needs no deep line to avoid. It happens when the board in your head and the board on the table disagree, and you play a move that only works on the wrong one.",
             "The disagreement takes three common shapes. The first is the phantom defender, a piece that looks like a guard and cannot act as one.",
             "Put a White bishop on b5, a Black knight on c6 and the Black king on e8, with d7 empty. The knight seems to guard e5, but it is pinned and cannot legally capture there.",
             "The second is the forgotten piece, a bishop or rook that has not moved for many moves, so your eye stopped returning to it.",
@@ -88,7 +88,7 @@ const guide: LearnGuide = {
             "Black has Ke8, Ra8, Rh8, Bc8, Bb4 and pawns on a7, b7, c7, f7, g7 and h7. No Black piece defends the bishop on b4.",
             "White plays Qa4+. The queen checks along b5, c6 and d7 to the king on e8, and attacks the bishop along the fourth rank.",
             "Black must answer the check first. Blocking with ...c6, ...b5 or ...Bd7 does not defend b4, and neither does any king move, so Qxb4 follows.",
-            "The scan would have warned Black before the bishop ever reached b4. Step four asks what guards a piece on its new square, and here the honest answer was nothing.",
+            "The scan would have warned Black before the bishop ever reached b4. Run step three on the position after ...Bb4, and it finds the bishop loose, with no Black piece defending it.",
           ],
         },
       ],
@@ -100,7 +100,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Memory Chess compares your board with the original square by square. A piece scores only when the square, the type and the colour all match.",
+            "A Memory Chess round checks your rebuilt board against the original, one square at a time. A piece scores only when the square, the type and the colour all match.",
             "Placing more pieces than the position held is charged twice. Each piece beyond the count is counted as wrong and also takes ten points off your accuracy.",
             "A wrong piece inside the count costs no more than an empty square. Either way one original piece goes unreproduced, so the extra charge lands only on invented pieces.",
             "That makes a round a clean test of one blunder habit. A seventh piece on a six-piece board is a piece your memory added, the phantom defender in miniature.",
@@ -176,7 +176,7 @@ const guide: LearnGuide = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "On a low clock the full scan will not fit, so keep step one and drop the rest. A piece that just moved has fresh targets, and many one-move tactics start from it.",
+            "On a low clock the full scan will not fit, so keep step one and drop the rest. A piece that just moved has fresh targets, and step one also catches any line it opened.",
             "This is also why the advice to play slower fails on its own. Extra time with no question to answer goes into admiring the move you already wanted.",
           ],
         },

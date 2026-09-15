@@ -3,7 +3,7 @@ import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { EN_LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";
 import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
-import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
+import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly } from "@/lib/seo/englishOnly";
 
 const SITE_URL = "https://thememorychess.com";
 
@@ -128,7 +128,7 @@ function entryFor(
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return SITEMAP_ENTRIES.flatMap((entry) =>
-    isEnglishOnlyPath(entry.path)
+    isEnglishOnlyPath(entry.path) || isIndexedInDefaultLocaleOnly(entry.path)
       ? [entryFor(entry, DEFAULT_LOCALE)]
       : LOCALES.map((locale) => ({
           ...entryFor(entry, locale),

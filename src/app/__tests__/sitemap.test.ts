@@ -76,6 +76,17 @@ describe("sitemap", () => {
     }
   });
 
+  it("lists the leaderboard once, in English, with no translated URL or alternates", async () => {
+    const entries = await sitemap();
+    const leaderboard = entries.filter((entry) => /\/leaderboard$/.test(entry.url));
+
+    expect(leaderboard.map((entry) => entry.url)).toEqual(["https://thememorychess.com/leaderboard"]);
+    expect(leaderboard[0].alternates).toBeUndefined();
+    for (const entry of entries) {
+      expect(Object.values(entry.alternates?.languages ?? {}).some((href) => /leaderboard/.test(String(href)))).toBe(false);
+    }
+  });
+
   it("leaves settings out, the one route that asks not to be indexed", async () => {
     const entries = await sitemap();
 

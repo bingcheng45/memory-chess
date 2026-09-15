@@ -15,7 +15,10 @@ jest.mock("next-intl/middleware", () => ({
   __esModule: true,
   default: () => (request: NextRequest) => {
     mockForwarded.push(request);
-    return new Response(null, { status: 200 });
+    return new Response(null, {
+      status: 200,
+      headers: { Link: '<https://thememorychess.com/de>; rel="alternate"; hreflang="de"' },
+    });
   },
 }));
 
@@ -98,6 +101,28 @@ describe("middleware on English-only routes", () => {
     expect(mockForwarded).toHaveLength(1);
     expect(mockForwarded[0].headers.get("accept-language")).toBe("en");
     expect(mockForwarded[0].cookies.has("NEXT_LOCALE")).toBe(false);
+  });
+});
+
+describe("middleware on the English-indexed leaderboard", () => {
+  it.each([
+    "https://thememorychess.com/leaderboard",
+    "https://thememorychess.com/de/leaderboard",
+    "https://thememorychess.com/ja/leaderboard?player=ada",
+  ])("serves %s through next-intl without the hreflang Link header", (url) => {
+    const response = middleware(new NextRequest(url, { headers: new Headers({ "user-agent": BROWSER }) }));
+
+    expect(mockForwarded).toHaveLength(1);
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Link")).toBeNull();
+  });
+
+  it("keeps the Link header on routes indexed in every locale", () => {
+    const response = middleware(
+      new NextRequest("https://thememorychess.com/de/game", { headers: new Headers({ "user-agent": BROWSER }) }),
+    );
+
+    expect(response.headers.get("Link")).toContain('hreflang="de"');
   });
 });
 

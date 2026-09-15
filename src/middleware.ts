@@ -2,12 +2,18 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing, LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
-import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
+import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly } from "@/lib/seo/englishOnly";
 import { resolveRetiredLearnPath } from "@/lib/seo/learn/retired";
 
 const handleI18nRouting = createMiddleware(routing);
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
+
+/** `/de/leaderboard` -> `/leaderboard`; a path without a locale prefix is returned as is. */
+function unprefixedPath(pathname: string): string {
+  const [, prefix, ...rest] = pathname.split("/");
+  return (LOCALES as readonly string[]).includes(prefix) ? `/${rest.join("/")}` : pathname;
+}
 
 /** `/de/learn/x` -> `/learn/x` when the unprefixed path is English-only. */
 function bareEnglishOnlyPath(pathname: string): string | null {
@@ -68,6 +74,16 @@ function hasSupportedLanguage(acceptLanguage: string | null): boolean {
 }
 
 export default function middleware(request: NextRequest) {
+  const response = route(request);
+  // next-intl advertises every locale in a hreflang Link header. For a route
+  // indexed only in English that would point crawlers at noindex pages.
+  if (isIndexedInDefaultLocaleOnly(unprefixedPath(request.nextUrl.pathname))) {
+    response.headers.delete("Link");
+  }
+  return response;
+}
+
+function route(request: NextRequest) {
   const merged = resolveRetiredLearnPath(request.nextUrl.pathname);
   if (merged) {
     const url = request.nextUrl.clone();

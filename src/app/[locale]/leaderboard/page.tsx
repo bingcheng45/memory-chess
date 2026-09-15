@@ -17,9 +17,14 @@ export default async function LeaderboardPage() {
   );
   // A failed revalidation that throws keeps serving the last good page; one that
   // renders would cache the error for the whole window. A build has no last
-  // good page, so it renders the unavailable state instead.
+  // good page and `next dev` caches nothing, so both render the unavailable
+  // state instead.
   const failure = results.find((result) => result.error);
-  if (failure && process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD) {
+  if (
+    failure &&
+    process.env.NODE_ENV === 'production' &&
+    process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD
+  ) {
     throw new Error(`Leaderboard refresh failed: ${failure.error}`);
   }
   const boards = Object.fromEntries(

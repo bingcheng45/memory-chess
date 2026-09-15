@@ -66,4 +66,28 @@ describe("LearnArticleRich FAQ", () => {
       unmount();
     }
   });
+
+  it("leaves out the FAQ section, its schema node and its contents entry when a guide has no questions", () => {
+    const page = EN_LEARN_PAGES.find(
+      (entry) => entry.slug === "20-minute-daily-chess-study-plan",
+    );
+    if (!page) throw new Error("20-minute-daily-chess-study-plan is missing");
+    expect(page.faq).toEqual([]);
+
+    const { container } = render(
+      <LearnArticleRich
+        page={page}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+      />,
+    );
+
+    const script = container.querySelector('script[type="application/ld+json"]');
+    const graph: Array<{ "@type": string }> = JSON.parse(script?.textContent ?? "{}")["@graph"];
+    expect(graph.map((node) => node["@type"])).not.toContain("FAQPage");
+
+    expect(container.querySelector("#faq")).toBeNull();
+    expect(page.tableOfContents.map((item) => item.id)).not.toContain("faq");
+    expect(container.querySelector('a[href="#faq"]')).toBeNull();
+  });
 });

@@ -143,7 +143,7 @@ const guide: LearnGuide = {
           items: [
             "Knight from e4. Say all eight squares. c3, c5, d2, d6, f2, f6, g3, g5. Then check with the colour rule. e4 is light, so every one of them must be dark.",
             "Knight from b1. Only three squares, a3, c3 and d2. Corners and edges cut a knight's reach, which is why a knight on the rim is a poor piece.",
-            "Bishop from c1 along its dark diagonal. c1, d2, e3, f4, g5, h6. Then the other way, b2 and a3.",
+            "Bishop from c1 along both its diagonals. d2, e3, f4, g5, h6 on one, b2 and a3 on the other.",
             "Rook from a1 along the rank to h1 and up the file to a8. Then a rook on d4. On an empty board both see fourteen squares, seven along the rank and seven along the file, from any square.",
             "A square and its colour, then its knight squares, then its diagonals. When you can do that for any square in under ten seconds, the coordinates are no longer a step.",
           ],

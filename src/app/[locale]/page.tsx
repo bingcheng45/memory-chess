@@ -1,17 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import NextLink from "next/link";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
+import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import PageHeader from "@/components/ui/PageHeader";
 import FaqSection from "@/components/ui/FaqSection";
 import OtherAppsSection from "@/components/ui/OtherAppsSection";
 import VideoSection from "@/components/ui/VideoSection";
 import { useState, useEffect } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { formatNumber } from "@/lib/utils";
-import { englishOnlyLinkSuffix } from "@/lib/seo/englishOnly";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 import { PieceColor, PieceType } from "@/types/chess";
 import {
@@ -45,7 +44,6 @@ const memoryBoardSquares: Array<{ type: PieceType; color: PieceColor } | null> =
 
 export default function Home() {
   const t = useTranslations("home");
-  const locale = useLocale();
   const [totalPlays, setTotalPlays] = useState<number | null>(null);
 
   const websiteSchema = {
@@ -267,31 +265,34 @@ export default function Home() {
                     {t("learn.description")}
                   </p>
                   <div className="grid gap-3">
-                    <NextLink href="/learn" hrefLang="en" className="group">
-                      <Button className="w-full justify-between bg-peach-500 text-bg-dark hover:bg-peach-400">
-                        <span>
-                          {t("learn.browseCta")}
-                          {englishOnlyLinkSuffix(locale)}
-                        </span>
-                        <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-                      </Button>
-                    </NextLink>
-                    <NextLink
+                    <EnglishOnlyLink href="/learn" className="group">
+                      {(suffix) => (
+                        <Button className="w-full justify-between bg-peach-500 text-bg-dark hover:bg-peach-400">
+                          <span>
+                            {t("learn.browseCta")}
+                            {suffix}
+                          </span>
+                          <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                        </Button>
+                      )}
+                    </EnglishOnlyLink>
+                    <EnglishOnlyLink
                       href="/learn/how-to-get-better-at-chess-for-beginners"
-                      hrefLang="en"
                       className="group"
                     >
-                      <Button
-                        variant="outline"
-                        className="w-full justify-between border-white/15 bg-white/[0.03] text-text-primary hover:bg-white/[0.07] hover:text-peach-300"
-                      >
-                        <span>
-                          {t("learn.beginnerCta")}
-                          {englishOnlyLinkSuffix(locale)}
-                        </span>
-                        <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-                      </Button>
-                    </NextLink>
+                      {(suffix) => (
+                        <Button
+                          variant="outline"
+                          className="w-full justify-between border-white/15 bg-white/[0.03] text-text-primary hover:bg-white/[0.07] hover:text-peach-300"
+                        >
+                          <span>
+                            {t("learn.beginnerCta")}
+                            {suffix}
+                          </span>
+                          <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                        </Button>
+                      )}
+                    </EnglishOnlyLink>
                   </div>
                 </div>
               </div>

@@ -44,8 +44,9 @@ describe("locale coverage", () => {
     const game = entries.find((entry) => entry.url === `${SITE_URL}/game`);
 
     expect(learn?.alternates).toBeUndefined();
-    expect(Object.keys(game?.alternates?.languages ?? {})).toHaveLength(
-      LOCALES.length,
-    );
+    expect(Object.keys(game?.alternates?.languages ?? {})).toEqual([
+      ...LOCALES,
+      "x-default",
+    ]);
   });
 });

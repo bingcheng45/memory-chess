@@ -69,13 +69,13 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   },
   {
     path: "/privacy",
-    lastModified: "2026-09-03T00:00:00.000Z",
+    lastModified: "2026-09-15T00:00:00.000Z",
     changeFrequency: "yearly",
     priority: 0.4,
   },
   {
     path: "/about",
-    lastModified: "2026-09-03T00:00:00.000Z",
+    lastModified: "2026-09-15T00:00:00.000Z",
     changeFrequency: "monthly",
     priority: 0.5,
   },
@@ -99,15 +99,18 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   })),
 ];
 
-/** hreflang block for one route across every locale. */
+/** hreflang block for one route across every locale, matching buildAlternates. */
 function alternatesFor(routePath: string) {
   return {
-    languages: Object.fromEntries(
-      LOCALES.map((locale) => [
-        locale,
-        `${SITE_URL}${localizedPath(routePath, locale)}`,
-      ]),
-    ),
+    languages: {
+      ...Object.fromEntries(
+        LOCALES.map((locale) => [
+          locale,
+          `${SITE_URL}${localizedPath(routePath, locale)}`,
+        ]),
+      ),
+      "x-default": `${SITE_URL}${localizedPath(routePath, DEFAULT_LOCALE)}`,
+    },
   };
 }
 

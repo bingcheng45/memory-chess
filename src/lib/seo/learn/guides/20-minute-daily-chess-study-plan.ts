@@ -5,7 +5,8 @@ const guide: LearnGuide = {
   goal: "routine",
   title: "20-Minute Daily Chess Study Plan for Beginners",
   h1: "A 20-minute daily chess study plan for beginners",
-  description: "Follow a simple 20-minute plan with board practice, memory drills, play, and a quick review.",
+  description:
+    "Twenty minutes in four fixed blocks. Three memory rounds, seven minutes of slow puzzles, seven minutes on one of your games, three for a written line.",
   primaryKeyword: "20 minute daily chess study plan",
   secondaryKeywords: [
     "daily chess routine for beginners",
@@ -14,218 +15,182 @@ const guide: LearnGuide = {
     "beginner chess schedule",
     "chess routine with puzzles and review",
   ],
-  ctaLabel: "Start the 20-Minute Plan",
-  quickAnswer: "Spend a few minutes on board vision, memory, tactics, and review. Keep the routine short enough to do even when you are tired.",
+  ctaLabel: "Play 6 pieces, 10 seconds",
+  quickAnswer:
+    "Minutes 0 to 3, three rounds of 6 pieces at 10 seconds. Minutes 3 to 10, six puzzles solved slowly with the reply checked. Minutes 10 to 17, one of your games replayed with a single question per move. Minutes 17 to 20, one written line.",
   keyTakeaways: [
-    "Practising often matters more than practising for a long time.",
-    "Use both drills and real positions.",
-    "A quick review helps tomorrow’s practice.",
+    "Four fixed blocks of 3, 7, 7 and 3 minutes, in the same order every day.",
+    "Slow puzzles with the reply spoken teach more than fast puzzles with a rating attached.",
+    "The written line is what carries one day into the next.",
   ],
   whoThisIsFor: [
-    "Beginners with limited time but regular motivation.",
-    "Players who stop following plans that are too demanding.",
-    "Anyone who wants a daily routine they can repeat.",
+    "You have twenty minutes on a weekday and want them filled in advance.",
+    "You keep starting study plans that need an hour.",
+    "You play games and never look at them again.",
   ],
   timeToRead: "7 min read",
   difficulty: "Beginner",
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-08-17T00:00:00.000Z",
+  updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {
-      id: "what-changes",
-      title: "What improves first",
-      eyebrow: "Consistency",
+      id: "why-twenty",
+      title: "Why twenty minutes most days beats two hours on Sunday",
       blocks: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Many study plans only work when you have lots of free time. A useful plan should also work on a busy day.",
-            "This 20-minute routine keeps one drill, one real position, and one quick review.",
+            "The plan is short because it has to happen on a Tuesday when you are tired. A plan you skip three days a week is not a plan.",
+            "There is also a memory reason. Practice spread across days is retained better than the same total time in one sitting, and that result holds across many kinds of recall task.",
+            "So the twenty minutes are fixed and the days are what you protect. Five days a week is the target. Seven is fine, three still works.",
           ],
         },
       ],
     },
     {
-      id: "start-here",
-      title: "Your 20-minute chess routine",
-      summary: "You can try these steps today.",
+      id: "timetable",
+      title: "The timetable, minute by minute",
       blocks: [
         {
-          kind: "steps",
-          ordered: true,
-          items: [
-            "Spend 4 minutes on a board-vision or recall drill.",
-            "Spend 6 minutes on one Memory Chess sequence with the same settings for a full week.",
-            "Spend 6 minutes on tactics or one position from a real game.",
-            "Spend 4 minutes writing what failed or held up today.",
-            "Keep the structure fixed for at least 7 days before adjusting it.",
+          kind: "plan",
+          steps: [
+            {
+              label: "Minutes 0 to 3",
+              duration: "3 minutes",
+              detail:
+                "Three rounds of 6 pieces, 10 seconds. Name each piece and square while it is on screen, then rebuild it.",
+            },
+            {
+              label: "Minutes 3 to 10",
+              duration: "7 minutes",
+              detail:
+                "Six puzzles at about a minute each. Before you play the move, say what your opponent's best reply is.",
+            },
+            {
+              label: "Minutes 10 to 17",
+              duration: "7 minutes",
+              detail:
+                "One of your own recent games, replayed from the start. At each of your moves, ask what the last opponent move newly attacks.",
+            },
+            {
+              label: "Minutes 17 to 20",
+              duration: "3 minutes",
+              detail:
+                "One line in a notebook. The move you would take back, and which block would have caught it.",
+            },
           ],
         },
       ],
     },
     {
-      id: "drills",
-      title: "Drills that fit inside a short daily plan",
-      summary: "A drill with a play link opens that exact round in Memory Chess. The rest you do away from the game.",
+      id: "warm-up",
+      title: "Minutes 0 to 3, the recall warm-up",
       blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "The medium preset is 6 pieces for 10 seconds. Six is about the number most people can hold without a system, which is why it works as a warm-up. Easy enough to finish, hard enough to demand full attention.",
+            "After the 10 seconds the board clears. There is no time limit for placing pieces, but the clock runs until you submit, so place what you know and submit.",
+            "Play again keeps the same settings and draws a fresh position each time, so three rounds are three different boards.",
+          ],
+        },
         {
           kind: "drills",
           drills: [
             {
-              title: "Warm-up recall",
-              description: "Open every session with one round of 6 pieces and 10 seconds to look.",
-              duration: "6 minutes",
-              goal: "Start every session with the same board-memory warm-up.",
+              title: "Three rounds at the medium preset",
+              description:
+                "Play 6 pieces with 10 seconds to look, 3 rounds in a row. Say each piece and its square while the position is up.",
+              duration: "about 3 minutes",
+              goal: "Three rounds with every piece on the right square.",
               ctaLabel: "Play 6 pieces, 10 seconds",
               setup: {
                 pieceCount: 6,
                 memorizeTime: 10,
               },
             },
-            {
-              title: "Threat check sprint",
-              description: "Scan one position for checks, captures, threats, and loose pieces.",
-              duration: "4 minutes",
-              goal: "Improve transfer into real games without adding much time.",
-              ctaLabel: "Run a threat check",
-            },
-            {
-              title: "Review note loop",
-              description: "Write one sentence about the type of mistake you made today.",
-              duration: "4 minutes",
-              goal: "Use today’s lesson to guide tomorrow’s practice.",
-              ctaLabel: "Log one lesson",
-            },
           ],
         },
       ],
     },
     {
-      id: "comparison",
-      title: "A routine you can keep using",
-      summary: "The best routine is one you can repeat during a normal week.",
+      id: "tactics-block",
+      title: "Minutes 3 to 10, six puzzles with the reply spoken",
       blocks: [
         {
-          kind: "comparison",
-          columns: [
-            "Situation",
-            "Before practice",
-            "After practice",
-          ],
-          rows: [
-            {
-              label: "Daily load",
-              struggling: "You attempt too many study modes at once.",
-              stronger: "You repeat a compact loop that covers the basics every day.",
-            },
-            {
-              label: "Transfer",
-              struggling: "You only watch or read and do not practise.",
-              stronger: "Every session includes practice you can use in games.",
-            },
-            {
-              label: "Review",
-              struggling: "Mistakes disappear because there is no log.",
-              stronger: "Each day ends with one note for tomorrow.",
-            },
+          kind: "paragraphs",
+          paragraphs: [
+            "Six puzzles in seven minutes is slow on purpose. The habit being built is not finding the move. It is checking the move against the reply before you play it.",
+            "So for each puzzle, find your move, then say out loud the reply that would refute it if there is one. Only then play it. A wrong answer after that check teaches more than a right answer without it.",
+            "Puzzle ratings on the big sites reward speed. Ignore that for these seven minutes. Your rating there will dip and your games will not.",
           ],
         },
       ],
     },
     {
-      id: "mistakes",
-      title: "Common mistakes to avoid",
+      id: "game-block",
+      title: "Minutes 10 to 17, your own game with one question per move",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Take your most recent game and replay it from move one. At each of your moves, before you look at what you played, say what the opponent's last move newly attacks.",
+            "You will reach the move where you missed it. That is the only move that matters today. Look at what the board told you and what you did instead.",
+            "Seven minutes covers about 25 moves at this pace. If the game is longer, stop at 25. The missed threat is almost always earlier than that.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "the-line",
+      title: "Minutes 17 to 20, the one written line",
+      blocks: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Write one line. Which move you would take back, and which block would have caught it. For example, move 14, knight left on e5 with no defender, the game block.",
+            "The line is what makes tomorrow's session different from today's. Read yesterday's line before you start the warm-up.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "after-two-weeks",
+      title: "What to change after two weeks, and what to leave alone",
       blocks: [
         {
           kind: "steps",
           ordered: false,
           items: [
-            "Copying advanced study schedules that are impossible to sustain.",
-            "Using all 20 minutes on passive content.",
-            "Changing the routine every two days.",
-            "Skipping the review step because it feels small.",
-          ],
-        },
-        {
-          kind: "callout",
-          title: "What to do instead",
-          body: "Do not make the plan bigger. Make it easy enough to repeat.",
-        },
-      ],
-    },
-    {
-      id: "plan",
-      title: "7-day 20-minute routine",
-      summary: "Follow these steps before making the practice harder or longer.",
-      blocks: [
-        {
-          kind: "plan",
-          steps: [
-            {
-              label: "Day 1 to 3",
-              duration: "20 minutes",
-              detail: "Keep the same Memory Chess settings and threat-check format to build consistency.",
-            },
-            {
-              label: "Day 4",
-              duration: "20 minutes",
-              detail: "Review your notes and keep only one correction point for the next three days.",
-            },
-            {
-              label: "Day 5 to 6",
-              duration: "20 minutes",
-              detail: "Repeat the exact structure without adding content variety.",
-            },
-            {
-              label: "Day 7",
-              duration: "20 minutes",
-              detail: "Check whether blunders or recall accuracy improved, then make only one adjustment for the next week.",
-            },
+            "If the warm-up rounds finish with every piece right three days running, move to 8 pieces and keep 10 seconds.",
+            "If the puzzles feel easy, raise their difficulty, not their number. Six stays six.",
+            "If the written line names the same block every day, give that block an extra minute and take it from the line.",
+            "Everything else stays as it is. The plan works because it is boring.",
           ],
         },
       ],
     },
   ],
-  faq: [
-    {
-      question: "Is 20 minutes of chess study enough?",
-      answer: "Yes, if it is consistent and includes drills that transfer directly into games rather than passive study alone.",
-    },
-    {
-      question: "Should I use all 20 minutes on tactics?",
-      answer: "Usually no. A blend of board clarity, tactical transfer, and short review works better for beginners.",
-    },
-    {
-      question: "How long should I keep the same plan?",
-      answer: "At least one week. Constantly changing the routine makes progress impossible to read.",
-    },
-    {
-      question: "What should I track?",
-      answer: "Track blunders per game, recall accuracy, and the type of mistake you make most often.",
-    },
-  ],
+  faq: [],
   relatedArticles: [
     {
       slug: "how-to-get-better-at-chess-for-beginners",
-      reason: "See how this short routine fits into a longer beginner plan.",
-    },
-    {
-      slug: "why-puzzle-rating-doesnt-transfer-to-games",
-      reason: "Balance tactical work with board-clarity work.",
+      reason: "The four stages this timetable is built from, and the order they come in.",
     },
     {
       slug: "how-to-analyze-chess-games-for-beginners",
-      reason: "Keep the review block simple and productive.",
+      reason: "A fuller version of the game block for days with more time.",
+    },
+    {
+      slug: "how-many-chess-puzzles-a-day",
+      reason: "Why the puzzle block is six and not sixty.",
     },
   ],
   sources: [
     {
-      title: "Distributed Practice in Verbal Recall Tasks",
+      title: "Distributed Practice in Verbal Recall Tasks: A Review and Quantitative Synthesis",
       url: "https://doi.org/10.1037/0033-2909.132.3.354",
-    },
-    {
-      title: "Test-Enhanced Learning: Taking Memory Tests Improves Retention",
-      url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
+      note: "Supports the claim that practice spread across days is retained better than the same total time in one sitting.",
     },
   ],
 };

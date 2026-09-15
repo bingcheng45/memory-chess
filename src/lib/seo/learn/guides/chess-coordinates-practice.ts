@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -211,5 +212,43 @@ const guide: LearnGuide = {
   ],
   sources: [],
 };
+
+export const positions: LearnPosition[] = [
+  {
+    id: "anchor-colours",
+    sectionId: "eight-anchor-squares",
+    white: [],
+    black: [],
+    claims: [
+      { kind: "squareColour", squares: ["d4", "e5", "a1", "h8", "c3"], colour: "dark" },
+      { kind: "squareColour", squares: ["e4", "d5", "h1", "a8", "g2"], colour: "light" },
+    ],
+  },
+  {
+    id: "knight-e4",
+    sectionId: "knight-paths-and-diagonals",
+    white: ["Ne4"],
+    black: [],
+    claims: [
+      { kind: "reach", square: "e4", squares: ["c3", "c5", "d2", "d6", "f2", "f6", "g3", "g5"] },
+      { kind: "squareColour", squares: ["e4"], colour: "light" },
+      { kind: "squareColour", squares: ["c3", "c5", "d2", "d6", "f2", "f6", "g3", "g5"], colour: "dark" },
+    ],
+  },
+  {
+    id: "knight-b1",
+    sectionId: "knight-paths-and-diagonals",
+    white: ["Nb1"],
+    black: [],
+    claims: [{ kind: "reach", square: "b1", squares: ["a3", "c3", "d2"] }],
+  },
+  {
+    id: "bishop-c1",
+    sectionId: "knight-paths-and-diagonals",
+    white: ["Bc1"],
+    black: [],
+    claims: [{ kind: "reach", square: "c1", squares: ["d2", "e3", "f4", "g5", "h6", "b2", "a3"] }],
+  },
+];
 
 export default guide;

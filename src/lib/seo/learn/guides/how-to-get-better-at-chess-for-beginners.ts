@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -276,5 +277,59 @@ const guide: LearnGuide = {
     },
   ],
 };
+
+const PINNED_KNIGHT_WHITE = ["Kg1", "Qd1", "Nf3", "g2"];
+const PINNED_KNIGHT_BLACK = ["Kg8", "Bg4", "e5"];
+
+export const positions: LearnPosition[] = [
+  {
+    id: "pinned-knight",
+    sectionId: "where-games-go",
+    white: PINNED_KNIGHT_WHITE,
+    black: PINNED_KNIGHT_BLACK,
+    toMove: "b",
+    unstated: ["g1", "g2", "g8"],
+    claims: [{ kind: "attacks", from: "g4", squares: ["f3"] }],
+  },
+  {
+    id: "pinned-knight-after-e4",
+    sectionId: "where-games-go",
+    white: PINNED_KNIGHT_WHITE,
+    black: PINNED_KNIGHT_BLACK,
+    toMove: "b",
+    unstated: ["g1", "g2", "g8"],
+    line: ["e4"],
+    claims: [{ kind: "attacks", from: "e4", squares: ["f3"] }],
+  },
+  {
+    id: "pinned-knight-steps-away",
+    sectionId: "where-games-go",
+    white: PINNED_KNIGHT_WHITE,
+    black: PINNED_KNIGHT_BLACK,
+    toMove: "b",
+    unstated: ["g1", "g2", "g8"],
+    line: ["e4", "Nd4"],
+    claims: [{ kind: "legal", move: "Bxd1" }],
+  },
+  {
+    id: "bishop-reaches-c4",
+    sectionId: "move-question",
+    line: ["e4", "e5", "Bc4"],
+    claims: [{ kind: "attacks", from: "c4", squares: ["f7"] }],
+  },
+  {
+    id: "queen-reaches-h5",
+    sectionId: "move-question",
+    line: ["e4", "e5", "Qh5"],
+    claims: [{ kind: "attacks", from: "h5", squares: ["f7", "e5", "h7"] }],
+  },
+  {
+    id: "knight-f3-guards-e5",
+    sectionId: "move-question",
+    white: ["Nf3"],
+    black: [],
+    claims: [{ kind: "attacks", from: "f3", squares: ["e5"] }],
+  },
+];
 
 export default guide;

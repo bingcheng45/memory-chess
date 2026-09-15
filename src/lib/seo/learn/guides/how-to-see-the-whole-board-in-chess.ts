@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -201,5 +202,59 @@ const guide: LearnGuide = {
   ],
   sources: [],
 };
+
+const BISHOP_A2_WHITE = ["Kg1", "Ra1", "Rf1", "Ba2", "Nc3", "Ng5", "a3", "b2", "c2", "f2", "g2", "h2"];
+const BISHOP_A2_BLACK = ["Kg8", "Ra8", "Rd8", "Bc8", "Nf6", "a7", "b7", "c7", "e6", "f7", "g7", "h7"];
+
+export const positions: LearnPosition[] = [
+  {
+    id: "bishop-a2",
+    sectionId: "bishop-on-a2",
+    white: BISHOP_A2_WHITE,
+    black: BISHOP_A2_BLACK,
+    toMove: "b",
+    claims: [
+      { kind: "pieceCount", count: 24 },
+      { kind: "noCheck" },
+      { kind: "occupant", square: "b3", piece: null },
+      { kind: "occupant", square: "c4", piece: null },
+      { kind: "occupant", square: "d5", piece: null },
+      { kind: "occupant", square: "e6", piece: "bp" },
+      { kind: "legal", move: "e5" },
+    ],
+  },
+  {
+    id: "bishop-a2-after-e5",
+    sectionId: "bishop-on-a2",
+    white: BISHOP_A2_WHITE,
+    black: BISHOP_A2_BLACK,
+    toMove: "b",
+    line: ["e5"],
+    claims: [{ kind: "attacks", from: "a2", squares: ["f7"] }],
+  },
+  {
+    id: "bishop-a2-after-bxf7",
+    sectionId: "bishop-on-a2",
+    white: BISHOP_A2_WHITE,
+    black: BISHOP_A2_BLACK,
+    toMove: "b",
+    line: ["e5", "Bxf7+"],
+    claims: [
+      { kind: "check" },
+      { kind: "illegal", move: "Kxf7" },
+      { kind: "attacks", from: "g5", squares: ["f7"] },
+      { kind: "attackers", square: "f7", side: "b", from: ["g8"] },
+    ],
+  },
+  {
+    id: "rook-pin",
+    sectionId: "last-square",
+    white: ["Re1", "Kg1"],
+    black: ["Ne5", "Ke8"],
+    toMove: "b",
+    unstated: ["g1"],
+    claims: [{ kind: "immobile", square: "e5" }],
+  },
+];
 
 export default guide;

@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -165,5 +166,50 @@ const guide: LearnGuide = {
     },
   ],
 };
+
+export const positions: LearnPosition[] = [
+  {
+    id: "fork-on-c7",
+    sectionId: "what-transfers",
+    white: ["Kg1", "Nb5"],
+    black: ["Ke8", "Ra8"],
+    unstated: ["g1"],
+    claims: [
+      { kind: "attackers", square: "c7", side: "b", from: [] },
+      { kind: "legal", move: "Nc7+" },
+    ],
+  },
+  {
+    id: "fork-on-c7-played",
+    sectionId: "what-transfers",
+    white: ["Kg1", "Nb5"],
+    black: ["Ke8", "Ra8"],
+    unstated: ["g1"],
+    line: ["Nc7+"],
+    claims: [
+      { kind: "check" },
+      { kind: "attacks", from: "c7", squares: ["e8", "a8"] },
+    ],
+  },
+  {
+    id: "pin-on-f6",
+    sectionId: "what-transfers",
+    white: ["Kg1", "Bg5"],
+    black: ["Kg8", "Nf6", "Qd8"],
+    unstated: ["g1", "g8"],
+    claims: [
+      { kind: "occupant", square: "e7", piece: null },
+      { kind: "attacks", from: "g5", squares: ["f6"] },
+    ],
+  },
+  {
+    id: "pin-on-f6-without-the-knight",
+    sectionId: "what-transfers",
+    white: ["Kg1", "Bg5"],
+    black: ["Kg8", "Qd8"],
+    unstated: ["g1", "g8"],
+    claims: [{ kind: "attacks", from: "g5", squares: ["d8"] }],
+  },
+];
 
 export default guide;

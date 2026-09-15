@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -196,5 +197,29 @@ const guide: LearnGuide = {
   ],
   sources: [],
 };
+
+export const positions: LearnPosition[] = [
+  {
+    id: "knight-pinned-to-the-queen",
+    sectionId: "three-labels",
+    white: ["Kg1", "Bg5", "Qh5"],
+    black: ["Ke8", "Qd8", "Nf6"],
+    toMove: "b",
+    unstated: ["g1", "e8"],
+    claims: [
+      { kind: "attacks", from: "f6", squares: ["h5"] },
+      { kind: "attacks", from: "g5", squares: ["f6"] },
+      { kind: "legal", move: "Nxh5" },
+    ],
+  },
+  {
+    id: "bishop-g5-behind-the-knight",
+    sectionId: "three-labels",
+    white: ["Kg1", "Bg5"],
+    black: ["Ke8", "Qd8"],
+    unstated: ["g1", "e8"],
+    claims: [{ kind: "attacks", from: "g5", squares: ["d8"] }],
+  },
+];
 
 export default guide;

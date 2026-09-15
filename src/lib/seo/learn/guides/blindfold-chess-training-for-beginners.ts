@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -224,5 +225,29 @@ const guide: LearnGuide = {
   ],
   sources: [],
 };
+
+export const positions: LearnPosition[] = [
+  {
+    id: "scholars-mate",
+    sectionId: "stage-three-covered-replay",
+    line: ["e4", "e5", "Bc4", "Nc6", "Qh5", "Nf6", "Qxf7#"],
+    claims: [
+      { kind: "mate" },
+      { kind: "occupant", square: "f7", piece: "wq" },
+      { kind: "occupant", square: "c4", piece: "wb" },
+      { kind: "occupant", square: "e4", piece: "wp" },
+      { kind: "occupant", square: "c6", piece: "bn" },
+      { kind: "occupant", square: "f6", piece: "bn" },
+      { kind: "occupant", square: "e5", piece: "bp" },
+      { kind: "occupant", square: "e8", piece: "bk" },
+      { kind: "occupant", square: "d8", piece: "bq" },
+      { kind: "occupant", square: "f8", piece: "bb" },
+      { kind: "occupant", square: "d7", piece: "bp" },
+      { kind: "occupant", square: "e7", piece: null },
+      { kind: "attacks", from: "c4", squares: ["f7"] },
+      { kind: "attacks", from: "f7", squares: ["e7"] },
+    ],
+  },
+];
 
 export default guide;

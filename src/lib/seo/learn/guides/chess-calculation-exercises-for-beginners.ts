@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -207,5 +208,46 @@ const guide: LearnGuide = {
   ],
   sources: [],
 };
+
+const TWO_CHECKS_WHITE = ["Kg1", "Nd5", "f2", "g2", "h2"];
+const TWO_CHECKS_BLACK = ["Ke8", "Qe6", "Ra8", "f7", "g7", "h7"];
+
+export const positions: LearnPosition[] = [
+  {
+    id: "two-checks",
+    sectionId: "two-checks-one-works",
+    white: TWO_CHECKS_WHITE,
+    black: TWO_CHECKS_BLACK,
+    claims: [
+      { kind: "pieceCount", count: 11 },
+      { kind: "noCheck" },
+      { kind: "attacks", from: "e6", squares: ["d5"] },
+    ],
+  },
+  {
+    id: "two-checks-after-nc7",
+    sectionId: "two-checks-one-works",
+    white: TWO_CHECKS_WHITE,
+    black: TWO_CHECKS_BLACK,
+    line: ["Nc7+"],
+    claims: [
+      { kind: "check" },
+      { kind: "attacks", from: "c7", squares: ["a8", "e8", "e6"] },
+      { kind: "attackers", square: "c7", side: "b", from: [] },
+      { kind: "replies", nonKing: [], then: "Nxe6" },
+    ],
+  },
+  {
+    id: "two-checks-after-nf6",
+    sectionId: "two-checks-one-works",
+    white: TWO_CHECKS_WHITE,
+    black: TWO_CHECKS_BLACK,
+    line: ["Nf6+"],
+    claims: [
+      { kind: "check" },
+      { kind: "legal", move: "gxf6" },
+    ],
+  },
+];
 
 export default guide;

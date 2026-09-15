@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -213,5 +214,64 @@ const guide: LearnGuide = {
   ],
   sources: [],
 };
+
+const LOOSE_BISHOP_WHITE = ["Kg1", "Qd1", "Ra1", "Rf1", "Bc1", "Nb1", "Nf3", "a2", "b2", "f2", "g2", "h2"];
+const LOOSE_BISHOP_BLACK = ["Ke8", "Ra8", "Rh8", "Bc8", "Bb4", "a7", "b7", "c7", "f7", "g7", "h7"];
+
+export const positions: LearnPosition[] = [
+  {
+    id: "phantom-defender",
+    sectionId: "puzzle-vs-game",
+    white: ["Bb5", "Kg1", "e5"],
+    black: ["Nc6", "Ke8"],
+    toMove: "b",
+    unstated: ["g1"],
+    claims: [
+      { kind: "occupant", square: "d7", piece: null },
+      { kind: "attacks", from: "c6", squares: ["e5"] },
+      { kind: "illegal", move: "Nxe5" },
+    ],
+  },
+  {
+    id: "abandoned-job",
+    sectionId: "puzzle-vs-game",
+    white: ["Kg1", "Nc3", "d2"],
+    black: ["Kg8"],
+    unstated: ["g1", "g8"],
+    claims: [{ kind: "attackers", square: "c3", side: "w", from: ["d2"] }],
+  },
+  {
+    id: "abandoned-job-after-d4",
+    sectionId: "puzzle-vs-game",
+    white: ["Kg1", "Nc3", "d2"],
+    black: ["Kg8"],
+    unstated: ["g1", "g8"],
+    line: ["d4"],
+    claims: [{ kind: "attackers", square: "c3", side: "w", from: [] }],
+  },
+  {
+    id: "loose-bishop",
+    sectionId: "loose-bishop-b4",
+    white: LOOSE_BISHOP_WHITE,
+    black: LOOSE_BISHOP_BLACK,
+    claims: [
+      { kind: "pieceCount", count: 23 },
+      { kind: "noCheck" },
+      { kind: "attackers", square: "b4", side: "b", from: [] },
+    ],
+  },
+  {
+    id: "loose-bishop-after-qa4",
+    sectionId: "loose-bishop-b4",
+    white: LOOSE_BISHOP_WHITE,
+    black: LOOSE_BISHOP_BLACK,
+    line: ["Qa4+"],
+    claims: [
+      { kind: "check" },
+      { kind: "attacks", from: "a4", squares: ["b4", "b5", "c6", "d7"] },
+      { kind: "replies", nonKing: ["c6", "b5", "Bd7"], then: "Qxb4", undefended: "b4" },
+    ],
+  },
+];
 
 export default guide;

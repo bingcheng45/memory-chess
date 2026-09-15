@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -183,5 +184,106 @@ const guide: LearnGuide = {
     },
   ],
 };
+
+const guardOfC7 = (guard: string): LearnPosition => ({
+  id: `c7-guarded-by-${guard}`,
+  sectionId: "shape-plus-condition",
+  white: ["Kg1"],
+  black: ["Ke8", "Ra8", guard],
+  unstated: ["g1"],
+  claims: [{ kind: "attacks", from: guard.slice(-2), squares: ["c7"] }],
+});
+
+export const positions: LearnPosition[] = [
+  {
+    id: "fork-from-d5",
+    sectionId: "four-shapes-with-squares",
+    white: ["Kg1", "Nd5"],
+    black: ["Ke8", "Ra8"],
+    unstated: ["g1"],
+    claims: [{ kind: "attackers", square: "c7", side: "b", from: [] }],
+  },
+  {
+    id: "fork-from-d5-played",
+    sectionId: "four-shapes-with-squares",
+    white: ["Kg1", "Nd5"],
+    black: ["Ke8", "Ra8"],
+    unstated: ["g1"],
+    line: ["Nc7+"],
+    claims: [
+      { kind: "check" },
+      { kind: "attacks", from: "c7", squares: ["a8", "e8"] },
+    ],
+  },
+  {
+    id: "fork-from-b5-played",
+    sectionId: "four-shapes-with-squares",
+    white: ["Kg1", "Nb5"],
+    black: ["Ke8", "Ra8"],
+    unstated: ["g1"],
+    line: ["Nc7+"],
+    claims: [
+      { kind: "check" },
+      { kind: "attacks", from: "c7", squares: ["a8", "e8"] },
+    ],
+  },
+  guardOfC7("Qd8"),
+  guardOfC7("Bd8"),
+  guardOfC7("Nb5"),
+  guardOfC7("Ne6"),
+  {
+    id: "back-rank-mate",
+    sectionId: "four-shapes-with-squares",
+    white: ["Kh1", "Re1"],
+    black: ["Kg8", "f7", "g7", "h7"],
+    unstated: ["h1"],
+    line: ["Re8#"],
+    claims: [{ kind: "mate" }],
+  },
+  {
+    id: "bishop-pin",
+    sectionId: "four-shapes-with-squares",
+    white: ["Kg1", "Bb5"],
+    black: ["Ke8", "Nc6"],
+    toMove: "b",
+    unstated: ["g1"],
+    claims: [
+      { kind: "occupant", square: "d7", piece: null },
+      { kind: "immobile", square: "c6" },
+    ],
+  },
+  {
+    id: "smothered-mate",
+    sectionId: "four-shapes-with-squares",
+    white: ["Kg1", "Ng5"],
+    black: ["Kh8", "Rg8", "g7", "h7"],
+    unstated: ["g1", "g5"],
+    line: ["Nf7#"],
+    claims: [
+      { kind: "mate" },
+      { kind: "attackers", square: "f7", side: "b", from: [] },
+    ],
+  },
+  {
+    id: "fork-shifted",
+    sectionId: "rebuild-shift-break",
+    white: ["Kg1", "Ne5"],
+    black: ["Kf8", "Rb8"],
+    unstated: ["g1"],
+    line: ["Nd7+"],
+    claims: [
+      { kind: "check" },
+      { kind: "attacks", from: "d7", squares: ["b8", "f8"] },
+    ],
+  },
+  {
+    id: "fork-shifted-broken",
+    sectionId: "rebuild-shift-break",
+    white: ["Kg1", "Ne5"],
+    black: ["Kf8", "Rb8", "Bc8"],
+    unstated: ["g1"],
+    claims: [{ kind: "attacks", from: "c8", squares: ["d7"] }],
+  },
+];
 
 export default guide;

@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -200,5 +201,44 @@ const guide: LearnGuide = {
   ],
   sources: [],
 };
+
+const OPENING = ["e4", "e5", "Nf3"];
+
+export const positions: LearnPosition[] = [
+  {
+    id: "after-nf3",
+    sectionId: "three-questions-in-order",
+    line: OPENING,
+    claims: [
+      { kind: "attacked", side: "b", squares: ["e5"] },
+      { kind: "attackers", square: "e4", side: "w", from: [] },
+    ],
+  },
+  {
+    id: "after-nc6",
+    sectionId: "three-questions-in-order",
+    line: [...OPENING, "Nc6"],
+    claims: [
+      { kind: "attackers", square: "e5", side: "b", from: ["c6"] },
+      { kind: "attacked", side: "b", squares: ["e5"] },
+    ],
+  },
+  {
+    id: "after-d6",
+    sectionId: "three-questions-in-order",
+    line: [...OPENING, "d6"],
+    claims: [{ kind: "attackers", square: "e5", side: "b", from: ["d6"] }],
+  },
+  {
+    id: "after-nf6",
+    sectionId: "three-questions-in-order",
+    line: [...OPENING, "Nf6"],
+    claims: [
+      { kind: "attacks", from: "f6", squares: ["e4"] },
+      { kind: "attackers", square: "e4", side: "w", from: [] },
+      { kind: "attackers", square: "e5", side: "b", from: [] },
+    ],
+  },
+];
 
 export default guide;

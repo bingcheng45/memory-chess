@@ -1,3 +1,4 @@
+import type { LearnPosition } from "../positions";
 import type { LearnGuide } from "../schema";
 
 const guide: LearnGuide = {
@@ -206,5 +207,46 @@ const guide: LearnGuide = {
   ],
   sources: [],
 };
+
+const COVER_BLACK = ["Kg8", "Re8", "Nf6", "e5", "f7", "g7", "h7"];
+
+export const positions: LearnPosition[] = [
+  {
+    id: "cover-and-move",
+    sectionId: "cover-and-move",
+    white: ["Kg1", "Re1", "Nf3", "e4", "f2", "g2", "h2"],
+    black: COVER_BLACK,
+    line: ["Nxe5"],
+    claims: [
+      { kind: "occupant", square: "e8", piece: "br" },
+      { kind: "occupant", square: "e7", piece: null },
+      { kind: "occupant", square: "e6", piece: null },
+      { kind: "occupant", square: "e5", piece: "wn" },
+      { kind: "occupant", square: "e4", piece: "wp" },
+      { kind: "occupant", square: "e3", piece: null },
+      { kind: "occupant", square: "e2", piece: null },
+      { kind: "occupant", square: "e1", piece: "wr" },
+      { kind: "attackers", square: "e5", side: "b", from: ["e8"] },
+      { kind: "attackers", square: "e5", side: "w", from: [] },
+      { kind: "legal", move: "Rxe5" },
+    ],
+  },
+  {
+    id: "cover-and-move-pawn-on-d3",
+    sectionId: "cover-and-move",
+    white: ["Kg1", "Re1", "Nf3", "d3", "f2", "g2", "h2"],
+    black: COVER_BLACK,
+    line: ["Nxe5"],
+    claims: [{ kind: "attackers", square: "e5", side: "w", from: ["e1"] }],
+  },
+  {
+    id: "cover-and-move-pawn-on-d3-recaptured",
+    sectionId: "cover-and-move",
+    white: ["Kg1", "Re1", "Nf3", "d3", "f2", "g2", "h2"],
+    black: COVER_BLACK,
+    line: ["Nxe5", "Rxe5", "Rxe5"],
+    claims: [{ kind: "material", white: "kppppr", black: "knppp" }],
+  },
+];
 
 export default guide;

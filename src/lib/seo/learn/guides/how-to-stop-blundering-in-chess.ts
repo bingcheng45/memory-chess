@@ -29,7 +29,7 @@ const guide: LearnGuide = {
   timeToRead: "7 min read",
   difficulty: "Beginner",
   featured: true,
-  publishedAt: "2026-03-06T00:00:00.000Z",
+  publishedAt: "2026-03-24T00:00:00.000Z",
   updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {

@@ -30,7 +30,7 @@ const guide: LearnGuide = {
   ],
   timeToRead: "8 min read",
   difficulty: "Beginner to Intermediate",
-  publishedAt: "2026-03-06T00:00:00.000Z",
+  publishedAt: "2026-03-24T00:00:00.000Z",
   updatedAt: "2026-09-15T00:00:00.000Z",
   sections: [
     {

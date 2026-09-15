@@ -112,7 +112,7 @@ const guide: LearnGuide = {
             {
               title: "No seventh piece",
               description: "Play 4 rounds of 6 pieces with 10 seconds to look, and replay the same settings from the result screen. Before each submit, count your pieces. If there are seven, remove the one you are least sure you saw.",
-              duration: "4 rounds, about 3 minutes",
+              duration: "4 rounds, about 4 minutes",
               goal: "Tell a piece you saw from a piece you assumed was there.",
               ctaLabel: "Play 6 pieces, 10 seconds",
               setup: {

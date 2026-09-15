@@ -110,8 +110,8 @@ const guide: LearnGuide = {
             {
               title: "The honest baseline",
               description:
-                "5 rounds of 6 pieces, 10 seconds, about 4 minutes. Kings first, then only the pieces you are sure of, then submit. Do not fill in guesses.",
-              duration: "About 4 minutes",
+                "5 rounds of 6 pieces, 10 seconds, about 5 minutes. Kings first, then only the pieces you are sure of, then submit. Do not fill in guesses.",
+              duration: "About 5 minutes",
               goal: "Three Perfect Score rounds in a row before you add a single piece.",
               ctaLabel: "Play 6 pieces, 10 seconds",
               setup: { pieceCount: 6, memorizeTime: 10 },
@@ -128,8 +128,8 @@ const guide: LearnGuide = {
             {
               title: "Past raw span",
               description:
-                "4 rounds of 12 pieces, 8 seconds, about 5 minutes. Twelve pieces in eight seconds cannot be read one at a time. Take the kings, then the pawns as chains, then whatever is left.",
-              duration: "About 5 minutes",
+                "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Twelve pieces in eight seconds cannot be read one at a time. Take the kings, then the pawns as chains, then whatever is left.",
+              duration: "About 6 minutes",
               goal: "Excellent Memory, which at this count means at least 11 of the 12.",
               ctaLabel: "Play 12 pieces, 8 seconds",
               setup: { pieceCount: 12, memorizeTime: 8 },

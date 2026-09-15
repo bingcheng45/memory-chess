@@ -95,8 +95,8 @@ const guide: LearnGuide = {
             {
               title: "Hold it while the board is empty",
               description:
-                "4 rounds of 8 pieces, 10 seconds, about 4 minutes. Both kings first, then the pieces you are sure of. Stop before you guess, since each extra piece costs ten accuracy points.",
-              duration: "About 4 minutes",
+                "4 rounds of 8 pieces, 10 seconds, about 5 minutes. Both kings first, then the pieces you are sure of. Stop before you guess, since each extra piece costs ten accuracy points.",
+              duration: "About 5 minutes",
               goal: "At least 7 of the 8 correct in three of the four rounds.",
               ctaLabel: "Play 8 pieces, 10 seconds",
               setup: { pieceCount: 8, memorizeTime: 10 },

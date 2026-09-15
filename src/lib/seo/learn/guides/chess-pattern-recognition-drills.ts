@@ -109,8 +109,8 @@ const guide: LearnGuide = {
             {
               title: "Chains first",
               description:
-                "3 rounds of 12 pieces, 8 seconds, about 4 minutes. Kings first, then each pawn chain as a single shape, then whatever is left. Say the chains as you place them, f2 g3, e6 f7.",
-              duration: "About 4 minutes",
+                "3 rounds of 12 pieces, 8 seconds, about 5 minutes. Kings first, then each pawn chain as a single shape, then whatever is left. Say the chains as you place them, f2 g3, e6 f7.",
+              duration: "About 5 minutes",
               goal: "Every pawn on its square. Drop a rook before you drop a chain.",
               ctaLabel: "Start 12 pieces, 8 seconds",
               setup: { pieceCount: 12, memorizeTime: 8 },

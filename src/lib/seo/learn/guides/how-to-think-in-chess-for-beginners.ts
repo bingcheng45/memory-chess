@@ -107,7 +107,7 @@ const guide: LearnGuide = {
             {
               title: "Skip when certain",
               description: "Play 5 rounds of 6 pieces with 20 seconds to look. Press Skip the moment you can name all six squares in your head. A skipped round with a miss may mean you stopped early.",
-              duration: "5 rounds, about 5 minutes",
+              duration: "5 rounds, about 6 minutes",
               goal: "Learn what certainty feels like before the clock decides for you.",
               ctaLabel: "Play 6 pieces, 20 seconds",
               setup: {

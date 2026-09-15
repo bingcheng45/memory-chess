@@ -178,7 +178,7 @@ const guide: LearnGuide = {
               title: "Two rounds of eight, once six is clean",
               description:
                 "Play 8 pieces with 10 seconds to look, 2 rounds. Name the pieces in groups of two or three rather than one at a time.",
-              duration: "about 3 minutes",
+              duration: "about 2 minutes",
               goal: "Two rounds with every piece on the right square.",
               ctaLabel: "Play 8 pieces, 10 seconds",
               setup: {

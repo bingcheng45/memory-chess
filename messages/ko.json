@@ -136,7 +136,6 @@
     "hud": {
       "time": "시간",
       "submit": "제출",
-      "loading": "게임을 불러오는 중…",
       "status": "게임 상태",
       "controls": "게임 조작",
       "complete": "게임 종료",

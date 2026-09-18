@@ -136,7 +136,6 @@
     "hud": {
       "time": "Temps",
       "submit": "Valider",
-      "loading": "Chargement de la partie...",
       "status": "État de la partie",
       "controls": "Commandes de la partie",
       "complete": "Partie terminée",

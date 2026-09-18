@@ -136,7 +136,6 @@
     "hud": {
       "time": "Czas",
       "submit": "Wyślij",
-      "loading": "Wczytywanie gry…",
       "status": "Stan partii",
       "controls": "Sterowanie grą",
       "complete": "Partia zakończona",

@@ -136,7 +136,6 @@
     "hud": {
       "time": "Idő",
       "submit": "Beküldés",
-      "loading": "Játék betöltése…",
       "status": "Játék állapota",
       "controls": "Játékvezérlők",
       "complete": "A játszma véget ért",

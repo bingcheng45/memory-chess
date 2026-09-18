@@ -136,7 +136,6 @@
     "hud": {
       "time": "用時",
       "submit": "送出",
-      "loading": "正在載入遊戲…",
       "status": "對局狀態",
       "controls": "對局操作",
       "complete": "對局結束",

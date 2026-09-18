@@ -97,15 +97,15 @@ export default function Home() {
         />
 
         <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">
-          <h1 className="animate-in fade-in slide-in-from-top-4 duration-700 text-4xl sm:text-5xl font-extrabold text-text-primary">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-text-primary">
             {t("hero.title")}
           </h1>
 
-          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 max-w-2xl text-lg text-text-secondary">
+          <p className="max-w-2xl text-lg text-text-secondary">
             {t("hero.subtitle")}
           </p>
 
-          <p className="animate-in fade-in slide-in-from-bottom-4 duration-700 max-w-2xl text-lg text-text-secondary">
+          <p className="max-w-2xl text-lg text-text-secondary">
             {t.rich("hero.freeToPlay", {
               link: (chunks) => (
                 <Link

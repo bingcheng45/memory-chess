@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense, useRef } from 'react';
-import { useSearchParams } from "next/navigation";
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from "@/i18n/navigation";
 import { useGameStore } from '@/lib/store/gameStore';
 import { GamePhase } from '@/lib/types/game';
@@ -29,7 +28,6 @@ import { useTranslations } from "next-intl";
 function GamePageContent() {
   const t = useTranslations("game");
   const router = useRouter();
-  const searchParams = useSearchParams();
   const analytics = useAnalytics();
   
   // Initialize sound effects hook to handle sound based on game state changes
@@ -43,16 +41,7 @@ function GamePageContent() {
     setIsClient(true);
   }, []);
   
-  // Get query parameters
-  const challengeId = searchParams.get('challenge');
-  const pieceCountParam = searchParams.get('pieceCount');
-  const memorizeTimeParam = searchParams.get('memorizeTime');
-  
-  // Parse parameters with defaults
-  const pieceCount = pieceCountParam ? parseInt(pieceCountParam) : 8;
-  const memorizeTime = memorizeTimeParam ? parseInt(memorizeTimeParam) : 10;
-  
-  const { 
+  const {
     gameState, 
     gamePhase, 
     startGame, 
@@ -110,19 +99,19 @@ function GamePageContent() {
     };
   }, [analytics, resetGame]);
   
-  // Start game with parameters from URL if provided
+  // The query is read off the live location rather than via useSearchParams,
+  // which would bail /game out of static rendering and serve an empty page.
   useEffect(() => {
-    if (pieceCountParam || memorizeTimeParam) {
-      startGame(pieceCount, memorizeTime);
-      
-      // Track game start
-      analytics.trackGameStart(
-        pieceCount, 
-        memorizeTime, 
-        !!challengeId
-      );
-    }
-  }, [pieceCountParam, memorizeTimeParam, challengeId, analytics, memorizeTime, pieceCount, startGame]);
+    const params = new URLSearchParams(window.location.search);
+    const pieceCountParam = params.get('pieceCount');
+    const memorizeTimeParam = params.get('memorizeTime');
+    if (!pieceCountParam && !memorizeTimeParam) return;
+
+    const pieceCount = pieceCountParam ? parseInt(pieceCountParam) : 8;
+    const memorizeTime = memorizeTimeParam ? parseInt(memorizeTimeParam) : 10;
+    startGame(pieceCount, memorizeTime);
+    analytics.trackGameStart(pieceCount, memorizeTime, !!params.get('challenge'));
+  }, [analytics, startGame]);
   
   // Track phase changes
   useEffect(() => {
@@ -162,11 +151,11 @@ function GamePageContent() {
       analytics.trackGameComplete(gameHistoryForAnalytics, skillRatingChange);
       
       // Track daily challenge completion if applicable
-      if (challengeId) {
+      if (new URLSearchParams(window.location.search).get('challenge')) {
         analytics.trackDailyChallengeComplete(gameHistoryForAnalytics, skillRatingChange);
       }
     }
-  }, [gamePhase, gameState, analytics, calculateSkillRatingChange, challengeId, isClient]);
+  }, [gamePhase, gameState, analytics, calculateSkillRatingChange, isClient]);
   
   // Start memorization phase when game is started
   useEffect(() => {
@@ -515,12 +504,9 @@ function GamePageContent() {
 }
 
 export default function GamePage() {
-  const t = useTranslations("game");
   return (
     <ErrorBoundary>
-      <Suspense fallback={<div aria-busy="true" aria-label={t("hud.loading")} className="min-h-screen" />}>
-        <GamePageContent />
-      </Suspense>
+      <GamePageContent />
     </ErrorBoundary>
   );
 }

@@ -8,29 +8,19 @@ import {
   MEMORIZE_SECONDS_RANGE,
   PIECE_COUNT_RANGE,
 } from '@/lib/reference/facts';
+import {
+  DEFAULT_PRESET,
+  GAME_CONFIG_RULES,
+  type DifficultyPreset,
+  presetIdFor,
+  resolveGameSettings,
+} from '@/lib/game/configPrefill';
 
 interface GameConfigProps {
   readonly onStart?: (pieceCount: number, memorizeTime: number) => void;
 }
 
-// Difficulty presets. `id` is the stable identifier: it is the selection key,
-// the `?difficulty=` URL parameter, and the value the leaderboard stores. It
-// must never be translated -- the label and description come from the
-// `game.presets` messages instead.
-const CUSTOM_PRESET_ID = 'custom';
-
-interface DifficultyPreset {
-  id: 'easy' | 'medium' | 'hard' | 'grandmaster';
-  pieceCount: number;
-  memorizeTime: number;
-}
-
-const DIFFICULTY_PRESETS: DifficultyPreset[] = [
-  { id: 'easy', pieceCount: 2, memorizeTime: 10 },
-  { id: 'medium', pieceCount: 6, memorizeTime: 10 },
-  { id: 'hard', pieceCount: 12, memorizeTime: 8 },
-  { id: 'grandmaster', pieceCount: 20, memorizeTime: 5 },
-];
+const { presets: DIFFICULTY_PRESETS } = GAME_CONFIG_RULES;
 
 export default function GameConfig({ onStart }: GameConfigProps) {
   const t = useTranslations('game');
@@ -38,9 +28,9 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     startGame, 
     gameState
   } = useGameStore();
-  const [pieceCount, setPieceCount] = useState(6);
-  const [memorizeTime, setMemorizeTime] = useState(10);
-  const [selectedPreset, setSelectedPreset] = useState("medium");
+  const [pieceCount, setPieceCount] = useState(DEFAULT_PRESET.pieceCount);
+  const [memorizeTime, setMemorizeTime] = useState(DEFAULT_PRESET.memorizeTime);
+  const selectedPreset = presetIdFor({ pieceCount, memorizeTime }, DIFFICULTY_PRESETS);
   const lastSettings = useGameStore((state) => state.lastSettings);
 
   // Both sources are applied after mount rather than as initial state: the
@@ -49,44 +39,16 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   // rather than via useSearchParams, which would bail /game out of static
   // rendering and leave the served HTML without this form.
   useEffect(() => {
-    const difficultyParam = new URLSearchParams(window.location.search)
-      .get('difficulty')
-      ?.toLowerCase();
-    // Match on the stable id, so a deep link like ?difficulty=hard keeps
-    // working in every locale.
-    const preset = DIFFICULTY_PRESETS.find(
-      preset => preset.id === difficultyParam
-    );
-    const settings = preset ?? lastSettings;
-
+    const settings = resolveGameSettings(window.location.search, lastSettings, GAME_CONFIG_RULES);
     if (settings) {
       setPieceCount(settings.pieceCount);
       setMemorizeTime(settings.memorizeTime);
     }
   }, [lastSettings]);
   
-  // Auto-detect if current settings match a preset
-  useEffect(() => {
-    // Check if the current pieceCount and memorizeTime match any preset
-    const matchingPreset = DIFFICULTY_PRESETS.find(
-      preset => preset.pieceCount === pieceCount && preset.memorizeTime === memorizeTime
-    );
-    
-    if (matchingPreset) {
-      setSelectedPreset(matchingPreset.id);
-    } else {
-      setSelectedPreset(CUSTOM_PRESET_ID);
-    }
-  }, [pieceCount, memorizeTime]);
-  
-  function handlePresetSelect(presetId: string) {
-    setSelectedPreset(presetId);
-    
-    const selectedPreset = DIFFICULTY_PRESETS.find((preset) => preset.id === presetId);
-    if (selectedPreset) {
-      setPieceCount(selectedPreset.pieceCount);
-      setMemorizeTime(selectedPreset.memorizeTime);
-    }
+  function handlePresetSelect(preset: DifficultyPreset) {
+    setPieceCount(preset.pieceCount);
+    setMemorizeTime(preset.memorizeTime);
   }
   
   const handleStart = () => {
@@ -112,7 +74,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           {DIFFICULTY_PRESETS.map((preset) => (
             <Button
               key={preset.id}
-              onClick={() => handlePresetSelect(preset.id)}
+              onClick={() => handlePresetSelect(preset)}
               variant={selectedPreset === preset.id ? "secondary" : "ghost"}
               className={`flex h-auto flex-col items-center justify-center p-2.5 transition-all duration-200 ease-in-out border ${
                 selectedPreset === preset.id
@@ -132,7 +94,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           ))}
         </div>
         <div className="mt-2 text-xs text-text-muted">
-          {selectedPreset && selectedPreset !== CUSTOM_PRESET_ID
+          {selectedPreset
             ? t(`presets.${selectedPreset}.description`)
             : t('config.customLabel')}
         </div>

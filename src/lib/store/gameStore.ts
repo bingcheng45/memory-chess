@@ -4,23 +4,12 @@ import { Chess, PieceSymbol, Square } from 'chess.js';
 import { GameState, GameHistory, GamePhase, DIFFICULTY_LEVELS, DifficultyLevel } from '@/lib/types/game';
 import { generateMemorizationPosition } from '@/lib/utils/memorizationPosition';
 import { v4 as uuidv4 } from 'uuid';
-import { MEMORIZE_SECONDS_RANGE, PIECE_COUNT_RANGE } from '@/lib/reference/facts';
-
-export interface GameSettings {
-  readonly pieceCount: number;
-  readonly memorizeTime: number;
-}
-
-const isWithin = (value: unknown, range: { min: number; max: number }): value is number =>
-  Number.isInteger(value) && (value as number) >= range.min && (value as number) <= range.max;
-
-function parseLastSettings(raw: unknown): GameSettings | null {
-  if (typeof raw !== 'object' || raw === null) return null;
-  const { pieceCount, memorizeTime } = raw as Record<string, unknown>;
-  return isWithin(pieceCount, PIECE_COUNT_RANGE) && isWithin(memorizeTime, MEMORIZE_SECONDS_RANGE)
-    ? { pieceCount, memorizeTime }
-    : null;
-}
+import {
+  GAME_CONFIG_RULES,
+  GAME_STORAGE_KEY,
+  parseGameSettings,
+  type GameSettings,
+} from '@/lib/game/configPrefill';
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & { 
@@ -743,7 +732,7 @@ export const useGameStore = create<GameStore>()(
       }
     }),
     {
-      name: 'memory-chess-storage',
+      name: GAME_STORAGE_KEY,
       partialize: (state) => ({
         gameState: {
           pieceCount: state.gameState.pieceCount,
@@ -760,7 +749,7 @@ export const useGameStore = create<GameStore>()(
         const stored = (typeof persisted === 'object' && persisted !== null
           ? persisted
           : {}) as Partial<GameStore>;
-        return { ...current, ...stored, lastSettings: parseLastSettings(stored.lastSettings) };
+        return { ...current, ...stored, lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES) };
       },
     }
   )

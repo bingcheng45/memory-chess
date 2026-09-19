@@ -319,9 +319,6 @@
       "title": "Nastavení Memory Chess",
       "description": "Přizpůsobte si nastavení a předvolby své hry Memory Chess."
     },
-    "difficulty": "Obtížnost",
-    "memorizationTime": "Čas na zapamatování: {seconds} s",
-    "seconds": "{seconds} s",
     "showCoordinates": "Zobrazit souřadnice šachovnice",
     "home": "Domů",
     "playGame": "Hrát"

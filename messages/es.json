@@ -319,9 +319,6 @@
       "title": "Ajustes de Memory Chess",
       "description": "Personaliza los ajustes y preferencias de tu partida de Memory Chess."
     },
-    "difficulty": "Dificultad",
-    "memorizationTime": "Tiempo de memorización: {seconds} segundos",
-    "seconds": "{seconds} s",
     "showCoordinates": "Mostrar las coordenadas del tablero",
     "home": "Inicio",
     "playGame": "Jugar"

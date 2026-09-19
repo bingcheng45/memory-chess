@@ -319,9 +319,6 @@
       "title": "Memory Chess-inställningar",
       "description": "Anpassa inställningar och preferenser för ditt Memory Chess-spel."
     },
-    "difficulty": "Svårighetsgrad",
-    "memorizationTime": "Memoreringstid: {seconds} sekunder",
-    "seconds": "{seconds} s",
     "showCoordinates": "Visa brädets koordinater",
     "home": "Start",
     "playGame": "Spela"

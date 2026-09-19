@@ -319,9 +319,6 @@
       "title": "Memory Chess सेटिंग",
       "description": "अपने Memory Chess गेम की सेटिंग और पसंद अपने हिसाब से बदलें।"
     },
-    "difficulty": "कठिनाई",
-    "memorizationTime": "याद करने का समय: {seconds} सेकंड",
-    "seconds": "{seconds} से.",
     "showCoordinates": "बोर्ड के निर्देशांक दिखाएँ",
     "home": "होम",
     "playGame": "खेलें"

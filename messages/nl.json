@@ -319,9 +319,6 @@
       "title": "Memory Chess-instellingen",
       "description": "Pas de instellingen en voorkeuren van je Memory Chess-spel aan."
     },
-    "difficulty": "Moeilijkheidsgraad",
-    "memorizationTime": "Kijktijd: {seconds} seconden",
-    "seconds": "{seconds} s",
     "showCoordinates": "Bordcoördinaten tonen",
     "home": "Home",
     "playGame": "Spelen"

@@ -319,9 +319,6 @@
       "title": "Pengaturan Memory Chess",
       "description": "Sesuaikan pengaturan dan preferensi permainan Memory Chess kamu."
     },
-    "difficulty": "Tingkat kesulitan",
-    "memorizationTime": "Waktu menghafal: {seconds} detik",
-    "seconds": "{seconds} dtk",
     "showCoordinates": "Tampilkan koordinat papan",
     "home": "Beranda",
     "playGame": "Main"

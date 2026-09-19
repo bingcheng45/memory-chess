@@ -319,9 +319,6 @@
       "title": "Memory Chess の設定",
       "description": "Memory Chess のゲーム設定と好みを調整できます。"
     },
-    "difficulty": "難易度",
-    "memorizationTime": "記憶時間：{seconds} 秒",
-    "seconds": "{seconds} 秒",
     "showCoordinates": "盤面の座標を表示",
     "home": "ホーム",
     "playGame": "プレイする"

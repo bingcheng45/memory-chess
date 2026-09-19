@@ -319,9 +319,6 @@
       "title": "Cài đặt Memory Chess",
       "description": "Tùy chỉnh cài đặt và tùy chọn cho ván Memory Chess của bạn."
     },
-    "difficulty": "Độ khó",
-    "memorizationTime": "Thời gian ghi nhớ: {seconds} giây",
-    "seconds": "{seconds} giây",
     "showCoordinates": "Hiện tọa độ bàn cờ",
     "home": "Trang chủ",
     "playGame": "Chơi"

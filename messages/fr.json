@@ -319,9 +319,6 @@
       "title": "Paramètres Memory Chess",
       "description": "Personnalisez les paramètres et préférences de votre partie Memory Chess."
     },
-    "difficulty": "Difficulté",
-    "memorizationTime": "Temps de mémorisation : {seconds} secondes",
-    "seconds": "{seconds} s",
     "showCoordinates": "Afficher les coordonnées de l’échiquier",
     "home": "Accueil",
     "playGame": "Jouer"

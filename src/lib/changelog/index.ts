@@ -40,6 +40,37 @@ export interface ChangelogTable {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "1.2.4",
+    publishedAt: "2026-09-19T10:00:00.000+08:00",
+    title: "The game remembers how you like to play.",
+    summary:
+      "One of you asked for the game to keep your last settings instead of resetting every time. It now does, and the pages you load most paint noticeably faster on phones.",
+    groups: [
+      {
+        title: "Your last settings, remembered",
+        description:
+          "One of you wrote: \"When clicking 'New game' the view should keep the last settings we played with.\" Fair point. Every new game used to snap back to Medium.",
+        changes: [
+          "New game now opens on the pieces and look time you last played, whether that was a preset like Hard or your own mix, such as 3 pieces with 18 seconds to look.",
+          "Your settings stay put after a reload, in a new tab, and the next time you visit, on the same browser.",
+          "A link that names a level or a drill, like the buttons in the guides, still opens exactly that setup.",
+        ],
+      },
+      {
+        title: "A simpler settings page",
+        changes: [
+          "The Difficulty and time controls on the settings page never changed the game. They are gone, because the game screen is where you choose, and it now remembers. Board coordinates stay on the settings page.",
+        ],
+      },
+      {
+        title: "Faster on phones",
+        changes: [
+          "On a typical phone the home page and the game now paint their main text in about 1.4 to 1.5 seconds, down from up to 3.8. The game screen arrives ready instead of waiting for scripts, and pages no longer download fonts they never use.",
+        ],
+      },
+    ],
+  },
+  {
     version: "1.2.3",
     publishedAt: "2026-08-28T12:00:00.000+08:00",
     title: "You found the knight bug. Thank you.",

@@ -41,6 +41,15 @@ export const GAME_CONFIG_RULES: GameConfigRules = {
 
 export const VALUE_PLACEHOLDER = '{value}';
 
+// What the served form shows before hydration: the prefill the script
+// recorded on it, or Medium when there is none, including on the server.
+export function readPrefilledSettings(): GameSettings {
+  if (typeof document === 'undefined') return DEFAULT_PRESET;
+  const form = document.querySelector<HTMLElement>('[data-game-config]');
+  const [pieceCount, memorizeTime] = (form?.dataset.prefilled ?? '').split('/').map(Number);
+  return parseGameSettings({ pieceCount, memorizeTime }, GAME_CONFIG_RULES) ?? DEFAULT_PRESET;
+}
+
 // The four functions below also ship as the source of the inline script that
 // prefills the served form before hydration (see gameConfigPrefillScript), so
 // each stays self-contained: no imports, no module-scope names, and only

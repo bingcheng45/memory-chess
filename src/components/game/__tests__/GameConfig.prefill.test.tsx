@@ -102,6 +102,7 @@ describe("GameConfig prefill script", () => {
   ])("%s, exactly as React renders it", async (_name, url, stored, expected) => {
     visit(url, stored);
     const served = formState(serveWithPrefill());
+    document.body.innerHTML = "";
 
     expect({
       pressed: served.pressed,
@@ -124,15 +125,49 @@ describe("GameConfig prefill script", () => {
     ["saved 3/18", "/game", saved(3, 18)],
     ["saved 12/8", "/game", saved(12, 8)],
     ["?difficulty=easy", "/game?difficulty=easy", saved(12, 8)],
-  ])("hydrates %s without a mismatch or a change", async (_name, url, stored) => {
+  ])("hydrates %s onto the served form without a mismatch or a change", async (_name, url, stored) => {
     visit(url, stored);
     const container = serveWithPrefill();
     const served = formState(container);
+    const servedForm = container.firstElementChild;
 
     const recoverable = await hydrate(container);
 
     expect(recoverable).toEqual([]);
     expect(consoleError).not.toHaveBeenCalled();
+    expect(container.firstElementChild).toBe(servedForm);
     expect(formState(container)).toEqual(served);
+    expect(container.querySelector("[data-prefilled]")).toBeNull();
+  });
+
+  it("never writes the served Medium values back while hydrating a prefilled 3/18", async () => {
+    visit("/game", saved(3, 18));
+    const container = serveWithPrefill();
+    const written: string[] = [];
+    for (const input of container.querySelectorAll("input")) {
+      const { get, set } = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!;
+      Object.defineProperty(input, "value", {
+        get() { return get!.call(this); },
+        set(value: string) { written.push(`${this.id}=${value}`); set!.call(this, value); },
+      });
+    }
+
+    await hydrate(container);
+
+    expect(written.filter((write) => !["pieceCount=3", "memorizeTime=18"].includes(write))).toEqual([]);
+    expect(formState(container).pieceCount.value).toBe("3");
+  });
+
+  it("follows the store when it settles somewhere else than the prefill", async () => {
+    visit("/game", saved(12, 8));
+    const container = serveWithPrefill();
+    localStorage.clear();
+
+    const recoverable = await hydrate(container);
+
+    expect(recoverable).toEqual([]);
+    expect(formState(container).pressed).toEqual(["medium"]);
+    expect(formState(container)).toEqual(formState(await clientRender()));
+    expect(container.querySelector("[data-prefilled]")).toBeNull();
   });
 });

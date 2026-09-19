@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, type CSSProperties } from 'react';
+import { useState, useEffect, useRef, type CSSProperties } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import { Button } from "@/components/ui/button";
 import { useTranslations } from 'next-intl';
@@ -13,6 +13,7 @@ import {
   GAME_CONFIG_RULES,
   type DifficultyPreset,
   presetIdFor,
+  readPrefilledSettings,
   resolveGameSettings,
   VALUE_PLACEHOLDER,
 } from '@/lib/game/configPrefill';
@@ -29,23 +30,29 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     startGame, 
     gameState
   } = useGameStore();
-  const [pieceCount, setPieceCount] = useState(DEFAULT_PRESET.pieceCount);
-  const [memorizeTime, setMemorizeTime] = useState(DEFAULT_PRESET.memorizeTime);
+  const [pieceCount, setPieceCount] = useState(() => readPrefilledSettings().pieceCount);
+  const [memorizeTime, setMemorizeTime] = useState(() => readPrefilledSettings().memorizeTime);
   const selectedPreset = presetIdFor({ pieceCount, memorizeTime }, DIFFICULTY_PRESETS);
-  const lastSettings = useGameStore((state) => state.lastSettings);
+  const formRef = useRef<HTMLDivElement>(null);
 
-  // Both sources are applied after mount rather than as initial state: the
-  // served HTML is Medium, and starting the first client render anywhere else
-  // would be a hydration mismatch. Read ?difficulty= off the live location
-  // rather than via useSearchParams, which would bail /game out of static
-  // rendering and leave the served HTML without this form.
+  // The first render starts from what the served form shows, Medium or the
+  // layout script's prefill, so hydration matches the page as painted. The
+  // remembered settings or a ?difficulty= preset are then applied here, read
+  // from the live store because hydration renders with the store's
+  // pre-storage snapshot. Read the live location rather than useSearchParams,
+  // which would bail /game out of static rendering and leave the served HTML
+  // without this form.
   useEffect(() => {
-    const settings = resolveGameSettings(window.location.search, lastSettings, GAME_CONFIG_RULES);
-    if (settings) {
-      setPieceCount(settings.pieceCount);
-      setMemorizeTime(settings.memorizeTime);
-    }
-  }, [lastSettings]);
+    delete formRef.current?.dataset.prefilled;
+    const settings =
+      resolveGameSettings(
+        window.location.search,
+        useGameStore.getState().lastSettings,
+        GAME_CONFIG_RULES,
+      ) ?? DEFAULT_PRESET;
+    setPieceCount(settings.pieceCount);
+    setMemorizeTime(settings.memorizeTime);
+  }, []);
   
   function handlePresetSelect(preset: DifficultyPreset) {
     setPieceCount(preset.pieceCount);
@@ -67,6 +74,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
 
   return (
     <div
+      ref={formRef}
       data-game-config
       suppressHydrationWarning
       className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-5 sm:p-7 shadow-xl"

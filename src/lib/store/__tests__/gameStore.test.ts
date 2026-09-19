@@ -114,6 +114,15 @@ describe("remembering the last settings played", () => {
     expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 12, memorizeTime: 8 });
   });
 
+  it("keeps custom settings of 3 pieces at 18 seconds through a new-game reset", () => {
+    useGameStore.getState().startGame(3, 18);
+    expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 3, memorizeTime: 18 });
+
+    useGameStore.getState().resetGame();
+
+    expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 3, memorizeTime: 18 });
+  });
+
   it("persists the last settings", () => {
     useGameStore.getState().startGame(7, 9);
 
@@ -131,8 +140,23 @@ describe("remembering the last settings played", () => {
   });
 
   it.each([
+    [2, 2],
+    [32, 32],
+    [2, 32],
+    [32, 2],
+  ])("restores stored settings at the range ends (%i pieces, %is)", async (pieceCount, memorizeTime) => {
+    await expect(rehydrateFrom({ pieceCount, memorizeTime })).resolves.toEqual({
+      pieceCount,
+      memorizeTime,
+    });
+  });
+
+  it.each([
+    ["1 piece", { pieceCount: 1, memorizeTime: 10 }],
+    ["33 pieces", { pieceCount: 33, memorizeTime: 10 }],
+    ["1 second", { pieceCount: 6, memorizeTime: 1 }],
+    ["33 seconds", { pieceCount: 6, memorizeTime: 33 }],
     ["an out-of-range piece count", { pieceCount: 999, memorizeTime: 8 }],
-    ["an out-of-range memorize time", { pieceCount: 12, memorizeTime: 1 }],
     ["a missing memorize time", { pieceCount: 12 }],
     ["a fractional value", { pieceCount: 12.5, memorizeTime: 8 }],
     ["a numeric string", { pieceCount: "12", memorizeTime: 8 }],

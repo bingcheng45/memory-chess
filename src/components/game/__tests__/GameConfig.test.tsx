@@ -69,6 +69,16 @@ describe("GameConfig remembered settings", () => {
     expectSliders(7, 9);
   });
 
+  it("restores remembered custom settings of 3 pieces at 18 seconds", () => {
+    useGameStore.setState({ lastSettings: { pieceCount: 3, memorizeTime: 18 } });
+
+    render(<GameConfig />);
+
+    expect(screen.queryAllByRole("button", { pressed: true })).toHaveLength(0);
+    expect(screen.getByText("Custom settings")).toBeInTheDocument();
+    expectSliders(3, 18);
+  });
+
   it("starts at Medium with nothing remembered", () => {
     render(<GameConfig />);
 

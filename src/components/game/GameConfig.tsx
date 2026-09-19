@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type CSSProperties } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import { Button } from "@/components/ui/button";
 import { useTranslations } from 'next-intl';
@@ -14,6 +14,7 @@ import {
   type DifficultyPreset,
   presetIdFor,
   resolveGameSettings,
+  VALUE_PLACEHOLDER,
 } from '@/lib/game/configPrefill';
 
 interface GameConfigProps {
@@ -59,13 +60,17 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     }
   };
   
-  const sliderFill = (value: number, range: { min: number; max: number }) =>
-    ((value - range.min) / (range.max - range.min)) * 100;
-  const pieceFill = sliderFill(pieceCount, PIECE_COUNT_RANGE);
-  const timeFill = sliderFill(memorizeTime, MEMORIZE_SECONDS_RANGE);
+  const sliderStyle = (value: number, range: { min: number; max: number }) => ({
+    '--fill': `${((value - range.min) / (range.max - range.min)) * 100}%`,
+    backgroundImage: 'linear-gradient(to right, #FFB380 0%, #FFB380 var(--fill), #222222 var(--fill), #222222 100%)',
+  }) as CSSProperties;
 
   return (
-    <div className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-5 sm:p-7 shadow-xl">
+    <div
+      data-game-config
+      suppressHydrationWarning
+      className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-5 sm:p-7 shadow-xl"
+    >
       <h2 className="mb-5 text-center text-2xl font-bold text-text-primary">{t('config.title')}</h2>
       
       <div className="mb-5">
@@ -82,6 +87,9 @@ export default function GameConfig({ onStart }: GameConfigProps) {
                   : 'border-transparent text-text-secondary hover:border-peach-500/30 hover:bg-peach-500/15 hover:text-white hover:shadow-sm'
               }`}
               aria-pressed={selectedPreset === preset.id}
+              data-preset={preset.id}
+              data-description={t(`presets.${preset.id}.description`)}
+              suppressHydrationWarning
             >
               <span className="font-medium">{t(`presets.${preset.id}.label`)}</span>
               <div className="mt-1 text-xs opacity-70">
@@ -93,7 +101,12 @@ export default function GameConfig({ onStart }: GameConfigProps) {
             </Button>
           ))}
         </div>
-        <div className="mt-2 text-xs text-text-muted">
+        <div
+          data-preset-description
+          data-custom-label={t('config.customLabel')}
+          suppressHydrationWarning
+          className="mt-2 text-xs text-text-muted"
+        >
           {selectedPreset
             ? t(`presets.${selectedPreset}.description`)
             : t('config.customLabel')}
@@ -105,7 +118,12 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           <label htmlFor="pieceCount" className="text-sm font-medium text-text-secondary">
             {t('config.pieceCount')}
           </label>
-          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark">
+          <span
+            data-value-for="pieceCount"
+            data-template={VALUE_PLACEHOLDER}
+            suppressHydrationWarning
+            className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark"
+          >
             {pieceCount}
           </span>
         </div>
@@ -124,9 +142,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
                      [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-peach-500 [&::-webkit-slider-thumb]:mt-[-1.5px]
                      [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
                      [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
-          style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${pieceFill}%, #222222 ${pieceFill}%, #222222 100%)`
-          }}
+          style={sliderStyle(pieceCount, PIECE_COUNT_RANGE)}
+          suppressHydrationWarning
         />
         <div className="mt-4 flex justify-between text-xs text-text-muted">
           <span>2</span>
@@ -140,7 +157,12 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           <label htmlFor="memorizeTime" className="text-sm font-medium text-text-secondary">
             {t('config.memorizeTime')}
           </label>
-          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark">
+          <span
+            data-value-for="memorizeTime"
+            data-template={t('config.seconds', { seconds: VALUE_PLACEHOLDER })}
+            suppressHydrationWarning
+            className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark"
+          >
             {t('config.seconds', { seconds: memorizeTime })}
           </span>
         </div>
@@ -159,9 +181,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
                      [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-peach-500 [&::-webkit-slider-thumb]:mt-[-1.5px]
                      [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
                      [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
-          style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${timeFill}%, #222222 ${timeFill}%, #222222 100%)`
-          }}
+          style={sliderStyle(memorizeTime, MEMORIZE_SECONDS_RANGE)}
+          suppressHydrationWarning
         />
         <div className="mt-4 flex justify-between text-xs text-text-muted">
           <span>{t('config.seconds', { seconds: 2 })}</span>

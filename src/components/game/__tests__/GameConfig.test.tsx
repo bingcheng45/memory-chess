@@ -1,12 +1,22 @@
 import { render, screen } from "@/test-utils/intl";
 import GameConfig from "@/components/game/GameConfig";
+import { useGameStore } from "@/lib/store/gameStore";
 
-jest.mock("@/lib/store/gameStore", () => ({
-  useGameStore: () => ({ startGame: jest.fn(), gameState: {} }),
-}));
+const expectPressed = (label: RegExp) => {
+  for (const button of screen.getAllByRole("button", { pressed: true })) {
+    expect(button).toHaveAccessibleName(expect.stringMatching(label));
+  }
+  expect(screen.getByRole("button", { name: label })).toHaveAttribute("aria-pressed", "true");
+};
+
+const expectSliders = (pieceCount: number, memorizeTime: number) => {
+  expect(screen.getByLabelText("Number of Pieces")).toHaveValue(String(pieceCount));
+  expect(screen.getByLabelText("Memorization Time")).toHaveValue(String(memorizeTime));
+};
 
 afterEach(() => {
   window.history.pushState({}, "", "/");
+  useGameStore.setState({ lastSettings: null });
 });
 
 describe("GameConfig ?difficulty= deep link", () => {
@@ -26,5 +36,43 @@ describe("GameConfig ?difficulty= deep link", () => {
     render(<GameConfig />);
 
     expect(screen.getByRole("button", { name: /Medium/ })).toHaveAttribute("aria-pressed", "true");
+  });
+
+  it("wins over the remembered settings", () => {
+    useGameStore.setState({ lastSettings: { pieceCount: 12, memorizeTime: 8 } });
+    window.history.pushState({}, "", "/game?difficulty=easy");
+
+    render(<GameConfig />);
+
+    expectPressed(/Easy/);
+    expectSliders(2, 10);
+  });
+});
+
+describe("GameConfig remembered settings", () => {
+  it("restores a remembered preset", () => {
+    useGameStore.setState({ lastSettings: { pieceCount: 12, memorizeTime: 8 } });
+
+    render(<GameConfig />);
+
+    expectPressed(/Hard/);
+    expectSliders(12, 8);
+  });
+
+  it("restores remembered custom settings", () => {
+    useGameStore.setState({ lastSettings: { pieceCount: 7, memorizeTime: 9 } });
+
+    render(<GameConfig />);
+
+    expect(screen.queryAllByRole("button", { pressed: true })).toHaveLength(0);
+    expect(screen.getByText("Custom settings")).toBeInTheDocument();
+    expectSliders(7, 9);
+  });
+
+  it("starts at Medium with nothing remembered", () => {
+    render(<GameConfig />);
+
+    expectPressed(/Medium/);
+    expectSliders(6, 10);
   });
 });

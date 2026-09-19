@@ -41,10 +41,13 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   const [pieceCount, setPieceCount] = useState(6);
   const [memorizeTime, setMemorizeTime] = useState(10);
   const [selectedPreset, setSelectedPreset] = useState("medium");
+  const lastSettings = useGameStore((state) => state.lastSettings);
 
-  // Read ?difficulty= off the live location rather than via useSearchParams,
-  // which would bail /game out of static rendering and leave the served HTML
-  // without this form.
+  // Both sources are applied after mount rather than as initial state: the
+  // served HTML is Medium, and starting the first client render anywhere else
+  // would be a hydration mismatch. Read ?difficulty= off the live location
+  // rather than via useSearchParams, which would bail /game out of static
+  // rendering and leave the served HTML without this form.
   useEffect(() => {
     const difficultyParam = new URLSearchParams(window.location.search)
       .get('difficulty')
@@ -54,13 +57,13 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     const preset = DIFFICULTY_PRESETS.find(
       preset => preset.id === difficultyParam
     );
+    const settings = preset ?? lastSettings;
 
-    if (preset) {
-      setSelectedPreset(preset.id);
-      setPieceCount(preset.pieceCount);
-      setMemorizeTime(preset.memorizeTime);
+    if (settings) {
+      setPieceCount(settings.pieceCount);
+      setMemorizeTime(settings.memorizeTime);
     }
-  }, []);
+  }, [lastSettings]);
   
   // Auto-detect if current settings match a preset
   useEffect(() => {

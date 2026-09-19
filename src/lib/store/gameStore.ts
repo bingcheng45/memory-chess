@@ -4,6 +4,23 @@ import { Chess, PieceSymbol, Square } from 'chess.js';
 import { GameState, GameHistory, GamePhase, DIFFICULTY_LEVELS, DifficultyLevel } from '@/lib/types/game';
 import { generateMemorizationPosition } from '@/lib/utils/memorizationPosition';
 import { v4 as uuidv4 } from 'uuid';
+import { MEMORIZE_SECONDS_RANGE, PIECE_COUNT_RANGE } from '@/lib/reference/facts';
+
+export interface GameSettings {
+  readonly pieceCount: number;
+  readonly memorizeTime: number;
+}
+
+const isWithin = (value: unknown, range: { min: number; max: number }): value is number =>
+  Number.isInteger(value) && (value as number) >= range.min && (value as number) <= range.max;
+
+function parseLastSettings(raw: unknown): GameSettings | null {
+  if (typeof raw !== 'object' || raw === null) return null;
+  const { pieceCount, memorizeTime } = raw as Record<string, unknown>;
+  return isWithin(pieceCount, PIECE_COUNT_RANGE) && isWithin(memorizeTime, MEMORIZE_SECONDS_RANGE)
+    ? { pieceCount, memorizeTime }
+    : null;
+}
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & { 
@@ -17,6 +34,7 @@ type GameStateWithRating = GameState & {
 interface GameStore {
   // Game state
   gameState: GameState;
+  lastSettings: GameSettings | null;
   gamePhase: GamePhase;
   history: GameHistory[];
   chess: Chess | null;
@@ -237,6 +255,7 @@ export const useGameStore = create<GameStore>()(
       gameState: initialGameState,
       gamePhase: 'configuration' as GamePhase,
       history: [], // Empty history array
+      lastSettings: null,
       chess: initialChess, // Use the initialized chess instance
       memorizationChess: null,
       
@@ -267,9 +286,10 @@ export const useGameStore = create<GameStore>()(
             streak: get().gameState.streak || 0,
           },
           gamePhase: GamePhase.CONFIGURATION,
+          lastSettings: { pieceCount, memorizeTime },
         });
       },
-      
+
       stopGame: () => {
         const currentState = get().gameState;
         set({ 
@@ -732,7 +752,16 @@ export const useGameStore = create<GameStore>()(
           skillRating: state.gameState.skillRating,
         },
         history: state.history,
+        lastSettings: state.lastSettings,
       }),
+      // localStorage is user-editable and outlives app versions, so a stored
+      // value that would put the configuration form out of range is dropped.
+      merge: (persisted, current) => {
+        const stored = (typeof persisted === 'object' && persisted !== null
+          ? persisted
+          : {}) as Partial<GameStore>;
+        return { ...current, ...stored, lastSettings: parseLastSettings(stored.lastSettings) };
+      },
     }
   )
 );

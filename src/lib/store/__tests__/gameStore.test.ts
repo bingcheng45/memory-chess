@@ -82,3 +82,65 @@ describe("recording the player's solution", () => {
     expect(useGameStore.getState().gameState.userPosition).toBe(before);
   });
 });
+
+describe("remembering the last settings played", () => {
+  const STORAGE_KEY = "memory-chess-storage";
+
+  const rehydrateFrom = async (lastSettings: unknown) => {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ state: { lastSettings }, version: 0 }),
+    );
+    await useGameStore.persist.rehydrate();
+    return useGameStore.getState().lastSettings;
+  };
+
+  afterEach(() => {
+    useGameStore.getState().resetGame();
+    useGameStore.setState({ lastSettings: null });
+    localStorage.clear();
+  });
+
+  it("records the settings a round was started with", () => {
+    useGameStore.getState().startGame(12, 8);
+
+    expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 12, memorizeTime: 8 });
+  });
+
+  it("keeps the last settings through a new-game reset", () => {
+    useGameStore.getState().startGame(12, 8);
+    useGameStore.getState().resetGame();
+
+    expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 12, memorizeTime: 8 });
+  });
+
+  it("persists the last settings", () => {
+    useGameStore.getState().startGame(7, 9);
+
+    const { partialize } = useGameStore.persist.getOptions();
+    expect(partialize!(useGameStore.getState())).toMatchObject({
+      lastSettings: { pieceCount: 7, memorizeTime: 9 },
+    });
+  });
+
+  it("restores valid stored settings", async () => {
+    await expect(rehydrateFrom({ pieceCount: 12, memorizeTime: 8 })).resolves.toEqual({
+      pieceCount: 12,
+      memorizeTime: 8,
+    });
+  });
+
+  it.each([
+    ["an out-of-range piece count", { pieceCount: 999, memorizeTime: 8 }],
+    ["an out-of-range memorize time", { pieceCount: 12, memorizeTime: 1 }],
+    ["a missing memorize time", { pieceCount: 12 }],
+    ["a fractional value", { pieceCount: 12.5, memorizeTime: 8 }],
+    ["a numeric string", { pieceCount: "12", memorizeTime: 8 }],
+    ["a string", "abc"],
+    ["null", null],
+  ])("drops %s", async (_label, stored) => {
+    useGameStore.setState({ lastSettings: { pieceCount: 6, memorizeTime: 10 } });
+
+    await expect(rehydrateFrom(stored)).resolves.toBeNull();
+  });
+});

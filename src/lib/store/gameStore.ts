@@ -31,7 +31,7 @@ interface GameStore {
   
   // Memory game specific actions
   startMemorizationPhase: () => void;
-  endMemorizationPhase: () => void;
+  endMemorizationPhase: (actualMemorizeTimeOverride?: number) => void;
   startSolutionPhase: () => void;
   submitSolution: (completionTimeOverride?: number) => void;
   placePiece: (square: string, piece: string) => void;
@@ -415,12 +415,13 @@ export const useGameStore = create<GameStore>()(
         }));
       },
       
-      endMemorizationPhase: () => {
+      endMemorizationPhase: (actualMemorizeTimeOverride) => {
         const now = Date.now();
         const state = get().gameState;
         const memorizeStartTime = state.memorizeStartTime || now;
-        const actualMemorizeTime = (now - memorizeStartTime) / 1000; // Calculate actual time spent in seconds
-        
+        const actualMemorizeTime =
+          actualMemorizeTimeOverride ?? (now - memorizeStartTime) / 1000;
+
         set((state) => ({
           gameState: {
             ...state.gameState,

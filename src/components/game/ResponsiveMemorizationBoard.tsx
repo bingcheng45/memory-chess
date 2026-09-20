@@ -1,43 +1,72 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useGameStore } from "@/lib/store/gameStore";
 import { useSettingsStore } from "@/stores/settingsStore";
 import { ChessPiece } from "@/types/chess";
 import ResponsiveChessBoard from "./ResponsiveChessBoard";
 import { fenToChessPieces } from "@/utils/chessPieces";
 import { Button } from "@/components/ui/button";
-import { playSound } from "@/lib/utils/soundEffects";
+import { playSound, stopTimerSound } from "@/lib/utils/soundEffects";
+import {
+  deadlineFrom,
+  elapsedMs,
+  fireAtDeadline,
+  now,
+  remainingMs,
+  subscribe,
+  type Monotonic,
+} from "@/lib/game/clock";
 import ActiveGameLayout from "./ActiveGameLayout";
 
 import { useTranslations } from "next-intl";
+
+const URGENT_SECONDS = 3;
+const WARNING_SECONDS = 5;
+const ALL_URGENCY_CLASSES = ["text-peach-500", "text-orange-500", "text-red-500", "animate-pulse"];
+
+function urgencyClasses(seconds: number): string[] {
+  if (seconds <= URGENT_SECONDS) return ["text-red-500", "animate-pulse"];
+  if (seconds <= WARNING_SECONDS) return ["text-orange-500"];
+  return ["text-peach-500"];
+}
+
 export default function ResponsiveMemorizationBoard() {
   const t = useTranslations("game");
   const { chess, gameState, endMemorizationPhase, startSolutionPhase } =
     useGameStore();
   const showCoordinates = useSettingsStore((state) => state.showCoordinates);
   const [pieces, setPieces] = useState<ChessPiece[]>([]);
-  const [timeRemaining, setTimeRemaining] = useState(
-    gameState.memorizeTime * 1000,
-  ); // Store time in milliseconds
   const [isLoading, setIsLoading] = useState(true);
 
-  // Handle skipping memorization phase
-  const handleSkip = () => {
-    console.log("Skipping memorization phase");
-    playSound("timerEnd");
-    endMemorizationPhase();
+  const clockRef = useRef<HTMLDivElement>(null);
+  const secondsRef = useRef<HTMLSpanElement>(null);
+  const hundredthsRef = useRef<HTMLSpanElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
+  const startedAtRef = useRef<Monotonic | null>(null);
+  const endedRef = useRef(false);
+
+  const { isMemorizationPhase, memorizeTime, pieceCount } = gameState;
+
+  const endPhase = useCallback(() => {
+    if (endedRef.current) return;
+    endedRef.current = true;
+    const startedAt = startedAtRef.current;
+    endMemorizationPhase(startedAt === null ? undefined : elapsedMs(startedAt, now()) / 1000);
     startSolutionPhase();
+  }, [endMemorizationPhase, startSolutionPhase]);
+
+  const handleSkip = () => {
+    if (endedRef.current) return;
+    playSound("timerEnd");
+    endPhase();
   };
 
-  // Convert chess.js position to ChessPiece array
   useEffect(() => {
     if (!chess) return;
 
     try {
       setIsLoading(true);
-      console.log("Parsing chess position for memorization:", chess.fen());
-
       setPieces(fenToChessPieces(chess.fen()));
       setIsLoading(false);
     } catch (error) {
@@ -46,60 +75,45 @@ export default function ResponsiveMemorizationBoard() {
     }
   }, [chess]);
 
-  // Countdown timer with milliseconds for smoother animation
   useEffect(() => {
-    if (!gameState.isMemorizationPhase) return;
+    if (!isMemorizationPhase) return;
 
-    // Ensure we start with the exact memorization time
-    console.log(
-      "Starting memorization countdown from",
-      gameState.memorizeTime,
-      "seconds",
-    );
+    const durationMs = memorizeTime * 1000;
+    const startedAt = now();
+    const deadline = deadlineFrom(startedAt, durationMs);
+    startedAtRef.current = startedAt;
+    endedRef.current = false;
 
-    // Set initial time (convert seconds to milliseconds)
-    setTimeRemaining(gameState.memorizeTime * 1000);
+    const atDeadline = fireAtDeadline(deadline, () => {
+      stopTimerSound();
+      playSound("timerEnd");
+      endPhase();
+    });
 
-    // Get the start time to calculate elapsed time
-    const startTime = Date.now();
-    const endTime = startTime + gameState.memorizeTime * 1000;
+    let paintedSeconds = -1;
 
-    // Update time every 33ms (approximately 30fps) for smooth animation
-    const timer = setInterval(() => {
-      const now = Date.now();
-      const remaining = Math.max(0, endTime - now);
+    return subscribe((at) => {
+      const remaining = remainingMs(deadline, at);
+      const seconds = Math.floor(remaining / 1000);
 
-      setTimeRemaining(remaining);
-
-      // Stop the timer when we reach 0
-      if (remaining <= 0) {
-        clearInterval(timer);
+      if (secondsRef.current && seconds !== paintedSeconds) {
+        secondsRef.current.textContent = String(seconds);
+        clockRef.current?.classList.remove(...ALL_URGENCY_CLASSES);
+        clockRef.current?.classList.add(...urgencyClasses(seconds));
+        paintedSeconds = seconds;
       }
-    }, 33);
+      if (hundredthsRef.current) {
+        hundredthsRef.current.textContent = `.${Math.floor((remaining % 1000) / 10)
+          .toString()
+          .padStart(2, "0")}`;
+      }
+      if (barRef.current) {
+        barRef.current.style.transform = `scaleX(${(durationMs - remaining) / durationMs})`;
+      }
 
-    // Clean up timer when component unmounts or phase changes
-    return () => {
-      clearInterval(timer);
-    };
-  }, [gameState.isMemorizationPhase, gameState.memorizeTime]);
-
-  // Calculate seconds and milliseconds for display
-  const seconds = Math.floor(timeRemaining / 1000);
-  const milliseconds = Math.floor((timeRemaining % 1000) / 10);
-
-  // Calculate progress percentage for the timer
-  const timerProgress = useMemo(() => {
-    const totalTime = gameState.memorizeTime * 1000; // Total time in milliseconds
-    const elapsedTime = totalTime - timeRemaining;
-    return Math.max(0, Math.min(100, (elapsedTime / totalTime) * 100));
-  }, [timeRemaining, gameState.memorizeTime]);
-
-  // Get urgency class based on time left
-  const getUrgencyClass = () => {
-    if (seconds <= 3) return "text-red-500 animate-pulse";
-    if (seconds <= 5) return "text-orange-500";
-    return "text-peach-500";
-  };
+      atDeadline(at);
+    });
+  }, [isMemorizationPhase, memorizeTime, endPhase]);
 
   return (
     <ActiveGameLayout
@@ -109,23 +123,25 @@ export default function ResponsiveMemorizationBoard() {
             <div className="mb-0.5 text-sm font-bold text-text-primary sm:text-base">{t("memorize.title")}</div>
 
             <div
-              className={`text-3xl font-bold leading-none transition-colors sm:text-4xl ${getUrgencyClass()}`}
+              ref={clockRef}
+              className={`text-3xl font-bold leading-none transition-colors sm:text-4xl ${urgencyClasses(memorizeTime).join(" ")}`}
             >
-              <span>{seconds}</span>
-              <span className="text-lg opacity-50 sm:text-xl">
-                .{milliseconds.toString().padStart(2, "0")}
+              <span ref={secondsRef}>{memorizeTime}</span>
+              <span ref={hundredthsRef} className="text-lg opacity-50 sm:text-xl">
+                .00
               </span>
             </div>
 
             <div className="mx-auto mt-1 h-1.5 w-full max-w-48 overflow-hidden rounded-full bg-bg-light">
               <div
-                className="h-full bg-peach-500 transition-all"
-                style={{ width: `${timerProgress}%` }}
+                ref={barRef}
+                className="h-full w-full origin-left bg-peach-500 will-change-transform"
+                style={{ transform: "scaleX(0)" }}
               ></div>
             </div>
 
             <div className="mt-1 truncate text-xs text-text-secondary">
-              {t("memorize.rememberPieces", { count: gameState.pieceCount })}
+              {t("memorize.rememberPieces", { count: pieceCount })}
             </div>
           </div>
 

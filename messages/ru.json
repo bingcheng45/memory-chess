@@ -314,6 +314,12 @@
       "date": "Дата"
     }
   },
+  "country": {
+    "label": "Страна",
+    "world": "Мир",
+    "searchPlaceholder": "Поиск стран",
+    "noResults": "Страны не найдены"
+  },
   "settings": {
     "meta": {
       "title": "Настройки Memory Chess",

@@ -314,6 +314,12 @@
       "date": "Päivä"
     }
   },
+  "country": {
+    "label": "Maa",
+    "world": "Maailma",
+    "searchPlaceholder": "Hae maita",
+    "noResults": "Maita ei löytynyt"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess -asetukset",

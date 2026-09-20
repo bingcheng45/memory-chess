@@ -314,6 +314,12 @@
       "date": "Fecha"
     }
   },
+  "country": {
+    "label": "País",
+    "world": "Mundo",
+    "searchPlaceholder": "Buscar países",
+    "noResults": "No se encontraron países"
+  },
   "settings": {
     "meta": {
       "title": "Ajustes de Memory Chess",

@@ -314,6 +314,12 @@
       "date": "तारीख़"
     }
   },
+  "country": {
+    "label": "देश",
+    "world": "विश्व",
+    "searchPlaceholder": "देश खोजें",
+    "noResults": "कोई देश नहीं मिला"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess सेटिंग",

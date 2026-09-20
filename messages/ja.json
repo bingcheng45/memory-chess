@@ -314,6 +314,12 @@
       "date": "日付"
     }
   },
+  "country": {
+    "label": "国",
+    "world": "世界",
+    "searchPlaceholder": "国を検索",
+    "noResults": "国が見つかりません"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess の設定",

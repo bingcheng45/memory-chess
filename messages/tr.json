@@ -314,6 +314,12 @@
       "date": "Tarih"
     }
   },
+  "country": {
+    "label": "Ülke",
+    "world": "Dünya",
+    "searchPlaceholder": "Ülke ara",
+    "noResults": "Ülke bulunamadı"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess ayarları",

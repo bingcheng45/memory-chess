@@ -314,6 +314,12 @@
       "date": "Datum"
     }
   },
+  "country": {
+    "label": "Land",
+    "world": "Wereld",
+    "searchPlaceholder": "Zoek landen",
+    "noResults": "Geen landen gevonden"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess-instellingen",

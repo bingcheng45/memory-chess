@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { fireEvent, render, screen } from "@/test-utils/intl";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { WORLD_CODE, type CountryCode } from "@/lib/leaderboard/countries";
 
 const SINGAPORE = "SG" as CountryCode;
@@ -108,6 +109,60 @@ describe("CountryPicker", () => {
     expect(codeOf()).toBe(last);
   });
 
+  it.each([
+    ["turkiye", "TR"],
+    ["cote d", "CI"],
+    ["aland", "AX"],
+    ["reunion", "RE"],
+  ])("finds the country behind %s, typed without its diacritics", (typed, code) => {
+    render(<Harness initial={WORLD_CODE} />);
+
+    search(openPicker(), typed);
+
+    const ids = screen.getAllByRole("option").map((option) => option.id);
+    expect(ids).toContain(`country-option-${code}`);
+  });
+
+  it("selects the option the mouse presses", () => {
+    const onChange = jest.fn();
+    render(<Harness initial={WORLD_CODE} onChange={onChange} />);
+
+    const input = openPicker();
+    search(input, "singa");
+    fireEvent.mouseDown(screen.getByRole("option", { name: /Singapore/ }));
+
+    expect(onChange).toHaveBeenCalledWith("SG");
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+    expect(trigger()).toHaveTextContent("Singapore");
+  });
+
+  it("closes without selecting when a pointer lands outside it", () => {
+    const onChange = jest.fn();
+    render(
+      <div>
+        <Harness initial={WORLD_CODE} onChange={onChange} />
+        <p data-testid="outside">elsewhere</p>
+      </div>,
+    );
+
+    openPicker();
+    expect(screen.getByRole("listbox")).toBeInTheDocument();
+
+    fireEvent.pointerDown(screen.getByTestId("outside"));
+
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it("stays open when a pointer lands inside it", () => {
+    render(<Harness initial={WORLD_CODE} />);
+
+    const input = openPicker();
+    fireEvent.pointerDown(input);
+
+    expect(screen.getByRole("listbox")).toBeInTheDocument();
+  });
+
   it("says so when the query matches no country", () => {
     render(<Harness initial={WORLD_CODE} />);
 
@@ -127,6 +182,25 @@ describe("CountryPicker", () => {
 
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
     expect(trigger()).toHaveFocus();
+  });
+
+  it("keeps Escape for the list, not for the dialog around it", () => {
+    render(
+      <Dialog defaultOpen>
+        <DialogContent>
+          <DialogTitle>Submit to Leaderboard</DialogTitle>
+          <Harness initial={WORLD_CODE} />
+        </DialogContent>
+      </Dialog>,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /World/ }));
+    expect(screen.getByRole("listbox")).toBeInTheDocument();
+
+    fireEvent.keyDown(screen.getByRole("combobox"), { key: "Escape" });
+
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
 
   it("preselects the current choice when reopened", () => {

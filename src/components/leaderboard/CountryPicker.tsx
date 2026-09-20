@@ -26,6 +26,32 @@ const toOption = (code: CountryCode, name: string): CountryOption => ({
   search: `${fold(name)} ${code.toLowerCase()}`,
 });
 
+const LIST_MAX_HEIGHT_PX = 256;
+const LIST_MIN_HEIGHT_PX = 120;
+const VIEWPORT_MARGIN_PX = 12;
+const SEARCH_ROW_HEIGHT_PX = 44;
+
+interface Placement {
+  readonly above: boolean;
+  readonly maxHeight: number;
+}
+
+const BELOW_BY_DEFAULT: Placement = { above: false, maxHeight: LIST_MAX_HEIGHT_PX };
+
+// The popup lives inside the submission dialog rather than a portal, so that a
+// click in it is not an outside click that dismisses the dialog. It therefore
+// has to fit the viewport itself: flip above the trigger when below is tighter,
+// and never grow past the edge.
+function placeAgainst(trigger: HTMLElement | null): Placement {
+  const rect = trigger?.getBoundingClientRect();
+  if (!rect || rect.height === 0) return BELOW_BY_DEFAULT;
+  const below = window.innerHeight - rect.bottom - VIEWPORT_MARGIN_PX - SEARCH_ROW_HEIGHT_PX;
+  const above = rect.top - VIEWPORT_MARGIN_PX - SEARCH_ROW_HEIGHT_PX;
+  const flip = below < LIST_MIN_HEIGHT_PX && above > below;
+  const room = flip ? above : below;
+  return { above: flip, maxHeight: Math.max(0, Math.min(LIST_MAX_HEIGHT_PX, room)) };
+}
+
 const MOVES = new Map<string, (index: number, count: number) => number>([
   ["ArrowDown", (index, count) => (index + 1) % count],
   ["ArrowUp", (index, count) => (index - 1 + count) % count],
@@ -49,6 +75,7 @@ export default function CountryPicker({ value, onChange, id, disabled }: Country
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [placement, setPlacement] = useState<Placement>(BELOW_BY_DEFAULT);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -64,6 +91,31 @@ export default function CountryPicker({ value, onChange, id, disabled }: Country
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
+  }, [open]);
+
+  // The submission dialog dismisses on Escape from a document capture listener
+  // registered before this one, and same-phase listeners run in registration
+  // order, so the only place left to claim Escape for the list is one phase up.
+  useEffect(() => {
+    if (!open) return;
+    const claimEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      event.stopPropagation();
+      setOpen(false);
+      setQuery("");
+      triggerRef.current?.focus();
+    };
+    window.addEventListener("keydown", claimEscape, { capture: true });
+    return () => window.removeEventListener("keydown", claimEscape, { capture: true });
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const place = () => setPlacement(placeAgainst(triggerRef.current));
+    place();
+    window.addEventListener("resize", place);
+    return () => window.removeEventListener("resize", place);
   }, [open]);
 
   useEffect(() => {
@@ -114,13 +166,6 @@ export default function CountryPicker({ value, onChange, id, disabled }: Country
       if (activeOption) select(activeOption.code);
       return;
     }
-    if (event.key === "Escape") {
-      event.preventDefault();
-      // The submission dialog also dismisses on Escape; while the list is open it is ours.
-      event.stopPropagation();
-      closeToTrigger();
-      return;
-    }
     if (event.key === "Tab") close();
   };
 
@@ -147,7 +192,12 @@ export default function CountryPicker({ value, onChange, id, disabled }: Country
         <span className="min-w-0 truncate">{selectedName}</span>
       </button>
       {open && (
-        <div className="absolute left-0 top-full z-50 mt-1 w-full rounded-md border border-bg-light bg-bg-card text-text-primary shadow-lg">
+        <div
+          data-placement={placement.above ? "above" : "below"}
+          className={`absolute left-0 z-50 w-full rounded-md border border-bg-light bg-bg-card text-text-primary shadow-lg ${
+            placement.above ? "bottom-full mb-1" : "top-full mt-1"
+          }`}
+        >
           <input
             ref={inputRef}
             type="text"
@@ -169,7 +219,12 @@ export default function CountryPicker({ value, onChange, id, disabled }: Country
           {filtered.length === 0 ? (
             <p className="px-3 py-3 text-sm text-text-muted">{t("noResults")}</p>
           ) : (
-            <ul role="listbox" id={listboxId} className="max-h-64 overflow-y-auto py-1">
+            <ul
+              role="listbox"
+              id={listboxId}
+              style={{ maxHeight: `${placement.maxHeight}px` }}
+              className="overflow-y-auto overscroll-contain py-1"
+            >
               {filtered.map((option, index) => (
                 <li
                   key={option.code}

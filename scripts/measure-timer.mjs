@@ -27,6 +27,7 @@ function parseArgs(argv) {
     cpus: [1, 4, 6],
     durations: [2, 5, 10],
     screencast: null,
+    hiddenTab: false,
   };
   for (let i = 0; i < argv.length; i++) {
     const flag = argv[i];
@@ -36,6 +37,7 @@ function parseArgs(argv) {
     else if (flag === "--cpu") args.cpus = argv[++i].split(",").map(Number);
     else if (flag === "--durations") args.durations = argv[++i].split(",").map(Number);
     else if (flag === "--screencast") args.screencast = argv[++i];
+    else if (flag === "--hidden-tab") args.hiddenTab = true;
     else {
       console.error(`unknown flag ${flag}`);
       process.exit(2);
@@ -339,6 +341,85 @@ async function runOnce({ base, cpu, memorizeSeconds, screencastDir }) {
   }
 }
 
+const RESULT_TIMES = `[...document.querySelectorAll(".font-mono")]
+  .map((el) => (el.textContent || "").trim())
+  .filter((text) => /^[0-9]{2}:[0-9]{2}:[0-9]{3}$/.test(text))
+  .map((text) => {
+    const [minutes, seconds, milliseconds] = text.split(":");
+    return Number(minutes) * 60 + Number(seconds) + Number(milliseconds) / 1000;
+  })`;
+
+/**
+ * Hides the tab across the deadline and reads back the memorize time the round
+ * recorded. Frames stop while a page is frozen, so the wake-up frame is however
+ * long the player was away, and that figure reaches the score.
+ */
+async function runHiddenTabCheck({ base, cpu, memorizeSeconds, awaySeconds }) {
+  const { proc, profile, wsUrl } = await launchChrome();
+  try {
+    const cdp = await connect(wsUrl);
+    const evaluate = async (expression) => {
+      const { result } = await cdp.send("Runtime.evaluate", { returnByValue: true, expression });
+      return result.value;
+    };
+
+    await Promise.all([cdp.send("Page.enable"), cdp.send("Runtime.enable")]);
+    await cdp.send("Emulation.setCPUThrottlingRate", { rate: cpu });
+    await cdp.send("Emulation.setDeviceMetricsOverride", MOBILE);
+    await cdp.send("Page.addScriptToEvaluateOnNewDocument", { source: PROBE });
+    await cdp.send("Page.navigate", { url: `${base}/game?pieceCount=${PIECE_COUNT}&memorizeTime=${memorizeSeconds}` });
+
+    await poll(() => evaluate("(window.__timerProbe?.memorize.length ?? 0) > 0"), 20_000, "countdown never appeared");
+    await sleep(600);
+
+    const framesBefore = await evaluate("window.__timerProbe.frames.length");
+    let froze = true;
+    try {
+      await cdp.send("Page.setWebLifecycleState", { state: "frozen" });
+    } catch {
+      froze = false;
+    }
+    await sleep(awaySeconds * 1000);
+    const framesAfter = await evaluate("window.__timerProbe.frames.length");
+    if (froze) await cdp.send("Page.setWebLifecycleState", { state: "active" });
+    await sleep(1_000);
+
+    // Headless Chrome never leaves visibilityState "hidden" after a freeze, and
+    // a hidden page gets no frames, so the round cannot be resumed here.
+    const visibility = await evaluate("document.visibilityState");
+    if (visibility !== "visible") {
+      return {
+        cpu,
+        memorizeSeconds,
+        awaySeconds,
+        framesWhileHidden: framesAfter - framesBefore,
+        inconclusive: `the page stayed ${visibility} after thawing, so it never got another frame`,
+      };
+    }
+
+    await poll(() => evaluate(`!!document.querySelector('[aria-label="Select white pieces"]')`), 20_000, "phase never changed");
+    await evaluate(`[...document.querySelectorAll("button")].find((b) => b.textContent.trim() === "Submit")?.click()`);
+    await poll(() => evaluate(`!!document.getElementById("game-result-heading")`), 20_000, "result screen never appeared");
+
+    const times = await evaluate(RESULT_TIMES);
+    return {
+      cpu,
+      memorizeSeconds,
+      awaySeconds,
+      framesWhileHidden: framesAfter - framesBefore,
+      recordedTimes: times,
+      reportedMemorizeSeconds: times.length ? Math.max(...times) : null,
+    };
+  } finally {
+    const exited = new Promise((r) => proc.once("exit", r));
+    proc.kill();
+    await Promise.race([exited, sleep(5_000)]);
+    try {
+      rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 });
+    } catch {}
+  }
+}
+
 function analyse(probe, { cpu, memorizeSeconds }) {
   const configuredMs = memorizeSeconds * 1000;
   const memorize = probe.memorize;
@@ -480,6 +561,25 @@ function printTable(label, results) {
 }
 
 const args = parseArgs(process.argv.slice(2));
+
+if (args.hiddenTab) {
+  const check = await runHiddenTabCheck({ base: args.base, cpu: 4, memorizeSeconds: 2, awaySeconds: 20 });
+  console.log(JSON.stringify(check, null, 2));
+  if (check.framesWhileHidden > 0) {
+    console.log("\nINCONCLUSIVE: the page kept getting frames while hidden, so the round never stalled.");
+    process.exit(0);
+  }
+  if (check.inconclusive) {
+    console.log(`\nINCONCLUSIVE: ${check.inconclusive}. The clamp is covered in jest instead.`);
+    process.exit(0);
+  }
+  const overreported = check.reportedMemorizeSeconds - check.memorizeSeconds;
+  console.log(
+    `\n${overreported <= 0.05 ? "PASS" : "FAIL"}: ${check.awaySeconds}s hidden across a ${check.memorizeSeconds}s round reported ${check.reportedMemorizeSeconds}s of memorizing`,
+  );
+  process.exit(overreported <= 0.05 ? 0 : 1);
+}
+
 const results = [];
 
 for (const cpu of args.cpus) {

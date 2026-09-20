@@ -182,6 +182,47 @@ describe("subscribe", () => {
     expect(endPhase).toHaveBeenCalledTimes(1);
   });
 
+  it("asks for a new frame when the tab wakes up with a dropped one", () => {
+    const handler = jest.fn();
+    const stop = subscribe(handler);
+
+    advanceTo(1_016);
+    pendingFrames.clear();
+    clock = 40_000;
+    document.dispatchEvent(new Event("visibilitychange"));
+    advanceTo(40_016);
+
+    expect(handler).toHaveBeenCalledTimes(2);
+    expect(handler).toHaveBeenLastCalledWith(40_016);
+
+    stop();
+  });
+
+  it("leaves the loop alone while the tab is still hidden", () => {
+    const handler = jest.fn();
+    const stop = subscribe(handler);
+    advanceTo(1_016);
+
+    const visibility = jest.spyOn(document, "visibilityState", "get").mockReturnValue("hidden");
+    pendingFrames.clear();
+    document.dispatchEvent(new Event("visibilitychange"));
+
+    expect(pendingFrames.size).toBe(0);
+
+    visibility.mockRestore();
+    stop();
+  });
+
+  it("stops listening for wake-ups once the last subscriber leaves", () => {
+    const handler = jest.fn();
+    subscribe(handler)();
+
+    pendingFrames.clear();
+    document.dispatchEvent(new Event("visibilitychange"));
+
+    expect(pendingFrames.size).toBe(0);
+  });
+
   it("ends the phase once when the tab wakes up past the deadline", () => {
     const deadline = deadlineFrom(now(), 2_000);
     const endPhase = jest.fn();

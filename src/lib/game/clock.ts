@@ -54,16 +54,35 @@ function pump(): void {
 }
 
 /**
+ * Insurance, not a fix for anything observed. A hidden page gets no frames, and
+ * a round whose pending frame request were ever dropped while backgrounded
+ * would hang with no way back. Asking for a fresh frame on each wake-up
+ * converges the loop to running; cancelling an id that already fired is
+ * harmless, and a live request is replaced rather than doubled.
+ */
+const WAKE_EVENTS = ["visibilitychange", "resume"] as const;
+
+function restart(): void {
+  if (handlers.size === 0 || document.visibilityState === "hidden") return;
+  if (frame !== null) cancelAnimationFrame(frame);
+  frame = requestAnimationFrame(pump);
+}
+
+/**
  * Adds `handler` to the one shared frame loop, which runs only while something
  * is subscribed. Returns the unsubscribe.
  */
 export function subscribe(handler: FrameHandler): () => void {
+  const first = handlers.size === 0;
   handlers.add(handler);
+  if (first) for (const event of WAKE_EVENTS) document.addEventListener(event, restart);
   if (frame === null) frame = requestAnimationFrame(pump);
 
   return () => {
     handlers.delete(handler);
-    if (handlers.size > 0 || frame === null) return;
+    if (handlers.size > 0) return;
+    for (const event of WAKE_EVENTS) document.removeEventListener(event, restart);
+    if (frame === null) return;
     cancelAnimationFrame(frame);
     frame = null;
   };

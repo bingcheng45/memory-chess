@@ -347,7 +347,9 @@ function analyse(probe, { cpu, memorizeSeconds }) {
   if (!solution.length) throw new Error("no placement count-up samples; the phase never changed");
 
   const phaseStart = memorize[0].t;
-  const phaseEnd = solution[0].t;
+  // The countdown node leaving the document is checked on every mutation, so it
+  // dates the phase change without the probe's node-discovery latency.
+  const phaseEnd = probe.memorizeGoneAt ?? solution[0].t;
   const zeroSample = memorize.find((sample) => countdownValue(sample.v) === 0);
 
   const memorizeWindow = frameStats(probe.frames, phaseStart, phaseEnd);
@@ -381,7 +383,12 @@ function analyse(probe, { cpu, memorizeSeconds }) {
       firstValue: solution[0].v,
       lastValue: solution[solution.length - 1].v,
       updates: solution.length,
-      driftMs: round(countupValue(solution[solution.length - 1].v) * 1000 - (solutionEnd - phaseEnd)),
+      // Measured between two displayed values, so no mount or discovery latency
+      // lands in it: purely whether the count-up advances at real time.
+      driftMs: round(
+        (countupValue(solution[solution.length - 1].v) - countupValue(solution[0].v)) * 1000 -
+          (solutionEnd - solution[0].t),
+      ),
       gaps: gapStats(solution.map((sample) => sample.t)),
       backwardsSteps: monotonicBreaks(solution, countupValue, "up"),
       frames: solutionWindow,

@@ -11,7 +11,8 @@
     "validate:messages": "node scripts/validate-messages.mjs",
     "audit:adsense": "node scripts/audit-adsense.mjs",
     "postinstall": "npm install @vercel/analytics@1.5.0 @vercel/speed-insights@1.2.0 --no-save",
-    "measure:lcp": "node scripts/measure-lcp.mjs"
+    "measure:lcp": "node scripts/measure-lcp.mjs",
+    "measure:timer": "node scripts/measure-timer.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

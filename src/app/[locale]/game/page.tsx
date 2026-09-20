@@ -61,7 +61,6 @@ function GamePageContent() {
   const [solutionPieces, setSolutionPieces] = useState<ChessPiece[]>([]);
   const [isSubmissionFlashVisible, setIsSubmissionFlashVisible] = useState(false);
   const solutionStartRef = useRef<Monotonic | null>(null);
-  const elapsedSecondsRef = useRef(0);
   const countUpRef = useRef<HTMLDivElement>(null);
   const timerWarningPlayedRef = useRef(false);
   const timerCuePlayedRef = useRef(false);
@@ -202,7 +201,6 @@ function GamePageContent() {
     if (!gameState.isSolutionPhase) {
       stopTimerSound();
       solutionStartRef.current = null;
-      elapsedSecondsRef.current = 0;
       return;
     }
     if (isSubmissionFlashVisible) return;
@@ -213,7 +211,6 @@ function GamePageContent() {
 
     return subscribe((at) => {
       const elapsed = elapsedMs(startedAt, at);
-      elapsedSecondsRef.current = elapsed / 1000;
 
       if (countUpRef.current) {
         countUpRef.current.textContent = formatTimeWithMilliseconds(elapsed / 1000);
@@ -232,9 +229,7 @@ function GamePageContent() {
     stopTimerSound(); // Stop any playing timer sound
     playSound('click');
     const startedAt = solutionStartRef.current;
-    const frozenElapsedTime =
-      startedAt === null ? elapsedSecondsRef.current : elapsedMs(startedAt, now()) / 1000;
-    elapsedSecondsRef.current = frozenElapsedTime;
+    const frozenElapsedTime = startedAt === null ? 0 : elapsedMs(startedAt, now()) / 1000;
     if (countUpRef.current) {
       countUpRef.current.textContent = formatTimeWithMilliseconds(frozenElapsedTime);
     }

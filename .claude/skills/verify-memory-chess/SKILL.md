@@ -37,7 +37,7 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs <drive-script.mjs> \
   --evidence .verify-evidence/<run-name> [--base http://127.0.0.1:4517]
 ```
 
-`cdp.mjs` launches its own headless, muted Chrome with a throwaway profile, connects over CDP, runs your drive script, prints `PASS`/`FAIL` plus the script's return value, and always kills the Chrome it launched. A drive script default-exports `async (page, { baseUrl, evidenceDir }) => result` with this `page` API: `goto(url)`, `eval(expr)`, `waitFor(expr, timeoutMs)`, `click(selector, text?)` (with `text`, prefers an exact trimmed match over a substring match; `clickText` is the same call), `screenshot(name)`, `sleep(ms)`.
+`cdp.mjs` launches its own headless, muted Chrome with a throwaway profile, connects over CDP, runs your drive script, prints `PASS`/`FAIL` plus the script's return value, and always kills the Chrome it launched. A drive script default-exports `async (page, { baseUrl, evidenceDir }) => result` with this `page` API: `goto(url)`, `eval(expr)`, `waitFor(expr, timeoutMs)`, `click(selector, text?)` (with `text`, prefers an exact trimmed match over a substring match; `clickText` is the same call), `screenshot(name)`, `sleep(ms)`, `send(method, params)` (raw CDP passthrough, for viewport emulation via `Emulation.setDeviceMetricsOverride` and other domains the wrapped API does not cover).
 
 A complete worked example, a full game round, ships as [`helpers/drive-game-round.mjs`](helpers/drive-game-round.mjs):
 

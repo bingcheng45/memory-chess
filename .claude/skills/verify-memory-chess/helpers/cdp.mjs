@@ -135,6 +135,9 @@ function makePage(cdp, evidenceDir) {
   cdp.onLoad = () => loadResolve?.();
 
   const page = {
+    send(method, params) {
+      return cdp.send(method, params);
+    },
     async goto(url) {
       const loaded = new Promise((r) => (loadResolve = r));
       await cdp.send("Page.navigate", { url });
@@ -219,6 +222,11 @@ try {
   exitCode = 1;
 } finally {
   proc.kill();
-  rmSync(profile, { recursive: true, force: true });
+  rmSync(profile, {
+    recursive: true,
+    force: true,
+    maxRetries: 5,
+    retryDelay: 100,
+  });
 }
 process.exit(exitCode);

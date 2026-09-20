@@ -314,6 +314,12 @@
       "date": "Datum"
     }
   },
+  "country": {
+    "label": "Země",
+    "world": "Svět",
+    "searchPlaceholder": "Hledat země",
+    "noResults": "Nebyly nalezeny žádné země"
+  },
   "settings": {
     "meta": {
       "title": "Nastavení Memory Chess",

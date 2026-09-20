@@ -314,6 +314,12 @@
       "date": "Dátum"
     }
   },
+  "country": {
+    "label": "Ország",
+    "world": "Világ",
+    "searchPlaceholder": "Országok keresése",
+    "noResults": "Nem található ország"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess beállítások",

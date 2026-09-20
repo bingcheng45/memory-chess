@@ -1,9 +1,15 @@
+import type { CountryCode } from '@/lib/leaderboard/countries';
+
 export interface LeaderboardEntry {
   id: string;
   /**
    * Player's display name (4-16 characters)
    */
   player_name: string;
+  /**
+   * Absent on rows written before the database migration added the column.
+   */
+  country_code?: CountryCode;
   difficulty: 'easy' | 'medium' | 'hard' | 'grandmaster';
   piece_count: number;
   correct_pieces: number;
@@ -18,6 +24,11 @@ export interface LeaderboardSubmission {
    * Player's display name (4-16 characters)
    */
   player_name: string;
+  /**
+   * Required, because the API route fills in the world code before the
+   * submission reaches the service.
+   */
+  country_code: CountryCode;
   difficulty: 'easy' | 'medium' | 'hard' | 'grandmaster';
   piece_count: number;
   correct_pieces: number;

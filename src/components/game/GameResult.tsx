@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import CountryPicker from "@/components/leaderboard/CountryPicker";
+import { useSettingsStore } from "@/stores/settingsStore";
 import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
 import ResultBoardComparison from "@/components/game/ResultBoardComparison";
 
@@ -36,7 +38,9 @@ interface GameResultProps {
 
 export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const t = useTranslations("game.result");
+  const tCountry = useTranslations("country");
   const { gameState } = useGameStore();
+  const { countryCode, setCountryCode } = useSettingsStore();
 
   // Leaderboard submission state
   const [showLeaderboardDialog, setShowLeaderboardDialog] = useState(false);
@@ -212,6 +216,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     // Include the total_wrong_pieces field now that it's added to the database
     return {
       player_name: playerName,
+      country_code: countryCode,
       difficulty: submissionDifficulty,
       piece_count: gameState.pieceCount,
       correct_pieces: extendedGameState.correctPlacements || 0,
@@ -450,6 +455,18 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                   placeholder={t("dialog.playerNamePlaceholder")}
                   disabled={isSubmitting}
                   className="bg-bg-light border-bg-light text-text-primary focus:border-green-500/50 focus:ring-green-500/30"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="player-country" className="text-text-secondary">
+                  {tCountry("label")}
+                </Label>
+                <CountryPicker
+                  id="player-country"
+                  value={countryCode}
+                  onChange={setCountryCode}
+                  disabled={isSubmitting}
                 />
               </div>
 

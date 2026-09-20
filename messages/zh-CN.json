@@ -314,6 +314,12 @@
       "date": "日期"
     }
   },
+  "country": {
+    "label": "国家/地区",
+    "world": "全球",
+    "searchPlaceholder": "搜索国家/地区",
+    "noResults": "未找到国家/地区"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess 设置",

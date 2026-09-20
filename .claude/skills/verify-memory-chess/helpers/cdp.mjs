@@ -108,6 +108,7 @@ function connect(wsUrl) {
     const pending = new Map();
     const cdp = {
       onLoad: null,
+      onEvent: null,
       send(method, params = {}) {
         const id = nextId++;
         ws.send(JSON.stringify({ id, method, params }));
@@ -123,8 +124,9 @@ function connect(wsUrl) {
         pending.delete(msg.id);
         if (msg.error) rej(new Error(`${msg.error.message}`));
         else res(msg.result);
-      } else if (msg.method === "Page.loadEventFired") {
-        cdp.onLoad?.();
+      } else if (msg.method) {
+        if (msg.method === "Page.loadEventFired") cdp.onLoad?.();
+        cdp.onEvent?.(msg.method, msg.params);
       }
     };
   });
@@ -134,7 +136,14 @@ function makePage(cdp, evidenceDir) {
   let loadResolve = null;
   cdp.onLoad = () => loadResolve?.();
 
+  const listeners = [];
+  cdp.onEvent = (method, params) => {
+    for (const listener of listeners) listener(method, params);
+  };
+
   const page = {
+    send: (method, params) => cdp.send(method, params),
+    on: (listener) => listeners.push(listener),
     async goto(url) {
       const loaded = new Promise((r) => (loadResolve = r));
       await cdp.send("Page.navigate", { url });

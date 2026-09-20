@@ -314,6 +314,12 @@
       "date": "Dato"
     }
   },
+  "country": {
+    "label": "Land",
+    "world": "Verden",
+    "searchPlaceholder": "Søg efter lande",
+    "noResults": "Ingen lande fundet"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess-indstillinger",

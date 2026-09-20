@@ -314,6 +314,12 @@
       "date": "Tanggal"
     }
   },
+  "country": {
+    "label": "Negara",
+    "world": "Dunia",
+    "searchPlaceholder": "Cari negara",
+    "noResults": "Negara tidak ditemukan"
+  },
   "settings": {
     "meta": {
       "title": "Pengaturan Memory Chess",

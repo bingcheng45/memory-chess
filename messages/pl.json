@@ -314,6 +314,12 @@
       "date": "Data"
     }
   },
+  "country": {
+    "label": "Kraj",
+    "world": "Świat",
+    "searchPlaceholder": "Szukaj krajów",
+    "noResults": "Nie znaleziono krajów"
+  },
   "settings": {
     "meta": {
       "title": "Ustawienia Memory Chess",

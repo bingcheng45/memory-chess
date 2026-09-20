@@ -314,6 +314,12 @@
       "date": "Data"
     }
   },
+  "country": {
+    "label": "Țară",
+    "world": "Lume",
+    "searchPlaceholder": "Caută țări",
+    "noResults": "Nu s-au găsit țări"
+  },
   "settings": {
     "meta": {
       "title": "Setări Memory Chess",

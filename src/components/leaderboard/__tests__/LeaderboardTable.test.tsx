@@ -82,8 +82,11 @@ describe("LeaderboardTable country flag", () => {
 
   it("shows the country flag when the row names one", () => {
     const entry = { ...row("row-sg", 0.648, 18.887, 6), country_code: countryCode("SG") };
+    const flag = flagOf(entry, "Singapore");
 
-    expect(flagOf(entry, "Singapore")).toHaveTextContent(SINGAPORE_FLAG);
+    expect(flag).toHaveTextContent(SINGAPORE_FLAG);
+    expect(flag).toHaveAttribute("aria-label", "Singapore");
+    expect(flag).toHaveAttribute("title", "Singapore");
   });
 
   it("shows the globe when the row names the world", () => {
@@ -94,6 +97,14 @@ describe("LeaderboardTable country flag", () => {
 
   it("shows the globe for a row written before the country column existed", () => {
     expect(flagOf(row("row-legacy", 0.648, 18.887, 6), "World")).toHaveTextContent(GLOBE);
+  });
+
+  it("shows the globe for a stored code the branded type says cannot exist", () => {
+    // The column predates the type, so a row can still hold anything the
+    // database accepted before the constraint landed.
+    const entry = { ...row("row-junk", 0.648, 18.887, 6), country_code: "qq" as unknown as CountryCode };
+
+    expect(flagOf(entry, "World")).toHaveTextContent(GLOBE);
   });
 });
 

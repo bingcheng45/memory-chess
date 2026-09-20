@@ -70,6 +70,13 @@ describe("POST /api/leaderboard", () => {
     expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ country_code: "ZZ" }));
   });
 
+  it("submits the world code when the body carries an explicit null country", async () => {
+    const response = await post({ ...validEntry, country_code: null });
+
+    expect(response.status).toBe(200);
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ country_code: "ZZ" }));
+  });
+
   it("rejects a country code that is not a known code", async () => {
     const response = await post({ ...validEntry, country_code: "qq" });
 

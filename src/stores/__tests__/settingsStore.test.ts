@@ -34,7 +34,7 @@ describe("settingsStore migration", () => {
     expect(useSettingsStore.getState().showCoordinates).toBe(true);
   });
 
-  it("migrates a v1 value by keeping showCoordinates and adding the default country", async () => {
+  it("reads a v1 value back with showCoordinates kept and the default country added", async () => {
     window.localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({ state: { showCoordinates: false }, version: 1 }),

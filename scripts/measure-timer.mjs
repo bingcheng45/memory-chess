@@ -401,7 +401,7 @@ function analyse(probe, { cpu, memorizeSeconds }) {
 function writeScreencast(frames, probe, outDir, name) {
   if (!frames.length) return [];
   const toPerfNow = (epochSeconds) => epochSeconds * 1000 - probe.origin.dateNow + probe.origin.perfNow;
-  const phaseEnd = probe.solution[0]?.t ?? Infinity;
+  const phaseEnd = probe.memorizeGoneAt ?? probe.solution[0]?.t ?? Infinity;
   const kept = frames.filter((frame) => {
     const t = toPerfNow(frame.timestamp);
     return t >= phaseEnd - SCREENCAST_TAIL_MS && t <= phaseEnd;

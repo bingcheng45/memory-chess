@@ -36,6 +36,9 @@ let clock: number;
 
 beforeEach(() => {
   jest.clearAllMocks();
+  gameState.isMemorizationPhase = true;
+  gameState.memorizeTime = 5;
+  gameState.pieceCount = 4;
   pendingFrames = new Map();
   nextFrameId = 1;
   clock = 10_000;
@@ -89,14 +92,28 @@ describe("ResponsiveMemorizationBoard countdown", () => {
     expect(bar()?.style.transform).toBe("scaleX(0.7)");
   });
 
-  it("turns the clock red for the last three seconds", () => {
+  it("escalates urgency as the round runs out", () => {
     render(<ResponsiveMemorizationBoard />);
+    const clock = document.querySelector<HTMLElement>(".text-3xl");
 
-    advanceBy(1_000);
-    expect(document.querySelector(".text-3xl")?.className).toContain("text-orange-500");
+    expect(clock?.dataset.urgency).toBe("warning");
 
-    advanceBy(1_000);
-    expect(document.querySelector(".text-3xl")?.className).toContain("text-red-500");
+    advanceBy(2_000);
+    expect(clock?.dataset.urgency).toBe("urgent");
+  });
+
+  it("starts a long round calm and reaches urgent in its last three seconds", () => {
+    gameState.memorizeTime = 10;
+    render(<ResponsiveMemorizationBoard />);
+    const clock = document.querySelector<HTMLElement>(".text-3xl");
+
+    expect(clock?.dataset.urgency).toBe("calm");
+
+    advanceBy(5_000);
+    expect(clock?.dataset.urgency).toBe("warning");
+
+    advanceBy(2_000);
+    expect(clock?.dataset.urgency).toBe("urgent");
   });
 
   it("ends the phase exactly once, at the frame that paints zero", () => {

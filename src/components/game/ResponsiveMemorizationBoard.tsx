@@ -23,13 +23,22 @@ import { useTranslations } from "next-intl";
 
 const URGENT_SECONDS = 3;
 const WARNING_SECONDS = 5;
-const ALL_URGENCY_CLASSES = ["text-peach-500", "text-orange-500", "text-red-500", "animate-pulse"];
 
-function urgencyClasses(seconds: number): string[] {
-  if (seconds <= URGENT_SECONDS) return ["text-red-500", "animate-pulse"];
-  if (seconds <= WARNING_SECONDS) return ["text-orange-500"];
-  return ["text-peach-500"];
+type Urgency = "calm" | "warning" | "urgent";
+
+function urgencyAt(seconds: number): Urgency {
+  if (seconds <= URGENT_SECONDS) return "urgent";
+  if (seconds <= WARNING_SECONDS) return "warning";
+  return "calm";
 }
+
+/**
+ * The colour is a CSS rule keyed off the attribute rather than classes the
+ * subscription swaps, so React and the frame loop write the same property
+ * instead of fighting over className, which React's diff would not see.
+ */
+const URGENCY_CLASSES =
+  "text-peach-500 data-[urgency=warning]:text-orange-500 data-[urgency=urgent]:text-red-500 data-[urgency=urgent]:animate-pulse";
 
 export default function ResponsiveMemorizationBoard() {
   const t = useTranslations("game");
@@ -105,8 +114,7 @@ export default function ResponsiveMemorizationBoard() {
 
       if (secondsRef.current && seconds !== paintedSeconds) {
         secondsRef.current.textContent = String(seconds);
-        clockRef.current?.classList.remove(...ALL_URGENCY_CLASSES);
-        clockRef.current?.classList.add(...urgencyClasses(seconds));
+        if (clockRef.current) clockRef.current.dataset.urgency = urgencyAt(seconds);
         paintedSeconds = seconds;
       }
       if (hundredthsRef.current) {
@@ -129,9 +137,16 @@ export default function ResponsiveMemorizationBoard() {
           <div className="w-[calc(100%-88px)] max-w-64 text-center">
             <div className="mb-0.5 text-sm font-bold text-text-primary sm:text-base">{t("memorize.title")}</div>
 
+            {/*
+              Every value below is constant for the life of the phase, so React
+              renders them once and its diff never rewrites what the frame loop
+              owns. A changed memorizeTime resets them, which the next frame
+              corrects.
+            */}
             <div
               ref={clockRef}
-              className={`text-3xl font-bold leading-none transition-colors sm:text-4xl ${urgencyClasses(memorizeTime).join(" ")}`}
+              data-urgency={urgencyAt(memorizeTime)}
+              className={`text-3xl font-bold leading-none transition-colors sm:text-4xl ${URGENCY_CLASSES}`}
             >
               <span ref={secondsRef}>{memorizeTime}</span>
               <span ref={hundredthsRef} className="text-lg opacity-50 sm:text-xl">

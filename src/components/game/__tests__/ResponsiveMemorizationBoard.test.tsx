@@ -124,7 +124,22 @@ describe("ResponsiveMemorizationBoard countdown", () => {
 
     expect(clockText()).toBe("0.00");
     expect(endMemorizationPhase).toHaveBeenCalledTimes(1);
-    expect(endMemorizationPhase).toHaveBeenCalledWith(45);
+  });
+
+  it("charges a hidden tab no more memorizing than the round configured", () => {
+    render(<ResponsiveMemorizationBoard />);
+
+    advanceBy(120_000);
+
+    expect(endMemorizationPhase).toHaveBeenCalledWith(5);
+  });
+
+  it("does not charge the frame's overshoot past the deadline", () => {
+    render(<ResponsiveMemorizationBoard />);
+
+    advanceBy(5_012);
+
+    expect(endMemorizationPhase).toHaveBeenCalledWith(5);
   });
 
   it("reports the time actually spent memorizing when Skip cuts the phase short", () => {

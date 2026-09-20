@@ -416,6 +416,9 @@ export const useGameStore = create<GameStore>()(
       },
       
       endMemorizationPhase: (actualMemorizeTimeOverride) => {
+        // The board always passes the override, measured on the monotonic
+        // clock and clamped to the configured duration. The wall-clock
+        // fallback below only serves callers that pass nothing, which is tests.
         const now = Date.now();
         const state = get().gameState;
         const memorizeStartTime = state.memorizeStartTime || now;

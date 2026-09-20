@@ -48,18 +48,21 @@ export default function ResponsiveMemorizationBoard() {
 
   const { isMemorizationPhase, memorizeTime, pieceCount } = gameState;
 
-  const endPhase = useCallback(() => {
-    if (endedRef.current) return;
-    endedRef.current = true;
-    const startedAt = startedAtRef.current;
-    endMemorizationPhase(startedAt === null ? undefined : elapsedMs(startedAt, now()) / 1000);
-    startSolutionPhase();
-  }, [endMemorizationPhase, startSolutionPhase]);
+  const endPhase = useCallback(
+    (memorizedSeconds: number | undefined) => {
+      if (endedRef.current) return;
+      endedRef.current = true;
+      endMemorizationPhase(memorizedSeconds);
+      startSolutionPhase();
+    },
+    [endMemorizationPhase, startSolutionPhase],
+  );
 
   const handleSkip = () => {
     if (endedRef.current) return;
+    const startedAt = startedAtRef.current;
     playSound("timerEnd");
-    endPhase();
+    endPhase(startedAt === null ? undefined : elapsedMs(startedAt, now()) / 1000);
   };
 
   useEffect(() => {
@@ -87,7 +90,10 @@ export default function ResponsiveMemorizationBoard() {
     const atDeadline = fireAtDeadline(deadline, () => {
       stopTimerSound();
       playSound("timerEnd");
-      endPhase();
+      // A hidden tab gets no frames, so the wake-up frame can be minutes past
+      // the deadline. The player only ever saw the configured duration, and
+      // this figure feeds the time bonus and the leaderboard.
+      endPhase(Math.min(elapsedMs(startedAt, now()), durationMs) / 1000);
     });
 
     let paintedSeconds = -1;

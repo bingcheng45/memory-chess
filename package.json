@@ -11,7 +11,8 @@
     "validate:messages": "node scripts/validate-messages.mjs",
     "audit:adsense": "node scripts/audit-adsense.mjs",
     "postinstall": "npm install @vercel/analytics@1.5.0 @vercel/speed-insights@1.2.0 --no-save",
-    "measure:lcp": "node scripts/measure-lcp.mjs"
+    "measure:lcp": "node scripts/measure-lcp.mjs",
+    "migrate:rehearse": "node scripts/rehearse-leaderboard-migration.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -43,6 +44,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
     "@eslint/eslintrc": "^3",
     "@supabase/supabase-js": "^2.49.4",
     "@testing-library/dom": "^10.4.1",

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
 import { checkSupabaseConnection } from '@/lib/supabase';
+import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -53,7 +54,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate request body
-    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces } = body;
+    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces, country_code } = body;
     
     if (!player_name || !difficulty || !piece_count || correct_pieces === undefined || 
         !memorize_time || !solution_time) {
@@ -79,6 +80,18 @@ export async function POST(request: NextRequest) {
       );
     }
     
+    const parsedCountryCode =
+      country_code === undefined || country_code === null
+        ? WORLD_CODE
+        : parseCountryCode(country_code);
+
+    if (parsedCountryCode === null) {
+      return NextResponse.json(
+        { error: 'Invalid country code' },
+        { status: 400 }
+      );
+    }
+
     // Additional validation
     // The board lists only rows with a correct piece; accepting 0 would store
     // a score nobody can see.
@@ -105,7 +118,8 @@ export async function POST(request: NextRequest) {
       correct_pieces,
       memorize_time,
       solution_time,
-      total_wrong_pieces
+      total_wrong_pieces,
+      country_code: parsedCountryCode
     });
     
     return NextResponse.json({ success: true, data });

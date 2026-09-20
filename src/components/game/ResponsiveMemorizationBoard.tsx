@@ -88,6 +88,7 @@ export default function ResponsiveMemorizationBoard() {
     endedRef.current = false;
 
     const atDeadline = fireAtDeadline(deadline, () => {
+      if (endedRef.current) return;
       stopTimerSound();
       playSound("timerEnd");
       // A hidden tab gets no frames, so the wake-up frame can be minutes past

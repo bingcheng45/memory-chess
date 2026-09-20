@@ -156,6 +156,20 @@ describe("ResponsiveMemorizationBoard countdown", () => {
     expect(stopTimerSound).not.toHaveBeenCalled();
   });
 
+  it("plays one end cue when Skip lands on the deadline's own frame", () => {
+    const { getByText } = render(<ResponsiveMemorizationBoard />);
+
+    act(() => {
+      clock += 5_000;
+      getByText("Skip").click();
+    });
+    advanceBy(0);
+
+    expect(playSound.mock.calls.filter(([name]) => name === "timerEnd")).toHaveLength(1);
+    expect(endMemorizationPhase).toHaveBeenCalledTimes(1);
+    expect(stopTimerSound).not.toHaveBeenCalled();
+  });
+
   it("stops the frame loop when the board unmounts mid-phase", () => {
     const { unmount } = render(<ResponsiveMemorizationBoard />);
 

@@ -260,6 +260,19 @@ function skippedSeconds(samples) {
   return skipped;
 }
 
+/**
+ * Where in the phase the longest stall sat. A stall in the opening frames is
+ * the page still arriving; one in the middle is the timer itself.
+ */
+function worstGapOffset(samples, phaseStart) {
+  let worst = { gap: 0, at: null };
+  for (let i = 1; i < samples.length; i++) {
+    const gap = samples[i].t - samples[i - 1].t;
+    if (gap > worst.gap) worst = { gap, at: samples[i].t - phaseStart };
+  }
+  return round(worst.at);
+}
+
 function frameStats(frames, fromMs, toMs) {
   const inWindow = frames.filter((t) => t >= fromMs && t <= toMs);
   const spanMs = toMs - fromMs;
@@ -355,7 +368,11 @@ function analyse(probe, { cpu, memorizeSeconds }) {
       backwardsSteps: monotonicBreaks(memorize, countdownValue, "down"),
       skippedSeconds: skippedSeconds(memorize),
       reachedZero: Boolean(zeroSample),
+      // The display's own accuracy, free of what the next phase costs to paint.
+      displayToZeroMs: zeroSample ? round(zeroSample.t - phaseStart) : null,
+      displayErrorMs: zeroSample ? round(zeroSample.t - phaseStart - configuredMs) : null,
       displayZeroToPhaseEndMs: zeroSample ? round(phaseEnd - zeroSample.t) : null,
+      worstGapAtMs: worstGapOffset(memorize, phaseStart),
       frames: memorizeWindow,
       longTasks: longTaskStats(probe.longTasks, phaseStart, phaseEnd),
     },
@@ -401,10 +418,12 @@ function printTable(label, results) {
     pad("dur", 5),
     padStart("actual ms", 10),
     padStart("err ms", 8),
+    padStart("disp err", 9),
     padStart("zero->end", 10),
     padStart("gap p50", 8),
     padStart("gap p95", 8),
     padStart("gap max", 8),
+    padStart("max at", 8),
     padStart("fps", 6),
     padStart("skips", 6),
     padStart("back", 5),
@@ -420,10 +439,12 @@ function printTable(label, results) {
         pad(`${run.memorizeSeconds}s`, 5),
         padStart(run.memorize.actualMs, 10),
         padStart(run.memorize.errorMs, 8),
+        padStart(run.memorize.displayErrorMs ?? "never", 9),
         padStart(run.memorize.displayZeroToPhaseEndMs ?? "never", 10),
         padStart(run.memorize.gaps.p50, 8),
         padStart(run.memorize.gaps.p95, 8),
         padStart(run.memorize.gaps.max, 8),
+        padStart(run.memorize.worstGapAtMs ?? "-", 8),
         padStart(run.memorize.frames.fps ?? "-", 6),
         padStart(run.memorize.skippedSeconds.length, 6),
         padStart(run.memorize.backwardsSteps.length, 5),

@@ -32,7 +32,7 @@ export default function Footer() {
       data-below-game
       className="w-full py-10 mt-10 border-t border-bg-light"
     >
-      <div className="container mx-auto px-1 sm:px-4">
+      <div className="container mx-auto px-2 sm:px-4">
         <div className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-3">
           {FOOTER_LINKS.map((link) =>
             isEnglishOnlyPath(link.href) ? (

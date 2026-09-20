@@ -17,7 +17,7 @@ export default function LeaderboardReference({ locale }: { locale: string }) {
       aria-labelledby="leaderboard-reference-title"
       className="bg-bg-dark text-text-primary"
     >
-      <div className="container mx-auto max-w-4xl px-1 sm:px-4 pb-4 pt-6">
+      <div className="container mx-auto max-w-4xl px-2 sm:px-4 pb-4 pt-6">
         <div
           className={`${EDITORIAL_STYLES.readingColumn} border-t border-white/10 pt-10`}
         >

@@ -56,7 +56,7 @@ export default async function GameReference({ locale }: { locale: string }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
 
-      <div className="container mx-auto max-w-4xl px-1 sm:px-4 pb-4 pt-10 sm:pt-12">
+      <div className="container mx-auto max-w-4xl px-2 sm:px-4 pb-4 pt-10 sm:pt-12">
         <div className={EDITORIAL_STYLES.readingColumn}>
           <h1
             id="game-reference-title"

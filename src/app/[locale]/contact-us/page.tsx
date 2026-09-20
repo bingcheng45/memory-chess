@@ -119,7 +119,7 @@ export default function ContactUs() {
 
   return (
     <div className="min-h-screen bg-bg-dark text-text-primary">
-      <div className="container mx-auto px-1 sm:px-4 py-8">
+      <div className="container mx-auto px-2 sm:px-4 py-8">
         <div className="flex justify-center mb-8">
           <PageHeader showSoundSettings={false} />
         </div>

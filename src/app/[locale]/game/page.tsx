@@ -482,7 +482,7 @@ function GamePageContent() {
         overflows this box and `main` above scrolls to it.
       */}
       <div
-        className={`container mx-auto flex flex-col items-center justify-start px-1 py-2 sm:px-4 sm:py-4 ${
+        className={`container mx-auto flex flex-col items-center justify-start px-2 py-2 sm:px-4 sm:py-4 ${
           isActivePhase ? 'h-full' : PAGE_BELOW_BANNER_MIN_HEIGHT
         }`}
       >

@@ -70,14 +70,15 @@ createServer(async (req, res) => {
     return;
   }
   const unsupported = [...url.searchParams].filter(
-    ([key, value]) => !["select", "order", "limit"].includes(key) && !/^(eq|gt)\./.test(value),
+    ([key, value]) =>
+      !["select", "order", "limit", "offset"].includes(key) && !/^(eq|gt)\./.test(value),
   );
   if (unsupported.length) {
     res.writeHead(501, { "content-type": "application/json" });
     res.end(JSON.stringify({ code: "PGRST000", message: `fixture cannot answer ${unsupported.map(([k, v]) => `${k}=${v}`).join("&")}` }));
     return;
   }
-  const filtered = rows
+  const ranked = rows
     .filter((row) =>
       [...url.searchParams].every(([column, value]) => {
         if (value.startsWith("eq.")) return String(row[column]) === value.slice(3);
@@ -85,13 +86,18 @@ createServer(async (req, res) => {
         return true;
       }),
     )
-    .sort(compare(url.searchParams.get("order") ?? "id"))
-    .slice(0, Number(url.searchParams.get("limit") ?? rows.length));
+    .sort(compare(url.searchParams.get("order") ?? "id"));
+  // `.range(from, to)` reaches PostgREST as offset plus limit, not as a Range header.
+  const offset = Number(url.searchParams.get("offset") ?? 0);
+  const limit = Number(url.searchParams.get("limit") ?? ranked.length);
+  const page = ranked.slice(offset, offset + limit);
   res.writeHead(200, {
     "content-type": "application/json",
-    "content-range": `0-${Math.max(filtered.length - 1, 0)}/${filtered.length}`,
+    "content-range": page.length
+      ? `${offset}-${offset + page.length - 1}/${ranked.length}`
+      : `*/${ranked.length}`,
   });
-  res.end(req.method === "HEAD" ? undefined : JSON.stringify(filtered));
+  res.end(req.method === "HEAD" ? undefined : JSON.stringify(page));
 }).listen(Number(portArg), "127.0.0.1", () => {
   const mode = rejectCountryInserts ? ", rejecting country_code inserts with PGRST204" : "";
   console.log(`fake supabase on http://127.0.0.1:${portArg} serving ${rows.length} rows${mode}`);

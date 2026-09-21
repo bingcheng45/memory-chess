@@ -239,6 +239,7 @@
       "tryAgain": "Prøv igjen",
       "newGame": "Nytt parti",
       "submitToLeaderboard": "Send til topplisten",
+      "leaderboardQualifies": "Resultatet ditt når topplisten. Send det inn før sjansen ryker.",
       "viewLeaderboard": "Se topplisten",
       "dialog": {
         "submitTitle": "Send til topplisten",

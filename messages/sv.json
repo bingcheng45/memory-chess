@@ -239,6 +239,7 @@
       "tryAgain": "Försök igen",
       "newGame": "Nytt parti",
       "submitToLeaderboard": "Skicka till topplistan",
+      "leaderboardQualifies": "Ditt resultat når topplistan. Skicka in det innan det är för sent.",
       "viewLeaderboard": "Visa topplistan",
       "dialog": {
         "submitTitle": "Skicka till topplistan",

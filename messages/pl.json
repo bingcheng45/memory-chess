@@ -239,6 +239,7 @@
       "tryAgain": "Spróbuj ponownie",
       "newGame": "Nowa partia",
       "submitToLeaderboard": "Wyślij do rankingu",
+      "leaderboardQualifies": "Twój wynik łapie się do rankingu. Wyślij go, zanim przepadnie.",
       "viewLeaderboard": "Zobacz ranking",
       "dialog": {
         "submitTitle": "Wyślij do rankingu",

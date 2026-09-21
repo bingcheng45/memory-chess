@@ -239,6 +239,7 @@
       "tryAgain": "Zkusit znovu",
       "newGame": "Nová partie",
       "submitToLeaderboard": "Odeslat do žebříčku",
+      "leaderboardQualifies": "Váš výsledek stačí na žebříček. Odešlete ho, než zmizí.",
       "viewLeaderboard": "Zobrazit žebříček",
       "dialog": {
         "submitTitle": "Odeslat do žebříčku",

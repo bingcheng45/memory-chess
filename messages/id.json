@@ -239,6 +239,7 @@
       "tryAgain": "Coba lagi",
       "newGame": "Permainan baru",
       "submitToLeaderboard": "Kirim ke papan peringkat",
+      "leaderboardQualifies": "Skor Anda masuk papan peringkat. Kirim sekarang sebelum terlewat.",
       "viewLeaderboard": "Lihat papan peringkat",
       "dialog": {
         "submitTitle": "Kirim ke papan peringkat",

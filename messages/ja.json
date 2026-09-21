@@ -239,6 +239,7 @@
       "tryAgain": "もう一度",
       "newGame": "新しいゲーム",
       "submitToLeaderboard": "ランキングに登録",
+      "leaderboardQualifies": "このスコアならランキング入りです。今すぐ登録しましょう。",
       "viewLeaderboard": "ランキングを見る",
       "dialog": {
         "submitTitle": "ランキングに登録",

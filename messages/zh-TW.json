@@ -239,6 +239,7 @@
       "tryAgain": "再來一局",
       "newGame": "新對局",
       "submitToLeaderboard": "送出到排行榜",
+      "leaderboardQualifies": "你的成績能上排行榜，趁還有機會趕快送出。",
       "viewLeaderboard": "查看排行榜",
       "dialog": {
         "submitTitle": "送出到排行榜",

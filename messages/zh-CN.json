@@ -239,6 +239,7 @@
       "tryAgain": "再来一局",
       "newGame": "新对局",
       "submitToLeaderboard": "提交到排行榜",
+      "leaderboardQualifies": "你的成绩能上排行榜，趁还有机会赶紧提交。",
       "viewLeaderboard": "查看排行榜",
       "dialog": {
         "submitTitle": "提交到排行榜",

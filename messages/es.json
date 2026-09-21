@@ -239,6 +239,7 @@
       "tryAgain": "Reintentar",
       "newGame": "Nueva partida",
       "submitToLeaderboard": "Enviar a la clasificación",
+      "leaderboardQualifies": "Tu puntuación entra en la clasificación. Envíala antes de perderla.",
       "viewLeaderboard": "Ver la clasificación",
       "dialog": {
         "submitTitle": "Enviar a la clasificación",

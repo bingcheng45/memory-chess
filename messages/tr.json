@@ -239,6 +239,7 @@
       "tryAgain": "Tekrar dene",
       "newGame": "Yeni oyun",
       "submitToLeaderboard": "Sıralamaya gönder",
+      "leaderboardQualifies": "Skorun sıralamaya giriyor. Fırsatı kaçırmadan hemen gönder.",
       "viewLeaderboard": "Sıralamayı gör",
       "dialog": {
         "submitTitle": "Sıralamaya gönder",

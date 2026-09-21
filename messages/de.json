@@ -239,6 +239,7 @@
       "tryAgain": "Nochmal",
       "newGame": "Neue Partie",
       "submitToLeaderboard": "In die Bestenliste eintragen",
+      "leaderboardQualifies": "Dein Ergebnis schafft es in die Bestenliste. Trag es gleich ein.",
       "viewLeaderboard": "Bestenliste ansehen",
       "dialog": {
         "submitTitle": "In die Bestenliste eintragen",

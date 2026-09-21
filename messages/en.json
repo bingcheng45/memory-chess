@@ -239,6 +239,7 @@
       "tryAgain": "Try Again",
       "newGame": "New Game",
       "submitToLeaderboard": "Submit to Leaderboard",
+      "leaderboardQualifies": "Your score makes the leaderboard. Submit it before it's gone.",
       "viewLeaderboard": "View Leaderboard",
       "dialog": {
         "submitTitle": "Submit to Leaderboard",

@@ -239,6 +239,7 @@
       "tryAgain": "Újra",
       "newGame": "Új játszma",
       "submitToLeaderboard": "Beküldés a ranglistára",
+      "leaderboardQualifies": "Az eredményed felfér a ranglistára. Küldd be, mielőtt lecsúszik.",
       "viewLeaderboard": "Ranglista megtekintése",
       "dialog": {
         "submitTitle": "Beküldés a ranglistára",

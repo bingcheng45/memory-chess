@@ -239,6 +239,7 @@
       "tryAgain": "Opnieuw",
       "newGame": "Nieuwe partij",
       "submitToLeaderboard": "Naar de ranglijst sturen",
+      "leaderboardQualifies": "Je score haalt de ranglijst. Stuur hem in voordat het te laat is.",
       "viewLeaderboard": "Bekijk de ranglijst",
       "dialog": {
         "submitTitle": "Naar de ranglijst sturen",

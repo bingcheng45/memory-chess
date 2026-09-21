@@ -239,6 +239,7 @@
       "tryAgain": "फिर कोशिश करें",
       "newGame": "नया गेम",
       "submitToLeaderboard": "लीडरबोर्ड पर भेजें",
+      "leaderboardQualifies": "आपका स्कोर लीडरबोर्ड में आने लायक है। मौका निकलने से पहले भेजें।",
       "viewLeaderboard": "लीडरबोर्ड देखें",
       "dialog": {
         "submitTitle": "लीडरबोर्ड पर भेजें",

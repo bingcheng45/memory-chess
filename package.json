@@ -12,7 +12,8 @@
     "audit:adsense": "node scripts/audit-adsense.mjs",
     "postinstall": "npm install @vercel/analytics@1.5.0 @vercel/speed-insights@1.2.0 --no-save",
     "measure:lcp": "node scripts/measure-lcp.mjs",
-    "migrate:rehearse": "node scripts/rehearse-leaderboard-migration.mjs"
+    "migrate:rehearse": "node scripts/rehearse-leaderboard-migration.mjs",
+    "backup:verify": "node scripts/verify-leaderboard-backup.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

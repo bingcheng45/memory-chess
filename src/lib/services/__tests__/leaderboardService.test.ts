@@ -1,7 +1,11 @@
 /** @jest-environment node */
 
 import { submitLeaderboardEntry } from "@/lib/services/leaderboardService";
+import { parseCountryCode } from "@/lib/leaderboard/countries";
 import type { LeaderboardSubmission } from "@/types/leaderboard";
+
+const SINGAPORE = parseCountryCode("SG");
+if (SINGAPORE === null) throw new Error("SG is not a known country code");
 
 jest.mock("@/lib/supabase", () => {
   const single = jest.fn();
@@ -21,7 +25,7 @@ const { mockInsert, mockSingle } = jest.requireMock("@/lib/supabase") as {
 
 const entry: LeaderboardSubmission = {
   player_name: "Poteto",
-  country_code: "SG",
+  country_code: SINGAPORE,
   difficulty: "medium",
   piece_count: 6,
   correct_pieces: 4,
@@ -30,7 +34,9 @@ const entry: LeaderboardSubmission = {
   total_wrong_pieces: 2,
 };
 
-const { country_code: _picked, ...entryWithoutCountry } = entry;
+const entryWithoutCountry = Object.fromEntries(
+  Object.entries(entry).filter(([field]) => field !== "country_code"),
+);
 
 function missingColumn(code: string) {
   return {

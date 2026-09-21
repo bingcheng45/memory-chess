@@ -3,6 +3,8 @@ import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboa
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 
+const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const difficulty = searchParams.get('difficulty') || 'medium';
@@ -105,13 +107,11 @@ export async function POST(request: NextRequest) {
     // First check if Supabase is configured properly
     const connectionStatus = await checkSupabaseConnection();
     if (!connectionStatus.connected) {
-      return NextResponse.json(
-        { error: 'Database connection unavailable. Please check the application configuration.' },
-        { status: 503 }
-      );
+      console.error('Leaderboard submission unavailable:', connectionStatus.error);
+      return NextResponse.json({ error: LEADERBOARD_UNAVAILABLE }, { status: 503 });
     }
     
-    const data = await submitLeaderboardEntry({
+    const result = await submitLeaderboardEntry({
       player_name,
       difficulty,
       piece_count,
@@ -121,8 +121,23 @@ export async function POST(request: NextRequest) {
       total_wrong_pieces,
       country_code: parsedCountryCode
     });
-    
-    return NextResponse.json({ success: true, data });
+
+    switch (result.status) {
+      case 'stored':
+        return NextResponse.json({ success: true, data: result.entry });
+      case 'invalid':
+        return NextResponse.json({ error: result.message }, { status: 400 });
+      case 'unavailable':
+        console.error('Leaderboard submission unavailable:', result.cause);
+        return NextResponse.json({ error: LEADERBOARD_UNAVAILABLE }, { status: 503 });
+      case 'failed':
+        console.error('Leaderboard submission failed:', result.cause);
+        return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
+      default: {
+        const unhandled: never = result;
+        throw new Error(`unhandled submission result ${JSON.stringify(unhandled)}`);
+      }
+    }
   } catch (err) {
     console.error('Unexpected error:', err);
     return NextResponse.json(

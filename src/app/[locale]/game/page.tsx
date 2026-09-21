@@ -22,6 +22,7 @@ import { formatTimeWithMilliseconds } from '@/utils/timer';
 import PageHeader from '@/components/ui/PageHeader';
 import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
+import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 
 import { useTranslations } from "next-intl";
 // Component to handle URL parameters
@@ -120,6 +121,7 @@ function GamePageContent() {
         pieceCount: gameState.pieceCount,
         memorizeTime: gameState.memorizeTime
       });
+      warmLeaderboardCutoffs();
     } else if (gamePhase === GamePhase.SOLUTION) {
       analytics.track(AnalyticsEventType.SOLUTION_PHASE, {
         pieceCount: gameState.pieceCount,

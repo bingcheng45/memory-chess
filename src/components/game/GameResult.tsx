@@ -117,11 +117,13 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   useEffect(() => {
     let active = true;
 
-    loadLeaderboardCutoffs().then((loaded) => {
-      if (active) {
-        setCutoffs(loaded);
-      }
-    });
+    loadLeaderboardCutoffs()
+      .catch(() => null)
+      .then((loaded) => {
+        if (active) {
+          setCutoffs(loaded);
+        }
+      });
 
     return () => {
       active = false;

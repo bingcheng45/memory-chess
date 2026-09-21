@@ -58,6 +58,19 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
 
 `drive-country-submit.mjs` plays a round, dismisses the first-game feedback prompt, opens the picker at four viewports asserting it stays inside each, picks Singapore with the keyboard and asserts the captured POST body. `drive-country-leaderboard.mjs` asserts the rendered flags and that the narrow table still scrolls to its date column.
 
+## Driving it against a database without the country column
+
+Start the fixture with `FAKE_SUPABASE_MISSING_COUNTRY=1` and it answers any insert carrying `country_code` with a PostgREST `PGRST204` body, the way a deployment reads before the migration in `docs/migrations/` is applied. Everything else about the fixture is unchanged, so the same rows still serve `/leaderboard`.
+
+```bash
+FAKE_SUPABASE_MISSING_COUNTRY=1 node .claude/skills/verify-memory-chess/helpers/fake-supabase.mjs rows.json 54322 &
+node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
+  .claude/skills/verify-memory-chess/helpers/drive-leaderboard-retry.mjs \
+  --evidence .verify-evidence/leaderboard-retry --base http://127.0.0.1:4517
+```
+
+`drive-leaderboard-retry.mjs` plays a round, picks Singapore, submits, and returns the POST body, the response status and the dialog's own text. Expect `responseStatus` 200 and `succeeded` true: the service drops the country and keeps the score. The server log carries one `Leaderboard insert rejected country_code` line per retry, which is how you tell the retry apart from a plain success. The same script with the fixture stopped altogether returns 503 and the player-facing `The leaderboard is being updated.` sentence.
+
 ## Gotchas
 
 - The fetch has a 10s timeout and the UI distinguishes timeout, parse, and service errors; a slow first request after boot can show the retry state once. Reload before concluding it is broken.

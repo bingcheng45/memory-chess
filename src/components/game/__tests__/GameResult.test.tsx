@@ -126,6 +126,35 @@ describe("GameResult", () => {
     expect(screen.getByLabelText("Player Name")).toBeInTheDocument();
   });
 
+  it("shows the reason the server gave, not a generic failure", async () => {
+    const serverMessage = "The leaderboard is being updated. Please try again shortly.";
+    const logged = jest.spyOn(console, "error").mockImplementation(() => {});
+    global.fetch = jest.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "POST" && String(input).includes("/api/leaderboard")) {
+        return { ok: false, status: 503, json: async () => ({ error: serverMessage }) };
+      }
+      return { ok: true, json: async () => ({ data: { value: 1 } }) };
+    }) as unknown as typeof fetch;
+
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Submit to Leaderboard" }),
+    );
+    fireEvent.change(screen.getByLabelText("Player Name"), {
+      target: { value: "Poteto" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Submit Score" }));
+
+    expect(
+      await screen.findByText(`Error: ${serverMessage}`),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("Error: Failed to submit score"),
+    ).not.toBeInTheDocument();
+    logged.mockRestore();
+  });
+
   it("offers no submission for a round with no correct piece, which the board would never show", () => {
     mockGameState = { ...baseGameState, accuracy: 0, correctPlacements: 0 };
 

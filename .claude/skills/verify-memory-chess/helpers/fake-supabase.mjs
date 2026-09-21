@@ -5,10 +5,38 @@ import { readFileSync } from "node:fs";
 const [fixturePath, portArg = "54321"] = process.argv.slice(2);
 if (!fixturePath) {
   console.error("usage: fake-supabase.mjs <rows.json> [port]");
+  console.error("env: FAKE_SUPABASE_MISSING_COUNTRY=1 rejects inserts carrying country_code with PGRST204");
   process.exit(1);
 }
 
 const rows = JSON.parse(readFileSync(fixturePath, "utf8"));
+
+// Opt-in: stand in for a database whose country_code migration has not been
+// applied, so a driver can see what a player gets from the real server.
+const rejectCountryInserts = process.env.FAKE_SUPABASE_MISSING_COUNTRY === "1";
+
+const MISSING_COUNTRY_COLUMN = {
+  code: "PGRST204",
+  details: null,
+  hint: null,
+  message: "Could not find the 'country_code' column of 'leaderboard_entries' in the schema cache",
+};
+
+async function readJson(req) {
+  const chunks = [];
+  for await (const chunk of req) chunks.push(chunk);
+  if (chunks.length === 0) return null;
+  try {
+    return JSON.parse(Buffer.concat(chunks).toString("utf8"));
+  } catch {
+    return null;
+  }
+}
+
+function carriesCountryCode(body) {
+  const inserted = Array.isArray(body) ? body : [body];
+  return inserted.some((row) => row && typeof row === "object" && "country_code" in row);
+}
 
 function compare(order) {
   const keys = order.split(",").map((part) => {
@@ -29,11 +57,16 @@ function compare(order) {
   };
 }
 
-createServer((req, res) => {
+createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost");
   if (!url.pathname.endsWith("/rest/v1/leaderboard_entries")) {
     res.writeHead(404, { "content-type": "application/json" });
     res.end(JSON.stringify({ code: "PGRST205", message: `no fixture for ${url.pathname}` }));
+    return;
+  }
+  if (rejectCountryInserts && req.method === "POST" && carriesCountryCode(await readJson(req))) {
+    res.writeHead(400, { "content-type": "application/json" });
+    res.end(JSON.stringify(MISSING_COUNTRY_COLUMN));
     return;
   }
   const unsupported = [...url.searchParams].filter(
@@ -60,5 +93,6 @@ createServer((req, res) => {
   });
   res.end(req.method === "HEAD" ? undefined : JSON.stringify(filtered));
 }).listen(Number(portArg), "127.0.0.1", () => {
-  console.log(`fake supabase on http://127.0.0.1:${portArg} serving ${rows.length} rows`);
+  const mode = rejectCountryInserts ? ", rejecting country_code inserts with PGRST204" : "";
+  console.log(`fake supabase on http://127.0.0.1:${portArg} serving ${rows.length} rows${mode}`);
 });

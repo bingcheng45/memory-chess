@@ -264,3 +264,56 @@ ALTER TABLE leaderboard_entries
 Everything else in the table is untouched: the rollback only removes the column
 and its constraint, and leaves rows, indexes, RLS policies and every other
 column exactly as they were.
+
+## 7. Applied on 2026-09-21
+
+Recorded after the fact, so the next person can see what actually happened
+rather than only what was planned.
+
+### Backup
+
+`.verify-evidence/backups/20260921T124316Z-full/`, complete table, 518 rows.
+Proven twice over. Postgres computed `md5(csv_text)` as it built the export and
+the file on disk recomputes to the same `ad41462ce62991ce125b8b951b5c79e9`. The
+file then restored into the live DDL and produced the same row fingerprint as
+production, `2bfe9c00f3abeed8b426cf5bf5536e5d`. Rerun that check with
+`npm run backup:verify`.
+
+The migration and its rollback were both rehearsed over all 518 restored rows,
+not over the 376-row fixture used earlier.
+
+### Applied
+
+Supabase project `fskonmcxtrjexrnlsgvj`, PostgreSQL 15.8.1, via the Supabase
+migration API under the name `leaderboard_country_code`.
+
+### Verified
+
+| Check | Result |
+| --- | --- |
+| Row count | 518, unchanged |
+| Row fingerprint | `2bfe9c00f3abeed8b426cf5bf5536e5d`, unchanged |
+| Existing rows | all 518 read `ZZ`, none null |
+| Column shape | `text NOT NULL DEFAULT 'ZZ'` |
+| Constraint | `CHECK (country_code ~ '^[A-Z]{2}$')` present |
+| Insert with a code | stores `SG` |
+| Insert without a code | defaults to `ZZ`, which is what the currently deployed app sends |
+| Insert with `sg` | rejected by the constraint |
+| Production read path | `/api/leaderboard` returns 200 with `country_code` on every row |
+
+The two insert probes ran inside a transaction that was rolled back, and the
+rejection probe inside an exception block, so production gained no probe rows.
+The count and fingerprint above were re-checked afterwards to prove it.
+
+### One step that is easy to miss
+
+PostgREST caches the schema. Until it reloads, an insert naming `country_code`
+still fails with `PGRST204`, which is exactly the 500 seen on the Vercel preview
+before the migration. Run `NOTIFY pgrst, 'reload schema';` after the ALTER, as
+was done here, and confirm by reading a row back through the REST API.
+
+### Follow-up
+
+`src/lib/services/leaderboardService.ts` still carries the transition shim that
+retries an insert without `country_code` on `PGRST204` or `42703`. The column
+now exists in production, so that shim is dead weight and should be deleted.

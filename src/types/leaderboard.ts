@@ -1,5 +1,8 @@
 import type { CountryCode } from '@/lib/leaderboard/countries';
 
+export const LEADERBOARD_DIFFICULTIES = ['easy', 'medium', 'hard', 'grandmaster'] as const;
+export type LeaderboardDifficulty = (typeof LEADERBOARD_DIFFICULTIES)[number];
+
 export interface LeaderboardEntry {
   id: string;
   /**
@@ -10,7 +13,7 @@ export interface LeaderboardEntry {
    * Absent on rows written before the database migration added the column.
    */
   country_code?: CountryCode;
-  difficulty: 'easy' | 'medium' | 'hard' | 'grandmaster';
+  difficulty: LeaderboardDifficulty;
   piece_count: number;
   correct_pieces: number;
   memorize_time: number;
@@ -29,7 +32,7 @@ export interface LeaderboardSubmission {
    * submission reaches the service.
    */
   country_code: CountryCode;
-  difficulty: 'easy' | 'medium' | 'hard' | 'grandmaster';
+  difficulty: LeaderboardDifficulty;
   piece_count: number;
   correct_pieces: number;
   memorize_time: number;

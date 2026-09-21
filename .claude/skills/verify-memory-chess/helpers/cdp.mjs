@@ -227,7 +227,13 @@ try {
   console.error(`FAIL: ${err.message}`);
   exitCode = 1;
 } finally {
+  const exited = new Promise((resolve) => proc.once("exit", resolve));
   proc.kill();
-  rmSync(profile, { recursive: true, force: true });
+  await Promise.race([exited, new Promise((resolve) => setTimeout(resolve, 5_000))]);
+  // Chrome keeps writing its profile for a moment after the kill, so a failed
+  // delete means a stray temp directory, never a failed verification.
+  try {
+    rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 });
+  } catch {}
 }
 process.exit(exitCode);

@@ -1,6 +1,6 @@
 {
   "name": "memory-chess",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -12,7 +12,9 @@
     "audit:adsense": "node scripts/audit-adsense.mjs",
     "postinstall": "npm install @vercel/analytics@1.5.0 @vercel/speed-insights@1.2.0 --no-save",
     "measure:lcp": "node scripts/measure-lcp.mjs",
-    "measure:timer": "node scripts/measure-timer.mjs"
+    "measure:timer": "node scripts/measure-timer.mjs",
+    "migrate:rehearse": "node scripts/rehearse-leaderboard-migration.mjs",
+    "backup:verify": "node scripts/verify-leaderboard-backup.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -44,6 +46,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
     "@eslint/eslintrc": "^3",
     "@supabase/supabase-js": "^2.49.4",
     "@testing-library/dom": "^10.4.1",

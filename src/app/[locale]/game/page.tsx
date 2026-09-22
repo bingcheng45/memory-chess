@@ -23,6 +23,7 @@ import { elapsedMs, now, subscribe, type Monotonic } from '@/lib/game/clock';
 import PageHeader from '@/components/ui/PageHeader';
 import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
+import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 
 import { useTranslations } from "next-intl";
 
@@ -122,6 +123,7 @@ function GamePageContent() {
         pieceCount: gameState.pieceCount,
         memorizeTime: gameState.memorizeTime
       });
+      warmLeaderboardCutoffs();
     } else if (gamePhase === GamePhase.SOLUTION) {
       analytics.track(AnalyticsEventType.SOLUTION_PHASE, {
         pieceCount: gameState.pieceCount,
@@ -445,7 +447,7 @@ function GamePageContent() {
         overflows this box and `main` above scrolls to it.
       */}
       <div
-        className={`container mx-auto flex flex-col items-center justify-start px-1 py-2 sm:px-4 sm:py-4 ${
+        className={`container mx-auto flex flex-col items-center justify-start px-2 py-2 sm:px-4 sm:py-4 ${
           isActivePhase ? 'h-full' : PAGE_BELOW_BANNER_MIN_HEIGHT
         }`}
       >

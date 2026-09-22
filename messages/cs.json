@@ -239,6 +239,7 @@
       "tryAgain": "Zkusit znovu",
       "newGame": "Nová partie",
       "submitToLeaderboard": "Odeslat do žebříčku",
+      "leaderboardQualifies": "Váš výsledek stačí na žebříček. Odešlete ho, než zmizí.",
       "viewLeaderboard": "Zobrazit žebříček",
       "dialog": {
         "submitTitle": "Odeslat do žebříčku",
@@ -314,14 +315,17 @@
       "date": "Datum"
     }
   },
+  "country": {
+    "label": "Země",
+    "world": "Svět",
+    "searchPlaceholder": "Hledat země",
+    "noResults": "Nebyly nalezeny žádné země"
+  },
   "settings": {
     "meta": {
       "title": "Nastavení Memory Chess",
       "description": "Přizpůsobte si nastavení a předvolby své hry Memory Chess."
     },
-    "difficulty": "Obtížnost",
-    "memorizationTime": "Čas na zapamatování: {seconds} s",
-    "seconds": "{seconds} s",
     "showCoordinates": "Zobrazit souřadnice šachovnice",
     "home": "Domů",
     "playGame": "Hrát"

@@ -239,6 +239,7 @@
       "tryAgain": "Ещё раз",
       "newGame": "Новая партия",
       "submitToLeaderboard": "Отправить в таблицу лидеров",
+      "leaderboardQualifies": "Результат попадёт в таблицу лидеров. Отправьте его.",
       "viewLeaderboard": "Таблица лидеров",
       "dialog": {
         "submitTitle": "Отправить в таблицу лидеров",
@@ -314,14 +315,17 @@
       "date": "Дата"
     }
   },
+  "country": {
+    "label": "Страна",
+    "world": "Мир",
+    "searchPlaceholder": "Поиск стран",
+    "noResults": "Страны не найдены"
+  },
   "settings": {
     "meta": {
       "title": "Настройки Memory Chess",
       "description": "Настройте параметры и предпочтения вашей игры в Memory Chess."
     },
-    "difficulty": "Сложность",
-    "memorizationTime": "Время на запоминание: {seconds} с",
-    "seconds": "{seconds} с",
     "showCoordinates": "Показывать координаты доски",
     "home": "На главную",
     "playGame": "Играть"

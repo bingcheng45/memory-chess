@@ -82,3 +82,89 @@ describe("recording the player's solution", () => {
     expect(useGameStore.getState().gameState.userPosition).toBe(before);
   });
 });
+
+describe("remembering the last settings played", () => {
+  const STORAGE_KEY = "memory-chess-storage";
+
+  const rehydrateFrom = async (lastSettings: unknown) => {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ state: { lastSettings }, version: 0 }),
+    );
+    await useGameStore.persist.rehydrate();
+    return useGameStore.getState().lastSettings;
+  };
+
+  afterEach(() => {
+    useGameStore.getState().resetGame();
+    useGameStore.setState({ lastSettings: null });
+    localStorage.clear();
+  });
+
+  it("records the settings a round was started with", () => {
+    useGameStore.getState().startGame(12, 8);
+
+    expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 12, memorizeTime: 8 });
+  });
+
+  it("keeps the last settings through a new-game reset", () => {
+    useGameStore.getState().startGame(12, 8);
+    useGameStore.getState().resetGame();
+
+    expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 12, memorizeTime: 8 });
+  });
+
+  it("keeps custom settings of 3 pieces at 18 seconds through a new-game reset", () => {
+    useGameStore.getState().startGame(3, 18);
+    expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 3, memorizeTime: 18 });
+
+    useGameStore.getState().resetGame();
+
+    expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 3, memorizeTime: 18 });
+  });
+
+  it("persists the last settings", () => {
+    useGameStore.getState().startGame(7, 9);
+
+    const { partialize } = useGameStore.persist.getOptions();
+    expect(partialize!(useGameStore.getState())).toMatchObject({
+      lastSettings: { pieceCount: 7, memorizeTime: 9 },
+    });
+  });
+
+  it("restores valid stored settings", async () => {
+    await expect(rehydrateFrom({ pieceCount: 12, memorizeTime: 8 })).resolves.toEqual({
+      pieceCount: 12,
+      memorizeTime: 8,
+    });
+  });
+
+  it.each([
+    [2, 2],
+    [32, 32],
+    [2, 32],
+    [32, 2],
+  ])("restores stored settings at the range ends (%i pieces, %is)", async (pieceCount, memorizeTime) => {
+    await expect(rehydrateFrom({ pieceCount, memorizeTime })).resolves.toEqual({
+      pieceCount,
+      memorizeTime,
+    });
+  });
+
+  it.each([
+    ["1 piece", { pieceCount: 1, memorizeTime: 10 }],
+    ["33 pieces", { pieceCount: 33, memorizeTime: 10 }],
+    ["1 second", { pieceCount: 6, memorizeTime: 1 }],
+    ["33 seconds", { pieceCount: 6, memorizeTime: 33 }],
+    ["an out-of-range piece count", { pieceCount: 999, memorizeTime: 8 }],
+    ["a missing memorize time", { pieceCount: 12 }],
+    ["a fractional value", { pieceCount: 12.5, memorizeTime: 8 }],
+    ["a numeric string", { pieceCount: "12", memorizeTime: 8 }],
+    ["a string", "abc"],
+    ["null", null],
+  ])("drops %s", async (_label, stored) => {
+    useGameStore.setState({ lastSettings: { pieceCount: 6, memorizeTime: 10 } });
+
+    await expect(rehydrateFrom(stored)).resolves.toBeNull();
+  });
+});

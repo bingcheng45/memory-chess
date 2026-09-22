@@ -1,5 +1,7 @@
-import { fireEvent, render, screen, within } from "@/test-utils/intl";
+import { act, fireEvent, render, screen, waitFor, within } from "@/test-utils/intl";
 import GameResult from "@/components/game/GameResult";
+import { loadLeaderboardCutoffs } from "@/lib/leaderboard/cutoffsClient";
+import type { BoardCutoff, LeaderboardCutoffs } from "@/lib/leaderboard/ranking";
 
 const baseGameState = {
   isPlaying: false,
@@ -25,6 +27,43 @@ let mockGameState = baseGameState;
 jest.mock("@/lib/store/gameStore", () => ({
   useGameStore: () => ({ gameState: mockGameState }),
 }));
+
+jest.mock("@/lib/leaderboard/cutoffsClient", () => ({
+  loadLeaderboardCutoffs: jest.fn(),
+}));
+
+const loadCutoffsMock = loadLeaderboardCutoffs as jest.Mock;
+
+const PRODUCTION_EASY_CUTOFF: BoardCutoff = {
+  kind: "full",
+  worst: {
+    correctPieces: 2,
+    totalWrongPieces: 0,
+    memorizeTime: 3.917,
+    solutionTime: 5.567,
+  },
+};
+
+const CUTOFFS: LeaderboardCutoffs = {
+  easy: PRODUCTION_EASY_CUTOFF,
+  medium: { kind: "open" },
+  hard: { kind: "open" },
+  grandmaster: { kind: "open" },
+};
+
+const QUALIFIES_SENTENCE =
+  "Your score makes the leaderboard. Submit it before it's gone.";
+
+const perfectEasyGame = {
+  ...baseGameState,
+  pieceCount: 2,
+  accuracy: 100,
+  correctPlacements: 2,
+  extraPieces: 0,
+  totalPiecesPlaced: 2,
+  actualMemorizeTime: 2.5,
+  completionTime: 4,
+};
 
 jest.mock("@/lib/utils/soundEffects", () => ({
   playSound: jest.fn(),
@@ -58,6 +97,8 @@ describe("GameResult", () => {
       ok: true,
       json: async () => ({ data: { value: 1 } }),
     });
+    loadCutoffsMock.mockReset();
+    loadCutoffsMock.mockResolvedValue(null);
   });
 
   afterEach(() => {
@@ -126,6 +167,35 @@ describe("GameResult", () => {
     expect(screen.getByLabelText("Player Name")).toBeInTheDocument();
   });
 
+  it("shows the reason the server gave, not a generic failure", async () => {
+    const serverMessage = "The leaderboard is being updated. Please try again shortly.";
+    const logged = jest.spyOn(console, "error").mockImplementation(() => {});
+    global.fetch = jest.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "POST" && String(input).includes("/api/leaderboard")) {
+        return { ok: false, status: 503, json: async () => ({ error: serverMessage }) };
+      }
+      return { ok: true, json: async () => ({ data: { value: 1 } }) };
+    }) as unknown as typeof fetch;
+
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Submit to Leaderboard" }),
+    );
+    fireEvent.change(screen.getByLabelText("Player Name"), {
+      target: { value: "Poteto" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Submit Score" }));
+
+    expect(
+      await screen.findByText(`Error: ${serverMessage}`),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("Error: Failed to submit score"),
+    ).not.toBeInTheDocument();
+    logged.mockRestore();
+  });
+
   it("offers no submission for a round with no correct piece, which the board would never show", () => {
     mockGameState = { ...baseGameState, accuracy: 0, correctPlacements: 0 };
 
@@ -141,5 +211,81 @@ describe("GameResult", () => {
     } finally {
       mockGameState = baseGameState;
     }
+  });
+
+  describe("leaderboard qualifier", () => {
+    afterEach(() => {
+      mockGameState = baseGameState;
+    });
+
+    async function renderSettled() {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+      await act(async () => {});
+    }
+
+    it("tells a qualifying player their score makes the board", async () => {
+      mockGameState = perfectEasyGame;
+      loadCutoffsMock.mockResolvedValue(CUTOFFS);
+
+      await renderSettled();
+
+      expect(screen.getByRole("status")).toHaveTextContent(QUALIFIES_SENTENCE);
+    });
+
+    it("stays silent for a score slower than the worst entry on the board", async () => {
+      mockGameState = {
+        ...perfectEasyGame,
+        actualMemorizeTime: 9.4,
+        completionTime: 11.2,
+      };
+      loadCutoffsMock.mockResolvedValue(CUTOFFS);
+
+      await renderSettled();
+
+      expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
+    });
+
+    it("stays silent for a custom game, which no board ranks", async () => {
+      mockGameState = {
+        ...perfectEasyGame,
+        pieceCount: 7,
+        correctPlacements: 7,
+        totalPiecesPlaced: 7,
+      };
+      loadCutoffsMock.mockResolvedValue(CUTOFFS);
+
+      await renderSettled();
+
+      expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
+    });
+
+    it("stays silent when the cutoffs are unavailable", async () => {
+      mockGameState = perfectEasyGame;
+      loadCutoffsMock.mockResolvedValue(null);
+
+      await renderSettled();
+
+      expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
+    });
+
+    it("drops the nudge once the score has been submitted", async () => {
+      mockGameState = perfectEasyGame;
+      loadCutoffsMock.mockResolvedValue(CUTOFFS);
+
+      await renderSettled();
+      expect(screen.getByText(QUALIFIES_SENTENCE)).toBeInTheDocument();
+
+      fireEvent.click(
+        screen.getByRole("button", { name: "Submit to Leaderboard" }),
+      );
+      fireEvent.change(screen.getByLabelText("Player Name"), {
+        target: { value: "Poteto" },
+      });
+      fireEvent.click(screen.getByRole("button", { name: "Submit Score" }));
+
+      await waitFor(() => {
+        expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
+      });
+    });
   });
 });

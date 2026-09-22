@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, type CSSProperties } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import { Button } from "@/components/ui/button";
 import { useTranslations } from 'next-intl';
@@ -8,29 +8,21 @@ import {
   MEMORIZE_SECONDS_RANGE,
   PIECE_COUNT_RANGE,
 } from '@/lib/reference/facts';
+import {
+  DEFAULT_PRESET,
+  GAME_CONFIG_RULES,
+  type DifficultyPreset,
+  presetIdFor,
+  readPrefilledSettings,
+  resolveGameSettings,
+  VALUE_PLACEHOLDER,
+} from '@/lib/game/configPrefill';
 
 interface GameConfigProps {
   readonly onStart?: (pieceCount: number, memorizeTime: number) => void;
 }
 
-// Difficulty presets. `id` is the stable identifier: it is the selection key,
-// the `?difficulty=` URL parameter, and the value the leaderboard stores. It
-// must never be translated -- the label and description come from the
-// `game.presets` messages instead.
-const CUSTOM_PRESET_ID = 'custom';
-
-interface DifficultyPreset {
-  id: 'easy' | 'medium' | 'hard' | 'grandmaster';
-  pieceCount: number;
-  memorizeTime: number;
-}
-
-const DIFFICULTY_PRESETS: DifficultyPreset[] = [
-  { id: 'easy', pieceCount: 2, memorizeTime: 10 },
-  { id: 'medium', pieceCount: 6, memorizeTime: 10 },
-  { id: 'hard', pieceCount: 12, memorizeTime: 8 },
-  { id: 'grandmaster', pieceCount: 20, memorizeTime: 5 },
-];
+const { presets: DIFFICULTY_PRESETS } = GAME_CONFIG_RULES;
 
 export default function GameConfig({ onStart }: GameConfigProps) {
   const t = useTranslations('game');
@@ -38,52 +30,33 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     startGame, 
     gameState
   } = useGameStore();
-  const [pieceCount, setPieceCount] = useState(6);
-  const [memorizeTime, setMemorizeTime] = useState(10);
-  const [selectedPreset, setSelectedPreset] = useState("medium");
+  const [pieceCount, setPieceCount] = useState(() => readPrefilledSettings().pieceCount);
+  const [memorizeTime, setMemorizeTime] = useState(() => readPrefilledSettings().memorizeTime);
+  const selectedPreset = presetIdFor({ pieceCount, memorizeTime }, DIFFICULTY_PRESETS);
+  const formRef = useRef<HTMLDivElement>(null);
 
-  // Read ?difficulty= off the live location rather than via useSearchParams,
+  // The first render starts from what the served form shows, Medium or the
+  // layout script's prefill, so hydration matches the page as painted. The
+  // remembered settings or a ?difficulty= preset are then applied here, read
+  // from the live store because hydration renders with the store's
+  // pre-storage snapshot. Read the live location rather than useSearchParams,
   // which would bail /game out of static rendering and leave the served HTML
   // without this form.
   useEffect(() => {
-    const difficultyParam = new URLSearchParams(window.location.search)
-      .get('difficulty')
-      ?.toLowerCase();
-    // Match on the stable id, so a deep link like ?difficulty=hard keeps
-    // working in every locale.
-    const preset = DIFFICULTY_PRESETS.find(
-      preset => preset.id === difficultyParam
-    );
-
-    if (preset) {
-      setSelectedPreset(preset.id);
-      setPieceCount(preset.pieceCount);
-      setMemorizeTime(preset.memorizeTime);
-    }
+    delete formRef.current?.dataset.prefilled;
+    const settings =
+      resolveGameSettings(
+        window.location.search,
+        useGameStore.getState().lastSettings,
+        GAME_CONFIG_RULES,
+      ) ?? DEFAULT_PRESET;
+    setPieceCount(settings.pieceCount);
+    setMemorizeTime(settings.memorizeTime);
   }, []);
   
-  // Auto-detect if current settings match a preset
-  useEffect(() => {
-    // Check if the current pieceCount and memorizeTime match any preset
-    const matchingPreset = DIFFICULTY_PRESETS.find(
-      preset => preset.pieceCount === pieceCount && preset.memorizeTime === memorizeTime
-    );
-    
-    if (matchingPreset) {
-      setSelectedPreset(matchingPreset.id);
-    } else {
-      setSelectedPreset(CUSTOM_PRESET_ID);
-    }
-  }, [pieceCount, memorizeTime]);
-  
-  function handlePresetSelect(presetId: string) {
-    setSelectedPreset(presetId);
-    
-    const selectedPreset = DIFFICULTY_PRESETS.find((preset) => preset.id === presetId);
-    if (selectedPreset) {
-      setPieceCount(selectedPreset.pieceCount);
-      setMemorizeTime(selectedPreset.memorizeTime);
-    }
+  function handlePresetSelect(preset: DifficultyPreset) {
+    setPieceCount(preset.pieceCount);
+    setMemorizeTime(preset.memorizeTime);
   }
   
   const handleStart = () => {
@@ -94,13 +67,18 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     }
   };
   
-  const sliderFill = (value: number, range: { min: number; max: number }) =>
-    ((value - range.min) / (range.max - range.min)) * 100;
-  const pieceFill = sliderFill(pieceCount, PIECE_COUNT_RANGE);
-  const timeFill = sliderFill(memorizeTime, MEMORIZE_SECONDS_RANGE);
+  const sliderStyle = (value: number, range: { min: number; max: number }) => ({
+    '--fill': `${((value - range.min) / (range.max - range.min)) * 100}%`,
+    backgroundImage: 'linear-gradient(to right, #FFB380 0%, #FFB380 var(--fill), #222222 var(--fill), #222222 100%)',
+  }) as CSSProperties;
 
   return (
-    <div className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-5 sm:p-7 shadow-xl">
+    <div
+      ref={formRef}
+      data-game-config
+      suppressHydrationWarning
+      className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-5 sm:p-7 shadow-xl"
+    >
       <h2 className="mb-5 text-center text-2xl font-bold text-text-primary">{t('config.title')}</h2>
       
       <div className="mb-5">
@@ -109,7 +87,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           {DIFFICULTY_PRESETS.map((preset) => (
             <Button
               key={preset.id}
-              onClick={() => handlePresetSelect(preset.id)}
+              onClick={() => handlePresetSelect(preset)}
               variant={selectedPreset === preset.id ? "secondary" : "ghost"}
               className={`flex h-auto flex-col items-center justify-center p-2.5 transition-all duration-200 ease-in-out border ${
                 selectedPreset === preset.id
@@ -117,6 +95,9 @@ export default function GameConfig({ onStart }: GameConfigProps) {
                   : 'border-transparent text-text-secondary hover:border-peach-500/30 hover:bg-peach-500/15 hover:text-white hover:shadow-sm'
               }`}
               aria-pressed={selectedPreset === preset.id}
+              data-preset={preset.id}
+              data-description={t(`presets.${preset.id}.description`)}
+              suppressHydrationWarning
             >
               <span className="font-medium">{t(`presets.${preset.id}.label`)}</span>
               <div className="mt-1 text-xs opacity-70">
@@ -128,8 +109,13 @@ export default function GameConfig({ onStart }: GameConfigProps) {
             </Button>
           ))}
         </div>
-        <div className="mt-2 text-xs text-text-muted">
-          {selectedPreset && selectedPreset !== CUSTOM_PRESET_ID
+        <div
+          data-preset-description
+          data-custom-label={t('config.customLabel')}
+          suppressHydrationWarning
+          className="mt-2 text-xs text-text-muted"
+        >
+          {selectedPreset
             ? t(`presets.${selectedPreset}.description`)
             : t('config.customLabel')}
         </div>
@@ -140,7 +126,12 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           <label htmlFor="pieceCount" className="text-sm font-medium text-text-secondary">
             {t('config.pieceCount')}
           </label>
-          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark">
+          <span
+            data-value-for="pieceCount"
+            data-template={VALUE_PLACEHOLDER}
+            suppressHydrationWarning
+            className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark"
+          >
             {pieceCount}
           </span>
         </div>
@@ -159,9 +150,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
                      [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-peach-500 [&::-webkit-slider-thumb]:mt-[-1.5px]
                      [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
                      [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
-          style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${pieceFill}%, #222222 ${pieceFill}%, #222222 100%)`
-          }}
+          style={sliderStyle(pieceCount, PIECE_COUNT_RANGE)}
+          suppressHydrationWarning
         />
         <div className="mt-4 flex justify-between text-xs text-text-muted">
           <span>2</span>
@@ -175,7 +165,12 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           <label htmlFor="memorizeTime" className="text-sm font-medium text-text-secondary">
             {t('config.memorizeTime')}
           </label>
-          <span className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark">
+          <span
+            data-value-for="memorizeTime"
+            data-template={t('config.seconds', { seconds: VALUE_PLACEHOLDER })}
+            suppressHydrationWarning
+            className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark"
+          >
             {t('config.seconds', { seconds: memorizeTime })}
           </span>
         </div>
@@ -194,9 +189,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
                      [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-peach-500 [&::-webkit-slider-thumb]:mt-[-1.5px]
                      [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
                      [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
-          style={{
-            backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${timeFill}%, #222222 ${timeFill}%, #222222 100%)`
-          }}
+          style={sliderStyle(memorizeTime, MEMORIZE_SECONDS_RANGE)}
+          suppressHydrationWarning
         />
         <div className="mt-4 flex justify-between text-xs text-text-muted">
           <span>{t('config.seconds', { seconds: 2 })}</span>

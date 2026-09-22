@@ -40,6 +40,58 @@ export interface ChangelogTable {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "1.2.4",
+    publishedAt: "2026-09-19T10:00:00.000+08:00",
+    title: "You asked the game to remember. Thank you.",
+    summary:
+      "A note in the feedback box asked the game to keep your last settings instead of resetting every time. It now does, for presets and for your own mixes, and the pages you load most paint noticeably faster on phones.",
+    groups: [
+      {
+        title: "Your last settings, remembered",
+        description:
+          "One of you wrote: \"When clicking 'New game' the view should keep the last settings we played with.\" Fair point, and thank you for writing it down. Every new game used to snap back to Medium, whatever you had just played.",
+        changes: [
+          "New game now opens on the pieces and look time you last played, whether that was a preset like Hard or your own mix, such as 3 pieces with 18 seconds to look.",
+          "Your settings stay put after a reload, in a new tab, and the next time you visit, on the same browser.",
+          "A link that names a level or a drill, like the buttons in the guides, still opens exactly that setup.",
+        ],
+        note: "Keep the suggestions coming. This one took a single sentence in the feedback box to set off.",
+      },
+      {
+        title: "A simpler settings page",
+        changes: [
+          "The Difficulty and time controls on the settings page never changed the game. They are gone, because the game screen is where you choose, and it now remembers. Board coordinates stay on the settings page.",
+        ],
+      },
+      {
+        title: "Faster on phones",
+        changes: [
+          "On a typical phone the home page and the game now paint their main text in about 1.4 to 1.5 seconds, down from up to 3.8. The game screen arrives ready instead of waiting for scripts, and pages no longer download fonts they never use.",
+        ],
+      },
+      {
+        title: "Fly your flag on the leaderboard",
+        description:
+          "A score used to be a name and a number. Now it can say where you played from, if you want it to.",
+        changes: [
+          "Pick a country when you submit a score, and its flag sits beside your name on the board.",
+          "The globe is the default, because not everyone wants to say where they are. Leave it alone and it stays a globe.",
+          "Start typing to find a country instead of scrolling the whole list.",
+          "Your choice is remembered for next time, the same way your game settings are.",
+          "Every score already on the board keeps the globe. Nothing was guessed on your behalf.",
+        ],
+      },
+      {
+        title: "We now say when a score is worth submitting",
+        changes: [
+          "Finish a round and the result screen tells you, in one line, whether that score reaches the leaderboard.",
+          "It compares against the lowest score actually on that board, so it is an answer rather than encouragement. On the quieter boards there is still room, and it says so.",
+          "The line appears only when the answer is yes, and it leaves once you have submitted.",
+        ],
+      },
+    ],
+  },
+  {
     version: "1.2.3",
     publishedAt: "2026-08-28T12:00:00.000+08:00",
     title: "You found the knight bug. Thank you.",

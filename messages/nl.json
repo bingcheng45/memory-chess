@@ -239,6 +239,7 @@
       "tryAgain": "Opnieuw",
       "newGame": "Nieuwe partij",
       "submitToLeaderboard": "Naar de ranglijst sturen",
+      "leaderboardQualifies": "Je score haalt de ranglijst. Stuur hem in voordat het te laat is.",
       "viewLeaderboard": "Bekijk de ranglijst",
       "dialog": {
         "submitTitle": "Naar de ranglijst sturen",
@@ -314,14 +315,17 @@
       "date": "Datum"
     }
   },
+  "country": {
+    "label": "Land",
+    "world": "Wereld",
+    "searchPlaceholder": "Zoek landen",
+    "noResults": "Geen landen gevonden"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess-instellingen",
       "description": "Pas de instellingen en voorkeuren van je Memory Chess-spel aan."
     },
-    "difficulty": "Moeilijkheidsgraad",
-    "memorizationTime": "Kijktijd: {seconds} seconden",
-    "seconds": "{seconds} s",
     "showCoordinates": "Bordcoördinaten tonen",
     "home": "Home",
     "playGame": "Spelen"

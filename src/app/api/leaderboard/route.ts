@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
 import { checkSupabaseConnection } from '@/lib/supabase';
+import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
+
+const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -53,7 +56,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate request body
-    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces } = body;
+    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces, country_code } = body;
     
     if (!player_name || !difficulty || !piece_count || correct_pieces === undefined || 
         !memorize_time || !solution_time) {
@@ -79,6 +82,18 @@ export async function POST(request: NextRequest) {
       );
     }
     
+    const parsedCountryCode =
+      country_code === undefined || country_code === null
+        ? WORLD_CODE
+        : parseCountryCode(country_code);
+
+    if (parsedCountryCode === null) {
+      return NextResponse.json(
+        { error: 'Invalid country code' },
+        { status: 400 }
+      );
+    }
+
     // Additional validation
     // The board lists only rows with a correct piece; accepting 0 would store
     // a score nobody can see.
@@ -92,23 +107,37 @@ export async function POST(request: NextRequest) {
     // First check if Supabase is configured properly
     const connectionStatus = await checkSupabaseConnection();
     if (!connectionStatus.connected) {
-      return NextResponse.json(
-        { error: 'Database connection unavailable. Please check the application configuration.' },
-        { status: 503 }
-      );
+      console.error('Leaderboard submission unavailable:', connectionStatus.error);
+      return NextResponse.json({ error: LEADERBOARD_UNAVAILABLE }, { status: 503 });
     }
     
-    const data = await submitLeaderboardEntry({
+    const result = await submitLeaderboardEntry({
       player_name,
       difficulty,
       piece_count,
       correct_pieces,
       memorize_time,
       solution_time,
-      total_wrong_pieces
+      total_wrong_pieces,
+      country_code: parsedCountryCode
     });
-    
-    return NextResponse.json({ success: true, data });
+
+    switch (result.status) {
+      case 'stored':
+        return NextResponse.json({ success: true, data: result.entry });
+      case 'invalid':
+        return NextResponse.json({ error: result.message }, { status: 400 });
+      case 'unavailable':
+        console.error('Leaderboard submission unavailable:', result.cause);
+        return NextResponse.json({ error: LEADERBOARD_UNAVAILABLE }, { status: 503 });
+      case 'failed':
+        console.error('Leaderboard submission failed:', result.cause);
+        return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
+      default: {
+        const unhandled: never = result;
+        throw new Error(`unhandled submission result ${JSON.stringify(unhandled)}`);
+      }
+    }
   } catch (err) {
     console.error('Unexpected error:', err);
     return NextResponse.json(

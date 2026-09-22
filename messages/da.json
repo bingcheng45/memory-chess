@@ -239,6 +239,7 @@
       "tryAgain": "Prøv igen",
       "newGame": "Nyt parti",
       "submitToLeaderboard": "Send til ranglisten",
+      "leaderboardQualifies": "Dit resultat rækker til ranglisten. Send det ind, før chancen ryger.",
       "viewLeaderboard": "Se ranglisten",
       "dialog": {
         "submitTitle": "Send til ranglisten",
@@ -314,14 +315,17 @@
       "date": "Dato"
     }
   },
+  "country": {
+    "label": "Land",
+    "world": "Verden",
+    "searchPlaceholder": "Søg efter lande",
+    "noResults": "Ingen lande fundet"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess-indstillinger",
       "description": "Tilpas indstillinger og præferencer for dit Memory Chess-spil."
     },
-    "difficulty": "Sværhedsgrad",
-    "memorizationTime": "Indlæringstid: {seconds} sekunder",
-    "seconds": "{seconds} s",
     "showCoordinates": "Vis brættets koordinater",
     "home": "Forside",
     "playGame": "Spil"

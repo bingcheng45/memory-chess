@@ -108,6 +108,7 @@ function connect(wsUrl) {
     const pending = new Map();
     const cdp = {
       onLoad: null,
+      onEvent: null,
       send(method, params = {}) {
         const id = nextId++;
         ws.send(JSON.stringify({ id, method, params }));
@@ -123,8 +124,9 @@ function connect(wsUrl) {
         pending.delete(msg.id);
         if (msg.error) rej(new Error(`${msg.error.message}`));
         else res(msg.result);
-      } else if (msg.method === "Page.loadEventFired") {
-        cdp.onLoad?.();
+      } else if (msg.method) {
+        if (msg.method === "Page.loadEventFired") cdp.onLoad?.();
+        cdp.onEvent?.(msg.method, msg.params);
       }
     };
   });
@@ -134,10 +136,14 @@ function makePage(cdp, evidenceDir) {
   let loadResolve = null;
   cdp.onLoad = () => loadResolve?.();
 
+  const listeners = [];
+  cdp.onEvent = (method, params) => {
+    for (const listener of listeners) listener(method, params);
+  };
+
   const page = {
-    send(method, params) {
-      return cdp.send(method, params);
-    },
+    send: (method, params) => cdp.send(method, params),
+    on: (listener) => listeners.push(listener),
     async goto(url) {
       const loaded = new Promise((r) => (loadResolve = r));
       await cdp.send("Page.navigate", { url });
@@ -221,12 +227,13 @@ try {
   console.error(`FAIL: ${err.message}`);
   exitCode = 1;
 } finally {
+  const exited = new Promise((resolve) => proc.once("exit", resolve));
   proc.kill();
-  rmSync(profile, {
-    recursive: true,
-    force: true,
-    maxRetries: 5,
-    retryDelay: 100,
-  });
+  await Promise.race([exited, new Promise((resolve) => setTimeout(resolve, 5_000))]);
+  // Chrome keeps writing its profile for a moment after the kill, so a failed
+  // delete means a stray temp directory, never a failed verification.
+  try {
+    rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 });
+  } catch {}
 }
 process.exit(exitCode);

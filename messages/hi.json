@@ -239,6 +239,7 @@
       "tryAgain": "फिर कोशिश करें",
       "newGame": "नया गेम",
       "submitToLeaderboard": "लीडरबोर्ड पर भेजें",
+      "leaderboardQualifies": "आपका स्कोर लीडरबोर्ड में आने लायक है। मौका निकलने से पहले भेजें।",
       "viewLeaderboard": "लीडरबोर्ड देखें",
       "dialog": {
         "submitTitle": "लीडरबोर्ड पर भेजें",
@@ -314,14 +315,17 @@
       "date": "तारीख़"
     }
   },
+  "country": {
+    "label": "देश",
+    "world": "विश्व",
+    "searchPlaceholder": "देश खोजें",
+    "noResults": "कोई देश नहीं मिला"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess सेटिंग",
       "description": "अपने Memory Chess गेम की सेटिंग और पसंद अपने हिसाब से बदलें।"
     },
-    "difficulty": "कठिनाई",
-    "memorizationTime": "याद करने का समय: {seconds} सेकंड",
-    "seconds": "{seconds} से.",
     "showCoordinates": "बोर्ड के निर्देशांक दिखाएँ",
     "home": "होम",
     "playGame": "खेलें"

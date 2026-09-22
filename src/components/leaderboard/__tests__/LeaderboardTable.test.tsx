@@ -1,6 +1,7 @@
 import { render } from "@/test-utils/intl";
 import LeaderboardTable, { TimeDisplay } from "@/components/leaderboard/LeaderboardTable";
 import type { LeaderboardEntry } from "@/types/leaderboard";
+import { parseCountryCode, WORLD_CODE, type CountryCode } from "@/lib/leaderboard/countries";
 
 const textOf = (seconds: number) =>
   render(<TimeDisplay seconds={seconds} />).container.textContent;
@@ -59,6 +60,51 @@ describe("LeaderboardTable highlight", () => {
     const rows = highlighted(link({ memorizeTime: 4.302, solutionTime: 30.1, pieceCount: 6, correctPieces: 3, totalWrongPieces: 3 }));
     expect(rows).toHaveLength(1);
     expect(rows[0].textContent).toContain("00:04:302");
+  });
+});
+
+const SINGAPORE_FLAG = String.fromCodePoint(0x1f1f8, 0x1f1ec);
+const GLOBE = String.fromCodePoint(0x1f30d);
+
+const countryCode = (value: string): CountryCode => {
+  const parsed = parseCountryCode(value);
+  if (parsed === null) {
+    throw new Error(`fixture uses an unknown country code: ${value}`);
+  }
+  return parsed;
+};
+
+describe("LeaderboardTable country flag", () => {
+  const flagOf = (entry: LeaderboardEntry, name: string) =>
+    render(<LeaderboardTable error={null} activeTab="medium" data={[entry]} />).getByRole("img", {
+      name,
+    });
+
+  it("shows the country flag when the row names one", () => {
+    const entry = { ...row("row-sg", 0.648, 18.887, 6), country_code: countryCode("SG") };
+    const flag = flagOf(entry, "Singapore");
+
+    expect(flag).toHaveTextContent(SINGAPORE_FLAG);
+    expect(flag).toHaveAttribute("aria-label", "Singapore");
+    expect(flag).toHaveAttribute("title", "Singapore");
+  });
+
+  it("shows the globe when the row names the world", () => {
+    const entry = { ...row("row-zz", 0.648, 18.887, 6), country_code: WORLD_CODE };
+
+    expect(flagOf(entry, "World")).toHaveTextContent(GLOBE);
+  });
+
+  it("shows the globe for a row written before the country column existed", () => {
+    expect(flagOf(row("row-legacy", 0.648, 18.887, 6), "World")).toHaveTextContent(GLOBE);
+  });
+
+  it("shows the globe for a stored code the branded type says cannot exist", () => {
+    // The column predates the type, so a row can still hold anything the
+    // database accepted before the constraint landed.
+    const entry = { ...row("row-junk", 0.648, 18.887, 6), country_code: "qq" as unknown as CountryCode };
+
+    expect(flagOf(entry, "World")).toHaveTextContent(GLOBE);
   });
 });
 

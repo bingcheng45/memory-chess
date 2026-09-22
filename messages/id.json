@@ -239,6 +239,7 @@
       "tryAgain": "Coba lagi",
       "newGame": "Permainan baru",
       "submitToLeaderboard": "Kirim ke papan peringkat",
+      "leaderboardQualifies": "Skor Anda masuk papan peringkat. Kirim sekarang sebelum terlewat.",
       "viewLeaderboard": "Lihat papan peringkat",
       "dialog": {
         "submitTitle": "Kirim ke papan peringkat",
@@ -314,14 +315,17 @@
       "date": "Tanggal"
     }
   },
+  "country": {
+    "label": "Negara",
+    "world": "Dunia",
+    "searchPlaceholder": "Cari negara",
+    "noResults": "Negara tidak ditemukan"
+  },
   "settings": {
     "meta": {
       "title": "Pengaturan Memory Chess",
       "description": "Sesuaikan pengaturan dan preferensi permainan Memory Chess kamu."
     },
-    "difficulty": "Tingkat kesulitan",
-    "memorizationTime": "Waktu menghafal: {seconds} detik",
-    "seconds": "{seconds} dtk",
     "showCoordinates": "Tampilkan koordinat papan",
     "home": "Beranda",
     "playGame": "Main"

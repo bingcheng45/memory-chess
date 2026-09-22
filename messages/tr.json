@@ -239,6 +239,7 @@
       "tryAgain": "Tekrar dene",
       "newGame": "Yeni oyun",
       "submitToLeaderboard": "Sıralamaya gönder",
+      "leaderboardQualifies": "Skorun sıralamaya giriyor. Fırsatı kaçırmadan hemen gönder.",
       "viewLeaderboard": "Sıralamayı gör",
       "dialog": {
         "submitTitle": "Sıralamaya gönder",
@@ -314,14 +315,17 @@
       "date": "Tarih"
     }
   },
+  "country": {
+    "label": "Ülke",
+    "world": "Dünya",
+    "searchPlaceholder": "Ülke ara",
+    "noResults": "Ülke bulunamadı"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess ayarları",
       "description": "Memory Chess oyununun ayarlarını ve tercihlerini özelleştir."
     },
-    "difficulty": "Zorluk",
-    "memorizationTime": "Ezberleme süresi: {seconds} saniye",
-    "seconds": "{seconds} sn",
     "showCoordinates": "Tahta koordinatlarını göster",
     "home": "Ana sayfa",
     "playGame": "Oyna"

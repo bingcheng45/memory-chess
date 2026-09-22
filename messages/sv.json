@@ -239,6 +239,7 @@
       "tryAgain": "Försök igen",
       "newGame": "Nytt parti",
       "submitToLeaderboard": "Skicka till topplistan",
+      "leaderboardQualifies": "Ditt resultat når topplistan. Skicka in det innan det är för sent.",
       "viewLeaderboard": "Visa topplistan",
       "dialog": {
         "submitTitle": "Skicka till topplistan",
@@ -314,14 +315,17 @@
       "date": "Datum"
     }
   },
+  "country": {
+    "label": "Land",
+    "world": "Världen",
+    "searchPlaceholder": "Sök länder",
+    "noResults": "Inga länder hittades"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess-inställningar",
       "description": "Anpassa inställningar och preferenser för ditt Memory Chess-spel."
     },
-    "difficulty": "Svårighetsgrad",
-    "memorizationTime": "Memoreringstid: {seconds} sekunder",
-    "seconds": "{seconds} s",
     "showCoordinates": "Visa brädets koordinater",
     "home": "Start",
     "playGame": "Spela"

@@ -1,6 +1,51 @@
+import type { PostgrestError } from '@supabase/supabase-js';
 import { supabase, checkSupabaseConnection } from '@/lib/supabase';
 import { LEADERBOARD_ROW_LIMIT } from '@/lib/reference/facts';
-import { LeaderboardEntry, LeaderboardSubmission } from '@/types/leaderboard';
+import { RANKING_ORDER, type BoardCutoff, type LeaderboardCutoffs } from '@/lib/leaderboard/ranking';
+import {
+  LEADERBOARD_DIFFICULTIES,
+  type LeaderboardDifficulty,
+  type LeaderboardEntry,
+  type LeaderboardSubmission,
+} from '@/types/leaderboard';
+
+type SupabaseClient = NonNullable<typeof supabase>;
+
+/**
+ * Structural, rather than typed against PostgrestFilterBuilder, so this does
+ * not have to name the five generic parameters that builder carries. `.order()`
+ * returns `this`, so the chain keeps whatever builder type it started with.
+ */
+type OrderableQuery<T> = {
+  order(column: string, options: { ascending: boolean; nullsFirst?: false }): T;
+};
+
+/**
+ * `nullsFirst` is forwarded only for the keys that carry it. postgrest-js writes
+ * `.nullslast` onto the column when the option is present and nothing when it is
+ * absent, so handing it over unconditionally would rewrite the live request for
+ * three columns that have never sent it.
+ */
+function orderByRanking<T extends OrderableQuery<T>>(query: T): T {
+  return RANKING_ORDER.reduce<T>(
+    (ordered, key) =>
+      ordered.order(key.column, {
+        ascending: key.ascending,
+        ...(key.nullsFirst === undefined ? {} : { nullsFirst: key.nullsFirst }),
+      }),
+    query,
+  );
+}
+
+/**
+ * What became of a submission, in terms the route can map to a status code.
+ * `cause` is for the operator reading logs, never for the player.
+ */
+export type LeaderboardSubmitResult =
+  | { status: 'stored'; entry: LeaderboardEntry }
+  | { status: 'invalid'; message: string }
+  | { status: 'unavailable'; cause: unknown }
+  | { status: 'failed'; cause: unknown };
 
 export async function getLeaderboard(difficulty: string = 'medium'): Promise<{data: LeaderboardEntry[], error?: string}> {
   try {
@@ -20,16 +65,13 @@ export async function getLeaderboard(difficulty: string = 'medium'): Promise<{da
       };
     }
     
-    const { data, error } = await supabase
-      .from('leaderboard_entries')
-      .select('*')
-      .eq('difficulty', difficulty)
-      .gt('correct_pieces', 0)
-      .order('correct_pieces', { ascending: false })
-      .order('total_wrong_pieces', { ascending: true, nullsFirst: false })
-      .order('memorize_time', { ascending: true })
-      .order('solution_time', { ascending: true })
-      .limit(LEADERBOARD_ROW_LIMIT);
+    const { data, error } = await orderByRanking(
+      supabase
+        .from('leaderboard_entries')
+        .select('*')
+        .eq('difficulty', difficulty)
+        .gt('correct_pieces', 0),
+    ).limit(LEADERBOARD_ROW_LIMIT);
       
     if (error) {
       console.error('Supabase query error:', error);
@@ -49,25 +91,137 @@ export async function getLeaderboard(difficulty: string = 'medium'): Promise<{da
   }
 }
 
-export async function submitLeaderboardEntry(entry: LeaderboardSubmission): Promise<LeaderboardEntry> {
-  // Validate player name length
+type CutoffRow = {
+  correct_pieces: number;
+  total_wrong_pieces: number | null;
+  memorize_time: number;
+  solution_time: number;
+};
+
+async function readBoardCutoff(
+  client: SupabaseClient,
+  difficulty: LeaderboardDifficulty,
+): Promise<BoardCutoff | null> {
+  const ranked = orderByRanking(
+    client
+      .from('leaderboard_entries')
+      .select('correct_pieces,total_wrong_pieces,memorize_time,solution_time')
+      .eq('difficulty', difficulty)
+      .gt('correct_pieces', 0),
+  );
+
+  // The board shows LEADERBOARD_ROW_LIMIT rows, so the last row it shows is the
+  // score a newcomer has to beat. Reading only that row leaves the other 199 on
+  // the server; a board with fewer rows returns nothing, which is the open case.
+  const { data, error } = await ranked.range(LEADERBOARD_ROW_LIMIT - 1, LEADERBOARD_ROW_LIMIT - 1);
+
+  if (error) {
+    console.error(`Supabase cutoff query error for ${difficulty}:`, error);
+    return null;
+  }
+
+  const rows: CutoffRow[] = data ?? [];
+  const worst = rows[0];
+  if (!worst) {
+    return { kind: 'open' };
+  }
+
+  return {
+    kind: 'full',
+    worst: {
+      correctPieces: worst.correct_pieces,
+      totalWrongPieces: worst.total_wrong_pieces ?? null,
+      memorizeTime: worst.memorize_time,
+      solutionTime: worst.solution_time,
+    },
+  };
+}
+
+/**
+ * `null` means "could not be determined", not "empty". The caller hides its
+ * banner on `null` rather than telling a player something that might be wrong,
+ * so every failure here collapses to it and nothing throws.
+ */
+export async function getLeaderboardCutoffs(): Promise<LeaderboardCutoffs | null> {
+  try {
+    const connectionStatus = await checkSupabaseConnection();
+    if (!connectionStatus.connected) {
+      console.error('Supabase connection failed:', connectionStatus.error);
+      return null;
+    }
+    if (!supabase) {
+      console.error('Supabase cutoffs unavailable: Supabase is not configured');
+      return null;
+    }
+
+    const client = supabase;
+    const readings = await Promise.all(
+      LEADERBOARD_DIFFICULTIES.map(async (difficulty) => ({
+        difficulty,
+        cutoff: await readBoardCutoff(client, difficulty),
+      })),
+    );
+
+    const cutoffs = {} as LeaderboardCutoffs;
+    for (const { difficulty, cutoff } of readings) {
+      if (cutoff === null) {
+        return null;
+      }
+      cutoffs[difficulty] = cutoff;
+    }
+    return cutoffs;
+  } catch (err) {
+    console.error('Unexpected error in getLeaderboardCutoffs:', err);
+    return null;
+  }
+}
+
+/**
+ * PostgREST reports a column its schema cache does not know as PGRST204, and
+ * Postgres itself raises 42703 (undefined_column) when the request reaches the
+ * database without that cache in front. Both codes are stable; the message
+ * text is not, so it is never matched.
+ */
+const MISSING_COLUMN_CODES = ['PGRST204', '42703'];
+
+function isMissingColumn(error: PostgrestError): boolean {
+  return MISSING_COLUMN_CODES.includes(error.code);
+}
+
+type SubmissionRow = LeaderboardSubmission | Omit<LeaderboardSubmission, 'country_code'>;
+
+export async function submitLeaderboardEntry(
+  entry: LeaderboardSubmission,
+): Promise<LeaderboardSubmitResult> {
   if (entry.player_name.length < 4 || entry.player_name.length > 16) {
-    throw new Error('Player name must be between 4 and 16 characters');
+    return { status: 'invalid', message: 'Player name must be between 4 and 16 characters' };
   }
   if (!supabase) {
-    throw new Error('Supabase is not configured');
+    return { status: 'unavailable', cause: 'Supabase is not configured' };
   }
-  
-  const { data, error } = await supabase
-    .from('leaderboard_entries')
-    .insert(entry)
-    .select()
-    .single();
-    
-  if (error) {
-    console.error('Error submitting to leaderboard:', error);
-    throw new Error('Failed to submit leaderboard entry');
+
+  const client = supabase;
+  const insertRow = (row: SubmissionRow) =>
+    client.from('leaderboard_entries').insert(row).select().single();
+
+  const first = await insertRow(entry);
+  if (!first.error) {
+    return { status: 'stored', entry: first.data };
   }
-  
-  return data;
+  if (!isMissingColumn(first.error)) {
+    return { status: 'failed', cause: first.error };
+  }
+
+  // Transition shim. Delete it, and this whole retry branch, once the
+  // country_code migration is applied in every environment. A player's score
+  // outlives their flag, so the score is kept and the country dropped.
+  const { country_code: dropped, ...withoutCountry } = entry;
+  console.warn(
+    `Leaderboard insert rejected country_code ${dropped} (${first.error.code}); the country migration is outstanding. Retrying without it.`,
+  );
+  const retry = await insertRow(withoutCountry);
+  if (retry.error) {
+    return { status: 'unavailable', cause: retry.error };
+  }
+  return { status: 'stored', entry: retry.data };
 }

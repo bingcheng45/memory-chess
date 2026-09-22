@@ -239,6 +239,7 @@
       "tryAgain": "다시 하기",
       "newGame": "새 게임",
       "submitToLeaderboard": "리더보드에 등록",
+      "leaderboardQualifies": "이 점수면 리더보드에 오릅니다. 사라지기 전에 등록하세요.",
       "viewLeaderboard": "리더보드 보기",
       "dialog": {
         "submitTitle": "리더보드에 등록",
@@ -314,14 +315,17 @@
       "date": "날짜"
     }
   },
+  "country": {
+    "label": "국가",
+    "world": "세계",
+    "searchPlaceholder": "국가 검색",
+    "noResults": "국가를 찾을 수 없습니다"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess 설정",
       "description": "Memory Chess 게임 설정과 환경설정을 원하는 대로 바꾸세요."
     },
-    "difficulty": "난이도",
-    "memorizationTime": "암기 시간: {seconds}초",
-    "seconds": "{seconds}초",
     "showCoordinates": "판 좌표 표시",
     "home": "홈",
     "playGame": "게임 하기"

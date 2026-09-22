@@ -239,6 +239,7 @@
       "tryAgain": "Thử lại",
       "newGame": "Ván mới",
       "submitToLeaderboard": "Gửi lên bảng xếp hạng",
+      "leaderboardQualifies": "Điểm của bạn lọt vào bảng xếp hạng. Gửi ngay kẻo mất cơ hội.",
       "viewLeaderboard": "Xem bảng xếp hạng",
       "dialog": {
         "submitTitle": "Gửi lên bảng xếp hạng",
@@ -314,14 +315,17 @@
       "date": "Ngày"
     }
   },
+  "country": {
+    "label": "Quốc gia",
+    "world": "Thế giới",
+    "searchPlaceholder": "Tìm quốc gia",
+    "noResults": "Không tìm thấy quốc gia"
+  },
   "settings": {
     "meta": {
       "title": "Cài đặt Memory Chess",
       "description": "Tùy chỉnh cài đặt và tùy chọn cho ván Memory Chess của bạn."
     },
-    "difficulty": "Độ khó",
-    "memorizationTime": "Thời gian ghi nhớ: {seconds} giây",
-    "seconds": "{seconds} giây",
     "showCoordinates": "Hiện tọa độ bàn cờ",
     "home": "Trang chủ",
     "playGame": "Chơi"

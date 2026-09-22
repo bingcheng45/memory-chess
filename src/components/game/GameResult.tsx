@@ -17,6 +17,15 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import CountryPicker from "@/components/leaderboard/CountryPicker";
+import { loadLeaderboardCutoffs } from "@/lib/leaderboard/cutoffsClient";
+import {
+  qualifies,
+  type LeaderboardCutoffs,
+  type RankingScore,
+} from "@/lib/leaderboard/ranking";
+import type { LeaderboardDifficulty } from "@/types/leaderboard";
+import { useSettingsStore } from "@/stores/settingsStore";
 import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
 import ResultBoardComparison from "@/components/game/ResultBoardComparison";
 
@@ -34,9 +43,22 @@ interface GameResultProps {
   readonly onNewGame: () => void;
 }
 
+function qualifiesForLeaderboard(
+  difficulty: LeaderboardDifficulty | "custom",
+  score: RankingScore,
+  cutoffs: LeaderboardCutoffs | null,
+): boolean {
+  if (cutoffs === null || difficulty === "custom") {
+    return false;
+  }
+  return qualifies(score, cutoffs[difficulty]);
+}
+
 export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const t = useTranslations("game.result");
+  const tCountry = useTranslations("country");
   const { gameState } = useGameStore();
+  const { countryCode, setCountryCode } = useSettingsStore();
 
   // Leaderboard submission state
   const [showLeaderboardDialog, setShowLeaderboardDialog] = useState(false);
@@ -44,6 +66,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(null);
 
   // Use a ref instead of state to prevent double increments due to StrictMode
   const playsCountedRef = useRef(false);
@@ -90,6 +113,22 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
 
     incrementPlaysCounter();
   }, []); // Empty dependency array since we're using a ref
+
+  useEffect(() => {
+    let active = true;
+
+    loadLeaderboardCutoffs()
+      .catch(() => null)
+      .then((loaded) => {
+        if (active) {
+          setCutoffs(loaded);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   // Calculate pieces info for debugging and display
   const piecesInfo = {
@@ -212,6 +251,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     // Include the total_wrong_pieces field now that it's added to the database
     return {
       player_name: playerName,
+      country_code: countryCode,
       difficulty: submissionDifficulty,
       piece_count: gameState.pieceCount,
       correct_pieces: extendedGameState.correctPlacements || 0,
@@ -270,6 +310,19 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         })
       : t("piecesPerSecond", { value: "0.0" });
   const leaderboardEligible = isEligibleForLeaderboard();
+  const showLeaderboardQualifier =
+    leaderboardEligible &&
+    !submitSuccess &&
+    qualifiesForLeaderboard(
+      determineDifficulty(gameState.pieceCount),
+      {
+        correctPieces: extendedGameState.correctPlacements || 0,
+        totalWrongPieces: piecesInfo.totalWrong,
+        memorizeTime: gameState.actualMemorizeTime || gameState.memorizeTime,
+        solutionTime: gameState.completionTime || 0,
+      },
+      cutoffs,
+    );
 
   return (
     <div className="w-full max-w-4xl space-y-6 pb-4">
@@ -350,6 +403,15 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
             </dd>
           </div>
         </dl>
+
+        {showLeaderboardQualifier && (
+          <p
+            role="status"
+            className="mt-5 rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm font-semibold text-green-500"
+          >
+            {t("leaderboardQualifies")}
+          </p>
+        )}
 
         <nav
           aria-label={t("actions")}
@@ -450,6 +512,18 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                   placeholder={t("dialog.playerNamePlaceholder")}
                   disabled={isSubmitting}
                   className="bg-bg-light border-bg-light text-text-primary focus:border-green-500/50 focus:ring-green-500/30"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="player-country" className="text-text-secondary">
+                  {tCountry("label")}
+                </Label>
+                <CountryPicker
+                  id="player-country"
+                  value={countryCode}
+                  onChange={setCountryCode}
+                  disabled={isSubmitting}
                 />
               </div>
 

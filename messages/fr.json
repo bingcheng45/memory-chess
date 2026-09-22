@@ -239,6 +239,7 @@
       "tryAgain": "Réessayer",
       "newGame": "Nouvelle partie",
       "submitToLeaderboard": "Envoyer au classement",
+      "leaderboardQualifies": "Votre score entre au classement. Envoyez-le avant qu’il disparaisse.",
       "viewLeaderboard": "Voir le classement",
       "dialog": {
         "submitTitle": "Envoyer au classement",
@@ -314,14 +315,17 @@
       "date": "Date"
     }
   },
+  "country": {
+    "label": "Pays",
+    "world": "Monde",
+    "searchPlaceholder": "Rechercher un pays",
+    "noResults": "Aucun pays trouvé"
+  },
   "settings": {
     "meta": {
       "title": "Paramètres Memory Chess",
       "description": "Personnalisez les paramètres et préférences de votre partie Memory Chess."
     },
-    "difficulty": "Difficulté",
-    "memorizationTime": "Temps de mémorisation : {seconds} secondes",
-    "seconds": "{seconds} s",
     "showCoordinates": "Afficher les coordonnées de l’échiquier",
     "home": "Accueil",
     "playGame": "Jouer"

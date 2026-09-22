@@ -239,6 +239,7 @@
       "tryAgain": "もう一度",
       "newGame": "新しいゲーム",
       "submitToLeaderboard": "ランキングに登録",
+      "leaderboardQualifies": "このスコアならランキング入りです。今すぐ登録しましょう。",
       "viewLeaderboard": "ランキングを見る",
       "dialog": {
         "submitTitle": "ランキングに登録",
@@ -314,14 +315,17 @@
       "date": "日付"
     }
   },
+  "country": {
+    "label": "国",
+    "world": "世界",
+    "searchPlaceholder": "国を検索",
+    "noResults": "国が見つかりません"
+  },
   "settings": {
     "meta": {
       "title": "Memory Chess の設定",
       "description": "Memory Chess のゲーム設定と好みを調整できます。"
     },
-    "difficulty": "難易度",
-    "memorizationTime": "記憶時間：{seconds} 秒",
-    "seconds": "{seconds} 秒",
     "showCoordinates": "盤面の座標を表示",
     "home": "ホーム",
     "playGame": "プレイする"

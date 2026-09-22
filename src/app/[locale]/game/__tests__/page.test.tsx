@@ -10,10 +10,11 @@ const mockAnalytics = {
   trackDailyChallengeComplete: jest.fn(),
 };
 
-jest.mock("@/lib/store/gameStore", () => ({
-  useGameStore: () => ({
+jest.mock("@/lib/store/gameStore", () => {
+  const mockState = () => ({
     gameState: { isPlaying: false, isMemorizationPhase: false, isSolutionPhase: false },
     gamePhase: "configuration",
+    lastSettings: null,
     startGame: mockStartGame,
     resetGame: jest.fn(),
     startMemorizationPhase: jest.fn(),
@@ -24,8 +25,12 @@ jest.mock("@/lib/store/gameStore", () => ({
     placePiece: jest.fn(),
     removePiece: jest.fn(),
     chess: null,
-  }),
-}));
+  });
+  return {
+    useGameStore: (selector?: (state: ReturnType<typeof mockState>) => unknown) =>
+      selector ? selector(mockState()) : mockState(),
+  };
+});
 
 jest.mock("@/lib/utils/analyticsTracker", () => ({
   useAnalytics: () => mockAnalytics,

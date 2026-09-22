@@ -239,6 +239,7 @@
       "tryAgain": "Nochmal",
       "newGame": "Neue Partie",
       "submitToLeaderboard": "In die Bestenliste eintragen",
+      "leaderboardQualifies": "Dein Ergebnis schafft es in die Bestenliste. Trag es gleich ein.",
       "viewLeaderboard": "Bestenliste ansehen",
       "dialog": {
         "submitTitle": "In die Bestenliste eintragen",
@@ -314,14 +315,17 @@
       "date": "Datum"
     }
   },
+  "country": {
+    "label": "Land",
+    "world": "Welt",
+    "searchPlaceholder": "Länder suchen",
+    "noResults": "Keine Länder gefunden"
+  },
   "settings": {
     "meta": {
       "title": "Einstellungen für Memory Chess",
       "description": "Passe die Einstellungen und Vorlieben für dein Spiel bei Memory Chess an."
     },
-    "difficulty": "Schwierigkeit",
-    "memorizationTime": "Einprägezeit: {seconds} Sekunden",
-    "seconds": "{seconds} s",
     "showCoordinates": "Brettkoordinaten anzeigen",
     "home": "Startseite",
     "playGame": "Spielen"

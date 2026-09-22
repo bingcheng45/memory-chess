@@ -239,6 +239,7 @@
       "tryAgain": "Spróbuj ponownie",
       "newGame": "Nowa partia",
       "submitToLeaderboard": "Wyślij do rankingu",
+      "leaderboardQualifies": "Twój wynik łapie się do rankingu. Wyślij go, zanim przepadnie.",
       "viewLeaderboard": "Zobacz ranking",
       "dialog": {
         "submitTitle": "Wyślij do rankingu",
@@ -314,14 +315,17 @@
       "date": "Data"
     }
   },
+  "country": {
+    "label": "Kraj",
+    "world": "Świat",
+    "searchPlaceholder": "Szukaj krajów",
+    "noResults": "Nie znaleziono krajów"
+  },
   "settings": {
     "meta": {
       "title": "Ustawienia Memory Chess",
       "description": "Dostosuj ustawienia i preferencje swojej gry w Memory Chess."
     },
-    "difficulty": "Trudność",
-    "memorizationTime": "Czas na zapamiętanie: {seconds} s",
-    "seconds": "{seconds} s",
     "showCoordinates": "Pokaż współrzędne szachownicy",
     "home": "Strona główna",
     "playGame": "Graj"

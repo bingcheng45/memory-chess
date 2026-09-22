@@ -239,6 +239,7 @@
       "tryAgain": "फिर कोशिश करें",
       "newGame": "नया गेम",
       "submitToLeaderboard": "लीडरबोर्ड पर भेजें",
+      "leaderboardQualifies": "आपका स्कोर लीडरबोर्ड में आने लायक है। मौका निकलने से पहले भेजें।",
       "viewLeaderboard": "लीडरबोर्ड देखें",
       "dialog": {
         "submitTitle": "लीडरबोर्ड पर भेजें",
@@ -313,6 +314,12 @@
       "solutionTime": "हल करने का समय",
       "date": "तारीख़"
     }
+  },
+  "country": {
+    "label": "देश",
+    "world": "विश्व",
+    "searchPlaceholder": "देश खोजें",
+    "noResults": "कोई देश नहीं मिला"
   },
   "settings": {
     "meta": {

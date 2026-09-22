@@ -1,10 +1,19 @@
+import type { CountryCode } from '@/lib/leaderboard/countries';
+
+export const LEADERBOARD_DIFFICULTIES = ['easy', 'medium', 'hard', 'grandmaster'] as const;
+export type LeaderboardDifficulty = (typeof LEADERBOARD_DIFFICULTIES)[number];
+
 export interface LeaderboardEntry {
   id: string;
   /**
    * Player's display name (4-16 characters)
    */
   player_name: string;
-  difficulty: 'easy' | 'medium' | 'hard' | 'grandmaster';
+  /**
+   * Absent on rows written before the database migration added the column.
+   */
+  country_code?: CountryCode;
+  difficulty: LeaderboardDifficulty;
   piece_count: number;
   correct_pieces: number;
   memorize_time: number;
@@ -18,7 +27,12 @@ export interface LeaderboardSubmission {
    * Player's display name (4-16 characters)
    */
   player_name: string;
-  difficulty: 'easy' | 'medium' | 'hard' | 'grandmaster';
+  /**
+   * Required, because the API route fills in the world code before the
+   * submission reaches the service.
+   */
+  country_code: CountryCode;
+  difficulty: LeaderboardDifficulty;
   piece_count: number;
   correct_pieces: number;
   memorize_time: number;

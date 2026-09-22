@@ -239,6 +239,7 @@
       "tryAgain": "Zkusit znovu",
       "newGame": "Nová partie",
       "submitToLeaderboard": "Odeslat do žebříčku",
+      "leaderboardQualifies": "Váš výsledek stačí na žebříček. Odešlete ho, než zmizí.",
       "viewLeaderboard": "Zobrazit žebříček",
       "dialog": {
         "submitTitle": "Odeslat do žebříčku",
@@ -313,6 +314,12 @@
       "solutionTime": "Čas řešení",
       "date": "Datum"
     }
+  },
+  "country": {
+    "label": "Země",
+    "world": "Svět",
+    "searchPlaceholder": "Hledat země",
+    "noResults": "Nebyly nalezeny žádné země"
   },
   "settings": {
     "meta": {

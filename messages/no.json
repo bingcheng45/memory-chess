@@ -239,6 +239,7 @@
       "tryAgain": "Prøv igjen",
       "newGame": "Nytt parti",
       "submitToLeaderboard": "Send til topplisten",
+      "leaderboardQualifies": "Resultatet ditt når topplisten. Send det inn før sjansen ryker.",
       "viewLeaderboard": "Se topplisten",
       "dialog": {
         "submitTitle": "Send til topplisten",
@@ -313,6 +314,12 @@
       "solutionTime": "Løsningstid",
       "date": "Dato"
     }
+  },
+  "country": {
+    "label": "Land",
+    "world": "Verden",
+    "searchPlaceholder": "Søk etter land",
+    "noResults": "Ingen land funnet"
   },
   "settings": {
     "meta": {

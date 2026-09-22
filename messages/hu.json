@@ -239,6 +239,7 @@
       "tryAgain": "Újra",
       "newGame": "Új játszma",
       "submitToLeaderboard": "Beküldés a ranglistára",
+      "leaderboardQualifies": "Az eredményed felfér a ranglistára. Küldd be, mielőtt lecsúszik.",
       "viewLeaderboard": "Ranglista megtekintése",
       "dialog": {
         "submitTitle": "Beküldés a ranglistára",
@@ -313,6 +314,12 @@
       "solutionTime": "Megoldási idő",
       "date": "Dátum"
     }
+  },
+  "country": {
+    "label": "Ország",
+    "world": "Világ",
+    "searchPlaceholder": "Országok keresése",
+    "noResults": "Nem található ország"
   },
   "settings": {
     "meta": {

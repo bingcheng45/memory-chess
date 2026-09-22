@@ -239,6 +239,7 @@
       "tryAgain": "Prøv igen",
       "newGame": "Nyt parti",
       "submitToLeaderboard": "Send til ranglisten",
+      "leaderboardQualifies": "Dit resultat rækker til ranglisten. Send det ind, før chancen ryger.",
       "viewLeaderboard": "Se ranglisten",
       "dialog": {
         "submitTitle": "Send til ranglisten",
@@ -313,6 +314,12 @@
       "solutionTime": "Løsningstid",
       "date": "Dato"
     }
+  },
+  "country": {
+    "label": "Land",
+    "world": "Verden",
+    "searchPlaceholder": "Søg efter lande",
+    "noResults": "Ingen lande fundet"
   },
   "settings": {
     "meta": {

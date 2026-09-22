@@ -239,6 +239,7 @@
       "tryAgain": "Ещё раз",
       "newGame": "Новая партия",
       "submitToLeaderboard": "Отправить в таблицу лидеров",
+      "leaderboardQualifies": "Результат попадёт в таблицу лидеров. Отправьте его.",
       "viewLeaderboard": "Таблица лидеров",
       "dialog": {
         "submitTitle": "Отправить в таблицу лидеров",
@@ -313,6 +314,12 @@
       "solutionTime": "Время решения",
       "date": "Дата"
     }
+  },
+  "country": {
+    "label": "Страна",
+    "world": "Мир",
+    "searchPlaceholder": "Поиск стран",
+    "noResults": "Страны не найдены"
   },
   "settings": {
     "meta": {

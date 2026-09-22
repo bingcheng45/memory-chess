@@ -239,6 +239,7 @@
       "tryAgain": "Thử lại",
       "newGame": "Ván mới",
       "submitToLeaderboard": "Gửi lên bảng xếp hạng",
+      "leaderboardQualifies": "Điểm của bạn lọt vào bảng xếp hạng. Gửi ngay kẻo mất cơ hội.",
       "viewLeaderboard": "Xem bảng xếp hạng",
       "dialog": {
         "submitTitle": "Gửi lên bảng xếp hạng",
@@ -313,6 +314,12 @@
       "solutionTime": "Thời gian hoàn thành",
       "date": "Ngày"
     }
+  },
+  "country": {
+    "label": "Quốc gia",
+    "world": "Thế giới",
+    "searchPlaceholder": "Tìm quốc gia",
+    "noResults": "Không tìm thấy quốc gia"
   },
   "settings": {
     "meta": {

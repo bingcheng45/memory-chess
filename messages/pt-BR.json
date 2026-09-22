@@ -239,6 +239,7 @@
       "tryAgain": "Tentar de novo",
       "newGame": "Nova partida",
       "submitToLeaderboard": "Enviar para o ranking",
+      "leaderboardQualifies": "Sua pontuação entra no ranking. Envie antes de perder a vaga.",
       "viewLeaderboard": "Ver o ranking",
       "dialog": {
         "submitTitle": "Enviar para o ranking",
@@ -313,6 +314,12 @@
       "solutionTime": "Tempo de resolução",
       "date": "Data"
     }
+  },
+  "country": {
+    "label": "País",
+    "world": "Mundo",
+    "searchPlaceholder": "Buscar países",
+    "noResults": "Nenhum país encontrado"
   },
   "settings": {
     "meta": {

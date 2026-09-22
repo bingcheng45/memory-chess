@@ -239,6 +239,7 @@
       "tryAgain": "Încearcă din nou",
       "newGame": "Partidă nouă",
       "submitToLeaderboard": "Trimite în clasament",
+      "leaderboardQualifies": "Rezultatul tău intră în clasament. Trimite-l până nu e prea târziu.",
       "viewLeaderboard": "Vezi clasamentul",
       "dialog": {
         "submitTitle": "Trimite în clasament",
@@ -313,6 +314,12 @@
       "solutionTime": "Timp de rezolvare",
       "date": "Data"
     }
+  },
+  "country": {
+    "label": "Țară",
+    "world": "Lume",
+    "searchPlaceholder": "Caută țări",
+    "noResults": "Nu s-au găsit țări"
   },
   "settings": {
     "meta": {

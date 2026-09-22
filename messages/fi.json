@@ -239,6 +239,7 @@
       "tryAgain": "Yritä uudelleen",
       "newGame": "Uusi peli",
       "submitToLeaderboard": "Lähetä tulostaulukkoon",
+      "leaderboardQualifies": "Tuloksesi yltää tulostaulukkoon. Lähetä se heti.",
       "viewLeaderboard": "Katso tulostaulukko",
       "dialog": {
         "submitTitle": "Lähetä tulostaulukkoon",
@@ -313,6 +314,12 @@
       "solutionTime": "Ratkaisuaika",
       "date": "Päivä"
     }
+  },
+  "country": {
+    "label": "Maa",
+    "world": "Maailma",
+    "searchPlaceholder": "Hae maita",
+    "noResults": "Maita ei löytynyt"
   },
   "settings": {
     "meta": {

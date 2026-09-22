@@ -13,7 +13,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { useEffect, useRef } from "react";
 
-import { useFormatter, useTranslations } from "next-intl";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
+import { countryName, flagEmoji, parseCountryCode, WORLD_CODE } from "@/lib/leaderboard/countries";
 
 export interface EntryDetails {
   player: string | null;
@@ -51,6 +52,8 @@ export function TimeDisplay({ seconds }: { seconds: number }) {
 
 export default function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardTableProps) {
   const t = useTranslations("leaderboard");
+  const tCountry = useTranslations("country");
+  const locale = useLocale();
   const format = useFormatter();
   // Create a ref to store the highlighted row element
   const highlightedRowRef = useRef<HTMLTableRowElement>(null);
@@ -150,7 +153,10 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
               (entryDetails.totalWrongPieces === null ||
                 entry.total_wrong_pieces === undefined ||
                 entry.total_wrong_pieces === entryDetails.totalWrongPieces);
-            
+
+            const code = parseCountryCode(entry.country_code) ?? WORLD_CODE;
+            const name = code === WORLD_CODE ? tCountry("world") : countryName(code, locale);
+
             return (
               <TableRow 
                 key={entry.id} 
@@ -167,6 +173,7 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
                   {index > 2 && index + 1}
                 </TableCell>
                 <TableCell className={`font-medium ${isHighlighted ? "text-peach-500" : ""}`}>
+                  <span role="img" aria-label={name} title={name} className="mr-2">{flagEmoji(code)}</span>
                   {entry.player_name}
                   {isHighlighted && <span className="ml-2 text-xs bg-peach-500/20 text-peach-500 px-2 py-0.5 rounded-full">{t("you")}</span>}
                 </TableCell>

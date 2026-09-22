@@ -239,6 +239,7 @@
       "tryAgain": "再来一局",
       "newGame": "新对局",
       "submitToLeaderboard": "提交到排行榜",
+      "leaderboardQualifies": "你的成绩能上排行榜，趁还有机会赶紧提交。",
       "viewLeaderboard": "查看排行榜",
       "dialog": {
         "submitTitle": "提交到排行榜",
@@ -313,6 +314,12 @@
       "solutionTime": "还原用时",
       "date": "日期"
     }
+  },
+  "country": {
+    "label": "国家/地区",
+    "world": "全球",
+    "searchPlaceholder": "搜索国家/地区",
+    "noResults": "未找到国家/地区"
   },
   "settings": {
     "meta": {

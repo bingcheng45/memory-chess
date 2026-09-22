@@ -33,7 +33,7 @@ export default async function LeaderboardPage() {
 
   return (
     <div className={`${PAGE_BELOW_BANNER_MIN_HEIGHT} bg-bg-dark text-text-primary`}>
-      <main className="container mx-auto px-1 sm:px-4 pb-8 pt-4">
+      <main className="container mx-auto px-2 sm:px-4 pb-8 pt-4">
         <div className="flex justify-center mb-8">
           <PageHeader
             pageType="game-memorize-solution"

@@ -19,12 +19,16 @@ import { Button } from "@/components/ui/button";
 import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
 import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
 import { formatTimeWithMilliseconds } from '@/utils/timer';
+import { elapsedMs, now, subscribe, type Monotonic } from '@/lib/game/clock';
 import PageHeader from '@/components/ui/PageHeader';
 import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 
 import { useTranslations } from "next-intl";
+
+const TIMER_CUE_DELAY_MS = 500;
+
 // Component to handle URL parameters
 function GamePageContent() {
   const t = useTranslations("game");
@@ -47,9 +51,7 @@ function GamePageContent() {
     gamePhase, 
     startGame, 
     resetGame, 
-    startMemorizationPhase, 
-    endMemorizationPhase, 
-    startSolutionPhase, 
+    startMemorizationPhase,
     submitSolution,
     calculateSkillRatingChange,
     placePiece,
@@ -57,14 +59,14 @@ function GamePageContent() {
     chess
   } = useGameStore();
   
-  const [elapsedTime, setElapsedTime] = useState(0);
-  const [timerWarningPlayed, setTimerWarningPlayed] = useState(false);
-  const [soundPlayed, setSoundPlayed] = useState(false);
   const [solutionPieces, setSolutionPieces] = useState<ChessPiece[]>([]);
   const [isSubmissionFlashVisible, setIsSubmissionFlashVisible] = useState(false);
-  const solutionStartTimeRef = useRef<number | null>(null);
+  const solutionStartRef = useRef<Monotonic | null>(null);
+  const countUpRef = useRef<HTMLDivElement>(null);
+  const timerWarningPlayedRef = useRef(false);
+  const timerCuePlayedRef = useRef(false);
   const submissionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  
+
   // Memorising and placing are played without scrolling: the board is sized
   // from the room that is actually left, so the screen holds exactly what
   // fits. Configuration and the result page are ordinary scrolling pages.
@@ -162,46 +164,32 @@ function GamePageContent() {
   // Start memorization phase when game is started
   useEffect(() => {
     if (gameState.isPlaying && gamePhase === GamePhase.CONFIGURATION) {
-      console.log('Starting memorization phase');
       playSound('success');
       startMemorizationPhase();
-      
-      // Reset the sound played flag when starting a new game
-      setSoundPlayed(false);
+      timerCuePlayedRef.current = false;
     }
   }, [gameState.isPlaying, gamePhase, startMemorizationPhase]);
-  
-  // Auto-transition from memorization to solution phase
+
+  // The memorization deadline belongs to ResponsiveMemorizationBoard, which ends
+  // the phase from the same frame that paints the countdown's last value. Only
+  // the opening sound cue is left here.
   useEffect(() => {
-    if (gameState.isMemorizationPhase) {
-      console.log(`Setting timeout for ${gameState.memorizeTime} seconds`);
-      setTimerWarningPlayed(false);
-      
-      // Play timer start sound only if it hasn't been played yet
-      if (!soundPlayed) {
-        // Add a small delay to ensure the success sound finishes first
-        setTimeout(() => {
-          console.log('Playing timer sound at start of memorization phase');
-          playSound('timer');
-          setSoundPlayed(true);
-        }, 500); // Increased delay to ensure the success sound finishes
-      }
-      
-      // Add a small buffer (50ms) to ensure the visual timer reaches 0 before the phase changes
-      const timer = setTimeout(() => {
-        console.log('Memorization time ended, transitioning to solution phase');
-        stopTimerSound(); // Stop the timer sound before playing the end sound
-        playSound('timerEnd');
-        endMemorizationPhase();
-        startSolutionPhase();
-      }, gameState.memorizeTime * 1000 + 50);
-      
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, [gameState.isMemorizationPhase, gameState.memorizeTime, endMemorizationPhase, startSolutionPhase, soundPlayed]);
-  
+    if (!gameState.isMemorizationPhase) return;
+
+    timerWarningPlayedRef.current = false;
+    if (timerCuePlayedRef.current) return;
+
+    // Late enough that the success sound has finished.
+    const cue = setTimeout(() => {
+      playSound('timer');
+      timerCuePlayedRef.current = true;
+    }, TIMER_CUE_DELAY_MS);
+
+    return () => {
+      clearTimeout(cue);
+    };
+  }, [gameState.isMemorizationPhase]);
+
   // Reset solution pieces when entering solution phase
   useEffect(() => {
     if (gamePhase === GamePhase.SOLUTION) {
@@ -209,54 +197,44 @@ function GamePageContent() {
     }
   }, [gamePhase]);
   
-  // Track elapsed time during solution phase
+  // Track elapsed time during solution phase. The flash pause simply drops the
+  // subscription, which leaves the last painted value on screen.
   useEffect(() => {
-    if (gameState.isSolutionPhase && !isSubmissionFlashVisible) {
-      console.log('Starting solution phase timer');
-      
-      // Only initialize the start time when first entering solution phase
-      if (solutionStartTimeRef.current === null) {
-        solutionStartTimeRef.current = Date.now();
-        setElapsedTime(0);
-      }
-      
-      const timer = setInterval(() => {
-        if (solutionStartTimeRef.current !== null) {
-          // Calculate time based on the stored start time
-          const rawElapsedSeconds = (Date.now() - solutionStartTimeRef.current) / 1000;
-          const elapsedSeconds = Math.floor(rawElapsedSeconds);
-          setElapsedTime(rawElapsedSeconds);
-          
-          // Play warning sound when 75% of the memorization time has elapsed
-          if (!timerWarningPlayed && elapsedSeconds >= Math.floor(gameState.memorizeTime * 0.75)) {
-            playSound('timer');
-            setTimerWarningPlayed(true);
-          }
-        }
-      }, 33); // Update at approximately 30fps for a smooth milliseconds display
-      
-      return () => {
-        clearInterval(timer);
-      };
-    } else if (!gameState.isSolutionPhase) {
-      // Reset the ref when leaving solution phase
-      stopTimerSound(); // Stop any timer sound when leaving solution phase
-      solutionStartTimeRef.current = null;
-      setElapsedTime(0);
+    if (!gameState.isSolutionPhase) {
+      stopTimerSound();
+      solutionStartRef.current = null;
+      return;
     }
-  }, [gameState.isSolutionPhase, gameState.memorizeTime, timerWarningPlayed, isSubmissionFlashVisible]);
-  
+    if (isSubmissionFlashVisible) return;
+
+    if (solutionStartRef.current === null) solutionStartRef.current = now();
+    const startedAt = solutionStartRef.current;
+    const warnAtMs = Math.floor(gameState.memorizeTime * 0.75) * 1000;
+
+    return subscribe((at) => {
+      const elapsed = elapsedMs(startedAt, at);
+
+      if (countUpRef.current) {
+        countUpRef.current.textContent = formatTimeWithMilliseconds(elapsed / 1000);
+      }
+      if (!timerWarningPlayedRef.current && elapsed >= warnAtMs) {
+        timerWarningPlayedRef.current = true;
+        playSound('timer');
+      }
+    });
+  }, [gameState.isSolutionPhase, gameState.memorizeTime, isSubmissionFlashVisible]);
+
   // Handle submitting the solution
   const handleSubmitSolution = () => {
     if (isSubmissionFlashVisible) return;
 
-    console.log('Submitting solution');
     stopTimerSound(); // Stop any playing timer sound
     playSound('click');
-    const frozenElapsedTime = solutionStartTimeRef.current
-      ? (Date.now() - solutionStartTimeRef.current) / 1000
-      : elapsedTime;
-    setElapsedTime(frozenElapsedTime);
+    const startedAt = solutionStartRef.current;
+    const frozenElapsedTime = startedAt === null ? 0 : elapsedMs(startedAt, now()) / 1000;
+    if (countUpRef.current) {
+      countUpRef.current.textContent = formatTimeWithMilliseconds(frozenElapsedTime);
+    }
     setIsSubmissionFlashVisible(true);
 
     submissionTimeoutRef.current = setTimeout(() => {
@@ -296,19 +274,6 @@ function GamePageContent() {
     analytics.trackFeatureUsage('game_navigation', 'back_to_home');
     router.push('/');
   };
-  
-  // Handle skipping memorization phase
-  // Note: This function is used in ResponsiveMemorizationBoard component
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleSkip = () => {
-    console.log('Skipping memorization phase');
-    stopTimerSound(); // Stop any playing timer sound
-    playSound('timerEnd');
-    endMemorizationPhase();
-    startSolutionPhase();
-  };
-  
-  console.log('Current game phase:', gamePhase);
   
   // Add this helper function to convert chess.js board to ChessPiece array
   // Currently not used as we start with an empty board in solution phase,
@@ -390,13 +355,11 @@ function GamePageContent() {
               <ResponsiveInteractiveBoard
                 status={
                   <div className="relative flex h-full items-center justify-center px-3 sm:px-4">
-                    <div className="text-center text-sm font-medium sm:text-base">{t("hud.time")}<div className="font-mono text-2xl font-bold leading-tight sm:text-3xl">
-                        {(() => {
-                          if (typeof elapsedTime !== 'number' || isNaN(elapsedTime)) {
-                            return formatTimeWithMilliseconds(0);
-                          }
-                          return formatTimeWithMilliseconds(elapsedTime);
-                        })()}
+                    <div className="text-center text-sm font-medium sm:text-base">{t("hud.time")}<div
+                        ref={countUpRef}
+                        className="font-mono text-2xl font-bold leading-tight sm:text-3xl"
+                      >
+                        {formatTimeWithMilliseconds(0)}
                       </div>
                     </div>
 

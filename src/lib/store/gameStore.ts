@@ -38,7 +38,7 @@ interface GameStore {
   
   // Memory game specific actions
   startMemorizationPhase: () => void;
-  endMemorizationPhase: () => void;
+  endMemorizationPhase: (actualMemorizeTimeOverride?: number) => void;
   startSolutionPhase: () => void;
   submitSolution: (completionTimeOverride?: number) => void;
   placePiece: (square: string, piece: string) => void;
@@ -424,12 +424,16 @@ export const useGameStore = create<GameStore>()(
         }));
       },
       
-      endMemorizationPhase: () => {
+      endMemorizationPhase: (actualMemorizeTimeOverride) => {
+        // The board always passes the override, measured on the monotonic
+        // clock and clamped to the configured duration. The wall-clock
+        // fallback below only serves callers that pass nothing, which is tests.
         const now = Date.now();
         const state = get().gameState;
         const memorizeStartTime = state.memorizeStartTime || now;
-        const actualMemorizeTime = (now - memorizeStartTime) / 1000; // Calculate actual time spent in seconds
-        
+        const actualMemorizeTime =
+          actualMemorizeTimeOverride ?? (now - memorizeStartTime) / 1000;
+
         set((state) => ({
           gameState: {
             ...state.gameState,

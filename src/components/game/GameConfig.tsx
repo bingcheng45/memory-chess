@@ -212,10 +212,12 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         <div className="mt-4 text-center text-sm text-text-secondary">
           <p>
             {(() => {
-              const seconds = Math.floor(gameState.completionTime);
-              const milliseconds = Math.round((gameState.completionTime - seconds) * 1000)
-                .toString()
-                .padStart(3, '0');
+              // Splitting the total, rather than rounding the fraction on its
+              // own, is what keeps a time just under the next second from
+              // printing as 12.1000.
+              const totalMilliseconds = Math.round(gameState.completionTime * 1000);
+              const seconds = Math.floor(totalMilliseconds / 1000);
+              const milliseconds = (totalMilliseconds % 1000).toString().padStart(3, '0');
               return t('config.lastGame', {
                 time: `${seconds}.${milliseconds}`,
                 accuracy: gameState.accuracy ?? 0,

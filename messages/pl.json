@@ -319,9 +319,6 @@
       "title": "Ustawienia Memory Chess",
       "description": "Dostosuj ustawienia i preferencje swojej gry w Memory Chess."
     },
-    "difficulty": "Trudność",
-    "memorizationTime": "Czas na zapamiętanie: {seconds} s",
-    "seconds": "{seconds} s",
     "showCoordinates": "Pokaż współrzędne szachownicy",
     "home": "Strona główna",
     "playGame": "Graj"

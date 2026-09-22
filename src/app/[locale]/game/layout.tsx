@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
 import GameReference from '@/components/reference/GameReference';
+import { gameConfigPrefillScript } from '@/lib/game/configPrefill';
 
 const siteUrl = 'https://thememorychess.com';
 
@@ -42,6 +43,9 @@ export default async function GameLayout({
   return (
     <>
       {children}
+      {/* Runs once the form above is parsed and before hydration, so a
+          returning player's saved settings are what first paints. */}
+      <script dangerouslySetInnerHTML={{ __html: gameConfigPrefillScript() }} />
       <GameReference locale={locale} />
     </>
   );

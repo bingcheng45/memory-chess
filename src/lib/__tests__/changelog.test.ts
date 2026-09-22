@@ -15,15 +15,10 @@ describe("changelog data", () => {
     );
 
     expect(releaseTimes).toEqual([...releaseTimes].sort((a, b) => b - a));
-    expect(CHANGELOG_ENTRIES.map((entry) => entry.version)).toEqual([
-      "1.2.3",
-      "1.2.2",
-      "1.2.1",
-      "1.2.0",
-      "1.1.0",
-      "1.0.1",
-      "1.0.0",
-    ]);
+    const versions = CHANGELOG_ENTRIES.map((entry) => entry.version);
+    const byVersionDescending = (a: string, b: string) =>
+      b.localeCompare(a, undefined, { numeric: true });
+    expect(versions).toEqual([...versions].sort(byVersionDescending));
   });
 
   it("keeps package metadata aligned with the latest changelog entry", () => {

@@ -319,9 +319,6 @@
       "title": "Memory Chess -asetukset",
       "description": "Muokkaa Memory Chess -pelisi asetuksia ja mieltymyksiä."
     },
-    "difficulty": "Vaikeustaso",
-    "memorizationTime": "Muistiinpainamisaika: {seconds} sekuntia",
-    "seconds": "{seconds} s",
     "showCoordinates": "Näytä laudan koordinaatit",
     "home": "Etusivu",
     "playGame": "Pelaa"

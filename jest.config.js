@@ -16,6 +16,10 @@ const customJestConfig = {
   // Agent worktrees under .claude/ carry a full copy of the repo, so without
   // this every suite runs twice and a broken worktree fails the real run.
   testPathIgnorePatterns: ['/node_modules/', '/.claude/'],
+  // The game layout ships functions from src/lib/game/configPrefill.ts as an
+  // inline script via toString(). Babel coverage would inject counters into
+  // those bodies, and the tests that run the script would then fail.
+  coverageProvider: 'v8',
 };
 
 /**

@@ -319,9 +319,6 @@
       "title": "Memory Chess 설정",
       "description": "Memory Chess 게임 설정과 환경설정을 원하는 대로 바꾸세요."
     },
-    "difficulty": "난이도",
-    "memorizationTime": "암기 시간: {seconds}초",
-    "seconds": "{seconds}초",
     "showCoordinates": "판 좌표 표시",
     "home": "홈",
     "playGame": "게임 하기"

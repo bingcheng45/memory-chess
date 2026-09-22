@@ -319,9 +319,6 @@
       "title": "Memory Chess beállítások",
       "description": "Szabd testre a Memory Chess játékod beállításait és preferenciáit."
     },
-    "difficulty": "Nehézség",
-    "memorizationTime": "Memorizálási idő: {seconds} másodperc",
-    "seconds": "{seconds} mp",
     "showCoordinates": "Tábla koordinátáinak mutatása",
     "home": "Főoldal",
     "playGame": "Játék"

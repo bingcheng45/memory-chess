@@ -319,9 +319,6 @@
       "title": "Memory Chess 设置",
       "description": "自定义你的 Memory Chess 游戏设置和偏好。"
     },
-    "difficulty": "难度",
-    "memorizationTime": "记忆时间：{seconds} 秒",
-    "seconds": "{seconds} 秒",
     "showCoordinates": "显示棋盘坐标",
     "home": "首页",
     "playGame": "开始游戏"

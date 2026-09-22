@@ -319,9 +319,6 @@
       "title": "Memory Chess ayarları",
       "description": "Memory Chess oyununun ayarlarını ve tercihlerini özelleştir."
     },
-    "difficulty": "Zorluk",
-    "memorizationTime": "Ezberleme süresi: {seconds} saniye",
-    "seconds": "{seconds} sn",
     "showCoordinates": "Tahta koordinatlarını göster",
     "home": "Ana sayfa",
     "playGame": "Oyna"

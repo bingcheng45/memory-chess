@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Comment fonctionne Memory Chess",
-    "intro": "Chaque manche suit les trois mêmes étapes. Les chiffres de cette page sont ceux que le jeu utilise réellement : ils sont lus dans le code même qui fait tourner l'échiquier, et ne peuvent donc pas s'écarter de ce que vous jouez.",
+    "intro": "Chaque manche suit les trois mêmes étapes.",
     "phases": {
       "heading": "Les trois phases d'une manche",
       "memorize": {

@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Come funziona Memory Chess",
-    "intro": "Ogni turno segue gli stessi tre passi. I numeri di questa pagina sono quelli che il gioco usa davvero; vengono letti dallo stesso codice che fa girare la scacchiera, quindi non possono discostarsi da quello che giochi.",
+    "intro": "Ogni turno segue gli stessi tre passi.",
     "phases": {
       "heading": "Le tre fasi di un turno",
       "memorize": {

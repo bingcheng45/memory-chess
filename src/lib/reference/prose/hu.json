@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Hogyan működik a Memory Chess",
-    "intro": "Minden kör ugyanazt a három lépést követi. Az oldalon szereplő számok azok, amelyeket a játék ténylegesen használ; ugyanabból a kódból származnak, amely a táblát működteti, így nem térhetnek el attól, amit játszol.",
+    "intro": "Minden kör ugyanazt a három lépést követi.",
     "phases": {
       "heading": "A kör három szakasza",
       "memorize": {

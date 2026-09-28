@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Memory Chess nasıl çalışır",
-    "intro": "Her tur aynı üç adımdan oluşur. Bu sayfadaki sayılar, oyunun gerçekten kullandığı sayılardır; tahtayı çalıştıran kodun kendisinden okunur, bu yüzden oynadığınızdan sapamaz.",
+    "intro": "Her tur aynı üç adımdan oluşur.",
     "phases": {
       "heading": "Bir turun üç aşaması",
       "memorize": {

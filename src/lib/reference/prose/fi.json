@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Näin Memory Chess toimii",
-    "intro": "Jokainen kierros koostuu samoista kolmesta vaiheesta. Tämän sivun luvut ovat samat, joita peli oikeasti käyttää; ne luetaan samasta koodista, joka pyörittää lautaa, joten ne eivät voi erkaantua siitä, mitä pelaat.",
+    "intro": "Jokainen kierros koostuu samoista kolmesta vaiheesta.",
     "phases": {
       "heading": "Kierroksen kolme vaihetta",
       "memorize": {

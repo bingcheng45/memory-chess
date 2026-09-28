@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Memory Chess hoạt động như thế nào",
-    "intro": "Mỗi ván đều theo đúng ba bước như nhau. Các con số trên trang này là những con số mà trò chơi thực sự sử dụng; chúng được đọc từ chính đoạn mã vận hành bàn cờ, nên không thể khác với những gì bạn chơi.",
+    "intro": "Mỗi ván đều theo đúng ba bước như nhau.",
     "phases": {
       "heading": "Ba giai đoạn của một ván",
       "memorize": {

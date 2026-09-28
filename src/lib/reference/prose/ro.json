@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Cum funcționează Memory Chess",
-    "intro": "Fiecare rundă urmează aceiași trei pași. Numerele de pe această pagină sunt chiar cele pe care le folosește jocul; sunt citite din același cod care rulează tabla, așa că nu pot ajunge să difere de ceea ce joci.",
+    "intro": "Fiecare rundă urmează aceiași trei pași.",
     "phases": {
       "heading": "Cele trei faze ale unei runde",
       "memorize": {

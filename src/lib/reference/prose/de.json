@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "So funktioniert Memory Chess",
-    "intro": "Jede Runde besteht aus denselben 3 Schritten. Die Zahlen auf dieser Seite sind genau die, mit denen das Spiel rechnet; sie werden aus demselben Code gelesen, der auch das Brett steuert, und können deshalb nicht von dem abweichen, was du spielst.",
+    "intro": "Jede Runde besteht aus denselben 3 Schritten.",
     "phases": {
       "heading": "Die 3 Phasen einer Runde",
       "memorize": {

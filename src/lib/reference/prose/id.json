@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Cara kerja Memory Chess",
-    "intro": "Setiap ronde mengikuti tiga langkah yang sama. Angka-angka di halaman ini adalah angka yang benar-benar dipakai game; angka itu dibaca dari kode yang sama yang menjalankan papan, jadi tidak mungkin berbeda dari yang Anda mainkan.",
+    "intro": "Setiap ronde mengikuti tiga langkah yang sama.",
     "phases": {
       "heading": "Tiga fase dalam satu ronde",
       "memorize": {

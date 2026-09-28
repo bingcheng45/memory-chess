@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Så fungerar Memory Chess",
-    "intro": "Varje omgång följer samma tre steg. Siffrorna på den här sidan är de som spelet faktiskt använder. De hämtas från samma kod som styr brädet och kan därför inte skilja sig från det du spelar.",
+    "intro": "Varje omgång följer samma tre steg.",
     "phases": {
       "heading": "Omgångens tre faser",
       "memorize": {

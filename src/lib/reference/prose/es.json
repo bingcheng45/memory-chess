@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Cómo funciona Memory Chess",
-    "intro": "Cada ronda sigue los mismos tres pasos. Los números de esta página son los que el juego usa de verdad; se leen del mismo código que hace funcionar el tablero, así que no pueden diferir de lo que juegas.",
+    "intro": "Cada ronda sigue los mismos tres pasos.",
     "phases": {
       "heading": "Las tres fases de una ronda",
       "memorize": {

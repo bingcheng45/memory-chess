@@ -25,11 +25,6 @@
       "current": "Nyelv: {language}",
       "select": "Válassz nyelvet",
       "englishOnly": "Ez az oldal csak angol nyelven érhető el."
-    },
-    "otherApps": {
-      "title": "A készítő további alkalmazásai",
-      "visitWebsite": "Ugrás a webhelyre →",
-      "iconAlt": "A(z) {name} alkalmazás ikonja"
     }
   },
   "home": {

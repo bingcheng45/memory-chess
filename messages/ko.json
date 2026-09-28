@@ -25,11 +25,6 @@
       "current": "언어: {language}",
       "select": "언어 선택",
       "englishOnly": "이 페이지는 영어로만 제공됩니다."
-    },
-    "otherApps": {
-      "title": "제작자의 다른 앱",
-      "visitWebsite": "웹사이트 보기 →",
-      "iconAlt": "{name} 앱 아이콘"
     }
   },
   "home": {

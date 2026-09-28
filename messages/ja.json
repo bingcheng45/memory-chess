@@ -25,11 +25,6 @@
       "current": "言語：{language}",
       "select": "言語を選択",
       "englishOnly": "このページは英語でのみご覧いただけます。"
-    },
-    "otherApps": {
-      "title": "制作者のほかのアプリ",
-      "visitWebsite": "サイトを見る →",
-      "iconAlt": "{name} のアプリアイコン"
     }
   },
   "home": {

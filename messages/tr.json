@@ -25,11 +25,6 @@
       "current": "Dil: {language}",
       "select": "Dil seçin",
       "englishOnly": "Bu sayfa yalnızca İngilizce olarak mevcuttur."
-    },
-    "otherApps": {
-      "title": "Geliştiricinin diğer uygulamaları",
-      "visitWebsite": "Siteye git →",
-      "iconAlt": "{name} uygulama simgesi"
     }
   },
   "home": {

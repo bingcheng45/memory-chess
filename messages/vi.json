@@ -25,11 +25,6 @@
       "current": "Ngôn ngữ: {language}",
       "select": "Chọn ngôn ngữ",
       "englishOnly": "Trang này chỉ có bằng tiếng Anh."
-    },
-    "otherApps": {
-      "title": "Ứng dụng khác của tác giả",
-      "visitWebsite": "Xem trang web →",
-      "iconAlt": "Biểu tượng ứng dụng {name}"
     }
   },
   "home": {

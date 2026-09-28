@@ -25,11 +25,6 @@
       "current": "Jazyk: {language}",
       "select": "Vyberte jazyk",
       "englishOnly": "Tato stránka je dostupná pouze v angličtině."
-    },
-    "otherApps": {
-      "title": "Další aplikace autora",
-      "visitWebsite": "Přejít na web →",
-      "iconAlt": "Ikona aplikace {name}"
     }
   },
   "home": {

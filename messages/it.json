@@ -25,11 +25,6 @@
       "current": "Lingua: {language}",
       "select": "Scegli la lingua",
       "englishOnly": "Questa pagina è disponibile solo in inglese."
-    },
-    "otherApps": {
-      "title": "Altre app del creatore",
-      "visitWebsite": "Vai al sito →",
-      "iconAlt": "Icona dell’app {name}"
     }
   },
   "home": {

@@ -25,11 +25,6 @@
       "current": "Limbă: {language}",
       "select": "Alege limba",
       "englishOnly": "Această pagină este disponibilă doar în limba engleză."
-    },
-    "otherApps": {
-      "title": "Alte aplicații ale creatorului",
-      "visitWebsite": "Vezi site-ul →",
-      "iconAlt": "Pictograma aplicației {name}"
     }
   },
   "home": {

@@ -25,11 +25,6 @@
       "current": "语言：{language}",
       "select": "选择语言",
       "englishOnly": "此页面仅提供英文版。"
-    },
-    "otherApps": {
-      "title": "作者的其他应用",
-      "visitWebsite": "访问网站 →",
-      "iconAlt": "{name} 应用图标"
     }
   },
   "home": {

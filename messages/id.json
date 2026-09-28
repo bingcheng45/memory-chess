@@ -25,11 +25,6 @@
       "current": "Bahasa: {language}",
       "select": "Pilih bahasa",
       "englishOnly": "Halaman ini hanya tersedia dalam bahasa Inggris."
-    },
-    "otherApps": {
-      "title": "Aplikasi lain dari pembuatnya",
-      "visitWebsite": "Kunjungi situs →",
-      "iconAlt": "Ikon aplikasi {name}"
     }
   },
   "home": {

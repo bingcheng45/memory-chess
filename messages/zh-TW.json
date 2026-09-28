@@ -25,11 +25,6 @@
       "current": "語言：{language}",
       "select": "選擇語言",
       "englishOnly": "此頁面僅提供英文版。"
-    },
-    "otherApps": {
-      "title": "作者的其他應用程式",
-      "visitWebsite": "前往網站 →",
-      "iconAlt": "{name} 應用程式圖示"
     }
   },
   "home": {

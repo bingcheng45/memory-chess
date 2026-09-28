@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import PageHeader from "@/components/ui/PageHeader";
 import FaqSection from "@/components/ui/FaqSection";
-import OtherAppsSection from "@/components/ui/OtherAppsSection";
 import VideoSection from "@/components/ui/VideoSection";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
@@ -314,9 +313,6 @@ export default function Home() {
 
         {/* FAQ Section */}
         <FaqSection />
-
-        {/* Other Apps Section */}
-        <OtherAppsSection />
       </main>
 
     </div>

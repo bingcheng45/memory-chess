@@ -25,11 +25,6 @@
       "current": "भाषा: {language}",
       "select": "भाषा चुनें",
       "englishOnly": "यह पृष्ठ केवल अंग्रेज़ी में उपलब्ध है।"
-    },
-    "otherApps": {
-      "title": "इसी डेवलपर के दूसरे ऐप",
-      "visitWebsite": "वेबसाइट देखें →",
-      "iconAlt": "{name} ऐप आइकॉन"
     }
   },
   "home": {

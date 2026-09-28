@@ -25,11 +25,6 @@
       "current": "Sprog: {language}",
       "select": "Vælg sprog",
       "englishOnly": "Denne side findes kun på engelsk."
-    },
-    "otherApps": {
-      "title": "Flere apps fra udvikleren",
-      "visitWebsite": "Besøg websitet →",
-      "iconAlt": "App-ikon for {name}"
     }
   },
   "home": {

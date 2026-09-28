@@ -36,7 +36,7 @@ export default async function LeaderboardPage() {
       <main className="container mx-auto px-2 sm:px-4 pb-8 pt-4">
         <div className="flex justify-center mb-8">
           <PageHeader
-            pageType="game-memorize-solution"
+            pageType="other"
             style={{
               maxWidth: MAX_BOARD_SIZE_PX,
             }}

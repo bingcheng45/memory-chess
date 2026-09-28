@@ -3,6 +3,7 @@
 import { Link } from '@/i18n/navigation';
 import SoundSettings from './SoundSettings';
 import LanguageSettings from './LanguageSettings';
+import SiteNav from './SiteNav';
 
 type PageType = 'game-config' | 'game-memorize-solution' | 'game-result' | 'other';
 
@@ -65,34 +66,40 @@ export default function PageHeader({
   };
 
   return (
-    <div className={`relative w-full max-w-4xl mb-8 ${className}`} style={style}>
-      {/* Title centered in the available space */}
-      <div className="flex items-center justify-center">
-        <Link 
-          href="/"
-          onClick={handleBackClick}
-          className="text-center text-xl sm:text-3xl font-bold text-text-primary whitespace-nowrap cursor-pointer transition-all hover:opacity-80"
-        >
-          Memory <span className="text-peach-500">Chess</span>
-        </Link>
-      </div>
+    <div className={`w-full max-w-4xl mb-8 ${className}`} style={style}>
+      {/* The controls centre on the title row alone, not on the nav below it. */}
+      <div className="relative">
+        {/* Title centered in the available space */}
+        <div className="flex items-center justify-center">
+          <Link 
+            href="/"
+            onClick={handleBackClick}
+            className="text-center text-xl sm:text-3xl font-bold text-text-primary whitespace-nowrap cursor-pointer transition-all hover:opacity-80"
+          >
+            Memory <span className="text-peach-500">Chess</span>
+          </Link>
+        </div>
       
-      {/* Language switcher, mirrored to the left of the sound control */}
-      {showLanguageSettings && (
-        <div className={`absolute top-1/2 -translate-y-1/2 ${getLanguagePositionClass()}`}>
-          {/* Auto width: the globe + code pill is wider than the sound circle.
-              Both still anchor to their respective edges at equal insets, and
-              the title is centred independently of either control. */}
-          <LanguageSettings className="flex justify-start" />
-        </div>
-      )}
+        {/* Language switcher, mirrored to the left of the sound control */}
+        {showLanguageSettings && (
+          <div className={`absolute top-1/2 -translate-y-1/2 ${getLanguagePositionClass()}`}>
+            {/* Auto width: the globe + code pill is wider than the sound circle.
+                Both still anchor to their respective edges at equal insets, and
+                the title is centred independently of either control. */}
+            <LanguageSettings className="flex justify-start" />
+          </div>
+        )}
 
-      {/* Sound settings with positioning based on page type */}
-      {showSoundSettings && (
-        <div className={`absolute top-1/2 -translate-y-1/2 ${getPositionClass()}`}>
-          <SoundSettings className="flex w-[46px] justify-end sm:w-[50px]" />
-        </div>
-      )}
+        {/* Sound settings with positioning based on page type */}
+        {showSoundSettings && (
+          <div className={`absolute top-1/2 -translate-y-1/2 ${getPositionClass()}`}>
+            <SoundSettings className="flex w-[46px] justify-end sm:w-[50px]" />
+          </div>
+        )}
+      </div>
+
+      {/* Left out while memorising and placing, where it would compete with the board. */}
+      {pageType !== 'game-memorize-solution' && <SiteNav />}
     </div>
   );
 }

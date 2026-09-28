@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Jak działa Memory Chess",
-    "intro": "Każda runda przebiega w tych samych trzech krokach. Liczby na tej stronie to te, których gra faktycznie używa; pochodzą z tego samego kodu, który obsługuje szachownicę, więc nie mogą odbiegać od tego, w co grasz.",
+    "intro": "Każda runda przebiega w tych samych trzech krokach.",
     "phases": {
       "heading": "Trzy fazy rundy",
       "memorize": {

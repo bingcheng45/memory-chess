@@ -453,7 +453,9 @@ function GamePageContent() {
       >
         <PageHeader
           onBackClick={handleBack}
-          pageType="game-memorize-solution"
+          // 'other', not 'game-config' or 'game-result': those move the
+          // controls inward, and this header is already held to the board's width.
+          pageType={isActivePhase ? 'game-memorize-solution' : 'other'}
           className="!mb-3"
           style={{
             maxWidth: MAX_BOARD_SIZE_PX

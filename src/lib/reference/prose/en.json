@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "How Memory Chess works",
-    "intro": "Every round is the same three steps. The numbers on this page are the ones the game actually uses; they are read from the same code that runs the board, so they cannot drift from what you play.",
+    "intro": "Every round is the same three steps.",
     "phases": {
       "heading": "The three phases of a round",
       "memorize": {

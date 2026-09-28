@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Slik fungerer Memory Chess",
-    "intro": "Hver runde er de samme tre stegene. Tallene på denne siden er de spillet faktisk bruker. De leses fra den samme koden som driver brettet, og kan derfor ikke avvike fra det du spiller.",
+    "intro": "Hver runde er de samme tre stegene.",
     "phases": {
       "heading": "De tre fasene i en runde",
       "memorize": {

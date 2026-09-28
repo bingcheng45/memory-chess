@@ -6,7 +6,9 @@
       "changelog": "Có gì mới",
       "contactUs": "Liên hệ",
       "privacy": "Quyền riêng tư",
-      "terms": "Điều khoản"
+      "terms": "Điều khoản",
+      "play": "Chơi",
+      "leaderboard": "Bảng xếp hạng"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Bảo lưu mọi quyền.",
@@ -25,11 +27,6 @@
       "current": "Ngôn ngữ: {language}",
       "select": "Chọn ngôn ngữ",
       "englishOnly": "Trang này chỉ có bằng tiếng Anh."
-    },
-    "otherApps": {
-      "title": "Ứng dụng khác của tác giả",
-      "visitWebsite": "Xem trang web →",
-      "iconAlt": "Biểu tượng ứng dụng {name}"
     }
   },
   "home": {

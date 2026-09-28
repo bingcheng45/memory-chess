@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Jak funguje Memory Chess",
-    "intro": "Každé kolo má stejné tři kroky. Čísla na této stránce jsou ta, která hra skutečně používá; načítají se ze stejného kódu, který řídí šachovnici, takže se nemohou lišit od toho, co hrajete.",
+    "intro": "Každé kolo má stejné tři kroky.",
     "phases": {
       "heading": "Tři fáze kola",
       "memorize": {

@@ -6,7 +6,9 @@
       "changelog": "नया क्या है",
       "contactUs": "संपर्क करें",
       "privacy": "गोपनीयता",
-      "terms": "शर्तें"
+      "terms": "शर्तें",
+      "play": "खेलें",
+      "leaderboard": "लीडरबोर्ड"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. सर्वाधिकार सुरक्षित।",
@@ -25,11 +27,6 @@
       "current": "भाषा: {language}",
       "select": "भाषा चुनें",
       "englishOnly": "यह पृष्ठ केवल अंग्रेज़ी में उपलब्ध है।"
-    },
-    "otherApps": {
-      "title": "इसी डेवलपर के दूसरे ऐप",
-      "visitWebsite": "वेबसाइट देखें →",
-      "iconAlt": "{name} ऐप आइकॉन"
     }
   },
   "home": {

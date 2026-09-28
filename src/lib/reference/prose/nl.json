@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Zo werkt Memory Chess",
-    "intro": "Elke ronde bestaat uit dezelfde 3 stappen. De getallen op deze pagina zijn de getallen die het spel echt gebruikt; ze worden gelezen uit dezelfde code die het bord aanstuurt en kunnen dus niet afwijken van wat je speelt.",
+    "intro": "Elke ronde bestaat uit dezelfde 3 stappen.",
     "phases": {
       "heading": "De 3 fasen van een ronde",
       "memorize": {

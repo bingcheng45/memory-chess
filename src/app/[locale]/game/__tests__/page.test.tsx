@@ -10,10 +10,12 @@ const mockAnalytics = {
   trackDailyChallengeComplete: jest.fn(),
 };
 
+let mockGamePhase = "configuration";
+
 jest.mock("@/lib/store/gameStore", () => {
   const mockState = () => ({
     gameState: { isPlaying: false, isMemorizationPhase: false, isSolutionPhase: false },
-    gamePhase: "configuration",
+    gamePhase: mockGamePhase,
     lastSettings: null,
     startGame: mockStartGame,
     resetGame: jest.fn(),
@@ -51,8 +53,8 @@ jest.mock("@/i18n/navigation", () => ({
 }));
 
 jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div />;
+  function MockPageHeader({ pageType }: { pageType?: string }) {
+    return <div data-page-type={pageType} />;
   }
   return MockPageHeader;
 });
@@ -64,6 +66,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  mockGamePhase = "configuration";
   window.history.pushState({}, "", "/");
   jest.restoreAllMocks();
 });
@@ -93,5 +96,20 @@ describe("GamePage URL-driven start", () => {
     render(<GamePage />);
 
     expect(mockStartGame).not.toHaveBeenCalled();
+  });
+});
+
+describe("GamePage header", () => {
+  it.each([
+    ["configuration", "other"],
+    ["memorization", "game-memorize-solution"],
+    ["solution", "game-memorize-solution"],
+    ["result", "other"],
+  ])("in the %s phase asks the header for %s", (phase, pageType) => {
+    mockGamePhase = phase;
+
+    const { container } = render(<GamePage />);
+
+    expect(container.querySelector("[data-page-type]")).toHaveAttribute("data-page-type", pageType);
   });
 });

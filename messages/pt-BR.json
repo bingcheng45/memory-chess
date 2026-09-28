@@ -6,7 +6,9 @@
       "changelog": "Novidades",
       "contactUs": "Fale conosco",
       "privacy": "Privacidade",
-      "terms": "Termos"
+      "terms": "Termos",
+      "play": "Jogar",
+      "leaderboard": "Ranking"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Todos os direitos reservados.",
@@ -25,11 +27,6 @@
       "current": "Idioma: {language}",
       "select": "Escolher idioma",
       "englishOnly": "Esta página está disponível apenas em inglês."
-    },
-    "otherApps": {
-      "title": "Mais apps do criador",
-      "visitWebsite": "Visitar o site →",
-      "iconAlt": "Ícone do app {name}"
     }
   },
   "home": {

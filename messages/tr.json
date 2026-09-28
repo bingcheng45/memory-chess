@@ -6,7 +6,9 @@
       "changelog": "Yenilikler",
       "contactUs": "Bize ulaşın",
       "privacy": "Gizlilik",
-      "terms": "Koşullar"
+      "terms": "Koşullar",
+      "play": "Oyna",
+      "leaderboard": "Sıralama"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tüm hakları saklıdır.",
@@ -25,11 +27,6 @@
       "current": "Dil: {language}",
       "select": "Dil seçin",
       "englishOnly": "Bu sayfa yalnızca İngilizce olarak mevcuttur."
-    },
-    "otherApps": {
-      "title": "Geliştiricinin diğer uygulamaları",
-      "visitWebsite": "Siteye git →",
-      "iconAlt": "{name} uygulama simgesi"
     }
   },
   "home": {

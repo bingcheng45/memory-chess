@@ -6,7 +6,9 @@
       "changelog": "Nyheter",
       "contactUs": "Kontakta oss",
       "privacy": "Integritet",
-      "terms": "Villkor"
+      "terms": "Villkor",
+      "play": "Spela",
+      "leaderboard": "Topplista"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Med ensamrätt.",
@@ -25,11 +27,6 @@
       "current": "Språk: {language}",
       "select": "Välj språk",
       "englishOnly": "Den här sidan finns bara på engelska."
-    },
-    "otherApps": {
-      "title": "Fler appar från skaparen",
-      "visitWebsite": "Besök webbplatsen →",
-      "iconAlt": "Appikon för {name}"
     }
   },
   "home": {

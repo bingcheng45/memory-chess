@@ -6,7 +6,9 @@
       "changelog": "업데이트 소식",
       "contactUs": "문의하기",
       "privacy": "개인정보",
-      "terms": "이용약관"
+      "terms": "이용약관",
+      "play": "플레이",
+      "leaderboard": "리더보드"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 모든 권리 보유.",
@@ -25,11 +27,6 @@
       "current": "언어: {language}",
       "select": "언어 선택",
       "englishOnly": "이 페이지는 영어로만 제공됩니다."
-    },
-    "otherApps": {
-      "title": "제작자의 다른 앱",
-      "visitWebsite": "웹사이트 보기 →",
-      "iconAlt": "{name} 앱 아이콘"
     }
   },
   "home": {

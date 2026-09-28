@@ -6,7 +6,9 @@
       "changelog": "Uutta",
       "contactUs": "Ota yhteyttä",
       "privacy": "Tietosuoja",
-      "terms": "Käyttöehdot"
+      "terms": "Käyttöehdot",
+      "play": "Pelaa",
+      "leaderboard": "Tulostaulukko"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Kaikki oikeudet pidätetään.",
@@ -25,11 +27,6 @@
       "current": "Kieli: {language}",
       "select": "Valitse kieli",
       "englishOnly": "Tämä sivu on saatavilla vain englanniksi."
-    },
-    "otherApps": {
-      "title": "Tekijän muut sovellukset",
-      "visitWebsite": "Siirry sivustolle →",
-      "iconAlt": "Sovelluksen {name} kuvake"
     }
   },
   "home": {

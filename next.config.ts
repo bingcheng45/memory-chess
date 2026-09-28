@@ -20,7 +20,16 @@ const nextConfig: NextConfig = {
    */
   skipTrailingSlashRedirect: true,
   async redirects() {
-    return [{ source: `/:path(${SKIPPED_BY_MIDDLEWARE})/`, destination: "/:path", permanent: true }];
+    return [
+      // Vercel serves the production alias without the noindex header it adds to preview hosts.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "memory-chess.vercel.app" }],
+        destination: "https://thememorychess.com/:path*",
+        permanent: true,
+      },
+      { source: `/:path(${SKIPPED_BY_MIDDLEWARE})/`, destination: "/:path", permanent: true },
+    ];
   },
   async rewrites() {
     return { beforeFiles: [{ source: "/_next/:path+/", destination: "/_not-found" }], afterFiles: [], fallback: [] };

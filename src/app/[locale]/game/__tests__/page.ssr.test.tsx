@@ -9,8 +9,8 @@ jest.mock("@/i18n/navigation", () => ({
 }));
 
 jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div />;
+  function MockPageHeader({ pageType }: { pageType?: string }) {
+    return <div data-page-type={pageType} />;
   }
   return MockPageHeader;
 });
@@ -28,5 +28,7 @@ describe("GamePage server render", () => {
     expect(html).toContain("Game Configuration</h2>");
     expect(html).toContain('aria-pressed="true"');
     expect(html).not.toContain("aria-busy");
+    // The configuration screen keeps the site nav in the served HTML.
+    expect(html).toContain('data-page-type="other"');
   });
 });

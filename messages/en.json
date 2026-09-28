@@ -6,7 +6,9 @@
       "changelog": "Changelog",
       "contactUs": "Contact Us",
       "privacy": "Privacy",
-      "terms": "Terms"
+      "terms": "Terms",
+      "play": "Play",
+      "leaderboard": "Leaderboard"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. All rights reserved.",
@@ -25,11 +27,6 @@
       "current": "Language: {language}",
       "select": "Select language",
       "englishOnly": "This page is only available in English."
-    },
-    "otherApps": {
-      "title": "More Apps from the Creator",
-      "visitWebsite": "Visit website →",
-      "iconAlt": "{name} app icon"
     }
   },
   "home": {

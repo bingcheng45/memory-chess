@@ -6,7 +6,9 @@
       "changelog": "Yang Baru",
       "contactUs": "Hubungi Kami",
       "privacy": "Privasi",
-      "terms": "Ketentuan"
+      "terms": "Ketentuan",
+      "play": "Main",
+      "leaderboard": "Peringkat"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Seluruh hak cipta dilindungi.",
@@ -25,11 +27,6 @@
       "current": "Bahasa: {language}",
       "select": "Pilih bahasa",
       "englishOnly": "Halaman ini hanya tersedia dalam bahasa Inggris."
-    },
-    "otherApps": {
-      "title": "Aplikasi lain dari pembuatnya",
-      "visitWebsite": "Kunjungi situs →",
-      "iconAlt": "Ikon aplikasi {name}"
     }
   },
   "home": {

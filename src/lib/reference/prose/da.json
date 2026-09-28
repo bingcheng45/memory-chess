@@ -1,7 +1,7 @@
 {
   "game": {
     "title": "Sådan fungerer Memory Chess",
-    "intro": "Hver runde består af de samme tre trin. Tallene på denne side er dem, spillet faktisk bruger; de læses fra den samme kode, som styrer brættet, og kan derfor ikke afvige fra det, du spiller.",
+    "intro": "Hver runde består af de samme tre trin.",
     "phases": {
       "heading": "Rundens tre faser",
       "memorize": {

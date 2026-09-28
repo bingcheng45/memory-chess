@@ -72,7 +72,7 @@ This app was rejected by Google AdSense because `/game` server-rendered 8 words 
 
 ### The AdSense gate
 
-The site was rejected twice for "Low value content". Any change that adds, removes, or reshapes a page, a sitemap entry, a layout, or translated copy must pass the whole-site audit before it is done:
+The site was rejected three times for "Low value content". The audit catches on-page problems only; read `docs/adsense-resubmission.md` before any resubmission. Any change that adds, removes, or reshapes a page, a sitemap entry, a layout, or translated copy must pass the whole-site audit before it is done:
 
 ```bash
 npm run audit:adsense -- --base http://127.0.0.1:4517 --out .verify-evidence/<run>/adsense

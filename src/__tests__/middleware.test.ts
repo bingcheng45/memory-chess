@@ -176,6 +176,25 @@ describe("middleware locale negotiation", () => {
     expect(forwarded.headers.get("accept-language")).toBe("en");
   });
 
+  describe.each([
+    "Mediapartners-Google",
+    "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X) Chrome/120.0 Mobile Safari/537.36 (compatible; Google-InspectionTool/1.0;)",
+    "Mozilla/5.0 (compatible; Google-Site-Verification/1.0)",
+    "Mozilla/5.0 (compatible; GoogleOther)",
+  ])("a Google crawler without 'bot' in its name (%s)", (userAgent) => {
+    it("is not moved by Accept-Language", () => {
+      const forwarded = forwardedRequest({ "accept-language": "de-DE,de;q=0.9", "user-agent": userAgent });
+
+      expect(forwarded.headers.get("accept-language")).toBe("en");
+    });
+
+    it("is not moved by the country hint", () => {
+      const forwarded = forwardedRequest({ "user-agent": userAgent, "x-vercel-ip-country": "DE" });
+
+      expect(forwarded.headers.get("accept-language")).toBe("en");
+    });
+  });
+
   it("still negotiates Accept-Language for real visitors", () => {
     const forwarded = forwardedRequest({
       "accept-language": "hu-HU,hu;q=0.9",

@@ -69,7 +69,7 @@ export const COUNTRY_LOCALE_HINTS: Readonly<Record<string, Locale>> = {
 
 /** Crawlers skip geo detection so a bot's exit IP cannot decide what gets indexed. */
 const CRAWLER_PATTERN =
-  /bot|crawler|spider|crawling|googlebot|bingbot|yandex|duckduck|baidu|slurp|facebookexternalhit|twitterbot|linkedinbot|embedly|quora|pinterest|whatsapp|telegram/i;
+  /bot|crawler|spider|crawling|googlebot|bingbot|yandex|duckduck|baidu|slurp|facebookexternalhit|twitterbot|linkedinbot|embedly|quora|pinterest|whatsapp|telegram|mediapartners-google|google-inspectiontool|google-site-verification|googleother/i;
 
 export function isCrawler(userAgent: string | null): boolean {
   return Boolean(userAgent && CRAWLER_PATTERN.test(userAgent));

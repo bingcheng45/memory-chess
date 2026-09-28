@@ -6,7 +6,9 @@
       "changelog": "Uutta",
       "contactUs": "Ota yhteyttä",
       "privacy": "Tietosuoja",
-      "terms": "Käyttöehdot"
+      "terms": "Käyttöehdot",
+      "play": "Pelaa",
+      "leaderboard": "Tulostaulukko"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Kaikki oikeudet pidätetään.",

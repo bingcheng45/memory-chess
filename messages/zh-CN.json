@@ -6,7 +6,9 @@
       "changelog": "更新日志",
       "contactUs": "联系我们",
       "privacy": "隐私政策",
-      "terms": "服务条款"
+      "terms": "服务条款",
+      "play": "开始游戏",
+      "leaderboard": "排行榜"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 保留所有权利。",

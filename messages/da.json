@@ -6,7 +6,9 @@
       "changelog": "Nyheder",
       "contactUs": "Kontakt os",
       "privacy": "Privatliv",
-      "terms": "Vilkår"
+      "terms": "Vilkår",
+      "play": "Spil",
+      "leaderboard": "Rangliste"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle rettigheder forbeholdes.",

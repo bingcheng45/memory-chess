@@ -6,7 +6,9 @@
       "changelog": "Nyheter",
       "contactUs": "Kontakta oss",
       "privacy": "Integritet",
-      "terms": "Villkor"
+      "terms": "Villkor",
+      "play": "Spela",
+      "leaderboard": "Topplista"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Med ensamrätt.",

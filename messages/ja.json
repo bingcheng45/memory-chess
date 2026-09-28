@@ -6,7 +6,9 @@
       "changelog": "更新履歴",
       "contactUs": "お問い合わせ",
       "privacy": "プライバシー",
-      "terms": "利用規約"
+      "terms": "利用規約",
+      "play": "プレイ",
+      "leaderboard": "ランキング"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 無断転載を禁じます。",

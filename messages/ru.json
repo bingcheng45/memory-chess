@@ -6,7 +6,9 @@
       "changelog": "Что нового",
       "contactUs": "Связаться с нами",
       "privacy": "Конфиденциальность",
-      "terms": "Условия"
+      "terms": "Условия",
+      "play": "Играть",
+      "leaderboard": "Рейтинг"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Все права защищены.",

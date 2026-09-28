@@ -6,7 +6,9 @@
       "changelog": "업데이트 소식",
       "contactUs": "문의하기",
       "privacy": "개인정보",
-      "terms": "이용약관"
+      "terms": "이용약관",
+      "play": "플레이",
+      "leaderboard": "리더보드"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 모든 권리 보유.",

@@ -6,7 +6,9 @@
       "changelog": "Nowości",
       "contactUs": "Kontakt",
       "privacy": "Prywatność",
-      "terms": "Regulamin"
+      "terms": "Regulamin",
+      "play": "Graj",
+      "leaderboard": "Ranking"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Wszelkie prawa zastrzeżone.",

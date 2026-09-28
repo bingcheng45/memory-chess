@@ -6,7 +6,9 @@
       "changelog": "नया क्या है",
       "contactUs": "संपर्क करें",
       "privacy": "गोपनीयता",
-      "terms": "शर्तें"
+      "terms": "शर्तें",
+      "play": "खेलें",
+      "leaderboard": "लीडरबोर्ड"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. सर्वाधिकार सुरक्षित।",

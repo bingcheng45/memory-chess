@@ -6,7 +6,9 @@
       "changelog": "Nieuw",
       "contactUs": "Contact",
       "privacy": "Privacy",
-      "terms": "Voorwaarden"
+      "terms": "Voorwaarden",
+      "play": "Spelen",
+      "leaderboard": "Ranglijst"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle rechten voorbehouden.",

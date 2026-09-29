@@ -2,6 +2,7 @@ import type { ComponentProps } from "react";
 import { render, screen } from "@/test-utils/intl";
 import LearnArticleRich from "@/components/learn/LearnArticleRich";
 import { EN_LEARN_PAGES, EN_LEARN_GOALS } from "@/lib/seo/learn";
+import { BRAND_ORGANIZATION, BRAND_WEBSITE } from "@/lib/seo/brand";
 
 function getLearnPageBySlug(slug: string) {
   const page = EN_LEARN_PAGES.find((entry) => entry.slug === slug);
@@ -148,6 +149,30 @@ describe("LearnArticleRich", () => {
     expect(article.author["@id"]).toBe(
       "https://thememorychess.com/about#bing-cheng",
     );
+  });
+
+  it("emits the shared brand nodes byte-identical to every other page", () => {
+    const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
+
+    const { container } = render(
+      <LearnArticleRich
+        page={page}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+      />,
+    );
+
+    const script = container.querySelector('script[type="application/ld+json"]');
+    const graph: Array<{ "@type": string }> = JSON.parse(
+      script?.textContent ?? "{}",
+    )["@graph"];
+    const organization = graph.find((node) => node["@type"] === "Organization");
+    const website = graph.find((node) => node["@type"] === "WebSite");
+
+    expect(JSON.stringify(organization)).toBe(
+      JSON.stringify(BRAND_ORGANIZATION),
+    );
+    expect(JSON.stringify(website)).toBe(JSON.stringify(BRAND_WEBSITE));
   });
 
   it("credits the author under the date and says how the guide was written and checked", () => {

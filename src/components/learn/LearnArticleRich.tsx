@@ -15,6 +15,11 @@ import {
   type LearnPageContent,
 } from "@/lib/seo/learn/schema";
 import type { LearnGoal } from "@/lib/seo/learn";
+import {
+  BRAND_ORGANIZATION,
+  BRAND_WEBSITE,
+  ORGANIZATION_ID,
+} from "@/lib/seo/brand";
 import { LEARN_ARTICLE_COPY } from "@/lib/seo/learn/copy";
 
 const SITE_URL = "https://thememorychess.com";
@@ -277,16 +282,7 @@ export default function LearnArticleRich({
           name: LEARN_AUTHOR.name,
           url: LEARN_AUTHOR.url,
         },
-        publisher: {
-          "@type": "Organization",
-          "@id": `${SITE_URL}/#organization`,
-          name: "Memory Chess",
-          url: SITE_URL,
-          logo: {
-            "@type": "ImageObject",
-            url: `${SITE_URL}/apple-touch-icon.png`,
-          },
-        },
+        publisher: { "@id": ORGANIZATION_ID },
         mainEntityOfPage: { "@id": `${articleUrl}#webpage` },
         keywords: [page.primaryKeyword, ...page.secondaryKeywords].join(", "),
       },
@@ -335,6 +331,8 @@ export default function LearnArticleRich({
             },
           ]
         : []),
+      BRAND_ORGANIZATION,
+      BRAND_WEBSITE,
     ],
   };
 

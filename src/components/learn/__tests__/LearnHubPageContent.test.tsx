@@ -2,6 +2,7 @@ import type { ComponentProps } from "react";
 import { render, screen } from "@/test-utils/intl";
 import LearnHubPageContent from "@/components/learn/LearnHubPageContent";
 import { EN_LEARN_PAGES, EN_LEARN_GOALS } from "@/lib/seo/learn";
+import { BRAND_ORGANIZATION, BRAND_WEBSITE } from "@/lib/seo/brand";
 
 jest.mock("next/link", () => {
   function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
@@ -73,6 +74,26 @@ describe("LearnHubPageContent", () => {
 
     expect(itemList.numberOfItems).toBe(EN_LEARN_PAGES.length);
     expect(itemList.itemListElement).toHaveLength(EN_LEARN_PAGES.length);
+  });
+
+  it("references the shared brand nodes instead of redefining the WebSite", () => {
+    const { container } = render(<LearnHubPageContent allPages={EN_LEARN_PAGES} goals={EN_LEARN_GOALS} />);
+
+    const script = container.querySelector('script[type="application/ld+json"]');
+    const graph: Array<{ "@type": string; isPartOf?: unknown }> = JSON.parse(
+      script?.textContent ?? "{}",
+    )["@graph"];
+    const collectionPage = graph.find((node) => node["@type"] === "CollectionPage");
+    const organization = graph.find((node) => node["@type"] === "Organization");
+    const website = graph.find((node) => node["@type"] === "WebSite");
+
+    expect(collectionPage?.isPartOf).toEqual({
+      "@id": "https://thememorychess.com/#website",
+    });
+    expect(JSON.stringify(organization)).toBe(
+      JSON.stringify(BRAND_ORGANIZATION),
+    );
+    expect(JSON.stringify(website)).toBe(JSON.stringify(BRAND_WEBSITE));
   });
 
   it("describes the goal lists by the order they actually follow", () => {

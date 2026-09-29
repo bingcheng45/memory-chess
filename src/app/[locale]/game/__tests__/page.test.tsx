@@ -19,10 +19,10 @@ jest.mock("@/lib/store/gameStore", () => {
     removePiece: jest.fn(),
     chess: null,
   });
-  return {
-    useGameStore: (selector?: (state: ReturnType<typeof mockState>) => unknown) =>
-      selector ? selector(mockState()) : mockState(),
-  };
+  const useGameStore = (selector?: (state: ReturnType<typeof mockState>) => unknown) =>
+    selector ? selector(mockState()) : mockState();
+  useGameStore.getState = mockState;
+  return { useGameStore };
 });
 
 jest.mock("@/lib/utils/soundEffects", () => ({

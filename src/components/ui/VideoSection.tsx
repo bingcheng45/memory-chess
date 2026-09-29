@@ -2,11 +2,9 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { useAnalytics } from "@/lib/utils/analyticsTracker";
 
 export default function VideoSection() {
   const t = useTranslations("home.video");
-  const analytics = useAnalytics();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [videoStarted, setVideoStarted] = useState(false);
   const [trackedProgress, setTrackedProgress] = useState<{
@@ -50,7 +48,6 @@ export default function VideoSection() {
             setVideoStarted(true);
 
             // Send start event
-            analytics.trackFeatureUsage("youtube_video", "start");
             if (typeof window !== "undefined" && window.gtag) {
               window.gtag("event", "video_start", {
                 event_category: "engagement",
@@ -67,8 +64,6 @@ export default function VideoSection() {
           // Handle video resumed (state 1 = playing)
           else if (playerState === 1 && videoStarted) {
             console.log("Video resumed playing");
-
-            analytics.trackFeatureUsage("youtube_video", "resume");
             if (typeof window !== "undefined" && window.gtag) {
               window.gtag("event", "video_play", {
                 event_category: "engagement",
@@ -86,11 +81,6 @@ export default function VideoSection() {
               if (currentTime > 2 && currentTime < duration - 2) {
                 console.log("Video paused at:", currentTime);
 
-                analytics.trackFeatureUsage(
-                  "youtube_video",
-                  "pause",
-                  Math.round(currentTime),
-                );
                 if (typeof window !== "undefined" && window.gtag) {
                   window.gtag("event", "video_pause", {
                     event_category: "engagement",
@@ -108,7 +98,6 @@ export default function VideoSection() {
           else if (playerState === 0 && videoStarted) {
             console.log("Video completed");
 
-            analytics.trackFeatureUsage("youtube_video", "complete");
             if (typeof window !== "undefined" && window.gtag) {
               window.gtag("event", "video_complete", {
                 event_category: "engagement",
@@ -218,8 +207,6 @@ export default function VideoSection() {
             setTrackedProgress((prev) => ({ ...prev, [milestone]: true }));
 
             console.log(`Video reached ${milestone}% milestone`);
-            analytics.trackFeatureUsage("youtube_video", "progress", milestone);
-
             if (typeof window !== "undefined" && window.gtag) {
               window.gtag("event", "video_progress", {
                 event_category: "engagement",
@@ -254,7 +241,7 @@ export default function VideoSection() {
         clearInterval(progressCheckInterval);
       }
     };
-  }, [videoStarted, trackedProgress, analytics]);
+  }, [videoStarted, trackedProgress]);
 
   return (
     <div className="w-full max-w-4xl mx-auto py-12 px-2 sm:px-4 mt-4 mb-8 border-t border-bg-light">

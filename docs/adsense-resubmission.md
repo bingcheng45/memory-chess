@@ -21,7 +21,7 @@ every box below is ticked. The dates and thresholds are our heuristics; Google p
 - [ ] **Alias redirects.** `curl -I https://memory-chess.vercel.app/learn` answers 308 to
       `https://thememorychess.com/learn`.
 - [ ] **Audit passes on production.** `npm run audit:adsense -- --base https://thememorychess.com`.
-- [ ] **Search Console** property verified (DNS or meta tag), sitemap submitted, clicks and impressions recorded below.
+- [x] **Search Console** property verified (DNS or meta tag), sitemap submitted, clicks and impressions recorded below. Verified by DNS; sitemap submitted 2026-09-15 with 0 errors.
 - [ ] **Community launch done**, organic posts only, no link exchanges. Record each date below.
 - [ ] **One original piece by the owner**, in their own voice, built on the site's own play data, published as a
       Learn article with a chart. Label the source and query date on the chart and say plainly that the sample is
@@ -38,7 +38,7 @@ every box below is ticked. The dates and thresholds are our heuristics; Google p
 
 | Date | GA4 weekly active users | GA4 returning users | Search Console clicks (7d) | Impressions (7d) | Note |
 |---|---|---|---|---|---|
-| 2026-09-28 | 247 | 53 | | | Baseline, week of Sep 21-27, thememorychess.com host only |
+| 2026-09-28 | 247 | 53 | 122 | 3,080 | Baseline, week of Sep 21-27, thememorychess.com host only |
 
 Read GA numbers for the `thememorychess.com` hostname only. Until 2026-09-29 the analytics scripts also loaded on local
 and preview builds, so earlier weeks include test runs (257 users from `127.0.0.1` in the week of Sep 14).

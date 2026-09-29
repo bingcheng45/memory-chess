@@ -43,6 +43,23 @@ every box below is ticked. The dates and thresholds are our heuristics; Google p
 Read GA numbers for the `thememorychess.com` hostname only. Until 2026-09-29 the analytics scripts also loaded on local
 and preview builds, so earlier weeks include test runs (257 users from `127.0.0.1` in the week of Sep 14).
 
+### Round funnel events
+
+The switch date is 2026-09-29, the day the round-funnel PR merges. It was written before the merge, so correct it if
+the merge lands on another day. From then on production sends three GA4 events per visitor journey:
+
+| Event | Fires when | Params |
+|---|---|---|
+| `round_start` | a round enters the memorize phase | `piece_count`, `memorize_time` |
+| `round_complete` | a round reaches its result | `piece_count`, `memorize_time`, `correct_pieces`, `accuracy` |
+| `score_submit` | the leaderboard accepts a submitted score | `difficulty`, `piece_count` |
+
+The clean production-only series for these events starts 2026-09-29. Read nothing earlier as comparable.
+
+`sound_settings` keeps firing once per finished round beside `round_complete` until 2026-10-27, four weeks after the
+switch, so the weekly rounds series has no gap. On 2026-10-27, check that weekly `round_complete` counts match
+`sound_settings`, then retire `sound_settings` in its own PR and read rounds from `round_complete` only.
+
 | Date | Where | Link |
 |---|---|---|
 | | | |

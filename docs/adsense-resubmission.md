@@ -63,6 +63,21 @@ The clean production-only series for these events starts 2026-09-29. Read nothin
 weekly rounds series has no gap. Then check that weekly `round_complete` counts match `sound_settings`, retire
 `sound_settings` in its own PR, and read rounds from `round_complete` only.
 
+The one-tap start from the home page is measured against this baseline, taken before it deploys. Over 2026-09-01 to
+2026-09-28 on `thememorychess.com`, 23.7% of visitors finished a round (267 of 1,126), counted from `sound_settings`
+per visitor. Organic Search visitors finished at 45.4% (216 of 476). Report them separately, because the launch posts
+change the visitor mix in the same weeks.
+
+At about 270 visitors a week, two weeks can detect only a change of about 6 points, so read the result as directional.
+The one-tap start has two measures: the share of visitors with a `round_complete`, and the share of `round_start`
+events that reach `round_complete`. A rise in starts with no rise in finished rounds is not a win.
+
+| Reading | Window | Visitors who finished a round | Organic Search visitors | `round_start` reaching `round_complete` |
+|---|---|---|---|---|
+| Baseline | 2026-09-01 to 2026-09-28 | 23.7% (267 of 1,126) | 45.4% (216 of 476) | not tracked before 2026-09-29 |
+| Two weeks after deploy | | | | |
+| Four weeks after deploy | | | | |
+
 ## Decided and not to be redone
 
 - Translated home, /game and /contact-us stay indexed in 24 languages. Noindexing them was proposed and rejected by

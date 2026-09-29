@@ -157,15 +157,20 @@ export default async function LocaleLayout({
   // whole SEO story depends on.
   setRequestLocale(locale);
 
+  // Local and preview builds would otherwise count test runs as real visitors.
+  const countsVisitors = process.env.VERCEL_ENV === "production";
+
   return (
     <html lang={locale}>
       <head>
         <script async src={ADSENSE_SCRIPT_URL} crossOrigin="anonymous" />
-        <script
-          async
-          src={AHREFS_ANALYTICS_SCRIPT_URL}
-          data-key={AHREFS_ANALYTICS_KEY}
-        />
+        {countsVisitors && (
+          <script
+            async
+            src={AHREFS_ANALYTICS_SCRIPT_URL}
+            data-key={AHREFS_ANALYTICS_KEY}
+          />
+        )}
       </head>
       <body
         className={`${getSansFontClass(locale as Locale)} ${geistMono.variable} min-h-screen bg-bg-dark text-text-primary antialiased`}
@@ -176,7 +181,7 @@ export default async function LocaleLayout({
           <Footer />
           <Analytics />
           <SpeedInsights />
-          <GoogleAnalytics gaId="G-R8BM9EMY9J" />
+          {countsVisitors && <GoogleAnalytics gaId="G-R8BM9EMY9J" />}
           <SoundStopNavigator />
         </NextIntlClientProvider>
       </body>

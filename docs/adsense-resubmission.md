@@ -38,7 +38,10 @@ every box below is ticked. The dates and thresholds are our heuristics; Google p
 
 | Date | GA4 weekly active users | GA4 returning users | Search Console clicks (7d) | Impressions (7d) | Note |
 |---|---|---|---|---|---|
-| 2026-09-28 | | | | | Baseline, third rejection |
+| 2026-09-28 | 247 | 53 | | | Baseline, week of Sep 21-27, thememorychess.com host only |
+
+Read GA numbers for the `thememorychess.com` hostname only. Until 2026-09-29 the analytics scripts also loaded on local
+and preview builds, so earlier weeks include test runs (257 users from `127.0.0.1` in the week of Sep 14).
 
 | Date | Where | Link |
 |---|---|---|

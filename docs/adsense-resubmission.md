@@ -43,10 +43,13 @@ every box below is ticked. The dates and thresholds are our heuristics; Google p
 Read GA numbers for the `thememorychess.com` hostname only. Until 2026-09-29 the analytics scripts also loaded on local
 and preview builds, so earlier weeks include test runs (257 users from `127.0.0.1` in the week of Sep 14).
 
+| Date | Where | Link |
+|---|---|---|
+| | | |
+
 ### Round funnel events
 
-The switch date is 2026-09-29, the day the round-funnel PR merges. It was written before the merge, so correct it if
-the merge lands on another day. From then on production sends three GA4 events per visitor journey:
+The round-funnel events start the day PR #33 merges. From then on production sends three GA4 events per round:
 
 | Event | Fires when | Params |
 |---|---|---|
@@ -56,13 +59,9 @@ the merge lands on another day. From then on production sends three GA4 events p
 
 The clean production-only series for these events starts 2026-09-29. Read nothing earlier as comparable.
 
-`sound_settings` keeps firing once per finished round beside `round_complete` until 2026-10-27, four weeks after the
-switch, so the weekly rounds series has no gap. On 2026-10-27, check that weekly `round_complete` counts match
-`sound_settings`, then retire `sound_settings` in its own PR and read rounds from `round_complete` only.
-
-| Date | Where | Link |
-|---|---|---|
-| | | |
+`sound_settings` keeps firing once per finished round beside `round_complete` for four weeks after that merge, so the
+weekly rounds series has no gap. Then check that weekly `round_complete` counts match `sound_settings`, retire
+`sound_settings` in its own PR, and read rounds from `round_complete` only.
 
 ## Decided and not to be redone
 

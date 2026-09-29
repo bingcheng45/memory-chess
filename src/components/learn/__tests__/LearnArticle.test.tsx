@@ -40,16 +40,6 @@ jest.mock("@/components/ui/Footer", () => {
 
   return MockFooter;
 });
-
-jest.mock("@/components/learn/LearnArticleTracking", () => {
-  function MockLearnArticleTracking() {
-    return null;
-  }
-
-  MockLearnArticleTracking.displayName = "MockLearnArticleTracking";
-
-  return MockLearnArticleTracking;
-});
 describe("LearnArticleRich", () => {
   it("renders the direct answer, practice ideas, and reference links", () => {
     const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");

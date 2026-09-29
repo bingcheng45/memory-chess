@@ -15,7 +15,6 @@ import {
   type LearnPageContent,
 } from "@/lib/seo/learn/schema";
 import type { LearnGoal } from "@/lib/seo/learn";
-import LearnArticleTracking from "@/components/learn/LearnArticleTracking";
 import { LEARN_ARTICLE_COPY } from "@/lib/seo/learn/copy";
 
 const SITE_URL = "https://thememorychess.com";
@@ -341,8 +340,6 @@ export default function LearnArticleRich({
 
   return (
     <EditorialPageShell>
-      <LearnArticleTracking page={page} />
-
       <article className={EDITORIAL_STYLES.wideColumn}>
         <nav aria-label="Breadcrumb" className="mb-9 text-sm text-text-muted">
           <ol className="flex flex-wrap items-center gap-2">

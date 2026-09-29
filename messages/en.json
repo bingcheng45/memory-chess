@@ -31,15 +31,15 @@
   },
   "home": {
     "meta": {
-      "title": "Memory Chess: Free Chess Memory and Visualization Game",
-      "description": "Memorize a chess position, rebuild it from memory, and get an instant score. Play free to train board vision, visualization, and spatial memory.",
-      "socialTitle": "Memory Chess: Free Chess Memory and Visualization Game",
-      "socialDescription": "Memorize a chess position, rebuild it, and get an instant score. Play free with no account needed.",
-      "twitterTitle": "Memory Chess: Free Chess Memory Game",
-      "twitterDescription": "Memorize a chess position, rebuild it, and improve your board vision one round at a time."
+      "title": "Chess Memory Trainer: Free Online Game | Memory Chess",
+      "description": "Memory Chess is a free chess memory trainer. See a chess position for a few seconds, rebuild it from memory, and get an instant score. No sign-up.",
+      "socialTitle": "Memory Chess: Free Chess Memory Trainer",
+      "socialDescription": "Memory Chess is a free chess memory trainer. See a chess position for a few seconds, rebuild it from memory, and get an instant score. No sign-up.",
+      "twitterTitle": "Memory Chess: Free Chess Memory Trainer",
+      "twitterDescription": "Memory Chess is a free chess memory trainer. See a chess position for a few seconds, rebuild it from memory, and get an instant score. No sign-up."
     },
     "hero": {
-      "title": "Train Your Chess Memory and Visualization",
+      "title": "Memory Chess: Train Your Chess Memory and Visualization",
       "subtitle": "Memorize a chess position, rebuild it from memory, and get an instant score. Improve your board vision one round at a time.",
       "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
       "gamesPlayed": "Games played: {count}"

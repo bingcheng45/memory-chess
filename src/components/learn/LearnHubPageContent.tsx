@@ -8,6 +8,11 @@ import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import type { LearnPageContent } from "@/lib/seo/learn/schema";
 import { LEARN_HUB_COPY, type LearnQuickStartId } from "@/lib/seo/learn/copy";
 import type { LearnGoal } from "@/lib/seo/learn";
+import {
+  BRAND_ORGANIZATION,
+  BRAND_WEBSITE,
+  WEBSITE_ID,
+} from "@/lib/seo/brand";
 
 const SITE_URL = "https://thememorychess.com";
 const HUB_URL = `${SITE_URL}/learn`;
@@ -41,12 +46,7 @@ function buildLearnHubSchema({
         name,
         description,
         inLanguage: "en-US",
-        isPartOf: {
-          "@type": "WebSite",
-          "@id": `${SITE_URL}/#website`,
-          name: "Memory Chess",
-          url: SITE_URL,
-        },
+        isPartOf: { "@id": WEBSITE_ID },
         mainEntity: { "@id": `${hubUrl}#guides` },
       },
       {
@@ -73,6 +73,8 @@ function buildLearnHubSchema({
           },
         ],
       },
+      BRAND_ORGANIZATION,
+      BRAND_WEBSITE,
     ],
   };
 }

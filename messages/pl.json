@@ -39,7 +39,7 @@
       "twitterDescription": "Zapamiętuj pozycję, odtwarzaj ją i poprawiaj widzenie szachownicy runda po rundzie."
     },
     "hero": {
-      "title": "Trenuj szachową pamięć i wyobraźnię",
+      "title": "Memory Chess: Trenuj szachową pamięć i wyobraźnię",
       "subtitle": "Zapamiętaj pozycję szachową, odtwórz ją z pamięci i od razu otrzymaj wynik. Poprawiaj widzenie szachownicy runda po rundzie.",
       "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>.",
       "gamesPlayed": "Rozegrane partie: {count}"

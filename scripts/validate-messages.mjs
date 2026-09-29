@@ -55,6 +55,18 @@ if (orphanFiles.length || missingFiles.length) {
 /** Strings that must survive translation verbatim. */
 const PROTECTED_TERMS = ["Memory Chess"];
 
+/**
+ * Keys whose English copy was rewritten for search ahead of any translation.
+ * The other locales keep their earlier copy on purpose, so the protected-term
+ * check would demand a brand name their text was never written to carry.
+ * Remove a key here when its locales are retranslated.
+ */
+const ENGLISH_AHEAD_OF_TRANSLATIONS = new Set([
+  "home.meta.description",
+  "home.meta.socialDescription",
+  "home.meta.twitterDescription",
+]);
+
 function flatten(value, prefix = "", out = {}) {
   if (Array.isArray(value)) {
     value.forEach((item, i) => flatten(item, `${prefix}[${i}]`, out));
@@ -109,7 +121,7 @@ for (const locale of LOCALES) {
       );
     }
 
-    for (const term of PROTECTED_TERMS) {
+    for (const term of ENGLISH_AHEAD_OF_TRANSLATIONS.has(key) ? [] : PROTECTED_TERMS) {
       if (String(base[key]).includes(term) && !String(current[key]).includes(term)) {
         problems.push(`[${locale}] lost protected term "${term}" at ${key}`);
       }

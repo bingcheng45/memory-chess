@@ -39,7 +39,7 @@
       "twitterDescription": "Jegyezz meg egy állást, építsd fel újra, és javítsd a táblalátásod körről körre."
     },
     "hero": {
-      "title": "Fejleszd a sakkmemóriádat és a vizualizációdat",
+      "title": "Memory Chess: Fejleszd a sakkmemóriádat és a vizualizációdat",
       "subtitle": "Jegyezz meg egy sakkállást, építsd fel emlékezetből, és azonnal pontszámot kapsz. Javítsd a tábla átlátását körről körre.",
       "freeToPlay": "Ingyenes, fiók nélkül is játszható. Az eredményedet a <link>ranglistán</link> is összevetheted másokéval.",
       "gamesPlayed": "Lejátszott játszmák: {count}"

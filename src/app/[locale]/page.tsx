@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import { formatNumber } from "@/lib/utils";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 import { PieceColor, PieceType } from "@/types/chess";
+import { BRAND_ORGANIZATION, BRAND_WEBSITE } from "@/lib/seo/brand";
 import {
   ArrowRight,
   BookOpen,
@@ -45,11 +46,9 @@ export default function Home() {
   const t = useTranslations("home");
   const [totalPlays, setTotalPlays] = useState<number | null>(null);
 
-  const websiteSchema = {
+  const brandSchema = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Memory Chess",
-    url: "https://thememorychess.com",
+    "@graph": [BRAND_ORGANIZATION, BRAND_WEBSITE],
   };
 
   // Fetch total plays from Supabase on component mount
@@ -92,7 +91,7 @@ export default function Home() {
         */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(brandSchema) }}
         />
 
         <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">

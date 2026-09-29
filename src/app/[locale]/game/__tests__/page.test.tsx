@@ -73,12 +73,37 @@ describe("GamePage URL-driven start", () => {
     expect(mockStartGame).toHaveBeenCalledWith(6, 10);
   });
 
+  it("clears the round params from the address after the URL start", () => {
+    window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10");
+
+    render(<GamePage />);
+
+    expect(mockStartGame).toHaveBeenCalledWith(6, 10);
+    expect(window.location.pathname + window.location.search).toBe("/game");
+  });
+
+  it("keeps other params when it clears the round params", () => {
+    window.history.pushState({}, "", "/game?pieceCount=6&challenge=2026-09-16");
+
+    render(<GamePage />);
+
+    expect(window.location.search).toBe("?challenge=2026-09-16");
+  });
+
   it("waits on the configuration form without round params", () => {
     window.history.pushState({}, "", "/game?difficulty=hard");
 
     render(<GamePage />);
 
     expect(mockStartGame).not.toHaveBeenCalled();
+  });
+
+  it("leaves the address alone without round params", () => {
+    window.history.pushState({}, "", "/game?difficulty=hard");
+
+    render(<GamePage />);
+
+    expect(window.location.search).toBe("?difficulty=hard");
   });
 });
 

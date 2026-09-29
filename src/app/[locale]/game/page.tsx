@@ -99,6 +99,13 @@ function GamePageContent() {
 
     const pieceCount = pieceCountParam ? parseInt(pieceCountParam) : 8;
     const memorizeTime = memorizeTimeParam ? parseInt(memorizeTimeParam) : 10;
+
+    // A refresh then opens the configuration screen instead of restarting the round.
+    params.delete('pieceCount');
+    params.delete('memorizeTime');
+    const query = params.toString();
+    window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
+
     startGame(pieceCount, memorizeTime);
   }, [startGame]);
   

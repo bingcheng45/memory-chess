@@ -47,7 +47,8 @@
     "cta": {
       "play": "Pelaa Memory Chessiä",
       "leaderboard": "Katso tulostaulukko",
-      "playFree": "Pelaa ilmainen kierros"
+      "playFree": "Pelaa ilmainen kierros",
+      "chooseSettings": "Valitse nappulat ja aika"
     },
     "video": {
       "title": "Katso, miten Memory Chess toimii",

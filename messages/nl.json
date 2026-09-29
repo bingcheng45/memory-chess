@@ -47,7 +47,8 @@
     "cta": {
       "play": "Speel Memory Chess",
       "leaderboard": "Bekijk de ranglijst",
-      "playFree": "Speel een gratis ronde"
+      "playFree": "Speel een gratis ronde",
+      "chooseSettings": "Kies stukken en tijd"
     },
     "video": {
       "title": "Zo werkt Memory Chess",

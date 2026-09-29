@@ -47,7 +47,8 @@
     "cta": {
       "play": "Memory Chess játék",
       "leaderboard": "Ranglista megtekintése",
-      "playFree": "Játssz egy ingyenes kört"
+      "playFree": "Játssz egy ingyenes kört",
+      "chooseSettings": "Válassz bábukat és időt"
     },
     "video": {
       "title": "Nézd meg, hogyan működik a Memory Chess",

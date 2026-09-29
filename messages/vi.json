@@ -47,7 +47,8 @@
     "cta": {
       "play": "Chơi Memory Chess",
       "leaderboard": "Xem bảng xếp hạng",
-      "playFree": "Chơi thử một vòng miễn phí"
+      "playFree": "Chơi thử một vòng miễn phí",
+      "chooseSettings": "Chọn số quân và thời gian"
     },
     "video": {
       "title": "Xem Memory Chess hoạt động thế nào",

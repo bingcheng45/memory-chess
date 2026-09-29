@@ -47,7 +47,8 @@
     "cta": {
       "play": "Memory Chess spielen",
       "leaderboard": "Bestenliste ansehen",
-      "playFree": "Kostenlose Runde spielen"
+      "playFree": "Kostenlose Runde spielen",
+      "chooseSettings": "Figuren und Zeit wählen"
     },
     "video": {
       "title": "So funktioniert Memory Chess",

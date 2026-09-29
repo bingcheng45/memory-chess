@@ -47,7 +47,8 @@
     "cta": {
       "play": "Spela Memory Chess",
       "leaderboard": "Visa topplistan",
-      "playFree": "Spela en gratis omgång"
+      "playFree": "Spela en gratis omgång",
+      "chooseSettings": "Välj pjäser och tid"
     },
     "video": {
       "title": "Se hur Memory Chess fungerar",

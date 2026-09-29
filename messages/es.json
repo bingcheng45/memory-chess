@@ -39,7 +39,7 @@
       "twitterDescription": "Memoriza una posición, recompónla y mejora tu visión del tablero ronda a ronda."
     },
     "hero": {
-      "title": "Entrena tu memoria y tu visualización en el ajedrez",
+      "title": "Memory Chess: Entrena tu memoria y tu visualización en el ajedrez",
       "subtitle": "Memoriza una posición de ajedrez, reconstrúyela de memoria y recibe una puntuación al instante. Mejora tu visión del tablero ronda a ronda.",
       "freeToPlay": "Gratis y sin necesidad de crear una cuenta. También puedes comparar tu puntuación en la <link>clasificación</link>.",
       "gamesPlayed": "Partidas jugadas: {count}"

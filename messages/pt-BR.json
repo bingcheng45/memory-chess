@@ -39,7 +39,7 @@
       "twitterDescription": "Memorize uma posição, reconstrua-a e melhore sua visão do tabuleiro rodada após rodada."
     },
     "hero": {
-      "title": "Treine sua memória e visualização no xadrez",
+      "title": "Memory Chess: Treine sua memória e visualização no xadrez",
       "subtitle": "Memorize uma posição de xadrez, reconstrua de memória e receba uma pontuação na hora. Melhore sua visão de tabuleiro a cada rodada.",
       "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>.",
       "gamesPlayed": "Partidas jogadas: {count}"

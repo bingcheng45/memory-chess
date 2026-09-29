@@ -39,7 +39,7 @@
       "twitterDescription": "Bir konumu ezberleyin, yeniden kurun ve tahta görüşünüzü her turda geliştirin."
     },
     "hero": {
-      "title": "Satranç hafızanı ve görselleştirmeni geliştir",
+      "title": "Memory Chess: Satranç hafızanı ve görselleştirmeni geliştir",
       "subtitle": "Bir satranç konumunu ezberle, hafızandan yeniden kur ve anında puan al. Tahta görüşünü her turda biraz daha güçlendir.",
       "freeToPlay": "Ücretsiz, hesap açmaya gerek yok. Puanını <link>sıralama tablosunda</link> da karşılaştırabilirsin.",
       "gamesPlayed": "Oynanan oyun: {count}"

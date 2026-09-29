@@ -39,7 +39,7 @@
       "twitterDescription": "Mémorisez une position, reconstruisez-la et améliorez votre vision de l'échiquier manche après manche."
     },
     "hero": {
-      "title": "Entraînez votre mémoire et votre visualisation aux échecs",
+      "title": "Memory Chess: Entraînez votre mémoire et votre visualisation aux échecs",
       "subtitle": "Mémorisez une position d’échecs, reconstituez-la de mémoire et obtenez un score immédiat. Améliorez votre vision de l’échiquier partie après partie.",
       "freeToPlay": "Gratuit, sans création de compte. Vous pouvez aussi comparer votre score dans le <link>classement</link>.",
       "gamesPlayed": "Parties jouées : {count}"

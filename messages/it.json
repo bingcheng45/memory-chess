@@ -39,7 +39,7 @@
       "twitterDescription": "Memorizza una posizione, ricostruiscila e migliora la visione della scacchiera turno dopo turno."
     },
     "hero": {
-      "title": "Allena la tua memoria e visualizzazione negli scacchi",
+      "title": "Memory Chess: Allena la tua memoria e visualizzazione negli scacchi",
       "subtitle": "Memorizza una posizione, ricostruiscila a memoria e ricevi subito un punteggio. Migliora la tua visione della scacchiera turno dopo turno.",
       "freeToPlay": "Gratis e senza bisogno di un account. Puoi anche confrontare il tuo punteggio nella <link>classifica</link>.",
       "gamesPlayed": "Partite giocate: {count}"

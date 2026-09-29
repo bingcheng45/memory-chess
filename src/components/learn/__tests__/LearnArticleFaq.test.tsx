@@ -31,14 +31,6 @@ jest.mock("@/components/ui/Footer", () => {
   return MockFooter;
 });
 
-jest.mock("@/components/learn/LearnArticleTracking", () => {
-  function MockLearnArticleTracking() {
-    return null;
-  }
-
-  return MockLearnArticleTracking;
-});
-
 describe("LearnArticleRich FAQ", () => {
   it("keeps every FAQ answer in the DOM whether its item is open or closed", () => {
     const pagesWithFaq = EN_LEARN_PAGES.filter((page) => page.faq.length > 0);

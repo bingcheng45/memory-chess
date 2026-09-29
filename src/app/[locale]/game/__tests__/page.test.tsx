@@ -2,14 +2,6 @@ import { render } from "@/test-utils/intl";
 import GamePage from "@/app/[locale]/game/page";
 
 const mockStartGame = jest.fn();
-const mockAnalytics = {
-  trackFeatureUsage: jest.fn(),
-  trackGameStart: jest.fn(),
-  track: jest.fn(),
-  trackGameComplete: jest.fn(),
-  trackDailyChallengeComplete: jest.fn(),
-};
-
 let mockGamePhase = "configuration";
 
 jest.mock("@/lib/store/gameStore", () => {
@@ -23,7 +15,6 @@ jest.mock("@/lib/store/gameStore", () => {
     endMemorizationPhase: jest.fn(),
     startSolutionPhase: jest.fn(),
     submitSolution: jest.fn(),
-    calculateSkillRatingChange: jest.fn(),
     placePiece: jest.fn(),
     removePiece: jest.fn(),
     chess: null,
@@ -33,11 +24,6 @@ jest.mock("@/lib/store/gameStore", () => {
       selector ? selector(mockState()) : mockState(),
   };
 });
-
-jest.mock("@/lib/utils/analyticsTracker", () => ({
-  useAnalytics: () => mockAnalytics,
-  AnalyticsEventType: {},
-}));
 
 jest.mock("@/lib/utils/soundEffects", () => ({
   playSound: jest.fn(),
@@ -62,7 +48,6 @@ jest.mock("@/components/ui/PageHeader", () => {
 beforeEach(() => {
   jest.spyOn(console, "log").mockImplementation(() => {});
   mockStartGame.mockClear();
-  mockAnalytics.trackGameStart.mockClear();
 });
 
 afterEach(() => {
@@ -78,16 +63,14 @@ describe("GamePage URL-driven start", () => {
     render(<GamePage />);
 
     expect(mockStartGame).toHaveBeenCalledWith(12, 8);
-    expect(mockAnalytics.trackGameStart).toHaveBeenCalledWith(12, 8, false);
   });
 
-  it("flags a challenge link as a challenge start", () => {
+  it("starts a challenge link with the default memorize time", () => {
     window.history.pushState({}, "", "/game?pieceCount=6&challenge=2026-09-16");
 
     render(<GamePage />);
 
     expect(mockStartGame).toHaveBeenCalledWith(6, 10);
-    expect(mockAnalytics.trackGameStart).toHaveBeenCalledWith(6, 10, true);
   });
 
   it("waits on the configuration form without round params", () => {

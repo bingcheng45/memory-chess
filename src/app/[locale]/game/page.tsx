@@ -8,7 +8,6 @@ import GameConfig from '@/components/game/GameConfig';
 import GameResult from '@/components/game/GameResult';
 import GameStats from '@/components/game/GameStats';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
-import { useAnalytics, AnalyticsEventType } from '@/lib/utils/analyticsTracker';
 import { playSound, stopTimerSound } from '@/lib/utils/soundEffects';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
 import { Chess } from 'chess.js';
@@ -33,19 +32,10 @@ const TIMER_CUE_DELAY_MS = 500;
 function GamePageContent() {
   const t = useTranslations("game");
   const router = useRouter();
-  const analytics = useAnalytics();
-  
+
   // Initialize sound effects hook to handle sound based on game state changes
   useSoundEffects();
-  
-  // Add state to track client-side rendering
-  const [isClient, setIsClient] = useState(false);
-  
-  // Set isClient to true when component mounts on client
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-  
+
   const {
     gameState, 
     gamePhase, 
@@ -53,7 +43,6 @@ function GamePageContent() {
     resetGame, 
     startMemorizationPhase,
     submitSolution,
-    calculateSkillRatingChange,
     placePiece,
     removePiece,
     chess
@@ -88,10 +77,7 @@ function GamePageContent() {
     };
   }, [isActivePhase]);
 
-  // Track initial page load
   useEffect(() => {
-    analytics.trackFeatureUsage('game_page', 'view');
-    
     // Clean up game state when leaving
     return () => {
       stopTimerSound(); // Stop any timer sound when leaving the page
@@ -100,7 +86,7 @@ function GamePageContent() {
       }
       resetGame();
     };
-  }, [analytics, resetGame]);
+  }, [resetGame]);
   
   // The query is read off the live location rather than via useSearchParams,
   // which would bail /game out of static rendering and serve an empty page.
@@ -113,53 +99,13 @@ function GamePageContent() {
     const pieceCount = pieceCountParam ? parseInt(pieceCountParam) : 8;
     const memorizeTime = memorizeTimeParam ? parseInt(memorizeTimeParam) : 10;
     startGame(pieceCount, memorizeTime);
-    analytics.trackGameStart(pieceCount, memorizeTime, !!params.get('challenge'));
-  }, [analytics, startGame]);
+  }, [startGame]);
   
-  // Track phase changes
   useEffect(() => {
     if (gamePhase === GamePhase.MEMORIZATION) {
-      analytics.track(AnalyticsEventType.MEMORIZATION_PHASE, {
-        pieceCount: gameState.pieceCount,
-        memorizeTime: gameState.memorizeTime
-      });
       warmLeaderboardCutoffs();
-    } else if (gamePhase === GamePhase.SOLUTION) {
-      analytics.track(AnalyticsEventType.SOLUTION_PHASE, {
-        pieceCount: gameState.pieceCount,
-        memorizeTime: gameState.memorizeTime
-      });
-    } else if (gamePhase === GamePhase.RESULT && gameState.accuracy !== undefined && isClient) {
-      // Calculate skill rating change
-      const skillRatingChange = calculateSkillRatingChange(
-        gameState.accuracy,
-        gameState.pieceCount,
-        gameState.completionTime || 0
-      );
-      
-      // Create a game history object for analytics
-      const gameHistoryForAnalytics = {
-        id: '',
-        timestamp: Date.now(),
-        pieceCount: gameState.pieceCount,
-        memorizeTime: gameState.memorizeTime,
-        accuracy: gameState.accuracy || 0,
-        correctPlacements: 0,
-        totalPlacements: 0,
-        level: gameState.level || 1,
-        duration: gameState.completionTime ? 
-          Math.floor((gameState.completionTime - (gameState.memorizeStartTime || 0)) / 1000) : 0
-      };
-      
-      // Track game completion
-      analytics.trackGameComplete(gameHistoryForAnalytics, skillRatingChange);
-      
-      // Track daily challenge completion if applicable
-      if (new URLSearchParams(window.location.search).get('challenge')) {
-        analytics.trackDailyChallengeComplete(gameHistoryForAnalytics, skillRatingChange);
-      }
     }
-  }, [gamePhase, gameState, analytics, calculateSkillRatingChange, isClient]);
+  }, [gamePhase]);
   
   // Start memorization phase when game is started
   useEffect(() => {
@@ -271,7 +217,6 @@ function GamePageContent() {
   // Handle back button
   const handleBack = () => {
     stopTimerSound(); // Stop any playing timer sound
-    analytics.trackFeatureUsage('game_navigation', 'back_to_home');
     router.push('/');
   };
   

@@ -2,19 +2,6 @@ import { act, fireEvent, render, screen } from "@/test-utils/intl";
 import GamePage from "@/app/[locale]/game/page";
 import { useGameStore } from "@/lib/store/gameStore";
 
-const mockAnalytics = {
-  trackFeatureUsage: jest.fn(),
-  trackGameStart: jest.fn(),
-  track: jest.fn(),
-  trackGameComplete: jest.fn(),
-  trackDailyChallengeComplete: jest.fn(),
-};
-
-jest.mock("@/lib/utils/analyticsTracker", () => ({
-  useAnalytics: () => mockAnalytics,
-  AnalyticsEventType: {},
-}));
-
 jest.mock("@/lib/utils/soundEffects", () => ({
   playSound: jest.fn(),
   stopTimerSound: jest.fn(),

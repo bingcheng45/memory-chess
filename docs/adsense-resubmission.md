@@ -47,6 +47,22 @@ and preview builds, so earlier weeks include test runs (257 users from `127.0.0.
 |---|---|---|
 | | | |
 
+### Round funnel events
+
+The round-funnel events start the day PR #33 merges. From then on production sends three GA4 events per round:
+
+| Event | Fires when | Params |
+|---|---|---|
+| `round_start` | a round enters the memorize phase | `piece_count`, `memorize_time` |
+| `round_complete` | a round reaches its result | `piece_count`, `memorize_time`, `correct_pieces`, `accuracy` |
+| `score_submit` | the leaderboard accepts a submitted score | `difficulty`, `piece_count` |
+
+The clean production-only series for these events starts 2026-09-29. Read nothing earlier as comparable.
+
+`sound_settings` keeps firing once per finished round beside `round_complete` for four weeks after that merge, so the
+weekly rounds series has no gap. Then check that weekly `round_complete` counts match `sound_settings`, retire
+`sound_settings` in its own PR, and read rounds from `round_complete` only.
+
 ## Decided and not to be redone
 
 - Translated home, /game and /contact-us stay indexed in 24 languages. Noindexing them was proposed and rejected by

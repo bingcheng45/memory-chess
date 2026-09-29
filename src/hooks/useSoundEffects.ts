@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import { GamePhase } from '@/lib/types/game';
 import { playSound, isSoundEnabled } from '@/lib/utils/soundEffects';
+import { trackEvent } from '@/lib/analytics/events';
 
 export function useSoundEffects() {
   const { gameState, gamePhase } = useGameStore();
@@ -29,6 +30,17 @@ export function useSoundEffects() {
           'value': soundEnabled ? 1 : 0
         });
       }
+
+      const { pieceCount, memorizeTime, correctPlacements, accuracy } = useGameStore.getState().gameState;
+      trackEvent({
+        name: 'round_complete',
+        params: {
+          piece_count: pieceCount,
+          memorize_time: memorizeTime,
+          correct_pieces: correctPlacements ?? 0,
+          accuracy: accuracy ?? 0,
+        },
+      });
       
       // Play appropriate sound based on success
       if (gameState.success) {

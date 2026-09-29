@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { loadLeaderboardCutoffs } from "@/lib/leaderboard/cutoffsClient";
+import { trackEvent } from "@/lib/analytics/events";
 import {
   qualifies,
   type LeaderboardCutoffs,
@@ -284,6 +285,13 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         throw new Error(errorData.error || t("dialog.submitFailed"));
       }
 
+      trackEvent({
+        name: "score_submit",
+        params: {
+          difficulty: leaderboardEntry.difficulty,
+          piece_count: leaderboardEntry.piece_count,
+        },
+      });
       setSubmitSuccess(true);
     } catch (err) {
       console.error("Error submitting to leaderboard:", err);

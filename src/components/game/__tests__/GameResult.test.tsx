@@ -196,6 +196,61 @@ describe("GameResult", () => {
     logged.mockRestore();
   });
 
+  describe("score_submit event", () => {
+    function submitScore() {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+      fireEvent.click(
+        screen.getByRole("button", { name: "Submit to Leaderboard" }),
+      );
+      fireEvent.change(screen.getByLabelText("Player Name"), {
+        target: { value: "Poteto" },
+      });
+      fireEvent.click(screen.getByRole("button", { name: "Submit Score" }));
+    }
+
+    beforeEach(() => {
+      window.gtag = jest.fn();
+    });
+
+    afterEach(() => {
+      // @ts-expect-error gtag is optional at runtime, as it is on non-production builds
+      delete window.gtag;
+    });
+
+    it("fires once when the server accepts the score", async () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200 });
+
+      submitScore();
+
+      await waitFor(() => {
+        expect(window.gtag).toHaveBeenCalledWith("event", "score_submit", {
+          difficulty: "medium",
+          piece_count: 6,
+        });
+      });
+      expect(window.gtag).toHaveBeenCalledTimes(1);
+    });
+
+    it("stays silent when the server rejects the score", async () => {
+      const logged = jest.spyOn(console, "error").mockImplementation(() => {});
+      global.fetch = jest.fn().mockResolvedValue({
+        ok: false,
+        status: 500,
+        json: async () => ({ error: "boom" }),
+      });
+
+      submitScore();
+
+      expect(await screen.findByText("Error: boom")).toBeInTheDocument();
+      expect(window.gtag).not.toHaveBeenCalledWith(
+        "event",
+        "score_submit",
+        expect.anything(),
+      );
+      logged.mockRestore();
+    });
+  });
+
   it("offers no submission for a round with no correct piece, which the board would never show", () => {
     mockGameState = { ...baseGameState, accuracy: 0, correctPlacements: 0 };
 

@@ -47,7 +47,8 @@
     "cta": {
       "play": "Memory Chess 플레이",
       "leaderboard": "리더보드 보기",
-      "playFree": "무료로 한 판 해보기"
+      "playFree": "무료로 한 판 해보기",
+      "chooseSettings": "기물 수와 시간 선택"
     },
     "video": {
       "title": "Memory Chess가 어떻게 동작하는지 보기",

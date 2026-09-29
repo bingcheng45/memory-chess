@@ -47,7 +47,8 @@
     "cta": {
       "play": "Zagraj w Memory Chess",
       "leaderboard": "Zobacz ranking",
-      "playFree": "Zagraj darmową rundę"
+      "playFree": "Zagraj darmową rundę",
+      "chooseSettings": "Wybierz figury i czas"
     },
     "video": {
       "title": "Zobacz, jak działa Memory Chess",

@@ -47,7 +47,8 @@
     "cta": {
       "play": "Play Memory Chess",
       "leaderboard": "View Leaderboard",
-      "playFree": "Play a Free Round"
+      "playFree": "Play a Free Round",
+      "chooseSettings": "Choose pieces and time"
     },
     "video": {
       "title": "See How Memory Chess Works",

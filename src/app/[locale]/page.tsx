@@ -13,6 +13,7 @@ import { formatNumber } from "@/lib/utils";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 import { PieceColor, PieceType } from "@/types/chess";
 import { BRAND_ORGANIZATION, BRAND_WEBSITE } from "@/lib/seo/brand";
+import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
 import {
   ArrowRight,
   BookOpen,
@@ -21,6 +22,9 @@ import {
   Sparkles,
   TrendingUp,
 } from "lucide-react";
+
+// /game starts a round on mount from these params.
+const QUICK_START_HREF = `/game?pieceCount=${DEFAULT_PRESET.pieceCount}&memorizeTime=${DEFAULT_PRESET.memorizeTime}`;
 
 // Copy lives in the `home.howItWorks.steps` messages; only the ordinal and the
 // icon are language-neutral and stay here.
@@ -122,15 +126,23 @@ export default function Home() {
           </p>
 
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 flex flex-col gap-4 sm:flex-row sm:gap-6">
-            <Link href="/game">
-              <Button
-                variant="secondary"
-                size="sm"
-                className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
+            <div className="flex flex-col items-center gap-2">
+              <Link href={QUICK_START_HREF}>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="bg-peach-500/10 text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
+                >
+                  {t("cta.play")}
+                </Button>
+              </Link>
+              <Link
+                href="/game"
+                className="text-sm text-text-secondary underline hover:text-peach-500"
               >
-                {t("cta.play")}
-              </Button>
-            </Link>
+                {t("cta.chooseSettings")}
+              </Link>
+            </div>
 
             <Link href="/leaderboard">
               <Button

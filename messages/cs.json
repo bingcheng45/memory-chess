@@ -47,7 +47,8 @@
     "cta": {
       "play": "Hrát Memory Chess",
       "leaderboard": "Zobrazit žebříček",
-      "playFree": "Zahrát si kolo zdarma"
+      "playFree": "Zahrát si kolo zdarma",
+      "chooseSettings": "Zvolte počet figur a čas"
     },
     "video": {
       "title": "Podívejte se, jak Memory Chess funguje",

@@ -47,7 +47,8 @@
     "cta": {
       "play": "開始玩 Memory Chess",
       "leaderboard": "查看排行榜",
-      "playFree": "免費玩一局"
+      "playFree": "免費玩一局",
+      "chooseSettings": "自選棋子數與時間"
     },
     "video": {
       "title": "看看 Memory Chess 怎麼玩",

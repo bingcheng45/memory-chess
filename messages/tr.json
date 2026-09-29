@@ -47,7 +47,8 @@
     "cta": {
       "play": "Memory Chess oyna",
       "leaderboard": "Sıralamayı gör",
-      "playFree": "Ücretsiz bir tur oyna"
+      "playFree": "Ücretsiz bir tur oyna",
+      "chooseSettings": "Taş sayısı ve süreyi seç"
     },
     "video": {
       "title": "Memory Chess nasıl çalışıyor?",

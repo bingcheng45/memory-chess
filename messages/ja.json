@@ -47,7 +47,8 @@
     "cta": {
       "play": "Memory Chess で遊ぶ",
       "leaderboard": "ランキングを見る",
-      "playFree": "無料で 1 ラウンド遊ぶ"
+      "playFree": "無料で 1 ラウンド遊ぶ",
+      "chooseSettings": "駒の数と時間を選ぶ"
     },
     "video": {
       "title": "Memory Chess の遊び方を見る",

@@ -47,7 +47,8 @@
     "cta": {
       "play": "Играть в Memory Chess",
       "leaderboard": "Таблица лидеров",
-      "playFree": "Сыграть бесплатный раунд"
+      "playFree": "Сыграть бесплатный раунд",
+      "chooseSettings": "Выбрать фигуры и время"
     },
     "video": {
       "title": "Посмотрите, как работает Memory Chess",

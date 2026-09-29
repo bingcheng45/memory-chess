@@ -47,7 +47,8 @@
     "cta": {
       "play": "Jouer à Memory Chess",
       "leaderboard": "Voir le classement",
-      "playFree": "Jouer une manche gratuite"
+      "playFree": "Jouer une manche gratuite",
+      "chooseSettings": "Choisir les pièces et la durée"
     },
     "video": {
       "title": "Découvrez comment fonctionne Memory Chess",

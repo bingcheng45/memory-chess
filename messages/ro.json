@@ -47,7 +47,8 @@
     "cta": {
       "play": "Joacă Memory Chess",
       "leaderboard": "Vezi clasamentul",
-      "playFree": "Joacă o rundă gratuită"
+      "playFree": "Joacă o rundă gratuită",
+      "chooseSettings": "Alege piesele și timpul"
     },
     "video": {
       "title": "Vezi cum funcționează Memory Chess",

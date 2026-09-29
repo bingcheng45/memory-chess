@@ -47,7 +47,8 @@
     "cta": {
       "play": "Memory Chess खेलें",
       "leaderboard": "लीडरबोर्ड देखें",
-      "playFree": "एक मुफ़्त राउंड खेलें"
+      "playFree": "एक मुफ़्त राउंड खेलें",
+      "chooseSettings": "मोहरे और समय चुनें"
     },
     "video": {
       "title": "देखें Memory Chess कैसे काम करता है",

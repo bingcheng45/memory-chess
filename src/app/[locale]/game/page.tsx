@@ -29,6 +29,28 @@ import { useTranslations } from "next-intl";
 
 const TIMER_CUE_DELAY_MS = 500;
 
+type UrlRound = { pieceCount: number; memorizeTime: number };
+
+// The query is read off the live location rather than via useSearchParams,
+// which would bail /game out of static rendering and serve an empty page.
+function takeUrlRound(): UrlRound | null {
+  const params = new URLSearchParams(window.location.search);
+  const pieceCountParam = params.get('pieceCount');
+  const memorizeTimeParam = params.get('memorizeTime');
+  if (!pieceCountParam && !memorizeTimeParam) return null;
+
+  // A refresh then opens the configuration screen instead of restarting the round.
+  params.delete('pieceCount');
+  params.delete('memorizeTime');
+  const query = params.toString();
+  window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
+
+  return {
+    pieceCount: pieceCountParam ? parseInt(pieceCountParam) : 8,
+    memorizeTime: memorizeTimeParam ? parseInt(memorizeTimeParam) : 10,
+  };
+}
+
 // Component to handle URL parameters
 function GamePageContent() {
   const t = useTranslations("game");
@@ -89,17 +111,14 @@ function GamePageContent() {
     };
   }, [resetGame]);
   
-  // The query is read off the live location rather than via useSearchParams,
-  // which would bail /game out of static rendering and serve an empty page.
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const pieceCountParam = params.get('pieceCount');
-    const memorizeTimeParam = params.get('memorizeTime');
-    if (!pieceCountParam && !memorizeTimeParam) return;
+  // StrictMode re-runs this effect after the cleanup above has reset the store,
+  // by which time the URL is cleared, so the round is kept for the second run.
+  const urlRoundRef = useRef<UrlRound | null | undefined>(undefined);
 
-    const pieceCount = pieceCountParam ? parseInt(pieceCountParam) : 8;
-    const memorizeTime = memorizeTimeParam ? parseInt(memorizeTimeParam) : 10;
-    startGame(pieceCount, memorizeTime);
+  useEffect(() => {
+    if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound();
+    const round = urlRoundRef.current;
+    if (round) startGame(round.pieceCount, round.memorizeTime);
   }, [startGame]);
   
   useEffect(() => {

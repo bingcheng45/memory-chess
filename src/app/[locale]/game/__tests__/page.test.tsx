@@ -2,6 +2,7 @@ import { render } from "@/test-utils/intl";
 import GamePage from "@/app/[locale]/game/page";
 
 const mockStartGame = jest.fn();
+const mockResetGame = jest.fn();
 let mockGamePhase = "configuration";
 
 jest.mock("@/lib/store/gameStore", () => {
@@ -10,7 +11,7 @@ jest.mock("@/lib/store/gameStore", () => {
     gamePhase: mockGamePhase,
     lastSettings: null,
     startGame: mockStartGame,
-    resetGame: jest.fn(),
+    resetGame: mockResetGame,
     startMemorizationPhase: jest.fn(),
     endMemorizationPhase: jest.fn(),
     startSolutionPhase: jest.fn(),
@@ -48,6 +49,7 @@ jest.mock("@/components/ui/PageHeader", () => {
 beforeEach(() => {
   jest.spyOn(console, "log").mockImplementation(() => {});
   mockStartGame.mockClear();
+  mockResetGame.mockClear();
 });
 
 afterEach(() => {
@@ -73,12 +75,51 @@ describe("GamePage URL-driven start", () => {
     expect(mockStartGame).toHaveBeenCalledWith(6, 10);
   });
 
+  it("clears the round params from the address after the URL start", () => {
+    window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10");
+
+    render(<GamePage />);
+
+    expect(mockStartGame).toHaveBeenCalledWith(6, 10);
+    expect(window.location.pathname + window.location.search).toBe("/game");
+  });
+
+  it("keeps other params when it clears the round params", () => {
+    window.history.pushState({}, "", "/game?pieceCount=6&challenge=2026-09-16");
+
+    render(<GamePage />);
+
+    expect(window.location.search).toBe("?challenge=2026-09-16");
+  });
+
   it("waits on the configuration form without round params", () => {
     window.history.pushState({}, "", "/game?difficulty=hard");
 
     render(<GamePage />);
 
     expect(mockStartGame).not.toHaveBeenCalled();
+  });
+
+  it("leaves the address alone without round params", () => {
+    window.history.pushState({}, "", "/game?difficulty=hard");
+
+    render(<GamePage />);
+
+    expect(window.location.search).toBe("?difficulty=hard");
+  });
+});
+
+describe("GamePage URL-driven start under StrictMode", () => {
+  it("starts the round after the remount's reset and clears the address", () => {
+    window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10");
+
+    render(<GamePage />, { reactStrictMode: true });
+
+    const lastStart = Math.max(...mockStartGame.mock.invocationCallOrder);
+    const lastReset = Math.max(0, ...mockResetGame.mock.invocationCallOrder);
+    expect(mockStartGame).toHaveBeenLastCalledWith(6, 10);
+    expect(lastStart).toBeGreaterThan(lastReset);
+    expect(window.location.pathname + window.location.search).toBe("/game");
   });
 });
 

@@ -47,7 +47,8 @@
     "cta": {
       "play": "Mainkan Memory Chess",
       "leaderboard": "Lihat papan peringkat",
-      "playFree": "Mainkan satu ronde gratis"
+      "playFree": "Mainkan satu ronde gratis",
+      "chooseSettings": "Pilih bidak dan waktu"
     },
     "video": {
       "title": "Lihat cara kerja Memory Chess",

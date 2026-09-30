@@ -31,8 +31,10 @@ every box below is ticked. The dates and thresholds are our heuristics; Google p
 - [ ] **Interest.** GA4 weekly active users and returning users above the baseline below for 4 consecutive weeks
       with an upward trend, read against the launch dates so a launch spike is not mistaken for sustained interest.
       Leaderboard names are a secondary signal only.
-- [ ] **Leaderboard hygiene.** The owner has decided whether the zapan* rows (23 since 2026-08-20) are test
-      entries. Test entries are removed; a real player's rows stay.
+- [x] **Leaderboard hygiene.** Decided 2026-09-30: the zapan* rows (23 since 2026-08-20) are a real player and stay.
+      22 of 23 submissions line up within 3 minutes with a GA4 finished round from one desktop Chrome visitor in
+      Cambridge, United States, at US afternoon hours, with steadily improving scores. Verification runs never write to
+      the production leaderboard.
 
 ## Baseline and log
 

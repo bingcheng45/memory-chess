@@ -1,0 +1,57 @@
+export const ARTICLE_LIST_COPY = {
+  meta: {
+    title: "Articles on chess players and their memory",
+    description:
+      "A new profile each week of a chess player or memory researcher, with the documented feat, the research that explains it, and a drill to try.",
+  },
+  heading: "Articles",
+  sub: "One chess player or memory researcher, every week.",
+  about: {
+    heading: "How these articles are made",
+    paragraphs: [
+      "Each article follows one chess player or researcher and one question about their memory. Some subjects are world champions who played many games at once without seeing a board. Others are psychologists who tested players in a laboratory and measured what they could recall after a few seconds.",
+      "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
+      "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story.",
+    ],
+    corrections: {
+      text: "A new article is published each week.",
+      linkLabel: "Send a correction",
+      href: "/contact-us",
+    },
+  },
+} as const;
+
+const DATE_FORMAT = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+export function formatArticleDate(iso: string): string {
+  return DATE_FORMAT.format(new Date(iso));
+}
+
+export const ARTICLE_PAGER_COPY = {
+  label: "Pages",
+  previous: "Previous page",
+  next: "Next page",
+  page: (page: number) => `Page ${page}`,
+  showing: (first: number, last: number, total: number) => `Showing ${first} to ${last} of ${total}`,
+} as const;
+
+export const ARTICLE_COPY = {
+  backToList: "All articles",
+  factFile: "Fact file",
+  byline: "By",
+  authorshipNote:
+    "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
+  photoCredit: "Photo",
+  photoSource: "Wikimedia Commons",
+  drillHeading: "Your turn",
+  drillAction: (pieceCount: number, memorizeTime: number) =>
+    `Play ${pieceCount} pieces, ${memorizeTime} seconds`,
+  sources: "Sources",
+  nextArticle: "Next article",
+  breadcrumbHome: "Home",
+} as const;

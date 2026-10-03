@@ -2,20 +2,20 @@ export const ARTICLE_LIST_COPY = {
   meta: {
     title: "Articles on chess players and their memory",
     description:
-      "A new profile each week of a chess player or memory researcher, with the documented feat, the research that explains it, and a drill to try.",
+      "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try.",
   },
   heading: "Articles",
-  sub: "One chess player or memory researcher, every week.",
+  sub: "Chess players and memory researchers, one profile at a time.",
   about: {
     heading: "How these articles are made",
     paragraphs: [
-      "Each article follows one chess player or researcher and one question about their memory. Some subjects are world champions who played many games at once without seeing a board. Others are psychologists who tested players in a laboratory and measured what they could recall after a few seconds.",
+      "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
       "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
       "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story.",
     ],
     corrections: {
-      text: "A new article is published each week.",
-      linkLabel: "Send a correction",
+      text: "If something here is wrong,",
+      linkLabel: "send a correction",
       href: "/contact-us",
     },
   },

@@ -37,6 +37,7 @@ function About() {
         <Link href={about.corrections.href} className={ARTICLE_LINK}>
           {about.corrections.linkLabel}
         </Link>
+        .
       </p>
     </section>
   );

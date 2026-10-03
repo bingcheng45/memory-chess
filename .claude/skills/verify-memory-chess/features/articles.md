@@ -1,6 +1,6 @@
 # Articles list and articles
 
-`/articles` lists weekly profiles of chess players and memory researchers, newest first, ten to a page. Each `/articles/<slug>` page shows one credited portrait, a fact file, the article set in a serif face, a drill link that starts a round on `/game`, the sources, and a link to the next article. The section is English-only and statically generated for the default locale, the way Learn is. The entries are data in `src/lib/articles/entries/`, and the registry in `src/lib/articles/index.ts` orders them.
+`/articles` lists profiles of chess players and memory researchers, newest first, ten to a page. Each `/articles/<slug>` page shows one credited portrait, a fact file, the article set in a serif face, a drill link that starts a round on `/game`, the sources, and a link to the next article. The section is English-only and statically generated for the default locale, the way Learn is. The entries are data in `src/lib/articles/entries/`, and the registry in `src/lib/articles/index.ts` orders them.
 
 ## Sub-features
 

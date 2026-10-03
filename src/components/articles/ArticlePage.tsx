@@ -26,7 +26,8 @@ type ArticlePageProps = {
 const SOURCES_HEADING_ID = "article-sources-heading";
 const DRILL_WHY_ID = "article-drill-why";
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
-// The tallest rail, Carlsen's, is 807px and sticks 20px from the top. 847px leaves 20px under it.
+// The gate is the tallest rail plus 40px: 20px above it, where it sticks, and 20px under it.
+// Measure the rails again with the recipe in .claude/skills/verify-memory-chess/features/articles.md.
 const STICKY_RAIL =
   "min-[821px]:[@media(min-height:847px)]:sticky min-[821px]:[@media(min-height:847px)]:top-5";
 

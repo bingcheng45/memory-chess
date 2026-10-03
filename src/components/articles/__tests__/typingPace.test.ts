@@ -1,4 +1,11 @@
-import { BLOCK_START, advance, isFinished, placementOf, type BlockProgress } from "@/components/articles/typingPace";
+import {
+  BLOCK_START,
+  advance,
+  isFinished,
+  placementOf,
+  wholeCharacterCut,
+  type BlockProgress,
+} from "@/components/articles/typingPace";
 
 const FRAME_MS = 20;
 const CHARS_PER_FRAME = 3;
@@ -104,5 +111,25 @@ describe("placementOf", () => {
   it("is above only when the whole block has left through the top", () => {
     expect(placementOf({ top: -300, bottom: -1 }, VIEWPORT)).toBe("above");
     expect(placementOf({ top: -300, bottom: 10 }, VIEWPORT)).toBe("inside");
+  });
+});
+
+describe("wholeCharacterCut", () => {
+  const CLEF_CODE_POINT = 0x1d11e;
+  const clef = String.fromCodePoint(CLEF_CODE_POINT);
+  const text = `ab${clef}cd`;
+
+  it("keeps a cut that falls between two characters", () => {
+    expect(wholeCharacterCut(text, 2)).toBe(2);
+    expect(wholeCharacterCut(text, 4)).toBe(4);
+  });
+
+  it("moves a cut that falls inside a two-unit character to just after it", () => {
+    expect(wholeCharacterCut(text, 3)).toBe(4);
+    expect(text.slice(0, wholeCharacterCut(text, 3))).toBe(`ab${clef}`);
+  });
+
+  it("keeps a cut at the end of the text", () => {
+    expect(wholeCharacterCut(text, text.length)).toBe(text.length);
   });
 });

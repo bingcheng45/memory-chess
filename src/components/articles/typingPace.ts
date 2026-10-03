@@ -4,6 +4,8 @@ const MAX_FRAME_MS = 64;
 const VIEWPORT_MARGIN_PX = 48;
 
 const MS_PER_SECOND = 1000;
+const FIRST_LOW_SURROGATE = 0xdc00;
+const LAST_LOW_SURROGATE = 0xdfff;
 
 export type BlockKind = keyof typeof PAUSE_AFTER_MS;
 export type BlockPlacement = "above" | "inside" | "below";
@@ -34,6 +36,12 @@ export function advance(
 
   if (chars >= block.length) return { chars: block.length, carry: 0, restMs: PAUSE_AFTER_MS[block.kind] };
   return { chars, carry: typed - whole, restMs: 0 };
+}
+
+export function wholeCharacterCut(text: string, index: number): number {
+  const unit = text.charCodeAt(index);
+  const isInsidePair = unit >= FIRST_LOW_SURROGATE && unit <= LAST_LOW_SURROGATE;
+  return isInsidePair ? index + 1 : index;
 }
 
 export function isFinished(progress: BlockProgress, length: number): boolean {

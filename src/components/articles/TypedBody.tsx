@@ -4,7 +4,14 @@ import { useCallback, useEffect, useMemo, useReducer, useRef, type Dispatch, typ
 import { clearArrival, peekArrival } from "@/components/articles/articleArrival";
 import { prefersReducedMotion } from "@/components/articles/articleFlight";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
-import { BLOCK_START, advance, isFinished, placementOf, type BlockKind } from "@/components/articles/typingPace";
+import {
+  BLOCK_START,
+  advance,
+  isFinished,
+  placementOf,
+  wholeCharacterCut,
+  type BlockKind,
+} from "@/components/articles/typingPace";
 import { readingFont } from "@/lib/articles/readingFont";
 import type { ArticleSection } from "@/lib/articles/schema";
 import "./typedBody.css";
@@ -81,8 +88,9 @@ function typeOut(block: Block, shown: HTMLElement, rest: HTMLElement, emit: Disp
     const next = advance(progress, pace, elapsedMs, placement);
     if (next.chars !== progress.chars) {
       if (progress.chars === 0) emit({ type: "firstCharTyped" });
-      shown.textContent = block.text.slice(0, next.chars);
-      rest.textContent = block.text.slice(next.chars);
+      const cut = wholeCharacterCut(block.text, next.chars);
+      shown.textContent = block.text.slice(0, cut);
+      rest.textContent = block.text.slice(cut);
     }
     previousFrame = now;
     progress = next;

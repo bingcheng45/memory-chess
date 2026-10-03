@@ -17,6 +17,7 @@ const FULL_TEXT = BLOCKS.join("");
 const FRAME_MS = 16;
 const LONGER_THAN_THE_WHOLE_BODY_MS = 4000;
 const BLOCK_BOUNDARY_MS = 600;
+const CLEF_CODE_POINT = 0x1d11e;
 
 const body = () => document.querySelector("[data-article-body]") as HTMLElement;
 const phase = () => body().getAttribute("data-article-typing");
@@ -327,6 +328,22 @@ describe("TypedBody after a click on a card", () => {
 
     expect(lengths).toEqual([...lengths].sort((a, b) => a - b));
     expect(lengths.at(-1)).toBeGreaterThanOrEqual(9);
+  });
+
+  it("never shows half of a character that takes two UTF-16 units", async () => {
+    const clef = String.fromCodePoint(CLEF_CODE_POINT);
+    const sections = [{ heading: clef.repeat(12), paragraphs: [`Notes ${clef.repeat(20)} end.`] }];
+    render(<TypedBody slug={SLUG} sections={sections} />);
+    const brokenSpans: string[] = [];
+
+    await typeFor(LONGER_THAN_THE_WHOLE_BODY_MS, () => {
+      for (const span of body().querySelectorAll("span")) {
+        if (!(span.textContent ?? "").isWellFormed()) brokenSpans.push(span.className || "shown");
+      }
+    });
+
+    expect(brokenSpans).toEqual([]);
+    expect(phase()).toBe("done");
   });
 
   it("finishes blocks the reader has scrolled past without typing them out", async () => {

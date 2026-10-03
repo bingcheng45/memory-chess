@@ -22,6 +22,23 @@ describe("ArticleFlightGate", () => {
     expect(peekArrival(SLUG)).toBeNull();
   });
 
+  it("drops the arrival before a listener registered earlier runs, and leaves the event for it untouched", () => {
+    const seenByEarlierListener: unknown[] = [];
+    const earlierListener = (event: Event) => {
+      seenByEarlierListener.push({ arrival: peekArrival(SLUG), wasPrevented: event.defaultPrevented });
+    };
+    window.addEventListener("popstate", earlierListener);
+    render(<ArticleFlightGate />);
+    announceArrival(SLUG, Promise.resolve());
+
+    act(() => {
+      window.dispatchEvent(new PopStateEvent("popstate", { cancelable: true }));
+    });
+    window.removeEventListener("popstate", earlierListener);
+
+    expect(seenByEarlierListener).toEqual([{ arrival: null, wasPrevented: false }]);
+  });
+
   it("drops an arrival that never opened when the reader leaves the section", () => {
     const { unmount } = render(<ArticleFlightGate />);
     announceArrival(SLUG, Promise.resolve());

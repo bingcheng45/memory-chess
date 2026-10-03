@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import type { Database, Postgres } from "./database";
+import { startPostgres, type Database, type Postgres } from "./database";
 
 const readSql = (file: string) => readFileSync(path.join(__dirname, "..", file), "utf8");
 
@@ -20,14 +20,37 @@ const SUPABASE_SHIM = `
   ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO anon, authenticated;
 `;
 
-export async function supabaseLikeDatabase(postgres: Postgres): Promise<Database> {
-  const db = await postgres.open();
-  await db.rows(SUPABASE_SHIM);
-  return db;
-}
+type ArticleStatsDatabases = {
+  readonly supabaseLike: () => Promise<Database>;
+  readonly migrated: () => Promise<Database>;
+};
 
-export async function migratedDatabase(postgres: Postgres): Promise<Database> {
-  const db = await supabaseLikeDatabase(postgres);
-  await db.rows(MIGRATION);
-  return db;
+export function articleStatsDatabases(): ArticleStatsDatabases {
+  let postgres: Postgres;
+
+  beforeAll(async () => {
+    postgres = await startPostgres();
+  }, 60_000);
+
+  afterEach(async () => {
+    await postgres.closeAll();
+  });
+
+  afterAll(async () => {
+    await postgres.stop();
+  });
+
+  const supabaseLike = async () => {
+    const db = await postgres.open();
+    await db.rows(SUPABASE_SHIM);
+    return db;
+  };
+
+  const migrated = async () => {
+    const db = await supabaseLike();
+    await db.rows(MIGRATION);
+    return db;
+  };
+
+  return { supabaseLike, migrated };
 }

@@ -60,6 +60,10 @@ function parseEvent(body: string): ArticleEvent | null {
   }
 }
 
+function isViewFromLikelyCrawler(event: ArticleEvent, userAgent: string | null): boolean {
+  return event === "view" && isCrawler(userAgent);
+}
+
 function respond(result: RecordArticleEventResult): NextResponse {
   switch (result.status) {
     case "recorded": {
@@ -89,8 +93,7 @@ export async function POST(request: Request, { params }: RouteContext) {
     const event = parseEvent(body);
     if (event === null) return errorResponse("invalidBody");
 
-    // Views only: the crawler pattern also matches real browsers (DuckDuckGo, in-app webviews, any agent holding "bot"), and their likes must count.
-    if (event === "view" && isCrawler(request.headers.get("user-agent"))) {
+    if (isViewFromLikelyCrawler(event, request.headers.get("user-agent"))) {
       return new NextResponse(null, { status: 204 });
     }
 

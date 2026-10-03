@@ -19,7 +19,6 @@ export default function ViewBeacon({ slug }: { slug: string }) {
       void sendArticleEvent(slug, "view");
     };
 
-    // A browser can load the page before anyone asks for it. Nobody has seen it until that prerender ends.
     if ((document as PrerenderAwareDocument).prerendering !== true) {
       recordView();
       return;

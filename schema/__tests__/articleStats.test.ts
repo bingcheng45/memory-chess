@@ -1,7 +1,7 @@
 /** @jest-environment node */
 
-import { startPostgres, type Database, type Postgres, type SqlResult } from "./database";
-import { MIGRATION, ROLLBACK, SNAPSHOT, migratedDatabase, supabaseLikeDatabase } from "./articleStatsDatabase";
+import type { Database, SqlResult } from "./database";
+import { MIGRATION, ROLLBACK, SNAPSHOT, articleStatsDatabases } from "./articleStatsDatabase";
 
 const PERMISSION_DENIED = "42501";
 const INVALID_PARAMETER = "22023";
@@ -35,26 +35,11 @@ const FINGERPRINT = `
   ) AS fingerprint
 `;
 
-let postgres: Postgres;
-
-beforeAll(async () => {
-  postgres = await startPostgres();
-}, 60_000);
-
-afterEach(async () => {
-  await postgres.closeAll();
-});
-
-afterAll(async () => {
-  await postgres.stop();
-});
+const { supabaseLike, migrated } = articleStatsDatabases();
 
 function literal(value: string | null): string {
   return value === null ? "NULL" : `'${value.replaceAll("'", "''")}'`;
 }
-
-const supabaseLike = () => supabaseLikeDatabase(postgres);
-const migrated = () => migratedDatabase(postgres);
 
 function record(db: Database, slug: string | null, event: string | null, as = "anon"): Promise<SqlResult> {
   return db.attempt(`SELECT * FROM public.record_article_event(${literal(slug)}, ${literal(event)})`, { as });

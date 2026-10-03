@@ -109,20 +109,27 @@ function recordArticleEvent(body) {
   return { status: 200, body: [{ views: after.views, likes: after.likes }] };
 }
 
-function unsupportedArticleStatsFilters(url) {
+const OPERATOR_THE_FIXTURE_CANNOT_RUN = Symbol("operator the fixture cannot run");
+
+function slugFilter(value) {
+  if (value === null) return () => true;
+  if (value.startsWith("in.(")) {
+    const wanted = inList(value);
+    return (row) => wanted.includes(row.slug);
+  }
+  if (value.startsWith("eq.")) return (row) => row.slug === value.slice("eq.".length);
+  return OPERATOR_THE_FIXTURE_CANNOT_RUN;
+}
+
+function unsupportedArticleStatsFilters(url, keeps) {
   return [...url.searchParams].filter(
-    ([key, value]) => key !== "select" && !(key === "slug" && /^(eq\.|in\.\()/.test(value)),
+    ([key]) => key !== "select" && (key !== "slug" || keeps === OPERATOR_THE_FIXTURE_CANNOT_RUN),
   );
 }
 
-function selectArticleStats(url) {
+function selectArticleStats(url, keeps) {
   const columns = (url.searchParams.get("select") ?? "*").split(",");
-  const wanted = url.searchParams.get("slug");
-  const kept = articleStats.filter((row) => {
-    if (wanted === null) return true;
-    if (wanted.startsWith("in.(")) return inList(wanted).includes(row.slug);
-    return row.slug === wanted.slice("eq.".length);
-  });
+  const kept = articleStats.filter(keeps);
   const picked = columns.includes("*")
     ? kept
     : kept.map((row) => Object.fromEntries(columns.map((column) => [column, row[column]])));
@@ -145,13 +152,14 @@ createServer(async (req, res) => {
     return;
   }
   if (url.pathname.endsWith("/rest/v1/article_stats")) {
-    const unsupported = unsupportedArticleStatsFilters(url);
+    const keeps = slugFilter(url.searchParams.get("slug"));
+    const unsupported = unsupportedArticleStatsFilters(url, keeps);
     if (unsupported.length) {
       console.log(`article_stats select ${url.searchParams.toString()} -> 501`);
       sendCannotAnswer(res, unsupported);
       return;
     }
-    const page = selectArticleStats(url);
+    const page = selectArticleStats(url, keeps);
     sendJson(res, 200, req.method === "HEAD" ? undefined : page, {
       "content-range": page.length ? `0-${page.length - 1}/${page.length}` : `*/0`,
     });

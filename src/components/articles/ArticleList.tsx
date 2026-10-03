@@ -1,148 +1,83 @@
 "use client";
 
-import { Suspense, useEffect, useSyncExternalStore } from "react";
+import { Suspense, useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
+import { flushSync } from "react-dom";
 import { useSearchParams } from "next/navigation";
 import ArticleCard from "@/components/articles/ArticleCard";
-import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
-import { ARTICLE_PAGER_COPY } from "@/lib/articles/copy";
-import { paginate, type Page } from "@/lib/articles/paging";
+import ArticlePager from "@/components/articles/ArticlePager";
+import SortControl from "@/components/articles/SortControl";
+import { measureCards, slideCards } from "@/components/articles/cardReorder";
+import {
+  BARE_SEARCH,
+  notifyAddressListeners,
+  pageOf,
+  readSearch,
+  sortOf,
+  subscribeToAddress,
+  writeSort,
+} from "@/components/articles/listAddress";
+import { paginate } from "@/lib/articles/paging";
 import type { ArticleSummary } from "@/lib/articles/schema";
+import { hasCountsToSortBy, sortArticles, type SortKey } from "@/lib/articles/sorting";
+import { countsFor, type ArticleStats } from "@/lib/articles/stats";
 
 type ArticleListProps = {
   articles: readonly ArticleSummary[];
+  stats: ArticleStats;
+  heading: ReactNode;
 };
-
-const PAGE_PARAM = "page";
-const FIRST_PAGE = 1;
-
-const BUTTON_CLASS =
-  "h-11 min-w-11 rounded-xl border border-white/10 bg-bg-card px-3 text-text-secondary " +
-  "hover:border-peach-500/35 hover:text-peach-300 aria-disabled:cursor-default aria-disabled:opacity-40 " +
-  "aria-disabled:hover:border-white/10 aria-disabled:hover:text-text-secondary " +
-  ARTICLE_FOCUS_RING;
-const CURRENT_CLASS = "border-transparent bg-peach-500 font-semibold text-bg-dark";
-
-const pageListeners = new Set<() => void>();
-
-function notifyPageListeners(): void {
-  pageListeners.forEach((notify) => notify());
-}
-
-function subscribeToPage(onChange: () => void): () => void {
-  pageListeners.add(onChange);
-  window.addEventListener("popstate", onChange);
-  return () => {
-    pageListeners.delete(onChange);
-    window.removeEventListener("popstate", onChange);
-  };
-}
-
-function readPageFromAddress(): number {
-  const requested = new URLSearchParams(window.location.search).get(PAGE_PARAM);
-  return requested === null ? FIRST_PAGE : Number(requested);
-}
-
-function writePageToAddress(page: number): void {
-  const url = new URL(window.location.href);
-  if (page === FIRST_PAGE) {
-    url.searchParams.delete(PAGE_PARAM);
-  } else {
-    url.searchParams.set(PAGE_PARAM, String(page));
-  }
-  window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
-  notifyPageListeners();
-}
 
 // A link to the bare list URL changes the address without remounting the list
 // or firing popstate. useSearchParams is the only signal Next gives for that,
 // and it sits behind its own Suspense boundary so the cards stay in the server HTML.
 function AddressWatcher() {
   const searchParams = useSearchParams();
-  useEffect(notifyPageListeners, [searchParams]);
+  useEffect(notifyAddressListeners, [searchParams]);
   return null;
 }
 
-type StepButtonProps = {
-  label: string;
-  symbol: string;
-  target: number;
-  isAtEnd: boolean;
-};
+export default function ArticleList({ articles, stats, heading }: ArticleListProps) {
+  const search = useSyncExternalStore(subscribeToAddress, readSearch, () => BARE_SEARCH);
+  const sort = sortOf(search);
+  const current = paginate(sortArticles(articles, stats, sort), pageOf(search));
 
-function StepButton({ label, symbol, target, isAtEnd }: StepButtonProps) {
-  return (
-    <button
-      type="button"
-      aria-label={label}
-      aria-disabled={isAtEnd}
-      onClick={() => {
-        if (!isAtEnd) writePageToAddress(target);
-      }}
-      className={BUTTON_CLASS}
-    >
-      {symbol}
-    </button>
-  );
-}
+  const list = useRef<HTMLOListElement>(null);
+  const slides = useRef<readonly Animation[]>([]);
 
-function Pager({ current, total }: { current: Page<ArticleSummary>; total: number }) {
-  const pager = ARTICLE_PAGER_COPY;
-  const pages = Array.from({ length: current.pageCount }, (_, index) => index + 1);
+  function finishSlides() {
+    slides.current.forEach((slide) => slide.finish());
+    slides.current = [];
+  }
 
-  return (
-    <nav
-      aria-label={pager.label}
-      className="mt-[34px] flex flex-wrap items-center justify-between gap-3 text-sm text-text-muted [font-variant-numeric:tabular-nums]"
-    >
-      <p aria-live="polite">{pager.showing(current.firstPosition, current.lastPosition, total)}</p>
-      <div className="flex flex-wrap items-center gap-2">
-        <StepButton
-          label={pager.previous}
-          symbol="←"
-          target={current.page - 1}
-          isAtEnd={current.page === FIRST_PAGE}
-        />
-        {pages.map((page) => {
-          const isCurrent = page === current.page;
-          return (
-            <button
-              key={page}
-              type="button"
-              aria-label={pager.page(page)}
-              aria-current={isCurrent ? "page" : undefined}
-              onClick={() => writePageToAddress(page)}
-              className={isCurrent ? `${BUTTON_CLASS} ${CURRENT_CLASS}` : BUTTON_CLASS}
-            >
-              {page}
-            </button>
-          );
-        })}
-        <StepButton
-          label={pager.next}
-          symbol="→"
-          target={current.page + 1}
-          isAtEnd={current.page === current.pageCount}
-        />
-      </div>
-    </nav>
-  );
-}
+  function chooseSort(chosen: SortKey) {
+    if (chosen === sort || list.current === null) return;
 
-export default function ArticleList({ articles }: ArticleListProps) {
-  const requestedPage = useSyncExternalStore(subscribeToPage, readPageFromAddress, () => FIRST_PAGE);
-  const current = paginate(articles, requestedPage);
+    finishSlides();
+    const before = measureCards(list.current);
+    flushSync(() => writeSort(chosen));
+    slides.current = slideCards(list.current, before);
+  }
 
   return (
     <>
       <Suspense fallback={null}>
         <AddressWatcher />
       </Suspense>
-      <ol className="grid gap-3.5">
+      <div className="mb-[26px] mt-[22px] flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+        {heading}
+        {hasCountsToSortBy(articles, stats) ? <SortControl current={sort} onChoose={chooseSort} /> : null}
+      </div>
+      <ol ref={list} onClickCapture={finishSlides} className="grid gap-3.5">
         {current.items.map((article, index) => (
-          <ArticleCard key={article.slug} article={article} priority={index === 0} />
+          <ArticleCard
+            key={article.slug}
+            article={article}
+            counts={countsFor(stats, article.slug)}
+            priority={index === 0}
+          />
         ))}
       </ol>
-      {current.pageCount > 1 ? <Pager current={current} total={articles.length} /> : null}
+      {current.pageCount > 1 ? <ArticlePager current={current} total={articles.length} /> : null}
     </>
   );
 }

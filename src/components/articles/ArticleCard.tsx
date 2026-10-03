@@ -1,11 +1,14 @@
+import { LikeCount, ViewCount } from "@/components/articles/ArticleCounts";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import { formatArticleDate } from "@/lib/articles/copy";
 import type { ArticleSummary } from "@/lib/articles/schema";
+import { hasCounts, type ArticleCounts } from "@/lib/articles/stats";
 
 type ArticleCardProps = {
   article: ArticleSummary;
+  counts?: ArticleCounts;
   priority: boolean;
 };
 
@@ -15,8 +18,10 @@ const CARD_CLASS =
   `motion-safe:hover:-translate-y-0.5 ${ARTICLE_FOCUS_RING} ` +
   "min-[561px]:grid-cols-[148px_minmax(0,1fr)] min-[561px]:gap-[26px] min-[561px]:rounded-[22px] min-[561px]:p-[18px]";
 
-export default function ArticleCard({ article, priority }: ArticleCardProps) {
+export default function ArticleCard({ article, counts, priority }: ArticleCardProps) {
   const { slug, photo, person, publishedAt, title, description } = article;
+  const descriptionId = `${slug}-description`;
+  const countsId = `${slug}-counts`;
 
   return (
     <li>
@@ -24,7 +29,7 @@ export default function ArticleCard({ article, priority }: ArticleCardProps) {
         article={slug}
         data-article-card={slug}
         aria-labelledby={`${slug}-title`}
-        aria-describedby={`${slug}-description`}
+        aria-describedby={hasCounts(counts) ? `${descriptionId} ${countsId}` : descriptionId}
         className={CARD_CLASS}
       >
         <div>
@@ -55,11 +60,21 @@ export default function ArticleCard({ article, priority }: ArticleCardProps) {
             {title}
           </h2>
           <p
-            id={`${slug}-description`}
+            id={descriptionId}
             className="text-[14.5px] leading-normal text-text-muted min-[561px]:text-[15.5px]"
           >
             {description}
           </p>
+          {hasCounts(counts) ? (
+            <p
+              id={countsId}
+              data-article-counts
+              className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-1.5 text-[13px] text-text-muted [font-variant-numeric:tabular-nums]"
+            >
+              <ViewCount count={counts.views} />
+              <LikeCount count={counts.likes} />
+            </p>
+          ) : null}
         </div>
       </ArticleLink>
     </li>

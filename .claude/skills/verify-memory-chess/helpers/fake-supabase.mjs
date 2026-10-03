@@ -4,12 +4,15 @@ import { readFileSync } from "node:fs";
 
 const [fixturePath, portArg = "54321"] = process.argv.slice(2);
 if (!fixturePath) {
-  console.error("usage: fake-supabase.mjs <rows.json> [port]");
+  console.error("usage: fake-supabase.mjs <fixture.json> [port]");
+  console.error("fixture: an array of leaderboard_entries rows, or { leaderboard_entries: [...], article_stats: [{ slug, views, likes }] }");
   console.error("env: FAKE_SUPABASE_MISSING_COUNTRY=1 rejects inserts carrying country_code with PGRST204");
   process.exit(1);
 }
 
-const rows = JSON.parse(readFileSync(fixturePath, "utf8"));
+const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
+const rows = Array.isArray(fixture) ? fixture : (fixture.leaderboard_entries ?? []);
+let articleStats = Array.isArray(fixture) ? [] : (fixture.article_stats ?? []);
 
 // Opt-in: stand in for a database whose country_code migration has not been
 // applied, so a driver can see what a player gets from the real server.
@@ -22,6 +25,17 @@ const MISSING_COUNTRY_COLUMN = {
   message: "Could not find the 'country_code' column of 'leaderboard_entries' in the schema cache",
 };
 
+const RECORD_EVENT_PATH = "/rest/v1/rpc/record_article_event";
+const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const MAX_SLUG_LENGTH = 80;
+const INVALID_PARAMETER = "22023";
+
+const EVENT_STEPS = {
+  view: { views: 1, likes: 0 },
+  like: { views: 0, likes: 1 },
+  unlike: { views: 0, likes: -1 },
+};
+
 async function readJson(req) {
   const chunks = [];
   for await (const chunk of req) chunks.push(chunk);
@@ -31,6 +45,18 @@ async function readJson(req) {
   } catch {
     return null;
   }
+}
+
+function sendJson(res, status, body, headers = {}) {
+  res.writeHead(status, { "content-type": "application/json", ...headers });
+  res.end(body === undefined ? undefined : JSON.stringify(body));
+}
+
+function sendCannotAnswer(res, unsupported) {
+  sendJson(res, 501, {
+    code: "PGRST000",
+    message: `fixture cannot answer ${unsupported.map(([key, value]) => `${key}=${value}`).join("&")}`,
+  });
 }
 
 function carriesCountryCode(body) {
@@ -57,8 +83,88 @@ function compare(order) {
   };
 }
 
+// postgrest-js writes .in("slug", [...]) as in.(a,b) and quotes a value only when it holds a reserved character.
+function inList(value) {
+  const inner = value.slice("in.(".length, -1);
+  return [...inner.matchAll(/"((?:[^"\\]|\\.)*)"|([^,]+)/g)].map((match) => match[1] ?? match[2]);
+}
+
+function invalidParameter(message) {
+  return { status: 400, body: { code: INVALID_PARAMETER, details: null, hint: null, message } };
+}
+
+function recordArticleEvent(body) {
+  const slug = body?.p_slug;
+  const step = typeof body?.p_event === "string" && Object.hasOwn(EVENT_STEPS, body.p_event) ? EVENT_STEPS[body.p_event] : null;
+  if (typeof slug !== "string" || slug.length > MAX_SLUG_LENGTH || !SLUG_PATTERN.test(slug)) {
+    return invalidParameter("invalid article slug");
+  }
+  if (step === null) {
+    return invalidParameter("invalid article event");
+  }
+  const before = articleStats.find((row) => row.slug === slug) ?? { slug, views: 0, likes: 0 };
+  const after = { slug, views: before.views + step.views, likes: Math.max(0, before.likes + step.likes) };
+  articleStats = [...articleStats.filter((row) => row.slug !== slug), after];
+  console.log(`rpc record_article_event slug=${slug} event=${body.p_event} -> views=${after.views} likes=${after.likes}`);
+  return { status: 200, body: [{ views: after.views, likes: after.likes }] };
+}
+
+const OPERATOR_THE_FIXTURE_CANNOT_RUN = Symbol("operator the fixture cannot run");
+
+function slugFilter(value) {
+  if (value === null) return () => true;
+  if (value.startsWith("in.(")) {
+    const wanted = inList(value);
+    return (row) => wanted.includes(row.slug);
+  }
+  if (value.startsWith("eq.")) return (row) => row.slug === value.slice("eq.".length);
+  return OPERATOR_THE_FIXTURE_CANNOT_RUN;
+}
+
+function unsupportedArticleStatsFilters(url, keeps) {
+  return [...url.searchParams].filter(
+    ([key]) => key !== "select" && (key !== "slug" || keeps === OPERATOR_THE_FIXTURE_CANNOT_RUN),
+  );
+}
+
+function selectArticleStats(url, keeps) {
+  const columns = (url.searchParams.get("select") ?? "*").split(",");
+  const kept = articleStats.filter(keeps);
+  const picked = columns.includes("*")
+    ? kept
+    : kept.map((row) => Object.fromEntries(columns.map((column) => [column, row[column]])));
+  console.log(`article_stats select ${url.searchParams.toString()} -> ${picked.length} rows`);
+  return picked;
+}
+
 createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost");
+  if (url.pathname.endsWith(RECORD_EVENT_PATH)) {
+    const answer = req.method === "POST"
+      ? recordArticleEvent(await readJson(req))
+      : { status: 405, body: { code: "PGRST000", message: "record_article_event takes POST" } };
+    if (answer.status !== 200) console.log(`rpc record_article_event rejected ${answer.body.code}`);
+    sendJson(res, answer.status, answer.body);
+    return;
+  }
+  if (url.pathname.includes("/rest/v1/rpc/")) {
+    sendJson(res, 404, { code: "PGRST202", message: `no fixture for ${url.pathname}` });
+    return;
+  }
+  if (url.pathname.endsWith("/rest/v1/article_stats")) {
+    const keeps = slugFilter(url.searchParams.get("slug"));
+    const unsupported = unsupportedArticleStatsFilters(url, keeps);
+    if (unsupported.length) {
+      console.log(`article_stats select ${url.searchParams.toString()} -> 501`);
+      sendCannotAnswer(res, unsupported);
+      return;
+    }
+    const page = selectArticleStats(url, keeps);
+    sendJson(res, 200, req.method === "HEAD" ? undefined : page, {
+      "content-range": page.length ? `0-${page.length - 1}/${page.length}` : `*/0`,
+    });
+    return;
+  }
   if (!url.pathname.endsWith("/rest/v1/leaderboard_entries")) {
     res.writeHead(404, { "content-type": "application/json" });
     res.end(JSON.stringify({ code: "PGRST205", message: `no fixture for ${url.pathname}` }));
@@ -74,8 +180,7 @@ createServer(async (req, res) => {
       !["select", "order", "limit", "offset"].includes(key) && !/^(eq|gt)\./.test(value),
   );
   if (unsupported.length) {
-    res.writeHead(501, { "content-type": "application/json" });
-    res.end(JSON.stringify({ code: "PGRST000", message: `fixture cannot answer ${unsupported.map(([k, v]) => `${k}=${v}`).join("&")}` }));
+    sendCannotAnswer(res, unsupported);
     return;
   }
   const ranked = rows
@@ -101,4 +206,5 @@ createServer(async (req, res) => {
 }).listen(Number(portArg), "127.0.0.1", () => {
   const mode = rejectCountryInserts ? ", rejecting country_code inserts with PGRST204" : "";
   console.log(`fake supabase on http://127.0.0.1:${portArg} serving ${rows.length} rows${mode}`);
+  console.log(`article_stats holds ${articleStats.length} rows`);
 });

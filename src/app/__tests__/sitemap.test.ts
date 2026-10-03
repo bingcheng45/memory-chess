@@ -1,6 +1,7 @@
 import sitemap from "@/app/sitemap";
 import { ARTICLES, ARTICLES_LAST_UPDATED } from "@/lib/articles";
 import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
+import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
 import { LOCALES } from "@/i18n/routing";
 
 describe("sitemap", () => {
@@ -61,6 +62,13 @@ describe("sitemap", () => {
     expect(new Date(changelogEntry?.lastModified ?? 0).toISOString()).toBe(
       new Date(LATEST_CHANGELOG_ENTRY.publishedAt).toISOString(),
     );
+  });
+
+  it("dates the privacy page with the date the page itself prints", async () => {
+    const entries = await sitemap();
+    const privacyEntry = entries.find((entry) => entry.url === "https://thememorychess.com/privacy");
+
+    expect(new Date(privacyEntry?.lastModified ?? 0).toISOString()).toBe(new Date(PRIVACY_LAST_UPDATED).toISOString());
   });
 
   it("lists the English-only pages once, not once per locale", async () => {

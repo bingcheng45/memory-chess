@@ -1,3 +1,5 @@
+import type { SortKey } from "@/lib/articles/sorting";
+
 export const ARTICLE_LIST_COPY = {
   meta: {
     title: "Articles on chess players and their memory",
@@ -38,6 +40,26 @@ export const ARTICLE_PAGER_COPY = {
   next: "Next page",
   page: (page: number) => `Page ${page}`,
   showing: (first: number, last: number, total: number) => `Showing ${first} to ${last} of ${total}`,
+} as const;
+
+const COUNT_FORMAT = new Intl.NumberFormat("en-US");
+
+export function formatCount(count: number): string {
+  return COUNT_FORMAT.format(count);
+}
+
+export const ARTICLE_STATS_COPY = {
+  views: (count: number) => `${formatCount(count)} ${count === 1 ? "view" : "views"}`,
+  likes: (count: number) => `${formatCount(count)} ${count === 1 ? "like" : "likes"}`,
+  likeButton: "Like this article",
+  likeFailed: "That did not save. Try again.",
+  sortLabel: "Sort",
+  sortGroup: "Sort articles",
+  sortOptions: {
+    newest: "Newest",
+    views: "Most viewed",
+    likes: "Most liked",
+  } satisfies Record<SortKey, string>,
 } as const;
 
 export const ARTICLE_COPY = {

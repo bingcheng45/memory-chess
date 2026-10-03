@@ -1,9 +1,12 @@
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
+import { ViewCount } from "@/components/articles/ArticleCounts";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
 import FactFile from "@/components/articles/FactFile";
+import LikeButton from "@/components/articles/LikeButton";
 import TypedBody from "@/components/articles/TypedBody";
+import ViewBeacon from "@/components/articles/ViewBeacon";
 import { ARTICLE_FOCUS_RING, ARTICLE_LINK } from "@/components/articles/articleStyles";
 import { EditorialPageShell } from "@/components/editorial/EditorialPage";
 import { ARTICLE_COPY, formatArticleDate } from "@/lib/articles/copy";
@@ -14,6 +17,7 @@ import type {
   ArticleSummary,
   PhotoCredit,
 } from "@/lib/articles/schema";
+import type { ArticleCounts } from "@/lib/articles/stats";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
 import { gameHref, LEARN_AUTHOR } from "@/lib/seo/learn/schema";
 import "./articlePage.css";
@@ -21,6 +25,7 @@ import "./articlePage.css";
 type ArticlePageProps = {
   article: Article;
   nextArticle?: ArticleSummary;
+  counts?: ArticleCounts;
 };
 
 const SOURCES_HEADING_ID = "article-sources-heading";
@@ -69,7 +74,7 @@ function Portrait({ article }: { article: Article }) {
   );
 }
 
-function HeadingBlock({ article }: { article: Article }) {
+function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "counts">) {
   return (
     <header className="row-start-2 min-[821px]:col-start-2 min-[821px]:row-start-1">
       <p className="text-sm text-peach-500">
@@ -94,6 +99,13 @@ function HeadingBlock({ article }: { article: Article }) {
         <p data-authorship-note className="max-w-2xl">
           {ARTICLE_COPY.authorshipNote}
         </p>
+      </div>
+      <div
+        data-article-counts
+        className="mt-4 flex flex-wrap items-center gap-x-[18px] gap-y-2.5 text-sm text-text-muted [font-variant-numeric:tabular-nums]"
+      >
+        <ViewCount count={counts?.views} />
+        <LikeButton key={article.slug} slug={article.slug} likes={counts?.likes} />
       </div>
     </header>
   );
@@ -157,7 +169,7 @@ function NextArticle({ next }: { next: ArticleSummary }) {
   );
 }
 
-export default function ArticlePage({ article, nextArticle }: ArticlePageProps) {
+export default function ArticlePage({ article, nextArticle, counts }: ArticlePageProps) {
   return (
     <EditorialPageShell mainClassName="!max-w-[1080px]">
       <ArticleLink
@@ -171,7 +183,7 @@ export default function ArticlePage({ article, nextArticle }: ArticlePageProps) 
         data-article-flight=""
         className="grid grid-cols-[minmax(0,1fr)] min-[821px]:grid-cols-[280px_minmax(0,1fr)] min-[821px]:items-start min-[821px]:gap-x-14"
       >
-        <HeadingBlock article={article} />
+        <HeadingBlock article={article} counts={counts} />
         <div
           data-article-rail
           className={`contents min-[821px]:col-start-1 min-[821px]:row-span-2 min-[821px]:row-start-1 min-[821px]:block ${STICKY_RAIL}`}
@@ -186,6 +198,7 @@ export default function ArticlePage({ article, nextArticle }: ArticlePageProps) 
           {nextArticle ? <NextArticle next={nextArticle} /> : null}
         </div>
       </article>
+      <ViewBeacon slug={article.slug} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildArticleStructuredData(article)) }}

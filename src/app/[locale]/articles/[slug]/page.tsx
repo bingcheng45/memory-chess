@@ -4,7 +4,11 @@ import { setRequestLocale } from "next-intl/server";
 import ArticlePage from "@/components/articles/ArticlePage";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { ARTICLE_SLUGS, getArticle, getNextArticle } from "@/lib/articles";
+import { countsFor } from "@/lib/articles/stats";
 import { buildArticleMetadata } from "@/lib/seo/articleMetadata";
+import { getArticleStats } from "@/lib/services/articleStatsService";
+
+export const revalidate = 300;
 
 type ArticleRouteProps = {
   params: Promise<{
@@ -36,5 +40,13 @@ export default async function ArticleRoute({ params }: ArticleRouteProps) {
     notFound();
   }
 
-  return <ArticlePage article={article} nextArticle={getNextArticle(article.slug)} />;
+  const stats = await getArticleStats([article.slug]);
+
+  return (
+    <ArticlePage
+      article={article}
+      nextArticle={getNextArticle(article.slug)}
+      counts={countsFor(stats, article.slug)}
+    />
+  );
 }

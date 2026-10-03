@@ -1,77 +1,31 @@
 import { Suspense, use } from "react";
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import TypedBody from "@/components/articles/TypedBody";
-import { announceArrival, clearArrival, peekArrival } from "@/components/articles/articleArrival";
+import { announceArrival, peekArrival } from "@/components/articles/articleArrival";
 import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
+import {
+  BLOCKS,
+  FRAME_MS,
+  FULL_TEXT,
+  LONGER_THAN_THE_WHOLE_BODY_MS,
+  SECTIONS,
+  SLUG,
+  body,
+  expectFullPlainText,
+  partlyTypedBlock,
+  phase,
+  placeBlocksAt,
+  renderBody,
+  showAll,
+  shownLength,
+  typeFor,
+  untyped,
+  withFakeFrames,
+} from "@/components/articles/__tests__/typedBodyHarness";
 
-const SLUG = "alder-fixture";
-const SECTIONS = [
-  {
-    heading: "First heading",
-    paragraphs: ["The first paragraph of the first section runs a little longer.", "A second paragraph."],
-  },
-  { heading: "Second heading", paragraphs: ["The only paragraph of the second section."] },
-] as const;
-const BLOCKS = SECTIONS.flatMap((section) => [section.heading, ...section.paragraphs]);
-const FULL_TEXT = BLOCKS.join("");
-const FRAME_MS = 16;
-const LONGER_THAN_THE_WHOLE_BODY_MS = 4000;
-const BLOCK_BOUNDARY_MS = 600;
 const CLEF_CODE_POINT = 0x1d11e;
 
-const body = () => document.querySelector("[data-article-body]") as HTMLElement;
-const phase = () => body().getAttribute("data-article-typing");
-const showAll = () => screen.queryByRole("button", { name: "Show all text" });
-const untyped = () => Array.from(body().querySelectorAll(".article-untyped"));
-const shownLength = () =>
-  FULL_TEXT.length - untyped().reduce((total, span) => total + (span.textContent ?? "").length, 0);
-
-function partlyTypedBlock(): number | null {
-  const block = body().querySelector(".article-caret")?.parentElement;
-  if (!block) return null;
-  const [shown, , rest] = Array.from(block.children);
-  const isPartlyTyped = shown.textContent !== "" && rest.textContent !== "";
-  return isPartlyTyped ? Array.from(body().children).indexOf(block) : null;
-}
-
-async function typeFor(ms: number, afterEachFrame: () => void = () => {}) {
-  for (let elapsed = 0; elapsed < ms; elapsed += FRAME_MS) {
-    await act(async () => {
-      jest.advanceTimersByTime(FRAME_MS);
-    });
-    afterEachFrame();
-  }
-}
-
-function renderBody(options?: Parameters<typeof render>[1]) {
-  return render(<TypedBody slug={SLUG} sections={SECTIONS} />, options);
-}
-
-function expectFullPlainText() {
-  expect(untyped()).toHaveLength(0);
-  expect(body().querySelector(".article-caret")).toBeNull();
-  expect(showAll()).not.toBeInTheDocument();
-  expect(Array.from(body().children).map((block) => block.tagName)).toEqual(["H2", "P", "P", "H2", "P"]);
-  expect(Array.from(body().children).map((block) => block.textContent)).toEqual(BLOCKS);
-  for (const block of body().children) {
-    expect(block.children).toHaveLength(0);
-  }
-}
-
-function placeBlocksAt(rect: { top: number; bottom: number }) {
-  return jest.spyOn(Element.prototype, "getBoundingClientRect").mockReturnValue(rect as DOMRect);
-}
-
-beforeEach(() => {
-  jest.useFakeTimers();
-  setReducedMotion(false);
-});
-
-afterEach(() => {
-  clearArrival();
-  jest.restoreAllMocks();
-  jest.useRealTimers();
-});
+withFakeFrames();
 
 describe("TypedBody on a direct load", () => {
   it("shows the full text with no split, no caret and no button", () => {
@@ -143,79 +97,6 @@ describe("TypedBody after a click on a card", () => {
     expect(rest).toHaveClass("article-untyped");
     expect((shown.textContent ?? "").length).toBeGreaterThan(0);
     expect(`${shown.textContent}${rest.textContent}`).toBe(SECTIONS[0].heading);
-  });
-
-  it("completes at once on Show all text, and the button goes", async () => {
-    renderBody();
-    await typeFor(100);
-
-    fireEvent.click(showAll()!);
-
-    expect(phase()).toBe("done");
-    expectFullPlainText();
-  });
-
-  it("moves focus to the text on a press, even in a browser that does not focus a pressed button", async () => {
-    renderBody();
-    await typeFor(100);
-
-    fireEvent.click(showAll()!);
-
-    expect(document.activeElement).toBe(body());
-  });
-
-  it("moves focus to the text when typing ends on its own while the button holds focus", async () => {
-    renderBody();
-    await typeFor(100);
-    showAll()!.focus();
-
-    await typeFor(BLOCK_BOUNDARY_MS);
-    expect(phase()).toBe("typing");
-    expect(document.activeElement).toBe(showAll());
-
-    await typeFor(LONGER_THAN_THE_WHOLE_BODY_MS);
-    expect(phase()).toBe("done");
-    expect(document.activeElement).toBe(body());
-  });
-
-  it("moves focus to the text when a hidden tab completes it while the button holds focus", async () => {
-    renderBody();
-    await typeFor(100);
-    showAll()!.focus();
-
-    jest.spyOn(document, "hidden", "get").mockReturnValue(true);
-    act(() => {
-      document.dispatchEvent(new Event("visibilitychange"));
-    });
-
-    expect(phase()).toBe("done");
-    expect(document.activeElement).toBe(body());
-  });
-
-  it("leaves focus where the reader put it when typing ends and the button did not hold it", async () => {
-    render(
-      <>
-        <button type="button">Elsewhere</button>
-        <TypedBody slug={SLUG} sections={SECTIONS} />
-      </>,
-    );
-    const elsewhere = screen.getByRole("button", { name: "Elsewhere" });
-    await typeFor(100);
-    elsewhere.focus();
-
-    await typeFor(LONGER_THAN_THE_WHOLE_BODY_MS);
-
-    expect(phase()).toBe("done");
-    expect(document.activeElement).toBe(elsewhere);
-  });
-
-  it("offers Show all text as a real button a keyboard can reach", async () => {
-    renderBody();
-    await typeFor(100);
-
-    expect(showAll()).toHaveAttribute("type", "button");
-    expect(showAll()).not.toHaveAttribute("tabindex", "-1");
-    expect(showAll()).not.toBeDisabled();
   });
 
   it("shows the full text at once under reduced motion", () => {

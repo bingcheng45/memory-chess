@@ -11,6 +11,7 @@ await template.close();
 const databases = new Map();
 
 const handlers = {
+  ready: async () => [],
   open: async ({ database }) => {
     databases.set(database, await PGlite.create({ loadDataDir: freshCluster }));
     return [];

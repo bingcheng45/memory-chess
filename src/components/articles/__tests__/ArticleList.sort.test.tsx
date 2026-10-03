@@ -26,17 +26,17 @@ jest.mock("@/i18n/navigation", () => ({
 const mockAddressWatchers = new Set<() => void>();
 let mockSearchParams = new URLSearchParams();
 
-// Stands in for Next's router: a soft navigation re-renders only the components that read the search params.
-jest.mock("next/navigation", () => ({
-  useSearchParams: () =>
-    jest.requireActual<typeof import("react")>("react").useSyncExternalStore(
-      (onChange: () => void) => {
-        mockAddressWatchers.add(onChange);
-        return () => mockAddressWatchers.delete(onChange);
-      },
-      () => mockSearchParams,
-    ),
-}));
+function mockUseSearchParamsOfSoftNavigation() {
+  return jest.requireActual<typeof import("react")>("react").useSyncExternalStore(
+    (onChange: () => void) => {
+      mockAddressWatchers.add(onChange);
+      return () => mockAddressWatchers.delete(onChange);
+    },
+    () => mockSearchParams,
+  );
+}
+
+jest.mock("next/navigation", () => ({ useSearchParams: () => mockUseSearchParamsOfSoftNavigation() }));
 
 function softNavigate(address: string) {
   act(() => {

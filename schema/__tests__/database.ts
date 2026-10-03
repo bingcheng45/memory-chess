@@ -23,7 +23,8 @@ export type Postgres = {
 type Request =
   | { readonly kind: "open"; readonly database: number }
   | { readonly kind: "run"; readonly database: number; readonly sql: string }
-  | { readonly kind: "closeAll" };
+  | { readonly kind: "closeAll" }
+  | { readonly kind: "ready" };
 
 type Waiter = {
   readonly resolve: (result: SqlResult) => void;
@@ -111,9 +112,7 @@ export async function startPostgres(): Promise<Postgres> {
     rowsOrThrow(await send({ kind: "closeAll" }));
   };
 
-  // The worker answers nothing until its template cluster exists, so the first
-  // round trip is what waits for it.
-  await closeAll();
+  rowsOrThrow(await send({ kind: "ready" }));
 
   return { open, closeAll, stop: async () => void (await worker.terminate()) };
 }

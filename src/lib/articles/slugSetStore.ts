@@ -20,8 +20,6 @@ function parseSlugs(raw: string | null): ReadonlySet<string> {
 
 export function createSlugSetStore(storageName: StorageName, key: string): SlugSetStore {
   const listeners = new Set<() => void>();
-  // A private window can answer reads and still refuse every write, so a set that
-  // could not be saved has to win over what the storage says until a write lands.
   let unsaved: ReadonlySet<string> | null = null;
 
   function read(): ReadonlySet<string> {

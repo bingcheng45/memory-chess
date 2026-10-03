@@ -30,7 +30,6 @@ const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const MAX_SLUG_LENGTH = 80;
 const INVALID_PARAMETER = "22023";
 
-// One step per event, the same arithmetic as schema/migrations/0002_article_stats.sql.
 const EVENT_STEPS = {
   view: { views: 1, likes: 0 },
   like: { views: 0, likes: 1 },

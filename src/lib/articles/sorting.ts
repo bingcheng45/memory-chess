@@ -9,8 +9,7 @@ export const DEFAULT_SORT: SortKey = "newest";
 const MIN_ARTICLES_TO_SORT = 2;
 const NO_COUNTS: ArticleCounts = { views: 0, likes: 0 };
 
-// The articles arrive newest first and the sort is stable, so an order of zero keeps the newer one ahead.
-const ORDER_BY_SORT: Record<SortKey, (a: ArticleCounts, b: ArticleCounts) => number> = {
+const ORDER_AMONG_NEWEST_FIRST: Record<SortKey, (a: ArticleCounts, b: ArticleCounts) => number> = {
   newest: () => 0,
   views: (a, b) => b.views - a.views,
   likes: (a, b) => b.likes - a.likes,
@@ -23,14 +22,14 @@ export function parseSortKey(raw: string | null): SortKey {
 }
 
 export function sortArticles<T extends WithSlug>(
-  articles: readonly T[],
+  newestFirst: readonly T[],
   stats: ArticleStats,
   sort: SortKey,
 ): readonly T[] {
-  const order = ORDER_BY_SORT[sort];
+  const order = ORDER_AMONG_NEWEST_FIRST[sort];
   const countsOf = (article: T) => countsFor(stats, article.slug) ?? NO_COUNTS;
 
-  return [...articles].sort((a, b) => order(countsOf(a), countsOf(b)));
+  return [...newestFirst].sort((a, b) => order(countsOf(a), countsOf(b)));
 }
 
 export function hasCountsToSortBy(articles: readonly WithSlug[], stats: ArticleStats): boolean {

@@ -23,6 +23,7 @@ const BUTTON_CLASS =
   "text-sm text-text-secondary hover:border-peach-500/35 " +
   "aria-pressed:border-peach-500/45 aria-pressed:bg-peach-500/10 aria-pressed:text-peach-200 " +
   `transition-transform motion-reduce:transition-none motion-safe:active:scale-95 ${ARTICLE_FOCUS_RING}`;
+const OWN_LIKE = 1;
 const HEART_CLASS = "h-[17px] w-[17px] group-aria-pressed:fill-peach-500 group-aria-pressed:text-peach-500";
 
 function setLiked(slug: string, isLiked: boolean): void {
@@ -39,8 +40,7 @@ export default function LikeButton({ slug, likes }: LikeButtonProps) {
   );
   const [shown, setShown] = useState<Shown>({ likes: likes ?? 0, hasFailed: false });
   const isSending = useRef(false);
-  // The server's count can be five minutes older than this browser's own like, so a pressed heart counts for at least one.
-  const likesShown = Math.max(shown.likes, isLiked ? 1 : 0);
+  const likesShown = isLiked ? Math.max(shown.likes, OWN_LIKE) : shown.likes;
 
   async function toggle() {
     if (isSending.current) return;

@@ -4,7 +4,6 @@ const HTTP_OK = 200;
 const REQUEST_TIMEOUT_MS = 10_000;
 
 export async function sendArticleEvent(slug: string, event: ArticleEvent): Promise<ArticleCounts | null> {
-  // The like button ignores presses while a request is out, so a request that never settles would leave it dead.
   const deadline = new AbortController();
   const timer = setTimeout(() => deadline.abort(), REQUEST_TIMEOUT_MS);
 
@@ -13,7 +12,6 @@ export async function sendArticleEvent(slug: string, event: ArticleEvent): Promi
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ event }),
-      // A view is sent as the page opens, and the visitor may leave before it lands.
       keepalive: true,
       signal: deadline.signal,
     });

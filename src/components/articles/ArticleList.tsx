@@ -49,8 +49,6 @@ export default function ArticleList({ articles, stats, heading }: ArticleListPro
     slides.current = [];
   }
 
-  // The slide starts here and nowhere else, so arrival, Back and a page change
-  // cannot start one under the view transition of a navigation.
   function chooseSort(chosen: SortKey) {
     if (chosen === sort || list.current === null) return;
 

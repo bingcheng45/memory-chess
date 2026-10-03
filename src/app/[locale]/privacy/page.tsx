@@ -137,8 +137,7 @@ export default function PrivacyPage() {
               Memory Chess uses browser storage to keep game history and
               settings on your device, remember sound preferences, avoid
               repeating a dismissed update banner, and time when the feedback
-              prompt may return. We also create a random local identifier for
-              in-browser usage events. Clearing your browser data resets these
+              prompt may return. Clearing your browser data resets these
               choices.
             </p>
             <p className={copyClassName}>

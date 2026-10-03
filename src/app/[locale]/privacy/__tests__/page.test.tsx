@@ -55,6 +55,13 @@ describe("PrivacyPage", () => {
     expect(screen.getByText("Last updated: October 3, 2026")).toBeInTheDocument();
   });
 
+  it("claims no identifier the site does not create", () => {
+    render(<PrivacyPage />);
+
+    expect(screen.getByText(/Clearing your browser data resets these choices/)).toBeInTheDocument();
+    expect(screen.queryByText(/local identifier/)).not.toBeInTheDocument();
+  });
+
   it("names the controller, the DART cookie, and GDPR and CCPA rights", () => {
     render(<PrivacyPage />);
 

@@ -1,0 +1,63 @@
+[data-article-flight] [data-flight="portrait"] {
+  view-transition-name: article-portrait;
+}
+
+[data-article-flight] [data-flight="title"] {
+  view-transition-name: article-title;
+}
+
+[data-article-flight] [data-flight="date"] {
+  view-transition-name: article-date;
+}
+
+/* A snapshot is as wide as the moving box and keeps its own height, so it would stretch mid-flight. */
+::view-transition-old(article-portrait),
+::view-transition-new(article-portrait) {
+  height: 100%;
+  object-fit: cover;
+}
+
+::view-transition-group(article-portrait),
+::view-transition-old(article-portrait),
+::view-transition-new(article-portrait),
+::view-transition-group(article-title),
+::view-transition-old(article-title),
+::view-transition-new(article-title),
+::view-transition-group(article-date),
+::view-transition-old(article-date),
+::view-transition-new(article-date) {
+  animation-duration: 620ms;
+  animation-timing-function: cubic-bezier(.16, 1, .3, 1);
+}
+
+::view-transition-old(article-title),
+::view-transition-old(article-date) {
+  animation-duration: 220ms;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 250ms;
+}
+
+::view-transition-group(article-title),
+::view-transition-old(article-title),
+::view-transition-new(article-title) {
+  animation-delay: 50ms;
+  animation-fill-mode: both;
+}
+
+::view-transition-group(article-date),
+::view-transition-old(article-date),
+::view-transition-new(article-date) {
+  animation-delay: 80ms;
+  animation-fill-mode: both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

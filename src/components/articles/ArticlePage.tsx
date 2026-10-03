@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
+import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
 import FactFile from "@/components/articles/FactFile";
 import { ARTICLE_FOCUS_RING, ARTICLE_LINK } from "@/components/articles/articleStyles";
 import { EditorialPageShell } from "@/components/editorial/EditorialPage";
 import { ARTICLE_COPY, formatArticleDate } from "@/lib/articles/copy";
-import { ARTICLES_PATH, articlePath } from "@/lib/articles/paths";
 import { readingFont } from "@/lib/articles/readingFont";
 import type {
   Article,
@@ -72,9 +72,14 @@ function HeadingBlock({ article }: { article: Article }) {
   return (
     <header className="row-start-2 min-[821px]:col-start-2 min-[821px]:row-start-1">
       <p className="text-sm text-peach-500">
-        <time dateTime={article.publishedAt}>{formatArticleDate(article.publishedAt)}</time>
+        <time dateTime={article.publishedAt} data-flight="date" className="inline-block">
+          {formatArticleDate(article.publishedAt)}
+        </time>
       </p>
-      <h1 className="mt-2.5 text-[clamp(30px,4.6vw,48px)] font-bold leading-[1.06] tracking-[-0.025em] text-white [text-wrap:balance]">
+      <h1
+        data-flight="title"
+        className="mt-2.5 text-[clamp(30px,4.6vw,48px)] font-bold leading-[1.06] tracking-[-0.025em] text-white [text-wrap:balance]"
+      >
         {article.title}
       </h1>
       <p className="mt-4 max-w-[58ch] text-[19px] leading-normal text-text-muted">{article.description}</p>
@@ -166,29 +171,32 @@ function Sources({ sources }: { sources: readonly ArticleSource[] }) {
 
 function NextArticle({ next }: { next: ArticleSummary }) {
   return (
-    <Link
-      href={articlePath(next.slug)}
+    <ArticleLink
+      article={next.slug}
       className={`group mt-7 block max-w-[720px] rounded border-t border-white/10 pt-5 text-[13px] text-text-muted ${ARTICLE_FOCUS_RING}`}
     >
       {ARTICLE_COPY.nextArticle}
       <b className="mt-1 block text-lg font-semibold leading-[1.3] text-white group-hover:text-peach-300">
         {next.title}
       </b>
-    </Link>
+    </ArticleLink>
   );
 }
 
 export default function ArticlePage({ article, nextArticle }: ArticlePageProps) {
   return (
     <EditorialPageShell mainClassName="!max-w-[1080px]">
-      <Link
-        href={ARTICLES_PATH}
+      <ArticleLink
+        backFrom={article.slug}
         className={`mb-2.5 mt-1.5 inline-flex min-h-11 items-center gap-2 rounded text-sm text-text-muted hover:text-peach-300 ${ARTICLE_FOCUS_RING}`}
       >
         <span aria-hidden="true">←</span>
         {ARTICLE_COPY.backToList}
-      </Link>
-      <article className="grid grid-cols-[minmax(0,1fr)] min-[821px]:grid-cols-[280px_minmax(0,1fr)] min-[821px]:items-start min-[821px]:gap-x-14">
+      </ArticleLink>
+      <article
+        data-article-flight=""
+        className="grid grid-cols-[minmax(0,1fr)] min-[821px]:grid-cols-[280px_minmax(0,1fr)] min-[821px]:items-start min-[821px]:gap-x-14"
+      >
         <HeadingBlock article={article} />
         <div
           data-article-rail

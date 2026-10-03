@@ -26,6 +26,12 @@ jest.mock("next/link", () => {
   return MockNextLink;
 });
 
+jest.mock("@/i18n/navigation", () => ({
+  ...jest.requireActual("@/i18n/navigation"),
+  useRouter: () => ({ push: jest.fn() }),
+  usePathname: () => "/articles",
+}));
+
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
     return <div>PageHeader</div>;

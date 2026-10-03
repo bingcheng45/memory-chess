@@ -18,6 +18,12 @@ jest.mock("next/link", () => {
   return MockNextLink;
 });
 
+jest.mock("@/i18n/navigation", () => ({
+  ...jest.requireActual("@/i18n/navigation"),
+  useRouter: () => ({ push: jest.fn() }),
+  usePathname: () => "/articles",
+}));
+
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
     return <div>PageHeader</div>;
@@ -285,6 +291,18 @@ describe("ArticlePage markup", () => {
     expect(rail?.querySelector("figure img")).not.toBeNull();
     expect(rail?.querySelector("dl")).not.toBeNull();
     expect(rail?.querySelector("h1")).toBeNull();
+  });
+
+  it("always names the portrait, the title and the date for the transition, once each", () => {
+    const { container } = renderPage();
+    const named = container.querySelectorAll("[data-article-flight]");
+
+    expect(named).toHaveLength(1);
+    expect(named[0].tagName).toBe("ARTICLE");
+    expect(named[0].querySelector('[data-flight="portrait"]')).toBe(container.querySelector("figure img"));
+    expect(named[0].querySelector('[data-flight="title"]')).toBe(container.querySelector("h1"));
+    expect(named[0].querySelector('[data-flight="date"]')).toBe(container.querySelector("header time"));
+    expect(container.querySelectorAll("[data-flight]")).toHaveLength(3);
   });
 
   it("runs no transition that a reduced-motion setting leaves on", () => {

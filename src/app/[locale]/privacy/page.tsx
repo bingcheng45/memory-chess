@@ -51,7 +51,7 @@ export default function PrivacyPage() {
             choices you have.
           </p>
           <p className="mt-3 text-xs text-text-muted">
-            Last updated: September 15, 2026
+            Last updated: October 3, 2026
           </p>
         </header>
 
@@ -142,6 +142,13 @@ export default function PrivacyPage() {
               choices.
             </p>
             <p className={copyClassName}>
+              Liking an article saves the id of that article in the local
+              storage of your browser, so the like button stays pressed when
+              you come back. Session storage remembers which articles you
+              opened during the current browser session, so one visit counts
+              as one view. Neither list leaves your browser.
+            </p>
+            <p className={copyClassName}>
               Google Analytics and advertising services may use cookies or
               similar identifiers. You can block or delete cookies in your
               browser, although some preferences may stop working as expected.
@@ -227,10 +234,16 @@ export default function PrivacyPage() {
             <p className={copyClassName}>
               Data is handled by service providers only where needed: Google
               Sheets for contact messages and game feedback, Supabase for game
-              statistics and leaderboard entries, Vercel for hosting and
+              statistics, leaderboard entries, and article view and like
+              totals, Vercel for hosting and
               performance measurement, Ahrefs for analytics, and Google for
               analytics, consent, and advertising. These providers may process data in other countries
               under their own privacy terms.
+            </p>
+            <p className={copyClassName}>
+              When you open or like an article, Supabase stores only a total
+              of views and a total of likes for each article, with no visitor
+              identifier.
             </p>
           </section>
 

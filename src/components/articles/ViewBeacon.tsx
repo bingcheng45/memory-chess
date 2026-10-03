@@ -4,13 +4,29 @@ import { useEffect } from "react";
 import { sendArticleEvent } from "@/lib/articles/statsClient";
 import { viewedStore } from "@/lib/articles/viewedStore";
 
+const PRERENDER_ENDED = "prerenderingchange";
+
+// TypeScript 5.8's DOM types do not carry the Speculation Rules prerender flag.
+type PrerenderAwareDocument = Document & { readonly prerendering?: boolean };
+
 export default function ViewBeacon({ slug }: { slug: string }) {
   useEffect(() => {
-    if (viewedStore.has(slug)) return;
+    const recordView = () => {
+      if (viewedStore.has(slug)) return;
 
-    // Stored before the request leaves, so StrictMode's second effect run finds the slug and sends nothing.
-    viewedStore.add(slug);
-    void sendArticleEvent(slug, "view");
+      // Stored before the request leaves, so StrictMode's second effect run finds the slug and sends nothing.
+      viewedStore.add(slug);
+      void sendArticleEvent(slug, "view");
+    };
+
+    // A browser can load the page before anyone asks for it. Nobody has seen it until that prerender ends.
+    if ((document as PrerenderAwareDocument).prerendering !== true) {
+      recordView();
+      return;
+    }
+
+    document.addEventListener(PRERENDER_ENDED, recordView, { once: true });
+    return () => document.removeEventListener(PRERENDER_ENDED, recordView);
   }, [slug]);
 
   return null;

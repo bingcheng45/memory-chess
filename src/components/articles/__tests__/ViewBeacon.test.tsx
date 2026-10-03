@@ -18,8 +18,18 @@ beforeEach(() => {
   global.fetch = fetchMock;
 });
 
+function setPrerendering(isPrerendering: boolean) {
+  Object.defineProperty(document, "prerendering", { configurable: true, value: isPrerendering });
+}
+
+function activatePrerenderedPage() {
+  setPrerendering(false);
+  document.dispatchEvent(new Event("prerenderingchange"));
+}
+
 afterEach(() => {
   jest.restoreAllMocks();
+  Reflect.deleteProperty(document, "prerendering");
   viewedStore.remove(SLUG);
   viewedStore.remove(OTHER);
   window.sessionStorage.clear();
@@ -84,6 +94,43 @@ describe("ViewBeacon", () => {
     const first = render(<ViewBeacon slug={SLUG} />);
     first.unmount();
     render(<ViewBeacon slug={SLUG} />);
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("sends nothing while the browser prerenders the page, then one view when the visitor opens it", () => {
+    setPrerendering(true);
+
+    render(<ViewBeacon slug={SLUG} />);
+
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(window.sessionStorage.getItem(VIEWED_STORAGE_KEY)).toBeNull();
+
+    activatePrerenderedPage();
+    activatePrerenderedPage();
+
+    expect(fetchMock.mock.calls).toEqual([viewOf(SLUG)]);
+  });
+
+  it("sends nothing for a prerendered page the visitor never opens", () => {
+    setPrerendering(true);
+
+    const { unmount } = render(<ViewBeacon slug={SLUG} />);
+    unmount();
+    activatePrerenderedPage();
+
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("sends once for a prerendered page under StrictMode", () => {
+    setPrerendering(true);
+    render(
+      <StrictMode>
+        <ViewBeacon slug={SLUG} />
+      </StrictMode>,
+    );
+
+    activatePrerenderedPage();
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });

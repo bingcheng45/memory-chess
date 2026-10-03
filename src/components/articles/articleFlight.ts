@@ -18,12 +18,10 @@ export function signalRouteCommit(): void {
   commitRoute?.();
 }
 
-function nameCard(slug: string): Element | null {
-  const card =
-    Array.from(document.querySelectorAll(`[${CARD_ATTRIBUTE}]`)).find(
-      (candidate) => candidate.getAttribute(CARD_ATTRIBUTE) === slug,
-    ) ?? null;
-  card?.setAttribute(FLIGHT_ATTRIBUTE, "");
+function nameOnlyCard(slug: string): Element | null {
+  const cards = Array.from(document.querySelectorAll(`[${CARD_ATTRIBUTE}]`));
+  const card = cards.find((candidate) => candidate.getAttribute(CARD_ATTRIBUTE) === slug) ?? null;
+  cards.forEach((candidate) => candidate.toggleAttribute(FLIGHT_ATTRIBUTE, candidate === card));
   return card;
 }
 
@@ -48,12 +46,12 @@ export function fly(navigate: () => void, slug: string): Promise<void> {
     return Promise.resolve();
   }
 
-  const leaving = nameCard(slug);
+  const leaving = nameOnlyCard(slug);
   let arriving: Element | null = null;
   const transition = document.startViewTransition(async () => {
     const committed = waitForRouteCommit();
     navigate();
-    if (await committed) arriving = nameCard(slug);
+    if (await committed) arriving = nameOnlyCard(slug);
     else transition.skipTransition();
   });
   const unname = () => {

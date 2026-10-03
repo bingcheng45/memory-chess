@@ -69,4 +69,38 @@ describe("ArticleLink when two flights overlap", () => {
     expect(another).toHaveAttribute("data-article-flight");
     expect(card()).not.toHaveAttribute("data-article-flight");
   });
+
+  it("names only the second card when it is clicked before the first route commits", async () => {
+    stubViewTransitions();
+    render(
+      <>
+        <ListPage />
+        <OtherCard />
+      </>,
+    );
+    fireEvent.click(card());
+    await flush();
+
+    const second = stubViewTransitions();
+    fireEvent.click(otherCard());
+
+    expect(second.flightsWhenStarted).toBe(1);
+    expect(otherCard()).toHaveAttribute("data-article-flight");
+    expect(card()).not.toHaveAttribute("data-article-flight");
+  });
+
+  it("leaves the article page's own name in place when a flight starts from it", async () => {
+    stubViewTransitions();
+    mockPathname = ARTICLE_HREF;
+    render(
+      <article data-article-flight="">
+        <ArticlePage />
+      </article>,
+    );
+
+    fireEvent.click(backLink());
+    await flush();
+
+    expect(document.querySelector("article")).toHaveAttribute("data-article-flight");
+  });
 });

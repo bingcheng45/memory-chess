@@ -13,3 +13,10 @@ in `EditorialPage.tsx`.
 - Use tables only for real comparisons, with horizontal scrolling on mobile.
 - Avoid decorative imagery in the reading flow. Social previews may use the
   generated Open Graph routes because they are not part of the article UI.
+- Learn stays image-free. An Articles page carries one portrait of its subject
+  and nothing else. The portrait is information, so it has alt text, and its
+  credit prints the author, the licence and a link to the source inside a
+  `<cite>`.
+- An Articles body is set in Literata, declared in
+  `src/lib/articles/readingFont.ts` so only article pages load it. Geist stays
+  the face for everything else.

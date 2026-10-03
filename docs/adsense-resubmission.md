@@ -49,6 +49,19 @@ and preview builds, so earlier weeks include test runs (257 users from `127.0.0.
 |---|---|---|
 | | | |
 
+### Published pieces
+
+Every new piece since 2026-09-28, for the cadence box above. The date is the piece's `publishedAt`.
+
+| Date | Title | URL | Written by |
+|---|---|---|---|
+| 2026-10-03 | How Magnus Carlsen names a famous game from one position | `/articles/magnus-carlsen` | AI-drafted, fact-checked, owner-reviewed |
+| 2026-10-03 | Adriaan de Groot's 1944 test of chess memory, by the numbers | `/articles/adriaan-de-groot` | AI-drafted, fact-checked, owner-reviewed |
+| 2026-10-03 | How Judit Polgár played blindfold chess at age seven | `/articles/judit-polgar` | AI-drafted, fact-checked, owner-reviewed |
+
+The three launch articles share one week, so together they count as one week of the cadence. None counts as
+owner-written. Each later article is one row, in its own week.
+
 ### Round funnel events
 
 The round-funnel events start the day PR #33 merges. From then on production sends three GA4 events per round:

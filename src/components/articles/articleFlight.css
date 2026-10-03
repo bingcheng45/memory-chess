@@ -1,3 +1,12 @@
+/* Timings from the view-transition spike. The quick fade of the old title and date came after it, to stop two copies of the text overlapping in mid-flight. */
+:root {
+  --article-flight-duration: 620ms;
+  --article-flight-old-text-duration: 220ms;
+  --article-flight-root-duration: 250ms;
+  --article-flight-title-delay: 50ms;
+  --article-flight-date-delay: 80ms;
+}
+
 [data-article-flight] [data-flight="portrait"] {
   view-transition-name: article-portrait;
 }
@@ -26,31 +35,31 @@
 ::view-transition-group(article-date),
 ::view-transition-old(article-date),
 ::view-transition-new(article-date) {
-  animation-duration: 620ms;
+  animation-duration: var(--article-flight-duration);
   animation-timing-function: cubic-bezier(.16, 1, .3, 1);
 }
 
 ::view-transition-old(article-title),
 ::view-transition-old(article-date) {
-  animation-duration: 220ms;
+  animation-duration: var(--article-flight-old-text-duration);
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 250ms;
+  animation-duration: var(--article-flight-root-duration);
 }
 
 ::view-transition-group(article-title),
 ::view-transition-old(article-title),
 ::view-transition-new(article-title) {
-  animation-delay: 50ms;
+  animation-delay: var(--article-flight-title-delay);
   animation-fill-mode: both;
 }
 
 ::view-transition-group(article-date),
 ::view-transition-old(article-date),
 ::view-transition-new(article-date) {
-  animation-delay: 80ms;
+  animation-delay: var(--article-flight-date-delay);
   animation-fill-mode: both;
 }
 

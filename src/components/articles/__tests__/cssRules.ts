@@ -17,13 +17,16 @@ export function innermostRules(css: string): CssRule[] {
   }));
 }
 
+export function declarationsOf(rule: CssRule): [property: string, value: string][] {
+  return rule.body
+    .split(";")
+    .map((declaration) => declaration.split(":").map((part) => part.trim()))
+    .filter(([property]) => Boolean(property))
+    .map(([property, value]) => [property, value]);
+}
+
 export function keyframeProperties(css: string): string[] {
   return Array.from(css.matchAll(/@keyframes\s+[\w-]+\s*\{((?:[^{}]*\{[^{}]*\})*)\s*\}/g)).flatMap(([, frames]) =>
-    innermostRules(frames).flatMap((frame) =>
-      frame.body
-        .split(";")
-        .map((declaration) => declaration.split(":")[0].trim())
-        .filter(Boolean),
-    ),
+    innermostRules(frames).flatMap((frame) => declarationsOf(frame).map(([property]) => property)),
   );
 }

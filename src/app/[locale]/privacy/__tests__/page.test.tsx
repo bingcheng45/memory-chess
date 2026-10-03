@@ -52,7 +52,6 @@ describe("PrivacyPage", () => {
     expect(
       screen.getByText(/Google Analytics also receives a like event that names the article/),
     ).toBeInTheDocument();
-    expect(screen.getByText("Last updated: October 3, 2026")).toBeInTheDocument();
   });
 
   it("claims no identifier the site does not create", () => {

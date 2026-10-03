@@ -1,7 +1,7 @@
 import { render, screen } from "@/test-utils/intl";
 import PrivacyPage from "@/app/[locale]/privacy/page";
 
-jest.mock("@/lib/seo/privacyPolicy", () => ({ PRIVACY_LAST_UPDATED: "2031-01-09T00:00:00.000Z" }));
+jest.mock("@/lib/seo/privacyPolicy", () => ({ PRIVACY_LAST_UPDATED: "2031-01-09T00:00:00.000+08:00" }));
 
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {

@@ -16,6 +16,7 @@ const BLOCKS = SECTIONS.flatMap((section) => [section.heading, ...section.paragr
 const FULL_TEXT = BLOCKS.join("");
 const FRAME_MS = 16;
 const LONGER_THAN_THE_WHOLE_BODY_MS = 4000;
+const BLOCK_BOUNDARY_MS = 600;
 
 const body = () => document.querySelector("[data-article-body]") as HTMLElement;
 const phase = () => body().getAttribute("data-article-typing");
@@ -144,14 +145,58 @@ describe("TypedBody after a click on a card", () => {
     expectFullPlainText();
   });
 
-  it("moves focus to the text when the pressed button goes, so a keyboard reader keeps their place", async () => {
+  it("moves focus to the text on a press, even in a browser that does not focus a pressed button", async () => {
     renderBody();
     await typeFor(100);
-    showAll()!.focus();
 
     fireEvent.click(showAll()!);
 
     expect(document.activeElement).toBe(body());
+  });
+
+  it("moves focus to the text when typing ends on its own while the button holds focus", async () => {
+    renderBody();
+    await typeFor(100);
+    showAll()!.focus();
+
+    await typeFor(BLOCK_BOUNDARY_MS);
+    expect(phase()).toBe("typing");
+    expect(document.activeElement).toBe(showAll());
+
+    await typeFor(LONGER_THAN_THE_WHOLE_BODY_MS);
+    expect(phase()).toBe("done");
+    expect(document.activeElement).toBe(body());
+  });
+
+  it("moves focus to the text when a hidden tab completes it while the button holds focus", async () => {
+    renderBody();
+    await typeFor(100);
+    showAll()!.focus();
+
+    jest.spyOn(document, "hidden", "get").mockReturnValue(true);
+    act(() => {
+      document.dispatchEvent(new Event("visibilitychange"));
+    });
+
+    expect(phase()).toBe("done");
+    expect(document.activeElement).toBe(body());
+  });
+
+  it("leaves focus where the reader put it when typing ends and the button did not hold it", async () => {
+    render(
+      <>
+        <button type="button">Elsewhere</button>
+        <TypedBody slug={SLUG} sections={SECTIONS} />
+      </>,
+    );
+    const elsewhere = screen.getByRole("button", { name: "Elsewhere" });
+    await typeFor(100);
+    elsewhere.focus();
+
+    await typeFor(LONGER_THAN_THE_WHOLE_BODY_MS);
+
+    expect(phase()).toBe("done");
+    expect(document.activeElement).toBe(elsewhere);
   });
 
   it("offers Show all text as a real button a keyboard can reach", async () => {

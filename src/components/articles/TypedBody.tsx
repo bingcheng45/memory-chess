@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useReducer, useRef, type Dispatch, type RefObject } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef, type Dispatch, type RefObject } from "react";
 import { clearArrival, peekArrival } from "@/components/articles/articleArrival";
 import { prefersReducedMotion } from "@/components/articles/articleFlight";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
@@ -142,6 +142,10 @@ function useBlockTyping(state: TypingState, blocks: readonly Block[], dispatch: 
   return { shown, rest };
 }
 
+function focusWithoutScrolling(element: HTMLElement | null) {
+  element?.focus({ preventScroll: true });
+}
+
 function useShowAllWhenHidden(isTyping: boolean, dispatch: Dispatch<TypingEvent>) {
   useEffect(() => {
     if (!isTyping) return;
@@ -168,15 +172,23 @@ export default function TypedBody({ slug, sections }: TypedBodyProps) {
   useEffect(clearArrival, []);
   useShowAllWhenHidden(isTyping, dispatch);
 
+  // React runs a ref's cleanup before it removes the node, so a focused pill is still the active element here.
+  const keepFocusWhenPillGoes = useCallback(
+    (pill: HTMLButtonElement) => () => {
+      if (document.activeElement === pill) focusWithoutScrolling(body.current);
+    },
+    [],
+  );
+
   function showAll() {
-    body.current?.focus({ preventScroll: true });
+    focusWithoutScrolling(body.current);
     dispatch({ type: "showAll" });
   }
 
   return (
     <>
       {state.phase === "typing" && state.hasTyped ? (
-        <button type="button" onClick={showAll} className={SHOW_ALL_CLASS}>
+        <button ref={keepFocusWhenPillGoes} type="button" onClick={showAll} className={SHOW_ALL_CLASS}>
           {SHOW_ALL_LABEL}
         </button>
       ) : null}

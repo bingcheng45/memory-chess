@@ -139,16 +139,28 @@ Run each query after the migration. The root runs these on production. Each one 
       ) AS public_can_execute;
     ```
 
-8. The role checks, as `anon`, inside a transaction that is rolled back. Run the three blocks one at a time. An error ends a transaction, so each block has its own.
+8. The role checks, as `anon`. Run the three blocks one at a time.
 
-    The function writes. Expect one row, `views 1`, `likes 0`. The rollback removes it.
+    The function writes. This block is one statement that ends in an error on purpose. The error carries the counts the function returned, and it undoes the write. Expect exactly this answer. A tool may print a `CONTEXT` line under it.
 
     ```sql
-    BEGIN;
-    SET LOCAL ROLE anon;
-    SELECT * FROM public.record_article_event('runbook-check', 'view');
-    ROLLBACK;
+    DO $$
+    DECLARE got record;
+    BEGIN
+      SET LOCAL ROLE anon;
+      SELECT * INTO got FROM public.record_article_event('runbook-check', 'view');
+      RAISE EXCEPTION 'anon wrote through the function: views %, likes %', got.views, got.likes;
+    END
+    $$;
     ```
+
+    ```text
+    ERROR: P0001: anon wrote through the function: views 1, likes 0
+    ```
+
+    Any other answer is a failure. `42501` means `anon` may not call the function. No error at all means the block did not run.
+
+    The next two blocks each run inside a transaction that is rolled back. An error ends a transaction, so each block has its own.
 
     A direct insert fails. Expect `ERROR: 42501: permission denied for table article_stats`.
 

@@ -20,6 +20,7 @@ const handlers = {
     const results = await databases.get(database).exec(sql);
     return results.at(-1)?.rows ?? [];
   },
+  statement: async ({ database, sql }) => (await databases.get(database).query(sql)).rows,
   closeAll: async () => {
     const open = [...databases.values()];
     databases.clear();

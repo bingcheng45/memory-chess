@@ -11,6 +11,8 @@ export type RunOptions = { readonly as?: string };
 
 export type Database = {
   attempt(sql: string, options?: RunOptions): Promise<SqlResult>;
+  // Goes through the extended protocol, which refuses a batch: an answer other than 42601 proves the SQL is one statement.
+  statement(sql: string): Promise<SqlResult>;
   rows(sql: string, options?: RunOptions): Promise<readonly Row[]>;
 };
 
@@ -23,6 +25,7 @@ export type Postgres = {
 type Request =
   | { readonly kind: "open"; readonly database: number }
   | { readonly kind: "run"; readonly database: number; readonly sql: string }
+  | { readonly kind: "statement"; readonly database: number; readonly sql: string }
   | { readonly kind: "closeAll" }
   | { readonly kind: "ready" };
 
@@ -104,6 +107,7 @@ export async function startPostgres(): Promise<Postgres> {
 
     return {
       attempt,
+      statement: (sql) => send({ kind: "statement", database, sql }),
       rows: async (sql, options) => rowsOrThrow(await attempt(sql, options)),
     };
   };

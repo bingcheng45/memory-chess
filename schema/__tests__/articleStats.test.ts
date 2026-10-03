@@ -1,25 +1,7 @@
 /** @jest-environment node */
 
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import { startPostgres, type Database, type Postgres, type SqlResult } from "./database";
-
-const readSql = (file: string) => readFileSync(path.join(__dirname, "..", file), "utf8");
-const MIGRATION = readSql("migrations/0002_article_stats.sql");
-const ROLLBACK = readSql("migrations/0002_article_stats_rollback.sql");
-const SNAPSHOT = readSql("article_stats_schema.sql");
-
-// A Supabase project has these roles and hands them every privilege on a new
-// table and function in public. Without that, a migration that forgot its
-// revoke would still pass.
-const SUPABASE_SHIM = `
-  CREATE ROLE anon NOLOGIN;
-  CREATE ROLE authenticated NOLOGIN;
-  CREATE ROLE stranger NOLOGIN;
-  GRANT USAGE ON SCHEMA public TO anon, authenticated, stranger;
-  ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO anon, authenticated;
-  ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO anon, authenticated;
-`;
+import { MIGRATION, ROLLBACK, SNAPSHOT, migratedDatabase, supabaseLikeDatabase } from "./articleStatsDatabase";
 
 const PERMISSION_DENIED = "42501";
 const INVALID_PARAMETER = "22023";
@@ -71,17 +53,8 @@ function literal(value: string | null): string {
   return value === null ? "NULL" : `'${value.replaceAll("'", "''")}'`;
 }
 
-async function supabaseLike(): Promise<Database> {
-  const db = await postgres.open();
-  await db.rows(SUPABASE_SHIM);
-  return db;
-}
-
-async function migrated(): Promise<Database> {
-  const db = await supabaseLike();
-  await db.rows(MIGRATION);
-  return db;
-}
+const supabaseLike = () => supabaseLikeDatabase(postgres);
+const migrated = () => migratedDatabase(postgres);
 
 function record(db: Database, slug: string | null, event: string | null, as = "anon"): Promise<SqlResult> {
   return db.attempt(`SELECT * FROM public.record_article_event(${literal(slug)}, ${literal(event)})`, { as });

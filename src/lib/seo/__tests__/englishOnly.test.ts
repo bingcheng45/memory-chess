@@ -56,12 +56,16 @@ describe("isEnglishOnlyPath", () => {
   it("matches any path beneath a listed route", () => {
     expect(isEnglishOnlyPath("/learn/chess-memory-training")).toBe(true);
     expect(isEnglishOnlyPath("/learn/a/b")).toBe(true);
+    expect(isEnglishOnlyPath("/articles")).toBe(true);
+    expect(isEnglishOnlyPath("/articles/magnus-carlsen")).toBe(true);
   });
 
   it("does not match a route that only shares a prefix", () => {
     expect(isEnglishOnlyPath("/learning")).toBe(false);
     expect(isEnglishOnlyPath("/aboutus")).toBe(false);
     expect(isEnglishOnlyPath("/changelogs")).toBe(false);
+    expect(isEnglishOnlyPath("/articlesx")).toBe(false);
+    expect(isEnglishOnlyPath("/article")).toBe(false);
   });
 
   it("does not match localized product routes or a prefixed path", () => {

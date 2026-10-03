@@ -1,4 +1,5 @@
 import sitemap from "@/app/sitemap";
+import { ARTICLES, ARTICLES_LAST_UPDATED } from "@/lib/articles";
 import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
 import { LOCALES } from "@/i18n/routing";
 
@@ -84,6 +85,23 @@ describe("sitemap", () => {
     expect(leaderboard[0].alternates).toBeUndefined();
     for (const entry of entries) {
       expect(Object.values(entry.alternates?.languages ?? {}).some((href) => /leaderboard/.test(String(href)))).toBe(false);
+    }
+  });
+
+  it("lists the articles hub and every article once, with no alternates", async () => {
+    const entries = await sitemap();
+    const hub = entries.filter((entry) => entry.url === "https://thememorychess.com/articles");
+
+    expect(hub).toHaveLength(1);
+    expect(hub[0].alternates).toBeUndefined();
+    expect(new Date(hub[0].lastModified ?? 0).toISOString()).toBe(new Date(ARTICLES_LAST_UPDATED).toISOString());
+
+    for (const article of ARTICLES) {
+      const matches = entries.filter((entry) => entry.url === `https://thememorychess.com/articles/${article.slug}`);
+
+      expect(matches).toHaveLength(1);
+      expect(matches[0].alternates).toBeUndefined();
+      expect(new Date(matches[0].lastModified ?? 0).toISOString()).toBe(new Date(article.updatedAt).toISOString());
     }
   });
 

@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "배우기",
+      "articles": "기사",
       "about": "소개",
       "changelog": "업데이트 소식",
       "contactUs": "문의하기",

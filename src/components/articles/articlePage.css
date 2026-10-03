@@ -1,0 +1,3 @@
+body:has([data-article-rail]) {
+  overflow-x: clip;
+}

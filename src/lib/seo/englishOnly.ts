@@ -24,6 +24,7 @@ export const ENGLISH_ONLY_ROUTES = [
   "/terms",
   "/changelog",
   "/learn",
+  "/articles",
 ] as const;
 
 /**

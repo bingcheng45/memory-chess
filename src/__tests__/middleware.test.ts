@@ -64,6 +64,11 @@ describe("middleware on English-only routes", () => {
       "https://thememorychess.com/learn/chess-memory-training?ref=x",
     ],
     ["https://thememorychess.com/en/changelog", "https://thememorychess.com/changelog"],
+    ["https://thememorychess.com/de/articles", "https://thememorychess.com/articles"],
+    [
+      "https://thememorychess.com/ja/articles/magnus-carlsen?ref=x",
+      "https://thememorychess.com/articles/magnus-carlsen?ref=x",
+    ],
   ])("permanently redirects %s to the bare URL", (from, to) => {
     const response = run(from);
 
@@ -113,6 +118,11 @@ describe("middleware on a trailing slash", () => {
       "https://thememorychess.com/learn/how-to-stop-blundering-in-chess?utm=xyz",
     ],
     ["https://thememorychess.com/learn/", "https://thememorychess.com/learn"],
+    [
+      "https://thememorychess.com/de/articles/magnus-carlsen/",
+      "https://thememorychess.com/articles/magnus-carlsen",
+    ],
+    ["https://thememorychess.com/articles/", "https://thememorychess.com/articles"],
     ["https://thememorychess.com/de/game/", "https://thememorychess.com/de/game"],
   ])("sends %s to its canonical URL in one 308", (from, to) => {
     const response = middleware(new NextRequest(from, { headers: new Headers({ "user-agent": BROWSER }) }));

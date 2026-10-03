@@ -83,14 +83,18 @@ function inList(value) {
   return [...inner.matchAll(/"((?:[^"\\]|\\.)*)"|([^,]+)/g)].map((match) => match[1] ?? match[2]);
 }
 
+function invalidParameter(message) {
+  return { status: 400, body: { code: INVALID_PARAMETER, details: null, hint: null, message } };
+}
+
 function recordArticleEvent(body) {
   const slug = body?.p_slug;
   const step = typeof body?.p_event === "string" && Object.hasOwn(EVENT_STEPS, body.p_event) ? EVENT_STEPS[body.p_event] : null;
   if (typeof slug !== "string" || slug.length > MAX_SLUG_LENGTH || !SLUG_PATTERN.test(slug)) {
-    return { status: 400, body: { code: INVALID_PARAMETER, details: null, hint: null, message: "invalid article slug" } };
+    return invalidParameter("invalid article slug");
   }
   if (step === null) {
-    return { status: 400, body: { code: INVALID_PARAMETER, details: null, hint: null, message: "invalid article event" } };
+    return invalidParameter("invalid article event");
   }
   const before = articleStats.find((row) => row.slug === slug) ?? { slug, views: 0, likes: 0 };
   const after = { slug, views: before.views + step.views, likes: Math.max(0, before.likes + step.likes) };

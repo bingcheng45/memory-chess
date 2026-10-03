@@ -1,6 +1,6 @@
 # Articles list and articles
 
-`/articles` lists profiles of chess players and memory researchers, newest first, ten to a page. Each `/articles/<slug>` page shows one credited portrait, a fact file, the article set in a serif face, a drill link that starts a round on `/game`, the sources, and a link to the next article. The section is English-only and statically generated for the default locale, the way Learn is. The entries are data in `src/lib/articles/entries/`, and the registry in `src/lib/articles/index.ts` orders them.
+`/articles` lists profiles of chess players and memory researchers, newest first, ten to a page. Each `/articles/<slug>` page shows one credited portrait, a fact file, the article set in a serif face, a drill link that starts a round on `/game`, the sources, and a link to the next article. The section is English-only and statically generated for the default locale, the way Learn is. The entries are data in `src/lib/articles/entries/`, and the registry in `src/lib/articles/index.ts` orders them. Each card and each article shows a view count and a like count read from Supabase, the article has a like button, and the list sorts by newest, most viewed and most liked.
 
 ## Sub-features
 
@@ -10,6 +10,11 @@
 - `article-rail` keeps the portrait and fact file in a 280px left rail from 821px wide, sticky when the viewport is at least 847px tall, which fits the tallest rail with 20px above and below it. Below 821px the order is portrait, heading block, fact file, body.
 - `article-drill` opens `/game?pieceCount=<n>&memorizeTime=<s>`, which starts the round at once.
 - `articles-english-only` redirects `/<locale>/articles[/slug]` to the bare URL in one 308.
+- `article-counts` shows views and likes as text on a card and views in the article heading block. A count of zero or a missing count shows nothing. Both routes read counts on the server with `revalidate = 300`, so a count on the page is up to five minutes old.
+- `article-view` sends one `view` to `POST /api/articles/<slug>/stats` for each article in a browser tab session, remembered in `sessionStorage` under `memory-chess:article-viewed:v1`.
+- `article-like` is a toggle button with `aria-pressed`. It updates at once, sends `like` or `unlike`, and on a failure returns to its earlier state and says `That did not save. Try again.` The like is remembered in `localStorage` under `memory-chess:article-likes:v1`.
+- `articles-sort` shows Newest, Most viewed and Most liked when there are at least two articles and at least one count. The choice lives in `?sort=views` or `?sort=likes`. The server HTML is always newest first. A press slides the cards with a 560 ms transform.
+- `article-stats-route` answers 404 for an unknown slug, 204 with no write for a crawler user agent, 400 for a body that is not `{"event":"view" | "like" | "unlike"}` sent as `application/json` in at most 64 bytes, and 200 with `{ views, likes }`.
 - `articles-structured-data` emits an `Article` with an `about` `Person` and a `BreadcrumbList` on an article, and a `CollectionPage` with an `ItemList` on the list.
 
 ## How to get to it (user POV)
@@ -39,6 +44,10 @@ Preconditions:
 - **Crawler floor.** `helpers/ssr-words.sh http://127.0.0.1:<port>/articles/<slug> 900 | tee .verify-evidence/<run>/article.ssr.txt`, and the same with floor 300 for `/articles`.
 - **English-only check.** `curl -sI http://127.0.0.1:<port>/de/articles/<slug>/` answers one 308 to `/articles/<slug>`.
 - **Structured data.** `curl -s` the article and parse the `application/ld+json` script. It holds an `Article` with `datePublished` and an `about` of type `Person`. The HTML has a self canonical and no `hrefLang`.
+- **Counts, sorting, a view, a like.** Start the fake with a seeded fixture (see Gotchas), build against it, then run `node .claude/skills/verify-memory-chess/helpers/cdp.mjs .claude/skills/verify-memory-chess/helpers/drive-article-stats.mjs --evidence .verify-evidence/article-stats --base http://127.0.0.1:<port>`. It blocks the analytics hosts, reads the counts on each card, presses Most viewed and Most liked and checks the order and the address, opens the first article and waits for one answered `view`, reloads and checks that no second `view` leaves, then likes and unlikes and checks the count, `aria-pressed` and the 44px height. Its second read is the request body and status of every call to `/api/articles/<slug>/stats`. The fake prints one `rpc record_article_event slug=<slug> event=<event> -> views=<n> likes=<n>` line for each write that reached it, which is a third read.
+- **Rejected writes.** `curl -s -o /dev/null -w '%{http_code}' -X POST -H 'content-type: application/json' -A 'Googlebot/2.1' -d '{"event":"view"}' http://127.0.0.1:<port>/api/articles/<slug>/stats` answers 204 and the fake prints no line. The same call to `/api/articles/not-a-real-slug/stats` with a browser user agent answers 404. With `-H 'content-type: text/plain'` it answers 400.
+- **Supabase down.** Stop the fake, run `rm -rf .next && npm run build` with the same two env vars, and serve. Both pages render with no counts, no sort control and no error text. `drive-article-stats.mjs` then returns `mode: "stats unavailable"` after it sees the failure line beside the like button.
+- **Prerender.** `curl -sI http://127.0.0.1:<port>/articles/<slug>` shows `x-nextjs-prerender: 1` and `Cache-Control: s-maxage=300`.
 - **404.** `curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:<port>/articles/not-a-real-slug` returns 404.
 
 ## Gotchas
@@ -50,7 +59,14 @@ Preconditions:
 - The rail sticks only because `src/components/articles/articlePage.css` sets `overflow-x: clip` on `body` when the page holds `[data-article-rail]`. `globals.css` sets `overflow-x: hidden` on `html` and `body`, which makes `body` a scroll container that never scrolls, so `position: sticky` does nothing on any other page.
 - The heading block is first in the article's DOM, so the `h1` is the first heading a screen reader meets. Grid rows put the portrait above it on a phone, and grid columns put the rail on the left from 821px. On a phone the Tab order is therefore back link, author link, then the photo credit above them.
 - Both routes call `setRequestLocale`. Without it next-intl reads the locale from the request headers and the page renders on every request. `curl -sI` on `/articles` must show `x-nextjs-prerender: 1`.
-- The list keeps its page in the address and reads it through `useSyncExternalStore`, so Back, Forward and a link to the bare `/articles` all move the page. The server HTML and the first paint hold page 1.
+- Counts need a database. `helpers/fake-supabase.mjs <fixture.json> <port>` serves `article_stats` and `record_article_event` when the fixture is an object, `{ "leaderboard_entries": [...], "article_stats": [{ "slug": "magnus-carlsen", "views": 2140, "likes": 187 }] }`. A bare array still means leaderboard rows only. Export `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` before `npm run build`, because the counts are read at build time.
+- Run `rm -rf .next` before a rebuild. The build keeps Supabase answers in `.next/cache`, so a rebuild with the fake stopped would still show the old counts.
+- A page shows the counts from its last regeneration. After a view or a like, the server HTML changes only when a request arrives more than 300 seconds after the last regeneration, and that request still gets the old page. Assert a write from the request, the response or the fake's log, not from a reload.
+- The like button takes the count from the server's answer, so after a like it can jump by more than one when other likes arrived since the page was built.
+- The fake only imitates the database function. The real grants, row level security and `SECURITY DEFINER` are rehearsed in `schema/__tests__/articleStats.test.ts` on PGlite.
+- The sort slide starts only from a press on the sort control. `document.getAnimations()` right after a press lists one `transform` animation for each moved `li`. After a card click, Back or a direct load of `?sort=views` it lists none.
+- The view count, the like count and the like button sit in the heading block, not in the rail, so the rail height the sticky gate was measured for is unchanged.
+- The list keeps its page and its sort in the address and reads them through `useSyncExternalStore` in `src/components/articles/listAddress.ts`, so Back, Forward and a link to the bare `/articles` all move the page and the order. The server HTML and the first paint hold page 1.
 - The list is a client component and gets `ArticleSummary` objects. Passing whole articles would put every body in the list page's payload.
 - Article pages are static. Rebuild after editing an entry before the served page changes.
 - A drill link starts the round on arrival and strips the query, so a reload shows the configuration screen.

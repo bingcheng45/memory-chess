@@ -19,12 +19,14 @@ export function measureCards(list: HTMLElement): CardPlaces {
 export function slideCards(list: HTMLElement, before: CardPlaces): Animation[] {
   if (typeof Element.prototype.animate !== "function" || prefersReducedMotion()) return [];
 
+  const after = measureCards(list);
   return cardsOf(list).flatMap((card) => {
     const was = before.get(card);
-    if (was === undefined) return [];
+    const is = after.get(card);
+    if (was === undefined || is === undefined) return [];
 
-    const dx = was.left - card.offsetLeft;
-    const dy = was.top - card.offsetTop;
+    const dx = was.left - is.left;
+    const dy = was.top - is.top;
     if (dx === 0 && dy === 0) return [];
 
     return [card.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }], SLIDE)];

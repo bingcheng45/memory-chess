@@ -39,12 +39,14 @@ export default function LikeButton({ slug, likes }: LikeButtonProps) {
   );
   const [shown, setShown] = useState<Shown>({ likes: likes ?? 0, hasFailed: false });
   const isSending = useRef(false);
+  // The server's count can be five minutes older than this browser's own like, so a pressed heart counts for at least one.
+  const likesShown = Math.max(shown.likes, isLiked ? 1 : 0);
 
   async function toggle() {
     if (isSending.current) return;
     isSending.current = true;
 
-    const before = { isLiked, likes: shown.likes };
+    const before = { isLiked, likes: likesShown };
     const willLike = !before.isLiked;
     setLiked(slug, willLike);
     setShown({ likes: Math.max(0, before.likes + (willLike ? 1 : -1)), hasFailed: false });
@@ -61,7 +63,7 @@ export default function LikeButton({ slug, likes }: LikeButtonProps) {
     if (willLike) trackEvent({ name: "article_like", params: { slug } });
   }
 
-  const hasCount = shown.likes > 0;
+  const hasCount = likesShown > 0;
 
   return (
     <>
@@ -74,7 +76,7 @@ export default function LikeButton({ slug, likes }: LikeButtonProps) {
         className={BUTTON_CLASS}
       >
         <Heart aria-hidden="true" strokeWidth={1.8} className={HEART_CLASS} />
-        {hasCount ? <span id={countId}>{formatCount(shown.likes)}</span> : null}
+        {hasCount ? <span id={countId}>{formatCount(likesShown)}</span> : null}
       </button>
       <p role="status" aria-live="polite" className="text-peach-200">
         {shown.hasFailed ? ARTICLE_STATS_COPY.likeFailed : null}

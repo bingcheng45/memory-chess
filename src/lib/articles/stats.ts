@@ -42,6 +42,10 @@ export function toArticleStats(rows: unknown): ArticleStats {
   );
 }
 
+export function hasCounts(counts: ArticleCounts | undefined): counts is ArticleCounts {
+  return counts !== undefined && (counts.views > 0 || counts.likes > 0);
+}
+
 export function countsFor(stats: ArticleStats, slug: string): ArticleCounts | undefined {
   return Object.prototype.hasOwnProperty.call(stats, slug) ? stats[slug] : undefined;
 }

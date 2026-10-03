@@ -1,22 +1,24 @@
 "use client";
 
-import { Suspense, useEffect, useLayoutEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
+import { Suspense, useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
+import { flushSync } from "react-dom";
 import { useSearchParams } from "next/navigation";
 import ArticleCard from "@/components/articles/ArticleCard";
 import ArticlePager from "@/components/articles/ArticlePager";
 import SortControl from "@/components/articles/SortControl";
-import { measureCards, slideCards, type CardPlaces } from "@/components/articles/cardReorder";
+import { measureCards, slideCards } from "@/components/articles/cardReorder";
 import {
-  FIRST_PAGE,
+  BARE_SEARCH,
   notifyAddressListeners,
-  readPage,
-  readSort,
+  pageOf,
+  readSearch,
+  sortOf,
   subscribeToAddress,
   writeSort,
 } from "@/components/articles/listAddress";
 import { paginate } from "@/lib/articles/paging";
 import type { ArticleSummary } from "@/lib/articles/schema";
-import { DEFAULT_SORT, hasCountsToSortBy, sortArticles, type SortKey } from "@/lib/articles/sorting";
+import { hasCountsToSortBy, sortArticles, type SortKey } from "@/lib/articles/sorting";
 import { countsFor, type ArticleStats } from "@/lib/articles/stats";
 
 type ArticleListProps = {
@@ -24,8 +26,6 @@ type ArticleListProps = {
   stats: ArticleStats;
   heading: ReactNode;
 };
-
-const NO_PLACES: CardPlaces = new Map();
 
 // A link to the bare list URL changes the address without remounting the list
 // or firing popstate. useSearchParams is the only signal Next gives for that,
@@ -37,36 +37,27 @@ function AddressWatcher() {
 }
 
 export default function ArticleList({ articles, stats, heading }: ArticleListProps) {
-  const requestedPage = useSyncExternalStore(subscribeToAddress, readPage, () => FIRST_PAGE);
-  const sort = useSyncExternalStore(subscribeToAddress, readSort, () => DEFAULT_SORT);
-  const current = paginate(sortArticles(articles, stats, sort), requestedPage);
+  const search = useSyncExternalStore(subscribeToAddress, readSearch, () => BARE_SEARCH);
+  const sort = sortOf(search);
+  const current = paginate(sortArticles(articles, stats, sort), pageOf(search));
 
   const list = useRef<HTMLOListElement>(null);
-  const places = useRef<CardPlaces>(NO_PLACES);
   const slides = useRef<readonly Animation[]>([]);
-  const wasSortPressed = useRef(false);
-
-  useLayoutEffect(() => {
-    if (list.current === null) return;
-
-    // Only a press on the sort control slides the cards. A slide that began on
-    // arrival or on Back would run under the view transition of the same navigation.
-    if (wasSortPressed.current) slides.current = slideCards(list.current, places.current);
-    wasSortPressed.current = false;
-    places.current = measureCards(list.current);
-  });
-
-  function chooseSort(chosen: SortKey) {
-    if (chosen === sort) return;
-
-    finishSlides();
-    wasSortPressed.current = true;
-    writeSort(chosen);
-  }
 
   function finishSlides() {
     slides.current.forEach((slide) => slide.finish());
     slides.current = [];
+  }
+
+  // The slide starts here and nowhere else, so arrival, Back and a page change
+  // cannot start one under the view transition of a navigation.
+  function chooseSort(chosen: SortKey) {
+    if (chosen === sort || list.current === null) return;
+
+    finishSlides();
+    const before = measureCards(list.current);
+    flushSync(() => writeSort(chosen));
+    slides.current = slideCards(list.current, before);
   }
 
   return (

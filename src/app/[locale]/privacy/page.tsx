@@ -145,8 +145,10 @@ export default function PrivacyPage() {
               Liking an article saves the id of that article in the local
               storage of your browser, so the like button stays pressed when
               you come back. Session storage remembers which articles you
-              opened during the current browser session, so one visit counts
-              as one view. Neither list leaves your browser.
+              opened in the current tab, so opening one again there does not
+              add a view. Both lists stay in your browser. When you like an
+              article, Google Analytics also receives a like event that names
+              the article.
             </p>
             <p className={copyClassName}>
               Google Analytics and advertising services may use cookies or
@@ -242,8 +244,8 @@ export default function PrivacyPage() {
             </p>
             <p className={copyClassName}>
               When you open or like an article, Supabase stores only a total
-              of views and a total of likes for each article, with no visitor
-              identifier.
+              of views and a total of likes for each article, with the time
+              of the last change and no visitor identifier.
             </p>
           </section>
 

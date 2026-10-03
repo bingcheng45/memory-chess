@@ -23,6 +23,29 @@ jest.mock("@/i18n/navigation", () => ({
   usePathname: () => "/articles",
 }));
 
+const mockAddressWatchers = new Set<() => void>();
+let mockSearchParams = new URLSearchParams();
+
+// Stands in for Next's router: a soft navigation re-renders only the components that read the search params.
+jest.mock("next/navigation", () => ({
+  useSearchParams: () =>
+    jest.requireActual<typeof import("react")>("react").useSyncExternalStore(
+      (onChange: () => void) => {
+        mockAddressWatchers.add(onChange);
+        return () => mockAddressWatchers.delete(onChange);
+      },
+      () => mockSearchParams,
+    ),
+}));
+
+function softNavigate(address: string) {
+  act(() => {
+    window.history.pushState(null, "", address);
+    mockSearchParams = new URLSearchParams(window.location.search);
+    mockAddressWatchers.forEach((notify) => notify());
+  });
+}
+
 const HEADING = (
   <header>
     <h1>Articles</h1>
@@ -55,6 +78,7 @@ describe("ArticleList counts", () => {
     const { container } = renderSorted();
     const [alder] = cards(container);
 
+    expect(alder).toHaveAccessibleDescription(`${summaries(1)[0].description} 20 views 9 likes`);
     expect(within(alder).getByText("20 views")).toBeInTheDocument();
     expect(within(alder).getByText("9 likes")).toBeInTheDocument();
     expect(alder.querySelectorAll("button")).toHaveLength(0);
@@ -198,7 +222,7 @@ describe("ArticleList sorting", () => {
   });
 
   it("follows the address on Back, and a link to the bare address returns to newest", () => {
-    const { container, articles, rerender } = renderSorted();
+    const { container } = renderSorted();
 
     act(() => {
       window.history.replaceState(null, "", "/articles?sort=views");
@@ -206,9 +230,9 @@ describe("ArticleList sorting", () => {
     });
     expect(shown(container)[0]).toBe("birch-fixture");
 
-    window.history.pushState(null, "", "/articles");
-    rerender(<ArticleList articles={articles} stats={STATS} heading={HEADING} />);
+    softNavigate("/articles");
     expect(shown(container)[0]).toBe("alder-fixture");
+    expect(pressed()).toHaveTextContent("Newest");
   });
 });
 
@@ -216,14 +240,17 @@ describe("ArticleList slide", () => {
   const animate = jest.fn((): { finish: jest.Mock } => ({ finish: jest.fn() }));
   const SLIDE = { duration: 560, easing: "cubic-bezier(.16, 1, .3, 1)" };
 
+  let rowHeight = 100;
+
   beforeEach(() => {
     animate.mockClear();
+    rowHeight = 100;
     setReducedMotion(false);
     Object.defineProperty(Element.prototype, "animate", { configurable: true, writable: true, value: animate });
     Object.defineProperty(HTMLElement.prototype, "offsetTop", {
       configurable: true,
       get(this: HTMLElement) {
-        return Array.from(this.parentElement?.children ?? []).indexOf(this) * 100;
+        return Array.from(this.parentElement?.children ?? []).indexOf(this) * rowHeight;
       },
     });
   });
@@ -243,6 +270,28 @@ describe("ArticleList slide", () => {
     expect(animate).toHaveBeenCalledWith([{ transform: "translate(0px, -200px)" }, { transform: "none" }], SLIDE);
   });
 
+  it("slides from where the cards are at the press, not from where the last render left them", () => {
+    renderSorted();
+    rowHeight = 150;
+
+    press("Most viewed");
+
+    expect(animate).toHaveBeenCalledWith([{ transform: "translate(0px, -300px)" }, { transform: "none" }], SLIDE);
+    expect(animate).toHaveBeenCalledWith([{ transform: "translate(0px, 150px)" }, { transform: "none" }], SLIDE);
+    expect(animate).not.toHaveBeenCalledWith([{ transform: "translate(0px, 100px)" }, { transform: "none" }], SLIDE);
+  });
+
+  it("finishes the slide that is running when a second sort is pressed", () => {
+    renderSorted();
+    press("Most viewed");
+    const first = animate.mock.results.map((result) => result.value);
+
+    press("Most liked");
+
+    first.forEach((slide) => expect(slide.finish).toHaveBeenCalledTimes(1));
+    expect(animate.mock.calls.length).toBeGreaterThan(first.length);
+  });
+
   it("does not slide on arrival, on Back, or on a page change", () => {
     window.history.replaceState(null, "", "/articles?sort=views");
     renderSorted(13);
@@ -252,6 +301,31 @@ describe("ArticleList slide", () => {
       window.dispatchEvent(new PopStateEvent("popstate"));
     });
     fireEvent.click(screen.getByRole("button", { name: "Page 2" }));
+
+    expect(animate).not.toHaveBeenCalled();
+  });
+
+  it("slides once for a press, and not again on the Back or the soft navigation that follows", () => {
+    renderSorted();
+    press("Most viewed");
+
+    act(() => {
+      window.history.replaceState(null, "", "/articles?sort=likes");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    });
+    softNavigate("/articles");
+
+    expect(animate).toHaveBeenCalledTimes(3);
+  });
+
+  it("does not slide later because the current sort was pressed again", () => {
+    renderSorted();
+
+    press("Newest");
+    act(() => {
+      window.history.replaceState(null, "", "/articles?sort=views");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    });
 
     expect(animate).not.toHaveBeenCalled();
   });
@@ -267,13 +341,26 @@ describe("ArticleList slide", () => {
   });
 
   it("finishes a running slide before a card click starts its own transition", () => {
+    const startViewTransition = jest.fn(() => ({
+      ready: Promise.resolve(),
+      finished: Promise.resolve(),
+      skipTransition: jest.fn(),
+    }));
+    Object.defineProperty(document, "startViewTransition", { configurable: true, value: startViewTransition });
     const { container } = renderSorted();
     press("Most viewed");
     const slides = animate.mock.results.map((result) => result.value);
 
     fireEvent.click(cards(container)[0]);
+    Reflect.deleteProperty(document, "startViewTransition");
 
     expect(slides).toHaveLength(3);
-    slides.forEach((slide) => expect(slide.finish).toHaveBeenCalledTimes(1));
+    expect(startViewTransition).toHaveBeenCalledTimes(1);
+    slides.forEach((slide) => {
+      expect(slide.finish).toHaveBeenCalledTimes(1);
+      expect(slide.finish.mock.invocationCallOrder[0]).toBeLessThan(
+        startViewTransition.mock.invocationCallOrder[0],
+      );
+    });
   });
 });

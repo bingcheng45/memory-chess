@@ -1,6 +1,7 @@
 import { DEFAULT_SORT, parseSortKey, type SortKey } from "@/lib/articles/sorting";
 
 export const FIRST_PAGE = 1;
+export const BARE_SEARCH = "";
 
 const PAGE_PARAM = "page";
 const SORT_PARAM = "sort";
@@ -20,13 +21,17 @@ export function subscribeToAddress(onChange: () => void): () => void {
   };
 }
 
-export function readPage(): number {
-  const requested = new URLSearchParams(window.location.search).get(PAGE_PARAM);
+export function readSearch(): string {
+  return window.location.search;
+}
+
+export function pageOf(search: string): number {
+  const requested = new URLSearchParams(search).get(PAGE_PARAM);
   return requested === null ? FIRST_PAGE : Number(requested);
 }
 
-export function readSort(): SortKey {
-  return parseSortKey(new URLSearchParams(window.location.search).get(SORT_PARAM));
+export function sortOf(search: string): SortKey {
+  return parseSortKey(new URLSearchParams(search).get(SORT_PARAM));
 }
 
 function replaceAddress(change: (params: URLSearchParams) => void): void {

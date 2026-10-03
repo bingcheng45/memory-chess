@@ -1,4 +1,4 @@
-import { countsFor, type ArticleCounts, type ArticleStats } from "@/lib/articles/stats";
+import { countsFor, hasCounts, type ArticleCounts, type ArticleStats } from "@/lib/articles/stats";
 
 export const SORT_KEYS = ["newest", "views", "likes"] as const;
 
@@ -36,8 +36,5 @@ export function sortArticles<T extends WithSlug>(
 export function hasCountsToSortBy(articles: readonly WithSlug[], stats: ArticleStats): boolean {
   if (articles.length < MIN_ARTICLES_TO_SORT) return false;
 
-  return articles.some((article) => {
-    const { views, likes } = countsFor(stats, article.slug) ?? NO_COUNTS;
-    return views > 0 || likes > 0;
-  });
+  return articles.some((article) => hasCounts(countsFor(stats, article.slug)));
 }

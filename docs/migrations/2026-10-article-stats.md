@@ -65,7 +65,7 @@ SELECT rolname FROM pg_roles WHERE rolname IN ('anon', 'authenticated') ORDER BY
 
 ## 3. Apply
 
-Paste the whole of `schema/migrations/0002_article_stats.sql` into the SQL editor and run it once.
+Paste the whole of `schema/migrations/0002_article_stats.sql` into the SQL editor and run it once, as one batch. The SQL editor and the Supabase migration API both send the file as one batch, which Postgres runs in one transaction. Between `CREATE TABLE` and `REVOKE` the table has the default grants, so do not run the statements one at a time. With `psql`, pass `--single-transaction`.
 
 If the editor stops halfway, run the whole file again. Every statement is guarded.
 
@@ -112,7 +112,7 @@ Run each query after the migration. The root runs these on production. Each one 
     SELECT grantee, privilege_type
     FROM information_schema.role_table_grants
     WHERE table_schema = 'public' AND table_name = 'article_stats'
-      AND grantee IN ('anon', 'authenticated')
+      AND grantee IN ('anon', 'authenticated', 'PUBLIC')
     ORDER BY grantee, privilege_type;
     ```
 
@@ -199,6 +199,8 @@ The site keeps working after a rollback. The pages render with no counts and a l
 ## 6. Known limits
 
 - The site has no rate limit. A script that holds the anon key can call the function directly. It can inflate a count one step for each call, and it can create a row for any slug that matches the pattern. The site reads only the slugs in its registry, so a made-up row is never shown.
+- An unlike needs no proof of an earlier like, because the database stores no visitor. A script can also lower a like count one step for each call, down to zero.
+- The site gives each call 3 seconds. A call that times out after the database committed counts once in the database while the visitor sees a failure. A second press then counts again.
 - The route handler refuses crawler user agents and unknown slugs. The function cannot, because it does not see the request.
 
 ## 7. Reload the schema cache

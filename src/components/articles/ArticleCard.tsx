@@ -4,7 +4,7 @@ import ArticlePortrait from "@/components/articles/ArticlePortrait";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import { formatArticleDate } from "@/lib/articles/copy";
 import type { ArticleSummary } from "@/lib/articles/schema";
-import type { ArticleCounts } from "@/lib/articles/stats";
+import { hasCounts, type ArticleCounts } from "@/lib/articles/stats";
 
 type ArticleCardProps = {
   article: ArticleSummary;
@@ -20,7 +20,8 @@ const CARD_CLASS =
 
 export default function ArticleCard({ article, counts, priority }: ArticleCardProps) {
   const { slug, photo, person, publishedAt, title, description } = article;
-  const hasCounts = counts !== undefined && (counts.views > 0 || counts.likes > 0);
+  const descriptionId = `${slug}-description`;
+  const countsId = `${slug}-counts`;
 
   return (
     <li>
@@ -28,7 +29,7 @@ export default function ArticleCard({ article, counts, priority }: ArticleCardPr
         article={slug}
         data-article-card={slug}
         aria-labelledby={`${slug}-title`}
-        aria-describedby={`${slug}-description`}
+        aria-describedby={hasCounts(counts) ? `${descriptionId} ${countsId}` : descriptionId}
         className={CARD_CLASS}
       >
         <div>
@@ -59,13 +60,14 @@ export default function ArticleCard({ article, counts, priority }: ArticleCardPr
             {title}
           </h2>
           <p
-            id={`${slug}-description`}
+            id={descriptionId}
             className="text-[14.5px] leading-normal text-text-muted min-[561px]:text-[15.5px]"
           >
             {description}
           </p>
-          {hasCounts ? (
+          {hasCounts(counts) ? (
             <p
+              id={countsId}
               data-article-counts
               className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-1.5 text-[13px] text-text-muted [font-variant-numeric:tabular-nums]"
             >

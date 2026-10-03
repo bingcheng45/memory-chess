@@ -87,6 +87,15 @@ describe("LikeButton at rest", () => {
     expect(button()).toHaveTextContent(/^187$/);
   });
 
+  it.each([0, undefined])("shows 1, not nothing, when this browser liked it and the page still says %p", (likes) => {
+    window.localStorage.setItem(LIKED_STORAGE_KEY, JSON.stringify([SLUG]));
+
+    render(<LikeButton slug={SLUG} likes={likes} />);
+
+    expect(button()).toHaveAttribute("aria-pressed", "true");
+    expect(button()).toHaveTextContent(/^1$/);
+  });
+
   it("follows a like made in another tab", () => {
     render(<LikeButton slug={SLUG} likes={187} />);
 
@@ -114,6 +123,7 @@ describe("a like", () => {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ event: "like" }),
       keepalive: true,
+      signal: expect.any(AbortSignal),
     });
 
     await answer({ status: 200, body: { views: 2140, likes: 191 } });
@@ -207,6 +217,17 @@ describe("a like", () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
+  it("still rolls the stored like back when the visitor left before the failure came in", async () => {
+    const { answer } = deferredFetch();
+    const { unmount } = render(<LikeButton slug={SLUG} likes={187} />);
+    fireEvent.click(button());
+    unmount();
+
+    await answer({ status: 500 });
+
+    expect(storedLikes()).toEqual([]);
+  });
+
   it("works in a browser whose storage refuses every write", async () => {
     jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       throw new DOMException("The quota has been exceeded.", "QuotaExceededError");
@@ -247,13 +268,17 @@ describe("an unlike", () => {
     expect(trackEvent).not.toHaveBeenCalled();
   });
 
-  it("never shows a count below zero", () => {
-    deferredFetch();
+  it("never shows a count below zero, and restores the 1 it showed if the unlike fails", async () => {
+    const { answer } = deferredFetch();
     render(<LikeButton slug={SLUG} likes={0} />);
+    expect(button()).toHaveTextContent(/^1$/);
 
     fireEvent.click(button());
-
     expect(button()).toHaveTextContent(/^$/);
+
+    await answer({ status: 500 });
+    expect(button()).toHaveAttribute("aria-pressed", "true");
+    expect(button()).toHaveTextContent(/^1$/);
   });
 
   it("rolls back to pressed on a failure", async () => {

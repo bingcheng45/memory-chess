@@ -25,7 +25,38 @@ describe("sendArticleEvent", () => {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ event }),
       keepalive: true,
+      signal: expect.any(AbortSignal),
     });
+  });
+
+  it("aborts a request that has not settled after ten seconds, and answers null", async () => {
+    jest.useFakeTimers();
+    const fetchMock = jest.fn(
+      (_url: string, { signal }: { signal: AbortSignal }) =>
+        new Promise((_resolve, reject) => {
+          signal.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")));
+        }),
+    );
+    global.fetch = fetchMock as unknown as typeof fetch;
+
+    const sent = sendArticleEvent(SLUG, "like");
+    jest.advanceTimersByTime(9_999);
+    expect(fetchMock.mock.calls[0][1].signal.aborted).toBe(false);
+    jest.advanceTimersByTime(1);
+
+    expect(fetchMock.mock.calls[0][1].signal.aborted).toBe(true);
+    await expect(sent).resolves.toBeNull();
+    jest.useRealTimers();
+  });
+
+  it("leaves no timer behind once the request settles", async () => {
+    jest.useFakeTimers();
+    answer(200, { views: 12, likes: 3 });
+
+    await sendArticleEvent(SLUG, "like");
+
+    expect(jest.getTimerCount()).toBe(0);
+    jest.useRealTimers();
   });
 
   it("answers the counts of a 200", async () => {

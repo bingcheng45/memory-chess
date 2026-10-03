@@ -45,7 +45,12 @@ describe("PrivacyPage", () => {
       screen.getByText(/Session storage remembers which articles you opened/),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/only a total of views and a total of likes for each article, with no visitor identifier/),
+      screen.getByText(
+        /only a total of views and a total of likes for each article, with the time of the last change and no visitor identifier/,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Google Analytics also receives a like event that names the article/),
     ).toBeInTheDocument();
     expect(screen.getByText("Last updated: October 3, 2026")).toBeInTheDocument();
   });

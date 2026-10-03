@@ -32,10 +32,7 @@ export async function getArticleStats(slugs: readonly string[]): Promise<Article
       .in(SLUG_COLUMN, slugs)
       .abortSignal(AbortSignal.timeout(SUPABASE_TIMEOUT_MS));
 
-    if (error) {
-      console.error("Article stats read failed:", error);
-      return NO_ARTICLE_STATS;
-    }
+    if (error) throw error;
 
     return toArticleStats(data);
   } catch (cause) {

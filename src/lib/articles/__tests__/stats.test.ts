@@ -1,6 +1,7 @@
 import {
   ARTICLE_EVENTS,
   countsFor,
+  hasCounts,
   parseArticleCounts,
   parseArticleEvent,
   toArticleStats,
@@ -68,6 +69,17 @@ describe("toArticleStats", () => {
       expect(toArticleStats(rows)).toEqual({});
     },
   );
+});
+
+describe("hasCounts", () => {
+  it.each([
+    [{ views: 1, likes: 0 }, true],
+    [{ views: 0, likes: 1 }, true],
+    [{ views: 0, likes: 0 }, false],
+    [undefined, false],
+  ])("answers for %p: %p", (counts, expected) => {
+    expect(hasCounts(counts)).toBe(expected);
+  });
 });
 
 describe("countsFor", () => {

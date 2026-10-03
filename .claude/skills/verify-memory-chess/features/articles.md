@@ -7,7 +7,7 @@
 - `articles-list` shows one card per article. The whole card is one link.
 - `articles-paging` shows a pager only above ten articles, keeps the page in `?page=`, and always server-renders page 1.
 - `article-page` renders the portrait, the photo credit, the fact file, the body, the drill link, the sources and the next-article link.
-- `article-rail` keeps the portrait and fact file in a 280px left rail from 821px wide, sticky when the viewport is at least 820px tall. Below 821px the order is portrait, heading block, fact file, body.
+- `article-rail` keeps the portrait and fact file in a 280px left rail from 821px wide, sticky when the viewport is at least 847px tall, which fits the tallest rail with 20px above and below it. Below 821px the order is portrait, heading block, fact file, body.
 - `article-drill` opens `/game?pieceCount=<n>&memorizeTime=<s>`, which starts the round at once.
 - `articles-english-only` redirects `/<locale>/articles[/slug]` to the bare URL in one 308.
 - `articles-structured-data` emits an `Article` with an `about` `Person` and a `BreadcrumbList` on an article, and a `CollectionPage` with an `ItemList` on the list.
@@ -31,7 +31,7 @@ Preconditions:
 - **List.** `goto(baseUrl + "/articles")`. Assert `document.querySelectorAll('main a[href^="/articles/"]').length` equals the number of articles, up to ten, and that every `main img` has `naturalWidth > 0`. Screenshot.
 - **Current nav link.** `document.querySelector('nav[aria-label="Main"] a[aria-current="page"]').textContent` is `Articles` on `/articles`, and nothing is current on an article.
 - **Open an article.** `click('main a[href^="/articles/"]')`, then `waitFor("location.pathname.startsWith('/articles/')")`. Assert the `h1` text equals the card's `h2` text, `document.querySelectorAll("dl dt").length >= 4`, and `document.querySelector("figure cite a[href^='https://commons.wikimedia.org/']")` exists.
-- **Rail.** At 1440x900, `window.scrollTo(0, 1200)`, then assert `document.querySelector("figure img").getBoundingClientRect()` is still inside the viewport. At 375x812, read the `top` of `figure`, `header h1`, the fact file `section` and `[data-article-body]` and assert they rise in that order.
+- **Rail.** At 1440x900, `window.scrollTo(0, 1200)`, then assert `document.querySelector("figure img").getBoundingClientRect()` is still inside the viewport. At 1440x847, the lowest height at which the rail sticks, do the same on every article and assert the `bottom` of `[data-article-rail]` is at most `innerHeight`. A rail that fails needs a higher gate in `STICKY_RAIL` in `ArticlePage.tsx`. At 375x812, read the `top` of `figure`, `header h1`, the fact file `section` and `[data-article-body]` and assert they rise in that order.
 - **Body face and size.** `getComputedStyle(document.querySelector("[data-article-body]"))` reports a Literata `fontFamily`, `20px` from 561px wide and `18.5px` below.
 - **No sideways scroll.** `document.documentElement.scrollWidth <= innerWidth` at 1440, 375 and 320 wide.
 - **Drill.** `click("a[data-article-drill]")`, then `waitFor` a `Skip` button. Assert `location.pathname === "/game"` and that the count of `[data-coordinate][aria-label*=" with "]` equals the article's `drill.pieceCount`.

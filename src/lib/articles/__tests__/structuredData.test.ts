@@ -86,13 +86,13 @@ describe("buildArticleStructuredData", () => {
     });
   });
 
-  it("leads back to the list and the home page in its breadcrumb", () => {
-    expect(nodeOfType(graph, "BreadcrumbList")).toMatchObject({
+  it("names only the two crumbs the page shows, the list and the article", () => {
+    expect(nodeOfType(graph, "BreadcrumbList")).toEqual({
+      "@type": "BreadcrumbList",
       "@id": `${url}#breadcrumb`,
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE },
-        { "@type": "ListItem", position: 2, name: "Articles", item: `${SITE}/articles` },
-        { "@type": "ListItem", position: 3, name: article.title, item: url },
+        { "@type": "ListItem", position: 1, name: "Articles", item: `${SITE}/articles` },
+        { "@type": "ListItem", position: 2, name: article.title, item: url },
       ],
     });
   });

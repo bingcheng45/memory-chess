@@ -53,5 +53,4 @@ export const ARTICLE_COPY = {
     `Play ${pieceCount} pieces, ${memorizeTime} seconds`,
   sources: "Sources",
   nextArticle: "Next article",
-  breadcrumbHome: "Home",
 } as const;

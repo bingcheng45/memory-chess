@@ -29,6 +29,9 @@ const PORTRAIT_ASPECT = 4 / 5;
 const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const LONG_DASHES = [0x2013, 0x2014].map((code) => String.fromCharCode(code));
 
+// The merge day is set from the operator's clock, which reaches a date hours before UTC does.
+const DATE_SLACK_MS = 24 * 60 * 60 * 1000;
+
 const wordsIn = (text: string) => text.split(/\s+/).filter(Boolean);
 const sentencesIn = (text: string) =>
   text
@@ -121,10 +124,10 @@ describe.each(ARTICLES.map((article) => [article.slug, article] as const))("arti
     expect(article.description.length).toBeLessThanOrEqual(DESCRIPTION_MAX_CHARS);
   });
 
-  it("carries real ISO dates, published no later than updated and neither in the future", () => {
+  it("carries real ISO dates, published no later than updated and neither more than a day ahead", () => {
     for (const date of [article.publishedAt, article.updatedAt]) {
       expect(new Date(date).toISOString()).toBe(date);
-      expect(new Date(date).getTime()).toBeLessThanOrEqual(Date.now());
+      expect(new Date(date).getTime()).toBeLessThanOrEqual(Date.now() + DATE_SLACK_MS);
     }
     expect(article.publishedAt <= article.updatedAt).toBe(true);
   });

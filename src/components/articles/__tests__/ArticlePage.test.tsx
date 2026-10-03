@@ -88,6 +88,8 @@ describe("ArticlePage portrait and credit", () => {
     const cite = figure.querySelector("cite")!;
 
     expect(figure.querySelectorAll("cite")).toHaveLength(1);
+    expect(figure.lastElementChild?.tagName).toBe("FIGCAPTION");
+    expect(cite.parentElement).toBe(figure.lastElementChild);
     expect(cite).toHaveTextContent(article.photo.author);
     expect(cite).toHaveTextContent(article.photo.changes);
     expect(within(cite).getByRole("link", { name: article.photo.license })).toHaveAttribute(
@@ -191,6 +193,7 @@ describe("ArticlePage body", () => {
     expect(drill[0]).toHaveAttribute("data-article-drill");
     expect(drill[0]).toHaveTextContent(article.drill.why);
     expect(drill[0]).toHaveTextContent("Play 12 pieces, 5 seconds");
+    expect(drill[0]).toHaveAccessibleName("Play 12 pieces, 5 seconds");
   });
 
   it("lists every source as a cited link with its note", () => {
@@ -239,6 +242,23 @@ describe("ArticlePage markup", () => {
     );
   });
 
+  it("names in its breadcrumb only what the page shows, the list its back link opens and the title", () => {
+    const { container } = renderPage();
+    const graph: Record<string, unknown>[] = JSON.parse(
+      container.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}",
+    )["@graph"];
+    const crumbs = graph.find((node) => node["@type"] === "BreadcrumbList")?.itemListElement as {
+      name: string;
+      item: string;
+    }[];
+
+    expect(crumbs.map((crumb) => new URL(crumb.item).pathname)).toEqual([
+      screen.getByRole("link", { name: /All articles/ }).getAttribute("href"),
+      `/articles/${article.slug}`,
+    ]);
+    expect(crumbs[1].name).toBe(screen.getByRole("heading", { level: 1 }).textContent);
+  });
+
   it("puts the title before every other heading in the document", () => {
     const { container } = renderPage();
     const headings = Array.from(container.querySelectorAll("h1, h2, h3, h4, h5, h6"));
@@ -265,6 +285,16 @@ describe("ArticlePage markup", () => {
     expect(rail?.querySelector("figure img")).not.toBeNull();
     expect(rail?.querySelector("dl")).not.toBeNull();
     expect(rail?.querySelector("h1")).toBeNull();
+  });
+
+  it("runs no transition that a reduced-motion setting leaves on", () => {
+    const { container } = renderPage();
+    const transitioning = Array.from(container.querySelectorAll("[class]")).filter((node) =>
+      Array.from(node.classList).some((token) => /(^|:)transition(-|$)/.test(token)),
+    );
+
+    expect(transitioning.length).toBeGreaterThan(0);
+    for (const node of transitioning) expect(node).toHaveClass("motion-reduce:transition-none");
   });
 
   it("hides nothing at any width", () => {

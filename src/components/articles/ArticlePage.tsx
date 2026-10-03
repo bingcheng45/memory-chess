@@ -26,6 +26,9 @@ type ArticlePageProps = {
 
 const SOURCES_HEADING_ID = "article-sources-heading";
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
+// The tallest rail, Carlsen's, is 807px and sticks 20px from the top. 847px leaves 20px under it.
+const STICKY_RAIL =
+  "min-[821px]:[@media(min-height:847px)]:sticky min-[821px]:[@media(min-height:847px)]:top-5";
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
   return (
@@ -59,8 +62,8 @@ function Portrait({ article }: { article: Article }) {
       <figcaption className="mt-3 text-sm leading-[1.4] text-text-muted">
         <b className="block font-semibold text-text-secondary">{person.name}</b>
         <span>{person.role}</span>
+        <Credit credit={photo} />
       </figcaption>
-      <Credit credit={photo} />
     </figure>
   );
 }
@@ -119,11 +122,14 @@ function SectionText({ section }: { section: ArticleSection }) {
 }
 
 function Drill({ drill }: { drill: ArticleDrill }) {
+  const action = ARTICLE_COPY.drillAction(drill.pieceCount, drill.memorizeTime);
+
   return (
     <aside className="mt-10 max-w-[720px]">
       <Link
         href={gameHref(drill)}
         data-article-drill
+        aria-label={action}
         className={`group flex flex-wrap items-center justify-between gap-3.5 rounded-[18px] border border-peach-500/25 bg-peach-500/10 p-[22px] hover:border-peach-400/50 ${ARTICLE_FOCUS_RING}`}
       >
         <span className="min-w-0 flex-[1_1_260px] text-[15.5px] leading-[1.45] text-text-muted">
@@ -131,7 +137,7 @@ function Drill({ drill }: { drill: ArticleDrill }) {
           {drill.why}
         </span>
         <span className="inline-flex min-h-[46px] items-center rounded-full bg-peach-500 px-5 font-semibold text-bg-dark group-hover:bg-peach-400">
-          {ARTICLE_COPY.drillAction(drill.pieceCount, drill.memorizeTime)}
+          {action}
         </span>
       </Link>
     </aside>
@@ -186,7 +192,7 @@ export default function ArticlePage({ article, nextArticle }: ArticlePageProps) 
         <HeadingBlock article={article} />
         <div
           data-article-rail
-          className="contents min-[821px]:col-start-1 min-[821px]:row-span-2 min-[821px]:row-start-1 min-[821px]:block min-[821px]:[@media(min-height:820px)]:sticky min-[821px]:[@media(min-height:820px)]:top-5"
+          className={`contents min-[821px]:col-start-1 min-[821px]:row-span-2 min-[821px]:row-start-1 min-[821px]:block ${STICKY_RAIL}`}
         >
           <Portrait article={article} />
           <FactFile facts={article.facts} className="row-start-3 mt-7 min-[821px]:mt-[22px]" />

@@ -55,6 +55,15 @@ describe("ArticleList", () => {
     expect(container.querySelectorAll("a")).toHaveLength(1);
   });
 
+  it("names each card link by its title alone", () => {
+    const shown = summaries(3);
+    const { container } = render(<ArticleList articles={shown} />);
+
+    cards(container).forEach((card, index) => {
+      expect(card).toHaveAccessibleName(shown[index].title);
+    });
+  });
+
   it("loads the first portrait eagerly and the rest lazily", () => {
     const { container } = render(<ArticleList articles={summaries(3)} />);
     const [first, ...rest] = Array.from(container.querySelectorAll("img")).map((img) =>

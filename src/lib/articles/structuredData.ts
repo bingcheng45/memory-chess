@@ -2,7 +2,7 @@ import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { languageTag } from "@/lib/seo/alternates";
 import { BRAND_ORGANIZATION, BRAND_WEBSITE, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/brand";
 import { LEARN_AUTHOR } from "@/lib/seo/learn/schema";
-import { ARTICLE_COPY, ARTICLE_LIST_COPY } from "./copy";
+import { ARTICLE_LIST_COPY } from "./copy";
 import { absoluteUrl, ARTICLES_PATH, articlePath } from "./paths";
 import type { Article, ArticlePhoto, ArticleSummary } from "./schema";
 
@@ -70,7 +70,6 @@ function webPageNode(article: Article, url: string): Record<string, unknown> {
 
 function breadcrumbNode(article: Article, url: string): Record<string, unknown> {
   const crumbs = [
-    { name: ARTICLE_COPY.breadcrumbHome, item: absoluteUrl("/") },
     { name: ARTICLE_LIST_COPY.heading, item: absoluteUrl(ARTICLES_PATH) },
     { name: article.title, item: url },
   ];

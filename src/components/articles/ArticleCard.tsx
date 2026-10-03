@@ -21,7 +21,7 @@ export default function ArticleCard({ article, priority }: ArticleCardProps) {
 
   return (
     <li>
-      <Link href={articlePath(slug)} className={CARD_CLASS}>
+      <Link href={articlePath(slug)} aria-labelledby={`${slug}-title`} className={CARD_CLASS}>
         <div>
           <ArticlePortrait
             photo={photo}
@@ -38,7 +38,10 @@ export default function ArticleCard({ article, priority }: ArticleCardProps) {
           <time dateTime={publishedAt} className="text-[12.5px] tracking-[0.02em] text-peach-500">
             {formatArticleDate(publishedAt)}
           </time>
-          <h2 className="text-[clamp(19px,2.7vw,25px)] font-bold leading-[1.18] tracking-[-0.015em] text-white [text-wrap:balance] group-hover:text-peach-200">
+          <h2
+            id={`${slug}-title`}
+            className="text-[clamp(19px,2.7vw,25px)] font-bold leading-[1.18] tracking-[-0.015em] text-white [text-wrap:balance] group-hover:text-peach-200"
+          >
             {title}
           </h2>
           <p className="text-[14.5px] leading-normal text-text-muted min-[561px]:text-[15.5px]">

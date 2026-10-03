@@ -54,8 +54,8 @@ const SHORT_LIMIT_MS = 500;
 
 // Jest cannot load the audit script, which is an ES module, so it runs in a
 // Node child process. It reads the pages from a file because stdin is not
-// safe here: when several processes spawn at once, Node now and then never
-// ends the child's stdin, and the child waits for it forever.
+// safe here: now and then Node never ends the child's stdin, and the child
+// waits for it forever.
 const AUDIT_PROGRAM = `
   import { readFileSync } from "node:fs";
   const audit = await import(${JSON.stringify(AUDIT_URL)});

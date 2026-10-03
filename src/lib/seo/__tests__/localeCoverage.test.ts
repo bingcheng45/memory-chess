@@ -1,6 +1,7 @@
 import sitemap from "@/app/sitemap";
 import { LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { ENGLISH_ONLY_ROUTES } from "@/lib/seo/englishOnly";
+import { ARTICLE_SLUGS } from "@/lib/articles";
 import { EN_LEARN_PAGES } from "@/lib/seo/learn";
 
 const NON_DEFAULT_LOCALES = LOCALES.filter(
@@ -22,6 +23,7 @@ describe("locale coverage", () => {
     const englishOnlyUrls = [
       ...ENGLISH_ONLY_ROUTES,
       ...EN_LEARN_PAGES.map((page) => `/learn/${page.slug}`),
+      ...ARTICLE_SLUGS.map((slug) => `/articles/${slug}`),
     ].map((path) => `${SITE_URL}${path}`);
 
     for (const url of englishOnlyUrls) {
@@ -41,9 +43,11 @@ describe("locale coverage", () => {
   it("gives English-only entries no hreflang alternates", async () => {
     const entries = await sitemap();
     const learn = entries.find((entry) => entry.url === `${SITE_URL}/learn`);
+    const articles = entries.find((entry) => entry.url === `${SITE_URL}/articles`);
     const game = entries.find((entry) => entry.url === `${SITE_URL}/game`);
 
     expect(learn?.alternates).toBeUndefined();
+    expect(articles?.alternates).toBeUndefined();
     expect(Object.keys(game?.alternates?.languages ?? {})).toEqual([
       ...LOCALES,
       "x-default",

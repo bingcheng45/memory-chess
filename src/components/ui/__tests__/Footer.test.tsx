@@ -23,6 +23,7 @@ test("English-only pages link to their bare canonical URL", () => {
   expect(hrefFor(/^Privacy$/)).toBe("/privacy");
   expect(hrefFor(/^Terms$/)).toBe("/terms");
   expect(hrefFor(/^Learn$/)).toBe("/learn");
+  expect(hrefFor(/^Articles$/)).toBe("/articles");
   expect(hrefFor(/^Changelog$/)).toBe("/changelog");
 });
 
@@ -65,4 +66,14 @@ test("every English-only route is reachable from the footer", () => {
   for (const route of ENGLISH_ONLY_ROUTES) {
     expect(hrefs).toContain(route);
   }
+});
+
+test("Articles sits right after Learn", () => {
+  render(<Footer />);
+
+  const labels = screen.getAllByRole("link").map((link) => link.textContent);
+  const learn = labels.indexOf("Learn");
+
+  expect(learn).toBeGreaterThanOrEqual(0);
+  expect(labels[learn + 1]).toBe("Articles");
 });

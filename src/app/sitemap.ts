@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { ARTICLES, ARTICLES_LAST_UPDATED } from "@/lib/articles";
+import { ARTICLES_PATH, articlePath } from "@/lib/articles/paths";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { EN_LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";
 import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
@@ -94,6 +96,18 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   ...EN_LEARN_PAGES.map((page) => ({
     path: `/learn/${page.slug}`,
     lastModified: page.updatedAt,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  })),
+  {
+    path: ARTICLES_PATH,
+    lastModified: ARTICLES_LAST_UPDATED,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  ...ARTICLES.map((article) => ({
+    path: articlePath(article.slug),
+    lastModified: article.updatedAt,
     changeFrequency: "weekly" as const,
     priority: 0.7,
   })),

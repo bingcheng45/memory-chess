@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "学ぶ",
+      "articles": "記事",
       "about": "サイトについて",
       "changelog": "更新履歴",
       "contactUs": "お問い合わせ",

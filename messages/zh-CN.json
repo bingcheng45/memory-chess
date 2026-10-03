@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "学习",
+      "articles": "文章",
       "about": "关于",
       "changelog": "更新日志",
       "contactUs": "联系我们",

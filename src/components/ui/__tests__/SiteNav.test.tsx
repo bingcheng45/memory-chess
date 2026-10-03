@@ -19,14 +19,21 @@ beforeEach(() => {
 });
 
 describe("SiteNav", () => {
-  it("links Play, Learn, Leaderboard and About in that order", () => {
+  it("links Play, Learn, Articles, Leaderboard and About in that order", () => {
     render(<SiteNav />);
 
     const links = within(nav()).getAllByRole("link");
-    expect(links.map((link) => link.textContent)).toEqual(["Play", "Learn", "Leaderboard", "About"]);
+    expect(links.map((link) => link.textContent)).toEqual([
+      "Play",
+      "Learn",
+      "Articles",
+      "Leaderboard",
+      "About",
+    ]);
     expect(links.map((link) => link.getAttribute("href"))).toEqual([
       "/game",
       "/learn",
+      "/articles",
       "/leaderboard",
       "/about",
     ]);
@@ -39,6 +46,19 @@ describe("SiteNav", () => {
     const current = within(nav()).getByRole("link", { current: "page" });
     expect(current).toHaveTextContent("Leaderboard");
     expect(within(nav()).getAllByRole("link").filter((link) => link.hasAttribute("aria-current"))).toHaveLength(1);
+  });
+
+  it("marks Articles on the articles list and nothing on an article beneath it", () => {
+    mockPathname = "/articles";
+    const { unmount } = render(<SiteNav />);
+
+    expect(within(nav()).getByRole("link", { current: "page" })).toHaveTextContent("Articles");
+    unmount();
+
+    mockPathname = "/articles/some-slug";
+    render(<SiteNav />);
+
+    expect(within(nav()).queryByRole("link", { current: "page" })).not.toBeInTheDocument();
   });
 
   it("marks nothing on a page the nav does not list", () => {
@@ -54,7 +74,7 @@ describe("SiteNav", () => {
     expect(container.querySelector('a[href="/de/game"]')).toHaveTextContent(deMessages.common.nav.play);
     expect(container.querySelector('a[href="/de/leaderboard"]')).not.toHaveAttribute("hreflang");
 
-    for (const route of ["/learn", "/about"]) {
+    for (const route of ["/learn", "/articles", "/about"]) {
       const link = container.querySelector(`a[href="${route}"]`);
       expect(link).toHaveAttribute("hreflang", "en");
       // A compact marker stands in for the footer's " (English)" suffix,
@@ -82,7 +102,7 @@ describe("PageHeader navigation", () => {
   it("renders the nav on ordinary pages", () => {
     renderHeader();
 
-    expect(within(nav()).getAllByRole("link")).toHaveLength(4);
+    expect(within(nav()).getAllByRole("link")).toHaveLength(5);
   });
 
   it("leaves the nav out while a round is being memorised or placed", () => {

@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "Learn",
+      "articles": "Articles",
       "about": "About",
       "changelog": "Changelog",
       "contactUs": "Contact Us",

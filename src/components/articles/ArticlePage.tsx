@@ -3,14 +3,13 @@ import { Link } from "@/i18n/navigation";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
 import FactFile from "@/components/articles/FactFile";
+import TypedBody from "@/components/articles/TypedBody";
 import { ARTICLE_FOCUS_RING, ARTICLE_LINK } from "@/components/articles/articleStyles";
 import { EditorialPageShell } from "@/components/editorial/EditorialPage";
 import { ARTICLE_COPY, formatArticleDate } from "@/lib/articles/copy";
-import { readingFont } from "@/lib/articles/readingFont";
 import type {
   Article,
   ArticleDrill,
-  ArticleSection,
   ArticleSource,
   ArticleSummary,
   PhotoCredit,
@@ -98,34 +97,6 @@ function HeadingBlock({ article }: { article: Article }) {
   );
 }
 
-function Body({ article }: { article: Article }) {
-  return (
-    <div
-      data-article-body
-      className={`${readingFont.className} mt-[34px] max-w-[66ch] text-[18.5px] leading-[1.75] text-text-secondary min-[561px]:text-xl`}
-    >
-      {article.sections.map((section) => (
-        <SectionText key={section.heading} section={section} />
-      ))}
-    </div>
-  );
-}
-
-function SectionText({ section }: { section: ArticleSection }) {
-  return (
-    <>
-      <h2 className="mb-[0.55em] mt-[1.8em] text-[22px] font-bold leading-tight tracking-[-0.01em] text-white [font-family:var(--font-geist-sans)] first:mt-0">
-        {section.heading}
-      </h2>
-      {section.paragraphs.map((paragraph) => (
-        <p key={paragraph} className="mb-[1.3em]">
-          {paragraph}
-        </p>
-      ))}
-    </>
-  );
-}
-
 function Drill({ drill }: { drill: ArticleDrill }) {
   const action = ARTICLE_COPY.drillAction(drill.pieceCount, drill.memorizeTime);
 
@@ -206,7 +177,7 @@ export default function ArticlePage({ article, nextArticle }: ArticlePageProps) 
           <FactFile facts={article.facts} className="row-start-3 mt-7 min-[821px]:mt-[22px]" />
         </div>
         <div className="row-start-4 min-[821px]:col-start-2 min-[821px]:row-start-2">
-          <Body article={article} />
+          <TypedBody key={article.slug} slug={article.slug} sections={article.sections} />
           <Drill drill={article.drill} />
           <Sources sources={article.sources} />
           {nextArticle ? <NextArticle next={nextArticle} /> : null}

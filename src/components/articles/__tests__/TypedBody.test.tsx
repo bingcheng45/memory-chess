@@ -25,11 +25,20 @@ const untyped = () => Array.from(body().querySelectorAll(".article-untyped"));
 const shownLength = () =>
   FULL_TEXT.length - untyped().reduce((total, span) => total + (span.textContent ?? "").length, 0);
 
-async function typeFor(ms: number) {
+function partlyTypedBlock(): number | null {
+  const block = body().querySelector(".article-caret")?.parentElement;
+  if (!block) return null;
+  const [shown, , rest] = Array.from(block.children);
+  const isPartlyTyped = shown.textContent !== "" && rest.textContent !== "";
+  return isPartlyTyped ? Array.from(body().children).indexOf(block) : null;
+}
+
+async function typeFor(ms: number, afterEachFrame: () => void = () => {}) {
   for (let elapsed = 0; elapsed < ms; elapsed += FRAME_MS) {
     await act(async () => {
       jest.advanceTimersByTime(FRAME_MS);
     });
+    afterEachFrame();
   }
 }
 
@@ -217,16 +226,19 @@ describe("TypedBody after a click on a card", () => {
     expectFullPlainText();
   });
 
-  it("still types under React StrictMode", async () => {
+  it("types every block under React StrictMode, each one part by part and none skipped", async () => {
     renderBody({ reactStrictMode: true });
+    const seenPartlyTyped = new Set<number>();
 
     expect(phase()).toBe("typing");
     expect(shownLength()).toBe(0);
 
-    await typeFor(200);
-    expect(shownLength()).toBeGreaterThan(0);
+    await typeFor(LONGER_THAN_THE_WHOLE_BODY_MS, () => {
+      const block = partlyTypedBlock();
+      if (block !== null) seenPartlyTyped.add(block);
+    });
 
-    await typeFor(LONGER_THAN_THE_WHOLE_BODY_MS);
+    expect(Array.from(seenPartlyTyped)).toEqual(BLOCKS.map((_, index) => index));
     expect(phase()).toBe("done");
     expectFullPlainText();
   });
@@ -311,10 +323,7 @@ describe("TypedBody after a click on a card", () => {
     renderBody();
     const lengths: number[] = [];
 
-    for (let frame = 0; frame < 6; frame++) {
-      await typeFor(FRAME_MS);
-      lengths.push(shownLength());
-    }
+    await typeFor(6 * FRAME_MS, () => lengths.push(shownLength()));
 
     expect(lengths).toEqual([...lengths].sort((a, b) => a - b));
     expect(lengths.at(-1)).toBeGreaterThanOrEqual(9);

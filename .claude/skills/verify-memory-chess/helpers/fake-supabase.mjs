@@ -52,6 +52,13 @@ function sendJson(res, status, body, headers = {}) {
   res.end(body === undefined ? undefined : JSON.stringify(body));
 }
 
+function sendCannotAnswer(res, unsupported) {
+  sendJson(res, 501, {
+    code: "PGRST000",
+    message: `fixture cannot answer ${unsupported.map(([key, value]) => `${key}=${value}`).join("&")}`,
+  });
+}
+
 function carriesCountryCode(body) {
   const inserted = Array.isArray(body) ? body : [body];
   return inserted.some((row) => row && typeof row === "object" && "country_code" in row);
@@ -102,14 +109,19 @@ function recordArticleEvent(body) {
   return { status: 200, body: [{ views: after.views, likes: after.likes }] };
 }
 
+function unsupportedArticleStatsFilters(url) {
+  return [...url.searchParams].filter(
+    ([key, value]) => key !== "select" && !(key === "slug" && /^(eq\.|in\.\()/.test(value)),
+  );
+}
+
 function selectArticleStats(url) {
   const columns = (url.searchParams.get("select") ?? "*").split(",");
   const wanted = url.searchParams.get("slug");
   const kept = articleStats.filter((row) => {
     if (wanted === null) return true;
     if (wanted.startsWith("in.(")) return inList(wanted).includes(row.slug);
-    if (wanted.startsWith("eq.")) return row.slug === wanted.slice(3);
-    return true;
+    return row.slug === wanted.slice("eq.".length);
   });
   const picked = columns.includes("*")
     ? kept
@@ -133,6 +145,12 @@ createServer(async (req, res) => {
     return;
   }
   if (url.pathname.endsWith("/rest/v1/article_stats")) {
+    const unsupported = unsupportedArticleStatsFilters(url);
+    if (unsupported.length) {
+      console.log(`article_stats select ${url.searchParams.toString()} -> 501`);
+      sendCannotAnswer(res, unsupported);
+      return;
+    }
     const page = selectArticleStats(url);
     sendJson(res, 200, req.method === "HEAD" ? undefined : page, {
       "content-range": page.length ? `0-${page.length - 1}/${page.length}` : `*/0`,
@@ -154,8 +172,7 @@ createServer(async (req, res) => {
       !["select", "order", "limit", "offset"].includes(key) && !/^(eq|gt)\./.test(value),
   );
   if (unsupported.length) {
-    res.writeHead(501, { "content-type": "application/json" });
-    res.end(JSON.stringify({ code: "PGRST000", message: `fixture cannot answer ${unsupported.map(([k, v]) => `${k}=${v}`).join("&")}` }));
+    sendCannotAnswer(res, unsupported);
     return;
   }
   const ranked = rows

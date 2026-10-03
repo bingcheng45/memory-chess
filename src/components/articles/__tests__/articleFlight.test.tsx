@@ -1,14 +1,17 @@
 import type { ComponentProps } from "react";
-import { fireEvent, render } from "@/test-utils/intl";
+import { act, fireEvent, render } from "@/test-utils/intl";
 import { clearArrival } from "@/components/articles/articleArrival";
 import {
   ARTICLE_HREF,
   ArticlePage,
   ListPage,
+  OTHER_ARTICLE_HREF,
   OtherCard,
+  ROUTE_COMMIT_LIMIT_MS,
   backLink,
   card,
   flush,
+  isSettled,
   otherCard,
   stubViewTransitions,
 } from "@/components/articles/__tests__/flightHarness";
@@ -26,6 +29,7 @@ jest.mock("next/link", () => {
   return MockNextLink;
 });
 
+const SECOND_CLICK_BEFORE_LIMIT_MS = 100;
 let mockPathname = "/articles";
 
 jest.mock("@/i18n/navigation", () => ({
@@ -42,6 +46,7 @@ beforeEach(() => {
 afterEach(() => {
   clearArrival();
   Reflect.deleteProperty(document, "startViewTransition");
+  jest.useRealTimers();
 });
 
 describe("ArticleLink when two flights overlap", () => {
@@ -87,6 +92,34 @@ describe("ArticleLink when two flights overlap", () => {
     expect(second.flightsWhenStarted).toBe(1);
     expect(otherCard()).toHaveAttribute("data-article-flight");
     expect(card()).not.toHaveAttribute("data-article-flight");
+  });
+
+  it("lets the second flight land when the first one's 400 ms limit passes while it waits", async () => {
+    jest.useFakeTimers();
+    stubViewTransitions();
+    const { rerender } = render(
+      <>
+        <ListPage />
+        <OtherCard />
+      </>,
+    );
+    fireEvent.click(card());
+    await flush();
+    act(() => {
+      jest.advanceTimersByTime(ROUTE_COMMIT_LIMIT_MS - SECOND_CLICK_BEFORE_LIMIT_MS);
+    });
+
+    const second = stubViewTransitions();
+    fireEvent.click(otherCard());
+    await flush();
+    act(() => {
+      jest.advanceTimersByTime(SECOND_CLICK_BEFORE_LIMIT_MS);
+    });
+    mockPathname = OTHER_ARTICLE_HREF;
+    rerender(<ArticlePage />);
+
+    expect(await isSettled(second.updateDone)).toBe(true);
+    expect(second.skip).not.toHaveBeenCalled();
   });
 
   it("leaves the article page's own name in place when a flight starts from it", async () => {

@@ -1,6 +1,8 @@
 import type { ComponentProps } from "react";
 import { render, screen, within } from "@/test-utils/intl";
 import ArticlePage from "@/components/articles/ArticlePage";
+import { announceArrival, clearArrival } from "@/components/articles/articleArrival";
+import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
 import { ARTICLE_COPY } from "@/lib/articles/copy";
 import { FACT_ROWS, type Article } from "@/lib/articles/schema";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
@@ -237,6 +239,23 @@ describe("ArticlePage body", () => {
     render(<ArticlePage article={article} />);
 
     expect(screen.queryByText("Next article")).not.toBeInTheDocument();
+  });
+});
+
+describe("ArticlePage when the next article opens in its place", () => {
+  afterEach(clearArrival);
+
+  it("starts the next body over, so it types from its first character", () => {
+    setReducedMotion(false);
+    const following = makeArticle(1);
+    const { container, rerender } = renderPage();
+    const typing = () => container.querySelector("[data-article-body]")?.getAttribute("data-article-typing");
+    expect(typing()).toBe("idle");
+
+    announceArrival(following.slug, Promise.resolve());
+    rerender(<ArticlePage article={following} nextArticle={next} />);
+
+    expect(typing()).toBe("typing");
   });
 });
 

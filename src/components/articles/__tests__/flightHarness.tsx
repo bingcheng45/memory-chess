@@ -5,6 +5,7 @@ import ArticleLink from "@/components/articles/ArticleLink";
 export const SLUG = "alder-fixture";
 const OTHER_SLUG = "birch-fixture";
 export const ARTICLE_HREF = `/articles/${SLUG}`;
+export const OTHER_ARTICLE_HREF = `/articles/${OTHER_SLUG}`;
 export const ROUTE_COMMIT_LIMIT_MS = 400;
 
 export const flush = () => act(async () => {});

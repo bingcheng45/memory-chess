@@ -380,6 +380,18 @@ describe("TypedBody after a click on a card", () => {
     expect(request).not.toHaveBeenCalled();
   });
 
+  it("stops checking a waiting block once the reader leaves", async () => {
+    placeBlocksAt({ top: window.innerHeight + 500, bottom: window.innerHeight + 600 });
+    const { unmount } = renderBody();
+    await typeFor(100);
+
+    unmount();
+    const request = jest.spyOn(window, "requestAnimationFrame");
+    await typeFor(600);
+
+    expect(request).not.toHaveBeenCalled();
+  });
+
   it("checks a waiting block a few times a second, not on every frame", async () => {
     placeBlocksAt({ top: window.innerHeight + 500, bottom: window.innerHeight + 600 });
     renderBody();

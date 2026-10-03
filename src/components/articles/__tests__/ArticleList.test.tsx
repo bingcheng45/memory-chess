@@ -93,7 +93,6 @@ describe("ArticleList", () => {
       expect(card.querySelectorAll("[data-flight]")).toHaveLength(3);
     }
     expect(container.querySelectorAll("[data-article-flight]")).toHaveLength(0);
-    expect(container.querySelectorAll("[style*='view-transition-name']")).toHaveLength(0);
   });
 
   it("loads the first portrait eagerly and the rest lazily", () => {

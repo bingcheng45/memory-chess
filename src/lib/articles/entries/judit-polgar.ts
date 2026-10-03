@@ -121,7 +121,12 @@ const article: Article = {
     {
       title: "Perception in chess, William Chase and Herbert Simon, Carnegie Mellon preprint of the 1973 Cognitive Psychology paper",
       url: "https://iiif.library.cmu.edu/file/Simon_box00005_fld00354_bdl0001_doc0001/Simon_box00005_fld00354_bdl0001_doc0001.pdf",
-      note: "Supports: de Groot's five-second finding, the three players, middle-game positions of 24 to 26 pieces, about 16, 8 and 4 pieces placed, the random boards, the starting hypothesis of about five chunks of four or five pieces, the result that the master recalled more chunks and larger chunks.",
+      note: "Supports: de Groot's finding from a few seconds of viewing, the three players, middle-game positions of 24 to 26 pieces, about 16, 8 and 4 pieces placed, the random boards, the starting hypothesis of about five chunks of four or five pieces, the result that the master recalled more chunks and larger chunks.",
+    },
+    {
+      title: "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+      url: "https://bura.brunel.ac.uk/bitstream/2438/1346/1/FullText.pdf",
+      note: "Supports: the small advantage stronger players keep on random positions.",
     },
     {
       title: "The mind's eye in blindfold chess, Guillermo Campitelli and Fernand Gobet, European Journal of Cognitive Psychology, 2005, author preprint",

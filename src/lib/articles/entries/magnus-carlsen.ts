@@ -109,7 +109,7 @@ const article: Article = {
     {
       title: "\"Memory: The Key To Chess?\", Nate Solon, Zwischenzug, 1 April 2023",
       url: "https://www.zwischenzug.gg/p/memory-the-key-to-chess",
-      note: "Supports: the Harry Potter position as the only one that stopped Carlsen, and de Groot's recall experiment with its results.",
+      note: "Supports: the Harry Potter position as the only one that stopped Carlsen.",
     },
     {
       title: "\"Magnus Carlsen's Remarkable Memory\", Jason Kottke, kottke.org, 30 April 2021",
@@ -125,6 +125,11 @@ const article: Article = {
       title: "\"#2275 - Magnus Carlsen\", The Joe Rogan Experience (transcript), HappyScribe",
       url: "https://podcasts.happyscribe.com/the-joe-rogan-experience/2275-magnus-carlsen",
       note: "Supports: his description of seeing the board, one game at a time, remembering games in broad strokes, and the pawn remark about blindfold games.",
+    },
+    {
+      title: "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague",
+      url: "https://archive.org/details/adriaan_d._de_groot_-_thought_and_choice_in_chess_2nd_ed._1978",
+      note: "Supports: the recall scores of de Groot's four subjects, 93 percent for the two strongest and 51 percent for the weakest.",
     },
     {
       title: "\"Recall of random and distorted chess positions: Implications for the theory of expertise\", Fernand Gobet and Herbert A. Simon, Memory & Cognition 24(4), 1996",

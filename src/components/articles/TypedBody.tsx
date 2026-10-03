@@ -16,9 +16,12 @@ type BlockStage = "shown" | "current" | "waiting";
 type SpanRef = RefObject<HTMLSpanElement | null>;
 type TypingState =
   | { readonly phase: "idle" }
-  | { readonly phase: "typing"; readonly block: number; readonly mayStart: Promise<void> }
+  | { readonly phase: "typing"; readonly block: number; readonly hasTyped: boolean; readonly mayStart: Promise<void> }
   | { readonly phase: "done" };
-type TypingEvent = { readonly type: "blockTyped" } | { readonly type: "showAll" };
+type TypingEvent =
+  | { readonly type: "firstCharTyped" }
+  | { readonly type: "blockTyped" }
+  | { readonly type: "showAll" };
 
 const SHOW_ALL_LABEL = "Show all text";
 const HELD_BLOCK_CHECK_MS = 250;
@@ -48,11 +51,12 @@ function blocksOf(sections: readonly ArticleSection[]): readonly Block[] {
 function initialState({ slug, blockCount }: { slug: string; blockCount: number }): TypingState {
   const arrival = peekArrival(slug);
   if (arrival === null || blockCount === 0 || prefersReducedMotion()) return IDLE;
-  return { phase: "typing", block: 0, mayStart: arrival.mayStart };
+  return { phase: "typing", block: 0, hasTyped: false, mayStart: arrival.mayStart };
 }
 
 function nextState(state: TypingState, event: TypingEvent, blockCount: number): TypingState {
   if (state.phase !== "typing") return state;
+  if (event.type === "firstCharTyped") return state.hasTyped ? state : { ...state, hasTyped: true };
   const isLastBlock = state.block + 1 >= blockCount;
   if (event.type === "showAll" || isLastBlock) return DONE;
   return { ...state, block: state.block + 1 };
@@ -63,7 +67,7 @@ function stageOf(state: TypingState, index: number): BlockStage {
   return index === state.block ? "current" : "waiting";
 }
 
-function typeOut(block: Block, shown: HTMLElement, rest: HTMLElement, onTyped: () => void): () => void {
+function typeOut(block: Block, shown: HTMLElement, rest: HTMLElement, emit: Dispatch<TypingEvent>): () => void {
   const pace = { length: block.text.length, kind: block.kind };
   const element = shown.parentElement ?? shown;
   let progress = BLOCK_START;
@@ -76,13 +80,14 @@ function typeOut(block: Block, shown: HTMLElement, rest: HTMLElement, onTyped: (
     const placement = placementOf(element.getBoundingClientRect(), window.innerHeight);
     const next = advance(progress, pace, elapsedMs, placement);
     if (next.chars !== progress.chars) {
+      if (progress.chars === 0) emit({ type: "firstCharTyped" });
       shown.textContent = block.text.slice(0, next.chars);
       rest.textContent = block.text.slice(next.chars);
     }
     previousFrame = now;
     progress = next;
     if (isFinished(progress, pace.length)) {
-      onTyped();
+      emit({ type: "blockTyped" });
     } else if (progress.chars === 0 && placement === "below") {
       heldCheck = setTimeout(() => {
         frame = requestAnimationFrame(step);
@@ -116,19 +121,23 @@ function useBlockTyping(state: TypingState, blocks: readonly Block[], dispatch: 
   const shown = useRef<HTMLSpanElement>(null);
   const rest = useRef<HTMLSpanElement>(null);
 
+  const typing = state.phase === "typing" ? state : null;
+  const block = typing ? blocks[typing.block] : null;
+  const mayStart = typing?.mayStart;
+
   useEffect(() => {
-    if (state.phase !== "typing" || !shown.current || !rest.current) return;
-    const [block, shownSpan, restSpan] = [blocks[state.block], shown.current, rest.current];
+    if (!block || !mayStart || !shown.current || !rest.current) return;
+    const [shownSpan, restSpan] = [shown.current, rest.current];
     let isCancelled = false;
     let stopTyping = () => {};
-    state.mayStart.then(() => {
-      if (!isCancelled) stopTyping = typeOut(block, shownSpan, restSpan, () => dispatch({ type: "blockTyped" }));
+    mayStart.then(() => {
+      if (!isCancelled) stopTyping = typeOut(block, shownSpan, restSpan, dispatch);
     });
     return () => {
       isCancelled = true;
       stopTyping();
     };
-  }, [state, blocks, dispatch]);
+  }, [block, mayStart, dispatch]);
 
   return { shown, rest };
 }
@@ -166,7 +175,7 @@ export default function TypedBody({ slug, sections }: TypedBodyProps) {
 
   return (
     <>
-      {isTyping ? (
+      {state.phase === "typing" && state.hasTyped ? (
         <button type="button" onClick={showAll} className={SHOW_ALL_CLASS}>
           {SHOW_ALL_LABEL}
         </button>

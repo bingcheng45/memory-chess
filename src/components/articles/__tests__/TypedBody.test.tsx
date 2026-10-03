@@ -82,7 +82,7 @@ describe("TypedBody after a click on a card", () => {
     expect(phase()).toBe("typing");
     expect(shownLength()).toBe(0);
     expect(body().textContent).toBe(FULL_TEXT);
-    expect(showAll()).toBeInTheDocument();
+    expect(showAll()).not.toBeInTheDocument();
   });
 
   it("hides the text with a class, never with an attribute or an inline style", () => {
@@ -154,8 +154,9 @@ describe("TypedBody after a click on a card", () => {
     expect(document.activeElement).toBe(body());
   });
 
-  it("offers Show all text as a real button a keyboard can reach", () => {
+  it("offers Show all text as a real button a keyboard can reach", async () => {
     renderBody();
+    await typeFor(100);
 
     expect(showAll()).toHaveAttribute("type", "button");
     expect(showAll()).not.toHaveAttribute("tabindex", "-1");
@@ -211,6 +212,7 @@ describe("TypedBody after a click on a card", () => {
 
     expect(screen.queryByText("Loading")).not.toBeInTheDocument();
     expect(phase()).toBe("typing");
+    await typeFor(100);
     expect(showAll()).toBeInTheDocument();
   });
 
@@ -238,10 +240,12 @@ describe("TypedBody after a click on a card", () => {
 
     await typeFor(500);
     expect(shownLength()).toBe(0);
+    expect(showAll()).not.toBeInTheDocument();
 
     land();
     await typeFor(200);
     expect(shownLength()).toBeGreaterThan(0);
+    expect(showAll()).toBeInTheDocument();
   });
 
   it("holds a block whose top is still below the viewport", async () => {
@@ -250,11 +254,25 @@ describe("TypedBody after a click on a card", () => {
 
     await typeFor(500);
     expect(shownLength()).toBe(0);
-    expect(showAll()).toBeInTheDocument();
+    expect(showAll()).not.toBeInTheDocument();
 
     placement.mockReturnValue({ top: 100, bottom: 200 } as DOMRect);
     await typeFor(500);
     expect(shownLength()).toBeGreaterThan(0);
+    expect(showAll()).toBeInTheDocument();
+  });
+
+  it("types the first block without starting it over when the button appears", async () => {
+    renderBody();
+    const lengths: number[] = [];
+
+    for (let frame = 0; frame < 6; frame++) {
+      await typeFor(FRAME_MS);
+      lengths.push(shownLength());
+    }
+
+    expect(lengths).toEqual([...lengths].sort((a, b) => a - b));
+    expect(lengths.at(-1)).toBeGreaterThanOrEqual(9);
   });
 
   it("finishes blocks the reader has scrolled past without typing them out", async () => {

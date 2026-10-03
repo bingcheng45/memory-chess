@@ -54,7 +54,7 @@ function Portrait({ article }: { article: Article }) {
   const { photo, person } = article;
 
   return (
-    <figure className="order-1 mb-[22px] max-w-[190px] min-[821px]:mb-0 min-[821px]:max-w-none">
+    <figure className="row-start-1 mb-[22px] max-w-[190px] min-[821px]:mb-0 min-[821px]:max-w-none">
       <ArticlePortrait photo={photo} sizes="(max-width: 820px) 190px, 280px" priority className="rounded-[18px]" />
       <figcaption className="mt-3 text-sm leading-[1.4] text-text-muted">
         <b className="block font-semibold text-text-secondary">{person.name}</b>
@@ -67,7 +67,7 @@ function Portrait({ article }: { article: Article }) {
 
 function HeadingBlock({ article }: { article: Article }) {
   return (
-    <header className="order-2">
+    <header className="row-start-2 min-[821px]:col-start-2 min-[821px]:row-start-1">
       <p className="text-sm text-peach-500">
         <time dateTime={article.publishedAt}>{formatArticleDate(article.publishedAt)}</time>
       </p>
@@ -182,22 +182,20 @@ export default function ArticlePage({ article, nextArticle }: ArticlePageProps) 
         <span aria-hidden="true">←</span>
         {ARTICLE_COPY.backToList}
       </Link>
-      <article className="flex flex-col min-[821px]:grid min-[821px]:grid-cols-[280px_minmax(0,1fr)] min-[821px]:items-start min-[821px]:gap-x-14">
+      <article className="grid grid-cols-[minmax(0,1fr)] min-[821px]:grid-cols-[280px_minmax(0,1fr)] min-[821px]:items-start min-[821px]:gap-x-14">
+        <HeadingBlock article={article} />
         <div
           data-article-rail
-          className="contents min-[821px]:block min-[821px]:[@media(min-height:820px)]:sticky min-[821px]:[@media(min-height:820px)]:top-5"
+          className="contents min-[821px]:col-start-1 min-[821px]:row-span-2 min-[821px]:row-start-1 min-[821px]:block min-[821px]:[@media(min-height:820px)]:sticky min-[821px]:[@media(min-height:820px)]:top-5"
         >
           <Portrait article={article} />
-          <FactFile facts={article.facts} className="order-3 mt-7 min-[821px]:mt-[22px]" />
+          <FactFile facts={article.facts} className="row-start-3 mt-7 min-[821px]:mt-[22px]" />
         </div>
-        <div className="contents min-[821px]:block">
-          <HeadingBlock article={article} />
-          <div className="order-4">
-            <Body article={article} />
-            <Drill drill={article.drill} />
-            <Sources sources={article.sources} />
-            {nextArticle ? <NextArticle next={nextArticle} /> : null}
-          </div>
+        <div className="row-start-4 min-[821px]:col-start-2 min-[821px]:row-start-2">
+          <Body article={article} />
+          <Drill drill={article.drill} />
+          <Sources sources={article.sources} />
+          {nextArticle ? <NextArticle next={nextArticle} /> : null}
         </div>
       </article>
       <script

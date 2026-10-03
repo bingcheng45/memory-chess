@@ -48,6 +48,7 @@ Preconditions:
 - The list page needs 300 main-content words. Three cards do not reach that, so the page carries a section on how the articles are made.
 - Literata is declared in `src/lib/articles/readingFont.ts`, not `src/lib/fonts.ts`. A face declared in a module the root layout imports ships to every route.
 - The rail sticks only because `src/components/articles/articlePage.css` sets `overflow-x: clip` on `body` when the page holds `[data-article-rail]`. `globals.css` sets `overflow-x: hidden` on `html` and `body`, which makes `body` a scroll container that never scrolls, so `position: sticky` does nothing on any other page.
+- The heading block is first in the article's DOM, so the `h1` is the first heading a screen reader meets. Grid rows put the portrait above it on a phone, and grid columns put the rail on the left from 821px. On a phone the Tab order is therefore back link, author link, then the photo credit above them.
 - Both routes call `setRequestLocale`. Without it next-intl reads the locale from the request headers and the page renders on every request. `curl -sI` on `/articles` must show `x-nextjs-prerender: 1`.
 - The list keeps its page in the address and reads it through `useSyncExternalStore`, so Back, Forward and a link to the bare `/articles` all move the page. The server HTML and the first paint hold page 1.
 - The list is a client component and gets `ArticleSummary` objects. Passing whole articles would put every body in the list page's payload.

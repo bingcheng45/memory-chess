@@ -225,6 +225,11 @@ describe("ArticlePage body", () => {
 });
 
 describe("ArticlePage markup", () => {
+  const classTokens = (container: HTMLElement) =>
+    Array.from(container.querySelectorAll("[class]")).flatMap((node) =>
+      (node.getAttribute("class") ?? "").split(/\s+/),
+    );
+
   it("emits the structured data for the article", () => {
     const { container } = renderPage();
     const script = container.querySelector('script[type="application/ld+json"]');
@@ -232,6 +237,25 @@ describe("ArticlePage markup", () => {
     expect(JSON.parse(script?.textContent ?? "null")).toEqual(
       JSON.parse(JSON.stringify(buildArticleStructuredData(article))),
     );
+  });
+
+  it("puts the title before every other heading in the document", () => {
+    const { container } = renderPage();
+    const headings = Array.from(container.querySelectorAll("h1, h2, h3, h4, h5, h6"));
+
+    expect(headings[0].tagName).toBe("H1");
+  });
+
+  it("shows the phone in the order portrait, heading, fact file, body, set by grid rows", () => {
+    const { container } = renderPage();
+    const rowOf = (selector: string) =>
+      Array.from(container.querySelector(selector)?.classList ?? []).filter((token) => token.startsWith("row-start-"));
+
+    expect(rowOf("figure")).toEqual(["row-start-1"]);
+    expect(rowOf("article > header")).toEqual(["row-start-2"]);
+    expect(rowOf("[data-article-rail] > section")).toEqual(["row-start-3"]);
+    expect(rowOf("article > div:last-child")).toEqual(["row-start-4"]);
+    expect(classTokens(container).filter((token) => /(^|:)!?-?\[?order[-:]/.test(token))).toEqual([]);
   });
 
   it("marks the rail the sticky rule looks for, holding the portrait and the fact file", () => {
@@ -245,11 +269,8 @@ describe("ArticlePage markup", () => {
 
   it("hides nothing at any width", () => {
     const { container } = renderPage();
-    const tokens = Array.from(container.querySelectorAll("[class]")).flatMap((node) =>
-      (node.getAttribute("class") ?? "").split(/\s+/),
-    );
 
-    expect(tokens.filter((token) => /(^|:)(hidden|invisible|opacity-0|sr-only)$/.test(token))).toEqual([]);
+    expect(classTokens(container).filter((token) => /(^|:)(hidden|invisible|opacity-0|sr-only)$/.test(token))).toEqual([]);
     expect(container.querySelectorAll("[hidden], [style*='opacity'], [style*='display'], [style*='visibility']")).toHaveLength(0);
   });
 });

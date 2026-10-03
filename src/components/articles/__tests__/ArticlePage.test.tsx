@@ -1,6 +1,8 @@
 import type { ComponentProps } from "react";
 import { render, screen, within } from "@/test-utils/intl";
 import ArticlePage from "@/components/articles/ArticlePage";
+import { announceArrival, clearArrival } from "@/components/articles/articleArrival";
+import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
 import { ARTICLE_COPY } from "@/lib/articles/copy";
 import { FACT_ROWS, type Article } from "@/lib/articles/schema";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
@@ -17,6 +19,12 @@ jest.mock("next/link", () => {
 
   return MockNextLink;
 });
+
+jest.mock("@/i18n/navigation", () => ({
+  ...jest.requireActual("@/i18n/navigation"),
+  useRouter: () => ({ push: jest.fn() }),
+  usePathname: () => "/articles",
+}));
 
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
@@ -196,6 +204,13 @@ describe("ArticlePage body", () => {
     expect(drill[0]).toHaveAccessibleName("Play 12 pieces, 5 seconds");
   });
 
+  it("describes the drill link by its sentence, which the link's own name leaves out", () => {
+    const { container } = renderPage();
+    const drill = container.querySelector("a[data-article-drill]");
+
+    expect(drill).toHaveAccessibleDescription(article.drill.why);
+  });
+
   it("lists every source as a cited link with its note", () => {
     renderPage();
     const heading = screen.getByRole("heading", { level: 2, name: "Sources" });
@@ -224,6 +239,23 @@ describe("ArticlePage body", () => {
     render(<ArticlePage article={article} />);
 
     expect(screen.queryByText("Next article")).not.toBeInTheDocument();
+  });
+});
+
+describe("ArticlePage when the next article opens in its place", () => {
+  afterEach(clearArrival);
+
+  it("starts the next body over, so it types from its first character", () => {
+    setReducedMotion(false);
+    const following = makeArticle(1);
+    const { container, rerender } = renderPage();
+    const typing = () => container.querySelector("[data-article-body]")?.getAttribute("data-article-typing");
+    expect(typing()).toBe("idle");
+
+    announceArrival(following.slug, Promise.resolve());
+    rerender(<ArticlePage article={following} nextArticle={next} />);
+
+    expect(typing()).toBe("typing");
   });
 });
 
@@ -285,6 +317,18 @@ describe("ArticlePage markup", () => {
     expect(rail?.querySelector("figure img")).not.toBeNull();
     expect(rail?.querySelector("dl")).not.toBeNull();
     expect(rail?.querySelector("h1")).toBeNull();
+  });
+
+  it("always names the portrait, the title and the date for the transition, once each", () => {
+    const { container } = renderPage();
+    const named = container.querySelectorAll("[data-article-flight]");
+
+    expect(named).toHaveLength(1);
+    expect(named[0].tagName).toBe("ARTICLE");
+    expect(named[0].querySelector('[data-flight="portrait"]')).toBe(container.querySelector("figure img"));
+    expect(named[0].querySelector('[data-flight="title"]')).toBe(container.querySelector("h1"));
+    expect(named[0].querySelector('[data-flight="date"]')).toBe(container.querySelector("header time"));
+    expect(container.querySelectorAll("[data-flight]")).toHaveLength(3);
   });
 
   it("runs no transition that a reduced-motion setting leaves on", () => {

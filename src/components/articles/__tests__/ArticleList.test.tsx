@@ -15,6 +15,12 @@ jest.mock("next/link", () => {
   return MockNextLink;
 });
 
+jest.mock("@/i18n/navigation", () => ({
+  ...jest.requireActual("@/i18n/navigation"),
+  useRouter: () => ({ push: jest.fn() }),
+  usePathname: () => "/articles",
+}));
+
 const summaries = (count: number) => makeArticles(count).map(summaryOf);
 const cards = (container: HTMLElement) =>
   Array.from(container.querySelectorAll<HTMLAnchorElement>('a[href^="/articles/"]'));
@@ -62,6 +68,31 @@ describe("ArticleList", () => {
     cards(container).forEach((card, index) => {
       expect(card).toHaveAccessibleName(shown[index].title);
     });
+  });
+
+  it("describes each card link by its description, so a screen reader hears it after the title", () => {
+    const shown = summaries(3);
+    const { container } = render(<ArticleList articles={shown} />);
+
+    cards(container).forEach((card, index) => {
+      expect(card).toHaveAccessibleDescription(shown[index].description);
+    });
+  });
+
+  it("gives every card the parts a transition can carry, and names none of them at rest", () => {
+    const all = summaries(3);
+    const { container } = render(<ArticleList articles={all} />);
+
+    expect(cards(container).map((card) => card.getAttribute("data-article-card"))).toEqual(
+      all.map((article) => article.slug),
+    );
+    for (const card of cards(container)) {
+      expect(card.querySelector('[data-flight="portrait"]')?.tagName).toBe("IMG");
+      expect(card.querySelector('[data-flight="title"]')?.tagName).toBe("H2");
+      expect(card.querySelector('[data-flight="date"]')?.tagName).toBe("TIME");
+      expect(card.querySelectorAll("[data-flight]")).toHaveLength(3);
+    }
+    expect(container.querySelectorAll("[data-article-flight]")).toHaveLength(0);
   });
 
   it("loads the first portrait eagerly and the rest lazily", () => {

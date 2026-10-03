@@ -1,8 +1,7 @@
-import { Link } from "@/i18n/navigation";
+import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import { formatArticleDate } from "@/lib/articles/copy";
-import { articlePath } from "@/lib/articles/paths";
 import type { ArticleSummary } from "@/lib/articles/schema";
 
 type ArticleCardProps = {
@@ -21,7 +20,13 @@ export default function ArticleCard({ article, priority }: ArticleCardProps) {
 
   return (
     <li>
-      <Link href={articlePath(slug)} aria-labelledby={`${slug}-title`} className={CARD_CLASS}>
+      <ArticleLink
+        article={slug}
+        data-article-card={slug}
+        aria-labelledby={`${slug}-title`}
+        aria-describedby={`${slug}-description`}
+        className={CARD_CLASS}
+      >
         <div>
           <ArticlePortrait
             photo={photo}
@@ -35,20 +40,28 @@ export default function ArticleCard({ article, priority }: ArticleCardProps) {
           </p>
         </div>
         <div className="flex min-w-0 flex-col gap-2 py-1">
-          <time dateTime={publishedAt} className="text-[12.5px] tracking-[0.02em] text-peach-500">
+          <time
+            dateTime={publishedAt}
+            data-flight="date"
+            className="self-start text-[12.5px] tracking-[0.02em] text-peach-500"
+          >
             {formatArticleDate(publishedAt)}
           </time>
           <h2
             id={`${slug}-title`}
+            data-flight="title"
             className="text-[clamp(19px,2.7vw,25px)] font-bold leading-[1.18] tracking-[-0.015em] text-white [text-wrap:balance] group-hover:text-peach-200"
           >
             {title}
           </h2>
-          <p className="text-[14.5px] leading-normal text-text-muted min-[561px]:text-[15.5px]">
+          <p
+            id={`${slug}-description`}
+            className="text-[14.5px] leading-normal text-text-muted min-[561px]:text-[15.5px]"
+          >
             {description}
           </p>
         </div>
-      </Link>
+      </ArticleLink>
     </li>
   );
 }

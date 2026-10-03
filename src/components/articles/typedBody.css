@@ -1,0 +1,24 @@
+.article-untyped {
+  opacity: 0;
+}
+
+.article-caret {
+  position: relative;
+}
+
+.article-caret::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  bottom: -0.16em;
+  width: 2px;
+  height: 1.12em;
+  background-color: theme("colors.peach.500");
+  animation: article-caret-blink 1s steps(1, end) infinite;
+}
+
+@keyframes article-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}

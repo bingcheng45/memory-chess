@@ -1,4 +1,6 @@
 import { execFileSync } from "node:child_process";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import type { ComponentProps } from "react";
@@ -26,6 +28,12 @@ jest.mock("next/link", () => {
   return MockNextLink;
 });
 
+jest.mock("@/i18n/navigation", () => ({
+  ...jest.requireActual("@/i18n/navigation"),
+  useRouter: () => ({ push: jest.fn() }),
+  usePathname: () => "/articles",
+}));
+
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
     return <div>PageHeader</div>;
@@ -40,13 +48,18 @@ const SHARED_HEADINGS = ["Fact file", "Sources"];
 const SHARED_DATE = "2026-01-01T00:00:00.000Z";
 const SAME_SENTENCE = "<p>This plain sentence repeats on four pages.</p>";
 const PAGES_THAT_TRIP_THE_REPEAT_RULE = 4;
+const AUDIT_LIMIT_MS = 30_000;
+const NEVER_ENDING_PROGRAM = "setInterval(() => {}, 1000);";
+const SHORT_LIMIT_MS = 500;
 
 // Jest cannot load the audit script, which is an ES module, so it runs in a
-// Node child process that reads the rendered pages from stdin.
+// Node child process. It reads the pages from a file because stdin is not
+// safe here: now and then Node never ends the child's stdin, and the child
+// waits for it forever.
 const AUDIT_PROGRAM = `
   import { readFileSync } from "node:fs";
   const audit = await import(${JSON.stringify(AUDIT_URL)});
-  const pages = JSON.parse(readFileSync(0, "utf8")).map(({ url, html }) => audit.parsePage(url, 200, html));
+  const pages = JSON.parse(readFileSync(process.argv[1], "utf8")).map(({ url, html }) => audit.parsePage(url, 200, html));
   const problems = Object.fromEntries(${JSON.stringify(SITE_RULES)}.map((id) => [
     id,
     Object.fromEntries(audit.RULES.find((rule) => rule.id === id).site(pages, { listed: new Set() })),
@@ -64,13 +77,25 @@ type AuditReport = {
   problems: Record<(typeof SITE_RULES)[number], Record<string, string[]>>;
 };
 
-function auditInChildProcess(pages: RenderedPage[]): AuditReport {
-  return JSON.parse(
-    execFileSync(process.execPath, ["--input-type=module", "-e", AUDIT_PROGRAM], {
+function runInChildProcess(program: string, pages: RenderedPage[], limitMs: number): string {
+  const directory = mkdtempSync(join(tmpdir(), "article-audit-"));
+  const pagesFile = join(directory, "pages.json");
+  try {
+    writeFileSync(pagesFile, JSON.stringify(pages));
+    return execFileSync(process.execPath, ["--input-type=module", "-e", program, pagesFile], {
       encoding: "utf8",
-      input: JSON.stringify(pages),
-    }),
-  );
+      timeout: limitMs,
+    });
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== "ETIMEDOUT") throw error;
+    throw new Error(`The audit child process did not finish within ${limitMs} ms and was stopped.`);
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
+}
+
+function auditInChildProcess(pages: RenderedPage[]): AuditReport {
+  return JSON.parse(runInChildProcess(AUDIT_PROGRAM, pages, AUDIT_LIMIT_MS));
 }
 
 function renderedHtmlOf(article: Article, nextArticle: Article): string {
@@ -148,6 +173,12 @@ describe("the two shared headings against short articles", () => {
 });
 
 describe("the audit harness itself", () => {
+  it("stops a child process that outlives its limit and says so", () => {
+    expect(() => runInChildProcess(NEVER_ENDING_PROGRAM, [], SHORT_LIMIT_MS)).toThrow(
+      `The audit child process did not finish within ${SHORT_LIMIT_MS} ms and was stopped.`,
+    );
+  });
+
   it("flags a plain sentence repeated on four pages, so a clean result means something", () => {
     const pages = pagesFor(makeArticles(PAGES_THAT_TRIP_THE_REPEAT_RULE)).map((page) => ({
       ...page,

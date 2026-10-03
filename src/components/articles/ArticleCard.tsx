@@ -20,7 +20,13 @@ export default function ArticleCard({ article, priority }: ArticleCardProps) {
 
   return (
     <li>
-      <ArticleLink article={slug} data-article-card={slug} aria-labelledby={`${slug}-title`} className={CARD_CLASS}>
+      <ArticleLink
+        article={slug}
+        data-article-card={slug}
+        aria-labelledby={`${slug}-title`}
+        aria-describedby={`${slug}-description`}
+        className={CARD_CLASS}
+      >
         <div>
           <ArticlePortrait
             photo={photo}
@@ -48,7 +54,10 @@ export default function ArticleCard({ article, priority }: ArticleCardProps) {
           >
             {title}
           </h2>
-          <p className="text-[14.5px] leading-normal text-text-muted min-[561px]:text-[15.5px]">
+          <p
+            id={`${slug}-description`}
+            className="text-[14.5px] leading-normal text-text-muted min-[561px]:text-[15.5px]"
+          >
             {description}
           </p>
         </div>

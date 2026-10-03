@@ -70,6 +70,15 @@ describe("ArticleList", () => {
     });
   });
 
+  it("describes each card link by its description, so a screen reader hears it after the title", () => {
+    const shown = summaries(3);
+    const { container } = render(<ArticleList articles={shown} />);
+
+    cards(container).forEach((card, index) => {
+      expect(card).toHaveAccessibleDescription(shown[index].description);
+    });
+  });
+
   it("gives every card the parts a transition can carry, and names none of them at rest", () => {
     const all = summaries(3);
     const { container } = render(<ArticleList articles={all} />);

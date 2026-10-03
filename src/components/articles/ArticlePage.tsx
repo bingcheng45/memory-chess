@@ -24,6 +24,7 @@ type ArticlePageProps = {
 };
 
 const SOURCES_HEADING_ID = "article-sources-heading";
+const DRILL_WHY_ID = "article-drill-why";
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
 // The tallest rail, Carlsen's, is 807px and sticks 20px from the top. 847px leaves 20px under it.
 const STICKY_RAIL =
@@ -106,11 +107,12 @@ function Drill({ drill }: { drill: ArticleDrill }) {
         href={gameHref(drill)}
         data-article-drill
         aria-label={action}
+        aria-describedby={DRILL_WHY_ID}
         className={`group flex flex-wrap items-center justify-between gap-3.5 rounded-[18px] border border-peach-500/25 bg-peach-500/10 p-[22px] hover:border-peach-400/50 ${ARTICLE_FOCUS_RING}`}
       >
         <span className="min-w-0 flex-[1_1_260px] text-[15.5px] leading-[1.45] text-text-muted">
           <b className="block text-lg font-semibold text-white">{ARTICLE_COPY.drillHeading}</b>
-          {drill.why}
+          <span id={DRILL_WHY_ID}>{drill.why}</span>
         </span>
         <span className="inline-flex min-h-[46px] items-center rounded-full bg-peach-500 px-5 font-semibold text-bg-dark group-hover:bg-peach-400">
           {action}

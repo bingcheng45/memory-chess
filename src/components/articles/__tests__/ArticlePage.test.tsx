@@ -202,6 +202,13 @@ describe("ArticlePage body", () => {
     expect(drill[0]).toHaveAccessibleName("Play 12 pieces, 5 seconds");
   });
 
+  it("describes the drill link by its sentence, which the link's own name leaves out", () => {
+    const { container } = renderPage();
+    const drill = container.querySelector("a[data-article-drill]");
+
+    expect(drill).toHaveAccessibleDescription(article.drill.why);
+  });
+
   it("lists every source as a cited link with its note", () => {
     renderPage();
     const heading = screen.getByRole("heading", { level: 2, name: "Sources" });

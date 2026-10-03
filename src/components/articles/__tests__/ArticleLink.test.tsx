@@ -1,8 +1,24 @@
 import type { ComponentProps, MouseEvent } from "react";
-import { act, fireEvent, render, screen } from "@/test-utils/intl";
-import ArticleFlightGate from "@/components/articles/ArticleFlightGate";
+import { act, fireEvent, render } from "@/test-utils/intl";
 import ArticleLink from "@/components/articles/ArticleLink";
-import { announceArrival, clearArrival, peekArrival } from "@/components/articles/articleArrival";
+import { clearArrival, peekArrival } from "@/components/articles/articleArrival";
+import {
+  ARTICLE_HREF,
+  ArticlePage,
+  BackLink,
+  Card,
+  ListPage,
+  OtherCard,
+  ROUTE_COMMIT_LIMIT_MS,
+  SLUG,
+  backLink,
+  card,
+  flights,
+  flush,
+  isSettled,
+  otherCard,
+  stubViewTransitions,
+} from "@/components/articles/__tests__/flightHarness";
 import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
 
 jest.mock("next/link", () => {
@@ -25,86 +41,6 @@ jest.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ push: mockPush }),
   usePathname: () => mockPathname,
 }));
-
-const SLUG = "alder-fixture";
-const ARTICLE_HREF = `/articles/${SLUG}`;
-const ROUTE_COMMIT_LIMIT_MS = 400;
-
-const flush = () => act(async () => {});
-const flights = () => document.querySelectorAll("[data-article-flight]");
-
-async function isSettled(promise: Promise<unknown>) {
-  let settled = false;
-  const mark = () => {
-    settled = true;
-  };
-  promise.then(mark, mark);
-  await flush();
-  return settled;
-}
-
-function stubViewTransitions() {
-  let finish = () => {};
-  let fail = () => {};
-  const finished = new Promise<void>((resolve, reject) => {
-    finish = resolve;
-    fail = () => reject(new Error("the update callback threw"));
-  });
-  let flightsWhenStarted = -1;
-  let updateDone: Promise<void> = Promise.resolve();
-  const skip = jest.fn(() => finish());
-  const start = jest.fn((update: () => Promise<void>) => {
-    flightsWhenStarted = flights().length;
-    updateDone = Promise.resolve().then(update);
-    return { finished, ready: Promise.resolve(), updateCallbackDone: updateDone, skipTransition: skip };
-  });
-  Object.defineProperty(document, "startViewTransition", { configurable: true, writable: true, value: start });
-  return {
-    start,
-    skip,
-    finish: () => finish(),
-    fail: () => fail(),
-    get flightsWhenStarted() {
-      return flightsWhenStarted;
-    },
-    get updateDone() {
-      return updateDone;
-    },
-  };
-}
-
-function Card() {
-  return (
-    <ArticleLink article={SLUG} data-article-card={SLUG}>
-      Open the article
-    </ArticleLink>
-  );
-}
-
-function BackLink() {
-  return <ArticleLink backFrom={SLUG}>All articles</ArticleLink>;
-}
-
-function ListPage() {
-  return (
-    <>
-      <Card />
-      <ArticleFlightGate />
-    </>
-  );
-}
-
-function ArticlePage() {
-  return (
-    <>
-      <BackLink />
-      <ArticleFlightGate />
-    </>
-  );
-}
-
-const card = () => screen.getByRole("link", { name: "Open the article" });
-const backLink = () => screen.getByRole("link", { name: "All articles" });
 
 beforeEach(() => {
   mockPush.mockClear();
@@ -138,7 +74,6 @@ describe("ArticleLink markup", () => {
     expect(backLink()).toHaveAttribute("href", "/articles");
     expect(backLink()).not.toHaveAttribute("backfrom");
   });
-
 });
 
 describe("ArticleLink without the View Transitions API", () => {
@@ -216,9 +151,7 @@ describe("ArticleLink with the View Transitions API", () => {
     render(
       <>
         <Card />
-        <ArticleLink article="birch-fixture" data-article-card="birch-fixture">
-          Another card
-        </ArticleLink>
+        <OtherCard />
       </>,
     );
 
@@ -226,7 +159,7 @@ describe("ArticleLink with the View Transitions API", () => {
 
     expect(transitions.flightsWhenStarted).toBe(1);
     expect(card()).toHaveAttribute("data-article-flight");
-    expect(screen.getByRole("link", { name: "Another card" })).not.toHaveAttribute("data-article-flight");
+    expect(otherCard()).not.toHaveAttribute("data-article-flight");
 
     transitions.finish();
     await flush();
@@ -322,67 +255,6 @@ describe("ArticleLink with the View Transitions API", () => {
     expect(mockPush).toHaveBeenCalledTimes(1);
     expect(peekArrival(SLUG)).not.toBeNull();
     expect(flights()).toHaveLength(0);
-  });
-});
-
-describe("ArticleLink when two flights overlap", () => {
-  it("keeps the name on a card clicked while the flight back to the list is still running", async () => {
-    const back = stubViewTransitions();
-    mockPathname = ARTICLE_HREF;
-    const { rerender } = render(<ArticlePage />);
-    fireEvent.click(backLink());
-    await flush();
-    mockPathname = "/articles";
-    rerender(
-      <>
-        <ListPage />
-        <ArticleLink article="birch-fixture" data-article-card="birch-fixture">
-          Another card
-        </ArticleLink>
-      </>,
-    );
-    await flush();
-    const another = screen.getByRole("link", { name: "Another card" });
-
-    stubViewTransitions();
-    fireEvent.click(another);
-    back.finish();
-    await flush();
-
-    expect(another).toHaveAttribute("data-article-flight");
-    expect(card()).not.toHaveAttribute("data-article-flight");
-  });
-});
-
-describe("ArticleFlightGate", () => {
-  it("drops an arrival that never opened when the reader presses Back or Forward", () => {
-    render(<ListPage />);
-    announceArrival(SLUG, Promise.resolve());
-
-    act(() => {
-      window.dispatchEvent(new PopStateEvent("popstate"));
-    });
-
-    expect(peekArrival(SLUG)).toBeNull();
-  });
-
-  it("drops an arrival that never opened when the reader leaves the section", () => {
-    const { unmount } = render(<ListPage />);
-    announceArrival(SLUG, Promise.resolve());
-
-    unmount();
-
-    expect(peekArrival(SLUG)).toBeNull();
-  });
-
-  it("stops listening once it is gone", () => {
-    const { unmount } = render(<ListPage />);
-    unmount();
-    announceArrival(SLUG, Promise.resolve());
-
-    window.dispatchEvent(new PopStateEvent("popstate"));
-
-    expect(peekArrival(SLUG)).not.toBeNull();
   });
 });
 

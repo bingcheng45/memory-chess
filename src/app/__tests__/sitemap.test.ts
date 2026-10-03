@@ -63,6 +63,14 @@ describe("sitemap", () => {
     );
   });
 
+  it("dates the privacy page with the date the page itself prints", async () => {
+    const { PRIVACY_LAST_UPDATED } = await import("@/lib/seo/privacyPolicy");
+    const entries = await sitemap();
+    const privacyEntry = entries.find((entry) => entry.url === "https://thememorychess.com/privacy");
+
+    expect(new Date(privacyEntry?.lastModified ?? 0).toISOString()).toBe(PRIVACY_LAST_UPDATED);
+  });
+
   it("lists the English-only pages once, not once per locale", async () => {
     // /about and /terms serve identical English text on every locale prefix.
     // Announcing 24 copies of each would be a duplicate-content signal, the

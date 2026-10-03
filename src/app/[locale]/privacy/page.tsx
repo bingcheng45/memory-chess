@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import PageHeader from "@/components/ui/PageHeader";
+import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
 
 const siteUrl = "https://thememorychess.com";
 
@@ -23,6 +24,13 @@ export const metadata: Metadata = {
       "Learn how Memory Chess handles data, cookies, analytics, and advertising.",
   },
 };
+
+const lastUpdatedFormat = new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 const sectionClassName =
   "space-y-4 border-b border-white/10 py-8 last:border-0";
@@ -51,7 +59,7 @@ export default function PrivacyPage() {
             choices you have.
           </p>
           <p className="mt-3 text-xs text-text-muted">
-            Last updated: October 3, 2026
+            {`Last updated: ${lastUpdatedFormat.format(new Date(PRIVACY_LAST_UPDATED))}`}
           </p>
         </header>
 

@@ -1,4 +1,4 @@
-/* Timings from the view-transition spike. The quick fade of the old title and date came after it, to stop two copies of the text overlapping in mid-flight. */
+/* Timings from the view-transition spike, except --article-flight-old-text-duration. */
 :root {
   --article-flight-duration: 620ms;
   --article-flight-old-text-duration: 220ms;

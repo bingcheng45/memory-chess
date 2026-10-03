@@ -19,6 +19,8 @@ const MARKER = "zz-marker-zz";
 const CHUNK_BYTES = 16;
 const BODY_LIMIT_BYTES = 64;
 const COUNTS: ArticleCounts = { views: 12, likes: 3 };
+const UNAVAILABLE_COPY = "Article stats are unavailable";
+const FAILED_COPY = "Failed to record the article event";
 
 type PostOptions = {
   slug?: string;
@@ -52,6 +54,14 @@ function endlessBody() {
 async function expectError(response: Response, status: number) {
   expect(response.status).toBe(status);
   expect(await response.json()).toEqual({ error: expect.any(String) });
+}
+
+async function expectFixedCopy(response: Response, status: number, copy: string, causeMessage: string) {
+  const body = await response.text();
+
+  expect(response.status).toBe(status);
+  expect(JSON.parse(body)).toEqual({ error: copy });
+  expect(body).not.toContain(causeMessage);
 }
 
 describe("POST /api/articles/[slug]/stats", () => {
@@ -214,33 +224,33 @@ describe("POST /api/articles/[slug]/stats", () => {
     expect(recordArticleEvent).not.toHaveBeenCalled();
   });
 
-  it("answers 503 and logs the cause when the store is unavailable", async () => {
+  it("answers 503 with fixed copy, and only logs the cause, when the store is unavailable", async () => {
     const cause = "Supabase is not configured";
     jest.mocked(recordArticleEvent).mockResolvedValue({ status: "unavailable", cause });
 
     const response = await post();
 
-    await expectError(response, 503);
+    await expectFixedCopy(response, 503, UNAVAILABLE_COPY, cause);
     expect(logged).toHaveBeenCalledWith(expect.any(String), cause);
   });
 
-  it("answers 500 and logs the cause when the write fails", async () => {
+  it("answers 500 with fixed copy, and only logs the cause, when the write fails", async () => {
     const cause = { code: "42883", message: "function does not exist" };
     jest.mocked(recordArticleEvent).mockResolvedValue({ status: "failed", cause });
 
     const response = await post();
 
-    await expectError(response, 500);
+    await expectFixedCopy(response, 500, FAILED_COPY, cause.message);
     expect(logged).toHaveBeenCalledWith(expect.any(String), cause);
   });
 
-  it("answers 500 when the service throws", async () => {
+  it("answers 500 with the same fixed copy when the service throws", async () => {
     const cause = new Error("supabase unreachable");
     jest.mocked(recordArticleEvent).mockRejectedValue(cause);
 
     const response = await post();
 
-    await expectError(response, 500);
+    await expectFixedCopy(response, 500, FAILED_COPY, cause.message);
     expect(logged).toHaveBeenCalledWith(expect.any(String), cause);
   });
 

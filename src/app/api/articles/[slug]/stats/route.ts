@@ -80,10 +80,6 @@ export async function POST(request: Request, { params }: RouteContext) {
     const { slug } = await params;
     if (!ARTICLE_SLUGS.includes(slug)) return errorResponse("unknownArticle");
 
-    if (isCrawler(request.headers.get("user-agent"))) {
-      return new NextResponse(null, { status: 204 });
-    }
-
     // Without a preflight another site can only POST text/plain or a form type, so this stops it spending its visitors' browsers on likes.
     if (!isJson(request.headers.get("content-type"))) return errorResponse("notJson");
 
@@ -92,6 +88,11 @@ export async function POST(request: Request, { params }: RouteContext) {
 
     const event = parseEvent(body);
     if (event === null) return errorResponse("invalidBody");
+
+    // Views only: the crawler pattern also matches real browsers (DuckDuckGo, in-app webviews, any agent holding "bot"), and their likes must count.
+    if (event === "view" && isCrawler(request.headers.get("user-agent"))) {
+      return new NextResponse(null, { status: 204 });
+    }
 
     return respond(await recordArticleEvent(slug, event));
   } catch (cause) {

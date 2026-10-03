@@ -11,6 +11,10 @@ jest.mock("@/lib/services/articleStatsService", () => ({
 const SLUG = "magnus-carlsen";
 const JSON_HEADERS = { "content-type": "application/json" };
 const GOOGLEBOT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
+const DUCKDUCKGO_BROWSER =
+  "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/131.0.0.0 Mobile DuckDuckGo/5 Safari/537.36";
+const CUBOT_PHONE =
+  "Mozilla/5.0 (Linux; Android 11; CUBOT NOTE 20 PRO Build/RP1A.200720.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.0.0 Mobile Safari/537.36";
 const MARKER = "zz-marker-zz";
 const CHUNK_BYTES = 16;
 const BODY_LIMIT_BYTES = 64;
@@ -101,11 +105,36 @@ describe("POST /api/articles/[slug]/stats", () => {
     expect(recordArticleEvent).not.toHaveBeenCalled();
   });
 
-  it("answers a crawler 204 with no body and records nothing", async () => {
-    const response = await post({ headers: { "user-agent": GOOGLEBOT, "content-type": "text/plain" } });
+  it("answers a crawler's view 204 with no body and records nothing", async () => {
+    const response = await post({ headers: { ...JSON_HEADERS, "user-agent": GOOGLEBOT } });
 
     expect(response.status).toBe(204);
     expect(await response.text()).toBe("");
+    expect(recordArticleEvent).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["a like", "the DuckDuckGo browser", "like", DUCKDUCKGO_BROWSER],
+    ["an unlike", "the DuckDuckGo browser", "unlike", DUCKDUCKGO_BROWSER],
+    ["a like", "a phone whose model name holds bot", "like", CUBOT_PHONE],
+    ["a like", "Googlebot", "like", GOOGLEBOT],
+    ["an unlike", "Googlebot", "unlike", GOOGLEBOT],
+  ])("records %s from %s, an agent the crawler pattern matches", async (_what, _who, event, agent) => {
+    const response = await post({
+      headers: { ...JSON_HEADERS, "user-agent": agent },
+      body: JSON.stringify({ event }),
+    });
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual(COUNTS);
+    expect(recordArticleEvent).toHaveBeenCalledTimes(1);
+    expect(recordArticleEvent).toHaveBeenCalledWith(SLUG, event);
+  });
+
+  it("answers a crawler 400, not 204, for a body that names no event", async () => {
+    const response = await post({ headers: { ...JSON_HEADERS, "user-agent": GOOGLEBOT }, body: '{"event":"share"}' });
+
+    await expectError(response, 400);
     expect(recordArticleEvent).not.toHaveBeenCalled();
   });
 

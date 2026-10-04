@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Artikel über Schachspieler und ihr Gedächtnis",
+      "description": "Porträts von Schachspielern und Gedächtnisforschern. Jedes nennt die belegte Leistung, die Forschung, die sie erklärt, und eine Übung zum Ausprobieren."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "Artikel",
+      "sub": "Schachspieler und Gedächtnisforscher, ein Porträt nach dem anderen.",
+      "aboutHeading": "Wie diese Artikel entstehen",
+      "about1": "Jeder Artikel begleitet einen Schachspieler oder Forscher und eine Frage zu dessen Gedächtnis. Das kann ein Spieler sein, der für eine Gedächtnisleistung bekannt ist, oder ein Forscher, der gemessen hat, woran sich Spieler nach wenigen Sekunden erinnern.",
+      "about2": "Jeder Artikel besteht aus denselben Teilen. Ein Porträt nennt Fotograf und Lizenz. Ein Steckbrief enthält die Daten, die Titel und die Gedächtnisleistung, für die die Person bekannt ist. Die Geschichte stellt diese Leistung neben die Forschung, die sie erklärt. Eine Quellenliste zeigt, woher jede Aussage stammt. Eine Übung am Ende öffnet eine Runde Memory Chess mit der Figurenzahl und der Betrachtungszeit, die die Geschichte nahelegt.",
+      "about3": "Die Artikel werden mit KI-Unterstützung aus veröffentlichten Quellen wie Interviews, Turnierberichten, Büchern und Forschungsarbeiten recherchiert und entworfen. Eine gesonderte Prüfung vergleicht dann jedes Datum, jede Zahl und jedes Zitat mit diesen Quellen, bevor etwas veröffentlicht wird. Wo Quellen sich widersprechen, steht im Artikel, wer was berichtet hat. Eine Anekdote, die Quellen nur als Geschichte überliefern, wird als Geschichte erzählt. Artikel in anderen Sprachen werden mit KI-Unterstützung aus dem englischen Text übersetzt, und jede Übersetzung wird geprüft, bevor sie online geht.",
+      "corrections": "Wenn hier etwas nicht stimmt, <link>schick uns eine Korrektur</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Sortieren",
+      "group": "Artikel sortieren",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "Neueste",
+        "views": "Meiste Aufrufe",
+        "likes": "Meiste Likes"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "Seiten",
+      "previous": "Vorherige Seite",
+      "next": "Nächste Seite",
+      "page": "Seite {page}",
+      "showing": "Angezeigt: {first} bis {last} von {total}"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, one {# Aufruf} other {# Aufrufe}}",
+      "likes": "{count, plural, one {# Like} other {# Likes}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "Dieser Artikel gefällt mir",
+      "failed": "Das wurde nicht gespeichert. Versuche es noch einmal."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Alle Artikel",
+      "showAll": "Gesamten Text anzeigen",
+      "byline": "Von <author>{name}</author>",
+      "authorshipNote": "Mit KI-Unterstützung aus den unten aufgeführten Quellen recherchiert und entworfen. Jede Tatsache wurde vor der Veröffentlichung anhand dieser Quellen geprüft.",
+      "translationNote": "Mit KI-Unterstützung aus dem Englischen übersetzt. Maßgeblich ist der englische Artikel.",
+      "readInEnglish": "Auf Englisch lesen",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, über <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Steckbrief",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Geboren",
+        "died": "Gestorben",
+        "country": "Land",
+        "title": "Titel",
+        "peakRating": "Höchste Wertungszahl",
+        "worldChampion": "Weltmeister",
+        "knownFor": "Bekannt für",
+        "memoryFeat": "Gedächtnisleistung"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "Du bist dran",
+      "drillAction": "Runde spielen: {pieces, plural, one {# Figur} other {# Figuren}}, {seconds, plural, one {# Sekunde} other {# Sekunden}}",
+      "sources": "Quellen",
+      "nextArticle": "Nächster Artikel"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "Als Nächstes lesen",
+      "yourRound": "Deine Runde",
+      "articleDrill": "Die Übung dieses Artikels",
+      "roundSize": "{pieces, plural, one {# Figur} other {# Figuren}}, {seconds, plural, one {# Sekunde} other {# Sekunden}}",
+      "read": "Artikel lesen",
+      "tryDrill": "Diese Übung ausprobieren"
     }
   }
 }

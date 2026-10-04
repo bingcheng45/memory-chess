@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "reviewed": false,
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "Adriaan de Groots Gedächtnistest von 1944 in Zahlen",
+    "description": "Adriaan de Groot testete 1944 vier Spieler an Schachstellungen, die 2 bis 15 Sekunden lang zu sehen waren. Hier stehen seine echten Ergebnisse und was spätere Forschung geändert hat.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "Niederländischer Schachmeister und Psychologe"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot als junger Mann, um 1930",
+      "author": "Fotograf unbekannt",
+      "license": "Gemeinfrei",
+      "changes": "Zugeschnitten"
+    },
+    "facts": {
+      "born": "26. Oktober 1914, Santpoort, Niederlande",
+      "died": "14. August 2006, im Alter von 91 Jahren",
+      "country": "Niederlande",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "93 % beim Wiedergeben von Stellungen, die 2 bis 15 Sekunden zu sehen waren"
+    },
+    "drill": {
+      "why": "De Groots Teststellung Rohacek gegen Rabar hatte 22 Figuren, und Max Euwe sah sie 5 Sekunden lang."
+    },
+    "sections": [
+      {
+        "heading": "Vier Spieler und ein paar Sekunden",
+        "paragraphs": [
+          "1944 zeigte Adriaan de Groot Max Euwe eine Schachstellung und nahm sie fünf Sekunden später wieder weg. Die Stellung stammte aus einer Partie zwischen Rohacek und Rabar, nach dem 20. Zug von Weiß, mit 22 Figuren auf dem Brett. Euwe, Weltmeister von 1935 bis 1937, diktierte anschließend, wo jede Figur stand. Er hatte alle 22 richtig.",
+          "De Groot, selbst ein Meister, machte denselben Test, setzte einen Bauern dazu, der gar nicht dort stand, und kam auf 21 Punkte. A. Fast, der Utrechter Meister von 1942, stellte 17 Figuren richtig auf, hielt aber das Material für ausgeglichen, obwohl es das nicht war, und kam auf 16 Punkte. G. P. Hauer, ein Spieler aus einer schwächeren Klasse, kam auf 9.",
+          "Nacherzählungen widersprechen sich bei der Darbietungszeit und bei den Prozentwerten. Die Zahlen im Folgenden stammen deshalb aus de Groots eigenem Buch."
+        ]
+      },
+      {
+        "heading": "Ein Meister, der Meister erforschte",
+        "paragraphs": [
+          "De Groot spielte für die Niederlande bei den Schacholympiaden 1937 und 1939. Zwischen 1938 und 1943 hielt er schriftlich fest, was Spieler sagten, wenn sie bei der Wahl eines Zuges laut dachten. Zu seinen Versuchspersonen gehörten die Großmeister Keres, Aljechin, Flohr, Fine, Euwe und Tartakower.",
+          "Nach seinen Zählungen blickten Großmeister nicht weiter voraus als Expertenspieler, und sie untersuchten auch nicht mehr Züge. „Der Meister rechnet nicht unbedingt tiefer“, schrieb er. De Groot vermutete, dass sich der Unterschied in den ersten Sekunden des Blicks auf das Brett zeigt, und entwarf das Experiment von 1944, um diese Idee zu prüfen."
+        ]
+      },
+      {
+        "heading": "Was das Experiment von 1944 maß",
+        "paragraphs": [
+          "Für jede Klasse stand ein Spieler. Euwe vertrat die Großmeister, de Groot die Meister, Fast die Experten und Hauer die Spieler der schwächeren Klasse.",
+          "Jede Stellung stammte aus einer Meisterpartie und blieb 2 bis 10 Sekunden lang sichtbar, bei einer einzigen Darbietung waren es 15 Sekunden. Die beiden schwächeren Versuchspersonen bekamen bei den kürzesten Durchgängen 3 bis 4 Sekunden, damit sie nicht null Punkte erzielten. Jede Versuchsperson sollte sich etwa eine halbe Minute Zeit nehmen, um das Behaltene zu ordnen. Euwe und de Groot diktierten die Stellung dann aus dem Gedächtnis, Fast und Hauer bauten sie auf einem Brett auf.",
+          "Die Wertung gab einen Punkt für jede richtige Figur und zog Punkte ab für hinzugefügte, ausgelassene oder verschobene Figuren. De Groot verwarf zwei Stellungen, die erste der Reihe und eine mit einem Zeitfehler, und wertete vierzehn, die zwischen 7 und 26 Figuren hatten. Von möglichen 234 Punkten erzielten die vier Versuchspersonen Folgendes.",
+          "Euwe erzielte 217 Punkte oder 93 %, mit fünf fehlerfreien Stellungen.",
+          "De Groot erzielte 217 Punkte oder 93 %, mit vier fehlerfreien Stellungen.",
+          "Fast erzielte 158 Punkte oder 68 %, ohne eine fehlerfreie Stellung.",
+          "Hauer erzielte 119 Punkte oder 51 %, ohne eine fehlerfreie Stellung.",
+          "Danach legte de Groot zwei Durchgänge mit langer Darbietung beiseite, 15 und 7 Sekunden, und zwei weitere, die ein Konzentrationsabfall verdorben hatte. In den übrigen zehn, mit vorgesehenen Darbietungszeiten von 2, 3 oder 5 Sekunden, lagen die Mittelwerte bei 93,0 %, 92,6 %, 72,3 % und 51,1 %.",
+          "Beide Tabellen stammen von ihm, und deshalb nennen Nacherzählungen für den Experten vermutlich entweder 68 % oder 72 %. Die Darbietungszeit betrug nie fest fünf Sekunden.",
+          "Am wichtigsten war de Groot der Abstand in der Mitte, den er „die Kluft, die den Meister vom Nichtmeister trennt“ nannte. Seine Erklärung: Ein Meister speichert nicht 22 einzelne Figuren. Er nimmt eine große Gruppe von Figuren als eine Einheit wahr, weil er weiß, wie diese Gruppe entsteht und wozu sie dient.",
+          "Wenige solcher Einheiten decken das Brett ab, und nach de Groots Darstellung hat ein schwächerer Spieler weniger davon. Spätere Forscher nannten diese Einheiten Chunks."
+        ]
+      },
+      {
+        "heading": "Von einer niederländischen Dissertation zu Zufallsbrettern",
+        "paragraphs": [
+          "De Groot stellte die Arbeit 1946 in seiner Doktorarbeit an der Universität Amsterdam vor, Het denken van den schaker. Die englische Ausgabe, Thought and Choice in Chess, erschien 1965 bei Mouton in Den Haag.",
+          "1973 wiederholten William Chase und Herbert Simon den Test an der Carnegie Mellon University mit einem Meister, einem Spieler der Klasse A und einem Anfänger. Sie legten die Darbietungszeit auf 5 Sekunden fest. Ihre Mittelspielstellungen hatten 24 bis 26 Figuren, und der Meister gab etwa doppelt so viele Figuren richtig wieder wie der Spieler der Klasse A.",
+          "Sie filmten jede Rekonstruktion und werteten eine Pause von mehr als 2 Sekunden als Grenze zwischen zwei Chunks. Der erste Chunk des Meisters umfasste im Schnitt 3,8 Figuren, beim Spieler der Klasse A waren es 2,6. Pro Stellung bildete der Meister 7,7 Chunks, der andere 5,7. Von den 77 Chunks des Meisters über vierzehn Stellungen enthielten 47 eine Bauernkette, und Simon und Chase zählten 10 Stellungen mit rochiertem König.",
+          "Ihr Zusatz war eine Kontrolle: dieselben Figuren auf zufälligen Feldern. Simon und Chase berichteten, dass dann alle Spieler etwa drei oder vier Figuren wiedergaben, weniger als der Anfänger bei echten Stellungen schaffte. Sie vermerkten, dass W. Lemmens und R. W. Jongman im Amsterdamer Labor dasselbe Ergebnis gefunden, aber nie veröffentlicht hatten.",
+          "Chase und Simons eigene Einleitung stellt das Ergebnis mit den Zufallsbrettern als das von de Groot dar, und viele spätere Darstellungen wiederholen das. In seinem Buch ist kein Versuch mit Zufallsbrettern verzeichnet."
+        ]
+      },
+      {
+        "heading": "Was spätere Forschung geändert hat",
+        "paragraphs": [
+          "Lehrbücher verstanden dieses Ergebnis so, dass ein Meister auf sinnlosen Brettern überhaupt keinen Vorteil hat. 1996 prüften Fernand Gobet und Herbert Simon diese Lesart an dreizehn Experimenten mit Darbietungszeiten von höchstens 10 Sekunden. In zwölf der dreizehn gab die stärkste Gruppe mehr Zufallsfiguren wieder als die schwächste. Die Ausnahme war die Studie von Chase und Simon selbst, in der der Meister am schlechtesten abschnitt.",
+          "Der Vorteil ist klein. Gobet und Simon beziffern ihn auf etwa eine zusätzliche Figur je 400 Elo-Punkte bei Zufallsbrettern, gegenüber etwa fünf zusätzlichen Figuren bei Partiestellungen. In einem Überblick von 1998 gab Gobet die Mittelwerte bei 5 Sekunden mit 5,5 Zufallsfiguren für Meister und 2,6 für Spieler unterhalb der Klasse B an.",
+          "Die Erklärung lässt de Groots Gedanken bestehen. Ein Spieler mit einem sehr großen Vorrat an Mustern findet in einem Durcheinander manchmal zufällig eines. Zufallsbretter verkleinern den Vorsprung des Experten, beseitigen ihn aber nicht. Gobet und Simon fügten hinzu, dass kleine Stichproben einen so kleinen Effekt verbergen, und die Studie von 1973 hatte drei Versuchspersonen."
+        ]
+      },
+      {
+        "heading": "Probiere de Groots Test aus",
+        "paragraphs": [
+          "Stelle Memory Chess auf 22 Figuren und 5 Sekunden ein. Das entspricht der Größe von de Groots Stellung Rohacek gegen Rabar und der Zeit, die Euwe zum Ansehen hatte. Baue das Brett nach und ermittle, welcher Anteil der Figuren richtig stand. Etwa die Hälfte ist Hauers Ergebnis, etwa 70 % ist Fasts Ergebnis, und 93 % erreichten Euwe und de Groot im Durchschnitt.",
+          "Der Vergleich ist grob, weil de Groot auch für Fehler Punkte abzog. Prüfe danach, welche Figuren du dir gemerkt hast. Vermutlich kamen sie in Gruppen, etwa als Bauernkette oder als rochierter König."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Belegt: das Jahr 1944, die vier Versuchspersonen mit Namen und Klassen, Darbietungszeiten von 2 bis 15 Sekunden, die längeren Zeiten für die schwächeren Versuchspersonen, die halbe Minute Pause, wer diktierte und wer das Brett aufbaute, die Wertungsregeln, die Stellung Rohacek gegen Rabar mit 5 Sekunden Darbietung und vier Ergebnissen, Tabelle 13 (217, 217, 158, 119 von 234), Tabelle 14 (die Mittelwerte der zehn Durchgänge), beide Zitate, die Laut-Denken-Sitzungen von 1938 bis 1943, die sechs Großmeister, die Amsterdamer Dissertation von 1946 und das Mouton-Copyright von 1965. Der Text enthält kein Experiment mit Zufallsbrettern."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Belegt: Suchstatistiken, die Großmeister nicht von schwächeren Spielern trennten, die Werte 93 % und 72 % in späterer Zitierung, der Meister, der etwa doppelt so viele Figuren wiedergab wie der Spieler der Klasse A, die Chunk-Größen 3,8 und 2,6, die Chunk-Zahlen 7,7 und 5,7, die Pause von 2 Sekunden, 47 Bauernketten und 10 Stellungen mit rochiertem König unter 77 Chunks, drei oder vier Figuren auf Zufallsbrettern und das unveröffentlichte Ergebnis von Lemmens und Jongman."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Belegt: die drei Versuchspersonen, die Darbietungszeit von 5 Sekunden, Mittelspielstellungen mit 24 bis 26 Figuren, gefilmte Rekonstruktionen, 77 Chunks über vierzehn Stellungen, von denen 47 eine Bauernkette enthielten, die Chunk-Größen 3,8 und 2,6, die Chunk-Zahlen 7,7 und 5,7 und die eigene Zusammenfassung der Autoren, de Groot sei ein Experiment mit 5 Sekunden gewesen, das Zufallsbretter einschloss."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Belegt: dreizehn Experimente, Darbietungszeiten von höchstens 10 Sekunden, zwölf von dreizehn zugunsten der stärksten Gruppe, die Ausnahme von Chase und Simon, eine Figur je 400 Elo-Punkte bei Zufallsbrettern gegenüber etwa fünf bei Partiestellungen, der Lehrbuchstatus des alten Ergebnisses, der Hinweis auf kleine Stichproben und die Erklärung über Chunks."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Belegt: de Groots Darbietungszeiten von 2 bis 15 Sekunden, Euwe als Großmeister und seine Jahre als Weltmeister, die halbe Minute Pause, der 5-Sekunden-Aufbau von Chase und Simon, der Lehrbuchstatus des Ergebnisses mit Zufallsbrettern und die Durchschnitte 5,5 gegen 2,6 Figuren."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Belegt: der Aufbau mit vier Versuchspersonen, die Darbietungszeiten von 2 bis 15 Sekunden und die Feststellung, dass die Kontrolle mit Zufallsbrettern oft fälschlich de Groot zugeschrieben wird und Chase und Simon gehört."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Belegt: Geburts- und Sterbedatum samt Orten, die Olympiaden von 1937 und 1939, die Dissertation von 1946 und die englische Ausgabe von 1965."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Belegt: Geburts- und Sterbedatum samt Orten, Alter 91. Außerdem ein Beispiel für eine Nacherzählung, die die Darbietungszeit mit 3 bis 4 Sekunden angibt."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Belegt: de Groot in den niederländischen Mannschaften von 1937 und 1939."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Belegt: de Groot in den niederländischen Mannschaften von 1937 und 1939."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Belegt: die Teststellung mit 22 Figuren und die Ergebnisse 22, 21, 16 und 9."
+      }
+    ]
+  }
+}

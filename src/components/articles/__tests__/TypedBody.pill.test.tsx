@@ -87,6 +87,32 @@ describe("TypedBody's Show all text button after a click on a card", () => {
     expect(document.activeElement).toBe(elsewhere);
   });
 
+  it("leaves focus on the page when typing ends and nothing held it", async () => {
+    renderBody();
+    expect(document.activeElement).toBe(document.body);
+
+    await typeFor(LONGER_THAN_THE_WHOLE_BODY_MS);
+
+    expect(phase()).toBe("done");
+    expect(document.activeElement).toBe(document.body);
+  });
+
+  it("never takes focus off the button while typing goes on across a block boundary", async () => {
+    renderBody();
+    await typeFor(100);
+    const pill = showAll()!;
+    pill.focus();
+    const blurred = jest.fn();
+    pill.addEventListener("blur", blurred);
+
+    await typeFor(BLOCK_BOUNDARY_MS);
+
+    expect(phase()).toBe("typing");
+    expect(showAll()).toBe(pill);
+    expect(document.activeElement).toBe(pill);
+    expect(blurred).not.toHaveBeenCalled();
+  });
+
   it("offers Show all text as a real button a keyboard can reach", async () => {
     renderBody();
     await typeFor(100);

@@ -115,6 +115,9 @@ describe("ArticleLink when two flights overlap", () => {
     act(() => {
       jest.advanceTimersByTime(SECOND_CLICK_BEFORE_LIMIT_MS);
     });
+    await flush();
+    expect(otherCard()).toHaveAttribute("data-article-flight");
+    expect(card()).not.toHaveAttribute("data-article-flight");
     mockPathname = OTHER_ARTICLE_HREF;
     rerender(<ArticlePage />);
 

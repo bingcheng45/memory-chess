@@ -180,7 +180,8 @@ export default function TypedBody({ slug, sections }: TypedBodyProps) {
   useEffect(clearArrival, []);
   useShowAllWhenHidden(isTyping, dispatch);
 
-  // React runs a ref's cleanup before it removes the node, so a focused pill is still the active element here.
+  // React 19 runs a ref's cleanup before it removes the node, so a focused pill is still the active element here.
+  // That order is observed, not guaranteed. The two focus tests in TypedBody.pill.test.tsx pin it.
   const keepFocusWhenPillGoes = useCallback(
     (pill: HTMLButtonElement) => () => {
       if (document.activeElement === pill) focusWithoutScrolling(body.current);

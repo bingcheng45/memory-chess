@@ -14,7 +14,17 @@ Every check in steps 2 and 4 is one statement. Run the checks one at a time, in 
 
 Under each check is the exact answer to expect. Rows are printed as JSON, one row to a line. An answer that starts with `ERROR:` is the error code and the error message, and a tool may print a `CONTEXT` line under it.
 
-Any other answer is a failure. Stop there. After the migration has run, roll back with step 5.
+Compare the whole answer, not only the error code. `42501` is the passing answer of checks 11 and 12, and it is a failure of check 10.
+
+An answer other than the printed one is a failure, with the two exceptions below. On a failure, stop. After the migration has run, roll back with step 5.
+
+**An open transaction.** An answer of `25P02` means the tool kept one transaction open, and the error that an earlier check raises on purpose aborted it. Run `ROLLBACK`, then repeat the check.
+
+**A stray row.** A `runbook-check` row on a healthy database is not a failure. No check can leave that row, because every check that writes ends in an error. Anyone who holds the anon key can make it through the function. Check 10 then prints higher counts, or check 14 counts one row. Delete the row with this statement and run step 4 again from the top. Do not roll back for it. If the same check gives a wrong answer again, that is a failure.
+
+```sql
+DELETE FROM public.article_stats WHERE slug = 'runbook-check';
+```
 
 ## What the rehearsal proves, and what it does not
 
@@ -39,7 +49,11 @@ The rehearsal proves these points:
 - `schema/article_stats_schema.sql` describes the same database as the migration.
 - Every check in steps 2 and 4 is one statement, and on the rehearsal database it gives exactly the answer printed under it.
 - The checks in step 4, run top to bottom, leave no row behind and leave the session as the owner.
-- The checks in step 4 give a wrong answer on a database with a wrong grant, a function that is not `SECURITY DEFINER`, a function with a search path, or row level security off.
+- The checks in step 4 give a wrong answer on a database with a wrong grant, a write policy, a function that is not `SECURITY DEFINER`, a function with a search path, or row level security off.
+- Check 9 gives a wrong answer when the function grants never ran, on a database that grants no function privilege by default. The function then has no grant list, and Postgres lets every role run it.
+- Check 13 gives a wrong answer on a function that accepts a bad event, and the checks still leave no row behind.
+- After check 10, a tool that keeps one transaction open answers `25P02`. After `ROLLBACK`, the repeated check gives its printed answer.
+- With a `runbook-check` row already in the table, checks 10 and 14 give a wrong answer. After the delete statement above, every check gives its printed answer.
 
 The rehearsal does not prove these points:
 
@@ -211,25 +225,20 @@ Run these after the migration. The root runs them on production.
     {"is_security_definer":true,"search_path_is_empty":true,"owned_by_table_owner":true}
     ```
 
-9. Who may run the function. The two roles may, and `PUBLIC` holds no grant.
+9. Who may run the function. The two roles may, and `PUBLIC` may not. The third column asks about `PUBLIC` by name, so it is also right for a function with no grant list, which every role may run.
 
     ```sql
     SELECT
       has_function_privilege('anon', 'public.record_article_event(text, text)', 'EXECUTE') AS anon_may_execute,
       has_function_privilege('authenticated', 'public.record_article_event(text, text)', 'EXECUTE') AS authenticated_may_execute,
-      EXISTS (
-        SELECT 1
-        FROM pg_proc p, aclexplode(p.proacl) acl
-        WHERE p.oid = 'public.record_article_event(text, text)'::regprocedure
-          AND acl.grantee = 0
-      ) AS public_may_execute;
+      has_function_privilege('public', 'public.record_article_event(text, text)', 'EXECUTE') AS public_may_execute;
     ```
 
     ```text
     {"anon_may_execute":true,"authenticated_may_execute":true,"public_may_execute":false}
     ```
 
-10. As `anon`, the function writes. This statement ends in an error on purpose. The error carries the counts the function returned, and it undoes the write. `42501` here means `anon` may not run the function. No error at all means the statement did not run.
+10. As `anon`, the function writes. This statement ends in an error on purpose. The error carries the counts the function returned, and it undoes the write. `42501` here means `anon` may not run the function. No error at all means the statement did not run. Higher counts can mean a `runbook-check` row already exists. See "A stray row" under "How to read a check".
 
     ```sql
     DO $$
@@ -278,17 +287,22 @@ Run these after the migration. The root runs them on production.
     ERROR: 42501: permission denied for table article_stats
     ```
 
-13. A bad event is refused.
+13. A bad event is refused. An answer of `P0001` means the function accepted the event, which is a failure. The error still undoes the write.
 
     ```sql
-    SELECT * FROM public.record_article_event('runbook-check', 'purge');
+    DO $$
+    BEGIN
+      PERFORM public.record_article_event('runbook-check', 'purge');
+      RAISE EXCEPTION 'a bad event was accepted';
+    END
+    $$;
     ```
 
     ```text
     ERROR: 22023: invalid article event
     ```
 
-14. The checks left no row behind. The count looks only at the slug the checks used, so it holds even if the site wrote a real row in the meantime.
+14. The checks left no row behind. The count looks only at the slug the checks used, so it holds even if the site wrote a real row in the meantime. For a count of 1, see "A stray row" under "How to read a check".
 
     ```sql
     SELECT count(*)::int AS runbook_rows FROM public.article_stats WHERE slug = 'runbook-check';
@@ -300,7 +314,7 @@ Run these after the migration. The root runs them on production.
 
 ## 5. Rollback
 
-Use the rollback if step 4 finds a wrong answer, or if the feature is withdrawn.
+Use the rollback if step 4 finds a failure, or if the feature is withdrawn.
 
 The rollback destroys every view count and like count. To keep the numbers, run this first and save the rows it returns.
 

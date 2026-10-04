@@ -3,12 +3,13 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import type { Database, SqlResult } from "./database";
-import { articleStatsDatabases } from "./articleStatsDatabase";
+import { MIGRATION, articleStatsDatabases } from "./articleStatsDatabase";
 
 const RUNBOOK = readFileSync(
   path.join(__dirname, "..", "..", "docs", "migrations", "2026-10-article-stats.md"),
   "utf8",
 );
+const HOW_TO_READ_SECTION = "How to read a check";
 const PRE_CHECK_SECTION = "2. Pre-checks";
 const VERIFY_SECTION = "4. Verify";
 const ROLLBACK_SECTION = "5. Rollback";
@@ -16,6 +17,23 @@ const FENCE = /^( *)```(\w+)\n([\s\S]*?)\n\1```$/gm;
 const NUMBERED_ITEM = /^\d+\. /gm;
 const ANON_WROTE = "ERROR: P0001: anon wrote through the function: views 1, likes 0";
 const BATCH_REFUSED = "42601";
+const WHO_MAY_RUN_CHECK = 9;
+const ANON_WRITES_CHECK = 10;
+const DIRECT_INSERT_CHECK = 11;
+const BAD_EVENT_CHECK = 13;
+const NO_ROW_LEFT_CHECK = 14;
+const EVENT_GUARD = `  IF p_event IS NULL OR p_event NOT IN ('view', 'like', 'unlike') THEN
+    RAISE EXCEPTION 'invalid article event' USING ERRCODE = '22023';
+  END IF;
+`;
+const FUNCTION_GRANTS = `REVOKE EXECUTE ON FUNCTION public.record_article_event(TEXT, TEXT) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.record_article_event(TEXT, TEXT) TO anon, authenticated;
+`;
+const NO_DEFAULT_FUNCTION_PRIVILEGES =
+  "ALTER DEFAULT PRIVILEGES IN SCHEMA public REVOKE ALL ON FUNCTIONS FROM anon, authenticated";
+const FUNCTION_ACL =
+  "SELECT proacl::text AS proacl FROM pg_proc WHERE oid = 'public.record_article_event(text, text)'::regprocedure";
+const ROWS_LEFT = "SELECT count(*)::int AS rows_left FROM public.article_stats";
 
 type Fence = { readonly language: string; readonly body: string };
 type Check = { readonly sql: string; readonly expected: string | null };
@@ -65,9 +83,21 @@ async function answers(db: Database, checks: readonly Check[]): Promise<readonly
   return given;
 }
 
-async function checksWithWrongAnswer(db: Database, checks: readonly Check[]): Promise<readonly number[]> {
-  const given = await answers(db, checks);
+function wrongAnswers(checks: readonly Check[], given: readonly string[]): readonly number[] {
   return checks.flatMap((check, index) => (given[index] === check.expected ? [] : [index + 1]));
+}
+
+async function checksWithWrongAnswer(db: Database, checks: readonly Check[]): Promise<readonly number[]> {
+  return wrongAnswers(checks, await answers(db, checks));
+}
+
+async function answerTo(db: Database, checks: readonly Check[], checkNumber: number): Promise<string> {
+  return printed(await db.singleStatement(checks[checkNumber - 1].sql));
+}
+
+function migrationWithout(part: string): string {
+  if (!MIGRATION.includes(part)) throw new Error(`the migration has no "${part}"`);
+  return MIGRATION.replace(part, "");
 }
 
 describe("a single statement", () => {
@@ -112,6 +142,12 @@ describe("the runbook's checks after the migration", () => {
   it.each([
     ["lets anon insert", "GRANT INSERT ON public.article_stats TO anon", [5, 6, 11]],
     [
+      "has a write policy and lets anon insert",
+      "CREATE POLICY anon_writes ON public.article_stats FOR ALL TO anon USING (true) WITH CHECK (true); GRANT INSERT ON public.article_stats TO anon",
+      [4, 5, 6, 11],
+    ],
+    ["lets anon truncate", "GRANT TRUNCATE ON public.article_stats TO anon", [5, 6, 12]],
+    [
       "lets anon set a trigger through another role",
       "CREATE ROLE helper NOLOGIN; GRANT TRIGGER ON public.article_stats TO helper; GRANT helper TO anon",
       [6],
@@ -127,6 +163,78 @@ describe("the runbook's checks after the migration", () => {
     await db.rows(sabotage);
 
     expect(await checksWithWrongAnswer(db, checksIn(VERIFY_SECTION))).toEqual(caughtBy);
+  });
+
+  it("report a function that accepts a bad event, and undo its write", async () => {
+    const db = await supabaseLike();
+    await db.rows(migrationWithout(EVENT_GUARD));
+    const checks = checksIn(VERIFY_SECTION);
+
+    const given = await answers(db, checks);
+    const [{ rows_left: rowsLeft }] = await db.rows(ROWS_LEFT);
+
+    expect({ badEventAnswer: given[BAD_EVENT_CHECK - 1], wrong: wrongAnswers(checks, given), rowsLeft }).toEqual({
+      badEventAnswer: "ERROR: P0001: a bad event was accepted",
+      wrong: [BAD_EVENT_CHECK],
+      rowsLeft: 0,
+    });
+  });
+
+  it("answer 25P02 once a tool keeps one transaction open, and as printed again after ROLLBACK", async () => {
+    const db = await migrated();
+    const checks = checksIn(VERIFY_SECTION);
+    await db.rows("BEGIN");
+    await answerTo(db, checks, ANON_WRITES_CHECK);
+
+    const inOpenTransaction = await answerTo(db, checks, DIRECT_INSERT_CHECK);
+    await db.rows("ROLLBACK");
+    const repeated = await answerTo(db, checks, DIRECT_INSERT_CHECK);
+
+    expect(inOpenTransaction).toBe(
+      "ERROR: 25P02: current transaction is aborted, commands ignored until end of transaction block",
+    );
+    expect(repeated).toBe("ERROR: 42501: permission denied for table article_stats");
+  });
+});
+
+describe("the runbook's check of who may run the function", () => {
+  it("says PUBLIC may not, on a correct database", async () => {
+    const db = await migrated();
+
+    expect(await answerTo(db, checksIn(VERIFY_SECTION), WHO_MAY_RUN_CHECK)).toBe(
+      '{"anon_may_execute":true,"authenticated_may_execute":true,"public_may_execute":false}',
+    );
+  });
+
+  it("says PUBLIC may, when the function grants never ran and no function privilege is granted by default", async () => {
+    const db = await supabaseLike();
+    await db.rows(NO_DEFAULT_FUNCTION_PRIVILEGES);
+    await db.rows(migrationWithout(FUNCTION_GRANTS));
+    const checks = checksIn(VERIFY_SECTION);
+
+    expect(await db.rows(FUNCTION_ACL)).toEqual([{ proacl: null }]);
+    expect(await answerTo(db, checks, WHO_MAY_RUN_CHECK)).toBe(
+      '{"anon_may_execute":true,"authenticated_may_execute":true,"public_may_execute":true}',
+    );
+    expect(await checksWithWrongAnswer(db, checks)).toEqual([WHO_MAY_RUN_CHECK]);
+  });
+});
+
+describe("the runbook's answer to a stray runbook-check row", () => {
+  it("is one statement that deletes the row, after which every check gives its printed answer", async () => {
+    const db = await migrated();
+    await db.rows("SELECT * FROM public.record_article_event('runbook-check', 'view')", { as: "anon" });
+    const checks = checksIn(VERIFY_SECTION);
+    const [deleteStrayRow, ...others] = checksIn(HOW_TO_READ_SECTION);
+
+    const wrongBefore = await checksWithWrongAnswer(db, checks);
+    const deleted = await db.singleStatement(deleteStrayRow.sql);
+    const wrongAfter = await checksWithWrongAnswer(db, checks);
+
+    expect(others).toEqual([]);
+    expect(wrongBefore).toEqual([ANON_WRITES_CHECK, NO_ROW_LEFT_CHECK]);
+    expect(deleted).toEqual({ ok: true, rows: [] });
+    expect(wrongAfter).toEqual([]);
   });
 });
 

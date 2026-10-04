@@ -21,7 +21,7 @@ Each feature file has an H1, one paragraph on the user-visible behavior, then ex
 - [Game round](./game-round.md) covers a full round end to end: configure, memorize, place, submit, result, and the persisted history.
 - [Leaderboard](./leaderboard.md) covers the rankings tabs, the degraded no-credentials state, and the crawler word floor.
 - [Learn hub and articles](./learn.md) covers the `/learn` index and the 16 statically generated articles.
-- [Articles list and articles](./articles.md) covers the `/articles` list, its paging and sorting, an article page with its portrait, fact file and drill link, the view and like counts with the like button, and the English-only redirects.
+- [Articles list and articles](./articles.md) covers the `/articles` list, its paging and sorting, an article page with its portrait, fact file and drill link, the view and like counts with the like button, the translated pages a listed locale serves, and the redirect to English for every other locale.
 - [Language switching](./language-switching.md) covers the switcher, prefixed locale URLs, and the bare-English rule.
 - [Contact form](./contact-form.md) covers validation, submission, and the Google Sheets boundary.
 

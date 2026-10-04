@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Artikel tentang pemain catur dan ingatan mereka",
+      "description": "Profil pemain catur dan peneliti ingatan. Masing-masing memuat prestasi yang terdokumentasi, riset yang menjelaskannya, dan latihan untuk dicoba."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "Artikel",
+      "sub": "Pemain catur dan peneliti ingatan, satu profil demi satu profil.",
+      "aboutHeading": "Bagaimana artikel ini dibuat",
+      "about1": "Setiap artikel mengikuti seorang pemain catur atau peneliti dan satu pertanyaan tentang ingatannya. Subjeknya bisa seorang pemain yang dikenal karena prestasi mengingat, atau seorang peneliti yang mengukur apa yang diingat pemain setelah beberapa detik.",
+      "about2": "Setiap artikel memiliki bagian yang sama. Sebuah potret disertai nama fotografer dan lisensinya. Ringkasan fakta memuat tanggal, gelar, dan prestasi ingatan yang membuat orang itu dikenal. Kisahnya menyandingkan prestasi itu dengan riset yang menjelaskannya. Daftar sumber menunjukkan dari mana tiap klaim berasal. Latihan di akhir membuka satu ronde Memory Chess dengan jumlah bidak dan waktu melihat yang disarankan kisah itu.",
+      "about3": "Artikel diriset dan disusun dengan bantuan AI dari sumber-sumber terbitan seperti wawancara, laporan turnamen, buku, dan makalah riset. Pemeriksaan terpisah kemudian membandingkan setiap tanggal, angka, dan kutipan dengan sumber-sumber itu sebelum apa pun diterbitkan. Jika sumber berbeda pendapat, artikel menyebut siapa yang melaporkan apa. Anekdot yang oleh sumber hanya dilaporkan sebagai cerita dituturkan sebagai cerita. Artikel dalam bahasa lain diterjemahkan dari teks bahasa Inggris dengan bantuan AI, dan setiap terjemahan diperiksa sebelum dipublikasikan.",
+      "corrections": "Jika ada yang keliru di sini, <link>kirimkan koreksi</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Urutkan",
+      "group": "Urutkan artikel",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "Terbaru",
+        "views": "Paling banyak dilihat",
+        "likes": "Paling banyak disukai"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "Halaman",
+      "previous": "Halaman sebelumnya",
+      "next": "Halaman berikutnya",
+      "page": "Halaman {page}",
+      "showing": "Menampilkan {first} sampai {last} dari {total}"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, other {# kali dilihat}}",
+      "likes": "{count, plural, other {# suka}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "Sukai artikel ini",
+      "failed": "Gagal tersimpan. Coba lagi."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Semua artikel",
+      "showAll": "Tampilkan seluruh teks",
+      "byline": "Oleh <author>{name}</author>",
+      "authorshipNote": "Diriset dan disusun dengan bantuan AI dari sumber yang tercantum di bawah. Setiap fakta diperiksa terhadap sumber-sumber itu sebelum diterbitkan.",
+      "translationNote": "Diterjemahkan dari bahasa Inggris dengan bantuan AI. Artikel bahasa Inggris menjadi acuannya.",
+      "readInEnglish": "Baca dalam bahasa Inggris",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, melalui <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Ringkasan fakta",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Lahir",
+        "died": "Meninggal",
+        "country": "Negara",
+        "title": "Gelar",
+        "peakRating": "Rating tertinggi",
+        "worldChampion": "Juara Dunia",
+        "knownFor": "Dikenal karena",
+        "memoryFeat": "Prestasi ingatan"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "Giliran Anda",
+      "drillAction": "Mainkan {pieces, plural, other {# bidak}}, {seconds, plural, other {# detik}}",
+      "sources": "Sumber",
+      "nextArticle": "Artikel berikutnya"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "Baca selanjutnya",
+      "yourRound": "Ronde Anda",
+      "articleDrill": "Latihan artikel ini",
+      "roundSize": "{pieces, plural, other {# bidak}}, {seconds, plural, other {# detik}}",
+      "read": "Baca artikelnya",
+      "tryDrill": "Coba latihan itu"
     }
   }
 }

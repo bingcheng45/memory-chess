@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "reviewed": true,
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "Tes ingatan catur Adriaan de Groot tahun 1944, dalam angka",
+    "description": "Pada 1944 Adriaan de Groot menguji empat pemain dengan posisi catur yang diperlihatkan selama 2 sampai 15 detik. Berikut skor aslinya dan apa yang diubah oleh riset sesudahnya.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "Master catur dan psikolog asal Belanda"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot semasa muda, sekitar tahun 1930",
+      "author": "Fotografer tidak diketahui",
+      "license": "Domain publik",
+      "changes": "Dipotong"
+    },
+    "facts": {
+      "born": "26 Okt 1914, Santpoort, Belanda",
+      "died": "14 Agu 2006, usia 91 tahun",
+      "country": "Belanda",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "Meraih skor 93% dalam mengingat posisi yang dilihat selama 2 sampai 15 detik"
+    },
+    "drill": {
+      "why": "Posisi uji de Groot, Rohacek melawan Rabar, berisi 22 bidak, dan Max Euwe melihatnya selama 5 detik."
+    },
+    "sections": [
+      {
+        "heading": "Empat pemain dan beberapa detik",
+        "paragraphs": [
+          "Pada 1944 Adriaan de Groot memperlihatkan sebuah posisi catur kepada Max Euwe, lalu menyingkirkannya lima detik kemudian. Posisi itu berasal dari partai Rohacek melawan Rabar, setelah langkah ke-20 Putih, dengan 22 bidak di atas papan. Euwe, juara dunia dari 1935 sampai 1937, lalu mendiktekan letak setiap bidak. Ke-22 bidak ia sebutkan dengan benar.",
+          "De Groot, yang juga seorang master, mengerjakan tes yang sama, menambahkan satu pion yang sebenarnya tidak ada, dan meraih 21 poin. A. Fast, juara Utrecht 1942, menempatkan 17 bidak dengan benar tetapi menilai materi kedua pihak sama padahal tidak, sehingga mendapat 16. G. P. Hauer, pemain kelas yang lebih lemah, mendapat 9.",
+          "Penuturan ulang berbeda-beda soal lama pemaparan dan persentasenya, jadi angka-angka di bawah ini diambil dari buku de Groot sendiri."
+        ]
+      },
+      {
+        "heading": "Seorang master yang meneliti para master",
+        "paragraphs": [
+          "De Groot bermain untuk Belanda di Olimpiade Catur 1937 dan 1939. Dari 1938 sampai 1943 ia mencatat ucapan para pemain yang berpikir dengan suara keras saat memilih langkah. Subjeknya mencakup para grandmaster Keres, Alekhine, Flohr, Fine, Euwe, dan Tartakower.",
+          "Menurut hitungannya, para grandmaster tidak melihat lebih jauh ke depan daripada pemain ahli, dan mereka tidak memeriksa lebih banyak langkah. “Seorang master belum tentu menghitung lebih dalam,” tulisnya. De Groot menduga perbedaannya tampak dalam beberapa detik pertama saat melihat papan, dan ia merancang eksperimen 1944 untuk menguji gagasan itu."
+        ]
+      },
+      {
+        "heading": "Apa yang diukur eksperimen 1944",
+        "paragraphs": [
+          "Setiap kelas diwakili satu pemain. Euwe mewakili para grandmaster, de Groot para master, Fast para pemain ahli, dan Hauer para pemain kelas yang lebih lemah.",
+          "Setiap posisi berasal dari partai master dan tetap terlihat selama 2 sampai 10 detik, dengan satu pemaparan selama 15 detik. Kedua subjek yang lebih lemah mendapat 3 sampai 4 detik pada percobaan terpendek agar skor mereka tidak nol. Setiap subjek diminta meluangkan sekitar setengah menit untuk menata apa yang masih ia ingat. Euwe dan de Groot kemudian mendiktekan posisi itu dari ingatan, sedangkan Fast dan Hauer menatanya di papan.",
+          "Penilaiannya memberi satu poin untuk tiap bidak yang benar dan mengurangi poin untuk bidak yang ditambahkan, terlewat, atau bergeser. De Groot membuang dua posisi, yaitu yang pertama dalam rangkaian dan satu lagi yang waktunya bermasalah, lalu menghitung empat belas posisi yang berisi 7 sampai 26 bidak. Dari 234 poin yang mungkin, keempat subjek memperoleh skor berikut.",
+          "Euwe meraih 217 poin, atau 93%, dengan lima posisi sempurna.",
+          "De Groot meraih 217 poin, atau 93%, dengan empat posisi sempurna.",
+          "Fast meraih 158 poin, atau 68%, tanpa satu pun posisi sempurna.",
+          "Hauer meraih 119 poin, atau 51%, tanpa satu pun posisi sempurna.",
+          "Setelah itu de Groot menyisihkan dua percobaan dengan pemaparan panjang, 15 dan 7 detik, serta dua percobaan yang rusak karena konsentrasi terganggu. Pada sepuluh percobaan yang tersisa, dengan pemaparan yang dimaksudkan 2, 3, atau 5 detik, skor rata-ratanya adalah 93,0%, 92,6%, 72,3%, dan 51,1%.",
+          "Kedua tabel itu berasal darinya, dan itu mungkin sebabnya penuturan ulang menyebut angka pemain ahli 68% atau 72%. Lama pemaparannya tidak pernah tetap lima detik.",
+          "De Groot paling memperhatikan jurang di tengah, yang ia sebut “jurang yang memisahkan master dari non-master.” Penjelasannya adalah bahwa seorang master tidak menyimpan 22 bidak secara terpisah. Ia memandang sekelompok besar bidak sebagai satu kesatuan, karena ia tahu bagaimana kelompok itu terbentuk dan untuk apa gunanya.",
+          "Beberapa kesatuan seperti itu sudah cukup menutupi seluruh papan, dan menurut uraian de Groot, pemain yang lebih lemah memiliki lebih sedikit. Para peneliti kemudian menyebut kesatuan itu chunk."
+        ]
+      },
+      {
+        "heading": "Dari disertasi berbahasa Belanda ke papan acak",
+        "paragraphs": [
+          "De Groot memaparkan karyanya pada 1946 dalam disertasi doktoralnya di Universitas Amsterdam, Het denken van den schaker. Penerbit Mouton menerbitkan edisi bahasa Inggrisnya, Thought and Choice in Chess, di Den Haag pada 1965.",
+          "Pada 1973 William Chase dan Herbert Simon mengulang tes itu di Carnegie Mellon dengan seorang master, seorang pemain Kelas A, dan seorang pemula. Mereka menetapkan lama pemaparan 5 detik. Posisi permainan tengah mereka berisi 24 sampai 26 bidak, dan sang master mengingat sekitar dua kali lebih banyak bidak daripada pemain Kelas A.",
+          "Mereka merekam setiap penataan ulang dengan video dan menganggap jeda lebih dari 2 detik sebagai batas antara dua chunk. Chunk pertama sang master rata-rata berisi 3,8 bidak, dibanding 2,6 pada pemain Kelas A, dan ia menghasilkan 7,7 chunk per posisi, dibanding 5,7. Dari 77 chunk miliknya pada empat belas posisi, 47 memuat rantai pion, dan Simon serta Chase menghitung 10 posisi raja yang sudah melakukan rokade.",
+          "Tambahan mereka berupa kontrol, yaitu bidak yang sama diletakkan di kotak acak. Simon dan Chase melaporkan bahwa setiap pemain saat itu hanya mengingat sekitar tiga atau empat bidak, lebih sedikit daripada yang berhasil diingat si pemula pada posisi nyata. Mereka mencatat bahwa W. Lemmens dan R. W. Jongman menemukan hasil yang sama di laboratorium Amsterdam dan tidak pernah menerbitkannya.",
+          "Pengantar Chase dan Simon sendiri menyajikan hasil papan acak itu sebagai hasil de Groot, dan banyak uraian sesudahnya mengulangnya. Buku de Groot tidak melaporkan percobaan papan acak apa pun."
+        ]
+      },
+      {
+        "heading": "Apa yang diubah oleh riset kemudian",
+        "paragraphs": [
+          "Buku-buku teks menafsirkan hasil itu sebagai bukti bahwa master sama sekali tidak punya keunggulan pada papan yang tak bermakna. Pada 1996 Fernand Gobet dan Herbert Simon menguji tafsir itu terhadap tiga belas eksperimen dengan pemaparan 10 detik atau kurang. Pada dua belas dari tiga belas eksperimen itu, kelompok terkuat mengingat lebih banyak bidak acak daripada kelompok terlemah. Pengecualiannya adalah studi Chase dan Simon sendiri, tempat sang master mendapat hasil terburuk.",
+          "Keunggulan itu kecil. Gobet dan Simon memperkirakannya sekitar satu bidak tambahan untuk setiap 400 poin Elo pada papan acak, dibandingkan sekitar lima bidak tambahan pada posisi partai. Dalam tinjauan tahun 1998, Gobet menyebut rata-rata pada pemaparan 5 detik sebesar 5,5 bidak acak untuk para master dan 2,6 untuk pemain di bawah kelas B.",
+          "Penjelasan ini tidak menggugurkan gagasan de Groot. Pemain dengan simpanan pola yang sangat besar kadang menemukan satu pola secara kebetulan di antara bidak yang acak. Papan acak memperkecil keunggulan pemain ahli tanpa menghilangkannya. Gobet dan Simon menambahkan bahwa sampel kecil menyembunyikan efek sekecil itu, dan studi 1973 hanya memiliki tiga subjek."
+        ]
+      },
+      {
+        "heading": "Coba tes de Groot",
+        "paragraphs": [
+          "Atur Memory Chess ke 22 bidak dan 5 detik. Itu sama dengan jumlah bidak pada posisi Rohacek melawan Rabar milik de Groot dan waktu yang dimiliki Euwe untuk melihatnya. Susun ulang papannya dan hitung berapa persen bidak yang Anda letakkan dengan benar. Sekitar separuh adalah hasil akhir Hauer, sekitar 70% adalah hasil Fast, dan 93% adalah rata-rata Euwe dan de Groot.",
+          "Perbandingan ini kasar, karena de Groot juga mengurangi poin untuk kesalahan. Setelah itu periksa bidak mana yang Anda ingat. Kemungkinan besar bidak-bidak itu datang berkelompok, misalnya rantai pion atau raja yang sudah melakukan rokade."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Mendukung: tahun 1944, keempat subjek beserta nama dan kelasnya, waktu pemaparan 2 sampai 15 detik, waktu yang lebih panjang bagi subjek yang lebih lemah, jeda setengah menit, siapa yang mendiktekan dan siapa yang menata papan, aturan penilaian, posisi Rohacek melawan Rabar dengan pemaparan 5 detik dan keempat skornya, Tabel 13 (217, 217, 158, 119 dari 234), Tabel 14 (rata-rata sepuluh percobaan), kedua kutipan, sesi berpikir dengan suara keras tahun 1938 sampai 1943, keenam grandmaster, disertasi Amsterdam 1946, dan hak cipta Mouton 1965. Teks itu tidak memuat eksperimen papan acak."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Mendukung: statistik pencarian yang tidak memisahkan grandmaster dari pemain yang lebih lemah, angka 93% dan 72% seperti yang dikutip kemudian, sang master yang mengingat sekitar dua kali lebih banyak bidak daripada pemain Kelas A, ukuran chunk 3,8 dan 2,6, jumlah chunk 7,7 dan 5,7, jeda 2 detik, 47 rantai pion dan 10 posisi raja yang sudah rokade di antara 77 chunk, tiga atau empat bidak pada papan acak, dan hasil Lemmens dan Jongman yang tidak diterbitkan."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Mendukung: ketiga subjek, pemaparan 5 detik, posisi permainan tengah berisi 24 sampai 26 bidak, penataan ulang yang direkam dengan video, 77 chunk pada empat belas posisi dengan 47 di antaranya memuat rantai pion, ukuran chunk 3,8 dan 2,6, jumlah chunk 7,7 dan 5,7, serta ringkasan para penulis sendiri tentang de Groot sebagai eksperimen 5 detik yang menyertakan papan acak."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Mendukung: tiga belas eksperimen, pemaparan paling lama 10 detik, dua belas dari tiga belas yang menguntungkan kelompok terkuat, pengecualian Chase dan Simon, satu bidak per 400 poin Elo pada papan acak dibanding sekitar lima pada posisi partai, status buku teks dari hasil lama itu, soal sampel kecil, dan penjelasan berbasis chunk."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Mendukung: pemaparan 2 sampai 15 detik pada de Groot, Euwe sebagai grandmaster beserta tahun-tahunnya sebagai juara dunia, jeda setengah menit, rancangan 5 detik Chase dan Simon, status buku teks dari hasil papan acak, dan rata-rata 5,5 berbanding 2,6 bidak."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Mendukung: rancangan empat subjek, pemaparan 2 sampai 15 detik, dan pernyataan bahwa kontrol papan acak sering keliru dikaitkan dengan de Groot padahal milik Chase dan Simon."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Mendukung: tanggal dan tempat lahir serta wafat, Olimpiade 1937 dan 1939, disertasi 1946, dan edisi bahasa Inggris 1965."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Mendukung: tanggal dan tempat lahir serta wafat, usia 91 tahun. Juga contoh penuturan ulang yang menyebut lama pemaparan 3 sampai 4 detik."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Mendukung: de Groot dalam tim Belanda tahun 1937 dan 1939."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Mendukung: de Groot dalam tim Belanda tahun 1937 dan 1939."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Mendukung: posisi uji berisi 22 bidak dan skor 22, 21, 16, dan 9."
+      }
+    ]
+  }
+}

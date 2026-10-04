@@ -1,0 +1,127 @@
+{
+  "sourceHash": "cc101ac41e195858740ba4482eeac2823a91e34eb20c4f5e24c17dda210931b2",
+  "reviewed": true,
+  "sameAsEnglish": [],
+  "text": {
+    "title": "Slik sier Magnus Carlsen hvilket kjent parti en stilling kommer fra",
+    "description": "Filmede tester og blindsimultaner viser hva hukommelsen til Magnus Carlsen får til, og forskning på chunker tyder på at den bygger på studerte partier.",
+    "person": {
+      "name": "Magnus Carlsen",
+      "role": "Verdensmester i sjakk, 2013-2023"
+    },
+    "photo": {
+      "alt": "Magnus Carlsen på en pressekonferanse i 2025",
+      "author": "Miroslav.vajdic",
+      "license": "CC BY 4.0",
+      "changes": "Beskåret og endret størrelse"
+    },
+    "facts": {
+      "born": "30. november 1990, Tønsberg, Norge",
+      "country": "Norge",
+      "title": "Stormester, 2004",
+      "peakRating": "2882 (2014)",
+      "worldChampion": "2013-2023",
+      "knownFor": "Høyeste offisielle klassiske rating som noensinne er registrert",
+      "memoryFeat": "Sier hvilket historisk parti en enkelt stilling kommer fra"
+    },
+    "drill": {
+      "why": "Fem sekunder er visningstiden Gobet og Simon brukte i gjenkallingsforsøket sitt, og 12 brikker gir nok materiale til å øve på å gruppere."
+    },
+    "sections": [
+      {
+        "heading": "Ti brett han ikke kunne se",
+        "paragraphs": [
+          "I februar 2012 viste CBS-programmet 60 Minutes Magnus Carlsen, som da var 21, mens han spilte mot ti motstandere samtidig. Han var vendt bort fra alle de ti brettene. Ifølge fortellerstemmen var det 320 brikker han måtte holde styr på, og han kom ut som vinner. Han fortalte korrespondenten Bob Simon at en sjakkspiller egentlig ikke trenger brettet.",
+          "Minst to blindsimultaner til er dokumentert, og begge ble spilt mot klokken.",
+          "I mai 2015 stilte han opp mot tre motstandere på Sohn Investment Conference i New York. Hver motstander hadde ni minutter, og Carlsen hadde ni minutter til alle tre partiene. Han vant dem alle.",
+          "I oktober samme år prøvde han seg på fem brett i Hofburg i Wien, med 12 minutter til alle fem partiene. Motstanderne hadde 12 minutter hver. Han vant tre partier og tapte to på grunn av tidsnød."
+        ]
+      },
+      {
+        "heading": "Tre filmede tester av hukommelsen hans",
+        "paragraphs": [
+          "Blindsjakk viser at Carlsen kan holde et helt parti i hodet. Tre filmede tester viser noe annet, nemlig lageret hans av kjente partier.",
+          "Den første er med i den samme CBS-reportasjen. Programmet sa at han kunne trekke på ti tusen partier spilt av andre mestere når han forberedte seg, og testet ham så på ett av dem. Han sa at det var spilt hos Simpson's on the Strand i London i 1859. Simon rettet ham. Året var 1851. «Den er ikke som den var før», sa Carlsen om hukommelsen sin.",
+          "Den andre ble lagt ut på YouTube av chess24 den 30. april 2021. Den engelske stormesteren David Howell viste ham stillinger fra velkjente partier, og Carlsen sa hvilke partier de var fra. Én stilling plasserte han som det 24. partiet i en match mellom Kasparov og Karpov i Sevilla. Han sa at en bok om de matchene lå på nattbordet hans.",
+          "Deretter spilte Howell gjennom en åpning og ba Carlsen stoppe ham når han kjente igjen partiet. Carlsen stoppet ham tidlig og sa at det var Viswanathan Anands parti mot Zapata. En annen stilling kom fra hans eget parti mot Howell i ungdoms-VM i 2002. Carlsen fortalte også hva som hadde skjedd på brettet ved siden av.",
+          "En stilling kom fra den første Harry Potter-filmen. Carlsen ba om et hint og fikk vite at den kom fra underholdningsbransjen. Så husket han de første trekkene i filmpartiet. Ifølge sjakkskribenten Nate Solon var det den eneste stillingen som stoppet ham.",
+          "Den tredje kom under Casablanca Chess i mai 2024. Chess.com viste Carlsen, Anand og Hikaru Nakamura stillinger fra berømte partier med svarte og hvite damspillbrikker i stedet for sjakkbrikker. ChessBase meldte at handikapet bare var et lite hinder for Carlsen."
+        ]
+      },
+      {
+        "heading": "Hva Carlsen selv sier om hukommelsen sin",
+        "paragraphs": [
+          "Carlsens egne beskrivelser er beskjedne. På Sohn-konferansen sa han til tilhørerne at «du trenger bare å holde ett parti i hodet om gangen». Han la til at blindsjakk er overkommelig for en god sjakkspiller. Det vanskelige, sa han, var å ikke vite hvor mye tid han hadde igjen.",
+          "Etter oppvisningen i Wien snakket han om motstandere som forlater de vanlige mønstrene og spiller uortodokse trekk. ChessBase meldte at han kalte dem irriterende å møte i blindsjakk.",
+          "I Joe Rogans podkast i februar 2025 gikk han mer i detalj, ifølge en publisert transkripsjon. Han ser brettet for seg i hodet. I en simultanoppvisning tenker han på ett parti om gangen og legger de andre til side. Han sa at han husker partiene han har spilt i store trekk, ikke trekk for trekk. I blindpartier, la han til, kan han være usikker på om en bonde ytterst på brettet har flyttet seg ett felt.",
+          "Andre stormestere ser på stillingsquizen som fagkunnskap. Etter at chess24-klippet kom ut, skrev Garri Kasparov at han hadde blitt testet på samme måte i årene han spilte om verdensmesterskapet. Han la til at de fleste stormestere kan kjenne igjen tusenvis av partier og stillinger."
+        ]
+      },
+      {
+        "heading": "Hva chunk-forskningen tyder på",
+        "paragraphs": [
+          "Forskningen på sjakkhukommelse begynner med Adriaan de Groot, en sjakkmester og psykolog. Han viste spillere en stilling fra et virkelig parti i noen få sekunder og ba dem bygge den opp igjen. De to sterkeste spillerne fikk 93 prosent. Den svakeste av de fire forsøkspersonene hans fikk omtrent halvparten.",
+          "I 1973 forklarte William Chase og Herbert Simon resultatet med chunken. En chunk er et mønster av brikker som en spiller har sett så ofte at det lagres som én enhet. En mester som bygger opp en virkelig stilling, husker noen få chunker og ikke hver brikke for seg. Når brikkene plasseres tilfeldig, forsvinner nesten hele forspranget til de sterkere spillerne.",
+          "Simon og en kollega anslo at en toppspiller har omtrent 50 000 chunker lagret. Senere arbeid av Fernand Gobet og Simon la til maler. En mal er en chunk for en kjent type stilling, med åpne plasser til detaljene.",
+          "Ingen av disse studiene testet Carlsen, så å bruke dem på ham er en tolkning. Lest slik passer det han har vist, med forklaringen. Stillingene han kjenner igjen på film, kommer fra berømte partier, den typen en profesjonell spiller studerer. I testen med damspillbrikker var brikketypene skjult, og ChessBase mente at det nesten ikke bremset ham. Det er nettopp det chunk-forklaringen ville forutsi for en som kjenner en stilling som et mønster.",
+          "Kommentaren hans i Wien kan leses på samme måte. Motstandere som forlater kjente mønstre, kan gjøre med en blindspiller det tilfeldige brett gjør med en mester i laboratoriet.",
+          "Feilene hans stemmer også med denne tolkningen. Han nevnte et sted i London, men bommet åtte år på årstallet. Han trengte et hint for en filmstilling som ligger utenfor turneringshistorien. I et blindparti kan han miste oversikten over hvilket felt én bonde står på.",
+          "Ingenting av dette gjør hukommelsen hans vanlig. CBS meldte at han som femåring kunne nevne nesten alle land i verden med hovedsteder og folketall. Faren fortalte programmet at han hadde god hukommelse og kunne konsentrere seg om ett tema i timevis. Kasparov kalte i den samme kommentaren Carlsens seriøse interesse for tidligere partier en konkurransefordel."
+        ]
+      },
+      {
+        "heading": "En øvelse å prøve",
+        "paragraphs": [
+          "Still inn Memory Chess på 12 brikker og 5 sekunder. Fem sekunder er visningstiden Gobet og Simon ga spillerne i gjenkallingsforsøket sitt.",
+          "Ikke tell brikkene én etter én mens stillingen står på skjermen. Plukk ut to eller tre grupper og si hver gruppe for deg selv. En gruppe kan være en konge med bøndene foran seg, eller to brikker som dekker hverandre. Når brettet tømmes, bygg det opp igjen gruppe for gruppe. Når 12 brikker føles lett, legg til brikker før du legger til sekunder."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "\"Mozart of Chess: Magnus Carlsen\" (60 Minutes script, aired 19 February 2012), CBS News",
+        "note": "Underbygger: blindoppvisningen på ti brett, tallet på 320 brikker, alderen hans, utsagnet om at man ikke trenger brettet, de ti tusen partiene, testen med stedet i London og årstallene 1859 og 1851, sitatet om hukommelsen, rapporten om hukommelsen hans som barn og farens kommentar."
+      },
+      {
+        "title": "\"Magnus Carlsen Plays Three-Board Blindfold Simul\", Peter Doggers, Chess.com, 1 June 2015",
+        "note": "Underbygger: oppvisningen på Sohn Conference i mai 2015, de ni minuttene på klokken, de tre seirene, sitatet om ett parti om gangen og bemerkningene hans om blindsjakk og klokken."
+      },
+      {
+        "title": "\"Carlsen plays blindfold simul in Vienna\", ChessBase, October 2015",
+        "note": "Underbygger: fem brett i Hofburg, de 12 minuttene på klokken, tre seirer og to tap på grunn av tidsnød og bemerkningen hans om uortodokse motstandere."
+      },
+      {
+        "title": "\"Magnus Carlsen's Mind-Blowing Memory! World Chess Champion tested\", chess24, YouTube, 30 April 2021",
+        "note": "Underbygger: publiseringsdatoen, David Howell som den som stilte spørsmålene, partiet mellom Kasparov og Karpov fra Sevilla, boken på nattbordet, partiet mellom Anand og Zapata som ble navngitt under åpningen, partiet mot Howell i 2002 og Harry Potter-stillingen med hintet."
+      },
+      {
+        "title": "\"Memory: The Key To Chess?\", Nate Solon, Zwischenzug, 1 April 2023",
+        "note": "Underbygger: Harry Potter-stillingen som den eneste som stoppet Carlsen."
+      },
+      {
+        "title": "\"Magnus Carlsen's Remarkable Memory\", Jason Kottke, kottke.org, 30 April 2021",
+        "note": "Underbygger: quizen med Howell og begge delene av Kasparovs kommentar."
+      },
+      {
+        "title": "\"Stunning: Carlsen's chess memory\", ChessBase, 26 June 2024",
+        "note": "Underbygger: testen med damspillbrikker i Casablanca i mai 2024, de tre spillerne og hvordan Carlsen taklet den."
+      },
+      {
+        "title": "\"#2275 - Magnus Carlsen\", The Joe Rogan Experience (transcript), HappyScribe",
+        "note": "Underbygger: beskrivelsen hans av å se brettet for seg, ett parti om gangen, å huske partier i store trekk og bemerkningen om bonden i blindpartier."
+      },
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague",
+        "note": "Underbygger: gjenkallingsskårene til de Groots fire forsøkspersoner, 93 prosent for de to sterkeste og 51 prosent for den svakeste."
+      },
+      {
+        "title": "\"Recall of random and distorted chess positions: Implications for the theory of expertise\", Fernand Gobet and Herbert A. Simon, Memory & Cognition 24(4), 1996",
+        "note": "Underbygger: Chase og Simons chunk-modell fra 1973, anslaget på 50 000 chunker, at ferdighetsfordelen nesten forsvinner på tilfeldige stillinger, maler med åpne plasser og visningstiden på fem sekunder."
+      },
+      {
+        "title": "\"Magnus Carlsen\" (player profile), Chess.com",
+        "note": "Underbygger: fødselsdato og -sted, stormester som 13-åring, rekordratingen på 2882 i mai 2014 og tittelen som ble vunnet i 2013 og gitt fra seg i 2023."
+      }
+    ]
+  }
+}

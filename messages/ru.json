@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Статьи о шахматистах и их памяти",
+      "description": "Очерки о шахматистах и исследователях памяти. В каждом рассказано о задокументированном достижении, об исследованиях, которые его объясняют, и об упражнении, которое можно попробовать."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "Статьи",
+      "sub": "Шахматисты и исследователи памяти, по одному очерку за раз.",
+      "aboutHeading": "Как создаются эти статьи",
+      "about1": "Каждая статья посвящена одному шахматисту или исследователю и одному вопросу о его памяти. Героем может быть игрок, известный выдающимся запоминанием, или учёный, который измерял, что шахматисты помнят через несколько секунд.",
+      "about2": "У всех статей одинаковое устройство. Портрет сопровождается указанием фотографа и лицензии. В справке приведены даты, звания и достижение памяти, которым известен этот человек. В основной части рассказа это достижение сопоставлено с исследованиями, которые его объясняют. Список источников показывает, откуда взято каждое утверждение. Упражнение в конце открывает раунд Memory Chess с числом фигур и временем просмотра, которые подсказывает рассказ.",
+      "about3": "Статьи готовятся и пишутся с помощью ИИ по опубликованным источникам: интервью, отчётам о турнирах, книгам и научным работам. Затем отдельная проверка сверяет с этими источниками каждую дату, каждое число и каждую цитату, и только после этого статья публикуется. Если источники расходятся, в статье сказано, кто что сообщил. Эпизод, о котором источники сообщают лишь как о рассказе, подан как рассказ. Статьи на других языках переводятся с английского текста с помощью ИИ, и каждый перевод проверяется до публикации.",
+      "corrections": "Если здесь что-то неверно, <link>пришлите нам исправление</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Сортировка",
+      "group": "Сортировка статей",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "Новые",
+        "views": "Больше просмотров",
+        "likes": "Больше лайков"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "Страницы",
+      "previous": "Предыдущая страница",
+      "next": "Следующая страница",
+      "page": "Страница {page}",
+      "showing": "Показано с {first} по {last} из {total}"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, one {# просмотр} few {# просмотра} many {# просмотров} other {# просмотра}}",
+      "likes": "{count, plural, one {# лайк} few {# лайка} many {# лайков} other {# лайка}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "Мне нравится эта статья",
+      "failed": "Не удалось сохранить. Попробуйте ещё раз."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Все статьи",
+      "showAll": "Показать весь текст",
+      "byline": "Автор: <author>{name}</author>",
+      "authorshipNote": "Материал подготовлен и написан с помощью ИИ по источникам, перечисленным ниже. Каждый факт перед публикацией сверен с этими источниками.",
+      "translationNote": "Переведено с английского с помощью ИИ. Эталоном служит английская статья.",
+      "readInEnglish": "Читать на английском",
+      "photoCredit": "Фото: {author}, <licenseLink>{license}</licenseLink>, с сайта <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Справка",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Рождение",
+        "died": "Смерть",
+        "country": "Страна",
+        "title": "Звание",
+        "peakRating": "Максимальный рейтинг",
+        "worldChampion": "Титул чемпиона мира",
+        "knownFor": "Известность",
+        "memoryFeat": "Достижение памяти"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "Попробуйте сами",
+      "drillAction": "Сыграть: {pieces, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}}, {seconds, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунды}}",
+      "sources": "Источники",
+      "nextArticle": "Следующая статья"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "Читайте дальше",
+      "yourRound": "Ваш раунд",
+      "articleDrill": "Упражнение из этой статьи",
+      "roundSize": "{pieces, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}}, {seconds, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунды}}",
+      "read": "Читать статью",
+      "tryDrill": "Попробовать это упражнение"
     }
   }
 }

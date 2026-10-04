@@ -2,6 +2,8 @@ import { graphemeEnds, typingRateFor } from "@/components/articles/typingPace";
 
 const HINDI_SENTENCE = "मैग्नस कार्लसन ने शतरंज की बिसात को बिना देखे दस खेल खेले।";
 const HINDI_SURNAME = "कार्लसन";
+const HINDI_BOARD_PHRASE = "बोर्ड नहीं था";
+const HINDI_TRAINED_PHRASE = "प्रशिक्षित किया";
 
 function segmentsOf(text: string): string[] {
   return Array.from(new Intl.Segmenter(undefined, { granularity: "grapheme" }).segment(text), (part) => part.segment);
@@ -75,10 +77,40 @@ describe("graphemeEnds", () => {
       expect(graphemeEnds(`ab${clef}cd`)).toEqual([1, 2, 4, 5, 6]);
     });
 
-    it("falls back to code points for a combining accent", () => {
+    it("leaves Japanese and Korean text one character to a step", () => {
+      expect(graphemeEnds("カールセン")).toEqual([1, 2, 3, 4, 5]);
+      expect(graphemeEnds("칼센")).toEqual([1, 2]);
+    });
+
+    it("keeps a letter and its combining acute accent in one step", () => {
       const acute = String.fromCharCode(0x301);
 
-      expect(graphemeEnds(`e${acute}`)).toEqual([1, 2]);
+      expect(graphemeEnds(`xe${acute}y`)).toEqual([1, 3, 4]);
+    });
+
+    it.each([
+      [HINDI_BOARD_PHRASE, [2, 5, 6, 7, 10, 11, 13]],
+      [HINDI_TRAINED_PHRASE, [3, 5, 9, 10, 11, 13, 15]],
+    ])("cuts %s into the whole clusters Intl.Segmenter finds", (phrase, expected) => {
+      const realEnds = Array.from(
+        new segmenter(undefined, { granularity: "grapheme" }).segment(phrase),
+        (part) => part.index + part.segment.length,
+      );
+
+      expect(graphemeEnds(phrase)).toEqual(expected);
+      expect(realEnds).toEqual(expected);
+    });
+
+    it("ends a step after a virama that closes a word", () => {
+      expect(graphemeEnds("जगत् है")).toEqual([1, 2, 4, 5, 7]);
+    });
+
+    it("never ends a step beside a zero-width joiner", () => {
+      const joiner = String.fromCharCode(0x200d);
+      const coder = `${String.fromCodePoint(0x1f469)}${joiner}${String.fromCodePoint(0x1f4bb)}`;
+
+      expect(graphemeEnds(`a${coder}b`)).toEqual([1, 6, 7]);
+      expect(graphemeEnds(`क्${joiner}ष`)).toEqual([4]);
     });
 
     it("returns no offsets for an empty text", () => {

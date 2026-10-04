@@ -38,18 +38,31 @@ export function advance(
   return { chars, carry: typed - whole, restMs: 0 };
 }
 
-function codePointEnds(text: string): number[] {
+const COMBINING_MARK = /^\p{M}$/u;
+const LETTER = /^\p{L}$/u;
+const ZERO_WIDTH_JOINER = String.fromCharCode(0x200d);
+const DEVANAGARI_VIRAMA = String.fromCharCode(0x94d);
+
+function staysWithNext(codePoint: string, next: string): boolean {
+  if (COMBINING_MARK.test(next)) return true;
+  if (codePoint === ZERO_WIDTH_JOINER || next === ZERO_WIDTH_JOINER) return true;
+  return codePoint === DEVANAGARI_VIRAMA && LETTER.test(next);
+}
+
+function clusterEndsWithoutSegmenter(text: string): number[] {
+  const codePoints = Array.from(text);
   const ends: number[] = [];
   let end = 0;
-  for (const codePoint of text) {
+  codePoints.forEach((codePoint, index) => {
     end += codePoint.length;
-    ends.push(end);
-  }
+    const next = codePoints[index + 1];
+    if (next === undefined || !staysWithNext(codePoint, next)) ends.push(end);
+  });
   return ends;
 }
 
 export function graphemeEnds(text: string): readonly number[] {
-  if (typeof Intl.Segmenter !== "function") return codePointEnds(text);
+  if (typeof Intl.Segmenter !== "function") return clusterEndsWithoutSegmenter(text);
   const segments = new Intl.Segmenter(undefined, { granularity: "grapheme" }).segment(text);
   return Array.from(segments, ({ index, segment }) => index + segment.length);
 }

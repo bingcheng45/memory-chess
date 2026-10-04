@@ -1,8 +1,10 @@
 import {
   DEFAULT_SORT,
   SORT_KEYS,
+  RANKED_SORTS,
   hasCountsToSortBy,
   parseSortKey,
+  rankArticles,
   sortArticles,
 } from "@/lib/articles/sorting";
 import { NO_ARTICLE_STATS, type ArticleStats } from "@/lib/articles/stats";
@@ -67,6 +69,58 @@ describe("sortArticles", () => {
 
     expect(sorted).not.toBe(given);
     expect(slugs(given)).toEqual(["cedar", "birch", "alder"]);
+  });
+});
+
+describe("rankArticles", () => {
+  const ranksOf = (stats: ArticleStats) => Object.fromEntries(rankArticles(NEWEST_FIRST, stats));
+
+  it("gives each article its place under most viewed and under most liked, counted from zero", () => {
+    const stats: ArticleStats = {
+      alder: { views: 900, likes: 4 },
+      birch: { views: 20, likes: 31 },
+      cedar: { views: 300, likes: 7 },
+    };
+
+    expect(ranksOf(stats)).toEqual({
+      cedar: { views: 1, likes: 1 },
+      birch: { views: 2, likes: 0 },
+      alder: { views: 0, likes: 2 },
+    });
+  });
+
+  it("ranks a tie by the newer article, and a count of zero or no counts last", () => {
+    const stats: ArticleStats = {
+      alder: { views: 5, likes: 0 },
+      birch: { views: 5, likes: 2 },
+    };
+
+    expect(ranksOf(stats)).toEqual({
+      cedar: { views: 2, likes: 1 },
+      birch: { views: 0, likes: 0 },
+      alder: { views: 1, likes: 2 },
+    });
+  });
+
+  it("ranks in the registry order when nothing has counts", () => {
+    expect(ranksOf(NO_ARTICLE_STATS)).toEqual({
+      cedar: { views: 0, likes: 0 },
+      birch: { views: 1, likes: 1 },
+      alder: { views: 2, likes: 2 },
+    });
+  });
+
+  it.each(RANKED_SORTS)("puts the articles in the order sortArticles gives on %s", (sort) => {
+    const stats: ArticleStats = {
+      alder: { views: 7, likes: 7 },
+      cedar: { views: 7, likes: 0 },
+    };
+    const ranks = rankArticles(NEWEST_FIRST, stats);
+    const rankOf = (article: { slug: string }) => ranks.get(article.slug)?.[sort] ?? Number.NaN;
+
+    const byRank = [...NEWEST_FIRST].sort((a, b) => rankOf(a) - rankOf(b));
+
+    expect(slugs(byRank)).toEqual(slugs(sortArticles(NEWEST_FIRST, stats, sort)));
   });
 });
 

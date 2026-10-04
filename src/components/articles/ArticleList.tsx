@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
+import { Suspense, useEffect, useLayoutEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { flushSync } from "react-dom";
 import { useSearchParams } from "next/navigation";
 import ArticleCard from "@/components/articles/ArticleCard";
@@ -16,10 +16,12 @@ import {
   subscribeToAddress,
   writeSort,
 } from "@/components/articles/listAddress";
+import { clearSortedFirstPaint, rankStyles } from "@/components/articles/sortedFirstPaint";
 import { paginate } from "@/lib/articles/paging";
 import type { ArticleSummary } from "@/lib/articles/schema";
 import { hasCountsToSortBy, sortArticles, type SortKey } from "@/lib/articles/sorting";
 import { countsFor, type ArticleStats } from "@/lib/articles/stats";
+import "./articleList.css";
 
 type ArticleListProps = {
   articles: readonly ArticleSummary[];
@@ -40,9 +42,17 @@ export default function ArticleList({ articles, stats, heading }: ArticleListPro
   const search = useSyncExternalStore(subscribeToAddress, readSearch, () => BARE_SEARCH);
   const sort = sortOf(search);
   const current = paginate(sortArticles(articles, stats, sort), pageOf(search));
+  const ranks = rankStyles(articles, stats);
 
   const list = useRef<HTMLOListElement>(null);
   const slides = useRef<readonly Animation[]>([]);
+
+  // Hydration renders the server's newest-first order once before it renders
+  // the address's. The mark holds the sorted order on screen through that
+  // render, and has to go with it, or it would pin the cards against the next sort.
+  useLayoutEffect(() => {
+    if (search === readSearch()) clearSortedFirstPaint();
+  }, [search]);
 
   function finishSlides() {
     slides.current.forEach((slide) => slide.finish());
@@ -67,13 +77,14 @@ export default function ArticleList({ articles, stats, heading }: ArticleListPro
         {heading}
         {hasCountsToSortBy(articles, stats) ? <SortControl current={sort} onChoose={chooseSort} /> : null}
       </div>
-      <ol ref={list} onClickCapture={finishSlides} className="grid gap-3.5">
+      <ol ref={list} data-article-list onClickCapture={finishSlides} className="grid gap-3.5">
         {current.items.map((article, index) => (
           <ArticleCard
             key={article.slug}
             article={article}
             counts={countsFor(stats, article.slug)}
             priority={index === 0}
+            style={ranks.get(article.slug)}
           />
         ))}
       </ol>

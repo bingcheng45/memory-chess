@@ -4,7 +4,7 @@ export const FIRST_PAGE = 1;
 export const BARE_SEARCH = "";
 
 const PAGE_PARAM = "page";
-const SORT_PARAM = "sort";
+export const SORT_PARAM = "sort";
 
 const listeners = new Set<() => void>();
 

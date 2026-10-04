@@ -4,7 +4,13 @@ export const SORT_KEYS = ["newest", "views", "likes"] as const;
 
 export type SortKey = (typeof SORT_KEYS)[number];
 
-export const DEFAULT_SORT: SortKey = "newest";
+export const DEFAULT_SORT = "newest" satisfies SortKey;
+
+export type RankedSort = Exclude<SortKey, typeof DEFAULT_SORT>;
+
+export const RANKED_SORTS = SORT_KEYS.filter((sort): sort is RankedSort => sort !== DEFAULT_SORT);
+
+export type SortRanks = Readonly<Record<RankedSort, number>>;
 
 const MIN_ARTICLES_TO_SORT = 2;
 const NO_COUNTS: ArticleCounts = { views: 0, likes: 0 };
@@ -30,6 +36,16 @@ export function sortArticles<T extends WithSlug>(
   const countsOf = (article: T) => countsFor(stats, article.slug) ?? NO_COUNTS;
 
   return [...newestFirst].sort((a, b) => order(countsOf(a), countsOf(b)));
+}
+
+export function rankArticles(newestFirst: readonly WithSlug[], stats: ArticleStats): ReadonlyMap<string, SortRanks> {
+  const placed = RANKED_SORTS.map(
+    (sort) => [sort, sortArticles(newestFirst, stats, sort).map((article) => article.slug)] as const,
+  );
+  const ranksOf = (slug: string) =>
+    Object.fromEntries(placed.map(([sort, slugs]) => [sort, slugs.indexOf(slug)])) as SortRanks;
+
+  return new Map(newestFirst.map(({ slug }) => [slug, ranksOf(slug)]));
 }
 
 export function hasCountsToSortBy(articles: readonly WithSlug[], stats: ArticleStats): boolean {

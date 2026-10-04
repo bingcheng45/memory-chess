@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { render, screen, within } from "@/test-utils/intl";
 import ArticlesPage, { revalidate } from "@/app/[locale]/articles/page";
 import ArticleList from "@/components/articles/ArticleList";
+import { sortedFirstPaintScript } from "@/components/articles/sortedFirstPaint";
 import { ARTICLE_SLUGS, ARTICLE_SUMMARIES } from "@/lib/articles";
 import { ARTICLE_LIST_COPY } from "@/lib/articles/copy";
 import { NO_ARTICLE_STATS, type ArticleStats } from "@/lib/articles/stats";
@@ -37,7 +38,7 @@ const STATS: ArticleStats = {
 };
 
 async function renderPage() {
-  render(await ArticlesPage({ params: Promise.resolve({ locale: "en" }) }));
+  return render(await ArticlesPage({ params: Promise.resolve({ locale: "en" }) }));
 }
 
 function listProps() {
@@ -85,6 +86,17 @@ describe("ArticlesPage", () => {
     ).toBeInTheDocument();
     expect(within(header).getByText(ARTICLE_LIST_COPY.sub)).toBeInTheDocument();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
+  });
+
+  it("runs the sorted first paint script before the list is parsed", async () => {
+    const { container } = await renderPage();
+    const script = container.querySelector("script:not([type])");
+    if (script === null) throw new Error("the page has no inline script");
+
+    expect(script.textContent).toBe(sortedFirstPaintScript());
+    expect(
+      script.compareDocumentPosition(screen.getByTestId("article-list")) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
   it("still renders when there are no counts", async () => {

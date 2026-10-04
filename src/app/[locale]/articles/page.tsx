@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import ArticleList from "@/components/articles/ArticleList";
 import { ARTICLE_LINK } from "@/components/articles/articleStyles";
+import { sortedFirstPaintScript } from "@/components/articles/sortedFirstPaint";
 import { EditorialPageShell } from "@/components/editorial/EditorialPage";
 import { Link } from "@/i18n/navigation";
 import { ARTICLE_SLUGS, ARTICLE_SUMMARIES } from "@/lib/articles";
@@ -54,6 +55,7 @@ export default async function ArticlesPage({ params }: { params: Promise<{ local
 
   return (
     <EditorialPageShell>
+      <script dangerouslySetInnerHTML={{ __html: sortedFirstPaintScript() }} />
       <ArticleList
         articles={ARTICLE_SUMMARIES}
         stats={stats}

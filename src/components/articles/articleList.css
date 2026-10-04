@@ -1,0 +1,8 @@
+/* Set by sortedFirstPaintScript on a direct load of ?sort=, cleared by ArticleList once it has hydrated. */
+[data-article-sort="views"] [data-article-list] > li {
+  order: var(--rank-views);
+}
+
+[data-article-sort="likes"] [data-article-list] > li {
+  order: var(--rank-likes);
+}

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { LikeCount, ViewCount } from "@/components/articles/ArticleCounts";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
@@ -10,6 +11,7 @@ type ArticleCardProps = {
   article: ArticleSummary;
   counts?: ArticleCounts;
   priority: boolean;
+  style?: CSSProperties;
 };
 
 const CARD_CLASS =
@@ -18,13 +20,13 @@ const CARD_CLASS =
   `motion-safe:hover:-translate-y-0.5 ${ARTICLE_FOCUS_RING} ` +
   "min-[561px]:grid-cols-[148px_minmax(0,1fr)] min-[561px]:gap-[26px] min-[561px]:rounded-[22px] min-[561px]:p-[18px]";
 
-export default function ArticleCard({ article, counts, priority }: ArticleCardProps) {
+export default function ArticleCard({ article, counts, priority, style }: ArticleCardProps) {
   const { slug, photo, person, publishedAt, title, description } = article;
   const descriptionId = `${slug}-description`;
   const countsId = `${slug}-counts`;
 
   return (
-    <li>
+    <li style={style}>
       <ArticleLink
         article={slug}
         data-article-card={slug}

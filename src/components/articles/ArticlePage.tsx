@@ -38,10 +38,10 @@ const SOURCES_HEADING_ID = "article-sources-heading";
 const DRILL_WHY_ID = "article-drill-why";
 const NOTE_CLASS = "max-w-2xl";
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
-// The gate is the tallest rail plus 40px: 20px above it, where it sticks, and 20px under it.
+// The gate is the tallest rail of any locale, 864px in French, plus the 20px above it where it sticks.
 // Measure the rails again with the recipe in .claude/skills/verify-memory-chess/features/articles.md.
 const STICKY_RAIL =
-  "min-[821px]:[@media(min-height:847px)]:sticky min-[821px]:[@media(min-height:847px)]:top-5";
+  "min-[821px]:[@media(min-height:884px)]:sticky min-[821px]:[@media(min-height:884px)]:top-5";
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
   return (

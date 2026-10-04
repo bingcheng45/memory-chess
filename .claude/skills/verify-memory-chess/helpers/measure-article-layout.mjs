@@ -12,7 +12,7 @@ const BLOCKED_HOSTS = [
 const LOCALE = process.env.ARTICLE_LOCALE ?? "de";
 const PREFIX = LOCALE === "en" ? "" : `/${LOCALE}`;
 const SLUGS = readdirSync("src/lib/articles/entries").map((file) => file.replace(/\.ts$/, ""));
-const STICKY_GATE = { width: 1440, height: 847, deviceScaleFactor: 1, mobile: false };
+const STICKY_GATE = { width: 1440, height: 884, deviceScaleFactor: 1, mobile: false };
 const RAIL_TOP_PX = 20;
 const PHONE_WIDTHS = [375, 320];
 const NARROW_TEXT =

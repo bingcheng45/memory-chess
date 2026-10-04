@@ -1,0 +1,136 @@
+import { join } from "node:path";
+import { counted, failuresOf, unreviewedOf } from "./checks.mjs";
+import { partsOf } from "./icu.mjs";
+import { inOrderOf, mapLeaves } from "./leaves.mjs";
+import {
+  ENGLISH,
+  articleFile,
+  chromeFile,
+  hasInstalledChrome,
+  messagesWithArticles,
+  readInstalled,
+  readWorkingDir,
+  shown,
+  toJson,
+  translatedLocales,
+  writeChanged,
+} from "./repo.mjs";
+
+const INSTALLED_FILES = "the installed files";
+
+const sizeOf = (repo) =>
+  `${counted(repo.articles.length, "article")} and ${counted(Object.keys(repo.chrome.strings).length, "chrome string")}`;
+const passed = (summary) => ({ failures: [], summary });
+
+function chromeSource({ strings, sourceHash }) {
+  const described = Object.entries(strings).map(([key, english]) => {
+    const { placeholders, tags, plurals } = partsOf(english, ENGLISH);
+    return { key, english, placeholders, tags, plurals: [...new Set(plurals.map((plural) => plural.name))] };
+  });
+  return { sourceHash, strings: described };
+}
+
+/** Writes what a translator works from: one English text per article and the list of chrome strings. */
+export function exportSources(repo, outDir) {
+  const dir = shown(repo.root, outDir);
+  const files = [
+    ...repo.articles.map(({ slug, sourceHash, text }) => ({
+      file: join(dir, `${slug}.source.json`),
+      content: toJson({ slug, sourceHash, text }),
+    })),
+    { file: join(dir, "chrome.source.json"), content: toJson(chromeSource(repo.chrome)) },
+  ];
+  writeChanged(repo.root, files);
+  return passed(`ok export: ${sizeOf(repo)} in ${dir}`);
+}
+
+function read(repo, locale, dir) {
+  if (dir === undefined) return { bundle: readInstalled(repo.root, locale), where: INSTALLED_FILES };
+  return { bundle: readWorkingDir(repo.root, dir), where: shown(repo.root, dir) };
+}
+
+function failed(command, locale, failures, where, consequence = "") {
+  return { failures, summary: `${command} ${locale}: ${counted(failures.length, "failure")} in ${where}${consequence}` };
+}
+
+/** Checks a translator's directory, or the installed files of `locale` when there is no `dir`. */
+export function check(repo, locale, dir) {
+  const { bundle, where } = read(repo, locale, dir);
+  const failures = failuresOf(locale, repo, bundle, repo.lib.shapeProblems);
+  if (failures.length > 0) return failed("check", locale, failures, where);
+  return passed(`ok check ${locale}: ${sizeOf(repo)} pass in ${where}`);
+}
+
+function installFiles(repo, locale, bundle, installed) {
+  const fingerprint = ({ text, sameAsEnglish, sourceHash }) => repo.lib.sourceHashOf({ text, sameAsEnglish, sourceHash });
+  const withReview = (old, next) => ({
+    ...next,
+    reviewed: old?.reviewed === true && old.error === undefined && fingerprint(old) === fingerprint(next),
+  });
+  const articles = repo.articles.map(({ slug, text, sourceHash }) => {
+    const { sameAsEnglish, text: translated } = bundle.articles[slug];
+    const next = { sourceHash, sameAsEnglish, text: inOrderOf(text, translated) };
+    return articleFile(locale, slug, withReview(installed.articles[slug], next));
+  });
+  const { sameAsEnglish, text: strings } = bundle.chrome;
+  const chrome = withReview(installed.chrome, { sourceHash: repo.chrome.sourceHash, sameAsEnglish, text: strings });
+  const namespace = mapLeaves(repo.chrome.namespace, (path) => strings[path]);
+
+  // The catalogue goes last. A run that dies after writing it, with the old
+  // chrome.json still saying reviewed, would make new strings look reviewed.
+  return [...articles, chromeFile(locale, chrome), messagesWithArticles(repo.root, locale, namespace)];
+}
+
+/**
+ * Checks `dir`, then installs it. A file whose text, kept-in-English list and
+ * source hash come out as they already are keeps its `reviewed` flag. Any
+ * other file is written with `reviewed: false`.
+ */
+export function importTranslation(repo, locale, dir) {
+  const { bundle, where } = read(repo, locale, dir);
+  const failures = failuresOf(locale, repo, bundle, repo.lib.shapeProblems);
+  if (failures.length > 0) return failed("import", locale, failures, where, ", nothing was written");
+
+  const files = installFiles(repo, locale, bundle, readInstalled(repo.root, locale));
+  const written = writeChanged(repo.root, files);
+  return passed(`ok import ${locale}: ${counted(written, "file")} written, ${files.length - written} unchanged`);
+}
+
+/** Checks the installed files of `locale`, then marks every one of them reviewed. */
+export function approve(repo, locale) {
+  const bundle = readInstalled(repo.root, locale);
+  const failures = failuresOf(locale, repo, bundle, repo.lib.shapeProblems);
+  if (failures.length > 0) return failed("approve", locale, failures, INSTALLED_FILES, ", nothing was approved");
+
+  const files = [
+    ...repo.articles.map(({ slug, text }) => {
+      const unit = bundle.articles[slug];
+      return articleFile(locale, slug, { ...unit, text: inOrderOf(text, unit.text), reviewed: true });
+    }),
+    chromeFile(locale, { ...bundle.chrome, reviewed: true }),
+  ];
+  writeChanged(repo.root, files);
+  return passed(`ok approve ${locale}: ${counted(files.length, "file")} reviewed`);
+}
+
+/** Gives every locale that has no translation yet the English chrome strings, which the page chrome needs to render. */
+export function seed(repo) {
+  const locales = repo.locales.filter((locale) => locale !== ENGLISH && !hasInstalledChrome(repo.root, locale));
+  const files = locales.map((locale) => messagesWithArticles(repo.root, locale, repo.chrome.namespace));
+  const written = writeChanged(repo.root, files);
+  return passed(`ok seed: ${counted(written, "file")} changed, ${counted(locales.length, "untranslated locale")}`);
+}
+
+/** Checks every locale that serves articles: its installed files pass and each one is reviewed. */
+export async function verify(repo) {
+  const locales = (await translatedLocales(repo.root)).filter((locale) => locale !== ENGLISH);
+  if (locales.length === 0) return passed("ok verify: nothing to verify, en is the only locale that serves articles");
+
+  const failures = locales.flatMap((locale) => {
+    const bundle = readInstalled(repo.root, locale);
+    const lines = [...failuresOf(locale, repo, bundle, repo.lib.shapeProblems), ...unreviewedOf(bundle)];
+    return lines.map((line) => `[${locale}] ${line}`);
+  });
+  if (failures.length > 0) return { failures, summary: `verify: ${counted(failures.length, "failure")}` };
+  return passed(`ok verify: ${locales.join(", ")}`);
+}

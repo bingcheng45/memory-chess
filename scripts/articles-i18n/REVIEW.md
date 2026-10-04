@@ -1,0 +1,81 @@
+# Review a translation of the articles
+
+You review the translation of the articles into one language, `<locale>`. Another agent made it by
+following `TRANSLATE.md`. You are the last reader before the public. When you approve, the pages can go
+up, so approve only what you would sign.
+
+Run every command from the repo root. Use Node 22.18 or newer.
+
+## What you may write
+
+- `src/lib/articles/translations/<locale>/<slug>.json`: the strings under `text`, and `sameAsEnglish`.
+- `src/lib/articles/translations/<locale>/chrome.json`: `sameAsEnglish` only.
+- `messages/<locale>.json`: the strings under `articles` only.
+
+Never edit `sourceHash` or `reviewed` by hand. Do not edit an English entry, another locale, a script, or
+a recipe. If the English text itself looks wrong, say so in your report and leave it.
+
+## Steps
+
+1. Export the English sources and confirm the translation passes the scripted check before you start.
+
+	```
+	node scripts/articles-i18n.mjs export .verify-evidence/i18n/english
+	node scripts/articles-i18n.mjs check <locale>
+	```
+
+	If the check fails, the translator's work is not finished. Report the lines and stop.
+
+2. Read each translated article alone, from the title to the last source note, as a native reader. Note
+   every sentence that is wrong, stiff, or reads like a translation.
+
+3. Read each article again beside its `<slug>.source.json`, paragraph by paragraph. Confirm each point.
+
+	- Every English sentence has its counterpart, and no sentence was added.
+	- Every number, date, score, name and place is the one in the English text.
+	- The meaning is the same. The English text is careful about who reported what. A phrase such as
+	  "according to", "reported" or "suggests" must survive, and so must "about" before a number.
+	- A quotation says what the English quotation says.
+	- Names of people are in the form your language's press uses. Titles of books, papers, films and
+	  websites are in their original language.
+	- Chess terms are the ones your language's chess writers use.
+	- The words for pieces, round, board and memorizing match the rest of `messages/<locale>.json`.
+
+4. Read every string under `articles` in `messages/<locale>.json` beside `chrome.source.json`. Three of them
+   are disclosures and must say exactly what the English says: `page.authorshipNote`,
+   `page.translationNote` and `list.about3`. Check each plural message with the numbers 1, 2, 5 and 21 in
+   your head.
+
+5. Read every path under `sameAsEnglish`. Each one must be right when it is identical to English.
+
+6. Fix what is wrong in the files listed under "What you may write". Then run the check again.
+
+	```
+	node scripts/articles-i18n.mjs check <locale>
+	```
+
+7. Approve only when the check prints `ok` and you have no open doubt about a fact.
+
+	```
+	node scripts/articles-i18n.mjs approve <locale>
+	node scripts/articles-i18n.mjs check <locale>
+	npm run validate:messages
+	```
+
+	If the translation needs more than repairs, do not approve. Report what is wrong and stop.
+
+8. Commit only your locale's files.
+
+	```
+	/usr/bin/git add src/lib/articles/translations/<locale> messages/<locale>.json
+	/usr/bin/git commit -m "feat(articles): review the <language> articles"
+	```
+
+9. Report: approved or not, the last line of each command in step 7, the commit SHA, every change you made
+   as path, before, after and reason, and anything you could not judge.
+
+## What the check proves and what it does not
+
+The check proves structure: the same shape as the English text, every number kept, every placeholder and
+plural form present, no value left in English by accident. It cannot read. A translation that passes can
+still say the wrong thing, and finding that is your job.

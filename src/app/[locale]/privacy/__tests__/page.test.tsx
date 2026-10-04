@@ -39,7 +39,9 @@ describe("PrivacyPage", () => {
     render(<PrivacyPage />);
 
     expect(
-      screen.getByText(/saves the id of that article in the local storage of your browser/),
+      screen.getByText(
+        /saves the id of that article and the like count shown at that moment in the local storage of your browser/,
+      ),
     ).toBeInTheDocument();
     expect(
       screen.getByText(/Session storage remembers which articles you opened/),

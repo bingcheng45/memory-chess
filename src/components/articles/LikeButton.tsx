@@ -1,11 +1,12 @@
 "use client";
 
-import { useId, useRef, useState, useSyncExternalStore } from "react";
+import { useId, useRef, useState } from "react";
 import { Heart } from "lucide-react";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
+import { useLikesSeen } from "@/components/articles/useLikesSeen";
 import { trackEvent } from "@/lib/analytics/events";
 import { ARTICLE_STATS_COPY, formatCount } from "@/lib/articles/copy";
-import { likedStore } from "@/lib/articles/likedStore";
+import { NOT_LIKED, likedStore } from "@/lib/articles/likedStore";
 import { sendArticleEvent } from "@/lib/articles/statsClient";
 
 type LikeButtonProps = {
@@ -23,44 +24,44 @@ const BUTTON_CLASS =
   "text-sm text-text-secondary hover:border-peach-500/35 " +
   "aria-pressed:border-peach-500/45 aria-pressed:bg-peach-500/10 aria-pressed:text-peach-200 " +
   `transition-transform motion-reduce:transition-none motion-safe:active:scale-95 ${ARTICLE_FOCUS_RING}`;
-const OWN_LIKE = 1;
 const HEART_CLASS = "h-[17px] w-[17px] group-aria-pressed:fill-peach-500 group-aria-pressed:text-peach-500";
 
-function setLiked(slug: string, isLiked: boolean): void {
-  if (isLiked) likedStore.add(slug);
-  else likedStore.remove(slug);
+function setLikesSeen(slug: string, likesSeen: number): void {
+  if (likesSeen === NOT_LIKED) likedStore.unlike(slug);
+  else likedStore.like(slug, likesSeen);
 }
 
 export default function LikeButton({ slug, likes }: LikeButtonProps) {
   const countId = useId();
-  const isLiked = useSyncExternalStore(
-    likedStore.subscribe,
-    () => likedStore.has(slug),
-    () => false,
-  );
+  const likesSeen = useLikesSeen(slug);
+  const isLiked = likesSeen !== NOT_LIKED;
   const [shown, setShown] = useState<Shown>({ likes: likes ?? 0, hasFailed: false });
   const isSending = useRef(false);
-  const likesShown = isLiked ? Math.max(shown.likes, OWN_LIKE) : shown.likes;
+  const likesShown = Math.max(shown.likes, likesSeen);
 
   async function toggle() {
     if (isSending.current) return;
     isSending.current = true;
 
-    const before = { isLiked, likes: likesShown };
-    const willLike = !before.isLiked;
-    setLiked(slug, willLike);
-    setShown({ likes: Math.max(0, before.likes + (willLike ? 1 : -1)), hasFailed: false });
+    const before = { likesSeen, likes: likesShown };
+    const willLike = !isLiked;
+    const likesAtOnce = Math.max(0, before.likes + (willLike ? 1 : -1));
+    setLikesSeen(slug, willLike ? likesAtOnce : NOT_LIKED);
+    setShown({ likes: likesAtOnce, hasFailed: false });
 
     const counts = await sendArticleEvent(slug, willLike ? "like" : "unlike");
     isSending.current = false;
 
     if (counts === null) {
-      setLiked(slug, before.isLiked);
+      setLikesSeen(slug, before.likesSeen);
       setShown({ likes: before.likes, hasFailed: true });
       return;
     }
     setShown({ likes: counts.likes, hasFailed: false });
-    if (willLike) trackEvent({ name: "article_like", params: { slug } });
+    if (!willLike) return;
+
+    likedStore.like(slug, counts.likes);
+    trackEvent({ name: "article_like", params: { slug } });
   }
 
   const hasCount = likesShown > 0;

@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, waitFor } from "@testing-library/react"
 import LikeButton from "@/components/articles/LikeButton";
 import { trackEvent } from "@/lib/analytics/events";
 import { ARTICLE_STATS_COPY } from "@/lib/articles/copy";
+import { storeLikes } from "@/lib/articles/__tests__/fixtures";
 import { LIKED_STORAGE_KEY, likedStore } from "@/lib/articles/likedStore";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
@@ -31,12 +32,13 @@ function deferredFetch() {
 
 const button = () => screen.getByRole("button", { name: ARTICLE_STATS_COPY.likeButton });
 const liveLine = () => screen.getByRole("status");
-const storedLikes = () => JSON.parse(window.localStorage.getItem(LIKED_STORAGE_KEY) ?? "[]");
+const storedLikes = () => JSON.parse(window.localStorage.getItem(LIKED_STORAGE_KEY) ?? "null")?.likes ?? {};
+const storeLike = (likesSeen: number) => storeLikes({ [SLUG]: likesSeen });
 
 afterEach(() => {
   jest.restoreAllMocks();
   jest.mocked(trackEvent).mockClear();
-  likedStore.remove(SLUG);
+  likedStore.unlike(SLUG);
   window.localStorage.clear();
   Reflect.deleteProperty(global, "fetch");
 });
@@ -78,7 +80,7 @@ describe("LikeButton at rest", () => {
     expect(button().className).toContain("focus-visible:outline");
   });
 
-  it("starts pressed when this browser already liked the article", () => {
+  it("starts pressed when this browser liked the article before the count was kept beside the like", () => {
     window.localStorage.setItem(LIKED_STORAGE_KEY, JSON.stringify([SLUG]));
 
     render(<LikeButton slug={SLUG} likes={187} />);
@@ -96,15 +98,78 @@ describe("LikeButton at rest", () => {
     expect(button()).toHaveTextContent(/^1$/);
   });
 
-  it("follows a like made in another tab", () => {
+  it("follows a like made in another tab, with the count that tab saw", () => {
     render(<LikeButton slug={SLUG} likes={187} />);
 
     act(() => {
-      window.localStorage.setItem(LIKED_STORAGE_KEY, JSON.stringify([SLUG]));
+      storeLike(188);
       window.dispatchEvent(new StorageEvent("storage", { key: LIKED_STORAGE_KEY }));
     });
 
     expect(button()).toHaveAttribute("aria-pressed", "true");
+    expect(button()).toHaveTextContent(/^188$/);
+  });
+});
+
+describe("LikeButton on a page older than the visitor's like", () => {
+  it("shows the count the visitor saw when they liked, not the page's lower one", () => {
+    storeLike(188);
+
+    render(<LikeButton slug={SLUG} likes={187} />);
+
+    expect(button()).toHaveAttribute("aria-pressed", "true");
+    expect(button()).toHaveTextContent(/^188$/);
+    expect(button()).toHaveAccessibleDescription("188");
+  });
+
+  it("shows the page's count once it has passed the one the visitor saw", () => {
+    storeLike(188);
+
+    render(<LikeButton slug={SLUG} likes={195} />);
+
+    expect(button()).toHaveTextContent(/^195$/);
+  });
+
+  it("keeps the server's answer across a reload, though the page still holds the count from before the like", async () => {
+    const { answer } = deferredFetch();
+    const first = render(<LikeButton slug={SLUG} likes={187} />);
+    fireEvent.click(button());
+    await answer({ status: 200, body: { views: 2140, likes: 191 } });
+    first.unmount();
+
+    render(<LikeButton slug={SLUG} likes={187} />);
+
+    expect(button()).toHaveAttribute("aria-pressed", "true");
+    expect(button()).toHaveTextContent(/^191$/);
+  });
+
+  it("goes back to the page's count after an unlike and a reload", async () => {
+    storeLike(188);
+    const { answer } = deferredFetch();
+    const first = render(<LikeButton slug={SLUG} likes={187} />);
+    fireEvent.click(button());
+    expect(button()).toHaveTextContent(/^187$/);
+    await answer({ status: 200, body: { views: 2140, likes: 187 } });
+    first.unmount();
+
+    render(<LikeButton slug={SLUG} likes={187} />);
+
+    expect(storedLikes()).toEqual({});
+    expect(button()).toHaveAttribute("aria-pressed", "false");
+    expect(button()).toHaveTextContent(/^187$/);
+  });
+
+  it("gets the remembered count back when the unlike fails", async () => {
+    storeLike(188);
+    const { answer } = deferredFetch();
+    render(<LikeButton slug={SLUG} likes={187} />);
+
+    fireEvent.click(button());
+    await answer({ status: 500 });
+
+    expect(button()).toHaveAttribute("aria-pressed", "true");
+    expect(button()).toHaveTextContent(/^188$/);
+    expect(storedLikes()).toEqual({ [SLUG]: 188 });
   });
 });
 
@@ -117,7 +182,7 @@ describe("a like", () => {
 
     expect(button()).toHaveAttribute("aria-pressed", "true");
     expect(button()).toHaveTextContent(/^188$/);
-    expect(storedLikes()).toEqual([SLUG]);
+    expect(storedLikes()).toEqual({ [SLUG]: 188 });
     expect(fetchMock).toHaveBeenCalledWith(`/api/articles/${SLUG}/stats`, {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -130,6 +195,7 @@ describe("a like", () => {
 
     expect(button()).toHaveAttribute("aria-pressed", "true");
     expect(button()).toHaveTextContent(/^191$/);
+    expect(storedLikes()).toEqual({ [SLUG]: 191 });
     expect(liveLine()).toBeEmptyDOMElement();
   });
 
@@ -171,7 +237,7 @@ describe("a like", () => {
 
     expect(button()).toHaveAttribute("aria-pressed", "false");
     expect(button()).toHaveTextContent(/^187$/);
-    expect(storedLikes()).toEqual([]);
+    expect(storedLikes()).toEqual({});
     expect(liveLine()).toHaveTextContent(ARTICLE_STATS_COPY.likeFailed);
     expect(trackEvent).not.toHaveBeenCalled();
   });
@@ -225,7 +291,7 @@ describe("a like", () => {
 
     await answer({ status: 500 });
 
-    expect(storedLikes()).toEqual([]);
+    expect(storedLikes()).toEqual({});
   });
 
   it("works in a browser whose storage refuses every write", async () => {
@@ -256,7 +322,7 @@ describe("an unlike", () => {
 
     expect(button()).toHaveAttribute("aria-pressed", "false");
     expect(button()).toHaveTextContent(/^187$/);
-    expect(storedLikes()).toEqual([]);
+    expect(storedLikes()).toEqual({});
     expect(fetchMock.mock.calls[0]).toEqual([
       `/api/articles/${SLUG}/stats`,
       expect.objectContaining({ body: JSON.stringify({ event: "unlike" }) }),
@@ -290,7 +356,7 @@ describe("an unlike", () => {
 
     expect(button()).toHaveAttribute("aria-pressed", "true");
     expect(button()).toHaveTextContent(/^188$/);
-    expect(storedLikes()).toEqual([SLUG]);
+    expect(storedLikes()).toEqual({ [SLUG]: 1 });
     expect(liveLine()).toHaveTextContent(ARTICLE_STATS_COPY.likeFailed);
   });
 });

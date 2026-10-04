@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { act, fireEvent, render, screen, within } from "@/test-utils/intl";
 import ArticleList from "@/components/articles/ArticleList";
 import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
-import { makeArticles, summaryOf } from "@/lib/articles/__tests__/fixtures";
+import { makeArticles, storeLikes, summaryOf } from "@/lib/articles/__tests__/fixtures";
 import { NO_ARTICLE_STATS, type ArticleStats } from "@/lib/articles/stats";
 
 jest.mock("next/link", () => {
@@ -71,6 +71,7 @@ function renderSorted(count = 3, stats: ArticleStats = STATS) {
 
 beforeEach(() => {
   window.history.replaceState(null, "", "/articles");
+  window.localStorage.clear();
 });
 
 describe("ArticleList counts", () => {
@@ -106,6 +107,37 @@ describe("ArticleList counts", () => {
     expect(within(alder).getByText("1 like")).toBeInTheDocument();
     expect(within(birch).getByText("1 view")).toBeInTheDocument();
     expect(within(birch).getByText("1,873 likes")).toBeInTheDocument();
+  });
+
+  it("shows the count the visitor saw when they liked an article, while the list still holds a lower one", () => {
+    storeLikes({ "alder-fixture": 10, "cedar-fixture": 12 });
+
+    const { container } = renderSorted();
+    const [alder, birch, cedar] = cards(container);
+
+    expect(within(alder).getByText("10 likes")).toBeInTheDocument();
+    expect(alder).toHaveAccessibleDescription(`${summaries(1)[0].description} 20 views 10 likes`);
+    expect(within(birch).queryByText(/likes?$/)).not.toBeInTheDocument();
+    expect(within(cedar).getByText("31 likes")).toBeInTheDocument();
+  });
+
+  it("shows the visitor's own like on a card the list has no counts for", () => {
+    storeLikes({ "dogwood-fixture": 1 });
+
+    const { container } = renderSorted(4);
+    const dogwood = cards(container)[3];
+
+    expect(within(dogwood).getByText("1 like")).toBeInTheDocument();
+    expect(within(dogwood).queryByText(/views?$/)).not.toBeInTheDocument();
+  });
+
+  it("orders by the list's own counts, not by a count only this visitor sees", () => {
+    storeLikes({ "birch-fixture": 500 });
+    const { container } = renderSorted();
+
+    press("Most liked");
+
+    expect(shown(container)).toEqual(["cedar-fixture", "alder-fixture", "birch-fixture"]);
   });
 
   it("keeps the three parts a transition carries, and adds no fourth", () => {

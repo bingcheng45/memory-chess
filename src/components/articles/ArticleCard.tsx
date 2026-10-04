@@ -3,9 +3,10 @@ import { LikeCount, ViewCount } from "@/components/articles/ArticleCounts";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
+import { useLikesSeen } from "@/components/articles/useLikesSeen";
 import { formatArticleDate } from "@/lib/articles/copy";
 import type { ArticleSummary } from "@/lib/articles/schema";
-import { hasCounts, type ArticleCounts } from "@/lib/articles/stats";
+import { hasCounts, withLikesSeen, type ArticleCounts } from "@/lib/articles/stats";
 
 type ArticleCardProps = {
   article: ArticleSummary;
@@ -20,8 +21,9 @@ const CARD_CLASS =
   `motion-safe:hover:-translate-y-0.5 ${ARTICLE_FOCUS_RING} ` +
   "min-[561px]:grid-cols-[148px_minmax(0,1fr)] min-[561px]:gap-[26px] min-[561px]:rounded-[22px] min-[561px]:p-[18px]";
 
-export default function ArticleCard({ article, counts, priority, style }: ArticleCardProps) {
+export default function ArticleCard({ article, counts: listed, priority, style }: ArticleCardProps) {
   const { slug, photo, person, publishedAt, title, description } = article;
+  const counts = withLikesSeen(listed, useLikesSeen(slug));
   const descriptionId = `${slug}-description`;
   const countsId = `${slug}-counts`;
 

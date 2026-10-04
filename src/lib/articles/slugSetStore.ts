@@ -1,3 +1,5 @@
+import { createStoredValue, type StorageName, type StoredShape } from "@/lib/articles/storedValue";
+
 export type SlugSetStore = {
   readonly has: (slug: string) => boolean;
   readonly add: (slug: string) => void;
@@ -5,60 +7,22 @@ export type SlugSetStore = {
   readonly subscribe: (onChange: () => void) => () => void;
 };
 
-type StorageName = "localStorage" | "sessionStorage";
-
 const NO_SLUGS: ReadonlySet<string> = new Set();
 
-function parseSlugs(raw: string | null): ReadonlySet<string> {
-  if (raw === null) return NO_SLUGS;
-
-  const stored: unknown = JSON.parse(raw);
-  return Array.isArray(stored) && stored.every((slug) => typeof slug === "string")
-    ? new Set(stored)
-    : NO_SLUGS;
-}
+const SLUG_SET: StoredShape<ReadonlySet<string>> = {
+  empty: NO_SLUGS,
+  parse: (stored) =>
+    Array.isArray(stored) && stored.every((slug) => typeof slug === "string") ? new Set(stored) : NO_SLUGS,
+  serialize: (slugs) => [...slugs],
+};
 
 export function createSlugSetStore(storageName: StorageName, key: string): SlugSetStore {
-  const listeners = new Set<() => void>();
-  let unsaved: ReadonlySet<string> | null = null;
-
-  function read(): ReadonlySet<string> {
-    if (unsaved !== null) return unsaved;
-    if (typeof window === "undefined") return NO_SLUGS;
-
-    try {
-      return parseSlugs(window[storageName].getItem(key));
-    } catch {
-      return NO_SLUGS;
-    }
-  }
-
-  function write(slugs: ReadonlySet<string>): void {
-    if (typeof window === "undefined") return;
-
-    try {
-      window[storageName].setItem(key, JSON.stringify([...slugs]));
-      unsaved = null;
-    } catch {
-      unsaved = slugs;
-    }
-    listeners.forEach((notify) => notify());
-  }
+  const slugs = createStoredValue(storageName, key, SLUG_SET);
 
   return {
-    has: (slug) => read().has(slug),
-    add: (slug) => write(new Set([...read(), slug])),
-    remove: (slug) => write(new Set([...read()].filter((kept) => kept !== slug))),
-    subscribe: (onChange) => {
-      const onStorage = (event: StorageEvent) => {
-        if (event.key === null || event.key === key) onChange();
-      };
-      listeners.add(onChange);
-      window.addEventListener("storage", onStorage);
-      return () => {
-        listeners.delete(onChange);
-        window.removeEventListener("storage", onStorage);
-      };
-    },
+    has: (slug) => slugs.read().has(slug),
+    add: (slug) => slugs.write(new Set([...slugs.read(), slug])),
+    remove: (slug) => slugs.write(new Set([...slugs.read()].filter((kept) => kept !== slug))),
+    subscribe: slugs.subscribe,
   };
 }

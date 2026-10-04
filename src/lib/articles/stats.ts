@@ -11,11 +11,11 @@ export type ArticleStats = Readonly<Partial<Record<string, ArticleCounts>>>;
 
 export const NO_ARTICLE_STATS: ArticleStats = {};
 
-function isRecord(value: unknown): value is Record<string, unknown> {
+export function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-function isCount(value: unknown): value is number {
+export function isCount(value: unknown): value is number {
   return typeof value === "number" && Number.isSafeInteger(value) && value >= 0;
 }
 
@@ -44,6 +44,12 @@ export function toArticleStats(rows: unknown): ArticleStats {
 
 export function hasCounts(counts: ArticleCounts | undefined): counts is ArticleCounts {
   return counts !== undefined && (counts.views > 0 || counts.likes > 0);
+}
+
+// A visitor who liked an article sees at least the like count they saw then.
+export function withLikesSeen(counts: ArticleCounts | undefined, likesSeen: number): ArticleCounts | undefined {
+  if (likesSeen <= (counts?.likes ?? 0)) return counts;
+  return { views: counts?.views ?? 0, likes: likesSeen };
 }
 
 export function countsFor(stats: ArticleStats, slug: string): ArticleCounts | undefined {

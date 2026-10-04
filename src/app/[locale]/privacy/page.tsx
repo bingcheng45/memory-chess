@@ -149,9 +149,10 @@ export default function PrivacyPage() {
               choices.
             </p>
             <p className={copyClassName}>
-              Liking an article saves the id of that article in the local
-              storage of your browser, so the like button stays pressed when
-              you come back. Session storage remembers which articles you
+              Liking an article saves the id of that article and the like
+              count shown at that moment in the local storage of your browser,
+              so the like button stays pressed and its count does not fall
+              when you come back. Session storage remembers which articles you
               opened in the current tab, so opening one again there does not
               add a view. Both lists stay in your browser. When you like an
               article, Google Analytics also receives a like event that names

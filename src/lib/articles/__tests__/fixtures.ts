@@ -1,3 +1,4 @@
+import { LIKED_STORAGE_KEY } from "@/lib/articles/likedStore";
 import type { Article, ArticleSummary } from "@/lib/articles/schema";
 
 const SUBJECTS = [
@@ -88,4 +89,8 @@ export function summaryOf(article: Article): ArticleSummary {
   const { slug, publishedAt, title, description, person } = article;
   const { src, width, height, alt } = article.photo;
   return { slug, publishedAt, title, description, person, photo: { src, width, height, alt } };
+}
+
+export function storeLikes(likes: Record<string, number>): void {
+  window.localStorage.setItem(LIKED_STORAGE_KEY, JSON.stringify({ version: 2, likes }));
 }

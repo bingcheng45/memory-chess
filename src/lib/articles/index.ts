@@ -1,9 +1,11 @@
 import { DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
+import { servesArticlesIn } from "./articleLocales";
 import { textOf, withText } from "./articleText";
 import { loadArticleChrome } from "./chrome";
 import { formatArticleDate } from "./format";
 import { ARTICLES, ARTICLE_SLUGS } from "./registry";
 import type { Article, ArticleSummary } from "./schema";
+import { tileArticleOf, type TileArticle } from "./tile";
 import { loadArticleText } from "./translations";
 
 export * from "./schema";
@@ -52,6 +54,17 @@ export async function getArticle(slug: string, locale: Locale): Promise<Article 
 export async function getArticleSummaries(locale: Locale): Promise<readonly ArticleSummary[]> {
   const articles = await Promise.all(ARTICLES.map((english) => inLocale(english, locale)));
   return articles.map((article) => summarize(article, locale));
+}
+
+/**
+ * Every article as the result screen's tile shows it. Empty for a locale that
+ * does not serve the articles, so the tile never shows English text on a
+ * translated page.
+ */
+export async function getTileArticles(locale: string): Promise<readonly TileArticle[]> {
+  if (!servesArticlesIn(locale)) return [];
+  const articles = await Promise.all(ARTICLES.map((english) => inLocale(english, locale)));
+  return articles.map(tileArticleOf);
 }
 
 export async function getNextArticle(slug: string, locale: Locale): Promise<ArticleSummary | undefined> {

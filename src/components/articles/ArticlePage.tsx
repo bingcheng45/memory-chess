@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { ViewCount } from "@/components/articles/ArticleCounts";
 import ArticleLink from "@/components/articles/ArticleLink";
+import ArticleRail from "@/components/articles/ArticleRail";
 import ArrivingPortrait from "@/components/articles/ArrivingPortrait";
 import EnglishPageLink from "@/components/articles/EnglishPageLink";
 import FactFile from "@/components/articles/FactFile";
@@ -39,10 +40,6 @@ const SOURCES_HEADING_ID = "article-sources-heading";
 const DRILL_WHY_ID = "article-drill-why";
 const NOTE_CLASS = "max-w-2xl";
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
-// The gate is the tallest rail of any locale, 864px in French, plus the 20px above it where it sticks.
-// Measure the rails again with the recipe in .claude/skills/verify-memory-chess/features/articles.md.
-const STICKY_RAIL =
-  "min-[821px]:[@media(min-height:884px)]:sticky min-[821px]:[@media(min-height:884px)]:top-5";
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
   return (
@@ -210,13 +207,10 @@ export default function ArticlePage({ article, nextArticle, counts, charsPerSeco
         className="grid grid-cols-[minmax(0,1fr)] min-[821px]:grid-cols-[280px_minmax(0,1fr)] min-[821px]:items-start min-[821px]:gap-x-14"
       >
         <HeadingBlock article={article} counts={counts} />
-        <div
-          data-article-rail
-          className={`contents min-[821px]:col-start-1 min-[821px]:row-span-2 min-[821px]:row-start-1 min-[821px]:block ${STICKY_RAIL}`}
-        >
+        <ArticleRail>
           <Portrait article={article} />
           <FactFile facts={article.facts} className="row-start-3 mt-7 min-[821px]:mt-[22px]" />
-        </div>
+        </ArticleRail>
         <div className="row-start-4 min-[821px]:col-start-2 min-[821px]:row-start-2">
           <TypedBody
             key={article.slug}

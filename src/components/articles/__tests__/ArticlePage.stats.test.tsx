@@ -80,7 +80,7 @@ describe("ArticlePage counts", () => {
     expect(likeButton()).toHaveTextContent(/^$/);
   });
 
-  it("keeps the rail to the portrait and the fact file, so its measured height holds", () => {
+  it("keeps the rail to the portrait and the fact file", () => {
     const { container } = renderPage({ views: 2140, likes: 187 });
     const rail = container.querySelector("[data-article-rail]");
 

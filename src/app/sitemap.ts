@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { ARTICLES, ARTICLES_LAST_UPDATED } from "@/lib/articles";
+import { ARTICLES, ARTICLES_LAST_UPDATED } from "@/lib/articles/registry";
 import { ARTICLES_PATH, articlePath } from "@/lib/articles/paths";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { EN_LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";

@@ -10,13 +10,7 @@ jest.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ replace: (...args: unknown[]) => replace(...args) }),
 }));
 
-jest.mock("@/lib/articles/translatedLocales", () => {
-  const TRANSLATED_ARTICLE_LOCALES = ["en", "de"];
-  return {
-    TRANSLATED_ARTICLE_LOCALES,
-    servesArticlesIn: (locale: string) => TRANSLATED_ARTICLE_LOCALES.includes(locale),
-  };
-});
+jest.mock("@/lib/articles/translatedLocales");
 
 /**
  * The switcher renders its menu through a portal on document.body, so the

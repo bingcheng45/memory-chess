@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { DEFAULT_LOCALE, LOCALE_LABELS, LOCALES } from "@/i18n/routing";
+import { ARTICLES_PATH } from "@/lib/articles/paths";
 import { servesArticlesIn } from "@/lib/articles/translatedLocales";
 
 const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } } as const;
-const ARTICLES_ROUTE = "/articles";
 
 /** `/de/leaderboard` -> `/leaderboard`; a path without a locale prefix is returned as is. */
 export function unprefixedPath(pathname: string): string {
@@ -49,7 +49,7 @@ export const ENGLISH_ONLY_ROUTES = [
  * once. Which locales have translated articles is the list in
  * `@/lib/articles/translatedLocales`.
  */
-export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", ARTICLES_ROUTE] as const;
+export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", ARTICLES_PATH] as const;
 
 /** Whether an unprefixed path is served in translation but indexed only in English. */
 export function isIndexedInDefaultLocaleOnly(path: string): boolean {
@@ -83,5 +83,5 @@ export function isEnglishOnlyPath(path: string): boolean {
  */
 export function isServedAtBareEnglishUrl(path: string, locale: string): boolean {
   if (isEnglishOnlyPath(path)) return true;
-  return isUnder(path, ARTICLES_ROUTE) && (locale === DEFAULT_LOCALE || !servesArticlesIn(locale));
+  return isUnder(path, ARTICLES_PATH) && (locale === DEFAULT_LOCALE || !servesArticlesIn(locale));
 }

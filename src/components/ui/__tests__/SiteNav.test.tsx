@@ -6,13 +6,7 @@ import frMessages from "../../../../messages/fr.json";
 
 let mockPathname = "/";
 
-jest.mock("@/lib/articles/translatedLocales", () => {
-  const TRANSLATED_ARTICLE_LOCALES = ["en", "de"];
-  return {
-    TRANSLATED_ARTICLE_LOCALES,
-    servesArticlesIn: (locale: string) => TRANSLATED_ARTICLE_LOCALES.includes(locale),
-  };
-});
+jest.mock("@/lib/articles/translatedLocales");
 
 jest.mock("@/i18n/navigation", () => ({
   ...jest.requireActual("@/i18n/navigation"),

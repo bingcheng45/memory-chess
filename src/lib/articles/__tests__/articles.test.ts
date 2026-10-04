@@ -4,7 +4,7 @@ import {
   ARTICLES,
   ARTICLES_LAST_UPDATED,
   ARTICLE_SLUGS,
-  FACT_ROWS,
+  FACT_KEYS,
   getArticle,
   getArticleSummaries,
   getNextArticle,
@@ -205,7 +205,7 @@ describe.each(ARTICLES.map((article) => [article.slug, article] as const))("arti
   });
 
   it("fills the four facts every file shows and nothing the table cannot label", () => {
-    const labelled = FACT_ROWS.map((row) => row.key as string);
+    const labelled = [...FACT_KEYS] as string[];
 
     for (const key of ["born", "country", "knownFor", "memoryFeat"] as const) {
       expect(article.facts[key].trim()).not.toBe("");
@@ -226,7 +226,7 @@ describe.each(ARTICLES.map((article) => [article.slug, article] as const))("arti
 
 describe("the fact file table", () => {
   it("lists the facts in the order the file shows them, each with a label in the catalogue", () => {
-    expect(FACT_ROWS.map((row) => messages.articles.page.facts[row.key])).toEqual([
+    expect(FACT_KEYS.map((key) => messages.articles.page.facts[key])).toEqual([
       "Born",
       "Died",
       "Country",

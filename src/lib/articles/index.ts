@@ -1,19 +1,12 @@
 import { DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
 import { textOf, withText } from "./articleText";
-import adriaanDeGroot from "./entries/adriaan-de-groot";
-import juditPolgar from "./entries/judit-polgar";
-import magnusCarlsen from "./entries/magnus-carlsen";
 import { formatArticleDate } from "./format";
+import { ARTICLES, ARTICLE_SLUGS } from "./registry";
 import type { Article, ArticleSummary } from "./schema";
-import { loadArticleText, type TranslationSource } from "./translations";
+import { loadArticleText } from "./translations";
 
 export * from "./schema";
-
-const REGISTRY: readonly [Article, ...Article[]] = [magnusCarlsen, adriaanDeGroot, juditPolgar];
-
-export function newestFirst(articles: readonly Article[]): Article[] {
-  return [...articles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
-}
+export { ARTICLES, ARTICLES_LAST_UPDATED, ARTICLE_SLUGS, newestFirst } from "./registry";
 
 export function summarize(article: Article, locale: Locale): ArticleSummary {
   const { slug, publishedAt, title, description, person } = article;
@@ -29,14 +22,9 @@ export function summarize(article: Article, locale: Locale): ArticleSummary {
   };
 }
 
-/** The English entries, newest first. English is the source every translation is made from. */
-export const ARTICLES: readonly Article[] = newestFirst(REGISTRY);
-
-export const ARTICLE_SLUGS: readonly string[] = ARTICLES.map((article) => article.slug);
-
-async function inLocale(english: Article, locale: Locale, source?: TranslationSource): Promise<Article> {
+async function inLocale(english: Article, locale: Locale): Promise<Article> {
   if (locale === DEFAULT_LOCALE) return english;
-  return withText(english, await loadArticleText(english.slug, locale, textOf(english), source));
+  return withText(english, await loadArticleText(english.slug, locale, textOf(english)));
 }
 
 /**
@@ -44,34 +32,18 @@ async function inLocale(english: Article, locale: Locale, source?: TranslationSo
  * entry itself. Any other locale throws unless it has a reviewed translation of
  * the current English text, so a page never mixes languages.
  */
-export async function getArticle(
-  slug: string,
-  locale: Locale,
-  source?: TranslationSource,
-): Promise<Article | undefined> {
+export async function getArticle(slug: string, locale: Locale): Promise<Article | undefined> {
   const english = ARTICLES.find((article) => article.slug === slug);
-  return english && inLocale(english, locale, source);
+  return english && inLocale(english, locale);
 }
 
-export async function getArticleSummaries(
-  locale: Locale,
-  source?: TranslationSource,
-): Promise<readonly ArticleSummary[]> {
-  const articles = await Promise.all(ARTICLES.map((english) => inLocale(english, locale, source)));
+export async function getArticleSummaries(locale: Locale): Promise<readonly ArticleSummary[]> {
+  const articles = await Promise.all(ARTICLES.map((english) => inLocale(english, locale)));
   return articles.map((article) => summarize(article, locale));
 }
 
-export async function getNextArticle(
-  slug: string,
-  locale: Locale,
-  source?: TranslationSource,
-): Promise<ArticleSummary | undefined> {
+export async function getNextArticle(slug: string, locale: Locale): Promise<ArticleSummary | undefined> {
   const index = ARTICLE_SLUGS.indexOf(slug);
   if (index < 0 || ARTICLES.length < 2) return undefined;
-  return summarize(await inLocale(ARTICLES[(index + 1) % ARTICLES.length], locale, source), locale);
+  return summarize(await inLocale(ARTICLES[(index + 1) % ARTICLES.length], locale), locale);
 }
-
-export const ARTICLES_LAST_UPDATED: string = REGISTRY.reduce(
-  (latest, article) => (article.updatedAt > latest ? article.updatedAt : latest),
-  REGISTRY[0].updatedAt,
-);

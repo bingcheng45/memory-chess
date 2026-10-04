@@ -1,9 +1,9 @@
-import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { ARTICLES, ARTICLE_SLUGS, getArticle, getArticleSummaries, getNextArticle } from "@/lib/articles";
 import { textOf } from "@/lib/articles/articleText";
-import { TRANSLATED_ARTICLE_LOCALES } from "@/lib/articles/translatedLocales";
-import type { TranslationSource } from "@/lib/articles/translations";
+import { loadArticleText, type TranslationSource } from "@/lib/articles/translations";
 import { markEveryString, reviewedTranslationOf } from "./fixtures";
+
+jest.mock("@/lib/articles/translations", () => ({ loadArticleText: jest.fn() }));
 
 const SLUG = "magnus-carlsen";
 const ENGLISH_TITLE = "How Magnus Carlsen names a famous game from one position";
@@ -30,14 +30,23 @@ const germanExcept =
     return slug === brokenSlug ? broken(file as object) : file;
   };
 
+function serveFrom(source: TranslationSource): void {
+  const { loadArticleText: actual } = jest.requireActual<typeof import("@/lib/articles/translations")>(
+    "@/lib/articles/translations",
+  );
+  jest.mocked(loadArticleText).mockImplementation((slug, locale, english) => actual(slug, locale, english, source));
+}
+
 describe("getArticle in a translated locale", () => {
   it("answers in English without looking for a translation", async () => {
-    expect(await getArticle(SLUG, "en", noTranslations)).toBe(englishOf(SLUG));
+    serveFrom(noTranslations);
+    expect(await getArticle(SLUG, "en")).toBe(englishOf(SLUG));
   });
 
   it("puts the translated words on the article's own slug, dates, photo and links", async () => {
     const english = englishOf(SLUG);
-    const german = await getArticle(SLUG, "de", everyArticleInGerman);
+    serveFrom(everyArticleInGerman);
+    const german = await getArticle(SLUG, "de");
     if (!german) throw new Error("no German article");
 
     expect(german.title).toBe(`DE ${ENGLISH_TITLE}`);
@@ -51,8 +60,9 @@ describe("getArticle in a translated locale", () => {
   });
 
   it("knows no article under an unknown slug, in any locale", async () => {
-    expect(await getArticle("no-such-article", "de", everyArticleInGerman)).toBeUndefined();
-    expect(await getArticle(SLUG, "de", everyArticleInGerman)).toHaveProperty("slug", SLUG);
+    serveFrom(everyArticleInGerman);
+    expect(await getArticle("no-such-article", "de")).toBeUndefined();
+    expect(await getArticle(SLUG, "de")).toHaveProperty("slug", SLUG);
   });
 
   it.each([
@@ -68,13 +78,15 @@ describe("getArticle in a translated locale", () => {
       "Article translation de/magnus-carlsen cannot be published: not reviewed",
     ],
   ])("throws, and never answers in English, when the translation %s", async (_, source, message) => {
-    await expect(getArticle(SLUG, "de", source)).rejects.toThrow(message);
+    serveFrom(source);
+    await expect(getArticle(SLUG, "de")).rejects.toThrow(message);
   });
 });
 
 describe("getArticleSummaries in a translated locale", () => {
   it("lists every article, newest first, in the words and the date format of that locale", async () => {
-    const summaries = await getArticleSummaries("de", everyArticleInGerman);
+    serveFrom(everyArticleInGerman);
+    const summaries = await getArticleSummaries("de");
 
     expect(summaries.map((summary) => summary.slug)).toEqual(ARTICLE_SLUGS);
     expect(summaries.map((summary) => summary.title)).toEqual(ARTICLES.map((article) => `DE ${article.title}`));
@@ -93,7 +105,8 @@ describe("getArticleSummaries in a translated locale", () => {
   });
 
   it("lists the English entries with the English date", async () => {
-    const summaries = await getArticleSummaries("en", noTranslations);
+    serveFrom(noTranslations);
+    const summaries = await getArticleSummaries("en");
 
     expect(summaries.find((summary) => summary.slug === SLUG)).toMatchObject({
       title: ENGLISH_TITLE,
@@ -105,7 +118,9 @@ describe("getArticleSummaries in a translated locale", () => {
     const lastSlug = ARTICLE_SLUGS[ARTICLE_SLUGS.length - 1];
     const source = germanExcept(lastSlug, (file) => ({ ...file, reviewed: false }));
 
-    await expect(getArticleSummaries("de", source)).rejects.toThrow(
+    serveFrom(source);
+
+    await expect(getArticleSummaries("de")).rejects.toThrow(
       `Article translation de/${lastSlug} cannot be published: not reviewed`,
     );
   });
@@ -114,35 +129,18 @@ describe("getArticleSummaries in a translated locale", () => {
 describe("getNextArticle in a translated locale", () => {
   it("summarises the next article in that locale", async () => {
     const nextSlug = ARTICLE_SLUGS[(ARTICLE_SLUGS.indexOf(SLUG) + 1) % ARTICLE_SLUGS.length];
-    const next = await getNextArticle(SLUG, "de", everyArticleInGerman);
+    serveFrom(everyArticleInGerman);
+    const next = await getNextArticle(SLUG, "de");
 
     expect(next?.slug).toBe(nextSlug);
     expect(next?.title).toBe(`DE ${englishOf(nextSlug).title}`);
     expect(next?.publishedLabel).toBe("3. Okt. 2026");
-    expect(await getNextArticle("no-such-article", "de", everyArticleInGerman)).toBeUndefined();
+    expect(await getNextArticle("no-such-article", "de")).toBeUndefined();
   });
 
   it("throws when the next article has no translation", async () => {
-    await expect(getNextArticle(SLUG, "de", noTranslations)).rejects.toThrow(/^Article translation de\/.+ cannot be read$/);
-  });
-});
+    serveFrom(noTranslations);
 
-describe("the translations in the repository", () => {
-  it("give every locale that serves articles a reviewed, current translation of every article", async () => {
-    const translated = TRANSLATED_ARTICLE_LOCALES.filter((locale) => locale !== DEFAULT_LOCALE);
-    const pairs = translated.flatMap((locale) => ARTICLES.map((english) => ({ locale, english })));
-
-    const problems = await Promise.all(
-      pairs.map(async ({ locale, english }) => {
-        try {
-          const article = await getArticle(english.slug, locale);
-          return article?.title === english.title ? `${locale}/${english.slug}: the title is still English` : null;
-        } catch (error) {
-          return error instanceof Error ? error.message : String(error);
-        }
-      }),
-    );
-
-    expect(problems.filter((problem) => problem !== null)).toEqual([]);
+    await expect(getNextArticle(SLUG, "de")).rejects.toThrow(/^Article translation de\/.+ cannot be read$/);
   });
 });

@@ -8,13 +8,7 @@ import {
   unprefixedPath,
 } from "@/lib/seo/englishOnly";
 
-jest.mock("@/lib/articles/translatedLocales", () => {
-  const TRANSLATED_ARTICLE_LOCALES = ["en", "de"];
-  return {
-    TRANSLATED_ARTICLE_LOCALES,
-    servesArticlesIn: (locale: string) => TRANSLATED_ARTICLE_LOCALES.includes(locale),
-  };
-});
+jest.mock("@/lib/articles/translatedLocales");
 
 const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } };
 

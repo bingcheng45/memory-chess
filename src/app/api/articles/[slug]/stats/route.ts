@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { isCrawler } from "@/i18n/countryLocale";
-import { ARTICLE_SLUGS } from "@/lib/articles";
+import { ARTICLE_SLUGS } from "@/lib/articles/registry";
 import { parseArticleEvent, type ArticleEvent } from "@/lib/articles/stats";
 import {
   recordArticleEvent,

@@ -4,13 +4,7 @@ import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
 import { LOCALES } from "@/i18n/routing";
 
-jest.mock("@/lib/articles/translatedLocales", () => {
-  const TRANSLATED_ARTICLE_LOCALES = ["en", "de"];
-  return {
-    TRANSLATED_ARTICLE_LOCALES,
-    servesArticlesIn: (locale: string) => TRANSLATED_ARTICLE_LOCALES.includes(locale),
-  };
-});
+jest.mock("@/lib/articles/translatedLocales");
 
 describe("sitemap", () => {
   it("includes static routes, learn article URLs, and the learn hub timestamp", async () => {

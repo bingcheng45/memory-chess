@@ -22,13 +22,7 @@ jest.mock("next-intl/middleware", () => ({
   },
 }));
 
-jest.mock("@/lib/articles/translatedLocales", () => {
-  const TRANSLATED_ARTICLE_LOCALES = ["en", "de"];
-  return {
-    TRANSLATED_ARTICLE_LOCALES,
-    servesArticlesIn: (locale: string) => TRANSLATED_ARTICLE_LOCALES.includes(locale),
-  };
-});
+jest.mock("@/lib/articles/translatedLocales");
 
 import middleware from "@/middleware";
 

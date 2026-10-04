@@ -6,13 +6,7 @@ import { ENGLISH_ONLY_ROUTES, isEnglishOnlyPath } from "@/lib/seo/englishOnly";
 import deMessages from "../../../../messages/de.json";
 import jaMessages from "../../../../messages/ja.json";
 
-jest.mock("@/lib/articles/translatedLocales", () => {
-  const TRANSLATED_ARTICLE_LOCALES = ["en", "de"];
-  return {
-    TRANSLATED_ARTICLE_LOCALES,
-    servesArticlesIn: (locale: string) => TRANSLATED_ARTICLE_LOCALES.includes(locale),
-  };
-});
+jest.mock("@/lib/articles/translatedLocales");
 
 /**
  * The footer mixes two link kinds. A localized route keeps the reader's locale;

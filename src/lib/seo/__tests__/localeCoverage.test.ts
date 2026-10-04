@@ -4,13 +4,7 @@ import { DEFAULT_LOCALE_INDEXED_ROUTES, ENGLISH_ONLY_ROUTES } from "@/lib/seo/en
 import { ARTICLE_SLUGS } from "@/lib/articles";
 import { EN_LEARN_PAGES } from "@/lib/seo/learn";
 
-jest.mock("@/lib/articles/translatedLocales", () => {
-  const TRANSLATED_ARTICLE_LOCALES = ["en", "de"];
-  return {
-    TRANSLATED_ARTICLE_LOCALES,
-    servesArticlesIn: (locale: string) => TRANSLATED_ARTICLE_LOCALES.includes(locale),
-  };
-});
+jest.mock("@/lib/articles/translatedLocales");
 
 const NON_DEFAULT_LOCALES = LOCALES.filter(
   (locale) => locale !== DEFAULT_LOCALE,

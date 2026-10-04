@@ -1,5 +1,4 @@
 import { Literata } from "next/font/google";
-import type { Locale } from "@/i18n/routing";
 
 // Declared here and not in src/lib/fonts.ts. The root layout imports that
 // module, and next/font ships every face in a layout's module graph to every
@@ -14,16 +13,22 @@ const literata = Literata({ subsets: ["latin"], weight: ["400", "600"], display:
 
 const SITE_SANS = "[font-family:var(--font-geist-sans)]";
 
-// Literata has no Devanagari, Japanese, Korean or Chinese glyphs. These
-// locales read in the sans stack src/lib/fonts.ts already gives them.
-const READING_FACE: ReadonlyMap<string, string> = new Map<Locale, string>([
-  ["hi", SITE_SANS],
-  ["ja", SITE_SANS],
-  ["ko", SITE_SANS],
-  ["zh-CN", SITE_SANS],
-  ["zh-TW", SITE_SANS],
-]);
+// Literata draws Latin (with Latin Extended and Vietnamese) and Cyrillic and
+// nothing else. A locale reads in it when its script is one of these, and in
+// the sans stack src/lib/fonts.ts already gives the other scripts otherwise.
+// A locale added later needs no entry here.
+const LITERATA_SCRIPTS: ReadonlySet<string> = new Set(["Latn", "Cyrl"]);
+
+function scriptOf(locale: string): string | undefined {
+  try {
+    return new Intl.Locale(locale).maximize().script;
+  } catch {
+    // Not a locale tag. The caller reads it in Literata, as it does any locale with no known script.
+    return undefined;
+  }
+}
 
 export function readingFaceClass(locale: string): string {
-  return READING_FACE.get(locale) ?? literata.className;
+  const script = scriptOf(locale);
+  return script === undefined || LITERATA_SCRIPTS.has(script) ? literata.className : SITE_SANS;
 }

@@ -63,6 +63,7 @@ function graphemesIn(sections: readonly ArticleSection[]): number {
 }
 
 export function typingRateFor(english: readonly ArticleSection[], localized: readonly ArticleSection[]): number {
+  if (english === localized) return DEFAULT_CHARS_PER_SECOND;
   const englishGraphemes = graphemesIn(english);
   const localizedGraphemes = graphemesIn(localized);
   if (englishGraphemes === 0 || localizedGraphemes === 0) return DEFAULT_CHARS_PER_SECOND;

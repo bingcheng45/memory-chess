@@ -33,7 +33,8 @@ export type ArticleFacts = {
 
 export type FactKey = keyof ArticleFacts;
 
-const FACT_KEYS_IN_DISPLAY_ORDER = [
+/** The fact file's rows in display order. A row's label is the message `articles.page.facts.<key>`. */
+export const FACT_KEYS = [
   "born",
   "died",
   "country",
@@ -43,9 +44,6 @@ const FACT_KEYS_IN_DISPLAY_ORDER = [
   "knownFor",
   "memoryFeat",
 ] as const satisfies readonly FactKey[];
-
-/** The fact file's rows in display order. A row's label is the message `articles.page.facts.<key>`. */
-export const FACT_ROWS: readonly { readonly key: FactKey }[] = FACT_KEYS_IN_DISPLAY_ORDER.map((key) => ({ key }));
 
 export type ArticleDrill = {
   readonly pieceCount: number;

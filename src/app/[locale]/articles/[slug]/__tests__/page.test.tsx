@@ -22,10 +22,7 @@ jest.mock("next/navigation", () => ({
   }),
 }));
 
-jest.mock("@/lib/articles/translatedLocales", () => ({
-  TRANSLATED_ARTICLE_LOCALES: ["en", "de"],
-  servesArticlesIn: (locale: string) => ["en", "de"].includes(locale),
-}));
+jest.mock("@/lib/articles/translatedLocales");
 
 jest.mock("@/lib/articles/translations", () => ({
   loadArticleText: jest.fn(async (slug: string, locale: string, english: unknown) =>

@@ -97,6 +97,15 @@ describe("typingRateFor", () => {
     expect(typingRateFor(english, english)).toBe(150);
   });
 
+  it("answers for the same array without segmenting any text", () => {
+    const segmenter = jest.spyOn(Intl, "Segmenter");
+
+    expect(typingRateFor(english, english)).toBe(150);
+    expect(segmenter).not.toHaveBeenCalled();
+
+    segmenter.mockRestore();
+  });
+
   it("is 150 for a translation with as many graphemes, whatever the words", () => {
     const german = [
       { heading: "Kopfzei", paragraphs: ["0123456789", "9876543210"] },

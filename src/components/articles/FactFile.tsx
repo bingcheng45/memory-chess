@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { FACT_ROWS, type ArticleFacts } from "@/lib/articles/schema";
+import { FACT_KEYS, type ArticleFacts } from "@/lib/articles/schema";
 
 type FactFileProps = {
   facts: ArticleFacts;
@@ -10,7 +10,7 @@ const HEADING_ID = "article-fact-file-heading";
 
 export default function FactFile({ facts, className = "" }: FactFileProps) {
   const t = useTranslations("articles.page");
-  const rows = FACT_ROWS.flatMap(({ key }) => {
+  const rows = FACT_KEYS.flatMap((key) => {
     const value = facts[key];
     return value === undefined ? [] : [{ key, value }];
   });

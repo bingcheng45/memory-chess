@@ -7,6 +7,7 @@ jest.mock("next/font/google", () => ({
 
 const SANS_CLASS = "[font-family:var(--font-geist-sans)]";
 const SANS_LOCALES = ["hi", "ja", "ko", "zh-CN", "zh-TW"];
+const UNSHIPPED_NON_LATIN_LOCALES = ["ar", "th"];
 const LITERATA_LOCALES = LOCALES.filter((locale) => !SANS_LOCALES.includes(locale));
 
 describe("readingFaceClass", () => {
@@ -14,11 +15,15 @@ describe("readingFaceClass", () => {
     expect(readingFaceClass(locale)).toBe(SANS_CLASS);
   });
 
+  it.each(UNSHIPPED_NON_LATIN_LOCALES)("reads %s, which is not shipped, in the site sans stack", (locale) => {
+    expect(readingFaceClass(locale)).toBe(SANS_CLASS);
+  });
+
   it.each(LITERATA_LOCALES)("reads %s in Literata", (locale) => {
     expect(readingFaceClass(locale)).toBe("literata");
   });
 
-  it.each(["xx", "constructor", ""])("falls back to Literata for the unknown locale %p", (locale) => {
+  it.each(["xx", "constructor", "", "not a locale"])("falls back to Literata for the unknown locale %p", (locale) => {
     expect(readingFaceClass(locale)).toBe("literata");
   });
 });

@@ -73,7 +73,6 @@ export function formatError(message, locale, { placeholders, tags }) {
   }
 }
 
-/** The words of a message a reader sees, without argument names, ICU keywords and tags. */
 export function literalTextOf(message, locale) {
   const parts = partsOf(message, locale);
   return parts.error === undefined ? parts.literalText : message;

@@ -41,7 +41,6 @@ function markedSummary(index: number): ArticleSummary {
   return { ...summaryOf(markedArticle(index)), publishedLabel: DATE_LABEL };
 }
 
-/** Every string a reader or a screen reader gets from this render, apart from numbers and arrows. */
 function wordsShown(ui: ReactElement): string[] {
   const { container } = render(ui, { locale: "de", messages: TOKEN_MESSAGES });
   const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);

@@ -24,8 +24,8 @@ function isUnder(path: string, route: string): boolean {
  * each once, and links from localized pages point straight at the bare URL.
  * A route here covers every path beneath it.
  *
- * The articles were on this list and left it when they were translated. They
- * are in `DEFAULT_LOCALE_INDEXED_ROUTES` now.
+ * The articles are not here. They are translated, so they are in
+ * `DEFAULT_LOCALE_INDEXED_ROUTES`.
  */
 export const ENGLISH_ONLY_ROUTES = [
   "/about",
@@ -42,12 +42,10 @@ export const ENGLISH_ONLY_ROUTES = [
  * the middleware drops next-intl's hreflang Link header. A route here covers
  * every path beneath it.
  *
- * The articles are here because of how they are translated. A translated
- * article is an AI-assisted translation of the English text, checked before it
- * goes up. It is there for readers and is never offered to search: unreviewed
- * machine translations in the sitemap are what got the site rejected by AdSense
- * once. Which locales have translated articles is the list in
- * `@/lib/articles/translatedLocales`.
+ * A translated article is an AI-assisted translation that a reviewer checked.
+ * It is there for readers and is never offered to search, because unreviewed
+ * machine translations in the sitemap got the site rejected by AdSense once.
+ * `TRANSLATED_ARTICLE_LOCALES` says which locales have translated articles.
  */
 export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", ARTICLES_PATH] as const;
 
@@ -76,10 +74,8 @@ export function isEnglishOnlyPath(path: string): boolean {
 
 /**
  * Whether a reader of `locale` gets this unprefixed path at its bare English
- * URL. True for an English-only route in every locale. True for an article
- * route in English, and in a locale the articles are not translated into. A
- * translated article lives only under its locale prefix, so the bare article
- * URL always answers in English.
+ * URL. A translated article lives only under its locale prefix, so the bare
+ * article URL always answers in English.
  */
 export function isServedAtBareEnglishUrl(path: string, locale: string): boolean {
   if (isEnglishOnlyPath(path)) return true;

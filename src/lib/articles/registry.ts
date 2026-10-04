@@ -9,7 +9,6 @@ export function newestFirst(articles: readonly Article[]): Article[] {
   return [...articles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 }
 
-/** The English entries, newest first. English is the source every translation is made from. */
 export const ARTICLES: readonly Article[] = newestFirst(REGISTRY);
 
 export const ARTICLE_SLUGS: readonly string[] = ARTICLES.map((article) => article.slug);

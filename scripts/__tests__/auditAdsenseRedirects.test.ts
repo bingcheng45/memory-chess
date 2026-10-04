@@ -186,7 +186,6 @@ describe("audit-adsense single-308 checks against a stubbed site", () => {
   const translated = (prefixedPath: string) => served(prefixedPath, "noindex, follow");
   type Answer = { status: number; location?: string; body?: string };
 
-  /** German has the article in translation, French does not, and both have the leaderboard. */
   const SITE: Record<string, Answer> = {
     "/about": served("/about"),
     "/about/": redirect("/about"),

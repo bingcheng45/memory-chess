@@ -101,7 +101,6 @@ export function summaryOf(article: Article): ArticleSummary {
   };
 }
 
-/** A stand-in for a translation: the same shape with `marker` in front of every string. */
 export function markEveryString<T>(value: T, marker: string): T {
   if (typeof value === "string") return `${marker}${value}` as T;
   if (Array.isArray(value)) return value.map((item) => markEveryString(item, marker)) as T;

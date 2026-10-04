@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import { LikeCount, ViewCount } from "@/components/articles/ArticleCounts";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
-import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
+import { ARTICLE_FOCUS_RING, ARTICLE_LONG_WORDS } from "@/components/articles/articleStyles";
 import { useLikesSeen } from "@/components/articles/useLikesSeen";
 import type { ArticleSummary } from "@/lib/articles/schema";
 import { hasCounts, atLeastLikesSeen, type ArticleCounts } from "@/lib/articles/stats";
@@ -43,7 +43,7 @@ export default function ArticleCard({ article, counts: listed, priority, style }
             priority={priority}
             className="rounded-xl"
           />
-          <p className="mt-[9px] text-[12.5px] leading-[1.35] text-text-muted">
+          <p className={`mt-[9px] text-[12.5px] leading-[1.35] text-text-muted ${ARTICLE_LONG_WORDS}`}>
             <b className="block font-semibold text-text-secondary">{person.name}</b>
             <span>{person.role}</span>
           </p>
@@ -59,13 +59,13 @@ export default function ArticleCard({ article, counts: listed, priority, style }
           <h2
             id={`${slug}-title`}
             data-flight="title"
-            className="text-[clamp(19px,2.7vw,25px)] font-bold leading-[1.18] tracking-[-0.015em] text-white [text-wrap:balance] group-hover:text-peach-200"
+            className={`text-[clamp(19px,2.7vw,25px)] font-bold leading-[1.18] tracking-[-0.015em] text-white [text-wrap:balance] group-hover:text-peach-200 ${ARTICLE_LONG_WORDS}`}
           >
             {title}
           </h2>
           <p
             id={descriptionId}
-            className="text-[14.5px] leading-normal text-text-muted min-[561px]:text-[15.5px]"
+            className={`text-[14.5px] leading-normal text-text-muted min-[561px]:text-[15.5px] ${ARTICLE_LONG_WORDS}`}
           >
             {description}
           </p>

@@ -9,11 +9,7 @@ const handleI18nRouting = createMiddleware(routing);
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 
-/**
- * `/de/learn/x` -> `/learn/x` when a reader of the prefix's locale gets the
- * page at its bare English URL: an English-only route under any prefix, and an
- * article under `/en` or under a locale the articles are not translated into.
- */
+/** `/de/learn/x` -> `/learn/x` when that prefix's readers get the page at its bare English URL. */
 function bareEnglishPath(pathname: string): string | null {
   const bare = unprefixedPath(pathname);
   if (bare === pathname) return null;
@@ -26,11 +22,11 @@ function bareEnglishPath(pathname: string): string | null {
  * next-intl sends an unprefixed path to the cookie or Accept-Language locale.
  * For an English-only route that is a redirect back to the prefixed URL the
  * visitor was just redirected away from: an infinite loop. For an article it
- * would move the indexed English URL to a translation, and the bare article
- * URL always answers in English. Negotiating with no locale cookie and an
- * English header makes next-intl rewrite to the default locale instead. The
- * visitor's own cookie survives, because next-intl only writes one when the
- * resolved locale differs from the request's preference, and here they agree.
+ * would move the indexed English URL to a translation. Negotiating with no
+ * locale cookie and an English header makes next-intl rewrite to the default
+ * locale instead. The visitor's own cookie survives, because next-intl only
+ * writes one when the resolved locale differs from the request's preference,
+ * and here they agree.
  * The hreflang Link header is dropped since these routes have no alternates
  * to advertise.
  */
@@ -76,8 +72,7 @@ function hasSupportedLanguage(acceptLanguage: string | null): boolean {
 export default function middleware(request: NextRequest) {
   const response = route(request);
   // next-intl advertises every locale in a hreflang Link header. For a route
-  // indexed only in English, the leaderboard and the articles, that would
-  // point crawlers at noindex pages.
+  // indexed only in English that would point crawlers at noindex pages.
   if (isIndexedInDefaultLocaleOnly(unprefixedPath(request.nextUrl.pathname))) {
     response.headers.delete("Link");
   }

@@ -67,13 +67,8 @@ const ENGLISH_AHEAD_OF_TRANSLATIONS = new Set([
   "home.meta.twitterDescription",
 ]);
 
-/**
- * Plural messages under `articles` that still hold their English value in a
- * locale whose articles are not translated yet. English has two plural forms,
- * so the placeholder cannot carry the forms Russian or Polish need. The
- * category check is skipped only while the value is the English one. Delete
- * this set when every locale has its own translation.
- */
+// English has two plural forms, so an English placeholder cannot carry the
+// forms Russian or Polish need.
 const ENGLISH_PLACEHOLDERS = new Set([
   "articles.counts.views",
   "articles.counts.likes",

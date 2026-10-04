@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { ARTICLE_LONG_WORDS } from "@/components/articles/articleStyles";
 import { FACT_KEYS, type ArticleFacts } from "@/lib/articles/schema";
 
 type FactFileProps = {
@@ -29,8 +30,8 @@ export default function FactFile({ facts, className = "" }: FactFileProps) {
             key={key}
             className="grid grid-cols-[88px_minmax(0,1fr)] gap-2.5 border-t border-white/10 py-[7px]"
           >
-            <dt className="text-xs leading-[1.6] text-text-muted">{t(`facts.${key}`)}</dt>
-            <dd className="text-sm leading-[1.4] text-text-secondary">{value}</dd>
+            <dt className={`text-xs leading-[1.6] text-text-muted ${ARTICLE_LONG_WORDS}`}>{t(`facts.${key}`)}</dt>
+            <dd className={`text-sm leading-[1.4] text-text-secondary ${ARTICLE_LONG_WORDS}`}>{value}</dd>
           </div>
         ))}
       </dl>

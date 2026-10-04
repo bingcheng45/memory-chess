@@ -61,7 +61,6 @@ const GERMAN_ARTICLES = {
   },
 };
 
-/** The English catalogue with every string the Articles section shows put into German. */
 export const GERMAN_MESSAGES = { ...english, articles: { ...english.articles, ...GERMAN_ARTICLES } };
 
 export const TOKEN = /^«articles\.[\w.]+»$/;
@@ -73,9 +72,5 @@ function tokensFor(value: unknown, keyPath: string): unknown {
   );
 }
 
-/**
- * The English catalogue with every `articles` string swapped for its own key
- * path. Rendering against it proves a string came from the catalogue: a
- * hard-coded literal has no token.
- */
+// Every `articles` string is its own key path, so a hard-coded literal has no token.
 export const TOKEN_MESSAGES = { ...english, articles: tokensFor(english.articles, "articles") };

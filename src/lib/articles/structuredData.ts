@@ -9,7 +9,6 @@ export type JsonLdGraph = {
   readonly "@graph": readonly Record<string, unknown>[];
 };
 
-/** One language's copy of a page: where it and its list live, and what `inLanguage` says. */
 type Edition = {
   readonly url: string;
   readonly listUrl: string;

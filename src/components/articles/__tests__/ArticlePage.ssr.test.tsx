@@ -47,7 +47,6 @@ function serverHtml(locale: string, catalogue: Record<string, unknown>): string 
   ).replace(TEXT_NODE_MARKER, "");
 }
 
-/** What a reader with no script gets from an element: its text with the tags taken out. */
 function wordsIn(html: string, element: RegExp): string {
   return (html.match(element)?.[0] ?? "").replace(/<[^>]+>/g, "");
 }

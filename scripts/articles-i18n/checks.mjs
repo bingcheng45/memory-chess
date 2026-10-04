@@ -28,8 +28,6 @@ const GROUP_SEPARATOR = new RegExp(`(?<=\\d)[.,' ${NO_BREAK_SPACES}](?=\\d{3}(?!
 const MIN_LETTERS_FOR_SCRIPT_CHECK = 40;
 const THIS_FILE = "scripts/articles-i18n/checks.mjs";
 const LATIN = "Latn";
-// From the script a locale is written in, as `Intl.Locale` names it, to the
-// Unicode scripts its letters may come from.
 const SCRIPTS = {
   Cyrl: ["Cyrillic"],
   Deva: ["Devanagari"],
@@ -41,7 +39,6 @@ const SCRIPTS = {
 
 const PLURAL_CATEGORIES = ["zero", "one", "two", "few", "many", "other"];
 
-/** `3 failures`, `1 failure`. */
 export const counted = (count, noun) => `${count} ${noun}${count === 1 ? "" : "s"}`;
 
 // Unicode lays every set of decimal digits out as ten code points from zero
@@ -138,8 +135,6 @@ function titleLengthProblems({ kind, path, locale, value }) {
 
 const scriptOf = (locale) => new Intl.Locale(locale).maximize().script;
 
-// Without this line a new locale in a script the table lacks would skip the
-// script check in silence.
 function missingScriptRuleProblems(locale) {
   const script = scriptOf(locale);
   if (script === LATIN || Object.hasOwn(SCRIPTS, script)) return [];
@@ -280,7 +275,6 @@ export function failuresOf(locale, source, bundle) {
   ];
 }
 
-/** One line for each installed file of `bundle` that no reviewer has approved. */
 export function unreviewedOf(bundle) {
   return [...Object.entries(bundle.articles), [CHROME, bundle.chrome]]
     .filter(([, unit]) => unit !== undefined && unit.error === undefined && unit.reviewed !== true)

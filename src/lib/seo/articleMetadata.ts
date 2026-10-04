@@ -14,11 +14,8 @@ function portraitImage(photo: PortraitPhoto) {
   };
 }
 
-/**
- * Where a page lives and whether search may index it. The canonical points at
- * the page itself and there are no language alternates, because a translated
- * article is served to readers and never offered to search.
- */
+// A translated page is canonical to itself with no language alternates, because
+// translations are never offered to search.
 function addressOf(path: string, locale: string) {
   const robots = robotsFor(ARTICLES_PATH, locale);
 

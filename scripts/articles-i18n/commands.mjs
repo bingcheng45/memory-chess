@@ -33,7 +33,6 @@ function chromeSource({ strings, sourceHash }) {
   return { sourceHash, strings: described };
 }
 
-/** Writes what a translator works from: one English text per article and the list of chrome strings. */
 export function exportSources(repo, outDir) {
   const dir = shown(repo.root, outDir);
   const files = [
@@ -52,11 +51,6 @@ function read(repo, locale, dir) {
   return { bundle: readWorkingDir(repo.root, dir), where: shown(repo.root, dir) };
 }
 
-/**
- * Reads the translation `command` works on and checks it. A translation that
- * passes gives `{ bundle, where }`. One that does not gives `{ failure }`, the
- * result the command returns.
- */
 function checked(command, repo, locale, dir) {
   const { bundle, where } = read(repo, locale, dir);
   const failures = failuresOf(locale, repo, bundle);
@@ -65,7 +59,6 @@ function checked(command, repo, locale, dir) {
   return { failure: { failures, summary } };
 }
 
-/** Checks a translator's directory, or the installed files of `locale` when there is no `dir`. */
 export function check(repo, locale, dir) {
   const { failure, where } = checked("check", repo, locale, dir);
   return failure ?? passed(`ok check ${locale}: ${sizeOf(repo)} pass in ${where}`);
@@ -91,11 +84,6 @@ function installFiles(repo, locale, bundle, installed) {
   return [...articles, chromeFile(locale, chrome), messagesWithArticles(repo.root, locale, namespace)];
 }
 
-/**
- * Checks `dir`, then installs it. A file whose text, kept-in-English list and
- * source hash come out as they already are keeps its `reviewed` flag. Any
- * other file is written with `reviewed: false`.
- */
 export function importTranslation(repo, locale, dir) {
   const { failure, bundle } = checked("import", repo, locale, dir);
   if (failure !== undefined) return failure;
@@ -105,7 +93,6 @@ export function importTranslation(repo, locale, dir) {
   return passed(`ok import ${locale}: ${counted(written, "file")} written, ${files.length - written} unchanged`);
 }
 
-/** Checks the installed files of `locale`, then marks every one of them reviewed. */
 export function approve(repo, locale) {
   const { failure, bundle } = checked("approve", repo, locale);
   if (failure !== undefined) return failure;
@@ -129,7 +116,6 @@ export function seed(repo) {
   return passed(`ok seed: ${counted(written, "file")} changed, ${counted(locales.length, "untranslated locale")}`);
 }
 
-/** Checks every locale that serves articles: its installed files pass and each one is reviewed. */
 export function verify(repo) {
   const locales = repo.translatedLocales.filter((locale) => locale !== ENGLISH);
   if (locales.length === 0) return passed("ok verify: nothing to verify, en is the only locale that serves articles");

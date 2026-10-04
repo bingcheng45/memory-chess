@@ -102,7 +102,6 @@ export type ArticleTranslation = {
   readonly text: ArticleText;
 };
 
-/** The list page's title and description in one language. */
 export type ArticleListMeta = {
   readonly title: string;
   readonly description: string;

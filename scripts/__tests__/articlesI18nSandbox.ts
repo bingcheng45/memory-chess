@@ -164,18 +164,13 @@ function writeFixtureLayout(root: string): void {
   );
 }
 
-/**
- * Runs `body` in a throwaway repo that holds only what the lever reads. `real`
- * copies the catalogues and entries of this repo. `fixture` writes two small
- * entries and a five-string catalogue, so a test can assert whole lines.
- */
 export function inSandbox<T>(kind: "real" | "fixture", body: (root: string) => T): T {
   const root = realpathSync(mkdtempSync(join(tmpdir(), "articles-i18n-")));
   try {
     const copied = kind === "real" ? [...COPIED_FROM_THE_REPO, ...COPIED_FOR_THE_REAL_LAYOUT] : COPIED_FROM_THE_REPO;
     copied.forEach((path) => cpSync(join(REPO_ROOT, path), join(root, path), { recursive: true }));
     if (kind === "fixture") writeFixtureLayout(root);
-    // The repo's package.json has no "type" either, which is what makes Node warn about each .ts file.
+    // No "type", as in the repo, so Node warns about each .ts file.
     putJson(root, "package.json", { name: "sandbox", private: true });
     setTranslatedLocales(root, ["en"]);
     return body(root);
@@ -189,7 +184,7 @@ export function runLever(root: string, ...args: string[]): LeverRun {
   return { status: run.status, stdout: run.stdout, failures: run.stderr.split("\n").filter((line) => line !== "") };
 }
 
-/** Evaluates `expression` against the pure checks in a separate Node process, as Jest does not load ES modules. */
+// Jest does not load ES modules, so the checks run in a separate Node process.
 export function evalChecks<T>(expression: string): T {
   const program = `const checks = await import(${JSON.stringify(CHECKS_URL)}); process.stdout.write(JSON.stringify(${expression}));`;
   return JSON.parse(execFileSync(process.execPath, ["--input-type=module", "-e", program], { encoding: "utf8" }));
@@ -197,7 +192,6 @@ export function evalChecks<T>(expression: string): T {
 
 export const SOURCE_DIR = "work/source";
 
-/** Runs `export` and reads back the English text in the shape a translator's directory has. */
 export function exportedEnglish(root: string): Translation {
   runLever(root, "export", SOURCE_DIR);
   const names = readdirSync(join(root, SOURCE_DIR)).filter((name) => name !== "chrome.source.json");
@@ -234,7 +228,6 @@ function translated(english: Translation, word: (leaf: string) => string): Trans
   };
 }
 
-/** A translation that passes for a language with Latin letters and two plural forms: every leaf gets a marker in front. */
 export function marked(english: Translation): Translation {
   return translated(english, (leaf) => `Zz ${leaf}`);
 }
@@ -256,7 +249,6 @@ function inCyrillic(leaf: string): string {
     .join("");
 }
 
-/** A translation that passes for Russian: Cyrillic letters, and each plural with the four forms Russian has. */
 export function inRussian(english: Translation): Translation {
   return translated(english, (leaf) => inCyrillic(leaf).replace(/other (\{[^{}]*\})/g, "few $1 many $1 other $1"));
 }
@@ -272,20 +264,17 @@ export function writeTranslation(root: string, dir: string, translation: Partial
 export const GERMAN_DIR = "work/de";
 export const INSTALLED_GERMAN = "src/lib/articles/translations/de";
 
-/** Writes a German translation that passes, after `change`, into the working directory and imports it. */
 export function importGerman(root: string, change: (good: Translation) => Translation = (good) => good): LeverRun {
   writeTranslation(root, GERMAN_DIR, change(marked(exportedEnglish(root))));
   return runLever(root, "import", "de", GERMAN_DIR);
 }
 
-/** `good` with the second paragraph of Ada's first section replaced. */
 export function withSecondParagraph(good: Translation, paragraph: string): Translation {
   const ada = good.articles[ADA.slug];
   const sections = [{ ...ada.sections[0], paragraphs: [ada.sections[0].paragraphs[0], paragraph] }];
   return { ...good, articles: { ...good.articles, [ADA.slug]: { ...ada, sections } } };
 }
 
-/** Every file under `dir`, as path to content, for comparing two states of the sandbox byte for byte. */
 export function filesUnder(root: string, dir: string): Record<string, string> {
   const names = readdirSync(join(root, dir), { recursive: true, withFileTypes: true });
   const paths = names.filter((entry) => entry.isFile()).map((entry) => join(entry.parentPath, entry.name));

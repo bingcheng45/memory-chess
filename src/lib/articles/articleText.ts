@@ -27,7 +27,7 @@ export function textOf(article: Article): ArticleText {
   };
 }
 
-/** The article `english` with every word replaced by `text`, which must have the shape of `textOf(english)`. */
+/** `text` must have the shape of `textOf(english)`. */
 export function withText(english: Article, text: ArticleText): Article {
   return {
     ...english,
@@ -52,7 +52,6 @@ function withSortedKeys(value: unknown): unknown {
   );
 }
 
-/** sha256, in hex, of the JSON of `value` with the keys of every object sorted. */
 export function sourceHashOf(value: unknown): string {
   return createHash("sha256").update(JSON.stringify(withSortedKeys(value))).digest("hex");
 }
@@ -98,7 +97,6 @@ export function shapeProblems(english: unknown, candidate: unknown, path: string
   return leafProblems(candidate, label);
 }
 
-/** Why a translation file may not be published: its shape, a hash of an older English text, or no review. */
 export function translationProblems(file: unknown, english: ArticleText): string[] {
   if (!isTree(file)) return ["the file is not an object"];
 

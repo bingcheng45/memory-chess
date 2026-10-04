@@ -29,7 +29,6 @@ export function mapLeaves(tree, leafAt, path = "") {
   return Object.fromEntries(Object.entries(tree).map(([key, item]) => [key, mapLeaves(item, leafAt, keyPath(path, key))]));
 }
 
-/** `candidate`, which has the shape of `english`, with its keys in the order `english` has them. */
 export function inOrderOf(english, candidate) {
   const leaves = new Map(leavesOf(candidate));
   return mapLeaves(english, (path) => leaves.get(path));

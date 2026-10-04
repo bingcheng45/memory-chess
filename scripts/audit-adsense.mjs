@@ -461,7 +461,6 @@ export function localePairs(candidates, locales) {
   return candidates.flatMap((url) => locales.map((locale) => ({ url, locale, prefixed: `${base}/${locale}${new URL(url).pathname}` })));
 }
 
-/** A 200 whose page is noindex or canonical to itself, as `/de/leaderboard` is. */
 export function servedInTranslation(probe) {
   return probe?.status === 200 && (/noindex/i.test(probe.robots) || (Boolean(probe.canonical) && listedKey(toLocal(probe.canonical)) === listedKey(probe.url)));
 }
@@ -475,7 +474,6 @@ export function pairsOwedARedirect(pairs, probeByPrefixedUrl) {
   return pairs.filter((pair) => !servedInTranslation(probeByPrefixedUrl[pair.prefixed]));
 }
 
-/** Each owed pair's prefixed URL, with and without a trailing slash, expecting the English URL. */
 export function localeRedirectCases(owed) {
   return owed.flatMap(({ url, prefixed }) => [prefixed, `${prefixed}/`].map((from) => ({ url: from, expected: url })));
 }
@@ -561,7 +559,6 @@ function ruleFindings(pages, indexable, listed) {
   return findings;
 }
 
-/** The report line for the single-308 checks: what was requested, and which pairs were left out and why. */
 export function redirectSummary({ slashChecked, localeChecked, pairs, servedInTranslation: skipped, locales }) {
   return `single-308 redirects (G28 crawlable canonical URLs): ${slashChecked} slashed sitemap URLs, ${localeChecked} locale-prefixed URLs (${pairs - skipped} of ${pairs} page and locale pairs x 2, across ${locales} locales; ${skipped} pairs served in translation and skipped)`;
 }

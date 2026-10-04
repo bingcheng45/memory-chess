@@ -40,7 +40,6 @@ const USAGE = `Usage: node scripts/articles-i18n.mjs <command>
 Run it from the repo root. Every path must stay inside the repo.
 `;
 
-/** Runs `body` with a directory beside the sandbox that the lever must never write into. */
 function withOutsideDir<T>(body: (outside: string) => T): T {
   const outside = realpathSync(mkdtempSync(join(tmpdir(), "articles-i18n-outside-")));
   try {

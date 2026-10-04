@@ -1,17 +1,16 @@
-import NextLink from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
-import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { ViewCount } from "@/components/articles/ArticleCounts";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArrivingPortrait from "@/components/articles/ArrivingPortrait";
+import EnglishPageLink from "@/components/articles/EnglishPageLink";
 import FactFile from "@/components/articles/FactFile";
 import LikeButton from "@/components/articles/LikeButton";
 import TranslationNote from "@/components/articles/TranslationNote";
 import TypedBody from "@/components/articles/TypedBody";
 import ViewBeacon from "@/components/articles/ViewBeacon";
-import { ARTICLE_FOCUS_RING, ARTICLE_LINK } from "@/components/articles/articleStyles";
+import { ARTICLE_FOCUS_RING, ARTICLE_LINK, ARTICLE_LONG_WORDS } from "@/components/articles/articleStyles";
 import { EditorialPageShell } from "@/components/editorial/EditorialPage";
 import { formatArticleDate } from "@/lib/articles/format";
 import { articlePath } from "@/lib/articles/paths";
@@ -76,7 +75,7 @@ function Portrait({ article }: { article: Article }) {
   return (
     <figure className="row-start-1 mb-[22px] max-w-[190px] min-[821px]:mb-0 min-[821px]:max-w-none">
       <ArrivingPortrait key={slug} slug={slug} photo={{ src, width, height, alt }} />
-      <figcaption className="mt-3 text-sm leading-[1.4] text-text-muted">
+      <figcaption className={`mt-3 text-sm leading-[1.4] text-text-muted ${ARTICLE_LONG_WORDS}`}>
         <b className="block font-semibold text-text-secondary">{person.name}</b>
         <span>{person.role}</span>
         <Credit credit={photo} />
@@ -98,7 +97,7 @@ function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "c
       </p>
       <h1
         data-flight="title"
-        className="mt-2.5 text-[clamp(30px,4.6vw,48px)] font-bold leading-[1.06] tracking-[-0.025em] text-white [text-wrap:balance]"
+        className={`mt-2.5 text-[clamp(30px,4.6vw,48px)] font-bold leading-[1.06] tracking-[-0.025em] text-white [text-wrap:balance] ${ARTICLE_LONG_WORDS}`}
       >
         {article.title}
       </h1>
@@ -107,13 +106,7 @@ function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "c
         <address data-article-byline className="not-italic">
           {t.rich("byline", {
             name: LEARN_AUTHOR.name,
-            // The About page exists only in English, at its bare URL. The locale-aware Link would send
-            // a German reader to /de/about and through a redirect.
-            author: (name) => (
-              <NextLink href={AUTHOR_PATH} hrefLang={DEFAULT_LOCALE} className={ARTICLE_LINK}>
-                {name}
-              </NextLink>
-            ),
+            author: (name) => <EnglishPageLink href={AUTHOR_PATH}>{name}</EnglishPageLink>,
           })}
         </address>
         <p data-authorship-note className={NOTE_CLASS}>

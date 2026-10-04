@@ -4,7 +4,6 @@ import { pathToFileURL } from "node:url";
 import { isTree, leavesOf } from "./leaves.mjs";
 import { CHROME, ENGLISH } from "./names.mjs";
 
-/** A mistake in how the tool was called or where it runs. It ends the run with exit code 2. */
 export class UsageError extends Error {}
 
 const SAME_AS_ENGLISH = "same-as-english";
@@ -29,7 +28,6 @@ function realPathOf(path) {
   return parent === path ? path : join(realPathOf(parent), basename(path));
 }
 
-/** The absolute form of `path`, which must stay in the repo by its dots and through every symlink on the way. */
 export function inside(root, path) {
   const absolute = resolve(root, path);
   if (!isWithin(root, absolute) || !isWithin(root, realPathOf(absolute))) {
@@ -38,7 +36,6 @@ export function inside(root, path) {
   return absolute;
 }
 
-/** `path` as the repo sees it, for a summary line. */
 export const shown = (root, path) => relative(root, inside(root, path)) || ".";
 
 const readText = (root, file) => readFileSync(inside(root, file), "utf8");
@@ -131,7 +128,6 @@ function jsonNames(root, dir) {
     .sort();
 }
 
-/** One locale as a translator left it in `dir`: bare article texts, a flat chrome map and the optional list of paths kept in English. */
 export function readWorkingDir(root, dir) {
   if (!statSync(inside(root, dir), { throwIfNoEntry: false })?.isDirectory()) {
     throw new UsageError(`${dir} is not a directory`);
@@ -155,7 +151,6 @@ export function readWorkingDir(root, dir) {
   };
 }
 
-/** One locale as it is installed, in the shape `readWorkingDir` gives. The chrome strings come from the message catalogue. */
 export function readInstalled(root, locale) {
   const names = jsonNames(root, `${TRANSLATIONS_DIR}/${locale}`);
   const unitOf = (name, textIn) => {
@@ -186,7 +181,6 @@ export function chromeFile(locale, { sourceHash, reviewed, sameAsEnglish }) {
   return { file: installedFile(locale, CHROME), content: toJson({ sourceHash, reviewed, sameAsEnglish }) };
 }
 
-/** The catalogue of `locale` with its `articles` key replaced and every other byte as it is on disk. */
 export function messagesWithArticles(root, locale, articles) {
   const file = messagesFile(locale);
   const messages = readMessages(root, locale);
@@ -198,14 +192,7 @@ export function messagesWithArticles(root, locale, articles) {
   return { file, content: toJson({ ...messages, articles }) };
 }
 
-/**
- * Writes the files whose bytes differ and says how many that was. A file is
- * replaced by one rename, so a run that dies never leaves half a file behind.
- *
- * @param {string} root
- * @param {{ file: string, content: string }[]} files
- * @returns {number}
- */
+// A file is replaced by one rename, so a run that dies never leaves half a file behind.
 export function writeChanged(root, files) {
   const changed = files.filter(({ file, content }) => !existsSync(inside(root, file)) || readText(root, file) !== content);
   changed.forEach(({ file, content }) => {

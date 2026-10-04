@@ -50,9 +50,7 @@ export default function LanguageSettings({
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const isEnglishOnlyPage = isEnglishOnlyPath(pathname);
-  // A language this page is not served in has nothing to switch to: an
-  // English-only page in any language, an article in a language it is not
-  // translated into. Letting the pick through would land the reader on the
+  // Picking a language this page is not served in would land the reader on the
   // English page again and still write the locale cookie.
   const isUnavailable = (option: Locale) =>
     option !== locale && option !== DEFAULT_LOCALE && isServedAtBareEnglishUrl(pathname, option);

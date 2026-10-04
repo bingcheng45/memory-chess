@@ -4,7 +4,6 @@ import type { Locale } from "@/i18n/routing";
 import { translationProblems } from "./articleText";
 import type { ArticleText, ArticleTranslation } from "./schema";
 
-/** Reads one translation file as it is on disk. The result is unchecked. */
 export type TranslationSource = (locale: Locale, slug: string) => Promise<unknown>;
 
 const readTranslationFile: TranslationSource = async (locale, slug) =>

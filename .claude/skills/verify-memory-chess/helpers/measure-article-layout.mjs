@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 
 const BLOCKED_HOSTS = [
   "*google-analytics.com*",
@@ -12,7 +12,8 @@ const BLOCKED_HOSTS = [
 const LOCALE = process.env.ARTICLE_LOCALE ?? "de";
 const PREFIX = LOCALE === "en" ? "" : `/${LOCALE}`;
 const SLUGS = readdirSync("src/lib/articles/entries").map((file) => file.replace(/\.ts$/, ""));
-const STICKY_GATE = { width: 1440, height: 884, deviceScaleFactor: 1, mobile: false };
+const STICKY_GATE_HEIGHT = Number(readFileSync("src/components/articles/ArticlePage.tsx", "utf8").match(/min-height:(\d+)px/)[1]);
+const STICKY_GATE = { width: 1440, height: STICKY_GATE_HEIGHT, deviceScaleFactor: 1, mobile: false };
 const RAIL_TOP_PX = 20;
 const PHONE_WIDTHS = [375, 320];
 const NARROW_TEXT =

@@ -1,8 +1,9 @@
 import type { ComponentProps } from "react";
-import { render, screen, within } from "@/test-utils/intl";
+import { fireEvent, render, screen, within } from "@/test-utils/intl";
 import ArticlePage from "@/components/articles/ArticlePage";
 import { announceArrival, clearArrival } from "@/components/articles/articleArrival";
 import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
+import { photoNamed, recordWarmedImages } from "@/components/articles/__tests__/warmedImages";
 import { ARTICLE_COPY } from "@/lib/articles/copy";
 import { FACT_ROWS, type Article } from "@/lib/articles/schema";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
@@ -256,6 +257,50 @@ describe("ArticlePage when the next article opens in its place", () => {
     rerender(<ArticlePage article={following} nextArticle={next} />);
 
     expect(typing()).toBe("typing");
+  });
+});
+
+describe("ArticlePage portrait after a card click", () => {
+  const CARD_FILE = "http://localhost/_next/image?url=%2Fimages%2Farticles%2Fmagnus-carlsen.jpg&w=256&q=75";
+  const warmed = recordWarmedImages();
+  const portraitOf = (container: HTMLElement) => container.querySelector<HTMLImageElement>("figure img")!;
+
+  afterEach(clearArrival);
+
+  it("shows the card's file behind the portrait until the article-size file arrives", () => {
+    announceArrival(article.slug, Promise.resolve(), CARD_FILE);
+
+    const { container } = renderPage();
+
+    expect(portraitOf(container).style.backgroundImage).toBe(`url("${CARD_FILE}")`);
+  });
+
+  it("drops that placeholder when the next article opens in its place", () => {
+    announceArrival(article.slug, Promise.resolve(), CARD_FILE);
+    const { container, rerender } = renderPage();
+    const following = makeArticle(1);
+
+    announceArrival(following.slug, Promise.resolve());
+    rerender(<ArticlePage article={following} nextArticle={next} />);
+
+    expect(portraitOf(container)).toHaveAttribute("alt", following.photo.alt);
+    expect(portraitOf(container).style.backgroundImage).toBe("");
+  });
+
+  it("warms, from the next-article link, the same candidates its portrait asks for", () => {
+    const upcoming = { ...next, photo: photoNamed("upcoming") };
+    const { container, unmount } = render(<ArticlePage article={article} nextArticle={upcoming} />);
+
+    fireEvent.pointerEnter(within(container).getByRole("link", { name: /Next article/ }));
+    unmount();
+    const opened = render(
+      <ArticlePage article={makeArticle(1, { photo: { ...article.photo, ...upcoming.photo } })} nextArticle={next} />,
+    );
+
+    expect(warmed).toHaveLength(1);
+    expect(warmed[0].sizes).toBe("(max-width: 820px) 190px, 280px");
+    expect(warmed[0].sizes).toBe(portraitOf(opened.container).sizes);
+    expect(warmed[0].srcset).toBe(portraitOf(opened.container).srcset);
   });
 });
 

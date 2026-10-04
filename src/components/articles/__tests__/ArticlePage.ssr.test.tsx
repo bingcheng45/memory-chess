@@ -56,6 +56,14 @@ describe("ArticlePage server HTML", () => {
     expect(html).toContain('data-article-typing="idle"');
   });
 
+  it("holds the portrait with no inline background, since a direct load has no card to borrow from", () => {
+    const portrait = html.match(/<img[^>]*data-flight="portrait"[^>]*>/)?.[0];
+
+    expect(portrait).toContain(`alt="${article.photo.alt}"`);
+    expect(portrait).toContain('style="color:transparent"');
+    expect(html).not.toContain("background");
+  });
+
   it("hides nothing with an attribute or an inline style", () => {
     expect(html).not.toMatch(/\shidden(=|\s|>)/);
     expect(html).not.toMatch(/style="[^"]*(opacity|display|visibility)/);

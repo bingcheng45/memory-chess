@@ -17,6 +17,14 @@ describe("articleArrival", () => {
     expect(peekArrival("alder-fixture")?.mayStart).toBe(flight);
   });
 
+  it("carries the portrait file the visitor was looking at, or none", () => {
+    announceArrival("alder-fixture", Promise.resolve(), "http://localhost/_next/image?url=alder&w=256&q=75");
+    expect(peekArrival("alder-fixture")?.portraitSrc).toBe("http://localhost/_next/image?url=alder&w=256&q=75");
+
+    announceArrival("alder-fixture", Promise.resolve());
+    expect(peekArrival("alder-fixture")).toMatchObject({ slug: "alder-fixture", portraitSrc: null });
+  });
+
   it("reads without clearing, so a render that runs twice sees the same answer", () => {
     announceArrival("alder-fixture", Promise.resolve());
 

@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Bài viết về các kỳ thủ cờ vua và trí nhớ của họ",
+      "description": "Chân dung các kỳ thủ cờ vua và nhà nghiên cứu trí nhớ. Mỗi bài nêu thành tích đã được ghi lại, nghiên cứu giải thích thành tích đó và một bài tập để bạn thử."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "Bài viết",
+      "sub": "Các kỳ thủ cờ vua và nhà nghiên cứu trí nhớ, mỗi lần một chân dung.",
+      "aboutHeading": "Các bài viết này được làm như thế nào",
+      "about1": "Mỗi bài viết theo một kỳ thủ hoặc một nhà nghiên cứu và một câu hỏi về trí nhớ của họ. Nhân vật có thể là một kỳ thủ nổi tiếng nhờ kỳ tích ghi nhớ, hoặc một nhà nghiên cứu đã đo xem các kỳ thủ nhớ được gì sau vài giây.",
+      "about2": "Bài nào cũng có các phần giống nhau. Ảnh chân dung kèm tên nhiếp ảnh gia và giấy phép. Hồ sơ nhanh nêu ngày tháng, danh hiệu và thành tích trí nhớ làm nên tên tuổi nhân vật. Phần kể chuyện đặt thành tích đó cạnh nghiên cứu giải thích nó. Danh sách nguồn cho biết từng nhận định đến từ đâu. Bài tập ở cuối mở một vòng Memory Chess với số quân và thời gian xem mà câu chuyện gợi ý.",
+      "about3": "Các bài viết được nghiên cứu và soạn thảo với sự hỗ trợ của AI, dựa trên các nguồn đã công bố như phỏng vấn, báo cáo giải đấu, sách và bài nghiên cứu. Sau đó, một bước kiểm tra riêng đối chiếu từng ngày tháng, con số và trích dẫn với các nguồn ấy trước khi đăng. Khi các nguồn không thống nhất, bài viết nói rõ ai đã đưa tin gì. Một giai thoại mà các nguồn chỉ kể lại như một câu chuyện thì được kể như một câu chuyện. Các bài viết bằng ngôn ngữ khác được dịch từ bản tiếng Anh với sự hỗ trợ của AI, và mỗi bản dịch đều được kiểm tra trước khi đăng.",
+      "corrections": "Nếu có chỗ nào sai, hãy <link>gửi cho chúng tôi lời đính chính</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Sắp xếp",
+      "group": "Sắp xếp bài viết",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "Mới nhất",
+        "views": "Xem nhiều nhất",
+        "likes": "Thích nhiều nhất"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "Các trang",
+      "previous": "Trang trước",
+      "next": "Trang sau",
+      "page": "Trang {page}",
+      "showing": "Hiển thị {first} đến {last} trong tổng số {total}"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, other {# lượt xem}}",
+      "likes": "{count, plural, other {# lượt thích}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "Thích bài viết này",
+      "failed": "Chưa lưu được. Hãy thử lại."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Tất cả bài viết",
+      "showAll": "Hiện toàn bộ nội dung",
+      "byline": "Tác giả: <author>{name}</author>",
+      "authorshipNote": "Bài viết được nghiên cứu và soạn thảo với sự hỗ trợ của AI từ các nguồn nêu bên dưới. Mọi dữ kiện đã được đối chiếu với các nguồn đó trước khi đăng.",
+      "translationNote": "Dịch từ tiếng Anh với sự hỗ trợ của AI. Bản tiếng Anh là bản gốc để đối chiếu.",
+      "readInEnglish": "Đọc bản tiếng Anh",
+      "photoCredit": "Ảnh: {author}, <licenseLink>{license}</licenseLink>, qua <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Hồ sơ nhanh",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Sinh",
+        "died": "Mất",
+        "country": "Quốc gia",
+        "title": "Danh hiệu",
+        "peakRating": "Hệ số Elo cao nhất",
+        "worldChampion": "Vô địch thế giới",
+        "knownFor": "Nổi tiếng với",
+        "memoryFeat": "Thành tích về trí nhớ"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "Đến lượt bạn",
+      "drillAction": "Chơi {pieces, plural, other {# quân}}, {seconds, plural, other {# giây}}",
+      "sources": "Nguồn",
+      "nextArticle": "Bài tiếp theo"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "Đọc tiếp",
+      "yourRound": "Vòng chơi của bạn",
+      "articleDrill": "Bài tập của bài viết này",
+      "roundSize": "{pieces, plural, other {# quân}}, {seconds, plural, other {# giây}}",
+      "read": "Đọc bài viết",
+      "tryDrill": "Thử bài tập đó"
     }
   }
 }

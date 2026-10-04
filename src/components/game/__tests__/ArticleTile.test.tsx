@@ -1,5 +1,6 @@
-import type { ComponentProps } from "react";
+import { StrictMode, type ComponentProps } from "react";
 import { fireEvent, render, screen, within } from "@/test-utils/intl";
+import { peekArrival } from "@/components/articles/articleArrival";
 import ArticleTile from "@/components/game/ArticleTile";
 import TileArticlesProvider from "@/components/game/TileArticlesProvider";
 import { makeArticle } from "@/lib/articles/__tests__/fixtures";
@@ -22,7 +23,9 @@ jest.mock("next/link", () => {
 
 jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn() }));
 
-const [alder, birch, cedar] = [0, 1, 2].map((index) => tileArticleOf(makeArticle(index)));
+const ALDER_DRILL = { pieceCount: 20, memorizeTime: 3, why: "Three seconds and twenty pieces are what only Alder asks for." };
+const alder = tileArticleOf(makeArticle(0, { drill: ALDER_DRILL }));
+const [birch, cedar] = [1, 2].map((index) => tileArticleOf(makeArticle(index)));
 const ALL: readonly TileArticle[] = [alder, birch, cedar];
 const MEDIUM_ROUND: RoundSize = { pieceCount: 6, memorizeTime: 10 };
 const first: RandomSource = () => 0;
@@ -66,8 +69,7 @@ beforeEach(() => {
 
 afterEach(() => {
   jest.restoreAllMocks();
-  // @ts-expect-error gtag is optional at runtime, as it is on non-production builds
-  delete window.gtag;
+  Reflect.deleteProperty(window, "gtag");
 });
 
 describe("ArticleTile", () => {
@@ -80,9 +82,10 @@ describe("ArticleTile", () => {
     );
     expect(within(section).getByText("Alder Fixture")).toBeInTheDocument();
     expect(within(section).getByText("Fixture champion 1")).toBeInTheDocument();
+    expect(within(section).getByText("Three seconds and twenty pieces are what only Alder asks for.")).toBeInTheDocument();
     expect(
-      within(section).getByText("Five seconds and twelve pieces match the test this fixture describes."),
-    ).toBeInTheDocument();
+      within(section).queryByText("Five seconds and twelve pieces match the test this fixture describes."),
+    ).not.toBeInTheDocument();
 
     const portrait = within(section).getByRole("img", { name: "Alder Fixture at a chess board" });
     expect(portrait).toHaveAttribute("loading", "lazy");
@@ -95,7 +98,7 @@ describe("ArticleTile", () => {
 
     expect(screen.getByText("Your round").closest("div")).toHaveTextContent("Your round6 pieces, 10 seconds");
     expect(screen.getByText("This article's drill").closest("div")).toHaveTextContent(
-      "This article's drill12 pieces, 5 seconds",
+      "This article's drill20 pieces, 3 seconds",
     );
     expect(screen.getByText("Your round").tagName).toBe("DT");
     expect(screen.getByText("6 pieces, 10 seconds").tagName).toBe("DD");
@@ -121,21 +124,19 @@ describe("ArticleTile", () => {
     expect(read.compareDocumentPosition(drill) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
-  it("renders nothing when the page was given no articles, and a tile when it was given one", () => {
-    const { unmount } = render(tile({ articles: [] }));
+  it("renders nothing with no articles or no provider, and a tile when the page was given an article", () => {
+    const empty = render(tile({ articles: [] }));
     expect(screen.queryByRole("region")).not.toBeInTheDocument();
     expect(screen.queryByRole("link")).not.toBeInTheDocument();
-    unmount();
+    empty.unmount();
+
+    const unprovided = render(<ArticleTile round={MEDIUM_ROUND} random={first} />);
+    expect(screen.queryByRole("region")).not.toBeInTheDocument();
+    unprovided.unmount();
 
     render(tile({ articles: [birch] }));
     expect(screen.getByRole("region", { name: "Read next" })).toBeInTheDocument();
     expect(shownSlug()).toBe("birch-fixture");
-  });
-
-  it("renders nothing outside a provider", () => {
-    render(<ArticleTile round={MEDIUM_ROUND} random={first} />);
-
-    expect(screen.queryByRole("region")).not.toBeInTheDocument();
   });
 
   it("speaks the page's language and links to the article in that language", () => {
@@ -151,7 +152,7 @@ describe("ArticleTile", () => {
       "Deine Runde6 Figuren, 10 Sekunden",
     );
     expect(within(section).getByText("Die Übung dieses Artikels").closest("div")).toHaveTextContent(
-      "Die Übung dieses Artikels12 Figuren, 5 Sekunden",
+      "Die Übung dieses Artikels20 Figuren, 3 Sekunden",
     );
   });
 });
@@ -192,6 +193,15 @@ describe("which article the tile shows", () => {
     expect(screen.getByText("Your round").closest("div")).toHaveTextContent("Your round2 pieces, 3 seconds");
   });
 
+  it("keeps its article under StrictMode, which runs the choosing effect twice", () => {
+    const { rerender } = render(<StrictMode>{tile({ random: first })}</StrictMode>);
+    expect(shownSlug()).toBe("alder-fixture");
+
+    rerender(<StrictMode>{tile({ random: last })}</StrictMode>);
+
+    expect(shownSlug()).toBe("alder-fixture");
+  });
+
   it("keeps its article when that article is opened while the tile is on screen", () => {
     render(tile({ random: first }));
 
@@ -210,8 +220,8 @@ describe("the tile's actions", () => {
     fireEvent.click(screen.getByRole("button", { name: "Try that drill" }));
 
     const { gameState, lastSettings } = useGameStore.getState();
-    expect(gameState).toMatchObject({ isPlaying: true, pieceCount: 12, memorizeTime: 5 });
-    expect(lastSettings).toEqual({ pieceCount: 12, memorizeTime: 5 });
+    expect(gameState).toMatchObject({ isPlaying: true, pieceCount: 20, memorizeTime: 3 });
+    expect(lastSettings).toEqual({ pieceCount: 20, memorizeTime: 3 });
   });
 
   it("reports the drill once, with the slug", () => {
@@ -231,5 +241,6 @@ describe("the tile's actions", () => {
 
     expect(gtag.mock.calls).toEqual([["event", "article_tile_click", { slug: "cedar-fixture", action: "read" }]]);
     expect(useGameStore.getState().gameState.isPlaying).toBe(false);
+    expect(peekArrival("cedar-fixture")).toBeNull();
   });
 });

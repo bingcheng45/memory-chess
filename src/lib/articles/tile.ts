@@ -1,6 +1,6 @@
 import type { Article, ArticleDrill, PortraitPhoto } from "./schema";
 
-/** What the result screen's tile shows of one article. It travels in the game page's HTML, so it carries no body text. */
+/** Rides in the game page's HTML, so it holds no body text. */
 export type TileArticle = Pick<Article, "slug" | "title" | "person" | "drill"> & {
   readonly photo: PortraitPhoto;
 };
@@ -11,7 +11,6 @@ export type ArticleTileState =
   | { readonly kind: "hidden" }
   | { readonly kind: "showing"; readonly article: TileArticle };
 
-/** Answers a number from 0 up to, but not including, 1, as `Math.random` does. */
 export type RandomSource = () => number;
 
 export const HIDDEN_TILE: ArticleTileState = { kind: "hidden" };

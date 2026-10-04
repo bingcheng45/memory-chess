@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { portraitImageProps } from "@/components/articles/ArticlePortrait";
@@ -33,14 +33,12 @@ const ACTION_CLASS = `inline-flex min-h-11 items-center rounded-full px-4 text-[
 function useChosenTile(random: RandomSource): ArticleTileState {
   const articles = useTileArticles();
   const [tile, setTile] = useState(HIDDEN_TILE);
-  const hasChosen = useRef(false);
 
   // Before paint, so the page under the tile does not move a frame after the result appears.
   useLayoutEffect(() => {
-    if (hasChosen.current) return;
-    hasChosen.current = true;
+    if (tile.kind === "showing" || articles.length === 0) return;
     setTile(chooseTile(articles, viewedStore.has, random));
-  }, [articles, random]);
+  }, [tile, articles, random]);
 
   return tile;
 }
@@ -58,10 +56,36 @@ function RoundBox({ label, size }: { label: string; size: RoundSize }) {
   );
 }
 
+function TileHeader({ article }: { article: TileArticle }) {
+  const { title, person, photo } = article;
+
+  return (
+    <div className="grid grid-cols-[72px_minmax(0,1fr)] items-start gap-3.5 sm:grid-cols-[112px_minmax(0,1fr)] sm:gap-[22px]">
+      <Image
+        {...portraitImageProps(photo, PORTRAIT_SIZES)}
+        alt={photo.alt}
+        loading="lazy"
+        className="aspect-[4/5] h-auto w-full rounded-[10px] bg-bg-light object-cover"
+      />
+      <div className="min-w-0">
+        <h3
+          className={`text-[19px] font-bold leading-[1.2] tracking-[-0.012em] text-white [text-wrap:balance] ${ARTICLE_LONG_WORDS}`}
+        >
+          {title}
+        </h3>
+        <p className={`mt-1.5 text-[12.5px] leading-[1.35] text-text-muted ${ARTICLE_LONG_WORDS}`}>
+          <b className="block font-semibold text-text-secondary">{person.name}</b>
+          <span>{person.role}</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function ShownTile({ article, round }: { article: TileArticle; round: RoundSize }) {
   const t = useTranslations("articles.tile");
   const { startGame } = useGameStore();
-  const { slug, title, person, photo, drill } = article;
+  const { slug, drill } = article;
 
   function startDrill() {
     trackEvent({ name: "article_tile_click", params: { slug, action: "drill" } });
@@ -78,25 +102,7 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
       <p id={EYEBROW_ID} className="mb-2.5 text-xs uppercase tracking-[0.12em] text-text-muted">
         {t("eyebrow")}
       </p>
-      <div className="grid grid-cols-[72px_minmax(0,1fr)] items-start gap-3.5 sm:grid-cols-[112px_minmax(0,1fr)] sm:gap-[22px]">
-        <Image
-          {...portraitImageProps(photo, PORTRAIT_SIZES)}
-          alt={photo.alt}
-          loading="lazy"
-          className="aspect-[4/5] h-auto w-full rounded-[10px] bg-bg-light object-cover"
-        />
-        <div className="min-w-0">
-          <h3
-            className={`text-[19px] font-bold leading-[1.2] tracking-[-0.012em] text-white [text-wrap:balance] ${ARTICLE_LONG_WORDS}`}
-          >
-            {title}
-          </h3>
-          <p className={`mt-1.5 text-[12.5px] leading-[1.35] text-text-muted ${ARTICLE_LONG_WORDS}`}>
-            <b className="block font-semibold text-text-secondary">{person.name}</b>
-            <span>{person.role}</span>
-          </p>
-        </div>
-      </div>
+      <TileHeader article={article} />
       <dl className="mb-3 mt-3.5 grid grid-cols-2 gap-2">
         <RoundBox label={t("yourRound")} size={round} />
         <RoundBox label={t("articleDrill")} size={drill} />

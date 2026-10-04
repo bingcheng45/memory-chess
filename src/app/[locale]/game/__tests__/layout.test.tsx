@@ -47,7 +47,8 @@ describe("the game layout's articles for the result screen's tile", () => {
     expect(titles).not.toContain(ENGLISH_CARLSEN_TITLE);
   });
 
-  it("hands a page whose locale does not serve the articles nothing", async () => {
+  it("hands a page whose locale does not serve the articles nothing, though the layout still renders it", async () => {
     expect(await renderGameLayout("fr")).toEqual([]);
+    expect(screen.getByRole("list")).toBeInTheDocument();
   });
 });

@@ -56,11 +56,7 @@ export async function getArticleSummaries(locale: Locale): Promise<readonly Arti
   return articles.map((article) => summarize(article, locale));
 }
 
-/**
- * Every article as the result screen's tile shows it. Empty for a locale that
- * does not serve the articles, so the tile never shows English text on a
- * translated page.
- */
+/** Empty for a locale that does not serve the articles, so a translated page never shows English article text. */
 export async function getTileArticles(locale: string): Promise<readonly TileArticle[]> {
   if (!servesArticlesIn(locale)) return [];
   const articles = await Promise.all(ARTICLES.map((english) => inLocale(english, locale)));

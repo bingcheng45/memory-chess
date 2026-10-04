@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "reviewed": true,
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "Test pamięci szachowej Adriaana de Groota z 1944 roku w liczbach",
+    "description": "W 1944 roku Adriaan de Groot sprawdził czterech szachistów na pozycjach pokazywanych od 2 do 15 sekund. Oto jego prawdziwe wyniki i to, co zmieniły późniejsze badania.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "Holenderski mistrz szachowy i psycholog"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot jako młody mężczyzna, około 1930 roku",
+      "author": "Nieznany fotograf",
+      "license": "Domena publiczna",
+      "changes": "Przycięte"
+    },
+    "facts": {
+      "born": "26 października 1914, Santpoort, Holandia",
+      "died": "14 sierpnia 2006, w wieku 91 lat",
+      "country": "Holandia",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "Wynik 93% w odtwarzaniu pozycji oglądanych od 2 do 15 sekund"
+    },
+    "drill": {
+      "why": "W pozycji testowej de Groota z partii Rohacek kontra Rabar było 22 bierki, a Max Euwe oglądał ją przez 5 sekund."
+    },
+    "sections": [
+      {
+        "heading": "Czterech graczy i kilka sekund",
+        "paragraphs": [
+          "W 1944 roku Adriaan de Groot pokazał Maxowi Euwe pozycję szachową i po pięciu sekundach ją zasłonił. Pozycja pochodziła z partii Rohacek kontra Rabar, po 20. posunięciu białych; na szachownicy stało 22 bierki. Euwe, mistrz świata w latach 1935-1937, podyktował następnie, gdzie stała każda bierka. Wszystkie 22 podał poprawnie.",
+          "De Groot, sam będący mistrzem, przeszedł ten sam test, dodał jednego pionka, którego w pozycji nie było, i zdobył 21 punktów. A. Fast, mistrz Utrechtu z 1942 roku, poprawnie ustawił 17 bierek, ale uznał materiał za równy, choć wcale nie był, i zdobył 16 punktów. G. P. Hauer, gracz słabszej klasy, zdobył 9.",
+          "Relacje o tym teście różnią się co do czasu ekspozycji i procentów, dlatego poniższe liczby pochodzą z książki samego de Groota."
+        ]
+      },
+      {
+        "heading": "Mistrz, który badał mistrzów",
+        "paragraphs": [
+          "De Groot grał w barwach Holandii na olimpiadach szachowych w 1937 i 1939 roku. W latach 1938-1943 zapisywał, co mówili szachiści, gdy głośno myśleli, wybierając posunięcie. Wśród badanych byli arcymistrzowie Keres, Alechin, Flohr, Fine, Euwe i Tartakower.",
+          "Według jego zliczeń arcymistrzowie nie wybiegali myślą dalej niż gracze na poziomie eksperta i nie rozpatrywali więcej posunięć. „Mistrz niekoniecznie liczy głębiej”, napisał. De Groot podejrzewał, że różnica ujawnia się już w pierwszych sekundach patrzenia na szachownicę, i zaprojektował eksperyment z 1944 roku, żeby sprawdzić ten pomysł."
+        ]
+      },
+      {
+        "heading": "Co zmierzył eksperyment z 1944 roku",
+        "paragraphs": [
+          "Z każdej klasy wystąpił jeden gracz. Euwe reprezentował arcymistrzów, de Groot mistrzów, Fast ekspertów, a Hauer graczy słabszej klasy.",
+          "Każda pozycja pochodziła z partii mistrzowskiej i pozostawała widoczna od 2 do 10 sekund, a jeden pokaz trwał 15 sekund. Dwaj słabsi badani dostawali w najkrótszych próbach od 3 do 4 sekund, żeby nie zdobyć zera punktów. Każdego badanego proszono, by poświęcił około pół minuty na uporządkowanie tego, co zapamiętał. Następnie Euwe i de Groot dyktowali pozycję z pamięci, a Fast i Hauer ustawiali ją na szachownicy.",
+          "Punktacja przyznawała jeden punkt za każdą poprawną bierkę, a punkty odejmowała za bierki dodane, pominięte lub przesunięte. De Groot odrzucił dwie pozycje, pierwszą w serii i jedną z błędem w pomiarze czasu, i uwzględnił czternaście, w których było od 7 do 26 bierek. Na 234 możliwe punkty czterej badani uzyskali następujące wyniki.",
+          "Euwe zdobył 217 punktów, czyli 93%, z pięcioma pozycjami bezbłędnymi.",
+          "De Groot zdobył 217 punktów, czyli 93%, z czterema pozycjami bezbłędnymi.",
+          "Fast zdobył 158 punktów, czyli 68%, bez żadnej pozycji bezbłędnej.",
+          "Hauer zdobył 119 punktów, czyli 51%, bez żadnej pozycji bezbłędnej.",
+          "Następnie de Groot odłożył na bok dwie próby z długą ekspozycją, 15 i 7 sekund, oraz dwie, które zepsuł chwilowy spadek koncentracji. W pozostałych dziesięciu, z zamierzoną ekspozycją 2, 3 lub 5 sekund, średnie wyniki wyniosły 93,0%, 92,6%, 72,3% i 51,1%.",
+          "Obie tabele pochodzą od niego, co zapewne tłumaczy, dlaczego w relacjach ekspert dostaje raz 68%, a raz 72%. Ekspozycja nigdy nie wynosiła stałych pięciu sekund.",
+          "Najbardziej interesowała de Groota luka pośrodku, którą nazwał „przepaścią oddzielającą mistrza od niemistrza”. Wyjaśniał ją tak, że mistrz nie przechowuje w pamięci 22 oddzielnych bierek. Dużą grupę bierek postrzega jako jedną całość, bo wie, jak taka grupa powstaje i do czego służy.",
+          "Kilka takich całości pokrywa szachownicę, a według de Groota słabszy gracz ma ich mniej. Późniejsi badacze nazwali te całości chunkami."
+        ]
+      },
+      {
+        "heading": "Od holenderskiej rozprawy do losowych szachownic",
+        "paragraphs": [
+          "De Groot przedstawił tę pracę w 1946 roku w rozprawie doktorskiej na Uniwersytecie Amsterdamskim, Het denken van den schaker. Angielskie wydanie, Thought and Choice in Chess, ukazało się nakładem wydawnictwa Mouton w Hadze w 1965 roku.",
+          "W 1973 roku William Chase i Herbert Simon powtórzyli test na Uniwersytecie Carnegie Mellon z udziałem mistrza, gracza klasy A i początkującego. Ustalili czas ekspozycji na 5 sekund. Ich pozycje z gry środkowej liczyły od 24 do 26 bierek, a mistrz odtworzył około dwa razy więcej bierek niż gracz klasy A.",
+          "Każde odtwarzanie nagrywali na wideo, a pauzę dłuższą niż 2 sekundy uznawali za granicę między dwoma chunkami. Pierwszy chunk mistrza liczył średnio 3,8 bierki wobec 2,6 u gracza klasy A, a na pozycję tworzył 7,7 chunka wobec 5,7. Spośród jego 77 chunków w czternastu pozycjach 47 zawierało łańcuch pionków, a Simon i Chase naliczyli 10 pozycji z królem po roszadzie.",
+          "Ich własnym dodatkiem była próba kontrolna: te same bierki rozstawione na losowych polach. Simon i Chase podali, że wtedy każdy gracz odtwarzał około trzech lub czterech bierek, czyli mniej, niż początkujący potrafił odtworzyć w prawdziwych pozycjach. Zaznaczyli, że W. Lemmens i R. W. Jongman uzyskali ten sam wynik w amsterdamskim laboratorium i nigdy go nie opublikowali.",
+          "Własny wstęp Chase'a i Simona przedstawia wynik z losowych szachownic jako dzieło de Groota i wiele późniejszych opracowań to powtarza. W jego książce nie ma żadnej próby z losowo ustawionymi bierkami."
+        ]
+      },
+      {
+        "heading": "Co zmieniły późniejsze badania",
+        "paragraphs": [
+          "Podręczniki uznały ten wynik za dowód, że mistrz nie ma żadnej przewagi na pozbawionych sensu szachownicach. W 1996 roku Fernand Gobet i Herbert Simon sprawdzili tę interpretację na podstawie trzynastu eksperymentów z ekspozycją wynoszącą 10 sekund lub mniej. W dwunastu z trzynastu najsilniejsza grupa odtwarzała więcej losowo ustawionych bierek niż najsłabsza. Wyjątkiem było badanie samych Chase'a i Simona, w którym mistrz wypadł najgorzej.",
+          "Przewaga jest niewielka. Gobet i Simon szacują ją na około jedną dodatkową bierkę na każde 400 punktów Elo w losowych pozycjach, wobec około pięciu dodatkowych bierek w pozycjach z partii. W przeglądzie z 1998 roku Gobet podał średnie dla ekspozycji 5 sekund: 5,5 bierki na losowych szachownicach dla mistrzów i 2,6 dla graczy poniżej klasy B.",
+          "To wyjaśnienie nie podważa pomysłu de Groota. Gracz z bardzo dużym zasobem wzorców czasem trafia przypadkiem na jeden z nich w chaosie bierek. Losowe ustawienia zmniejszają przewagę eksperta, ale jej nie znoszą. Gobet i Simon dodali, że małe próby ukrywają tak mały efekt, a badanie z 1973 roku miało trzech uczestników."
+        ]
+      },
+      {
+        "heading": "Wypróbuj test de Groota",
+        "paragraphs": [
+          "Ustaw w Memory Chess 22 bierki i 5 sekund. To odpowiada wielkości pozycji de Groota z partii Rohacek kontra Rabar i czasowi, jaki Euwe miał na jej obejrzenie. Odtwórz szachownicę i policz, jaki odsetek bierek stanął na właściwych polach. Około połowy to wynik Hauera, około 70% to wynik Fasta, a 93% to średni wynik Euwe i de Groota.",
+          "To porównanie jest przybliżone, bo de Groot odejmował też punkty za błędy. Potem sprawdź, które bierki udało się zapamiętać. Zapewne pojawiały się grupami, na przykład jako łańcuch pionków albo król po roszadzie."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Potwierdza: datę 1944, czterech badanych z nazwiskami i klasami, czasy ekspozycji od 2 do 15 sekund, dłuższe czasy dla słabszych badanych, półminutową pauzę, to, kto dyktował, a kto ustawiał szachownicę, zasady punktacji, pozycję Rohacek kontra Rabar z 5-sekundową ekspozycją i czterema wynikami, tabelę 13 (217, 217, 158, 119 z 234), tabelę 14 (średnie z dziesięciu prób), oba cytaty, sesje myślenia na głos z lat 1938-1943, sześciu arcymistrzów, rozprawę amsterdamską z 1946 roku i prawa autorskie wydawnictwa Mouton z 1965 roku. W tekście nie ma eksperymentu z losowymi szachownicami."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Potwierdza: statystyki przeszukiwania wariantów, które nie oddzielały arcymistrzów od słabszych graczy, wartości 93% i 72% w późniejszych cytowaniach, to, że mistrz odtworzył około dwa razy więcej bierek niż gracz klasy A, rozmiary chunków 3,8 i 2,6, liczby chunków 7,7 i 5,7, pauzę 2-sekundową, 47 łańcuchów pionków i 10 pozycji z królem po roszadzie wśród 77 chunków, trzy lub cztery bierki na losowych szachownicach oraz nieopublikowany wynik Lemmensa i Jongmana."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Potwierdza: trzech badanych, 5-sekundową ekspozycję, pozycje z gry środkowej o 24 do 26 bierkach, nagrane na wideo odtwarzanie, 77 chunków w czternastu pozycjach, z których 47 zawierało łańcuch pionków, rozmiary chunków 3,8 i 2,6, liczby chunków 7,7 i 5,7 oraz własne streszczenie autorów, które przedstawia eksperyment de Groota jako 5-sekundowy i obejmujący losowe szachownice."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Potwierdza: trzynaście eksperymentów, ekspozycje najwyżej 10 sekund, dwanaście z trzynastu wyników na korzyść najsilniejszej grupy, wyjątek Chase'a i Simona, jedną bierkę na 400 punktów Elo na losowych szachownicach wobec około pięciu w pozycjach z partii, podręcznikowy status dawnego wyniku, uwagę o małych próbach i wyjaśnienie oparte na chunkach."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Potwierdza: ekspozycje de Groota od 2 do 15 sekund, Euwe jako arcymistrza i lata jego tytułu mistrza świata, półminutową pauzę, 5-sekundowy układ badania Chase'a i Simona, podręcznikowy status wyniku z losowych szachownic oraz średnie 5,5 i 2,6 bierki."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Potwierdza: układ z czterema badanymi, ekspozycje od 2 do 15 sekund oraz stwierdzenie, że próbę kontrolną z losowymi szachownicami często błędnie przypisuje się de Grootowi, a w rzeczywistości należy ona do Chase'a i Simona."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Potwierdza: daty i miejsca urodzenia i śmierci, olimpiady z 1937 i 1939 roku, rozprawę z 1946 roku i angielskie wydanie z 1965 roku."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Potwierdza: daty i miejsca urodzenia i śmierci, wiek 91 lat. Jest też przykładem relacji, która podaje czas ekspozycji jako od 3 do 4 sekund."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Potwierdza: występy de Groota w drużynach Holandii w 1937 i 1939 roku."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Potwierdza: występy de Groota w drużynach Holandii w 1937 i 1939 roku."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Potwierdza: pozycję testową z 22 bierkami oraz wyniki 22, 21, 16 i 9."
+      }
+    ]
+  }
+}

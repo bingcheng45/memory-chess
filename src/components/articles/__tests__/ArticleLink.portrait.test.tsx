@@ -12,7 +12,7 @@ import {
   otherCard,
   photoNamed,
 } from "@/components/articles/__tests__/flightHarness";
-import { recordWarmedImages, setSaveData } from "@/components/articles/__tests__/warmedImages";
+import { pointerEnters, recordWarmedImages, setSaveData } from "@/components/articles/__tests__/warmedImages";
 import type { PortraitPhoto } from "@/lib/articles/schema";
 
 jest.mock("next/link", () => {
@@ -74,9 +74,8 @@ describe("ArticleLink and the portrait the visitor already has", () => {
 
 describe("ArticleLink warming the article's portrait on intent", () => {
   it.each([
-    ["the pointer enters", (target: HTMLElement) => fireEvent.pointerEnter(target), "pointer"],
+    ["a mouse pointer enters", (target: HTMLElement) => pointerEnters(target, "mouse"), "mouse"],
     ["it takes focus", (target: HTMLElement) => fireEvent.focus(target), "focus"],
-    ["a finger touches it", (target: HTMLElement) => fireEvent.touchStart(target), "touch"],
   ])("asks for the article-size file when %s", (_name, showIntent, name) => {
     renderCard(photoNamed(name));
 
@@ -87,13 +86,24 @@ describe("ArticleLink warming the article's portrait on intent", () => {
     expect(warmed[0].srcset).toContain(`/_next/image?url=%2Fimages%2Farticles%2F${name}.jpg&w=384&q=75 384w`);
   });
 
+  it("asks for nothing under a finger, which may only be scrolling, and asks once a mouse arrives", () => {
+    renderCard(photoNamed("finger"));
+
+    pointerEnters(link(), "touch");
+    fireEvent.touchStart(link());
+    pointerEnters(link(), "pen");
+    expect(warmed).toHaveLength(0);
+
+    pointerEnters(link(), "mouse");
+    expect(warmed).toHaveLength(1);
+  });
+
   it("asks once for an article, however often the visitor shows intent", () => {
     renderCard(photoNamed("repeated"));
 
-    fireEvent.pointerEnter(link());
+    pointerEnters(link(), "mouse");
     fireEvent.focus(link());
-    fireEvent.touchStart(link());
-    fireEvent.pointerEnter(link());
+    pointerEnters(link(), "mouse");
 
     expect(warmed).toHaveLength(1);
   });
@@ -102,21 +112,24 @@ describe("ArticleLink warming the article's portrait on intent", () => {
     renderCard(photoNamed("first-of-two"));
     render(<OtherCard />);
 
-    fireEvent.pointerEnter(link());
-    fireEvent.pointerEnter(otherCard());
+    pointerEnters(link(), "mouse");
+    pointerEnters(otherCard(), "mouse");
 
     expect(warmed.map((image) => image.srcset.includes("birch.jpg"))).toEqual([false, true]);
   });
 
-  it("asks for nothing while the visitor saves data, and asks once they stop", () => {
-    renderCard(photoNamed("save-data"));
+  it.each([
+    ["a mouse pointer", (target: HTMLElement) => pointerEnters(target, "mouse"), "mouse"],
+    ["focus", (target: HTMLElement) => fireEvent.focus(target), "focus"],
+  ])("asks for nothing on %s while the visitor saves data, and asks once they stop", (_name, showIntent, name) => {
+    renderCard(photoNamed(`save-data-${name}`));
 
     setSaveData(true);
-    fireEvent.pointerEnter(link());
+    showIntent(link());
     expect(warmed).toHaveLength(0);
 
     setSaveData(false);
-    fireEvent.pointerEnter(link());
+    showIntent(link());
     expect(warmed).toHaveLength(1);
   });
 
@@ -124,7 +137,7 @@ describe("ArticleLink warming the article's portrait on intent", () => {
     render(<BackLink />);
     renderCard(photoNamed("beside-the-back-link"));
 
-    fireEvent.pointerEnter(backLink());
+    pointerEnters(backLink(), "mouse");
     fireEvent.focus(backLink());
     expect(warmed).toHaveLength(0);
 

@@ -1,10 +1,10 @@
 import type { ComponentProps } from "react";
-import { fireEvent, render, screen, within } from "@/test-utils/intl";
+import { render, screen, within } from "@/test-utils/intl";
 import ArticlePage from "@/components/articles/ArticlePage";
 import { announceArrival, clearArrival } from "@/components/articles/articleArrival";
 import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
 import { photoNamed } from "@/components/articles/__tests__/flightHarness";
-import { recordWarmedImages } from "@/components/articles/__tests__/warmedImages";
+import { pointerEnters, recordWarmedImages } from "@/components/articles/__tests__/warmedImages";
 import { ARTICLE_COPY } from "@/lib/articles/copy";
 import { FACT_ROWS, type Article } from "@/lib/articles/schema";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
@@ -292,7 +292,7 @@ describe("ArticlePage portrait after a card click", () => {
     const upcoming = { ...next, photo: photoNamed("upcoming") };
     const { container } = render(<ArticlePage article={article} nextArticle={upcoming} />);
 
-    fireEvent.pointerEnter(within(container).getByRole("link", { name: /Next article/ }));
+    pointerEnters(within(container).getByRole("link", { name: /Next article/ }), "mouse");
 
     expect(warmed).toHaveLength(1);
     expect(warmed[0].srcset).toContain("upcoming.jpg&w=384&q=75 384w");

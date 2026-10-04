@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, MouseEvent } from "react";
+import type { ComponentProps, MouseEvent, PointerEvent } from "react";
 import { Link, useRouter } from "@/i18n/navigation";
 import { announceArrival } from "@/components/articles/articleArrival";
 import { fly } from "@/components/articles/articleFlight";
@@ -10,7 +10,7 @@ import type { PortraitPhoto } from "@/lib/articles/schema";
 
 type LinkProps = Omit<
   ComponentProps<typeof Link>,
-  "href" | "replace" | "scroll" | "locale" | "target" | "download" | "onPointerEnter" | "onFocus" | "onTouchStart"
+  "href" | "replace" | "scroll" | "locale" | "target" | "download" | "onPointerEnter" | "onFocus"
 >;
 type ArticleLinkProps = LinkProps &
   (
@@ -20,6 +20,7 @@ type ArticleLinkProps = LinkProps &
 
 const PRIMARY_BUTTON = 0;
 const SHOWN_PORTRAIT = 'img[data-flight="portrait"]';
+const HOVERING_POINTER = "mouse";
 
 function isPlainLeftClick(event: MouseEvent): boolean {
   return (
@@ -36,6 +37,11 @@ export default function ArticleLink({ article, portrait, backFrom, onClick, ...a
   const href = article === undefined ? ARTICLES_PATH : articlePath(article);
   const warm = portrait === undefined ? undefined : () => warmArticlePortrait(portrait);
 
+  // A finger enters a card when a scroll starts on it, so only a mouse entering counts as intent.
+  function warmUnderMouse(event: PointerEvent) {
+    if (event.pointerType === HOVERING_POINTER) warm?.();
+  }
+
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
     onClick?.(event);
     if (event.defaultPrevented || !isPlainLeftClick(event)) return;
@@ -51,9 +57,8 @@ export default function ArticleLink({ article, portrait, backFrom, onClick, ...a
       {...anchorProps}
       href={href}
       onClick={handleClick}
-      onPointerEnter={warm}
+      onPointerEnter={warmUnderMouse}
       onFocus={warm}
-      onTouchStart={warm}
     />
   );
 }

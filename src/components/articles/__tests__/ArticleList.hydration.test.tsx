@@ -92,6 +92,11 @@ describe("ArticleList on a direct load of a sorted address", () => {
 
     expect(shown(container)).toEqual(NEWEST);
     expect(painted()).toBe("likes");
+    expect(
+      Array.from(container.querySelectorAll("button[data-sort-option]"), (option) =>
+        option.getAttribute("data-sort-option"),
+      ),
+    ).toEqual(["newest", "views", "likes"]);
   });
 
   it.each([

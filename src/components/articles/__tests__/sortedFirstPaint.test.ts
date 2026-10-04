@@ -66,14 +66,29 @@ describe("sortedFirstPaintInlineScript", () => {
 
 describe("articleList.css", () => {
   const rules = innermostRules(readArticleCss("articleList.css"));
+  const ordering = rules.filter((rule) => rule.selector.includes("[data-article-list]"));
+  const pressedLook = rules.filter((rule) => rule.selector.includes("[data-sort-option]"));
 
   it("has one rule for each sort the script can mark, which orders the cards by that sort's rank", () => {
-    expect(rules.map((rule) => [rule.selector, declarationsOf(rule)])).toEqual(
+    expect(ordering.map((rule) => [rule.selector, declarationsOf(rule)])).toEqual(
       RANKED_SORTS.map((sort) => [
         `[data-first-paint-sort="${sort}"] [data-article-list] > li`,
         [["order", `var(--rank-${sort})`]],
       ]),
     );
-    expect(rules).toHaveLength(2);
+    expect(ordering).toHaveLength(2);
+  });
+
+  it("gives the pressed look to the pressed button on an unmarked page, and to the marked sort's button on a marked one", () => {
+    expect(pressedLook.map((rule) => rule.selector.split(/,\s*/))).toEqual([
+      [
+        'html:not([data-first-paint-sort]) [data-sort-option][aria-pressed="true"]',
+        ...RANKED_SORTS.map((sort) => `html[data-first-paint-sort="${sort}"] [data-sort-option="${sort}"]`),
+      ],
+    ]);
+  });
+
+  it("holds nothing else", () => {
+    expect(rules).toHaveLength(ordering.length + pressedLook.length);
   });
 });

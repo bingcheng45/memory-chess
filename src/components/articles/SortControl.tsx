@@ -8,8 +8,7 @@ type SortControlProps = {
 };
 
 const OPTION_CLASS =
-  "min-h-11 whitespace-nowrap rounded-full px-[13px] text-[13px] text-text-muted hover:text-peach-200 " +
-  `aria-pressed:bg-peach-500 aria-pressed:font-semibold aria-pressed:text-bg-dark ${ARTICLE_FOCUS_RING}`;
+  `min-h-11 whitespace-nowrap rounded-full px-[13px] text-[13px] text-text-muted hover:text-peach-200 ${ARTICLE_FOCUS_RING}`;
 
 export default function SortControl({ current, onChoose }: SortControlProps) {
   return (
@@ -25,6 +24,7 @@ export default function SortControl({ current, onChoose }: SortControlProps) {
             key={sort}
             type="button"
             aria-pressed={sort === current}
+            data-sort-option={sort}
             onClick={() => onChoose(sort)}
             className={OPTION_CLASS}
           >

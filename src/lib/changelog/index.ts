@@ -80,7 +80,7 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
             ],
           },
           "Every article has a portrait, a fact file, the sources it draws on, and a drill that opens a round sized to the story.",
-          "The articles are in English for now.",
+          "The articles can be read in every language the game supports. The other languages are translated from English with AI assistance.",
         ],
         note: "The articles are researched and drafted with AI assistance, then checked against their sources before they go up. If you spot a mistake, please tell us through the contact page.",
       },

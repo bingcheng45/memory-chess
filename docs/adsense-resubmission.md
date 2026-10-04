@@ -100,6 +100,13 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
   AdSense review, and it would cut search entry points while interest is the bottleneck. Revisit only with 90 days
   of GA4 sessions per locale, and then only for locales with negligible traffic, in its own PR.
 - Guide `updatedAt` dates are truthful and are not bumped to look fresh.
+- Articles are readable in all 24 languages and indexed only in English, decided 2026-10-04 at the operator's
+  request. A translated article is served `noindex, follow` with a self canonical, no `hreflang` and no sitemap
+  entry, says on the page that it was translated from English with AI assistance, and links to the English article.
+  A translation goes up only after `scripts/articles-i18n.mjs check` and a second, independent review, it records
+  the hash of the English text it came from so a test fails when that text changes, and a locale with an article
+  missing fails the build, so no page serves English body text under another `lang`. The audit still has to print
+  96 URLs and PASS.
 
 ## Follow-ups
 

@@ -1,6 +1,6 @@
 {
   "sourceHash": "f7dab0bfc6610dc1a21ef0ce57f39c66d46ad703027de26b3e2996bf6c8411cb",
-  "reviewed": false,
+  "reviewed": true,
   "sameAsEnglish": [],
   "text": {
     "title": "Wie Judit Polgár mit sieben Jahren Blindschach spielte",
@@ -30,10 +30,10 @@
       {
         "heading": "Sieben Jahre alt, ohne Brett",
         "paragraphs": [
-          "In den 1980er-Jahren wohnte Herman Grooten, ein niederländischer Trainer mit dem Titel Internationaler Meister, bei der Familie Polgár in deren Budapester Wohnung. Jemand schlug Blindschach vor, und Grooten nahm an, er werde derjenige sein, der ohne Brett spielt. Er irrte sich. Ohne Brett spielte Judit Polgár, die 7 Jahre alt war.",
+          "In den 1980er-Jahren war Herman Grooten, ein niederländischer Trainer mit dem Titel Internationaler Meister, bei der Familie Polgár in deren Budapester Wohnung zu Gast. Jemand schlug Blindschach vor, und Grooten nahm an, er werde derjenige sein, der ohne Brett spielt. Er irrte sich. Ohne Brett spielte Judit Polgár, die 7 Jahre alt war.",
           "Grooten erzählte die Geschichte 2025 in einer ChessBase-Kolumne. Er bestand darauf, ebenfalls blind zu spielen. Man stellte Stühle Rücken an Rücken und benutzte eine Uhr. Er stellte seine Dame ein und verlor. Für die zweite Partie nahm er ein Brett. Judit hatte immer noch keines, und er verlor erneut.",
           "Eine Geschichte des Blindschachs von Eliot Hearst und John Knott erwähnt unter Berufung auf ein Buch von 1992 zwei Blindpartien in Budapest im Jahr 1984. Sofia und Judit, damals 9 und 7, gewannen sie. Ihre Gegner waren Meister, die ebenfalls blind spielten. Die Mädchen beschwerten sich, dass ein Gegner zu lange nachdachte, und schlugen eine Uhr vor. Ob das der Besuch ist, den Grooten beschreibt, ist unklar.",
-          "Polgárs eigene Erklärung ist schlicht. 2025 veröffentlichte sie eine Passage, die sie ihrem Buch How to Become a Champion zuschreibt. Darin sagt sie, es sei wichtig gewesen, die 64 Felder zu kennen. Sie zählt auf, wie jedes heißt, wo es liegt und ob es hell oder dunkel ist. Mit diesem Wissen, schrieb sie, „konnte ich schon als Kind mit etwa 7 Jahren Blindschach spielen“."
+          "Polgárs eigene Erklärung ist schlicht. 2025 veröffentlichte sie eine Passage, die sie ihrem Buch How to Become a Champion zuschreibt. Darin sagt sie, es sei wichtig gewesen, die 64 Felder zu kennen. Sie zählt auf, wie jedes heißt, wo es liegt und ob es hell oder dunkel ist. Mit diesem Wissen, schrieb sie, „konnte ich als Kind mit etwa 7 Jahren Blindschach spielen“."
         ]
       },
       {
@@ -104,7 +104,7 @@
       },
       {
         "title": "Perception in chess, William Chase and Herbert Simon, Carnegie Mellon preprint of the 1973 Cognitive Psychology paper",
-        "note": "Belegt: de Groots Befund nach wenigen Sekunden Betrachtung, die drei Spieler, Mittelspielstellungen mit 24 bis 26 Figuren, etwa 16, 8 und 4 richtig aufgestellte Figuren, die Zufallsbretter, die Ausgangshypothese von etwa fünf Chunks aus vier oder fünf Figuren, das Ergebnis, dass der Meister mehr und größere Chunks wiedergab."
+        "note": "Belegt: de Groots Befund nach wenigen Sekunden Betrachtung, die drei Spieler, Mittelspielstellungen mit 24 bis 26 Figuren, etwa 16, 8 und 4 richtig aufgestellte Figuren, die Zufallsstellungen, die Ausgangshypothese von etwa fünf Chunks aus vier oder fünf Figuren, das Ergebnis, dass der Meister mehr und größere Chunks wiedergab."
       },
       {
         "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",

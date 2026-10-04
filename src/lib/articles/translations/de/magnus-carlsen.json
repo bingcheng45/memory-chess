@@ -1,6 +1,6 @@
 {
   "sourceHash": "cc101ac41e195858740ba4482eeac2823a91e34eb20c4f5e24c17dda210931b2",
-  "reviewed": false,
+  "reviewed": true,
   "sameAsEnglish": [],
   "text": {
     "title": "Wie Magnus Carlsen aus einer Stellung eine berühmte Partie benennt",
@@ -41,7 +41,7 @@
         "heading": "Drei gefilmte Tests seines Erinnerungsvermögens",
         "paragraphs": [
           "Das Blindspiel zeigt, dass Carlsen eine Partie im Kopf halten kann. Drei gefilmte Tests zeigen etwas anderes, seinen Vorrat an berühmten Partien.",
-          "Der erste steht im selben CBS-Porträt. Die Sendung sagte, er könne bei der Vorbereitung auf zehntausend Partien anderer Meister zurückgreifen, und prüfte ihn dann an einer. Er sagte, sie sei 1859 bei Simpson's on the Strand in London gespielt worden. Simon korrigierte ihn. Das Jahr sei 1851 gewesen. „Es ist nicht mehr das, was es einmal war“, sagte Carlsen über sein Gedächtnis.",
+          "Der erste steht im selben CBS-Porträt. Die Sendung sagte, er könne bei der Vorbereitung auf zehntausend Partien anderer Meister zurückgreifen, und prüfte ihn dann an einer. Er sagte, sie sei 1859 bei Simpson's on the Strand in London gespielt worden. Simon korrigierte ihn. Das Jahr war 1851. „Es ist nicht mehr das, was es einmal war“, sagte Carlsen über sein Gedächtnis.",
           "Der zweite wurde am 30. April 2021 von chess24 auf YouTube gestellt. Der englische Großmeister David Howell zeigte ihm Stellungen aus bekannten Partien, und Carlsen benannte sie. Eine Stellung ordnete er der 24. Partie eines Wettkampfs zwischen Kasparow und Karpow in Sevilla zu. Er sagte, ein Buch über diese Wettkämpfe liege auf seinem Nachttisch.",
           "Danach spielte Howell eine Eröffnung durch und bat Carlsen, ihn zu stoppen, sobald er die Partie kenne. Carlsen stoppte ihn früh und nannte Viswanathan Anands Partie gegen Zapata. Eine andere Stellung stammte aus seiner eigenen Partie gegen Howell bei der Jugendweltmeisterschaft 2002. Carlsen beschrieb auch, was am Nachbarbrett geschehen war.",
           "Eine Stellung stammte aus dem ersten Harry-Potter-Film. Carlsen bat um einen Hinweis und erfuhr, sie stamme aus der Unterhaltungsbranche. Dann erinnerte er sich an die Eröffnungszüge der Filmpartie. Laut dem Schachautor Nate Solon war es die einzige Stellung, die ihn stoppte.",
@@ -63,8 +63,8 @@
           "Die Forschung zum Schachgedächtnis beginnt mit Adriaan de Groot, einem Schachmeister und Psychologen. Er zeigte Spielern einige Sekunden lang eine Stellung aus einer echten Partie und bat sie, sie nachzubauen. Die beiden stärksten Spieler erreichten 93 Prozent. Die schwächste seiner vier Versuchspersonen erreichte etwa die Hälfte.",
           "1973 erklärten William Chase und Herbert Simon das Ergebnis mit dem Chunk. Ein Chunk ist ein Muster aus Figuren, das ein Spieler so oft gesehen hat, dass es als eine Einheit gespeichert wird. Ein Meister, der eine echte Stellung nachbaut, ruft einige Chunks ab und nicht jede Figur einzeln. Sind die Figuren zufällig gesetzt, verschwindet der Vorsprung der stärkeren Spieler fast ganz.",
           "Simon und ein Kollege schätzten, dass ein Spitzenspieler etwa 50.000 Chunks besitzt. Spätere Arbeiten von Fernand Gobet und Simon fügten Templates hinzu. Ein Template ist ein Chunk für einen vertrauten Stellungstyp, mit offenen Plätzen für die Einzelheiten.",
-          "Keine dieser Forschungsarbeiten hat Carlsen getestet, daher ist es eine Deutung, sie auf ihn anzuwenden. Nach dieser Lesart passt seine Bilanz zu der Erklärung. Die Stellungen, die er im Film benennt, stammen aus berühmten Partien, wie ein Profi sie studiert. Im Damesteintest waren die Figurenarten verborgen, und ChessBase urteilte, das habe ihn kaum verlangsamt. Das ist es, was die Chunk-Erklärung bei jemandem vorhersagen würde, der eine Stellung als Muster kennt.",
-          "Seine Bemerkung in Wien lässt sich ebenso lesen. Gegner, die von vertrauten Mustern abweichen, tun einem Blindspieler womöglich an, was Zufallsbretter im Labor einem Meister antun.",
+          "Keine dieser Forschungsarbeiten hat Carlsen getestet, daher ist es eine Deutung, sie auf ihn anzuwenden. Nach dieser Lesart passt seine Bilanz zu der Erklärung. Die Stellungen, die er vor der Kamera benennt, stammen aus berühmten Partien, wie ein Profi sie studiert. Im Damesteintest waren die Figurenarten verborgen, und ChessBase urteilte, das habe ihn kaum verlangsamt. Das ist es, was die Chunk-Erklärung bei jemandem vorhersagen würde, der eine Stellung als Muster kennt.",
+          "Seine Bemerkung in Wien lässt sich ebenso lesen. Gegner, die von vertrauten Mustern abweichen, tun einem Blindspieler womöglich an, was Zufallsstellungen im Labor einem Meister antun.",
           "Auch seine Fehler passen zu dieser Lesart. Er nannte einen Londoner Schauplatz und lag beim Jahr um acht daneben. Bei einer Filmstellung, die außerhalb der Turniergeschichte liegt, brauchte er einen Hinweis. In einer Blindpartie kann er das Feld eines Bauern aus den Augen verlieren.",
           "Nichts davon macht sein Gedächtnis gewöhnlich. CBS berichtete, dass er mit fünf fast alle Länder der Welt mit Hauptstädten und Einwohnerzahlen nennen konnte. Sein Vater sagte der Sendung, er habe ein gutes Gedächtnis und könne sich stundenlang auf ein Thema konzentrieren. Kasparow nannte im selben Kommentar Carlsens ernsthaftes Interesse an vergangenen Partien einen Wettbewerbsvorteil."
         ]
@@ -116,7 +116,7 @@
       },
       {
         "title": "\"Recall of random and distorted chess positions: Implications for the theory of expertise\", Fernand Gobet and Herbert A. Simon, Memory & Cognition 24(4), 1996",
-        "note": "Belegt: das Chunk-Modell von Chase und Simon von 1973, die Schätzung von 50.000 Chunks, der fast verschwundene Könnensvorsprung bei Zufallsstellungen, Templates mit offenen Plätzen und die Darbietungszeit von fünf Sekunden."
+        "note": "Belegt: das Chunk-Modell von Chase und Simon von 1973, die Schätzung von 50.000 Chunks, der fast verschwundene Vorteil der stärkeren Spieler bei Zufallsstellungen, Templates mit offenen Plätzen und die Darbietungszeit von fünf Sekunden."
       },
       {
         "title": "\"Magnus Carlsen\" (player profile), Chess.com",

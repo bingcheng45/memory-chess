@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "reviewed": false,
+  "reviewed": true,
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -46,7 +46,7 @@
       {
         "heading": "Was das Experiment von 1944 maß",
         "paragraphs": [
-          "Für jede Klasse stand ein Spieler. Euwe vertrat die Großmeister, de Groot die Meister, Fast die Experten und Hauer die Spieler der schwächeren Klasse.",
+          "Jede Klasse war durch einen Spieler vertreten. Euwe vertrat die Großmeister, de Groot die Meister, Fast die Experten und Hauer die Spieler der schwächeren Klasse.",
           "Jede Stellung stammte aus einer Meisterpartie und blieb 2 bis 10 Sekunden lang sichtbar, bei einer einzigen Darbietung waren es 15 Sekunden. Die beiden schwächeren Versuchspersonen bekamen bei den kürzesten Durchgängen 3 bis 4 Sekunden, damit sie nicht null Punkte erzielten. Jede Versuchsperson sollte sich etwa eine halbe Minute Zeit nehmen, um das Behaltene zu ordnen. Euwe und de Groot diktierten die Stellung dann aus dem Gedächtnis, Fast und Hauer bauten sie auf einem Brett auf.",
           "Die Wertung gab einen Punkt für jede richtige Figur und zog Punkte ab für hinzugefügte, ausgelassene oder verschobene Figuren. De Groot verwarf zwei Stellungen, die erste der Reihe und eine mit einem Zeitfehler, und wertete vierzehn, die zwischen 7 und 26 Figuren hatten. Von möglichen 234 Punkten erzielten die vier Versuchspersonen Folgendes.",
           "Euwe erzielte 217 Punkte oder 93 %, mit fünf fehlerfreien Stellungen.",
@@ -54,27 +54,27 @@
           "Fast erzielte 158 Punkte oder 68 %, ohne eine fehlerfreie Stellung.",
           "Hauer erzielte 119 Punkte oder 51 %, ohne eine fehlerfreie Stellung.",
           "Danach legte de Groot zwei Durchgänge mit langer Darbietung beiseite, 15 und 7 Sekunden, und zwei weitere, die ein Konzentrationsabfall verdorben hatte. In den übrigen zehn, mit vorgesehenen Darbietungszeiten von 2, 3 oder 5 Sekunden, lagen die Mittelwerte bei 93,0 %, 92,6 %, 72,3 % und 51,1 %.",
-          "Beide Tabellen stammen von ihm, und deshalb nennen Nacherzählungen für den Experten vermutlich entweder 68 % oder 72 %. Die Darbietungszeit betrug nie fest fünf Sekunden.",
+          "Beide Tabellen stammen von ihm, und deshalb nennen Nacherzählungen für den Experten vermutlich entweder 68 % oder 72 %. Die Darbietungszeit lag nie fest bei fünf Sekunden.",
           "Am wichtigsten war de Groot der Abstand in der Mitte, den er „die Kluft, die den Meister vom Nichtmeister trennt“ nannte. Seine Erklärung: Ein Meister speichert nicht 22 einzelne Figuren. Er nimmt eine große Gruppe von Figuren als eine Einheit wahr, weil er weiß, wie diese Gruppe entsteht und wozu sie dient.",
           "Wenige solcher Einheiten decken das Brett ab, und nach de Groots Darstellung hat ein schwächerer Spieler weniger davon. Spätere Forscher nannten diese Einheiten Chunks."
         ]
       },
       {
-        "heading": "Von einer niederländischen Dissertation zu Zufallsbrettern",
+        "heading": "Von einer niederländischen Dissertation zu Zufallsstellungen",
         "paragraphs": [
           "De Groot stellte die Arbeit 1946 in seiner Doktorarbeit an der Universität Amsterdam vor, Het denken van den schaker. Die englische Ausgabe, Thought and Choice in Chess, erschien 1965 bei Mouton in Den Haag.",
           "1973 wiederholten William Chase und Herbert Simon den Test an der Carnegie Mellon University mit einem Meister, einem Spieler der Klasse A und einem Anfänger. Sie legten die Darbietungszeit auf 5 Sekunden fest. Ihre Mittelspielstellungen hatten 24 bis 26 Figuren, und der Meister gab etwa doppelt so viele Figuren richtig wieder wie der Spieler der Klasse A.",
           "Sie filmten jede Rekonstruktion und werteten eine Pause von mehr als 2 Sekunden als Grenze zwischen zwei Chunks. Der erste Chunk des Meisters umfasste im Schnitt 3,8 Figuren, beim Spieler der Klasse A waren es 2,6. Pro Stellung bildete der Meister 7,7 Chunks, der andere 5,7. Von den 77 Chunks des Meisters über vierzehn Stellungen enthielten 47 eine Bauernkette, und Simon und Chase zählten 10 Stellungen mit rochiertem König.",
           "Ihr Zusatz war eine Kontrolle: dieselben Figuren auf zufälligen Feldern. Simon und Chase berichteten, dass dann alle Spieler etwa drei oder vier Figuren wiedergaben, weniger als der Anfänger bei echten Stellungen schaffte. Sie vermerkten, dass W. Lemmens und R. W. Jongman im Amsterdamer Labor dasselbe Ergebnis gefunden, aber nie veröffentlicht hatten.",
-          "Chase und Simons eigene Einleitung stellt das Ergebnis mit den Zufallsbrettern als das von de Groot dar, und viele spätere Darstellungen wiederholen das. In seinem Buch ist kein Versuch mit Zufallsbrettern verzeichnet."
+          "Chase und Simons eigene Einleitung stellt das Ergebnis mit den Zufallsstellungen als das von de Groot dar, und viele spätere Darstellungen wiederholen das. Sein Buch berichtet von keinem Versuch mit Zufallsstellungen."
         ]
       },
       {
         "heading": "Was spätere Forschung geändert hat",
         "paragraphs": [
-          "Lehrbücher verstanden dieses Ergebnis so, dass ein Meister auf sinnlosen Brettern überhaupt keinen Vorteil hat. 1996 prüften Fernand Gobet und Herbert Simon diese Lesart an dreizehn Experimenten mit Darbietungszeiten von höchstens 10 Sekunden. In zwölf der dreizehn gab die stärkste Gruppe mehr Zufallsfiguren wieder als die schwächste. Die Ausnahme war die Studie von Chase und Simon selbst, in der der Meister am schlechtesten abschnitt.",
-          "Der Vorteil ist klein. Gobet und Simon beziffern ihn auf etwa eine zusätzliche Figur je 400 Elo-Punkte bei Zufallsbrettern, gegenüber etwa fünf zusätzlichen Figuren bei Partiestellungen. In einem Überblick von 1998 gab Gobet die Mittelwerte bei 5 Sekunden mit 5,5 Zufallsfiguren für Meister und 2,6 für Spieler unterhalb der Klasse B an.",
-          "Die Erklärung lässt de Groots Gedanken bestehen. Ein Spieler mit einem sehr großen Vorrat an Mustern findet in einem Durcheinander manchmal zufällig eines. Zufallsbretter verkleinern den Vorsprung des Experten, beseitigen ihn aber nicht. Gobet und Simon fügten hinzu, dass kleine Stichproben einen so kleinen Effekt verbergen, und die Studie von 1973 hatte drei Versuchspersonen."
+          "Lehrbücher verstanden dieses Ergebnis so, dass ein Meister auf sinnlosen Stellungen überhaupt keinen Vorteil hat. 1996 prüften Fernand Gobet und Herbert Simon diese Lesart an dreizehn Experimenten mit Darbietungszeiten von höchstens 10 Sekunden. In zwölf der dreizehn gab die stärkste Gruppe bei Zufallsstellungen mehr Figuren wieder als die schwächste. Die Ausnahme war die Studie von Chase und Simon selbst, in der der Meister am schlechtesten abschnitt.",
+          "Der Vorteil ist klein. Gobet und Simon beziffern ihn auf etwa eine zusätzliche Figur je 400 Elo-Punkte bei Zufallsstellungen, gegenüber etwa fünf zusätzlichen Figuren bei Partiestellungen. In einem Überblick von 1998 gab Gobet die Mittelwerte bei 5 Sekunden mit 5,5 Figuren aus Zufallsstellungen für Meister und 2,6 für Spieler unterhalb der Klasse B an.",
+          "Die Erklärung lässt de Groots Idee unangetastet. Ein Spieler mit einem sehr großen Vorrat an Mustern findet in einem Durcheinander manchmal zufällig eines. Zufallsstellungen verkleinern den Vorsprung des Experten, beseitigen ihn aber nicht. Gobet und Simon fügten hinzu, dass kleine Stichproben einen so kleinen Effekt verbergen, und die Studie von 1973 hatte drei Versuchspersonen."
         ]
       },
       {
@@ -88,27 +88,27 @@
     "sources": [
       {
         "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
-        "note": "Belegt: das Jahr 1944, die vier Versuchspersonen mit Namen und Klassen, Darbietungszeiten von 2 bis 15 Sekunden, die längeren Zeiten für die schwächeren Versuchspersonen, die halbe Minute Pause, wer diktierte und wer das Brett aufbaute, die Wertungsregeln, die Stellung Rohacek gegen Rabar mit 5 Sekunden Darbietung und vier Ergebnissen, Tabelle 13 (217, 217, 158, 119 von 234), Tabelle 14 (die Mittelwerte der zehn Durchgänge), beide Zitate, die Laut-Denken-Sitzungen von 1938 bis 1943, die sechs Großmeister, die Amsterdamer Dissertation von 1946 und das Mouton-Copyright von 1965. Der Text enthält kein Experiment mit Zufallsbrettern."
+        "note": "Belegt: das Jahr 1944, die vier Versuchspersonen mit Namen und Klassen, Darbietungszeiten von 2 bis 15 Sekunden, die längeren Zeiten für die schwächeren Versuchspersonen, die halbe Minute Pause, wer diktierte und wer das Brett aufbaute, die Wertungsregeln, die Stellung Rohacek gegen Rabar mit 5 Sekunden Darbietung und vier Ergebnissen, Tabelle 13 (217, 217, 158, 119 von 234), Tabelle 14 (die Mittelwerte der zehn Durchgänge), beide Zitate, die Laut-Denken-Sitzungen von 1938 bis 1943, die sechs Großmeister, die Amsterdamer Dissertation von 1946 und das Mouton-Copyright von 1965. Der Text enthält kein Experiment mit Zufallsstellungen."
       },
       {
         "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
-        "note": "Belegt: Suchstatistiken, die Großmeister nicht von schwächeren Spielern trennten, die Werte 93 % und 72 % in späterer Zitierung, der Meister, der etwa doppelt so viele Figuren wiedergab wie der Spieler der Klasse A, die Chunk-Größen 3,8 und 2,6, die Chunk-Zahlen 7,7 und 5,7, die Pause von 2 Sekunden, 47 Bauernketten und 10 Stellungen mit rochiertem König unter 77 Chunks, drei oder vier Figuren auf Zufallsbrettern und das unveröffentlichte Ergebnis von Lemmens und Jongman."
+        "note": "Belegt: Suchstatistiken, die Großmeister nicht von schwächeren Spielern trennten, die Werte 93 % und 72 % in späterer Zitierung, der Meister, der etwa doppelt so viele Figuren wiedergab wie der Spieler der Klasse A, die Chunk-Größen 3,8 und 2,6, die Chunk-Zahlen 7,7 und 5,7, die Pause von 2 Sekunden, 47 Bauernketten und 10 Stellungen mit rochiertem König unter 77 Chunks, drei oder vier Figuren auf Zufallsstellungen und das unveröffentlichte Ergebnis von Lemmens und Jongman."
       },
       {
         "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
-        "note": "Belegt: die drei Versuchspersonen, die Darbietungszeit von 5 Sekunden, Mittelspielstellungen mit 24 bis 26 Figuren, gefilmte Rekonstruktionen, 77 Chunks über vierzehn Stellungen, von denen 47 eine Bauernkette enthielten, die Chunk-Größen 3,8 und 2,6, die Chunk-Zahlen 7,7 und 5,7 und die eigene Zusammenfassung der Autoren, de Groot sei ein Experiment mit 5 Sekunden gewesen, das Zufallsbretter einschloss."
+        "note": "Belegt: die drei Versuchspersonen, die Darbietungszeit von 5 Sekunden, Mittelspielstellungen mit 24 bis 26 Figuren, gefilmte Rekonstruktionen, 77 Chunks über vierzehn Stellungen, von denen 47 eine Bauernkette enthielten, die Chunk-Größen 3,8 und 2,6, die Chunk-Zahlen 7,7 und 5,7 und die eigene Zusammenfassung der Autoren, de Groot sei ein Experiment mit 5 Sekunden gewesen, das Zufallsstellungen einschloss."
       },
       {
         "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
-        "note": "Belegt: dreizehn Experimente, Darbietungszeiten von höchstens 10 Sekunden, zwölf von dreizehn zugunsten der stärksten Gruppe, die Ausnahme von Chase und Simon, eine Figur je 400 Elo-Punkte bei Zufallsbrettern gegenüber etwa fünf bei Partiestellungen, der Lehrbuchstatus des alten Ergebnisses, der Hinweis auf kleine Stichproben und die Erklärung über Chunks."
+        "note": "Belegt: dreizehn Experimente, Darbietungszeiten von höchstens 10 Sekunden, zwölf von dreizehn zugunsten der stärksten Gruppe, die Ausnahme von Chase und Simon, eine Figur je 400 Elo-Punkte bei Zufallsstellungen gegenüber etwa fünf bei Partiestellungen, der Lehrbuchstatus des alten Ergebnisses, der Hinweis auf kleine Stichproben und die Erklärung über Chunks."
       },
       {
         "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
-        "note": "Belegt: de Groots Darbietungszeiten von 2 bis 15 Sekunden, Euwe als Großmeister und seine Jahre als Weltmeister, die halbe Minute Pause, der 5-Sekunden-Aufbau von Chase und Simon, der Lehrbuchstatus des Ergebnisses mit Zufallsbrettern und die Durchschnitte 5,5 gegen 2,6 Figuren."
+        "note": "Belegt: de Groots Darbietungszeiten von 2 bis 15 Sekunden, Euwe als Großmeister und seine Jahre als Weltmeister, die halbe Minute Pause, der 5-Sekunden-Aufbau von Chase und Simon, der Lehrbuchstatus des Ergebnisses mit Zufallsstellungen und die Durchschnitte 5,5 gegen 2,6 Figuren."
       },
       {
         "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
-        "note": "Belegt: der Aufbau mit vier Versuchspersonen, die Darbietungszeiten von 2 bis 15 Sekunden und die Feststellung, dass die Kontrolle mit Zufallsbrettern oft fälschlich de Groot zugeschrieben wird und Chase und Simon gehört."
+        "note": "Belegt: der Aufbau mit vier Versuchspersonen, die Darbietungszeiten von 2 bis 15 Sekunden und die Feststellung, dass die Kontrolle mit Zufallsstellungen oft fälschlich de Groot zugeschrieben wird und Chase und Simon gehört."
       },
       {
         "title": "Adriaan de Groot, Wikipedia",

@@ -1,0 +1,127 @@
+{
+  "sourceHash": "cc101ac41e195858740ba4482eeac2823a91e34eb20c4f5e24c17dda210931b2",
+  "reviewed": true,
+  "sameAsEnglish": [],
+  "text": {
+    "title": "Cómo nombra Magnus Carlsen una partida famosa a partir de una posición",
+    "description": "Pruebas filmadas y exhibiciones a ciegas muestran lo que puede hacer la memoria ajedrecística de Magnus Carlsen, y la investigación sobre los chunks sugiere que se apoya en partidas estudiadas.",
+    "person": {
+      "name": "Magnus Carlsen",
+      "role": "Campeón del mundo de ajedrez, 2013-2023"
+    },
+    "photo": {
+      "alt": "Magnus Carlsen en una rueda de prensa en 2025",
+      "author": "Miroslav.vajdic",
+      "license": "CC BY 4.0",
+      "changes": "Imagen recortada y redimensionada"
+    },
+    "facts": {
+      "born": "30 de noviembre de 1990, Tønsberg, Noruega",
+      "country": "Noruega",
+      "title": "Gran maestro, 2004",
+      "peakRating": "2882 (2014)",
+      "worldChampion": "2013-2023",
+      "knownFor": "Mayor rating clásico oficial registrado",
+      "memoryFeat": "Nombra partidas históricas a partir de una sola posición"
+    },
+    "drill": {
+      "why": "Cinco segundos es la exposición que usaron Gobet y Simon en su experimento de recuerdo, y 12 piezas dan material suficiente para practicar la agrupación."
+    },
+    "sections": [
+      {
+        "heading": "Diez tableros que no podía ver",
+        "paragraphs": [
+          "En febrero de 2012, el programa 60 Minutes de CBS mostró a Magnus Carlsen, que entonces tenía 21 años, jugando contra diez rivales a la vez. Estaba de espaldas a los diez tableros. La narración contaba 320 piezas que debía seguir y decía que había salido vencedor. Le dijo al corresponsal Bob Simon que un jugador de ajedrez no necesita realmente el tablero.",
+          "Hay al menos otras dos exhibiciones a ciegas documentadas, ambas jugadas contra el reloj.",
+          "En mayo de 2015 se enfrentó a tres rivales en la Sohn Investment Conference de Nueva York. Cada rival tenía nueve minutos, y Carlsen tenía nueve minutos para las tres partidas. Las ganó todas.",
+          "Ese octubre, en el Hofburg de Viena, probó con cinco tableros y 12 minutos para las cinco partidas. Sus rivales tenían 12 minutos cada uno. Ganó tres partidas y perdió dos por apuros de tiempo."
+        ]
+      },
+      {
+        "heading": "Tres pruebas filmadas de su memoria",
+        "paragraphs": [
+          "El juego a ciegas muestra que Carlsen puede mantener una partida en la cabeza. Tres pruebas filmadas muestran otra cosa, su reserva de partidas famosas.",
+          "La primera está en el mismo reportaje de CBS. El programa decía que, al prepararse, podía recurrir a diez mil partidas de otros maestros, y lo puso a prueba con una. Él dijo que se había jugado en Simpson's on the Strand, en Londres, en 1859. Simon lo corrigió. El año era 1851. «Ya no es lo que era», dijo Carlsen de su memoria.",
+          "La segunda fue publicada en YouTube por chess24 el 30 de abril de 2021. El gran maestro inglés David Howell le mostró posiciones de partidas conocidas y Carlsen las nombró. Situó una posición como la 24.ª partida de un match de Kaspárov contra Kárpov en Sevilla. Dijo que tenía un libro sobre esos matches en su mesita de noche.",
+          "Después Howell fue jugando las jugadas de una apertura y le pidió a Carlsen que lo detuviera cuando supiera de qué partida se trataba. Carlsen lo detuvo pronto y nombró la partida de Viswanathan Anand contra Zapata. Otra posición procedía de su propia partida contra Howell en el Campeonato Mundial Juvenil de 2002. Carlsen describió también lo que había ocurrido en el tablero de al lado.",
+          "Una posición procedía de la primera película de Harry Potter. Carlsen pidió una pista y le dijeron que venía de la industria del entretenimiento. Entonces recordó las primeras jugadas de la partida de la película. Según el escritor especializado en ajedrez Nate Solon, fue la única posición que lo detuvo.",
+          "La tercera llegó en el evento Casablanca Chess de mayo de 2024. Chess.com mostró a Carlsen, Anand y Hikaru Nakamura posiciones de partidas famosas con fichas de damas blancas y negras en lugar de las piezas. ChessBase informó de que la dificultad añadida fue solo un obstáculo menor para Carlsen."
+        ]
+      },
+      {
+        "heading": "Lo que dice Carlsen de su memoria",
+        "paragraphs": [
+          "Las descripciones del propio Carlsen son modestas. En la conferencia de Sohn le dijo al público que «solo hace falta tener una partida en la cabeza a la vez». Añadió que el juego a ciegas es manejable para un buen jugador de ajedrez. Lo difícil, dijo, era no saber cuánto tiempo le quedaba.",
+          "Tras la exhibición de Viena habló de los rivales que se salen de los patrones habituales y juegan jugadas poco ortodoxas. ChessBase informó de que los calificó de molestos para enfrentarse a ellos a ciegas.",
+          "En el podcast de Joe Rogan, en febrero de 2025, dio más detalles, según una transcripción publicada. Ve el tablero en su cabeza. En una exhibición de simultáneas piensa en una partida a la vez y guarda las demás. Dijo que recuerda las partidas que ha jugado a grandes rasgos, no jugada por jugada. En las partidas a ciegas, añadió, puede dudar de si un peón de un flanco del tablero ha avanzado una casilla.",
+          "Otros grandes maestros consideran el test de posiciones un conocimiento profesional. Tras aparecer el vídeo de chess24, Garri Kaspárov escribió que a él lo habían examinado de la misma manera durante sus años de campeón del mundo. Añadió que la mayoría de los grandes maestros pueden identificar miles de partidas y posiciones."
+        ]
+      },
+      {
+        "heading": "Lo que sugiere la investigación sobre los chunks",
+        "paragraphs": [
+          "La investigación sobre la memoria en el ajedrez empieza con Adriaan de Groot, maestro de ajedrez y psicólogo. Mostraba a los jugadores una posición de una partida real durante unos segundos y les pedía que la reconstruyeran. Los dos jugadores más fuertes obtuvieron un 93 %. El más débil de sus cuatro sujetos obtuvo aproximadamente la mitad.",
+          "En 1973 William Chase y Herbert Simon explicaron el resultado con el chunk. Un chunk es un patrón de piezas que un jugador ha visto tantas veces que lo almacena como una sola unidad. Un maestro que reconstruye una posición real recuerda unos pocos chunks y no cada pieza por separado. Cuando las piezas se colocan al azar, la ventaja de los jugadores más fuertes casi desaparece.",
+          "Simon y un colega estimaron que un jugador de élite tiene almacenados unos 50.000 chunks. Un trabajo posterior de Fernand Gobet y Simon añadió las plantillas. Una plantilla es un chunk para un tipo de posición conocido, con huecos abiertos para los detalles.",
+          "Nada de esta investigación puso a prueba a Carlsen, de modo que aplicársela es una interpretación. Según esa lectura, su historial encaja con la explicación. Las posiciones que nombra ante las cámaras proceden de partidas famosas, el tipo de partidas que estudia un profesional. En la prueba con fichas de damas se ocultaban los tipos de pieza, y ChessBase juzgó que eso apenas lo frenó. Es lo que predeciría la explicación de los chunks para alguien que conoce una posición como un patrón.",
+          "Su comentario en Viena puede leerse de la misma manera. Los rivales que se apartan de los patrones familiares quizá hagan a un jugador a ciegas lo que los tableros aleatorios hacen a un maestro en el laboratorio.",
+          "Sus errores también concuerdan con esta lectura. Nombró un local de Londres y se equivocó en ocho años con la fecha. Necesitó una pista para una posición de película que queda fuera de la historia de los torneos. En una partida a ciegas puede perder la pista de la casilla de un peón.",
+          "Nada de esto convierte su memoria en algo corriente. CBS informó de que a los cinco años podía nombrar casi todos los países del mundo con sus capitales y poblaciones. Su padre le dijo al programa que tenía buena memoria y que podía concentrarse en un tema durante horas. En el mismo comentario, Kaspárov calificó de ventaja competitiva el interés serio de Carlsen por las partidas del pasado."
+        ]
+      },
+      {
+        "heading": "Un ejercicio para probar",
+        "paragraphs": [
+          "Configura Memory Chess con 12 piezas y 5 segundos. Cinco segundos es la exposición que Gobet y Simon dieron a los jugadores en su experimento de recuerdo.",
+          "Mientras la posición está en pantalla, no cuentes las piezas de una en una. Escoge dos o tres grupos y di cada grupo para tus adentros. Un grupo puede ser un rey con los peones delante, o dos piezas que se protegen entre sí. Cuando el tablero se vacíe, reconstrúyelo grupo por grupo. Cuando 12 piezas te resulten fáciles, añade piezas antes de añadir segundos."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "\"Mozart of Chess: Magnus Carlsen\" (60 Minutes script, aired 19 February 2012), CBS News",
+        "note": "Respalda: la exhibición a ciegas con diez tableros, el recuento de 320 piezas, su edad, su comentario de que no necesita el tablero, las diez mil partidas, la prueba de Londres con 1859 y 1851, la cita sobre su memoria, el relato de su memoria de niño y el comentario de su padre."
+      },
+      {
+        "title": "\"Magnus Carlsen Plays Three-Board Blindfold Simul\", Peter Doggers, Chess.com, 1 June 2015",
+        "note": "Respalda: la exhibición de la Sohn Conference de mayo de 2015, los relojes de nueve minutos, las tres victorias, la cita sobre una partida a la vez y sus comentarios sobre el juego a ciegas y el reloj."
+      },
+      {
+        "title": "\"Carlsen plays blindfold simul in Vienna\", ChessBase, October 2015",
+        "note": "Respalda: cinco tableros en el Hofburg, los relojes de 12 minutos, tres victorias y dos derrotas por apuros de tiempo, y su comentario sobre los rivales poco ortodoxos."
+      },
+      {
+        "title": "\"Magnus Carlsen's Mind-Blowing Memory! World Chess Champion tested\", chess24, YouTube, 30 April 2021",
+        "note": "Respalda: la fecha de publicación, David Howell como examinador, la partida de Kaspárov y Kárpov en Sevilla, el libro de la mesita de noche, la partida de Anand y Zapata nombrada durante la apertura, la partida de 2002 contra Howell y la posición de Harry Potter con su pista."
+      },
+      {
+        "title": "\"Memory: The Key To Chess?\", Nate Solon, Zwischenzug, 1 April 2023",
+        "note": "Respalda: la posición de Harry Potter como la única que detuvo a Carlsen."
+      },
+      {
+        "title": "\"Magnus Carlsen's Remarkable Memory\", Jason Kottke, kottke.org, 30 April 2021",
+        "note": "Respalda: el cuestionario de Howell y las dos partes del comentario de Kaspárov."
+      },
+      {
+        "title": "\"Stunning: Carlsen's chess memory\", ChessBase, 26 June 2024",
+        "note": "Respalda: la prueba con fichas de damas de Casablanca en mayo de 2024, los tres jugadores y cómo la resolvió Carlsen."
+      },
+      {
+        "title": "\"#2275 - Magnus Carlsen\", The Joe Rogan Experience (transcript), HappyScribe",
+        "note": "Respalda: su descripción de cómo ve el tablero, una partida a la vez, recordar las partidas a grandes rasgos y el comentario sobre los peones en las partidas a ciegas."
+      },
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague",
+        "note": "Respalda: las puntuaciones de recuerdo de los cuatro sujetos de De Groot, un 93 % para los dos más fuertes y un 51 % para el más débil."
+      },
+      {
+        "title": "\"Recall of random and distorted chess positions: Implications for the theory of expertise\", Fernand Gobet and Herbert A. Simon, Memory & Cognition 24(4), 1996",
+        "note": "Respalda: el modelo de chunks de Chase y Simon de 1973, la estimación de 50.000 chunks, la pérdida casi total de la ventaja de habilidad en posiciones aleatorias, las plantillas con huecos y la exposición de cinco segundos."
+      },
+      {
+        "title": "\"Magnus Carlsen\" (player profile), Chess.com",
+        "note": "Respalda: la fecha y el lugar de nacimiento, gran maestro a los 13 años, el rating récord de 2882 en mayo de 2014 y el título ganado en 2013 y al que renunció en 2023."
+      }
+    ]
+  }
+}

@@ -410,17 +410,36 @@ export const RULES = [
   },
 ];
 
-async function crawlLinks(pages, listed) {
-  const targets = [...new Set(pages.flatMap((page) => page.links))]
+function internalLinks(pages) {
+  return [...new Set(pages.flatMap((page) => page.links))]
     .filter((href) => href.startsWith("/") || href.startsWith(PROD_ORIGIN))
-    .map((href) => toLocal(href.startsWith("/") ? `${base}${href}` : href))
-    .filter((url) => !listed.has(listedKey(url)));
-  const crawled = await pool(targets, async (url) => {
-    const res = await fetch(url, { redirect: "follow" });
-    const landsOnListed = listed.has(listedKey(res.url));
-    const html = res.ok && !landsOnListed ? await res.text() : (await res.arrayBuffer(), "");
-    return { url, status: res.status, page: html ? parsePage(res.url, res.status, html) : null };
-  });
+    .map((href) => toLocal(href.startsWith("/") ? `${base}${href}` : href));
+}
+
+async function fetchLinked(url, listed) {
+  const res = await fetch(url, { redirect: "follow" });
+  const landsOnListed = listed.has(listedKey(res.url));
+  const html = res.ok && !landsOnListed ? await res.text() : (await res.arrayBuffer(), "");
+  return { url, status: res.status, page: html ? parsePage(res.url, res.status, html) : null };
+}
+
+/**
+ * Follows links out of `pages`, then out of every unlisted page that fetched,
+ * until no new URL is left. A translated article is linked only from its
+ * `noindex` list page, so one round from the sitemap pages never reaches it.
+ */
+async function crawlFrom(pages, listed, visited) {
+  const urls = internalLinks(pages);
+  const keys = urls.map(listedKey);
+  const fresh = urls.filter((_, i) => keys.indexOf(keys[i]) === i && !listed.has(keys[i]) && !visited.has(keys[i]));
+  if (!fresh.length) return [];
+  const crawled = await pool(fresh, (url) => fetchLinked(url, listed));
+  const reached = crawled.flatMap((c) => (c.page ? [c.page] : []));
+  return [...crawled, ...(await crawlFrom(reached, listed, new Set([...visited, ...fresh.map(listedKey)])))];
+}
+
+export async function crawlLinks(pages, listed) {
+  const crawled = await crawlFrom(pages, listed, new Set());
   return {
     broken: crawled.filter((c) => c.status !== 200),
     unlisted: crawled.filter((c) => c.page && isIndexable(c.page)).map((c) => c.page),
@@ -461,14 +480,19 @@ export function localePairs(candidates, locales) {
   return candidates.flatMap((url) => locales.map((locale) => ({ url, locale, prefixed: `${base}/${locale}${new URL(url).pathname}` })));
 }
 
+/**
+ * A page served in translation is kept out of search, so only `noindex` makes
+ * one. A self canonical does not: an indexable page under a locale prefix that
+ * the sitemap does not list is a page offered to search by accident.
+ */
 export function servedInTranslation(probe) {
-  return probe?.status === 200 && (/noindex/i.test(probe.robots) || (Boolean(probe.canonical) && listedKey(toLocal(probe.canonical)) === listedKey(probe.url)));
+  return probe?.status === 200 && /noindex/i.test(probe.robots);
 }
 
 /**
  * The pairs whose prefixed URL is not served in translation. Any other answer,
- * a 200 canonical to the bare page or a 404 included, keeps the pair so
- * `redirectProblem` reports it.
+ * an indexable 200 or a 404 included, keeps the pair so `redirectProblem`
+ * reports it.
  */
 export function pairsOwedARedirect(pairs, probeByPrefixedUrl) {
   return pairs.filter((pair) => !servedInTranslation(probeByPrefixedUrl[pair.prefixed]));

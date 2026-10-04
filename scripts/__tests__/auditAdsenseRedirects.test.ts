@@ -130,6 +130,14 @@ describe("audit-adsense locale-prefix pairs", () => {
     ).toBe("answers 200, expected 308");
   });
 
+  it("keeps a translated article that lost its noindex, though it is canonical to itself", () => {
+    const indexableTranslation = probe(`/de${ARTICLE}`, 200, "index, follow", `${PROD}/de${ARTICLE}`);
+    const result = derive(sitemap, [...translatedLeaderboard, probe("/de/about", 308), probe("/pt-BR/about", 308), indexableTranslation, translated(`/pt-BR${ARTICLE}`)]);
+
+    expect(result.owed).toEqual([pair("/about", "de"), pair("/about", "pt-BR"), pair(ARTICLE, "de")]);
+    expect(result.cases).toContainEqual({ url: `${LOCAL}/de${ARTICLE}`, expected: `${LOCAL}${ARTICLE}` });
+  });
+
   it("keeps a pair answering 404, and a pair that was never probed", () => {
     const result = derive(sitemap, [...translatedLeaderboard, probe("/de/about", 404), translated(`/de${ARTICLE}`), translated(`/pt-BR${ARTICLE}`)]);
 
@@ -137,8 +145,9 @@ describe("audit-adsense locale-prefix pairs", () => {
   });
 
   it.each([
-    ["a 200 with a self canonical alone", probe(`/de${ARTICLE}`, 200, "index, follow", `${PROD}/de${ARTICLE}`), true],
+    ["a 200 with noindex and a self canonical", probe(`/de${ARTICLE}`, 200, "noindex, follow", `${PROD}/de${ARTICLE}`), true],
     ["a 200 with noindex alone", probe(`/de${ARTICLE}`, 200, "noindex", `${PROD}${ARTICLE}`), true],
+    ["an indexable 200 with a self canonical", probe(`/de${ARTICLE}`, 200, "index, follow", `${PROD}/de${ARTICLE}`), false],
     ["a 200 with neither noindex nor a self canonical", probe(`/de${ARTICLE}`, 200, "index, follow", `${PROD}${ARTICLE}`), false],
     ["a 404 that says noindex", probe(`/de${ARTICLE}`, 404, "noindex", null), false],
   ])("reads %s as served in translation or not", (_, answer, expected) => {
@@ -242,6 +251,19 @@ describe("audit-adsense single-308 checks against a stubbed site", () => {
       {
         rule: "locale-prefix-redirect",
         message: `/fr${ARTICLE}/ redirects to ${LOCAL}/fr${ARTICLE}, expected ${LOCAL}${ARTICLE}; chain /fr${ARTICLE}/ 308 -> /fr${ARTICLE} 200`,
+      },
+    ]);
+  });
+
+  it("fails a translated article that is indexable and names its URL", () => {
+    const result = check({ ...SITE, [`/de${ARTICLE}`]: served(`/de${ARTICLE}`), [`/de${ARTICLE}/`]: redirect(`/de${ARTICLE}`) });
+
+    expect(result.servedInTranslation).toBe(2);
+    expect(result.problems.map(({ rule, message }) => ({ rule, message }))).toEqual([
+      { rule: "locale-prefix-redirect", message: `/de${ARTICLE} answers 200, expected 308; chain /de${ARTICLE} 200` },
+      {
+        rule: "locale-prefix-redirect",
+        message: `/de${ARTICLE}/ redirects to ${LOCAL}/de${ARTICLE}, expected ${LOCAL}${ARTICLE}; chain /de${ARTICLE}/ 308 -> /de${ARTICLE} 200`,
       },
     ]);
   });

@@ -12,6 +12,7 @@ import TypedBody from "@/components/articles/TypedBody";
 import ViewBeacon from "@/components/articles/ViewBeacon";
 import { ARTICLE_FOCUS_RING, ARTICLE_LINK, ARTICLE_LONG_WORDS } from "@/components/articles/articleStyles";
 import { EditorialPageShell } from "@/components/editorial/EditorialPage";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { formatArticleDate } from "@/lib/articles/format";
 import { articlePath } from "@/lib/articles/paths";
 import type {
@@ -152,6 +153,7 @@ function Drill({ drill }: { drill: ArticleDrill }) {
 
 function Sources({ sources }: { sources: readonly ArticleSource[] }) {
   const t = useTranslations("articles.page");
+  const titleLang = useLocale() === DEFAULT_LOCALE ? undefined : DEFAULT_LOCALE;
 
   return (
     <section aria-labelledby={SOURCES_HEADING_ID} className="mt-12 max-w-[720px] border-t border-white/10 pt-8">
@@ -161,7 +163,7 @@ function Sources({ sources }: { sources: readonly ArticleSource[] }) {
       <ol className="mt-4 divide-y divide-white/10 border-t border-white/10">
         {sources.map((source) => (
           <li key={source.url} className="py-4">
-            <cite className="not-italic">
+            <cite lang={titleLang} className="not-italic">
               <ExternalLink href={source.url}>{source.title}</ExternalLink>
             </cite>
             <p className="mt-2 text-sm leading-6 text-text-muted">{source.note}</p>

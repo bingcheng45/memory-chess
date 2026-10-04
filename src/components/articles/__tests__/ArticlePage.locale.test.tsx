@@ -177,6 +177,29 @@ describe("ArticlePage in a translation", () => {
     expect(link).toHaveAttribute("hreflang", "en");
   });
 
+  it("marks each source title as English, since it is never translated, and leaves the translated photo credit alone", () => {
+    const { container } = renderGerman();
+    const sources = screen.getByRole("heading", { level: 2, name: "Quellen" }).closest("section") as HTMLElement;
+
+    expect(Array.from(sources.querySelectorAll("cite"), (cite) => [cite.textContent, cite.getAttribute("lang")])).toEqual([
+      ["Alder source one", "en"],
+      ["Alder source two", "en"],
+      ["Alder source three", "en"],
+    ]);
+    expect(container.querySelector("figure cite")).not.toHaveAttribute("lang");
+  });
+
+  it("puts no lang on a source title of the English page, which is already English", () => {
+    render(<ArticlePage article={article} nextArticle={next} counts={COUNTS} />);
+    const sources = screen.getByRole("heading", { level: 2, name: "Sources" }).closest("section") as HTMLElement;
+
+    expect(Array.from(sources.querySelectorAll("cite"), (cite) => [cite.textContent, cite.hasAttribute("lang")])).toEqual([
+      ["Alder source one", false],
+      ["Alder source two", false],
+      ["Alder source three", false],
+    ]);
+  });
+
   it("sends the byline straight to the English About page, which has no translation", () => {
     const { container } = renderGerman();
     const author = within(container.querySelector<HTMLElement>("address[data-article-byline]")!).getByRole("link", {

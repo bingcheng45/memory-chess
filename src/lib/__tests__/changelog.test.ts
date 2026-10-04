@@ -7,6 +7,7 @@ import {
   getChangelogEntryId,
   isChangelogAnnouncementActive,
 } from "@/lib/changelog";
+import { ARTICLE_SLUGS } from "@/lib/articles";
 
 describe("changelog data", () => {
   it("keeps release history newest-first", () => {
@@ -27,6 +28,24 @@ describe("changelog data", () => {
     expect(packageLock.packages[""].version).toBe(
       LATEST_CHANGELOG_ENTRY.version,
     );
+  });
+
+  it("links the articles release to every published article", () => {
+    const release = CHANGELOG_ENTRIES.find(
+      (entry) => entry.version === "1.2.5",
+    );
+    const hrefs = (release?.groups ?? [])
+      .flatMap((group) => group.changes ?? [])
+      .flatMap((change) => (typeof change === "string" ? [] : change.segments))
+      .flatMap((segment) =>
+        typeof segment === "string" ? [] : [segment.href],
+      );
+
+    expect(
+      hrefs.filter((href) => href.startsWith("/articles/")).sort(),
+    ).toEqual(ARTICLE_SLUGS.map((slug) => `/articles/${slug}`).sort());
+    expect(hrefs).toContain("/articles");
+    expect(hrefs).toContain("/privacy");
   });
 
   it("uses stable version anchors", () => {

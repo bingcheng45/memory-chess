@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { Link, usePathname } from "@/i18n/navigation";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
-import { englishOnlyLinkSuffix, isEnglishOnlyPath } from "@/lib/seo/englishOnly";
+import { englishOnlyLinkSuffix, isServedAtBareEnglishUrl } from "@/lib/seo/englishOnly";
 
 const NAV_LINKS = [
   { href: "/game", labelKey: "nav.play" },
@@ -24,7 +24,8 @@ const EN_MARKER_CLASS =
 export default function SiteNav() {
   const t = useTranslations("common");
   const pathname = usePathname();
-  const englishSuffix = englishOnlyLinkSuffix(useLocale());
+  const locale = useLocale();
+  const englishSuffix = englishOnlyLinkSuffix(locale);
 
   return (
     <nav aria-label="Main" className="mt-3 w-full">
@@ -39,7 +40,7 @@ export default function SiteNav() {
 
           return (
             <li key={href}>
-              {isEnglishOnlyPath(href) ? (
+              {isServedAtBareEnglishUrl(href, locale) ? (
                 // The footer's " (English)" suffix is too wide for this row at
                 // 320px, so the row shows a compact marker and the accessible
                 // name keeps the full suffix.

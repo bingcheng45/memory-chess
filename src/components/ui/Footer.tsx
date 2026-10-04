@@ -1,10 +1,10 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
-import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
+import { isServedAtBareEnglishUrl } from "@/lib/seo/englishOnly";
 
 const FOOTER_LINKS = [
   { href: "/learn", labelKey: "nav.learn" },
@@ -20,6 +20,7 @@ const FOOTER_LINK_CLASS = "text-peach-500 transition-colors hover:text-peach-400
 
 export default function Footer() {
   const t = useTranslations("common");
+  const locale = useLocale();
   // Passed as a string on purpose: ICU would format a bare number argument
   // with grouping separators and render the year as "2,026".
   const currentYear = String(new Date().getFullYear());
@@ -36,7 +37,7 @@ export default function Footer() {
       <div className="container mx-auto px-2 sm:px-4">
         <div className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-3">
           {FOOTER_LINKS.map((link) =>
-            isEnglishOnlyPath(link.href) ? (
+            isServedAtBareEnglishUrl(link.href, locale) ? (
               <EnglishOnlyLink key={link.href} href={link.href} className={FOOTER_LINK_CLASS}>
                 {(suffix) => (
                   <>

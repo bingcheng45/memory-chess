@@ -3,7 +3,16 @@ import { screen } from "@testing-library/react";
 import { render } from "@/test-utils/intl";
 import Footer from "@/components/ui/Footer";
 import { ENGLISH_ONLY_ROUTES, isEnglishOnlyPath } from "@/lib/seo/englishOnly";
+import deMessages from "../../../../messages/de.json";
 import jaMessages from "../../../../messages/ja.json";
+
+jest.mock("@/lib/articles/translatedLocales", () => {
+  const TRANSLATED_ARTICLE_LOCALES = ["en", "de"];
+  return {
+    TRANSLATED_ARTICLE_LOCALES,
+    servesArticlesIn: (locale: string) => TRANSLATED_ARTICLE_LOCALES.includes(locale),
+  };
+});
 
 /**
  * The footer mixes two link kinds. A localized route keeps the reader's locale;
@@ -41,10 +50,30 @@ test("on a translated page, English-only links say they are in English", () => {
   expect(contact?.textContent).not.toContain("English");
 });
 
-test("on an English page, English-only links carry no marker", () => {
+test("in a locale the articles are not translated into, Articles links to the English list and says so", () => {
+  const { container } = render(<Footer />, { locale: "ja", messages: jaMessages });
+
+  const articles = container.querySelector('a[href="/articles"]');
+  expect(articles).toHaveAttribute("hreflang", "en");
+  expect(articles).toHaveTextContent(/^記事 \(English\)$/);
+  expect(container.querySelector('a[href="/ja/articles"]')).not.toBeInTheDocument();
+});
+
+test("in a locale the articles are translated into, Articles keeps the locale and carries no marker", () => {
+  const { container } = render(<Footer />, { locale: "de", messages: deMessages });
+
+  const articles = container.querySelector('a[href="/de/articles"]');
+  expect(articles).toHaveTextContent(/^Artikel$/);
+  expect(articles).not.toHaveAttribute("hreflang");
+  expect(container.querySelector('a[href="/articles"]')).not.toBeInTheDocument();
+  expect(container.querySelector('a[href="/about"]')).toHaveTextContent(/^Über \(English\)$/);
+});
+
+test("on an English page, English-only links and Articles carry no marker", () => {
   render(<Footer />);
 
   expect(screen.getByRole("link", { name: /^About$/ })).toHaveAttribute("hreflang", "en");
+  expect(screen.getByRole("link", { name: /^Articles$/ })).toHaveAttribute("hreflang", "en");
   expect(screen.queryByText(/\(English\)/)).not.toBeInTheDocument();
 });
 

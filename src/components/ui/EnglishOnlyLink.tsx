@@ -13,13 +13,15 @@ type EnglishOnlyLinkProps = Omit<ComponentProps<typeof NextLink>, "href" | "href
 };
 
 /**
- * A link to an English-only page, from any locale.
+ * A link to a page the reader gets in English at its bare URL: an
+ * English-only page from any locale, or an article from a locale the articles
+ * are not translated into.
  *
- * Such a page has one URL and it is the bare one. The locale-aware Link cannot
- * express that: left alone it keeps the active locale and points a German
- * reader at /de/about, and forcing locale="en" points at /en/about, which only
- * 307s to /about because the routing prefixes English as-needed. On a
- * translated page the label says the language changes.
+ * For that reader the page has one URL and it is the bare one. The
+ * locale-aware Link cannot express that: left alone it keeps the active locale
+ * and points a German reader at /de/about, and forcing locale="en" points at
+ * /en/about, which only 307s to /about because the routing prefixes English
+ * as-needed. On a translated page the label says the language changes.
  */
 export default function EnglishOnlyLink({ href, children, ...props }: EnglishOnlyLinkProps) {
   const locale = useLocale();

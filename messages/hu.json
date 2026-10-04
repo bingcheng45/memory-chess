@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Cikkek sakkozókról és a memóriájukról",
+      "description": "Sakkozók és memóriakutatók portréi. Mindegyik bemutatja a dokumentált teljesítményt, az azt magyarázó kutatást és egy kipróbálható gyakorlatot."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "Cikkek",
+      "sub": "Sakkozók és memóriakutatók, egyszerre egy portré.",
+      "aboutHeading": "Hogyan készülnek ezek a cikkek",
+      "about1": "Minden cikk egy sakkozót vagy kutatót követ végig, és a memóriájával kapcsolatos egyetlen kérdést jár körül. A főszereplő lehet olyan játékos, aki emlékezeti bravúrjáról ismert, vagy olyan kutató, aki azt mérte, mire emlékeznek a játékosok néhány másodperc után.",
+      "about2": "Minden cikk ugyanazokból a részekből áll. A portréhoz megadjuk a fotóst és a licencet. Az adatlap tartalmazza a dátumokat, a címeket és azt az emlékezeti teljesítményt, amelyről az illető ismert. A történet ezt a teljesítményt az azt magyarázó kutatás mellé állítja. A forráslista megmutatja, honnan ered az egyes állítás. A végén egy gyakorlat megnyitja a Memory Chess egy körét azzal a bábuszámmal és megtekintési idővel, amelyet a történet javasol.",
+      "about3": "A cikkek anyagát mesterséges intelligencia segítségével gyűjtjük és fogalmazzuk meg közzétett forrásokból, például interjúkból, versenybeszámolókból, könyvekből és kutatási tanulmányokból. Ezután egy különálló ellenőrzés minden dátumot, számot és idézetet összevet ezekkel a forrásokkal, mielőtt bármi megjelenik. Ahol a források eltérnek, a cikk megmondja, ki mit közölt. Az olyan anekdotát, amelyet a források csak történetként közölnek, történetként is meséljük el. A más nyelvű cikkeket az angol szövegből fordítjuk mesterséges intelligencia segítségével, és minden fordítást ellenőrzünk, mielőtt felkerül az oldalra.",
+      "corrections": "Ha itt valami hibás, <link>küldj helyesbítést</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Rendezés",
+      "group": "Cikkek rendezése",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "Legújabb",
+        "views": "Legtöbbet megtekintett",
+        "likes": "Legkedveltebb"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "Oldalak",
+      "previous": "Előző oldal",
+      "next": "Következő oldal",
+      "page": "{page}. oldal",
+      "showing": "Megjelenítve: {first}-{last}, összesen {total}"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, one {# megtekintés} other {# megtekintés}}",
+      "likes": "{count, plural, one {# kedvelés} other {# kedvelés}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "A cikk kedvelése",
+      "failed": "Ez nem mentődött el. Próbáld újra."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Minden cikk",
+      "showAll": "Teljes szöveg megjelenítése",
+      "byline": "Szerző: <author>{name}</author>",
+      "authorshipNote": "Az alább felsorolt forrásokból, mesterséges intelligencia segítségével kutattuk és fogalmaztuk meg. Minden tényt ellenőriztünk ezekkel a forrásokkal a közzététel előtt.",
+      "translationNote": "Angolból fordítva, mesterséges intelligencia segítségével. Az angol cikk az irányadó.",
+      "readInEnglish": "Olvasd angolul",
+      "photoCredit": "Fotó: {author}, <licenseLink>{license}</licenseLink>, forrás: <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Adatlap",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Született",
+        "died": "Elhunyt",
+        "country": "Ország",
+        "title": "Cím",
+        "peakRating": "Legmagasabb Élő-pontszám",
+        "worldChampion": "Világbajnok",
+        "knownFor": "Ismert ezért",
+        "memoryFeat": "Emlékezeti bravúr"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "Te jössz",
+      "drillAction": "Játssz {pieces, plural, one {# bábuval} other {# bábuval}}, {seconds, plural, one {# másodpercig} other {# másodpercig}}",
+      "sources": "Források",
+      "nextArticle": "Következő cikk"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "Olvasd tovább",
+      "yourRound": "A te köröd",
+      "articleDrill": "A cikk gyakorlata",
+      "roundSize": "{pieces, plural, one {# bábu} other {# bábu}}, {seconds, plural, one {# másodperc} other {# másodperc}}",
+      "read": "Cikk elolvasása",
+      "tryDrill": "Próbáld ki a gyakorlatot"
     }
   }
 }

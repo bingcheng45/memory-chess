@@ -2,6 +2,7 @@ import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import {
+  approvalHashOf,
   shapeProblems,
   sourceHashOf,
   textOf,
@@ -129,6 +130,39 @@ describe("sourceHashOf", () => {
   });
 });
 
+describe("approvalHashOf", () => {
+  const unit = {
+    sourceHash: "abc",
+    sameAsEnglish: ["facts.country"],
+    text: { title: "Titel", sections: [{ heading: "Zehn Bretter" }] },
+  };
+  const HASH = "45760e975b86210a3c7b73a6ef9f2a22731b97284b361f20fe57695d6802e8fb";
+
+  it("is the hash of the text, the paths kept in English and the hash of the English source", () => {
+    expect(approvalHashOf(unit)).toBe(HASH);
+  });
+
+  it("ignores every other key of a file and the order of the keys", () => {
+    const file = {
+      approvedHash: "old",
+      text: { sections: [{ heading: "Zehn Bretter" }], title: "Titel" },
+      sourceHash: "abc",
+      sameAsEnglish: ["facts.country"],
+    };
+
+    expect(approvalHashOf(file)).toBe(HASH);
+  });
+
+  it.each([
+    ["one character of the text", { ...unit, text: { ...unit.text, title: "Titel." } }],
+    ["a path kept in English", { ...unit, sameAsEnglish: ["facts.country", "facts.title"] }],
+    ["the English source", { ...unit, sourceHash: "abd" }],
+  ])("changes with %s", (_, changed) => {
+    expect(approvalHashOf(changed)).toMatch(SHA256_HEX);
+    expect(approvalHashOf(changed)).not.toBe(HASH);
+  });
+});
+
 describe("shapeProblems", () => {
   it("finds nothing wrong with a text of the same shape", () => {
     expect(shapeProblems(englishText, german)).toEqual([]);
@@ -188,10 +222,26 @@ describe("shapeProblems", () => {
 });
 
 describe("translationProblems", () => {
-  const file = { sourceHash: sourceHashOf(englishText), reviewed: true, sameAsEnglish: [], text: german };
+  const unit = { sourceHash: sourceHashOf(englishText), sameAsEnglish: [], text: german };
+  const file = { ...unit, approvedHash: approvalHashOf(unit) };
+  const EDITED = ["not reviewed, edited after it was approved"];
 
-  it("accepts a reviewed translation made from the current English text", () => {
+  it("accepts a translation made from the current English text and approved as it stands", () => {
     expect(translationProblems(file, englishText)).toEqual([]);
+  });
+
+  it("rejects a translation whose text, or list of paths kept in English, changed after it was approved", () => {
+    const retitled = { ...file, text: { ...german, title: "DE Wie Alder ein Brett nachbaute" } };
+
+    expect(translationProblems(retitled, englishText)).toEqual(EDITED);
+    expect(translationProblems({ ...file, sameAsEnglish: ["facts.country"] }, englishText)).toEqual(EDITED);
+    expect(translationProblems({ ...file, approvedHash: "0".repeat(64) }, englishText)).toEqual(EDITED);
+  });
+
+  it("still accepts a file from before approvals were hashed, with reviewed true and no approvedHash", () => {
+    expect(translationProblems({ ...unit, reviewed: true }, englishText)).toEqual([]);
+    expect(translationProblems({ ...unit, reviewed: true, approvedHash: null }, englishText)).toEqual(["not reviewed"]);
+    expect(translationProblems({ ...unit, reviewed: true, approvedHash: "0".repeat(64) }, englishText)).toEqual(EDITED);
   });
 
   it("rejects a translation made from an older English text", () => {
@@ -201,12 +251,13 @@ describe("translationProblems", () => {
   });
 
   it("rejects a translation nobody reviewed", () => {
-    expect(translationProblems({ ...file, reviewed: false }, englishText)).toEqual(["not reviewed"]);
-    expect(translationProblems({ ...file, reviewed: "true" }, englishText)).toEqual(["not reviewed"]);
+    expect(translationProblems({ ...file, approvedHash: null }, englishText)).toEqual(["not reviewed"]);
+    expect(translationProblems(unit, englishText)).toEqual(["not reviewed"]);
+    expect(translationProblems({ ...unit, reviewed: "true" }, englishText)).toEqual(["not reviewed"]);
   });
 
   it("lists every problem of a file at once", () => {
-    const broken = { sourceHash: "0".repeat(64), reviewed: false, text: { ...german, title: "" } };
+    const broken = { sourceHash: "0".repeat(64), approvedHash: null, text: { ...german, title: "" } };
 
     expect(translationProblems(broken, englishText)).toEqual([
       "text.title: empty",
@@ -217,8 +268,9 @@ describe("translationProblems", () => {
 
   it("rejects a file that is not a translation at all", () => {
     expect(translationProblems(null, englishText)).toEqual(["the file is not an object"]);
-    expect(translationProblems({ sourceHash: file.sourceHash, reviewed: true }, englishText)).toEqual([
+    expect(translationProblems({ sourceHash: file.sourceHash, approvedHash: null }, englishText)).toEqual([
       "text: not an object",
+      "not reviewed",
     ]);
   });
 });

@@ -37,17 +37,25 @@ describe("loadArticleText", () => {
   });
 
   it("refuses a translation nobody reviewed", async () => {
-    const source = sourceOf({ "de/alder-fixture": { ...reviewed, reviewed: false } });
+    const source = sourceOf({ "de/alder-fixture": { ...reviewed, approvedHash: null } });
 
     await expect(loadArticleText("alder-fixture", "de", englishText, source)).rejects.toThrow(
       "Article translation de/alder-fixture cannot be published: not reviewed",
     );
   });
 
+  it("refuses a translation that was edited after its review", async () => {
+    const edited = { ...reviewed, text: { ...reviewed.text, title: "DE Wie Alder ein Brett nachbaute" } };
+
+    await expect(
+      loadArticleText("alder-fixture", "de", englishText, sourceOf({ "de/alder-fixture": edited })),
+    ).rejects.toThrow("Article translation de/alder-fixture cannot be published: not reviewed, edited after it was approved");
+  });
+
   it("names every problem of a broken file in one error", async () => {
     const broken = {
       sourceHash: "stale",
-      reviewed: false,
+      approvedHash: null,
       sameAsEnglish: [],
       text: { ...reviewed.text, title: "", sources: reviewed.text.sources.slice(1) },
     };

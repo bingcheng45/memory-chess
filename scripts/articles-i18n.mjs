@@ -16,10 +16,10 @@ const USAGE = `Usage: node scripts/articles-i18n.mjs <command>
 
   export <outDir>          write the English sources a translator works from
   check <locale> [dir]     check a translator's directory, or the installed files when no dir is given
-  import <locale> <dir>    check a directory, then install it with reviewed: false
-  approve <locale>         check the installed files, then set reviewed: true
+  import <locale> <dir>    check a directory, then install it, not yet approved
+  approve <locale>         check the installed files, then record the hash of the text as approved
   seed                     give every locale without a translation the English chrome strings
-  verify                   check every locale that serves articles and require reviewed: true
+  verify                   check every locale that serves articles and require the approval of its text as it stands
 
 Run it from the repo root. Every path must stay inside the repo.
 `;

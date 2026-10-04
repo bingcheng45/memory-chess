@@ -261,7 +261,7 @@ function unitFailures(subject, isInstalled, shapeProblems) {
  * from `src/lib/articles/articleText.ts`. `bundle` is one locale read from a
  * translator's directory or from the installed files: `{ installed, problems,
  * sameAsEnglishKeys, articles: { [slug]: unit }, chrome: unit }`, where a unit
- * is `{ text, sameAsEnglish, sourceHash, reviewed }` or `{ error }`.
+ * is `{ text, sameAsEnglish, sourceHash }` or `{ error }`.
  *
  * @param {string} locale
  * @returns {string[]}
@@ -294,8 +294,13 @@ export function failuresOf(locale, source, bundle) {
   ];
 }
 
-export function unreviewedOf(bundle) {
+/**
+ * The installed units of `bundle` whose text is not the text a reviewer
+ * approved, one line each. `approvalProblems` is the one from
+ * `src/lib/articles/articleText.ts`, which the build asks too.
+ */
+export function unreviewedOf({ approvalProblems }, bundle) {
   return [...Object.entries(bundle.articles), [CHROME, bundle.chrome]]
-    .filter(([, unit]) => unit !== undefined && unit.error === undefined && unit.reviewed !== true)
-    .map(([name]) => `${name}: not reviewed`);
+    .filter(([, unit]) => unit !== undefined && unit.error === undefined)
+    .flatMap(([name, unit]) => approvalProblems(unit, unit.approvedText).map((problem) => `${name}: ${problem}`));
 }

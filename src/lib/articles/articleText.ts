@@ -56,6 +56,29 @@ export function sourceHashOf(value: unknown): string {
   return createHash("sha256").update(JSON.stringify(withSortedKeys(value))).digest("hex");
 }
 
+/** What a review covers: the text, the paths kept in English, and the English text both were made from. */
+export type ApprovedContent = {
+  readonly sourceHash: unknown;
+  readonly sameAsEnglish: unknown;
+  readonly text: unknown;
+};
+
+export function approvalHashOf({ sourceHash, sameAsEnglish, text }: ApprovedContent): string {
+  return sourceHashOf({ sourceHash, sameAsEnglish, text });
+}
+
+/**
+ * Why the installed file `file` does not count as reviewed. `text` is what its
+ * review covers: the file's own `text` for an article, the `articles` messages
+ * of the locale for the chrome.
+ */
+export function approvalProblems(file: Tree, text: unknown): string[] {
+  const { sourceHash, sameAsEnglish, approvedHash } = file;
+  if (approvedHash === undefined && file.reviewed === true) return [];
+  if (approvedHash === approvalHashOf({ sourceHash, sameAsEnglish, text })) return [];
+  return [typeof approvedHash === "string" ? "not reviewed, edited after it was approved" : "not reviewed"];
+}
+
 function leafProblems(candidate: unknown, label: string): string[] {
   if (typeof candidate !== "string") return [`${label}: not a string`];
   if (candidate.trim() === "") return [`${label}: empty`];
@@ -103,6 +126,6 @@ export function translationProblems(file: unknown, english: ArticleText): string
   return [
     ...shapeProblems(english, file.text, "text"),
     ...(file.sourceHash === sourceHashOf(english) ? [] : ["sourceHash is stale"]),
-    ...(file.reviewed === true ? [] : ["not reviewed"]),
+    ...approvalProblems(file, file.text),
   ];
 }

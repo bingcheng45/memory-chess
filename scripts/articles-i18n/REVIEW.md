@@ -15,7 +15,7 @@ file printed in the shell is cut short.
 - `src/lib/articles/translations/<locale>/chrome.json`: `sameAsEnglish` only.
 - `messages/<locale>.json`: the strings under `articles` only.
 
-Never edit `sourceHash` or `reviewed` by hand. Do not edit an English entry, another locale, a script, or
+Never edit `sourceHash` or `approvedHash` by hand. Do not edit an English entry, another locale, a script, or
 a recipe. If the English text itself looks wrong, say so in your report and leave it.
 
 ## Where the files are
@@ -84,9 +84,12 @@ a recipe. If the English text itself looks wrong, say so in your report and leav
 	npm run validate:messages
 	```
 
-	`approve` covers the whole locale at once. It sets `reviewed` to `true` in every article file and in
-	`chrome.json`, so your commit shows that change in each of them. If the translation needs more than
-	repairs, do not approve. Report what is wrong and stop.
+	`approve` covers the whole locale at once. In every article file and in `chrome.json` it records
+	`approvedHash`, the hash of the text you approved, so your commit shows that change in each of them.
+	The approval holds only for that exact text. Any later edit of an article file, or of a string under
+	`articles` in the catalogue, makes `verify` and the build fail until `approve` runs again, so make
+	every repair before you approve. If the translation needs more than repairs, do not approve. Report
+	what is wrong and stop.
 
 8. Commit only your locale's files.
 

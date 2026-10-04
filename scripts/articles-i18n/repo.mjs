@@ -92,7 +92,13 @@ async function englishArticles(root, { textOf, sourceHashOf }) {
  *   root: string,
  *   locales: string[],
  *   translatedLocales: string[],
- *   lib: { textOf: Function, sourceHashOf: Function, shapeProblems: Function },
+ *   lib: {
+ *     textOf: Function,
+ *     sourceHashOf: Function,
+ *     shapeProblems: Function,
+ *     approvalHashOf: Function,
+ *     approvalProblems: Function,
+ *   },
  *   articles: { slug: string, text: object, sourceHash: string }[],
  *   chrome: { namespace: object, strings: Record<string, string>, sourceHash: string },
  * }>}
@@ -151,34 +157,44 @@ export function readWorkingDir(root, dir) {
   };
 }
 
+/**
+ * The installed translation of one locale. Each unit has the `text` the checks
+ * read and the `approvedText` a review covers. For an article both are the
+ * file's text. For the chrome the checks read a flat map of the locale's
+ * `articles` messages, and a review covers those messages as the catalogue has them.
+ */
 export function readInstalled(root, locale) {
   const names = jsonNames(root, `${TRANSLATIONS_DIR}/${locale}`);
-  const unitOf = (name, textIn) => {
+  const unitOf = (name, textsIn) => {
     const file = parsed(root, installedFile(locale, name));
     if (file.error !== undefined) return { error: file.error };
     if (!isTree(file.value)) return { error: "not an object" };
-    const { sourceHash, reviewed, sameAsEnglish } = file.value;
-    return { sourceHash, reviewed, sameAsEnglish, text: textIn(file.value) };
+    const { sourceHash, approvedHash, reviewed, sameAsEnglish } = file.value;
+    return { sourceHash, approvedHash, reviewed, sameAsEnglish, ...textsIn(file.value) };
   };
-  const chromeStrings = () => Object.fromEntries(leavesOf(readMessages(root, locale).articles ?? {}));
+  const articleTexts = ({ text }) => ({ text, approvedText: text });
+  const chromeTexts = () => {
+    const namespace = readMessages(root, locale).articles ?? {};
+    return { text: Object.fromEntries(leavesOf(namespace)), approvedText: namespace };
+  };
 
   return {
     installed: true,
     problems: [],
     sameAsEnglishKeys: [],
-    articles: Object.fromEntries(names.filter((name) => name !== CHROME).map((name) => [name, unitOf(name, (file) => file.text)])),
-    chrome: names.includes(CHROME) ? unitOf(CHROME, chromeStrings) : undefined,
+    articles: Object.fromEntries(names.filter((name) => name !== CHROME).map((name) => [name, unitOf(name, articleTexts)])),
+    chrome: names.includes(CHROME) ? unitOf(CHROME, chromeTexts) : undefined,
   };
 }
 
 export const hasInstalledChrome = (root, locale) => existsSync(inside(root, installedFile(locale, CHROME)));
 
-export function articleFile(locale, slug, { sourceHash, reviewed, sameAsEnglish, text }) {
-  return { file: installedFile(locale, slug), content: toJson({ sourceHash, reviewed, sameAsEnglish, text }) };
+export function articleFile(locale, slug, { sourceHash, approvedHash, sameAsEnglish, text }) {
+  return { file: installedFile(locale, slug), content: toJson({ sourceHash, approvedHash, sameAsEnglish, text }) };
 }
 
-export function chromeFile(locale, { sourceHash, reviewed, sameAsEnglish }) {
-  return { file: installedFile(locale, CHROME), content: toJson({ sourceHash, reviewed, sameAsEnglish }) };
+export function chromeFile(locale, { sourceHash, approvedHash, sameAsEnglish }) {
+  return { file: installedFile(locale, CHROME), content: toJson({ sourceHash, approvedHash, sameAsEnglish }) };
 }
 
 export function messagesWithArticles(root, locale, articles) {

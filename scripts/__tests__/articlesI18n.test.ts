@@ -32,10 +32,10 @@ const USAGE = `Usage: node scripts/articles-i18n.mjs <command>
 
   export <outDir>          write the English sources a translator works from
   check <locale> [dir]     check a translator's directory, or the installed files when no dir is given
-  import <locale> <dir>    check a directory, then install it with reviewed: false
-  approve <locale>         check the installed files, then set reviewed: true
+  import <locale> <dir>    check a directory, then install it, not yet approved
+  approve <locale>         check the installed files, then record the hash of the text as approved
   seed                     give every locale without a translation the English chrome strings
-  verify                   check every locale that serves articles and require reviewed: true
+  verify                   check every locale that serves articles and require the approval of its text as it stands
 
 Run it from the repo root. Every path must stay inside the repo.
 `;
@@ -112,7 +112,7 @@ describe("export", () => {
 });
 
 describe("import", () => {
-  it("writes each article with its hash and reviewed false, and the chrome strings under articles only", () => {
+  it("writes each article with its hash and no approval, and the chrome strings under articles only", () => {
     const state = inSandbox("fixture", (root) => {
       const run = importGerman(root);
       return {
@@ -127,14 +127,14 @@ describe("import", () => {
 
     expect(state.run).toEqual({ status: 0, stdout: "ok import de: 4 files written, 0 unchanged\n", failures: [] });
     expect(state.installed).toEqual(["ada-example.json", "ben-example.json", "chrome.json"]);
-    expect(Object.keys(state.ada)).toEqual(["sourceHash", "reviewed", "sameAsEnglish", "text"]);
-    expect(state.ada).toMatchObject({ sourceHash: sourceHashOf(textOf(ADA)), reviewed: false, sameAsEnglish: [] });
+    expect(Object.keys(state.ada)).toEqual(["sourceHash", "approvedHash", "sameAsEnglish", "text"]);
+    expect(state.ada).toMatchObject({ sourceHash: sourceHashOf(textOf(ADA)), approvedHash: null, sameAsEnglish: [] });
     expect(state.ada.text.title).toBe("Howz Adaz Examplez recallsz az boardz");
     expect(state.ada.text.sections[0].paragraphs[1]).toBe("Shez wonz everyz gamez.");
     expect(state.ada.text.sources).toEqual([
       { title: "Thought and Choice in Chess", note: "Thez 1965 bookz thatz describesz thez recallz experimentz." },
     ]);
-    expect(state.chrome).toEqual({ sourceHash: sourceHashOf(FIXTURE_CHROME), reviewed: false, sameAsEnglish: [] });
+    expect(state.chrome).toEqual({ sourceHash: sourceHashOf(FIXTURE_CHROME), approvedHash: null, sameAsEnglish: [] });
     expect(state.messages).toBe(`{
   "common": {
     "play": "Play in de"

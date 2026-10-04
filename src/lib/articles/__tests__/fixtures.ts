@@ -1,4 +1,4 @@
-import { sourceHashOf, textOf } from "@/lib/articles/articleText";
+import { approvalHashOf, sourceHashOf, textOf } from "@/lib/articles/articleText";
 import { formatArticleDate } from "@/lib/articles/format";
 import { LIKED_STORAGE_KEY } from "@/lib/articles/likedStore";
 import type { Article, ArticleSummary, ArticleTranslation } from "@/lib/articles/schema";
@@ -113,8 +113,9 @@ export function markEveryString<T>(value: T, marker: string): T {
 }
 
 export function reviewedTranslationOf(english: Article, marker: string): ArticleTranslation {
-  const text = textOf(english);
-  return { sourceHash: sourceHashOf(text), reviewed: true, sameAsEnglish: [], text: markEveryString(text, marker) };
+  const englishText = textOf(english);
+  const unit = { sourceHash: sourceHashOf(englishText), sameAsEnglish: [], text: markEveryString(englishText, marker) };
+  return { ...unit, approvedHash: approvalHashOf(unit) };
 }
 
 export function storeLikes(likes: Record<string, number>): void {

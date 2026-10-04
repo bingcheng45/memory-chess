@@ -74,7 +74,7 @@ describe("getArticle in a translated locale", () => {
     ],
     [
       "was not reviewed",
-      germanExcept(SLUG, (file) => ({ ...file, reviewed: false })),
+      germanExcept(SLUG, (file) => ({ ...file, approvedHash: null })),
       "Article translation de/magnus-carlsen cannot be published: not reviewed",
     ],
   ])("throws, and never answers in English, when the translation %s", async (_, source, message) => {
@@ -116,7 +116,7 @@ describe("getArticleSummaries in a translated locale", () => {
 
   it("throws when one article has no reviewed translation, instead of mixing languages", async () => {
     const lastSlug = ARTICLE_SLUGS[ARTICLE_SLUGS.length - 1];
-    const source = germanExcept(lastSlug, (file) => ({ ...file, reviewed: false }));
+    const source = germanExcept(lastSlug, (file) => ({ ...file, approvedHash: null }));
 
     serveFrom(source);
 

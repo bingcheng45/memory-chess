@@ -67,6 +67,20 @@ const ENGLISH_AHEAD_OF_TRANSLATIONS = new Set([
   "home.meta.twitterDescription",
 ]);
 
+/**
+ * Plural messages under `articles` that still hold their English value in a
+ * locale whose articles are not translated yet. English has two plural forms,
+ * so the placeholder cannot carry the forms Russian or Polish need. The
+ * category check is skipped only while the value is the English one. Delete
+ * this set when every locale has its own translation.
+ */
+const ENGLISH_PLACEHOLDERS = new Set([
+  "articles.counts.views",
+  "articles.counts.likes",
+  "articles.page.drillAction",
+  "articles.tile.roundSize",
+]);
+
 function flatten(value, prefix = "", out = {}) {
   if (Array.isArray(value)) {
     value.forEach((item, i) => flatten(item, `${prefix}[${i}]`, out));
@@ -179,7 +193,8 @@ for (const locale of LOCALES) {
         );
         const required = new Intl.PluralRules(locale, { type: "cardinal" })
           .resolvedOptions().pluralCategories;
-        const missing = required.filter((category) => !declared.has(category));
+        const isEnglishPlaceholder = ENGLISH_PLACEHOLDERS.has(key) && message === base[key];
+        const missing = isEnglishPlaceholder ? [] : required.filter((category) => !declared.has(category));
 
         if (missing.length > 0) {
           problems.push(

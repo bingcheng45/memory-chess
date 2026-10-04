@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "reviewed": true,
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "Adriaan de Groots skakhukommelsestest fra 1944 i tal",
+    "description": "I 1944 testede Adriaan de Groot fire spillere på skakstillinger, som blev vist i 2 til 15 sekunder. Her er hans faktiske resultater, og hvad senere forskning har ændret.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "Nederlandsk skakmester og psykolog"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot som ung mand omkring 1930",
+      "author": "Ukendt fotograf",
+      "license": "Public domain",
+      "changes": "Beskåret"
+    },
+    "facts": {
+      "born": "26. oktober 1914, Santpoort, Nederlandene",
+      "died": "14. august 2006, 91 år gammel",
+      "country": "Nederlandene",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "Opnåede 93 % ved at huske stillinger, der var vist i 2 til 15 sekunder"
+    },
+    "drill": {
+      "why": "De Groots teststilling fra partiet Rohacek mod Rabar havde 22 brikker, og Max Euwe så på den i 5 sekunder."
+    },
+    "sections": [
+      {
+        "heading": "Fire spillere og nogle få sekunder",
+        "paragraphs": [
+          "I 1944 viste Adriaan de Groot Max Euwe en skakstilling og tog den væk igen fem sekunder senere. Stillingen stammede fra et parti mellem Rohacek og Rabar efter hvids 20. træk og havde 22 brikker på brættet. Euwe, der var verdensmester fra 1935 til 1937, dikterede derefter, hvor hver eneste brik stod. Han fik alle 22 rigtige.",
+          "De Groot, selv mester, tog den samme test, tilføjede en bonde, som ikke var der, og fik 21 point. A. Fast, Utrechts mester i 1942, placerede 17 brikker rigtigt, men vurderede materialet som lige, selv om det ikke var det, og fik 16 point. G. P. Hauer, en svagere klassespiller, fik 9.",
+          "Genfortællinger er uenige om visningstiden og procenterne, så tallene nedenfor stammer fra de Groots egen bog."
+        ]
+      },
+      {
+        "heading": "En mester, der studerede mestre",
+        "paragraphs": [
+          "De Groot spillede for Nederlandene ved skakolympiaderne i 1937 og 1939. Mellem 1938 og 1943 skrev han ned, hvad spillerne sagde, mens de tænkte højt og valgte et træk. Blandt hans forsøgspersoner var stormestrene Keres, Aljechin, Flohr, Fine, Euwe og Tartakower.",
+          "Ifølge hans optællinger så stormestrene ikke længere frem end ekspertspillerne, og de undersøgte heller ikke flere træk. »Mesteren regner ikke nødvendigvis dybere,« skrev han. De Groot mistænkte, at forskellen viste sig i de første sekunder, man kiggede på brættet, og han udformede eksperimentet fra 1944 for at afprøve den idé."
+        ]
+      },
+      {
+        "heading": "Hvad eksperimentet fra 1944 målte",
+        "paragraphs": [
+          "Der var én spiller for hver klasse. Euwe repræsenterede stormestrene, de Groot mestrene, Fast ekspertspillerne og Hauer de svagere klassespillere.",
+          "Hver stilling stammede fra et mesterparti og var synlig i 2 til 10 sekunder, med én visning på 15 sekunder. De to svagere forsøgspersoner fik 3 til 4 sekunder ved de korteste forsøg, så de ikke endte på nul point. Hver forsøgsperson blev bedt om at bruge omkring et halvt minut på at få styr på det, han havde fastholdt. Euwe og de Groot dikterede derefter stillingen fra hukommelsen, mens Fast og Hauer stillede den op på et bræt.",
+          "Pointgivningen gav ét point for hver rigtig brik og trak point fra for brikker, der var føjet til, udeladt eller flyttet. De Groot kasserede to stillinger, den første i rækken og en med en tidsfejl, og talte fjorten, som varierede fra 7 til 26 brikker. Ud af 234 mulige point opnåede de fire forsøgspersoner følgende.",
+          "Euwe fik 217 point, eller 93 %, med fem helt rigtige stillinger.",
+          "De Groot fik 217 point, eller 93 %, med fire helt rigtige.",
+          "Fast fik 158 point, eller 68 %, uden en eneste helt rigtig.",
+          "Hauer fik 119 point, eller 51 %, uden en eneste helt rigtig.",
+          "De Groot lagde derefter to forsøg med lange visningstider til side, 15 og 7 sekunder, samt to, som et øjebliks uopmærksomhed havde ødelagt. I de ti resterende, med tilsigtede visningstider på 2, 3 eller 5 sekunder, var gennemsnitsscorerne 93,0 %, 92,6 %, 72,3 % og 51,1 %.",
+          "Begge tabeller er hans egne, og det er sandsynligvis derfor, genfortællinger angiver ekspertens resultat som enten 68 % eller 72 %. Visningstiden var aldrig fast fem sekunder.",
+          "Mest optaget var de Groot af kløften i midten, som han kaldte »kløften, der adskiller mesteren fra ikke-mesteren«. Hans forklaring var, at en mester ikke gemmer 22 enkeltstående brikker. Han opfatter en stor gruppe brikker som én enhed, fordi han ved, hvordan gruppen opstår, og hvad den skal bruges til.",
+          "Nogle få sådanne enheder dækker brættet, og efter de Groots opfattelse har en svagere spiller færre af dem. Senere forskere kaldte enhederne chunks."
+        ]
+      },
+      {
+        "heading": "Fra en nederlandsk afhandling til tilfældige brætter",
+        "paragraphs": [
+          "De Groot fremlagde arbejdet i 1946 i sin doktorafhandling ved Universitetet i Amsterdam, Het denken van den schaker. Mouton udgav den engelske udgave, Thought and Choice in Chess, i Haag i 1965.",
+          "I 1973 gentog William Chase og Herbert Simon testen på Carnegie Mellon med en mester, en klasse A-spiller og en begynder. De fastsatte visningstiden til 5 sekunder. Deres midtspilsstillinger havde 24 til 26 brikker, og mesteren huskede omtrent dobbelt så mange brikker som klasse A-spilleren.",
+          "De filmede hver rekonstruktion og regnede en pause på mere end 2 sekunder for grænsen mellem to chunks. Mesterens første chunk rummede i gennemsnit 3,8 brikker mod 2,6 for klasse A-spilleren, og han frembragte 7,7 chunks pr. stilling mod 5,7. Af hans 77 chunks fordelt på fjorten stillinger indeholdt 47 en bondekæde, og Simon og Chase talte 10 stillinger med rokeret konge.",
+          "Deres tilføjelse var en kontrol, nemlig de samme brikker placeret på tilfældige felter. Simon og Chase rapporterede, at alle spillere da huskede omkring tre eller fire brikker, færre end begynderen klarede på virkelige stillinger. De bemærkede, at W. Lemmens og R. W. Jongman havde fundet det samme resultat i laboratoriet i Amsterdam og aldrig havde offentliggjort det.",
+          "Chase og Simons egen indledning fremstiller resultatet med tilfældige brætter som de Groots, og mange senere fremstillinger gentager det. Hans bog beskriver ikke noget forsøg med tilfældige brætter."
+        ]
+      },
+      {
+        "heading": "Hvad senere forskning har ændret",
+        "paragraphs": [
+          "Lærebøger tolkede resultatet sådan, at en mester slet ikke har nogen fordel på meningsløse brætter. I 1996 efterprøvede Fernand Gobet og Herbert Simon den læsning mod tretten eksperimenter med visningstider på 10 sekunder eller mindre. I tolv af de tretten huskede den stærkeste gruppe flere tilfældige brikker end den svageste. Undtagelsen var Chase og Simons egen undersøgelse, hvor mesteren klarede sig dårligst.",
+          "Fordelen er lille. Gobet og Simon anslår den til omkring én ekstra brik pr. 400 Elo-point på tilfældige brætter, mod omkring fem ekstra brikker på partistillinger. I en oversigt fra 1998 angav Gobet gennemsnittene ved 5 sekunder som 5,5 tilfældige brikker for mestre og 2,6 for spillere under klasse B.",
+          "Forklaringen lader de Groots idé stå ved magt. En spiller med et meget stort lager af mønstre finder somme tider et ved et tilfælde i et virvar. Tilfældige brætter formindsker ekspertens forspring uden at fjerne det. Gobet og Simon føjede til, at små stikprøver skjuler en så lille effekt, og undersøgelsen fra 1973 havde tre forsøgspersoner."
+        ]
+      },
+      {
+        "heading": "Prøv de Groots test",
+        "paragraphs": [
+          "Indstil Memory Chess til 22 brikker og 5 sekunder. Det svarer til størrelsen på de Groots stilling fra partiet Rohacek mod Rabar og til den tid, Euwe havde til at se på den. Genopbyg brættet, og find ud af, hvor stor en andel af brikkerne du placerede rigtigt. Omkring halvdelen er, hvor Hauer endte, omkring 70 % er, hvor Fast endte, og 93 % er, hvad Euwe og de Groot opnåede i gennemsnit.",
+          "Sammenligningen er grov, fordi de Groot også trak point fra for fejl. Tjek bagefter, hvilke brikker du fik fastholdt. De kom sandsynligvis i grupper, for eksempel en bondekæde eller en rokeret konge."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Belæg for: datoen 1944, de fire forsøgspersoner med navne og klasser, visningstider på 2 til 15 sekunder, de længere tider til de svagere forsøgspersoner, pausen på et halvt minut, hvem der dikterede, og hvem der stillede op på et bræt, pointreglerne, stillingen fra Rohacek mod Rabar med visningstiden på 5 sekunder og de fire resultater, tabel 13 (217, 217, 158, 119 af 234), tabel 14 (gennemsnittene for de ti forsøg), begge citater, tænk-højt-sessionerne fra 1938 til 1943, de seks stormestre, afhandlingen fra Amsterdam i 1946 og Moutons copyright fra 1965. Teksten indeholder intet eksperiment med tilfældige brætter."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Belæg for: søgestatistikker, der ikke adskilte stormestre fra svagere spillere, tallene 93 % og 72 % som senere citeret, mesteren, der huskede omtrent dobbelt så mange brikker som klasse A-spilleren, chunkstørrelserne 3,8 og 2,6, antallet af chunks 7,7 og 5,7, pausen på 2 sekunder, 47 bondekæder og 10 stillinger med rokeret konge blandt 77 chunks, tre eller fire brikker på tilfældige brætter og det upublicerede resultat fra Lemmens og Jongman."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Belæg for: de tre forsøgspersoner, visningstiden på 5 sekunder, midtspilsstillinger med 24 til 26 brikker, filmede rekonstruktioner, 77 chunks fordelt på fjorten stillinger, hvoraf 47 indeholdt en bondekæde, chunkstørrelserne 3,8 og 2,6, antallet af chunks 7,7 og 5,7 samt forfatternes egen opsummering af de Groot som et eksperiment på 5 sekunder, der omfattede tilfældige brætter."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Belæg for: tretten eksperimenter, visningstider på højst 10 sekunder, tolv af tretten til fordel for den stærkeste gruppe, undtagelsen fra Chase og Simon, én brik pr. 400 Elo-point på tilfældige brætter mod omkring fem på partistillinger, det gamle resultats status i lærebøgerne, pointen om små stikprøver og den chunkbaserede forklaring."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Belæg for: de Groots visningstider på 2 til 15 sekunder, Euwe som stormester og hans år som verdensmester, pausen på et halvt minut, Chase og Simons opstilling med 5 sekunder, det tilfældige brætresultats status i lærebøgerne og gennemsnittene 5,5 mod 2,6 brikker."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Belæg for: opstillingen med fire forsøgspersoner, visningstiderne på 2 til 15 sekunder og udsagnet om, at kontrollen med tilfældige brætter ofte fejlagtigt tilskrives de Groot og i virkeligheden tilhører Chase og Simon."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Belæg for: fødsels- og dødsdatoer og -steder, olympiaderne i 1937 og 1939, afhandlingen fra 1946 og den engelske udgave fra 1965."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Belæg for: fødsels- og dødsdatoer og -steder, alderen 91 år. Desuden et eksempel på en genfortælling, der angiver visningstiden som 3 til 4 sekunder."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Belæg for: de Groot på de nederlandske hold i 1937 og 1939."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Belæg for: de Groot på de nederlandske hold i 1937 og 1939."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Belæg for: teststillingen med 22 brikker og resultaterne 22, 21, 16 og 9."
+      }
+    ]
+  }
+}

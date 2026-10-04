@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Artikler om skakspillere og deres hukommelse",
+      "description": "Portrætter af skakspillere og hukommelsesforskere. Hver artikel viser den dokumenterede bedrift, den forskning, der forklarer den, og en øvelse, du kan prøve."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "Artikler",
+      "sub": "Skakspillere og hukommelsesforskere, ét portræt ad gangen.",
+      "aboutHeading": "Sådan bliver artiklerne til",
+      "about1": "Hver artikel følger én skakspiller eller forsker og ét spørgsmål om vedkommendes hukommelse. Emnet kan være en spiller, der er kendt for en hukommelsesbedrift, eller en forsker, der har målt, hvad spillere husker efter nogle få sekunder.",
+      "about2": "Alle artikler har de samme dele. Et portræt følges af fotografens navn og licensen. En faktaboks angiver datoer, titler og den hukommelsesbedrift, personen er kendt for. Fortællingen stiller bedriften op ved siden af den forskning, der forklarer den. En kildeliste viser, hvor hver påstand stammer fra. En øvelse til sidst åbner en runde Memory Chess med det antal brikker og den visningstid, som fortællingen peger på.",
+      "about3": "Artiklerne er undersøgt og skrevet i udkast med hjælp fra AI ud fra offentliggjorte kilder som interviews, turneringsrapporter, bøger og forskningsartikler. En særskilt kontrol sammenholder derefter hver dato, hvert tal og hvert citat med kilderne, før noget offentliggøres. Hvor kilderne er uenige, skriver artiklen, hvem der har berettet hvad. En anekdote, som kilderne kun gengiver som en historie, fortælles som en historie. Artikler på andre sprog er oversat fra den engelske tekst med hjælp fra AI, og hver oversættelse kontrolleres, før den lægges ud.",
+      "corrections": "Er noget her forkert, så <link>send en rettelse</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Sortér",
+      "group": "Sortér artikler",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "Nyeste",
+        "views": "Flest visninger",
+        "likes": "Flest likes"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "Sider",
+      "previous": "Forrige side",
+      "next": "Næste side",
+      "page": "Side {page}",
+      "showing": "Viser {first} til {last} af {total}"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
+      "views": "{count, plural, one {# visning} other {# visninger}}",
       "likes": "{count, plural, one {# like} other {# likes}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "Synes godt om denne artikel",
+      "failed": "Det blev ikke gemt. Prøv igen."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Alle artikler",
+      "showAll": "Vis hele teksten",
+      "byline": "Af <author>{name}</author>",
+      "authorshipNote": "Undersøgt og skrevet i udkast med hjælp fra AI ud fra kilderne nedenfor. Alle fakta blev kontrolleret mod disse kilder før offentliggørelsen.",
+      "translationNote": "Oversat fra engelsk med hjælp fra AI. Den engelske artikel er den, der gælder.",
+      "readInEnglish": "Læs den på engelsk",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Faktaboks",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Født",
+        "died": "Død",
+        "country": "Land",
+        "title": "Titel",
+        "peakRating": "Højeste rating",
+        "worldChampion": "Verdensmester",
+        "knownFor": "Kendt for",
+        "memoryFeat": "Hukommelsesbedrift"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "Din tur",
+      "drillAction": "Spil {pieces, plural, one {# brik} other {# brikker}}, {seconds, plural, one {# sekund} other {# sekunder}}",
+      "sources": "Kilder",
+      "nextArticle": "Næste artikel"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "Læs næste",
+      "yourRound": "Din runde",
+      "articleDrill": "Denne artikels øvelse",
+      "roundSize": "{pieces, plural, one {# brik} other {# brikker}}, {seconds, plural, one {# sekund} other {# sekunder}}",
+      "read": "Læs artiklen",
+      "tryDrill": "Prøv den øvelse"
     }
   }
 }

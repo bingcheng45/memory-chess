@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Satranç oyuncuları ve hafızaları üzerine makaleler",
+      "description": "Satranç oyuncularının ve hafıza araştırmacılarının profilleri. Her biri belgelenmiş başarıyı, onu açıklayan araştırmayı ve denenecek bir alıştırmayı sunar."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "Makaleler",
+      "sub": "Satranç oyuncuları ve hafıza araştırmacıları, her seferinde bir profil.",
+      "aboutHeading": "Bu makaleler nasıl hazırlanıyor",
+      "about1": "Her makale bir satranç oyuncusunu ya da araştırmacıyı ve onun hafızasıyla ilgili tek bir soruyu ele alır. Konu, bir hatırlama başarısıyla tanınan bir oyuncu olabilir ya da oyuncuların birkaç saniye sonra neyi hatırladığını ölçen bir araştırmacı.",
+      "about2": "Her makalenin bölümleri aynıdır. Portrenin yanında fotoğrafçısı ve lisansı yer alır. Bilgi kartında kişinin doğum ve ölüm tarihleri, unvanları ve tanındığı hafıza başarısı bulunur. Hikâye, bu başarıyı onu açıklayan araştırmayla yan yana koyar. Kaynak listesi, her iddianın nereden geldiğini gösterir. Sondaki alıştırma ise hikâyenin önerdiği taş sayısı ve gösterim süresiyle bir Memory Chess turu açar.",
+      "about3": "Makaleler; röportajlar, turnuva raporları, kitaplar ve araştırma makaleleri gibi yayımlanmış kaynaklardan yapay zekâ desteğiyle araştırılıp taslak olarak yazılır. Yayımlanmadan önce ayrı bir kontrol, her tarihi, sayıyı ve alıntıyı bu kaynaklarla karşılaştırır. Kaynaklar birbirini tutmadığında makale kimin ne bildirdiğini söyler. Kaynakların yalnızca bir hikâye olarak aktardığı bir anekdot da hikâye olarak anlatılır. Diğer dillerdeki makaleler İngilizce metinden yapay zekâ desteğiyle çevrilir ve her çeviri yayına girmeden önce kontrol edilir.",
+      "corrections": "Burada yanlış bir şey varsa <link>düzeltme gönder</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Sırala",
+      "group": "Makaleleri sırala",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "En yeni",
+        "views": "En çok görüntülenen",
+        "likes": "En çok beğenilen"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "Sayfalar",
+      "previous": "Önceki sayfa",
+      "next": "Sonraki sayfa",
+      "page": "Sayfa {page}",
+      "showing": "{total} içinden {first}-{last} arası gösteriliyor"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, one {# görüntülenme} other {# görüntülenme}}",
+      "likes": "{count, plural, one {# beğeni} other {# beğeni}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "Bu makaleyi beğen",
+      "failed": "Kaydedilemedi. Tekrar dene."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Tüm makaleler",
+      "showAll": "Tüm metni göster",
+      "byline": "Yazan: <author>{name}</author>",
+      "authorshipNote": "Aşağıda listelenen kaynaklardan yapay zekâ desteğiyle araştırıldı ve taslağı yazıldı. Yayımlanmadan önce her olgu bu kaynaklarla karşılaştırıldı.",
+      "translationNote": "İngilizceden yapay zekâ desteğiyle çevrildi. Esas alınacak metin İngilizce makaledir.",
+      "readInEnglish": "İngilizcesini oku",
+      "photoCredit": "Fotoğraf: {author}, <licenseLink>{license}</licenseLink>, <source>Wikimedia Commons</source> üzerinden. {changes}.",
+      "factFile": "Bilgi kartı",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Doğum",
+        "died": "Ölüm",
+        "country": "Ülke",
+        "title": "Unvan",
+        "peakRating": "En yüksek puan",
+        "worldChampion": "Dünya şampiyonluğu",
+        "knownFor": "Tanındığı alan",
+        "memoryFeat": "Hafıza başarısı"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "Sıra sende",
+      "drillAction": "Oyna: {pieces, plural, one {# taş} other {# taş}}, {seconds, plural, one {# saniye} other {# saniye}}",
+      "sources": "Kaynaklar",
+      "nextArticle": "Sonraki makale"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "Sıradaki makale",
+      "yourRound": "Senin turun",
+      "articleDrill": "Bu makalenin alıştırması",
+      "roundSize": "{pieces, plural, one {# taş} other {# taş}}, {seconds, plural, one {# saniye} other {# saniye}}",
+      "read": "Makaleyi oku",
+      "tryDrill": "Alıştırmayı dene"
     }
   }
 }

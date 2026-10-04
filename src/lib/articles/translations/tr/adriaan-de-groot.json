@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "reviewed": true,
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "Adriaan de Groot'un 1944 satranç hafızası testi, rakamlarla",
+    "description": "Adriaan de Groot, 1944'te dört oyuncuyu 2 ile 15 saniye gösterilen satranç konumlarıyla sınadı. İşte gerçek puanları ve sonraki araştırmaların neyi değiştirdiği.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "Hollandalı satranç ustası ve psikolog"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot, 1930 dolaylarında genç bir adam olarak",
+      "author": "Bilinmeyen fotoğrafçı",
+      "license": "Kamu malı",
+      "changes": "Kırpıldı"
+    },
+    "facts": {
+      "born": "26 Ekim 1914, Santpoort, Hollanda",
+      "died": "14 Ağustos 2006, 91 yaşında",
+      "country": "Hollanda",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "2 ile 15 saniye gösterilen konumları hatırlamada %93 puan aldı"
+    },
+    "drill": {
+      "why": "De Groot'un Rohacek-Rabar test konumunda 22 taş vardı ve Max Euwe onu 5 saniye gördü."
+    },
+    "sections": [
+      {
+        "heading": "Dört oyuncu ve birkaç saniye",
+        "paragraphs": [
+          "1944'te Adriaan de Groot, Max Euwe'ye bir satranç konumu gösterdi ve beş saniye sonra onu kaldırdı. Konum, Rohacek ile Rabar arasındaki bir partinin beyazın 20. hamlesinden sonraki hâliydi ve tahtada 22 taş vardı. 1935'ten 1937'ye kadar dünya şampiyonu olan Euwe, ardından her taşın nerede durduğunu sesli olarak sıraladı. 22'sini de doğru bildi.",
+          "Kendisi de usta olan De Groot aynı teste girdi, orada olmayan bir piyon ekledi ve 21 puan aldı. 1942 Utrecht şampiyonu A. Fast 17 taşı doğru yerleştirdi, ancak malzemenin eşit olduğuna hükmetti, oysa eşit değildi; 16 puan aldı. Daha zayıf sınıftan bir oyuncu olan G. P. Hauer 9 puan aldı.",
+          "Anlatımlar gösterim süresi ve yüzdeler konusunda birbirini tutmuyor, bu yüzden aşağıdaki rakamlar de Groot'un kendi kitabından alınmıştır."
+        ]
+      },
+      {
+        "heading": "Ustaları inceleyen bir usta",
+        "paragraphs": [
+          "De Groot, 1937 ve 1939 Satranç Olimpiyatları'nda Hollanda adına oynadı. 1938 ile 1943 arasında oyuncuların hamle seçerken yüksek sesle düşünerek söylediklerini not aldı. Deneklerinin arasında büyükustalar Keres, Alekhine, Flohr, Fine, Euwe ve Tartakower da vardı.",
+          "Onun sayımlarına göre büyükustalar uzman oyunculardan daha ileriyi görmüyordu ve daha fazla hamle incelemiyordu. “Usta mutlaka daha derin hesap yapmaz,” diye yazdı. De Groot, farkın tahtaya bakılan ilk saniyelerde ortaya çıktığından şüpheleniyordu ve 1944 deneyini bu fikri sınamak için tasarladı."
+        ]
+      },
+      {
+        "heading": "1944 deneyi neyi ölçtü",
+        "paragraphs": [
+          "Her sınıf için bir oyuncu katıldı. Euwe büyükustaları, de Groot ustaları, Fast uzmanları, Hauer ise daha zayıf sınıftan oyuncuları temsil ediyordu.",
+          "Her konum bir usta partisinden alınmıştı ve 2 ile 10 saniye arasında gösterildi; bir gösterim ise 15 saniyeydi. Daha zayıf iki denek sıfır puan almasın diye en kısa denemelerde 3 ile 4 saniye süre aldı. Her denekten, aklında kalanı düzenlemek için yaklaşık yarım dakika ayırması istendi. Euwe ile de Groot ardından konumu hafızadan sesli olarak sıraladı, Fast ile Hauer ise tahtada kurdu.",
+          "Puanlamada doğru her taş için bir puan veriliyor, eklenen, unutulan ya da yeri değiştirilen taşlar için puan düşülüyordu. De Groot iki konumu, serinin ilkini ve zamanlama hatası olan birini, çıkardı ve 7 ile 26 taş arasında değişen on dört konumu saydı. Dört denek, olası 234 puan üzerinden şu puanları aldı.",
+          "Euwe 217 puan, yani %93 aldı; beş konumu tam doğru bildi.",
+          "De Groot 217 puan, yani %93 aldı; dördünü tam doğru bildi.",
+          "Fast 158 puan, yani %68 aldı; hiçbirini tam doğru bilemedi.",
+          "Hauer 119 puan, yani %51 aldı; hiçbirini tam doğru bilemedi.",
+          "De Groot sonra uzun gösterim süreli iki denemeyi, 15 ve 7 saniyelik olanları, bir de dikkat kaybının bozduğu iki denemeyi kenara ayırdı. Öngörülen gösterim süresi 2, 3 ya da 5 saniye olan kalan on denemede ortalama puanlar %93,0, %92,6, %72,3 ve %51,1 oldu.",
+          "İki tablo da ona aittir; anlatımların uzmana neden %68 ya da %72 verdiği herhalde bundandır. Gösterim süresi hiçbir zaman sabit beş saniye değildi.",
+          "De Groot en çok ortadaki farkı önemsiyordu ve ona “ustayı usta olmayandan ayıran uçurum” diyordu. Açıklamasına göre usta 22 taşı ayrı ayrı depolamaz. Büyük bir taş grubunu tek bir birim olarak algılar, çünkü bu grubun nasıl ortaya çıktığını ve ne işe yaradığını bilir.",
+          "Tahtayı böyle birkaç birim kaplar ve de Groot'un anlatımına göre daha zayıf bir oyuncuda bunlar daha azdır. Sonraki araştırmacılar bu birimlere öbek adını verdi."
+        ]
+      },
+      {
+        "heading": "Bir Hollanda tezinden rastgele tahtalara",
+        "paragraphs": [
+          "De Groot çalışmayı 1946'da Amsterdam Üniversitesi'ndeki doktora tezinde, Het denken van den schaker adlı eserde sundu. İngilizce baskı olan Thought and Choice in Chess'i Mouton 1965'te Lahey'de yayımladı.",
+          "1973'te William Chase ve Herbert Simon testi Carnegie Mellon'da bir usta, bir A sınıfı oyuncu ve bir acemiyle yeniden yaptı. Gösterim süresini 5 saniyede sabitlediler. Oyun ortası konumlarında 24 ila 26 taş vardı ve usta, A sınıfı oyuncunun yaklaşık iki katı taşı hatırladı.",
+          "Her yeniden kurmayı videoya aldılar ve 2 saniyeden uzun bir duraklamayı iki öbek arasındaki sınır saydılar. Ustanın ilk öbeği ortalama 3,8 taştan oluşuyordu, A sınıfı oyuncununki 2,6; usta konum başına 7,7 öbek üretti, A sınıfı oyuncu ise 5,7. On dört konumdaki 77 öbeğinden 47'si bir piyon zinciri içeriyordu ve Simon ile Chase 10 rok yapılmış şah konumu saydı.",
+          "Eklemeleri bir kontroldü: aynı taşlar rastgele karelere yerleştirildi. Simon ve Chase, bu durumda her oyuncunun yaklaşık üç ya da dört taşı hatırladığını bildirdi; bu, acemi oyuncunun gerçek konumlarda başardığından azdı. W. Lemmens ve R. W. Jongman'ın aynı sonucu Amsterdam laboratuvarında bulduğunu ve hiç yayımlamadığını belirttiler.",
+          "Chase ile Simon'ın kendi girişi rastgele tahta sonucunu de Groot'a atfeder ve sonraki pek çok anlatım bunu tekrarlar. Kitabında rastgele tahta denemesi yer almaz."
+        ]
+      },
+      {
+        "heading": "Sonraki araştırmaların neyi değiştirdiği",
+        "paragraphs": [
+          "Ders kitapları bu sonucu, bir ustanın anlamsız tahtalarda hiçbir üstünlüğü olmadığı biçiminde yorumladı. 1996'da Fernand Gobet ve Herbert Simon bu yorumu, gösterim süresi 10 saniye ya da daha kısa olan on üç deneyle sınadı. On üç deneyin on ikisinde en güçlü grup, en zayıf gruptan daha fazla rastgele taş hatırladı. İstisna, ustanın en kötü sonucu aldığı, Chase ile Simon'ın kendi çalışmasıydı.",
+          "Üstünlük küçüktür. Gobet ve Simon bunu rastgele tahtalarda her 400 Elo puanı için yaklaşık bir fazla taş, oyun konumlarında ise yaklaşık beş fazla taş olarak belirledi. 1998'de yazdığı bir derlemede Gobet, 5 saniyedeki ortalamaları ustalar için 5,5 rastgele taş, B sınıfının altındaki oyuncular için 2,6 olarak verdi.",
+          "Bu açıklama de Groot'un fikrini ayakta bırakır. Çok geniş bir kalıp deposuna sahip bir oyuncu, bazen karmaşanın içinde tesadüfen bir kalıp bulur. Rastgele tahtalar uzmanın avantajını azaltır ama ortadan kaldırmaz. Gobet ve Simon ayrıca, küçük örneklemlerin bu kadar küçük bir etkiyi gizlediğini ve 1973 çalışmasında üç denek bulunduğunu ekledi."
+        ]
+      },
+      {
+        "heading": "De Groot'un testini dene",
+        "paragraphs": [
+          "Memory Chess'i 22 taş ve 5 saniyeye ayarla. Bu, de Groot'un Rohacek-Rabar konumunun büyüklüğüne ve Euwe'nin ona bakabildiği süreye denk gelir. Tahtayı yeniden kur ve taşların yüzde kaçını doğru yerleştirdiğini hesapla. Yaklaşık yarısı Hauer'in bitirdiği yerdir, yaklaşık %70 Fast'in bitirdiği yer, %93 ise Euwe ile de Groot'un ortalamasıdır.",
+          "Karşılaştırma yaklaşıktır, çünkü de Groot hatalar için de puan kırıyordu. Sonra hangi taşları aklında tuttuğuna bak. Büyük olasılıkla gruplar halinde gelmişlerdir, örneğin bir piyon zinciri ya da rok yapılmış bir şah gibi."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Destekler: 1944 tarihi, adları ve sınıflarıyla dört denek, 2 ile 15 saniyelik gösterim süreleri, daha zayıf deneklere tanınan daha uzun süreler, yarım dakikalık duraklama, kimin sesli sıraladığı ve kimin tahtayı kurduğu, puanlama kuralları, 5 saniyelik gösterim ve dört puanla Rohacek-Rabar konumu, Tablo 13 (234 üzerinden 217, 217, 158, 119), Tablo 14 (on denemenin ortalamaları), iki alıntı, 1938-1943 arasındaki yüksek sesle düşünme oturumları, altı büyükusta, 1946 Amsterdam tezi ve 1965 Mouton telif tarihi. Metinde rastgele tahta deneyi yoktur."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Destekler: büyükustaları daha zayıf oyunculardan ayırmayan arama istatistikleri, sonradan anıldığı biçimiyle %93 ve %72 rakamları, ustanın A sınıfı oyuncunun yaklaşık iki katı taşı hatırlaması, 3,8 ve 2,6 öbek büyüklükleri, 7,7 ve 5,7 öbek sayıları, 2 saniyelik duraklama, 77 öbek arasında 47 piyon zinciri ve 10 rok yapılmış şah konumu, rastgele tahtalarda üç ya da dört taş ve yayımlanmamış Lemmens ile Jongman sonucu."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Destekler: üç denek, 5 saniyelik gösterim, 24 ila 26 taşlı oyun ortası konumları, videoya alınmış yeniden kurmalar, on dört konumdaki 77 öbek ve bunların 47'sinin piyon zinciri içermesi, 3,8 ve 2,6 öbek büyüklükleri, 7,7 ve 5,7 öbek sayıları ve yazarların de Groot'u rastgele tahtaları da içeren 5 saniyelik bir deney olarak özetlemesi."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Destekler: on üç deney, en çok 10 saniyelik gösterimler, on üçün on ikisinde en güçlü grubun öne çıkması, Chase ile Simon istisnası, rastgele tahtalarda 400 Elo puanı başına bir taş, oyun konumlarında yaklaşık beş taş, eski sonucun ders kitaplarındaki yeri, küçük örneklem noktası ve öbek temelli açıklama."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Destekler: de Groot'un 2 ile 15 saniyelik gösterimleri, büyükusta olarak Euwe ve dünya şampiyonluğu yılları, yarım dakikalık duraklama, Chase ile Simon'ın 5 saniyelik tasarımı, rastgele tahta sonucunun ders kitaplarındaki yeri ve 5,5'e karşı 2,6 taşlık ortalamalar."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Destekler: dört denekli tasarım, 2 ile 15 saniyelik gösterimler ve rastgele tahta kontrolünün çoğu zaman yanlışlıkla de Groot'a atfedildiği, oysa Chase ile Simon'a ait olduğu tespiti."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Destekler: doğum ve ölüm tarihleri ile yerleri, 1937 ve 1939 Olimpiyatları, 1946 tezi ve 1965 İngilizce baskısı."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Destekler: doğum ve ölüm tarihleri ile yerleri, 91 yaşı. Ayrıca gösterim süresini 3 ile 4 saniye olarak veren bir anlatım örneği."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Destekler: de Groot'un 1937 ve 1939 Hollanda takımlarında yer alması."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Destekler: de Groot'un 1937 ve 1939 Hollanda takımlarında yer alması."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Destekler: 22 taşlı test konumu ve 22, 21, 16 ve 9 puanları."
+      }
+    ]
+  }
+}

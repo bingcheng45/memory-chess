@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "关于国际象棋棋手及其记忆的文章",
+      "description": "国际象棋棋手和记忆研究者的人物介绍。每篇都讲一项有据可查的记忆壮举、解释它的研究，以及一个可以试试的训练。"
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "文章",
+      "sub": "国际象棋棋手和记忆研究者，一次介绍一位。",
+      "aboutHeading": "这些文章是怎么写出来的",
+      "about1": "每篇文章围绕一位国际象棋棋手或研究者，以及一个关于其记忆的问题。主角可能是以记忆壮举闻名的棋手，也可能是测量过棋手看几秒钟后能记住什么的研究者。",
+      "about2": "每篇文章的结构都相同。肖像附有摄影者和许可协议。资料卡列出生卒日期、头衔，以及这个人以之闻名的记忆壮举。正文把这项壮举与解释它的研究放在一起。来源列表标明每一个说法出自何处。文末的训练会打开一局 Memory Chess，棋子数量和观看时间按文中的建议设定。",
+      "about3": "文章由 AI 辅助，依据访谈、赛事报道、书籍和研究论文等已发表的资料研究并起草。发布之前，另有一道核查，把每个日期、数字和引文与这些资料逐一对照。资料之间有出入时，文章会说明谁报道了什么。资料里只当作故事来讲的轶事，文章也只当作故事来讲。其他语言的文章由英文原文借助 AI 翻译而成，每篇译文在上线之前都经过检查。",
+      "corrections": "如果这里有错误，请<link>发送更正</link>。"
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "排序",
+      "group": "文章排序",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "最新",
+        "views": "浏览最多",
+        "likes": "点赞最多"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "页码",
+      "previous": "上一页",
+      "next": "下一页",
+      "page": "第{page}页",
+      "showing": "显示第{first}至{last}项，共{total}项"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, other {#次浏览}}",
+      "likes": "{count, plural, other {#个赞}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "给这篇文章点赞",
+      "failed": "没有保存成功，请再试一次。"
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "全部文章",
+      "showAll": "显示全文",
+      "byline": "作者：<author>{name}</author>",
+      "authorshipNote": "借助 AI，依据下方列出的资料研究并起草。发布之前，每一项事实都已对照这些资料核查。",
+      "translationNote": "由英文借助 AI 翻译而成。以英文文章为准。",
+      "readInEnglish": "阅读英文版",
+      "photoCredit": "照片：{author}，<licenseLink>{license}</licenseLink>，来自<source>维基共享资源</source>。{changes}。",
+      "factFile": "资料卡",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "出生",
+        "died": "逝世",
+        "country": "国家",
+        "title": "头衔",
+        "peakRating": "最高等级分",
+        "worldChampion": "世界冠军",
+        "knownFor": "以何闻名",
+        "memoryFeat": "记忆壮举"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "轮到你了",
+      "drillAction": "来一局：{pieces, plural, other {#个棋子}}，{seconds, plural, other {#秒}}",
+      "sources": "来源",
+      "nextArticle": "下一篇文章"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "接着读",
+      "yourRound": "你的一局",
+      "articleDrill": "本文的训练",
+      "roundSize": "{pieces, plural, other {#个棋子}}，{seconds, plural, other {#秒}}",
+      "read": "阅读文章",
+      "tryDrill": "试试这个训练"
     }
   }
 }

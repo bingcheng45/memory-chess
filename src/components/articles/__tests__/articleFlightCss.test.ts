@@ -15,6 +15,13 @@ const TIMINGS = [
   ["--article-flight-date-delay", "80ms"],
 ];
 const TIMED_PROPERTIES = ["animation-duration", "animation-delay"];
+const OWN_TIMINGS = [
+  ["the portrait, title and date groups", "group(article-portrait)", "animation-duration", "--article-flight-duration"],
+  ["the old title and date text", "old(article-title)", "animation-duration", "--article-flight-old-text-duration"],
+  ["the root", "(root)", "animation-duration", "--article-flight-root-duration"],
+  ["the title", "group(article-title)", "animation-delay", "--article-flight-title-delay"],
+  ["the date", "group(article-date)", "animation-delay", "--article-flight-date-delay"],
+];
 
 const css = readArticleCss("articleFlight.css");
 const rules = innermostRules(css);
@@ -48,6 +55,14 @@ describe("articleFlight.css", () => {
 
     expect(timed.length).toBeGreaterThan(0);
     expect(TIMINGS.map(([name]) => `var(${name})`)).toEqual(expect.arrayContaining(timed));
+  });
+
+  it.each(OWN_TIMINGS)("times %s from its own named property", (_label, selectorPart, property, name) => {
+    const timed = rules
+      .filter((rule) => rule.selector.includes(selectorPart))
+      .flatMap((rule) => declarationsOf(rule).filter(([declared]) => declared === property));
+
+    expect(timed.at(-1)?.[1]).toBe(`var(${name})`);
   });
 
   it("runs the three groups for 620 ms on the design's curve", () => {

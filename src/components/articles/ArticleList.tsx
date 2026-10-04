@@ -47,11 +47,9 @@ export default function ArticleList({ articles, stats, heading }: ArticleListPro
   const list = useRef<HTMLOListElement>(null);
   const slides = useRef<readonly Animation[]>([]);
 
-  // Hydration renders the server's newest-first order once before it renders
-  // the address's. The mark holds the sorted order on screen through that
-  // render, and has to go with it, or it would pin the cards against the next sort.
   useLayoutEffect(() => {
-    if (search === readSearch()) clearSortedFirstPaint();
+    const isPastHydrationsServerSnapshot = search === readSearch();
+    if (isPastHydrationsServerSnapshot) clearSortedFirstPaint();
   }, [search]);
 
   function finishSlides() {

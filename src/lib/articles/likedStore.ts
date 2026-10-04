@@ -8,32 +8,27 @@ export const NOT_LIKED = 0;
 const OWN_LIKE = 1;
 const SHAPE_VERSION = 2;
 
-// Each liked slug with the like count the visitor saw when they liked it. The
-// article pages are up to five minutes old, so without the count a reload
-// right after a like shows the older, lower number under a pressed heart.
-type LikesSeen = ReadonlyMap<string, number>;
+type LikesSeenBySlug = ReadonlyMap<string, number>;
 
-const NO_LIKES: LikesSeen = new Map();
+const NO_LIKES: LikesSeenBySlug = new Map();
 
 function isLikesSeen(entry: [string, unknown]): entry is [string, number] {
   return isCount(entry[1]) && entry[1] >= OWN_LIKE;
 }
 
-function parseLikesSeen(stored: unknown): LikesSeen {
-  // Version 1 was a bare list of liked slugs.
-  if (Array.isArray(stored)) {
-    return stored.every((slug) => typeof slug === "string")
-      ? new Map(stored.map((slug) => [slug, OWN_LIKE]))
-      : NO_LIKES;
-  }
+function fromVersion1ListOfLikedSlugs(slugs: readonly unknown[]): LikesSeenBySlug {
+  return slugs.every((slug) => typeof slug === "string") ? new Map(slugs.map((slug) => [slug, OWN_LIKE])) : NO_LIKES;
+}
+
+function fromVersion2(stored: unknown): LikesSeenBySlug {
   if (!isRecord(stored) || stored.version !== SHAPE_VERSION || !isRecord(stored.likes)) return NO_LIKES;
 
   return new Map(Object.entries(stored.likes).filter(isLikesSeen));
 }
 
-const LIKES_SEEN: StoredShape<LikesSeen> = {
+const LIKES_SEEN: StoredShape<LikesSeenBySlug> = {
   empty: NO_LIKES,
-  parse: parseLikesSeen,
+  parse: (stored) => (Array.isArray(stored) ? fromVersion1ListOfLikedSlugs(stored) : fromVersion2(stored)),
   serialize: (likes) => ({ version: SHAPE_VERSION, likes: Object.fromEntries(likes) }),
 };
 

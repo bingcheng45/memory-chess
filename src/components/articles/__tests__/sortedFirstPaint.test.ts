@@ -1,21 +1,21 @@
 import { declarationsOf, innermostRules, readArticleCss } from "@/components/articles/__tests__/cssRules";
 import { sortOf } from "@/components/articles/listAddress";
-import { sortedFirstPaintScript } from "@/components/articles/sortedFirstPaint";
+import { sortedFirstPaintInlineScript } from "@/components/articles/sortedFirstPaint";
 import { RANKED_SORTS } from "@/lib/articles/sorting";
 
-const painted = () => document.documentElement.getAttribute("data-article-sort");
+const painted = () => document.documentElement.getAttribute("data-first-paint-sort");
 
 function load(address: string) {
   window.history.replaceState(null, "", address);
-  window.eval(sortedFirstPaintScript());
+  window.eval(sortedFirstPaintInlineScript());
 }
 
 afterEach(() => {
-  document.documentElement.removeAttribute("data-article-sort");
+  document.documentElement.removeAttribute("data-first-paint-sort");
   window.history.replaceState(null, "", "/");
 });
 
-describe("sortedFirstPaintScript", () => {
+describe("sortedFirstPaintInlineScript", () => {
   it.each([
     ["/articles?sort=views", "views"],
     ["/articles?sort=likes", "likes"],
@@ -58,7 +58,7 @@ describe("sortedFirstPaintScript", () => {
   });
 
   it("uses only syntax an old browser parses, and nothing from a module", () => {
-    const script = sortedFirstPaintScript();
+    const script = sortedFirstPaintInlineScript();
 
     expect(script).not.toMatch(/=>|\bconst\b|\blet\b|`|\bimport\b|\brequire\b/);
   });
@@ -70,7 +70,7 @@ describe("articleList.css", () => {
   it("has one rule for each sort the script can mark, which orders the cards by that sort's rank", () => {
     expect(rules.map((rule) => [rule.selector, declarationsOf(rule)])).toEqual(
       RANKED_SORTS.map((sort) => [
-        `[data-article-sort="${sort}"] [data-article-list] > li`,
+        `[data-first-paint-sort="${sort}"] [data-article-list] > li`,
         [["order", `var(--rank-${sort})`]],
       ]),
     );

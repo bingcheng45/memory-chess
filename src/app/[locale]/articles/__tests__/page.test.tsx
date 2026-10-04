@@ -4,7 +4,7 @@ import { render, screen, within } from "@/test-utils/intl";
 import * as pageModule from "@/app/[locale]/articles/page";
 import ArticlesPage, { revalidate } from "@/app/[locale]/articles/page";
 import ArticleList from "@/components/articles/ArticleList";
-import { sortedFirstPaintScript } from "@/components/articles/sortedFirstPaint";
+import { sortedFirstPaintInlineScript } from "@/components/articles/sortedFirstPaint";
 import { ARTICLE_SLUGS, ARTICLE_SUMMARIES } from "@/lib/articles";
 import { ARTICLE_LIST_COPY } from "@/lib/articles/copy";
 import { NO_ARTICLE_STATS, type ArticleStats } from "@/lib/articles/stats";
@@ -95,7 +95,7 @@ describe("ArticlesPage", () => {
     const script = container.querySelector("script:not([type])");
     if (script === null) throw new Error("the page has no inline script");
 
-    expect(script.textContent).toBe(sortedFirstPaintScript());
+    expect(script.textContent).toBe(sortedFirstPaintInlineScript());
     expect(
       script.compareDocumentPosition(screen.getByTestId("article-list")) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);

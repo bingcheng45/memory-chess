@@ -23,9 +23,7 @@ jest.mock("@/i18n/navigation", () => ({
   ),
 }));
 
-// The page builds its date formatter when it is imported, so it is loaded
-// fresh after each change of zone.
-function loadPage(): ComponentType {
+function importPageInMachineZone(): ComponentType {
   let page: ComponentType | undefined;
   jest.isolateModules(() => {
     page = jest.requireActual<typeof import("@/app/[locale]/privacy/page")>("@/app/[locale]/privacy/page").default;
@@ -43,7 +41,7 @@ describe("PrivacyPage last-updated line", () => {
     "prints January 9, the date the sitemap reads, on a machine in %s, where that moment is %s",
     (machineZone, dateOnMachine) => {
       setMachineTimeZone(machineZone);
-      const PrivacyPage = loadPage();
+      const PrivacyPage = importPageInMachineZone();
 
       render(<PrivacyPage />);
 

@@ -46,8 +46,7 @@ export function hasCounts(counts: ArticleCounts | undefined): counts is ArticleC
   return counts !== undefined && (counts.views > 0 || counts.likes > 0);
 }
 
-// A visitor who liked an article sees at least the like count they saw then.
-export function withLikesSeen(counts: ArticleCounts | undefined, likesSeen: number): ArticleCounts | undefined {
+export function atLeastLikesSeen(counts: ArticleCounts | undefined, likesSeen: number): ArticleCounts | undefined {
   if (likesSeen <= (counts?.likes ?? 0)) return counts;
   return { views: counts?.views ?? 0, likes: likesSeen };
 }

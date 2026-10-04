@@ -6,7 +6,7 @@ import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import { useLikesSeen } from "@/components/articles/useLikesSeen";
 import { formatArticleDate } from "@/lib/articles/copy";
 import type { ArticleSummary } from "@/lib/articles/schema";
-import { hasCounts, withLikesSeen, type ArticleCounts } from "@/lib/articles/stats";
+import { hasCounts, atLeastLikesSeen, type ArticleCounts } from "@/lib/articles/stats";
 
 type ArticleCardProps = {
   article: ArticleSummary;
@@ -23,7 +23,7 @@ const CARD_CLASS =
 
 export default function ArticleCard({ article, counts: listed, priority, style }: ArticleCardProps) {
   const { slug, photo, person, publishedAt, title, description } = article;
-  const counts = withLikesSeen(listed, useLikesSeen(slug));
+  const counts = atLeastLikesSeen(listed, useLikesSeen(slug));
   const descriptionId = `${slug}-description`;
   const countsId = `${slug}-counts`;
 

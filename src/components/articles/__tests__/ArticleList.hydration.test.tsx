@@ -4,7 +4,7 @@ import { renderToString } from "react-dom/server.node";
 import { createRoot, hydrateRoot, type Root } from "react-dom/client";
 import { NextIntlClientProvider } from "next-intl";
 import ArticleList from "@/components/articles/ArticleList";
-import { sortedFirstPaintScript } from "@/components/articles/sortedFirstPaint";
+import { sortedFirstPaintInlineScript } from "@/components/articles/sortedFirstPaint";
 import { makeArticles, summaryOf } from "@/lib/articles/__tests__/fixtures";
 import type { ArticleStats } from "@/lib/articles/stats";
 import messages from "../../../../messages/en.json";
@@ -47,13 +47,13 @@ const page = (
 );
 
 const mounted: Root[] = [];
-const painted = () => document.documentElement.getAttribute("data-article-sort");
+const painted = () => document.documentElement.getAttribute("data-first-paint-sort");
 const shown = (container: HTMLElement) =>
   Array.from(container.querySelectorAll("[data-article-card]"), (card) => card.getAttribute("data-article-card"));
 
 function serve(address: string) {
   window.history.replaceState(null, "", address);
-  window.eval(sortedFirstPaintScript());
+  window.eval(sortedFirstPaintInlineScript());
   const container = document.createElement("div");
   container.innerHTML = renderToString(page);
   document.body.appendChild(container);
@@ -72,7 +72,7 @@ function orderWhenUnmarked(container: HTMLElement) {
   const orders: (string | null)[][] = [];
   const remove = document.documentElement.removeAttribute.bind(document.documentElement);
   jest.spyOn(document.documentElement, "removeAttribute").mockImplementation((name) => {
-    if (name === "data-article-sort" && painted() !== null) orders.push(shown(container));
+    if (name === "data-first-paint-sort" && painted() !== null) orders.push(shown(container));
     remove(name);
   });
   return orders;
@@ -82,7 +82,7 @@ afterEach(() => {
   act(() => mounted.splice(0).forEach((root) => root.unmount()));
   jest.restoreAllMocks();
   document.body.innerHTML = "";
-  document.documentElement.removeAttribute("data-article-sort");
+  document.documentElement.removeAttribute("data-first-paint-sort");
   window.history.replaceState(null, "", "/");
 });
 
@@ -146,7 +146,7 @@ describe("ArticleList on a direct load of a sorted address", () => {
 describe("ArticleList and a mark left on the page", () => {
   it("clears a mark that outlived the load it was made for, when the list mounts at the bare address", async () => {
     window.history.replaceState(null, "", "/articles");
-    document.documentElement.setAttribute("data-article-sort", "likes");
+    document.documentElement.setAttribute("data-first-paint-sort", "likes");
     const container = document.createElement("div");
     document.body.appendChild(container);
     const root = createRoot(container);

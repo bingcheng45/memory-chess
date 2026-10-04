@@ -9,6 +9,19 @@ import {
 } from "@/lib/changelog";
 import { ARTICLE_SLUGS } from "@/lib/articles";
 
+const KNOWN_ROUTES = [
+  "/articles",
+  "/privacy",
+  "/learn",
+  "/leaderboard",
+  "/game",
+  "/about",
+  "/contact-us",
+  "/changelog",
+  "/terms",
+  "/settings",
+];
+
 describe("changelog data", () => {
   it("keeps release history newest-first", () => {
     const releaseTimes = CHANGELOG_ENTRIES.map((entry) =>
@@ -30,22 +43,26 @@ describe("changelog data", () => {
     );
   });
 
-  it("links the articles release to every published article", () => {
-    const release = CHANGELOG_ENTRIES.find(
-      (entry) => entry.version === "1.2.5",
-    );
-    const hrefs = (release?.groups ?? [])
+  it("points every changelog link at a page that exists", () => {
+    const hrefs = CHANGELOG_ENTRIES.flatMap((entry) => entry.groups)
       .flatMap((group) => group.changes ?? [])
       .flatMap((change) => (typeof change === "string" ? [] : change.segments))
-      .flatMap((segment) =>
-        typeof segment === "string" ? [] : [segment.href],
-      );
+      .flatMap((segment) => (typeof segment === "string" ? [] : [segment.href]))
+      .filter((href) => href.startsWith("/"));
 
-    expect(
-      hrefs.filter((href) => href.startsWith("/articles/")).sort(),
-    ).toEqual(ARTICLE_SLUGS.map((slug) => `/articles/${slug}`).sort());
-    expect(hrefs).toContain("/articles");
-    expect(hrefs).toContain("/privacy");
+    const unknown = hrefs.filter((href) => {
+      if (href.startsWith("/articles/")) {
+        return !ARTICLE_SLUGS.includes(href.slice("/articles/".length));
+      }
+      return !(
+        KNOWN_ROUTES.includes(href) ||
+        href.startsWith("/learn/") ||
+        href.startsWith("/game?")
+      );
+    });
+
+    expect(hrefs.length).toBeGreaterThan(0);
+    expect(unknown).toEqual([]);
   });
 
   it("uses stable version anchors", () => {

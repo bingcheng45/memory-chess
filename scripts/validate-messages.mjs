@@ -67,15 +67,6 @@ const ENGLISH_AHEAD_OF_TRANSLATIONS = new Set([
   "home.meta.twitterDescription",
 ]);
 
-// English has two plural forms, so an English placeholder cannot carry the
-// forms Russian or Polish need.
-const ENGLISH_PLACEHOLDERS = new Set([
-  "articles.counts.views",
-  "articles.counts.likes",
-  "articles.page.drillAction",
-  "articles.tile.roundSize",
-]);
-
 function flatten(value, prefix = "", out = {}) {
   if (Array.isArray(value)) {
     value.forEach((item, i) => flatten(item, `${prefix}[${i}]`, out));
@@ -188,8 +179,7 @@ for (const locale of LOCALES) {
         );
         const required = new Intl.PluralRules(locale, { type: "cardinal" })
           .resolvedOptions().pluralCategories;
-        const isEnglishPlaceholder = ENGLISH_PLACEHOLDERS.has(key) && message === base[key];
-        const missing = isEnglishPlaceholder ? [] : required.filter((category) => !declared.has(category));
+        const missing = required.filter((category) => !declared.has(category));
 
         if (missing.length > 0) {
           problems.push(

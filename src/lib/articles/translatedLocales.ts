@@ -11,7 +11,32 @@ import type { Locale } from "@/i18n/routing";
  * on an article that is missing, stale or unreviewed. Jest runs
  * `scripts/articles-i18n.mjs verify`, which checks the section's strings too.
  */
-export const TRANSLATED_ARTICLE_LOCALES: readonly Locale[] = ["en", "de"];
+export const TRANSLATED_ARTICLE_LOCALES: readonly Locale[] = [
+  "en",
+  "es",
+  "ru",
+  "pt-BR",
+  "de",
+  "fr",
+  "hi",
+  "it",
+  "zh-CN",
+  "tr",
+  "sv",
+  "nl",
+  "pl",
+  "id",
+  "no",
+  "fi",
+  "ro",
+  "vi",
+  "cs",
+  "ja",
+  "ko",
+  "zh-TW",
+  "da",
+  "hu",
+];
 
 export function servesArticlesIn(locale: string): locale is Locale {
   return (TRANSLATED_ARTICLE_LOCALES as readonly string[]).includes(locale);

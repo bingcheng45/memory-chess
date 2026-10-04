@@ -71,7 +71,7 @@ describe("export", () => {
     });
   });
 
-  it("lists every chrome string with its placeholders, tags and plural arguments", () => {
+  it("lists every chrome string, and names placeholders, tags and plural arguments only where a string has some", () => {
     const exported = inSandbox("fixture", (root) => {
       const run = runLever(root, "export", SOURCE_DIR);
       return { run, chrome: readJson(root, `${SOURCE_DIR}/chrome.source.json`) };
@@ -85,27 +85,14 @@ describe("export", () => {
     expect(exported.chrome).toEqual({
       sourceHash: sourceHashOf(FIXTURE_CHROME),
       strings: [
-        { key: "list.heading", english: "Articles", placeholders: [], tags: [], plurals: [] },
-        {
-          key: "list.about",
-          english: "Each drill opens a round of Memory Chess.",
-          placeholders: [],
-          tags: [],
-          plurals: [],
-        },
-        {
-          key: "list.corrections",
-          english: "If something is wrong, <link>send a correction</link>.",
-          placeholders: [],
-          tags: ["link"],
-          plurals: [],
-        },
-        { key: "pager.page", english: "Page {page}", placeholders: ["page"], tags: [], plurals: [] },
+        { key: "list.heading", english: "Articles" },
+        { key: "list.about", english: "Each drill opens a round of Memory Chess." },
+        { key: "list.corrections", english: "If something is wrong, <link>send a correction</link>.", tags: ["link"] },
+        { key: "pager.page", english: "Page {page}", placeholders: ["page"] },
         {
           key: "counts.views",
           english: "{count, plural, one {# view} other {# views}}",
           placeholders: ["count"],
-          tags: [],
           plurals: ["count"],
         },
       ],

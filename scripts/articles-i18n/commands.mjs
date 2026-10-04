@@ -2,8 +2,8 @@ import { join } from "node:path";
 import { counted, failuresOf, unreviewedOf } from "./checks.mjs";
 import { partsOf } from "./icu.mjs";
 import { inOrderOf, mapLeaves } from "./leaves.mjs";
+import { ENGLISH } from "./names.mjs";
 import {
-  ENGLISH,
   articleFile,
   chromeFile,
   hasInstalledChrome,
@@ -12,20 +12,23 @@ import {
   readWorkingDir,
   shown,
   toJson,
-  translatedLocales,
   writeChanged,
 } from "./repo.mjs";
 
 const INSTALLED_FILES = "the installed files";
+const WHEN_IT_FAILS = { check: "", import: ", nothing was written", approve: ", nothing was approved" };
 
 const sizeOf = (repo) =>
   `${counted(repo.articles.length, "article")} and ${counted(Object.keys(repo.chrome.strings).length, "chrome string")}`;
 const passed = (summary) => ({ failures: [], summary });
 
+// A translator reads this file whole, so a string names only the lists it has something in.
 function chromeSource({ strings, sourceHash }) {
   const described = Object.entries(strings).map(([key, english]) => {
     const { placeholders, tags, plurals } = partsOf(english, ENGLISH);
-    return { key, english, placeholders, tags, plurals: [...new Set(plurals.map((plural) => plural.name))] };
+    const lists = { placeholders, tags, plurals: [...new Set(plurals.map((plural) => plural.name))] };
+    const filled = Object.entries(lists).filter(([, names]) => names.length > 0);
+    return { key, english, ...Object.fromEntries(filled) };
   });
   return { sourceHash, strings: described };
 }
@@ -49,16 +52,23 @@ function read(repo, locale, dir) {
   return { bundle: readWorkingDir(repo.root, dir), where: shown(repo.root, dir) };
 }
 
-function failed(command, locale, failures, where, consequence = "") {
-  return { failures, summary: `${command} ${locale}: ${counted(failures.length, "failure")} in ${where}${consequence}` };
+/**
+ * Reads the translation `command` works on and checks it. A translation that
+ * passes gives `{ bundle, where }`. One that does not gives `{ failure }`, the
+ * result the command returns.
+ */
+function checked(command, repo, locale, dir) {
+  const { bundle, where } = read(repo, locale, dir);
+  const failures = failuresOf(locale, repo, bundle);
+  if (failures.length === 0) return { bundle, where };
+  const summary = `${command} ${locale}: ${counted(failures.length, "failure")} in ${where}${WHEN_IT_FAILS[command]}`;
+  return { failure: { failures, summary } };
 }
 
 /** Checks a translator's directory, or the installed files of `locale` when there is no `dir`. */
 export function check(repo, locale, dir) {
-  const { bundle, where } = read(repo, locale, dir);
-  const failures = failuresOf(locale, repo, bundle, repo.lib.shapeProblems);
-  if (failures.length > 0) return failed("check", locale, failures, where);
-  return passed(`ok check ${locale}: ${sizeOf(repo)} pass in ${where}`);
+  const { failure, where } = checked("check", repo, locale, dir);
+  return failure ?? passed(`ok check ${locale}: ${sizeOf(repo)} pass in ${where}`);
 }
 
 function installFiles(repo, locale, bundle, installed) {
@@ -87,9 +97,8 @@ function installFiles(repo, locale, bundle, installed) {
  * other file is written with `reviewed: false`.
  */
 export function importTranslation(repo, locale, dir) {
-  const { bundle, where } = read(repo, locale, dir);
-  const failures = failuresOf(locale, repo, bundle, repo.lib.shapeProblems);
-  if (failures.length > 0) return failed("import", locale, failures, where, ", nothing was written");
+  const { failure, bundle } = checked("import", repo, locale, dir);
+  if (failure !== undefined) return failure;
 
   const files = installFiles(repo, locale, bundle, readInstalled(repo.root, locale));
   const written = writeChanged(repo.root, files);
@@ -98,9 +107,8 @@ export function importTranslation(repo, locale, dir) {
 
 /** Checks the installed files of `locale`, then marks every one of them reviewed. */
 export function approve(repo, locale) {
-  const bundle = readInstalled(repo.root, locale);
-  const failures = failuresOf(locale, repo, bundle, repo.lib.shapeProblems);
-  if (failures.length > 0) return failed("approve", locale, failures, INSTALLED_FILES, ", nothing was approved");
+  const { failure, bundle } = checked("approve", repo, locale);
+  if (failure !== undefined) return failure;
 
   const files = [
     ...repo.articles.map(({ slug, text }) => {
@@ -122,13 +130,13 @@ export function seed(repo) {
 }
 
 /** Checks every locale that serves articles: its installed files pass and each one is reviewed. */
-export async function verify(repo) {
-  const locales = (await translatedLocales(repo.root)).filter((locale) => locale !== ENGLISH);
+export function verify(repo) {
+  const locales = repo.translatedLocales.filter((locale) => locale !== ENGLISH);
   if (locales.length === 0) return passed("ok verify: nothing to verify, en is the only locale that serves articles");
 
   const failures = locales.flatMap((locale) => {
     const bundle = readInstalled(repo.root, locale);
-    const lines = [...failuresOf(locale, repo, bundle, repo.lib.shapeProblems), ...unreviewedOf(bundle)];
+    const lines = [...failuresOf(locale, repo, bundle), ...unreviewedOf(bundle)];
     return lines.map((line) => `[${locale}] ${line}`);
   });
   if (failures.length > 0) return { failures, summary: `verify: ${counted(failures.length, "failure")}` };

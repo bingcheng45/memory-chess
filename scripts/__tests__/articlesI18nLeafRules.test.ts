@@ -87,6 +87,46 @@ describe("the script rule", () => {
   it("wants half the letters of a long leaf in the script of the language, without counting ICU syntax", () => {
     expect(problemsOf(CASES.map(([one]) => one))).toEqual(CASES.map(([, expected]) => expected));
   });
+
+  it("fails a locale whose script has no rule yet, in one line that says where to add it", () => {
+    const source = '{ lib: { shapeProblems: () => [] }, articles: [], chrome: { strings: {}, sourceHash: "" } }';
+    const bundle = "{ installed: false, problems: [], sameAsEnglishKeys: [], articles: {}, chrome: { text: {}, sameAsEnglish: [] } }";
+
+    const failures = evalChecks(`["th", "de", "ru"].map((locale) => checks.failuresOf(locale, ${source}, ${bundle}))`);
+
+    expect(failures).toEqual([["th: no script rule for Thai, add one to scripts/articles-i18n/checks.mjs"], [], []]);
+  });
+});
+
+describe("the full stop rule", () => {
+  const GAINED = ["ends with a full stop, the English text does not"];
+  const IDEOGRAPHIC_FULL_STOP = String.fromCodePoint(0x3002);
+  const DANDA = String.fromCodePoint(0x964);
+  const ended = (locale: string, english: string, value: string): Leaf => ({
+    locale,
+    kind: "article",
+    path: "photo.changes",
+    english,
+    value,
+    isListed: false,
+  });
+  const CASES: [leaf: Leaf, problems: string[]][] = [
+    [ended("de", "Cropped", "Zugeschnitten."), GAINED],
+    [ended("de", "Cropped", "Zugeschnitten"), []],
+    [ended("de", "Cropped", "Zugeschnitten. Aufgehellt"), []],
+    [ended("de", "She won.", "Sie gewann."), []],
+    [ended("de", 'She said, "I won."', "Sie sagte: 'Ich gewann'."), []],
+    [ended("de", "2882 (2014)", "2882 (2014)."), GAINED],
+    [ended("ja", "Cropped", `棋${IDEOGRAPHIC_FULL_STOP}`), GAINED],
+    [ended("zh-CN", "She won.", `棋${IDEOGRAPHIC_FULL_STOP}`), []],
+    [ended("hi", "Cropped", `क${DANDA}`), GAINED],
+    [ended("hi", "She won.", `क${DANDA}`), []],
+    [{ ...ended("de", "Articles", "Artikel."), kind: "chrome", path: "list.heading" }, GAINED],
+  ];
+
+  it("fails a leaf that ends with a full stop of any script when the English leaf ends without one", () => {
+    expect(problemsOf(CASES.map(([one]) => one))).toEqual(CASES.map(([, expected]) => expected));
+  });
 });
 
 describe("the identical rule", () => {

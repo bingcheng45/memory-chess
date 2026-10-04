@@ -327,3 +327,20 @@ describe("check 13: installed files made from an older English text", () => {
     });
   });
 });
+
+describe("check 14: a full stop the English text does not end with", () => {
+  it("fails a leaf that gained one, in an article and in the chrome", () => {
+    const run = check("de", (english) =>
+      withChrome(
+        withText(marked(english), (ada) => ({ ...ada, photo: { ...ada.photo, changes: "Zz Cropped." } })),
+        "list.heading",
+        "Zz Articles.",
+      ),
+    );
+
+    expect(run.failures).toEqual([
+      "ada-example photo.changes: ends with a full stop, the English text does not",
+      "chrome list.heading: ends with a full stop, the English text does not",
+    ]);
+  });
+});

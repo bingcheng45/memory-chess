@@ -1,10 +1,8 @@
 import { formatError, literalTextOf, partsOf } from "./icu.mjs";
 import { leavesOf } from "./leaves.mjs";
+import { CHROME, ENGLISH } from "./names.mjs";
 
-export const ARTICLE = "article";
-export const CHROME = "chrome";
-
-const ENGLISH = "en";
+const ARTICLE = "article";
 const PROTECTED_TERM = "Memory Chess";
 const TITLE_PATH = "title";
 const TITLE_MAX_GRAPHEMES = 90;
@@ -16,6 +14,10 @@ const LETTER = /\p{L}/gu;
 const HAS_LETTER = /\p{L}/u;
 const LONG_DASH = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`);
 const ANGLE_BRACKET = /[<>]/;
+const IDEOGRAPHIC_FULL_STOP = String.fromCodePoint(0x3002);
+const DANDA = String.fromCodePoint(0x964);
+const FULL_STOPS = [".", IDEOGRAPHIC_FULL_STOP, DANDA];
+const ENDS_WITHOUT_PUNCTUATION = /[\p{L}\p{N})]$/u;
 
 const DECIMAL_DIGIT = /\p{Nd}/u;
 const EVERY_DECIMAL_DIGIT = /\p{Nd}/gu;
@@ -24,13 +26,17 @@ const NO_BREAK_SPACES = String.fromCharCode(0xa0, 0x202f);
 const GROUP_SEPARATOR = new RegExp(`(?<=\\d)[.,' ${NO_BREAK_SPACES}](?=\\d{3}(?!\\d))`, "g");
 
 const MIN_LETTERS_FOR_SCRIPT_CHECK = 40;
+const THIS_FILE = "scripts/articles-i18n/checks.mjs";
+const LATIN = "Latn";
+// From the script a locale is written in, as `Intl.Locale` names it, to the
+// Unicode scripts its letters may come from.
 const SCRIPTS = {
-  ru: ["Cyrillic"],
-  hi: ["Devanagari"],
-  ja: ["Hiragana", "Katakana", "Han"],
-  ko: ["Hangul"],
-  "zh-CN": ["Han"],
-  "zh-TW": ["Han"],
+  Cyrl: ["Cyrillic"],
+  Deva: ["Devanagari"],
+  Jpan: ["Hiragana", "Katakana", "Han"],
+  Kore: ["Hangul"],
+  Hans: ["Han"],
+  Hant: ["Han"],
 };
 
 const PLURAL_CATEGORIES = ["zero", "one", "two", "few", "many", "other"];
@@ -130,10 +136,20 @@ function titleLengthProblems({ kind, path, locale, value }) {
   return length <= TITLE_MAX_GRAPHEMES ? [] : [`${length} characters, the limit is ${TITLE_MAX_GRAPHEMES}`];
 }
 
+const scriptOf = (locale) => new Intl.Locale(locale).maximize().script;
+
+// Without this line a new locale in a script the table lacks would skip the
+// script check in silence.
+function missingScriptRuleProblems(locale) {
+  const script = scriptOf(locale);
+  if (script === LATIN || Object.hasOwn(SCRIPTS, script)) return [];
+  return [`${locale}: no script rule for ${script}, add one to ${THIS_FILE}`];
+}
+
 // A leaf that equals its English leaf is the identical check's business. It
 // cannot be in the locale's script, and it passes there only on purpose.
 function scriptProblems({ kind, locale, english, value }) {
-  const scripts = SCRIPTS[locale];
+  const scripts = SCRIPTS[scriptOf(locale)];
   if (scripts === undefined || value === english) return [];
   const letters = (kind === CHROME ? literalTextOf(value, locale) : value).match(LETTER) ?? [];
   if (letters.length < MIN_LETTERS_FOR_SCRIPT_CHECK) return [];
@@ -141,6 +157,15 @@ function scriptProblems({ kind, locale, english, value }) {
   const expected = letters.filter((letter) => inScript.test(letter)).length;
   if (expected * 2 >= letters.length) return [];
   return [`${expected} of ${letters.length} letters are ${scripts.join(" or ")}, at least half must be`];
+}
+
+// The page ends some leaves itself: the photo credit prints `{changes}.`, so a
+// translated leaf with its own full stop would print two. An English leaf that
+// ends on a quotation mark is a sentence, and each language has its own rule
+// for which side of the mark the full stop goes.
+function fullStopProblems({ english, value }) {
+  if (!ENDS_WITHOUT_PUNCTUATION.test(english) || !FULL_STOPS.some((stop) => value.endsWith(stop))) return [];
+  return ["ends with a full stop, the English text does not"];
 }
 
 const LEAF_RULES = [
@@ -154,6 +179,7 @@ const LEAF_RULES = [
     english.includes(PROTECTED_TERM) && !value.includes(PROTECTED_TERM) ? [`"${PROTECTED_TERM}" is missing`] : [],
   ({ kind, value }) => (kind === ARTICLE && ANGLE_BRACKET.test(value) ? ["has < or >"] : []),
   scriptProblems,
+  fullStopProblems,
 ];
 
 /**
@@ -217,22 +243,23 @@ function unitFailures(subject, isInstalled, shapeProblems) {
  * Every reason the translation in `bundle` may not be installed or published,
  * one line each, naming the article or `chrome`, the leaf path and the reason.
  *
- * `source` is the English side: `{ articles: [{ slug, text, sourceHash }],
- * chrome: { strings, sourceHash } }`. `bundle` is one locale read from a
+ * `source` is the English side: `{ lib: { shapeProblems }, articles: [{ slug,
+ * text, sourceHash }], chrome: { strings, sourceHash } }`, with `shapeProblems`
+ * from `src/lib/articles/articleText.ts`. `bundle` is one locale read from a
  * translator's directory or from the installed files: `{ installed, problems,
  * sameAsEnglishKeys, articles: { [slug]: unit }, chrome: unit }`, where a unit
  * is `{ text, sameAsEnglish, sourceHash, reviewed }` or `{ error }`.
  *
  * @param {string} locale
- * @param {(english: unknown, candidate: unknown) => string[]} shapeProblems from `src/lib/articles/articleText.ts`
  * @returns {string[]}
  */
-export function failuresOf(locale, source, bundle, shapeProblems) {
+export function failuresOf(locale, source, bundle) {
   const slugs = source.articles.map((article) => article.slug);
-  const failuresFor = (subject) => unitFailures({ locale, ...subject }, bundle.installed, shapeProblems);
+  const failuresFor = (subject) => unitFailures({ locale, ...subject }, bundle.installed, source.lib.shapeProblems);
   const isUnknown = (name) => !slugs.includes(name);
 
   return [
+    ...missingScriptRuleProblems(locale),
     ...bundle.problems,
     ...bundle.sameAsEnglishKeys
       .filter((key) => key !== CHROME && isUnknown(key))

@@ -2,18 +2,17 @@ import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSy
 import { basename, dirname, join, relative, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 import { isTree, leavesOf } from "./leaves.mjs";
+import { CHROME, ENGLISH } from "./names.mjs";
 
 /** A mistake in how the tool was called or where it runs. It ends the run with exit code 2. */
 export class UsageError extends Error {}
 
-export const ENGLISH = "en";
-
-const CHROME = "chrome";
 const SAME_AS_ENGLISH = "same-as-english";
 const MESSAGES_DIR = "messages";
 const ARTICLES_DIR = "src/lib/articles";
 const ENTRIES_DIR = `${ARTICLES_DIR}/entries`;
 const TRANSLATIONS_DIR = `${ARTICLES_DIR}/translations`;
+const TRANSLATED_LOCALES_FILE = `${ARTICLES_DIR}/translatedLocales.ts`;
 const ROUTING_FILE = "src/i18n/routing.ts";
 const TYPELESS_PACKAGE_WARNING = "MODULE_TYPELESS_PACKAGE_JSON";
 
@@ -88,12 +87,14 @@ async function englishArticles(root, { textOf, sourceHashOf }) {
 }
 
 /**
- * The English side of the repo at `cwd`, and the functions that split and hash
- * an article. Everything else in the tool takes this as `repo`.
+ * The English side of the repo at `cwd`, the locales it ships and serves
+ * articles in, and the functions that split and hash an article. Everything
+ * else in the tool takes this as `repo`.
  *
  * @returns {Promise<{
  *   root: string,
  *   locales: string[],
+ *   translatedLocales: string[],
  *   lib: { textOf: Function, sourceHashOf: Function, shapeProblems: Function },
  *   articles: { slug: string, text: object, sourceHash: string }[],
  *   chrome: { namespace: object, strings: Record<string, string>, sourceHash: string },
@@ -109,19 +110,17 @@ export async function loadRepo(cwd) {
   });
   muteTypelessPackageWarning();
   const lib = await importTypeScript(root, `${ARTICLES_DIR}/articleText.ts`);
+  const { TRANSLATED_ARTICLE_LOCALES } = await importTypeScript(root, TRANSLATED_LOCALES_FILE);
   const namespace = readMessages(root, ENGLISH).articles;
 
   return {
     root,
     locales: shippedLocales(root),
+    translatedLocales: TRANSLATED_ARTICLE_LOCALES,
     lib,
     articles: await englishArticles(root, lib),
     chrome: { namespace, strings: Object.fromEntries(leavesOf(namespace)), sourceHash: lib.sourceHashOf(namespace) },
   };
-}
-
-export async function translatedLocales(root) {
-  return (await importTypeScript(root, `${ARTICLES_DIR}/translatedLocales.ts`)).TRANSLATED_ARTICLE_LOCALES;
 }
 
 function jsonNames(root, dir) {

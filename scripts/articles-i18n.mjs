@@ -9,7 +9,8 @@
  * in the call or the place it runs from.
  */
 import { approve, check, exportSources, importTranslation, seed, verify } from "./articles-i18n/commands.mjs";
-import { ENGLISH, UsageError, loadRepo } from "./articles-i18n/repo.mjs";
+import { ENGLISH } from "./articles-i18n/names.mjs";
+import { UsageError, loadRepo } from "./articles-i18n/repo.mjs";
 
 const USAGE = `Usage: node scripts/articles-i18n.mjs <command>
 
@@ -48,7 +49,7 @@ async function run([name = "", ...args]) {
     throw new UsageError(`"${args[0]}" is not a shipped locale other than ${ENGLISH}`);
   }
 
-  const { failures, summary } = await command.run(repo, args);
+  const { failures, summary } = command.run(repo, args);
   failures.forEach((failure) => process.stderr.write(`${oneLine(failure)}\n`));
   process.stdout.write(`${summary}\n`);
   return failures.length === 0 ? 0 : EXIT_FAILED;

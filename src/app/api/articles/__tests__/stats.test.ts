@@ -141,6 +141,13 @@ describe("POST /api/articles/[slug]/stats", () => {
     expect(recordArticleEvent).toHaveBeenCalledWith(SLUG, event);
   });
 
+  it("answers a crawler 400, not 204, for a view sent as text/plain", async () => {
+    const response = await post({ headers: { "content-type": "text/plain", "user-agent": GOOGLEBOT } });
+
+    await expectError(response, 400);
+    expect(recordArticleEvent).not.toHaveBeenCalled();
+  });
+
   it("answers a crawler 400, not 204, for a body that names no event", async () => {
     const response = await post({ headers: { ...JSON_HEADERS, "user-agent": GOOGLEBOT }, body: '{"event":"share"}' });
 

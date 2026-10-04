@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { setRequestLocale } from "next-intl/server";
+import * as routeModule from "@/app/[locale]/articles/[slug]/page";
 import ArticleRoute, { revalidate } from "@/app/[locale]/articles/[slug]/page";
 import ArticlePage from "@/components/articles/ArticlePage";
 import { getArticle, getNextArticle } from "@/lib/articles";
@@ -42,8 +43,9 @@ describe("ArticleRoute", () => {
     jest.mocked(getArticleStats).mockResolvedValue({ [SLUG]: COUNTS, "judit-polgar": { views: 4, likes: 0 } });
   });
 
-  it("revalidates every five minutes", () => {
+  it("revalidates every five minutes and exports no dynamic mode", () => {
     expect(revalidate).toBe(300);
+    expect(Object.keys(routeModule)).not.toContain("dynamic");
   });
 
   it("asks for the counts of the one article, after pinning the locale", async () => {

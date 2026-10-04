@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { render, screen, within } from "@/test-utils/intl";
+import * as pageModule from "@/app/[locale]/articles/page";
 import ArticlesPage, { revalidate } from "@/app/[locale]/articles/page";
 import ArticleList from "@/components/articles/ArticleList";
 import { sortedFirstPaintScript } from "@/components/articles/sortedFirstPaint";
@@ -51,8 +52,9 @@ describe("ArticlesPage", () => {
     jest.mocked(getArticleStats).mockResolvedValue(STATS);
   });
 
-  it("revalidates every five minutes", () => {
+  it("revalidates every five minutes and exports no dynamic mode", () => {
     expect(revalidate).toBe(300);
+    expect(Object.keys(pageModule)).not.toContain("dynamic");
   });
 
   it("asks for the counts of exactly the registry slugs, after pinning the locale", async () => {

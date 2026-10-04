@@ -3,6 +3,11 @@ import { existsSync, writeFileSync, mkdirSync, realpathSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { TRANSLATED_RULES, translatedLines, translatedRows } from "./audit-adsense/translated.mjs";
+import { countWords } from "./audit-adsense/words.mjs";
+
+export { translatedLines };
+
 const PUBLISHER_ID = "pub-9048170183399377";
 const PROD_ORIGIN = "https://thememorychess.com";
 const CONCURRENCY = 8;
@@ -35,6 +40,7 @@ const PLACEHOLDERS = [
 ];
 
 const TRUST_LINKS = ["/privacy", "/about", "/terms", "/contact-us"];
+const TRANSLATED_MODES = ["on", "off"];
 
 const args = Object.fromEntries(
   process.argv.slice(2).map((arg, i, all) =>
@@ -43,6 +49,7 @@ const args = Object.fromEntries(
 );
 const base = (args.base ?? "http://127.0.0.1:4517").replace(/\/$/, "");
 const outDir = args.out;
+const translatedMode = args.translated ?? "on";
 
 function stripBlocks(html, tags) {
   return tags.reduce(
@@ -51,9 +58,23 @@ function stripBlocks(html, tags) {
   );
 }
 
+const markedElement = (attribute, flags) => new RegExp(`<([a-zA-Z][\\w-]*)\\b[^>]*\\s${attribute}(?:="[^"]*")?[^>]*>([\\s\\S]*?)<\\/\\1>`, flags);
+
 /** Drops every element carrying `attribute`, such as the guides' AI-assistance note. */
 function stripMarked(html, attribute) {
-  return html.replace(new RegExp(`<([a-zA-Z][\\w-]*)\\b[^>]*\\s${attribute}(?:="[^"]*")?[^>]*>[\\s\\S]*?<\\/\\1>`, "gi"), " ");
+  return html.replace(markedElement(attribute, "gi"), " ");
+}
+
+/** The hrefs inside the first element carrying `attribute`, or null when no element carries it. */
+function markedLinks(html, attribute) {
+  const marked = html.match(markedElement(attribute, "i"));
+  return marked ? [...marked[2].matchAll(/<a\b[^>]*\shref="([^"]*)"/gi)].map(([, href]) => href) : null;
+}
+
+/** The `@type` values the page's JSON-LD declares. */
+function schemaTypes(html) {
+  const blocks = [...html.matchAll(/<script\b[^>]*\stype="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)];
+  return [...new Set(blocks.flatMap(([, json]) => [...json.matchAll(/"@type":\s*"([^"]+)"/g)].map(([, type]) => type)))];
 }
 
 function toText(html) {
@@ -63,10 +84,6 @@ function toText(html) {
     .replace(/&[a-zA-Z#0-9]+;/g, " ")
     .replace(/\s+/g, " ")
     .trim();
-}
-
-function countWords(text) {
-  return text ? text.split(" ").filter((w) => /[\p{L}\p{N}]/u.test(w)).length : 0;
 }
 
 function countUnits(text) {
@@ -176,6 +193,8 @@ export function parsePage(url, status, html, linkHeader = "") {
     links: [...body.matchAll(/<a\b[^>]*href="([^"#?]*)[^"]*"/gi)].map((m) => m[1]),
     hreflang: [...html.matchAll(/<link rel="alternate" hrefLang="([^"]+)" href="([^"]+)"/gi)].map((m) => ({ lang: m[1], href: m[2] })),
     headerHreflang: linkHeaderAlternates(linkHeader),
+    schemaTypes: schemaTypes(html),
+    translationNoteLinks: markedLinks(main, "data-translation-note"),
   };
 }
 
@@ -203,6 +222,9 @@ async function fetchPage(url) {
 }
 
 const listedKey = (url) => url.replace(/\/$/, "") || base;
+
+/** Whether `href`, as a page of this site writes it, names `url`. */
+const sameUrl = (href, url) => listedKey(toLocal(new URL(href, base).href)) === listedKey(url);
 
 /** Unlike `listedKey`, parses the URL, so a slash before a query is stripped and the root keeps its `/`. */
 function alternateUrl(href) {
@@ -546,15 +568,35 @@ async function redirectFailures(rule, cases) {
   return failures.filter(Boolean);
 }
 
-export async function singleRedirects(entries, pages) {
-  const slashCases = entries
-    .filter((entry) => new URL(entry.url).pathname !== "/")
-    .map((entry) => ({ url: `${entry.url}/`, expected: entry.url }));
+/**
+ * Fetches every English-only page under every locale prefix, once. The
+ * redirect check and the translated mode both read the answers.
+ */
+export async function probeLocalePairs(entries, pages) {
   const locales = prefixLocales(entries);
   const candidates = englishOnlyCandidates(entries, Object.fromEntries(pages.map((page) => [page.url, page.canonical])));
   const pairs = localePairs(candidates, locales);
   const probes = await pool(pairs, async ({ prefixed }) => [prefixed, await fetchPage(prefixed)]);
-  const owed = pairsOwedARedirect(pairs, Object.fromEntries(probes));
+  return { locales, pairs, probes: Object.fromEntries(probes) };
+}
+
+/** Each page served in translation beside the English page it translates. */
+export function translatedPairs({ pairs, probes }, pages) {
+  const englishByUrl = new Map(pages.map((page) => [page.url, page]));
+  return pairs
+    .filter((pair) => servedInTranslation(probes[pair.prefixed]))
+    .map((pair) => ({ page: probes[pair.prefixed], english: englishByUrl.get(pair.url) }));
+}
+
+export function auditTranslated(served) {
+  return translatedRows(served, { sameUrl });
+}
+
+export async function singleRedirects(entries, { locales, pairs, probes }) {
+  const slashCases = entries
+    .filter((entry) => new URL(entry.url).pathname !== "/")
+    .map((entry) => ({ url: `${entry.url}/`, expected: entry.url }));
+  const owed = pairsOwedARedirect(pairs, probes);
   const localeCases = localeRedirectCases(owed);
   const coverage = localeCoverageProblem(locales, pairs, owed);
   return {
@@ -587,10 +629,22 @@ export function redirectSummary({ slashChecked, localeChecked, pairs, servedInTr
   return `single-308 redirects (G28 crawlable canonical URLs): ${slashChecked} slashed sitemap URLs, ${localeChecked} locale-prefixed URLs (${pairs - skipped} of ${pairs} page and locale pairs x 2, across ${locales} locales; ${skipped} pairs served in translation and skipped)`;
 }
 
-function printReport({ pages, indexable, locales, broken, redirects, byRule, siteProblems, findings, failingPages }) {
+function ruleRow(rule, audited) {
+  const failing = audited.filter((page) => page.findings.some((f) => f.rule === rule.id));
+  return { id: rule.id, guideline: rule.guideline, failing: failing.length, example: failing[0] ? `${failing[0].path}: ${failing[0].findings.find((f) => f.rule === rule.id).message}` : "" };
+}
+
+function translatedCount(translated) {
+  if (!translated) return "translated pages not checked (--translated off)";
+  return `${translated.length} translated ${translated.length === 1 ? "page" : "pages"} checked`;
+}
+
+function printReport({ pages, indexable, locales, broken, redirects, translated, byRule, siteProblems, failingPages }) {
   console.log(`AdSense audit of ${base}`);
-  console.log(`${pages.length} sitemap URLs, ${indexable.length} indexable, ${locales.size} locales, ${broken.length} broken internal links`);
-  console.log(`${redirectSummary(redirects)}\n`);
+  console.log(`${pages.length} sitemap URLs, ${indexable.length} indexable, ${locales.size} locales, ${broken.length} broken internal links, ${translatedCount(translated)}`);
+  console.log(redirectSummary(redirects));
+  for (const line of translated ? translatedLines(translated) : []) console.log(line);
+  console.log("");
   console.log("| rule | guideline | failing pages | example |");
   console.log("| --- | --- | ---: | --- |");
   for (const row of byRule) console.log(`| ${row.id} | ${row.guideline} | ${row.failing} | ${row.example.replace(/\|/g, "\\|")} |`);
@@ -599,18 +653,22 @@ function printReport({ pages, indexable, locales, broken, redirects, byRule, sit
   console.log("\nFailing pages:");
   for (const page of failingPages) {
     console.log(`  ${page.path}`);
-    for (const f of findings.get(page.url)) console.log(`    [${f.rule}] ${f.message}`);
+    for (const f of page.findings) console.log(`    [${f.rule}] ${f.message}`);
   }
 }
 
-function writeReport(dir, { pages, indexable, locales, broken, redirects, byRule, siteProblems, findings }) {
+function writeReport(dir, { pages, indexable, locales, broken, redirects, translated, byRule, siteProblems, findings }) {
   mkdirSync(dir, { recursive: true });
-  const summary = { urls: pages.length, indexable: indexable.length, locales: Object.fromEntries(locales), broken: broken.length, redirects };
+  const summary = { urls: pages.length, indexable: indexable.length, locales: Object.fromEntries(locales), broken: broken.length, redirects, translated: translated?.length ?? null };
   const pageRows = pages.map(({ mainText, proseText, links, hreflang, headerHreflang, ...rest }) => ({ ...rest, findings: findings.get(rest.url) }));
-  writeFileSync(join(dir, "audit.json"), JSON.stringify({ base, summary, rules: byRule, siteProblems, pages: pageRows }, null, 2));
+  writeFileSync(join(dir, "audit.json"), JSON.stringify({ base, summary, rules: byRule, siteProblems, pages: pageRows, translated }, null, 2));
 }
 
 async function main() {
+  if (!TRANSLATED_MODES.includes(translatedMode)) {
+    console.error(`Cannot audit: --translated takes ${TRANSLATED_MODES.join(" or ")}, got "${translatedMode}"`);
+    process.exit(2);
+  }
   const sitemapResponse = await fetch(`${base}/sitemap.xml`);
   if (sitemapResponse.status !== 200) {
     console.error(`Cannot audit: ${base}/sitemap.xml answered HTTP ${sitemapResponse.status}, expected 200`);
@@ -629,7 +687,9 @@ async function main() {
 
   const { broken, unlisted } = await crawlLinks(pages, listed);
   const adsTxt = await fetch(`${base}/ads.txt`).then((r) => (r.ok ? r.text() : ""));
-  const { problems: redirectProblems, ...redirects } = await singleRedirects(entries, pages);
+  const probed = await probeLocalePairs(entries, pages);
+  const { problems: redirectProblems, ...redirects } = await singleRedirects(entries, probed);
+  const translated = translatedMode === "on" ? auditTranslated(translatedPairs(probed, pages)) : null;
   const siteProblems = [
     ...broken.map((b) => ({ rule: "broken-link", message: `${b.url} answers ${b.status}` })),
     ...unlisted.map((p) => ({ rule: "unlisted-indexable", message: `${p.path} is linked and indexable but missing from the sitemap` })),
@@ -637,15 +697,13 @@ async function main() {
     ...redirectProblems,
   ];
 
-  const byRule = RULES.map((rule) => {
-    const failing = pages.filter((page) => findings.get(page.url).some((f) => f.rule === rule.id));
-    return { id: rule.id, guideline: rule.guideline, failing: failing.length, example: failing[0] ? `${failing[0].path}: ${findings.get(failing[0].url).find((f) => f.rule === rule.id).message}` : "" };
-  });
+  const audited = [...pages.map((page) => ({ path: page.path, findings: findings.get(page.url) })), ...(translated ?? [])];
+  const byRule = [...RULES, ...(translated ? TRANSLATED_RULES : [])].map((rule) => ruleRow(rule, audited));
   const locales = new Map();
   for (const page of pages) locales.set(page.locale, (locales.get(page.locale) ?? 0) + 1);
-  const failingPages = pages.filter((page) => findings.get(page.url).length);
+  const failingPages = audited.filter((page) => page.findings.length);
 
-  const report = { pages, indexable, locales, broken, redirects, byRule, siteProblems, findings, failingPages };
+  const report = { pages, indexable, locales, broken, redirects, translated, byRule, siteProblems, findings, failingPages };
   printReport(report);
   if (outDir) writeReport(outDir, report);
 

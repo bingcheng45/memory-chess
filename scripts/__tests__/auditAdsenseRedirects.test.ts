@@ -226,7 +226,7 @@ describe("audit-adsense single-308 checks against a stubbed site", () => {
         const answer = site[new URL(url).pathname] ?? { status: 404 };
         return new Response(answer.body ?? null, { status: answer.status, headers: answer.location ? { location: answer.location } : {} });
       };
-      return JSON.stringify(await audit.singleRedirects(${JSON.stringify(entries)}, ${JSON.stringify(pages)}));
+      return JSON.stringify(await audit.singleRedirects(${JSON.stringify(entries)}, await audit.probeLocalePairs(${JSON.stringify(entries)}, ${JSON.stringify(pages)})));
     })()`;
     return JSON.parse(runAudit(program)) as {
       slashChecked: number;

@@ -453,21 +453,37 @@ export function englishOnlyCandidates(entries, canonicalByUrl) {
 }
 
 /**
- * Candidates whose first-locale prefix is not served in translation. Served in
- * translation means a 200 whose page is noindex or canonical to itself, as
- * `/de/leaderboard` is. Any other answer, a 200 canonical to the bare page or a
- * 404 included, keeps the candidate so `redirectProblem` reports it.
+ * Each candidate under each locale prefix. A page can be translated in one
+ * locale and English-only in the next, as an article is, so the pair is the
+ * unit that is probed and checked, not the page.
  */
-export function englishOnlyUrls(candidates, firstLocaleProbeByUrl) {
-  const servedInTranslation = (probe) =>
-    probe?.status === 200 && (/noindex/i.test(probe.robots) || (Boolean(probe.canonical) && listedKey(toLocal(probe.canonical)) === listedKey(probe.url)));
-  return candidates.filter((url) => !servedInTranslation(firstLocaleProbeByUrl[url]));
+export function localePairs(candidates, locales) {
+  return candidates.flatMap((url) => locales.map((locale) => ({ url, locale, prefixed: `${base}/${locale}${new URL(url).pathname}` })));
+}
+
+/** A 200 whose page is noindex or canonical to itself, as `/de/leaderboard` is. */
+export function servedInTranslation(probe) {
+  return probe?.status === 200 && (/noindex/i.test(probe.robots) || (Boolean(probe.canonical) && listedKey(toLocal(probe.canonical)) === listedKey(probe.url)));
+}
+
+/**
+ * The pairs whose prefixed URL is not served in translation. Any other answer,
+ * a 200 canonical to the bare page or a 404 included, keeps the pair so
+ * `redirectProblem` reports it.
+ */
+export function pairsOwedARedirect(pairs, probeByPrefixedUrl) {
+  return pairs.filter((pair) => !servedInTranslation(probeByPrefixedUrl[pair.prefixed]));
+}
+
+/** Each owed pair's prefixed URL, with and without a trailing slash, expecting the English URL. */
+export function localeRedirectCases(owed) {
+  return owed.flatMap(({ url, prefixed }) => [prefixed, `${prefixed}/`].map((from) => ({ url: from, expected: url })));
 }
 
 /** Why the locale-prefix check would pass without checking anything, or null. */
-export function localeCoverageProblem(locales, candidates, englishOnly) {
+export function localeCoverageProblem(locales, pairs, owed) {
   if (!locales.length) return "the sitemap alternates name no prefixed locale, so no locale prefix was checked";
-  if (candidates.length && !englishOnly.length) return `none of ${candidates.length} English-only candidates probed as English-only, so no locale prefix was checked`;
+  if (pairs.length && !owed.length) return `all ${pairs.length} page and locale pairs are served in translation, so no locale prefix redirect was checked`;
   return null;
 }
 
@@ -508,23 +524,22 @@ async function redirectFailures(rule, cases) {
   return failures.filter(Boolean);
 }
 
-async function singleRedirects(entries, pages) {
+export async function singleRedirects(entries, pages) {
   const slashCases = entries
     .filter((entry) => new URL(entry.url).pathname !== "/")
     .map((entry) => ({ url: `${entry.url}/`, expected: entry.url }));
   const locales = prefixLocales(entries);
   const candidates = englishOnlyCandidates(entries, Object.fromEntries(pages.map((page) => [page.url, page.canonical])));
-  const localized = (url, locale) => `${base}/${locale}${new URL(url).pathname}`;
-  const firstLocaleProbes = locales.length ? await pool(candidates, async (url) => [url, await fetchPage(localized(url, locales[0]))]) : [];
-  const englishOnly = englishOnlyUrls(candidates, Object.fromEntries(firstLocaleProbes));
-  const localeCases = englishOnly.flatMap((url) =>
-    locales.flatMap((locale) => [localized(url, locale), `${localized(url, locale)}/`].map((prefixed) => ({ url: prefixed, expected: url }))),
-  );
-  const coverage = localeCoverageProblem(locales, candidates, englishOnly);
+  const pairs = localePairs(candidates, locales);
+  const probes = await pool(pairs, async ({ prefixed }) => [prefixed, await fetchPage(prefixed)]);
+  const owed = pairsOwedARedirect(pairs, Object.fromEntries(probes));
+  const localeCases = localeRedirectCases(owed);
+  const coverage = localeCoverageProblem(locales, pairs, owed);
   return {
     slashChecked: slashCases.length,
     localeChecked: localeCases.length,
-    englishOnly: englishOnly.length,
+    pairs: pairs.length,
+    servedInTranslation: pairs.length - owed.length,
     locales: locales.length,
     problems: [
       ...(await redirectFailures("trailing-slash-redirect", slashCases)),
@@ -546,12 +561,15 @@ function ruleFindings(pages, indexable, listed) {
   return findings;
 }
 
+/** The report line for the single-308 checks: what was requested, and which pairs were left out and why. */
+export function redirectSummary({ slashChecked, localeChecked, pairs, servedInTranslation: skipped, locales }) {
+  return `single-308 redirects (G28 crawlable canonical URLs): ${slashChecked} slashed sitemap URLs, ${localeChecked} locale-prefixed URLs (${pairs - skipped} of ${pairs} page and locale pairs x 2, across ${locales} locales; ${skipped} pairs served in translation and skipped)`;
+}
+
 function printReport({ pages, indexable, locales, broken, redirects, byRule, siteProblems, findings, failingPages }) {
   console.log(`AdSense audit of ${base}`);
   console.log(`${pages.length} sitemap URLs, ${indexable.length} indexable, ${locales.size} locales, ${broken.length} broken internal links`);
-  console.log(
-    `single-308 redirects (G28 crawlable canonical URLs): ${redirects.slashChecked} slashed sitemap URLs, ${redirects.localeChecked} locale-prefixed URLs (${redirects.englishOnly} English-only pages x ${redirects.locales} locales x 2)\n`,
-  );
+  console.log(`${redirectSummary(redirects)}\n`);
   console.log("| rule | guideline | failing pages | example |");
   console.log("| --- | --- | ---: | --- |");
   for (const row of byRule) console.log(`| ${row.id} | ${row.guideline} | ${row.failing} | ${row.example.replace(/\|/g, "\\|")} |`);

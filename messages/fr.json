@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Articles sur les joueurs d’échecs et leur mémoire",
+      "description": "Portraits de joueurs d’échecs et de chercheurs qui étudient la mémoire. Chacun présente l’exploit documenté, la recherche qui l’explique et un exercice à essayer."
     },
     "list": {
       "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "sub": "Des joueurs d’échecs et des chercheurs qui étudient la mémoire, un portrait à la fois.",
+      "aboutHeading": "Comment ces articles sont réalisés",
+      "about1": "Chaque article suit un joueur d’échecs ou un chercheur et une question sur sa mémoire. Il peut s’agir d’un joueur connu pour un exploit de mémoire, ou d’un chercheur qui a mesuré ce que les joueurs retiennent après quelques secondes.",
+      "about2": "Tous les articles ont les mêmes parties. Un portrait est accompagné de son photographe et de sa licence. Une fiche donne les dates, les titres et l’exploit de mémoire pour lequel la personne est connue. Le récit met cet exploit en regard de la recherche qui l’explique. Une liste de sources indique d’où vient chaque affirmation. Un exercice final ouvre une manche de Memory Chess avec le nombre de pièces et le temps d’observation que suggère le récit.",
+      "about3": "Les articles sont recherchés et rédigés avec l’aide de l’IA à partir de sources publiées, comme des entretiens, des comptes rendus de tournois, des livres et des articles de recherche. Une vérification distincte compare ensuite chaque date, chaque chiffre et chaque citation à ces sources avant toute publication. Quand les sources divergent, l’article dit qui a rapporté quoi. Une anecdote que les sources ne rapportent que comme une histoire est racontée comme une histoire. Les articles dans d’autres langues sont traduits à partir du texte anglais avec l’aide de l’IA, et chaque traduction est vérifiée avant sa mise en ligne.",
+      "corrections": "Si quelque chose est inexact ici, <link>envoyez une correction</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Trier",
+      "group": "Trier les articles",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "Les plus récents",
+        "views": "Les plus consultés",
+        "likes": "Les plus appréciés"
       }
     },
     "pager": {
       "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
+      "previous": "Page précédente",
+      "next": "Page suivante",
       "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "showing": "Affichage de {first} à {last} sur {total}"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, one {# vue} many {# vues} other {# vues}}",
+      "likes": "{count, plural, one {# j’aime} many {# j’aime} other {# j’aime}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "Aimer cet article",
+      "failed": "Cela n’a pas été enregistré. Réessayez."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Tous les articles",
+      "showAll": "Afficher tout le texte",
+      "byline": "Par <author>{name}</author>",
+      "authorshipNote": "Recherché et rédigé avec l’aide de l’IA à partir des sources indiquées ci-dessous. Chaque fait a été confronté à ces sources avant la publication.",
+      "translationNote": "Traduit de l’anglais avec l’aide de l’IA. L’article en anglais fait foi.",
+      "readInEnglish": "Lire en anglais",
+      "photoCredit": "Photo : {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Fiche",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Naissance",
+        "died": "Décès",
+        "country": "Pays",
+        "title": "Titre",
+        "peakRating": "Meilleur classement Elo",
+        "worldChampion": "Champion du monde",
+        "knownFor": "Connu pour",
+        "memoryFeat": "Exploit de mémoire"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
+      "drillHeading": "À vous de jouer",
+      "drillAction": "Jouer {pieces, plural, one {# pièce} many {# pièces} other {# pièces}}, {seconds, plural, one {# seconde} many {# secondes} other {# secondes}}",
       "sources": "Sources",
-      "nextArticle": "Next article"
+      "nextArticle": "Article suivant"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "À lire ensuite",
+      "yourRound": "Votre manche",
+      "articleDrill": "L’exercice de cet article",
+      "roundSize": "{pieces, plural, one {# pièce} many {# pièces} other {# pièces}}, {seconds, plural, one {# seconde} many {# secondes} other {# secondes}}",
+      "read": "Lire l’article",
+      "tryDrill": "Essayer cet exercice"
     }
   }
 }

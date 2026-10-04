@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Artikkeleita shakinpelaajista ja heidän muististaan",
+      "description": "Profiileja shakinpelaajista ja muistintutkijoista. Jokaisessa kerrotaan dokumentoitu saavutus, sen selittävä tutkimus ja harjoitus, jota voi kokeilla."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "Artikkelit",
+      "sub": "Shakinpelaajia ja muistintutkijoita, yksi profiili kerrallaan.",
+      "aboutHeading": "Näin artikkelit tehdään",
+      "about1": "Jokainen artikkeli seuraa yhtä shakinpelaajaa tai tutkijaa ja yhtä kysymystä hänen muististaan. Aiheena voi olla pelaaja, joka tunnetaan muistisaavutuksesta, tai tutkija, joka mittasi, mitä pelaajat muistavat muutaman sekunnin jälkeen.",
+      "about2": "Jokaisessa artikkelissa on samat osat. Muotokuvan mukana ovat valokuvaaja ja lisenssi. Tietolaatikko kertoo päivämäärät, tittelit ja muistisaavutuksen, josta henkilö tunnetaan. Tarina asettaa saavutuksen sitä selittävän tutkimuksen rinnalle. Lähdeluettelo näyttää, mistä kukin väite on peräisin. Lopussa oleva harjoitus avaa Memory Chess -kierroksen, jossa nappuloiden määrä ja katseluaika ovat sellaiset kuin tarina ehdottaa.",
+      "about3": "Artikkelit tutkitaan ja luonnostellaan tekoälyn avulla julkaistuista lähteistä, kuten haastatteluista, turnausraporteista, kirjoista ja tutkimusartikkeleista. Erillinen tarkistus vertaa sitten jokaista päivämäärää, lukua ja lainausta näihin lähteisiin ennen julkaisua. Kun lähteet ovat eri mieltä, artikkeli kertoo, kuka raportoi mitä. Anekdootti, jonka lähteet esittävät vain tarinana, kerrotaan tarinana. Muunkieliset artikkelit käännetään englanninkielisestä tekstistä tekoälyn avulla, ja jokainen käännös tarkistetaan ennen julkaisua.",
+      "corrections": "Jos jokin täällä on väärin, <link>lähetä korjaus</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Lajittelu",
+      "group": "Lajittele artikkelit",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "Uusimmat",
+        "views": "Katsotuimmat",
+        "likes": "Tykätyimmät"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "Sivut",
+      "previous": "Edellinen sivu",
+      "next": "Seuraava sivu",
+      "page": "Sivu {page}",
+      "showing": "Näytetään {first}-{last}, yhteensä {total}"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, one {# katselukerta} other {# katselukertaa}}",
+      "likes": "{count, plural, one {# tykkäys} other {# tykkäystä}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "Tykkää artikkelista",
+      "failed": "Tallennus ei onnistunut. Yritä uudelleen."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Kaikki artikkelit",
+      "showAll": "Näytä koko teksti",
+      "byline": "Kirjoittaja: <author>{name}</author>",
+      "authorshipNote": "Tutkittu ja luonnosteltu tekoälyn avulla alla luetelluista lähteistä. Jokainen tieto tarkistettiin näistä lähteistä ennen julkaisua.",
+      "translationNote": "Käännetty englannista tekoälyn avulla. Englanninkielinen artikkeli on ensisijainen lähde.",
+      "readInEnglish": "Lue englanniksi",
+      "photoCredit": "Kuva: {author}, <licenseLink>{license}</licenseLink>, <source>Wikimedia Commonsista</source>. {changes}.",
+      "factFile": "Tietolaatikko",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Syntynyt",
+        "died": "Kuollut",
+        "country": "Maa",
+        "title": "Titteli",
+        "peakRating": "Korkein rating",
+        "worldChampion": "Maailmanmestari",
+        "knownFor": "Tunnettu",
+        "memoryFeat": "Muistisaavutus"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "Sinun vuorosi",
+      "drillAction": "Pelaa {pieces, plural, one {# nappula} other {# nappulaa}}, {seconds, plural, one {# sekunti} other {# sekuntia}}",
+      "sources": "Lähteet",
+      "nextArticle": "Seuraava artikkeli"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "Lue seuraavaksi",
+      "yourRound": "Sinun kierroksesi",
+      "articleDrill": "Tämän artikkelin harjoitus",
+      "roundSize": "{pieces, plural, one {# nappula} other {# nappulaa}}, {seconds, plural, one {# sekunti} other {# sekuntia}}",
+      "read": "Lue artikkeli",
+      "tryDrill": "Kokeile harjoitusta"
     }
   }
 }

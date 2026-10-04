@@ -1,9 +1,3 @@
-import type { PortraitPhoto } from "@/lib/articles/schema";
-
-export function photoNamed(name: string): PortraitPhoto {
-  return { src: `/images/articles/${name}.jpg`, width: 840, height: 1050, alt: `${name} at a chess board` };
-}
-
 export function recordWarmedImages(): HTMLImageElement[] {
   const warmed: HTMLImageElement[] = [];
   const RealImage = window.Image;

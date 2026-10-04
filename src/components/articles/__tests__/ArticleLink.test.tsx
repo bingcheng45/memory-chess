@@ -9,6 +9,7 @@ import {
   Card,
   ListPage,
   OtherCard,
+  PORTRAIT,
   ROUTE_COMMIT_LIMIT_MS,
   SLUG,
   backLink,
@@ -57,7 +58,7 @@ afterEach(() => {
 describe("ArticleLink markup", () => {
   it("links to the article it names and passes its other props to the anchor", () => {
     render(
-      <ArticleLink article={SLUG} className="card" data-article-card={SLUG}>
+      <ArticleLink article={SLUG} portrait={PORTRAIT} className="card" data-article-card={SLUG}>
         Open the article
       </ArticleLink>,
     );
@@ -66,6 +67,7 @@ describe("ArticleLink markup", () => {
     expect(card()).toHaveClass("card");
     expect(card()).toHaveAttribute("data-article-card", SLUG);
     expect(card()).not.toHaveAttribute("article");
+    expect(card()).not.toHaveAttribute("portrait");
   });
 
   it("links to the list when it leads back from an article", () => {
@@ -282,7 +284,7 @@ describe("ArticleLink clicks it leaves to the browser", () => {
     const transitions = stubViewTransitions();
     const onClick = jest.fn((event: MouseEvent) => event.preventDefault());
     render(
-      <ArticleLink article={SLUG} onClick={onClick}>
+      <ArticleLink article={SLUG} portrait={PORTRAIT} onClick={onClick}>
         Open the article
       </ArticleLink>,
     );

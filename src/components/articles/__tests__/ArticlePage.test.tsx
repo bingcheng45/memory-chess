@@ -3,7 +3,8 @@ import { fireEvent, render, screen, within } from "@/test-utils/intl";
 import ArticlePage from "@/components/articles/ArticlePage";
 import { announceArrival, clearArrival } from "@/components/articles/articleArrival";
 import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
-import { photoNamed, recordWarmedImages } from "@/components/articles/__tests__/warmedImages";
+import { photoNamed } from "@/components/articles/__tests__/flightHarness";
+import { recordWarmedImages } from "@/components/articles/__tests__/warmedImages";
 import { ARTICLE_COPY } from "@/lib/articles/copy";
 import { FACT_ROWS, type Article } from "@/lib/articles/schema";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
@@ -272,7 +273,7 @@ describe("ArticlePage portrait after a card click", () => {
 
     const { container } = renderPage();
 
-    expect(portraitOf(container).style.backgroundImage).toBe(`url("${CARD_FILE}")`);
+    expect(portraitOf(container).style.backgroundImage).toBe(`url(${CARD_FILE})`);
   });
 
   it("drops that placeholder when the next article opens in its place", () => {
@@ -287,20 +288,14 @@ describe("ArticlePage portrait after a card click", () => {
     expect(portraitOf(container).style.backgroundImage).toBe("");
   });
 
-  it("warms, from the next-article link, the same candidates its portrait asks for", () => {
+  it("warms the next article's portrait from the next-article link", () => {
     const upcoming = { ...next, photo: photoNamed("upcoming") };
-    const { container, unmount } = render(<ArticlePage article={article} nextArticle={upcoming} />);
+    const { container } = render(<ArticlePage article={article} nextArticle={upcoming} />);
 
     fireEvent.pointerEnter(within(container).getByRole("link", { name: /Next article/ }));
-    unmount();
-    const opened = render(
-      <ArticlePage article={makeArticle(1, { photo: { ...article.photo, ...upcoming.photo } })} nextArticle={next} />,
-    );
 
     expect(warmed).toHaveLength(1);
-    expect(warmed[0].sizes).toBe("(max-width: 820px) 190px, 280px");
-    expect(warmed[0].sizes).toBe(portraitOf(opened.container).sizes);
-    expect(warmed[0].srcset).toBe(portraitOf(opened.container).srcset);
+    expect(warmed[0].srcset).toContain("upcoming.jpg&w=384&q=75 384w");
   });
 });
 

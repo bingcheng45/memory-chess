@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { ViewCount } from "@/components/articles/ArticleCounts";
 import ArticleLink from "@/components/articles/ArticleLink";
-import ArticlePortrait from "@/components/articles/ArticlePortrait";
+import ArrivingPortrait from "@/components/articles/ArrivingPortrait";
 import FactFile from "@/components/articles/FactFile";
 import LikeButton from "@/components/articles/LikeButton";
 import TypedBody from "@/components/articles/TypedBody";
@@ -60,11 +60,12 @@ function Credit({ credit }: { credit: PhotoCredit }) {
 }
 
 function Portrait({ article }: { article: Article }) {
-  const { photo, person } = article;
+  const { slug, photo, person } = article;
+  const { src, width, height, alt } = photo;
 
   return (
     <figure className="row-start-1 mb-[22px] max-w-[190px] min-[821px]:mb-0 min-[821px]:max-w-none">
-      <ArticlePortrait photo={photo} sizes="(max-width: 820px) 190px, 280px" priority className="rounded-[18px]" />
+      <ArrivingPortrait key={slug} slug={slug} photo={{ src, width, height, alt }} />
       <figcaption className="mt-3 text-sm leading-[1.4] text-text-muted">
         <b className="block font-semibold text-text-secondary">{person.name}</b>
         <span>{person.role}</span>
@@ -159,6 +160,7 @@ function NextArticle({ next }: { next: ArticleSummary }) {
   return (
     <ArticleLink
       article={next.slug}
+      portrait={next.photo}
       className={`group mt-7 block max-w-[720px] rounded border-t border-white/10 pt-5 text-[13px] text-text-muted ${ARTICLE_FOCUS_RING}`}
     >
       {ARTICLE_COPY.nextArticle}

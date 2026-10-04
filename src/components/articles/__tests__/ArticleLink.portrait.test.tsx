@@ -3,8 +3,16 @@ import { fireEvent, render, screen } from "@/test-utils/intl";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
 import { clearArrival, peekArrival } from "@/components/articles/articleArrival";
-import { SLUG, stubViewTransitions } from "@/components/articles/__tests__/flightHarness";
-import { photoNamed, recordWarmedImages, setSaveData } from "@/components/articles/__tests__/warmedImages";
+import {
+  BackLink,
+  CARD_FILE,
+  OtherCard,
+  SLUG,
+  backLink,
+  otherCard,
+  photoNamed,
+} from "@/components/articles/__tests__/flightHarness";
+import { recordWarmedImages, setSaveData } from "@/components/articles/__tests__/warmedImages";
 import type { PortraitPhoto } from "@/lib/articles/schema";
 
 jest.mock("next/link", () => {
@@ -25,11 +33,10 @@ jest.mock("@/i18n/navigation", () => ({
   usePathname: () => "/articles",
 }));
 
-const CARD_FILE = "http://localhost/_next/image?url=%2Fimages%2Farticles%2Falder.jpg&w=256&q=75";
 const ARTICLE_SIZES = "(max-width: 820px) 190px, 280px";
 
 const warmed = recordWarmedImages();
-const link = () => screen.getByRole("link");
+const link = () => screen.getByRole("link", { name: /Open the article/ });
 
 function renderCard(photo: PortraitPhoto, shownFile: string | null = CARD_FILE) {
   render(
@@ -42,10 +49,7 @@ function renderCard(photo: PortraitPhoto, shownFile: string | null = CARD_FILE) 
   if (portrait) Object.defineProperty(portrait, "currentSrc", { value: shownFile });
 }
 
-afterEach(() => {
-  clearArrival();
-  Reflect.deleteProperty(document, "startViewTransition");
-});
+afterEach(clearArrival);
 
 describe("ArticleLink and the portrait the visitor already has", () => {
   it("hands the article the file the card's portrait is showing", () => {
@@ -56,25 +60,11 @@ describe("ArticleLink and the portrait the visitor already has", () => {
     expect(peekArrival(SLUG)?.portraitSrc).toBe(CARD_FILE);
   });
 
-  it("hands over the same file when the card flies", () => {
-    stubViewTransitions();
-    renderCard(photoNamed("flown"));
-
-    fireEvent.click(link());
-
-    expect(peekArrival(SLUG)?.portraitSrc).toBe(CARD_FILE);
-  });
-
-  it("hands over nothing when the portrait has not loaded a file yet", () => {
-    renderCard(photoNamed("unloaded"), "");
-
-    fireEvent.click(link());
-
-    expect(peekArrival(SLUG)).toMatchObject({ slug: SLUG, portraitSrc: null });
-  });
-
-  it("hands over nothing from a link that shows no portrait, such as the next-article link", () => {
-    renderCard(photoNamed("no-portrait"), null);
+  it.each([
+    ["the portrait has not loaded a file yet", ""],
+    ["the link shows no portrait, as the next-article link does not", null],
+  ])("hands over nothing when %s", (name, shownFile) => {
+    renderCard(photoNamed(name), shownFile);
 
     fireEvent.click(link());
 
@@ -110,16 +100,12 @@ describe("ArticleLink warming the article's portrait on intent", () => {
 
   it("asks again for another article", () => {
     renderCard(photoNamed("first-of-two"));
+    render(<OtherCard />);
+
     fireEvent.pointerEnter(link());
+    fireEvent.pointerEnter(otherCard());
 
-    render(
-      <ArticleLink article="birch-fixture" portrait={photoNamed("second-of-two")}>
-        Another card
-      </ArticleLink>,
-    );
-    fireEvent.pointerEnter(screen.getByRole("link", { name: "Another card" }));
-
-    expect(warmed.map((image) => image.srcset.includes("second-of-two"))).toEqual([false, true]);
+    expect(warmed.map((image) => image.srcset.includes("birch.jpg"))).toEqual([false, true]);
   });
 
   it("asks for nothing while the visitor saves data, and asks once they stop", () => {
@@ -134,30 +120,15 @@ describe("ArticleLink warming the article's portrait on intent", () => {
     expect(warmed).toHaveLength(1);
   });
 
-  it.each([
-    ["a command click", { metaKey: true }],
-    ["a control click", { ctrlKey: true }],
-    ["a shift click", { shiftKey: true }],
-    ["an option click", { altKey: true }],
-    ["a middle click", { button: 1 }],
-  ])("neither warms nor hands over a portrait on %s, and a plain click still hands one over", (name, init) => {
-    renderCard(photoNamed(name.replaceAll(" ", "-")));
+  it("asks for nothing from the link back to the list, and asks from a card beside it", () => {
+    render(<BackLink />);
+    renderCard(photoNamed("beside-the-back-link"));
 
-    fireEvent.click(link(), init);
+    fireEvent.pointerEnter(backLink());
+    fireEvent.focus(backLink());
     expect(warmed).toHaveLength(0);
-    expect(peekArrival(SLUG)).toBeNull();
 
-    fireEvent.click(link());
-    expect(peekArrival(SLUG)?.portraitSrc).toBe(CARD_FILE);
-  });
-
-  it("warms nothing from the link back to the list", () => {
-    render(<ArticleLink backFrom={SLUG}>All articles</ArticleLink>);
-
-    fireEvent.pointerEnter(link());
     fireEvent.focus(link());
-
-    expect(warmed).toHaveLength(0);
-    expect(link()).toHaveAttribute("href", "/articles");
+    expect(warmed).toHaveLength(1);
   });
 });

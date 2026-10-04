@@ -31,6 +31,7 @@ export default function ArticleCard({ article, counts: listed, priority, style }
     <li style={style}>
       <ArticleLink
         article={slug}
+        portrait={photo}
         data-article-card={slug}
         aria-labelledby={`${slug}-title`}
         aria-describedby={hasCounts(counts) ? `${descriptionId} ${countsId}` : descriptionId}

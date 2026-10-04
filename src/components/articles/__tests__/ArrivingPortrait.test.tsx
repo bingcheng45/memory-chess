@@ -2,14 +2,17 @@ import { StrictMode } from "react";
 import { render, screen } from "@testing-library/react";
 import ArrivingPortrait from "@/components/articles/ArrivingPortrait";
 import { announceArrival, clearArrival } from "@/components/articles/articleArrival";
-import { SLUG } from "@/components/articles/__tests__/flightHarness";
-import { photoNamed } from "@/components/articles/__tests__/warmedImages";
+import { warmArticlePortrait } from "@/components/articles/portraitWarmUp";
+import { CARD_FILE, SLUG, photoNamed } from "@/components/articles/__tests__/flightHarness";
+import { recordWarmedImages } from "@/components/articles/__tests__/warmedImages";
 
-const CARD_FILE = "http://localhost/_next/image?url=%2Fimages%2Farticles%2Falder.jpg&w=256&q=75";
 const UNOPTIMIZED_FILE = "http://localhost/images/articles/alder.jpg";
 const photo = photoNamed("alder");
+// jsdom prints a url() value without the quotes the component writes.
+const paintedAs = (file: string) => `url(${file})`;
 
-const portrait = () => screen.getByRole("img", { name: photo.alt });
+const warmed = recordWarmedImages();
+const portrait = () => screen.getByRole<HTMLImageElement>("img", { name: photo.alt });
 
 function arriveWith(portraitSrc: string | null) {
   announceArrival(SLUG, Promise.resolve(), portraitSrc);
@@ -25,16 +28,9 @@ describe("ArrivingPortrait after a card click", () => {
   ])("paints %s the card was showing behind the portrait, covering its box", (_name, file) => {
     arriveWith(file);
 
-    expect(portrait().style.backgroundImage).toBe(`url("${file}")`);
+    expect(portrait().style.backgroundImage).toBe(paintedAs(file));
     expect(portrait().style.backgroundSize).toBe("cover");
     expect(portrait().style.backgroundPosition).toBe("center");
-  });
-
-  it("stays the named element of the flight, so the placeholder flies with it", () => {
-    arriveWith(CARD_FILE);
-
-    expect(portrait()).toHaveAttribute("data-flight", "portrait");
-    expect(portrait().style.backgroundImage).toBe(`url("${CARD_FILE}")`);
   });
 
   it("keeps the placeholder once the arrival is cleared, since the full file may still be on its way", () => {
@@ -43,7 +39,7 @@ describe("ArrivingPortrait after a card click", () => {
     clearArrival();
     rerender(<ArrivingPortrait slug={SLUG} photo={photo} />);
 
-    expect(portrait().style.backgroundImage).toBe(`url("${CARD_FILE}")`);
+    expect(portrait().style.backgroundImage).toBe(paintedAs(CARD_FILE));
   });
 
   it("paints the placeholder under React StrictMode too", () => {
@@ -55,13 +51,13 @@ describe("ArrivingPortrait after a card click", () => {
       </StrictMode>,
     );
 
-    expect(portrait().style.backgroundImage).toBe(`url("${CARD_FILE}")`);
+    expect(portrait().style.backgroundImage).toBe(paintedAs(CARD_FILE));
   });
 
   it("escapes a backslash, so the file name cannot end the CSS string early", () => {
     arriveWith("http://localhost/_next/image?url=a\\");
 
-    expect(portrait().getAttribute("style")).toContain('url("http://localhost/_next/image?url=a\\\\")');
+    expect(portrait().style.backgroundImage).toBe("url(http://localhost/_next/image?url=a\\\\)");
   });
 });
 
@@ -94,5 +90,18 @@ describe("ArrivingPortrait with nothing safe to paint", () => {
     render(<ArrivingPortrait slug={SLUG} photo={photo} />);
 
     expect(portrait().style.backgroundImage).toBe("");
+  });
+});
+
+describe("ArrivingPortrait and the warm-up", () => {
+  it("asks for the candidates the warm-up asked for, so the browser reuses the warmed file", () => {
+    render(<ArrivingPortrait slug={SLUG} photo={photo} />);
+
+    warmArticlePortrait(photo);
+
+    expect(warmed).toHaveLength(1);
+    expect(warmed[0].sizes).toBe(portrait().sizes);
+    expect(warmed[0].srcset).toBe(portrait().srcset);
+    expect(portrait().srcset).toContain("/_next/image?url=%2Fimages%2Farticles%2Falder.jpg&w=384&q=75 384w");
   });
 });

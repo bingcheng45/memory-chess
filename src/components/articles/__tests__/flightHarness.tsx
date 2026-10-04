@@ -1,12 +1,20 @@
 import { act, screen } from "@/test-utils/intl";
 import ArticleFlightGate from "@/components/articles/ArticleFlightGate";
 import ArticleLink from "@/components/articles/ArticleLink";
+import type { PortraitPhoto } from "@/lib/articles/schema";
 
 export const SLUG = "alder-fixture";
 const OTHER_SLUG = "birch-fixture";
 export const ARTICLE_HREF = `/articles/${SLUG}`;
 export const OTHER_ARTICLE_HREF = `/articles/${OTHER_SLUG}`;
 export const ROUTE_COMMIT_LIMIT_MS = 400;
+export const CARD_FILE = "http://localhost/_next/image?url=%2Fimages%2Farticles%2Falder.jpg&w=256&q=75";
+
+export function photoNamed(name: string): PortraitPhoto {
+  return { src: `/images/articles/${name}.jpg`, width: 840, height: 1050, alt: `${name} at a chess board` };
+}
+
+export const PORTRAIT = photoNamed("alder");
 
 export const flush = () => act(async () => {});
 export const flights = () => document.querySelectorAll("[data-article-flight]");
@@ -53,7 +61,7 @@ export function stubViewTransitions() {
 
 export function Card() {
   return (
-    <ArticleLink article={SLUG} data-article-card={SLUG}>
+    <ArticleLink article={SLUG} portrait={PORTRAIT} data-article-card={SLUG}>
       Open the article
     </ArticleLink>
   );
@@ -61,7 +69,7 @@ export function Card() {
 
 export function OtherCard() {
   return (
-    <ArticleLink article={OTHER_SLUG} data-article-card={OTHER_SLUG}>
+    <ArticleLink article={OTHER_SLUG} portrait={photoNamed("birch")} data-article-card={OTHER_SLUG}>
       Another card
     </ArticleLink>
   );

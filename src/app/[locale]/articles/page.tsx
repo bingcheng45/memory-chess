@@ -12,7 +12,7 @@ import type { Locale } from "@/i18n/routing";
 import { ARTICLE_SLUGS, getArticleSummaries, type ArticleListMeta } from "@/lib/articles";
 import { ARTICLES_PATH } from "@/lib/articles/paths";
 import { buildArticleListStructuredData } from "@/lib/articles/structuredData";
-import { servesArticlesIn } from "@/lib/articles/translatedLocales";
+import { servesArticlesIn } from "@/lib/articles/articleLocales";
 import { buildArticleListMetadata } from "@/lib/seo/articleMetadata";
 import { getArticleStats } from "@/lib/services/articleStatsService";
 

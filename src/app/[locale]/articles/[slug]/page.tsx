@@ -6,7 +6,7 @@ import { typingRateFor } from "@/components/articles/typingPace";
 import { DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
 import { ARTICLE_SLUGS, getArticle, getNextArticle, type Article } from "@/lib/articles";
 import { countsFor } from "@/lib/articles/stats";
-import { servesArticlesIn } from "@/lib/articles/translatedLocales";
+import { servesArticlesIn } from "@/lib/articles/articleLocales";
 import { buildArticleMetadata } from "@/lib/seo/articleMetadata";
 import { getArticleStats } from "@/lib/services/articleStatsService";
 

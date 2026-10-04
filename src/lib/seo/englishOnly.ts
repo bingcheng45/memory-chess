@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DEFAULT_LOCALE, LOCALE_LABELS, LOCALES } from "@/i18n/routing";
 import { ARTICLES_PATH } from "@/lib/articles/paths";
-import { servesArticlesIn } from "@/lib/articles/translatedLocales";
+import { servesArticlesIn } from "@/lib/articles/articleLocales";
 
 const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } } as const;
 

@@ -1,10 +1,13 @@
 import type { Locale } from "@/i18n/routing";
 
 /**
- * The locales that serve articles, and the one list every surface reads:
- * routing, static params, the nav's EN marker, the language switcher and the
- * translation checks. A locale outside it sends its readers to the English URL
- * in one 308.
+ * The locales that have translated articles. English is the original and is
+ * not here: `servesArticlesIn` in `articleLocales.ts` serves it by itself and
+ * is what routing, static params, the nav's EN marker and the language
+ * switcher read.
+ *
+ * This file holds data only. `scripts/articles-i18n/repo.mjs` imports it with
+ * Node's type stripping, which cannot follow the `@/` alias at runtime.
  *
  * A locale goes in only when every article and every string of the section has
  * a reviewed translation made from the current English text. The build fails
@@ -12,7 +15,6 @@ import type { Locale } from "@/i18n/routing";
  * `scripts/articles-i18n.mjs verify`, which checks the section's strings too.
  */
 export const TRANSLATED_ARTICLE_LOCALES: readonly Locale[] = [
-  "en",
   "es",
   "ru",
   "pt-BR",
@@ -37,7 +39,3 @@ export const TRANSLATED_ARTICLE_LOCALES: readonly Locale[] = [
   "da",
   "hu",
 ];
-
-export function servesArticlesIn(locale: string): locale is Locale {
-  return (TRANSLATED_ARTICLE_LOCALES as readonly string[]).includes(locale);
-}

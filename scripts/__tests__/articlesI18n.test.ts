@@ -129,10 +129,10 @@ describe("import", () => {
     expect(state.installed).toEqual(["ada-example.json", "ben-example.json", "chrome.json"]);
     expect(Object.keys(state.ada)).toEqual(["sourceHash", "reviewed", "sameAsEnglish", "text"]);
     expect(state.ada).toMatchObject({ sourceHash: sourceHashOf(textOf(ADA)), reviewed: false, sameAsEnglish: [] });
-    expect(state.ada.text.title).toBe("Zz How Ada Example recalls a board");
-    expect(state.ada.text.sections[0].paragraphs[1]).toBe("Zz She won every game.");
+    expect(state.ada.text.title).toBe("Howz Adaz Examplez recallsz az boardz");
+    expect(state.ada.text.sections[0].paragraphs[1]).toBe("Shez wonz everyz gamez.");
     expect(state.ada.text.sources).toEqual([
-      { title: "Thought and Choice in Chess", note: "Zz The 1965 book that describes the recall experiment." },
+      { title: "Thought and Choice in Chess", note: "Thez 1965 bookz thatz describesz thez recallz experimentz." },
     ]);
     expect(state.chrome).toEqual({ sourceHash: sourceHashOf(FIXTURE_CHROME), reviewed: false, sameAsEnglish: [] });
     expect(state.messages).toBe(`{
@@ -141,15 +141,15 @@ describe("import", () => {
   },
   "articles": {
     "list": {
-      "heading": "Zz Articles",
-      "about": "Zz Each drill opens a round of Memory Chess.",
-      "corrections": "Zz If something is wrong, <link>send a correction</link>."
+      "heading": "Articlesz",
+      "about": "Eachz drillz opensz az roundz ofz Memory Chess.",
+      "corrections": "Ifz somethingz isz wrongz, <link>sendz az correctionz</link>."
     },
     "pager": {
-      "page": "Zz Page {page}"
+      "page": "Pagez {page}"
     },
     "counts": {
-      "views": "Zz {count, plural, one {# view} other {# views}}"
+      "views": "{count, plural, one {# viewz} other {# viewsz}}"
     }
   },
   "home": {
@@ -178,7 +178,7 @@ describe("import", () => {
     expect(state.after.slice(0, articlesAt + ARTICLES_KEY.length)).toBe(state.before.slice(0, articlesAt + ARTICLES_KEY.length));
     expect(state.after).not.toBe(state.before);
     expect(state.after.endsWith("\n  }\n}\n")).toBe(true);
-    expect(JSON.parse(state.after).articles.list.heading).toBe("Zz Articles");
+    expect(JSON.parse(state.after).articles.list.heading).toBe("Articlesz");
     expect(state.again).toBe(state.after);
   });
 
@@ -253,7 +253,7 @@ describe("seed", () => {
       stdout: "ok seed: 1 file changed, 1 untranslated locale\n",
       failures: [],
     });
-    expect(state.german.articles.list.heading).toBe("Zz Articles");
+    expect(state.german.articles.list.heading).toBe("Articlesz");
     expect(JSON.parse(state.russian)).toEqual({
       common: { play: "Play in ru" },
       articles: FIXTURE_CHROME,

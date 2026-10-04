@@ -1,18 +1,16 @@
-import { formatError, literalTextOf, partsOf } from "./icu.mjs";
+import { formatError, partsOf, textOf } from "./icu.mjs";
 import { leavesOf } from "./leaves.mjs";
-import { CHROME, ENGLISH } from "./names.mjs";
+import { ARTICLE, CHROME, ENGLISH } from "./names.mjs";
+import { MAX_WORDS_THAT_MAY_STAY, MAY_EQUAL_ENGLISH, TITLE_PATH } from "./paths.mjs";
+import { copyProblems, englishProseProblems } from "./untranslated.mjs";
 
-const ARTICLE = "article";
 const PROTECTED_TERM = "Memory Chess";
-const TITLE_PATH = "title";
 const TITLE_MAX_GRAPHEMES = 90;
 const LICENSE_PATH = "photo.license";
 const CC_LICENSE_PREFIX = "CC ";
 const SOURCE_TITLE = /^sources\[\d+\]\.title$/;
-const MAY_EQUAL_ENGLISH = /^(person\.name|photo\.author|photo\.license|sources\[\d+\]\.title)$/;
 const LETTER = /\p{L}/gu;
 const LATIN_TOKEN = /[\p{Script=Latin}\p{M}]+/gu;
-const MAX_WORDS_THAT_MAY_STAY = 3;
 const HAS_LETTER = /\p{L}/u;
 const LONG_DASH = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`);
 const ANGLE_BRACKET = /[<>]/;
@@ -146,8 +144,6 @@ function missingScriptRuleProblems(locale) {
   return [`${locale}: no script rule for ${script}, add one to ${THIS_FILE}`];
 }
 
-const textOf = (kind, message, locale) => (kind === CHROME ? literalTextOf(message, locale) : message);
-
 const wordsOf = (text) => text.split(/\s+/).filter((word) => HAS_LETTER.test(word));
 
 // A leaf that equals its English leaf is the identical check's business. It
@@ -190,6 +186,8 @@ const LEAF_RULES = [
     english.includes(PROTECTED_TERM) && !value.includes(PROTECTED_TERM) ? [`"${PROTECTED_TERM}" is missing`] : [],
   ({ kind, value }) => (kind === ARTICLE && ANGLE_BRACKET.test(value) ? ["has < or >"] : []),
   scriptProblems,
+  copyProblems,
+  englishProseProblems,
   fullStopProblems,
 ];
 

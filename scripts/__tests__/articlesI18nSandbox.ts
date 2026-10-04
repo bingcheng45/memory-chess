@@ -228,11 +228,21 @@ function translated(english: Translation, word: (leaf: string) => string): Trans
   };
 }
 
-export function marked(english: Translation): Translation {
-  return translated(english, (leaf) => `Zz ${leaf}`);
+const ICU_SYNTAX_AND_BRAND = /(\{\w+(?:, plural,)?|\b(?:one|other) \{|<\/?\w+>|Memory Chess)/;
+const EVERY_WORD = /\p{L}+/gu;
+
+function outsideIcuSyntax(leaf: string, change: (text: string) => string): string {
+  return leaf
+    .split(ICU_SYNTAX_AND_BRAND)
+    .map((part, index) => (index % 2 === 1 ? part : change(part)))
+    .join("");
 }
 
-const ICU_SYNTAX_AND_BRAND = /(\{\w+(?:, plural,)?|\b(?:one|other) \{|<\/?\w+>|Memory Chess)/;
+// The checks fail a leaf that keeps its English words, so this stand-in for a translation changes every word.
+export function marked(english: Translation): Translation {
+  return translated(english, (leaf) => outsideIcuSyntax(leaf, (text) => text.replace(EVERY_WORD, (word) => `${word}z`)));
+}
+
 const CYRILLIC_SMALL_A = 0x430;
 const CYRILLIC_CAPITAL_A = 0x410;
 
@@ -243,10 +253,7 @@ function cyrillicLetter(letter: string): string {
 }
 
 function inCyrillic(leaf: string): string {
-  return leaf
-    .split(ICU_SYNTAX_AND_BRAND)
-    .map((part, index) => (index % 2 === 1 ? part : part.replace(/[A-Za-z]/g, cyrillicLetter)))
-    .join("");
+  return outsideIcuSyntax(leaf, (text) => text.replace(/[A-Za-z]/g, cyrillicLetter));
 }
 
 export function inRussian(english: Translation): Translation {

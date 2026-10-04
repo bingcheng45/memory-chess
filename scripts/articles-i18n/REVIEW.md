@@ -99,5 +99,6 @@ a recipe. If the English text itself looks wrong, say so in your report and leav
 ## What the check proves and what it does not
 
 The check proves structure: the same shape as the English text, every number kept, every placeholder and
-plural form present, no value left in English by accident. Names, titles and loanwords kept in Latin letters exactly as in the English text do not count against the script check, and a decade such as "the 1980s" may be written the way the language writes it (`anni Ottanta`, `lata 80.`). It cannot read. A translation that passes can
+plural form present, no value left in English by accident. Names, titles and loanwords kept in Latin letters exactly as in the English text do not count against the script check, and a decade such as "the 1980s" may be written the way the language writes it (`anni Ottanta`, `lata 80.`). It fails a value that keeps four in five of the words of its English value, and
+any value full of words only English has, such as `the`, `with` and `which`. It cannot read. A translation that passes can
 still say the wrong thing, and finding that is your job.

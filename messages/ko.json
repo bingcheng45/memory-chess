@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "체스 선수와 그들의 기억력에 관한 기사",
+      "description": "체스 선수와 기억력 연구자의 프로필입니다. 각 글은 기록으로 남은 업적, 그것을 설명하는 연구, 직접 해 볼 훈련을 소개합니다."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "기사",
+      "sub": "체스 선수와 기억력 연구자를 한 명씩 소개합니다.",
+      "aboutHeading": "이 기사는 이렇게 만들어집니다",
+      "about1": "각 기사는 체스 선수나 연구자 한 사람과 그들의 기억력에 관한 질문 하나를 따라갑니다. 주인공은 기억력 업적으로 알려진 선수일 수도 있고, 선수들이 몇 초 보고 무엇을 기억하는지 측정한 연구자일 수도 있습니다.",
+      "about2": "모든 기사는 같은 구성을 갖습니다. 인물 사진에는 촬영자와 라이선스가 함께 표시됩니다. 기본 정보에는 날짜, 칭호, 그 사람이 기억력으로 알려진 업적이 정리되어 있습니다. 본문은 그 업적과 그것을 설명하는 연구를 나란히 놓습니다. 출처 목록은 각 주장이 어디에서 나왔는지 보여 줍니다. 끝에 있는 훈련은 이야기가 제안하는 기물 수와 제시 시간으로 Memory Chess 한 판을 엽니다.",
+      "about3": "기사는 인터뷰, 대회 보고서, 책, 연구 논문 같은 공개된 자료를 바탕으로 AI의 도움을 받아 조사하고 초안을 씁니다. 그런 다음 별도의 검토에서 모든 날짜, 숫자, 인용문을 그 자료와 대조한 뒤에야 게시합니다. 자료마다 내용이 다르면 누가 무엇을 보고했는지 기사에 밝힙니다. 자료에서 이야기로만 전해지는 일화는 이야기로 서술합니다. 다른 언어의 기사는 영어 원문을 AI의 도움으로 번역한 것이며, 각 번역은 올리기 전에 검토를 거칩니다.",
+      "corrections": "여기에 잘못된 내용이 있다면 <link>정정 의견을 보내 주세요</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "정렬",
+      "group": "기사 정렬",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "최신순",
+        "views": "조회순",
+        "likes": "좋아요순"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "페이지",
+      "previous": "이전 페이지",
+      "next": "다음 페이지",
+      "page": "{page}페이지",
+      "showing": "{total}개 중 {first}번째부터 {last}번째까지 표시"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, other {조회 #회}}",
+      "likes": "{count, plural, other {좋아요 #개}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "이 기사에 좋아요 누르기",
+      "failed": "저장되지 않았습니다. 다시 시도해 주세요."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "모든 기사",
+      "showAll": "전체 글 보기",
+      "byline": "글: <author>{name}</author>",
+      "authorshipNote": "아래에 나열한 자료를 바탕으로 AI의 도움을 받아 조사하고 초안을 썼습니다. 모든 사실은 게시 전에 그 자료와 대조했습니다.",
+      "translationNote": "영어 원문을 AI의 도움으로 번역했습니다. 기준이 되는 것은 영어 기사입니다.",
+      "readInEnglish": "영어로 읽기",
+      "photoCredit": "사진: {author}, <licenseLink>{license}</licenseLink>, <source>Wikimedia Commons</source> 제공. {changes}.",
+      "factFile": "기본 정보",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "출생",
+        "died": "사망",
+        "country": "국가",
+        "title": "칭호",
+        "peakRating": "최고 레이팅",
+        "worldChampion": "세계 챔피언",
+        "knownFor": "알려진 이유",
+        "memoryFeat": "기억력 업적"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "직접 해 보기",
+      "drillAction": "기물 {pieces, plural, other {#개}}, {seconds, plural, other {#초}}로 플레이",
+      "sources": "출처",
+      "nextArticle": "다음 기사"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "다음에 읽을 기사",
+      "yourRound": "내 한 판",
+      "articleDrill": "이 기사의 훈련",
+      "roundSize": "{pieces, plural, other {기물 #개}}, {seconds, plural, other {#초}}",
+      "read": "기사 읽기",
+      "tryDrill": "이 훈련 해 보기"
     }
   }
 }

@@ -1,4 +1,5 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, screen } from "@testing-library/react";
+import { renderWithIntl } from "@/test-utils/intl";
 import TypedBody from "@/components/articles/TypedBody";
 import { announceArrival } from "@/components/articles/articleArrival";
 import {
@@ -71,7 +72,7 @@ describe("TypedBody's Show all text button after a click on a card", () => {
   });
 
   it("leaves focus where the reader put it when typing ends and the button did not hold it", async () => {
-    render(
+    renderWithIntl(
       <>
         <button type="button">Elsewhere</button>
         <TypedBody slug={SLUG} sections={SECTIONS} />

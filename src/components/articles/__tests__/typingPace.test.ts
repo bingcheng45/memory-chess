@@ -1,21 +1,21 @@
 import {
   BLOCK_START,
+  DEFAULT_CHARS_PER_SECOND,
   advance,
   isFinished,
   placementOf,
-  wholeCharacterCut,
   type BlockProgress,
 } from "@/components/articles/typingPace";
 
 const FRAME_MS = 20;
 const CHARS_PER_FRAME = 3;
 const FRAMES_PER_SECOND = 1000 / FRAME_MS;
-const PARAGRAPH = { length: 600, kind: "paragraph" } as const;
-const HEADING = { length: 20, kind: "heading" } as const;
+const PARAGRAPH = { length: 600, kind: "paragraph", charsPerSecond: DEFAULT_CHARS_PER_SECOND } as const;
+const HEADING = { length: 20, kind: "heading", charsPerSecond: DEFAULT_CHARS_PER_SECOND } as const;
 const FRAMES_TO_TYPE_PARAGRAPH = PARAGRAPH.length / CHARS_PER_FRAME;
 const FRAMES_TO_TYPE_HEADING = Math.ceil(HEADING.length / CHARS_PER_FRAME);
 
-function run(block: typeof PARAGRAPH | typeof HEADING, frames: number, from: BlockProgress = BLOCK_START) {
+function run(block: Parameters<typeof advance>[1], frames: number, from: BlockProgress = BLOCK_START) {
   let progress = from;
   for (let frame = 0; frame < frames; frame++) {
     progress = advance(progress, block, FRAME_MS, "inside");
@@ -26,6 +26,13 @@ function run(block: typeof PARAGRAPH | typeof HEADING, frames: number, from: Blo
 describe("advance", () => {
   it("types at the fast speed, 150 characters a second", () => {
     expect(run(PARAGRAPH, FRAMES_PER_SECOND).chars).toBe(150);
+  });
+
+  it("types at the rate the block carries", () => {
+    const slow = { ...PARAGRAPH, charsPerSecond: 75 };
+
+    expect(run(slow, FRAMES_PER_SECOND).chars).toBe(75);
+    expect(run({ ...PARAGRAPH, charsPerSecond: 300 }, FRAMES_PER_SECOND).chars).toBe(300);
   });
 
   it("carries the fraction of a character a frame leaves over", () => {
@@ -114,22 +121,3 @@ describe("placementOf", () => {
   });
 });
 
-describe("wholeCharacterCut", () => {
-  const CLEF_CODE_POINT = 0x1d11e;
-  const clef = String.fromCodePoint(CLEF_CODE_POINT);
-  const text = `ab${clef}cd`;
-
-  it("keeps a cut that falls between two characters", () => {
-    expect(wholeCharacterCut(text, 2)).toBe(2);
-    expect(wholeCharacterCut(text, 4)).toBe(4);
-  });
-
-  it("moves a cut that falls inside a two-unit character to just after it", () => {
-    expect(wholeCharacterCut(text, 3)).toBe(4);
-    expect(text.slice(0, wholeCharacterCut(text, 3))).toBe(`ab${clef}`);
-  });
-
-  it("keeps a cut at the end of the text", () => {
-    expect(wholeCharacterCut(text, text.length)).toBe(text.length);
-  });
-});

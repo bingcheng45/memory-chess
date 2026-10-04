@@ -1,5 +1,6 @@
 import { Suspense, use } from "react";
-import { act, render, screen } from "@testing-library/react";
+import { act, screen } from "@testing-library/react";
+import { renderWithIntl } from "@/test-utils/intl";
 import TypedBody from "@/components/articles/TypedBody";
 import { announceArrival, peekArrival } from "@/components/articles/articleArrival";
 import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
@@ -136,7 +137,7 @@ describe("TypedBody after a click on a card", () => {
     }
 
     await act(async () => {
-      render(
+      renderWithIntl(
         <Suspense fallback={<p>Loading</p>}>
           <TypedBody slug={SLUG} sections={SECTIONS} />
           <SlowSibling />
@@ -214,7 +215,7 @@ describe("TypedBody after a click on a card", () => {
   it("never shows half of a character that takes two UTF-16 units", async () => {
     const clef = String.fromCodePoint(CLEF_CODE_POINT);
     const sections = [{ heading: clef.repeat(12), paragraphs: [`Notes ${clef.repeat(20)} end.`] }];
-    render(<TypedBody slug={SLUG} sections={sections} />);
+    renderWithIntl(<TypedBody slug={SLUG} sections={sections} />);
     const brokenSpans: string[] = [];
 
     await typeFor(LONGER_THAN_THE_WHOLE_BODY_MS, () => {

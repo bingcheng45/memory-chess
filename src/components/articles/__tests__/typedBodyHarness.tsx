@@ -1,7 +1,8 @@
-import { act, render, screen } from "@testing-library/react";
+import { act, screen } from "@testing-library/react";
 import TypedBody from "@/components/articles/TypedBody";
 import { clearArrival } from "@/components/articles/articleArrival";
 import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
+import { renderWithIntl } from "@/test-utils/intl";
 
 export const SLUG = "alder-fixture";
 export const SECTIONS = [
@@ -40,8 +41,8 @@ export async function typeFor(ms: number, afterEachFrame: () => void = () => {})
   }
 }
 
-export function renderBody(options?: Parameters<typeof render>[1]) {
-  return render(<TypedBody slug={SLUG} sections={SECTIONS} />, options);
+export function renderBody(options?: Parameters<typeof renderWithIntl>[1]) {
+  return renderWithIntl(<TypedBody slug={SLUG} sections={SECTIONS} />, options);
 }
 
 export function expectFullPlainText() {

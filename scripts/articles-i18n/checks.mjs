@@ -1,3 +1,4 @@
+import { contentLossFailures } from "./contentLoss.mjs";
 import { formatError, partsOf, textOf } from "./icu.mjs";
 import { leavesOf } from "./leaves.mjs";
 import { ARTICLE, CHROME, ENGLISH } from "./names.mjs";
@@ -279,6 +280,7 @@ export function failuresOf(locale, source, bundle) {
     ...source.articles.flatMap(({ slug, text, sourceHash }) =>
       failuresFor({ kind: ARTICLE, name: slug, english: text, sourceHash, unit: bundle.articles[slug] }),
     ),
+    ...contentLossFailures(source.articles, bundle.articles),
     ...Object.keys(bundle.articles)
       .filter(isUnknown)
       .map((name) => `${name}: no English article has this slug`),

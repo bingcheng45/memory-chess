@@ -155,5 +155,6 @@ that does not use Latin letters. Names, titles and loanwords kept in Latin lette
 its English value, or any value in which more than three words, and at least one word in ten, are words
 only English has, such as `the`, `with` and `which`. A fact, a role or a caption of up to five English
 words may be a name or a title and may keep them. An English title quoted inside your own sentences is
-fine. It cannot tell whether a sentence is correct or natural. That part is
+fine. It fails a long paragraph that is much shorter, against its English paragraph, than the rest of your
+translation, which is how a dropped sentence shows. It cannot tell whether a sentence is correct or natural. That part is
 yours, and then the reviewer's.

@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Články o šachistech a jejich paměti",
+      "description": "Profily šachistů a badatelů zabývajících se pamětí. Každý z nich uvádí doložený výkon, výzkum, který ho vysvětluje, a cvičení k vyzkoušení."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "Články",
+      "sub": "Šachisté a badatelé zabývající se pamětí, jeden profil za druhým.",
+      "aboutHeading": "Jak tyto články vznikají",
+      "about1": "Každý článek sleduje jednoho šachistu nebo badatele a jednu otázku o jeho paměti. Může jít o šachistu proslulého paměťovým výkonem, nebo o badatele, který měřil, co si hráči zapamatují po několika sekundách.",
+      "about2": "Všechny články mají stejné části. U portrétu je uveden fotograf a licence. Přehled údajů shrnuje data, tituly a paměťový výkon, kterým je dotyčný znám. Vyprávění staví tento výkon vedle výzkumu, který ho vysvětluje. Seznam zdrojů ukazuje, odkud každé tvrzení pochází. Cvičení na konci otevře kolo hry Memory Chess s počtem figurek a dobou zobrazení, které příběh nabízí.",
+      "about3": "Články vznikají s pomocí umělé inteligence z publikovaných zdrojů, jako jsou rozhovory, zprávy z turnajů, knihy a odborné studie. Před zveřejněním pak samostatná kontrola porovná každé datum, číslo i citát s těmito zdroji. Kde se zdroje rozcházejí, článek uvádí, kdo co uvedl. Historka, kterou zdroje podávají jen jako příběh, je vyprávěna jako příběh. Články v jiných jazycích jsou přeloženy z anglického textu s pomocí umělé inteligence a každý překlad se před zveřejněním kontroluje.",
+      "corrections": "Pokud je tu něco špatně, <link>pošlete nám opravu</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Řazení",
+      "group": "Seřadit články",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "Nejnovější",
+        "views": "Nejčtenější",
+        "likes": "Nejoblíbenější"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "Stránky",
+      "previous": "Předchozí stránka",
+      "next": "Další stránka",
+      "page": "Stránka {page}",
+      "showing": "Zobrazeno {first} až {last} z {total}"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, one {# zobrazení} few {# zobrazení} many {# zobrazení} other {# zobrazení}}",
+      "likes": "{count, plural, one {# lajk} few {# lajky} many {# lajku} other {# lajků}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "Líbí se mi tento článek",
+      "failed": "Uložení se nezdařilo. Zkuste to znovu."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Všechny články",
+      "showAll": "Zobrazit celý text",
+      "byline": "Autor: <author>{name}</author>",
+      "authorshipNote": "Článek vznikl s pomocí umělé inteligence ze zdrojů uvedených níže. Každý fakt byl před zveřejněním ověřen podle těchto zdrojů.",
+      "translationNote": "Přeloženo z angličtiny s pomocí umělé inteligence. Rozhodující je anglický článek.",
+      "readInEnglish": "Přečíst anglicky",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, přes <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Přehled údajů",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Narození",
+        "died": "Úmrtí",
+        "country": "Země",
+        "title": "Titul",
+        "peakRating": "Nejvyšší rating",
+        "worldChampion": "Mistr světa",
+        "knownFor": "Čím je známý(á)",
+        "memoryFeat": "Paměťový výkon"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "Teď vy",
+      "drillAction": "Zahrát si: {pieces, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}}, {seconds, plural, one {# sekunda} few {# sekundy} many {# sekundy} other {# sekund}}",
+      "sources": "Zdroje",
+      "nextArticle": "Další článek"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "Číst dál",
+      "yourRound": "Vaše kolo",
+      "articleDrill": "Cvičení z tohoto článku",
+      "roundSize": "{pieces, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}}, {seconds, plural, one {# sekunda} few {# sekundy} many {# sekundy} other {# sekund}}",
+      "read": "Přečíst článek",
+      "tryDrill": "Vyzkoušet toto cvičení"
     }
   }
 }

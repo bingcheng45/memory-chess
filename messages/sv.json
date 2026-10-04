@@ -373,73 +373,73 @@
   },
   "articles": {
     "meta": {
-      "title": "Articles on chess players and their memory",
-      "description": "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try."
+      "title": "Artiklar om schackspelare och deras minne",
+      "description": "Porträtt av schackspelare och minnesforskare. Varje artikel redovisar den dokumenterade bedriften, forskningen som förklarar den och en övning att prova."
     },
     "list": {
-      "heading": "Articles",
-      "sub": "Chess players and memory researchers, one profile at a time.",
-      "aboutHeading": "How these articles are made",
-      "about1": "Each article follows one chess player or researcher and one question about their memory. The subject may be a player known for a feat of recall, or a researcher who measured what players remember after a few seconds.",
-      "about2": "Every article has the same parts. A portrait comes with its photographer and licence. A fact file gives the dates, the titles and the memory feat the person is known for. The story sets that feat beside the research that explains it. A source list shows where each claim comes from. A drill at the end opens a round of Memory Chess with the piece count and viewing time the story suggests.",
-      "about3": "The articles are researched and drafted with AI assistance from published sources such as interviews, tournament reports, books and research papers. A separate check then compares every date, number and quotation with those sources before anything is published. Where sources disagree, the article says who reported what. An anecdote that sources report only as a story is told as a story. Articles in other languages are translated from the English text with AI assistance, and each translation is checked before it goes up.",
-      "corrections": "If something here is wrong, <link>send a correction</link>."
+      "heading": "Artiklar",
+      "sub": "Schackspelare och minnesforskare, ett porträtt i taget.",
+      "aboutHeading": "Så tas artiklarna fram",
+      "about1": "Varje artikel följer en schackspelare eller forskare och en fråga om personens minne. Personen kan vara en spelare som är känd för en minnesbragd, eller en forskare som har mätt vad spelare minns efter några sekunder.",
+      "about2": "Alla artiklar har samma delar. Ett porträtt åtföljs av fotograf och licens. En faktaruta ger datum, titlar och den minnesbragd som personen är känd för. Berättelsen ställer bragden bredvid den forskning som förklarar den. En källförteckning visar var varje påstående kommer ifrån. En övning i slutet öppnar en omgång Memory Chess med det antal pjäser och den visningstid som berättelsen föreslår.",
+      "about3": "Artiklarna efterforskas och skrivs i utkast med hjälp av AI, utifrån publicerade källor som intervjuer, turneringsrapporter, böcker och forskningsartiklar. En separat kontroll jämför sedan varje datum, varje siffra och varje citat med källorna innan något publiceras. Där källorna går isär anger artikeln vem som uppgav vad. En anekdot som källorna bara återger som en historia berättas som en historia. Artiklar på andra språk översätts från den engelska texten med hjälp av AI, och varje översättning kontrolleras innan den läggs ut.",
+      "corrections": "Om något här är fel kan du <link>skicka in en rättelse</link>."
     },
     "sort": {
-      "label": "Sort",
-      "group": "Sort articles",
+      "label": "Sortera",
+      "group": "Sortera artiklar",
       "options": {
-        "newest": "Newest",
-        "views": "Most viewed",
-        "likes": "Most liked"
+        "newest": "Senaste",
+        "views": "Mest visade",
+        "likes": "Mest gillade"
       }
     },
     "pager": {
-      "label": "Pages",
-      "previous": "Previous page",
-      "next": "Next page",
-      "page": "Page {page}",
-      "showing": "Showing {first} to {last} of {total}"
+      "label": "Sidor",
+      "previous": "Föregående sida",
+      "next": "Nästa sida",
+      "page": "Sida {page}",
+      "showing": "Visar {first} till {last} av {total}"
     },
     "counts": {
-      "views": "{count, plural, one {# view} other {# views}}",
-      "likes": "{count, plural, one {# like} other {# likes}}"
+      "views": "{count, plural, one {# visning} other {# visningar}}",
+      "likes": "{count, plural, one {# gillning} other {# gillningar}}"
     },
     "like": {
-      "button": "Like this article",
-      "failed": "That did not save. Try again."
+      "button": "Gilla den här artikeln",
+      "failed": "Det gick inte att spara. Försök igen."
     },
     "page": {
-      "backToList": "All articles",
-      "showAll": "Show all text",
-      "byline": "By <author>{name}</author>",
-      "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
-      "translationNote": "Translated from English with AI assistance. The English article is the reference.",
-      "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
-      "factFile": "Fact file",
+      "backToList": "Alla artiklar",
+      "showAll": "Visa hela texten",
+      "byline": "Av <author>{name}</author>",
+      "authorshipNote": "Efterforskad och skriven i utkast med hjälp av AI utifrån källorna nedan. Varje uppgift kontrollerades mot dessa källor före publiceringen.",
+      "translationNote": "Översatt från engelska med hjälp av AI. Den engelska artikeln är den som gäller.",
+      "readInEnglish": "Läs den på engelska",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Faktaruta",
       "facts": {
-        "born": "Born",
-        "died": "Died",
-        "country": "Country",
-        "title": "Title",
-        "peakRating": "Peak rating",
-        "worldChampion": "World Champion",
-        "knownFor": "Known for",
-        "memoryFeat": "Memory feat"
+        "born": "Född",
+        "died": "Död",
+        "country": "Land",
+        "title": "Titel",
+        "peakRating": "Högsta rating",
+        "worldChampion": "Världsmästare",
+        "knownFor": "Känd för",
+        "memoryFeat": "Minnesbragd"
       },
-      "drillHeading": "Your turn",
-      "drillAction": "Play {pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "sources": "Sources",
-      "nextArticle": "Next article"
+      "drillHeading": "Din tur",
+      "drillAction": "Spela {pieces, plural, one {# pjäs} other {# pjäser}}, {seconds, plural, one {# sekund} other {# sekunder}}",
+      "sources": "Källor",
+      "nextArticle": "Nästa artikel"
     },
     "tile": {
-      "eyebrow": "Read next",
-      "yourRound": "Your round",
-      "articleDrill": "This article's drill",
-      "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
-      "read": "Read the article",
-      "tryDrill": "Try that drill"
+      "eyebrow": "Läs härnäst",
+      "yourRound": "Din omgång",
+      "articleDrill": "Den här artikelns övning",
+      "roundSize": "{pieces, plural, one {# pjäs} other {# pjäser}}, {seconds, plural, one {# sekund} other {# sekunder}}",
+      "read": "Läs artikeln",
+      "tryDrill": "Prova den övningen"
     }
   }
 }

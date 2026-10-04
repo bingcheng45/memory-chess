@@ -36,6 +36,14 @@ describe("the number rule", () => {
     ["Champion, 2013-2023", "Weltmeister seit 2013", ["the number 2023 of the English text is missing"]],
     ["12 boards and 12 clocks", "12 Bretter und Uhren", ["the number 12 is in the English text 2 times and here 1 time"]],
     ["He won 3 games", "Er gewann 3 Partien, alle mit 1.e4", []],
+    ["In the 1980s she won", "Negli anni Ottanta vinse", []],
+    ["In the 1980s she won", "In de jaren tachtig won zij", []],
+    ["In the 1980s she won", "W latach 80. wygrała", []],
+    ["In the 1980s she won 3 games", "Negli anni Ottanta vinse", ["the number 3 of the English text is missing"]],
+    ["In 1980 she won", "Negli anni Ottanta vinse", ["the number 1980 of the English text is missing"]],
+    ["In 1980 and in the 1980s", "Nel 1980 e negli anni Ottanta", []],
+    ["In 1980 and in the 1980s", "Negli anni Ottanta", ["the number 1980 of the English text is missing"]],
+    ["From 1985 to the 1990s", "Dal tempo degli anni Novanta", ["the number 1985 of the English text is missing"]],
   ];
 
   it("compares the digit runs of one leaf as multisets, whatever the separators and the digits", () => {
@@ -86,6 +94,36 @@ describe("the script rule", () => {
 
   it("wants half the letters of a long leaf in the script of the language, without counting ICU syntax", () => {
     expect(problemsOf(CASES.map(([one]) => one))).toEqual(CASES.map(([, expected]) => expected));
+  });
+
+  describe("with names and titles kept in Latin letters", () => {
+    const SOURCE =
+      "Garry Kasparov, Magnus Carlsen, Judit Polgár and Adriaan de Groot met at Linares and Wijk aan Zee, " +
+      "the tournaments that shaped Thought and Choice in Chess.";
+    const NAMES_KEPT =
+      "Garry Kasparov、Magnus Carlsen、Judit Polgár 和 Adriaan de Groot 相聚于 Linares 与 Wijk aan Zee，" +
+      "这些赛事塑造了 Thought and Choice in Chess 的研究。";
+    const UNTRANSLATED_SENTENCE = " Nobody expected this surprising result from the young unknown challenger.";
+    const UNTRANSLATED = "Kasparov met Carlsen and Polgár at Linares and Wijk aan Zee";
+    const kept = (locale: string, value: string, isListed = false): Leaf => ({
+      ...leaf(locale, value),
+      english: SOURCE,
+      isListed,
+    });
+    const NO_SCRIPT = ["no letter is Han, the text looks untranslated"];
+    const CASES: [leaf: Leaf, problems: string[]][] = [
+      [kept("zh-CN", NAMES_KEPT), []],
+      [kept("zh-TW", NAMES_KEPT), []],
+      [kept("zh-CN", `${NAMES_KEPT}${UNTRANSLATED_SENTENCE}`), ["15 of 75 letters are Han, at least half must be"]],
+      [kept("zh-CN", UNTRANSLATED), NO_SCRIPT],
+      [kept("zh-CN", UNTRANSLATED, true), []],
+      [kept("zh-CN", "Kasparov met Carlsen at Linares"), NO_SCRIPT],
+      [{ ...kept("zh-CN", "Norway cold"), english: "Norway is cold" }, []],
+    ];
+
+    it("does not count a Latin token that the English text has at the same path, and still fails real English", () => {
+      expect(problemsOf(CASES.map(([one]) => one))).toEqual(CASES.map(([, expected]) => expected));
+    });
   });
 
   it("fails a locale whose script has no rule yet, in one line that says where to add it", () => {

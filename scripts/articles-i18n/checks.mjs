@@ -11,6 +11,8 @@ const CC_LICENSE_PREFIX = "CC ";
 const SOURCE_TITLE = /^sources\[\d+\]\.title$/;
 const MAY_EQUAL_ENGLISH = /^(person\.name|photo\.author|photo\.license|sources\[\d+\]\.title)$/;
 const LETTER = /\p{L}/gu;
+const LATIN_TOKEN = /[\p{Script=Latin}\p{M}]+/gu;
+const MAX_WORDS_THAT_MAY_STAY = 3;
 const HAS_LETTER = /\p{L}/u;
 const LONG_DASH = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`);
 const ANGLE_BRACKET = /[<>]/;
@@ -23,6 +25,8 @@ const DECIMAL_DIGIT = /\p{Nd}/u;
 const EVERY_DECIMAL_DIGIT = /\p{Nd}/gu;
 const DIGITS_PER_SET = 10;
 const NO_BREAK_SPACES = String.fromCharCode(0xa0, 0x202f);
+// "the 1980s" is a decade, and each language writes a decade its own way.
+const DECADE = /(?<!\d)\d{4}s\b/g;
 const GROUP_SEPARATOR = new RegExp(`(?<=\\d)[.,' ${NO_BREAK_SPACES}](?=\\d{3}(?!\\d))`, "g");
 
 const MIN_LETTERS_FOR_SCRIPT_CHECK = 40;
@@ -57,14 +61,15 @@ function digitRuns(text) {
 /**
  * The numbers of `english` that `translated` does not carry, compared as
  * multisets of digit runs. `50,000`, `50.000` and `50 000` are one number, and
- * a digit of any script counts as its ASCII value.
+ * a digit of any script counts as its ASCII value. A decade such as `1980s` is
+ * not wanted, a language writes it as it does.
  *
  * @param {string} english
  * @param {string} translated
  * @returns {string[]}
  */
 export function numberProblems(english, translated) {
-  const wanted = digitRuns(english);
+  const wanted = digitRuns(english.replace(DECADE, " "));
   const found = digitRuns(translated);
   const timesIn = (runs, run) => runs.filter((other) => other === run).length;
 
@@ -141,17 +146,28 @@ function missingScriptRuleProblems(locale) {
   return [`${locale}: no script rule for ${script}, add one to ${THIS_FILE}`];
 }
 
+const textOf = (kind, message, locale) => (kind === CHROME ? literalTextOf(message, locale) : message);
+
+const wordsOf = (text) => text.split(/\s+/).filter((word) => HAS_LETTER.test(word));
+
 // A leaf that equals its English leaf is the identical check's business. It
-// cannot be in the locale's script, and it passes there only on purpose.
-function scriptProblems({ kind, locale, english, value }) {
+// cannot be in the locale's script, and it passes there only on purpose. A
+// Latin token that the English leaf has too, letter for letter, is a name, a
+// title or a loanword the translator kept on purpose, so it is not counted.
+function scriptProblems({ kind, locale, english, value, isListed }) {
   const scripts = SCRIPTS[scriptOf(locale)];
   if (scripts === undefined || value === english) return [];
-  const letters = (kind === CHROME ? literalTextOf(value, locale) : value).match(LETTER) ?? [];
-  if (letters.length < MIN_LETTERS_FOR_SCRIPT_CHECK) return [];
+  const text = textOf(kind, value, locale);
+  const source = textOf(kind, english, ENGLISH);
+  const sourceTokens = new Set(source.match(LATIN_TOKEN) ?? []);
+  const counted = text.replace(LATIN_TOKEN, (token) => (sourceTokens.has(token) ? " " : token)).match(LETTER) ?? [];
   const inScript = new RegExp(scripts.map((script) => `\\p{Script_Extensions=${script}}`).join("|"), "u");
-  const expected = letters.filter((letter) => inScript.test(letter)).length;
-  if (expected * 2 >= letters.length) return [];
-  return [`${expected} of ${letters.length} letters are ${scripts.join(" or ")}, at least half must be`];
+  const expected = counted.filter((letter) => inScript.test(letter)).length;
+  const isUntranslated =
+    !isListed && !inScript.test(text) && wordsOf(source).length > MAX_WORDS_THAT_MAY_STAY && HAS_LETTER.test(text);
+  if (isUntranslated) return [`no letter is ${scripts.join(" or ")}, the text looks untranslated`];
+  if ((text.match(LETTER) ?? []).length < MIN_LETTERS_FOR_SCRIPT_CHECK || expected * 2 >= counted.length) return [];
+  return [`${expected} of ${counted.length} letters are ${scripts.join(" or ")}, at least half must be`];
 }
 
 // The page ends some leaves itself: the photo credit prints `{changes}.`, so a

@@ -150,5 +150,5 @@ in your report.
 
 The check proves structure: the same shape as the English text, every number kept, every placeholder and
 plural form present, no value left in English by accident, no long dash, the right script for a language
-that does not use Latin letters. It cannot tell whether a sentence is correct or natural. That part is
+that does not use Latin letters. Names, titles and loanwords kept in Latin letters exactly as in the English text do not count against the script check, and a decade such as "the 1980s" may be written the way the language writes it (`anni Ottanta`, `lata 80.`). It cannot tell whether a sentence is correct or natural. That part is
 yours, and then the reviewer's.

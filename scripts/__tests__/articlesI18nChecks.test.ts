@@ -298,7 +298,7 @@ describe("check 12: the script of a language that does not use Latin letters", (
     );
 
     expect(run.failures).toEqual([
-      "ada-example sections[0].paragraphs[0]: 0 of 72 letters are Cyrillic, at least half must be",
+      "ada-example sections[0].paragraphs[0]: no letter is Cyrillic, the text looks untranslated",
     ]);
   });
 });

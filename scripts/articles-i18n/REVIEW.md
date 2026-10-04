@@ -64,7 +64,9 @@ a recipe. If the English text itself looks wrong, say so in your report and leav
    `page.translationNote` and `list.about3`. Check each plural message with the numbers 1, 2, 5 and 21 in
    your head.
 
-5. Read every path under `sameAsEnglish`. Each one must be right when it is identical to English.
+5. Read every path under `sameAsEnglish`. Each one must be right when it is identical to English. The
+   check refuses a path of running text there: `description`, `drill.why`, a section heading or paragraph,
+   and a source note.
    `person.name`, `photo.author` and `photo.license` may be identical without an entry.
 
 6. Fix what is wrong in the files listed under "What you may write". A repeated term may be replaced in

@@ -1,7 +1,7 @@
 import { formatError, partsOf, textOf } from "./icu.mjs";
 import { leavesOf } from "./leaves.mjs";
 import { ARTICLE, CHROME, ENGLISH } from "./names.mjs";
-import { MAX_WORDS_THAT_MAY_STAY, MAY_EQUAL_ENGLISH, TITLE_PATH } from "./paths.mjs";
+import { BODY_PATH, MAX_WORDS_THAT_MAY_STAY, MAY_EQUAL_ENGLISH, TITLE_PATH } from "./paths.mjs";
 import { copyProblems, englishProseProblems } from "./untranslated.mjs";
 
 const PROTECTED_TERM = "Memory Chess";
@@ -221,11 +221,14 @@ function leafFailures({ locale, kind, name, english, unit }, listed) {
   });
 }
 
-function listedFailures({ name, english, unit }, listed) {
+function listedFailures({ kind, name, english, unit }, listed) {
   const englishLeaves = new Map(leavesOf(english));
   const translated = new Map(leavesOf(unit.text));
 
   return listed.flatMap((path) => {
+    if (kind === ARTICLE && BODY_PATH.test(path)) {
+      return [`${name} ${path}: a body text must be translated, it cannot be listed in sameAsEnglish`];
+    }
     if (!englishLeaves.has(path)) return [`${name} ${path}: listed in sameAsEnglish but the English text has no such path`];
     if (translated.get(path) === englishLeaves.get(path)) return [];
     return [`${name} ${path}: listed in sameAsEnglish but differs from the English text`];

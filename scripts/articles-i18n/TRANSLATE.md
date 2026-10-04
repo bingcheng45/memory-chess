@@ -76,7 +76,8 @@ in your report.
 	```
 
 	Use it for a book title, or for a label that is the same word in your language. Do not use it to skip
-	work. Four kinds of value may always stay as they are and need no entry: `person.name`,
+	work. The check refuses it for running text: `description`, `drill.why`, a section heading or
+	paragraph, and a source note. Four kinds of value may always stay as they are and need no entry: `person.name`,
 	`photo.author`, `photo.license`, and a value with no letters such as `2882 (2014)`.
 
 6. Check the translation. Fix every line the check prints, then run it again until its last line starts

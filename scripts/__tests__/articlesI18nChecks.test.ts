@@ -206,6 +206,34 @@ describe("check 6: a value identical to the English one", () => {
     expect(run).toMatchObject(PASS);
   });
 
+  it("refuses a body text in same-as-english.json, because running text is never right in English", () => {
+    const BODY_LISTED = "a body text must be translated, it cannot be listed in sameAsEnglish";
+    const run = check("de", (english) => {
+      const { description, drill, sections, sources } = english.articles[ADA.slug];
+      const [{ heading, paragraphs }] = sections;
+      return {
+        ...withText(marked(english), (ada) => ({
+          ...ada,
+          description,
+          drill,
+          sections: [{ heading, paragraphs: [ada.sections[0].paragraphs[0], paragraphs[1]] }],
+          sources,
+        })),
+        sameAsEnglish: {
+          [ADA.slug]: ["description", "drill.why", "sections[0].heading", "sections[0].paragraphs[1]", "sources[0].note", "sources[0].title"],
+        },
+      };
+    });
+
+    expect(run.failures).toEqual([
+      `ada-example description: ${BODY_LISTED}`,
+      `ada-example drill.why: ${BODY_LISTED}`,
+      `ada-example sections[0].heading: ${BODY_LISTED}`,
+      `ada-example sections[0].paragraphs[1]: ${BODY_LISTED}`,
+      `ada-example sources[0].note: ${BODY_LISTED}`,
+    ]);
+  });
+
   it("fails a listed path that differs from English, one that does not exist, and a key that is no article", () => {
     const run = check("de", (english) => ({
       ...marked(english),

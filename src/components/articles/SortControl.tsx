@@ -1,5 +1,5 @@
+import { useTranslations } from "next-intl";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
-import { ARTICLE_STATS_COPY } from "@/lib/articles/copy";
 import { SORT_KEYS, type SortKey } from "@/lib/articles/sorting";
 
 type SortControlProps = {
@@ -11,12 +11,14 @@ const OPTION_CLASS =
   `min-h-11 whitespace-nowrap rounded-full px-[13px] text-[13px] text-text-muted hover:text-peach-200 ${ARTICLE_FOCUS_RING}`;
 
 export default function SortControl({ current, onChoose }: SortControlProps) {
+  const t = useTranslations("articles.sort");
+
   return (
     <div className="flex items-center gap-2.5 text-[13px] text-text-muted">
-      <span aria-hidden="true">{ARTICLE_STATS_COPY.sortLabel}</span>
+      <span aria-hidden="true">{t("label")}</span>
       <div
         role="group"
-        aria-label={ARTICLE_STATS_COPY.sortGroup}
+        aria-label={t("group")}
         className="inline-flex flex-wrap gap-0.5 rounded-[25px] border border-white/10 bg-bg-dark p-[3px]"
       >
         {SORT_KEYS.map((sort) => (
@@ -28,7 +30,7 @@ export default function SortControl({ current, onChoose }: SortControlProps) {
             onClick={() => onChoose(sort)}
             className={OPTION_CLASS}
           >
-            {ARTICLE_STATS_COPY.sortOptions[sort]}
+            {t(`options.${sort}`)}
           </button>
         ))}
       </div>

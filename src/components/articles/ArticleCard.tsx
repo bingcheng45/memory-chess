@@ -4,7 +4,6 @@ import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import { useLikesSeen } from "@/components/articles/useLikesSeen";
-import { formatArticleDate } from "@/lib/articles/copy";
 import type { ArticleSummary } from "@/lib/articles/schema";
 import { hasCounts, atLeastLikesSeen, type ArticleCounts } from "@/lib/articles/stats";
 
@@ -22,7 +21,7 @@ const CARD_CLASS =
   "min-[561px]:grid-cols-[148px_minmax(0,1fr)] min-[561px]:gap-[26px] min-[561px]:rounded-[22px] min-[561px]:p-[18px]";
 
 export default function ArticleCard({ article, counts: listed, priority, style }: ArticleCardProps) {
-  const { slug, photo, person, publishedAt, title, description } = article;
+  const { slug, photo, person, publishedAt, publishedLabel, title, description } = article;
   const counts = atLeastLikesSeen(listed, useLikesSeen(slug));
   const descriptionId = `${slug}-description`;
   const countsId = `${slug}-counts`;
@@ -55,7 +54,7 @@ export default function ArticleCard({ article, counts: listed, priority, style }
             data-flight="date"
             className="self-start text-[12.5px] tracking-[0.02em] text-peach-500"
           >
-            {formatArticleDate(publishedAt)}
+            {publishedLabel}
           </time>
           <h2
             id={`${slug}-title`}

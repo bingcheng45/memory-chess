@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import ArticlePage from "@/components/articles/ArticlePage";
-import { DEFAULT_LOCALE } from "@/i18n/routing";
-import { ARTICLE_SLUGS, getArticle, getNextArticle } from "@/lib/articles";
+import { typingRateFor } from "@/components/articles/typingPace";
+import { DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
+import { ARTICLE_SLUGS, getArticle, getNextArticle, type Article } from "@/lib/articles";
 import { countsFor } from "@/lib/articles/stats";
+import { servesArticlesIn } from "@/lib/articles/translatedLocales";
 import { buildArticleMetadata } from "@/lib/seo/articleMetadata";
 import { getArticleStats } from "@/lib/services/articleStatsService";
 
@@ -18,35 +20,41 @@ type ArticleRouteProps = {
 };
 
 export function generateStaticParams({ params }: { params: { locale: string } }) {
-  return params.locale === DEFAULT_LOCALE ? ARTICLE_SLUGS.map((slug) => ({ slug })) : [];
+  return servesArticlesIn(params.locale) ? ARTICLE_SLUGS.map((slug) => ({ slug })) : [];
+}
+
+type ServedArticle = { article: Article; english: Article; locale: Locale };
+
+async function servedArticle(slug: string, locale: string): Promise<ServedArticle> {
+  if (!servesArticlesIn(locale)) notFound();
+  const [article, english] = await Promise.all([getArticle(slug, locale), getArticle(slug, DEFAULT_LOCALE)]);
+  if (!article || !english) notFound();
+
+  return { article, english, locale };
 }
 
 export async function generateMetadata({ params }: ArticleRouteProps): Promise<Metadata> {
-  const article = getArticle((await params).slug);
+  const { slug, locale } = await params;
+  const { article } = await servedArticle(slug, locale);
 
-  if (!article) {
-    notFound();
-  }
-
-  return buildArticleMetadata(article);
+  return buildArticleMetadata(article, locale);
 }
 
 export default async function ArticleRoute({ params }: ArticleRouteProps) {
-  const { slug, locale } = await params;
-  setRequestLocale(locale);
-  const article = getArticle(slug);
-
-  if (!article) {
-    notFound();
-  }
-
-  const stats = await getArticleStats([article.slug]);
+  const { slug, locale: requested } = await params;
+  setRequestLocale(requested);
+  const { article, english, locale } = await servedArticle(slug, requested);
+  const [stats, nextArticle] = await Promise.all([
+    getArticleStats([article.slug]),
+    getNextArticle(article.slug, locale),
+  ]);
 
   return (
     <ArticlePage
       article={article}
-      nextArticle={getNextArticle(article.slug)}
+      nextArticle={nextArticle}
       counts={countsFor(stats, article.slug)}
+      charsPerSecond={typingRateFor(english.sections, article.sections)}
     />
   );
 }

@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import ArticleList from "@/components/articles/ArticleList";
+import TranslationNote from "@/components/articles/TranslationNote";
 import { ARTICLE_LINK } from "@/components/articles/articleStyles";
 import { sortedFirstPaintInlineScript } from "@/components/articles/sortedFirstPaint";
 import { EditorialPageShell } from "@/components/editorial/EditorialPage";
 import { Link } from "@/i18n/navigation";
-import { ARTICLE_SLUGS, ARTICLE_SUMMARIES } from "@/lib/articles";
-import { ARTICLE_LIST_COPY } from "@/lib/articles/copy";
+import type { Locale } from "@/i18n/routing";
+import { ARTICLE_SLUGS, getArticleSummaries, type ArticleListMeta } from "@/lib/articles";
+import { ARTICLES_PATH } from "@/lib/articles/paths";
 import { buildArticleListStructuredData } from "@/lib/articles/structuredData";
+import { servesArticlesIn } from "@/lib/articles/translatedLocales";
 import { buildArticleListMetadata } from "@/lib/seo/articleMetadata";
 import { getArticleStats } from "@/lib/services/articleStatsService";
 
@@ -15,13 +20,31 @@ export const revalidate = 300;
 
 const ABOUT_HEADING_ID = "articles-about-heading";
 const ABOUT_PARAGRAPH_CLASS = "mt-4 text-base leading-7 text-text-secondary";
+const ABOUT_PARAGRAPHS = ["about1", "about2", "about3"] as const;
+const CORRECTIONS_PATH = "/contact-us";
 
-export function generateMetadata(): Metadata {
-  return buildArticleListMetadata(ARTICLE_SUMMARIES[0]);
+type ArticlesRouteProps = { params: Promise<{ locale: string }> };
+
+async function listCopy(locale: Locale): Promise<{ heading: string; sub: string; meta: ArticleListMeta }> {
+  const t = await getTranslations({ locale, namespace: "articles" });
+
+  return {
+    heading: t("list.heading"),
+    sub: t("list.sub"),
+    meta: { title: t("meta.title"), description: t("meta.description") },
+  };
+}
+
+export async function generateMetadata({ params }: ArticlesRouteProps): Promise<Metadata> {
+  const { locale } = await params;
+  if (!servesArticlesIn(locale)) notFound();
+  const [copy, [newest]] = await Promise.all([listCopy(locale), getArticleSummaries(locale)]);
+
+  return buildArticleListMetadata(newest, locale, copy.meta);
 }
 
 function About() {
-  const { about } = ARTICLE_LIST_COPY;
+  const t = useTranslations("articles.list");
 
   return (
     <section
@@ -29,42 +52,51 @@ function About() {
       className="mt-14 max-w-[66ch] border-t border-white/10 pt-10"
     >
       <h2 id={ABOUT_HEADING_ID} className="text-xl font-semibold tracking-tight text-white">
-        {about.heading}
+        {t("aboutHeading")}
       </h2>
-      {about.paragraphs.map((paragraph) => (
+      {ABOUT_PARAGRAPHS.map((paragraph) => (
         <p key={paragraph} className={ABOUT_PARAGRAPH_CLASS}>
-          {paragraph}
+          {t(paragraph)}
         </p>
       ))}
       <p className={ABOUT_PARAGRAPH_CLASS}>
-        {about.corrections.text}{" "}
-        <Link href={about.corrections.href} className={ARTICLE_LINK}>
-          {about.corrections.linkLabel}
-        </Link>
-        .
+        {t.rich("corrections", {
+          link: (label) => (
+            <Link href={CORRECTIONS_PATH} className={ARTICLE_LINK}>
+              {label}
+            </Link>
+          ),
+        })}
       </p>
+      <TranslationNote englishPath={ARTICLES_PATH} className={ABOUT_PARAGRAPH_CLASS} />
     </section>
   );
 }
 
-export default async function ArticlesPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function ArticlesPage({ params }: ArticlesRouteProps) {
+  const { locale } = await params;
   // Without this next-intl reads the locale from the request headers, and a
   // page that reads headers is rendered on every request instead of at build.
-  setRequestLocale((await params).locale);
-  const stats = await getArticleStats(ARTICLE_SLUGS);
+  setRequestLocale(locale);
+  if (!servesArticlesIn(locale)) notFound();
+  const [copy, articles, stats] = await Promise.all([
+    listCopy(locale),
+    getArticleSummaries(locale),
+    getArticleStats(ARTICLE_SLUGS),
+  ]);
 
   return (
     <EditorialPageShell>
       <script dangerouslySetInnerHTML={{ __html: sortedFirstPaintInlineScript() }} />
       <ArticleList
-        articles={ARTICLE_SUMMARIES}
+        articles={articles}
         stats={stats}
         heading={
           <header>
             <h1 className="text-[clamp(30px,5vw,44px)] font-bold leading-[1.05] tracking-[-0.02em] text-white">
-              {ARTICLE_LIST_COPY.heading}
+              {copy.heading}
             </h1>
-            <p className="mt-2 text-text-muted">{ARTICLE_LIST_COPY.sub}</p>
+            <p className="mt-2 text-text-muted">{copy.sub}</p>
           </header>
         }
       />
@@ -72,7 +104,7 @@ export default async function ArticlesPage({ params }: { params: Promise<{ local
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(buildArticleListStructuredData(ARTICLE_SUMMARIES)),
+          __html: JSON.stringify(buildArticleListStructuredData(articles, locale, copy.meta)),
         }}
       />
     </EditorialPageShell>

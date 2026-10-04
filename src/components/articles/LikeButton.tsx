@@ -2,10 +2,11 @@
 
 import { useId, useRef, useState } from "react";
 import { Heart } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import { useLikesSeen } from "@/components/articles/useLikesSeen";
 import { trackEvent } from "@/lib/analytics/events";
-import { ARTICLE_STATS_COPY, formatCount } from "@/lib/articles/copy";
+import { formatCount } from "@/lib/articles/format";
 import { NOT_LIKED, likedStore } from "@/lib/articles/likedStore";
 import { sendArticleEvent } from "@/lib/articles/statsClient";
 
@@ -32,6 +33,8 @@ function setLikesSeen(slug: string, likesSeen: number): void {
 }
 
 export default function LikeButton({ slug, likes }: LikeButtonProps) {
+  const t = useTranslations("articles.like");
+  const locale = useLocale();
   const countId = useId();
   const likesSeen = useLikesSeen(slug);
   const isLiked = likesSeen !== NOT_LIKED;
@@ -70,17 +73,17 @@ export default function LikeButton({ slug, likes }: LikeButtonProps) {
     <>
       <button
         type="button"
-        aria-label={ARTICLE_STATS_COPY.likeButton}
+        aria-label={t("button")}
         aria-pressed={isLiked}
         aria-describedby={hasCount ? countId : undefined}
         onClick={toggle}
         className={BUTTON_CLASS}
       >
         <Heart aria-hidden="true" strokeWidth={1.8} className={HEART_CLASS} />
-        {hasCount ? <span id={countId}>{formatCount(likesShown)}</span> : null}
+        {hasCount ? <span id={countId}>{formatCount(likesShown, locale)}</span> : null}
       </button>
       <p role="status" aria-live="polite" className="text-peach-200">
-        {shown.hasFailed ? ARTICLE_STATS_COPY.likeFailed : null}
+        {shown.hasFailed ? t("failed") : null}
       </p>
     </>
   );

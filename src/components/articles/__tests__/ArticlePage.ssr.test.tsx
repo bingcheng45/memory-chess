@@ -3,6 +3,7 @@ import type { ComponentProps } from "react";
 import { renderToString } from "react-dom/server";
 import { NextIntlClientProvider } from "next-intl";
 import ArticlePage from "@/components/articles/ArticlePage";
+import { GERMAN_MESSAGES } from "@/components/articles/__tests__/chromeCatalogues";
 import { makeArticle, summaryOf } from "@/lib/articles/__tests__/fixtures";
 import messages from "../../../../messages/en.json";
 
@@ -32,12 +33,26 @@ jest.mock("@/components/ui/PageHeader", () => {
   return MockPageHeader;
 });
 
+const TEXT_NODE_MARKER = /<!-- -->/g;
+const HIDDEN_ATTRIBUTE = /\shidden(=|\s|>)/;
+const HIDING_STYLE = /style="[^"]*(opacity|display|visibility)/;
+
 const article = makeArticle(0);
-const html = renderToString(
-  <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-    <ArticlePage article={article} nextArticle={summaryOf(makeArticle(1))} />
-  </NextIntlClientProvider>,
-);
+
+function serverHtml(locale: string, catalogue: Record<string, unknown>): string {
+  return renderToString(
+    <NextIntlClientProvider locale={locale} messages={catalogue} timeZone="UTC">
+      <ArticlePage article={article} nextArticle={summaryOf(makeArticle(1))} counts={{ views: 2140, likes: 187 }} />
+    </NextIntlClientProvider>,
+  ).replace(TEXT_NODE_MARKER, "");
+}
+
+/** What a reader with no script gets from an element: its text with the tags taken out. */
+function wordsIn(html: string, element: RegExp): string {
+  return (html.match(element)?.[0] ?? "").replace(/<[^>]+>/g, "");
+}
+
+const html = serverHtml("en", messages);
 
 describe("ArticlePage server HTML", () => {
   it("holds every heading and paragraph as plain text", () => {
@@ -65,7 +80,53 @@ describe("ArticlePage server HTML", () => {
   });
 
   it("hides nothing with an attribute or an inline style", () => {
-    expect(html).not.toMatch(/\shidden(=|\s|>)/);
-    expect(html).not.toMatch(/style="[^"]*(opacity|display|visibility)/);
+    expect(html).not.toMatch(HIDDEN_ATTRIBUTE);
+    expect(html).not.toMatch(HIDING_STYLE);
+  });
+
+  it("holds the date, the byline, the credit, the count and the drill label in the words they always had", () => {
+    expect(wordsIn(html, /<time[\s\S]*?<\/time>/)).toBe("Jan 1, 2026");
+    expect(wordsIn(html, /<address[\s\S]*?<\/address>/)).toBe("By Bing Cheng");
+    expect(wordsIn(html, /<cite class="mt-1\.5[\s\S]*?<\/cite>/)).toBe(
+      "Photo: Fixture Photographer, CC BY 4.0, via Wikimedia Commons. Cropped and resized.",
+    );
+    expect(html).toContain("2,140 views</span>");
+    expect(html).toContain('aria-label="Play 12 pieces, 5 seconds"');
+    expect(html).toContain(">Play 12 pieces, 5 seconds</span>");
+  });
+
+  it("holds no translation note, since the English article is the original", () => {
+    expect(html).not.toContain("data-translation-note");
+    expect(html.match(/data-authorship-note/g)).toHaveLength(1);
+  });
+});
+
+describe("ArticlePage server HTML in a translation", () => {
+  const german = serverHtml("de", GERMAN_MESSAGES);
+
+  it("holds the translation note and its link to the English article", () => {
+    const note = german.match(/<p[^>]*data-translation-note[^>]*>[\s\S]*?<\/p>/)?.[0] ?? "";
+    const link = note.match(/<a[^>]*>/)?.[0] ?? "";
+
+    expect(note).toContain("data-authorship-note");
+    expect(wordsIn(note, /[\s\S]+/)).toBe(
+      "Mit KI-Unterstützung aus dem Englischen übersetzt. Maßgeblich ist der englische Artikel. Auf Englisch lesen",
+    );
+    expect(link).toContain('href="/articles/alder-fixture"');
+    expect(link).toContain('hrefLang="en"');
+  });
+
+  it("holds the date, the byline and the count in German, and every paragraph of the body", () => {
+    expect(wordsIn(german, /<time[\s\S]*?<\/time>/)).toBe("1. Jan. 2026");
+    expect(wordsIn(german, /<address[\s\S]*?<\/address>/)).toBe("Von Bing Cheng");
+    expect(german).toContain("2.140 Aufrufe</span>");
+    for (const section of article.sections) {
+      for (const paragraph of section.paragraphs) expect(german).toContain(`>${paragraph}</p>`);
+    }
+  });
+
+  it("hides nothing with an attribute or an inline style", () => {
+    expect(german).not.toMatch(HIDDEN_ATTRIBUTE);
+    expect(german).not.toMatch(HIDING_STYLE);
   });
 });

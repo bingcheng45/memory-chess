@@ -1,7 +1,6 @@
 import type { ComponentProps } from "react";
 import { render, screen, within } from "@/test-utils/intl";
 import ArticlePage from "@/components/articles/ArticlePage";
-import { ARTICLE_STATS_COPY } from "@/lib/articles/copy";
 import { makeArticle, summaryOf } from "@/lib/articles/__tests__/fixtures";
 import type { ArticleCounts } from "@/lib/articles/stats";
 import { viewedStore } from "@/lib/articles/viewedStore";
@@ -44,7 +43,7 @@ function renderPage(counts?: ArticleCounts) {
   return { ...view, header };
 }
 
-const likeButton = () => screen.getByRole("button", { name: ARTICLE_STATS_COPY.likeButton });
+const likeButton = () => screen.getByRole("button", { name: "Like this article" });
 
 beforeEach(() => {
   fetchMock = jest.fn().mockResolvedValue({ status: 200, json: async () => ({ views: 1, likes: 0 }) });

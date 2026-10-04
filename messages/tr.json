@@ -416,7 +416,7 @@
       "authorshipNote": "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
       "translationNote": "Translated from English with AI assistance. The English article is the reference.",
       "readInEnglish": "Read it in English",
-      "photoCredit": "Photo: {author}, <license>{license}</license>, via <source>Wikimedia Commons</source>. {changes}.",
+      "photoCredit": "Photo: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
       "factFile": "Fact file",
       "facts": {
         "born": "Born",

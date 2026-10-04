@@ -6,6 +6,7 @@ import { pathToFileURL } from "node:url";
 import type { ComponentProps } from "react";
 import { render } from "@/test-utils/intl";
 import ArticlePage from "@/components/articles/ArticlePage";
+import { GERMAN_MESSAGES } from "@/components/articles/__tests__/chromeCatalogues";
 import type { Article } from "@/lib/articles/schema";
 import {
   FIXTURE_COUNT,
@@ -71,6 +72,7 @@ const AUDIT_PROGRAM = `
 `;
 
 type RenderedPage = { url: string; html: string };
+type Language = { locale: string; messages: Record<string, unknown> };
 type AuditedPage = { url: string; hiddenWords: number; h1Count: number; mainWords: number; headings: string[] };
 type AuditReport = {
   pages: AuditedPage[];
@@ -98,19 +100,22 @@ function auditInChildProcess(pages: RenderedPage[]): AuditReport {
   return JSON.parse(runInChildProcess(AUDIT_PROGRAM, pages, AUDIT_LIMIT_MS));
 }
 
-function renderedHtmlOf(article: Article, nextArticle: Article): string {
+function renderedHtmlOf(article: Article, nextArticle: Article, language?: Language): string {
   const { container, unmount } = render(
     <ArticlePage article={article} nextArticle={summaryOf(nextArticle)} />,
+    language,
   );
   const html = container.innerHTML;
   unmount();
   return html;
 }
 
-function pagesFor(articles: Article[]): RenderedPage[] {
+function pagesFor(articles: Article[], language?: Language): RenderedPage[] {
+  const prefix = language ? `/${language.locale}` : "";
+
   return articles.map((article, index) => ({
-    url: `http://127.0.0.1:4517/articles/${article.slug}`,
-    html: renderedHtmlOf(article, articles[(index + 1) % articles.length]),
+    url: `http://127.0.0.1:4517${prefix}/articles/${article.slug}`,
+    html: renderedHtmlOf(article, articles[(index + 1) % articles.length], language),
   }));
 }
 
@@ -155,6 +160,32 @@ describe("thirteen articles under the AdSense audit", () => {
 
   it("reads the pages as distinct", () => {
     expect(report.problems["near-duplicate"]).toEqual({});
+  });
+});
+
+describe("thirteen translated articles under the AdSense audit", () => {
+  const GERMAN: Language = { locale: "de", messages: GERMAN_MESSAGES };
+  const TRANSLATION_NOTE =
+    "Mit KI-Unterstützung aus dem Englischen übersetzt. Maßgeblich ist der englische Artikel.";
+  const articles = sameDay(makeArticles(FIXTURE_COUNT));
+
+  it("stamps no sentence across pages, though the translation note is identical on all thirteen", () => {
+    const pages = pagesFor(articles, GERMAN);
+    const report = auditInChildProcess(pages);
+
+    for (const page of pages) expect(page.html).toContain(TRANSLATION_NOTE);
+    expect(report.pages.map((page) => page.hiddenWords)).toEqual(Array(FIXTURE_COUNT).fill(0));
+    expect(report.problems.boilerplate).toEqual({});
+  });
+
+  it("would stamp the note across pages if it lost its authorship mark, so a clean result means something", () => {
+    const pages = pagesFor(articles, GERMAN).map((page) => ({
+      ...page,
+      html: page.html.replace(/ data-authorship-note="[^"]*"(?= data-translation-note)/, ""),
+    }));
+    const report = auditInChildProcess(pages);
+
+    expect(Object.keys(report.problems.boilerplate)).toHaveLength(FIXTURE_COUNT);
   });
 });
 

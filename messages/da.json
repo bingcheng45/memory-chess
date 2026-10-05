@@ -414,7 +414,7 @@
       "showAll": "Vis hele teksten",
       "byline": "Af <author>{name}</author>",
       "authorshipNote": "Undersøgt og skrevet i udkast med hjælp fra AI ud fra kilderne nedenfor. Alle fakta blev kontrolleret mod disse kilder før offentliggørelsen.",
-      "translationNote": "Oversat fra engelsk med hjælp fra AI. Den engelske artikel er den, der gælder.",
+      "translationNote": "Oversat fra engelsk med hjælp fra AI. Den engelske artikel fungerer som reference.",
       "readInEnglish": "Læs den på engelsk",
       "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
       "factFile": "Faktaboks",

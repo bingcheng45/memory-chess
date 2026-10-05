@@ -56,26 +56,41 @@ export function sourceHashOf(value: unknown): string {
   return createHash("sha256").update(JSON.stringify(withSortedKeys(value))).digest("hex");
 }
 
-/** What a review covers: the text, the paths kept in English, and the English text both were made from. */
-export type ApprovedContent = {
+/** What the strings of the section are called where an article has its slug. */
+const CHROME_NAME = "chrome";
+
+/** Where a reviewed text is published: the locale, and the article's slug or `CHROME_NAME`. */
+export type ApprovedPlace = {
+  readonly locale: string;
+  readonly name: string;
+};
+
+/** What a review covers: one text in one place, the paths kept in English, and the English text both were made from. */
+export type ApprovedContent = ApprovedPlace & {
   readonly sourceHash: unknown;
   readonly sameAsEnglish: unknown;
   readonly text: unknown;
 };
 
-export function approvalHashOf({ sourceHash, sameAsEnglish, text }: ApprovedContent): string {
-  return sourceHashOf({ sourceHash, sameAsEnglish, text });
+/**
+ * The place is hashed with the text, so an approved file copied to another
+ * locale or over another article is not approved there. The hash shows that
+ * the text is the one `approve` saw. It is no secret: anyone who can write the
+ * repository can compute it.
+ */
+export function approvalHashOf({ locale, name, sourceHash, sameAsEnglish, text }: ApprovedContent): string {
+  return sourceHashOf({ locale, name, sourceHash, sameAsEnglish, text });
 }
 
 /**
- * Why the installed file `file` does not count as reviewed. `text` is what its
- * review covers: the file's own `text` for an article, the `articles` messages
- * of the locale for the chrome.
+ * Why the installed file `file` does not count as reviewed at `place`. `text`
+ * is what its review covers: the file's own `text` for an article, the
+ * `articles` messages of the locale for the chrome.
  */
-export function approvalProblems(file: Tree, text: unknown): string[] {
+export function approvalProblems(file: Tree, text: unknown, place: ApprovedPlace): string[] {
   const { sourceHash, sameAsEnglish, approvedHash } = file;
-  if (approvedHash === approvalHashOf({ sourceHash, sameAsEnglish, text })) return [];
-  return [typeof approvedHash === "string" ? "not reviewed, edited after it was approved" : "not reviewed"];
+  if (approvedHash === approvalHashOf({ ...place, sourceHash, sameAsEnglish, text })) return [];
+  return [typeof approvedHash === "string" ? "not reviewed, the approval is for another text, article or locale" : "not reviewed"];
 }
 
 const INSTALLED_FILE_KEYS = {
@@ -133,25 +148,25 @@ export function shapeProblems(english: unknown, candidate: unknown, path: string
   return leafProblems(candidate, label);
 }
 
-export function translationProblems(file: unknown, english: ArticleText): string[] {
+export function translationProblems(file: unknown, english: ArticleText, { locale, slug }: { locale: string; slug: string }): string[] {
   if (!isTree(file)) return ["the file is not an object"];
 
   return [
     ...unknownKeyProblems(Object.keys(file), "article"),
     ...shapeProblems(english, file.text, "text"),
     ...(file.sourceHash === sourceHashOf(english) ? [] : ["sourceHash is stale"]),
-    ...approvalProblems(file, file.text),
+    ...approvalProblems(file, file.text, { locale, name: slug }),
   ];
 }
 
-/** `english` and `translated` are the `articles` messages of the English catalogue and of the locale's. */
-export function chromeProblems(file: unknown, english: unknown, translated: unknown): string[] {
+/** `english` and `translated` are the `articles` messages of the English catalogue and of the catalogue of `locale`. */
+export function chromeProblems(file: unknown, english: unknown, translated: unknown, locale: string): string[] {
   if (!isTree(file)) return ["chrome.json is not an object"];
 
   return [
     ...unknownKeyProblems(Object.keys(file), "chrome"),
     ...shapeProblems(english, translated, "articles"),
     ...(file.sourceHash === sourceHashOf(english) ? [] : ["sourceHash is stale"]),
-    ...approvalProblems(file, translated),
+    ...approvalProblems(file, translated, { locale, name: CHROME_NAME }),
   ];
 }

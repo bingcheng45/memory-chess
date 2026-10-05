@@ -2,7 +2,7 @@ import { join } from "node:path";
 import { counted, failuresOf, unreviewedOf } from "./checks.mjs";
 import { partsOf } from "./icu.mjs";
 import { inOrderOf, mapLeaves } from "./leaves.mjs";
-import { ENGLISH } from "./names.mjs";
+import { CHROME, ENGLISH } from "./names.mjs";
 import {
   articleFile,
   chromeFile,
@@ -67,18 +67,18 @@ export function check(repo, locale, dir) {
 function installFiles(repo, locale, bundle, installed) {
   const { approvalHashOf } = repo.lib;
   // An approval outlives an import only when the import changes nothing the approval covers.
-  const installable = (old, next, approvedText) => {
-    const hash = approvalHashOf({ ...next, text: approvedText });
+  const installable = (name, old, next, approvedText) => {
+    const hash = approvalHashOf({ ...next, locale, name, text: approvedText });
     return { ...next, approvedHash: old?.approvedHash === hash ? hash : null };
   };
   const articles = repo.articles.map(({ slug, text, sourceHash }) => {
     const { sameAsEnglish, text: translated } = bundle.articles[slug];
     const next = { sourceHash, sameAsEnglish, text: inOrderOf(text, translated) };
-    return articleFile(locale, slug, installable(installed.articles[slug], next, next.text));
+    return articleFile(locale, slug, installable(slug, installed.articles[slug], next, next.text));
   });
   const { sameAsEnglish, text: strings } = bundle.chrome;
   const namespace = mapLeaves(repo.chrome.namespace, (path) => strings[path]);
-  const chrome = installable(installed.chrome, { sourceHash: repo.chrome.sourceHash, sameAsEnglish }, namespace);
+  const chrome = installable(CHROME, installed.chrome, { sourceHash: repo.chrome.sourceHash, sameAsEnglish }, namespace);
 
   return [...articles, chromeFile(locale, chrome), messagesWithArticles(repo.root, locale, namespace)];
 }
@@ -96,13 +96,16 @@ export function approve(repo, locale) {
   const { failure, bundle } = checked("approve", repo, locale);
   if (failure !== undefined) return failure;
 
-  const approved = (unit) => ({ ...unit, approvedHash: repo.lib.approvalHashOf({ ...unit, text: unit.approvedText }) });
+  const approved = (name, unit) => ({
+    ...unit,
+    approvedHash: repo.lib.approvalHashOf({ ...unit, locale, name, text: unit.approvedText }),
+  });
   const files = [
     ...repo.articles.map(({ slug, text }) => {
       const unit = bundle.articles[slug];
-      return articleFile(locale, slug, { ...approved(unit), text: inOrderOf(text, unit.text) });
+      return articleFile(locale, slug, { ...approved(slug, unit), text: inOrderOf(text, unit.text) });
     }),
-    chromeFile(locale, approved(bundle.chrome)),
+    chromeFile(locale, approved(CHROME, bundle.chrome)),
   ];
   writeChanged(repo.root, files);
   return passed(`ok approve ${locale}: ${counted(files.length, "file")} reviewed`);
@@ -122,7 +125,7 @@ export function verify(repo) {
 
   const failures = locales.flatMap((locale) => {
     const bundle = readInstalled(repo.root, locale);
-    const lines = [...failuresOf(locale, repo, bundle), ...unreviewedOf(repo.lib, bundle)];
+    const lines = [...failuresOf(locale, repo, bundle), ...unreviewedOf(repo.lib, locale, bundle)];
     return lines.map((line) => `[${locale}] ${line}`);
   });
   if (failures.length > 0) return { failures, summary: `verify: ${counted(failures.length, "failure")}` };

@@ -85,8 +85,9 @@ a recipe. If the English text itself looks wrong, say so in your report and leav
 	```
 
 	`approve` covers the whole locale at once. In every article file and in `chrome.json` it records
-	`approvedHash`, the hash of the text you approved, so your commit shows that change in each of them.
-	The approval holds only for that exact text. Any later edit of an article file, or of a string under
+	`approvedHash`, the hash of the text you approved, its locale and its article, so your commit shows
+	that change in each of them. The approval holds only for that exact text in that place. A file copied
+	to another locale is not approved there. Any later edit of an article file, or of a string under
 	`articles` in the catalogue, makes `verify` and the build fail until `approve` runs again, so make
 	every repair before you approve. If the translation needs more than repairs, do not approve. Report
 	what is wrong and stop.
@@ -104,7 +105,7 @@ a recipe. If the English text itself looks wrong, say so in your report and leav
 ## What the check proves and what it does not
 
 The check proves structure: the same shape as the English text, every number kept, every placeholder and
-plural form present, no value left in English by accident. Names, titles and loanwords kept in Latin letters exactly as in the English text do not count against the script check, and a decade such as "the 1980s" may be written the way the language writes it (`anni Ottanta`, `lata 80.`). It fails a value that keeps four in five of the words of its English value, and
-any value full of words only English has, such as `the`, `with` and `which`. It fails a long paragraph that is much shorter, against its English
+plural form present, no value left in English by accident. A value of 40 letters or more has at least half its letters in the script of the language, Latin script included. Names, titles and loanwords kept exactly as in the English text do not count against the script check, and a decade such as "the 1980s" may be written the way the language writes it (`anni Ottanta`, `lata 80.`). It fails a value that keeps four in five of the words of its English value, and
+any value with a sentence left in English, read by function words such as `the`, `with` and `which`. A title or a saying kept exactly as the English text has it, inside a translated sentence, is not counted. It fails an article, the section's strings or a value of 40 words or more written in another language of this site. It fails a long paragraph that is much shorter, against its English
 paragraph, than the rest of the translation. A dropped sentence in a long paragraph can still pass. It cannot read. A translation that passes can
 still say the wrong thing, and finding that is your job.

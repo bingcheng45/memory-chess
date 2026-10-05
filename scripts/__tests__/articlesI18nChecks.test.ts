@@ -226,6 +226,7 @@ describe("check 6: a value identical to the English one", () => {
     });
 
     expect(run.failures).toEqual([
+      `ada-example drill.why: not in de: English function words outnumber de ones by more than 3 in 1 of 1 sentences, the first: "${ADA.drill.why}". Translate it, or keep in English only what the English text has word for word inside a sentence that is otherwise translated, such as a title`,
       `ada-example description: ${BODY_LISTED}`,
       `ada-example drill.why: ${BODY_LISTED}`,
       `ada-example sections[0].heading: ${BODY_LISTED}`,

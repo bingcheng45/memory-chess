@@ -4,7 +4,7 @@ import { makeArticle, markEveryString, reviewedTranslationOf } from "./fixtures"
 
 const english = makeArticle(0);
 const englishText = textOf(english);
-const reviewed = reviewedTranslationOf(english, "DE ");
+const reviewed = reviewedTranslationOf(english, "DE ", "de");
 
 const sourceOf =
   (files: Record<string, unknown>): TranslationSource =>
@@ -18,8 +18,8 @@ describe("loadArticleText", () => {
   it("returns the text of the file for that locale and that slug", async () => {
     const source = sourceOf({
       "de/alder-fixture": reviewed,
-      "fr/alder-fixture": reviewedTranslationOf(english, "FR "),
-      "de/birch-fixture": reviewedTranslationOf(makeArticle(1), "DE "),
+      "fr/alder-fixture": reviewedTranslationOf(english, "FR ", "fr"),
+      "de/birch-fixture": reviewedTranslationOf(makeArticle(1), "DE ", "de"),
     });
 
     const text = await loadArticleText("alder-fixture", "de", englishText, source);
@@ -49,7 +49,15 @@ describe("loadArticleText", () => {
 
     await expect(
       loadArticleText("alder-fixture", "de", englishText, sourceOf({ "de/alder-fixture": edited })),
-    ).rejects.toThrow("Article translation de/alder-fixture cannot be published: not reviewed, edited after it was approved");
+    ).rejects.toThrow("Article translation de/alder-fixture cannot be published: not reviewed, the approval is for another text, article or locale");
+  });
+
+  it("refuses the approved file of another locale, copied as it is", async () => {
+    const french = reviewedTranslationOf(english, "FR ", "fr");
+
+    await expect(
+      loadArticleText("alder-fixture", "de", englishText, sourceOf({ "de/alder-fixture": french })),
+    ).rejects.toThrow("Article translation de/alder-fixture cannot be published: not reviewed, the approval is for another text, article or locale");
   });
 
   it("names every problem of a broken file in one error", async () => {
@@ -82,7 +90,7 @@ describe("loadArticleText", () => {
 
 describe("loadArticleText reading the repository", () => {
   it("reads src/lib/articles/translations/<locale>/<slug>.json", async () => {
-    jest.doMock("../translations/fr/alder-fixture.json", () => reviewedTranslationOf(english, "FR "), {
+    jest.doMock("../translations/fr/alder-fixture.json", () => reviewedTranslationOf(english, "FR ", "fr"), {
       virtual: true,
     });
 

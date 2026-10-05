@@ -16,6 +16,7 @@ import {
   filesUnder,
   importGerman,
   inSandbox,
+  installedTranslation,
   marked,
   put,
   putJson,
@@ -164,7 +165,9 @@ describe("import", () => {
     const ARTICLES_KEY = '\n  "articles": {';
     const state = inSandbox("real", (root) => {
       const before = read(root, "messages/de.json");
-      const run = importGerman(root);
+      const german = installedTranslation(root, "de");
+      writeTranslation(root, DIR, { ...german, chrome: { ...german.chrome, "list.heading": "Artikel und Porträts" } });
+      const run = runLever(root, "import", "de", DIR);
       const after = read(root, "messages/de.json");
       runLever(root, "import", "de", DIR);
       return { run, before, after, check: runLever(root, "check", "de"), again: read(root, "messages/de.json") };
@@ -178,7 +181,7 @@ describe("import", () => {
     expect(state.after.slice(0, articlesAt + ARTICLES_KEY.length)).toBe(state.before.slice(0, articlesAt + ARTICLES_KEY.length));
     expect(state.after).not.toBe(state.before);
     expect(state.after.endsWith("\n  }\n}\n")).toBe(true);
-    expect(JSON.parse(state.after).articles.list.heading).toBe("Articlesz");
+    expect(JSON.parse(state.after).articles.list.heading).toBe("Artikel und Porträts");
     expect(state.again).toBe(state.after);
   });
 

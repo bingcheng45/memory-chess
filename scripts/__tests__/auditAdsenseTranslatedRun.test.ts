@@ -87,26 +87,62 @@ describe("audit-adsense translated mode, run against a served site", () => {
     expect(lines(run.stdout).slice(3, 6)).toEqual([
       "translated pages (noindex under a locale prefix): 2 checked against their English pages, 1 of them owing a translation note",
       "  words counted as space-separated words in de",
-      "  lowest share of the English word count: 100% on /de/leaderboard (322 of 322), floor 70%",
+      "  blocks compared with the English page on the 1 that owes a note: h2, p, li, article card (the translation note and the view and like counts left out)",
+    ]);
+    expect(lines(run.stdout).filter((line) => line.startsWith("| translated-dropped-content"))).toEqual([
+      "| translated-dropped-content | a translated page of written text has as many of each block (h2, p, li, article card) in main content as its English page | 0 |  |",
     ]);
     expect(lines(run.stdout).at(-1)).toBe("PASS");
     expect(run.code).toBe(0);
   });
 
+  it("fails a site whose translated article dropped a section, naming the blocks that differ", async () => {
+    const english = page(ARTICLE, { head: ARTICLE_SCHEMA, extra: "<h2>One</h2><p>First</p><h2>Two</h2><p>Second</p>" });
+    const german = page(GERMAN_ARTICLE, { robots: "noindex, follow", head: ARTICLE_SCHEMA, extra: `<h2>Eins</h2><p>Erster</p>${NOTE}` });
+    const run = await auditSite({ ...passingSite(german), [ARTICLE]: english });
+
+    expect(lines(run.stdout).slice(-5)).toEqual([
+      "Failing pages:",
+      `  ${GERMAN_ARTICLE}`,
+      `    [translated-dropped-content] 1 h2 where ${ARTICLE} has 2, 2 p where it has 3`,
+      "",
+      "FAIL: 1 pages and 0 site checks",
+    ]);
+    expect(run.code).toBe(1);
+  });
+
+  it("fails a site whose listed page links to an indexable page the sitemap does not list", async () => {
+    const run = await auditSite({
+      ...passingSite(TRANSLATED_ARTICLE),
+      "/": page("/", { extra: '<a href="/settings">Settings</a>' }),
+      "/settings": page("/settings"),
+    });
+
+    expect(lines(run.stdout).filter((line) => line.startsWith("| unlisted-indexable"))).toEqual([
+      "| unlisted-indexable | site | 1 | /settings is linked and indexable but missing from the sitemap |",
+    ]);
+    expect(lines(run.stdout).at(-1)).toBe("FAIL: 0 pages and 1 site checks");
+    expect(run.code).toBe(1);
+  });
+
   it("writes each translated page and its findings to audit.json", async () => {
     const report = (await auditSite(passingSite(ARTICLE_WITHOUT_NOTE))).json() as {
       summary: { urls: number; translated: number };
-      translated: Array<{ path: string; english: string; words: number; englishWords: number; owesNote: boolean; findings: unknown[] }>;
+      translated: Array<{ path: string; english: string; words: number; blocks: unknown; englishBlocks: unknown; owesNote: boolean; findings: unknown[] }>;
+      pages: Array<{ path: string; blocks: unknown }>;
     };
+    const ONE_PARAGRAPH = { h2: 0, p: 1, li: 0, "article card": 0 };
 
     expect({ urls: report.summary.urls, translated: report.summary.translated }).toEqual({ urls: 8, translated: 2 });
-    expect(report.translated.map(({ path, english, words, englishWords, owesNote, findings }) => ({ path, english, words, englishWords, owesNote, findings }))).toEqual([
-      { path: "/de/leaderboard", english: "/leaderboard", words: 322, englishWords: 322, owesNote: false, findings: [] },
+    expect(report.pages.find((p) => p.path === ARTICLE)?.blocks).toEqual(ONE_PARAGRAPH);
+    expect(report.translated.map(({ path, english, words, blocks, englishBlocks, owesNote, findings }) => ({ path, english, words, blocks, englishBlocks, owesNote, findings }))).toEqual([
+      { path: "/de/leaderboard", english: "/leaderboard", words: 322, blocks: ONE_PARAGRAPH, englishBlocks: ONE_PARAGRAPH, owesNote: false, findings: [] },
       {
         path: GERMAN_ARTICLE,
         english: ARTICLE,
         words: 322,
-        englishWords: 322,
+        blocks: ONE_PARAGRAPH,
+        englishBlocks: ONE_PARAGRAPH,
         owesNote: true,
         findings: [{ rule: "translation-note", message: `no translation note (data-translation-note), though ${ARTICLE} declares a schema.org Article` }],
       },

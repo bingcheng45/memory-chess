@@ -112,10 +112,10 @@ export function markEveryString<T>(value: T, marker: string): T {
   return value;
 }
 
-export function reviewedTranslationOf(english: Article, marker: string): ArticleTranslation {
+export function reviewedTranslationOf(english: Article, marker: string, locale: string): ArticleTranslation {
   const englishText = textOf(english);
   const unit = { sourceHash: sourceHashOf(englishText), sameAsEnglish: [], text: markEveryString(englishText, marker) };
-  return { ...unit, approvedHash: approvalHashOf(unit) };
+  return { ...unit, approvedHash: approvalHashOf({ ...unit, locale, name: english.slug }) };
 }
 
 export function storeLikes(likes: Record<string, number>): void {

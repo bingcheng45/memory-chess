@@ -1,25 +1,13 @@
 import { textOf } from "./icu.mjs";
-import { ARTICLE } from "./names.mjs";
+import { LANGUAGE_LIMITS, englishLead, wordsOf } from "./language.mjs";
+import { ARTICLE, ENGLISH } from "./names.mjs";
 import { MAY_EQUAL_ENGLISH, wordsThatMayStay } from "./paths.mjs";
 
-const WORD = /[\p{L}\p{M}]+/gu;
 const COPY_SHARE = 0.8;
-
-// Words of English that no other shipped language uses. `in`, `of`, `was`,
-// `her`, `is`, `on`, `to`, `for` and their like are left out because Dutch,
-// German, the Nordic languages, Czech, Polish, French or Portuguese have them
-// too, and so are `had` (Dutch), `have` (Danish) and `not` (Turkish).
-const ENGLISH_ONLY_WORDS = new Set(
-  (
-    "the and that with which from this were they their would about when what there been who has " +
-    "she his him them than these those its into after could did does between while where because"
-  ).split(" "),
-);
-const MAX_ENGLISH_ONLY_WORDS = 3;
-// A long translated paragraph may quote several English titles.
-const ENGLISH_PROSE_SHARE = 0.1;
-
-const wordsOf = (text) => text.toLowerCase().match(WORD) ?? [];
+// One word that a translation shares with its English leaf can be a name or chance. Two in a row were kept.
+const MIN_KEPT_RUN = 2;
+const WHAT_TO_DO =
+  "Translate it, or keep in English only what the English text has word for word inside a sentence that is otherwise translated, such as a title";
 
 const timesIn = (words, word) => words.filter((other) => other === word).length;
 
@@ -40,12 +28,80 @@ export function copyProblems({ kind, path, english, value }) {
   return [`${kept} of ${source.length} English words are still here, the text looks untranslated`];
 }
 
-/** Fails a leaf that is English prose, whether or not it is the English leaf of its path. */
-export function englishProseProblems({ kind, path, locale, value }) {
+function sentencesOf(text, locale) {
+  const segments = new Intl.Segmenter(locale, { granularity: "sentence" }).segment(text);
+  return [...segments].map(({ segment }) => segment.trim()).filter((sentence) => sentence !== "");
+}
+
+function longestSharedRun(words, start, source) {
+  return source.reduce(
+    (longest, _, sourceStart) => {
+      let length = 0;
+      while (start + length < words.length && words[start + length] === source[sourceStart + length]) length += 1;
+      return length > longest.length ? { length, sourceStart } : longest;
+    },
+    { length: 0, sourceStart: 0 },
+  );
+}
+
+/** The index in `source` of each of `words` that is in a run both have, and `undefined` for any other word. */
+function keptSourceIndexes(words, source) {
+  const indexes = words.map(() => undefined);
+  let at = 0;
+  while (at < words.length) {
+    const { length, sourceStart } = longestSharedRun(words, at, source);
+    const kept = length >= MIN_KEPT_RUN ? length : 0;
+    for (let step = 0; step < kept; step += 1) indexes[at + step] = sourceStart + step;
+    at += Math.max(kept, 1);
+  }
+  return indexes;
+}
+
+/**
+ * A run of words that the English leaf has word for word is a title or a
+ * saying kept on purpose, and does not count toward English. A leaf that keeps
+ * four in five of the words of an English sentence left that sentence
+ * untranslated, and all of it counts.
+ */
+function sentencesRead({ kind, locale, english, value }) {
+  const source = sentencesOf(textOf(kind, english, ENGLISH), ENGLISH).map(wordsOf);
+  const sourceWords = source.flat();
+  const sentenceOf = source.flatMap((words, sentence) => words.map(() => sentence));
+  const sentences = sentencesOf(textOf(kind, value, locale), locale).map((text) => {
+    const words = wordsOf(text);
+    return { text, words, kept: keptSourceIndexes(words, sourceWords) };
+  });
+  const keptInTheLeaf = new Set(sentences.flatMap(({ kept }) => kept));
+  const keptOf = (sentence) => sentenceOf.filter((at, index) => at === sentence && keptInTheLeaf.has(index)).length;
+  const wasLeftInEnglish = source.map((words, sentence) => keptOf(sentence) >= words.length * COPY_SHARE);
+  const countsTowardEnglish = (sourceIndex) => sourceIndex === undefined || wasLeftInEnglish[sentenceOf[sourceIndex]];
+
+  return sentences.map(({ text, words, kept }) => ({
+    text,
+    words,
+    counted: words.filter((_, index) => countsTowardEnglish(kept[index])),
+  }));
+}
+
+/**
+ * Fails a leaf with a sentence of English in it, whether or not it is the
+ * English of its path: a paragraph left half translated reads as its locale
+ * as a whole. A leaf of short English sentences fails as a whole.
+ */
+export function englishProseProblems(leaf) {
+  const { kind, path, locale } = leaf;
   if (kind === ARTICLE && MAY_EQUAL_ENGLISH.test(path)) return [];
-  const words = wordsOf(textOf(kind, value, locale));
-  const english = words.filter((word) => ENGLISH_ONLY_WORDS.has(word));
-  if (english.length <= MAX_ENGLISH_ONLY_WORDS || english.length / words.length < ENGLISH_PROSE_SHARE) return [];
-  const named = [...new Set(english)].join(", ");
-  return [`${english.length} of ${words.length} words are English (${named}), the text looks untranslated`];
+  const { maxLead } = LANGUAGE_LIMITS;
+  const leadOf = ({ words, counted }) => englishLead(locale, words, counted);
+  const sentences = sentencesRead(leaf);
+  const failing = sentences.filter((sentence) => leadOf(sentence) > maxLead);
+
+  if (failing.length > 0) {
+    return [
+      `not in ${locale}: English function words outnumber ${locale} ones by more than ${maxLead} in ${failing.length} of ${sentences.length} sentences, the first: "${failing[0].text}". ${WHAT_TO_DO}`,
+    ];
+  }
+  const lead = leadOf({ words: sentences.flatMap(({ words }) => words), counted: sentences.flatMap(({ counted }) => counted) });
+  if (lead <= maxLead) return [];
+  return [`not in ${locale} as a whole: ${lead} more English function words than ${locale} ones. ${WHAT_TO_DO}`];
 }

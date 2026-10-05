@@ -3,6 +3,7 @@ import { existsSync, writeFileSync, mkdirSync, realpathSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { UNCOUNTED_MARKS, blockCounts } from "./audit-adsense/structure.mjs";
 import { TRANSLATED_RULES, translatedLines, translatedRows } from "./audit-adsense/translated.mjs";
 import { countWords } from "./audit-adsense/words.mjs";
 
@@ -195,6 +196,7 @@ export function parsePage(url, status, html, linkHeader = "") {
     headerHreflang: linkHeaderAlternates(linkHeader),
     schemaTypes: schemaTypes(html),
     translationNoteLinks: markedLinks(main, "data-translation-note"),
+    blocks: blockCounts(UNCOUNTED_MARKS.reduce((html, mark) => stripMarked(html, mark), main)),
   };
 }
 

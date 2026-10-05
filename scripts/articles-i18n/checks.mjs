@@ -1,5 +1,6 @@
 import { contentLossFailures } from "./contentLoss.mjs";
 import { formatError, partsOf, textOf } from "./icu.mjs";
+import { languageFailures, missingLanguageRuleProblems } from "./language.mjs";
 import { leavesOf } from "./leaves.mjs";
 import { ARTICLE, CHROME, ENGLISH } from "./names.mjs";
 import { BODY_PATH, MAX_WORDS_THAT_MAY_STAY, MAY_EQUAL_ENGLISH, TITLE_PATH } from "./paths.mjs";
@@ -11,8 +12,11 @@ const LICENSE_PATH = "photo.license";
 const CC_LICENSE_PREFIX = "CC ";
 const SOURCE_TITLE = /^sources\[\d+\]\.title$/;
 const LETTER = /\p{L}/gu;
-const LATIN_TOKEN = /[\p{Script=Latin}\p{M}]+/gu;
+const LATIN_RUN = "[\\p{Script=Latin}\\p{M}]+";
+const RUN_IN_ANOTHER_SCRIPT = "(?:(?!\\p{Script=Latin})[\\p{L}\\p{M}])+";
+const SCRIPT_RUN = new RegExp(`${LATIN_RUN}|${RUN_IN_ANOTHER_SCRIPT}`, "gu");
 const HAS_LETTER = /\p{L}/u;
+const HAS_LATIN_LETTER = /\p{Script=Latin}/u;
 const LONG_DASH = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`);
 const ANGLE_BRACKET = /[<>]/;
 const IDEOGRAPHIC_FULL_STOP = String.fromCodePoint(0x3002);
@@ -30,8 +34,8 @@ const GROUP_SEPARATOR = new RegExp(`(?<=\\d)[.,' ${NO_BREAK_SPACES}](?=\\d{3}(?!
 
 const MIN_LETTERS_FOR_SCRIPT_CHECK = 40;
 const THIS_FILE = "scripts/articles-i18n/checks.mjs";
-const LATIN = "Latn";
 const SCRIPTS = {
+  Latn: ["Latin"],
   Cyrl: ["Cyrillic"],
   Deva: ["Devanagari"],
   Jpan: ["Hiragana", "Katakana", "Han"],
@@ -141,28 +145,32 @@ const scriptOf = (locale) => new Intl.Locale(locale).maximize().script;
 
 function missingScriptRuleProblems(locale) {
   const script = scriptOf(locale);
-  if (script === LATIN || Object.hasOwn(SCRIPTS, script)) return [];
+  if (Object.hasOwn(SCRIPTS, script)) return [];
   return [`${locale}: no script rule for ${script}, add one to ${THIS_FILE}`];
 }
 
 const wordsOf = (text) => text.split(/\s+/).filter((word) => HAS_LETTER.test(word));
 
-// A leaf that equals its English leaf is the identical check's business. It
-// cannot be in the locale's script, and it passes there only on purpose. A
-// Latin token that the English leaf has too, letter for letter, is a name, a
-// title or a loanword the translator kept on purpose, so it is not counted.
+// A run of letters that the English leaf has too, letter for letter, is a name,
+// a title or a loanword the translator kept on purpose, whatever its script.
+function withoutKeptRuns(text, source) {
+  const kept = new Set(source.match(SCRIPT_RUN) ?? []);
+  return text.replace(SCRIPT_RUN, (run) => (kept.has(run) ? " " : run));
+}
+
+// A leaf that equals its English leaf is the identical check's business.
 function scriptProblems({ kind, locale, english, value, isListed }) {
   const scripts = SCRIPTS[scriptOf(locale)];
   if (scripts === undefined || value === english) return [];
   const text = textOf(kind, value, locale);
   const source = textOf(kind, english, ENGLISH);
-  const sourceTokens = new Set(source.match(LATIN_TOKEN) ?? []);
-  const counted = text.replace(LATIN_TOKEN, (token) => (sourceTokens.has(token) ? " " : token)).match(LETTER) ?? [];
+  const counted = withoutKeptRuns(text, source).match(LETTER) ?? [];
   const inScript = new RegExp(scripts.map((script) => `\\p{Script_Extensions=${script}}`).join("|"), "u");
   const expected = counted.filter((letter) => inScript.test(letter)).length;
-  const isUntranslated =
+  const hasNoLetterInScript =
     !isListed && !inScript.test(text) && wordsOf(source).length > MAX_WORDS_THAT_MAY_STAY && HAS_LETTER.test(text);
-  if (isUntranslated) return [`no letter is ${scripts.join(" or ")}, the text looks untranslated`];
+  const whatItLooksLike = HAS_LATIN_LETTER.test(text) ? "looks untranslated" : "is in another script";
+  if (hasNoLetterInScript) return [`no letter is ${scripts.join(" or ")}, the text ${whatItLooksLike}`];
   if ((text.match(LETTER) ?? []).length < MIN_LETTERS_FOR_SCRIPT_CHECK || expected * 2 >= counted.length) return [];
   return [`${expected} of ${counted.length} letters are ${scripts.join(" or ")}, at least half must be`];
 }
@@ -236,8 +244,15 @@ function listedFailures({ kind, name, english, unit }, listed) {
   });
 }
 
+/** The leaves a reader reads as prose: the running text of an article, every string of the section. */
+function proseLeaves({ locale, kind, unit }) {
+  return leavesOf(unit.text)
+    .filter(([path, leaf]) => typeof leaf === "string" && (kind === CHROME || BODY_PATH.test(path)))
+    .map(([path, leaf]) => [path, textOf(kind, leaf, locale)]);
+}
+
 function unitFailures(subject, isInstalled, { shapeProblems, unknownKeyProblems }) {
-  const { kind, name, english, sourceHash, unit } = subject;
+  const { locale, kind, name, english, sourceHash, unit } = subject;
   if (unit === undefined) return [`${name}: no file`];
   if (unit.error !== undefined) return [`${name}: ${unit.error}`];
   const isStale = isInstalled && unit.sourceHash !== sourceHash;
@@ -250,6 +265,7 @@ function unitFailures(subject, isInstalled, { shapeProblems, unknownKeyProblems 
     ...shapeProblems(english, unit.text).map((problem) => `${name} ${problem}`),
     ...leafFailures(subject, listed),
     ...listedFailures(subject, listed),
+    ...languageFailures(locale, name, proseLeaves(subject)),
   ];
 }
 
@@ -275,6 +291,7 @@ export function failuresOf(locale, source, bundle) {
 
   return [
     ...missingScriptRuleProblems(locale),
+    ...missingLanguageRuleProblems(locale),
     ...bundle.problems,
     ...bundle.sameAsEnglishKeys
       .filter((key) => key !== CHROME && isUnknown(key))
@@ -298,11 +315,11 @@ export function failuresOf(locale, source, bundle) {
 
 /**
  * The installed units of `bundle` whose text is not the text a reviewer
- * approved, one line each. `approvalProblems` is the one from
+ * approved for `locale`, one line each. `approvalProblems` is the one from
  * `src/lib/articles/articleText.ts`, which the build asks too.
  */
-export function unreviewedOf({ approvalProblems }, bundle) {
+export function unreviewedOf({ approvalProblems }, locale, bundle) {
   return [...Object.entries(bundle.articles), [CHROME, bundle.chrome]]
     .filter(([, unit]) => unit !== undefined && unit.error === undefined)
-    .flatMap(([name, unit]) => approvalProblems(unit, unit.approvedText).map((problem) => `${name}: ${problem}`));
+    .flatMap(([name, unit]) => approvalProblems(unit, unit.approvedText, { locale, name }).map((problem) => `${name}: ${problem}`));
 }

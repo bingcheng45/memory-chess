@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "Nauka",
+      "articles": "Artykuły",
       "about": "O stronie",
       "changelog": "Nowości",
       "contactUs": "Kontakt",
@@ -369,5 +370,76 @@
   "changelog": {
     "bannerCta": "Zobacz nowości",
     "bannerLabel": "Aktualizacja Memory Chess"
+  },
+  "articles": {
+    "meta": {
+      "title": "Artykuły o szachistach i ich pamięci",
+      "description": "Profile szachistów i badaczy pamięci. Każdy z nich przedstawia udokumentowany wyczyn, badania, które go wyjaśniają, i ćwiczenie do wypróbowania."
+    },
+    "list": {
+      "heading": "Artykuły",
+      "sub": "Szachiści i badacze pamięci, jeden profil po drugim.",
+      "aboutHeading": "Jak powstają te artykuły",
+      "about1": "Każdy artykuł opowiada o jednym szachiście lub badaczu i jednym pytaniu o jego pamięć. Bohaterem może być gracz znany z wyczynu pamięciowego albo badacz, który mierzył, co szachiści zapamiętują po kilku sekundach.",
+      "about2": "Wszystkie artykuły mają te same części. Portret podpisano nazwiskiem fotografa i licencją. Karta informacyjna podaje daty, tytuły i wyczyn pamięciowy, z którego dana osoba słynie. Opowieść zestawia ten wyczyn z badaniami, które go wyjaśniają. Lista źródeł pokazuje, skąd pochodzi każde twierdzenie. Ćwiczenie na końcu otwiera rundę Memory Chess z liczbą bierek i czasem oglądania, które sugeruje opowieść.",
+      "about3": "Artykuły są opracowywane i wstępnie pisane z pomocą AI na podstawie opublikowanych źródeł, takich jak wywiady, relacje z turniejów, książki i prace naukowe. Osobna kontrola porównuje następnie każdą datę, liczbę i cytat z tymi źródłami, zanim cokolwiek zostanie opublikowane. Gdy źródła się różnią, artykuł mówi, kto co podał. Anegdotę, którą źródła przytaczają tylko jako opowieść, opowiadamy jako opowieść. Artykuły w innych językach są tłumaczone z angielskiego tekstu z pomocą AI, a każde tłumaczenie jest sprawdzane, zanim trafi na stronę.",
+      "corrections": "Jeśli coś tu jest błędne, <link>wyślij poprawkę</link>."
+    },
+    "sort": {
+      "label": "Sortuj",
+      "group": "Sortuj artykuły",
+      "options": {
+        "newest": "Najnowsze",
+        "views": "Najczęściej wyświetlane",
+        "likes": "Najczęściej polubione"
+      }
+    },
+    "pager": {
+      "label": "Strony",
+      "previous": "Poprzednia strona",
+      "next": "Następna strona",
+      "page": "Strona {page}",
+      "showing": "Pozycje od {first} do {last} z {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# wyświetlenie} few {# wyświetlenia} many {# wyświetleń} other {# wyświetlenia}}",
+      "likes": "{count, plural, one {# polubienie} few {# polubienia} many {# polubień} other {# polubienia}}"
+    },
+    "like": {
+      "button": "Polub ten artykuł",
+      "failed": "Nie udało się zapisać. Spróbuj ponownie."
+    },
+    "page": {
+      "backToList": "Wszystkie artykuły",
+      "showAll": "Pokaż cały tekst",
+      "byline": "Autor: <author>{name}</author>",
+      "authorshipNote": "Artykuł opracowano i wstępnie napisano z pomocą AI na podstawie źródeł wymienionych poniżej. Przed publikacją każdy fakt porównano z tymi źródłami.",
+      "translationNote": "Przetłumaczono z angielskiego z pomocą AI. Punktem odniesienia jest artykuł angielski.",
+      "readInEnglish": "Przeczytaj po angielsku",
+      "photoCredit": "Zdjęcie: {author}, <licenseLink>{license}</licenseLink>, za pośrednictwem <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Karta informacyjna",
+      "facts": {
+        "born": "Urodzenie",
+        "died": "Śmierć",
+        "country": "Kraj",
+        "title": "Tytuł",
+        "peakRating": "Najwyższy ranking",
+        "worldChampion": "Mistrz świata",
+        "knownFor": "Znany z",
+        "memoryFeat": "Wyczyn pamięciowy"
+      },
+      "drillHeading": "Twoja kolej",
+      "drillAction": "Zagraj rundę: {pieces, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}}, {seconds, plural, one {# sekunda} few {# sekundy} many {# sekund} other {# sekundy}}",
+      "sources": "Źródła",
+      "nextArticle": "Następny artykuł"
+    },
+    "tile": {
+      "eyebrow": "Czytaj dalej",
+      "yourRound": "Twoja runda",
+      "articleDrill": "Ćwiczenie z tego artykułu",
+      "roundSize": "{pieces, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}}, {seconds, plural, one {# sekunda} few {# sekundy} many {# sekund} other {# sekundy}}",
+      "read": "Przeczytaj artykuł",
+      "tryDrill": "Wypróbuj to ćwiczenie"
+    }
   }
 }

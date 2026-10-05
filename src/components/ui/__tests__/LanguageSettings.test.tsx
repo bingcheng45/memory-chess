@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@/test-utils/intl";
 import LanguageSettings from "@/components/ui/LanguageSettings";
+import deMessages from "../../../../messages/de.json";
 
 const replace = jest.fn();
 let mockPathname = "/game";
@@ -9,13 +10,23 @@ jest.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ replace: (...args: unknown[]) => replace(...args) }),
 }));
 
+jest.mock("@/lib/articles/translatedLocales");
+
 /**
  * The switcher renders its menu through a portal on document.body, so the
  * options are only in the tree after the button is clicked.
  */
 function openMenuAndPick(label: string) {
   fireEvent.click(screen.getByRole("button", { name: /change language/i }));
-  fireEvent.click(screen.getByRole("menuitemradio", { name: new RegExp(label) }));
+  pick(label);
+}
+
+function pick(label: string) {
+  fireEvent.click(option(label));
+}
+
+function option(label: string) {
+  return screen.getByRole("menuitemradio", { name: new RegExp(label) });
 }
 
 describe("LanguageSettings", () => {
@@ -103,5 +114,51 @@ describe("LanguageSettings", () => {
     openMenuAndPick("English");
 
     expect(replace).not.toHaveBeenCalled();
+  });
+
+  describe("on an article translated into German and not into French", () => {
+    const ARTICLE = "/articles/magnus-carlsen";
+    const GERMAN_NOTE = "Diese Seite ist nur auf Englisch verfügbar.";
+
+    function renderGermanArticle() {
+      mockPathname = ARTICLE;
+      window.history.replaceState({}, "", `/de${ARTICLE}`);
+      render(<LanguageSettings />, { locale: "de", messages: deMessages });
+      fireEvent.click(screen.getByRole("button", { name: /Sprache wechseln/ }));
+    }
+
+    it("offers a German reader English and German, not French, and shows no English-only note", () => {
+      renderGermanArticle();
+
+      expect(option("English")).toBeEnabled();
+      expect(option("Deutsch")).toBeEnabled();
+      expect(option("Deutsch")).toBeChecked();
+      expect(option("Français")).toBeDisabled();
+      expect(screen.queryByText(GERMAN_NOTE)).not.toBeInTheDocument();
+      expect(screen.getByRole("menu")).not.toHaveAttribute("aria-describedby");
+    });
+
+    it("takes a German reader to the English article", () => {
+      renderGermanArticle();
+      pick("English");
+
+      expect(replace).toHaveBeenCalledTimes(1);
+      expect(replace).toHaveBeenCalledWith(ARTICLE, { locale: "en" });
+    });
+
+    it("takes an English reader to the German article and nowhere for French", () => {
+      mockPathname = ARTICLE;
+      window.history.replaceState({}, "", ARTICLE);
+      render(<LanguageSettings />);
+      fireEvent.click(screen.getByRole("button", { name: /change language/i }));
+
+      expect(screen.queryByText("This page is only available in English.")).not.toBeInTheDocument();
+      pick("Français");
+      expect(replace).not.toHaveBeenCalled();
+
+      pick("Deutsch");
+      expect(replace).toHaveBeenCalledTimes(1);
+      expect(replace).toHaveBeenCalledWith(ARTICLE, { locale: "de" });
+    });
   });
 });

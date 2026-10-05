@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import PageHeader from "@/components/ui/PageHeader";
+import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
 
 const siteUrl = "https://thememorychess.com";
 
@@ -23,6 +24,13 @@ export const metadata: Metadata = {
       "Learn how Memory Chess handles data, cookies, analytics, and advertising.",
   },
 };
+
+const lastUpdatedFormat = new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "Asia/Singapore",
+});
 
 const sectionClassName =
   "space-y-4 border-b border-white/10 py-8 last:border-0";
@@ -51,7 +59,7 @@ export default function PrivacyPage() {
             choices you have.
           </p>
           <p className="mt-3 text-xs text-text-muted">
-            Last updated: September 15, 2026
+            {`Last updated: ${lastUpdatedFormat.format(new Date(PRIVACY_LAST_UPDATED))}`}
           </p>
         </header>
 
@@ -137,9 +145,18 @@ export default function PrivacyPage() {
               Memory Chess uses browser storage to keep game history and
               settings on your device, remember sound preferences, avoid
               repeating a dismissed update banner, and time when the feedback
-              prompt may return. We also create a random local identifier for
-              in-browser usage events. Clearing your browser data resets these
+              prompt may return. Clearing your browser data resets these
               choices.
+            </p>
+            <p className={copyClassName}>
+              Liking an article saves the id of that article and the like
+              count shown at that moment in the local storage of your browser,
+              so the like button stays pressed and its count does not fall
+              when you come back. Session storage remembers which articles you
+              opened in the current tab, so opening one again there does not
+              add a view. Both lists stay in your browser. When you like an
+              article, Google Analytics also receives a like event that names
+              the article.
             </p>
             <p className={copyClassName}>
               Google Analytics and advertising services may use cookies or
@@ -227,10 +244,16 @@ export default function PrivacyPage() {
             <p className={copyClassName}>
               Data is handled by service providers only where needed: Google
               Sheets for contact messages and game feedback, Supabase for game
-              statistics and leaderboard entries, Vercel for hosting and
+              statistics, leaderboard entries, and article view and like
+              totals, Vercel for hosting and
               performance measurement, Ahrefs for analytics, and Google for
               analytics, consent, and advertising. These providers may process data in other countries
               under their own privacy terms.
+            </p>
+            <p className={copyClassName}>
+              When you open or like an article, Supabase stores only a total
+              of views and a total of likes for each article, with the time
+              of the last change and no visitor identifier.
             </p>
           </section>
 

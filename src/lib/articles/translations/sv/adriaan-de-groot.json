@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "approvedHash": "33a74a7c88c4ec888386de8425c6dbf15e29d19ba250c59c3c8e15d2226aee0f",
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "Adriaan de Groots minnestest från 1944, i siffror",
+    "description": "1944 testade Adriaan de Groot fyra spelare på schackställningar som visades i 2 till 15 sekunder. Här är hans verkliga resultat och vad senare forskning har ändrat.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "Nederländsk schackmästare och psykolog"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot som ung man, omkring 1930",
+      "author": "Okänd fotograf",
+      "license": "Allmän egendom",
+      "changes": "Beskuren"
+    },
+    "facts": {
+      "born": "26 oktober 1914, Santpoort, Nederländerna",
+      "died": "14 augusti 2006, 91 år gammal",
+      "country": "Nederländerna",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "Fick 93 % rätt när han återgav ställningar som visats i 2 till 15 sekunder"
+    },
+    "drill": {
+      "why": "De Groots testställning Rohacek mot Rabar hade 22 pjäser, och Max Euwe fick se den i 5 sekunder."
+    },
+    "sections": [
+      {
+        "heading": "Fyra spelare och några få sekunder",
+        "paragraphs": [
+          "År 1944 visade Adriaan de Groot en schackställning för Max Euwe och tog bort den fem sekunder senare. Ställningen kom från ett parti mellan Rohacek och Rabar, efter vits 20:e drag, med 22 pjäser på brädet. Euwe, som var världsmästare 1935-1937, dikterade sedan var varje pjäs stod. Han hade alla 22 rätt.",
+          "De Groot, själv mästare, gjorde samma test, lade till en bonde som inte fanns där och fick 21 poäng. A. Fast, mästare i Utrecht 1942, placerade 17 pjäser rätt men bedömde materialet som lika när det inte var det, och fick 16 poäng. G. P. Hauer, en svagare klassspelare, fick 9.",
+          "Återgivningarna går isär om visningstiden och procentsatserna, så siffrorna nedan kommer från de Groots egen bok."
+        ]
+      },
+      {
+        "heading": "En mästare som studerade mästare",
+        "paragraphs": [
+          "De Groot spelade för Nederländerna i schackolympiaderna 1937 och 1939. Mellan 1938 och 1943 skrev han ner vad spelare sa när de tänkte högt medan de valde ett drag. Bland hans försökspersoner fanns stormästarna Keres, Aljechin, Flohr, Fine, Euwe och Tartakower.",
+          "Enligt hans räkningar såg stormästarna inte längre framåt än skickliga spelare, och de undersökte inte fler drag. ”Mästaren räknar inte nödvändigtvis djupare”, skrev han. De Groot misstänkte att skillnaden visade sig under de första sekunderna av blicken på brädet, och han utformade experimentet 1944 för att pröva den tanken."
+        ]
+      },
+      {
+        "heading": "Vad experimentet 1944 mätte",
+        "paragraphs": [
+          "Varje klass företräddes av en spelare. Euwe stod för stormästarna, de Groot för mästarna, Fast för de skickliga spelarna och Hauer för de svagare klassspelarna.",
+          "Varje ställning kom från ett mästarparti och visades i 2 till 10 sekunder, med en visning på 15 sekunder. De två svagare försökspersonerna fick 3 till 4 sekunder vid de kortaste försöken, så att de inte skulle få noll poäng. Varje försöksperson ombads ta ungefär en halv minut på sig för att ordna det han hade behållit. Euwe och de Groot dikterade sedan ställningen ur minnet, medan Fast och Hauer ställde upp den på ett bräde.",
+          "Poängräkningen gav en poäng för varje rätt pjäs och drog av poäng för pjäser som lagts till, utelämnats eller flyttats. De Groot förkastade två ställningar, den första i serien och en med ett tidsfel, och räknade med fjorton, som hade från 7 till 26 pjäser. Av 234 möjliga poäng fick de fyra försökspersonerna följande resultat.",
+          "Euwe fick 217 poäng, eller 93 %, med fem helt rätta ställningar.",
+          "De Groot fick 217 poäng, eller 93 %, med fyra helt rätta.",
+          "Fast fick 158 poäng, eller 68 %, utan någon helt rätt.",
+          "Hauer fick 119 poäng, eller 51 %, utan någon helt rätt.",
+          "De Groot lade därefter åt sidan två försök med långa visningstider, 15 och 7 sekunder, och två som hade förstörts av ett tapp i koncentrationen. I de tio som återstod, med avsedda visningstider på 2, 3 eller 5 sekunder, blev medelvärdena 93,0 %, 92,6 %, 72,3 % och 51,1 %.",
+          "Båda tabellerna är hans egna, vilket sannolikt är orsaken till att återgivningarna anger antingen 68 % eller 72 % för den skickliga spelaren. Visningstiden var aldrig fast fem sekunder.",
+          "Mest intresserad var de Groot av klyftan i mitten, som han kallade ”klyftan som skiljer mästaren från icke-mästaren”. Hans förklaring var att en mästare inte lagrar 22 enskilda pjäser. Han uppfattar en stor grupp pjäser som en enhet, eftersom han vet hur gruppen uppstår och vad den är till för.",
+          "Några sådana enheter täcker brädet, och enligt de Groot har en svagare spelare färre av dem. Senare forskare kallade enheterna chunkar."
+        ]
+      },
+      {
+        "heading": "Från en nederländsk avhandling till slumpade bräden",
+        "paragraphs": [
+          "De Groot presenterade arbetet 1946 i sin doktorsavhandling vid Amsterdams universitet, Het denken van den schaker. Mouton gav ut den engelska utgåvan, Thought and Choice in Chess, i Haag 1965.",
+          "År 1973 gjorde William Chase och Herbert Simon om testet vid Carnegie Mellon med en mästare, en klass A-spelare och en nybörjare. De fastställde visningstiden till 5 sekunder. Deras mittspelsställningar hade 24 till 26 pjäser, och mästaren mindes ungefär dubbelt så många pjäser som klass A-spelaren.",
+          "De filmade varje återskapande med video och räknade en paus på mer än 2 sekunder som gränsen mellan två chunkar. Mästarens första chunk var i genomsnitt 3,8 pjäser mot 2,6 för klass A-spelaren, och han bildade 7,7 chunkar per ställning mot 5,7. Av hans 77 chunkar över fjorton ställningar innehöll 47 en bondekedja, och Simon och Chase räknade 10 ställningar med rockerad kung.",
+          "Deras tillägg var en kontroll, samma pjäser utplacerade på slumpmässiga rutor. Simon och Chase rapporterade att varje spelare då mindes ungefär tre eller fyra pjäser, färre än nybörjaren klarade på riktiga ställningar. De uppgav att W. Lemmens och R. W. Jongman hade fått samma resultat i Amsterdamlaboratoriet utan att någonsin publicera det.",
+          "Chases och Simons egen inledning framställer resultatet med slumpade bräden som de Groots, och många senare skildringar upprepar det. Hans bok redovisar inget försök med slumpade bräden."
+        ]
+      },
+      {
+        "heading": "Vad senare forskning har ändrat",
+        "paragraphs": [
+          "Läroböckerna tolkade det resultatet som att en mästare inte har någon fördel alls på meningslösa bräden. År 1996 prövade Fernand Gobet och Herbert Simon den tolkningen mot tretton experiment med visningstider på 10 sekunder eller mindre. I tolv av de tretton mindes den starkaste gruppen fler slumpade pjäser än den svagaste. Undantaget var Chases och Simons egen studie, där mästaren klarade sig sämst.",
+          "Fördelen är liten. Gobet och Simon uppskattade den till ungefär en extra pjäs per 400 Elo-poäng på slumpade bräden, mot ungefär fem extra pjäser på partiställningar. I en översikt från 1998 angav Gobet medelvärdena vid 5 sekunder till 5,5 slumpade pjäser för mästare och 2,6 för spelare under klass B.",
+          "Förklaringen lämnar de Groots idé orubbad. En spelare med en mycket stor mängd mönster hittar ibland ett av dem av en slump i en oordning. Slumpade bräden minskar expertens försprång utan att ta bort det. Gobet och Simon tillade att små urval döljer en så liten effekt, och studien från 1973 hade tre försökspersoner."
+        ]
+      },
+      {
+        "heading": "Prova de Groots test",
+        "paragraphs": [
+          "Ställ in Memory Chess på 22 pjäser och 5 sekunder. Det motsvarar storleken på de Groots ställning Rohacek mot Rabar och den tid Euwe fick på sig att titta på den. Bygg upp brädet igen och räkna ut hur stor andel av pjäserna du placerade rätt. Ungefär hälften är där Hauer hamnade, ungefär 70 % är där Fast hamnade, och 93 % är vad Euwe och de Groot hade i genomsnitt.",
+          "Jämförelsen är grov, eftersom de Groot också drog av poäng för fel. Kontrollera sedan vilka pjäser du kom ihåg. De kom troligen i grupper, till exempel en bondekedja eller en rockerad kung."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Stöder: årtalet 1944, de fyra försökspersonerna med namn och klasser, visningstiderna 2 till 15 sekunder, de längre tiderna för de svagare försökspersonerna, halvminutspausen, vem som dikterade och vem som ställde upp brädet, poängreglerna, ställningen Rohacek mot Rabar med dess visningstid på 5 sekunder och fyra resultat, tabell 13 (217, 217, 158, 119 av 234), tabell 14 (medelvärdena för de tio försöken), båda citaten, tänka-högt-sessionerna 1938 till 1943, de sex stormästarna, avhandlingen i Amsterdam 1946 och Moutons upphovsrättsår 1965. Texten innehåller inget experiment med slumpade bräden."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Stöder: sökstatistik som inte skilde stormästare från svagare spelare, siffrorna 93 % och 72 % såsom de citerats senare, att mästaren mindes ungefär dubbelt så många pjäser som klass A-spelaren, chunkstorlekarna 3,8 och 2,6, chunkantalen 7,7 och 5,7, pausen på 2 sekunder, 47 bondekedjor och 10 ställningar med rockerad kung bland 77 chunkar, tre eller fyra pjäser på slumpade bräden samt det opublicerade resultatet av Lemmens och Jongman."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Stöder: de tre försökspersonerna, visningstiden på 5 sekunder, mittspelsställningar med 24 till 26 pjäser, återskapanden som filmats med video, 77 chunkar över fjorton ställningar där 47 innehöll en bondekedja, chunkstorlekarna 3,8 och 2,6, chunkantalen 7,7 och 5,7 samt författarnas egen sammanfattning av de Groot som ett experiment med 5 sekunders visning som inkluderade slumpade bräden."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Stöder: tretton experiment, visningstider på högst 10 sekunder, tolv av tretton till den starkaste gruppens fördel, undantaget från Chase och Simon, en pjäs per 400 Elo-poäng på slumpade bräden mot ungefär fem på partiställningar, det gamla resultatets ställning i läroböckerna, poängen om små urval och den chunkbaserade förklaringen."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Stöder: de Groots visningstider på 2 till 15 sekunder, Euwe som stormästaren och hans år som världsmästare, halvminutspausen, Chases och Simons upplägg med 5 sekunders visning, slumpbrädesresultatets ställning i läroböckerna samt medelvärdena 5,5 mot 2,6 pjäser."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Stöder: upplägget med fyra försökspersoner, visningstiderna 2 till 15 sekunder och påpekandet att kontrollen med slumpade bräden ofta felaktigt tillskrivs de Groot men tillhör Chase och Simon."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Stöder: födelse- och dödsdatum och födelse- och dödsorter, olympiaderna 1937 och 1939, avhandlingen 1946 och den engelska utgåvan 1965."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Stöder: födelse- och dödsdatum och födelse- och dödsorter, åldern 91 år. Är dessutom ett exempel på en återgivning som anger en visningstid på 3 till 4 sekunder."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Stöder: de Groot i de nederländska lagen 1937 och 1939."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Stöder: de Groot i de nederländska lagen 1937 och 1939."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Stöder: testställningen med 22 pjäser och resultaten 22, 21, 16 och 9."
+      }
+    ]
+  }
+}

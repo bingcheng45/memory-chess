@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { DEFAULT_LOCALE, LOCALE_LABELS, LOCALES } from "@/i18n/routing";
+import { ARTICLES_PATH } from "@/lib/articles/paths";
+import { servesArticlesIn } from "@/lib/articles/articleLocales";
 
 const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } } as const;
 
@@ -9,14 +11,21 @@ export function unprefixedPath(pathname: string): string {
   return (LOCALES as readonly string[]).includes(prefix) ? `/${rest.join("/")}` : pathname;
 }
 
+function isUnder(path: string, route: string): boolean {
+  return path === route || path.startsWith(`${route}/`);
+}
+
 /**
  * Routes that exist only in English, each at its bare URL.
  *
- * The long-form editorial pages are written and kept in one language. Serving
- * them under 23 locale prefixes would publish machine-translated or duplicate
+ * These editorial pages are written and kept in one language. Serving them
+ * under 23 locale prefixes would publish machine-translated or duplicate
  * copies, so a prefixed request redirects to the bare URL, the sitemap lists
  * each once, and links from localized pages point straight at the bare URL.
  * A route here covers every path beneath it.
+ *
+ * The articles are not here. They are translated, so they are in
+ * `DEFAULT_LOCALE_INDEXED_ROUTES`.
  */
 export const ENGLISH_ONLY_ROUTES = [
   "/about",
@@ -27,16 +36,22 @@ export const ENGLISH_ONLY_ROUTES = [
 ] as const;
 
 /**
- * Routes served to readers in every locale but indexed only at their English
- * URL. The translated pages are noindex, so nothing may advertise them: the
- * sitemap lists the English URL once with no alternates, and the middleware
- * drops next-intl's hreflang Link header.
+ * Routes served to readers in translation but indexed only at their English
+ * URL. A translated page is noindex with a canonical to itself, so nothing may
+ * advertise it: the sitemap lists the English URL once with no alternates, and
+ * the middleware drops next-intl's hreflang Link header. A route here covers
+ * every path beneath it.
+ *
+ * A translated article is an AI-assisted translation that a reviewer checked.
+ * It is there for readers and is never offered to search, because unreviewed
+ * machine translations in the sitemap got the site rejected by AdSense once.
+ * `TRANSLATED_ARTICLE_LOCALES` says which locales have translated articles.
  */
-export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard"] as const;
+export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", ARTICLES_PATH] as const;
 
-/** Whether an unprefixed path is served in every locale but indexed only in English. */
+/** Whether an unprefixed path is served in translation but indexed only in English. */
 export function isIndexedInDefaultLocaleOnly(path: string): boolean {
-  return (DEFAULT_LOCALE_INDEXED_ROUTES as readonly string[]).includes(path);
+  return DEFAULT_LOCALE_INDEXED_ROUTES.some((route) => isUnder(path, route));
 }
 
 /** The robots metadata for a page: noindex on a translation of a route indexed only in English. */
@@ -54,7 +69,15 @@ export function englishOnlyLinkSuffix(locale: string): string {
 }
 
 export function isEnglishOnlyPath(path: string): boolean {
-  return ENGLISH_ONLY_ROUTES.some(
-    (route) => path === route || path.startsWith(`${route}/`),
-  );
+  return ENGLISH_ONLY_ROUTES.some((route) => isUnder(path, route));
+}
+
+/**
+ * Whether a reader of `locale` gets this unprefixed path at its bare English
+ * URL. A translated article lives only under its locale prefix, so the bare
+ * article URL always answers in English.
+ */
+export function isServedAtBareEnglishUrl(path: string, locale: string): boolean {
+  if (isEnglishOnlyPath(path)) return true;
+  return isUnder(path, ARTICLES_PATH) && (locale === DEFAULT_LOCALE || !servesArticlesIn(locale));
 }

@@ -22,6 +22,8 @@ jest.mock("next-intl/middleware", () => ({
   },
 }));
 
+jest.mock("@/lib/articles/translatedLocales");
+
 import middleware from "@/middleware";
 
 const GOOGLEBOT =
@@ -45,17 +47,17 @@ function forwardedRequest(
   return mockForwarded[0];
 }
 
+function run(url: string, headers: Record<string, string> = {}, cookie?: string) {
+  const request = new NextRequest(url, { headers: new Headers(headers) });
+  if (cookie) request.cookies.set("NEXT_LOCALE", cookie);
+  return middleware(request);
+}
+
 beforeEach(() => {
   mockForwarded.length = 0;
 });
 
 describe("middleware on English-only routes", () => {
-  function run(url: string, headers: Record<string, string> = {}, cookie?: string) {
-    const request = new NextRequest(url, { headers: new Headers(headers) });
-    if (cookie) request.cookies.set("NEXT_LOCALE", cookie);
-    return middleware(request);
-  }
-
   it.each([
     ["https://thememorychess.com/de/about", "https://thememorychess.com/about"],
     ["https://thememorychess.com/ja/learn", "https://thememorychess.com/learn"],
@@ -104,6 +106,55 @@ describe("middleware on English-only routes", () => {
   });
 });
 
+describe("middleware on articles, translated into German and not into French or Japanese", () => {
+  it.each([
+    ["https://thememorychess.com/fr/articles", "https://thememorychess.com/articles"],
+    [
+      "https://thememorychess.com/ja/articles/magnus-carlsen?ref=x",
+      "https://thememorychess.com/articles/magnus-carlsen?ref=x",
+    ],
+    ["https://thememorychess.com/en/articles", "https://thememorychess.com/articles"],
+    ["https://thememorychess.com/en/articles/magnus-carlsen", "https://thememorychess.com/articles/magnus-carlsen"],
+  ])("permanently redirects %s to the English URL", (from, to) => {
+    const response = run(from);
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(to);
+    expect(mockForwarded).toHaveLength(0);
+  });
+
+  it.each([
+    "https://thememorychess.com/de/articles",
+    "https://thememorychess.com/de/articles/magnus-carlsen?ref=x",
+  ])("serves the translated %s through next-intl, untouched and without the hreflang Link header", (url) => {
+    const response = run(url, { "accept-language": "fr-FR,fr;q=0.9", "user-agent": BROWSER }, "fr");
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Link")).toBeNull();
+    expect(mockForwarded).toHaveLength(1);
+    expect(mockForwarded[0].nextUrl.pathname).toBe(new URL(url).pathname);
+    expect(mockForwarded[0].headers.get("accept-language")).toBe("fr-FR,fr;q=0.9");
+    expect(mockForwarded[0].cookies.get("NEXT_LOCALE")?.value).toBe("fr");
+  });
+
+  it.each([
+    "https://thememorychess.com/articles",
+    "https://thememorychess.com/articles/magnus-carlsen",
+  ])("answers the bare %s in English even for a reader whose cookie and browser say German", (url) => {
+    const response = run(
+      url,
+      { "accept-language": "de-DE,de;q=0.9", "user-agent": BROWSER, "x-vercel-ip-country": "DE" },
+      "de",
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Link")).toBeNull();
+    expect(mockForwarded).toHaveLength(1);
+    expect(mockForwarded[0].headers.get("accept-language")).toBe("en");
+    expect(mockForwarded[0].cookies.has("NEXT_LOCALE")).toBe(false);
+  });
+});
+
 describe("middleware on a trailing slash", () => {
   it.each([
     ["https://thememorychess.com/fr/learn/?utm=1", "https://thememorychess.com/learn?utm=1"],
@@ -113,6 +164,16 @@ describe("middleware on a trailing slash", () => {
       "https://thememorychess.com/learn/how-to-stop-blundering-in-chess?utm=xyz",
     ],
     ["https://thememorychess.com/learn/", "https://thememorychess.com/learn"],
+    [
+      "https://thememorychess.com/fr/articles/magnus-carlsen/",
+      "https://thememorychess.com/articles/magnus-carlsen",
+    ],
+    ["https://thememorychess.com/en/articles/", "https://thememorychess.com/articles"],
+    [
+      "https://thememorychess.com/de/articles/magnus-carlsen/",
+      "https://thememorychess.com/de/articles/magnus-carlsen",
+    ],
+    ["https://thememorychess.com/articles/", "https://thememorychess.com/articles"],
     ["https://thememorychess.com/de/game/", "https://thememorychess.com/de/game"],
   ])("sends %s to its canonical URL in one 308", (from, to) => {
     const response = middleware(new NextRequest(from, { headers: new Headers({ "user-agent": BROWSER }) }));

@@ -17,6 +17,14 @@ export type FunnelEvent =
   | {
       name: "score_submit";
       params: { difficulty: LeaderboardDifficulty; piece_count: number };
+    }
+  | {
+      name: "article_like";
+      params: { slug: string };
+    }
+  | {
+      name: "article_tile_click";
+      params: { slug: string; action: "read" | "drill" };
     };
 
 export function trackEvent({ name, params }: FunnelEvent): void {

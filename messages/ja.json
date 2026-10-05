@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "学ぶ",
+      "articles": "記事",
       "about": "サイトについて",
       "changelog": "更新履歴",
       "contactUs": "お問い合わせ",
@@ -369,5 +370,76 @@
   "changelog": {
     "bannerCta": "新着をチェック",
     "bannerLabel": "Memory Chess のアップデート"
+  },
+  "articles": {
+    "meta": {
+      "title": "チェスプレイヤーと記憶についての記事",
+      "description": "チェスプレイヤーと記憶の研究者のプロフィール集です。記録に残る偉業、それを説明する研究、試してみるドリルを、それぞれ紹介します。"
+    },
+    "list": {
+      "heading": "記事",
+      "sub": "チェスプレイヤーと記憶の研究者を、一人ずつ紹介します。",
+      "aboutHeading": "これらの記事のつくり方",
+      "about1": "どの記事も、一人のチェスプレイヤーまたは研究者と、その記憶についての一つの問いを追います。取り上げるのは、記憶の偉業で知られるプレイヤーのこともあれば、数秒見たあとにプレイヤーが何を覚えているかを測定した研究者のこともあります。",
+      "about2": "どの記事も同じ構成です。肖像写真には、撮影者とライセンスが添えられます。基本データには、日付、称号、その人が知られる記憶の偉業が載っています。本文では、その偉業と、それを説明する研究を並べて語ります。出典リストには、それぞれの主張の根拠が示されます。最後のドリルでは、記事が示唆する駒の数と記憶時間で、Memory Chessのラウンドが始まります。",
+      "about3": "記事は、インタビュー、大会の報告、書籍、研究論文などの公開された情報源をもとに、AIの支援を受けて調査・執筆しています。公開の前には、別の確認作業で、すべての日付、数字、引用を、それらの情報源と照合します。情報源の記述が食い違う場合、記事は誰が何を報告したかを明記します。情報源が逸話としてしか伝えていない話は、逸話として語ります。ほかの言語の記事は、英語の本文からAIの支援を受けて翻訳しており、公開の前に翻訳の確認を行っています。",
+      "corrections": "誤りを見つけたら、<link>訂正を送ってください</link>。"
+    },
+    "sort": {
+      "label": "並べ替え",
+      "group": "記事を並べ替える",
+      "options": {
+        "newest": "新着順",
+        "views": "閲覧数順",
+        "likes": "いいね順"
+      }
+    },
+    "pager": {
+      "label": "ページ",
+      "previous": "前のページ",
+      "next": "次のページ",
+      "page": "{page}ページ",
+      "showing": "{total}件中{first}件目から{last}件目を表示"
+    },
+    "counts": {
+      "views": "{count, plural, other {#回閲覧}}",
+      "likes": "{count, plural, other {いいね#件}}"
+    },
+    "like": {
+      "button": "この記事にいいねする",
+      "failed": "保存できませんでした。もう一度お試しください。"
+    },
+    "page": {
+      "backToList": "記事一覧へ",
+      "showAll": "全文を表示",
+      "byline": "執筆：<author>{name}</author>",
+      "authorshipNote": "下に挙げた情報源をもとに、AIの支援を受けて調査・執筆しました。公開前に、すべての事実をそれらの情報源と照合して確認しています。",
+      "translationNote": "英語からAIの支援を受けて翻訳しました。基準となるのは英語版の記事です。",
+      "readInEnglish": "英語で読む",
+      "photoCredit": "写真：{author}、<licenseLink>{license}</licenseLink>、<source>Wikimedia Commons</source>より。{changes}。",
+      "factFile": "基本データ",
+      "facts": {
+        "born": "生誕",
+        "died": "没",
+        "country": "国",
+        "title": "称号",
+        "peakRating": "最高レーティング",
+        "worldChampion": "世界チャンピオン",
+        "knownFor": "知られていること",
+        "memoryFeat": "記憶の偉業"
+      },
+      "drillHeading": "あなたの番です",
+      "drillAction": "{pieces, plural, other {駒#個}}、{seconds, plural, other {#秒}}で遊ぶ",
+      "sources": "出典",
+      "nextArticle": "次の記事"
+    },
+    "tile": {
+      "eyebrow": "次に読む",
+      "yourRound": "あなたのラウンド",
+      "articleDrill": "この記事のドリル",
+      "roundSize": "{pieces, plural, other {駒#個}}、{seconds, plural, other {#秒}}",
+      "read": "記事を読む",
+      "tryDrill": "そのドリルを試す"
+    }
   }
 }

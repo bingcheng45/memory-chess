@@ -1,0 +1,100 @@
+import {
+  declarationsOf,
+  innermostRules,
+  keyframeProperties,
+  readArticleCss,
+} from "@/components/articles/__tests__/cssRules";
+
+const COMPOSITOR_PROPERTIES = ["opacity", "transform", "clip-path"];
+const SHARED_NAMES = ["article-date", "article-portrait", "article-title"];
+const TIMINGS = [
+  ["--article-flight-duration", "620ms"],
+  ["--article-flight-old-text-duration", "220ms"],
+  ["--article-flight-root-duration", "250ms"],
+  ["--article-flight-title-delay", "50ms"],
+  ["--article-flight-date-delay", "80ms"],
+];
+const TIMED_PROPERTIES = ["animation-duration", "animation-delay"];
+const OWN_TIMINGS = [
+  ["the portrait, title and date groups", "group(article-portrait)", "animation-duration", "--article-flight-duration"],
+  ["the old title and date text", "old(article-title)", "animation-duration", "--article-flight-old-text-duration"],
+  ["the root", "(root)", "animation-duration", "--article-flight-root-duration"],
+  ["the title", "group(article-title)", "animation-delay", "--article-flight-title-delay"],
+  ["the date", "group(article-date)", "animation-delay", "--article-flight-date-delay"],
+];
+
+const css = readArticleCss("articleFlight.css");
+const rules = innermostRules(css);
+
+describe("articleFlight.css", () => {
+  const naming = rules.filter((rule) => rule.body.includes("view-transition-name"));
+
+  it("shares exactly three names: the portrait, the title and the date", () => {
+    const names = naming.map((rule) => /view-transition-name:\s*([\w-]+)/.exec(rule.body)?.[1]).sort();
+
+    expect(names).toEqual(SHARED_NAMES);
+  });
+
+  it("gives a name only inside a marked card or article, so the list holds none at rest", () => {
+    for (const rule of naming) {
+      expect(rule.selector).toMatch(/^\[data-article-flight\] \[data-flight="(portrait|title|date)"\]$/);
+    }
+  });
+
+  it("names every duration and delay once, on the root", () => {
+    const root = rules.filter((rule) => rule.selector === ":root");
+
+    expect(root.flatMap(declarationsOf)).toEqual(TIMINGS);
+  });
+
+  it("sets no duration or delay as a raw number outside those names", () => {
+    const timed = rules
+      .flatMap(declarationsOf)
+      .filter(([property]) => TIMED_PROPERTIES.includes(property))
+      .map(([, value]) => value);
+
+    expect(timed.length).toBeGreaterThan(0);
+    expect(TIMINGS.map(([name]) => `var(${name})`)).toEqual(expect.arrayContaining(timed));
+  });
+
+  it.each(OWN_TIMINGS)("times %s from its own named property", (_label, selectorPart, property, name) => {
+    const timed = rules
+      .filter((rule) => rule.selector.includes(selectorPart))
+      .flatMap((rule) => declarationsOf(rule).filter(([declared]) => declared === property));
+
+    expect(timed.at(-1)?.[1]).toBe(`var(${name})`);
+  });
+
+  it("runs the three groups for 620 ms on the design's curve", () => {
+    const groups = rules.find((rule) => SHARED_NAMES.every((name) => rule.selector.includes(`group(${name})`)));
+
+    expect(groups?.body).toContain("animation-duration: var(--article-flight-duration)");
+    expect(groups?.body).toMatch(/cubic-bezier\(\s*0?\.16,\s*1,\s*0?\.3,\s*1\s*\)/);
+  });
+
+  it("cross-fades the root in 250 ms", () => {
+    const root = rules.filter((rule) => rule.selector.includes("(root)"));
+
+    expect(root.length).toBeGreaterThan(0);
+    expect(root.every((rule) => rule.body.includes("animation-duration: var(--article-flight-root-duration)"))).toBe(true);
+  });
+
+  it("keeps the portrait covering its box in both snapshots, so the photo never squashes", () => {
+    const portrait = rules.find(
+      (rule) =>
+        rule.selector.includes("::view-transition-old(article-portrait)") &&
+        rule.selector.includes("::view-transition-new(article-portrait)"),
+    );
+
+    expect(portrait?.body).toContain("object-fit: cover");
+  });
+
+  it("switches every transition animation off under reduced motion", () => {
+    expect(css).toMatch(/@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{[^}]*::view-transition-group\(\*\)/);
+    expect(css).toMatch(/animation:\s*none\s*!important/);
+  });
+
+  it("writes no keyframes of its own beyond transform, opacity and clip-path", () => {
+    expect(keyframeProperties(css).filter((property) => !COMPOSITOR_PROPERTIES.includes(property))).toEqual([]);
+  });
+});

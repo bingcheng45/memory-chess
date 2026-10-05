@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "approvedHash": "585c0c9f415951b9bb9e6b2bbaae0722ba31ed40be1c065dbb8e50c56ef50b66",
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "Il test del 1944 di Adriaan de Groot sulla memoria scacchistica, in numeri",
+    "description": "Nel 1944 Adriaan de Groot mise alla prova quattro giocatori su posizioni di scacchi mostrate per un tempo da 2 a 15 secondi. Ecco i suoi punteggi reali e che cosa hanno cambiato le ricerche successive.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "Maestro di scacchi e psicologo olandese"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot da giovane, intorno al 1930",
+      "author": "Fotografo sconosciuto",
+      "license": "Pubblico dominio",
+      "changes": "Ritagliata"
+    },
+    "facts": {
+      "born": "26 ott 1914, Santpoort, Paesi Bassi",
+      "died": "14 ago 2006, a 91 anni",
+      "country": "Paesi Bassi",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "Ottenne il 93% ricostruendo posizioni viste da 2 a 15 secondi"
+    },
+    "drill": {
+      "why": "La posizione di prova di de Groot, Rohacek contro Rabar, aveva 22 pezzi, e Max Euwe la vide per 5 secondi."
+    },
+    "sections": [
+      {
+        "heading": "Quattro giocatori e pochi secondi",
+        "paragraphs": [
+          "Nel 1944 Adriaan de Groot mostrò a Max Euwe una posizione di scacchi e la tolse cinque secondi dopo. La posizione veniva da una partita tra Rohacek e Rabar, dopo la 20ª mossa del Bianco, con 22 pezzi sulla scacchiera. Euwe, campione del mondo dal 1935 al 1937, dettò poi dove si trovava ogni pezzo. Non sbagliò nessuno dei 22.",
+          "De Groot, a sua volta maestro, fece lo stesso test, aggiunse un pedone che non c’era e ottenne 21 punti. A. Fast, campione di Utrecht del 1942, collocò correttamente 17 pezzi ma giudicò pari il materiale quando non lo era, e ottenne 16. G. P. Hauer, un giocatore di una classe più debole, ottenne 9.",
+          "I racconti di seconda mano non concordano sul tempo di esposizione e sulle percentuali, perciò le cifre che seguono vengono dal libro di de Groot."
+        ]
+      },
+      {
+        "heading": "Un maestro che studiò i maestri",
+        "paragraphs": [
+          "De Groot giocò per i Paesi Bassi alle Olimpiadi degli scacchi del 1937 e del 1939. Tra il 1938 e il 1943 annotò ciò che i giocatori dicevano pensando ad alta voce mentre sceglievano una mossa. Tra i suoi soggetti c’erano i gran maestri Keres, Alekhine, Flohr, Fine, Euwe e Tartakower.",
+          "Secondo i suoi conteggi, i gran maestri non guardavano più avanti dei giocatori esperti e non esaminavano più mosse. «Il maestro non calcola necessariamente più a fondo», scrisse. De Groot sospettava che la differenza emergesse nei primi secondi di osservazione della scacchiera, e progettò l’esperimento del 1944 per verificare questa idea."
+        ]
+      },
+      {
+        "heading": "Che cosa misurò l’esperimento del 1944",
+        "paragraphs": [
+          "Per ogni categoria partecipò un giocatore. Euwe rappresentava i gran maestri, de Groot i maestri, Fast gli esperti e Hauer i giocatori di classe più debole.",
+          "Ogni posizione proveniva da una partita di maestri e restava visibile da 2 a 10 secondi, con una sola esposizione di 15 secondi. Ai due soggetti più deboli furono concessi da 3 a 4 secondi nelle prove più brevi, perché non totalizzassero zero. A ogni soggetto fu chiesto di prendersi circa mezzo minuto per organizzare ciò che aveva trattenuto. Euwe e de Groot dettarono poi la posizione a memoria, mentre Fast e Hauer la disposero su una scacchiera.",
+          "Il punteggio dava un punto per ogni pezzo corretto e toglieva punti per i pezzi aggiunti, omessi o spostati. De Groot scartò due posizioni, la prima della serie e una con un difetto di tempistica, e ne contò quattordici, con un numero di pezzi da 7 a 26. Su 234 punti possibili, i quattro soggetti ottennero i risultati seguenti.",
+          "Euwe ottenne 217 punti, cioè il 93%, con cinque posizioni perfette.",
+          "De Groot ottenne 217 punti, cioè il 93%, con quattro perfette.",
+          "Fast ottenne 158 punti, cioè il 68%, senza nessuna perfetta.",
+          "Hauer ottenne 119 punti, cioè il 51%, senza nessuna perfetta.",
+          "De Groot mise poi da parte due prove con esposizioni lunghe, di 15 e 7 secondi, e due che un calo di concentrazione aveva rovinato. Nelle dieci rimanenti, con esposizioni previste di 2, 3 o 5 secondi, i punteggi medi furono 93,0%, 92,6%, 72,3% e 51,1%.",
+          "Entrambe le tabelle sono di de Groot, ed è probabilmente per questo che i racconti attribuiscono all’esperto il 68% o il 72%. L’esposizione non fu mai fissa a cinque secondi.",
+          "A de Groot interessava soprattutto il divario nel mezzo, che chiamò «l’abisso che separa il maestro dal non maestro». La sua spiegazione era che un maestro non memorizza 22 pezzi separati. Percepisce un grande gruppo di pezzi come un’unica unità, perché sa come nasce quel gruppo e a che cosa serve.",
+          "Poche unità di questo tipo coprono la scacchiera e, secondo de Groot, un giocatore più debole ne ha meno. I ricercatori successivi chiamarono chunk queste unità."
+        ]
+      },
+      {
+        "heading": "Da una tesi olandese alle scacchiere casuali",
+        "paragraphs": [
+          "De Groot presentò il lavoro nel 1946 nella sua tesi di dottorato all’Università di Amsterdam, Het denken van den schaker. Mouton pubblicò l’edizione inglese, Thought and Choice in Chess, all’Aia nel 1965.",
+          "Nel 1973 William Chase e Herbert Simon ripeterono il test alla Carnegie Mellon con un maestro, un giocatore di classe A e un principiante. Fissarono l’esposizione a 5 secondi. Le loro posizioni di mediogioco avevano da 24 a 26 pezzi, e il maestro ricordava circa il doppio dei pezzi del giocatore di classe A.",
+          "Registrarono su video ogni ricostruzione e considerarono una pausa più lunga di 2 secondi come il confine tra due chunk. Il primo chunk del maestro era in media di 3,8 pezzi contro 2,6 del giocatore di classe A, e produceva 7,7 chunk per posizione contro 5,7. Dei suoi 77 chunk in quattordici posizioni, 47 contenevano una catena di pedoni, e Simon e Chase contarono 10 posizioni di re arroccato.",
+          "La loro aggiunta fu un controllo, gli stessi pezzi disposti su case casuali. Simon e Chase riferirono che in quel caso tutti i giocatori ricordavano circa tre o quattro pezzi, meno di quanti ne ricordasse il principiante sulle posizioni reali. Notarono che W. Lemmens e R. W. Jongman avevano ottenuto lo stesso risultato nel laboratorio di Amsterdam senza mai pubblicarlo.",
+          "L’introduzione stessa di Chase e Simon presenta il risultato sulle scacchiere casuali come di de Groot, e molti resoconti successivi lo ripetono. Il suo libro non riporta alcuna prova con scacchiere casuali."
+        ]
+      },
+      {
+        "heading": "Che cosa hanno cambiato le ricerche successive",
+        "paragraphs": [
+          "I manuali interpretarono quel risultato come la prova che un maestro non ha alcun vantaggio sulle scacchiere prive di senso. Nel 1996 Fernand Gobet e Herbert Simon verificarono questa lettura su tredici esperimenti con esposizioni di 10 secondi o meno. In dodici su tredici il gruppo più forte ricordò più pezzi casuali del più debole. L’eccezione fu proprio lo studio di Chase e Simon, in cui il maestro andò peggio di tutti.",
+          "Il vantaggio è piccolo. Gobet e Simon lo stimano in circa un pezzo in più ogni 400 punti Elo sulle scacchiere casuali, contro circa cinque pezzi in più sulle posizioni di partita. In una rassegna del 1998 Gobet indicò come medie a 5 secondi 5,5 pezzi casuali per i maestri e 2,6 per i giocatori sotto la classe B.",
+          "La spiegazione lascia in piedi l’idea di de Groot. Un giocatore con un archivio molto vasto di schemi a volte ne trova uno per caso in un groviglio. Le scacchiere casuali riducono il vantaggio dell’esperto senza eliminarlo. Gobet e Simon aggiunsero che i campioni piccoli nascondono un effetto così ridotto, e lo studio del 1973 aveva tre soggetti."
+        ]
+      },
+      {
+        "heading": "Prova il test di de Groot",
+        "paragraphs": [
+          "Imposta Memory Chess su 22 pezzi e 5 secondi. È la dimensione della posizione Rohacek contro Rabar di de Groot e il tempo che Euwe ebbe per guardarla. Ricostruisci la scacchiera e calcola la quota di pezzi che hai collocato correttamente. Circa la metà è il livello a cui arrivò Hauer, circa il 70% è quello di Fast e il 93% è la media di Euwe e de Groot.",
+          "Il confronto è approssimativo, perché de Groot toglieva punti anche per gli errori. Poi controlla quali pezzi hai ricordato. Probabilmente sono arrivati a gruppi, come una catena di pedoni o un re arroccato."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Fonte per: la data 1944, i quattro soggetti con nomi e classi, le esposizioni da 2 a 15 secondi, i tempi più lunghi per i soggetti più deboli, la pausa di mezzo minuto, chi dettò e chi dispose la scacchiera, le regole di punteggio, la posizione Rohacek contro Rabar con esposizione di 5 secondi e quattro punteggi, la Tabella 13 (217, 217, 158, 119 su 234), la Tabella 14 (le medie delle dieci prove), entrambe le citazioni, le sessioni di pensiero ad alta voce dal 1938 al 1943, i sei gran maestri, la tesi di Amsterdam del 1946 e il copyright Mouton del 1965. Il testo non contiene alcun esperimento con scacchiere casuali."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Fonte per: le statistiche sulla ricerca delle mosse, che non separavano i gran maestri dai giocatori più deboli, le cifre del 93% e del 72% come citate in seguito, il maestro che ricorda circa il doppio dei pezzi del giocatore di classe A, chunk di 3,8 e 2,6 pezzi, 7,7 e 5,7 chunk, la pausa di 2 secondi, 47 catene di pedoni e 10 posizioni di re arroccato tra 77 chunk, tre o quattro pezzi sulle scacchiere casuali e il risultato inedito di Lemmens e Jongman."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Fonte per: i tre soggetti, l’esposizione di 5 secondi, le posizioni di mediogioco di 24-26 pezzi, le ricostruzioni registrate su video, 77 chunk su quattordici posizioni, di cui 47 con una catena di pedoni, chunk di 3,8 e 2,6 pezzi, 7,7 e 5,7 chunk, e il riassunto degli stessi autori su de Groot come esperimento di 5 secondi che comprendeva scacchiere casuali."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Fonte per: tredici esperimenti, esposizioni di al massimo 10 secondi, dodici su tredici a favore del gruppo più forte, l’eccezione di Chase e Simon, un pezzo ogni 400 punti Elo sulle scacchiere casuali contro circa cinque sulle posizioni di partita, lo status di manuale del vecchio risultato, il punto sui campioni piccoli e la spiegazione basata sui chunk."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Fonte per: le esposizioni di de Groot da 2 a 15 secondi, Euwe come gran maestro e i suoi anni da campione del mondo, la pausa di mezzo minuto, il disegno a 5 secondi di Chase e Simon, lo status di manuale del risultato sulle scacchiere casuali e le medie di 5,5 contro 2,6 pezzi."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Fonte per: il disegno a quattro soggetti, le esposizioni da 2 a 15 secondi e l’affermazione che il controllo con scacchiere casuali è spesso attribuito a torto a de Groot mentre appartiene a Chase e Simon."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Fonte per: date e luoghi di nascita e di morte, le Olimpiadi del 1937 e del 1939, la tesi del 1946 e l’edizione inglese del 1965."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Fonte per: date e luoghi di nascita e di morte, l’età di 91 anni. È anche un esempio di racconto che indica un’esposizione di 3-4 secondi."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Fonte per: de Groot nelle squadre olandesi del 1937 e del 1939."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Fonte per: de Groot nelle squadre olandesi del 1937 e del 1939."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Fonte per: la posizione di prova da 22 pezzi e i punteggi di 22, 21, 16 e 9."
+      }
+    ]
+  }
+}

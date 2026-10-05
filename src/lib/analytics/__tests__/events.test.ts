@@ -7,6 +7,9 @@ const EVENTS: FunnelEvent[] = [
     params: { piece_count: 6, memorize_time: 10, correct_pieces: 4, accuracy: 67 },
   },
   { name: "score_submit", params: { difficulty: "medium", piece_count: 6 } },
+  { name: "article_like", params: { slug: "magnus-carlsen" } },
+  { name: "article_tile_click", params: { slug: "judit-polgar", action: "read" } },
+  { name: "article_tile_click", params: { slug: "judit-polgar", action: "drill" } },
 ];
 
 afterEach(() => {

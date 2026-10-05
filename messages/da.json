@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "Lær",
+      "articles": "Artikler",
       "about": "Om",
       "changelog": "Nyheder",
       "contactUs": "Kontakt os",
@@ -369,5 +370,76 @@
   "changelog": {
     "bannerCta": "Se hvad der er nyt",
     "bannerLabel": "Memory Chess-opdatering"
+  },
+  "articles": {
+    "meta": {
+      "title": "Artikler om skakspillere og deres hukommelse",
+      "description": "Portrætter af skakspillere og hukommelsesforskere. Hver artikel viser den dokumenterede bedrift, den forskning, der forklarer den, og en øvelse, du kan prøve."
+    },
+    "list": {
+      "heading": "Artikler",
+      "sub": "Skakspillere og hukommelsesforskere, ét portræt ad gangen.",
+      "aboutHeading": "Sådan bliver artiklerne til",
+      "about1": "Hver artikel følger én skakspiller eller forsker og ét spørgsmål om vedkommendes hukommelse. Emnet kan være en spiller, der er kendt for en hukommelsesbedrift, eller en forsker, der har målt, hvad spillere husker efter nogle få sekunder.",
+      "about2": "Alle artikler har de samme dele. Et portræt følges af fotografens navn og licensen. En faktaboks angiver datoer, titler og den hukommelsesbedrift, personen er kendt for. Fortællingen stiller bedriften op ved siden af den forskning, der forklarer den. En kildeliste viser, hvor hver påstand stammer fra. En øvelse til sidst åbner en runde Memory Chess med det antal brikker og den visningstid, som fortællingen peger på.",
+      "about3": "Artiklerne er undersøgt og skrevet i udkast med hjælp fra AI ud fra offentliggjorte kilder som interviews, turneringsrapporter, bøger og forskningsartikler. En særskilt kontrol sammenholder derefter hver dato, hvert tal og hvert citat med kilderne, før noget offentliggøres. Hvor kilderne er uenige, skriver artiklen, hvem der har berettet hvad. En anekdote, som kilderne kun gengiver som en historie, fortælles som en historie. Artikler på andre sprog er oversat fra den engelske tekst med hjælp fra AI, og hver oversættelse kontrolleres, før den lægges ud.",
+      "corrections": "Er noget her forkert, så <link>send en rettelse</link>."
+    },
+    "sort": {
+      "label": "Sortér",
+      "group": "Sortér artikler",
+      "options": {
+        "newest": "Nyeste",
+        "views": "Flest visninger",
+        "likes": "Flest likes"
+      }
+    },
+    "pager": {
+      "label": "Sider",
+      "previous": "Forrige side",
+      "next": "Næste side",
+      "page": "Side {page}",
+      "showing": "Viser {first} til {last} af {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# visning} other {# visninger}}",
+      "likes": "{count, plural, one {# like} other {# likes}}"
+    },
+    "like": {
+      "button": "Synes godt om denne artikel",
+      "failed": "Det blev ikke gemt. Prøv igen."
+    },
+    "page": {
+      "backToList": "Alle artikler",
+      "showAll": "Vis hele teksten",
+      "byline": "Af <author>{name}</author>",
+      "authorshipNote": "Undersøgt og skrevet i udkast med hjælp fra AI ud fra kilderne nedenfor. Alle fakta blev kontrolleret mod disse kilder før offentliggørelsen.",
+      "translationNote": "Oversat fra engelsk med hjælp fra AI. Den engelske artikel er den, der gælder.",
+      "readInEnglish": "Læs den på engelsk",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Faktaboks",
+      "facts": {
+        "born": "Født",
+        "died": "Død",
+        "country": "Land",
+        "title": "Titel",
+        "peakRating": "Højeste rating",
+        "worldChampion": "Verdensmester",
+        "knownFor": "Kendt for",
+        "memoryFeat": "Hukommelsesbedrift"
+      },
+      "drillHeading": "Din tur",
+      "drillAction": "Spil {pieces, plural, one {# brik} other {# brikker}}, {seconds, plural, one {# sekund} other {# sekunder}}",
+      "sources": "Kilder",
+      "nextArticle": "Næste artikel"
+    },
+    "tile": {
+      "eyebrow": "Læs næste",
+      "yourRound": "Din runde",
+      "articleDrill": "Denne artikels øvelse",
+      "roundSize": "{pieces, plural, one {# brik} other {# brikker}}, {seconds, plural, one {# sekund} other {# sekunder}}",
+      "read": "Læs artiklen",
+      "tryDrill": "Prøv den øvelse"
+    }
   }
 }

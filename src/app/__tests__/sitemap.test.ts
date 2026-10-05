@@ -1,6 +1,10 @@
 import sitemap from "@/app/sitemap";
+import { ARTICLES, ARTICLES_LAST_UPDATED } from "@/lib/articles";
 import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
+import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
 import { LOCALES } from "@/i18n/routing";
+
+jest.mock("@/lib/articles/translatedLocales");
 
 describe("sitemap", () => {
   it("includes static routes, learn article URLs, and the learn hub timestamp", async () => {
@@ -62,6 +66,13 @@ describe("sitemap", () => {
     );
   });
 
+  it("dates the privacy page with the date the page itself prints", async () => {
+    const entries = await sitemap();
+    const privacyEntry = entries.find((entry) => entry.url === "https://thememorychess.com/privacy");
+
+    expect(new Date(privacyEntry?.lastModified ?? 0).toISOString()).toBe(new Date(PRIVACY_LAST_UPDATED).toISOString());
+  });
+
   it("lists the English-only pages once, not once per locale", async () => {
     // /about and /terms serve identical English text on every locale prefix.
     // Announcing 24 copies of each would be a duplicate-content signal, the
@@ -84,6 +95,36 @@ describe("sitemap", () => {
     expect(leaderboard[0].alternates).toBeUndefined();
     for (const entry of entries) {
       expect(Object.values(entry.alternates?.languages ?? {}).some((href) => /leaderboard/.test(String(href)))).toBe(false);
+    }
+  });
+
+  it("lists the articles hub and every article once, with no alternates", async () => {
+    const entries = await sitemap();
+    const hub = entries.filter((entry) => entry.url === "https://thememorychess.com/articles");
+
+    expect(hub).toHaveLength(1);
+    expect(hub[0].alternates).toBeUndefined();
+    expect(new Date(hub[0].lastModified ?? 0).toISOString()).toBe(new Date(ARTICLES_LAST_UPDATED).toISOString());
+
+    for (const article of ARTICLES) {
+      const matches = entries.filter((entry) => entry.url === `https://thememorychess.com/articles/${article.slug}`);
+
+      expect(matches).toHaveLength(1);
+      expect(matches[0].alternates).toBeUndefined();
+      expect(new Date(matches[0].lastModified ?? 0).toISOString()).toBe(new Date(article.updatedAt).toISOString());
+    }
+  });
+
+  it("offers search no translated article, in a URL or in an alternate", async () => {
+    const entries = await sitemap();
+    const articleUrls = entries.map((entry) => entry.url).filter((url) => /\/articles(\/|$)/.test(url));
+
+    expect(articleUrls).toHaveLength(ARTICLES.length + 1);
+    for (const url of articleUrls) {
+      expect(url).toMatch(/^https:\/\/thememorychess\.com\/articles(\/[a-z0-9-]+)?$/);
+    }
+    for (const entry of entries) {
+      expect(Object.values(entry.alternates?.languages ?? {}).some((href) => /\/articles/.test(String(href)))).toBe(false);
     }
   });
 

@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "Învață",
+      "articles": "Articole",
       "about": "Despre",
       "changelog": "Noutăți",
       "contactUs": "Contact",
@@ -369,5 +370,76 @@
   "changelog": {
     "bannerCta": "Vezi noutățile",
     "bannerLabel": "Actualizare Memory Chess"
+  },
+  "articles": {
+    "meta": {
+      "title": "Articole despre șahiști și memoria lor",
+      "description": "Profiluri ale unor șahiști și cercetători ai memoriei. Fiecare prezintă performanța documentată, cercetarea care o explică și un exercițiu de încercat."
+    },
+    "list": {
+      "heading": "Articole",
+      "sub": "Șahiști și cercetători ai memoriei, un profil pe rând.",
+      "aboutHeading": "Cum sunt făcute aceste articole",
+      "about1": "Fiecare articol urmărește un șahist sau un cercetător și o întrebare despre memoria lui. Subiectul poate fi un jucător cunoscut pentru o performanță de memorare sau un cercetător care a măsurat ce rețin jucătorii după câteva secunde.",
+      "about2": "Toate articolele au aceleași părți. Un portret este însoțit de numele fotografului și de licență. O fișă de date indică datele, titlurile și performanța de memorie pentru care este cunoscută persoana. Povestea așază această performanță alături de cercetarea care o explică. O listă de surse arată de unde provine fiecare afirmație. Un exercițiu la final deschide o rundă de Memory Chess cu numărul de piese și timpul de privire pe care le sugerează povestea.",
+      "about3": "Articolele sunt cercetate și redactate cu ajutorul IA, pornind de la surse publicate, precum interviuri, rapoarte de turneu, cărți și lucrări de cercetare. O verificare separată compară apoi fiecare dată, număr și citat cu aceste surse, înainte de publicare. Acolo unde sursele nu concordă, articolul spune cine ce a relatat. O anecdotă pe care sursele o relatează doar ca poveste este spusă ca poveste. Articolele în alte limbi sunt traduse din textul englez cu ajutorul IA, iar fiecare traducere este verificată înainte de a fi publicată.",
+      "corrections": "Dacă ceva de aici este greșit, <link>trimite o corecție</link>."
+    },
+    "sort": {
+      "label": "Sortare",
+      "group": "Sortează articolele",
+      "options": {
+        "newest": "Cele mai noi",
+        "views": "Cele mai vizualizate",
+        "likes": "Cele mai apreciate"
+      }
+    },
+    "pager": {
+      "label": "Pagini",
+      "previous": "Pagina anterioară",
+      "next": "Pagina următoare",
+      "page": "Pagina {page}",
+      "showing": "Se afișează de la {first} la {last} din {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# vizualizare} few {# vizualizări} other {# de vizualizări}}",
+      "likes": "{count, plural, one {# apreciere} few {# aprecieri} other {# de aprecieri}}"
+    },
+    "like": {
+      "button": "Apreciază acest articol",
+      "failed": "Nu s-a salvat. Încearcă din nou."
+    },
+    "page": {
+      "backToList": "Toate articolele",
+      "showAll": "Arată tot textul",
+      "byline": "De <author>{name}</author>",
+      "authorshipNote": "Cercetat și redactat cu ajutorul IA, pe baza surselor enumerate mai jos. Fiecare fapt a fost verificat cu aceste surse înainte de publicare.",
+      "translationNote": "Tradus din engleză cu ajutorul IA. Articolul în engleză este cel de referință.",
+      "readInEnglish": "Citește-l în engleză",
+      "photoCredit": "Fotografie: {author}, <licenseLink>{license}</licenseLink>, prin <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Fișă de date",
+      "facts": {
+        "born": "Născut",
+        "died": "Decedat",
+        "country": "Țara",
+        "title": "Titlu",
+        "peakRating": "Rating maxim",
+        "worldChampion": "Campion mondial",
+        "knownFor": "Cunoscut pentru",
+        "memoryFeat": "Performanță de memorie"
+      },
+      "drillHeading": "Rândul tău",
+      "drillAction": "Joacă {pieces, plural, one {# piesă} few {# piese} other {# de piese}}, {seconds, plural, one {# secundă} few {# secunde} other {# de secunde}}",
+      "sources": "Surse",
+      "nextArticle": "Articolul următor"
+    },
+    "tile": {
+      "eyebrow": "Citește în continuare",
+      "yourRound": "Runda ta",
+      "articleDrill": "Exercițiul acestui articol",
+      "roundSize": "{pieces, plural, one {# piesă} few {# piese} other {# de piese}}, {seconds, plural, one {# secundă} few {# secunde} other {# de secunde}}",
+      "read": "Citește articolul",
+      "tryDrill": "Încearcă exercițiul"
+    }
   }
 }

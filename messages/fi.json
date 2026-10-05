@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "Opi",
+      "articles": "Artikkelit",
       "about": "Tietoa",
       "changelog": "Uutta",
       "contactUs": "Ota yhteyttä",
@@ -369,5 +370,76 @@
   "changelog": {
     "bannerCta": "Katso mitä uutta",
     "bannerLabel": "Memory Chess -päivitys"
+  },
+  "articles": {
+    "meta": {
+      "title": "Artikkeleita shakinpelaajista ja heidän muististaan",
+      "description": "Profiileja shakinpelaajista ja muistintutkijoista. Jokaisessa kerrotaan dokumentoitu saavutus, sen selittävä tutkimus ja harjoitus, jota voi kokeilla."
+    },
+    "list": {
+      "heading": "Artikkelit",
+      "sub": "Shakinpelaajia ja muistintutkijoita, yksi profiili kerrallaan.",
+      "aboutHeading": "Näin artikkelit tehdään",
+      "about1": "Jokainen artikkeli seuraa yhtä shakinpelaajaa tai tutkijaa ja yhtä kysymystä hänen muististaan. Aiheena voi olla pelaaja, joka tunnetaan muistisaavutuksesta, tai tutkija, joka mittasi, mitä pelaajat muistavat muutaman sekunnin jälkeen.",
+      "about2": "Jokaisessa artikkelissa on samat osat. Muotokuvan mukana ovat valokuvaaja ja lisenssi. Tietolaatikko kertoo päivämäärät, tittelit ja muistisaavutuksen, josta henkilö tunnetaan. Tarina asettaa saavutuksen sitä selittävän tutkimuksen rinnalle. Lähdeluettelo näyttää, mistä kukin väite on peräisin. Lopussa oleva harjoitus avaa Memory Chess -kierroksen, jossa nappuloiden määrä ja katseluaika ovat sellaiset kuin tarina ehdottaa.",
+      "about3": "Artikkelit tutkitaan ja luonnostellaan tekoälyn avulla julkaistuista lähteistä, kuten haastatteluista, turnausraporteista, kirjoista ja tutkimusartikkeleista. Erillinen tarkistus vertaa sitten jokaista päivämäärää, lukua ja lainausta näihin lähteisiin ennen julkaisua. Kun lähteet ovat eri mieltä, artikkeli kertoo, kuka raportoi mitä. Anekdootti, jonka lähteet esittävät vain tarinana, kerrotaan tarinana. Muunkieliset artikkelit käännetään englanninkielisestä tekstistä tekoälyn avulla, ja jokainen käännös tarkistetaan ennen julkaisua.",
+      "corrections": "Jos jokin täällä on väärin, <link>lähetä korjaus</link>."
+    },
+    "sort": {
+      "label": "Lajittelu",
+      "group": "Lajittele artikkelit",
+      "options": {
+        "newest": "Uusimmat",
+        "views": "Katsotuimmat",
+        "likes": "Tykätyimmät"
+      }
+    },
+    "pager": {
+      "label": "Sivut",
+      "previous": "Edellinen sivu",
+      "next": "Seuraava sivu",
+      "page": "Sivu {page}",
+      "showing": "Näytetään {first}-{last}, yhteensä {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# katselukerta} other {# katselukertaa}}",
+      "likes": "{count, plural, one {# tykkäys} other {# tykkäystä}}"
+    },
+    "like": {
+      "button": "Tykkää artikkelista",
+      "failed": "Tallennus ei onnistunut. Yritä uudelleen."
+    },
+    "page": {
+      "backToList": "Kaikki artikkelit",
+      "showAll": "Näytä koko teksti",
+      "byline": "Kirjoittaja: <author>{name}</author>",
+      "authorshipNote": "Tutkittu ja luonnosteltu tekoälyn avulla alla luetelluista lähteistä. Jokainen tieto tarkistettiin näistä lähteistä ennen julkaisua.",
+      "translationNote": "Käännetty englannista tekoälyn avulla. Englanninkielinen artikkeli on ensisijainen lähde.",
+      "readInEnglish": "Lue englanniksi",
+      "photoCredit": "Kuva: {author}, <licenseLink>{license}</licenseLink>, <source>Wikimedia Commonsista</source>. {changes}.",
+      "factFile": "Tietolaatikko",
+      "facts": {
+        "born": "Syntynyt",
+        "died": "Kuollut",
+        "country": "Maa",
+        "title": "Titteli",
+        "peakRating": "Korkein rating",
+        "worldChampion": "Maailmanmestari",
+        "knownFor": "Tunnettu",
+        "memoryFeat": "Muistisaavutus"
+      },
+      "drillHeading": "Sinun vuorosi",
+      "drillAction": "Pelaa {pieces, plural, one {# nappula} other {# nappulaa}}, {seconds, plural, one {# sekunti} other {# sekuntia}}",
+      "sources": "Lähteet",
+      "nextArticle": "Seuraava artikkeli"
+    },
+    "tile": {
+      "eyebrow": "Lue seuraavaksi",
+      "yourRound": "Sinun kierroksesi",
+      "articleDrill": "Tämän artikkelin harjoitus",
+      "roundSize": "{pieces, plural, one {# nappula} other {# nappulaa}}, {seconds, plural, one {# sekunti} other {# sekuntia}}",
+      "read": "Lue artikkeli",
+      "tryDrill": "Kokeile harjoitusta"
+    }
   }
 }

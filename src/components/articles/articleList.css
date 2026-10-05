@@ -1,0 +1,13 @@
+[data-first-paint-sort="views"] [data-article-list] > li {
+  order: var(--rank-views);
+}
+
+[data-first-paint-sort="likes"] [data-article-list] > li {
+  order: var(--rank-likes);
+}
+
+html:not([data-first-paint-sort]) [data-sort-option][aria-pressed="true"],
+html[data-first-paint-sort="views"] [data-sort-option="views"],
+html[data-first-paint-sort="likes"] [data-sort-option="likes"] {
+  @apply bg-peach-500 font-semibold text-bg-dark;
+}

@@ -7,6 +7,20 @@ import {
   getChangelogEntryId,
   isChangelogAnnouncementActive,
 } from "@/lib/changelog";
+import { ARTICLE_SLUGS } from "@/lib/articles";
+
+const KNOWN_ROUTES = [
+  "/articles",
+  "/privacy",
+  "/learn",
+  "/leaderboard",
+  "/game",
+  "/about",
+  "/contact-us",
+  "/changelog",
+  "/terms",
+  "/settings",
+];
 
 describe("changelog data", () => {
   it("keeps release history newest-first", () => {
@@ -27,6 +41,28 @@ describe("changelog data", () => {
     expect(packageLock.packages[""].version).toBe(
       LATEST_CHANGELOG_ENTRY.version,
     );
+  });
+
+  it("points every changelog link at a page that exists", () => {
+    const hrefs = CHANGELOG_ENTRIES.flatMap((entry) => entry.groups)
+      .flatMap((group) => group.changes ?? [])
+      .flatMap((change) => (typeof change === "string" ? [] : change.segments))
+      .flatMap((segment) => (typeof segment === "string" ? [] : [segment.href]))
+      .filter((href) => href.startsWith("/"));
+
+    const unknown = hrefs.filter((href) => {
+      if (href.startsWith("/articles/")) {
+        return !ARTICLE_SLUGS.includes(href.slice("/articles/".length));
+      }
+      return !(
+        KNOWN_ROUTES.includes(href) ||
+        href.startsWith("/learn/") ||
+        href.startsWith("/game?")
+      );
+    });
+
+    expect(hrefs.length).toBeGreaterThan(0);
+    expect(unknown).toEqual([]);
   });
 
   it("uses stable version anchors", () => {

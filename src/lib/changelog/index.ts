@@ -40,6 +40,77 @@ export interface ChangelogTable {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "1.2.5",
+    publishedAt: "2026-10-05T14:40:00.000+08:00",
+    title: "New: articles about the people behind chess memory",
+    summary:
+      "A new Articles section opens with three profiles: Magnus Carlsen, Adriaan de Groot and Judit Polgár. Each one tells a memory feat, sets it beside the research that explains it, and ends with a drill you can play.",
+    groups: [
+      {
+        title: "Three articles to start",
+        changes: [
+          {
+            segments: [
+              { text: "Articles", href: "/articles" },
+              " sits between Learn and Leaderboard in the menu.",
+            ],
+          },
+          {
+            segments: [
+              {
+                text: "How Magnus Carlsen names a famous game from one position",
+                href: "/articles/magnus-carlsen",
+              },
+            ],
+          },
+          {
+            segments: [
+              {
+                text: "Adriaan de Groot's 1944 test of chess memory, by the numbers",
+                href: "/articles/adriaan-de-groot",
+              },
+            ],
+          },
+          {
+            segments: [
+              {
+                text: "How Judit Polgár played blindfold chess at age seven",
+                href: "/articles/judit-polgar",
+              },
+            ],
+          },
+          "Every article has a portrait, a fact file, the sources it draws on, and a drill that opens a round sized to the story.",
+          "After every round, the result screen suggests one article and sets its drill beside the round you just played.",
+          "The articles can be read in every language the game supports. The other languages are translated from English with AI assistance.",
+        ],
+        note: "The articles are researched and drafted with AI assistance, then checked against their sources before they go up. If you spot a mistake, please tell us through the contact page.",
+      },
+      {
+        title: "Made to be read",
+        changes: [
+          "Open an article from the list and its portrait moves into place while the text types in. Press Show all text to skip the typing.",
+          "Arrive from a search engine, or refresh the page, and the whole article is there at once.",
+          "If your device asks for reduced motion, the movement and the typing are skipped.",
+        ],
+      },
+      {
+        title: "Views and likes",
+        changes: [
+          "Each article shows how many times it has been viewed and liked.",
+          "Like an article with one tap. Your like is remembered in your browser, with no account.",
+          "Sort the list by newest, most viewed or most liked.",
+          {
+            segments: [
+              "No visitor identifier is stored. The ",
+              { text: "privacy page", href: "/privacy" },
+              " says exactly what is kept.",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     version: "1.2.4",
     publishedAt: "2026-09-19T10:00:00.000+08:00",
     title: "You asked the game to remember. Thank you.",

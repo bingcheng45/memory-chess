@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "Lär dig",
+      "articles": "Artiklar",
       "about": "Om",
       "changelog": "Nyheter",
       "contactUs": "Kontakta oss",
@@ -369,5 +370,76 @@
   "changelog": {
     "bannerCta": "Se vad som är nytt",
     "bannerLabel": "Memory Chess-uppdatering"
+  },
+  "articles": {
+    "meta": {
+      "title": "Artiklar om schackspelare och deras minne",
+      "description": "Porträtt av schackspelare och minnesforskare. Varje artikel redovisar den dokumenterade bedriften, forskningen som förklarar den och en övning att prova."
+    },
+    "list": {
+      "heading": "Artiklar",
+      "sub": "Schackspelare och minnesforskare, ett porträtt i taget.",
+      "aboutHeading": "Så tas artiklarna fram",
+      "about1": "Varje artikel följer en schackspelare eller forskare och en fråga om personens minne. Personen kan vara en spelare som är känd för en minnesbragd, eller en forskare som har mätt vad spelare minns efter några sekunder.",
+      "about2": "Alla artiklar har samma delar. Ett porträtt åtföljs av fotograf och licens. En faktaruta ger datum, titlar och den minnesbragd som personen är känd för. Berättelsen ställer bragden bredvid den forskning som förklarar den. En källförteckning visar var varje påstående kommer ifrån. En övning i slutet öppnar en omgång Memory Chess med det antal pjäser och den visningstid som berättelsen föreslår.",
+      "about3": "Artiklarna efterforskas och skrivs i utkast med hjälp av AI, utifrån publicerade källor som intervjuer, turneringsrapporter, böcker och forskningsartiklar. En separat kontroll jämför sedan varje datum, varje siffra och varje citat med källorna innan något publiceras. Där källorna går isär anger artikeln vem som uppgav vad. En anekdot som källorna bara återger som en historia berättas som en historia. Artiklar på andra språk översätts från den engelska texten med hjälp av AI, och varje översättning kontrolleras innan den läggs ut.",
+      "corrections": "Om något här är fel kan du <link>skicka in en rättelse</link>."
+    },
+    "sort": {
+      "label": "Sortera",
+      "group": "Sortera artiklar",
+      "options": {
+        "newest": "Senaste",
+        "views": "Mest visade",
+        "likes": "Mest gillade"
+      }
+    },
+    "pager": {
+      "label": "Sidor",
+      "previous": "Föregående sida",
+      "next": "Nästa sida",
+      "page": "Sida {page}",
+      "showing": "Visar {first} till {last} av {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# visning} other {# visningar}}",
+      "likes": "{count, plural, one {# gillning} other {# gillningar}}"
+    },
+    "like": {
+      "button": "Gilla den här artikeln",
+      "failed": "Det gick inte att spara. Försök igen."
+    },
+    "page": {
+      "backToList": "Alla artiklar",
+      "showAll": "Visa hela texten",
+      "byline": "Av <author>{name}</author>",
+      "authorshipNote": "Efterforskad och skriven i utkast med hjälp av AI utifrån källorna nedan. Varje uppgift kontrollerades mot dessa källor före publiceringen.",
+      "translationNote": "Översatt från engelska med hjälp av AI. Den engelska artikeln är den som gäller.",
+      "readInEnglish": "Läs den på engelska",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Faktaruta",
+      "facts": {
+        "born": "Född",
+        "died": "Död",
+        "country": "Land",
+        "title": "Titel",
+        "peakRating": "Högsta rating",
+        "worldChampion": "Världsmästare",
+        "knownFor": "Känd för",
+        "memoryFeat": "Minnesbragd"
+      },
+      "drillHeading": "Din tur",
+      "drillAction": "Spela {pieces, plural, one {# pjäs} other {# pjäser}}, {seconds, plural, one {# sekund} other {# sekunder}}",
+      "sources": "Källor",
+      "nextArticle": "Nästa artikel"
+    },
+    "tile": {
+      "eyebrow": "Läs härnäst",
+      "yourRound": "Din omgång",
+      "articleDrill": "Den här artikelns övning",
+      "roundSize": "{pieces, plural, one {# pjäs} other {# pjäser}}, {seconds, plural, one {# sekund} other {# sekunder}}",
+      "read": "Läs artikeln",
+      "tryDrill": "Prova den övningen"
+    }
   }
 }

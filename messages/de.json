@@ -2,6 +2,7 @@
   "common": {
     "nav": {
       "learn": "Lernen",
+      "articles": "Artikel",
       "about": "Über",
       "changelog": "Neuerungen",
       "contactUs": "Kontakt",
@@ -369,5 +370,76 @@
   "changelog": {
     "bannerCta": "Neuerungen ansehen",
     "bannerLabel": "Update für Memory Chess"
+  },
+  "articles": {
+    "meta": {
+      "title": "Artikel über Schachspieler und ihr Gedächtnis",
+      "description": "Porträts von Schachspielern und Gedächtnisforschern. Jedes nennt die belegte Leistung, die Forschung, die sie erklärt, und eine Übung zum Ausprobieren."
+    },
+    "list": {
+      "heading": "Artikel",
+      "sub": "Schachspieler und Gedächtnisforscher, ein Porträt nach dem anderen.",
+      "aboutHeading": "Wie diese Artikel entstehen",
+      "about1": "Jeder Artikel widmet sich einem Schachspieler oder Forscher und einer Frage zu dessen Gedächtnis. Das kann ein Spieler sein, der für eine Gedächtnisleistung bekannt ist, oder ein Forscher, der gemessen hat, woran sich Spieler nach wenigen Sekunden erinnern.",
+      "about2": "Jeder Artikel besteht aus denselben Teilen. Ein Porträt nennt Fotograf und Lizenz. Ein Steckbrief enthält die Daten, die Titel und die Gedächtnisleistung, für die die Person bekannt ist. Die Geschichte stellt diese Leistung neben die Forschung, die sie erklärt. Eine Quellenliste zeigt, woher jede Aussage stammt. Eine Übung am Ende öffnet eine Runde Memory Chess mit der Figurenzahl und der Betrachtungszeit, die die Geschichte nahelegt.",
+      "about3": "Die Artikel werden mit KI-Unterstützung aus veröffentlichten Quellen wie Interviews, Turnierberichten, Büchern und Forschungsarbeiten recherchiert und entworfen. Eine gesonderte Prüfung vergleicht dann jedes Datum, jede Zahl und jedes Zitat mit diesen Quellen, bevor etwas veröffentlicht wird. Wo Quellen sich widersprechen, steht im Artikel, wer was berichtet hat. Eine Anekdote, die Quellen nur als Geschichte überliefern, wird als Geschichte erzählt. Artikel in anderen Sprachen werden mit KI-Unterstützung aus dem englischen Text übersetzt, und jede Übersetzung wird geprüft, bevor sie online geht.",
+      "corrections": "Wenn hier etwas nicht stimmt, <link>schick uns eine Korrektur</link>."
+    },
+    "sort": {
+      "label": "Sortieren",
+      "group": "Artikel sortieren",
+      "options": {
+        "newest": "Neueste",
+        "views": "Meiste Aufrufe",
+        "likes": "Meiste Likes"
+      }
+    },
+    "pager": {
+      "label": "Seiten",
+      "previous": "Vorherige Seite",
+      "next": "Nächste Seite",
+      "page": "Seite {page}",
+      "showing": "Angezeigt: {first} bis {last} von {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# Aufruf} other {# Aufrufe}}",
+      "likes": "{count, plural, one {# Like} other {# Likes}}"
+    },
+    "like": {
+      "button": "Dieser Artikel gefällt mir",
+      "failed": "Das wurde nicht gespeichert. Versuche es noch einmal."
+    },
+    "page": {
+      "backToList": "Alle Artikel",
+      "showAll": "Gesamten Text anzeigen",
+      "byline": "Von <author>{name}</author>",
+      "authorshipNote": "Mit KI-Unterstützung aus den unten aufgeführten Quellen recherchiert und entworfen. Jede Tatsache wurde vor der Veröffentlichung anhand dieser Quellen geprüft.",
+      "translationNote": "Mit KI-Unterstützung aus dem Englischen übersetzt. Maßgeblich ist der englische Artikel.",
+      "readInEnglish": "Auf Englisch lesen",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, über <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Steckbrief",
+      "facts": {
+        "born": "Geboren",
+        "died": "Gestorben",
+        "country": "Land",
+        "title": "Titel",
+        "peakRating": "Höchste Wertungszahl",
+        "worldChampion": "Weltmeister",
+        "knownFor": "Bekannt für",
+        "memoryFeat": "Gedächtnisleistung"
+      },
+      "drillHeading": "Du bist dran",
+      "drillAction": "Runde spielen: {pieces, plural, one {# Figur} other {# Figuren}}, {seconds, plural, one {# Sekunde} other {# Sekunden}}",
+      "sources": "Quellen",
+      "nextArticle": "Nächster Artikel"
+    },
+    "tile": {
+      "eyebrow": "Als Nächstes lesen",
+      "yourRound": "Deine Runde",
+      "articleDrill": "Die Übung dieses Artikels",
+      "roundSize": "{pieces, plural, one {# Figur} other {# Figuren}}, {seconds, plural, one {# Sekunde} other {# Sekunden}}",
+      "read": "Artikel lesen",
+      "tryDrill": "Diese Übung ausprobieren"
+    }
   }
 }

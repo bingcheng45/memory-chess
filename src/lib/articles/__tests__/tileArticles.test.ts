@@ -10,7 +10,7 @@ const SLUGS_NEWEST_FIRST = ["magnus-carlsen", "judit-polgar", "adriaan-de-groot"
 const everyArticleInGerman: TranslationSource = async (locale, slug) => {
   const english = ARTICLES.find((article) => article.slug === slug);
   if (locale !== "de" || !english) throw new Error(`no ${locale} translation of ${slug}`);
-  return reviewedTranslationOf(english, "DE ");
+  return reviewedTranslationOf(english, "DE ", locale);
 };
 
 const noTranslations: TranslationSource = async (locale, slug) => {

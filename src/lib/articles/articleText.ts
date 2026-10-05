@@ -57,7 +57,7 @@ export function sourceHashOf(value: unknown): string {
 }
 
 /** What the strings of the section are called where an article has its slug. */
-export const CHROME_NAME = "chrome";
+const CHROME_NAME = "chrome";
 
 /** Where a reviewed text is published: the locale, and the article's slug or `CHROME_NAME`. */
 export type ApprovedPlace = {

@@ -116,7 +116,6 @@ describe("audit-adsense translated page", () => {
       { rule: "translated-hidden-text", message: "5 words ship hidden (inline style, hidden attribute, hidden class, or breakpoint-hidden class)" },
     ]);
   });
-
 });
 
 describe("audit-adsense translated structure", () => {

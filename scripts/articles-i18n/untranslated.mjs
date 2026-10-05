@@ -1,13 +1,9 @@
 import { textOf } from "./icu.mjs";
-import { LANGUAGE_LIMITS, englishLeadIn } from "./language.mjs";
+import { LANGUAGE_LIMITS, englishLeadIn, wordsOf } from "./language.mjs";
 import { ARTICLE } from "./names.mjs";
 import { MAY_EQUAL_ENGLISH, wordsThatMayStay } from "./paths.mjs";
 
-const WORD = /[\p{L}\p{M}]+/gu;
 const COPY_SHARE = 0.8;
-
-
-const wordsOf = (text) => text.toLowerCase().match(WORD) ?? [];
 
 const timesIn = (words, word) => words.filter((other) => other === word).length;
 

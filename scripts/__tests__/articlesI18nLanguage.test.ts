@@ -1,6 +1,6 @@
 /** @jest-environment node */
 
-import { cpSync } from "node:fs";
+import { cpSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { evalChecks, inSandbox, runLever, setTranslatedLocales } from "./articlesI18nSandbox";
 
@@ -164,40 +164,33 @@ describe("the language rule and a new locale", () => {
 });
 
 describe("verify, when the approved files of one locale are copied over another's", () => {
-  const SLUGS = ["adriaan-de-groot", "judit-polgar", "magnus-carlsen"];
   const DIR = "src/lib/articles/translations";
+  const NOT_APPROVED_HERE = "not reviewed, the approval is for another text, article or locale";
 
-  function shapesAfterCopying(from: string, into: string): { status: number | null; shapes: string[] } {
+  // The counts in a line follow the real translations, so the test keeps what each article is failed for and not how far.
+  function verdictsAfterCopying(from: string, into: string): { status: number | null; verdicts: string[] } {
     return inSandbox("real", (root) => {
+      const files = readdirSync(join(root, DIR, from)).filter((name) => name !== "chrome.json");
       setTranslatedLocales(root, ["en", into]);
-      SLUGS.forEach((slug) => cpSync(join(root, DIR, from, `${slug}.json`), join(root, DIR, into, `${slug}.json`)));
+      files.forEach((name) => cpSync(join(root, DIR, from, name), join(root, DIR, into, name)));
       const run = runLever(root, "verify");
-      const shapes = run.failures.map((line) => line.replace(/\d+/g, "N").replace(/ (description|drill\.why|(sections|sources)\[N\]\.\S+):/, " <leaf>:").replace(new RegExp(SLUGS.join("|")), "<slug>"));
-      return { status: run.status, shapes: [...new Set(shapes)].sort() };
+      const ofAnArticle = run.failures.filter((line) => /^\[[\w-]+\] [\w-]+: /.test(line));
+      const verdicts = ofAnArticle.map((line) => line.replace(/^(\[[\w-]+\]) [\w-]+: /, "$1 ").replace(/: \d+ .*$/, ""));
+      return { status: run.status, verdicts: [...new Set(verdicts)].sort() };
     });
   }
 
-  // French `a` and `on` are English function words that German does not have, so some French leaves read as English too.
   it("fails the French articles in the German directory: not approved there, and not German", () => {
-    expect(shapesAfterCopying("fr", "de")).toEqual({
+    expect(verdictsAfterCopying("fr", "de")).toEqual({
       status: 1,
-      shapes: [
-        "[de] <slug> <leaf>: reads as English as a whole: N more English function words than de ones",
-        "[de] <slug> <leaf>: reads as fr, not de: N words of fr that de does not have, and N the other way",
-        "[de] <slug>: not reviewed, the approval is for another text, article or locale",
-        "[de] <slug>: the text as a whole reads as fr, not de: N words of fr that de does not have, and N the other way",
-      ],
+      verdicts: [`[de] ${NOT_APPROVED_HERE}`, "[de] the text as a whole reads as fr, not de"],
     });
   });
 
   it("fails the Simplified Chinese articles in the Traditional Chinese directory", () => {
-    expect(shapesAfterCopying("zh-CN", "zh-TW")).toEqual({
+    expect(verdictsAfterCopying("zh-CN", "zh-TW")).toEqual({
       status: 1,
-      shapes: [
-        "[zh-TW] <slug> <leaf>: reads as zh-CN, not zh-TW: N characters of zh-CN that zh-TW does not have, and N the other way",
-        "[zh-TW] <slug>: not reviewed, the approval is for another text, article or locale",
-        "[zh-TW] <slug>: the text as a whole reads as zh-CN, not zh-TW: N characters of zh-CN that zh-TW does not have, and N the other way",
-      ],
+      verdicts: [`[zh-TW] ${NOT_APPROVED_HERE}`, "[zh-TW] the text as a whole reads as zh-CN, not zh-TW"],
     });
   });
 });

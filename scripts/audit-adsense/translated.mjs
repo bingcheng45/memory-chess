@@ -1,4 +1,4 @@
-import { countedBlockNames, differingBlocks } from "./structure.mjs";
+import { COUNTED_BLOCK_NAMES, differingBlocks } from "./structure.mjs";
 import { SEGMENTED_COUNTER, SPACED_COUNTER, countLocaleWords } from "./words.mjs";
 
 const THIN_PAGE_WORDS = 300;
@@ -65,7 +65,7 @@ export const TRANSLATED_RULES = [
   },
   {
     id: "translated-dropped-content",
-    guideline: `a translation has as many of each block (${countedBlockNames()}) in main content as its English page`,
+    guideline: `a translation has as many of each block (${COUNTED_BLOCK_NAMES}) in main content as its English page`,
     check: blockProblem,
   },
   {
@@ -121,7 +121,7 @@ export function translatedLines(rows) {
   return [
     `${title}: ${rows.length} checked against their English pages, ${rows.filter((row) => row.owesNote).length} of them owing a translation note`,
     `  words counted as ${countersUsed(rows)}`,
-    `  blocks compared with the English page: ${countedBlockNames()} (the translation note left out)`,
+    `  blocks compared with the English page: ${COUNTED_BLOCK_NAMES} (the translation note left out)`,
     ...(thin.length ? [`  under ${THIN_PAGE_WORDS} words, reported and not failed: ${thin.map((row) => `${row.path} ${row.words}`).join(", ")}`] : []),
   ];
 }

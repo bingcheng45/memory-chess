@@ -2,7 +2,8 @@ const THIS_FILE = "scripts/articles-i18n/language.mjs";
 const WORD = /[\p{L}\p{M}]+/gu;
 const LETTER = /\p{L}/gu;
 
-const wordsOf = (text) => text.toLowerCase().match(WORD) ?? [];
+/** The words of `text`, in lower case. An apostrophe ends a word, which is what makes `l` and `qu` words of French. */
+export const wordsOf = (text) => text.toLowerCase().match(WORD) ?? [];
 const lettersOf = (text) => text.match(LETTER) ?? [];
 
 function byWords(list) {
@@ -66,6 +67,8 @@ export const LANGUAGE_LIMITS = {
    * The largest lead in the installed files is 1 for a locale and 2 for English.
    */
   maxLead: 3,
+  /** A whole text is long enough that no other locale is ever ahead in an installed one. The closest is 35 against 430. */
+  maxLeadOfAWhole: 0,
   /**
    * The least share of an article that is its locale's own words or characters:
    * about half the lowest share of an installed article, which is 15.8% in
@@ -76,10 +79,18 @@ export const LANGUAGE_LIMITS = {
 
 const countOf = (tokens, isCounted) => tokens.filter(isCounted).length;
 
+/** What only one of two profiles has in `tokens`: the count for `own` and the count for `other`. */
+const versus = (tokens, own, other) => ({
+  own: countOf(tokens, (token) => own.has(token) && !other.has(token)),
+  theirs: countOf(tokens, (token) => other.has(token) && !own.has(token)),
+});
+
 /**
  * How `text` reads in `locale`: its size in the locale's unit, the share of it
  * that is the locale's own, and against each locale written alike the count of
  * what only one of the two has. Undefined for a locale with no profile.
+ * `language-margins.mjs` prints these readings for the installed files, which
+ * is where the numbers in `LANGUAGE_LIMITS` come from.
  */
 export function readingOf(locale, text) {
   const profile = PROFILES[locale];
@@ -91,11 +102,7 @@ export function readingOf(locale, text) {
     unit: profile.unit,
     size: tokens.length,
     share: countOf(tokens, profile.has) / Math.max(tokens.length, 1),
-    rivals: rivals.map(([other, rival]) => ({
-      locale: other,
-      own: countOf(tokens, (token) => profile.has(token) && !rival.has(token)),
-      theirs: countOf(tokens, (token) => rival.has(token) && !profile.has(token)),
-    })),
+    rivals: rivals.map(([other, rival]) => ({ locale: other, ...versus(tokens, profile, rival) })),
   };
 }
 
@@ -109,15 +116,11 @@ const leadOf = ({ own, theirs }) => theirs - own;
  */
 export function englishLeadIn(locale, text) {
   const own = PROFILES[locale]?.unit === ENGLISH.unit ? PROFILES[locale] : NO_WORDS;
-  const words = ENGLISH.tokensOf(text);
-  return leadOf({
-    own: countOf(words, (word) => own.has(word) && !ENGLISH.has(word)),
-    theirs: countOf(words, (word) => ENGLISH.has(word) && !own.has(word)),
-  });
+  return leadOf(versus(wordsOf(text), own, ENGLISH));
 }
 
 /** Why `text` does not read as `locale`. A text under `minSize` and a locale with no profile are not read. */
-function languageProblems(locale, text, { minSize, maxLead, minShare }) {
+function languageProblems(locale, text, { minSize, maxLead, minShare = 0 }) {
   const reading = readingOf(locale, text);
   if (reading === undefined || reading.size < minSize) return [];
   const { unit, size, share, rivals } = reading;
@@ -151,8 +154,9 @@ export function missingLanguageRuleProblems(locale) {
  */
 export function languageFailures(locale, name, leaves) {
   const unit = PROFILES[locale]?.unit;
-  const whole = { minSize: LANGUAGE_LIMITS.minSizeOfAWhole, maxLead: 0, minShare: LANGUAGE_LIMITS.minShareOfAWhole[unit] };
-  const oneLeaf = { minSize: LANGUAGE_LIMITS.minSizeOfALeaf, maxLead: LANGUAGE_LIMITS.maxLead, minShare: 0 };
+  const { minSizeOfAWhole, minSizeOfALeaf, maxLead, maxLeadOfAWhole, minShareOfAWhole } = LANGUAGE_LIMITS;
+  const whole = { minSize: minSizeOfAWhole, maxLead: maxLeadOfAWhole, minShare: minShareOfAWhole[unit] };
+  const oneLeaf = { minSize: minSizeOfALeaf, maxLead };
   const everyLeaf = leaves.map(([, text]) => text).join(" ");
 
   return [

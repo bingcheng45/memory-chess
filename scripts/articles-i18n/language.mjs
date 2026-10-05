@@ -109,14 +109,15 @@ export function readingOf(locale, text) {
 const leadOf = ({ own, theirs }) => theirs - own;
 
 /**
- * How far English is ahead in `text` of a translation into `locale`: the
- * English function words that the locale does not have too, less the locale's
- * words that English does not have. A locale that is not read by words has
- * none to set against the English ones.
+ * How far English is ahead in the `words` of a translation into `locale`: the
+ * English function words among `counted` that the locale does not have too,
+ * less the locale's words that English does not have. `counted` leaves out
+ * the words a translator kept from the English text on purpose. A locale that
+ * is not read by words has none to set against the English ones.
  */
-export function englishLeadIn(locale, text) {
+export function englishLead(locale, words, counted = words) {
   const own = PROFILES[locale]?.unit === ENGLISH.unit ? PROFILES[locale] : NO_WORDS;
-  return leadOf(versus(wordsOf(text), own, ENGLISH));
+  return versus(counted, own, ENGLISH).theirs - versus(words, own, ENGLISH).own;
 }
 
 /** Why `text` does not read as `locale`. A text under `minSize` and a locale with no profile are not read. */
@@ -124,9 +125,9 @@ function languageProblems(locale, text, { minSize, maxLead, minShare = 0 }) {
   const reading = readingOf(locale, text);
   if (reading === undefined || reading.size < minSize) return [];
   const { unit, size, share, rivals } = reading;
-  const closest = rivals.reduce((top, rival) => (leadOf(rival) > leadOf(top) ? rival : top));
+  const [closest] = rivals.toSorted((one, other) => leadOf(other) - leadOf(one));
 
-  if (leadOf(closest) > maxLead) {
+  if (closest !== undefined && leadOf(closest) > maxLead) {
     return [`reads as ${closest.locale}, not ${locale}: ${closest.theirs} ${unit} of ${closest.locale} that ${locale} does not have, and ${closest.own} the other way`];
   }
   if (share < minShare) {

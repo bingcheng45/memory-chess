@@ -118,7 +118,6 @@ describe("the script rule", () => {
         kept("zh-CN", `${NAMES_KEPT}${UNTRANSLATED_SENTENCE}`),
         [
           "15 of 75 letters are Han, at least half must be",
-          "reads as English as a whole: 5 more English function words than zh-CN ones",
         ],
       ],
       [kept("zh-CN", UNTRANSLATED), NO_SCRIPT],
@@ -226,13 +225,17 @@ describe("the rules for a leaf that still reads as English", () => {
     isListed: false,
   });
   const copyOf = (kept: number, total: number) => `${kept} of ${total} English words are still here, the text looks untranslated`;
-  const englishSentences = (count: number, total: number, first: string) =>
-    `${count} of ${total} sentences read as English, the first: "${first}"`;
+  const WHAT_TO_DO =
+    "Translate it, or keep in English only what the English text has word for word inside a sentence that is otherwise translated, such as a title";
+  const englishSentences = (locale: string, count: number, total: number, first: string) =>
+    `not in ${locale}: English function words outnumber ${locale} ones by more than 3 in ${count} of ${total} sentences, the first: "${first}". ${WHAT_TO_DO}`;
+  const englishAsAWhole = (locale: string, lead: number) =>
+    `not in ${locale} as a whole: ${lead} more English function words than ${locale} ones. ${WHAT_TO_DO}`;
 
   describe("as a copy of its English leaf", () => {
     const CASES: [leaf: Leaf, problems: string[]][] = [
-      [body("de", SENTENCE, `${SENTENCE} Ja.`), [copyOf(12, 12), englishSentences(1, 2, SENTENCE)]],
-      [body("ru", SENTENCE, `Смотрите: ${SENTENCE}`), [copyOf(12, 12), englishSentences(1, 1, `Смотрите: ${SENTENCE}`)]],
+      [body("de", SENTENCE, `${SENTENCE} Ja.`), [copyOf(12, 12), englishSentences("de", 1, 2, SENTENCE)]],
+      [body("ru", SENTENCE, `Смотрите: ${SENTENCE}`), [copyOf(12, 12), englishSentences("ru", 1, 1, `Смотрите: ${SENTENCE}`)]],
       [body("de", "The rack of small positions", "The rack of small Stellungen", "sections[1].heading"), [copyOf(4, 5)]],
       [body("de", "She won every game.", "She won every Partie."), []],
       [body("nl", "Try de Groot's test", "Probeer de test van De Groot", "sections[5].heading"), []],
@@ -243,7 +246,7 @@ describe("the rules for a leaf that still reads as English", () => {
         [copyOf(6, 6)],
       ],
       [body("de", "Unknown photographer of the chess club", "Unknown photographer of the chess club Berlin", "photo.author"), []],
-      [{ ...body("de", SENTENCE, `${SENTENCE} Ja.`, "list.about1"), kind: "chrome" }, [englishSentences(1, 2, SENTENCE)]],
+      [{ ...body("de", SENTENCE, `${SENTENCE} Ja.`, "list.about1"), kind: "chrome" }, [englishSentences("de", 1, 2, SENTENCE)]],
     ];
 
     it("fails an article leaf that keeps four English words in five, and lets a short name or title stay, whatever the English rule says", () => {
@@ -254,7 +257,7 @@ describe("the rules for a leaf that still reads as English", () => {
   describe("as English prose that is not a copy", () => {
     const OTHER_SENTENCE =
       "They said that she could not have won this game without the help of those who were with her from the start.";
-    const OTHER_SENTENCE_FAILS = [englishSentences(1, 1, OTHER_SENTENCE)];
+    const OTHER_SENTENCE_FAILS = [englishSentences("de", 1, 1, OTHER_SENTENCE)];
     const TITLES = "Thought and Choice in Chess, The Game of the Century, From Morphy to Fischer";
     const GERMAN_WITH_TITLES =
       "Drei Bücher prägten das Feld: Thought and Choice in Chess von Adriaan de Groot, The Game of the Century " +
@@ -275,11 +278,11 @@ describe("the rules for a leaf that still reads as English", () => {
     const LONG_TITLE = "What the Hands and the Eyes Tell Those Who Watch: Notes from the Board";
     const CASES: [leaf: Leaf, problems: string[]][] = [
       [body("de", "She won every game.", OTHER_SENTENCE), OTHER_SENTENCE_FAILS],
-      [body("hi", PARAGRAPH, `देखिए: ${PARAGRAPH}`), [copyOf(78, 78), englishSentences(5, 5, "देखिए: On Joe Rogan's podcast in February 2025 he gave more detail, according to a published transcript.")]],
+      [body("hi", PARAGRAPH, `देखिए: ${PARAGRAPH}`), [copyOf(78, 78), englishSentences("hi", 5, 5, "देखिए: On Joe Rogan's podcast in February 2025 he gave more detail, according to a published transcript.")]],
       [body("nl", DUTCH_SOURCE, DUTCH), []],
       [body("de", "Three books shaped the field.", GERMAN_WITH_TITLES), []],
-      [body("de", "Three books shaped the field.", TITLES), [englishSentences(1, 1, TITLES)]],
-      [body("hi", "Three books shaped the field.", `${HINDI_LEAD_IN} ${TITLES}।`), [englishSentences(1, 1, `${HINDI_LEAD_IN} ${TITLES}।`)]],
+      [body("de", "Three books shaped the field.", TITLES), [englishSentences("de", 1, 1, TITLES)]],
+      [body("hi", "Three books shaped the field.", `${HINDI_LEAD_IN} ${TITLES}।`), [englishSentences("hi", 1, 1, `${HINDI_LEAD_IN} ${TITLES}।`)]],
       [
         { ...body("de", "Each article follows one chess player.", OTHER_SENTENCE, "list.about1"), kind: "chrome" },
         OTHER_SENTENCE_FAILS,
@@ -287,12 +290,57 @@ describe("the rules for a leaf that still reads as English", () => {
       [body("de", LONG_TITLE, LONG_TITLE, "sources[2].title"), []],
       [
         { ...body("de", LONG_TITLE, LONG_TITLE, "facts.knownFor"), isListed: true },
-        [englishSentences(1, 1, LONG_TITLE)],
+        [englishSentences("de", 1, 1, LONG_TITLE)],
       ],
     ];
 
     it("fails a leaf of either kind where English is ahead of the locale by more than three function words in one sentence", () => {
       expect(problemsOf(CASES.map(([one]) => one))).toEqual(CASES.map(([, expected]) => expected));
+    });
+  });
+
+  describe("with a title or a saying the English leaf has word for word", () => {
+    const TITLE = "How Life Imitates Chess: Making the Right Moves, from the Board to the Boardroom";
+    const SAYING = "When you see a good move, look for a better one";
+    const ABOUT_THE_BOOK = `In his book ${TITLE}, Kasparov wrote about the choices that a manager makes when the clock is running.`;
+    const ABOUT_THE_SAYING = `He liked the saying "${SAYING}" and repeated it to his students.`;
+    const SOURCE = `${ABOUT_THE_BOOK} ${ABOUT_THE_SAYING}`;
+    const HINDI_BOOK = `गैरी कास्पारोव ने अपनी किताब ‘${TITLE}’ में उन फ़ैसलों के बारे में लिखा जो एक प्रबंधक घड़ी चलते समय लेता है।`;
+    const HINDI = `${HINDI_BOOK} उन्हें “${SAYING}” वाली कहावत पसंद थी और वे इसे अपने शिष्यों के सामने दोहराते थे।`;
+    const JAPANESE = `カスパロフは著書『${TITLE}』で、時計が進むなかで経営者が下す選択について書いた。彼は「${SAYING}」という格言を好み、弟子たちに繰り返し語った。`;
+    const GERMAN_BOOK = `Garri Kasparow schrieb sein Buch ${TITLE} für Manager.`;
+    const GERMAN = `${GERMAN_BOOK} Ihm gefiel der Spruch „${SAYING}“, und er wiederholte ihn vor seinen Schülern.`;
+    const ONE_WORD_CHANGED = ABOUT_THE_SAYING.replace("saying", "Spruch");
+    const MOSTLY_KEPT = `Ihm gefiel der Spruch „${SAYING}“ and repeated it to his students.`;
+    const OTHER = "Another text stands at this path in the English article.";
+    const CASES: [leaf: Leaf, problems: string[]][] = [
+      [body("hi", SOURCE, HINDI), []],
+      [body("ja", SOURCE, JAPANESE), []],
+      [body("de", SOURCE, GERMAN), []],
+      [{ ...body("de", SOURCE, GERMAN, "list.about1"), kind: "chrome" }, []],
+      [body("de", OTHER, GERMAN), [englishSentences("de", 1, 2, GERMAN_BOOK)]],
+      [body("hi", SOURCE, `${HINDI_BOOK} ${ABOUT_THE_SAYING}`), [englishSentences("hi", 1, 2, ABOUT_THE_SAYING)]],
+      [body("de", SOURCE, `${GERMAN_BOOK} ${ABOUT_THE_SAYING}`), [englishSentences("de", 1, 2, ABOUT_THE_SAYING)]],
+      [body("de", SOURCE, `${GERMAN_BOOK} ${ONE_WORD_CHANGED}`), [englishSentences("de", 1, 2, ONE_WORD_CHANGED)]],
+      [body("de", SOURCE, `${GERMAN_BOOK} ${MOSTLY_KEPT}`), [englishSentences("de", 1, 2, MOSTLY_KEPT)]],
+    ];
+
+    it("does not count the kept words, and still fails a sentence that keeps four in five of the words of an English sentence", () => {
+      expect(problemsOf(CASES.map(([one]) => one))).toEqual(CASES.map(([, expected]) => expected));
+    });
+  });
+
+  describe("as text in another language that English function words give away", () => {
+    const FRENCH =
+      "On a longtemps cru que la mémoire des maîtres était un don. Il a montré qu'elle tient à ce qu'on a déjà vu, " +
+      "et qu'on a tort de la croire générale. On a refait son expérience bien des fois, et on a trouvé le même résultat.";
+    const OTHER = "Another text stands at this path in the English article.";
+
+    it("says the text is not in its locale and does not call French English", () => {
+      const [problems] = problemsOf([body("de", OTHER, FRENCH)]) as string[][];
+
+      expect(problems.map((problem) => problem.slice(0, 10))).toEqual(["not in de:"]);
+      expect(problems.join(" ")).not.toMatch(/reads? as English/);
     });
   });
 
@@ -308,14 +356,14 @@ describe("the rules for a leaf that still reads as English", () => {
     const SHORT_SENTENCES = "She won. He lost. It was late. They left.";
     const OTHER = "Another text stands at this path in the English article.";
     const CASES: [leaf: Leaf, problems: string[]][] = [
-      [body("it", PARAGRAPH, `${ITALIAN} ${STROKES} ${PAWN}`), [englishSentences(2, 5, STROKES)]],
-      [body("it", PARAGRAPH, `${STROKES} ${ITALIAN}`), [englishSentences(1, 4, STROKES)]],
-      [body("ja", OTHER, `${JAPANESE.repeat(3)}${PAWN}`), [englishSentences(1, 7, PAWN)]],
-      [body("hi", OTHER, `${HINDI} ${HINDI} ${PAWN}`), [englishSentences(1, 5, PAWN)]],
-      [{ ...body("it", OTHER, `${ITALIAN} ${PAWN}`, "list.about1"), kind: "chrome" }, [englishSentences(1, 4, PAWN)]],
+      [body("it", PARAGRAPH, `${ITALIAN} ${STROKES} ${PAWN}`), [englishSentences("it", 2, 5, STROKES)]],
+      [body("it", PARAGRAPH, `${STROKES} ${ITALIAN}`), [englishSentences("it", 1, 4, STROKES)]],
+      [body("ja", OTHER, `${JAPANESE.repeat(3)}${PAWN}`), [englishSentences("ja", 1, 7, PAWN)]],
+      [body("hi", OTHER, `${HINDI} ${HINDI} ${PAWN}`), [englishSentences("hi", 1, 5, PAWN)]],
+      [{ ...body("it", OTHER, `${ITALIAN} ${PAWN}`, "list.about1"), kind: "chrome" }, [englishSentences("it", 1, 4, PAWN)]],
       [body("vi", OTHER, VIETNAMESE_WITH_A_TITLE), []],
       [body("it", OTHER, `${ITALIAN} He won them all.`), []],
-      [body("de", OTHER, SHORT_SENTENCES), ["reads as English as a whole: 5 more English function words than de ones"]],
+      [body("de", OTHER, SHORT_SENTENCES), [englishAsAWhole("de", 5)]],
     ];
 
     it("fails the leaf and names the first English sentence, in any script, and passes a quoted title or one short sentence", () => {

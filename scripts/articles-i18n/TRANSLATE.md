@@ -155,8 +155,9 @@ that does not use Latin letters. Names, titles and loanwords kept in Latin lette
 its English value, or a value with a sentence in which English function words such as `the`, `with` and
 `which` outnumber your language's own by more than three. One sentence left in English inside a translated
 paragraph fails this way. A fact, a role or a caption of up to five English
-words may be a name or a title and may keep them. An English title quoted inside your own sentences is
-fine. It fails text in another language of this site: an article as a whole, the strings of the section as
+words may be a name or a title and may keep them. A title or a saying that you keep exactly as the English
+text has it at that path, inside a sentence you translated, is not counted. A sentence that keeps four in
+five of the words of an English sentence was left in English, and all of it counts. It fails text in another language of this site: an article as a whole, the strings of the section as
 a whole, and a value of 40 words or more that reads as that other language, so Danish does not pass as
 Norwegian or Simplified Chinese as Traditional. It fails a long paragraph that is much shorter, against its English paragraph, than the rest of your
 translation, which is how a dropped sentence shows. It cannot tell whether a sentence is correct or natural. That part is

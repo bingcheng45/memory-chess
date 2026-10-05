@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "77c84e3bbd03c08b754703b12e51f582998994bf7eb6ec707aee7d27401e785c",
+  "approvedHash": "b7c4a1dfb981ed7d9f72f7f1e5b3eada3c491acd28f3977e112e15f7fdd9ed7a",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot trình bày công trình này năm 1946 trong luận án tiến sĩ tại Đại học Amsterdam, Het denken van den schaker. Nhà xuất bản Mouton ấn hành bản tiếng Anh, Thought and Choice in Chess, tại The Hague năm 1965.",
           "Năm 1973, William Chase và Herbert Simon làm lại thí nghiệm tại Carnegie Mellon với một kiện tướng, một kỳ thủ hạng A và một người mới chơi. Họ cố định thời gian xem là 5 giây. Các thế cờ trung cuộc của họ có từ 24 đến 26 quân, và kiện tướng nhớ được số quân nhiều gấp khoảng hai lần kỳ thủ hạng A.",
-          "Họ quay phim từng lần dựng lại thế cờ và coi quãng dừng dài hơn 2 giây là ranh giới giữa hai chunk. Chunk đầu tiên của kiện tướng trung bình có 3,8 quân, so với 2,6 quân của kỳ thủ hạng A, và ông tạo ra 7,7 chunk cho mỗi thế cờ, so với 5,7. Trong 77 chunk của ông qua mười bốn thế cờ, có 47 chunk chứa chuỗi tốt, và Simon cùng Chase đếm được 10 thế vua đã nhập thành.",
+          "Họ quay phim từng lần dựng lại thế cờ và coi quãng dừng dài hơn 2 giây là ranh giới giữa hai chunk. Chunk đầu tiên của kiện tướng trung bình có 3,8 quân, so với 2,6 quân của kỳ thủ hạng A, và kiện tướng này tạo ra 7,7 chunk cho mỗi thế cờ, so với 5,7. Trong 77 chunk của kiện tướng này qua mười bốn thế cờ, có 47 chunk chứa chuỗi tốt, và Simon cùng Chase đếm được 10 thế vua đã nhập thành.",
           "Phần họ bổ sung là một nhóm đối chứng, với những quân cờ y như cũ nhưng đặt vào các ô ngẫu nhiên. Simon và Chase cho biết khi đó mọi kỳ thủ đều nhớ được khoảng ba hoặc bốn quân, ít hơn số quân người mới chơi nhớ được trên các thế cờ thật. Họ ghi chú rằng W. Lemmens và R. W. Jongman đã thu được kết quả tương tự trong phòng thí nghiệm ở Amsterdam nhưng chưa bao giờ công bố.",
-          "Chính phần mở đầu của Chase và Simon trình bày kết quả bàn cờ ngẫu nhiên như của de Groot, và nhiều bài kể lại về sau lặp lại điều đó. Sách của ông không ghi thử nghiệm bàn cờ ngẫu nhiên nào."
+          "Chính phần mở đầu của Chase và Simon trình bày kết quả bàn cờ ngẫu nhiên như của de Groot, và nhiều bài kể lại về sau lặp lại điều đó. Sách của de Groot không ghi thử nghiệm bàn cờ ngẫu nhiên nào."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Hãy thử bài kiểm tra của de Groot",
         "paragraphs": [
-          "Hãy đặt Memory Chess ở mức 22 quân và 5 giây. Mức này khớp với số quân trong thế cờ Rohacek đấu với Rabar của de Groot và với thời gian Euwe được xem nó. Dựng lại bàn cờ và tính xem bạn đặt đúng bao nhiêu phần trăm số quân. Khoảng một nửa là mức Hauer đạt được, khoảng 70% là mức Fast đạt được, còn 93% là mức trung bình của Euwe và de Groot.",
+          "Hãy đặt Memory Chess ở mức 22 quân và 5 giây. Mức này khớp với số quân trong thế cờ Rohacek đấu với Rabar của de Groot và với thời gian Euwe được xem nó. Dựng lại bàn cờ và tính xem bạn đặt đúng bao nhiêu phần trăm số quân. Khoảng một nửa là mức Hauer đạt được, khoảng 70% là mức Fast đạt được, còn 93% là mức trung bình mà Euwe và de Groot mỗi người đạt được.",
           "Phép so sánh này chỉ mang tính tương đối, vì de Groot còn trừ điểm cho các lỗi. Sau đó hãy xem bạn nhớ được những quân nào. Nhiều khả năng chúng đến theo nhóm, chẳng hạn một chuỗi tốt hoặc một vua đã nhập thành."
         ]
       }

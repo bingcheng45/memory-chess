@@ -434,7 +434,7 @@
       "nextArticle": "Bài tiếp theo"
     },
     "tile": {
-      "eyebrow": "Đọc tiếp",
+      "eyebrow": "Bài đọc tiếp theo",
       "yourRound": "Vòng chơi của bạn",
       "articleDrill": "Bài tập của bài viết này",
       "roundSize": "{pieces, plural, other {# quân}}, {seconds, plural, other {# giây}}",

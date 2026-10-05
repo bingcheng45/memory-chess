@@ -414,7 +414,7 @@
       "showAll": "पूरा पाठ दिखाएँ",
       "byline": "लेखक: <author>{name}</author>",
       "authorshipNote": "नीचे दिए स्रोतों के आधार पर AI की मदद से शोध करके लिखा गया। प्रकाशन से पहले हर तथ्य को उन्हीं स्रोतों से मिलाकर जाँचा गया।",
-      "translationNote": "अंग्रेज़ी से AI की मदद से अनूदित। अंग्रेज़ी लेख ही प्रामाणिक है।",
+      "translationNote": "अंग्रेज़ी से AI की मदद से अनूदित। अंग्रेज़ी लेख ही संदर्भ-पाठ है।",
       "readInEnglish": "अंग्रेज़ी में पढ़ें",
       "photoCredit": "फ़ोटो: {author}, <licenseLink>{license}</licenseLink>, <source>Wikimedia Commons</source> के माध्यम से। {changes}।",
       "factFile": "तथ्य-सूची",
@@ -434,7 +434,7 @@
       "nextArticle": "अगला लेख"
     },
     "tile": {
-      "eyebrow": "आगे पढ़ें",
+      "eyebrow": "अगला लेख",
       "yourRound": "आपका राउंड",
       "articleDrill": "इस लेख का अभ्यास",
       "roundSize": "{pieces, plural, one {# मोहरा} other {# मोहरे}}, {seconds, plural, one {# सेकंड} other {# सेकंड}}",

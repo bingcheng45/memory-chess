@@ -139,24 +139,6 @@ describe("approve", () => {
     expect(state.approvals).toEqual([false, false, false]);
   });
 
-  it("turns a file from before approvals were hashed, with reviewed true, into one with the hash", () => {
-    const state = inSandbox("fixture", (root) => {
-      setTranslatedLocales(root, ["en", "de"]);
-      importGerman(root);
-      [ADA_FILE, BEN_FILE, CHROME_FILE].forEach((file) =>
-        change(root, file, ({ sourceHash, sameAsEnglish, text }) => ({ sourceHash, reviewed: true, sameAsEnglish, text })),
-      );
-      const before = runLever(root, "verify");
-      const approve = runLever(root, "approve", "de");
-      return { before, approve, keys: Object.keys(readJson(root, ADA_FILE)), approvals: approvals(root), after: runLever(root, "verify") };
-    });
-
-    expect(state.before).toEqual({ status: 0, stdout: "ok verify: de\n", failures: [] });
-    expect(state.approve.stdout).toBe("ok approve de: 3 files reviewed\n");
-    expect(state.keys).toEqual(["sourceHash", "approvedHash", "sameAsEnglish", "text"]);
-    expect(state.approvals).toEqual([true, true, true]);
-    expect(state.after).toEqual({ status: 0, stdout: "ok verify: de\n", failures: [] });
-  });
 });
 
 describe("verify", () => {
@@ -247,6 +229,23 @@ describe("verify", () => {
       return runLever(root, "verify");
     });
 
-    expect(run).toEqual({ status: 1, stdout: "verify: 1 failure\n", failures: ["[de] ada-example: not reviewed"] });
+    expect(run).toEqual({
+      status: 1,
+      stdout: "verify: 2 failures\n",
+      failures: ['[de] ada-example: unknown key "reviewed"', "[de] ada-example: not reviewed"],
+    });
+  });
+
+  it("fails a key the lever does not write, in an approved article file and in chrome.json", () => {
+    const runs = inSandbox("fixture", (root) => {
+      approvedGerman(root);
+      change(root, ADA_FILE, (ada) => ({ ...ada, reviewed: true }));
+      change(root, CHROME_FILE, (chrome) => ({ ...chrome, text: {} }));
+      return { verify: runLever(root, "verify"), check: runLever(root, "check", "de") };
+    });
+    const UNKNOWN = ['ada-example: unknown key "reviewed"', 'chrome: unknown key "text"'];
+
+    expect(runs.verify.failures).toEqual(UNKNOWN.map((line) => `[de] ${line}`));
+    expect(runs.check).toEqual({ status: 1, stdout: "check de: 2 failures in the installed files\n", failures: UNKNOWN });
   });
 });

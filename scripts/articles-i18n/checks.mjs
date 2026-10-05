@@ -236,14 +236,15 @@ function listedFailures({ kind, name, english, unit }, listed) {
   });
 }
 
-function unitFailures(subject, isInstalled, shapeProblems) {
-  const { name, english, sourceHash, unit } = subject;
+function unitFailures(subject, isInstalled, { shapeProblems, unknownKeyProblems }) {
+  const { kind, name, english, sourceHash, unit } = subject;
   if (unit === undefined) return [`${name}: no file`];
   if (unit.error !== undefined) return [`${name}: ${unit.error}`];
   const isStale = isInstalled && unit.sourceHash !== sourceHash;
   const listed = isPathList(unit.sameAsEnglish) ? unit.sameAsEnglish : [];
 
   return [
+    ...(isInstalled ? unknownKeyProblems(unit.keys, kind).map((problem) => `${name}: ${problem}`) : []),
     ...(isStale ? [`${name}: sourceHash is stale, the English text changed after this translation was made`] : []),
     ...(isPathList(unit.sameAsEnglish) ? [] : [`${name}: sameAsEnglish is not a list of paths`]),
     ...shapeProblems(english, unit.text).map((problem) => `${name} ${problem}`),
@@ -256,19 +257,20 @@ function unitFailures(subject, isInstalled, shapeProblems) {
  * Every reason the translation in `bundle` may not be installed or published,
  * one line each, naming the article or `chrome`, the leaf path and the reason.
  *
- * `source` is the English side: `{ lib: { shapeProblems }, articles: [{ slug,
- * text, sourceHash }], chrome: { strings, sourceHash } }`, with `shapeProblems`
- * from `src/lib/articles/articleText.ts`. `bundle` is one locale read from a
- * translator's directory or from the installed files: `{ installed, problems,
- * sameAsEnglishKeys, articles: { [slug]: unit }, chrome: unit }`, where a unit
- * is `{ text, sameAsEnglish, sourceHash }` or `{ error }`.
+ * `source` is the English side: `{ lib: { shapeProblems, unknownKeyProblems },
+ * articles: [{ slug, text, sourceHash }], chrome: { strings, sourceHash } }`,
+ * with `lib` from `src/lib/articles/articleText.ts`. `bundle` is one locale read
+ * from a translator's directory or from the installed files: `{ installed,
+ * problems, sameAsEnglishKeys, articles: { [slug]: unit }, chrome: unit }`,
+ * where a unit is `{ text, sameAsEnglish }` or `{ error }`, and an installed
+ * unit also has `sourceHash` and its file's `keys`.
  *
  * @param {string} locale
  * @returns {string[]}
  */
 export function failuresOf(locale, source, bundle) {
   const slugs = source.articles.map((article) => article.slug);
-  const failuresFor = (subject) => unitFailures({ locale, ...subject }, bundle.installed, source.lib.shapeProblems);
+  const failuresFor = (subject) => unitFailures({ locale, ...subject }, bundle.installed, source.lib);
   const isUnknown = (name) => !slugs.includes(name);
 
   return [

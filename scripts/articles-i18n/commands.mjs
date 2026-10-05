@@ -67,16 +67,10 @@ export function check(repo, locale, dir) {
 function installFiles(repo, locale, bundle, installed) {
   const { approvalHashOf } = repo.lib;
   // An approval outlives an import only when the import changes nothing the approval covers.
-  const keptApproval = (old, hash) => {
-    if (old === undefined || old.error !== undefined) return null;
-    const isFromBeforeHashes =
-      old.approvedHash === undefined && old.reviewed === true && approvalHashOf({ ...old, text: old.approvedText }) === hash;
-    return old.approvedHash === hash || isFromBeforeHashes ? hash : null;
+  const installable = (old, next, approvedText) => {
+    const hash = approvalHashOf({ ...next, text: approvedText });
+    return { ...next, approvedHash: old?.approvedHash === hash ? hash : null };
   };
-  const installable = (old, next, approvedText) => ({
-    ...next,
-    approvedHash: keptApproval(old, approvalHashOf({ ...next, text: approvedText })),
-  });
   const articles = repo.articles.map(({ slug, text, sourceHash }) => {
     const { sameAsEnglish, text: translated } = bundle.articles[slug];
     const next = { sourceHash, sameAsEnglish, text: inOrderOf(text, translated) };

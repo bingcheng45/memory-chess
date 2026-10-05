@@ -238,10 +238,13 @@ describe("translationProblems", () => {
     expect(translationProblems({ ...file, approvedHash: "0".repeat(64) }, englishText)).toEqual(EDITED);
   });
 
-  it("still accepts a file from before approvals were hashed, with reviewed true and no approvedHash", () => {
-    expect(translationProblems({ ...unit, reviewed: true }, englishText)).toEqual([]);
-    expect(translationProblems({ ...unit, reviewed: true, approvedHash: null }, englishText)).toEqual(["not reviewed"]);
-    expect(translationProblems({ ...unit, reviewed: true, approvedHash: "0".repeat(64) }, englishText)).toEqual(EDITED);
+  it("rejects a key the lever does not write, so a reviewed flag written by hand is an error", () => {
+    expect(translationProblems({ ...file, reviewed: true }, englishText)).toEqual(['unknown key "reviewed"']);
+    expect(translationProblems({ ...unit, reviewed: true, note: "ok" }, englishText)).toEqual([
+      'unknown key "reviewed"',
+      'unknown key "note"',
+      "not reviewed",
+    ]);
   });
 
   it("rejects a translation made from an older English text", () => {
@@ -253,7 +256,6 @@ describe("translationProblems", () => {
   it("rejects a translation nobody reviewed", () => {
     expect(translationProblems({ ...file, approvedHash: null }, englishText)).toEqual(["not reviewed"]);
     expect(translationProblems(unit, englishText)).toEqual(["not reviewed"]);
-    expect(translationProblems({ ...unit, reviewed: "true" }, englishText)).toEqual(["not reviewed"]);
   });
 
   it("lists every problem of a file at once", () => {

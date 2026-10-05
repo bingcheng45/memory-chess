@@ -98,6 +98,7 @@ async function englishArticles(root, { textOf, sourceHashOf }) {
  *     shapeProblems: Function,
  *     approvalHashOf: Function,
  *     approvalProblems: Function,
+ *     unknownKeyProblems: Function,
  *   },
  *   articles: { slug: string, text: object, sourceHash: string }[],
  *   chrome: { namespace: object, strings: Record<string, string>, sourceHash: string },
@@ -169,8 +170,8 @@ export function readInstalled(root, locale) {
     const file = parsed(root, installedFile(locale, name));
     if (file.error !== undefined) return { error: file.error };
     if (!isTree(file.value)) return { error: "not an object" };
-    const { sourceHash, approvedHash, reviewed, sameAsEnglish } = file.value;
-    return { sourceHash, approvedHash, reviewed, sameAsEnglish, ...textsIn(file.value) };
+    const { sourceHash, approvedHash, sameAsEnglish } = file.value;
+    return { keys: Object.keys(file.value), sourceHash, approvedHash, sameAsEnglish, ...textsIn(file.value) };
   };
   const articleTexts = ({ text }) => ({ text, approvedText: text });
   const chromeTexts = () => {

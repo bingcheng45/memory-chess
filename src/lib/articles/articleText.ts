@@ -74,9 +74,22 @@ export function approvalHashOf({ sourceHash, sameAsEnglish, text }: ApprovedCont
  */
 export function approvalProblems(file: Tree, text: unknown): string[] {
   const { sourceHash, sameAsEnglish, approvedHash } = file;
-  if (approvedHash === undefined && file.reviewed === true) return [];
   if (approvedHash === approvalHashOf({ sourceHash, sameAsEnglish, text })) return [];
   return [typeof approvedHash === "string" ? "not reviewed, edited after it was approved" : "not reviewed"];
+}
+
+const INSTALLED_FILE_KEYS = {
+  article: ["sourceHash", "approvedHash", "sameAsEnglish", "text"],
+  chrome: ["sourceHash", "approvedHash", "sameAsEnglish"],
+} as const;
+
+/**
+ * The keys of an installed file that the lever does not write. A flag such as
+ * `reviewed`, added by hand, means nothing and must not look as if it did.
+ */
+export function unknownKeyProblems(keys: readonly string[], kind: keyof typeof INSTALLED_FILE_KEYS): string[] {
+  const known: readonly string[] = INSTALLED_FILE_KEYS[kind];
+  return keys.filter((key) => !known.includes(key)).map((key) => `unknown key "${key}"`);
 }
 
 function leafProblems(candidate: unknown, label: string): string[] {
@@ -124,6 +137,7 @@ export function translationProblems(file: unknown, english: ArticleText): string
   if (!isTree(file)) return ["the file is not an object"];
 
   return [
+    ...unknownKeyProblems(Object.keys(file), "article"),
     ...shapeProblems(english, file.text, "text"),
     ...(file.sourceHash === sourceHashOf(english) ? [] : ["sourceHash is stale"]),
     ...approvalProblems(file, file.text),

@@ -32,5 +32,5 @@ Preconditions:
 - All translated strings live in `messages/<locale>.json`; assert against those catalogues, never against a hand-translated guess.
 - The menu renders in a portal with a motion animation; wait for the menu element to exist rather than clicking immediately after opening.
 - On narrow windows the menu becomes a bottom sheet with the same aria-labels; the recipe above assumes the 1280x900 default.
-- On `/articles` and an article the menu offers English and the locales in `TRANSLATED_ARTICLE_LOCALES`, which is all 24, and would disable any other. Each option carries `lang="<locale>"`, so `[role="menuitemradio"][lang="de"]` is a stable handle. `helpers/drive-article-translation.mjs` switches both ways.
+- On `/articles` and an article the menu offers English and the locales in `TRANSLATED_ARTICLE_LOCALES`, which is the other 23, and would disable any other. Each option carries `lang="<locale>"`, so `[role="menuitemradio"][lang="de"]` is a stable handle. `helpers/drive-article-translation.mjs` switches both ways.
 - English text assertions elsewhere in this map silently break if you leave the session on a non-English locale; switch back or use a fresh Chrome run (each cdp.mjs run is already a fresh profile).

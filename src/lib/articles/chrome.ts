@@ -30,7 +30,7 @@ async function read(source: ChromeSource, locale: Locale): Promise<[file: unknow
  */
 export async function loadArticleChrome(locale: Locale, source: ChromeSource = repository): Promise<unknown> {
   const [file, english, translated] = await read(source, locale);
-  const problems = chromeProblems(file, english, translated);
+  const problems = chromeProblems(file, english, translated, locale);
 
   if (problems.length > 0) {
     throw new Error(`Article chrome ${locale} cannot be published: ${problems.join("; ")}`);

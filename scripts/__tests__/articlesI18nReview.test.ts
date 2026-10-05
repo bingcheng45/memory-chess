@@ -21,14 +21,14 @@ const ADA_FILE = `${INSTALLED}/ada-example.json`;
 const BEN_FILE = `${INSTALLED}/ben-example.json`;
 const CHROME_FILE = `${INSTALLED}/chrome.json`;
 const MESSAGES = "messages/de.json";
-const EDITED = "not reviewed, edited after it was approved";
+const EDITED = "not reviewed, the approval is for another text, article or locale";
 
 function approvals(root: string): boolean[] {
   const textOf = (file: string) => (file === CHROME_FILE ? readJson(root, MESSAGES).articles : readJson(root, file).text);
 
-  return [ADA_FILE, BEN_FILE, CHROME_FILE].map((file) => {
+  return Object.entries({ "ada-example": ADA_FILE, "ben-example": BEN_FILE, chrome: CHROME_FILE }).map(([name, file]) => {
     const { sourceHash, sameAsEnglish, approvedHash } = readJson(root, file);
-    return approvedHash === approvalHashOf({ sourceHash, sameAsEnglish, text: textOf(file) });
+    return approvedHash === approvalHashOf({ locale: "de", name, sourceHash, sameAsEnglish, text: textOf(file) });
   });
 }
 

@@ -23,11 +23,11 @@ function englishOf(slug: string) {
 
 const everyArticleInGerman: TranslationSource = async (locale, slug) => {
   if (locale !== "de") throw new Error(`no ${locale} translation of ${slug}`);
-  return reviewedTranslationOf(englishOf(slug), "DE ");
+  return reviewedTranslationOf(englishOf(slug), "DE ", "de");
 };
 
 const everyArticleInAnyLocale: TranslationSource = async (locale, slug) =>
-  reviewedTranslationOf(englishOf(slug), `${locale.toUpperCase()} `);
+  reviewedTranslationOf(englishOf(slug), `${locale.toUpperCase()} `, locale);
 
 const noTranslations: TranslationSource = async (locale, slug) => {
   throw new Error(`no ${locale} translation of ${slug}`);

@@ -298,11 +298,11 @@ export function failuresOf(locale, source, bundle) {
 
 /**
  * The installed units of `bundle` whose text is not the text a reviewer
- * approved, one line each. `approvalProblems` is the one from
+ * approved for `locale`, one line each. `approvalProblems` is the one from
  * `src/lib/articles/articleText.ts`, which the build asks too.
  */
-export function unreviewedOf({ approvalProblems }, bundle) {
+export function unreviewedOf({ approvalProblems }, locale, bundle) {
   return [...Object.entries(bundle.articles), [CHROME, bundle.chrome]]
     .filter(([, unit]) => unit !== undefined && unit.error === undefined)
-    .flatMap(([name, unit]) => approvalProblems(unit, unit.approvedText).map((problem) => `${name}: ${problem}`));
+    .flatMap(([name, unit]) => approvalProblems(unit, unit.approvedText, { locale, name }).map((problem) => `${name}: ${problem}`));
 }

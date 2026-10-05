@@ -96,7 +96,7 @@ export type ArticleText = {
 export type ArticleTranslation = {
   /** `sourceHashOf` the English `ArticleText` this translation was made from. */
   readonly sourceHash: string;
-  /** `approvalHashOf` this file as its reviewer approved it, or `null` before a review. Any later edit breaks the match. */
+  /** `approvalHashOf` this file, for its locale and slug, as its reviewer approved it, or `null` before a review. Any later edit or move breaks the match. */
   readonly approvedHash: string | null;
   /** Key paths the translator kept identical to English on purpose. */
   readonly sameAsEnglish: readonly string[];

@@ -10,7 +10,9 @@ const GERMAN = {
   page: { showAll: "Ganzen Text zeigen", translationNote: "Mit KI-Unterstützung aus dem Englischen übersetzt." },
 };
 const UNIT = { sourceHash: sourceHashOf(ENGLISH), sameAsEnglish: [] };
-const APPROVED = { ...UNIT, approvedHash: approvalHashOf({ ...UNIT, text: GERMAN }) };
+const approvedFor = (locale: string, text: unknown) => ({ ...UNIT, approvedHash: approvalHashOf({ ...UNIT, locale, name: "chrome", text }) });
+const APPROVED = approvedFor("de", GERMAN);
+const NOT_THIS_APPROVAL = "not reviewed, the approval is for another text, article or locale";
 const CANNOT_PUBLISH = "Article chrome de cannot be published: ";
 
 const sourceOf = (files: Record<string, unknown>, messages: Record<string, unknown>): ChromeSource => ({
@@ -27,7 +29,7 @@ const german = (file: unknown = APPROVED, messages: unknown = GERMAN, english: u
 describe("loadArticleChrome", () => {
   it("returns the strings of the locale when they are approved and made from the current English strings", async () => {
     const source = sourceOf(
-      { de: APPROVED, fr: { ...UNIT, approvedHash: approvalHashOf({ ...UNIT, text: ENGLISH }) } },
+      { de: APPROVED, fr: approvedFor("fr", ENGLISH) },
       { en: ENGLISH, de: GERMAN, fr: ENGLISH },
     );
 
@@ -49,7 +51,13 @@ describe("loadArticleChrome", () => {
   it("refuses a string that changed in the catalogue after the approval, such as one put back into English", async () => {
     const english = { ...GERMAN, page: { ...GERMAN.page, showAll: "Show all text" } };
 
-    await expect(german(APPROVED, english)).rejects.toThrow(`${CANNOT_PUBLISH}not reviewed, edited after it was approved`);
+    await expect(german(APPROVED, english)).rejects.toThrow(`${CANNOT_PUBLISH}${NOT_THIS_APPROVAL}`);
+  });
+
+  it("refuses the approved strings of another locale, chrome.json and catalogue copied as they are", async () => {
+    const copied = loadArticleChrome("fr", sourceOf({ fr: APPROVED }, { en: ENGLISH, fr: GERMAN }));
+
+    await expect(copied).rejects.toThrow(`Article chrome fr cannot be published: ${NOT_THIS_APPROVAL}`);
   });
 
   it("names every problem of a broken chrome in one error", async () => {
@@ -64,7 +72,7 @@ describe("loadArticleChrome", () => {
 
   it("refuses a locale whose catalogue has no articles strings, and a chrome.json that is not an object", async () => {
     await expect(loadArticleChrome("de", sourceOf({ de: APPROVED }, { en: ENGLISH }))).rejects.toThrow(
-      `${CANNOT_PUBLISH}articles: not an object; not reviewed, edited after it was approved`,
+      `${CANNOT_PUBLISH}articles: not an object; ${NOT_THIS_APPROVAL}`,
     );
     await expect(german(null)).rejects.toThrow(`${CANNOT_PUBLISH}chrome.json is not an object`);
   });
@@ -79,7 +87,7 @@ describe("loadArticleChrome", () => {
 
 describe("loadArticleChrome reading the repository", () => {
   it("reads translations/<locale>/chrome.json and the articles strings of messages/<locale>.json and messages/en.json", async () => {
-    jest.doMock("../translations/fr/chrome.json", () => APPROVED);
+    jest.doMock("../translations/fr/chrome.json", () => approvedFor("fr", GERMAN));
     jest.doMock("../../../../messages/fr.json", () => ({ common: { play: "Jouer" }, articles: GERMAN }));
     jest.doMock("../../../../messages/en.json", () => ({ common: { play: "Play" }, articles: ENGLISH }));
 

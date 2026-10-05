@@ -29,7 +29,7 @@ export async function loadArticleText(
   source: TranslationSource = readTranslationFile,
 ): Promise<ArticleText> {
   const file = await read(source, locale, slug);
-  const problems = translationProblems(file, english);
+  const problems = translationProblems(file, english, { locale, slug });
 
   if (problems.length > 0) {
     throw new Error(`Article translation ${locale}/${slug} cannot be published: ${problems.join("; ")}`);

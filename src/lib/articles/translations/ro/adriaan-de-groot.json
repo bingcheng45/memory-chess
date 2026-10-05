@@ -1,12 +1,12 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "311d126d36117f2485fb9843f041467c61bd3c48aaa8600a457e0d451fa8b50e",
+  "approvedHash": "63726241020c0798b25735e92f23fa5d4c07da7c234ba0bcc62792e1f63e04ec",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
   "text": {
     "title": "Testul lui Adriaan de Groot din 1944 asupra memoriei de șah, în cifre",
-    "description": "În 1944, Adriaan de Groot a testat patru jucători cu poziții de șah arătate timp de 2 până la 15 secunde. Iată scorurile lui reale și ce a schimbat cercetarea ulterioară.",
+    "description": "În 1944, Adriaan de Groot a testat patru jucători cu poziții de șah arătate timp de 2 până la 15 secunde. Iată scorurile reale din testul lui și ce a schimbat cercetarea ulterioară.",
     "person": {
       "name": "Adriaan de Groot",
       "role": "Maestru olandez de șah și psiholog"
@@ -32,7 +32,7 @@
         "heading": "Patru jucători și câteva secunde",
         "paragraphs": [
           "În 1944, Adriaan de Groot i-a arătat lui Max Euwe o poziție de șah și a retras-o după cinci secunde. Poziția provenea dintr-o partidă dintre Rohacek și Rabar, după mutarea a 20-a a albului, și avea pe tablă 22 de piese. Euwe, campion mondial din 1935 până în 1937, a dictat apoi unde se afla fiecare piesă. Le-a nimerit pe toate 22.",
-          "De Groot, el însuși maestru, a dat același test, a adăugat un pion care nu era acolo și a obținut 21 de puncte. A. Fast, campionul orașului Utrecht din 1942, a așezat corect 17 piese, dar a socotit materialul egal, deși nu era, și a obținut 16 puncte. G. P. Hauer, un jucător dintr-o clasă mai slabă, a obținut 9.",
+          "De Groot, el însuși maestru, a făcut același test, a adăugat un pion care nu era acolo și a obținut 21 de puncte. A. Fast, campionul orașului Utrecht din 1942, a așezat corect 17 piese, dar a socotit materialul egal, deși nu era, și a obținut 16 puncte. G. P. Hauer, un jucător dintr-o clasă mai slabă, a obținut 9.",
           "Relatările ulterioare diferă în privința timpului de expunere și a procentelor, așa că cifrele de mai jos provin chiar din cartea lui de Groot."
         ]
       },
@@ -40,7 +40,7 @@
         "heading": "Un maestru care i-a studiat pe maeștri",
         "paragraphs": [
           "De Groot a jucat pentru Țările de Jos la Olimpiadele de șah din 1937 și 1939. Între 1938 și 1943 a notat ce spuneau jucătorii în timp ce gândeau cu voce tare, alegând o mutare. Printre subiecții lui s-au numărat marii maeștri Keres, Alehin, Flohr, Fine, Euwe și Tartakower.",
-          "După socotelile lui, marii maeștri nu priveau mai departe decât jucătorii de nivel expert și nu examinau mai multe mutări. „Maestrul nu calculează neapărat mai adânc”, a scris el. De Groot bănuia că diferența se vedea în primele secunde în care privea tabla și a conceput experimentul din 1944 ca să verifice această idee."
+          "După socotelile lui, marii maeștri nu priveau mai departe decât jucătorii de nivel expert și nu examinau mai multe mutări. „Maestrul nu calculează neapărat mai adânc”, a scris el. De Groot bănuia că diferența se vedea în primele secunde de privire asupra tablei și a conceput experimentul din 1944 ca să verifice această idee."
         ]
       },
       {
@@ -48,14 +48,14 @@
         "paragraphs": [
           "Fiecare clasă era reprezentată de un jucător. Euwe i-a reprezentat pe marii maeștri, de Groot pe maeștri, Fast pe experți, iar Hauer pe jucătorii din clasa mai slabă.",
           "Fiecare poziție provenea dintr-o partidă de maeștri și rămânea la vedere de la 2 la 10 secunde, cu o singură expunere de 15 secunde. Cei doi subiecți mai slabi au primit 3-4 secunde la cele mai scurte probe, ca să nu obțină zero puncte. Fiecărui subiect i s-a cerut să-și ia aproximativ o jumătate de minut ca să organizeze ce reținuse. Euwe și de Groot au dictat apoi poziția din memorie, iar Fast și Hauer au refăcut-o pe o tablă.",
-          "Punctajul dădea un punct pentru fiecare piesă corectă și scădea puncte pentru piesele adăugate, omise sau mutate. De Groot a eliminat două poziții, prima din serie și una cu o eroare de cronometrare, și a socotit paisprezece, cu un număr de piese între 7 și 26. Din 234 de puncte posibile, cei patru subiecți au obținut următoarele rezultate.",
+          "Punctajul dădea un punct pentru fiecare piesă corectă și scădea puncte pentru piesele adăugate, omise sau mutate. De Groot a eliminat două poziții, prima din serie și una cu o eroare de cronometrare, și a luat în calcul paisprezece, cu un număr de piese între 7 și 26. Din 234 de puncte posibile, cei patru subiecți au obținut următoarele rezultate.",
           "Euwe a obținut 217 puncte, adică 93%, cu cinci poziții perfecte.",
           "De Groot a obținut 217 puncte, adică 93%, cu patru perfecte.",
           "Fast a obținut 158 de puncte, adică 68%, fără nicio poziție perfectă.",
           "Hauer a obținut 119 puncte, adică 51%, fără nicio poziție perfectă.",
           "De Groot a pus apoi deoparte două probe cu expuneri lungi, de 15 și de 7 secunde, și alte două, stricate de o pierdere de concentrare. În cele zece rămase, cu expuneri intenționate de 2, 3 sau 5 secunde, scorurile medii au fost 93,0%, 92,6%, 72,3% și 51,1%.",
           "Ambele tabele îi aparțin, ceea ce explică probabil de ce relatările dau pentru expert fie 68%, fie 72%. Expunerea nu a fost niciodată una fixă de cinci secunde.",
-          "Cel mai mult l-a interesat pe de Groot decalajul din mijloc, pe care l-a numit „prăpastia care îl desparte pe maestru de cel care nu e maestru”. Explicația lui era că un maestru nu memorează 22 de piese separate. El percepe un grup mare de piese ca pe o singură unitate, pentru că știe cum apare acel grup și la ce folosește.",
+          "Cel mai mult l-a interesat pe de Groot decalajul din mijloc, pe care l-a numit „prăpastia care îl desparte pe maestru de cel care nu e maestru”. Explicația lui era că un maestru nu memorează 22 de piese separate. El percepe un grup mare de piese ca pe o singură unitate, pentru că știe cum ia naștere acel grup și la ce folosește.",
           "Câteva asemenea unități acoperă tabla, iar după relatarea lui de Groot un jucător mai slab are mai puține. Cercetătorii de mai târziu au numit aceste unități chunk-uri."
         ]
       },
@@ -80,7 +80,7 @@
       {
         "heading": "Încearcă testul lui de Groot",
         "paragraphs": [
-          "Setează Memory Chess pe 22 de piese și 5 secunde. Asta corespunde mărimii poziției Rohacek contra Rabar a lui de Groot și timpului în care Euwe a putut s-o privească. Refă tabla și calculează ce parte din piese ai așezat corect. Aproximativ jumătate este locul unde a ajuns Hauer, aproximativ 70% este locul unde a ajuns Fast, iar 93% este media lui Euwe și a lui de Groot.",
+          "Setează Memory Chess pe 22 de piese și 5 secunde. Asta corespunde mărimii poziției Rohacek contra Rabar a lui de Groot și timpului în care Euwe a putut s-o privească. Refă tabla și calculează ce parte din piese ai așezat corect. Aproximativ jumătate este locul unde a ajuns Hauer, aproximativ 70% este locul unde a ajuns Fast, iar 93% este media pe care au obținut-o și Euwe, și de Groot.",
           "Comparația este aproximativă, pentru că de Groot a scăzut puncte și pentru greșeli. Apoi verifică ce piese ai reținut. Probabil că au venit în grupuri, precum un lanț de pioni sau un rege rocat."
         ]
       }
@@ -100,7 +100,7 @@
       },
       {
         "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
-        "note": "Susține: treisprezece experimente, expuneri de cel mult 10 secunde, douăsprezece din treisprezece în favoarea grupului celui mai puternic, excepția Chase și Simon, o piesă la 400 de puncte Elo pe tablele aleatorii față de aproximativ cinci pe pozițiile din partide, statutul de manual al vechiului rezultat, argumentul eșantionului mic și explicația bazată pe chunk-uri."
+        "note": "Susține: treisprezece experimente, expuneri de cel mult 10 secunde, douăsprezece din treisprezece în favoarea grupului celui mai puternic, excepția Chase și Simon, o piesă la fiecare 400 de puncte Elo pe tablele aleatorii față de aproximativ cinci pe pozițiile din partide, statutul de manual al vechiului rezultat, argumentul eșantionului mic și explicația bazată pe chunk-uri."
       },
       {
         "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",

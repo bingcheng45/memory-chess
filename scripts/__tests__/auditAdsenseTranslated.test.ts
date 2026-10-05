@@ -174,6 +174,40 @@ describe("audit-adsense translated structure", () => {
     });
   });
 
+  it("does not count the view and like counts, which a card prints only once its article has a view or a like", () => {
+    const COUNTS = '<p id="a-counts" data-article-counts="true" class="mt-auto"><span>3 views</span><span>1 like</span></p>';
+    const card = (slug: string, counts = "") => `<li><a data-article-card="${slug}" href="/articles/${slug}"><p>${slug} described</p>${counts}</a></li>`;
+    const english = englishPage("/articles", LIST_SCHEMA, words("word", 40), `${card("a", COUNTS)}${card("b")}`);
+    const translated = translatedPage("/de/articles", "/articles", { sections: `${card("a")}${card("b", COUNTS)}` });
+    const row = audit(translated, english);
+    const CARDS_WITHOUT_COUNTS = { h2: 0, p: 3, li: 2, "article card": 2 };
+
+    expect({ blocks: row.blocks, englishBlocks: row.englishBlocks, findings: row.findings }).toEqual({
+      blocks: CARDS_WITHOUT_COUNTS,
+      englishBlocks: CARDS_WITHOUT_COUNTS,
+      findings: [],
+    });
+  });
+
+  it("does not count the counts element of an article, whatever is inside it", () => {
+    const counts = (inside: string) => `<div data-article-counts="true" class="mt-4">${inside}</div>`;
+    const english = englishPage(ARTICLE, ARTICLE_SCHEMA, words("word", 40), `${counts('<span>3 views</span><p role="status"></p>')}${SECTIONS}`);
+
+    expect(structureOf(`${counts("")}${SECTIONS}`, english)).toEqual([]);
+  });
+
+  it("does not compare the blocks of the leaderboard, which prints the rows it has and a different text when it has none", () => {
+    const english = englishPage("/leaderboard", "", words("word", 40), "<h2>Top scores</h2><p>One</p><p>Two</p>");
+    const translated = translatedPage("/de/leaderboard", "/leaderboard", { note: "", sections: "<p>Noch keine Ergebnisse</p><ul><li>Eins</li></ul>" });
+    const row = audit(translated, english);
+
+    expect({ blocks: row.blocks, englishBlocks: row.englishBlocks, findings: row.findings }).toEqual({
+      blocks: { h2: 0, p: 2, li: 1, "article card": 0 },
+      englishBlocks: { h2: 1, p: 3, li: 0, "article card": 0 },
+      findings: [],
+    });
+  });
+
   it("does not count a p inside nav or footer", () => {
     const chrome = "<nav><p>Menü</p></nav><footer><p>Impressum</p><ul><li>Datenschutz</li></ul></footer>";
     const row = audit(germanArticle({ sections: SECTIONS, chrome }), englishSections);
@@ -250,7 +284,8 @@ describe("audit-adsense translated word counters", () => {
 });
 
 describe("audit-adsense translated report lines", () => {
-  const BLOCKS_LINE = "  blocks compared with the English page: h2, p, li, article card (the translation note left out)";
+  const blocksLine = (compared: number) =>
+    `  blocks compared with the English page on the ${compared} that owe a note: h2, p, li, article card (the translation note and the view and like counts left out)`;
   const row = (path: string, locale: string, wordCount: number, counter: string): Partial<Row> & { locale: string } => ({
     path,
     locale,
@@ -271,7 +306,7 @@ describe("audit-adsense translated report lines", () => {
     expect(JSON.parse(runAudit(`JSON.stringify(audit.translatedLines(${JSON.stringify(rows)}))`))).toEqual([
       "translated pages (noindex under a locale prefix): 4 checked against their English pages, 3 of them owing a translation note",
       "  words counted as Intl.Segmenter word segments in ja, zh-CN and as space-separated words in de, fi",
-      BLOCKS_LINE,
+      blocksLine(3),
       "  under 300 words, reported and not failed: /fi/articles 296",
     ]);
   });
@@ -280,7 +315,7 @@ describe("audit-adsense translated report lines", () => {
     expect(JSON.parse(runAudit(`JSON.stringify(audit.translatedLines(${JSON.stringify(rows.filter((r) => r.locale !== "fi"))}))`))).toEqual([
       "translated pages (noindex under a locale prefix): 3 checked against their English pages, 2 of them owing a translation note",
       "  words counted as Intl.Segmenter word segments in ja, zh-CN and as space-separated words in de",
-      BLOCKS_LINE,
+      blocksLine(2),
     ]);
   });
 

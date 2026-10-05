@@ -9,6 +9,15 @@ const COUNTED_BLOCKS = [
   { name: "article card", pattern: /\sdata-article-card=/gi },
 ];
 
+/**
+ * Elements a translator does not decide on, left out before the blocks are
+ * counted: the note only a translation carries, and the view and like counts,
+ * which a page prints once its article has one. Each locale's copy of a page
+ * is cached and renewed by itself, so two copies can differ in these for
+ * minutes with nothing wrong.
+ */
+export const UNCOUNTED_MARKS = ["data-translation-note", "data-article-counts"];
+
 export const COUNTED_BLOCK_NAMES = COUNTED_BLOCKS.map(({ name }) => name).join(", ");
 
 export function blockCounts(mainHtml) {

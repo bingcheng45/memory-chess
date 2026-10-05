@@ -5,8 +5,10 @@ const THIN_PAGE_WORDS = 300;
 
 /**
  * The schema.org types an English page declares when it is written prose. Its
- * translation owes the reader a note. A page of interface, as the leaderboard
- * is, declares neither and owes none.
+ * translation owes the reader a note and the blocks of the English page. A
+ * page of interface, as the leaderboard is, declares neither. It owes no note,
+ * and its blocks are the rows it has at the moment, or the text it shows when
+ * it has none, so they are not compared.
  */
 const PROSE_SCHEMA_TYPES = ["Article", "CollectionPage"];
 
@@ -16,7 +18,8 @@ function alternatesProblem(alternates, where) {
   return alternates.length ? [`${plural(alternates.length, "hreflang alternate")} in the ${where}, e.g. ${alternates[0].lang} ${alternates[0].href}`] : [];
 }
 
-function blockProblem({ page, english }) {
+function blockProblem({ page, english, proseType }) {
+  if (!proseType) return [];
   const differing = differingBlocks(page.blocks, english.blocks);
   const clauses = differing.map(({ name, count, englishCount }, i) => `${count} ${name} where ${i ? "it" : english.path} has ${englishCount}`);
   return clauses.length ? [clauses.join(", ")] : [];
@@ -65,7 +68,7 @@ export const TRANSLATED_RULES = [
   },
   {
     id: "translated-dropped-content",
-    guideline: `a translation has as many of each block (${COUNTED_BLOCK_NAMES}) in main content as its English page`,
+    guideline: `a translated page of written text has as many of each block (${COUNTED_BLOCK_NAMES}) in main content as its English page`,
     check: blockProblem,
   },
   {
@@ -118,10 +121,11 @@ export function translatedLines(rows) {
   const title = "translated pages (noindex under a locale prefix)";
   if (!rows.length) return [`${title}: none served, so none checked`];
   const thin = rows.filter((row) => row.words < THIN_PAGE_WORDS);
+  const written = rows.filter((row) => row.owesNote).length;
   return [
-    `${title}: ${rows.length} checked against their English pages, ${rows.filter((row) => row.owesNote).length} of them owing a translation note`,
+    `${title}: ${rows.length} checked against their English pages, ${written} of them owing a translation note`,
     `  words counted as ${countersUsed(rows)}`,
-    `  blocks compared with the English page: ${COUNTED_BLOCK_NAMES} (the translation note left out)`,
+    `  blocks compared with the English page on the ${written} that ${written === 1 ? "owes" : "owe"} a note: ${COUNTED_BLOCK_NAMES} (the translation note and the view and like counts left out)`,
     ...(thin.length ? [`  under ${THIN_PAGE_WORDS} words, reported and not failed: ${thin.map((row) => `${row.path} ${row.words}`).join(", ")}`] : []),
   ];
 }

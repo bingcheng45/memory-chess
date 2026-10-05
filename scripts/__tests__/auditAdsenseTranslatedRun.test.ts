@@ -87,10 +87,10 @@ describe("audit-adsense translated mode, run against a served site", () => {
     expect(lines(run.stdout).slice(3, 6)).toEqual([
       "translated pages (noindex under a locale prefix): 2 checked against their English pages, 1 of them owing a translation note",
       "  words counted as space-separated words in de",
-      "  blocks compared with the English page: h2, p, li, article card (the translation note left out)",
+      "  blocks compared with the English page on the 1 that owes a note: h2, p, li, article card (the translation note and the view and like counts left out)",
     ]);
     expect(lines(run.stdout).filter((line) => line.startsWith("| translated-dropped-content"))).toEqual([
-      "| translated-dropped-content | a translation has as many of each block (h2, p, li, article card) in main content as its English page | 0 |  |",
+      "| translated-dropped-content | a translated page of written text has as many of each block (h2, p, li, article card) in main content as its English page | 0 |  |",
     ]);
     expect(lines(run.stdout).at(-1)).toBe("PASS");
     expect(run.code).toBe(0);

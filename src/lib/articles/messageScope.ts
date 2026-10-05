@@ -10,9 +10,10 @@ type ScopedMessages = {
 
 /**
  * Parts the catalogue a layout sends to client components. The root layout
- * sends `shared` to every page and the articles layout adds `articles` for its
- * own routes, so no other page carries strings it never shows. Server
- * components read the whole catalogue from the request and are not affected.
+ * sends `shared` to every page, the articles layout adds `articles` for its
+ * own routes and the game layout adds the group its result screen prints, so no
+ * page carries strings it never shows. Server components read the whole
+ * catalogue from the request and are not affected.
  */
 export function splitArticlesNamespace(messages: AbstractIntlMessages): ScopedMessages {
   const { [ARTICLES_NAMESPACE]: articles, ...shared } = messages;
@@ -20,14 +21,10 @@ export function splitArticlesNamespace(messages: AbstractIntlMessages): ScopedMe
   return { shared, articles };
 }
 
-/**
- * The one part of `articles` a page outside the section prints: the game
- * route's result screen ends with the article tile. The game layout sends this
- * group alone, so the route carries none of the section's other strings.
- */
 export function tileGroupOf(messages: AbstractIntlMessages): AbstractIntlMessages {
   const { articles } = splitArticlesNamespace(messages);
-  if (typeof articles !== "object") throw new Error("The catalogue has no articles namespace");
+  const tile = typeof articles === "object" ? articles[TILE_GROUP] : undefined;
+  if (typeof tile !== "object") throw new Error("The catalogue has no articles.tile group");
 
-  return { [TILE_GROUP]: articles[TILE_GROUP] };
+  return { [TILE_GROUP]: tile };
 }

@@ -25,7 +25,10 @@ describe("tileGroupOf", () => {
     expect(tileGroupOf(catalogue)).toEqual({ tile: { eyebrow: "Als Nächstes lesen", read: "Artikel lesen" } });
   });
 
-  it("refuses a catalogue with no articles namespace instead of sending a page its raw keys", () => {
-    expect(() => tileGroupOf({ game: { skip: "Skip" } })).toThrow("The catalogue has no articles namespace");
+  it("refuses a catalogue with no tile strings instead of sending a page its raw keys", () => {
+    expect(() => tileGroupOf({ game: { skip: "Skip" } })).toThrow("The catalogue has no articles.tile group");
+    expect(() => tileGroupOf({ articles: { like: { button: "Like this article" } } })).toThrow(
+      "The catalogue has no articles.tile group",
+    );
   });
 });

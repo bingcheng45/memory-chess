@@ -17,9 +17,9 @@ type Row = {
   h1Count: number;
   hiddenWords: number;
   words: number;
-  englishWords: number;
-  percent: number;
   counter: string;
+  blocks: Record<string, number>;
+  englishBlocks: Record<string, number>;
   owesNote: boolean;
   findings: Finding[];
 };
@@ -30,21 +30,31 @@ const ARTICLE_SCHEMA = '<script type="application/ld+json">{"@context":"https://
 const LIST_SCHEMA = '<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","mainEntity":{"@type":"ItemList"}}</script>';
 const note = (href: string) => `<p data-authorship-note="true" data-translation-note="true" class="text-sm">Mit KI aus dem Englischen übersetzt. <a hrefLang="en" href="${href}">Auf Englisch lesen</a></p>`;
 
-function englishPage(path: string, schema: string, text = words("word", 40)): Served {
+function englishPage(path: string, schema: string, text = words("word", 40), sections = ""): Served {
   return {
     path,
-    html: `<html lang="en"><head><link rel="canonical" href="${PROD}${path}"/>${schema}</head><body><main><h1>Title</h1><p>${text}</p></main></body></html>`,
+    html: `<html lang="en"><head><link rel="canonical" href="${PROD}${path}"/>${schema}</head><body><main><h1>Title</h1><p>${text}</p>${sections}</main></body></html>`,
   };
 }
 
-type Parts = { robots?: string; canonical?: string; head?: string; headings?: string; text?: string; note?: string; linkHeader?: string };
+type Parts = {
+  robots?: string;
+  canonical?: string;
+  head?: string;
+  headings?: string;
+  text?: string;
+  sections?: string;
+  note?: string;
+  chrome?: string;
+  linkHeader?: string;
+};
 
 function translatedPage(path: string, englishPath: string, parts: Parts = {}): Served {
-  const { robots = "noindex, follow", canonical = `${PROD}${path}`, head = "", headings = "<h1>Titel</h1>", text = words("wort", 40), linkHeader } = parts;
+  const { robots = "noindex, follow", canonical = `${PROD}${path}`, head = "", headings = "<h1>Titel</h1>", text = words("wort", 40), sections = "", chrome = "", linkHeader } = parts;
   return {
     path,
     linkHeader,
-    html: `<html lang="de"><head><meta name="robots" content="${robots}"/><link rel="canonical" href="${canonical}"/>${head}</head><body><main>${headings}<p>${text}</p>${parts.note ?? note(englishPath)}</main></body></html>`,
+    html: `<html lang="de"><head><meta name="robots" content="${robots}"/><link rel="canonical" href="${canonical}"/>${head}</head><body><main>${headings}<p>${text}</p>${sections}${parts.note ?? note(englishPath)}</main>${chrome}</body></html>`,
   };
 }
 
@@ -58,7 +68,7 @@ const germanArticle = (parts?: Parts) => translatedPage(`/de${ARTICLE}`, ARTICLE
 const findingsOf = (parts: Parts) => audit(germanArticle(parts), englishArticle).findings;
 
 describe("audit-adsense translated page", () => {
-  it("passes a noindex, self-canonical article with one h1, the note and as many words as the English page", () => {
+  it("passes a noindex, self-canonical article with one h1, the note and as many blocks as the English page", () => {
     expect(audit(germanArticle(), englishArticle)).toEqual({
       url: `${LOCAL}/de${ARTICLE}`,
       path: `/de${ARTICLE}`,
@@ -69,9 +79,9 @@ describe("audit-adsense translated page", () => {
       h1Count: 1,
       hiddenWords: 0,
       words: 50,
-      englishWords: 41,
-      percent: 121,
       counter: "space-separated words",
+      blocks: { h2: 0, p: 1, li: 0, "article card": 0 },
+      englishBlocks: { h2: 0, p: 1, li: 0, "article card": 0 },
       owesNote: true,
       findings: [],
     });
@@ -102,26 +112,74 @@ describe("audit-adsense translated page", () => {
   });
 
   it("fails a page with hidden words", () => {
-    expect(findingsOf({ text: `${words("wort", 40)}</p><p class="hidden">Fünf Wörter für niemanden sichtbar` })).toEqual([
+    expect(findingsOf({ text: `${words("wort", 40)}<span class="hidden">Fünf Wörter für niemanden sichtbar</span>` })).toEqual([
       { rule: "translated-hidden-text", message: "5 words ship hidden (inline style, hidden attribute, hidden class, or breakpoint-hidden class)" },
     ]);
   });
 
-  it("fails a page with half the English words", () => {
-    const row = audit(germanArticle({ text: words("wort", 11) }), englishArticle);
+});
 
-    expect(row.findings).toEqual([
-      { rule: "translated-dropped-content", message: `21 main-content words (space-separated words), 51% of the 41 on ${ARTICLE}, floor 70%` },
-    ]);
+describe("audit-adsense translated structure", () => {
+  const H2_ONE = "<h2>Eins</h2><p>Erster Abschnitt</p>";
+  const H2_TWO = "<h2>Zwei</h2><p>Zweiter Abschnitt</p>";
+  const ITEMS = "<ul><li>Punkt eins</li><li>Punkt zwei</li></ul>";
+  const SECTIONS = `${H2_ONE}${H2_TWO}${ITEMS}`;
+  const englishSections = englishPage(ARTICLE, ARTICLE_SCHEMA, words("word", 40), SECTIONS);
+  const structureOf = (sections: string, english = englishSections) => audit(germanArticle({ sections }), english).findings;
+  const DROPPED = "translated-dropped-content";
+
+  it("passes a translation with the same blocks as its English page", () => {
+    expect(structureOf(SECTIONS)).toEqual([]);
   });
 
-  it("passes a page at exactly 70 percent of the English words and fails one word under", () => {
-    const english = englishPage(ARTICLE, ARTICLE_SCHEMA, words("word", 99));
+  it("fails a translation missing one h2", () => {
+    expect(structureOf(`${H2_ONE}<p>Zweiter Abschnitt</p>${ITEMS}`)).toEqual([{ rule: DROPPED, message: `1 h2 where ${ARTICLE} has 2` }]);
+  });
 
-    expect(audit(germanArticle({ text: words("wort", 60) }), english).findings).toEqual([]);
-    expect(audit(germanArticle({ text: words("wort", 59) }), english).findings).toEqual([
-      { rule: "translated-dropped-content", message: `69 main-content words (space-separated words), 69% of the 100 on ${ARTICLE}, floor 70%` },
-    ]);
+  it("fails a translation missing one p", () => {
+    expect(structureOf(`${H2_ONE}<h2>Zwei</h2>${ITEMS}`)).toEqual([{ rule: DROPPED, message: `2 p where ${ARTICLE} has 3` }]);
+  });
+
+  it("fails a translation with one p more", () => {
+    expect(structureOf(`${SECTIONS}<p>Ein Absatz zu viel</p>`)).toEqual([{ rule: DROPPED, message: `4 p where ${ARTICLE} has 3` }]);
+  });
+
+  it("fails a translation missing one li", () => {
+    expect(structureOf(`${H2_ONE}${H2_TWO}<ul><li>Punkt eins</li></ul>`)).toEqual([{ rule: DROPPED, message: `1 li where ${ARTICLE} has 2` }]);
+  });
+
+  it("names every kind that differs in one message", () => {
+    expect(structureOf(H2_ONE)).toEqual([{ rule: DROPPED, message: `1 h2 where ${ARTICLE} has 2, 2 p where it has 3, 0 li where it has 2` }]);
+  });
+
+  it("fails a translated list page missing one article card", () => {
+    const card = (slug: string) => `<a data-article-card="${slug}" href="/articles/${slug}">${slug}</a>`;
+    const english = englishPage("/articles", LIST_SCHEMA, words("word", 40), `${card("a")}${card("b")}${card("c")}`);
+    const translated = translatedPage("/de/articles", "/articles", { sections: `${card("a")}${card("b")}` });
+
+    expect(audit(translated, english).findings).toEqual([{ rule: DROPPED, message: "2 article card where /articles has 3" }]);
+  });
+
+  it("passes a translation with the same blocks and a third of the English words", () => {
+    const english = englishPage(ARTICLE, ARTICLE_SCHEMA, words("word", 120), SECTIONS);
+
+    expect(audit(germanArticle({ text: words("wort", 33), sections: SECTIONS }), english).findings).toEqual([]);
+  });
+
+  it("does not count the translation note as a p", () => {
+    const row = audit(germanArticle({ sections: SECTIONS }), englishSections);
+
+    expect({ blocks: row.blocks, englishBlocks: row.englishBlocks }).toEqual({
+      blocks: { h2: 2, p: 3, li: 2, "article card": 0 },
+      englishBlocks: { h2: 2, p: 3, li: 2, "article card": 0 },
+    });
+  });
+
+  it("does not count a p inside nav or footer", () => {
+    const chrome = "<nav><p>Menü</p></nav><footer><p>Impressum</p><ul><li>Datenschutz</li></ul></footer>";
+    const row = audit(germanArticle({ sections: SECTIONS, chrome }), englishSections);
+
+    expect({ blocks: row.blocks, findings: row.findings }).toEqual({ blocks: { h2: 2, p: 3, li: 2, "article card": 0 }, findings: [] });
   });
 });
 
@@ -144,6 +202,12 @@ describe("audit-adsense translation note", () => {
 
   it("accepts a note that links to the English page by its production URL", () => {
     expect(findingsOf({ note: note(`${PROD}${ARTICLE}`) })).toEqual([]);
+  });
+
+  it("fails an article whose only note sits in the footer, outside the main content", () => {
+    expect(findingsOf({ note: "", chrome: `<footer>${note(ARTICLE)}</footer>` })).toEqual([
+      { rule: "translation-note", message: `no translation note (data-translation-note), though ${ARTICLE} declares a schema.org Article` },
+    ]);
   });
 
   it("asks the note of the article list, whose English page declares a CollectionPage", () => {
@@ -172,9 +236,8 @@ describe("audit-adsense translated word counters", () => {
   ])("counts %s with Intl.Segmenter, where splitting on spaces sees one word", (locale, title, text) => {
     const row = audit(translatedPage(`/${locale}${ARTICLE}`, ARTICLE, { headings: `<h1>${title}</h1>`, text, note: WORDLESS_NOTE }), english);
 
-    expect({ words: row.words, englishWords: row.englishWords, counter: row.counter, findings: row.findings }).toEqual({
+    expect({ words: row.words, counter: row.counter, findings: row.findings }).toEqual({
       words: 9,
-      englishWords: 10,
       counter: "Intl.Segmenter word segments",
       findings: [],
     });
@@ -188,29 +251,28 @@ describe("audit-adsense translated word counters", () => {
 });
 
 describe("audit-adsense translated report lines", () => {
-  const row = (path: string, locale: string, wordCount: number, englishWords: number, counter: string): Partial<Row> & { locale: string } => ({
+  const BLOCKS_LINE = "  blocks compared with the English page: h2, p, li, article card (the translation note left out)";
+  const row = (path: string, locale: string, wordCount: number, counter: string): Partial<Row> & { locale: string } => ({
     path,
     locale,
     english: path.replace(`/${locale}`, ""),
     words: wordCount,
-    englishWords,
-    percent: Math.floor((wordCount * 100) / englishWords),
     counter,
     owesNote: path.includes("/articles"),
     findings: [],
   });
   const rows = [
-    row("/de/leaderboard", "de", 541, 525, "space-separated words"),
-    row("/fi/articles", "fi", 296, 385, "space-separated words"),
-    row("/ja/articles", "ja", 597, 385, "Intl.Segmenter word segments"),
-    row("/zh-CN/articles", "zh-CN", 479, 385, "Intl.Segmenter word segments"),
+    row("/de/leaderboard", "de", 541, "space-separated words"),
+    row("/fi/articles", "fi", 296, "space-separated words"),
+    row("/ja/articles", "ja", 597, "Intl.Segmenter word segments"),
+    row("/zh-CN/articles", "zh-CN", 479, "Intl.Segmenter word segments"),
   ];
 
-  it("says how many pages were checked, which counter read which locales, and the lowest share", () => {
+  it("says how many pages were checked, which counter read which locales, which blocks were compared and which pages are thin", () => {
     expect(JSON.parse(runAudit(`JSON.stringify(audit.translatedLines(${JSON.stringify(rows)}))`))).toEqual([
       "translated pages (noindex under a locale prefix): 4 checked against their English pages, 3 of them owing a translation note",
       "  words counted as Intl.Segmenter word segments in ja, zh-CN and as space-separated words in de, fi",
-      "  lowest share of the English word count: 76% on /fi/articles (296 of 385), floor 70%",
+      BLOCKS_LINE,
       "  under 300 words, reported and not failed: /fi/articles 296",
     ]);
   });
@@ -219,7 +281,7 @@ describe("audit-adsense translated report lines", () => {
     expect(JSON.parse(runAudit(`JSON.stringify(audit.translatedLines(${JSON.stringify(rows.filter((r) => r.locale !== "fi"))}))`))).toEqual([
       "translated pages (noindex under a locale prefix): 3 checked against their English pages, 2 of them owing a translation note",
       "  words counted as Intl.Segmenter word segments in ja, zh-CN and as space-separated words in de",
-      "  lowest share of the English word count: 103% on /de/leaderboard (541 of 525), floor 70%",
+      BLOCKS_LINE,
     ]);
   });
 

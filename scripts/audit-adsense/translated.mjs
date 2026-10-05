@@ -1,6 +1,6 @@
-import { SEGMENTED_COUNTER, SPACED_COUNTER, countLocaleWords, countWords } from "./words.mjs";
+import { countedBlockNames, differingBlocks } from "./structure.mjs";
+import { SEGMENTED_COUNTER, SPACED_COUNTER, countLocaleWords } from "./words.mjs";
 
-const MIN_WORD_PERCENT = 70;
 const THIN_PAGE_WORDS = 300;
 
 /**
@@ -14,6 +14,12 @@ const plural = (count, noun) => `${count} ${noun}${count === 1 ? "" : "s"}`;
 
 function alternatesProblem(alternates, where) {
   return alternates.length ? [`${plural(alternates.length, "hreflang alternate")} in the ${where}, e.g. ${alternates[0].lang} ${alternates[0].href}`] : [];
+}
+
+function blockProblem({ page, english }) {
+  const differing = differingBlocks(page.blocks, english.blocks);
+  const clauses = differing.map(({ name, count, englishCount }, i) => `${count} ${name} where ${i ? "it" : english.path} has ${englishCount}`);
+  return clauses.length ? [clauses.join(", ")] : [];
 }
 
 function noteProblem({ page, english, proseType }, { sameUrl }) {
@@ -59,9 +65,8 @@ export const TRANSLATED_RULES = [
   },
   {
     id: "translated-dropped-content",
-    guideline: `a translation keeps at least ${MIN_WORD_PERCENT}% of the English page's main-content words`,
-    check: ({ english, words, englishWords, percent, counter }) =>
-      percent >= MIN_WORD_PERCENT ? [] : [`${words} main-content words (${counter}), ${percent}% of the ${englishWords} on ${english.path}, floor ${MIN_WORD_PERCENT}%`],
+    guideline: `a translation has as many of each block (${countedBlockNames()}) in main content as its English page`,
+    check: blockProblem,
   },
   {
     id: "translation-note",
@@ -72,13 +77,12 @@ export const TRANSLATED_RULES = [
 
 function measure({ page, english }) {
   const { words, counter } = countLocaleWords(page.mainText, page.locale);
-  const englishWords = countWords(english.mainText);
   const proseType = PROSE_SCHEMA_TYPES.find((type) => english.schemaTypes.includes(type)) ?? null;
-  return { page, english, words, counter, englishWords, percent: Math.floor((words * 100) / englishWords), proseType };
+  return { page, english, words, counter, proseType };
 }
 
 function toRow(measured, site) {
-  const { page, english, words, englishWords, percent, counter, proseType } = measured;
+  const { page, english, words, counter, proseType } = measured;
   return {
     url: page.url,
     path: page.path,
@@ -89,9 +93,9 @@ function toRow(measured, site) {
     h1Count: page.h1Count,
     hiddenWords: page.hiddenWords,
     words,
-    englishWords,
-    percent,
     counter,
+    blocks: page.blocks,
+    englishBlocks: english.blocks,
     owesNote: Boolean(proseType),
     findings: TRANSLATED_RULES.flatMap((rule) => rule.check(measured, site).map((message) => ({ rule: rule.id, message }))),
   };
@@ -113,12 +117,11 @@ function countersUsed(rows) {
 export function translatedLines(rows) {
   const title = "translated pages (noindex under a locale prefix)";
   if (!rows.length) return [`${title}: none served, so none checked`];
-  const lowest = rows.reduce((low, row) => (row.percent < low.percent ? row : low));
   const thin = rows.filter((row) => row.words < THIN_PAGE_WORDS);
   return [
     `${title}: ${rows.length} checked against their English pages, ${rows.filter((row) => row.owesNote).length} of them owing a translation note`,
     `  words counted as ${countersUsed(rows)}`,
-    `  lowest share of the English word count: ${lowest.percent}% on ${lowest.path} (${lowest.words} of ${lowest.englishWords}), floor ${MIN_WORD_PERCENT}%`,
+    `  blocks compared with the English page: ${countedBlockNames()} (the translation note left out)`,
     ...(thin.length ? [`  under ${THIN_PAGE_WORDS} words, reported and not failed: ${thin.map((row) => `${row.path} ${row.words}`).join(", ")}`] : []),
   ];
 }

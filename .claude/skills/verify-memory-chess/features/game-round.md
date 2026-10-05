@@ -9,7 +9,7 @@ The core loop on `/game`. A player picks a difficulty, memorizes a random positi
 - `round-place` recreates the position: pick color, pick piece type, tap squares; tapping an occupied square removes.
 - `round-submit` submits, flashes for 1s, then scores.
 - `round-result` shows accuracy, pieces correct, timings, `Try Again`, `New Game`, and `Submit to Leaderboard`.
-- `round-article-tile` ends the result screen with one article set beside the round just played, with `Read the article` and `Try that drill`. Only a locale in `TRANSLATED_ARTICLE_LOCALES` shows it.
+- `round-article-tile` ends the result screen with one article set beside the round just played, with `Read the article` and `Try that drill`. Every locale that serves the articles shows it in its own language, which today is all 24.
 - `round-persist` updates the persisted skill rating and last-used configuration in localStorage.
 
 ## How to get to it (user POV)
@@ -43,7 +43,8 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
 - **Try that drill.** Run `clickText("section[data-article-tile] button", "Try that drill")`. The memorization board appears with as many pieces as the drill has, and `location.pathname + location.search` is `/game`. The second read is `state.lastSettings` in `localStorage["memory-chess-storage"]`.
 - **Read the article.** Run `clickText("section[data-article-tile] a", "Read the article")`. The article opens with `[data-article-body]` at `data-article-typing="idle"`, so the whole text is there at once.
 - **Which article.** The tile prefers an article this tab has not opened. To fix the choice, `goto` two of the three articles first, then play: the tile shows the third on every result screen. With all three opened it still shows one.
-- **No tile.** On `/fr/game`, or any locale outside `TRANSLATED_ARTICLE_LOCALES`, the result screen has no `section[data-article-tile]` and no link to `/articles/`.
+- **Tile language.** On `/<locale>/game` the tile's labels are that locale's `articles.tile` strings, the title is the translated one, and no English tile string shows. A text that reads `articles.tile.eyebrow` means the route did not get the tile's strings: the root layout sends no `articles` namespace, and the game layout adds the `tile` group through `ArticlesMessagesProvider`.
+- **No tile.** A locale taken out of `TRANSLATED_ARTICLE_LOCALES` gets no `section[data-article-tile]` and no link to `/articles/` on its result screen. No locale is in that state today, so Jest covers it with a mocked list.
 - **Second read.** `eval` `JSON.parse(localStorage.getItem("memory-chess-storage")).state.gameState` and assert `skillRating` is a number and `pieceCount`/`memorizeTime` match the preset the round was played with.
 
 ## Gotchas

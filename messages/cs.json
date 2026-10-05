@@ -414,7 +414,7 @@
       "showAll": "Zobrazit celý text",
       "byline": "Autor: <author>{name}</author>",
       "authorshipNote": "Článek vznikl s pomocí umělé inteligence ze zdrojů uvedených níže. Každý fakt byl před zveřejněním ověřen podle těchto zdrojů.",
-      "translationNote": "Přeloženo z angličtiny s pomocí umělé inteligence. Rozhodující je anglický článek.",
+      "translationNote": "Přeloženo z angličtiny s pomocí umělé inteligence. Referenční verzí je anglický článek.",
       "readInEnglish": "Přečíst anglicky",
       "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, přes <source>Wikimedia Commons</source>. {changes}.",
       "factFile": "Přehled údajů",
@@ -434,7 +434,7 @@
       "nextArticle": "Další článek"
     },
     "tile": {
-      "eyebrow": "Číst dál",
+      "eyebrow": "Co číst dál",
       "yourRound": "Vaše kolo",
       "articleDrill": "Cvičení z tohoto článku",
       "roundSize": "{pieces, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}}, {seconds, plural, one {# sekunda} few {# sekundy} many {# sekundy} other {# sekund}}",

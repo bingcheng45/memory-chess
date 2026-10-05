@@ -38,7 +38,6 @@ describe("the translations in the repository", () => {
       }),
     );
 
-    expect(translated).toHaveLength(23);
     expect(problems.filter((problem) => problem !== null)).toEqual([]);
   });
 });

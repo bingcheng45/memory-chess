@@ -7,6 +7,9 @@ jest.setTimeout(60_000);
 type Lengths = { readonly english: number; readonly translated: number };
 type Case = Readonly<Record<string, readonly Lengths[]>>;
 
+// A word the language rule reads as German, so only the length of a leaf is under test.
+const GERMAN_WORD = "und";
+
 const sized = (word: string, length: number) => `${`${word} `.repeat(length).slice(0, length - 1)}${word[0]}`;
 const same = (english: number, count: number): Lengths[] => Array.from({ length: count }, () => ({ english, translated: english }));
 
@@ -24,7 +27,7 @@ function failuresOf(cases: readonly Case[]): string[][] {
     units: Object.fromEntries(
       Object.entries(paragraphs).map(([slug, lengths]) => [
         slug,
-        { sameAsEnglish: [], text: sectionOf("wort", "Titel", lengths.map((one) => one.translated)) },
+        { sameAsEnglish: [], text: sectionOf(GERMAN_WORD, "Titel", lengths.map((one) => one.translated)) },
       ]),
     ),
   }));

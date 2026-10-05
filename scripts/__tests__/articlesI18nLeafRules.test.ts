@@ -132,13 +132,20 @@ describe("the script rule", () => {
     });
   });
 
-  it("fails a locale whose script has no rule yet, in one line that says where to add it", () => {
+  it("fails a locale that has no script rule and no language rule yet, in lines that say where to add them", () => {
     const source = '{ lib: { shapeProblems: () => [] }, articles: [], chrome: { strings: {}, sourceHash: "" } }';
     const bundle = "{ installed: false, problems: [], sameAsEnglishKeys: [], articles: {}, chrome: { text: {}, sameAsEnglish: [] } }";
 
     const failures = evalChecks(`["th", "de", "ru"].map((locale) => checks.failuresOf(locale, ${source}, ${bundle}))`);
 
-    expect(failures).toEqual([["th: no script rule for Thai, add one to scripts/articles-i18n/checks.mjs"], [], []]);
+    expect(failures).toEqual([
+      [
+        "th: no script rule for Thai, add one to scripts/articles-i18n/checks.mjs",
+        "th: no language rule, add one to scripts/articles-i18n/language.mjs",
+      ],
+      [],
+      [],
+    ]);
   });
 });
 

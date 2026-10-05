@@ -1,5 +1,6 @@
 import { contentLossFailures } from "./contentLoss.mjs";
 import { formatError, partsOf, textOf } from "./icu.mjs";
+import { languageFailures, missingLanguageRuleProblems } from "./language.mjs";
 import { leavesOf } from "./leaves.mjs";
 import { ARTICLE, CHROME, ENGLISH } from "./names.mjs";
 import { BODY_PATH, MAX_WORDS_THAT_MAY_STAY, MAY_EQUAL_ENGLISH, TITLE_PATH } from "./paths.mjs";
@@ -236,8 +237,15 @@ function listedFailures({ kind, name, english, unit }, listed) {
   });
 }
 
+/** The leaves a reader reads as prose: the running text of an article, every string of the section. */
+function proseLeaves({ locale, kind, unit }) {
+  return leavesOf(unit.text)
+    .filter(([path, leaf]) => typeof leaf === "string" && (kind === CHROME || BODY_PATH.test(path)))
+    .map(([path, leaf]) => [path, textOf(kind, leaf, locale)]);
+}
+
 function unitFailures(subject, isInstalled, { shapeProblems, unknownKeyProblems }) {
-  const { kind, name, english, sourceHash, unit } = subject;
+  const { locale, kind, name, english, sourceHash, unit } = subject;
   if (unit === undefined) return [`${name}: no file`];
   if (unit.error !== undefined) return [`${name}: ${unit.error}`];
   const isStale = isInstalled && unit.sourceHash !== sourceHash;
@@ -250,6 +258,7 @@ function unitFailures(subject, isInstalled, { shapeProblems, unknownKeyProblems 
     ...shapeProblems(english, unit.text).map((problem) => `${name} ${problem}`),
     ...leafFailures(subject, listed),
     ...listedFailures(subject, listed),
+    ...languageFailures(locale, name, proseLeaves(subject)),
   ];
 }
 
@@ -275,6 +284,7 @@ export function failuresOf(locale, source, bundle) {
 
   return [
     ...missingScriptRuleProblems(locale),
+    ...missingLanguageRuleProblems(locale),
     ...bundle.problems,
     ...bundle.sameAsEnglishKeys
       .filter((key) => key !== CHROME && isUnknown(key))

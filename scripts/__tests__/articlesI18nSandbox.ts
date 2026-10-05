@@ -260,6 +260,28 @@ export function inRussian(english: Translation): Translation {
   return translated(english, (leaf) => inCyrillic(leaf).replace(/other (\{[^{}]*\})/g, "few $1 many $1 other $1"));
 }
 
+function flat(tree: Record<string, unknown>, prefix = ""): Record<string, string> {
+  return Object.assign(
+    {},
+    ...Object.entries(tree).map(([key, value]) =>
+      typeof value === "string" ? { [`${prefix}${key}`]: value } : flat(value as Record<string, unknown>, `${prefix}${key}.`),
+    ),
+  );
+}
+
+/** The installed translation of `locale`, as the directory of the translator who made it would hold it. */
+export function installedTranslation(root: string, locale: string): Translation {
+  const dir = `src/lib/articles/translations/${locale}`;
+  const names = readdirSync(join(root, dir)).map((name) => name.slice(0, -".json".length));
+  const files = Object.fromEntries(names.map((name) => [name, readJson(root, `${dir}/${name}.json`)]));
+
+  return {
+    articles: Object.fromEntries(names.filter((name) => name !== "chrome").map((slug) => [slug, files[slug].text])),
+    chrome: flat(readJson(root, `messages/${locale}.json`).articles),
+    sameAsEnglish: Object.fromEntries(names.map((name) => [name, files[name].sameAsEnglish])),
+  };
+}
+
 export function writeTranslation(root: string, dir: string, translation: Partial<Translation>): void {
   rmSync(join(root, dir), { recursive: true, force: true });
   mkdirSync(join(root, dir), { recursive: true });

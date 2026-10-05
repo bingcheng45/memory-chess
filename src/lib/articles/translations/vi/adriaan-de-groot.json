@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "e5f19b4d78b0aa4519e7701d67f10410eb5730fbbc42f0e0f277c969c903ef92",
+  "approvedHash": "77c84e3bbd03c08b754703b12e51f582998994bf7eb6ec707aee7d27401e785c",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -74,7 +74,7 @@
         "paragraphs": [
           "Các sách giáo khoa hiểu kết quả đó là kiện tướng hoàn toàn không có lợi thế nào trên những bàn cờ vô nghĩa. Năm 1996, Fernand Gobet và Herbert Simon đối chiếu cách hiểu ấy với mười ba thí nghiệm có thời gian xem từ 10 giây trở xuống. Trong mười hai trên mười ba thí nghiệm, nhóm mạnh nhất nhớ được nhiều quân ngẫu nhiên hơn nhóm yếu nhất. Ngoại lệ là nghiên cứu của chính Chase và Simon, nơi kiện tướng lại kém nhất.",
           "Lợi thế này nhỏ. Gobet và Simon ước tính khoảng một quân dôi ra cho mỗi 400 điểm Elo trên bàn cờ ngẫu nhiên, so với khoảng năm quân dôi ra trên thế cờ từ các ván đấu. Trong một bài tổng quan năm 1998, Gobet đưa ra mức trung bình ở 5 giây là 5,5 quân ngẫu nhiên đối với các kiện tướng và 2,6 đối với các kỳ thủ dưới hạng B.",
-          "Lời giải thích này vẫn giữ nguyên ý tưởng của de Groot. Một kỳ thủ có kho mẫu hình rất lớn đôi khi tình cờ tìm thấy một mẫu hình trong đống lộn xộn. Bàn cờ ngẫu nhiên làm lợi thế của chuyên gia thu hẹp mà không xóa bỏ nó. Gobet và Simon bổ sung rằng các mẫu nhỏ che mất một hiệu ứng nhỏ như vậy, và nghiên cứu năm 1973 chỉ có ba đối tượng."
+          "Lời giải thích này vẫn giữ nguyên ý tưởng của de Groot. Một kỳ thủ có kho mẫu hình rất lớn đôi khi tình cờ tìm thấy một mẫu hình trong đống lộn xộn. Bàn cờ ngẫu nhiên làm lợi thế của chuyên gia thu hẹp mà không xóa bỏ nó. Gobet và Simon bổ sung rằng cỡ mẫu nhỏ che mất một hiệu ứng nhỏ như vậy, và nghiên cứu năm 1973 chỉ có ba đối tượng."
         ]
       },
       {
@@ -100,7 +100,7 @@
       },
       {
         "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
-        "note": "Dẫn chứng cho: mười ba thí nghiệm, thời gian xem tối đa 10 giây, mười hai trên mười ba nghiêng về nhóm mạnh nhất, ngoại lệ của Chase và Simon, một quân cho mỗi 400 điểm Elo trên bàn cờ ngẫu nhiên so với khoảng năm quân trên thế cờ từ các ván đấu, vị thế của kết quả cũ trong sách giáo khoa, luận điểm về mẫu nhỏ và lời giải thích dựa trên chunk."
+        "note": "Dẫn chứng cho: mười ba thí nghiệm, thời gian xem tối đa 10 giây, mười hai trên mười ba nghiêng về nhóm mạnh nhất, ngoại lệ của Chase và Simon, một quân cho mỗi 400 điểm Elo trên bàn cờ ngẫu nhiên so với khoảng năm quân trên thế cờ từ các ván đấu, vị thế của kết quả cũ trong sách giáo khoa, luận điểm về cỡ mẫu nhỏ và lời giải thích dựa trên chunk."
       },
       {
         "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",

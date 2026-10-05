@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "a3009a89d1aeb6a644235a2be6b4a31fe78d95880ce6ac16fba2da2dd34c32d6",
+  "approvedHash": "62dcf35ddd21c5c7f0a2b7e4dbff4bb65fc0eb2aa602d72dd149f1c0abffe272",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot presenteerde het werk in 1946 in zijn proefschrift aan de Universiteit van Amsterdam, Het denken van den schaker. Mouton gaf in 1965 in Den Haag de Engelse editie uit, Thought and Choice in Chess.",
           "In 1973 herhaalden William Chase en Herbert Simon de test aan Carnegie Mellon met een meester, een speler van klasse A en een beginner. Ze legden de kijktijd vast op 5 seconden. Hun middenspelstellingen hadden 24 tot 26 stukken, en de meester onthield ongeveer twee keer zoveel stukken als de speler van klasse A.",
-          "Ze namen elke reconstructie op video op en beschouwden een pauze van meer dan 2 seconden als de grens tussen twee chunks. De eerste chunk van de meester besloeg gemiddeld 3,8 stukken tegen 2,6 bij de speler van klasse A, en hij maakte 7,7 chunks per stelling tegen 5,7. Van zijn 77 chunks over veertien stellingen bevatten er 47 een pionnenketen, en Simon en Chase telden 10 stellingen met een gerokeerde koning.",
+          "Ze namen elke reconstructie op video op en beschouwden een pauze van meer dan 2 seconden als de grens tussen twee chunks. De eerste chunk van de meester besloeg gemiddeld 3,8 stukken tegen 2,6 bij de speler van klasse A, en de meester maakte 7,7 chunks per stelling tegen 5,7. Van zijn 77 chunks over veertien stellingen bevatten er 47 een pionnenketen, en Simon en Chase telden 10 stellingen met een gerokeerde koning.",
           "Hun toevoeging was een controle: dezelfde stukken op willekeurige velden. Simon en Chase meldden dat alle spelers dan ongeveer drie of vier stukken onthielden, minder dan de beginner aankon bij echte stellingen. Ze merkten op dat W. Lemmens en R. W. Jongman hetzelfde resultaat in het Amsterdamse laboratorium hadden gevonden en nooit hadden gepubliceerd.",
-          "In de eigen inleiding van Chase en Simon wordt het resultaat met willekeurige stellingen aan De Groot toegeschreven, en veel latere beschrijvingen herhalen dat. In zijn boek staat geen proef met willekeurige stellingen."
+          "In de eigen inleiding van Chase en Simon wordt het resultaat met willekeurige stellingen aan De Groot toegeschreven, en veel latere beschrijvingen herhalen dat. In het boek van De Groot staat geen proef met willekeurige stellingen."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Probeer de test van De Groot",
         "paragraphs": [
-          "Stel Memory Chess in op 22 stukken en 5 seconden. Dat komt overeen met de omvang van De Groots stelling Rohacek tegen Rabar en met de tijd die Euwe had om ernaar te kijken. Bouw het bord weer op en bereken welk deel van de stukken je goed hebt geplaatst. Ongeveer de helft is waar Hauer eindigde, ongeveer 70% is waar Fast eindigde, en 93% is het gemiddelde van Euwe en De Groot.",
+          "Stel Memory Chess in op 22 stukken en 5 seconden. Dat komt overeen met de omvang van De Groots stelling Rohacek tegen Rabar en met de tijd die Euwe had om ernaar te kijken. Bouw het bord weer op en bereken welk deel van de stukken je goed hebt geplaatst. Ongeveer de helft is waar Hauer eindigde, ongeveer 70% is waar Fast eindigde, en 93% is wat Euwe en De Groot elk gemiddeld haalden.",
           "De vergelijking is grof, want De Groot trok ook punten af voor fouten. Kijk daarna welke stukken je hebt onthouden. Waarschijnlijk kwamen ze in groepen, zoals een pionnenketen of een gerokeerde koning."
         ]
       }

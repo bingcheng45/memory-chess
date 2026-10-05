@@ -414,7 +414,7 @@
       "showAll": "Afficher tout le texte",
       "byline": "Par <author>{name}</author>",
       "authorshipNote": "Recherché et rédigé avec l’aide de l’IA à partir des sources indiquées ci-dessous. Chaque fait a été confronté à ces sources avant la publication.",
-      "translationNote": "Traduit de l’anglais avec l’aide de l’IA. L’article en anglais fait foi.",
+      "translationNote": "Traduit de l’anglais avec l’aide de l’IA. L’article en anglais sert de référence.",
       "readInEnglish": "Lire en anglais",
       "photoCredit": "Photo : {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
       "factFile": "Fiche",

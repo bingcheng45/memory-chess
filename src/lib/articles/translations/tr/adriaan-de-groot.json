@@ -1,12 +1,12 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "45a5b243e90ae0197bde2771d285dce90f397992c2abeffd0fd362e57dd48bf8",
+  "approvedHash": "ed67a80620335b7be89f351b88907d6d2598f786c933a46bc1273efd1b933e82",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
   "text": {
     "title": "Adriaan de Groot'un 1944 satranç hafızası testi, rakamlarla",
-    "description": "Adriaan de Groot, 1944'te dört oyuncuyu 2 ile 15 saniye gösterilen satranç konumlarıyla sınadı. İşte gerçek puanları ve sonraki araştırmaların neyi değiştirdiği.",
+    "description": "Adriaan de Groot, 1944'te dört oyuncuyu 2 ile 15 saniye gösterilen satranç konumlarıyla sınadı. İşte de Groot'un çalışmasındaki gerçek puanlar ve sonraki araştırmaların neyi değiştirdiği.",
     "person": {
       "name": "Adriaan de Groot",
       "role": "Hollandalı satranç ustası ve psikolog"
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot çalışmayı 1946'da Amsterdam Üniversitesi'ndeki doktora tezinde, Het denken van den schaker adlı eserde sundu. İngilizce baskı olan Thought and Choice in Chess'i Mouton 1965'te Lahey'de yayımladı.",
           "1973'te William Chase ve Herbert Simon testi Carnegie Mellon'da bir usta, bir A sınıfı oyuncu ve bir acemiyle yeniden yaptı. Gösterim süresini 5 saniyede sabitlediler. Oyun ortası konumlarında 24 ila 26 taş vardı ve usta, A sınıfı oyuncunun yaklaşık iki katı taşı hatırladı.",
-          "Her yeniden kurmayı videoya aldılar ve 2 saniyeden uzun bir duraklamayı iki öbek arasındaki sınır saydılar. Ustanın ilk öbeği ortalama 3,8 taştan oluşuyordu, A sınıfı oyuncununki 2,6; usta konum başına 7,7 öbek üretti, A sınıfı oyuncu ise 5,7. On dört konumdaki 77 öbeğinden 47'si bir piyon zinciri içeriyordu ve Simon ile Chase 10 rok yapılmış şah konumu saydı.",
+          "Her yeniden kurmayı videoya aldılar ve 2 saniyeden uzun bir duraklamayı iki öbek arasındaki sınır saydılar. Ustanın ilk öbeği ortalama 3,8 taştan oluşuyordu, A sınıfı oyuncununki 2,6; usta konum başına 7,7 öbek üretti, A sınıfı oyuncu ise 5,7. Ustanın on dört konumdaki 77 öbeğinden 47'si bir piyon zinciri içeriyordu ve Simon ile Chase 10 rok yapılmış şah konumu saydı.",
           "Eklemeleri bir kontroldü: aynı taşlar rastgele karelere yerleştirildi. Simon ve Chase, bu durumda her oyuncunun yaklaşık üç ya da dört taşı hatırladığını bildirdi; bu, acemi oyuncunun gerçek konumlarda başardığından azdı. W. Lemmens ve R. W. Jongman'ın aynı sonucu Amsterdam laboratuvarında bulduğunu ve hiç yayımlamadığını belirttiler.",
-          "Chase ile Simon'ın kendi girişi rastgele tahta sonucunu de Groot'a atfeder ve sonraki pek çok anlatım bunu tekrarlar. Kitabında rastgele tahta denemesi yer almaz."
+          "Chase ile Simon'ın kendi girişi rastgele tahta sonucunu de Groot'a atfeder ve sonraki pek çok anlatım bunu tekrarlar. De Groot'un kitabında rastgele tahta denemesi yer almaz."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "De Groot'un testini dene",
         "paragraphs": [
-          "Memory Chess'i 22 taş ve 5 saniyeye ayarla. Bu, de Groot'un Rohacek-Rabar konumunun büyüklüğüne ve Euwe'nin ona bakabildiği süreye denk gelir. Tahtayı yeniden kur ve taşların yüzde kaçını doğru yerleştirdiğini hesapla. Yaklaşık yarısı Hauer'in bitirdiği yerdir, yaklaşık %70 Fast'in bitirdiği yer, %93 ise Euwe ile de Groot'un ortalamasıdır.",
+          "Memory Chess'i 22 taş ve 5 saniyeye ayarla. Bu, de Groot'un Rohacek-Rabar konumunun büyüklüğüne ve Euwe'nin ona bakabildiği süreye denk gelir. Tahtayı yeniden kur ve taşların yüzde kaçını doğru yerleştirdiğini hesapla. Yaklaşık yarısı Hauer'in bitirdiği yerdir, yaklaşık %70 Fast'in bitirdiği yer, %93 ise Euwe'nin de, de Groot'un da ortalama puanıdır.",
           "Karşılaştırma yaklaşıktır, çünkü de Groot hatalar için de puan kırıyordu. Sonra hangi taşları aklında tuttuğuna bak. Büyük olasılıkla gruplar halinde gelmişlerdir, örneğin bir piyon zinciri ya da rok yapılmış bir şah gibi."
         ]
       }

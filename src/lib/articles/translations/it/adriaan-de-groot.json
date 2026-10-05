@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "585c0c9f415951b9bb9e6b2bbaae0722ba31ed40be1c065dbb8e50c56ef50b66",
+  "approvedHash": "a9d1936b9a9cb676965da6402880e24cd194b56fa1933d7b217028d39136a1dc",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot presentò il lavoro nel 1946 nella sua tesi di dottorato all’Università di Amsterdam, Het denken van den schaker. Mouton pubblicò l’edizione inglese, Thought and Choice in Chess, all’Aia nel 1965.",
           "Nel 1973 William Chase e Herbert Simon ripeterono il test alla Carnegie Mellon con un maestro, un giocatore di classe A e un principiante. Fissarono l’esposizione a 5 secondi. Le loro posizioni di mediogioco avevano da 24 a 26 pezzi, e il maestro ricordava circa il doppio dei pezzi del giocatore di classe A.",
-          "Registrarono su video ogni ricostruzione e considerarono una pausa più lunga di 2 secondi come il confine tra due chunk. Il primo chunk del maestro era in media di 3,8 pezzi contro 2,6 del giocatore di classe A, e produceva 7,7 chunk per posizione contro 5,7. Dei suoi 77 chunk in quattordici posizioni, 47 contenevano una catena di pedoni, e Simon e Chase contarono 10 posizioni di re arroccato.",
+          "Registrarono su video ogni ricostruzione e considerarono una pausa più lunga di 2 secondi come il confine tra due chunk. Il primo chunk del maestro era in media di 3,8 pezzi contro 2,6 del giocatore di classe A, e il maestro produceva 7,7 chunk per posizione contro 5,7. Dei suoi 77 chunk in quattordici posizioni, 47 contenevano una catena di pedoni, e Simon e Chase contarono 10 posizioni di re arroccato.",
           "La loro aggiunta fu un controllo, gli stessi pezzi disposti su case casuali. Simon e Chase riferirono che in quel caso tutti i giocatori ricordavano circa tre o quattro pezzi, meno di quanti ne ricordasse il principiante sulle posizioni reali. Notarono che W. Lemmens e R. W. Jongman avevano ottenuto lo stesso risultato nel laboratorio di Amsterdam senza mai pubblicarlo.",
-          "L’introduzione stessa di Chase e Simon presenta il risultato sulle scacchiere casuali come di de Groot, e molti resoconti successivi lo ripetono. Il suo libro non riporta alcuna prova con scacchiere casuali."
+          "L’introduzione stessa di Chase e Simon presenta il risultato sulle scacchiere casuali come di de Groot, e molti resoconti successivi lo ripetono. Il libro di de Groot non riporta alcuna prova con scacchiere casuali."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Prova il test di de Groot",
         "paragraphs": [
-          "Imposta Memory Chess su 22 pezzi e 5 secondi. È la dimensione della posizione Rohacek contro Rabar di de Groot e il tempo che Euwe ebbe per guardarla. Ricostruisci la scacchiera e calcola la quota di pezzi che hai collocato correttamente. Circa la metà è il livello a cui arrivò Hauer, circa il 70% è quello di Fast e il 93% è la media di Euwe e de Groot.",
+          "Imposta Memory Chess su 22 pezzi e 5 secondi. È la dimensione della posizione Rohacek contro Rabar di de Groot e il tempo che Euwe ebbe per guardarla. Ricostruisci la scacchiera e calcola la quota di pezzi che hai collocato correttamente. Circa la metà è il livello a cui arrivò Hauer, circa il 70% è quello di Fast e il 93% è la media ottenuta sia da Euwe sia da de Groot.",
           "Il confronto è approssimativo, perché de Groot toglieva punti anche per gli errori. Poi controlla quali pezzi hai ricordato. Probabilmente sono arrivati a gruppi, come una catena di pedoni o un re arroccato."
         ]
       }

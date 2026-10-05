@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "e5f034656ab8447b4784627777c9302baed5dc31a14e237653673e797223072d",
+  "approvedHash": "20ea0dc8060e4c8ffaf79e6c3372d1b0ad31a36a308150860e18c8257380c6fb",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -32,7 +32,7 @@
         "heading": "Vier Spieler und ein paar Sekunden",
         "paragraphs": [
           "1944 zeigte Adriaan de Groot Max Euwe eine Schachstellung und nahm sie fünf Sekunden später wieder weg. Die Stellung stammte aus einer Partie zwischen Rohacek und Rabar, nach dem 20. Zug von Weiß, mit 22 Figuren auf dem Brett. Euwe, Weltmeister von 1935 bis 1937, diktierte anschließend, wo jede Figur stand. Er hatte alle 22 richtig.",
-          "De Groot, selbst ein Meister, machte denselben Test, setzte einen Bauern dazu, der gar nicht dort stand, und kam auf 21 Punkte. A. Fast, der Utrechter Meister von 1942, stellte 17 Figuren richtig auf, hielt aber das Material für ausgeglichen, obwohl es das nicht war, und kam auf 16 Punkte. G. P. Hauer, ein Spieler aus einer schwächeren Klasse, kam auf 9.",
+          "De Groot, selbst ein Meister, machte denselben Test, setzte einen Bauern dazu, der gar nicht dort stand, und kam auf 21 Punkte. A. Fast, der Gewinner der Utrechter Meisterschaft von 1942, stellte 17 Figuren richtig auf, hielt aber das Material für ausgeglichen, obwohl es das nicht war, und kam auf 16 Punkte. G. P. Hauer, ein Spieler aus einer schwächeren Klasse, kam auf 9.",
           "Nacherzählungen widersprechen sich bei der Darbietungszeit und bei den Prozentwerten. Die Zahlen im Folgenden stammen deshalb aus de Groots eigenem Buch."
         ]
       },
@@ -66,7 +66,7 @@
           "1973 wiederholten William Chase und Herbert Simon den Test an der Carnegie Mellon University mit einem Meister, einem Spieler der Klasse A und einem Anfänger. Sie legten die Darbietungszeit auf 5 Sekunden fest. Ihre Mittelspielstellungen hatten 24 bis 26 Figuren, und der Meister gab etwa doppelt so viele Figuren richtig wieder wie der Spieler der Klasse A.",
           "Sie filmten jede Rekonstruktion und werteten eine Pause von mehr als 2 Sekunden als Grenze zwischen zwei Chunks. Der erste Chunk des Meisters umfasste im Schnitt 3,8 Figuren, beim Spieler der Klasse A waren es 2,6. Pro Stellung bildete der Meister 7,7 Chunks, der andere 5,7. Von den 77 Chunks des Meisters über vierzehn Stellungen enthielten 47 eine Bauernkette, und Simon und Chase zählten 10 Stellungen mit rochiertem König.",
           "Ihr Zusatz war eine Kontrolle: dieselben Figuren auf zufälligen Feldern. Simon und Chase berichteten, dass dann alle Spieler etwa drei oder vier Figuren wiedergaben, weniger als der Anfänger bei echten Stellungen schaffte. Sie vermerkten, dass W. Lemmens und R. W. Jongman im Amsterdamer Labor dasselbe Ergebnis gefunden, aber nie veröffentlicht hatten.",
-          "Chase und Simons eigene Einleitung stellt das Ergebnis mit den Zufallsstellungen als das von de Groot dar, und viele spätere Darstellungen wiederholen das. Sein Buch berichtet von keinem Versuch mit Zufallsstellungen."
+          "Chase und Simons eigene Einleitung stellt das Ergebnis mit den Zufallsstellungen als das von de Groot dar, und viele spätere Darstellungen wiederholen das. De Groots Buch berichtet von keinem Versuch mit Zufallsstellungen."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Probiere de Groots Test aus",
         "paragraphs": [
-          "Stelle Memory Chess auf 22 Figuren und 5 Sekunden ein. Das entspricht der Größe von de Groots Stellung Rohacek gegen Rabar und der Zeit, die Euwe zum Ansehen hatte. Baue das Brett nach und ermittle, welcher Anteil der Figuren richtig stand. Etwa die Hälfte ist Hauers Ergebnis, etwa 70 % ist Fasts Ergebnis, und 93 % erreichten Euwe und de Groot im Durchschnitt.",
+          "Stelle Memory Chess auf 22 Figuren und 5 Sekunden ein. Das entspricht der Größe von de Groots Stellung Rohacek gegen Rabar und der Zeit, die Euwe zum Ansehen hatte. Baue das Brett nach und ermittle, welcher Anteil der Figuren richtig stand. Etwa die Hälfte ist Hauers Ergebnis, etwa 70 % ist Fasts Ergebnis, und 93 % erreichten Euwe und de Groot jeweils im Durchschnitt.",
           "Der Vergleich ist grob, weil de Groot auch für Fehler Punkte abzog. Prüfe danach, welche Figuren du dir gemerkt hast. Vermutlich kamen sie in Gruppen, etwa als Bauernkette oder als rochierter König."
         ]
       }

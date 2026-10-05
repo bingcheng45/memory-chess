@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "a0afa588d6eb4e7befb67d5336228533334dab5e9ff44ee306ff06dd2ce3ab23",
+  "approvedHash": "21f04d0319f3df51fe415d917e7fb126fbd4dad6c4f68d3133aa2060447f2de6",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot svou práci představil roku 1946 ve své doktorské disertaci na Amsterdamské univerzitě, Het denken van den schaker. Anglické vydání, Thought and Choice in Chess, vydalo nakladatelství Mouton v Haagu v roce 1965.",
           "V roce 1973 William Chase a Herbert Simon test zopakovali na Carnegie Mellon s mistrem, hráčem třídy A a začátečníkem. Dobu zobrazení stanovili na 5 sekund. Jejich pozice ze střední hry měly 24 až 26 figurek a mistr si vybavil zhruba dvakrát tolik figurek než hráč třídy A.",
-          "Každou rekonstrukci natočili na video a pauzu delší než 2 sekundy považovali za hranici mezi dvěma chunky. První chunk mistra měl v průměru 3,8 figurky oproti 2,6 u hráče třídy A a na jednu pozici vytvořil 7,7 chunku oproti 5,7. Z jeho 77 chunků napříč čtrnácti pozicemi jich 47 obsahovalo pěšcový řetěz a Simon s Chasem napočítali 10 pozic s králem po rošádě.",
+          "Každou rekonstrukci natočili na video a pauzu delší než 2 sekundy považovali za hranici mezi dvěma chunky. První chunk mistra měl v průměru 3,8 figurky oproti 2,6 u hráče třídy A a mistr na jednu pozici vytvořil 7,7 chunku oproti 5,7. Z jeho 77 chunků napříč čtrnácti pozicemi jich 47 obsahovalo pěšcový řetěz a Simon s Chasem napočítali 10 pozic s králem po rošádě.",
           "Jejich novinkou byla kontrola: stejné figurky rozestavené na náhodná pole. Simon a Chase uvedli, že si pak každý hráč vybavil zhruba tři nebo čtyři figurky, méně než zvládl začátečník u skutečných pozic. Poznamenali, že W. Lemmens a R. W. Jongman dospěli ke stejnému výsledku v amsterdamské laboratoři a nikdy ho nepublikovali.",
-          "Samotný úvod Chase a Simona uvádí výsledek s náhodnými šachovnicemi jako de Grootův a mnohé pozdější popisy to opakují. V jeho knize žádný pokus s náhodnou šachovnicí uveden není."
+          "Samotný úvod Chase a Simona uvádí výsledek s náhodnými šachovnicemi jako de Grootův a mnohé pozdější popisy to opakují. V de Grootově knize žádný pokus s náhodnou šachovnicí uveden není."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Vyzkoušejte de Grootův test",
         "paragraphs": [
-          "Nastavte v Memory Chess 22 figurek a 5 sekund. To odpovídá velikosti de Grootovy pozice z partie Rohacek proti Rabarovi a době, po kterou ji Euwe směl sledovat. Postavte šachovnici zpět a spočítejte, jakou část figurek jste umístili správně. Zhruba polovina je úroveň, na které skončil Hauer, asi 70 % je úroveň, na které skončil Fast, a 93 % je průměr Euweho a de Groota.",
+          "Nastavte v Memory Chess 22 figurek a 5 sekund. To odpovídá velikosti de Grootovy pozice z partie Rohacek proti Rabarovi a době, po kterou ji Euwe směl sledovat. Postavte šachovnici zpět a spočítejte, jakou část figurek jste umístili správně. Zhruba polovina je úroveň, na které skončil Hauer, asi 70 % je úroveň, na které skončil Fast, a 93 % je průměr, kterého dosáhli jak Euwe, tak de Groot.",
           "Srovnání je hrubé, protože de Groot odečítal body i za chyby. Pak se podívejte, které figurky jste si podrželi. Pravděpodobně přišly ve skupinách, třeba jako pěšcový řetěz nebo král po rošádě."
         ]
       }

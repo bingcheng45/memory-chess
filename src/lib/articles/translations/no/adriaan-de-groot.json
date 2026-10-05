@@ -1,12 +1,12 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "b0bf1704d269bf8508f419da8841e2fee89f706ca5dda2facb3cccd1e7af8f4e",
+  "approvedHash": "a178e3eb39a8fc410efb9613abcf16aa8240fbfcd88ef143551beb2db4a46dfc",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
   "text": {
     "title": "Adriaan de Groots test av sjakkhukommelse i 1944, i tall",
-    "description": "Adriaan de Groot testet fire spillere på sjakkstillinger som ble vist i 2 til 15 sekunder i 1944. Her er de faktiske poengsummene hans og hva senere forskning har endret.",
+    "description": "Adriaan de Groot testet fire spillere på sjakkstillinger som ble vist i 2 til 15 sekunder i 1944. Her er de faktiske poengsummene fra de Groots forsøk og hva senere forskning har endret.",
     "person": {
       "name": "Adriaan de Groot",
       "role": "Nederlandsk sjakkmester og psykolog"
@@ -32,7 +32,7 @@
         "heading": "Fire spillere og noen få sekunder",
         "paragraphs": [
           "I 1944 viste Adriaan de Groot Max Euwe en sjakkstilling og tok den bort igjen fem sekunder senere. Stillingen kom fra et parti mellom Rohacek og Rabar, etter hvits 20. trekk, med 22 brikker på brettet. Euwe, verdensmester fra 1935 til 1937, dikterte så hvor hver eneste brikke sto. Han fikk alle 22 riktige.",
-          "De Groot, som selv var mester, tok den samme testen, la til én bonde som ikke var der, og fikk 21 poeng. A. Fast, Utrecht-mesteren fra 1942, plasserte 17 brikker riktig, men mente at materialet var likt da det ikke var det, og fikk 16. G. P. Hauer, en svakere klassespiller, fikk 9.",
+          "De Groot, som selv var mester, tok den samme testen, la til én bonde som ikke var der, og fikk 21 poeng. A. Fast, som vant Utrecht-mesterskapet i 1942, plasserte 17 brikker riktig, men mente at materialet var likt da det ikke var det, og fikk 16. G. P. Hauer, en svakere klassespiller, fikk 9.",
           "Gjenfortellingene spriker når det gjelder visningstiden og prosentene, så tallene nedenfor kommer fra de Groots egen bok."
         ]
       },
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot la fram arbeidet i 1946 i doktoravhandlingen sin ved Universitetet i Amsterdam, Het denken van den schaker. Mouton ga ut den engelske utgaven, Thought and Choice in Chess, i Haag i 1965.",
           "I 1973 gjentok William Chase og Herbert Simon testen ved Carnegie Mellon med en mester, en klasse A-spiller og en nybegynner. De fastsatte visningstiden til 5 sekunder. Midtspillstillingene deres hadde 24 til 26 brikker, og mesteren husket omtrent dobbelt så mange brikker som klasse A-spilleren.",
-          "De tok opp hver gjenoppbygging på video og regnet en pause på mer enn 2 sekunder som grensen mellom to chunker. Mesterens første chunk var i snitt 3,8 brikker mot 2,6 for klasse A-spilleren, og han laget 7,7 chunker per stilling mot 5,7. Av hans 77 chunker over fjorten stillinger inneholdt 47 en bondekjede, og Simon og Chase talte 10 stillinger med rokert konge.",
+          "De tok opp hver gjenoppbygging på video og regnet en pause på mer enn 2 sekunder som grensen mellom to chunker. Mesterens første chunk var i snitt 3,8 brikker mot 2,6 for klasse A-spilleren, og mesteren laget 7,7 chunker per stilling mot 5,7. Av mesterens 77 chunker over fjorten stillinger inneholdt 47 en bondekjede, og Simon og Chase talte 10 stillinger med rokert konge.",
           "Tillegget deres var en kontroll, de samme brikkene plassert på tilfeldige felt. Simon og Chase rapporterte at alle spillerne da husket omtrent tre eller fire brikker, færre enn nybegynneren klarte på virkelige stillinger. De bemerket at W. Lemmens og R. W. Jongman hadde funnet det samme resultatet i laboratoriet i Amsterdam uten å noen gang publisere det.",
-          "Chase og Simons egen innledning presenterer resultatet med tilfeldige brett som de Groots, og mange senere framstillinger gjentar det. Boken hans rapporterer ingen test med tilfeldige brett."
+          "Chase og Simons egen innledning presenterer resultatet med tilfeldige brett som de Groots, og mange senere framstillinger gjentar det. De Groots bok rapporterer ingen test med tilfeldige brett."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Prøv de Groots test",
         "paragraphs": [
-          "Still inn Memory Chess på 22 brikker og 5 sekunder. Det tilsvarer størrelsen på de Groots stilling fra Rohacek mot Rabar og tiden Euwe hadde til å se på den. Bygg opp brettet igjen og regn ut hvor stor andel av brikkene du plasserte riktig. Omtrent halvparten er der Hauer endte, omtrent 70 prosent er der Fast endte, og 93 prosent er snittet til Euwe og de Groot.",
+          "Still inn Memory Chess på 22 brikker og 5 sekunder. Det tilsvarer størrelsen på de Groots stilling fra Rohacek mot Rabar og tiden Euwe hadde til å se på den. Bygg opp brettet igjen og regn ut hvor stor andel av brikkene du plasserte riktig. Omtrent halvparten er der Hauer endte, omtrent 70 prosent er der Fast endte, og 93 prosent er det både Euwe og de Groot lå på i snitt.",
           "Sammenligningen er grov, fordi de Groot også trakk fra poeng for feil. Sjekk så hvilke brikker du husket. De kom trolig i grupper, som en bondekjede eller en rokert konge."
         ]
       }

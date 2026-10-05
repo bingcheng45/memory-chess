@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "a4777119119f0ae91c093cefbdc73de0132412c5d96c879283bb1f6b28735bfe",
+  "approvedHash": "dddd338bf87f293e00ce1c85182027b57e043fe846bea320ba6681bffbc84c6a",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -32,7 +32,7 @@
         "heading": "Fire spillere og nogle få sekunder",
         "paragraphs": [
           "I 1944 viste Adriaan de Groot Max Euwe en skakstilling og tog den væk igen fem sekunder senere. Stillingen stammede fra et parti mellem Rohacek og Rabar efter hvids 20. træk og havde 22 brikker på brættet. Euwe, der var verdensmester fra 1935 til 1937, dikterede derefter, hvor hver eneste brik stod. Han fik alle 22 rigtige.",
-          "De Groot, selv mester, tog den samme test, tilføjede en bonde, som ikke var der, og fik 21 point. A. Fast, Utrechts mester i 1942, placerede 17 brikker rigtigt, men vurderede materialet som lige, selv om det ikke var det, og fik 16 point. G. P. Hauer, en svagere klassespiller, fik 9.",
+          "De Groot, selv mester, tog den samme test, tilføjede en bonde, som ikke var der, og fik 21 point. A. Fast, som vandt mesterskabet i Utrecht i 1942, placerede 17 brikker rigtigt, men vurderede materialet som lige, selv om det ikke var det, og fik 16 point. G. P. Hauer, en svagere klassespiller, fik 9.",
           "Genfortællinger er uenige om visningstiden og procenterne, så tallene nedenfor stammer fra de Groots egen bog."
         ]
       },
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot fremlagde arbejdet i 1946 i sin doktorafhandling ved Universitetet i Amsterdam, Het denken van den schaker. Mouton udgav den engelske udgave, Thought and Choice in Chess, i Haag i 1965.",
           "I 1973 gentog William Chase og Herbert Simon testen på Carnegie Mellon med en mester, en klasse A-spiller og en begynder. De fastsatte visningstiden til 5 sekunder. Deres midtspilsstillinger havde 24 til 26 brikker, og mesteren huskede omtrent dobbelt så mange brikker som klasse A-spilleren.",
-          "De filmede hver rekonstruktion og regnede en pause på mere end 2 sekunder for grænsen mellem to chunks. Mesterens første chunk rummede i gennemsnit 3,8 brikker mod 2,6 for klasse A-spilleren, og han frembragte 7,7 chunks pr. stilling mod 5,7. Af hans 77 chunks fordelt på fjorten stillinger indeholdt 47 en bondekæde, og Simon og Chase talte 10 stillinger med rokeret konge.",
+          "De filmede hver rekonstruktion og regnede en pause på mere end 2 sekunder for grænsen mellem to chunks. Mesterens første chunk rummede i gennemsnit 3,8 brikker mod 2,6 for klasse A-spilleren, og mesteren frembragte 7,7 chunks pr. stilling mod 5,7. Af hans 77 chunks fordelt på fjorten stillinger indeholdt 47 en bondekæde, og Simon og Chase talte 10 stillinger med rokeret konge.",
           "Deres tilføjelse var en kontrol, nemlig de samme brikker placeret på tilfældige felter. Simon og Chase rapporterede, at alle spillere da huskede omkring tre eller fire brikker, færre end begynderen klarede på virkelige stillinger. De bemærkede, at W. Lemmens og R. W. Jongman havde fundet det samme resultat i laboratoriet i Amsterdam og aldrig havde offentliggjort det.",
-          "Chase og Simons egen indledning fremstiller resultatet med tilfældige brætter som de Groots, og mange senere fremstillinger gentager det. Hans bog beskriver ikke noget forsøg med tilfældige brætter."
+          "Chase og Simons egen indledning fremstiller resultatet med tilfældige brætter som de Groots, og mange senere fremstillinger gentager det. De Groots bog beskriver ikke noget forsøg med tilfældige brætter."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Prøv de Groots test",
         "paragraphs": [
-          "Indstil Memory Chess til 22 brikker og 5 sekunder. Det svarer til størrelsen på de Groots stilling fra partiet Rohacek mod Rabar og til den tid, Euwe havde til at se på den. Genopbyg brættet, og find ud af, hvor stor en andel af brikkerne du placerede rigtigt. Omkring halvdelen er, hvor Hauer endte, omkring 70 % er, hvor Fast endte, og 93 % er, hvad Euwe og de Groot opnåede i gennemsnit.",
+          "Indstil Memory Chess til 22 brikker og 5 sekunder. Det svarer til størrelsen på de Groots stilling fra partiet Rohacek mod Rabar og til den tid, Euwe havde til at se på den. Genopbyg brættet, og find ud af, hvor stor en andel af brikkerne du placerede rigtigt. Omkring halvdelen er, hvor Hauer endte, omkring 70 % er, hvor Fast endte, og 93 % er, hvad Euwe og de Groot hver opnåede i gennemsnit.",
           "Sammenligningen er grov, fordi de Groot også trak point fra for fejl. Tjek bagefter, hvilke brikker du fik fastholdt. De kom sandsynligvis i grupper, for eksempel en bondekæde eller en rokeret konge."
         ]
       }

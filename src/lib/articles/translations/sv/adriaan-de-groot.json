@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "33a74a7c88c4ec888386de8425c6dbf15e29d19ba250c59c3c8e15d2226aee0f",
+  "approvedHash": "7867c48765f977e581dc01b704a372020a7c333dd6e2b1ed01017cb0111880fa",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -32,7 +32,7 @@
         "heading": "Fyra spelare och några få sekunder",
         "paragraphs": [
           "År 1944 visade Adriaan de Groot en schackställning för Max Euwe och tog bort den fem sekunder senare. Ställningen kom från ett parti mellan Rohacek och Rabar, efter vits 20:e drag, med 22 pjäser på brädet. Euwe, som var världsmästare 1935-1937, dikterade sedan var varje pjäs stod. Han hade alla 22 rätt.",
-          "De Groot, själv mästare, gjorde samma test, lade till en bonde som inte fanns där och fick 21 poäng. A. Fast, mästare i Utrecht 1942, placerade 17 pjäser rätt men bedömde materialet som lika när det inte var det, och fick 16 poäng. G. P. Hauer, en svagare klassspelare, fick 9.",
+          "De Groot, själv mästare, gjorde samma test, lade till en bonde som inte fanns där och fick 21 poäng. A. Fast, som vann Utrechts mästerskap 1942, placerade 17 pjäser rätt men bedömde materialet som lika när det inte var det, och fick 16 poäng. G. P. Hauer, en svagare klassspelare, fick 9.",
           "Återgivningarna går isär om visningstiden och procentsatserna, så siffrorna nedan kommer från de Groots egen bok."
         ]
       },
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot presenterade arbetet 1946 i sin doktorsavhandling vid Amsterdams universitet, Het denken van den schaker. Mouton gav ut den engelska utgåvan, Thought and Choice in Chess, i Haag 1965.",
           "År 1973 gjorde William Chase och Herbert Simon om testet vid Carnegie Mellon med en mästare, en klass A-spelare och en nybörjare. De fastställde visningstiden till 5 sekunder. Deras mittspelsställningar hade 24 till 26 pjäser, och mästaren mindes ungefär dubbelt så många pjäser som klass A-spelaren.",
-          "De filmade varje återskapande med video och räknade en paus på mer än 2 sekunder som gränsen mellan två chunkar. Mästarens första chunk var i genomsnitt 3,8 pjäser mot 2,6 för klass A-spelaren, och han bildade 7,7 chunkar per ställning mot 5,7. Av hans 77 chunkar över fjorton ställningar innehöll 47 en bondekedja, och Simon och Chase räknade 10 ställningar med rockerad kung.",
+          "De filmade varje återskapande med video och räknade en paus på mer än 2 sekunder som gränsen mellan två chunkar. Mästarens första chunk var i genomsnitt 3,8 pjäser mot 2,6 för klass A-spelaren, och mästaren bildade 7,7 chunkar per ställning mot 5,7. Av hans 77 chunkar över fjorton ställningar innehöll 47 en bondekedja, och Simon och Chase räknade 10 ställningar med rockerad kung.",
           "Deras tillägg var en kontroll, samma pjäser utplacerade på slumpmässiga rutor. Simon och Chase rapporterade att varje spelare då mindes ungefär tre eller fyra pjäser, färre än nybörjaren klarade på riktiga ställningar. De uppgav att W. Lemmens och R. W. Jongman hade fått samma resultat i Amsterdamlaboratoriet utan att någonsin publicera det.",
-          "Chases och Simons egen inledning framställer resultatet med slumpade bräden som de Groots, och många senare skildringar upprepar det. Hans bok redovisar inget försök med slumpade bräden."
+          "Chases och Simons egen inledning framställer resultatet med slumpade bräden som de Groots, och många senare skildringar upprepar det. De Groots bok redovisar inget försök med slumpade bräden."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Prova de Groots test",
         "paragraphs": [
-          "Ställ in Memory Chess på 22 pjäser och 5 sekunder. Det motsvarar storleken på de Groots ställning Rohacek mot Rabar och den tid Euwe fick på sig att titta på den. Bygg upp brädet igen och räkna ut hur stor andel av pjäserna du placerade rätt. Ungefär hälften är där Hauer hamnade, ungefär 70 % är där Fast hamnade, och 93 % är vad Euwe och de Groot hade i genomsnitt.",
+          "Ställ in Memory Chess på 22 pjäser och 5 sekunder. Det motsvarar storleken på de Groots ställning Rohacek mot Rabar och den tid Euwe fick på sig att titta på den. Bygg upp brädet igen och räkna ut hur stor andel av pjäserna du placerade rätt. Ungefär hälften är där Hauer hamnade, ungefär 70 % är där Fast hamnade, och 93 % är vad Euwe och de Groot vardera hade i genomsnitt.",
           "Jämförelsen är grov, eftersom de Groot också drog av poäng för fel. Kontrollera sedan vilka pjäser du kom ihåg. De kom troligen i grupper, till exempel en bondekedja eller en rockerad kung."
         ]
       }

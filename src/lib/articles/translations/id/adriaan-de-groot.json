@@ -1,12 +1,12 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "989d1eb7d43a7db2f220a6d6117437b033410091d606d1ca7cc5536d2a394a97",
+  "approvedHash": "8ef9e0bc3f48a1d4970ba4a94e9ed54d043e0bdc2ccc1f17337957aa364190d4",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
   "text": {
     "title": "Tes ingatan catur Adriaan de Groot tahun 1944, dalam angka",
-    "description": "Pada 1944 Adriaan de Groot menguji empat pemain dengan posisi catur yang diperlihatkan selama 2 sampai 15 detik. Berikut skor aslinya dan apa yang diubah oleh riset sesudahnya.",
+    "description": "Pada 1944 Adriaan de Groot menguji empat pemain dengan posisi catur yang diperlihatkan selama 2 sampai 15 detik. Berikut skor asli dalam penelitian de Groot dan apa yang diubah oleh riset sesudahnya.",
     "person": {
       "name": "Adriaan de Groot",
       "role": "Master catur dan psikolog asal Belanda"
@@ -64,7 +64,7 @@
         "paragraphs": [
           "De Groot memaparkan karyanya pada 1946 dalam disertasi doktoralnya di Universitas Amsterdam, Het denken van den schaker. Penerbit Mouton menerbitkan edisi bahasa Inggrisnya, Thought and Choice in Chess, di Den Haag pada 1965.",
           "Pada 1973 William Chase dan Herbert Simon mengulang tes itu di Carnegie Mellon dengan seorang master, seorang pemain Kelas A, dan seorang pemula. Mereka menetapkan lama pemaparan 5 detik. Posisi permainan tengah mereka berisi 24 sampai 26 bidak, dan sang master mengingat sekitar dua kali lebih banyak bidak daripada pemain Kelas A.",
-          "Mereka merekam setiap penataan ulang dengan video dan menganggap jeda lebih dari 2 detik sebagai batas antara dua chunk. Chunk pertama sang master rata-rata berisi 3,8 bidak, dibanding 2,6 pada pemain Kelas A, dan ia menghasilkan 7,7 chunk per posisi, dibanding 5,7. Dari 77 chunk miliknya pada empat belas posisi, 47 memuat rantai pion, dan Simon serta Chase menghitung 10 posisi raja yang sudah melakukan rokade.",
+          "Mereka merekam setiap penataan ulang dengan video dan menganggap jeda lebih dari 2 detik sebagai batas antara dua chunk. Chunk pertama sang master rata-rata berisi 3,8 bidak, dibanding 2,6 pada pemain Kelas A, dan sang master menghasilkan 7,7 chunk per posisi, dibanding 5,7. Dari 77 chunk milik sang master pada empat belas posisi, 47 memuat rantai pion, dan Simon serta Chase menghitung 10 posisi raja yang sudah melakukan rokade.",
           "Tambahan mereka berupa kontrol, yaitu bidak yang sama diletakkan di kotak acak. Simon dan Chase melaporkan bahwa setiap pemain saat itu hanya mengingat sekitar tiga atau empat bidak, lebih sedikit daripada yang berhasil diingat si pemula pada posisi nyata. Mereka mencatat bahwa W. Lemmens dan R. W. Jongman menemukan hasil yang sama di laboratorium Amsterdam dan tidak pernah menerbitkannya.",
           "Pengantar Chase dan Simon sendiri menyajikan hasil papan acak itu sebagai hasil de Groot, dan banyak uraian sesudahnya mengulangnya. Buku de Groot tidak melaporkan percobaan papan acak apa pun."
         ]
@@ -80,7 +80,7 @@
       {
         "heading": "Coba tes de Groot",
         "paragraphs": [
-          "Atur Memory Chess ke 22 bidak dan 5 detik. Itu sama dengan jumlah bidak pada posisi Rohacek melawan Rabar milik de Groot dan waktu yang dimiliki Euwe untuk melihatnya. Susun ulang papannya dan hitung berapa persen bidak yang Anda letakkan dengan benar. Sekitar separuh adalah hasil akhir Hauer, sekitar 70% adalah hasil Fast, dan 93% adalah rata-rata Euwe dan de Groot.",
+          "Atur Memory Chess ke 22 bidak dan 5 detik. Itu sama dengan jumlah bidak pada posisi Rohacek melawan Rabar milik de Groot dan waktu yang dimiliki Euwe untuk melihatnya. Susun ulang papannya dan hitung berapa persen bidak yang Anda letakkan dengan benar. Sekitar separuh adalah hasil akhir Hauer, sekitar 70% adalah hasil Fast, dan 93% adalah rata-rata masing-masing Euwe dan de Groot.",
           "Perbandingan ini kasar, karena de Groot juga mengurangi poin untuk kesalahan. Setelah itu periksa bidak mana yang Anda ingat. Kemungkinan besar bidak-bidak itu datang berkelompok, misalnya rantai pion atau raja yang sudah melakukan rokade."
         ]
       }

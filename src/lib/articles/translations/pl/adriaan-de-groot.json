@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "53a83a837e07e9d68a7704200256e5c3a127b828f8b3ace1b9a199806baff9f2",
+  "approvedHash": "a99d61e15dc257e429d99cbf723689f897c8cc48fe2de3ef48c2ce7f7a8a38dc",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -32,7 +32,7 @@
         "heading": "Czterech graczy i kilka sekund",
         "paragraphs": [
           "W 1944 roku Adriaan de Groot pokazał Maxowi Euwe pozycję szachową i po pięciu sekundach ją zasłonił. Pozycja pochodziła z partii Rohacek kontra Rabar, po 20. posunięciu białych; na szachownicy stało 22 bierki. Euwe, mistrz świata w latach 1935-1937, podyktował następnie, gdzie stała każda bierka. Wszystkie 22 podał poprawnie.",
-          "De Groot, sam będący mistrzem, przeszedł ten sam test, dodał jednego pionka, którego w pozycji nie było, i zdobył 21 punktów. A. Fast, mistrz Utrechtu z 1942 roku, poprawnie ustawił 17 bierek, ale uznał materiał za równy, choć wcale nie był, i zdobył 16 punktów. G. P. Hauer, gracz słabszej klasy, zdobył 9.",
+          "De Groot, sam będący mistrzem, podszedł do tego samego testu, dodał jednego pionka, którego w pozycji nie było, i zdobył 21 punktów. A. Fast, zwycięzca mistrzostw Utrechtu z 1942 roku, poprawnie ustawił 17 bierek, ale uznał materiał za równy, choć wcale nie był, i zdobył 16 punktów. G. P. Hauer, gracz słabszej klasy, zdobył 9.",
           "Relacje o tym teście różnią się co do czasu ekspozycji i procentów, dlatego poniższe liczby pochodzą z książki samego de Groota."
         ]
       },
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot przedstawił tę pracę w 1946 roku w rozprawie doktorskiej na Uniwersytecie Amsterdamskim, Het denken van den schaker. Angielskie wydanie, Thought and Choice in Chess, ukazało się nakładem wydawnictwa Mouton w Hadze w 1965 roku.",
           "W 1973 roku William Chase i Herbert Simon powtórzyli test na Uniwersytecie Carnegie Mellon z udziałem mistrza, gracza klasy A i początkującego. Ustalili czas ekspozycji na 5 sekund. Ich pozycje z gry środkowej liczyły od 24 do 26 bierek, a mistrz odtworzył około dwa razy więcej bierek niż gracz klasy A.",
-          "Każde odtwarzanie nagrywali na wideo, a pauzę dłuższą niż 2 sekundy uznawali za granicę między dwoma chunkami. Pierwszy chunk mistrza liczył średnio 3,8 bierki wobec 2,6 u gracza klasy A, a na pozycję tworzył 7,7 chunka wobec 5,7. Spośród jego 77 chunków w czternastu pozycjach 47 zawierało łańcuch pionków, a Simon i Chase naliczyli 10 pozycji z królem po roszadzie.",
+          "Każde odtwarzanie nagrywali na wideo, a pauzę dłuższą niż 2 sekundy uznawali za granicę między dwoma chunkami. Pierwszy chunk mistrza liczył średnio 3,8 bierki wobec 2,6 u gracza klasy A, a mistrz tworzył na pozycję 7,7 chunka wobec 5,7. Spośród 77 chunków mistrza w czternastu pozycjach 47 zawierało łańcuch pionków, a Simon i Chase naliczyli 10 pozycji z królem po roszadzie.",
           "Ich własnym dodatkiem była próba kontrolna: te same bierki rozstawione na losowych polach. Simon i Chase podali, że wtedy każdy gracz odtwarzał około trzech lub czterech bierek, czyli mniej, niż początkujący potrafił odtworzyć w prawdziwych pozycjach. Zaznaczyli, że W. Lemmens i R. W. Jongman uzyskali ten sam wynik w amsterdamskim laboratorium i nigdy go nie opublikowali.",
-          "Własny wstęp Chase'a i Simona przedstawia wynik z losowych szachownic jako dzieło de Groota i wiele późniejszych opracowań to powtarza. W jego książce nie ma żadnej próby z losowo ustawionymi bierkami."
+          "Własny wstęp Chase'a i Simona przedstawia wynik z losowych szachownic jako dzieło de Groota i wiele późniejszych opracowań to powtarza. W książce de Groota nie ma żadnego eksperymentu z losowo ustawionymi bierkami."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Wypróbuj test de Groota",
         "paragraphs": [
-          "Ustaw w Memory Chess 22 bierki i 5 sekund. To odpowiada wielkości pozycji de Groota z partii Rohacek kontra Rabar i czasowi, jaki Euwe miał na jej obejrzenie. Odtwórz szachownicę i policz, jaki odsetek bierek stanął na właściwych polach. Około połowy to wynik Hauera, około 70% to wynik Fasta, a 93% to średni wynik Euwe i de Groota.",
+          "Ustaw w Memory Chess 22 bierki i 5 sekund. To odpowiada wielkości pozycji de Groota z partii Rohacek kontra Rabar i czasowi, jaki Euwe miał na jej obejrzenie. Odtwórz szachownicę i policz, jaki odsetek bierek stanął na właściwych polach. Około połowy to wynik Hauera, około 70% to wynik Fasta, a 93% to średni wynik, jaki uzyskali zarówno Euwe, jak i de Groot.",
           "To porównanie jest przybliżone, bo de Groot odejmował też punkty za błędy. Potem sprawdź, które bierki udało się zapamiętać. Zapewne pojawiały się grupami, na przykład jako łańcuch pionków albo król po roszadzie."
         ]
       }

@@ -1,12 +1,12 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "dbafde146be9415128af21996184ea635ececa0c0421f74d56a7f5cb6adc3a1c",
+  "approvedHash": "13d32fd06008c565e40034280ba3b0be71b84f285975406272cecaf5ea137d5d",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
   "text": {
     "title": "La prueba de memoria ajedrecística de Adriaan de Groot en 1944, en cifras",
-    "description": "En 1944 Adriaan de Groot examinó a cuatro jugadores con posiciones de ajedrez mostradas de 2 a 15 segundos. Estas son sus puntuaciones reales y lo que cambió la investigación posterior.",
+    "description": "En 1944 Adriaan de Groot examinó a cuatro jugadores con posiciones de ajedrez mostradas de 2 a 15 segundos. Estas son las puntuaciones reales del experimento de De Groot y lo que cambió la investigación posterior.",
     "person": {
       "name": "Adriaan de Groot",
       "role": "Maestro de ajedrez y psicólogo neerlandés"
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot presentó el trabajo en 1946 en su tesis doctoral en la Universidad de Ámsterdam, Het denken van den schaker. Mouton publicó la edición en inglés, Thought and Choice in Chess, en La Haya en 1965.",
           "En 1973 William Chase y Herbert Simon repitieron la prueba en Carnegie Mellon con un maestro, un jugador de categoría A y un principiante. Fijaron la exposición en 5 segundos. Sus posiciones de medio juego tenían de 24 a 26 piezas, y el maestro recordó aproximadamente el doble de piezas que el jugador de categoría A.",
-          "Grabaron en vídeo cada reconstrucción y consideraron que una pausa de más de 2 segundos marcaba el límite entre dos chunks. El primer chunk del maestro tenía en promedio 3,8 piezas frente a 2,6 en el jugador de categoría A, y el maestro produjo 7,7 chunks por posición frente a 5,7. De sus 77 chunks en catorce posiciones, 47 contenían una cadena de peones, y Simon y Chase contaron 10 posiciones con el rey enrocado.",
+          "Grabaron en vídeo cada reconstrucción y consideraron que una pausa de más de 2 segundos marcaba el límite entre dos chunks. El primer chunk del maestro tenía en promedio 3,8 piezas frente a 2,6 en el jugador de categoría A, y el maestro produjo 7,7 chunks por posición frente a 5,7. De los 77 chunks del maestro en catorce posiciones, 47 contenían una cadena de peones, y Simon y Chase contaron 10 posiciones con el rey enrocado.",
           "Su aportación fue un control: las mismas piezas colocadas en casillas al azar. Simon y Chase informaron de que todos los jugadores recordaban entonces unas tres o cuatro piezas, menos de las que lograba el principiante con posiciones reales. Señalaron que W. Lemmens y R. W. Jongman habían obtenido el mismo resultado en el laboratorio de Ámsterdam sin llegar a publicarlo.",
-          "La propia introducción de Chase y Simon presenta el resultado de los tableros aleatorios como obra de De Groot, y muchos relatos posteriores lo repiten. Su libro no recoge ninguna prueba con tableros aleatorios."
+          "La propia introducción de Chase y Simon presenta el resultado de los tableros aleatorios como obra de De Groot, y muchos relatos posteriores lo repiten. El libro de De Groot no recoge ninguna prueba con tableros aleatorios."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Prueba el test de De Groot",
         "paragraphs": [
-          "Configura Memory Chess con 22 piezas y 5 segundos. Eso equivale al tamaño de la posición de De Groot entre Rohacek y Rabar y al tiempo que tuvo Euwe para mirarla. Reconstruye el tablero y calcula qué proporción de las piezas colocaste correctamente. Más o menos la mitad es donde terminó Hauer, un 70 % aproximadamente es donde terminó Fast, y un 93 % es el promedio de Euwe y De Groot.",
+          "Configura Memory Chess con 22 piezas y 5 segundos. Eso equivale al tamaño de la posición de De Groot entre Rohacek y Rabar y al tiempo que tuvo Euwe para mirarla. Reconstruye el tablero y calcula qué proporción de las piezas colocaste correctamente. Más o menos la mitad es donde terminó Hauer, un 70 % aproximadamente es donde terminó Fast, y un 93 % es el promedio que lograron tanto Euwe como De Groot.",
           "La comparación es aproximada, porque De Groot también restaba puntos por los errores. Después comprueba qué piezas retuviste. Probablemente venían en grupos, como una cadena de peones o un rey enrocado."
         ]
       }

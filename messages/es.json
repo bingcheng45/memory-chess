@@ -434,7 +434,7 @@
       "nextArticle": "Siguiente artículo"
     },
     "tile": {
-      "eyebrow": "Sigue leyendo",
+      "eyebrow": "Lectura siguiente",
       "yourRound": "Tu ronda",
       "articleDrill": "El ejercicio de este artículo",
       "roundSize": "{pieces, plural, one {# pieza} many {# de piezas} other {# piezas}} y {seconds, plural, one {# segundo} many {# de segundos} other {# segundos}}",

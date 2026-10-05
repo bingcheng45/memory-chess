@@ -434,7 +434,7 @@
       "nextArticle": "Articolul următor"
     },
     "tile": {
-      "eyebrow": "Citește în continuare",
+      "eyebrow": "Următoarea lectură",
       "yourRound": "Runda ta",
       "articleDrill": "Exercițiul acestui articol",
       "roundSize": "{pieces, plural, one {# piesă} few {# piese} other {# de piese}}, {seconds, plural, one {# secundă} few {# secunde} other {# de secunde}}",

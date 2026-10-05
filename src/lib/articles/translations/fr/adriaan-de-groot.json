@@ -1,12 +1,12 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "f604683c089409f54963778893f1545e74dc278e95430f9963027e1bc76c9707",
+  "approvedHash": "1be93e6e63c9bab02d8e6625632713b3ab2420d95310ed91c77eefc7eb581c4e",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
   "text": {
     "title": "Le test de mémoire de 1944 d’Adriaan de Groot, chiffres à l’appui",
-    "description": "En 1944, Adriaan de Groot a soumis quatre joueurs à des positions montrées de 2 à 15 secondes. Voici ses scores réels et ce que la recherche a corrigé depuis.",
+    "description": "En 1944, Adriaan de Groot a soumis quatre joueurs à des positions montrées de 2 à 15 secondes. Voici les scores réels relevés par De Groot et ce que la recherche a corrigé depuis.",
     "person": {
       "name": "Adriaan de Groot",
       "role": "Maître d’échecs et psychologue néerlandais"
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot a présenté ce travail en 1946 dans sa thèse de doctorat à l’université d’Amsterdam, Het denken van den schaker. Mouton a publié l’édition anglaise, Thought and Choice in Chess, à La Haye en 1965.",
           "En 1973, William Chase et Herbert Simon ont refait le test à Carnegie Mellon avec un maître, un joueur de classe A et un débutant. Ils ont fixé l’exposition à 5 secondes. Leurs positions de milieu de partie comptaient de 24 à 26 pièces, et le maître se rappelait environ deux fois plus de pièces que le joueur de classe A.",
-          "Ils ont filmé chaque reconstitution et considéré qu’une pause de plus de 2 secondes marquait la frontière entre deux chunks. Le premier chunk du maître comptait en moyenne 3,8 pièces, contre 2,6 pour le joueur de classe A, et il produisait 7,7 chunks par position, contre 5,7. Sur ses 77 chunks répartis sur quatorze positions, 47 contenaient une chaîne de pions, et Simon et Chase ont dénombré 10 positions de roi roqué.",
+          "Ils ont filmé chaque reconstitution et considéré qu’une pause de plus de 2 secondes marquait la frontière entre deux chunks. Le premier chunk du maître comptait en moyenne 3,8 pièces, contre 2,6 pour le joueur de classe A, et le maître produisait 7,7 chunks par position, contre 5,7. Sur les 77 chunks du maître répartis sur quatorze positions, 47 contenaient une chaîne de pions, et Simon et Chase ont dénombré 10 positions de roi roqué.",
           "Leur ajout était un contrôle : les mêmes pièces placées sur des cases au hasard. Simon et Chase ont rapporté que tous les joueurs ne se rappelaient alors que trois ou quatre pièces environ, soit moins que le débutant sur de vraies positions. Ils ont précisé que W. Lemmens et R. W. Jongman avaient obtenu le même résultat au laboratoire d’Amsterdam, sans jamais le publier.",
-          "L’introduction de Chase et Simon présente le résultat des échiquiers aléatoires comme celui de De Groot, et de nombreux récits ultérieurs le reprennent. Son livre ne rapporte aucun essai sur échiquier aléatoire."
+          "L’introduction de Chase et Simon présente le résultat des échiquiers aléatoires comme celui de De Groot, et de nombreux récits ultérieurs le reprennent. Le livre de De Groot ne rapporte aucun essai sur échiquier aléatoire."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Essayez le test de De Groot",
         "paragraphs": [
-          "Réglez Memory Chess sur 22 pièces et 5 secondes. Cela correspond à la taille de la position Rohacek contre Rabar de De Groot et au temps dont Euwe disposait pour l’observer. Reconstituez l’échiquier et calculez la part des pièces que vous avez placées correctement. Environ la moitié, c’est le niveau de Hauer ; environ 70 %, celui de Fast ; et 93 %, la moyenne d’Euwe et de De Groot.",
+          "Réglez Memory Chess sur 22 pièces et 5 secondes. Cela correspond à la taille de la position Rohacek contre Rabar de De Groot et au temps dont Euwe disposait pour l’observer. Reconstituez l’échiquier et calculez la part des pièces que vous avez placées correctement. Environ la moitié, c’est le niveau de Hauer ; environ 70 %, celui de Fast ; et 93 %, la moyenne obtenue aussi bien par Euwe que par De Groot.",
           "La comparaison est approximative, car De Groot retirait aussi des points pour les erreurs. Regardez ensuite quelles pièces vous avez retenues. Elles sont probablement venues par groupes, comme une chaîne de pions ou un roi roqué."
         ]
       }

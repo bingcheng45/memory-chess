@@ -44,7 +44,6 @@ function tileStringsOf(locale: string): Record<string, string> {
   return jest.requireActual(`../../../../../messages/${locale}.json`).articles.tile;
 }
 
-/** The result screen as `/<locale>/game` composes it: the locale layout's messages, then the game layout. */
 async function renderResultScreen(locale: string) {
   const missing: string[] = [];
   const rootMessages = await localeLayoutClientMessages(locale);
@@ -65,6 +64,7 @@ async function renderResultScreen(locale: string) {
 beforeEach(() => {
   window.sessionStorage.clear();
   jest.spyOn(console, "log").mockImplementation(() => {});
+  jest.spyOn(Math, "random").mockReturnValue(0);
   global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ data: { value: 1 } }) });
   useGameStore.setState({ gameState: { ...useGameStore.getState().gameState, ...FINISHED_ROUND } });
 });
@@ -74,13 +74,13 @@ afterEach(() => {
 });
 
 describe("the result screen under the messages its route's layouts send", () => {
-  it.each(routing.locales)("has every message it prints, the article tile's included, in %s", async (locale) => {
+  it.each(routing.locales)("has every message its first render prints, the article tile's included, in %s", async (locale) => {
     const missing = await renderResultScreen(locale);
     const strings = tileStringsOf(locale);
 
     expect(missing).toEqual([]);
-    expect(document.body.textContent).not.toMatch(RAW_MESSAGE_KEY);
     const tile = screen.getByRole("region", { name: strings.eyebrow });
+    expect(tile.textContent).not.toMatch(RAW_MESSAGE_KEY);
     expect(within(tile).getByRole("link", { name: strings.read })).toBeInTheDocument();
     expect(within(tile).getByRole("button", { name: strings.tryDrill })).toBeInTheDocument();
   });

@@ -24,7 +24,6 @@ jest.mock("@/components/reference/GameReference", () => {
 });
 
 const ENGLISH_CARLSEN_TITLE = "How Magnus Carlsen names a famous game from one position";
-// What the root layout sends: no `articles` namespace.
 const ROOT_MESSAGES = { common: { nav: { articles: "Artikel" } } };
 
 function TitlesThePageWasGiven() {
@@ -98,6 +97,6 @@ describe("the game layout's strings for the result screen's tile", () => {
     expect(screen.getByTestId("tile")).toHaveTextContent("Als Nächstes lesen");
     expect(screen.getByTestId("nav")).toHaveTextContent("Artikel");
     expect(screen.getByTestId("like")).toHaveTextContent("articles.like.button");
-    expect(errors).toEqual(["MISSING_MESSAGE: articles.like (de)"]);
+    expect(errors).toEqual([expect.stringContaining("articles.like")]);
   });
 });

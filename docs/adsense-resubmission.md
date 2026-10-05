@@ -101,7 +101,7 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
   of GA4 sessions per locale, and then only for locales with negligible traffic, in its own PR.
 - Guide `updatedAt` dates are truthful and are not bumped to look fresh.
 - Articles are readable in all 24 languages and indexed only in English, decided 2026-10-04 at the operator's
-  request. The decision stands. What it rests on, as of fix round 1 of PR 39 on 2026-10-05:
+  request. The decision stands. What it rests on, as of fix round 2 of PR 39 on 2026-10-05:
   - Who wrote the text. AI agents translated the 23 other languages and other AI agents reviewed them. No native
     speaker has read any of it. Each translated page says it was translated from English with AI assistance and
     links to the English article.
@@ -109,19 +109,29 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
     `hreflang` and no sitemap entry, so search does not offer it. That does not take it out of AdSense review, as
     the first entry in this list records. A reviewer who opens the site in another language reads these pages, and
     they count toward the "Low value content" judgement.
-  - What the gates prove. `scripts/articles-i18n.mjs check` fails a translation whose structure differs from the
-    English text, that loses a number, that still reads as English in any script, whose body paragraph lost most
-    of its length, or that lists body text as kept in English. `approve` records a hash of the text it approved.
-    `verify`, Jest and the build then fail on an article file or a set of section strings that is missing, made
-    from an older English text, unapproved, or edited after its approval. `npm run audit:adsense` checks every
-    translated page it is served and fails one that is indexable, canonical to another URL, has `hreflang`, lacks
-    the note or its link to the English page, has hidden words, has more than one `h1`, or has under 70% of the
-    English page's words. It still has to print 96 sitemap URLs and PASS.
-  - What the gates cannot prove. That a sentence is correct, natural or faithful to the English. Two numbers
-    swapped inside one paragraph, a year the English text does not have, a changed name, a different quotation
-    and a dropped last sentence all pass every gate. The reviewers' open doubts for each language are in the body
-    of PR 39. Until a native reader has checked a language, treat its articles as unverified text that an AdSense
-    reviewer can open.
+  - What the gates catch. `scripts/articles-i18n.mjs check` fails a translation whose structure differs from the
+    English text, that loses a number, whose body paragraph lost most of its length, or that lists body text as
+    kept in English. It fails English left in a translation: a whole text, a text that copies its English, and a
+    paragraph that is partly English, read one sentence at a time. It fails text in another locale's language:
+    an article or the section's strings as a whole, and a text of 40 words or more inside them. `approve` records
+    a hash of the text, its locale and its article. `verify`, Jest and the build then fail on an article file or
+    a set of section strings that is missing, made from an older English text, unapproved, edited after its
+    approval, or copied from another locale or article. `npm run audit:adsense` checks every translated page it
+    is served and fails one that is indexable, canonical to another URL, has `hreflang`, lacks the note or its
+    link to the English page, has hidden words, has more than one `h1`, or has a different number of `h2`, `p`,
+    `li` or article cards than its English page. So a missing or an extra section or paragraph fails. It still
+    has to print 96 sitemap URLs and PASS.
+  - What the approval hash is. It is tamper evidence, not access control. It shows that a text is the one
+    `approve` saw, in the place where it saw it, and it catches an accident or a careless edit. The recipe is in
+    `src/lib/articles/articleText.ts`, so anyone who can write the repository can compute a hash that matches any
+    text, with no review. A person who means to get round it can.
+  - What the gates cannot catch. That a sentence is correct, natural or faithful to the English. A false
+    sentence added in the right language, a sentence dropped inside a paragraph, two numbers swapped, a changed
+    name and a replaced quotation all pass every gate. So do an English sentence with three English function
+    words or fewer, and most single paragraphs of Danish inside a Norwegian article or of Norwegian inside a
+    Danish one. All of that rests on the AI review alone. The reviewers' open doubts for each language are in the
+    body of PR 39. Until a native reader has checked a language, treat its articles as unverified text that an
+    AdSense reviewer can open.
 
 ## Follow-ups
 

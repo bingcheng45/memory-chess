@@ -152,9 +152,12 @@ in your report.
 The check proves structure: the same shape as the English text, every number kept, every placeholder and
 plural form present, no value left in English by accident, no long dash, the right script for a language
 that does not use Latin letters. Names, titles and loanwords kept in Latin letters exactly as in the English text do not count against the script check, and a decade such as "the 1980s" may be written the way the language writes it (`anni Ottanta`, `lata 80.`). It fails a value that still reads as English. That is a value that keeps four in five of the words of
-its English value, or any value in which more than three words, and at least one word in ten, are words
-only English has, such as `the`, `with` and `which`. A fact, a role or a caption of up to five English
+its English value, or a value with a sentence in which English function words such as `the`, `with` and
+`which` outnumber your language's own by more than three. One sentence left in English inside a translated
+paragraph fails this way. A fact, a role or a caption of up to five English
 words may be a name or a title and may keep them. An English title quoted inside your own sentences is
-fine. It fails a long paragraph that is much shorter, against its English paragraph, than the rest of your
+fine. It fails text in another language of this site: an article as a whole, the strings of the section as
+a whole, and a value of 40 words or more that reads as that other language, so Danish does not pass as
+Norwegian or Simplified Chinese as Traditional. It fails a long paragraph that is much shorter, against its English paragraph, than the rest of your
 translation, which is how a dropped sentence shows. It cannot tell whether a sentence is correct or natural. That part is
 yours, and then the reviewer's.

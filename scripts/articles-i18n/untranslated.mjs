@@ -76,15 +76,14 @@ function sentencesRead({ kind, locale, english, value }) {
     const words = wordsOf(text);
     return { text, words, places: keptPlaces(words, sourceWords) };
   });
-  const keptPerSentence = [...new Set(sentences.flatMap(({ places }) => places))]
-    .filter((place) => place !== NOT_KEPT)
-    .reduce((kept, place) => kept.with(sentenceAt[place], kept[sentenceAt[place]] + 1), source.map(() => 0));
-  const isLeftInEnglish = (place) => keptPerSentence[sentenceAt[place]] >= source[sentenceAt[place]].length * COPY_SHARE;
+  const keptPlacesOfTheLeaf = new Set(sentences.flatMap(({ places }) => places));
+  const keptOf = (sentence) => sentenceAt.filter((at, place) => at === sentence && keptPlacesOfTheLeaf.has(place)).length;
+  const wasLeftInEnglish = source.map((words, sentence) => keptOf(sentence) >= words.length * COPY_SHARE);
 
   return sentences.map(({ text, words, places }) => ({
     text,
     words,
-    counted: words.filter((_, index) => places[index] === NOT_KEPT || isLeftInEnglish(places[index])),
+    counted: words.filter((_, index) => places[index] === NOT_KEPT || wasLeftInEnglish[sentenceAt[places[index]]]),
   }));
 }
 

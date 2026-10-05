@@ -101,7 +101,7 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
   of GA4 sessions per locale, and then only for locales with negligible traffic, in its own PR.
 - Guide `updatedAt` dates are truthful and are not bumped to look fresh.
 - Articles are readable in all 24 languages and indexed only in English, decided 2026-10-04 at the operator's
-  request. The decision stands. What it rests on, as of fix round 2 of PR 39 on 2026-10-05:
+  request. The decision stands. What it rests on, as of fix round 3 of PR 39 on 2026-10-05:
   - Who wrote the text. AI agents translated the 23 other languages and other AI agents reviewed them. No native
     speaker has read any of it. Each translated page says it was translated from English with AI assistance and
     links to the English article.
@@ -112,15 +112,31 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
   - What the gates catch. `scripts/articles-i18n.mjs check` fails a translation whose structure differs from the
     English text, that loses a number, whose body paragraph lost most of its length, or that lists body text as
     kept in English. It fails English left in a translation: a whole text, a text that copies its English, and a
-    paragraph that is partly English, read one sentence at a time. It fails text in another locale's language:
-    an article or the section's strings as a whole, and a text of 40 words or more inside them. `approve` records
-    a hash of the text, its locale and its article. `verify`, Jest and the build then fail on an article file or
-    a set of section strings that is missing, made from an older English text, unapproved, edited after its
-    approval, or copied from another locale or article. `npm run audit:adsense` checks every translated page it
-    is served and fails one that is indexable, canonical to another URL, has `hreflang`, lacks the note or its
-    link to the English page, has hidden words, has more than one `h1`, or has a different number of `h2`, `p`,
-    `li` or article cards than its English page. So a missing or an extra section or paragraph fails. It still
-    has to print 96 sitemap URLs and PASS.
+    sentence left in English inside a translated paragraph, when the sentence has more than three English
+    function words. A title or a saying that the English text has word for word is not counted inside a sentence
+    that is otherwise translated. It fails a text of 40 letters or more with less than half its letters in the
+    script of its locale. Latin is a script like the others, so a Hindi or a Russian paragraph fails in a German
+    article. It fails text in another locale's language: an article or the section's strings as a whole, and
+    nearly every text of 40 words or more inside them. In the round 3 run, which puts one paragraph of another
+    locale into each article, 125 of 20,502 such paragraphs passed: 45 of 88 between Danish and Norwegian, 17 of
+    83 between Czech and Polish, 22 of 356 among Simplified Chinese, Traditional Chinese and Japanese, 19 of 892
+    Turkish ones, and 22 single cases. None passed from another script into a language written in Latin letters.
+    `approve` records a hash of the text, its locale and its article. `verify` runs `check` on every installed
+    file and fails on an article file or a set of section strings that is missing, made from an older English
+    text, unapproved, edited after its approval, or copied from another locale or article.
+  - Where the gates run. `npm run build` runs `verify` before `next build`, through the `validate` script in
+    `package.json`, so the host's build stops on everything above. Jest runs the same rules, and no deploy runs
+    Jest. `verify` loads TypeScript files and needs Node 22.18 or newer. The Vercel build of PR 39 passed with
+    `verify` in it on 2026-10-05, so the host's Node was new enough on that day. `package.json` does not pin a
+    Node version. A build that fails in `verify` on an unknown file extension means the host's Node went back.
+  - What the audit checks. `npm run audit:adsense` checks every translated page it is served and fails one that
+    is indexable, canonical to another URL, has `hreflang`, lacks the note or its link to the English page, has
+    hidden words or has more than one `h1`. It fails a translated article or article list that has a different
+    number of `h2`, `p`, `li` or article cards than its English page, so a missing or an extra section or
+    paragraph fails. That count leaves out the translation note and the view and like counts, and the audit
+    does not compare the blocks of the leaderboard. Both depend on live data, and each locale's copy of a page
+    is cached by itself for 300 seconds, so a count of them failed 46 pages with no defect in the first audit
+    after a data change. The audit still has to print 96 sitemap URLs and PASS.
   - What the approval hash is. It is tamper evidence, not access control. It shows that a text is the one
     `approve` saw, in the place where it saw it, and it catches an accident or a careless edit. The recipe is in
     `src/lib/articles/articleText.ts`, so anyone who can write the repository can compute a hash that matches any
@@ -128,8 +144,11 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
   - What the gates cannot catch. That a sentence is correct, natural or faithful to the English. A false
     sentence added in the right language, a sentence dropped inside a paragraph, two numbers swapped, a changed
     name and a replaced quotation all pass every gate. So do an English sentence with three English function
-    words or fewer, and most single paragraphs of Danish inside a Norwegian article or of Norwegian inside a
-    Danish one. All of that rests on the AI review alone. The reviewers' open doubts for each language are in the
+    words or fewer, the second half of a sentence left in English, a paragraph of under 40 words in another
+    language of the same script, and most single paragraphs of Danish inside a Norwegian article or of Norwegian
+    inside a Danish one. In the round 3 runs a paragraph with its second half left in English passed 20.1% of
+    the time, one with its first half in English 7.7%, and one with only its last sentence in English 25.9%.
+    All of that rests on the AI review alone. The reviewers' open doubts for each language are in the
     body of PR 39. Until a native reader has checked a language, treat its articles as unverified text that an
     AdSense reviewer can open.
 

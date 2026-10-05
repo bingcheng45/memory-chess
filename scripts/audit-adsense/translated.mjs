@@ -5,10 +5,8 @@ const THIN_PAGE_WORDS = 300;
 
 /**
  * The schema.org types an English page declares when it is written prose. Its
- * translation owes the reader a note and the blocks of the English page. A
- * page of interface, as the leaderboard is, declares neither. It owes no note,
- * and its blocks are the rows it has at the moment, or the text it shows when
- * it has none, so they are not compared.
+ * translation owes the reader a note. A page of interface, as the leaderboard
+ * is, declares neither and owes none.
  */
 const PROSE_SCHEMA_TYPES = ["Article", "CollectionPage"];
 
@@ -19,6 +17,7 @@ function alternatesProblem(alternates, where) {
 }
 
 function blockProblem({ page, english, proseType }) {
+  // A page of interface prints the rows it has at the moment, so its blocks say nothing about its translation.
   if (!proseType) return [];
   const differing = differingBlocks(page.blocks, english.blocks);
   const clauses = differing.map(({ name, count, englishCount }, i) => `${count} ${name} where ${i ? "it" : english.path} has ${englishCount}`);

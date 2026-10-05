@@ -85,6 +85,8 @@ describe("the script rule", () => {
     [leaf("vi", "я".repeat(40)), ["0 of 40 letters are Latin, at least half must be"]],
     [leaf("vi", "я".repeat(39)), []],
     [{ ...leaf("de", "शतरंज की स्मृति"), english: "The memory of chess players" }, ["no letter is Latin, the text is in another script"]],
+    [{ ...leaf("ru", "शतरंज की स्मृति"), english: "The memory of chess players" }, ["no letter is Cyrillic, the text is in another script"]],
+    [{ ...leaf("ru", "Die Erinnerung"), english: "The memory of chess players" }, ["no letter is Cyrillic, the text looks untranslated"]],
     [
       {
         ...leaf("ru", `{${LONG_ARGUMENT}, plural, one {# вид} few {# вида} many {# видов} other {# видов}}`),

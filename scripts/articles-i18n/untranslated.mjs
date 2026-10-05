@@ -3,11 +3,9 @@ import { LANGUAGE_LIMITS, englishLead, wordsOf } from "./language.mjs";
 import { ARTICLE, ENGLISH } from "./names.mjs";
 import { MAY_EQUAL_ENGLISH, wordsThatMayStay } from "./paths.mjs";
 
-/** A text that keeps this share of the words of its English text was left in English: a leaf, or one sentence of it. */
 const COPY_SHARE = 0.8;
-/** One word that a translation shares with its English leaf can be a name or a chance. Two in a row were kept. */
+// One word that a translation shares with its English leaf can be a name or chance. Two in a row were kept.
 const MIN_KEPT_RUN = 2;
-const NOT_KEPT = -1;
 const WHAT_TO_DO =
   "Translate it, or keep in English only what the English text has word for word inside a sentence that is otherwise translated, such as a title";
 
@@ -35,64 +33,60 @@ function sentencesOf(text, locale) {
   return [...segments].map(({ segment }) => segment.trim()).filter((sentence) => sentence !== "");
 }
 
-/** The longest run of `source` that `words` has from `start` on, and where `source` has it. */
-function longestRun(words, start, source) {
+function longestSharedRun(words, start, source) {
   return source.reduce(
-    (longest, _, from) => {
+    (longest, _, sourceStart) => {
       let length = 0;
-      while (start + length < words.length && words[start + length] === source[from + length]) length += 1;
-      return length > longest.length ? { length, from } : longest;
+      while (start + length < words.length && words[start + length] === source[sourceStart + length]) length += 1;
+      return length > longest.length ? { length, sourceStart } : longest;
     },
-    { length: 0, from: 0 },
+    { length: 0, sourceStart: 0 },
   );
 }
 
-/** For each of `words`, its place in `source` when both have it inside the same run of words, and `NOT_KEPT` when not. */
-function keptPlaces(words, source) {
-  const places = words.map(() => NOT_KEPT);
+/** The index in `source` of each of `words` that is in a run both have, and `undefined` for any other word. */
+function keptSourceIndexes(words, source) {
+  const indexes = words.map(() => undefined);
   let at = 0;
   while (at < words.length) {
-    const { length, from } = longestRun(words, at, source);
+    const { length, sourceStart } = longestSharedRun(words, at, source);
     const kept = length >= MIN_KEPT_RUN ? length : 0;
-    for (let step = 0; step < kept; step += 1) places[at + step] = from + step;
+    for (let step = 0; step < kept; step += 1) indexes[at + step] = sourceStart + step;
     at += Math.max(kept, 1);
   }
-  return places;
+  return indexes;
 }
 
 /**
- * The sentences of a translated leaf, each with its words and the ones among
- * them that count toward English. A run of words that the English leaf has
- * word for word is a title or a saying kept on purpose and does not count.
- * That holds unless the leaf keeps four in five of the words of the English
- * sentence the run is from: that sentence was left untranslated, and all of
- * it counts.
+ * A run of words that the English leaf has word for word is a title or a
+ * saying kept on purpose, and does not count toward English. A leaf that keeps
+ * four in five of the words of an English sentence left that sentence
+ * untranslated, and all of it counts.
  */
 function sentencesRead({ kind, locale, english, value }) {
   const source = sentencesOf(textOf(kind, english, ENGLISH), ENGLISH).map(wordsOf);
   const sourceWords = source.flat();
-  const sentenceAt = source.flatMap((words, sentence) => words.map(() => sentence));
+  const sentenceOf = source.flatMap((words, sentence) => words.map(() => sentence));
   const sentences = sentencesOf(textOf(kind, value, locale), locale).map((text) => {
     const words = wordsOf(text);
-    return { text, words, places: keptPlaces(words, sourceWords) };
+    return { text, words, kept: keptSourceIndexes(words, sourceWords) };
   });
-  const keptPlacesOfTheLeaf = new Set(sentences.flatMap(({ places }) => places));
-  const keptOf = (sentence) => sentenceAt.filter((at, place) => at === sentence && keptPlacesOfTheLeaf.has(place)).length;
+  const keptInTheLeaf = new Set(sentences.flatMap(({ kept }) => kept));
+  const keptOf = (sentence) => sentenceOf.filter((at, index) => at === sentence && keptInTheLeaf.has(index)).length;
   const wasLeftInEnglish = source.map((words, sentence) => keptOf(sentence) >= words.length * COPY_SHARE);
+  const countsTowardEnglish = (sourceIndex) => sourceIndex === undefined || wasLeftInEnglish[sentenceOf[sourceIndex]];
 
-  return sentences.map(({ text, words, places }) => ({
+  return sentences.map(({ text, words, kept }) => ({
     text,
     words,
-    counted: words.filter((_, index) => places[index] === NOT_KEPT || wasLeftInEnglish[sentenceAt[places[index]]]),
+    counted: words.filter((_, index) => countsTowardEnglish(kept[index])),
   }));
 }
 
 /**
  * Fails a leaf with a sentence of English in it, whether or not it is the
  * English of its path: a paragraph left half translated reads as its locale
- * as a whole. A leaf of short English sentences fails as a whole. The text
- * can be in a third language that shares function words with English, so the
- * failure says the text is not in its locale and does not name a language.
+ * as a whole. A leaf of short English sentences fails as a whole.
  */
 export function englishProseProblems(leaf) {
   const { kind, path, locale } = leaf;
@@ -100,11 +94,11 @@ export function englishProseProblems(leaf) {
   const { maxLead } = LANGUAGE_LIMITS;
   const leadOf = ({ words, counted }) => englishLead(locale, words, counted);
   const sentences = sentencesRead(leaf);
-  const english = sentences.filter((sentence) => leadOf(sentence) > maxLead);
+  const failing = sentences.filter((sentence) => leadOf(sentence) > maxLead);
 
-  if (english.length > 0) {
+  if (failing.length > 0) {
     return [
-      `not in ${locale}: English function words outnumber ${locale} ones by more than ${maxLead} in ${english.length} of ${sentences.length} sentences, the first: "${english[0].text}". ${WHAT_TO_DO}`,
+      `not in ${locale}: English function words outnumber ${locale} ones by more than ${maxLead} in ${failing.length} of ${sentences.length} sentences, the first: "${failing[0].text}". ${WHAT_TO_DO}`,
     ];
   }
   const lead = leadOf({ words: sentences.flatMap(({ words }) => words), counted: sentences.flatMap(({ counted }) => counted) });

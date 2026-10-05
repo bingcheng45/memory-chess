@@ -12,9 +12,11 @@ const LICENSE_PATH = "photo.license";
 const CC_LICENSE_PREFIX = "CC ";
 const SOURCE_TITLE = /^sources\[\d+\]\.title$/;
 const LETTER = /\p{L}/gu;
-/** A run of letters in Latin script, or a run of letters in any other. */
-const SCRIPT_RUN = /[\p{Script=Latin}\p{M}]+|(?:(?!\p{Script=Latin})[\p{L}\p{M}])+/gu;
+const LATIN_RUN = "[\\p{Script=Latin}\\p{M}]+";
+const RUN_IN_ANOTHER_SCRIPT = "(?:(?!\\p{Script=Latin})[\\p{L}\\p{M}])+";
+const SCRIPT_RUN = new RegExp(`${LATIN_RUN}|${RUN_IN_ANOTHER_SCRIPT}`, "gu");
 const HAS_LETTER = /\p{L}/u;
+const HAS_LATIN_LETTER = /\p{Script=Latin}/u;
 const LONG_DASH = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`);
 const ANGLE_BRACKET = /[<>]/;
 const IDEOGRAPHIC_FULL_STOP = String.fromCodePoint(0x3002);
@@ -32,10 +34,8 @@ const GROUP_SEPARATOR = new RegExp(`(?<=\\d)[.,' ${NO_BREAK_SPACES}](?=\\d{3}(?!
 
 const MIN_LETTERS_FOR_SCRIPT_CHECK = 40;
 const THIS_FILE = "scripts/articles-i18n/checks.mjs";
-/** English is written in it, so a text with no letter of another script was left untranslated. */
-const ENGLISH_SCRIPT = "Latin";
 const SCRIPTS = {
-  Latn: [ENGLISH_SCRIPT],
+  Latn: ["Latin"],
   Cyrl: ["Cyrillic"],
   Deva: ["Devanagari"],
   Jpan: ["Hiragana", "Katakana", "Han"],
@@ -151,23 +151,26 @@ function missingScriptRuleProblems(locale) {
 
 const wordsOf = (text) => text.split(/\s+/).filter((word) => HAS_LETTER.test(word));
 
-// A leaf that equals its English leaf is the identical check's business. It
-// passes there only on purpose. A run of letters that the English leaf has
-// too, letter for letter, is a name, a title or a loanword the translator
-// kept on purpose, so it is not counted, whatever script it is in.
+// A run of letters that the English leaf has too, letter for letter, is a name,
+// a title or a loanword the translator kept on purpose, whatever its script.
+function withoutKeptRuns(text, source) {
+  const kept = new Set(source.match(SCRIPT_RUN) ?? []);
+  return text.replace(SCRIPT_RUN, (run) => (kept.has(run) ? " " : run));
+}
+
+// A leaf that equals its English leaf is the identical check's business.
 function scriptProblems({ kind, locale, english, value, isListed }) {
   const scripts = SCRIPTS[scriptOf(locale)];
   if (scripts === undefined || value === english) return [];
   const text = textOf(kind, value, locale);
   const source = textOf(kind, english, ENGLISH);
-  const sourceRuns = new Set(source.match(SCRIPT_RUN) ?? []);
-  const counted = text.replace(SCRIPT_RUN, (run) => (sourceRuns.has(run) ? " " : run)).match(LETTER) ?? [];
+  const counted = withoutKeptRuns(text, source).match(LETTER) ?? [];
   const inScript = new RegExp(scripts.map((script) => `\\p{Script_Extensions=${script}}`).join("|"), "u");
   const expected = counted.filter((letter) => inScript.test(letter)).length;
   const hasNoLetterInScript =
     !isListed && !inScript.test(text) && wordsOf(source).length > MAX_WORDS_THAT_MAY_STAY && HAS_LETTER.test(text);
-  const whatThatMeans = scripts.includes(ENGLISH_SCRIPT) ? "is in another script" : "looks untranslated";
-  if (hasNoLetterInScript) return [`no letter is ${scripts.join(" or ")}, the text ${whatThatMeans}`];
+  const whatItLooksLike = HAS_LATIN_LETTER.test(text) ? "looks untranslated" : "is in another script";
+  if (hasNoLetterInScript) return [`no letter is ${scripts.join(" or ")}, the text ${whatItLooksLike}`];
   if ((text.match(LETTER) ?? []).length < MIN_LETTERS_FOR_SCRIPT_CHECK || expected * 2 >= counted.length) return [];
   return [`${expected} of ${counted.length} letters are ${scripts.join(" or ")}, at least half must be`];
 }

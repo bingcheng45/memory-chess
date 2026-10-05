@@ -2,8 +2,8 @@ import type { Article } from "../schema";
 
 const article: Article = {
   slug: "adriaan-de-groot",
-  publishedAt: "2026-10-03T00:00:00.000Z",
-  updatedAt: "2026-10-03T00:00:00.000Z",
+  publishedAt: "2026-10-05T00:00:00.000Z",
+  updatedAt: "2026-10-05T00:00:00.000Z",
   title: "Adriaan de Groot's 1944 test of chess memory, by the numbers",
   description: "Adriaan de Groot tested four players on chess positions shown for 2 to 15 seconds in 1944. Here are his real scores and what later research changed.",
   person: {

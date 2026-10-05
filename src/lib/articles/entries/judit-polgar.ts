@@ -2,8 +2,8 @@ import type { Article } from "../schema";
 
 const article: Article = {
   slug: "judit-polgar",
-  publishedAt: "2026-10-03T00:00:00.000Z",
-  updatedAt: "2026-10-03T00:00:00.000Z",
+  publishedAt: "2026-10-05T00:00:00.000Z",
+  updatedAt: "2026-10-05T00:00:00.000Z",
   title: "How Judit Polgár played blindfold chess at age seven",
   description: "Judit Polgár played chess blindfold at 7 and was a grandmaster at 15. Her blindfold results, what she says about patterns, and a drill to try.",
   person: {

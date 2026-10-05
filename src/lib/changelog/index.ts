@@ -41,7 +41,7 @@ export interface ChangelogTable {
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
     version: "1.2.5",
-    publishedAt: "2026-10-04T16:42:44.000+08:00",
+    publishedAt: "2026-10-05T14:40:00.000+08:00",
     title: "New: articles about the people behind chess memory",
     summary:
       "A new Articles section opens with three profiles: Magnus Carlsen, Adriaan de Groot and Judit Polgár. Each one tells a memory feat, sets it beside the research that explains it, and ends with a drill you can play.",

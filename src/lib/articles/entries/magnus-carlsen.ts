@@ -2,8 +2,8 @@ import type { Article } from "../schema";
 
 const article: Article = {
   slug: "magnus-carlsen",
-  publishedAt: "2026-10-03T00:00:00.000Z",
-  updatedAt: "2026-10-03T00:00:00.000Z",
+  publishedAt: "2026-10-05T00:00:00.000Z",
+  updatedAt: "2026-10-05T00:00:00.000Z",
   title: "How Magnus Carlsen names a famous game from one position",
   description: "Filmed tests and blindfold displays show what Magnus Carlsen's chess memory can do, and chunk research suggests it rests on studied games.",
   person: {

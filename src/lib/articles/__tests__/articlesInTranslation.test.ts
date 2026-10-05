@@ -62,7 +62,7 @@ describe("getArticle in a translated locale", () => {
     expect(german.title).toBe(`DE ${ENGLISH_TITLE}`);
     expect(textOf(german)).toStrictEqual(markEveryString(textOf(english), "DE "));
     expect(german.slug).toBe("magnus-carlsen");
-    expect(german.publishedAt).toBe("2026-10-03T00:00:00.000Z");
+    expect(german.publishedAt).toBe("2026-10-05T00:00:00.000Z");
     expect(german.photo.src).toBe("/images/articles/magnus-carlsen.jpg");
     expect(german.photo.licenseUrl).toBe("https://creativecommons.org/licenses/by/4.0");
     expect(german.drill).toMatchObject({ pieceCount: 12, memorizeTime: 5 });
@@ -103,8 +103,8 @@ describe("getArticleSummaries in a translated locale", () => {
     expect(summaries.find((summary) => summary.slug === SLUG)).toMatchObject({
       title: `DE ${ENGLISH_TITLE}`,
       person: { name: "DE Magnus Carlsen", role: "DE World Chess Champion, 2013-2023" },
-      publishedAt: "2026-10-03T00:00:00.000Z",
-      publishedLabel: "3. Okt. 2026",
+      publishedAt: "2026-10-05T00:00:00.000Z",
+      publishedLabel: "5. Okt. 2026",
       photo: {
         src: "/images/articles/magnus-carlsen.jpg",
         width: 840,
@@ -120,7 +120,7 @@ describe("getArticleSummaries in a translated locale", () => {
 
     expect(summaries.find((summary) => summary.slug === SLUG)).toMatchObject({
       title: ENGLISH_TITLE,
-      publishedLabel: "Oct 3, 2026",
+      publishedLabel: "Oct 5, 2026",
     });
   });
 
@@ -170,7 +170,7 @@ describe("getNextArticle in a translated locale", () => {
 
     expect(next?.slug).toBe(nextSlug);
     expect(next?.title).toBe(`DE ${englishOf(nextSlug).title}`);
-    expect(next?.publishedLabel).toBe("3. Okt. 2026");
+    expect(next?.publishedLabel).toBe("5. Okt. 2026");
     expect(await getNextArticle("no-such-article", "de")).toBeUndefined();
   });
 

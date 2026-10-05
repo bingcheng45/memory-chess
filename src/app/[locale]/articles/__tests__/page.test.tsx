@@ -122,7 +122,7 @@ describe("ArticlesPage", () => {
     expect(listProps().articles[0]).toMatchObject({
       slug: "magnus-carlsen",
       title: "How Magnus Carlsen names a famous game from one position",
-      publishedLabel: "Oct 3, 2026",
+      publishedLabel: "Oct 5, 2026",
     });
     expect(Object.keys(listProps()).sort()).toEqual(["articles", "heading", "stats"]);
   });
@@ -211,7 +211,7 @@ describe("ArticlesPage in a locale the articles are translated into", () => {
       slug: "magnus-carlsen",
       title: "DE How Magnus Carlsen names a famous game from one position",
       person: { name: "DE Magnus Carlsen" },
-      publishedLabel: "3. Okt. 2026",
+      publishedLabel: "5. Okt. 2026",
     });
     expect(screen.getByRole("heading", { level: 1, name: "Artikel" })).toBeInTheDocument();
     expect(

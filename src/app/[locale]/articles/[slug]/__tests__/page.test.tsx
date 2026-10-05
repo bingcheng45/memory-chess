@@ -86,7 +86,7 @@ describe("ArticleRoute", () => {
       charsPerSecond: 150,
     });
     expect(pageProps().article.title).toBe(ENGLISH_TITLE);
-    expect(pageProps().nextArticle?.publishedLabel).toBe("Oct 3, 2026");
+    expect(pageProps().nextArticle?.publishedLabel).toBe("Oct 5, 2026");
     expect(loadArticleText).not.toHaveBeenCalled();
   });
 
@@ -123,7 +123,7 @@ describe("ArticleRoute in a locale the articles are translated into", () => {
     expect(article.photo.src).toBe("/images/articles/magnus-carlsen.jpg");
     expect(nextArticle?.slug).toBe(nextSlug);
     expect(nextArticle?.title).toMatch(/^DE /);
-    expect(nextArticle?.publishedLabel).toBe("3. Okt. 2026");
+    expect(nextArticle?.publishedLabel).toBe("5. Okt. 2026");
     expect(counts).toEqual(COUNTS);
   });
 

@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "approvedHash": "a3009a89d1aeb6a644235a2be6b4a31fe78d95880ce6ac16fba2da2dd34c32d6",
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "De test van Adriaan de Groot uit 1944 naar schaakgeheugen, in cijfers",
+    "description": "In 1944 testte Adriaan de Groot vier spelers op schaakstellingen die 2 tot 15 seconden te zien waren. Hier staan zijn echte scores en wat later onderzoek veranderde.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "Nederlands schaakmeester en psycholoog"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot als jonge man, rond 1930",
+      "author": "Onbekende fotograaf",
+      "license": "Publiek domein",
+      "changes": "Bijgesneden"
+    },
+    "facts": {
+      "born": "26 oktober 1914, Santpoort, Nederland",
+      "died": "14 augustus 2006, op 91-jarige leeftijd",
+      "country": "Nederland",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "Haalde 93% bij het reproduceren van stellingen die hij 2 tot 15 seconden had gezien"
+    },
+    "drill": {
+      "why": "De teststelling Rohacek tegen Rabar van De Groot had 22 stukken, en Max Euwe zag de stelling 5 seconden lang."
+    },
+    "sections": [
+      {
+        "heading": "Vier spelers en een paar seconden",
+        "paragraphs": [
+          "In 1944 liet Adriaan de Groot Max Euwe een schaakstelling zien en nam haar vijf seconden later weer weg. De stelling kwam uit een partij tussen Rohacek en Rabar, na de 20e zet van wit, met 22 stukken op het bord. Euwe, wereldkampioen van 1935 tot 1937, dicteerde daarna waar elk stuk stond. Hij had er alle 22 goed.",
+          "De Groot, zelf een meester, deed dezelfde test, voegde één pion toe die er niet stond en haalde 21 punten. A. Fast, de kampioen van Utrecht van 1942, zette 17 stukken op het goede veld, maar achtte het materiaal gelijk terwijl dat niet zo was, en haalde 16 punten. G. P. Hauer, een zwakkere klassespeler, haalde er 9.",
+          "Navertellingen spreken elkaar tegen over de kijktijd en de percentages, daarom komen de cijfers hieronder uit het eigen boek van De Groot."
+        ]
+      },
+      {
+        "heading": "Een meester die meesters onderzocht",
+        "paragraphs": [
+          "De Groot speelde voor Nederland op de Schaakolympiades van 1937 en 1939. Tussen 1938 en 1943 schreef hij op wat spelers zeiden terwijl ze hardop nadachten over hun zetkeuze. Onder zijn proefpersonen waren de grootmeesters Keres, Aljechin, Flohr, Fine, Euwe en Tartakower.",
+          "Volgens zijn tellingen keken grootmeesters niet verder vooruit dan experts en bekeken ze ook niet meer zetten. ‘De meester rekent niet per se dieper,’ schreef hij. De Groot vermoedde dat het verschil zichtbaar werd in de eerste seconden dat iemand naar het bord keek, en hij ontwierp het experiment van 1944 om dat idee te toetsen."
+        ]
+      },
+      {
+        "heading": "Wat het experiment van 1944 mat",
+        "paragraphs": [
+          "Elke klasse had één speler. Euwe vertegenwoordigde de grootmeesters, De Groot de meesters, Fast de experts en Hauer de zwakkere klassespelers.",
+          "Elke stelling kwam uit een meesterpartij en bleef 2 tot 10 seconden in beeld, met één keer 15 seconden. De twee zwakkere proefpersonen kregen bij de kortste proeven 3 tot 4 seconden, zodat ze niet op nul zouden uitkomen. Elke proefpersoon werd gevraagd ongeveer een halve minuut te nemen om te ordenen wat hij had onthouden. Euwe en De Groot dicteerden de stelling daarna uit het hoofd, en Fast en Hauer zetten haar op een bord neer.",
+          "De puntentelling gaf één punt voor elk goed stuk en trok punten af voor stukken die waren toegevoegd, weggelaten of verschoven. De Groot liet twee stellingen vallen, de eerste van de reeks en een stelling met een timingfout, en telde er veertien mee, met 7 tot 26 stukken. Van de 234 te halen punten scoorden de vier proefpersonen als volgt.",
+          "Euwe haalde 217 punten, oftewel 93%, met vijf foutloze stellingen.",
+          "De Groot haalde 217 punten, oftewel 93%, met vier foutloze.",
+          "Fast haalde 158 punten, oftewel 68%, zonder één foutloze stelling.",
+          "Hauer haalde 119 punten, oftewel 51%, zonder één foutloze stelling.",
+          "Daarna zette De Groot twee proeven met een lange kijktijd apart, van 15 en 7 seconden, en twee proeven die door een concentratieverlies waren bedorven. In de overige tien, met beoogde kijktijden van 2, 3 of 5 seconden, waren de gemiddelde scores 93,0%, 92,6%, 72,3% en 51,1%.",
+          "Beide tabellen zijn van hem, en dat is waarschijnlijk de reden dat navertellingen de expert 68% of 72% geven. De kijktijd was nooit een vaste vijf seconden.",
+          "Het meest interesseerde De Groot de kloof in het midden, die hij ‘de kloof die de meester van de niet-meester scheidt’ noemde. Zijn verklaring was dat een meester geen 22 losse stukken onthoudt. Hij ziet een grote groep stukken als één eenheid, omdat hij weet hoe zo'n groep ontstaat en waar ze voor dient.",
+          "Een handvol van zulke eenheden beslaat het bord, en volgens De Groot heeft een zwakkere speler er minder. Latere onderzoekers noemden die eenheden chunks."
+        ]
+      },
+      {
+        "heading": "Van een Nederlands proefschrift naar willekeurige stellingen",
+        "paragraphs": [
+          "De Groot presenteerde het werk in 1946 in zijn proefschrift aan de Universiteit van Amsterdam, Het denken van den schaker. Mouton gaf in 1965 in Den Haag de Engelse editie uit, Thought and Choice in Chess.",
+          "In 1973 herhaalden William Chase en Herbert Simon de test aan Carnegie Mellon met een meester, een speler van klasse A en een beginner. Ze legden de kijktijd vast op 5 seconden. Hun middenspelstellingen hadden 24 tot 26 stukken, en de meester onthield ongeveer twee keer zoveel stukken als de speler van klasse A.",
+          "Ze namen elke reconstructie op video op en beschouwden een pauze van meer dan 2 seconden als de grens tussen twee chunks. De eerste chunk van de meester besloeg gemiddeld 3,8 stukken tegen 2,6 bij de speler van klasse A, en hij maakte 7,7 chunks per stelling tegen 5,7. Van zijn 77 chunks over veertien stellingen bevatten er 47 een pionnenketen, en Simon en Chase telden 10 stellingen met een gerokeerde koning.",
+          "Hun toevoeging was een controle: dezelfde stukken op willekeurige velden. Simon en Chase meldden dat alle spelers dan ongeveer drie of vier stukken onthielden, minder dan de beginner aankon bij echte stellingen. Ze merkten op dat W. Lemmens en R. W. Jongman hetzelfde resultaat in het Amsterdamse laboratorium hadden gevonden en nooit hadden gepubliceerd.",
+          "In de eigen inleiding van Chase en Simon wordt het resultaat met willekeurige stellingen aan De Groot toegeschreven, en veel latere beschrijvingen herhalen dat. In zijn boek staat geen proef met willekeurige stellingen."
+        ]
+      },
+      {
+        "heading": "Wat later onderzoek veranderde",
+        "paragraphs": [
+          "Leerboeken vatten dat resultaat op als bewijs dat een meester op betekenisloze stellingen helemaal geen voordeel heeft. In 1996 toetsten Fernand Gobet en Herbert Simon die lezing aan dertien experimenten met kijktijden van 10 seconden of korter. In twaalf van de dertien onthield de sterkste groep meer willekeurig geplaatste stukken dan de zwakste. De uitzondering was de eigen studie van Chase en Simon, waar de meester het slechtst scoorde.",
+          "Het voordeel is klein. Gobet en Simon schatten het op ongeveer één extra stuk per 400 Elopunten op willekeurige stellingen, tegen ongeveer vijf extra stukken op partijstellingen. In een overzichtsartikel uit 1998 gaf Gobet de gemiddelden bij 5 seconden: 5,5 willekeurige stukken voor meesters en 2,6 voor spelers onder klasse B.",
+          "De verklaring laat het idee van De Groot overeind. Een speler met een zeer grote voorraad patronen herkent er in een wirwar soms bij toeval één. Willekeurige stellingen verkleinen het voordeel van de expert, maar nemen het niet weg. Gobet en Simon voegden eraan toe dat kleine steekproeven zo'n klein effect verbergen, en de studie van 1973 had drie proefpersonen."
+        ]
+      },
+      {
+        "heading": "Probeer de test van De Groot",
+        "paragraphs": [
+          "Stel Memory Chess in op 22 stukken en 5 seconden. Dat komt overeen met de omvang van De Groots stelling Rohacek tegen Rabar en met de tijd die Euwe had om ernaar te kijken. Bouw het bord weer op en bereken welk deel van de stukken je goed hebt geplaatst. Ongeveer de helft is waar Hauer eindigde, ongeveer 70% is waar Fast eindigde, en 93% is het gemiddelde van Euwe en De Groot.",
+          "De vergelijking is grof, want De Groot trok ook punten af voor fouten. Kijk daarna welke stukken je hebt onthouden. Waarschijnlijk kwamen ze in groepen, zoals een pionnenketen of een gerokeerde koning."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Onderbouwt: de datum 1944, de vier proefpersonen met hun namen en klassen, kijktijden van 2 tot 15 seconden, de langere tijden voor de zwakkere proefpersonen, de pauze van een halve minuut, wie dicteerde en wie het bord opzette, de regels voor de puntentelling, de stelling Rohacek tegen Rabar met haar kijktijd van 5 seconden en vier scores, tabel 13 (217, 217, 158, 119 van 234), tabel 14 (de gemiddelden van de tien proeven), beide citaten, de hardop-denksessies van 1938 tot 1943, de zes grootmeesters, het Amsterdamse proefschrift van 1946 en het copyright van Mouton uit 1965. De tekst bevat geen experiment met willekeurige stellingen."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Onderbouwt: zoekstatistieken die grootmeesters niet van zwakkere spelers onderscheidden, de cijfers 93% en 72% zoals ze later zijn aangehaald, de meester die ongeveer twee keer zoveel stukken onthield als de speler van klasse A, chunkgroottes 3,8 en 2,6, aantallen chunks 7,7 en 5,7, de pauze van 2 seconden, 47 pionnenketens en 10 stellingen met een gerokeerde koning onder 77 chunks, drie of vier stukken op willekeurige stellingen en het onuitgegeven resultaat van Lemmens en Jongman."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Onderbouwt: de drie proefpersonen, de kijktijd van 5 seconden, middenspelstellingen van 24 tot 26 stukken, reconstructies op video, 77 chunks over veertien stellingen waarvan 47 met een pionnenketen, chunkgroottes 3,8 en 2,6, aantallen chunks 7,7 en 5,7, en de eigen samenvatting van de auteurs van De Groot als een experiment van 5 seconden met willekeurige stellingen."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Onderbouwt: dertien experimenten, kijktijden van hooguit 10 seconden, twaalf van de dertien in het voordeel van de sterkste groep, de uitzondering van Chase en Simon, één stuk per 400 Elopunten op willekeurige stellingen tegen ongeveer vijf op partijstellingen, de status van het oude resultaat in leerboeken, het punt over kleine steekproeven en de verklaring op basis van chunks."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Onderbouwt: de kijktijden van De Groot van 2 tot 15 seconden, Euwe als grootmeester en zijn jaren als wereldkampioen, de pauze van een halve minuut, de opzet van Chase en Simon met 5 seconden, de status van het resultaat met willekeurige stellingen in leerboeken en de gemiddelden van 5,5 tegen 2,6 stukken."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Onderbouwt: de opzet met vier proefpersonen, de kijktijden van 2 tot 15 seconden, en de stelling dat de controle met willekeurige stellingen vaak ten onrechte aan De Groot wordt toegeschreven en van Chase en Simon is."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Onderbouwt: geboorte- en sterfdata en -plaatsen, de Olympiades van 1937 en 1939, het proefschrift van 1946 en de Engelse editie van 1965."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Onderbouwt: geboorte- en sterfdata en -plaatsen, de leeftijd van 91. Ook een voorbeeld van een navertelling die de kijktijd op 3 tot 4 seconden stelt."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Onderbouwt: De Groot in de Nederlandse teams van 1937 en 1939."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Onderbouwt: De Groot in de Nederlandse teams van 1937 en 1939."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Onderbouwt: de teststelling met 22 stukken en de scores 22, 21, 16 en 9."
+      }
+    ]
+  }
+}

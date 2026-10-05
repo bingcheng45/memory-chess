@@ -1,86 +1,136 @@
-import { ARTICLE_LIST_COPY } from "@/lib/articles/copy";
-import { makeArticle, summaryOf } from "@/lib/articles/__tests__/fixtures";
+import { makeArticle, markEveryString, summaryOf } from "@/lib/articles/__tests__/fixtures";
+import { textOf, withText } from "@/lib/articles/articleText";
 import { buildArticleListMetadata, buildArticleMetadata } from "@/lib/seo/articleMetadata";
-import { LEARN_AUTHOR } from "@/lib/seo/learn/schema";
+import messages from "../../../../messages/en.json";
 
-const SITE = "https://thememorychess.com";
+const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } };
+const PORTRAIT_URL = "https://thememorychess.com/images/articles/magnus-carlsen.jpg";
+const DESCRIPTION =
+  "Alder looked at a position for a few seconds and rebuilt it. This fixture says how Alder ran the test and what it showed about recall.";
+
+const english = makeArticle(0, { updatedAt: "2026-03-05T00:00:00.000Z" });
+const german = withText(english, markEveryString(textOf(english), "DE "));
 
 describe("buildArticleMetadata", () => {
-  const article = makeArticle(0, { updatedAt: "2026-03-05T00:00:00.000Z" });
-  const metadata = buildArticleMetadata(article);
-  const portrait = {
-    url: `${SITE}${article.photo.src}`,
-    width: article.photo.width,
-    height: article.photo.height,
-    alt: article.photo.alt,
-  };
-
-  it("uses the article's own title and description", () => {
-    expect(metadata.title).toBe(article.title);
-    expect(metadata.description).toBe(article.description);
-  });
-
-  it("has a bare self canonical and no language alternates", () => {
-    expect(metadata.alternates).toEqual({ canonical: `/articles/${article.slug}` });
-  });
-
-  it("shares as an article with the portrait as its image", () => {
-    expect(metadata.openGraph).toMatchObject({
-      type: "article",
-      url: `${SITE}/articles/${article.slug}`,
-      title: article.title,
-      description: article.description,
-      publishedTime: article.publishedAt,
-      modifiedTime: article.updatedAt,
-      authors: [LEARN_AUTHOR.name],
-      images: [portrait],
-    });
-    expect(metadata.twitter).toMatchObject({
-      card: "summary",
-      title: article.title,
-      description: article.description,
-      images: [portrait.url],
+  it("gives the English page exactly the metadata it has always had, with no robots of its own", () => {
+    expect(buildArticleMetadata(english, "en")).toStrictEqual({
+      title: "How Alder rebuilt a board from memory",
+      description: DESCRIPTION,
+      alternates: { canonical: "/articles/alder-fixture" },
+      openGraph: {
+        type: "article",
+        url: "https://thememorychess.com/articles/alder-fixture",
+        title: "How Alder rebuilt a board from memory",
+        description: DESCRIPTION,
+        publishedTime: "2026-01-01T00:00:00.000Z",
+        modifiedTime: "2026-03-05T00:00:00.000Z",
+        authors: ["Bing Cheng"],
+        images: [{ url: PORTRAIT_URL, width: 840, height: 1050, alt: "Alder Fixture at a chess board" }],
+      },
+      twitter: {
+        card: "summary",
+        title: "How Alder rebuilt a board from memory",
+        description: DESCRIPTION,
+        images: [PORTRAIT_URL],
+      },
+      authors: [{ name: "Bing Cheng", url: "https://thememorychess.com/about" }],
     });
   });
 
-  it("names the author", () => {
-    expect(metadata.authors).toEqual([{ name: LEARN_AUTHOR.name, url: LEARN_AUTHOR.url }]);
+  it("gives a translated page its own words, a canonical to itself, noindex and no language alternates", () => {
+    expect(buildArticleMetadata(german, "de")).toStrictEqual({
+      title: "DE How Alder rebuilt a board from memory",
+      description: `DE ${DESCRIPTION}`,
+      alternates: { canonical: "/de/articles/alder-fixture" },
+      robots: NOINDEX_FOLLOW,
+      openGraph: {
+        type: "article",
+        url: "https://thememorychess.com/de/articles/alder-fixture",
+        title: "DE How Alder rebuilt a board from memory",
+        description: `DE ${DESCRIPTION}`,
+        publishedTime: "2026-01-01T00:00:00.000Z",
+        modifiedTime: "2026-03-05T00:00:00.000Z",
+        authors: ["Bing Cheng"],
+        images: [{ url: PORTRAIT_URL, width: 840, height: 1050, alt: "DE Alder Fixture at a chess board" }],
+      },
+      twitter: {
+        card: "summary",
+        title: "DE How Alder rebuilt a board from memory",
+        description: `DE ${DESCRIPTION}`,
+        images: [PORTRAIT_URL],
+      },
+      authors: [{ name: "Bing Cheng", url: "https://thememorychess.com/about" }],
+    });
   });
 });
 
 describe("buildArticleListMetadata", () => {
-  const newest = summaryOf(makeArticle(0));
-  const metadata = buildArticleListMetadata(newest);
+  const copy = {
+    title: "Articles on chess players and their memory",
+    description:
+      "Profiles of chess players and memory researchers. Each one gives the documented feat, the research that explains it, and a drill to try.",
+  };
 
-  it("uses the list copy with a bare self canonical and no language alternates", () => {
-    expect(metadata.title).toBe(ARTICLE_LIST_COPY.meta.title);
-    expect(metadata.description).toBe(ARTICLE_LIST_COPY.meta.description);
-    expect(metadata.alternates).toEqual({ canonical: "/articles" });
+  it("gives the English list exactly the metadata it has always had, with no robots of its own", () => {
+    expect(buildArticleListMetadata(summaryOf(english), "en", copy)).toStrictEqual({
+      title: "Articles on chess players and their memory",
+      description: copy.description,
+      alternates: { canonical: "/articles" },
+      openGraph: {
+        type: "website",
+        url: "https://thememorychess.com/articles",
+        title: "Articles on chess players and their memory",
+        description: copy.description,
+        images: [{ url: PORTRAIT_URL, width: 840, height: 1050, alt: "Alder Fixture at a chess board" }],
+      },
+      twitter: {
+        card: "summary",
+        title: "Articles on chess players and their memory",
+        description: copy.description,
+        images: [PORTRAIT_URL],
+      },
+    });
   });
 
-  it("shares with the newest article's portrait", () => {
-    expect(metadata.openGraph).toMatchObject({
-      type: "website",
-      url: `${SITE}/articles`,
-      title: ARTICLE_LIST_COPY.meta.title,
-      description: ARTICLE_LIST_COPY.meta.description,
-      images: [
-        {
-          url: `${SITE}${newest.photo.src}`,
-          width: newest.photo.width,
-          height: newest.photo.height,
-          alt: newest.photo.alt,
-        },
-      ],
+  it("gives a translated list the copy it is handed, a canonical to itself, noindex and no language alternates", () => {
+    const germanCopy = { title: "Artikel über Schachspieler", description: "Porträts von Schachspielern." };
+
+    expect(buildArticleListMetadata(summaryOf(german), "de", germanCopy)).toStrictEqual({
+      title: "Artikel über Schachspieler",
+      description: "Porträts von Schachspielern.",
+      alternates: { canonical: "/de/articles" },
+      robots: NOINDEX_FOLLOW,
+      openGraph: {
+        type: "website",
+        url: "https://thememorychess.com/de/articles",
+        title: "Artikel über Schachspieler",
+        description: "Porträts von Schachspielern.",
+        images: [{ url: PORTRAIT_URL, width: 840, height: 1050, alt: "DE Alder Fixture at a chess board" }],
+      },
+      twitter: {
+        card: "summary",
+        title: "Artikel über Schachspieler",
+        description: "Porträts von Schachspielern.",
+        images: [PORTRAIT_URL],
+      },
     });
-    expect(metadata.twitter).toMatchObject({ card: "summary", images: [`${SITE}${newest.photo.src}`] });
+  });
+
+  it("prefixes a region-qualified locale as the router does", () => {
+    const metadata = buildArticleListMetadata(summaryOf(german), "pt-BR", copy);
+
+    expect(metadata.alternates).toStrictEqual({ canonical: "/pt-BR/articles" });
+    expect(metadata.openGraph).toHaveProperty("url", "https://thememorychess.com/pt-BR/articles");
   });
 });
 
-describe("the list page's meta copy", () => {
+describe("the English list page's meta copy", () => {
   it("fits a search result", () => {
-    expect(ARTICLE_LIST_COPY.meta.title.length).toBeLessThanOrEqual(60);
-    expect(ARTICLE_LIST_COPY.meta.description.length).toBeGreaterThanOrEqual(120);
-    expect(ARTICLE_LIST_COPY.meta.description.length).toBeLessThanOrEqual(155);
+    const { title, description } = messages.articles.meta;
+
+    expect(title.length).toBeGreaterThan(0);
+    expect(title.length).toBeLessThanOrEqual(60);
+    expect(description.length).toBeGreaterThanOrEqual(120);
+    expect(description.length).toBeLessThanOrEqual(155);
   });
 });

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { ARTICLE_LIST_COPY } from "@/lib/articles/copy";
 import { absoluteUrl, ARTICLES_PATH, articlePath } from "@/lib/articles/paths";
-import type { Article, ArticleSummary, PortraitPhoto } from "@/lib/articles/schema";
+import type { Article, ArticleListMeta, ArticleSummary, PortraitPhoto } from "@/lib/articles/schema";
+import { localizedPath, localizedUrl } from "@/lib/seo/alternates";
+import { robotsFor } from "@/lib/seo/englishOnly";
 import { LEARN_AUTHOR } from "@/lib/seo/learn/schema";
 
 function portraitImage(photo: PortraitPhoto) {
@@ -13,17 +14,33 @@ function portraitImage(photo: PortraitPhoto) {
   };
 }
 
-export function buildArticleMetadata(article: Article): Metadata {
-  const path = articlePath(article.slug);
+// A translated page is canonical to itself with no language alternates, because
+// translations are never offered to search.
+function addressOf(path: string, locale: string) {
+  const robots = robotsFor(ARTICLES_PATH, locale);
+
+  return {
+    url: localizedUrl(path, locale),
+    indexing: {
+      alternates: { canonical: localizedPath(path, locale) },
+      // An `undefined` robots key would erase the layout's own robots, so the
+      // English page carries no key at all.
+      ...(robots ? { robots } : {}),
+    },
+  };
+}
+
+export function buildArticleMetadata(article: Article, locale: string): Metadata {
+  const { url, indexing } = addressOf(articlePath(article.slug), locale);
   const image = portraitImage(article.photo);
 
   return {
     title: article.title,
     description: article.description,
-    alternates: { canonical: path },
+    ...indexing,
     openGraph: {
       type: "article",
-      url: absoluteUrl(path),
+      url,
       title: article.title,
       description: article.description,
       publishedTime: article.publishedAt,
@@ -41,17 +58,21 @@ export function buildArticleMetadata(article: Article): Metadata {
   };
 }
 
-export function buildArticleListMetadata(newest: ArticleSummary): Metadata {
-  const { title, description } = ARTICLE_LIST_COPY.meta;
+export function buildArticleListMetadata(
+  newest: ArticleSummary,
+  locale: string,
+  { title, description }: ArticleListMeta,
+): Metadata {
+  const { url, indexing } = addressOf(ARTICLES_PATH, locale);
   const image = portraitImage(newest.photo);
 
   return {
     title,
     description,
-    alternates: { canonical: ARTICLES_PATH },
+    ...indexing,
     openGraph: {
       type: "website",
-      url: absoluteUrl(ARTICLES_PATH),
+      url,
       title,
       description,
       images: [image],

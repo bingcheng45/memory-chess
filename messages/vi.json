@@ -370,5 +370,76 @@
   "changelog": {
     "bannerCta": "Xem có gì mới",
     "bannerLabel": "Cập nhật Memory Chess"
+  },
+  "articles": {
+    "meta": {
+      "title": "Bài viết về các kỳ thủ cờ vua và trí nhớ của họ",
+      "description": "Chân dung các kỳ thủ cờ vua và nhà nghiên cứu trí nhớ. Mỗi bài nêu thành tích đã được ghi lại, nghiên cứu giải thích thành tích đó và một bài tập để bạn thử."
+    },
+    "list": {
+      "heading": "Bài viết",
+      "sub": "Các kỳ thủ cờ vua và nhà nghiên cứu trí nhớ, mỗi lần một chân dung.",
+      "aboutHeading": "Các bài viết này được làm như thế nào",
+      "about1": "Mỗi bài viết theo một kỳ thủ hoặc một nhà nghiên cứu và một câu hỏi về trí nhớ của họ. Nhân vật có thể là một kỳ thủ nổi tiếng nhờ kỳ tích ghi nhớ, hoặc một nhà nghiên cứu đã đo xem các kỳ thủ nhớ được gì sau vài giây.",
+      "about2": "Bài nào cũng có các phần giống nhau. Ảnh chân dung kèm tên nhiếp ảnh gia và giấy phép. Hồ sơ nhanh nêu ngày tháng, danh hiệu và thành tích trí nhớ làm nên tên tuổi nhân vật. Phần kể chuyện đặt thành tích đó cạnh nghiên cứu giải thích nó. Danh sách nguồn cho biết từng nhận định đến từ đâu. Bài tập ở cuối mở một vòng Memory Chess với số quân và thời gian xem mà câu chuyện gợi ý.",
+      "about3": "Các bài viết được nghiên cứu và soạn thảo với sự hỗ trợ của AI, dựa trên các nguồn đã công bố như phỏng vấn, báo cáo giải đấu, sách và bài nghiên cứu. Sau đó, một bước kiểm tra riêng đối chiếu từng ngày tháng, con số và trích dẫn với các nguồn ấy trước khi đăng. Khi các nguồn không thống nhất, bài viết nói rõ ai đã đưa tin gì. Một giai thoại mà các nguồn chỉ kể lại như một câu chuyện thì được kể như một câu chuyện. Các bài viết bằng ngôn ngữ khác được dịch từ bản tiếng Anh với sự hỗ trợ của AI, và mỗi bản dịch đều được kiểm tra trước khi đăng.",
+      "corrections": "Nếu có chỗ nào sai, hãy <link>gửi cho chúng tôi lời đính chính</link>."
+    },
+    "sort": {
+      "label": "Sắp xếp",
+      "group": "Sắp xếp bài viết",
+      "options": {
+        "newest": "Mới nhất",
+        "views": "Xem nhiều nhất",
+        "likes": "Thích nhiều nhất"
+      }
+    },
+    "pager": {
+      "label": "Các trang",
+      "previous": "Trang trước",
+      "next": "Trang sau",
+      "page": "Trang {page}",
+      "showing": "Hiển thị {first} đến {last} trong tổng số {total}"
+    },
+    "counts": {
+      "views": "{count, plural, other {# lượt xem}}",
+      "likes": "{count, plural, other {# lượt thích}}"
+    },
+    "like": {
+      "button": "Thích bài viết này",
+      "failed": "Chưa lưu được. Hãy thử lại."
+    },
+    "page": {
+      "backToList": "Tất cả bài viết",
+      "showAll": "Hiện toàn bộ nội dung",
+      "byline": "Tác giả: <author>{name}</author>",
+      "authorshipNote": "Bài viết được nghiên cứu và soạn thảo với sự hỗ trợ của AI từ các nguồn nêu bên dưới. Mọi dữ kiện đã được đối chiếu với các nguồn đó trước khi đăng.",
+      "translationNote": "Dịch từ tiếng Anh với sự hỗ trợ của AI. Bản tiếng Anh là bản gốc để đối chiếu.",
+      "readInEnglish": "Đọc bản tiếng Anh",
+      "photoCredit": "Ảnh: {author}, <licenseLink>{license}</licenseLink>, qua <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Hồ sơ nhanh",
+      "facts": {
+        "born": "Sinh",
+        "died": "Mất",
+        "country": "Quốc gia",
+        "title": "Danh hiệu",
+        "peakRating": "Hệ số Elo cao nhất",
+        "worldChampion": "Vô địch thế giới",
+        "knownFor": "Nổi tiếng với",
+        "memoryFeat": "Thành tích về trí nhớ"
+      },
+      "drillHeading": "Đến lượt bạn",
+      "drillAction": "Chơi {pieces, plural, other {# quân}}, {seconds, plural, other {# giây}}",
+      "sources": "Nguồn",
+      "nextArticle": "Bài tiếp theo"
+    },
+    "tile": {
+      "eyebrow": "Đọc tiếp",
+      "yourRound": "Vòng chơi của bạn",
+      "articleDrill": "Bài tập của bài viết này",
+      "roundSize": "{pieces, plural, other {# quân}}, {seconds, plural, other {# giây}}",
+      "read": "Đọc bài viết",
+      "tryDrill": "Thử bài tập đó"
+    }
   }
 }

@@ -370,5 +370,76 @@
   "changelog": {
     "bannerCta": "Ver novidades",
     "bannerLabel": "Atualização do Memory Chess"
+  },
+  "articles": {
+    "meta": {
+      "title": "Artigos sobre enxadristas e a memória deles",
+      "description": "Perfis de enxadristas e pesquisadores da memória. Cada um traz a façanha documentada, a pesquisa que a explica e um exercício para tentar."
+    },
+    "list": {
+      "heading": "Artigos",
+      "sub": "Enxadristas e pesquisadores da memória, um perfil de cada vez.",
+      "aboutHeading": "Como estes artigos são feitos",
+      "about1": "Cada artigo acompanha um enxadrista ou pesquisador e uma pergunta sobre a memória dele. O tema pode ser um jogador conhecido por uma façanha de memória ou um pesquisador que mediu o que os jogadores lembram depois de alguns segundos.",
+      "about2": "Todo artigo tem as mesmas partes. Um retrato vem com o fotógrafo e a licença. Uma ficha traz as datas, os títulos e a façanha de memória pela qual a pessoa é conhecida. A história põe essa façanha ao lado da pesquisa que a explica. Uma lista de fontes mostra de onde vem cada afirmação. Um exercício no fim abre uma rodada do Memory Chess com o número de peças e o tempo de visualização que a história sugere.",
+      "about3": "Os artigos são pesquisados e redigidos com ajuda de IA a partir de fontes publicadas, como entrevistas, relatórios de torneios, livros e artigos científicos. Uma verificação separada compara então cada data, número e citação com essas fontes antes de qualquer publicação. Quando as fontes divergem, o artigo diz quem relatou o quê. Uma anedota que as fontes relatam apenas como história é contada como história. Os artigos em outros idiomas são traduzidos do texto em inglês com ajuda de IA, e cada tradução é verificada antes de ser publicada.",
+      "corrections": "Se algo aqui estiver errado, <link>envie uma correção</link>."
+    },
+    "sort": {
+      "label": "Ordenar",
+      "group": "Ordenar artigos",
+      "options": {
+        "newest": "Mais recentes",
+        "views": "Mais vistos",
+        "likes": "Mais curtidos"
+      }
+    },
+    "pager": {
+      "label": "Páginas",
+      "previous": "Página anterior",
+      "next": "Próxima página",
+      "page": "Página {page}",
+      "showing": "Exibindo {first} a {last} de {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# visualização} many {# de visualizações} other {# visualizações}}",
+      "likes": "{count, plural, one {# curtida} many {# de curtidas} other {# curtidas}}"
+    },
+    "like": {
+      "button": "Curtir este artigo",
+      "failed": "Isso não foi salvo. Tente de novo."
+    },
+    "page": {
+      "backToList": "Todos os artigos",
+      "showAll": "Mostrar o texto todo",
+      "byline": "Por <author>{name}</author>",
+      "authorshipNote": "Pesquisado e redigido com ajuda de IA a partir das fontes listadas abaixo. Todos os fatos foram conferidos com essas fontes antes da publicação.",
+      "translationNote": "Traduzido do inglês com ajuda de IA. O artigo em inglês é a referência.",
+      "readInEnglish": "Ler em inglês",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Ficha",
+      "facts": {
+        "born": "Nascimento",
+        "died": "Morte",
+        "country": "País",
+        "title": "Título",
+        "peakRating": "Rating máximo",
+        "worldChampion": "Campeão mundial",
+        "knownFor": "Conhecido por",
+        "memoryFeat": "Façanha de memória"
+      },
+      "drillHeading": "Sua vez",
+      "drillAction": "Jogar com {pieces, plural, one {# peça} many {# de peças} other {# peças}} e {seconds, plural, one {# segundo} many {# de segundos} other {# segundos}}",
+      "sources": "Fontes",
+      "nextArticle": "Próximo artigo"
+    },
+    "tile": {
+      "eyebrow": "Leia a seguir",
+      "yourRound": "Sua rodada",
+      "articleDrill": "O exercício deste artigo",
+      "roundSize": "{pieces, plural, one {# peça} many {# de peças} other {# peças}}, {seconds, plural, one {# segundo} many {# de segundos} other {# segundos}}",
+      "read": "Ler o artigo",
+      "tryDrill": "Experimentar esse exercício"
+    }
   }
 }

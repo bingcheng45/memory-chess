@@ -2,8 +2,11 @@ import { render, screen, within } from "@/test-utils/intl";
 import PageHeader from "@/components/ui/PageHeader";
 import SiteNav from "@/components/ui/SiteNav";
 import deMessages from "../../../../messages/de.json";
+import frMessages from "../../../../messages/fr.json";
 
 let mockPathname = "/";
+
+jest.mock("@/lib/articles/translatedLocales");
 
 jest.mock("@/i18n/navigation", () => ({
   ...jest.requireActual("@/i18n/navigation"),
@@ -74,7 +77,7 @@ describe("SiteNav", () => {
     expect(container.querySelector('a[href="/de/game"]')).toHaveTextContent(deMessages.common.nav.play);
     expect(container.querySelector('a[href="/de/leaderboard"]')).not.toHaveAttribute("hreflang");
 
-    for (const route of ["/learn", "/articles", "/about"]) {
+    for (const route of ["/learn", "/about"]) {
       const link = container.querySelector(`a[href="${route}"]`);
       expect(link).toHaveAttribute("hreflang", "en");
       // A compact marker stands in for the footer's " (English)" suffix,
@@ -85,13 +88,35 @@ describe("SiteNav", () => {
     }
   });
 
+  it("links Articles to the translated list, unmarked, in a locale the articles are translated into", () => {
+    const { container } = render(<SiteNav />, { locale: "de", messages: deMessages });
+
+    const articles = container.querySelector('a[href="/de/articles"]');
+    expect(articles).toHaveTextContent(/^Artikel$/);
+    expect(articles).not.toHaveAttribute("hreflang");
+    expect(articles).not.toHaveAttribute("aria-label");
+    expect(container.querySelector('a[href="/articles"]')).not.toBeInTheDocument();
+  });
+
+  it("links Articles to the English list, marked EN, in a locale the articles are not translated into", () => {
+    const { container } = render(<SiteNav />, { locale: "fr", messages: frMessages });
+
+    const articles = container.querySelector('a[href="/articles"]');
+    expect(articles).toHaveAttribute("hreflang", "en");
+    expect(articles).toHaveTextContent(/^ArticlesEN$/);
+    expect(articles).toHaveAttribute("aria-label", "Articles (English)");
+    expect(container.querySelector('a[href="/fr/articles"]')).not.toBeInTheDocument();
+  });
+
   it("shows no English marker on an English page", () => {
     render(<SiteNav />);
 
-    const about = within(nav()).getByRole("link", { name: "About" });
-    expect(about).toHaveAttribute("hreflang", "en");
-    expect(about).not.toHaveAttribute("aria-label");
-    expect(about).toHaveTextContent(/^About$/);
+    for (const name of ["About", "Articles"]) {
+      const link = within(nav()).getByRole("link", { name });
+      expect(link).toHaveAttribute("hreflang", "en");
+      expect(link).not.toHaveAttribute("aria-label");
+      expect(link).toHaveTextContent(new RegExp(`^${name}$`));
+    }
   });
 });
 

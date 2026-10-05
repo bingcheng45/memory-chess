@@ -33,20 +33,17 @@ export type ArticleFacts = {
 
 export type FactKey = keyof ArticleFacts;
 
-const FACT_LABELS_IN_DISPLAY_ORDER = {
-  born: "Born",
-  died: "Died",
-  country: "Country",
-  title: "Title",
-  peakRating: "Peak rating",
-  worldChampion: "World Champion",
-  knownFor: "Known for",
-  memoryFeat: "Memory feat",
-} satisfies Record<FactKey, string>;
-
-export const FACT_ROWS: readonly { readonly key: FactKey; readonly label: string }[] = (
-  Object.keys(FACT_LABELS_IN_DISPLAY_ORDER) as FactKey[]
-).map((key) => ({ key, label: FACT_LABELS_IN_DISPLAY_ORDER[key] }));
+/** The fact file's rows in display order. A row's label is the message `articles.page.facts.<key>`. */
+export const FACT_KEYS = [
+  "born",
+  "died",
+  "country",
+  "title",
+  "peakRating",
+  "worldChampion",
+  "knownFor",
+  "memoryFeat",
+] as const satisfies readonly FactKey[];
 
 export type ArticleDrill = {
   readonly pieceCount: number;
@@ -79,6 +76,40 @@ export type Article = {
   readonly sources: readonly ArticleSource[];
 };
 
+/** The part of an article that changes with language. The rest (`slug`, dates, photo file, drill numbers, links) does not. */
+export type ArticleText = {
+  readonly title: string;
+  readonly description: string;
+  readonly person: ArticlePerson;
+  readonly photo: {
+    readonly alt: string;
+    readonly author: string;
+    readonly license: string;
+    readonly changes: string;
+  };
+  readonly facts: ArticleFacts;
+  readonly drill: { readonly why: string };
+  readonly sections: readonly ArticleSection[];
+  readonly sources: readonly { readonly title: string; readonly note: string }[];
+};
+
+export type ArticleTranslation = {
+  /** `sourceHashOf` the English `ArticleText` this translation was made from. */
+  readonly sourceHash: string;
+  /** `approvalHashOf` this file, for its locale and slug, as its reviewer approved it, or `null` before a review. Any later edit or move breaks the match. */
+  readonly approvedHash: string | null;
+  /** Key paths the translator kept identical to English on purpose. */
+  readonly sameAsEnglish: readonly string[];
+  readonly text: ArticleText;
+};
+
+export type ArticleListMeta = {
+  readonly title: string;
+  readonly description: string;
+};
+
 export type ArticleSummary = Pick<Article, "slug" | "publishedAt" | "title" | "description" | "person"> & {
+  /** `publishedAt` formatted on the server for the page locale, so the browser never formats it with a second ICU. */
+  readonly publishedLabel: string;
   readonly photo: PortraitPhoto;
 };

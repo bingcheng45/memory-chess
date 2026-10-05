@@ -370,5 +370,76 @@
   "changelog": {
     "bannerCta": "Yenilikleri gör",
     "bannerLabel": "Memory Chess güncellemesi"
+  },
+  "articles": {
+    "meta": {
+      "title": "Satranç oyuncuları ve hafızaları üzerine makaleler",
+      "description": "Satranç oyuncularının ve hafıza araştırmacılarının profilleri. Her biri belgelenmiş başarıyı, onu açıklayan araştırmayı ve denenecek bir alıştırmayı sunar."
+    },
+    "list": {
+      "heading": "Makaleler",
+      "sub": "Satranç oyuncuları ve hafıza araştırmacıları, her seferinde bir profil.",
+      "aboutHeading": "Bu makaleler nasıl hazırlanıyor",
+      "about1": "Her makale bir satranç oyuncusunu ya da araştırmacıyı ve onun hafızasıyla ilgili tek bir soruyu ele alır. Konu, bir hatırlama başarısıyla tanınan bir oyuncu olabilir ya da oyuncuların birkaç saniye sonra neyi hatırladığını ölçen bir araştırmacı.",
+      "about2": "Her makalenin bölümleri aynıdır. Portrenin yanında fotoğrafçısı ve lisansı yer alır. Bilgi kartında kişinin doğum ve ölüm tarihleri, unvanları ve tanındığı hafıza başarısı bulunur. Hikâye, bu başarıyı onu açıklayan araştırmayla yan yana koyar. Kaynak listesi, her iddianın nereden geldiğini gösterir. Sondaki alıştırma ise hikâyenin önerdiği taş sayısı ve gösterim süresiyle bir Memory Chess turu açar.",
+      "about3": "Makaleler; röportajlar, turnuva raporları, kitaplar ve araştırma makaleleri gibi yayımlanmış kaynaklardan yapay zekâ desteğiyle araştırılıp taslak olarak yazılır. Yayımlanmadan önce ayrı bir kontrol, her tarihi, sayıyı ve alıntıyı bu kaynaklarla karşılaştırır. Kaynaklar birbirini tutmadığında makale kimin ne bildirdiğini söyler. Kaynakların yalnızca bir hikâye olarak aktardığı bir anekdot da hikâye olarak anlatılır. Diğer dillerdeki makaleler İngilizce metinden yapay zekâ desteğiyle çevrilir ve her çeviri yayına girmeden önce kontrol edilir.",
+      "corrections": "Burada yanlış bir şey varsa <link>düzeltme gönder</link>."
+    },
+    "sort": {
+      "label": "Sırala",
+      "group": "Makaleleri sırala",
+      "options": {
+        "newest": "En yeni",
+        "views": "En çok görüntülenen",
+        "likes": "En çok beğenilen"
+      }
+    },
+    "pager": {
+      "label": "Sayfalar",
+      "previous": "Önceki sayfa",
+      "next": "Sonraki sayfa",
+      "page": "Sayfa {page}",
+      "showing": "{total} içinden {first}-{last} arası gösteriliyor"
+    },
+    "counts": {
+      "views": "{count, plural, one {# görüntülenme} other {# görüntülenme}}",
+      "likes": "{count, plural, one {# beğeni} other {# beğeni}}"
+    },
+    "like": {
+      "button": "Bu makaleyi beğen",
+      "failed": "Kaydedilemedi. Tekrar dene."
+    },
+    "page": {
+      "backToList": "Tüm makaleler",
+      "showAll": "Tüm metni göster",
+      "byline": "Yazan: <author>{name}</author>",
+      "authorshipNote": "Aşağıda listelenen kaynaklardan yapay zekâ desteğiyle araştırıldı ve taslağı yazıldı. Yayımlanmadan önce her olgu bu kaynaklarla karşılaştırıldı.",
+      "translationNote": "İngilizceden yapay zekâ desteğiyle çevrildi. Esas alınacak metin İngilizce makaledir.",
+      "readInEnglish": "İngilizcesini oku",
+      "photoCredit": "Fotoğraf: {author}, <licenseLink>{license}</licenseLink>, <source>Wikimedia Commons</source> üzerinden. {changes}.",
+      "factFile": "Bilgi kartı",
+      "facts": {
+        "born": "Doğum",
+        "died": "Ölüm",
+        "country": "Ülke",
+        "title": "Unvan",
+        "peakRating": "En yüksek puan",
+        "worldChampion": "Dünya şampiyonluğu",
+        "knownFor": "Tanındığı alan",
+        "memoryFeat": "Hafıza başarısı"
+      },
+      "drillHeading": "Sıra sende",
+      "drillAction": "Oyna: {pieces, plural, one {# taş} other {# taş}}, {seconds, plural, one {# saniye} other {# saniye}}",
+      "sources": "Kaynaklar",
+      "nextArticle": "Sonraki makale"
+    },
+    "tile": {
+      "eyebrow": "Sıradaki makale",
+      "yourRound": "Senin turun",
+      "articleDrill": "Bu makalenin alıştırması",
+      "roundSize": "{pieces, plural, one {# taş} other {# taş}}, {seconds, plural, one {# saniye} other {# saniye}}",
+      "read": "Makaleyi oku",
+      "tryDrill": "Alıştırmayı dene"
+    }
   }
 }

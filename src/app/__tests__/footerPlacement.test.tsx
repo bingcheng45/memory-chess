@@ -10,6 +10,7 @@ import Footer from "@/components/ui/Footer";
 jest.mock("next-intl/server", () => ({
   ...jest.requireActual("next-intl/server"),
   setRequestLocale: jest.fn(),
+  getMessages: jest.fn(async () => ({})),
 }));
 
 jest.mock("next/navigation", () => ({

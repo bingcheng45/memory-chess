@@ -8,6 +8,7 @@ import { ADSENSE_SCRIPT_URL } from "@/lib/adsense";
 jest.mock("next-intl/server", () => ({
   ...jest.requireActual("next-intl/server"),
   setRequestLocale: jest.fn(),
+  getMessages: jest.fn(async () => ({})),
 }));
 
 function collect(node: ReactNode, match: (element: ReactElement) => boolean): ReactElement[] {

@@ -1,18 +1,31 @@
-import { DEFAULT_LOCALE } from "@/i18n/routing";
-import { languageTag } from "@/lib/seo/alternates";
+import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import { BRAND_ORGANIZATION, BRAND_WEBSITE, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/brand";
 import { LEARN_AUTHOR } from "@/lib/seo/learn/schema";
-import { ARTICLE_LIST_COPY } from "./copy";
 import { absoluteUrl, ARTICLES_PATH, articlePath } from "./paths";
-import type { Article, ArticlePhoto, ArticleSummary } from "./schema";
+import type { Article, ArticleListMeta, ArticlePhoto, ArticleSummary } from "./schema";
 
 export type JsonLdGraph = {
   readonly "@context": "https://schema.org";
   readonly "@graph": readonly Record<string, unknown>[];
 };
 
-const IN_LANGUAGE = languageTag(DEFAULT_LOCALE);
-const LIST_PAGE_ID = `${absoluteUrl(ARTICLES_PATH)}#webpage`;
+type Edition = {
+  readonly url: string;
+  readonly listUrl: string;
+  readonly inLanguage: string;
+};
+
+function editionOf(path: string, locale: string): Edition {
+  return {
+    url: localizedUrl(path, locale),
+    listUrl: localizedUrl(ARTICLES_PATH, locale),
+    inLanguage: languageTag(locale),
+  };
+}
+
+function listPageId({ listUrl }: Edition): string {
+  return `${listUrl}#webpage`;
+}
 
 function imageObject(photo: ArticlePhoto): Record<string, unknown> {
   return {
@@ -26,7 +39,7 @@ function imageObject(photo: ArticlePhoto): Record<string, unknown> {
   };
 }
 
-function articleNode(article: Article, url: string): Record<string, unknown> {
+function articleNode(article: Article, { url, inLanguage }: Edition): Record<string, unknown> {
   return {
     "@type": "Article",
     "@id": `${url}#article`,
@@ -36,7 +49,7 @@ function articleNode(article: Article, url: string): Record<string, unknown> {
     image: imageObject(article.photo),
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
-    inLanguage: IN_LANGUAGE,
+    inLanguage,
     isAccessibleForFree: true,
     about: {
       "@type": "Person",
@@ -54,23 +67,25 @@ function articleNode(article: Article, url: string): Record<string, unknown> {
   };
 }
 
-function webPageNode(article: Article, url: string): Record<string, unknown> {
+function webPageNode(article: Article, edition: Edition): Record<string, unknown> {
+  const { url, inLanguage } = edition;
+
   return {
     "@type": "WebPage",
     "@id": `${url}#webpage`,
     url,
     name: article.title,
     description: article.description,
-    inLanguage: IN_LANGUAGE,
-    isPartOf: { "@type": "CollectionPage", "@id": LIST_PAGE_ID },
+    inLanguage,
+    isPartOf: { "@type": "CollectionPage", "@id": listPageId(edition) },
     mainEntity: { "@id": `${url}#article` },
     breadcrumb: { "@id": `${url}#breadcrumb` },
   };
 }
 
-function breadcrumbNode(article: Article, url: string): Record<string, unknown> {
+function breadcrumbNode(article: Article, { url, listUrl }: Edition, listName: string): Record<string, unknown> {
   const crumbs = [
-    { name: ARTICLE_LIST_COPY.heading, item: absoluteUrl(ARTICLES_PATH) },
+    { name: listName, item: listUrl },
     { name: article.title, item: url },
   ];
 
@@ -85,34 +100,42 @@ function breadcrumbNode(article: Article, url: string): Record<string, unknown> 
   };
 }
 
-export function buildArticleStructuredData(article: Article): JsonLdGraph {
-  const url = absoluteUrl(articlePath(article.slug));
+export function buildArticleStructuredData(
+  article: Article,
+  locale: string,
+  listName: string,
+): JsonLdGraph {
+  const edition = editionOf(articlePath(article.slug), locale);
 
   return {
     "@context": "https://schema.org",
     "@graph": [
-      articleNode(article, url),
-      webPageNode(article, url),
-      breadcrumbNode(article, url),
+      articleNode(article, edition),
+      webPageNode(article, edition),
+      breadcrumbNode(article, edition, listName),
       BRAND_ORGANIZATION,
       BRAND_WEBSITE,
     ],
   };
 }
 
-export function buildArticleListStructuredData(articles: readonly ArticleSummary[]): JsonLdGraph {
-  const { title, description } = ARTICLE_LIST_COPY.meta;
+export function buildArticleListStructuredData(
+  articles: readonly ArticleSummary[],
+  locale: string,
+  { title, description }: ArticleListMeta,
+): JsonLdGraph {
+  const edition = editionOf(ARTICLES_PATH, locale);
 
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": LIST_PAGE_ID,
-        url: absoluteUrl(ARTICLES_PATH),
+        "@id": listPageId(edition),
+        url: edition.url,
         name: title,
         description,
-        inLanguage: IN_LANGUAGE,
+        inLanguage: edition.inLanguage,
         isPartOf: { "@id": WEBSITE_ID },
         mainEntity: {
           "@type": "ItemList",
@@ -120,7 +143,7 @@ export function buildArticleListStructuredData(articles: readonly ArticleSummary
           itemListElement: articles.map((summary, index) => ({
             "@type": "ListItem",
             position: index + 1,
-            url: absoluteUrl(articlePath(summary.slug)),
+            url: localizedUrl(articlePath(summary.slug), locale),
             name: summary.title,
           })),
         },

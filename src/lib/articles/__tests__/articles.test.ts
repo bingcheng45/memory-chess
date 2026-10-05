@@ -4,9 +4,9 @@ import {
   ARTICLES,
   ARTICLES_LAST_UPDATED,
   ARTICLE_SLUGS,
-  ARTICLE_SUMMARIES,
-  FACT_ROWS,
+  FACT_KEYS,
   getArticle,
+  getArticleSummaries,
   getNextArticle,
   newestFirst,
   summarize,
@@ -14,6 +14,7 @@ import {
 } from "@/lib/articles";
 import { GAME_CONFIG_RULES, parseGameSettings } from "@/lib/game/configPrefill";
 import { MIN_OWN_SECTIONS, makeArticle } from "./fixtures";
+import messages from "../../../../messages/en.json";
 
 const TITLE_MAX_CHARS = 60;
 const DESCRIPTION_MIN_CHARS = 120;
@@ -69,34 +70,43 @@ describe("the article registry", () => {
     );
   });
 
-  it("finds an article by slug and nothing for an unknown one", () => {
-    expect(getArticle(ARTICLES[0].slug)).toBe(ARTICLES[0]);
-    expect(getArticle("no-such-article")).toBeUndefined();
+  it("finds an English article by slug, as the entry itself, and nothing for an unknown one", async () => {
+    expect(await getArticle(ARTICLES[0].slug, "en")).toBe(ARTICLES[0]);
+    expect(await getArticle("no-such-article", "en")).toBeUndefined();
   });
 
-  it("keeps the bodies out of the summaries the list ships to the browser", () => {
-    expect(Object.keys(summarize(makeArticle(0))).sort()).toEqual(
-      ["description", "person", "photo", "publishedAt", "slug", "title"],
+  it("keeps the bodies out of the summaries the list ships to the browser", async () => {
+    const summaries = await getArticleSummaries("en");
+
+    expect(Object.keys(summarize(makeArticle(0), "en")).sort()).toEqual(
+      ["description", "person", "photo", "publishedAt", "publishedLabel", "slug", "title"],
     );
-    expect(Object.keys(summarize(makeArticle(0)).photo).sort()).toEqual(["alt", "height", "src", "width"]);
-    expect(ARTICLE_SUMMARIES.map((summary) => summary.slug)).toEqual(ARTICLE_SLUGS);
-    for (const summary of ARTICLE_SUMMARIES) {
+    expect(Object.keys(summarize(makeArticle(0), "en").photo).sort()).toEqual(["alt", "height", "src", "width"]);
+    expect(summaries.map((summary) => summary.slug)).toEqual(ARTICLE_SLUGS);
+    for (const summary of summaries) {
       expect(summary).not.toHaveProperty("sections");
       expect(summary).not.toHaveProperty("sources");
     }
   });
 
-  it("leads each article to the next older one and wraps at the end", () => {
-    expect(getNextArticle("no-such-article")).toBeUndefined();
+  it("prints the date of a summary on the server, in the language of the page", () => {
+    const article = makeArticle(0, { publishedAt: "2026-10-03T00:00:00.000Z" });
 
-    ARTICLES.forEach((article, index) => {
-      const next = getNextArticle(article.slug);
+    expect(summarize(article, "en").publishedLabel).toBe("Oct 3, 2026");
+    expect(summarize(article, "de").publishedLabel).toBe("3. Okt. 2026");
+  });
+
+  it("leads each article to the next older one and wraps at the end", async () => {
+    expect(await getNextArticle("no-such-article", "en")).toBeUndefined();
+
+    for (const [index, article] of ARTICLES.entries()) {
+      const next = await getNextArticle(article.slug, "en");
       if (ARTICLES.length === 1) {
         expect(next).toBeUndefined();
       } else {
         expect(next?.slug).toBe(ARTICLES[(index + 1) % ARTICLES.length].slug);
       }
-    });
+    }
   });
 
   it("dates the list by its most recent edit", () => {
@@ -105,8 +115,8 @@ describe("the article registry", () => {
     );
   });
 
-  it("holds back the Timur Gareyev profile", () => {
-    expect(getArticle("timur-gareyev")).toBeUndefined();
+  it("holds back the Timur Gareyev profile", async () => {
+    expect(await getArticle("timur-gareyev", "en")).toBeUndefined();
     expect(existsSync(join(process.cwd(), "public/images/articles/timur-gareyev.jpg"))).toBe(false);
   });
 });
@@ -195,7 +205,7 @@ describe.each(ARTICLES.map((article) => [article.slug, article] as const))("arti
   });
 
   it("fills the four facts every file shows and nothing the table cannot label", () => {
-    const labelled = FACT_ROWS.map((row) => row.key as string);
+    const labelled = [...FACT_KEYS] as string[];
 
     for (const key of ["born", "country", "knownFor", "memoryFeat"] as const) {
       expect(article.facts[key].trim()).not.toBe("");
@@ -215,8 +225,8 @@ describe.each(ARTICLES.map((article) => [article.slug, article] as const))("arti
 });
 
 describe("the fact file table", () => {
-  it("lists the facts in the order the file shows them", () => {
-    expect(FACT_ROWS.map((row) => row.label)).toEqual([
+  it("lists the facts in the order the file shows them, each with a label in the catalogue", () => {
+    expect(FACT_KEYS.map((key) => messages.articles.page.facts[key])).toEqual([
       "Born",
       "Died",
       "Country",

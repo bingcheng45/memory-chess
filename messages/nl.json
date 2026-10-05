@@ -370,5 +370,76 @@
   "changelog": {
     "bannerCta": "Bekijk wat er nieuw is",
     "bannerLabel": "Memory Chess-update"
+  },
+  "articles": {
+    "meta": {
+      "title": "Artikelen over schakers en hun geheugen",
+      "description": "Profielen van schakers en geheugenonderzoekers. Elk profiel geeft de gedocumenteerde prestatie, het onderzoek dat die verklaart en een oefening om zelf te proberen."
+    },
+    "list": {
+      "heading": "Artikelen",
+      "sub": "Schakers en geheugenonderzoekers, telkens één profiel.",
+      "aboutHeading": "Hoe deze artikelen tot stand komen",
+      "about1": "Elk artikel volgt één schaker of onderzoeker en één vraag over hun geheugen. Het onderwerp kan een speler zijn die bekendstaat om een geheugenprestatie, of een onderzoeker die mat wat spelers na een paar seconden onthouden.",
+      "about2": "Elk artikel heeft dezelfde onderdelen. Een portret komt met de naam van de fotograaf en de licentie. Een feitenkaart geeft de data, de titels en de geheugenprestatie waarmee de persoon bekendstaat. Het verhaal zet die prestatie naast het onderzoek dat haar verklaart. Een bronnenlijst laat zien waar elke bewering vandaan komt. Een oefening aan het eind opent een ronde Memory Chess met het aantal stukken en de kijktijd die het verhaal suggereert.",
+      "about3": "De artikelen worden met hulp van AI onderzocht en opgesteld op basis van gepubliceerde bronnen zoals interviews, toernooiverslagen, boeken en onderzoeksartikelen. Daarna vergelijkt een aparte controle elke datum, elk getal en elk citaat met die bronnen voordat er iets wordt gepubliceerd. Waar bronnen elkaar tegenspreken, vermeldt het artikel wie wat meldde. Een anekdote die bronnen alleen als verhaal vertellen, wordt als verhaal verteld. Artikelen in andere talen worden met hulp van AI uit de Engelse tekst vertaald, en elke vertaling wordt gecontroleerd voordat ze online komt.",
+      "corrections": "Als hier iets niet klopt, <link>stuur dan een correctie</link>."
+    },
+    "sort": {
+      "label": "Sorteren",
+      "group": "Artikelen sorteren",
+      "options": {
+        "newest": "Nieuwste",
+        "views": "Meest bekeken",
+        "likes": "Meeste likes"
+      }
+    },
+    "pager": {
+      "label": "Pagina's",
+      "previous": "Vorige pagina",
+      "next": "Volgende pagina",
+      "page": "Pagina {page}",
+      "showing": "Toont {first} tot {last} van {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# weergave} other {# weergaven}}",
+      "likes": "{count, plural, one {# like} other {# likes}}"
+    },
+    "like": {
+      "button": "Dit artikel liken",
+      "failed": "Dat is niet opgeslagen. Probeer het opnieuw."
+    },
+    "page": {
+      "backToList": "Alle artikelen",
+      "showAll": "Toon de hele tekst",
+      "byline": "Door <author>{name}</author>",
+      "authorshipNote": "Onderzocht en opgesteld met hulp van AI op basis van de onderstaande bronnen. Elk feit is vóór publicatie aan die bronnen getoetst.",
+      "translationNote": "Met hulp van AI vertaald uit het Engels. Het Engelse artikel is leidend.",
+      "readInEnglish": "Lees het in het Engels",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Feitenkaart",
+      "facts": {
+        "born": "Geboren",
+        "died": "Overleden",
+        "country": "Land",
+        "title": "Titel",
+        "peakRating": "Hoogste rating",
+        "worldChampion": "Wereldkampioen",
+        "knownFor": "Bekend om",
+        "memoryFeat": "Geheugenprestatie"
+      },
+      "drillHeading": "Jouw beurt",
+      "drillAction": "Speel {pieces, plural, one {# stuk} other {# stukken}}, {seconds, plural, one {# seconde} other {# seconden}}",
+      "sources": "Bronnen",
+      "nextArticle": "Volgend artikel"
+    },
+    "tile": {
+      "eyebrow": "Lees hierna",
+      "yourRound": "Jouw ronde",
+      "articleDrill": "De oefening uit dit artikel",
+      "roundSize": "{pieces, plural, one {# stuk} other {# stukken}}, {seconds, plural, one {# seconde} other {# seconden}}",
+      "read": "Lees het artikel",
+      "tryDrill": "Probeer die oefening"
+    }
   }
 }

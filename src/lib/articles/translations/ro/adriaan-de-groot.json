@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "approvedHash": "311d126d36117f2485fb9843f041467c61bd3c48aaa8600a457e0d451fa8b50e",
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "Testul lui Adriaan de Groot din 1944 asupra memoriei de șah, în cifre",
+    "description": "În 1944, Adriaan de Groot a testat patru jucători cu poziții de șah arătate timp de 2 până la 15 secunde. Iată scorurile lui reale și ce a schimbat cercetarea ulterioară.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "Maestru olandez de șah și psiholog"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot în tinerețe, în jurul anului 1930",
+      "author": "Fotograf necunoscut",
+      "license": "Domeniu public",
+      "changes": "Decupat"
+    },
+    "facts": {
+      "born": "26 octombrie 1914, Santpoort, Țările de Jos",
+      "died": "14 august 2006, la 91 de ani",
+      "country": "Țările de Jos",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "93% la reproducerea unor poziții văzute timp de 2 până la 15 secunde"
+    },
+    "drill": {
+      "why": "Poziția de test Rohacek contra Rabar a lui de Groot avea 22 de piese, iar Max Euwe a văzut-o 5 secunde."
+    },
+    "sections": [
+      {
+        "heading": "Patru jucători și câteva secunde",
+        "paragraphs": [
+          "În 1944, Adriaan de Groot i-a arătat lui Max Euwe o poziție de șah și a retras-o după cinci secunde. Poziția provenea dintr-o partidă dintre Rohacek și Rabar, după mutarea a 20-a a albului, și avea pe tablă 22 de piese. Euwe, campion mondial din 1935 până în 1937, a dictat apoi unde se afla fiecare piesă. Le-a nimerit pe toate 22.",
+          "De Groot, el însuși maestru, a dat același test, a adăugat un pion care nu era acolo și a obținut 21 de puncte. A. Fast, campionul orașului Utrecht din 1942, a așezat corect 17 piese, dar a socotit materialul egal, deși nu era, și a obținut 16 puncte. G. P. Hauer, un jucător dintr-o clasă mai slabă, a obținut 9.",
+          "Relatările ulterioare diferă în privința timpului de expunere și a procentelor, așa că cifrele de mai jos provin chiar din cartea lui de Groot."
+        ]
+      },
+      {
+        "heading": "Un maestru care i-a studiat pe maeștri",
+        "paragraphs": [
+          "De Groot a jucat pentru Țările de Jos la Olimpiadele de șah din 1937 și 1939. Între 1938 și 1943 a notat ce spuneau jucătorii în timp ce gândeau cu voce tare, alegând o mutare. Printre subiecții lui s-au numărat marii maeștri Keres, Alehin, Flohr, Fine, Euwe și Tartakower.",
+          "După socotelile lui, marii maeștri nu priveau mai departe decât jucătorii de nivel expert și nu examinau mai multe mutări. „Maestrul nu calculează neapărat mai adânc”, a scris el. De Groot bănuia că diferența se vedea în primele secunde în care privea tabla și a conceput experimentul din 1944 ca să verifice această idee."
+        ]
+      },
+      {
+        "heading": "Ce a măsurat experimentul din 1944",
+        "paragraphs": [
+          "Fiecare clasă era reprezentată de un jucător. Euwe i-a reprezentat pe marii maeștri, de Groot pe maeștri, Fast pe experți, iar Hauer pe jucătorii din clasa mai slabă.",
+          "Fiecare poziție provenea dintr-o partidă de maeștri și rămânea la vedere de la 2 la 10 secunde, cu o singură expunere de 15 secunde. Cei doi subiecți mai slabi au primit 3-4 secunde la cele mai scurte probe, ca să nu obțină zero puncte. Fiecărui subiect i s-a cerut să-și ia aproximativ o jumătate de minut ca să organizeze ce reținuse. Euwe și de Groot au dictat apoi poziția din memorie, iar Fast și Hauer au refăcut-o pe o tablă.",
+          "Punctajul dădea un punct pentru fiecare piesă corectă și scădea puncte pentru piesele adăugate, omise sau mutate. De Groot a eliminat două poziții, prima din serie și una cu o eroare de cronometrare, și a socotit paisprezece, cu un număr de piese între 7 și 26. Din 234 de puncte posibile, cei patru subiecți au obținut următoarele rezultate.",
+          "Euwe a obținut 217 puncte, adică 93%, cu cinci poziții perfecte.",
+          "De Groot a obținut 217 puncte, adică 93%, cu patru perfecte.",
+          "Fast a obținut 158 de puncte, adică 68%, fără nicio poziție perfectă.",
+          "Hauer a obținut 119 puncte, adică 51%, fără nicio poziție perfectă.",
+          "De Groot a pus apoi deoparte două probe cu expuneri lungi, de 15 și de 7 secunde, și alte două, stricate de o pierdere de concentrare. În cele zece rămase, cu expuneri intenționate de 2, 3 sau 5 secunde, scorurile medii au fost 93,0%, 92,6%, 72,3% și 51,1%.",
+          "Ambele tabele îi aparțin, ceea ce explică probabil de ce relatările dau pentru expert fie 68%, fie 72%. Expunerea nu a fost niciodată una fixă de cinci secunde.",
+          "Cel mai mult l-a interesat pe de Groot decalajul din mijloc, pe care l-a numit „prăpastia care îl desparte pe maestru de cel care nu e maestru”. Explicația lui era că un maestru nu memorează 22 de piese separate. El percepe un grup mare de piese ca pe o singură unitate, pentru că știe cum apare acel grup și la ce folosește.",
+          "Câteva asemenea unități acoperă tabla, iar după relatarea lui de Groot un jucător mai slab are mai puține. Cercetătorii de mai târziu au numit aceste unități chunk-uri."
+        ]
+      },
+      {
+        "heading": "De la o teză olandeză la tablele aleatorii",
+        "paragraphs": [
+          "De Groot a prezentat lucrarea în 1946, în teza sa de doctorat la Universitatea din Amsterdam, Het denken van den schaker. Ediția engleză, Thought and Choice in Chess, a fost publicată de Mouton la Haga, în 1965.",
+          "În 1973, William Chase și Herbert Simon au repetat testul la Carnegie Mellon cu un maestru, un jucător de clasa A și un începător. Ei au fixat expunerea la 5 secunde. Pozițiile lor din jocul de mijloc aveau 24 până la 26 de piese, iar maestrul a reprodus de aproximativ două ori mai multe piese decât jucătorul de clasa A.",
+          "Au filmat fiecare reconstituire și au considerat o pauză de peste 2 secunde drept granița dintre două chunk-uri. Primul chunk al maestrului avea în medie 3,8 piese, față de 2,6 la jucătorul de clasa A, iar el a produs 7,7 chunk-uri pe poziție, față de 5,7. Dintre cele 77 de chunk-uri ale lui din paisprezece poziții, 47 conțineau un lanț de pioni, iar Simon și Chase au numărat 10 poziții cu regele rocat.",
+          "Contribuția lor a fost un control: aceleași piese așezate pe câmpuri aleatorii. Simon și Chase au raportat că toți jucătorii reproduceau atunci aproximativ trei sau patru piese, mai puține decât reușea începătorul pe pozițiile reale. Ei au notat că W. Lemmens și R. W. Jongman găsiseră același rezultat în laboratorul din Amsterdam și nu l-au publicat niciodată.",
+          "Chiar introducerea lui Chase și Simon prezintă rezultatul cu tablele aleatorii ca fiind al lui de Groot, iar multe relatări de mai târziu repetă asta. Cartea lui nu raportează nicio probă cu table aleatorii."
+        ]
+      },
+      {
+        "heading": "Ce a schimbat cercetarea ulterioară",
+        "paragraphs": [
+          "Manualele au înțeles din acest rezultat că un maestru nu are niciun avantaj pe tablele fără sens. În 1996, Fernand Gobet și Herbert Simon au verificat această interpretare în treisprezece experimente cu expuneri de cel mult 10 secunde. În douăsprezece din cele treisprezece, grupul cel mai puternic a reprodus mai multe piese aleatorii decât cel mai slab. Excepția a fost chiar studiul lui Chase și Simon, în care maestrul a avut cel mai slab rezultat.",
+          "Avantajul este mic. Gobet și Simon îl estimează la aproximativ o piesă în plus la fiecare 400 de puncte Elo pe tablele aleatorii, față de aproximativ cinci piese în plus pe pozițiile din partide. Într-o trecere în revistă din 1998, Gobet a dat mediile la 5 secunde: 5,5 piese aleatorii pentru maeștri și 2,6 pentru jucătorii sub clasa B.",
+          "Explicația lasă în picioare ideea lui de Groot. Un jucător cu o rezervă foarte mare de tipare găsește uneori unul din întâmplare într-un amestec de piese. Tablele aleatorii îi reduc expertului avantajul, fără să-l elimine. Gobet și Simon au adăugat că eșantioanele mici ascund un efect atât de mic, iar studiul din 1973 avea trei subiecți."
+        ]
+      },
+      {
+        "heading": "Încearcă testul lui de Groot",
+        "paragraphs": [
+          "Setează Memory Chess pe 22 de piese și 5 secunde. Asta corespunde mărimii poziției Rohacek contra Rabar a lui de Groot și timpului în care Euwe a putut s-o privească. Refă tabla și calculează ce parte din piese ai așezat corect. Aproximativ jumătate este locul unde a ajuns Hauer, aproximativ 70% este locul unde a ajuns Fast, iar 93% este media lui Euwe și a lui de Groot.",
+          "Comparația este aproximativă, pentru că de Groot a scăzut puncte și pentru greșeli. Apoi verifică ce piese ai reținut. Probabil că au venit în grupuri, precum un lanț de pioni sau un rege rocat."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Susține: data din 1944, cei patru subiecți cu numele și clasele lor, timpii de expunere de 2 până la 15 secunde, timpii mai lungi pentru subiecții mai slabi, pauza de o jumătate de minut, cine a dictat și cine a refăcut poziția pe tablă, regulile de punctaj, poziția Rohacek contra Rabar cu expunerea de 5 secunde și cele patru scoruri, Tabelul 13 (217, 217, 158, 119 din 234), Tabelul 14 (mediile celor zece probe), ambele citate, sesiunile de gândire cu voce tare din 1938-1943, cei șase mari maeștri, teza din Amsterdam din 1946 și mențiunea de copyright Mouton din 1965. Textul nu conține niciun experiment cu table aleatorii."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Susține: statisticile de căutare care nu i-au separat pe marii maeștri de jucătorii mai slabi, cifrele de 93% și 72% așa cum au fost citate ulterior, maestrul care a reprodus de aproximativ două ori mai multe piese decât jucătorul de clasa A, mărimile chunk-urilor de 3,8 și 2,6, numărul de chunk-uri de 7,7 și 5,7, pauza de 2 secunde, 47 de lanțuri de pioni și 10 poziții cu regele rocat din 77 de chunk-uri, trei sau patru piese pe tablele aleatorii și rezultatul nepublicat al lui Lemmens și Jongman."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Susține: cei trei subiecți, expunerea de 5 secunde, pozițiile din jocul de mijloc cu 24 până la 26 de piese, reconstituirile filmate, 77 de chunk-uri în paisprezece poziții, dintre care 47 conțineau un lanț de pioni, mărimile chunk-urilor de 3,8 și 2,6, numărul de chunk-uri de 7,7 și 5,7 și rezumatul făcut chiar de autori experimentului lui de Groot, ca experiment de 5 secunde care includea table aleatorii."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Susține: treisprezece experimente, expuneri de cel mult 10 secunde, douăsprezece din treisprezece în favoarea grupului celui mai puternic, excepția Chase și Simon, o piesă la 400 de puncte Elo pe tablele aleatorii față de aproximativ cinci pe pozițiile din partide, statutul de manual al vechiului rezultat, argumentul eșantionului mic și explicația bazată pe chunk-uri."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Susține: expunerile de 2 până la 15 secunde ale lui de Groot, Euwe ca mare maestru și anii lui ca campion mondial, pauza de o jumătate de minut, schema de 5 secunde a lui Chase și Simon, statutul de manual al rezultatului cu table aleatorii și mediile de 5,5 față de 2,6 piese."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Susține: schema experimentală cu patru subiecți, expunerile de 2 până la 15 secunde și afirmația că controlul cu table aleatorii este adesea atribuit în mod greșit lui de Groot, deși îi aparține lui Chase și Simon."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Susține: datele și locurile nașterii și morții, Olimpiadele din 1937 și 1939, teza din 1946 și ediția engleză din 1965."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Susține: datele și locurile nașterii și morții, vârsta de 91 de ani. Este totodată un exemplu de relatare care dă expunerea ca fiind de 3 până la 4 secunde."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Susține: prezența lui de Groot în echipele Țărilor de Jos din 1937 și 1939."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Susține: prezența lui de Groot în echipele Țărilor de Jos din 1937 și 1939."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Susține: poziția de test cu 22 de piese și scorurile 22, 21, 16 și 9."
+      }
+    ]
+  }
+}

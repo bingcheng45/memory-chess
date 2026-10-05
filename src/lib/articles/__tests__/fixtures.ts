@@ -1,5 +1,7 @@
+import { approvalHashOf, sourceHashOf, textOf } from "@/lib/articles/articleText";
+import { formatArticleDate } from "@/lib/articles/format";
 import { LIKED_STORAGE_KEY } from "@/lib/articles/likedStore";
-import type { Article, ArticleSummary } from "@/lib/articles/schema";
+import type { Article, ArticleSummary, ArticleTranslation } from "@/lib/articles/schema";
 
 const SUBJECTS = [
   "Alder", "Birch", "Cedar", "Dogwood", "Elm", "Fir", "Ginkgo",
@@ -88,7 +90,32 @@ export function makeArticles(count: number): Article[] {
 export function summaryOf(article: Article): ArticleSummary {
   const { slug, publishedAt, title, description, person } = article;
   const { src, width, height, alt } = article.photo;
-  return { slug, publishedAt, title, description, person, photo: { src, width, height, alt } };
+  return {
+    slug,
+    publishedAt,
+    publishedLabel: formatArticleDate(publishedAt, "en"),
+    title,
+    description,
+    person,
+    photo: { src, width, height, alt },
+  };
+}
+
+export function markEveryString<T>(value: T, marker: string): T {
+  if (typeof value === "string") return `${marker}${value}` as T;
+  if (Array.isArray(value)) return value.map((item) => markEveryString(item, marker)) as T;
+  if (value !== null && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [key, markEveryString(item, marker)]),
+    ) as T;
+  }
+  return value;
+}
+
+export function reviewedTranslationOf(english: Article, marker: string, locale: string): ArticleTranslation {
+  const englishText = textOf(english);
+  const unit = { sourceHash: sourceHashOf(englishText), sameAsEnglish: [], text: markEveryString(englishText, marker) };
+  return { ...unit, approvedHash: approvalHashOf({ ...unit, locale, name: english.slug }) };
 }
 
 export function storeLikes(likes: Record<string, number>): void {

@@ -370,5 +370,76 @@
   "changelog": {
     "bannerCta": "Nézd meg, mi újult meg",
     "bannerLabel": "Memory Chess frissítés"
+  },
+  "articles": {
+    "meta": {
+      "title": "Cikkek sakkozókról és a memóriájukról",
+      "description": "Sakkozók és memóriakutatók portréi. Mindegyik bemutatja a dokumentált teljesítményt, az azt magyarázó kutatást és egy kipróbálható gyakorlatot."
+    },
+    "list": {
+      "heading": "Cikkek",
+      "sub": "Sakkozók és memóriakutatók, egyszerre egy portré.",
+      "aboutHeading": "Hogyan készülnek ezek a cikkek",
+      "about1": "Minden cikk egy sakkozót vagy kutatót követ végig, és a memóriájával kapcsolatos egyetlen kérdést jár körül. A főszereplő lehet olyan játékos, aki emlékezeti bravúrjáról ismert, vagy olyan kutató, aki azt mérte, mire emlékeznek a játékosok néhány másodperc után.",
+      "about2": "Minden cikk ugyanazokból a részekből áll. A portréhoz megadjuk a fotóst és a licencet. Az adatlap tartalmazza a dátumokat, a címeket és azt az emlékezeti teljesítményt, amelyről az illető ismert. A történet ezt a teljesítményt az azt magyarázó kutatás mellé állítja. A forráslista megmutatja, honnan ered az egyes állítás. A végén egy gyakorlat megnyitja a Memory Chess egy körét azzal a bábuszámmal és megtekintési idővel, amelyet a történet javasol.",
+      "about3": "A cikkek anyagát mesterséges intelligencia segítségével gyűjtjük és fogalmazzuk meg közzétett forrásokból, például interjúkból, versenybeszámolókból, könyvekből és kutatási tanulmányokból. Ezután egy különálló ellenőrzés minden dátumot, számot és idézetet összevet ezekkel a forrásokkal, mielőtt bármi megjelenik. Ahol a források eltérnek, a cikk megmondja, ki mit közölt. Az olyan anekdotát, amelyet a források csak történetként közölnek, történetként is meséljük el. A más nyelvű cikkeket az angol szövegből fordítjuk mesterséges intelligencia segítségével, és minden fordítást ellenőrzünk, mielőtt felkerül az oldalra.",
+      "corrections": "Ha itt valami hibás, <link>küldj helyesbítést</link>."
+    },
+    "sort": {
+      "label": "Rendezés",
+      "group": "Cikkek rendezése",
+      "options": {
+        "newest": "Legújabb",
+        "views": "Legtöbbet megtekintett",
+        "likes": "Legkedveltebb"
+      }
+    },
+    "pager": {
+      "label": "Oldalak",
+      "previous": "Előző oldal",
+      "next": "Következő oldal",
+      "page": "{page}. oldal",
+      "showing": "Megjelenítve: {first}-{last}, összesen {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# megtekintés} other {# megtekintés}}",
+      "likes": "{count, plural, one {# kedvelés} other {# kedvelés}}"
+    },
+    "like": {
+      "button": "A cikk kedvelése",
+      "failed": "Ez nem mentődött el. Próbáld újra."
+    },
+    "page": {
+      "backToList": "Minden cikk",
+      "showAll": "Teljes szöveg megjelenítése",
+      "byline": "Szerző: <author>{name}</author>",
+      "authorshipNote": "Az alább felsorolt forrásokból, mesterséges intelligencia segítségével kutattuk és fogalmaztuk meg. Minden tényt ellenőriztünk ezekkel a forrásokkal a közzététel előtt.",
+      "translationNote": "Angolból fordítva, mesterséges intelligencia segítségével. Az angol cikk az irányadó.",
+      "readInEnglish": "Olvasd angolul",
+      "photoCredit": "Fotó: {author}, <licenseLink>{license}</licenseLink>, forrás: <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Adatlap",
+      "facts": {
+        "born": "Született",
+        "died": "Elhunyt",
+        "country": "Ország",
+        "title": "Cím",
+        "peakRating": "Legmagasabb Élő-pontszám",
+        "worldChampion": "Világbajnok",
+        "knownFor": "Ismert ezért",
+        "memoryFeat": "Emlékezeti bravúr"
+      },
+      "drillHeading": "Te jössz",
+      "drillAction": "Játssz {pieces, plural, one {# bábuval} other {# bábuval}}, {seconds, plural, one {# másodpercig} other {# másodpercig}}",
+      "sources": "Források",
+      "nextArticle": "Következő cikk"
+    },
+    "tile": {
+      "eyebrow": "Olvasd tovább",
+      "yourRound": "A te köröd",
+      "articleDrill": "A cikk gyakorlata",
+      "roundSize": "{pieces, plural, one {# bábu} other {# bábu}}, {seconds, plural, one {# másodperc} other {# másodperc}}",
+      "read": "Cikk elolvasása",
+      "tryDrill": "Próbáld ki a gyakorlatot"
+    }
   }
 }

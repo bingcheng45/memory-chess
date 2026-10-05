@@ -370,5 +370,76 @@
   "changelog": {
     "bannerCta": "Guarda le novità",
     "bannerLabel": "Aggiornamento di Memory Chess"
+  },
+  "articles": {
+    "meta": {
+      "title": "Articoli sui giocatori di scacchi e la loro memoria",
+      "description": "Profili di giocatori di scacchi e ricercatori della memoria. Ognuno presenta l’impresa documentata, la ricerca che la spiega e un esercizio da provare."
+    },
+    "list": {
+      "heading": "Articoli",
+      "sub": "Giocatori di scacchi e ricercatori della memoria, un profilo alla volta.",
+      "aboutHeading": "Come sono fatti questi articoli",
+      "about1": "Ogni articolo segue un giocatore di scacchi o un ricercatore e una domanda sulla sua memoria. Il protagonista può essere un giocatore noto per un’impresa di memoria, oppure un ricercatore che ha misurato che cosa i giocatori ricordano dopo pochi secondi.",
+      "about2": "Ogni articolo ha le stesse parti. Un ritratto riporta fotografo e licenza. Una scheda dà le date, i titoli e l’impresa di memoria per cui la persona è nota. La storia affianca quell’impresa alla ricerca che la spiega. Un elenco di fonti mostra da dove viene ogni affermazione. Un esercizio finale apre un turno di Memory Chess con il numero di pezzi e il tempo di visione che la storia suggerisce.",
+      "about3": "La ricerca e la prima stesura degli articoli avvengono con l’aiuto dell’IA, a partire da fonti pubblicate come interviste, resoconti di tornei, libri e articoli di ricerca. Un controllo separato confronta poi ogni data, numero e citazione con quelle fonti prima della pubblicazione. Quando le fonti non concordano, l’articolo dice chi ha riferito che cosa. Un aneddoto che le fonti riportano solo come racconto viene raccontato come tale. Gli articoli in altre lingue sono tradotti dal testo inglese con l’aiuto dell’IA, e ogni traduzione viene controllata prima di essere pubblicata.",
+      "corrections": "Se qui c’è qualcosa di sbagliato, <link>invia una correzione</link>."
+    },
+    "sort": {
+      "label": "Ordina",
+      "group": "Ordina gli articoli",
+      "options": {
+        "newest": "Più recenti",
+        "views": "Più visti",
+        "likes": "Con più Mi piace"
+      }
+    },
+    "pager": {
+      "label": "Pagine",
+      "previous": "Pagina precedente",
+      "next": "Pagina successiva",
+      "page": "Pagina {page}",
+      "showing": "Mostrati da {first} a {last} su {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# visualizzazione} many {# di visualizzazioni} other {# visualizzazioni}}",
+      "likes": "{count, plural, one {# Mi piace} many {# Mi piace} other {# Mi piace}}"
+    },
+    "like": {
+      "button": "Metti Mi piace a questo articolo",
+      "failed": "Non è stato salvato. Riprova."
+    },
+    "page": {
+      "backToList": "Tutti gli articoli",
+      "showAll": "Mostra tutto il testo",
+      "byline": "Di <author>{name}</author>",
+      "authorshipNote": "Ricerca e prima stesura con l’aiuto dell’IA a partire dalle fonti elencate qui sotto. Ogni fatto è stato verificato su quelle fonti prima della pubblicazione.",
+      "translationNote": "Tradotto dall’inglese con l’aiuto dell’IA. L’articolo in inglese è il riferimento.",
+      "readInEnglish": "Leggilo in inglese",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, tramite <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Scheda",
+      "facts": {
+        "born": "Nascita",
+        "died": "Morte",
+        "country": "Paese",
+        "title": "Titolo",
+        "peakRating": "Rating massimo",
+        "worldChampion": "Campione del mondo",
+        "knownFor": "Noto per",
+        "memoryFeat": "Impresa di memoria"
+      },
+      "drillHeading": "Tocca a te",
+      "drillAction": "Gioca con {pieces, plural, one {# pezzo} many {# di pezzi} other {# pezzi}}, {seconds, plural, one {# secondo} many {# di secondi} other {# secondi}}",
+      "sources": "Fonti",
+      "nextArticle": "Articolo successivo"
+    },
+    "tile": {
+      "eyebrow": "Da leggere dopo",
+      "yourRound": "Il tuo turno",
+      "articleDrill": "L’esercizio di questo articolo",
+      "roundSize": "{pieces, plural, one {# pezzo} many {# di pezzi} other {# pezzi}}, {seconds, plural, one {# secondo} many {# di secondi} other {# secondi}}",
+      "read": "Leggi l’articolo",
+      "tryDrill": "Prova quell’esercizio"
+    }
   }
 }

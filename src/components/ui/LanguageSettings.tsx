@@ -15,12 +15,13 @@ import { Globe } from "lucide-react";
 import { useClickAway } from "@/hooks/useClickAway";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import {
+  DEFAULT_LOCALE,
   LOCALES,
   LOCALE_LABELS,
   LOCALE_BADGES,
   type Locale,
 } from "@/i18n/routing";
-import { isEnglishOnlyPath } from "@/lib/seo/englishOnly";
+import { isEnglishOnlyPath, isServedAtBareEnglishUrl } from "@/lib/seo/englishOnly";
 
 interface LanguageSettingsProps {
   className?: string;
@@ -48,9 +49,11 @@ export default function LanguageSettings({
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
-  // An English-only page has no other language to switch to. Letting a pick
-  // through would change nothing visible and still write the locale cookie.
   const isEnglishOnlyPage = isEnglishOnlyPath(pathname);
+  // Picking a language this page is not served in would land the reader on the
+  // English page again and still write the locale cookie.
+  const isUnavailable = (option: Locale) =>
+    option !== locale && option !== DEFAULT_LOCALE && isServedAtBareEnglishUrl(pathname, option);
   const englishOnlyNoteId = useId();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -121,7 +124,7 @@ export default function LanguageSettings({
   const handleSelect = (nextLocale: Locale) => {
     setIsOpen(false);
 
-    if (nextLocale === locale || isEnglishOnlyPage) return;
+    if (nextLocale === locale || isUnavailable(nextLocale)) return;
 
     // `pathname` from @/i18n/navigation is already locale-stripped, but it is
     // *only* the path -- the query and hash are not in it. Replacing with the
@@ -152,7 +155,7 @@ export default function LanguageSettings({
 
   const renderOption = (option: (typeof localeOptions)[number]) => {
     const isActive = option.code === locale;
-    const isUnavailable = isEnglishOnlyPage && !isActive;
+    const isDisabled = isUnavailable(option.code);
 
     return (
       <button
@@ -161,12 +164,12 @@ export default function LanguageSettings({
         lang={option.code}
         role="menuitemradio"
         aria-checked={isActive}
-        disabled={isUnavailable}
-        aria-disabled={isUnavailable || undefined}
+        disabled={isDisabled}
+        aria-disabled={isDisabled || undefined}
         className={`flex w-full items-center justify-between gap-3 rounded-md px-3 py-2 text-left text-sm transition-colors ${
           isActive
             ? "bg-peach-500/15 text-peach-500"
-            : isUnavailable
+            : isDisabled
               ? "cursor-not-allowed text-text-muted opacity-50"
               : "text-text-secondary hover:bg-bg-light hover:text-text-primary"
         }`}

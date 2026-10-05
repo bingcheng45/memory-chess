@@ -5,8 +5,7 @@ import { announceArrival, clearArrival } from "@/components/articles/articleArri
 import { setReducedMotion } from "@/components/articles/__tests__/reducedMotion";
 import { photoNamed } from "@/components/articles/__tests__/flightHarness";
 import { pointerEnters, recordWarmedImages } from "@/components/articles/__tests__/warmedImages";
-import { ARTICLE_COPY } from "@/lib/articles/copy";
-import { FACT_ROWS, type Article } from "@/lib/articles/schema";
+import type { Article } from "@/lib/articles/schema";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
 import { makeArticle, summaryOf } from "@/lib/articles/__tests__/fixtures";
 
@@ -70,8 +69,8 @@ describe("ArticlePage heading block", () => {
     expect(note).toHaveTextContent(
       "Researched and drafted with AI assistance from the sources listed below. Every fact was checked against those sources before publication.",
     );
-    expect(note?.textContent).toBe(ARTICLE_COPY.authorshipNote);
     expect(byline?.nextElementSibling).toBe(note);
+    expect(container.querySelector("[data-translation-note]")).toBeNull();
   });
 
   it("links back to the list", () => {
@@ -100,8 +99,7 @@ describe("ArticlePage portrait and credit", () => {
     expect(figure.querySelectorAll("cite")).toHaveLength(1);
     expect(figure.lastElementChild?.tagName).toBe("FIGCAPTION");
     expect(cite.parentElement).toBe(figure.lastElementChild);
-    expect(cite).toHaveTextContent(article.photo.author);
-    expect(cite).toHaveTextContent(article.photo.changes);
+    expect(cite.textContent).toBe("Photo: Fixture Photographer, CC BY 4.0, via Wikimedia Commons. Cropped and resized.");
     expect(within(cite).getByRole("link", { name: article.photo.license })).toHaveAttribute(
       "href",
       article.photo.licenseUrl,
@@ -129,8 +127,9 @@ describe("ArticlePage portrait and credit", () => {
     const { container } = renderPage(publicDomain);
     const cite = container.querySelector("figure cite")!;
 
-    expect(cite).toHaveTextContent("Public domain");
+    expect(cite.textContent).toBe("Photo: Fixture Photographer, Public domain, via Wikimedia Commons. Cropped and resized.");
     expect(within(cite as HTMLElement).getAllByRole("link")).toHaveLength(1);
+    expect(within(cite as HTMLElement).getByRole("link")).toHaveTextContent("Wikimedia Commons");
   });
 });
 
@@ -158,7 +157,7 @@ describe("ArticlePage fact file", () => {
     ]);
   });
 
-  it("shows every fact in FACT_ROWS order when all are present", () => {
+  it("shows every fact in the file's order when all are present", () => {
     const full = makeArticle(3, {
       facts: {
         memoryFeat: "Feat",
@@ -173,8 +172,16 @@ describe("ArticlePage fact file", () => {
     });
     const { container } = renderPage(full);
 
-    expect(labels(container)).toEqual(FACT_ROWS.map((row) => row.label));
-    expect(values(container)).toEqual(FACT_ROWS.map((row) => full.facts[row.key]));
+    expect(labels(container).map((label, row) => `${label}: ${values(container)[row]}`)).toEqual([
+      "Born: 1 Jan 1900, Town",
+      "Died: 1 Jan 1990, aged 90",
+      "Country: Country",
+      "Title: Grandmaster, 1950",
+      "Peak rating: 2700 (1990)",
+      "World Champion: 1927 to 1935",
+      "Known for: Known",
+      "Memory feat: Feat",
+    ]);
   });
 });
 
@@ -310,7 +317,7 @@ describe("ArticlePage markup", () => {
     const script = container.querySelector('script[type="application/ld+json"]');
 
     expect(JSON.parse(script?.textContent ?? "null")).toEqual(
-      JSON.parse(JSON.stringify(buildArticleStructuredData(article))),
+      JSON.parse(JSON.stringify(buildArticleStructuredData(article, "en", "Articles"))),
     );
   });
 

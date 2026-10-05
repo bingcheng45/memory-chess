@@ -2,28 +2,33 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing, LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
-import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly, unprefixedPath } from "@/lib/seo/englishOnly";
+import { isIndexedInDefaultLocaleOnly, isServedAtBareEnglishUrl, unprefixedPath } from "@/lib/seo/englishOnly";
 import { resolveRetiredLearnPath } from "@/lib/seo/learn/retired";
 
 const handleI18nRouting = createMiddleware(routing);
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 
-/** `/de/learn/x` -> `/learn/x` when the unprefixed path is English-only. */
-function bareEnglishOnlyPath(pathname: string): string | null {
+/** `/de/learn/x` -> `/learn/x` when that prefix's readers get the page at its bare English URL. */
+function bareEnglishPath(pathname: string): string | null {
   const bare = unprefixedPath(pathname);
-  return bare !== pathname && isEnglishOnlyPath(bare) ? bare : null;
+  if (bare === pathname) return null;
+
+  const [, locale] = pathname.split("/");
+  return isServedAtBareEnglishUrl(bare, locale) ? bare : null;
 }
 
 /**
- * next-intl sends an unprefixed path to the cookie or Accept-Language locale,
- * and for an English-only route that is a redirect back to the prefixed URL
- * the visitor was just redirected away from: an infinite loop. Negotiating
- * with no locale cookie and an English header makes next-intl rewrite to the
- * default locale instead. The visitor's own cookie survives, because next-intl
- * only writes one when the resolved locale differs from the request's
- * preference, and here they agree. The hreflang Link header is dropped since
- * these routes have no alternates to advertise.
+ * next-intl sends an unprefixed path to the cookie or Accept-Language locale.
+ * For an English-only route that is a redirect back to the prefixed URL the
+ * visitor was just redirected away from: an infinite loop. For an article it
+ * would move the indexed English URL to a translation. Negotiating with no
+ * locale cookie and an English header makes next-intl rewrite to the default
+ * locale instead. The visitor's own cookie survives, because next-intl only
+ * writes one when the resolved locale differs from the request's preference,
+ * and here they agree.
+ * The hreflang Link header is dropped since these routes have no alternates
+ * to advertise.
  */
 function routeAsDefaultLocale(request: NextRequest) {
   const headers = new Headers(request.headers);
@@ -76,12 +81,13 @@ export default function middleware(request: NextRequest) {
 
 /**
  * The one URL a path should answer at: no trailing slash, a retired guide's
- * replacement, and an English-only page without its locale prefix. Resolving
- * all three together keeps every redirect to a single hop.
+ * replacement, and no locale prefix on a page that prefix's readers get at
+ * its bare English URL. Resolving all three together keeps every redirect to
+ * a single hop.
  */
 function canonicalPath(pathname: string): string {
   const trimmed = pathname.replace(/\/+$/, "") || "/";
-  return resolveRetiredLearnPath(trimmed) ?? bareEnglishOnlyPath(trimmed) ?? trimmed;
+  return resolveRetiredLearnPath(trimmed) ?? bareEnglishPath(trimmed) ?? trimmed;
 }
 
 function route(request: NextRequest) {
@@ -93,7 +99,7 @@ function route(request: NextRequest) {
     return NextResponse.redirect(url, 308);
   }
 
-  if (isEnglishOnlyPath(request.nextUrl.pathname)) {
+  if (isServedAtBareEnglishUrl(request.nextUrl.pathname, DEFAULT_LOCALE)) {
     return routeAsDefaultLocale(request);
   }
 

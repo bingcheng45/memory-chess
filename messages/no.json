@@ -370,5 +370,76 @@
   "changelog": {
     "bannerCta": "Se hva som er nytt",
     "bannerLabel": "Memory Chess-oppdatering"
+  },
+  "articles": {
+    "meta": {
+      "title": "Artikler om sjakkspillere og hukommelsen deres",
+      "description": "Portretter av sjakkspillere og hukommelsesforskere. Hver artikkel presenterer den dokumenterte bragden, forskningen som forklarer den, og en øvelse du kan prøve."
+    },
+    "list": {
+      "heading": "Artikler",
+      "sub": "Sjakkspillere og hukommelsesforskere, ett portrett om gangen.",
+      "aboutHeading": "Slik lages artiklene",
+      "about1": "Hver artikkel følger én sjakkspiller eller forsker og ett spørsmål om hukommelsen deres. Temaet kan være en spiller som er kjent for en hukommelsesbragd, eller en forsker som målte hva spillere husker etter noen få sekunder.",
+      "about2": "Alle artiklene har de samme delene. Portrettet har med fotograf og lisens. En faktaboks gir datoer, titler og hukommelsesbragden personen er kjent for. Fortellingen stiller den bragden ved siden av forskningen som forklarer den. En kildeliste viser hvor hver påstand kommer fra. En øvelse til slutt åpner en runde i Memory Chess med antall brikker og visningstid som historien tilsier.",
+      "about3": "Artiklene er undersøkt og skrevet i utkast med KI-hjelp, ut fra publiserte kilder som intervjuer, turneringsrapporter, bøker og forskningsartikler. En egen kontroll sammenligner deretter hver dato, hvert tall og hvert sitat med disse kildene før noe publiseres. Der kildene er uenige, sier artikkelen hvem som rapporterte hva. En anekdote som kildene bare gjengir som en historie, fortelles som en historie. Artikler på andre språk er oversatt fra den engelske teksten med KI-hjelp, og hver oversettelse kontrolleres før den publiseres.",
+      "corrections": "Hvis noe her er feil, kan du <link>sende oss en rettelse</link>."
+    },
+    "sort": {
+      "label": "Sorter",
+      "group": "Sorter artikler",
+      "options": {
+        "newest": "Nyeste",
+        "views": "Mest sett",
+        "likes": "Mest likt"
+      }
+    },
+    "pager": {
+      "label": "Sider",
+      "previous": "Forrige side",
+      "next": "Neste side",
+      "page": "Side {page}",
+      "showing": "Viser {first} til {last} av {total}"
+    },
+    "counts": {
+      "views": "{count, plural, one {# visning} other {# visninger}}",
+      "likes": "{count, plural, one {# like} other {# likes}}"
+    },
+    "like": {
+      "button": "Lik denne artikkelen",
+      "failed": "Det ble ikke lagret. Prøv igjen."
+    },
+    "page": {
+      "backToList": "Alle artikler",
+      "showAll": "Vis hele teksten",
+      "byline": "Av <author>{name}</author>",
+      "authorshipNote": "Undersøkt og skrevet i utkast med KI-hjelp ut fra kildene som er oppført nedenfor. Hvert faktum ble kontrollert mot disse kildene før publisering.",
+      "translationNote": "Oversatt fra engelsk med KI-hjelp. Den engelske artikkelen er den gjeldende.",
+      "readInEnglish": "Les den på engelsk",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Faktaboks",
+      "facts": {
+        "born": "Født",
+        "died": "Død",
+        "country": "Land",
+        "title": "Tittel",
+        "peakRating": "Høyeste rating",
+        "worldChampion": "Verdensmester",
+        "knownFor": "Kjent for",
+        "memoryFeat": "Hukommelsesbragd"
+      },
+      "drillHeading": "Din tur",
+      "drillAction": "Spill {pieces, plural, one {# brikke} other {# brikker}}, {seconds, plural, one {# sekund} other {# sekunder}}",
+      "sources": "Kilder",
+      "nextArticle": "Neste artikkel"
+    },
+    "tile": {
+      "eyebrow": "Les neste",
+      "yourRound": "Din runde",
+      "articleDrill": "Øvelsen i denne artikkelen",
+      "roundSize": "{pieces, plural, one {# brikke} other {# brikker}}, {seconds, plural, one {# sekund} other {# sekunder}}",
+      "read": "Les artikkelen",
+      "tryDrill": "Prøv den øvelsen"
+    }
   }
 }

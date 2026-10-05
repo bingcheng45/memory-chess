@@ -370,5 +370,76 @@
   "changelog": {
     "bannerCta": "Lihat yang baru",
     "bannerLabel": "Pembaruan Memory Chess"
+  },
+  "articles": {
+    "meta": {
+      "title": "Artikel tentang pemain catur dan ingatan mereka",
+      "description": "Profil pemain catur dan peneliti ingatan. Masing-masing memuat prestasi yang terdokumentasi, riset yang menjelaskannya, dan latihan untuk dicoba."
+    },
+    "list": {
+      "heading": "Artikel",
+      "sub": "Pemain catur dan peneliti ingatan, satu profil demi satu profil.",
+      "aboutHeading": "Bagaimana artikel ini dibuat",
+      "about1": "Setiap artikel mengikuti seorang pemain catur atau peneliti dan satu pertanyaan tentang ingatannya. Subjeknya bisa seorang pemain yang dikenal karena prestasi mengingat, atau seorang peneliti yang mengukur apa yang diingat pemain setelah beberapa detik.",
+      "about2": "Setiap artikel memiliki bagian yang sama. Sebuah potret disertai nama fotografer dan lisensinya. Ringkasan fakta memuat tanggal, gelar, dan prestasi ingatan yang membuat orang itu dikenal. Kisahnya menyandingkan prestasi itu dengan riset yang menjelaskannya. Daftar sumber menunjukkan dari mana tiap klaim berasal. Latihan di akhir membuka satu ronde Memory Chess dengan jumlah bidak dan waktu melihat yang disarankan kisah itu.",
+      "about3": "Artikel diriset dan disusun dengan bantuan AI dari sumber-sumber terbitan seperti wawancara, laporan turnamen, buku, dan makalah riset. Pemeriksaan terpisah kemudian membandingkan setiap tanggal, angka, dan kutipan dengan sumber-sumber itu sebelum apa pun diterbitkan. Jika sumber berbeda pendapat, artikel menyebut siapa yang melaporkan apa. Anekdot yang oleh sumber hanya dilaporkan sebagai cerita dituturkan sebagai cerita. Artikel dalam bahasa lain diterjemahkan dari teks bahasa Inggris dengan bantuan AI, dan setiap terjemahan diperiksa sebelum dipublikasikan.",
+      "corrections": "Jika ada yang keliru di sini, <link>kirimkan koreksi</link>."
+    },
+    "sort": {
+      "label": "Urutkan",
+      "group": "Urutkan artikel",
+      "options": {
+        "newest": "Terbaru",
+        "views": "Paling banyak dilihat",
+        "likes": "Paling banyak disukai"
+      }
+    },
+    "pager": {
+      "label": "Halaman",
+      "previous": "Halaman sebelumnya",
+      "next": "Halaman berikutnya",
+      "page": "Halaman {page}",
+      "showing": "Menampilkan {first} sampai {last} dari {total}"
+    },
+    "counts": {
+      "views": "{count, plural, other {# kali dilihat}}",
+      "likes": "{count, plural, other {# suka}}"
+    },
+    "like": {
+      "button": "Sukai artikel ini",
+      "failed": "Gagal tersimpan. Coba lagi."
+    },
+    "page": {
+      "backToList": "Semua artikel",
+      "showAll": "Tampilkan seluruh teks",
+      "byline": "Oleh <author>{name}</author>",
+      "authorshipNote": "Diriset dan disusun dengan bantuan AI dari sumber yang tercantum di bawah. Setiap fakta diperiksa terhadap sumber-sumber itu sebelum diterbitkan.",
+      "translationNote": "Diterjemahkan dari bahasa Inggris dengan bantuan AI. Artikel bahasa Inggris menjadi acuannya.",
+      "readInEnglish": "Baca dalam bahasa Inggris",
+      "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, melalui <source>Wikimedia Commons</source>. {changes}.",
+      "factFile": "Ringkasan fakta",
+      "facts": {
+        "born": "Lahir",
+        "died": "Meninggal",
+        "country": "Negara",
+        "title": "Gelar",
+        "peakRating": "Rating tertinggi",
+        "worldChampion": "Juara Dunia",
+        "knownFor": "Dikenal karena",
+        "memoryFeat": "Prestasi ingatan"
+      },
+      "drillHeading": "Giliran Anda",
+      "drillAction": "Mainkan {pieces, plural, other {# bidak}}, {seconds, plural, other {# detik}}",
+      "sources": "Sumber",
+      "nextArticle": "Artikel berikutnya"
+    },
+    "tile": {
+      "eyebrow": "Baca selanjutnya",
+      "yourRound": "Ronde Anda",
+      "articleDrill": "Latihan artikel ini",
+      "roundSize": "{pieces, plural, other {# bidak}}, {seconds, plural, other {# detik}}",
+      "read": "Baca artikelnya",
+      "tryDrill": "Coba latihan itu"
+    }
   }
 }

@@ -1,6 +1,6 @@
+import { useTranslations } from "next-intl";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import { FIRST_PAGE, writePage } from "@/components/articles/listAddress";
-import { ARTICLE_PAGER_COPY } from "@/lib/articles/copy";
 import type { Page } from "@/lib/articles/paging";
 
 type ArticlePagerProps = {
@@ -39,18 +39,20 @@ function StepButton({ label, symbol, target, isAtEnd }: StepButtonProps) {
 }
 
 export default function ArticlePager({ current, total }: ArticlePagerProps) {
-  const pager = ARTICLE_PAGER_COPY;
+  const t = useTranslations("articles.pager");
   const pages = Array.from({ length: current.pageCount }, (_, index) => index + 1);
 
   return (
     <nav
-      aria-label={pager.label}
+      aria-label={t("label")}
       className="mt-[34px] flex flex-wrap items-center justify-between gap-3 text-sm text-text-muted [font-variant-numeric:tabular-nums]"
     >
-      <p aria-live="polite">{pager.showing(current.firstPosition, current.lastPosition, total)}</p>
+      <p aria-live="polite">
+        {t("showing", { first: current.firstPosition, last: current.lastPosition, total })}
+      </p>
       <div className="flex flex-wrap items-center gap-2">
         <StepButton
-          label={pager.previous}
+          label={t("previous")}
           symbol="←"
           target={current.page - 1}
           isAtEnd={current.page === FIRST_PAGE}
@@ -61,7 +63,7 @@ export default function ArticlePager({ current, total }: ArticlePagerProps) {
             <button
               key={page}
               type="button"
-              aria-label={pager.page(page)}
+              aria-label={t("page", { page })}
               aria-current={isCurrent ? "page" : undefined}
               onClick={() => writePage(page)}
               className={isCurrent ? `${BUTTON_CLASS} ${CURRENT_CLASS}` : BUTTON_CLASS}
@@ -71,7 +73,7 @@ export default function ArticlePager({ current, total }: ArticlePagerProps) {
           );
         })}
         <StepButton
-          label={pager.next}
+          label={t("next")}
           symbol="→"
           target={current.page + 1}
           isAtEnd={current.page === current.pageCount}

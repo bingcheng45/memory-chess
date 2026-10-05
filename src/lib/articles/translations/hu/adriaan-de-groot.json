@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "approvedHash": "e090e5e07adc6cc0300ba5d1a02ef781ca18604f3ee6903c53c4728c40f0fceb",
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "Adriaan de Groot 1944-es sakkmemória-tesztje számokban",
+    "description": "Adriaan de Groot 1944-ben négy játékost tesztelt 2-15 másodpercig látott sakkállásokon. Íme a valódi pontszámai, és az, amin a későbbi kutatás változtatott.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "Holland sakkmester és pszichológus"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot fiatalemberként, 1930 körül",
+      "author": "Ismeretlen fényképész",
+      "license": "Közkincs",
+      "changes": "Kivágva"
+    },
+    "facts": {
+      "born": "1914. október 26., Santpoort, Hollandia",
+      "died": "2006. augusztus 14., 91 évesen",
+      "country": "Hollandia",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "93%-ot ért el a 2-15 másodpercig látott állások felidézésében"
+    },
+    "drill": {
+      "why": "De Groot Rohacek-Rabar-játszmából vett tesztállásában 22 bábu volt, és Max Euwe 5 másodpercig nézhette."
+    },
+    "sections": [
+      {
+        "heading": "Négy játékos és néhány másodperc",
+        "paragraphs": [
+          "1944-ben Adriaan de Groot egy sakkállást tett Max Euwe elé, és öt másodperc múlva elvette. Az állás egy Rohacek és Rabar közötti játszmából származott, a világos 20. lépése után, 22 bábuval a táblán. Euwe, az 1935 és 1937 közötti világbajnok, ezután lediktálta, hol áll minden bábu. Mind a 22-t eltalálta.",
+          "De Groot, aki maga is mester volt, ugyanezt a tesztet végezte el, hozzátett egy gyalogot, amely nem volt ott, és 21 pontot ért el. A. Fast, Utrecht 1942-es bajnoka, 17 bábut helyezett jól, de egyenlőnek ítélte az anyagot, holott nem az volt, és 16 pontot kapott. G. P. Hauer, egy gyengébb osztályú játékos, 9 pontot ért el.",
+          "A történet későbbi elbeszélései eltérnek a megtekintési idő és a százalékok tekintetében, ezért az alábbi számok de Groot saját könyvéből származnak."
+        ]
+      },
+      {
+        "heading": "Mester, aki mestereket tanulmányozott",
+        "paragraphs": [
+          "De Groot Hollandiát képviselte az 1937-es és az 1939-es sakkolimpián. 1938 és 1943 között lejegyezte, mit mondtak a játékosok, miközben hangosan gondolkodtak egy lépés kiválasztásakor. Alanyai között nagymesterek is voltak: Keres, Aljechin, Flohr, Fine, Euwe és Tartakower.",
+          "Saját számadatai szerint a nagymesterek nem néztek messzebbre előre, mint a szakértő játékosok, és nem vizsgáltak több lépést. „A mester nem feltétlenül számol mélyebbre”, írta. De Groot azt sejtette, hogy a különbség a tábla nézésének első másodperceiben mutatkozik meg, és az 1944-es kísérletet ennek az ötletnek a tesztelésére tervezte."
+        ]
+      },
+      {
+        "heading": "Mit mért az 1944-es kísérlet",
+        "paragraphs": [
+          "Minden osztályból egy játékos állt ki. Euwe a nagymestereket képviselte, de Groot a mestereket, Fast a szakértőket, Hauer pedig a gyengébb osztályú játékosokat.",
+          "Minden állás egy mesterjátszmából származott, és 2-10 másodpercig volt látható, egyetlen 15 másodperces megtekintéssel. A két gyengébb alany a legrövidebb próbákon 3-4 másodpercet kapott, hogy ne nulla pontot érjenek el. Minden alanynak körülbelül fél percet kellett szánnia arra, hogy rendezze, amire emlékszik. Euwe és de Groot ezután fejből lediktálták az állást, Fast és Hauer pedig felállították egy táblán.",
+          "A pontozás minden helyes bábuért egy pontot adott, a hozzáadott, kihagyott vagy elmozdított bábukért pedig pontot vont le. De Groot két állást elvetett, a sorozat elsőjét és egy időzítési hibás állást, és tizennégyet vett figyelembe, amelyek 7-től 26 bábuig terjedtek. A 234 elérhető pontból a négy alany az alábbi eredményt érte el.",
+          "Euwe 217 pontot ért el, azaz 93%-ot, öt tökéletes állással.",
+          "De Groot 217 pontot ért el, azaz 93%-ot, négy tökéletessel.",
+          "Fast 158 pontot ért el, azaz 68%-ot, egyetlen tökéletes nélkül.",
+          "Hauer 119 pontot ért el, azaz 51%-ot, egyetlen tökéletes nélkül.",
+          "De Groot ezután félretett két hosszú megtekintésű próbát, a 15 és a 7 másodperceset, valamint két olyat, amelyet egy pillanatnyi figyelemkiesés elrontott. A megmaradt tízben, amelyek szándékolt megtekintési ideje 2, 3 vagy 5 másodperc volt, az átlagpontszámok 93,0%, 92,6%, 72,3% és 51,1% voltak.",
+          "Mindkét táblázat az övé, ami valószínűleg azt magyarázza, hogy a későbbi elbeszélések a szakértőről vagy 68%-ot, vagy 72%-ot adnak meg. A megtekintési idő soha nem volt rögzített öt másodperc.",
+          "De Groot leginkább a középen húzódó különbségre volt kíváncsi, amelyet így nevezett: „a szakadék, amely a mestert elválasztja a nem mestertől.” Magyarázata szerint a mester nem 22 különálló bábut tárol. Bábuk egy nagy csoportját egyetlen egységként érzékeli, mert tudja, hogyan jön létre az a csoport, és mire való.",
+          "Néhány ilyen egység lefedi a táblát, és de Groot elmondása szerint a gyengébb játékosnak kevesebb van belőlük. A későbbi kutatók ezeket az egységeket chunkoknak nevezték."
+        ]
+      },
+      {
+        "heading": "Egy holland disszertációtól a véletlenszerű táblákig",
+        "paragraphs": [
+          "De Groot 1946-ban mutatta be a munkát az Amszterdami Egyetemen írt doktori disszertációjában, amelynek címe Het denken van den schaker. Az angol kiadást Thought and Choice in Chess címmel a Mouton jelentette meg Hágában 1965-ben.",
+          "1973-ban William Chase és Herbert Simon megismételték a tesztet a Carnegie Mellon Egyetemen egy mesterrel, egy A osztályú játékossal és egy kezdővel. A megtekintési időt 5 másodpercben rögzítették. Középjátékbeli állásaikban 24-26 bábu volt, és a mester nagyjából kétszer annyi bábut idézett fel, mint az A osztályú játékos.",
+          "Minden újrafelépítést videóra vettek, és a 2 másodpercnél hosszabb szünetet két chunk határának tekintették. A mester első chunkja átlagosan 3,8 bábut tartalmazott, szemben az A osztályú játékos 2,6-jával, és állásonként 7,7 chunkot hozott létre, szemben az 5,7-tel. A tizennégy állásban kapott 77 chunkjából 47 gyalogláncot tartalmazott, és Simon és Chase 10 sáncolt királyállást számoltak meg.",
+          "Kiegészítésük egy kontrollfeladat volt: ugyanazok a bábuk véletlenszerű mezőkön. Simon és Chase beszámolója szerint ekkor minden játékos nagyjából három-négy bábut idézett fel, kevesebbet, mint amennyit a kezdő a valódi állásokon elért. Megjegyezték, hogy W. Lemmens és R. W. Jongman ugyanerre az eredményre jutottak az amszterdami laboratóriumban, de soha nem publikálták.",
+          "Chase és Simon saját bevezetője a véletlenszerű táblák eredményét de Groot eredményeként mutatja be, és sok későbbi beszámoló ezt ismétli. Könyve nem közöl véletlenszerű táblás próbát."
+        ]
+      },
+      {
+        "heading": "Amin a későbbi kutatás változtatott",
+        "paragraphs": [
+          "A tankönyvek úgy értelmezték ezt az eredményt, hogy a mesternek értelmetlen táblákon egyáltalán nincs előnye. 1996-ban Fernand Gobet és Herbert Simon tizenhárom, legfeljebb 10 másodperces megtekintésű kísérlettel ellenőrizték ezt az olvasatot. A tizenhárom kísérletből tizenkettőben a legerősebb csoport több véletlenszerű bábut idézett fel, mint a leggyengébb. A kivétel Chase és Simon saját tanulmánya volt, ahol a mester teljesített a legrosszabbul.",
+          "Az előny kicsi. Gobet és Simon szerint a véletlenszerű táblákon nagyjából egy extra bábu jut 400 Élő-pontra, szemben a játszmaállásokon tapasztalt nagyjából öt extra bábuval. Egy 1998-as áttekintésben Gobet az 5 másodperces átlagokat a mesterek esetében 5,5, a B osztály alatti játékosok esetében 2,6 véletlenszerű bábuban adta meg.",
+          "A magyarázat érintetlenül hagyja de Groot elgondolását. Egy nagyon nagy mintatárral rendelkező játékos néha véletlenül talál egyet egy összevisszaságban. A véletlenszerű táblák csökkentik a szakértő előnyét, de nem szüntetik meg. Gobet és Simon hozzátették, hogy a kis minták elfedik az ilyen kis hatást, és az 1973-as tanulmánynak három alanya volt."
+        ]
+      },
+      {
+        "heading": "Próbáld ki de Groot tesztjét",
+        "paragraphs": [
+          "A Memory Chess játékban állíts be 22 bábut és 5 másodpercet. Ez megfelel de Groot Rohacek-Rabar-állása méretének és annak az időnek, amelyet Euwe kapott a nézésére. Építsd újra a táblát, és számold ki, a bábuk hányad részét helyezted el helyesen. Nagyjából a fele ott van, ahol Hauer végzett, nagyjából 70% ott, ahol Fast, a 93% pedig az, amit Euwe és de Groot átlagosan elértek.",
+          "Az összehasonlítás hozzávetőleges, mert de Groot a hibákért is vont le pontot. Aztán nézd meg, mely bábukat jegyezted meg. Valószínűleg csoportokban érkeztek, például egy gyaloglánc vagy egy sáncolt király formájában."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Alátámasztja: az 1944-es dátumot, a négy alanyt nevükkel és osztályukkal, a 2-15 másodperces megtekintési időket, a gyengébb alanyok hosszabb idejét, a fél perces szünetet, hogy ki diktálta le és ki állította fel az állást a táblán, a pontozási szabályokat, a Rohacek-Rabar-állást 5 másodperces megtekintéssel és négy pontszámmal, a 13. táblázatot (217, 217, 158, 119 a 234-ből), a 14. táblázatot (a tíz próba átlagai), mindkét idézetet, az 1938 és 1943 közötti hangos gondolkodási üléseket, a hat nagymestert, az 1946-os amszterdami disszertációt és a Mouton 1965-ös szerzői jogi jelzését. A szöveg nem tartalmaz véletlenszerű táblás kísérletet."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Alátámasztja: azokat a keresési statisztikákat, amelyek nem választották el a nagymestereket a gyengébb játékosoktól, a 93% és 72% számokat a későbbi idézések szerint, azt, hogy a mester nagyjából kétszer annyi bábut idézett fel, mint az A osztályú játékos, a chunkok 3,8 és 2,6 bábus átlagos méretét, az állásonkénti 7,7 és 5,7 chunkot, a 2 másodperces szünetet, a 77 chunkból 47 gyalogláncot és 10 sáncolt királyállást, a három-négy bábut a véletlenszerű táblákon, valamint Lemmens és Jongman publikálatlan eredményét."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Alátámasztja: a három alanyt, az 5 másodperces megtekintést, a 24-26 bábus középjátékbeli állásokat, a videóra vett újrafelépítéseket, a tizennégy állás 77 chunkját, amelyek közül 47 gyalogláncot tartalmazott, a chunkok 3,8 és 2,6 bábus átlagos méretét, az állásonkénti 7,7 és 5,7 chunkot, valamint a szerzők saját összefoglalóját, amely de Grootot 5 másodperces, véletlenszerű táblákat is tartalmazó kísérletként írja le."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Alátámasztja: a tizenhárom kísérletet, a legfeljebb 10 másodperces megtekintést, a tizenhárom közül tizenkettőt, amely a legerősebb csoportnak kedvez, Chase és Simon tanulmányát mint kivételt, a 400 Élő-pontonkénti egy bábut a véletlenszerű táblákon a nagyjából öt bábuval szemben a játszmaállásokon, a régi eredmény tankönyvi státuszát, a kis minták érvét és a chunkokon alapuló magyarázatot."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Alátámasztja: de Groot 2-15 másodperces megtekintési idejét, Euwe mint nagymester és világbajnoki évei, a fél perces szünetet, Chase és Simon 5 másodperces kísérleti elrendezését, a véletlenszerű táblás eredmény tankönyvi státuszát, valamint az 5,5 és 2,6 bábus átlagokat."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Alátámasztja: a négy alanyos felépítést, a 2-15 másodperces megtekintéseket, és azt az állítást, hogy a véletlenszerű táblás kontrollt gyakran tévesen de Grootnak tulajdonítják, holott Chase-é és Simoné."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Alátámasztja: a születési és halálozási dátumot és helyet, az 1937-es és 1939-es olimpiát, az 1946-os disszertációt és az 1965-ös angol kiadást."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Alátámasztja: a születési és halálozási dátumot és helyet, a 91 éves kort. Egyben példa arra a későbbi elbeszélésre, amely a megtekintési időt 3-4 másodpercben adja meg."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Alátámasztja: de Grootot az 1937-es és 1939-es holland csapatban."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Alátámasztja: de Grootot az 1937-es és 1939-es holland csapatban."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Alátámasztja: a 22 bábus tesztállást és a 22, 21, 16 és 9 pontszámot."
+      }
+    ]
+  }
+}

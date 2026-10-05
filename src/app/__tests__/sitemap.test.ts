@@ -4,6 +4,8 @@ import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
 import { LOCALES } from "@/i18n/routing";
 
+jest.mock("@/lib/articles/translatedLocales");
+
 describe("sitemap", () => {
   it("includes static routes, learn article URLs, and the learn hub timestamp", async () => {
     const entries = await sitemap();
@@ -110,6 +112,19 @@ describe("sitemap", () => {
       expect(matches).toHaveLength(1);
       expect(matches[0].alternates).toBeUndefined();
       expect(new Date(matches[0].lastModified ?? 0).toISOString()).toBe(new Date(article.updatedAt).toISOString());
+    }
+  });
+
+  it("offers search no translated article, in a URL or in an alternate", async () => {
+    const entries = await sitemap();
+    const articleUrls = entries.map((entry) => entry.url).filter((url) => /\/articles(\/|$)/.test(url));
+
+    expect(articleUrls).toHaveLength(ARTICLES.length + 1);
+    for (const url of articleUrls) {
+      expect(url).toMatch(/^https:\/\/thememorychess\.com\/articles(\/[a-z0-9-]+)?$/);
+    }
+    for (const entry of entries) {
+      expect(Object.values(entry.alternates?.languages ?? {}).some((href) => /\/articles/.test(String(href)))).toBe(false);
     }
   });
 

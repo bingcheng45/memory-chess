@@ -1,0 +1,135 @@
+{
+  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
+  "approvedHash": "a0afa588d6eb4e7befb67d5336228533334dab5e9ff44ee306ff06dd2ce3ab23",
+  "sameAsEnglish": [
+    "facts.knownFor"
+  ],
+  "text": {
+    "title": "Test šachové paměti Adriaana de Groota z roku 1944 v číslech",
+    "description": "Adriaan de Groot v roce 1944 testoval čtyři hráče na šachových pozicích zobrazených po dobu 2 až 15 sekund. Tady jsou jeho skutečné výsledky a to, co změnil pozdější výzkum.",
+    "person": {
+      "name": "Adriaan de Groot",
+      "role": "nizozemský šachový mistr a psycholog"
+    },
+    "photo": {
+      "alt": "Adriaan de Groot jako mladý muž, kolem roku 1930",
+      "author": "Neznámý fotograf",
+      "license": "Volné dílo",
+      "changes": "Oříznuto"
+    },
+    "facts": {
+      "born": "26. října 1914, Santpoort, Nizozemsko",
+      "died": "14. srpna 2006, ve věku 91 let",
+      "country": "Nizozemsko",
+      "knownFor": "Thought and Choice in Chess (1965)",
+      "memoryFeat": "Úspěšnost 93 % při vybavování pozic viděných 2 až 15 sekund"
+    },
+    "drill": {
+      "why": "De Grootova testovací pozice z partie Rohacek proti Rabarovi měla 22 figurek a Max Euwe ji viděl 5 sekund."
+    },
+    "sections": [
+      {
+        "heading": "Čtyři hráči a pár sekund",
+        "paragraphs": [
+          "V roce 1944 ukázal Adriaan de Groot Maxi Euweovi šachovou pozici a o pět sekund později ji zakryl. Pozice pocházela z partie Rohacek proti Rabarovi, po 20. tahu bílého, a na šachovnici stálo 22 figurek. Euwe, mistr světa v letech 1935 až 1937, pak nadiktoval, kde která figurka stála. Všech 22 určil správně.",
+          "De Groot, sám mistr, absolvoval stejný test, přidal jednoho pěšce, který v pozici nebyl, a získal 21 bodů. A. Fast, utrechtský šampion z roku 1942, umístil správně 17 figurek, ale usoudil, že je materiál vyrovnaný, ačkoli nebyl, a získal 16 bodů. G. P. Hauer, hráč slabší třídy, získal 9 bodů.",
+          "Různá převyprávění se v době zobrazení i v procentech rozcházejí, a proto čísla níže pocházejí z de Grootovy vlastní knihy."
+        ]
+      },
+      {
+        "heading": "Mistr, který zkoumal mistry",
+        "paragraphs": [
+          "De Groot hrál za Nizozemsko na šachových olympiádách v letech 1937 a 1939. Mezi lety 1938 a 1943 zapisoval, co hráči říkali, když při výběru tahu přemýšleli nahlas. Mezi zkoumanými byli velmistři Keres, Aljechin, Flohr, Fine, Euwe a Tartakower.",
+          "Podle jeho měření velmistři nehleděli dopředu dál než experti a nezkoumali víc tahů. „Mistr nemusí nutně počítat hlouběji,“ napsal. De Groot tušil, že rozdíl se projeví už v prvních sekundách pohledu na šachovnici, a experiment z roku 1944 navrhl tak, aby tuto myšlenku ověřil."
+        ]
+      },
+      {
+        "heading": "Co měřil experiment z roku 1944",
+        "paragraphs": [
+          "Každou třídu zastupoval jeden hráč. Euwe zastupoval velmistry, de Groot mistry, Fast experty a Hauer hráče slabších tříd.",
+          "Každá pozice pocházela z mistrovské partie a zůstala na očích 2 až 10 sekund, jednou po dobu 15 sekund. Oba slabší účastníci dostali u nejkratších pokusů 3 až 4 sekundy, aby nezískali nulu. Každý účastník měl použít asi půl minuty na uspořádání toho, co si podržel v paměti. Euwe a de Groot pak pozici nadiktovali zpaměti, Fast a Hauer ji postavili na šachovnici.",
+          "Bodování dávalo jeden bod za každou správnou figurku a body odečítalo za figurky přidané, vynechané nebo posunuté. De Groot vyřadil dvě pozice, první v řadě a jednu s chybou v načasování, a započítal čtrnáct pozic, které měly od 7 do 26 figurek. Ze 234 možných bodů získali čtyři účastníci tyto výsledky.",
+          "Euwe získal 217 bodů, tedy 93 %, a pět pozic měl bezchybně.",
+          "De Groot získal 217 bodů, tedy 93 %, a čtyři pozice měl bezchybně.",
+          "Fast získal 158 bodů, tedy 68 %, a žádnou pozici neměl bezchybně.",
+          "Hauer získal 119 bodů, tedy 51 %, a žádnou pozici neměl bezchybně.",
+          "De Groot pak vyřadil dva pokusy s dlouhým zobrazením, 15 a 7 sekund, a dva, které pokazil výpadek soustředění. V ostatních deseti pokusech se zamýšlenou dobou zobrazení 2, 3 nebo 5 sekund byly průměrné výsledky 93,0 %, 92,6 %, 72,3 % a 51,1 %.",
+          "Obě tabulky pocházejí od něj, což je pravděpodobně důvod, proč převyprávění uvádějí u experta buď 68 %, nebo 72 %. Doba zobrazení nikdy nebyla pevných pět sekund.",
+          "De Groota nejvíc zajímala mezera uprostřed, kterou označil slovy „propast, která odděluje mistra od nemistra“. Vysvětloval ho tím, že mistr si neukládá 22 samostatných figurek. Velkou skupinu figurek vnímá jako jeden celek, protože ví, jak taková skupina vzniká a k čemu slouží.",
+          "Několik takových celků pokryje celou šachovnici a podle de Grootova výkladu jich má slabší hráč méně. Pozdější badatelé tyto celky nazvali chunky."
+        ]
+      },
+      {
+        "heading": "Od nizozemské disertace k náhodným šachovnicím",
+        "paragraphs": [
+          "De Groot svou práci představil roku 1946 ve své doktorské disertaci na Amsterdamské univerzitě, Het denken van den schaker. Anglické vydání, Thought and Choice in Chess, vydalo nakladatelství Mouton v Haagu v roce 1965.",
+          "V roce 1973 William Chase a Herbert Simon test zopakovali na Carnegie Mellon s mistrem, hráčem třídy A a začátečníkem. Dobu zobrazení stanovili na 5 sekund. Jejich pozice ze střední hry měly 24 až 26 figurek a mistr si vybavil zhruba dvakrát tolik figurek než hráč třídy A.",
+          "Každou rekonstrukci natočili na video a pauzu delší než 2 sekundy považovali za hranici mezi dvěma chunky. První chunk mistra měl v průměru 3,8 figurky oproti 2,6 u hráče třídy A a na jednu pozici vytvořil 7,7 chunku oproti 5,7. Z jeho 77 chunků napříč čtrnácti pozicemi jich 47 obsahovalo pěšcový řetěz a Simon s Chasem napočítali 10 pozic s králem po rošádě.",
+          "Jejich novinkou byla kontrola: stejné figurky rozestavené na náhodná pole. Simon a Chase uvedli, že si pak každý hráč vybavil zhruba tři nebo čtyři figurky, méně než zvládl začátečník u skutečných pozic. Poznamenali, že W. Lemmens a R. W. Jongman dospěli ke stejnému výsledku v amsterdamské laboratoři a nikdy ho nepublikovali.",
+          "Samotný úvod Chase a Simona uvádí výsledek s náhodnými šachovnicemi jako de Grootův a mnohé pozdější popisy to opakují. V jeho knize žádný pokus s náhodnou šachovnicí uveden není."
+        ]
+      },
+      {
+        "heading": "Co změnil pozdější výzkum",
+        "paragraphs": [
+          "Učebnice z tohoto výsledku vyvodily, že mistr nemá na nesmyslných šachovnicích vůbec žádnou výhodu. V roce 1996 Fernand Gobet a Herbert Simon toto čtení ověřili na třinácti experimentech s dobou zobrazení do 10 sekund. Ve dvanácti ze třinácti si nejsilnější skupina vybavila víc náhodných figurek než nejslabší. Výjimkou byla studie samotných Chase a Simona, kde mistr dopadl nejhůř.",
+          "Výhoda je malá. Gobet a Simon ji odhadli na zhruba jednu figurku navíc na 400 bodů Elo u náhodných šachovnic, oproti zhruba pěti figurkám navíc u pozic z partií. V přehledové práci z roku 1998 uvedl Gobet průměry při 5 sekundách: 5,5 náhodné figurky u mistrů a 2,6 u hráčů pod třídou B.",
+          "Toto vysvětlení de Grootovu myšlenku nechává platit. Hráč s velmi rozsáhlou zásobou vzorů může občas nějaký vzor v nahodilé změti najít náhodou. Náhodné šachovnice expertovu výhodu zmenšují, ale neodstraňují. Gobet a Simon dodali, že malé vzorky tak malý efekt skrývají, a studie z roku 1973 měla tři účastníky."
+        ]
+      },
+      {
+        "heading": "Vyzkoušejte de Grootův test",
+        "paragraphs": [
+          "Nastavte v Memory Chess 22 figurek a 5 sekund. To odpovídá velikosti de Grootovy pozice z partie Rohacek proti Rabarovi a době, po kterou ji Euwe směl sledovat. Postavte šachovnici zpět a spočítejte, jakou část figurek jste umístili správně. Zhruba polovina je úroveň, na které skončil Hauer, asi 70 % je úroveň, na které skončil Fast, a 93 % je průměr Euweho a de Groota.",
+          "Srovnání je hrubé, protože de Groot odečítal body i za chyby. Pak se podívejte, které figurky jste si podrželi. Pravděpodobně přišly ve skupinách, třeba jako pěšcový řetěz nebo král po rošádě."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thought and Choice in Chess, 2nd edition (1978), Adriaan D. de Groot, Mouton, The Hague, full text",
+        "note": "Dokládá: datum 1944, čtyři účastníky s jmény a třídami, doby zobrazení 2 až 15 sekund, delší doby pro slabší účastníky, půlminutovou pauzu, kdo diktoval a kdo stavěl na šachovnici, pravidla bodování, pozici Rohacek proti Rabarovi s dobou zobrazení 5 sekund a čtyřmi výsledky, tabulku 13 (217, 217, 158, 119 z 234), tabulku 14 (průměry z deseti pokusů), oba citáty, sezení s hlasitým myšlením z let 1938 až 1943, šest velmistrů, amsterdamskou disertaci z roku 1946 a copyright nakladatelství Mouton z roku 1965. Text neobsahuje žádný experiment s náhodnými šachovnicemi."
+      },
+      {
+        "title": "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+        "note": "Dokládá: statistiky prohledávání, které velmistry neodlišily od slabších hráčů, čísla 93 % a 72 % tak, jak byla později citována, mistra, který si vybavil zhruba dvakrát tolik figurek než hráč třídy A, velikosti chunků 3,8 a 2,6, počty chunků 7,7 a 5,7, pauzu 2 sekundy, 47 pěšcových řetězů a 10 pozic s králem po rošádě mezi 77 chunky, tři nebo čtyři figurky na náhodných šachovnicích a nepublikovaný výsledek Lemmense a Jongmana."
+      },
+      {
+        "title": "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+        "note": "Dokládá: tři účastníky, dobu zobrazení 5 sekund, pozice ze střední hry s 24 až 26 figurkami, rekonstrukce natočené na video, 77 chunků ve čtrnácti pozicích, z nichž 47 obsahovalo pěšcový řetěz, velikosti chunků 3,8 a 2,6, počty chunků 7,7 a 5,7 a vlastní shrnutí autorů, podle něhož měl de Grootův experiment dobu zobrazení 5 sekund a zahrnoval náhodné šachovnice."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Dokládá: třináct experimentů, doby zobrazení nejvýše 10 sekund, dvanáct ze třinácti ve prospěch nejsilnější skupiny, výjimku Chase a Simona, jednu figurku na 400 bodů Elo u náhodných šachovnic oproti zhruba pěti u pozic z partií, postavení starého výsledku v učebnicích, argument malého vzorku a vysvětlení založené na chuncích."
+      },
+      {
+        "title": "Expert memory: a comparison of four theories, Fernand Gobet, Cognition 66, pages 115 to 152 (1998)",
+        "note": "Dokládá: de Grootovy doby zobrazení 2 až 15 sekund, Euweho jako velmistra a roky jeho mistrovství světa, půlminutovou pauzu, návrh Chase a Simona s dobou zobrazení 5 sekund, postavení výsledku s náhodnými šachovnicemi v učebnicích a průměry 5,5 a 2,6 figurky."
+      },
+      {
+        "title": "Cognitive and Neuropsychological Mechanisms of Expertise: Studies with Chess Masters, Christopher F. Chabris, doctoral thesis, Harvard University (1999)",
+        "note": "Dokládá: návrh se čtyřmi účastníky, doby zobrazení 2 až 15 sekund a konstatování, že kontrola s náhodnými šachovnicemi se často mylně připisuje de Grootovi, ačkoli patří Chasovi a Simonovi."
+      },
+      {
+        "title": "Adriaan de Groot, Wikipedia",
+        "note": "Dokládá: data a místa narození a úmrtí, olympiády v letech 1937 a 1939, disertaci z roku 1946 a anglické vydání z roku 1965."
+      },
+      {
+        "title": "Adriaan de Groot, chess psychologist (1914-2006), ChessBase",
+        "note": "Dokládá: data a místa narození a úmrtí, věk 91 let. Je také příkladem převyprávění, které uvádí dobu zobrazení 3 až 4 sekundy."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1937 Olympiad",
+        "note": "Dokládá: de Groota v nizozemských týmech v letech 1937 a 1939."
+      },
+      {
+        "title": "OlimpBase team page for the Netherlands, 1939 Olympiad",
+        "note": "Dokládá: de Groota v nizozemských týmech v letech 1937 a 1939."
+      },
+      {
+        "title": "A Chess-Position Memory Test (from Adriaan de Groot), Eliot Hearst",
+        "note": "Dokládá: testovací pozici s 22 figurkami a výsledky 22, 21, 16 a 9."
+      }
+    ]
+  }
+}

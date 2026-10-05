@@ -1,22 +1,24 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useReducer, useRef, type Dispatch, type RefObject } from "react";
 import { clearArrival, peekArrival } from "@/components/articles/articleArrival";
 import { prefersReducedMotion } from "@/components/articles/articleFlight";
 import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import {
   BLOCK_START,
+  DEFAULT_CHARS_PER_SECOND,
   advance,
+  graphemeEnds,
   isFinished,
   placementOf,
-  wholeCharacterCut,
   type BlockKind,
 } from "@/components/articles/typingPace";
-import { readingFont } from "@/lib/articles/readingFont";
+import { readingFaceClass } from "@/lib/articles/readingFont";
 import type { ArticleSection } from "@/lib/articles/schema";
 import "./typedBody.css";
 
-type TypedBodyProps = { slug: string; sections: readonly ArticleSection[] };
+type TypedBodyProps = { slug: string; sections: readonly ArticleSection[]; charsPerSecond?: number };
 
 type Block = { readonly kind: BlockKind; readonly text: string };
 type BlockStage = "shown" | "current" | "waiting";
@@ -30,13 +32,12 @@ type TypingEvent =
   | { readonly type: "blockTyped" }
   | { readonly type: "showAll" };
 
-const SHOW_ALL_LABEL = "Show all text";
 const HELD_BLOCK_CHECK_MS = 250;
 const IDLE: TypingState = { phase: "idle" };
 const DONE: TypingState = { phase: "done" };
 const UNTYPED_CLASS = "article-untyped";
 const CARET_CLASS = "article-caret";
-const BODY_CLASS = `${readingFont.className} mt-[34px] outline-none max-w-[66ch] text-[18.5px] leading-[1.75] text-text-secondary min-[561px]:text-xl`;
+const BODY_CLASS = `mt-[34px] outline-none max-w-[66ch] text-[18.5px] leading-[1.75] text-text-secondary min-[561px]:text-xl`;
 const BLOCK_TAG = { heading: "h2", paragraph: "p" } as const;
 const BLOCK_CLASS = {
   heading:
@@ -74,8 +75,15 @@ function stageOf(state: TypingState, index: number): BlockStage {
   return index === state.block ? "current" : "waiting";
 }
 
-function typeOut(block: Block, shown: HTMLElement, rest: HTMLElement, emit: Dispatch<TypingEvent>): () => void {
-  const pace = { length: block.text.length, kind: block.kind };
+function typeOut(
+  block: Block,
+  charsPerSecond: number,
+  shown: HTMLElement,
+  rest: HTMLElement,
+  emit: Dispatch<TypingEvent>,
+): () => void {
+  const ends = graphemeEnds(block.text);
+  const pace = { length: ends.length, kind: block.kind, charsPerSecond };
   const element = shown.parentElement ?? shown;
   let progress = BLOCK_START;
   let previousFrame: number | null = null;
@@ -88,7 +96,7 @@ function typeOut(block: Block, shown: HTMLElement, rest: HTMLElement, emit: Disp
     const next = advance(progress, pace, elapsedMs, placement);
     if (next.chars !== progress.chars) {
       if (progress.chars === 0) emit({ type: "firstCharTyped" });
-      const cut = wholeCharacterCut(block.text, next.chars);
+      const cut = ends[next.chars - 1];
       shown.textContent = block.text.slice(0, cut);
       rest.textContent = block.text.slice(cut);
     }
@@ -125,7 +133,12 @@ function BlockText({ text, stage, shown, rest }: { text: string; stage: BlockSta
   );
 }
 
-function useBlockTyping(state: TypingState, blocks: readonly Block[], dispatch: Dispatch<TypingEvent>) {
+function useBlockTyping(
+  state: TypingState,
+  blocks: readonly Block[],
+  charsPerSecond: number,
+  dispatch: Dispatch<TypingEvent>,
+) {
   const shown = useRef<HTMLSpanElement>(null);
   const rest = useRef<HTMLSpanElement>(null);
 
@@ -139,13 +152,13 @@ function useBlockTyping(state: TypingState, blocks: readonly Block[], dispatch: 
     let isCancelled = false;
     let stopTyping = () => {};
     mayStart.then(() => {
-      if (!isCancelled) stopTyping = typeOut(block, shownSpan, restSpan, dispatch);
+      if (!isCancelled) stopTyping = typeOut(block, charsPerSecond, shownSpan, restSpan, dispatch);
     });
     return () => {
       isCancelled = true;
       stopTyping();
     };
-  }, [block, mayStart, dispatch]);
+  }, [block, mayStart, charsPerSecond, dispatch]);
 
   return { shown, rest };
 }
@@ -166,7 +179,9 @@ function useShowAllWhenHidden(isTyping: boolean, dispatch: Dispatch<TypingEvent>
   }, [isTyping, dispatch]);
 }
 
-export default function TypedBody({ slug, sections }: TypedBodyProps) {
+export default function TypedBody({ slug, sections, charsPerSecond = DEFAULT_CHARS_PER_SECOND }: TypedBodyProps) {
+  const t = useTranslations("articles.page");
+  const readingFace = readingFaceClass(useLocale());
   const blocks = useMemo(() => blocksOf(sections), [sections]);
   const [state, dispatch] = useReducer(
     (current: TypingState, event: TypingEvent) => nextState(current, event, blocks.length),
@@ -175,7 +190,7 @@ export default function TypedBody({ slug, sections }: TypedBodyProps) {
   );
   const body = useRef<HTMLDivElement>(null);
   const isTyping = state.phase === "typing";
-  const { shown, rest } = useBlockTyping(state, blocks, dispatch);
+  const { shown, rest } = useBlockTyping(state, blocks, charsPerSecond, dispatch);
 
   useEffect(clearArrival, []);
   useShowAllWhenHidden(isTyping, dispatch);
@@ -198,10 +213,16 @@ export default function TypedBody({ slug, sections }: TypedBodyProps) {
     <>
       {state.phase === "typing" && state.hasTyped ? (
         <button ref={keepFocusWhenPillGoes} type="button" onClick={showAll} className={SHOW_ALL_CLASS}>
-          {SHOW_ALL_LABEL}
+          {t("showAll")}
         </button>
       ) : null}
-      <div ref={body} tabIndex={-1} data-article-body data-article-typing={state.phase} className={BODY_CLASS}>
+      <div
+        ref={body}
+        tabIndex={-1}
+        data-article-body
+        data-article-typing={state.phase}
+        className={`${readingFace} ${BODY_CLASS}`}
+      >
         {blocks.map((block, index) => {
           const Tag = BLOCK_TAG[block.kind];
           return (

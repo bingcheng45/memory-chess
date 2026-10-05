@@ -1,7 +1,7 @@
-import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@/test-utils/intl";
 import LikeButton from "@/components/articles/LikeButton";
+import { GERMAN_MESSAGES } from "@/components/articles/__tests__/chromeCatalogues";
 import { trackEvent } from "@/lib/analytics/events";
-import { ARTICLE_STATS_COPY } from "@/lib/articles/copy";
 import { storeLikes } from "@/lib/articles/__tests__/fixtures";
 import { LIKED_STORAGE_KEY, likedStore } from "@/lib/articles/likedStore";
 
@@ -30,7 +30,7 @@ function deferredFetch() {
   };
 }
 
-const button = () => screen.getByRole("button", { name: ARTICLE_STATS_COPY.likeButton });
+const button = () => screen.getByRole("button", { name: "Like this article" });
 const liveLine = () => screen.getByRole("status");
 const storedLikes = () => JSON.parse(window.localStorage.getItem(LIKED_STORAGE_KEY) ?? "null")?.likes ?? {};
 const storeLike = (likesSeen: number) => storeLikes({ [SLUG]: likesSeen });
@@ -57,6 +57,13 @@ describe("LikeButton at rest", () => {
     render(<LikeButton slug={SLUG} likes={2140} />);
 
     expect(button()).toHaveTextContent(/^2,140$/);
+  });
+
+  it("takes its name from the catalogue and groups its count the way the page's language does", () => {
+    render(<LikeButton slug={SLUG} likes={2140} />, { locale: "de", messages: GERMAN_MESSAGES });
+
+    expect(screen.getByRole("button", { name: "Artikel empfehlen" })).toHaveTextContent(/^2\.140$/);
+    expect(screen.queryByRole("button", { name: "Like this article" })).not.toBeInTheDocument();
   });
 
   it.each([0, undefined])("shows no number for a count of %p", (likes) => {
@@ -238,7 +245,7 @@ describe("a like", () => {
     expect(button()).toHaveAttribute("aria-pressed", "false");
     expect(button()).toHaveTextContent(/^187$/);
     expect(storedLikes()).toEqual({});
-    expect(liveLine()).toHaveTextContent(ARTICLE_STATS_COPY.likeFailed);
+    expect(liveLine()).toHaveTextContent("That did not save. Try again.");
     expect(trackEvent).not.toHaveBeenCalled();
   });
 
@@ -248,9 +255,20 @@ describe("a like", () => {
 
     fireEvent.click(button());
 
-    await waitFor(() => expect(liveLine()).toHaveTextContent(ARTICLE_STATS_COPY.likeFailed));
+    await waitFor(() => expect(liveLine()).toHaveTextContent("That did not save. Try again."));
     expect(button()).toHaveAttribute("aria-pressed", "false");
     expect(button()).toHaveTextContent(/^187$/);
+  });
+
+  it("says a like did not save in the page's language", async () => {
+    global.fetch = jest.fn().mockRejectedValue(new TypeError("Failed to fetch"));
+    render(<LikeButton slug={SLUG} likes={187} />, { locale: "de", messages: GERMAN_MESSAGES });
+
+    fireEvent.click(screen.getByRole("button", { name: "Artikel empfehlen" }));
+
+    await waitFor(() =>
+      expect(liveLine()).toHaveTextContent(/^Das wurde nicht gespeichert\. Versuch es noch einmal\.$/),
+    );
   });
 
   it("clears the failure line on the next press", async () => {
@@ -357,6 +375,6 @@ describe("an unlike", () => {
     expect(button()).toHaveAttribute("aria-pressed", "true");
     expect(button()).toHaveTextContent(/^188$/);
     expect(storedLikes()).toEqual({ [SLUG]: 1 });
-    expect(liveLine()).toHaveTextContent(ARTICLE_STATS_COPY.likeFailed);
+    expect(liveLine()).toHaveTextContent("That did not save. Try again.");
   });
 });

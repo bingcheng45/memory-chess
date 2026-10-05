@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import "../globals.css";
 
 // Import Vercel packages dynamically to avoid build errors
@@ -22,6 +22,7 @@ import {
   AHREFS_ANALYTICS_SCRIPT_URL,
 } from "@/lib/ahrefs";
 import { routing, type Locale } from "@/i18n/routing";
+import { splitArticlesNamespace } from "@/lib/articles/messageScope";
 import { getSansFontClass, geistMono } from "@/lib/fonts";
 import { buildAlternates } from "@/lib/seo/alternates";
 
@@ -159,6 +160,9 @@ export default async function LocaleLayout({
   // Local and preview builds would otherwise count test runs as real visitors.
   const countsVisitors = process.env.VERCEL_ENV === "production";
 
+  // The articles layout adds its own namespace, so no other page carries it.
+  const { shared: messages } = splitArticlesNamespace(await getMessages({ locale }));
+
   return (
     <html lang={locale}>
       <head>
@@ -174,7 +178,7 @@ export default async function LocaleLayout({
       <body
         className={`${getSansFontClass(locale as Locale)} ${geistMono.variable} min-h-screen bg-bg-dark text-text-primary antialiased`}
       >
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
           <ChangelogBanner />
           {children}
           <Footer />

@@ -1,6 +1,6 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "496464c86322e2ff677059c94a2c81efe06bdcfba56793b3a8f0709030e0a4f6",
+  "approvedHash": "7867c48765f977e581dc01b704a372020a7c333dd6e2b1ed01017cb0111880fa",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot presenterade arbetet 1946 i sin doktorsavhandling vid Amsterdams universitet, Het denken van den schaker. Mouton gav ut den engelska utgåvan, Thought and Choice in Chess, i Haag 1965.",
           "År 1973 gjorde William Chase och Herbert Simon om testet vid Carnegie Mellon med en mästare, en klass A-spelare och en nybörjare. De fastställde visningstiden till 5 sekunder. Deras mittspelsställningar hade 24 till 26 pjäser, och mästaren mindes ungefär dubbelt så många pjäser som klass A-spelaren.",
-          "De filmade varje återskapande med video och räknade en paus på mer än 2 sekunder som gränsen mellan två chunkar. Mästarens första chunk var i genomsnitt 3,8 pjäser mot 2,6 för klass A-spelaren, och han bildade 7,7 chunkar per ställning mot 5,7. Av hans 77 chunkar över fjorton ställningar innehöll 47 en bondekedja, och Simon och Chase räknade 10 ställningar med rockerad kung.",
+          "De filmade varje återskapande med video och räknade en paus på mer än 2 sekunder som gränsen mellan två chunkar. Mästarens första chunk var i genomsnitt 3,8 pjäser mot 2,6 för klass A-spelaren, och mästaren bildade 7,7 chunkar per ställning mot 5,7. Av hans 77 chunkar över fjorton ställningar innehöll 47 en bondekedja, och Simon och Chase räknade 10 ställningar med rockerad kung.",
           "Deras tillägg var en kontroll, samma pjäser utplacerade på slumpmässiga rutor. Simon och Chase rapporterade att varje spelare då mindes ungefär tre eller fyra pjäser, färre än nybörjaren klarade på riktiga ställningar. De uppgav att W. Lemmens och R. W. Jongman hade fått samma resultat i Amsterdamlaboratoriet utan att någonsin publicera det.",
-          "Chases och Simons egen inledning framställer resultatet med slumpade bräden som de Groots, och många senare skildringar upprepar det. Hans bok redovisar inget försök med slumpade bräden."
+          "Chases och Simons egen inledning framställer resultatet med slumpade bräden som de Groots, och många senare skildringar upprepar det. De Groots bok redovisar inget försök med slumpade bräden."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Prova de Groots test",
         "paragraphs": [
-          "Ställ in Memory Chess på 22 pjäser och 5 sekunder. Det motsvarar storleken på de Groots ställning Rohacek mot Rabar och den tid Euwe fick på sig att titta på den. Bygg upp brädet igen och räkna ut hur stor andel av pjäserna du placerade rätt. Ungefär hälften är där Hauer hamnade, ungefär 70 % är där Fast hamnade, och 93 % är vad Euwe och de Groot hade i genomsnitt.",
+          "Ställ in Memory Chess på 22 pjäser och 5 sekunder. Det motsvarar storleken på de Groots ställning Rohacek mot Rabar och den tid Euwe fick på sig att titta på den. Bygg upp brädet igen och räkna ut hur stor andel av pjäserna du placerade rätt. Ungefär hälften är där Hauer hamnade, ungefär 70 % är där Fast hamnade, och 93 % är vad Euwe och de Groot vardera hade i genomsnitt.",
           "Jämförelsen är grov, eftersom de Groot också drog av poäng för fel. Kontrollera sedan vilka pjäser du kom ihåg. De kom troligen i grupper, till exempel en bondekedja eller en rockerad kung."
         ]
       }

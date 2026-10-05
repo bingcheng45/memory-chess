@@ -414,7 +414,7 @@
       "showAll": "Visa hela texten",
       "byline": "Av <author>{name}</author>",
       "authorshipNote": "Efterforskad och skriven i utkast med hjälp av AI utifrån källorna nedan. Varje uppgift kontrollerades mot dessa källor före publiceringen.",
-      "translationNote": "Översatt från engelska med hjälp av AI. Den engelska artikeln är den som gäller.",
+      "translationNote": "Översatt från engelska med hjälp av AI. Den engelska artikeln fungerar som referens.",
       "readInEnglish": "Läs den på engelska",
       "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, via <source>Wikimedia Commons</source>. {changes}.",
       "factFile": "Faktaruta",

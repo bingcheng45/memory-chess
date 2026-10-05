@@ -434,7 +434,7 @@
       "nextArticle": "Następny artykuł"
     },
     "tile": {
-      "eyebrow": "Czytaj dalej",
+      "eyebrow": "Co czytać dalej",
       "yourRound": "Twoja runda",
       "articleDrill": "Ćwiczenie z tego artykułu",
       "roundSize": "{pieces, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}}, {seconds, plural, one {# sekunda} few {# sekundy} many {# sekund} other {# sekundy}}",

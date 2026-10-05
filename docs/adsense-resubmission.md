@@ -101,12 +101,27 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
   of GA4 sessions per locale, and then only for locales with negligible traffic, in its own PR.
 - Guide `updatedAt` dates are truthful and are not bumped to look fresh.
 - Articles are readable in all 24 languages and indexed only in English, decided 2026-10-04 at the operator's
-  request. A translated article is served `noindex, follow` with a self canonical, no `hreflang` and no sitemap
-  entry, says on the page that it was translated from English with AI assistance, and links to the English article.
-  A translation goes up only after `scripts/articles-i18n.mjs check` and a second, independent review, it records
-  the hash of the English text it came from so a test fails when that text changes, and a locale with an article
-  missing fails the build, so no page serves English body text under another `lang`. The audit still has to print
-  96 URLs and PASS.
+  request. The decision stands. What it rests on, as of fix round 1 of PR 39 on 2026-10-05:
+  - Who wrote the text. AI agents translated the 23 other languages and other AI agents reviewed them. No native
+    speaker has read any of it. Each translated page says it was translated from English with AI assistance and
+    links to the English article.
+  - What `noindex` does. A translated list or article is served `noindex, follow` with a self canonical, no
+    `hreflang` and no sitemap entry, so search does not offer it. That does not take it out of AdSense review, as
+    the first entry in this list records. A reviewer who opens the site in another language reads these pages, and
+    they count toward the "Low value content" judgement.
+  - What the gates prove. `scripts/articles-i18n.mjs check` fails a translation whose structure differs from the
+    English text, that loses a number, that still reads as English in any script, whose body paragraph lost most
+    of its length, or that lists body text as kept in English. `approve` records a hash of the text it approved.
+    `verify`, Jest and the build then fail on an article file or a set of section strings that is missing, made
+    from an older English text, unapproved, or edited after its approval. `npm run audit:adsense` checks every
+    translated page it is served and fails one that is indexable, canonical to another URL, has `hreflang`, lacks
+    the note or its link to the English page, has hidden words, has more than one `h1`, or has under 70% of the
+    English page's words. It still has to print 96 sitemap URLs and PASS.
+  - What the gates cannot prove. That a sentence is correct, natural or faithful to the English. Two numbers
+    swapped inside one paragraph, a year the English text does not have, a changed name, a different quotation
+    and a dropped last sentence all pass every gate. The reviewers' open doubts for each language are in the body
+    of PR 39. Until a native reader has checked a language, treat its articles as unverified text that an AdSense
+    reviewer can open.
 
 ## Follow-ups
 

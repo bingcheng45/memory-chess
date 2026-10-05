@@ -5,7 +5,7 @@ import { loadArticleChrome } from "./chrome";
 import { formatArticleDate } from "./format";
 import { ARTICLES, ARTICLE_SLUGS } from "./registry";
 import type { Article, ArticleSummary } from "./schema";
-import { tileArticleOf, type TileArticle } from "./tile";
+import { MAX_TILE_ARTICLES, tileArticleOf, type TileArticle } from "./tile";
 import { loadArticleText } from "./translations";
 
 export * from "./schema";
@@ -56,10 +56,14 @@ export async function getArticleSummaries(locale: Locale): Promise<readonly Arti
   return articles.map((article) => summarize(article, locale));
 }
 
-/** Empty for a locale that does not serve the articles, so a translated page never shows English article text. */
+/**
+ * The newest articles, as many as a game page carries. Empty for a locale that does not serve the articles,
+ * so a translated page never shows English article text.
+ */
 export async function getTileArticles(locale: string): Promise<readonly TileArticle[]> {
   if (!servesArticlesIn(locale)) return [];
-  const articles = await Promise.all(ARTICLES.map((english) => inLocale(english, locale)));
+  const newest = ARTICLES.slice(0, MAX_TILE_ARTICLES);
+  const articles = await Promise.all(newest.map((english) => inLocale(english, locale)));
   return articles.map(tileArticleOf);
 }
 

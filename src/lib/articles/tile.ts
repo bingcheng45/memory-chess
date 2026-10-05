@@ -14,6 +14,13 @@ export type RandomSource = () => number;
 
 export const HIDDEN_TILE: ArticleTileState = { kind: "hidden" };
 
+/**
+ * Every game page carries the tile's articles, and one article is published
+ * each week. Twenty of them would add about 21 kB to the Hindi page before
+ * compression, so a page carries only the newest.
+ */
+export const MAX_TILE_ARTICLES = 12;
+
 export function tileArticleOf(article: Article): TileArticle {
   const { slug, title, person, drill } = article;
   const { src, width, height, alt } = article.photo;

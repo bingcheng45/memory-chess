@@ -54,7 +54,7 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
 - Submit has a 1s flash before the result exists; wait for `#game-result-heading`, never a fixed sleep.
 - Sounds play on every phase change (`src/hooks/useSoundEffects.ts`); cdp.mjs launches Chrome with `--mute-audio`, so no action needed unless you bring your own browser.
 - A feedback dialog opens 800ms after the first result screen of a day and covers the page, the tile included. Close it with Escape, or set `localStorage["memory-chess-feedback-next-eligible-at"]` to a future time before the page loads.
-- The tile is not in the served HTML. Its articles ride in the page's script payload and it renders only on the result screen, so `ssr-words.sh` and the audit do not see it. `/game` serves the same word count with and without it.
+- The tile is not in the served HTML. Its articles ride in the page's script payload, the 12 newest at most (`MAX_TILE_ARTICLES`), and it renders only on the result screen, so `ssr-words.sh` and the audit do not see it. `/game` serves the same word count with and without it.
 - The tile's article is random among the unopened ones, so a script that needs one article must open the others first. A fresh `cdp.mjs` run starts with nothing opened.
 - The result screen POSTs to `/api/game-stats`; without Supabase credentials that fails silently in the console and the round still scores. Do not treat that console error as a defect.
 - `?pieceCount=&memorizeTime=` auto-starts on load, skipping the configuration screen entirely; use it when a recipe needs to reach later phases fast, but the click-through path above is the one users take.

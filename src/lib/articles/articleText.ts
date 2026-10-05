@@ -143,3 +143,15 @@ export function translationProblems(file: unknown, english: ArticleText): string
     ...approvalProblems(file, file.text),
   ];
 }
+
+/** `english` and `translated` are the `articles` messages of the English catalogue and of the locale's. */
+export function chromeProblems(file: unknown, english: unknown, translated: unknown): string[] {
+  if (!isTree(file)) return ["chrome.json is not an object"];
+
+  return [
+    ...unknownKeyProblems(Object.keys(file), "chrome"),
+    ...shapeProblems(english, translated, "articles"),
+    ...(file.sourceHash === sourceHashOf(english) ? [] : ["sourceHash is stale"]),
+    ...approvalProblems(file, translated),
+  ];
+}

@@ -1,9 +1,16 @@
 import { ARTICLES, ARTICLE_SLUGS, getArticle, getArticleSummaries, getNextArticle } from "@/lib/articles";
 import { textOf } from "@/lib/articles/articleText";
+import { loadArticleChrome } from "@/lib/articles/chrome";
 import { loadArticleText, type TranslationSource } from "@/lib/articles/translations";
 import { markEveryString, reviewedTranslationOf } from "./fixtures";
 
 jest.mock("@/lib/articles/translations", () => ({ loadArticleText: jest.fn() }));
+jest.mock("@/lib/articles/chrome", () => ({
+  loadArticleChrome: jest.fn(async (locale: string) => {
+    if (locale === "fr") throw new Error("Article chrome fr cannot be published: not reviewed");
+    return {};
+  }),
+}));
 
 const SLUG = "magnus-carlsen";
 const ENGLISH_TITLE = "How Magnus Carlsen names a famous game from one position";
@@ -18,6 +25,9 @@ const everyArticleInGerman: TranslationSource = async (locale, slug) => {
   if (locale !== "de") throw new Error(`no ${locale} translation of ${slug}`);
   return reviewedTranslationOf(englishOf(slug), "DE ");
 };
+
+const everyArticleInAnyLocale: TranslationSource = async (locale, slug) =>
+  reviewedTranslationOf(englishOf(slug), `${locale.toUpperCase()} `);
 
 const noTranslations: TranslationSource = async (locale, slug) => {
   throw new Error(`no ${locale} translation of ${slug}`);
@@ -123,6 +133,32 @@ describe("getArticleSummaries in a translated locale", () => {
     await expect(getArticleSummaries("de")).rejects.toThrow(
       `Article translation de/${lastSlug} cannot be published: not reviewed`,
     );
+  });
+});
+
+describe("the strings of the section in a translated locale", () => {
+  const FRENCH_CHROME = "Article chrome fr cannot be published: not reviewed";
+  const chromeChecksOf = (locale: string) => jest.mocked(loadArticleChrome).mock.calls.filter(([asked]) => asked === locale);
+
+  it("stop every article of a locale whose strings cannot be published, although its articles can", async () => {
+    serveFrom(everyArticleInAnyLocale);
+
+    await expect(getArticle(SLUG, "fr")).rejects.toThrow(FRENCH_CHROME);
+    await expect(getArticleSummaries("fr")).rejects.toThrow(FRENCH_CHROME);
+    await expect(getNextArticle(SLUG, "fr")).rejects.toThrow(FRENCH_CHROME);
+    expect((await getArticle(SLUG, "it"))?.title).toBe(`IT ${ENGLISH_TITLE}`);
+  });
+
+  it("are checked once for a locale, however many articles are read, and never for English", async () => {
+    serveFrom(everyArticleInAnyLocale);
+
+    await getArticleSummaries("pl");
+    await getArticle(SLUG, "pl");
+    await getNextArticle(SLUG, "pl");
+    await getArticleSummaries("en");
+
+    expect(chromeChecksOf("pl")).toEqual([["pl"]]);
+    expect(chromeChecksOf("en")).toEqual([]);
   });
 });
 

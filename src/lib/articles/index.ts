@@ -1,5 +1,6 @@
 import { DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
 import { textOf, withText } from "./articleText";
+import { loadArticleChrome } from "./chrome";
 import { formatArticleDate } from "./format";
 import { ARTICLES, ARTICLE_SLUGS } from "./registry";
 import type { Article, ArticleSummary } from "./schema";
@@ -22,15 +23,26 @@ export function summarize(article: Article, locale: Locale): ArticleSummary {
   };
 }
 
+const chromeChecks = new Map<Locale, Promise<unknown>>();
+
+// Every page of a locale prints the same strings, so one check per process covers them all.
+function chromeCheckOf(locale: Locale): Promise<unknown> {
+  const started = chromeChecks.get(locale) ?? loadArticleChrome(locale);
+  chromeChecks.set(locale, started);
+  return started;
+}
+
 async function inLocale(english: Article, locale: Locale): Promise<Article> {
   if (locale === DEFAULT_LOCALE) return english;
+  await chromeCheckOf(locale);
   return withText(english, await loadArticleText(english.slug, locale, textOf(english)));
 }
 
 /**
  * The article in `locale`, or `undefined` for an unknown slug. English is the
  * entry itself. Any other locale throws unless it has a reviewed translation of
- * the current English text, so a page never mixes languages.
+ * the current English text, and reviewed strings for the section, so a page
+ * never mixes languages.
  */
 export async function getArticle(slug: string, locale: Locale): Promise<Article | undefined> {
   const english = ARTICLES.find((article) => article.slug === slug);

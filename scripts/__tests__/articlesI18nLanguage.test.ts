@@ -177,10 +177,12 @@ describe("verify, when the approved files of one locale are copied over another'
     });
   }
 
+  // French `a` and `on` are English function words that German does not have, so some French leaves read as English too.
   it("fails the French articles in the German directory: not approved there, and not German", () => {
     expect(shapesAfterCopying("fr", "de")).toEqual({
       status: 1,
       shapes: [
+        "[de] <slug> <leaf>: reads as English as a whole: N more English function words than de ones",
         "[de] <slug> <leaf>: reads as fr, not de: N words of fr that de does not have, and N the other way",
         "[de] <slug>: not reviewed, the approval is for another text, article or locale",
         "[de] <slug>: the text as a whole reads as fr, not de: N words of fr that de does not have, and N the other way",

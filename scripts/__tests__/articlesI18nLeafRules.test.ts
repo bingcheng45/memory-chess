@@ -118,7 +118,7 @@ describe("the script rule", () => {
         kept("zh-CN", `${NAMES_KEPT}${UNTRANSLATED_SENTENCE}`),
         [
           "15 of 75 letters are Han, at least half must be",
-          "4 of 33 words are English (and, this, from, the), the text looks untranslated",
+          "reads as English as a whole: 5 more English function words than zh-CN ones",
         ],
       ],
       [kept("zh-CN", UNTRANSLATED), NO_SCRIPT],
@@ -226,13 +226,13 @@ describe("the rules for a leaf that still reads as English", () => {
     isListed: false,
   });
   const copyOf = (kept: number, total: number) => `${kept} of ${total} English words are still here, the text looks untranslated`;
-  const englishWords = (count: number, total: number, words: string) =>
-    `${count} of ${total} words are English (${words}), the text looks untranslated`;
+  const englishSentences = (count: number, total: number, first: string) =>
+    `${count} of ${total} sentences read as English, the first: "${first}"`;
 
   describe("as a copy of its English leaf", () => {
     const CASES: [leaf: Leaf, problems: string[]][] = [
-      [body("de", SENTENCE, `${SENTENCE} Ja.`), [copyOf(12, 12)]],
-      [body("ru", SENTENCE, `Смотрите: ${SENTENCE}`), [copyOf(12, 12)]],
+      [body("de", SENTENCE, `${SENTENCE} Ja.`), [copyOf(12, 12), englishSentences(1, 2, SENTENCE)]],
+      [body("ru", SENTENCE, `Смотрите: ${SENTENCE}`), [copyOf(12, 12), englishSentences(1, 1, `Смотрите: ${SENTENCE}`)]],
       [body("de", "The rack of small positions", "The rack of small Stellungen", "sections[1].heading"), [copyOf(4, 5)]],
       [body("de", "She won every game.", "She won every Partie."), []],
       [body("nl", "Try de Groot's test", "Probeer de test van De Groot", "sections[5].heading"), []],
@@ -243,10 +243,10 @@ describe("the rules for a leaf that still reads as English", () => {
         [copyOf(6, 6)],
       ],
       [body("de", "Unknown photographer of the chess club", "Unknown photographer of the chess club Berlin", "photo.author"), []],
-      [{ ...body("de", SENTENCE, `${SENTENCE} Ja.`, "list.about1"), kind: "chrome" }, []],
+      [{ ...body("de", SENTENCE, `${SENTENCE} Ja.`, "list.about1"), kind: "chrome" }, [englishSentences(1, 2, SENTENCE)]],
     ];
 
-    it("fails an article leaf that keeps four English words in five, and lets a short name or title stay", () => {
+    it("fails an article leaf that keeps four English words in five, and lets a short name or title stay, whatever the English rule says", () => {
       expect(problemsOf(CASES.map(([one]) => one))).toEqual(CASES.map(([, expected]) => expected));
     });
   });
@@ -254,7 +254,7 @@ describe("the rules for a leaf that still reads as English", () => {
   describe("as English prose that is not a copy", () => {
     const OTHER_SENTENCE =
       "They said that she could not have won this game without the help of those who were with her from the start.";
-    const OTHER_SENTENCE_FAILS = [englishWords(12, 22, "they, that, she, could, this, the, those, who, were, with, from")];
+    const OTHER_SENTENCE_FAILS = [englishSentences(1, 1, OTHER_SENTENCE)];
     const TITLES = "Thought and Choice in Chess, The Game of the Century, From Morphy to Fischer";
     const GERMAN_WITH_TITLES =
       "Drei Bücher prägten das Feld: Thought and Choice in Chess von Adriaan de Groot, The Game of the Century " +
@@ -271,13 +271,15 @@ describe("the rules for a leaf that still reads as English", () => {
       "Na haar 83e zet bleef ze over met een koning, een loper en een paard tegen een blote koning. " +
       "De partijnotatie op Chessgames.com eindigt na de 106e zet van wit. " +
       "In de eindstelling staat de witte koning in een hoek en geeft zij bij haar volgende zet mat.";
+    const HINDI_LEAD_IN = "शतरंज की स्मृति पर लिखी गई ये तीन पुरानी और बहुत प्रसिद्ध किताबें आज भी दुनिया भर के खिलाड़ियों और शोधकर्ताओं द्वारा ध्यान से पढ़ी जाती हैं:";
     const LONG_TITLE = "What the Hands and the Eyes Tell Those Who Watch: Notes from the Board";
     const CASES: [leaf: Leaf, problems: string[]][] = [
       [body("de", "She won every game.", OTHER_SENTENCE), OTHER_SENTENCE_FAILS],
-      [body("hi", PARAGRAPH, `देखिए: ${PARAGRAPH}`), [copyOf(78, 78), englishWords(10, 79, "the, his, about, and, has")]],
+      [body("hi", PARAGRAPH, `देखिए: ${PARAGRAPH}`), [copyOf(78, 78), englishSentences(5, 5, "देखिए: On Joe Rogan's podcast in February 2025 he gave more detail, according to a published transcript.")]],
       [body("nl", DUTCH_SOURCE, DUTCH), []],
       [body("de", "Three books shaped the field.", GERMAN_WITH_TITLES), []],
-      [body("de", "Three books shaped the field.", TITLES), [englishWords(4, 14, "and, the, from")]],
+      [body("de", "Three books shaped the field.", TITLES), [englishSentences(1, 1, TITLES)]],
+      [body("hi", "Three books shaped the field.", `${HINDI_LEAD_IN} ${TITLES}।`), [englishSentences(1, 1, `${HINDI_LEAD_IN} ${TITLES}।`)]],
       [
         { ...body("de", "Each article follows one chess player.", OTHER_SENTENCE, "list.about1"), kind: "chrome" },
         OTHER_SENTENCE_FAILS,
@@ -285,11 +287,38 @@ describe("the rules for a leaf that still reads as English", () => {
       [body("de", LONG_TITLE, LONG_TITLE, "sources[2].title"), []],
       [
         { ...body("de", LONG_TITLE, LONG_TITLE, "facts.knownFor"), isListed: true },
-        [englishWords(8, 14, "what, the, and, those, who, from")],
+        [englishSentences(1, 1, LONG_TITLE)],
       ],
     ];
 
-    it("fails a leaf of either kind with more than three English-only words that are one word in ten or more", () => {
+    it("fails a leaf of either kind where English is ahead of the locale by more than three function words in one sentence", () => {
+      expect(problemsOf(CASES.map(([one]) => one))).toEqual(CASES.map(([, expected]) => expected));
+    });
+  });
+
+  describe("as a sentence left in English inside a translated leaf", () => {
+    const ITALIAN =
+      "Nel podcast di Joe Rogan, nel febbraio 2025, entrò più nel dettaglio, stando a una trascrizione pubblicata. " +
+      "Vede la scacchiera nella sua testa. In una simultanea pensa a una partita alla volta e mette da parte le altre.";
+    const STROKES = "He said he remembers the games he has played in broad strokes, not move by move.";
+    const PAWN = "In blindfold games, he added, he can be unsure whether a pawn at the side of the board has moved one square.";
+    const JAPANESE = "彼は頭の中で盤を見ています。同時対局では一度に一局だけを考えます。";
+    const HINDI = "वे अपने दिमाग में बिसात देखते हैं। एक साथ कई बाज़ियों में वे एक बार में एक ही बाज़ी के बारे में सोचते हैं।";
+    const VIETNAMESE_WITH_A_TITLE = "Nhà xuất bản Mouton ấn hành bản tiếng Anh, Thought and Choice in Chess, tại The Hague năm 1965.";
+    const SHORT_SENTENCES = "She won. He lost. It was late. They left.";
+    const OTHER = "Another text stands at this path in the English article.";
+    const CASES: [leaf: Leaf, problems: string[]][] = [
+      [body("it", PARAGRAPH, `${ITALIAN} ${STROKES} ${PAWN}`), [englishSentences(2, 5, STROKES)]],
+      [body("it", PARAGRAPH, `${STROKES} ${ITALIAN}`), [englishSentences(1, 4, STROKES)]],
+      [body("ja", OTHER, `${JAPANESE.repeat(3)}${PAWN}`), [englishSentences(1, 7, PAWN)]],
+      [body("hi", OTHER, `${HINDI} ${HINDI} ${PAWN}`), [englishSentences(1, 5, PAWN)]],
+      [{ ...body("it", OTHER, `${ITALIAN} ${PAWN}`, "list.about1"), kind: "chrome" }, [englishSentences(1, 4, PAWN)]],
+      [body("vi", OTHER, VIETNAMESE_WITH_A_TITLE), []],
+      [body("it", OTHER, `${ITALIAN} He won them all.`), []],
+      [body("de", OTHER, SHORT_SENTENCES), ["reads as English as a whole: 5 more English function words than de ones"]],
+    ];
+
+    it("fails the leaf and names the first English sentence, in any script, and passes a quoted title or one short sentence", () => {
       expect(problemsOf(CASES.map(([one]) => one))).toEqual(CASES.map(([, expected]) => expected));
     });
   });

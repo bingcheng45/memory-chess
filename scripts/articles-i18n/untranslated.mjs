@@ -1,23 +1,11 @@
 import { textOf } from "./icu.mjs";
+import { LANGUAGE_LIMITS, englishLeadIn } from "./language.mjs";
 import { ARTICLE } from "./names.mjs";
 import { MAY_EQUAL_ENGLISH, wordsThatMayStay } from "./paths.mjs";
 
 const WORD = /[\p{L}\p{M}]+/gu;
 const COPY_SHARE = 0.8;
 
-// Words of English that no other shipped language uses. `in`, `of`, `was`,
-// `her`, `is`, `on`, `to`, `for` and their like are left out because Dutch,
-// German, the Nordic languages, Czech, Polish, French or Portuguese have them
-// too, and so are `had` (Dutch), `have` (Danish) and `not` (Turkish).
-const ENGLISH_ONLY_WORDS = new Set(
-  (
-    "the and that with which from this were they their would about when what there been who has " +
-    "she his him them than these those its into after could did does between while where because"
-  ).split(" "),
-);
-const MAX_ENGLISH_ONLY_WORDS = 3;
-// A long translated paragraph may quote several English titles.
-const ENGLISH_PROSE_SHARE = 0.1;
 
 const wordsOf = (text) => text.toLowerCase().match(WORD) ?? [];
 
@@ -40,12 +28,24 @@ export function copyProblems({ kind, path, english, value }) {
   return [`${kept} of ${source.length} English words are still here, the text looks untranslated`];
 }
 
-/** Fails a leaf that is English prose, whether or not it is the English leaf of its path. */
+function sentencesOf(text, locale) {
+  const segments = new Intl.Segmenter(locale, { granularity: "sentence" }).segment(text);
+  return [...segments].map(({ segment }) => segment.trim()).filter((sentence) => sentence !== "");
+}
+
+/**
+ * Fails a leaf with a sentence of English in it, whether or not it is the
+ * English of its path: a paragraph left half translated reads as its locale
+ * as a whole. A leaf of short English sentences fails as a whole.
+ */
 export function englishProseProblems({ kind, path, locale, value }) {
   if (kind === ARTICLE && MAY_EQUAL_ENGLISH.test(path)) return [];
-  const words = wordsOf(textOf(kind, value, locale));
-  const english = words.filter((word) => ENGLISH_ONLY_WORDS.has(word));
-  if (english.length <= MAX_ENGLISH_ONLY_WORDS || english.length / words.length < ENGLISH_PROSE_SHARE) return [];
-  const named = [...new Set(english)].join(", ");
-  return [`${english.length} of ${words.length} words are English (${named}), the text looks untranslated`];
+  const text = textOf(kind, value, locale);
+  const isEnglish = (part) => englishLeadIn(locale, part) > LANGUAGE_LIMITS.maxLead;
+  const sentences = sentencesOf(text, locale);
+  const english = sentences.filter(isEnglish);
+
+  if (english.length > 0) return [`${english.length} of ${sentences.length} sentences read as English, the first: "${english[0]}"`];
+  if (!isEnglish(text)) return [];
+  return [`reads as English as a whole: ${englishLeadIn(locale, text)} more English function words than ${locale} ones`];
 }

@@ -45,6 +45,13 @@ const PROFILES = {
   ja: byCharacters(/[\p{Script=Hiragana}\p{Script=Katakana}]/u),
 };
 
+/** The language every text is translated from. It is no locale of a translation, so it is read in one sentence at a time. */
+const ENGLISH = byWords(
+  "the of and a to in is was he for it with as his on be at by had not are but from or have an they which you were her all she there " +
+    "would their him been has when who will if what its about into than them can could these that this did because where while between after does those",
+);
+const NO_WORDS = byWords("");
+
 /** No other shipped locale is written in the script of these, so the script rule of `checks.mjs` reads their language. */
 const READ_BY_SCRIPT_ALONE = ["hi", "ko"];
 
@@ -53,8 +60,12 @@ export const LANGUAGE_LIMITS = {
   minSizeOfAWhole: 100,
   /** One leaf is read from this many. A shorter leaf can be a list of names. */
   minSizeOfALeaf: 40,
-  /** How many more signs of another locale than of its own a leaf may have before it reads as that locale. */
-  maxLeadInALeaf: 3,
+  /**
+   * How far another language may be ahead before a text reads as that
+   * language: another locale in one leaf, English in one sentence or one leaf.
+   * The largest lead in the installed files is 1 for a locale and 2 for English.
+   */
+  maxLead: 3,
   /**
    * The least share of an article that is its locale's own words or characters:
    * about half the lowest share of an installed article, which is 15.8% in
@@ -89,6 +100,21 @@ export function readingOf(locale, text) {
 }
 
 const leadOf = ({ own, theirs }) => theirs - own;
+
+/**
+ * How far English is ahead in `text` of a translation into `locale`: the
+ * English function words that the locale does not have too, less the locale's
+ * words that English does not have. A locale that is not read by words has
+ * none to set against the English ones.
+ */
+export function englishLeadIn(locale, text) {
+  const own = PROFILES[locale]?.unit === ENGLISH.unit ? PROFILES[locale] : NO_WORDS;
+  const words = ENGLISH.tokensOf(text);
+  return leadOf({
+    own: countOf(words, (word) => own.has(word) && !ENGLISH.has(word)),
+    theirs: countOf(words, (word) => ENGLISH.has(word) && !own.has(word)),
+  });
+}
 
 /** Why `text` does not read as `locale`. A text under `minSize` and a locale with no profile are not read. */
 function languageProblems(locale, text, { minSize, maxLead, minShare }) {
@@ -126,7 +152,7 @@ export function missingLanguageRuleProblems(locale) {
 export function languageFailures(locale, name, leaves) {
   const unit = PROFILES[locale]?.unit;
   const whole = { minSize: LANGUAGE_LIMITS.minSizeOfAWhole, maxLead: 0, minShare: LANGUAGE_LIMITS.minShareOfAWhole[unit] };
-  const oneLeaf = { minSize: LANGUAGE_LIMITS.minSizeOfALeaf, maxLead: LANGUAGE_LIMITS.maxLeadInALeaf, minShare: 0 };
+  const oneLeaf = { minSize: LANGUAGE_LIMITS.minSizeOfALeaf, maxLead: LANGUAGE_LIMITS.maxLead, minShare: 0 };
   const everyLeaf = leaves.map(([, text]) => text).join(" ");
 
   return [

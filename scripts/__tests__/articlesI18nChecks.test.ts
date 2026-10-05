@@ -226,6 +226,7 @@ describe("check 6: a value identical to the English one", () => {
     });
 
     expect(run.failures).toEqual([
+      `ada-example drill.why: 1 of 1 sentences read as English, the first: "${ADA.drill.why}"`,
       `ada-example description: ${BODY_LISTED}`,
       `ada-example drill.why: ${BODY_LISTED}`,
       `ada-example sections[0].heading: ${BODY_LISTED}`,

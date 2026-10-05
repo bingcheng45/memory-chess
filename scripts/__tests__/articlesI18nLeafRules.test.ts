@@ -80,6 +80,11 @@ describe("the script rule", () => {
     [leaf("zh-CN", `${latin(21)} ${"棋".repeat(20)}`), ["20 of 41 letters are Han, at least half must be"]],
     [leaf("zh-TW", `${latin(20)} ${"棋".repeat(20)}`), []],
     [leaf("de", latin(60)), []],
+    [leaf("de", `${"क".repeat(20)} ${latin(20)}`), []],
+    [leaf("de", `${"क".repeat(21)} ${latin(20)}`), ["20 of 41 letters are Latin, at least half must be"]],
+    [leaf("vi", "я".repeat(40)), ["0 of 40 letters are Latin, at least half must be"]],
+    [leaf("vi", "я".repeat(39)), []],
+    [{ ...leaf("de", "शतरंज की स्मृति"), english: "The memory of chess players" }, ["no letter is Latin, the text is in another script"]],
     [
       {
         ...leaf("ru", `{${LONG_ARGUMENT}, plural, one {# вид} few {# вида} many {# видов} other {# видов}}`),
@@ -94,6 +99,20 @@ describe("the script rule", () => {
 
   it("wants half the letters of a long leaf in the script of the language, without counting ICU syntax", () => {
     expect(problemsOf(CASES.map(([one]) => one))).toEqual(CASES.map(([, expected]) => expected));
+  });
+
+  describe("with a title kept in another script in a language written in Latin letters", () => {
+    const RUSSIAN_TITLE = "Шахматы и память: как гроссмейстеры запоминают позиции";
+    const SOURCE = `His book ${RUSSIAN_TITLE} stayed in print.`;
+    const GERMAN = `Sein Buch ${RUSSIAN_TITLE} blieb lieferbar.`;
+    const german = (english: string): Leaf => ({ ...leaf("de", GERMAN), english });
+
+    it("does not count a token that the English text has at the same path, and counts it when the English text does not", () => {
+      expect(problemsOf([german(SOURCE), german("His book stayed in print for years.")])).toEqual([
+        [],
+        ["22 of 69 letters are Latin, at least half must be"],
+      ]);
+    });
   });
 
   describe("with names and titles kept in Latin letters", () => {

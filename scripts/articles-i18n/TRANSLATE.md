@@ -150,8 +150,9 @@ in your report.
 ## What the check proves and what it does not
 
 The check proves structure: the same shape as the English text, every number kept, every placeholder and
-plural form present, no value left in English by accident, no long dash, the right script for a language
-that does not use Latin letters. Names, titles and loanwords kept in Latin letters exactly as in the English text do not count against the script check, and a decade such as "the 1980s" may be written the way the language writes it (`anni Ottanta`, `lata 80.`). It fails a value that still reads as English. That is a value that keeps four in five of the words of
+plural form present, no value left in English by accident, no long dash, and the script of your language
+in at least half the letters of a value of 40 letters or more, which is Latin script for a language written
+in it. Names, titles and loanwords kept exactly as in the English text do not count against the script check, and a decade such as "the 1980s" may be written the way the language writes it (`anni Ottanta`, `lata 80.`). It fails a value that still reads as English. That is a value that keeps four in five of the words of
 its English value, or a value with a sentence in which English function words such as `the`, `with` and
 `which` outnumber your language's own by more than three. One sentence left in English inside a translated
 paragraph fails this way. A fact, a role or a caption of up to five English

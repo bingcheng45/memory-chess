@@ -1,5 +1,8 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@/test-utils/intl";
 import GameResult from "@/components/game/GameResult";
+import TileArticlesProvider from "@/components/game/TileArticlesProvider";
+import { makeArticle } from "@/lib/articles/__tests__/fixtures";
+import { tileArticleOf } from "@/lib/articles/tile";
 import { loadLeaderboardCutoffs } from "@/lib/leaderboard/cutoffsClient";
 import type { BoardCutoff, LeaderboardCutoffs } from "@/lib/leaderboard/ranking";
 
@@ -165,6 +168,63 @@ describe("GameResult", () => {
       screen.getByRole("heading", { name: "Submit to Leaderboard" }),
     ).toBeInTheDocument();
     expect(screen.getByLabelText("Player Name")).toBeInTheDocument();
+  });
+
+  describe("the article tile", () => {
+    const TILE_ARTICLES = [0, 1, 2].map((index) => tileArticleOf(makeArticle(index)));
+    const shownSlug = () =>
+      document.querySelector("section[data-article-tile]")?.getAttribute("data-article-tile");
+
+    function renderWithArticles() {
+      return render(
+        <TileArticlesProvider articles={TILE_ARTICLES}>
+          <GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />
+        </TileArticlesProvider>,
+      );
+    }
+
+    it("comes after the board review and after all four actions, outside the result card", () => {
+      jest.spyOn(Math, "random").mockReturnValue(0);
+      renderWithArticles();
+      const tile = screen.getByRole("region", { name: "Read next" });
+      const comesBeforeTile = (element: HTMLElement) =>
+        Boolean(element.compareDocumentPosition(tile) & Node.DOCUMENT_POSITION_FOLLOWING);
+
+      expect(comesBeforeTile(screen.getByTestId("result-comparison"))).toBe(true);
+      expect(
+        ["Try Again", "New Game", "Submit to Leaderboard", "View Leaderboard"].map((name) =>
+          comesBeforeTile(screen.getByRole("button", { name })),
+        ),
+      ).toEqual([true, true, true, true]);
+      expect(screen.getByRole("region", { name: "Great Job!" })).not.toContainElement(tile);
+    });
+
+    it("sets the round that was just played beside the article's drill", () => {
+      jest.spyOn(Math, "random").mockReturnValue(0);
+      renderWithArticles();
+      const tile = screen.getByRole("region", { name: "Read next" });
+
+      expect(within(tile).getByText("Your round").closest("div")).toHaveTextContent("6 pieces, 10 seconds");
+    });
+
+    it("keeps its article when the leaderboard form opens", () => {
+      const random = jest.spyOn(Math, "random").mockReturnValue(0);
+      renderWithArticles();
+      expect(shownSlug()).toBe("alder-fixture");
+
+      random.mockReturnValue(0.99);
+      fireEvent.click(screen.getByRole("button", { name: "Submit to Leaderboard" }));
+
+      expect(screen.getByLabelText("Player Name")).toBeInTheDocument();
+      expect(shownSlug()).toBe("alder-fixture");
+    });
+
+    it("is absent when the page was given no articles", () => {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+
+      expect(screen.getByTestId("result-comparison")).toBeInTheDocument();
+      expect(shownSlug()).toBeUndefined();
+    });
   });
 
   it("shows the reason the server gave, not a generic failure", async () => {

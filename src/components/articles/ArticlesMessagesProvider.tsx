@@ -12,7 +12,7 @@ type ArticlesMessagesProviderProps = {
  * Adds the `articles` namespace to the messages of the provider above it.
  *
  * A nested provider's `messages` replace its parent's, so the parent's are
- * merged in here, in the browser. Only `articles` then travels in the articles
+ * merged in here, in the browser. Only `articles` then travels in the
  * layout's payload and the rest of the catalogue is not sent a second time.
  * The time zone, the clock and the formats come from the parent provider.
  */

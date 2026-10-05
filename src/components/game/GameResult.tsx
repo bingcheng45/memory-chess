@@ -29,6 +29,7 @@ import type { LeaderboardDifficulty } from "@/types/leaderboard";
 import { useSettingsStore } from "@/stores/settingsStore";
 import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
 import ResultBoardComparison from "@/components/game/ResultBoardComparison";
+import ArticleTile from "@/components/game/ArticleTile";
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & {
@@ -476,6 +477,13 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       <ResultBoardComparison
         originalPosition={gameState.originalPosition}
         userPosition={gameState.userPosition}
+      />
+
+      <ArticleTile
+        round={{
+          pieceCount: gameState.pieceCount,
+          memorizeTime: gameState.memorizeTime,
+        }}
       />
 
       <FirstGameFeedbackDialog

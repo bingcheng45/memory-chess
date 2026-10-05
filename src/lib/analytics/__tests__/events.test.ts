@@ -8,6 +8,8 @@ const EVENTS: FunnelEvent[] = [
   },
   { name: "score_submit", params: { difficulty: "medium", piece_count: 6 } },
   { name: "article_like", params: { slug: "magnus-carlsen" } },
+  { name: "article_tile_click", params: { slug: "judit-polgar", action: "read" } },
+  { name: "article_tile_click", params: { slug: "judit-polgar", action: "drill" } },
 ];
 
 afterEach(() => {

@@ -7,7 +7,10 @@ import { makeArticle } from "@/lib/articles/__tests__/fixtures";
 import { tileArticleOf, type RandomSource, type RoundSize, type TileArticle } from "@/lib/articles/tile";
 import { VIEWED_STORAGE_KEY, viewedStore } from "@/lib/articles/viewedStore";
 import { useGameStore } from "@/lib/store/gameStore";
+import czech from "../../../../messages/cs.json";
 import german from "../../../../messages/de.json";
+import polish from "../../../../messages/pl.json";
+import russian from "../../../../messages/ru.json";
 
 jest.mock("next/link", () => {
   function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
@@ -154,6 +157,25 @@ describe("ArticleTile", () => {
     expect(within(section).getByText("Die Übung dieses Artikels").closest("div")).toHaveTextContent(
       "Die Übung dieses Artikels20 Figuren, 3 Sekunden",
     );
+  });
+});
+
+describe("the round sizes in a language with few and many forms", () => {
+  const size = (pieceCount: number, memorizeTime: number): RoundSize => ({ pieceCount, memorizeTime });
+
+  it.each([
+    ["ru", russian, size(1, 1), "1 фигура, 1 секунда", size(3, 2), "3 фигуры, 2 секунды"],
+    ["ru", russian, size(5, 10), "5 фигур, 10 секунд", size(22, 21), "22 фигуры, 21 секунда"],
+    ["pl", polish, size(1, 1), "1 bierka, 1 sekunda", size(3, 2), "3 bierki, 2 sekundy"],
+    ["pl", polish, size(5, 10), "5 bierek, 10 sekund", size(22, 21), "22 bierki, 21 sekund"],
+    ["cs", czech, size(1, 1), "1 figurka, 1 sekunda", size(3, 2), "3 figurky, 2 sekundy"],
+    ["cs", czech, size(5, 10), "5 figurek, 10 sekund", size(22, 21), "22 figurek, 21 sekund"],
+  ])("in %s reads a round of %j as %s and a drill of %j as %s", (locale, messages, round, roundText, drill, drillText) => {
+    const article = { ...alder, drill: { ...alder.drill, ...drill } };
+
+    render(tile({ articles: [article], round }), { locale, messages });
+
+    expect(screen.getAllByRole("definition").map((box) => box.textContent)).toEqual([roundText, drillText]);
   });
 });
 

@@ -434,7 +434,7 @@
       "nextArticle": "Следующая статья"
     },
     "tile": {
-      "eyebrow": "Читайте дальше",
+      "eyebrow": "Что читать дальше",
       "yourRound": "Ваш раунд",
       "articleDrill": "Упражнение из этой статьи",
       "roundSize": "{pieces, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}}, {seconds, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунды}}",

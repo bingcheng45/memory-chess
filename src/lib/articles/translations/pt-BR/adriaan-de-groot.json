@@ -1,12 +1,12 @@
 {
   "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "7b53b471b2edb1724408da7ded9e8f6f1a75f8ca5a2ca6c1c113b78faf91e6f0",
+  "approvedHash": "3b824d2704356afe3553cf111c31e6147dec55f1b0a6794a99b838a97d75f868",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
   "text": {
     "title": "O teste de memória no xadrez de Adriaan de Groot, em 1944, em números",
-    "description": "Em 1944, Adriaan de Groot testou quatro jogadores com posições de xadrez exibidas por 2 a 15 segundos. Aqui estão os resultados reais dele e o que as pesquisas posteriores mudaram.",
+    "description": "Em 1944, Adriaan de Groot testou quatro jogadores com posições de xadrez exibidas por 2 a 15 segundos. Aqui estão os resultados reais do experimento de De Groot e o que as pesquisas posteriores mudaram.",
     "person": {
       "name": "Adriaan de Groot",
       "role": "Mestre de xadrez e psicólogo holandês"
@@ -64,9 +64,9 @@
         "paragraphs": [
           "De Groot apresentou o trabalho em 1946, em sua tese de doutorado na Universidade de Amsterdã, Het denken van den schaker. A Mouton publicou a edição em inglês, Thought and Choice in Chess, em Haia, em 1965.",
           "Em 1973, William Chase e Herbert Simon repetiram o teste na Carnegie Mellon com um mestre, um jogador de classe A e um iniciante. Fixaram a exposição em 5 segundos. As posições de meio-jogo tinham de 24 a 26 peças, e o mestre recordou cerca do dobro de peças do jogador de classe A.",
-          "Eles gravaram em vídeo cada reconstrução e trataram uma pausa maior que 2 segundos como a fronteira entre dois chunks. O primeiro chunk do mestre tinha em média 3,8 peças, contra 2,6 do jogador de classe A, e ele produzia 7,7 chunks por posição, contra 5,7. Dos 77 chunks dele nas catorze posições, 47 continham uma cadeia de peões, e Simon e Chase contaram 10 posições de rei rocado.",
+          "Eles gravaram em vídeo cada reconstrução e trataram uma pausa maior que 2 segundos como a fronteira entre dois chunks. O primeiro chunk do mestre tinha em média 3,8 peças, contra 2,6 do jogador de classe A, e o mestre produzia 7,7 chunks por posição, contra 5,7. Dos 77 chunks do mestre nas catorze posições, 47 continham uma cadeia de peões, e Simon e Chase contaram 10 posições de rei rocado.",
           "A contribuição deles foi um controle: as mesmas peças colocadas em casas aleatórias. Simon e Chase relataram que todos os jogadores recordavam então cerca de três ou quatro peças, menos do que o iniciante conseguia em posições reais. Observaram que W. Lemmens e R. W. Jongman haviam encontrado o mesmo resultado no laboratório de Amsterdã e nunca o publicaram.",
-          "A própria introdução de Chase e Simon apresenta o resultado do tabuleiro aleatório como sendo de De Groot, e muitos relatos posteriores repetem isso. O livro dele não relata nenhum teste com tabuleiro aleatório."
+          "A própria introdução de Chase e Simon apresenta o resultado do tabuleiro aleatório como sendo de De Groot, e muitos relatos posteriores repetem isso. O livro de De Groot não relata nenhum teste com tabuleiro aleatório."
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "heading": "Experimente o teste de De Groot",
         "paragraphs": [
-          "Configure o Memory Chess para 22 peças e 5 segundos. Isso corresponde ao tamanho da posição de De Groot, Rohacek contra Rabar, e ao tempo que Euwe teve para olhá-la. Reconstrua o tabuleiro e calcule que parcela das peças você colocou corretamente. Cerca de metade é onde Hauer terminou, cerca de 70% é onde Fast terminou e 93% é a média de Euwe e De Groot.",
+          "Configure o Memory Chess para 22 peças e 5 segundos. Isso corresponde ao tamanho da posição de De Groot, Rohacek contra Rabar, e ao tempo que Euwe teve para olhá-la. Reconstrua o tabuleiro e calcule que parcela das peças você colocou corretamente. Cerca de metade é onde Hauer terminou, cerca de 70% é onde Fast terminou e 93% é a média que tanto Euwe quanto De Groot tiveram.",
           "A comparação é aproximada, porque De Groot também descontava pontos por erros. Depois, veja de quais peças você se lembrou. Provavelmente vieram em grupos, como uma cadeia de peões ou um rei rocado."
         ]
       }

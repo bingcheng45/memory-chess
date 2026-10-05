@@ -10,9 +10,11 @@ type ArticlesMessagesProviderProps = {
 
 /**
  * Adds the `articles` namespace to the messages of the provider above it.
+ * The articles layout passes the whole namespace and the game layout only the
+ * group its result screen prints.
  *
  * A nested provider's `messages` replace its parent's, so the parent's are
- * merged in here, in the browser. Only `articles` then travels in the articles
+ * merged in here, in the browser. Only `articles` then travels in the
  * layout's payload and the rest of the catalogue is not sent a second time.
  * The time zone, the clock and the formats come from the parent provider.
  */

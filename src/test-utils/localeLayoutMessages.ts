@@ -10,7 +10,6 @@ function collect(node: ReactNode, match: (element: ReactElement) => boolean): Re
 }
 
 /**
- * The messages the locale layout hands the client components of every page.
  * The layout is read, not rendered: it returns `<html>`, which a test
  * container cannot hold. The caller mocks `getMessages` and
  * `setRequestLocale` of `next-intl/server`.

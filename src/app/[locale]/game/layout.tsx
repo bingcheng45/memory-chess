@@ -47,7 +47,6 @@ export default async function GameLayout({
 
   return (
     <>
-      {/* The root layout sends no articles strings, and the result screen ends with the article tile. */}
       <ArticlesMessagesProvider articles={tileGroupOf(messages)}>
         <TileArticlesProvider articles={tileArticles}>{children}</TileArticlesProvider>
       </ArticlesMessagesProvider>

@@ -160,7 +160,7 @@ export default async function LocaleLayout({
   // Local and preview builds would otherwise count test runs as real visitors.
   const countsVisitors = process.env.VERCEL_ENV === "production";
 
-  // The articles layout adds its own namespace, so no other page carries it.
+  // The articles layout adds its own namespace and the game layout the tile's group, so no other page carries them.
   const { shared: messages } = splitArticlesNamespace(await getMessages({ locale }));
 
   return (

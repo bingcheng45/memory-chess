@@ -1,6 +1,5 @@
 import type { Article, ArticleDrill, PortraitPhoto } from "./schema";
 
-/** Rides in the game page's HTML, so it holds no body text. */
 export type TileArticle = Pick<Article, "slug" | "title" | "person" | "drill"> & {
   readonly photo: PortraitPhoto;
 };

@@ -34,7 +34,6 @@ function useChosenTile(random: RandomSource): ArticleTileState {
   const articles = useTileArticles();
   const [tile, setTile] = useState(HIDDEN_TILE);
 
-  // Before paint, so the page under the tile does not move a frame after the result appears.
   useLayoutEffect(() => {
     if (tile.kind === "showing" || articles.length === 0) return;
     setTile(chooseTile(articles, viewedStore.has, random));

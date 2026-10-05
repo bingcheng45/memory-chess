@@ -414,7 +414,7 @@
       "showAll": "Gesamten Text anzeigen",
       "byline": "Von <author>{name}</author>",
       "authorshipNote": "Mit KI-Unterstützung aus den unten aufgeführten Quellen recherchiert und entworfen. Jede Tatsache wurde vor der Veröffentlichung anhand dieser Quellen geprüft.",
-      "translationNote": "Mit KI-Unterstützung aus dem Englischen übersetzt. Maßgeblich ist der englische Artikel.",
+      "translationNote": "Mit KI-Unterstützung aus dem Englischen übersetzt. Als Referenz dient der englische Artikel.",
       "readInEnglish": "Auf Englisch lesen",
       "photoCredit": "Foto: {author}, <licenseLink>{license}</licenseLink>, über <source>Wikimedia Commons</source>. {changes}.",
       "factFile": "Steckbrief",

@@ -37,7 +37,8 @@
 .lab-step p { color: var(--lab-ink-2); margin-top: 12px; max-width: 44ch; }
 .lab .lab-step .lab-ann { margin-top: 18px; padding: 12px 14px; border-left: 3px solid var(--lab-mark); background: var(--lab-paper); font: 400 13.5px/1.5 var(--lab-mono); color: var(--lab-ink-2); max-width: 44ch; }
 @media (max-width: 820px) {
-  .lab-scope { grid-template-columns: 1fr; gap: 0; }
+  /* Block, not a one-column grid: a grid item's sticky range ends at its own row. */
+  .lab-scope { display: block; }
   .lab-scope-fig { top: calc(var(--lab-index-h) + 8px); z-index: 5; max-width: 300px; width: 100%; margin: 0 auto; }
   .lab-scope-card { padding: 10px; box-shadow: 0 8px 24px rgba(13, 27, 36, 0.08); }
   .lab-step { min-height: 56vh; }

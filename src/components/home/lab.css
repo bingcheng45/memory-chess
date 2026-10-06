@@ -1,4 +1,8 @@
 /* Brain Lab homepage. Everything is scoped under .lab: the rest of the site stays dark. */
+
+/* globals.css gives html and body overflow-x: hidden, which turns body into a scroll container that never
+   scrolls, so position: sticky never engages. clip hides the same overflow without that side effect. */
+html:has(.lab), html:has(.lab) body { overflow-x: clip; }
 .lab {
   --lab-bg: #f5f9f8; --lab-paper: #ffffff; --lab-ink: #0d1b24; --lab-ink-2: #3a4b56; --lab-ink-3: #5a6a74;
   --lab-line: #d6e3e0; --lab-line-2: #b8ccc7; --lab-grid: rgba(31, 79, 224, 0.05);
@@ -97,6 +101,7 @@
 .lab-facts b { display: block; font: 600 22px var(--lab-mono); color: var(--lab-ink); letter-spacing: -0.02em; }
 .lab-specimen { margin: 0; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 18px; box-shadow: 0 1px 0 var(--lab-line); }
 .lab-spec-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
+.lab-spec-top .lab-mono, .lab-scope-status .lab-mono { text-transform: none; }
 .lab-live { display: flex; align-items: center; gap: 6px; }
 .lab-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--lab-mark); animation: lab-blink 1.4s infinite; flex: none; }
 @keyframes lab-blink { 50% { opacity: 0.25; } }
@@ -123,7 +128,7 @@
 .lab .lab-legacy h2, .lab .lab-legacy summary { color: var(--lab-ink); }
 .lab .lab-legacy summary:hover { color: var(--lab-blue); }
 .lab .lab-legacy summary svg { color: var(--lab-ink-3); }
-.lab .lab-legacy .lab-sec-idx { color: var(--lab-blue); border-color: var(--lab-blue); display: inline-block; width: 140px; }
+.lab .lab-legacy .lab-sec-idx { color: var(--lab-blue); border-color: var(--lab-blue); display: inline-block; width: auto; min-width: 140px; }
 
 /* tiers */
 .lab-proto { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); overflow: hidden; }
@@ -178,4 +183,10 @@
 @media (prefers-reduced-motion: reduce) {
   .lab *, .lab *::before, .lab *::after { animation: none !important; transition: none !important; }
   .lab-scan { display: none; }
+}
+
+/* globals.css forces h1 size and button side padding with !important below 640px; the lab's kicker h1 and square buttons must opt out. */
+@media (max-width: 640px) {
+  .lab .lab-hero h1 { font-size: 12px !important; }
+  .lab .lab-cell, .lab .lab-palette button { padding: 0 !important; }
 }

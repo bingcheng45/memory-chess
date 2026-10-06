@@ -67,6 +67,16 @@ const ENGLISH_AHEAD_OF_TRANSLATIONS = new Set([
   "home.meta.twitterDescription",
 ]);
 
+/**
+ * Blocks that ship in English first. src/i18n/request.ts serves the English
+ * block to a locale that lacks it, so a missing key there renders English, not
+ * a key path. A locale that does carry the block is still checked in full.
+ */
+const ENGLISH_FALLBACK_PREFIXES = ["home.lab."];
+
+const isEnglishFallback = (key) =>
+  ENGLISH_FALLBACK_PREFIXES.some((prefix) => key.startsWith(prefix));
+
 function flatten(value, prefix = "", out = {}) {
   if (Array.isArray(value)) {
     value.forEach((item, i) => flatten(item, `${prefix}[${i}]`, out));
@@ -104,7 +114,9 @@ for (const locale of LOCALES) {
   const current = flatten(catalogues[locale]);
 
   for (const key of Object.keys(base)) {
-    if (!(key in current)) problems.push(`[${locale}] missing key: ${key}`);
+    if (!(key in current) && !isEnglishFallback(key)) {
+      problems.push(`[${locale}] missing key: ${key}`);
+    }
   }
   for (const key of Object.keys(current)) {
     if (!(key in base)) problems.push(`[${locale}] unknown key: ${key}`);

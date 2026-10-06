@@ -123,6 +123,288 @@
           "answer": "A few focused rounds on a regular schedule is a good place to start. Keep sessions short enough that you can still study each position carefully."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Lab index",
+        "badge": "Lab",
+        "notebook": "Notebook",
+        "method": "Method",
+        "calibrate": "Calibrate",
+        "tiers": "Difficulty",
+        "record": "Record",
+        "library": "Library",
+        "play": "Play a free round"
+      },
+      "tags": {
+        "proposed": "Proposed",
+        "sample": "Sample",
+        "illustrative": "Illustrative",
+        "live": "Live on site",
+        "free": "Free · no account",
+        "rig": "Rig"
+      },
+      "sections": {
+        "notebook": "Notebook",
+        "method": "Method",
+        "recording": "Field recording",
+        "calibrate": "Calibrate",
+        "tiers": "Difficulty",
+        "record": "Lab record",
+        "library": "Library",
+        "faq": "Questions",
+        "next": "Next run"
+      },
+      "hero": {
+        "platforms": "Browser · desktop · mobile",
+        "display": "Put a number on your <em>mind's eye.</em>",
+        "lede": "Memory Chess is a small instrument for board vision. Study a position for a few seconds, the board goes blank, rebuild it from memory. You get an accuracy reading from 0 to 100% and a map of every square you got right or wrong.",
+        "secondaryCta": "Take a calibration reading",
+        "facts": {
+          "study": "study window",
+          "pieces": "pieces per round",
+          "accuracy": "accuracy reading",
+          "languages": "languages"
+        },
+        "specimen": {
+          "aria": "Example position under study",
+          "label": "Specimen 014 · study phase",
+          "pieces": "Pieces",
+          "exposure": "Exposure",
+          "plays": "Games played"
+        }
+      },
+      "notebook": {
+        "title": "You can't improve what you never measure.",
+        "lede": "Most chess practice trains decisions. Very little of it checks whether you can actually hold the board in your head. That skill sits under calculation, blindfold play and spotting tactics, and it is usually left to chance.",
+        "observation": {
+          "kicker": "Observation",
+          "title": "Players lose track of pieces mid-calculation.",
+          "body": "Three moves deep, a bishop on the long diagonal quietly disappears from the picture in your head. The board in front of you was right. The one in your mind was not."
+        },
+        "hypothesis": {
+          "kicker": "Hypothesis",
+          "title": "Board recall is a trainable, testable skill.",
+          "body": "Hold a position briefly, rebuild it, check the result. Repeat with more pieces and less time. <hl>We make no claims about your brain.</hl> We give you a reading you can track."
+        },
+        "method": {
+          "kicker": "Method",
+          "title": "One round, one clean number.",
+          "body": "Study, blank board, rebuild, score. Right squares are marked, wrong squares are marked, nothing is hidden. Rounds take under a minute, so you can run many."
+        }
+      },
+      "method": {
+        "title": "A round, under the microscope.",
+        "lede": "Scroll through the five phases of a single round. The diagram updates with each step. The overlays are illustrations of the method, not recordings of anyone's attention.",
+        "status": "Phase {number} / {name}",
+        "clock": "t = {seconds}s",
+        "chunkShield": "A · Shield ×5",
+        "chunkBattery": "B · Battery ×2",
+        "chunkLone": "C · Lone ×1",
+        "scoreChip": "{correct} of {total} squares",
+        "phases": {
+          "study": {
+            "name": "Study",
+            "title": "Look. The clock is already running.",
+            "body": "A random position appears with a countdown. Your eyes go to the loudest features first: the heavy pieces, the king, anything under tension.",
+            "note": "Fig. overlay: illustrative fixation order 1 to 4. Warm is the first glance, blue is the follow-up."
+          },
+          "chunk": {
+            "name": "Chunk",
+            "title": "Eight pieces become three ideas.",
+            "body": "Strong players rarely store pieces one by one. They store patterns: a castled king with its pawns, a queen and rook stacked on a file. Fewer units, same information.",
+            "note": "A is a shield of 5. B is a d-file battery of 2. C is the bishop on c4. Three chunks to hold, not eight."
+          },
+          "blind": {
+            "name": "Blind",
+            "title": "The board clears.",
+            "body": "No pieces, no hints. Just the grid. This is the moment the round actually measures: what survived in your head after the image is gone.",
+            "note": "Tip from the Learning Center: name the chunks to yourself before the timer ends."
+          },
+          "recall": {
+            "name": "Recall",
+            "title": "Rebuild it, square by square.",
+            "body": "Pick a piece and tap the square where it belongs. Submit when you are done. Every square is checked against the original.",
+            "note": "Mint is correct. Orange fill is a wrong placement (knight on e3). Orange ring is the square it belonged on (f3)."
+          },
+          "score": {
+            "name": "Score",
+            "title": "Read the result. Run it again.",
+            "body": "You get an accuracy score from 0 to 100% the moment you submit. The miss is almost always informative: here, the one piece outside a clean chunk drifted by a file.",
+            "note": "Example reading: 7 of 8 squares is 88%. Your next round decides whether that was a fluke."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Take a calibration reading.",
+        "lede": "Six pieces, eight seconds. Then the board clears and you rebuild it. You'll get a readout card with your accuracy and recall by piece type. It works with mouse, touch and keyboard.",
+        "phaseReady": "Ready · {pieces} pieces · {seconds}s exposure",
+        "phaseStudy": "Phase 01 · Study",
+        "phaseRebuild": "Phase 03 · Rebuild from memory",
+        "phaseScore": "Phase 05 · Score",
+        "start": "Start calibration",
+        "restart": "Restart",
+        "again": "Run again",
+        "submit": "Submit reading",
+        "clear": "Clear board",
+        "boardLabel": "Calibration board. Use the arrow keys to move between squares.",
+        "paletteLabel": "Piece palette",
+        "squareEmpty": "{square}, empty",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Study the position. {seconds} seconds.",
+        "liveRebuild": "Board cleared. Pick a piece, then a square.",
+        "liveScore": "Accuracy {accuracy} percent. {correct} of {total} squares correct.",
+        "steps": [
+          "Press start. Study the six pieces until the meter empties.",
+          "Pick a piece from the palette, then tap a square. Tap a placed piece to remove it.",
+          "Submit. Placing more pieces than the position had lowers your accuracy, so only place what you remember."
+        ],
+        "readout": {
+          "title": "Readout card",
+          "statusIdle": "Awaiting run",
+          "statusRecording": "Recording",
+          "statusDone": "Run complete",
+          "correct": "Correct squares",
+          "time": "Rebuild time",
+          "wrong": "Wrong placements",
+          "exposure": "Exposure",
+          "byType": "Recall by piece type",
+          "byTypeEmpty": "Recall by piece type appears here after your first run.",
+          "nextEmpty": "A suggested difficulty appears after the reading.",
+          "suggested": "Suggested:",
+          "stepUp": "step up to {tier}, {pieces} pieces at {seconds}s. Confirm with two more clean rounds first.",
+          "stay": "stay on {tier}, {pieces} pieces at {seconds}s. Run three rounds and watch the trend.",
+          "start": "start on {tier}, {pieces} pieces at {seconds}s. Group pieces into pairs while you study.",
+          "playTier": "Play {tier}",
+          "legendCorrect": "correct",
+          "legendWrong": "wrong placement",
+          "legendMissed": "missed square"
+        },
+        "pieceTypes": {
+          "king": "King",
+          "queen": "Queen",
+          "rook": "Rook",
+          "bishop": "Bishop",
+          "knight": "Knight",
+          "pawn": "Pawn"
+        }
+      },
+      "tiers": {
+        "title": "Four presets. One custom rig.",
+        "lede": "Load goes up, exposure goes down. Move up a tier when your readings hold steady, not after one lucky round.",
+        "columns": {
+          "tier": "Difficulty",
+          "pieces": "Pieces",
+          "exposure": "Exposure",
+          "load": "Load"
+        },
+        "loadLabel": "{pieces} of 32 squares filled",
+        "play": "Play",
+        "custom": {
+          "label": "Custom",
+          "description": "Set your own variables to isolate one weakness."
+        }
+      },
+      "record": {
+        "title": "Come back for the trend line.",
+        "lede": "One reading is a snapshot. Ten readings are a measurement. This is how the lab record could look. Panels marked <tag>Proposed</tag> are design proposals, and all numbers shown are sample values, not real users.",
+        "curve": {
+          "fig": "Fig. 6.1 · Forgetting curve",
+          "tag": "Proposed · review reminders",
+          "title": "Short, spaced reviews beat one long session.",
+          "desc": "Memory for new material tends to fade quickly, and each well-timed review tends to slow the fade. A daily round is a natural review slot.",
+          "aria": "Illustrative chart: retention falls quickly without review and decays more slowly after each spaced review on days 1, 3 and 7.",
+          "note": "Illustrative model of the spacing effect. Not measured data.",
+          "noReview": "no review",
+          "spaced": "spaced rounds",
+          "review": "review",
+          "day": "d{day}"
+        },
+        "spark": {
+          "fig": "Fig. 6.2 · Accuracy over time",
+          "title": "Your line, session by session.",
+          "aria": "Sample sparkline of accuracy over 12 sessions, rising from 52 to 79 percent.",
+          "note": "Sample record · 12 sessions · Medium",
+          "first": "S01",
+          "last": "S12"
+        },
+        "heat": {
+          "fig": "Fig. 6.3 · Miss map",
+          "title": "Where your squares slip.",
+          "aria": "Sample heatmap of missed squares, concentrated on the a and h files.",
+          "note": "Sample: misses cluster on the edge files. Train edges next."
+        },
+        "streak": {
+          "fig": "Fig. 6.4 · Daily challenge",
+          "title": "One shared position a day.",
+          "desc": "Same board for everyone, one attempt, a streak that counts consecutive days.",
+          "aria": "Sample two-week streak grid",
+          "note": "Sample · the dashed square is today's run, still pending"
+        },
+        "board": {
+          "fig": "Fig. 6.5 · Leaderboard",
+          "title": "Compare readings worldwide.",
+          "desc": "See where your accuracy ranks on each difficulty, next to every player's country.",
+          "countryFilter": "Filter by country",
+          "open": "Open leaderboard",
+          "you": "you"
+        },
+        "plans": {
+          "a": {
+            "kicker": "Plan A · 7 days",
+            "title": "Baseline week",
+            "steps": [
+              "One Medium round a day.",
+              "Log the reading, ignore the urge to retry.",
+              "Day 7: compare against day 1."
+            ]
+          },
+          "b": {
+            "kicker": "Plan B · 14 days",
+            "title": "Edge-file drill",
+            "steps": [
+              "Custom rig: 8 pieces, 15s.",
+              "Review your miss map every 3 days.",
+              "Pair with the board vision guide."
+            ]
+          },
+          "c": {
+            "kicker": "Plan C · open-ended",
+            "title": "Step-down ladder",
+            "steps": [
+              "Hold 90% for three rounds in a row.",
+              "Then cut study time by 2 seconds.",
+              "When study time bottoms out, add pieces."
+            ]
+          }
+        }
+      },
+      "library": {
+        "title": "Reference library.",
+        "lede": "The Learning Center pairs short guides with drills, so each reading points to something you can practise.",
+        "ref": "Ref. {number}",
+        "read": "Read guide",
+        "vision": {
+          "title": "Board vision",
+          "body": "See the whole board at once instead of one corner at a time."
+        },
+        "visualization": {
+          "title": "Visualization",
+          "body": "Hold a moving position in your head as pieces shift."
+        },
+        "calculation": {
+          "title": "Calculation",
+          "body": "Look further ahead without losing track of the board."
+        },
+        "memory": {
+          "title": "Memory",
+          "body": "Chunking and pattern techniques that raise your readings."
+        }
+      },
+      "final": {
+        "title": "Your first reading takes under a minute.",
+        "body": "No account, no download, no sign-up. Open a round, study, rebuild, read the number. Then decide if you want a second one."
+      }
     }
   },
   "game": {

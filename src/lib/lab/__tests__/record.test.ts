@@ -1,5 +1,5 @@
 import { buildRoundRecord, configKey, localDayOf, positionId } from "@/lib/lab/record";
-import { round, TARGET } from "./fixtures";
+import { round, roundV2, TARGET } from "./fixtures";
 
 describe("buildRoundRecord", () => {
   it("records each square's outcome and the counts the result screen shows", () => {
@@ -60,6 +60,13 @@ describe("positionId", () => {
 });
 
 describe("buildRoundRecord version 2", () => {
+  it("writes a board with split empty runs in standard form, so it keeps its position id", () => {
+    const record = roundV2({ targetFen: "4k3/44/8/3q22/8/5N11/8/4K3", placedFen: "4k3/8/8/3q4/8/5N2/8/1111K3" });
+
+    expect([record.targetFen, record.placedFen, record.positionId]).toEqual([TARGET, TARGET, "0a6c3bd6ea5bcc"]);
+  });
+
+
   it("adds the position id, the start, the kind, the timezone and the placements to the scored round", () => {
     const { v, ...core } = round();
     const record = buildRoundRecord(

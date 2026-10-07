@@ -146,9 +146,16 @@ export function buildRoundRecord(input: RoundInput, capture?: RoundCapture): Rou
   return { v: 2, ...core, positionId: positionId(core.targetFen), ...definedOnly({ kind: "normal", ...capture }) } as RoundRecordV2;
 }
 
+/** Merges each rank's empty runs ("44" becomes "8"), so one board has one written form and one position id. */
+function standardBoard(fen: string): string {
+  return fen
+    .split(" ")[0]
+    .replace(/\d{2,}/g, (run) => String([...run].reduce((squares, digit) => squares + Number(digit), 0)));
+}
+
 function scoreRound(input: RoundInput): Omit<RoundRecordV1, "v"> {
-  const targetFen = input.targetFen.split(" ")[0];
-  const placedFen = input.placedFen.split(" ")[0];
+  const targetFen = standardBoard(input.targetFen);
+  const placedFen = standardBoard(input.placedFen);
   const target = placementFromFen(targetFen);
   const placed = placementFromFen(placedFen);
   const score = scorePlacement(target, placed);

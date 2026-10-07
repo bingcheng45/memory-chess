@@ -1,7 +1,7 @@
 import { summarize, type LabSummary } from "@/lib/lab/summary";
 import { PLACEMENT_KEEP } from "@/lib/lab/storage";
 import { buildExport, parseImport } from "@/lib/lab/transfer";
-import { round, roundV2 } from "./fixtures";
+import { round, roundV2, TARGET } from "./fixtures";
 
 const NOW = Date.UTC(2026, 9, 8);
 
@@ -130,6 +130,12 @@ describe("lab record export and import", () => {
 
     expect(result.ok && result.rounds[0]).toEqual(roundV2());
     expect(result.ok && result.rounds[0]).toMatchObject({ positionId: "0a6c3bd6ea5bcc" });
+  });
+
+  it("imports a board written with split empty runs under the id of its standard form", () => {
+    const file = JSON.stringify(buildExport([{ ...roundV2(), targetFen: "4k3/44/8/3q4/8/5N2/8/4K3" }], NOW));
+
+    expect(parseImport(file, NOW)).toMatchObject({ ok: true, rounds: [{ targetFen: TARGET, positionId: "0a6c3bd6ea5bcc" }] });
   });
 
   it.each([

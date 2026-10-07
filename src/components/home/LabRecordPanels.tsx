@@ -142,7 +142,7 @@ export function StreakPanel({ summary, today }: RecordData) {
   return (
     <div className="lab-panel lab-p-streak">
       <PanelHead fig={t("streak.fig")} tag={proposed ? tags.sample : tags.mine} />
-      <h3>{proposed ? t("streak.title") : t("streak.realTitle")}</h3>
+      <h3>{t("streak.title")}</h3>
       <p className="lab-panel-desc">{proposed ? t("streak.desc") : t("streak.realDesc")}</p>
       {proposed ? (
         <>

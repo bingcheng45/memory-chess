@@ -11,9 +11,9 @@ import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
 const PLANS = ["a", "b", "c"] as const;
 const BOARD_SKETCH = [
-  { rank: "01", width: "86%", you: false },
-  { rank: "02", width: "74%", you: false },
-  { rank: "03", width: "61%", you: true },
+  { rank: "01", width: "86%" },
+  { rank: "02", width: "74%" },
+  { rank: "03", width: "61%" },
 ];
 
 export function LabRecordSection({ record }: { record: LabRecord }) {
@@ -45,7 +45,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
           <MissPanel {...data} />
           <StreakPanel {...data} />
           <div className="lab-panel lab-p-board">
-            <PanelHead fig={t("board.fig")} tag={<span className="lab-tag lab-tag-mint">{tags("live")}</span>} />
+            <PanelHead fig={t("board.fig")} tag={<span className="lab-tag lab-tag-blue">{tags("sample")}</span>} />
             <h3>{t("board.title")}</h3>
             <p className="lab-panel-desc">{t("board.desc")}</p>
             <div className="lab-chips">
@@ -54,11 +54,11 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
               ))}
             </div>
             <div aria-hidden="true">
-              {BOARD_SKETCH.map(({ rank, width, you }) => (
+              {BOARD_SKETCH.map(({ rank, width }) => (
                 <div className="lab-lb-row" key={rank}>
                   <span className="lab-mono">{rank}</span>
-                  <span className="lab-lb-bar" style={{ width }} data-you={you || undefined} />
-                  <span className="lab-mono lab-note">{you ? t("board.you") : "--%"}</span>
+                  <span className="lab-lb-bar" style={{ width }} />
+                  <span className="lab-mono lab-note">--%</span>
                 </div>
               ))}
             </div>

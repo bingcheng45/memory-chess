@@ -52,6 +52,37 @@ describe("LabRecordSection", () => {
     expect(within(panel(/Fig. 6.6/)).getByText(/appears after your first round/)).toBeInTheDocument();
   });
 
+  it("shows the leaderboard as a Sample sketch with no row claiming to be the visitor", () => {
+    renderWithIntl(<LabRecordSection record={record([])} />);
+    const board = panel(/Fig. 6.5/);
+
+    expect(within(board).getByText("Sample")).toBeInTheDocument();
+    expect(within(board).queryByText("Live on site")).toBeNull();
+    expect(within(board).queryByText("you")).toBeNull();
+    expect(within(board).getAllByText("--%")).toHaveLength(3);
+    expect(
+      within(board).getByText(
+        "Each difficulty is ranked by correct pieces, then fewer wrong pieces, then faster memorize time, then faster solve time. Every row shows the player's country.",
+      ),
+    ).toBeInTheDocument();
+    expect(within(board).getByRole("link", { name: "Open leaderboard →" })).toHaveAttribute("href", "/leaderboard");
+    expect(within(board).getByText(/Filter by country/)).toHaveTextContent("Filter by country Proposed");
+  });
+
+  it("names the streak panel for what it counts, in the sample and the real record", () => {
+    const { unmount } = renderWithIntl(<LabRecordSection record={record([])} />);
+
+    expect(screen.getByText("Fig. 6.4 · Days in a row")).toBeInTheDocument();
+    expect(screen.queryByText(/Daily challenge/)).toBeNull();
+    expect(screen.queryByText(/shared position|Same board for everyone/)).toBeNull();
+    expect(within(panel(/Fig. 6.4/)).getByText("Any finished round, game or practice, counts for its day. Play on two days in a row to start a streak.")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.2/)).getByText("Your line, round by round.")).toBeInTheDocument();
+    unmount();
+
+    renderWithIntl(<LabRecordSection record={record(rounds(2, 1))} />);
+    expect(screen.getByText("Fig. 6.4 · Days in a row")).toBeInTheDocument();
+  });
+
   it("says how many more rounds each panel needs below its threshold", () => {
     renderWithIntl(<LabRecordSection record={record(rounds(2, 1))} />);
 

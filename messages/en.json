@@ -140,7 +140,6 @@
         "proposed": "Proposed",
         "sample": "Sample",
         "illustrative": "Illustrative",
-        "live": "Live on site",
         "free": "Free · no account",
         "rig": "Rig"
       },
@@ -432,12 +431,11 @@
           "realNote": "Darker means missed more often. Grey has under 10 pieces seen."
         },
         "streak": {
-          "fig": "Fig. 6.4 · Daily challenge",
-          "title": "One shared position a day.",
-          "desc": "Same board for everyone, one attempt, a streak that counts consecutive days.",
+          "fig": "Fig. 6.4 · Days in a row",
+          "title": "One round a day builds a streak.",
+          "desc": "Any finished round, game or practice, counts for its day. Play on two days in a row to start a streak.",
           "aria": "Sample two-week streak grid",
           "note": "Sample · the dashed square is today's run, still pending",
-          "realTitle": "Days in a row.",
           "realDesc": "Any finished round counts for its day.",
           "need": "Play on one more day to start a streak.",
           "realAria": "Your last 14 days: {count, plural, one {# day} other {# days}} played.",
@@ -447,10 +445,9 @@
         "board": {
           "fig": "Fig. 6.5 · Leaderboard",
           "title": "Compare readings worldwide.",
-          "desc": "See where your accuracy ranks on each difficulty, next to every player's country.",
+          "desc": "Each difficulty is ranked by correct pieces, then fewer wrong pieces, then faster memorize time, then faster solve time. Every row shows the player's country.",
           "countryFilter": "Filter by country",
-          "open": "Open leaderboard",
-          "you": "you"
+          "open": "Open leaderboard"
         },
         "plans": {
           "a": {

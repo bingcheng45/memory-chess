@@ -17,12 +17,25 @@ function memoryStorage(): Storage {
   };
 }
 
+/** One lock name at a time, granted in request order, like navigator.locks across tabs. */
+function queuedLocks(): LockManager {
+  const tails = new Map<string, Promise<unknown>>();
+  return {
+    request: (name: string, callback: () => Promise<unknown>) => {
+      const run = (tails.get(name) ?? Promise.resolve()).then(() => callback());
+      tails.set(name, run.catch(() => undefined));
+      return run;
+    },
+  } as unknown as LockManager;
+}
+
 function deps(overrides: Partial<LabStoreDeps> = {}): LabStoreDeps & { persist: jest.Mock } {
   const persist = jest.fn(() => Promise.resolve(true));
   return {
     indexedDB: new IDBFactory(),
     localStorage: memoryStorage(),
     storageManager: { persist } as unknown as StorageManager,
+    locks: undefined,
     persist,
     ...overrides,
   };
@@ -189,6 +202,25 @@ describe("lab store", () => {
     expect(outcome).toBe("deleted");
     expect(await store.addRound(round({ id: "b", endedAt: 2 }))).toBe(true);
     expect((await store.listRounds()).map(({ id }) => id)).toEqual(["b"]);
+  });
+
+  it("counts both rounds when two writers save at the same moment", async () => {
+    const shared = { indexedDB: new IDBFactory(), localStorage: memoryStorage(), locks: queuedLocks() };
+    const tabA = createLabStore(deps(shared));
+    const tabB = createLabStore(deps(shared));
+
+    await Promise.all([
+      tabA.addRound(round({ id: "a", endedAt: 1 })),
+      tabB.addRound(round({ id: "b", endedAt: 2, source: "calibration", localDay: "2026-10-08" })),
+    ]);
+
+    expect((await tabA.listRounds()).length).toBe(2);
+    expect(await tabB.readSummary()).toMatchObject({
+      rounds: 2,
+      days: ["2026-10-07", "2026-10-08"],
+      bests: { "game:4x10": { rounds: 1 }, "calibration:4x10": { rounds: 1 } },
+      typeShown: { k: 4, q: 2, n: 2 },
+    });
   });
 
   it("remembers when the record was last backed up", () => {

@@ -8,6 +8,7 @@ const BY_END = "endedAt";
 const SUMMARY_KEY = "memory-chess-lab-summary";
 const BACKUP_KEY = "memory-chess-lab-last-backup";
 const PERSIST_ASKED_KEY = "memory-chess-lab-persist-asked";
+const SUMMARY_LOCK = "memory-chess-lab";
 
 export const ROUND_CAP = 5000;
 export const PERSIST_AFTER_ROUNDS = 3;
@@ -16,6 +17,7 @@ export interface LabStoreDeps {
   readonly indexedDB: IDBFactory | undefined;
   readonly localStorage: Storage | undefined;
   readonly storageManager: StorageManager | undefined;
+  readonly locks: LockManager | undefined;
 }
 
 export interface LabStore {
@@ -96,6 +98,15 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     }
   }
 
+  /**
+   * Every read-modify-write of the summary holds one lock shared by all tabs,
+   * so no writer folds its rounds into a summary another writer has since
+   * replaced. Without the Web Locks API writes run as they come, as before.
+   */
+  function exclusive<T>(work: () => Promise<T>): Promise<T> {
+    return deps.locks ? deps.locks.request(SUMMARY_LOCK, work) : work();
+  }
+
   function storedSummary(): LabSummary | null {
     try {
       return parseSummary(JSON.parse(readText(SUMMARY_KEY) ?? "null"));
@@ -140,17 +151,24 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
    */
   async function ingest(records: readonly RoundRecordV1[]): Promise<number> {
     const db = await open();
-    const before = storedSummary() ?? summarize(await allRounds(db));
-    const watermark = before.evictedThrough;
-    const { fresh: added, evicted } = await insertNew(
-      db,
-      watermark === null ? records : records.filter(({ endedAt }) => endedAt > watermark),
-    );
-    if (added.length === 0) return 0;
-    const counted = [...added].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, before);
-    // Every round in the log is newer than the watermark, so a fresh eviction only moves it forward.
-    await saveSummary({ ...counted, evictedThrough: evicted ?? watermark });
-    return added.length;
+    const saved = await exclusive(async () => {
+      const before = storedSummary() ?? summarize(await allRounds(db));
+      const watermark = before.evictedThrough;
+      const { fresh: added, evicted } = await insertNew(
+        db,
+        watermark === null ? records : records.filter(({ endedAt }) => endedAt > watermark),
+      );
+      if (added.length === 0) return null;
+      const counted = [...added].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, before);
+      // Every round in the log is newer than the watermark, so a fresh eviction only moves it forward.
+      const next = { ...counted, evictedThrough: evicted ?? watermark };
+      writeText(SUMMARY_KEY, JSON.stringify(next));
+      return { added: added.length, rounds: next.rounds };
+    });
+    if (!saved) return 0;
+    // Outside the lock: a browser may hold this promise open on a permission prompt.
+    await requestPersistence(saved.rounds);
+    return saved.added;
   }
 
   async function requestPersistence(rounds: number): Promise<void> {
@@ -161,11 +179,6 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     } catch {
       // The browser decides by its own heuristics; a refusal leaves storage best-effort, as before.
     }
-  }
-
-  async function saveSummary(next: LabSummary): Promise<void> {
-    writeText(SUMMARY_KEY, JSON.stringify(next));
-    await requestPersistence(next.rounds);
   }
 
   return {
@@ -198,24 +211,31 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     mergeRounds: ingest,
 
     async readSummary() {
-      const stored = storedSummary();
-      if (stored) return stored;
-      const rebuilt = summarize(await this.listRounds());
-      if (rebuilt.rounds > 0) writeText(SUMMARY_KEY, JSON.stringify(rebuilt));
-      return rebuilt;
+      return (
+        storedSummary() ??
+        exclusive(async () => {
+          const stored = storedSummary();
+          if (stored) return stored;
+          const rebuilt = summarize(await this.listRounds());
+          if (rebuilt.rounds > 0) writeText(SUMMARY_KEY, JSON.stringify(rebuilt));
+          return rebuilt;
+        })
+      );
     },
 
     async clear() {
       const db = await open();
-      const tx = db.transaction(STORE, "readwrite");
-      tx.objectStore(STORE).clear();
-      await done(tx);
-      try {
-        deps.localStorage?.removeItem(SUMMARY_KEY);
-        deps.localStorage?.removeItem(BACKUP_KEY);
-      } catch {
-        // Nothing else to undo; the log itself is already empty.
-      }
+      await exclusive(async () => {
+        const tx = db.transaction(STORE, "readwrite");
+        tx.objectStore(STORE).clear();
+        await done(tx);
+        try {
+          deps.localStorage?.removeItem(SUMMARY_KEY);
+          deps.localStorage?.removeItem(BACKUP_KEY);
+        } catch {
+          // Nothing else to undo; the log itself is already empty.
+        }
+      });
     },
 
     readLastBackup() {
@@ -249,6 +269,7 @@ export function labStore(): LabStore | null {
       }
     })(),
     storageManager: typeof navigator === "undefined" ? undefined : navigator.storage,
+    locks: typeof navigator === "undefined" ? undefined : navigator.locks,
   });
   return browserStore;
 }

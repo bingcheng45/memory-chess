@@ -25,7 +25,7 @@ describe("GamePage server render", () => {
       </NextIntlClientProvider>,
     );
 
-    expect(html).toContain("Game Configuration</h2>");
+    expect(html.match(/<h[1-6][^>]*>[^<]*/)?.[0]).toMatch(/^<h1[^>]*>Chess memory game$/);
     expect(html).toContain('aria-pressed="true"');
     expect(html).not.toContain("aria-busy");
     // The configuration screen keeps the site nav in the served HTML.

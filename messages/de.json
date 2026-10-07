@@ -149,6 +149,7 @@
       "memorizeTime": "Einprägezeit",
       "seconds": "{seconds} s",
       "start": "Training starten",
+      "quickStart": "Runde starten",
       "lastGame": "Letzte Partie: {time} s Lösungszeit bei {accuracy} % Genauigkeit"
     },
     "presets": {

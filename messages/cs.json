@@ -149,6 +149,7 @@
       "memorizeTime": "Čas na zapamatování",
       "seconds": "{seconds} s",
       "start": "Začít trénink",
+      "quickStart": "Začít kolo",
       "lastGame": "Minulá partie: {time} s na vyřešení, přesnost {accuracy} %"
     },
     "presets": {

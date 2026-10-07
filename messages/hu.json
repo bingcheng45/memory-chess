@@ -149,6 +149,7 @@
       "memorizeTime": "Memorizálási idő",
       "seconds": "{seconds} mp",
       "start": "Edzés indítása",
+      "quickStart": "Kör indítása",
       "lastGame": "Előző játszma: {time} mp megoldási idő, {accuracy}% pontosság"
     },
     "presets": {

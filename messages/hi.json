@@ -149,6 +149,7 @@
       "memorizeTime": "याद करने का समय",
       "seconds": "{seconds} से.",
       "start": "अभ्यास शुरू करें",
+      "quickStart": "एक राउंड शुरू करें",
       "lastGame": "पिछला गेम: {time} से. में हल, {accuracy}% सटीकता के साथ"
     },
     "presets": {

@@ -149,6 +149,7 @@
       "memorizeTime": "Thời gian ghi nhớ",
       "seconds": "{seconds} giây",
       "start": "Bắt đầu luyện tập",
+      "quickStart": "Bắt đầu một ván",
       "lastGame": "Ván trước: {time} giây để hoàn thành, độ chính xác {accuracy}%"
     },
     "presets": {

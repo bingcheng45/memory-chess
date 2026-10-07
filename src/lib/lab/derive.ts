@@ -98,27 +98,38 @@ export interface TrendResult {
   readonly daysNeeded: number;
 }
 
-/** Accuracy for the most-played setting only: mixing settings would read harder rounds as decline. */
-export function deriveTrend(records: readonly RoundRecordV1[]): TrendResult {
-  const bySetting = new Map<string, { rounds: RoundRecordV1[]; latest: number }>();
-  records.forEach((record) => {
-    const key = settingKey(record.source, record.config);
-    const group = bySetting.get(key);
-    if (!group) bySetting.set(key, { rounds: [record], latest: record.endedAt });
-    else {
-      group.rounds.push(record);
-      group.latest = Math.max(group.latest, record.endedAt);
-    }
-  });
-  const rounds =
-    [...bySetting.values()].sort((a, b) => b.rounds.length - a.rounds.length || b.latest - a.latest)[0]?.rounds ?? [];
+function trendOf(rounds: readonly RoundRecordV1[]) {
   const sorted = [...rounds].sort((a, b) => a.endedAt - b.endedAt);
   const days = new Set(sorted.map((record) => record.localDay)).size;
   const roundsNeeded = Math.max(0, LAB_THRESHOLDS.trendRounds - sorted.length);
   const daysNeeded = Math.max(0, LAB_THRESHOLDS.trendDays - days);
+  return { sorted, roundsNeeded, daysNeeded, ready: roundsNeeded === 0 && daysNeeded === 0 };
+}
+
+/**
+ * Accuracy for one setting only: mixing settings would read harder rounds as decline.
+ * A setting that can draw wins over one with more rounds that cannot, then most rounds, then most recent.
+ */
+export function deriveTrend(records: readonly RoundRecordV1[]): TrendResult {
+  const bySetting = new Map<string, RoundRecordV1[]>();
+  records.forEach((record) => {
+    const key = settingKey(record.source, record.config);
+    const group = bySetting.get(key);
+    if (group) group.push(record);
+    else bySetting.set(key, [record]);
+  });
+  const latest = (rounds: readonly RoundRecordV1[]) => rounds[rounds.length - 1].endedAt;
+  const { sorted, roundsNeeded, daysNeeded, ready } = [...bySetting.values()]
+    .map(trendOf)
+    .sort(
+      (a, b) =>
+        Number(b.ready) - Number(a.ready) ||
+        b.sorted.length - a.sorted.length ||
+        latest(b.sorted) - latest(a.sorted),
+    )[0] ?? trendOf([]);
 
   return {
-    ready: roundsNeeded === 0 && daysNeeded === 0,
+    ready,
     sampleSize: sorted.length,
     setting: sorted[0]
       ? { source: sorted[0].source, pieceCount: sorted[0].config.pieceCount, memorizeSeconds: sorted[0].config.memorizeSeconds }

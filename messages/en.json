@@ -409,9 +409,9 @@
           "note": "Sample record · 12 rounds · Medium",
           "first": "R01",
           "last": "R12",
-          "needRounds": "{count, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {memorizeSeconds}s draws your {source, select, calibration {practice} other {game}} trend.",
+          "needRounds": "{count, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {memorizeSeconds}s{anotherDay, select, yes {{count, plural, one {, played on another day,} other {, at least one on another day,}}} other {}} draws your {source, select, calibration {practice} other {game}} trend.",
           "needDay": "Play {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in a game}} on one more day to draw your trend.",
-          "config": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s, the setting you play most",
+          "config": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s, your most played setting with a trend",
           "realAria": "Your accuracy over your last {count} {source, select, calibration {practice} other {game}} rounds at {pieceCount} pieces and {memorizeSeconds} seconds, latest {latest} percent.",
           "realFirst": "Oldest",
           "realLast": "Latest"

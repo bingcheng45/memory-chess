@@ -118,7 +118,7 @@ describe("LabRecordSection", () => {
 
   it("tells a kings-only player why recall by piece type is empty, with the king baseline", () => {
     const kingsOnly = rounds(50, 3).map((game) =>
-      buildRoundRecord({ ...game, pieceCount: 2, targetFen: "4k3/8/8/8/8/8/8/4K3", placedFen: "4k3/8/8/8/8/8/8/4K3" }),
+      buildRoundRecord({ ...game, pieceCount: 2, memorizeSeconds: 10, targetFen: "4k3/8/8/8/8/8/8/4K3", placedFen: "4k3/8/8/8/8/8/8/4K3" }),
     );
     renderWithIntl(<LabRecordSection record={record(kingsOnly)} />);
     const types = panel(/Fig. 6.7/);
@@ -150,8 +150,8 @@ describe("LabRecordSection", () => {
   });
 
   it("draws the game trend that is ready over more practice rounds still on one day", () => {
-    const practice = rounds(6, 1).map((game) => buildRoundRecord({ ...game, id: `p${game.id}`, source: "calibration" }));
-    const games = rounds(5, 3).map((game) => buildRoundRecord({ ...game, id: `g${game.id}`, endedAt: 100 + game.endedAt, pieceCount: 6 }));
+    const practice = rounds(6, 1).map((game) => buildRoundRecord({ ...game, id: `p${game.id}`, source: "calibration", pieceCount: 4, memorizeSeconds: 10 }));
+    const games = rounds(5, 3).map((game) => buildRoundRecord({ ...game, id: `g${game.id}`, endedAt: 100 + game.endedAt, pieceCount: 6, memorizeSeconds: 10 }));
     renderWithIntl(<LabRecordSection record={record([...practice, ...games])} />);
 
     expect(within(panel(/Fig. 6.2/)).getByText("Game · 6 pieces · 10s, your most played setting with a trend · From 5 rounds")).toBeInTheDocument();
@@ -159,8 +159,8 @@ describe("LabRecordSection", () => {
   });
 
   it("says exactly what the most played setting still needs when no setting is ready", () => {
-    const practice = rounds(4, 1).map((game) => buildRoundRecord({ ...game, id: `p${game.id}`, source: "calibration" }));
-    const games = rounds(3, 2).map((game) => buildRoundRecord({ ...game, id: `g${game.id}`, endedAt: 100 + game.endedAt, pieceCount: 6 }));
+    const practice = rounds(4, 1).map((game) => buildRoundRecord({ ...game, id: `p${game.id}`, source: "calibration", pieceCount: 4, memorizeSeconds: 10 }));
+    const games = rounds(3, 2).map((game) => buildRoundRecord({ ...game, id: `g${game.id}`, endedAt: 100 + game.endedAt, pieceCount: 6, memorizeSeconds: 10 }));
     renderWithIntl(<LabRecordSection record={record([...practice, ...games])} />);
 
     expect(

@@ -75,7 +75,7 @@ export function TrendPanel({ records, summary }: RecordData) {
       ) : (
         <p className="lab-panel-desc lab-empty">
           {trend.roundsNeeded > 0
-            ? t("spark.needRounds", { count: trend.roundsNeeded, ...setting })
+            ? t("spark.needRounds", { count: trend.roundsNeeded, anotherDay: trend.daysNeeded > 0 ? "yes" : "no", ...setting })
             : t("spark.needDay", setting)}
         </p>
       )}

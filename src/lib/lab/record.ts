@@ -48,7 +48,7 @@ export interface RoundRecordV1 {
   readonly accuracy: number;
 }
 
-/** Daily and review rounds stay out of the plain trend and the personal bests. */
+/** Nothing filters by kind yet; the daily board and review phases will keep their rounds out of the trend and the bests. */
 export const ROUND_KINDS = ["normal", "daily", "review"] as const;
 export type RoundKind = (typeof ROUND_KINDS)[number];
 

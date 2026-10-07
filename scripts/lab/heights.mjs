@@ -3,21 +3,18 @@
  * Measures each reserved §06 box with its reserve switched off, for every
  * persona file at five widths and for the server render with scripts off, and
  * writes the tallest per layout tier to src/components/home/lab-heights.json.
- * labReserves.test.ts then holds the CSS reserves above those heights, so a
- * copy or layout change that outgrows a box fails a test instead of moving
- * the page.
+ * labReserves.test.ts holds the CSS reserves above those heights. The file is
+ * a snapshot: rerun this after a copy or layout change to §06, and the test
+ * then fails if a box outgrew its reserve.
  *
  *   npm run lab:personas -- --out <dir> && npm run lab:heights -- --base http://localhost:3123 --personas <dir> [--out <evidence dir>]
  */
-import { spawn } from "node:child_process";
-import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join, resolve } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
-import { importFile } from "./drive.mjs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { pathToFileURL } from "node:url";
+import { argsOf, importFile, PERSONA_ENV, runPersona } from "./drive.mjs";
 
-const HARNESS = ".claude/skills/verify-memory-chess/helpers/cdp.mjs";
 const DATA_FILE = "src/components/home/lab-heights.json";
-const PERSONA_ENV = "LAB_HEIGHTS_PERSONA";
 const RAW_FILE = "heights.json";
 const WIDTHS = [320, 360, 390, 768, 1440];
 // The CSS breakpoints the reserves change at: max-width 640px and max-width 1000px.
@@ -44,10 +41,12 @@ async function sized(page, width) {
 export default async function measure(page, { baseUrl, evidenceDir }) {
   const personaFile = process.env[PERSONA_ENV];
   const persona = JSON.parse(readFileSync(personaFile, "utf8"));
-  await sized(page, 1440);
-  await page.goto(`${baseUrl}/`);
-  await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);
-  if (persona.rounds.length > 0) await importFile(page, personaFile);
+  if (persona.rounds.length > 0) {
+    await sized(page, 1440);
+    await page.goto(`${baseUrl}/`);
+    await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);
+    await importFile(page, personaFile);
+  }
 
   const client = {};
   for (const width of WIDTHS) {
@@ -68,38 +67,16 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
   return { rounds: persona.rounds.length };
 }
 
-function valueOf(argv, flag, fallback) {
-  const index = argv.indexOf(flag);
-  return index >= 0 && argv[index + 1] ? argv[index + 1] : fallback;
-}
-
-function runPersona(file, evidence, base) {
-  mkdirSync(evidence, { recursive: true });
-  return new Promise((done) => {
-    const child = spawn(process.execPath, [HARNESS, fileURLToPath(import.meta.url), "--evidence", evidence, "--base", base], {
-      env: { ...process.env, [PERSONA_ENV]: file },
-      stdio: ["ignore", "pipe", "pipe"],
-    });
-    let log = "";
-    child.stdout.on("data", (chunk) => (log += chunk));
-    child.stderr.on("data", (chunk) => (log += chunk));
-    child.on("exit", (code) => done({ ok: code === 0, log: log.trim() }));
-  });
-}
-
 async function main() {
-  const argv = process.argv.slice(2);
-  const base = valueOf(argv, "--base", "http://localhost:3121");
-  const personas = resolve(valueOf(argv, "--personas", ".lab-personas"));
-  const out = resolve(valueOf(argv, "--out", ".lab-heights"));
+  const args = argsOf(process.argv.slice(2), ".lab-heights");
+  const { personas, out } = args;
   const names = readdirSync(personas).filter((file) => file.endsWith(".json")).map((file) => file.slice(0, -5));
 
   const measured = {};
   for (const name of names) {
-    const evidence = join(out, name);
-    const result = await runPersona(join(personas, `${name}.json`), evidence, base);
+    const result = await runPersona(name, join(personas, `${name}.json`), args, import.meta.url);
     if (!result.ok) throw new Error(`${name} failed:\n${result.log}`);
-    measured[name] = JSON.parse(readFileSync(join(evidence, RAW_FILE), "utf8"));
+    measured[name] = JSON.parse(readFileSync(join(out, name, RAW_FILE), "utf8"));
     console.log(`measured ${name}`);
   }
 

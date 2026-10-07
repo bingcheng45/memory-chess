@@ -99,11 +99,12 @@ describe("useLabData reloads", () => {
     return { store, answerNewestFirst };
   }
   const ids = (records: readonly { id: string }[]) => records.map(({ id }) => id);
+  const visibility = () => jest.spyOn(document, "visibilityState", "get");
   const setVisibility = (state: DocumentVisibilityState) => {
-    Object.defineProperty(document, "visibilityState", { configurable: true, get: () => state });
+    visibility().mockReturnValue(state);
     document.dispatchEvent(new Event("visibilitychange"));
   };
-  afterEach(() => setVisibility("visible"));
+  afterEach(() => visibility().mockRestore());
 
   it("keeps the newest read when an older one answers last, and folds rapid changes into one read", async () => {
     const rounds = [round({ id: "a" })];

@@ -22,29 +22,25 @@ export function LabUnlockStrip({ results, storage }: { results: LabResults; stor
     return t(key, { rounds, days, ...setting });
   };
 
-  if (storage === "unavailable") return <div className="lab-unlock" />;
-  if (unlocks.length === 0) {
-    return (
-      <div className="lab-unlock">
-        <p className="lab-panel-desc">{t("done")}</p>
-      </div>
+  const content =
+    unlocks.length === 0 ? (
+      <p className="lab-panel-desc">{t("done")}</p>
+    ) : (
+      <>
+        <div className="lab-panel-h">
+          <p className="lab-k" id="lab-unlock-label">
+            {t("label")}
+          </p>
+          <LabPlayLink panel="unlock" />
+        </div>
+        <ul aria-labelledby="lab-unlock-label">
+          {/* Keyed by position, so when real data arrives each line changes its text in place instead of moving. */}
+          {unlocks.map((unlock, index) => (
+            <li key={index}>{text(unlock)}</li>
+          ))}
+        </ul>
+      </>
     );
-  }
 
-  return (
-    <div className="lab-unlock">
-      <div className="lab-panel-h">
-        <p className="lab-k" id="lab-unlock-label">
-          {t("label")}
-        </p>
-        <LabPlayLink panel="unlock" />
-      </div>
-      <ul aria-labelledby="lab-unlock-label">
-        {/* Keyed by position, so when real data arrives each line changes its text in place instead of moving. */}
-        {unlocks.map((unlock, index) => (
-          <li key={index}>{text(unlock)}</li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <div className="lab-unlock">{storage !== "unavailable" && content}</div>;
 }

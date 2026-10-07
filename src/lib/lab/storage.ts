@@ -20,7 +20,7 @@ export interface LabStoreDeps {
 }
 
 export interface LabStore {
-  /** False in private windows and wherever the browser refuses storage. */
+  /** Whether rounds can be saved. Without local storage the summary is rebuilt from the round log instead. */
   isAvailable(): Promise<boolean>;
   /** Writes one round; a round whose id is already stored is left alone. Resolves false if nothing could be saved. */
   addRound(record: RoundRecordV1): Promise<boolean>;
@@ -59,7 +59,18 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
         const store = req.result.createObjectStore(STORE, { keyPath: "id" });
         store.createIndex(BY_END, "endedAt");
       };
-      req.onsuccess = () => resolve(req.result);
+      req.onsuccess = () => {
+        const db = req.result;
+        // Another tab deleting or upgrading the database, or the browser closing it, must not leave a dead handle cached.
+        db.onclose = () => {
+          opening = null;
+        };
+        db.onversionchange = () => {
+          db.close();
+          opening = null;
+        };
+        resolve(db);
+      };
       req.onerror = () => reject(req.error);
       req.onblocked = () => reject(new Error("IndexedDB open blocked"));
     }).catch((error: unknown) => {
@@ -140,9 +151,6 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     async isAvailable() {
       try {
         await open();
-        const probe = `${SUMMARY_KEY}-probe`;
-        if (!writeText(probe, "1")) return false;
-        deps.localStorage?.removeItem(probe);
         return true;
       } catch {
         return false;

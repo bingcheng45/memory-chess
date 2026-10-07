@@ -1,5 +1,5 @@
 /** @jest-environment node */
-import { IDBFactory } from "fake-indexeddb";
+import { forceCloseDatabase, IDBFactory } from "fake-indexeddb";
 import { createLabStore, PERSIST_AFTER_ROUNDS, ROUND_CAP, type LabStoreDeps } from "@/lib/lab/storage";
 import { round } from "./fixtures";
 
@@ -109,10 +109,50 @@ describe("lab store", () => {
     expect(await store.listRounds()).toEqual([]);
   });
 
-  it("reports itself unavailable when local storage throws, as in some private windows", async () => {
+  it("keeps saving rounds when only local storage throws, rebuilding the summary from the log", async () => {
     const throwing = { ...memoryStorage(), setItem: () => { throw new Error("QuotaExceededError"); } } as Storage;
+    const store = createLabStore(deps({ localStorage: throwing }));
 
-    expect(await createLabStore(deps({ localStorage: throwing })).isAvailable()).toBe(false);
+    expect(await store.isAvailable()).toBe(true);
+    expect(await store.addRound(round({ id: "a", endedAt: 1 }))).toBe(true);
+    expect(await store.addRound(round({ id: "b", endedAt: 2, localDay: "2026-10-08" }))).toBe(true);
+    expect(await store.readSummary()).toMatchObject({ rounds: 2, days: ["2026-10-07", "2026-10-08"] });
+  });
+
+  it("reopens after the browser closes the connection", async () => {
+    const factory = new IDBFactory();
+    const opened: IDBDatabase[] = [];
+    const spying = {
+      open: (name: string, version?: number) => {
+        const req = factory.open(name, version);
+        req.addEventListener("success", () => opened.push(req.result));
+        return req;
+      },
+    } as unknown as IDBFactory;
+    const store = createLabStore(deps({ indexedDB: spying }));
+    await store.addRound(round({ id: "a", endedAt: 1 }));
+
+    forceCloseDatabase(opened[0]);
+
+    expect(await store.addRound(round({ id: "b", endedAt: 2 }))).toBe(true);
+    expect((await store.listRounds()).map(({ id }) => id)).toEqual(["a", "b"]);
+    expect(opened.length).toBe(2);
+  });
+
+  it("lets another tab delete the database instead of blocking it, then reopens", async () => {
+    const factory = new IDBFactory();
+    const store = createLabStore(deps({ indexedDB: factory }));
+    await store.addRound(round({ id: "a", endedAt: 1 }));
+
+    const outcome = await new Promise<string>((resolve) => {
+      const req = factory.deleteDatabase("memory-chess-lab");
+      req.onsuccess = () => resolve("deleted");
+      req.onblocked = () => resolve("blocked");
+    });
+
+    expect(outcome).toBe("deleted");
+    expect(await store.addRound(round({ id: "b", endedAt: 2 }))).toBe(true);
+    expect((await store.listRounds()).map(({ id }) => id)).toEqual(["b"]);
   });
 
   it("remembers when the record was last backed up", () => {

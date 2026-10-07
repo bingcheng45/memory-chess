@@ -45,10 +45,22 @@ describe("deriveBests", () => {
       ready: true,
       sampleSize: 4,
       entries: [
-        { pieceCount: 4, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 9000, at: 2, rounds: 3 },
-        { pieceCount: 6, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 20000, at: 4, rounds: 1 },
+        { source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 9000, at: 2, rounds: 3 },
+        { source: "game", pieceCount: 6, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 20000, at: 4, rounds: 1 },
       ],
     });
+  });
+
+  it("keeps practice readings apart from game bests at the same setting", () => {
+    const summary = summarize([
+      round({ id: "g", endedAt: 1, placedFen: HALF }),
+      round({ id: "p", endedAt: 2, source: "calibration", solveMs: 5000 }),
+    ]);
+
+    expect(deriveBests(summary).entries).toEqual([
+      { source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 50, correct: 2, solveMs: 20000, at: 1, rounds: 1 },
+      { source: "calibration", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 5000, at: 2, rounds: 1 },
+    ]);
   });
 
   it("is not ready with no rounds", () => {
@@ -129,7 +141,7 @@ describe("parseSummary", () => {
 
     expect(parseSummary(JSON.parse(JSON.stringify(summary)))).toEqual(summary);
     expect(parseSummary({ ...summary, squareShown: [1, 2] })).toBeNull();
-    expect(parseSummary({ ...summary, v: 2 })).toBeNull();
+    expect(parseSummary({ ...summary, v: 1 })).toBeNull();
   });
 
   it("counts squares and types from the outcome string", () => {

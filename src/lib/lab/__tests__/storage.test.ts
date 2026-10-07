@@ -81,6 +81,20 @@ describe("lab store", () => {
     expect(await store.readSummary()).toMatchObject({ rounds: 1 });
   });
 
+  it("rebuilds a summary written in an older shape from the log", async () => {
+    const storage = memoryStorage();
+    const store = createLabStore(deps({ localStorage: storage }));
+    await store.addRound(round({ id: "a", endedAt: 1 }));
+    await store.addRound(round({ id: "b", endedAt: 2, source: "calibration" }));
+    const old = { ...JSON.parse(storage.getItem("memory-chess-lab-summary") as string), v: 1, rounds: 99 };
+    storage.setItem("memory-chess-lab-summary", JSON.stringify(old));
+
+    const summary = await store.readSummary();
+
+    expect(summary).toMatchObject({ v: 2, rounds: 2 });
+    expect(Object.keys(summary.bests)).toEqual(["game:4x10", "calibration:4x10"]);
+  });
+
   it(`drops the oldest rounds past ${ROUND_CAP}`, async () => {
     const store = createLabStore(deps());
     const many = Array.from({ length: ROUND_CAP + 2 }, (_, index) => round({ id: `r${index}`, endedAt: index }));
@@ -132,7 +146,7 @@ describe("lab store", () => {
     const store = createLabStore(deps({ indexedDB: spying }));
     await store.addRound(round({ id: "a", endedAt: 1 }));
 
-    forceCloseDatabase(opened[0]);
+    forceCloseDatabase(opened[0] as never);
 
     expect(await store.addRound(round({ id: "b", endedAt: 2 }))).toBe(true);
     expect((await store.listRounds()).map(({ id }) => id)).toEqual(["a", "b"]);

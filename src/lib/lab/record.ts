@@ -4,7 +4,11 @@ import { GAME_CONFIG_RULES, presetIdFor, type PresetId } from "@/lib/game/config
 export type PieceLetter = "k" | "q" | "r" | "b" | "n" | "p";
 export const PIECE_LETTERS: readonly PieceLetter[] = ["k", "q", "r", "b", "n", "p"];
 
-/** Calibration rounds are recorded but never touch the rating, history, streak or leaderboard. */
+/**
+ * Calibration rounds never touch the game store's rating, history or streak, or
+ * the leaderboard. The lab streak counts both sources, since it measures the
+ * practice habit; personal bests are kept per source.
+ */
 export type RoundSource = "game" | "calibration";
 
 /** One square's outcome: empty, correct, missed, wrong piece on a target square, extra piece. */

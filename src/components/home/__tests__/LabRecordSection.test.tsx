@@ -58,7 +58,7 @@ describe("LabRecordSection", () => {
     expect(within(panel(/Fig. 6.2/)).getByText("3 more rounds at 4 pieces, 10s draws your trend.")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.4/)).getByText("Play on one more day to start a streak.")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.7/)).getByText("About 8 more rounds until a piece type has 20 sightings.")).toBeInTheDocument();
-    expect(within(panel(/Fig. 6.6/)).getByText("4 pieces · 10s")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.6/)).getByText("Game · 4 pieces · 10s")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.6/)).getByText("100% · rebuilt in 15.0s")).toBeInTheDocument();
   });
 
@@ -74,6 +74,15 @@ describe("LabRecordSection", () => {
     expect(within(panel(/Fig. 6.7/)).getByText("100%")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.7/)).getAllByText("10/20 seen")).toHaveLength(2);
     expect(within(panel(/Fig. 6.7/)).queryByText("Pawn")).toBeNull();
+  });
+
+  it("labels practice bests apart from game bests at the same setting", () => {
+    const practice = buildRoundRecord({ ...rounds(1, 1)[0], id: "p", source: "calibration", pieceCount: 4, memorizeSeconds: 10, solveMs: 9000 });
+    renderWithIntl(<LabRecordSection record={record([...rounds(2, 1), practice])} />);
+
+    expect(within(panel(/Fig. 6.6/)).getByText("Game · 4 pieces · 10s")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.6/)).getByText("Practice · 4 pieces · 10s")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.6/)).getByText("100% · rebuilt in 9.0s")).toBeInTheDocument();
   });
 
   it("imports a file and reports what it added", async () => {

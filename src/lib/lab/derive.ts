@@ -1,5 +1,5 @@
-import { configKey, PIECE_LETTERS, type PieceLetter, type RoundConfig, type RoundRecordV1 } from "./record";
-import type { LabSummaryV1, PersonalBest } from "./summary";
+import { configKey, PIECE_LETTERS, type PieceLetter, type RoundConfig, type RoundRecordV1, type RoundSource } from "./record";
+import type { LabSummary, PersonalBest } from "./summary";
 
 /** Below these a panel shows how much more data it needs instead of a number. */
 export const LAB_THRESHOLDS = {
@@ -68,6 +68,7 @@ export function deriveStreak(days: readonly string[], today: string): StreakResu
 }
 
 export interface BestEntry extends PersonalBest {
+  readonly source: RoundSource;
   readonly pieceCount: number;
   readonly memorizeSeconds: number;
 }
@@ -78,13 +79,21 @@ export interface BestsResult {
   readonly entries: readonly BestEntry[];
 }
 
-export function deriveBests(summary: LabSummaryV1): BestsResult {
+const SOURCE_ORDER: readonly RoundSource[] = ["game", "calibration"];
+
+export function deriveBests(summary: LabSummary): BestsResult {
   const entries = Object.entries(summary.bests)
     .map(([key, best]) => {
-      const [pieceCount, memorizeSeconds] = key.split("x").map(Number);
-      return { ...best, pieceCount, memorizeSeconds };
+      const [source, config] = key.split(":");
+      const [pieceCount, memorizeSeconds] = config.split("x").map(Number);
+      return { ...best, source: source as RoundSource, pieceCount, memorizeSeconds };
     })
-    .sort((a, b) => a.pieceCount - b.pieceCount || b.memorizeSeconds - a.memorizeSeconds);
+    .sort(
+      (a, b) =>
+        SOURCE_ORDER.indexOf(a.source) - SOURCE_ORDER.indexOf(b.source) ||
+        a.pieceCount - b.pieceCount ||
+        b.memorizeSeconds - a.memorizeSeconds,
+    );
   return { ready: entries.length > 0, sampleSize: summary.rounds, entries };
 }
 
@@ -145,7 +154,7 @@ function roundsToReach(threshold: number, have: number, rounds: number): number 
   return Math.ceil(((threshold - have) * rounds) / have);
 }
 
-export function deriveTypeRecall(summary: LabSummaryV1): TypeRecallResult {
+export function deriveTypeRecall(summary: LabSummary): TypeRecallResult {
   const types = PIECE_LETTERS.map((type) => {
     const shown = summary.typeShown[type] ?? 0;
     return {
@@ -191,7 +200,7 @@ function sumLine(values: readonly number[], inLine: (index: number) => boolean):
   return values.reduce((sum, value, index) => (inLine(index) ? sum + value : sum), 0);
 }
 
-export function deriveMissMap(summary: LabSummaryV1): MissMapResult {
+export function deriveMissMap(summary: LabSummary): MissMapResult {
   const { squareShown, squareMissed } = summary;
   const line = (inLine: (index: number) => boolean) => cell(sumLine(squareShown, inLine), sumLine(squareMissed, inLine));
   const files = Array.from({ length: 8 }, (_, file) => line((index) => index % 8 === file));

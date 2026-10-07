@@ -1,4 +1,4 @@
-import { configKey, PIECE_LETTERS, type PieceLetter, type RoundRecordV1, type TypeCounts } from "./record";
+import { configKey, PIECE_LETTERS, type PieceLetter, type RoundRecordV1, type RoundSource, type TypeCounts } from "./record";
 
 export interface PersonalBest {
   readonly accuracy: number;
@@ -9,15 +9,21 @@ export interface PersonalBest {
   readonly rounds: number;
 }
 
+/** Bests key: a practice reading never sets a game best at the same setting. */
+export function bestKey(source: RoundSource, config: RoundRecordV1["config"]): string {
+  return `${source}:${configKey(config)}`;
+}
+
 /**
  * Lifetime counters kept beside the capped round log, so streak days, bests
  * and the miss map survive eviction. Every field is derivable from the log.
  */
-export interface LabSummaryV1 {
-  readonly v: 1;
+export interface LabSummary {
+  readonly v: 2;
   readonly rounds: number;
   /** Distinct local days with a completed round, sorted. */
   readonly days: readonly string[];
+  /** Keyed by bestKey. */
   readonly bests: Readonly<Record<string, PersonalBest>>;
   /** Per square, a8 first: rounds where the target had a piece there, and where it was missed. */
   readonly squareShown: readonly number[];
@@ -28,8 +34,8 @@ export interface LabSummaryV1 {
 
 const MAX_DAYS = 400;
 
-export const EMPTY_SUMMARY: LabSummaryV1 = {
-  v: 1,
+export const EMPTY_SUMMARY: LabSummary = {
+  v: 2,
   rounds: 0,
   days: [],
   bests: {},
@@ -53,8 +59,8 @@ function beats(record: RoundRecordV1, best: PersonalBest | undefined): boolean {
   return record.accuracy > best.accuracy || (record.accuracy === best.accuracy && record.solveMs < best.solveMs);
 }
 
-export function addToSummary(summary: LabSummaryV1, record: RoundRecordV1): LabSummaryV1 {
-  const key = configKey(record.config);
+export function addToSummary(summary: LabSummary, record: RoundRecordV1): LabSummary {
+  const key = bestKey(record.source, record.config);
   const previous = summary.bests[key];
   const best: PersonalBest = beats(record, previous)
     ? { accuracy: record.accuracy, correct: record.correct, solveMs: record.solveMs, at: record.endedAt, rounds: 0 }
@@ -64,7 +70,7 @@ export function addToSummary(summary: LabSummaryV1, record: RoundRecordV1): LabS
     : [...summary.days, record.localDay].sort().slice(-MAX_DAYS);
 
   return {
-    v: 1,
+    v: 2,
     rounds: summary.rounds + 1,
     days,
     bests: { ...summary.bests, [key]: { ...best, rounds: (previous?.rounds ?? 0) + 1 } },
@@ -77,7 +83,7 @@ export function addToSummary(summary: LabSummaryV1, record: RoundRecordV1): LabS
   };
 }
 
-export function summarize(records: readonly RoundRecordV1[]): LabSummaryV1 {
+export function summarize(records: readonly RoundRecordV1[]): LabSummary {
   return [...records].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, EMPTY_SUMMARY);
 }
 
@@ -90,11 +96,11 @@ const isTypeCounts = (value: unknown): value is TypeCounts =>
   Object.entries(value).every(([key, count]) => PIECE_LETTERS.includes(key as PieceLetter) && isCount(count));
 
 /** A stored summary, or null when it is missing, from another version, or damaged. */
-export function parseSummary(raw: unknown): LabSummaryV1 | null {
+export function parseSummary(raw: unknown): LabSummary | null {
   if (typeof raw !== "object" || raw === null) return null;
   const summary = raw as Record<string, unknown>;
   const valid =
-    summary.v === 1 &&
+    summary.v === 2 &&
     isCount(summary.rounds) &&
     Array.isArray(summary.days) &&
     summary.days.every((day) => typeof day === "string") &&
@@ -104,5 +110,5 @@ export function parseSummary(raw: unknown): LabSummaryV1 | null {
     isCountArray(summary.squareMissed) &&
     isTypeCounts(summary.typeShown) &&
     isTypeCounts(summary.typeMissed);
-  return valid ? (raw as LabSummaryV1) : null;
+  return valid ? (raw as LabSummary) : null;
 }

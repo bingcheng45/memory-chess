@@ -404,9 +404,9 @@
         "bests": {
           "fig": "Fig. 6.6 · Personal bests",
           "title": "Your best reading per setting.",
-          "desc": "Bests are kept per setting, because 6 pieces and 20 pieces are different tests.",
+          "desc": "Bests are kept per setting, because 6 pieces and 20 pieces are different tests. Practice readings on this page stay apart from games.",
           "empty": "Your best reading for each setting appears after your first round.",
-          "setting": "{pieces} pieces · {seconds}s",
+          "setting": "{source, select, calibration {Practice} other {Game}} · {pieces} pieces · {seconds}s",
           "first": "first reading",
           "reading": "{accuracy}% · rebuilt in {seconds}s"
         },

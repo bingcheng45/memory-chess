@@ -11,13 +11,13 @@ import {
   type MissCell,
 } from "@/lib/lab/derive";
 import type { PieceLetter, RoundRecordV1 } from "@/lib/lab/record";
-import type { LabSummaryV1 } from "@/lib/lab/summary";
+import type { LabSummary } from "@/lib/lab/summary";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { AccuracySparkline, MissLines, MissMap, StreakGrid } from "./LabCharts";
 
 export interface RecordData {
   readonly records: readonly RoundRecordV1[];
-  readonly summary: LabSummaryV1;
+  readonly summary: LabSummary;
   readonly today: string;
 }
 
@@ -177,8 +177,8 @@ export function BestsPanel({ summary }: RecordData) {
         <>
           <dl className="lab-bests">
             {bests.entries.map((best) => (
-              <div key={`${best.pieceCount}x${best.memorizeSeconds}`}>
-                <dt>{t("bests.setting", { pieces: best.pieceCount, seconds: best.memorizeSeconds })}</dt>
+              <div key={`${best.source}:${best.pieceCount}x${best.memorizeSeconds}`}>
+                <dt>{t("bests.setting", { source: best.source, pieces: best.pieceCount, seconds: best.memorizeSeconds })}</dt>
                 <dd>
                   {t("bests.reading", { accuracy: best.accuracy, seconds: (best.solveMs / 1000).toFixed(1) })}
                   {best.rounds === 1 && <span className="lab-note"> · {t("bests.first")}</span>}

@@ -5,7 +5,7 @@ import { trackEvent } from "@/lib/analytics/events";
 import { localDayOf, type RoundRecordV1 } from "@/lib/lab/record";
 import { LAB_RECORD_CHANGED } from "@/lib/lab/recordRound";
 import { labStore } from "@/lib/lab/storage";
-import { EMPTY_SUMMARY, type LabSummaryV1 } from "@/lib/lab/summary";
+import { EMPTY_SUMMARY, type LabSummary } from "@/lib/lab/summary";
 import { buildExport, parseImport } from "@/lib/lab/transfer";
 
 export type LabStorageState = "loading" | "available" | "unavailable";
@@ -17,7 +17,7 @@ export type ImportOutcome =
 export interface LabRecord {
   readonly storage: LabStorageState;
   readonly records: readonly RoundRecordV1[];
-  readonly summary: LabSummaryV1;
+  readonly summary: LabSummary;
   readonly lastBackup: number | null;
   readonly today: string;
   download(): Promise<void>;
@@ -30,7 +30,7 @@ const EXPORT_FILE = "memory-chess-lab-record.json";
 export function useLabRecord(): LabRecord {
   const [storage, setStorage] = useState<LabStorageState>("loading");
   const [records, setRecords] = useState<readonly RoundRecordV1[]>([]);
-  const [summary, setSummary] = useState<LabSummaryV1>(EMPTY_SUMMARY);
+  const [summary, setSummary] = useState<LabSummary>(EMPTY_SUMMARY);
   const [lastBackup, setLastBackup] = useState<number | null>(null);
   const [today, setToday] = useState("");
 

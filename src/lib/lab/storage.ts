@@ -1,5 +1,5 @@
 import type { RoundRecordV1 } from "./record";
-import { addToSummary, parseSummary, summarize, type LabSummaryV1 } from "./summary";
+import { addToSummary, parseSummary, summarize, type LabSummary } from "./summary";
 
 const DB_NAME = "memory-chess-lab";
 const DB_VERSION = 1;
@@ -27,7 +27,7 @@ export interface LabStore {
   listRounds(): Promise<RoundRecordV1[]>;
   /** Adds the rounds whose ids are new and returns how many that was, so a second import adds 0. */
   mergeRounds(records: readonly RoundRecordV1[]): Promise<number>;
-  readSummary(): Promise<LabSummaryV1>;
+  readSummary(): Promise<LabSummary>;
   clear(): Promise<void>;
   readLastBackup(): number | null;
   markBackedUp(at: number): void;
@@ -98,7 +98,7 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     }
   }
 
-  function storedSummary(): LabSummaryV1 | null {
+  function storedSummary(): LabSummary | null {
     try {
       return parseSummary(JSON.parse(readText(SUMMARY_KEY) ?? "null"));
     } catch {
@@ -142,7 +142,7 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     }
   }
 
-  async function saveSummary(next: LabSummaryV1): Promise<void> {
+  async function saveSummary(next: LabSummary): Promise<void> {
     writeText(SUMMARY_KEY, JSON.stringify(next));
     await requestPersistence(next.rounds);
   }

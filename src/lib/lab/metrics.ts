@@ -1,5 +1,5 @@
 import type { PieceSymbol } from "chess.js";
-import { hasFigure, readinessOf, LAB_THRESHOLDS, type Need, type Readiness, type Thresholds } from "./readiness";
+import { hasFigure, readinessOf, LAB_THRESHOLDS, type Need, type Readiness } from "./readiness";
 import { LAB_SOURCES, localDayOf, PIECE_LETTERS, settingKey, type LabSource, type RoundConfig, type RoundRecordV1 } from "./record";
 import type { LabSummary, PersonalBest } from "./summary";
 
@@ -24,7 +24,7 @@ export interface MetricDef<TValue> {
    * Compared with the measure the metric names, not with every cell: typeRecall's exposures with the most-shown type
    * other than the king, missMap's with the thinnest file or rank. Single cells carry their own `ready`.
    */
-  readonly thresholds: Thresholds;
+  readonly thresholds: Need;
   compute(input: LabInput): MetricResult<TValue>;
 }
 
@@ -33,7 +33,7 @@ function measured<TValue>(readiness: Readiness, value: () => TValue): MetricResu
 }
 
 /** Staleness reads the player's last day of play, the same for every metric. */
-function readinessFor({ summary, today }: LabInput, measure: { sampleSize: number; have: Need; thresholds: Thresholds }): Readiness {
+function readinessFor({ summary, today }: LabInput, measure: { sampleSize: number; have: Need; thresholds: Need }): Readiness {
   return readinessOf({ ...measure, lastDay: summary.days.at(-1) ?? null, today });
 }
 

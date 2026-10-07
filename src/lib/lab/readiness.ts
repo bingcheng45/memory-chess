@@ -22,19 +22,17 @@ export interface Need {
   readonly exposures?: number;
 }
 
-export type Thresholds = Need;
-
 export interface Readiness {
   readonly state: ReadinessState;
   readonly sampleSize: number;
   readonly need?: Need;
 }
 
-export interface ReadinessInput {
+interface ReadinessInput {
   /** What the figure is built from; zero means empty. */
   readonly sampleSize: number;
   readonly have: Need;
-  readonly thresholds: Thresholds;
+  readonly thresholds: Need;
   readonly lastDay: string | null;
   /** The client's local day, or "" before it is known. */
   readonly today: string;
@@ -48,7 +46,7 @@ const utcDay = (day: string) => {
   return Date.UTC(year, month - 1, date);
 };
 
-export const daysBetween = (from: string, to: string) => Math.round((utcDay(to) - utcDay(from)) / DAY_MS);
+const daysBetween = (from: string, to: string) => Math.round((utcDay(to) - utcDay(from)) / DAY_MS);
 
 /** Stale only replaces ready: a record that never warmed up still needs its missing rounds, however old it is. */
 export function readinessOf({ sampleSize, have, thresholds, lastDay, today }: ReadinessInput): Readiness {

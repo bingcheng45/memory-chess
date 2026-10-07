@@ -395,3 +395,27 @@ describe("ArticlePage markup", () => {
     expect(container.querySelectorAll("[hidden], [style*='opacity'], [style*='display'], [style*='visibility']")).toHaveLength(0);
   });
 });
+
+describe("ArticlePage guide links", () => {
+  const withGuides: Article = {
+    ...article,
+    relatedGuides: [{ slug: "chess-memory-training", anchor: "chess memory training" }],
+  };
+
+  it("links an English article to its guides by their anchors", () => {
+    renderPage(withGuides);
+
+    expect(screen.getByRole("heading", { name: "Train it with a guide" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "chess memory training" })).toHaveAttribute(
+      "href",
+      "/learn/chess-memory-training",
+    );
+  });
+
+  it("leaves the English-only guide list off a translated article", () => {
+    render(<ArticlePage article={withGuides} nextArticle={next} />, { locale: "de" });
+
+    expect(screen.queryByRole("link", { name: "chess memory training" })).not.toBeInTheDocument();
+  });
+});
+

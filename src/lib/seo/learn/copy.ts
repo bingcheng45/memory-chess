@@ -21,6 +21,10 @@ export const LEARN_ARTICLE_COPY = {
   whatToLearnNext: "What to learn next",
   commonQuestions: "Common questions",
   referenceLinks: "Reference links",
+  closingTitle: "Run the drill now",
+  closingBody:
+    "One round takes under a minute. You get an accuracy score and a map of the squares you missed.",
+  furtherReading: "Further reading",
 };
 
 type LearnGoalCopy = { label: string; description: string; accent: string };

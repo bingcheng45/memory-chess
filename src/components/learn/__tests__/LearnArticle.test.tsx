@@ -278,3 +278,67 @@ describe("LearnArticleRich", () => {
     );
   });
 });
+
+describe("LearnArticleRich closing play action", () => {
+  it.each(EN_LEARN_PAGES.map((page) => page.slug))(
+    "puts a play link after the last section of %s",
+    (slug) => {
+      const page = getLearnPageBySlug(slug);
+      const { container } = render(
+        <LearnArticleRich page={page} goals={EN_LEARN_GOALS} allPages={EN_LEARN_PAGES} />,
+      );
+
+      const lastSection = container.querySelector(`section#${page.sections.at(-1)!.id}`)!;
+      const closing = container.querySelector('[data-learn-cta="closing-primary"]')!;
+
+      expect(closing).toHaveAttribute("href", page.ctaHref);
+      expect(closing).toHaveTextContent(page.ctaLabel);
+      expect(lastSection.compareDocumentPosition(closing) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+      expect(screen.getByRole("heading", { name: "Run the drill now" })).toBeInTheDocument();
+    },
+  );
+
+  it("starts the blindfold guide's closing round at 2 pieces and 10 seconds", () => {
+    const { container } = render(
+      <LearnArticleRich
+        page={getLearnPageBySlug("blindfold-chess-training-for-beginners")}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+      />,
+    );
+
+    expect(container.querySelector('[data-learn-cta="closing-primary"]')).toHaveAttribute(
+      "href",
+      "/game?pieceCount=2&memorizeTime=10",
+    );
+  });
+});
+
+describe("LearnArticleRich further reading", () => {
+  it("links the blindfold guide to the Judit Polgár article by a descriptive anchor", () => {
+    render(
+      <LearnArticleRich
+        page={getLearnPageBySlug("blindfold-chess-training-for-beginners")}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+      />,
+    );
+
+    expect(screen.getByRole("link", { name: "how Judit Polgár played blindfold at seven" })).toHaveAttribute(
+      "href",
+      "/articles/judit-polgar",
+    );
+  });
+
+  it("leaves the section off a guide with nothing to read next", () => {
+    render(
+      <LearnArticleRich
+        page={getLearnPageBySlug("how-to-get-better-at-chess-for-beginners")}
+        goals={EN_LEARN_GOALS}
+        allPages={EN_LEARN_PAGES}
+      />,
+    );
+
+    expect(screen.queryByRole("heading", { name: "Further reading" })).not.toBeInTheDocument();
+  });
+});

@@ -4,7 +4,7 @@ import type { LearnGuide } from "../schema";
 const guide: LearnGuide = {
   slug: "blindfold-chess-training-for-beginners",
   goal: "visualization",
-  title: "Blindfold Chess Training for Beginners",
+  title: "Blindfold Chess Training: A 4-Stage Beginner Plan",
   h1: "Blindfold chess training for beginners, in four stages with a pass mark each",
   description:
     "A four-stage route into blindfold chess, from holding two kings without a board to a full game with the score sheet in view.",
@@ -223,6 +223,9 @@ const guide: LearnGuide = {
       slug: "chess-calculation-exercises-for-beginners",
       reason: "For keeping the starting position steady two moves into a line.",
     },
+  ],
+  furtherReading: [
+    { slug: "judit-polgar", anchor: "how Judit Polgár played blindfold at seven" },
   ],
   sources: [],
 };

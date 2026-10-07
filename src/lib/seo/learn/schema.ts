@@ -75,6 +75,12 @@ export type LearnRelatedArticle = {
   reason: string;
 };
 
+/** An article the guide sends readers on to, linked with `anchor` as its text. */
+export type LearnFurtherReading = {
+  slug: string;
+  anchor: string;
+};
+
 export type LearnTableOfContentsItem = {
   id: string;
   label: string;
@@ -122,6 +128,7 @@ export type LearnGuide = {
   sections: LearnSection[];
   faq: LearnFaq[];
   relatedArticles: LearnRelatedArticle[];
+  furtherReading?: LearnFurtherReading[];
   sources: LearnSource[];
 };
 

@@ -68,12 +68,15 @@ function useRecordReading(state: RoundState): void {
     recorded.current = state;
     void recordLabRound({
       source: "calibration",
+      startSource: "calibration",
       pieceCount: CALIBRATION_RULES.pieceCount,
       memorizeSeconds: STUDY_SECONDS,
       targetFen: labPositionToFen(state.target),
       placedFen: labPositionToFen(state.placed),
       memorizeMs: CALIBRATION_RULES.studyMs,
       solveMs: Math.round(state.rebuildMs),
+      placements: state.log.placements,
+      removals: state.log.removals,
     });
   }, [state]);
 }

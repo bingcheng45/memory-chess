@@ -9,6 +9,7 @@ import {
   squareVerdict,
   suggestTier,
   type LabPosition,
+  type RoundAction,
   type RoundState,
 } from "@/lib/home/calibration";
 
@@ -166,13 +167,14 @@ describe("roundReducer", () => {
       placed: {},
       selected: null,
       startedAt: 1000,
+      log: { startedAt: 1000, placements: [], removals: 0 },
     });
   });
 
   it("places the selected piece, and a second tap with it lifts the piece again", () => {
     const selected = roundReducer(rebuilding(), { type: "select", piece: WK });
-    const placed = roundReducer(selected, { type: "tapSquare", square: "g1" });
-    const lifted = roundReducer(placed, { type: "tapSquare", square: "g1" });
+    const placed = roundReducer(selected, { type: "tapSquare", square: "g1", now: 2000 });
+    const lifted = roundReducer(placed, { type: "tapSquare", square: "g1", now: 2000 });
 
     expect(placed).toMatchObject({ placed: { g1: WK } });
     expect(lifted).toMatchObject({ placed: {} });
@@ -181,11 +183,11 @@ describe("roundReducer", () => {
   it("swaps a placed piece for a different selected one", () => {
     const withKing = roundReducer(
       roundReducer(rebuilding(), { type: "select", piece: WK }),
-      { type: "tapSquare", square: "g1" },
+      { type: "tapSquare", square: "g1", now: 2000 },
     );
     const swapped = roundReducer(
       roundReducer(withKing, { type: "select", piece: BQ }),
-      { type: "tapSquare", square: "g1" },
+      { type: "tapSquare", square: "g1", now: 2000 },
     );
 
     expect(swapped).toMatchObject({ placed: { g1: BQ } });
@@ -194,7 +196,7 @@ describe("roundReducer", () => {
   it("ignores a tap on an empty square with nothing selected", () => {
     const state = rebuilding();
 
-    expect(roundReducer(state, { type: "tapSquare", square: "a1" })).toBe(state);
+    expect(roundReducer(state, { type: "tapSquare", square: "a1", now: 2000 })).toBe(state);
   });
 
   it("toggles the palette selection off when the same piece is picked twice", () => {
@@ -208,7 +210,7 @@ describe("roundReducer", () => {
   it("scores on submit and records the rebuild time", () => {
     const placed = roundReducer(
       roundReducer(rebuilding(), { type: "select", piece: WK }),
-      { type: "tapSquare", square: "g1" },
+      { type: "tapSquare", square: "g1", now: 2000 },
     );
     const scored = roundReducer(placed, { type: "submit", now: 13500 });
 
@@ -222,7 +224,7 @@ describe("roundReducer", () => {
   it("refuses a second white king and a third white rook", () => {
     const WR = { color: "white", type: "rook" } as const;
     const tap = (state: RoundState, square: "a1" | "b1" | "c1") =>
-      roundReducer(state, { type: "tapSquare", square });
+      roundReducer(state, { type: "tapSquare", square, now: 2000 });
     const kings = tap(tap(roundReducer(rebuilding(), { type: "select", piece: WK }), "a1"), "b1");
     const rooks = tap(tap(tap(roundReducer(rebuilding(), { type: "select", piece: WR }), "a1"), "b1"), "c1");
 
@@ -234,11 +236,11 @@ describe("roundReducer", () => {
   it("lets the last allowed piece replace a different one", () => {
     const withQueen = roundReducer(
       roundReducer(rebuilding(), { type: "select", piece: BQ }),
-      { type: "tapSquare", square: "a1" },
+      { type: "tapSquare", square: "a1", now: 2000 },
     );
     const swapped = roundReducer(
       roundReducer(withQueen, { type: "select", piece: WK }),
-      { type: "tapSquare", square: "a1" },
+      { type: "tapSquare", square: "a1", now: 2000 },
     );
 
     expect(swapped).toMatchObject({ placed: { a1: WK } });
@@ -247,6 +249,33 @@ describe("roundReducer", () => {
   it("ignores placement before the board clears", () => {
     const studying = roundReducer({ phase: "idle" }, { type: "start", target });
 
-    expect(roundReducer(studying, { type: "tapSquare", square: "g1" })).toBe(studying);
+    expect(roundReducer(studying, { type: "tapSquare", square: "g1", now: 2000 })).toBe(studying);
+  });
+
+  it("logs each placement in the order played and counts every piece lifted, swapped or cleared", () => {
+    const steps: RoundAction[] = [
+      { type: "select", piece: WK },
+      { type: "tapSquare", square: "g1", now: 1400 },
+      { type: "select", piece: BQ },
+      { type: "tapSquare", square: "d6", now: 2650 },
+      { type: "tapSquare", square: "d6", now: 3000 },
+      { type: "tapSquare", square: "g1", now: 3500 },
+      { type: "select", piece: WK },
+      { type: "tapSquare", square: "a1", now: 4200 },
+      { type: "clear" },
+      { type: "tapSquare", square: "g1", now: 5000 },
+      { type: "submit", now: 6000 },
+    ];
+
+    const scored = steps.reduce(roundReducer, rebuilding());
+
+    expect(scored).toMatchObject({
+      phase: "scored",
+      log: {
+        startedAt: 1000,
+        placements: [[400, 62, "K"], [1650, 19, "q"], [2500, 62, "q"], [3200, 56, "K"], [4000, 62, "K"]],
+        removals: 4,
+      },
+    });
   });
 });

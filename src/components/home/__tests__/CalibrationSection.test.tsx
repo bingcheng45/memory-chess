@@ -3,6 +3,13 @@ import { CalibrationSection } from "@/components/home/CalibrationSection";
 import { LibrarySection, LIBRARY_GUIDES } from "@/components/home/LibrarySection";
 import { LEARN_SLUGS } from "@/lib/seo/learn";
 import { recordLabRound } from "@/lib/lab/recordRound";
+import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
+
+const LETTERS: Record<string, string> = { king: "k", queen: "q", rook: "r", bishop: "b", knight: "n", pawn: "p" };
+const pieceLetter = (name: string) => {
+  const [color, type] = name.split(" ");
+  return color === "white" ? LETTERS[type].toUpperCase() : LETTERS[type];
+};
 
 jest.mock("@/lib/lab/recordRound", () => ({ recordLabRound: jest.fn(() => Promise.resolve(true)) }));
 
@@ -42,8 +49,11 @@ describe("CalibrationSection", () => {
     expect(screen.getByText("1 / 6")).toBeInTheDocument();
     expect(recordLabRound).toHaveBeenCalledTimes(1);
     expect(recordLabRound).toHaveBeenCalledWith(
-      expect.objectContaining({ source: "calibration", pieceCount: 6, memorizeSeconds: 10, memorizeMs: 10000 }),
+      expect.objectContaining({ source: "calibration", startSource: "calibration", pieceCount: 6, memorizeSeconds: 10, memorizeMs: 10000, removals: 0 }),
     );
+    expect(jest.mocked(recordLabRound).mock.calls[0][0].placements).toEqual([
+      [expect.any(Number), BOARD_SQUARES.indexOf(square as SquareName), pieceLetter(pieceName)],
+    ]);
     expect(screen.getByText("Wrong pieces").nextSibling).toHaveTextContent("5");
     expect(screen.getByText(/start on Easy, 2 pieces at 10s/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Play Easy/ })).toHaveAttribute(

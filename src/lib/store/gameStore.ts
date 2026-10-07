@@ -12,6 +12,9 @@ import {
 } from '@/lib/game/configPrefill';
 import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
 import { trackEvent, type RoundSource } from '@/lib/analytics/events';
+import { now as monotonicNow } from '@/lib/game/clock';
+import type { SquareName } from '@/lib/game/board';
+import { logPlacement, logRemovals, startPlacementLog } from '@/lib/lab/placements';
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & { 
@@ -182,6 +185,7 @@ export const useGameStore = create<GameStore>()(
             isPlaying: true,
             pieceCount,
             memorizeTime,
+            startSource: source,
             originalPosition: memorizationPosition.fen(),
             skillRating: get().gameState.skillRating || 1000,
             streak: get().gameState.streak || 0,
@@ -394,6 +398,7 @@ export const useGameStore = create<GameStore>()(
             isSolutionPhase: true,
             timeElapsed: 0, // Reset timer for solution phase
             solutionStartTime: now,
+            placementLog: startPlacementLog(monotonicNow()),
           },
           gamePhase: GamePhase.SOLUTION,
         }));
@@ -484,12 +489,15 @@ export const useGameStore = create<GameStore>()(
         // Loaded on demand so the lab storage stays out of the /game bundle until a round ends.
         const facts = {
           source: 'game',
+          startSource: gameState.startSource ?? 'link',
           pieceCount: gameState.pieceCount,
           memorizeSeconds: gameState.memorizeTime,
           targetFen: gameState.originalPosition,
           placedFen: userPosition,
           memorizeMs: Math.round((gameState.actualMemorizeTime ?? gameState.memorizeTime) * 1000),
           solveMs: Math.round(completionTime * 1000),
+          placements: gameState.placementLog?.placements,
+          removals: gameState.placementLog?.removals,
         } as const;
         void import('@/lib/lab/recordRound').then(({ recordLabRound }) => recordLabRound(facts)).catch(() => {});
       },
@@ -522,11 +530,14 @@ export const useGameStore = create<GameStore>()(
           }
 
           // Update the state
+          const placedAt = monotonicNow();
           set((state) => {
+            const { placementLog } = state.gameState;
             const newState = {
               gameState: {
                 ...state.gameState,
                 userPosition: chess.fen(),
+                placementLog: placementLog && logPlacement(placementLog, placedAt, square as SquareName, piece),
               },
             };
             console.log('Updated state after placing piece:', newState);
@@ -549,14 +560,16 @@ export const useGameStore = create<GameStore>()(
           console.log(`Removing piece from ${square}`);
           
           // Remove the piece
-          chess.remove(square as Square);
+          const removed = chess.remove(square as Square);
           
           // Update the state
           set((state) => {
+            const { placementLog } = state.gameState;
             const newState = {
               gameState: {
                 ...state.gameState,
                 userPosition: chess.fen(),
+                placementLog: placementLog && logRemovals(placementLog, removed ? 1 : 0),
               },
             };
             console.log('Updated state after removing piece:', newState);

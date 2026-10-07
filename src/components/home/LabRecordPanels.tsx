@@ -49,11 +49,7 @@ export function TrendPanel({ records, summary }: RecordData) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const trend = useMemo(() => deriveTrend(records), [records]);
-  const setting = trend.setting && {
-    source: trend.setting.source,
-    pieces: trend.setting.pieceCount,
-    seconds: trend.setting.memorizeSeconds,
-  };
+  const setting = trend.setting;
 
   return (
     <div className="lab-panel lab-p-spark">

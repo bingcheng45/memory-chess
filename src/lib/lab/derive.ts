@@ -87,9 +87,7 @@ export function deriveBests(summary: LabSummary): BestsResult {
   return { ready: entries.length > 0, sampleSize: summary.rounds, entries };
 }
 
-export interface TrendSetting extends Pick<RoundConfig, "pieceCount" | "memorizeSeconds"> {
-  readonly source: LabSource;
-}
+export type TrendSetting = Pick<RoundConfig, "pieceCount" | "memorizeSeconds"> & { readonly source: LabSource };
 
 export interface TrendResult {
   readonly ready: boolean;

@@ -52,7 +52,6 @@ export function computeSessions(input: LabInput): MetricResult<SessionsValue> {
 }
 
 export interface SpanStep {
-  /** When the session ended. */
   readonly endedAt: number;
   /** The span after that session; null until a piece count first qualifies. */
   readonly pieceCount: number | null;
@@ -85,7 +84,7 @@ function usualStudyTime(rounds: readonly RoundRecord[]): number {
 
 type QualifyingCounts = Map<number, number>;
 
-/** Counts are keyed by piece count. The caller folds rounds in one at a time, so the history needs one pass. */
+/** Mutates and returns `counts`, so the history folds every round once instead of recounting per session. */
 function addQualifying(counts: QualifyingCounts, { accuracy, config: { pieceCount } }: RoundRecord): QualifyingCounts {
   if (accuracy >= LAB_THRESHOLDS.spanAccuracy) counts.set(pieceCount, (counts.get(pieceCount) ?? 0) + 1);
   return counts;

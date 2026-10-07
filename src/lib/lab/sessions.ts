@@ -14,7 +14,6 @@ export interface Session {
 export const byEndedAt = <T extends Pick<RoundRecord, "endedAt">>(records: readonly T[]): T[] =>
   [...records].sort((a, b) => a.endedAt - b.endedAt);
 
-/** The rounds of each session, oldest first. */
 export function sessionRuns<T extends Pick<RoundRecord, "endedAt">>(records: readonly T[]): T[][] {
   const runs: T[][] = [];
   for (const record of byEndedAt(records)) {

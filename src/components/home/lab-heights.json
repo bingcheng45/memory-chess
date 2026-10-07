@@ -20,7 +20,7 @@
   ],
   "max": {
     "narrow": {
-      "unlock": 331,
+      "unlock": 377,
       "spark": 387,
       "heat": 515,
       "streak": 414,
@@ -48,7 +48,7 @@
     }
   },
   "tallest": {
-    "narrow unlock": "twoRounds client 320",
+    "narrow unlock": "easyOnly server 320",
     "narrow spark": "stale client 360",
     "narrow heat": "manyBests client 320",
     "narrow streak": "stale client 360",

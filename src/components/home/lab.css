@@ -89,8 +89,8 @@ html:has(.lab), html:has(.lab) body { overflow-x: clip; }
 .lab-hero { padding: clamp(48px, 7vw, 96px) 0 clamp(56px, 7vw, 96px); }
 .lab-hero .lab-wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
 .lab-eyebrow { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
-.lab .lab-hero h1 { font: 500 13px/1.4 var(--lab-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-ink-3); margin-bottom: 18px; max-width: 48ch; }
-.lab-display { font-size: clamp(40px, 6.4vw, 76px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.02; color: var(--lab-ink); }
+.lab-hero .lab-kicker { display: block; font: 500 13px/1.4 var(--lab-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-ink-3); margin-bottom: 18px; max-width: 48ch; }
+.lab-display { display: block; font-size: clamp(40px, 6.4vw, 76px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.02; color: var(--lab-ink); }
 .lab-display em { font-style: normal; color: var(--lab-blue); position: relative; white-space: nowrap; z-index: 0; }
 .lab-display em::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.06em; height: 0.16em; background: var(--lab-mint); opacity: 0.55; z-index: -1; }
 .lab-hero .lab-lede { margin-top: 24px; }
@@ -153,7 +153,7 @@ html:has(.lab), html:has(.lab) body { overflow-x: clip; }
 }
 
 /* library */
-.lab-lib { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--lab-ink); }
+.lab-lib { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--lab-ink); }
 .lab .lab-lib a { display: block; padding: 24px 22px 28px 0; text-decoration: none; color: var(--lab-ink); border-right: 1px solid var(--lab-line); }
 .lab .lab-lib a + a { padding-left: 22px; }
 .lab .lab-lib a:last-child { border-right: 0; }
@@ -161,6 +161,7 @@ html:has(.lab), html:has(.lab) body { overflow-x: clip; }
 .lab-lib .lab-k { display: block; margin-bottom: 28px; }
 .lab-lib p { font-size: 15px; color: var(--lab-ink-2); margin-top: 10px; }
 .lab-lib-more { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+@media (max-width: 1100px) { .lab-lib { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 900px) { .lab-lib { grid-template-columns: 1fr 1fr; } .lab .lab-lib a, .lab .lab-lib a + a { padding: 22px 16px 22px 0; border-right: 0; border-bottom: 1px solid var(--lab-line); } }
 @media (max-width: 520px) { .lab-lib { grid-template-columns: 1fr; } }
 
@@ -185,8 +186,9 @@ html:has(.lab), html:has(.lab) body { overflow-x: clip; }
   .lab-scan { display: none; }
 }
 
-/* globals.css forces h1 size and button side padding with !important below 640px; the lab's kicker h1 and square buttons must opt out. */
+/* globals.css forces h1 size and button side padding with !important below 640px. The hero h1's spans set
+   their own sizes, so only the kicker steps down here; the square buttons must opt out of the padding. */
 @media (max-width: 640px) {
-  .lab .lab-hero h1 { font-size: 12px !important; }
+  .lab-hero .lab-kicker { font-size: 12px; }
   .lab .lab-cell, .lab .lab-palette button { padding: 0 !important; }
 }

@@ -9,7 +9,10 @@ export const LIBRARY_GUIDES = [
   { id: "visualization", slug: "chess-visualization-exercises" },
   { id: "calculation", slug: "chess-calculation-exercises-for-beginners" },
   { id: "memory", slug: "chess-memory-training" },
+  { id: "blindfold", slug: "blindfold-chess-training-for-beginners" },
 ] as const;
+
+const BLUNDER_GUIDE = "how-to-stop-blundering-in-chess";
 
 export function LibrarySection() {
   const t = useTranslations("home.lab.library");
@@ -45,13 +48,10 @@ export function LibrarySection() {
               </>
             )}
           </EnglishOnlyLink>
-          <EnglishOnlyLink
-            href="/learn/how-to-get-better-at-chess-for-beginners"
-            className="lab-btn lab-btn-secondary"
-          >
+          <EnglishOnlyLink href={`/learn/${BLUNDER_GUIDE}`} className="lab-btn lab-btn-secondary">
             {(suffix) => (
               <>
-                {learn("beginnerCta")}
+                {t("blundering")}
                 {suffix}
               </>
             )}

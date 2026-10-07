@@ -16,11 +16,17 @@ beforeEach(() => {
 });
 
 describe("homepage locale gate", () => {
-  it("serves the Brain Lab to English", () => {
+  it("serves the Brain Lab to English", async () => {
     const { container } = renderWithIntl(<Home />);
 
     expect(container.querySelector(".lab")).not.toBeNull();
+    expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Memory chess game · chess memory trainer Put a number on your mind's eye.",
+    );
     expect(screen.getAllByText("Take a calibration reading").length).toBeGreaterThan(0);
+    // jsdom has no IndexedDB, which the record reads as a window that cannot keep it.
+    expect(await screen.findByText(/Not saved in private windows/)).toBeInTheDocument();
   });
 
   it.each([

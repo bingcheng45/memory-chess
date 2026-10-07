@@ -1,13 +1,13 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import PageHeader from "@/components/ui/PageHeader";
 import FaqSection from "@/components/ui/FaqSection";
 import VideoSection from "@/components/ui/VideoSection";
-import { BRAND_ORGANIZATION, BRAND_WEBSITE } from "@/lib/seo/brand";
 import { CalibrationSection } from "@/components/home/CalibrationSection";
 import { FinalCta } from "@/components/home/FinalCta";
+import { homeSchema } from "@/components/home/homeSchema";
 import { LabHero } from "@/components/home/LabHero";
 import { LabIndex } from "@/components/home/LabIndex";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
@@ -23,17 +23,13 @@ import { deriveStreak, LAB_THRESHOLDS } from "@/lib/lab/derive";
 import "@/components/home/lab.css";
 import "@/components/home/lab-instruments.css";
 
-const brandSchema = {
-  "@context": "https://schema.org",
-  "@graph": [BRAND_ORGANIZATION, BRAND_WEBSITE],
-};
-
 // The lab copy is English only for now. Every other locale keeps the earlier
 // homepage, so no locale serves untranslated English text.
 const LAB_LOCALES: readonly string[] = ["en"];
 
 export default function Home() {
   const locale = useLocale();
+  const t = useTranslations("home.meta");
   const totalPlays = useTotalPlays();
   /*
     Plain script tag, not next/script: `strategy="afterInteractive"` keeps the
@@ -42,7 +38,7 @@ export default function Home() {
     data.
   */
   const schema = (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(brandSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema(locale, t("description"))) }} />
   );
 
   if (!LAB_LOCALES.includes(locale)) return <LegacyHome totalPlays={totalPlays} schema={schema} />;

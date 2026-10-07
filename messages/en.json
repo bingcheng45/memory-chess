@@ -32,15 +32,15 @@
   },
   "home": {
     "meta": {
-      "title": "Chess Memory Trainer: Free Online Game | Memory Chess",
-      "description": "Memory Chess is a free chess memory trainer. See a chess position for a few seconds, rebuild it from memory, and get an instant score. No sign-up.",
+      "title": "Memory Chess Game: Free Online Chess Memory Trainer",
+      "description": "Play the free memory chess game online. Study a chess position for a few seconds, rebuild it from memory, and get an instant accuracy score. No sign-up.",
       "socialTitle": "Memory Chess: Free Chess Memory Trainer",
       "socialDescription": "Memory Chess is a free chess memory trainer. See a chess position for a few seconds, rebuild it from memory, and get an instant score. No sign-up.",
       "twitterTitle": "Memory Chess: Free Chess Memory Trainer",
       "twitterDescription": "Memory Chess is a free chess memory trainer. See a chess position for a few seconds, rebuild it from memory, and get an instant score. No sign-up."
     },
     "hero": {
-      "title": "Memory Chess: Train Your Chess Memory and Visualization",
+      "title": "Memory chess game · chess memory trainer",
       "subtitle": "Memorize a chess position, rebuild it from memory, and get an instant score. Improve your board vision one round at a time.",
       "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
       "gamesPlayed": "Games played: {count}"
@@ -158,7 +158,7 @@
       "hero": {
         "platforms": "Browser · desktop · mobile",
         "display": "Put a number on your <em>mind's eye.</em>",
-        "lede": "Memory Chess is a small instrument for board vision. Study a position for a few seconds, the board goes blank, rebuild it from memory. You get an accuracy reading from 0 to 100% and a map of every square you got right or wrong.",
+        "lede": "Memory Chess is a free memory chess game and chess memory trainer. Study a position for a few seconds, the board goes blank, then rebuild it from memory. Each round is a short memory test with an accuracy reading from 0 to 100% and a map of every square you got right or wrong.",
         "secondaryCta": "Take a calibration reading",
         "facts": {
           "study": "study window",
@@ -453,7 +453,12 @@
         "memory": {
           "title": "Memory",
           "body": "Chunking and pattern techniques that raise your readings."
-        }
+        },
+        "blindfold": {
+          "title": "Blindfold chess training",
+          "body": "A four-stage plan from board recall to full blindfold games."
+        },
+        "blundering": "How to stop blundering"
       },
       "final": {
         "title": "Your first reading takes under a minute.",

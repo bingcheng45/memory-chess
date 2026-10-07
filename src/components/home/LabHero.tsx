@@ -56,10 +56,10 @@ export function LabHero({ totalPlays }: { totalPlays: number | null }) {
             <span className="lab-tag lab-tag-blue">{lab("tags.free")}</span>
             <span className="lab-k">{lab("hero.platforms")}</span>
           </div>
-          <h1>{t("hero.title")}</h1>
-          <p className="lab-display">
-            {lab.rich("hero.display", { em: (chunks) => <em>{chunks}</em> })}
-          </p>
+          <h1>
+            <span className="lab-kicker">{t("hero.title")}</span>{" "}
+            <span className="lab-display">{lab.rich("hero.display", { em: (chunks) => <em>{chunks}</em> })}</span>
+          </h1>
           <p className="lab-lede">{lab("hero.lede")}</p>
           <div className="lab-cta-row">
             <Link className="lab-btn lab-btn-primary" href={QUICK_START_HREF}>

@@ -79,5 +79,14 @@ describe("LibrarySection", () => {
       "href",
       "/learn/how-to-see-the-whole-board-in-chess",
     );
+    expect(screen.getByRole("link", { name: /Blindfold chess training/ })).toHaveAttribute(
+      "href",
+      "/learn/blindfold-chess-training-for-beginners",
+    );
+    expect(screen.getByRole("link", { name: "How to stop blundering" })).toHaveAttribute(
+      "href",
+      "/learn/how-to-stop-blundering-in-chess",
+    );
+    expect(screen.queryByRole("link", { name: /Beginner Guide/ })).toBeNull();
   });
 });

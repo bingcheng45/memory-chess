@@ -116,6 +116,27 @@ describe("LabRecordSection", () => {
     expect(within(types).getByText("From 20 rounds")).toBeInTheDocument();
   });
 
+  it("tells a kings-only player why recall by piece type is empty, with the king baseline", () => {
+    const kingsOnly = rounds(50, 3).map((game) =>
+      buildRoundRecord({ ...game, pieceCount: 2, targetFen: "4k3/8/8/8/8/8/8/4K3", placedFen: "4k3/8/8/8/8/8/8/4K3" }),
+    );
+    renderWithIntl(<LabRecordSection record={record(kingsOnly)} />);
+    const types = panel(/Fig. 6.7/);
+
+    expect(
+      within(types).getByText("Your rounds so far were just the two kings. Play a round with more pieces to see recall by piece type."),
+    ).toBeInTheDocument();
+    expect(within(types).getByText("Kings are in every round, so they are a baseline. Recalled 100 of 100.")).toBeInTheDocument();
+    expect(within(types).queryByText(/after your first round/)).toBeNull();
+  });
+
+  it("keeps the first-round empty state for recall by piece type before any round", () => {
+    renderWithIntl(<LabRecordSection record={record([])} />);
+
+    expect(within(panel(/Fig. 6.7/)).getByText("Recall by piece type appears after your first round.")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.7/)).queryByText(/Kings are in every round/)).toBeNull();
+  });
+
   it("plots practice on its own line when practice is the setting played most", () => {
     const practice = rounds(5, 2).map((game) =>
       buildRoundRecord({ ...game, source: "calibration", pieceCount: 4, memorizeSeconds: 10 }),

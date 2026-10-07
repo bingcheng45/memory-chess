@@ -169,6 +169,20 @@ describe("deriveTypeRecall", () => {
     expect(recall).toMatchObject({ ready: true, sampleSize: 20, roundsNeeded: 0 });
   });
 
+  it("marks a record of kings-only rounds, which no amount of play at that setting will ready", () => {
+    const KINGS = "4k3/8/8/8/8/8/8/4K3";
+    const summary = summarize(Array.from({ length: 50 }, (_, index) => round({ id: `k${index}`, endedAt: index, pieceCount: 2, targetFen: KINGS, placedFen: KINGS })));
+
+    expect(deriveTypeRecall(summary)).toMatchObject({
+      ready: false,
+      onlyKings: true,
+      king: { type: "k", shown: 100, recalled: 100, ready: true },
+      roundsNeeded: null,
+    });
+    expect(deriveTypeRecall(EMPTY_SUMMARY).onlyKings).toBe(false);
+    expect(deriveTypeRecall(summarize([round()])).onlyKings).toBe(false);
+  });
+
   it("estimates rounds until the first type other than the king is ready", () => {
     const summary = summarize([round()]);
 

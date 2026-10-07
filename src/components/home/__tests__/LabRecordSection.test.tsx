@@ -117,6 +117,11 @@ describe("LabRecordSection", () => {
     expect(screen.getByText(/not built yet/)).toBeInTheDocument();
   });
 
+  it("names the last export without claiming a backup exists", () => {
+    renderWithIntl(<LabRecordSection record={record([])} />);
+    expect(screen.getByText("Not exported yet")).toBeInTheDocument();
+  });
+
   it("warns when this window cannot keep the record", () => {
     renderWithIntl(<LabRecordSection record={record([], { storage: "unavailable" })} />);
 

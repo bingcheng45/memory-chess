@@ -22,8 +22,7 @@ export function roundSourceFrom(value: string | null): RoundSource {
 }
 
 /** §06 parts with a play link: the unlock strip and each panel that can go stale. */
-const LAB_PANELS = ["unlock", "trend", "missMap", "streak", "bests", "typeRecall"] as const;
-export type LabPanel = (typeof LAB_PANELS)[number];
+export type LabPanel = "unlock" | "trend" | "missMap" | "streak" | "bests" | "typeRecall";
 
 /**
  * The GA4 event contract. Round events carry the setting and the score, and

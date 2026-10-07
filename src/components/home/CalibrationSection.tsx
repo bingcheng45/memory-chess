@@ -1,13 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useReducer, useState } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import {
   CALIBRATION_RULES,
+  labPositionToFen,
   loadCalibrationPosition,
   roundReducer,
   type RoundState,
 } from "@/lib/home/calibration";
+import { recordLabRound } from "@/lib/lab/recordRound";
 import { CalibrationBoard } from "./CalibrationBoard";
 import { ReadoutCard } from "./ReadoutCard";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
@@ -56,11 +58,31 @@ const PHASE_KEY = {
   scored: "phaseScore",
 } as const;
 
+/** Saves each scored reading to the lab record once, tagged so it never counts as a game round. */
+function useRecordReading(state: RoundState): void {
+  const recorded = useRef<RoundState | null>(null);
+
+  useEffect(() => {
+    if (state.phase !== "scored" || recorded.current === state) return;
+    recorded.current = state;
+    void recordLabRound({
+      source: "calibration",
+      pieceCount: CALIBRATION_RULES.pieceCount,
+      memorizeSeconds: STUDY_SECONDS,
+      targetFen: labPositionToFen(state.target),
+      placedFen: labPositionToFen(state.placed),
+      memorizeMs: CALIBRATION_RULES.studyMs,
+      solveMs: Math.round(state.rebuildMs),
+    });
+  }, [state]);
+}
+
 export function CalibrationSection() {
   const t = useTranslations("home.lab.calibrate");
   const [state, dispatch] = useReducer(roundReducer, { phase: "idle" });
   const onStudyEnded = useCallback((now: number) => dispatch({ type: "studyEnded", now }), []);
   const clockMs = useRoundClock(state, onStudyEnded);
+  useRecordReading(state);
   const [starting, setStarting] = useState(false);
   const [startFailed, setStartFailed] = useState(false);
 

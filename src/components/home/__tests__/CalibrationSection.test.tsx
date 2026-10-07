@@ -2,6 +2,9 @@ import { act, fireEvent, renderWithIntl, screen } from "@/test-utils/intl";
 import { CalibrationSection } from "@/components/home/CalibrationSection";
 import { LibrarySection, LIBRARY_GUIDES } from "@/components/home/LibrarySection";
 import { LEARN_SLUGS } from "@/lib/seo/learn";
+import { recordLabRound } from "@/lib/lab/recordRound";
+
+jest.mock("@/lib/lab/recordRound", () => ({ recordLabRound: jest.fn(() => Promise.resolve(true)) }));
 
 describe("CalibrationSection", () => {
   beforeEach(() => jest.useFakeTimers());
@@ -36,6 +39,10 @@ describe("CalibrationSection", () => {
 
     expect(screen.getByText("Run complete")).toBeInTheDocument();
     expect(screen.getByText("1 / 6")).toBeInTheDocument();
+    expect(recordLabRound).toHaveBeenCalledTimes(1);
+    expect(recordLabRound).toHaveBeenCalledWith(
+      expect.objectContaining({ source: "calibration", pieceCount: 6, memorizeSeconds: 10, memorizeMs: 10000 }),
+    );
     expect(screen.getByText("Wrong pieces").nextSibling).toHaveTextContent("5");
     expect(screen.getByText(/start on Easy, 2 pieces at 10s/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Play Easy/ })).toHaveAttribute(

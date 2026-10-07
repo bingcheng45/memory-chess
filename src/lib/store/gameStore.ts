@@ -11,6 +11,7 @@ import {
   type GameSettings,
 } from '@/lib/game/configPrefill';
 import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
+import { recordLabRound } from '@/lib/lab/recordRound';
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & { 
@@ -483,6 +484,16 @@ export const useGameStore = create<GameStore>()(
         set({
           gameState: updatedGameState as GameState,
           gamePhase: GamePhase.RESULT,
+        });
+
+        void recordLabRound({
+          source: 'game',
+          pieceCount: gameState.pieceCount,
+          memorizeSeconds: gameState.memorizeTime,
+          targetFen: gameState.originalPosition,
+          placedFen: userPosition,
+          memorizeMs: Math.round((gameState.actualMemorizeTime ?? gameState.memorizeTime) * 1000),
+          solveMs: Math.round(completionTime * 1000),
         });
       },
       

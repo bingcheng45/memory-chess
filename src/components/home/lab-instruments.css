@@ -89,10 +89,36 @@
 @media (max-width: 900px) { .lab-cal { grid-template-columns: 1fr; } }
 
 /* lab record */
-.lab-unlock { margin-bottom: 16px; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 16px 22px; }
+/*
+ * Each box is as tall as its tallest state across the persona fixtures
+ * (npm run lab:personas), measured at 1440 and 390, so real data swaps in
+ * for the Sample state without moving anything below it.
+ */
+.lab {
+  --lab-h-unlock: 168px; --lab-h-spark: 384px; --lab-h-heat: 448px; --lab-h-streak: 376px;
+  --lab-h-bests: 352px; --lab-h-types: 440px; --lab-h-tools: 192px;
+  --lab-heat-w: 260px;
+}
+@media (max-width: 1000px) {
+  .lab { --lab-h-unlock: 240px; --lab-h-heat: 432px; --lab-h-bests: 504px; --lab-h-types: 480px; --lab-h-tools: 320px; }
+}
+/* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
+.lab-tag-slot { display: inline-flex; justify-content: flex-end; font: 500 11px/1 var(--lab-mono); min-width: 8.8em; min-height: calc(1em + 10px); }
+.lab-tag-slot .lab-tag { min-width: 8.8em; text-align: center; }
+/* As tall as the square map, so the note under the files and ranks stays put. */
+.lab-heat-pair { margin-top: 14px; min-height: var(--lab-heat-w); }
+.lab-heat-pair > :first-child { margin-top: 0; }
+.lab-p-streak .lab-panel-desc { min-height: 3lh; }
+.lab-p-spark { min-height: var(--lab-h-spark); }
+.lab-p-heat { min-height: var(--lab-h-heat); }
+.lab-p-streak { min-height: var(--lab-h-streak); }
+.lab-p-bests { min-height: var(--lab-h-bests); }
+.lab-p-types { min-height: var(--lab-h-types); }
+.lab-tools-slot { display: flow-root; min-height: var(--lab-h-tools); }
+.lab-unlock { min-height: var(--lab-h-unlock); margin-bottom: 16px; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 16px 22px; }
 .lab-unlock:empty { background: none; border-color: transparent; }
 .lab-unlock ul { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 15px; color: var(--lab-ink-2); }
-.lab-unlock .lab-go { margin-top: 10px; }
+.lab-unlock .lab-go { margin-top: 0; }
 .lab-stale .lab-go { display: inline; margin: 0 0 0 4px; }
 .lab-dash { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
 .lab-panel { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 22px; min-width: 0; }
@@ -115,7 +141,7 @@
 .lab-chart .lab-c-line { fill: none; stroke: var(--lab-mint-ink); stroke-width: 2; stroke-linejoin: round; }
 .lab-chart .lab-c-last { fill: var(--lab-mark); stroke: #fff; stroke-width: 2; }
 .lab-chart text.lab-c-last-label { fill: var(--lab-ink); font-weight: 600; }
-.lab-heat { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; margin-top: 14px; max-width: 260px; }
+.lab-heat { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; margin-top: 14px; max-width: var(--lab-heat-w); }
 .lab-heat i { aspect-ratio: 1; border-radius: 2px; display: block; background: var(--lab-mark); }
 .lab-streak { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 14px; }
 .lab-streak i { aspect-ratio: 1; border-radius: 4px; background: var(--lab-sq-light); border: 1px solid var(--lab-line); }
@@ -133,7 +159,7 @@
 .lab-empty { margin-top: 14px; padding: 14px; border: 1px dashed var(--lab-line-2); border-radius: var(--lab-radius-s); }
 .lab-heat i[data-thin] { background: var(--lab-sq-light); }
 .lab-heat-lines { margin-top: 14px; }
-.lab-heat-lines ul { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; max-width: 260px; margin: 6px 0 0; padding: 0; list-style: none; }
+.lab-heat-lines ul { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; max-width: var(--lab-heat-w); margin: 6px 0 0; padding: 0; list-style: none; }
 .lab-heat-lines li { display: grid; gap: 4px; justify-items: center; font: 500 11px var(--lab-mono); color: var(--lab-ink-3); }
 .lab-heat-lines i { width: 100%; aspect-ratio: 1; border-radius: 2px; display: block; background: var(--lab-mark); }
 .lab-heat-lines i[data-thin] { background: var(--lab-sq-light); }

@@ -18,7 +18,7 @@ export function PanelHead({ fig, tag }: { fig: string; tag: ReactNode }) {
   return (
     <div className="lab-panel-h">
       <span className="lab-k">{fig}</span>
-      {tag}
+      <span className="lab-tag-slot">{tag}</span>
     </div>
   );
 }
@@ -119,10 +119,10 @@ export function MissPanel({ result: { readiness, value: map }, daysAgo }: { resu
           {map.view === "squares" ? (
             <MissMap cells={map.squares.map(missShare)} label={t("heat.realAria")} />
           ) : (
-            <>
+            <div className="lab-heat-pair">
               <MissLines caption={t("heat.files")} lines={lines(map.files, FILES)} />
               <MissLines caption={t("heat.ranks")} lines={lines(map.ranks, RANKS)} />
-            </>
+            </div>
           )}
           <p className="lab-note">
             {t("heat.realNote")} {t("fromRounds", { count: readiness.sampleSize })}

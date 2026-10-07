@@ -22,15 +22,18 @@ export function LabUnlockStrip({ results }: { results: LabResults }) {
     <div className="lab-unlock">
       {unlocks.length > 0 && (
         <>
-          <p className="lab-k" id="lab-unlock-label">
-            {t("label")}
-          </p>
+          <div className="lab-panel-h">
+            <p className="lab-k" id="lab-unlock-label">
+              {t("label")}
+            </p>
+            <LabPlayLink panel="unlock" />
+          </div>
           <ul aria-labelledby="lab-unlock-label">
-            {unlocks.map((unlock) => (
-              <li key={unlock.metric}>{text(unlock)}</li>
+            {/* Keyed by position, so when real data arrives each line changes its text in place instead of moving. */}
+            {unlocks.map((unlock, index) => (
+              <li key={index}>{text(unlock)}</li>
             ))}
           </ul>
-          <LabPlayLink panel="unlock" />
         </>
       )}
     </div>

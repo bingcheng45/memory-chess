@@ -99,7 +99,9 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
           <BestsPanel result={lab.bests} daysAgo={daysAgo} />
           <TypesPanel result={lab.typeRecall} daysAgo={daysAgo} />
         </div>
-        <LabRecordTools record={record} />
+        <div className="lab-tools-slot">
+          <LabRecordTools record={record} />
+        </div>
         <div className="lab-plans">
           {PLANS.map((plan) => (
             <div className="lab-plan" key={plan}>

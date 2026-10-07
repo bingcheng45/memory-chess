@@ -1,5 +1,4 @@
-import { BrainLabHome } from "@/components/home/BrainLabHome";
-import { LegacyHome } from "@/components/home/LegacyHome";
+import { BrainLabHome, LegacyHome } from "@/components/home/HomeBodies";
 import { hasLabCopy } from "@/lib/home/labLocales";
 
 type HomeProps = {

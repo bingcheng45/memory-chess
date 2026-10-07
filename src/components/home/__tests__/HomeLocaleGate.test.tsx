@@ -28,6 +28,7 @@ describe("homepage locale gate", () => {
   it("serves the Brain Lab to English", async () => {
     const { container } = renderWithIntl(await homeFor("en"));
 
+    await screen.findByRole("heading", { level: 1 });
     expect(container.querySelector(".lab")).not.toBeNull();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
@@ -54,6 +55,7 @@ describe("homepage locale gate", () => {
     const germanWithLab = { ...german, home: { ...german.home, lab: english.home.lab } };
 
     const lab = renderWithIntl(await homeFor("de"), { locale: "de", messages: germanWithLab });
+    await screen.findByRole("heading", { level: 1 });
     expect(lab.container.querySelector(".lab")).not.toBeNull();
     lab.unmount();
 

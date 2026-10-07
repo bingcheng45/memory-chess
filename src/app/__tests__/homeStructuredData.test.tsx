@@ -1,4 +1,4 @@
-import { render } from "@/test-utils/intl";
+import { render, screen } from "@/test-utils/intl";
 import HomePage from "@/app/[locale]/(home)/page";
 import english from "../../../messages/en.json";
 
@@ -34,6 +34,12 @@ function jsonLdScripts(container: HTMLElement): Schema[] {
   ).map((script) => JSON.parse(script.textContent ?? "{}"));
 }
 
+async function renderHome() {
+  const rendered = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
+  await screen.findByRole("heading", { level: 1 });
+  return rendered;
+}
+
 function brandGraph(container: HTMLElement): SchemaNode[] {
   const script = jsonLdScripts(container).find((schema) =>
     schema["@graph"]?.some((node) => node["@id"] === ORGANIZATION_ID),
@@ -48,7 +54,7 @@ describe("home page structured data", () => {
   });
 
   it("declares the Organization the way search engines should name the brand", async () => {
-    const { container } = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
+    const { container } = await renderHome();
     const organization = brandGraph(container).find(
       (node) => node["@type"] === "Organization",
     );
@@ -63,7 +69,7 @@ describe("home page structured data", () => {
   });
 
   it("links the WebSite to the Organization as its publisher", async () => {
-    const { container } = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
+    const { container } = await renderHome();
     const website = brandGraph(container).find(
       (node) => node["@type"] === "WebSite",
     );
@@ -74,14 +80,14 @@ describe("home page structured data", () => {
   });
 
   it("describes the Organization with the English home meta description", async () => {
-    const { container } = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
+    const { container } = await renderHome();
     const organization = brandGraph(container).find((node) => node["@type"] === "Organization");
 
     expect(organization?.description).toBe(english.home.meta.description);
   });
 
   it("emits exactly one Organization and one WebSite", async () => {
-    const { container } = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
+    const { container } = await renderHome();
     const types = brandGraph(container).map((node) => node["@type"]);
 
     expect(types.filter((type) => type === "Organization")).toHaveLength(1);
@@ -89,7 +95,7 @@ describe("home page structured data", () => {
   });
 
   it("keeps the FAQ structured data as a separate script", async () => {
-    const { container } = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
+    const { container } = await renderHome();
     const scripts = jsonLdScripts(container);
 
     expect(scripts.some((schema) => schema["@type"] === "FAQPage")).toBe(true);

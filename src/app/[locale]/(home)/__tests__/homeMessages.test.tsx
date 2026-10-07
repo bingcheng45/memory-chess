@@ -47,11 +47,11 @@ describe("the home page under the messages its route's layouts send", () => {
   it("prints the lab in English from the home layout's own group", async () => {
     const { missing, container } = await renderHome("en");
 
-    expect(missing).toEqual([]);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+    expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(
       "Memory chess game · chess memory trainer Put a number on your mind's eye.",
     );
     expect(screen.getByRole("heading", { name: "Take a calibration reading." })).toBeInTheDocument();
+    expect(missing).toEqual([]);
     expect(container.textContent).not.toMatch(RAW_MESSAGE_KEY);
   });
 

@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CALIBRATION_RULES, suggestTier, type RoundState } from "@/lib/home/calibration";
-import { playHref } from "./links";
+import { playHref } from "@/lib/game/roundLink";
 
 // Below this share a piece type's bar turns orange.
 const WEAK_RECALL = 0.5;

@@ -8,7 +8,7 @@ import {
   PRESET_FACTS,
 } from "@/lib/reference/facts";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
-import { playHref } from "./links";
+import { playHref } from "@/lib/game/roundLink";
 
 const DENSITY_SQUARES = 32;
 

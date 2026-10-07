@@ -1,4 +1,5 @@
 import type { RoundSource } from "@/lib/analytics/events";
+import { playHref } from "@/lib/game/roundLink";
 
 /**
  * Goal ids and their hrefs. The visible label, description and accent live in
@@ -49,9 +50,7 @@ export type LearnDrillCard = {
 };
 
 export function gameHref(setup: LearnGameSetup | undefined, source: RoundSource): string {
-  return setup
-    ? `/game?pieceCount=${setup.pieceCount}&memorizeTime=${setup.memorizeTime}&source=${source}`
-    : "/game";
+  return setup ? playHref(setup.pieceCount, setup.memorizeTime, source) : "/game";
 }
 
 export type LearnComparisonRow = {

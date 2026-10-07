@@ -15,12 +15,12 @@ import "./ts-hooks.mjs";
 const fromSrc = (path) => import(pathToFileURL(join(process.cwd(), "src", path)).href);
 const { exportPersona, memoryLabStore, PERSONA_NAMES } = await fromSrc("lib/lab/personas.ts");
 const { localDayOf } = await fromSrc("lib/lab/record.ts");
+const { isCalendarDay } = await fromSrc("lib/lab/transfer.ts");
 
 const args = process.argv.slice(2);
 const valuesOf = (flag) => args.flatMap((arg, index) => (arg === flag && args[index + 1] ? [args[index + 1]] : []));
 const today = valuesOf("--today")[0] ?? localDayOf(new Date());
-const [year, month, date] = today.split("-").map(Number);
-if (!/^\d{4}-\d{2}-\d{2}$/.test(today) || localDayOf(new Date(year, month - 1, date)) !== today) {
+if (!isCalendarDay(today)) {
   console.error(`--today must be a real calendar day as YYYY-MM-DD, got "${today}".`);
   process.exit(2);
 }

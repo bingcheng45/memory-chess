@@ -54,7 +54,7 @@ const isFen = (value: unknown): value is string =>
 const piecesIn = (fen: string) => fen.replace(/[\d/]/g, "").length;
 
 /** A real calendar day, so "2026-02-30" fails because Date rolls it into March. */
-function isCalendarDay(value: unknown): value is string {
+export function isCalendarDay(value: unknown): value is string {
   if (typeof value !== "string" || !LOCAL_DAY.test(value)) return false;
   const [year, month, day] = value.split("-").map(Number);
   const date = new Date(year, month - 1, day);

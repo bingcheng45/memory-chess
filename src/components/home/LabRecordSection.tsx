@@ -1,9 +1,8 @@
 "use client";
 
-import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { deriveLab } from "@/lib/lab/metrics";
+import { useLabResults } from "@/hooks/useLabData";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
 import { ForgettingCurve } from "./LabCharts";
 import { BestsPanel, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
@@ -23,8 +22,8 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
   const tags = useTranslations("home.lab.tags");
   const presets = useTranslations("game.presets");
   const proposed = <span className="lab-tag">{tags("proposed")}</span>;
-  const { records, summary, today } = record;
-  const lab = useMemo(() => deriveLab({ records, summary, today }), [records, summary, today]);
+  const { summary } = record;
+  const lab = useLabResults(record);
 
   return (
     <section className="lab-sec" id={LAB_SECTIONS.record.anchor}>

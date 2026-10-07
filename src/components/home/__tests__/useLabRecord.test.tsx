@@ -4,6 +4,7 @@ import { labStore, type LabStore } from "@/lib/lab/storage";
 import { EMPTY_SUMMARY, summarize } from "@/lib/lab/summary";
 import { buildExport } from "@/lib/lab/transfer";
 import { round } from "@/lib/lab/__tests__/fixtures";
+import { FakeChannel } from "@/lib/lab/__tests__/fakeChannel";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 jest.mock("@/lib/lab/storage", () => ({ ...jest.requireActual("@/lib/lab/storage"), labStore: jest.fn() }));
@@ -82,5 +83,19 @@ describe("useLabRecord import", () => {
 
     expect(outcome).toEqual({ ok: true, added: 1, rejected: 0, overCap: 0, summary: "ignored" });
     expect(store.mergeRounds).toHaveBeenCalledWith(rounds);
+  });
+
+  it("tells other open tabs once the imported rounds are saved", async () => {
+    Object.assign(globalThis, { BroadcastChannel: FakeChannel });
+    FakeChannel.posted = [];
+    const store = fakeStore();
+    store.mergeRounds = jest.fn(() => Promise.resolve(2));
+    jest.mocked(labStore).mockReturnValue(store);
+    const { result } = renderHook(() => useLabRecord());
+
+    await act(() => result.current.importFile(file()));
+
+    expect(FakeChannel.posted).toHaveLength(1);
+    Reflect.deleteProperty(globalThis, "BroadcastChannel");
   });
 });

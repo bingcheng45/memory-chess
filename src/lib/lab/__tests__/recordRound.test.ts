@@ -1,6 +1,7 @@
 import "fake-indexeddb/auto";
 import { deserialize, serialize } from "node:v8";
-import { LAB_RECORD_CHANGED, recordLabRound } from "@/lib/lab/recordRound";
+import { recordLabRound } from "@/lib/lab/recordRound";
+import { LAB_RECORD_CHANGED } from "@/lib/lab/recordSync";
 import { labStore } from "@/lib/lab/storage";
 import { TARGET } from "./fixtures";
 

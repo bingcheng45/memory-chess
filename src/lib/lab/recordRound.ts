@@ -1,8 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { buildRoundRecord, localDayOf, type RoundCapture, type RoundInput } from "./record";
+import { announceLabChange } from "./recordSync";
 import { labStore } from "./storage";
-
-export const LAB_RECORD_CHANGED = "memory-chess-lab-changed";
 
 export type RoundFacts = Omit<RoundInput, "id" | "endedAt" | "localDay"> &
   Pick<RoundCapture, "startSource" | "placements" | "removals">;
@@ -19,7 +18,7 @@ export async function recordLabRound(facts: RoundFacts, now: Date = new Date()):
         { startSource, placements, removals, tzOffsetMin: now.getTimezoneOffset() },
       ),
     );
-    if (saved) window.dispatchEvent(new Event(LAB_RECORD_CHANGED));
+    if (saved) announceLabChange();
     return saved;
   } catch {
     return false;

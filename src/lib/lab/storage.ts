@@ -110,30 +110,34 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     return request(db.transaction(STORE).objectStore(STORE).index(BY_END).getAll() as IDBRequest<RoundRecordV1[]>);
   }
 
-  async function insertNew(db: IDBDatabase, records: readonly RoundRecordV1[]): Promise<RoundRecordV1[]> {
+  /**
+   * Adds the rounds the log does not hold yet and evicts past the cap, in one
+   * transaction. Returns the rounds added and the endedAt of the newest round
+   * evicted, or null if the log stayed within the cap.
+   */
+  async function insertNew(
+    db: IDBDatabase,
+    records: readonly RoundRecordV1[],
+  ): Promise<{ fresh: RoundRecordV1[]; evicted: number | null }> {
     const tx = db.transaction(STORE, "readwrite");
     const store = tx.objectStore(STORE);
-    // One read of at most ROUND_CAP keys, rather than a request per incoming round.
-    const seen = new Set(await request(store.getAllKeys()));
+    // A saved round looks up its own id; an import reads at most ROUND_CAP keys once.
+    const known =
+      records.length === 1
+        ? [await request(store.getKey(records[0].id))].filter((key) => key !== undefined)
+        : await request(store.getAllKeys());
+    const seen = new Set<IDBValidKey>(known);
     const fresh = records.filter(({ id }) => {
       if (seen.has(id)) return false;
       seen.add(id);
       return true;
     });
     fresh.forEach((record) => store.add(record));
-    await done(tx);
-    return fresh;
-  }
-
-  /** Returns the endedAt of the newest round it evicted, or null if the log was within the cap. */
-  async function evictOverCap(db: IDBDatabase): Promise<number | null> {
-    const tx = db.transaction(STORE, "readwrite");
-    const store = tx.objectStore(STORE);
-    const excess = (await request(store.count())) - ROUND_CAP;
+    const excess = fresh.length === 0 ? 0 : (await request(store.count())) - ROUND_CAP;
     const oldest = excess > 0 ? await request(store.index(BY_END).getAll(null, excess) as IDBRequest<RoundRecordV1[]>) : [];
     oldest.forEach(({ id }) => store.delete(id));
     await done(tx);
-    return oldest.at(-1)?.endedAt ?? null;
+    return { fresh, evicted: oldest.at(-1)?.endedAt ?? null };
   }
 
   /**
@@ -145,9 +149,11 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     const db = await open();
     const before = storedSummary() ?? summarize(await allRounds(db));
     const watermark = before.evictedThrough;
-    const added = await insertNew(db, watermark === null ? records : records.filter(({ endedAt }) => endedAt > watermark));
+    const { fresh: added, evicted } = await insertNew(
+      db,
+      watermark === null ? records : records.filter(({ endedAt }) => endedAt > watermark),
+    );
     if (added.length === 0) return 0;
-    const evicted = await evictOverCap(db);
     const counted = [...added].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, before);
     // Every round in the log is newer than the watermark, so a fresh eviction only moves it forward.
     await saveSummary({ ...counted, evictedThrough: evicted ?? watermark });

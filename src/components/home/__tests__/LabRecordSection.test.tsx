@@ -116,6 +116,15 @@ describe("LabRecordSection", () => {
     expect(within(types).getByText("From 20 rounds")).toBeInTheDocument();
   });
 
+  it("counts kings that were missed in the baseline", () => {
+    const missedWhiteKing = rounds(20, 3).map((game, index) =>
+      index < 9 ? buildRoundRecord({ ...game, pieceCount: 4, memorizeSeconds: 10, placedFen: "4k3/8/8/3q4/8/5N2/8/8" }) : game,
+    );
+    renderWithIntl(<LabRecordSection record={record(missedWhiteKing)} />);
+
+    expect(within(panel(/Fig. 6.7/)).getByText("Kings are in every round, so they are a baseline. Recalled 31 of 40.")).toBeInTheDocument();
+  });
+
   it("tells a kings-only player why recall by piece type is empty, with the king baseline", () => {
     const kingsOnly = rounds(50, 3).map((game) =>
       buildRoundRecord({ ...game, pieceCount: 2, memorizeSeconds: 10, targetFen: "4k3/8/8/8/8/8/8/4K3", placedFen: "4k3/8/8/8/8/8/8/4K3" }),

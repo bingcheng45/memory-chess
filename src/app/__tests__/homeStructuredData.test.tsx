@@ -1,5 +1,6 @@
 import { render } from "@/test-utils/intl";
 import HomePage from "@/app/[locale]/(home)/page";
+import english from "../../../messages/en.json";
 
 const ORGANIZATION_ID = "https://thememorychess.com/#organization";
 const WEBSITE_ID = "https://thememorychess.com/#website";
@@ -69,6 +70,14 @@ describe("home page structured data", () => {
 
     expect(website?.["@id"]).toBe(WEBSITE_ID);
     expect(website?.publisher).toEqual({ "@id": ORGANIZATION_ID });
+    expect(website?.alternateName).toEqual(["MemoryChess", "The Memory Chess"]);
+  });
+
+  it("describes the Organization with the English home meta description", async () => {
+    const { container } = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
+    const organization = brandGraph(container).find((node) => node["@type"] === "Organization");
+
+    expect(organization?.description).toBe(english.home.meta.description);
   });
 
   it("emits exactly one Organization and one WebSite", async () => {

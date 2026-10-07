@@ -60,7 +60,8 @@ describe("LabRecordSection", () => {
     expect(within(board).queryByText("Live on site")).toBeNull();
     expect(within(board).queryByText("you")).toBeNull();
     expect(within(board).queryByText("--%")).toBeNull();
-    expect(["12 pieces", "10 pieces", "8 pieces"].map((cell) => within(board).getByText(cell).closest("[aria-hidden]"))).not.toContain(null);
+    const sketch = within(board).getByText("12 pieces").closest("[aria-hidden='true']") as HTMLElement;
+    expect([...sketch.querySelectorAll(".lab-lb-row")].map((row) => row.lastElementChild?.textContent)).toEqual(["12 pieces", "10 pieces", "8 pieces"]);
     expect(
       within(board).getByText(
         "Each difficulty is ranked by correct pieces, then fewer wrong pieces, then faster memorize time, then faster solve time. Every row shows the player's country.",

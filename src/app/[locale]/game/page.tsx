@@ -10,9 +10,7 @@ import GameStats from '@/components/game/GameStats';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
 import { playSound, stopTimerSound } from '@/lib/utils/soundEffects';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
-import { Chess } from 'chess.js';
-import { v4 as uuidv4 } from 'uuid';
-import { ChessPiece, PieceType } from '@/types/chess';
+import { ChessPiece } from '@/types/chess';
 import { pieceTypeToFenChar } from '@/utils/chessPieces';
 import { Button } from "@/components/ui/button";
 import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
@@ -241,33 +239,6 @@ function GamePageContent() {
     stopTimerSound(); // Stop any playing timer sound
     router.push('/');
   };
-  
-  // Add this helper function to convert chess.js board to ChessPiece array
-  // Currently not used as we start with an empty board in solution phase,
-  // but kept for future reference if we need to pre-populate the board
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  function chessToPieces(chess: Chess | null): ChessPiece[] {
-    if (!chess) return [];
-    
-    const pieces: ChessPiece[] = [];
-    const board = chess.board();
-    
-    for (let rank = 0; rank < 8; rank++) {
-      for (let file = 0; file < 8; file++) {
-        const square = board[rank][file];
-        if (square) {
-          pieces.push({
-            id: uuidv4(),
-            type: square.type as PieceType,
-            color: square.color === 'w' ? 'white' : 'black',
-            position: { file, rank }
-          });
-        }
-      }
-    }
-    
-    return pieces;
-  }
   
   // Add a useEffect to log the chess instance when it changes
   useEffect(() => {

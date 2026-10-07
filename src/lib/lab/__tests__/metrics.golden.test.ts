@@ -57,7 +57,7 @@ function inputFor(name: PersonaName): Promise<LabInput> {
 
 describe("metric engine on the persona fixtures", () => {
   it.each(PERSONA_NAMES.filter((name) => name !== "newVisitor"))("matches the pre-engine derive output for %s", async (name) => {
-    expect(legacy(await inputFor(name))).toEqual(golden[name]);
+    expect(legacy(await inputFor(name))).toEqual(golden[name === "v1Legacy" ? "threeDays" : name]);
   });
 
   it("gives a new visitor no value and nothing ready, as the old functions did", async () => {
@@ -90,6 +90,7 @@ describe("metric engine on the persona fixtures", () => {
       heavy: { typeRecall: undefined, missMap: undefined },
       easyOnly: { typeRecall: { exposures: 20 }, missMap: { exposures: 4 } },
       stale: { typeRecall: undefined, missMap: { exposures: 2 } },
+      v1Legacy: { typeRecall: undefined, missMap: { exposures: 6 } },
     });
   });
 
@@ -110,6 +111,15 @@ describe("metric engine on the persona fixtures", () => {
       heavy: all("ready"),
       easyOnly: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "warming", missMap: "warming" },
       stale: { streak: "stale", bests: "stale", trend: "stale", typeRecall: "stale", missMap: "warming" },
+      v1Legacy: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming" },
     });
+  });
+
+  it("reads version 1 rounds exactly as it reads the same rounds as version 2", async () => {
+    const [legacyInput, current] = await Promise.all([inputFor("v1Legacy"), inputFor("threeDays")]);
+
+    expect(legacyInput.records.map(({ v }) => v)).toEqual(Array(12).fill(1));
+    expect(current.records.map(({ v }) => v)).toEqual(Array(12).fill(2));
+    expect(deriveLab(legacyInput)).toEqual(deriveLab(current));
   });
 });

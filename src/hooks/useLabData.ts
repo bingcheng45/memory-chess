@@ -52,7 +52,6 @@ export function useLabData(): LabData {
   return { storage, records, summary, lastBackup, today, reload };
 }
 
-/** Every metric for the record, recomputed only when the rounds, the summary or the day change. */
 export function useLabResults({ records, summary, today }: LabInput): LabResults {
   return useMemo(() => deriveLab({ records, summary, today }), [records, summary, today]);
 }

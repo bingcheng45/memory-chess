@@ -21,7 +21,6 @@ const BOARD_SKETCH = [
   { rank: "03", width: "61%", pieces: 8 },
 ];
 
-/** Sends lab_section_view the first time the section scrolls into sight, then stops watching. */
 function useFirstSight() {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {

@@ -51,7 +51,7 @@ async function shoot(page, selector, file) {
   writeFileSync(file, Buffer.from(data, "base64"));
 }
 
-async function importFile(page, file) {
+export async function importFile(page, file) {
   await page.send("DOM.enable");
   const { root } = await page.send("DOM.getDocument", {});
   const { nodeId } = await page.send("DOM.querySelector", { nodeId: root.nodeId, selector: '.lab-tools input[type="file"]' });

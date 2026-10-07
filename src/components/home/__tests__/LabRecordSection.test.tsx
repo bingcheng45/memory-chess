@@ -238,7 +238,17 @@ describe("LabRecordSection", () => {
       "Game · 4 pieces · 6s",
       "Game · 4 pieces · 5s",
     ]);
-    expect(within(panel(/Fig. 6.6/)).getByText("+2 more settings")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.6/)).getByText("+2 more settings")).toHaveAttribute("data-shown", "wide");
+    expect(within(panel(/Fig. 6.6/)).getByText("+6 more settings")).toHaveAttribute("data-shown", "narrow");
+  });
+
+  it("counts the settings past the second for phones even when six fit on a wider screen", () => {
+    const settings = [10, 9, 8].map((memorizeSeconds) => buildRoundRecord({ ...rounds(1, 1)[0], id: `s${memorizeSeconds}`, pieceCount: 4, memorizeSeconds }));
+    renderWithIntl(<LabRecordSection record={record(settings)} />);
+
+    expect([...panel(/Fig. 6.6/).querySelectorAll("[data-shown]")].map((note) => [note.textContent, note.getAttribute("data-shown")])).toEqual([
+      ["+1 more setting", "narrow"],
+    ]);
   });
 
   it("imports a file and reports what it added", async () => {

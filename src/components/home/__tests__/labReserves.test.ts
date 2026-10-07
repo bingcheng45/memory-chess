@@ -4,6 +4,7 @@ import measured from "../lab-heights.json";
 
 const css = readFileSync(join(__dirname, "../lab-instruments.css"), "utf8");
 const SLACK_PX = 8;
+const EMPTY_GAP_PX = 220;
 const BOXES = {
   unlock: ".lab-unlock",
   spark: ".lab-p-spark",
@@ -35,6 +36,12 @@ describe("§06 reserved heights", () => {
     );
 
     expect(short).toEqual([]);
+  });
+
+  it("keep the phone bests reserve within about 200px of the empty panel a new visitor sees", () => {
+    const gap = (reserves.narrow.bests ?? 0) - measured.empty.narrow.bests;
+
+    expect(gap).toBeLessThanOrEqual(EMPTY_GAP_PX);
   });
 
   it("give each box its reserve as a minimum height", () => {

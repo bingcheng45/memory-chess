@@ -122,6 +122,31 @@ describe("LabRecordSection", () => {
     expect(screen.getByText("Not exported yet")).toBeInTheDocument();
   });
 
+  it("says an export was started, since the browser may still ask to confirm the download", () => {
+    renderWithIntl(<LabRecordSection record={record([], { lastBackup: Date.UTC(2026, 9, 7, 12) })} />);
+    expect(screen.getByText(/^Export started /)).toBeInTheDocument();
+  });
+
+  describe("the Safari note", () => {
+    const realAgent = navigator.userAgent;
+    const useAgent = (agent: string) => Object.defineProperty(navigator, "userAgent", { value: agent, configurable: true });
+    afterEach(() => useAgent(realAgent));
+
+    it("tells Safari readers a private tab and a week away both lose the record", () => {
+      useAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1");
+      renderWithIntl(<LabRecordSection record={record([])} />);
+
+      expect(screen.getByText(/a private tab does not keep this record after it closes/)).toHaveTextContent(/about 7 days/);
+    });
+
+    it("stays hidden on Chrome", () => {
+      useAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/129.0 Mobile/15E148 Safari/604.1");
+      renderWithIntl(<LabRecordSection record={record([])} />);
+
+      expect(screen.queryByText(/private tab/)).toBeNull();
+    });
+  });
+
   it("warns when this window cannot keep the record", () => {
     renderWithIntl(<LabRecordSection record={record([], { storage: "unavailable" })} />);
 

@@ -1,4 +1,3 @@
-/** Every number that decides when a lab figure can be read, in one place. */
 export const LAB_THRESHOLDS = {
   streakDays: 2,
   trendRounds: 5,
@@ -36,7 +35,6 @@ export interface ReadinessInput {
   readonly sampleSize: number;
   readonly have: Need;
   readonly thresholds: Thresholds;
-  /** The player's most recent local day with a round. */
   readonly lastDay: string | null;
   /** The client's local day, or "" before it is known. */
   readonly today: string;

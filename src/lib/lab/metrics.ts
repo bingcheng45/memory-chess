@@ -19,7 +19,6 @@ export interface MetricResult<TValue> {
 
 export interface MetricDef<TValue> {
   readonly id: MetricId;
-  /** The question the metric answers, in one plain sentence. */
   readonly question: string;
   readonly thresholds: Thresholds;
   compute(input: LabInput): MetricResult<TValue>;
@@ -33,8 +32,6 @@ function measured<TValue>(readiness: Readiness, value: () => TValue): MetricResu
 function readinessFor({ summary, today }: LabInput, measure: { sampleSize: number; have: Need; thresholds: Thresholds }): Readiness {
   return readinessOf({ ...measure, lastDay: summary.days.at(-1) ?? null, today });
 }
-
-// Streak
 
 export type StreakDay = "played" | "missed" | "today";
 
@@ -75,8 +72,6 @@ function computeStreak(input: LabInput): MetricResult<StreakValue> {
   });
 }
 
-// Personal bests
-
 export interface BestEntry extends PersonalBest {
   readonly key: string;
   readonly source: LabSource;
@@ -108,8 +103,6 @@ function computeBests(input: LabInput): MetricResult<BestsValue> {
       ),
   }));
 }
-
-// Accuracy trend
 
 export type TrendSetting = Pick<RoundConfig, "pieceCount" | "memorizeSeconds"> & { readonly source: LabSource };
 
@@ -158,8 +151,6 @@ function computeTrend(input: LabInput): MetricResult<TrendValue> {
   });
 }
 
-// Recall by piece type
-
 export interface TypeRecall {
   readonly type: PieceSymbol;
   readonly shown: number;
@@ -207,8 +198,6 @@ function computeTypeRecall(input: LabInput): MetricResult<TypeRecallValue> {
   }));
 }
 
-// Miss map
-
 export interface MissCell {
   readonly shown: number;
   readonly missed: number;
@@ -253,8 +242,6 @@ function computeMissMap(input: LabInput): MetricResult<MissMapValue> {
     };
   });
 }
-
-// Registry
 
 interface LabValues {
   readonly streak: StreakValue;

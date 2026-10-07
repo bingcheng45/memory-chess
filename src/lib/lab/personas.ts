@@ -30,7 +30,6 @@ interface Setting {
   readonly memorizeSeconds: number;
 }
 
-/** One planned round: how many days before today it was played, at what setting. */
 interface PlannedRound extends Setting {
   readonly daysAgo: number;
 }
@@ -153,7 +152,6 @@ function memoryStorage(): Storage {
   };
 }
 
-/** A real lab store over an in-memory IndexedDB and localStorage, for building persona exports outside a browser. */
 export function memoryLabStore(indexedDB: IDBFactory): LabStore {
   return createLabStore({ indexedDB, localStorage: memoryStorage(), storageManager: undefined, locks: undefined });
 }

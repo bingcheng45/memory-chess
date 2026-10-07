@@ -58,7 +58,6 @@ async function importFile(page, file) {
   return page.waitFor(`document.querySelector('.lab-tools p[role="status"]').textContent.trim() || null`, 60_000);
 }
 
-/** One persona, run by the CDP harness in its own Chrome profile. */
 export default async function drive(page, { baseUrl, evidenceDir }) {
   const personaFile = process.env[PERSONA_ENV];
   const persona = JSON.parse(readFileSync(personaFile, "utf8"));

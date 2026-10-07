@@ -22,6 +22,7 @@ import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
+import { ROUND_PARAMS } from '@/lib/game/roundLink';
 
 import { useTranslations } from "next-intl";
 
@@ -33,15 +34,13 @@ type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource 
 // which would bail /game out of static rendering and serve an empty page.
 function takeUrlRound(): UrlRound | null {
   const params = new URLSearchParams(window.location.search);
-  const pieceCountParam = params.get('pieceCount');
-  const memorizeTimeParam = params.get('memorizeTime');
+  const pieceCountParam = params.get(ROUND_PARAMS.pieceCount);
+  const memorizeTimeParam = params.get(ROUND_PARAMS.memorizeTime);
   if (!pieceCountParam && !memorizeTimeParam) return null;
 
   // A refresh then opens the configuration screen instead of restarting the round.
-  const source = roundSourceFrom(params.get('source'));
-  params.delete('pieceCount');
-  params.delete('memorizeTime');
-  params.delete('source');
+  const source = roundSourceFrom(params.get(ROUND_PARAMS.source));
+  Object.values(ROUND_PARAMS).forEach((name) => params.delete(name));
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
 

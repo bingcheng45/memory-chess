@@ -10,6 +10,7 @@ import {
   parseGameSettings,
   type GameSettings,
 } from '@/lib/game/configPrefill';
+import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & { 
@@ -87,96 +88,6 @@ interface ChessMove {
   to: string;
   promotion?: string;
 }
-
-// Function to calculate accuracy between two positions
-const calculateAccuracy = (originalFen: string, userFen: string): {
-  accuracy: number;
-  extraPieces: number;
-  totalPiecesPlaced: number;
-  correctPlacements: number;
-} => {
-  try {
-    // Extract piece placement part from FEN strings
-    const originalPieces = originalFen.split(' ')[0];
-    const userPieces = userFen.split(' ')[0];
-    
-    // Convert FEN to a map of pieces on squares
-    const getSquaresMap = (fen: string): Map<string, string> => {
-      const map = new Map<string, string>();
-      const rows = fen.split('/');
-      
-      rows.forEach((row, rowIndex) => {
-        let colIndex = 0;
-        for (let i = 0; i < row.length; i++) {
-          const char = row[i];
-          if (isNaN(parseInt(char))) {
-            // It's a piece
-            const square = `${String.fromCharCode(97 + colIndex)}${8 - rowIndex}`;
-            map.set(square, char);
-            colIndex++;
-          } else {
-            // It's a number, skip that many squares
-            colIndex += parseInt(char);
-          }
-        }
-      });
-      
-      return map;
-    };
-    
-    const originalMap = getSquaresMap(originalPieces);
-    const userMap = getSquaresMap(userPieces);
-    
-    // Count correct placements and total pieces
-    let correctPlacements = 0;
-    const totalOriginalPieces = originalMap.size;
-    const totalPiecesPlaced = userMap.size;
-    
-    // Check user placements against original
-    originalMap.forEach((piece, square) => {
-      if (userMap.get(square) === piece) {
-        correctPlacements++;
-      }
-    });
-    
-    // Calculate extra pieces (only count excess pieces)
-    const extraPieces = Math.max(0, totalPiecesPlaced - totalOriginalPieces);
-    
-    // Calculate base accuracy as a percentage
-    const baseAccuracy = Math.round((correctPlacements / totalOriginalPieces) * 100);
-    
-    // Apply penalty for extra pieces: -10% for each extra piece
-    const extraPiecesPenalty = extraPieces * 10;
-    
-    // Ensure accuracy doesn't go below 0%
-    const accuracy = Math.max(0, baseAccuracy - extraPiecesPenalty);
-    
-    console.log('Accuracy calculation:', {
-      totalOriginalPieces,
-      totalPiecesPlaced,
-      correctPlacements,
-      extraPieces,
-      baseAccuracy,
-      extraPiecesPenalty,
-      finalAccuracy: accuracy
-    });
-    
-    return {
-      accuracy,
-      extraPieces,
-      totalPiecesPlaced,
-      correctPlacements
-    };
-  } catch (error) {
-    console.error('Error calculating accuracy:', error);
-    return {
-      accuracy: 0,
-      extraPieces: 0,
-      totalPiecesPlaced: 0,
-      correctPlacements: 0
-    };
-  }
-};
 
 // Calculate time bonus based on completion time and actual memorize time
 const calculateTimeBonus = (completionTime: number, memorizeTime: number, actualMemorizeTime?: number): number => {
@@ -497,8 +408,14 @@ export const useGameStore = create<GameStore>()(
         // Get the user's solution
         const userPosition = chess.fen();
         
-        // Calculate accuracy
-        const accuracyResult = calculateAccuracy(gameState.originalPosition, userPosition);
+        const placed = placementFromFen(userPosition);
+        const score = scorePlacement(placementFromFen(gameState.originalPosition), placed);
+        const accuracyResult = {
+          accuracy: score.accuracy,
+          extraPieces: score.extra,
+          totalPiecesPlaced: Object.keys(placed).length,
+          correctPlacements: score.correct,
+        };
         
         // Calculate completion time with millisecond precision
         const now = Date.now();

@@ -164,6 +164,7 @@
           "study": "study window",
           "pieces": "pieces per round",
           "accuracy": "accuracy reading",
+          "plays": "games played",
           "languages": "languages"
         },
         "specimen": {
@@ -172,6 +173,95 @@
           "pieces": "Pieces",
           "exposure": "Exposure",
           "plays": "Games played"
+        },
+        "showcase": {
+          "aria": "Deep Fritz against Vladimir Kramnik, Bonn 2006, with a guided study of the position",
+          "event": "Man vs machine · Game 2",
+          "venue": "Bonn · 27 November 2006",
+          "white": "Deep Fritz",
+          "black": "Vladimir Kramnik",
+          "versus": "vs",
+          "pieceLabel": "{piece} on {square}",
+          "tags": {
+            "study": "Study",
+            "threat": "White threat",
+            "finish": "The finish",
+            "checkmate": "Checkmate",
+            "rebuild": "Rebuild",
+            "inspect": "Reach"
+          },
+          "counter": {
+            "study": "Study {n}/{total}",
+            "threat": "Threats {n}/{total}",
+            "finish": "Finish {n}/{total}",
+            "resume": "Click again to resume"
+          },
+          "controls": {
+            "steps": "Steps",
+            "step": "Step {n} of {total}: {tag}",
+            "previous": "Previous step",
+            "next": "Next step",
+            "play": "Play",
+            "pause": "Pause"
+          },
+          "inspect": {
+            "title": "{piece} on {square}.",
+            "reach": "{moves, plural, =0 {No moves} one {# move} other {# moves}}, {captures, plural, =0 {no captures} one {# capture} other {# captures}}.",
+            "checks": "Checks: {moves}."
+          },
+          "groups": {
+            "kingCorner": "King's corner",
+            "queenPawn": "Queen and pawn",
+            "cage": "The cage",
+            "blackQueen": "Black queen",
+            "blackPawns": "a4 and b4 pawns",
+            "bishopPawn": "Bishop and b2"
+          },
+          "steps": {
+            "study": {
+              "intro": { "caption": "Deep Fritz, White, against the world champion Vladimir Kramnik. Black is to move." },
+              "kingCorner": { "caption": "White's king on h1 with pawns g2 and h2." },
+              "queenPawn": {
+                "caption": "The queen on e4 sits right behind the pawn on e5.",
+                "thought": "Queen on e4, pawn on e5 in front of it."
+              },
+              "cage": {
+                "caption": "Black's king on h8 behind g7 and h6, with White's knight on f8 next door.",
+                "thought": "White's knight is already on f8, right beside the king."
+              },
+              "blackQueen": { "caption": "Black's queen is far away on a7." },
+              "blackPawns": { "caption": "Two black pawns on the fourth rank." },
+              "bishopPawn": { "caption": "Black's bishop on c1 sits diagonally behind White's b2 pawn." }
+            },
+            "threat": {
+              "knight": {
+                "caption": "The knight on f8 covers h7, the square beside Black's king.",
+                "thought": "Knight on f8: one jump from h7."
+              },
+              "queen": {
+                "caption": "The queen on e4 looks down the diagonal to h7. It can also take b4.",
+                "thought": "Queen and knight both aim at the same corner."
+              },
+              "mate": {
+                "caption": "Qh7 would be mate. The knight guards the queen, and g7 blocks the king.",
+                "thought": "The horse on f8 is what makes h7 deadly."
+              }
+            },
+            "finish": {
+              "reply": {
+                "caption": "Black had to stop Qh7#. 22 of his 26 legal moves lose to it. Kramnik played Qe3.",
+                "thought": "Black offers a queen trade and misses the mate."
+              },
+              "checkmate": {
+                "caption": "Qh7#. The knight guards the queen, g7 blocks the king, and g8 is covered.",
+                "thought": "Knight on f8: the piece that was already there."
+              }
+            },
+            "rebuild": {
+              "blank": { "caption": "The board goes blank. Which of the six groups can you still see?" },
+              "back": { "caption": "Rebuild one group at a time, then check it. That is the whole game." }
+            }
+          }
         }
       },
       "notebook": {

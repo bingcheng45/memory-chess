@@ -182,3 +182,6 @@ export function buildShowcaseSteps(showcase: Showcase = SHOWCASE): readonly Show
 }
 
 export const SHOWCASE_STEPS: readonly ShowcaseStep[] = buildShowcaseSteps();
+
+/** Every piece on its study square: where the board stands before any step moves it. */
+export const STUDY_PLACEMENTS: Placements = SHOWCASE_STEPS[0].placements;

@@ -1,14 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { FILES, RANKS, type SquareName } from "@/lib/game/board";
+import type { SquareName } from "@/lib/game/board";
 import type { MicroscopePhase } from "@/lib/home/specimen";
-
-// Board units: the overlay's viewBox is the 8x8 board, one unit per square.
-const squareCenter = (square: SquareName) => ({
-  x: FILES.indexOf(square[0] as (typeof FILES)[number]) + 0.5,
-  y: RANKS.indexOf(square[1] as (typeof RANKS)[number]) + 0.5,
-});
+import { squareCenter } from "./boardUnits";
 
 /** Pieces of the specimen that touch, share a file, or sit together in the corner. */
 const RELATIONS: readonly (readonly [SquareName, SquareName])[] = [

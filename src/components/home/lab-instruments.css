@@ -157,3 +157,83 @@
 @media (max-width: 900px) { .lab-plans { grid-template-columns: 1fr; } }
 /* The site header above already names the brand, so on narrow phones the streak chip takes the index mark's place. */
 @media (max-width: 420px) { .lab-index .lab-wrap:has(.lab-streak-chip) .lab-index-mark { display: none; } }
+
+/* hero showcase: the Bonn game walked through on one card */
+.lab-showcase { --lab-sc-caption-lines: 2; --lab-sc-thought-lines: 1; margin: 0; width: 100%; max-width: 480px; justify-self: center; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 14px 16px 12px; box-shadow: 0 1px 0 var(--lab-line); }
+.lab-sc-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2px 12px; }
+.lab-showcase .lab-sc-match { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 4px 0 6px; font: 600 20px/1.2 var(--lab-sans); letter-spacing: -0.02em; }
+.lab-sc-swatch { display: inline-block; width: 12px; height: 12px; margin-right: 7px; border-radius: 3px; border: 1px solid var(--lab-ink); }
+.lab-sc-swatch[data-side="white"] { background: var(--lab-paper); }
+.lab-sc-swatch[data-side="black"] { background: var(--lab-ink); }
+.lab-showcase .lab-figure { padding: 16px; }
+.lab-showcase .lab-crosshair { width: 10px; height: 10px; }
+.lab-showcase .lab-files { left: 16px; right: 16px; bottom: 0; }
+.lab-showcase .lab-ranks { top: 16px; bottom: 16px; left: 2px; }
+.lab-sc-ov, .lab-sc-pieces { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.lab-sc-ov { overflow: visible; }
+.lab-sc-piece { position: absolute; left: 0; top: 0; width: 12.5%; height: 12.5%; display: flex; align-items: center; justify-content: center; padding: 0; border: 0; background: none; cursor: pointer; pointer-events: auto; transform: translate(calc(var(--file) * 100%), calc(var(--row) * 100%)); }
+.lab-sc-board[data-glide] .lab-sc-piece { transition: transform 0.8s cubic-bezier(0.3, 0.7, 0.2, 1); }
+.lab-sc-piece:disabled { cursor: default; pointer-events: none; }
+.lab-sc-piece .lab-piece { transition: opacity 0.3s ease var(--reveal, 0s); }
+.lab-sc-piece:focus-visible { outline-offset: -3px; border-radius: var(--lab-radius-s); }
+.lab-sc-piece[aria-pressed="true"] { background: color-mix(in srgb, var(--lab-ink) 8%, transparent); border-radius: var(--lab-radius-s); }
+
+.lab-sc-box { fill: transparent; stroke-width: 0.07; stroke-linejoin: round; stroke-dasharray: 1 1; stroke-dashoffset: 1; opacity: 0; transition: stroke-dashoffset 0.8s ease, opacity 0.4s ease, fill 0.4s ease; }
+.lab-sc-group[data-side="white"] .lab-sc-box { stroke: var(--lab-blue); }
+.lab-sc-group[data-side="black"] .lab-sc-box { stroke: var(--lab-mark); }
+.lab-sc-group[data-side="mixed"] .lab-sc-box { stroke: var(--lab-ink); }
+.lab-sc-group[data-on] .lab-sc-box { stroke-dashoffset: 0; opacity: 0.42; }
+.lab-sc-group[data-active] .lab-sc-box { opacity: 1; stroke-width: 0.09; }
+.lab-sc-group[data-active][data-side="white"] .lab-sc-box { fill: color-mix(in srgb, var(--lab-blue) 7%, transparent); }
+.lab-sc-group[data-active][data-side="black"] .lab-sc-box { fill: color-mix(in srgb, var(--lab-mark) 8%, transparent); }
+.lab-sc-group[data-active][data-side="mixed"] .lab-sc-box { fill: color-mix(in srgb, var(--lab-ink) 6%, transparent); }
+.lab-sc-badge, .lab-sc-pill { opacity: 0; transition: opacity 0.3s ease; }
+.lab-sc-group[data-on] .lab-sc-badge { opacity: 0.75; }
+.lab-sc-group[data-active] .lab-sc-badge { opacity: 0; }
+.lab-sc-group[data-active] .lab-sc-pill { opacity: 1; }
+.lab-sc-group[data-side="white"] :is(.lab-sc-badge circle, .lab-sc-pill rect) { fill: var(--lab-blue); }
+.lab-sc-group[data-side="black"] :is(.lab-sc-badge circle, .lab-sc-pill rect) { fill: var(--lab-mark-ink); }
+.lab-sc-group[data-side="mixed"] :is(.lab-sc-badge circle, .lab-sc-pill rect) { fill: var(--lab-ink); }
+.lab-sc-group text { font-family: var(--lab-mono); font-weight: 500; fill: var(--lab-paper); }
+
+/* Marks start from their drawn state, so they still show where animation is switched off. */
+.lab-sc-arrow line { fill: none; stroke: var(--lab-blue); stroke-width: 0.1; stroke-linecap: round; stroke-dasharray: 1 1; animation: lab-sc-draw 0.55s ease backwards calc(var(--order) * 0.08s); }
+.lab-sc-arrow polygon { fill: var(--lab-blue); animation: lab-sc-fade 0.2s ease backwards calc(var(--order) * 0.08s + 0.4s); }
+.lab-sc-arrow[data-faint] line { stroke-width: 0.05; opacity: 0.45; }
+.lab-sc-ring { fill: none; stroke-width: 0.08; animation: lab-sc-fade 0.3s ease 0.15s backwards; }
+.lab-sc-ring:is([data-kind="white"], [data-kind="target"]) { stroke: var(--lab-blue); }
+.lab-sc-ring:is([data-kind="black"], [data-kind="king"]) { stroke: var(--lab-mark); }
+.lab-sc-ring[data-kind="king"] { stroke-width: 0.1; animation: lab-sc-fade 0.3s ease 0.15s backwards, lab-sc-pulse 1.2s ease-in-out 0.5s infinite; }
+.lab-sc-ring[data-kind="source"] { fill: color-mix(in srgb, var(--lab-ink) 6%, transparent); stroke: var(--lab-ink); stroke-width: 0.06; animation-delay: 0s; }
+.lab-sc-cross line { stroke: var(--lab-mark); stroke-width: 0.1; stroke-linecap: round; animation: lab-sc-fade 0.3s ease 0.4s backwards; }
+.lab-sc-dot { fill: var(--lab-mint-ink); opacity: 0.55; }
+.lab-sc-guard { fill: none; stroke: var(--lab-mint-ink); stroke-width: 0.05; stroke-dasharray: 0.12 0.1; opacity: 0.7; }
+@keyframes lab-sc-draw { from { stroke-dashoffset: 1; } }
+@keyframes lab-sc-fade { from { opacity: 0; } }
+@keyframes lab-sc-pulse { 50% { stroke-opacity: 0.35; } }
+
+.lab-sc-cap { margin-top: 4px; display: grid; gap: 6px; }
+.lab-sc-cap-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.lab-tag-ink { background: var(--lab-ink); color: var(--lab-paper); }
+.lab-showcase .lab-sc-caption, .lab-showcase .lab-sc-thought { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+.lab-showcase .lab-sc-caption { font: 500 16px/1.4 var(--lab-sans); letter-spacing: -0.005em; height: calc(1.4em * var(--lab-sc-caption-lines)); -webkit-line-clamp: var(--lab-sc-caption-lines); }
+.lab-showcase .lab-sc-thought { position: relative; margin: 2px 0 0 12px; padding: 6px 10px; border: 1px dashed var(--lab-line-2); border-radius: 12px; background: var(--lab-paper); font: italic 400 14px/1.35 var(--lab-sans); color: var(--lab-ink-2); height: calc(1.35em * var(--lab-sc-thought-lines) + 14px); -webkit-line-clamp: var(--lab-sc-thought-lines); }
+.lab-sc-thought[data-empty] { visibility: hidden; }
+.lab-sc-thought::before, .lab-sc-thought::after { content: ""; position: absolute; border-radius: 50%; background: var(--lab-paper); border: 1px dashed var(--lab-line-2); }
+.lab-sc-thought::before { width: 8px; height: 8px; left: -11px; bottom: 6px; }
+.lab-sc-thought::after { width: 4px; height: 4px; left: -17px; bottom: 0; }
+
+.lab-sc-controls { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+.lab-sc-btn { min-width: 32px; min-height: 32px; padding: 6px 10px; font: 600 13px/1 var(--lab-sans); border-radius: 8px; border: 1px solid var(--lab-line-2); background: var(--lab-paper); color: var(--lab-ink); cursor: pointer; }
+.lab-sc-btn:hover { border-color: var(--lab-blue); color: var(--lab-blue); }
+.lab-sc-play { min-width: 64px; }
+.lab-sc-bars { display: flex; flex: 1 1 auto; gap: 3px; min-width: 0; }
+.lab-sc-bar { position: relative; flex: 1 1 0; min-width: 0; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
+.lab-sc-bar::after { content: ""; position: absolute; left: 0; right: 0; top: 10px; height: 4px; border-radius: 2px; background: var(--lab-line); transition: background-color 0.2s; }
+.lab-sc-bar[data-first] { margin-left: 5px; }
+.lab-sc-bar[data-state]::after { opacity: 1; }
+.lab-sc-bar[data-state="past"]::after { opacity: 0.4; }
+.lab-sc-bar[data-state][data-phase="study"]::after { background: var(--lab-blue); }
+.lab-sc-bar[data-state][data-phase="threat"]::after { background: var(--lab-mark); }
+.lab-sc-bar[data-state][data-phase="finish"]::after { background: var(--lab-ink); }
+.lab-sc-bar[data-state][data-phase="rebuild"]::after { background: var(--lab-mint); }

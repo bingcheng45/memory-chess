@@ -16,7 +16,9 @@
     "measure:lcp": "node scripts/measure-lcp.mjs",
     "measure:timer": "node scripts/measure-timer.mjs",
     "migrate:rehearse": "node scripts/rehearse-leaderboard-migration.mjs",
-    "backup:verify": "node scripts/verify-leaderboard-backup.mjs"
+    "backup:verify": "node scripts/verify-leaderboard-backup.mjs",
+    "lab:personas": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/lab/build-personas.mjs",
+    "lab:drive": "node scripts/lab/drive.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

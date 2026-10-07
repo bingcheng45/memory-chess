@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
+import { socialMetadata } from "@/lib/seo/brand";
 import { Link } from "@/i18n/navigation";
 import {
   EditorialHero,
@@ -25,15 +26,11 @@ export function generateMetadata(): Metadata {
     alternates: {
       canonical: "/changelog",
     },
-    openGraph: {
+    ...socialMetadata({
       title: meta.socialTitle,
       description: meta.socialDescription,
       url: `${siteUrl}/changelog`,
-    },
-    twitter: {
-      title: meta.socialTitle,
-      description: meta.socialDescription,
-    },
+    }),
   };
 }
 

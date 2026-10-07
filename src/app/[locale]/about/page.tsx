@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
+import { socialMetadata } from "@/lib/seo/brand";
 import { Link } from "@/i18n/navigation";
 import {
   EditorialHero,
@@ -19,17 +20,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/about",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "About Memory Chess",
-    description:
-      "Who builds Memory Chess, why the game exists, and how it works.",
+    description: "Who builds Memory Chess, why the game exists, and how it works.",
     url: `${siteUrl}/about`,
-  },
-  twitter: {
-    title: "About Memory Chess",
-    description:
-      "Who builds Memory Chess, why the game exists, and how it works.",
-  },
+  }),
 };
 
 const external = {

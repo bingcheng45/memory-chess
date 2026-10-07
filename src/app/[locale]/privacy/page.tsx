@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
+import { socialMetadata } from "@/lib/seo/brand";
 import { Link } from "@/i18n/navigation";
 import PageHeader from "@/components/ui/PageHeader";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
@@ -14,17 +15,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/privacy",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "Memory Chess Privacy Policy",
-    description:
-      "Learn how Memory Chess handles data, cookies, analytics, and advertising.",
+    description: "Learn how Memory Chess handles data, cookies, analytics, and advertising.",
     url: `${siteUrl}/privacy`,
-  },
-  twitter: {
-    title: "Memory Chess Privacy Policy",
-    description:
-      "Learn how Memory Chess handles data, cookies, analytics, and advertising.",
-  },
+  }),
 };
 
 const lastUpdatedFormat = new Intl.DateTimeFormat("en-US", {

@@ -92,7 +92,7 @@ check("/game description (151 chars)", metaOf(game.html, "description") === GAME
 const [level, text] = firstHeading(game.html);
 check("/game first heading is the h1 with 'chess memory game'", level === "h1" && /chess memory game/i.test(text), `${level} "${text}"`);
 
-for (const path of ["/game", "/leaderboard", "/contact-us"]) {
+for (const path of ["/game", "/leaderboard", "/contact-us", "/about", "/terms", "/privacy", "/changelog"]) {
   const { html } = await fetchPage(path);
   check(`${path} og:image`, metaOf(html, "og:image") === SOCIAL_IMAGE, metaOf(html, "og:image"));
   check(`${path} twitter:card`, metaOf(html, "twitter:card") === "summary_large_image", metaOf(html, "twitter:card"));

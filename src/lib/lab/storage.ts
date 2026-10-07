@@ -27,6 +27,12 @@ export interface LabStore {
   listRounds(): Promise<RoundRecordV1[]>;
   /** Adds the rounds that are new to this record and returns how many that was, so a second import adds 0. */
   mergeRounds(records: readonly RoundRecordV1[]): Promise<number>;
+  /**
+   * Into an empty record only: keeps the rounds and takes the exported summary
+   * as the lifetime totals. Resolves null, changing nothing, if the record
+   * already has rounds; merge those with mergeRounds instead.
+   */
+  restore(records: readonly RoundRecordV1[], summary: LabSummary): Promise<number | null>;
   readSummary(): Promise<LabSummary>;
   clear(): Promise<void>;
   readLastBackup(): number | null;
@@ -144,6 +150,9 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     return { fresh, evicted: oldest.at(-1)?.endedAt ?? null };
   }
 
+  const afterWatermark = (records: readonly RoundRecordV1[], watermark: number | null) =>
+    watermark === null ? records : records.filter(({ endedAt }) => endedAt > watermark);
+
   /**
    * The summary counts every round in the log plus every round evicted from it,
    * each once. Evicted ids are gone, so a round at or before the eviction
@@ -154,10 +163,7 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     const saved = await exclusive(async () => {
       const before = storedSummary() ?? summarize(await allRounds(db));
       const watermark = before.evictedThrough;
-      const { fresh: added, evicted } = await insertNew(
-        db,
-        watermark === null ? records : records.filter(({ endedAt }) => endedAt > watermark),
-      );
+      const { fresh: added, evicted } = await insertNew(db, afterWatermark(records, watermark));
       if (added.length === 0) return null;
       const counted = [...added].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, before);
       // Every round in the log is newer than the watermark, so a fresh eviction only moves it forward.
@@ -167,6 +173,22 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     });
     if (!saved) return 0;
     // Outside the lock: a browser may hold this promise open on a permission prompt.
+    await requestPersistence(saved.rounds);
+    return saved.added;
+  }
+
+  /** An exported summary already counts the rounds exported with it, so they go into the log without being added again. */
+  async function restore(records: readonly RoundRecordV1[], summary: LabSummary): Promise<number | null> {
+    const db = await open();
+    const saved = await exclusive(async () => {
+      const held = await request(db.transaction(STORE).objectStore(STORE).count());
+      if (held > 0 || (storedSummary()?.rounds ?? 0) > 0) return null;
+      const { fresh, evicted } = await insertNew(db, afterWatermark(records, summary.evictedThrough));
+      const next = { ...summary, evictedThrough: evicted ?? summary.evictedThrough };
+      writeText(SUMMARY_KEY, JSON.stringify(next));
+      return { added: fresh.length, rounds: next.rounds };
+    });
+    if (!saved) return null;
     await requestPersistence(saved.rounds);
     return saved.added;
   }
@@ -209,6 +231,8 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     },
 
     mergeRounds: ingest,
+
+    restore,
 
     async readSummary() {
       return (

@@ -1,7 +1,9 @@
 import { act, renderHook } from "@testing-library/react";
 import { useLabRecord } from "@/components/home/useLabRecord";
 import { labStore, type LabStore } from "@/lib/lab/storage";
-import { EMPTY_SUMMARY } from "@/lib/lab/summary";
+import { EMPTY_SUMMARY, summarize } from "@/lib/lab/summary";
+import { buildExport } from "@/lib/lab/transfer";
+import { round } from "@/lib/lab/__tests__/fixtures";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 jest.mock("@/lib/lab/storage", () => ({ ...jest.requireActual("@/lib/lab/storage"), labStore: jest.fn() }));
@@ -14,6 +16,7 @@ function fakeStore(): LabStore {
     addRound: jest.fn(() => Promise.resolve(true)),
     listRounds: jest.fn(() => Promise.resolve([])),
     mergeRounds: jest.fn(() => Promise.resolve(0)),
+    restore: jest.fn(() => Promise.resolve(null)),
     readSummary: jest.fn(() => Promise.resolve(EMPTY_SUMMARY)),
     clear: jest.fn(() => Promise.resolve()),
     readLastBackup: jest.fn(() => null),
@@ -47,5 +50,37 @@ describe("useLabRecord download", () => {
     act(() => jest.advanceTimersByTime(REVOKE_AFTER_MS));
     expect(URL.revokeObjectURL).toHaveBeenCalledWith("blob:lab");
     expect(store.markBackedUp).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("useLabRecord import", () => {
+  const rounds = [round({ id: "a", endedAt: 1 }), round({ id: "b", endedAt: 2 })];
+  const json = JSON.stringify(buildExport(rounds, 0, { ...summarize(rounds), rounds: 9 }));
+  // jsdom's File has no text(), which the browser's does.
+  const file = () => Object.assign(new File([json], "lab.json"), { text: () => Promise.resolve(json) });
+
+  it("restores the file's lifetime totals into an empty record", async () => {
+    const store = fakeStore();
+    store.restore = jest.fn(() => Promise.resolve(2));
+    jest.mocked(labStore).mockReturnValue(store);
+    const { result } = renderHook(() => useLabRecord());
+
+    const outcome = await act(() => result.current.importFile(file()));
+
+    expect(outcome).toEqual({ ok: true, added: 2, rejected: 0, overCap: 0, summary: "restored" });
+    expect(jest.mocked(store.restore).mock.calls[0]).toEqual([rounds, { ...summarize(rounds), rounds: 9 }]);
+    expect(store.mergeRounds).not.toHaveBeenCalled();
+  });
+
+  it("merges only the rounds when the record already has some", async () => {
+    const store = fakeStore();
+    store.mergeRounds = jest.fn(() => Promise.resolve(1));
+    jest.mocked(labStore).mockReturnValue(store);
+    const { result } = renderHook(() => useLabRecord());
+
+    const outcome = await act(() => result.current.importFile(file()));
+
+    expect(outcome).toEqual({ ok: true, added: 1, rejected: 0, overCap: 0, summary: "ignored" });
+    expect(store.mergeRounds).toHaveBeenCalledWith(rounds);
   });
 });

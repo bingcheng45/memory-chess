@@ -34,7 +34,7 @@ function record(records: RoundRecordV1[], overrides: Partial<LabRecord> = {}): L
     lastBackup: null,
     today: "2026-10-07",
     download: jest.fn(() => Promise.resolve()),
-    importFile: jest.fn(() => Promise.resolve({ ok: true as const, added: 3, rejected: 1, overCap: 0 })),
+    importFile: jest.fn(() => Promise.resolve({ ok: true as const, added: 3, rejected: 1, overCap: 0, summary: null })),
     ...overrides,
   };
 }
@@ -96,7 +96,16 @@ describe("LabRecordSection", () => {
   });
 
   it.each([
-    [{ ok: true as const, added: 5000, rejected: 0, overCap: 2 }, "Imported 5,000 rounds. 2 older rounds were left out to stay within the 5,000-round limit."],
+    [{ ok: true as const, added: 5000, rejected: 0, overCap: 2, summary: null }, "Imported 5,000 rounds. 2 older rounds were left out to stay within the 5,000-round limit."],
+    [
+      { ok: true as const, added: 4, rejected: 0, overCap: 0, summary: "ignored" as const },
+      "Imported 4 rounds. This browser already had rounds, so only new rounds were merged, not the file's lifetime totals.",
+    ],
+    [
+      { ok: true as const, added: 2, rejected: 0, overCap: 0, summary: "dropped" as const },
+      "Imported 2 rounds. The file's lifetime totals could not be read, so only its rounds were imported.",
+    ],
+    [{ ok: true as const, added: 5000, rejected: 0, overCap: 0, summary: "restored" as const }, "Imported 5,000 rounds."],
     [{ ok: false as const, tooLarge: true }, "That file is over 5 MB, larger than any lab record, so nothing was imported."],
     [{ ok: false as const, tooLarge: false }, "That file is not a Memory Chess lab record."],
   ])("shows the import notice for %o", async (outcome, text) => {

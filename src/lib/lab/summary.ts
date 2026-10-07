@@ -30,7 +30,7 @@ export interface LabSummary {
   readonly evictedThrough: number | null;
 }
 
-const MAX_DAYS = 400;
+export const MAX_DAYS = 400;
 
 export const EMPTY_SUMMARY: LabSummary = {
   v: 2,

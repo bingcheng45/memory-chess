@@ -26,7 +26,7 @@ describe("lab import limits", () => {
   it("reads a valid file", async () => {
     const file = new File([JSON.stringify(buildExport([round({ id: "a" })], NOW))], "lab.json");
 
-    expect(await readImportFile(file, NOW)).toEqual({ ok: true, rounds: [round({ id: "a" })], rejected: 0, overCap: 0 });
+    expect(await readImportFile(file, NOW)).toEqual({ ok: true, rounds: [round({ id: "a" })], rejected: 0, overCap: 0, summary: null });
   });
 
   it(`keeps the newest ${ROUND_CAP} of 10,000 rounds, quickly, and counts the rest`, () => {

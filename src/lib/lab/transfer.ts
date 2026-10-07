@@ -1,15 +1,17 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import { buildRoundRecord, LAB_SOURCES, localDayOf, type LabSource, type RoundRecordV1 } from "./record";
-import { isCount } from "./summary";
+import { isCount, MAX_DAYS, parseSummary, type LabSummary, type PersonalBest } from "./summary";
 import { ROUND_CAP } from "./storage";
 
 const EXPORT_FORMAT = "memory-chess-lab";
 
-export interface LabExportV1 {
+/** Version 2 adds the lifetime summary; a version 1 file is the rounds alone. */
+export interface LabExportV2 {
   readonly format: typeof EXPORT_FORMAT;
-  readonly v: 1;
+  readonly v: 2;
   readonly exportedAt: number;
   readonly rounds: readonly RoundRecordV1[];
+  readonly summary?: LabSummary;
 }
 
 /** Far above a full 5,000-round record, so a file this large is not one. */
@@ -24,11 +26,13 @@ export type ImportResult =
       readonly rejected: number;
       /** Valid rounds older than the newest ROUND_CAP, left out because the log would evict them at once. */
       readonly overCap: number;
+      /** The file's lifetime summary, or "dropped" when it was present but could not be trusted. */
+      readonly summary: LabSummary | "dropped" | null;
     }
   | { readonly ok: false; readonly reason: ImportFailure };
 
-export function buildExport(rounds: readonly RoundRecordV1[], exportedAt: number): LabExportV1 {
-  return { format: EXPORT_FORMAT, v: 1, exportedAt, rounds };
+export function buildExport(rounds: readonly RoundRecordV1[], exportedAt: number, summary?: LabSummary): LabExportV2 {
+  return { format: EXPORT_FORMAT, v: 2, exportedAt, rounds, ...(summary && { summary }) };
 }
 
 const MAX_ID_LENGTH = 64;
@@ -37,6 +41,8 @@ const MAX_MEMORIZE_SECONDS = 3600;
 const LOCAL_DAY = /^\d{4}-\d{2}-\d{2}$/;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const FEN_BOARD = /^[1-8pnbrqkPNBRQK]+(\/[1-8pnbrqkPNBRQK]+){7}$/;
+const BEST_KEY = /^(game|calibration):\d{1,2}x\d{1,4}$/;
+const MAX_BESTS = 500;
 
 const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
 const rankWidth = (rank: string) => [...rank].reduce((width, char) => width + (Number(char) || 1), 0);
@@ -97,6 +103,47 @@ function parseRoundRecord(raw: unknown, now: number): RoundRecordV1 | null {
   });
 }
 
+const isBest = (value: unknown): value is PersonalBest =>
+  isObject(value) &&
+  typeof value.accuracy === "number" &&
+  value.accuracy >= 0 &&
+  value.accuracy <= 100 &&
+  isCount(value.correct) &&
+  isCount(value.solveMs) &&
+  isCount(value.at) &&
+  isCount(value.rounds);
+
+/**
+ * The file's lifetime summary, rebuilt field by field, or null if any part is
+ * out of shape or it counts fewer rounds than the file holds.
+ */
+function parseFileSummary(raw: unknown, rounds: readonly RoundRecordV1[], now: number): LabSummary | null {
+  const summary = parseSummary(raw);
+  if (!summary) return null;
+  const bests = Object.entries(summary.bests);
+  const valid =
+    summary.rounds >= rounds.length &&
+    summary.days.length <= MAX_DAYS &&
+    summary.days.every((day, index) => isCalendarDay(day) && day <= localDayOf(new Date(now + DAY_MS)) && (index === 0 || summary.days[index - 1] < day)) &&
+    bests.length <= MAX_BESTS &&
+    bests.every(([key, best]) => BEST_KEY.test(key) && isBest(best)) &&
+    (summary.evictedThrough === null || summary.evictedThrough <= now + DAY_MS);
+  if (!valid) return null;
+  return {
+    v: 2,
+    rounds: summary.rounds,
+    days: [...summary.days],
+    bests: Object.fromEntries(
+      bests.map(([key, { accuracy, correct, solveMs, at, rounds: count }]) => [key, { accuracy, correct, solveMs, at, rounds: count }]),
+    ),
+    squareShown: [...summary.squareShown],
+    squareMissed: [...summary.squareMissed],
+    typeShown: { ...summary.typeShown },
+    typeMissed: { ...summary.typeMissed },
+    evictedThrough: summary.evictedThrough,
+  };
+}
+
 export function parseImport(text: string, now: number = Date.now()): ImportResult {
   let data: unknown;
   try {
@@ -107,12 +154,19 @@ export function parseImport(text: string, now: number = Date.now()): ImportResul
   if (!isObject(data) || data.format !== EXPORT_FORMAT || !Array.isArray(data.rounds)) {
     return { ok: false, reason: "not-a-lab-record" };
   }
-  if (data.v !== 1) return { ok: false, reason: "newer-version" };
+  if (data.v !== 1 && data.v !== 2) return { ok: false, reason: "newer-version" };
 
   const parsed = data.rounds.map((raw) => parseRoundRecord(raw, now));
   const valid = parsed.filter((round): round is RoundRecordV1 => round !== null);
   const rounds = [...valid].sort((a, b) => a.endedAt - b.endedAt).slice(-ROUND_CAP);
-  return { ok: true, rounds, rejected: parsed.length - valid.length, overCap: valid.length - rounds.length };
+  const rejected = parsed.length - valid.length;
+  const overCap = valid.length - rounds.length;
+  // A summary counts every round of the file; one whose rounds did not all arrive could count a round twice later.
+  const summary =
+    data.v === 1 || data.summary === undefined
+      ? null
+      : (rejected === 0 && overCap === 0 && parseFileSummary(data.summary, rounds, now)) || "dropped";
+  return { ok: true, rounds, rejected, overCap, summary };
 }
 
 export async function readImportFile(file: File, now: number = Date.now()): Promise<ImportResult> {

@@ -1,7 +1,36 @@
 /** @jest-environment node */
 import { forceCloseDatabase, IDBFactory } from "fake-indexeddb";
 import { createLabStore, PERSIST_AFTER_ROUNDS, ROUND_CAP, type LabStoreDeps } from "@/lib/lab/storage";
-import { round } from "./fixtures";
+import { buildExport, parseImport } from "@/lib/lab/transfer";
+import { round, TARGET } from "./fixtures";
+
+const NOW = Date.UTC(2026, 9, 8);
+const MISSED_QUEEN = "4k3/8/8/8/8/5N2/8/4K3";
+
+/** A player past the cap: three early rounds on their own days, the first with a missed queen, then a long run. */
+function longHistory() {
+  return Array.from({ length: ROUND_CAP + 3 }, (_, index) =>
+    round({
+      id: `h${index}`,
+      endedAt: index + 1,
+      localDay: index < 3 ? `2026-01-0${index + 1}` : "2026-10-07",
+      source: index === 1 ? "calibration" : "game",
+      placedFen: index === 0 ? MISSED_QUEEN : TARGET,
+    }),
+  );
+}
+
+async function exportFile(store: ReturnType<typeof createLabStore>): Promise<string> {
+  const summary = await store.readSummary();
+  return JSON.stringify(buildExport(await store.listRounds(), NOW, summary));
+}
+
+async function importFile(store: ReturnType<typeof createLabStore>, text: string): Promise<number> {
+  const parsed = parseImport(text, NOW);
+  if (!parsed.ok) throw new Error(parsed.reason);
+  const summary = typeof parsed.summary === "object" ? parsed.summary : null;
+  return (summary && (await store.restore(parsed.rounds, summary))) ?? store.mergeRounds(parsed.rounds);
+}
 
 function memoryStorage(): Storage {
   const data = new Map<string, string>();
@@ -140,6 +169,46 @@ describe("lab store", () => {
     expect(await store.readSummary()).toEqual(before);
     expect((await store.listRounds())[0].id).toBe("r3");
   }, 30000);
+
+  it("restores the lifetime summary of a player past the cap into an empty record, once", async () => {
+    const source = createLabStore(deps());
+    await source.mergeRounds(longHistory());
+    const file = await exportFile(source);
+    const target = createLabStore(deps());
+
+    expect(await importFile(target, file)).toBe(ROUND_CAP);
+    const restored = await target.readSummary();
+    expect(restored).toMatchObject({
+      rounds: ROUND_CAP + 3,
+      days: ["2026-01-01", "2026-01-02", "2026-01-03", "2026-10-07"],
+      bests: { "game:4x10": { rounds: ROUND_CAP + 2, accuracy: 100 }, "calibration:4x10": { rounds: 1 } },
+      typeShown: { k: 2 * (ROUND_CAP + 3), q: ROUND_CAP + 3, n: ROUND_CAP + 3 },
+      typeMissed: { q: 1 },
+      evictedThrough: 3,
+    });
+    expect(restored.squareShown[27]).toBe(ROUND_CAP + 3);
+    expect(restored.squareMissed[27]).toBe(1);
+    expect(await target.readSummary()).toEqual(await source.readSummary());
+    expect((await target.listRounds()).map(({ id }) => id)).toEqual((await source.listRounds()).map(({ id }) => id));
+
+    expect(await importFile(target, file)).toBe(0);
+    expect(await target.readSummary()).toEqual(restored);
+  }, 60000);
+
+  it("merges only the rounds, never the file's totals, into a record that already has rounds", async () => {
+    const source = createLabStore(deps());
+    await source.mergeRounds(longHistory());
+    const file = await exportFile(source);
+    const target = createLabStore(deps());
+    await target.addRound(round({ id: "own", endedAt: 2, localDay: "2026-09-01" }));
+
+    expect(await importFile(target, file)).toBe(ROUND_CAP);
+    expect(await target.readSummary()).toMatchObject({
+      rounds: ROUND_CAP + 1,
+      days: ["2026-09-01", "2026-10-07"],
+      typeMissed: {},
+    });
+  }, 60000);
 
   it(`asks the browser to keep the record after ${PERSIST_AFTER_ROUNDS} rounds, once`, async () => {
     const setup = deps();

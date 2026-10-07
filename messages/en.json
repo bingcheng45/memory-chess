@@ -511,6 +511,8 @@
           "importFailed": "That file is not a Memory Chess lab record.",
           "tooLarge": "That file is over 5 MB, larger than any lab record, so nothing was imported.",
           "overCap": "{count, plural, one {# older round was} other {# older rounds were}} left out to stay within the 5,000-round limit.",
+          "summaryIgnored": "This browser already had rounds, so only new rounds were merged, not the file's lifetime totals.",
+          "summaryDropped": "The file's lifetime totals could not be read, so only its rounds were imported.",
           "safari": "On Safari, a private tab does not keep this record after it closes, and Safari erases a site's stored data after about 7 days without a visit. Export a copy to keep it.",
           "unavailable": "Not saved in private windows. This browser window is not keeping your rounds.",
           "backup": "Back up across devices (coming soon)",

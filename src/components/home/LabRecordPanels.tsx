@@ -49,13 +49,17 @@ export function TrendPanel({ records, summary }: RecordData) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const trend = useMemo(() => deriveTrend(records), [records]);
-  const config = trend.config && { pieces: trend.config.pieceCount, seconds: trend.config.memorizeSeconds };
+  const setting = trend.setting && {
+    source: trend.setting.source,
+    pieces: trend.setting.pieceCount,
+    seconds: trend.setting.memorizeSeconds,
+  };
 
   return (
     <div className="lab-panel lab-p-spark">
       <PanelHead fig={t("spark.fig")} tag={summary.rounds === 0 ? tags.sample : tags.mine} />
       <h3>{t("spark.title")}</h3>
-      {summary.rounds === 0 || !config ? (
+      {summary.rounds === 0 || !setting ? (
         <>
           <AccuracySparkline label={t("spark.aria")} first={t("spark.first")} last={t("spark.last")} />
           <p className="lab-note">{t("spark.note")}</p>
@@ -64,19 +68,19 @@ export function TrendPanel({ records, summary }: RecordData) {
         <>
           <AccuracySparkline
             points={trend.points}
-            label={t("spark.realAria", { count: trend.points.length, latest: trend.points[trend.points.length - 1], ...config })}
+            label={t("spark.realAria", { count: trend.points.length, latest: trend.points[trend.points.length - 1], ...setting })}
             first={t("spark.realFirst")}
             last={t("spark.realLast")}
           />
           <p className="lab-note">
-            {t("spark.config", config)} · {t("fromRounds", { count: trend.sampleSize })}
+            {t("spark.config", setting)} · {t("fromRounds", { count: trend.sampleSize })}
           </p>
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">
           {trend.roundsNeeded > 0
-            ? t("spark.needRounds", { count: trend.roundsNeeded, ...config })
-            : t("spark.needDay", config)}
+            ? t("spark.needRounds", { count: trend.roundsNeeded, ...setting })
+            : t("spark.needDay", setting)}
         </p>
       )}
     </div>
@@ -217,6 +221,7 @@ export function TypesPanel({ summary }: RecordData) {
               />
             ))}
           </div>
+          <p className="lab-note">{t("types.kings", { recalled: recall.king.recalled, shown: recall.king.shown })}</p>
           <p className="lab-note">{t("fromRounds", { count: recall.sampleSize })}</p>
         </>
       ) : (

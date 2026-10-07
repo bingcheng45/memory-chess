@@ -405,15 +405,15 @@
         },
         "spark": {
           "fig": "Fig. 6.2 · Accuracy over time",
-          "title": "Your line, session by session.",
-          "aria": "Sample sparkline of accuracy over 12 sessions, rising from 52 to 79 percent.",
-          "note": "Sample record · 12 sessions · Medium",
-          "first": "S01",
-          "last": "S12",
-          "needRounds": "{count, plural, one {# more round} other {# more rounds}} at {pieces} pieces, {seconds}s draws your trend.",
-          "needDay": "Play {pieces} pieces, {seconds}s on one more day to draw your trend.",
-          "config": "{pieces} pieces · {seconds}s, the setting you play most",
-          "realAria": "Your accuracy over your last {count} rounds at {pieces} pieces and {seconds} seconds, latest {latest} percent.",
+          "title": "Your line, round by round.",
+          "aria": "Sample sparkline of accuracy over 12 rounds, rising from 52 to 79 percent.",
+          "note": "Sample record · 12 rounds · Medium",
+          "first": "R01",
+          "last": "R12",
+          "needRounds": "{count, plural, one {# more round} other {# more rounds}} at {pieces} pieces, {seconds}s draws your {source, select, calibration {practice} other {game}} trend.",
+          "needDay": "Play {pieces} pieces, {seconds}s {source, select, calibration {in practice} other {in a game}} on one more day to draw your trend.",
+          "config": "{source, select, calibration {Practice} other {Game}} · {pieces} pieces · {seconds}s, the setting you play most",
+          "realAria": "Your accuracy over your last {count} {source, select, calibration {practice} other {game}} rounds at {pieces} pieces and {seconds} seconds, latest {latest} percent.",
           "realFirst": "Oldest",
           "realLast": "Latest"
         },
@@ -495,9 +495,10 @@
         "types": {
           "fig": "Fig. 6.7 · Recall by piece type",
           "title": "Which pieces slip.",
-          "need": "About {count, plural, one {# more round} other {# more rounds}} until a piece type has 20 sightings.",
+          "need": "About {count, plural, one {# more round} other {# more rounds}} until a piece other than the king has 20 sightings.",
           "needStart": "Recall by piece type appears after your first round.",
-          "thin": "{shown}/20 seen"
+          "thin": "{shown}/20 seen",
+          "kings": "Kings are in every round, so they are a baseline. Recalled {recalled} of {shown}."
         },
         "tools": {
           "title": "Kept on this device",

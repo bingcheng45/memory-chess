@@ -1,5 +1,5 @@
 import type { PieceSymbol } from "chess.js";
-import { configKey, LAB_SOURCES, localDayOf, PIECE_LETTERS, type LabSource, type RoundConfig, type RoundRecordV1 } from "./record";
+import { LAB_SOURCES, localDayOf, PIECE_LETTERS, settingKey, type LabSource, type RoundConfig, type RoundRecordV1 } from "./record";
 import type { LabSummary, PersonalBest } from "./summary";
 
 export const LAB_THRESHOLDS = {
@@ -87,29 +87,33 @@ export function deriveBests(summary: LabSummary): BestsResult {
   return { ready: entries.length > 0, sampleSize: summary.rounds, entries };
 }
 
+export interface TrendSetting extends Pick<RoundConfig, "pieceCount" | "memorizeSeconds"> {
+  readonly source: LabSource;
+}
+
 export interface TrendResult {
   readonly ready: boolean;
   readonly sampleSize: number;
-  readonly config: Pick<RoundConfig, "pieceCount" | "memorizeSeconds"> | null;
+  readonly setting: TrendSetting | null;
   readonly points: readonly number[];
   readonly roundsNeeded: number;
   readonly daysNeeded: number;
 }
 
-/** Accuracy for the most-played config only: mixing configs would read harder rounds as decline. */
+/** Accuracy for the most-played setting only: mixing settings would read harder rounds as decline. */
 export function deriveTrend(records: readonly RoundRecordV1[]): TrendResult {
-  const byConfig = new Map<string, { rounds: RoundRecordV1[]; latest: number }>();
+  const bySetting = new Map<string, { rounds: RoundRecordV1[]; latest: number }>();
   records.forEach((record) => {
-    const key = configKey(record.config);
-    const group = byConfig.get(key);
-    if (!group) byConfig.set(key, { rounds: [record], latest: record.endedAt });
+    const key = settingKey(record.source, record.config);
+    const group = bySetting.get(key);
+    if (!group) bySetting.set(key, { rounds: [record], latest: record.endedAt });
     else {
       group.rounds.push(record);
       group.latest = Math.max(group.latest, record.endedAt);
     }
   });
   const rounds =
-    [...byConfig.values()].sort((a, b) => b.rounds.length - a.rounds.length || b.latest - a.latest)[0]?.rounds ?? [];
+    [...bySetting.values()].sort((a, b) => b.rounds.length - a.rounds.length || b.latest - a.latest)[0]?.rounds ?? [];
   const sorted = [...rounds].sort((a, b) => a.endedAt - b.endedAt);
   const days = new Set(sorted.map((record) => record.localDay)).size;
   const roundsNeeded = Math.max(0, LAB_THRESHOLDS.trendRounds - sorted.length);
@@ -118,7 +122,9 @@ export function deriveTrend(records: readonly RoundRecordV1[]): TrendResult {
   return {
     ready: roundsNeeded === 0 && daysNeeded === 0,
     sampleSize: sorted.length,
-    config: sorted[0] ? { pieceCount: sorted[0].config.pieceCount, memorizeSeconds: sorted[0].config.memorizeSeconds } : null,
+    setting: sorted[0]
+      ? { source: sorted[0].source, pieceCount: sorted[0].config.pieceCount, memorizeSeconds: sorted[0].config.memorizeSeconds }
+      : null,
     points: sorted.slice(-LAB_THRESHOLDS.trendPoints).map((record) => record.accuracy),
     roundsNeeded,
     daysNeeded,
@@ -135,7 +141,10 @@ export interface TypeRecall {
 export interface TypeRecallResult {
   readonly ready: boolean;
   readonly sampleSize: number;
+  /** Every type but the king. Only these decide readiness. */
   readonly types: readonly TypeRecall[];
+  /** Every round places both kings, so king recall is a baseline, not a finding. */
+  readonly king: TypeRecall;
   readonly roundsNeeded: number | null;
 }
 
@@ -146,7 +155,7 @@ function roundsToReach(threshold: number, have: number, rounds: number): number 
 }
 
 export function deriveTypeRecall(summary: LabSummary): TypeRecallResult {
-  const types = PIECE_LETTERS.map((type) => {
+  const recallOf = (type: PieceSymbol): TypeRecall => {
     const shown = summary.typeShown[type] ?? 0;
     return {
       type,
@@ -154,12 +163,14 @@ export function deriveTypeRecall(summary: LabSummary): TypeRecallResult {
       recalled: shown - (summary.typeMissed[type] ?? 0),
       ready: shown >= LAB_THRESHOLDS.typeExposures,
     };
-  });
+  };
+  const types = PIECE_LETTERS.filter((type) => type !== "k").map(recallOf);
   const mostShown = Math.max(...types.map(({ shown }) => shown));
   return {
     ready: types.some(({ ready }) => ready),
     sampleSize: summary.rounds,
     types,
+    king: recallOf("k"),
     roundsNeeded: roundsToReach(LAB_THRESHOLDS.typeExposures, mostShown, summary.rounds),
   };
 }

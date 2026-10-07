@@ -1,5 +1,5 @@
 import type { PieceSymbol } from "chess.js";
-import { configKey, PIECE_LETTERS, type LabSource, type RoundRecordV1, type TypeCounts } from "./record";
+import { PIECE_LETTERS, settingKey, type RoundRecordV1, type TypeCounts } from "./record";
 
 export interface PersonalBest {
   readonly accuracy: number;
@@ -7,11 +7,6 @@ export interface PersonalBest {
   readonly solveMs: number;
   readonly at: number;
   readonly rounds: number;
-}
-
-/** Bests key: a practice reading never sets a game best at the same setting. */
-function bestKey(source: LabSource, config: RoundRecordV1["config"]): string {
-  return `${source}:${configKey(config)}`;
 }
 
 /**
@@ -59,7 +54,7 @@ function beats(record: RoundRecordV1, best: PersonalBest | undefined): boolean {
 }
 
 export function addToSummary(summary: LabSummary, record: RoundRecordV1): LabSummary {
-  const key = bestKey(record.source, record.config);
+  const key = settingKey(record.source, record.config);
   const previous = summary.bests[key];
   const best: PersonalBest = beats(record, previous)
     ? { accuracy: record.accuracy, correct: record.correct, solveMs: record.solveMs, at: record.endedAt, rounds: 0 }

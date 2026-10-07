@@ -157,3 +157,5 @@
 .lab-plan ol { margin: 12px 0 0; padding-left: 20px; color: var(--lab-ink-2); font-size: 15px; list-style: decimal; }
 .lab-plan li { margin: 4px 0; }
 @media (max-width: 900px) { .lab-plans { grid-template-columns: 1fr; } }
+/* The site header above already names the brand, so on narrow phones the streak chip takes the index mark's place. */
+@media (max-width: 420px) { .lab-index .lab-wrap:has(.lab-streak-chip) .lab-index-mark { display: none; } }

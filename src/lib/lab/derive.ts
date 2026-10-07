@@ -139,7 +139,6 @@ export interface TypeRecall {
 export interface TypeRecallResult {
   readonly ready: boolean;
   readonly sampleSize: number;
-  /** Every type but the king. Only these decide readiness. */
   readonly types: readonly TypeRecall[];
   /** Every round places both kings, so king recall is a baseline, not a finding. */
   readonly king: TypeRecall;

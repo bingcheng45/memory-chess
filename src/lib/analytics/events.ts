@@ -1,7 +1,7 @@
 import type { LeaderboardDifficulty } from "@/types/leaderboard";
 
 /** Where a round was started from. `link` is a round link that names no known source. */
-export const ROUND_SOURCES = [
+const ROUND_SOURCES = [
   "home_quick",
   "home_tier",
   "calibration",

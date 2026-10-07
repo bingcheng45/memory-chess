@@ -11,7 +11,7 @@ export interface PersonalBest {
 }
 
 /** Bests key: a practice reading never sets a game best at the same setting. */
-export function bestKey(source: LabSource, config: RoundRecordV1["config"]): string {
+function bestKey(source: LabSource, config: RoundRecordV1["config"]): string {
   return `${source}:${configKey(config)}`;
 }
 

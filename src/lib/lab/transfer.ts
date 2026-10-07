@@ -3,7 +3,7 @@ import { buildRoundRecord, LAB_SOURCES, localDayOf, type LabSource, type RoundRe
 import { isCount } from "./summary";
 import { ROUND_CAP } from "./storage";
 
-export const EXPORT_FORMAT = "memory-chess-lab";
+const EXPORT_FORMAT = "memory-chess-lab";
 
 export interface LabExportV1 {
   readonly format: typeof EXPORT_FORMAT;
@@ -61,7 +61,7 @@ function isCalendarDay(value: unknown): value is string {
  * out of shape. Derived fields (outcomes, counts, accuracy) are recomputed
  * from the two positions rather than trusted.
  */
-export function parseRoundRecord(raw: unknown, now: number): RoundRecordV1 | null {
+function parseRoundRecord(raw: unknown, now: number): RoundRecordV1 | null {
   if (!isObject(raw) || !isObject(raw.config)) return null;
   const { config } = raw;
   const latest = now + DAY_MS;

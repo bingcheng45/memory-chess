@@ -124,7 +124,7 @@ export function MissMap({ cells = SAMPLE_MISS_MAP, label }: { readonly cells?: r
   );
 }
 
-export interface MissLine {
+interface MissLine {
   readonly name: string;
   /** Miss share 0 to 1, or null when too few pieces were seen on the line. */
   readonly value: number | null;

@@ -66,7 +66,7 @@ export async function loadCalibrationPosition(random: () => number = Math.random
 }
 
 /** How many more of this piece the standard set allows on the board. */
-export function remainingOf(position: LabPosition, piece: LabPiece): number {
+function remainingOf(position: LabPosition, piece: LabPiece): number {
   const used = Object.values(position).filter((placed) => samePiece(placed, piece)).length;
   return STANDARD_INVENTORY[piece.type] - used;
 }
@@ -133,7 +133,7 @@ export function squareVerdict(
 
 export type TierAdvice = "stepUp" | "stay" | "start";
 
-export interface TierSuggestion {
+interface TierSuggestion {
   readonly advice: TierAdvice;
   readonly difficulty: RankedDifficulty;
   readonly pieceCount: number;

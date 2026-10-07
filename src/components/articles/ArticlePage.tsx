@@ -244,7 +244,7 @@ export default function ArticlePage({ article, nextArticle, counts, charsPerSeco
             charsPerSecond={charsPerSecond}
           />
           <Drill drill={article.drill} />
-          {locale === DEFAULT_LOCALE && article.relatedGuides?.length ? (
+          {article.relatedGuides?.length ? (
             <RelatedGuides guides={article.relatedGuides} />
           ) : null}
           <Sources sources={article.sources} />

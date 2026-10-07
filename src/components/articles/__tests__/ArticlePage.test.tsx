@@ -8,6 +8,7 @@ import { pointerEnters, recordWarmedImages } from "@/components/articles/__tests
 import type { Article } from "@/lib/articles/schema";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
 import { makeArticle, summaryOf } from "@/lib/articles/__tests__/fixtures";
+import { textOf, withText } from "@/lib/articles/articleText";
 
 jest.mock("next/link", () => {
   function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
@@ -413,7 +414,7 @@ describe("ArticlePage guide links", () => {
   });
 
   it("leaves the English-only guide list off a translated article", () => {
-    render(<ArticlePage article={withGuides} nextArticle={next} />, { locale: "de" });
+    render(<ArticlePage article={withText(withGuides, textOf(withGuides))} nextArticle={next} />, { locale: "de" });
 
     expect(screen.queryByRole("link", { name: "chess memory training" })).not.toBeInTheDocument();
   });

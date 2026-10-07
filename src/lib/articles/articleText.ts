@@ -27,10 +27,16 @@ export function textOf(article: Article): ArticleText {
   };
 }
 
-/** `text` must have the shape of `textOf(english)`. */
+/**
+ * `text` must have the shape of `textOf(english)`. The English-only fields,
+ * `searchTitle` and `relatedGuides`, are left off the translation.
+ */
 export function withText(english: Article, text: ArticleText): Article {
+  const shared = { ...english };
+  delete shared.searchTitle;
+  delete shared.relatedGuides;
   return {
-    ...english,
+    ...shared,
     title: text.title,
     description: text.description,
     person: text.person,

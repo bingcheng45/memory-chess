@@ -5,8 +5,7 @@ import { labStore } from "./storage";
 export const LAB_RECORD_CHANGED = "memory-chess-lab-changed";
 
 export type RoundFacts = Omit<RoundInput, "id" | "endedAt" | "localDay"> &
-  Required<Pick<RoundCapture, "startSource">> &
-  Pick<RoundCapture, "placements" | "removals">;
+  Pick<RoundCapture, "startSource" | "placements" | "removals">;
 
 /** Saves a finished round on this device. Never throws: the game must not depend on it. */
 export async function recordLabRound(facts: RoundFacts, now: Date = new Date()): Promise<boolean> {

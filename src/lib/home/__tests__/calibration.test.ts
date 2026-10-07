@@ -166,7 +166,6 @@ describe("roundReducer", () => {
       target,
       placed: {},
       selected: null,
-      startedAt: 1000,
       log: { startedAt: 1000, placements: [], removals: 0 },
     });
   });

@@ -1,6 +1,6 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import { ROUND_SOURCES, type RoundSource } from "@/lib/analytics/events";
-import { MAX_PLACEMENT_MS, MAX_PLACEMENTS, PIECE_CODES, type PlacementEvent } from "./placements";
+import { MAX_PLACEMENT_MS, MAX_PLACEMENTS, type PlacementEvent } from "./placements";
 import {
   buildRoundRecord,
   LAB_SOURCES,
@@ -77,17 +77,15 @@ export function isCalendarDay(value: unknown): value is string {
   return localDayOf(date) === value;
 }
 
-const isInteger = (value: unknown, min: number, max: number): value is number =>
-  Number.isInteger(value) && (value as number) >= min && (value as number) <= max;
+const PIECE_CODE = /^[KQRBNPkqrbnp]$/;
 
 const isPlacement = (value: unknown): value is PlacementEvent =>
   Array.isArray(value) &&
   value.length === 3 &&
-  isInteger(value[0], 0, MAX_PLACEMENT_MS) &&
-  isInteger(value[1], 0, 63) &&
+  isCount(value[0], MAX_PLACEMENT_MS) &&
+  isCount(value[1], 63) &&
   typeof value[2] === "string" &&
-  value[2].length === 1 &&
-  PIECE_CODES.includes(value[2]);
+  PIECE_CODE.test(value[2]);
 
 const isPlacementList = (value: unknown): value is PlacementEvent[] =>
   Array.isArray(value) &&
@@ -103,11 +101,11 @@ function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
   const valid =
     ROUND_KINDS.includes(kind as RoundKind) &&
     (raw.startSource === undefined || ROUND_SOURCES.includes(raw.startSource as RoundSource)) &&
-    (raw.tzOffsetMin === undefined || isInteger(raw.tzOffsetMin, -MAX_TZ_OFFSET_MIN, MAX_TZ_OFFSET_MIN)) &&
+    (raw.tzOffsetMin === undefined || (Number.isInteger(raw.tzOffsetMin) && Math.abs(raw.tzOffsetMin as number) <= MAX_TZ_OFFSET_MIN)) &&
     (raw.reviewOf === undefined || (review && isId(raw.reviewOf))) &&
-    (raw.reviewDelayDays === undefined || (review && isInteger(raw.reviewDelayDays, 0, MAX_REVIEW_DELAY_DAYS))) &&
+    (raw.reviewDelayDays === undefined || (review && isCount(raw.reviewDelayDays, MAX_REVIEW_DELAY_DAYS))) &&
     (raw.placements === undefined) === (raw.removals === undefined) &&
-    (raw.placements === undefined || (isPlacementList(raw.placements) && isInteger(raw.removals, 0, MAX_REMOVALS)));
+    (raw.placements === undefined || (isPlacementList(raw.placements) && isCount(raw.removals, MAX_REMOVALS)));
   if (!valid) return null;
   return {
     kind: kind as RoundKind,
@@ -115,7 +113,7 @@ function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
     reviewOf: raw.reviewOf as string | undefined,
     reviewDelayDays: raw.reviewDelayDays as number | undefined,
     tzOffsetMin: raw.tzOffsetMin as number | undefined,
-    placements: (raw.placements as PlacementEvent[] | undefined)?.map(([ms, square, piece]) => [ms, square, piece] as const),
+    placements: raw.placements as PlacementEvent[] | undefined,
     removals: raw.removals as number | undefined,
   };
 }

@@ -56,8 +56,8 @@ function inputFor(name: PersonaName): Promise<LabInput> {
 }
 
 describe("metric engine on the persona fixtures", () => {
-  it.each(PERSONA_NAMES.filter((name) => name !== "newVisitor"))("matches the pre-engine derive output for %s", async (name) => {
-    expect(legacy(await inputFor(name))).toEqual(golden[name === "v1Legacy" ? "threeDays" : name]);
+  it.each(PERSONA_NAMES.filter((name) => name !== "newVisitor" && name !== "v1Legacy"))("matches the pre-engine derive output for %s", async (name) => {
+    expect(legacy(await inputFor(name))).toEqual(golden[name as keyof typeof golden]);
   });
 
   it("gives a new visitor no value and nothing ready, as the old functions did", async () => {

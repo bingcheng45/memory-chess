@@ -489,7 +489,7 @@ export const useGameStore = create<GameStore>()(
         // Loaded on demand so the lab storage stays out of the /game bundle until a round ends.
         const facts = {
           source: 'game',
-          startSource: gameState.startSource ?? 'link',
+          startSource: gameState.startSource,
           pieceCount: gameState.pieceCount,
           memorizeSeconds: gameState.memorizeTime,
           targetFen: gameState.originalPosition,

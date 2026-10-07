@@ -1,10 +1,11 @@
 import "fake-indexeddb/auto";
+import { deserialize, serialize } from "node:v8";
 import { LAB_RECORD_CHANGED, recordLabRound } from "@/lib/lab/recordRound";
 import { labStore } from "@/lib/lab/storage";
 import { TARGET } from "./fixtures";
 
-// jsdom has no structuredClone, which fake-indexeddb copies records with; a round is plain JSON.
-globalThis.structuredClone ??= (value) => JSON.parse(JSON.stringify(value));
+// jsdom has no structuredClone, which fake-indexeddb copies records with.
+globalThis.structuredClone ??= (value) => deserialize(serialize(value));
 
 describe("recordLabRound", () => {
   it("saves a version 2 round with the start, the position id, the timezone offset and the placements", async () => {

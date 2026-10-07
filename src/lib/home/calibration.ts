@@ -162,7 +162,6 @@ export type RoundState =
       readonly target: LabPosition;
       readonly placed: LabPosition;
       readonly selected: LabPiece | null;
-      readonly startedAt: number;
       readonly log: PlacementLog;
     }
   | {
@@ -190,7 +189,7 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
   if (action.type === "start") return { phase: "study", target: action.target };
   if (action.type === "studyEnded") {
     return state.phase === "study"
-      ? { phase: "rebuild", target: state.target, placed: {}, selected: null, startedAt: action.now, log: startPlacementLog(action.now) }
+      ? { phase: "rebuild", target: state.target, placed: {}, selected: null, log: startPlacementLog(action.now) }
       : state;
   }
   if (state.phase !== "rebuild") return state;
@@ -219,7 +218,7 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
         target: state.target,
         placed: state.placed,
         score: scoreReading(state.target, state.placed),
-        rebuildMs: action.now - state.startedAt,
+        rebuildMs: action.now - state.log.startedAt,
         log: state.log,
       };
   }

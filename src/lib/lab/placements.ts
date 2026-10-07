@@ -5,7 +5,6 @@ export type PlacementEvent = readonly [ms: number, square: number, piece: string
 
 export const MAX_PLACEMENTS = 96;
 export const MAX_PLACEMENT_MS = 60 * 60 * 1000;
-export const PIECE_CODES = "KQRBNPkqrbnp";
 
 export interface PlacementLog {
   readonly startedAt: number;

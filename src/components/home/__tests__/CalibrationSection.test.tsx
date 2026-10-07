@@ -4,11 +4,12 @@ import { LibrarySection, LIBRARY_GUIDES } from "@/components/home/LibrarySection
 import { LEARN_SLUGS } from "@/lib/seo/learn";
 import { recordLabRound } from "@/lib/lab/recordRound";
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
+import type { PieceColor, PieceType } from "@/types/chess";
+import { pieceTypeToFenChar } from "@/utils/chessPieces";
 
-const LETTERS: Record<string, string> = { king: "k", queen: "q", rook: "r", bishop: "b", knight: "n", pawn: "p" };
 const pieceLetter = (name: string) => {
   const [color, type] = name.split(" ");
-  return color === "white" ? LETTERS[type].toUpperCase() : LETTERS[type];
+  return pieceTypeToFenChar(type as PieceType, color as PieceColor);
 };
 
 jest.mock("@/lib/lab/recordRound", () => ({ recordLabRound: jest.fn(() => Promise.resolve(true)) }));

@@ -27,17 +27,5 @@ export function roundV2(overrides: Partial<RoundInput> = {}, capture: RoundCaptu
 }
 
 export function round(overrides: Partial<RoundInput> = {}): RoundRecordV1 {
-  return buildRoundRecord({
-    id: "r1",
-    source: "game",
-    endedAt: Date.UTC(2026, 9, 7, 12),
-    localDay: "2026-10-07",
-    pieceCount: 4,
-    memorizeSeconds: 10,
-    targetFen: TARGET,
-    placedFen: TARGET,
-    memorizeMs: 10000,
-    solveMs: 20000,
-    ...overrides,
-  });
+  return buildRoundRecord({ ...INPUT, ...overrides });
 }

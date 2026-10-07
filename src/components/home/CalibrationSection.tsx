@@ -26,7 +26,7 @@ const formatClock = (ms: number) => formatSeconds(ms).padStart(4, "0");
 function useRoundClock(state: RoundState, onStudyEnded: (now: number) => void): number {
   const [clockMs, setClockMs] = useState<number>(CALIBRATION_RULES.studyMs);
   const studyTarget = state.phase === "study" ? state.target : null;
-  const rebuildStart = state.phase === "rebuild" ? state.startedAt : null;
+  const rebuildStart = state.phase === "rebuild" ? state.log.startedAt : null;
 
   useEffect(() => {
     if (!studyTarget) return;

@@ -92,14 +92,14 @@ const isId = (value: unknown): value is string => typeof value === "string" && v
 
 /** The version 2 facts of an untrusted round, or null if any present one is out of shape. */
 function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
-  const kind = raw.kind ?? "normal";
-  const review = kind === "review";
+  const kind = raw.kind === undefined ? "normal" : raw.kind;
+  const reviewed = raw.reviewOf !== undefined;
   const valid =
     ROUND_KINDS.includes(kind as RoundKind) &&
     (raw.startSource === undefined || ROUND_SOURCES.includes(raw.startSource as RoundSource)) &&
     (raw.tzOffsetMin === undefined || (Number.isInteger(raw.tzOffsetMin) && Math.abs(raw.tzOffsetMin as number) <= MAX_TZ_OFFSET_MIN)) &&
-    (raw.reviewOf === undefined || (review && isId(raw.reviewOf))) &&
-    (raw.reviewDelayDays === undefined || (review && isCount(raw.reviewDelayDays, MAX_REVIEW_DELAY_DAYS))) &&
+    reviewed === (raw.reviewDelayDays !== undefined) &&
+    (!reviewed || (kind === "review" && isId(raw.reviewOf) && isCount(raw.reviewDelayDays, MAX_REVIEW_DELAY_DAYS))) &&
     (raw.placements === undefined) === (raw.removals === undefined) &&
     (raw.placements === undefined || (isPlacementList(raw.placements) && isCount(raw.removals, MAX_REMOVALS)));
   if (!valid) return null;

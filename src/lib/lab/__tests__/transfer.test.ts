@@ -152,6 +152,10 @@ describe("lab record export and import", () => {
     ["a review delay that is not a whole day", { kind: "review", reviewOf: "a", reviewDelayDays: 1.5 }],
     ["an empty review link", { kind: "review", reviewOf: "" }],
     ["an unknown start", { startSource: "server" }],
+    ["a null start", { startSource: null }],
+    ["a null kind", { kind: null }],
+    ["a review link without its delay", { kind: "review", reviewOf: "a" }],
+    ["a review delay without its link", { kind: "review", reviewDelayDays: 2 }],
   ])("skips a version 2 round with %s, counts it and keeps the rest", (_, change) => {
     const file = JSON.stringify(buildExport([roundV2({ id: "good" }), { ...roundV2({ id: "bad" }), ...change }] as never, NOW));
 

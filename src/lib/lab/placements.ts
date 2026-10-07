@@ -5,6 +5,10 @@ export type PlacementEvent = readonly [ms: number, square: number, piece: string
 
 export const MAX_PLACEMENTS = 96;
 export const MAX_PLACEMENT_MS = 60 * 60 * 1000;
+export const MAX_REMOVALS = 10_000;
+
+const PIECE_CODE = /^[KQRBNPkqrbnp]$/;
+export const isPieceCode = (value: unknown): value is string => typeof value === "string" && PIECE_CODE.test(value);
 
 export interface PlacementLog {
   readonly startedAt: number;
@@ -19,15 +23,17 @@ export function startPlacementLog(startedAt: number): PlacementLog {
 
 /**
  * Times never step back, even when the clock that stamped them did, so the
- * order of the events and the order of their times always agree.
+ * order of the events and the order of their times always agree. The log
+ * holds only what the importer accepts, so one odd round cannot void a file.
  */
 export function logPlacement(log: PlacementLog, at: number, square: SquareName, piece: string): PlacementLog {
-  if (log.placements.length >= MAX_PLACEMENTS) return log;
+  const index = BOARD_SQUARES.indexOf(square);
+  if (log.placements.length >= MAX_PLACEMENTS || index < 0 || !isPieceCode(piece)) return log;
   const previous = log.placements.at(-1)?.[0] ?? 0;
   const ms = Math.min(MAX_PLACEMENT_MS, Math.max(previous, Math.round(at - log.startedAt)));
-  return { ...log, placements: [...log.placements, [ms, BOARD_SQUARES.indexOf(square), piece]] };
+  return { ...log, placements: [...log.placements, [ms, index, piece]] };
 }
 
 export function logRemovals(log: PlacementLog, count = 1): PlacementLog {
-  return count > 0 ? { ...log, removals: log.removals + count } : log;
+  return count > 0 ? { ...log, removals: Math.min(MAX_REMOVALS, log.removals + count) } : log;
 }

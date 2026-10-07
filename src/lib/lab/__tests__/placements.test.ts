@@ -1,4 +1,7 @@
-import { logPlacement, logRemovals, MAX_PLACEMENT_MS, startPlacementLog } from "@/lib/lab/placements";
+import { logPlacement, logRemovals, MAX_PLACEMENT_MS, startPlacementLog, type PlacementLog } from "@/lib/lab/placements";
+import type { SquareName } from "@/lib/game/board";
+import { parseImport } from "@/lib/lab/transfer";
+import { round } from "./fixtures";
 
 describe("placement log", () => {
   it("keeps each placement in the order played, as ms since the rebuild began, a8 = 0 and the FEN letter", () => {
@@ -29,5 +32,26 @@ describe("placement log", () => {
 
     expect(logRemovals(log, 3).removals).toBe(3);
     expect(logRemovals(log, 0)).toBe(log);
+  });
+
+  it("stops counting corrections at the most a file may carry", () => {
+    const log = logRemovals(logRemovals(startPlacementLog(0), 9_999), 5);
+
+    expect(log.removals).toBe(10_000);
+  });
+
+  it("skips a placement on a square off the board or with a letter that is not a piece", () => {
+    const log = logPlacement(logPlacement(startPlacementLog(0), 10, "z9" as SquareName, "K"), 20, "e1", "X");
+
+    expect(log.placements).toEqual([]);
+  });
+
+  it("never writes a log its own importer refuses", () => {
+    const busy: PlacementLog = logRemovals(logPlacement(startPlacementLog(0), 10, "z9" as SquareName, "K"), 50_000);
+    const { v, ...core } = round();
+    const file = { format: "memory-chess-lab", v: 2, rounds: [{ ...core, v: 2, placements: busy.placements, removals: busy.removals }] };
+
+    expect(v).toBe(1);
+    expect(parseImport(JSON.stringify(file), Date.UTC(2026, 9, 8))).toMatchObject({ ok: true, rejected: 0 });
   });
 });

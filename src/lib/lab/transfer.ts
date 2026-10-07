@@ -1,6 +1,6 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import { ROUND_SOURCES, type RoundSource } from "@/lib/analytics/events";
-import { MAX_PLACEMENT_MS, MAX_PLACEMENTS, type PlacementEvent } from "./placements";
+import { isPieceCode, MAX_PLACEMENT_MS, MAX_PLACEMENTS, MAX_REMOVALS, type PlacementEvent } from "./placements";
 import {
   buildRoundRecord,
   LAB_SOURCES,
@@ -58,7 +58,6 @@ const BEST_KEY = /^(game|calibration):\d{1,2}x\d{1,4}$/;
 const MAX_BESTS = 500;
 const MAX_TZ_OFFSET_MIN = 14 * 60;
 const MAX_REVIEW_DELAY_DAYS = 3650;
-const MAX_REMOVALS = 10_000;
 
 const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
 const rankWidth = (rank: string) => [...rank].reduce((width, char) => width + (Number(char) || 1), 0);
@@ -77,15 +76,12 @@ export function isCalendarDay(value: unknown): value is string {
   return localDayOf(date) === value;
 }
 
-const PIECE_CODE = /^[KQRBNPkqrbnp]$/;
-
 const isPlacement = (value: unknown): value is PlacementEvent =>
   Array.isArray(value) &&
   value.length === 3 &&
   isCount(value[0], MAX_PLACEMENT_MS) &&
   isCount(value[1], 63) &&
-  typeof value[2] === "string" &&
-  PIECE_CODE.test(value[2]);
+  isPieceCode(value[2]);
 
 const isPlacementList = (value: unknown): value is PlacementEvent[] =>
   Array.isArray(value) &&

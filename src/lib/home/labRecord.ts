@@ -1,4 +1,4 @@
-import type { StreakDay } from "@/lib/lab/derive";
+import type { StreakDay } from "@/lib/lab/metrics";
 
 export const SAMPLE_ACCURACY: readonly number[] = [52, 58, 55, 63, 61, 68, 66, 72, 70, 75, 74, 79];
 

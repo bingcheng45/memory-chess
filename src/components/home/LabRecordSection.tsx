@@ -1,7 +1,9 @@
 "use client";
 
+import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { deriveLab } from "@/lib/lab/metrics";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
 import { ForgettingCurve } from "./LabCharts";
 import { BestsPanel, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
@@ -21,7 +23,8 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
   const tags = useTranslations("home.lab.tags");
   const presets = useTranslations("game.presets");
   const proposed = <span className="lab-tag">{tags("proposed")}</span>;
-  const data = { records: record.records, summary: record.summary, today: record.today };
+  const { records, summary, today } = record;
+  const lab = useMemo(() => deriveLab({ records, summary, today }), [records, summary, today]);
 
   return (
     <section className="lab-sec" id={LAB_SECTIONS.record.anchor}>
@@ -41,9 +44,9 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
               <span className="lab-tag lab-tag-blue">{tags("illustrative")}</span> {t("curve.note")}
             </p>
           </div>
-          <TrendPanel {...data} />
-          <MissPanel {...data} />
-          <StreakPanel {...data} />
+          <TrendPanel result={lab.trend} />
+          <MissPanel result={lab.missMap} />
+          <StreakPanel result={lab.streak} rounds={summary.rounds} />
           <div className="lab-panel lab-p-board">
             <PanelHead fig={t("board.fig")} tag={<span className="lab-tag lab-tag-blue">{tags("sample")}</span>} />
             <h3>{t("board.title")}</h3>
@@ -69,8 +72,8 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
               {t("board.open")} →
             </Link>
           </div>
-          <BestsPanel {...data} />
-          <TypesPanel {...data} />
+          <BestsPanel result={lab.bests} />
+          <TypesPanel result={lab.typeRecall} />
         </div>
         <LabRecordTools record={record} />
         <div className="lab-plans">

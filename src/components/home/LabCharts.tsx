@@ -13,7 +13,7 @@ import {
   retentionNoReview,
   retentionWithReviews,
 } from "@/lib/home/labRecord";
-import type { StreakDay } from "@/lib/lab/derive";
+import type { StreakDay } from "@/lib/lab/metrics";
 
 const CURVE = { left: 44, right: 580, bottom: 210, top: 20 };
 const curveX = (day: number) => CURVE.left + ((CURVE.right - CURVE.left) * day) / CURVE_SPAN_DAYS;

@@ -14,6 +14,23 @@ import {
 const BANNER_ID = "changelog-banner";
 
 /**
+ * False until the first hydration has committed. A later client-side mount,
+ * such as the layout remounting on a locale switch, has no served node to
+ * match, so it can read the dismissal before its first render instead of
+ * flashing the banner.
+ */
+let hasHydrated = false;
+
+function shouldShow(version: string, expiresAt: number): boolean {
+  if (Date.now() >= expiresAt) return false;
+  try {
+    return window.localStorage.getItem(CHANGELOG_DISMISSAL_STORAGE_KEY) !== version;
+  } catch {
+    return true;
+  }
+}
+
+/**
  * Hides the served banner as it is parsed, before first paint, for a reader
  * who dismissed this release or arrives after its window. The effect below
  * then removes it, so the page never moves.
@@ -36,10 +53,17 @@ export function hideDismissedBannerScript(version: string, expiresAt: number): s
  */
 export default function ChangelogBanner({ announce }: { announce: boolean }) {
   const t = useTranslations("changelog");
-  const [isVisible, setIsVisible] = useState(announce);
   const release = LATEST_CHANGELOG_ENTRY;
   const expiresAt =
     Date.parse(release.publishedAt) + CHANGELOG_ANNOUNCEMENT_DURATION_MS;
+  // The server and the first hydration render `announce` as is, so the served HTML always matches.
+  const [isVisible, setIsVisible] = useState(
+    () => announce && (!hasHydrated || shouldShow(release.version, expiresAt)),
+  );
+
+  useEffect(() => {
+    hasHydrated = true;
+  }, []);
 
   useEffect(() => {
     if (!announce) {
@@ -51,14 +75,7 @@ export default function ChangelogBanner({ announce }: { announce: boolean }) {
       return;
     }
 
-    try {
-      const dismissedVersion = window.localStorage.getItem(
-        CHANGELOG_DISMISSAL_STORAGE_KEY,
-      );
-      setIsVisible(dismissedVersion !== release.version);
-    } catch {
-      setIsVisible(true);
-    }
+    setIsVisible(shouldShow(release.version, expiresAt));
 
     const handleStorage = (event: StorageEvent) => {
       if (event.key === CHANGELOG_DISMISSAL_STORAGE_KEY) {

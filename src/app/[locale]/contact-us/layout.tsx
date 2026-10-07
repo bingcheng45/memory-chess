@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
-import { socialImage } from '@/lib/seo/brand';
+import { socialMetadata } from '@/lib/seo/brand';
 import ContactReference from '@/components/reference/ContactReference';
 
 const siteUrl = 'https://thememorychess.com';
@@ -19,18 +19,11 @@ export async function generateMetadata({
     title: t('title'),
     description: t('description'),
     alternates: buildAlternates('/contact-us', locale),
-    openGraph: {
+    ...socialMetadata({
       title: t('socialTitle'),
       description: t('socialDescription'),
       url: `${siteUrl}${localizedPath('/contact-us', locale)}`,
-      images: [socialImage],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('socialTitle'),
-      description: t('socialDescription'),
-      images: [socialImage],
-    },
+    }),
   };
 }
 

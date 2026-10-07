@@ -29,7 +29,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { splitClientMessages } from "@/lib/articles/messageScope";
 import { getSansFontClass, geistMono } from "@/lib/fonts";
 import { buildAlternates, localizedUrl } from "@/lib/seo/alternates";
-import { socialImage } from "@/lib/seo/brand";
+import { socialMetadata } from "@/lib/seo/brand";
 
 // Define your site URL for canonical and OG URLs
 const siteUrl = "https://thememorychess.com";
@@ -47,6 +47,11 @@ export async function generateMetadata({
   // The home route is a client component, so its copy comes from the layout
   // defaults. Every other route overrides both in its own generateMetadata.
   const t = await getTranslations({ locale, namespace: "home.meta" });
+  const social = socialMetadata({
+    title: t("socialTitle"),
+    description: t("socialDescription"),
+    url: localizedUrl("/", locale),
+  });
 
   return {
     // Basic Metadata
@@ -66,24 +71,15 @@ export async function generateMetadata({
     },
 
     // Open Graph (Facebook, LinkedIn) metadata
-    openGraph: {
-      type: "website",
-      url: localizedUrl("/", locale),
-      title: t("socialTitle"),
-      description: t("socialDescription"),
-      siteName: "Memory Chess",
-      images: [socialImage],
-    },
+    openGraph: { ...social.openGraph, type: "website", siteName: "Memory Chess" },
 
-    // Twitter metadata
+    // X caches cards against the *page* URL, not the image URL, so a
+    // query-string bump on the artwork does nothing -- share a fresh URL
+    // variant (e.g. ?s=x) to force a re-crawl after artwork changes.
     twitter: {
-      card: "summary_large_image",
+      ...social.twitter,
       title: t("twitterTitle"),
       description: t("twitterDescription"),
-      // Must match the Open Graph URL exactly. X caches cards against the *page*
-      // URL, not the image URL, so a query-string bump here does nothing -- share
-      // a fresh URL variant (e.g. ?s=x) to force a re-crawl after artwork changes.
-      images: [socialImage],
       creator: "@TheMemoryChess",
       site: "@TheMemoryChess",
     },

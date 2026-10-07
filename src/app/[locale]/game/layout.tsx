@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
-import { socialImage } from '@/lib/seo/brand';
+import { socialMetadata } from '@/lib/seo/brand';
 import ScopedMessagesProvider from '@/components/common/ScopedMessagesProvider';
 import TileArticlesProvider from '@/components/game/TileArticlesProvider';
 import GameReference from '@/components/reference/GameReference';
@@ -24,18 +24,11 @@ export async function generateMetadata({
     title: t('title'),
     description: t('description'),
     alternates: buildAlternates('/game', locale),
-    openGraph: {
+    ...socialMetadata({
       title: t('socialTitle'),
       description: t('socialDescription'),
       url: `${siteUrl}${localizedPath('/game', locale)}`,
-      images: [socialImage],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('socialTitle'),
-      description: t('socialDescription'),
-      images: [socialImage],
-    },
+    }),
   };
 }
 

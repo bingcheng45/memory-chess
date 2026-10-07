@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { localizedPath } from '@/lib/seo/alternates';
-import { socialImage } from '@/lib/seo/brand';
+import { socialMetadata } from '@/lib/seo/brand';
 import { robotsFor } from '@/lib/seo/englishOnly';
 import LeaderboardReference from '@/components/reference/LeaderboardReference';
 
@@ -23,18 +23,11 @@ export async function generateMetadata({
     // no locale advertises another and each canonical points at itself.
     alternates: { canonical: localizedPath('/leaderboard', locale) },
     robots: robotsFor('/leaderboard', locale),
-    openGraph: {
+    ...socialMetadata({
       title: t('socialTitle'),
       description: t('socialDescription'),
       url: `${siteUrl}${localizedPath('/leaderboard', locale)}`,
-      images: [socialImage],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('socialTitle'),
-      description: t('socialDescription'),
-      images: [socialImage],
-    },
+    }),
   };
 }
 

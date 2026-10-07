@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 const SITE_URL = "https://thememorychess.com";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -12,6 +14,14 @@ export const socialImage = {
   type: "image/png",
   alt: "Memory Chess knight and brain logo — thememorychess.com",
 };
+
+/** Open Graph and X card fields for a page that shares the site artwork. */
+export function socialMetadata({ title, description, url }: { title: string; description: string; url: string }) {
+  return {
+    openGraph: { title, description, url, images: [socialImage] },
+    twitter: { card: "summary_large_image", title, description, images: [socialImage] },
+  } satisfies Pick<Metadata, "openGraph" | "twitter">;
+}
 
 export const BRAND_ORGANIZATION = {
   "@type": "Organization",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import type { LabResults } from "@/lib/lab/metrics";
+import { LAB_METRICS, type LabResults } from "@/lib/lab/metrics";
 import { unlocksFor, type Unlock } from "@/lib/lab/unlocks";
 import { LabPlayLink } from "./LabPlayLink";
 
@@ -13,7 +13,7 @@ export function LabUnlockStrip({ results }: { results: LabResults }) {
 
   const text = ({ metric, started, need: { rounds = 0, days = 0, exposures = 0 } }: Unlock) => {
     if (!started) return t(metric, { rounds, days, exposures });
-    if (metric !== "trend") return t(`${metric}Left`, { days, exposures });
+    if (metric !== "trend") return t(`${metric}Left`, { days, exposures, threshold: LAB_METRICS[metric].thresholds.exposures ?? 0 });
     const key = rounds > 0 && days > 0 ? "trendRoundsDays" : rounds > 0 ? "trendRounds" : "trendDays";
     return t(key, { rounds, days, ...setting });
   };

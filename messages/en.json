@@ -486,15 +486,15 @@
         "stale": "Last played {count, plural, one {# day} other {# days}} ago.",
         "unlock": {
           "label": "What playing unlocks",
-          "trend": "Trend unlocks at {rounds, plural, one {# round} other {# rounds}} of one setting on {days, plural, one {# day} other {# days}}.",
-          "streak": "Streak unlocks at {days, plural, one {# day} other {# days}} in a row.",
-          "typeRecall": "Piece recall unlocks at {exposures, plural, one {# sighting} other {# sightings}} of a piece other than the king.",
+          "trend": "Trend unlocks at {rounds, plural, one {# round} other {# rounds}} of one setting on {days, plural, one {# day} other {# different days}}.",
+          "streak": "Streak unlocks when you play on {days, plural, one {# day} other {# different days}}.",
+          "typeRecall": "Piece recall unlocks when one piece other than the king reaches {exposures, plural, one {# sighting} other {# sightings}}.",
           "missMap": "Miss map unlocks at {exposures, plural, one {# sighting} other {# sightings}} on every file and rank.",
           "trendRounds": "Trend: {rounds, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in games}}.",
           "trendDays": "Trend: {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in a game}} on {days, plural, one {# more day} other {# more days}}.",
           "trendRoundsDays": "Trend: {rounds, plural, one {# more round at {pieceCount} pieces, {memorizeSeconds}s, played on another day} other {# more rounds at {pieceCount} pieces, {memorizeSeconds}s, at least one on another day}} {source, select, calibration {in practice} other {in games}}.",
-          "streakLeft": "Streak: {days, plural, one {# more day} other {# more days}} in a row.",
-          "typeRecallLeft": "Piece recall: {exposures, plural, one {# more sighting} other {# more sightings}} of a piece other than the king.",
+          "streakLeft": "Streak: play on {days, plural, one {# more day} other {# more days}}, in a row or not.",
+          "typeRecallLeft": "Piece recall: {exposures, plural, one {# more sighting} other {# more sightings}} until one piece other than the king reaches {threshold}.",
           "missMapLeft": "Miss map: {exposures, plural, one {# more sighting} other {# more sightings}} on the least seen file or rank."
         },
         "bests": {

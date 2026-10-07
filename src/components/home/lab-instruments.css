@@ -237,3 +237,9 @@
 .lab-sc-bar[data-state][data-phase="threat"]::after { background: var(--lab-mark); }
 .lab-sc-bar[data-state][data-phase="finish"]::after { background: var(--lab-ink); }
 .lab-sc-bar[data-state][data-phase="rebuild"]::after { background: var(--lab-mint); }
+
+/* Reserve the lines the longest caption and thought need, so the card is as tall on every step. */
+@media (max-width: 520px) { .lab-showcase { --lab-sc-caption-lines: 3; --lab-sc-thought-lines: 2; } }
+@media (max-width: 360px) { .lab-showcase { --lab-sc-caption-lines: 4; --lab-sc-thought-lines: 3; } }
+/* globals.css gives every button on a phone a 36px minimum and side padding, which a board square and a step bar cannot afford. */
+@media (max-width: 640px) { .lab .lab-sc-piece, .lab .lab-sc-bar { min-width: 0; min-height: 0; padding: 0 !important; } }

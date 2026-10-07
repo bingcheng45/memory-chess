@@ -7,10 +7,15 @@
  * "Games played: {count}". Neither fails a build, so this runs as its own gate
  * for every locale on every translation pass.
  *
- * Usage: node scripts/validate-messages.mjs
+ * Usage, from the repo root: npm run validate:messages
  */
 import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 import { IntlMessageFormat } from "intl-messageformat";
+
+const fromRoot = (path) => join(process.cwd(), path);
+const { hasLabCopy } = await import(pathToFileURL(fromRoot("src/lib/home/labLocales.ts")).href);
 
 /**
  * The locale list is read from src/i18n/routing.ts rather than duplicated
@@ -19,10 +24,7 @@ import { IntlMessageFormat } from "intl-messageformat";
  * reported success the whole time.
  */
 function readLocalesFromRouting() {
-  const source = readFileSync(
-    new URL("../src/i18n/routing.ts", import.meta.url),
-    "utf8",
-  );
+  const source = readFileSync(fromRoot("src/i18n/routing.ts"), "utf8");
   const block = source.match(/export const LOCALES = \[([\s\S]*?)\] as const;/);
   if (!block) {
     throw new Error("Could not find LOCALES in src/i18n/routing.ts");
@@ -35,7 +37,7 @@ const DEFAULT_LOCALE = "en";
 
 // A catalogue with no locale, or a locale with no catalogue, is a broken build
 // either way -- both directions are checked before anything else runs.
-const catalogueFiles = readdirSync(new URL("../messages/", import.meta.url))
+const catalogueFiles = readdirSync(fromRoot("messages"))
   .filter((name) => name.endsWith(".json"))
   .map((name) => name.replace(/\.json$/, ""));
 
@@ -68,15 +70,11 @@ const ENGLISH_AHEAD_OF_TRANSLATIONS = new Set([
 ]);
 
 /**
- * Blocks only English renders. The homepage serves the Brain Lab to `en` and
- * the earlier body to every other locale (LAB_LOCALES in
- * src/app/[locale]/page.tsx), so these keys are required in no other
- * catalogue, and a copy found in one would be dead text.
+ * The Brain Lab's copy. A locale in LAB_LOCALES (src/lib/home/labLocales.ts)
+ * is served the lab and must carry all of it. Any other locale is served the
+ * earlier homepage, where a lab key would be dead text.
  */
-const ENGLISH_ONLY_PREFIXES = ["home.lab."];
-
-const isEnglishOnly = (key) =>
-  ENGLISH_ONLY_PREFIXES.some((prefix) => key.startsWith(prefix));
+const isLabKey = (key) => key.startsWith("home.lab.");
 
 function flatten(value, prefix = "", out = {}) {
   if (Array.isArray(value)) {
@@ -103,7 +101,7 @@ function placeholders(text) {
 const catalogues = Object.fromEntries(
   LOCALES.map((locale) => [
     locale,
-    JSON.parse(readFileSync(new URL(`../messages/${locale}.json`, import.meta.url), "utf8")),
+    JSON.parse(readFileSync(fromRoot(`messages/${locale}.json`), "utf8")),
   ]),
 );
 
@@ -113,15 +111,18 @@ const problems = [];
 for (const locale of LOCALES) {
   if (locale === DEFAULT_LOCALE) continue;
   const current = flatten(catalogues[locale]);
+  const servesLab = hasLabCopy(locale);
 
   for (const key of Object.keys(base)) {
-    if (!(key in current) && !isEnglishOnly(key)) {
+    if (!(key in current) && (servesLab || !isLabKey(key))) {
       problems.push(`[${locale}] missing key: ${key}`);
     }
   }
   for (const key of Object.keys(current)) {
     if (!(key in base)) problems.push(`[${locale}] unknown key: ${key}`);
-    else if (isEnglishOnly(key)) problems.push(`[${locale}] English-only key: ${key}`);
+    else if (!servesLab && isLabKey(key)) {
+      problems.push(`[${locale}] lab key in a locale outside LAB_LOCALES: ${key}`);
+    }
   }
 
   for (const key of Object.keys(base)) {

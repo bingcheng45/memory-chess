@@ -19,16 +19,13 @@ import { LAB_SECTIONS, Ruler, SectionIndex } from "@/components/home/SectionHead
 import { TiersSection } from "@/components/home/TiersSection";
 import { useTotalPlays } from "@/components/home/useLabEffects";
 import { useLabRecord } from "@/components/home/useLabRecord";
+import { hasLabCopy } from "@/lib/home/labLocales";
 import { deriveStreak, LAB_THRESHOLDS } from "@/lib/lab/derive";
 import "@/components/home/lab.css";
 import "@/components/home/lab-instruments.css";
 
 // Split out so English visitors do not download the earlier homepage's code.
 const LegacyHome = dynamic(() => import("@/components/home/LegacyHome").then((module) => module.LegacyHome));
-
-// The lab copy is English only for now. Every other locale keeps the earlier
-// homepage, so no locale serves untranslated English text.
-const LAB_LOCALES: readonly string[] = ["en"];
 
 export default function Home() {
   const locale = useLocale();
@@ -44,7 +41,7 @@ export default function Home() {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema(locale, t("description"))) }} />
   );
 
-  if (!LAB_LOCALES.includes(locale)) return <LegacyHome totalPlays={totalPlays} schema={schema} />;
+  if (!hasLabCopy(locale)) return <LegacyHome totalPlays={totalPlays} schema={schema} />;
   return <BrainLab totalPlays={totalPlays} schema={schema} />;
 }
 

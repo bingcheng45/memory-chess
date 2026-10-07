@@ -25,7 +25,10 @@ const RAW_MESSAGE_KEY = /\bhome\.[a-z]+\.[A-Za-z.]+/;
 async function renderHome(locale: string) {
   const missing: string[] = [];
   const rootMessages = await localeLayoutClientMessages(locale);
-  const homeLayout = await HomeLayout({ children: <Home />, params: Promise.resolve({ locale }) });
+  const homeLayout = await HomeLayout({
+    children: await Home({ params: Promise.resolve({ locale }) }),
+    params: Promise.resolve({ locale }),
+  });
 
   const { container } = render(
     <NextIntlClientProvider locale={locale} messages={rootMessages} onError={(error) => missing.push(error.message)}>

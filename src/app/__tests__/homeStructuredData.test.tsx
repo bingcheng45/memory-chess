@@ -46,8 +46,8 @@ describe("home page structured data", () => {
     global.fetch = jest.fn().mockResolvedValue({ ok: false });
   });
 
-  it("declares the Organization the way search engines should name the brand", () => {
-    const { container } = render(<HomePage />);
+  it("declares the Organization the way search engines should name the brand", async () => {
+    const { container } = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
     const organization = brandGraph(container).find(
       (node) => node["@type"] === "Organization",
     );
@@ -61,8 +61,8 @@ describe("home page structured data", () => {
     });
   });
 
-  it("links the WebSite to the Organization as its publisher", () => {
-    const { container } = render(<HomePage />);
+  it("links the WebSite to the Organization as its publisher", async () => {
+    const { container } = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
     const website = brandGraph(container).find(
       (node) => node["@type"] === "WebSite",
     );
@@ -71,16 +71,16 @@ describe("home page structured data", () => {
     expect(website?.publisher).toEqual({ "@id": ORGANIZATION_ID });
   });
 
-  it("emits exactly one Organization and one WebSite", () => {
-    const { container } = render(<HomePage />);
+  it("emits exactly one Organization and one WebSite", async () => {
+    const { container } = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
     const types = brandGraph(container).map((node) => node["@type"]);
 
     expect(types.filter((type) => type === "Organization")).toHaveLength(1);
     expect(types.filter((type) => type === "WebSite")).toHaveLength(1);
   });
 
-  it("keeps the FAQ structured data as a separate script", () => {
-    const { container } = render(<HomePage />);
+  it("keeps the FAQ structured data as a separate script", async () => {
+    const { container } = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
     const scripts = jsonLdScripts(container);
 
     expect(scripts.some((schema) => schema["@type"] === "FAQPage")).toBe(true);

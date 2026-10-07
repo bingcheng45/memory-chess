@@ -51,14 +51,14 @@ describe("footer placement", () => {
     expect(countComponent(tree, Footer)).toBe(1);
   });
 
-  const pages: Array<[string, () => ReactElement]> = [
-    ["home", () => <HomePage />],
+  const pages: Array<[string, () => ReactElement | Promise<ReactElement>]> = [
+    ["home", () => HomePage({ params: Promise.resolve({ locale: "en" }) })],
     ["privacy", () => <PrivacyPage />],
     ["contact-us", () => <ContactUsPage />],
   ];
 
-  it.each(pages)("the %s page renders no footer of its own", (_name, page) => {
-    const { container } = render(page());
+  it.each(pages)("the %s page renders no footer of its own", async (_name, page) => {
+    const { container } = render(await page());
 
     expect(container.querySelectorAll("footer")).toHaveLength(0);
   });

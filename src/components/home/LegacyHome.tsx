@@ -1,6 +1,5 @@
 "use client";
 
-import type { ReactNode } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
@@ -12,7 +11,9 @@ import { useTranslations } from "next-intl";
 import { formatNumber } from "@/lib/utils";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 import { PieceColor, PieceType } from "@/types/chess";
+import { HomeStructuredData } from "./HomeStructuredData";
 import { QUICK_START_HREF } from "./links";
+import { useTotalPlays } from "./useLabEffects";
 import {
   ArrowRight,
   BookOpen,
@@ -46,8 +47,9 @@ const memoryBoardSquares: Array<{ type: PieceType; color: PieceColor } | null> =
  * The homepage body from before the Brain Lab. Locales without translated lab
  * copy keep serving it, so they never show English lab text.
  */
-export function LegacyHome({ totalPlays, schema }: { totalPlays: number | null; schema: ReactNode }) {
+export function LegacyHome() {
   const t = useTranslations("home");
+  const totalPlays = useTotalPlays();
 
   return (
     <div className="min-h-screen bg-bg-dark text-text-primary">
@@ -55,7 +57,7 @@ export function LegacyHome({ totalPlays, schema }: { totalPlays: number | null; 
         <div className="flex justify-center mb-8">
           <PageHeader showSoundSettings={false} />
         </div>
-        {schema}
+        <HomeStructuredData />
 
         <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-text-primary">

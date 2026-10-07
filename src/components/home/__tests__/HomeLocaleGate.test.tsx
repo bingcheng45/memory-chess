@@ -17,6 +17,8 @@ jest.mock("@/lib/home/labLocales", () => ({
   hasLabCopy: (locale: string) => mockLabLocales.includes(locale),
 }));
 
+const homeFor = (locale: string) => Home({ params: Promise.resolve({ locale }) });
+
 beforeEach(() => {
   mockLabLocales = ["en"];
   global.fetch = jest.fn(() => Promise.resolve({ ok: false } as Response));
@@ -24,7 +26,7 @@ beforeEach(() => {
 
 describe("homepage locale gate", () => {
   it("serves the Brain Lab to English", async () => {
-    const { container } = renderWithIntl(<Home />);
+    const { container } = renderWithIntl(await homeFor("en"));
 
     expect(container.querySelector(".lab")).not.toBeNull();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
@@ -40,7 +42,7 @@ describe("homepage locale gate", () => {
     ["de", german],
     ["ja", japanese],
   ])("serves the earlier homepage to %s with its own copy and no lab text", async (locale, messages) => {
-    const { container } = renderWithIntl(<Home />, { locale, messages });
+    const { container } = renderWithIntl(await homeFor(locale), { locale, messages });
 
     expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(messages.home.hero.title);
     expect(container.querySelector(".lab")).toBeNull();
@@ -51,11 +53,11 @@ describe("homepage locale gate", () => {
     mockLabLocales = ["de"];
     const germanWithLab = { ...german, home: { ...german.home, lab: english.home.lab } };
 
-    const lab = renderWithIntl(<Home />, { locale: "de", messages: germanWithLab });
+    const lab = renderWithIntl(await homeFor("de"), { locale: "de", messages: germanWithLab });
     expect(lab.container.querySelector(".lab")).not.toBeNull();
     lab.unmount();
 
-    const legacy = renderWithIntl(<Home />);
+    const legacy = renderWithIntl(await homeFor("en"));
     expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(english.home.hero.title);
     expect(legacy.container.querySelector(".lab")).toBeNull();
   });

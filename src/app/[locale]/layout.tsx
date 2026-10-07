@@ -44,8 +44,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  // The home route is a client component, so its copy comes from the layout
-  // defaults. Every other route overrides both in its own generateMetadata.
+  // The home route sets no metadata of its own, so its copy comes from the
+  // layout defaults. Every other route overrides both in its own generateMetadata.
   const t = await getTranslations({ locale, namespace: "home.meta" });
   const social = socialMetadata({
     title: t("socialTitle"),

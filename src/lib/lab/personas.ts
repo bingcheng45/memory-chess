@@ -1,8 +1,10 @@
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { placementFromFen } from "@/lib/game/scoring";
 import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
-import { buildRoundRecord, type LabSource, type RoundRecordV1 } from "./record";
-import { createLabStore, type LabStore } from "./storage";
+import type { RoundSource } from "@/lib/analytics/events";
+import type { PlacementEvent } from "./placements";
+import { buildRoundRecord, type LabSource, type RoundCapture, type RoundInput, type RoundRecord } from "./record";
+import { createLabStore, PLACEMENT_KEEP, type LabStore } from "./storage";
 import { buildExport, type LabExportV2 } from "./transfer";
 
 /**
@@ -21,6 +23,7 @@ export const PERSONA_NAMES = [
   "heavy",
   "easyOnly",
   "stale",
+  "v1Legacy",
 ] as const;
 export type PersonaName = (typeof PERSONA_NAMES)[number];
 
@@ -40,6 +43,8 @@ interface PersonaPlan {
   readonly seed: number;
   readonly rounds: readonly PlannedRound[];
   readonly missChance: MissChance;
+  /** Rounds written before version 2, with none of its facts. */
+  readonly legacy?: true;
 }
 
 const PRACTICE: Setting = { source: "calibration", pieceCount: 6, memorizeSeconds: 10 };
@@ -50,6 +55,8 @@ const HEAVY_ROUNDS = 5003;
 const HEAVY_PER_DAY = 20;
 
 const steady: MissChance = () => 0.1;
+const GAME_STARTS: readonly RoundSource[] = ["home_quick", "try_again", "game_form", "tile_drill", "home_tier", "link"];
+const TZ_OFFSET_MIN = -480;
 
 /** Misses cluster on the a and h files, and queens slip far more often than pawns. */
 const edgesAndQueens: MissChance = (square, piece) => {
@@ -68,10 +75,12 @@ function daily(days: readonly number[], perDay: (daysAgo: number, slot: number) 
 
 const countdown = (from: number, to: number) => Array.from({ length: from - to + 1 }, (_, index) => from - index);
 
+const THREE_DAYS: PersonaPlan = { seed: 3, rounds: daily(countdown(2, 0), (_, slot) => (slot === 0 ? PRACTICE : MEDIUM), 4), missChance: steady };
+
 const PLANS: Record<PersonaName, PersonaPlan> = {
   newVisitor: { seed: 1, rounds: [], missChance: steady },
   twoRounds: { seed: 2, rounds: daily([0], (_, slot) => (slot === 0 ? PRACTICE : MEDIUM), 2), missChance: steady },
-  threeDays: { seed: 3, rounds: daily(countdown(2, 0), (_, slot) => (slot === 0 ? PRACTICE : MEDIUM), 4), missChance: steady },
+  threeDays: THREE_DAYS,
   thirtyDays: {
     seed: 30,
     rounds: daily(countdown(29, 0), (daysAgo, slot) => (slot === 0 && daysAgo % 2 === 0 ? PRACTICE : [EASY, MEDIUM, HARD][(daysAgo + slot) % 3]), 3),
@@ -87,6 +96,8 @@ const PLANS: Record<PersonaName, PersonaPlan> = {
   },
   easyOnly: { seed: 50, rounds: daily(countdown(9, 0), () => EASY, 5), missChance: steady },
   stale: { seed: 20, rounds: daily(countdown(25, 20), () => MEDIUM, 5), missChance: steady },
+  // The three-day player's own rounds as version 1, so the two must read the same.
+  v1Legacy: { ...THREE_DAYS, legacy: true },
 };
 
 /** mulberry32: small, fast and the same on every platform. */
@@ -112,8 +123,14 @@ function boardFen(placement: Readonly<Record<string, string>>): string {
   return rows.map((row) => row.replace(/1+/g, (run) => String(run.length))).join("/");
 }
 
-export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY): RoundRecordV1[] {
-  const { seed, rounds, missChance } = PLANS[name];
+/** Each piece placed in board order, spread evenly over the rebuild. */
+function placementsOf(placed: Readonly<Record<string, string>>, solveMs: number): PlacementEvent[] {
+  const squares = BOARD_SQUARES.flatMap((square, index) => (placed[square] ? [[index, placed[square]] as const] : []));
+  return squares.map(([index, piece], order) => [Math.round((solveMs * (order + 1)) / (squares.length + 1)), index, piece]);
+}
+
+export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY): RoundRecord[] {
+  const { seed, rounds, missChance, legacy } = PLANS[name];
   const random = seeded(seed);
   const slots = new Map<number, number>();
 
@@ -123,7 +140,8 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
     const playedAt = noonUtc(today, -planned.daysAgo);
     const target = placementFromFen(generateMemorizationPosition(planned.pieceCount, random)?.fen() ?? "8/8/8/8/8/8/8/8");
     const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= missChance(square, piece)));
-    return buildRoundRecord({
+    const solveMs = 8000 + Math.floor(random() * 22_000);
+    const input: RoundInput = {
       id: `${name}-${index}`,
       source: planned.source,
       endedAt: playedAt + slot * 60_000,
@@ -133,8 +151,16 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
       targetFen: boardFen(target),
       placedFen: boardFen(placed),
       memorizeMs: planned.memorizeSeconds * 1000,
-      solveMs: 8000 + Math.floor(random() * 22_000),
-    });
+      solveMs,
+    };
+    if (legacy) return buildRoundRecord(input);
+    const recent = index >= rounds.length - PLACEMENT_KEEP;
+    const capture: RoundCapture = {
+      startSource: planned.source === "calibration" ? "calibration" : GAME_STARTS[index % GAME_STARTS.length],
+      tzOffsetMin: TZ_OFFSET_MIN,
+      ...(recent && { placements: placementsOf(placed, solveMs), removals: 0 }),
+    };
+    return buildRoundRecord(input, capture);
   });
 }
 

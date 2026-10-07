@@ -3,6 +3,14 @@ import { CalibrationSection } from "@/components/home/CalibrationSection";
 import { LibrarySection, LIBRARY_GUIDES } from "@/components/home/LibrarySection";
 import { LEARN_SLUGS } from "@/lib/seo/learn";
 import { recordLabRound } from "@/lib/lab/recordRound";
+import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
+import type { PieceColor, PieceType } from "@/types/chess";
+import { pieceTypeToFenChar } from "@/utils/chessPieces";
+
+const pieceLetter = (name: string) => {
+  const [color, type] = name.split(" ");
+  return pieceTypeToFenChar(type as PieceType, color as PieceColor);
+};
 
 jest.mock("@/lib/lab/recordRound", () => ({ recordLabRound: jest.fn(() => Promise.resolve(true)) }));
 
@@ -32,6 +40,9 @@ describe("CalibrationSection", () => {
     expect(screen.getByRole("button", { name: `${square}, empty` })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: pieceName }));
+    act(() => {
+      jest.advanceTimersByTime(1400);
+    });
     fireEvent.click(screen.getByRole("button", { name: `${square}, empty` }));
     expect(screen.getByRole("button", { name: `${square}, ${pieceName}` })).toBeInTheDocument();
 
@@ -42,8 +53,11 @@ describe("CalibrationSection", () => {
     expect(screen.getByText("1 / 6")).toBeInTheDocument();
     expect(recordLabRound).toHaveBeenCalledTimes(1);
     expect(recordLabRound).toHaveBeenCalledWith(
-      expect.objectContaining({ source: "calibration", pieceCount: 6, memorizeSeconds: 10, memorizeMs: 10000 }),
+      expect.objectContaining({ source: "calibration", startSource: "calibration", pieceCount: 6, memorizeSeconds: 10, memorizeMs: 10000, removals: 0 }),
     );
+    expect(jest.mocked(recordLabRound).mock.calls[0][0].placements).toEqual([
+      [1500, BOARD_SQUARES.indexOf(square as SquareName), pieceLetter(pieceName)],
+    ]);
     expect(screen.getByText("Wrong pieces").nextSibling).toHaveTextContent("5");
     expect(screen.getByText(/start on Easy, 2 pieces at 10s/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Play Easy/ })).toHaveAttribute(

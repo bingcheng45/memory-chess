@@ -26,7 +26,7 @@ const formatClock = (ms: number) => formatSeconds(ms).padStart(4, "0");
 function useRoundClock(state: RoundState, onStudyEnded: (now: number) => void): number {
   const [clockMs, setClockMs] = useState<number>(CALIBRATION_RULES.studyMs);
   const studyTarget = state.phase === "study" ? state.target : null;
-  const rebuildStart = state.phase === "rebuild" ? state.startedAt : null;
+  const rebuildStart = state.phase === "rebuild" ? state.log.startedAt : null;
 
   useEffect(() => {
     if (!studyTarget) return;
@@ -68,12 +68,15 @@ function useRecordReading(state: RoundState): void {
     recorded.current = state;
     void recordLabRound({
       source: "calibration",
+      startSource: "calibration",
       pieceCount: CALIBRATION_RULES.pieceCount,
       memorizeSeconds: STUDY_SECONDS,
       targetFen: labPositionToFen(state.target),
       placedFen: labPositionToFen(state.placed),
       memorizeMs: CALIBRATION_RULES.studyMs,
       solveMs: Math.round(state.rebuildMs),
+      placements: state.log.placements,
+      removals: state.log.removals,
     });
   }, [state]);
 }

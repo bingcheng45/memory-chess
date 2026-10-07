@@ -104,7 +104,7 @@ export const CalibrationBoard = memo(function CalibrationBoard({ state, dispatch
                     : t("squareEmpty", { square })
                 }
                 onFocus={() => setFocusIndex(index)}
-                onClick={() => live && dispatch({ type: "tapSquare", square })}
+                onClick={() => live && dispatch({ type: "tapSquare", square, now: performance.now() })}
               >
                 {occupant && <PieceImage piece={occupant} />}
                 {view.ghost && <PieceImage piece={view.ghost} state="ghost" />}

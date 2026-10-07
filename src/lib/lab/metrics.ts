@@ -1,11 +1,11 @@
 import type { PieceSymbol } from "chess.js";
 import { hasFigure, readinessOf, LAB_THRESHOLDS, type Need, type Readiness } from "./readiness";
-import { LAB_SOURCES, localDayOf, PIECE_LETTERS, settingKey, type LabSource, type RoundConfig, type RoundRecordV1 } from "./record";
+import { LAB_SOURCES, localDayOf, PIECE_LETTERS, settingKey, type LabSource, type RoundConfig, type RoundRecord } from "./record";
 import type { LabSummary, PersonalBest } from "./summary";
 
 export interface LabInput {
   /** The capped round log, oldest first or in any order. */
-  readonly records: readonly RoundRecordV1[];
+  readonly records: readonly RoundRecord[];
   readonly summary: LabSummary;
   /** The client's local day, passed in so every metric is a pure function of its input. */
   readonly today: string;
@@ -119,7 +119,7 @@ export interface TrendValue {
 
 const TREND_THRESHOLDS = { rounds: LAB_THRESHOLDS.trendRounds, days: LAB_THRESHOLDS.trendDays };
 
-function trendGroup(input: LabInput, rounds: readonly RoundRecordV1[]) {
+function trendGroup(input: LabInput, rounds: readonly RoundRecord[]) {
   const readiness = readinessFor(input, {
     sampleSize: input.summary.rounds === 0 ? 0 : rounds.length,
     have: { rounds: rounds.length, days: new Set(rounds.map((record) => record.localDay)).size },
@@ -134,7 +134,7 @@ function trendGroup(input: LabInput, rounds: readonly RoundRecordV1[]) {
  * A setting that can draw wins over one with more rounds that cannot, then most rounds, then most recent.
  */
 function computeTrend(input: LabInput): MetricResult<TrendValue> {
-  const bySetting = new Map<string, RoundRecordV1[]>();
+  const bySetting = new Map<string, RoundRecord[]>();
   input.records.forEach((record) => {
     const key = settingKey(record.source, record.config);
     const group = bySetting.get(key);

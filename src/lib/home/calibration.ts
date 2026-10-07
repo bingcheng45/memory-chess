@@ -6,6 +6,7 @@ import { STANDARD_INVENTORY } from "@/lib/game/pieceInventory";
 import { placementFromFen, scorePlacement, type Placement } from "@/lib/game/scoring";
 import type { RankedDifficulty } from "@/lib/reference/facts";
 import { mapChessJsPieceToType, pieceTypeToFenChar } from "@/utils/chessPieces";
+import { logPlacement, logRemovals, startPlacementLog, type PlacementLog } from "@/lib/lab/placements";
 
 export interface LabPiece {
   readonly color: PieceColor;
@@ -161,7 +162,7 @@ export type RoundState =
       readonly target: LabPosition;
       readonly placed: LabPosition;
       readonly selected: LabPiece | null;
-      readonly startedAt: number;
+      readonly log: PlacementLog;
     }
   | {
       readonly phase: "scored";
@@ -169,13 +170,14 @@ export type RoundState =
       readonly placed: LabPosition;
       readonly score: Score;
       readonly rebuildMs: number;
+      readonly log: PlacementLog;
     };
 
 export type RoundAction =
   | { readonly type: "start"; readonly target: LabPosition }
   | { readonly type: "studyEnded"; readonly now: number }
   | { readonly type: "select"; readonly piece: LabPiece }
-  | { readonly type: "tapSquare"; readonly square: SquareName }
+  | { readonly type: "tapSquare"; readonly square: SquareName; readonly now: number }
   | { readonly type: "clear" }
   | { readonly type: "submit"; readonly now: number };
 
@@ -187,7 +189,7 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
   if (action.type === "start") return { phase: "study", target: action.target };
   if (action.type === "studyEnded") {
     return state.phase === "study"
-      ? { phase: "rebuild", target: state.target, placed: {}, selected: null, startedAt: action.now }
+      ? { phase: "rebuild", target: state.target, placed: {}, selected: null, log: startPlacementLog(action.now) }
       : state;
   }
   if (state.phase !== "rebuild") return state;
@@ -198,20 +200,26 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
     case "tapSquare": {
       const current = state.placed[action.square];
       if (current && (!state.selected || samePiece(current, state.selected))) {
-        return { ...state, placed: withoutSquare(state.placed, action.square) };
+        return { ...state, placed: withoutSquare(state.placed, action.square), log: logRemovals(state.log) };
       }
       if (!state.selected || remainingOf(state.placed, state.selected) <= 0) return state;
-      return { ...state, placed: { ...state.placed, [action.square]: state.selected } };
+      const piece = pieceTypeToFenChar(state.selected.type, state.selected.color);
+      return {
+        ...state,
+        placed: { ...state.placed, [action.square]: state.selected },
+        log: logPlacement(logRemovals(state.log, current ? 1 : 0), action.now, action.square, piece),
+      };
     }
     case "clear":
-      return { ...state, placed: {} };
+      return { ...state, placed: {}, log: logRemovals(state.log, occupied(state.placed).length) };
     case "submit":
       return {
         phase: "scored",
         target: state.target,
         placed: state.placed,
         score: scoreReading(state.target, state.placed),
-        rebuildMs: action.now - state.startedAt,
+        rebuildMs: action.now - state.log.startedAt,
+        log: state.log,
       };
   }
 }

@@ -1,4 +1,6 @@
 import { PieceSymbol, Square } from 'chess.js';
+import type { RoundSource } from '@/lib/analytics/events';
+import type { PlacementLog } from '@/lib/lab/placements';
 
 export interface GameState {
   // Game status
@@ -11,6 +13,7 @@ export interface GameState {
   // Configuration
   pieceCount: number;
   memorizeTime: number;
+  startSource?: RoundSource;
   
   // Timing
   timeElapsed: number;
@@ -29,6 +32,7 @@ export interface GameState {
   moves: string[];
   originalPosition?: string; // FEN string of position to memorize
   userPosition?: string;     // FEN string of user's solution
+  placementLog?: PlacementLog;
   
   // Results
   accuracy?: number;         // Percentage of correct piece placements

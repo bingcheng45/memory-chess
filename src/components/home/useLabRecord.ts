@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { trackEvent } from "@/lib/analytics/events";
-import { localDayOf, type RoundRecordV1 } from "@/lib/lab/record";
+import { localDayOf, type RoundRecord } from "@/lib/lab/record";
 import { LAB_RECORD_CHANGED } from "@/lib/lab/recordRound";
 import { labStore } from "@/lib/lab/storage";
 import { EMPTY_SUMMARY, type LabSummary } from "@/lib/lab/summary";
@@ -23,7 +23,7 @@ export type ImportOutcome =
 
 export interface LabRecord {
   readonly storage: LabStorageState;
-  readonly records: readonly RoundRecordV1[];
+  readonly records: readonly RoundRecord[];
   readonly summary: LabSummary;
   readonly lastBackup: number | null;
   readonly today: string;
@@ -36,7 +36,7 @@ const REVOKE_AFTER_MS = 30_000;
 
 export function useLabRecord(): LabRecord {
   const [storage, setStorage] = useState<LabStorageState>("loading");
-  const [records, setRecords] = useState<readonly RoundRecordV1[]>([]);
+  const [records, setRecords] = useState<readonly RoundRecord[]>([]);
   const [summary, setSummary] = useState<LabSummary>(EMPTY_SUMMARY);
   const [lastBackup, setLastBackup] = useState<number | null>(null);
   const [today, setToday] = useState("");

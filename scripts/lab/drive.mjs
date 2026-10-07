@@ -160,7 +160,10 @@ async function main() {
   writeFileSync(join(args.out, "snapshot.json"), JSON.stringify(snapshot, null, 2));
   console.log(`snapshot: ${join(args.out, "snapshot.json")}`);
 
-  const changed = args.compare ? differences(JSON.parse(readFileSync(args.compare, "utf8")), snapshot, names) : [];
+  const baseline = args.compare ? JSON.parse(readFileSync(args.compare, "utf8")) : null;
+  const unbased = baseline ? names.filter((name) => !(name in baseline)) : [];
+  const changed = baseline ? differences(baseline, snapshot, names.filter((name) => name in baseline)) : [];
+  if (unbased.length > 0) console.log(`no baseline for ${unbased.join(", ")}, not compared`);
   if (args.compare) console.log(changed.length === 0 ? `same text as ${args.compare}` : `changed text:\n  ${changed.join("\n  ")}`);
   process.exit(results.every(({ ok }) => ok) && changed.length === 0 ? 0 : 1);
 }

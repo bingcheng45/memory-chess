@@ -2,6 +2,8 @@ import type { PieceSymbol } from "chess.js";
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { placementFromFen, scorePlacement } from "@/lib/game/scoring";
 import { GAME_CONFIG_RULES, presetIdFor, type PresetId } from "@/lib/game/configPrefill";
+import type { RoundSource } from "@/lib/analytics/events";
+import type { PlacementLog } from "./placements";
 
 export const PIECE_LETTERS: readonly PieceSymbol[] = ["k", "q", "r", "b", "n", "p"];
 
@@ -46,6 +48,33 @@ export interface RoundRecordV1 {
   readonly accuracy: number;
 }
 
+/** Nothing filters by kind yet; the daily board and review phases will keep their rounds out of the trend and the bests. */
+export const ROUND_KINDS = ["normal", "daily", "review"] as const;
+export type RoundKind = (typeof ROUND_KINDS)[number];
+
+/** Facts only a version 2 round carries. Each is optional, so a file written before a fact existed still reads. */
+export interface RoundCapture {
+  readonly startSource?: RoundSource;
+  readonly kind?: RoundKind;
+  /** Review rounds only: the round reviewed and the days since it. */
+  readonly reviewOf?: string;
+  readonly reviewDelayDays?: number;
+  /** `Date.getTimezoneOffset()` at write time, so the hour of day reads true after a move. */
+  readonly tzOffsetMin?: number;
+  /** Kept on the newest PLACEMENT_KEEP rounds only; older rounds lose both fields together. */
+  readonly placements?: PlacementLog["placements"];
+  readonly removals?: number;
+}
+
+export interface RoundRecordV2 extends Omit<RoundRecordV1, "v">, RoundCapture {
+  readonly v: 2;
+  /** positionId(targetFen), so the same position can be found again. */
+  readonly positionId: string;
+  readonly kind: RoundKind;
+}
+
+export type RoundRecord = RoundRecordV1 | RoundRecordV2;
+
 export interface RoundInput {
   readonly id: string;
   readonly source: LabSource;
@@ -84,9 +113,49 @@ function bump(counts: TypeCounts, letter: string): TypeCounts {
   return { ...counts, [key]: (counts[key] ?? 0) + 1 };
 }
 
-export function buildRoundRecord(input: RoundInput): RoundRecordV1 {
-  const targetFen = input.targetFen.split(" ")[0];
-  const placedFen = input.placedFen.split(" ")[0];
+/** cyrb53: a 53-bit string hash, as 14 hex digits. Stable across versions, so never change it. */
+export function positionId(boardFen: string): string {
+  let h1 = 0xdeadbeef;
+  let h2 = 0x41c6ce57;
+  for (let index = 0; index < boardFen.length; index += 1) {
+    const char = boardFen.charCodeAt(index);
+    h1 = Math.imul(h1 ^ char, 2654435761);
+    h2 = Math.imul(h2 ^ char, 1597334677);
+  }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+  h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+  h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16).padStart(14, "0");
+}
+
+export function withoutPlacements(record: RoundRecord): RoundRecord {
+  if (record.v === 1 || (record.placements === undefined && record.removals === undefined)) return record;
+  return Object.fromEntries(Object.entries(record).filter(([key]) => key !== "placements" && key !== "removals")) as RoundRecordV2;
+}
+
+const definedOnly = <T extends object>(value: T): T =>
+  Object.fromEntries(Object.entries(value).filter(([, field]) => field !== undefined)) as T;
+
+/** Without a capture the round is version 1, the shape every file before version 2 holds. */
+export function buildRoundRecord(input: RoundInput): RoundRecordV1;
+export function buildRoundRecord(input: RoundInput, capture: RoundCapture): RoundRecordV2;
+export function buildRoundRecord(input: RoundInput, capture?: RoundCapture): RoundRecord {
+  const core = scoreRound(input);
+  if (!capture) return { v: 1, ...core };
+  return { v: 2, ...core, positionId: positionId(core.targetFen), ...definedOnly({ kind: "normal", ...capture }) } as RoundRecordV2;
+}
+
+/** Merges each rank's empty runs ("44" becomes "8"), so one board has one written form and one position id. */
+function standardBoard(fen: string): string {
+  return fen
+    .split(" ")[0]
+    .replace(/\d{2,}/g, (run) => String([...run].reduce((squares, digit) => squares + Number(digit), 0)));
+}
+
+function scoreRound(input: RoundInput): Omit<RoundRecordV1, "v"> {
+  const targetFen = standardBoard(input.targetFen);
+  const placedFen = standardBoard(input.placedFen);
   const target = placementFromFen(targetFen);
   const placed = placementFromFen(placedFen);
   const score = scorePlacement(target, placed);
@@ -94,7 +163,6 @@ export function buildRoundRecord(input: RoundInput): RoundRecordV1 {
   const targetSquares = Object.keys(target);
 
   return {
-    v: 1,
     id: input.id,
     source: input.source,
     endedAt: input.endedAt,

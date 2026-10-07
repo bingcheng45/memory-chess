@@ -1,4 +1,4 @@
-import type { RoundRecordV1 } from "./record";
+import { withoutPlacements, type RoundRecord } from "./record";
 import { addToSummary, parseSummary, summarize, type LabSummary } from "./summary";
 
 const DB_NAME = "memory-chess-lab";
@@ -11,6 +11,8 @@ const PERSIST_ASKED_KEY = "memory-chess-lab-persist-asked";
 const SUMMARY_LOCK = "memory-chess-lab";
 
 export const ROUND_CAP = 5000;
+/** Placements are about half a round's bytes, so only the newest rounds keep them. */
+export const PLACEMENT_KEEP = 500;
 export const PERSIST_AFTER_ROUNDS = 3;
 
 export interface LabStoreDeps {
@@ -23,16 +25,16 @@ export interface LabStoreDeps {
 export interface LabStore {
   isAvailable(): Promise<boolean>;
   /** Writes one round; a round whose id is already stored is left alone. Resolves false if nothing could be saved. */
-  addRound(record: RoundRecordV1): Promise<boolean>;
-  listRounds(): Promise<RoundRecordV1[]>;
+  addRound(record: RoundRecord): Promise<boolean>;
+  listRounds(): Promise<RoundRecord[]>;
   /** Adds the rounds that are new to this record and returns how many that was, so a second import adds 0. */
-  mergeRounds(records: readonly RoundRecordV1[]): Promise<number>;
+  mergeRounds(records: readonly RoundRecord[]): Promise<number>;
   /**
    * Into an empty record only: keeps the rounds and takes the exported summary
    * as the lifetime totals. Resolves null, changing nothing, if the record
    * already has rounds; merge those with mergeRounds instead.
    */
-  restore(records: readonly RoundRecordV1[], summary: LabSummary): Promise<number | null>;
+  restore(records: readonly RoundRecord[], summary: LabSummary): Promise<number | null>;
   readSummary(): Promise<LabSummary>;
   clear(): Promise<void>;
   readLastBackup(): number | null;
@@ -51,6 +53,32 @@ function done(tx: IDBTransaction): Promise<void> {
     tx.oncomplete = () => resolve();
     tx.onerror = () => reject(tx.error);
     tx.onabort = () => reject(tx.error);
+  });
+}
+
+/**
+ * Before a write no round past the newest PLACEMENT_KEEP has placements. A
+ * saved round newer than all the others pushes exactly one round past that
+ * line, so only that one is read; an import or a late round walks them all.
+ */
+function keepPlacementsOnNewest(index: IDBIndex, fresh: readonly RoundRecord[]): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const req = index.openCursor(null, "prev");
+    let left: number | null = null;
+    req.onsuccess = () => {
+      const cursor = req.result;
+      if (!cursor || left === 0) return resolve();
+      if (left === null) {
+        left = fresh.length === 1 && cursor.primaryKey === fresh[0].id ? 1 : Infinity;
+        return cursor.advance(PLACEMENT_KEEP);
+      }
+      const record = cursor.value as RoundRecord;
+      const trimmed = withoutPlacements(record);
+      if (trimmed !== record) cursor.update(trimmed);
+      left -= 1;
+      cursor.continue();
+    };
+    req.onerror = () => reject(req.error);
   });
 }
 
@@ -121,14 +149,14 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     }
   }
 
-  async function allRounds(db: IDBDatabase): Promise<RoundRecordV1[]> {
-    return request(db.transaction(STORE).objectStore(STORE).index(BY_END).getAll() as IDBRequest<RoundRecordV1[]>);
+  async function allRounds(db: IDBDatabase): Promise<RoundRecord[]> {
+    return request(db.transaction(STORE).objectStore(STORE).index(BY_END).getAll() as IDBRequest<RoundRecord[]>);
   }
 
   async function insertNew(
     db: IDBDatabase,
-    records: readonly RoundRecordV1[],
-  ): Promise<{ fresh: RoundRecordV1[]; evicted: number | null }> {
+    records: readonly RoundRecord[],
+  ): Promise<{ fresh: RoundRecord[]; evicted: number | null }> {
     const tx = db.transaction(STORE, "readwrite");
     const store = tx.objectStore(STORE);
     // A saved round looks up its own id; an import reads at most ROUND_CAP keys once.
@@ -143,14 +171,16 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
       return true;
     });
     fresh.forEach((record) => store.add(record));
-    const excess = fresh.length === 0 ? 0 : (await request(store.count())) - ROUND_CAP;
-    const oldest = excess > 0 ? await request(store.index(BY_END).getAll(null, excess) as IDBRequest<RoundRecordV1[]>) : [];
+    const held = fresh.length === 0 ? 0 : await request(store.count());
+    const excess = held - ROUND_CAP;
+    const oldest = excess > 0 ? await request(store.index(BY_END).getAll(null, excess) as IDBRequest<RoundRecord[]>) : [];
     oldest.forEach(({ id }) => store.delete(id));
+    if (fresh.length > 0 && held > PLACEMENT_KEEP) await keepPlacementsOnNewest(store.index(BY_END), fresh);
     await done(tx);
     return { fresh, evicted: oldest.at(-1)?.endedAt ?? null };
   }
 
-  const afterWatermark = (records: readonly RoundRecordV1[], watermark: number | null) =>
+  const afterWatermark = (records: readonly RoundRecord[], watermark: number | null) =>
     watermark === null ? records : records.filter(({ endedAt }) => endedAt > watermark);
 
   /**
@@ -158,7 +188,7 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
    * each once. Evicted ids are gone, so a round at or before the eviction
    * watermark may already be counted and is never folded in again.
    */
-  async function ingest(records: readonly RoundRecordV1[]): Promise<number> {
+  async function ingest(records: readonly RoundRecord[]): Promise<number> {
     const db = await open();
     const saved = await exclusive(async () => {
       const before = storedSummary() ?? summarize(await allRounds(db));
@@ -178,7 +208,7 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
   }
 
   /** An exported summary already counts the rounds exported with it, so they go into the log without being added again. */
-  async function restore(records: readonly RoundRecordV1[], summary: LabSummary): Promise<number | null> {
+  async function restore(records: readonly RoundRecord[], summary: LabSummary): Promise<number | null> {
     const db = await open();
     const saved = await exclusive(async () => {
       const held = await request(db.transaction(STORE).objectStore(STORE).count());

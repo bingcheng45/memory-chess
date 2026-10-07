@@ -142,6 +142,8 @@ export interface TypeRecallResult {
   readonly types: readonly TypeRecall[];
   /** Every round places both kings, so king recall is a baseline, not a finding. */
   readonly king: TypeRecall;
+  /** Easy rounds place only the two kings, so more of them never ready another type. */
+  readonly onlyKings: boolean;
   readonly roundsNeeded: number | null;
 }
 
@@ -168,6 +170,7 @@ export function deriveTypeRecall(summary: LabSummary): TypeRecallResult {
     sampleSize: summary.rounds,
     types,
     king: recallOf("k"),
+    onlyKings: summary.rounds > 0 && mostShown === 0,
     roundsNeeded: roundsToReach(LAB_THRESHOLDS.typeExposures, mostShown, summary.rounds),
   };
 }

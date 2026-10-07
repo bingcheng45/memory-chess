@@ -494,6 +494,7 @@
           "title": "Which pieces slip.",
           "need": "About {count, plural, one {# more round} other {# more rounds}} until a piece other than the king has 20 sightings.",
           "needStart": "Recall by piece type appears after your first round.",
+          "onlyKings": "Your rounds so far were just the two kings. Play a round with more pieces to see recall by piece type.",
           "thin": "{shown}/20 seen",
           "kings": "Kings are in every round, so they are a baseline. Recalled {recalled} of {shown}."
         },

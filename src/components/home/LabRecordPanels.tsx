@@ -200,6 +200,7 @@ export function TypesPanel({ summary }: RecordData) {
   const tags = useTags();
   const recall = deriveTypeRecall(summary);
   const typeName = (type: PieceSymbol) => pieces(mapChessJsPieceToType(type));
+  const kings = <p className="lab-note">{t("types.kings", { recalled: recall.king.recalled, shown: recall.king.shown })}</p>;
 
   return (
     <div className="lab-panel lab-p-types">
@@ -217,8 +218,13 @@ export function TypesPanel({ summary }: RecordData) {
               />
             ))}
           </div>
-          <p className="lab-note">{t("types.kings", { recalled: recall.king.recalled, shown: recall.king.shown })}</p>
+          {kings}
           <p className="lab-note">{t("fromRounds", { count: recall.sampleSize })}</p>
+        </>
+      ) : recall.onlyKings ? (
+        <>
+          <p className="lab-panel-desc lab-empty">{t("types.onlyKings")}</p>
+          {kings}
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">

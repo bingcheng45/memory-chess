@@ -149,6 +149,7 @@
       "memorizeTime": "암기 시간",
       "seconds": "{seconds}초",
       "start": "훈련 시작",
+      "quickStart": "라운드 시작",
       "lastGame": "지난 게임: 풀이 시간 {time}초, 정확도 {accuracy}%"
     },
     "presets": {

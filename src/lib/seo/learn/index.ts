@@ -27,7 +27,7 @@ function toPage(guide: LearnGuide): LearnPageContent {
 
   return {
     ...guide,
-    ctaHref: gameHref(firstRound),
+    ctaHref: gameHref(firstRound, "guide_cta"),
     tableOfContents: [
       ...guide.sections.map((section) => ({ id: section.id, label: section.title })),
       ...(guide.faq.length > 0

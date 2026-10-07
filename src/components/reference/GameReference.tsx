@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
@@ -8,13 +9,28 @@ import {
   PRESET_FACTS,
 } from "@/lib/reference/facts";
 import { getReferenceProse, interpolate } from "@/lib/reference/prose";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
+
+/**
+ * The Learn guides are English-only, so the list that links them is too: a
+ * translated game page would otherwise carry an English section.
+ */
+const TRAINING_GUIDES = {
+  heading: "Train between rounds",
+  links: [
+    { slug: "chess-visualization-exercises", before: "Hold the picture longer with these ", anchor: "chess visualization exercises", after: "." },
+    { slug: "blindfold-chess-training-for-beginners", before: "Work through a four-stage ", anchor: "blindfold chess training plan", after: "." },
+    { slug: "chess-memory-training", before: "Climb the ", anchor: "chess memory training ladder", after: " one preset at a time." },
+    { slug: "how-to-see-the-whole-board-in-chess", before: "Learn to ", anchor: "see the whole board", after: " before you move." },
+  ],
+} as const;
 
 /**
  * Rendered by the game route's layout, not its page: the page wraps the game
  * in a Suspense boundary whose child calls useSearchParams, so during static
  * prerender only the fallback serialises and nothing inside the page reaches
- * the served HTML. This block is also the route's sole h1; the game UI has
- * none.
+ * the served HTML. The route's h1 is the configuration card's, which comes
+ * first in the document, so this block starts at h2.
  */
 export default async function GameReference({ locale }: { locale: string }) {
   const prose = getReferenceProse(locale).game;
@@ -58,12 +74,12 @@ export default async function GameReference({ locale }: { locale: string }) {
 
       <div className="container mx-auto max-w-4xl px-2 sm:px-4 pb-4 pt-10 sm:pt-12">
         <div className={EDITORIAL_STYLES.readingColumn}>
-          <h1
+          <h2
             id="game-reference-title"
             className={EDITORIAL_STYLES.pageTitle}
           >
             {prose.title}
-          </h1>
+          </h2>
           <p className={`${EDITORIAL_STYLES.body} mt-4`}>{prose.intro}</p>
 
           <section className={EDITORIAL_STYLES.section}>
@@ -196,6 +212,25 @@ export default async function GameReference({ locale }: { locale: string }) {
               <p>{prose.positions.outro}</p>
             </div>
           </section>
+
+          {locale === DEFAULT_LOCALE ? (
+            <section className={EDITORIAL_STYLES.section}>
+              <h2 className={EDITORIAL_STYLES.sectionTitle}>
+                {TRAINING_GUIDES.heading}
+              </h2>
+              <ul className={`${EDITORIAL_STYLES.body} mt-5 list-disc space-y-2 pl-5`}>
+                {TRAINING_GUIDES.links.map((link) => (
+                  <li key={link.slug}>
+                    {link.before}
+                    <Link href={`/learn/${link.slug}`} className={EDITORIAL_STYLES.link}>
+                      {link.anchor}
+                    </Link>
+                    {link.after}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
         </div>
       </div>
     </section>

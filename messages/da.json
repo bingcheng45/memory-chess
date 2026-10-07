@@ -149,6 +149,7 @@
       "memorizeTime": "Indlæringstid",
       "seconds": "{seconds} s",
       "start": "Start træningen",
+      "quickStart": "Start en runde",
       "lastGame": "Sidste parti: {time} s løsningstid med {accuracy} % præcision"
     },
     "presets": {

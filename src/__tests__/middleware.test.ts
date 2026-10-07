@@ -79,7 +79,7 @@ describe("middleware on English-only routes", () => {
 
     expect(response.status).toBe(308);
     expect(response.headers.get("location")).toBe(
-      "https://thememorychess.com/learn/how-to-stop-blundering-in-chess",
+      "https://thememorychess.com/learn/how-to-see-the-whole-board-in-chess",
     );
     expect(mockForwarded).toHaveLength(0);
   });
@@ -161,7 +161,7 @@ describe("middleware on a trailing slash", () => {
     ["https://thememorychess.com/de/about/", "https://thememorychess.com/about"],
     [
       "https://thememorychess.com/de/learn/chess-board-vision-drills/?utm=xyz",
-      "https://thememorychess.com/learn/how-to-stop-blundering-in-chess?utm=xyz",
+      "https://thememorychess.com/learn/how-to-see-the-whole-board-in-chess?utm=xyz",
     ],
     ["https://thememorychess.com/learn/", "https://thememorychess.com/learn"],
     [

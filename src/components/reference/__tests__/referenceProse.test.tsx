@@ -77,11 +77,36 @@ describe("reference prose coverage", () => {
 });
 
 describe("game reference heading", () => {
-  // The game UI renders no h1 of its own, so this block owns the route's
-  // sole h1.
-  it("renders exactly one h1", async () => {
+  // The configuration card above this block owns the route's h1.
+  it("starts at h2 and renders no h1", async () => {
     const { container } = render(await GameReference({ locale: "en" }));
 
-    expect(container.querySelectorAll("h1")).toHaveLength(1);
+    expect(container.querySelectorAll("h1")).toHaveLength(0);
+    expect(container.querySelector("h2")).toHaveTextContent(en.game.title);
+  });
+});
+
+describe("game reference guide links", () => {
+  const guideLinks = (container: HTMLElement) =>
+    Array.from(container.querySelectorAll('a[href^="/learn/"]')).map((link) => [
+      link.getAttribute("href"),
+      link.textContent,
+    ]);
+
+  it("links the English page to four guides with descriptive anchors", async () => {
+    const { container } = render(await GameReference({ locale: "en" }));
+
+    expect(guideLinks(container)).toEqual([
+      ["/learn/chess-visualization-exercises", "chess visualization exercises"],
+      ["/learn/blindfold-chess-training-for-beginners", "blindfold chess training plan"],
+      ["/learn/chess-memory-training", "chess memory training ladder"],
+      ["/learn/how-to-see-the-whole-board-in-chess", "see the whole board"],
+    ]);
+  });
+
+  it("leaves the English-only guide list off a translated page", async () => {
+    const { container } = render(await GameReference({ locale: "de" }));
+
+    expect(guideLinks(container)).toEqual([]);
   });
 });

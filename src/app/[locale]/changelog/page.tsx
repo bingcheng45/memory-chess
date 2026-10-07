@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
+import { socialMetadata } from "@/lib/seo/brand";
 import { Link } from "@/i18n/navigation";
 import {
   EditorialHero,
@@ -23,15 +26,11 @@ export function generateMetadata(): Metadata {
     alternates: {
       canonical: "/changelog",
     },
-    openGraph: {
+    ...socialMetadata({
       title: meta.socialTitle,
       description: meta.socialDescription,
       url: `${siteUrl}/changelog`,
-    },
-    twitter: {
-      title: meta.socialTitle,
-      description: meta.socialDescription,
-    },
+    }),
   };
 }
 
@@ -43,6 +42,8 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 export default function ChangelogPage() {
+  // English-only route: the bare URL is the only one served, as English.
+  setRequestLocale(DEFAULT_LOCALE);
   const entries = CHANGELOG_ENTRIES;
   return (
     <EditorialPageShell>

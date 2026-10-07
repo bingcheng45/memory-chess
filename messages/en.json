@@ -32,15 +32,15 @@
   },
   "home": {
     "meta": {
-      "title": "Chess Memory Trainer: Free Online Game | Memory Chess",
-      "description": "Memory Chess is a free chess memory trainer. See a chess position for a few seconds, rebuild it from memory, and get an instant score. No sign-up.",
+      "title": "Memory Chess Game: Free Online Chess Memory Trainer",
+      "description": "Play the free memory chess game online. Study a chess position for a few seconds, rebuild it from memory, and get an instant accuracy score. No sign-up.",
       "socialTitle": "Memory Chess: Free Chess Memory Trainer",
       "socialDescription": "Memory Chess is a free chess memory trainer. See a chess position for a few seconds, rebuild it from memory, and get an instant score. No sign-up.",
       "twitterTitle": "Memory Chess: Free Chess Memory Trainer",
       "twitterDescription": "Memory Chess is a free chess memory trainer. See a chess position for a few seconds, rebuild it from memory, and get an instant score. No sign-up."
     },
     "hero": {
-      "title": "Memory Chess: Train Your Chess Memory and Visualization",
+      "title": "Memory chess game · chess memory trainer",
       "subtitle": "Memorize a chess position, rebuild it from memory, and get an instant score. Improve your board vision one round at a time.",
       "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
       "gamesPlayed": "Games played: {count}"
@@ -123,12 +123,439 @@
           "answer": "A few focused rounds on a regular schedule is a good place to start. Keep sessions short enough that you can still study each position carefully."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Lab index",
+        "badge": "Lab",
+        "notebook": "Notebook",
+        "method": "Method",
+        "calibrate": "Calibrate",
+        "tiers": "Difficulty",
+        "record": "Record",
+        "library": "Library",
+        "play": "Play a free round"
+      },
+      "tags": {
+        "proposed": "Proposed",
+        "sample": "Sample",
+        "illustrative": "Illustrative",
+        "live": "Live on site",
+        "free": "Free · no account",
+        "rig": "Rig"
+      },
+      "sections": {
+        "notebook": "Notebook",
+        "method": "Method",
+        "recording": "Field recording",
+        "calibrate": "Calibrate",
+        "tiers": "Difficulty",
+        "record": "Lab record",
+        "library": "Library",
+        "faq": "Questions",
+        "next": "Next run"
+      },
+      "hero": {
+        "platforms": "Browser · desktop · mobile",
+        "display": "Put a number on your <em>mind's eye.</em>",
+        "lede": "Memory Chess is a free memory chess game and chess memory trainer. Study a position for a few seconds, the board goes blank, then rebuild it from memory. Each round is a short memory test with an accuracy reading from 0 to 100% and a map of every square you got right or wrong.",
+        "secondaryCta": "Take a calibration reading",
+        "facts": {
+          "study": "study window",
+          "pieces": "pieces per round",
+          "accuracy": "accuracy reading",
+          "plays": "games played",
+          "languages": "languages"
+        },
+        "showcase": {
+          "aria": "Deep Fritz against Vladimir Kramnik, Bonn 2006, with a guided study of the position",
+          "event": "Man vs machine · Game 2",
+          "venue": "Bonn · 27 November 2006",
+          "white": "Deep Fritz",
+          "black": "Vladimir Kramnik",
+          "versus": "vs",
+          "pieceLabel": "{piece} on {square}",
+          "tags": {
+            "study": "Study",
+            "threat": "White threat",
+            "finish": "The finish",
+            "checkmate": "Checkmate",
+            "rebuild": "Rebuild",
+            "inspect": "Reach"
+          },
+          "counter": {
+            "study": "Study {n}/{total}",
+            "threat": "Threats {n}/{total}",
+            "finish": "Finish {n}/{total}",
+            "resume": "Click again to resume"
+          },
+          "controls": {
+            "steps": "Steps",
+            "step": "Step {n} of {total}: {tag}",
+            "previous": "Previous step",
+            "next": "Next step",
+            "play": "Play",
+            "pause": "Pause"
+          },
+          "inspect": {
+            "title": "{piece} on {square}.",
+            "reach": "{moves, plural, =0 {No moves} one {# move} other {# moves}}, {captures, plural, =0 {no captures} one {# capture} other {# captures}}.",
+            "checks": "Checks: {moves}."
+          },
+          "groups": {
+            "kingCorner": "King's corner",
+            "queenPawn": "Queen and pawn",
+            "cage": "The cage",
+            "blackQueen": "Black queen",
+            "blackPawns": "a4 and b4 pawns",
+            "bishopPawn": "Bishop and b2"
+          },
+          "steps": {
+            "study": {
+              "intro": { "caption": "Deep Fritz, White, against the world champion Vladimir Kramnik. Black is to move." },
+              "kingCorner": { "caption": "White's king on h1 with pawns g2 and h2." },
+              "queenPawn": {
+                "caption": "The queen on e4 sits right behind the pawn on e5.",
+                "thought": "Queen on e4, pawn on e5 in front of it."
+              },
+              "cage": {
+                "caption": "Black's king on h8 behind g7 and h6, with White's knight on f8 next door.",
+                "thought": "White's knight is already on f8, right beside the king."
+              },
+              "blackQueen": { "caption": "Black's queen is far away on a7." },
+              "blackPawns": { "caption": "Two black pawns on the fourth rank." },
+              "bishopPawn": { "caption": "Black's bishop on c1 sits diagonally behind White's b2 pawn." }
+            },
+            "threat": {
+              "knight": {
+                "caption": "The knight on f8 covers h7, the square beside Black's king.",
+                "thought": "Knight on f8: one jump from h7."
+              },
+              "queen": {
+                "caption": "The queen on e4 looks down the diagonal to h7. It can also take b4.",
+                "thought": "Queen and knight both aim at the same corner."
+              },
+              "mate": {
+                "caption": "Qh7 would be mate. The knight guards the queen, and g7 blocks the king.",
+                "thought": "The horse on f8 is what makes h7 deadly."
+              }
+            },
+            "finish": {
+              "reply": {
+                "caption": "Black had to stop Qh7#. 22 of his 26 legal moves lose to it. Kramnik played Qe3.",
+                "thought": "Black offers a queen trade and misses the mate."
+              },
+              "checkmate": {
+                "caption": "Qh7#. The knight guards the queen, g7 blocks the king, and g8 is covered.",
+                "thought": "Knight on f8: the piece that was already there."
+              }
+            },
+            "rebuild": {
+              "blank": { "caption": "The board goes blank. Which of the six groups can you still see?" },
+              "back": { "caption": "Rebuild one group at a time, then check it. That is the whole game." }
+            }
+          }
+        }
+      },
+      "notebook": {
+        "title": "You can't improve what you never measure.",
+        "lede": "Most chess practice trains decisions. Very little of it checks whether you can actually hold the board in your head. That skill sits under calculation, blindfold play and spotting tactics, and it is usually left to chance.",
+        "observation": {
+          "kicker": "Observation",
+          "title": "Players lose track of pieces mid-calculation.",
+          "body": "Three moves deep, a bishop on the long diagonal quietly disappears from the picture in your head. The board in front of you was right. The one in your mind was not."
+        },
+        "hypothesis": {
+          "kicker": "Hypothesis",
+          "title": "Board recall is a trainable, testable skill.",
+          "body": "Hold a position briefly, rebuild it, check the result. Repeat with more pieces and less time. <hl>We make no claims about your brain.</hl> We give you a reading you can track."
+        },
+        "method": {
+          "kicker": "Method",
+          "title": "One round, one clean number.",
+          "body": "Study, blank board, rebuild, score. Right squares are marked, wrong squares are marked, nothing is hidden. Rounds take under a minute, so you can run many."
+        }
+      },
+      "method": {
+        "title": "A round, under the microscope.",
+        "lede": "Scroll through the five phases of a single round. The diagram updates with each step. The overlays are illustrations of the method, not recordings of anyone's attention.",
+        "status": "Phase {number} / {name}",
+        "clock": "t = {seconds}s",
+        "chunkCorner": "A · Corner ×5",
+        "chunkPair": "B · File pair ×2",
+        "chunkLone": "C · Lone ×1",
+        "chunkGroupA": "A",
+        "scoreChip": "{correct} of {total} squares",
+        "phases": {
+          "study": {
+            "name": "Study",
+            "title": "Look for how pieces relate.",
+            "body": "A random position appears with a countdown. Do not try to read eight pieces one at a time. Look for pieces that touch, share a file or rank, or sit together in a corner.",
+            "note": "Fig. overlay: dashed lines join pieces that relate. A piece with no line is on its own."
+          },
+          "chunk": {
+            "name": "Chunk",
+            "title": "Eight pieces become three groups.",
+            "body": "Because the position is random, groups come from geometry: a cluster in a corner, a pair on a file, a piece alone. One chess-memory study estimates that people hold no more than about three chunks at a time, so three groups is a sensible target. One way to hold them is to name each one, for example “corner five”, “d-file pair”, “lone king”.",
+            "note": "A is a corner cluster of 5. B is a pair on the d-file. C is the black king on c4. A chess player would call A a castled shield and B a battery. Three groups to hold, not eight."
+          },
+          "blank": {
+            "name": "Blank",
+            "title": "The board clears.",
+            "body": "No pieces, no hints. Just the grid. This is the moment the round actually measures: what survived in your head after the image is gone.",
+            "note": "Nothing to do here but hold the three groups. Repeating their names is one way to do it."
+          },
+          "rebuild": {
+            "name": "Rebuild",
+            "title": "Rebuild one group at a time.",
+            "body": "Pick a piece and tap the square where it belongs. Finish a group before you start the next. In a classic chess-recall study, players put pieces back in quick bursts separated by longer pauses, which the researchers read as the gaps between chunks. Submit when you are done.",
+            "note": "Fig. the rebuilt board before it is checked. Nothing is marked until you submit."
+          },
+          "score": {
+            "name": "Score",
+            "title": "Read the result. Run it again.",
+            "body": "You get an accuracy score from 0 to 100% the moment you submit. Ask which group each miss came from. Here group A held except the knight, which landed one file off.",
+            "note": "Mint is correct. Orange fill is a wrong placement (knight on e3). Orange ring is the square it belonged on (f3). 7 of 8 squares is 88%. Your next round decides whether that was a fluke."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Take a calibration reading.",
+        "lede": "The Medium round from the real game: {pieces} pieces, two kings among them, {seconds} seconds. Then the board clears and you rebuild it. You'll get a readout card with your accuracy and recall by piece type. It works with mouse, touch and keyboard.",
+        "phaseReady": "Ready · {pieces} pieces · {seconds}s exposure",
+        "phaseLabel": "Phase {number} · {name}",
+        "start": "Start calibration",
+        "restart": "Restart",
+        "again": "Run again",
+        "submit": "Submit reading",
+        "clear": "Clear board",
+        "boardLabel": "Calibration board. Use the arrow keys to move between squares.",
+        "paletteLabel": "Piece palette",
+        "squareEmpty": "{square}, empty",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Study the position. {seconds} seconds.",
+        "liveRebuild": "Board cleared. Pick a piece, then a square.",
+        "liveScore": "Accuracy {accuracy} percent. {correct} of {total} squares correct.",
+        "startFailed": "Could not load a position. Check your connection and try again.",
+        "steps": [
+          "Press start. Study the position until the meter empties.",
+          "Pick a piece from the palette, then tap a square. Tap a placed piece to remove it.",
+          "Submit. Placing more pieces than the position had lowers your accuracy, so only place what you remember."
+        ],
+        "readout": {
+          "title": "Readout card",
+          "statusIdle": "Awaiting run",
+          "statusRecording": "Recording",
+          "statusDone": "Run complete",
+          "correct": "Correct squares",
+          "time": "Rebuild time",
+          "wrong": "Wrong pieces",
+          "exposure": "Exposure",
+          "byType": "Recall by piece type",
+          "byTypeEmpty": "Recall by piece type appears here after your first run.",
+          "nextEmpty": "A suggested difficulty appears after the reading.",
+          "suggested": "Suggested:",
+          "stepUp": "step up to {tier}, {pieces} pieces at {seconds}s. Confirm with two more clean rounds first.",
+          "stay": "stay on {tier}, {pieces} pieces at {seconds}s. Run three rounds and watch the trend.",
+          "start": "start on {tier}, {pieces} pieces at {seconds}s. Group pieces into pairs while you study.",
+          "playTier": "Play {tier}",
+          "legendCorrect": "correct",
+          "legendWrong": "wrong placement",
+          "legendMissed": "missed square"
+        },
+        "pieceTypes": {
+          "king": "King",
+          "queen": "Queen",
+          "rook": "Rook",
+          "bishop": "Bishop",
+          "knight": "Knight",
+          "pawn": "Pawn"
+        }
+      },
+      "tiers": {
+        "title": "Four presets. One custom rig.",
+        "lede": "Load goes up, exposure goes down. Move up a tier when your readings hold steady, not after one lucky round.",
+        "columns": {
+          "tier": "Difficulty",
+          "pieces": "Pieces",
+          "exposure": "Exposure",
+          "load": "Load"
+        },
+        "loadLabel": "{pieces} of 32 squares filled",
+        "play": "Play",
+        "custom": {
+          "label": "Custom",
+          "description": "Set your own variables to isolate one weakness."
+        }
+      },
+      "record": {
+        "title": "Come back for the trend line.",
+        "lede": "One reading is a snapshot. Ten readings are a measurement. Every round you play is kept on this device, and these panels fill in from your own rounds. Until there is enough to read, a panel shows <tag>Sample</tag> values, not real players.",
+        "curve": {
+          "fig": "Fig. 6.1 · Forgetting curve",
+          "tag": "Proposed · review reminders",
+          "title": "Short, spaced reviews beat one long session.",
+          "desc": "Memory for new material tends to fade quickly, and each well-timed review tends to slow the fade. A daily round is a natural review slot.",
+          "aria": "Illustrative chart: retention falls quickly without review and decays more slowly after each spaced review on days 1, 3 and 7.",
+          "note": "Illustrative model of the spacing effect. Not measured data.",
+          "noReview": "no review",
+          "spaced": "spaced rounds",
+          "review": "review",
+          "day": "d{day}"
+        },
+        "spark": {
+          "fig": "Fig. 6.2 · Accuracy over time",
+          "title": "Your line, session by session.",
+          "aria": "Sample sparkline of accuracy over 12 sessions, rising from 52 to 79 percent.",
+          "note": "Sample record · 12 sessions · Medium",
+          "first": "S01",
+          "last": "S12",
+          "needRounds": "{count, plural, one {# more round} other {# more rounds}} at {pieces} pieces, {seconds}s draws your trend.",
+          "needDay": "Play {pieces} pieces, {seconds}s on one more day to draw your trend.",
+          "config": "{pieces} pieces · {seconds}s, the setting you play most",
+          "realAria": "Your accuracy over your last {count} rounds at {pieces} pieces and {seconds} seconds, latest {latest} percent.",
+          "realFirst": "Oldest",
+          "realLast": "Latest"
+        },
+        "heat": {
+          "fig": "Fig. 6.3 · Miss map",
+          "title": "Where your squares slip.",
+          "aria": "Sample heatmap of missed squares, concentrated on the a and h files.",
+          "note": "Sample: misses cluster on the edge files. Train edges next.",
+          "need": "About {count, plural, one {# more round} other {# more rounds}} until every file and rank has 10 pieces to read.",
+          "needStart": "Play a few more rounds to start your miss map.",
+          "files": "Files",
+          "ranks": "Ranks",
+          "line": "{line}: {missed} of {shown} missed",
+          "lineThin": "{line}: {shown} seen, not enough to read",
+          "realAria": "Your miss share on each square. Grey squares have fewer than 10 pieces seen.",
+          "realNote": "Darker means missed more often. Grey has under 10 pieces seen."
+        },
+        "streak": {
+          "fig": "Fig. 6.4 · Daily challenge",
+          "title": "One shared position a day.",
+          "desc": "Same board for everyone, one attempt, a streak that counts consecutive days.",
+          "aria": "Sample two-week streak grid",
+          "note": "Sample · the dashed square is today's run, still pending",
+          "realTitle": "Days in a row.",
+          "realDesc": "Any finished round counts for its day.",
+          "need": "Play on one more day to start a streak.",
+          "realAria": "Your last 14 days: {count, plural, one {# day} other {# days}} played.",
+          "realNote": "Current streak {current, plural, one {# day} other {# days}} · longest {longest, plural, one {# day} other {# days}}",
+          "chip": "Day {count}"
+        },
+        "board": {
+          "fig": "Fig. 6.5 · Leaderboard",
+          "title": "Compare readings worldwide.",
+          "desc": "See where your accuracy ranks on each difficulty, next to every player's country.",
+          "countryFilter": "Filter by country",
+          "open": "Open leaderboard",
+          "you": "you"
+        },
+        "plans": {
+          "a": {
+            "kicker": "Plan A · 7 days",
+            "title": "Baseline week",
+            "steps": [
+              "One Medium round a day.",
+              "Log the reading, ignore the urge to retry.",
+              "Day 7: compare against day 1."
+            ]
+          },
+          "b": {
+            "kicker": "Plan B · 14 days",
+            "title": "Edge-file drill",
+            "steps": [
+              "Custom rig: 8 pieces, 15s.",
+              "Review your miss map every 3 days.",
+              "Pair with the board vision guide."
+            ]
+          },
+          "c": {
+            "kicker": "Plan C · open-ended",
+            "title": "Step-down ladder",
+            "steps": [
+              "Hold 90% for three rounds in a row.",
+              "Then cut study time by 2 seconds.",
+              "When study time bottoms out, add pieces."
+            ]
+          }
+        },
+        "mine": "Your record",
+        "fromRounds": "From {count, plural, one {# round} other {# rounds}}",
+        "bests": {
+          "fig": "Fig. 6.6 · Personal bests",
+          "title": "Your best reading per setting.",
+          "desc": "Bests are kept per setting, because 6 pieces and 20 pieces are different tests. Practice readings on this page stay apart from games.",
+          "empty": "Your best reading for each setting appears after your first round.",
+          "setting": "{source, select, calibration {Practice} other {Game}} · {pieces} pieces · {seconds}s",
+          "first": "first reading",
+          "reading": "{accuracy}% · rebuilt in {seconds}s"
+        },
+        "types": {
+          "fig": "Fig. 6.7 · Recall by piece type",
+          "title": "Which pieces slip.",
+          "need": "About {count, plural, one {# more round} other {# more rounds}} until a piece type has 20 sightings.",
+          "needStart": "Recall by piece type appears after your first round.",
+          "thin": "{shown}/20 seen"
+        },
+        "tools": {
+          "title": "Kept on this device",
+          "body": "No account and no server. Download a copy to move it to another browser or to keep it safe.",
+          "download": "Download my lab record",
+          "import": "Import",
+          "lastBackup": "Export started {date}",
+          "neverBackedUp": "Not exported yet",
+          "imported": "{added, plural, =0 {Nothing new to import. Those rounds are already here.} one {Imported # round.} other {Imported # rounds.}}",
+          "skipped": "{count, plural, one {# round in the file could not be read and was skipped.} other {# rounds in the file could not be read and were skipped.}}",
+          "importFailed": "That file is not a Memory Chess lab record.",
+          "tooLarge": "That file is over 5 MB, larger than any lab record, so nothing was imported.",
+          "overCap": "{count, plural, one {# older round was} other {# older rounds were}} left out to stay within the 5,000-round limit.",
+          "summaryIgnored": "This browser already had rounds, so only new rounds were merged, not the file's lifetime totals.",
+          "summaryDropped": "The file's lifetime totals could not be read, so only its rounds were imported.",
+          "safari": "On Safari, a private tab does not keep this record after it closes, and Safari erases a site's stored data after about 7 days without a visit. Export a copy to keep it.",
+          "unavailable": "Not saved in private windows. This browser window is not keeping your rounds.",
+          "backup": "Back up across devices (coming soon)",
+          "backupNoted": "Cross-device backup is not built yet. Thanks, your interest is counted."
+        }
+      },
+      "library": {
+        "title": "Reference library.",
+        "lede": "The Learning Center pairs short guides with drills, so each reading points to something you can practise.",
+        "ref": "Ref. {number}",
+        "read": "Read guide",
+        "vision": {
+          "title": "Board vision",
+          "body": "See the whole board at once instead of one corner at a time."
+        },
+        "visualization": {
+          "title": "Visualization",
+          "body": "Hold a moving position in your head as pieces shift."
+        },
+        "calculation": {
+          "title": "Calculation",
+          "body": "Look further ahead without losing track of the board."
+        },
+        "memory": {
+          "title": "Memory",
+          "body": "Chunking and pattern techniques that raise your readings."
+        },
+        "blindfold": {
+          "title": "Blindfold chess training",
+          "body": "A four-stage plan from board recall to full blindfold games."
+        },
+        "blundering": "How to stop blundering"
+      },
+      "final": {
+        "title": "Your first reading takes under a minute.",
+        "body": "No account, no download, no sign-up. Open a round, study, rebuild, read the number. Then decide if you want a second one."
+      }
     }
   },
   "game": {
     "meta": {
-      "title": "Play Memory Chess Online",
-      "description": "Play Memory Chess online to train board visualization, recall, and chess pattern recognition with timed memory challenges.",
+      "title": "Chess Memory Game: Rebuild the Position",
+      "description": "Start a chess memory game in one tap. Memorize a position, rebuild it square by square, and see your accuracy. Pick 2 to 32 pieces and 2 to 32 seconds.",
       "socialTitle": "Play Memory Chess Online",
       "socialDescription": "Train your chess visualization and memory with interactive timed challenges."
     },
@@ -141,7 +568,7 @@
       "flash": "GAME!"
     },
     "config": {
-      "title": "Game Configuration",
+      "title": "Chess memory game",
       "presetsLabel": "Difficulty Presets",
       "presetSummary": "{pieces} pcs / {seconds}s",
       "customLabel": "Custom settings",
@@ -149,6 +576,7 @@
       "memorizeTime": "Memorization Time",
       "seconds": "{seconds}s",
       "start": "Start Training",
+      "quickStart": "Start a round",
       "lastGame": "Last game: {time}s solution time with {accuracy}% accuracy"
     },
     "presets": {

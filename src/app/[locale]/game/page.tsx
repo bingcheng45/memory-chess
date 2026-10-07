@@ -10,9 +10,7 @@ import GameStats from '@/components/game/GameStats';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
 import { playSound, stopTimerSound } from '@/lib/utils/soundEffects';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
-import { Chess } from 'chess.js';
-import { v4 as uuidv4 } from 'uuid';
-import { ChessPiece, PieceType } from '@/types/chess';
+import { ChessPiece } from '@/types/chess';
 import { pieceTypeToFenChar } from '@/utils/chessPieces';
 import { Button } from "@/components/ui/button";
 import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
@@ -23,31 +21,33 @@ import PageHeader from '@/components/ui/PageHeader';
 import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
-import { trackEvent } from '@/lib/analytics/events';
+import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
+import { ROUND_PARAMS } from '@/lib/game/roundLink';
 
 import { useTranslations } from "next-intl";
 
 const TIMER_CUE_DELAY_MS = 500;
 
-type UrlRound = { pieceCount: number; memorizeTime: number };
+type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource };
 
 // The query is read off the live location rather than via useSearchParams,
 // which would bail /game out of static rendering and serve an empty page.
 function takeUrlRound(): UrlRound | null {
   const params = new URLSearchParams(window.location.search);
-  const pieceCountParam = params.get('pieceCount');
-  const memorizeTimeParam = params.get('memorizeTime');
+  const pieceCountParam = params.get(ROUND_PARAMS.pieceCount);
+  const memorizeTimeParam = params.get(ROUND_PARAMS.memorizeTime);
   if (!pieceCountParam && !memorizeTimeParam) return null;
 
   // A refresh then opens the configuration screen instead of restarting the round.
-  params.delete('pieceCount');
-  params.delete('memorizeTime');
+  const source = roundSourceFrom(params.get(ROUND_PARAMS.source));
+  Object.values(ROUND_PARAMS).forEach((name) => params.delete(name));
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
 
   return {
     pieceCount: pieceCountParam ? parseInt(pieceCountParam) : 8,
     memorizeTime: memorizeTimeParam ? parseInt(memorizeTimeParam) : 10,
+    source,
   };
 }
 
@@ -118,14 +118,12 @@ function GamePageContent() {
   useEffect(() => {
     if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound();
     const round = urlRoundRef.current;
-    if (round) startGame(round.pieceCount, round.memorizeTime);
+    if (round) startGame(round.pieceCount, round.memorizeTime, round.source);
   }, [startGame]);
   
   useEffect(() => {
     if (gamePhase === GamePhase.MEMORIZATION) {
       warmLeaderboardCutoffs();
-      const { pieceCount, memorizeTime } = useGameStore.getState().gameState;
-      trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime } });
     }
   }, [gamePhase]);
   
@@ -218,7 +216,7 @@ function GamePageContent() {
     stopTimerSound(); // Stop any playing timer sound
     playSound('click');
     resetGame();
-    startGame(gameState.pieceCount, gameState.memorizeTime);
+    startGame(gameState.pieceCount, gameState.memorizeTime, 'try_again');
   };
   
   // Handle starting a new game with different configuration
@@ -230,10 +228,10 @@ function GamePageContent() {
   };
   
   // Handle starting the game from configuration
-  const handleStartGame = (pieceCount: number, memorizeTime: number) => {
+  const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
     console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
     playSound('click');
-    startGame(pieceCount, memorizeTime);
+    startGame(pieceCount, memorizeTime, source);
   };
   
   // Handle back button
@@ -241,33 +239,6 @@ function GamePageContent() {
     stopTimerSound(); // Stop any playing timer sound
     router.push('/');
   };
-  
-  // Add this helper function to convert chess.js board to ChessPiece array
-  // Currently not used as we start with an empty board in solution phase,
-  // but kept for future reference if we need to pre-populate the board
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  function chessToPieces(chess: Chess | null): ChessPiece[] {
-    if (!chess) return [];
-    
-    const pieces: ChessPiece[] = [];
-    const board = chess.board();
-    
-    for (let rank = 0; rank < 8; rank++) {
-      for (let file = 0; file < 8; file++) {
-        const square = board[rank][file];
-        if (square) {
-          pieces.push({
-            id: uuidv4(),
-            type: square.type as PieceType,
-            color: square.color === 'w' ? 'white' : 'black',
-            position: { file, rank }
-          });
-        }
-      }
-    }
-    
-    return pieces;
-  }
   
   // Add a useEffect to log the chess instance when it changes
   useEffect(() => {

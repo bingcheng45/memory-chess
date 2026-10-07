@@ -2,7 +2,7 @@ import type { ReactElement, ReactNode } from "react";
 import { isValidElement } from "react";
 import { render } from "@/test-utils/intl";
 import LocaleLayout from "@/app/[locale]/layout";
-import HomePage from "@/app/[locale]/page";
+import HomePage from "@/app/[locale]/(home)/page";
 import PrivacyPage from "@/app/[locale]/privacy/page";
 import ContactUsPage from "@/app/[locale]/contact-us/page";
 import Footer from "@/components/ui/Footer";
@@ -51,14 +51,14 @@ describe("footer placement", () => {
     expect(countComponent(tree, Footer)).toBe(1);
   });
 
-  const pages: Array<[string, () => ReactElement]> = [
-    ["home", () => <HomePage />],
+  const pages: Array<[string, () => ReactElement | Promise<ReactElement>]> = [
+    ["home", () => HomePage({ params: Promise.resolve({ locale: "en" }) })],
     ["privacy", () => <PrivacyPage />],
     ["contact-us", () => <ContactUsPage />],
   ];
 
-  it.each(pages)("the %s page renders no footer of its own", (_name, page) => {
-    const { container } = render(page());
+  it.each(pages)("the %s page renders no footer of its own", async (_name, page) => {
+    const { container } = render(await page());
 
     expect(container.querySelectorAll("footer")).toHaveLength(0);
   });

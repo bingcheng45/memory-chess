@@ -1,16 +1,28 @@
-import { splitArticlesNamespace, tileGroupOf } from "@/lib/articles/messageScope";
+import { splitClientMessages, tileGroupOf } from "@/lib/articles/messageScope";
 
-describe("splitArticlesNamespace", () => {
-  it("parts the articles namespace from every other one", () => {
+describe("splitClientMessages", () => {
+  it("parts the articles namespace and the home lab group from every other string", () => {
     const catalogue = {
-      common: { nav: { articles: "Artikel" } },
-      articles: { like: { button: "Artikel empfehlen" } },
-      game: { skip: "Überspringen" },
+      common: { nav: { articles: "Articles" } },
+      articles: { like: { button: "Recommend this article" } },
+      home: { meta: { title: "Memory Chess" }, lab: { hero: { lede: "Put a number on it." } } },
+      game: { skip: "Skip" },
     };
 
-    expect(splitArticlesNamespace(catalogue)).toEqual({
-      shared: { common: { nav: { articles: "Artikel" } }, game: { skip: "Überspringen" } },
-      articles: { like: { button: "Artikel empfehlen" } },
+    expect(splitClientMessages(catalogue)).toEqual({
+      shared: { common: { nav: { articles: "Articles" } }, home: { meta: { title: "Memory Chess" } }, game: { skip: "Skip" } },
+      articles: { like: { button: "Recommend this article" } },
+      lab: { home: { lab: { hero: { lede: "Put a number on it." } } } },
+    });
+  });
+
+  it("adds no lab group for a catalogue without the lab", () => {
+    const catalogue = { home: { meta: { title: "Memory Chess" } }, game: { skip: "Überspringen" } };
+
+    expect(splitClientMessages(catalogue)).toEqual({
+      shared: { home: { meta: { title: "Memory Chess" } }, game: { skip: "Überspringen" } },
+      articles: undefined,
+      lab: {},
     });
   });
 });

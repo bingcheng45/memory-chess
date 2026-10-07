@@ -1,7 +1,7 @@
 import { trackEvent, type FunnelEvent } from "@/lib/analytics/events";
 
 const EVENTS: FunnelEvent[] = [
-  { name: "round_start", params: { piece_count: 6, memorize_time: 10 } },
+  { name: "round_start", params: { piece_count: 6, memorize_time: 10, source: "home_quick" } },
   {
     name: "round_complete",
     params: { piece_count: 6, memorize_time: 10, correct_pieces: 4, accuracy: 67 },
@@ -10,6 +10,9 @@ const EVENTS: FunnelEvent[] = [
   { name: "article_like", params: { slug: "magnus-carlsen" } },
   { name: "article_tile_click", params: { slug: "judit-polgar", action: "read" } },
   { name: "article_tile_click", params: { slug: "judit-polgar", action: "drill" } },
+  { name: "lab_export", params: { rounds: 42 } },
+  { name: "lab_import", params: { added: 40, rejected: 2 } },
+  { name: "lab_backup_interest", params: { rounds: 42 } },
 ];
 
 afterEach(() => {

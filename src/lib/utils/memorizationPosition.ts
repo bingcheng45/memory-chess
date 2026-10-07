@@ -6,7 +6,9 @@ import {
   SQUARES,
 } from "chess.js";
 
+import { STANDARD_INVENTORY } from "@/lib/game/pieceInventory";
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
+import { mapChessJsPieceToType } from "@/utils/chessPieces";
 
 export type PositionViolation =
   | "invalid-fen"
@@ -36,14 +38,6 @@ const PIECE_WEIGHTS: Readonly<Record<Exclude<PieceSymbol, "k">, number>> = {
   b: 2,
   r: 2,
   q: 1,
-};
-const STANDARD_INVENTORY: Readonly<Record<PieceSymbol, number>> = {
-  p: 8,
-  n: 2,
-  b: 2,
-  r: 2,
-  q: 1,
-  k: 1,
 };
 
 const FALLBACK_POSITION: ReadonlyArray<{
@@ -174,8 +168,8 @@ export function validateMemorizationPosition(
   COLORS.forEach((color) => {
     if (kings[color].length !== 1) violations.add("king-count");
 
-    (Object.keys(STANDARD_INVENTORY) as PieceSymbol[]).forEach((type) => {
-      if (inventory[color][type] > STANDARD_INVENTORY[type]) {
+    (Object.keys(inventory[color]) as PieceSymbol[]).forEach((type) => {
+      if (inventory[color][type] > STANDARD_INVENTORY[mapChessJsPieceToType(type)]) {
         violations.add("piece-inventory");
       }
     });
@@ -280,9 +274,14 @@ function generateCandidate(
     w: Math.ceil((pieceCount - 2) / 2),
     b: Math.floor((pieceCount - 2) / 2),
   };
+  const fullSet = Object.fromEntries(
+    (Object.keys(PIECE_WEIGHTS) as Array<Exclude<PieceSymbol, "k">>).map(
+      (symbol) => [symbol, STANDARD_INVENTORY[mapChessJsPieceToType(symbol)]],
+    ),
+  ) as Record<Exclude<PieceSymbol, "k">, number>;
   const inventory: Record<Color, Record<Exclude<PieceSymbol, "k">, number>> = {
-    w: { ...PIECE_WEIGHTS },
-    b: { ...PIECE_WEIGHTS },
+    w: { ...fullSet },
+    b: { ...fullSet },
   };
   const bishopComplex: Partial<Record<Color, 0 | 1>> = {};
   let piecesPlaced = 2;

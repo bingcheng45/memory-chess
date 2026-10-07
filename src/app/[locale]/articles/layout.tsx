@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { getMessages } from "next-intl/server";
 import ArticleFlightGate from "@/components/articles/ArticleFlightGate";
-import ArticlesMessagesProvider from "@/components/articles/ArticlesMessagesProvider";
-import { splitArticlesNamespace } from "@/lib/articles/messageScope";
+import ScopedMessagesProvider from "@/components/common/ScopedMessagesProvider";
+import { splitClientMessages } from "@/lib/articles/messageScope";
 
 type ArticlesLayoutProps = {
   children: ReactNode;
@@ -11,12 +11,12 @@ type ArticlesLayoutProps = {
 
 export default async function ArticlesLayout({ children, params }: ArticlesLayoutProps) {
   const { locale } = await params;
-  const { articles } = splitArticlesNamespace(await getMessages({ locale }));
+  const { articles } = splitClientMessages(await getMessages({ locale }));
 
   return (
-    <ArticlesMessagesProvider articles={articles}>
+    <ScopedMessagesProvider messages={{ articles }}>
       {children}
       <ArticleFlightGate />
-    </ArticlesMessagesProvider>
+    </ScopedMessagesProvider>
   );
 }

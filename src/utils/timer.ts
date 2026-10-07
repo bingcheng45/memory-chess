@@ -81,3 +81,8 @@ export function calculateRemainingTime(totalTime: number, elapsedTime: number): 
 export function calculateProgress(elapsedTime: number, totalTime: number): number {
   return Math.min(100, (elapsedTime / totalTime) * 100);
 }
+
+/** Milliseconds as seconds with one decimal: 4230 reads "4.2". */
+export function formatSeconds(ms: number): string {
+  return (ms / 1000).toFixed(1);
+}

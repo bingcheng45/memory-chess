@@ -149,6 +149,7 @@
       "memorizeTime": "Kijktijd",
       "seconds": "{seconds} s",
       "start": "Start de training",
+      "quickStart": "Start een ronde",
       "lastGame": "Vorige partij: {time} s oplostijd met {accuracy}% nauwkeurigheid"
     },
     "presets": {

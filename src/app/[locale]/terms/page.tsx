@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
+import { socialMetadata } from "@/lib/seo/brand";
 import { Link } from "@/i18n/navigation";
 import {
   EditorialHero,
@@ -16,20 +19,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/terms",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "Memory Chess Terms of Service",
-    description:
-      "The plain-language terms for playing Memory Chess and using the site.",
+    description: "The plain-language terms for playing Memory Chess and using the site.",
     url: `${siteUrl}/terms`,
-  },
-  twitter: {
-    title: "Memory Chess Terms of Service",
-    description:
-      "The plain-language terms for playing Memory Chess and using the site.",
-  },
+  }),
 };
 
 export default function TermsPage() {
+  // English-only route: the bare URL is the only one served, as English.
+  setRequestLocale(DEFAULT_LOCALE);
   return (
     <EditorialPageShell>
       <EditorialHero

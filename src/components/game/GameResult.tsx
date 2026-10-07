@@ -30,6 +30,7 @@ import { useSettingsStore } from "@/stores/settingsStore";
 import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
 import ResultBoardComparison from "@/components/game/ResultBoardComparison";
 import ArticleTile from "@/components/game/ArticleTile";
+import { countWrong } from "@/lib/game/scoring";
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & {
@@ -140,13 +141,8 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     correctPieces: extendedGameState.correctPlacements || 0,
     // Extra pieces are only counted if more pieces were placed than required
     extraPieces: extendedGameState.extraPieces || 0,
-    // Total wrong is the sum of missed original pieces and any extra pieces
     get totalWrong() {
-      // By default, wrong pieces is the inverse of correct pieces
-      const basicWrongPieces = this.totalPieces - this.correctPieces;
-
-      // Add any extra pieces that were placed but not in the original position
-      return basicWrongPieces + this.extraPieces;
+      return countWrong({ total: this.totalPieces, correct: this.correctPieces, extra: this.extraPieces });
     },
   };
 

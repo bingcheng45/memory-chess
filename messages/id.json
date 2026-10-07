@@ -149,6 +149,7 @@
       "memorizeTime": "Waktu menghafal",
       "seconds": "{seconds} dtk",
       "start": "Mulai berlatih",
+      "quickStart": "Mulai satu ronde",
       "lastGame": "Permainan terakhir: {time} dtk waktu penyelesaian dengan akurasi {accuracy}%"
     },
     "presets": {

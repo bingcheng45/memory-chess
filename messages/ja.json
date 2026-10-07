@@ -149,6 +149,7 @@
       "memorizeTime": "記憶時間",
       "seconds": "{seconds} 秒",
       "start": "トレーニングを開始",
+      "quickStart": "ラウンドを開始",
       "lastGame": "前回：解答時間 {time} 秒、正答率 {accuracy}%"
     },
     "presets": {

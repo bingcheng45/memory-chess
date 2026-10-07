@@ -35,7 +35,7 @@ export function buildArticleMetadata(article: Article, locale: string): Metadata
   const image = portraitImage(article.photo);
 
   return {
-    title: article.title,
+    title: article.searchTitle ?? article.title,
     description: article.description,
     ...indexing,
     openGraph: {

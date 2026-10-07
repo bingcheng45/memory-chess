@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
+import { socialMetadata } from "@/lib/seo/brand";
 import { Link } from "@/i18n/navigation";
 import PageHeader from "@/components/ui/PageHeader";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
@@ -12,17 +15,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/privacy",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "Memory Chess Privacy Policy",
-    description:
-      "Learn how Memory Chess handles data, cookies, analytics, and advertising.",
+    description: "Learn how Memory Chess handles data, cookies, analytics, and advertising.",
     url: `${siteUrl}/privacy`,
-  },
-  twitter: {
-    title: "Memory Chess Privacy Policy",
-    description:
-      "Learn how Memory Chess handles data, cookies, analytics, and advertising.",
-  },
+  }),
 };
 
 const lastUpdatedFormat = new Intl.DateTimeFormat("en-US", {
@@ -40,6 +37,8 @@ const linkClassName =
   "text-peach-300 underline decoration-peach-500/40 underline-offset-4 transition-colors hover:text-peach-200";
 
 export default function PrivacyPage() {
+  // English-only route: the bare URL is the only one served, as English.
+  setRequestLocale(DEFAULT_LOCALE);
   return (
     <div className="min-h-screen bg-bg-dark text-text-primary">
       <main className="container mx-auto max-w-4xl px-2 sm:px-4 py-8 sm:py-10">
@@ -147,6 +146,18 @@ export default function PrivacyPage() {
               repeating a dismissed update banner, and time when the feedback
               prompt may return. Clearing your browser data resets these
               choices.
+            </p>
+            <p className={copyClassName}>
+              The homepage lab record keeps every round you finish, including
+              the practice reading on the homepage, in your browser&apos;s
+              IndexedDB and local storage: the position you studied, the one
+              you rebuilt, your timings, and your scores. It is used only to
+              draw your streak, personal bests, accuracy trend and miss map on
+              this device. It is never sent to Memory Chess or to analytics;
+              analytics only receive counts when you download, import, or ask
+              for cross-device backup. Download my lab record saves a copy as
+              a file you control, and clearing your browser data deletes the
+              record. Private windows do not keep it.
             </p>
             <p className={copyClassName}>
               Liking an article saves the id of that article and the like

@@ -1,4 +1,4 @@
-import { render, screen } from "@/test-utils/intl";
+import { fireEvent, render, screen } from "@/test-utils/intl";
 import GameConfig from "@/components/game/GameConfig";
 import { useGameStore } from "@/lib/store/gameStore";
 
@@ -115,5 +115,27 @@ describe("GameConfig last-game line", () => {
 
     expect(screen.getByText(/13\.000s/)).toBeInTheDocument();
     expect(screen.queryByText(/12\.1000s/)).not.toBeInTheDocument();
+  });
+});
+
+describe("GameConfig one-tap start", () => {
+  it("starts the Medium preset whatever the form below is set to", () => {
+    const onStart = jest.fn();
+    render(<GameConfig onStart={onStart} />);
+
+    fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Start a round" }));
+
+    expect(onStart).toHaveBeenCalledWith(6, 10, "game_quick");
+  });
+
+  it("still starts the round the form is set to from the form's own button", () => {
+    const onStart = jest.fn();
+    render(<GameConfig onStart={onStart} />);
+
+    fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Start Training" }));
+
+    expect(onStart).toHaveBeenCalledWith(12, 8, "game_form");
   });
 });

@@ -1,3 +1,6 @@
+import type { RoundSource } from "@/lib/analytics/events";
+import { playHref } from "@/lib/game/roundLink";
+
 /**
  * Goal ids and their hrefs. The visible label, description and accent live in
  * LEARN_GOAL_COPY in ./copy -- see EN_LEARN_GOALS in ./index.
@@ -46,10 +49,8 @@ export type LearnDrillCard = {
   setup?: LearnGameSetup;
 };
 
-export function gameHref(setup?: LearnGameSetup): string {
-  return setup
-    ? `/game?pieceCount=${setup.pieceCount}&memorizeTime=${setup.memorizeTime}`
-    : "/game";
+export function gameHref(setup: LearnGameSetup | undefined, source: RoundSource): string {
+  return setup ? playHref(setup.pieceCount, setup.memorizeTime, source) : "/game";
 }
 
 export type LearnComparisonRow = {
@@ -73,6 +74,12 @@ export type LearnSource = {
 export type LearnRelatedArticle = {
   slug: string;
   reason: string;
+};
+
+/** An article the guide sends readers on to, linked with `anchor` as its text. */
+export type LearnFurtherReading = {
+  slug: string;
+  anchor: string;
 };
 
 export type LearnTableOfContentsItem = {
@@ -122,6 +129,7 @@ export type LearnGuide = {
   sections: LearnSection[];
   faq: LearnFaq[];
   relatedArticles: LearnRelatedArticle[];
+  furtherReading?: LearnFurtherReading[];
   sources: LearnSource[];
 };
 

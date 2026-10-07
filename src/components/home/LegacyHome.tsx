@@ -7,13 +7,13 @@ import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import PageHeader from "@/components/ui/PageHeader";
 import FaqSection from "@/components/ui/FaqSection";
 import VideoSection from "@/components/ui/VideoSection";
-import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { formatNumber } from "@/lib/utils";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 import { PieceColor, PieceType } from "@/types/chess";
-import { BRAND_ORGANIZATION, BRAND_WEBSITE } from "@/lib/seo/brand";
-import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
+import { HomeStructuredData } from "./HomeStructuredData";
+import { QUICK_START_HREF } from "./links";
+import { useTotalPlays } from "./useLabEffects";
 import {
   ArrowRight,
   BookOpen,
@@ -22,9 +22,6 @@ import {
   Sparkles,
   TrendingUp,
 } from "lucide-react";
-
-// /game starts a round on mount from these params.
-const QUICK_START_HREF = `/game?pieceCount=${DEFAULT_PRESET.pieceCount}&memorizeTime=${DEFAULT_PRESET.memorizeTime}`;
 
 // Copy lives in the `home.howItWorks.steps` messages; only the ordinal and the
 // icon are language-neutral and stay here.
@@ -46,40 +43,13 @@ const memoryBoardSquares: Array<{ type: PieceType; color: PieceColor } | null> =
   null, null, null, null, { type: 'pawn', color: 'white' }, null, null, null,
 ];
 
-export default function Home() {
+/**
+ * The homepage body from before the Brain Lab. Locales without translated lab
+ * copy keep serving it, so they never show English lab text.
+ */
+export function LegacyHome() {
   const t = useTranslations("home");
-  const [totalPlays, setTotalPlays] = useState<number | null>(null);
-
-  const brandSchema = {
-    "@context": "https://schema.org",
-    "@graph": [BRAND_ORGANIZATION, BRAND_WEBSITE],
-  };
-
-  // Fetch total plays from Supabase on component mount
-  useEffect(() => {
-    async function fetchTotalPlays() {
-      try {
-        const response = await fetch("/api/game-stats?metric=total_plays");
-
-        if (!response.ok) {
-          return;
-        }
-
-        const data = await response.json();
-
-        // Extract the value from the correct path: data.metric_value
-        const playsValue = data?.data?.metric_value;
-
-        if (playsValue !== undefined) {
-          setTotalPlays(playsValue);
-        }
-      } catch {
-        // Stats are optional; keep the homepage usable when local Supabase env vars are absent.
-      }
-    }
-
-    fetchTotalPlays();
-  }, []);
+  const totalPlays = useTotalPlays();
 
   return (
     <div className="min-h-screen bg-bg-dark text-text-primary">
@@ -87,16 +57,7 @@ export default function Home() {
         <div className="flex justify-center mb-8">
           <PageHeader showSoundSettings={false} />
         </div>
-        {/*
-          Plain script tag, not next/script: `strategy="afterInteractive"`
-          keeps the JSON-LD out of the served HTML entirely, so crawlers only
-          see it if they execute JS. This matches how the Learn pages already
-          emit their structured data.
-        */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(brandSchema) }}
-        />
+        <HomeStructuredData />
 
         <div className="flex flex-col items-center justify-center space-y-8 text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-text-primary">

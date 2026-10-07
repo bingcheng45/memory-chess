@@ -5,7 +5,7 @@ import { unprefixedPath } from "@/lib/seo/englishOnly";
  * linked, so each answers a permanent redirect to the guide that absorbed it.
  */
 export const RETIRED_LEARN_SLUGS: Readonly<Record<string, string>> = {
-  "chess-board-vision-drills": "how-to-stop-blundering-in-chess",
+  "chess-board-vision-drills": "how-to-see-the-whole-board-in-chess",
   "working-memory-exercises-for-chess": "chess-calculation-exercises-for-beginners",
 };
 

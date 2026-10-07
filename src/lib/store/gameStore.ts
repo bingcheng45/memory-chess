@@ -10,6 +10,8 @@ import {
   parseGameSettings,
   type GameSettings,
 } from '@/lib/game/configPrefill';
+import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
+import { trackEvent, type RoundSource } from '@/lib/analytics/events';
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & { 
@@ -30,7 +32,7 @@ interface GameStore {
   memorizationChess: Chess | null; // Chess instance for the position to memorize
   
   // Actions
-  startGame: (pieceCount: number, memorizeTime: number) => void;
+  startGame: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
   stopGame: () => void;
   makeMove: (move: string) => boolean;
   resetGame: () => void;
@@ -87,96 +89,6 @@ interface ChessMove {
   to: string;
   promotion?: string;
 }
-
-// Function to calculate accuracy between two positions
-const calculateAccuracy = (originalFen: string, userFen: string): {
-  accuracy: number;
-  extraPieces: number;
-  totalPiecesPlaced: number;
-  correctPlacements: number;
-} => {
-  try {
-    // Extract piece placement part from FEN strings
-    const originalPieces = originalFen.split(' ')[0];
-    const userPieces = userFen.split(' ')[0];
-    
-    // Convert FEN to a map of pieces on squares
-    const getSquaresMap = (fen: string): Map<string, string> => {
-      const map = new Map<string, string>();
-      const rows = fen.split('/');
-      
-      rows.forEach((row, rowIndex) => {
-        let colIndex = 0;
-        for (let i = 0; i < row.length; i++) {
-          const char = row[i];
-          if (isNaN(parseInt(char))) {
-            // It's a piece
-            const square = `${String.fromCharCode(97 + colIndex)}${8 - rowIndex}`;
-            map.set(square, char);
-            colIndex++;
-          } else {
-            // It's a number, skip that many squares
-            colIndex += parseInt(char);
-          }
-        }
-      });
-      
-      return map;
-    };
-    
-    const originalMap = getSquaresMap(originalPieces);
-    const userMap = getSquaresMap(userPieces);
-    
-    // Count correct placements and total pieces
-    let correctPlacements = 0;
-    const totalOriginalPieces = originalMap.size;
-    const totalPiecesPlaced = userMap.size;
-    
-    // Check user placements against original
-    originalMap.forEach((piece, square) => {
-      if (userMap.get(square) === piece) {
-        correctPlacements++;
-      }
-    });
-    
-    // Calculate extra pieces (only count excess pieces)
-    const extraPieces = Math.max(0, totalPiecesPlaced - totalOriginalPieces);
-    
-    // Calculate base accuracy as a percentage
-    const baseAccuracy = Math.round((correctPlacements / totalOriginalPieces) * 100);
-    
-    // Apply penalty for extra pieces: -10% for each extra piece
-    const extraPiecesPenalty = extraPieces * 10;
-    
-    // Ensure accuracy doesn't go below 0%
-    const accuracy = Math.max(0, baseAccuracy - extraPiecesPenalty);
-    
-    console.log('Accuracy calculation:', {
-      totalOriginalPieces,
-      totalPiecesPlaced,
-      correctPlacements,
-      extraPieces,
-      baseAccuracy,
-      extraPiecesPenalty,
-      finalAccuracy: accuracy
-    });
-    
-    return {
-      accuracy,
-      extraPieces,
-      totalPiecesPlaced,
-      correctPlacements
-    };
-  } catch (error) {
-    console.error('Error calculating accuracy:', error);
-    return {
-      accuracy: 0,
-      extraPieces: 0,
-      totalPiecesPlaced: 0,
-      correctPlacements: 0
-    };
-  }
-};
 
 // Calculate time bonus based on completion time and actual memorize time
 const calculateTimeBonus = (completionTime: number, memorizeTime: number, actualMemorizeTime?: number): number => {
@@ -249,7 +161,7 @@ export const useGameStore = create<GameStore>()(
       memorizationChess: null,
       
       // Actions
-      startGame: (pieceCount, memorizeTime) => {
+      startGame: (pieceCount, memorizeTime, source) => {
         console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
         
         // Generate a random position for memorization
@@ -277,6 +189,7 @@ export const useGameStore = create<GameStore>()(
           gamePhase: GamePhase.CONFIGURATION,
           lastSettings: { pieceCount, memorizeTime },
         });
+        trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime, source } });
       },
 
       stopGame: () => {
@@ -497,8 +410,8 @@ export const useGameStore = create<GameStore>()(
         // Get the user's solution
         const userPosition = chess.fen();
         
-        // Calculate accuracy
-        const accuracyResult = calculateAccuracy(gameState.originalPosition, userPosition);
+        const placed = placementFromFen(userPosition);
+        const score = scorePlacement(placementFromFen(gameState.originalPosition), placed);
         
         // Calculate completion time with millisecond precision
         const now = Date.now();
@@ -509,15 +422,15 @@ export const useGameStore = create<GameStore>()(
         const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime, gameState.actualMemorizeTime);
         
         // Determine if this is a perfect score
-        const perfectScore = accuracyResult.accuracy === 100 && accuracyResult.extraPieces === 0;
+        const perfectScore = score.accuracy === 100 && score.extra === 0;
         
         // Determine success (e.g., accuracy >= 70%)
-        const success = accuracyResult.accuracy >= 70;
+        const success = score.accuracy >= 70;
         
         // Calculate skill rating change
         const currentRating = gameState.skillRating || 1000;
         const skillRatingChange = calculateSkillRatingChange(
-          accuracyResult.accuracy, 
+          score.accuracy, 
           gameState.pieceCount, 
           completionTime, 
           gameState.memorizeTime,
@@ -550,7 +463,7 @@ export const useGameStore = create<GameStore>()(
           ...gameState,
           isSolutionPhase: false,
           userPosition,
-          accuracy: accuracyResult.accuracy,
+          accuracy: score.accuracy,
           completionTime,
           success,
           perfectScore,
@@ -558,15 +471,27 @@ export const useGameStore = create<GameStore>()(
           skillRating: newSkillRating,
           streak,
           skillRatingChange,
-          extraPieces: accuracyResult.extraPieces,
-          totalPiecesPlaced: accuracyResult.totalPiecesPlaced,
-          correctPlacements: accuracyResult.correctPlacements
+          extraPieces: score.extra,
+          totalPiecesPlaced: Object.keys(placed).length,
+          correctPlacements: score.correct
         };
         
         set({
           gameState: updatedGameState as GameState,
           gamePhase: GamePhase.RESULT,
         });
+
+        // Loaded on demand so the lab storage stays out of the /game bundle until a round ends.
+        const facts = {
+          source: 'game',
+          pieceCount: gameState.pieceCount,
+          memorizeSeconds: gameState.memorizeTime,
+          targetFen: gameState.originalPosition,
+          placedFen: userPosition,
+          memorizeMs: Math.round((gameState.actualMemorizeTime ?? gameState.memorizeTime) * 1000),
+          solveMs: Math.round(completionTime * 1000),
+        } as const;
+        void import('@/lib/lab/recordRound').then(({ recordLabRound }) => recordLabRound(facts)).catch(() => {});
       },
       
       placePiece: (square, piece) => {

@@ -89,7 +89,7 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
   function startDrill() {
     trackEvent({ name: "article_tile_click", params: { slug, action: "drill" } });
     playSound("click");
-    startGame(drill.pieceCount, drill.memorizeTime);
+    startGame(drill.pieceCount, drill.memorizeTime, "tile_drill");
   }
 
   return (

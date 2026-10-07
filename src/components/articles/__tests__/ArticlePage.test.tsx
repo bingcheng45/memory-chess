@@ -8,6 +8,7 @@ import { pointerEnters, recordWarmedImages } from "@/components/articles/__tests
 import type { Article } from "@/lib/articles/schema";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
 import { makeArticle, summaryOf } from "@/lib/articles/__tests__/fixtures";
+import { textOf, withText } from "@/lib/articles/articleText";
 
 jest.mock("next/link", () => {
   function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
@@ -206,7 +207,7 @@ describe("ArticlePage body", () => {
     const drill = container.querySelectorAll('a[href^="/game"]');
 
     expect(drill).toHaveLength(1);
-    expect(drill[0]).toHaveAttribute("href", "/game?pieceCount=12&memorizeTime=5");
+    expect(drill[0]).toHaveAttribute("href", "/game?pieceCount=12&memorizeTime=5&source=article_cta");
     expect(drill[0]).toHaveAttribute("data-article-drill");
     expect(drill[0]).toHaveTextContent(article.drill.why);
     expect(drill[0]).toHaveTextContent("Play 12 pieces, 5 seconds");
@@ -395,3 +396,36 @@ describe("ArticlePage markup", () => {
     expect(container.querySelectorAll("[hidden], [style*='opacity'], [style*='display'], [style*='visibility']")).toHaveLength(0);
   });
 });
+
+describe("ArticlePage guide links", () => {
+  const withGuides: Article = {
+    ...article,
+    relatedGuides: [{ slug: "chess-memory-training", anchor: "chess memory training" }],
+  };
+
+  it("links an English article to its guides by their anchors", () => {
+    renderPage(withGuides);
+
+    expect(
+      within(screen.getByRole("navigation", { name: "Train it with a guide" })).getByRole("link", {
+        name: "chess memory training",
+      }),
+    ).toHaveAttribute("href", "/learn/chess-memory-training");
+  });
+
+  it("adds no block a translation would be counted against", () => {
+    const blocks = (container: HTMLElement) =>
+      ["h2", "p", "li"].map((tag) => container.querySelectorAll(tag).length);
+    const withList = blocks(renderPage(withGuides).container);
+    const without = blocks(renderPage(article).container);
+
+    expect(withList).toEqual(without);
+  });
+
+  it("leaves the English-only guide list off a translated article", () => {
+    render(<ArticlePage article={withText(withGuides, textOf(withGuides))} nextArticle={next} />, { locale: "de" });
+
+    expect(screen.queryByRole("link", { name: "chess memory training" })).not.toBeInTheDocument();
+  });
+});
+

@@ -4,7 +4,7 @@ import type { LearnGuide } from "../schema";
 const guide: LearnGuide = {
   slug: "chess-visualization-exercises",
   goal: "visualization",
-  title: "Chess Visualization Exercises for Beginners",
+  title: "Chess Visualization Training: 2 Exercises",
   h1: "Chess visualization exercises for when the picture fades two moves in",
   description:
     "Visualization drills for players who lose the position two moves into a line, with a four-minute check that shows whether pieces vanish, drift or change identity.",

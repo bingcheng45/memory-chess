@@ -149,6 +149,7 @@
       "memorizeTime": "Tempo di memorizzazione",
       "seconds": "{seconds} s",
       "start": "Inizia ad allenarti",
+      "quickStart": "Inizia un round",
       "lastGame": "Ultima partita: {time} s di risoluzione con il {accuracy}% di precisione"
     },
     "presets": {

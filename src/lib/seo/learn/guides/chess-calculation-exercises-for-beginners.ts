@@ -4,7 +4,7 @@ import type { LearnGuide } from "../schema";
 const guide: LearnGuide = {
   slug: "chess-calculation-exercises-for-beginners",
   goal: "visualization",
-  title: "Chess Calculation Exercises for Beginners Who Lose the Board After Two Moves",
+  title: "Chess Calculation Exercises for Beginners",
   h1: "Calculation exercises for beginners who lose the board after two moves",
   description:
     "Why short lines collapse, one position with two knight checks to practise on, and exercises for holding a position while the pieces in your head move.",
@@ -201,6 +201,10 @@ const guide: LearnGuide = {
     {
       slug: "how-to-think-in-chess-for-beginners",
       reason: "A move routine that decides which two candidates deserve the calculation.",
+    },
+    {
+      slug: "how-to-stop-blundering-in-chess",
+      reason: "A five-step check to stop blundering in the line you just calculated.",
     },
   ],
   sources: [],

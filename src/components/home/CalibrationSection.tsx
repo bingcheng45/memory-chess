@@ -23,7 +23,6 @@ const STUDY_SECONDS = CALIBRATION_RULES.studyMs / 1000;
 
 const formatClock = (ms: number) => formatSeconds(ms).padStart(4, "0");
 
-/** Counts the study window down and the rebuild up; ends the study window itself. */
 function useRoundClock(state: RoundState, onStudyEnded: (now: number) => void): number {
   const [clockMs, setClockMs] = useState<number>(CALIBRATION_RULES.studyMs);
   const studyTarget = state.phase === "study" ? state.target : null;
@@ -61,7 +60,6 @@ const ROUND_PHASE_ID = {
   scored: "score",
 } as const satisfies Record<Exclude<RoundState["phase"], "idle">, MicroscopePhaseId>;
 
-/** Saves each scored reading to the lab record once, tagged so it never counts as a game round. */
 function useRecordReading(state: RoundState): void {
   const recorded = useRef<RoundState | null>(null);
 

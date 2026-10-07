@@ -3,7 +3,6 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 
-/** Order and anchor of every numbered lab section; the index bar links to these. */
 export const LAB_SECTIONS = {
   notebook: { number: 1, anchor: "notebook" },
   method: { number: 2, anchor: "method" },

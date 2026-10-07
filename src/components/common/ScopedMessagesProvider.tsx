@@ -9,10 +9,6 @@ type ScopedMessagesProviderProps = {
 };
 
 /**
- * Adds a route's own groups to the messages of the provider above it, merged
- * one level into each namespace, so `{ home: { lab } }` joins the rest of
- * `home`.
- *
  * A nested provider's `messages` replace its parent's, so the parent's are
  * merged in here, in the browser. Only the added groups then travel in the
  * layout's payload and the rest of the catalogue is not sent a second time.

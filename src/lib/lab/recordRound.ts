@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from "uuid";
 import { buildRoundRecord, localDayOf, type RoundInput } from "./record";
 import { labStore } from "./storage";
 
-/** Fired on window after a round is saved, so open panels can re-read the record. */
 export const LAB_RECORD_CHANGED = "memory-chess-lab-changed";
 
 export type RoundFacts = Omit<RoundInput, "id" | "endedAt" | "localDay">;

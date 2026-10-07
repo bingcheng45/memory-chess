@@ -33,7 +33,6 @@ function nextIndex(from: number, key: string): number | null {
   return to < 0 || to > 63 || leavesRow ? null : to;
 }
 
-/** What each square shows in the current phase of the round. */
 function squareView(state: RoundState, square: SquareName) {
   switch (state.phase) {
     case "idle":

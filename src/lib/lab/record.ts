@@ -13,7 +13,7 @@ export const PIECE_LETTERS: readonly PieceSymbol[] = ["k", "q", "r", "b", "n", "
 export const LAB_SOURCES = ["game", "calibration"] as const;
 export type LabSource = (typeof LAB_SOURCES)[number];
 
-/** One square's outcome: empty, correct, missed, wrong piece on a target square, extra piece. */
+/** Stored and exported per square: empty, correct, missed, wrong piece on a target square, extra piece. */
 export type SquareOutcome = "." | "c" | "m" | "w" | "x";
 
 export interface RoundConfig {
@@ -32,7 +32,6 @@ export interface RoundRecordV1 {
   /** Local calendar day at write time, so a later timezone change does not move it. */
   readonly localDay: string;
   readonly config: RoundConfig;
-  /** Board part of the FEN only. */
   readonly targetFen: string;
   readonly placedFen: string;
   /** 64 SquareOutcome characters, a8 first. */
@@ -42,7 +41,6 @@ export interface RoundRecordV1 {
   readonly memorizeMs: number;
   readonly solveMs: number;
   readonly correct: number;
-  /** Missed plus extra pieces, as the result screen counts it. */
   readonly wrong: number;
   readonly extra: number;
   readonly accuracy: number;

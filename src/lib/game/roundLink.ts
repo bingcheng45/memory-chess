@@ -1,6 +1,5 @@
 import type { RoundSource } from "@/lib/analytics/events";
 
-/** The query a round link carries; /game reads it, starts the round and clears it. */
 export const ROUND_PARAMS = {
   pieceCount: "pieceCount",
   memorizeTime: "memorizeTime",

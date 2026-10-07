@@ -95,7 +95,7 @@ export default function ChangelogBanner({ announce }: { announce: boolean }) {
         return;
       }
 
-      // Browsers clamp longer delays, so schedule the 30-day window in safe chunks.
+      // Browsers fire delays above 2^31 - 1 ms at once, so schedule the 30-day window in safe chunks.
       expiryTimer = window.setTimeout(
         scheduleExpiry,
         Math.min(remainingTime, 2_147_483_647),

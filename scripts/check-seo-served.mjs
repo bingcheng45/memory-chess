@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 /**
- * Checks the served HTML of a running build against the SEO checklist: titles,
- * social tags, heading order, prerendering, closing play links and the
- * cross-links between /game, the guides and the articles.
- *
- * It reads what a crawler gets, so run it against `next start`, a preview or
+ * Reads what a crawler gets, so run it against `next start`, a preview or
  * production, never a dev server.
  *
  * Usage: node scripts/check-seo-served.mjs [baseUrl]   (default http://localhost:3103)
@@ -29,7 +25,6 @@ const TRIMMED_TITLES = {
   "/learn/chess-visualization-exercises": "Chess Visualization Training: 2 Exercises | Memory Chess",
 };
 
-/** [source page, target href, anchor text] from the plan's anchor table, minus the home rows. */
 const ANCHORS = [
   ["/game", "/learn/chess-visualization-exercises", "chess visualization exercises"],
   ["/game", "/learn/blindfold-chess-training-for-beginners", "blindfold chess training plan"],

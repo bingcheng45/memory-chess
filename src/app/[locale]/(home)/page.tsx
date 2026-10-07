@@ -6,7 +6,6 @@ type HomeProps = {
   params: Promise<{ locale: string }>;
 };
 
-// Branching on the server sends each locale only the body it renders.
 export default async function Home({ params }: HomeProps) {
   const { locale } = await params;
   return hasLabCopy(locale) ? <BrainLabHome /> : <LegacyHome />;

@@ -29,7 +29,6 @@ function pieceState(phase: MicroscopePhase, square: SquareName): PieceState {
   }
 }
 
-// The band in the middle of the viewport where a step counts as current.
 const ACTIVE_BAND = "-45% 0px -45% 0px";
 
 function useActiveStep(count: number) {

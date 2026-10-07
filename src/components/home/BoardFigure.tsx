@@ -32,7 +32,6 @@ export function PieceImage({ piece, state = "on" }: PieceImageProps) {
   );
 }
 
-/** Localised name of a piece, e.g. "white knight". */
 export function usePieceName(): (piece: LabPiece) => string {
   const t = useTranslations("game.board.pieces");
   return (piece) => t(`${piece.color}.${piece.type}`);
@@ -42,7 +41,6 @@ interface BoardFigureProps {
   children: ReactNode;
 }
 
-/** A board framed as a lab figure: crosshair corners and coordinate rulers. */
 export function BoardFigure({ children }: BoardFigureProps) {
   return (
     <div className="lab-figure">

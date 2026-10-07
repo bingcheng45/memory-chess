@@ -10,7 +10,6 @@ import type { LabRecord } from "./useLabRecord";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
 const PLANS = ["a", "b", "c"] as const;
-// Placeholder bar lengths for the leaderboard sketch; no scores are shown.
 const BOARD_SKETCH = [
   { rank: "01", width: "86%", you: false },
   { rank: "02", width: "74%", you: false },

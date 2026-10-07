@@ -21,7 +21,6 @@ export type ImportResult =
   | {
       readonly ok: true;
       readonly rounds: readonly RoundRecordV1[];
-      /** Rounds that failed validation. */
       readonly rejected: number;
       /** Valid rounds older than the newest ROUND_CAP, left out because the log would evict them at once. */
       readonly overCap: number;

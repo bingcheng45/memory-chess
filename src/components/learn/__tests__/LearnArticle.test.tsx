@@ -123,7 +123,6 @@ describe("LearnArticleRich", () => {
     expect(article["@id"]).toBe(`${base}#article`);
     expect(article.inLanguage).toBe("en-US");
     expect(webPage.url).toBe(base);
-    // Home stays bare rather than gaining a trailing slash.
     expect(breadcrumb.itemListElement[0].item).toBe("https://thememorychess.com");
     expect(breadcrumb.itemListElement[1].item).toBe(
       "https://thememorychess.com/learn",
@@ -190,8 +189,6 @@ describe("LearnArticleRich", () => {
     expect(byline?.textContent).toBe("By Bing Cheng");
     expect(byline?.querySelector("a")).toHaveAttribute("href", "/about");
 
-    // The note is not contact information, so it sits beside the address,
-    // where the audit's authorship-note exemption finds it by its attribute.
     const note = container.querySelector("[data-authorship-note]");
     expect(note?.textContent).toBe(
       "Written with AI assistance; chess positions checked by script and game facts traced to the code.",

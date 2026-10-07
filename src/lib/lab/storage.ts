@@ -10,7 +10,6 @@ const BACKUP_KEY = "memory-chess-lab-last-backup";
 const PERSIST_ASKED_KEY = "memory-chess-lab-persist-asked";
 
 export const ROUND_CAP = 5000;
-/** Ask the browser not to evict the record only once the player has some history. */
 export const PERSIST_AFTER_ROUNDS = 3;
 
 export interface LabStoreDeps {
@@ -20,7 +19,6 @@ export interface LabStoreDeps {
 }
 
 export interface LabStore {
-  /** Whether rounds can be saved. Without local storage the summary is rebuilt from the round log instead. */
   isAvailable(): Promise<boolean>;
   /** Writes one round; a round whose id is already stored is left alone. Resolves false if nothing could be saved. */
   addRound(record: RoundRecordV1): Promise<boolean>;
@@ -110,11 +108,6 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     return request(db.transaction(STORE).objectStore(STORE).index(BY_END).getAll() as IDBRequest<RoundRecordV1[]>);
   }
 
-  /**
-   * Adds the rounds the log does not hold yet and evicts past the cap, in one
-   * transaction. Returns the rounds added and the endedAt of the newest round
-   * evicted, or null if the log stayed within the cap.
-   */
   async function insertNew(
     db: IDBDatabase,
     records: readonly RoundRecordV1[],
@@ -238,7 +231,6 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
 
 let browserStore: LabStore | null = null;
 
-/** The store for this browser, or null during server rendering. */
 export function labStore(): LabStore | null {
   if (typeof window === "undefined") return null;
   browserStore ??= createLabStore({

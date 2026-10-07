@@ -29,7 +29,6 @@ const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
 type LearnArticleProps = {
   page: LearnPageContent;
   goals: LearnGoal[];
-  /** Every article, used to resolve the "read next" links. */
   allPages: LearnPageContent[];
 };
 
@@ -587,8 +586,6 @@ export default function LearnArticleRich({
             </h2>
             <ul className="mt-4 space-y-2 text-base leading-7">
               {page.furtherReading.map((entry) => (
-                // The anchor is written to read inside a sentence, so only
-                // its first letter is raised for the list.
                 <li key={entry.slug} className="first-letter:uppercase">
                   <Link
                     href={articlePath(entry.slug)}

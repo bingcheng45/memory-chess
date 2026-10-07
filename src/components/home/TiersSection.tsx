@@ -22,7 +22,6 @@ function Density({ pieces, label }: { pieces: number; label: string }) {
   );
 }
 
-/** The real presets, read from the game's own rules, plus the custom ranges. */
 export function TiersSection() {
   const t = useTranslations("home.lab.tiers");
   const presets = useTranslations("game.presets");

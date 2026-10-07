@@ -1,10 +1,5 @@
 import type { StreakDay } from "@/lib/lab/derive";
 
-/**
- * Sample and illustrative data for the lab record section. None of it is
- * measured; every panel that draws it carries a Sample or Illustrative tag.
- */
-
 export const SAMPLE_ACCURACY: readonly number[] = [52, 58, 55, 63, 61, 68, 66, 72, 70, 75, 74, 79];
 
 export const SAMPLE_STREAK: readonly StreakDay[] = [
@@ -12,7 +7,6 @@ export const SAMPLE_STREAK: readonly StreakDay[] = [
   "played", "played", "played", "played", "played", "played", "today",
 ];
 
-/** Miss intensity per square, 0 to 1, a8 first; concentrated on the edge files. */
 export const SAMPLE_MISS_MAP: readonly number[] = (() => {
   let seed = 7;
   const next = () => {
@@ -30,11 +24,9 @@ export const CURVE_REVIEW_DAYS: readonly number[] = [1, 3, 7];
 export const CURVE_AXIS_DAYS: readonly number[] = [0, 1, 3, 7, 14];
 export const CURVE_SPAN_DAYS = 14;
 const NO_REVIEW_DECAY = 1.4;
-// Each review restarts the fade with a slower decay: the spacing effect.
 const DECAY_AFTER_REVIEW: readonly number[] = [NO_REVIEW_DECAY, 3, 7, 18];
 const STEPS = 140;
 
-/** Retention (0 to 1) against day for the illustrative forgetting curve. */
 export function retentionNoReview(day: number): number {
   return Math.exp(-day / NO_REVIEW_DECAY);
 }
@@ -45,7 +37,6 @@ export function retentionWithReviews(day: number): number {
   return Math.exp(-(day - reviews[last]) / DECAY_AFTER_REVIEW[last]);
 }
 
-/** SVG path through `retention`, with a vertical jump at each review day. */
 export function curvePath(
   retention: (day: number) => number,
   x: (day: number) => number,

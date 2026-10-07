@@ -67,7 +67,6 @@ const FULL_DOMAIN = { low: 0, high: 100 };
 const SPARK_GUIDES = [50, 70];
 
 interface SparklineProps {
-  /** Accuracy per round, oldest first. Defaults to the sample record. */
   readonly points?: readonly number[];
   readonly label: string;
   readonly first: string;
@@ -113,7 +112,6 @@ const HEAT_FLOOR = 0.08;
 const HEAT_RANGE = 0.85;
 const heatOpacity = (value: number) => Number((HEAT_FLOOR + value * HEAT_RANGE).toFixed(2));
 
-/** One cell per square, a8 first: a miss share from 0 to 1, or null when too few pieces were seen there. */
 export function MissMap({ cells = SAMPLE_MISS_MAP, label }: { readonly cells?: readonly (number | null)[]; readonly label: string }) {
   return (
     <div className="lab-heat" role="img" aria-label={label}>
@@ -126,12 +124,10 @@ export function MissMap({ cells = SAMPLE_MISS_MAP, label }: { readonly cells?: r
 
 interface MissLine {
   readonly name: string;
-  /** Miss share 0 to 1, or null when too few pieces were seen on the line. */
   readonly value: number | null;
   readonly label: string;
 }
 
-/** Files or ranks as a row of eight cells, used until every square has enough data. */
 export function MissLines({ lines, caption }: { readonly lines: readonly MissLine[]; readonly caption: string }) {
   return (
     <div className="lab-heat-lines">
@@ -158,10 +154,8 @@ export function StreakGrid({ days = SAMPLE_STREAK, label }: { readonly days?: re
   );
 }
 
-// Below this share a piece type's bar turns orange.
 const WEAK_RECALL = 0.5;
 
-/** One piece type's recall. A null share draws an empty track, for a type with too few rounds to read. */
 export function RecallBar({ label, share, value }: { label: ReactNode; share: number | null; value: ReactNode }) {
   return (
     <div className="lab-bar" data-thin={share === null ? "" : undefined}>

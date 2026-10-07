@@ -12,7 +12,6 @@ export interface LabPiece {
   readonly type: PieceType;
 }
 
-/** What sits where. A square with no entry is empty. */
 export type LabPosition = Readonly<Partial<Record<SquareName, LabPiece>>>;
 
 export function isDarkSquare(index: number): boolean {
@@ -42,7 +41,6 @@ export function labPositionFromFen(fen: string): LabPosition {
   );
 }
 
-/** The board part of a FEN, a8 first, the inverse of labPositionFromFen. */
 export function labPositionToFen(position: LabPosition): string {
   return Array.from({ length: 8 }, (_, row) =>
     BOARD_SQUARES.slice(row * 8, row * 8 + 8)
@@ -65,7 +63,6 @@ export async function loadCalibrationPosition(random: () => number = Math.random
   return chess ? labPositionFromFen(chess.fen()) : null;
 }
 
-/** How many more of this piece the standard set allows on the board. */
 function remainingOf(position: LabPosition, piece: LabPiece): number {
   const used = Object.values(position).filter((placed) => samePiece(placed, piece)).length;
   return STANDARD_INVENTORY[piece.type] - used;
@@ -81,7 +78,6 @@ export interface Score {
   readonly accuracy: number;
   readonly correct: number;
   readonly total: number;
-  /** Missed target pieces plus extra placed pieces, as the real game counts it. */
   readonly wrong: number;
   readonly byType: readonly TypeRecall[];
 }
@@ -117,9 +113,8 @@ export function scoreReading(target: LabPosition, placed: LabPosition): Score {
 }
 
 /**
- * How a square reads after a submit, as space-separated words for a
- * `data-mark` attribute: "ok", "wrong" (a placed piece that does not belong),
- * "miss" (a target piece not recalled), or "wrong miss" for both at once.
+ * How a square reads after a submit, as space-separated words for lab.css's
+ * `data-mark` selectors: "ok", "wrong", "miss", or "wrong miss" for both.
  */
 export function squareVerdict(
   target: LabPosition,
@@ -202,7 +197,6 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
       return { ...state, selected: samePiece(state.selected ?? undefined, action.piece) ? null : action.piece };
     case "tapSquare": {
       const current = state.placed[action.square];
-      // A tap with no piece selected, or with the piece already there, lifts it.
       if (current && (!state.selected || samePiece(current, state.selected))) {
         return { ...state, placed: withoutSquare(state.placed, action.square) };
       }

@@ -27,7 +27,6 @@ export interface LabRecord {
 const EXPORT_FILE = "memory-chess-lab-record.json";
 const REVOKE_AFTER_MS = 30_000;
 
-/** The player's on-device lab record, re-read whenever a round is saved. */
 export function useLabRecord(): LabRecord {
   const [storage, setStorage] = useState<LabStorageState>("loading");
   const [records, setRecords] = useState<readonly RoundRecordV1[]>([]);

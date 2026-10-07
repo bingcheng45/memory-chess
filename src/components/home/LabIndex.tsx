@@ -14,7 +14,6 @@ const INDEX_ENTRIES: readonly Exclude<LabSectionId, "recording" | "faq" | "next"
   "library",
 ];
 
-/** Sticky in-page index for the lab sheet. The site navigation stays in PageHeader above. */
 export function LabIndex({ streakDays }: { streakDays: number | null }) {
   const t = useTranslations("home.lab.index");
   const record = useTranslations("home.lab.record.streak");

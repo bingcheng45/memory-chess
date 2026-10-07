@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { REDUCED_MOTION_QUERY } from "@/components/articles/articleFlight";
 
-/** Total rounds played site-wide, or null until (and unless) the stat loads. */
 export function useTotalPlays(): number | null {
   const [totalPlays, setTotalPlays] = useState<number | null>(null);
 

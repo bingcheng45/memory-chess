@@ -1,15 +1,12 @@
 import { BOARD_SQUARES } from "./board";
 
-/** Square name ("e4") to FEN piece letter ("N" is a white knight, "n" a black one). */
 export type Placement = Readonly<Record<string, string>>;
 
 export interface PlacementScore {
   readonly accuracy: number;
   readonly correct: number;
   readonly total: number;
-  /** Pieces placed beyond the target's piece count. */
   readonly extra: number;
-  /** Target pieces not recalled on their square with the right colour and type. */
   readonly missed: number;
   readonly totalWrong: number;
 }

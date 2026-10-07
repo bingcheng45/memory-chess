@@ -6,7 +6,6 @@ export interface PersonalBest {
   readonly correct: number;
   readonly solveMs: number;
   readonly at: number;
-  /** Rounds played at this config, so a first reading can say so. */
   readonly rounds: number;
 }
 
@@ -22,16 +21,12 @@ function bestKey(source: LabSource, config: RoundRecordV1["config"]): string {
 export interface LabSummary {
   readonly v: 2;
   readonly rounds: number;
-  /** Distinct local days with a completed round, sorted. */
   readonly days: readonly string[];
-  /** Keyed by bestKey. */
   readonly bests: Readonly<Record<string, PersonalBest>>;
-  /** Per square, a8 first: rounds where the target had a piece there, and where it was missed. */
   readonly squareShown: readonly number[];
   readonly squareMissed: readonly number[];
   readonly typeShown: TypeCounts;
   readonly typeMissed: TypeCounts;
-  /** endedAt of the newest round evicted from the log, or null while nothing has been. */
   readonly evictedThrough: number | null;
 }
 
@@ -101,7 +96,6 @@ const isTypeCounts = (value: unknown): value is TypeCounts =>
   value !== null &&
   Object.entries(value).every(([key, count]) => PIECE_LETTERS.includes(key as PieceSymbol) && isCount(count));
 
-/** A stored summary, or null when it is missing, from another version, or damaged. */
 export function parseSummary(raw: unknown): LabSummary | null {
   if (typeof raw !== "object" || raw === null) return null;
   const summary = raw as Record<string, unknown>;

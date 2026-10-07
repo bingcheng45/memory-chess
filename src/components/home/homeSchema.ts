@@ -2,8 +2,7 @@ import { BRAND_ORGANIZATION, BRAND_WEBSITE, ORGANIZATION_ID, WEBSITE_ID } from "
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 
 /**
- * Home structured data: the brand graph plus the app itself. No aggregateRating,
- * because the site has no rating data and an invented one breaks Google's policy.
+ * No aggregateRating, because the site has no rating data and an invented one breaks Google's policy.
  */
 export function homeSchema(locale: string, description: string) {
   return {

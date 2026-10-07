@@ -2,7 +2,6 @@ import type { PieceSymbol } from "chess.js";
 import { configKey, LAB_SOURCES, localDayOf, PIECE_LETTERS, type LabSource, type RoundConfig, type RoundRecordV1 } from "./record";
 import type { LabSummary, PersonalBest } from "./summary";
 
-/** Below these a panel shows how much more data it needs instead of a number. */
 export const LAB_THRESHOLDS = {
   streakDays: 2,
   trendRounds: 5,
@@ -21,7 +20,6 @@ export interface StreakResult {
   /** Consecutive days played, ending today, or yesterday if today has no round yet. */
   readonly current: number;
   readonly longest: number;
-  /** The last 14 days, oldest first; today reads "played" once a round is in. */
   readonly window: readonly StreakDay[];
   readonly daysNeeded: number;
 }
@@ -31,7 +29,6 @@ function shiftDay(day: string, by: number): string {
   return localDayOf(new Date(year, month - 1, date + by));
 }
 
-/** Consecutive played days from `day`, stepping one day back (-1) or forward (1). */
 function run(played: ReadonlySet<string>, day: string, step: -1 | 1): number {
   let length = 0;
   while (played.has(shiftDay(day, step * length))) length += 1;
@@ -62,7 +59,6 @@ export function deriveStreak(days: readonly string[], today: string): StreakResu
 }
 
 export interface BestEntry extends PersonalBest {
-  /** The summary's bestKey, unique per entry. */
   readonly key: string;
   readonly source: LabSource;
   readonly pieceCount: number;
@@ -93,10 +89,8 @@ export function deriveBests(summary: LabSummary): BestsResult {
 
 export interface TrendResult {
   readonly ready: boolean;
-  /** Rounds at the plotted config. */
   readonly sampleSize: number;
   readonly config: Pick<RoundConfig, "pieceCount" | "memorizeSeconds"> | null;
-  /** Accuracy per round at that config, oldest first, the latest 30. */
   readonly points: readonly number[];
   readonly roundsNeeded: number;
   readonly daysNeeded: number;
@@ -142,7 +136,6 @@ export interface TypeRecallResult {
   readonly ready: boolean;
   readonly sampleSize: number;
   readonly types: readonly TypeRecall[];
-  /** Rough rounds until the most-seen type reaches its threshold; null with no rounds. */
   readonly roundsNeeded: number | null;
 }
 
@@ -180,12 +173,9 @@ export interface MissCell {
 export interface MissMapResult {
   readonly ready: boolean;
   readonly sampleSize: number;
-  /** "squares" once every square has enough exposures, else files and ranks. */
   readonly view: "squares" | "lines";
   readonly squares: readonly MissCell[];
-  /** a to h. */
   readonly files: readonly MissCell[];
-  /** 8 down to 1, matching the board's reading order. */
   readonly ranks: readonly MissCell[];
   readonly roundsNeeded: number | null;
 }

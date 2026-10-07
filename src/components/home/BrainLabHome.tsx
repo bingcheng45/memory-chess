@@ -27,7 +27,6 @@ export function BrainLabHome() {
 
   return (
     <>
-      {/* Site chrome stays on the dark ground every other page uses. */}
       <div className="container mx-auto flex justify-center px-2 pt-4 sm:px-4">
         <PageHeader showSoundSettings={false} />
       </div>

@@ -42,7 +42,7 @@ export function LabRecordTools({ record }: { record: LabRecord }) {
               t("imported", { added: result.added }),
               result.rejected > 0 ? t("skipped", { count: result.rejected }) : "",
               result.overCap > 0 ? t("overCap", { count: result.overCap }) : "",
-              result.summary === "ignored" ? t("summaryIgnored") : "",
+              result.summary === "ignored" && result.added > 0 ? t("summaryIgnored") : "",
               result.summary === "dropped" ? t("summaryDropped") : "",
             ]
               .filter(Boolean)

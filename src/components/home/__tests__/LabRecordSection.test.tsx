@@ -153,6 +153,7 @@ describe("LabRecordSection", () => {
       { ok: true as const, added: 4, rejected: 0, overCap: 0, summary: "ignored" as const },
       "Imported 4 rounds. This browser already had rounds, so only new rounds were merged, not the file's lifetime totals.",
     ],
+    [{ ok: true as const, added: 0, rejected: 0, overCap: 0, summary: "ignored" as const }, "Nothing new to import. Those rounds are already here."],
     [
       { ok: true as const, added: 2, rejected: 0, overCap: 0, summary: "dropped" as const },
       "Imported 2 rounds. The file's lifetime totals could not be read, so only its rounds were imported.",

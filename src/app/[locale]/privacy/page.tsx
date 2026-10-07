@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import PageHeader from "@/components/ui/PageHeader";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
@@ -40,6 +42,8 @@ const linkClassName =
   "text-peach-300 underline decoration-peach-500/40 underline-offset-4 transition-colors hover:text-peach-200";
 
 export default function PrivacyPage() {
+  // English-only route: the bare URL is the only one served, as English.
+  setRequestLocale(DEFAULT_LOCALE);
   return (
     <div className="min-h-screen bg-bg-dark text-text-primary">
       <main className="container mx-auto max-w-4xl px-2 sm:px-4 py-8 sm:py-10">

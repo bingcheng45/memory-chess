@@ -71,3 +71,11 @@ global.Audio = class {
     };
   }
 };
+
+// Server pages call setRequestLocale so they prerender, and next-intl throws
+// when it runs outside a React Server Component, which is where every DOM
+// test renders them. A test that asserts on the call mocks it itself.
+jest.mock("next-intl/server", () => ({
+  ...jest.requireActual("next-intl/server"),
+  setRequestLocale: jest.fn(),
+}));

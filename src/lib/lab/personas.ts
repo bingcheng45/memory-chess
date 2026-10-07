@@ -24,6 +24,8 @@ export const PERSONA_NAMES = [
   "easyOnly",
   "stale",
   "v1Legacy",
+  "spanClimber",
+  "shortSessions",
 ] as const;
 export type PersonaName = (typeof PERSONA_NAMES)[number];
 
@@ -35,9 +37,12 @@ interface Setting {
 
 interface PlannedRound extends Setting {
   readonly daysAgo: number;
+  /** Minutes after noon the round ends; by default one minute after the day's previous round. */
+  readonly minute?: number;
 }
 
-type MissChance = (square: string, piece: string) => number;
+/** `progress` runs from 0 at the first round to just under 1 at the last. */
+type MissChance = (square: string, piece: string, progress: number) => number;
 
 interface PersonaPlan {
   readonly seed: number;
@@ -75,6 +80,15 @@ function daily(days: readonly number[], perDay: (daysAgo: number, slot: number) 
 
 const countdown = (from: number, to: number) => Array.from({ length: from - to + 1 }, (_, index) => from - index);
 
+/** Four pieces for the first 20 days, ten up to a week ago, fourteen in the last week, all at 10 seconds. */
+const climbing = (daysAgo: number): Setting => ({ source: "game", pieceCount: daysAgo >= 25 ? 4 : daysAgo >= 7 ? 10 : 14, memorizeSeconds: 10 });
+
+/** Three sittings a day, more than 30 minutes apart, each a practice round then three Medium games a few minutes apart. */
+const SITTING_STARTS = [0, 45, 200];
+const shortSittings: PlannedRound[] = countdown(5, 0).flatMap((daysAgo) =>
+  SITTING_STARTS.flatMap((start) => [PRACTICE, MEDIUM, MEDIUM, MEDIUM].map((setting, index) => ({ ...setting, daysAgo, minute: start + index * 3 }))),
+);
+
 const THREE_DAYS: PersonaPlan = { seed: 3, rounds: daily(countdown(2, 0), (_, slot) => (slot === 0 ? PRACTICE : MEDIUM), 4), missChance: steady };
 
 const PLANS: Record<PersonaName, PersonaPlan> = {
@@ -98,6 +112,8 @@ const PLANS: Record<PersonaName, PersonaPlan> = {
   stale: { seed: 20, rounds: daily(countdown(25, 20), () => MEDIUM, 5), missChance: steady },
   // The three-day player's own rounds as version 1, so the two must read the same.
   v1Legacy: { ...THREE_DAYS, legacy: true },
+  spanClimber: { seed: 45, rounds: daily(countdown(44, 0), climbing, 3), missChance: (_, __, progress) => 0.33 - 0.3 * progress },
+  shortSessions: { seed: 72, rounds: shortSittings, missChance: steady },
 };
 
 /** mulberry32: small, fast and the same on every platform. */
@@ -139,12 +155,13 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
     slots.set(planned.daysAgo, slot + 1);
     const playedAt = noonUtc(today, -planned.daysAgo);
     const target = placementFromFen(generateMemorizationPosition(planned.pieceCount, random)?.fen() ?? "8/8/8/8/8/8/8/8");
-    const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= missChance(square, piece)));
+    const progress = index / rounds.length;
+    const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= missChance(square, piece, progress)));
     const solveMs = 8000 + Math.floor(random() * 22_000);
     const input: RoundInput = {
       id: `${name}-${index}`,
       source: planned.source,
-      endedAt: playedAt + slot * 60_000,
+      endedAt: playedAt + (planned.minute ?? slot) * 60_000,
       localDay: new Date(playedAt).toISOString().slice(0, 10),
       pieceCount: planned.pieceCount,
       memorizeSeconds: planned.memorizeSeconds,

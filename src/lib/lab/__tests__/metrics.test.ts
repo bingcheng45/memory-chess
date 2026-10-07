@@ -1,4 +1,5 @@
-import { deriveLab, LAB_METRICS, type LabInput } from "@/lib/lab/metrics";
+import type { LabInput } from "@/lib/lab/engine";
+import { deriveLab, LAB_METRICS } from "@/lib/lab/metrics";
 import type { RoundRecordV1 } from "@/lib/lab/record";
 import { EMPTY_SUMMARY, parseSummary, summarize, type LabSummary } from "@/lib/lab/summary";
 import { round, TARGET } from "./fixtures";
@@ -108,7 +109,7 @@ describe("trend", () => {
 
     expect(trend(records)).toEqual({
       readiness: { state: "ready", sampleSize: 5 },
-      value: { setting: { source: "game", pieceCount: 4, memorizeSeconds: 10 }, points: [100, 50, 100, 50, 100] },
+      value: { setting: { source: "game", pieceCount: 4, memorizeSeconds: 10 }, points: [100, 50, 100, 50, 100], bySession: [80], granularity: "round" },
     });
   });
 
@@ -121,7 +122,7 @@ describe("trend", () => {
 
     expect(trend(records)).toEqual({
       readiness: { state: "ready", sampleSize: 5 },
-      value: { setting: { source: "calibration", pieceCount: 6, memorizeSeconds: 10 }, points: [100, 100, 100, 100, 100] },
+      value: { setting: { source: "calibration", pieceCount: 6, memorizeSeconds: 10 }, points: [100, 100, 100, 100, 100], bySession: [100], granularity: "round" },
     });
   });
 
@@ -133,7 +134,7 @@ describe("trend", () => {
 
     expect(trend(records)).toEqual({
       readiness: { state: "warming", sampleSize: 1, need: { rounds: 4, days: 1 } },
-      value: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, points: [50] },
+      value: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, points: [50], bySession: [50], granularity: "round" },
     });
   });
 
@@ -147,7 +148,7 @@ describe("trend", () => {
 
     expect(trend(records)).toEqual({
       readiness: { state: "ready", sampleSize: 5 },
-      value: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, points: [100, 50, 100, 50, 100] },
+      value: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, points: [100, 50, 100, 50, 100], bySession: [80], granularity: "round" },
     });
   });
 
@@ -171,6 +172,39 @@ describe("trend", () => {
 
   it("has nothing to plot without rounds", () => {
     expect(trend([])).toEqual({ readiness: { state: "empty", sampleSize: 0 }, value: null });
+  });
+
+  const HOUR = 60 * 60 * 1000;
+  const sittings = (perSitting: readonly number[]) =>
+    perSitting.flatMap((count, sitting) =>
+      Array.from({ length: count }, (_, index) =>
+        round({ id: `s${sitting}-${index}`, endedAt: sitting * HOUR + index * 60_000, localDay: sitting < 2 ? "2026-10-06" : TODAY, placedFen: sitting % 2 ? HALF : TARGET }),
+      ),
+    );
+
+  it("plots by session once the setting has 8 rounds over 4 sessions, keeping the round points", () => {
+    expect(trend(sittings([2, 2, 2, 2])).value).toEqual({
+      setting: { source: "game", pieceCount: 4, memorizeSeconds: 10 },
+      points: [100, 100, 50, 50, 100, 100, 50, 50],
+      bySession: [100, 50, 100, 50],
+      granularity: "session",
+    });
+  });
+
+  it("stays round by round with 8 rounds in 3 sessions, or 7 rounds in 4", () => {
+    expect(trend(sittings([3, 3, 2])).value).toMatchObject({ bySession: [100, 50, 100], granularity: "round" });
+    expect(trend(sittings([2, 2, 2, 1])).value).toMatchObject({ bySession: [100, 50, 100, 50], granularity: "round" });
+  });
+
+  it("averages a setting's rounds within a sitting even when other settings are played between them", () => {
+    const records = [
+      round({ id: "a", endedAt: 0 }),
+      round({ id: "other", endedAt: 20 * 60_000, pieceCount: 12 }),
+      round({ id: "b", endedAt: 40 * 60_000, placedFen: HALF }),
+      round({ id: "c", endedAt: 3 * HOUR }),
+    ];
+
+    expect(trend(records).value?.bySession).toEqual([75, 100]);
   });
 
   it("keeps a ready line but marks it stale once the last round is two weeks old", () => {
@@ -265,8 +299,10 @@ describe("deriveLab", () => {
   it("returns every registered metric under its id", () => {
     const results = deriveLab(fromRecords([round()]));
 
-    expect(Object.keys(results)).toEqual(["streak", "bests", "trend", "typeRecall", "missMap"]);
-    expect(Object.values(LAB_METRICS).map(({ id }) => id)).toEqual(["streak", "bests", "trend", "typeRecall", "missMap"]);
+    const ids = ["streak", "bests", "trend", "typeRecall", "missMap", "sessions", "span", "piecesHeld", "speed"];
+
+    expect(Object.keys(results)).toEqual(ids);
+    expect(Object.values(LAB_METRICS).map(({ id }) => id)).toEqual(ids);
     expect(results.bests.readiness).toEqual({ state: "ready", sampleSize: 1 });
   });
 });

@@ -1,21 +1,35 @@
 import type { PieceSymbol } from "chess.js";
-import { hasFigure, readinessOf, LAB_THRESHOLDS, type Need, type Readiness } from "./readiness";
-import { LAB_SOURCES, localDayOf, PIECE_LETTERS, settingKey, type LabSource, type RoundConfig, type RoundRecord } from "./record";
-import type { LabSummary, PersonalBest } from "./summary";
-
-export interface LabInput {
-  /** The capped round log, oldest first or in any order. */
-  readonly records: readonly RoundRecord[];
-  readonly summary: LabSummary;
-  /** The client's local day, passed in so every metric is a pure function of its input. */
-  readonly today: string;
-}
-
-/** A metric's value is null exactly when its readiness is empty. */
-export interface MetricResult<TValue> {
-  readonly readiness: Readiness;
-  readonly value: TValue | null;
-}
+import {
+  busiestSetting,
+  countsForTrend,
+  hundredths,
+  mean,
+  measured,
+  readinessFor,
+  settingOf,
+  shiftDay,
+  type LabInput,
+  type MetricResult,
+  type TrendSetting,
+} from "./engine";
+import {
+  computePiecesHeld,
+  computeSessions,
+  computeSpan,
+  computeSpeed,
+  PIECES_THRESHOLDS,
+  SESSIONS_THRESHOLDS,
+  SPAN_THRESHOLDS,
+  SPEED_THRESHOLDS,
+  type PiecesHeldValue,
+  type SessionsValue,
+  type SpanValue,
+  type SpeedValue,
+} from "./progress";
+import { LAB_THRESHOLDS, type Need } from "./readiness";
+import { LAB_SOURCES, PIECE_LETTERS, type LabSource, type RoundRecord } from "./record";
+import { sessionRuns } from "./sessions";
+import type { PersonalBest } from "./summary";
 
 export interface MetricDef<TValue> {
   readonly id: MetricId;
@@ -28,15 +42,6 @@ export interface MetricDef<TValue> {
   compute(input: LabInput): MetricResult<TValue>;
 }
 
-function measured<TValue>(readiness: Readiness, value: () => TValue): MetricResult<TValue> {
-  return { readiness, value: readiness.state === "empty" ? null : value() };
-}
-
-/** Staleness reads the player's last day of play, the same for every metric. */
-function readinessFor({ summary, today }: LabInput, measure: { sampleSize: number; have: Need; thresholds: Need }): Readiness {
-  return readinessOf({ ...measure, lastDay: summary.days.at(-1) ?? null, today });
-}
-
 export type StreakDay = "played" | "missed" | "today";
 
 export interface StreakValue {
@@ -44,11 +49,6 @@ export interface StreakValue {
   readonly current: number;
   readonly longest: number;
   readonly window: readonly StreakDay[];
-}
-
-function shiftDay(day: string, by: number): string {
-  const [year, month, date] = day.split("-").map(Number);
-  return localDayOf(new Date(year, month - 1, date + by));
 }
 
 function run(played: ReadonlySet<string>, day: string, step: -1 | 1): number {
@@ -110,49 +110,39 @@ function computeBests(input: LabInput): MetricResult<BestsValue> {
   }));
 }
 
-export type TrendSetting = Pick<RoundConfig, "pieceCount" | "memorizeSeconds"> & { readonly source: LabSource };
-
 export interface TrendValue {
   readonly setting: TrendSetting;
+  /** Accuracy of each of the last 30 rounds at the setting, oldest first. */
   readonly points: readonly number[];
+  /** Mean accuracy of the setting's rounds in each of the last 30 sessions that had one, oldest first. */
+  readonly bySession: readonly number[];
+  /** Session points once there are enough of them to read as a line, round points before. */
+  readonly granularity: "round" | "session";
 }
 
 const TREND_THRESHOLDS = { rounds: LAB_THRESHOLDS.trendRounds, days: LAB_THRESHOLDS.trendDays };
 
-function trendGroup(input: LabInput, rounds: readonly RoundRecord[]) {
-  const readiness = readinessFor(input, {
-    sampleSize: input.summary.rounds === 0 ? 0 : rounds.length,
-    have: { rounds: rounds.length, days: new Set(rounds.map((record) => record.localDay)).size },
-    thresholds: TREND_THRESHOLDS,
+/** Sessions are sittings over every round, so a setting's rounds stay in one session when other settings are played between them. */
+function sessionAccuracy(records: readonly RoundRecord[], setting: readonly RoundRecord[]): number[] {
+  const inSetting = new Set(setting);
+  return sessionRuns(records).flatMap((run) => {
+    const accuracies = run.filter((record) => inSetting.has(record)).map(({ accuracy }) => accuracy);
+    return accuracies.length === 0 ? [] : [hundredths(mean(accuracies))];
   });
-  const latest = rounds.reduce((max, record) => Math.max(max, record.endedAt), 0);
-  return { rounds, readiness, latest, ready: hasFigure(readiness) };
 }
 
-/**
- * Accuracy for one setting only: mixing settings would read harder rounds as decline.
- * A setting that can draw wins over one with more rounds that cannot, then most rounds, then most recent.
- */
 function computeTrend(input: LabInput): MetricResult<TrendValue> {
-  const bySetting = new Map<string, RoundRecord[]>();
-  input.records.forEach((record) => {
-    const key = settingKey(record.source, record.config);
-    const group = bySetting.get(key);
-    if (group) group.push(record);
-    else bySetting.set(key, [record]);
-  });
-  const { rounds, readiness } =
-    [...bySetting.values()]
-      .map((group) => trendGroup(input, group))
-      .sort((a, b) => Number(b.ready) - Number(a.ready) || b.rounds.length - a.rounds.length || b.latest - a.latest)[0] ??
-    trendGroup(input, []);
+  const records = input.records.filter(countsForTrend);
+  const { rounds, readiness } = busiestSetting(input, records, TREND_THRESHOLDS);
 
   return measured(readiness, () => {
-    const sorted = [...rounds].sort((a, b) => a.endedAt - b.endedAt);
-    const { source, config } = sorted[0];
+    const bySession = sessionAccuracy(records, rounds);
+    const bySessions = rounds.length >= LAB_THRESHOLDS.sessionTrendRounds && bySession.length >= LAB_THRESHOLDS.sessionTrendSessions;
     return {
-      setting: { source, pieceCount: config.pieceCount, memorizeSeconds: config.memorizeSeconds },
-      points: sorted.slice(-LAB_THRESHOLDS.trendPoints).map((record) => record.accuracy),
+      setting: settingOf(rounds[0]),
+      points: rounds.slice(-LAB_THRESHOLDS.trendPoints).map((record) => record.accuracy),
+      bySession: bySession.slice(-LAB_THRESHOLDS.trendPoints),
+      granularity: bySessions ? "session" : "round",
     };
   });
 }
@@ -255,6 +245,10 @@ interface LabValues {
   readonly trend: TrendValue;
   readonly typeRecall: TypeRecallValue;
   readonly missMap: MissMapValue;
+  readonly sessions: SessionsValue;
+  readonly span: SpanValue;
+  readonly piecesHeld: PiecesHeldValue;
+  readonly speed: SpeedValue;
 }
 
 export type MetricId = keyof LabValues;
@@ -290,6 +284,30 @@ export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & 
     question: "Which files, ranks and squares do you miss most?",
     thresholds: MISS_THRESHOLDS,
     compute: computeMissMap,
+  },
+  sessions: {
+    id: "sessions",
+    question: "When did you sit down to play, and for how many rounds?",
+    thresholds: SESSIONS_THRESHOLDS,
+    compute: computeSessions,
+  },
+  span: {
+    id: "span",
+    question: "How many pieces can you hold at your usual study time?",
+    thresholds: SPAN_THRESHOLDS,
+    compute: computeSpan,
+  },
+  piecesHeld: {
+    id: "piecesHeld",
+    question: "Are you placing more pieces right, whatever the setting?",
+    thresholds: PIECES_THRESHOLDS,
+    compute: computePiecesHeld,
+  },
+  speed: {
+    id: "speed",
+    question: "Are you rebuilding faster at the setting you play most, without losing accuracy?",
+    thresholds: SPEED_THRESHOLDS,
+    compute: computeSpeed,
   },
 };
 

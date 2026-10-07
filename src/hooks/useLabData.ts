@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { deriveLab, type LabInput, type LabResults } from "@/lib/lab/metrics";
+import type { LabInput } from "@/lib/lab/engine";
+import { deriveLab, type LabResults } from "@/lib/lab/metrics";
 import { localDayOf, type RoundRecord } from "@/lib/lab/record";
 import { onLabChange } from "@/lib/lab/recordSync";
 import { labStore } from "@/lib/lab/storage";

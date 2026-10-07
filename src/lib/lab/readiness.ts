@@ -7,6 +7,13 @@ export const LAB_THRESHOLDS = {
   trendPoints: 30,
   streakWindow: 14,
   staleDays: 14,
+  sessionTrendRounds: 8,
+  sessionTrendSessions: 4,
+  spanAccuracy: 80,
+  spanRounds: 2,
+  usualTimeRounds: 20,
+  rollingWindow: 10,
+  movingAverage: 5,
 } as const;
 
 /**
@@ -20,6 +27,8 @@ export interface Need {
   readonly rounds?: number;
   readonly days?: number;
   readonly exposures?: number;
+  /** Rounds at 80% or better at one piece count, at the usual study time. */
+  readonly qualifyingRounds?: number;
 }
 
 export interface Readiness {
@@ -39,7 +48,7 @@ interface ReadinessInput {
 }
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const NEED_KEYS = ["rounds", "days", "exposures"] as const;
+const NEED_KEYS = ["rounds", "days", "exposures", "qualifyingRounds"] as const;
 
 const utcDay = (day: string) => {
   const [year, month, date] = day.split("-").map(Number);

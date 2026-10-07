@@ -1,6 +1,7 @@
 /** @jest-environment node */
 import { IDBFactory } from "fake-indexeddb";
-import { deriveLab, type LabInput, type LabResults, type MetricId } from "@/lib/lab/metrics";
+import type { LabInput } from "@/lib/lab/engine";
+import { deriveLab, type LabResults, type MetricId } from "@/lib/lab/metrics";
 import { exportPersona, memoryLabStore, PERSONA_NAMES, PERSONA_TODAY, type PersonaName } from "@/lib/lab/personas";
 import { hasFigure, type ReadinessState } from "@/lib/lab/readiness";
 import golden from "./__golden__/derive-personas.json";
@@ -12,7 +13,9 @@ import golden from "./__golden__/derive-personas.json";
  * streak sampleSize counted days and was never shown; the panel showed rounds,
  * which is what the engine's streak sample now counts.
  */
-function legacy(input: LabInput): Record<MetricId, Record<string, unknown>> {
+type LegacyId = "streak" | "bests" | "trend" | "typeRecall" | "missMap";
+
+function legacy(input: LabInput): Record<LegacyId, Record<string, unknown>> {
   const { streak, bests, trend, typeRecall, missMap } = deriveLab(input);
   const base = ({ readiness }: LabResults[MetricId]) => ({ ready: hasFigure(readiness), sampleSize: readiness.sampleSize });
   const need = ({ readiness }: LabResults[MetricId]) => readiness.need ?? {};
@@ -21,7 +24,7 @@ function legacy(input: LabInput): Record<MetricId, Record<string, unknown>> {
     bests: { ...base(bests), entries: bests.value?.entries ?? [] },
     trend: {
       ...base(trend),
-      ...trend.value,
+      ...(trend.value && { setting: trend.value.setting, points: trend.value.points }),
       roundsNeeded: need(trend).rounds ?? 0,
       daysNeeded: need(trend).days ?? 0,
     },
@@ -56,7 +59,7 @@ function inputFor(name: PersonaName): Promise<LabInput> {
 }
 
 describe("metric engine on the persona fixtures", () => {
-  it.each(PERSONA_NAMES.filter((name) => name !== "newVisitor" && name !== "v1Legacy"))("matches the pre-engine derive output for %s", async (name) => {
+  it.each(PERSONA_NAMES.filter((name) => name in golden && name !== "newVisitor" && name !== "v1Legacy"))("matches the pre-engine derive output for %s", async (name) => {
     expect(legacy(await inputFor(name))).toEqual(golden[name as keyof typeof golden]);
   });
 
@@ -64,7 +67,7 @@ describe("metric engine on the persona fixtures", () => {
     const input = await inputFor("newVisitor");
     const old = golden.newVisitor;
 
-    expect(Object.values(deriveLab(input)).map(({ value }) => value)).toEqual([null, null, null, null, null]);
+    expect(Object.values(deriveLab(input)).map(({ value }) => value)).toEqual(Array(9).fill(null));
     expect(Object.fromEntries(Object.entries(legacy(input)).map(([id, { ready, sampleSize }]) => [id, { ready, sampleSize }]))).toEqual({
       streak: { ready: old.streak.ready, sampleSize: old.streak.sampleSize },
       bests: { ready: old.bests.ready, sampleSize: old.bests.sampleSize },
@@ -91,6 +94,8 @@ describe("metric engine on the persona fixtures", () => {
       easyOnly: { typeRecall: { exposures: 20 }, missMap: { exposures: 4 } },
       stale: { typeRecall: undefined, missMap: { exposures: 2 } },
       v1Legacy: { typeRecall: undefined, missMap: { exposures: 6 } },
+      spanClimber: { typeRecall: undefined, missMap: undefined },
+      shortSessions: { typeRecall: undefined, missMap: undefined },
     });
   });
 
@@ -101,17 +106,22 @@ describe("metric engine on the persona fixtures", () => {
         return [name, Object.fromEntries(Object.entries(results).map(([id, { readiness }]) => [id, readiness.state]))] as const;
       }),
     );
-    const all = (state: ReadinessState) => ({ streak: state, bests: state, trend: state, typeRecall: state, missMap: state });
+    const all = (state: ReadinessState) => ({
+      streak: state, bests: state, trend: state, typeRecall: state, missMap: state, sessions: state, span: state, piecesHeld: state, speed: state,
+    });
+    const progress = (state: ReadinessState) => ({ sessions: state, span: state, piecesHeld: state, speed: state });
 
     expect(Object.fromEntries(states)).toEqual({
       newVisitor: all("empty"),
-      twoRounds: { streak: "warming", bests: "ready", trend: "warming", typeRecall: "warming", missMap: "warming" },
-      threeDays: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming" },
+      twoRounds: { streak: "warming", bests: "ready", trend: "warming", typeRecall: "warming", missMap: "warming", ...progress("warming"), sessions: "ready" },
+      threeDays: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready") },
       thirtyDays: all("ready"),
       heavy: all("ready"),
-      easyOnly: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "warming", missMap: "warming" },
-      stale: { streak: "stale", bests: "stale", trend: "stale", typeRecall: "stale", missMap: "warming" },
-      v1Legacy: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming" },
+      easyOnly: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "warming", missMap: "warming", ...progress("ready") },
+      stale: { streak: "stale", bests: "stale", trend: "stale", typeRecall: "stale", missMap: "warming", ...progress("stale") },
+      v1Legacy: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready") },
+      spanClimber: all("ready"),
+      shortSessions: all("ready"),
     });
   });
 
@@ -121,5 +131,135 @@ describe("metric engine on the persona fixtures", () => {
     expect(legacyInput.records.map(({ v }) => v)).toEqual(Array(12).fill(1));
     expect(current.records.map(({ v }) => v)).toEqual(Array(12).fill(2));
     expect(deriveLab(legacyInput)).toEqual(deriveLab(current));
+  });
+
+  it("gives each persona the sessions, span, pieces held and speed its history earns", async () => {
+    const summaries = await Promise.all(
+      PERSONA_NAMES.map(async (name) => {
+        const { sessions, span, piecesHeld, speed, trend } = deriveLab(await inputFor(name));
+        const steps = span.value?.history.flatMap(({ pieceCount }, index, history) =>
+          index === 0 || pieceCount !== history[index - 1].pieceCount ? [[index, pieceCount]] : [],
+        );
+        return [
+          name,
+          {
+            sessions: sessions.value?.sessions.length ?? 0,
+            span: span.value && {
+              pieceCount: span.value.pieceCount,
+              memorizeSeconds: span.value.memorizeSeconds,
+              qualifyingRounds: span.value.qualifyingRounds,
+              weekAgo: span.value.weekAgo,
+              change: span.value.change,
+            },
+            steps: steps ?? null,
+            piecesHeld: piecesHeld.value?.recent ?? null,
+            speed: speed.value && { setting: speed.value.setting, recent: speed.value.recent, accuracy: speed.value.accuracyAtSameRounds.recent },
+            trend: trend.value && { granularity: trend.value.granularity, sessions: trend.value.bySession.length },
+          },
+        ] as const;
+      }),
+    );
+
+    expect(Object.fromEntries(summaries)).toEqual({
+      newVisitor: {
+        sessions: 0,
+        span: null,
+        steps: null,
+        piecesHeld: null,
+        speed: null,
+        trend: null,
+      },
+      twoRounds: {
+        sessions: 1,
+        span: { pieceCount: null, memorizeSeconds: 10, qualifyingRounds: 0, weekAgo: null, change: null },
+        steps: [[0, null]],
+        piecesHeld: { average: 4, previous: null, change: null },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 9.8, previous: null, change: null }, accuracy: { average: 50, previous: null, change: null } },
+        trend: { granularity: "round", sessions: 1 },
+      },
+      threeDays: {
+        sessions: 3,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 11, weekAgo: null, change: null },
+        steps: [[0, 6]],
+        piecesHeld: { average: 5.2, previous: null, change: null },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 4.6, previous: null, change: null }, accuracy: { average: 92.44, previous: null, change: null } },
+        trend: { granularity: "round", sessions: 3 },
+      },
+      thirtyDays: {
+        sessions: 30,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 17, weekAgo: 6, change: 0 },
+        steps: [[0, null], [1, 6]],
+        piecesHeld: { average: 5.3, previous: 5.1, change: 0.2 },
+        speed: { setting: { source: "game", pieceCount: 12, memorizeSeconds: 8 }, recent: { average: 1.82, previous: 1.73, change: 0.09 }, accuracy: { average: 72.4, previous: 77.5, change: -5.1 } },
+        trend: { granularity: "session", sessions: 25 },
+      },
+      heavy: {
+        sessions: 250,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 4440, weekAgo: 6, change: 0 },
+        steps: [[0, 6]],
+        piecesHeld: { average: 5.2, previous: 5.4, change: -0.2 },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 3.76, previous: 3.81, change: -0.05 }, accuracy: { average: 86.5, previous: 89.9, change: -3.4 } },
+        trend: { granularity: "session", sessions: 30 },
+      },
+      easyOnly: {
+        sessions: 10,
+        span: { pieceCount: 2, memorizeSeconds: 10, qualifyingRounds: 39, weekAgo: 2, change: 0 },
+        steps: [[0, 2]],
+        piecesHeld: { average: 1.4, previous: 1.9, change: -0.5 },
+        speed: { setting: { source: "game", pieceCount: 2, memorizeSeconds: 10 }, recent: { average: 15.71, previous: 9.1, change: 6.61 }, accuracy: { average: 70, previous: 95, change: -25 } },
+        trend: { granularity: "session", sessions: 10 },
+      },
+      stale: {
+        sessions: 6,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 26, weekAgo: 6, change: 0 },
+        steps: [[0, 6]],
+        piecesHeld: { average: 5, previous: 5.5, change: -0.5 },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 3.36, previous: 3.81, change: -0.45 }, accuracy: { average: 83.2, previous: 91.7, change: -8.5 } },
+        trend: { granularity: "session", sessions: 6 },
+      },
+      v1Legacy: {
+        sessions: 3,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 11, weekAgo: null, change: null },
+        steps: [[0, 6]],
+        piecesHeld: { average: 5.2, previous: null, change: null },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 4.6, previous: null, change: null }, accuracy: { average: 92.44, previous: null, change: null } },
+        trend: { granularity: "round", sessions: 3 },
+      },
+      spanClimber: {
+        sessions: 45,
+        span: { pieceCount: 14, memorizeSeconds: 10, qualifyingRounds: 19, weekAgo: 10, change: 4 },
+        steps: [[0, 4], [20, 10], [38, 14]],
+        piecesHeld: { average: 13.8, previous: 12.8, change: 1 },
+        speed: { setting: { source: "game", pieceCount: 4, memorizeSeconds: 10 }, recent: { average: 4.56, previous: 5.98, change: -1.42 }, accuracy: { average: 82.5, previous: 82.5, change: 0 } },
+        trend: { granularity: "session", sessions: 20 },
+      },
+      shortSessions: {
+        sessions: 18,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 64, weekAgo: null, change: null },
+        steps: [[0, 6]],
+        piecesHeld: { average: 5.3, previous: 5.1, change: 0.2 },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 4.14, previous: 3.58, change: 0.56 }, accuracy: { average: 81.6, previous: 89.8, change: -8.2 } },
+        trend: { granularity: "session", sessions: 18 },
+      },
+    });
+  });
+
+  it("steps the span climber from 4 to 10 pieces in session 21 and to 14 in the last week, 4 more than a week ago", async () => {
+    const { value } = deriveLab(await inputFor("spanClimber")).span;
+    const firstAt = (pieceCount: number) => value?.history.findIndex((step) => step.pieceCount === pieceCount);
+
+    expect([firstAt(4), firstAt(10), firstAt(14), value?.weekAgo, value?.pieceCount]).toEqual([0, 20, 38, 10, 14]);
+  });
+
+  it("derives every metric for the 5,000-round heavy player inside one 16ms frame", async () => {
+    const input = await inputFor("heavy");
+    deriveLab(input);
+    const runs = Array.from({ length: 5 }, () => {
+      const started = performance.now();
+      deriveLab(input);
+      return performance.now() - started;
+    }).sort((a, b) => a - b);
+
+    expect(runs[2]).toBeLessThan(16);
   });
 });

@@ -2,7 +2,7 @@ import type { ReactElement, ReactNode } from "react";
 import { isValidElement } from "react";
 import { render } from "@/test-utils/intl";
 import LocaleLayout from "@/app/[locale]/layout";
-import HomePage from "@/app/[locale]/page";
+import HomePage from "@/app/[locale]/(home)/page";
 import PrivacyPage from "@/app/[locale]/privacy/page";
 import ContactUsPage from "@/app/[locale]/contact-us/page";
 import Footer from "@/components/ui/Footer";

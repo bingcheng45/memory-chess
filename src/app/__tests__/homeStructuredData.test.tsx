@@ -1,5 +1,5 @@
 import { render } from "@/test-utils/intl";
-import HomePage from "@/app/[locale]/page";
+import HomePage from "@/app/[locale]/(home)/page";
 
 const ORGANIZATION_ID = "https://thememorychess.com/#organization";
 const WEBSITE_ID = "https://thememorychess.com/#website";

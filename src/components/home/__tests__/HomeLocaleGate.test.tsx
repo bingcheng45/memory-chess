@@ -1,4 +1,4 @@
-import Home from "@/app/[locale]/page";
+import Home from "@/app/[locale]/(home)/page";
 import { renderWithIntl, screen } from "@/test-utils/intl";
 import english from "../../../../messages/en.json";
 import german from "../../../../messages/de.json";

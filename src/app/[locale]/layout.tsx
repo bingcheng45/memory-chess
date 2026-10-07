@@ -26,7 +26,7 @@ import {
   AHREFS_ANALYTICS_SCRIPT_URL,
 } from "@/lib/ahrefs";
 import { routing, type Locale } from "@/i18n/routing";
-import { splitArticlesNamespace } from "@/lib/articles/messageScope";
+import { splitClientMessages } from "@/lib/articles/messageScope";
 import { getSansFontClass, geistMono } from "@/lib/fonts";
 import { buildAlternates, localizedUrl } from "@/lib/seo/alternates";
 import { socialImage } from "@/lib/seo/brand";
@@ -154,8 +154,8 @@ export default async function LocaleLayout({
   // Local and preview builds would otherwise count test runs as real visitors.
   const countsVisitors = process.env.VERCEL_ENV === "production";
 
-  // The articles layout adds its own namespace and the game layout the tile's group, so no other page carries them.
-  const { shared: messages } = splitArticlesNamespace(await getMessages({ locale }));
+  // The articles, home and game layouts add their own groups, so no other page carries them.
+  const { shared: messages } = splitClientMessages(await getMessages({ locale }));
 
   return (
     <html lang={locale}>

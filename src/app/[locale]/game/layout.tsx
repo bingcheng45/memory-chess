@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
 import { socialImage } from '@/lib/seo/brand';
-import ArticlesMessagesProvider from '@/components/articles/ArticlesMessagesProvider';
+import ScopedMessagesProvider from '@/components/common/ScopedMessagesProvider';
 import TileArticlesProvider from '@/components/game/TileArticlesProvider';
 import GameReference from '@/components/reference/GameReference';
 import { getTileArticles } from '@/lib/articles';
@@ -51,9 +51,9 @@ export default async function GameLayout({
 
   return (
     <>
-      <ArticlesMessagesProvider articles={tileGroupOf(messages)}>
+      <ScopedMessagesProvider messages={{ articles: tileGroupOf(messages) }}>
         <TileArticlesProvider articles={tileArticles}>{children}</TileArticlesProvider>
-      </ArticlesMessagesProvider>
+      </ScopedMessagesProvider>
       {/* Runs once the form above is parsed and before hydration, so a
           returning player's saved settings are what first paints. */}
       <script dangerouslySetInnerHTML={{ __html: gameConfigPrefillScript() }} />

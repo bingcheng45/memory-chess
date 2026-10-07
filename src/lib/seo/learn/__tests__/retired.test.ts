@@ -4,13 +4,13 @@ import { LEARN_SLUGS } from "@/lib/seo/learn";
 describe("resolveRetiredLearnPath", () => {
   it("sends a retired guide to the guide that absorbed it", () => {
     expect(resolveRetiredLearnPath("/learn/chess-board-vision-drills")).toBe(
-      "/learn/how-to-stop-blundering-in-chess",
+      "/learn/how-to-see-the-whole-board-in-chess",
     );
   });
 
   it("reaches the final guide in one hop from a locale-prefixed URL", () => {
     expect(resolveRetiredLearnPath("/de/learn/chess-board-vision-drills")).toBe(
-      "/learn/how-to-stop-blundering-in-chess",
+      "/learn/how-to-see-the-whole-board-in-chess",
     );
   });
 

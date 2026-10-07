@@ -1,16 +1,17 @@
+import type { PieceSymbol } from "chess.js";
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { placementFromFen, scorePlacement } from "@/lib/game/scoring";
 import { GAME_CONFIG_RULES, presetIdFor, type PresetId } from "@/lib/game/configPrefill";
 
-export type PieceLetter = "k" | "q" | "r" | "b" | "n" | "p";
-export const PIECE_LETTERS: readonly PieceLetter[] = ["k", "q", "r", "b", "n", "p"];
+export const PIECE_LETTERS: readonly PieceSymbol[] = ["k", "q", "r", "b", "n", "p"];
 
 /**
  * Calibration rounds never touch the game store's rating, history or streak, or
  * the leaderboard. The lab streak counts both sources, since it measures the
  * practice habit; personal bests are kept per source.
  */
-export type RoundSource = "game" | "calibration";
+export const LAB_SOURCES = ["game", "calibration"] as const;
+export type LabSource = (typeof LAB_SOURCES)[number];
 
 /** One square's outcome: empty, correct, missed, wrong piece on a target square, extra piece. */
 export type SquareOutcome = "." | "c" | "m" | "w" | "x";
@@ -21,12 +22,12 @@ export interface RoundConfig {
   readonly difficulty: PresetId | null;
 }
 
-export type TypeCounts = Readonly<Partial<Record<PieceLetter, number>>>;
+export type TypeCounts = Readonly<Partial<Record<PieceSymbol, number>>>;
 
 export interface RoundRecordV1 {
   readonly v: 1;
   readonly id: string;
-  readonly source: RoundSource;
+  readonly source: LabSource;
   readonly endedAt: number;
   /** Local calendar day at write time, so a later timezone change does not move it. */
   readonly localDay: string;
@@ -49,7 +50,7 @@ export interface RoundRecordV1 {
 
 export interface RoundInput {
   readonly id: string;
-  readonly source: RoundSource;
+  readonly source: LabSource;
   readonly endedAt: number;
   readonly localDay: string;
   readonly pieceCount: number;
@@ -76,7 +77,7 @@ function outcome(target: string | undefined, placed: string | undefined): Square
 }
 
 function bump(counts: TypeCounts, letter: string): TypeCounts {
-  const key = letter.toLowerCase() as PieceLetter;
+  const key = letter.toLowerCase() as PieceSymbol;
   return { ...counts, [key]: (counts[key] ?? 0) + 1 };
 }
 

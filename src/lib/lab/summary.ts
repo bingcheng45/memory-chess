@@ -1,4 +1,5 @@
-import { configKey, PIECE_LETTERS, type PieceLetter, type RoundRecordV1, type RoundSource, type TypeCounts } from "./record";
+import type { PieceSymbol } from "chess.js";
+import { configKey, PIECE_LETTERS, type LabSource, type RoundRecordV1, type TypeCounts } from "./record";
 
 export interface PersonalBest {
   readonly accuracy: number;
@@ -10,7 +11,7 @@ export interface PersonalBest {
 }
 
 /** Bests key: a practice reading never sets a game best at the same setting. */
-export function bestKey(source: RoundSource, config: RoundRecordV1["config"]): string {
+export function bestKey(source: LabSource, config: RoundRecordV1["config"]): string {
   return `${source}:${configKey(config)}`;
 }
 
@@ -91,13 +92,14 @@ export function summarize(records: readonly RoundRecordV1[]): LabSummary {
   return [...records].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, EMPTY_SUMMARY);
 }
 
-const isCount = (value: unknown): value is number => Number.isInteger(value) && (value as number) >= 0;
+export const isCount = (value: unknown, max = Number.MAX_SAFE_INTEGER): value is number =>
+  Number.isInteger(value) && (value as number) >= 0 && (value as number) <= max;
 const isCountArray = (value: unknown): value is number[] =>
-  Array.isArray(value) && value.length === 64 && value.every(isCount);
+  Array.isArray(value) && value.length === 64 && value.every((count) => isCount(count));
 const isTypeCounts = (value: unknown): value is TypeCounts =>
   typeof value === "object" &&
   value !== null &&
-  Object.entries(value).every(([key, count]) => PIECE_LETTERS.includes(key as PieceLetter) && isCount(count));
+  Object.entries(value).every(([key, count]) => PIECE_LETTERS.includes(key as PieceSymbol) && isCount(count));
 
 /** A stored summary, or null when it is missing, from another version, or damaged. */
 export function parseSummary(raw: unknown): LabSummary | null {

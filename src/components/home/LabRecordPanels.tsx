@@ -10,7 +10,8 @@ import {
   deriveTypeRecall,
   type MissCell,
 } from "@/lib/lab/derive";
-import type { PieceLetter, RoundRecordV1 } from "@/lib/lab/record";
+import type { PieceSymbol } from "chess.js";
+import type { RoundRecordV1 } from "@/lib/lab/record";
 import type { LabSummary } from "@/lib/lab/summary";
 import { FILES, RANKS } from "@/lib/game/board";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
@@ -176,7 +177,7 @@ export function BestsPanel({ summary }: RecordData) {
         <>
           <dl className="lab-bests">
             {bests.entries.map((best) => (
-              <div key={`${best.source}:${best.pieceCount}x${best.memorizeSeconds}`}>
+              <div key={best.key}>
                 <dt>{t("bests.setting", { source: best.source, pieces: best.pieceCount, seconds: best.memorizeSeconds })}</dt>
                 <dd>
                   {t("bests.reading", { accuracy: best.accuracy, seconds: (best.solveMs / 1000).toFixed(1) })}
@@ -199,7 +200,7 @@ export function TypesPanel({ summary }: RecordData) {
   const pieces = useTranslations("home.lab.calibrate.pieceTypes");
   const tags = useTags();
   const recall = deriveTypeRecall(summary);
-  const typeName = (type: PieceLetter) => pieces(mapChessJsPieceToType(type));
+  const typeName = (type: PieceSymbol) => pieces(mapChessJsPieceToType(type));
 
   return (
     <div className="lab-panel lab-p-types">

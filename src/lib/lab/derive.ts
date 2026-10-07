@@ -1,4 +1,5 @@
-import { configKey, PIECE_LETTERS, type PieceLetter, type RoundConfig, type RoundRecordV1, type RoundSource } from "./record";
+import type { PieceSymbol } from "chess.js";
+import { configKey, LAB_SOURCES, localDayOf, PIECE_LETTERS, type LabSource, type RoundConfig, type RoundRecordV1 } from "./record";
 import type { LabSummary, PersonalBest } from "./summary";
 
 /** Below these a panel shows how much more data it needs instead of a number. */
@@ -27,28 +28,21 @@ export interface StreakResult {
 
 function shiftDay(day: string, by: number): string {
   const [year, month, date] = day.split("-").map(Number);
-  const shifted = new Date(year, month - 1, date + by);
-  const pad = (value: number) => String(value).padStart(2, "0");
-  return `${shifted.getFullYear()}-${pad(shifted.getMonth() + 1)}-${pad(shifted.getDate())}`;
+  return localDayOf(new Date(year, month - 1, date + by));
 }
 
-function runEndingAt(played: ReadonlySet<string>, day: string): number {
-  let run = 0;
-  while (played.has(shiftDay(day, -run))) run += 1;
-  return run;
-}
-
-function runLength(played: ReadonlySet<string>, start: string): number {
-  let run = 0;
-  while (played.has(shiftDay(start, run))) run += 1;
-  return run;
+/** Consecutive played days from `day`, stepping one day back (-1) or forward (1). */
+function run(played: ReadonlySet<string>, day: string, step: -1 | 1): number {
+  let length = 0;
+  while (played.has(shiftDay(day, step * length))) length += 1;
+  return length;
 }
 
 export function deriveStreak(days: readonly string[], today: string): StreakResult {
   const played = new Set(days);
-  const current = played.has(today) ? runEndingAt(played, today) : runEndingAt(played, shiftDay(today, -1));
+  const current = run(played, played.has(today) ? today : shiftDay(today, -1), -1);
   const longest = days.reduce(
-    (max, day) => (played.has(shiftDay(day, -1)) ? max : Math.max(max, runLength(played, day))),
+    (max, day) => (played.has(shiftDay(day, -1)) ? max : Math.max(max, run(played, day, 1))),
     0,
   );
   const window = Array.from({ length: LAB_THRESHOLDS.streakWindow }, (_, index): StreakDay => {
@@ -68,7 +62,9 @@ export function deriveStreak(days: readonly string[], today: string): StreakResu
 }
 
 export interface BestEntry extends PersonalBest {
-  readonly source: RoundSource;
+  /** The summary's bestKey, unique per entry. */
+  readonly key: string;
+  readonly source: LabSource;
   readonly pieceCount: number;
   readonly memorizeSeconds: number;
 }
@@ -79,18 +75,16 @@ export interface BestsResult {
   readonly entries: readonly BestEntry[];
 }
 
-const SOURCE_ORDER: readonly RoundSource[] = ["game", "calibration"];
-
 export function deriveBests(summary: LabSummary): BestsResult {
   const entries = Object.entries(summary.bests)
     .map(([key, best]) => {
       const [source, config] = key.split(":");
       const [pieceCount, memorizeSeconds] = config.split("x").map(Number);
-      return { ...best, source: source as RoundSource, pieceCount, memorizeSeconds };
+      return { ...best, key, source: source as LabSource, pieceCount, memorizeSeconds };
     })
     .sort(
       (a, b) =>
-        SOURCE_ORDER.indexOf(a.source) - SOURCE_ORDER.indexOf(b.source) ||
+        LAB_SOURCES.indexOf(a.source) - LAB_SOURCES.indexOf(b.source) ||
         a.pieceCount - b.pieceCount ||
         b.memorizeSeconds - a.memorizeSeconds,
     );
@@ -134,7 +128,7 @@ export function deriveTrend(records: readonly RoundRecordV1[]): TrendResult {
 }
 
 export interface TypeRecall {
-  readonly type: PieceLetter;
+  readonly type: PieceSymbol;
   readonly shown: number;
   readonly recalled: number;
   readonly ready: boolean;

@@ -1,5 +1,6 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
-import { buildRoundRecord, localDayOf, type RoundRecordV1, type RoundSource } from "./record";
+import { buildRoundRecord, LAB_SOURCES, localDayOf, type LabSource, type RoundRecordV1 } from "./record";
+import { isCount } from "./summary";
 import { ROUND_CAP } from "./storage";
 
 export const EXPORT_FORMAT = "memory-chess-lab";
@@ -39,8 +40,6 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 const FEN_BOARD = /^[1-8pnbrqkPNBRQK]+(\/[1-8pnbrqkPNBRQK]+){7}$/;
 
 const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
-const isCount = (value: unknown, max = Number.MAX_SAFE_INTEGER): value is number =>
-  Number.isInteger(value) && (value as number) >= 0 && (value as number) <= max;
 const rankWidth = (rank: string) => [...rank].reduce((width, char) => width + (Number(char) || 1), 0);
 const isFen = (value: unknown): value is string =>
   typeof value === "string" &&
@@ -71,7 +70,7 @@ export function parseRoundRecord(raw: unknown, now: number): RoundRecordV1 | nul
     typeof raw.id === "string" &&
     raw.id.length > 0 &&
     raw.id.length <= MAX_ID_LENGTH &&
-    (raw.source === "game" || raw.source === "calibration") &&
+    LAB_SOURCES.includes(raw.source as LabSource) &&
     isCount(raw.endedAt, latest) &&
     isCalendarDay(raw.localDay) &&
     raw.localDay <= localDayOf(new Date(latest)) &&
@@ -87,7 +86,7 @@ export function parseRoundRecord(raw: unknown, now: number): RoundRecordV1 | nul
 
   return buildRoundRecord({
     id: raw.id as string,
-    source: raw.source as RoundSource,
+    source: raw.source as LabSource,
     endedAt: raw.endedAt as number,
     localDay: raw.localDay as string,
     pieceCount: config.pieceCount as number,

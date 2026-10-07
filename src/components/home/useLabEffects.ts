@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { REDUCED_MOTION_QUERY } from "@/components/articles/articleFlight";
 
 /** Total rounds played site-wide, or null until (and unless) the stat loads. */
 export function useTotalPlays(): number | null {
@@ -36,7 +37,7 @@ export function useReducedMotion(): boolean {
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
-    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const query = window.matchMedia(REDUCED_MOTION_QUERY);
     setReduced(query.matches);
     const onChange = () => setReduced(query.matches);
     query.addEventListener("change", onChange);

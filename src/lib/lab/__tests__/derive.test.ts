@@ -45,8 +45,8 @@ describe("deriveBests", () => {
       ready: true,
       sampleSize: 4,
       entries: [
-        { source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 9000, at: 2, rounds: 3 },
-        { source: "game", pieceCount: 6, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 20000, at: 4, rounds: 1 },
+        { key: "game:4x10", source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 9000, at: 2, rounds: 3 },
+        { key: "game:6x10", source: "game", pieceCount: 6, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 20000, at: 4, rounds: 1 },
       ],
     });
   });
@@ -58,8 +58,8 @@ describe("deriveBests", () => {
     ]);
 
     expect(deriveBests(summary).entries).toEqual([
-      { source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 50, correct: 2, solveMs: 20000, at: 1, rounds: 1 },
-      { source: "calibration", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 5000, at: 2, rounds: 1 },
+      { key: "game:4x10", source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 50, correct: 2, solveMs: 20000, at: 1, rounds: 1 },
+      { key: "calibration:4x10", source: "calibration", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, correct: 4, solveMs: 5000, at: 2, rounds: 1 },
     ]);
   });
 

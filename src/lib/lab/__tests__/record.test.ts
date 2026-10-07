@@ -1,4 +1,4 @@
-import { configKey, localDayOf } from "@/lib/lab/record";
+import { buildRoundRecord, configKey, localDayOf, positionId } from "@/lib/lab/record";
 import { round, TARGET } from "./fixtures";
 
 describe("buildRoundRecord", () => {
@@ -42,5 +42,61 @@ describe("record helpers", () => {
 
   it("keys a config by pieces and seconds", () => {
     expect(configKey({ pieceCount: 6, memorizeSeconds: 10 })).toBe("6x10");
+  });
+});
+
+describe("positionId", () => {
+  it.each([
+    ["a", "1c2ba782c97901"],
+    [TARGET, "0a6c3bd6ea5bcc"],
+    ["8/8/8/8/8/8/8/8", "0d909b6fd2d2b8"],
+  ])("hashes %s to a fixed 14 digit id", (fen, id) => {
+    expect(positionId(fen)).toBe(id);
+  });
+
+  it("gives a different id when one piece moves", () => {
+    expect(positionId("4k3/8/8/3q4/8/5N2/8/4K2")).toBe("15eafc58855e71");
+  });
+});
+
+describe("buildRoundRecord version 2", () => {
+  it("adds the position id, the start, the kind, the timezone and the placements to the scored round", () => {
+    const { v, ...core } = round();
+    const record = buildRoundRecord(
+      {
+        id: "r1",
+        source: "game",
+        endedAt: Date.UTC(2026, 9, 7, 12),
+        localDay: "2026-10-07",
+        pieceCount: 4,
+        memorizeSeconds: 10,
+        targetFen: `${TARGET} w - - 0 1`,
+        placedFen: TARGET,
+        memorizeMs: 10000,
+        solveMs: 20000,
+      },
+      { startSource: "home_quick", tzOffsetMin: -480, placements: [[900, 60, "K"]], removals: 1 },
+    );
+
+    expect(v).toBe(1);
+    expect(record).toEqual({
+      ...core,
+      v: 2,
+      positionId: "0a6c3bd6ea5bcc",
+      kind: "normal",
+      startSource: "home_quick",
+      tzOffsetMin: -480,
+      placements: [[900, 60, "K"]],
+      removals: 1,
+    });
+  });
+
+  it("writes no key for a fact it was not given", () => {
+    const record = buildRoundRecord(
+      { id: "r1", source: "calibration", endedAt: 1, localDay: "2026-10-07", pieceCount: 4, memorizeSeconds: 10, targetFen: TARGET, placedFen: TARGET, memorizeMs: 1, solveMs: 1 },
+      {},
+    );
+
+    expect(Object.keys(record).slice(-3)).toEqual(["accuracy", "positionId", "kind"]);
   });
 });

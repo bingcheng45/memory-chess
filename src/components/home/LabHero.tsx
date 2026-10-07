@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LOCALES } from "@/i18n/routing";
@@ -14,22 +14,54 @@ import { useReducedMotion } from "./useLabEffects";
 
 const SPECIMEN_PIECES = Object.keys(SPECIMEN).length;
 const TICK_MS = 100;
+const FULL_COUNTDOWN = `T-${SPECIMEN_STUDY_SECONDS.toFixed(1)}s`;
 
-/** Loops the specimen's study countdown; frozen at full time under reduced motion. */
-function useSpecimenCountdown(): string {
+/**
+ * Loops the specimen's study countdown by writing one text node, so the hero
+ * never re-renders for it. Ticks only while on screen; frozen at full time
+ * under reduced motion.
+ */
+function SpecimenCountdown() {
+  const ref = useRef<HTMLSpanElement>(null);
   const reduced = useReducedMotion();
-  const [elapsed, setElapsed] = useState(0);
 
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    node.textContent = FULL_COUNTDOWN;
     if (reduced) return;
+
     const startedAt = performance.now();
-    const timer = setInterval(() => {
-      setElapsed(((performance.now() - startedAt) / 1000) % SPECIMEN_STUDY_SECONDS);
-    }, TICK_MS);
-    return () => clearInterval(timer);
+    let timer: number | undefined;
+    const tick = () => {
+      const left = SPECIMEN_STUDY_SECONDS - (((performance.now() - startedAt) / 1000) % SPECIMEN_STUDY_SECONDS);
+      node.textContent = `T-${left.toFixed(1)}s`;
+    };
+    const start = () => {
+      timer ??= window.setInterval(tick, TICK_MS);
+    };
+    const stop = () => {
+      window.clearInterval(timer);
+      timer = undefined;
+    };
+
+    if (typeof IntersectionObserver === "undefined") {
+      start();
+      return stop;
+    }
+    const observer = new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop()));
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      stop();
+    };
   }, [reduced]);
 
-  return (SPECIMEN_STUDY_SECONDS - (reduced ? 0 : elapsed)).toFixed(1);
+  return (
+    <span ref={ref} className="lab-k lab-mono" aria-hidden="true">
+      {FULL_COUNTDOWN}
+    </span>
+  );
 }
 
 function range(min: number, max: number, unit = ""): string {
@@ -39,7 +71,6 @@ function range(min: number, max: number, unit = ""): string {
 export function LabHero({ totalPlays }: { totalPlays: number | null }) {
   const t = useTranslations("home");
   const lab = useTranslations("home.lab");
-  const countdown = useSpecimenCountdown();
 
   const facts = [
     { value: range(MEMORIZE_SECONDS_RANGE.min, MEMORIZE_SECONDS_RANGE.max, "s"), label: lab("hero.facts.study") },
@@ -94,9 +125,7 @@ export function LabHero({ totalPlays }: { totalPlays: number | null }) {
               <i aria-hidden="true" />
               {lab("hero.specimen.label")}
             </span>
-            <span className="lab-k lab-mono" aria-hidden="true">
-              T-{countdown}s
-            </span>
+            <SpecimenCountdown />
           </div>
           <BoardFigure>
             <StaticBoard position={SPECIMEN} />

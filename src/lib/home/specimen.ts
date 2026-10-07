@@ -22,7 +22,7 @@ export const SPECIMEN_SCORE = scoreReading(SPECIMEN, SPECIMEN_RECALL);
 
 export const SPECIMEN_STUDY_SECONDS = 10;
 
-export type MicroscopePhaseId = "study" | "chunk" | "blind" | "recall" | "score";
+export type MicroscopePhaseId = "study" | "chunk" | "blank" | "rebuild" | "score";
 
 export interface MicroscopePhase {
   readonly id: MicroscopePhaseId;
@@ -37,7 +37,12 @@ export interface MicroscopePhase {
 export const MICROSCOPE_PHASES: readonly MicroscopePhase[] = [
   { id: "study", clock: "0.0", pieces: "specimen", overlay: "fixation", marks: false, scoreChip: false },
   { id: "chunk", clock: "4.2", pieces: "specimen", overlay: "chunks", marks: false, scoreChip: false },
-  { id: "blind", clock: "10.0", pieces: "none", overlay: null, marks: false, scoreChip: false },
-  { id: "recall", clock: "21.6", pieces: "recall", overlay: null, marks: true, scoreChip: false },
+  { id: "blank", clock: "10.0", pieces: "none", overlay: null, marks: false, scoreChip: false },
+  { id: "rebuild", clock: "21.6", pieces: "recall", overlay: null, marks: true, scoreChip: false },
   { id: "score", clock: "24.1", pieces: "recall", overlay: null, marks: true, scoreChip: true },
 ];
+
+/** The only source of a phase's number, as the two-digit label shown beside its name. */
+export function phaseNumber(id: MicroscopePhaseId): string {
+  return String(MICROSCOPE_PHASES.findIndex((phase) => phase.id === id) + 1).padStart(2, "0");
+}

@@ -9,6 +9,7 @@ import {
   roundReducer,
   type RoundState,
 } from "@/lib/home/calibration";
+import { phaseNumber, type MicroscopePhaseId } from "@/lib/home/specimen";
 import { trackEvent } from "@/lib/analytics/events";
 import { recordLabRound } from "@/lib/lab/recordRound";
 import { formatSeconds } from "@/utils/timer";
@@ -54,11 +55,11 @@ function useRoundClock(state: RoundState, onStudyEnded: (now: number) => void): 
   return clockMs;
 }
 
-const PHASE_KEY = {
-  study: "phaseStudy",
-  rebuild: "phaseRebuild",
-  scored: "phaseScore",
-} as const;
+const ROUND_PHASE_ID = {
+  study: "study",
+  rebuild: "rebuild",
+  scored: "score",
+} as const satisfies Record<Exclude<RoundState["phase"], "idle">, MicroscopePhaseId>;
 
 /** Saves each scored reading to the lab record once, tagged so it never counts as a game round. */
 function useRecordReading(state: RoundState): void {
@@ -81,6 +82,7 @@ function useRecordReading(state: RoundState): void {
 
 export function CalibrationSection() {
   const t = useTranslations("home.lab.calibrate");
+  const tPhase = useTranslations("home.lab.method.phases");
   const [state, dispatch] = useReducer(roundReducer, { phase: "idle" });
   const onStudyEnded = useCallback((now: number) => dispatch({ type: "studyEnded", now }), []);
   const clockMs = useRoundClock(state, onStudyEnded);
@@ -111,7 +113,10 @@ export function CalibrationSection() {
   const heading =
     state.phase === "idle"
       ? t("phaseReady", { pieces: CALIBRATION_RULES.pieceCount, seconds: STUDY_SECONDS })
-      : t(PHASE_KEY[state.phase]);
+      : t("phaseLabel", {
+          number: phaseNumber(ROUND_PHASE_ID[state.phase]),
+          name: tPhase(`${ROUND_PHASE_ID[state.phase]}.name`),
+        });
   const clock =
     state.phase === "scored"
       ? `${state.score.accuracy}%`

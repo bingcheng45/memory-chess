@@ -215,14 +215,14 @@
             "body": "Strong players rarely store pieces one by one. They store patterns: a castled king with its pawns, a queen and rook stacked on a file. Fewer units, same information.",
             "note": "A is a shield of 5. B is a d-file battery of 2. C is the black king on c4. Three chunks to hold, not eight."
           },
-          "blind": {
-            "name": "Blind",
+          "blank": {
+            "name": "Blank",
             "title": "The board clears.",
             "body": "No pieces, no hints. Just the grid. This is the moment the round actually measures: what survived in your head after the image is gone.",
             "note": "Tip from the Learning Center: name the chunks to yourself before the timer ends."
           },
-          "recall": {
-            "name": "Recall",
+          "rebuild": {
+            "name": "Rebuild",
             "title": "Rebuild it, square by square.",
             "body": "Pick a piece and tap the square where it belongs. Submit when you are done. Every square is checked against the original.",
             "note": "Mint is correct. Orange fill is a wrong placement (knight on e3). Orange ring is the square it belonged on (f3)."
@@ -239,9 +239,7 @@
         "title": "Take a calibration reading.",
         "lede": "The Medium round from the real game: {pieces} pieces, two kings among them, {seconds} seconds. Then the board clears and you rebuild it. You'll get a readout card with your accuracy and recall by piece type. It works with mouse, touch and keyboard.",
         "phaseReady": "Ready · {pieces} pieces · {seconds}s exposure",
-        "phaseStudy": "Phase 01 · Study",
-        "phaseRebuild": "Phase 03 · Rebuild from memory",
-        "phaseScore": "Phase 05 · Score",
+        "phaseLabel": "Phase {number} · {name}",
         "start": "Start calibration",
         "restart": "Restart",
         "again": "Run again",

@@ -6,6 +6,7 @@ import type { SquareName } from "@/lib/game/board";
 import { squareVerdict } from "@/lib/home/calibration";
 import {
   MICROSCOPE_PHASES,
+  phaseNumber,
   SPECIMEN,
   SPECIMEN_RECALL,
   SPECIMEN_SCORE,
@@ -56,7 +57,6 @@ export function MicroscopeSection() {
   const t = useTranslations("home.lab.method");
   const { active, stepRefs } = useActiveStep(MICROSCOPE_PHASES.length);
   const phase = MICROSCOPE_PHASES[active];
-  const number = (index: number) => String(index + 1).padStart(2, "0");
 
   return (
     <section className="lab-sec lab-sec-tight" id={LAB_SECTIONS.method.anchor}>
@@ -67,7 +67,7 @@ export function MicroscopeSection() {
             <div className="lab-scope-card" data-phase={phase.id}>
               <div className="lab-scope-status">
                 <span className="lab-k">
-                  {t("status", { number: number(active), name: t(`phases.${phase.id}.name`) })}
+                  {t("status", { number: phaseNumber(phase.id), name: t(`phases.${phase.id}.name`) })}
                 </span>
                 <span className="lab-k lab-mono">{t("clock", { seconds: phase.clock })}</span>
               </div>
@@ -97,7 +97,7 @@ export function MicroscopeSection() {
                 }}
               >
                 <span className="lab-k">
-                  {t("status", { number: number(index), name: t(`phases.${id}.name`) })}
+                  {t("status", { number: phaseNumber(id), name: t(`phases.${id}.name`) })}
                 </span>
                 <h3>{t(`phases.${id}.title`)}</h3>
                 <p>{t(`phases.${id}.body`)}</p>

@@ -28,7 +28,7 @@ describe("CalibrationSection", () => {
       jest.advanceTimersByTime(10100);
     });
 
-    expect(screen.getByText("Phase 03 · Rebuild from memory")).toBeInTheDocument();
+    expect(screen.getByText("Phase 04 · Rebuild")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: `${square}, empty` })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: pieceName }));
@@ -38,6 +38,7 @@ describe("CalibrationSection", () => {
     fireEvent.click(screen.getByRole("button", { name: "Submit reading" }));
 
     expect(screen.getByText("Run complete")).toBeInTheDocument();
+    expect(screen.getByText("Phase 05 · Score")).toBeInTheDocument();
     expect(screen.getByText("1 / 6")).toBeInTheDocument();
     expect(recordLabRound).toHaveBeenCalledTimes(1);
     expect(recordLabRound).toHaveBeenCalledWith(

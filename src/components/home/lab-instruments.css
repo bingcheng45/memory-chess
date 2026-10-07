@@ -5,9 +5,9 @@
 .lab-scope-fig { position: sticky; top: calc(var(--lab-index-h) + 24px); align-self: start; }
 .lab-scope-card { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 16px; }
 .lab-scope-status { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 2px 2px 8px; }
-.lab-scope-card[data-phase="blind"] .lab-board,
-.lab-scope-card[data-phase="blind"] .lab-cell { background: var(--lab-paper); }
-.lab-scope-card[data-phase="blind"] .lab-cell[data-dark] { background: var(--lab-blank-dark); }
+.lab-scope-card[data-phase="blank"] .lab-board,
+.lab-scope-card[data-phase="blank"] .lab-cell { background: var(--lab-paper); }
+.lab-scope-card[data-phase="blank"] .lab-cell[data-dark] { background: var(--lab-blank-dark); }
 .lab-cell[data-mark~="ok"] { background: var(--lab-ok); }
 .lab-cell[data-mark~="wrong"] { background: var(--lab-bad); }
 .lab-cell[data-mark~="miss"] { box-shadow: inset 0 0 0 3px var(--lab-mark); }

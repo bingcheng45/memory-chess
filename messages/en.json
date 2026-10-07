@@ -213,7 +213,7 @@
           "chunk": {
             "name": "Chunk",
             "title": "Eight pieces become three groups.",
-            "body": "Because the position is random, groups come from geometry: a cluster in a corner, a pair on a file, a piece alone. Studies of chess recall find people hold about three groups at once. Say each one to yourself, for example “corner five”, “d-file pair”, “lone king”.",
+            "body": "Because the position is random, groups come from geometry: a cluster in a corner, a pair on a file, a piece alone. One chess-memory study estimates that people hold no more than about three chunks at a time, so three groups is a sensible target. One way to hold them is to name each one, for example “corner five”, “d-file pair”, “lone king”.",
             "note": "A is a corner cluster of 5. B is a pair on the d-file. C is the black king on c4. A chess player would call A a castled shield and B a battery. Three groups to hold, not eight."
           },
           "blank": {
@@ -225,7 +225,7 @@
           "rebuild": {
             "name": "Rebuild",
             "title": "Rebuild one group at a time.",
-            "body": "Pick a piece and tap the square where it belongs. Finish a group before you start the next. Players in chess-recall studies place pieces in bursts, pausing two seconds or more between groups. Submit when you are done.",
+            "body": "Pick a piece and tap the square where it belongs. Finish a group before you start the next. In a classic chess-recall study, players put pieces back in quick bursts separated by longer pauses, which the researchers read as the gaps between chunks. Submit when you are done.",
             "note": "Fig. the rebuilt board before it is checked. Nothing is marked until you submit."
           },
           "score": {

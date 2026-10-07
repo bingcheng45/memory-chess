@@ -25,7 +25,7 @@ function pieceState(phase: MicroscopePhase, square: SquareName): PieceState {
     case "specimen":
       return SPECIMEN[square] ? "on" : "off";
     case "recall":
-      return SPECIMEN_RECALL[square] ? "on" : "ghost";
+      return SPECIMEN_RECALL[square] ? "on" : phase.marks ? "ghost" : "off";
   }
 }
 

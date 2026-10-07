@@ -86,7 +86,7 @@ describe("LabRecordSection", () => {
   it("says how many more rounds each panel needs below its threshold", () => {
     renderWithIntl(<LabRecordSection record={record(rounds(2, 1))} />);
 
-    expect(within(panel(/Fig. 6.2/)).getByText("3 more rounds at 4 pieces, 10s draws your game trend.")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.2/)).getByText("3 more rounds at 4 pieces, 10s, at least one on another day, draws your game trend.")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.4/)).getByText("Play on one more day to start a streak.")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.7/)).getByText("About 18 more rounds until a piece other than the king has 20 sightings.")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.6/)).getByText("Game · 4 pieces · 10s")).toBeInTheDocument();
@@ -96,7 +96,7 @@ describe("LabRecordSection", () => {
   it("draws the player's own record once there is enough", () => {
     renderWithIntl(<LabRecordSection record={record(rounds(10, 3))} />);
 
-    expect(within(panel(/Fig. 6.2/)).getByText("Game · 4 pieces · 10s, the setting you play most · From 10 rounds")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.2/)).getByText("Game · 4 pieces · 10s, your most played setting with a trend · From 10 rounds")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.2/)).getByRole("img")).toHaveAccessibleName(
       "Your accuracy over your last 10 game rounds at 4 pieces and 10 seconds, latest 50 percent.",
     );
@@ -143,10 +143,29 @@ describe("LabRecordSection", () => {
     );
     renderWithIntl(<LabRecordSection record={record([...practice, ...rounds(2, 1).map((game) => ({ ...game, id: `g${game.id}`, endedAt: 100 }))])} />);
 
-    expect(within(panel(/Fig. 6.2/)).getByText("Practice · 4 pieces · 10s, the setting you play most · From 5 rounds")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.2/)).getByText("Practice · 4 pieces · 10s, your most played setting with a trend · From 5 rounds")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.2/)).getByRole("img")).toHaveAccessibleName(
       "Your accuracy over your last 5 practice rounds at 4 pieces and 10 seconds, latest 100 percent.",
     );
+  });
+
+  it("draws the game trend that is ready over more practice rounds still on one day", () => {
+    const practice = rounds(6, 1).map((game) => buildRoundRecord({ ...game, id: `p${game.id}`, source: "calibration" }));
+    const games = rounds(5, 3).map((game) => buildRoundRecord({ ...game, id: `g${game.id}`, endedAt: 100 + game.endedAt, pieceCount: 6 }));
+    renderWithIntl(<LabRecordSection record={record([...practice, ...games])} />);
+
+    expect(within(panel(/Fig. 6.2/)).getByText("Game · 6 pieces · 10s, your most played setting with a trend · From 5 rounds")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.2/)).queryByText(/one more day/)).toBeNull();
+  });
+
+  it("says exactly what the most played setting still needs when no setting is ready", () => {
+    const practice = rounds(4, 1).map((game) => buildRoundRecord({ ...game, id: `p${game.id}`, source: "calibration" }));
+    const games = rounds(3, 2).map((game) => buildRoundRecord({ ...game, id: `g${game.id}`, endedAt: 100 + game.endedAt, pieceCount: 6 }));
+    renderWithIntl(<LabRecordSection record={record([...practice, ...games])} />);
+
+    expect(
+      within(panel(/Fig. 6.2/)).getByText("1 more round at 4 pieces, 10s, played on another day, draws your practice trend."),
+    ).toBeInTheDocument();
   });
 
   it("labels practice bests apart from game bests at the same setting", () => {

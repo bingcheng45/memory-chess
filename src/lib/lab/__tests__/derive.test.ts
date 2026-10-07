@@ -136,6 +136,39 @@ describe("deriveTrend", () => {
     });
   });
 
+  it("draws a ready setting over a setting with more rounds that is still warming", () => {
+    const records = [
+      ...Array.from({ length: 6 }, (_, index) => round({ id: `p${index}`, source: "calibration", endedAt: index })),
+      ...["2026-10-05", "2026-10-06", "2026-10-06", "2026-10-07", "2026-10-07"].map((localDay, index) =>
+        round({ id: `g${index}`, endedAt: 10 + index, localDay, pieceCount: 6, placedFen: index % 2 ? HALF : TARGET }),
+      ),
+    ];
+
+    expect(deriveTrend(records)).toEqual({
+      ready: true,
+      sampleSize: 5,
+      setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 },
+      points: [100, 50, 100, 50, 100],
+      roundsNeeded: 0,
+      daysNeeded: 0,
+    });
+  });
+
+  it("falls back to the setting with the most rounds when none is ready", () => {
+    const records = [
+      ...Array.from({ length: 4 }, (_, index) => round({ id: `p${index}`, source: "calibration", endedAt: index })),
+      ...["2026-10-06", "2026-10-07", "2026-10-07"].map((localDay, index) => round({ id: `g${index}`, endedAt: 10 + index, localDay, pieceCount: 6 })),
+    ];
+
+    expect(deriveTrend(records)).toMatchObject({
+      ready: false,
+      sampleSize: 4,
+      setting: { source: "calibration", pieceCount: 4, memorizeSeconds: 10 },
+      roundsNeeded: 1,
+      daysNeeded: 1,
+    });
+  });
+
   it("asks for another day when five rounds all fell on one", () => {
     const records = days.map((_, index) => round({ id: `s${index}`, endedAt: index }));
 

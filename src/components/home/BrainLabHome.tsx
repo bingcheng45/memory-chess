@@ -3,7 +3,8 @@
 import PageHeader from "@/components/ui/PageHeader";
 import FaqSection from "@/components/ui/FaqSection";
 import VideoSection from "@/components/ui/VideoSection";
-import { deriveStreak, LAB_THRESHOLDS } from "@/lib/lab/derive";
+import { LAB_METRICS } from "@/lib/lab/metrics";
+import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { CalibrationSection } from "./CalibrationSection";
 import { FinalCta } from "./FinalCta";
 import { HomeStructuredData } from "./HomeStructuredData";
@@ -23,7 +24,7 @@ import "./lab-instruments.css";
 export function BrainLabHome() {
   const totalPlays = useTotalPlays();
   const record = useLabRecord();
-  const streak = record.today ? deriveStreak(record.summary.days, record.today) : null;
+  const streak = record.today ? LAB_METRICS.streak.compute(record).value : null;
 
   return (
     <>

@@ -54,7 +54,7 @@ const isFen = (value: unknown): value is string =>
 const piecesIn = (fen: string) => fen.replace(/[\d/]/g, "").length;
 
 /** A real calendar day, so "2026-02-30" fails because Date rolls it into March. */
-function isCalendarDay(value: unknown): value is string {
+export function isCalendarDay(value: unknown): value is string {
   if (typeof value !== "string" || !LOCAL_DAY.test(value)) return false;
   const [year, month, day] = value.split("-").map(Number);
   const date = new Date(year, month - 1, day);
@@ -115,14 +115,19 @@ const isBest = (value: unknown): value is PersonalBest =>
 
 /**
  * The file's lifetime summary, rebuilt field by field, or null if any part is
- * out of shape or it counts fewer rounds than the file holds.
+ * out of shape, it counts fewer rounds than the file holds, or it contradicts
+ * itself: every counted round adds a day and a best, so rounds, days and
+ * bests are empty together or not at all.
  */
 function parseFileSummary(raw: unknown, rounds: readonly RoundRecordV1[], now: number): LabSummary | null {
   const summary = parseSummary(raw);
   if (!summary) return null;
   const bests = Object.entries(summary.bests);
+  const played = summary.rounds > 0;
   const valid =
     summary.rounds >= rounds.length &&
+    (summary.days.length > 0) === played &&
+    (bests.length > 0) === played &&
     summary.days.length <= MAX_DAYS &&
     summary.days.every((day, index) => isCalendarDay(day) && day <= localDayOf(new Date(now + DAY_MS)) && (index === 0 || summary.days[index - 1] < day)) &&
     bests.length <= MAX_BESTS &&

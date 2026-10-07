@@ -38,11 +38,25 @@ describe("lab record export and import", () => {
     ["a best that is not a number", { bests: { "game:4x10": { accuracy: "100", correct: 1, solveMs: 1, at: 1, rounds: 1 } } }],
     ["a square count that is not finite", { squareShown: Array(64).fill(Infinity) }],
     ["a fractional watermark", { evictedThrough: 1.5 }],
+    ["rounds but no day", { days: [] }],
+    ["rounds but no best", { bests: {} }],
   ])("drops a summary with %s and still imports the rounds", (_, change) => {
     const rounds = [round({ id: "a", endedAt: 10 }), round({ id: "b", endedAt: 20 })];
     const file = JSON.stringify(buildExport(rounds, NOW, { ...summarize(rounds), ...change } as never));
 
     expect(parseImport(file, NOW)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: "dropped" });
+  });
+
+  it("drops a summary that counts no round but lists a day, from a file with no rounds", () => {
+    const file = JSON.stringify(buildExport([], NOW, { ...summarize([]), days: ["2026-10-07"] }));
+
+    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds: [], rejected: 0, overCap: 0, summary: "dropped" });
+  });
+
+  it("keeps an empty summary from a file with no rounds", () => {
+    const file = JSON.stringify(buildExport([], NOW, summarize([])));
+
+    expect(parseImport(file, NOW)).toMatchObject({ ok: true, summary: { rounds: 0, days: [], bests: {} } });
   });
 
   it("drops the summary when a round in the file had to be skipped", () => {

@@ -1,29 +1,14 @@
 "use client";
 
-import { useMemo, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import {
-  deriveBests,
-  deriveMissMap,
-  deriveStreak,
-  deriveTrend,
-  deriveTypeRecall,
-  type MissCell,
-} from "@/lib/lab/derive";
+import type { LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
+import { hasFigure } from "@/lib/lab/readiness";
 import type { PieceSymbol } from "chess.js";
-import type { RoundRecordV1 } from "@/lib/lab/record";
-import type { LabSummary } from "@/lib/lab/summary";
 import { FILES, RANKS } from "@/lib/game/board";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { formatSeconds } from "@/utils/timer";
 import { AccuracySparkline, MissLines, MissMap, RecallBar, StreakGrid } from "./LabCharts";
-
-export interface RecordData {
-  readonly records: readonly RoundRecordV1[];
-  readonly summary: LabSummary;
-  readonly today: string;
-}
-
 
 const missShare = ({ shown, missed, ready }: MissCell) => (ready ? missed / shown : null);
 
@@ -45,49 +30,46 @@ function useTags() {
   };
 }
 
-export function TrendPanel({ records, summary }: RecordData) {
+export function TrendPanel({ result: { readiness, value: trend }, played }: { result: LabResults["trend"]; played: boolean }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
-  const trend = useMemo(() => deriveTrend(records), [records]);
-  const setting = trend.setting;
+  const need = readiness.need ?? {};
 
   return (
     <div className="lab-panel lab-p-spark">
-      <PanelHead fig={t("spark.fig")} tag={summary.rounds === 0 ? tags.sample : tags.mine} />
+      <PanelHead fig={t("spark.fig")} tag={played ? tags.mine : tags.sample} />
       <h3>{t("spark.title")}</h3>
-      {summary.rounds === 0 || !setting ? (
+      {!trend ? (
         <>
           <AccuracySparkline label={t("spark.aria")} first={t("spark.first")} last={t("spark.last")} />
           <p className="lab-note">{t("spark.note")}</p>
         </>
-      ) : trend.ready ? (
+      ) : hasFigure(readiness) ? (
         <>
           <AccuracySparkline
             points={trend.points}
-            label={t("spark.realAria", { count: trend.points.length, latest: trend.points[trend.points.length - 1], ...setting })}
+            label={t("spark.realAria", { count: trend.points.length, latest: trend.points[trend.points.length - 1], ...trend.setting })}
             first={t("spark.realFirst")}
             last={t("spark.realLast")}
           />
           <p className="lab-note">
-            {t("spark.config", setting)} · {t("fromRounds", { count: trend.sampleSize })}
+            {t("spark.config", trend.setting)} · {t("fromRounds", { count: readiness.sampleSize })}
           </p>
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">
-          {trend.roundsNeeded === 0
-            ? t("spark.needDay", setting)
-            : t(trend.daysNeeded > 0 ? "spark.needRoundsAndDay" : "spark.needRounds", { count: trend.roundsNeeded, ...setting })}
+          {need.rounds === undefined
+            ? t("spark.needDay", trend.setting)
+            : t(need.days ? "spark.needRoundsAndDay" : "spark.needRounds", { count: need.rounds, ...trend.setting })}
         </p>
       )}
     </div>
   );
 }
 
-export function MissPanel({ summary }: RecordData) {
+export function MissPanel({ result: { readiness, value: map } }: { result: LabResults["missMap"] }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
-  const proposed = summary.rounds === 0;
-  const map = deriveMissMap(summary);
   const lines = (cells: readonly MissCell[], names: readonly string[]) =>
     cells.map((cell, index) => ({
       name: names[index],
@@ -99,16 +81,16 @@ export function MissPanel({ summary }: RecordData) {
 
   return (
     <div className="lab-panel lab-p-heat">
-      <PanelHead fig={t("heat.fig")} tag={proposed ? tags.sample : tags.mine} />
+      <PanelHead fig={t("heat.fig")} tag={map ? tags.mine : tags.sample} />
       <h3>{t("heat.title")}</h3>
-      {proposed ? (
+      {!map ? (
         <>
           <MissMap label={t("heat.aria")} />
           <p className="lab-note">{t("heat.note")}</p>
         </>
-      ) : !map.ready ? (
+      ) : !hasFigure(readiness) ? (
         <p className="lab-panel-desc lab-empty">
-          {map.roundsNeeded === null ? t("heat.needStart") : t("heat.need", { count: map.roundsNeeded })}
+          {map.roundsEstimate === null ? t("heat.needStart") : t("heat.need", { count: map.roundsEstimate })}
         </p>
       ) : (
         <>
@@ -121,7 +103,7 @@ export function MissPanel({ summary }: RecordData) {
             </>
           )}
           <p className="lab-note">
-            {t("heat.realNote")} {t("fromRounds", { count: map.sampleSize })}
+            {t("heat.realNote")} {t("fromRounds", { count: readiness.sampleSize })}
           </p>
         </>
       )}
@@ -129,18 +111,16 @@ export function MissPanel({ summary }: RecordData) {
   );
 }
 
-export function StreakPanel({ summary, today }: RecordData) {
+export function StreakPanel({ result: { readiness, value: streak } }: { result: LabResults["streak"] }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
-  const proposed = summary.rounds === 0;
-  const streak = deriveStreak(summary.days, today);
 
   return (
     <div className="lab-panel lab-p-streak">
-      <PanelHead fig={t("streak.fig")} tag={proposed ? tags.sample : tags.mine} />
+      <PanelHead fig={t("streak.fig")} tag={streak ? tags.mine : tags.sample} />
       <h3>{t("streak.title")}</h3>
-      <p className="lab-panel-desc">{proposed ? t("streak.desc") : t("streak.realDesc")}</p>
-      {proposed ? (
+      <p className="lab-panel-desc">{streak ? t("streak.realDesc") : t("streak.desc")}</p>
+      {!streak ? (
         <>
           <StreakGrid label={t("streak.aria")} />
           <p className="lab-note">{t("streak.note")}</p>
@@ -152,8 +132,8 @@ export function StreakPanel({ summary, today }: RecordData) {
             label={t("streak.realAria", { count: streak.window.filter((day) => day === "played").length })}
           />
           <p className="lab-note">
-            {streak.ready
-              ? `${t("streak.realNote", { current: streak.current, longest: streak.longest })} · ${t("fromRounds", { count: summary.rounds })}`
+            {hasFigure(readiness)
+              ? `${t("streak.realNote", { current: streak.current, longest: streak.longest })} · ${t("fromRounds", { count: readiness.sampleSize })}`
               : t("streak.need")}
           </p>
         </>
@@ -162,17 +142,16 @@ export function StreakPanel({ summary, today }: RecordData) {
   );
 }
 
-export function BestsPanel({ summary }: RecordData) {
+export function BestsPanel({ result: { readiness, value: bests } }: { result: LabResults["bests"] }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
-  const bests = deriveBests(summary);
 
   return (
     <div className="lab-panel lab-p-bests">
-      <PanelHead fig={t("bests.fig")} tag={bests.ready ? tags.mine : null} />
+      <PanelHead fig={t("bests.fig")} tag={bests ? tags.mine : null} />
       <h3>{t("bests.title")}</h3>
       <p className="lab-panel-desc">{t("bests.desc")}</p>
-      {bests.ready ? (
+      {bests ? (
         <>
           <dl className="lab-bests">
             {bests.entries.map((best) => (
@@ -185,7 +164,7 @@ export function BestsPanel({ summary }: RecordData) {
               </div>
             ))}
           </dl>
-          <p className="lab-note">{t("fromRounds", { count: bests.sampleSize })}</p>
+          <p className="lab-note">{t("fromRounds", { count: readiness.sampleSize })}</p>
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">{t("bests.empty")}</p>
@@ -194,19 +173,19 @@ export function BestsPanel({ summary }: RecordData) {
   );
 }
 
-export function TypesPanel({ summary }: RecordData) {
+export function TypesPanel({ result: { readiness, value: recall } }: { result: LabResults["typeRecall"] }) {
   const t = useTranslations("home.lab.record");
   const pieces = useTranslations("home.lab.calibrate.pieceTypes");
   const tags = useTags();
-  const recall = deriveTypeRecall(summary);
   const typeName = (type: PieceSymbol) => pieces(mapChessJsPieceToType(type));
-  const kings = <p className="lab-note">{t("types.kings", { recalled: recall.king.recalled, shown: recall.king.shown })}</p>;
+  const kings = (king: TypeRecall) => <p className="lab-note">{t("types.kings", { recalled: king.recalled, shown: king.shown })}</p>;
+  const ready = recall && hasFigure(readiness);
 
   return (
     <div className="lab-panel lab-p-types">
-      <PanelHead fig={t("types.fig")} tag={recall.ready ? tags.mine : null} />
+      <PanelHead fig={t("types.fig")} tag={ready ? tags.mine : null} />
       <h3>{t("types.title")}</h3>
-      {recall.ready ? (
+      {ready ? (
         <>
           <div className="lab-bars">
             {recall.types.filter(({ shown }) => shown > 0).map(({ type, shown, recalled, ready }) => (
@@ -218,17 +197,17 @@ export function TypesPanel({ summary }: RecordData) {
               />
             ))}
           </div>
-          {kings}
-          <p className="lab-note">{t("fromRounds", { count: recall.sampleSize })}</p>
+          {kings(recall.king)}
+          <p className="lab-note">{t("fromRounds", { count: readiness.sampleSize })}</p>
         </>
-      ) : recall.onlyKings ? (
+      ) : recall?.onlyKings ? (
         <>
           <p className="lab-panel-desc lab-empty">{t("types.onlyKings")}</p>
-          {kings}
+          {kings(recall.king)}
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">
-          {recall.roundsNeeded === null ? t("types.needStart") : t("types.need", { count: recall.roundsNeeded })}
+          {!recall || recall.roundsEstimate === null ? t("types.needStart") : t("types.need", { count: recall.roundsEstimate })}
         </p>
       )}
     </div>

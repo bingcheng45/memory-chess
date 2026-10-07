@@ -1,0 +1,3753 @@
+{
+  "newVisitor": {
+    "streak": {
+      "ready": false,
+      "sampleSize": 0,
+      "current": 0,
+      "longest": 0,
+      "window": [
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "today"
+      ],
+      "daysNeeded": 2
+    },
+    "bests": {
+      "ready": false,
+      "sampleSize": 0,
+      "entries": []
+    },
+    "trend": {
+      "ready": false,
+      "sampleSize": 0,
+      "setting": null,
+      "points": [],
+      "roundsNeeded": 5,
+      "daysNeeded": 2
+    },
+    "typeRecall": {
+      "ready": false,
+      "sampleSize": 0,
+      "types": [
+        {
+          "type": "q",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "r",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "b",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "n",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "p",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        }
+      ],
+      "king": {
+        "type": "k",
+        "shown": 0,
+        "recalled": 0,
+        "ready": false
+      },
+      "onlyKings": false,
+      "roundsNeeded": null
+    },
+    "missMap": {
+      "ready": false,
+      "sampleSize": 0,
+      "view": "lines",
+      "squares": [
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        }
+      ],
+      "files": [
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        }
+      ],
+      "ranks": [
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        }
+      ],
+      "roundsNeeded": null
+    }
+  },
+  "twoRounds": {
+    "streak": {
+      "ready": false,
+      "sampleSize": 1,
+      "current": 1,
+      "longest": 1,
+      "window": [
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "played"
+      ],
+      "daysNeeded": 1
+    },
+    "bests": {
+      "ready": true,
+      "sampleSize": 2,
+      "entries": [
+        {
+          "accuracy": 50,
+          "correct": 3,
+          "solveMs": 29392,
+          "at": 1791460860000,
+          "rounds": 1,
+          "key": "game:6x10",
+          "source": "game",
+          "pieceCount": 6,
+          "memorizeSeconds": 10
+        },
+        {
+          "accuracy": 83,
+          "correct": 5,
+          "solveMs": 28134,
+          "at": 1791460800000,
+          "rounds": 1,
+          "key": "calibration:6x10",
+          "source": "calibration",
+          "pieceCount": 6,
+          "memorizeSeconds": 10
+        }
+      ]
+    },
+    "trend": {
+      "ready": false,
+      "sampleSize": 1,
+      "setting": {
+        "source": "game",
+        "pieceCount": 6,
+        "memorizeSeconds": 10
+      },
+      "points": [
+        50
+      ],
+      "roundsNeeded": 4,
+      "daysNeeded": 1
+    },
+    "typeRecall": {
+      "ready": false,
+      "sampleSize": 2,
+      "types": [
+        {
+          "type": "q",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "r",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "b",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "n",
+          "shown": 2,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "p",
+          "shown": 6,
+          "recalled": 5,
+          "ready": false
+        }
+      ],
+      "king": {
+        "type": "k",
+        "shown": 4,
+        "recalled": 3,
+        "ready": false
+      },
+      "onlyKings": false,
+      "roundsNeeded": 5
+    },
+    "missMap": {
+      "ready": false,
+      "sampleSize": 2,
+      "view": "lines",
+      "squares": [
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        }
+      ],
+      "files": [
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        }
+      ],
+      "ranks": [
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 2,
+          "ready": false
+        }
+      ],
+      "roundsNeeded": null
+    }
+  },
+  "threeDays": {
+    "streak": {
+      "ready": true,
+      "sampleSize": 3,
+      "current": 3,
+      "longest": 3,
+      "window": [
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "played",
+        "played",
+        "played"
+      ],
+      "daysNeeded": 0
+    },
+    "bests": {
+      "ready": true,
+      "sampleSize": 12,
+      "entries": [
+        {
+          "accuracy": 100,
+          "correct": 6,
+          "solveMs": 20798,
+          "at": 1791288060000,
+          "rounds": 9,
+          "key": "game:6x10",
+          "source": "game",
+          "pieceCount": 6,
+          "memorizeSeconds": 10
+        },
+        {
+          "accuracy": 100,
+          "correct": 6,
+          "solveMs": 19581,
+          "at": 1791288000000,
+          "rounds": 3,
+          "key": "calibration:6x10",
+          "source": "calibration",
+          "pieceCount": 6,
+          "memorizeSeconds": 10
+        }
+      ]
+    },
+    "trend": {
+      "ready": true,
+      "sampleSize": 9,
+      "setting": {
+        "source": "game",
+        "pieceCount": 6,
+        "memorizeSeconds": 10
+      },
+      "points": [
+        100,
+        100,
+        83,
+        100,
+        83,
+        83,
+        100,
+        100,
+        83
+      ],
+      "roundsNeeded": 0,
+      "daysNeeded": 0
+    },
+    "typeRecall": {
+      "ready": true,
+      "sampleSize": 12,
+      "types": [
+        {
+          "type": "q",
+          "shown": 4,
+          "recalled": 2,
+          "ready": false
+        },
+        {
+          "type": "r",
+          "shown": 9,
+          "recalled": 9,
+          "ready": false
+        },
+        {
+          "type": "b",
+          "shown": 3,
+          "recalled": 3,
+          "ready": false
+        },
+        {
+          "type": "n",
+          "shown": 4,
+          "recalled": 3,
+          "ready": false
+        },
+        {
+          "type": "p",
+          "shown": 28,
+          "recalled": 26,
+          "ready": true
+        }
+      ],
+      "king": {
+        "type": "k",
+        "shown": 24,
+        "recalled": 21,
+        "ready": true
+      },
+      "onlyKings": false,
+      "roundsNeeded": 0
+    },
+    "missMap": {
+      "ready": false,
+      "sampleSize": 12,
+      "view": "lines",
+      "squares": [
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        }
+      ],
+      "files": [
+        {
+          "shown": 9,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 12,
+          "missed": 3,
+          "ready": true
+        },
+        {
+          "shown": 8,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 11,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 5,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 10,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 8,
+          "missed": 2,
+          "ready": false
+        },
+        {
+          "shown": 9,
+          "missed": 0,
+          "ready": false
+        }
+      ],
+      "ranks": [
+        {
+          "shown": 6,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 7,
+          "missed": 2,
+          "ready": false
+        },
+        {
+          "shown": 10,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 16,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 11,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 2,
+          "ready": false
+        }
+      ],
+      "roundsNeeded": 18
+    }
+  },
+  "thirtyDays": {
+    "streak": {
+      "ready": true,
+      "sampleSize": 30,
+      "current": 30,
+      "longest": 30,
+      "window": [
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played"
+      ],
+      "daysNeeded": 0
+    },
+    "bests": {
+      "ready": true,
+      "sampleSize": 90,
+      "entries": [
+        {
+          "accuracy": 100,
+          "correct": 2,
+          "solveMs": 9615,
+          "at": 1791201600000,
+          "rounds": 25,
+          "key": "game:2x10",
+          "source": "game",
+          "pieceCount": 2,
+          "memorizeSeconds": 10
+        },
+        {
+          "accuracy": 100,
+          "correct": 6,
+          "solveMs": 12711,
+          "at": 1789473720000,
+          "rounds": 25,
+          "key": "game:6x10",
+          "source": "game",
+          "pieceCount": 6,
+          "memorizeSeconds": 10
+        },
+        {
+          "accuracy": 100,
+          "correct": 12,
+          "solveMs": 14985,
+          "at": 1789387320000,
+          "rounds": 25,
+          "key": "game:12x8",
+          "source": "game",
+          "pieceCount": 12,
+          "memorizeSeconds": 8
+        },
+        {
+          "accuracy": 100,
+          "correct": 6,
+          "solveMs": 10360,
+          "at": 1789041600000,
+          "rounds": 15,
+          "key": "calibration:6x10",
+          "source": "calibration",
+          "pieceCount": 6,
+          "memorizeSeconds": 10
+        }
+      ]
+    },
+    "trend": {
+      "ready": true,
+      "sampleSize": 25,
+      "setting": {
+        "source": "game",
+        "pieceCount": 12,
+        "memorizeSeconds": 8
+      },
+      "points": [
+        75,
+        100,
+        58,
+        75,
+        100,
+        92,
+        67,
+        83,
+        67,
+        83,
+        75,
+        75,
+        75,
+        75,
+        83,
+        75,
+        67,
+        83,
+        75,
+        58,
+        83,
+        75,
+        58,
+        83,
+        67
+      ],
+      "roundsNeeded": 0,
+      "daysNeeded": 0
+    },
+    "typeRecall": {
+      "ready": true,
+      "sampleSize": 90,
+      "types": [
+        {
+          "type": "q",
+          "shown": 26,
+          "recalled": 12,
+          "ready": true
+        },
+        {
+          "type": "r",
+          "shown": 51,
+          "recalled": 36,
+          "ready": true
+        },
+        {
+          "type": "b",
+          "shown": 47,
+          "recalled": 39,
+          "ready": true
+        },
+        {
+          "type": "n",
+          "shown": 54,
+          "recalled": 40,
+          "ready": true
+        },
+        {
+          "type": "p",
+          "shown": 232,
+          "recalled": 190,
+          "ready": true
+        }
+      ],
+      "king": {
+        "type": "k",
+        "shown": 180,
+        "recalled": 129,
+        "ready": true
+      },
+      "onlyKings": false,
+      "roundsNeeded": 0
+    },
+    "missMap": {
+      "ready": true,
+      "sampleSize": 90,
+      "view": "lines",
+      "squares": [
+        {
+          "shown": 9,
+          "missed": 5,
+          "ready": false
+        },
+        {
+          "shown": 7,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 7,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 9,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 5,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 10,
+          "missed": 5,
+          "ready": true
+        },
+        {
+          "shown": 8,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 10,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 7,
+          "missed": 2,
+          "ready": false
+        },
+        {
+          "shown": 10,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 18,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 15,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 5,
+          "ready": false
+        },
+        {
+          "shown": 9,
+          "missed": 7,
+          "ready": false
+        },
+        {
+          "shown": 7,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 10,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 10,
+          "missed": 3,
+          "ready": true
+        },
+        {
+          "shown": 11,
+          "missed": 3,
+          "ready": true
+        },
+        {
+          "shown": 5,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 10,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 7,
+          "ready": false
+        },
+        {
+          "shown": 10,
+          "missed": 7,
+          "ready": true
+        },
+        {
+          "shown": 13,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 6,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 7,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 7,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 8,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 10,
+          "missed": 6,
+          "ready": true
+        },
+        {
+          "shown": 11,
+          "missed": 9,
+          "ready": true
+        },
+        {
+          "shown": 14,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 2,
+          "ready": false
+        },
+        {
+          "shown": 8,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 9,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 13,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 16,
+          "missed": 13,
+          "ready": true
+        },
+        {
+          "shown": 12,
+          "missed": 6,
+          "ready": true
+        },
+        {
+          "shown": 12,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 10,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 12,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 13,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 14,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 11,
+          "missed": 9,
+          "ready": true
+        },
+        {
+          "shown": 10,
+          "missed": 6,
+          "ready": true
+        },
+        {
+          "shown": 15,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 10,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 18,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 11,
+          "missed": 4,
+          "ready": true
+        },
+        {
+          "shown": 10,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 10,
+          "missed": 8,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 6,
+          "ready": false
+        },
+        {
+          "shown": 6,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 5,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 10,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 6,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 3,
+          "ready": false
+        }
+      ],
+      "files": [
+        {
+          "shown": 80,
+          "missed": 51,
+          "ready": true
+        },
+        {
+          "shown": 82,
+          "missed": 6,
+          "ready": true
+        },
+        {
+          "shown": 70,
+          "missed": 6,
+          "ready": true
+        },
+        {
+          "shown": 66,
+          "missed": 9,
+          "ready": true
+        },
+        {
+          "shown": 72,
+          "missed": 8,
+          "ready": true
+        },
+        {
+          "shown": 71,
+          "missed": 7,
+          "ready": true
+        },
+        {
+          "shown": 78,
+          "missed": 5,
+          "ready": true
+        },
+        {
+          "shown": 71,
+          "missed": 52,
+          "ready": true
+        }
+      ],
+      "ranks": [
+        {
+          "shown": 45,
+          "missed": 7,
+          "ready": true
+        },
+        {
+          "shown": 87,
+          "missed": 17,
+          "ready": true
+        },
+        {
+          "shown": 71,
+          "missed": 22,
+          "ready": true
+        },
+        {
+          "shown": 70,
+          "missed": 17,
+          "ready": true
+        },
+        {
+          "shown": 84,
+          "missed": 28,
+          "ready": true
+        },
+        {
+          "shown": 93,
+          "missed": 20,
+          "ready": true
+        },
+        {
+          "shown": 93,
+          "missed": 19,
+          "ready": true
+        },
+        {
+          "shown": 47,
+          "missed": 14,
+          "ready": true
+        }
+      ],
+      "roundsNeeded": 0
+    }
+  },
+  "heavy": {
+    "streak": {
+      "ready": true,
+      "sampleSize": 251,
+      "current": 251,
+      "longest": 251,
+      "window": [
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played"
+      ],
+      "daysNeeded": 0
+    },
+    "bests": {
+      "ready": true,
+      "sampleSize": 5003,
+      "entries": [
+        {
+          "accuracy": 100,
+          "correct": 6,
+          "solveMs": 8000,
+          "at": 1784203200000,
+          "rounds": 4002,
+          "key": "game:6x10",
+          "source": "game",
+          "pieceCount": 6,
+          "memorizeSeconds": 10
+        },
+        {
+          "accuracy": 100,
+          "correct": 6,
+          "solveMs": 8008,
+          "at": 1788178080000,
+          "rounds": 1001,
+          "key": "calibration:6x10",
+          "source": "calibration",
+          "pieceCount": 6,
+          "memorizeSeconds": 10
+        }
+      ]
+    },
+    "trend": {
+      "ready": true,
+      "sampleSize": 4000,
+      "setting": {
+        "source": "game",
+        "pieceCount": 6,
+        "memorizeSeconds": 10
+      },
+      "points": [
+        100,
+        100,
+        100,
+        100,
+        83,
+        50,
+        100,
+        83,
+        100,
+        100,
+        83,
+        100,
+        83,
+        100,
+        100,
+        83,
+        67,
+        100,
+        83,
+        100,
+        83,
+        100,
+        83,
+        100,
+        100,
+        83,
+        83,
+        50,
+        100,
+        83
+      ],
+      "roundsNeeded": 0,
+      "daysNeeded": 0
+    },
+    "typeRecall": {
+      "ready": true,
+      "sampleSize": 5003,
+      "types": [
+        {
+          "type": "q",
+          "shown": 1243,
+          "recalled": 1122,
+          "ready": true
+        },
+        {
+          "type": "r",
+          "shown": 2650,
+          "recalled": 2397,
+          "ready": true
+        },
+        {
+          "type": "b",
+          "shown": 2614,
+          "recalled": 2333,
+          "ready": true
+        },
+        {
+          "type": "n",
+          "shown": 2700,
+          "recalled": 2438,
+          "ready": true
+        },
+        {
+          "type": "p",
+          "shown": 10805,
+          "recalled": 9715,
+          "ready": true
+        }
+      ],
+      "king": {
+        "type": "k",
+        "shown": 10006,
+        "recalled": 9049,
+        "ready": true
+      },
+      "onlyKings": false,
+      "roundsNeeded": 0
+    },
+    "missMap": {
+      "ready": true,
+      "sampleSize": 5003,
+      "view": "squares",
+      "squares": [
+        {
+          "shown": 312,
+          "missed": 42,
+          "ready": true
+        },
+        {
+          "shown": 284,
+          "missed": 25,
+          "ready": true
+        },
+        {
+          "shown": 314,
+          "missed": 28,
+          "ready": true
+        },
+        {
+          "shown": 294,
+          "missed": 32,
+          "ready": true
+        },
+        {
+          "shown": 290,
+          "missed": 25,
+          "ready": true
+        },
+        {
+          "shown": 295,
+          "missed": 25,
+          "ready": true
+        },
+        {
+          "shown": 337,
+          "missed": 38,
+          "ready": true
+        },
+        {
+          "shown": 307,
+          "missed": 33,
+          "ready": true
+        },
+        {
+          "shown": 526,
+          "missed": 59,
+          "ready": true
+        },
+        {
+          "shown": 532,
+          "missed": 58,
+          "ready": true
+        },
+        {
+          "shown": 530,
+          "missed": 51,
+          "ready": true
+        },
+        {
+          "shown": 520,
+          "missed": 51,
+          "ready": true
+        },
+        {
+          "shown": 525,
+          "missed": 62,
+          "ready": true
+        },
+        {
+          "shown": 501,
+          "missed": 55,
+          "ready": true
+        },
+        {
+          "shown": 526,
+          "missed": 54,
+          "ready": true
+        },
+        {
+          "shown": 520,
+          "missed": 51,
+          "ready": true
+        },
+        {
+          "shown": 546,
+          "missed": 53,
+          "ready": true
+        },
+        {
+          "shown": 500,
+          "missed": 43,
+          "ready": true
+        },
+        {
+          "shown": 481,
+          "missed": 43,
+          "ready": true
+        },
+        {
+          "shown": 490,
+          "missed": 51,
+          "ready": true
+        },
+        {
+          "shown": 479,
+          "missed": 49,
+          "ready": true
+        },
+        {
+          "shown": 525,
+          "missed": 51,
+          "ready": true
+        },
+        {
+          "shown": 545,
+          "missed": 58,
+          "ready": true
+        },
+        {
+          "shown": 547,
+          "missed": 64,
+          "ready": true
+        },
+        {
+          "shown": 479,
+          "missed": 43,
+          "ready": true
+        },
+        {
+          "shown": 508,
+          "missed": 44,
+          "ready": true
+        },
+        {
+          "shown": 516,
+          "missed": 50,
+          "ready": true
+        },
+        {
+          "shown": 546,
+          "missed": 49,
+          "ready": true
+        },
+        {
+          "shown": 519,
+          "missed": 52,
+          "ready": true
+        },
+        {
+          "shown": 518,
+          "missed": 58,
+          "ready": true
+        },
+        {
+          "shown": 490,
+          "missed": 42,
+          "ready": true
+        },
+        {
+          "shown": 557,
+          "missed": 45,
+          "ready": true
+        },
+        {
+          "shown": 528,
+          "missed": 43,
+          "ready": true
+        },
+        {
+          "shown": 538,
+          "missed": 55,
+          "ready": true
+        },
+        {
+          "shown": 519,
+          "missed": 45,
+          "ready": true
+        },
+        {
+          "shown": 544,
+          "missed": 55,
+          "ready": true
+        },
+        {
+          "shown": 535,
+          "missed": 58,
+          "ready": true
+        },
+        {
+          "shown": 562,
+          "missed": 46,
+          "ready": true
+        },
+        {
+          "shown": 518,
+          "missed": 49,
+          "ready": true
+        },
+        {
+          "shown": 571,
+          "missed": 51,
+          "ready": true
+        },
+        {
+          "shown": 546,
+          "missed": 51,
+          "ready": true
+        },
+        {
+          "shown": 503,
+          "missed": 56,
+          "ready": true
+        },
+        {
+          "shown": 500,
+          "missed": 49,
+          "ready": true
+        },
+        {
+          "shown": 489,
+          "missed": 58,
+          "ready": true
+        },
+        {
+          "shown": 519,
+          "missed": 52,
+          "ready": true
+        },
+        {
+          "shown": 522,
+          "missed": 31,
+          "ready": true
+        },
+        {
+          "shown": 527,
+          "missed": 60,
+          "ready": true
+        },
+        {
+          "shown": 539,
+          "missed": 65,
+          "ready": true
+        },
+        {
+          "shown": 529,
+          "missed": 50,
+          "ready": true
+        },
+        {
+          "shown": 525,
+          "missed": 51,
+          "ready": true
+        },
+        {
+          "shown": 524,
+          "missed": 47,
+          "ready": true
+        },
+        {
+          "shown": 543,
+          "missed": 59,
+          "ready": true
+        },
+        {
+          "shown": 515,
+          "missed": 50,
+          "ready": true
+        },
+        {
+          "shown": 494,
+          "missed": 48,
+          "ready": true
+        },
+        {
+          "shown": 562,
+          "missed": 56,
+          "ready": true
+        },
+        {
+          "shown": 534,
+          "missed": 55,
+          "ready": true
+        },
+        {
+          "shown": 311,
+          "missed": 22,
+          "ready": true
+        },
+        {
+          "shown": 290,
+          "missed": 21,
+          "ready": true
+        },
+        {
+          "shown": 328,
+          "missed": 37,
+          "ready": true
+        },
+        {
+          "shown": 300,
+          "missed": 28,
+          "ready": true
+        },
+        {
+          "shown": 301,
+          "missed": 32,
+          "ready": true
+        },
+        {
+          "shown": 331,
+          "missed": 39,
+          "ready": true
+        },
+        {
+          "shown": 305,
+          "missed": 33,
+          "ready": true
+        },
+        {
+          "shown": 307,
+          "missed": 28,
+          "ready": true
+        }
+      ],
+      "files": [
+        {
+          "shown": 3777,
+          "missed": 363,
+          "ready": true
+        },
+        {
+          "shown": 3680,
+          "missed": 353,
+          "ready": true
+        },
+        {
+          "shown": 3712,
+          "missed": 350,
+          "ready": true
+        },
+        {
+          "shown": 3726,
+          "missed": 383,
+          "ready": true
+        },
+        {
+          "shown": 3683,
+          "missed": 380,
+          "ready": true
+        },
+        {
+          "shown": 3748,
+          "missed": 353,
+          "ready": true
+        },
+        {
+          "shown": 3810,
+          "missed": 390,
+          "ready": true
+        },
+        {
+          "shown": 3882,
+          "missed": 392,
+          "ready": true
+        }
+      ],
+      "ranks": [
+        {
+          "shown": 2433,
+          "missed": 248,
+          "ready": true
+        },
+        {
+          "shown": 4180,
+          "missed": 441,
+          "ready": true
+        },
+        {
+          "shown": 4113,
+          "missed": 412,
+          "ready": true
+        },
+        {
+          "shown": 4133,
+          "missed": 383,
+          "ready": true
+        },
+        {
+          "shown": 4315,
+          "missed": 402,
+          "ready": true
+        },
+        {
+          "shown": 4145,
+          "missed": 422,
+          "ready": true
+        },
+        {
+          "shown": 4226,
+          "missed": 416,
+          "ready": true
+        },
+        {
+          "shown": 2473,
+          "missed": 240,
+          "ready": true
+        }
+      ],
+      "roundsNeeded": 0
+    }
+  },
+  "easyOnly": {
+    "streak": {
+      "ready": true,
+      "sampleSize": 10,
+      "current": 10,
+      "longest": 10,
+      "window": [
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played",
+        "played"
+      ],
+      "daysNeeded": 0
+    },
+    "bests": {
+      "ready": true,
+      "sampleSize": 50,
+      "entries": [
+        {
+          "accuracy": 100,
+          "correct": 2,
+          "solveMs": 8764,
+          "at": 1791374520000,
+          "rounds": 50,
+          "key": "game:2x10",
+          "source": "game",
+          "pieceCount": 2,
+          "memorizeSeconds": 10
+        }
+      ]
+    },
+    "trend": {
+      "ready": true,
+      "sampleSize": 50,
+      "setting": {
+        "source": "game",
+        "pieceCount": 2,
+        "memorizeSeconds": 10
+      },
+      "points": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        50,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        50,
+        50,
+        100,
+        50,
+        50,
+        50,
+        100,
+        50,
+        100,
+        100
+      ],
+      "roundsNeeded": 0,
+      "daysNeeded": 0
+    },
+    "typeRecall": {
+      "ready": false,
+      "sampleSize": 50,
+      "types": [
+        {
+          "type": "q",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "r",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "b",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "n",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        },
+        {
+          "type": "p",
+          "shown": 0,
+          "recalled": 0,
+          "ready": false
+        }
+      ],
+      "king": {
+        "type": "k",
+        "shown": 100,
+        "recalled": 89,
+        "ready": true
+      },
+      "onlyKings": true,
+      "roundsNeeded": null
+    },
+    "missMap": {
+      "ready": false,
+      "sampleSize": 50,
+      "view": "lines",
+      "squares": [
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 7,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        }
+      ],
+      "files": [
+        {
+          "shown": 12,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 18,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 17,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 9,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 6,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 17,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 12,
+          "missed": 2,
+          "ready": true
+        }
+      ],
+      "ranks": [
+        {
+          "shown": 7,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 15,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 10,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 16,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 14,
+          "missed": 3,
+          "ready": true
+        },
+        {
+          "shown": 13,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 15,
+          "missed": 4,
+          "ready": true
+        },
+        {
+          "shown": 10,
+          "missed": 0,
+          "ready": true
+        }
+      ],
+      "roundsNeeded": 34
+    }
+  },
+  "stale": {
+    "streak": {
+      "ready": true,
+      "sampleSize": 6,
+      "current": 0,
+      "longest": 6,
+      "window": [
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "missed",
+        "today"
+      ],
+      "daysNeeded": 0
+    },
+    "bests": {
+      "ready": true,
+      "sampleSize": 30,
+      "entries": [
+        {
+          "accuracy": 100,
+          "correct": 6,
+          "solveMs": 8954,
+          "at": 1789387260000,
+          "rounds": 30,
+          "key": "game:6x10",
+          "source": "game",
+          "pieceCount": 6,
+          "memorizeSeconds": 10
+        }
+      ]
+    },
+    "trend": {
+      "ready": true,
+      "sampleSize": 30,
+      "setting": {
+        "source": "game",
+        "pieceCount": 6,
+        "memorizeSeconds": 10
+      },
+      "points": [
+        100,
+        83,
+        83,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        67,
+        100,
+        100,
+        67,
+        100,
+        83,
+        100,
+        83,
+        100,
+        100,
+        83,
+        67,
+        83,
+        83,
+        83,
+        50,
+        100
+      ],
+      "roundsNeeded": 0,
+      "daysNeeded": 0
+    },
+    "typeRecall": {
+      "ready": true,
+      "sampleSize": 30,
+      "types": [
+        {
+          "type": "q",
+          "shown": 10,
+          "recalled": 10,
+          "ready": false
+        },
+        {
+          "type": "r",
+          "shown": 17,
+          "recalled": 15,
+          "ready": false
+        },
+        {
+          "type": "b",
+          "shown": 13,
+          "recalled": 13,
+          "ready": false
+        },
+        {
+          "type": "n",
+          "shown": 16,
+          "recalled": 14,
+          "ready": false
+        },
+        {
+          "type": "p",
+          "shown": 64,
+          "recalled": 56,
+          "ready": true
+        }
+      ],
+      "king": {
+        "type": "k",
+        "shown": 60,
+        "recalled": 55,
+        "ready": true
+      },
+      "onlyKings": false,
+      "roundsNeeded": 0
+    },
+    "missMap": {
+      "ready": false,
+      "sampleSize": 30,
+      "view": "lines",
+      "squares": [
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 2,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 6,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 6,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 2,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 6,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 8,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 5,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 3,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 6,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 5,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 4,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 0,
+          "missed": 0,
+          "ready": false
+        },
+        {
+          "shown": 1,
+          "missed": 1,
+          "ready": false
+        },
+        {
+          "shown": 2,
+          "missed": 0,
+          "ready": false
+        }
+      ],
+      "files": [
+        {
+          "shown": 21,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 29,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 17,
+          "missed": 1,
+          "ready": true
+        },
+        {
+          "shown": 27,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 15,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 22,
+          "missed": 3,
+          "ready": true
+        },
+        {
+          "shown": 22,
+          "missed": 3,
+          "ready": true
+        },
+        {
+          "shown": 27,
+          "missed": 3,
+          "ready": true
+        }
+      ],
+      "ranks": [
+        {
+          "shown": 15,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 21,
+          "missed": 4,
+          "ready": true
+        },
+        {
+          "shown": 32,
+          "missed": 4,
+          "ready": true
+        },
+        {
+          "shown": 28,
+          "missed": 4,
+          "ready": true
+        },
+        {
+          "shown": 29,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 17,
+          "missed": 2,
+          "ready": true
+        },
+        {
+          "shown": 30,
+          "missed": 0,
+          "ready": true
+        },
+        {
+          "shown": 8,
+          "missed": 1,
+          "ready": false
+        }
+      ],
+      "roundsNeeded": 8
+    }
+  }
+}

@@ -32,10 +32,10 @@ describe("homepage locale gate", () => {
   it.each([
     ["de", german],
     ["ja", japanese],
-  ])("serves the earlier homepage to %s with its own copy and no lab text", (locale, messages) => {
+  ])("serves the earlier homepage to %s with its own copy and no lab text", async (locale, messages) => {
     const { container } = renderWithIntl(<Home />, { locale, messages });
 
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(messages.home.hero.title);
+    expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(messages.home.hero.title);
     expect(container.querySelector(".lab")).toBeNull();
     expect(container.textContent).not.toMatch(/calibration|home\.lab|mind's eye/i);
   });

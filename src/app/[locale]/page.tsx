@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import dynamic from "next/dynamic";
 import { useLocale, useTranslations } from "next-intl";
 import PageHeader from "@/components/ui/PageHeader";
 import FaqSection from "@/components/ui/FaqSection";
@@ -11,7 +12,6 @@ import { homeSchema } from "@/components/home/homeSchema";
 import { LabHero } from "@/components/home/LabHero";
 import { LabIndex } from "@/components/home/LabIndex";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
-import { LegacyHome } from "@/components/home/LegacyHome";
 import { LibrarySection } from "@/components/home/LibrarySection";
 import { MicroscopeSection } from "@/components/home/MicroscopeSection";
 import { NotebookSection } from "@/components/home/NotebookSection";
@@ -22,6 +22,9 @@ import { useLabRecord } from "@/components/home/useLabRecord";
 import { deriveStreak, LAB_THRESHOLDS } from "@/lib/lab/derive";
 import "@/components/home/lab.css";
 import "@/components/home/lab-instruments.css";
+
+// Split out so English visitors do not download the earlier homepage's code.
+const LegacyHome = dynamic(() => import("@/components/home/LegacyHome").then((module) => module.LegacyHome));
 
 // The lab copy is English only for now. Every other locale keeps the earlier
 // homepage, so no locale serves untranslated English text.

@@ -119,7 +119,7 @@
 .lab-unlock:empty { background: none; border-color: transparent; }
 .lab-unlock ul { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 15px; color: var(--lab-ink-2); }
 .lab-unlock .lab-go { margin-top: 0; }
-.lab-stale .lab-go { display: inline; margin: 0 0 0 4px; }
+.lab-stale .lab-go { display: inline; margin: 0 0 0 4px; white-space: nowrap; }
 .lab-dash { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
 .lab-panel { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 22px; min-width: 0; }
 .lab-panel h3 { margin: 8px 0 6px; }

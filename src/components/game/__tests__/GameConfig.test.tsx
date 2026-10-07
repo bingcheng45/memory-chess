@@ -126,7 +126,7 @@ describe("GameConfig one-tap start", () => {
     fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
     fireEvent.click(screen.getByRole("button", { name: "Start a round" }));
 
-    expect(onStart).toHaveBeenCalledWith(6, 10);
+    expect(onStart).toHaveBeenCalledWith(6, 10, "game_quick");
   });
 
   it("still starts the round the form is set to from the form's own button", () => {
@@ -136,6 +136,6 @@ describe("GameConfig one-tap start", () => {
     fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
     fireEvent.click(screen.getByRole("button", { name: "Start Training" }));
 
-    expect(onStart).toHaveBeenCalledWith(12, 8);
+    expect(onStart).toHaveBeenCalledWith(12, 8, "game_form");
   });
 });

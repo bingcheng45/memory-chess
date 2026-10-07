@@ -1,9 +1,30 @@
 import type { LeaderboardDifficulty } from "@/types/leaderboard";
 
+/** Where a round was started from. `link` is a round link that names no known source. */
+export const ROUND_SOURCES = [
+  "home_quick",
+  "home_tier",
+  "calibration",
+  "calibration_cta",
+  "guide_cta",
+  "article_cta",
+  "game_quick",
+  "game_form",
+  "tile_drill",
+  "try_again",
+  "link",
+] as const;
+
+export type RoundSource = (typeof ROUND_SOURCES)[number];
+
+export function roundSourceFrom(value: string | null): RoundSource {
+  return ROUND_SOURCES.find((source) => source === value) ?? "link";
+}
+
 export type FunnelEvent =
   | {
       name: "round_start";
-      params: { piece_count: number; memorize_time: number };
+      params: { piece_count: number; memorize_time: number; source: RoundSource };
     }
   | {
       name: "round_complete";

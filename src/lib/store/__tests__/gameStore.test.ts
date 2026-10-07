@@ -17,7 +17,7 @@ describe("active game store position generation", () => {
   });
 
   it("stores a validated memorization position with the requested piece count", () => {
-    useGameStore.getState().startGame(12, 8);
+    useGameStore.getState().startGame(12, 8, "game_form");
 
     const { gameState, memorizationChess } = useGameStore.getState();
     expect(gameState.isPlaying).toBe(true);
@@ -28,9 +28,25 @@ describe("active game store position generation", () => {
   });
 });
 
+describe("reporting a round start", () => {
+  afterEach(() => {
+    useGameStore.getState().resetGame();
+    Reflect.deleteProperty(window, "gtag");
+  });
+
+  it("sends GA4 round_start with the round's size and source, and no position", () => {
+    const gtag = jest.fn();
+    window.gtag = gtag;
+
+    useGameStore.getState().startGame(6, 10, "game_quick");
+
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "game_quick" }]]);
+  });
+});
+
 describe("recording the player's solution", () => {
   beforeEach(() => {
-    useGameStore.getState().startGame(6, 10);
+    useGameStore.getState().startGame(6, 10, "game_form");
     useGameStore.getState().startSolutionPhase();
   });
 
@@ -102,20 +118,20 @@ describe("remembering the last settings played", () => {
   });
 
   it("records the settings a round was started with", () => {
-    useGameStore.getState().startGame(12, 8);
+    useGameStore.getState().startGame(12, 8, "game_form");
 
     expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 12, memorizeTime: 8 });
   });
 
   it("keeps the last settings through a new-game reset", () => {
-    useGameStore.getState().startGame(12, 8);
+    useGameStore.getState().startGame(12, 8, "game_form");
     useGameStore.getState().resetGame();
 
     expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 12, memorizeTime: 8 });
   });
 
   it("keeps custom settings of 3 pieces at 18 seconds through a new-game reset", () => {
-    useGameStore.getState().startGame(3, 18);
+    useGameStore.getState().startGame(3, 18, "game_form");
     expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 3, memorizeTime: 18 });
 
     useGameStore.getState().resetGame();
@@ -124,7 +140,7 @@ describe("remembering the last settings played", () => {
   });
 
   it("persists the last settings", () => {
-    useGameStore.getState().startGame(7, 9);
+    useGameStore.getState().startGame(7, 9, "game_form");
 
     const { partialize } = useGameStore.persist.getOptions();
     expect(partialize!(useGameStore.getState())).toMatchObject({

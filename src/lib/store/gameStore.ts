@@ -12,6 +12,7 @@ import {
 } from '@/lib/game/configPrefill';
 import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
 import { recordLabRound } from '@/lib/lab/recordRound';
+import { trackEvent, type RoundSource } from '@/lib/analytics/events';
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & { 
@@ -32,7 +33,7 @@ interface GameStore {
   memorizationChess: Chess | null; // Chess instance for the position to memorize
   
   // Actions
-  startGame: (pieceCount: number, memorizeTime: number) => void;
+  startGame: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
   stopGame: () => void;
   makeMove: (move: string) => boolean;
   resetGame: () => void;
@@ -161,7 +162,7 @@ export const useGameStore = create<GameStore>()(
       memorizationChess: null,
       
       // Actions
-      startGame: (pieceCount, memorizeTime) => {
+      startGame: (pieceCount, memorizeTime, source) => {
         console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
         
         // Generate a random position for memorization
@@ -189,6 +190,7 @@ export const useGameStore = create<GameStore>()(
           gamePhase: GamePhase.CONFIGURATION,
           lastSettings: { pieceCount, memorizeTime },
         });
+        trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime, source } });
       },
 
       stopGame: () => {

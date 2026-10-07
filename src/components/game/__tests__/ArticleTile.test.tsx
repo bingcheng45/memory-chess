@@ -251,7 +251,10 @@ describe("the tile's actions", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Try that drill" }));
 
-    expect(gtag.mock.calls).toEqual([["event", "article_tile_click", { slug: "alder-fixture", action: "drill" }]]);
+    expect(gtag.mock.calls).toEqual([
+      ["event", "article_tile_click", { slug: "alder-fixture", action: "drill" }],
+      ["event", "round_start", { piece_count: 20, memorize_time: 3, source: "tile_drill" }],
+    ]);
   });
 
   it("reports the read once, with the slug, and starts no round", () => {

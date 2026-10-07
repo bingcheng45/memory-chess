@@ -47,8 +47,20 @@ describe("CalibrationSection", () => {
     expect(screen.getByText(/start on Easy, 2 pieces at 10s/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Play Easy/ })).toHaveAttribute(
       "href",
-      "/game?pieceCount=2&memorizeTime=10",
+      "/game?pieceCount=2&memorizeTime=10&source=calibration_cta",
     );
+  });
+
+  it("reports the calibration run to GA4 as a round start", async () => {
+    const gtag = jest.fn();
+    window.gtag = gtag;
+    renderWithIntl(<CalibrationSection />);
+
+    fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
+    await screen.findByText("Phase 01 · Study");
+
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "calibration" }]]);
+    Reflect.deleteProperty(window, "gtag");
   });
 
   it("moves focus across the board with the arrow keys once the board clears", async () => {

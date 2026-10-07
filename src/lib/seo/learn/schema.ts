@@ -1,3 +1,5 @@
+import type { RoundSource } from "@/lib/analytics/events";
+
 /**
  * Goal ids and their hrefs. The visible label, description and accent live in
  * LEARN_GOAL_COPY in ./copy -- see EN_LEARN_GOALS in ./index.
@@ -46,9 +48,9 @@ export type LearnDrillCard = {
   setup?: LearnGameSetup;
 };
 
-export function gameHref(setup?: LearnGameSetup): string {
+export function gameHref(setup: LearnGameSetup | undefined, source: RoundSource): string {
   return setup
-    ? `/game?pieceCount=${setup.pieceCount}&memorizeTime=${setup.memorizeTime}`
+    ? `/game?pieceCount=${setup.pieceCount}&memorizeTime=${setup.memorizeTime}&source=${source}`
     : "/game";
 }
 

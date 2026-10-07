@@ -134,7 +134,7 @@ function Drill({ drill }: { drill: ArticleDrill }) {
   return (
     <aside className="mt-10 max-w-[720px]">
       <Link
-        href={gameHref(drill)}
+        href={gameHref(drill, "article_cta")}
         data-article-drill
         aria-label={action}
         aria-describedby={DRILL_WHY_ID}

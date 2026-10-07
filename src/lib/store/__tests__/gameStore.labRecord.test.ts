@@ -7,7 +7,7 @@ describe("lab record from a finished game round", () => {
   afterEach(() => useGameStore.getState().resetGame());
 
   it("records both positions and the timings when the solution is submitted", () => {
-    useGameStore.getState().startGame(6, 10);
+    useGameStore.getState().startGame(6, 10, "game_form");
     useGameStore.getState().endMemorizationPhase(9.5);
     useGameStore.getState().startSolutionPhase();
     useGameStore.getState().placePiece("e1", "K");

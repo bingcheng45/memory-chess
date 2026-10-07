@@ -64,7 +64,7 @@ describe("GamePage URL-driven start", () => {
 
     render(<GamePage />);
 
-    expect(mockStartGame).toHaveBeenCalledWith(12, 8);
+    expect(mockStartGame).toHaveBeenCalledWith(12, 8, "link");
   });
 
   it("starts a challenge link with the default memorize time", () => {
@@ -72,7 +72,7 @@ describe("GamePage URL-driven start", () => {
 
     render(<GamePage />);
 
-    expect(mockStartGame).toHaveBeenCalledWith(6, 10);
+    expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link");
   });
 
   it("clears the round params from the address after the URL start", () => {
@@ -80,7 +80,7 @@ describe("GamePage URL-driven start", () => {
 
     render(<GamePage />);
 
-    expect(mockStartGame).toHaveBeenCalledWith(6, 10);
+    expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link");
     expect(window.location.pathname + window.location.search).toBe("/game");
   });
 
@@ -90,6 +90,23 @@ describe("GamePage URL-driven start", () => {
     render(<GamePage />);
 
     expect(window.location.search).toBe("?challenge=2026-09-16");
+  });
+
+  it("starts the round with the source its link names and clears that from the address", () => {
+    window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=guide_cta");
+
+    render(<GamePage />);
+
+    expect(mockStartGame).toHaveBeenCalledWith(12, 8, "guide_cta");
+    expect(window.location.pathname + window.location.search).toBe("/game");
+  });
+
+  it("reads an unknown source as a plain link", () => {
+    window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=newsletter%3Cx%3E");
+
+    render(<GamePage />);
+
+    expect(mockStartGame).toHaveBeenCalledWith(12, 8, "link");
   });
 
   it("waits on the configuration form without round params", () => {
@@ -117,7 +134,7 @@ describe("GamePage URL-driven start under StrictMode", () => {
 
     const lastStart = Math.max(...mockStartGame.mock.invocationCallOrder);
     const lastReset = Math.max(0, ...mockResetGame.mock.invocationCallOrder);
-    expect(mockStartGame).toHaveBeenLastCalledWith(6, 10);
+    expect(mockStartGame).toHaveBeenLastCalledWith(6, 10, "link");
     expect(lastStart).toBeGreaterThan(lastReset);
     expect(window.location.pathname + window.location.search).toBe("/game");
   });

@@ -174,7 +174,7 @@ function LearnBlockView({
               </div>
               {drill.setup ? (
                 <Link
-                  href={gameHref(drill.setup)}
+                  href={gameHref(drill.setup, "guide_cta")}
                   data-learn-cta={`section-drill-${sectionId}`}
                   className={`${EDITORIAL_STYLES.link} self-start text-sm`}
                 >

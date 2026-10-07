@@ -325,7 +325,7 @@ describe("board rules the coordinates guide states", () => {
  */
 function accuracy(correct: number, total: number, extra = 0): number {
   const store = useGameStore.getState();
-  store.startGame(total, 10);
+  store.startGame(total, 10, "game_form");
   store.startSolutionPhase();
   const original = new Chess(useGameStore.getState().gameState.originalPosition!, { skipValidation: true });
   const occupied = SQUARES.filter((square) => original.get(square));

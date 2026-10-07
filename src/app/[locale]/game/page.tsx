@@ -21,13 +21,13 @@ import PageHeader from '@/components/ui/PageHeader';
 import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
-import { trackEvent } from '@/lib/analytics/events';
+import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
 
 import { useTranslations } from "next-intl";
 
 const TIMER_CUE_DELAY_MS = 500;
 
-type UrlRound = { pieceCount: number; memorizeTime: number };
+type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource };
 
 // The query is read off the live location rather than via useSearchParams,
 // which would bail /game out of static rendering and serve an empty page.
@@ -38,14 +38,17 @@ function takeUrlRound(): UrlRound | null {
   if (!pieceCountParam && !memorizeTimeParam) return null;
 
   // A refresh then opens the configuration screen instead of restarting the round.
+  const source = roundSourceFrom(params.get('source'));
   params.delete('pieceCount');
   params.delete('memorizeTime');
+  params.delete('source');
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
 
   return {
     pieceCount: pieceCountParam ? parseInt(pieceCountParam) : 8,
     memorizeTime: memorizeTimeParam ? parseInt(memorizeTimeParam) : 10,
+    source,
   };
 }
 
@@ -116,14 +119,12 @@ function GamePageContent() {
   useEffect(() => {
     if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound();
     const round = urlRoundRef.current;
-    if (round) startGame(round.pieceCount, round.memorizeTime);
+    if (round) startGame(round.pieceCount, round.memorizeTime, round.source);
   }, [startGame]);
   
   useEffect(() => {
     if (gamePhase === GamePhase.MEMORIZATION) {
       warmLeaderboardCutoffs();
-      const { pieceCount, memorizeTime } = useGameStore.getState().gameState;
-      trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime } });
     }
   }, [gamePhase]);
   
@@ -216,7 +217,7 @@ function GamePageContent() {
     stopTimerSound(); // Stop any playing timer sound
     playSound('click');
     resetGame();
-    startGame(gameState.pieceCount, gameState.memorizeTime);
+    startGame(gameState.pieceCount, gameState.memorizeTime, 'try_again');
   };
   
   // Handle starting a new game with different configuration
@@ -228,10 +229,10 @@ function GamePageContent() {
   };
   
   // Handle starting the game from configuration
-  const handleStartGame = (pieceCount: number, memorizeTime: number) => {
+  const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
     console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
     playSound('click');
-    startGame(pieceCount, memorizeTime);
+    startGame(pieceCount, memorizeTime, source);
   };
   
   // Handle back button

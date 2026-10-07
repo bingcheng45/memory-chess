@@ -9,6 +9,7 @@ import {
   roundReducer,
   type RoundState,
 } from "@/lib/home/calibration";
+import { trackEvent } from "@/lib/analytics/events";
 import { recordLabRound } from "@/lib/lab/recordRound";
 import { CalibrationBoard } from "./CalibrationBoard";
 import { ReadoutCard } from "./ReadoutCard";
@@ -91,7 +92,13 @@ export function CalibrationSection() {
     setStartFailed(false);
     try {
       const target = await loadCalibrationPosition();
-      if (target) dispatch({ type: "start", target });
+      if (target) {
+        dispatch({ type: "start", target });
+        trackEvent({
+          name: "round_start",
+          params: { piece_count: CALIBRATION_RULES.pieceCount, memorize_time: STUDY_SECONDS, source: "calibration" },
+        });
+      }
       else setStartFailed(true);
     } catch {
       setStartFailed(true);

@@ -206,7 +206,7 @@ describe("ArticlePage body", () => {
     const drill = container.querySelectorAll('a[href^="/game"]');
 
     expect(drill).toHaveLength(1);
-    expect(drill[0]).toHaveAttribute("href", "/game?pieceCount=12&memorizeTime=5");
+    expect(drill[0]).toHaveAttribute("href", "/game?pieceCount=12&memorizeTime=5&source=article_cta");
     expect(drill[0]).toHaveAttribute("data-article-drill");
     expect(drill[0]).toHaveTextContent(article.drill.why);
     expect(drill[0]).toHaveTextContent("Play 12 pieces, 5 seconds");

@@ -1,7 +1,7 @@
 import { trackEvent, type FunnelEvent } from "@/lib/analytics/events";
 
 const EVENTS: FunnelEvent[] = [
-  { name: "round_start", params: { piece_count: 6, memorize_time: 10 } },
+  { name: "round_start", params: { piece_count: 6, memorize_time: 10, source: "home_quick" } },
   {
     name: "round_complete",
     params: { piece_count: 6, memorize_time: 10, correct_pieces: 4, accuracy: 67 },

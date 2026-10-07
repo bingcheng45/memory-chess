@@ -88,7 +88,7 @@ export function ReadoutCard({ state }: { state: RoundState }) {
               seconds: tier.memorizeTime,
             })}
             <br />
-            <Link className="lab-go" href={playHref(tier.pieceCount, tier.memorizeTime)}>
+            <Link className="lab-go" href={playHref(tier.pieceCount, tier.memorizeTime, "calibration_cta")}>
               {t("readout.playTier", { tier: presets(`${tier.difficulty}.label`) })} →
             </Link>
           </>

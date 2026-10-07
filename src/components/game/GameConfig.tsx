@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, type CSSProperties } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
+import type { RoundSource } from '@/lib/analytics/events';
 import { Button } from "@/components/ui/button";
 import { useTranslations } from 'next-intl';
 import {
@@ -19,7 +20,7 @@ import {
 } from '@/lib/game/configPrefill';
 
 interface GameConfigProps {
-  readonly onStart?: (pieceCount: number, memorizeTime: number) => void;
+  readonly onStart?: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
 }
 
 const { presets: DIFFICULTY_PRESETS } = GAME_CONFIG_RULES;
@@ -59,15 +60,15 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     setMemorizeTime(preset.memorizeTime);
   }
   
-  const startRound = (settings: { pieceCount: number; memorizeTime: number }) => {
+  const startRound = (settings: { pieceCount: number; memorizeTime: number }, source: RoundSource) => {
     if (onStart) {
-      onStart(settings.pieceCount, settings.memorizeTime);
+      onStart(settings.pieceCount, settings.memorizeTime, source);
     } else {
-      startGame(settings.pieceCount, settings.memorizeTime);
+      startGame(settings.pieceCount, settings.memorizeTime, source);
     }
   };
 
-  const handleStart = () => startRound({ pieceCount, memorizeTime });
+  const handleStart = () => startRound({ pieceCount, memorizeTime }, 'game_form');
   
   const sliderStyle = (value: number, range: { min: number; max: number }) => ({
     '--fill': `${((value - range.min) / (range.max - range.min)) * 100}%`,
@@ -85,7 +86,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
 
       <div className="mb-6 border-b border-bg-light pb-6 text-center">
         <Button
-          onClick={() => startRound(DEFAULT_PRESET)}
+          onClick={() => startRound(DEFAULT_PRESET, 'game_quick')}
           data-quick-start
           className="h-11 w-full bg-peach-500 text-base font-semibold text-bg-dark hover:bg-peach-400"
         >

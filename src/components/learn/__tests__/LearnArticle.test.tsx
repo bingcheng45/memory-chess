@@ -254,7 +254,7 @@ describe("LearnArticleRich", () => {
 
     expect(screen.getByRole("link", { name: playable.ctaLabel })).toHaveAttribute(
       "href",
-      "/game?pieceCount=12&memorizeTime=8",
+      "/game?pieceCount=12&memorizeTime=8&source=guide_cta",
     );
     expect(screen.queryByRole("link", { name: offBoard.ctaLabel })).toBeNull();
   });
@@ -309,7 +309,7 @@ describe("LearnArticleRich closing play action", () => {
 
     expect(container.querySelector('[data-learn-cta="closing-primary"]')).toHaveAttribute(
       "href",
-      "/game?pieceCount=2&memorizeTime=10",
+      "/game?pieceCount=2&memorizeTime=10&source=guide_cta",
     );
   });
 });

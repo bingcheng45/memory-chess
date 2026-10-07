@@ -47,7 +47,7 @@ export function TiersSection() {
                 <td>
                   <div className="lab-tier-name">{presets(`${difficulty}.label`)}</div>
                   <div className="lab-tier-desc">{presets(`${difficulty}.description`)}</div>
-                  <Link className="lab-go" href={playHref(pieceCount, memorizeSeconds)}>
+                  <Link className="lab-go" href={playHref(pieceCount, memorizeSeconds, "home_tier")}>
                     {t("play")} →
                   </Link>
                 </td>

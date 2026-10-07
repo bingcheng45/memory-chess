@@ -151,7 +151,9 @@ export default function PrivacyPage() {
               The homepage lab record keeps every round you finish, including
               the practice reading on the homepage, in your browser&apos;s
               IndexedDB and local storage: the position you studied, the one
-              you rebuilt, your timings, and your scores. It is used only to
+              you rebuilt, your timings, your scores, your time zone offset,
+              where you started the round (such as the homepage or a guide),
+              and the order and timing of each piece you placed. It is used only to
               draw your streak, personal bests, accuracy trend and miss map on
               this device. It is never sent to Memory Chess or to analytics;
               analytics only receive counts when you download, import, or ask

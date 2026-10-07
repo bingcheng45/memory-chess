@@ -56,6 +56,17 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
+  it("lists every fact the lab record keeps and says none of it leaves the device", () => {
+    render(<PrivacyPage />);
+
+    expect(
+      screen.getByText(
+        /the position you studied, the one you rebuilt, your timings, your scores, your time zone offset, where you started the round \(such as the homepage or a guide\), and the order and timing of each piece you placed\./,
+      ),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/It is never sent to Memory Chess or to analytics/)).toBeInTheDocument();
+  });
+
   it("claims no identifier the site does not create", () => {
     render(<PrivacyPage />);
 

@@ -4,6 +4,7 @@ import type { LabRecord } from "@/components/home/useLabRecord";
 import { trackEvent } from "@/lib/analytics/events";
 import { personaRounds, PERSONA_TODAY, type PersonaName } from "@/lib/lab/personas";
 import { EMPTY_SUMMARY, summarize } from "@/lib/lab/summary";
+import { round } from "@/lib/lab/__tests__/fixtures";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
@@ -32,9 +33,9 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
 
     expect(items()).toEqual([
-      "Trend unlocks at 5 rounds of one setting on 2 days.",
-      "Streak unlocks at 2 days in a row.",
-      "Piece recall unlocks at 20 sightings of a piece other than the king.",
+      "Trend unlocks at 5 rounds of one setting on 2 different days.",
+      "Streak unlocks when you play on 2 different days.",
+      "Piece recall unlocks when one piece other than the king reaches 20 sightings.",
       "Miss map unlocks at 10 sightings on every file and rank.",
     ]);
     expect(screen.getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", PLAY_HREF);
@@ -45,8 +46,8 @@ describe("unlock strip", () => {
 
     expect(items()).toEqual([
       "Trend: 4 more rounds at 6 pieces, 10s, at least one on another day in games.",
-      "Streak: 1 more day in a row.",
-      "Piece recall: 14 more sightings of a piece other than the king.",
+      "Streak: play on 1 more day, in a row or not.",
+      "Piece recall: 14 more sightings until one piece other than the king reaches 20.",
       "Miss map: 10 more sightings on the least seen file or rank.",
     ]);
   });
@@ -55,9 +56,19 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("easyOnly")} />);
 
     expect(items()).toEqual([
-      "Piece recall: 20 more sightings of a piece other than the king.",
+      "Piece recall: 20 more sightings until one piece other than the king reaches 20.",
       "Miss map: 4 more sightings on the least seen file or rank.",
     ]);
+  });
+
+  it("drops the streak and piece recall lines exactly when their copy says they unlock", () => {
+    const queenOnly = "4k3/8/8/3q4/8/8/8/4K3";
+    const records = Array.from({ length: 20 }, (_, index) =>
+      round({ id: `q${index}`, targetFen: queenOnly, placedFen: queenOnly, pieceCount: 3, ...(index === 0 && { localDay: "2026-09-01", endedAt: Date.UTC(2026, 8, 1, 12) }) }),
+    );
+    renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor", "2026-10-07"), records, summary: summarize(records) }} />);
+
+    expect(items()).toEqual(["Miss map: 10 more sightings on the least seen file or rank."]);
   });
 
   it("shows nothing once every metric can be read, and keeps its box", () => {

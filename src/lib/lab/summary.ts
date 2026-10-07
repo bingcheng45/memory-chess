@@ -30,6 +30,8 @@ export interface LabSummary {
   readonly squareMissed: readonly number[];
   readonly typeShown: TypeCounts;
   readonly typeMissed: TypeCounts;
+  /** endedAt of the newest round evicted from the log, or null while nothing has been. */
+  readonly evictedThrough: number | null;
 }
 
 const MAX_DAYS = 400;
@@ -43,6 +45,7 @@ export const EMPTY_SUMMARY: LabSummary = {
   squareMissed: Array<number>(64).fill(0),
   typeShown: {},
   typeMissed: {},
+  evictedThrough: null,
 };
 
 function addCounts(total: TypeCounts, more: TypeCounts): TypeCounts {
@@ -80,6 +83,7 @@ export function addToSummary(summary: LabSummary, record: RoundRecordV1): LabSum
     ),
     typeShown: addCounts(summary.typeShown, record.shownByType),
     typeMissed: addCounts(summary.typeMissed, record.missedByType),
+    evictedThrough: summary.evictedThrough,
   };
 }
 
@@ -109,6 +113,7 @@ export function parseSummary(raw: unknown): LabSummary | null {
     isCountArray(summary.squareShown) &&
     isCountArray(summary.squareMissed) &&
     isTypeCounts(summary.typeShown) &&
-    isTypeCounts(summary.typeMissed);
+    isTypeCounts(summary.typeMissed) &&
+    (summary.evictedThrough === null || isCount(summary.evictedThrough));
   return valid ? (raw as LabSummary) : null;
 }

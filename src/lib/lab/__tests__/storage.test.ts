@@ -106,6 +106,20 @@ describe("lab store", () => {
     expect((await store.readSummary()).rounds).toBe(ROUND_CAP + 2);
   }, 30000);
 
+  it("counts no round twice when an old backup is imported after the oldest were evicted", async () => {
+    const store = createLabStore(deps());
+    await store.mergeRounds(Array.from({ length: ROUND_CAP }, (_, index) => round({ id: `r${index}`, endedAt: index })));
+    const backup = await store.listRounds();
+    for (let index = 0; index < 3; index++) await store.addRound(round({ id: `new${index}`, endedAt: ROUND_CAP + index }));
+    const before = await store.readSummary();
+
+    expect(await store.mergeRounds(backup)).toBe(0);
+    expect(await store.mergeRounds(backup)).toBe(0);
+    expect(before).toMatchObject({ rounds: ROUND_CAP + 3, bests: { "game:4x10": { rounds: ROUND_CAP + 3 } } });
+    expect(await store.readSummary()).toEqual(before);
+    expect((await store.listRounds())[0].id).toBe("r3");
+  }, 30000);
+
   it(`asks the browser to keep the record after ${PERSIST_AFTER_ROUNDS} rounds, once`, async () => {
     const setup = deps();
     const store = createLabStore(setup);

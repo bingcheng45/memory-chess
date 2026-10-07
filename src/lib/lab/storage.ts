@@ -25,7 +25,7 @@ export interface LabStore {
   /** Writes one round; a round whose id is already stored is left alone. Resolves false if nothing could be saved. */
   addRound(record: RoundRecordV1): Promise<boolean>;
   listRounds(): Promise<RoundRecordV1[]>;
-  /** Adds the rounds whose ids are new and returns how many that was, so a second import adds 0. */
+  /** Adds the rounds that are new to this record and returns how many that was, so a second import adds 0. */
   mergeRounds(records: readonly RoundRecordV1[]): Promise<number>;
   readSummary(): Promise<LabSummary>;
   clear(): Promise<void>;
@@ -113,23 +113,45 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
   async function insertNew(db: IDBDatabase, records: readonly RoundRecordV1[]): Promise<RoundRecordV1[]> {
     const tx = db.transaction(STORE, "readwrite");
     const store = tx.objectStore(STORE);
-    const existing = await Promise.all(records.map((record) => request(store.getKey(record.id))));
-    const fresh = records.filter((record, index) => existing[index] === undefined);
-    const unique = fresh.filter((record, index) => fresh.findIndex(({ id }) => id === record.id) === index);
-    unique.forEach((record) => store.add(record));
+    // One read of at most ROUND_CAP keys, rather than a request per incoming round.
+    const seen = new Set(await request(store.getAllKeys()));
+    const fresh = records.filter(({ id }) => {
+      if (seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
+    fresh.forEach((record) => store.add(record));
     await done(tx);
-    return unique;
+    return fresh;
   }
 
-  async function evictOverCap(db: IDBDatabase): Promise<void> {
+  /** Returns the endedAt of the newest round it evicted, or null if the log was within the cap. */
+  async function evictOverCap(db: IDBDatabase): Promise<number | null> {
     const tx = db.transaction(STORE, "readwrite");
     const store = tx.objectStore(STORE);
     const excess = (await request(store.count())) - ROUND_CAP;
-    if (excess > 0) {
-      const oldest = await request(store.index(BY_END).getAllKeys(null, excess));
-      oldest.forEach((key) => store.delete(key));
-    }
+    const oldest = excess > 0 ? await request(store.index(BY_END).getAll(null, excess) as IDBRequest<RoundRecordV1[]>) : [];
+    oldest.forEach(({ id }) => store.delete(id));
     await done(tx);
+    return oldest.at(-1)?.endedAt ?? null;
+  }
+
+  /**
+   * The summary counts every round in the log plus every round evicted from it,
+   * each once. Evicted ids are gone, so a round at or before the eviction
+   * watermark may already be counted and is never folded in again.
+   */
+  async function ingest(records: readonly RoundRecordV1[]): Promise<number> {
+    const db = await open();
+    const before = storedSummary() ?? summarize(await allRounds(db));
+    const watermark = before.evictedThrough;
+    const added = await insertNew(db, watermark === null ? records : records.filter(({ endedAt }) => endedAt > watermark));
+    if (added.length === 0) return 0;
+    const evicted = await evictOverCap(db);
+    const counted = [...added].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, before);
+    // Every round in the log is newer than the watermark, so a fresh eviction only moves it forward.
+    await saveSummary({ ...counted, evictedThrough: evicted ?? watermark });
+    return added.length;
   }
 
   async function requestPersistence(rounds: number): Promise<void> {
@@ -159,12 +181,7 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
 
     async addRound(record) {
       try {
-        const db = await open();
-        const before = storedSummary() ?? summarize(await allRounds(db));
-        const added = await insertNew(db, [record]);
-        if (added.length === 0) return true;
-        await evictOverCap(db);
-        await saveSummary(addToSummary(before, record));
+        await ingest([record]);
         return true;
       } catch {
         return false;
@@ -179,16 +196,7 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
       }
     },
 
-    async mergeRounds(records) {
-      const db = await open();
-      const before = storedSummary() ?? summarize(await allRounds(db));
-      const added = await insertNew(db, records);
-      if (added.length === 0) return 0;
-      await evictOverCap(db);
-      // Folded into the lifetime summary before eviction, so rounds past the cap still count.
-      await saveSummary([...added].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, before));
-      return added.length;
-    },
+    mergeRounds: ingest,
 
     async readSummary() {
       const stored = storedSummary();

@@ -110,7 +110,7 @@ export function CalibrationSection() {
 
   const heading =
     state.phase === "idle"
-      ? t("phaseReady", { pieces: CALIBRATION_RULES.pieceCount, seconds: STUDY_SECONDS })
+      ? t("phaseReady", { pieceCount: CALIBRATION_RULES.pieceCount, memorizeSeconds: STUDY_SECONDS })
       : t("phaseLabel", {
           number: phaseNumber(ROUND_PHASE_ID[state.phase]),
           name: tPhase(`${ROUND_PHASE_ID[state.phase]}.name`),
@@ -123,7 +123,7 @@ export function CalibrationSection() {
   const announcement = startFailed
     ? t("startFailed")
     : state.phase === "study"
-      ? t("liveStudy", { seconds: STUDY_SECONDS })
+      ? t("liveStudy", { memorizeSeconds: STUDY_SECONDS })
       : state.phase === "rebuild"
         ? t("liveRebuild")
         : state.phase === "scored"
@@ -139,7 +139,7 @@ export function CalibrationSection() {
   return (
     <section className="lab-sec" id={LAB_SECTIONS.calibrate.anchor}>
       <div className="lab-wrap">
-        <SectionHeading section="calibrate" title={t("title")} lede={t("lede", { pieces: CALIBRATION_RULES.pieceCount, seconds: STUDY_SECONDS })} />
+        <SectionHeading section="calibrate" title={t("title")} lede={t("lede", { pieceCount: CALIBRATION_RULES.pieceCount, memorizeSeconds: STUDY_SECONDS })} />
         <div className="lab-cal">
           <div className="lab-cal-board">
             <div className="lab-cal-head">

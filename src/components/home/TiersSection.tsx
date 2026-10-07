@@ -53,7 +53,7 @@ export function TiersSection() {
                 <td className="lab-num" data-label={t("columns.pieces")}>{pieceCount}</td>
                 <td className="lab-num" data-label={t("columns.exposure")}>{memorizeSeconds}s</td>
                 <td>
-                  <Density pieces={pieceCount} label={t("loadLabel", { pieces: pieceCount })} />
+                  <Density pieces={pieceCount} label={t("loadLabel", { pieceCount })} />
                 </td>
               </tr>
             ))}
@@ -76,7 +76,7 @@ export function TiersSection() {
               <td>
                 <Density
                   pieces={PIECE_COUNT_RANGE.max}
-                  label={t("loadLabel", { pieces: PIECE_COUNT_RANGE.max })}
+                  label={t("loadLabel", { pieceCount: PIECE_COUNT_RANGE.max })}
                 />
               </td>
             </tr>

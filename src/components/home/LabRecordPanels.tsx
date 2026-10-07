@@ -177,7 +177,7 @@ export function BestsPanel({ summary }: RecordData) {
           <dl className="lab-bests">
             {bests.entries.map((best) => (
               <div key={best.key}>
-                <dt>{t("bests.setting", { source: best.source, pieces: best.pieceCount, seconds: best.memorizeSeconds })}</dt>
+                <dt>{t("bests.setting", { source: best.source, pieceCount: best.pieceCount, memorizeSeconds: best.memorizeSeconds })}</dt>
                 <dd>
                   {t("bests.reading", { accuracy: best.accuracy, seconds: formatSeconds(best.solveMs) })}
                   {best.rounds === 1 && <span className="lab-note"> · {t("bests.first")}</span>}

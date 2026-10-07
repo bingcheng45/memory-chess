@@ -15,6 +15,10 @@ const SpeedInsights = dynamic(() =>
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
+import {
+  isChangelogAnnouncementActive,
+  LATEST_CHANGELOG_ENTRY,
+} from "@/lib/changelog";
 import Footer from "@/components/ui/Footer";
 import { ADSENSE_CLIENT_ID, ADSENSE_SCRIPT_URL } from "@/lib/adsense";
 import {
@@ -169,7 +173,9 @@ export default async function LocaleLayout({
         className={`${getSansFontClass(locale as Locale)} ${geistMono.variable} min-h-screen bg-bg-dark text-text-primary antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <ChangelogBanner />
+          <ChangelogBanner
+            announce={isChangelogAnnouncementActive(LATEST_CHANGELOG_ENTRY)}
+          />
           {children}
           <Footer />
           <Analytics />

@@ -11,13 +11,43 @@ import {
   isChangelogAnnouncementActive,
 } from "@/lib/changelog";
 
-export default function ChangelogBanner() {
+const BANNER_ID = "changelog-banner";
+
+/**
+ * Hides the served banner as it is parsed, before first paint, for a reader
+ * who dismissed this release or arrives after its window. The effect below
+ * then removes it, so the page never moves.
+ */
+export function hideDismissedBannerScript(version: string, expiresAt: number): string {
+  return `(function () {
+  try {
+    var banner = document.getElementById(${JSON.stringify(BANNER_ID)});
+    if (banner && (Date.now() >= ${expiresAt} || localStorage.getItem(${JSON.stringify(CHANGELOG_DISMISSAL_STORAGE_KEY)}) === ${JSON.stringify(version)})) {
+      banner.hidden = true;
+    }
+  } catch (error) {}
+})();`;
+}
+
+/**
+ * `announce` is whether the release was inside its window when the page was
+ * rendered. The banner is then part of the served HTML, so it takes its space
+ * before first paint instead of pushing the page down after hydration.
+ */
+export default function ChangelogBanner({ announce }: { announce: boolean }) {
   const t = useTranslations("changelog");
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(announce);
   const release = LATEST_CHANGELOG_ENTRY;
+  const expiresAt =
+    Date.parse(release.publishedAt) + CHANGELOG_ANNOUNCEMENT_DURATION_MS;
 
   useEffect(() => {
+    if (!announce) {
+      return;
+    }
+
     if (!isChangelogAnnouncementActive(release)) {
+      setIsVisible(false);
       return;
     }
 
@@ -38,8 +68,6 @@ export default function ChangelogBanner() {
 
     window.addEventListener("storage", handleStorage);
 
-    const expiresAt =
-      Date.parse(release.publishedAt) + CHANGELOG_ANNOUNCEMENT_DURATION_MS;
     let expiryTimer: number | undefined;
 
     const scheduleExpiry = () => {
@@ -65,7 +93,7 @@ export default function ChangelogBanner() {
         window.clearTimeout(expiryTimer);
       }
     };
-  }, [release]);
+  }, [announce, release, expiresAt]);
 
   const handleDismiss = () => {
     try {
@@ -85,37 +113,47 @@ export default function ChangelogBanner() {
   }
 
   return (
-    <aside
-      aria-label={t("bannerLabel")}
-      className="w-full border-b border-white/10 bg-bg-card text-text-secondary"
-    >
-      <div className="container relative mx-auto flex min-h-10 items-center justify-center px-12 py-2 text-center text-xs sm:text-sm">
-        <EnglishOnlyLink
-          href="/changelog"
-          className="group rounded-sm outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-peach-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-card"
-        >
-          {(suffix) => (
-            <>
-              <span className="font-medium text-text-primary">
-                Memory Chess v{release.version} is here.
-              </span>{" "}
-              <span className="whitespace-nowrap text-peach-400 underline decoration-peach-400/40 underline-offset-4 transition-colors group-hover:text-peach-300">
-                {t("bannerCta")}
-                {suffix}
-              </span>
-            </>
-          )}
-        </EnglishOnlyLink>
+    <>
+      <aside
+        id={BANNER_ID}
+        aria-label={t("bannerLabel")}
+        // The script below may already have set `hidden` on the served node.
+        suppressHydrationWarning
+        className="w-full border-b border-white/10 bg-bg-card text-text-secondary"
+      >
+        <div className="container relative mx-auto flex min-h-10 items-center justify-center px-12 py-2 text-center text-xs sm:text-sm">
+          <EnglishOnlyLink
+            href="/changelog"
+            className="group rounded-sm outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-peach-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-card"
+          >
+            {(suffix) => (
+              <>
+                <span className="font-medium text-text-primary">
+                  Memory Chess v{release.version} is here.
+                </span>{" "}
+                <span className="whitespace-nowrap text-peach-400 underline decoration-peach-400/40 underline-offset-4 transition-colors group-hover:text-peach-300">
+                  {t("bannerCta")}
+                  {suffix}
+                </span>
+              </>
+            )}
+          </EnglishOnlyLink>
 
-        <button
-          type="button"
-          onClick={handleDismiss}
-          aria-label={`Dismiss Memory Chess v${release.version} update`}
-          className="absolute right-2 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-md text-text-muted transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach-500 sm:right-4"
-        >
-          <X aria-hidden="true" className="h-4 w-4" />
-        </button>
-      </div>
-    </aside>
+          <button
+            type="button"
+            onClick={handleDismiss}
+            aria-label={`Dismiss Memory Chess v${release.version} update`}
+            className="absolute right-2 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-md text-text-muted transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach-500 sm:right-4"
+          >
+            <X aria-hidden="true" className="h-4 w-4" />
+          </button>
+        </div>
+      </aside>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: hideDismissedBannerScript(release.version, expiresAt),
+        }}
+      />
+    </>
   );
 }

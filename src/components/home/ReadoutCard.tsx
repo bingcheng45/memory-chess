@@ -39,7 +39,7 @@ export function ReadoutCard({ state }: { state: RoundState }) {
         <div>
           <span className="lab-k">{t("readout.correct")}</span>
           <b>
-            {score ? score.correct : "--"} / {CALIBRATION_RULES.pieceCount}
+            {score ? score.correct : "--"} / {score ? score.total : CALIBRATION_RULES.pieceCount}
           </b>
         </div>
         <div>

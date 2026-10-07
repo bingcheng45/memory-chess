@@ -7,18 +7,22 @@ describe("CalibrationSection", () => {
   beforeEach(() => jest.useFakeTimers());
   afterEach(() => jest.useRealTimers());
 
-  it("runs a round: study, blank board, rebuild one piece, read the card", () => {
+  it("runs a round: study, blank board, rebuild one piece, read the card", async () => {
     renderWithIntl(<CalibrationSection />);
 
     fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
+    await screen.findByText("Phase 01 · Study");
     const studied = screen
       .getAllByRole("button", { name: /^[a-h][1-8], / })
       .filter((cell) => !cell.getAttribute("aria-label")?.endsWith("empty"));
     expect(studied).toHaveLength(6);
+    expect(
+      studied.map((cell) => cell.getAttribute("aria-label")!.split(", ")[1]).filter((name) => name.endsWith("king")).sort(),
+    ).toEqual(["black king", "white king"]);
 
     const [square, pieceName] = studied[0].getAttribute("aria-label")!.split(", ");
     act(() => {
-      jest.advanceTimersByTime(8100);
+      jest.advanceTimersByTime(10100);
     });
 
     expect(screen.getByText("Phase 03 · Rebuild from memory")).toBeInTheDocument();
@@ -32,6 +36,7 @@ describe("CalibrationSection", () => {
 
     expect(screen.getByText("Run complete")).toBeInTheDocument();
     expect(screen.getByText("1 / 6")).toBeInTheDocument();
+    expect(screen.getByText("Wrong pieces").nextSibling).toHaveTextContent("5");
     expect(screen.getByText(/start on Easy, 2 pieces at 10s/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Play Easy/ })).toHaveAttribute(
       "href",
@@ -39,11 +44,12 @@ describe("CalibrationSection", () => {
     );
   });
 
-  it("moves focus across the board with the arrow keys once the board clears", () => {
+  it("moves focus across the board with the arrow keys once the board clears", async () => {
     renderWithIntl(<CalibrationSection />);
     fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
+    await screen.findByText("Phase 01 · Study");
     act(() => {
-      jest.advanceTimersByTime(8100);
+      jest.advanceTimersByTime(10100);
     });
 
     const a8 = screen.getByRole("button", { name: /^a8, / });

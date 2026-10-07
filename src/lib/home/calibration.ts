@@ -1,6 +1,10 @@
 import type { PieceColor, PieceType } from "@/types/chess";
 import { DIFFICULTY_PRESETS } from "@/types/game";
+import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
+import { STANDARD_INVENTORY } from "@/lib/game/pieceInventory";
+import { placementFromFen, scorePlacement, type Placement } from "@/lib/game/scoring";
 import type { RankedDifficulty } from "@/lib/reference/facts";
+import { mapChessJsPieceToType, pieceTypeToFenChar } from "@/utils/chessPieces";
 
 const FILE_LETTERS = ["a", "b", "c", "d", "e", "f", "g", "h"] as const;
 
@@ -37,56 +41,46 @@ export const PIECE_TYPE_ORDER: readonly PieceType[] = [
 ];
 
 export const CALIBRATION_RULES = {
-  pieceCount: 6,
-  studyMs: 8000,
+  pieceCount: DEFAULT_PRESET.pieceCount,
+  studyMs: DEFAULT_PRESET.memorizeTime * 1000,
 } as const;
 
-// Weighted towards the pieces a real position has more of.
-const NON_KING_POOL: readonly PieceType[] = [
-  "queen",
-  "rook",
-  "rook",
-  "bishop",
-  "bishop",
-  "knight",
-  "knight",
-  "pawn",
-  "pawn",
-  "pawn",
-  "pawn",
-];
-
-function pick<T>(items: readonly T[], random: () => number): T {
-  return items[Math.floor(random() * items.length)];
+export function labPositionFromFen(fen: string): LabPosition {
+  return Object.fromEntries(
+    Object.entries(placementFromFen(fen)).map(([square, char]) => [
+      square,
+      { color: char === char.toUpperCase() ? "white" : "black", type: mapChessJsPieceToType(char) },
+    ]),
+  );
 }
 
-function randomColor(random: () => number): PieceColor {
-  return random() < 0.5 ? "white" : "black";
+/** The board part of a FEN, a8 first, the inverse of labPositionFromFen. */
+export function labPositionToFen(position: LabPosition): string {
+  return Array.from({ length: 8 }, (_, row) =>
+    BOARD_SQUARES.slice(row * 8, row * 8 + 8)
+      .map((square) => {
+        const piece = position[square];
+        return piece ? pieceTypeToFenChar(piece.type, piece.color) : "1";
+      })
+      .join("")
+      .replace(/1+/g, (run) => String(run.length)),
+  ).join("/");
 }
 
-function isBackRank(square: SquareName): boolean {
-  return square.endsWith("1") || square.endsWith("8");
+/**
+ * A position from the real game's generator. The import is dynamic so chess.js
+ * stays out of the homepage bundle until a round starts.
+ */
+export async function loadCalibrationPosition(random: () => number = Math.random): Promise<LabPosition | null> {
+  const { generateMemorizationPosition } = await import("@/lib/utils/memorizationPosition");
+  const chess = generateMemorizationPosition(CALIBRATION_RULES.pieceCount, random);
+  return chess ? labPositionFromFen(chess.fen()) : null;
 }
 
-/** One king plus `pieceCount - 1` other pieces, no pawns on a back rank. */
-export function generatePosition(
-  random: () => number,
-  pieceCount: number = CALIBRATION_RULES.pieceCount,
-): LabPosition {
-  const pieces: LabPiece[] = [
-    { color: randomColor(random), type: "king" },
-    ...Array.from({ length: pieceCount - 1 }, () => ({
-      color: randomColor(random),
-      type: pick(NON_KING_POOL, random),
-    })),
-  ];
-
-  return pieces.reduce<LabPosition>((position, piece) => {
-    const open = BOARD_SQUARES.filter(
-      (square) => !position[square] && !(piece.type === "pawn" && isBackRank(square)),
-    );
-    return { ...position, [pick(open, random)]: piece };
-  }, {});
+/** How many more of this piece the standard set allows on the board. */
+export function remainingOf(position: LabPosition, piece: LabPiece): number {
+  const used = Object.values(position).filter((placed) => samePiece(placed, piece)).length;
+  return STANDARD_INVENTORY[piece.type] - used;
 }
 
 export interface TypeRecall {
@@ -99,7 +93,7 @@ export interface Score {
   readonly accuracy: number;
   readonly correct: number;
   readonly total: number;
-  /** Placed pieces that do not match the target on their square. */
+  /** Missed target pieces plus extra placed pieces, as the real game counts it. */
   readonly wrong: number;
   readonly byType: readonly TypeRecall[];
 }
@@ -112,19 +106,18 @@ function occupied(position: LabPosition): SquareName[] {
   return BOARD_SQUARES.filter((square) => position[square]);
 }
 
-// Same rule as calculateAccuracy in src/lib/store/gameStore.ts, so a reading
-// here means what the same result means in a real round.
-const EXTRA_PIECE_PENALTY = 10;
+function toPlacement(position: LabPosition): Placement {
+  return Object.fromEntries(
+    occupied(position).map((square) => {
+      const { type, color } = position[square] as LabPiece;
+      return [square, pieceTypeToFenChar(type, color)];
+    }),
+  );
+}
 
 export function scoreReading(target: LabPosition, placed: LabPosition): Score {
+  const { accuracy, correct, total, totalWrong } = scorePlacement(toPlacement(target), toPlacement(placed));
   const targetSquares = occupied(target);
-  const placedSquares = occupied(placed);
-  const total = targetSquares.length;
-  const correct = targetSquares.filter((square) => samePiece(target[square], placed[square])).length;
-  const wrong = placedSquares.filter((square) => !samePiece(target[square], placed[square])).length;
-  const extra = Math.max(0, placedSquares.length - total);
-  const base = total === 0 ? 0 : Math.round((correct / total) * 100);
-
   const byType = PIECE_TYPE_ORDER.flatMap((type) => {
     const squares = targetSquares.filter((square) => target[square]?.type === type);
     if (squares.length === 0) return [];
@@ -132,13 +125,7 @@ export function scoreReading(target: LabPosition, placed: LabPosition): Score {
     return [{ type, correct: hits, total: squares.length }];
   });
 
-  return {
-    accuracy: Math.max(0, base - extra * EXTRA_PIECE_PENALTY),
-    correct,
-    total,
-    wrong,
-    byType,
-  };
+  return { accuracy, correct, total, wrong: totalWrong, byType };
 }
 
 /**
@@ -165,8 +152,8 @@ export interface TierSuggestion {
   readonly memorizeTime: number;
 }
 
-// Best first. A calibration round is six pieces at eight seconds, a little
-// harder than Medium, so a clean reading points one preset up.
+// Best first. A calibration round is the Medium preset, so a clean reading
+// points one preset up and a weak one points one down.
 const TIER_LADDER: readonly {
   minAccuracy: number;
   advice: TierAdvice;
@@ -231,7 +218,7 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
       if (current && (!state.selected || samePiece(current, state.selected))) {
         return { ...state, placed: withoutSquare(state.placed, action.square) };
       }
-      if (!state.selected) return state;
+      if (!state.selected || remainingOf(state.placed, state.selected) <= 0) return state;
       return { ...state, placed: { ...state.placed, [action.square]: state.selected } };
     }
     case "clear":

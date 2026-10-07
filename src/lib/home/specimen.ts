@@ -1,6 +1,6 @@
 import { scoreReading, type LabPosition } from "@/lib/home/calibration";
 
-/** The illustrative position the hero and the microscope diagram study. */
+/** The illustrative position the hero and the microscope diagram study. Legal under the real game's rules. */
 export const SPECIMEN: LabPosition = {
   g1: { color: "white", type: "king" },
   f2: { color: "white", type: "pawn" },
@@ -9,7 +9,7 @@ export const SPECIMEN: LabPosition = {
   f3: { color: "white", type: "knight" },
   d8: { color: "black", type: "rook" },
   d6: { color: "black", type: "queen" },
-  c4: { color: "white", type: "bishop" },
+  c4: { color: "black", type: "king" },
 };
 
 /** The example rebuild: every piece right except the knight, one file off. */

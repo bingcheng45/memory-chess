@@ -4,7 +4,7 @@ import { useCallback, useEffect, useReducer, useState } from "react";
 import { useTranslations } from "next-intl";
 import {
   CALIBRATION_RULES,
-  generatePosition,
+  loadCalibrationPosition,
   roundReducer,
   type RoundState,
 } from "@/lib/home/calibration";
@@ -61,6 +61,22 @@ export function CalibrationSection() {
   const [state, dispatch] = useReducer(roundReducer, { phase: "idle" });
   const onStudyEnded = useCallback((now: number) => dispatch({ type: "studyEnded", now }), []);
   const clockMs = useRoundClock(state, onStudyEnded);
+  const [starting, setStarting] = useState(false);
+  const [startFailed, setStartFailed] = useState(false);
+
+  const start = async () => {
+    setStarting(true);
+    setStartFailed(false);
+    try {
+      const target = await loadCalibrationPosition();
+      if (target) dispatch({ type: "start", target });
+      else setStartFailed(true);
+    } catch {
+      setStartFailed(true);
+    } finally {
+      setStarting(false);
+    }
+  };
 
   const heading =
     state.phase === "idle"
@@ -71,8 +87,9 @@ export function CalibrationSection() {
       ? `${state.score.accuracy}%`
       : `${formatSeconds(state.phase === "idle" ? CALIBRATION_RULES.studyMs : clockMs)}s`;
   const meter = state.phase === "study" ? (clockMs / CALIBRATION_RULES.studyMs) * 100 : 0;
-  const announcement =
-    state.phase === "study"
+  const announcement = startFailed
+    ? t("startFailed")
+    : state.phase === "study"
       ? t("liveStudy", { seconds: STUDY_SECONDS })
       : state.phase === "rebuild"
         ? t("liveRebuild")
@@ -89,7 +106,7 @@ export function CalibrationSection() {
   return (
     <section className="lab-sec" id={LAB_SECTIONS.calibrate.anchor}>
       <div className="lab-wrap">
-        <SectionHeading section="calibrate" title={t("title")} lede={t("lede")} />
+        <SectionHeading section="calibrate" title={t("title")} lede={t("lede", { pieces: CALIBRATION_RULES.pieceCount, seconds: STUDY_SECONDS })} />
         <div className="lab-cal">
           <div className="lab-cal-board">
             <div className="lab-cal-head">
@@ -104,8 +121,8 @@ export function CalibrationSection() {
               <button
                 type="button"
                 className="lab-btn lab-btn-primary"
-                disabled={state.phase === "study"}
-                onClick={() => dispatch({ type: "start", target: generatePosition(Math.random) })}
+                disabled={state.phase === "study" || starting}
+                onClick={start}
               >
                 <span className="lab-dot" aria-hidden="true" />
                 {startLabel}
@@ -130,6 +147,7 @@ export function CalibrationSection() {
             <p className="lab-sr" aria-live="polite">
               {announcement}
             </p>
+            {startFailed && <p className="lab-note">{t("startFailed")}</p>}
           </div>
           <div>
             <ReadoutCard state={state} />

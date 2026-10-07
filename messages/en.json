@@ -213,7 +213,7 @@
             "name": "Chunk",
             "title": "Eight pieces become three ideas.",
             "body": "Strong players rarely store pieces one by one. They store patterns: a castled king with its pawns, a queen and rook stacked on a file. Fewer units, same information.",
-            "note": "A is a shield of 5. B is a d-file battery of 2. C is the bishop on c4. Three chunks to hold, not eight."
+            "note": "A is a shield of 5. B is a d-file battery of 2. C is the black king on c4. Three chunks to hold, not eight."
           },
           "blind": {
             "name": "Blind",
@@ -237,7 +237,7 @@
       },
       "calibrate": {
         "title": "Take a calibration reading.",
-        "lede": "Six pieces, eight seconds. Then the board clears and you rebuild it. You'll get a readout card with your accuracy and recall by piece type. It works with mouse, touch and keyboard.",
+        "lede": "The Medium round from the real game: {pieces} pieces, two kings among them, {seconds} seconds. Then the board clears and you rebuild it. You'll get a readout card with your accuracy and recall by piece type. It works with mouse, touch and keyboard.",
         "phaseReady": "Ready · {pieces} pieces · {seconds}s exposure",
         "phaseStudy": "Phase 01 · Study",
         "phaseRebuild": "Phase 03 · Rebuild from memory",
@@ -254,8 +254,9 @@
         "liveStudy": "Study the position. {seconds} seconds.",
         "liveRebuild": "Board cleared. Pick a piece, then a square.",
         "liveScore": "Accuracy {accuracy} percent. {correct} of {total} squares correct.",
+          "startFailed": "Could not load a position. Check your connection and try again.",
         "steps": [
-          "Press start. Study the six pieces until the meter empties.",
+          "Press start. Study the position until the meter empties.",
           "Pick a piece from the palette, then tap a square. Tap a placed piece to remove it.",
           "Submit. Placing more pieces than the position had lowers your accuracy, so only place what you remember."
         ],
@@ -266,7 +267,7 @@
           "statusDone": "Run complete",
           "correct": "Correct squares",
           "time": "Rebuild time",
-          "wrong": "Wrong placements",
+          "wrong": "Wrong pieces",
           "exposure": "Exposure",
           "byType": "Recall by piece type",
           "byTypeEmpty": "Recall by piece type appears here after your first run.",

@@ -413,12 +413,6 @@ export const useGameStore = create<GameStore>()(
         
         const placed = placementFromFen(userPosition);
         const score = scorePlacement(placementFromFen(gameState.originalPosition), placed);
-        const accuracyResult = {
-          accuracy: score.accuracy,
-          extraPieces: score.extra,
-          totalPiecesPlaced: Object.keys(placed).length,
-          correctPlacements: score.correct,
-        };
         
         // Calculate completion time with millisecond precision
         const now = Date.now();
@@ -429,15 +423,15 @@ export const useGameStore = create<GameStore>()(
         const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime, gameState.actualMemorizeTime);
         
         // Determine if this is a perfect score
-        const perfectScore = accuracyResult.accuracy === 100 && accuracyResult.extraPieces === 0;
+        const perfectScore = score.accuracy === 100 && score.extra === 0;
         
         // Determine success (e.g., accuracy >= 70%)
-        const success = accuracyResult.accuracy >= 70;
+        const success = score.accuracy >= 70;
         
         // Calculate skill rating change
         const currentRating = gameState.skillRating || 1000;
         const skillRatingChange = calculateSkillRatingChange(
-          accuracyResult.accuracy, 
+          score.accuracy, 
           gameState.pieceCount, 
           completionTime, 
           gameState.memorizeTime,
@@ -470,7 +464,7 @@ export const useGameStore = create<GameStore>()(
           ...gameState,
           isSolutionPhase: false,
           userPosition,
-          accuracy: accuracyResult.accuracy,
+          accuracy: score.accuracy,
           completionTime,
           success,
           perfectScore,
@@ -478,9 +472,9 @@ export const useGameStore = create<GameStore>()(
           skillRating: newSkillRating,
           streak,
           skillRatingChange,
-          extraPieces: accuracyResult.extraPieces,
-          totalPiecesPlaced: accuracyResult.totalPiecesPlaced,
-          correctPlacements: accuracyResult.correctPlacements
+          extraPieces: score.extra,
+          totalPiecesPlaced: Object.keys(placed).length,
+          correctPlacements: score.correct
         };
         
         set({

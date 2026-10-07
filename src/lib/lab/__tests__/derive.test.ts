@@ -69,6 +69,24 @@ describe("deriveBests", () => {
 });
 
 describe("deriveTrend", () => {
+  it("derives a full 5,000-round log in well under a frame budget", () => {
+    const base = round();
+    const records = Array.from({ length: 5000 }, (_, index) => ({
+      ...base,
+      id: `r${index}`,
+      endedAt: index,
+      localDay: index < 2500 ? "2026-10-06" : "2026-10-07",
+      config: { ...base.config, pieceCount: index % 10 === 0 ? 12 : 4 },
+    }));
+
+    const started = performance.now();
+    const trend = deriveTrend(records);
+    const elapsed = performance.now() - started;
+
+    expect(trend).toMatchObject({ ready: true, sampleSize: 4500, config: { pieceCount: 4, memorizeSeconds: 10 } });
+    expect(elapsed).toBeLessThan(50);
+  });
+
   const days = ["2026-10-06", "2026-10-06", "2026-10-07", "2026-10-07", "2026-10-07"];
 
   it("plots the most-played config once it has five rounds over two days", () => {

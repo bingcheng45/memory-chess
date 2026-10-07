@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useMemo, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import {
   deriveBests,
@@ -48,7 +48,7 @@ function useTags() {
 export function TrendPanel({ records, summary }: RecordData) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
-  const trend = deriveTrend(records);
+  const trend = useMemo(() => deriveTrend(records), [records]);
   const config = trend.config && { pieces: trend.config.pieceCount, seconds: trend.config.memorizeSeconds };
 
   return (

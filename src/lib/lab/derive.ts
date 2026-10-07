@@ -104,14 +104,18 @@ export interface TrendResult {
 
 /** Accuracy for the most-played config only: mixing configs would read harder rounds as decline. */
 export function deriveTrend(records: readonly RoundRecordV1[]): TrendResult {
-  const byConfig = new Map<string, RoundRecordV1[]>();
+  const byConfig = new Map<string, { rounds: RoundRecordV1[]; latest: number }>();
   records.forEach((record) => {
     const key = configKey(record.config);
-    byConfig.set(key, [...(byConfig.get(key) ?? []), record]);
+    const group = byConfig.get(key);
+    if (!group) byConfig.set(key, { rounds: [record], latest: record.endedAt });
+    else {
+      group.rounds.push(record);
+      group.latest = Math.max(group.latest, record.endedAt);
+    }
   });
-  const rounds = [...byConfig.values()].sort(
-    (a, b) => b.length - a.length || Math.max(...b.map((r) => r.endedAt)) - Math.max(...a.map((r) => r.endedAt)),
-  )[0] ?? [];
+  const rounds =
+    [...byConfig.values()].sort((a, b) => b.rounds.length - a.rounds.length || b.latest - a.latest)[0]?.rounds ?? [];
   const sorted = [...rounds].sort((a, b) => a.endedAt - b.endedAt);
   const days = new Set(sorted.map((record) => record.localDay)).size;
   const roundsNeeded = Math.max(0, LAB_THRESHOLDS.trendRounds - sorted.length);

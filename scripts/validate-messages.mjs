@@ -68,14 +68,15 @@ const ENGLISH_AHEAD_OF_TRANSLATIONS = new Set([
 ]);
 
 /**
- * Blocks that ship in English first. src/i18n/request.ts serves the English
- * block to a locale that lacks it, so a missing key there renders English, not
- * a key path. A locale that does carry the block is still checked in full.
+ * Blocks only English renders. The homepage serves the Brain Lab to `en` and
+ * the earlier body to every other locale (LAB_LOCALES in
+ * src/app/[locale]/page.tsx), so these keys are required in no other
+ * catalogue, and a copy found in one would be dead text.
  */
-const ENGLISH_FALLBACK_PREFIXES = ["home.lab."];
+const ENGLISH_ONLY_PREFIXES = ["home.lab."];
 
-const isEnglishFallback = (key) =>
-  ENGLISH_FALLBACK_PREFIXES.some((prefix) => key.startsWith(prefix));
+const isEnglishOnly = (key) =>
+  ENGLISH_ONLY_PREFIXES.some((prefix) => key.startsWith(prefix));
 
 function flatten(value, prefix = "", out = {}) {
   if (Array.isArray(value)) {
@@ -114,12 +115,13 @@ for (const locale of LOCALES) {
   const current = flatten(catalogues[locale]);
 
   for (const key of Object.keys(base)) {
-    if (!(key in current) && !isEnglishFallback(key)) {
+    if (!(key in current) && !isEnglishOnly(key)) {
       problems.push(`[${locale}] missing key: ${key}`);
     }
   }
   for (const key of Object.keys(current)) {
     if (!(key in base)) problems.push(`[${locale}] unknown key: ${key}`);
+    else if (isEnglishOnly(key)) problems.push(`[${locale}] English-only key: ${key}`);
   }
 
   for (const key of Object.keys(base)) {

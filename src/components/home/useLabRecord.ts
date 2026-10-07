@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import { useLabData, type LabData } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
-import { tellOtherTabs } from "@/lib/lab/recordSync";
+import { announceLabChange } from "@/lib/lab/recordSync";
 import { labStore } from "@/lib/lab/storage";
 import { buildExport, readImportFile } from "@/lib/lab/transfer";
 
@@ -18,7 +18,7 @@ export type ImportOutcome =
     }
   | { readonly ok: false; readonly tooLarge: boolean };
 
-export interface LabRecord extends Omit<LabData, "reload"> {
+export interface LabRecord extends LabData {
   download(): Promise<void>;
   importFile(file: File): Promise<ImportOutcome>;
 }
@@ -27,7 +27,7 @@ const EXPORT_FILE = "memory-chess-lab-record.json";
 const REVOKE_AFTER_MS = 30_000;
 
 export function useLabRecord(): LabRecord {
-  const { reload, ...data } = useLabData();
+  const data = useLabData();
   const [exportedAt, setExportedAt] = useState<number | null>(null);
 
   const download = useCallback(async () => {
@@ -64,15 +64,14 @@ export function useLabRecord(): LabRecord {
         const restored = exported && (await store.restore(parsed.rounds, exported));
         const added = restored ?? (await store.mergeRounds(parsed.rounds));
         trackEvent({ name: "lab_import", params: { added, rejected: parsed.rejected } });
-        await reload();
-        tellOtherTabs();
+        if (restored !== null || added > 0) announceLabChange();
         const summary = parsed.summary === "dropped" ? "dropped" : exported && (restored === null ? "ignored" : "restored");
         return { ok: true, added, rejected: parsed.rejected, overCap: parsed.overCap, summary };
       } catch {
         return { ok: false, tooLarge: false };
       }
     },
-    [reload],
+    [],
   );
 
   return { ...data, lastBackup: exportedAt ?? data.lastBackup, download, importFile };

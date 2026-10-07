@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { deriveLab, type LabInput, type LabResults } from "@/lib/lab/metrics";
 import { localDayOf, type RoundRecord } from "@/lib/lab/record";
 import { onLabChange } from "@/lib/lab/recordSync";
@@ -9,7 +9,7 @@ import { EMPTY_SUMMARY, type LabSummary } from "@/lib/lab/summary";
 
 export type LabStorageState = "loading" | "available" | "unavailable";
 
-interface LabSnapshot {
+export interface LabData {
   readonly storage: LabStorageState;
   readonly records: readonly RoundRecord[];
   readonly summary: LabSummary;
@@ -18,13 +18,9 @@ interface LabSnapshot {
   readonly today: string;
 }
 
-export interface LabData extends LabSnapshot {
-  reload(): Promise<void>;
-}
+const LOADING: LabData = { storage: "loading", records: [], summary: EMPTY_SUMMARY, lastBackup: null, today: "" };
 
-const LOADING: LabSnapshot = { storage: "loading", records: [], summary: EMPTY_SUMMARY, lastBackup: null, today: "" };
-
-async function readLab(): Promise<Partial<LabSnapshot> | null> {
+async function readLab(): Promise<Partial<LabData> | null> {
   const store = labStore();
   if (!store) return null;
   const available = await store.isAvailable();
@@ -40,45 +36,44 @@ async function readLab(): Promise<Partial<LabSnapshot> | null> {
  * it lazily.
  */
 export function useLabData(): LabData {
-  const [snapshot, setSnapshot] = useState<LabSnapshot>(LOADING);
-  const request = useRef<() => Promise<void>>(() => Promise.resolve());
+  const [data, setData] = useState<LabData>(LOADING);
 
   useEffect(() => {
     let live = true;
     let requested = 0;
     let answered = 0;
-    let running: Promise<void> | null = null;
+    let reading = false;
     let missedWhileHidden = false;
 
     // One read at a time: a change during a read makes its answer stale, so it is dropped and the record read once more.
     const readUntilCurrent = async () => {
+      reading = true;
       try {
         while (live && answered < requested) {
           const asked = requested;
           const next = await readLab();
           answered = asked;
-          if (live && next && asked === requested) setSnapshot((previous) => ({ ...previous, ...next }));
+          if (live && next && asked === requested) setData((previous) => ({ ...previous, ...next }));
         }
       } finally {
-        running = null;
+        reading = false;
       }
     };
-    request.current = () => {
+    const reload = () => {
       requested += 1;
-      running ??= readUntilCurrent();
-      return running;
+      if (!reading) void readUntilCurrent();
     };
     const onChange = () => {
       if (document.visibilityState === "hidden") missedWhileHidden = true;
-      else void request.current();
+      else reload();
     };
     const onVisibility = () => {
       if (document.visibilityState === "hidden" || !missedWhileHidden) return;
       missedWhileHidden = false;
-      void request.current();
+      reload();
     };
 
-    void request.current();
+    reload();
     const stopListening = onLabChange(onChange);
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
@@ -88,8 +83,7 @@ export function useLabData(): LabData {
     };
   }, []);
 
-  const reload = useCallback(() => request.current(), []);
-  return { ...snapshot, reload };
+  return data;
 }
 
 export function useLabResults({ records, summary, today }: LabInput): LabResults {

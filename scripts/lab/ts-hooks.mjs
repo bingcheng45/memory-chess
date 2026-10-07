@@ -5,7 +5,7 @@
  * resolved here, which keeps fixtures built from the app's real code.
  */
 import { existsSync, readFileSync, statSync } from "node:fs";
-import { registerHooks } from "node:module";
+import * as nodeModule from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import ts from "typescript";
@@ -15,7 +15,12 @@ const CANDIDATES = ["", ".ts", ".tsx", "/index.ts"];
 const inSrc = (url) => url?.startsWith("file:") && fileURLToPath(url).startsWith(SRC);
 const isFile = (path) => existsSync(path) && statSync(path).isFile();
 
-registerHooks({
+if (typeof nodeModule.registerHooks !== "function") {
+  console.error(`This script needs Node 22.15 or newer (module.registerHooks). Found Node ${process.version}.`);
+  process.exit(2);
+}
+
+nodeModule.registerHooks({
   resolve(specifier, context, nextResolve) {
     const base = specifier.startsWith("@/")
       ? join(SRC, specifier.slice(2))

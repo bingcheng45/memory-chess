@@ -1,6 +1,6 @@
 import { scoreReading, type LabPosition } from "@/lib/home/calibration";
 
-/** The illustrative position the hero and the microscope diagram study. Legal under the real game's rules. */
+/** The illustrative position the microscope diagram studies. Legal under the real game's rules. */
 export const SPECIMEN: LabPosition = {
   g1: { color: "white", type: "king" },
   f2: { color: "white", type: "pawn" },
@@ -19,8 +19,6 @@ export const SPECIMEN_RECALL: LabPosition = Object.fromEntries([
 ]);
 
 export const SPECIMEN_SCORE = scoreReading(SPECIMEN, SPECIMEN_RECALL);
-
-export const SPECIMEN_STUDY_SECONDS = 10;
 
 export type MicroscopePhaseId = "study" | "chunk" | "blank" | "rebuild" | "score";
 

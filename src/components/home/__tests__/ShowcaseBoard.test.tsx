@@ -26,6 +26,20 @@ describe("ShowcaseBoard", () => {
     expect(screen.getByRole("button", { name: "Pause" })).toBeInTheDocument();
   });
 
+  it("has copy for every step, group and inspected piece", () => {
+    const { container } = renderWithIntl(<ShowcaseBoard />);
+    const spoken = () => container.textContent ?? "";
+
+    SHOWCASE_STEPS.forEach(() => {
+      expect(spoken()).not.toMatch(/home\.lab|\bsteps\.|\btags\./);
+      next();
+    });
+    screen.getAllByRole("button", { name: / on [a-h][1-8]$/ }).forEach((button) => {
+      fireEvent.click(button);
+      expect(spoken()).not.toMatch(/home\.lab|\binspect\./);
+    });
+  });
+
   it("circles the groups one at a time and keeps the earlier ones", () => {
     const { container } = renderWithIntl(<ShowcaseBoard />);
     const circled = () => container.querySelectorAll(".lab-sc-group[data-on]").length;

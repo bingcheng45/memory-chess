@@ -92,18 +92,11 @@ html:has(.lab), html:has(.lab) body { overflow-x: clip; }
 .lab-facts { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--lab-line); }
 .lab-facts div { font-size: 14px; color: var(--lab-ink-2); }
 .lab-facts b { display: block; font: 600 22px var(--lab-mono); color: var(--lab-ink); letter-spacing: -0.02em; }
-.lab-specimen { margin: 0; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 18px; box-shadow: 0 1px 0 var(--lab-line); }
-.lab-spec-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
-.lab-spec-top .lab-mono, .lab-scope-status .lab-mono { text-transform: none; }
+.lab-scope-status .lab-mono { text-transform: none; }
 .lab-live { display: flex; align-items: center; gap: 6px; }
 .lab-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--lab-mark); animation: lab-blink 1.4s infinite; flex: none; }
 @keyframes lab-blink { 50% { opacity: 0.25; } }
-.lab-scan { position: absolute; left: 22px; right: 22px; top: 22px; height: 2px; background: linear-gradient(90deg, transparent, var(--lab-blue), transparent); opacity: 0.6; animation: lab-scan 4.5s ease-in-out infinite; pointer-events: none; }
-@keyframes lab-scan { 50% { transform: translateY(calc(100cqw - 46px)); } }
-.lab-readout { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--lab-line); margin-top: 12px; min-height: 66px; }
-.lab-readout div { padding: 12px 4px 2px; }
-.lab-readout b { display: block; font: 600 20px var(--lab-mono); font-variant-numeric: tabular-nums; }
-@media (max-width: 900px) { .lab-hero .lab-wrap { grid-template-columns: 1fr; } .lab-specimen { max-width: 480px; } }
+@media (max-width: 900px) { .lab-hero .lab-wrap { grid-template-columns: 1fr; } }
 
 .lab-nb { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--lab-ink); }
 .lab-nb article { padding: 28px 28px 28px 0; border-right: 1px solid var(--lab-line); }
@@ -171,7 +164,6 @@ html:has(.lab), html:has(.lab) body { overflow-x: clip; }
 
 @media (prefers-reduced-motion: reduce) {
   .lab *, .lab *::before, .lab *::after { animation: none !important; transition: none !important; }
-  .lab-scan { display: none; }
 }
 
 @media (max-width: 640px) {

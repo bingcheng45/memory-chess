@@ -167,13 +167,6 @@
           "plays": "games played",
           "languages": "languages"
         },
-        "specimen": {
-          "aria": "Example position under study",
-          "label": "Specimen 014 · study phase",
-          "pieces": "Pieces",
-          "exposure": "Exposure",
-          "plays": "Games played"
-        },
         "showcase": {
           "aria": "Deep Fritz against Vladimir Kramnik, Bonn 2006, with a guided study of the position",
           "event": "Man vs machine · Game 2",

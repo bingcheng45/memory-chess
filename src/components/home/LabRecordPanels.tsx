@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import type { LabResults, MissCell } from "@/lib/lab/metrics";
+import type { LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
 import { hasFigure } from "@/lib/lab/readiness";
 import type { PieceSymbol } from "chess.js";
 import { FILES, RANKS } from "@/lib/game/board";
@@ -148,10 +148,10 @@ export function BestsPanel({ result: { readiness, value: bests } }: { result: La
 
   return (
     <div className="lab-panel lab-p-bests">
-      <PanelHead fig={t("bests.fig")} tag={bests && hasFigure(readiness) ? tags.mine : null} />
+      <PanelHead fig={t("bests.fig")} tag={bests ? tags.mine : null} />
       <h3>{t("bests.title")}</h3>
       <p className="lab-panel-desc">{t("bests.desc")}</p>
-      {bests && hasFigure(readiness) ? (
+      {bests ? (
         <>
           <dl className="lab-bests">
             {bests.entries.map((best) => (
@@ -178,7 +178,7 @@ export function TypesPanel({ result: { readiness, value: recall } }: { result: L
   const pieces = useTranslations("home.lab.calibrate.pieceTypes");
   const tags = useTags();
   const typeName = (type: PieceSymbol) => pieces(mapChessJsPieceToType(type));
-  const kings = recall && <p className="lab-note">{t("types.kings", { recalled: recall.king.recalled, shown: recall.king.shown })}</p>;
+  const kings = (king: TypeRecall) => <p className="lab-note">{t("types.kings", { recalled: king.recalled, shown: king.shown })}</p>;
   const ready = recall && hasFigure(readiness);
 
   return (
@@ -197,13 +197,13 @@ export function TypesPanel({ result: { readiness, value: recall } }: { result: L
               />
             ))}
           </div>
-          {kings}
+          {kings(recall.king)}
           <p className="lab-note">{t("fromRounds", { count: readiness.sampleSize })}</p>
         </>
       ) : recall?.onlyKings ? (
         <>
           <p className="lab-panel-desc lab-empty">{t("types.onlyKings")}</p>
-          {kings}
+          {kings(recall.king)}
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">

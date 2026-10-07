@@ -1,5 +1,5 @@
 import type { PieceSymbol } from "chess.js";
-import { readinessOf, LAB_THRESHOLDS, type Readiness, type Thresholds } from "./readiness";
+import { hasFigure, readinessOf, LAB_THRESHOLDS, type Need, type Readiness, type Thresholds } from "./readiness";
 import { LAB_SOURCES, localDayOf, PIECE_LETTERS, settingKey, type LabSource, type RoundConfig, type RoundRecordV1 } from "./record";
 import type { LabSummary, PersonalBest } from "./summary";
 
@@ -29,7 +29,10 @@ function measured<TValue>(readiness: Readiness, value: () => TValue): MetricResu
   return { readiness, value: readiness.state === "empty" ? null : value() };
 }
 
-const lastDayOf = (summary: LabSummary) => summary.days.at(-1) ?? null;
+/** Staleness reads the player's last day of play, the same for every metric. */
+function readinessFor({ summary, today }: LabInput, measure: { sampleSize: number; have: Need; thresholds: Thresholds }): Readiness {
+  return readinessOf({ ...measure, lastDay: summary.days.at(-1) ?? null, today });
+}
 
 // Streak
 
@@ -55,15 +58,9 @@ function run(played: ReadonlySet<string>, day: string, step: -1 | 1): number {
 
 const STREAK_THRESHOLDS = { days: LAB_THRESHOLDS.streakDays };
 
-function computeStreak({ summary, today }: LabInput): MetricResult<StreakValue> {
-  const { days } = summary;
-  const readiness = readinessOf({
-    sampleSize: days.length,
-    have: { days: days.length },
-    thresholds: STREAK_THRESHOLDS,
-    lastDay: lastDayOf(summary),
-    today,
-  });
+function computeStreak(input: LabInput): MetricResult<StreakValue> {
+  const { summary: { days }, today } = input;
+  const readiness = readinessFor(input, { sampleSize: days.length, have: { days: days.length }, thresholds: STREAK_THRESHOLDS });
   return measured(readiness, () => {
     const played = new Set(days);
     return {
@@ -93,14 +90,9 @@ export interface BestsValue {
 
 const BESTS_THRESHOLDS = { rounds: 1 };
 
-function computeBests({ summary, today }: LabInput): MetricResult<BestsValue> {
-  const readiness = readinessOf({
-    sampleSize: summary.rounds,
-    have: { rounds: summary.rounds },
-    thresholds: BESTS_THRESHOLDS,
-    lastDay: lastDayOf(summary),
-    today,
-  });
+function computeBests(input: LabInput): MetricResult<BestsValue> {
+  const { summary } = input;
+  const readiness = readinessFor(input, { sampleSize: summary.rounds, have: { rounds: summary.rounds }, thresholds: BESTS_THRESHOLDS });
   return measured(readiness, () => ({
     entries: Object.entries(summary.bests)
       .map(([key, best]) => {
@@ -128,26 +120,23 @@ export interface TrendValue {
 
 const TREND_THRESHOLDS = { rounds: LAB_THRESHOLDS.trendRounds, days: LAB_THRESHOLDS.trendDays };
 
-function trendGroup(rounds: readonly RoundRecordV1[], lastDay: string | null, today: string) {
-  const readiness = readinessOf({
+function trendGroup(input: LabInput, rounds: readonly RoundRecordV1[]) {
+  const readiness = readinessFor(input, {
     sampleSize: rounds.length,
     have: { rounds: rounds.length, days: new Set(rounds.map((record) => record.localDay)).size },
     thresholds: TREND_THRESHOLDS,
-    lastDay,
-    today,
   });
   const latest = rounds.reduce((max, record) => Math.max(max, record.endedAt), 0);
-  return { rounds, readiness, latest, ready: readiness.need === undefined };
+  return { rounds, readiness, latest, ready: hasFigure(readiness) };
 }
 
 /**
  * Accuracy for one setting only: mixing settings would read harder rounds as decline.
  * A setting that can draw wins over one with more rounds that cannot, then most rounds, then most recent.
  */
-function computeTrend({ records, summary, today }: LabInput): MetricResult<TrendValue> {
-  const lastDay = lastDayOf(summary);
+function computeTrend(input: LabInput): MetricResult<TrendValue> {
   const bySetting = new Map<string, RoundRecordV1[]>();
-  records.forEach((record) => {
+  input.records.forEach((record) => {
     const key = settingKey(record.source, record.config);
     const group = bySetting.get(key);
     if (group) group.push(record);
@@ -155,9 +144,9 @@ function computeTrend({ records, summary, today }: LabInput): MetricResult<Trend
   });
   const { rounds, readiness } =
     [...bySetting.values()]
-      .map((group) => trendGroup(group, lastDay, today))
+      .map((group) => trendGroup(input, group))
       .sort((a, b) => Number(b.ready) - Number(a.ready) || b.rounds.length - a.rounds.length || b.latest - a.latest)[0] ??
-    trendGroup([], lastDay, today);
+    trendGroup(input, []);
 
   return measured(readiness, () => {
     const sorted = [...rounds].sort((a, b) => a.endedAt - b.endedAt);
@@ -196,30 +185,25 @@ function roundsToReach(threshold: number, have: number, rounds: number): number 
 
 const TYPE_THRESHOLDS = { exposures: LAB_THRESHOLDS.typeExposures };
 
-function computeTypeRecall({ summary, today }: LabInput): MetricResult<TypeRecallValue> {
+function computeTypeRecall(input: LabInput): MetricResult<TypeRecallValue> {
+  const { summary } = input;
   const recallOf = (type: PieceSymbol): TypeRecall => {
     const shown = summary.typeShown[type] ?? 0;
     return {
       type,
       shown,
       recalled: shown - (summary.typeMissed[type] ?? 0),
-      ready: shown >= LAB_THRESHOLDS.typeExposures,
+      ready: shown >= TYPE_THRESHOLDS.exposures,
     };
   };
   const types = PIECE_LETTERS.filter((type) => type !== "k").map(recallOf);
   const mostShown = Math.max(...types.map(({ shown }) => shown));
-  const readiness = readinessOf({
-    sampleSize: summary.rounds,
-    have: { exposures: mostShown },
-    thresholds: TYPE_THRESHOLDS,
-    lastDay: lastDayOf(summary),
-    today,
-  });
+  const readiness = readinessFor(input, { sampleSize: summary.rounds, have: { exposures: mostShown }, thresholds: TYPE_THRESHOLDS });
   return measured(readiness, () => ({
     types,
     king: recallOf("k"),
     onlyKings: mostShown === 0,
-    roundsEstimate: roundsToReach(LAB_THRESHOLDS.typeExposures, mostShown, summary.rounds),
+    roundsEstimate: roundsToReach(TYPE_THRESHOLDS.exposures, mostShown, summary.rounds),
   }));
 }
 
@@ -240,29 +224,24 @@ export interface MissMapValue {
   readonly roundsEstimate: number | null;
 }
 
+const MISS_THRESHOLDS = { exposures: LAB_THRESHOLDS.squareExposures };
+
 function cell(shown: number, missed: number): MissCell {
-  return { shown, missed, ready: shown >= LAB_THRESHOLDS.squareExposures };
+  return { shown, missed, ready: shown >= MISS_THRESHOLDS.exposures };
 }
 
 function sumLine(values: readonly number[], inLine: (index: number) => boolean): number {
   return values.reduce((sum, value, index) => (inLine(index) ? sum + value : sum), 0);
 }
 
-const MISS_THRESHOLDS = { exposures: LAB_THRESHOLDS.squareExposures };
-
-function computeMissMap({ summary, today }: LabInput): MetricResult<MissMapValue> {
+function computeMissMap(input: LabInput): MetricResult<MissMapValue> {
+  const { summary } = input;
   const { squareShown, squareMissed } = summary;
   const line = (inLine: (index: number) => boolean) => cell(sumLine(squareShown, inLine), sumLine(squareMissed, inLine));
   const files = Array.from({ length: 8 }, (_, file) => line((index) => index % 8 === file));
   const ranks = Array.from({ length: 8 }, (_, row) => line((index) => Math.floor(index / 8) === row));
   const thinnest = Math.min(...files.map(({ shown }) => shown), ...ranks.map(({ shown }) => shown));
-  const readiness = readinessOf({
-    sampleSize: summary.rounds,
-    have: { exposures: thinnest },
-    thresholds: MISS_THRESHOLDS,
-    lastDay: lastDayOf(summary),
-    today,
-  });
+  const readiness = readinessFor(input, { sampleSize: summary.rounds, have: { exposures: thinnest }, thresholds: MISS_THRESHOLDS });
   return measured(readiness, () => {
     const squares = squareShown.map((shown, index) => cell(shown, squareMissed[index]));
     return {
@@ -270,7 +249,7 @@ function computeMissMap({ summary, today }: LabInput): MetricResult<MissMapValue
       squares,
       files,
       ranks,
-      roundsEstimate: roundsToReach(LAB_THRESHOLDS.squareExposures, thinnest, summary.rounds),
+      roundsEstimate: roundsToReach(MISS_THRESHOLDS.exposures, thinnest, summary.rounds),
     };
   });
 }

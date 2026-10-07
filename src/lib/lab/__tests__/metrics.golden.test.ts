@@ -43,13 +43,17 @@ function legacy(input: LabInput): Record<MetricId, Record<string, unknown>> {
   };
 }
 
-async function inputFor(name: PersonaName): Promise<LabInput> {
+async function buildInput(name: PersonaName): Promise<LabInput> {
   const file = await exportPersona(name, memoryLabStore(new IDBFactory()));
   if (!file.summary) throw new Error(`${name} exported no summary`);
   return { records: file.rounds, summary: file.summary, today: PERSONA_TODAY };
 }
 
-const resultsFor = async (name: PersonaName): Promise<LabResults> => deriveLab(await inputFor(name));
+const inputs = new Map<PersonaName, Promise<LabInput>>();
+function inputFor(name: PersonaName): Promise<LabInput> {
+  if (!inputs.has(name)) inputs.set(name, buildInput(name));
+  return inputs.get(name) as Promise<LabInput>;
+}
 
 describe("metric engine on the persona fixtures", () => {
   it.each(PERSONA_NAMES.filter((name) => name !== "newVisitor"))("matches the pre-engine derive output for %s", async (name) => {
@@ -73,7 +77,7 @@ describe("metric engine on the persona fixtures", () => {
   it("names what recall by type and the miss map still need for each persona", async () => {
     const needs = await Promise.all(
       PERSONA_NAMES.map(async (name) => {
-        const { typeRecall, missMap } = await resultsFor(name);
+        const { typeRecall, missMap } = deriveLab(await inputFor(name));
         return [name, { typeRecall: typeRecall.readiness.need, missMap: missMap.readiness.need }] as const;
       }),
     );
@@ -92,7 +96,7 @@ describe("metric engine on the persona fixtures", () => {
   it("puts every persona in the readiness state its history earns", async () => {
     const states = await Promise.all(
       PERSONA_NAMES.map(async (name) => {
-        const results = await resultsFor(name);
+        const results = deriveLab(await inputFor(name));
         return [name, Object.fromEntries(Object.entries(results).map(([id, { readiness }]) => [id, readiness.state]))] as const;
       }),
     );

@@ -126,8 +126,8 @@ function parseFileSummary(raw: unknown, rounds: readonly RoundRecordV1[], now: n
   const played = summary.rounds > 0;
   const valid =
     summary.rounds >= rounds.length &&
-    played === summary.days.length > 0 &&
-    played === bests.length > 0 &&
+    (summary.days.length > 0) === played &&
+    (bests.length > 0) === played &&
     summary.days.length <= MAX_DAYS &&
     summary.days.every((day, index) => isCalendarDay(day) && day <= localDayOf(new Date(now + DAY_MS)) && (index === 0 || summary.days[index - 1] < day)) &&
     bests.length <= MAX_BESTS &&

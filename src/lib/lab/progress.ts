@@ -1,12 +1,14 @@
 import {
   busiestSetting,
   countsForTrend,
+  distinctDays,
   hundredths,
   mean,
   measured,
   readinessFor,
   settingOf,
   shiftDay,
+  TREND_THRESHOLDS,
   type LabInput,
   type MetricResult,
   type TrendSetting,
@@ -81,55 +83,49 @@ function usualStudyTime(rounds: readonly RoundRecord[]): number {
   return [...counts].reduce((best, entry) => (entry[1] > best[1] ? entry : best))[0];
 }
 
-/** Qualifying rounds per piece count, folded one round at a time so the history needs one pass. */
-class SpanTally {
-  private readonly qualifying = new Map<number, number>();
-  span: number | null = null;
-  most = 0;
+type QualifyingCounts = Map<number, number>;
 
-  add({ accuracy, config: { pieceCount } }: RoundRecord) {
-    if (accuracy < LAB_THRESHOLDS.spanAccuracy) return;
-    const count = (this.qualifying.get(pieceCount) ?? 0) + 1;
-    this.qualifying.set(pieceCount, count);
-    this.most = Math.max(this.most, count);
-    if (count >= LAB_THRESHOLDS.spanRounds && pieceCount > (this.span ?? 0)) this.span = pieceCount;
-  }
-
-  at(pieceCount: number): number {
-    return this.qualifying.get(pieceCount) ?? 0;
-  }
+/** Counts are keyed by piece count. The caller folds rounds in one at a time, so the history needs one pass. */
+function addQualifying(counts: QualifyingCounts, { accuracy, config: { pieceCount } }: RoundRecord): QualifyingCounts {
+  if (accuracy >= LAB_THRESHOLDS.spanAccuracy) counts.set(pieceCount, (counts.get(pieceCount) ?? 0) + 1);
+  return counts;
 }
+
+function spanOf(counts: QualifyingCounts): number | null {
+  const held = [...counts].filter(([, count]) => count >= LAB_THRESHOLDS.spanRounds).map(([pieceCount]) => pieceCount);
+  return held.length === 0 ? null : Math.max(...held);
+}
+
+const countQualifying = (rounds: readonly RoundRecord[]) => rounds.reduce(addQualifying, new Map());
 
 export function computeSpan(input: LabInput): MetricResult<SpanValue> {
   const rounds = trendRounds(input);
   const memorizeSeconds = rounds.length === 0 ? 0 : usualStudyTime(rounds);
   const atTime = (record: RoundRecord) => record.config.memorizeSeconds === memorizeSeconds;
   const timed = rounds.filter(atTime);
-  const now = new SpanTally();
-  timed.forEach((record) => now.add(record));
+  const counts = countQualifying(timed);
   const readiness = readinessFor(input, {
     sampleSize: timed.length,
-    have: { qualifyingRounds: now.most },
+    have: { qualifyingRounds: Math.max(0, ...counts.values()) },
     thresholds: SPAN_THRESHOLDS,
   });
 
   return measured(readiness, () => {
-    const running = new SpanTally();
+    const running: QualifyingCounts = new Map();
     const history = sessionRuns(rounds).map((run) => {
-      run.filter(atTime).forEach((record) => running.add(record));
-      return { endedAt: run[run.length - 1].endedAt, pieceCount: running.span };
+      run.filter(atTime).forEach((record) => addQualifying(running, record));
+      return { endedAt: run[run.length - 1].endedAt, pieceCount: spanOf(running) };
     });
     const cutoff = input.today === "" ? null : shiftDay(input.today, -7);
-    const then = new SpanTally();
-    if (cutoff) timed.filter(({ localDay }) => localDay <= cutoff).forEach((record) => then.add(record));
-    const weekAgo = cutoff ? then.span : null;
+    const weekAgo = cutoff === null ? null : spanOf(countQualifying(timed.filter(({ localDay }) => localDay <= cutoff)));
+    const pieceCount = spanOf(counts);
     return {
-      pieceCount: now.span,
+      pieceCount,
       memorizeSeconds,
-      qualifyingRounds: now.span === null ? 0 : now.at(now.span),
+      qualifyingRounds: pieceCount === null ? 0 : (counts.get(pieceCount) ?? 0),
       history,
       weekAgo,
-      change: now.span !== null && weekAgo !== null ? now.span - weekAgo : null,
+      change: pieceCount !== null && weekAgo !== null ? pieceCount - weekAgo : null,
     };
   });
 }
@@ -142,14 +138,14 @@ export interface PiecesHeldValue {
   readonly recent: RecentChange;
 }
 
-export const PIECES_THRESHOLDS = { rounds: LAB_THRESHOLDS.trendRounds, days: LAB_THRESHOLDS.trendDays };
+export const PIECES_THRESHOLDS = TREND_THRESHOLDS;
 
 /** Correct pieces, unlike accuracy, does not fall when a player moves up to a harder setting. */
 export function computePiecesHeld(input: LabInput): MetricResult<PiecesHeldValue> {
   const rounds = trendRounds(input);
   const readiness = readinessFor(input, {
     sampleSize: rounds.length,
-    have: { rounds: rounds.length, days: new Set(rounds.map(({ localDay }) => localDay)).size },
+    have: { rounds: rounds.length, days: distinctDays(rounds) },
     thresholds: PIECES_THRESHOLDS,
   });
 
@@ -184,12 +180,14 @@ export function computeSpeed(input: LabInput): MetricResult<SpeedValue> {
   const { rounds, readiness } = busiestSetting(input, trendRounds(input).filter(({ correct }) => correct > 0), SPEED_THRESHOLDS);
 
   return measured(readiness, () => {
-    const shown = rounds.slice(-LAB_THRESHOLDS.trendPoints);
+    const shown = rounds.slice(-Math.max(LAB_THRESHOLDS.trendPoints, 2 * LAB_THRESHOLDS.rollingWindow));
+    const perPiece = shown.map(secondsPerPiece);
+    const accuracy = shown.map((record) => record.accuracy);
     return {
       setting: settingOf(rounds[0]),
-      points: shown.map((record) => hundredths(secondsPerPiece(record))),
-      recent: recentChange(rounds.map(secondsPerPiece)),
-      accuracyAtSameRounds: { points: shown.map(({ accuracy }) => accuracy), recent: recentChange(rounds.map(({ accuracy }) => accuracy)) },
+      points: perPiece.slice(-LAB_THRESHOLDS.trendPoints).map(hundredths),
+      recent: recentChange(perPiece),
+      accuracyAtSameRounds: { points: accuracy.slice(-LAB_THRESHOLDS.trendPoints), recent: recentChange(accuracy) },
     };
   });
 }

@@ -1,4 +1,4 @@
-import { hasFigure, readinessOf, type Need, type Readiness } from "./readiness";
+import { hasFigure, LAB_THRESHOLDS, readinessOf, type Need, type Readiness } from "./readiness";
 import { localDayOf, ROUND_KINDS, settingKey, type LabSource, type RoundConfig, type RoundKind, type RoundRecord } from "./record";
 import type { LabSummary } from "./summary";
 import { byEndedAt } from "./sessions";
@@ -47,6 +47,10 @@ export const settingOf = ({ source, config }: RoundRecord): TrendSetting => ({
   memorizeSeconds: config.memorizeSeconds,
 });
 
+export const TREND_THRESHOLDS = { rounds: LAB_THRESHOLDS.trendRounds, days: LAB_THRESHOLDS.trendDays };
+
+export const distinctDays = (rounds: readonly RoundRecord[]) => new Set(rounds.map(({ localDay }) => localDay)).size;
+
 export interface SettingGroup {
   /** Oldest first. */
   readonly rounds: readonly RoundRecord[];
@@ -56,7 +60,7 @@ export interface SettingGroup {
 function groupOf(input: LabInput, rounds: readonly RoundRecord[], thresholds: Need) {
   const readiness = readinessFor(input, {
     sampleSize: input.summary.rounds === 0 ? 0 : rounds.length,
-    have: { rounds: rounds.length, days: new Set(rounds.map((record) => record.localDay)).size },
+    have: { rounds: rounds.length, days: distinctDays(rounds) },
     thresholds,
   });
   const latest = rounds.reduce((max, record) => Math.max(max, record.endedAt), 0);

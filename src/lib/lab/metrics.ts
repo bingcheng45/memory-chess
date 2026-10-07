@@ -9,6 +9,7 @@ import {
   settingOf,
   shiftDay,
   type LabInput,
+  TREND_THRESHOLDS,
   type MetricResult,
   type TrendSetting,
 } from "./engine";
@@ -27,7 +28,7 @@ import {
   type SpeedValue,
 } from "./progress";
 import { LAB_THRESHOLDS, type Need } from "./readiness";
-import { LAB_SOURCES, PIECE_LETTERS, type LabSource, type RoundRecord } from "./record";
+import { LAB_SOURCES, PIECE_LETTERS, settingKey, type LabSource, type RoundRecord } from "./record";
 import { sessionRuns } from "./sessions";
 import type { PersonalBest } from "./summary";
 
@@ -120,13 +121,11 @@ export interface TrendValue {
   readonly granularity: "round" | "session";
 }
 
-const TREND_THRESHOLDS = { rounds: LAB_THRESHOLDS.trendRounds, days: LAB_THRESHOLDS.trendDays };
-
 /** Sessions are sittings over every round, so a setting's rounds stay in one session when other settings are played between them. */
-function sessionAccuracy(records: readonly RoundRecord[], setting: readonly RoundRecord[]): number[] {
-  const inSetting = new Set(setting);
+function sessionAccuracy(records: readonly RoundRecord[], { source, pieceCount, memorizeSeconds }: TrendSetting): number[] {
+  const key = settingKey(source, { pieceCount, memorizeSeconds });
   return sessionRuns(records).flatMap((run) => {
-    const accuracies = run.filter((record) => inSetting.has(record)).map(({ accuracy }) => accuracy);
+    const accuracies = run.filter((record) => settingKey(record.source, record.config) === key).map(({ accuracy }) => accuracy);
     return accuracies.length === 0 ? [] : [hundredths(mean(accuracies))];
   });
 }
@@ -136,10 +135,11 @@ function computeTrend(input: LabInput): MetricResult<TrendValue> {
   const { rounds, readiness } = busiestSetting(input, records, TREND_THRESHOLDS);
 
   return measured(readiness, () => {
-    const bySession = sessionAccuracy(records, rounds);
+    const setting = settingOf(rounds[0]);
+    const bySession = sessionAccuracy(records, setting);
     const bySessions = rounds.length >= LAB_THRESHOLDS.sessionTrendRounds && bySession.length >= LAB_THRESHOLDS.sessionTrendSessions;
     return {
-      setting: settingOf(rounds[0]),
+      setting,
       points: rounds.slice(-LAB_THRESHOLDS.trendPoints).map((record) => record.accuracy),
       bySession: bySession.slice(-LAB_THRESHOLDS.trendPoints),
       granularity: bySessions ? "session" : "round",

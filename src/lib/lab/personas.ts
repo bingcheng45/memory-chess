@@ -1,3 +1,5 @@
+import { BOARD_SQUARES } from "@/lib/game/board";
+import { placementFromFen } from "@/lib/game/scoring";
 import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
 import { buildRoundRecord, type LabSource, type RoundRecordV1 } from "./record";
 import { createLabStore, type LabStore } from "./storage";
@@ -28,7 +30,7 @@ interface Setting {
   readonly memorizeSeconds: number;
 }
 
-/** One planned round: how many days before today it was played, at what setting, and how likely each piece is missed. */
+/** One planned round: how many days before today it was played, at what setting. */
 interface PlannedRound extends Setting {
   readonly daysAgo: number;
 }
@@ -61,8 +63,7 @@ const edgesAndQueens: MissChance = (square, piece) => {
 function daily(days: readonly number[], perDay: (daysAgo: number, slot: number) => Setting | null, slots: number): PlannedRound[] {
   return days.flatMap((daysAgo) =>
     Array.from({ length: slots }, (_, slot) => perDay(daysAgo, slot))
-      .filter((setting): setting is Setting => setting !== null)
-      .map((setting) => ({ ...setting, daysAgo })),
+      .flatMap((setting) => (setting ? [{ ...setting, daysAgo }] : [])),
   );
 }
 
@@ -101,44 +102,33 @@ function seeded(seed: number): () => number {
   };
 }
 
-function shiftDay(day: string, by: number): { localDay: string; noonUtc: number } {
+/** Noon UTC, so a persona's days are the same calendar days in every timezone. */
+function noonUtc(day: string, by = 0): number {
   const [year, month, date] = day.split("-").map(Number);
-  const noonUtc = Date.UTC(year, month - 1, date + by, 12);
-  return { localDay: new Date(noonUtc).toISOString().slice(0, 10), noonUtc };
+  return Date.UTC(year, month - 1, date + by, 12);
 }
 
-function boardFen(squares: ReadonlyMap<string, string>): string {
-  return ["8", "7", "6", "5", "4", "3", "2", "1"]
-    .map((rank) =>
-      ["a", "b", "c", "d", "e", "f", "g", "h"]
-        .map((file) => squares.get(`${file}${rank}`) ?? "1")
-        .join("")
-        .replace(/1+/g, (run) => String(run.length)),
-    )
-    .join("/");
+function boardFen(placement: Readonly<Record<string, string>>): string {
+  const rows = Array.from({ length: 8 }, (_, row) => BOARD_SQUARES.slice(row * 8, row * 8 + 8).map((square) => placement[square] ?? "1").join(""));
+  return rows.map((row) => row.replace(/1+/g, (run) => String(run.length))).join("/");
 }
 
 export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY): RoundRecordV1[] {
   const { seed, rounds, missChance } = PLANS[name];
   const random = seeded(seed);
-  const perDay = new Map<number, number>();
+  const slots = new Map<number, number>();
 
   return rounds.map((planned, index) => {
-    const slot = perDay.get(planned.daysAgo) ?? 0;
-    perDay.set(planned.daysAgo, slot + 1);
-    const { localDay, noonUtc } = shiftDay(today, -planned.daysAgo);
-    const position = generateMemorizationPosition(planned.pieceCount, random);
-    const target = new Map(
-      (position?.board().flat() ?? []).flatMap((piece) =>
-        piece ? [[piece.square as string, piece.color === "w" ? piece.type.toUpperCase() : piece.type] as const] : [],
-      ),
-    );
-    const placed = new Map([...target].filter(([square, piece]) => random() >= missChance(square, piece)));
+    const slot = slots.get(planned.daysAgo) ?? 0;
+    slots.set(planned.daysAgo, slot + 1);
+    const playedAt = noonUtc(today, -planned.daysAgo);
+    const target = placementFromFen(generateMemorizationPosition(planned.pieceCount, random)?.fen() ?? "8/8/8/8/8/8/8/8");
+    const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= missChance(square, piece)));
     return buildRoundRecord({
       id: `${name}-${index}`,
       source: planned.source,
-      endedAt: noonUtc + slot * 60_000,
-      localDay,
+      endedAt: playedAt + slot * 60_000,
+      localDay: new Date(playedAt).toISOString().slice(0, 10),
       pieceCount: planned.pieceCount,
       memorizeSeconds: planned.memorizeSeconds,
       targetFen: boardFen(target),
@@ -177,7 +167,7 @@ export async function exportPersona(
   name: PersonaName,
   store: LabStore,
   today: string = PERSONA_TODAY,
-  exportedAt: number = shiftDay(today, 0).noonUtc,
+  exportedAt: number = noonUtc(today),
 ): Promise<LabExportV2> {
   await store.mergeRounds(personaRounds(name, today));
   return buildExport(await store.listRounds(), exportedAt, await store.readSummary());

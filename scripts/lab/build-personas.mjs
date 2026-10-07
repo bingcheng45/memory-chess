@@ -19,7 +19,8 @@ const { localDayOf } = await fromSrc("lib/lab/record.ts");
 const args = process.argv.slice(2);
 const valuesOf = (flag) => args.flatMap((arg, index) => (arg === flag && args[index + 1] ? [args[index + 1]] : []));
 const today = valuesOf("--today")[0] ?? localDayOf(new Date());
-const outDirs = valuesOf("--out").length > 0 ? valuesOf("--out") : [".lab-personas"];
+const outs = valuesOf("--out");
+const outDirs = outs.length > 0 ? outs : [".lab-personas"];
 
 for (const dir of outDirs) mkdirSync(resolve(dir), { recursive: true });
 for (const name of PERSONA_NAMES) {

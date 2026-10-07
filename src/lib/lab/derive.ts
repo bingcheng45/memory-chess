@@ -99,11 +99,10 @@ export interface TrendResult {
 }
 
 function trendOf(rounds: readonly RoundRecordV1[]) {
-  const sorted = [...rounds].sort((a, b) => a.endedAt - b.endedAt);
-  const days = new Set(sorted.map((record) => record.localDay)).size;
-  const roundsNeeded = Math.max(0, LAB_THRESHOLDS.trendRounds - sorted.length);
-  const daysNeeded = Math.max(0, LAB_THRESHOLDS.trendDays - days);
-  return { sorted, roundsNeeded, daysNeeded, ready: roundsNeeded === 0 && daysNeeded === 0 };
+  const roundsNeeded = Math.max(0, LAB_THRESHOLDS.trendRounds - rounds.length);
+  const daysNeeded = Math.max(0, LAB_THRESHOLDS.trendDays - new Set(rounds.map((record) => record.localDay)).size);
+  const latest = rounds.reduce((max, record) => Math.max(max, record.endedAt), 0);
+  return { rounds, roundsNeeded, daysNeeded, latest, ready: roundsNeeded === 0 && daysNeeded === 0 };
 }
 
 /**
@@ -118,15 +117,12 @@ export function deriveTrend(records: readonly RoundRecordV1[]): TrendResult {
     if (group) group.push(record);
     else bySetting.set(key, [record]);
   });
-  const latest = (rounds: readonly RoundRecordV1[]) => rounds[rounds.length - 1].endedAt;
-  const { sorted, roundsNeeded, daysNeeded, ready } = [...bySetting.values()]
-    .map(trendOf)
-    .sort(
-      (a, b) =>
-        Number(b.ready) - Number(a.ready) ||
-        b.sorted.length - a.sorted.length ||
-        latest(b.sorted) - latest(a.sorted),
-    )[0] ?? trendOf([]);
+  const { rounds, roundsNeeded, daysNeeded, ready } =
+    [...bySetting.values()]
+      .map(trendOf)
+      .sort((a, b) => Number(b.ready) - Number(a.ready) || b.rounds.length - a.rounds.length || b.latest - a.latest)[0] ??
+    trendOf([]);
+  const sorted = [...rounds].sort((a, b) => a.endedAt - b.endedAt);
 
   return {
     ready,

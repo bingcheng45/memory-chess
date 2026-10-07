@@ -9,6 +9,7 @@
     "lint": "next lint",
     "validate": "npm run validate:messages && node scripts/articles-i18n.mjs verify",
     "validate:messages": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/validate-messages.mjs",
+    "generate:showcase": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-showcase-reach.mjs",
     "audit:adsense": "node scripts/audit-adsense.mjs",
     "articles:i18n": "node scripts/articles-i18n.mjs",
     "postinstall": "npm install @vercel/analytics@1.5.0 @vercel/speed-insights@1.2.0 --no-save",

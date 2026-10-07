@@ -90,17 +90,20 @@
 
 /* lab record */
 /*
- * Each box is as tall as its tallest state across the persona fixtures
- * (npm run lab:personas), measured at 1440 and 390, so real data swaps in
+ * Each box is at least 16px taller than its tallest state in any persona file,
+ * measured by npm run lab:heights into lab-heights.json, so real data swaps in
  * for the Sample state without moving anything below it.
  */
 .lab {
-  --lab-h-unlock: 168px; --lab-h-spark: 384px; --lab-h-heat: 448px; --lab-h-streak: 376px;
-  --lab-h-bests: 352px; --lab-h-types: 440px; --lab-h-tools: 192px;
+  --lab-h-unlock: 184px; --lab-h-spark: 400px; --lab-h-heat: 512px; --lab-h-streak: 392px;
+  --lab-h-bests: 704px; --lab-h-types: 456px; --lab-h-tools: 192px;
   --lab-heat-w: 260px;
 }
 @media (max-width: 1000px) {
-  .lab { --lab-h-unlock: 240px; --lab-h-heat: 432px; --lab-h-bests: 504px; --lab-h-types: 480px; --lab-h-tools: 320px; }
+  .lab { --lab-h-spark: 496px; --lab-h-streak: 416px; --lab-h-bests: 920px; --lab-h-types: 496px; --lab-h-tools: 512px; }
+}
+@media (max-width: 640px) {
+  .lab { --lab-h-unlock: 352px; --lab-h-spark: 408px; --lab-h-heat: 536px; --lab-h-streak: 432px; --lab-h-bests: 968px; --lab-h-types: 536px; --lab-h-tools: 376px; }
 }
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
 .lab-tag-slot { display: inline-flex; justify-content: flex-end; font: 500 11px/1 var(--lab-mono); min-width: 8.8em; min-height: calc(1em + 10px); }
@@ -108,7 +111,8 @@
 /* As tall as the square map, so the note under the files and ranks stays put. */
 .lab-heat-pair { margin-top: 14px; min-height: var(--lab-heat-w); }
 .lab-heat-pair > :first-child { margin-top: 0; }
-.lab-p-streak .lab-panel-desc { min-height: 3lh; }
+/* Three lines; the em line covers browsers without lh units, such as Safari before 16.4. */
+.lab-p-streak .lab-panel-desc { min-height: 4.65em; min-height: 3lh; }
 .lab-p-spark { min-height: var(--lab-h-spark); }
 .lab-p-heat { min-height: var(--lab-h-heat); }
 .lab-p-streak { min-height: var(--lab-h-streak); }

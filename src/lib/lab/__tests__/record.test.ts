@@ -55,7 +55,7 @@ describe("positionId", () => {
   });
 
   it("gives a different id when one piece moves", () => {
-    expect(positionId("4k3/8/8/3q4/8/5N2/8/4K2")).toBe("15eafc58855e71");
+    expect([positionId(TARGET), positionId("4k3/8/8/4q3/8/5N2/8/4K3")]).toEqual(["0a6c3bd6ea5bcc", "1acd1d80064c9d"]);
   });
 });
 

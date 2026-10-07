@@ -83,4 +83,21 @@ describe("lab record from a finished game round", () => {
       removals: 0,
     });
   });
+
+  it("starts a reset or a try again with no placements and only the new start", () => {
+    useGameStore.getState().startGame(6, 10, "home_quick");
+    useGameStore.getState().endMemorizationPhase(10);
+    useGameStore.getState().startSolutionPhase();
+    useGameStore.getState().placePiece("e1", "K");
+    const played = useGameStore.getState().gameState.placementLog?.placements;
+
+    useGameStore.getState().resetGame();
+    const reset = useGameStore.getState().gameState;
+    useGameStore.getState().startGame(6, 10, "try_again");
+    const again = useGameStore.getState().gameState;
+
+    expect(played).toEqual([[0, 60, "K"]]);
+    expect([reset.placementLog, reset.startSource]).toEqual([undefined, undefined]);
+    expect([again.placementLog, again.startSource]).toEqual([undefined, "try_again"]);
+  });
 });

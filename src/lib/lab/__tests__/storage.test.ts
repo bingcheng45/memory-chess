@@ -320,6 +320,17 @@ describe("lab store", () => {
       expect(await withPlacements(store)).toEqual([...history.slice(1).map(({ id }) => id), "latest"]);
     });
 
+    it.each(["a-tie", "z-tie"])("drops the oldest placements when a saved round %s ends at the same moment as the newest", async (id) => {
+      const store = createLabStore(deps());
+      const history = played(PLACEMENT_KEEP);
+      await store.mergeRounds(history);
+
+      await store.addRound(roundV2({ id, endedAt: PLACEMENT_KEEP }));
+
+      expect((await withPlacements(store)).sort()).toEqual([...history.slice(1).map((record) => record.id), id].sort());
+      expect((await store.listRounds())[0]).toEqual(withoutPlacements(history[0]));
+    });
+
     it("saves a late round older than the newest 500 without its placements", async () => {
       const store = createLabStore(deps());
       await store.mergeRounds(played(PLACEMENT_KEEP, 100));

@@ -40,6 +40,9 @@ describe("CalibrationSection", () => {
     expect(screen.getByRole("button", { name: `${square}, empty` })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: pieceName }));
+    act(() => {
+      jest.advanceTimersByTime(1400);
+    });
     fireEvent.click(screen.getByRole("button", { name: `${square}, empty` }));
     expect(screen.getByRole("button", { name: `${square}, ${pieceName}` })).toBeInTheDocument();
 
@@ -53,7 +56,7 @@ describe("CalibrationSection", () => {
       expect.objectContaining({ source: "calibration", startSource: "calibration", pieceCount: 6, memorizeSeconds: 10, memorizeMs: 10000, removals: 0 }),
     );
     expect(jest.mocked(recordLabRound).mock.calls[0][0].placements).toEqual([
-      [expect.any(Number), BOARD_SQUARES.indexOf(square as SquareName), pieceLetter(pieceName)],
+      [1500, BOARD_SQUARES.indexOf(square as SquareName), pieceLetter(pieceName)],
     ]);
     expect(screen.getByText("Wrong pieces").nextSibling).toHaveTextContent("5");
     expect(screen.getByText(/start on Easy, 2 pieces at 10s/)).toBeInTheDocument();

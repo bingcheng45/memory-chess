@@ -123,6 +123,14 @@ describe("lab record export and import", () => {
     expect(parseImport(JSON.stringify(buildExport(rounds, NOW)), NOW)).toMatchObject({ ok: true, rounds, rejected: 0 });
   });
 
+  it("reads a version 1 round that carries version 2 fields as plain version 1", () => {
+    const { v, ...core } = roundV2();
+    const file = JSON.stringify(buildExport([{ ...core, v: 1 } as never], NOW));
+
+    expect(v).toBe(2);
+    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds: [round()], rejected: 0, overCap: 0, summary: null });
+  });
+
   it("recomputes the position id and drops unknown fields of a version 2 round", () => {
     const file = JSON.stringify(buildExport([{ ...roundV2(), positionId: "forged", note: "<script>" } as never], NOW));
 

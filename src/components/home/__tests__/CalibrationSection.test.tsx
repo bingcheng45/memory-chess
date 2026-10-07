@@ -78,6 +78,31 @@ describe("CalibrationSection", () => {
     Reflect.deleteProperty(window, "gtag");
   });
 
+  it("reports a finished calibration run to GA4 as a round complete from calibration", async () => {
+    const gtag = jest.fn();
+    window.gtag = gtag;
+    renderWithIntl(<CalibrationSection />);
+    fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
+    await screen.findByText("Phase 01 · Study");
+    const [square, pieceName] = screen
+      .getAllByRole("button", { name: /^[a-h][1-8], / })
+      .find((cell) => !cell.getAttribute("aria-label")?.endsWith("empty"))!
+      .getAttribute("aria-label")!
+      .split(", ");
+    act(() => {
+      jest.advanceTimersByTime(10100);
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: pieceName }));
+    fireEvent.click(screen.getByRole("button", { name: `${square}, empty` }));
+    fireEvent.click(screen.getByRole("button", { name: "Submit reading" }));
+
+    expect(gtag.mock.calls.filter(([, name]) => name === "round_complete")).toEqual([
+      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, source: "calibration" }],
+    ]);
+    Reflect.deleteProperty(window, "gtag");
+  });
+
   it("moves focus across the board with the arrow keys once the board clears", async () => {
     renderWithIntl(<CalibrationSection />);
     fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));

@@ -78,6 +78,16 @@ function useRecordReading(state: RoundState): void {
       placements: state.log.placements,
       removals: state.log.removals,
     });
+    trackEvent({
+      name: "round_complete",
+      params: {
+        piece_count: CALIBRATION_RULES.pieceCount,
+        memorize_time: STUDY_SECONDS,
+        correct_pieces: state.score.correct,
+        accuracy: state.score.accuracy,
+        source: "calibration",
+      },
+    });
   }, [state]);
 }
 

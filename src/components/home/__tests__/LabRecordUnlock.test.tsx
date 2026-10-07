@@ -71,11 +71,19 @@ describe("unlock strip", () => {
     expect(items()).toEqual(["Miss map: 10 more sightings on the least seen file or rank."]);
   });
 
-  it("shows nothing once every metric can be read, and keeps its box", () => {
+  it("says in one line, in the same box, that every figure is unlocked once each can be read", () => {
     const { container } = renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
 
     expect(strip()).toBeNull();
+    expect(container.querySelector(".lab-unlock")?.textContent).toBe("Every figure below is unlocked.");
+  });
+
+  it("lists nothing to unlock and offers no play link when this window keeps no rounds", () => {
+    const { container } = renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor"), storage: "unavailable" }} />);
+
+    expect(strip()).toBeNull();
     expect(container.querySelector(".lab-unlock")).toBeEmptyDOMElement();
+    expect(screen.getByText(/Not saved in private windows/)).toBeInTheDocument();
   });
 
   it("reports a play from the strip as a counts-only panel action", () => {

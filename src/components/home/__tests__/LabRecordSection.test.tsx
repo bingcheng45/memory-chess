@@ -226,6 +226,21 @@ describe("LabRecordSection", () => {
     expect(within(panel(/Fig. 6.6/)).getByText("100% · rebuilt in 9.0s")).toBeInTheDocument();
   });
 
+  it("lists at most six settings in the bests and counts the rest", () => {
+    const settings = [10, 9, 8, 7, 6, 5, 4, 3].map((memorizeSeconds) => buildRoundRecord({ ...rounds(1, 1)[0], id: `s${memorizeSeconds}`, pieceCount: 4, memorizeSeconds }));
+    renderWithIntl(<LabRecordSection record={record(settings)} />);
+
+    expect([...panel(/Fig. 6.6/).querySelectorAll("dt")].map((term) => term.textContent)).toEqual([
+      "Game · 4 pieces · 10s",
+      "Game · 4 pieces · 9s",
+      "Game · 4 pieces · 8s",
+      "Game · 4 pieces · 7s",
+      "Game · 4 pieces · 6s",
+      "Game · 4 pieces · 5s",
+    ]);
+    expect(within(panel(/Fig. 6.6/)).getByText("+2 more settings")).toBeInTheDocument();
+  });
+
   it("imports a file and reports what it added", async () => {
     const lab = record([]);
     const { container } = renderWithIntl(<LabRecordSection record={lab} />);

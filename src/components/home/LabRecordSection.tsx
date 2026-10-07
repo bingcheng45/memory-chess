@@ -1,12 +1,16 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useLabResults } from "@/hooks/useLabData";
+import { trackEvent } from "@/lib/analytics/events";
+import { daysBetween } from "@/lib/lab/readiness";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
 import { ForgettingCurve } from "./LabCharts";
 import { BestsPanel, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
 import { LabRecordTools } from "./LabRecordTools";
+import { LabUnlockStrip } from "./LabUnlockStrip";
 import type { LabRecord } from "./useLabRecord";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
@@ -17,22 +21,43 @@ const BOARD_SKETCH = [
   { rank: "03", width: "61%", pieces: 8 },
 ];
 
+/** Sends lab_section_view the first time the section scrolls into sight, then stops watching. */
+function useFirstSight() {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some(({ isIntersecting }) => isIntersecting)) return;
+      observer.disconnect();
+      trackEvent({ name: "lab_section_view", params: {} });
+    });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+  return ref;
+}
+
 export function LabRecordSection({ record }: { record: LabRecord }) {
   const t = useTranslations("home.lab.record");
   const tags = useTranslations("home.lab.tags");
   const presets = useTranslations("game.presets");
   const proposed = <span className="lab-tag">{tags("proposed")}</span>;
-  const { summary } = record;
+  const { summary, today } = record;
   const lab = useLabResults(record);
+  const section = useFirstSight();
+  const lastDay = summary.days.at(-1);
+  const daysAgo = today && lastDay ? daysBetween(lastDay, today) : null;
 
   return (
-    <section className="lab-sec" id={LAB_SECTIONS.record.anchor}>
+    <section className="lab-sec" id={LAB_SECTIONS.record.anchor} ref={section}>
       <div className="lab-wrap">
         <SectionHeading
           section="record"
           title={t("title")}
           lede={t.rich("lede", { tag: (chunks) => <span className="lab-tag lab-tag-blue">{chunks}</span> })}
         />
+        <LabUnlockStrip results={lab} />
         <div className="lab-dash">
           <div className="lab-panel lab-p-curve">
             <PanelHead fig={t("curve.fig")} tag={<span className="lab-tag">{t("curve.tag")}</span>} />
@@ -43,9 +68,9 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
               <span className="lab-tag lab-tag-blue">{tags("illustrative")}</span> {t("curve.note")}
             </p>
           </div>
-          <TrendPanel result={lab.trend} played={summary.rounds > 0} />
-          <MissPanel result={lab.missMap} />
-          <StreakPanel result={lab.streak} />
+          <TrendPanel result={lab.trend} played={summary.rounds > 0} daysAgo={daysAgo} />
+          <MissPanel result={lab.missMap} daysAgo={daysAgo} />
+          <StreakPanel result={lab.streak} daysAgo={daysAgo} />
           <div className="lab-panel lab-p-board">
             <PanelHead fig={t("board.fig")} tag={<span className="lab-tag lab-tag-blue">{tags("sample")}</span>} />
             <h3>{t("board.title")}</h3>
@@ -71,8 +96,8 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
               {t("board.open")} →
             </Link>
           </div>
-          <BestsPanel result={lab.bests} />
-          <TypesPanel result={lab.typeRecall} />
+          <BestsPanel result={lab.bests} daysAgo={daysAgo} />
+          <TypesPanel result={lab.typeRecall} daysAgo={daysAgo} />
         </div>
         <LabRecordTools record={record} />
         <div className="lab-plans">

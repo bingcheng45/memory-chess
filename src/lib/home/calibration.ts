@@ -1,17 +1,11 @@
 import type { PieceColor, PieceType } from "@/types/chess";
 import { DIFFICULTY_PRESETS } from "@/types/game";
+import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
 import { STANDARD_INVENTORY } from "@/lib/game/pieceInventory";
 import { placementFromFen, scorePlacement, type Placement } from "@/lib/game/scoring";
 import type { RankedDifficulty } from "@/lib/reference/facts";
 import { mapChessJsPieceToType, pieceTypeToFenChar } from "@/utils/chessPieces";
-
-const FILE_LETTERS = ["a", "b", "c", "d", "e", "f", "g", "h"] as const;
-
-type FileLetter = (typeof FILE_LETTERS)[number];
-type RankDigit = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
-
-export type SquareName = `${FileLetter}${RankDigit}`;
 
 export interface LabPiece {
   readonly color: PieceColor;
@@ -20,12 +14,6 @@ export interface LabPiece {
 
 /** What sits where. A square with no entry is empty. */
 export type LabPosition = Readonly<Partial<Record<SquareName, LabPiece>>>;
-
-/** Board squares in reading order: a8 at index 0, h1 at index 63. */
-export const BOARD_SQUARES: readonly SquareName[] = Array.from(
-  { length: 64 },
-  (_, index) => `${FILE_LETTERS[index % 8]}${8 - Math.floor(index / 8)}` as SquareName,
-);
 
 export function isDarkSquare(index: number): boolean {
   return ((index % 8) + Math.floor(index / 8)) % 2 === 1;

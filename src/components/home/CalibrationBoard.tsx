@@ -2,15 +2,14 @@
 
 import { useRef, useState, type KeyboardEvent } from "react";
 import { useTranslations } from "next-intl";
+import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import {
-  BOARD_SQUARES,
   isDarkSquare,
   squareVerdict,
   type LabPiece,
   type LabPosition,
   type RoundAction,
   type RoundState,
-  type SquareName,
 } from "@/lib/home/calibration";
 import type { PieceColor, PieceType } from "@/types/chess";
 import { BoardFigure, PieceImage, usePieceName } from "./BoardFigure";

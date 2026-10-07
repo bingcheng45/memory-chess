@@ -1,3 +1,4 @@
+import { BOARD_SQUARES } from "@/lib/game/board";
 import { placementFromFen, scorePlacement } from "@/lib/game/scoring";
 import { GAME_CONFIG_RULES, presetIdFor, type PresetId } from "@/lib/game/configPrefill";
 
@@ -59,13 +60,6 @@ export interface RoundInput {
   readonly solveMs: number;
 }
 
-const FILES = "abcdefgh";
-
-/** Square name for index 0 (a8) to 63 (h1). */
-export function squareAt(index: number): string {
-  return `${FILES[index % 8]}${8 - Math.floor(index / 8)}`;
-}
-
 export function localDayOf(date: Date): string {
   const pad = (value: number) => String(value).padStart(2, "0");
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
@@ -92,10 +86,7 @@ export function buildRoundRecord(input: RoundInput): RoundRecordV1 {
   const target = placementFromFen(targetFen);
   const placed = placementFromFen(placedFen);
   const score = scorePlacement(target, placed);
-  const squares = Array.from({ length: 64 }, (_, index) => {
-    const square = squareAt(index);
-    return outcome(target[square], placed[square]);
-  });
+  const squares = BOARD_SQUARES.map((square) => outcome(target[square], placed[square]));
   const targetSquares = Object.keys(target);
 
   return {

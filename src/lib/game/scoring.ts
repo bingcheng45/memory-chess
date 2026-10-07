@@ -1,3 +1,5 @@
+import { BOARD_SQUARES } from "./board";
+
 /** Square name ("e4") to FEN piece letter ("N" is a white knight, "n" a black one). */
 export type Placement = Readonly<Record<string, string>>;
 
@@ -13,7 +15,6 @@ export interface PlacementScore {
 }
 
 const EXTRA_PIECE_PENALTY = 10;
-const FILES = "abcdefgh";
 
 export function placementFromFen(fen: string): Placement {
   const ranks = fen.split(" ")[0].split("/");
@@ -26,7 +27,7 @@ export function placementFromFen(fen: string): Placement {
           file += skip;
           return [];
         }
-        const square = `${FILES[file]}${8 - rowIndex}`;
+        const square = BOARD_SQUARES[rowIndex * 8 + file];
         file += 1;
         return [[square, char] as const];
       });

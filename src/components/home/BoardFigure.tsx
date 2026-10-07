@@ -4,16 +4,9 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { getPieceImageUrl } from "@/utils/chessPieces";
-import {
-  BOARD_SQUARES,
-  isDarkSquare,
-  type LabPiece,
-  type LabPosition,
-  type SquareName,
-} from "@/lib/home/calibration";
+import { BOARD_SQUARES, FILES, RANKS, type SquareName } from "@/lib/game/board";
+import { isDarkSquare, type LabPiece, type LabPosition } from "@/lib/home/calibration";
 
-const FILE_LABELS = ["a", "b", "c", "d", "e", "f", "g", "h"];
-const RANK_LABELS = ["8", "7", "6", "5", "4", "3", "2", "1"];
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
 
 export type PieceState = "on" | "off" | "ghost";
@@ -60,12 +53,12 @@ export function BoardFigure({ children, className }: BoardFigureProps) {
       ))}
       {children}
       <div className="lab-ranks" aria-hidden="true">
-        {RANK_LABELS.map((rank) => (
+        {RANKS.map((rank) => (
           <span key={rank}>{rank}</span>
         ))}
       </div>
       <div className="lab-files" aria-hidden="true">
-        {FILE_LABELS.map((file) => (
+        {FILES.map((file) => (
           <span key={file}>{file}</span>
         ))}
       </div>

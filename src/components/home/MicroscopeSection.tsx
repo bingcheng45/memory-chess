@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { squareVerdict, type SquareName } from "@/lib/home/calibration";
+import type { SquareName } from "@/lib/game/board";
+import { squareVerdict } from "@/lib/home/calibration";
 import {
   MICROSCOPE_PHASES,
   SPECIMEN,

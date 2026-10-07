@@ -12,6 +12,7 @@ import {
 } from "@/lib/lab/derive";
 import type { PieceLetter, RoundRecordV1 } from "@/lib/lab/record";
 import type { LabSummary } from "@/lib/lab/summary";
+import { FILES, RANKS } from "@/lib/game/board";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { AccuracySparkline, MissLines, MissMap, StreakGrid } from "./LabCharts";
 
@@ -23,8 +24,6 @@ export interface RecordData {
 
 // Below this share a piece type's bar turns orange, as on the readout card.
 const WEAK_RECALL = 0.5;
-const FILE_NAMES = ["a", "b", "c", "d", "e", "f", "g", "h"];
-const RANK_NAMES = ["8", "7", "6", "5", "4", "3", "2", "1"];
 
 const missShare = ({ shown, missed, ready }: MissCell) => (ready ? missed / shown : null);
 
@@ -117,8 +116,8 @@ export function MissPanel({ summary }: RecordData) {
             <MissMap cells={map.squares.map(missShare)} label={t("heat.realAria")} />
           ) : (
             <>
-              <MissLines caption={t("heat.files")} lines={lines(map.files, FILE_NAMES)} />
-              <MissLines caption={t("heat.ranks")} lines={lines(map.ranks, RANK_NAMES)} />
+              <MissLines caption={t("heat.files")} lines={lines(map.files, FILES)} />
+              <MissLines caption={t("heat.ranks")} lines={lines(map.ranks, RANKS)} />
             </>
           )}
           <p className="lab-note">

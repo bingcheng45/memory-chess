@@ -298,6 +298,20 @@ describe("LearnArticleRich closing play action", () => {
     },
   );
 
+  it("carries no prose that would repeat on every guide", () => {
+    const sentences = EN_LEARN_PAGES.flatMap(({ slug }) => {
+      const { container, unmount } = render(
+        <LearnArticleRich page={getLearnPageBySlug(slug)} goals={EN_LEARN_GOALS} allPages={EN_LEARN_PAGES} />,
+      );
+      const callout = container.querySelector('[aria-labelledby="closing-cta-heading"]')!;
+      const prose = [...callout.querySelectorAll("p")].map((paragraph) => paragraph.textContent ?? "");
+      unmount();
+      return prose;
+    });
+
+    expect(sentences).toEqual([]);
+  });
+
   it("starts the blindfold guide's closing round at 2 pieces and 10 seconds", () => {
     const { container } = render(
       <LearnArticleRich

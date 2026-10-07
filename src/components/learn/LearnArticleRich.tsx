@@ -543,9 +543,6 @@ export default function LearnArticleRich({
           >
             {LEARN_ARTICLE_COPY.closingTitle}
           </h2>
-          <p className="mt-2 max-w-[68ch] text-sm leading-7 text-text-secondary sm:text-base">
-            {LEARN_ARTICLE_COPY.closingBody}
-          </p>
           <div className="mt-5">
             <EditorialActionLink href={page.ctaHref} trackingName="closing-primary">
               {page.ctaLabel}

@@ -17,17 +17,9 @@ import {
 import { Badge } from '@/components/ui/badge';
 import ActiveGameLayout from './ActiveGameLayout';
 import { useSettingsStore } from '@/stores/settingsStore';
+import { STANDARD_INVENTORY } from '@/lib/game/pieceInventory';
 
 import { useTranslations } from "next-intl";
-// Define maximum piece limits for standard chess
-const PIECE_LIMITS: Record<PieceType, number> = {
-  pawn: 8,
-  knight: 2,
-  bishop: 2,
-  rook: 2,
-  queen: 1,
-  king: 1
-};
 
 interface ResponsiveInteractiveBoardProps {
   readonly playerSolution: ChessPiece[];
@@ -86,7 +78,7 @@ export default function ResponsiveInteractiveBoard({
         p => p.type === selectedPieceType && p.color === selectedPieceColor
       ).length;
 
-      if (currentCount >= PIECE_LIMITS[selectedPieceType]) {
+      if (currentCount >= STANDARD_INVENTORY[selectedPieceType]) {
         return; // Don't place the piece if we've reached the limit
       }
 
@@ -200,7 +192,7 @@ export default function ResponsiveInteractiveBoard({
               const currentCount = playerSolution.filter(
                 (p) => p.type === type && p.color === selectedPieceColor
               ).length;
-              const remainingCount = PIECE_LIMITS[type] - currentCount;
+              const remainingCount = STANDARD_INVENTORY[type] - currentCount;
               const isDisabled = remainingCount <= 0;
 
               return (

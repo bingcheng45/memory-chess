@@ -20,6 +20,15 @@ describe("microscope phase table", () => {
   it("shows the score chip only on the score phase", () => {
     expect(MICROSCOPE_PHASES.filter((phase) => phase.scoreChip).map((phase) => phase.id)).toEqual(["score"]);
   });
+
+  it("grades squares only once the round is scored", () => {
+    expect(MICROSCOPE_PHASES.filter((phase) => phase.marks).map((phase) => phase.id)).toEqual(["score"]);
+    expect(MICROSCOPE_PHASES.find((phase) => phase.id === "rebuild")).toMatchObject({ marks: false, pieces: "recall" });
+  });
+
+  it("draws relations while studying, three groups while chunking, and group A on the score", () => {
+    expect(MICROSCOPE_PHASES.map((phase) => phase.overlay)).toEqual(["relations", "chunks", null, null, "groupA"]);
+  });
 });
 
 describe("illustrative forgetting curve", () => {

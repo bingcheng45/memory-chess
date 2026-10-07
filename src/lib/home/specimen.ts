@@ -29,17 +29,17 @@ export interface MicroscopePhase {
   /** Illustrative round clock shown on the diagram. */
   readonly clock: string;
   readonly pieces: "specimen" | "none" | "recall";
-  readonly overlay: "fixation" | "chunks" | null;
+  readonly overlay: "relations" | "chunks" | "groupA" | null;
   readonly marks: boolean;
   readonly scoreChip: boolean;
 }
 
 export const MICROSCOPE_PHASES: readonly MicroscopePhase[] = [
-  { id: "study", clock: "0.0", pieces: "specimen", overlay: "fixation", marks: false, scoreChip: false },
+  { id: "study", clock: "0.0", pieces: "specimen", overlay: "relations", marks: false, scoreChip: false },
   { id: "chunk", clock: "4.2", pieces: "specimen", overlay: "chunks", marks: false, scoreChip: false },
   { id: "blank", clock: "10.0", pieces: "none", overlay: null, marks: false, scoreChip: false },
-  { id: "rebuild", clock: "21.6", pieces: "recall", overlay: null, marks: true, scoreChip: false },
-  { id: "score", clock: "24.1", pieces: "recall", overlay: null, marks: true, scoreChip: true },
+  { id: "rebuild", clock: "21.6", pieces: "recall", overlay: null, marks: false, scoreChip: false },
+  { id: "score", clock: "24.1", pieces: "recall", overlay: "groupA", marks: true, scoreChip: true },
 ];
 
 /** The only source of a phase's number, as the two-digit label shown beside its name. */

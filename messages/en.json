@@ -198,40 +198,41 @@
         "lede": "Scroll through the five phases of a single round. The diagram updates with each step. The overlays are illustrations of the method, not recordings of anyone's attention.",
         "status": "Phase {number} / {name}",
         "clock": "t = {seconds}s",
-        "chunkShield": "A · Shield ×5",
-        "chunkBattery": "B · Battery ×2",
+        "chunkCorner": "A · Corner ×5",
+        "chunkPair": "B · File pair ×2",
         "chunkLone": "C · Lone ×1",
+        "chunkGroupA": "A",
         "scoreChip": "{correct} of {total} squares",
         "phases": {
           "study": {
             "name": "Study",
-            "title": "Look. The clock is already running.",
-            "body": "A random position appears with a countdown. Your eyes go to the loudest features first: the heavy pieces, the king, anything under tension.",
-            "note": "Fig. overlay: illustrative fixation order 1 to 4. Warm is the first glance, blue is the follow-up."
+            "title": "Look for how pieces relate.",
+            "body": "A random position appears with a countdown. Do not try to read eight pieces one at a time. Look for pieces that touch, share a file or rank, or sit together in a corner.",
+            "note": "Fig. overlay: dashed lines join pieces that relate. A piece with no line is on its own."
           },
           "chunk": {
             "name": "Chunk",
-            "title": "Eight pieces become three ideas.",
-            "body": "Strong players rarely store pieces one by one. They store patterns: a castled king with its pawns, a queen and rook stacked on a file. Fewer units, same information.",
-            "note": "A is a shield of 5. B is a d-file battery of 2. C is the black king on c4. Three chunks to hold, not eight."
+            "title": "Eight pieces become three groups.",
+            "body": "Because the position is random, groups come from geometry: a cluster in a corner, a pair on a file, a piece alone. Studies of chess recall find people hold about three groups at once. Say each one to yourself, for example “corner five”, “d-file pair”, “lone king”.",
+            "note": "A is a corner cluster of 5. B is a pair on the d-file. C is the black king on c4. A chess player would call A a castled shield and B a battery. Three groups to hold, not eight."
           },
           "blank": {
             "name": "Blank",
             "title": "The board clears.",
             "body": "No pieces, no hints. Just the grid. This is the moment the round actually measures: what survived in your head after the image is gone.",
-            "note": "Tip from the Learning Center: name the chunks to yourself before the timer ends."
+            "note": "Nothing to do here but hold the three groups. Repeating their names is one way to do it."
           },
           "rebuild": {
             "name": "Rebuild",
-            "title": "Rebuild it, square by square.",
-            "body": "Pick a piece and tap the square where it belongs. Submit when you are done. Every square is checked against the original.",
-            "note": "Mint is correct. Orange fill is a wrong placement (knight on e3). Orange ring is the square it belonged on (f3)."
+            "title": "Rebuild one group at a time.",
+            "body": "Pick a piece and tap the square where it belongs. Finish a group before you start the next. Players in chess-recall studies place pieces in bursts, pausing two seconds or more between groups. Submit when you are done.",
+            "note": "Fig. the rebuilt board before it is checked. Nothing is marked until you submit."
           },
           "score": {
             "name": "Score",
             "title": "Read the result. Run it again.",
-            "body": "You get an accuracy score from 0 to 100% the moment you submit. The miss is almost always informative: here, the one piece outside a clean chunk drifted by a file.",
-            "note": "Example reading: 7 of 8 squares is 88%. Your next round decides whether that was a fluke."
+            "body": "You get an accuracy score from 0 to 100% the moment you submit. Ask which group each miss came from. Here group A held except the knight, which landed one file off.",
+            "note": "Mint is correct. Orange fill is a wrong placement (knight on e3). Orange ring is the square it belonged on (f3). 7 of 8 squares is 88%. Your next round decides whether that was a fluke."
           }
         }
       },

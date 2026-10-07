@@ -32,7 +32,7 @@ describe("EnglishOnlyLink", () => {
 
 describe("ChangelogBanner", () => {
   it("marks its link to the English-only changelog on a translated page", async () => {
-    render(<ChangelogBanner />, { locale: "ja", messages: jaMessages });
+    render(<ChangelogBanner announce />, { locale: "ja", messages: jaMessages });
 
     const link = await screen.findByRole("link");
     expect(link).toHaveAttribute("href", "/changelog");

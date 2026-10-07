@@ -19,6 +19,7 @@ import { articlePath } from "@/lib/articles/paths";
 import type {
   Article,
   ArticleDrill,
+  ArticleRelatedGuide,
   ArticleSource,
   ArticleSummary,
   PhotoCredit,
@@ -37,6 +38,9 @@ type ArticlePageProps = {
 };
 
 const SOURCES_HEADING_ID = "article-sources-heading";
+const GUIDES_HEADING_ID = "article-guides-heading";
+/** The guides are English-only, so the list of them is shown, and worded, in English only. */
+const RELATED_GUIDES_HEADING = "Train it with a guide";
 const DRILL_WHY_ID = "article-drill-why";
 const NOTE_CLASS = "max-w-2xl";
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
@@ -148,6 +152,27 @@ function Drill({ drill }: { drill: ArticleDrill }) {
   );
 }
 
+function RelatedGuides({ guides }: { guides: readonly ArticleRelatedGuide[] }) {
+  return (
+    <section aria-labelledby={GUIDES_HEADING_ID} className="mt-12 max-w-[720px] border-t border-white/10 pt-8">
+      <h2 id={GUIDES_HEADING_ID} className="text-xl font-semibold tracking-tight text-white">
+        {RELATED_GUIDES_HEADING}
+      </h2>
+      <ul className="mt-4 space-y-2 text-base leading-7">
+        {guides.map((guide) => (
+          // The anchor is written to read inside a sentence, so only its
+          // first letter is raised for the list.
+          <li key={guide.slug} className="first-letter:uppercase">
+            <Link href={`/learn/${guide.slug}`} className={ARTICLE_LINK}>
+              {guide.anchor}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 function Sources({ sources }: { sources: readonly ArticleSource[] }) {
   const t = useTranslations("articles.page");
   const titleLang = useLocale() === DEFAULT_LOCALE ? undefined : DEFAULT_LOCALE;
@@ -219,6 +244,9 @@ export default function ArticlePage({ article, nextArticle, counts, charsPerSeco
             charsPerSecond={charsPerSecond}
           />
           <Drill drill={article.drill} />
+          {locale === DEFAULT_LOCALE && article.relatedGuides?.length ? (
+            <RelatedGuides guides={article.relatedGuides} />
+          ) : null}
           <Sources sources={article.sources} />
           {nextArticle ? <NextArticle next={nextArticle} /> : null}
         </div>

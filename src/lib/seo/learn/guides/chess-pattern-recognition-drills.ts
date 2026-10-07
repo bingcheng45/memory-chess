@@ -5,7 +5,7 @@ import type { LearnGuide } from "../schema";
 const guide: LearnGuide = {
   slug: "chess-pattern-recognition-drills",
   goal: "memory",
-  title: "Chess Pattern Recognition Drills: Four Shapes to Rebuild From Memory",
+  title: "Chess Pattern Recognition Drills, From Memory",
   h1: "Pattern recognition drills: learn four shapes by rebuilding them",
   description:
     "Four tactical shapes with their exact squares, a rebuild routine that makes each one stick, and what a random Memory Chess position can and cannot teach about patterns.",
@@ -171,6 +171,13 @@ const guide: LearnGuide = {
       slug: "why-puzzle-rating-doesnt-transfer-to-games",
       reason: "Why the shape shows up in puzzles and not in your games.",
     },
+    {
+      slug: "how-many-chess-puzzles-a-day",
+      reason: "How many puzzles a day it takes to keep the shapes fresh.",
+    },
+  ],
+  furtherReading: [
+    { slug: "magnus-carlsen", anchor: "how Carlsen names a game from one position" },
   ],
   sources: [
     {

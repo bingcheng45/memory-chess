@@ -3,7 +3,7 @@ import type { LearnGuide } from "../schema";
 const guide: LearnGuide = {
   slug: "chess-memory-training",
   goal: "memory",
-  title: "Chess Memory Training: A Ladder Built on the Game's Own Scoring",
+  title: "Chess Memory Training: A Scored Ladder",
   h1: "Chess memory training that the score can actually measure",
   description:
     "How to train position recall with Memory Chess rounds from 2 pieces to 12, using the game's strict square-by-square score to decide when you move up.",
@@ -221,6 +221,9 @@ const guide: LearnGuide = {
       slug: "chess-visualization-exercises",
       reason: "Picture the board with no board in front of you at all.",
     },
+  ],
+  furtherReading: [
+    { slug: "adriaan-de-groot", anchor: "de Groot's 1944 memory test" },
   ],
   sources: [
     {

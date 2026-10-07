@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import {
   EditorialHero,
@@ -43,6 +45,8 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 export default function ChangelogPage() {
+  // English-only route: the bare URL is the only one served, as English.
+  setRequestLocale(DEFAULT_LOCALE);
   const entries = CHANGELOG_ENTRIES;
   return (
     <EditorialPageShell>

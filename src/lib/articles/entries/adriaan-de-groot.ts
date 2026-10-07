@@ -5,6 +5,11 @@ const article: Article = {
   publishedAt: "2026-10-05T00:00:00.000Z",
   updatedAt: "2026-10-05T00:00:00.000Z",
   title: "Adriaan de Groot's 1944 test of chess memory, by the numbers",
+  searchTitle: "De Groot's 1944 chess memory test, in numbers",
+  relatedGuides: [
+    { slug: "chess-memory-training", anchor: "chess memory training" },
+    { slug: "how-to-see-the-whole-board-in-chess", anchor: "how to see the whole board" },
+  ],
   description: "Adriaan de Groot tested four players on chess positions shown for 2 to 15 seconds in 1944. Here are his real scores and what later research changed.",
   person: {
     name: "Adriaan de Groot",

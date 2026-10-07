@@ -149,6 +149,7 @@
       "memorizeTime": "记忆时间",
       "seconds": "{seconds} 秒",
       "start": "开始训练",
+      "quickStart": "开始一局",
       "lastGame": "上一局：还原用时 {time} 秒，准确率 {accuracy}%"
     },
     "presets": {

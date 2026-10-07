@@ -59,13 +59,15 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     setMemorizeTime(preset.memorizeTime);
   }
   
-  const handleStart = () => {
+  const startRound = (settings: { pieceCount: number; memorizeTime: number }) => {
     if (onStart) {
-      onStart(pieceCount, memorizeTime);
+      onStart(settings.pieceCount, settings.memorizeTime);
     } else {
-      startGame(pieceCount, memorizeTime);
+      startGame(settings.pieceCount, settings.memorizeTime);
     }
   };
+
+  const handleStart = () => startRound({ pieceCount, memorizeTime });
   
   const sliderStyle = (value: number, range: { min: number; max: number }) => ({
     '--fill': `${((value - range.min) / (range.max - range.min)) * 100}%`,
@@ -79,10 +81,28 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       suppressHydrationWarning
       className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-5 sm:p-7 shadow-xl"
     >
-      <h2 className="mb-5 text-center text-2xl font-bold text-text-primary">{t('config.title')}</h2>
-      
+      <h1 className="mb-5 text-center text-2xl font-bold text-text-primary">{t('config.title')}</h1>
+
+      <div className="mb-6 border-b border-bg-light pb-6 text-center">
+        <Button
+          onClick={() => startRound(DEFAULT_PRESET)}
+          data-quick-start
+          className="h-11 w-full bg-peach-500 text-base font-semibold text-bg-dark hover:bg-peach-400"
+        >
+          {t('config.quickStart')}
+        </Button>
+        <p className="mt-2 text-xs text-text-muted">
+          {t(`presets.${DEFAULT_PRESET.id}.label`)}
+          {' · '}
+          {t('config.presetSummary', {
+            pieces: DEFAULT_PRESET.pieceCount,
+            seconds: DEFAULT_PRESET.memorizeTime,
+          })}
+        </p>
+      </div>
+
       <div className="mb-5">
-        <h3 className="mb-3 text-sm font-medium text-text-secondary">{t('config.presetsLabel')}</h3>
+        <h2 className="mb-3 text-sm font-medium text-text-secondary">{t('config.presetsLabel')}</h2>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           {DIFFICULTY_PRESETS.map((preset) => (
             <Button

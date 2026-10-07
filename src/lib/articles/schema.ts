@@ -62,11 +62,20 @@ export type ArticleSource = {
   readonly note: string;
 };
 
+/** A Learn guide the article sends readers on to, linked with `anchor` as its text. */
+export type ArticleRelatedGuide = {
+  readonly slug: string;
+  readonly anchor: string;
+};
+
 export type Article = {
   readonly slug: string;
   readonly publishedAt: string;
   readonly updatedAt: string;
   readonly title: string;
+  /** The English `<title>` when the headline runs long for a search result. The guides and this title are English-only, so neither is part of `ArticleText`. */
+  readonly searchTitle?: string;
+  readonly relatedGuides?: readonly ArticleRelatedGuide[];
   readonly description: string;
   readonly person: ArticlePerson;
   readonly photo: ArticlePhoto;

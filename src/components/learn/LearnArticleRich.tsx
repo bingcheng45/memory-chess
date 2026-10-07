@@ -21,6 +21,7 @@ import {
   ORGANIZATION_ID,
 } from "@/lib/seo/brand";
 import { LEARN_ARTICLE_COPY } from "@/lib/seo/learn/copy";
+import { articlePath } from "@/lib/articles/paths";
 
 const SITE_URL = "https://thememorychess.com";
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
@@ -532,6 +533,26 @@ export default function LearnArticleRich({
           </section>
         ))}
 
+        <section
+          aria-labelledby="closing-cta-heading"
+          className={`${EDITORIAL_STYLES.callout} mt-12`}
+        >
+          <h2
+            id="closing-cta-heading"
+            className="text-xl font-semibold tracking-tight text-white"
+          >
+            {LEARN_ARTICLE_COPY.closingTitle}
+          </h2>
+          <p className="mt-2 max-w-[68ch] text-sm leading-7 text-text-secondary sm:text-base">
+            {LEARN_ARTICLE_COPY.closingBody}
+          </p>
+          <div className="mt-5">
+            <EditorialActionLink href={page.ctaHref} trackingName="closing-primary">
+              {page.ctaLabel}
+            </EditorialActionLink>
+          </div>
+        </section>
+
         <section className={EDITORIAL_STYLES.section}>
           <p className={`${EDITORIAL_STYLES.subsectionTitle} mb-3`}>
             {LEARN_ARTICLE_COPY.keepLearning}
@@ -561,6 +582,29 @@ export default function LearnArticleRich({
             ))}
           </div>
         </section>
+
+        {page.furtherReading?.length ? (
+          <section className={EDITORIAL_STYLES.section}>
+            <h2 className="text-xl font-semibold tracking-tight text-white">
+              {LEARN_ARTICLE_COPY.furtherReading}
+            </h2>
+            <ul className="mt-4 space-y-2 text-base leading-7">
+              {page.furtherReading.map((entry) => (
+                // The anchor is written to read inside a sentence, so only
+                // its first letter is raised for the list.
+                <li key={entry.slug} className="first-letter:uppercase">
+                  <Link
+                    href={articlePath(entry.slug)}
+                    data-learn-further-reading={entry.slug}
+                    className={EDITORIAL_STYLES.link}
+                  >
+                    {entry.anchor}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         {page.faq.length > 0 ? (
         <section id="faq" className={EDITORIAL_STYLES.section}>

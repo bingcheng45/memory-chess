@@ -119,9 +119,8 @@ export default function ResponsiveChessBoard({
     ),
   };
 
-  // Files and ranks for coordinate labels
+  // Files for coordinate labels
   const files = useMemo(() => ["a", "b", "c", "d", "e", "f", "g", "h"], []);
-  const ranks = useMemo(() => [8, 7, 6, 5, 4, 3, 2, 1], []);
 
   // Calculate board styles
   const boardStyle = useMemo(
@@ -151,7 +150,8 @@ export default function ResponsiveChessBoard({
 
   // Calculate square styles
   const getSquareStyle = (file: number, rank: number) => {
-    const isDark = (file + rank) % 2 === 1;
+    // a1, file 0 and rank 0, is a dark square.
+    const isDark = (file + rank) % 2 === 0;
     const isSelected =
       selectedSquare &&
       selectedSquare.file === file &&
@@ -244,14 +244,16 @@ export default function ResponsiveChessBoard({
         className="grid grid-cols-8 grid-rows-8 h-full w-full"
         style={{ gap: "0px" }}
       >
-        {/* Generate all 64 squares */}
-        {Array.from({ length: 8 }, (_, rank) =>
+        {/* Generate all 64 squares. The grid fills from the top row down,
+            and White sits at the bottom, so the first row is rank 8. */}
+        {Array.from({ length: 8 }, (_, row) =>
           Array.from({ length: 8 }, (_, file) => {
+            const rank = 7 - row;
             const piece = getPieceAt(file, rank);
             const squareStyle = getSquareStyle(file, rank);
 
             // Calculate square name for aria-label
-            const squareName = `${files[file]}${ranks[rank]}`;
+            const squareName = `${files[file]}${rank + 1}`;
             const feedback = squareFeedback?.[`${file}-${rank}`];
 
             // Handle keyboard interaction
@@ -296,7 +298,7 @@ export default function ResponsiveChessBoard({
                 )}
 
                 {/* File coordinates (a-h on bottom row) */}
-                {showCoordinates && rank === 7 && (
+                {showCoordinates && rank === 0 && (
                   <span
                     style={{
                       ...coordinateStyle,
@@ -317,7 +319,7 @@ export default function ResponsiveChessBoard({
                       left: `${padding / 2}px`,
                     }}
                   >
-                    {ranks[rank]}
+                    {rank + 1}
                   </span>
                 )}
 

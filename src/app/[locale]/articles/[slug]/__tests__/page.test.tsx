@@ -41,6 +41,7 @@ jest.mock("@/components/articles/ArticlePage", () => ({
 
 const SLUG = "magnus-carlsen";
 const ENGLISH_TITLE = "How Magnus Carlsen names a famous game from one position";
+const ENGLISH_SEARCH_TITLE = "How Magnus Carlsen names a game from one position";
 const COUNTS = { views: 120, likes: 7 };
 const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } };
 
@@ -176,7 +177,7 @@ describe("the article route's metadata", () => {
   it("is the English metadata, indexable, at the bare address", async () => {
     const metadata = await generateMetadata(paramsFor(SLUG, "en"));
 
-    expect(metadata.title).toBe(ENGLISH_TITLE);
+    expect(metadata.title).toBe(ENGLISH_SEARCH_TITLE);
     expect(metadata.alternates).toStrictEqual({ canonical: "/articles/magnus-carlsen" });
     expect(metadata).not.toHaveProperty("robots");
     expect(metadata.openGraph).toHaveProperty("url", "https://thememorychess.com/articles/magnus-carlsen");

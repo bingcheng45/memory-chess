@@ -15,6 +15,10 @@ const SpeedInsights = dynamic(() =>
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
+import {
+  isChangelogAnnouncementActive,
+  LATEST_CHANGELOG_ENTRY,
+} from "@/lib/changelog";
 import Footer from "@/components/ui/Footer";
 import { ADSENSE_CLIENT_ID, ADSENSE_SCRIPT_URL } from "@/lib/adsense";
 import {
@@ -24,21 +28,11 @@ import {
 import { routing, type Locale } from "@/i18n/routing";
 import { splitArticlesNamespace } from "@/lib/articles/messageScope";
 import { getSansFontClass, geistMono } from "@/lib/fonts";
-import { buildAlternates } from "@/lib/seo/alternates";
+import { buildAlternates, localizedUrl } from "@/lib/seo/alternates";
+import { socialImage } from "@/lib/seo/brand";
 
 // Define your site URL for canonical and OG URLs
 const siteUrl = "https://thememorychess.com";
-
-// Social preview artwork. Served as a static file from /public rather than a
-// dynamic `opengraph-image` route: X's card crawler is noticeably more reliable
-// against a plain PNG with no query string and no Next.js `Vary` headers.
-const socialImage = {
-  url: `${siteUrl}/social-preview.png`,
-  width: 1200,
-  height: 630,
-  type: "image/png",
-  alt: "Memory Chess knight and brain logo — thememorychess.com",
-};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -74,7 +68,7 @@ export async function generateMetadata({
     // Open Graph (Facebook, LinkedIn) metadata
     openGraph: {
       type: "website",
-      url: siteUrl,
+      url: localizedUrl("/", locale),
       title: t("socialTitle"),
       description: t("socialDescription"),
       siteName: "Memory Chess",
@@ -179,7 +173,9 @@ export default async function LocaleLayout({
         className={`${getSansFontClass(locale as Locale)} ${geistMono.variable} min-h-screen bg-bg-dark text-text-primary antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <ChangelogBanner />
+          <ChangelogBanner
+            announce={isChangelogAnnouncementActive(LATEST_CHANGELOG_ENTRY)}
+          />
           {children}
           <Footer />
           <Analytics />

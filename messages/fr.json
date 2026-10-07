@@ -149,6 +149,7 @@
       "memorizeTime": "Temps de mémorisation",
       "seconds": "{seconds} s",
       "start": "Commencer l’entraînement",
+      "quickStart": "Lancer une manche",
       "lastGame": "Dernière partie : {time} s de résolution avec {accuracy} % de précision"
     },
     "presets": {

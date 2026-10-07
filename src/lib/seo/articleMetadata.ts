@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { absoluteUrl, ARTICLES_PATH, articlePath } from "@/lib/articles/paths";
 import type { Article, ArticleListMeta, ArticleSummary, PortraitPhoto } from "@/lib/articles/schema";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { localizedPath, localizedUrl } from "@/lib/seo/alternates";
 import { robotsFor } from "@/lib/seo/englishOnly";
 import { LEARN_AUTHOR } from "@/lib/seo/learn/schema";
@@ -35,7 +36,8 @@ export function buildArticleMetadata(article: Article, locale: string): Metadata
   const image = portraitImage(article.photo);
 
   return {
-    title: article.title,
+    // A translation keeps its own title: `searchTitle` is English.
+    title: locale === DEFAULT_LOCALE ? (article.searchTitle ?? article.title) : article.title,
     description: article.description,
     ...indexing,
     openGraph: {

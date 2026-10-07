@@ -468,8 +468,8 @@
   },
   "game": {
     "meta": {
-      "title": "Play Memory Chess Online",
-      "description": "Play Memory Chess online to train board visualization, recall, and chess pattern recognition with timed memory challenges.",
+      "title": "Chess Memory Game: Rebuild the Position",
+      "description": "Start a chess memory game in one tap. Memorize a position, rebuild it square by square, and see your accuracy. Pick 2 to 32 pieces and 2 to 32 seconds.",
       "socialTitle": "Play Memory Chess Online",
       "socialDescription": "Train your chess visualization and memory with interactive timed challenges."
     },
@@ -482,7 +482,7 @@
       "flash": "GAME!"
     },
     "config": {
-      "title": "Game Configuration",
+      "title": "Chess memory game",
       "presetsLabel": "Difficulty Presets",
       "presetSummary": "{pieces} pcs / {seconds}s",
       "customLabel": "Custom settings",
@@ -490,6 +490,7 @@
       "memorizeTime": "Memorization Time",
       "seconds": "{seconds}s",
       "start": "Start Training",
+      "quickStart": "Start a round",
       "lastGame": "Last game: {time}s solution time with {accuracy}% accuracy"
     },
     "presets": {

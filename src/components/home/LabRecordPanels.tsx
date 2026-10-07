@@ -166,6 +166,9 @@ export function StreakPanel({ result: { readiness, value: streak }, daysAgo }: {
   );
 }
 
+/** Six rows keep the panel one reserved height for any number of settings played. */
+const BESTS_SHOWN = 6;
+
 export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { result: LabResults["bests"]; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
@@ -178,7 +181,7 @@ export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { r
       {bests ? (
         <>
           <dl className="lab-bests">
-            {bests.entries.map((best) => (
+            {bests.entries.slice(0, BESTS_SHOWN).map((best) => (
               <div key={best.key}>
                 <dt>{t("bests.setting", { source: best.source, pieceCount: best.pieceCount, memorizeSeconds: best.memorizeSeconds })}</dt>
                 <dd>
@@ -188,6 +191,7 @@ export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { r
               </div>
             ))}
           </dl>
+          {bests.entries.length > BESTS_SHOWN && <p className="lab-note">{t("bests.more", { count: bests.entries.length - BESTS_SHOWN })}</p>}
           <p className="lab-note">{t("fromRounds", { count: readiness.sampleSize })}</p>
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="bests" />
         </>

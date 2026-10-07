@@ -486,6 +486,7 @@
         "stale": "Last played {count, plural, one {# day} other {# days}} ago.",
         "unlock": {
           "label": "What playing unlocks",
+          "done": "Every figure below is unlocked.",
           "trend": "Trend unlocks at {rounds, plural, one {# round} other {# rounds}} of one setting on {days, plural, one {# day} other {# different days}}.",
           "streak": "Streak unlocks when you play on {days, plural, one {# day} other {# different days}}.",
           "typeRecall": "Piece recall unlocks when one piece other than the king reaches {exposures, plural, one {# sighting} other {# sightings}}.",
@@ -504,6 +505,7 @@
           "empty": "Your best reading for each setting appears after your first round.",
           "setting": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s",
           "first": "first reading",
+          "more": "+{count, plural, one {# more setting} other {# more settings}}",
           "reading": "{accuracy}% · rebuilt in {seconds}s"
         },
         "types": {

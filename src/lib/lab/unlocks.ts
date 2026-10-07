@@ -2,8 +2,8 @@ import { LAB_METRICS, type LabResults, type MetricId } from "./metrics";
 import type { Need } from "./readiness";
 
 /** The metrics a few rounds unlock, in the order the strip reads them. Bests need only one round, so they stay out. */
-export const UNLOCK_ORDER = ["trend", "streak", "typeRecall", "missMap"] as const satisfies readonly MetricId[];
-export type UnlockMetric = (typeof UNLOCK_ORDER)[number];
+const UNLOCK_ORDER = ["trend", "streak", "typeRecall", "missMap"] as const satisfies readonly MetricId[];
+type UnlockMetric = (typeof UNLOCK_ORDER)[number];
 
 export interface Unlock {
   readonly metric: UnlockMetric;

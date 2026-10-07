@@ -22,7 +22,7 @@ export function roundSourceFrom(value: string | null): RoundSource {
 }
 
 /** §06 parts with a play link: the unlock strip and each panel that can go stale. */
-export const LAB_PANELS = ["unlock", "trend", "missMap", "streak", "bests", "typeRecall"] as const;
+const LAB_PANELS = ["unlock", "trend", "missMap", "streak", "bests", "typeRecall"] as const;
 export type LabPanel = (typeof LAB_PANELS)[number];
 
 /**

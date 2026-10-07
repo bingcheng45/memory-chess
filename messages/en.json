@@ -140,7 +140,6 @@
         "proposed": "Proposed",
         "sample": "Sample",
         "illustrative": "Illustrative",
-        "live": "Live on site",
         "free": "Free · no account",
         "rig": "Rig"
       },
@@ -321,8 +320,8 @@
       },
       "calibrate": {
         "title": "Take a calibration reading.",
-        "lede": "The Medium round from the real game: {pieces} pieces, two kings among them, {seconds} seconds. Then the board clears and you rebuild it. You'll get a readout card with your accuracy and recall by piece type. It works with mouse, touch and keyboard.",
-        "phaseReady": "Ready · {pieces} pieces · {seconds}s exposure",
+        "lede": "The Medium round from the real game: {pieceCount} pieces, two kings among them, {memorizeSeconds} seconds. Then the board clears and you rebuild it. You'll get a readout card with your accuracy and recall by piece type. It works with mouse, touch and keyboard.",
+        "phaseReady": "Ready · {pieceCount} pieces · {memorizeSeconds}s exposure",
         "phaseLabel": "Phase {number} · {name}",
         "start": "Start calibration",
         "restart": "Restart",
@@ -333,7 +332,7 @@
         "paletteLabel": "Piece palette",
         "squareEmpty": "{square}, empty",
         "squareWith": "{square}, {piece}",
-        "liveStudy": "Study the position. {seconds} seconds.",
+        "liveStudy": "Study the position. {memorizeSeconds} seconds.",
         "liveRebuild": "Board cleared. Pick a piece, then a square.",
         "liveScore": "Accuracy {accuracy} percent. {correct} of {total} squares correct.",
         "startFailed": "Could not load a position. Check your connection and try again.",
@@ -355,9 +354,9 @@
           "byTypeEmpty": "Recall by piece type appears here after your first run.",
           "nextEmpty": "A suggested difficulty appears after the reading.",
           "suggested": "Suggested:",
-          "stepUp": "step up to {tier}, {pieces} pieces at {seconds}s. Confirm with two more clean rounds first.",
-          "stay": "stay on {tier}, {pieces} pieces at {seconds}s. Run three rounds and watch the trend.",
-          "start": "start on {tier}, {pieces} pieces at {seconds}s. Group pieces into pairs while you study.",
+          "stepUp": "step up to {tier}, {pieceCount} pieces at {memorizeSeconds}s. Confirm with two more clean rounds first.",
+          "stay": "stay on {tier}, {pieceCount} pieces at {memorizeSeconds}s. Run three rounds and watch the trend.",
+          "start": "start on {tier}, {pieceCount} pieces at {memorizeSeconds}s. Group pieces into pairs while you study.",
           "playTier": "Play {tier}",
           "legendCorrect": "correct",
           "legendWrong": "wrong placement",
@@ -381,7 +380,7 @@
           "exposure": "Exposure",
           "load": "Load"
         },
-        "loadLabel": "{pieces} of 32 squares filled",
+        "loadLabel": "{pieceCount} of 32 squares filled",
         "play": "Play",
         "custom": {
           "label": "Custom",
@@ -405,15 +404,16 @@
         },
         "spark": {
           "fig": "Fig. 6.2 · Accuracy over time",
-          "title": "Your line, session by session.",
-          "aria": "Sample sparkline of accuracy over 12 sessions, rising from 52 to 79 percent.",
-          "note": "Sample record · 12 sessions · Medium",
-          "first": "S01",
-          "last": "S12",
-          "needRounds": "{count, plural, one {# more round} other {# more rounds}} at {pieces} pieces, {seconds}s draws your trend.",
-          "needDay": "Play {pieces} pieces, {seconds}s on one more day to draw your trend.",
-          "config": "{pieces} pieces · {seconds}s, the setting you play most",
-          "realAria": "Your accuracy over your last {count} rounds at {pieces} pieces and {seconds} seconds, latest {latest} percent.",
+          "title": "Your line, round by round.",
+          "aria": "Sample sparkline of accuracy over 12 rounds, rising from 52 to 79 percent.",
+          "note": "Sample record · 12 rounds · Medium",
+          "first": "R01",
+          "last": "R12",
+          "needRounds": "{count, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {memorizeSeconds}s draws your {source, select, calibration {practice} other {game}} trend.",
+          "needRoundsAndDay": "{count, plural, one {# more round at {pieceCount} pieces, {memorizeSeconds}s, played on another day,} other {# more rounds at {pieceCount} pieces, {memorizeSeconds}s, at least one on another day,}} draws your {source, select, calibration {practice} other {game}} trend.",
+          "needDay": "Play {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in a game}} on one more day to draw your trend.",
+          "config": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s, your most played setting with a trend",
+          "realAria": "Your accuracy over your last {count} {source, select, calibration {practice} other {game}} rounds at {pieceCount} pieces and {memorizeSeconds} seconds, latest {latest} percent.",
           "realFirst": "Oldest",
           "realLast": "Latest"
         },
@@ -432,12 +432,11 @@
           "realNote": "Darker means missed more often. Grey has under 10 pieces seen."
         },
         "streak": {
-          "fig": "Fig. 6.4 · Daily challenge",
-          "title": "One shared position a day.",
-          "desc": "Same board for everyone, one attempt, a streak that counts consecutive days.",
+          "fig": "Fig. 6.4 · Days in a row",
+          "title": "One round a day builds a streak.",
+          "desc": "Any finished round, game or practice, counts for its day. Play on two days in a row to start a streak.",
           "aria": "Sample two-week streak grid",
           "note": "Sample · the dashed square is today's run, still pending",
-          "realTitle": "Days in a row.",
           "realDesc": "Any finished round counts for its day.",
           "need": "Play on one more day to start a streak.",
           "realAria": "Your last 14 days: {count, plural, one {# day} other {# days}} played.",
@@ -447,10 +446,10 @@
         "board": {
           "fig": "Fig. 6.5 · Leaderboard",
           "title": "Compare readings worldwide.",
-          "desc": "See where your accuracy ranks on each difficulty, next to every player's country.",
+          "desc": "Each difficulty is ranked by correct pieces, then fewer wrong pieces, then faster memorize time, then faster solve time. Every row shows the player's country.",
           "countryFilter": "Filter by country",
-          "open": "Open leaderboard",
-          "you": "you"
+          "sketchPieces": "{count} pieces",
+          "open": "Open leaderboard"
         },
         "plans": {
           "a": {
@@ -488,16 +487,18 @@
           "title": "Your best reading per setting.",
           "desc": "Bests are kept per setting, because 6 pieces and 20 pieces are different tests. Practice readings on this page stay apart from games.",
           "empty": "Your best reading for each setting appears after your first round.",
-          "setting": "{source, select, calibration {Practice} other {Game}} · {pieces} pieces · {seconds}s",
+          "setting": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s",
           "first": "first reading",
           "reading": "{accuracy}% · rebuilt in {seconds}s"
         },
         "types": {
           "fig": "Fig. 6.7 · Recall by piece type",
           "title": "Which pieces slip.",
-          "need": "About {count, plural, one {# more round} other {# more rounds}} until a piece type has 20 sightings.",
+          "need": "About {count, plural, one {# more round} other {# more rounds}} until a piece other than the king has 20 sightings.",
           "needStart": "Recall by piece type appears after your first round.",
-          "thin": "{shown}/20 seen"
+          "onlyKings": "Your rounds so far were just the two kings. Play a round with more pieces to see recall by piece type.",
+          "thin": "{shown}/20 seen",
+          "kings": "Kings are in every round, so they are a baseline. Recalled {recalled} of {shown}."
         },
         "tools": {
           "title": "Kept on this device",

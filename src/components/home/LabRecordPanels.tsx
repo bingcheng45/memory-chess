@@ -49,13 +49,13 @@ export function TrendPanel({ records, summary }: RecordData) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const trend = useMemo(() => deriveTrend(records), [records]);
-  const config = trend.config && { pieces: trend.config.pieceCount, seconds: trend.config.memorizeSeconds };
+  const setting = trend.setting;
 
   return (
     <div className="lab-panel lab-p-spark">
       <PanelHead fig={t("spark.fig")} tag={summary.rounds === 0 ? tags.sample : tags.mine} />
       <h3>{t("spark.title")}</h3>
-      {summary.rounds === 0 || !config ? (
+      {summary.rounds === 0 || !setting ? (
         <>
           <AccuracySparkline label={t("spark.aria")} first={t("spark.first")} last={t("spark.last")} />
           <p className="lab-note">{t("spark.note")}</p>
@@ -64,19 +64,19 @@ export function TrendPanel({ records, summary }: RecordData) {
         <>
           <AccuracySparkline
             points={trend.points}
-            label={t("spark.realAria", { count: trend.points.length, latest: trend.points[trend.points.length - 1], ...config })}
+            label={t("spark.realAria", { count: trend.points.length, latest: trend.points[trend.points.length - 1], ...setting })}
             first={t("spark.realFirst")}
             last={t("spark.realLast")}
           />
           <p className="lab-note">
-            {t("spark.config", config)} · {t("fromRounds", { count: trend.sampleSize })}
+            {t("spark.config", setting)} · {t("fromRounds", { count: trend.sampleSize })}
           </p>
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">
-          {trend.roundsNeeded > 0
-            ? t("spark.needRounds", { count: trend.roundsNeeded, ...config })
-            : t("spark.needDay", config)}
+          {trend.roundsNeeded === 0
+            ? t("spark.needDay", setting)
+            : t(trend.daysNeeded > 0 ? "spark.needRoundsAndDay" : "spark.needRounds", { count: trend.roundsNeeded, ...setting })}
         </p>
       )}
     </div>
@@ -138,7 +138,7 @@ export function StreakPanel({ summary, today }: RecordData) {
   return (
     <div className="lab-panel lab-p-streak">
       <PanelHead fig={t("streak.fig")} tag={proposed ? tags.sample : tags.mine} />
-      <h3>{proposed ? t("streak.title") : t("streak.realTitle")}</h3>
+      <h3>{t("streak.title")}</h3>
       <p className="lab-panel-desc">{proposed ? t("streak.desc") : t("streak.realDesc")}</p>
       {proposed ? (
         <>
@@ -177,7 +177,7 @@ export function BestsPanel({ summary }: RecordData) {
           <dl className="lab-bests">
             {bests.entries.map((best) => (
               <div key={best.key}>
-                <dt>{t("bests.setting", { source: best.source, pieces: best.pieceCount, seconds: best.memorizeSeconds })}</dt>
+                <dt>{t("bests.setting", { source: best.source, pieceCount: best.pieceCount, memorizeSeconds: best.memorizeSeconds })}</dt>
                 <dd>
                   {t("bests.reading", { accuracy: best.accuracy, seconds: formatSeconds(best.solveMs) })}
                   {best.rounds === 1 && <span className="lab-note"> · {t("bests.first")}</span>}
@@ -200,6 +200,7 @@ export function TypesPanel({ summary }: RecordData) {
   const tags = useTags();
   const recall = deriveTypeRecall(summary);
   const typeName = (type: PieceSymbol) => pieces(mapChessJsPieceToType(type));
+  const kings = <p className="lab-note">{t("types.kings", { recalled: recall.king.recalled, shown: recall.king.shown })}</p>;
 
   return (
     <div className="lab-panel lab-p-types">
@@ -217,7 +218,13 @@ export function TypesPanel({ summary }: RecordData) {
               />
             ))}
           </div>
+          {kings}
           <p className="lab-note">{t("fromRounds", { count: recall.sampleSize })}</p>
+        </>
+      ) : recall.onlyKings ? (
+        <>
+          <p className="lab-panel-desc lab-empty">{t("types.onlyKings")}</p>
+          {kings}
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">

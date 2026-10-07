@@ -83,7 +83,7 @@ describe("deriveTrend", () => {
     const trend = deriveTrend(records);
     const elapsed = performance.now() - started;
 
-    expect(trend).toMatchObject({ ready: true, sampleSize: 4500, config: { pieceCount: 4, memorizeSeconds: 10 } });
+    expect(trend).toMatchObject({ ready: true, sampleSize: 4500, setting: { source: "game", pieceCount: 4, memorizeSeconds: 10 } });
     expect(elapsed).toBeLessThan(50);
   });
 
@@ -98,10 +98,74 @@ describe("deriveTrend", () => {
     expect(deriveTrend(records)).toEqual({
       ready: true,
       sampleSize: 5,
-      config: { pieceCount: 4, memorizeSeconds: 10 },
+      setting: { source: "game", pieceCount: 4, memorizeSeconds: 10 },
       points: [100, 50, 100, 50, 100],
       roundsNeeded: 0,
       daysNeeded: 0,
+    });
+  });
+
+  it("keeps practice and game rounds at the same setting on separate lines", () => {
+    const records = [
+      ...days.map((localDay, index) => round({ id: `p${index}`, source: "calibration", endedAt: index, localDay, pieceCount: 6 })),
+      round({ id: "g1", endedAt: 10, pieceCount: 6, placedFen: HALF }),
+      round({ id: "g2", endedAt: 11, pieceCount: 6, placedFen: HALF }),
+    ];
+
+    expect(deriveTrend(records)).toEqual({
+      ready: true,
+      sampleSize: 5,
+      setting: { source: "calibration", pieceCount: 6, memorizeSeconds: 10 },
+      points: [100, 100, 100, 100, 100],
+      roundsNeeded: 0,
+      daysNeeded: 0,
+    });
+  });
+
+  it("breaks a tie between practice and games toward the group played last", () => {
+    const records = [
+      round({ id: "p", source: "calibration", endedAt: 1, pieceCount: 6 }),
+      round({ id: "g", endedAt: 2, pieceCount: 6, placedFen: HALF }),
+    ];
+
+    expect(deriveTrend(records)).toMatchObject({
+      sampleSize: 1,
+      setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 },
+      points: [50],
+      roundsNeeded: 4,
+    });
+  });
+
+  it("draws a ready setting over a setting with more rounds that is still warming", () => {
+    const records = [
+      ...Array.from({ length: 6 }, (_, index) => round({ id: `p${index}`, source: "calibration", endedAt: index })),
+      ...["2026-10-05", "2026-10-06", "2026-10-06", "2026-10-07", "2026-10-07"].map((localDay, index) =>
+        round({ id: `g${index}`, endedAt: 10 + index, localDay, pieceCount: 6, placedFen: index % 2 ? HALF : TARGET }),
+      ),
+    ];
+
+    expect(deriveTrend(records)).toEqual({
+      ready: true,
+      sampleSize: 5,
+      setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 },
+      points: [100, 50, 100, 50, 100],
+      roundsNeeded: 0,
+      daysNeeded: 0,
+    });
+  });
+
+  it("falls back to the setting with the most rounds when none is ready", () => {
+    const records = [
+      ...Array.from({ length: 4 }, (_, index) => round({ id: `p${index}`, source: "calibration", endedAt: index })),
+      ...["2026-10-06", "2026-10-07", "2026-10-07"].map((localDay, index) => round({ id: `g${index}`, endedAt: 10 + index, localDay, pieceCount: 6 })),
+    ];
+
+    expect(deriveTrend(records)).toMatchObject({
+      ready: false,
+      sampleSize: 4,
+      setting: { source: "calibration", pieceCount: 4, memorizeSeconds: 10 },
+      roundsNeeded: 1,
+      daysNeeded: 1,
     });
   });
 
@@ -112,24 +176,50 @@ describe("deriveTrend", () => {
   });
 
   it("has nothing to plot without rounds", () => {
-    expect(deriveTrend([])).toMatchObject({ ready: false, sampleSize: 0, config: null, roundsNeeded: 5, daysNeeded: 2 });
+    expect(deriveTrend([])).toMatchObject({ ready: false, sampleSize: 0, setting: null, roundsNeeded: 5, daysNeeded: 2 });
   });
 });
 
 describe("deriveTypeRecall", () => {
-  it("readies a type at 20 exposures and estimates rounds for the rest", () => {
+  it("does not read kings as a ready type, since every round has two", () => {
     const summary = summarize(Array.from({ length: 10 }, (_, index) => round({ id: `t${index}`, endedAt: index, placedFen: HALF })));
-    const recall = deriveTypeRecall(summary);
 
-    expect(recall.types.find(({ type }) => type === "k")).toEqual({ type: "k", shown: 20, recalled: 20, ready: true });
-    expect(recall.types.find(({ type }) => type === "q")).toEqual({ type: "q", shown: 10, recalled: 0, ready: false });
-    expect(recall).toMatchObject({ ready: true, sampleSize: 10, roundsNeeded: 0 });
+    expect(deriveTypeRecall(summary)).toMatchObject({
+      ready: false,
+      sampleSize: 10,
+      king: { type: "k", shown: 20, recalled: 20, ready: true },
+      roundsNeeded: 10,
+    });
   });
 
-  it("estimates how many rounds until the first bar is ready", () => {
+  it("readies a type other than the king at 20 sightings and keeps the king as a baseline", () => {
+    const summary = summarize(Array.from({ length: 20 }, (_, index) => round({ id: `t${index}`, endedAt: index, placedFen: HALF })));
+    const recall = deriveTypeRecall(summary);
+
+    expect(recall.types.map(({ type }) => type)).toEqual(["q", "r", "b", "n", "p"]);
+    expect(recall.types.find(({ type }) => type === "q")).toEqual({ type: "q", shown: 20, recalled: 0, ready: true });
+    expect(recall.king).toEqual({ type: "k", shown: 40, recalled: 40, ready: true });
+    expect(recall).toMatchObject({ ready: true, sampleSize: 20, roundsNeeded: 0 });
+  });
+
+  it("marks a record of kings-only rounds, which no amount of play at that setting will ready", () => {
+    const KINGS = "4k3/8/8/8/8/8/8/4K3";
+    const summary = summarize(Array.from({ length: 50 }, (_, index) => round({ id: `k${index}`, endedAt: index, pieceCount: 2, targetFen: KINGS, placedFen: KINGS })));
+
+    expect(deriveTypeRecall(summary)).toMatchObject({
+      ready: false,
+      onlyKings: true,
+      king: { type: "k", shown: 100, recalled: 100, ready: true },
+      roundsNeeded: null,
+    });
+    expect(deriveTypeRecall(EMPTY_SUMMARY).onlyKings).toBe(false);
+    expect(deriveTypeRecall(summarize([round()])).onlyKings).toBe(false);
+  });
+
+  it("estimates rounds until the first type other than the king is ready", () => {
     const summary = summarize([round()]);
 
-    expect(deriveTypeRecall(summary)).toMatchObject({ ready: false, roundsNeeded: 9 });
+    expect(deriveTypeRecall(summary)).toMatchObject({ ready: false, roundsNeeded: 19 });
   });
 });
 

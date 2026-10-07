@@ -68,6 +68,11 @@ export function configKey({ pieceCount, memorizeSeconds }: Pick<RoundConfig, "pi
   return `${pieceCount}x${memorizeSeconds}`;
 }
 
+/** Practice and games at the same config are different tests, so bests and the trend keep them apart. */
+export function settingKey(source: LabSource, config: Pick<RoundConfig, "pieceCount" | "memorizeSeconds">): string {
+  return `${source}:${configKey(config)}`;
+}
+
 function outcome(target: string | undefined, placed: string | undefined): SquareOutcome {
   if (target === undefined) return placed === undefined ? "." : "x";
   if (placed === undefined) return "m";

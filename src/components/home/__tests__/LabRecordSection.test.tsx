@@ -52,12 +52,45 @@ describe("LabRecordSection", () => {
     expect(within(panel(/Fig. 6.6/)).getByText(/appears after your first round/)).toBeInTheDocument();
   });
 
+  it("shows the leaderboard as a Sample sketch with no row claiming to be the visitor", () => {
+    renderWithIntl(<LabRecordSection record={record([])} />);
+    const board = panel(/Fig. 6.5/);
+
+    expect(within(board).getByText("Sample")).toBeInTheDocument();
+    expect(within(board).queryByText("Live on site")).toBeNull();
+    expect(within(board).queryByText("you")).toBeNull();
+    expect(within(board).queryByText("--%")).toBeNull();
+    const sketch = within(board).getByText("12 pieces").closest("[aria-hidden='true']") as HTMLElement;
+    expect([...sketch.querySelectorAll(".lab-lb-row")].map((row) => row.lastElementChild?.textContent)).toEqual(["12 pieces", "10 pieces", "8 pieces"]);
+    expect(
+      within(board).getByText(
+        "Each difficulty is ranked by correct pieces, then fewer wrong pieces, then faster memorize time, then faster solve time. Every row shows the player's country.",
+      ),
+    ).toBeInTheDocument();
+    expect(within(board).getByRole("link", { name: "Open leaderboard →" })).toHaveAttribute("href", "/leaderboard");
+    expect(within(board).getByText(/Filter by country/)).toHaveTextContent("Filter by country Proposed");
+  });
+
+  it("names the streak panel for what it counts, in the sample and the real record", () => {
+    const { unmount } = renderWithIntl(<LabRecordSection record={record([])} />);
+
+    expect(screen.getByText("Fig. 6.4 · Days in a row")).toBeInTheDocument();
+    expect(screen.queryByText(/Daily challenge/)).toBeNull();
+    expect(screen.queryByText(/shared position|Same board for everyone/)).toBeNull();
+    expect(within(panel(/Fig. 6.4/)).getByText("Any finished round, game or practice, counts for its day. Play on two days in a row to start a streak.")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.2/)).getByText("Your line, round by round.")).toBeInTheDocument();
+    unmount();
+
+    renderWithIntl(<LabRecordSection record={record(rounds(2, 1))} />);
+    expect(screen.getByText("Fig. 6.4 · Days in a row")).toBeInTheDocument();
+  });
+
   it("says how many more rounds each panel needs below its threshold", () => {
     renderWithIntl(<LabRecordSection record={record(rounds(2, 1))} />);
 
-    expect(within(panel(/Fig. 6.2/)).getByText("3 more rounds at 4 pieces, 10s draws your trend.")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.2/)).getByText("3 more rounds at 4 pieces, 10s, at least one on another day, draws your game trend.")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.4/)).getByText("Play on one more day to start a streak.")).toBeInTheDocument();
-    expect(within(panel(/Fig. 6.7/)).getByText("About 8 more rounds until a piece type has 20 sightings.")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.7/)).getByText("About 18 more rounds until a piece other than the king has 20 sightings.")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.6/)).getByText("Game · 4 pieces · 10s")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.6/)).getByText("100% · rebuilt in 15.0s")).toBeInTheDocument();
   });
@@ -65,15 +98,85 @@ describe("LabRecordSection", () => {
   it("draws the player's own record once there is enough", () => {
     renderWithIntl(<LabRecordSection record={record(rounds(10, 3))} />);
 
-    expect(within(panel(/Fig. 6.2/)).getByText(/From 10 rounds/)).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.2/)).getByText("Game · 4 pieces · 10s, your most played setting with a trend · From 10 rounds")).toBeInTheDocument();
     expect(within(panel(/Fig. 6.2/)).getByRole("img")).toHaveAccessibleName(
-      "Your accuracy over your last 10 rounds at 4 pieces and 10 seconds, latest 50 percent.",
+      "Your accuracy over your last 10 game rounds at 4 pieces and 10 seconds, latest 50 percent.",
     );
     expect(within(panel(/Fig. 6.4/)).getByText(/Current streak 3 days · longest 3 days/)).toBeInTheDocument();
-    expect(within(panel(/Fig. 6.7/)).getByText("King")).toBeInTheDocument();
-    expect(within(panel(/Fig. 6.7/)).getByText("100%")).toBeInTheDocument();
-    expect(within(panel(/Fig. 6.7/)).getAllByText("10/20 seen")).toHaveLength(2);
-    expect(within(panel(/Fig. 6.7/)).queryByText("Pawn")).toBeNull();
+    expect(within(panel(/Fig. 6.7/)).getByText("About 10 more rounds until a piece other than the king has 20 sightings.")).toBeInTheDocument();
+  });
+
+  it("reads piece recall from pieces other than the king and shows kings as a baseline", () => {
+    renderWithIntl(<LabRecordSection record={record(rounds(20, 3))} />);
+    const types = panel(/Fig. 6.7/);
+
+    expect(within(types).getByText("Queen")).toBeInTheDocument();
+    expect(within(types).getAllByText("50%")).toHaveLength(2);
+    expect(within(types).queryByText("King")).toBeNull();
+    expect(within(types).queryByText("Pawn")).toBeNull();
+    expect(within(types).getByText("Kings are in every round, so they are a baseline. Recalled 40 of 40.")).toBeInTheDocument();
+    expect(within(types).getByText("From 20 rounds")).toBeInTheDocument();
+  });
+
+  it("counts kings that were missed in the baseline", () => {
+    const missedWhiteKing = rounds(20, 3).map((game, index) =>
+      index < 9 ? buildRoundRecord({ ...game, pieceCount: 4, memorizeSeconds: 10, placedFen: "4k3/8/8/3q4/8/5N2/8/8" }) : game,
+    );
+    renderWithIntl(<LabRecordSection record={record(missedWhiteKing)} />);
+
+    expect(within(panel(/Fig. 6.7/)).getByText("Kings are in every round, so they are a baseline. Recalled 31 of 40.")).toBeInTheDocument();
+  });
+
+  it("tells a kings-only player why recall by piece type is empty, with the king baseline", () => {
+    const kingsOnly = rounds(50, 3).map((game) =>
+      buildRoundRecord({ ...game, pieceCount: 2, memorizeSeconds: 10, targetFen: "4k3/8/8/8/8/8/8/4K3", placedFen: "4k3/8/8/8/8/8/8/4K3" }),
+    );
+    renderWithIntl(<LabRecordSection record={record(kingsOnly)} />);
+    const types = panel(/Fig. 6.7/);
+
+    expect(
+      within(types).getByText("Your rounds so far were just the two kings. Play a round with more pieces to see recall by piece type."),
+    ).toBeInTheDocument();
+    expect(within(types).getByText("Kings are in every round, so they are a baseline. Recalled 100 of 100.")).toBeInTheDocument();
+    expect(within(types).queryByText(/after your first round/)).toBeNull();
+  });
+
+  it("keeps the first-round empty state for recall by piece type before any round", () => {
+    renderWithIntl(<LabRecordSection record={record([])} />);
+
+    expect(within(panel(/Fig. 6.7/)).getByText("Recall by piece type appears after your first round.")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.7/)).queryByText(/Kings are in every round/)).toBeNull();
+  });
+
+  it("plots practice on its own line when practice is the setting played most", () => {
+    const practice = rounds(5, 2).map((game) =>
+      buildRoundRecord({ ...game, source: "calibration", pieceCount: 4, memorizeSeconds: 10 }),
+    );
+    renderWithIntl(<LabRecordSection record={record([...practice, ...rounds(2, 1).map((game) => ({ ...game, id: `g${game.id}`, endedAt: 100 }))])} />);
+
+    expect(within(panel(/Fig. 6.2/)).getByText("Practice · 4 pieces · 10s, your most played setting with a trend · From 5 rounds")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.2/)).getByRole("img")).toHaveAccessibleName(
+      "Your accuracy over your last 5 practice rounds at 4 pieces and 10 seconds, latest 100 percent.",
+    );
+  });
+
+  it("draws the game trend that is ready over more practice rounds still on one day", () => {
+    const practice = rounds(6, 1).map((game) => buildRoundRecord({ ...game, id: `p${game.id}`, source: "calibration", pieceCount: 4, memorizeSeconds: 10 }));
+    const games = rounds(5, 3).map((game) => buildRoundRecord({ ...game, id: `g${game.id}`, endedAt: 100 + game.endedAt, pieceCount: 6, memorizeSeconds: 10 }));
+    renderWithIntl(<LabRecordSection record={record([...practice, ...games])} />);
+
+    expect(within(panel(/Fig. 6.2/)).getByText("Game · 6 pieces · 10s, your most played setting with a trend · From 5 rounds")).toBeInTheDocument();
+    expect(within(panel(/Fig. 6.2/)).queryByText(/one more day/)).toBeNull();
+  });
+
+  it("says exactly what the most played setting still needs when no setting is ready", () => {
+    const practice = rounds(4, 1).map((game) => buildRoundRecord({ ...game, id: `p${game.id}`, source: "calibration", pieceCount: 4, memorizeSeconds: 10 }));
+    const games = rounds(3, 2).map((game) => buildRoundRecord({ ...game, id: `g${game.id}`, endedAt: 100 + game.endedAt, pieceCount: 6, memorizeSeconds: 10 }));
+    renderWithIntl(<LabRecordSection record={record([...practice, ...games])} />);
+
+    expect(
+      within(panel(/Fig. 6.2/)).getByText("1 more round at 4 pieces, 10s, played on another day, draws your practice trend."),
+    ).toBeInTheDocument();
   });
 
   it("labels practice bests apart from game bests at the same setting", () => {
@@ -101,6 +204,8 @@ describe("LabRecordSection", () => {
       { ok: true as const, added: 4, rejected: 0, overCap: 0, summary: "ignored" as const },
       "Imported 4 rounds. This browser already had rounds, so only new rounds were merged, not the file's lifetime totals.",
     ],
+    [{ ok: true as const, added: 0, rejected: 0, overCap: 0, summary: "ignored" as const }, "Nothing new to import. Those rounds are already here."],
+    [{ ok: true as const, added: 0, rejected: 0, overCap: 0, summary: "dropped" as const }, "Nothing new to import. Those rounds are already here."],
     [
       { ok: true as const, added: 2, rejected: 0, overCap: 0, summary: "dropped" as const },
       "Imported 2 rounds. The file's lifetime totals could not be read, so only its rounds were imported.",

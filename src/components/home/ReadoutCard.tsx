@@ -74,8 +74,8 @@ export const ReadoutCard = memo(function ReadoutCard({ state }: { state: RoundSt
             <b>{t("readout.suggested")}</b>{" "}
             {t(`readout.${tier.advice}`, {
               tier: presets(`${tier.difficulty}.label`),
-              pieces: tier.pieceCount,
-              seconds: tier.memorizeTime,
+              pieceCount: tier.pieceCount,
+              memorizeSeconds: tier.memorizeTime,
             })}
             <br />
             <Link className="lab-go" href={playHref(tier.pieceCount, tier.memorizeTime, "calibration_cta")}>

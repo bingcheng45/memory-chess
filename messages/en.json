@@ -427,6 +427,8 @@
           "imported": "{added, plural, =0 {Nothing new to import. Those rounds are already here.} one {Imported # round.} other {Imported # rounds.}}",
           "skipped": "{count, plural, one {# round in the file could not be read and was skipped.} other {# rounds in the file could not be read and were skipped.}}",
           "importFailed": "That file is not a Memory Chess lab record.",
+          "tooLarge": "That file is over 5 MB, larger than any lab record, so nothing was imported.",
+          "overCap": "{count, plural, one {# older round was} other {# older rounds were}} left out to stay within the 5,000-round limit.",
           "safari": "Safari can delete a site's stored data after 7 days without a visit. Download a copy if you play less often than that.",
           "unavailable": "Not saved in private windows. This browser window is not keeping your rounds.",
           "backup": "Back up across devices (coming soon)",

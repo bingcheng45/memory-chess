@@ -57,6 +57,14 @@ describe("lab store", () => {
     expect((await store.readSummary()).rounds).toBe(3);
   });
 
+  it("adds a round id repeated inside one file once", async () => {
+    const store = createLabStore(deps());
+
+    expect(await store.mergeRounds([round({ id: "a", endedAt: 1 }), round({ id: "a", endedAt: 1 }), round({ id: "b", endedAt: 2 })])).toBe(2);
+    expect((await store.listRounds()).map(({ id }) => id)).toEqual(["a", "b"]);
+    expect((await store.readSummary()).rounds).toBe(2);
+  });
+
   it("restores an export after a clear exactly", async () => {
     const store = createLabStore(deps());
     await store.addRound(round({ id: "a", endedAt: 1 }));

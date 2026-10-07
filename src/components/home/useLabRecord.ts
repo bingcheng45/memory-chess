@@ -6,13 +6,13 @@ import { localDayOf, type RoundRecordV1 } from "@/lib/lab/record";
 import { LAB_RECORD_CHANGED } from "@/lib/lab/recordRound";
 import { labStore } from "@/lib/lab/storage";
 import { EMPTY_SUMMARY, type LabSummary } from "@/lib/lab/summary";
-import { buildExport, parseImport } from "@/lib/lab/transfer";
+import { buildExport, readImportFile } from "@/lib/lab/transfer";
 
 export type LabStorageState = "loading" | "available" | "unavailable";
 
 export type ImportOutcome =
-  | { readonly ok: true; readonly added: number; readonly rejected: number }
-  | { readonly ok: false };
+  | { readonly ok: true; readonly added: number; readonly rejected: number; readonly overCap: number }
+  | { readonly ok: false; readonly tooLarge: boolean };
 
 export interface LabRecord {
   readonly storage: LabStorageState;
@@ -74,16 +74,16 @@ export function useLabRecord(): LabRecord {
   const importFile = useCallback(
     async (file: File): Promise<ImportOutcome> => {
       const store = labStore();
-      if (!store) return { ok: false };
-      const parsed = parseImport(await file.text());
-      if (!parsed.ok) return { ok: false };
+      if (!store) return { ok: false, tooLarge: false };
+      const parsed = await readImportFile(file);
+      if (!parsed.ok) return { ok: false, tooLarge: parsed.reason === "too-large" };
       try {
         const added = await store.mergeRounds(parsed.rounds);
         trackEvent({ name: "lab_import", params: { added, rejected: parsed.rejected } });
         await reload();
-        return { ok: true, added, rejected: parsed.rejected };
+        return { ok: true, added, rejected: parsed.rejected, overCap: parsed.overCap };
       } catch {
-        return { ok: false };
+        return { ok: false, tooLarge: false };
       }
     },
     [reload],

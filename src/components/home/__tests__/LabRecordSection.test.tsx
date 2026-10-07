@@ -34,7 +34,7 @@ function record(records: RoundRecordV1[], overrides: Partial<LabRecord> = {}): L
     lastBackup: null,
     today: "2026-10-07",
     download: jest.fn(() => Promise.resolve()),
-    importFile: jest.fn(() => Promise.resolve({ ok: true as const, added: 3, rejected: 1 })),
+    importFile: jest.fn(() => Promise.resolve({ ok: true as const, added: 3, rejected: 1, overCap: 0 })),
     ...overrides,
   };
 }
@@ -93,6 +93,19 @@ describe("LabRecordSection", () => {
     fireEvent.change(input, { target: { files: [new File(["{}"], "lab.json")] } });
 
     expect(await screen.findByText("Imported 3 rounds. 1 round in the file could not be read and was skipped.")).toBeInTheDocument();
+  });
+
+  it.each([
+    [{ ok: true as const, added: 5000, rejected: 0, overCap: 2 }, "Imported 5,000 rounds. 2 older rounds were left out to stay within the 5,000-round limit."],
+    [{ ok: false as const, tooLarge: true }, "That file is over 5 MB, larger than any lab record, so nothing was imported."],
+    [{ ok: false as const, tooLarge: false }, "That file is not a Memory Chess lab record."],
+  ])("shows the import notice for %o", async (outcome, text) => {
+    const { container } = renderWithIntl(<LabRecordSection record={record([], { importFile: jest.fn(() => Promise.resolve(outcome)) })} />);
+    const input = container.querySelector('input[type="file"]') as HTMLInputElement;
+
+    fireEvent.change(input, { target: { files: [new File(["{}"], "lab.json")] } });
+
+    expect(await screen.findByText(text)).toBeInTheDocument();
   });
 
   it("counts interest in cross-device backup without pretending it exists", () => {

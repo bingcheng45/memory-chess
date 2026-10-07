@@ -7,7 +7,7 @@ describe("lab record export and import", () => {
     const file = JSON.stringify(buildExport(rounds, 1700000000000));
 
     expect(JSON.parse(file)).toMatchObject({ format: "memory-chess-lab", v: 1, exportedAt: 1700000000000 });
-    expect(parseImport(file)).toEqual({ ok: true, rounds, rejected: 0 });
+    expect(parseImport(file)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0 });
   });
 
   it("recomputes derived fields instead of trusting the file", () => {

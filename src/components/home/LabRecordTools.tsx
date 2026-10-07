@@ -38,11 +38,15 @@ export function LabRecordTools({ record }: { record: LabRecord }) {
       result.ok
         ? {
             kind: "ok",
-            text: [t("imported", { added: result.added }), result.rejected > 0 ? t("skipped", { count: result.rejected }) : ""]
+            text: [
+              t("imported", { added: result.added }),
+              result.rejected > 0 ? t("skipped", { count: result.rejected }) : "",
+              result.overCap > 0 ? t("overCap", { count: result.overCap }) : "",
+            ]
               .filter(Boolean)
               .join(" "),
           }
-        : { kind: "error", text: t("importFailed") },
+        : { kind: "error", text: result.tooLarge ? t("tooLarge") : t("importFailed") },
     );
   };
 

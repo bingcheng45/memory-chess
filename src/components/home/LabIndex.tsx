@@ -15,8 +15,9 @@ const INDEX_ENTRIES: readonly Exclude<LabSectionId, "recording" | "faq" | "next"
 ];
 
 /** Sticky in-page index for the lab sheet. The site navigation stays in PageHeader above. */
-export function LabIndex() {
+export function LabIndex({ streakDays }: { streakDays: number | null }) {
   const t = useTranslations("home.lab.index");
+  const record = useTranslations("home.lab.record.streak");
 
   return (
     <div className="lab-index">
@@ -31,6 +32,11 @@ export function LabIndex() {
             </a>
           ))}
         </nav>
+        {streakDays !== null && (
+          <a className="lab-streak-chip" href={`#${LAB_SECTIONS.record.anchor}`}>
+            {record("chip", { count: streakDays })}
+          </a>
+        )}
         <Link className="lab-btn lab-btn-primary" href={QUICK_START_HREF}>
           <span className="lab-dot" aria-hidden="true" />
           {t("play")}

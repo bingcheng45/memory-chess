@@ -25,6 +25,19 @@ export type FunnelEvent =
   | {
       name: "article_tile_click";
       params: { slug: string; action: "read" | "drill" };
+    }
+  // Lab record events carry counts only, never positions, squares or round ids.
+  | {
+      name: "lab_export";
+      params: { rounds: number };
+    }
+  | {
+      name: "lab_import";
+      params: { added: number; rejected: number };
+    }
+  | {
+      name: "lab_backup_interest";
+      params: { rounds: number };
     };
 
 export function trackEvent({ name, params }: FunnelEvent): void {

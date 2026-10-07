@@ -149,6 +149,18 @@ export default function PrivacyPage() {
               choices.
             </p>
             <p className={copyClassName}>
+              The homepage lab record keeps every round you finish, including
+              the practice reading on the homepage, in your browser&apos;s
+              IndexedDB and local storage: the position you studied, the one
+              you rebuilt, your timings, and your scores. It is used only to
+              draw your streak, personal bests, accuracy trend and miss map on
+              this device. It is never sent to Memory Chess or to analytics;
+              analytics only receive counts when you download, import, or ask
+              for cross-device backup. Download my lab record saves a copy as
+              a file you control, and clearing your browser data deletes the
+              record. Private windows do not keep it.
+            </p>
+            <p className={copyClassName}>
               Liking an article saves the id of that article and the like
               count shown at that moment in the local storage of your browser,
               so the like button stays pressed and its count does not fall

@@ -254,7 +254,7 @@
         "liveStudy": "Study the position. {seconds} seconds.",
         "liveRebuild": "Board cleared. Pick a piece, then a square.",
         "liveScore": "Accuracy {accuracy} percent. {correct} of {total} squares correct.",
-          "startFailed": "Could not load a position. Check your connection and try again.",
+        "startFailed": "Could not load a position. Check your connection and try again.",
         "steps": [
           "Press start. Study the position until the meter empties.",
           "Pick a piece from the palette, then tap a square. Tap a placed piece to remove it.",
@@ -308,7 +308,7 @@
       },
       "record": {
         "title": "Come back for the trend line.",
-        "lede": "One reading is a snapshot. Ten readings are a measurement. This is how the lab record could look. Panels marked <tag>Proposed</tag> are design proposals, and all numbers shown are sample values, not real users.",
+        "lede": "One reading is a snapshot. Ten readings are a measurement. Every round you play is kept on this device, and these panels fill in from your own rounds. Until there is enough to read, a panel shows <tag>Sample</tag> values, not real players.",
         "curve": {
           "fig": "Fig. 6.1 · Forgetting curve",
           "tag": "Proposed · review reminders",
@@ -327,20 +327,40 @@
           "aria": "Sample sparkline of accuracy over 12 sessions, rising from 52 to 79 percent.",
           "note": "Sample record · 12 sessions · Medium",
           "first": "S01",
-          "last": "S12"
+          "last": "S12",
+          "needRounds": "{count, plural, one {# more round} other {# more rounds}} at {pieces} pieces, {seconds}s draws your trend.",
+          "needDay": "Play {pieces} pieces, {seconds}s on one more day to draw your trend.",
+          "config": "{pieces} pieces · {seconds}s, the setting you play most",
+          "realAria": "Your accuracy over your last {count} rounds at {pieces} pieces and {seconds} seconds, latest {latest} percent.",
+          "realFirst": "Oldest",
+          "realLast": "Latest"
         },
         "heat": {
           "fig": "Fig. 6.3 · Miss map",
           "title": "Where your squares slip.",
           "aria": "Sample heatmap of missed squares, concentrated on the a and h files.",
-          "note": "Sample: misses cluster on the edge files. Train edges next."
+          "note": "Sample: misses cluster on the edge files. Train edges next.",
+          "need": "About {count, plural, one {# more round} other {# more rounds}} until every file and rank has 10 pieces to read.",
+          "needStart": "Play a few more rounds to start your miss map.",
+          "files": "Files",
+          "ranks": "Ranks",
+          "line": "{line}: {missed} of {shown} missed",
+          "lineThin": "{line}: {shown} seen, not enough to read",
+          "realAria": "Your miss share on each square. Grey squares have fewer than 10 pieces seen.",
+          "realNote": "Darker means missed more often. Grey has under 10 pieces seen."
         },
         "streak": {
           "fig": "Fig. 6.4 · Daily challenge",
           "title": "One shared position a day.",
           "desc": "Same board for everyone, one attempt, a streak that counts consecutive days.",
           "aria": "Sample two-week streak grid",
-          "note": "Sample · the dashed square is today's run, still pending"
+          "note": "Sample · the dashed square is today's run, still pending",
+          "realTitle": "Days in a row.",
+          "realDesc": "Any finished round counts for its day.",
+          "need": "Play on one more day to start a streak.",
+          "realAria": "Your last 14 days: {count, plural, one {# day} other {# days}} played.",
+          "realNote": "Current streak {current, plural, one {# day} other {# days}} · longest {longest, plural, one {# day} other {# days}}",
+          "chip": "Day {count}"
         },
         "board": {
           "fig": "Fig. 6.5 · Leaderboard",
@@ -378,6 +398,39 @@
               "When study time bottoms out, add pieces."
             ]
           }
+        },
+        "mine": "Your record",
+        "fromRounds": "From {count, plural, one {# round} other {# rounds}}",
+        "bests": {
+          "fig": "Fig. 6.6 · Personal bests",
+          "title": "Your best reading per setting.",
+          "desc": "Bests are kept per setting, because 6 pieces and 20 pieces are different tests.",
+          "empty": "Your best reading for each setting appears after your first round.",
+          "setting": "{pieces} pieces · {seconds}s",
+          "first": "first reading",
+          "reading": "{accuracy}% · rebuilt in {seconds}s"
+        },
+        "types": {
+          "fig": "Fig. 6.7 · Recall by piece type",
+          "title": "Which pieces slip.",
+          "need": "About {count, plural, one {# more round} other {# more rounds}} until a piece type has 20 sightings.",
+          "needStart": "Recall by piece type appears after your first round.",
+          "thin": "{shown}/20 seen"
+        },
+        "tools": {
+          "title": "Kept on this device",
+          "body": "No account and no server. Download a copy to move it to another browser or to keep it safe.",
+          "download": "Download my lab record",
+          "import": "Import",
+          "lastBackup": "Last backed up {date}",
+          "neverBackedUp": "Not backed up yet",
+          "imported": "{added, plural, =0 {Nothing new to import. Those rounds are already here.} one {Imported # round.} other {Imported # rounds.}}",
+          "skipped": "{count, plural, one {# round in the file could not be read and was skipped.} other {# rounds in the file could not be read and were skipped.}}",
+          "importFailed": "That file is not a Memory Chess lab record.",
+          "safari": "Safari can delete a site's stored data after 7 days without a visit. Download a copy if you play less often than that.",
+          "unavailable": "Not saved in private windows. This browser window is not keeping your rounds.",
+          "backup": "Back up across devices (coming soon)",
+          "backupNoted": "Cross-device backup is not built yet. Thanks, your interest is counted."
         }
       },
       "library": {

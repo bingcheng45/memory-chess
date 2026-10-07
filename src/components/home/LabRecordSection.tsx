@@ -3,7 +3,10 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
-import { AccuracySparkline, ForgettingCurve, MissMap, StreakGrid } from "./LabCharts";
+import { ForgettingCurve } from "./LabCharts";
+import { BestsPanel, MissPanel, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
+import { LabRecordTools } from "./LabRecordTools";
+import type { LabRecord } from "./useLabRecord";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
 const PLANS = ["a", "b", "c"] as const;
@@ -14,11 +17,12 @@ const BOARD_SKETCH = [
   { rank: "03", width: "61%", you: true },
 ];
 
-export function LabRecordSection() {
+export function LabRecordSection({ record }: { record: LabRecord }) {
   const t = useTranslations("home.lab.record");
   const tags = useTranslations("home.lab.tags");
   const presets = useTranslations("game.presets");
   const proposed = <span className="lab-tag">{tags("proposed")}</span>;
+  const data = { records: record.records, summary: record.summary, today: record.today };
 
   return (
     <section className="lab-sec" id={LAB_SECTIONS.record.anchor}>
@@ -26,7 +30,7 @@ export function LabRecordSection() {
         <SectionHeading
           section="record"
           title={t("title")}
-          lede={t.rich("lede", { tag: (chunks) => <span className="lab-tag">{chunks}</span> })}
+          lede={t.rich("lede", { tag: (chunks) => <span className="lab-tag lab-tag-blue">{chunks}</span> })}
         />
         <div className="lab-dash">
           <div className="lab-panel lab-p-curve">
@@ -41,34 +45,9 @@ export function LabRecordSection() {
               <span className="lab-tag lab-tag-blue">{tags("illustrative")}</span> {t("curve.note")}
             </p>
           </div>
-          <div className="lab-panel lab-p-spark">
-            <div className="lab-panel-h">
-              <span className="lab-k">{t("spark.fig")}</span>
-              <span className="lab-tag lab-tag-blue">{tags("sample")}</span>
-            </div>
-            <h3>{t("spark.title")}</h3>
-            <AccuracySparkline />
-            <p className="lab-note">{t("spark.note")}</p>
-          </div>
-          <div className="lab-panel lab-p-heat">
-            <div className="lab-panel-h">
-              <span className="lab-k">{t("heat.fig")}</span>
-              {proposed}
-            </div>
-            <h3>{t("heat.title")}</h3>
-            <MissMap />
-            <p className="lab-note">{t("heat.note")}</p>
-          </div>
-          <div className="lab-panel lab-p-streak">
-            <div className="lab-panel-h">
-              <span className="lab-k">{t("streak.fig")}</span>
-              {proposed}
-            </div>
-            <h3>{t("streak.title")}</h3>
-            <p className="lab-panel-desc">{t("streak.desc")}</p>
-            <StreakGrid />
-            <p className="lab-note">{t("streak.note")}</p>
-          </div>
+          <TrendPanel {...data} />
+          <MissPanel {...data} />
+          <StreakPanel {...data} />
           <div className="lab-panel lab-p-board">
             <div className="lab-panel-h">
               <span className="lab-k">{t("board.fig")}</span>
@@ -97,7 +76,10 @@ export function LabRecordSection() {
               {t("board.open")} →
             </Link>
           </div>
+          <BestsPanel {...data} />
+          <TypesPanel {...data} />
         </div>
+        <LabRecordTools record={record} />
         <div className="lab-plans">
           {PLANS.map((plan) => (
             <div className="lab-plan" key={plan}>

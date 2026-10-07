@@ -1,11 +1,11 @@
+import type { StreakDay } from "@/lib/lab/derive";
+
 /**
  * Sample and illustrative data for the lab record section. None of it is
  * measured; every panel that draws it carries a Sample or Illustrative tag.
  */
 
 export const SAMPLE_ACCURACY: readonly number[] = [52, 58, 55, 63, 61, 68, 66, 72, 70, 75, 74, 79];
-
-export type StreakDay = "played" | "missed" | "today";
 
 export const SAMPLE_STREAK: readonly StreakDay[] = [
   "played", "played", "missed", "played", "played", "played", "missed",

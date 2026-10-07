@@ -10,6 +10,9 @@ const EVENTS: FunnelEvent[] = [
   { name: "article_like", params: { slug: "magnus-carlsen" } },
   { name: "article_tile_click", params: { slug: "judit-polgar", action: "read" } },
   { name: "article_tile_click", params: { slug: "judit-polgar", action: "drill" } },
+  { name: "lab_export", params: { rounds: 42 } },
+  { name: "lab_import", params: { added: 40, rejected: 2 } },
+  { name: "lab_backup_interest", params: { rounds: 42 } },
 ];
 
 afterEach(() => {

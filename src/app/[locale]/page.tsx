@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useLocale } from "next-intl";
 import PageHeader from "@/components/ui/PageHeader";
 import FaqSection from "@/components/ui/FaqSection";
@@ -17,6 +18,8 @@ import { NotebookSection } from "@/components/home/NotebookSection";
 import { LAB_SECTIONS, Ruler, SectionIndex } from "@/components/home/SectionHeading";
 import { TiersSection } from "@/components/home/TiersSection";
 import { useTotalPlays } from "@/components/home/useLabEffects";
+import { useLabRecord } from "@/components/home/useLabRecord";
+import { deriveStreak, LAB_THRESHOLDS } from "@/lib/lab/derive";
 import "@/components/home/lab.css";
 import "@/components/home/lab-instruments.css";
 
@@ -43,6 +46,12 @@ export default function Home() {
   );
 
   if (!LAB_LOCALES.includes(locale)) return <LegacyHome totalPlays={totalPlays} schema={schema} />;
+  return <BrainLab totalPlays={totalPlays} schema={schema} />;
+}
+
+function BrainLab({ totalPlays, schema }: { totalPlays: number | null; schema: ReactNode }) {
+  const record = useLabRecord();
+  const streak = record.today ? deriveStreak(record.summary.days, record.today) : null;
 
   return (
     <>
@@ -51,7 +60,7 @@ export default function Home() {
         <PageHeader showSoundSettings={false} />
       </div>
       <div className="lab">
-        <LabIndex />
+        <LabIndex streakDays={streak && streak.current >= LAB_THRESHOLDS.streakDays ? streak.current : null} />
         <main>
           {schema}
           <LabHero totalPlays={totalPlays} />
@@ -68,7 +77,7 @@ export default function Home() {
           <CalibrationSection />
           <TiersSection />
           <Ruler />
-          <LabRecordSection />
+          <LabRecordSection record={record} />
           <LibrarySection />
           <section className="lab-sec lab-sec-tight lab-legacy" id={LAB_SECTIONS.faq.anchor}>
             <div className="lab-wrap">

@@ -12,6 +12,7 @@ import {
   retentionNoReview,
   retentionWithReviews,
 } from "@/lib/home/labRecord";
+import type { StreakDay } from "@/lib/lab/derive";
 
 const CURVE = { left: 44, right: 580, bottom: 210, top: 20 };
 const curveX = (day: number) => CURVE.left + ((CURVE.right - CURVE.left) * day) / CURVE_SPAN_DAYS;
@@ -59,41 +60,49 @@ export function ForgettingCurve() {
   );
 }
 
-const SPARK = { width: 290, height: 110, low: 40, high: 90, pad: 8 };
-const sparkX = (index: number) => SPARK.pad + ((SPARK.width - 2 * SPARK.pad) * index) / (SAMPLE_ACCURACY.length - 1);
-const sparkY = (value: number) => SPARK.height - ((value - SPARK.low) / (SPARK.high - SPARK.low)) * (SPARK.height - 14);
+const SPARK = { width: 290, height: 110, pad: 8 };
+const SAMPLE_DOMAIN = { low: 40, high: 90 };
+const FULL_DOMAIN = { low: 0, high: 100 };
 const SPARK_GUIDES = [50, 70];
 
-export function AccuracySparkline() {
-  const t = useTranslations("home.lab.record.spark");
-  const points = SAMPLE_ACCURACY.map((value, index) => `${sparkX(index).toFixed(1)},${sparkY(value).toFixed(1)}`);
-  const lastIndex = SAMPLE_ACCURACY.length - 1;
-  const last = SAMPLE_ACCURACY[lastIndex];
+interface SparklineProps {
+  /** Accuracy per round, oldest first. Defaults to the sample record. */
+  readonly points?: readonly number[];
+  readonly label: string;
+  readonly first: string;
+  readonly last: string;
+}
+
+export function AccuracySparkline({ points = SAMPLE_ACCURACY, label, first, last }: SparklineProps) {
+  const domain = points === SAMPLE_ACCURACY ? SAMPLE_DOMAIN : FULL_DOMAIN;
+  const x = (index: number) => SPARK.pad + ((SPARK.width - 2 * SPARK.pad) * index) / Math.max(1, points.length - 1);
+  const y = (value: number) =>
+    SPARK.height - ((value - domain.low) / (domain.high - domain.low)) * (SPARK.height - 14);
+  const coords = points.map((value, index) => `${x(index).toFixed(1)},${y(value).toFixed(1)}`);
+  const lastIndex = points.length - 1;
+  const latest = points[lastIndex];
 
   return (
-    <svg className="lab-chart" viewBox="0 0 300 140" role="img" aria-label={t("aria")}>
+    <svg className="lab-chart" viewBox="0 0 300 140" role="img" aria-label={label}>
       {SPARK_GUIDES.map((value) => (
         <g key={value}>
-          <line className="lab-c-grid" x1={SPARK.pad} x2={SPARK.width - SPARK.pad} y1={sparkY(value)} y2={sparkY(value)} />
-          <text x={SPARK.width - 6} y={sparkY(value) - 4} textAnchor="end">
+          <line className="lab-c-grid" x1={SPARK.pad} x2={SPARK.width - SPARK.pad} y1={y(value)} y2={y(value)} />
+          <text x={SPARK.width - 6} y={y(value) - 4} textAnchor="end">
             {value}%
           </text>
         </g>
       ))}
-      <polygon
-        className="lab-c-area"
-        points={`${sparkX(0)},${SPARK.height} ${points.join(" ")} ${sparkX(lastIndex)},${SPARK.height}`}
-      />
-      <polyline className="lab-c-line" points={points.join(" ")} />
-      <circle className="lab-c-last" cx={sparkX(lastIndex)} cy={sparkY(last)} r={4.5} />
-      <text className="lab-c-last-label" x={sparkX(lastIndex) - 8} y={sparkY(last) - 10} textAnchor="end">
-        {last}%
+      <polygon className="lab-c-area" points={`${x(0)},${SPARK.height} ${coords.join(" ")} ${x(lastIndex)},${SPARK.height}`} />
+      <polyline className="lab-c-line" points={coords.join(" ")} />
+      <circle className="lab-c-last" cx={x(lastIndex)} cy={y(latest)} r={4.5} />
+      <text className="lab-c-last-label" x={x(lastIndex) - 8} y={y(latest) - 10} textAnchor="end">
+        {latest}%
       </text>
       <text x={SPARK.pad} y={SPARK.height + 22}>
-        {t("first")}
+        {first}
       </text>
       <text x={SPARK.width - SPARK.pad} y={SPARK.height + 22} textAnchor="end">
-        {t("last")}
+        {last}
       </text>
     </svg>
   );
@@ -101,23 +110,47 @@ export function AccuracySparkline() {
 
 const HEAT_FLOOR = 0.08;
 const HEAT_RANGE = 0.85;
+const heatOpacity = (value: number) => Number((HEAT_FLOOR + value * HEAT_RANGE).toFixed(2));
 
-export function MissMap() {
-  const t = useTranslations("home.lab.record.heat");
+/** One cell per square, a8 first: a miss share from 0 to 1, or null when too few pieces were seen there. */
+export function MissMap({ cells = SAMPLE_MISS_MAP, label }: { readonly cells?: readonly (number | null)[]; readonly label: string }) {
   return (
-    <div className="lab-heat" role="img" aria-label={t("aria")}>
-      {SAMPLE_MISS_MAP.map((value, index) => (
-        <i key={index} style={{ opacity: Number((HEAT_FLOOR + value * HEAT_RANGE).toFixed(2)) }} />
-      ))}
+    <div className="lab-heat" role="img" aria-label={label}>
+      {cells.map((value, index) =>
+        value === null ? <i key={index} data-thin="" /> : <i key={index} style={{ opacity: heatOpacity(value) }} />,
+      )}
     </div>
   );
 }
 
-export function StreakGrid() {
-  const t = useTranslations("home.lab.record.streak");
+export interface MissLine {
+  readonly name: string;
+  /** Miss share 0 to 1, or null when too few pieces were seen on the line. */
+  readonly value: number | null;
+  readonly label: string;
+}
+
+/** Files or ranks as a row of eight cells, used until every square has enough data. */
+export function MissLines({ lines, caption }: { readonly lines: readonly MissLine[]; readonly caption: string }) {
   return (
-    <div className="lab-streak" role="img" aria-label={t("aria")}>
-      {SAMPLE_STREAK.map((day, index) => (
+    <div className="lab-heat-lines">
+      <span className="lab-k">{caption}</span>
+      <ul>
+        {lines.map(({ name, value, label }) => (
+          <li key={name} aria-label={label}>
+            {value === null ? <i data-thin="" /> : <i style={{ opacity: heatOpacity(value) }} />}
+            <span aria-hidden="true">{name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export function StreakGrid({ days = SAMPLE_STREAK, label }: { readonly days?: readonly StreakDay[]; readonly label: string }) {
+  return (
+    <div className="lab-streak" role="img" aria-label={label}>
+      {days.map((day, index) => (
         <i key={index} data-day={day} />
       ))}
     </div>

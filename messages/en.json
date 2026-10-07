@@ -447,6 +447,7 @@
           "title": "Compare readings worldwide.",
           "desc": "Each difficulty is ranked by correct pieces, then fewer wrong pieces, then faster memorize time, then faster solve time. Every row shows the player's country.",
           "countryFilter": "Filter by country",
+          "sketchPieces": "{count} pieces",
           "open": "Open leaderboard"
         },
         "plans": {

@@ -11,9 +11,9 @@ import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
 const PLANS = ["a", "b", "c"] as const;
 const BOARD_SKETCH = [
-  { rank: "01", width: "86%" },
-  { rank: "02", width: "74%" },
-  { rank: "03", width: "61%" },
+  { rank: "01", width: "86%", pieces: 12 },
+  { rank: "02", width: "74%", pieces: 10 },
+  { rank: "03", width: "61%", pieces: 8 },
 ];
 
 export function LabRecordSection({ record }: { record: LabRecord }) {
@@ -54,11 +54,11 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
               ))}
             </div>
             <div aria-hidden="true">
-              {BOARD_SKETCH.map(({ rank, width }) => (
+              {BOARD_SKETCH.map(({ rank, width, pieces }) => (
                 <div className="lab-lb-row" key={rank}>
                   <span className="lab-mono">{rank}</span>
                   <span className="lab-lb-bar" style={{ width }} />
-                  <span className="lab-mono lab-note">--%</span>
+                  <span className="lab-mono lab-note">{t("board.sketchPieces", { count: pieces })}</span>
                 </div>
               ))}
             </div>

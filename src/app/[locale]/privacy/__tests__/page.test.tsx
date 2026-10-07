@@ -56,7 +56,7 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("lists every fact the lab record keeps and says none of it leaves the device", () => {
+  it("lists every fact the lab record keeps and says the record itself never leaves the device", () => {
     render(<PrivacyPage />);
 
     expect(
@@ -64,7 +64,27 @@ describe("PrivacyPage", () => {
         /the position you studied, the one you rebuilt, your timings, your scores, your time zone offset, where you started the round \(such as the homepage or a guide\), and the order and timing of each piece you placed\./,
       ),
     ).toBeInTheDocument();
-    expect(screen.getByText(/It is never sent to Memory Chess or to analytics/)).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /The record itself, with its positions, squares, placements and history, never leaves this device\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("names what analytics receive about rounds and the lab, and what they never receive", () => {
+    render(<PrivacyPage />);
+
+    expect(
+      screen.getByText(
+        /Google Analytics receives an event for each round you finish, on the homepage or in the game, with the number of pieces, the study time, how many pieces you recalled, your accuracy and where the round started\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /when the lab section comes into view, when you follow one of its play links, and the number of rounds when you download, import, or ask for cross-device backup\. None of these events carry positions, squares, round ids or streaks\./,
+      ),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/never sent to Memory Chess or to analytics/)).not.toBeInTheDocument();
   });
 
   it("claims no identifier the site does not create", () => {

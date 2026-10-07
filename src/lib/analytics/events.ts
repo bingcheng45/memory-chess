@@ -21,6 +21,15 @@ export function roundSourceFrom(value: string | null): RoundSource {
   return ROUND_SOURCES.find((source) => source === value) ?? "link";
 }
 
+/** §06 parts with a play link: the unlock strip and each panel that can go stale. */
+export type LabPanel = "unlock" | "trend" | "missMap" | "streak" | "bests" | "typeRecall";
+
+/**
+ * The GA4 event contract. Round events carry the setting and the score, and
+ * `source` names where the round started (calibration included). Lab events
+ * carry counts and fixed ids only, never positions, squares, round ids, dates
+ * or streak lengths, which the privacy page promises.
+ */
 export type FunnelEvent =
   | {
       name: "round_start";
@@ -33,6 +42,7 @@ export type FunnelEvent =
         memorize_time: number;
         correct_pieces: number;
         accuracy: number;
+        source: RoundSource;
       };
     }
   | {
@@ -47,7 +57,6 @@ export type FunnelEvent =
       name: "article_tile_click";
       params: { slug: string; action: "read" | "drill" };
     }
-  // Lab record events carry counts only, never positions, squares or round ids.
   | {
       name: "lab_export";
       params: { rounds: number };
@@ -59,6 +68,15 @@ export type FunnelEvent =
   | {
       name: "lab_backup_interest";
       params: { rounds: number };
+    }
+  /** Once per page view, when §06 first scrolls into sight. */
+  | {
+      name: "lab_section_view";
+      params: Record<string, never>;
+    }
+  | {
+      name: "lab_panel_action";
+      params: { panel: LabPanel; action: "play" };
     };
 
 export function trackEvent({ name, params }: FunnelEvent): void {

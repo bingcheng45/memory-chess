@@ -46,7 +46,7 @@ const utcDay = (day: string) => {
   return Date.UTC(year, month - 1, date);
 };
 
-const daysBetween = (from: string, to: string) => Math.round((utcDay(to) - utcDay(from)) / DAY_MS);
+export const daysBetween = (from: string, to: string) => Math.round((utcDay(to) - utcDay(from)) / DAY_MS);
 
 /** Stale only replaces ready: a record that never warmed up still needs its missing rounds, however old it is. */
 export function readinessOf({ sampleSize, have, thresholds, lastDay, today }: ReadinessInput): Readiness {

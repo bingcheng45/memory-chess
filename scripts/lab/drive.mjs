@@ -19,7 +19,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const HARNESS = ".claude/skills/verify-memory-chess/helpers/cdp.mjs";
 const WIDTHS = [1440, 390];
-const PERSONA_ENV = "LAB_DRIVE_PERSONA";
+export const PERSONA_ENV = "LAB_DRIVE_PERSONA";
 const TEXT_FILE = "text.json";
 // Environment noise, not app faults: Vercel scripts that exist only on Vercel, Supabase and the
 // stats API without local credentials, and headless Chrome refusing audio without a gesture.
@@ -36,7 +36,8 @@ const PANEL_TEXT = `(() => {
     return [key, panel.innerText];
   });
   const tools = record.querySelector(".lab-tools");
-  return Object.fromEntries([...entries, ["tools", tools ? tools.innerText : null]]);
+  const unlock = record.querySelector(".lab-unlock");
+  return Object.fromEntries([["unlock", unlock.innerText], ...entries, ["tools", tools ? tools.innerText : null]]);
 })()`;
 
 const rectOf = (selector) => `(() => {
@@ -50,7 +51,7 @@ async function shoot(page, selector, file) {
   writeFileSync(file, Buffer.from(data, "base64"));
 }
 
-async function importFile(page, file) {
+export async function importFile(page, file) {
   await page.send("DOM.enable");
   const { root } = await page.send("DOM.getDocument", {});
   const { nodeId } = await page.send("DOM.querySelector", { nodeId: root.nodeId, selector: '.lab-tools input[type="file"]' });
@@ -87,7 +88,8 @@ export default async function drive(page, { baseUrl, evidenceDir }) {
     overflow[width] = (await page.eval("document.documentElement.scrollWidth")) - width;
     text[width] = await page.eval(PANEL_TEXT);
     await shoot(page, "#record", join(evidenceDir, `record-${width}.png`));
-    for (const panel of Object.keys(text[width]).filter((key) => key !== "tools")) {
+    await shoot(page, "#record .lab-unlock", join(evidenceDir, `unlock-${width}.png`));
+    for (const panel of Object.keys(text[width]).filter((key) => key !== "tools" && key !== "unlock")) {
       await shoot(page, `#record .lab-p-${panel}`, join(evidenceDir, `${panel}-${width}.png`));
     }
   }
@@ -100,25 +102,26 @@ export default async function drive(page, { baseUrl, evidenceDir }) {
   return { rounds: persona.rounds.length, notice, overflow, consoleErrors: consoleErrors.length };
 }
 
-function argsOf(argv) {
+export function argsOf(argv, out = ".lab-drive") {
   const value = (flag, fallback) => {
     const index = argv.indexOf(flag);
     return index >= 0 && argv[index + 1] ? argv[index + 1] : fallback;
   };
   return {
     base: value("--base", "http://localhost:3121"),
-    out: resolve(value("--out", ".lab-drive")),
+    out: resolve(value("--out", out)),
     personas: resolve(value("--personas", ".lab-personas")),
     compare: value("--compare", null),
     only: value("--only", null),
   };
 }
 
-function runPersona(name, file, { base, out }) {
+/** Runs `script` (this drive by default) under the harness, in a fresh profile, with the persona file in PERSONA_ENV. */
+export function runPersona(name, file, { base, out }, script = import.meta.url) {
   const evidence = join(out, name);
   mkdirSync(evidence, { recursive: true });
   return new Promise((done) => {
-    const child = spawn(process.execPath, [HARNESS, fileURLToPath(import.meta.url), "--evidence", evidence, "--base", base], {
+    const child = spawn(process.execPath, [HARNESS, fileURLToPath(script), "--evidence", evidence, "--base", base], {
       env: { ...process.env, [PERSONA_ENV]: file },
       stdio: ["ignore", "pipe", "pipe"],
     });

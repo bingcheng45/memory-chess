@@ -4,7 +4,11 @@ const EVENTS: FunnelEvent[] = [
   { name: "round_start", params: { piece_count: 6, memorize_time: 10, source: "home_quick" } },
   {
     name: "round_complete",
-    params: { piece_count: 6, memorize_time: 10, correct_pieces: 4, accuracy: 67 },
+    params: { piece_count: 6, memorize_time: 10, correct_pieces: 4, accuracy: 67, source: "try_again" },
+  },
+  {
+    name: "round_complete",
+    params: { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, source: "calibration" },
   },
   { name: "score_submit", params: { difficulty: "medium", piece_count: 6 } },
   { name: "article_like", params: { slug: "magnus-carlsen" } },
@@ -13,6 +17,9 @@ const EVENTS: FunnelEvent[] = [
   { name: "lab_export", params: { rounds: 42 } },
   { name: "lab_import", params: { added: 40, rejected: 2 } },
   { name: "lab_backup_interest", params: { rounds: 42 } },
+  { name: "lab_section_view", params: {} },
+  { name: "lab_panel_action", params: { panel: "unlock", action: "play" } },
+  { name: "lab_panel_action", params: { panel: "trend", action: "play" } },
 ];
 
 afterEach(() => {

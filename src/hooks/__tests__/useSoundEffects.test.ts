@@ -13,6 +13,7 @@ jest.mock("@/lib/store/gameStore", () => {
       memorizeTime: 10,
       correctPlacements: 4,
       accuracy: 67,
+      startSource: "try_again",
     },
     gamePhase: mockGamePhase,
   });
@@ -69,5 +70,6 @@ it("sends one round_complete event with the real result when a round reaches its
     memorize_time: 10,
     correct_pieces: 4,
     accuracy: 67,
+    source: "try_again",
   });
 });

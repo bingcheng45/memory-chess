@@ -31,7 +31,7 @@ export function useSoundEffects() {
         });
       }
 
-      const { pieceCount, memorizeTime, correctPlacements, accuracy } = useGameStore.getState().gameState;
+      const { pieceCount, memorizeTime, correctPlacements, accuracy, startSource } = useGameStore.getState().gameState;
       trackEvent({
         name: 'round_complete',
         params: {
@@ -39,6 +39,7 @@ export function useSoundEffects() {
           memorize_time: memorizeTime,
           correct_pieces: correctPlacements ?? 0,
           accuracy: accuracy ?? 0,
+          source: startSource ?? 'link',
         },
       });
       

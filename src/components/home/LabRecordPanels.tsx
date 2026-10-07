@@ -2,13 +2,15 @@
 
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
+import type { LabPanel } from "@/lib/analytics/events";
 import type { LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
-import { hasFigure } from "@/lib/lab/readiness";
+import { hasFigure, type Readiness } from "@/lib/lab/readiness";
 import type { PieceSymbol } from "chess.js";
 import { FILES, RANKS } from "@/lib/game/board";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { formatSeconds } from "@/utils/timer";
 import { AccuracySparkline, MissLines, MissMap, RecallBar, StreakGrid } from "./LabCharts";
+import { LabPlayLink } from "./LabPlayLink";
 
 const missShare = ({ shown, missed, ready }: MissCell) => (ready ? missed / shown : null);
 
@@ -16,8 +18,19 @@ export function PanelHead({ fig, tag }: { fig: string; tag: ReactNode }) {
   return (
     <div className="lab-panel-h">
       <span className="lab-k">{fig}</span>
-      {tag}
+      <span className="lab-tag-slot">{tag}</span>
     </div>
+  );
+}
+
+/** The figure stays; the note only says how long ago the last round was. `daysAgo` is null on the server. */
+function StaleNote({ readiness, daysAgo, panel }: { readiness: Readiness; daysAgo: number | null; panel: LabPanel }) {
+  const t = useTranslations("home.lab.record");
+  if (readiness.state !== "stale" || daysAgo === null) return null;
+  return (
+    <p className="lab-note lab-stale">
+      {t("stale", { count: daysAgo })} <LabPlayLink panel={panel} />
+    </p>
   );
 }
 
@@ -30,7 +43,15 @@ function useTags() {
   };
 }
 
-export function TrendPanel({ result: { readiness, value: trend }, played }: { result: LabResults["trend"]; played: boolean }) {
+export function TrendPanel({
+  result: { readiness, value: trend },
+  played,
+  daysAgo,
+}: {
+  result: LabResults["trend"];
+  played: boolean;
+  daysAgo: number | null;
+}) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const need = readiness.need ?? {};
@@ -55,6 +76,7 @@ export function TrendPanel({ result: { readiness, value: trend }, played }: { re
           <p className="lab-note">
             {t("spark.config", trend.setting)} · {t("fromRounds", { count: readiness.sampleSize })}
           </p>
+          <StaleNote readiness={readiness} daysAgo={daysAgo} panel="trend" />
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">
@@ -67,7 +89,7 @@ export function TrendPanel({ result: { readiness, value: trend }, played }: { re
   );
 }
 
-export function MissPanel({ result: { readiness, value: map } }: { result: LabResults["missMap"] }) {
+export function MissPanel({ result: { readiness, value: map }, daysAgo }: { result: LabResults["missMap"]; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const lines = (cells: readonly MissCell[], names: readonly string[]) =>
@@ -97,21 +119,22 @@ export function MissPanel({ result: { readiness, value: map } }: { result: LabRe
           {map.view === "squares" ? (
             <MissMap cells={map.squares.map(missShare)} label={t("heat.realAria")} />
           ) : (
-            <>
+            <div className="lab-heat-pair">
               <MissLines caption={t("heat.files")} lines={lines(map.files, FILES)} />
               <MissLines caption={t("heat.ranks")} lines={lines(map.ranks, RANKS)} />
-            </>
+            </div>
           )}
           <p className="lab-note">
             {t("heat.realNote")} {t("fromRounds", { count: readiness.sampleSize })}
           </p>
+          <StaleNote readiness={readiness} daysAgo={daysAgo} panel="missMap" />
         </>
       )}
     </div>
   );
 }
 
-export function StreakPanel({ result: { readiness, value: streak } }: { result: LabResults["streak"] }) {
+export function StreakPanel({ result: { readiness, value: streak }, daysAgo }: { result: LabResults["streak"]; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
 
@@ -136,13 +159,19 @@ export function StreakPanel({ result: { readiness, value: streak } }: { result: 
               ? `${t("streak.realNote", { current: streak.current, longest: streak.longest })} · ${t("fromRounds", { count: readiness.sampleSize })}`
               : t("streak.need")}
           </p>
+          <StaleNote readiness={readiness} daysAgo={daysAgo} panel="streak" />
         </>
       )}
     </div>
   );
 }
 
-export function BestsPanel({ result: { readiness, value: bests } }: { result: LabResults["bests"] }) {
+/** Six rows keep the panel one reserved height for any number of settings played. */
+const BESTS_SHOWN = 6;
+/** Phones show only the first two rows (lab-instruments.css), so a long list does not need a tall reserve there. */
+const BESTS_SHOWN_BY_WIDTH = [["narrow", 2], ["wide", BESTS_SHOWN]] as const;
+
+export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { result: LabResults["bests"]; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
 
@@ -154,7 +183,7 @@ export function BestsPanel({ result: { readiness, value: bests } }: { result: La
       {bests ? (
         <>
           <dl className="lab-bests">
-            {bests.entries.map((best) => (
+            {bests.entries.slice(0, BESTS_SHOWN).map((best) => (
               <div key={best.key}>
                 <dt>{t("bests.setting", { source: best.source, pieceCount: best.pieceCount, memorizeSeconds: best.memorizeSeconds })}</dt>
                 <dd>
@@ -164,7 +193,11 @@ export function BestsPanel({ result: { readiness, value: bests } }: { result: La
               </div>
             ))}
           </dl>
+          {BESTS_SHOWN_BY_WIDTH.flatMap(([shown, cap]) =>
+            bests.entries.length > cap ? [<p key={shown} className="lab-note" data-shown={shown}>{t("bests.more", { count: bests.entries.length - cap })}</p>] : [],
+          )}
           <p className="lab-note">{t("fromRounds", { count: readiness.sampleSize })}</p>
+          <StaleNote readiness={readiness} daysAgo={daysAgo} panel="bests" />
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">{t("bests.empty")}</p>
@@ -173,7 +206,7 @@ export function BestsPanel({ result: { readiness, value: bests } }: { result: La
   );
 }
 
-export function TypesPanel({ result: { readiness, value: recall } }: { result: LabResults["typeRecall"] }) {
+export function TypesPanel({ result: { readiness, value: recall }, daysAgo }: { result: LabResults["typeRecall"]; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record");
   const pieces = useTranslations("home.lab.calibrate.pieceTypes");
   const tags = useTags();
@@ -199,6 +232,7 @@ export function TypesPanel({ result: { readiness, value: recall } }: { result: L
           </div>
           {kings(recall.king)}
           <p className="lab-note">{t("fromRounds", { count: readiness.sampleSize })}</p>
+          <StaleNote readiness={readiness} daysAgo={daysAgo} panel="typeRecall" />
         </>
       ) : recall?.onlyKings ? (
         <>

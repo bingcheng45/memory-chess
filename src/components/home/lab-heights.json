@@ -1,0 +1,102 @@
+{
+  "widths": [
+    320,
+    360,
+    390,
+    768,
+    1440
+  ],
+  "personas": [
+    "easyOnly",
+    "heavy",
+    "manyBests",
+    "newVisitor",
+    "stale",
+    "staleHeat",
+    "thirtyDays",
+    "threeDays",
+    "twoRounds",
+    "v1Legacy"
+  ],
+  "max": {
+    "narrow": {
+      "unlock": 377,
+      "spark": 387,
+      "heat": 515,
+      "streak": 414,
+      "bests": 574,
+      "types": 516,
+      "tools": 360
+    },
+    "medium": {
+      "unlock": 166,
+      "spark": 480,
+      "heat": 489,
+      "streak": 394,
+      "bests": 901,
+      "types": 479,
+      "tools": 496
+    },
+    "wide": {
+      "unlock": 166,
+      "spark": 382,
+      "heat": 489,
+      "streak": 371,
+      "bests": 684,
+      "types": 434,
+      "tools": 173
+    }
+  },
+  "tallest": {
+    "narrow unlock": "easyOnly server 320",
+    "narrow spark": "stale client 360",
+    "narrow heat": "manyBests client 320",
+    "narrow streak": "stale client 360",
+    "narrow bests": "manyBests client 320",
+    "narrow types": "stale client 320",
+    "narrow tools": "easyOnly client 320",
+    "medium unlock": "easyOnly server 768",
+    "medium spark": "stale client 768",
+    "medium heat": "manyBests client 768",
+    "medium streak": "stale client 768",
+    "medium bests": "manyBests client 768",
+    "medium types": "stale client 768",
+    "medium tools": "easyOnly client 768",
+    "wide unlock": "easyOnly server 1440",
+    "wide spark": "stale client 1440",
+    "wide heat": "manyBests client 1440",
+    "wide streak": "stale client 1440",
+    "wide bests": "manyBests client 1440",
+    "wide types": "stale client 1440",
+    "wide tools": "easyOnly client 1440"
+  },
+  "empty": {
+    "narrow": {
+      "unlock": 377,
+      "spark": 316,
+      "heat": 431,
+      "streak": 367,
+      "bests": 374,
+      "types": 228,
+      "tools": 0
+    },
+    "medium": {
+      "unlock": 166,
+      "spark": 452,
+      "heat": 422,
+      "streak": 346,
+      "bests": 303,
+      "types": 210,
+      "tools": 0
+    },
+    "wide": {
+      "unlock": 166,
+      "spark": 315,
+      "heat": 422,
+      "streak": 323,
+      "bests": 206,
+      "types": 160,
+      "tools": 0
+    }
+  }
+}

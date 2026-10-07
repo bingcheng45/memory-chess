@@ -155,11 +155,18 @@ export default function PrivacyPage() {
               where you started the round (such as the homepage or a guide),
               and the order and timing of each piece you placed. It is used only to
               draw your streak, personal bests, accuracy trend and miss map on
-              this device. It is never sent to Memory Chess or to analytics;
-              analytics only receive counts when you download, import, or ask
-              for cross-device backup. Download my lab record saves a copy as
-              a file you control, and clearing your browser data deletes the
-              record. Private windows do not keep it.
+              this device. The record itself, with its positions, squares,
+              placements and history, never leaves this device. Google
+              Analytics receives an event for each round you finish, on the
+              homepage or in the game, with the number of pieces, the study
+              time, how many pieces you recalled, your accuracy and where the
+              round started. It also receives a few lab events: when the lab
+              section comes into view, when you follow one of its play links,
+              and the number of rounds when you download, import, or ask for
+              cross-device backup. None of these events carry positions,
+              squares, round ids or streaks. Download my lab record saves a
+              copy as a file you control, and clearing your browser data
+              deletes the record. Private windows do not keep it.
             </p>
             <p className={copyClassName}>
               Liking an article saves the id of that article and the like

@@ -482,6 +482,22 @@
         },
         "mine": "Your record",
         "fromRounds": "From {count, plural, one {# round} other {# rounds}}",
+        "play": "Play a round",
+        "stale": "Last played {count, plural, one {# day} other {# days}} ago.",
+        "unlock": {
+          "label": "What playing unlocks",
+          "done": "Every figure below is unlocked.",
+          "trend": "Trend unlocks at {rounds, plural, one {# round} other {# rounds}} of one setting on {days, plural, one {# day} other {# different days}}.",
+          "streak": "Streak unlocks when you play on {days, plural, one {# day} other {# different days}}.",
+          "typeRecall": "Piece recall unlocks when one piece other than the king reaches {exposures, plural, one {# sighting} other {# sightings}}.",
+          "missMap": "Miss map unlocks at {exposures, plural, one {# sighting} other {# sightings}} on every file and rank.",
+          "trendRounds": "Trend: {rounds, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in games}}.",
+          "trendDays": "Trend: {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in a game}} on {days, plural, one {# more day} other {# more days}}.",
+          "trendRoundsDays": "Trend: {rounds, plural, one {# more round at {pieceCount} pieces, {memorizeSeconds}s, played on another day} other {# more rounds at {pieceCount} pieces, {memorizeSeconds}s, at least one on another day}} {source, select, calibration {in practice} other {in games}}.",
+          "streakLeft": "Streak: play on {days, plural, one {# more day} other {# more days}}, in a row or not.",
+          "typeRecallLeft": "Piece recall: {exposures, plural, one {# more sighting} other {# more sightings}} until one piece other than the king reaches {threshold}.",
+          "missMapLeft": "Miss map: {exposures, plural, one {# more sighting} other {# more sightings}} on the least seen file or rank."
+        },
         "bests": {
           "fig": "Fig. 6.6 · Personal bests",
           "title": "Your best reading per setting.",
@@ -489,6 +505,7 @@
           "empty": "Your best reading for each setting appears after your first round.",
           "setting": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s",
           "first": "first reading",
+          "more": "+{count, plural, one {# more setting} other {# more settings}}",
           "reading": "{accuracy}% · rebuilt in {seconds}s"
         },
         "types": {

@@ -1,9 +1,13 @@
-import { act, renderHook } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
+import { useLabData } from "@/hooks/useLabData";
 import { useLabRecord } from "@/components/home/useLabRecord";
 import { labStore, type LabStore } from "@/lib/lab/storage";
 import { EMPTY_SUMMARY, summarize } from "@/lib/lab/summary";
 import { buildExport } from "@/lib/lab/transfer";
 import { round } from "@/lib/lab/__tests__/fixtures";
+import { FakeChannel } from "@/lib/lab/__tests__/fakeChannel";
+import type { RoundRecord } from "@/lib/lab/record";
+import { LAB_RECORD_CHANGED } from "@/lib/lab/recordSync";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 jest.mock("@/lib/lab/storage", () => ({ ...jest.requireActual("@/lib/lab/storage"), labStore: jest.fn() }));
@@ -82,5 +86,53 @@ describe("useLabRecord import", () => {
 
     expect(outcome).toEqual({ ok: true, added: 1, rejected: 0, overCap: 0, summary: "ignored" });
     expect(store.mergeRounds).toHaveBeenCalledWith(rounds);
+  });
+
+  it("tells other open tabs once the imported rounds are saved", async () => {
+    Object.assign(globalThis, { BroadcastChannel: FakeChannel });
+    FakeChannel.posted = [];
+    const store = fakeStore();
+    store.mergeRounds = jest.fn(() => Promise.resolve(2));
+    jest.mocked(labStore).mockReturnValue(store);
+    const { result } = renderHook(() => useLabRecord());
+
+    await act(() => result.current.importFile(file()));
+
+    expect(FakeChannel.posted).toHaveLength(1);
+    Reflect.deleteProperty(globalThis, "BroadcastChannel");
+  });
+
+  it("refreshes another reader of the record in the same tab after an import adds rounds", async () => {
+    const saved: RoundRecord[] = [];
+    const store = fakeStore();
+    store.listRounds = jest.fn(() => Promise.resolve([...saved]));
+    store.mergeRounds = jest.fn((incoming) => {
+      saved.push(...incoming);
+      return Promise.resolve(incoming.length);
+    });
+    jest.mocked(labStore).mockReturnValue(store);
+    const { result } = renderHook(() => ({ record: useLabRecord(), other: useLabData() }));
+    await waitFor(() => expect(result.current.other.storage).toBe("available"));
+
+    await act(() => result.current.record.importFile(file()));
+
+    await waitFor(() => expect(result.current.other.records.map(({ id }) => id)).toEqual(["a", "b"]));
+    expect(result.current.record.records.map(({ id }) => id)).toEqual(["a", "b"]);
+  });
+
+  it("announces nothing when the file adds no rounds", async () => {
+    Object.assign(globalThis, { BroadcastChannel: FakeChannel });
+    FakeChannel.posted = [];
+    const heard = jest.fn();
+    window.addEventListener(LAB_RECORD_CHANGED, heard);
+    jest.mocked(labStore).mockReturnValue(fakeStore());
+    const { result } = renderHook(() => useLabRecord());
+
+    const outcome = await act(() => result.current.importFile(file()));
+
+    expect(outcome).toEqual({ ok: true, added: 0, rejected: 0, overCap: 0, summary: "ignored" });
+    expect([FakeChannel.posted.length, heard.mock.calls.length]).toEqual([0, 0]);
+    window.removeEventListener(LAB_RECORD_CHANGED, heard);
+    Reflect.deleteProperty(globalThis, "BroadcastChannel");
   });
 });

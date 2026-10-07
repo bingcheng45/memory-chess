@@ -131,8 +131,7 @@ export function positionId(boardFen: string): string {
 
 export function withoutPlacements(record: RoundRecord): RoundRecord {
   if (record.v === 1 || (record.placements === undefined && record.removals === undefined)) return record;
-  const { placements: _placements, removals: _removals, ...rest } = record;
-  return rest;
+  return Object.fromEntries(Object.entries(record).filter(([key]) => key !== "placements" && key !== "removals")) as RoundRecordV2;
 }
 
 const definedOnly = <T extends object>(value: T): T =>

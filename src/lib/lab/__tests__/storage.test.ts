@@ -1,8 +1,9 @@
 /** @jest-environment node */
 import { forceCloseDatabase, IDBFactory } from "fake-indexeddb";
-import { createLabStore, PERSIST_AFTER_ROUNDS, ROUND_CAP, type LabStoreDeps } from "@/lib/lab/storage";
+import { withoutPlacements } from "@/lib/lab/record";
+import { createLabStore, PERSIST_AFTER_ROUNDS, PLACEMENT_KEEP, ROUND_CAP, type LabStoreDeps } from "@/lib/lab/storage";
 import { buildExport, parseImport } from "@/lib/lab/transfer";
-import { round, TARGET } from "./fixtures";
+import { round, roundV2, TARGET } from "./fixtures";
 
 const NOW = Date.UTC(2026, 9, 8);
 const MISSED_QUEEN = "4k3/8/8/8/8/5N2/8/4K3";
@@ -297,5 +298,54 @@ describe("lab store", () => {
     expect(store.readLastBackup()).toBeNull();
     store.markBackedUp(1700000000000);
     expect(store.readLastBackup()).toBe(1700000000000);
+  });
+
+  describe("placements", () => {
+    const played = (count: number, from = 1) =>
+      Array.from({ length: count }, (_, index) => roundV2({ id: `p${from + index}`, endedAt: from + index }));
+    const withPlacements = async (store: ReturnType<typeof createLabStore>) =>
+      (await store.listRounds()).filter((record) => "placements" in record).map(({ id }) => id);
+
+    it("drops the placements of the round that falls out of the newest 500 when a round is saved, and keeps its other facts", async () => {
+      const store = createLabStore(deps());
+      const history = played(PLACEMENT_KEEP);
+      await store.mergeRounds(history);
+
+      await store.addRound(roundV2({ id: "latest", endedAt: 10_000 }));
+      const rounds = await store.listRounds();
+
+      expect(rounds).toHaveLength(PLACEMENT_KEEP + 1);
+      expect(rounds[0]).toEqual(withoutPlacements(history[0]));
+      expect(rounds[0]).toMatchObject({ v: 2, positionId: "0a6c3bd6ea5bcc", startSource: "home_quick", tzOffsetMin: -480 });
+      expect(await withPlacements(store)).toEqual([...history.slice(1).map(({ id }) => id), "latest"]);
+    });
+
+    it("saves a late round older than the newest 500 without its placements", async () => {
+      const store = createLabStore(deps());
+      await store.mergeRounds(played(PLACEMENT_KEEP, 100));
+
+      await store.addRound(roundV2({ id: "late", endedAt: 1 }));
+
+      expect((await store.listRounds())[0]).toEqual(withoutPlacements(roundV2({ id: "late", endedAt: 1 })));
+      expect(await withPlacements(store)).toHaveLength(PLACEMENT_KEEP);
+    });
+
+    it("keeps placements on the newest 500 after an import merges into rounds that had them", async () => {
+      const store = createLabStore(deps());
+      await store.mergeRounds(played(400, 1));
+
+      expect(await store.mergeRounds(played(300, 401))).toBe(300);
+
+      expect(await withPlacements(store)).toEqual(played(500, 201).map(({ id }) => id));
+      expect(await store.listRounds()).toHaveLength(700);
+    });
+
+    it("leaves version 1 rounds as they were", async () => {
+      const store = createLabStore(deps());
+      const old = round({ id: "v1", endedAt: 0 });
+      await store.mergeRounds([old, ...played(PLACEMENT_KEEP)]);
+
+      expect((await store.listRounds())[0]).toEqual(old);
+    });
   });
 });

@@ -1,4 +1,4 @@
-import type { RoundRecord } from "./record";
+import { withoutPlacements, type RoundRecord } from "./record";
 import { addToSummary, parseSummary, summarize, type LabSummary } from "./summary";
 
 const DB_NAME = "memory-chess-lab";
@@ -54,6 +54,39 @@ function done(tx: IDBTransaction): Promise<void> {
     tx.onerror = () => reject(tx.error);
     tx.onabort = () => reject(tx.error);
   });
+}
+
+/** Walks newest first past the newest PLACEMENT_KEEP rounds and strips placements from the next `limit`. */
+function stripPlacementsPastKeep(index: IDBIndex, limit: number): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const req = index.openCursor(null, "prev");
+    let rank = 0;
+    req.onsuccess = () => {
+      const cursor = req.result;
+      if (!cursor || rank >= PLACEMENT_KEEP + limit) return resolve();
+      if (rank === 0) {
+        rank = PLACEMENT_KEEP;
+        return cursor.advance(PLACEMENT_KEEP);
+      }
+      const record = cursor.value as RoundRecord;
+      const trimmed = withoutPlacements(record);
+      if (trimmed !== record) cursor.update(trimmed);
+      rank += 1;
+      cursor.continue();
+    };
+    req.onerror = () => reject(req.error);
+  });
+}
+
+/**
+ * Before a write no round past the newest PLACEMENT_KEEP has placements. A
+ * saved round newer than all the others pushes exactly one round past that
+ * line, so only that one is read; an import or a late round walks them all.
+ */
+async function keepPlacementsOnNewest(index: IDBIndex, fresh: readonly RoundRecord[]): Promise<void> {
+  if (fresh.length === 0) return;
+  const newest = fresh.length === 1 && (await request(index.openKeyCursor(null, "prev")))?.primaryKey === fresh[0].id;
+  await stripPlacementsPastKeep(index, newest ? 1 : Infinity);
 }
 
 export function createLabStore(deps: LabStoreDeps): LabStore {
@@ -148,6 +181,7 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
     const excess = fresh.length === 0 ? 0 : (await request(store.count())) - ROUND_CAP;
     const oldest = excess > 0 ? await request(store.index(BY_END).getAll(null, excess) as IDBRequest<RoundRecord[]>) : [];
     oldest.forEach(({ id }) => store.delete(id));
+    await keepPlacementsOnNewest(store.index(BY_END), fresh);
     await done(tx);
     return { fresh, evicted: oldest.at(-1)?.endedAt ?? null };
   }

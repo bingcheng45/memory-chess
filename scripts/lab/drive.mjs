@@ -126,15 +126,16 @@ function runPersona(name, file, { base, out }) {
     let log = "";
     child.stdout.on("data", (chunk) => (log += chunk));
     child.stderr.on("data", (chunk) => (log += chunk));
-    child.on("exit", (code) => done({ name, ok: code === 0, log: log.trim().split("\n").at(-1) }));
+    child.on("exit", (code) => done({ name, ok: code === 0, log: code === 0 ? log.trim().split("\n").at(-1) : log.trim() }));
   });
 }
 
-function differences(baseline, snapshot) {
-  return Object.entries(snapshot).flatMap(([persona, widths]) =>
-    Object.entries(widths).flatMap(([width, panels]) =>
-      Object.entries(panels).flatMap(([panel, text]) =>
-        baseline[persona]?.[width]?.[panel] === text ? [] : [`${persona} ${width} ${panel}`],
+function differences(baseline, snapshot, personas) {
+  const keys = (a, b) => [...new Set([...Object.keys(a ?? {}), ...Object.keys(b ?? {})])];
+  return personas.flatMap((persona) =>
+    keys(baseline[persona], snapshot[persona]).flatMap((width) =>
+      keys(baseline[persona]?.[width], snapshot[persona]?.[width]).flatMap((panel) =>
+        baseline[persona]?.[width]?.[panel] === snapshot[persona]?.[width]?.[panel] ? [] : [`${persona} ${width} ${panel}`],
       ),
     ),
   );
@@ -160,7 +161,7 @@ async function main() {
   writeFileSync(join(args.out, "snapshot.json"), JSON.stringify(snapshot, null, 2));
   console.log(`snapshot: ${join(args.out, "snapshot.json")}`);
 
-  const changed = args.compare ? differences(JSON.parse(readFileSync(args.compare, "utf8")), snapshot) : [];
+  const changed = args.compare ? differences(JSON.parse(readFileSync(args.compare, "utf8")), snapshot, names) : [];
   if (args.compare) console.log(changed.length === 0 ? `same text as ${args.compare}` : `changed text:\n  ${changed.join("\n  ")}`);
   process.exit(results.every(({ ok }) => ok) && changed.length === 0 ? 0 : 1);
 }

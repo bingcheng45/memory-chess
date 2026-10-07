@@ -30,14 +30,14 @@ function useTags() {
   };
 }
 
-export function TrendPanel({ result: { readiness, value: trend } }: { result: LabResults["trend"] }) {
+export function TrendPanel({ result: { readiness, value: trend }, played }: { result: LabResults["trend"]; played: boolean }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const need = readiness.need ?? {};
 
   return (
     <div className="lab-panel lab-p-spark">
-      <PanelHead fig={t("spark.fig")} tag={trend ? tags.mine : tags.sample} />
+      <PanelHead fig={t("spark.fig")} tag={played ? tags.mine : tags.sample} />
       <h3>{t("spark.title")}</h3>
       {!trend ? (
         <>
@@ -111,7 +111,7 @@ export function MissPanel({ result: { readiness, value: map } }: { result: LabRe
   );
 }
 
-export function StreakPanel({ result: { readiness, value: streak }, rounds }: { result: LabResults["streak"]; rounds: number }) {
+export function StreakPanel({ result: { readiness, value: streak } }: { result: LabResults["streak"] }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
 
@@ -133,7 +133,7 @@ export function StreakPanel({ result: { readiness, value: streak }, rounds }: { 
           />
           <p className="lab-note">
             {hasFigure(readiness)
-              ? `${t("streak.realNote", { current: streak.current, longest: streak.longest })} · ${t("fromRounds", { count: rounds })}`
+              ? `${t("streak.realNote", { current: streak.current, longest: streak.longest })} · ${t("fromRounds", { count: readiness.sampleSize })}`
               : t("streak.need")}
           </p>
         </>

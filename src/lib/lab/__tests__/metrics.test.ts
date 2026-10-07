@@ -88,7 +88,7 @@ describe("trend", () => {
       localDay: index < 2500 ? "2026-10-06" : "2026-10-07",
       config: { ...base.config, pieceCount: index % 10 === 0 ? 12 : 4 },
     }));
-    const input = { records, summary: EMPTY_SUMMARY, today: TODAY };
+    const input = { records, summary: { ...EMPTY_SUMMARY, rounds: records.length }, today: TODAY };
 
     const started = performance.now();
     const result = LAB_METRICS.trend.compute(input);

@@ -95,6 +95,44 @@ describe("LabRecordSection", () => {
     expect(within(panel(/Fig. 6.6/)).getByText("100% · rebuilt in 15.0s")).toBeInTheDocument();
   });
 
+  describe("keeps the Phase 0 panels when the summary disagrees with the round log", () => {
+    const tag = (fig: RegExp) => panel(fig).querySelector(".lab-tag")?.textContent ?? null;
+    const sampleTrend = "Sample record · 12 rounds · Medium";
+
+    it("tags the trend as the player's while its log is empty but the summary counts rounds", () => {
+      renderWithIntl(<LabRecordSection record={record([], { summary: summarize(rounds(6, 3)) })} />);
+
+      expect(tag(/Fig. 6.2/)).toBe("Your record");
+      expect(within(panel(/Fig. 6.2/)).getByText(sampleTrend)).toBeInTheDocument();
+    });
+
+    it("shows no bests when the summary counts rounds but holds no best", () => {
+      const played = rounds(5, 2);
+      renderWithIntl(<LabRecordSection record={record(played, { summary: { ...summarize(played), bests: {} } })} />);
+
+      expect(tag(/Fig. 6.6/)).toBeNull();
+      expect(within(panel(/Fig. 6.6/)).getByText("Your best reading for each setting appears after your first round.")).toBeInTheDocument();
+    });
+
+    it("shows the sample trend and streak when the summary counts no round but lists days", () => {
+      const summary = { ...EMPTY_SUMMARY, days: ["2026-10-06", "2026-10-07"] };
+      renderWithIntl(<LabRecordSection record={record(rounds(5, 2), { summary })} />);
+
+      expect(tag(/Fig. 6.2/)).toBe("Sample");
+      expect(within(panel(/Fig. 6.2/)).getByText(sampleTrend)).toBeInTheDocument();
+      expect(tag(/Fig. 6.4/)).toBe("Sample");
+      expect(within(panel(/Fig. 6.4/)).getByText("Any finished round, game or practice, counts for its day. Play on two days in a row to start a streak.")).toBeInTheDocument();
+    });
+
+    it("draws the player's streak grid when the summary counts rounds but lists no day", () => {
+      renderWithIntl(<LabRecordSection record={record([], { summary: { ...summarize(rounds(3, 1)), days: [] } })} />);
+
+      expect(tag(/Fig. 6.4/)).toBe("Your record");
+      expect(within(panel(/Fig. 6.4/)).getByRole("img")).toHaveAccessibleName("Your last 14 days: 0 days played.");
+      expect(within(panel(/Fig. 6.4/)).getByText("Play on one more day to start a streak.")).toBeInTheDocument();
+    });
+  });
+
   it("draws the player's own record once there is enough", () => {
     renderWithIntl(<LabRecordSection record={record(rounds(10, 3))} />);
 

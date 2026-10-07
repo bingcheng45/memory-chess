@@ -56,8 +56,8 @@ function run(played: ReadonlySet<string>, day: string, step: -1 | 1): number {
 const STREAK_THRESHOLDS = { days: LAB_THRESHOLDS.streakDays };
 
 function computeStreak(input: LabInput): MetricResult<StreakValue> {
-  const { summary: { days }, today } = input;
-  const readiness = readinessFor(input, { sampleSize: days.length, have: { days: days.length }, thresholds: STREAK_THRESHOLDS });
+  const { summary: { rounds, days }, today } = input;
+  const readiness = readinessFor(input, { sampleSize: rounds, have: { days: days.length }, thresholds: STREAK_THRESHOLDS });
   return measured(readiness, () => {
     const played = new Set(days);
     return {
@@ -87,9 +87,11 @@ const BESTS_THRESHOLDS = { rounds: 1 };
 
 function computeBests(input: LabInput): MetricResult<BestsValue> {
   const { summary } = input;
-  const readiness = readinessFor(input, { sampleSize: summary.rounds, have: { rounds: summary.rounds }, thresholds: BESTS_THRESHOLDS });
+  const bests = Object.entries(summary.bests);
+  const sampleSize = bests.length === 0 ? 0 : summary.rounds;
+  const readiness = readinessFor(input, { sampleSize, have: { rounds: summary.rounds }, thresholds: BESTS_THRESHOLDS });
   return measured(readiness, () => ({
-    entries: Object.entries(summary.bests)
+    entries: bests
       .map(([key, best]) => {
         const [source, config] = key.split(":");
         const [pieceCount, memorizeSeconds] = config.split("x").map(Number);
@@ -115,7 +117,7 @@ const TREND_THRESHOLDS = { rounds: LAB_THRESHOLDS.trendRounds, days: LAB_THRESHO
 
 function trendGroup(input: LabInput, rounds: readonly RoundRecordV1[]) {
   const readiness = readinessFor(input, {
-    sampleSize: rounds.length,
+    sampleSize: input.summary.rounds === 0 ? 0 : rounds.length,
     have: { rounds: rounds.length, days: new Set(rounds.map((record) => record.localDay)).size },
     thresholds: TREND_THRESHOLDS,
   });

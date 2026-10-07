@@ -44,9 +44,9 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
               <span className="lab-tag lab-tag-blue">{tags("illustrative")}</span> {t("curve.note")}
             </p>
           </div>
-          <TrendPanel result={lab.trend} />
+          <TrendPanel result={lab.trend} played={summary.rounds > 0} />
           <MissPanel result={lab.missMap} />
-          <StreakPanel result={lab.streak} rounds={summary.rounds} />
+          <StreakPanel result={lab.streak} />
           <div className="lab-panel lab-p-board">
             <PanelHead fig={t("board.fig")} tag={<span className="lab-tag lab-tag-blue">{tags("sample")}</span>} />
             <h3>{t("board.title")}</h3>

@@ -406,11 +406,20 @@ describe("ArticlePage guide links", () => {
   it("links an English article to its guides by their anchors", () => {
     renderPage(withGuides);
 
-    expect(screen.getByRole("heading", { name: "Train it with a guide" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "chess memory training" })).toHaveAttribute(
-      "href",
-      "/learn/chess-memory-training",
-    );
+    expect(
+      within(screen.getByRole("navigation", { name: "Train it with a guide" })).getByRole("link", {
+        name: "chess memory training",
+      }),
+    ).toHaveAttribute("href", "/learn/chess-memory-training");
+  });
+
+  it("adds no block a translation would be counted against", () => {
+    const blocks = (container: HTMLElement) =>
+      ["h2", "p", "li"].map((tag) => container.querySelectorAll(tag).length);
+    const withList = blocks(renderPage(withGuides).container);
+    const without = blocks(renderPage(article).container);
+
+    expect(withList).toEqual(without);
   });
 
   it("leaves the English-only guide list off a translated article", () => {

@@ -152,24 +152,26 @@ function Drill({ drill }: { drill: ArticleDrill }) {
   );
 }
 
+/**
+ * English-only, so it adds no h2, p or li: a translation has no such block,
+ * and the AdSense audit counts those against the English page.
+ */
 function RelatedGuides({ guides }: { guides: readonly ArticleRelatedGuide[] }) {
   return (
-    <section aria-labelledby={GUIDES_HEADING_ID} className="mt-12 max-w-[720px] border-t border-white/10 pt-8">
-      <h2 id={GUIDES_HEADING_ID} className="text-xl font-semibold tracking-tight text-white">
+    <nav aria-labelledby={GUIDES_HEADING_ID} className="mt-12 max-w-[720px] border-t border-white/10 pt-8">
+      <span id={GUIDES_HEADING_ID} className="block text-xl font-semibold tracking-tight text-white">
         {RELATED_GUIDES_HEADING}
-      </h2>
-      <ul className="mt-4 space-y-2 text-base leading-7">
+      </span>
+      <div className="mt-4 space-y-2 text-base leading-7">
         {guides.map((guide) => (
           // The anchor is written to read inside a sentence, so only its
           // first letter is raised for the list.
-          <li key={guide.slug} className="first-letter:uppercase">
-            <Link href={`/learn/${guide.slug}`} className={ARTICLE_LINK}>
-              {guide.anchor}
-            </Link>
-          </li>
+          <Link key={guide.slug} href={`/learn/${guide.slug}`} className={`${ARTICLE_LINK} block first-letter:uppercase`}>
+            {guide.anchor}
+          </Link>
         ))}
-      </ul>
-    </section>
+      </div>
+    </nav>
   );
 }
 

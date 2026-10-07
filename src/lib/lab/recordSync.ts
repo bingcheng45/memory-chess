@@ -2,15 +2,23 @@ import { SUMMARY_KEY } from "./storage";
 
 export const LAB_RECORD_CHANGED = "memory-chess-lab-changed";
 const CHANNEL = "memory-chess-lab";
-/** Another listener in this same tab gets this tab's posts too, so each post names its tab. */
-const TAB = Math.random().toString(36).slice(2);
+
+/** One channel per tab: a BroadcastChannel never receives its own posts, so a tab never hears itself. */
+let tabChannel: BroadcastChannel | null = null;
+const crossTabListeners = new Set<() => void>();
+
+function channel(): BroadcastChannel | null {
+  if (typeof BroadcastChannel === "undefined") return null;
+  if (!tabChannel) {
+    tabChannel = new BroadcastChannel(CHANNEL);
+    tabChannel.onmessage = () => crossTabListeners.forEach((listener) => listener());
+  }
+  return tabChannel;
+}
 
 /** Without BroadcastChannel the write itself is the signal: it changed the summary key, which fires `storage` in other tabs. */
 export function tellOtherTabs(): void {
-  if (typeof BroadcastChannel === "undefined") return;
-  const channel = new BroadcastChannel(CHANNEL);
-  channel.postMessage(TAB);
-  channel.close();
+  channel()?.postMessage(null);
 }
 
 export function announceLabChange(): void {
@@ -20,23 +28,15 @@ export function announceLabChange(): void {
 
 /** Runs `listener` whenever this tab or another one changes the record. Receiving never posts, so tabs cannot echo. */
 export function onLabChange(listener: () => void): () => void {
-  window.addEventListener(LAB_RECORD_CHANGED, listener);
-  if (typeof BroadcastChannel !== "undefined") {
-    const channel = new BroadcastChannel(CHANNEL);
-    channel.onmessage = ({ data }) => {
-      if (data !== TAB) listener();
-    };
-    return () => {
-      window.removeEventListener(LAB_RECORD_CHANGED, listener);
-      channel.close();
-    };
-  }
   const onStorage = ({ key }: StorageEvent) => {
     if (key === SUMMARY_KEY || key === null) listener();
   };
-  window.addEventListener("storage", onStorage);
+  window.addEventListener(LAB_RECORD_CHANGED, listener);
+  if (channel()) crossTabListeners.add(listener);
+  else window.addEventListener("storage", onStorage);
   return () => {
     window.removeEventListener(LAB_RECORD_CHANGED, listener);
     window.removeEventListener("storage", onStorage);
+    crossTabListeners.delete(listener);
   };
 }

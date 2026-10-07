@@ -1,16 +1,6 @@
-import { FakeChannel } from "./fakeChannel";
+import { FakeChannel, freshSyncModule } from "./fakeChannel";
 
-type Sync = typeof import("@/lib/lab/recordSync");
-
-/** Each call loads the module afresh, as a second open tab would. */
-function tab(): Sync {
-  let sync: Sync | undefined;
-  jest.isolateModules(() => {
-    sync = jest.requireActual<Sync>("@/lib/lab/recordSync");
-  });
-  if (!sync) throw new Error("recordSync did not load");
-  return sync;
-}
+const tab = freshSyncModule;
 
 describe("lab record sync", () => {
   beforeEach(() => {
@@ -56,7 +46,7 @@ describe("lab record sync", () => {
     expect(FakeChannel.posted).toHaveLength(1);
   });
 
-  it("stops listening and closes its channel when unsubscribed", () => {
+  it("stops listening when unsubscribed", () => {
     const [saver, other] = [tab(), tab()];
     const listener = jest.fn();
     const stop = other.onLabChange(listener);
@@ -66,7 +56,6 @@ describe("lab record sync", () => {
     window.dispatchEvent(new Event(saver.LAB_RECORD_CHANGED));
 
     expect(listener).not.toHaveBeenCalled();
-    expect(FakeChannel.open.size).toBe(0);
   });
 
   it("falls back to the storage event on the summary key without BroadcastChannel", () => {

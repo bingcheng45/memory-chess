@@ -19,3 +19,15 @@ export class FakeChannel {
     FakeChannel.open.delete(this);
   }
 }
+
+type Sync = typeof import("@/lib/lab/recordSync");
+
+/** The sync module loaded afresh, as a second open tab would hold its own copy. */
+export function freshSyncModule(): Sync {
+  let sync: Sync | undefined;
+  jest.isolateModules(() => {
+    sync = jest.requireActual<Sync>("@/lib/lab/recordSync");
+  });
+  if (!sync) throw new Error("recordSync did not load");
+  return sync;
+}

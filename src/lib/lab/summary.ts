@@ -1,5 +1,5 @@
 import type { PieceSymbol } from "chess.js";
-import { PIECE_LETTERS, settingKey, type RoundRecordV1, type TypeCounts } from "./record";
+import { PIECE_LETTERS, settingKey, type RoundRecord, type TypeCounts } from "./record";
 
 export interface PersonalBest {
   readonly accuracy: number;
@@ -48,12 +48,12 @@ function addCounts(total: TypeCounts, more: TypeCounts): TypeCounts {
   );
 }
 
-function beats(record: RoundRecordV1, best: PersonalBest | undefined): boolean {
+function beats(record: RoundRecord, best: PersonalBest | undefined): boolean {
   if (!best) return true;
   return record.accuracy > best.accuracy || (record.accuracy === best.accuracy && record.solveMs < best.solveMs);
 }
 
-export function addToSummary(summary: LabSummary, record: RoundRecordV1): LabSummary {
+export function addToSummary(summary: LabSummary, record: RoundRecord): LabSummary {
   const key = settingKey(record.source, record.config);
   const previous = summary.bests[key];
   const best: PersonalBest = beats(record, previous)
@@ -78,7 +78,7 @@ export function addToSummary(summary: LabSummary, record: RoundRecordV1): LabSum
   };
 }
 
-export function summarize(records: readonly RoundRecordV1[]): LabSummary {
+export function summarize(records: readonly RoundRecord[]): LabSummary {
   return [...records].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, EMPTY_SUMMARY);
 }
 

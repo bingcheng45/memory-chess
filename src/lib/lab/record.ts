@@ -129,6 +129,12 @@ export function positionId(boardFen: string): string {
   return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16).padStart(14, "0");
 }
 
+export function withoutPlacements(record: RoundRecord): RoundRecord {
+  if (record.v === 1 || (record.placements === undefined && record.removals === undefined)) return record;
+  const { placements: _placements, removals: _removals, ...rest } = record;
+  return rest;
+}
+
 const definedOnly = <T extends object>(value: T): T =>
   Object.fromEntries(Object.entries(value).filter(([, field]) => field !== undefined)) as T;
 

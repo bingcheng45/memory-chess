@@ -1,7 +1,20 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
-import { buildRoundRecord, LAB_SOURCES, localDayOf, type LabSource, type RoundRecordV1 } from "./record";
+import { ROUND_SOURCES, type RoundSource } from "@/lib/analytics/events";
+import { MAX_PLACEMENT_MS, MAX_PLACEMENTS, PIECE_CODES, type PlacementEvent } from "./placements";
+import {
+  buildRoundRecord,
+  LAB_SOURCES,
+  localDayOf,
+  ROUND_KINDS,
+  withoutPlacements,
+  type LabSource,
+  type RoundCapture,
+  type RoundInput,
+  type RoundKind,
+  type RoundRecord,
+} from "./record";
 import { isCount, MAX_DAYS, parseSummary, type LabSummary, type PersonalBest } from "./summary";
-import { ROUND_CAP } from "./storage";
+import { PLACEMENT_KEEP, ROUND_CAP } from "./storage";
 
 const EXPORT_FORMAT = "memory-chess-lab";
 
@@ -10,7 +23,7 @@ export interface LabExportV2 {
   readonly format: typeof EXPORT_FORMAT;
   readonly v: 2;
   readonly exportedAt: number;
-  readonly rounds: readonly RoundRecordV1[];
+  readonly rounds: readonly RoundRecord[];
   readonly summary?: LabSummary;
 }
 
@@ -22,7 +35,7 @@ export type ImportFailure = "too-large" | "unreadable" | "not-json" | "not-a-lab
 export type ImportResult =
   | {
       readonly ok: true;
-      readonly rounds: readonly RoundRecordV1[];
+      readonly rounds: readonly RoundRecord[];
       readonly rejected: number;
       /** Valid rounds older than the newest ROUND_CAP, left out because the log would evict them at once. */
       readonly overCap: number;
@@ -31,7 +44,7 @@ export type ImportResult =
     }
   | { readonly ok: false; readonly reason: ImportFailure };
 
-export function buildExport(rounds: readonly RoundRecordV1[], exportedAt: number, summary?: LabSummary): LabExportV2 {
+export function buildExport(rounds: readonly RoundRecord[], exportedAt: number, summary?: LabSummary): LabExportV2 {
   return { format: EXPORT_FORMAT, v: 2, exportedAt, rounds, ...(summary && { summary }) };
 }
 
@@ -43,6 +56,9 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 const FEN_BOARD = /^[1-8pnbrqkPNBRQK]+(\/[1-8pnbrqkPNBRQK]+){7}$/;
 const BEST_KEY = /^(game|calibration):\d{1,2}x\d{1,4}$/;
 const MAX_BESTS = 500;
+const MAX_TZ_OFFSET_MIN = 14 * 60;
+const MAX_REVIEW_DELAY_DAYS = 3650;
+const MAX_REMOVALS = 10_000;
 
 const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
 const rankWidth = (rank: string) => [...rank].reduce((width, char) => width + (Number(char) || 1), 0);
@@ -61,20 +77,61 @@ export function isCalendarDay(value: unknown): value is string {
   return localDayOf(date) === value;
 }
 
+const isInteger = (value: unknown, min: number, max: number): value is number =>
+  Number.isInteger(value) && (value as number) >= min && (value as number) <= max;
+
+const isPlacement = (value: unknown): value is PlacementEvent =>
+  Array.isArray(value) &&
+  value.length === 3 &&
+  isInteger(value[0], 0, MAX_PLACEMENT_MS) &&
+  isInteger(value[1], 0, 63) &&
+  typeof value[2] === "string" &&
+  value[2].length === 1 &&
+  PIECE_CODES.includes(value[2]);
+
+const isPlacementList = (value: unknown): value is PlacementEvent[] =>
+  Array.isArray(value) &&
+  value.length <= MAX_PLACEMENTS &&
+  value.every((event, index) => isPlacement(event) && (index === 0 || value[index - 1][0] <= event[0]));
+
+const isId = (value: unknown): value is string => typeof value === "string" && value.length > 0 && value.length <= MAX_ID_LENGTH;
+
+/** The version 2 facts of an untrusted round, or null if any present one is out of shape. */
+function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
+  const kind = raw.kind ?? "normal";
+  const review = kind === "review";
+  const valid =
+    ROUND_KINDS.includes(kind as RoundKind) &&
+    (raw.startSource === undefined || ROUND_SOURCES.includes(raw.startSource as RoundSource)) &&
+    (raw.tzOffsetMin === undefined || isInteger(raw.tzOffsetMin, -MAX_TZ_OFFSET_MIN, MAX_TZ_OFFSET_MIN)) &&
+    (raw.reviewOf === undefined || (review && isId(raw.reviewOf))) &&
+    (raw.reviewDelayDays === undefined || (review && isInteger(raw.reviewDelayDays, 0, MAX_REVIEW_DELAY_DAYS))) &&
+    (raw.placements === undefined) === (raw.removals === undefined) &&
+    (raw.placements === undefined || (isPlacementList(raw.placements) && isInteger(raw.removals, 0, MAX_REMOVALS)));
+  if (!valid) return null;
+  return {
+    kind: kind as RoundKind,
+    startSource: raw.startSource as RoundSource | undefined,
+    reviewOf: raw.reviewOf as string | undefined,
+    reviewDelayDays: raw.reviewDelayDays as number | undefined,
+    tzOffsetMin: raw.tzOffsetMin as number | undefined,
+    placements: (raw.placements as PlacementEvent[] | undefined)?.map(([ms, square, piece]) => [ms, square, piece] as const),
+    removals: raw.removals as number | undefined,
+  };
+}
+
 /**
  * One round from an untrusted file, or null if a source field is missing or
- * out of shape. Derived fields (outcomes, counts, accuracy) are recomputed
- * from the two positions rather than trusted.
+ * out of shape. Derived fields (outcomes, counts, accuracy, position id) are
+ * recomputed from the two positions rather than trusted.
  */
-function parseRoundRecord(raw: unknown, now: number): RoundRecordV1 | null {
+function parseRoundRecord(raw: unknown, now: number): RoundRecord | null {
   if (!isObject(raw) || !isObject(raw.config)) return null;
   const { config } = raw;
   const latest = now + DAY_MS;
   const valid =
-    raw.v === 1 &&
-    typeof raw.id === "string" &&
-    raw.id.length > 0 &&
-    raw.id.length <= MAX_ID_LENGTH &&
+    (raw.v === 1 || raw.v === 2) &&
+    isId(raw.id) &&
     LAB_SOURCES.includes(raw.source as LabSource) &&
     isCount(raw.endedAt, latest) &&
     isCalendarDay(raw.localDay) &&
@@ -89,7 +146,7 @@ function parseRoundRecord(raw: unknown, now: number): RoundRecordV1 | null {
     isCount(raw.solveMs);
   if (!valid) return null;
 
-  return buildRoundRecord({
+  const input: RoundInput = {
     id: raw.id as string,
     source: raw.source as LabSource,
     endedAt: raw.endedAt as number,
@@ -100,7 +157,10 @@ function parseRoundRecord(raw: unknown, now: number): RoundRecordV1 | null {
     placedFen: raw.placedFen as string,
     memorizeMs: raw.memorizeMs as number,
     solveMs: raw.solveMs as number,
-  });
+  };
+  if (raw.v === 1) return buildRoundRecord(input);
+  const capture = parseCapture(raw);
+  return capture && buildRoundRecord(input, capture);
 }
 
 const isBest = (value: unknown): value is PersonalBest =>
@@ -119,7 +179,7 @@ const isBest = (value: unknown): value is PersonalBest =>
  * itself: every counted round adds a day and a best, so rounds, days and
  * bests are empty together or not at all.
  */
-function parseFileSummary(raw: unknown, rounds: readonly RoundRecordV1[], now: number): LabSummary | null {
+function parseFileSummary(raw: unknown, rounds: readonly RoundRecord[], now: number): LabSummary | null {
   const summary = parseSummary(raw);
   if (!summary) return null;
   const bests = Object.entries(summary.bests);
@@ -162,8 +222,9 @@ export function parseImport(text: string, now: number = Date.now()): ImportResul
   if (data.v !== 1 && data.v !== 2) return { ok: false, reason: "newer-version" };
 
   const parsed = data.rounds.map((raw) => parseRoundRecord(raw, now));
-  const valid = parsed.filter((round): round is RoundRecordV1 => round !== null);
-  const rounds = [...valid].sort((a, b) => a.endedAt - b.endedAt).slice(-ROUND_CAP);
+  const valid = parsed.filter((round): round is RoundRecord => round !== null);
+  const kept = [...valid].sort((a, b) => a.endedAt - b.endedAt).slice(-ROUND_CAP);
+  const rounds = kept.map((round, index) => (index < kept.length - PLACEMENT_KEEP ? withoutPlacements(round) : round));
   const rejected = parsed.length - valid.length;
   const overCap = valid.length - rounds.length;
   // A summary counts every round of the file; one whose rounds did not all arrive could count a round twice later.

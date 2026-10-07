@@ -1,7 +1,7 @@
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { placementFromFen } from "@/lib/game/scoring";
 import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
-import { buildRoundRecord, type LabSource, type RoundRecordV1 } from "./record";
+import { buildRoundRecord, type LabSource, type RoundRecord } from "./record";
 import { createLabStore, type LabStore } from "./storage";
 import { buildExport, type LabExportV2 } from "./transfer";
 
@@ -112,7 +112,7 @@ function boardFen(placement: Readonly<Record<string, string>>): string {
   return rows.map((row) => row.replace(/1+/g, (run) => String(run.length))).join("/");
 }
 
-export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY): RoundRecordV1[] {
+export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY): RoundRecord[] {
   const { seed, rounds, missChance } = PLANS[name];
   const random = seeded(seed);
   const slots = new Map<number, number>();

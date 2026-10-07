@@ -19,6 +19,11 @@ const { localDayOf } = await fromSrc("lib/lab/record.ts");
 const args = process.argv.slice(2);
 const valuesOf = (flag) => args.flatMap((arg, index) => (arg === flag && args[index + 1] ? [args[index + 1]] : []));
 const today = valuesOf("--today")[0] ?? localDayOf(new Date());
+const [year, month, date] = today.split("-").map(Number);
+if (!/^\d{4}-\d{2}-\d{2}$/.test(today) || localDayOf(new Date(year, month - 1, date)) !== today) {
+  console.error(`--today must be a real calendar day as YYYY-MM-DD, got "${today}".`);
+  process.exit(2);
+}
 const outs = valuesOf("--out");
 const outDirs = outs.length > 0 ? outs : [".lab-personas"];
 

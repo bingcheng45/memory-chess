@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CALIBRATION_RULES, suggestTier, type RoundState } from "@/lib/home/calibration";
@@ -14,7 +15,8 @@ const STATUS_KEY = {
   scored: "statusDone",
 } as const;
 
-export function ReadoutCard({ state }: { state: RoundState }) {
+// Memoized: the calibration clock re-renders its section every 50 ms, and this changes only with the round.
+export const ReadoutCard = memo(function ReadoutCard({ state }: { state: RoundState }) {
   const t = useTranslations("home.lab.calibrate");
   const presets = useTranslations("game.presets");
   const scored = state.phase === "scored" ? state : null;
@@ -100,4 +102,4 @@ export function ReadoutCard({ state }: { state: RoundState }) {
       </div>
     </div>
   );
-}
+});

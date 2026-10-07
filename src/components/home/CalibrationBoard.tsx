@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent } from "react";
+import { memo, useRef, useState, type KeyboardEvent } from "react";
 import { useTranslations } from "next-intl";
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import {
@@ -56,7 +56,8 @@ interface CalibrationBoardProps {
   dispatch: (action: RoundAction) => void;
 }
 
-export function CalibrationBoard({ state, dispatch }: CalibrationBoardProps) {
+// Memoized: the calibration clock re-renders its section every 50 ms, and this changes only with the round.
+export const CalibrationBoard = memo(function CalibrationBoard({ state, dispatch }: CalibrationBoardProps) {
   const t = useTranslations("home.lab.calibrate");
   const pieceName = usePieceName();
   const [focusIndex, setFocusIndex] = useState(0);
@@ -129,4 +130,4 @@ export function CalibrationBoard({ state, dispatch }: CalibrationBoardProps) {
       </div>
     </>
   );
-}
+});

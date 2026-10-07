@@ -20,6 +20,10 @@ export interface MetricResult<TValue> {
 export interface MetricDef<TValue> {
   readonly id: MetricId;
   readonly question: string;
+  /**
+   * Compared with the measure the metric names, not with every cell: typeRecall's exposures with the most-shown type
+   * other than the king, missMap's with the thinnest file or rank. Single cells carry their own `ready`.
+   */
   readonly thresholds: Thresholds;
   compute(input: LabInput): MetricResult<TValue>;
 }

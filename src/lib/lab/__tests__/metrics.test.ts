@@ -216,6 +216,15 @@ describe("typeRecall", () => {
     expect(recall(summarize([round()])).value?.onlyKings).toBe(false);
   });
 
+  it("compares its exposures threshold with the most-shown type other than the king", () => {
+    const { exposures } = LAB_METRICS.typeRecall.thresholds;
+    const counted = (queens: number) => recall({ ...EMPTY_SUMMARY, rounds: 10, days: [TODAY], typeShown: { k: 40, q: queens, n: 5 } }).readiness;
+
+    expect(exposures).toBe(20);
+    expect(counted(19)).toEqual({ state: "warming", sampleSize: 10, need: { exposures: 1 } });
+    expect(counted(20)).toEqual({ state: "ready", sampleSize: 10 });
+  });
+
   it("estimates rounds until the first type other than the king is ready", () => {
     expect(recall(summarize([round()]))).toMatchObject({ readiness: { state: "warming" }, value: { roundsEstimate: 19 } });
   });
@@ -233,6 +242,16 @@ describe("missMap", () => {
     expect(value?.files[4]).toEqual({ shown: 2, missed: 0, ready: false });
     expect(value?.ranks[0]).toEqual({ shown: 1, missed: 0, ready: false });
     expect(value?.roundsEstimate).toBeNull();
+  });
+
+  it("compares its exposures threshold with the thinnest file or rank, not with a square", () => {
+    const { exposures } = LAB_METRICS.missMap.thresholds;
+    const withFileA = (fileA: readonly number[]) =>
+      missMap({ ...EMPTY_SUMMARY, rounds: 8, days: [TODAY], squareShown: Array.from({ length: 64 }, (_, index) => (index % 8 === 0 ? fileA[index / 8] : 2)) });
+
+    expect(exposures).toBe(10);
+    expect(withFileA([2, 2, 2, 2, 1, 0, 0, 0])).toMatchObject({ readiness: { state: "warming", need: { exposures: 1 } }, value: { view: "lines" } });
+    expect(withFileA([2, 2, 2, 2, 2, 0, 0, 0])).toMatchObject({ readiness: { state: "ready", sampleSize: 8 }, value: { view: "lines" } });
   });
 
   it("switches to squares when every square has 10 exposures", () => {

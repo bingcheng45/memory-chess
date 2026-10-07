@@ -70,6 +70,25 @@ describe("metric engine on the persona fixtures", () => {
     });
   });
 
+  it("names what recall by type and the miss map still need for each persona", async () => {
+    const needs = await Promise.all(
+      PERSONA_NAMES.map(async (name) => {
+        const { typeRecall, missMap } = await resultsFor(name);
+        return [name, { typeRecall: typeRecall.readiness.need, missMap: missMap.readiness.need }] as const;
+      }),
+    );
+
+    expect(Object.fromEntries(needs)).toEqual({
+      newVisitor: { typeRecall: undefined, missMap: undefined },
+      twoRounds: { typeRecall: { exposures: 14 }, missMap: { exposures: 10 } },
+      threeDays: { typeRecall: undefined, missMap: { exposures: 6 } },
+      thirtyDays: { typeRecall: undefined, missMap: undefined },
+      heavy: { typeRecall: undefined, missMap: undefined },
+      easyOnly: { typeRecall: { exposures: 20 }, missMap: { exposures: 4 } },
+      stale: { typeRecall: undefined, missMap: { exposures: 2 } },
+    });
+  });
+
   it("puts every persona in the readiness state its history earns", async () => {
     const states = await Promise.all(
       PERSONA_NAMES.map(async (name) => {

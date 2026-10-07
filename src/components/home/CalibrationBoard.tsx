@@ -5,17 +5,17 @@ import { useTranslations } from "next-intl";
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import {
   isDarkSquare,
+  PIECE_TYPE_ORDER,
   squareVerdict,
   type LabPiece,
-  type LabPosition,
   type RoundAction,
   type RoundState,
 } from "@/lib/home/calibration";
-import type { PieceColor, PieceType } from "@/types/chess";
+import type { PieceColor } from "@/types/chess";
 import { BoardFigure, PieceImage, usePieceName } from "./BoardFigure";
 
 const PALETTE: readonly LabPiece[] = (["white", "black"] as PieceColor[]).flatMap((color) =>
-  (["king", "queen", "rook", "bishop", "knight", "pawn"] as PieceType[]).map((type) => ({ color, type })),
+  PIECE_TYPE_ORDER.map((type) => ({ color, type })),
 );
 
 const ARROW_STEPS: Readonly<Record<string, number>> = {
@@ -51,12 +51,6 @@ function squareView(state: RoundState, square: SquareName) {
   }
 }
 
-function shownPosition(state: RoundState): LabPosition {
-  if (state.phase === "study") return state.target;
-  if (state.phase === "rebuild" || state.phase === "scored") return state.placed;
-  return {};
-}
-
 interface CalibrationBoardProps {
   state: RoundState;
   dispatch: (action: RoundAction) => void;
@@ -70,7 +64,6 @@ export function CalibrationBoard({ state, dispatch }: CalibrationBoardProps) {
   const live = state.phase === "rebuild";
   const navigable = live || state.phase === "scored";
   const selected = state.phase === "rebuild" ? state.selected : null;
-  const position = shownPosition(state);
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     const to = nextIndex(focusIndex, event.key);
@@ -92,7 +85,7 @@ export function CalibrationBoard({ state, dispatch }: CalibrationBoardProps) {
         >
           {BOARD_SQUARES.map((square, index) => {
             const view = squareView(state, square);
-            const occupant = position[square];
+            const occupant = view.piece;
             return (
               <button
                 key={square}
@@ -113,7 +106,7 @@ export function CalibrationBoard({ state, dispatch }: CalibrationBoardProps) {
                 onFocus={() => setFocusIndex(index)}
                 onClick={() => live && dispatch({ type: "tapSquare", square })}
               >
-                {view.piece && <PieceImage piece={view.piece} />}
+                {occupant && <PieceImage piece={occupant} />}
                 {view.ghost && <PieceImage piece={view.ghost} state="ghost" />}
               </button>
             );

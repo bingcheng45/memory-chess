@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
 import { ForgettingCurve } from "./LabCharts";
-import { BestsPanel, MissPanel, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
+import { BestsPanel, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
 import { LabRecordTools } from "./LabRecordTools";
 import type { LabRecord } from "./useLabRecord";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
@@ -34,10 +34,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
         />
         <div className="lab-dash">
           <div className="lab-panel lab-p-curve">
-            <div className="lab-panel-h">
-              <span className="lab-k">{t("curve.fig")}</span>
-              <span className="lab-tag">{t("curve.tag")}</span>
-            </div>
+            <PanelHead fig={t("curve.fig")} tag={<span className="lab-tag">{t("curve.tag")}</span>} />
             <h3>{t("curve.title")}</h3>
             <p className="lab-panel-desc">{t("curve.desc")}</p>
             <ForgettingCurve />
@@ -49,10 +46,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
           <MissPanel {...data} />
           <StreakPanel {...data} />
           <div className="lab-panel lab-p-board">
-            <div className="lab-panel-h">
-              <span className="lab-k">{t("board.fig")}</span>
-              <span className="lab-tag lab-tag-mint">{tags("live")}</span>
-            </div>
+            <PanelHead fig={t("board.fig")} tag={<span className="lab-tag lab-tag-mint">{tags("live")}</span>} />
             <h3>{t("board.title")}</h3>
             <p className="lab-panel-desc">{t("board.desc")}</p>
             <div className="lab-chips">

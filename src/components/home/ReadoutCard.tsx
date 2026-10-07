@@ -4,9 +4,8 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CALIBRATION_RULES, suggestTier, type RoundState } from "@/lib/home/calibration";
 import { playHref } from "@/lib/game/roundLink";
-
-// Below this share a piece type's bar turns orange.
-const WEAK_RECALL = 0.5;
+import { formatSeconds } from "@/utils/timer";
+import { RecallBar } from "./LabCharts";
 
 const STATUS_KEY = {
   idle: "statusIdle",
@@ -21,7 +20,7 @@ export function ReadoutCard({ state }: { state: RoundState }) {
   const scored = state.phase === "scored" ? state : null;
   const score = scored?.score;
   const tier = score ? suggestTier(score.accuracy) : null;
-  const exposure = (CALIBRATION_RULES.studyMs / 1000).toFixed(1);
+  const exposure = formatSeconds(CALIBRATION_RULES.studyMs);
 
   return (
     <div className="lab-card">
@@ -44,7 +43,7 @@ export function ReadoutCard({ state }: { state: RoundState }) {
         </div>
         <div>
           <span className="lab-k">{t("readout.time")}</span>
-          <b>{scored ? `${(scored.rebuildMs / 1000).toFixed(1)}s` : "--.-s"}</b>
+          <b>{scored ? `${formatSeconds(scored.rebuildMs)}s` : "--.-s"}</b>
         </div>
         <div>
           <span className="lab-k">{t("readout.wrong")}</span>
@@ -60,18 +59,7 @@ export function ReadoutCard({ state }: { state: RoundState }) {
           <>
             <span className="lab-k">{t("readout.byType")}</span>
             {score.byType.map(({ type, correct, total }) => (
-              <div className="lab-bar" key={type}>
-                <span>{t(`pieceTypes.${type}`)}</span>
-                <span className="lab-bar-track">
-                  <i
-                    style={{ width: `${Math.round((correct / total) * 100)}%` }}
-                    data-low={correct / total < WEAK_RECALL || undefined}
-                  />
-                </span>
-                <span className="lab-bar-value">
-                  {correct}/{total}
-                </span>
-              </div>
+              <RecallBar key={type} label={t(`pieceTypes.${type}`)} share={correct / total} value={`${correct}/${total}`} />
             ))}
           </>
         ) : (

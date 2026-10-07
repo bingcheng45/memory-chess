@@ -11,6 +11,7 @@ import {
 } from "@/lib/home/calibration";
 import { trackEvent } from "@/lib/analytics/events";
 import { recordLabRound } from "@/lib/lab/recordRound";
+import { formatSeconds } from "@/utils/timer";
 import { CalibrationBoard } from "./CalibrationBoard";
 import { ReadoutCard } from "./ReadoutCard";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
@@ -19,7 +20,7 @@ const STUDY_TICK_MS = 50;
 const REBUILD_TICK_MS = 100;
 const STUDY_SECONDS = CALIBRATION_RULES.studyMs / 1000;
 
-const formatSeconds = (ms: number) => (ms / 1000).toFixed(1).padStart(4, "0");
+const formatClock = (ms: number) => formatSeconds(ms).padStart(4, "0");
 
 /** Counts the study window down and the rebuild up; ends the study window itself. */
 function useRoundClock(state: RoundState, onStudyEnded: (now: number) => void): number {
@@ -114,7 +115,7 @@ export function CalibrationSection() {
   const clock =
     state.phase === "scored"
       ? `${state.score.accuracy}%`
-      : `${formatSeconds(state.phase === "idle" ? CALIBRATION_RULES.studyMs : clockMs)}s`;
+      : `${formatClock(state.phase === "idle" ? CALIBRATION_RULES.studyMs : clockMs)}s`;
   const meter = state.phase === "study" ? (clockMs / CALIBRATION_RULES.studyMs) * 100 : 0;
   const announcement = startFailed
     ? t("startFailed")

@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import {
   CURVE_AXIS_DAYS,
@@ -153,6 +154,24 @@ export function StreakGrid({ days = SAMPLE_STREAK, label }: { readonly days?: re
       {days.map((day, index) => (
         <i key={index} data-day={day} />
       ))}
+    </div>
+  );
+}
+
+// Below this share a piece type's bar turns orange.
+const WEAK_RECALL = 0.5;
+
+/** One piece type's recall. A null share draws an empty track, for a type with too few rounds to read. */
+export function RecallBar({ label, share, value }: { label: ReactNode; share: number | null; value: ReactNode }) {
+  return (
+    <div className="lab-bar" data-thin={share === null ? "" : undefined}>
+      <span>{label}</span>
+      <span className="lab-bar-track">
+        {share !== null && (
+          <i style={{ width: `${Math.round(share * 100)}%` }} data-low={share < WEAK_RECALL || undefined} />
+        )}
+      </span>
+      <span className="lab-bar-value">{value}</span>
     </div>
   );
 }

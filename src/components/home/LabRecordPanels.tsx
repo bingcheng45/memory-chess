@@ -15,7 +15,8 @@ import type { RoundRecordV1 } from "@/lib/lab/record";
 import type { LabSummary } from "@/lib/lab/summary";
 import { FILES, RANKS } from "@/lib/game/board";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
-import { AccuracySparkline, MissLines, MissMap, StreakGrid } from "./LabCharts";
+import { formatSeconds } from "@/utils/timer";
+import { AccuracySparkline, MissLines, MissMap, RecallBar, StreakGrid } from "./LabCharts";
 
 export interface RecordData {
   readonly records: readonly RoundRecordV1[];
@@ -23,12 +24,10 @@ export interface RecordData {
   readonly today: string;
 }
 
-// Below this share a piece type's bar turns orange, as on the readout card.
-const WEAK_RECALL = 0.5;
 
 const missShare = ({ shown, missed, ready }: MissCell) => (ready ? missed / shown : null);
 
-function PanelHead({ fig, tag }: { fig: string; tag: ReactNode }) {
+export function PanelHead({ fig, tag }: { fig: string; tag: ReactNode }) {
   return (
     <div className="lab-panel-h">
       <span className="lab-k">{fig}</span>
@@ -180,7 +179,7 @@ export function BestsPanel({ summary }: RecordData) {
               <div key={best.key}>
                 <dt>{t("bests.setting", { source: best.source, pieces: best.pieceCount, seconds: best.memorizeSeconds })}</dt>
                 <dd>
-                  {t("bests.reading", { accuracy: best.accuracy, seconds: (best.solveMs / 1000).toFixed(1) })}
+                  {t("bests.reading", { accuracy: best.accuracy, seconds: formatSeconds(best.solveMs) })}
                   {best.rounds === 1 && <span className="lab-note"> · {t("bests.first")}</span>}
                 </dd>
               </div>
@@ -210,20 +209,12 @@ export function TypesPanel({ summary }: RecordData) {
         <>
           <div className="lab-bars">
             {recall.types.filter(({ shown }) => shown > 0).map(({ type, shown, recalled, ready }) => (
-              <div className="lab-bar" key={type} data-thin={ready ? undefined : ""}>
-                <span>{typeName(type)}</span>
-                <span className="lab-bar-track">
-                  {ready && (
-                    <i
-                      style={{ width: `${Math.round((recalled / shown) * 100)}%` }}
-                      data-low={recalled / shown < WEAK_RECALL || undefined}
-                    />
-                  )}
-                </span>
-                <span className="lab-bar-value">
-                  {ready ? `${Math.round((recalled / shown) * 100)}%` : t("types.thin", { shown })}
-                </span>
-              </div>
+              <RecallBar
+                key={type}
+                label={typeName(type)}
+                share={ready ? recalled / shown : null}
+                value={ready ? `${Math.round((recalled / shown) * 100)}%` : t("types.thin", { shown })}
+              />
             ))}
           </div>
           <p className="lab-note">{t("fromRounds", { count: recall.sampleSize })}</p>

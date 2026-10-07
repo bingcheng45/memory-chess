@@ -13,16 +13,15 @@ export type PieceState = "on" | "off" | "ghost";
 
 interface PieceImageProps {
   piece: LabPiece;
-  /** Empty for a piece on a board that already carries its own label. */
-  alt?: string;
   state?: PieceState;
 }
 
-export function PieceImage({ piece, alt = "", state = "on" }: PieceImageProps) {
+/** Decorative: every board that shows a piece carries its own label. */
+export function PieceImage({ piece, state = "on" }: PieceImageProps) {
   return (
     <Image
       src={getPieceImageUrl(piece.type, piece.color)}
-      alt={alt}
+      alt=""
       width={45}
       height={45}
       sizes="56px"
@@ -41,13 +40,12 @@ export function usePieceName(): (piece: LabPiece) => string {
 
 interface BoardFigureProps {
   children: ReactNode;
-  className?: string;
 }
 
 /** A board framed as a lab figure: crosshair corners and coordinate rulers. */
-export function BoardFigure({ children, className }: BoardFigureProps) {
+export function BoardFigure({ children }: BoardFigureProps) {
   return (
-    <div className={className ? `lab-figure ${className}` : "lab-figure"}>
+    <div className="lab-figure">
       {CORNERS.map((corner) => (
         <span key={corner} className="lab-crosshair" data-corner={corner} aria-hidden="true" />
       ))}

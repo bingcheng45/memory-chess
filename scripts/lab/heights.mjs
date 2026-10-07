@@ -2,7 +2,8 @@
 /**
  * Measures each reserved §06 box with its reserve switched off, for every
  * persona file at five widths and for the server render with scripts off, and
- * writes the tallest per layout tier to src/components/home/lab-heights.json.
+ * writes the tallest per layout tier to src/components/home/lab-heights.json,
+ * with the tallest empty state a new visitor sees in each tier.
  * labReserves.test.ts holds the CSS reserves above those heights. The file is
  * a snapshot: rerun this after a copy or layout change to §06, and the test
  * then fails if a box outgrew its reserve.
@@ -94,7 +95,12 @@ async function main() {
       }
     }
   }
-  writeFileSync(DATA_FILE, `${JSON.stringify({ widths: WIDTHS, personas: names, max, tallest }, null, 2)}\n`);
+  const empty = {};
+  for (const [width, heights] of Object.entries(measured.newVisitor?.server ?? {})) {
+    const tier = (empty[tierOf(Number(width))] ??= {});
+    for (const box of BOXES) tier[box] = Math.max(tier[box] ?? 0, heights[box] ?? 0);
+  }
+  writeFileSync(DATA_FILE, `${JSON.stringify({ widths: WIDTHS, personas: names, max, tallest, empty }, null, 2)}\n`);
   writeFileSync(join(out, "measured.json"), JSON.stringify(measured, null, 2));
   console.log(`wrote ${DATA_FILE}`);
 }

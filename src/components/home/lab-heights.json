@@ -24,7 +24,7 @@
       "spark": 387,
       "heat": 515,
       "streak": 414,
-      "bests": 949,
+      "bests": 574,
       "types": 516,
       "tools": 360
     },
@@ -69,5 +69,34 @@
     "wide bests": "manyBests client 1440",
     "wide types": "stale client 1440",
     "wide tools": "easyOnly client 1440"
+  },
+  "empty": {
+    "narrow": {
+      "unlock": 377,
+      "spark": 316,
+      "heat": 431,
+      "streak": 367,
+      "bests": 374,
+      "types": 228,
+      "tools": 0
+    },
+    "medium": {
+      "unlock": 166,
+      "spark": 452,
+      "heat": 422,
+      "streak": 346,
+      "bests": 303,
+      "types": 210,
+      "tools": 0
+    },
+    "wide": {
+      "unlock": 166,
+      "spark": 315,
+      "heat": 422,
+      "streak": 323,
+      "bests": 206,
+      "types": 160,
+      "tools": 0
+    }
   }
 }

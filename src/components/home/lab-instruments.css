@@ -103,7 +103,7 @@
   .lab { --lab-h-spark: 496px; --lab-h-streak: 416px; --lab-h-bests: 920px; --lab-h-types: 496px; --lab-h-tools: 512px; }
 }
 @media (max-width: 640px) {
-  .lab { --lab-h-unlock: 400px; --lab-h-spark: 408px; --lab-h-heat: 536px; --lab-h-streak: 432px; --lab-h-bests: 968px; --lab-h-types: 536px; --lab-h-tools: 376px; }
+  .lab { --lab-h-unlock: 400px; --lab-h-spark: 408px; --lab-h-heat: 536px; --lab-h-streak: 432px; --lab-h-bests: 592px; --lab-h-types: 536px; --lab-h-tools: 376px; }
 }
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
 .lab-tag-slot { display: inline-flex; justify-content: flex-end; font: 500 11px/1 var(--lab-mono); min-width: 8.8em; min-height: calc(1em + 10px); }
@@ -174,6 +174,11 @@
 .lab-bests div { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-bottom: 8px; border-bottom: 1px solid var(--lab-line); font-size: 15px; }
 .lab-bests dt { color: var(--lab-ink-2); }
 .lab-bests dd { margin: 0; font: 600 15px var(--lab-mono); font-variant-numeric: tabular-nums; }
+.lab-p-bests [data-shown="narrow"] { display: none; }
+@media (max-width: 640px) {
+  .lab-bests div:nth-child(n+3), .lab-p-bests [data-shown="wide"] { display: none; }
+  .lab-p-bests [data-shown="narrow"] { display: block; }
+}
 .lab-tools { display: grid; grid-template-columns: 1fr auto; gap: 16px 24px; align-items: start; margin-top: 16px; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 22px; }
 .lab-tools > .lab-note { grid-column: 1 / -1; min-height: 1.45em; }
 .lab-tools > .lab-note[data-kind="error"] { color: var(--lab-mark-ink); }

@@ -168,6 +168,8 @@ export function StreakPanel({ result: { readiness, value: streak }, daysAgo }: {
 
 /** Six rows keep the panel one reserved height for any number of settings played. */
 const BESTS_SHOWN = 6;
+/** Phones show only the first two rows (lab-instruments.css), so a long list does not need a tall reserve there. */
+const BESTS_SHOWN_BY_WIDTH = [["narrow", 2], ["wide", BESTS_SHOWN]] as const;
 
 export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { result: LabResults["bests"]; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record");
@@ -191,7 +193,9 @@ export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { r
               </div>
             ))}
           </dl>
-          {bests.entries.length > BESTS_SHOWN && <p className="lab-note">{t("bests.more", { count: bests.entries.length - BESTS_SHOWN })}</p>}
+          {BESTS_SHOWN_BY_WIDTH.flatMap(([shown, cap]) =>
+            bests.entries.length > cap ? [<p key={shown} className="lab-note" data-shown={shown}>{t("bests.more", { count: bests.entries.length - cap })}</p>] : [],
+          )}
           <p className="lab-note">{t("fromRounds", { count: readiness.sampleSize })}</p>
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="bests" />
         </>

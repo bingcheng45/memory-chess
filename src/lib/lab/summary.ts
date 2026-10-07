@@ -1,0 +1,108 @@
+import { configKey, PIECE_LETTERS, type PieceLetter, type RoundRecordV1, type TypeCounts } from "./record";
+
+export interface PersonalBest {
+  readonly accuracy: number;
+  readonly correct: number;
+  readonly solveMs: number;
+  readonly at: number;
+  /** Rounds played at this config, so a first reading can say so. */
+  readonly rounds: number;
+}
+
+/**
+ * Lifetime counters kept beside the capped round log, so streak days, bests
+ * and the miss map survive eviction. Every field is derivable from the log.
+ */
+export interface LabSummaryV1 {
+  readonly v: 1;
+  readonly rounds: number;
+  /** Distinct local days with a completed round, sorted. */
+  readonly days: readonly string[];
+  readonly bests: Readonly<Record<string, PersonalBest>>;
+  /** Per square, a8 first: rounds where the target had a piece there, and where it was missed. */
+  readonly squareShown: readonly number[];
+  readonly squareMissed: readonly number[];
+  readonly typeShown: TypeCounts;
+  readonly typeMissed: TypeCounts;
+}
+
+const MAX_DAYS = 400;
+
+export const EMPTY_SUMMARY: LabSummaryV1 = {
+  v: 1,
+  rounds: 0,
+  days: [],
+  bests: {},
+  squareShown: Array<number>(64).fill(0),
+  squareMissed: Array<number>(64).fill(0),
+  typeShown: {},
+  typeMissed: {},
+};
+
+function addCounts(total: TypeCounts, more: TypeCounts): TypeCounts {
+  return Object.fromEntries(
+    PIECE_LETTERS.flatMap((letter) => {
+      const sum = (total[letter] ?? 0) + (more[letter] ?? 0);
+      return sum > 0 ? [[letter, sum]] : [];
+    }),
+  );
+}
+
+function beats(record: RoundRecordV1, best: PersonalBest | undefined): boolean {
+  if (!best) return true;
+  return record.accuracy > best.accuracy || (record.accuracy === best.accuracy && record.solveMs < best.solveMs);
+}
+
+export function addToSummary(summary: LabSummaryV1, record: RoundRecordV1): LabSummaryV1 {
+  const key = configKey(record.config);
+  const previous = summary.bests[key];
+  const best: PersonalBest = beats(record, previous)
+    ? { accuracy: record.accuracy, correct: record.correct, solveMs: record.solveMs, at: record.endedAt, rounds: 0 }
+    : (previous as PersonalBest);
+  const days = summary.days.includes(record.localDay)
+    ? summary.days
+    : [...summary.days, record.localDay].sort().slice(-MAX_DAYS);
+
+  return {
+    v: 1,
+    rounds: summary.rounds + 1,
+    days,
+    bests: { ...summary.bests, [key]: { ...best, rounds: (previous?.rounds ?? 0) + 1 } },
+    squareShown: summary.squareShown.map((count, index) => count + (record.squares[index] === "." || record.squares[index] === "x" ? 0 : 1)),
+    squareMissed: summary.squareMissed.map(
+      (count, index) => count + (record.squares[index] === "m" || record.squares[index] === "w" ? 1 : 0),
+    ),
+    typeShown: addCounts(summary.typeShown, record.shownByType),
+    typeMissed: addCounts(summary.typeMissed, record.missedByType),
+  };
+}
+
+export function summarize(records: readonly RoundRecordV1[]): LabSummaryV1 {
+  return [...records].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, EMPTY_SUMMARY);
+}
+
+const isCount = (value: unknown): value is number => Number.isInteger(value) && (value as number) >= 0;
+const isCountArray = (value: unknown): value is number[] =>
+  Array.isArray(value) && value.length === 64 && value.every(isCount);
+const isTypeCounts = (value: unknown): value is TypeCounts =>
+  typeof value === "object" &&
+  value !== null &&
+  Object.entries(value).every(([key, count]) => PIECE_LETTERS.includes(key as PieceLetter) && isCount(count));
+
+/** A stored summary, or null when it is missing, from another version, or damaged. */
+export function parseSummary(raw: unknown): LabSummaryV1 | null {
+  if (typeof raw !== "object" || raw === null) return null;
+  const summary = raw as Record<string, unknown>;
+  const valid =
+    summary.v === 1 &&
+    isCount(summary.rounds) &&
+    Array.isArray(summary.days) &&
+    summary.days.every((day) => typeof day === "string") &&
+    typeof summary.bests === "object" &&
+    summary.bests !== null &&
+    isCountArray(summary.squareShown) &&
+    isCountArray(summary.squareMissed) &&
+    isTypeCounts(summary.typeShown) &&
+    isTypeCounts(summary.typeMissed);
+  return valid ? (raw as LabSummaryV1) : null;
+}

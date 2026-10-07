@@ -1,0 +1,124 @@
+/** @jest-environment node */
+import { IDBFactory } from "fake-indexeddb";
+import { createLabStore, PERSIST_AFTER_ROUNDS, ROUND_CAP, type LabStoreDeps } from "@/lib/lab/storage";
+import { round } from "./fixtures";
+
+function memoryStorage(): Storage {
+  const data = new Map<string, string>();
+  return {
+    get length() {
+      return data.size;
+    },
+    clear: () => data.clear(),
+    getItem: (key) => data.get(key) ?? null,
+    key: (index) => [...data.keys()][index] ?? null,
+    removeItem: (key) => void data.delete(key),
+    setItem: (key, value) => void data.set(key, value),
+  };
+}
+
+function deps(overrides: Partial<LabStoreDeps> = {}): LabStoreDeps & { persist: jest.Mock } {
+  const persist = jest.fn(() => Promise.resolve(true));
+  return {
+    indexedDB: new IDBFactory(),
+    localStorage: memoryStorage(),
+    storageManager: { persist } as unknown as StorageManager,
+    persist,
+    ...overrides,
+  };
+}
+
+describe("lab store", () => {
+  it("saves a round, lists it and updates the summary", async () => {
+    const store = createLabStore(deps());
+
+    expect(await store.addRound(round())).toBe(true);
+    expect(await store.listRounds()).toEqual([round()]);
+    expect(await store.readSummary()).toMatchObject({ rounds: 1, days: ["2026-10-07"] });
+  });
+
+  it("writes the same round id once", async () => {
+    const store = createLabStore(deps());
+    await store.addRound(round());
+    await store.addRound(round());
+
+    expect((await store.listRounds()).length).toBe(1);
+    expect((await store.readSummary()).rounds).toBe(1);
+  });
+
+  it("merges an import by id, so importing twice adds nothing", async () => {
+    const store = createLabStore(deps());
+    await store.addRound(round({ id: "a", endedAt: 1 }));
+    const file = [round({ id: "a", endedAt: 1 }), round({ id: "b", endedAt: 5 }), round({ id: "c", endedAt: 6 })];
+
+    expect(await store.mergeRounds(file)).toBe(2);
+    expect(await store.mergeRounds(file)).toBe(0);
+    expect((await store.listRounds()).map(({ id }) => id)).toEqual(["a", "b", "c"]);
+    expect((await store.readSummary()).rounds).toBe(3);
+  });
+
+  it("restores an export after a clear exactly", async () => {
+    const store = createLabStore(deps());
+    await store.addRound(round({ id: "a", endedAt: 1 }));
+    await store.addRound(round({ id: "b", endedAt: 2, localDay: "2026-10-08" }));
+    const rounds = await store.listRounds();
+    const summary = await store.readSummary();
+
+    await store.clear();
+    expect(await store.listRounds()).toEqual([]);
+    await store.mergeRounds(rounds);
+
+    expect(await store.listRounds()).toEqual(rounds);
+    expect(await store.readSummary()).toEqual(summary);
+  });
+
+  it("rebuilds a damaged summary from the log", async () => {
+    const storage = memoryStorage();
+    const store = createLabStore(deps({ localStorage: storage }));
+    await store.addRound(round({ id: "a" }));
+    storage.setItem("memory-chess-lab-summary", "{not json");
+
+    expect(await store.readSummary()).toMatchObject({ rounds: 1 });
+  });
+
+  it(`drops the oldest rounds past ${ROUND_CAP}`, async () => {
+    const store = createLabStore(deps());
+    const many = Array.from({ length: ROUND_CAP + 2 }, (_, index) => round({ id: `r${index}`, endedAt: index }));
+    await store.mergeRounds(many);
+
+    const kept = await store.listRounds();
+    expect(kept.length).toBe(ROUND_CAP);
+    expect(kept[0].id).toBe("r2");
+    expect((await store.readSummary()).rounds).toBe(ROUND_CAP + 2);
+  }, 30000);
+
+  it(`asks the browser to keep the record after ${PERSIST_AFTER_ROUNDS} rounds, once`, async () => {
+    const setup = deps();
+    const store = createLabStore(setup);
+    for (let index = 0; index < PERSIST_AFTER_ROUNDS + 2; index++) {
+      await store.addRound(round({ id: `p${index}`, endedAt: index }));
+      expect(setup.persist).toHaveBeenCalledTimes(index + 1 >= PERSIST_AFTER_ROUNDS ? 1 : 0);
+    }
+  });
+
+  it("reports itself unavailable and saves nothing without IndexedDB", async () => {
+    const store = createLabStore(deps({ indexedDB: undefined }));
+
+    expect(await store.isAvailable()).toBe(false);
+    expect(await store.addRound(round())).toBe(false);
+    expect(await store.listRounds()).toEqual([]);
+  });
+
+  it("reports itself unavailable when local storage throws, as in some private windows", async () => {
+    const throwing = { ...memoryStorage(), setItem: () => { throw new Error("QuotaExceededError"); } } as Storage;
+
+    expect(await createLabStore(deps({ localStorage: throwing })).isAvailable()).toBe(false);
+  });
+
+  it("remembers when the record was last backed up", () => {
+    const store = createLabStore(deps());
+    expect(store.readLastBackup()).toBeNull();
+    store.markBackedUp(1700000000000);
+    expect(store.readLastBackup()).toBe(1700000000000);
+  });
+});

@@ -1,0 +1,240 @@
+import type { RoundRecordV1 } from "./record";
+import { addToSummary, parseSummary, summarize, type LabSummaryV1 } from "./summary";
+
+const DB_NAME = "memory-chess-lab";
+const DB_VERSION = 1;
+const STORE = "rounds";
+const BY_END = "endedAt";
+const SUMMARY_KEY = "memory-chess-lab-summary";
+const BACKUP_KEY = "memory-chess-lab-last-backup";
+const PERSIST_ASKED_KEY = "memory-chess-lab-persist-asked";
+
+export const ROUND_CAP = 5000;
+/** Ask the browser not to evict the record only once the player has some history. */
+export const PERSIST_AFTER_ROUNDS = 3;
+
+export interface LabStoreDeps {
+  readonly indexedDB: IDBFactory | undefined;
+  readonly localStorage: Storage | undefined;
+  readonly storageManager: StorageManager | undefined;
+}
+
+export interface LabStore {
+  /** False in private windows and wherever the browser refuses storage. */
+  isAvailable(): Promise<boolean>;
+  /** Writes one round; a round whose id is already stored is left alone. Resolves false if nothing could be saved. */
+  addRound(record: RoundRecordV1): Promise<boolean>;
+  listRounds(): Promise<RoundRecordV1[]>;
+  /** Adds the rounds whose ids are new and returns how many that was, so a second import adds 0. */
+  mergeRounds(records: readonly RoundRecordV1[]): Promise<number>;
+  readSummary(): Promise<LabSummaryV1>;
+  clear(): Promise<void>;
+  readLastBackup(): number | null;
+  markBackedUp(at: number): void;
+}
+
+function request<T>(req: IDBRequest<T>): Promise<T> {
+  return new Promise((resolve, reject) => {
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function done(tx: IDBTransaction): Promise<void> {
+  return new Promise((resolve, reject) => {
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+    tx.onabort = () => reject(tx.error);
+  });
+}
+
+export function createLabStore(deps: LabStoreDeps): LabStore {
+  let opening: Promise<IDBDatabase> | null = null;
+
+  function open(): Promise<IDBDatabase> {
+    if (!deps.indexedDB) return Promise.reject(new Error("IndexedDB is unavailable"));
+    opening ??= new Promise<IDBDatabase>((resolve, reject) => {
+      const req = (deps.indexedDB as IDBFactory).open(DB_NAME, DB_VERSION);
+      req.onupgradeneeded = () => {
+        const store = req.result.createObjectStore(STORE, { keyPath: "id" });
+        store.createIndex(BY_END, "endedAt");
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+      req.onblocked = () => reject(new Error("IndexedDB open blocked"));
+    }).catch((error: unknown) => {
+      opening = null;
+      throw error;
+    });
+    return opening;
+  }
+
+  function readText(key: string): string | null {
+    try {
+      return deps.localStorage?.getItem(key) ?? null;
+    } catch {
+      return null;
+    }
+  }
+
+  function writeText(key: string, value: string): boolean {
+    try {
+      if (!deps.localStorage) return false;
+      deps.localStorage.setItem(key, value);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function storedSummary(): LabSummaryV1 | null {
+    try {
+      return parseSummary(JSON.parse(readText(SUMMARY_KEY) ?? "null"));
+    } catch {
+      return null;
+    }
+  }
+
+  async function allRounds(db: IDBDatabase): Promise<RoundRecordV1[]> {
+    return request(db.transaction(STORE).objectStore(STORE).index(BY_END).getAll() as IDBRequest<RoundRecordV1[]>);
+  }
+
+  async function insertNew(db: IDBDatabase, records: readonly RoundRecordV1[]): Promise<RoundRecordV1[]> {
+    const tx = db.transaction(STORE, "readwrite");
+    const store = tx.objectStore(STORE);
+    const existing = await Promise.all(records.map((record) => request(store.getKey(record.id))));
+    const fresh = records.filter((record, index) => existing[index] === undefined);
+    const unique = fresh.filter((record, index) => fresh.findIndex(({ id }) => id === record.id) === index);
+    unique.forEach((record) => store.add(record));
+    await done(tx);
+    return unique;
+  }
+
+  async function evictOverCap(db: IDBDatabase): Promise<void> {
+    const tx = db.transaction(STORE, "readwrite");
+    const store = tx.objectStore(STORE);
+    const excess = (await request(store.count())) - ROUND_CAP;
+    if (excess > 0) {
+      const oldest = await request(store.index(BY_END).getAllKeys(null, excess));
+      oldest.forEach((key) => store.delete(key));
+    }
+    await done(tx);
+  }
+
+  async function requestPersistence(rounds: number): Promise<void> {
+    if (rounds < PERSIST_AFTER_ROUNDS || readText(PERSIST_ASKED_KEY) || !deps.storageManager?.persist) return;
+    writeText(PERSIST_ASKED_KEY, "1");
+    try {
+      await deps.storageManager.persist();
+    } catch {
+      // The browser decides by its own heuristics; a refusal leaves storage best-effort, as before.
+    }
+  }
+
+  async function saveSummary(next: LabSummaryV1): Promise<void> {
+    writeText(SUMMARY_KEY, JSON.stringify(next));
+    await requestPersistence(next.rounds);
+  }
+
+  return {
+    async isAvailable() {
+      try {
+        await open();
+        const probe = `${SUMMARY_KEY}-probe`;
+        if (!writeText(probe, "1")) return false;
+        deps.localStorage?.removeItem(probe);
+        return true;
+      } catch {
+        return false;
+      }
+    },
+
+    async addRound(record) {
+      try {
+        const db = await open();
+        const before = storedSummary() ?? summarize(await allRounds(db));
+        const added = await insertNew(db, [record]);
+        if (added.length === 0) return true;
+        await evictOverCap(db);
+        await saveSummary(addToSummary(before, record));
+        return true;
+      } catch {
+        return false;
+      }
+    },
+
+    async listRounds() {
+      try {
+        return await allRounds(await open());
+      } catch {
+        return [];
+      }
+    },
+
+    async mergeRounds(records) {
+      const db = await open();
+      const before = storedSummary() ?? summarize(await allRounds(db));
+      const added = await insertNew(db, records);
+      if (added.length === 0) return 0;
+      await evictOverCap(db);
+      // Folded into the lifetime summary before eviction, so rounds past the cap still count.
+      await saveSummary([...added].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, before));
+      return added.length;
+    },
+
+    async readSummary() {
+      const stored = storedSummary();
+      if (stored) return stored;
+      const rebuilt = summarize(await this.listRounds());
+      if (rebuilt.rounds > 0) writeText(SUMMARY_KEY, JSON.stringify(rebuilt));
+      return rebuilt;
+    },
+
+    async clear() {
+      const db = await open();
+      const tx = db.transaction(STORE, "readwrite");
+      tx.objectStore(STORE).clear();
+      await done(tx);
+      try {
+        deps.localStorage?.removeItem(SUMMARY_KEY);
+        deps.localStorage?.removeItem(BACKUP_KEY);
+      } catch {
+        // Nothing else to undo; the log itself is already empty.
+      }
+    },
+
+    readLastBackup() {
+      const at = Number(readText(BACKUP_KEY));
+      return Number.isFinite(at) && at > 0 ? at : null;
+    },
+
+    markBackedUp(at) {
+      writeText(BACKUP_KEY, String(at));
+    },
+  };
+}
+
+let browserStore: LabStore | null = null;
+
+/** The store for this browser, or null during server rendering. */
+export function labStore(): LabStore | null {
+  if (typeof window === "undefined") return null;
+  browserStore ??= createLabStore({
+    indexedDB: (() => {
+      try {
+        return window.indexedDB;
+      } catch {
+        return undefined;
+      }
+    })(),
+    localStorage: (() => {
+      try {
+        return window.localStorage;
+      } catch {
+        return undefined;
+      }
+    })(),
+    storageManager: typeof navigator === "undefined" ? undefined : navigator.storage,
+  });
+  return browserStore;
+}

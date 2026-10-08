@@ -10,7 +10,6 @@ import { LabPlayLink } from "./LabPlayLink";
 
 const roundsAndDays = ({ rounds = 0, days = 0 }: Need) => (rounds > 0 && days > 0 ? "RoundsDays" : rounds > 0 ? "Rounds" : "Days");
 
-/** The message for a metric already started, keyed by what its readiness still needs. */
 const LEFT: { readonly [K in Unlock["metric"]]: (need: Need) => string } = {
   span: (need) => (need.largerRounds ? "spanLarger" : "spanLeft"),
   piecesHeld: (need) => `piecesHeld${roundsAndDays(need)}`,

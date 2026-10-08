@@ -16,5 +16,4 @@ export type PanelId = (typeof PANEL_ROWS)[number]["panels"][number];
 
 export const PANEL_ORDER: readonly PanelId[] = PANEL_ROWS.flatMap(({ panels }) => panels);
 
-/** "6.3" for the third figure of section 6. */
 export const figureNumber = (section: number, panel: PanelId) => `${section}.${PANEL_ORDER.indexOf(panel) + 1}`;

@@ -18,7 +18,6 @@ interface PanelProps<K extends keyof LabResults> {
 
 interface FrameProps {
   readonly panel: PanelId;
-  /** The panel's message group and its lab-p-* class. */
   readonly name: "span" | "held" | "speed";
   readonly mine: boolean;
   readonly children: ReactNode;

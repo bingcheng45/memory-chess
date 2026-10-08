@@ -47,7 +47,6 @@ interface ValueLineProps extends AxisProps {
   readonly partial?: number;
 }
 
-/** A line on its own scale, labelled at its lowest, highest and latest values. */
 export function ValueLine({ points, partial = 0, label, first, last }: ValueLineProps) {
   const { low, high, y } = yScale(points);
   const x = (index: number) => PLOT.left + ((PLOT.width - PLOT.pad - PLOT.left) * index) / Math.max(1, points.length - 1);

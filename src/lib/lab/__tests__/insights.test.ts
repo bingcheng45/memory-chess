@@ -1,4 +1,5 @@
 import type { LabInput } from "@/lib/lab/engine";
+import { aboutTimes } from "@/lib/lab/insights";
 import { deriveLab } from "@/lib/lab/metrics";
 import type { RoundRecord } from "@/lib/lab/record";
 import { summarize, type LabSummary } from "@/lib/lab/summary";
@@ -61,7 +62,16 @@ describe("edge files rule", () => {
     ]);
   });
 
-  it("prints the multiple to the nearest half", () => {
+  it("prints the multiple to one decimal, so 1.8 never reads as twice", () => {
+    expect([1.8, 1.94, 1.95, 2.3, 5.5].map(aboutTimes)).toEqual([1.8, 1.9, 2, 2.3, 5.5]);
+    expect(counters(squares([9, 0, 0, 5, 5, 0, 0, 9])).value?.insights[0].params).toMatchObject({ times: 1.8, edge: 45, centre: 25 });
+  });
+
+  it("prints a centre rate above zero but under 1% as 0, which the sentence words as under 1%", () => {
+    expect(counters(fewMisses(10, 1)).value?.insights[0].params).toMatchObject({ times: 10, edge: 3, centre: 0, centreShown: 320 });
+  });
+
+  it("prints the multiple of whole and half ratios as they are", () => {
     expect(counters(squares([10, 0, 0, 2, 2, 0, 0, 10])).value?.insights[0].params).toMatchObject({ times: 5, edge: 50, centre: 10 });
     expect(counters(squares([10, 0, 0, 4, 4, 0, 0, 10])).value?.insights[0].params).toMatchObject({ times: 2.5, edge: 50, centre: 20 });
   });
@@ -83,7 +93,7 @@ describe("edge files rule", () => {
   });
 
   it("fires from 5 edge misses, with the centre missed or not", () => {
-    expect(counters(fewMisses(5, 2)).value?.insights[0]).toMatchObject({ ruleId: "edgeFiles", params: { edge: 2, centre: 1 }, strength: 1.39 });
+    expect(counters(fewMisses(5, 2)).value?.insights[0]).toMatchObject({ ruleId: "edgeFiles", params: { edge: 2, centre: 0 }, strength: 1.39 });
     expect(counters(fewMisses(5, 0)).value?.insights[0]).toMatchObject({ ruleId: "edgeFiles", params: { times: 0, edge: 2, centre: 0 }, strength: 0.99 });
   });
 

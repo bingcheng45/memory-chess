@@ -236,6 +236,8 @@ describe("insight sentences", () => {
     [{ times: 0, edge: 15, centre: 0, edgeShown: 320, centreShown: 300 }, "You miss 15% of 320 pieces on the a and h files and none of 300 on the centre files, d and e."],
     [{ times: 2, edge: 40, centre: 20, edgeShown: 320, centreShown: 300 }, "You miss the a and h files about twice as often as the centre files, d and e: 40% of 320 pieces against 20% of 300."],
     [{ times: 2.5, edge: 50, centre: 20, edgeShown: 320, centreShown: 300 }, "You miss the a and h files about 2.5 times as often as the centre files, d and e: 50% of 320 pieces against 20% of 300."],
+    [{ times: 1.8, edge: 45, centre: 25, edgeShown: 320, centreShown: 300 }, "You miss the a and h files about 1.8 times as often as the centre files, d and e: 45% of 320 pieces against 25% of 300."],
+    [{ times: 10, edge: 3, centre: 0, edgeShown: 320, centreShown: 320 }, "You miss the a and h files about 10 times as often as the centre files, d and e: 3% of 320 pieces against under 1% of 320."],
   ])("words the edge files finding for %o", (params, sentence) => {
     expect(t("edgeFiles", params)).toBe(sentence);
   });

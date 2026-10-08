@@ -154,3 +154,28 @@ describe("GamePage header", () => {
     expect(container.querySelector("[data-page-type]")).toHaveAttribute("data-page-type", pageType);
   });
 });
+
+describe("GamePage pinning", () => {
+  it("pins the page before the board first measures its room, so the board is never laid out on the unpinned page", () => {
+    mockGamePhase = "memorization";
+    const pinnedAtEachMeasure: boolean[] = [];
+    jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(() => {
+      pinnedAtEachMeasure.push(document.body.classList.contains("game-fixed"));
+      return { width: 400, height: 600 } as DOMRect;
+    });
+
+    render(<GamePage />);
+
+    expect(pinnedAtEachMeasure.length > 0 && pinnedAtEachMeasure.every(Boolean)).toBe(true);
+  });
+
+  it("unpins the page when the round leaves the board", () => {
+    mockGamePhase = "memorization";
+    const { rerender } = render(<GamePage />);
+
+    mockGamePhase = "result";
+    rerender(<GamePage />);
+
+    expect([document.documentElement.className, document.body.className]).toEqual(["", ""]);
+  });
+});

@@ -38,3 +38,18 @@ describe("the board's orientation", () => {
     expect(squares.slice(56)).toEqual(["a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1"]);
   });
 });
+
+describe("the board's first paint", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it("draws the board at the size of its area on the first commit, so it never grows from zero on screen", () => {
+    jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({ width: 400, height: 520 } as DOMRect);
+
+    render(<ResponsiveChessBoard pieces={[]} isInteractive={false} />);
+
+    const board = document.querySelector<HTMLElement>(".game-container");
+    expect([board?.style.width, board?.style.height]).toEqual(["400px", "400px"]);
+  });
+});

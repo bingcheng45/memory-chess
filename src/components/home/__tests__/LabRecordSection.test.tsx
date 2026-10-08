@@ -77,7 +77,7 @@ describe("LabRecordSection", () => {
     expect(screen.getByText("Fig. 6.5 · Days in a row")).toBeInTheDocument();
     expect(screen.queryByText(/Daily challenge/)).toBeNull();
     expect(screen.queryByText(/shared position|Same board for everyone/)).toBeNull();
-    expect(within(panel("Days in a row")).getByText("Any finished round, game or practice, counts for its day. One missed day a week is forgiven.")).toBeInTheDocument();
+    expect(within(panel("Days in a row")).getByText("Any finished round, game or practice, counts for its day. One missed day in any 7 is forgiven.")).toBeInTheDocument();
     expect(within(panel("Accuracy over time")).getByText("Your line, round by round.")).toBeInTheDocument();
     unmount();
 
@@ -121,7 +121,7 @@ describe("LabRecordSection", () => {
       expect(tag("Accuracy over time")).toBe("Sample");
       expect(within(panel("Accuracy over time")).getByText(sampleTrend)).toBeInTheDocument();
       expect(tag("Days in a row")).toBe("Sample");
-      expect(within(panel("Days in a row")).getByText("Any finished round, game or practice, counts for its day. One missed day a week is forgiven.")).toBeInTheDocument();
+      expect(within(panel("Days in a row")).getByText("Any finished round, game or practice, counts for its day. One missed day in any 7 is forgiven.")).toBeInTheDocument();
     });
 
     it("draws the player's streak grid when the summary counts rounds but lists no day", () => {

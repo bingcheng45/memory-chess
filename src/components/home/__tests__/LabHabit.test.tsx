@@ -27,7 +27,7 @@ describe("days in a row with a grace day", () => {
     expect(within(panel).getByRole("img", { name: /^Your last 14 days/ })).toHaveAccessibleName("Your last 14 days: 13 days played, 1 forgiven.");
     expect(panel.querySelectorAll('.lab-streak i[data-day="forgiven"]')).toHaveLength(1);
     expect(panel.querySelector(".lab-streak-key")).toHaveTextContent("played forgiven missed today");
-    expect(within(panel).getByText("Any finished round counts for its day. One missed day a week is forgiven.")).toBeInTheDocument();
+    expect(within(panel).getByText("Any finished round counts for its day. One missed day in any 7 is forgiven.")).toBeInTheDocument();
   });
 
   it("gives an unbroken run no forgiven day", () => {

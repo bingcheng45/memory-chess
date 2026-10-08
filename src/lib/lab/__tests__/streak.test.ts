@@ -8,7 +8,7 @@ const run = (from: string, to: string) => {
   return days;
 };
 
-describe("streak with one grace day a week", () => {
+describe("streak with one missed day forgiven in any 7", () => {
   it("counts the played days in a row ending today", () => {
     expect(streakOf(run("2026-10-05", "2026-10-07"), "2026-10-07")).toMatchObject({
       current: 3,
@@ -62,6 +62,10 @@ describe("streak with one grace day a week", () => {
 
   it("forgives a missed day across a month boundary", () => {
     expect(streakOf(["2026-09-29", "2026-10-01"], "2026-10-01")).toMatchObject({ current: 2, forgivenDays: ["2026-09-30"] });
+  });
+
+  it("forgives one missed day in any 7, not one per calendar week: a second miss two days later ends the run", () => {
+    expect(streakOf(["2026-10-10", "2026-10-12", "2026-10-14"], "2026-10-14")).toMatchObject({ current: 2, forgivenDays: ["2026-10-13"] });
   });
 
   it("gives each played day the run that ends on it, with that run's first day and forgiven days", () => {

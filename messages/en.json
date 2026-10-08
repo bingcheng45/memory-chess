@@ -493,10 +493,10 @@
         "streak": {
           "fig": "Fig. {number} · Days in a row",
           "title": "One round a day builds a streak.",
-          "desc": "Any finished round, game or practice, counts for its day. One missed day a week is forgiven.",
+          "desc": "Any finished round, game or practice, counts for its day. One missed day in any 7 is forgiven.",
           "aria": "Sample two-week streak grid",
           "note": "Sample · the dashed square is today's run, still pending",
-          "realDesc": "Any finished round counts for its day. One missed day a week is forgiven.",
+          "realDesc": "Any finished round counts for its day. One missed day in any 7 is forgiven.",
           "need": "Play on {days, plural, one {# more day} other {# more days}} to read your streak.",
           "realAria": "Your last 14 days: {count, plural, one {# day} other {# days}} played{forgiven, plural, =0 {} one {, # forgiven} other {, # forgiven}}.",
           "realNote": "Current streak {current, plural, one {# day} other {# days}}{forgiven, plural, =0 {} one { played, # missed day forgiven} other { played, # missed days forgiven}} · longest {longest, plural, one {# day} other {# days}}",

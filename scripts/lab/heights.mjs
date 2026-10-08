@@ -7,9 +7,8 @@
  * labReserves.test.ts holds the CSS reserves above those heights. The file is
  * a snapshot: rerun this after a copy or layout change to §06, and the test
  * then fails if a box outgrew its reserve.
- * The welcome back line shares the unlock strip's box, so also measure players
- * back after days away. Build those personas with --today four days ago and save
- * them as <name>Away.json beside the others.
+ * The welcome back line shares the unlock strip's box, which the <name>Away
+ * personas from lab:personas cover.
  *
  *   npm run lab:personas -- --out <dir> && npm run lab:heights -- --base http://localhost:3123 --personas <dir> [--out <evidence dir>]
  */

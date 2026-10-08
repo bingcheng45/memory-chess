@@ -93,6 +93,9 @@ function spanOf(counts: QualifyingCounts): number | null {
 
 const countQualifying = (rounds: readonly RoundRecord[]) => rounds.reduce(addQualifying, new Map());
 
+/** The span the span panel prints for these rounds, null until a piece count qualifies. */
+export const spanOfRounds = (rounds: readonly RoundRecord[]) => spanOf(countQualifying(rounds));
+
 export function computeSpan(input: LabInput): MetricResult<SpanValue> {
   const rounds = byEndedAt(input.records);
   const counts = countQualifying(rounds);
@@ -110,7 +113,7 @@ export function computeSpan(input: LabInput): MetricResult<SpanValue> {
       return { endedAt: run[run.length - 1].endedAt, pieceCount: spanOf(running) };
     });
     const weekBefore = rounds[rounds.length - 1].endedAt - WEEK_MS;
-    const weekAgo = spanOf(countQualifying(rounds.filter(({ endedAt }) => endedAt < weekBefore)));
+    const weekAgo = spanOfRounds(rounds.filter(({ endedAt }) => endedAt < weekBefore));
     const pieceCount = spanOf(counts);
     const shortestAt = (held: number) =>
       Math.min(...rounds.filter((record) => qualifies(record) && record.config.pieceCount === held).map(({ config }) => config.memorizeSeconds));

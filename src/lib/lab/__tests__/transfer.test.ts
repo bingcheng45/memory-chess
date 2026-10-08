@@ -41,6 +41,11 @@ describe("lab record export and import", () => {
     ["a fractional watermark", { evictedThrough: 1.5 }],
     ["rounds but no day", { days: [] }],
     ["rounds but no best", { bests: {} }],
+    ["no colour counts", { colorShown: undefined }],
+    ["a colour count that is not a count", { colorMissed: { w: -1, b: 0 } }],
+    ["a third colour", { colorShown: { w: 2, b: 2, r: 1 } }],
+    ["colour counts that disagree with the piece type counts", { colorShown: { w: 3, b: 2 } }],
+    ["more colour misses than the piece types missed", { colorMissed: { w: 1, b: 0 } }],
   ])("drops a summary with %s and still imports the rounds", (_, change) => {
     const rounds = [round({ id: "a", endedAt: 10 }), round({ id: "b", endedAt: 20 })];
     const file = JSON.stringify(buildExport(rounds, NOW, { ...summarize(rounds), ...change } as never));
@@ -112,6 +117,12 @@ describe("lab record export and import", () => {
     const rounds = [round({ id: "old" }), roundV2({ id: "new", endedAt: Date.UTC(2026, 9, 7, 13) })];
 
     expect(parseImport(JSON.stringify(buildExport(rounds, NOW)), NOW)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: null });
+  });
+
+  it("round-trips a round started from an insight link", () => {
+    const rounds = [roundV2({ id: "a" }, { startSource: "insight", tzOffsetMin: 0 })];
+
+    expect(parseImport(JSON.stringify(buildExport(rounds, NOW)), NOW)).toMatchObject({ ok: true, rejected: 0, rounds: [{ startSource: "insight" }] });
   });
 
   it("round-trips a review round and a daily round", () => {

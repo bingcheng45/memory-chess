@@ -12,6 +12,7 @@ export const ROUND_SOURCES = [
   "game_form",
   "tile_drill",
   "try_again",
+  "insight",
   "link",
 ] as const;
 
@@ -21,8 +22,8 @@ export function roundSourceFrom(value: string | null): RoundSource {
   return ROUND_SOURCES.find((source) => source === value) ?? "link";
 }
 
-/** §06 parts with a play link: the unlock strip and each panel that can go stale. */
-export type LabPanel = "unlock" | "span" | "piecesHeld" | "trend" | "speed" | "missMap" | "streak" | "bests" | "typeRecall";
+/** §06 parts with a link: the unlock strip, each panel that can go stale, and the insights a finding links from. */
+export type LabPanel = "unlock" | "span" | "piecesHeld" | "trend" | "speed" | "missMap" | "streak" | "bests" | "typeRecall" | "insights";
 
 /**
  * The GA4 event contract. Round events carry the setting and the score, and
@@ -76,7 +77,7 @@ export type FunnelEvent =
     }
   | {
       name: "lab_panel_action";
-      params: { panel: LabPanel; action: "play" };
+      params: { panel: LabPanel; action: "play" | "guide" };
     };
 
 export function trackEvent({ name, params }: FunnelEvent): void {

@@ -4,8 +4,8 @@
  */
 export const PANEL_ROWS = [
   { row: "reading", panels: ["span", "piecesHeld", "trend", "speed"] },
-  { row: "habit", panels: ["streak", "curve"] },
-  { row: "diagnosis", panels: ["missMap", "typeRecall"] },
+  { row: "habit", panels: ["streak", "curve", "notebook"] },
+  { row: "diagnosis", panels: ["missMap", "typeRecall", "insights"] },
   { row: "programs", panels: [] },
   { row: "compare", panels: ["bests", "board"] },
   { row: "tools", panels: [] },

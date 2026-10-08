@@ -26,6 +26,8 @@ import {
   type SpanValue,
   type SpeedValue,
 } from "./progress";
+import { computeInsights, INSIGHTS_THRESHOLDS, type InsightsValue } from "./insights";
+import { computeNotebook, NOTEBOOK_THRESHOLDS, type NotebookValue } from "./notebook";
 import { LAB_THRESHOLDS, type Need } from "./readiness";
 import { LAB_SOURCES, PIECE_LETTERS, settingKey, type LabSource, type RoundRecord } from "./record";
 import { sessionRuns } from "./sessions";
@@ -39,7 +41,8 @@ export interface MetricDef<TValue> {
    * other than the king, missMap's with the thinnest file or rank. Single cells carry their own `ready`.
    */
   readonly thresholds: Need;
-  compute(input: LabInput): MetricResult<TValue>;
+  /** `read` returns another metric's result for the same input; deriveLab shares one so each metric is computed once. */
+  compute(input: LabInput, read?: ReadMetric): MetricResult<TValue>;
 }
 
 export type StreakDay = "played" | "missed" | "today";
@@ -248,10 +251,13 @@ interface LabValues {
   readonly span: SpanValue;
   readonly piecesHeld: PiecesHeldValue;
   readonly speed: SpeedValue;
+  readonly insights: InsightsValue;
+  readonly notebook: NotebookValue;
 }
 
 export type MetricId = keyof LabValues;
 export type LabResults = { readonly [K in MetricId]: MetricResult<LabValues[K]> };
+export type ReadMetric = <K extends MetricId>(id: K) => LabResults[K];
 
 export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & { readonly id: K } } = {
   streak: {
@@ -308,11 +314,33 @@ export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & 
     thresholds: SPEED_THRESHOLDS,
     compute: computeSpeed,
   },
+  insights: {
+    id: "insights",
+    question: "What stands out in your record, and what could you do about it?",
+    thresholds: INSIGHTS_THRESHOLDS,
+    compute: (input, read = readerFor(input)) => computeInsights(input, { span: read("span"), speed: read("speed") }),
+  },
+  notebook: {
+    id: "notebook",
+    question: "What notable thing happened in your record, and when?",
+    thresholds: NOTEBOOK_THRESHOLDS,
+    compute: (input, read = readerFor(input)) => computeNotebook(input, read("span")),
+  },
 };
 
 const METRIC_IDS = Object.keys(LAB_METRICS) as MetricId[];
 
+function readerFor(input: LabInput): ReadMetric {
+  const results = new Map<MetricId, unknown>();
+  const read: ReadMetric = (id) => {
+    if (!results.has(id)) results.set(id, LAB_METRICS[id].compute(input, read));
+    return results.get(id) as LabResults[typeof id];
+  };
+  return read;
+}
+
 /** Every metric's result. Pure, so callers memoise it on the identity of records and summary, and on today. */
 export function deriveLab(input: LabInput): LabResults {
-  return Object.fromEntries(METRIC_IDS.map((id) => [id, LAB_METRICS[id].compute(input)])) as unknown as LabResults;
+  const read = readerFor(input);
+  return Object.fromEntries(METRIC_IDS.map((id) => [id, read(id)])) as unknown as LabResults;
 }

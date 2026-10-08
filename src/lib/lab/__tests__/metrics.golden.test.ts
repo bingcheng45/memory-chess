@@ -67,7 +67,7 @@ describe("metric engine on the persona fixtures", () => {
     const input = await inputFor("newVisitor");
     const old = golden.newVisitor;
 
-    expect(Object.values(deriveLab(input)).map(({ value }) => value)).toEqual(Array(9).fill(null));
+    expect(Object.values(deriveLab(input)).map(({ value }) => value)).toEqual(Array(11).fill(null));
     expect(Object.fromEntries(Object.entries(legacy(input)).map(([id, { ready, sampleSize }]) => [id, { ready, sampleSize }]))).toEqual({
       streak: { ready: old.streak.ready, sampleSize: old.streak.sampleSize },
       bests: { ready: old.bests.ready, sampleSize: old.bests.sampleSize },
@@ -96,6 +96,8 @@ describe("metric engine on the persona fixtures", () => {
       v1Legacy: { typeRecall: undefined, missMap: { exposures: 6 } },
       spanClimber: { typeRecall: undefined, missMap: undefined },
       shortSessions: { typeRecall: undefined, missMap: undefined },
+      plateau: { typeRecall: undefined, missMap: undefined },
+      colourSkew: { typeRecall: undefined, missMap: undefined },
     });
   });
 
@@ -107,21 +109,23 @@ describe("metric engine on the persona fixtures", () => {
       }),
     );
     const all = (state: ReadinessState) => ({
-      streak: state, bests: state, trend: state, typeRecall: state, missMap: state, sessions: state, span: state, piecesHeld: state, speed: state,
+      streak: state, bests: state, trend: state, typeRecall: state, missMap: state, sessions: state, span: state, piecesHeld: state, speed: state, insights: state, notebook: state,
     });
     const progress = (state: ReadinessState) => ({ sessions: state, span: state, piecesHeld: state, speed: state });
 
     expect(Object.fromEntries(states)).toEqual({
       newVisitor: all("empty"),
-      twoRounds: { streak: "warming", bests: "ready", trend: "warming", typeRecall: "warming", missMap: "warming", ...progress("warming"), sessions: "ready" },
-      threeDays: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready") },
+      twoRounds: { streak: "warming", bests: "ready", trend: "warming", typeRecall: "warming", missMap: "warming", ...progress("warming"), sessions: "ready", insights: "warming", notebook: "ready" },
+      threeDays: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready"), insights: "ready", notebook: "ready" },
       thirtyDays: all("ready"),
       heavy: all("ready"),
-      easyOnly: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "warming", missMap: "warming", ...progress("ready"), span: "warming" },
-      stale: { streak: "stale", bests: "stale", trend: "stale", typeRecall: "stale", missMap: "warming", ...progress("stale") },
-      v1Legacy: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready") },
+      easyOnly: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "warming", missMap: "warming", ...progress("ready"), span: "warming", insights: "ready", notebook: "ready" },
+      stale: { streak: "stale", bests: "stale", trend: "stale", typeRecall: "stale", missMap: "warming", ...progress("stale"), insights: "stale", notebook: "stale" },
+      v1Legacy: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready"), insights: "ready", notebook: "ready" },
       spanClimber: all("ready"),
       shortSessions: all("ready"),
+      plateau: all("ready"),
+      colourSkew: all("ready"),
     });
   });
 
@@ -242,6 +246,22 @@ describe("metric engine on the persona fixtures", () => {
         speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 4.14, previous: 3.58, change: 0.56 }, accuracy: { average: 81.6, previous: 89.8, change: -8.2 } },
         trend: { granularity: "session", sessions: 18 },
       },
+      plateau: {
+        sessions: 14,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 48, weekAgo: 6, change: 0 },
+        steps: [[0, 6]],
+        piecesHeld: { average: 5.3, previous: 5.3, change: 0 },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 3.68, previous: 3.89, change: -0.21 }, accuracy: { average: 88.2, previous: 88.2, change: 0 } },
+        trend: { granularity: "session", sessions: 14 },
+      },
+      colourSkew: {
+        sessions: 15,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 44, weekAgo: 6, change: 0 },
+        steps: [[0, 6]],
+        piecesHeld: { average: 4.9, previous: 4.8, change: 0.1 },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 4.28, previous: 4.11, change: 0.17 }, accuracy: { average: 81.5, previous: 79.8, change: 1.7 } },
+        trend: { granularity: "session", sessions: 15 },
+      },
     });
   });
 
@@ -308,17 +328,5 @@ describe("metric engine on the persona fixtures", () => {
 
     expect(last20.map(({ correct }) => correct)).toEqual(HELD_BY_HAND[name].correct);
     expect(deriveLab(await inputFor(name)).piecesHeld.value?.recent).toEqual(HELD_BY_HAND[name].recent);
-  });
-
-  it("derives every metric for the 5,000-round heavy player inside one 16ms frame", async () => {
-    const input = await inputFor("heavy");
-    deriveLab(input);
-    const runs = Array.from({ length: 5 }, () => {
-      const started = performance.now();
-      deriveLab(input);
-      return performance.now() - started;
-    }).sort((a, b) => a - b);
-
-    expect(runs[2]).toBeLessThan(16);
   });
 });

@@ -1,4 +1,5 @@
 import type { StreakDay } from "@/lib/lab/metrics";
+import type { NotebookEntry } from "@/lib/lab/notebook";
 
 export const SAMPLE_ACCURACY: readonly number[] = [52, 58, 55, 63, 61, 68, 66, 72, 70, 75, 74, 79];
 
@@ -12,6 +13,17 @@ export const SAMPLE_PARTIAL = 4;
 
 export const SAMPLE_SPEED: readonly number[] = [4.1, 3.9, 3.8, 3.6, 3.5, 3.3, 3.2, 3, 2.9, 2.8, 2.7, 2.6];
 export const SAMPLE_SPEED_ACCURACY = 88;
+
+/** Miss shares, in percent, on the a and h files and on the d and e files of the sample finding. */
+export const SAMPLE_EDGE_MISS = { edge: 38, centre: 19 };
+
+export const SAMPLE_NOTEBOOK: readonly Pick<NotebookEntry, "kind" | "params">[] = [
+  { kind: "span", params: { day: 12, from: 6, to: 8 } },
+  { kind: "first90", params: { day: 9, pieceCount: 8 } },
+  { kind: "streak", params: { day: 7, days: 7 } },
+  { kind: "rounds", params: { day: 4, count: 10 } },
+  { kind: "firstRound", params: { day: 1, pieceCount: 6, accuracy: 67 } },
+];
 
 export const SAMPLE_STREAK: readonly StreakDay[] = [
   "played", "played", "missed", "played", "played", "played", "missed",

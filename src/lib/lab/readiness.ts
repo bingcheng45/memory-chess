@@ -15,6 +15,8 @@ export const LAB_THRESHOLDS = {
   speedSettingRounds: 20,
   rollingWindow: 10,
   movingAverage: 5,
+  /** Recall under this share marks a piece type weak, in the chart and in the insights. */
+  weakRecall: 0.5,
 } as const;
 
 /**

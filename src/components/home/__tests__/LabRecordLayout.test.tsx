@@ -37,10 +37,12 @@ describe("§06 layout", () => {
       "Fig. 6.4 · Speed",
       "Fig. 6.5 · Days in a row",
       "Fig. 6.6 · Forgetting curve",
-      "Fig. 6.7 · Miss map",
-      "Fig. 6.8 · Recall by piece type",
-      "Fig. 6.9 · Personal bests",
-      "Fig. 6.10 · Leaderboard",
+      "Fig. 6.7 · Lab notebook",
+      "Fig. 6.8 · Miss map",
+      "Fig. 6.9 · Recall by piece type",
+      "Fig. 6.10 · Insights",
+      "Fig. 6.11 · Personal bests",
+      "Fig. 6.12 · Leaderboard",
     ]);
   });
 

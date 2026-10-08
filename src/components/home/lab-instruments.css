@@ -95,20 +95,23 @@
  * for the Sample state without moving anything below it.
  */
 .lab {
-  --lab-h-unlock: 176px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
+  --lab-h-unlock: 200px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
   --lab-h-heat: 464px; --lab-h-streak: 424px; --lab-h-bests: 504px; --lab-h-types: 448px; --lab-h-tools: 208px;
+  --lab-h-insights: 344px; --lab-h-notebook: 408px;
   --lab-heat-w: 260px;
 }
 @media (max-width: 1000px) {
   .lab {
     --lab-h-unlock: 264px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 424px; --lab-h-speed: 512px;
     --lab-h-heat: 528px; --lab-h-streak: 440px; --lab-h-bests: 920px; --lab-h-types: 528px; --lab-h-tools: 512px;
+    --lab-h-insights: 424px; --lab-h-notebook: 448px;
   }
 }
 @media (max-width: 640px) {
   .lab {
     --lab-h-unlock: 304px; --lab-h-span: 544px; --lab-h-held: 504px; --lab-h-spark: 456px; --lab-h-speed: 544px;
     --lab-h-heat: 528px; --lab-h-streak: 432px; --lab-h-bests: 592px; --lab-h-types: 528px; --lab-h-tools: 376px;
+    --lab-h-insights: 600px; --lab-h-notebook: 648px;
   }
 }
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
@@ -127,12 +130,15 @@
 .lab-p-streak { min-height: var(--lab-h-streak); }
 .lab-p-bests { min-height: var(--lab-h-bests); }
 .lab-p-types { min-height: var(--lab-h-types); }
+.lab-p-insights { min-height: var(--lab-h-insights); }
+.lab-p-notebook { min-height: var(--lab-h-notebook); }
 .lab-tools-slot { display: flow-root; min-height: var(--lab-h-tools); }
 .lab-unlock { min-height: var(--lab-h-unlock); margin-bottom: 16px; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 16px 22px; }
 .lab-unlock:empty { background: none; border-color: transparent; }
 .lab-unlock ul { margin: 8px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 24px; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
 .lab-unlock .lab-go { margin-top: 0; }
-@media (max-width: 640px) { .lab-unlock { padding: 12px 14px; } .lab-unlock ul { grid-template-columns: 1fr; gap: 2px; font-size: 14px; line-height: 1.35; } }
+/* Phones: no gap between lines, so the strip holds every line in its reserve; the hanging indent keeps a wrapped line apart from the next. */
+@media (max-width: 640px) { .lab-unlock { padding: 12px 14px; } .lab-unlock ul { grid-template-columns: 1fr; gap: 0; font-size: 14px; line-height: 1.3; } .lab-unlock li { padding-left: 0.75em; text-indent: -0.75em; } }
 .lab-stale .lab-go { display: inline; margin: 0 0 0 4px; white-space: nowrap; }
 .lab-dash { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
 .lab-panel { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 22px; min-width: 0; }
@@ -145,6 +151,7 @@
 .lab-dash > * { grid-column: span 6; }
 .lab-p-streak, .lab-p-board { grid-column: span 4; }
 .lab-p-curve, .lab-p-bests { grid-column: span 8; }
+.lab-p-insights, .lab-p-notebook { grid-column: span 12; }
 @media (max-width: 1000px) { .lab-p-streak, .lab-p-board { grid-column: span 5; } .lab-p-curve, .lab-p-bests { grid-column: span 7; } }
 @media (max-width: 640px) { .lab-dash > * { grid-column: span 12; } }
 .lab-span-figure { margin-top: 12px; font: 600 clamp(32px, 4vw, 44px)/1.1 var(--lab-sans); font-variant-numeric: tabular-nums; color: var(--lab-ink); }
@@ -192,6 +199,14 @@
 .lab-bests div { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-bottom: 8px; border-bottom: 1px solid var(--lab-line); font-size: 15px; }
 .lab-bests dt { color: var(--lab-ink-2); }
 .lab-bests dd { margin: 0; font: 600 15px var(--lab-mono); font-variant-numeric: tabular-nums; }
+.lab-insights { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 24px; }
+.lab-insights li { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding-top: 12px; border-top: 1px solid var(--lab-line); }
+.lab-insights p { font-size: 15px; line-height: 1.5; color: var(--lab-ink); }
+.lab-insights .lab-go { margin-top: 0; }
+@media (max-width: 1000px) { .lab-insights { grid-template-columns: 1fr; gap: 12px; } }
+.lab-notebook { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; max-width: 72ch; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
+.lab-notebook li { padding-bottom: 8px; border-bottom: 1px solid var(--lab-line); }
+.lab-notebook .lab-tag { vertical-align: 1px; }
 /* A text button one note line tall, so the toggle fits the reserve; 24px meets the WCAG minimum target size. */
 .lab-bests-toggle { display: block; margin-top: 10px; min-height: 24px; padding: 0; font: 600 14px/1.45 var(--lab-sans); color: var(--lab-blue); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .lab-bests-toggle:hover { text-decoration-thickness: 2px; }

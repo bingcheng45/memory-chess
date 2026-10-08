@@ -11,10 +11,12 @@
     1440
   ],
   "personas": [
+    "colourSkew",
     "easyOnly",
     "heavy",
     "manyBests",
     "newVisitor",
+    "plateau",
     "shortSessions",
     "spanClimber",
     "stale",
@@ -26,7 +28,7 @@
   ],
   "max": {
     "narrow": {
-      "unlock": 292,
+      "unlock": 290,
       "span": 529,
       "held": 488,
       "spark": 444,
@@ -35,10 +37,12 @@
       "streak": 414,
       "bests": 579,
       "types": 516,
+      "insights": 581,
+      "notebook": 609,
       "tools": 360
     },
     "medium": {
-      "unlock": 247,
+      "unlock": 251,
       "span": 480,
       "held": 488,
       "spark": 412,
@@ -47,10 +51,12 @@
       "streak": 425,
       "bests": 906,
       "types": 516,
+      "insights": 403,
+      "notebook": 430,
       "tools": 496
     },
     "wide": {
-      "unlock": 160,
+      "unlock": 186,
       "span": 521,
       "held": 480,
       "spark": 423,
@@ -59,6 +65,8 @@
       "streak": 407,
       "bests": 492,
       "types": 434,
+      "insights": 324,
+      "notebook": 393,
       "tools": 196
     }
   },
@@ -72,8 +80,10 @@
     "narrow streak": "stale client 360",
     "narrow bests": "manyBests client 320",
     "narrow types": "stale client 320",
-    "narrow tools": "easyOnly client 320",
-    "medium unlock": "easyOnly server 641",
+    "narrow insights": "staleHeat client 320",
+    "narrow notebook": "spanClimber client 320",
+    "narrow tools": "colourSkew client 320",
+    "medium unlock": "colourSkew server 641",
     "medium span": "manyBests client 641",
     "medium held": "stale client 641",
     "medium spark": "stale client 641",
@@ -82,8 +92,10 @@
     "medium streak": "stale client 641",
     "medium bests": "manyBests client 641",
     "medium types": "stale client 641",
-    "medium tools": "easyOnly client 768",
-    "wide unlock": "easyOnly server 1024",
+    "medium insights": "staleHeat client 641",
+    "medium notebook": "spanClimber client 641",
+    "medium tools": "colourSkew client 768",
+    "wide unlock": "colourSkew server 1024",
     "wide span": "manyBests client 1440",
     "wide held": "stale client 1440",
     "wide spark": "stale client 1440",
@@ -92,11 +104,13 @@
     "wide streak": "stale client 1024",
     "wide bests": "manyBests client 1024",
     "wide types": "stale client 1024",
-    "wide tools": "easyOnly client 1024"
+    "wide insights": "staleHeat client 1024",
+    "wide notebook": "heavy client 1024",
+    "wide tools": "colourSkew client 1024"
   },
   "empty": {
     "narrow": {
-      "unlock": 254,
+      "unlock": 271,
       "span": 478,
       "held": 425,
       "spark": 397,
@@ -105,10 +119,12 @@
       "streak": 371,
       "bests": 374,
       "types": 228,
+      "insights": 418,
+      "notebook": 446,
       "tools": 0
     },
     "medium": {
-      "unlock": 247,
+      "unlock": 251,
       "span": 445,
       "held": 393,
       "spark": 333,
@@ -117,10 +133,12 @@
       "streak": 401,
       "bests": 303,
       "types": 228,
+      "insights": 279,
+      "notebook": 329,
       "tools": 0
     },
     "wide": {
-      "unlock": 160,
+      "unlock": 186,
       "span": 492,
       "held": 405,
       "spark": 376,
@@ -129,6 +147,8 @@
       "streak": 359,
       "bests": 206,
       "types": 160,
+      "insights": 301,
+      "notebook": 329,
       "tools": 0
     }
   }

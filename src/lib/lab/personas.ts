@@ -26,6 +26,8 @@ export const PERSONA_NAMES = [
   "v1Legacy",
   "spanClimber",
   "shortSessions",
+  "plateau",
+  "colourSkew",
 ] as const;
 export type PersonaName = (typeof PERSONA_NAMES)[number];
 
@@ -78,6 +80,8 @@ function daily(days: readonly number[], perDay: (daysAgo: number, slot: number) 
   );
 }
 
+const blackSlips: MissChance = (_, piece) => (piece === piece.toLowerCase() ? 0.3 : 0.06);
+
 const countdown = (from: number, to: number) => Array.from({ length: from - to + 1 }, (_, index) => from - index);
 
 /** Four pieces for the first 20 days, ten up to a week ago, fourteen in the last week, all at 10 seconds. */
@@ -114,6 +118,9 @@ const PLANS: Record<PersonaName, PersonaPlan> = {
   v1Legacy: { ...THREE_DAYS, legacy: true },
   spanClimber: { seed: 45, rounds: daily(countdown(44, 0), climbing, 3), missChance: (_, __, progress) => 0.33 - 0.3 * progress },
   shortSessions: { seed: 72, rounds: shortSittings, missChance: steady },
+  // Medium every day for two weeks: accuracy flat over the last 20 rounds and a span that has not moved.
+  plateau: { seed: 4, rounds: daily(countdown(13, 0), () => MEDIUM, 4), missChance: () => 0.12 },
+  colourSkew: { seed: 61, rounds: daily(countdown(14, 0), () => MEDIUM, 4), missChance: blackSlips },
 };
 
 /** mulberry32: small, fast and the same on every platform. */

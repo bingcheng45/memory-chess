@@ -30,6 +30,8 @@ describe("persona fixtures", () => {
       v1Legacy: { rounds: 12, rejected: 0, overCap: 0, summary: 12 },
       spanClimber: { rounds: 135, rejected: 0, overCap: 0, summary: 135 },
       shortSessions: { rounds: 72, rejected: 0, overCap: 0, summary: 72 },
+      plateau: { rounds: 56, rejected: 0, overCap: 0, summary: 56 },
+      colourSkew: { rounds: 60, rejected: 0, overCap: 0, summary: 60 },
     });
   });
 

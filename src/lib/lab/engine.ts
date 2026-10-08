@@ -1,5 +1,6 @@
 import { hasFigure, LAB_THRESHOLDS, readinessOf, type Need, type Readiness } from "./readiness";
 import { localDayOf, settingKey, type LabSource, type RoundConfig, type RoundRecord } from "./record";
+import type { StoredPlan, StoredTarget } from "./choices";
 import type { LabSummary } from "./summary";
 import { byEndedAt } from "./sessions";
 
@@ -9,6 +10,9 @@ export interface LabInput {
   readonly summary: LabSummary;
   /** The client's local day, passed in so every metric is a pure function of its input. */
   readonly today: string;
+  /** The player's chosen plan and goal on this device, null or left out when none is chosen. */
+  readonly plan?: StoredPlan | null;
+  readonly target?: StoredTarget | null;
 }
 
 /** A metric's value is null when its readiness is empty, and for speed while no round can be read. */

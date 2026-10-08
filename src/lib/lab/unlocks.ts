@@ -2,9 +2,10 @@ import { LAB_METRICS, type LabResults, type MetricId } from "./metrics";
 import { PANEL_ORDER, type PanelId } from "./panels";
 import type { Need } from "./readiness";
 
-/** Bests need only one round, so they stay out. */
-type UnlockMetric = Exclude<MetricId & PanelId, "bests">;
-const unlocks = (panel: PanelId): panel is UnlockMetric => panel in LAB_METRICS && panel !== "bests";
+/** Bests need only one round, and a plan or a goal is chosen, not unlocked, so they stay out. */
+const NOT_UNLOCKED = ["bests", "plans", "goal"] as const;
+type UnlockMetric = Exclude<MetricId & PanelId, (typeof NOT_UNLOCKED)[number]>;
+const unlocks = (panel: PanelId): panel is UnlockMetric => panel in LAB_METRICS && !(NOT_UNLOCKED as readonly string[]).includes(panel);
 
 /** The metrics a few rounds unlock, in the order the section's rows read them. */
 const UNLOCK_ORDER = PANEL_ORDER.filter(unlocks);

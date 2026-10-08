@@ -25,8 +25,10 @@ import {
   type SpanValue,
   type SpeedValue,
 } from "./progress";
+import { computeGoal, GOAL_THRESHOLDS, type GoalValue } from "./goals";
 import { computeInsights, INSIGHTS_THRESHOLDS, type InsightsValue } from "./insights";
 import { computeNotebook, NOTEBOOK_THRESHOLDS, type NotebookValue } from "./notebook";
+import { computePlans, PLANS_THRESHOLDS, type PlansValue } from "./plans";
 import { LAB_THRESHOLDS, type Need } from "./readiness";
 import { LAB_SOURCES, PIECE_LETTERS, settingKey, type LabSource, type RoundRecord } from "./record";
 import { sessionRuns } from "./sessions";
@@ -227,6 +229,8 @@ interface LabValues {
   readonly speed: SpeedValue;
   readonly insights: InsightsValue;
   readonly notebook: NotebookValue;
+  readonly plans: PlansValue;
+  readonly goal: GoalValue;
 }
 
 export type MetricId = keyof LabValues;
@@ -298,7 +302,19 @@ export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & 
     id: "notebook",
     question: "What notable thing happened in your record, and when?",
     thresholds: NOTEBOOK_THRESHOLDS,
-    compute: (input, read = readerFor(input)) => computeNotebook(input, read("span")),
+    compute: (input, read = readerFor(input)) => computeNotebook(input, read("span"), read("goal")),
+  },
+  plans: {
+    id: "plans",
+    question: "How far along is the plan you started?",
+    thresholds: PLANS_THRESHOLDS,
+    compute: computePlans,
+  },
+  goal: {
+    id: "goal",
+    question: "How close is your best round to the goal you set?",
+    thresholds: GOAL_THRESHOLDS,
+    compute: computeGoal,
   },
 };
 

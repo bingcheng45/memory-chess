@@ -1,27 +1,13 @@
 import { fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
-import type { LabRecord } from "@/components/home/useLabRecord";
 import { trackEvent } from "@/lib/analytics/events";
-import { personaRounds, PERSONA_TODAY, type PersonaName } from "@/lib/lab/personas";
-import { EMPTY_SUMMARY, summarize } from "@/lib/lab/summary";
+import { summarize } from "@/lib/lab/summary";
+import { persona } from "@/test-utils/labPersona";
 import { round } from "@/lib/lab/__tests__/fixtures";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
 const PLAY_HREF = "/game?pieceCount=6&memorizeTime=10&source=home_quick";
-
-function persona(name: PersonaName, today = PERSONA_TODAY): LabRecord {
-  const records = personaRounds(name, PERSONA_TODAY);
-  return {
-    storage: "available",
-    records,
-    summary: records.length ? summarize(records) : EMPTY_SUMMARY,
-    lastBackup: null,
-    today,
-    download: jest.fn(() => Promise.resolve()),
-    importFile: jest.fn(() => Promise.resolve({ ok: true as const, added: 0, rejected: 0, overCap: 0, summary: null })),
-  };
-}
 
 const strip = () => screen.queryByRole("list", { name: "What playing unlocks" });
 const items = () => within(strip()!).getAllByRole("listitem").map((item) => item.textContent);
@@ -100,6 +86,7 @@ describe("stale panels", () => {
     const { container } = renderWithIntl(<LabRecordSection record={persona("stale")} />);
 
     expect(staleNotes(container)).toEqual([
+      ["lab-p-span", "Last played 20 days ago. Play a round →"],
       ["lab-p-spark", "Last played 20 days ago. Play a round →"],
       ["lab-p-streak", "Last played 20 days ago. Play a round →"],
       ["lab-p-types", "Last played 20 days ago. Play a round →"],

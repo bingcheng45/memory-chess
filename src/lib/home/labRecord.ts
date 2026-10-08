@@ -2,6 +2,10 @@ import type { StreakDay } from "@/lib/lab/metrics";
 
 export const SAMPLE_ACCURACY: readonly number[] = [52, 58, 55, 63, 61, 68, 66, 72, 70, 75, 74, 79];
 
+/** Span after each of 12 sample sessions, for the staircase a new visitor sees. */
+export const SAMPLE_SPAN: readonly number[] = [4, 4, 5, 5, 5, 6, 6, 7, 7, 7, 8, 8];
+export const SAMPLE_SPAN_SECONDS = 10;
+
 export const SAMPLE_STREAK: readonly StreakDay[] = [
   "played", "played", "missed", "played", "played", "played", "missed",
   "played", "played", "played", "played", "played", "played", "today",

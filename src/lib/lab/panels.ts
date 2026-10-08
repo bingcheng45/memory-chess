@@ -3,7 +3,7 @@
  * so a panel inserted into a row renumbers every figure after it. Programs and tools rows hold no numbered figure.
  */
 export const PANEL_ROWS = [
-  { row: "reading", panels: ["trend"] },
+  { row: "reading", panels: ["span", "trend"] },
   { row: "habit", panels: ["streak", "curve"] },
   { row: "diagnosis", panels: ["missMap", "typeRecall"] },
   { row: "programs", panels: [] },

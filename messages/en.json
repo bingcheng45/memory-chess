@@ -390,6 +390,21 @@
       "record": {
         "title": "Come back for the trend line.",
         "lede": "One reading is a snapshot. Ten readings are a measurement. Every round you play is kept on this device, and these panels fill in from your own rounds. Until there is enough to read, a panel shows <tag>Sample</tag> values, not real players.",
+        "span": {
+          "fig": "Fig. {number} · Memory span",
+          "title": "How many pieces you can hold.",
+          "figure": "{pieceCount} pieces at {seconds} s",
+          "up": "Up {count, plural, one {# piece} other {# pieces}} since last week",
+          "same": "No change since last week",
+          "aria": "Sample staircase of memory span over 12 sessions, stepping up from 4 to 8 pieces.",
+          "note": "Sample record · 12 sessions",
+          "realAria": "Your memory span over {sessions, plural, one {# session} other {# sessions}}, {shape, select, flat {holding at {now} pieces} other {rising from {first} to {now} pieces}}.",
+          "realNote": "From {rounds, plural, one {# round} other {# rounds}} · {qualifying} of them at {pieceCount} pieces scored {accuracy} percent or better",
+          "need": "Score {accuracy} percent or better {count, plural, =2 {twice} one {once more} other {# more times}} at one size of {minPieces} or more pieces.",
+          "onlyKings": "Your rounds so far were just the two kings. Play a round with more pieces to see your span.",
+          "first": "First session",
+          "last": "Latest"
+        },
         "curve": {
           "fig": "Fig. {number} · Forgetting curve",
           "tag": "Proposed · review reminders",

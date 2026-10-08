@@ -139,6 +139,9 @@
 .lab-p-curve, .lab-p-bests { grid-column: span 8; }
 @media (max-width: 1000px) { .lab-p-streak, .lab-p-board { grid-column: span 5; } .lab-p-curve, .lab-p-bests { grid-column: span 7; } }
 @media (max-width: 640px) { .lab-dash > * { grid-column: span 12; } }
+.lab-span-figure { margin-top: 12px; font: 600 clamp(32px, 4vw, 44px)/1.1 var(--lab-sans); font-variant-numeric: tabular-nums; color: var(--lab-ink); }
+/* Holds its line when empty, so a week's change arriving later moves nothing. */
+.lab-span-change { min-height: 1.45em; margin-top: 4px; font: 500 13px/1.45 var(--lab-mono); color: var(--lab-mint-ink); }
 .lab-chart { width: 100%; height: auto; display: block; margin-top: 14px; overflow: visible; }
 .lab-chart text { font-family: var(--lab-mono); font-size: 11px; fill: var(--lab-ink-3); }
 .lab-chart .lab-c-grid { stroke: var(--lab-line); stroke-width: 1; }

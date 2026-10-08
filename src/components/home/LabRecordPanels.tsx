@@ -28,7 +28,7 @@ export function PanelHead({ fig, tag }: { fig: string; tag: ReactNode }) {
 }
 
 /** The figure stays; the note only says how long ago the last round was. `daysAgo` is null on the server. */
-function StaleNote({ readiness, daysAgo, panel }: { readiness: Readiness; daysAgo: number | null; panel: LabPanel }) {
+export function StaleNote({ readiness, daysAgo, panel }: { readiness: Readiness; daysAgo: number | null; panel: LabPanel }) {
   const t = useTranslations("home.lab.record");
   if (readiness.state !== "stale" || daysAgo === null) return null;
   return (
@@ -38,7 +38,7 @@ function StaleNote({ readiness, daysAgo, panel }: { readiness: Readiness; daysAg
   );
 }
 
-function useTags() {
+export function useTags() {
   const tags = useTranslations("home.lab.tags");
   const t = useTranslations("home.lab.record");
   return {

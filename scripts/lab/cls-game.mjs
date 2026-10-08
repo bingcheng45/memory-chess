@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * Plays real /game rounds cold, on a 4x slower CPU, at eight widths, and records
- * every layout shift with the nodes that moved and their rects before and after.
+ * Plays real /game rounds cold, on a 4x slower CPU, at eight widths and one
+ * phone held sideways, and records every layout shift with the nodes that moved
+ * and their rects before and after.
  * Each shift is tagged in the page with the screen showing when it happened:
  * config, memorize, solve or result. Two loads per width: /game, where the quick
  * start button opens a round, and the home page's round link, which memorizes
@@ -13,7 +14,15 @@
  * as on a network slower than the whole round. Plays counter and leaderboard
  * writes are answered locally. Shifts after the quick start click count as
  * "start". Fails when any screen's CLS, the largest session window of shifts
- * without recent input (sessionWindowCls in cls.mjs), is over MAX_CLS.
+ * without recent input (sessionWindowCls in cls.mjs), is over MAX_CLS, and when
+ * the board on the memorize or solve screen is not min(width, height, MAX_BOARD)
+ * of the area it is drawn in. The sideways phone must also hold the board at its
+ * BOARD_FLOOR and let the page scroll to the rest. At 390 wide a further load
+ * turns the phone sideways mid round and back, and checks the board fits its
+ * area each time and matches what a fresh load at that size draws; the match is
+ * a known defect, reported and not failed while BOARD_FOLLOWS_RESIZE_GATED is
+ * false. With --late-cutoffs the run is a diagnostic: it prints every screen's
+ * CLS and fails only if it cannot play.
  *
  *   npm run lab:cls-game -- --base http://localhost:3131 --out <dir> [--only en|de] [--late-cutoffs]
  */
@@ -21,10 +30,19 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { round, sessionWindowCls } from "./cls.mjs";
-import { argsOf, runPersona, sized } from "./drive.mjs";
+import { argsOf, runPersona } from "./drive.mjs";
 
 const MAX_CLS = 0.02;
 const WIDTHS = [1440, 1024, 1000, 768, 640, 390, 360, 320];
+const SIDEWAYS = { width: 667, height: 375 };
+const VIEWPORTS = [...WIDTHS.map((width) => ({ name: String(width), width, height: width < 600 ? 844 : 900 })), { name: "667x375", ...SIDEWAYS }];
+const RESIZE_FROM = { width: 390, height: 844 };
+const RESIZE_TO = { width: 844, height: 390 };
+const RESIZE_SETTLE_MS = 1500;
+const MAX_BOARD = 600;
+const BOARD_FLOOR = 240;
+const FIT_TOLERANCE_PX = 1;
+const BOARD_FOLLOWS_RESIZE_GATED = false;
 const CASE_ENV = "LAB_CLS_GAME_CASE";
 const RESULT_FILE = "cls-game.json";
 const SETTLE_MS = 4500;
@@ -37,6 +55,17 @@ const CASES = [
   { name: "de", prefix: "/de" },
 ];
 const SCREENS = ["config", "start", "memorize", "solve", "result"];
+const BOARD_FIT = `(() => {
+  const board = document.querySelector(".game-container");
+  const area = board.parentElement;
+  let scroller = board.parentElement;
+  while (scroller && !/auto|scroll/.test(getComputedStyle(scroller).overflowY)) scroller = scroller.parentElement;
+  scroller ??= document.scrollingElement;
+  scroller.scrollTop = scroller.scrollHeight;
+  const scrolled = scroller.scrollTop;
+  scroller.scrollTop = 0;
+  return { board: Math.round(board.getBoundingClientRect().width), areaWidth: area.clientWidth, areaHeight: area.clientHeight, scrolled };
+})()`;
 const OPEN_CUTOFFS = { easy: { kind: "open" }, medium: { kind: "open" }, hard: { kind: "open" }, grandmaster: { kind: "open" } };
 
 // Registered before any page script runs. The screen is read when the entry is delivered, right after the frame that shifted.
@@ -103,11 +132,21 @@ async function stubNetwork(page, release) {
   });
 }
 
+const viewport = (page, { width, height }) =>
+  page.send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: Math.min(width, height) < 600 });
+
+const fitError = ({ board, areaWidth, areaHeight }) =>
+  Math.abs(board - Math.min(areaWidth, areaHeight, MAX_BOARD)) > FIT_TOLERANCE_PX
+    ? `board ${board}px in a ${areaWidth}x${areaHeight} area, expected ${Math.min(areaWidth, areaHeight, MAX_BOARD)}px`
+    : null;
+
 async function playRound(page, base, prefix, text) {
   await page.goto(`${base}${prefix}${ROUND_PATH}`);
   await page.waitFor(`document.querySelectorAll("[data-coordinate]").length === 64`, 20_000);
+  const memorizeFit = await page.eval(BOARD_FIT);
   const pieces = await page.eval(`[...document.querySelectorAll("[data-coordinate]")].map((el) => ({ square: el.dataset.coordinate, label: el.getAttribute("aria-label") || "" })).filter((p) => p.label !== p.square)`);
   await page.waitFor(`!!document.querySelector('[role="button"][data-coordinate]')`, 30_000);
+  const solveFit = await page.eval(BOARD_FIT);
   for (const { square, label } of pieces.slice(0, CORRECT_PIECES)) {
     const piece = text.pieceIn(label);
     if (!piece) throw new Error(`no piece name ends the label "${label}"`);
@@ -117,7 +156,30 @@ async function playRound(page, base, prefix, text) {
   }
   await page.clickText("button", text.submit);
   await page.waitFor(`!!document.getElementById("game-result-heading")`, 20_000);
-  return pieces.length;
+  return { pieces: pieces.length, fit: { memorize: memorizeFit, solve: solveFit } };
+}
+
+async function freshBoard(page, url, size) {
+  await viewport(page, size);
+  await page.goto(url);
+  await page.waitFor(`document.querySelectorAll("[data-coordinate]").length === 64`, 20_000);
+  return page.eval(BOARD_FIT);
+}
+
+const followError = (step, at, fresh) =>
+  Math.abs(at.board - fresh.board) > FIT_TOLERANCE_PX ? `${step}: board ${at.board}px, a fresh load at this size draws ${fresh.board}px` : null;
+
+async function resizeMidRound(page, base, prefix) {
+  const freshTurned = await freshBoard(page, `${base}${prefix}${ROUND_PATH}`, RESIZE_TO);
+  const before = await freshBoard(page, `${base}${prefix}${ROUND_PATH}`, RESIZE_FROM);
+  await viewport(page, RESIZE_TO);
+  await page.sleep(RESIZE_SETTLE_MS);
+  const turned = await page.eval(BOARD_FIT);
+  await viewport(page, RESIZE_FROM);
+  await page.sleep(RESIZE_SETTLE_MS);
+  const back = await page.eval(BOARD_FIT);
+  const followErrors = [followError("turned", turned, freshTurned), followError("back", back, before)].filter(Boolean);
+  return { freshTurned, before, turned, back, followErrors };
 }
 
 function screensOf(shifts) {
@@ -132,8 +194,8 @@ function screensOf(shifts) {
 
 const clsByScreen = ({ screens }) => Object.fromEntries(SCREENS.map((screen) => [screen, screens[screen].cls]));
 
-async function measureWidth(page, base, { prefix, lateCutoffs }, text, width, cutoffs) {
-  await sized(page, width, width < 600 ? 844 : 900);
+async function measureViewport(page, base, { prefix, lateCutoffs }, text, { width, height }, cutoffs) {
+  await viewport(page, { width, height });
   cutoffs.release = () => Promise.resolve();
 
   await page.goto(`${base}${prefix}/game`);
@@ -148,7 +210,7 @@ async function measureWidth(page, base, { prefix, lateCutoffs }, text, width, cu
   let resultShown;
   const shown = new Promise((resolve) => (resultShown = resolve));
   if (lateCutoffs) cutoffs.release = () => shown.then(() => page.sleep(LATE_CUTOFFS_MS));
-  const pieces = await playRound(page, base, prefix, text);
+  const { pieces, fit } = await playRound(page, base, prefix, text);
   resultShown();
   await page.sleep(SETTLE_MS);
   const roundShifts = await page.eval("window.__shifts");
@@ -156,12 +218,28 @@ async function measureWidth(page, base, { prefix, lateCutoffs }, text, width, cu
   const labCard = await page.eval(`!!document.querySelector('section[aria-labelledby="result-lab-title"]')`);
   const overflow = (await page.eval("document.documentElement.scrollWidth")) - width;
 
-  return { width, pieces, banner, labCard, overflow, screens: screensOf([...start, ...roundShifts]) };
+  const resize = width === RESIZE_FROM.width && height === RESIZE_FROM.height ? await resizeMidRound(page, base, prefix) : null;
+
+  return { width, height, pieces, banner, labCard, overflow, fit, resize, screens: screensOf([...start, ...roundShifts]) };
+}
+
+function boardErrors({ width, height, fit, resize }) {
+  const sideways = width === SIDEWAYS.width && height === SIDEWAYS.height;
+  const errors = Object.entries(fit).flatMap(([screen, at]) => [
+    fitError(at) && `${screen}: ${fitError(at)}`,
+    sideways && Math.abs(at.board - BOARD_FLOOR) > FIT_TOLERANCE_PX && `${screen}: board ${at.board}px, expected the ${BOARD_FLOOR}px floor`,
+    sideways && at.scrolled === 0 && `${screen}: the page does not scroll to what the board pushes below the screen`,
+  ]);
+  if (resize) {
+    errors.push(...Object.entries({ turned: resize.turned, back: resize.back }).map(([step, at]) => fitError(at) && `${step}: ${fitError(at)}`));
+    if (BOARD_FOLLOWS_RESIZE_GATED) errors.push(...resize.followErrors);
+  }
+  return errors.filter(Boolean);
 }
 
 /** One case at one width, in the fresh profile the harness launches for each run, so every load is a first visit. */
 export default async function measure(page, { baseUrl, evidenceDir }) {
-  const { testCase, width } = JSON.parse(process.env[CASE_ENV]);
+  const { testCase, viewport: size } = JSON.parse(process.env[CASE_ENV]);
   await page.send("Page.addScriptToEvaluateOnNewDocument", { source: OBSERVE });
   await page.send("Network.enable");
   await page.send("Network.setCacheDisabled", { cacheDisabled: true });
@@ -169,9 +247,12 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
   const cutoffs = {};
   await stubNetwork(page, () => cutoffs.release());
 
-  const result = await measureWidth(page, baseUrl, testCase, labels(testCase.prefix.slice(1) || "en"), width, cutoffs);
+  const result = await measureViewport(page, baseUrl, testCase, labels(testCase.prefix.slice(1) || "en"), size, cutoffs);
   writeFileSync(join(evidenceDir, RESULT_FILE), JSON.stringify(result, null, 2));
   if (!result.banner) throw new Error("the qualifying banner never showed, so its arrival was not measured");
+  if (testCase.lateCutoffs) return clsByScreen(result);
+  const misfit = boardErrors(result);
+  if (misfit.length > 0) throw new Error(`board does not fit its area: ${misfit.join("; ")}`);
   const over = SCREENS.filter((screen) => result.screens[screen].cls > MAX_CLS);
   if (over.length > 0) throw new Error(`CLS over ${MAX_CLS} on ${over.map((screen) => `${screen}: ${result.screens[screen].cls}`).join(", ")}`);
   return clsByScreen(result);
@@ -184,13 +265,18 @@ async function main() {
   const lateCutoffs = process.argv.includes("--late-cutoffs");
   for (const testCase of CASES.filter(({ name }) => !args.only || name === args.only).map((testCase) => ({ ...testCase, lateCutoffs }))) {
     table[testCase.name] = {};
-    for (const width of WIDTHS) {
-      process.env[CASE_ENV] = JSON.stringify({ testCase, width });
-      const run = await runPersona(join(testCase.name, String(width)), "", args, import.meta.url);
+    for (const size of VIEWPORTS) {
+      process.env[CASE_ENV] = JSON.stringify({ testCase, viewport: size });
+      const run = await runPersona(join(testCase.name, size.name), "", args, import.meta.url);
       ok &&= run.ok;
-      const file = join(args.out, testCase.name, String(width), RESULT_FILE);
-      table[testCase.name][width] = existsSync(file) ? clsByScreen(JSON.parse(readFileSync(file, "utf8"))) : null;
-      console.log(`${run.ok ? "PASS" : "FAIL"} ${testCase.name} ${width}: ${run.ok ? JSON.stringify(table[testCase.name][width]) : run.log}`);
+      const file = join(args.out, testCase.name, size.name, RESULT_FILE);
+      const result = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : null;
+      table[testCase.name][size.name] = result && clsByScreen(result);
+      const verdict = lateCutoffs ? (run.ok ? "DIAGNOSTIC" : "ERROR") : run.ok ? "PASS" : "FAIL";
+      console.log(`${verdict} ${testCase.name} ${size.name}: ${run.ok ? JSON.stringify(table[testCase.name][size.name]) : run.log}`);
+      if (result?.fit) console.log(`  board ${JSON.stringify(result.fit)}`);
+      if (result?.resize) console.log(`  resize ${JSON.stringify({ freshTurned: result.resize.freshTurned, before: result.resize.before, turned: result.resize.turned, back: result.resize.back })}`);
+      if (result?.resize?.followErrors.length && !BOARD_FOLLOWS_RESIZE_GATED) console.log(`KNOWN ISSUE ${testCase.name} ${size.name}: the board does not follow a mid round resize, ${result.resize.followErrors.join("; ")}`);
     }
   }
   writeFileSync(join(args.out, "table.json"), JSON.stringify(table, null, 2));

@@ -1,5 +1,5 @@
 import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
-import { byEndedAt } from "./sessions";
+import { DAY_MS } from "./readiness";
 import { streakOf, type StreakValue } from "./streak";
 import type { RoundRecord, RoundRecordV2, SquareOutcome } from "./record";
 
@@ -9,10 +9,7 @@ export const DAILY_SETTING = { pieceCount: DEFAULT_PRESET.pieceCount, memorizeTi
 /** The board changes at midnight UTC, so the whole world shares one board and one reset moment. */
 export const utcDayOf = (at: number): string => new Date(at).toISOString().slice(0, 10);
 
-export function msToNextUtcDay(at: number): number {
-  const date = new Date(at);
-  return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + 1) - at;
-}
+export const msToNextUtcDay = (at: number): number => DAY_MS - (at % DAY_MS);
 
 export type DailyRound = RoundRecordV2 & { readonly kind: "daily"; readonly dailyDay: string };
 
@@ -41,12 +38,16 @@ export function readDailyOpened(): string | null {
 }
 
 export function dailyBoardOf(records: readonly RoundRecord[], day: string, openedDay: string | null): DailyBoard {
-  const daily = records.filter(isDaily);
-  const [round] = byEndedAt(daily.filter(({ dailyDay }) => dailyDay === day));
-  const streak = (days: readonly string[]) => streakOf(days, day);
-  const days = [...new Set(daily.map(({ dailyDay }) => dailyDay))];
-  if (round) return { status: "played", day, round, streak: streak(days) };
-  return { status: openedDay === day ? "unfinished" : "open", day, streak: days.length > 0 ? streak(days) : null };
+  const days = new Set<string>();
+  let round: DailyRound | undefined;
+  for (const record of records) {
+    if (!isDaily(record)) continue;
+    days.add(record.dailyDay);
+    if (record.dailyDay === day && (!round || record.endedAt < round.endedAt)) round = record;
+  }
+  const streak = days.size > 0 ? streakOf([...days], day) : null;
+  if (round && streak) return { status: "played", day, round, streak };
+  return { status: openedDay === day ? "unfinished" : "open", day, streak };
 }
 
 /** Squares only, never pieces, so a pasted grid shows how the board went without naming what stood where. */

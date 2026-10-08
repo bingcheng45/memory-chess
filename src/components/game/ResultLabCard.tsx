@@ -11,13 +11,11 @@ import { playHref } from "@/lib/game/roundLink";
 import { INSIGHT_GUIDES } from "@/lib/lab/insights";
 import { resultCardFor, summaryCounts, type NewBest, type NextStep, type ResultCard, type Setting, type VsRecent } from "@/lib/lab/resultCard";
 import type { RoundRecord } from "@/lib/lab/record";
-import ResultLabSlot, { RESULT_LAB_FRAME, ResultLabEnd } from "./ResultLabSlot";
+import ResultLabSlot, { RESULT_LAB_FRAME, RESULT_LAB_LINK, ResultLabEnd } from "./ResultLabSlot";
 
 export const RESULT_LAB_WAIT_MS = 3000;
 
 const SOURCE: RoundSource = "result_next";
-const LINK_CLASS =
-  "rounded font-semibold text-peach-500 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach-500/60";
 
 export interface ResultLabCardProps {
   readonly roundId: string;
@@ -69,7 +67,7 @@ const trackNext = () => trackEvent({ name: "lab_panel_action", params: { panel: 
 
 function GuideLink({ t, guide }: { t: Translate; guide: keyof typeof INSIGHT_GUIDES }) {
   return (
-    <Link className={LINK_CLASS} href={`/learn/${INSIGHT_GUIDES[guide]}`} onClick={trackNext}>
+    <Link className={RESULT_LAB_LINK} href={`/learn/${INSIGHT_GUIDES[guide]}`} onClick={trackNext}>
       {t(`next.${guide}`)} <span aria-hidden="true">→</span>
     </Link>
   );
@@ -84,7 +82,7 @@ function PlayLink({ t, label, setting, onPlay }: { t: Translate; label: "again" 
     onPlay(pieceCount, memorizeSeconds, SOURCE);
   };
   return (
-    <Link className={LINK_CLASS} href={playHref(pieceCount, memorizeSeconds, SOURCE)} onClick={play}>
+    <Link className={RESULT_LAB_LINK} href={playHref(pieceCount, memorizeSeconds, SOURCE)} onClick={play}>
       {t(`next.${label}`, { pieceCount, studyTime: seconds(memorizeSeconds) })} <span aria-hidden="true">→</span>
     </Link>
   );

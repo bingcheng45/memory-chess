@@ -60,14 +60,16 @@ type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource 
 
 // The query is read off the live location rather than via useSearchParams,
 // which would bail /game out of static rendering and serve an empty page.
-function takeUrlRound(): UrlRound | null {
+function takeUrlRound(hasDaily: boolean): UrlRound | null {
   const params = new URLSearchParams(window.location.search);
   const pieceCountParam = params.get(ROUND_PARAMS.pieceCount);
   const memorizeTimeParam = params.get(ROUND_PARAMS.memorizeTime);
   if (!pieceCountParam && !memorizeTimeParam) return null;
 
   // A refresh then opens the configuration screen instead of restarting the round.
-  const source = roundSourceFrom(params.get(ROUND_PARAMS.source));
+  const asked = roundSourceFrom(params.get(ROUND_PARAMS.source));
+  // The daily board's copy is English only, so elsewhere its link plays an ordinary round.
+  const source = asked === 'daily' && !hasDaily ? 'link' : asked;
   Object.values(ROUND_PARAMS).forEach((name) => params.delete(name));
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
@@ -133,12 +135,11 @@ function GamePageContent() {
   const startedByHandRef = useRef(false);
 
   useEffect(() => {
-    if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound();
+    if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound(hasDaily);
     const round = urlRoundRef.current;
     if (!round) return;
-    if (round.source !== 'daily' || !hasDaily) {
-      // The daily board's copy is English only, so elsewhere its link plays an ordinary round.
-      startGame(round.pieceCount, round.memorizeTime, round.source === 'daily' ? 'link' : round.source);
+    if (round.source !== 'daily') {
+      startGame(round.pieceCount, round.memorizeTime, round.source);
       return;
     }
 

@@ -8,6 +8,7 @@ import { shiftDay } from "./engine";
 import { EDGE_RIG } from "./insights";
 import type { PlacementEvent } from "./placements";
 import { buildRoundRecord, type LabSource, type RoundCapture, type RoundInput, type RoundRecord } from "./record";
+import { utcDayOf } from "./daily";
 import { dailyFen } from "./dailyBoard";
 import { createLabStore, PLACEMENT_KEEP, type LabStore } from "./storage";
 import { buildExport, type LabExportV2 } from "./transfer";
@@ -242,7 +243,7 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
     const slot = slots.get(planned.daysAgo) ?? 0;
     slots.set(planned.daysAgo, slot + 1);
     const playedAt = noonUtc(today, -planned.daysAgo);
-    const day = new Date(playedAt).toISOString().slice(0, 10);
+    const day = utcDayOf(playedAt);
     const fen = planned.dailyBoard ? dailyFen(day) : generateMemorizationPosition(planned.pieceCount, random)?.fen();
     const target = placementFromFen(fen ?? "8/8/8/8/8/8/8/8");
     const progress = index / rounds.length;

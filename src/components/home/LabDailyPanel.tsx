@@ -1,12 +1,12 @@
 "use client";
 
-import { Fragment, useMemo, useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { trackEvent } from "@/lib/analytics/events";
 import { playHref } from "@/lib/game/roundLink";
 import { DAILY_SETTING, dailyBoardOf, readDailyOpened, SHARE_CELLS, shareGrid, utcDayOf, type DailyRound } from "@/lib/lab/daily";
-import type { RoundRecord } from "@/lib/lab/record";
+import type { RoundRecord, SquareOutcome } from "@/lib/lab/record";
 import type { StreakValue } from "@/lib/lab/streak";
 import { DailyResetsIn, useNow } from "./DailyResetsIn";
 import { figureOf, PanelHead, useTags } from "./LabRecordPanels";
@@ -23,8 +23,9 @@ function StreakLine({ t, streak }: { t: Translate; streak: StreakValue | null })
 }
 
 function counts(squares: string) {
-  const count = (outcome: string) => [...squares].filter((square) => square === outcome).length;
-  return { correct: count("c"), wrong: count("w"), missed: count("m"), extra: count("x") };
+  const tally: Record<SquareOutcome, number> = { ".": 0, c: 0, w: 0, m: 0, x: 0 };
+  for (const outcome of squares) tally[outcome as SquareOutcome] += 1;
+  return { correct: tally.c, wrong: tally.w, missed: tally.m, extra: tally.x };
 }
 
 function ShareGrid({ t, round, day }: { t: Translate; round: DailyRound; day: string }) {
@@ -76,7 +77,7 @@ export function DailyPanel({ records, ready }: DailyPanelProps) {
   const tags = useTags();
   const now = useNow();
   // Read again on each tick, which also picks up the board being opened in another tab.
-  const board = useMemo(() => (ready && now !== null ? dailyBoardOf(records, utcDayOf(now), readDailyOpened()) : null), [ready, now, records]);
+  const board = ready && now !== null ? dailyBoardOf(records, utcDayOf(now), readDailyOpened()) : null;
   const played = board?.status === "played" ? board : null;
 
   return (
@@ -111,7 +112,7 @@ export function DailyPanel({ records, ready }: DailyPanelProps) {
         )}
       </Fragment>
       <p className="lab-note lab-daily-reset" data-clock="">
-        {now !== null && <DailyResetsIn now={now} />}
+        <DailyResetsIn now={now} />
       </p>
     </div>
   );

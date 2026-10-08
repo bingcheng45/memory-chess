@@ -9,6 +9,9 @@ import { useTranslations } from "next-intl";
  */
 export const RESULT_LAB_FRAME = "w-full rounded-xl border border-bg-light bg-bg-card p-4 sm:p-6 min-h-[300px] sm:min-h-[236px] lg:min-h-[216px]";
 
+export const RESULT_LAB_LINK =
+  "rounded font-semibold text-peach-500 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach-500/60";
+
 export default function ResultLabSlot() {
   return <div aria-hidden="true" data-testid="result-lab-slot" className={RESULT_LAB_FRAME} />;
 }

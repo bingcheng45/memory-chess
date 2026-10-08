@@ -1,4 +1,6 @@
+import { createTranslator } from "next-intl";
 import { fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
+import en from "../../../../messages/en.json";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
 import { NOTEBOOK_SEEN_KEY } from "@/components/home/useNotebookSeen";
 import { trackEvent } from "@/lib/analytics/events";
@@ -142,5 +144,30 @@ describe("lab notebook panel", () => {
     fireEvent.click(within(notebook).getByRole("button", { name: "Show all 20 entries" }));
     expect(within(notebook).getAllByRole("listitem")).toHaveLength(20);
     expect(within(notebook).getByRole("button", { name: "Show fewer" })).toHaveAttribute("aria-expanded", "true");
+  });
+});
+
+describe("insight sentences", () => {
+  const t = createTranslator({ locale: "en", messages: en, namespace: "home.lab.record.insights.rules" });
+
+  it.each([
+    [{ times: 0, edge: 15, centre: 0, edgeShown: 320, centreShown: 300 }, "You miss 15% of 320 pieces on the a and h files and none of 300 on the centre files, d and e."],
+    [{ times: 2, edge: 40, centre: 20, edgeShown: 320, centreShown: 300 }, "You miss the a and h files about twice as often as the centre files, d and e: 40% of 320 pieces against 20% of 300."],
+    [{ times: 2.5, edge: 50, centre: 20, edgeShown: 320, centreShown: 300 }, "You miss the a and h files about 2.5 times as often as the centre files, d and e: 50% of 320 pieces against 20% of 300."],
+  ])("words the edge files finding for %o", (params, sentence) => {
+    expect(t("edgeFiles", params)).toBe(sentence);
+  });
+
+  it("names the weaker colour and the other one", () => {
+    const params = { weakerPercent: 70, strongerPercent: 94, weakerShown: 120, strongerShown: 110 };
+
+    expect(t("colourGap", { ...params, weaker: "w" })).toBe("You recall white pieces less often than black ones: 70% of 120 against 94% of 110, kings left out.");
+    expect(t("colourGap", { ...params, weaker: "b" })).toBe("You recall black pieces less often than white ones: 70% of 120 against 94% of 110, kings left out.");
+  });
+
+  it("words a plateau with the window and the span", () => {
+    expect(t("plateau", { pieceCount: 6, studyTime: "10 s", window: 10, last: 88, before: 87, span: 6 })).toBe(
+      "At 6 pieces, 10 s your last 10 rounds averaged 88% and the 10 before 87%, and your span held at 6 pieces over your last week of play. One more piece may move it.",
+    );
   });
 });

@@ -68,8 +68,9 @@ describe("ResultLabCard", () => {
     const link = screen.getByRole("link", { name: `Play again at 6 pieces, ${seconds(10)}` });
     expect(link).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=result_next");
 
-    fireEvent.click(link);
+    const followed = fireEvent.click(link);
 
+    expect(followed).toBe(false);
     expect(onPlay).toHaveBeenCalledWith(6, 10, "result_next");
     expect(jest.mocked(trackEvent).mock.calls).toEqual([[{ name: "lab_panel_action", params: { panel: "resultCard", action: "next" } }]]);
   });
@@ -105,8 +106,9 @@ describe("ResultLabCard", () => {
     withRecord([played("first", 40)]);
     const { onPlay } = renderCard("first");
 
-    fireEvent.click(screen.getByRole("link", { name: `Play 5 pieces, ${seconds(10)}` }), { metaKey: true });
+    const followed = fireEvent.click(screen.getByRole("link", { name: `Play 5 pieces, ${seconds(10)}` }), { metaKey: true });
 
+    expect(followed).toBe(true);
     expect(onPlay).not.toHaveBeenCalled();
     expect(trackEvent).toHaveBeenCalledTimes(1);
   });

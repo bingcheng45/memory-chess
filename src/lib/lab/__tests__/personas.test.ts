@@ -28,6 +28,8 @@ describe("persona fixtures", () => {
       easyOnly: { rounds: 50, rejected: 0, overCap: 0, summary: 50 },
       stale: { rounds: 30, rejected: 0, overCap: 0, summary: 30 },
       v1Legacy: { rounds: 12, rejected: 0, overCap: 0, summary: 12 },
+      spanClimber: { rounds: 135, rejected: 0, overCap: 0, summary: 135 },
+      shortSessions: { rounds: 72, rejected: 0, overCap: 0, summary: 72 },
     });
   });
 

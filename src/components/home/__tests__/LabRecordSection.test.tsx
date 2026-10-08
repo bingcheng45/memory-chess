@@ -226,29 +226,74 @@ describe("LabRecordSection", () => {
     expect(within(panel(/Fig. 6.6/)).getByText("100% · rebuilt in 9.0s")).toBeInTheDocument();
   });
 
-  it("lists at most six settings in the bests and counts the rest", () => {
-    const settings = [10, 9, 8, 7, 6, 5, 4, 3].map((memorizeSeconds) => buildRoundRecord({ ...rounds(1, 1)[0], id: `s${memorizeSeconds}`, pieceCount: 4, memorizeSeconds }));
-    renderWithIntl(<LabRecordSection record={record(settings)} />);
+  describe("bests list", () => {
+    const setting = (source: "game" | "calibration", memorizeSeconds: number, endedAt: number) =>
+      buildRoundRecord({ ...rounds(1, 1)[0], id: `${source}${memorizeSeconds}`, source, pieceCount: 4, memorizeSeconds, endedAt });
+    const rows = () =>
+      [...panel(/Fig. 6.6/).querySelectorAll(".lab-bests > div")].map((row) => [row.querySelector("dt")?.textContent, row.getAttribute("data-older")]);
+    const EIGHT = [
+      setting("game", 10, 1),
+      setting("game", 9, 2),
+      setting("game", 8, 8),
+      setting("game", 7, 7),
+      setting("game", 6, 6),
+      setting("game", 5, 5),
+      setting("calibration", 10, 4),
+      setting("calibration", 9, 3),
+    ];
 
-    expect([...panel(/Fig. 6.6/).querySelectorAll("dt")].map((term) => term.textContent)).toEqual([
-      "Game · 4 pieces · 10s",
-      "Game · 4 pieces · 9s",
-      "Game · 4 pieces · 8s",
-      "Game · 4 pieces · 7s",
-      "Game · 4 pieces · 6s",
-      "Game · 4 pieces · 5s",
-    ]);
-    expect(within(panel(/Fig. 6.6/)).getByText("+2 more settings")).toHaveAttribute("data-shown", "wide");
-    expect(within(panel(/Fig. 6.6/)).getByText("+6 more settings")).toHaveAttribute("data-shown", "narrow");
-  });
+    it("keeps the six most recently set bests on wide screens and the two latest on phones, games first", () => {
+      renderWithIntl(<LabRecordSection record={record(EIGHT)} />);
 
-  it("counts the settings past the second for phones even when six fit on a wider screen", () => {
-    const settings = [10, 9, 8].map((memorizeSeconds) => buildRoundRecord({ ...rounds(1, 1)[0], id: `s${memorizeSeconds}`, pieceCount: 4, memorizeSeconds }));
-    renderWithIntl(<LabRecordSection record={record(settings)} />);
+      expect(rows()).toEqual([
+        ["Game · 4 pieces · 10s", "wide"],
+        ["Game · 4 pieces · 9s", "wide"],
+        ["Game · 4 pieces · 8s", null],
+        ["Game · 4 pieces · 7s", null],
+        ["Game · 4 pieces · 6s", "narrow"],
+        ["Game · 4 pieces · 5s", "narrow"],
+        ["Practice · 4 pieces · 10s", "narrow"],
+        ["Practice · 4 pieces · 9s", "narrow"],
+      ]);
+    });
 
-    expect([...panel(/Fig. 6.6/).querySelectorAll("[data-shown]")].map((note) => [note.textContent, note.getAttribute("data-shown")])).toEqual([
-      ["+1 more setting", "narrow"],
-    ]);
+    it("shows every setting on request and folds back to the default", () => {
+      renderWithIntl(<LabRecordSection record={record(EIGHT)} />);
+      const toggle = within(panel(/Fig. 6.6/)).getByRole("button", { name: "Show all 8 settings" });
+      const list = panel(/Fig. 6.6/).querySelector(".lab-bests") as HTMLElement;
+
+      expect(toggle).toHaveAttribute("aria-expanded", "false");
+      expect(toggle).toHaveAttribute("aria-controls", list.id);
+      expect(toggle).not.toHaveAttribute("data-shown");
+
+      fireEvent.click(toggle);
+
+      expect(toggle).toHaveAttribute("aria-expanded", "true");
+      expect(toggle).toHaveTextContent("Show fewer");
+      expect(rows().map(([, older]) => older)).toEqual(Array(8).fill(null));
+
+      fireEvent.click(toggle);
+
+      expect(toggle).toHaveTextContent("Show all 8 settings");
+      expect(rows().filter(([, older]) => older !== null)).toHaveLength(6);
+    });
+
+    it("offers the toggle on phones only when all the settings fit on a wider screen", () => {
+      renderWithIntl(<LabRecordSection record={record([setting("game", 10, 3), setting("game", 9, 1), setting("calibration", 10, 2)])} />);
+
+      expect(rows()).toEqual([
+        ["Game · 4 pieces · 10s", null],
+        ["Game · 4 pieces · 9s", "narrow"],
+        ["Practice · 4 pieces · 10s", null],
+      ]);
+      expect(within(panel(/Fig. 6.6/)).getByRole("button", { name: "Show all 3 settings" })).toHaveAttribute("data-shown", "narrow");
+    });
+
+    it("offers no toggle for two settings", () => {
+      renderWithIntl(<LabRecordSection record={record([setting("game", 10, 1), setting("game", 9, 2)])} />);
+
+      expect(within(panel(/Fig. 6.6/)).queryByRole("button")).toBeNull();
+    });
   });
 
   it("imports a file and reports what it added", async () => {

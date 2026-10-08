@@ -174,10 +174,15 @@
 .lab-bests div { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-bottom: 8px; border-bottom: 1px solid var(--lab-line); font-size: 15px; }
 .lab-bests dt { color: var(--lab-ink-2); }
 .lab-bests dd { margin: 0; font: 600 15px var(--lab-mono); font-variant-numeric: tabular-nums; }
-.lab-p-bests [data-shown="narrow"] { display: none; }
+/* A text button one note line tall, so the toggle fits the reserve; 24px meets the WCAG minimum target size. */
+.lab-bests-toggle { display: block; margin-top: 10px; min-height: 24px; padding: 0; font: 600 14px/1.45 var(--lab-sans); color: var(--lab-blue); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.lab-bests-toggle:hover { text-decoration-thickness: 2px; }
+.lab-bests [data-older="wide"], .lab-bests-toggle[data-shown="narrow"] { display: none; }
 @media (max-width: 640px) {
-  .lab-bests div:nth-child(n+3), .lab-p-bests [data-shown="wide"] { display: none; }
-  .lab-p-bests [data-shown="narrow"] { display: block; }
+  /* Beats the side padding globals.css forces on every phone button. */
+  .lab .lab-bests-toggle { padding: 0 !important; }
+  .lab-bests [data-older="narrow"] { display: none; }
+  .lab-bests-toggle[data-shown="narrow"] { display: block; }
 }
 .lab-tools { display: grid; grid-template-columns: 1fr auto; gap: 16px 24px; align-items: start; margin-top: 16px; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 22px; }
 .lab-tools > .lab-note { grid-column: 1 / -1; min-height: 1.45em; }

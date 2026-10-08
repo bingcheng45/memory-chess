@@ -1,6 +1,8 @@
 import { fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
 import { trackEvent } from "@/lib/analytics/events";
+import { LAB_METRICS } from "@/lib/lab/metrics";
+import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { summarize } from "@/lib/lab/summary";
 import { persona } from "@/test-utils/labPersona";
 import { round } from "@/lib/lab/__tests__/fixtures";
@@ -19,10 +21,13 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
 
     expect(items()).toEqual([
+      "Memory span unlocks when you score 80 percent or better in 2 rounds at one size of 3 or more pieces.",
+      "Pieces held unlocks at 5 rounds of any setting on 2 different days.",
       "Trend unlocks at 5 rounds of one setting on 2 different days.",
+      "Speed unlocks at 5 rounds of one setting.",
       "Streak unlocks when you play on 2 different days.",
-      "Piece recall unlocks when one piece other than the king reaches 20 sightings.",
       "Miss map unlocks at 10 sightings on every file and rank.",
+      "Piece recall unlocks when one piece other than the king reaches 20 sightings.",
     ]);
     expect(screen.getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", PLAY_HREF);
   });
@@ -31,10 +36,13 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
 
     expect(items()).toEqual([
+      "Memory span: 1 more round at 80 percent or better at one size of 3 or more pieces.",
+      "Pieces held: 3 more rounds, at least one on another day.",
       "Trend: 4 more rounds at 6 pieces, 10s, at least one on another day in games.",
+      "Speed: 4 more rounds at 6 pieces, 10s in games.",
       "Streak: play on 1 more day, in a row or not.",
-      "Piece recall: 14 more sightings until one piece other than the king reaches 20.",
       "Miss map: 10 more sightings on the least seen file or rank.",
+      "Piece recall: 14 more sightings until one piece other than the king reaches 20.",
     ]);
   });
 
@@ -42,8 +50,24 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("easyOnly")} />);
 
     expect(items()).toEqual([
-      "Piece recall: 20 more sightings until one piece other than the king reaches 20.",
+      "Memory span: play 1 round with 3 or more pieces.",
       "Miss map: 4 more sightings on the least seen file or rank.",
+      "Piece recall: 20 more sightings until one piece other than the king reaches 20.",
+    ]);
+  });
+
+  it("prints every threshold from the registry, so the copy cannot drift from the panels", () => {
+    renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
+    const { span, piecesHeld, trend, speed, streak, missMap, typeRecall } = LAB_METRICS;
+
+    expect(items().map((line) => line!.match(/\d+/g)!.map(Number))).toEqual([
+      [LAB_THRESHOLDS.spanAccuracy, span.thresholds.qualifyingRounds, LAB_THRESHOLDS.spanMinPieces],
+      [piecesHeld.thresholds.rounds, piecesHeld.thresholds.days],
+      [trend.thresholds.rounds, trend.thresholds.days],
+      [speed.thresholds.rounds],
+      [streak.thresholds.days],
+      [missMap.thresholds.exposures],
+      [typeRecall.thresholds.exposures],
     ]);
   });
 

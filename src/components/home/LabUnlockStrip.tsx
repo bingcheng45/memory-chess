@@ -2,9 +2,23 @@
 
 import { useTranslations } from "next-intl";
 import { LAB_METRICS, type LabResults } from "@/lib/lab/metrics";
+import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
 import { unlocksFor, type Unlock } from "@/lib/lab/unlocks";
 import type { LabStorageState } from "@/hooks/useLabData";
 import { LabPlayLink } from "./LabPlayLink";
+
+const roundsAndDays = ({ rounds = 0, days = 0 }: Need) => (rounds > 0 && days > 0 ? "RoundsDays" : rounds > 0 ? "Rounds" : "Days");
+
+/** The message for a metric already started, keyed by what its readiness still needs. */
+const LEFT: { readonly [K in Unlock["metric"]]: (need: Need) => string } = {
+  span: (need) => (need.largerRounds ? "spanLarger" : "spanLeft"),
+  piecesHeld: (need) => `piecesHeld${roundsAndDays(need)}`,
+  trend: (need) => `trend${roundsAndDays(need)}`,
+  speed: () => "speedRounds",
+  streak: () => "streakLeft",
+  missMap: () => "missMapLeft",
+  typeRecall: () => "typeRecallLeft",
+};
 
 /**
  * Before any round it lists the fixed thresholds, which the server can render; after, only what is still missing.
@@ -13,13 +27,21 @@ import { LabPlayLink } from "./LabPlayLink";
 export function LabUnlockStrip({ results, storage }: { results: LabResults; storage: LabStorageState }) {
   const t = useTranslations("home.lab.record.unlock");
   const unlocks = unlocksFor(results);
-  const setting = results.trend.value?.setting;
 
-  const text = ({ metric, started, need: { rounds = 0, days = 0, exposures = 0 } }: Unlock) => {
-    if (!started) return t(metric, { rounds, days, exposures });
-    if (metric !== "trend") return t(`${metric}Left`, { days, exposures, threshold: LAB_METRICS[metric].thresholds.exposures ?? 0 });
-    const key = rounds > 0 && days > 0 ? "trendRoundsDays" : rounds > 0 ? "trendRounds" : "trendDays";
-    return t(key, { rounds, days, ...setting });
+  const text = ({ metric, started, need }: Unlock) => {
+    const values = {
+      rounds: 0,
+      days: 0,
+      exposures: 0,
+      qualifyingRounds: 0,
+      largerRounds: 0,
+      ...need,
+      accuracy: LAB_THRESHOLDS.spanAccuracy,
+      minPieces: LAB_THRESHOLDS.spanMinPieces,
+      threshold: LAB_METRICS[metric].thresholds.exposures ?? 0,
+      ...(metric === "speed" ? results.speed.value?.setting : results.trend.value?.setting),
+    };
+    return t(started ? LEFT[metric](need) : metric, values);
   };
 
   const content =

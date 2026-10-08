@@ -33,7 +33,8 @@ import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
 import ResultBoardComparison from "@/components/game/ResultBoardComparison";
 import ArticleTile from "@/components/game/ArticleTile";
 import { countWrong } from "@/lib/game/scoring";
-import ResultLabSlot from "@/components/game/ResultLabSlot";
+import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
+import ErrorBoundary from "@/components/ui/ErrorBoundary";
 
 // Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
 // never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.
@@ -481,9 +482,11 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       </section>
 
       {showsLab && gameState.labRoundId && (
-        <Suspense fallback={<ResultLabSlot />}>
-          <ResultLabCard key={gameState.labRoundId} roundId={gameState.labRoundId} onPlay={onPlay} />
-        </Suspense>
+        <ErrorBoundary key={gameState.labRoundId} fallback={<ResultLabEnd />}>
+          <Suspense fallback={<ResultLabSlot />}>
+            <ResultLabCard roundId={gameState.labRoundId} onPlay={onPlay} />
+          </Suspense>
+        </ErrorBoundary>
       )}
 
       <ResultBoardComparison

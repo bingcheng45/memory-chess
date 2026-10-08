@@ -78,6 +78,14 @@ describe("memory span", () => {
     expect(texts(panel("Memory span"), ".lab-empty")).toEqual(["Score 80 percent or better once more at one size of 3 or more pieces."]);
   });
 
+  it("drops the change since last week once stale, since that week ended long before today", () => {
+    show("thirtyDays", "2026-11-08");
+    const span = panel("Memory span");
+
+    expect(texts(span, ".lab-stale")).toEqual(["Last played 31 days ago. Play a round →"]);
+    expect(span.querySelector(".lab-span-change")?.textContent).toBe("");
+  });
+
   it("keeps the span and says how long ago the last round was once it is stale", () => {
     show("stale");
     const span = panel("Memory span");

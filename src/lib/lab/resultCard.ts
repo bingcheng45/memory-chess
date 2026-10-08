@@ -26,7 +26,6 @@ export interface VsRecent {
 }
 
 export interface SpanChange {
-  readonly from: number | null;
   readonly to: number;
 }
 
@@ -91,7 +90,7 @@ function vsRecentOf(round: RoundRecord, others: readonly RoundRecord[]): VsRecen
 function spanChangeOf(round: RoundRecord, records: readonly RoundRecord[]): SpanChange | null {
   const to = spanOfRounds(records);
   const from = spanOfRounds(records.filter(({ id }) => id !== round.id));
-  return to !== null && (from === null || to > from) ? { from, to } : null;
+  return to !== null && (from === null || to > from) ? { to } : null;
 }
 
 function nextOf(round: RoundRecord, results: LabResults): NextStep {

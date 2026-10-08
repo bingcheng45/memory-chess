@@ -111,14 +111,14 @@ describe("resultCardFor", () => {
   it("names the span this round raised, and nothing when it held", () => {
     const records = [played("a", { accuracy: 90, pieces: 7 }), played("b", { accuracy: 90, pieces: 7 }), played("c", { accuracy: 85, pieces: 8 }), played("d", { accuracy: 82, pieces: 8 })];
 
-    expect(cardAfter(records)?.spanChange).toEqual({ from: 7, to: 8 });
+    expect(cardAfter(records)?.spanChange).toEqual({ to: 8 });
     expect(cardAfter(records.slice(0, 3))?.spanChange).toBeNull();
   });
 
   it("names a first span as a rise from none", () => {
     const records = [played("a", { accuracy: 80, pieces: 5 }), played("b", { accuracy: 100, pieces: 5 })];
 
-    expect(cardAfter(records)?.spanChange).toEqual({ from: null, to: 5 });
+    expect(cardAfter(records)?.spanChange).toEqual({ to: 5 });
   });
 
   it("reports a forgiven day and counts this week's days from Monday", () => {

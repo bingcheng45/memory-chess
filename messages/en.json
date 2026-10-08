@@ -389,7 +389,7 @@
       },
       "record": {
         "title": "Come back for the trend line.",
-        "lede": "One reading is a snapshot. Ten readings are a measurement. Every round you play is kept on this device, and these panels fill in from your own rounds. Until there is enough to read, a panel shows <tag>Sample</tag> values, not real players.",
+        "lede": "One reading is a snapshot. Ten readings are a measurement. Every round you play is kept on this device, and these panels fill in from your own rounds. Before your first round, the panels show <tag>Sample</tag> values, not real players. After it, a panel that cannot read your record yet says what it still needs.",
         "span": {
           "fig": "Fig. {number} · Memory span",
           "title": "How many pieces you can hold.",

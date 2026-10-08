@@ -29,7 +29,7 @@ jest.mock("@/lib/store/gameStore", () => {
   return { useGameStore };
 });
 
-jest.mock("@/lib/lab/dailyBoard", () => ({ openDaily: jest.fn() }));
+jest.mock("@/lib/lab/dailyBoard", () => ({ ...jest.requireActual("@/lib/lab/dailyBoard"), openDaily: jest.fn() }));
 
 jest.mock("@/lib/utils/soundEffects", () => ({
   playSound: jest.fn(),
@@ -198,6 +198,22 @@ describe("GamePage URL-driven start under StrictMode", () => {
     expect(mockStartGame).toHaveBeenLastCalledWith(6, 10, "link");
     expect(lastStart).toBeGreaterThan(lastReset);
     expect(window.location.pathname + window.location.search).toBe("/game");
+  });
+
+  it("plays today's board on the first try and marks the day opened once", async () => {
+    const actual = jest.requireActual<typeof import("@/lib/lab/dailyBoard")>("@/lib/lab/dailyBoard");
+    jest.mocked(openDaily).mockImplementation(actual.openDaily);
+    jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-09T12:00:00Z"));
+    window.localStorage.removeItem("memory-chess-lab-daily-opened");
+    window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10&source=daily");
+
+    render(<GamePage />, { reactStrictMode: true });
+
+    await waitFor(() =>
+      expect(mockStartGame).toHaveBeenCalledWith(6, 10, "daily", { kind: "daily", day: "2026-10-09", fen: "8/8/8/1pQ4k/P2p4/8/8/1K6 b - - 0 1" }),
+    );
+    expect(screen.queryByText("You have already opened today's board. One try per day on this device.")).toBeNull();
+    expect(window.localStorage.getItem("memory-chess-lab-daily-opened")).toBe("2026-10-09");
   });
 });
 

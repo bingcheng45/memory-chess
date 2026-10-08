@@ -1,5 +1,6 @@
 import { render } from "@/test-utils/intl";
 import GamePage from "@/app/[locale]/game/page";
+import { fakeLayout } from "@/test-utils/layout";
 
 const mockStartGame = jest.fn();
 const mockResetGame = jest.fn();
@@ -152,5 +153,29 @@ describe("GamePage header", () => {
     const { container } = render(<GamePage />);
 
     expect(container.querySelector("[data-page-type]")).toHaveAttribute("data-page-type", pageType);
+  });
+});
+
+describe("GamePage pinning", () => {
+  it("pins the page before the board first measures its room, so the board is never laid out on the unpinned page", () => {
+    mockGamePhase = "memorization";
+    fakeLayout(() =>
+      document.body.classList.contains("game-fixed") ? { width: 400, height: 600 } : { width: 1000, height: 1000 },
+    );
+
+    render(<GamePage />);
+
+    const board = document.querySelector<HTMLElement>(".game-container");
+    expect([board?.style.width, board?.style.height]).toEqual(["400px", "400px"]);
+  });
+
+  it("unpins the page when the round leaves the board", () => {
+    mockGamePhase = "memorization";
+    const { rerender } = render(<GamePage />);
+
+    mockGamePhase = "result";
+    rerender(<GamePage />);
+
+    expect([document.documentElement.className, document.body.className]).toEqual(["", ""]);
   });
 });

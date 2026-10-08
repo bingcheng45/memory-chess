@@ -18,7 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
-import { loadLeaderboardCutoffs } from "@/lib/leaderboard/cutoffsClient";
+import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { hasLabCopy } from "@/lib/home/labLocales";
 import { browserIndexedDB } from "@/lib/lab/support";
@@ -80,7 +80,9 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(null);
+  // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
+  // effect below would insert it a frame later and push down everything under it.
+  const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(readCachedCutoffs);
 
   // Use a ref instead of state to prevent double increments due to StrictMode
   const playsCountedRef = useRef(false);

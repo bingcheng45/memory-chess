@@ -3,7 +3,7 @@ import GameResult from "@/components/game/GameResult";
 import TileArticlesProvider from "@/components/game/TileArticlesProvider";
 import { makeArticle } from "@/lib/articles/__tests__/fixtures";
 import { tileArticleOf } from "@/lib/articles/tile";
-import { loadLeaderboardCutoffs } from "@/lib/leaderboard/cutoffsClient";
+import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
 import type { BoardCutoff, LeaderboardCutoffs } from "@/lib/leaderboard/ranking";
 
 const baseGameState = {
@@ -33,9 +33,11 @@ jest.mock("@/lib/store/gameStore", () => ({
 
 jest.mock("@/lib/leaderboard/cutoffsClient", () => ({
   loadLeaderboardCutoffs: jest.fn(),
+  readCachedCutoffs: jest.fn(),
 }));
 
 const loadCutoffsMock = loadLeaderboardCutoffs as jest.Mock;
+const readCachedCutoffsMock = readCachedCutoffs as jest.Mock;
 
 const PRODUCTION_EASY_CUTOFF: BoardCutoff = {
   kind: "full",
@@ -102,6 +104,8 @@ describe("GameResult", () => {
     });
     loadCutoffsMock.mockReset();
     loadCutoffsMock.mockResolvedValue(null);
+    readCachedCutoffsMock.mockReset();
+    readCachedCutoffsMock.mockReturnValue(null);
   });
 
   afterEach(() => {
@@ -343,6 +347,16 @@ describe("GameResult", () => {
       loadCutoffsMock.mockResolvedValue(CUTOFFS);
 
       await renderSettled();
+
+      expect(screen.getByRole("status")).toHaveTextContent(QUALIFIES_SENTENCE);
+    });
+
+    it("shows the nudge on the first render when the round left the cutoffs cached, so nothing under it moves", () => {
+      mockGameState = perfectEasyGame;
+      readCachedCutoffsMock.mockReturnValue(CUTOFFS);
+      loadCutoffsMock.mockReturnValue(new Promise(() => {}));
+
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
       expect(screen.getByRole("status")).toHaveTextContent(QUALIFIES_SENTENCE);
     });

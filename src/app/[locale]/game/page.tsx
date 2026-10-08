@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { useRouter } from "@/i18n/navigation";
 import { useGameStore } from '@/lib/store/gameStore';
 import { GamePhase } from '@/lib/types/game';
@@ -27,6 +27,31 @@ import { ROUND_PARAMS } from '@/lib/game/roundLink';
 import { useTranslations } from "next-intl";
 
 const TIMER_CUE_DELAY_MS = 500;
+
+/**
+ * Pins the page while a round is memorised or placed. Pinning the scrolling
+ * element, rather than only hiding its overflow, is what stops iOS
+ * rubber-banding a page whose content already fits.
+ *
+ * The pin is what gives the board its full height, so it goes on before the
+ * board measures the room it has: a layout effect, in a component rendered
+ * ahead of the board, whose effects React runs first. Pinned any later, the
+ * board is laid out on the unpinned page, at its floor, and then grows.
+ */
+function PinnedPage() {
+  useLayoutEffect(() => {
+    const { documentElement, body } = document;
+    documentElement.classList.add('game-fixed');
+    body.classList.add('game-fixed');
+
+    return () => {
+      documentElement.classList.remove('game-fixed');
+      body.classList.remove('game-fixed');
+    };
+  }, []);
+
+  return null;
+}
 
 type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource };
 
@@ -84,21 +109,6 @@ function GamePageContent() {
   // fits. Configuration and the result page are ordinary scrolling pages.
   const isActivePhase =
     gamePhase === GamePhase.MEMORIZATION || gamePhase === GamePhase.SOLUTION;
-
-  useEffect(() => {
-    if (!isActivePhase) return;
-
-    // Pinning the scrolling element, rather than only hiding its overflow,
-    // is what stops iOS rubber-banding a page whose content already fits.
-    const { documentElement, body } = document;
-    documentElement.classList.add('game-fixed');
-    body.classList.add('game-fixed');
-
-    return () => {
-      documentElement.classList.remove('game-fixed');
-      body.classList.remove('game-fixed');
-    };
-  }, [isActivePhase]);
 
   useEffect(() => {
     // Clean up game state when leaving
@@ -375,6 +385,7 @@ function GamePageContent() {
           : PAGE_BELOW_BANNER_MIN_HEIGHT
       }`}
     >
+      {isActivePhase && <PinnedPage />}
       {isSubmissionFlashVisible && <GameSubmissionFlash />}
 
       {/*

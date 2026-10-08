@@ -17,7 +17,7 @@ jest.mock("next-intl/server", () => ({
   getMessages: jest.fn(async ({ locale }: { locale: string }) => jest.requireActual(`../../../../../messages/${locale}.json`)),
 }));
 jest.mock("@/components/reference/GameReference", () => () => null);
-jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: jest.fn(async () => null) }));
+jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: jest.fn(async () => null), readCachedCutoffs: () => null }));
 jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn() }));
 
 const TARGET = "4k3/8/8/3q4/8/5N2/8/4K3";

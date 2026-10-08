@@ -21,7 +21,7 @@ jest.mock("@/lib/store/gameStore", () => ({
 jest.mock("@/components/game/ResultLabCard", () => {
   throw new Error("Loading chunk 42 failed");
 });
-jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: jest.fn(async () => null) }));
+jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: jest.fn(async () => null), readCachedCutoffs: () => null }));
 jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn() }));
 jest.mock("@/components/game/FirstGameFeedbackDialog", () => ({ __esModule: true, default: () => null }));
 jest.mock("@/components/game/ResultBoardComparison", () => ({ __esModule: true, default: () => null }));

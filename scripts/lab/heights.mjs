@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Measures each reserved §06 box with its reserve switched off, for every
- * persona file at five widths and for the server render with scripts off, and
+ * persona file at nine widths and for the server render with scripts off, and
  * writes the tallest per layout tier to src/components/home/lab-heights.json,
  * with the tallest empty state a new visitor sees in each tier.
  * labReserves.test.ts holds the CSS reserves above those heights. The file is
@@ -17,7 +17,8 @@ import { argsOf, importFile, PERSONA_ENV, runPersona } from "./drive.mjs";
 
 const DATA_FILE = "src/components/home/lab-heights.json";
 const RAW_FILE = "heights.json";
-const WIDTHS = [320, 360, 390, 768, 1440];
+// Both sides of each breakpoint, so a tier's reserve covers its narrowest and widest layouts.
+const WIDTHS = [320, 360, 390, 640, 641, 768, 1000, 1024, 1440];
 // The CSS breakpoints the reserves change at: max-width 640px and max-width 1000px.
 const tierOf = (width) => (width <= 640 ? "narrow" : width <= 1000 ? "medium" : "wide");
 const BOXES = ["unlock", "span", "held", "spark", "speed", "heat", "streak", "bests", "types", "tools"];

@@ -19,9 +19,9 @@ const DATA_FILE = "src/components/home/lab-heights.json";
 const RAW_FILE = "heights.json";
 // The CSS breakpoints the reserves change at: max-width 640px and max-width 1000px.
 const tierOf = (width) => (width <= 640 ? "narrow" : width <= 1000 ? "medium" : "wide");
-const BOXES = ["unlock", "span", "held", "spark", "speed", "heat", "streak", "bests", "types", "insights", "notebook", "tools"];
+const BOXES = ["unlock", "span", "held", "spark", "speed", "heat", "streak", "bests", "types", "insights", "notebook", "tools", "welcome"];
 
-const NATURAL = `#record .lab-dash > *, #record .lab-unlock, #record .lab-tools-slot { align-self: start !important; min-height: 0 !important; }`;
+const NATURAL = `#record .lab-dash > *, #record .lab-unlock, #record .lab-tools-slot, #record .lab-welcome { align-self: start !important; min-height: 0 !important; }`;
 const MEASURE = `(() => {
   const style = document.createElement("style");
   style.textContent = ${JSON.stringify(NATURAL)};
@@ -29,7 +29,7 @@ const MEASURE = `(() => {
   const record = document.getElementById("record");
   const height = (element) => (element ? Math.ceil(element.getBoundingClientRect().height) : 0);
   const panels = [...record.querySelectorAll(".lab-panel")].map((panel) => [[...panel.classList].find((name) => name.startsWith("lab-p-")).slice(6), height(panel)]);
-  const result = { unlock: height(record.querySelector(".lab-unlock")), ...Object.fromEntries(panels), tools: height(record.querySelector(".lab-tools")) };
+  const result = { unlock: height(record.querySelector(".lab-unlock")), ...Object.fromEntries(panels), tools: height(record.querySelector(".lab-tools")), welcome: height(record.querySelector(".lab-welcome")) };
   style.remove();
   return result;
 })()`;

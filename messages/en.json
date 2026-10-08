@@ -493,14 +493,32 @@
         "streak": {
           "fig": "Fig. {number} · Days in a row",
           "title": "One round a day builds a streak.",
-          "desc": "Any finished round, game or practice, counts for its day. Play on two days in a row to start a streak.",
+          "desc": "Any finished round, game or practice, counts for its day. One missed day a week is forgiven.",
           "aria": "Sample two-week streak grid",
           "note": "Sample · the dashed square is today's run, still pending",
-          "realDesc": "Any finished round counts for its day.",
-          "need": "Play on one more day to start a streak.",
-          "realAria": "Your last 14 days: {count, plural, one {# day} other {# days}} played.",
+          "realDesc": "Any finished round counts for its day. One missed day a week is forgiven.",
+          "need": "Play on {days, plural, one {# more day} other {# more days}} to read your streak.",
+          "realAria": "Your last 14 days: {count, plural, one {# day} other {# days}} played{forgiven, plural, =0 {} one {, # forgiven} other {, # forgiven}}.",
           "realNote": "Current streak {current, plural, one {# day} other {# days}} · longest {longest, plural, one {# day} other {# days}}",
+          "forgiven": "includes {count, plural, one {# forgiven day} other {# forgiven days}}",
+          "key": {
+            "played": "played",
+            "forgiven": "forgiven",
+            "missed": "missed",
+            "today": "today"
+          },
           "chip": "Day {count}"
+        },
+        "week": {
+          "ring": "{played} of {goal} days this week",
+          "sampleRing": "Sample week · {played} of {goal} days",
+          "left": "{remaining, plural, =0 {Goal met this week.} one {# more day to meet your goal.} other {# more days to meet your goal.}}",
+          "goal": "Goal, days a week",
+          "option": "{days} days a week"
+        },
+        "welcome": {
+          "line": "Welcome back. Day {day} of your record. Last time {accuracy}% at {pieceCount} pieces, {studyTime}.",
+          "lineNoDay": "Welcome back. Last time {accuracy}% at {pieceCount} pieces, {studyTime}."
         },
         "board": {
           "fig": "Fig. {number} · Leaderboard",
@@ -632,7 +650,7 @@
             "first90": "First {threshold} percent or better at {pieceCount} pieces.",
             "best": "New {source, select, calibration {practice} other {game}} best at {pieceCount} pieces, {studyTime}: {by, select, time {{accuracy} percent again, rebuilt in {solveTime}} other {{accuracy} percent, up from {previous}}}.",
             "span": "{from, select, 0 {Memory span reached {to} pieces} other {Memory span moved from {from} to {to} pieces}}.",
-            "streak": "{days} days in a row."
+            "streak": "{forgiven, plural, =0 {{days} days in a row.} one {{days} days in a streak, # missed day forgiven.} other {{days} days in a streak, # missed days forgiven.}}"
           }
         },
         "tools": {

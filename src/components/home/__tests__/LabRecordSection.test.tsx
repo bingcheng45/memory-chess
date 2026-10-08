@@ -77,7 +77,7 @@ describe("LabRecordSection", () => {
     expect(screen.getByText("Fig. 6.5 · Days in a row")).toBeInTheDocument();
     expect(screen.queryByText(/Daily challenge/)).toBeNull();
     expect(screen.queryByText(/shared position|Same board for everyone/)).toBeNull();
-    expect(within(panel("Days in a row")).getByText("Any finished round, game or practice, counts for its day. Play on two days in a row to start a streak.")).toBeInTheDocument();
+    expect(within(panel("Days in a row")).getByText("Any finished round, game or practice, counts for its day. One missed day a week is forgiven.")).toBeInTheDocument();
     expect(within(panel("Accuracy over time")).getByText("Your line, round by round.")).toBeInTheDocument();
     unmount();
 
@@ -89,7 +89,7 @@ describe("LabRecordSection", () => {
     renderWithIntl(<LabRecordSection record={record(rounds(2, 1))} />);
 
     expect(within(panel("Accuracy over time")).getByText("3 more rounds at 4 pieces, 10 s, at least one on another day, draws your game trend.")).toBeInTheDocument();
-    expect(within(panel("Days in a row")).getByText("Play on one more day to start a streak.")).toBeInTheDocument();
+    expect(within(panel("Days in a row")).getByText("Play on 1 more day to read your streak.")).toBeInTheDocument();
     expect(within(panel("Recall by piece type")).getByText("About 18 more rounds until a piece other than the king has 20 sightings.")).toBeInTheDocument();
     expect(within(panel("Personal bests")).getByText("Game · 4 pieces · 10 s")).toBeInTheDocument();
     expect(within(panel("Personal bests")).getByText("100% · rebuilt in 15.0 s")).toBeInTheDocument();
@@ -121,15 +121,15 @@ describe("LabRecordSection", () => {
       expect(tag("Accuracy over time")).toBe("Sample");
       expect(within(panel("Accuracy over time")).getByText(sampleTrend)).toBeInTheDocument();
       expect(tag("Days in a row")).toBe("Sample");
-      expect(within(panel("Days in a row")).getByText("Any finished round, game or practice, counts for its day. Play on two days in a row to start a streak.")).toBeInTheDocument();
+      expect(within(panel("Days in a row")).getByText("Any finished round, game or practice, counts for its day. One missed day a week is forgiven.")).toBeInTheDocument();
     });
 
     it("draws the player's streak grid when the summary counts rounds but lists no day", () => {
       renderWithIntl(<LabRecordSection record={record([], { summary: { ...summarize(rounds(3, 1)), days: [] } })} />);
 
       expect(tag("Days in a row")).toBe("Your record");
-      expect(within(panel("Days in a row")).getByRole("img")).toHaveAccessibleName("Your last 14 days: 0 days played.");
-      expect(within(panel("Days in a row")).getByText("Play on one more day to start a streak.")).toBeInTheDocument();
+      expect(within(panel("Days in a row")).getByRole("img", { name: /^Your last 14 days/ })).toHaveAccessibleName("Your last 14 days: 0 days played.");
+      expect(within(panel("Days in a row")).getByText("Play on 2 more days to read your streak.")).toBeInTheDocument();
     });
   });
 

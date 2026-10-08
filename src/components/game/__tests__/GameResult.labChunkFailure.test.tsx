@@ -1,9 +1,5 @@
 import { render, screen } from "@/test-utils/intl";
 import GameResult from "@/components/game/GameResult";
-import { round } from "@/lib/lab/__tests__/fixtures";
-import { summarize } from "@/lib/lab/summary";
-
-const mockRecord = { ...round({ id: "played-now", endedAt: Date.UTC(2026, 9, 7, 8), localDay: "2026-10-07" }), accuracy: 80 };
 
 jest.mock("@/lib/store/gameStore", () => ({
   useGameStore: () => ({

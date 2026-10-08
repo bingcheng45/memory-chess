@@ -114,10 +114,9 @@ function StopControl({ onStop }: { onStop: () => void }) {
   );
 }
 
-function PlanCard({ planId, progress, choosing }: { planId: PlanId; progress: PlanProgress | null; choosing: Choosing | null }) {
+function PlanCard({ planId, progress, running, choosing }: { planId: PlanId; progress: PlanProgress | null; running: PlanId | null; choosing: Choosing | null }) {
   const t = useTranslations("home.lab.record.plans");
   const title = t(`${planId}.title`);
-  const running = choosing?.plan && progress === null && choosing.plan.planId !== planId && !choosing.plan.ended ? choosing.plan : null;
 
   const start = () => {
     if (!choosing) return;
@@ -132,7 +131,7 @@ function PlanCard({ planId, progress, choosing }: { planId: PlanId; progress: Pl
 
   const controls = () => {
     if (!choosing) return null;
-    if (running) return <p className="lab-note">{t("busy", { title: t(`${running.planId}.title`) })}</p>;
+    if (running) return <p className="lab-note">{t("busy", { title: t(`${running}.title`) })}</p>;
     if (!progress || progress.status.kind !== "active") {
       const first = startRung(planId, choosing.records);
       // A link, since starting opens the plan's first round; the plan is stored on the way, so a new tab starts it too.
@@ -183,11 +182,18 @@ function PlanCard({ planId, progress, choosing }: { planId: PlanId; progress: Pl
 export function PlansPanel({ result: { readiness, value }, choosing, daysAgo }: { result: LabResults["plans"]; choosing: Choosing | null; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record.plans");
   const tags = useTags();
+  const running = value?.status.kind === "active" ? value.planId : null;
   return (
     <PanelFrame panel="plans" name="plans" tag={value ? tags.mine : tags.sample} state={readiness.state} intro={<p className="lab-panel-desc">{t("desc")}</p>}>
       <div className="lab-plans">
         {PLAN_IDS.map((planId) => (
-          <PlanCard key={planId} planId={planId} progress={value?.planId === planId ? value : null} choosing={choosing} />
+          <PlanCard
+            key={planId}
+            planId={planId}
+            progress={value?.planId === planId ? value : null}
+            running={running === planId ? null : running}
+            choosing={choosing}
+          />
         ))}
       </div>
       {value?.status.kind === "active" && <StaleNote readiness={readiness} daysAgo={daysAgo} panel="plans" />}

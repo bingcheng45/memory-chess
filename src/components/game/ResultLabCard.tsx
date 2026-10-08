@@ -13,7 +13,6 @@ import { resultCardFor, summaryCounts, type NewBest, type NextStep, type ResultC
 import type { RoundRecord } from "@/lib/lab/record";
 import ResultLabSlot, { RESULT_LAB_FRAME, ResultLabEnd } from "./ResultLabSlot";
 
-/** How long the card waits for the round to reach the record before it gives up. */
 export const RESULT_LAB_WAIT_MS = 3000;
 
 const SOURCE: RoundSource = "result_next";
@@ -127,7 +126,7 @@ function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData;
           </li>
         ))}
       </ul>
-      <p className="mt-auto border-t border-bg-light pt-3 text-sm text-text-secondary">
+      <p className="border-t border-bg-light pt-3 text-sm text-text-secondary">
         <span className="font-semibold text-text-primary">{t("next.label")}.</span>
         {why && ` ${why}`} <NextAction t={t} next={card.next} onPlay={onPlay} />
       </p>

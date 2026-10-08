@@ -20,9 +20,9 @@ describe("Geist Mono fallback", () => {
     const face = faces.find((declared) => declared["font-family"] === `"${options.fallback[0]}"`);
 
     expect(options.adjustFontFallback).toBe(false);
-    expect(options.fallback).toEqual(["Geist Mono Fallback", "ui-monospace", "monospace"]);
+    expect(options.fallback).toEqual(["Geist Mono Local", "ui-monospace", "monospace"]);
     expect(face).toEqual({
-      "font-family": '"Geist Mono Fallback"',
+      "font-family": '"Geist Mono Local"',
       src: 'local("Menlo Regular"), local("Courier New"), local("DejaVu Sans Mono"), local("Liberation Mono"), local("Droid Sans Mono")',
       "size-adjust": "99.65%",
       "ascent-override": "100.5%",

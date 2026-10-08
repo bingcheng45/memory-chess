@@ -150,6 +150,52 @@ describe("plateau rule", () => {
 
     expect(ids(insightsOf(rising))).toEqual([]);
   });
+
+  /** One round a day from 1 January, alternating 100 and 75 percent unless `full` says otherwise. */
+  function career(stints: readonly { count: number; pieceCount: number; memorizeSeconds: number; full?: (index: number) => boolean }[]) {
+    let day = 0;
+    return stints.flatMap(({ count, pieceCount, memorizeSeconds, full = (index) => index % 2 === 0 }) =>
+      Array.from({ length: count }, (_, index) => {
+        const date = new Date(Date.UTC(2026, 0, 1 + day++, 12));
+        const placedFen = full(index) ? TARGET : NO_QUEEN;
+        return round({ id: `c${day}`, endedAt: date.getTime(), localDay: date.toISOString().slice(0, 10), pieceCount, memorizeSeconds, placedFen });
+      }),
+    );
+  }
+  const plateauOf = (records: readonly RoundRecord[]) => insightsOf(records).value?.insights.find(({ ruleId }) => ruleId === "plateau");
+
+  it("reads the setting of the last 20 rounds, not an abandoned one with more rounds, and offers one piece past the span", () => {
+    const records = career([
+      { count: 200, pieceCount: 4, memorizeSeconds: 10 },
+      { count: 30, pieceCount: 8, memorizeSeconds: 15 },
+    ]);
+
+    expect(plateauOf(records)).toEqual({
+      ruleId: "plateau",
+      params: { source: "game", pieceCount: 8, memorizeSeconds: 15, last: 88, before: 88, span: 8 },
+      action: { kind: "rig", pieceCount: 9, memorizeSeconds: 15 },
+      strength: 2,
+    });
+  });
+
+  it("finds no plateau after the switch when accuracy at the new setting is still moving", () => {
+    const records = career([
+      { count: 200, pieceCount: 4, memorizeSeconds: 10 },
+      { count: 30, pieceCount: 8, memorizeSeconds: 15, full: (index) => index % 2 === 0 || index >= 25 },
+    ]);
+
+    expect(plateauOf(records)).toBeUndefined();
+  });
+
+  it("finds no plateau when the setting played most sits above the span", () => {
+    const records = career([
+      { count: 20, pieceCount: 6, memorizeSeconds: 10 },
+      { count: 30, pieceCount: 8, memorizeSeconds: 10, full: () => false },
+    ]);
+
+    expect(deriveLab({ records, summary: summarize(records), today: "" }).span.value?.pieceCount).toBe(6);
+    expect(plateauOf(records)).toBeUndefined();
+  });
 });
 
 describe("faster but less accurate rule", () => {

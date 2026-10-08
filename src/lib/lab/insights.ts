@@ -48,9 +48,10 @@ export const MAX_INSIGHTS = 3;
 const EDGE_FILES = [0, 7];
 const CENTRE_FILES = [3, 4];
 const EDGE_RATIO = 1.8;
+const EDGE_MISSES = 5;
 export const EDGE_RIG = { pieceCount: 8, memorizeSeconds: 15 };
-/** A finding with no centre miss at all reads as this many times, so it still ranks without an infinite strength. */
-const NO_CENTRE_MISS_RATIO = 10;
+/** With no centre miss there is no multiple to weigh, so the finding ranks just under any finding past its threshold, which reads 1 or more. */
+const NO_CENTRE_MISS_STRENGTH = 0.99;
 const WEAK_RECALL = LAB_THRESHOLDS.weakRecall;
 const LINE_EXPOSURES = LAB_THRESHOLDS.squareExposures;
 const TYPE_EXPOSURES = LAB_THRESHOLDS.typeExposures;
@@ -85,18 +86,19 @@ const edgeFiles: InsightRule = {
     const centre = total(CENTRE_FILES);
     const edgeRate = edge.missed / edge.shown;
     const centreRate = centre.missed / centre.shown;
-    const ratio = centreRate === 0 ? NO_CENTRE_MISS_RATIO : hundredths(edgeRate / centreRate);
-    if (edgeRate === 0 || ratio < EDGE_RATIO) return null;
+    if (edge.missed < EDGE_MISSES) return null;
+    const ratio = centreRate === 0 ? null : hundredths(edgeRate / centreRate);
+    if (ratio !== null && ratio < EDGE_RATIO) return null;
     return {
       params: {
-        times: centreRate === 0 ? 0 : nearestHalf(ratio),
+        times: ratio === null ? 0 : nearestHalf(ratio),
         edge: percent(edgeRate),
         centre: percent(centreRate),
         edgeShown: edge.shown,
         centreShown: centre.shown,
       },
       action: rig(EDGE_RIG),
-      strength: hundredths(ratio / EDGE_RATIO),
+      strength: ratio === null ? NO_CENTRE_MISS_STRENGTH : hundredths(ratio / EDGE_RATIO),
     };
   },
 };

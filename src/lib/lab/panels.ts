@@ -4,7 +4,7 @@
  */
 export const PANEL_ROWS = [
   { row: "reading", panels: ["span", "piecesHeld", "trend", "speed"] },
-  { row: "habit", panels: ["streak", "curve", "notebook"] },
+  { row: "habit", panels: ["daily", "streak", "curve", "notebook"] },
   { row: "diagnosis", panels: ["missMap", "typeRecall", "insights"] },
   { row: "programs", panels: ["plans", "goal"] },
   { row: "compare", panels: ["bests", "board"] },

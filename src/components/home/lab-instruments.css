@@ -97,21 +97,21 @@
 .lab {
   --lab-h-unlock: 200px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
   --lab-h-heat: 464px; --lab-h-streak: 616px; --lab-h-bests: 504px; --lab-h-types: 448px; --lab-h-tools: 208px;
-  --lab-h-insights: 344px; --lab-h-notebook: 408px; --lab-h-plans: 496px; --lab-h-goal: 304px;
+  --lab-h-insights: 344px; --lab-h-notebook: 408px; --lab-h-plans: 496px; --lab-h-goal: 304px; --lab-h-daily: 360px;
   --lab-heat-w: 260px;
 }
 @media (max-width: 1000px) {
   .lab {
     --lab-h-unlock: 288px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 424px; --lab-h-speed: 512px;
     --lab-h-heat: 528px; --lab-h-streak: 680px; --lab-h-bests: 920px; --lab-h-types: 528px; --lab-h-tools: 512px;
-    --lab-h-insights: 424px; --lab-h-notebook: 448px; --lab-h-plans: 968px; --lab-h-goal: 328px;
+    --lab-h-insights: 424px; --lab-h-notebook: 448px; --lab-h-plans: 968px; --lab-h-goal: 328px; --lab-h-daily: 400px;
   }
 }
 @media (max-width: 640px) {
   .lab {
     --lab-h-unlock: 376px; --lab-h-span: 544px; --lab-h-held: 504px; --lab-h-spark: 456px; --lab-h-speed: 544px;
     --lab-h-heat: 528px; --lab-h-streak: 624px; --lab-h-bests: 592px; --lab-h-types: 528px; --lab-h-tools: 376px;
-    --lab-h-insights: 600px; --lab-h-notebook: 648px; --lab-h-plans: 1300px; --lab-h-goal: 464px;
+    --lab-h-insights: 600px; --lab-h-notebook: 648px; --lab-h-plans: 1300px; --lab-h-goal: 464px; --lab-h-daily: 640px;
   }
 }
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
@@ -134,6 +134,7 @@
 .lab-p-notebook { min-height: var(--lab-h-notebook); }
 .lab-p-plans { min-height: var(--lab-h-plans); }
 .lab-p-goal { min-height: var(--lab-h-goal); }
+.lab-p-daily { min-height: var(--lab-h-daily); }
 .lab-tools-slot { display: flow-root; min-height: var(--lab-h-tools); }
 .lab-welcome { margin: 0 0 8px; font-size: 16px; line-height: 1.45; color: var(--lab-ink); }
 .lab-unlock { min-height: var(--lab-h-unlock); margin-bottom: 16px; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 16px 22px; }
@@ -154,9 +155,18 @@
 .lab-dash > * { grid-column: span 6; }
 .lab-p-streak, .lab-p-board { grid-column: span 4; }
 .lab-p-curve, .lab-p-bests { grid-column: span 8; }
-.lab-p-insights, .lab-p-notebook, .lab-p-plans, .lab-p-goal { grid-column: span 12; }
+.lab-p-insights, .lab-p-notebook, .lab-p-plans, .lab-p-goal, .lab-p-daily { grid-column: span 12; }
 @media (max-width: 1000px) { .lab-p-streak, .lab-p-board { grid-column: span 5; } .lab-p-curve, .lab-p-bests { grid-column: span 7; } }
 @media (max-width: 640px) { .lab-dash > * { grid-column: span 12; } }
+/* Lines that fill in on the client hold their height from the server render. */
+.lab-daily-status, .lab-daily-reset, .lab-daily-copied { min-height: 1.45em; }
+.lab-daily-status { margin-top: 12px; font-size: 16px; line-height: 1.45; color: var(--lab-ink); }
+.lab-daily-play { margin-top: 16px; }
+.lab-daily-body { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 40px; align-items: start; }
+.lab-daily-grid { margin: 12px 0 0; font: 400 18px/1.2 var(--lab-sans); letter-spacing: 0; white-space: pre; }
+.lab-daily-key { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.lab-daily-share .lab-btn { margin-top: 14px; padding: 10px 16px; font-size: 15px; }
+@media (max-width: 640px) { .lab-daily-body { grid-template-columns: minmax(0, 1fr); } }
 .lab-span-figure { margin-top: 12px; font: 600 clamp(32px, 4vw, 44px)/1.1 var(--lab-sans); font-variant-numeric: tabular-nums; color: var(--lab-ink); }
 .lab-span-held { margin-top: 6px; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
 /* Holds its line when empty, so a week's change arriving later moves nothing. */

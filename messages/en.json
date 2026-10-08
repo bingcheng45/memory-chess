@@ -496,7 +496,7 @@
           "desc": "A new position opens every day at midnight UTC. Everyone gets the same 6 pieces and 10 seconds to study, and you get one try.",
           "play": "Play today's board",
           "open": "You have not played today's board yet.",
-          "played": "You placed {correct} of {pieces, plural, one {# piece} other {# pieces}} right, {accuracy} percent.",
+          "played": "You placed {correct} of {pieceCount, plural, one {# piece} other {# pieces}} right, {accuracy} percent.",
           "done": "Today's board is done. One try per day on this device.",
           "locked": "You have played today's board. One try per day on this device.",
           "seeResult": "See your result",
@@ -509,7 +509,7 @@
             "m": "missed",
             "x": "extra"
           },
-          "share": "Memory Chess daily board {day}\n{correct} of {pieces} right, {accuracy}%\n{grid}\nthememorychess.com",
+          "share": "Memory Chess daily board {day}\n{correct} of {pieceCount} right, {accuracy}%\n{grid}\nthememorychess.com",
           "copy": "Copy result",
           "copied": "Copied. Paste it anywhere.",
           "copyFailed": "Copy did not work here. The grid is selected, so copy it yourself."

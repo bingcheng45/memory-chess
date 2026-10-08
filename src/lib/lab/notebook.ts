@@ -113,15 +113,19 @@ function spanSteps({ rounds, spanHistory }: History): Draft[] {
   });
 }
 
-/** A milestone is written on the day a run reaches it: the run ending on the day played before was shorter. */
+/**
+ * A milestone is written once per run, named by its first day, on the day that run reaches it. A new run can start
+ * below the count of the run before it, so comparing with the previous day's count would skip its milestones.
+ */
 function streakMilestones({ rounds, summary }: History): Draft[] {
   const firstOnDay = new Map(firstsBy(rounds, ({ localDay }) => localDay).map((record) => [record.localDay, record]));
-  const runs = runsByDay(summary.days);
-  return summary.days.flatMap((day, index) => {
-    const { played, forgivenDays } = runs[index];
-    const record = firstOnDay.get(day);
-    const reached = played > (runs[index - 1]?.played ?? 0) && STREAK_MILESTONES.includes(played);
-    return reached && record ? [{ record, params: { days: played, forgiven: forgivenDays.length } }] : [];
+  const written = new Set<string>();
+  return runsByDay(summary.days).flatMap(({ start, played, forgivenDays }, index) => {
+    const key = `${start} ${played}`;
+    const record = firstOnDay.get(summary.days[index]);
+    if (!STREAK_MILESTONES.includes(played) || written.has(key) || !record) return [];
+    written.add(key);
+    return [{ record, params: { days: played, forgiven: forgivenDays.length } }];
   });
 }
 

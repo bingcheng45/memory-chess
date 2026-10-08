@@ -5,6 +5,8 @@ export type StreakDay = "played" | "forgiven" | "missed" | "today";
 
 /** Played days in a run walked back from its last day. A forgiven day keeps the run going but is not counted. */
 export interface StreakRun {
+  /** The run's first played day, which names the run. */
+  readonly start: string;
   readonly played: number;
   /** Newest first. */
   readonly forgivenDays: readonly string[];
@@ -34,12 +36,15 @@ const dayOf = (number: number) => shiftDay(EPOCH, number);
 function runEndingAt(played: ReadonlySet<number>, last: number): StreakRun {
   const forgiven: number[] = [];
   let count = 0;
+  let start = last;
   for (let day = last; ; day -= 1) {
-    if (played.has(day)) count += 1;
-    else if (played.has(day - 1) && (forgiven.at(-1) ?? Infinity) - day >= GRACE_GAP_DAYS) forgiven.push(day);
+    if (played.has(day)) {
+      count += 1;
+      start = day;
+    } else if (played.has(day - 1) && (forgiven.at(-1) ?? Infinity) - day >= GRACE_GAP_DAYS) forgiven.push(day);
     else break;
   }
-  return { played: count, forgivenDays: forgiven.map(dayOf) };
+  return { start: dayOf(start), played: count, forgivenDays: forgiven.map(dayOf) };
 }
 
 const playedSet = (days: readonly string[]): ReadonlySet<number> => new Set(days.map(dayNumber));

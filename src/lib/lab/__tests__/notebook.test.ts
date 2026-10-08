@@ -55,6 +55,17 @@ describe("lab notebook", () => {
     ]);
   });
 
+  it("marks a milestone for a new run that starts below the count of the run before it", () => {
+    const rounds = [1, 2, 3, 4, 5, 7, 8, 10, 11, 12, 13, 14].map((day) => played(`d${day}`, day, 0, false));
+
+    expect(notebookEntries(rounds, summarize(rounds)).filter(({ kind }) => kind === "streak")).toEqual([
+      { at: at(14), kind: "streak", params: { day: 14, days: 7, forgiven: 1 } },
+      { at: at(10), kind: "streak", params: { day: 10, days: 3, forgiven: 1 } },
+      { at: at(8), kind: "streak", params: { day: 8, days: 7, forgiven: 1 } },
+      { at: at(3), kind: "streak", params: { day: 3, days: 3, forgiven: 0 } },
+    ]);
+  });
+
   it("keeps only the newest 20 entries", () => {
     const rounds = Array.from({ length: 120 }, (_, index) => played(`p${index}`, 1, index, index % 2 === 1, 20_000 - index * 100));
 

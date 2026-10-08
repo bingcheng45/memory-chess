@@ -64,15 +64,15 @@ describe("streak with one grace day a week", () => {
     expect(streakOf(["2026-09-29", "2026-10-01"], "2026-10-01")).toMatchObject({ current: 2, forgivenDays: ["2026-09-30"] });
   });
 
-  it("gives each played day the run that ends on it, with that run's forgiven days", () => {
+  it("gives each played day the run that ends on it, with that run's first day and forgiven days", () => {
     const days = ["2026-09-29", "2026-09-30", "2026-10-02", "2026-10-03", "2026-10-05"];
 
     expect(runsByDay(days)).toEqual([
-      { played: 1, forgivenDays: [] },
-      { played: 2, forgivenDays: [] },
-      { played: 3, forgivenDays: ["2026-10-01"] },
-      { played: 4, forgivenDays: ["2026-10-01"] },
-      { played: 3, forgivenDays: ["2026-10-04"] },
+      { start: "2026-09-29", played: 1, forgivenDays: [] },
+      { start: "2026-09-29", played: 2, forgivenDays: [] },
+      { start: "2026-09-29", played: 3, forgivenDays: ["2026-10-01"] },
+      { start: "2026-09-29", played: 4, forgivenDays: ["2026-10-01"] },
+      { start: "2026-10-02", played: 3, forgivenDays: ["2026-10-04"] },
     ]);
   });
 });

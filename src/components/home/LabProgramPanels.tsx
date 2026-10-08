@@ -137,16 +137,14 @@ function PlanCard({ planId, progress, choosing }: { planId: PlanId; progress: Pl
       const first = startRung(planId, choosing.records);
       // A link, since starting opens the plan's first round; the plan is stored on the way, so a new tab starts it too.
       return (
-        <div className="lab-plan-actions">
-          <Link className="lab-btn lab-btn-secondary" href={playHref(first.pieceCount, first.memorizeSeconds, "plan")} onClick={start}>
-            {t(progress ? "again" : "start", { title })}
-          </Link>
-        </div>
+        <Link className="lab-btn lab-btn-secondary" href={playHref(first.pieceCount, first.memorizeSeconds, "plan")} onClick={start}>
+          {t(progress ? "again" : "start", { title })}
+        </Link>
       );
     }
     const rung = playRung(progress);
     return (
-      <div className="lab-plan-actions">
+      <>
         <Link className="lab-go" href={playHref(rung.pieceCount, rung.memorizeSeconds, "plan")} onClick={() => track("plans", "play")}>
           {t("play", rungValues(rung))} →
         </Link>
@@ -156,7 +154,7 @@ function PlanCard({ planId, progress, choosing }: { planId: PlanId; progress: Pl
           </button>
         )}
         <StopControl onStop={() => end("stopped")} />
-      </div>
+      </>
     );
   };
 
@@ -176,7 +174,8 @@ function PlanCard({ planId, progress, choosing }: { planId: PlanId; progress: Pl
           ))}
         </ol>
       )}
-      {controls()}
+      {/* Rendered empty on the server, so the Start link arriving with the record does not push the cards below down. */}
+      <div className="lab-plan-actions">{controls()}</div>
     </div>
   );
 }

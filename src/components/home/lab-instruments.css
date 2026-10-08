@@ -260,10 +260,10 @@
 .lab-plan-progress .lab-go { margin-top: 8px; }
 .lab-plan-status { font: 600 14px/1.4 var(--lab-mono); color: var(--lab-ink); }
 /* Pinned to the card's foot, so the three cards' controls line up whatever each card says above them. */
-.lab-plan-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: auto; padding-top: 16px; }
+.lab-plan-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: auto; padding-top: 16px; min-height: 52px; }
 .lab-plan-actions .lab-go { margin-top: 0; }
 .lab-plan-actions .lab-btn { padding: 10px 14px; font-size: 14px; }
-.lab-plan > .lab-note { margin-top: auto; padding-top: 16px; }
+.lab-plan-actions > .lab-note { margin-top: 0; }
 .lab-plan-quiet { min-height: 24px; padding: 0; font: 600 14px/1.45 var(--lab-sans); color: var(--lab-ink-2); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .lab-plan-quiet:hover { color: var(--lab-blue); }
 .lab-plan-warn { color: var(--lab-mark-ink); }

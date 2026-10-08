@@ -31,18 +31,35 @@ describe("deriveLab on 5,000 rounds the log still holds", () => {
   });
 
   /**
-   * Alone this machine derives in about 9.5 ms at the median. Beside the other test files the median reaches 16 to 17 ms,
-   * so the median is held to two frames and the fastest run, which contention slows least, to one.
+   * Wall time beside the other suites swings past 2x on a busy machine, so this compares CPU time, which excludes waiting
+   * for a core, against a fixed pass over the same rounds measured in turn, which slows with the core it lands on.
+   * Measured: about 1.1 alone, 1.2 to 1.5 beside the full suite, and 1.9 to 2.3 for a derive done twice.
    */
-  it("derives every metric inside one 16 ms frame at best and two at the median of 7 runs", () => {
-    deriveLab(input);
-    const runs = Array.from({ length: 7 }, () => {
-      const started = performance.now();
-      deriveLab(input);
-      return performance.now() - started;
-    }).sort((a, b) => a - b);
+  it("derives every metric in under 1.8 times the CPU time of three plain passes over the rounds", () => {
+    const pairs = Array.from({ length: 25 }, () => ({ pass: cpuMs(plainPasses), derive: cpuMs(() => deriveLab(input)) }));
 
-    expect(runs[0]).toBeLessThan(16);
-    expect(runs[3]).toBeLessThan(32);
+    const fastest = (key: "pass" | "derive") => Math.min(...pairs.map((pair) => pair[key]));
+    expect(fastest("derive") / fastest("pass")).toBeLessThan(1.8);
   });
 });
+
+function cpuMs(work: () => unknown): number {
+  const started = process.cpuUsage();
+  work();
+  const { user, system } = process.cpuUsage(started);
+  return (user + system) / 1000;
+}
+
+function plainPasses(): void {
+  for (let pass = 0; pass < 3; pass++) {
+    const byDay = new Map<string, number[]>();
+    for (const round of [...records].sort((a, b) => b.endedAt - a.endedAt)) {
+      let right = 0;
+      for (const square of round.squares) if (square === "c") right++;
+      const day = byDay.get(round.localDay) ?? [];
+      day.push(right / Math.max(1, round.correct + round.wrong));
+      byDay.set(round.localDay, day);
+    }
+    [...byDay.values()].map((day) => day.reduce((sum, value) => sum + value, 0) / day.length).sort();
+  }
+}

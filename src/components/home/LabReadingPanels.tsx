@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { SAMPLE_PARTIAL, SAMPLE_PIECES_HELD, SAMPLE_SPAN, SAMPLE_SPAN_ROUNDS, SAMPLE_SPAN_SECONDS, SAMPLE_SPEED, SAMPLE_SPEED_ACCURACY } from "@/lib/home/labRecord";
 import { mean } from "@/lib/lab/engine";
@@ -9,7 +9,7 @@ import type { PanelId } from "@/lib/lab/panels";
 import type { SpeedValue } from "@/lib/lab/progress";
 import { hasFigure, LAB_THRESHOLDS, type Readiness } from "@/lib/lab/readiness";
 import { oneDecimal, SpanStaircase, ValueLine } from "./LabReadingCharts";
-import { figureOf, PanelHead, StaleNote, useTags } from "./LabRecordPanels";
+import { PanelFrame, StaleNote, useTags } from "./LabRecordPanels";
 import { seconds, settingValues } from "./labFormat";
 
 interface PanelProps<K extends keyof LabResults> {
@@ -25,15 +25,11 @@ interface FrameProps {
 }
 
 function ReadingFrame({ panel, name, readiness, children }: FrameProps) {
-  const t = useTranslations("home.lab.record");
   const tags = useTags();
   return (
-    <div className={`lab-panel lab-p-${name}`}>
-      <PanelHead fig={t(`${name}.fig`, { number: figureOf(panel) })} tag={readiness.state === "empty" ? tags.sample : tags.mine} />
-      <h3>{t(`${name}.title`)}</h3>
-      {/* Keyed by state, so new content mounts fresh instead of moving the nodes it replaces. */}
-      <Fragment key={readiness.state}>{children}</Fragment>
-    </div>
+    <PanelFrame panel={panel} name={name} tag={readiness.state === "empty" ? tags.sample : tags.mine} state={readiness.state}>
+      {children}
+    </PanelFrame>
   );
 }
 

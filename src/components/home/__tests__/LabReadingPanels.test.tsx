@@ -1,6 +1,6 @@
 import { renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
-import type { PersonaName } from "@/lib/lab/personas";
+import { PERSONA_NAMES, type PersonaName } from "@/lib/lab/personas";
 import { summarize } from "@/lib/lab/summary";
 import { persona } from "@/test-utils/labPersona";
 import { round } from "@/lib/lab/__tests__/fixtures";
@@ -161,7 +161,7 @@ describe("speed", () => {
     expect(within(speed).getByRole("img")).toHaveAccessibleName(
       "Your rebuild seconds per correct piece over your last 21 game rounds at 14 pieces and 10 seconds, latest 1.7 seconds.",
     );
-    expect(texts(speed, ".lab-note")).toEqual(["Game · 14 pieces · 10s, your most played setting lately · From 21 rounds"]);
+    expect(texts(speed, ".lab-note")).toEqual(["Game · 14 pieces · 10\u00a0s, your most played setting lately · From 21 rounds"]);
   });
 
   it("warns that fast and wrong is not improvement when accuracy fell as the pace quickened", () => {
@@ -196,7 +196,7 @@ describe("speed", () => {
   it("says how many more rounds at the setting draw the line", () => {
     show("twoRounds");
 
-    expect(texts(panel("Speed"), ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10s in games draw your speed line."]);
+    expect(texts(panel("Speed"), ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10\u00a0s in games draw your speed line."]);
   });
 
   it("reads as the player's record, not a Sample, when no round so far had a piece right", () => {
@@ -228,7 +228,7 @@ describe("accuracy trend", () => {
     expect(within(trend).getByRole("img")).toHaveAccessibleName(
       "Your accuracy over your last 20 sessions with game rounds at 4 pieces and 10 seconds, latest 75 percent.",
     );
-    expect(texts(trend, ".lab-note")).toEqual(["Game · 4 pieces · 10s, your most played setting with a trend · From 60 rounds · 20 sessions"]);
+    expect(texts(trend, ".lab-note")).toEqual(["Game · 4 pieces · 10\u00a0s, your most played setting with a trend · From 60 rounds · 20 sessions"]);
   });
 
   it("reads a session's mean accuracy in whole percents", () => {
@@ -244,6 +244,15 @@ describe("accuracy trend", () => {
     const trend = panel("Accuracy over time");
 
     expect(within(trend).getByRole("heading", { level: 3 })).toHaveTextContent("Your line, round by round.");
-    expect(texts(trend, ".lab-note")).toEqual(["Game · 6 pieces · 10s, your most played setting with a trend · From 9 rounds"]);
+    expect(texts(trend, ".lab-note")).toEqual(["Game · 6 pieces · 10\u00a0s, your most played setting with a trend · From 9 rounds"]);
+  });
+});
+
+describe("seconds", () => {
+  it.each(PERSONA_NAMES)("print every seconds figure for %s with its unit after a non-breaking space", (name) => {
+    const { container } = renderWithIntl(<LabRecordSection record={persona(name)} />);
+    const text = container.querySelector("#record")!.textContent!;
+
+    expect(text.match(/\d(?: ?)s\b/g)).toBeNull();
   });
 });

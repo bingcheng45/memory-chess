@@ -91,8 +91,8 @@ describe("LabRecordSection", () => {
     expect(within(panel("Accuracy over time")).getByText("3 more rounds at 4 pieces, 10s, at least one on another day, draws your game trend.")).toBeInTheDocument();
     expect(within(panel("Days in a row")).getByText("Play on one more day to start a streak.")).toBeInTheDocument();
     expect(within(panel("Recall by piece type")).getByText("About 18 more rounds until a piece other than the king has 20 sightings.")).toBeInTheDocument();
-    expect(within(panel("Personal bests")).getByText("Game · 4 pieces · 10s")).toBeInTheDocument();
-    expect(within(panel("Personal bests")).getByText("100% · rebuilt in 15.0s")).toBeInTheDocument();
+    expect(within(panel("Personal bests")).getByText("Game · 4 pieces · 10 s")).toBeInTheDocument();
+    expect(within(panel("Personal bests")).getByText("100% · rebuilt in 15.0 s")).toBeInTheDocument();
   });
 
   describe("keeps the Phase 0 panels when the summary disagrees with the round log", () => {
@@ -213,7 +213,7 @@ describe("LabRecordSection", () => {
     renderWithIntl(<LabRecordSection record={record([...practice, ...games])} />);
 
     expect(
-      within(panel("Accuracy over time")).getByText("1 more round at 4 pieces, 10s, played on another day, draws your practice trend."),
+      within(panel("Accuracy over time")).getByText("1 more round at 4 pieces, 10 s, played on another day, draws your practice trend."),
     ).toBeInTheDocument();
   });
 
@@ -221,9 +221,9 @@ describe("LabRecordSection", () => {
     const practice = buildRoundRecord({ ...rounds(1, 1)[0], id: "p", source: "calibration", pieceCount: 4, memorizeSeconds: 10, solveMs: 9000 });
     renderWithIntl(<LabRecordSection record={record([...rounds(2, 1), practice])} />);
 
-    expect(within(panel("Personal bests")).getByText("Game · 4 pieces · 10s")).toBeInTheDocument();
-    expect(within(panel("Personal bests")).getByText("Practice · 4 pieces · 10s")).toBeInTheDocument();
-    expect(within(panel("Personal bests")).getByText("100% · rebuilt in 9.0s")).toBeInTheDocument();
+    expect(within(panel("Personal bests")).getByText("Game · 4 pieces · 10 s")).toBeInTheDocument();
+    expect(within(panel("Personal bests")).getByText("Practice · 4 pieces · 10 s")).toBeInTheDocument();
+    expect(within(panel("Personal bests")).getByText("100% · rebuilt in 9.0 s")).toBeInTheDocument();
   });
 
   describe("bests list", () => {
@@ -246,14 +246,14 @@ describe("LabRecordSection", () => {
       renderWithIntl(<LabRecordSection record={record(EIGHT)} />);
 
       expect(rows()).toEqual([
-        ["Game · 4 pieces · 10s", "wide"],
-        ["Game · 4 pieces · 9s", "wide"],
-        ["Game · 4 pieces · 8s", null],
-        ["Game · 4 pieces · 7s", null],
-        ["Game · 4 pieces · 6s", "narrow"],
-        ["Game · 4 pieces · 5s", "narrow"],
-        ["Practice · 4 pieces · 10s", "narrow"],
-        ["Practice · 4 pieces · 9s", "narrow"],
+        ["Game · 4 pieces · 10 s", "wide"],
+        ["Game · 4 pieces · 9 s", "wide"],
+        ["Game · 4 pieces · 8 s", null],
+        ["Game · 4 pieces · 7 s", null],
+        ["Game · 4 pieces · 6 s", "narrow"],
+        ["Game · 4 pieces · 5 s", "narrow"],
+        ["Practice · 4 pieces · 10 s", "narrow"],
+        ["Practice · 4 pieces · 9 s", "narrow"],
       ]);
     });
 
@@ -282,9 +282,9 @@ describe("LabRecordSection", () => {
       renderWithIntl(<LabRecordSection record={record([setting("game", 10, 3), setting("game", 9, 1), setting("calibration", 10, 2)])} />);
 
       expect(rows()).toEqual([
-        ["Game · 4 pieces · 10s", null],
-        ["Game · 4 pieces · 9s", "narrow"],
-        ["Practice · 4 pieces · 10s", null],
+        ["Game · 4 pieces · 10 s", null],
+        ["Game · 4 pieces · 9 s", "narrow"],
+        ["Practice · 4 pieces · 10 s", null],
       ]);
       expect(within(panel("Personal bests")).getByRole("button", { name: "Show all 3 settings" })).toHaveAttribute("data-shown", "narrow");
     });

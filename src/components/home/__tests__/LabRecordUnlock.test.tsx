@@ -38,8 +38,8 @@ describe("unlock strip", () => {
     expect(items()).toEqual([
       "Memory span: 1 more round at 80 percent or better at one size of 3 or more pieces.",
       "Pieces held: 3 more rounds, at least one on another day.",
-      "Trend: 4 more rounds at 6 pieces, 10s, at least one on another day in games.",
-      "Speed: 4 more rounds at 6 pieces, 10s in games.",
+      "Trend: 4 more rounds at 6 pieces, 10\u00a0s, at least one on another day in games.",
+      "Speed: 4 more rounds at 6 pieces, 10\u00a0s in games.",
       "Streak: play on 1 more day, in a row or not.",
       "Miss map: 10 more sightings on the least seen file or rank.",
       "Piece recall: 14 more sightings until one piece other than the king reaches 20.",

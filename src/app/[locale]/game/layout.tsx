@@ -7,7 +7,7 @@ import ScopedMessagesProvider from '@/components/common/ScopedMessagesProvider';
 import TileArticlesProvider from '@/components/game/TileArticlesProvider';
 import GameReference from '@/components/reference/GameReference';
 import { getTileArticles } from '@/lib/articles';
-import { tileGroupOf } from '@/lib/articles/messageScope';
+import { splitClientMessages, tileGroupOf } from '@/lib/articles/messageScope';
 import { gameConfigPrefillScript } from '@/lib/game/configPrefill';
 
 const siteUrl = 'https://thememorychess.com';
@@ -44,7 +44,7 @@ export default async function GameLayout({
 
   return (
     <>
-      <ScopedMessagesProvider messages={{ articles: tileGroupOf(messages) }}>
+      <ScopedMessagesProvider messages={{ articles: tileGroupOf(messages), ...splitClientMessages(messages).resultCard }}>
         <TileArticlesProvider articles={tileArticles}>{children}</TileArticlesProvider>
       </ScopedMessagesProvider>
       {/* Runs once the form above is parsed and before hydration, so a

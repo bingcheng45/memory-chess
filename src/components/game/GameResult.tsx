@@ -4,10 +4,10 @@ import { useGameStore } from "@/lib/store/gameStore";
 import { accuracyBandKey } from "@/lib/reference/facts";
 import { GameState } from "@/lib/types/game";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect, useRef } from "react";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -19,7 +19,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { loadLeaderboardCutoffs } from "@/lib/leaderboard/cutoffsClient";
-import { trackEvent } from "@/lib/analytics/events";
+import { trackEvent, type RoundSource } from "@/lib/analytics/events";
+import { hasLabCopy } from "@/lib/home/labLocales";
+import { browserIndexedDB } from "@/lib/lab/support";
 import {
   qualifies,
   type LeaderboardCutoffs,
@@ -31,6 +33,12 @@ import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
 import ResultBoardComparison from "@/components/game/ResultBoardComparison";
 import ArticleTile from "@/components/game/ArticleTile";
 import { countWrong } from "@/lib/game/scoring";
+import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
+import ErrorBoundary from "@/components/ui/ErrorBoundary";
+
+// Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
+// never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.
+const ResultLabCard = lazy(() => import("@/components/game/ResultLabCard"));
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & {
@@ -44,6 +52,7 @@ type GameStateWithRating = GameState & {
 interface GameResultProps {
   readonly onTryAgain: () => void;
   readonly onNewGame: () => void;
+  readonly onPlay: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
 }
 
 function qualifiesForLeaderboard(
@@ -57,8 +66,10 @@ function qualifiesForLeaderboard(
   return qualifies(score, cutoffs[difficulty]);
 }
 
-export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
+export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResultProps) {
   const t = useTranslations("game.result");
+  // Without IndexedDB nothing can be recorded, so no space is held for a card that could only leave again.
+  const showsLab = hasLabCopy(useLocale()) && browserIndexedDB() !== undefined;
   const tCountry = useTranslations("country");
   const { gameState } = useGameStore();
   const { countryCode, setCountryCode } = useSettingsStore();
@@ -469,6 +480,14 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           </Link>
         </nav>
       </section>
+
+      {showsLab && gameState.labRoundId && (
+        <ErrorBoundary key={gameState.labRoundId} fallback={<ResultLabEnd />}>
+          <Suspense fallback={<ResultLabSlot />}>
+            <ResultLabCard roundId={gameState.labRoundId} onPlay={onPlay} />
+          </Suspense>
+        </ErrorBoundary>
+      )}
 
       <ResultBoardComparison
         originalPosition={gameState.originalPosition}

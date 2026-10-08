@@ -13,6 +13,7 @@ export const ROUND_SOURCES = [
   "tile_drill",
   "try_again",
   "insight",
+  "result_next",
   "link",
 ] as const;
 
@@ -22,8 +23,8 @@ export function roundSourceFrom(value: string | null): RoundSource {
   return ROUND_SOURCES.find((source) => source === value) ?? "link";
 }
 
-/** §06 parts with a link: the unlock strip, each panel that can go stale, and the insights a finding links from. */
-export type LabPanel = "unlock" | "span" | "piecesHeld" | "trend" | "speed" | "missMap" | "streak" | "bests" | "typeRecall" | "insights";
+/** Lab parts with a link: the unlock strip, each §06 panel that can go stale, the insights a finding links from, and the card on the result screen. */
+export type LabPanel = "unlock" | "span" | "piecesHeld" | "trend" | "speed" | "missMap" | "streak" | "bests" | "typeRecall" | "insights" | "resultCard";
 
 /**
  * The GA4 event contract. Round events carry the setting and the score, and
@@ -77,7 +78,7 @@ export type FunnelEvent =
     }
   | {
       name: "lab_panel_action";
-      params: { panel: LabPanel; action: "play" | "guide" };
+      params: { panel: LabPanel; action: "play" | "guide" | "next" };
     };
 
 export function trackEvent({ name, params }: FunnelEvent): void {

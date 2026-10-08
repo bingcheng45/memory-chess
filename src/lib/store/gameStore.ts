@@ -463,9 +463,12 @@ export const useGameStore = create<GameStore>()(
           correctPlacements?: number;
         };
         
+        const labRoundId = uuidv4();
+
         // Update game state with results
         const updatedGameState: GameStateWithRating = {
           ...gameState,
+          labRoundId,
           isSolutionPhase: false,
           userPosition,
           accuracy: score.accuracy,
@@ -488,6 +491,7 @@ export const useGameStore = create<GameStore>()(
 
         // Loaded on demand so the lab storage stays out of the /game bundle until a round ends.
         const facts = {
+          id: labRoundId,
           source: 'game',
           startSource: gameState.startSource,
           pieceCount: gameState.pieceCount,

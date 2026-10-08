@@ -112,7 +112,7 @@ describe("GameResult", () => {
     const onTryAgain = jest.fn();
     const onNewGame = jest.fn();
 
-    render(<GameResult onTryAgain={onTryAgain} onNewGame={onNewGame} />);
+    render(<GameResult onTryAgain={onTryAgain} onNewGame={onNewGame} onPlay={jest.fn()} />);
 
     expect(
       screen.getByRole("heading", { name: "Great Job!" }),
@@ -155,7 +155,7 @@ describe("GameResult", () => {
   });
 
   it("preserves leaderboard submission access for standard difficulties", () => {
-    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
     expect(
       screen.getByRole("link", { name: "View Leaderboard" }),
@@ -178,7 +178,7 @@ describe("GameResult", () => {
     function renderWithArticles() {
       return render(
         <TileArticlesProvider articles={TILE_ARTICLES}>
-          <GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />
+          <GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />
         </TileArticlesProvider>,
       );
     }
@@ -220,7 +220,7 @@ describe("GameResult", () => {
     });
 
     it("is absent when the page was given no articles", () => {
-      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
       expect(screen.getByTestId("result-comparison")).toBeInTheDocument();
       expect(shownSlug()).toBeUndefined();
@@ -237,7 +237,7 @@ describe("GameResult", () => {
       return { ok: true, json: async () => ({ data: { value: 1 } }) };
     }) as unknown as typeof fetch;
 
-    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
     fireEvent.click(
       screen.getByRole("button", { name: "Submit to Leaderboard" }),
@@ -258,7 +258,7 @@ describe("GameResult", () => {
 
   describe("score_submit event", () => {
     function submitScore() {
-      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
       fireEvent.click(
         screen.getByRole("button", { name: "Submit to Leaderboard" }),
       );
@@ -315,7 +315,7 @@ describe("GameResult", () => {
     mockGameState = { ...baseGameState, accuracy: 0, correctPlacements: 0 };
 
     try {
-      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
       expect(
         screen.queryByRole("button", { name: "Submit to Leaderboard" }),
@@ -334,7 +334,7 @@ describe("GameResult", () => {
     });
 
     async function renderSettled() {
-      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />);
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
       await act(async () => {});
     }
 

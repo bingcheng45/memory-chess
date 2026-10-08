@@ -27,7 +27,10 @@ async function readLab(): Promise<Partial<LabData> | null> {
   const available = await store.isAvailable();
   const found = { storage: available ? "available" : "unavailable", today: localDayOf(new Date()) } as const;
   if (!available) return found;
-  const [records, summary] = await Promise.all([store.listRounds(), store.readSummary()]);
+  // The summary is read after the rounds: a write lands in the log before the summary, so this order never sees a
+  // round the summary has not counted.
+  const records = await store.listRounds();
+  const summary = await store.readSummary();
   return { ...found, records, summary, lastBackup: store.readLastBackup() };
 }
 

@@ -33,6 +33,8 @@ export interface GameState {
   originalPosition?: string; // FEN string of position to memorize
   userPosition?: string;     // FEN string of user's solution
   placementLog?: PlacementLog;
+  /** The id the lab record saves the scored round under, so the result screen can find it. Never persisted. */
+  labRoundId?: string;
   
   // Results
   accuracy?: number;         // Percentage of correct piece placements

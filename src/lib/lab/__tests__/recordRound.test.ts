@@ -46,4 +46,22 @@ describe("recordLabRound", () => {
       removals: 0,
     });
   });
+
+  it("saves the round under the id the caller chose, so the result screen can find it", async () => {
+    const facts = {
+      id: "round-from-the-store",
+      source: "game",
+      pieceCount: 4,
+      memorizeSeconds: 10,
+      targetFen: TARGET,
+      placedFen: TARGET,
+      memorizeMs: 10000,
+      solveMs: 7000,
+    } as const;
+
+    await recordLabRound(facts, new Date(2026, 9, 8, 22));
+    const ids = ((await labStore()?.listRounds()) ?? []).map(({ id }) => id);
+
+    expect(ids).toContain("round-from-the-store");
+  });
 });

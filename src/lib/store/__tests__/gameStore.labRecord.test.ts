@@ -1,5 +1,6 @@
 import { useGameStore } from "@/lib/store/gameStore";
 import { recordLabRound } from "@/lib/lab/recordRound";
+import { GAME_STORAGE_KEY } from "@/lib/game/configPrefill";
 
 jest.mock("@/lib/lab/recordRound", () => ({ recordLabRound: jest.fn(() => Promise.resolve(true)) }));
 
@@ -27,9 +28,11 @@ describe("lab record from a finished game round", () => {
     useGameStore.getState().submitSolution(12.25);
     await flush();
 
-    const { originalPosition } = useGameStore.getState().gameState;
+    const { originalPosition, labRoundId } = useGameStore.getState().gameState;
+    expect(labRoundId).toMatch(/^[0-9a-f-]{36}$/);
     expect(recordLabRound).toHaveBeenCalledTimes(1);
     expect(recordLabRound).toHaveBeenCalledWith({
+      id: labRoundId,
       source: "game",
       startSource: "game_form",
       pieceCount: 6,
@@ -99,5 +102,28 @@ describe("lab record from a finished game round", () => {
     expect(played).toEqual([[0, 60, "K"]]);
     expect([reset.placementLog, reset.startSource]).toEqual([undefined, undefined]);
     expect([again.placementLog, again.startSource]).toEqual([undefined, "try_again"]);
+  });
+
+  it("gives each scored round its own lab id, clears it with the round and never stores it", async () => {
+    const scoreRound = () => {
+      useGameStore.getState().startGame(6, 10, "home_quick");
+      useGameStore.getState().endMemorizationPhase(10);
+      useGameStore.getState().startSolutionPhase();
+      useGameStore.getState().submitSolution(4);
+      return useGameStore.getState().gameState.labRoundId;
+    };
+    const first = scoreRound();
+    useGameStore.getState().startGame(6, 10, "try_again");
+    const afterTryAgain = useGameStore.getState().gameState.labRoundId;
+    const second = scoreRound();
+    useGameStore.getState().resetGame();
+    await flush();
+
+    expect(first).not.toBe(second);
+    expect([afterTryAgain, useGameStore.getState().gameState.labRoundId]).toEqual([undefined, undefined]);
+    expect(jest.mocked(recordLabRound).mock.calls.map(([facts]) => facts.id)).toEqual([first, second]);
+    const stored = window.localStorage.getItem(GAME_STORAGE_KEY) ?? "";
+    expect(stored).toContain('"pieceCount":6');
+    expect(stored).not.toContain("labRoundId");
   });
 });

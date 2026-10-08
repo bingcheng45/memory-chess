@@ -705,6 +705,40 @@
       "final": {
         "title": "Your first reading takes under a minute.",
         "body": "No account, no download, no sign-up. Open a round, study, rebuild, read the number. Then decide if you want a second one."
+      },
+      "resultCard": {
+        "title": "Your lab record",
+        "device": "Kept on this device",
+        "lines": "This round in your record",
+        "unshown": "Your lab record could not be shown for this round.",
+        "newBest": {
+          "up": "New best at {pieceCount} pieces, {studyTime}: {accuracy}%, up from {previous}%",
+          "faster": "New best at {pieceCount} pieces, {studyTime}: {accuracy}% again, {fasterTime} faster",
+          "plain": "New best at {pieceCount} pieces, {studyTime}: {accuracy}%"
+        },
+        "vsRecent": {
+          "above": "{points, plural, one {# point} other {# points}} above your average over your last {rounds} rounds at this setting",
+          "below": "{points, plural, one {# point} other {# points}} below your average over your last {rounds} rounds at this setting",
+          "level": "Level with your average over your last {rounds} rounds at this setting"
+        },
+        "span": "Span up to {pieceCount} pieces",
+        "streak": "{current, plural, one {Day 1} other {Day # in a row}}{graceUsed, select, true {, grace day used} other {}}, {days} of {goal} days this week",
+        "next": {
+          "label": "Next",
+          "why": {
+            "more": "90% or better, so one more piece at the same study time.",
+            "fewer": "Under 50%, so one piece fewer at the same study time.",
+            "edgeFiles": "You miss the a and h files more often than the centre files.",
+            "weakType": "{type, select, q {Queens} r {Rooks} b {Bishops} n {Knights} other {Pawns}} slip most: you recalled {recalled} of {shown}.",
+            "fasterLessAccurate": "At {pieceCount} pieces, {studyTime}, you got faster per correct piece and accuracy fell {fell} points.",
+            "colourGap": "You recall {weaker, select, w {white} other {black}} pieces less often: {weakerPercent}% against {strongerPercent}%.",
+            "plateau": "Your span has held at {span} pieces."
+          },
+          "play": "Play {pieceCount} pieces, {studyTime}",
+          "again": "Play again at {pieceCount} pieces, {studyTime}",
+          "patterns": "Read the pattern recognition drills",
+          "vision": "Read how to see the whole board"
+        }
       }
     }
   },

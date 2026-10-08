@@ -21,6 +21,7 @@ const EVENTS: FunnelEvent[] = [
   { name: "lab_panel_action", params: { panel: "unlock", action: "play" } },
   { name: "lab_panel_action", params: { panel: "trend", action: "play" } },
   { name: "lab_panel_action", params: { panel: "insights", action: "guide" } },
+  { name: "lab_panel_action", params: { panel: "resultCard", action: "next" } },
 ];
 
 afterEach(() => {
@@ -41,6 +42,7 @@ it.each(EVENTS)("forwards $name to gtag with exactly its params", (event) => {
 it.each([
   ["insight", "insight"],
   ["tile_drill", "tile_drill"],
+  ["result_next", "result_next"],
   ["server", "link"],
   [null, "link"],
 ])("reads the round link source %p as %p", (value, source) => {

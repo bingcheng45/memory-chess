@@ -7,6 +7,11 @@ import { round } from "./fixtures";
 const THREE = "4k3/8/8/3q4/8/8/8/4K3";
 const HALF = "4k3/8/8/8/8/8/8/4K3";
 const NONE = "8/8/8/8/8/8/8/8";
+const KINGS = "4k3/8/8/8/8/8/8/4K3";
+const FIVE = "4k3/8/8/3q4/8/5N2/8/R3K3";
+const FOUR_OF_FIVE = "4k3/8/8/3q4/8/5N2/8/4K3";
+const NINETEEN = "rnbqkbnr/pppppppp/8/8/8/8/PP6/4K3";
+const FIFTEEN_OF_NINETEEN = "rnbqkbnr/pppp4/8/8/8/8/PP6/4K3";
 const TODAY = "2026-10-07";
 const HOUR = 60 * 60 * 1000;
 const at = (day: string, hour: number) => Date.parse(`${day}T${String(hour).padStart(2, "0")}:00:00Z`);
@@ -47,6 +52,7 @@ describe("sessions metric", () => {
 
 describe("memory span", () => {
   const span = (records: readonly RoundRecord[], today = TODAY) => LAB_METRICS.span.compute(input(records, today));
+  const five = (overrides: Partial<RoundInput>) => round({ pieceCount: 5, targetFen: FIVE, placedFen: FOUR_OF_FIVE, ...overrides });
 
   it("is empty before any round", () => {
     expect(span([])).toEqual({ readiness: { state: "empty", sampleSize: 0 }, value: null });
@@ -59,7 +65,7 @@ describe("memory span", () => {
       readiness: { state: "warming", sampleSize: 2, need: { qualifyingRounds: 1 } },
       value: {
         pieceCount: null,
-        memorizeSeconds: 10,
+        memorizeSeconds: null,
         qualifyingRounds: 0,
         history: [
           { endedAt: at(TODAY, 9), pieceCount: null },
@@ -71,7 +77,7 @@ describe("memory span", () => {
     });
   });
 
-  it("is the largest size held twice, with its steps per session and the change since a week ago", () => {
+  it("is the largest size held twice, stepping once per session and never down, with the change since a week before the newest round", () => {
     const records = [
       round({ id: "4a", endedAt: at("2026-09-29", 9), localDay: "2026-09-29" }),
       round({ id: "4b", endedAt: at("2026-09-29", 9) + 60_000, localDay: "2026-09-29" }),
@@ -100,23 +106,74 @@ describe("memory span", () => {
     });
   });
 
-  it("reads only rounds at the usual study time, the one played most in the last 20 rounds", () => {
+  it("reads a week ago from the newest round, not from today", () => {
     const records = [
-      ...rounds(2, () => ({ pieceCount: 12, memorizeSeconds: 30 })).map((record, index) => ({ ...record, id: `slow${index}` })),
-      ...rounds(3, (index) => ({ endedAt: at(TODAY, 10 + index), pieceCount: 6 })),
+      round({ id: "4a", endedAt: at("2026-09-20", 9), localDay: "2026-09-20" }),
+      round({ id: "4b", endedAt: at("2026-09-20", 10), localDay: "2026-09-20" }),
+      round({ id: "8a", endedAt: at("2026-09-28", 9), localDay: "2026-09-28", pieceCount: 8 }),
+      round({ id: "8b", endedAt: at("2026-09-28", 10), localDay: "2026-09-28", pieceCount: 8 }),
     ];
 
-    expect(span(records).value).toMatchObject({ pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 3 });
+    expect(span(records, "2026-10-21").value).toMatchObject({ pieceCount: 8, weekAgo: 4, change: 4 });
   });
 
-  it("breaks a tie between study times toward the one played most recently", () => {
+  it("counts a round at exactly 80 percent and not one at 79", () => {
+    const at80 = [five({ id: "a", endedAt: at(TODAY, 1) }), five({ id: "b", endedAt: at(TODAY, 2) })];
+    const at79 = [1, 2].map((hour) => round({ id: `n${hour}`, endedAt: at(TODAY, hour), pieceCount: 19, targetFen: NINETEEN, placedFen: FIFTEEN_OF_NINETEEN }));
+
+    expect([...at80, ...at79].map(({ accuracy }) => accuracy)).toEqual([80, 80, 79, 79]);
+    expect(span(at80).value).toMatchObject({ pieceCount: 5, qualifyingRounds: 2 });
+    expect(span(at79).readiness).toEqual({ state: "warming", sampleSize: 2, need: { qualifyingRounds: 2 } });
+  });
+
+  it("keeps a span of 5 held at 10s when 11 later rounds fail at 8s", () => {
     const records = [
-      ...rounds(2, (index) => ({ pieceCount: 12, memorizeSeconds: 8, endedAt: at(TODAY, 1 + index) })),
-      ...rounds(2, (index) => ({ pieceCount: 6, memorizeSeconds: 10, endedAt: at(TODAY, 3 + index) })).map((record) => ({ ...record, id: `${record.id}b` })),
+      ...Array.from({ length: 10 }, (_, index) => five({ id: `t${index}`, endedAt: at(TODAY, 0) + index * HOUR })),
+      ...Array.from({ length: 11 }, (_, index) => five({ id: `u${index}`, endedAt: at(TODAY, 0) + (10 + index) * HOUR, memorizeSeconds: 8, placedFen: NONE })),
     ];
 
-    expect(span(records).value).toMatchObject({ pieceCount: 6, memorizeSeconds: 10 });
-    expect(span(records.map((record) => ({ ...record, endedAt: -record.endedAt }))).value).toMatchObject({ pieceCount: 12, memorizeSeconds: 8 });
+    expect(span(records)).toMatchObject({
+      readiness: { state: "ready", sampleSize: 21 },
+      value: { pieceCount: 5, memorizeSeconds: 10, qualifyingRounds: 10 },
+    });
+  });
+
+  it("holds the span steady while the study time alternates between 10s and 8s", () => {
+    const records = Array.from({ length: 8 }, (_, index) =>
+      index % 2 === 0
+        ? five({ id: `t${index}`, endedAt: at(TODAY, 0) + index * HOUR })
+        : five({ id: `u${index}`, endedAt: at(TODAY, 0) + index * HOUR, memorizeSeconds: 8, placedFen: NONE }),
+    );
+    const spans = records.map((_, index) => span(records.slice(0, index + 1)).value?.pieceCount);
+
+    expect(spans).toEqual([null, null, 5, 5, 5, 5, 5, 5]);
+  });
+
+  it("does not lift the span on one qualifying round at a larger size", () => {
+    const records = [...rounds(2, () => ({ pieceCount: 5 })), round({ id: "big", endedAt: at(TODAY, 20), pieceCount: 8 })];
+
+    expect(span(records).value).toMatchObject({ pieceCount: 5, qualifyingRounds: 2 });
+  });
+
+  it("counts a pair split across two study times, and reports the shorter time", () => {
+    const records = [five({ id: "a", endedAt: at(TODAY, 1) }), five({ id: "b", endedAt: at(TODAY, 2), memorizeSeconds: 8 })];
+
+    expect(span(records).value).toMatchObject({ pieceCount: 5, memorizeSeconds: 8, qualifyingRounds: 2 });
+  });
+
+  it("pairs a practice round with a game round, since both come from the same generator and scoring", () => {
+    const records = [five({ id: "p", endedAt: at(TODAY, 1), source: "calibration" }), five({ id: "g", endedAt: at(TODAY, 2) })];
+
+    expect(span(records)).toMatchObject({ readiness: { state: "ready", sampleSize: 2 }, value: { pieceCount: 5, qualifyingRounds: 2 } });
+  });
+
+  it("stays warming on the two kings alone, however many rounds, and asks for a round with more than two pieces", () => {
+    const records = rounds(6, () => ({ pieceCount: 2, targetFen: KINGS, placedFen: KINGS }));
+
+    expect(span(records)).toMatchObject({
+      readiness: { state: "warming", sampleSize: 6, need: { largerRounds: 1 } },
+      value: { pieceCount: null, memorizeSeconds: null, qualifyingRounds: 0, weekAgo: null, change: null },
+    });
   });
 
   it("turns stale two weeks after the last round, keeping the span", () => {

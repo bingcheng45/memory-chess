@@ -2,7 +2,7 @@
 import { IDBFactory } from "fake-indexeddb";
 import type { LabInput } from "@/lib/lab/engine";
 import { deriveLab, type LabResults, type MetricId } from "@/lib/lab/metrics";
-import { exportPersona, memoryLabStore, PERSONA_NAMES, PERSONA_TODAY, type PersonaName } from "@/lib/lab/personas";
+import { exportPersona, memoryLabStore, PERSONA_NAMES, PERSONA_TODAY, personaRounds, type PersonaName } from "@/lib/lab/personas";
 import { hasFigure, type ReadinessState } from "@/lib/lab/readiness";
 import golden from "./__golden__/derive-personas.json";
 
@@ -249,6 +249,65 @@ describe("metric engine on the persona fixtures", () => {
     const firstAt = (pieceCount: number) => value?.history.findIndex((step) => step.pieceCount === pieceCount);
 
     expect([firstAt(4), firstAt(10), firstAt(14), value?.weekAgo, value?.pieceCount]).toEqual([0, 20, 38, 10, 14]);
+  });
+
+  /**
+   * Worked by hand from each persona's rounds, apart from the engine. Per setting: [rounds at 80% or better with three
+   * pieces or more, those of them ending more than 7 days before the persona's newest round].
+   * thirtyDays: 12 pieces is the largest count held twice (9 rounds, all at 8s); a week earlier it already had 7.
+   * spanClimber: 14 pieces holds 19 rounds, none a week earlier, when 10 pieces was the largest held.
+   * easyOnly: every round is the two kings, so nothing qualifies.
+   */
+  const SPAN_BY_HAND = {
+    thirtyDays: {
+      qualifying: { "game:12x8": [9, 7], "game:6x10": [9, 7], "calibration:6x10": [8, 5] },
+      span: { pieceCount: 12, memorizeSeconds: 8, qualifyingRounds: 9, weekAgo: 12, change: 0 },
+    },
+    spanClimber: {
+      qualifying: { "game:4x10": [20, 20], "game:10x10": [47, 46], "game:14x10": [19, 0] },
+      span: { pieceCount: 14, memorizeSeconds: 10, qualifyingRounds: 19, weekAgo: 10, change: 4 },
+    },
+    easyOnly: {
+      qualifying: {},
+      span: { pieceCount: null, memorizeSeconds: null, qualifyingRounds: 0, weekAgo: null, change: null },
+    },
+  } as const;
+
+  it.each(Object.keys(SPAN_BY_HAND) as (keyof typeof SPAN_BY_HAND)[])("gives %s the span worked out by hand from its rounds", async (name) => {
+    const rounds = personaRounds(name);
+    const weekBefore = Math.max(...rounds.map(({ endedAt }) => endedAt)) - 7 * 24 * 60 * 60 * 1000;
+    const qualifying: Record<string, [number, number]> = {};
+    rounds
+      .filter(({ accuracy, config }) => accuracy >= 80 && config.pieceCount >= 3)
+      .forEach(({ source, config, endedAt }) => {
+        const counts = (qualifying[`${source}:${config.pieceCount}x${config.memorizeSeconds}`] ??= [0, 0]);
+        counts[0] += 1;
+        if (endedAt < weekBefore) counts[1] += 1;
+      });
+    const { span } = deriveLab(await inputFor(name));
+    const { history: _history, ...value } = span.value ?? { history: [] };
+
+    expect(qualifying).toEqual(SPAN_BY_HAND[name].qualifying);
+    expect(value).toEqual(SPAN_BY_HAND[name].span);
+  });
+
+  /** Correct pieces in each persona's last 20 rounds, oldest first; the averages are these tens summed by hand. */
+  const HELD_BY_HAND = {
+    thirtyDays: {
+      correct: [4, 7, 10, 2, 6, 5, 9, 2, 2, 4, 7, 6, 2, 4, 4, 10, 1, 6, 5, 8],
+      recent: { average: 5.3, previous: 5.1, change: 0.2 },
+    },
+    spanClimber: {
+      correct: [13, 13, 11, 13, 14, 13, 14, 9, 14, 14, 14, 14, 13, 14, 14, 13, 14, 14, 14, 14],
+      recent: { average: 13.8, previous: 12.8, change: 1 },
+    },
+  } as const;
+
+  it.each(Object.keys(HELD_BY_HAND) as (keyof typeof HELD_BY_HAND)[])("gives %s the pieces held worked out by hand from its rounds", async (name) => {
+    const last20 = [...personaRounds(name)].sort((a, b) => a.endedAt - b.endedAt).slice(-20);
+
+    expect(last20.map(({ correct }) => correct)).toEqual(HELD_BY_HAND[name].correct);
+    expect(deriveLab(await inputFor(name)).piecesHeld.value?.recent).toEqual(HELD_BY_HAND[name].recent);
   });
 
   it("derives every metric for the 5,000-round heavy player inside one 16ms frame", async () => {

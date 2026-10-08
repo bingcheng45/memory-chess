@@ -1,5 +1,5 @@
 import { createTranslator } from "next-intl";
-import { fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
+import { act, fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
 import en from "../../../../messages/en.json";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
 import { NOTEBOOK_SEEN_KEY } from "@/components/home/useNotebookSeen";
@@ -115,11 +115,64 @@ describe("lab notebook panel", () => {
     ]);
   });
 
-  it("stores the time of this visit, so the next visit marks only what came after it", () => {
-    jest.spyOn(Date, "now").mockReturnValue(Date.UTC(2026, 9, 8, 18));
-    renderWithIntl(<LabRecordSection record={persona("threeDays")} />);
+  describe("the visit marker", () => {
+    let watchers: { callback: IntersectionObserverCallback; targets: Element[] }[] = [];
+    beforeEach(() => {
+      watchers = [];
+      window.IntersectionObserver = jest.fn((callback: IntersectionObserverCallback) => {
+        const watcher = { callback, targets: [] as Element[], disconnect: jest.fn(), unobserve: jest.fn(), observe: (target: Element) => watcher.targets.push(target) };
+        watchers.push(watcher);
+        return watcher;
+      }) as unknown as typeof IntersectionObserver;
+      jest.spyOn(Date, "now").mockReturnValue(Date.UTC(2026, 9, 8, 18));
+    });
+    afterEach(() => {
+      Reflect.deleteProperty(window, "IntersectionObserver");
+      Reflect.deleteProperty(document, "visibilityState");
+    });
+    const sightAll = () => act(() => watchers.forEach(({ callback }) => callback([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver)));
+    const sightList = () => {
+      const { callback } = watchers.find(({ targets }) => targets.some(({ id }) => id === "lab-notebook-list"))!;
+      act(() => callback([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver));
+    };
 
-    expect(localStorage.getItem(NOTEBOOK_SEEN_KEY)).toBe(String(Date.UTC(2026, 9, 8, 18)));
+    it("is not stored while the player's entries were never in sight", () => {
+      renderWithIntl(<LabRecordSection record={persona("threeDays")} />);
+
+      expect(localStorage.getItem(NOTEBOOK_SEEN_KEY)).toBeNull();
+    });
+
+    it("is stored once, the first time the player's entries come into sight, so the next visit marks only what came after", () => {
+      const setItem = jest.spyOn(Storage.prototype, "setItem");
+      renderWithIntl(<LabRecordSection record={persona("threeDays")} />);
+
+      sightList();
+      jest.mocked(Date.now).mockReturnValue(Date.UTC(2026, 9, 8, 19));
+      sightList();
+
+      expect(localStorage.getItem(NOTEBOOK_SEEN_KEY)).toBe(String(Date.UTC(2026, 9, 8, 18)));
+      expect(setItem.mock.calls.filter(([key]) => key === NOTEBOOK_SEEN_KEY)).toHaveLength(1);
+    });
+
+    it("waits for the tab to be visible", () => {
+      Object.defineProperty(document, "visibilityState", { value: "hidden", configurable: true });
+      renderWithIntl(<LabRecordSection record={persona("threeDays")} />);
+
+      sightList();
+      expect(localStorage.getItem(NOTEBOOK_SEEN_KEY)).toBeNull();
+
+      Object.defineProperty(document, "visibilityState", { value: "visible", configurable: true });
+      act(() => document.dispatchEvent(new Event("visibilitychange")));
+      expect(localStorage.getItem(NOTEBOOK_SEEN_KEY)).toBe(String(Date.UTC(2026, 9, 8, 18)));
+    });
+
+    it("is not stored from the sample entries", () => {
+      renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
+
+      sightAll();
+
+      expect(localStorage.getItem(NOTEBOOK_SEEN_KEY)).toBeNull();
+    });
   });
 
   it("marks nothing new and still renders when storage cannot be read", () => {

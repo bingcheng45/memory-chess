@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen, within } from "@/test-utils/intl";
 import ResultLabCard, { RESULT_LAB_WAIT_MS } from "@/components/game/ResultLabCard";
-import { useLabData, type LabData } from "@/hooks/useLabData";
+import { useLabData, useLabResults, type LabData } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
 import { round } from "@/lib/lab/__tests__/fixtures";
 import type { RoundRecord } from "@/lib/lab/record";
@@ -8,7 +8,10 @@ import { summarize } from "@/lib/lab/summary";
 import { resetWeekGoalSession } from "@/components/home/useWeekGoal";
 import { seconds } from "@/components/home/labFormat";
 
-jest.mock("@/hooks/useLabData", () => ({ ...jest.requireActual("@/hooks/useLabData"), useLabData: jest.fn() }));
+jest.mock("@/hooks/useLabData", () => {
+  const actual = jest.requireActual("@/hooks/useLabData");
+  return { ...actual, useLabData: jest.fn(), useLabResults: jest.fn(actual.useLabResults) };
+});
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
 const TODAY = "2026-10-07";
@@ -46,7 +49,14 @@ beforeEach(() => {
   window.localStorage.clear();
   resetWeekGoalSession();
   jest.mocked(trackEvent).mockClear();
+  jest.mocked(useLabResults).mockClear();
 });
+
+const UNSHOWN = "Your lab record could not be shown for this round.";
+
+function withFrameTop(top: number) {
+  return jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({ top } as DOMRect);
+}
 
 describe("ResultLabCard", () => {
   it("shows a first round only the streak and a link that replays the setting in place", () => {
@@ -101,18 +111,65 @@ describe("ResultLabCard", () => {
     expect(trackEvent).toHaveBeenCalledTimes(1);
   });
 
-  it("keeps the slot while the round is on its way and leaves quietly when it never arrives", () => {
+  it("keeps the slot while the round is on its way, deriving nothing, and keeps the frame with a quiet line when it never arrives", () => {
     jest.useFakeTimers();
     try {
       withRecord([played("older", 60)]);
-      const { container } = renderCard("missing");
-      expect(screen.getByTestId("result-lab-slot")).toBeInTheDocument();
+      renderCard("missing");
+      expect(screen.getByTestId("result-lab-slot")).toBeEmptyDOMElement();
 
       act(() => jest.advanceTimersByTime(RESULT_LAB_WAIT_MS - 1));
-      expect(screen.getByTestId("result-lab-slot")).toBeInTheDocument();
+      expect(screen.getByTestId("result-lab-slot")).toBeEmptyDOMElement();
       act(() => jest.advanceTimersByTime(1));
 
+      expect(screen.getByTestId("result-lab-slot")).toHaveTextContent(UNSHOWN);
+      expect(screen.getByRole("status")).toHaveTextContent(UNSHOWN);
+      expect(useLabResults).not.toHaveBeenCalled();
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("takes the frame away when it gives up below the fold, where nothing on screen moves", () => {
+    jest.useFakeTimers();
+    const rect = withFrameTop(window.innerHeight);
+    try {
+      withRecord([]);
+      const { container } = renderCard("missing");
+      act(() => jest.advanceTimersByTime(RESULT_LAB_WAIT_MS));
+
       expect(container).toBeEmptyDOMElement();
+    } finally {
+      rect.mockRestore();
+      jest.useRealTimers();
+    }
+  });
+
+  it("stays given up when the round lands after the wait", () => {
+    jest.useFakeTimers();
+    try {
+      withRecord([]);
+      const { rerender } = renderCard("late");
+      act(() => jest.advanceTimersByTime(RESULT_LAB_WAIT_MS));
+      withRecord([played("late", 67)]);
+      rerender(<ResultLabCard roundId="late" onPlay={jest.fn()} />);
+
+      expect(screen.queryByRole("region", { name: "Your lab record" })).toBeNull();
+      expect(screen.getByTestId("result-lab-slot")).toHaveTextContent(UNSHOWN);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("leaves no wait running once it is gone", () => {
+    jest.useFakeTimers();
+    try {
+      withRecord([]);
+      const { unmount } = renderCard("missing");
+      expect(jest.getTimerCount()).toBe(1);
+      unmount();
+
+      expect(jest.getTimerCount()).toBe(0);
     } finally {
       jest.useRealTimers();
     }
@@ -134,10 +191,10 @@ describe("ResultLabCard", () => {
     }
   });
 
-  it("draws nothing when this device keeps no record", () => {
+  it("keeps the frame with a quiet line when storage will not open", () => {
     withRecord([], "unavailable");
-    const { container } = renderCard("first");
+    renderCard("first");
 
-    expect(container).toBeEmptyDOMElement();
+    expect(screen.getByTestId("result-lab-slot")).toHaveTextContent(UNSHOWN);
   });
 });

@@ -710,6 +710,7 @@
         "title": "Your lab record",
         "device": "Kept on this device",
         "lines": "This round in your record",
+        "unshown": "Your lab record could not be shown for this round.",
         "newBest": {
           "up": "New best at {pieceCount} pieces, {studyTime}: {accuracy}%, up from {previous}%",
           "faster": "New best at {pieceCount} pieces, {studyTime}: {accuracy}% again, {fasterTime} faster",

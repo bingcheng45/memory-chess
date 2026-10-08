@@ -3,16 +3,17 @@
 import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useLabData, useLabResults } from "@/hooks/useLabData";
+import { useLabData, useLabResults, type LabData } from "@/hooks/useLabData";
 import { seconds } from "@/components/home/labFormat";
 import { useWeekGoal } from "@/components/home/useWeekGoal";
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { playHref } from "@/lib/game/roundLink";
 import { INSIGHT_GUIDES } from "@/lib/lab/insights";
 import { resultCardFor, type NewBest, type NextStep, type ResultCard, type Setting, type VsRecent } from "@/lib/lab/resultCard";
-import ResultLabSlot, { RESULT_LAB_FRAME } from "./ResultLabSlot";
+import type { RoundRecord } from "@/lib/lab/record";
+import ResultLabSlot, { RESULT_LAB_FRAME, ResultLabEnd } from "./ResultLabSlot";
 
-/** How long the card waits for the round to reach the record before it gives up and leaves the screen. */
+/** How long the card waits for the round to reach the record before it gives up. */
 export const RESULT_LAB_WAIT_MS = 3000;
 
 const SOURCE: RoundSource = "result_next";
@@ -96,31 +97,16 @@ function NextAction({ t, next, onPlay }: { t: Translate; next: NextStep; onPlay:
   return action.kind === "guide" ? <GuideLink t={t} guide={action.guide} /> : <PlayLink t={t} label="play" setting={action} onPlay={onPlay} />;
 }
 
-/**
- * The round just played, read against the record on this device. Shown once the round is in the record; if it does
- * not arrive in time (no storage, a failed write) the card leaves the screen without a word.
- */
-export default function ResultLabCard({ roundId, onPlay }: ResultLabCardProps) {
+function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData; onPlay: ResultLabCardProps["onPlay"] }) {
   const t = useTranslations("home.lab.resultCard");
-  const data = useLabData();
   const results = useLabResults(data);
   const [goal] = useWeekGoal();
-  const [waited, setWaited] = useState(false);
-  const round = data.records.find(({ id }) => id === roundId);
-
-  useEffect(() => {
-    if (round) return;
-    const timer = setTimeout(() => setWaited(true), RESULT_LAB_WAIT_MS);
-    return () => clearTimeout(timer);
-  }, [round]);
-
-  const { records, summary, today, storage } = data;
+  const { records, summary, today } = data;
   const card = useMemo(
-    () => (round && today ? resultCardFor({ round, records, results, goal, days: summary.days, today }) : null),
+    () => resultCardFor({ round, records, results, goal, days: summary.days, today }),
     [round, records, results, goal, summary.days, today],
   );
-  const gaveUp = storage === "unavailable" || waited;
-  if (!card) return gaveUp ? null : <ResultLabSlot />;
+  if (!card) return <ResultLabEnd />;
 
   const why = whyOf(t, card.next);
   return (
@@ -147,4 +133,27 @@ export default function ResultLabCard({ roundId, onPlay }: ResultLabCardProps) {
       </p>
     </section>
   );
+}
+
+/**
+ * The round just played, read against the record on this device. Shown once the round is in the record. When it is
+ * not there in time (storage that will not open, a failed or held write) the card gives up for good, so a round that
+ * lands later cannot redraw the screen, and the metrics are only derived once the round is there to read.
+ */
+export default function ResultLabCard({ roundId, onPlay }: ResultLabCardProps) {
+  const data = useLabData();
+  const [waited, setWaited] = useState(false);
+  const round = data.today ? data.records.find(({ id }) => id === roundId) : undefined;
+  const found = round !== undefined;
+
+  useEffect(() => {
+    if (found) return;
+    const timer = setTimeout(() => setWaited(true), RESULT_LAB_WAIT_MS);
+    return () => clearTimeout(timer);
+  }, [found]);
+
+  const gaveUp = data.storage === "unavailable" || waited;
+  if (gaveUp) return <ResultLabEnd />;
+  if (!round) return <ResultLabSlot />;
+  return <FoundCard round={round} data={data} onPlay={onPlay} />;
 }

@@ -41,8 +41,10 @@ describe("§06 layout", () => {
       "Fig. 6.8 · Miss map",
       "Fig. 6.9 · Recall by piece type",
       "Fig. 6.10 · Insights",
-      "Fig. 6.11 · Personal bests",
-      "Fig. 6.12 · Leaderboard",
+      "Fig. 6.11 · Programs",
+      "Fig. 6.12 · Goal",
+      "Fig. 6.13 · Personal bests",
+      "Fig. 6.14 · Leaderboard",
     ]);
   });
 

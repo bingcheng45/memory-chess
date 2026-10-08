@@ -90,6 +90,6 @@ export function useLabData(): LabData {
   return data;
 }
 
-export function useLabResults({ records, summary, today }: LabInput): LabResults {
-  return useMemo(() => deriveLab({ records, summary, today }), [records, summary, today]);
+export function useLabResults({ records, summary, today, plan = null, target = null }: LabInput): LabResults {
+  return useMemo(() => deriveLab({ records, summary, today, plan, target }), [records, summary, today, plan, target]);
 }

@@ -12,14 +12,15 @@ import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
 import { ForgettingCurve } from "./LabCharts";
 import { BestsPanel, figureOf, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
 import { InsightsPanel, NotebookPanel } from "./LabInsightPanels";
+import { GoalPanel, PlansPanel } from "./LabProgramPanels";
 import { HeldPanel, SpanPanel, SpeedPanel } from "./LabReadingPanels";
 import { LabRecordTools } from "./LabRecordTools";
 import { LabUnlockStrip } from "./LabUnlockStrip";
+import { planChoice, targetChoice } from "./labChoices";
 import { useFirstSight } from "./useFirstSight";
 import type { LabRecord } from "./useLabRecord";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
-const PLANS = ["a", "b", "c"] as const;
 const BOARD_SKETCH = [
   { rank: "01", width: "86%", pieces: 12 },
   { rank: "02", width: "74%", pieces: 10 },
@@ -77,32 +78,16 @@ function BoardPanel() {
   );
 }
 
-function Plans() {
-  const t = useTranslations("home.lab.record");
-  const tags = useTranslations("home.lab.tags");
-  return (
-    <div className="lab-plans" data-row="programs">
-      {PLANS.map((plan) => (
-        <div className="lab-plan" key={plan}>
-          <span className="lab-k">
-            {t(`plans.${plan}.kicker`)} <span className="lab-tag">{tags("proposed")}</span>
-          </span>
-          <h3>{t(`plans.${plan}.title`)}</h3>
-          <ol>
-            {(t.raw(`plans.${plan}.steps`) as string[]).map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ol>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export function LabRecordSection({ record }: { record: LabRecord }) {
   const t = useTranslations("home.lab.record");
   const { summary, today } = record;
-  const lab = useLabResults(record);
+  const storedPlan = planChoice.useValue();
+  const storedTarget = targetChoice.useValue();
+  // Choices are read only with the record, so the server and a loading tab both show the Sample cards.
+  const ready = record.storage === "available" && today !== "";
+  const plan = ready ? storedPlan : null;
+  const target = ready ? storedTarget : null;
+  const lab = useLabResults({ ...record, plan, target });
   const section = useFirstSight<HTMLElement>(trackSectionView);
   const lastDay = summary.days.at(-1);
   const daysAgo = today && lastDay ? daysBetween(lastDay, today) : null;
@@ -118,11 +103,12 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
     missMap: <MissPanel result={lab.missMap} daysAgo={daysAgo} />,
     typeRecall: <TypesPanel result={lab.typeRecall} daysAgo={daysAgo} />,
     insights: <InsightsPanel result={lab.insights} daysAgo={daysAgo} />,
+    plans: <PlansPanel result={lab.plans} choosing={ready ? { today, records: record.records, plan } : null} daysAgo={daysAgo} />,
+    goal: <GoalPanel result={lab.goal} today={ready ? today : null} daysAgo={daysAgo} />,
     bests: <BestsPanel result={lab.bests} daysAgo={daysAgo} />,
     board: <BoardPanel />,
   };
   const rows: Record<CustomRow, ReactNode> = {
-    programs: <Plans key="programs" />,
     tools: (
       <div className="lab-tools-slot" data-row="tools" key="tools">
         <LabRecordTools record={record} />

@@ -531,33 +531,84 @@
           "open": "Open leaderboard"
         },
         "plans": {
-          "a": {
+          "fig": "Fig. {number} · Programs",
+          "title": "Follow a plan for a week or two.",
+          "desc": "One plan at a time. Progress is counted from your rounds, so stopping a plan never deletes a round.",
+          "baseline": {
             "kicker": "Plan A · 7 days",
             "title": "Baseline week",
             "steps": [
               "One Medium round a day.",
               "Log the reading, ignore the urge to retry.",
               "Day 7: compare against day 1."
-            ]
+            ],
+            "progress": "{played} of {days} days with a Medium round",
+            "compare": "Day {firstDay} {first}%, day {lastDay} {latest}%: {direction, select, up {up {change, plural, one {# point} other {# points}}} down {down {change, plural, one {# point} other {# points}}} other {no change}}.",
+            "compareNone": "No Medium round since the plan started, so there is nothing to compare.",
+            "compareOne": "One Medium round since the plan started, so there is nothing to compare yet."
           },
-          "b": {
+          "edge": {
             "kicker": "Plan B · 14 days",
             "title": "Edge-file drill",
             "steps": [
               "Custom rig: 8 pieces, 15 s.",
               "Review your miss map every 3 days.",
               "Pair with the board vision guide."
-            ]
+            ],
+            "progress": "Played the rig on {played, plural, one {# day} other {# days}} of {elapsed}. Aim: {target} days in {days}.",
+            "share": "Edge files missed: {before}% in {beforeRounds, plural, one {# round} other {# rounds}} before the plan, {now}% in {nowRounds, plural, one {# round} other {# rounds}} since.",
+            "shareMissing": "Edge-file misses compare once each side has {needed} rounds with a piece on the a or h file. So far {before} before the plan, {now} since.",
+            "guide": "Read how to see the whole board"
           },
-          "c": {
+          "ladder": {
             "kicker": "Plan C · open-ended",
             "title": "Step-down ladder",
             "steps": [
               "Hold 90% for three rounds in a row.",
               "Then cut study time by 2 seconds.",
               "When study time bottoms out, add pieces."
-            ]
-          }
+            ],
+            "rung": "Rung: {pieceCount} pieces, {studyTime}.",
+            "run": "{run} of {needed} rounds in a row at {accuracy} percent or better.",
+            "climbed": "Climbed: {needed} rounds in a row at {accuracy} percent or better.",
+            "next": "Next rung: {pieceCount} pieces, {studyTime}.",
+            "top": "Top of the ladder: no board has more than {pieceCount} pieces."
+          },
+          "status": {
+            "day": "Day {day}",
+            "dayOf": "Day {day} of {length}",
+            "overtime": "Day {day}, past the planned {length}",
+            "done": "Done on day {day}.",
+            "finished": "Finished early on day {day}.",
+            "stopped": "Stopped on day {day}."
+          },
+          "start": "Start {title}",
+          "again": "Start {title} again",
+          "busy": "One plan at a time. Stop {title} to start this one.",
+          "stop": "Stop plan",
+          "confirmStop": "Really stop?",
+          "keep": "Keep going",
+          "finish": "Finish early",
+          "play": "Play {pieceCount} pieces, {studyTime}"
+        },
+        "goal": {
+          "fig": "Fig. {number} · Goal",
+          "title": "Aim for a reading.",
+          "desc": "Pick a piece count and an accuracy. The bar fills from your best round at that count or more since you set the goal.",
+          "sample": "Sample goal: {pieceCount} pieces at {accuracy} percent. Best so far {best} percent, {percent}% of the way.",
+          "target": "Goal: {pieceCount} or more pieces at {accuracy} percent or better, set {date}.",
+          "progress": "Best since then: {best} percent at {pieceCount} pieces, {percent}% of the way.",
+          "bar": "{percent}% of the way to the goal",
+          "need": "No round at {pieceCount} or more pieces since you set this goal.",
+          "reached": "Reached on {date}: {accuracy} percent at {pieceCount} pieces.",
+          "form": "New goal",
+          "pieces": "Pieces, at least",
+          "accuracy": "Accuracy, at least",
+          "percent": "{value}%",
+          "set": "Set goal",
+          "newGoal": "Set a new goal",
+          "clear": "Clear goal",
+          "cancel": "Cancel"
         },
         "mine": "Your record",
         "fromRounds": "From {count, plural, one {# round} other {# rounds}}",
@@ -652,7 +703,9 @@
             "first90": "First {threshold} percent or better at {pieceCount} pieces.",
             "best": "New {source, select, calibration {practice} other {game}} best at {pieceCount} pieces, {studyTime}: {by, select, time {{accuracy} percent again, rebuilt in {solveTime}} other {{accuracy} percent, up from {previous}}}.",
             "span": "{from, select, 0 {Memory span reached {to} pieces} other {Memory span moved from {from} to {to} pieces}}.",
-            "streak": "{forgiven, plural, =0 {{days} days in a row.} one {{days} days in a streak, # missed day forgiven.} other {{days} days in a streak, # missed days forgiven.}}"
+            "streak": "{forgiven, plural, =0 {{days} days in a row.} one {{days} days in a streak, # missed day forgiven.} other {{days} days in a streak, # missed days forgiven.}}",
+            "rungUp": "Rung up: {pieceCount} pieces at {studyTime}.",
+            "goalReached": "Goal reached: {accuracy} percent at {pieceCount} pieces or more."
           }
         },
         "tools": {

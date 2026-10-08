@@ -130,21 +130,9 @@
 .lab-tools-slot { display: flow-root; min-height: var(--lab-h-tools); }
 .lab-unlock { min-height: var(--lab-h-unlock); margin-bottom: 16px; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 16px 22px; }
 .lab-unlock:empty { background: none; border-color: transparent; }
-.lab-unlock ul { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 15px; color: var(--lab-ink-2); }
+.lab-unlock ul { margin: 8px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 24px; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
 .lab-unlock .lab-go { margin-top: 0; }
-.lab-unlock .lab-unlock-toggle { display: none; }
-/*
- * From tablet width down the strip shows its first line with a toggle for the rest, so one small reserve holds any
- * number of lines. The first line keeps room for its longest wording, so it can rewrap when real data arrives
- * without moving the toggle: two lines on tablets, four on phones, where the longest threshold wraps to four at 320px.
- */
-@media (max-width: 1000px) {
-  .lab-unlock li:first-child { min-height: 2.9em; min-height: 2lh; }
-  .lab-unlock:not([data-expanded]) li + li { display: none; }
-  .lab .lab-unlock .lab-unlock-toggle { display: block; padding: 0 !important; }
-  .lab-unlock-toggle[data-single] { visibility: hidden; }
-}
-@media (max-width: 640px) { .lab-unlock li:first-child { min-height: 6.2em; min-height: 4lh; } }
+@media (max-width: 640px) { .lab-unlock { padding: 14px 16px; } .lab-unlock ul { grid-template-columns: 1fr; font-size: 14px; } }
 .lab-stale .lab-go { display: inline; margin: 0 0 0 4px; white-space: nowrap; }
 .lab-dash { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
 .lab-panel { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 22px; min-width: 0; }

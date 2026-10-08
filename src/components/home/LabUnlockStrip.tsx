@@ -1,8 +1,7 @@
 "use client";
 
-import { useId, useState } from "react";
 import { useTranslations } from "next-intl";
-import { LAB_METRICS, type LabResults } from "@/lib/lab/metrics";
+import type { LabResults } from "@/lib/lab/metrics";
 import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
 import { unlocksFor, type Unlock } from "@/lib/lab/unlocks";
 import type { LabStorageState } from "@/hooks/useLabData";
@@ -28,8 +27,6 @@ const LEFT: { readonly [K in Unlock["metric"]]: (need: Need) => string } = {
 export function LabUnlockStrip({ results, storage }: { results: LabResults; storage: LabStorageState }) {
   const t = useTranslations("home.lab.record.unlock");
   const unlocks = unlocksFor(results);
-  const listId = useId();
-  const [expanded, setExpanded] = useState(false);
 
   const text = ({ metric, started, need }: Unlock) => {
     const setting = metric === "speed" ? results.speed.value?.setting : results.trend.value?.setting;
@@ -43,7 +40,6 @@ export function LabUnlockStrip({ results, storage }: { results: LabResults; stor
       ...need,
       accuracy: LAB_THRESHOLDS.spanAccuracy,
       minPieces: LAB_THRESHOLDS.spanMinPieces,
-      threshold: LAB_METRICS[metric].thresholds.exposures ?? 0,
       ...(setting && settingValues(setting)),
     };
     return t(started ? LEFT[metric](need) : metric, values);
@@ -60,27 +56,17 @@ export function LabUnlockStrip({ results, storage }: { results: LabResults; stor
           </p>
           <LabPlayLink panel="unlock" />
         </div>
-        <ul aria-labelledby="lab-unlock-label" id={listId}>
+        <ul aria-labelledby="lab-unlock-label">
           {/* Keyed by position, so when real data arrives each line changes its text in place instead of moving. */}
           {unlocks.map((unlock, index) => (
             <li key={index}>{text(unlock)}</li>
           ))}
         </ul>
-        <button
-          type="button"
-          className="lab-bests-toggle lab-unlock-toggle"
-          aria-expanded={expanded}
-          aria-controls={listId}
-          data-single={unlocks.length === 1 ? "" : undefined}
-          onClick={() => setExpanded(!expanded)}
-        >
-          {expanded ? t("showFewer") : t("showAll", { count: unlocks.length })}
-        </button>
       </>
     );
 
   return (
-    <div className="lab-unlock" data-expanded={expanded ? "" : undefined}>
+    <div className="lab-unlock">
       {storage !== "unavailable" && content}
     </div>
   );

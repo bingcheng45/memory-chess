@@ -127,7 +127,7 @@ describe("lab record export and import", () => {
 
   it("round-trips a review round and a daily round", () => {
     const rounds = [
-      roundV2({ id: "a" }, { kind: "daily", startSource: "link", tzOffsetMin: 0 }),
+      roundV2({ id: "a" }, { kind: "daily", dailyDay: "2026-10-07", startSource: "daily", tzOffsetMin: 0 }),
       roundV2({ id: "b", endedAt: Date.UTC(2026, 9, 7, 13) }, { kind: "review", reviewOf: "a", reviewDelayDays: 3, tzOffsetMin: 840 }),
     ];
 
@@ -173,7 +173,7 @@ describe("lab record export and import", () => {
     ["a fractional timezone", { tzOffsetMin: 30.5 }],
     ["an unknown kind", { kind: "weekly" }],
     ["a review link on a normal round", { reviewOf: "a" }],
-    ["a review delay on a daily round", { kind: "daily", reviewDelayDays: 2 }],
+    ["a review delay on a daily round", { kind: "daily", dailyDay: "2026-10-07", reviewDelayDays: 2 }],
     ["a review delay that is not a whole day", { kind: "review", reviewOf: "a", reviewDelayDays: 1.5 }],
     ["an empty review link", { kind: "review", reviewOf: "" }],
     ["an unknown start", { startSource: "server" }],
@@ -181,6 +181,9 @@ describe("lab record export and import", () => {
     ["a null kind", { kind: null }],
     ["a review link without its delay", { kind: "review", reviewOf: "a" }],
     ["a review delay without its link", { kind: "review", reviewDelayDays: 2 }],
+    ["a daily round without its board's day", { kind: "daily" }],
+    ["a board day on a normal round", { dailyDay: "2026-10-07" }],
+    ["a board day that is not a calendar day", { kind: "daily", dailyDay: "2026-02-30" }],
   ])("skips a version 2 round with %s, counts it and keeps the rest", (_, change) => {
     const file = JSON.stringify(buildExport([roundV2({ id: "good" }), { ...roundV2({ id: "bad" }), ...change }] as never, NOW));
 

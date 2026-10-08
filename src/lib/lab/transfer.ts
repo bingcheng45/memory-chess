@@ -101,6 +101,7 @@ function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
     (raw.tzOffsetMin === undefined || (Number.isInteger(raw.tzOffsetMin) && Math.abs(raw.tzOffsetMin as number) <= MAX_TZ_OFFSET_MIN)) &&
     reviewed === (raw.reviewDelayDays !== undefined) &&
     (!reviewed || (kind === "review" && isId(raw.reviewOf) && isCount(raw.reviewDelayDays, MAX_REVIEW_DELAY_DAYS))) &&
+    (kind === "daily" ? isCalendarDay(raw.dailyDay) : raw.dailyDay === undefined) &&
     (raw.placements === undefined) === (raw.removals === undefined) &&
     (raw.placements === undefined || (isPlacementList(raw.placements) && isCount(raw.removals, MAX_REMOVALS)));
   if (!valid) return null;
@@ -109,6 +110,7 @@ function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
     startSource: raw.startSource as RoundSource | undefined,
     reviewOf: raw.reviewOf as string | undefined,
     reviewDelayDays: raw.reviewDelayDays as number | undefined,
+    dailyDay: raw.dailyDay as string | undefined,
     tzOffsetMin: raw.tzOffsetMin as number | undefined,
     placements: raw.placements as PlacementEvent[] | undefined,
     removals: raw.removals as number | undefined,

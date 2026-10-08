@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Chess, PieceSymbol, Square } from 'chess.js';
-import { GameState, GameHistory, GamePhase, DIFFICULTY_LEVELS, DifficultyLevel } from '@/lib/types/game';
+import { GameState, GameHistory, GamePhase, DIFFICULTY_LEVELS, DifficultyLevel, type SetBoard } from '@/lib/types/game';
 import { generateMemorizationPosition } from '@/lib/utils/memorizationPosition';
 import { v4 as uuidv4 } from 'uuid';
 import {
@@ -35,7 +35,7 @@ interface GameStore {
   memorizationChess: Chess | null; // Chess instance for the position to memorize
   
   // Actions
-  startGame: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
+  startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
   stopGame: () => void;
   makeMove: (move: string) => boolean;
   resetGame: () => void;
@@ -164,11 +164,10 @@ export const useGameStore = create<GameStore>()(
       memorizationChess: null,
       
       // Actions
-      startGame: (pieceCount, memorizeTime, source) => {
+      startGame: (pieceCount, memorizeTime, source, board) => {
         console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
         
-        // Generate a random position for memorization
-        const memorizationPosition = generateMemorizationPosition(pieceCount);
+        const memorizationPosition = board ? new Chess(board.fen) : generateMemorizationPosition(pieceCount);
         
         if (!memorizationPosition) {
           console.error('Failed to generate random position');
@@ -186,6 +185,7 @@ export const useGameStore = create<GameStore>()(
             pieceCount,
             memorizeTime,
             startSource: source,
+            board,
             originalPosition: memorizationPosition.fen(),
             skillRating: get().gameState.skillRating || 1000,
             streak: get().gameState.streak || 0,
@@ -502,6 +502,7 @@ export const useGameStore = create<GameStore>()(
           solveMs: Math.round(completionTime * 1000),
           placements: gameState.placementLog?.placements,
           removals: gameState.placementLog?.removals,
+          ...(gameState.board && { kind: gameState.board.kind, dailyDay: gameState.board.day }),
         } as const;
         void import('@/lib/lab/recordRound').then(({ recordLabRound }) => recordLabRound(facts)).catch(() => {});
       },

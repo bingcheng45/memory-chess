@@ -1,4 +1,5 @@
 import { dailyBoardOf, msToNextUtcDay, shareGrid, utcDayOf } from "@/lib/lab/daily";
+import { personaRounds, PERSONA_TODAY } from "@/lib/lab/personas";
 import { round, roundV2 } from "./fixtures";
 
 const daily = (dailyDay: string, overrides: Parameters<typeof roundV2>[0] = {}) =>
@@ -72,5 +73,19 @@ describe("the share grid", () => {
         "🟧⬜⬜⬜⬜⬜⬜🟩",
       ].join("\n"),
     );
+  });
+});
+
+describe("the daily personas", () => {
+  it("read as today's board open, played, and a nine-day streak with one forgiven day", () => {
+    const boardOf = (name: "dailyOpen" | "dailyPlayed" | "dailyStreak") => dailyBoardOf(personaRounds(name), PERSONA_TODAY);
+
+    expect(boardOf("dailyOpen")).toMatchObject({ status: "open", day: "2026-10-08", streak: { current: 3, longest: 3, graceUsed: false } });
+    expect(boardOf("dailyPlayed")).toMatchObject({
+      status: "played",
+      round: { kind: "daily", dailyDay: "2026-10-08", startSource: "daily", positionId: "1330e3656bec5f" },
+      streak: { current: 1 },
+    });
+    expect(boardOf("dailyStreak")).toMatchObject({ status: "played", streak: { current: 9, longest: 9, graceUsed: true, forgivenDays: ["2026-10-03"] } });
   });
 });

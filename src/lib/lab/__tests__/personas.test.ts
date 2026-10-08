@@ -36,6 +36,9 @@ describe("persona fixtures", () => {
       planBaseline: { rounds: 15, rejected: 0, overCap: 0, summary: 15 },
       planEdge: { rounds: 36, rejected: 0, overCap: 0, summary: 36 },
       ladderClimb: { rounds: 22, rejected: 0, overCap: 0, summary: 22 },
+      dailyOpen: { rounds: 11, rejected: 0, overCap: 0, summary: 11 },
+      dailyPlayed: { rounds: 5, rejected: 0, overCap: 0, summary: 5 },
+      dailyStreak: { rounds: 9, rejected: 0, overCap: 0, summary: 9 },
     });
   });
 
@@ -78,7 +81,7 @@ describe("persona fixtures", () => {
 
     expect(rounds.every((round) => round.v === 2 && round.positionId === positionId(round.targetFen) && round.tzOffsetMin === -480)).toBe(true);
     expect(new Set(rounds.map((round) => round.v === 2 && round.startSource))).toEqual(
-      new Set(["calibration", "home_quick", "try_again", "game_form", "tile_drill", "home_tier", "link"]),
+      new Set(["calibration", "home_quick", "try_again", "game_form", "tile_drill", "home_tier", "link", "daily"]),
     );
   });
 

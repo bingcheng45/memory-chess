@@ -2,7 +2,7 @@
 import { IDBFactory } from "fake-indexeddb";
 import type { LabInput } from "@/lib/lab/engine";
 import { deriveLab, type LabResults, type MetricId } from "@/lib/lab/metrics";
-import { exportPersona, memoryLabStore, PERSONA_NAMES, PERSONA_TODAY, personaRounds, PLAN_PERSONAS, type PersonaName } from "@/lib/lab/personas";
+import { DAILY_PERSONAS, exportPersona, memoryLabStore, PERSONA_NAMES, PERSONA_TODAY, personaRounds, PLAN_PERSONAS, type PersonaName } from "@/lib/lab/personas";
 import { hasFigure, type ReadinessState } from "@/lib/lab/readiness";
 import golden from "./__golden__/derive-personas.json";
 
@@ -58,8 +58,8 @@ function inputFor(name: PersonaName): Promise<LabInput> {
   return inputs.get(name) as Promise<LabInput>;
 }
 
-/** The cast these tables were written for; the plan personas are read in planPersonas.test.ts. */
-const CAST = PERSONA_NAMES.filter((name) => !(PLAN_PERSONAS as readonly string[]).includes(name));
+/** The cast these tables were written for; the plan personas are read in planPersonas.test.ts, the daily ones in daily.test.ts. */
+const CAST = PERSONA_NAMES.filter((name) => !([...PLAN_PERSONAS, ...DAILY_PERSONAS] as readonly string[]).includes(name));
 /** A plan and a goal are choices, so a record alone leaves them empty; planPersonas.test.ts reads them with choices. */
 const recordMetrics = (results: LabResults) => Object.entries(results).filter(([id]) => id !== "plans" && id !== "goal");
 

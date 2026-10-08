@@ -36,11 +36,13 @@ const assert = (ok, message) => {
   if (!ok) throw new Error(message);
 };
 
+// Text that reads the clock, such as the time until the daily board resets, is replaced so snapshots compare across runs.
 const PANEL_TEXT = `(() => {
   const record = document.getElementById("record");
   const entries = [...record.querySelectorAll(".lab-panel")].map((panel) => {
     const key = [...panel.classList].find((name) => name.startsWith("lab-p-")).slice(6);
-    return [key, panel.innerText];
+    const clocks = [...panel.querySelectorAll("[data-clock]")].map((clock) => clock.innerText).filter(Boolean);
+    return [key, clocks.reduce((text, clock) => text.replace(clock, "<clock>"), panel.innerText)];
   });
   const tools = record.querySelector(".lab-tools");
   const unlock = record.querySelector(".lab-unlock");
@@ -99,6 +101,29 @@ export async function importFile(page, file) {
   return page.waitFor(`document.querySelector('.lab-tools p[role="status"]').textContent.trim() || null`, 60_000);
 }
 
+/**
+ * Moves the browser's clock by `offsetMs` for every page loaded after this call, so a driver can open a persona on its
+ * own day or step a day forward without waiting. Timers still run at real speed.
+ */
+export async function shiftClock(page, offsetMs) {
+  await page.send("Page.addScriptToEvaluateOnNewDocument", {
+    source: `(() => {
+      const offset = ${Number(offsetMs)};
+      const RealDate = Date;
+      class ShiftedDate extends RealDate {
+        constructor(...args) { super(...(args.length === 0 ? [RealDate.now() + offset] : args)); }
+        static now() { return RealDate.now() + offset; }
+      }
+      globalThis.Date = ShiftedDate;
+    })()`,
+  });
+}
+
+/** Sets the browser clock to the persona's day when its file names one; see build-personas.mjs. */
+export async function personaClock(page, persona) {
+  if (persona.clock) await shiftClock(page, persona.clock - Date.now());
+}
+
 /** Writes the persona's chosen plan and goal, which live in localStorage beside the record, never in its file. */
 export async function seedLocal(page, persona) {
   const entries = Object.entries(persona.local ?? {});
@@ -109,6 +134,7 @@ export async function seedLocal(page, persona) {
 export async function loadPersona(page, baseUrl, personaFile) {
   const persona = JSON.parse(readFileSync(personaFile, "utf8"));
   if (persona.rounds.length === 0) return 0;
+  await personaClock(page, persona);
   await sized(page, 1440);
   await page.goto(`${baseUrl}/`);
   await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);
@@ -131,6 +157,7 @@ export default async function drive(page, { baseUrl, evidenceDir }) {
     if (method === "Log.entryAdded" && params.entry.level === "error") consoleErrors.push(`${params.entry.text} [${params.entry.url ?? ""}]`);
   });
 
+  await personaClock(page, persona);
   await page.send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
   await page.goto(`${baseUrl}/`);
   await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);

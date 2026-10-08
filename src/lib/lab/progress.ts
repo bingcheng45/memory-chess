@@ -169,13 +169,16 @@ export interface SpeedValue {
 
 export const SPEED_THRESHOLDS = { rounds: LAB_THRESHOLDS.trendRounds };
 
-const secondsPerPiece = ({ solveMs, correct }: RoundRecord) => solveMs / correct / 1000;
+/** A rebuild longer than this was a board left open, so it counts as this long and cannot swamp the average. */
+const MAX_SOLVE_MS = 600_000;
 
-/** Rounds with nothing correct have no time per piece, so they are left out. */
+const secondsPerPiece = ({ solveMs, correct }: RoundRecord) => Math.min(solveMs, MAX_SOLVE_MS) / correct / 1000;
+
+/** Rounds with nothing correct or no rebuild time have no time per piece, so they are left out. */
 export function computeSpeed(input: LabInput): MetricResult<SpeedValue> {
   const { rounds, readiness } = busiestSetting(
     input,
-    trendRounds(input).filter(({ correct }) => correct > 0),
+    trendRounds(input).filter(({ correct, solveMs }) => correct > 0 && solveMs > 0),
     SPEED_THRESHOLDS,
     LAB_THRESHOLDS.speedSettingRounds,
   );

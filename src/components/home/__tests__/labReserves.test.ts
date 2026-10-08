@@ -18,7 +18,6 @@ const BOXES = {
   insights: ".lab-p-insights",
   notebook: ".lab-p-notebook",
   tools: ".lab-tools-slot",
-  welcome: ".lab-welcome",
 } as const;
 type Box = keyof typeof BOXES;
 

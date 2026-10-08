@@ -9,7 +9,7 @@ import { persona } from "@/test-utils/labPersona";
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
 const streakPanel = () => screen.getByText(/^Fig\. 6\.\d+ · Days in a row$/).closest(".lab-panel") as HTMLElement;
-const welcome = () => document.querySelector(".lab-welcome")?.textContent;
+const welcome = () => document.querySelector(".lab-welcome");
 
 beforeEach(() => {
   window.localStorage.clear();
@@ -141,20 +141,21 @@ describe("week ring", () => {
 });
 
 describe("welcome back", () => {
-  it("greets a player back after 20 days with their day count and latest round", () => {
+  it("greets a player back after 20 days with their day count and latest round, inside the unlock strip's reserved box", () => {
     renderWithIntl(<LabRecordSection record={persona("stale")} />);
 
-    expect(welcome()).toBe("Welcome back. Day 26 of your record. Last time 100% at 6 pieces, 10 s.");
+    expect(welcome()?.textContent).toBe("Welcome back. Day 26 of your record. Last time 100% at 6 pieces, 10 s.");
+    expect(welcome()?.closest(".lab-unlock")).not.toBeNull();
   });
 
-  it("stays empty for a player who played today, a new visitor, the server render and unreadable storage", () => {
+  it("renders nothing, not even an empty slot, for a player who played today, a new visitor, the server render and unreadable storage", () => {
     const lines = [persona("graceStreak"), persona("newVisitor"), persona("stale", ""), { ...persona("stale"), storage: "unavailable" as const }].map((record) => {
       const { unmount } = renderWithIntl(<LabRecordSection record={record} />);
-      const text = welcome();
+      const line = welcome();
       unmount();
-      return text;
+      return line;
     });
 
-    expect(lines).toEqual(["", "", "", ""]);
+    expect(lines).toEqual([null, null, null, null]);
   });
 });

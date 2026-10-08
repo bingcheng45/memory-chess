@@ -45,7 +45,7 @@ const PANEL_TEXT = `(() => {
   const tools = record.querySelector(".lab-tools");
   const unlock = record.querySelector(".lab-unlock");
   const welcome = record.querySelector(".lab-welcome");
-  return Object.fromEntries([["welcome", welcome.innerText], ["unlock", unlock.innerText], ...entries, ["tools", tools ? tools.innerText : null]]);
+  return Object.fromEntries([["welcome", welcome ? welcome.innerText : ""], ["unlock", unlock.innerText], ...entries, ["tools", tools ? tools.innerText : null]]);
 })()`;
 
 const rectOf = (selector) => `(() => {

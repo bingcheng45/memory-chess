@@ -7,6 +7,7 @@ import { useLabResults } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
 import { PANEL_ROWS, type CustomRow, type PanelId, type PanelRow } from "@/lib/lab/panels";
 import { daysBetween } from "@/lib/lab/readiness";
+import { welcomeBack } from "@/lib/lab/welcome";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
 import { ForgettingCurve } from "./LabCharts";
 import { BestsPanel, figureOf, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
@@ -14,7 +15,6 @@ import { InsightsPanel, NotebookPanel } from "./LabInsightPanels";
 import { HeldPanel, SpanPanel, SpeedPanel } from "./LabReadingPanels";
 import { LabRecordTools } from "./LabRecordTools";
 import { LabUnlockStrip } from "./LabUnlockStrip";
-import { LabWelcome } from "./LabWelcome";
 import { useFirstSight } from "./useFirstSight";
 import type { LabRecord } from "./useLabRecord";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
@@ -139,8 +139,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
           title={t("title")}
           lede={t.rich("lede", { tag: (chunks) => <span className="lab-tag lab-tag-blue">{chunks}</span> })}
         />
-        <LabWelcome record={record} />
-        <LabUnlockStrip results={lab} storage={record.storage} />
+        <LabUnlockStrip results={lab} storage={record.storage} welcome={record.storage === "available" ? welcomeBack(record) : null} />
         {PANEL_ROWS.map(({ row, panels: ids }) =>
           isCustom(row) ? (
             rows[row]

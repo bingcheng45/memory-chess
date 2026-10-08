@@ -50,16 +50,12 @@ interface Draft {
 }
 
 /** A first or a best can only be known from every round, a round count from a known number before the log, a streak from every day. */
-type Needs = "wholeLog" | "roundCount" | "allDays";
-
-const HAS: { readonly [K in Needs]: (history: History) => boolean } = {
-  wholeLog: ({ missing }) => missing === 0,
-  roundCount: ({ before }) => before !== null,
-  allDays: ({ allDays }) => allDays,
-};
+const hasWholeLog = ({ missing }: History) => missing === 0;
+const hasRoundCount = ({ before }: History) => before !== null;
+const hasAllDays = ({ allDays }: History) => allDays;
 
 interface EntrySource {
-  readonly needs: Needs;
+  readonly ready: (history: History) => boolean;
   drafts(history: History): Draft[];
 }
 
@@ -128,11 +124,11 @@ function streakMilestones({ rounds, summary }: History): Draft[] {
 
 const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
   firstRound: {
-    needs: "wholeLog",
+    ready: hasWholeLog,
     drafts: ({ rounds: [first] }) => (first ? [{ record: first, params: { pieceCount: first.config.pieceCount, accuracy: first.accuracy } }] : []),
   },
   rounds: {
-    needs: "roundCount",
+    ready: hasRoundCount,
     drafts: ({ rounds, before }) =>
       rounds.flatMap((record, index) => {
         const count = (before ?? 0) + index + 1;
@@ -140,15 +136,15 @@ const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
       }),
   },
   first90: {
-    needs: "wholeLog",
+    ready: hasWholeLog,
     drafts: ({ rounds }) =>
       firstsBy(rounds, ({ accuracy, config }) => (accuracy >= FIRST_READING_ACCURACY ? config.pieceCount : null))
         .filter((record) => record !== rounds[0])
         .map((record) => ({ record, params: { pieceCount: record.config.pieceCount } })),
   },
-  best: { needs: "wholeLog", drafts: ({ rounds }) => bestImprovements(rounds) },
-  span: { needs: "wholeLog", drafts: spanSteps },
-  streak: { needs: "allDays", drafts: streakMilestones },
+  best: { ready: hasWholeLog, drafts: ({ rounds }) => bestImprovements(rounds) },
+  span: { ready: hasWholeLog, drafts: spanSteps },
+  streak: { ready: hasAllDays, drafts: streakMilestones },
 };
 
 function historyOf(records: readonly RoundRecord[], summary: LabSummary, span: MetricResult<SpanValue>): History {
@@ -171,7 +167,7 @@ function entriesOf(history: History): NotebookEntry[] {
   const firstDay = summary.days[0] ?? rounds[0]?.localDay;
   return NOTEBOOK_KINDS.flatMap((kind) => {
     const source = SOURCES[kind];
-    if (!HAS[source.needs](history)) return [];
+    if (!source.ready(history)) return [];
     return source.drafts(history).map(({ record, params }): NotebookEntry => ({
       at: record.endedAt,
       kind,

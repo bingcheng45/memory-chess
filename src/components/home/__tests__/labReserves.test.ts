@@ -61,8 +61,9 @@ describe("§06 reserved heights", () => {
       return gap > EMPTY_GAP_PX ? [`${box}: ${gap}px`] : [];
     });
 
-    // The tools strip is not rendered on the server at all, and recall by piece type has no Sample chart, only one line.
-    expect(blank).toEqual(["types: 300px", "tools: 376px"]);
+    // The tools strip is not rendered on the server at all, recall by piece type has no Sample chart, only one line, and
+    // the programs panel's server render has no Start links, which take most of that space once the record is read.
+    expect(blank).toEqual(["types: 300px", "plans: 275px", "tools: 376px"]);
   });
 
   it("give each box its reserve as a minimum height", () => {

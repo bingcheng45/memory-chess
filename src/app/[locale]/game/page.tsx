@@ -146,11 +146,15 @@ function GamePageContent() {
     // Read from the record before the round, so a second attempt today is refused; loaded only for a daily link.
     let live = true;
     import('@/lib/lab/dailyBoard')
-      .then(({ openDaily }) => openDaily(Date.now()))
-      .then((daily) => {
+      .then(async ({ openDaily, markDailyOpened }) => {
+        const daily = await openDaily(Date.now());
         if (!live || !daily || startedByHandRef.current) return;
-        if (daily.kind === 'played') setDailyPlayed(true);
-        else startGame(daily.pieceCount, daily.memorizeTime, 'daily', daily.board);
+        if (daily.kind === 'played') {
+          setDailyPlayed(true);
+          return;
+        }
+        markDailyOpened(daily.board.day);
+        startGame(daily.pieceCount, daily.memorizeTime, 'daily', daily.board);
       })
       .catch((error) => console.error('Could not open the daily board', error));
     return () => {

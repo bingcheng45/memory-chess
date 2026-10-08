@@ -24,17 +24,17 @@ export function dailyStart(records: readonly RoundRecord[], at: number, openedDa
   return fen === null ? null : { kind: "play", ...DAILY_SETTING, board: { kind: "daily", day, fen } };
 }
 
-/** Reads the record on this device first, so a second attempt on the same UTC day is refused, and marks the day opened. */
+/** Reads the record on this device first, so a second attempt on the same UTC day is refused. Marks nothing: only the caller that starts the round knows it is the try. */
 export async function openDaily(at: number): Promise<DailyStart | null> {
   const store = labStore();
   const records = store && (await store.isAvailable()) ? await store.listRounds() : [];
-  const start = dailyStart(records, at, readDailyOpened());
-  if (start?.kind === "play") {
-    try {
-      window.localStorage.setItem(DAILY_OPENED_KEY, start.board.day);
-    } catch {
-      // Without storage the record alone limits the day to one result.
-    }
+  return dailyStart(records, at, readDailyOpened());
+}
+
+export function markDailyOpened(day: string): void {
+  try {
+    window.localStorage.setItem(DAILY_OPENED_KEY, day);
+  } catch {
+    // Without storage the record alone limits the day to one result.
   }
-  return start;
 }

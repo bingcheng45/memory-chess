@@ -99,15 +99,22 @@ export async function importFile(page, file) {
   return page.waitFor(`document.querySelector('.lab-tools p[role="status"]').textContent.trim() || null`, 60_000);
 }
 
+/** Writes the persona's chosen plan and goal, which live in localStorage beside the record, never in its file. */
+export async function seedLocal(page, persona) {
+  const entries = Object.entries(persona.local ?? {});
+  if (entries.length > 0) await page.eval(`(${JSON.stringify(entries)}).forEach(([key, value]) => localStorage.setItem(key, value))`);
+}
+
 /** Seeds the record from the persona file through the real Import control, unless it has no rounds, and returns its round count. */
 export async function loadPersona(page, baseUrl, personaFile) {
-  const { rounds } = JSON.parse(readFileSync(personaFile, "utf8"));
-  if (rounds.length === 0) return 0;
+  const persona = JSON.parse(readFileSync(personaFile, "utf8"));
+  if (persona.rounds.length === 0) return 0;
   await sized(page, 1440);
   await page.goto(`${baseUrl}/`);
   await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);
+  await seedLocal(page, persona);
   await importFile(page, personaFile);
-  return rounds.length;
+  return persona.rounds.length;
 }
 
 export default async function drive(page, { baseUrl, evidenceDir }) {
@@ -127,7 +134,12 @@ export default async function drive(page, { baseUrl, evidenceDir }) {
   await page.send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
   await page.goto(`${baseUrl}/`);
   await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);
+  await seedLocal(page, persona);
   const notice = persona.rounds.length > 0 ? await importFile(page, personaFile) : null;
+  if (persona.local) {
+    await page.goto(`${baseUrl}/`);
+    await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);
+  }
   await page.sleep(500);
 
   const text = {};

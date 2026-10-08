@@ -33,6 +33,9 @@ describe("persona fixtures", () => {
       plateau: { rounds: 56, rejected: 0, overCap: 0, summary: 56 },
       colourSkew: { rounds: 60, rejected: 0, overCap: 0, summary: 60 },
       graceStreak: { rounds: 52, rejected: 0, overCap: 0, summary: 52 },
+      planBaseline: { rounds: 15, rejected: 0, overCap: 0, summary: 15 },
+      planEdge: { rounds: 36, rejected: 0, overCap: 0, summary: 36 },
+      ladderClimb: { rounds: 22, rejected: 0, overCap: 0, summary: 22 },
     });
   });
 

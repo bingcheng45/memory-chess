@@ -5,6 +5,9 @@
  * Days count back from today, so streaks and staleness read the same on any day.
  * The players in AWAY also get a <name>Away copy built as if their last day were
  * one day past the welcome back threshold, so the greeting is measured and driven.
+ * A persona with a chosen plan or goal carries it under `local`, the localStorage
+ * entries the drivers write before loading the page. Import ignores the field, and
+ * the app's own export never writes it.
  *
  *   npm run lab:personas -- [--today YYYY-MM-DD] [--out dir]...   (default out: .lab-personas)
  */
@@ -15,7 +18,8 @@ import { IDBFactory } from "fake-indexeddb";
 import "./ts-hooks.mjs";
 
 const fromSrc = (path) => import(pathToFileURL(join(process.cwd(), "src", path)).href);
-const { exportPersona, memoryLabStore, PERSONA_NAMES } = await fromSrc("lib/lab/personas.ts");
+const { exportPersona, memoryLabStore, PERSONA_NAMES, personaChoices } = await fromSrc("lib/lab/personas.ts");
+const { PLAN_KEY, TARGET_KEY } = await fromSrc("lib/lab/choices.ts");
 const { localDayOf } = await fromSrc("lib/lab/record.ts");
 const { isCalendarDay } = await fromSrc("lib/lab/transfer.ts");
 const { shiftDay } = await fromSrc("lib/lab/engine.ts");
@@ -38,7 +42,9 @@ const awayToday = shiftDay(today, -(LAB_THRESHOLDS.awayDays + 1));
 const builds = [...PERSONA_NAMES.map((name) => [name, name, today]), ...AWAY.map((name) => [`${name}Away`, name, awayToday])];
 for (const [fileName, name, day] of builds) {
   const file = await exportPersona(name, memoryLabStore(new IDBFactory()), day, Date.now());
-  const text = JSON.stringify(file);
+  const { plan, target } = personaChoices(name, day);
+  const local = Object.fromEntries([[PLAN_KEY, plan], [TARGET_KEY, target]].flatMap(([key, value]) => (value ? [[key, JSON.stringify(value)]] : [])));
+  const text = JSON.stringify(Object.keys(local).length > 0 ? { ...file, local } : file);
   for (const dir of outDirs) writeFileSync(join(resolve(dir), `${fileName}.json`), text);
   console.log(`${fileName}: ${file.rounds.length} rounds, summary ${file.summary?.rounds ?? 0}`);
 }

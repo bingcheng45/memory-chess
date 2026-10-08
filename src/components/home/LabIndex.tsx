@@ -14,9 +14,16 @@ const INDEX_ENTRIES: readonly Exclude<LabSectionId, "recording" | "faq" | "next"
   "library",
 ];
 
-export function LabIndex({ streakDays }: { streakDays: number | null }) {
+/** The current run's days played, and its forgiven days, which the chip names only in its title and accessible name. */
+export interface IndexStreak {
+  readonly days: number;
+  readonly forgiven: number;
+}
+
+export function LabIndex({ streak }: { streak: IndexStreak | null }) {
   const t = useTranslations("home.lab.index");
   const record = useTranslations("home.lab.record.streak");
+  const forgivenNote = streak && streak.forgiven > 0 ? record("chipForgiven", { count: streak.days, forgiven: streak.forgiven }) : undefined;
 
   return (
     <div className="lab-index">
@@ -31,9 +38,9 @@ export function LabIndex({ streakDays }: { streakDays: number | null }) {
             </a>
           ))}
         </nav>
-        {streakDays !== null && (
-          <a className="lab-streak-chip" href={`#${LAB_SECTIONS.record.anchor}`}>
-            {record("chip", { count: streakDays })}
+        {streak && (
+          <a className="lab-streak-chip" href={`#${LAB_SECTIONS.record.anchor}`} title={forgivenNote} aria-label={forgivenNote}>
+            {record("chip", { count: streak.days })}
           </a>
         )}
         <Link className="lab-btn lab-btn-primary" href={QUICK_START_HREF}>

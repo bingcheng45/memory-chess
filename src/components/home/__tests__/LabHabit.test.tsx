@@ -1,4 +1,7 @@
+import { createTranslator } from "next-intl";
 import { act, fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
+import en from "../../../../messages/en.json";
+import { LabIndex } from "@/components/home/LabIndex";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
 import { resetWeekGoalSession, WEEK_GOAL_KEY } from "@/components/home/useWeekGoal";
 import { persona } from "@/test-utils/labPersona";
@@ -16,11 +19,11 @@ beforeEach(() => {
 afterEach(() => jest.restoreAllMocks());
 
 describe("days in a row with a grace day", () => {
-  it("says the current run includes a forgiven day, and marks it in the grid and its sentence", () => {
+  it("says how many days of the current run were played and how many missed days were forgiven, and marks it in the grid and its sentence", () => {
     renderWithIntl(<LabRecordSection record={persona("graceStreak")} />);
     const panel = streakPanel();
 
-    expect(within(panel).getByText("Current streak 19 days, includes 1 forgiven day · longest 19 days · From 52 rounds")).toBeInTheDocument();
+    expect(within(panel).getByText("Current streak 19 days played, 1 missed day forgiven · longest 19 days · From 52 rounds")).toBeInTheDocument();
     expect(within(panel).getByRole("img", { name: /^Your last 14 days/ })).toHaveAccessibleName("Your last 14 days: 13 days played, 1 forgiven.");
     expect(panel.querySelectorAll('.lab-streak i[data-day="forgiven"]')).toHaveLength(1);
     expect(panel.querySelector(".lab-streak-key")).toHaveTextContent("played forgiven missed today");
@@ -31,6 +34,37 @@ describe("days in a row with a grace day", () => {
     renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
 
     expect(within(streakPanel()).getByText("Current streak 30 days · longest 30 days · From 90 rounds")).toBeInTheDocument();
+  });
+});
+
+describe("streak wording", () => {
+  const t = createTranslator({ locale: "en", messages: en, namespace: "home.lab.record.streak" });
+
+  it.each([
+    [{ current: 1, forgiven: 0, longest: 1 }, "Current streak 1 day · longest 1 day"],
+    [{ current: 1, forgiven: 1, longest: 2 }, "Current streak 1 day played, 1 missed day forgiven · longest 2 days"],
+    [{ current: 20, forgiven: 2, longest: 20 }, "Current streak 20 days played, 2 missed days forgiven · longest 20 days"],
+  ])("words the note for %o", (params, note) => {
+    expect(t("realNote", params)).toBe(note);
+  });
+});
+
+describe("streak chip in the index bar", () => {
+  it("counts the days played, and names a forgiven day in its title and accessible name", () => {
+    renderWithIntl(<LabIndex streak={{ days: 19, forgiven: 1 }} />);
+    const chip = screen.getByRole("link", { name: "Day 19 of your streak, 1 missed day forgiven" });
+
+    expect(chip).toHaveTextContent(/^Day 19$/);
+    expect(chip).toHaveAttribute("title", "Day 19 of your streak, 1 missed day forgiven");
+  });
+
+  it("reads Day N alone for an unbroken run, and is absent without a streak", () => {
+    const { unmount } = renderWithIntl(<LabIndex streak={{ days: 30, forgiven: 0 }} />);
+
+    expect(screen.getByRole("link", { name: "Day 30" })).not.toHaveAttribute("title");
+    unmount();
+    renderWithIntl(<LabIndex streak={null} />);
+    expect(screen.queryByRole("link", { name: /^Day/ })).toBeNull();
   });
 });
 

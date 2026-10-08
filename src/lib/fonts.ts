@@ -40,7 +40,7 @@ export const geistMono = Geist_Mono({
   // Geist Mono's 0.60em, so mono text wrapped onto extra lines until the webfont
   // swapped in and the home page shifted. globals.css defines this face.
   adjustFontFallback: false,
-  fallback: ["Geist Mono Fallback", "ui-monospace", "monospace"],
+  fallback: ["Geist Mono Local", "ui-monospace", "monospace"],
 });
 
 const notoSansCyrillic = Noto_Sans({

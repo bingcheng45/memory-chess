@@ -42,7 +42,7 @@ body {
  * Measured in Chrome against Geist Mono; npm run lab:cls fails if they drift.
  */
 @font-face {
-  font-family: "Geist Mono Fallback";
+  font-family: "Geist Mono Local";
   src: local("Menlo Regular"), local("Courier New"), local("DejaVu Sans Mono"), local("Liberation Mono"), local("Droid Sans Mono");
   size-adjust: 99.65%;
   ascent-override: 100.5%;

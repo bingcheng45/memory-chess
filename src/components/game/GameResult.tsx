@@ -5,9 +5,10 @@ import { accuracyBandKey } from "@/lib/reference/facts";
 import { GameState } from "@/lib/types/game";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -19,7 +20,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { loadLeaderboardCutoffs } from "@/lib/leaderboard/cutoffsClient";
-import { trackEvent } from "@/lib/analytics/events";
+import { trackEvent, type RoundSource } from "@/lib/analytics/events";
+import { hasLabCopy } from "@/lib/home/labLocales";
 import {
   qualifies,
   type LeaderboardCutoffs,
@@ -31,6 +33,10 @@ import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
 import ResultBoardComparison from "@/components/game/ResultBoardComparison";
 import ArticleTile from "@/components/game/ArticleTile";
 import { countWrong } from "@/lib/game/scoring";
+import ResultLabSlot from "@/components/game/ResultLabSlot";
+
+// Loaded only once a round has a result, so /game pays nothing for the lab record before then.
+const ResultLabCard = dynamic(() => import("@/components/game/ResultLabCard"), { ssr: false, loading: () => <ResultLabSlot /> });
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & {
@@ -44,6 +50,7 @@ type GameStateWithRating = GameState & {
 interface GameResultProps {
   readonly onTryAgain: () => void;
   readonly onNewGame: () => void;
+  readonly onPlay: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
 }
 
 function qualifiesForLeaderboard(
@@ -57,8 +64,9 @@ function qualifiesForLeaderboard(
   return qualifies(score, cutoffs[difficulty]);
 }
 
-export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
+export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResultProps) {
   const t = useTranslations("game.result");
+  const showsLab = hasLabCopy(useLocale());
   const tCountry = useTranslations("country");
   const { gameState } = useGameStore();
   const { countryCode, setCountryCode } = useSettingsStore();
@@ -469,6 +477,8 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           </Link>
         </nav>
       </section>
+
+      {showsLab && gameState.labRoundId && <ResultLabCard key={gameState.labRoundId} roundId={gameState.labRoundId} onPlay={onPlay} />}
 
       <ResultBoardComparison
         originalPosition={gameState.originalPosition}

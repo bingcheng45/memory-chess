@@ -219,6 +219,13 @@ function GamePageContent() {
     startGame(gameState.pieceCount, gameState.memorizeTime, 'try_again');
   };
   
+  const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
+    stopTimerSound();
+    playSound('click');
+    resetGame();
+    startGame(pieceCount, memorizeTime, source);
+  };
+
   // Handle starting a new game with different configuration
   const handleNewGame = () => {
     console.log('Starting new game with different configuration');
@@ -337,7 +344,7 @@ function GamePageContent() {
         return (
           <div className={containerClass}>
             <ErrorBoundary>
-              <GameResult onTryAgain={handleTryAgain} onNewGame={handleNewGame} />
+              <GameResult onTryAgain={handleTryAgain} onNewGame={handleNewGame} onPlay={handlePlay} />
             </ErrorBoundary>
           </div>
         );

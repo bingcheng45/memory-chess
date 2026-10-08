@@ -61,7 +61,8 @@ export function ForgettingCurve() {
   );
 }
 
-const SPARK = { width: 290, height: 110, pad: 8 };
+/** Guide labels sit in a left gutter, so the latest value, drawn at the right end, can never land on one. */
+const SPARK = { width: 290, height: 110, pad: 8, left: 34 };
 const SAMPLE_DOMAIN = { low: 40, high: 90 };
 const FULL_DOMAIN = { low: 0, high: 100 };
 const SPARK_GUIDES = [50, 70];
@@ -75,7 +76,7 @@ interface SparklineProps {
 
 export function AccuracySparkline({ points = SAMPLE_ACCURACY, label, first, last }: SparklineProps) {
   const domain = points === SAMPLE_ACCURACY ? SAMPLE_DOMAIN : FULL_DOMAIN;
-  const x = (index: number) => SPARK.pad + ((SPARK.width - 2 * SPARK.pad) * index) / Math.max(1, points.length - 1);
+  const x = (index: number) => SPARK.left + ((SPARK.width - SPARK.pad - SPARK.left) * index) / Math.max(1, points.length - 1);
   const y = (value: number) =>
     SPARK.height - ((value - domain.low) / (domain.high - domain.low)) * (SPARK.height - 14);
   const coords = points.map((value, index) => `${x(index).toFixed(1)},${y(value).toFixed(1)}`);
@@ -86,8 +87,8 @@ export function AccuracySparkline({ points = SAMPLE_ACCURACY, label, first, last
     <svg className="lab-chart" viewBox="0 0 300 140" role="img" aria-label={label}>
       {SPARK_GUIDES.map((value) => (
         <g key={value}>
-          <line className="lab-c-grid" x1={SPARK.pad} x2={SPARK.width - SPARK.pad} y1={y(value)} y2={y(value)} />
-          <text x={SPARK.width - 6} y={y(value) - 4} textAnchor="end">
+          <line className="lab-c-grid" x1={SPARK.left} x2={SPARK.width - SPARK.pad} y1={y(value)} y2={y(value)} />
+          <text x={SPARK.left - 6} y={y(value) + 4} textAnchor="end">
             {value}%
           </text>
         </g>
@@ -98,7 +99,7 @@ export function AccuracySparkline({ points = SAMPLE_ACCURACY, label, first, last
       <text className="lab-c-last-label" x={x(lastIndex) - 8} y={y(latest) - 10} textAnchor="end">
         {latest}%
       </text>
-      <text x={SPARK.pad} y={SPARK.height + 22}>
+      <text x={SPARK.left} y={SPARK.height + 22}>
         {first}
       </text>
       <text x={SPARK.width - SPARK.pad} y={SPARK.height + 22} textAnchor="end">

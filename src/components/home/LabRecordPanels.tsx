@@ -1,18 +1,23 @@
 "use client";
 
-import { useId, useState, type ReactNode } from "react";
+import { Fragment, useId, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import type { LabPanel } from "@/lib/analytics/events";
 import type { BestEntry, LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
-import { hasFigure, type Readiness } from "@/lib/lab/readiness";
+import { figureNumber, type PanelId } from "@/lib/lab/panels";
+import { hasFigure, type Readiness, type ReadinessState } from "@/lib/lab/readiness";
 import type { PieceSymbol } from "chess.js";
 import { FILES, RANKS } from "@/lib/game/board";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { formatSeconds } from "@/utils/timer";
+import { seconds, settingValues } from "./labFormat";
 import { AccuracySparkline, MissLines, MissMap, RecallBar, StreakGrid } from "./LabCharts";
 import { LabPlayLink } from "./LabPlayLink";
+import { LAB_SECTIONS } from "./SectionHeading";
 
 const missShare = ({ shown, missed, ready }: MissCell) => (ready ? missed / shown : null);
+
+export const figureOf = (panel: PanelId) => figureNumber(LAB_SECTIONS.record.number, panel);
 
 export function PanelHead({ fig, tag }: { fig: string; tag: ReactNode }) {
   return (
@@ -23,8 +28,33 @@ export function PanelHead({ fig, tag }: { fig: string; tag: ReactNode }) {
   );
 }
 
+interface FrameProps {
+  readonly panel: PanelId;
+  /** The panel's class suffix and its messages under home.lab.record. */
+  readonly name: "span" | "held" | "speed" | "spark" | "heat" | "streak" | "bests" | "types";
+  readonly tag: ReactNode;
+  readonly state: ReadinessState;
+  readonly title?: string;
+  /** Text above the body that reads the same in every state. */
+  readonly intro?: ReactNode;
+  readonly children: ReactNode;
+}
+
+export function PanelFrame({ panel, name, tag, state, title, intro, children }: FrameProps) {
+  const t = useTranslations("home.lab.record");
+  return (
+    <div className={`lab-panel lab-p-${name}`}>
+      <PanelHead fig={t(`${name}.fig`, { number: figureOf(panel) })} tag={tag} />
+      <h3>{title ?? t(`${name}.title`)}</h3>
+      {intro}
+      {/* Keyed by state, so new content mounts fresh instead of moving the nodes it replaces. */}
+      <Fragment key={state}>{children}</Fragment>
+    </div>
+  );
+}
+
 /** The figure stays; the note only says how long ago the last round was. `daysAgo` is null on the server. */
-function StaleNote({ readiness, daysAgo, panel }: { readiness: Readiness; daysAgo: number | null; panel: LabPanel }) {
+export function StaleNote({ readiness, daysAgo, panel }: { readiness: Readiness; daysAgo: number | null; panel: LabPanel }) {
   const t = useTranslations("home.lab.record");
   if (readiness.state !== "stale" || daysAgo === null) return null;
   return (
@@ -34,12 +64,13 @@ function StaleNote({ readiness, daysAgo, panel }: { readiness: Readiness; daysAg
   );
 }
 
-function useTags() {
+export function useTags() {
   const tags = useTranslations("home.lab.tags");
   const t = useTranslations("home.lab.record");
+  // Keyed apart so the swap mounts a new tag; reusing one moved its centred text sideways, a layout shift.
   return {
-    sample: <span className="lab-tag lab-tag-blue">{tags("sample")}</span>,
-    mine: <span className="lab-tag lab-tag-mint">{t("mine")}</span>,
+    sample: <span key="sample" className="lab-tag lab-tag-blue">{tags("sample")}</span>,
+    mine: <span key="mine" className="lab-tag lab-tag-mint">{t("mine")}</span>,
   };
 }
 
@@ -55,11 +86,17 @@ export function TrendPanel({
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const need = readiness.need ?? {};
+  const bySession = trend?.granularity === "session" && hasFigure(readiness);
+  const points = trend ? (bySession ? trend.bySession.map(Math.round) : trend.points) : [];
 
   return (
-    <div className="lab-panel lab-p-spark">
-      <PanelHead fig={t("spark.fig")} tag={played ? tags.mine : tags.sample} />
-      <h3>{t("spark.title")}</h3>
+    <PanelFrame
+      panel="trend"
+      name="spark"
+      tag={played ? tags.mine : tags.sample}
+      state={readiness.state}
+      title={bySession ? t("spark.titleSessions") : t("spark.title")}
+    >
       {!trend ? (
         <>
           <AccuracySparkline label={t("spark.aria")} first={t("spark.first")} last={t("spark.last")} />
@@ -68,24 +105,25 @@ export function TrendPanel({
       ) : hasFigure(readiness) ? (
         <>
           <AccuracySparkline
-            points={trend.points}
-            label={t("spark.realAria", { count: trend.points.length, latest: trend.points[trend.points.length - 1], ...trend.setting })}
+            points={points}
+            label={t(bySession ? "spark.realAriaSessions" : "spark.realAria", { count: points.length, latest: points[points.length - 1], ...trend.setting })}
             first={t("spark.realFirst")}
             last={t("spark.realLast")}
           />
           <p className="lab-note">
-            {t("spark.config", trend.setting)} · {t("fromRounds", { count: readiness.sampleSize })}
+            {t("spark.config", settingValues(trend.setting))} · {t("fromRounds", { count: readiness.sampleSize })}
+            {bySession && ` · ${t("spark.sessions", { count: points.length })}`}
           </p>
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="trend" />
         </>
       ) : (
         <p className="lab-panel-desc lab-empty">
           {need.rounds === undefined
-            ? t("spark.needDay", trend.setting)
-            : t(need.days ? "spark.needRoundsAndDay" : "spark.needRounds", { count: need.rounds, ...trend.setting })}
+            ? t("spark.needDay", settingValues(trend.setting))
+            : t(need.days ? "spark.needRoundsAndDay" : "spark.needRounds", { count: need.rounds, ...settingValues(trend.setting) })}
         </p>
       )}
-    </div>
+    </PanelFrame>
   );
 }
 
@@ -102,9 +140,7 @@ export function MissPanel({ result: { readiness, value: map }, daysAgo }: { resu
     }));
 
   return (
-    <div className="lab-panel lab-p-heat">
-      <PanelHead fig={t("heat.fig")} tag={map ? tags.mine : tags.sample} />
-      <h3>{t("heat.title")}</h3>
+    <PanelFrame panel="missMap" name="heat" tag={map ? tags.mine : tags.sample} state={readiness.state}>
       {!map ? (
         <>
           <MissMap label={t("heat.aria")} />
@@ -130,7 +166,7 @@ export function MissPanel({ result: { readiness, value: map }, daysAgo }: { resu
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="missMap" />
         </>
       )}
-    </div>
+    </PanelFrame>
   );
 }
 
@@ -139,10 +175,13 @@ export function StreakPanel({ result: { readiness, value: streak }, daysAgo }: {
   const tags = useTags();
 
   return (
-    <div className="lab-panel lab-p-streak">
-      <PanelHead fig={t("streak.fig")} tag={streak ? tags.mine : tags.sample} />
-      <h3>{t("streak.title")}</h3>
-      <p className="lab-panel-desc">{streak ? t("streak.realDesc") : t("streak.desc")}</p>
+    <PanelFrame
+      panel="streak"
+      name="streak"
+      tag={streak ? tags.mine : tags.sample}
+      state={readiness.state}
+      intro={<p className="lab-panel-desc">{streak ? t("streak.realDesc") : t("streak.desc")}</p>}
+    >
       {!streak ? (
         <>
           <StreakGrid label={t("streak.aria")} />
@@ -162,7 +201,7 @@ export function StreakPanel({ result: { readiness, value: streak }, daysAgo }: {
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="streak" />
         </>
       )}
-    </div>
+    </PanelFrame>
   );
 }
 
@@ -189,18 +228,21 @@ export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { r
   const count = bests?.entries.length ?? 0;
 
   return (
-    <div className="lab-panel lab-p-bests">
-      <PanelHead fig={t("bests.fig")} tag={bests ? tags.mine : null} />
-      <h3>{t("bests.title")}</h3>
-      <p className="lab-panel-desc">{t("bests.desc")}</p>
+    <PanelFrame
+      panel="bests"
+      name="bests"
+      tag={bests ? tags.mine : null}
+      state={readiness.state}
+      intro={<p className="lab-panel-desc">{t("bests.desc")}</p>}
+    >
       {bests ? (
         <>
           <dl className="lab-bests" id={listId}>
             {bests.entries.map((best) => (
               <div key={best.key} data-older={older?.get(best.key)}>
-                <dt>{t("bests.setting", { source: best.source, pieceCount: best.pieceCount, memorizeSeconds: best.memorizeSeconds })}</dt>
+                <dt>{t("bests.setting", settingValues(best))}</dt>
                 <dd>
-                  {t("bests.reading", { accuracy: best.accuracy, seconds: formatSeconds(best.solveMs) })}
+                  {t("bests.reading", { accuracy: best.accuracy, time: seconds(formatSeconds(best.solveMs)) })}
                   {best.rounds === 1 && <span className="lab-note"> · {t("bests.first")}</span>}
                 </dd>
               </div>
@@ -224,7 +266,7 @@ export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { r
       ) : (
         <p className="lab-panel-desc lab-empty">{t("bests.empty")}</p>
       )}
-    </div>
+    </PanelFrame>
   );
 }
 
@@ -237,9 +279,7 @@ export function TypesPanel({ result: { readiness, value: recall }, daysAgo }: { 
   const ready = recall && hasFigure(readiness);
 
   return (
-    <div className="lab-panel lab-p-types">
-      <PanelHead fig={t("types.fig")} tag={ready ? tags.mine : null} />
-      <h3>{t("types.title")}</h3>
+    <PanelFrame panel="typeRecall" name="types" tag={ready ? tags.mine : null} state={readiness.state}>
       {ready ? (
         <>
           <div className="lab-bars">
@@ -266,6 +306,6 @@ export function TypesPanel({ result: { readiness, value: recall }, daysAgo }: { 
           {!recall || recall.roundsEstimate === null ? t("types.needStart") : t("types.need", { count: recall.roundsEstimate })}
         </p>
       )}
-    </div>
+    </PanelFrame>
   );
 }

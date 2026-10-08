@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Measures each reserved §06 box with its reserve switched off, for every
- * persona file at five widths and for the server render with scripts off, and
+ * persona file at nine widths and for the server render with scripts off, and
  * writes the tallest per layout tier to src/components/home/lab-heights.json,
  * with the tallest empty state a new visitor sees in each tier.
  * labReserves.test.ts holds the CSS reserves above those heights. The file is
@@ -13,14 +13,13 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { argsOf, importFile, PERSONA_ENV, runPersona } from "./drive.mjs";
+import { argsOf, BREAKPOINT_WIDTHS as WIDTHS, importFile, PERSONA_ENV, runPersona, sized } from "./drive.mjs";
 
 const DATA_FILE = "src/components/home/lab-heights.json";
 const RAW_FILE = "heights.json";
-const WIDTHS = [320, 360, 390, 768, 1440];
 // The CSS breakpoints the reserves change at: max-width 640px and max-width 1000px.
 const tierOf = (width) => (width <= 640 ? "narrow" : width <= 1000 ? "medium" : "wide");
-const BOXES = ["unlock", "spark", "heat", "streak", "bests", "types", "tools"];
+const BOXES = ["unlock", "span", "held", "spark", "speed", "heat", "streak", "bests", "types", "tools"];
 
 const NATURAL = `#record .lab-dash > *, #record .lab-unlock, #record .lab-tools-slot { align-self: start !important; min-height: 0 !important; }`;
 const MEASURE = `(() => {
@@ -34,10 +33,6 @@ const MEASURE = `(() => {
   style.remove();
   return result;
 })()`;
-
-async function sized(page, width) {
-  await page.send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 600 });
-}
 
 export default async function measure(page, { baseUrl, evidenceDir }) {
   const personaFile = process.env[PERSONA_ENV];

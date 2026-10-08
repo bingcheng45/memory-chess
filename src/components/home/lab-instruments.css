@@ -95,15 +95,21 @@
  * for the Sample state without moving anything below it.
  */
 .lab {
-  --lab-h-unlock: 184px; --lab-h-spark: 400px; --lab-h-heat: 512px; --lab-h-streak: 392px;
-  --lab-h-bests: 704px; --lab-h-types: 456px; --lab-h-tools: 192px;
+  --lab-h-unlock: 176px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
+  --lab-h-heat: 464px; --lab-h-streak: 424px; --lab-h-bests: 504px; --lab-h-types: 448px; --lab-h-tools: 208px;
   --lab-heat-w: 260px;
 }
 @media (max-width: 1000px) {
-  .lab { --lab-h-spark: 496px; --lab-h-streak: 416px; --lab-h-bests: 920px; --lab-h-types: 496px; --lab-h-tools: 512px; }
+  .lab {
+    --lab-h-unlock: 264px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 424px; --lab-h-speed: 512px;
+    --lab-h-heat: 528px; --lab-h-streak: 440px; --lab-h-bests: 920px; --lab-h-types: 528px; --lab-h-tools: 512px;
+  }
 }
 @media (max-width: 640px) {
-  .lab { --lab-h-unlock: 400px; --lab-h-spark: 408px; --lab-h-heat: 536px; --lab-h-streak: 432px; --lab-h-bests: 592px; --lab-h-types: 536px; --lab-h-tools: 376px; }
+  .lab {
+    --lab-h-unlock: 304px; --lab-h-span: 544px; --lab-h-held: 504px; --lab-h-spark: 456px; --lab-h-speed: 544px;
+    --lab-h-heat: 528px; --lab-h-streak: 432px; --lab-h-bests: 592px; --lab-h-types: 528px; --lab-h-tools: 376px;
+  }
 }
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
 .lab-tag-slot { display: inline-flex; justify-content: flex-end; font: 500 11px/1 var(--lab-mono); min-width: 8.8em; min-height: calc(1em + 10px); }
@@ -113,7 +119,10 @@
 .lab-heat-pair > :first-child { margin-top: 0; }
 /* Three lines; the em line covers browsers without lh units, such as Safari before 16.4. */
 .lab-p-streak .lab-panel-desc { min-height: 4.65em; min-height: 3lh; }
+.lab-p-span { min-height: var(--lab-h-span); }
+.lab-p-held { min-height: var(--lab-h-held); }
 .lab-p-spark { min-height: var(--lab-h-spark); }
+.lab-p-speed { min-height: var(--lab-h-speed); }
 .lab-p-heat { min-height: var(--lab-h-heat); }
 .lab-p-streak { min-height: var(--lab-h-streak); }
 .lab-p-bests { min-height: var(--lab-h-bests); }
@@ -121,10 +130,9 @@
 .lab-tools-slot { display: flow-root; min-height: var(--lab-h-tools); }
 .lab-unlock { min-height: var(--lab-h-unlock); margin-bottom: 16px; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 16px 22px; }
 .lab-unlock:empty { background: none; border-color: transparent; }
-.lab-unlock ul { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 15px; color: var(--lab-ink-2); }
+.lab-unlock ul { margin: 8px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 24px; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
 .lab-unlock .lab-go { margin-top: 0; }
-/* On phones each line keeps room for three lines, so a line that rewraps when real data arrives does not move the next. */
-@media (max-width: 640px) { .lab-unlock li { min-height: 4.65em; min-height: 3lh; } }
+@media (max-width: 640px) { .lab-unlock { padding: 12px 14px; } .lab-unlock ul { grid-template-columns: 1fr; gap: 2px; font-size: 14px; line-height: 1.35; } }
 .lab-stale .lab-go { display: inline; margin: 0 0 0 4px; white-space: nowrap; }
 .lab-dash { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
 .lab-panel { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 22px; min-width: 0; }
@@ -132,8 +140,17 @@
 .lab-panel-desc { font-size: 15px; color: var(--lab-ink-2); }
 .lab-panel-h { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
 .lab-panel .lab-note { margin-top: 10px; }
-.lab-p-curve { grid-column: span 8; } .lab-p-spark { grid-column: span 4; }
-.lab-p-heat, .lab-p-streak, .lab-p-board { grid-column: span 4; }
+/* One grid per row of the section map, so each row lines up on its own and keyboard order follows the rows. */
+.lab-dash ~ .lab-dash { margin-top: 16px; }
+.lab-dash > * { grid-column: span 6; }
+.lab-p-streak, .lab-p-board { grid-column: span 4; }
+.lab-p-curve, .lab-p-bests { grid-column: span 8; }
+@media (max-width: 1000px) { .lab-p-streak, .lab-p-board { grid-column: span 5; } .lab-p-curve, .lab-p-bests { grid-column: span 7; } }
+@media (max-width: 640px) { .lab-dash > * { grid-column: span 12; } }
+.lab-span-figure { margin-top: 12px; font: 600 clamp(32px, 4vw, 44px)/1.1 var(--lab-sans); font-variant-numeric: tabular-nums; color: var(--lab-ink); }
+.lab-span-held { margin-top: 6px; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
+/* Holds its line when empty, so a week's change arriving later moves nothing. */
+.lab-span-change { min-height: 1.45em; margin-top: 4px; font: 500 13px/1.45 var(--lab-mono); color: var(--lab-mint-ink); }
 .lab-chart { width: 100%; height: auto; display: block; margin-top: 14px; overflow: visible; }
 .lab-chart text { font-family: var(--lab-mono); font-size: 11px; fill: var(--lab-ink-3); }
 .lab-chart .lab-c-grid { stroke: var(--lab-line); stroke-width: 1; }
@@ -147,6 +164,10 @@
 .lab-chart .lab-c-line { fill: none; stroke: var(--lab-mint-ink); stroke-width: 2; stroke-linejoin: round; }
 .lab-chart .lab-c-last { fill: var(--lab-mark); stroke: #fff; stroke-width: 2; }
 .lab-chart text.lab-c-last-label { fill: var(--lab-ink); font-weight: 600; }
+.lab-chart .lab-c-partial { fill: none; stroke: var(--lab-mint-ink); stroke-width: 2; stroke-dasharray: 5 4; opacity: 0.6; }
+.lab-reading-stat { margin-top: 10px; font: 500 14px/1.45 var(--lab-mono); color: var(--lab-ink); font-variant-numeric: tabular-nums; }
+.lab-speed-warn { margin-top: 10px; font: 600 14px/1.45 var(--lab-sans); color: var(--lab-mark-ink); }
+.lab-legend::before { content: ""; display: inline-block; width: 18px; margin-right: 8px; vertical-align: middle; border-top: 2px dashed var(--lab-mint-ink); opacity: 0.6; }
 .lab-heat { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; margin-top: 14px; max-width: var(--lab-heat-w); }
 .lab-heat i { aspect-ratio: 1; border-radius: 2px; display: block; background: var(--lab-mark); }
 .lab-streak { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 14px; }
@@ -159,9 +180,6 @@
 .lab-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
 .lab-chips span { font: 500 12px var(--lab-mono); border: 1px solid var(--lab-line-2); border-radius: 999px; padding: 5px 9px; color: var(--lab-ink-2); }
 .lab-chips span:first-child { background: var(--lab-ink); color: #fff; border-color: var(--lab-ink); }
-.lab-p-bests, .lab-p-types { grid-column: span 6; }
-@media (max-width: 1000px) { .lab-p-curve, .lab-p-spark, .lab-p-board { grid-column: span 12; } .lab-p-heat, .lab-p-streak { grid-column: span 6; } }
-@media (max-width: 640px) { .lab-p-heat, .lab-p-streak, .lab-p-bests, .lab-p-types { grid-column: span 12; } }
 .lab-empty { margin-top: 14px; padding: 14px; border: 1px dashed var(--lab-line-2); border-radius: var(--lab-radius-s); }
 .lab-heat i[data-thin] { background: var(--lab-sq-light); }
 .lab-heat-lines { margin-top: 14px; }

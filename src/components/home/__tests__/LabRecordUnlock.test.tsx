@@ -1,29 +1,20 @@
 import { fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
-import type { LabRecord } from "@/components/home/useLabRecord";
 import { trackEvent } from "@/lib/analytics/events";
-import { personaRounds, PERSONA_TODAY, type PersonaName } from "@/lib/lab/personas";
-import { EMPTY_SUMMARY, summarize } from "@/lib/lab/summary";
+import { LAB_METRICS } from "@/lib/lab/metrics";
+import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
+import { summarize } from "@/lib/lab/summary";
+import { persona } from "@/test-utils/labPersona";
 import { round } from "@/lib/lab/__tests__/fixtures";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
+const css = readFileSync(join(__dirname, "../lab-instruments.css"), "utf8");
 const PLAY_HREF = "/game?pieceCount=6&memorizeTime=10&source=home_quick";
 
-function persona(name: PersonaName, today = PERSONA_TODAY): LabRecord {
-  const records = personaRounds(name, PERSONA_TODAY);
-  return {
-    storage: "available",
-    records,
-    summary: records.length ? summarize(records) : EMPTY_SUMMARY,
-    lastBackup: null,
-    today,
-    download: jest.fn(() => Promise.resolve()),
-    importFile: jest.fn(() => Promise.resolve({ ok: true as const, added: 0, rejected: 0, overCap: 0, summary: null })),
-  };
-}
-
-const strip = () => screen.queryByRole("list", { name: "What playing unlocks" });
+const strip = () => screen.queryByRole("list", { name: "Still to unlock" });
 const items = () => within(strip()!).getAllByRole("listitem").map((item) => item.textContent);
 const staleNotes = (container: HTMLElement) =>
   [...container.querySelectorAll(".lab-stale")].map((note) => [note.closest(".lab-panel")!.classList[1], note.textContent]);
@@ -33,10 +24,13 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
 
     expect(items()).toEqual([
-      "Trend unlocks at 5 rounds of one setting on 2 different days.",
-      "Streak unlocks when you play on 2 different days.",
-      "Piece recall unlocks when one piece other than the king reaches 20 sightings.",
-      "Miss map unlocks at 10 sightings on every file and rank.",
+      "Memory span · 2 rounds at 80% with 3+ pieces",
+      "Pieces held · 5 rounds over 2 days",
+      "Trend · 5 rounds of one setting over 2 days",
+      "Speed · 5 rounds of one setting",
+      "Streak · play on 2 days",
+      "Miss map · 10 sightings per file and rank",
+      "Piece recall · 20 sightings of a non-king piece",
     ]);
     expect(screen.getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", PLAY_HREF);
   });
@@ -45,10 +39,13 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
 
     expect(items()).toEqual([
-      "Trend: 4 more rounds at 6 pieces, 10s, at least one on another day in games.",
-      "Streak: play on 1 more day, in a row or not.",
-      "Piece recall: 14 more sightings until one piece other than the king reaches 20.",
-      "Miss map: 10 more sightings on the least seen file or rank.",
+      "Memory span · 1 more round at 80% with 3+ pieces",
+      "Pieces held · 3 more rounds, 1 more day",
+      "Trend · 4 more game rounds at 6 pieces, 10\u00a0s, 1 more day",
+      "Speed · 4 more game rounds at 6 pieces, 10\u00a0s",
+      "Streak · play on 1 more day",
+      "Miss map · 10 more sightings on the least seen file or rank",
+      "Piece recall · 14 more sightings of a non-king piece",
     ]);
   });
 
@@ -56,9 +53,55 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("easyOnly")} />);
 
     expect(items()).toEqual([
-      "Piece recall: 20 more sightings until one piece other than the king reaches 20.",
-      "Miss map: 4 more sightings on the least seen file or rank.",
+      "Memory span · 1 round with 3+ pieces",
+      "Miss map · 4 more sightings on the least seen file or rank",
+      "Piece recall · 20 more sightings of a non-king piece",
     ]);
+  });
+
+  it("shows every line at every width: no toggle in the strip, and no rule in the stylesheet that hides any part of it", () => {
+    const { container } = renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
+    const hiding = [...css.matchAll(/([^{}]*\.lab-unlock[^{}]*)\{([^}]*)\}/g)]
+      .filter(([, , body]) => /display:\s*none|visibility:\s*hidden/.test(body))
+      .map(([, selector]) => selector.trim());
+
+    expect(within(container.querySelector(".lab-unlock") as HTMLElement).queryAllByRole("button", { hidden: true })).toEqual([]);
+    expect(items()).toHaveLength(7);
+    expect(hiding).toEqual([]);
+  });
+
+  it("mounts new lines when the record arrives, so a line that rewraps never moves the ones below it", () => {
+    const { rerender } = renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
+    const serverLines = within(strip()!).getAllByRole("listitem");
+
+    rerender(<LabRecordSection record={persona("twoRounds")} />);
+
+    expect(serverLines.map((line) => line.isConnected)).toEqual(Array(7).fill(false));
+    expect(items()).toHaveLength(7);
+  });
+
+  it("prints every threshold from the registry, so the copy cannot drift from the panels", () => {
+    renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
+    const { span, piecesHeld, trend, speed, streak, missMap, typeRecall } = LAB_METRICS;
+
+    expect(items().map((line) => line!.match(/\d+/g)!.map(Number))).toEqual([
+      [span.thresholds.qualifyingRounds, LAB_THRESHOLDS.spanAccuracy, LAB_THRESHOLDS.spanMinPieces],
+      [piecesHeld.thresholds.rounds, piecesHeld.thresholds.days],
+      [trend.thresholds.rounds, trend.thresholds.days],
+      [speed.thresholds.rounds],
+      [streak.thresholds.days],
+      [missMap.thresholds.exposures],
+      [typeRecall.thresholds.exposures],
+    ]);
+  });
+
+  it("asks for a round with a piece right before speed can count rounds at a setting", () => {
+    const records = Array.from({ length: 3 }, (_, index) =>
+      round({ id: `blank${index}`, placedFen: "8/8/8/8/8/8/8/8", localDay: "2026-10-08", endedAt: Date.UTC(2026, 9, 8, 9 + index) }),
+    );
+    renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor"), records, summary: summarize(records) }} />);
+
+    expect(items()).toContain("Speed · 1 round with a piece right");
   });
 
   it("drops the streak and piece recall lines exactly when their copy says they unlock", () => {
@@ -68,7 +111,7 @@ describe("unlock strip", () => {
     );
     renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor", "2026-10-07"), records, summary: summarize(records) }} />);
 
-    expect(items()).toEqual(["Miss map: 10 more sightings on the least seen file or rank."]);
+    expect(items()).toEqual(["Miss map · 10 more sightings on the least seen file or rank"]);
   });
 
   it("says in one line, in the same box, that every figure is unlocked once each can be read", () => {
@@ -89,7 +132,7 @@ describe("unlock strip", () => {
   it("reports a play from the strip as a counts-only panel action", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
 
-    fireEvent.click(within(screen.getByRole("list", { name: "What playing unlocks" }).parentElement!).getByRole("link"));
+    fireEvent.click(within(screen.getByRole("list", { name: "Still to unlock" }).parentElement!).getByRole("link"));
 
     expect(jest.mocked(trackEvent).mock.calls.at(-1)).toEqual([{ name: "lab_panel_action", params: { panel: "unlock", action: "play" } }]);
   });
@@ -100,12 +143,15 @@ describe("stale panels", () => {
     const { container } = renderWithIntl(<LabRecordSection record={persona("stale")} />);
 
     expect(staleNotes(container)).toEqual([
+      ["lab-p-span", "Last played 20 days ago. Play a round →"],
+      ["lab-p-held", "Last played 20 days ago. Play a round →"],
       ["lab-p-spark", "Last played 20 days ago. Play a round →"],
+      ["lab-p-speed", "Last played 20 days ago. Play a round →"],
       ["lab-p-streak", "Last played 20 days ago. Play a round →"],
-      ["lab-p-bests", "Last played 20 days ago. Play a round →"],
       ["lab-p-types", "Last played 20 days ago. Play a round →"],
+      ["lab-p-bests", "Last played 20 days ago. Play a round →"],
     ]);
-    expect(items()).toEqual(["Miss map: 2 more sightings on the least seen file or rank."]);
+    expect(items()).toEqual(["Miss map · 2 more sightings on the least seen file or rank"]);
     expect(container.querySelector(".lab-p-spark svg")).not.toBeNull();
   });
 

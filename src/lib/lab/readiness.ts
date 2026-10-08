@@ -32,6 +32,8 @@ export interface Need {
   readonly qualifyingRounds?: number;
   /** Rounds with more than the two kings. */
   readonly largerRounds?: number;
+  /** Rounds with at least one piece right and a rebuild time, the only rounds speed can read. */
+  readonly rightRounds?: number;
 }
 
 export interface Readiness {
@@ -41,8 +43,10 @@ export interface Readiness {
 }
 
 interface ReadinessInput {
-  /** What the figure is built from; zero means empty. */
+  /** What the figure is built from; zero means empty unless `played` says rounds exist. */
   readonly sampleSize: number;
+  /** Rounds played at all, when that can differ from the sample: a player with rounds is never empty. */
+  readonly played?: number;
   readonly have: Need;
   readonly thresholds: Need;
   readonly lastDay: string | null;
@@ -51,7 +55,7 @@ interface ReadinessInput {
 }
 
 export const DAY_MS = 24 * 60 * 60 * 1000;
-const NEED_KEYS = ["rounds", "days", "exposures", "qualifyingRounds", "largerRounds"] as const;
+const NEED_KEYS = ["rounds", "days", "exposures", "qualifyingRounds", "largerRounds", "rightRounds"] as const;
 
 const utcDay = (day: string) => {
   const [year, month, date] = day.split("-").map(Number);
@@ -61,8 +65,8 @@ const utcDay = (day: string) => {
 export const daysBetween = (from: string, to: string) => Math.round((utcDay(to) - utcDay(from)) / DAY_MS);
 
 /** Stale only replaces ready: a record that never warmed up still needs its missing rounds, however old it is. */
-export function readinessOf({ sampleSize, have, thresholds, lastDay, today }: ReadinessInput): Readiness {
-  if (sampleSize === 0) return { state: "empty", sampleSize };
+export function readinessOf({ sampleSize, played = sampleSize, have, thresholds, lastDay, today }: ReadinessInput): Readiness {
+  if (played === 0) return { state: "empty", sampleSize };
   const missing = NEED_KEYS.flatMap((key) => {
     const gap = (thresholds[key] ?? 0) - (have[key] ?? 0);
     return gap > 0 ? [[key, gap] as const] : [];

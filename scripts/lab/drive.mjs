@@ -4,8 +4,10 @@
  * control and records what §06 shows: a screenshot of the section and of each
  * panel at 390 and 1440 wide, and each panel's visible text. The text snapshot
  * is the baseline a later change diffs against, so "renders the same for every
- * player" is a command, not an eyeball. Fails on horizontal overflow or an
- * unexpected console error.
+ * player" is a command, not an eyeball. Fails on horizontal overflow, an
+ * unexpected console error, or server-rendered main-content text that a
+ * stylesheet hides at any of BREAKPOINT_WIDTHS: the AdSense audit reads served HTML
+ * only, so it cannot see a rule like `li + li { display: none }`.
  *
  *   npm run lab:personas && npm run lab:drive -- --base http://localhost:3121 --out <dir> [--compare <snapshot.json>] [--only <persona>]
  *
@@ -21,6 +23,11 @@ const HARNESS = ".claude/skills/verify-memory-chess/helpers/cdp.mjs";
 const WIDTHS = [1440, 390];
 export const PERSONA_ENV = "LAB_DRIVE_PERSONA";
 const TEXT_FILE = "text.json";
+// Phones from the narrowest up, then both sides of the 640px and 1000px breakpoints the §06 layout changes at.
+export const BREAKPOINT_WIDTHS = [320, 360, 390, 640, 641, 768, 1000, 1024, 1440];
+// Hidden before this check existed, outside the lab record: on phones the tiers table moves its header words into
+// each cell's label. Listed so the run stays green while any new hidden text fails it.
+const KNOWN_HIDDEN = [".lab-proto thead"];
 // Environment noise, not app faults: Vercel scripts that exist only on Vercel, Supabase and the
 // stats API without local credentials, and headless Chrome refusing audio without a gesture.
 const ENVIRONMENT_ERRORS = [/\/_vercel\//, /Supabase|game-stats|\/api\/leaderboard/, /NotAllowedError|failed to play sound/i];
@@ -49,6 +56,38 @@ async function shoot(page, selector, file) {
   const clip = await page.eval(rectOf(selector));
   const { data } = await page.send("Page.captureScreenshot", { format: "png", clip, captureBeyondViewport: true });
   writeFileSync(file, Buffer.from(data, "base64"));
+}
+
+/** Text under main, outside nav, that the computed style hides: display none or visibility hidden on it or an ancestor. */
+const HIDDEN_TEXT = `(() => {
+  const known = ${JSON.stringify(KNOWN_HIDDEN)};
+  const walker = document.createTreeWalker(document.querySelector("main"), NodeFilter.SHOW_TEXT);
+  const hidden = [];
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const element = node.parentElement;
+    const text = node.textContent.trim();
+    if (!text || element.closest("nav, script, style, noscript, template, details:not([open])")) continue;
+    if (known.some((selector) => element.closest(selector))) continue;
+    if (!element.checkVisibility({ visibilityProperty: true })) hidden.push(text.slice(0, 60));
+  }
+  return hidden;
+})()`;
+
+export async function sized(page, width) {
+  await page.send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 600 });
+}
+
+async function serverHiddenText(page, baseUrl) {
+  await page.send("Emulation.setScriptExecutionDisabled", { value: true });
+  const hidden = {};
+  for (const width of BREAKPOINT_WIDTHS) {
+    await sized(page, width);
+    await page.goto(`${baseUrl}/`);
+    const text = await page.eval(HIDDEN_TEXT);
+    if (text.length > 0) hidden[width] = text;
+  }
+  await page.send("Emulation.setScriptExecutionDisabled", { value: false });
+  return hidden;
 }
 
 export async function importFile(page, file) {
@@ -97,6 +136,8 @@ export default async function drive(page, { baseUrl, evidenceDir }) {
 
   const unexpected = consoleErrors.filter((message) => !ENVIRONMENT_ERRORS.some((pattern) => pattern.test(message)));
   writeFileSync(join(evidenceDir, "console-errors.txt"), consoleErrors.join("\n"));
+  const hidden = await serverHiddenText(page, baseUrl);
+  assert(Object.keys(hidden).length === 0, `server-rendered main-content text hidden at some viewport: ${JSON.stringify(hidden)}`);
   assert(WIDTHS.every((width) => overflow[width] <= 0), `horizontal overflow ${JSON.stringify(overflow)}`);
   assert(unexpected.length === 0, `console errors: ${unexpected.join(" | ")}`);
   return { rounds: persona.rounds.length, notice, overflow, consoleErrors: consoleErrors.length };

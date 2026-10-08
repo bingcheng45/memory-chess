@@ -7,7 +7,7 @@ function argumentUsers(node: unknown, names: readonly string[], path = ""): stri
 }
 
 describe("home.lab messages", () => {
-  it("name a setting's arguments pieceCount and memorizeSeconds, leaving seconds for clocks and solve times", () => {
-    expect(argumentUsers(en.home.lab, ["pieces", "seconds"])).toEqual(["method.clock", "record.bests.reading"]);
+  it("name a setting's arguments pieceCount and memorizeSeconds, leaving seconds for the method clock", () => {
+    expect(argumentUsers(en.home.lab, ["pieces", "seconds"])).toEqual(["method.clock"]);
   });
 });

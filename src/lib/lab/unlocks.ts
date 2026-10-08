@@ -1,9 +1,13 @@
 import { LAB_METRICS, type LabResults, type MetricId } from "./metrics";
+import { PANEL_ORDER, type PanelId } from "./panels";
 import type { Need } from "./readiness";
 
-/** The metrics a few rounds unlock, in the order the strip reads them. Bests need only one round, so they stay out. */
-const UNLOCK_ORDER = ["trend", "streak", "typeRecall", "missMap"] as const satisfies readonly MetricId[];
-type UnlockMetric = (typeof UNLOCK_ORDER)[number];
+/** Bests need only one round, so they stay out. */
+type UnlockMetric = Exclude<MetricId & PanelId, "bests">;
+const unlocks = (panel: PanelId): panel is UnlockMetric => panel in LAB_METRICS && panel !== "bests";
+
+/** The metrics a few rounds unlock, in the order the section's rows read them. */
+const UNLOCK_ORDER = PANEL_ORDER.filter(unlocks);
 
 export interface Unlock {
   readonly metric: UnlockMetric;

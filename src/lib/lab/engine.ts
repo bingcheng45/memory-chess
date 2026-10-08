@@ -11,7 +11,7 @@ export interface LabInput {
   readonly today: string;
 }
 
-/** A metric's value is null exactly when its readiness is empty. */
+/** A metric's value is null when its readiness is empty, and for speed while no round can be read. */
 export interface MetricResult<TValue> {
   readonly readiness: Readiness;
   readonly value: TValue | null;
@@ -22,7 +22,10 @@ export function measured<TValue>(readiness: Readiness, value: () => TValue): Met
 }
 
 /** Staleness reads the player's last day of play, the same for every metric. */
-export function readinessFor({ summary, today }: LabInput, measure: { sampleSize: number; have: Need; thresholds: Need }): Readiness {
+export function readinessFor(
+  { summary, today }: LabInput,
+  measure: { sampleSize: number; played?: number; have: Need; thresholds: Need },
+): Readiness {
   return readinessOf({ ...measure, lastDay: summary.days.at(-1) ?? null, today });
 }
 

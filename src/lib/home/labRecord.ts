@@ -2,6 +2,17 @@ import type { StreakDay } from "@/lib/lab/metrics";
 
 export const SAMPLE_ACCURACY: readonly number[] = [52, 58, 55, 63, 61, 68, 66, 72, 70, 75, 74, 79];
 
+export const SAMPLE_SPAN: readonly number[] = [4, 4, 5, 5, 5, 6, 6, 7, 7, 7, 8, 8];
+export const SAMPLE_SPAN_SECONDS = 10;
+export const SAMPLE_SPAN_ROUNDS = 3;
+
+/** A sample five-round average of pieces held; the first four average fewer rounds, so they draw dashed. */
+export const SAMPLE_PIECES_HELD: readonly number[] = [4, 4.5, 4.7, 4.8, 5.1, 5.3, 5.6, 5.8, 6.1, 6.3, 6.6, 7];
+export const SAMPLE_PARTIAL = 4;
+
+export const SAMPLE_SPEED: readonly number[] = [4.1, 3.9, 3.8, 3.6, 3.5, 3.3, 3.2, 3, 2.9, 2.8, 2.7, 2.6];
+export const SAMPLE_SPEED_ACCURACY = 88;
+
 export const SAMPLE_STREAK: readonly StreakDay[] = [
   "played", "played", "missed", "played", "played", "played", "missed",
   "played", "played", "played", "played", "played", "played", "today",

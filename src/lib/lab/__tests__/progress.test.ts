@@ -57,6 +57,10 @@ describe("memory span", () => {
     expect(span([])).toEqual({ readiness: { state: "empty", sampleSize: 0 }, value: null });
   });
 
+  it("is warming, needing two rounds at 80 percent or better, when every round so far had nothing correct", () => {
+    expect(span(rounds(3, () => ({ placedFen: NONE }))).readiness).toEqual({ state: "warming", sampleSize: 3, need: { qualifyingRounds: 2 } });
+  });
+
   it("is warming with one round at 80 percent or better, and says one more at that size is needed", () => {
     const records = [round({ id: "a", endedAt: at(TODAY, 9) }), round({ id: "b", endedAt: at(TODAY, 10), placedFen: THREE })];
 
@@ -238,6 +242,13 @@ describe("pieces held", () => {
 
     expect(held(records, "2026-10-21").readiness).toEqual({ state: "stale", sampleSize: 5 });
   });
+
+  it("counts rounds with nothing correct as zero pieces held, so they warm the line", () => {
+    expect(held(rounds(3, () => ({ placedFen: NONE })))).toMatchObject({
+      readiness: { state: "warming", sampleSize: 3, need: { rounds: 2, days: 1 } },
+      value: { points: [0, 0, 0] },
+    });
+  });
 });
 
 describe("speed", () => {
@@ -245,6 +256,14 @@ describe("speed", () => {
 
   it("is empty before any round", () => {
     expect(speed([])).toEqual({ readiness: { state: "empty", sampleSize: 0 }, value: null });
+  });
+
+  it("is warming, not empty, when every round so far had nothing correct, and asks for one with a piece right", () => {
+    expect(speed(rounds(3, () => ({ placedFen: NONE })))).toEqual({ readiness: { state: "warming", sampleSize: 0, need: { rightRounds: 1 } }, value: null });
+  });
+
+  it("asks for a round with a piece right when no round has a rebuild time", () => {
+    expect(speed(rounds(2, () => ({ solveMs: 0 }))).readiness).toEqual({ state: "warming", sampleSize: 0, need: { rightRounds: 1 } });
   });
 
   it("is warming at four rounds of one setting and leaves out rounds with nothing correct", () => {

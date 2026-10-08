@@ -180,14 +180,19 @@ const MAX_SOLVE_MS = 600_000;
 
 const secondsPerPiece = ({ solveMs, correct }: RoundRecord) => Math.min(solveMs, MAX_SOLVE_MS) / correct / 1000;
 
-/** Rounds with nothing correct or no rebuild time have no time per piece, so they are left out. */
+const RIGHT_THRESHOLDS = { rightRounds: 1 };
+
+/**
+ * Rounds with nothing correct or no rebuild time have no time per piece, so they are left out. A player whose every
+ * round is left out is warming, not empty, and has no setting to name yet, so the value stays null.
+ */
 export function computeSpeed(input: LabInput): MetricResult<SpeedValue> {
-  const { rounds, readiness } = busiestSetting(
-    input,
-    byEndedAt(input.records).filter(({ correct, solveMs }) => correct > 0 && solveMs > 0),
-    SPEED_THRESHOLDS,
-    LAB_THRESHOLDS.speedSettingRounds,
-  );
+  const usable = byEndedAt(input.records).filter(({ correct, solveMs }) => correct > 0 && solveMs > 0);
+  if (usable.length === 0) {
+    const readiness = readinessFor(input, { sampleSize: 0, played: input.records.length, have: { rightRounds: 0 }, thresholds: RIGHT_THRESHOLDS });
+    return { readiness, value: null };
+  }
+  const { rounds, readiness } = busiestSetting(input, usable, SPEED_THRESHOLDS, LAB_THRESHOLDS.speedSettingRounds);
 
   return measured(readiness, () => {
     const shown = rounds.slice(-Math.max(LAB_THRESHOLDS.trendPoints, 2 * LAB_THRESHOLDS.rollingWindow));

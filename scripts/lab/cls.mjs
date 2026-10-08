@@ -11,7 +11,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { argsOf, importFile, PERSONA_ENV, runPersona } from "./drive.mjs";
+import { argsOf, loadPersona, PERSONA_ENV, runPersona, sized } from "./drive.mjs";
 
 const MAX_CLS = 0.02;
 const WIDTHS = [1440, 1024, 1000, 768, 640, 390, 360, 320];
@@ -44,13 +44,8 @@ new PerformanceObserver((list) => {
 const round = (value) => Math.round(value * 10000) / 10000;
 
 export default async function measure(page, { baseUrl, evidenceDir }) {
-  const personaFile = process.env[PERSONA_ENV];
   const path = process.env[PATH_ENV];
-  if (JSON.parse(readFileSync(personaFile, "utf8")).rounds.length > 0) {
-    await page.goto(`${baseUrl}/`);
-    await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);
-    await importFile(page, personaFile);
-  }
+  await loadPersona(page, baseUrl, process.env[PERSONA_ENV]);
   await page.send("Page.addScriptToEvaluateOnNewDocument", { source: OBSERVE });
   await page.send("Network.enable");
   await page.send("Network.setCacheDisabled", { cacheDisabled: true });
@@ -58,7 +53,7 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
 
   const result = {};
   for (const width of WIDTHS) {
-    await page.send("Emulation.setDeviceMetricsOverride", { width, height: width < 600 ? 844 : 900, deviceScaleFactor: 1, mobile: width < 600 });
+    await sized(page, width, width < 600 ? 844 : 900);
     await page.goto("about:blank");
     await page.goto(`${baseUrl}${path}`);
     await page.sleep(SETTLE_MS);

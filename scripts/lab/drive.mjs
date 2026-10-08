@@ -74,8 +74,8 @@ const HIDDEN_TEXT = `(() => {
   return hidden;
 })()`;
 
-export async function sized(page, width) {
-  await page.send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 600 });
+export async function sized(page, width, height = 900) {
+  await page.send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: width < 600 });
 }
 
 async function serverHiddenText(page, baseUrl) {
@@ -97,6 +97,17 @@ export async function importFile(page, file) {
   const { nodeId } = await page.send("DOM.querySelector", { nodeId: root.nodeId, selector: '.lab-tools input[type="file"]' });
   await page.send("DOM.setFileInputFiles", { nodeId, files: [file] });
   return page.waitFor(`document.querySelector('.lab-tools p[role="status"]').textContent.trim() || null`, 60_000);
+}
+
+/** Seeds the record from the persona file through the real Import control, unless it has no rounds, and returns its round count. */
+export async function loadPersona(page, baseUrl, personaFile) {
+  const { rounds } = JSON.parse(readFileSync(personaFile, "utf8"));
+  if (rounds.length === 0) return 0;
+  await sized(page, 1440);
+  await page.goto(`${baseUrl}/`);
+  await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);
+  await importFile(page, personaFile);
+  return rounds.length;
 }
 
 export default async function drive(page, { baseUrl, evidenceDir }) {

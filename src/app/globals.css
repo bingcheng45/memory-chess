@@ -39,6 +39,7 @@ body {
 /*
  * Geist Mono's fallback while the webfont loads: a local monospace face sized to
  * its 0.6em advance and its 1.3em normal line box, so the swap moves nothing.
+ * Measured in Chrome against Geist Mono; npm run lab:cls fails if they drift.
  */
 @font-face {
   font-family: "Geist Mono Fallback";

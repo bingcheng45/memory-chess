@@ -68,8 +68,10 @@ const FASTER_SECONDS = 0.3;
 const ACCURACY_FALL_POINTS = 5;
 const COLOUR_GAP_POINTS = 8;
 const percent = (share: number) => Math.round(share * 100);
-/** The multiple a sentence prints: "about twice", "about 2.5 times". */
-export const nearestHalf = (ratio: number) => Math.round(ratio * 2) / 2;
+/** The multiple a sentence prints, to one decimal: "about 1.8 times", and "about twice" only from 1.95. */
+export const aboutTimes = (ratio: number) => Math.round(ratio * 10) / 10;
+/** A rate above zero prints as 0 below 1%, which the sentence words as "under 1%", so a real miss never reads as none. */
+const percentShown = (share: number) => (share > 0 && share < 0.01 ? 0 : percent(share));
 const rig = ({ pieceCount, memorizeSeconds }: Pick<TrendSetting, "pieceCount" | "memorizeSeconds">): InsightAction => ({ kind: "rig", pieceCount, memorizeSeconds });
 
 function fileCounts({ summary }: LabInput) {
@@ -97,9 +99,9 @@ const edgeFiles: InsightRule = {
     if (ratio !== null && ratio < EDGE_RATIO) return null;
     return {
       params: {
-        times: ratio === null ? 0 : nearestHalf(ratio),
-        edge: percent(edgeRate),
-        centre: percent(centreRate),
+        times: ratio === null ? 0 : aboutTimes(ratio),
+        edge: percentShown(edgeRate),
+        centre: percentShown(centreRate),
         edgeShown: edge.shown,
         centreShown: centre.shown,
       },

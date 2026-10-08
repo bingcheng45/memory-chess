@@ -7,7 +7,7 @@ import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import { trackEvent } from "@/lib/analytics/events";
 import { playHref } from "@/lib/game/roundLink";
 import { SAMPLE_EDGE_MISS, SAMPLE_NOTEBOOK } from "@/lib/home/labRecord";
-import { EDGE_RIG, INSIGHT_GUIDES, INSIGHTS_THRESHOLDS, nearestHalf, type Insight, type InsightAction } from "@/lib/lab/insights";
+import { EDGE_RIG, INSIGHT_GUIDES, INSIGHTS_THRESHOLDS, aboutTimes, type Insight, type InsightAction } from "@/lib/lab/insights";
 import type { LabResults } from "@/lib/lab/metrics";
 import { FIRST_READING_ACCURACY, type NotebookEntry } from "@/lib/lab/notebook";
 import { hasFigure, LAB_THRESHOLDS } from "@/lib/lab/readiness";
@@ -81,7 +81,7 @@ export function InsightsPanel({ result: { readiness, value }, daysAgo }: PanelPr
       return (
         <>
           <ul className="lab-insights" aria-label={t("insights.sampleList")}>
-            <Finding text={t("insights.sample", { edge, centre, times: nearestHalf(edge / centre) })} action={{ kind: "rig", ...EDGE_RIG }} />
+            <Finding text={t("insights.sample", { edge, centre, times: aboutTimes(edge / centre) })} action={{ kind: "rig", ...EDGE_RIG }} />
           </ul>
           <p className="lab-note">{t("insights.sampleNote")}</p>
         </>

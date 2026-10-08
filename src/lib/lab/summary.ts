@@ -75,7 +75,7 @@ function addColors(summary: LabSummary, { targetFen, squares }: RoundRecord): Pi
   return { colorShown: shown, colorMissed: missed };
 }
 
-function beats(record: RoundRecord, best: PersonalBest | undefined): boolean {
+export function beats(record: RoundRecord, best: PersonalBest | undefined): boolean {
   if (!best) return true;
   return record.accuracy > best.accuracy || (record.accuracy === best.accuracy && record.solveMs < best.solveMs);
 }

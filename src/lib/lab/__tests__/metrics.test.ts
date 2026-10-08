@@ -299,7 +299,7 @@ describe("deriveLab", () => {
   it("returns every registered metric under its id", () => {
     const results = deriveLab(fromRecords([round()]));
 
-    const ids = ["streak", "bests", "trend", "typeRecall", "missMap", "sessions", "span", "piecesHeld", "speed", "insights"];
+    const ids = ["streak", "bests", "trend", "typeRecall", "missMap", "sessions", "span", "piecesHeld", "speed", "insights", "notebook"];
 
     expect(Object.keys(results)).toEqual(ids);
     expect(Object.values(LAB_METRICS).map(({ id }) => id)).toEqual(ids);

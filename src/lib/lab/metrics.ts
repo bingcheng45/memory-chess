@@ -27,6 +27,7 @@ import {
   type SpeedValue,
 } from "./progress";
 import { computeInsights, INSIGHTS_THRESHOLDS, type InsightsValue } from "./insights";
+import { computeNotebook, NOTEBOOK_THRESHOLDS, type NotebookValue } from "./notebook";
 import { LAB_THRESHOLDS, type Need } from "./readiness";
 import { LAB_SOURCES, PIECE_LETTERS, settingKey, type LabSource, type RoundRecord } from "./record";
 import { sessionRuns } from "./sessions";
@@ -250,6 +251,7 @@ interface LabValues {
   readonly piecesHeld: PiecesHeldValue;
   readonly speed: SpeedValue;
   readonly insights: InsightsValue;
+  readonly notebook: NotebookValue;
 }
 
 export type MetricId = keyof LabValues;
@@ -315,6 +317,12 @@ export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & 
     question: "What stands out in your record, and what could you do about it?",
     thresholds: INSIGHTS_THRESHOLDS,
     compute: computeInsights,
+  },
+  notebook: {
+    id: "notebook",
+    question: "What notable thing happened in your record, and when?",
+    thresholds: NOTEBOOK_THRESHOLDS,
+    compute: computeNotebook,
   },
 };
 

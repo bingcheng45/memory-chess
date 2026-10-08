@@ -155,13 +155,13 @@ export default async function drive(page, { baseUrl, evidenceDir }) {
   return { rounds: persona.rounds.length, notice, overflow, consoleErrors: consoleErrors.length };
 }
 
-export function argsOf(argv, out = ".lab-drive") {
+export function argsOf(argv, out = ".lab-drive", base = "http://localhost:3121") {
   const value = (flag, fallback) => {
     const index = argv.indexOf(flag);
     return index >= 0 && argv[index + 1] ? argv[index + 1] : fallback;
   };
   return {
-    base: value("--base", "http://localhost:3121"),
+    base: value("--base", base),
     out: resolve(value("--out", out)),
     personas: resolve(value("--personas", ".lab-personas")),
     compare: value("--compare", null),

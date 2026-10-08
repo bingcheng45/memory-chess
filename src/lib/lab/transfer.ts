@@ -12,8 +12,9 @@ import {
   type RoundInput,
   type RoundKind,
   type RoundRecord,
+  type TypeCounts,
 } from "./record";
-import { isCount, MAX_DAYS, parseSummary, type LabSummary, type PersonalBest } from "./summary";
+import { isCount, MAX_DAYS, parseSummary, type ColorCounts, type LabSummary, type PersonalBest } from "./summary";
 import { PLACEMENT_KEEP, ROUND_CAP } from "./storage";
 
 const EXPORT_FORMAT = "memory-chess-lab";
@@ -167,11 +168,15 @@ const isBest = (value: unknown): value is PersonalBest =>
   isCount(value.at) &&
   isCount(value.rounds);
 
+const nonKings = (counts: TypeCounts) => Object.entries(counts).reduce((sum, [type, count]) => (type === "k" ? sum : sum + (count ?? 0)), 0);
+const colorTotal = ({ w, b }: ColorCounts) => w + b;
+
 /**
  * The file's lifetime summary, rebuilt field by field, or null if any part is
  * out of shape, it counts fewer rounds than the file holds, or it contradicts
  * itself: every counted round adds a day and a best, so rounds, days and
- * bests are empty together or not at all.
+ * bests are empty together or not at all, and the colour counts split the
+ * same pieces other than kings that the type counts hold.
  */
 function parseFileSummary(raw: unknown, rounds: readonly RoundRecord[], now: number): LabSummary | null {
   const summary = parseSummary(raw);
@@ -186,10 +191,12 @@ function parseFileSummary(raw: unknown, rounds: readonly RoundRecord[], now: num
     summary.days.every((day, index) => isCalendarDay(day) && day <= localDayOf(new Date(now + DAY_MS)) && (index === 0 || summary.days[index - 1] < day)) &&
     bests.length <= MAX_BESTS &&
     bests.every(([key, best]) => BEST_KEY.test(key) && isBest(best)) &&
+    colorTotal(summary.colorShown) === nonKings(summary.typeShown) &&
+    colorTotal(summary.colorMissed) === nonKings(summary.typeMissed) &&
     (summary.evictedThrough === null || summary.evictedThrough <= now + DAY_MS);
   if (!valid) return null;
   return {
-    v: 2,
+    v: 3,
     rounds: summary.rounds,
     days: [...summary.days],
     bests: Object.fromEntries(
@@ -199,6 +206,8 @@ function parseFileSummary(raw: unknown, rounds: readonly RoundRecord[], now: num
     squareMissed: [...summary.squareMissed],
     typeShown: { ...summary.typeShown },
     typeMissed: { ...summary.typeMissed },
+    colorShown: { w: summary.colorShown.w, b: summary.colorShown.b },
+    colorMissed: { w: summary.colorMissed.w, b: summary.colorMissed.b },
     evictedThrough: summary.evictedThrough,
   };
 }

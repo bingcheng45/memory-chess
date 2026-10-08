@@ -2,6 +2,7 @@
 import { forceCloseDatabase, IDBFactory } from "fake-indexeddb";
 import { withoutPlacements } from "@/lib/lab/record";
 import { createLabStore, PERSIST_AFTER_ROUNDS, PLACEMENT_KEEP, ROUND_CAP, type LabStoreDeps } from "@/lib/lab/storage";
+import { summarize } from "@/lib/lab/summary";
 import { buildExport, parseImport } from "@/lib/lab/transfer";
 import { round, roundV2, TARGET } from "./fixtures";
 
@@ -142,8 +143,35 @@ describe("lab store", () => {
 
     const summary = await store.readSummary();
 
-    expect(summary).toMatchObject({ v: 2, rounds: 2 });
+    expect(summary).toMatchObject({ v: 3, rounds: 2 });
     expect(Object.keys(summary.bests)).toEqual(["game:4x10", "calibration:4x10"]);
+  });
+
+  it("rebuilds a version 2 summary, which has no colour counts, from the log and stores the rebuilt one", async () => {
+    const storage = memoryStorage();
+    const store = createLabStore(deps({ localStorage: storage }));
+    await store.addRound(round({ id: "a", endedAt: 1 }));
+    await store.addRound(round({ id: "b", endedAt: 2, placedFen: MISSED_QUEEN }));
+    const { colorShown, colorMissed, ...v2 } = JSON.parse(storage.getItem("memory-chess-lab-summary") as string);
+    storage.setItem("memory-chess-lab-summary", JSON.stringify({ ...v2, v: 2, rounds: 99 }));
+
+    const summary = await store.readSummary();
+
+    expect([colorShown, colorMissed]).toEqual([{ w: 2, b: 2 }, { w: 0, b: 1 }]);
+    expect(summary).toMatchObject({ v: 3, rounds: 2, colorShown: { w: 2, b: 2 }, colorMissed: { w: 0, b: 1 } });
+    expect(JSON.parse(storage.getItem("memory-chess-lab-summary") as string)).toMatchObject({ v: 3, rounds: 2 });
+  });
+
+  it("imports a file whose summary is version 2 by its rounds, and counts the colours from them", async () => {
+    const rounds = [round({ id: "a", endedAt: 1 }), round({ id: "b", endedAt: 2, placedFen: MISSED_QUEEN })];
+    const { colorShown, colorMissed, ...v2 } = summarize(rounds);
+    expect([colorShown, colorMissed]).toEqual([{ w: 2, b: 2 }, { w: 0, b: 1 }]);
+    const file = JSON.stringify(buildExport(rounds, NOW, { ...v2, v: 2 } as never));
+    const store = createLabStore(deps());
+
+    expect(parseImport(file, NOW)).toMatchObject({ ok: true, rejected: 0, summary: "dropped" });
+    expect(await importFile(store, file)).toBe(2);
+    expect(await store.readSummary()).toMatchObject({ v: 3, rounds: 2, colorShown: { w: 2, b: 2 }, colorMissed: { w: 0, b: 1 } });
   });
 
   it(`drops the oldest rounds past ${ROUND_CAP}`, async () => {

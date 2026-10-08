@@ -1,4 +1,6 @@
 import type { PieceSymbol } from "chess.js";
+import { BOARD_SQUARES } from "@/lib/game/board";
+import { placementFromFen } from "@/lib/game/scoring";
 import { PIECE_LETTERS, settingKey, type RoundRecord, type TypeCounts } from "./record";
 
 export interface PersonalBest {
@@ -9,12 +11,18 @@ export interface PersonalBest {
   readonly rounds: number;
 }
 
+/** Pieces other than the kings, by colour: every round places both kings, so they would only add the same count to each. */
+export interface ColorCounts {
+  readonly w: number;
+  readonly b: number;
+}
+
 /**
  * Lifetime counters kept beside the capped round log, so streak days, bests
  * and the miss map survive eviction. Every field is derivable from the log.
  */
 export interface LabSummary {
-  readonly v: 2;
+  readonly v: 3;
   readonly rounds: number;
   readonly days: readonly string[];
   readonly bests: Readonly<Record<string, PersonalBest>>;
@@ -22,13 +30,15 @@ export interface LabSummary {
   readonly squareMissed: readonly number[];
   readonly typeShown: TypeCounts;
   readonly typeMissed: TypeCounts;
+  readonly colorShown: ColorCounts;
+  readonly colorMissed: ColorCounts;
   readonly evictedThrough: number | null;
 }
 
 export const MAX_DAYS = 400;
 
 export const EMPTY_SUMMARY: LabSummary = {
-  v: 2,
+  v: 3,
   rounds: 0,
   days: [],
   bests: {},
@@ -36,6 +46,8 @@ export const EMPTY_SUMMARY: LabSummary = {
   squareMissed: Array<number>(64).fill(0),
   typeShown: {},
   typeMissed: {},
+  colorShown: { w: 0, b: 0 },
+  colorMissed: { w: 0, b: 0 },
   evictedThrough: null,
 };
 
@@ -46,6 +58,21 @@ function addCounts(total: TypeCounts, more: TypeCounts): TypeCounts {
       return sum > 0 ? [[letter, sum]] : [];
     }),
   );
+}
+
+/** A wrong piece on a target square misses the target piece, as in the type counts; an extra piece misses nothing. */
+function addColors(summary: LabSummary, { targetFen, squares }: RoundRecord): Pick<LabSummary, "colorShown" | "colorMissed"> {
+  const target = placementFromFen(targetFen);
+  const shown = { ...summary.colorShown };
+  const missed = { ...summary.colorMissed };
+  BOARD_SQUARES.forEach((square, index) => {
+    const piece = target[square];
+    if (!piece || piece.toLowerCase() === "k") return;
+    const color = piece === piece.toUpperCase() ? "w" : "b";
+    shown[color] += 1;
+    if (squares[index] === "m" || squares[index] === "w") missed[color] += 1;
+  });
+  return { colorShown: shown, colorMissed: missed };
 }
 
 function beats(record: RoundRecord, best: PersonalBest | undefined): boolean {
@@ -64,7 +91,7 @@ export function addToSummary(summary: LabSummary, record: RoundRecord): LabSumma
     : [...summary.days, record.localDay].sort().slice(-MAX_DAYS);
 
   return {
-    v: 2,
+    v: 3,
     rounds: summary.rounds + 1,
     days,
     bests: { ...summary.bests, [key]: { ...best, rounds: (previous?.rounds ?? 0) + 1 } },
@@ -74,6 +101,7 @@ export function addToSummary(summary: LabSummary, record: RoundRecord): LabSumma
     ),
     typeShown: addCounts(summary.typeShown, record.shownByType),
     typeMissed: addCounts(summary.typeMissed, record.missedByType),
+    ...addColors(summary, record),
     evictedThrough: summary.evictedThrough,
   };
 }
@@ -90,12 +118,18 @@ const isTypeCounts = (value: unknown): value is TypeCounts =>
   typeof value === "object" &&
   value !== null &&
   Object.entries(value).every(([key, count]) => PIECE_LETTERS.includes(key as PieceSymbol) && isCount(count));
+const isColorCounts = (value: unknown): value is ColorCounts =>
+  typeof value === "object" &&
+  value !== null &&
+  Object.keys(value).length === 2 &&
+  isCount((value as ColorCounts).w) &&
+  isCount((value as ColorCounts).b);
 
 export function parseSummary(raw: unknown): LabSummary | null {
   if (typeof raw !== "object" || raw === null) return null;
   const summary = raw as Record<string, unknown>;
   const valid =
-    summary.v === 2 &&
+    summary.v === 3 &&
     isCount(summary.rounds) &&
     Array.isArray(summary.days) &&
     summary.days.every((day) => typeof day === "string") &&
@@ -105,6 +139,8 @@ export function parseSummary(raw: unknown): LabSummary | null {
     isCountArray(summary.squareMissed) &&
     isTypeCounts(summary.typeShown) &&
     isTypeCounts(summary.typeMissed) &&
+    isColorCounts(summary.colorShown) &&
+    isColorCounts(summary.colorMissed) &&
     (summary.evictedThrough === null || isCount(summary.evictedThrough));
   return valid ? (raw as LabSummary) : null;
 }

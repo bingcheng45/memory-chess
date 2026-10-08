@@ -316,7 +316,7 @@ describe("LabRecordSection", () => {
     [{ ok: true as const, added: 0, rejected: 0, overCap: 0, summary: "dropped" as const }, "Nothing new to import. Those rounds are already here."],
     [
       { ok: true as const, added: 2, rejected: 0, overCap: 0, summary: "dropped" as const },
-      "Imported 2 rounds. The file's lifetime totals could not be read, so only its rounds were imported.",
+      "Imported 2 rounds. The file's lifetime totals were unreadable or from an older version, so only its rounds were imported.",
     ],
     [{ ok: true as const, added: 5000, rejected: 0, overCap: 0, summary: "restored" as const }, "Imported 5,000 rounds."],
     [{ ok: false as const, tooLarge: true }, "That file is over 5 MB, larger than any lab record, so nothing was imported."],

@@ -203,7 +203,7 @@ describe("pieces held", () => {
       readiness: { state: "ready", sampleSize: 20 },
       value: {
         points: [...Array(10).fill(2), ...Array(10).fill(4)],
-        movingAverage: [...Array(10).fill(2), 2.4, 2.8, 3.2, 3.6, ...Array(6).fill(4)],
+        movingAverage: [...Array(10).fill(2), 2.4, 2.8, 3.2, 3.6, ...Array(6).fill(4)].map((value, index) => ({ value, partial: index < 4 })),
         recent: { average: 4, previous: 2, change: 2 },
       },
     });
@@ -214,8 +214,24 @@ describe("pieces held", () => {
     const few = held(records.slice(0, 15)).value;
 
     expect(held(records).value?.points).toHaveLength(30);
-    expect(held(records).value?.movingAverage.slice(0, 2)).toEqual([2.4, 2.6]);
+    expect(held(records).value?.movingAverage.slice(0, 2)).toEqual([
+      { value: 2.4, partial: false },
+      { value: 2.6, partial: false },
+    ]);
     expect(few?.recent).toEqual({ average: 2.5, previous: null, change: null });
+  });
+
+  it("marks the first four averages of a player's whole series as partial, since fewer than five rounds went into them", () => {
+    const records = rounds(6, (index) => ({ placedFen: index % 2 ? HALF : THREE, localDay: index < 2 ? "2026-10-06" : TODAY }));
+
+    expect(held(records).value?.movingAverage).toEqual([
+      { value: 3, partial: true },
+      { value: 2.5, partial: true },
+      { value: 2.67, partial: true },
+      { value: 2.5, partial: true },
+      { value: 2.6, partial: false },
+      { value: 2.4, partial: false },
+    ]);
   });
 
   it("turns stale two weeks after the last round", () => {

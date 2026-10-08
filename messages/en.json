@@ -442,6 +442,7 @@
           "fastWrong": "Fast and wrong is not improvement.",
           "config": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s, your most played setting lately · From {count, plural, one {# round} other {# rounds}}",
           "need": "{count, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in games}} {count, plural, one {draws} other {draw}} your speed line.",
+          "needRight": "Speed reads only rounds with at least one piece right. Play {count, plural, one {# such round} other {# such rounds}} to start your line.",
           "first": "Oldest",
           "last": "Latest"
         },
@@ -563,6 +564,7 @@
           "piecesHeldDays": "Pieces held: play on {days, plural, one {# more day} other {# more days}}.",
           "piecesHeldRoundsDays": "Pieces held: {rounds, plural, one {# more round, played on another day} other {# more rounds, at least one on another day}}.",
           "speedRounds": "Speed: {rounds, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in games}}.",
+          "speedRight": "Speed: {rightRounds, plural, one {# round} other {# rounds}} with at least one piece right.",
           "streakLeft": "Streak: play on {days, plural, one {# more day} other {# more days}}, in a row or not.",
           "typeRecallLeft": "Piece recall: {exposures, plural, one {# more sighting} other {# more sightings}} until one piece other than the king reaches {threshold}.",
           "missMapLeft": "Miss map: {exposures, plural, one {# more sighting} other {# more sightings}} on the least seen file or rank."

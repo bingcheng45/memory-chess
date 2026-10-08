@@ -180,21 +180,23 @@ export function SpeedPanel({ result: { readiness, value: speed }, daysAgo }: Pan
   const t = useTranslations("home.lab.record.speed");
   const axis = { first: t("first"), last: t("last") };
 
-  const body = !speed ? (
+  const body = readiness.state === "empty" ? (
     <>
       <p className="lab-reading-stat">{t("average", { average: oneDecimal(mean(SAMPLE_SPEED.slice(-LAB_THRESHOLDS.rollingWindow))) })}</p>
       <p className="lab-reading-stat">{t("accuracy", { average: SAMPLE_SPEED_ACCURACY })}</p>
       <ValueLine points={SAMPLE_SPEED} label={t("aria")} {...axis} />
       <p className="lab-note">{t("note")}</p>
     </>
-  ) : hasFigure(readiness) ? (
+  ) : speed && hasFigure(readiness) ? (
     <>
       <SpeedReading speed={speed} axis={axis} />
       <p className="lab-note">{t("config", { ...speed.setting, count: readiness.sampleSize })}</p>
       <StaleNote readiness={readiness} daysAgo={daysAgo} panel="speed" />
     </>
   ) : (
-    <p className="lab-panel-desc lab-empty">{t("need", { count: readiness.need?.rounds ?? 0, ...speed.setting })}</p>
+    <p className="lab-panel-desc lab-empty">
+      {speed ? t("need", { count: readiness.need?.rounds ?? 0, ...speed.setting }) : t("needRight", { count: readiness.need?.rightRounds ?? 0 })}
+    </p>
   );
 
   return (

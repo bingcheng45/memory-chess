@@ -8,7 +8,7 @@
  * them and compares again: that pass only holds when every mono line box has an
  * explicit line-height. With the files failed, mono text at weight 600 or more must
  * paint in a bold local font, because a synthesized bold is wider in WebKit, and
- * its width must match the loaded state.
+ * its width must match the loaded state to within WIDTH_TOLERANCE_PX.
  *
  *   npm run lab:personas && npm run lab:fontswap -- --base http://localhost:3128 --out <dir> [--only <persona>]
  */
@@ -23,6 +23,9 @@ const PERSONAS = ["newVisitor", "thirtyDays"];
 const RESULT_FILE = "fontswap.json";
 const SETTLE_MS = 2500;
 const BOLD_MARK = "data-fontswap-bold";
+// At 13 to 22px Chrome lays the size-adjusted Menlo glyphs out up to 0.06 percent narrower than 0.600em (exact at
+// 100px and up), and text rects snap to 1/64px, so the fallback may be 0.12px short on a 216px line.
+const WIDTH_TOLERANCE_PX = 0.25;
 
 // Rewrites the local fallback faces in place without the three descriptors Safari ignores.
 const STRIP_OVERRIDES = `(() => {
@@ -99,8 +102,11 @@ function compare(fallback, loaded) {
         const [, loadedTop, loadedHeight] = loaded.blocks[index];
         return top === loadedTop && height === loadedHeight ? [] : [`${index} ${label}: top ${top} vs ${loadedTop}, height ${height} vs ${loadedHeight}`];
       });
-  const widthDiffs = fallback.bold.flatMap(({ label, text, width }, index) => (loaded.bold[index]?.width === width ? [] : [`${label} "${text}": width ${width} vs ${loaded.bold[index]?.width}`]));
-  const synthesized = fallback.bold.filter(({ fonts }) => !fonts.some((font) => /bold/i.test(font))).map(({ label, text, fonts }) => `${label} "${text}" painted in ${fonts.join(", ")}`);
+  const widthDiffs = fallback.bold.flatMap(({ label, text, width }, index) => {
+    const loadedWidth = loaded.bold[index]?.width;
+    return Math.abs(loadedWidth - width) <= WIDTH_TOLERANCE_PX ? [] : [`${label} "${text}": width ${width} vs ${loadedWidth}`];
+  });
+  const synthesized = fallback.bold.filter(({ width, fonts }) => width > 0 && !fonts.some((font) => /bold/i.test(font))).map(({ label, text, fonts }) => `${label} "${text}" painted in ${fonts.join(", ")}`);
   return { blocks: fallback.blocks.length, boldTexts: fallback.bold.length, blockDiffs, widthDiffs, synthesized };
 }
 

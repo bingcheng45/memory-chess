@@ -18,6 +18,8 @@ const LEFT: { readonly [K in Unlock["metric"]]: (need: Need) => string } = {
   streak: () => "streakLeft",
   missMap: () => "missMapLeft",
   typeRecall: () => "typeRecallLeft",
+  insights: () => "insightsLeft",
+  notebook: () => "notebook",
 };
 
 /**

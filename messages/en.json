@@ -565,7 +565,10 @@
           "speedRight": "Speed · {rightRounds, plural, one {# round} other {# rounds}} with a piece right",
           "streakLeft": "Streak · play on {days, plural, one {# more day} other {# more days}}",
           "typeRecallLeft": "Piece recall · {exposures, plural, one {# more sighting} other {# more sightings}} of a non-king piece",
-          "missMapLeft": "Miss map · {exposures, plural, one {# more sighting} other {# more sightings}} on the least seen file or rank"
+          "missMapLeft": "Miss map · {exposures, plural, one {# more sighting} other {# more sightings}} on the least seen file or rank",
+          "insights": "Insights · {rounds, plural, one {# round} other {# rounds}}",
+          "insightsLeft": "Insights · {rounds, plural, one {# more round} other {# more rounds}}",
+          "notebook": "Lab notebook · {rounds, plural, one {# round} other {# rounds}}"
         },
         "bests": {
           "fig": "Fig. {number} · Personal bests",
@@ -586,6 +589,48 @@
           "onlyKings": "Your rounds so far were just the two kings. Play a round with more pieces to see recall by piece type.",
           "thin": "{shown}/20 seen",
           "kings": "Kings are in every round, so they are a baseline. Recalled {recalled} of {shown}."
+        },
+        "insights": {
+          "fig": "Fig. {number} · Insights",
+          "title": "What stands out, and what to try.",
+          "desc": "A finding shows only once its numbers pass a minimum sample, and it names the counts behind it.",
+          "sample": "Example from a sample record: the a and h files missed {times, plural, =2 {about twice} other {about # times}} as often as the centre files, d and e, {edge}% of pieces against {centre}%.",
+          "sampleList": "Sample finding",
+          "sampleNote": "Sample finding, not from your rounds.",
+          "list": "Findings from your record",
+          "need": "Insights read your record from {threshold} rounds. {count, plural, one {# more round} other {# more rounds}} to go.",
+          "none": "Nothing stands out yet. Keep playing.",
+          "rules": {
+            "edgeFiles": "{times, plural, =0 {You miss {edge}% of {edgeShown} pieces on the a and h files and none of {centreShown} on the centre files, d and e.} =2 {You miss the a and h files about twice as often as the centre files, d and e: {edge}% of {edgeShown} pieces against {centre}% of {centreShown}.} other {You miss the a and h files about # times as often as the centre files, d and e: {edge}% of {edgeShown} pieces against {centre}% of {centreShown}.}}",
+            "weakType": "Of the pieces other than kings seen {minimum} times or more, {type, select, q {queens} r {rooks} b {bishops} n {knights} other {pawns}} slip most: you recalled {recalled} of {shown}, {percent}%.",
+            "fasterLessAccurate": "At {pieceCount} pieces, {studyTime} your last {window} rounds took {fasterTime} less per correct piece than the {window} before, and accuracy fell {fell} points.",
+            "colourGap": "You recall {weaker, select, w {white} other {black}} pieces less often than {weaker, select, w {black} other {white}} ones: {weakerPercent}% of {weakerShown} against {strongerPercent}% of {strongerShown}, kings left out.",
+            "plateau": "At {pieceCount} pieces, {studyTime} your last {window} rounds averaged {last}% and the {window} before {before}%, and your span held at {span} pieces over your last week of play. One more piece may move it."
+          },
+          "actions": {
+            "rig": "Play {pieceCount} pieces, {studyTime}",
+            "patterns": "Read the pattern recognition drills",
+            "vision": "Read how to see the whole board"
+          }
+        },
+        "notebook": {
+          "fig": "Fig. {number} · Lab notebook",
+          "title": "What happened, and when.",
+          "empty": "Entries appear as you play.",
+          "sampleList": "Sample notebook entries",
+          "list": "Your notebook, newest first",
+          "new": "New",
+          "newNote": "New marks entries since your last visit.",
+          "showAll": "Show all {count} entries",
+          "showFewer": "Show fewer",
+          "entries": {
+            "firstRound": "Day {day}. First round: {accuracy} percent at {pieceCount} pieces.",
+            "rounds": "Day {day}. Round {count, number} played.",
+            "first90": "Day {day}. First {threshold} percent or better at {pieceCount} pieces.",
+            "best": "Day {day}. New {source, select, calibration {practice} other {game}} best at {pieceCount} pieces, {studyTime}: {by, select, time {{accuracy} percent again, rebuilt in {solveTime}} other {{accuracy} percent, up from {previous}}}.",
+            "span": "Day {day}. {from, plural, =0 {Memory span reached {to} pieces} other {Memory span moved from {from} to {to} pieces}}.",
+            "streak": "Day {day}. {days} days in a row."
+          }
         },
         "tools": {
           "title": "Kept on this device",

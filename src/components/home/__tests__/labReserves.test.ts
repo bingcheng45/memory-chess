@@ -15,6 +15,8 @@ const BOXES = {
   streak: ".lab-p-streak",
   bests: ".lab-p-bests",
   types: ".lab-p-types",
+  insights: ".lab-p-insights",
+  notebook: ".lab-p-notebook",
   tools: ".lab-tools-slot",
 } as const;
 type Box = keyof typeof BOXES;

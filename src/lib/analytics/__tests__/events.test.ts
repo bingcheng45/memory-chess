@@ -20,6 +20,7 @@ const EVENTS: FunnelEvent[] = [
   { name: "lab_section_view", params: {} },
   { name: "lab_panel_action", params: { panel: "unlock", action: "play" } },
   { name: "lab_panel_action", params: { panel: "trend", action: "play" } },
+  { name: "lab_panel_action", params: { panel: "insights", action: "guide" } },
 ];
 
 afterEach(() => {

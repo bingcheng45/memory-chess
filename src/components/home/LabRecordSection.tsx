@@ -10,6 +10,7 @@ import { daysBetween } from "@/lib/lab/readiness";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
 import { ForgettingCurve } from "./LabCharts";
 import { BestsPanel, figureOf, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
+import { InsightsPanel, NotebookPanel } from "./LabInsightPanels";
 import { HeldPanel, SpanPanel, SpeedPanel } from "./LabReadingPanels";
 import { LabRecordTools } from "./LabRecordTools";
 import { LabUnlockStrip } from "./LabUnlockStrip";
@@ -125,8 +126,10 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
     speed: <SpeedPanel result={lab.speed} daysAgo={daysAgo} />,
     streak: <StreakPanel result={lab.streak} daysAgo={daysAgo} />,
     curve: <CurvePanel />,
+    notebook: <NotebookPanel result={lab.notebook} />,
     missMap: <MissPanel result={lab.missMap} daysAgo={daysAgo} />,
     typeRecall: <TypesPanel result={lab.typeRecall} daysAgo={daysAgo} />,
+    insights: <InsightsPanel result={lab.insights} daysAgo={daysAgo} />,
     bests: <BestsPanel result={lab.bests} daysAgo={daysAgo} />,
     board: <BoardPanel />,
   };

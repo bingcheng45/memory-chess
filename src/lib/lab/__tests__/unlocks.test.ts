@@ -23,8 +23,10 @@ describe("unlocksFor", () => {
       { metric: "trend", started: false, need: { rounds: 5, days: 2 } },
       { metric: "speed", started: false, need: { rounds: 5 } },
       { metric: "streak", started: false, need: { days: 2 } },
+      { metric: "notebook", started: false, need: { rounds: 1 } },
       { metric: "missMap", started: false, need: { exposures: 10 } },
       { metric: "typeRecall", started: false, need: { exposures: 20 } },
+      { metric: "insights", started: false, need: { rounds: 10 } },
     ]);
   });
 
@@ -39,12 +41,13 @@ describe("unlocksFor", () => {
       { metric: "streak", started: true, need: { days: 1 } },
       { metric: "missMap", started: true, need: { exposures: 10 } },
       { metric: "typeRecall", started: true, need: { exposures: 19 } },
+      { metric: "insights", started: true, need: { rounds: 9 } },
     ]);
   });
 
   it.each([
-    ["newVisitor", ["span", "piecesHeld", "trend", "speed", "streak", "missMap", "typeRecall"]],
-    ["twoRounds", ["span", "piecesHeld", "trend", "speed", "streak", "missMap", "typeRecall"]],
+    ["newVisitor", ["span", "piecesHeld", "trend", "speed", "streak", "notebook", "missMap", "typeRecall", "insights"]],
+    ["twoRounds", ["span", "piecesHeld", "trend", "speed", "streak", "missMap", "typeRecall", "insights"]],
     ["easyOnly", ["span", "missMap", "typeRecall"]],
     ["thirtyDays", []],
     ["stale", ["missMap"]],

@@ -29,8 +29,10 @@ describe("unlock strip", () => {
       "Trend · 5 rounds of one setting over 2 days",
       "Speed · 5 rounds of one setting",
       "Streak · play on 2 days",
+      "Lab notebook · 1 round",
       "Miss map · 10 sightings per file and rank",
       "Piece recall · 20 sightings of a non-king piece",
+      "Insights · 10 rounds",
     ]);
     expect(screen.getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", PLAY_HREF);
   });
@@ -46,6 +48,7 @@ describe("unlock strip", () => {
       "Streak · play on 1 more day",
       "Miss map · 10 more sightings on the least seen file or rank",
       "Piece recall · 14 more sightings of a non-king piece",
+      "Insights · 8 more rounds",
     ]);
   });
 
@@ -66,7 +69,7 @@ describe("unlock strip", () => {
       .map(([, selector]) => selector.trim());
 
     expect(within(container.querySelector(".lab-unlock") as HTMLElement).queryAllByRole("button", { hidden: true })).toEqual([]);
-    expect(items()).toHaveLength(7);
+    expect(items()).toHaveLength(8);
     expect(hiding).toEqual([]);
   });
 
@@ -76,13 +79,13 @@ describe("unlock strip", () => {
 
     rerender(<LabRecordSection record={persona("twoRounds")} />);
 
-    expect(serverLines.map((line) => line.isConnected)).toEqual(Array(7).fill(false));
-    expect(items()).toHaveLength(7);
+    expect(serverLines.map((line) => line.isConnected)).toEqual(Array(9).fill(false));
+    expect(items()).toHaveLength(8);
   });
 
   it("prints every threshold from the registry, so the copy cannot drift from the panels", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
-    const { span, piecesHeld, trend, speed, streak, missMap, typeRecall } = LAB_METRICS;
+    const { span, piecesHeld, trend, speed, streak, notebook, missMap, typeRecall, insights } = LAB_METRICS;
 
     expect(items().map((line) => line!.match(/\d+/g)!.map(Number))).toEqual([
       [span.thresholds.qualifyingRounds, LAB_THRESHOLDS.spanAccuracy, LAB_THRESHOLDS.spanMinPieces],
@@ -90,8 +93,10 @@ describe("unlock strip", () => {
       [trend.thresholds.rounds, trend.thresholds.days],
       [speed.thresholds.rounds],
       [streak.thresholds.days],
+      [notebook.thresholds.rounds],
       [missMap.thresholds.exposures],
       [typeRecall.thresholds.exposures],
+      [insights.thresholds.rounds],
     ]);
   });
 
@@ -149,6 +154,7 @@ describe("stale panels", () => {
       ["lab-p-speed", "Last played 20 days ago. Play a round →"],
       ["lab-p-streak", "Last played 20 days ago. Play a round →"],
       ["lab-p-types", "Last played 20 days ago. Play a round →"],
+      ["lab-p-insights", "Last played 20 days ago. Play a round →"],
       ["lab-p-bests", "Last played 20 days ago. Play a round →"],
     ]);
     expect(items()).toEqual(["Miss map · 2 more sightings on the least seen file or rank"]);

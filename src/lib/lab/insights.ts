@@ -48,7 +48,7 @@ export const MAX_INSIGHTS = 3;
 const EDGE_FILES = [0, 7];
 const CENTRE_FILES = [3, 4];
 const EDGE_RATIO = 1.8;
-const EDGE_RIG = { pieceCount: 8, memorizeSeconds: 15 };
+export const EDGE_RIG = { pieceCount: 8, memorizeSeconds: 15 };
 /** A finding with no centre miss at all reads as this many times, so it still ranks without an infinite strength. */
 const NO_CENTRE_MISS_RATIO = 10;
 const WEAK_RECALL = 0.5;

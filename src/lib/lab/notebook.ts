@@ -1,5 +1,5 @@
 import { measured, readinessFor, shiftDay, type LabInput, type MetricResult } from "./engine";
-import { computeSpan, type SpanStep, type SpanValue } from "./progress";
+import type { SpanStep, SpanValue } from "./progress";
 import { daysBetween } from "./readiness";
 import { settingKey, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
@@ -181,9 +181,6 @@ function entriesOf(history: History): NotebookEntry[] {
     .sort((a, b) => b.at - a.at)
     .slice(0, NOTEBOOK_LIMIT);
 }
-
-export const notebookEntries = (records: readonly RoundRecord[], summary: LabSummary): NotebookEntry[] =>
-  entriesOf(historyOf(records, summary, computeSpan({ records, summary, today: "" })));
 
 /** `span` is the span metric over the same input, so its history is not recomputed. */
 export function computeNotebook(input: LabInput, span: MetricResult<SpanValue>): MetricResult<NotebookValue> {

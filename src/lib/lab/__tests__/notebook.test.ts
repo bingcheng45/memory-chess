@@ -1,11 +1,13 @@
 import { deriveLab } from "@/lib/lab/metrics";
-import { notebookEntries } from "@/lib/lab/notebook";
 import type { RoundRecord } from "@/lib/lab/record";
-import { summarize } from "@/lib/lab/summary";
+import { type LabSummary, summarize } from "@/lib/lab/summary";
 import { round, TARGET } from "./fixtures";
 
 const NO_QUEEN = "4k3/8/8/8/8/5N2/8/4K3";
 const at = (day: number, minute = 0) => Date.UTC(2026, 8, day, 12, minute);
+
+const notebookEntries = (records: readonly RoundRecord[], summary: LabSummary) =>
+  deriveLab({ records, summary, today: "" }).notebook.value?.entries ?? [];
 
 function played(id: string, day: number, minute: number, full: boolean, solveMs = 20_000): RoundRecord {
   return round({ id, endedAt: at(day, minute), localDay: `2026-09-${String(day).padStart(2, "0")}`, placedFen: full ? TARGET : NO_QUEEN, solveMs });

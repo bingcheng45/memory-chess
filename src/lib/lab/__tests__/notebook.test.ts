@@ -86,13 +86,48 @@ describe("lab notebook", () => {
     ]);
   });
 
+  it("says entries before the oldest kept round are not kept, when older rounds were evicted", () => {
+    const kept = firstWeek.slice(3);
+    const lifetime = { ...summarize(firstWeek), evictedThrough: at(3) };
+
+    expect(deriveLab({ records: kept, summary: lifetime, today: "" }).notebook.value?.older).toEqual({ before: at(3, 1) });
+    expect(deriveLab({ records: firstWeek, summary: summarize(firstWeek), today: "" }).notebook.value?.older).toBeNull();
+  });
+
+  it("claims no round count when rounds are missing with no eviction to explain them", () => {
+    const kept = firstWeek.slice(3);
+
+    expect(deriveLab({ records: kept, summary: summarize(firstWeek), today: "" }).notebook.value).toEqual({
+      entries: [{ at: at(3, 1), kind: "streak", params: { day: 3, days: 3 } }],
+      older: { before: null },
+    });
+    expect(deriveLab({ records: [], summary: summarize(firstWeek), today: "" }).notebook).toEqual({
+      readiness: { state: "ready", sampleSize: 10 },
+      value: { entries: [], older: { before: null } },
+    });
+  });
+
+  it("drops the day and the streaks once the played days reach the 400 kept, since both would count from the wrong first day", () => {
+    const earlier = Array.from({ length: 397 }, (_, index) => new Date(Date.UTC(2024, 0, 1 + index)).toISOString().slice(0, 10));
+    const days = [...earlier, "2026-09-01", "2026-09-02", "2026-09-03"];
+
+    expect(notebookEntries(firstWeek, { ...summarize(firstWeek), days })).toEqual([
+      { at: at(3, 7), kind: "rounds", params: { count: 10 } },
+      { at: at(3, 7), kind: "span", params: { from: 0, to: 4 } },
+      { at: at(3), kind: "best", params: { source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, previous: 100, by: "time", solveSeconds: 15 } },
+      { at: at(2), kind: "first90", params: { pieceCount: 4 } },
+      { at: at(2), kind: "best", params: { source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, previous: 75, by: "accuracy", solveSeconds: 20 } },
+      { at: at(1), kind: "firstRound", params: { pieceCount: 4, accuracy: 75 } },
+    ]);
+  });
+
   it("is empty before the first round and ready from it, as the registry reads it", () => {
     const first = [played("r1", 1, 0, false)];
 
     expect(deriveLab({ records: [], summary: summarize([]), today: "" }).notebook).toEqual({ readiness: { state: "empty", sampleSize: 0 }, value: null });
     expect(deriveLab({ records: first, summary: summarize(first), today: "" }).notebook).toEqual({
       readiness: { state: "ready", sampleSize: 1 },
-      value: { entries: [{ at: at(1), kind: "firstRound", params: { day: 1, pieceCount: 4, accuracy: 75 } }] },
+      value: { entries: [{ at: at(1), kind: "firstRound", params: { day: 1, pieceCount: 4, accuracy: 75 } }], older: null },
     });
   });
 });

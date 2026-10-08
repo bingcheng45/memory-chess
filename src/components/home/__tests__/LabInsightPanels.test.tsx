@@ -188,6 +188,36 @@ describe("lab notebook panel", () => {
     expect(lines(within(panel("Lab notebook")).getByRole("list"))).toHaveLength(4);
   });
 
+  it("says entries before the oldest kept round are not kept, under the entries, once older rounds were evicted", () => {
+    const record = persona("threeDays");
+    const oldest = Math.min(...record.records.map(({ endedAt }) => endedAt));
+    renderWithIntl(<LabRecordSection record={{ ...record, summary: { ...record.summary, rounds: record.summary.rounds + 5, evictedThrough: oldest - 1 } }} />);
+    const notebook = panel("Lab notebook");
+
+    expect(lines(within(notebook).getByRole("list"))).toEqual(["Day 3. 3 days in a row. New", "Day 2. Round 10 played. New"]);
+    expect(within(notebook).getByText("Entries before Oct 6, 2026 are not kept in this browser.")).toBeInTheDocument();
+  });
+
+  it("says older entries are not kept instead of an empty list when the log holds none of the rounds counted", () => {
+    renderWithIntl(<LabRecordSection record={{ ...persona("threeDays"), records: [] }} />);
+    const notebook = panel("Lab notebook");
+
+    expect(within(notebook).queryByRole("list")).toBeNull();
+    expect(within(notebook).getByText("Older entries are not kept in this browser.")).toBeInTheDocument();
+  });
+
+  it("prints no day once the played days reach the 400 the record keeps", () => {
+    const record = persona("threeDays");
+    const days = Array.from({ length: 400 }, (_, index) => new Date(Date.UTC(2025, 8, 4 + index)).toISOString().slice(0, 10));
+    renderWithIntl(<LabRecordSection record={{ ...record, summary: { ...record.summary, days } }} />);
+
+    expect(lines(within(panel("Lab notebook")).getByRole("list"))).toEqual([
+      "Round 10 played. New",
+      "Memory span reached 6 pieces. New",
+      "First round: 100 percent at 6 pieces. New",
+    ]);
+  });
+
   it("shows the newest five and renders the rest only when asked", () => {
     renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
     const notebook = panel("Lab notebook");

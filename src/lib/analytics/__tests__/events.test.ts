@@ -22,6 +22,12 @@ const EVENTS: FunnelEvent[] = [
   { name: "lab_panel_action", params: { panel: "trend", action: "play" } },
   { name: "lab_panel_action", params: { panel: "insights", action: "guide" } },
   { name: "lab_panel_action", params: { panel: "resultCard", action: "next" } },
+  { name: "lab_panel_action", params: { panel: "plans", action: "start" } },
+  { name: "lab_panel_action", params: { panel: "plans", action: "stop" } },
+  { name: "lab_panel_action", params: { panel: "plans", action: "finish" } },
+  { name: "lab_panel_action", params: { panel: "plans", action: "play" } },
+  { name: "lab_panel_action", params: { panel: "goal", action: "setGoal" } },
+  { name: "lab_panel_action", params: { panel: "goal", action: "clearGoal" } },
 ];
 
 afterEach(() => {
@@ -43,6 +49,7 @@ it.each([
   ["insight", "insight"],
   ["tile_drill", "tile_drill"],
   ["result_next", "result_next"],
+  ["plan", "plan"],
   ["server", "link"],
   [null, "link"],
 ])("reads the round link source %p as %p", (value, source) => {

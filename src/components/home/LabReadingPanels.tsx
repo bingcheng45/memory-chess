@@ -2,7 +2,7 @@
 
 import { Fragment, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { SAMPLE_PARTIAL, SAMPLE_PIECES_HELD, SAMPLE_SPAN, SAMPLE_SPAN_SECONDS, SAMPLE_SPEED, SAMPLE_SPEED_ACCURACY } from "@/lib/home/labRecord";
+import { SAMPLE_PARTIAL, SAMPLE_PIECES_HELD, SAMPLE_SPAN, SAMPLE_SPAN_ROUNDS, SAMPLE_SPAN_SECONDS, SAMPLE_SPEED, SAMPLE_SPEED_ACCURACY } from "@/lib/home/labRecord";
 import { mean } from "@/lib/lab/engine";
 import type { LabResults } from "@/lib/lab/metrics";
 import type { PanelId } from "@/lib/lab/panels";
@@ -43,8 +43,20 @@ const roundChange = (change: number, digits: number) => Math.sign(change) * (Mat
 const signOf = (shown: number) => (shown > 0 ? "up" : shown < 0 ? "down" : "flat");
 const withChange = (stat: string, change: string | null) => (change === null ? stat : `${stat} · ${change}`);
 
+/** The qualifying rounds count at every study time, so the headline names the piece count and the shortest time apart. */
+function SpanHeadline({ pieceCount, rounds, memorizeSeconds }: { pieceCount: number; rounds: number; memorizeSeconds: number }) {
+  const t = useTranslations("home.lab.record.span");
+  return (
+    <>
+      <p className="lab-span-figure">{t("figure", { pieceCount })}</p>
+      <p className="lab-span-held">{t("held", { count: rounds, accuracy: LAB_THRESHOLDS.spanAccuracy, studyTime: seconds(memorizeSeconds) })}</p>
+    </>
+  );
+}
+
 export function SpanPanel({ result: { readiness, value: span }, daysAgo }: PanelProps<"span">) {
   const t = useTranslations("home.lab.record.span");
+  const record = useTranslations("home.lab.record");
   const axis = { first: t("first"), last: t("last") };
   const steps = span?.history.flatMap(({ pieceCount }) => (pieceCount === null ? [] : [pieceCount])) ?? [];
   // A week measured back from the newest round; once stale that week is long past, so the change is left out.
@@ -54,7 +66,7 @@ export function SpanPanel({ result: { readiness, value: span }, daysAgo }: Panel
     if (!span) {
       return (
         <>
-          <p className="lab-span-figure">{t("figure", { pieceCount: SAMPLE_SPAN[SAMPLE_SPAN.length - 1], studyTime: seconds(SAMPLE_SPAN_SECONDS) })}</p>
+          <SpanHeadline pieceCount={SAMPLE_SPAN[SAMPLE_SPAN.length - 1]} rounds={SAMPLE_SPAN_ROUNDS} memorizeSeconds={SAMPLE_SPAN_SECONDS} />
           <p className="lab-span-change" />
           <SpanStaircase steps={SAMPLE_SPAN} label={t("aria")} {...axis} />
           <p className="lab-note">{t("note")}</p>
@@ -73,16 +85,14 @@ export function SpanPanel({ result: { readiness, value: span }, daysAgo }: Panel
     }
     return (
       <>
-        <p className="lab-span-figure">{t("figure", { pieceCount, studyTime: seconds(memorizeSeconds) })}</p>
+        <SpanHeadline pieceCount={pieceCount} rounds={qualifyingRounds} memorizeSeconds={memorizeSeconds} />
         <p className="lab-span-change">{weekChange}</p>
         <SpanStaircase
           steps={steps}
           label={t("realAria", { sessions: steps.length, shape: steps[0] === pieceCount ? "flat" : "rising", first: steps[0], now: pieceCount })}
           {...axis}
         />
-        <p className="lab-note">
-          {t("realNote", { rounds: readiness.sampleSize, qualifying: qualifyingRounds, pieceCount, accuracy: LAB_THRESHOLDS.spanAccuracy })}
-        </p>
+        <p className="lab-note">{record("fromRounds", { count: readiness.sampleSize })}</p>
         <StaleNote readiness={readiness} daysAgo={daysAgo} panel="span" />
       </>
     );

@@ -393,7 +393,7 @@
         "span": {
           "fig": "Fig. {number} · Memory span",
           "title": "How many pieces you can hold.",
-          "figure": "{pieceCount} pieces at {memorizeSeconds} s",
+          "figure": "{pieceCount} pieces at {memorizeSeconds} s",
           "up": "Up {count, plural, one {# piece} other {# pieces}} since last week",
           "same": "No change since last week",
           "aria": "Sample staircase of memory span over 12 sessions, stepping up from 4 to 8 pieces.",
@@ -429,9 +429,9 @@
           "aria": "Sample line of rebuild seconds per correct piece over 12 rounds, falling from 4.1 to 2.6 seconds.",
           "note": "Sample record · 12 rounds · Medium",
           "realAria": "Your rebuild seconds per correct piece over your last {count} {source, select, calibration {practice} other {game}} rounds at {pieceCount} pieces and {memorizeSeconds} seconds, latest {latest} seconds.",
-          "average": "Recent average {average} s per piece",
-          "down": "{change} s faster than the {window} rounds before",
-          "up": "{change} s slower than the {window} rounds before",
+          "average": "Recent average {average} s per piece",
+          "down": "{change} s faster than the {window} rounds before",
+          "up": "{change} s slower than the {window} rounds before",
           "flat": "the same pace as the {window} rounds before",
           "accuracy": "Accuracy on the same rounds {average}%",
           "accuracyChange": {

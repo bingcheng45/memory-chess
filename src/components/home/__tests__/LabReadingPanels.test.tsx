@@ -126,7 +126,7 @@ describe("speed", () => {
     const speed = panel("Speed");
 
     expect(tagOf(speed)).toBe("Sample");
-    expect(texts(speed, ".lab-reading-stat")).toEqual(["Recent average 3.1 s per piece", "Accuracy on the same rounds 88%"]);
+    expect(texts(speed, ".lab-reading-stat")).toEqual(["Recent average 3.1\u00a0s per piece", "Accuracy on the same rounds 88%"]);
     expect(within(speed).getByRole("img")).toHaveAccessibleName("Sample line of rebuild seconds per correct piece over 12 rounds, falling from 4.1 to 2.6 seconds.");
     expect(texts(speed, ".lab-note")).toEqual(["Sample record · 12 rounds · Medium"]);
   });
@@ -136,7 +136,7 @@ describe("speed", () => {
     const speed = panel("Speed");
 
     expect(texts(speed, ".lab-reading-stat")).toEqual([
-      "Recent average 1.6 s per piece · 0.1 s faster than the 10 rounds before",
+      "Recent average 1.6\u00a0s per piece · 0.1\u00a0s faster than the 10 rounds before",
       "Accuracy on the same rounds 99% · up 7 points",
     ]);
     expect(within(speed).getByRole("img")).toHaveAccessibleName(
@@ -150,7 +150,7 @@ describe("speed", () => {
     const speed = panel("Speed");
 
     expect(texts(speed, ".lab-reading-stat")).toEqual([
-      "Recent average 3.4 s per piece · 0.5 s faster than the 10 rounds before",
+      "Recent average 3.4\u00a0s per piece · 0.5\u00a0s faster than the 10 rounds before",
       "Accuracy on the same rounds 83% · down 9 points",
     ]);
     expect(texts(speed, ".lab-speed-warn")).toEqual(["Fast and wrong is not improvement."]);
@@ -162,7 +162,7 @@ describe("speed", () => {
     const speed = panel("Speed");
 
     expect(texts(speed, ".lab-reading-stat")).toEqual([
-      "Recent average 1.8 s per piece · 0.1 s slower than the 10 rounds before",
+      "Recent average 1.8\u00a0s per piece · 0.1\u00a0s slower than the 10 rounds before",
       "Accuracy on the same rounds 72% · down 5 points",
     ]);
     expect(texts(speed, ".lab-speed-warn")).toEqual([]);
@@ -171,7 +171,7 @@ describe("speed", () => {
   it("prints only the averages before there are 20 rounds to compare", () => {
     show("threeDays");
 
-    expect(texts(panel("Speed"), ".lab-reading-stat")).toEqual(["Recent average 4.6 s per piece", "Accuracy on the same rounds 92%"]);
+    expect(texts(panel("Speed"), ".lab-reading-stat")).toEqual(["Recent average 4.6\u00a0s per piece", "Accuracy on the same rounds 92%"]);
   });
 
   it("says how many more rounds at the setting draw the line", () => {

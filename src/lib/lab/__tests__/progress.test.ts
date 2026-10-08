@@ -255,6 +255,15 @@ describe("speed", () => {
     });
   });
 
+  it("follows the setting the last 20 rounds played most, while the accuracy trend keeps the busiest setting overall", () => {
+    const records = rounds(42, (index) =>
+      index < 30 ? { localDay: index < 15 ? "2026-09-01" : "2026-09-02" } : { pieceCount: 6, localDay: index < 36 ? "2026-10-06" : TODAY },
+    );
+
+    expect(speed(records)).toMatchObject({ readiness: { state: "ready", sampleSize: 12 }, value: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 } } });
+    expect(LAB_METRICS.trend.compute(input(records)).value?.setting).toEqual({ source: "game", pieceCount: 4, memorizeSeconds: 10 });
+  });
+
   it("compares the last 10 rounds with the 10 before", () => {
     const records = rounds(20, (index) => ({ solveMs: index < 10 ? 20_000 : 8_000 }));
 

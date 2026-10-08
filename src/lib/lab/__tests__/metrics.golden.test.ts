@@ -225,12 +225,13 @@ describe("metric engine on the persona fixtures", () => {
         speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 4.6, previous: null, change: null }, accuracy: { average: 92.44, previous: null, change: null } },
         trend: { granularity: "round", sessions: 3 },
       },
+      // Its last 20 rounds are all 14 pieces at 10s; their last ten accuracies sum to 986, the ten before to 915.
       spanClimber: {
         sessions: 45,
         span: { pieceCount: 14, memorizeSeconds: 10, qualifyingRounds: 19, weekAgo: 10, change: 4 },
         steps: [[0, 4], [20, 10], [38, 14]],
         piecesHeld: { average: 13.8, previous: 12.8, change: 1 },
-        speed: { setting: { source: "game", pieceCount: 4, memorizeSeconds: 10 }, recent: { average: 4.56, previous: 5.98, change: -1.42 }, accuracy: { average: 82.5, previous: 82.5, change: 0 } },
+        speed: { setting: { source: "game", pieceCount: 14, memorizeSeconds: 10 }, recent: { average: 1.55, previous: 1.64, change: -0.09 }, accuracy: { average: 98.6, previous: 91.5, change: 7.1 } },
         trend: { granularity: "session", sessions: 20 },
       },
       shortSessions: {

@@ -8,11 +8,7 @@ import { useEffect, useRef, useState } from "react";
  */
 export function useFirstSight<T extends Element>(onSight: () => void): (node: T | null) => void {
   const [node, setNode] = useState<T | null>(null);
-  const latest = useRef(onSight);
   const seen = useRef(false);
-  useEffect(() => {
-    latest.current = onSight;
-  });
   useEffect(() => {
     if (!node || seen.current || typeof IntersectionObserver === "undefined") return;
     let inView = false;
@@ -24,7 +20,7 @@ export function useFirstSight<T extends Element>(onSight: () => void): (node: T 
       if (seen.current || !inView || document.visibilityState !== "visible") return;
       seen.current = true;
       stop();
-      latest.current();
+      onSight();
     };
     const observer = new IntersectionObserver((entries) => {
       inView = entries.some(({ isIntersecting }) => isIntersecting);
@@ -33,6 +29,6 @@ export function useFirstSight<T extends Element>(onSight: () => void): (node: T 
     observer.observe(node);
     document.addEventListener("visibilitychange", check);
     return stop;
-  }, [node]);
+  }, [node, onSight]);
   return setNode;
 }

@@ -105,12 +105,12 @@ describe("pieces held", () => {
     expect(texts(held, ".lab-note")).toEqual(["Dashed line: averaged over fewer than 5 rounds", "Sample record · 12 rounds · any setting"]);
   });
 
-  it("reads the recent average and its change over the last 10 rounds, at any setting", () => {
+  it("reads the recent average and its change on the 10 rounds before, at any setting", () => {
     show("spanClimber");
     const held = panel("Pieces held");
 
     expect(tagOf(held)).toBe("Your record");
-    expect(within(held).getByText("Recent average 13.8 pieces · up 1.0 over the last 10 rounds")).toBeInTheDocument();
+    expect(within(held).getByText("Recent average 13.8 pieces · up 1.0 on the 10 rounds before")).toBeInTheDocument();
     expect(within(held).getByRole("img")).toHaveAccessibleName("Your pieces held over your last 30 rounds at any setting, as a 5-round average, latest 13.8 pieces.");
     expect(held.querySelector(".lab-c-partial")).toBeNull();
     expect(texts(held, ".lab-note")).toEqual(["Any setting · From 135 rounds"]);
@@ -119,7 +119,7 @@ describe("pieces held", () => {
   it("says when the average fell", () => {
     show("easyOnly");
 
-    expect(within(panel("Pieces held")).getByText("Recent average 1.4 pieces · down 0.5 over the last 10 rounds")).toBeInTheDocument();
+    expect(within(panel("Pieces held")).getByText("Recent average 1.4 pieces · down 0.5 on the 10 rounds before")).toBeInTheDocument();
   });
 
   it("dashes the averages taken over fewer than 5 rounds, and says so in words", () => {

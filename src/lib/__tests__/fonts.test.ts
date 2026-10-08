@@ -60,7 +60,7 @@ describe("lab mono font shorthands", () => {
       [...readFileSync(join(process.cwd(), "src/components/home", file), "utf8").matchAll(/font:\s*([^;]*var\(--lab-mono\))/g)].map(([, value]) => value),
     );
 
-    expect(shorthands).toHaveLength(25);
+    expect(shorthands).toHaveLength(27);
     expect(shorthands.filter((value) => !value.includes("/"))).toEqual([]);
   });
 });

@@ -4,13 +4,13 @@
  * layout shift on the whole page until it settles, naming the nodes that moved.
  * The Geist Mono files are held for HOLD_MS on every load, so the page always
  * paints in the fallback face first and then swaps; a load where the font was not
- * held, or never loaded after release, fails. /de renders the legacy body, whose
- * mono text uses the platform monospace stack, so there it must never be requested. Reports CLS as the largest session
+ * held, or never loaded after release, fails. Reports CLS as the largest session
  * window (shifts under 1 s apart, at most 5 s long), the way browsers score it,
  * and the plain sum of every shift as shiftSum. Runs for a new visitor and a 30-day
  * player (whose record loads from storage after first paint), each at the top of /
- * and scrolled to #record, and for /de, which renders the legacy body. Fails when
- * either number is over MAX_CLS.
+ * and scrolled to #record, and for /de, which renders the legacy body: its mono text
+ * uses the platform monospace stack, so there Geist Mono must never be requested.
+ * Fails when either number is over MAX_CLS.
  *
  *   npm run lab:personas && npm run lab:cls -- --base http://localhost:3128 --out <dir> [--only <case>]
  */
@@ -116,11 +116,12 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     await page.sleep(SETTLE_MS);
     const shifts = await page.eval("window.__shifts");
     const statusAfter = await page.eval(MONO_STATUS);
-    if (!usesMono) {
-      if (held.length > 0) throw new Error(`at ${width}: ${path} requested Geist Mono, which it is listed as not using`);
-    } else if (held.length === 0) throw new Error(`at ${width}: no Geist Mono request was held, so the fallback face may never have painted`);
-    if (held.some(({ statusWhileHeld }) => statusWhileHeld?.includes("loaded"))) throw new Error(`at ${width}: Geist Mono was already loaded while its file was held`);
-    if (usesMono && !statusAfter.includes("loaded")) throw new Error(`at ${width}: Geist Mono did not load after release, status ${JSON.stringify(statusAfter)}`);
+    if (!usesMono && held.length > 0) throw new Error(`at ${width}: ${path} requested Geist Mono, which it is listed as not using`);
+    if (usesMono) {
+      if (held.length === 0) throw new Error(`at ${width}: no Geist Mono request was held, so the fallback face may never have painted`);
+      if (held.some(({ statusWhileHeld }) => statusWhileHeld?.includes("loaded"))) throw new Error(`at ${width}: Geist Mono was already loaded while its file was held`);
+      if (!statusAfter.includes("loaded")) throw new Error(`at ${width}: Geist Mono did not load after release, status ${JSON.stringify(statusAfter)}`);
+    }
     result[width] = {
       cls: round(sessionWindowCls(shifts)),
       shiftSum: round(shifts.reduce((sum, shift) => sum + shift.value, 0)),

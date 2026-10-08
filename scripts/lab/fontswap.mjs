@@ -91,7 +91,7 @@ async function layout(page, url, state) {
   const wanted = state === "fallback" ? "error" : "loaded";
   if (!status.includes(wanted) || (state === "fallback" && status.includes("loaded"))) throw new Error(`${state}: Geist Mono status ${JSON.stringify(status)}`);
   const bold = await page.eval(BOLD_MONO);
-  const fonts = await platformFonts(page);
+  const fonts = state === "fallback" ? await platformFonts(page) : [];
   return { blocks: await page.eval(BLOCKS), bold: bold.map((entry, index) => ({ ...entry, fonts: fonts[index] })), stripped: await page.eval("window.__stripped ?? 0") };
 }
 
@@ -119,18 +119,26 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     if (method === "Fetch.requestPaused") page.send("Fetch.failRequest", { requestId: params.requestId, errorReason: "Failed" });
   });
 
+  const fallbackAt = async (width) => {
+    await sized(page, width, width < 600 ? 844 : 900);
+    await page.send("Fetch.enable", { patterns: urls.map((urlPattern) => ({ urlPattern })) });
+    const fallback = await layout(page, `${baseUrl}/`, "fallback");
+    await page.send("Fetch.disable");
+    return fallback;
+  };
+  // The loaded state never uses the local face, so the Safari pass compares against the same loaded layout.
+  const loaded = {};
   const result = {};
-  for (const mode of ["declared", "safari"]) {
-    if (mode === "safari") await page.send("Page.addScriptToEvaluateOnNewDocument", { source: STRIP_OVERRIDES });
-    for (const width of WIDTHS) {
-      await sized(page, width, width < 600 ? 844 : 900);
-      await page.send("Fetch.enable", { patterns: urls.map((urlPattern) => ({ urlPattern })) });
-      const fallback = await layout(page, `${baseUrl}/`, "fallback");
-      await page.send("Fetch.disable");
-      const loaded = await layout(page, `${baseUrl}/`, "loaded");
-      if (mode === "safari" && (fallback.stripped === 0 || loaded.stripped === 0)) throw new Error("safari pass found no override descriptors to strip");
-      result[`${mode} ${width}`] = { ...compare(fallback, loaded), bold: fallback.bold };
-    }
+  for (const width of WIDTHS) {
+    const fallback = await fallbackAt(width);
+    loaded[width] = await layout(page, `${baseUrl}/`, "loaded");
+    result[`declared ${width}`] = { ...compare(fallback, loaded[width]), bold: fallback.bold };
+  }
+  await page.send("Page.addScriptToEvaluateOnNewDocument", { source: STRIP_OVERRIDES });
+  for (const width of WIDTHS) {
+    const fallback = await fallbackAt(width);
+    if (fallback.stripped === 0) throw new Error("safari pass found no override descriptors to strip");
+    result[`safari ${width}`] = { ...compare(fallback, loaded[width]), bold: fallback.bold };
   }
   writeFileSync(join(evidenceDir, RESULT_FILE), JSON.stringify(result, null, 2));
   const failed = Object.entries(result).filter(([, { blockDiffs, widthDiffs, synthesized }]) => blockDiffs.length + widthDiffs.length + synthesized.length > 0);

@@ -11,8 +11,8 @@ export default function DailyPlayedNotice({ onChoose }: { onChoose: () => void }
   const t = useTranslations("home.lab.daily");
   const now = useNow();
   return (
-    <section role="status" className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-5 text-sm sm:p-7 md:max-w-lg">
-      <p className="font-semibold text-text-primary">{t("locked")}</p>
+    <section className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-5 text-sm sm:p-7 md:max-w-lg">
+      <p role="status" className="font-semibold text-text-primary">{t("locked")}</p>
       <p className="mt-1 min-h-[1.25rem] text-text-secondary"><DailyResetsIn now={now} /></p>
       <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
         <Link className={RESULT_LAB_LINK} href={`/#${LAB_SECTIONS.record.anchor}`}>

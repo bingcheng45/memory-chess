@@ -7,6 +7,7 @@ import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
 import { unlocksFor, type Unlock } from "@/lib/lab/unlocks";
 import type { LabStorageState } from "@/hooks/useLabData";
 import { LabPlayLink } from "./LabPlayLink";
+import { settingValues } from "./labFormat";
 
 const roundsAndDays = ({ rounds = 0, days = 0 }: Need) => (rounds > 0 && days > 0 ? "RoundsDays" : rounds > 0 ? "Rounds" : "Days");
 
@@ -31,6 +32,7 @@ export function LabUnlockStrip({ results, storage }: { results: LabResults; stor
   const [expanded, setExpanded] = useState(false);
 
   const text = ({ metric, started, need }: Unlock) => {
+    const setting = metric === "speed" ? results.speed.value?.setting : results.trend.value?.setting;
     const values = {
       rounds: 0,
       days: 0,
@@ -42,7 +44,7 @@ export function LabUnlockStrip({ results, storage }: { results: LabResults; stor
       accuracy: LAB_THRESHOLDS.spanAccuracy,
       minPieces: LAB_THRESHOLDS.spanMinPieces,
       threshold: LAB_METRICS[metric].thresholds.exposures ?? 0,
-      ...(metric === "speed" ? results.speed.value?.setting : results.trend.value?.setting),
+      ...(setting && settingValues(setting)),
     };
     return t(started ? LEFT[metric](need) : metric, values);
   };

@@ -10,6 +10,7 @@ import type { PieceSymbol } from "chess.js";
 import { FILES, RANKS } from "@/lib/game/board";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { formatSeconds } from "@/utils/timer";
+import { seconds, settingValues } from "./labFormat";
 import { AccuracySparkline, MissLines, MissMap, RecallBar, StreakGrid } from "./LabCharts";
 import { LabPlayLink } from "./LabPlayLink";
 import { LAB_SECTIONS } from "./SectionHeading";
@@ -83,7 +84,7 @@ export function TrendPanel({
               last={t("spark.realLast")}
             />
             <p className="lab-note">
-              {t("spark.config", trend.setting)} · {t("fromRounds", { count: readiness.sampleSize })}
+              {t("spark.config", settingValues(trend.setting))} · {t("fromRounds", { count: readiness.sampleSize })}
               {bySession && ` · ${t("spark.sessions", { count: points.length })}`}
             </p>
             <StaleNote readiness={readiness} daysAgo={daysAgo} panel="trend" />
@@ -91,8 +92,8 @@ export function TrendPanel({
         ) : (
           <p className="lab-panel-desc lab-empty">
             {need.rounds === undefined
-              ? t("spark.needDay", trend.setting)
-              : t(need.days ? "spark.needRoundsAndDay" : "spark.needRounds", { count: need.rounds, ...trend.setting })}
+              ? t("spark.needDay", settingValues(trend.setting))
+              : t(need.days ? "spark.needRoundsAndDay" : "spark.needRounds", { count: need.rounds, ...settingValues(trend.setting) })}
           </p>
         )}
       </Fragment>
@@ -217,9 +218,9 @@ export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { r
             <dl className="lab-bests" id={listId}>
               {bests.entries.map((best) => (
                 <div key={best.key} data-older={older?.get(best.key)}>
-                  <dt>{t("bests.setting", { source: best.source, pieceCount: best.pieceCount, memorizeSeconds: best.memorizeSeconds })}</dt>
+                  <dt>{t("bests.setting", settingValues(best))}</dt>
                   <dd>
-                    {t("bests.reading", { accuracy: best.accuracy, seconds: formatSeconds(best.solveMs) })}
+                    {t("bests.reading", { accuracy: best.accuracy, time: seconds(formatSeconds(best.solveMs)) })}
                     {best.rounds === 1 && <span className="lab-note"> · {t("bests.first")}</span>}
                   </dd>
                 </div>

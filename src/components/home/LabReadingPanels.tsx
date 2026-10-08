@@ -10,6 +10,7 @@ import type { SpeedValue } from "@/lib/lab/progress";
 import { hasFigure, LAB_THRESHOLDS, type Readiness } from "@/lib/lab/readiness";
 import { oneDecimal, SpanStaircase, ValueLine } from "./LabReadingCharts";
 import { figureOf, PanelHead, StaleNote, useTags } from "./LabRecordPanels";
+import { seconds, settingValues } from "./labFormat";
 
 interface PanelProps<K extends keyof LabResults> {
   readonly result: LabResults[K];
@@ -53,7 +54,7 @@ export function SpanPanel({ result: { readiness, value: span }, daysAgo }: Panel
     if (!span) {
       return (
         <>
-          <p className="lab-span-figure">{t("figure", { pieceCount: SAMPLE_SPAN[SAMPLE_SPAN.length - 1], memorizeSeconds: SAMPLE_SPAN_SECONDS })}</p>
+          <p className="lab-span-figure">{t("figure", { pieceCount: SAMPLE_SPAN[SAMPLE_SPAN.length - 1], studyTime: seconds(SAMPLE_SPAN_SECONDS) })}</p>
           <p className="lab-span-change" />
           <SpanStaircase steps={SAMPLE_SPAN} label={t("aria")} {...axis} />
           <p className="lab-note">{t("note")}</p>
@@ -72,7 +73,7 @@ export function SpanPanel({ result: { readiness, value: span }, daysAgo }: Panel
     }
     return (
       <>
-        <p className="lab-span-figure">{t("figure", { pieceCount, memorizeSeconds })}</p>
+        <p className="lab-span-figure">{t("figure", { pieceCount, studyTime: seconds(memorizeSeconds) })}</p>
         <p className="lab-span-change">{weekChange}</p>
         <SpanStaircase
           steps={steps}
@@ -161,8 +162,8 @@ function SpeedReading({ speed, axis }: { speed: SpeedValue; axis: { first: strin
     <>
       <p className="lab-reading-stat">
         {withChange(
-          t("average", { average: oneDecimal(recent.average) }),
-          pace === null ? null : t(signOf(pace), { change: Math.abs(pace).toFixed(1), window: LAB_THRESHOLDS.rollingWindow }),
+          t("average", { average: seconds(oneDecimal(recent.average)) }),
+          pace === null ? null : t(signOf(pace), { change: seconds(Math.abs(pace).toFixed(1)), window: LAB_THRESHOLDS.rollingWindow }),
         )}
       </p>
       <p className="lab-reading-stat">
@@ -183,7 +184,7 @@ export function SpeedPanel({ result: { readiness, value: speed }, daysAgo }: Pan
 
   const body = readiness.state === "empty" ? (
     <>
-      <p className="lab-reading-stat">{t("average", { average: oneDecimal(mean(SAMPLE_SPEED.slice(-LAB_THRESHOLDS.rollingWindow))) })}</p>
+      <p className="lab-reading-stat">{t("average", { average: seconds(oneDecimal(mean(SAMPLE_SPEED.slice(-LAB_THRESHOLDS.rollingWindow)))) })}</p>
       <p className="lab-reading-stat">{t("accuracy", { average: SAMPLE_SPEED_ACCURACY })}</p>
       <ValueLine points={SAMPLE_SPEED} label={t("aria")} {...axis} />
       <p className="lab-note">{t("note")}</p>
@@ -191,12 +192,12 @@ export function SpeedPanel({ result: { readiness, value: speed }, daysAgo }: Pan
   ) : speed && hasFigure(readiness) ? (
     <>
       <SpeedReading speed={speed} axis={axis} />
-      <p className="lab-note">{t("config", { ...speed.setting, count: readiness.sampleSize })}</p>
+      <p className="lab-note">{t("config", { ...settingValues(speed.setting), count: readiness.sampleSize })}</p>
       <StaleNote readiness={readiness} daysAgo={daysAgo} panel="speed" />
     </>
   ) : (
     <p className="lab-panel-desc lab-empty">
-      {speed ? t("need", { count: readiness.need?.rounds ?? 0, ...speed.setting }) : t("needRight", { count: readiness.need?.rightRounds ?? 0 })}
+      {speed ? t("need", { count: readiness.need?.rounds ?? 0, ...settingValues(speed.setting) }) : t("needRight", { count: readiness.need?.rightRounds ?? 0 })}
     </p>
   );
 

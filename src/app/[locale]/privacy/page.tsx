@@ -164,7 +164,11 @@ export default function PrivacyPage() {
               section comes into view, when you follow one of its play links,
               and the number of rounds when you download, import, or ask for
               cross-device backup. None of these events carry positions,
-              squares, round ids or streaks. Download my lab record saves a
+              squares, round ids or streaks. When you start, stop or finish a
+              plan, or set or clear a goal, Google Analytics receives an event that names
+              only that action, with no plan name and no numbers. The plan and
+              goal you choose are kept in your browser&apos;s local storage on
+              this device. Download my lab record saves a
               copy as a file you control, and clearing your browser data
               deletes the record. Private windows do not keep it.
             </p>

@@ -31,7 +31,7 @@ jest.mock("@/hooks/useLabData", () => ({
   ...jest.requireActual("@/hooks/useLabData"),
   useLabData: () => ({ storage: "available", records: [mockRecord], summary: summarize([mockRecord]), lastBackup: null, today: "2026-10-07" }),
 }));
-jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: jest.fn(async () => null) }));
+jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: jest.fn(async () => null), readCachedCutoffs: () => null }));
 jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn() }));
 jest.mock("@/components/game/FirstGameFeedbackDialog", () => ({ __esModule: true, default: () => null }));
 jest.mock("@/components/game/ResultBoardComparison", () => ({ __esModule: true, default: () => null }));

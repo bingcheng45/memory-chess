@@ -17,8 +17,11 @@
     "easyOnlyAway",
     "graceStreak",
     "heavy",
+    "ladderClimb",
     "manyBests",
     "newVisitor",
+    "planBaseline",
+    "planEdge",
     "plateau",
     "shortSessions",
     "spanClimber",
@@ -46,6 +49,8 @@
       "types": 516,
       "insights": 581,
       "notebook": 609,
+      "plans": 1284,
+      "goal": 449,
       "tools": 360
     },
     "medium": {
@@ -58,8 +63,10 @@
       "streak": 658,
       "bests": 906,
       "types": 516,
-      "insights": 403,
+      "insights": 402,
       "notebook": 430,
+      "plans": 955,
+      "goal": 314,
       "tools": 496
     },
     "wide": {
@@ -71,9 +78,11 @@
       "heat": 451,
       "streak": 600,
       "bests": 492,
-      "types": 434,
+      "types": 433,
       "insights": 324,
       "notebook": 393,
+      "plans": 481,
+      "goal": 291,
       "tools": 196
     }
   },
@@ -89,9 +98,11 @@
     "narrow types": "stale client 320",
     "narrow insights": "staleHeat client 320",
     "narrow notebook": "spanClimber client 320",
+    "narrow plans": "planEdge client 320",
+    "narrow goal": "colourSkew client 320",
     "narrow tools": "colourSkew client 320",
     "medium unlock": "twoRoundsAway client 641",
-    "medium span": "manyBests client 641",
+    "medium span": "stale client 641",
     "medium held": "stale client 641",
     "medium spark": "stale client 641",
     "medium speed": "stale client 641",
@@ -101,9 +112,11 @@
     "medium types": "stale client 641",
     "medium insights": "staleHeat client 641",
     "medium notebook": "spanClimber client 641",
+    "medium plans": "planEdge client 641",
+    "medium goal": "planEdge client 641",
     "medium tools": "colourSkew client 768",
     "wide unlock": "colourSkew server 1024",
-    "wide span": "manyBests client 1440",
+    "wide span": "stale client 1440",
     "wide held": "stale client 1440",
     "wide spark": "stale client 1440",
     "wide speed": "stale client 1440",
@@ -113,6 +126,8 @@
     "wide types": "stale client 1024",
     "wide insights": "staleHeat client 1024",
     "wide notebook": "heavy client 1024",
+    "wide plans": "planEdge client 1024",
+    "wide goal": "planEdge client 1024",
     "wide tools": "colourSkew client 1024"
   },
   "empty": {
@@ -126,8 +141,10 @@
       "streak": 476,
       "bests": 374,
       "types": 228,
-      "insights": 418,
+      "insights": 417,
       "notebook": 446,
+      "plans": 1181,
+      "goal": 305,
       "tools": 0
     },
     "medium": {
@@ -142,6 +159,8 @@
       "types": 228,
       "insights": 279,
       "notebook": 329,
+      "plans": 920,
+      "goal": 232,
       "tools": 0
     },
     "wide": {
@@ -154,8 +173,10 @@
       "streak": 469,
       "bests": 206,
       "types": 160,
-      "insights": 301,
+      "insights": 300,
       "notebook": 329,
+      "plans": 455,
+      "goal": 182,
       "tools": 0
     }
   }

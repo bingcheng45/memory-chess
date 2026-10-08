@@ -1,12 +1,12 @@
 /**
  * §06 in reading order: what a player wants to know first comes first. Figure numbers are positions in PANEL_ORDER,
- * so a panel inserted into a row renumbers every figure after it. Programs and tools rows hold no numbered figure.
+ * so a panel inserted into a row renumbers every figure after it. The tools row holds no numbered figure.
  */
 export const PANEL_ROWS = [
   { row: "reading", panels: ["span", "piecesHeld", "trend", "speed"] },
   { row: "habit", panels: ["streak", "curve", "notebook"] },
   { row: "diagnosis", panels: ["missMap", "typeRecall", "insights"] },
-  { row: "programs", panels: [] },
+  { row: "programs", panels: ["plans", "goal"] },
   { row: "compare", panels: ["bests", "board"] },
   { row: "tools", panels: [] },
 ] as const;

@@ -33,7 +33,7 @@ export function PanelHead({ fig, tag }: { fig: string; tag: ReactNode }) {
 interface FrameProps {
   readonly panel: PanelId;
   /** The panel's class suffix and its messages under home.lab.record. */
-  readonly name: "span" | "held" | "speed" | "spark" | "heat" | "streak" | "bests" | "types" | "insights" | "notebook";
+  readonly name: "span" | "held" | "speed" | "spark" | "heat" | "streak" | "bests" | "types" | "insights" | "notebook" | "plans" | "goal";
   readonly tag: ReactNode;
   readonly state: ReadinessState;
   readonly title?: string;

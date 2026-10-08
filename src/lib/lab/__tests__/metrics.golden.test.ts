@@ -2,7 +2,7 @@
 import { IDBFactory } from "fake-indexeddb";
 import type { LabInput } from "@/lib/lab/engine";
 import { deriveLab, type LabResults, type MetricId } from "@/lib/lab/metrics";
-import { exportPersona, memoryLabStore, PERSONA_NAMES, PERSONA_TODAY, personaRounds, type PersonaName } from "@/lib/lab/personas";
+import { exportPersona, memoryLabStore, PERSONA_NAMES, PERSONA_TODAY, personaRounds, PLAN_PERSONAS, type PersonaName } from "@/lib/lab/personas";
 import { hasFigure, type ReadinessState } from "@/lib/lab/readiness";
 import golden from "./__golden__/derive-personas.json";
 
@@ -58,6 +58,11 @@ function inputFor(name: PersonaName): Promise<LabInput> {
   return inputs.get(name) as Promise<LabInput>;
 }
 
+/** The cast these tables were written for; the plan personas are read in planPersonas.test.ts. */
+const CAST = PERSONA_NAMES.filter((name) => !(PLAN_PERSONAS as readonly string[]).includes(name));
+/** A plan and a goal are choices, so a record alone leaves them empty; planPersonas.test.ts reads them with choices. */
+const recordMetrics = (results: LabResults) => Object.entries(results).filter(([id]) => id !== "plans" && id !== "goal");
+
 describe("metric engine on the persona fixtures", () => {
   it.each(PERSONA_NAMES.filter((name) => name in golden && name !== "newVisitor" && name !== "v1Legacy"))("matches the pre-engine derive output for %s", async (name) => {
     expect(legacy(await inputFor(name))).toEqual(golden[name as keyof typeof golden]);
@@ -67,7 +72,7 @@ describe("metric engine on the persona fixtures", () => {
     const input = await inputFor("newVisitor");
     const old = golden.newVisitor;
 
-    expect(Object.values(deriveLab(input)).map(({ value }) => value)).toEqual(Array(11).fill(null));
+    expect(Object.values(deriveLab(input)).map(({ value }) => value)).toEqual(Array(13).fill(null));
     expect(Object.fromEntries(Object.entries(legacy(input)).map(([id, { ready, sampleSize }]) => [id, { ready, sampleSize }]))).toEqual({
       streak: { ready: old.streak.ready, sampleSize: old.streak.sampleSize },
       bests: { ready: old.bests.ready, sampleSize: old.bests.sampleSize },
@@ -79,7 +84,7 @@ describe("metric engine on the persona fixtures", () => {
 
   it("names what recall by type and the miss map still need for each persona", async () => {
     const needs = await Promise.all(
-      PERSONA_NAMES.map(async (name) => {
+      CAST.map(async (name) => {
         const { typeRecall, missMap } = deriveLab(await inputFor(name));
         return [name, { typeRecall: typeRecall.readiness.need, missMap: missMap.readiness.need }] as const;
       }),
@@ -104,9 +109,9 @@ describe("metric engine on the persona fixtures", () => {
 
   it("puts every persona in the readiness state its history earns", async () => {
     const states = await Promise.all(
-      PERSONA_NAMES.map(async (name) => {
+      CAST.map(async (name) => {
         const results = deriveLab(await inputFor(name));
-        return [name, Object.fromEntries(Object.entries(results).map(([id, { readiness }]) => [id, readiness.state]))] as const;
+        return [name, Object.fromEntries(recordMetrics(results).map(([id, { readiness }]) => [id, readiness.state]))] as const;
       }),
     );
     const all = (state: ReadinessState) => ({
@@ -141,7 +146,7 @@ describe("metric engine on the persona fixtures", () => {
 
   it("gives each persona the sessions, span, pieces held and speed its history earns", async () => {
     const summaries = await Promise.all(
-      PERSONA_NAMES.map(async (name) => {
+      CAST.map(async (name) => {
         const { sessions, span, piecesHeld, speed, trend } = deriveLab(await inputFor(name));
         const steps = span.value?.history.flatMap(({ pieceCount }, index, history) =>
           index === 0 || pieceCount !== history[index - 1].pieceCount ? [[index, pieceCount]] : [],

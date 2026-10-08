@@ -1,5 +1,6 @@
 import { hasFigure, LAB_THRESHOLDS, readinessOf, type Need, type Readiness } from "./readiness";
 import { localDayOf, settingKey, type LabSource, type RoundConfig, type RoundRecord } from "./record";
+import type { StoredPlan, StoredTarget } from "./choices";
 import type { LabSummary } from "./summary";
 import { byEndedAt } from "./sessions";
 
@@ -9,6 +10,9 @@ export interface LabInput {
   readonly summary: LabSummary;
   /** The client's local day, passed in so every metric is a pure function of its input. */
   readonly today: string;
+  /** The player's chosen plan and goal on this device, null or left out when none is chosen. */
+  readonly plan?: StoredPlan | null;
+  readonly target?: StoredTarget | null;
 }
 
 /** A metric's value is null when its readiness is empty, and for speed while no round can be read. */
@@ -32,10 +36,13 @@ export function readinessFor(
 export const hundredths = (value: number) => Math.round(value * 100) / 100;
 export const mean = (values: readonly number[]) => values.reduce((sum, value) => sum + value, 0) / values.length;
 
-export function shiftDay(day: string, by: number): string {
+/** A "YYYY-MM-DD" local day as a Date at its local midnight, `by` days later. */
+export function dayDate(day: string, by = 0): Date {
   const [year, month, date] = day.split("-").map(Number);
-  return localDayOf(new Date(year, month - 1, date + by));
+  return new Date(year, month - 1, date + by);
 }
+
+export const shiftDay = (day: string, by: number): string => localDayOf(dayDate(day, by));
 
 export type TrendSetting = Pick<RoundConfig, "pieceCount" | "memorizeSeconds"> & { readonly source: LabSource };
 

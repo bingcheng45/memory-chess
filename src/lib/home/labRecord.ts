@@ -33,6 +33,9 @@ export const SAMPLE_STREAK: readonly StreakDay[] = [
 
 export const SAMPLE_WEEK = { played: 4, goal: 5 } as const;
 
+/** The goal the roadmap names as its example, with a best round short of it. */
+export const SAMPLE_GOAL = { pieceCount: 8, accuracy: 85, best: 78 } as const;
+
 export const SAMPLE_MISS_MAP: readonly number[] = (() => {
   let seed = 7;
   const next = () => {

@@ -84,6 +84,11 @@ describe("PrivacyPage", () => {
         /when the lab section comes into view, when you follow one of its play links, and the number of rounds when you download, import, or ask for cross-device backup\. None of these events carry positions, squares, round ids or streaks\./,
       ),
     ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /When you start, stop or finish a plan, or set or clear a goal, Google Analytics receives an event that names only that action, with no plan name and no numbers\. The plan and goal you choose are kept in your browser's local storage on this device\./,
+      ),
+    ).toBeInTheDocument();
     expect(screen.queryByText(/never sent to Memory Chess or to analytics/)).not.toBeInTheDocument();
   });
 

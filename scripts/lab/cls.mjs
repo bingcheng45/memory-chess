@@ -8,7 +8,8 @@
  * window (shifts under 1 s apart, at most 5 s long), the way browsers score it,
  * and the plain sum of every shift as shiftSum. Runs for a new visitor and a 30-day
  * player (whose record loads from storage after first paint), each at the top of /
- * and scrolled to #record, and for /de, which renders the legacy body: its mono text
+ * and scrolled to #record, for a player mid-plan with a goal reached scrolled to #record,
+ * and for /de, which renders the legacy body: its mono text
  * uses the platform monospace stack, so there Geist Mono must never be requested.
  * Fails when either number is over MAX_CLS.
  *
@@ -32,6 +33,7 @@ const CASES = [
   { name: "newVisitor-record", persona: "newVisitor", path: "/#record" },
   { name: "thirtyDays", persona: "thirtyDays", path: "/" },
   { name: "thirtyDays-record", persona: "thirtyDays", path: "/#record" },
+  { name: "planEdge-record", persona: "planEdge", path: "/#record" },
   { name: "de", persona: "newVisitor", path: "/de", usesMono: false },
 ];
 
@@ -57,7 +59,7 @@ const MONO_URLS = `[...document.styleSheets]
   .flatMap((rule) => [...rule.style.getPropertyValue("src").matchAll(/url\\("?([^")]+)"?\\)/g)].map(([, url]) => new URL(url, location.href).href))`;
 export const MONO_STATUS = `[...document.fonts].filter((face) => ${MONO_FAMILY}.test(face.family) && !/Local|Fallback/.test(face.family)).map((face) => face.status)`;
 
-const round = (value) => Math.round(value * 10000) / 10000;
+export const round = (value) => Math.round(value * 10000) / 10000;
 
 /** The Geist Mono webfont files the page's stylesheets declare, read from a page that has loaded them. */
 export async function monoFontUrls(page, baseUrl) {

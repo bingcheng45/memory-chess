@@ -1,4 +1,7 @@
+import type { StoredPlan } from "./choices";
 import { measured, readinessFor, type LabInput, type MetricResult } from "./engine";
+import type { GoalValue } from "./goals";
+import { ladderClimbs } from "./plans";
 import type { SpanStep, SpanValue } from "./progress";
 import { daysBetween } from "./readiness";
 import { settingKey, type RoundRecord } from "./record";
@@ -7,7 +10,7 @@ import { runsByDay } from "./streak";
 import { beats, MAX_DAYS, type LabSummary, type PersonalBest } from "./summary";
 
 /** Entries of one moment print in this order: the sort by time is stable over this listing. */
-export const NOTEBOOK_KINDS = ["firstRound", "rounds", "first90", "best", "span", "streak"] as const;
+export const NOTEBOOK_KINDS = ["firstRound", "rounds", "first90", "best", "span", "streak", "rungUp", "goalReached"] as const;
 export type NotebookKind = (typeof NOTEBOOK_KINDS)[number];
 
 export interface NotebookEntry {
@@ -43,6 +46,8 @@ interface History {
   /** The summary keeps the last 400 days played, so past that its first day is not the player's. */
   readonly allDays: boolean;
   readonly spanHistory: readonly SpanStep[];
+  readonly plan: StoredPlan | null;
+  readonly goal: GoalValue | null;
 }
 
 interface Draft {
@@ -54,6 +59,8 @@ interface Draft {
 const hasWholeLog = ({ missing }: History) => missing === 0;
 const hasRoundCount = ({ before }: History) => before !== null;
 const hasAllDays = ({ allDays }: History) => allDays;
+/** A plan or a goal reads only the rounds since it was chosen, which the log holds. */
+const sinceChosen = () => true;
 
 interface EntrySource {
   readonly ready: (history: History) => boolean;
@@ -152,9 +159,24 @@ const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
   best: { ready: hasWholeLog, drafts: ({ rounds }) => bestImprovements(rounds) },
   span: { ready: hasWholeLog, drafts: spanSteps },
   streak: { ready: hasAllDays, drafts: streakMilestones },
+  rungUp: {
+    ready: sinceChosen,
+    drafts: ({ rounds, plan }) =>
+      plan?.planId === "ladder"
+        ? ladderClimbs(rounds, plan).climbs.flatMap(({ record, next }) => (next ? [{ record, params: { ...next } }] : []))
+        : [],
+  },
+  goalReached: {
+    ready: sinceChosen,
+    drafts: ({ rounds, goal }) => {
+      const reached = goal?.reached;
+      const record = reached && rounds.find(({ endedAt }) => endedAt === reached.at);
+      return goal && record ? [{ record, params: { pieceCount: goal.target.pieceCount, accuracy: goal.target.accuracy } }] : [];
+    },
+  },
 };
 
-function historyOf(records: readonly RoundRecord[], summary: LabSummary, span: MetricResult<SpanValue>): History {
+function historyOf({ records, summary, plan = null }: LabInput, span: MetricResult<SpanValue>, goal: MetricResult<GoalValue>): History {
   const rounds = byEndedAt(records);
   const missing = Math.max(0, summary.rounds - rounds.length);
   const { evictedThrough } = summary;
@@ -166,6 +188,8 @@ function historyOf(records: readonly RoundRecord[], summary: LabSummary, span: M
     before: missing === 0 ? 0 : evicted ? missing : null,
     allDays: summary.days.length < MAX_DAYS,
     spanHistory: span.value?.history ?? [],
+    plan,
+    goal: goal.value,
   };
 }
 
@@ -185,11 +209,11 @@ function entriesOf(history: History): NotebookEntry[] {
     .slice(0, NOTEBOOK_LIMIT);
 }
 
-export function computeNotebook(input: LabInput, span: MetricResult<SpanValue>): MetricResult<NotebookValue> {
+export function computeNotebook(input: LabInput, span: MetricResult<SpanValue>, goal: MetricResult<GoalValue>): MetricResult<NotebookValue> {
   const { rounds } = input.summary;
   const readiness = readinessFor(input, { sampleSize: rounds, have: { rounds }, thresholds: NOTEBOOK_THRESHOLDS });
   return measured(readiness, () => {
-    const history = historyOf(input.records, input.summary, span);
+    const history = historyOf(input, span, goal);
     const oldest = history.rounds[0];
     return {
       entries: entriesOf(history),

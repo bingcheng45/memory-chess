@@ -60,7 +60,7 @@ const MAX_BESTS = 500;
 const MAX_TZ_OFFSET_MIN = 14 * 60;
 const MAX_REVIEW_DELAY_DAYS = 3650;
 
-const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
+export const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
 const rankWidth = (rank: string) => [...rank].reduce((width, char) => width + (Number(char) || 1), 0);
 const isFen = (value: unknown): value is string =>
   typeof value === "string" &&

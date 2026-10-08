@@ -2,6 +2,9 @@ import { BOARD_SQUARES } from "@/lib/game/board";
 import { placementFromFen } from "@/lib/game/scoring";
 import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
 import type { RoundSource } from "@/lib/analytics/events";
+import type { PlanId, StoredPlan, StoredTarget } from "./choices";
+import { shiftDay } from "./engine";
+import { EDGE_RIG } from "./insights";
 import type { PlacementEvent } from "./placements";
 import { buildRoundRecord, type LabSource, type RoundCapture, type RoundInput, type RoundRecord } from "./record";
 import { createLabStore, PLACEMENT_KEEP, type LabStore } from "./storage";
@@ -29,8 +32,13 @@ export const PERSONA_NAMES = [
   "plateau",
   "colourSkew",
   "graceStreak",
+  "planBaseline",
+  "planEdge",
+  "ladderClimb",
 ] as const;
 export type PersonaName = (typeof PERSONA_NAMES)[number];
+/** The players with a plan or a goal chosen; the rest of the cast has none. */
+export const PLAN_PERSONAS = ["planBaseline", "planEdge", "ladderClimb"] as const satisfies readonly PersonaName[];
 
 interface Setting {
   readonly source: LabSource;
@@ -42,6 +50,8 @@ interface PlannedRound extends Setting {
   readonly daysAgo: number;
   /** Minutes after noon the round ends; by default one minute after the day's previous round. */
   readonly minute?: number;
+  /** A fixed chance each piece is missed, in place of the persona's own, to set a round's score. */
+  readonly miss?: number;
 }
 
 /** `progress` runs from 0 at the first round to just under 1 at the last. */
@@ -102,6 +112,14 @@ const GRACE_DAYS = [...countdown(31, 24), ...countdown(19, 0)].filter((daysAgo) 
 
 const THREE_DAYS: PersonaPlan = { seed: 3, rounds: daily(countdown(2, 0), (_, slot) => (slot === 0 ? PRACTICE : MEDIUM), 4), missChance: steady };
 
+const EDGE_RIG_SETTING: Setting = { source: "game", ...EDGE_RIG };
+const MEDIUM_8S: Setting = { ...MEDIUM, memorizeSeconds: 8 };
+const at = (setting: Setting, daysAgo: number, miss?: number): PlannedRound => ({ ...setting, daysAgo, ...(miss !== undefined && { miss }) });
+
+/** Thirty days of edge-file misses before the drill, then fewer once it starts: the last six rounds are the drill's. */
+const edgesThenDrill: MissChance = (square, piece, progress) =>
+  square[0] === "a" || square[0] === "h" ? (progress < 30 / 36 ? 0.6 : 0.15) : edgesAndQueens(square, piece, progress);
+
 const PLANS: Record<PersonaName, PersonaPlan> = {
   newVisitor: { seed: 1, rounds: [], missChance: steady },
   twoRounds: { seed: 2, rounds: daily([0], (_, slot) => (slot === 0 ? PRACTICE : MEDIUM), 2), missChance: steady },
@@ -129,7 +147,58 @@ const PLANS: Record<PersonaName, PersonaPlan> = {
   plateau: { seed: 4, rounds: daily(countdown(13, 0), () => MEDIUM, 4), missChance: () => 0.12 },
   colourSkew: { seed: 61, rounds: daily(countdown(14, 0), () => MEDIUM, 4), missChance: blackSlips },
   graceStreak: { seed: 19, rounds: daily(GRACE_DAYS, (_, slot) => (slot === 0 ? PRACTICE : MEDIUM), 2), missChance: steady },
+  // A Medium game a day for nine days, then a baseline week from six days ago with Medium on five of its seven days, a
+  // weak first day, and one Hard game that the plan does not count but the goal of 12 pieces at 100 percent does.
+  planBaseline: {
+    seed: 77,
+    rounds: [
+      ...countdown(16, 8).map((daysAgo) => at(MEDIUM, daysAgo)),
+      at(MEDIUM, 6, 0.5),
+      ...[5, 4].map((daysAgo) => at(MEDIUM, daysAgo)),
+      at(HARD, 3, 0.3),
+      ...[2, 0].map((daysAgo) => at(MEDIUM, daysAgo)),
+    ],
+    missChance: () => 0.12,
+  },
+  // Thirty Medium games that miss the a and h files, then the edge rig twice a day on three of the plan's six days.
+  planEdge: {
+    seed: 88,
+    rounds: [...countdown(35, 6).map((daysAgo) => at(MEDIUM, daysAgo)), ...[5, 5, 3, 3, 1, 1].map((daysAgo) => at(EDGE_RIG_SETTING, daysAgo))],
+    missChance: edgesThenDrill,
+  },
+  // Medium games before a ladder started two days ago; since then a miss, three perfect Medium games that climb the
+  // rung, and two perfect games today at the next rung, 6 pieces at 8 s.
+  ladderClimb: {
+    seed: 99,
+    rounds: [
+      ...daily(countdown(10, 3), () => MEDIUM, 2),
+      at(MEDIUM, 2, 0.5),
+      ...[1, 1, 1].map((daysAgo) => at(MEDIUM, daysAgo, 0)),
+      ...[0, 0].map((daysAgo) => at(MEDIUM_8S, daysAgo, 0)),
+    ],
+    missChance: steady,
+  },
 };
+
+interface PersonaChoices {
+  readonly plan?: { readonly planId: PlanId; readonly startedDaysAgo: number };
+  readonly target?: { readonly pieceCount: number; readonly accuracy: number; readonly createdDaysAgo: number };
+}
+
+const CHOICES: Record<(typeof PLAN_PERSONAS)[number], PersonaChoices> = {
+  planBaseline: { plan: { planId: "baseline", startedDaysAgo: 6 }, target: { pieceCount: 12, accuracy: 100, createdDaysAgo: 6 } },
+  planEdge: { plan: { planId: "edge", startedDaysAgo: 5 }, target: { pieceCount: 8, accuracy: 70, createdDaysAgo: 5 } },
+  ladderClimb: { plan: { planId: "ladder", startedDaysAgo: 2 } },
+};
+
+/** The plan and goal a persona has chosen, which live outside the record and its export, dated from `today`. */
+export function personaChoices(name: PersonaName, today: string = PERSONA_TODAY): { plan: StoredPlan | null; target: StoredTarget | null } {
+  const { plan, target }: PersonaChoices = CHOICES[name as keyof typeof CHOICES] ?? {};
+  return {
+    plan: plan ? { planId: plan.planId, startedDay: shiftDay(today, -plan.startedDaysAgo) } : null,
+    target: target ? { pieceCount: target.pieceCount, accuracy: target.accuracy, createdDay: shiftDay(today, -target.createdDaysAgo) } : null,
+  };
+}
 
 /** mulberry32: small, fast and the same on every platform. */
 function seeded(seed: number): () => number {
@@ -171,7 +240,7 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
     const playedAt = noonUtc(today, -planned.daysAgo);
     const target = placementFromFen(generateMemorizationPosition(planned.pieceCount, random)?.fen() ?? "8/8/8/8/8/8/8/8");
     const progress = index / rounds.length;
-    const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= missChance(square, piece, progress)));
+    const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= (planned.miss ?? missChance(square, piece, progress))));
     const solveMs = 8000 + Math.floor(random() * 22_000);
     const input: RoundInput = {
       id: `${name}-${index}`,

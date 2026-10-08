@@ -14,6 +14,7 @@ export const ROUND_SOURCES = [
   "try_again",
   "insight",
   "result_next",
+  "plan",
   "link",
 ] as const;
 
@@ -23,8 +24,24 @@ export function roundSourceFrom(value: string | null): RoundSource {
   return ROUND_SOURCES.find((source) => source === value) ?? "link";
 }
 
-/** Lab parts with a link: the unlock strip, each §06 panel that can go stale, the insights a finding links from, and the card on the result screen. */
-export type LabPanel = "unlock" | "span" | "piecesHeld" | "trend" | "speed" | "missMap" | "streak" | "bests" | "typeRecall" | "insights" | "resultCard";
+/** Lab parts with a link or a control: the unlock strip, each §06 panel that can go stale, the insights a finding links from, the plans and goal, and the card on the result screen. */
+export type LabPanel =
+  | "unlock"
+  | "span"
+  | "piecesHeld"
+  | "trend"
+  | "speed"
+  | "missMap"
+  | "streak"
+  | "bests"
+  | "typeRecall"
+  | "insights"
+  | "plans"
+  | "goal"
+  | "resultCard";
+
+/** What the player did: follow a link, or start, stop or finish a plan, or set or clear a goal. Never which plan or goal. */
+export type LabPanelAction = "play" | "guide" | "next" | "start" | "stop" | "finish" | "setGoal" | "clearGoal";
 
 /**
  * The GA4 event contract. Round events carry the setting and the score, and
@@ -78,7 +95,7 @@ export type FunnelEvent =
     }
   | {
       name: "lab_panel_action";
-      params: { panel: LabPanel; action: "play" | "guide" | "next" };
+      params: { panel: LabPanel; action: LabPanelAction };
     };
 
 export function trackEvent({ name, params }: FunnelEvent): void {

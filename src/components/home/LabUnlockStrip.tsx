@@ -1,5 +1,6 @@
 "use client";
 
+import { useId, useState } from "react";
 import { useTranslations } from "next-intl";
 import { LAB_METRICS, type LabResults } from "@/lib/lab/metrics";
 import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
@@ -27,6 +28,8 @@ const LEFT: { readonly [K in Unlock["metric"]]: (need: Need) => string } = {
 export function LabUnlockStrip({ results, storage }: { results: LabResults; storage: LabStorageState }) {
   const t = useTranslations("home.lab.record.unlock");
   const unlocks = unlocksFor(results);
+  const listId = useId();
+  const [expanded, setExpanded] = useState(false);
 
   const text = ({ metric, started, need }: Unlock) => {
     const values = {
@@ -55,14 +58,29 @@ export function LabUnlockStrip({ results, storage }: { results: LabResults; stor
           </p>
           <LabPlayLink panel="unlock" />
         </div>
-        <ul aria-labelledby="lab-unlock-label">
+        <ul aria-labelledby="lab-unlock-label" id={listId}>
           {/* Keyed by position, so when real data arrives each line changes its text in place instead of moving. */}
           {unlocks.map((unlock, index) => (
             <li key={index}>{text(unlock)}</li>
           ))}
         </ul>
+        {/* Phones show the first line only, so the box keeps one small reserve for any number of lines. */}
+        <button
+          type="button"
+          className="lab-bests-toggle lab-unlock-toggle"
+          aria-expanded={expanded}
+          aria-controls={listId}
+          data-single={unlocks.length === 1 ? "" : undefined}
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? t("showFewer") : t("showAll", { count: unlocks.length })}
+        </button>
       </>
     );
 
-  return <div className="lab-unlock">{storage !== "unavailable" && content}</div>;
+  return (
+    <div className="lab-unlock" data-expanded={expanded ? "" : undefined}>
+      {storage !== "unavailable" && content}
+    </div>
+  );
 }

@@ -126,6 +126,7 @@ describe("speed", () => {
     const speed = panel("Speed");
 
     expect(tagOf(speed)).toBe("Sample");
+    expect(texts(speed, ".lab-reading-stat")).toEqual(["Recent average 3.1 s per piece", "Accuracy on the same rounds 88%"]);
     expect(within(speed).getByRole("img")).toHaveAccessibleName("Sample line of rebuild seconds per correct piece over 12 rounds, falling from 4.1 to 2.6 seconds.");
     expect(texts(speed, ".lab-note")).toEqual(["Sample record · 12 rounds · Medium"]);
   });

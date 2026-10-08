@@ -11,6 +11,7 @@ export const SAMPLE_PIECES_HELD: readonly number[] = [4, 4.5, 4.7, 4.8, 5.1, 5.3
 export const SAMPLE_PARTIAL = 4;
 
 export const SAMPLE_SPEED: readonly number[] = [4.1, 3.9, 3.8, 3.6, 3.5, 3.3, 3.2, 3, 2.9, 2.8, 2.7, 2.6];
+export const SAMPLE_SPEED_ACCURACY = 88;
 
 export const SAMPLE_STREAK: readonly StreakDay[] = [
   "played", "played", "missed", "played", "played", "played", "missed",

@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { SAMPLE_PARTIAL, SAMPLE_PIECES_HELD, SAMPLE_SPAN, SAMPLE_SPAN_SECONDS, SAMPLE_SPEED } from "@/lib/home/labRecord";
+import { SAMPLE_PARTIAL, SAMPLE_PIECES_HELD, SAMPLE_SPAN, SAMPLE_SPAN_SECONDS, SAMPLE_SPEED, SAMPLE_SPEED_ACCURACY } from "@/lib/home/labRecord";
+import { mean } from "@/lib/lab/engine";
 import type { LabResults } from "@/lib/lab/metrics";
 import type { SpeedValue } from "@/lib/lab/progress";
 import { hasFigure, LAB_THRESHOLDS } from "@/lib/lab/readiness";
@@ -162,6 +163,8 @@ export function SpeedPanel({ result: { readiness, value: speed }, daysAgo }: Pan
 
   const body = !speed ? (
     <>
+      <p className="lab-reading-stat">{t("average", { average: oneDecimal(mean(SAMPLE_SPEED.slice(-LAB_THRESHOLDS.rollingWindow))) })}</p>
+      <p className="lab-reading-stat">{t("accuracy", { average: SAMPLE_SPEED_ACCURACY })}</p>
       <ValueLine points={SAMPLE_SPEED} label={t("aria")} {...axis} />
       <p className="lab-note">{t("note")}</p>
     </>

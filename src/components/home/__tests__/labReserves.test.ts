@@ -7,7 +7,10 @@ const SLACK_PX = 8;
 const EMPTY_GAP_PX = 220;
 const BOXES = {
   unlock: ".lab-unlock",
+  span: ".lab-p-span",
+  held: ".lab-p-held",
   spark: ".lab-p-spark",
+  speed: ".lab-p-speed",
   heat: ".lab-p-heat",
   streak: ".lab-p-streak",
   bests: ".lab-p-bests",
@@ -38,10 +41,14 @@ describe("§06 reserved heights", () => {
     expect(short).toEqual([]);
   });
 
-  it("keep the phone bests reserve within about 200px of the empty panel a new visitor sees", () => {
-    const gap = (reserves.narrow.bests ?? 0) - measured.empty.narrow.bests;
+  it("leave no more than about 220px blank under any empty or Sample panel on phones", () => {
+    const blank = Object.entries(measured.empty.narrow).flatMap(([box, height]) => {
+      const gap = (reserves.narrow[box as Box] ?? 0) - height;
+      return gap > EMPTY_GAP_PX ? [`${box}: ${gap}px`] : [];
+    });
 
-    expect(gap).toBeLessThanOrEqual(EMPTY_GAP_PX);
+    // The tools strip is not rendered on the server at all, and recall by piece type has no Sample chart, only one line.
+    expect(blank).toEqual(["types: 308px", "tools: 376px"]);
   });
 
   it("give each box its reserve as a minimum height", () => {

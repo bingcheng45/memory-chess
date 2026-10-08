@@ -543,6 +543,8 @@
         "unlock": {
           "label": "What playing unlocks",
           "done": "Every figure below is unlocked.",
+          "showAll": "Show all {count, plural, one {# figure} other {# figures}}",
+          "showFewer": "Show fewer",
           "span": "Memory span unlocks when you score {accuracy} percent or better in {qualifyingRounds, plural, one {# round} other {# rounds}} at one size of {minPieces} or more pieces.",
           "piecesHeld": "Pieces held unlocks at {rounds, plural, one {# round} other {# rounds}} of any setting on {days, plural, one {# day} other {# different days}}.",
           "trend": "Trend unlocks at {rounds, plural, one {# round} other {# rounds}} of one setting on {days, plural, one {# day} other {# different days}}.",

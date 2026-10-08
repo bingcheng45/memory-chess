@@ -56,6 +56,26 @@ describe("unlock strip", () => {
     ]);
   });
 
+  it("folds the lines after the first behind a toggle on phones, and opens them on request", () => {
+    const { container } = renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
+    const toggle = screen.getByRole("button", { name: "Show all 7 figures" });
+
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(toggle).toHaveAttribute("aria-controls", strip()!.id);
+    expect(container.querySelector(".lab-unlock")).not.toHaveAttribute("data-expanded");
+
+    fireEvent.click(toggle);
+
+    expect(screen.getByRole("button", { name: "Show fewer" })).toHaveAttribute("aria-expanded", "true");
+    expect(container.querySelector(".lab-unlock")).toHaveAttribute("data-expanded");
+  });
+
+  it("keeps the toggle's line but hides it when one line is all there is", () => {
+    renderWithIntl(<LabRecordSection record={persona("stale")} />);
+
+    expect(screen.getByRole("button", { name: "Show all 1 figure", hidden: true })).toHaveAttribute("data-single");
+  });
+
   it("prints every threshold from the registry, so the copy cannot drift from the panels", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
     const { span, piecesHeld, trend, speed, streak, missMap, typeRecall } = LAB_METRICS;

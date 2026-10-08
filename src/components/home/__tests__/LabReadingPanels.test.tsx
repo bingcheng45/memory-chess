@@ -41,8 +41,9 @@ describe("memory span", () => {
     expect(tagOf(span)).toBe("Your record");
     expect(within(span).getByText("14 pieces at 10 s")).toHaveClass("lab-span-figure");
     expect(within(span).getByText("Up 4 pieces since last week")).toBeInTheDocument();
-    expect(within(span).getByRole("img")).toHaveAccessibleName("Your memory span over 45 sessions, rising from 4 to 14 pieces.");
+    expect(within(span).getByRole("img")).toHaveAccessibleName("Your memory span over the 45 sessions since it was first reached, rising from 4 to 14 pieces.");
     expect(texts(span, ".lab-note")).toEqual(["From 135 rounds · 19 of them at 14 pieces scored 80 percent or better"]);
+    expect(texts(span, "svg text")).toEqual(["4", "14", "Span first reached", "Latest"]);
   });
 
   it("says no change when the span is what it was a week ago, at the shortest study time held", () => {
@@ -51,7 +52,7 @@ describe("memory span", () => {
 
     expect(within(span).getByText("12 pieces at 8 s")).toBeInTheDocument();
     expect(within(span).getByText("No change since last week")).toBeInTheDocument();
-    expect(within(span).getByRole("img")).toHaveAccessibleName("Your memory span over 29 sessions, rising from 6 to 12 pieces.");
+    expect(within(span).getByRole("img")).toHaveAccessibleName("Your memory span over the 29 sessions since it was first reached, rising from 6 to 12 pieces.");
   });
 
   it("says nothing about last week when there was no span a week ago", () => {
@@ -60,7 +61,7 @@ describe("memory span", () => {
 
     expect(within(span).getByText("6 pieces at 10 s")).toBeInTheDocument();
     expect(span.querySelector(".lab-span-change")?.textContent).toBe("");
-    expect(within(span).getByRole("img")).toHaveAccessibleName("Your memory span over 3 sessions, holding at 6 pieces.");
+    expect(within(span).getByRole("img")).toHaveAccessibleName("Your memory span over the 3 sessions since it was first reached, holding at 6 pieces.");
   });
 
   it("tells an easy-only player that two kings cannot show a span", () => {

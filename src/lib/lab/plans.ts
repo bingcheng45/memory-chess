@@ -112,7 +112,6 @@ function baseline(plan: StoredPlan, records: readonly RoundRecord[], today: stri
   return { planId: "baseline", status, daysPlayed, comparison };
 }
 
-/** Rounds that showed a piece on the a or h file, with how many such pieces were shown and missed. */
 function edgeSide(rounds: readonly RoundRecord[]): EdgeSide {
   let counted = 0;
   let shown = 0;
@@ -194,7 +193,6 @@ export function ladderClimbs(records: readonly RoundRecord[], plan: StoredPlan):
   return { climbs, run: Math.min(run, runLength) };
 }
 
-/** The setting of the latest game round, or Medium before any. */
 function latestGameRung(records: readonly RoundRecord[]): Rung {
   const latest = records.reduce<RoundRecord | null>((last, record) => (record.source === "game" && (!last || record.endedAt > last.endedAt) ? record : last), null);
   return latest ? rungOf(latest) : MEDIUM_RUNG;
@@ -217,7 +215,6 @@ function ladder(plan: StoredPlan, records: readonly RoundRecord[], today: string
   };
 }
 
-/** The setting a plan opens on: Medium, the edge rig, or the ladder's current rung. */
 export function startRung(planId: PlanId, records: readonly RoundRecord[]): Rung {
   return planId === "ladder" ? latestGameRung(records) : PLAN_RULES[planId].rung;
 }

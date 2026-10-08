@@ -4,8 +4,7 @@ import { useGameStore } from "@/lib/store/gameStore";
 import { accuracyBandKey } from "@/lib/reference/facts";
 import { GameState } from "@/lib/types/game";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
@@ -35,8 +34,9 @@ import ArticleTile from "@/components/game/ArticleTile";
 import { countWrong } from "@/lib/game/scoring";
 import ResultLabSlot from "@/components/game/ResultLabSlot";
 
-// Loaded only once a round has a result, so /game pays nothing for the lab record before then.
-const ResultLabCard = dynamic(() => import("@/components/game/ResultLabCard"), { ssr: false, loading: () => <ResultLabSlot /> });
+// Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
+// never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.
+const ResultLabCard = lazy(() => import("@/components/game/ResultLabCard"));
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & {
@@ -478,7 +478,11 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         </nav>
       </section>
 
-      {showsLab && gameState.labRoundId && <ResultLabCard key={gameState.labRoundId} roundId={gameState.labRoundId} onPlay={onPlay} />}
+      {showsLab && gameState.labRoundId && (
+        <Suspense fallback={<ResultLabSlot />}>
+          <ResultLabCard key={gameState.labRoundId} roundId={gameState.labRoundId} onPlay={onPlay} />
+        </Suspense>
+      )}
 
       <ResultBoardComparison
         originalPosition={gameState.originalPosition}

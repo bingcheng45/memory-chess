@@ -7,7 +7,7 @@ import type { ColorCounts } from "./summary";
 
 export type InsightId = "edgeFiles" | "weakType" | "fasterLessAccurate" | "colourGap" | "plateau";
 
-/** The guides an insight can point to, by the key of their link label under home.lab.record.insights.guides. */
+/** Keyed by the link label under home.lab.record.insights.actions. */
 export const INSIGHT_GUIDES = {
   patterns: "chess-pattern-recognition-drills",
   vision: "how-to-see-the-whole-board-in-chess",

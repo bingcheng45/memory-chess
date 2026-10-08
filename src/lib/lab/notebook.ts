@@ -115,7 +115,6 @@ const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
   streak: { wholeLog: false, drafts: streakMilestones },
 };
 
-/** The newest NOTEBOOK_LIMIT entries, newest first, derived on demand from the log and the lifetime summary. */
 export function notebookEntries(records: readonly RoundRecord[], summary: LabSummary): NotebookEntry[] {
   const rounds = byEndedAt(records);
   const history: History = { rounds, summary, evicted: Math.max(0, summary.rounds - rounds.length) };

@@ -80,7 +80,6 @@ function daily(days: readonly number[], perDay: (daysAgo: number, slot: number) 
   );
 }
 
-/** Black pieces slip far more often than white ones. */
 const blackSlips: MissChance = (_, piece) => (piece === piece.toLowerCase() ? 0.3 : 0.06);
 
 const countdown = (from: number, to: number) => Array.from({ length: from - to + 1 }, (_, index) => from - index);

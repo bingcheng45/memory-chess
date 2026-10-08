@@ -56,10 +56,10 @@ export function LabUnlockStrip({ results, storage }: { results: LabResults; stor
           </p>
           <LabPlayLink panel="unlock" />
         </div>
-        <ul aria-labelledby="lab-unlock-label">
-          {/* Keyed by position, so when real data arrives each line changes its text in place instead of moving. */}
-          {unlocks.map((unlock, index) => (
-            <li key={index}>{text(unlock)}</li>
+        {/* Keyed by whether the record has arrived: a line rewrapped in place moved every line below it, a layout shift. */}
+        <ul aria-labelledby="lab-unlock-label" key={unlocks.some(({ started }) => started) ? "mine" : "sample"}>
+          {unlocks.map((unlock) => (
+            <li key={unlock.metric}>{text(unlock)}</li>
           ))}
         </ul>
       </>

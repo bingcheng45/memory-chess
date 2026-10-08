@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
@@ -87,36 +87,68 @@ function playRung(progress: PlanProgress): Rung {
   return progress.climbed && progress.next ? progress.next : progress.rung;
 }
 
+/** Focuses the element a handler names once the render it caused has mounted it, since the pressed button is gone. */
+function useFocusAfter<T extends string>() {
+  const next = useRef<T | null>(null);
+  const targets = useRef(new Map<T, HTMLElement | null>());
+  useEffect(() => {
+    if (next.current === null) return;
+    targets.current.get(next.current)?.focus();
+    next.current = null;
+  });
+  return {
+    focusAfter: (target: T) => {
+      next.current = target;
+    },
+    focusable: (name: T) => (node: HTMLElement | null) => {
+      targets.current.set(name, node);
+    },
+  };
+}
+
 function StopControl({ onStop }: { onStop: () => void }) {
   const t = useTranslations("home.lab.record.plans");
   const [confirming, setConfirming] = useState(false);
-  const confirm = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    if (confirming) confirm.current?.focus();
-  }, [confirming]);
+  const { focusAfter, focusable } = useFocusAfter<"stop" | "confirm">();
+  const ask = (next: boolean) => {
+    focusAfter(next ? "confirm" : "stop");
+    setConfirming(next);
+  };
+  const keepOnEscape = (event: KeyboardEvent) => {
+    if (event.key === "Escape") ask(false);
+  };
 
   if (!confirming) {
     return (
-      <button type="button" className="lab-plan-quiet" onClick={() => setConfirming(true)}>
+      <button type="button" className="lab-plan-quiet" ref={focusable("stop")} onClick={() => ask(true)}>
         {t("stop")}
       </button>
     );
   }
   return (
     <>
-      <button type="button" className="lab-plan-quiet lab-plan-warn" ref={confirm} onClick={onStop}>
+      <button type="button" className="lab-plan-quiet lab-plan-warn" ref={focusable("confirm")} onClick={onStop} onKeyDown={keepOnEscape}>
         {t("confirmStop")}
       </button>
-      <button type="button" className="lab-plan-quiet" onClick={() => setConfirming(false)}>
+      <button type="button" className="lab-plan-quiet" onClick={() => ask(false)} onKeyDown={keepOnEscape}>
         {t("keep")}
       </button>
     </>
   );
 }
 
-function PlanCard({ planId, progress, running, choosing }: { planId: PlanId; progress: PlanProgress | null; running: PlanId | null; choosing: Choosing | null }) {
+interface PlanCardProps {
+  readonly planId: PlanId;
+  readonly progress: PlanProgress | null;
+  readonly running: PlanId | null;
+  readonly choosing: Choosing | null;
+  readonly announce: (message: string) => void;
+}
+
+function PlanCard({ planId, progress, running, choosing, announce }: PlanCardProps) {
   const t = useTranslations("home.lab.record.plans");
   const title = t(`${planId}.title`);
+  const { focusAfter, focusable } = useFocusAfter<"heading">();
 
   const start = () => {
     if (!choosing) return;
@@ -124,8 +156,10 @@ function PlanCard({ planId, progress, running, choosing }: { planId: PlanId; pro
     track("plans", "start");
   };
   const end = (how: "stopped" | "finished") => {
-    if (!choosing?.plan) return;
+    if (!choosing?.plan || !progress) return;
+    focusAfter("heading");
     planChoice.set({ ...choosing.plan, ended: { how, day: choosing.today } });
+    announce(t(`status.${how}`, { day: progress.status.day }));
     track("plans", how === "stopped" ? "stop" : "finish");
   };
 
@@ -160,7 +194,9 @@ function PlanCard({ planId, progress, running, choosing }: { planId: PlanId; pro
   return (
     <div className="lab-plan" data-plan={planId}>
       <span className="lab-k">{t(`${planId}.kicker`)}</span>
-      <h4>{title}</h4>
+      <h4 tabIndex={-1} ref={focusable("heading")}>
+        {title}
+      </h4>
       {progress ? (
         <div className="lab-plan-progress">
           <StatusLine planId={planId} status={progress.status} />
@@ -179,12 +215,25 @@ function PlanCard({ planId, progress, running, choosing }: { planId: PlanId; pro
   );
 }
 
+/** The live region sits in the intro, outside the panel body that remounts when its state changes, so it is announced. */
+function Intro({ desc, announcement }: { desc: string; announcement: string }) {
+  return (
+    <>
+      <p className="lab-panel-desc">{desc}</p>
+      <p className="sr-only" role="status">
+        {announcement}
+      </p>
+    </>
+  );
+}
+
 export function PlansPanel({ result: { readiness, value }, choosing, daysAgo }: { result: LabResults["plans"]; choosing: Choosing | null; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record.plans");
   const tags = useTags();
   const running = value?.status.kind === "active" ? value.planId : null;
+  const [announcement, announce] = useState("");
   return (
-    <PanelFrame panel="plans" name="plans" tag={value ? tags.mine : tags.sample} state={readiness.state} intro={<p className="lab-panel-desc">{t("desc")}</p>}>
+    <PanelFrame panel="plans" name="plans" tag={value ? tags.mine : tags.sample} state={readiness.state} intro={<Intro desc={t("desc")} announcement={announcement} />}>
       <div className="lab-plans">
         {PLAN_IDS.map((planId) => (
           <PlanCard
@@ -193,6 +242,7 @@ export function PlansPanel({ result: { readiness, value }, choosing, daysAgo }: 
             progress={value?.planId === planId ? value : null}
             running={running === planId ? null : running}
             choosing={choosing}
+            announce={announce}
           />
         ))}
       </div>
@@ -209,7 +259,15 @@ function GoalBar({ percent, label }: { percent: number; label: string }) {
   );
 }
 
-function GoalForm({ initial, today, onDone }: { initial: Pick<StoredTarget, "pieceCount" | "accuracy">; today: string; onDone: (() => void) | null }) {
+interface GoalFormProps {
+  readonly initial: Pick<StoredTarget, "pieceCount" | "accuracy">;
+  readonly today: string;
+  readonly onSet: () => void;
+  readonly onCancel: (() => void) | null;
+  readonly piecesRef: (node: HTMLElement | null) => void;
+}
+
+function GoalForm({ initial, today, onSet, onCancel, piecesRef }: GoalFormProps) {
   const t = useTranslations("home.lab.record.goal");
   const id = useId();
   const [pieceCount, setPieceCount] = useState(initial.pieceCount);
@@ -218,12 +276,12 @@ function GoalForm({ initial, today, onDone }: { initial: Pick<StoredTarget, "pie
     event.preventDefault();
     targetChoice.set({ pieceCount, accuracy, createdDay: today, createdAt: Date.now() });
     track("goal", "setGoal");
-    onDone?.();
+    onSet();
   };
   return (
     <form className="lab-target-form" aria-label={t("form")} onSubmit={submit}>
       <label htmlFor={`${id}-pieces`}>{t("pieces")}</label>
-      <select id={`${id}-pieces`} value={pieceCount} onChange={(event) => setPieceCount(Number(event.target.value))}>
+      <select id={`${id}-pieces`} ref={piecesRef} value={pieceCount} onChange={(event) => setPieceCount(Number(event.target.value))}>
         {GOAL_PIECE_OPTIONS.map((count) => (
           <option key={count} value={count}>
             {count}
@@ -241,8 +299,8 @@ function GoalForm({ initial, today, onDone }: { initial: Pick<StoredTarget, "pie
       <button type="submit" className="lab-btn lab-btn-secondary">
         {t("set")}
       </button>
-      {onDone && (
-        <button type="button" className="lab-plan-quiet" onClick={onDone}>
+      {onCancel && (
+        <button type="button" className="lab-plan-quiet" onClick={onCancel}>
           {t("cancel")}
         </button>
       )}
@@ -255,6 +313,13 @@ export function GoalPanel({ result: { readiness, value }, today, daysAgo }: { re
   const tags = useTags();
   const format = useFormatter();
   const [editing, setEditing] = useState(false);
+  const [announcement, setAnnouncement] = useState("");
+  const { focusAfter, focusable } = useFocusAfter<"newGoal" | "pieces">();
+  const goalSet = () => {
+    focusAfter("newGoal");
+    setEditing(false);
+    setAnnouncement(t("saved"));
+  };
   const day = (localDay: string) => format.dateTime(dayDate(localDay), { day: "numeric", month: "short" });
 
   const body = () => {
@@ -265,7 +330,7 @@ export function GoalPanel({ result: { readiness, value }, today, daysAgo }: { re
         <>
           <p>{sentence}</p>
           <GoalBar percent={percent} label={sentence} />
-          {today && <GoalForm initial={SAMPLE_GOAL} today={today} onDone={null} />}
+          {today && <GoalForm initial={SAMPLE_GOAL} today={today} onSet={goalSet} onCancel={null} piecesRef={focusable("pieces")} />}
         </>
       );
     }
@@ -284,17 +349,19 @@ export function GoalPanel({ result: { readiness, value }, today, daysAgo }: { re
         )}
         {reached && <p className="lab-target-reached">{t("reached", { date: day(reached.localDay), accuracy: reached.accuracy, pieceCount: reached.pieceCount })}</p>}
         {today && editing ? (
-          <GoalForm initial={target} today={today} onDone={() => setEditing(false)} />
+          <GoalForm initial={target} today={today} onSet={goalSet} onCancel={() => setEditing(false)} piecesRef={focusable("pieces")} />
         ) : (
           <div className="lab-plan-actions">
-            <button type="button" className="lab-btn lab-btn-secondary" onClick={() => setEditing(true)}>
+            <button type="button" className="lab-btn lab-btn-secondary" ref={focusable("newGoal")} onClick={() => setEditing(true)}>
               {t("newGoal")}
             </button>
             <button
               type="button"
               className="lab-plan-quiet"
               onClick={() => {
+                focusAfter("pieces");
                 targetChoice.set(null);
+                setAnnouncement(t("cleared"));
                 track("goal", "clearGoal");
               }}
             >
@@ -308,7 +375,7 @@ export function GoalPanel({ result: { readiness, value }, today, daysAgo }: { re
   };
 
   return (
-    <PanelFrame panel="goal" name="goal" tag={value ? tags.mine : tags.sample} state={readiness.state} intro={<p className="lab-panel-desc">{t("desc")}</p>}>
+    <PanelFrame panel="goal" name="goal" tag={value ? tags.mine : tags.sample} state={readiness.state} intro={<Intro desc={t("desc")} announcement={announcement} />}>
       {body()}
     </PanelFrame>
   );

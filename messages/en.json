@@ -608,7 +608,9 @@
           "set": "Set goal",
           "newGoal": "Set a new goal",
           "clear": "Clear goal",
-          "cancel": "Cancel"
+          "cancel": "Cancel",
+          "saved": "Goal set.",
+          "cleared": "Goal cleared."
         },
         "mine": "Your record",
         "fromRounds": "From {count, plural, one {# round} other {# rounds}}",

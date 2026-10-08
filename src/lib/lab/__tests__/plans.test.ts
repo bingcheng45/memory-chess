@@ -109,6 +109,10 @@ describe("plan progress", () => {
     });
   });
 
+  it("reads a plan dated after today, as a clock set back leaves it, as on its first day", () => {
+    expect(plansOf([], { planId: "ladder", startedDay: "2026-10-10" }).value).toMatchObject({ status: { kind: "active", day: 1 } });
+  });
+
   it("finishes the edge drill after its fourteenth day", () => {
     expect(plansOf([], { planId: "edge", startedDay: "2026-09-25" }).value).toMatchObject({ status: { kind: "active", day: 14 }, daysElapsed: 14 });
     expect(plansOf([], { planId: "edge", startedDay: "2026-09-24" }).value).toMatchObject({ status: { kind: "done", day: 14, how: "calendar" }, daysElapsed: 14 });

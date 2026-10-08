@@ -65,7 +65,7 @@
       "types": 516,
       "insights": 402,
       "notebook": 430,
-      "plans": 920,
+      "plans": 955,
       "goal": 314,
       "tools": 496
     },
@@ -81,7 +81,7 @@
       "types": 433,
       "insights": 324,
       "notebook": 393,
-      "plans": 469,
+      "plans": 481,
       "goal": 291,
       "tools": 196
     }
@@ -112,7 +112,7 @@
     "medium types": "stale client 641",
     "medium insights": "staleHeat client 641",
     "medium notebook": "spanClimber client 641",
-    "medium plans": "colourSkew client 641",
+    "medium plans": "planEdge client 641",
     "medium goal": "planEdge client 641",
     "medium tools": "colourSkew client 768",
     "wide unlock": "colourSkew server 1024",
@@ -143,7 +143,7 @@
       "types": 228,
       "insights": 417,
       "notebook": 446,
-      "plans": 1025,
+      "plans": 1181,
       "goal": 305,
       "tools": 0
     },
@@ -159,7 +159,7 @@
       "types": 228,
       "insights": 279,
       "notebook": 329,
-      "plans": 764,
+      "plans": 920,
       "goal": 232,
       "tools": 0
     },
@@ -175,7 +175,7 @@
       "types": 160,
       "insights": 300,
       "notebook": 329,
-      "plans": 403,
+      "plans": 455,
       "goal": 182,
       "tools": 0
     }

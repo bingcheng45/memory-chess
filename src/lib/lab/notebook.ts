@@ -23,10 +23,10 @@ export interface NotebookValue {
   readonly older: { readonly before: number | null } | null;
 }
 
-export const NOTEBOOK_LIMIT = 20;
+const NOTEBOOK_LIMIT = 20;
 export const NOTEBOOK_THRESHOLDS = { rounds: 1 };
-export const ROUND_MILESTONES: readonly number[] = [10, 50, 100, 500, 1000];
-export const STREAK_MILESTONES: readonly number[] = [3, 7, 14, 30, 100];
+const ROUND_MILESTONES: readonly number[] = [10, 50, 100, 500, 1000];
+const STREAK_MILESTONES: readonly number[] = [3, 7, 14, 30, 100];
 export const FIRST_READING_ACCURACY = 90;
 const BEST_ACCURACY_GAIN = 1;
 const BEST_TIME_GAIN_MS = 500;

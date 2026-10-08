@@ -29,14 +29,26 @@ export interface Insight {
 
 type Finding = Omit<Insight, "ruleId">;
 
-interface InsightRule {
+interface InsightRule<TMin extends Need> {
   readonly id: InsightId;
   /** Lower comes first. */
   readonly priority: number;
-  /** The least evidence the rule reads, as the unlock and readiness needs name it; `evaluate` returns null below it. */
-  readonly minSample: Need;
-  evaluate(input: LabInput, prior: InsightPrior): Finding | null;
+  /** The least evidence the rule reads, as the unlock and readiness needs name it. `evaluate` is handed it and returns null below it. */
+  readonly minSample: TMin;
+  evaluate(input: LabInput, prior: InsightPrior, min: TMin): Finding | null;
 }
+
+interface BoundRule {
+  readonly id: InsightId;
+  readonly priority: number;
+  find(input: LabInput, prior: InsightPrior): Finding | null;
+}
+
+const bind = <TMin extends Need>({ id, priority, minSample, evaluate }: InsightRule<TMin>): BoundRule => ({
+  id,
+  priority,
+  find: (input, prior) => evaluate(input, prior, minSample),
+});
 
 /** Metrics the rules read, computed once by the registry and passed in. */
 export interface InsightPrior {
@@ -49,7 +61,7 @@ export interface InsightsValue {
 }
 
 export const INSIGHTS_THRESHOLDS = { rounds: 10 };
-export const MAX_INSIGHTS = 3;
+const MAX_INSIGHTS = 3;
 
 const EDGE_FILES = [0, 7];
 const CENTRE_FILES = [3, 4];
@@ -59,8 +71,6 @@ export const EDGE_RIG = { pieceCount: 8, memorizeSeconds: 15 };
 /** With no centre miss there is no multiple to weigh, so the finding ranks just under any finding past its threshold, which reads 1 or more. */
 const NO_CENTRE_MISS_STRENGTH = 0.99;
 const WEAK_RECALL = LAB_THRESHOLDS.weakRecall;
-const LINE_EXPOSURES = LAB_THRESHOLDS.squareExposures;
-const TYPE_EXPOSURES = LAB_THRESHOLDS.typeExposures;
 const COLOUR_EXPOSURES = 100;
 const TWO_WINDOWS = 2 * LAB_THRESHOLDS.rollingWindow;
 const PLATEAU_POINTS = 2;
@@ -83,13 +93,13 @@ function fileCounts({ summary }: LabInput) {
   return { shown, total };
 }
 
-const edgeFiles: InsightRule = {
+const edgeFiles: InsightRule<{ exposures: number }> = {
   id: "edgeFiles",
   priority: 1,
-  minSample: { exposures: LINE_EXPOSURES },
-  evaluate(input) {
+  minSample: { exposures: LAB_THRESHOLDS.squareExposures },
+  evaluate(input, _prior, { exposures }) {
     const { shown, total } = fileCounts(input);
-    if (Math.min(...[...EDGE_FILES, ...CENTRE_FILES].map((file) => shown[file])) < LINE_EXPOSURES) return null;
+    if (Math.min(...[...EDGE_FILES, ...CENTRE_FILES].map((file) => shown[file])) < exposures) return null;
     const edge = total(EDGE_FILES);
     const centre = total(CENTRE_FILES);
     const edgeRate = edge.missed / edge.shown;
@@ -111,18 +121,18 @@ const edgeFiles: InsightRule = {
   },
 };
 
-const weakType: InsightRule = {
+const weakType: InsightRule<{ exposures: number }> = {
   id: "weakType",
   priority: 1,
-  minSample: { exposures: TYPE_EXPOSURES },
-  evaluate({ summary }) {
+  minSample: { exposures: LAB_THRESHOLDS.typeExposures },
+  evaluate({ summary }, _prior, { exposures }) {
     const weakest = PIECE_LETTERS.filter((type) => type !== "k")
       .map((type) => {
         const shown = summary.typeShown[type] ?? 0;
         const recalled = shown - (summary.typeMissed[type] ?? 0);
         return { type, shown, recalled, recall: recalled / shown };
       })
-      .filter(({ shown, recall }) => shown >= TYPE_EXPOSURES && recall < WEAK_RECALL)
+      .filter(({ shown, recall }) => shown >= exposures && recall < WEAK_RECALL)
       .sort((a, b) => a.recall - b.recall || b.shown - a.shown)[0];
     if (!weakest) return null;
     const { type, recalled, shown, recall } = weakest;
@@ -134,15 +144,16 @@ const weakType: InsightRule = {
   },
 };
 
-const fasterLessAccurate: InsightRule = {
+const fasterLessAccurate: InsightRule<{ rounds: number }> = {
   id: "fasterLessAccurate",
   priority: 2,
   minSample: { rounds: TWO_WINDOWS },
-  evaluate(_input, prior) {
+  evaluate(_input, prior, { rounds }) {
     const speed = prior.speed.value;
-    const pace = speed?.recent.change;
-    const accuracy = speed?.accuracyAtSameRounds.recent.change;
-    if (!speed || pace == null || accuracy == null || -pace < FASTER_SECONDS || -accuracy < ACCURACY_FALL_POINTS) return null;
+    if (!speed || speed.accuracyAtSameRounds.points.length < rounds) return null;
+    const pace = speed.recent.change;
+    const accuracy = speed.accuracyAtSameRounds.recent.change;
+    if (pace == null || accuracy == null || -pace < FASTER_SECONDS || -accuracy < ACCURACY_FALL_POINTS) return null;
     return {
       params: { ...speed.setting, faster: Math.round(-pace * 10) / 10, fell: Math.round(-accuracy) },
       action: rig(speed.setting),
@@ -153,12 +164,12 @@ const fasterLessAccurate: InsightRule = {
 
 const recallOf = (shown: ColorCounts, missed: ColorCounts, color: keyof ColorCounts) => (shown[color] - missed[color]) / shown[color];
 
-const colourGap: InsightRule = {
+const colourGap: InsightRule<{ exposures: number }> = {
   id: "colourGap",
   priority: 2,
   minSample: { exposures: COLOUR_EXPOSURES },
-  evaluate({ summary: { colorShown, colorMissed } }) {
-    if (Math.min(colorShown.w, colorShown.b) < COLOUR_EXPOSURES) return null;
+  evaluate({ summary: { colorShown, colorMissed } }, _prior, { exposures }) {
+    if (Math.min(colorShown.w, colorShown.b) < exposures) return null;
     const white = recallOf(colorShown, colorMissed, "w");
     const black = recallOf(colorShown, colorMissed, "b");
     const gap = hundredths(Math.abs(white - black) * 100);
@@ -178,14 +189,14 @@ const colourGap: InsightRule = {
   },
 };
 
-const plateau: InsightRule = {
+const plateau: InsightRule<{ rounds: number }> = {
   id: "plateau",
   priority: 3,
   minSample: { rounds: TWO_WINDOWS },
-  evaluate(input, prior) {
-    const { rounds } = busiestSetting(input, input.records, TREND_THRESHOLDS, TWO_WINDOWS);
+  evaluate(input, prior, { rounds: least }) {
+    const { rounds } = busiestSetting(input, input.records, TREND_THRESHOLDS, least);
     const window = LAB_THRESHOLDS.rollingWindow;
-    if (rounds.length < TWO_WINDOWS) return null;
+    if (rounds.length < least) return null;
     const accuracy = rounds.map((record) => record.accuracy);
     const last = mean(accuracy.slice(-window));
     const before = mean(accuracy.slice(-2 * window, -window));
@@ -201,7 +212,7 @@ const plateau: InsightRule = {
   },
 };
 
-export const INSIGHT_RULES: readonly InsightRule[] = [edgeFiles, weakType, fasterLessAccurate, colourGap, plateau];
+const INSIGHT_RULES: readonly BoundRule[] = [bind(edgeFiles), bind(weakType), bind(fasterLessAccurate), bind(colourGap), bind(plateau)];
 
 export function computeInsights(input: LabInput, prior: InsightPrior): MetricResult<InsightsValue> {
   const { rounds } = input.summary;
@@ -209,7 +220,7 @@ export function computeInsights(input: LabInput, prior: InsightPrior): MetricRes
   return measured(readiness, () => {
     if (!hasFigure(readiness)) return { insights: [] };
     const found = INSIGHT_RULES.flatMap((rule) => {
-      const finding = rule.evaluate(input, prior);
+      const finding = rule.find(input, prior);
       return finding ? [{ rule, insight: { ruleId: rule.id, ...finding } }] : [];
     });
     found.sort((a, b) => a.rule.priority - b.rule.priority || b.insight.strength - a.insight.strength);

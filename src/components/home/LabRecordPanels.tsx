@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import type { LabPanel } from "@/lib/analytics/events";
 import type { BestEntry, LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
 import { figureNumber, type PanelId } from "@/lib/lab/panels";
+import type { StreakDay } from "@/lib/lab/streak";
 import { hasFigure, type Readiness, type ReadinessState } from "@/lib/lab/readiness";
 import type { PieceSymbol } from "chess.js";
 import { FILES, RANKS } from "@/lib/game/board";
@@ -13,6 +14,7 @@ import { formatSeconds } from "@/utils/timer";
 import { seconds, settingValues } from "./labFormat";
 import { AccuracySparkline, MissLines, MissMap, RecallBar, StreakGrid } from "./LabCharts";
 import { LabPlayLink } from "./LabPlayLink";
+import { LabWeek, SampleWeek } from "./LabWeek";
 import { LAB_SECTIONS } from "./SectionHeading";
 
 const missShare = ({ shown, missed, ready }: MissCell) => (ready ? missed / shown : null);
@@ -170,9 +172,33 @@ export function MissPanel({ result: { readiness, value: map }, daysAgo }: { resu
   );
 }
 
-export function StreakPanel({ result: { readiness, value: streak }, daysAgo }: { result: LabResults["streak"]; daysAgo: number | null }) {
+const STREAK_KEY = ["played", "forgiven", "missed", "today"] as const;
+
+/** Words beside each square style, so a forgiven day never reads by colour or pattern alone. */
+function StreakKey() {
+  const t = useTranslations("home.lab.record.streak.key");
+  return (
+    <p className="lab-note lab-streak-key">
+      {STREAK_KEY.map((day) => (
+        <span key={day}>
+          <i data-day={day} aria-hidden="true" /> {t(day)}
+        </span>
+      ))}
+    </p>
+  );
+}
+
+interface StreakPanelProps {
+  readonly result: LabResults["streak"];
+  readonly days: readonly string[];
+  readonly today: string;
+  readonly daysAgo: number | null;
+}
+
+export function StreakPanel({ result: { readiness, value: streak }, days, today, daysAgo }: StreakPanelProps) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
+  const count = (day: StreakDay) => streak?.window.filter((shown) => shown === day).length ?? 0;
 
   return (
     <PanelFrame
@@ -185,19 +211,18 @@ export function StreakPanel({ result: { readiness, value: streak }, daysAgo }: {
       {!streak ? (
         <>
           <StreakGrid label={t("streak.aria")} />
+          <StreakKey />
           <p className="lab-note">{t("streak.note")}</p>
+          <SampleWeek />
         </>
       ) : (
         <>
-          <StreakGrid
-            days={streak.window}
-            label={t("streak.realAria", { count: streak.window.filter((day) => day === "played").length })}
-          />
-          <p className="lab-note">
-            {hasFigure(readiness)
-              ? `${t("streak.realNote", { current: streak.current, longest: streak.longest })} · ${t("fromRounds", { count: readiness.sampleSize })}`
-              : t("streak.need")}
-          </p>
+          <StreakGrid days={streak.window} label={t("streak.realAria", { count: count("played"), forgiven: count("forgiven") })} />
+          <StreakKey />
+          <p className="lab-note">{hasFigure(readiness)
+              ? `${t("streak.realNote", { current: streak.current, forgiven: streak.forgivenDays.length, longest: streak.longest })} · ${t("fromRounds", { count: readiness.sampleSize })}`
+              : t("streak.need", { days: readiness.need?.days ?? 0 })}</p>
+          {today && <LabWeek days={days} today={today} />}
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="streak" />
         </>
       )}

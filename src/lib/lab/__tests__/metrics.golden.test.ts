@@ -98,6 +98,7 @@ describe("metric engine on the persona fixtures", () => {
       shortSessions: { typeRecall: undefined, missMap: undefined },
       plateau: { typeRecall: undefined, missMap: undefined },
       colourSkew: { typeRecall: undefined, missMap: undefined },
+      graceStreak: { typeRecall: undefined, missMap: undefined },
     });
   });
 
@@ -126,6 +127,7 @@ describe("metric engine on the persona fixtures", () => {
       shortSessions: all("ready"),
       plateau: all("ready"),
       colourSkew: all("ready"),
+      graceStreak: all("ready"),
     });
   });
 
@@ -261,6 +263,14 @@ describe("metric engine on the persona fixtures", () => {
         piecesHeld: { average: 4.9, previous: 4.8, change: 0.1 },
         speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 4.28, previous: 4.11, change: 0.17 }, accuracy: { average: 81.5, previous: 79.8, change: 1.7 } },
         trend: { granularity: "session", sessions: 15 },
+      },
+      graceStreak: {
+        sessions: 26,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 44, weekAgo: 6, change: 0 },
+        steps: [[0, 6]],
+        piecesHeld: { average: 5.6, previous: 5.8, change: -0.2 },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 3.17, previous: 3.29, change: -0.12 }, accuracy: { average: 94.9, previous: 91.6, change: 3.3 } },
+        trend: { granularity: "session", sessions: 26 },
       },
     });
   });

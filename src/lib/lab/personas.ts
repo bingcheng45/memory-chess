@@ -28,6 +28,7 @@ export const PERSONA_NAMES = [
   "shortSessions",
   "plateau",
   "colourSkew",
+  "graceStreak",
 ] as const;
 export type PersonaName = (typeof PERSONA_NAMES)[number];
 
@@ -93,6 +94,12 @@ const shortSittings: PlannedRound[] = countdown(5, 0).flatMap((daysAgo) =>
   SITTING_STARTS.flatMap((start) => [PRACTICE, MEDIUM, MEDIUM, MEDIUM].map((setting, index) => ({ ...setting, daysAgo, minute: start + index * 3 }))),
 );
 
+/**
+ * An older run, 31 to 24 days ago with day 27 missed, that ends at two missed days in a row, then the current run from
+ * 19 days ago to today with day 9 missed: one forgiven day in each.
+ */
+const GRACE_DAYS = [...countdown(31, 24), ...countdown(19, 0)].filter((daysAgo) => daysAgo !== 27 && daysAgo !== 9);
+
 const THREE_DAYS: PersonaPlan = { seed: 3, rounds: daily(countdown(2, 0), (_, slot) => (slot === 0 ? PRACTICE : MEDIUM), 4), missChance: steady };
 
 const PLANS: Record<PersonaName, PersonaPlan> = {
@@ -121,6 +128,7 @@ const PLANS: Record<PersonaName, PersonaPlan> = {
   // Medium every day for two weeks: accuracy flat over the last 20 rounds and a span that has not moved.
   plateau: { seed: 4, rounds: daily(countdown(13, 0), () => MEDIUM, 4), missChance: () => 0.12 },
   colourSkew: { seed: 61, rounds: daily(countdown(14, 0), () => MEDIUM, 4), missChance: blackSlips },
+  graceStreak: { seed: 19, rounds: daily(GRACE_DAYS, (_, slot) => (slot === 0 ? PRACTICE : MEDIUM), 2), missChance: steady },
 };
 
 /** mulberry32: small, fast and the same on every platform. */

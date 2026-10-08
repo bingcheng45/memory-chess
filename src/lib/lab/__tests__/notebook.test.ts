@@ -30,19 +30,39 @@ describe("lab notebook", () => {
       { at: at(3, 7), kind: "rounds", params: { day: 3, count: 10 } },
       { at: at(3, 7), kind: "span", params: { day: 3, from: 0, to: 4 } },
       { at: at(3), kind: "best", params: { day: 3, source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, previous: 100, by: "time", solveSeconds: 15 } },
-      { at: at(3), kind: "streak", params: { day: 3, days: 3 } },
+      { at: at(3), kind: "streak", params: { day: 3, days: 3, forgiven: 0 } },
       { at: at(2), kind: "first90", params: { day: 2, pieceCount: 4 } },
       { at: at(2), kind: "best", params: { day: 2, source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, previous: 75, by: "accuracy", solveSeconds: 20 } },
       { at: at(1), kind: "firstRound", params: { day: 1, pieceCount: 4, accuracy: 75 } },
     ]);
   });
 
-  it("marks a streak milestone every time a run of days reaches it", () => {
-    const rounds = [1, 2, 3, 5, 6, 7].map((day) => played(`d${day}`, day, 0, false));
+  it("marks a streak milestone every time a run of days reaches it, a new run starting after two missed days", () => {
+    const rounds = [1, 2, 3, 6, 7, 8].map((day) => played(`d${day}`, day, 0, false));
 
     expect(notebookEntries(rounds, summarize(rounds)).filter(({ kind }) => kind === "streak")).toEqual([
-      { at: at(7), kind: "streak", params: { day: 7, days: 3 } },
-      { at: at(3), kind: "streak", params: { day: 3, days: 3 } },
+      { at: at(8), kind: "streak", params: { day: 8, days: 3, forgiven: 0 } },
+      { at: at(3), kind: "streak", params: { day: 3, days: 3, forgiven: 0 } },
+    ]);
+  });
+
+  it("carries a run over one forgiven day, counting only the days played and saying how many were forgiven", () => {
+    const rounds = [1, 2, 4, 5, 6, 7, 8, 9].map((day) => played(`d${day}`, day, 0, false));
+
+    expect(notebookEntries(rounds, summarize(rounds)).filter(({ kind }) => kind === "streak")).toEqual([
+      { at: at(8), kind: "streak", params: { day: 8, days: 7, forgiven: 1 } },
+      { at: at(4), kind: "streak", params: { day: 4, days: 3, forgiven: 1 } },
+    ]);
+  });
+
+  it("marks a milestone for a new run that starts below the count of the run before it", () => {
+    const rounds = [1, 2, 3, 4, 5, 7, 8, 10, 11, 12, 13, 14].map((day) => played(`d${day}`, day, 0, false));
+
+    expect(notebookEntries(rounds, summarize(rounds)).filter(({ kind }) => kind === "streak")).toEqual([
+      { at: at(14), kind: "streak", params: { day: 14, days: 7, forgiven: 1 } },
+      { at: at(10), kind: "streak", params: { day: 10, days: 3, forgiven: 1 } },
+      { at: at(8), kind: "streak", params: { day: 8, days: 7, forgiven: 1 } },
+      { at: at(3), kind: "streak", params: { day: 3, days: 3, forgiven: 0 } },
     ]);
   });
 
@@ -84,7 +104,7 @@ describe("lab notebook", () => {
 
     expect(notebookEntries(kept, lifetime)).toEqual([
       { at: at(3, 7), kind: "rounds", params: { day: 3, count: 10 } },
-      { at: at(3, 1), kind: "streak", params: { day: 3, days: 3 } },
+      { at: at(3, 1), kind: "streak", params: { day: 3, days: 3, forgiven: 0 } },
     ]);
   });
 
@@ -100,7 +120,7 @@ describe("lab notebook", () => {
     const kept = firstWeek.slice(3);
 
     expect(deriveLab({ records: kept, summary: summarize(firstWeek), today: "" }).notebook.value).toEqual({
-      entries: [{ at: at(3, 1), kind: "streak", params: { day: 3, days: 3 } }],
+      entries: [{ at: at(3, 1), kind: "streak", params: { day: 3, days: 3, forgiven: 0 } }],
       older: { before: null },
     });
     expect(deriveLab({ records: [], summary: summarize(firstWeek), today: "" }).notebook).toEqual({

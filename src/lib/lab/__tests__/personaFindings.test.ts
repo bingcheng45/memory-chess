@@ -55,7 +55,7 @@ describe("persona notebooks", () => {
   it("writes the three-day player's notebook", async () => {
     expect(await entries("threeDays")).toEqual([
       ["rounds", { day: 3, count: 10 }],
-      ["streak", { day: 3, days: 3 }],
+      ["streak", { day: 3, days: 3, forgiven: 0 }],
       ["span", { day: 1, from: 0, to: 6 }],
       ["firstRound", { day: 1, pieceCount: 6, accuracy: 100 }],
     ]);
@@ -63,12 +63,12 @@ describe("persona notebooks", () => {
 
   it("writes the plateau player's notebook", async () => {
     expect(await entries("plateau")).toEqual([
-      ["streak", { day: 14, days: 14 }],
+      ["streak", { day: 14, days: 14, forgiven: 0 }],
       ["rounds", { day: 13, count: 50 }],
-      ["streak", { day: 7, days: 7 }],
+      ["streak", { day: 7, days: 7, forgiven: 0 }],
       ["best", { day: 3, source: "game", pieceCount: 6, memorizeSeconds: 10, accuracy: 100, previous: 100, by: "time", solveSeconds: 10.6 }],
       ["rounds", { day: 3, count: 10 }],
-      ["streak", { day: 3, days: 3 }],
+      ["streak", { day: 3, days: 3, forgiven: 0 }],
       ["span", { day: 1, from: 0, to: 6 }],
       ["best", { day: 1, source: "game", pieceCount: 6, memorizeSeconds: 10, accuracy: 100, previous: 100, by: "time", solveSeconds: 18.2 }],
       ["firstRound", { day: 1, pieceCount: 6, accuracy: 100 }],

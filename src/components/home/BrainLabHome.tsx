@@ -32,7 +32,7 @@ export function BrainLabHome() {
         <PageHeader showSoundSettings={false} />
       </div>
       <div className="lab">
-        <LabIndex streakDays={streak && streak.current >= LAB_THRESHOLDS.streakDays ? streak.current : null} />
+        <LabIndex streak={streak && streak.current >= LAB_THRESHOLDS.streakDays ? { days: streak.current, forgiven: streak.forgivenDays.length } : null} />
         <main>
           <HomeStructuredData />
           <LabHero totalPlays={totalPlays} />

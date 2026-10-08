@@ -7,6 +7,7 @@ import { useLabResults } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
 import { PANEL_ROWS, type CustomRow, type PanelId, type PanelRow } from "@/lib/lab/panels";
 import { daysBetween } from "@/lib/lab/readiness";
+import { welcomeBack } from "@/lib/lab/welcome";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
 import { ForgettingCurve } from "./LabCharts";
 import { BestsPanel, figureOf, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
@@ -111,7 +112,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
     piecesHeld: <HeldPanel result={lab.piecesHeld} daysAgo={daysAgo} />,
     trend: <TrendPanel result={lab.trend} played={summary.rounds > 0} daysAgo={daysAgo} />,
     speed: <SpeedPanel result={lab.speed} daysAgo={daysAgo} />,
-    streak: <StreakPanel result={lab.streak} daysAgo={daysAgo} />,
+    streak: <StreakPanel result={lab.streak} days={summary.days} today={today} daysAgo={daysAgo} />,
     curve: <CurvePanel />,
     notebook: <NotebookPanel result={lab.notebook} />,
     missMap: <MissPanel result={lab.missMap} daysAgo={daysAgo} />,
@@ -138,7 +139,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
           title={t("title")}
           lede={t.rich("lede", { tag: (chunks) => <span className="lab-tag lab-tag-blue">{chunks}</span> })}
         />
-        <LabUnlockStrip results={lab} storage={record.storage} />
+        <LabUnlockStrip results={lab} storage={record.storage} welcome={record.storage === "available" ? welcomeBack(record) : null} />
         {PANEL_ROWS.map(({ row, panels: ids }) =>
           isCustom(row) ? (
             rows[row]

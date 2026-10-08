@@ -21,7 +21,9 @@
         "missed",
         "today"
       ],
-      "daysNeeded": 2
+      "daysNeeded": 2,
+      "graceUsed": false,
+      "forgivenDays": []
     },
     "bests": {
       "ready": false,
@@ -515,7 +517,9 @@
         "missed",
         "played"
       ],
-      "daysNeeded": 1
+      "daysNeeded": 1,
+      "graceUsed": false,
+      "forgivenDays": []
     },
     "bests": {
       "ready": true,
@@ -1038,7 +1042,9 @@
         "played",
         "played"
       ],
-      "daysNeeded": 0
+      "daysNeeded": 0,
+      "graceUsed": false,
+      "forgivenDays": []
     },
     "bests": {
       "ready": true,
@@ -1569,7 +1575,9 @@
         "played",
         "played"
       ],
-      "daysNeeded": 0
+      "daysNeeded": 0,
+      "graceUsed": false,
+      "forgivenDays": []
     },
     "bests": {
       "ready": true,
@@ -2138,7 +2146,9 @@
         "played",
         "played"
       ],
-      "daysNeeded": 0
+      "daysNeeded": 0,
+      "graceUsed": false,
+      "forgivenDays": []
     },
     "bests": {
       "ready": true,
@@ -2690,7 +2700,9 @@
         "played",
         "played"
       ],
-      "daysNeeded": 0
+      "daysNeeded": 0,
+      "graceUsed": false,
+      "forgivenDays": []
     },
     "bests": {
       "ready": true,
@@ -3231,7 +3243,9 @@
         "missed",
         "today"
       ],
-      "daysNeeded": 0
+      "daysNeeded": 0,
+      "graceUsed": false,
+      "forgivenDays": []
     },
     "bests": {
       "ready": true,

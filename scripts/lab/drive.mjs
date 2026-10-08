@@ -44,7 +44,8 @@ const PANEL_TEXT = `(() => {
   });
   const tools = record.querySelector(".lab-tools");
   const unlock = record.querySelector(".lab-unlock");
-  return Object.fromEntries([["unlock", unlock.innerText], ...entries, ["tools", tools ? tools.innerText : null]]);
+  const welcome = record.querySelector(".lab-welcome");
+  return Object.fromEntries([["welcome", welcome ? welcome.innerText : ""], ["unlock", unlock.innerText], ...entries, ["tools", tools ? tools.innerText : null]]);
 })()`;
 
 const rectOf = (selector) => `(() => {
@@ -128,7 +129,7 @@ export default async function drive(page, { baseUrl, evidenceDir }) {
     text[width] = await page.eval(PANEL_TEXT);
     await shoot(page, "#record", join(evidenceDir, `record-${width}.png`));
     await shoot(page, "#record .lab-unlock", join(evidenceDir, `unlock-${width}.png`));
-    for (const panel of Object.keys(text[width]).filter((key) => key !== "tools" && key !== "unlock")) {
+    for (const panel of Object.keys(text[width]).filter((key) => key !== "tools" && key !== "unlock" && key !== "welcome")) {
       await shoot(page, `#record .lab-p-${panel}`, join(evidenceDir, `${panel}-${width}.png`));
     }
   }

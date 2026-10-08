@@ -497,9 +497,9 @@
           "play": "Play today's board",
           "open": "You have not played today's board yet.",
           "played": "You placed {correct} of {pieceCount, plural, one {# piece} other {# pieces}} right, {accuracy} percent.",
-          "done": "Today's board is done. One try per day on this device.",
           "unfinished": "You opened today's board and left before the result. One try per day on this device.",
           "streak": "Daily streak {current, plural, one {# day} other {# days}}{forgiven, plural, =0 {} one {, # missed day forgiven} other {, # missed days forgiven}} · longest {longest, plural, one {# day} other {# days}}",
+          "streakLongest": "Longest daily streak {longest, plural, one {# day} other {# days}}",
           "gridAria": "Your result on each square, a8 first: {correct} correct, {wrong, plural, one {# wrong piece} other {# wrong pieces}}, {missed} missed, {extra} extra.",
           "key": {
             "c": "correct",
@@ -507,10 +507,11 @@
             "m": "missed",
             "x": "extra"
           },
-          "share": "Memory Chess daily board {day}\n{correct} of {pieceCount} right, {accuracy}%\n{grid}\nthememorychess.com",
+          "share": "Memory Chess daily board {day}\n{correct} of {pieceCount} right, {accuracy}%\n{row}\nthememorychess.com",
           "copy": "Copy result",
+          "showGrid": "Show the grid",
           "copied": "Copied. Paste it anywhere.",
-          "copyFailed": "Copy did not work here. The grid is selected, so copy it yourself."
+          "copyFailed": "Copy did not work here. The result is selected below, so copy it yourself."
         },
         "streak": {
           "fig": "Fig. {number} · Days in a row",

@@ -162,11 +162,12 @@
 .lab-daily-status, .lab-daily-reset, .lab-daily-copied { min-height: 1.45em; }
 .lab-daily-status { margin-top: 12px; font-size: 16px; line-height: 1.45; color: var(--lab-ink); }
 .lab-daily-play { margin-top: 16px; }
-.lab-daily-body { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 40px; align-items: start; }
 .lab-daily-grid { margin: 12px 0 0; font: 400 18px/1.2 var(--lab-sans); letter-spacing: 0; white-space: pre; }
 .lab-daily-key { display: flex; flex-wrap: wrap; gap: 4px 14px; }
 .lab-daily-share .lab-btn { margin-top: 14px; padding: 10px 16px; font-size: 15px; }
-@media (max-width: 640px) { .lab-daily-body { grid-template-columns: minmax(0, 1fr); } }
+.lab-daily-share-text { margin: 8px 0 0; font: 400 14px/1.45 var(--lab-sans); white-space: pre-wrap; color: var(--lab-ink); }
+.lab-daily-detail summary { width: fit-content; cursor: pointer; }
+.lab-daily-detail summary:focus-visible { outline: 2px solid var(--lab-mark); outline-offset: 2px; }
 .lab-span-figure { margin-top: 12px; font: 600 clamp(32px, 4vw, 44px)/1.1 var(--lab-sans); font-variant-numeric: tabular-nums; color: var(--lab-ink); }
 .lab-span-held { margin-top: 6px; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
 /* Holds its line when empty, so a week's change arriving later moves nothing. */

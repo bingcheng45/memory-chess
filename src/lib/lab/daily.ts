@@ -50,10 +50,18 @@ export function dailyBoardOf(records: readonly RoundRecord[], day: string, opene
   return { status: openedDay === day ? "unfinished" : "open", day, streak };
 }
 
-/** Squares only, never pieces, so a pasted grid shows how the board went without naming what stood where. */
-export const SHARE_CELLS: Readonly<Record<SquareOutcome, string>> = { ".": "⬜", c: "🟩", w: "🟨", m: "🟥", x: "🟧" };
+/** Squares only, never pieces, so the grid shows how the board went without naming what stood where. */
+export const OUTCOME_CELLS: Readonly<Record<SquareOutcome, string>> = { ".": "⬜", c: "🟩", w: "🟨", m: "🟥", x: "🟧" };
 
-export function shareGrid(squares: string): string {
-  const cells = [...squares].map((outcome) => SHARE_CELLS[outcome as SquareOutcome]);
+/** The player's own view of the board. Never copied: everyone plays the same board that day, so the squares would give it away. */
+export function boardGrid(squares: string): string {
+  const cells = [...squares].map((outcome) => OUTCOME_CELLS[outcome as SquareOutcome]);
   return Array.from({ length: 8 }, (_, row) => cells.slice(row * 8, row * 8 + 8).join("")).join("\n");
+}
+
+export const SHARE_ORDER = ["c", "w", "m", "x"] as const;
+
+/** One cell per piece, sorted by outcome, so a pasted result carries how the try went and nothing about where. */
+export function shareRow(squares: string): string {
+  return SHARE_ORDER.map((outcome) => OUTCOME_CELLS[outcome].repeat([...squares].filter((square) => square === outcome).length)).join("");
 }

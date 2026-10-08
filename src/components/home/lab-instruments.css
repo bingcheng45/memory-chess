@@ -199,7 +199,6 @@
 .lab-bests div { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-bottom: 8px; border-bottom: 1px solid var(--lab-line); font-size: 15px; }
 .lab-bests dt { color: var(--lab-ink-2); }
 .lab-bests dd { margin: 0; font: 600 15px var(--lab-mono); font-variant-numeric: tabular-nums; }
-/* A text button one note line tall, so the toggle fits the reserve; 24px meets the WCAG minimum target size. */
 .lab-insights { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 24px; }
 .lab-insights li { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding-top: 12px; border-top: 1px solid var(--lab-line); }
 .lab-insights p { font-size: 15px; line-height: 1.5; color: var(--lab-ink); }
@@ -208,6 +207,7 @@
 .lab-notebook { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; max-width: 72ch; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
 .lab-notebook li { padding-bottom: 8px; border-bottom: 1px solid var(--lab-line); }
 .lab-notebook .lab-tag { vertical-align: 1px; }
+/* A text button one note line tall, so the toggle fits the reserve; 24px meets the WCAG minimum target size. */
 .lab-bests-toggle { display: block; margin-top: 10px; min-height: 24px; padding: 0; font: 600 14px/1.45 var(--lab-sans); color: var(--lab-blue); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .lab-bests-toggle:hover { text-decoration-thickness: 2px; }
 .lab-bests [data-older="wide"], .lab-bests-toggle[data-shown="narrow"] { display: none; }

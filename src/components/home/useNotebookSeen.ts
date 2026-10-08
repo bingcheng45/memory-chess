@@ -25,9 +25,7 @@ export function useNotebookSeen(): number | null {
   useEffect(() => {
     try {
       window.localStorage.setItem(NOTEBOOK_SEEN_KEY, String(Date.now()));
-    } catch {
-      // Without storage nothing is marked new, which readSeen already returns.
-    }
+    } catch {}
   }, []);
   return seenBefore;
 }

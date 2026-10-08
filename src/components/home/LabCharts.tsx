@@ -14,6 +14,7 @@ import {
   retentionWithReviews,
 } from "@/lib/home/labRecord";
 import type { StreakDay } from "@/lib/lab/metrics";
+import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
 
 const CURVE = { left: 44, right: 580, bottom: 210, top: 20 };
 const curveX = (day: number) => CURVE.left + ((CURVE.right - CURVE.left) * day) / CURVE_SPAN_DAYS;
@@ -155,7 +156,6 @@ export function StreakGrid({ days = SAMPLE_STREAK, label }: { readonly days?: re
   );
 }
 
-const WEAK_RECALL = 0.5;
 
 export function RecallBar({ label, share, value }: { label: ReactNode; share: number | null; value: ReactNode }) {
   return (
@@ -163,7 +163,7 @@ export function RecallBar({ label, share, value }: { label: ReactNode; share: nu
       <span>{label}</span>
       <span className="lab-bar-track">
         {share !== null && (
-          <i style={{ width: `${Math.round(share * 100)}%` }} data-low={share < WEAK_RECALL || undefined} />
+          <i style={{ width: `${Math.round(share * 100)}%` }} data-low={share < LAB_THRESHOLDS.weakRecall || undefined} />
         )}
       </span>
       <span className="lab-bar-value">{value}</span>

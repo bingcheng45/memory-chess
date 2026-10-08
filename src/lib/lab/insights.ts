@@ -33,7 +33,7 @@ interface InsightRule {
   readonly id: InsightId;
   /** Lower comes first. */
   readonly priority: number;
-  /** The least evidence the rule reads; `evaluate` returns null below it. */
+  /** The least evidence the rule reads, as the unlock and readiness needs name it; `evaluate` returns null below it. */
   readonly minSample: Need;
   evaluate(input: LabInput): Finding | null;
 }
@@ -51,35 +51,45 @@ const EDGE_RATIO = 1.8;
 export const EDGE_RIG = { pieceCount: 8, memorizeSeconds: 15 };
 /** A finding with no centre miss at all reads as this many times, so it still ranks without an infinite strength. */
 const NO_CENTRE_MISS_RATIO = 10;
-const WEAK_RECALL = 0.5;
+const WEAK_RECALL = LAB_THRESHOLDS.weakRecall;
+const LINE_EXPOSURES = LAB_THRESHOLDS.squareExposures;
+const TYPE_EXPOSURES = LAB_THRESHOLDS.typeExposures;
+const COLOUR_EXPOSURES = 100;
+const TWO_WINDOWS = 2 * LAB_THRESHOLDS.rollingWindow;
 const PLATEAU_POINTS = 2;
 const FASTER_SECONDS = 0.3;
 const ACCURACY_FALL_POINTS = 5;
 const COLOUR_GAP_POINTS = 8;
 const percent = (share: number) => Math.round(share * 100);
+/** The multiple a sentence prints: "about twice", "about 2.5 times". */
+export const nearestHalf = (ratio: number) => Math.round(ratio * 2) / 2;
 const rig = ({ pieceCount, memorizeSeconds }: Pick<TrendSetting, "pieceCount" | "memorizeSeconds">): InsightAction => ({ kind: "rig", pieceCount, memorizeSeconds });
 
-function fileCounts({ summary }: LabInput, files: readonly number[]) {
-  const onFiles = (values: readonly number[]) => values.reduce((sum, value, index) => (files.includes(index % 8) ? sum + value : sum), 0);
-  return { shown: onFiles(summary.squareShown), missed: onFiles(summary.squareMissed) };
+function fileCounts({ summary }: LabInput) {
+  const perFile = (values: readonly number[]) =>
+    Array.from({ length: 8 }, (_, file) => values.reduce((sum, value, index) => (index % 8 === file ? sum + value : sum), 0));
+  const shown = perFile(summary.squareShown);
+  const missed = perFile(summary.squareMissed);
+  const total = (files: readonly number[]) => ({ shown: files.reduce((sum, file) => sum + shown[file], 0), missed: files.reduce((sum, file) => sum + missed[file], 0) });
+  return { shown, total };
 }
 
 const edgeFiles: InsightRule = {
   id: "edgeFiles",
   priority: 1,
-  minSample: { exposures: LAB_THRESHOLDS.squareExposures },
+  minSample: { exposures: LINE_EXPOSURES },
   evaluate(input) {
-    const thinnest = Math.min(...[...EDGE_FILES, ...CENTRE_FILES].map((file) => fileCounts(input, [file]).shown));
-    if (thinnest < (this.minSample.exposures ?? 0)) return null;
-    const edge = fileCounts(input, EDGE_FILES);
-    const centre = fileCounts(input, CENTRE_FILES);
+    const { shown, total } = fileCounts(input);
+    if (Math.min(...[...EDGE_FILES, ...CENTRE_FILES].map((file) => shown[file])) < LINE_EXPOSURES) return null;
+    const edge = total(EDGE_FILES);
+    const centre = total(CENTRE_FILES);
     const edgeRate = edge.missed / edge.shown;
     const centreRate = centre.missed / centre.shown;
     const ratio = centreRate === 0 ? NO_CENTRE_MISS_RATIO : hundredths(edgeRate / centreRate);
     if (edgeRate === 0 || ratio < EDGE_RATIO) return null;
     return {
       params: {
-        times: centreRate === 0 ? 0 : Math.round(ratio * 2) / 2,
+        times: centreRate === 0 ? 0 : nearestHalf(ratio),
         edge: percent(edgeRate),
         centre: percent(centreRate),
         edgeShown: edge.shown,
@@ -94,7 +104,7 @@ const edgeFiles: InsightRule = {
 const weakType: InsightRule = {
   id: "weakType",
   priority: 1,
-  minSample: { exposures: LAB_THRESHOLDS.typeExposures },
+  minSample: { exposures: TYPE_EXPOSURES },
   evaluate({ summary }) {
     const weakest = PIECE_LETTERS.filter((type) => type !== "k")
       .map((type) => {
@@ -102,7 +112,7 @@ const weakType: InsightRule = {
         const recalled = shown - (summary.typeMissed[type] ?? 0);
         return { type, shown, recalled, recall: recalled / shown };
       })
-      .filter(({ shown, recall }) => shown >= (this.minSample.exposures ?? 0) && recall < WEAK_RECALL)
+      .filter(({ shown, recall }) => shown >= TYPE_EXPOSURES && recall < WEAK_RECALL)
       .sort((a, b) => a.recall - b.recall || b.shown - a.shown)[0];
     if (!weakest) return null;
     const { type, recalled, shown, recall } = weakest;
@@ -117,7 +127,7 @@ const weakType: InsightRule = {
 const fasterLessAccurate: InsightRule = {
   id: "fasterLessAccurate",
   priority: 2,
-  minSample: { rounds: 2 * LAB_THRESHOLDS.rollingWindow },
+  minSample: { rounds: TWO_WINDOWS },
   evaluate(input) {
     const speed = computeSpeed(input).value;
     const pace = speed?.recent.change;
@@ -136,9 +146,9 @@ const recallOf = (shown: ColorCounts, missed: ColorCounts, color: keyof ColorCou
 const colourGap: InsightRule = {
   id: "colourGap",
   priority: 2,
-  minSample: { exposures: 100 },
+  minSample: { exposures: COLOUR_EXPOSURES },
   evaluate({ summary: { colorShown, colorMissed } }) {
-    if (Math.min(colorShown.w, colorShown.b) < (this.minSample.exposures ?? 0)) return null;
+    if (Math.min(colorShown.w, colorShown.b) < COLOUR_EXPOSURES) return null;
     const white = recallOf(colorShown, colorMissed, "w");
     const black = recallOf(colorShown, colorMissed, "b");
     const gap = hundredths(Math.abs(white - black) * 100);
@@ -161,11 +171,11 @@ const colourGap: InsightRule = {
 const plateau: InsightRule = {
   id: "plateau",
   priority: 3,
-  minSample: { rounds: 2 * LAB_THRESHOLDS.rollingWindow },
+  minSample: { rounds: TWO_WINDOWS },
   evaluate(input) {
     const { rounds } = busiestSetting(input, input.records, TREND_THRESHOLDS);
     const window = LAB_THRESHOLDS.rollingWindow;
-    if (rounds.length < (this.minSample.rounds ?? 0)) return null;
+    if (rounds.length < TWO_WINDOWS) return null;
     const accuracy = rounds.map((record) => record.accuracy);
     const last = mean(accuracy.slice(-window));
     const before = mean(accuracy.slice(-2 * window, -window));

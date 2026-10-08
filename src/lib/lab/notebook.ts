@@ -5,7 +5,7 @@ import { settingKey, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
 import { beats, type LabSummary, type PersonalBest } from "./summary";
 
-/** Entries of one moment print in this order. */
+/** Entries of one moment print in this order: the sort by time is stable over this listing. */
 export const NOTEBOOK_KINDS = ["firstRound", "rounds", "first90", "best", "span", "streak"] as const;
 export type NotebookKind = (typeof NOTEBOOK_KINDS)[number];
 
@@ -129,7 +129,7 @@ export function notebookEntries(records: readonly RoundRecord[], summary: LabSum
       params: { day: daysBetween(firstDay, record.localDay) + 1, ...params },
     }));
   })
-    .sort((a, b) => b.at - a.at || NOTEBOOK_KINDS.indexOf(a.kind) - NOTEBOOK_KINDS.indexOf(b.kind))
+    .sort((a, b) => b.at - a.at)
     .slice(0, NOTEBOOK_LIMIT);
 }
 

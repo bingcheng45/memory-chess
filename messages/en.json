@@ -434,9 +434,11 @@
           "up": "{change} s slower than the {window} rounds before",
           "flat": "the same pace as the {window} rounds before",
           "accuracy": "Accuracy on the same rounds {average}%",
-          "accuracyUp": "up {change, plural, one {# point} other {# points}}",
-          "accuracyDown": "down {change, plural, one {# point} other {# points}}",
-          "accuracyFlat": "no change",
+          "accuracyChange": {
+            "up": "up {change, plural, one {# point} other {# points}}",
+            "down": "down {change, plural, one {# point} other {# points}}",
+            "flat": "no change"
+          },
           "fastWrong": "Fast and wrong is not improvement.",
           "config": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s, your most played setting lately · From {count, plural, one {# round} other {# rounds}}",
           "need": "{count, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in games}} {count, plural, one {draws} other {draw}} your speed line.",

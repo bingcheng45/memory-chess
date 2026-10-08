@@ -15,6 +15,30 @@ function yScale(values: readonly number[]) {
   return { low, high, y };
 }
 
+function Guides({ values, y }: { values: readonly number[]; y: (value: number) => number }) {
+  return values.map((value) => (
+    <g key={value}>
+      <line className="lab-c-grid" x1={PLOT.left} x2={PLOT.width - PLOT.pad} y1={y(value)} y2={y(value)} />
+      <text x={PLOT.left - 6} y={y(value) + 4} textAnchor="end">
+        {value}
+      </text>
+    </g>
+  ));
+}
+
+function Ends({ first, last }: Pick<AxisProps, "first" | "last">) {
+  return (
+    <>
+      <text x={PLOT.left} y={PLOT.height + 22}>
+        {first}
+      </text>
+      <text x={PLOT.width - PLOT.pad} y={PLOT.height + 22} textAnchor="end">
+        {last}
+      </text>
+    </>
+  );
+}
+
 export const oneDecimal = (value: number) => (Math.round(value * 10) / 10).toFixed(1);
 
 interface ValueLineProps extends AxisProps {
@@ -34,26 +58,14 @@ export function ValueLine({ points, partial = 0, label, first, last }: ValueLine
 
   return (
     <svg className="lab-chart" viewBox="0 0 300 140" role="img" aria-label={label}>
-      {[low, high].map((value) => (
-        <g key={value}>
-          <line className="lab-c-grid" x1={PLOT.left} x2={PLOT.width - PLOT.pad} y1={y(value)} y2={y(value)} />
-          <text x={PLOT.left - 6} y={y(value) + 4} textAnchor="end">
-            {value}
-          </text>
-        </g>
-      ))}
+      <Guides values={[low, high]} y={y} />
       {partial > 0 && <polyline className="lab-c-partial" points={coords.slice(0, split + 1).join(" ")} />}
       {split < points.length - 1 && <polyline className="lab-c-line" points={coords.slice(split).join(" ")} />}
       <circle className="lab-c-last" cx={x(points.length - 1)} cy={y(latest)} r={4.5} />
       <text className="lab-c-last-label" x={x(points.length - 1) - 8} y={y(latest) - 10} textAnchor="end">
         {oneDecimal(latest)}
       </text>
-      <text x={PLOT.left} y={PLOT.height + 22}>
-        {first}
-      </text>
-      <text x={PLOT.width - PLOT.pad} y={PLOT.height + 22} textAnchor="end">
-        {last}
-      </text>
+      <Ends first={first} last={last} />
     </svg>
   );
 }
@@ -69,22 +81,10 @@ export function SpanStaircase({ steps, label, first, last }: AxisProps & { reado
 
   return (
     <svg className="lab-chart" viewBox="0 0 300 140" role="img" aria-label={label}>
-      {[...new Set([lowest, highest])].map((value) => (
-        <g key={value}>
-          <line className="lab-c-grid" x1={PLOT.left} x2={PLOT.width - PLOT.pad} y1={y(value)} y2={y(value)} />
-          <text x={PLOT.left - 6} y={y(value) + 4} textAnchor="end">
-            {value}
-          </text>
-        </g>
-      ))}
+      <Guides values={[...new Set([lowest, highest])]} y={y} />
       <path className="lab-c-line" d={path} />
       <circle className="lab-c-last" cx={x(steps.length)} cy={y(highest)} r={4.5} />
-      <text x={PLOT.left} y={PLOT.height + 22}>
-        {first}
-      </text>
-      <text x={PLOT.width - PLOT.pad} y={PLOT.height + 22} textAnchor="end">
-        {last}
-      </text>
+      <Ends first={first} last={last} />
     </svg>
   );
 }

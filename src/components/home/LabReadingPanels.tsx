@@ -1,9 +1,11 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { SAMPLE_PARTIAL, SAMPLE_PIECES_HELD, SAMPLE_SPAN, SAMPLE_SPAN_SECONDS, SAMPLE_SPEED, SAMPLE_SPEED_ACCURACY } from "@/lib/home/labRecord";
 import { mean } from "@/lib/lab/engine";
 import type { LabResults } from "@/lib/lab/metrics";
+import type { PanelId } from "@/lib/lab/panels";
 import type { SpeedValue } from "@/lib/lab/progress";
 import { hasFigure, LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { oneDecimal, SpanStaircase, ValueLine } from "./LabReadingCharts";
@@ -14,151 +16,168 @@ interface PanelProps<K extends keyof LabResults> {
   readonly daysAgo: number | null;
 }
 
-export function SpanPanel({ result: { readiness, value: span }, daysAgo }: PanelProps<"span">) {
-  const t = useTranslations("home.lab.record.span");
-  const record = useTranslations("home.lab.record");
+interface FrameProps {
+  readonly panel: PanelId;
+  /** The panel's message group and its lab-p-* class. */
+  readonly name: "span" | "held" | "speed";
+  readonly mine: boolean;
+  readonly children: ReactNode;
+}
+
+function ReadingFrame({ panel, name, mine, children }: FrameProps) {
+  const t = useTranslations("home.lab.record");
   const tags = useTags();
-  const axis = { first: t("first"), last: t("last") };
-
-  const steps = span?.history.flatMap(({ pieceCount }) => (pieceCount === null ? [] : [pieceCount])) ?? [];
-  const body = !span ? (
-    <>
-      <p className="lab-span-figure">{t("figure", { pieceCount: SAMPLE_SPAN[SAMPLE_SPAN.length - 1], memorizeSeconds: SAMPLE_SPAN_SECONDS })}</p>
-      <p className="lab-span-change" />
-      <SpanStaircase steps={SAMPLE_SPAN} label={t("aria")} {...axis} />
-      <p className="lab-note">{t("note")}</p>
-    </>
-  ) : hasFigure(readiness) && span.pieceCount !== null && span.memorizeSeconds !== null ? (
-    <>
-      <p className="lab-span-figure">{t("figure", { pieceCount: span.pieceCount, memorizeSeconds: span.memorizeSeconds })}</p>
-      <p className="lab-span-change">{span.change === null ? "" : span.change > 0 ? t("up", { count: span.change }) : t("same")}</p>
-      <SpanStaircase
-        steps={steps}
-        label={t("realAria", {
-          sessions: steps.length,
-          shape: steps[0] === span.pieceCount ? "flat" : "rising",
-          first: steps[0],
-          now: span.pieceCount,
-        })}
-        {...axis}
-      />
-      <p className="lab-note">
-        {t("realNote", {
-          rounds: readiness.sampleSize,
-          qualifying: span.qualifyingRounds,
-          pieceCount: span.pieceCount,
-          accuracy: LAB_THRESHOLDS.spanAccuracy,
-        })}
-      </p>
-      <StaleNote readiness={readiness} daysAgo={daysAgo} panel="span" />
-    </>
-  ) : (
-    <p className="lab-panel-desc lab-empty">
-      {readiness.need?.largerRounds
-        ? t("onlyKings")
-        : t("need", {
-            count: readiness.need?.qualifyingRounds ?? 0,
-            accuracy: LAB_THRESHOLDS.spanAccuracy,
-            minPieces: LAB_THRESHOLDS.spanMinPieces,
-          })}
-    </p>
-  );
-
   return (
-    <div className="lab-panel lab-p-span">
-      <PanelHead fig={record("span.fig", { number: figureOf("span") })} tag={span ? tags.mine : tags.sample} />
-      <h3>{t("title")}</h3>
-      {body}
+    <div className={`lab-panel lab-p-${name}`}>
+      <PanelHead fig={t(`${name}.fig`, { number: figureOf(panel) })} tag={mine ? tags.mine : tags.sample} />
+      <h3>{t(`${name}.title`)}</h3>
+      {children}
     </div>
   );
 }
 
-/** "up", "down" or "flat" by the change as shown, so a change that rounds to zero never reads as a rise. */
-const direction = (change: number) => {
-  const shown = Number(oneDecimal(change));
-  return shown > 0 ? "up" : shown < 0 ? "down" : "flat";
-};
+/** Rounds the size of a change, half away from zero, so a fall and a rise of the same size print the same digits. */
+const roundChange = (change: number, digits: number) => Math.sign(change) * (Math.round(Math.abs(change) * 10 ** digits) / 10 ** digits);
+/** By the change as shown, so a change that rounds to zero never reads as a rise. */
+const signOf = (shown: number) => (shown > 0 ? "up" : shown < 0 ? "down" : "flat");
+const withChange = (stat: string, change: string | null) => (change === null ? stat : `${stat} · ${change}`);
+
+export function SpanPanel({ result: { readiness, value: span }, daysAgo }: PanelProps<"span">) {
+  const t = useTranslations("home.lab.record.span");
+  const axis = { first: t("first"), last: t("last") };
+  const steps = span?.history.flatMap(({ pieceCount }) => (pieceCount === null ? [] : [pieceCount])) ?? [];
+  const weekChange = span?.change == null ? "" : span.change > 0 ? t("up", { count: span.change }) : t("same");
+
+  const body = () => {
+    if (!span) {
+      return (
+        <>
+          <p className="lab-span-figure">{t("figure", { pieceCount: SAMPLE_SPAN[SAMPLE_SPAN.length - 1], memorizeSeconds: SAMPLE_SPAN_SECONDS })}</p>
+          <p className="lab-span-change" />
+          <SpanStaircase steps={SAMPLE_SPAN} label={t("aria")} {...axis} />
+          <p className="lab-note">{t("note")}</p>
+        </>
+      );
+    }
+    const { pieceCount, memorizeSeconds, qualifyingRounds } = span;
+    if (!hasFigure(readiness) || pieceCount === null || memorizeSeconds === null) {
+      return (
+        <p className="lab-panel-desc lab-empty">
+          {readiness.need?.largerRounds
+            ? t("onlyKings")
+            : t("need", { count: readiness.need?.qualifyingRounds ?? 0, accuracy: LAB_THRESHOLDS.spanAccuracy, minPieces: LAB_THRESHOLDS.spanMinPieces })}
+        </p>
+      );
+    }
+    return (
+      <>
+        <p className="lab-span-figure">{t("figure", { pieceCount, memorizeSeconds })}</p>
+        <p className="lab-span-change">{weekChange}</p>
+        <SpanStaircase
+          steps={steps}
+          label={t("realAria", { sessions: steps.length, shape: steps[0] === pieceCount ? "flat" : "rising", first: steps[0], now: pieceCount })}
+          {...axis}
+        />
+        <p className="lab-note">
+          {t("realNote", { rounds: readiness.sampleSize, qualifying: qualifyingRounds, pieceCount, accuracy: LAB_THRESHOLDS.spanAccuracy })}
+        </p>
+        <StaleNote readiness={readiness} daysAgo={daysAgo} panel="span" />
+      </>
+    );
+  };
+
+  return (
+    <ReadingFrame panel="span" name="span" mine={!!span}>
+      {body()}
+    </ReadingFrame>
+  );
+}
 
 export function HeldPanel({ result: { readiness, value: held }, daysAgo }: PanelProps<"piecesHeld">) {
   const t = useTranslations("home.lab.record.held");
-  const record = useTranslations("home.lab.record");
-  const tags = useTags();
   const averaged = LAB_THRESHOLDS.movingAverage;
   const axis = { first: t("first"), last: t("last") };
   const legend = <p className="lab-note lab-legend">{t("partial", { window: averaged })}</p>;
   const need = readiness.need ?? {};
 
-  const body = !held ? (
-    <>
-      <ValueLine points={SAMPLE_PIECES_HELD} partial={SAMPLE_PARTIAL} label={t("aria")} {...axis} />
-      {legend}
-      <p className="lab-note">{t("note")}</p>
-    </>
-  ) : hasFigure(readiness) ? (
-    <>
-      <p className="lab-reading-stat">
-        {t("average", { average: oneDecimal(held.recent.average) })}
-        {held.recent.change !== null &&
-          ` · ${t(direction(held.recent.change), { change: oneDecimal(Math.abs(held.recent.change)), window: LAB_THRESHOLDS.rollingWindow })}`}
-      </p>
-      <ValueLine
-        points={held.movingAverage.map(({ value }) => value)}
-        partial={held.movingAverage.filter(({ partial }) => partial).length}
-        label={t("realAria", { count: held.points.length, window: averaged, latest: oneDecimal(held.movingAverage[held.movingAverage.length - 1].value) })}
-        {...axis}
-      />
-      {held.movingAverage.some(({ partial }) => partial) && legend}
-      <p className="lab-note">{t("realNote", { count: readiness.sampleSize })}</p>
-      <StaleNote readiness={readiness} daysAgo={daysAgo} panel="piecesHeld" />
-    </>
-  ) : (
-    <p className="lab-panel-desc lab-empty">
-      {need.rounds === undefined ? t("needDay") : t(need.days ? "needRoundsAndDay" : "needRounds", { count: need.rounds })}
-    </p>
-  );
+  const body = () => {
+    if (!held) {
+      return (
+        <>
+          <ValueLine points={SAMPLE_PIECES_HELD} partial={SAMPLE_PARTIAL} label={t("aria")} {...axis} />
+          {legend}
+          <p className="lab-note">{t("note")}</p>
+        </>
+      );
+    }
+    if (!hasFigure(readiness)) {
+      return (
+        <p className="lab-panel-desc lab-empty">
+          {need.rounds === undefined ? t("needDay") : t(need.days ? "needRoundsAndDay" : "needRounds", { count: need.rounds })}
+        </p>
+      );
+    }
+    const { recent, movingAverage } = held;
+    const values = movingAverage.map(({ value }) => value);
+    const partial = movingAverage.filter((point) => point.partial).length;
+    const change = recent.change === null ? null : roundChange(recent.change, 1);
+    return (
+      <>
+        <p className="lab-reading-stat">
+          {withChange(
+            t("average", { average: oneDecimal(recent.average) }),
+            change === null ? null : t(signOf(change), { change: Math.abs(change).toFixed(1), window: LAB_THRESHOLDS.rollingWindow }),
+          )}
+        </p>
+        <ValueLine
+          points={values}
+          partial={partial}
+          label={t("realAria", { count: held.points.length, window: averaged, latest: oneDecimal(values[values.length - 1]) })}
+          {...axis}
+        />
+        {partial > 0 && legend}
+        <p className="lab-note">{t("realNote", { count: readiness.sampleSize })}</p>
+        <StaleNote readiness={readiness} daysAgo={daysAgo} panel="piecesHeld" />
+      </>
+    );
+  };
 
   return (
-    <div className="lab-panel lab-p-held">
-      <PanelHead fig={record("held.fig", { number: figureOf("piecesHeld") })} tag={held ? tags.mine : tags.sample} />
-      <h3>{t("title")}</h3>
-      {body}
-    </div>
+    <ReadingFrame panel="piecesHeld" name="held" mine={!!held}>
+      {body()}
+    </ReadingFrame>
   );
 }
-
-const wholeDirection = (change: number) => {
-  const shown = Math.round(change);
-  return shown > 0 ? "accuracyUp" : shown < 0 ? "accuracyDown" : "accuracyFlat";
-};
 
 function SpeedReading({ speed, axis }: { speed: SpeedValue; axis: { first: string; last: string } }) {
   const t = useTranslations("home.lab.record.speed");
   const { recent, points, setting, accuracyAtSameRounds: accuracy } = speed;
-  const faster = recent.change !== null && direction(recent.change) === "down";
-  const lessAccurate = accuracy.recent.change !== null && wholeDirection(accuracy.recent.change) === "accuracyDown";
+  const pace = recent.change === null ? null : roundChange(recent.change, 1);
+  const accuracyChange = accuracy.recent.change === null ? null : roundChange(accuracy.recent.change, 0);
+  const fastAndWrong = pace !== null && accuracyChange !== null && pace < 0 && accuracyChange < 0;
 
   return (
     <>
       <p className="lab-reading-stat">
-        {t("average", { average: oneDecimal(recent.average) })}
-        {recent.change !== null &&
-          ` · ${t(direction(recent.change), { change: oneDecimal(Math.abs(recent.change)), window: LAB_THRESHOLDS.rollingWindow })}`}
+        {withChange(
+          t("average", { average: oneDecimal(recent.average) }),
+          pace === null ? null : t(signOf(pace), { change: Math.abs(pace).toFixed(1), window: LAB_THRESHOLDS.rollingWindow }),
+        )}
       </p>
       <p className="lab-reading-stat">
-        {t("accuracy", { average: Math.round(accuracy.recent.average) })}
-        {accuracy.recent.change !== null &&
-          ` · ${t(wholeDirection(accuracy.recent.change), { change: Math.round(Math.abs(accuracy.recent.change)) })}`}
+        {withChange(
+          t("accuracy", { average: Math.round(accuracy.recent.average) }),
+          accuracyChange === null ? null : t(`accuracyChange.${signOf(accuracyChange)}`, { change: Math.abs(accuracyChange) }),
+        )}
       </p>
       <ValueLine points={points} label={t("realAria", { count: points.length, latest: oneDecimal(points[points.length - 1]), ...setting })} {...axis} />
-      {faster && lessAccurate && <p className="lab-speed-warn">{t("fastWrong")}</p>}
+      {fastAndWrong && <p className="lab-speed-warn">{t("fastWrong")}</p>}
     </>
   );
 }
 
 export function SpeedPanel({ result: { readiness, value: speed }, daysAgo }: PanelProps<"speed">) {
   const t = useTranslations("home.lab.record.speed");
-  const record = useTranslations("home.lab.record");
-  const tags = useTags();
   const axis = { first: t("first"), last: t("last") };
 
   const body = !speed ? (
@@ -179,10 +198,8 @@ export function SpeedPanel({ result: { readiness, value: speed }, daysAgo }: Pan
   );
 
   return (
-    <div className="lab-panel lab-p-speed">
-      <PanelHead fig={record("speed.fig", { number: figureOf("speed") })} tag={speed ? tags.mine : tags.sample} />
-      <h3>{t("title")}</h3>
+    <ReadingFrame panel="speed" name="speed" mine={!!speed}>
       {body}
-    </div>
+    </ReadingFrame>
   );
 }

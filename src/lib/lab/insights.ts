@@ -173,7 +173,7 @@ const plateau: InsightRule = {
   priority: 3,
   minSample: { rounds: TWO_WINDOWS },
   evaluate(input) {
-    const { rounds } = busiestSetting(input, input.records, TREND_THRESHOLDS);
+    const { rounds } = busiestSetting(input, input.records, TREND_THRESHOLDS, TWO_WINDOWS);
     const window = LAB_THRESHOLDS.rollingWindow;
     if (rounds.length < TWO_WINDOWS) return null;
     const accuracy = rounds.map((record) => record.accuracy);
@@ -181,11 +181,11 @@ const plateau: InsightRule = {
     const before = mean(accuracy.slice(-2 * window, -window));
     const moved = Math.abs(last - before);
     const span = computeSpan(input).value;
-    if (moved > PLATEAU_POINTS || span?.change !== 0 || span.pieceCount === null) return null;
     const setting = settingOf(rounds[rounds.length - 1]);
+    if (moved > PLATEAU_POINTS || span?.change !== 0 || span.pieceCount !== setting.pieceCount || span.pieceCount >= PIECE_COUNT_RANGE.max) return null;
     return {
       params: { ...setting, last: Math.round(last), before: Math.round(before), span: span.pieceCount },
-      action: rig({ ...setting, pieceCount: Math.min(PIECE_COUNT_RANGE.max, setting.pieceCount + 1) }),
+      action: rig({ ...setting, pieceCount: span.pieceCount + 1 }),
       strength: hundredths(PLATEAU_POINTS / Math.max(moved, 1)),
     };
   },

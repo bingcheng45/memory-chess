@@ -5,7 +5,7 @@ import type { LabResults } from "./metrics";
 import { spanOfRounds } from "./progress";
 import { settingKey, type RoundConfig, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
-import { beats } from "./summary";
+import { beats, type LabSummary } from "./summary";
 import { weekProgress, type WeekGoal } from "./week";
 
 export type Setting = Pick<RoundConfig, "pieceCount" | "memorizeSeconds">;
@@ -101,6 +101,15 @@ function nextOf(round: RoundRecord, results: LabResults): NextStep {
   if (round.accuracy >= MORE_AT && pieceCount < PIECE_COUNT_RANGE.max) return { kind: "more", setting: { pieceCount: pieceCount + 1, memorizeSeconds } };
   if (round.accuracy < FEWER_BELOW && pieceCount > FEWER_MIN_PIECES) return { kind: "fewer", setting: { pieceCount: pieceCount - 1, memorizeSeconds } };
   return { kind: "again", setting: { pieceCount, memorizeSeconds } };
+}
+
+/**
+ * Whether the summary has counted this round yet. Reads can catch the log ahead of it, and a card built then would
+ * miss a new best and print the streak a day short.
+ */
+export function summaryCounts(summary: LabSummary, round: RoundRecord): boolean {
+  const best = summary.bests[settingKey(round.source, round.config)];
+  return summary.days.includes(round.localDay) && best !== undefined && !beats(round, best);
 }
 
 /**

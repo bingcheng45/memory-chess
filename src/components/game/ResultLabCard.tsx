@@ -9,7 +9,7 @@ import { useWeekGoal } from "@/components/home/useWeekGoal";
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { playHref } from "@/lib/game/roundLink";
 import { INSIGHT_GUIDES } from "@/lib/lab/insights";
-import { resultCardFor, type NewBest, type NextStep, type ResultCard, type Setting, type VsRecent } from "@/lib/lab/resultCard";
+import { resultCardFor, summaryCounts, type NewBest, type NextStep, type ResultCard, type Setting, type VsRecent } from "@/lib/lab/resultCard";
 import type { RoundRecord } from "@/lib/lab/record";
 import ResultLabSlot, { RESULT_LAB_FRAME, ResultLabEnd } from "./ResultLabSlot";
 
@@ -143,7 +143,8 @@ function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData;
 export default function ResultLabCard({ roundId, onPlay }: ResultLabCardProps) {
   const data = useLabData();
   const [waited, setWaited] = useState(false);
-  const round = data.today ? data.records.find(({ id }) => id === roundId) : undefined;
+  const saved = data.today ? data.records.find(({ id }) => id === roundId) : undefined;
+  const round = saved && summaryCounts(data.summary, saved) ? saved : undefined;
   const found = round !== undefined;
 
   useEffect(() => {

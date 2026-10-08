@@ -29,8 +29,8 @@ function played(id: string, accuracy: number, { pieces = 6, day = 7, solveMs = 2
   return { ...record, accuracy };
 }
 
-function withRecord(records: readonly RoundRecord[], storage: LabData["storage"] = "available") {
-  jest.mocked(useLabData).mockReturnValue({ storage, records, summary: summarize(records), lastBackup: null, today: storage === "available" ? TODAY : "" });
+function withRecord(records: readonly RoundRecord[], storage: LabData["storage"] = "available", counted = records) {
+  jest.mocked(useLabData).mockReturnValue({ storage, records, summary: summarize(counted), lastBackup: null, today: storage === "available" ? TODAY : "" });
 }
 
 function renderCard(roundId: string) {
@@ -128,6 +128,19 @@ describe("ResultLabCard", () => {
     } finally {
       jest.useRealTimers();
     }
+  });
+
+  it("waits while the summary has not yet counted the round's day, then reads it once it has", () => {
+    const earlier = played("earlier", 70, { day: 6 });
+    const now = played("now", 80);
+    withRecord([earlier, now], "available", [earlier]);
+    const { rerender } = renderCard("now");
+    expect(screen.getByTestId("result-lab-slot")).toBeEmptyDOMElement();
+
+    withRecord([earlier, now]);
+    rerender(<ResultLabCard roundId="now" onPlay={jest.fn()} />);
+
+    expect(linesOf()).toEqual([`·New best at 6 pieces, ${seconds(10)}: 80%, up from 70%`, "·Day 2 in a row, 2 of 5 days this week"]);
   });
 
   it("takes the frame away when it gives up below the fold, where nothing on screen moves", () => {

@@ -1,7 +1,7 @@
 import { deriveLab, type LabResults } from "@/lib/lab/metrics";
 import type { Insight } from "@/lib/lab/insights";
 import type { RoundRecord } from "@/lib/lab/record";
-import { resultCardFor, type ResultCardInput } from "@/lib/lab/resultCard";
+import { resultCardFor, summaryCounts, type ResultCardInput } from "@/lib/lab/resultCard";
 import { summarize } from "@/lib/lab/summary";
 import { round } from "./fixtures";
 
@@ -149,5 +149,47 @@ describe("resultCardFor", () => {
     const results = deriveLab({ records: [], summary: summarize([]), today: TODAY });
 
     expect(resultCardFor({ round: records[0], records, results, goal: 5, days: [], today: TODAY })).toBeNull();
+  });
+
+  it("counts the week from the summary's days, which outlive rounds that have left the log", () => {
+    const evicted = [played("mon", { accuracy: 70, day: 5 }), played("tue", { accuracy: 70, day: 6 })];
+    const records = [played("now", { accuracy: 80 })];
+    const summary = summarize([...evicted, ...records]);
+    const results = deriveLab({ records, summary, today: TODAY });
+
+    expect(resultCardFor({ round: records[0], records, results, goal: 5, days: summary.days, today: TODAY })?.streak.daysThisWeek).toBe(3);
+  });
+});
+
+describe("summaryCounts", () => {
+  beforeEach(() => {
+    clock = 0;
+  });
+
+  it("is true once the summary holds the round's day and a best the round does not beat", () => {
+    const records = [played("a", { accuracy: 90, day: 6 }), played("b", { accuracy: 80 })];
+
+    expect(summaryCounts(summarize(records), records[1])).toBe(true);
+  });
+
+  it("is false while the summary still holds a best this round beats", () => {
+    const earlier = played("a", { accuracy: 70 });
+    const now = played("b", { accuracy: 90 });
+
+    expect(summaryCounts(summarize([earlier]), now)).toBe(false);
+  });
+
+  it("is false while the summary has not counted the round's day", () => {
+    const earlier = played("a", { accuracy: 90, day: 6 });
+    const now = played("b", { accuracy: 80 });
+
+    expect(summaryCounts(summarize([earlier]), now)).toBe(false);
+  });
+
+  it("is false while the summary has no best at the round's setting", () => {
+    const other = played("a", { accuracy: 90, pieces: 4 });
+    const now = played("b", { accuracy: 80 });
+
+    expect(summaryCounts(summarize([other]), now)).toBe(false);
   });
 });

@@ -43,6 +43,27 @@ describe("useLabData", () => {
     expect(FakeChannel.posted).toHaveLength(1);
   });
 
+  it("reads the summary after the rounds, so a write landing during the read never leaves the summary behind them", async () => {
+    const rounds = [round({ id: "a" })];
+    let summary = summarize(rounds);
+    const store = {
+      ...storeWith(rounds),
+      listRounds: async () => {
+        await Promise.resolve();
+        rounds.push(round({ id: "b", endedAt: Date.UTC(2026, 9, 8, 9), localDay: "2026-10-08" }));
+        summary = summarize(rounds);
+        return [...rounds];
+      },
+      readSummary: () => Promise.resolve(summary),
+    };
+    jest.mocked(labStore).mockReturnValue(store);
+    const { result } = renderHook(() => useLabData());
+
+    await waitFor(() => expect(result.current.records).toHaveLength(2));
+    expect(result.current.summary.rounds).toBe(2);
+    expect(result.current.summary.days).toContain("2026-10-08");
+  });
+
   it("stops reloading once the screen unmounts", async () => {
     const store = storeWith([]);
     const listRounds = jest.spyOn(store, "listRounds");

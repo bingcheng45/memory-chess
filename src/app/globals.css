@@ -37,8 +37,9 @@ body {
 }
 
 /*
- * Geist Mono's fallback while the webfont loads: a local monospace face sized to
- * its 0.6em advance and its 1.3em normal line box, so the swap moves nothing.
+ * Geist Mono's fallback while the webfont loads: local monospace faces, regular
+ * and bold, sized to its 0.6em advance and its 1.3em normal line box, so the swap
+ * moves nothing.
  * The values come from next's capsize data (fonts.test.ts); npm run lab:cls and
  * lab:fontswap fail if the layout drifts.
  */

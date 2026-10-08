@@ -181,13 +181,23 @@ describe("lab record export and import", () => {
     ["a null kind", { kind: null }],
     ["a review link without its delay", { kind: "review", reviewOf: "a" }],
     ["a review delay without its link", { kind: "review", reviewDelayDays: 2 }],
-    ["a daily round without its board's day", { kind: "daily" }],
-    ["a board day on a normal round", { dailyDay: "2026-10-07" }],
-    ["a board day that is not a calendar day", { kind: "daily", dailyDay: "2026-02-30" }],
   ])("skips a version 2 round with %s, counts it and keeps the rest", (_, change) => {
     const file = JSON.stringify(buildExport([roundV2({ id: "good" }), { ...roundV2({ id: "bad" }), ...change }] as never, NOW));
 
     expect(parseImport(file, NOW)).toMatchObject({ ok: true, rejected: 1, rounds: [{ id: "good" }] });
+  });
+
+  it.each([
+    ["a daily round without its board's day", { kind: "daily" }, "daily"],
+    ["a daily round whose board day is not a calendar day", { kind: "daily", dailyDay: "2026-02-30" }, "daily"],
+    ["a board day on a normal round", { dailyDay: "2026-10-07" }, "normal"],
+  ])("keeps %s and drops only the board day, so it never reads as a day's board", (_, change, kind) => {
+    const file = JSON.stringify(buildExport([{ ...roundV2({ id: "kept" }), ...change }] as never, NOW));
+
+    const result = parseImport(file, NOW);
+
+    expect(result).toMatchObject({ ok: true, rejected: 0, rounds: [{ id: "kept", kind }] });
+    expect(result.ok && "dailyDay" in result.rounds[0]).toBe(false);
   });
 
   it("skips a round of a version it does not know", () => {

@@ -26,7 +26,10 @@ export type DailyBoard =
   | { readonly status: "open" | "unfinished"; readonly day: string; readonly streak: StreakValue | null }
   | { readonly status: "played"; readonly day: string; readonly round: DailyRound; readonly streak: StreakValue };
 
-/** The UTC day of the last daily board opened on this device, written when the round starts. */
+/**
+ * The UTC day of the last daily board opened on this device, written when the round starts. Kept apart from the record
+ * on purpose: the record holds finished rounds only, and a board left before its result must still count as the try.
+ */
 export const DAILY_OPENED_KEY = "memory-chess-lab-daily-opened";
 
 export function readDailyOpened(): string | null {

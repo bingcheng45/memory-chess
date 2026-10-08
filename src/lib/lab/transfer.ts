@@ -91,7 +91,7 @@ const isPlacementList = (value: unknown): value is PlacementEvent[] =>
 
 const isId = (value: unknown): value is string => typeof value === "string" && value.length > 0 && value.length <= MAX_ID_LENGTH;
 
-/** The version 2 facts of an untrusted round, or null if any present one is out of shape. */
+/** The version 2 facts of an untrusted round, or null if any present one other than the board day is out of shape. */
 function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
   const kind = raw.kind === undefined ? "normal" : raw.kind;
   const reviewed = raw.reviewOf !== undefined;
@@ -101,7 +101,6 @@ function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
     (raw.tzOffsetMin === undefined || (Number.isInteger(raw.tzOffsetMin) && Math.abs(raw.tzOffsetMin as number) <= MAX_TZ_OFFSET_MIN)) &&
     reviewed === (raw.reviewDelayDays !== undefined) &&
     (!reviewed || (kind === "review" && isId(raw.reviewOf) && isCount(raw.reviewDelayDays, MAX_REVIEW_DELAY_DAYS))) &&
-    (kind === "daily" ? isCalendarDay(raw.dailyDay) : raw.dailyDay === undefined) &&
     (raw.placements === undefined) === (raw.removals === undefined) &&
     (raw.placements === undefined || (isPlacementList(raw.placements) && isCount(raw.removals, MAX_REMOVALS)));
   if (!valid) return null;
@@ -110,7 +109,8 @@ function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
     startSource: raw.startSource as RoundSource | undefined,
     reviewOf: raw.reviewOf as string | undefined,
     reviewDelayDays: raw.reviewDelayDays as number | undefined,
-    dailyDay: raw.dailyDay as string | undefined,
+    // A bad board day costs the round its day, not the round: it then never reads as a day's board.
+    dailyDay: kind === "daily" && isCalendarDay(raw.dailyDay) ? raw.dailyDay : undefined,
     tzOffsetMin: raw.tzOffsetMin as number | undefined,
     placements: raw.placements as PlacementEvent[] | undefined,
     removals: raw.removals as number | undefined,

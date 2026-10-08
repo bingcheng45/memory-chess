@@ -504,7 +504,7 @@
           "chooseRound": "Play another round",
           "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Resets in under a minute} one {Resets in # min} other {Resets in # min}}} one {Resets in # h {minutes} min} other {Resets in # h {minutes} min}}",
           "streak": "Daily streak {current, plural, one {# day} other {# days}}{forgiven, plural, =0 {} one {, # missed day forgiven} other {, # missed days forgiven}} · longest {longest, plural, one {# day} other {# days}}",
-          "gridAria": "Your result on each square, a8 first: {correct} correct, {wrong} wrong piece, {missed} missed, {extra} extra.",
+          "gridAria": "Your result on each square, a8 first: {correct} correct, {wrong, plural, one {# wrong piece} other {# wrong pieces}}, {missed} missed, {extra} extra.",
           "key": {
             "c": "correct",
             "w": "wrong piece",

@@ -59,7 +59,7 @@ describe("today's board panel", () => {
     expect(screen.getByText("You placed 5 of 6 pieces right, 83 percent.")).toBeInTheDocument();
     expect(screen.getByText("Today's board is done. One try per day on this device.")).toBeInTheDocument();
     expect(screen.getByText("Daily streak 2 days · longest 2 days")).toBeInTheDocument();
-    expect(screen.getByRole("img", { name: "Your result on each square, a8 first: 5 correct, 0 wrong piece, 1 missed, 0 extra." })).toHaveTextContent(
+    expect(screen.getByRole("img", { name: "Your result on each square, a8 first: 5 correct, 0 wrong pieces, 1 missed, 0 extra." })).toHaveTextContent(
       "⬜⬜⬜⬜⬜⬜⬜⬜ ⬜⬜⬜⬜⬜⬜⬜⬜ ⬜⬜⬜⬜⬜⬜⬜⬜ ⬜🟩🟥⬜⬜⬜⬜🟩 🟩⬜⬜🟩⬜⬜⬜⬜ ⬜⬜⬜⬜⬜⬜⬜⬜ ⬜⬜⬜⬜⬜⬜⬜⬜ ⬜🟩⬜⬜⬜⬜⬜⬜".replaceAll(" ", "\n"),
       { normalizeWhitespace: false },
     );

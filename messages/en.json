@@ -532,7 +532,7 @@
         },
         "plans": {
           "fig": "Fig. {number} · Programs",
-          "title": "Follow a plan for a week or two.",
+          "title": "Pick a plan and see it through.",
           "desc": "One plan at a time. Progress is counted from your rounds, so stopping a plan never deletes a round.",
           "baseline": {
             "kicker": "Plan A · 7 days",
@@ -596,7 +596,7 @@
           "title": "Aim for a reading.",
           "desc": "Pick a piece count and an accuracy. The bar fills from your best round at that count or more since you set the goal.",
           "sample": "Sample goal: {pieceCount} pieces at {accuracy} percent. Best so far {best} percent, {percent}% of the way.",
-          "target": "Goal: {pieceCount} or more pieces at {accuracy} percent or better, set {date}.",
+          "target": "Goal: {pieceCount} or more pieces at {accuracy, select, 100 {100 percent} other {{accuracy} percent or better}}, set {date}.",
           "progress": "Best since then: {best} percent at {pieceCount} pieces, {percent}% of the way.",
           "bar": "{percent}% of the way to the goal",
           "need": "No round at {pieceCount} or more pieces since you set this goal.",

@@ -150,6 +150,10 @@ describe("the goal", () => {
     expect(stored(TARGET_KEY)).toEqual({ pieceCount: 12, accuracy: 95, createdDay: "2026-10-08" });
     expect(trackEvent).toHaveBeenCalledWith({ name: "lab_panel_action", params: { panel: "goal", action: "setGoal" } });
     expect(within(goalPanel()).getByText("Goal: 12 or more pieces at 95 percent or better, set Oct 8.")).toBeInTheDocument();
+    fireEvent.click(within(goalPanel()).getByRole("button", { name: "Set a new goal" }));
+    fireEvent.change(within(goalPanel()).getByLabelText("Accuracy, at least"), { target: { value: "100" } });
+    fireEvent.click(within(goalPanel()).getByRole("button", { name: "Set goal" }));
+    expect(within(goalPanel()).getByText("Goal: 12 or more pieces at 100 percent, set Oct 8.")).toBeInTheDocument();
   });
 
   it("says when and with what a goal was reached, with its bar labelled in words, and clears it", () => {

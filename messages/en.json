@@ -458,6 +458,7 @@
         "spark": {
           "fig": "Fig. {number} · Accuracy over time",
           "title": "Your line, round by round.",
+          "titleSessions": "Your line, session by session.",
           "aria": "Sample sparkline of accuracy over 12 rounds, rising from 52 to 79 percent.",
           "note": "Sample record · 12 rounds · Medium",
           "first": "R01",
@@ -467,6 +468,8 @@
           "needDay": "Play {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in a game}} on one more day to draw your trend.",
           "config": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s, your most played setting with a trend",
           "realAria": "Your accuracy over your last {count} {source, select, calibration {practice} other {game}} rounds at {pieceCount} pieces and {memorizeSeconds} seconds, latest {latest} percent.",
+          "realAriaSessions": "Your accuracy over your last {count, plural, one {# session} other {# sessions}} with {source, select, calibration {practice} other {game}} rounds at {pieceCount} pieces and {memorizeSeconds} seconds, latest {latest} percent.",
+          "sessions": "{count, plural, one {# session} other {# sessions}}",
           "realFirst": "Oldest",
           "realLast": "Latest"
         },

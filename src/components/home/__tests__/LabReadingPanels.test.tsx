@@ -179,3 +179,24 @@ describe("speed", () => {
     expect(texts(panel("Speed"), ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10s in games draw your speed line."]);
   });
 });
+
+describe("accuracy trend", () => {
+  it("plots one point per session once there are enough sessions, and says how many", () => {
+    show("spanClimber");
+    const trend = panel("Accuracy over time");
+
+    expect(within(trend).getByRole("heading", { level: 3 })).toHaveTextContent("Your line, session by session.");
+    expect(within(trend).getByRole("img")).toHaveAccessibleName(
+      "Your accuracy over your last 20 sessions with game rounds at 4 pieces and 10 seconds, latest 75 percent.",
+    );
+    expect(texts(trend, ".lab-note")).toEqual(["Game · 4 pieces · 10s, your most played setting with a trend · From 60 rounds · 20 sessions"]);
+  });
+
+  it("stays round by round until there are enough sessions", () => {
+    show("threeDays");
+    const trend = panel("Accuracy over time");
+
+    expect(within(trend).getByRole("heading", { level: 3 })).toHaveTextContent("Your line, round by round.");
+    expect(texts(trend, ".lab-note")).toEqual(["Game · 6 pieces · 10s, your most played setting with a trend · From 9 rounds"]);
+  });
+});

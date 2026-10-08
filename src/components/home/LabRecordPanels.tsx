@@ -59,11 +59,13 @@ export function TrendPanel({
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const need = readiness.need ?? {};
+  const bySession = trend?.granularity === "session" && hasFigure(readiness);
+  const points = trend ? (bySession ? trend.bySession : trend.points) : [];
 
   return (
     <div className="lab-panel lab-p-spark">
       <PanelHead fig={t("spark.fig", { number: figureOf("trend") })} tag={played ? tags.mine : tags.sample} />
-      <h3>{t("spark.title")}</h3>
+      <h3>{bySession ? t("spark.titleSessions") : t("spark.title")}</h3>
       {!trend ? (
         <>
           <AccuracySparkline label={t("spark.aria")} first={t("spark.first")} last={t("spark.last")} />
@@ -72,13 +74,14 @@ export function TrendPanel({
       ) : hasFigure(readiness) ? (
         <>
           <AccuracySparkline
-            points={trend.points}
-            label={t("spark.realAria", { count: trend.points.length, latest: trend.points[trend.points.length - 1], ...trend.setting })}
+            points={points}
+            label={t(bySession ? "spark.realAriaSessions" : "spark.realAria", { count: points.length, latest: points[points.length - 1], ...trend.setting })}
             first={t("spark.realFirst")}
             last={t("spark.realLast")}
           />
           <p className="lab-note">
             {t("spark.config", trend.setting)} · {t("fromRounds", { count: readiness.sampleSize })}
+            {bySession && ` · ${t("spark.sessions", { count: points.length })}`}
           </p>
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="trend" />
         </>

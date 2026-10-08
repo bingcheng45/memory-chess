@@ -14,7 +14,7 @@ jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 const css = readFileSync(join(__dirname, "../lab-instruments.css"), "utf8");
 const PLAY_HREF = "/game?pieceCount=6&memorizeTime=10&source=home_quick";
 
-const strip = () => screen.queryByRole("list", { name: "What playing unlocks" });
+const strip = () => screen.queryByRole("list", { name: "Still to unlock" });
 const items = () => within(strip()!).getAllByRole("listitem").map((item) => item.textContent);
 const staleNotes = (container: HTMLElement) =>
   [...container.querySelectorAll(".lab-stale")].map((note) => [note.closest(".lab-panel")!.classList[1], note.textContent]);
@@ -122,7 +122,7 @@ describe("unlock strip", () => {
   it("reports a play from the strip as a counts-only panel action", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
 
-    fireEvent.click(within(screen.getByRole("list", { name: "What playing unlocks" }).parentElement!).getByRole("link"));
+    fireEvent.click(within(screen.getByRole("list", { name: "Still to unlock" }).parentElement!).getByRole("link"));
 
     expect(jest.mocked(trackEvent).mock.calls.at(-1)).toEqual([{ name: "lab_panel_action", params: { panel: "unlock", action: "play" } }]);
   });

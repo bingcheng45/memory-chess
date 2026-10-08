@@ -132,7 +132,7 @@
 .lab-unlock:empty { background: none; border-color: transparent; }
 .lab-unlock ul { margin: 8px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 24px; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
 .lab-unlock .lab-go { margin-top: 0; }
-@media (max-width: 640px) { .lab-unlock { padding: 14px 16px; } .lab-unlock ul { grid-template-columns: 1fr; font-size: 14px; } }
+@media (max-width: 640px) { .lab-unlock { padding: 12px 14px; } .lab-unlock ul { grid-template-columns: 1fr; gap: 2px; font-size: 14px; line-height: 1.35; } }
 .lab-stale .lab-go { display: inline; margin: 0 0 0 4px; white-space: nowrap; }
 .lab-dash { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
 .lab-panel { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 22px; min-width: 0; }

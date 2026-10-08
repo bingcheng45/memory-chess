@@ -544,7 +544,7 @@
         "play": "Play a round",
         "stale": "Last played {count, plural, one {# day} other {# days}} ago.",
         "unlock": {
-          "label": "What playing unlocks",
+          "label": "Still to unlock",
           "done": "Every figure below is unlocked.",
           "span": "Memory span · {qualifyingRounds, plural, one {# round} other {# rounds}} at {accuracy}% with {minPieces}+ pieces",
           "piecesHeld": "Pieces held · {rounds, plural, one {# round} other {# rounds}} over {days, plural, one {# day} other {# days}}",

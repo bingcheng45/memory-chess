@@ -10,7 +10,7 @@ import { daysBetween } from "@/lib/lab/readiness";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
 import { ForgettingCurve } from "./LabCharts";
 import { BestsPanel, figureOf, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
-import { SpanPanel } from "./LabReadingPanels";
+import { HeldPanel, SpanPanel } from "./LabReadingPanels";
 import { LabRecordTools } from "./LabRecordTools";
 import { LabUnlockStrip } from "./LabUnlockStrip";
 import type { LabRecord } from "./useLabRecord";
@@ -120,6 +120,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
 
   const panels: Record<PanelId, ReactNode> = {
     span: <SpanPanel result={lab.span} daysAgo={daysAgo} />,
+    piecesHeld: <HeldPanel result={lab.piecesHeld} daysAgo={daysAgo} />,
     trend: <TrendPanel result={lab.trend} played={summary.rounds > 0} daysAgo={daysAgo} />,
     streak: <StreakPanel result={lab.streak} daysAgo={daysAgo} />,
     curve: <CurvePanel />,

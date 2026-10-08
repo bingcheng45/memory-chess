@@ -1,10 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { SAMPLE_SPAN, SAMPLE_SPAN_SECONDS } from "@/lib/home/labRecord";
+import { SAMPLE_PARTIAL, SAMPLE_PIECES_HELD, SAMPLE_SPAN, SAMPLE_SPAN_SECONDS } from "@/lib/home/labRecord";
 import type { LabResults } from "@/lib/lab/metrics";
 import { hasFigure, LAB_THRESHOLDS } from "@/lib/lab/readiness";
-import { SpanStaircase } from "./LabReadingCharts";
+import { oneDecimal, SpanStaircase, ValueLine } from "./LabReadingCharts";
 import { figureOf, PanelHead, StaleNote, useTags } from "./LabRecordPanels";
 
 interface PanelProps<K extends keyof LabResults> {
@@ -65,6 +65,59 @@ export function SpanPanel({ result: { readiness, value: span }, daysAgo }: Panel
   return (
     <div className="lab-panel lab-p-span">
       <PanelHead fig={record("span.fig", { number: figureOf("span") })} tag={span ? tags.mine : tags.sample} />
+      <h3>{t("title")}</h3>
+      {body}
+    </div>
+  );
+}
+
+/** "up", "down" or "flat" by the change as shown, so a change that rounds to zero never reads as a rise. */
+const direction = (change: number) => {
+  const shown = Number(oneDecimal(change));
+  return shown > 0 ? "up" : shown < 0 ? "down" : "flat";
+};
+
+export function HeldPanel({ result: { readiness, value: held }, daysAgo }: PanelProps<"piecesHeld">) {
+  const t = useTranslations("home.lab.record.held");
+  const record = useTranslations("home.lab.record");
+  const tags = useTags();
+  const averaged = LAB_THRESHOLDS.movingAverage;
+  const axis = { first: t("first"), last: t("last") };
+  const legend = <p className="lab-note lab-legend">{t("partial", { window: averaged })}</p>;
+  const need = readiness.need ?? {};
+
+  const body = !held ? (
+    <>
+      <ValueLine points={SAMPLE_PIECES_HELD} partial={SAMPLE_PARTIAL} label={t("aria")} {...axis} />
+      {legend}
+      <p className="lab-note">{t("note")}</p>
+    </>
+  ) : hasFigure(readiness) ? (
+    <>
+      <p className="lab-reading-stat">
+        {t("average", { average: oneDecimal(held.recent.average) })}
+        {held.recent.change !== null &&
+          ` · ${t(direction(held.recent.change), { change: oneDecimal(Math.abs(held.recent.change)), window: LAB_THRESHOLDS.rollingWindow })}`}
+      </p>
+      <ValueLine
+        points={held.movingAverage.map(({ value }) => value)}
+        partial={held.movingAverage.filter(({ partial }) => partial).length}
+        label={t("realAria", { count: held.points.length, window: averaged, latest: oneDecimal(held.movingAverage[held.movingAverage.length - 1].value) })}
+        {...axis}
+      />
+      {held.movingAverage.some(({ partial }) => partial) && legend}
+      <p className="lab-note">{t("realNote", { count: readiness.sampleSize })}</p>
+      <StaleNote readiness={readiness} daysAgo={daysAgo} panel="piecesHeld" />
+    </>
+  ) : (
+    <p className="lab-panel-desc lab-empty">
+      {need.rounds === undefined ? t("needDay") : t(need.days ? "needRoundsAndDay" : "needRounds", { count: need.rounds })}
+    </p>
+  );
+
+  return (
+    <div className="lab-panel lab-p-held">
+      <PanelHead fig={record("held.fig", { number: figureOf("piecesHeld") })} tag={held ? tags.mine : tags.sample} />
       <h3>{t("title")}</h3>
       {body}
     </div>

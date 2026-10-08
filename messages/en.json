@@ -405,6 +405,24 @@
           "first": "First session",
           "last": "Latest"
         },
+        "held": {
+          "fig": "Fig. {number} · Pieces held",
+          "title": "Pieces you place right, at any setting.",
+          "aria": "Sample line of pieces held over 12 rounds, a 5-round average rising from 4.0 to 7.0 pieces.",
+          "note": "Sample record · 12 rounds · any setting",
+          "partial": "Dashed line: averaged over fewer than {window} rounds",
+          "realAria": "Your pieces held over your last {count, plural, one {# round} other {# rounds}} at any setting, as a {window}-round average, latest {latest} pieces.",
+          "average": "Recent average {average} pieces",
+          "up": "up {change} over the last {window} rounds",
+          "down": "down {change} over the last {window} rounds",
+          "flat": "no change over the last {window} rounds",
+          "realNote": "Any setting · From {count, plural, one {# round} other {# rounds}}",
+          "needRounds": "{count, plural, one {# more round draws} other {# more rounds draw}} your line.",
+          "needRoundsAndDay": "{count, plural, one {# more round, played on another day, draws} other {# more rounds, at least one on another day, draw}} your line.",
+          "needDay": "Play on one more day to draw your line.",
+          "first": "Oldest",
+          "last": "Latest"
+        },
         "curve": {
           "fig": "Fig. {number} · Forgetting curve",
           "tag": "Proposed · review reminders",

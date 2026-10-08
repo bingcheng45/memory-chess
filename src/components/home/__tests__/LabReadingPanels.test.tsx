@@ -76,3 +76,46 @@ describe("memory span", () => {
     expect(texts(span, ".lab-stale")).toEqual(["Last played 20 days ago. Play a round →"]);
   });
 });
+
+describe("pieces held", () => {
+  it("shows an example line, tagged Sample, with the dashed start explained", () => {
+    show("newVisitor", "");
+    const held = panel("Pieces held");
+
+    expect(tagOf(held)).toBe("Sample");
+    expect(within(held).getByRole("img")).toHaveAccessibleName("Sample line of pieces held over 12 rounds, a 5-round average rising from 4.0 to 7.0 pieces.");
+    expect(texts(held, ".lab-note")).toEqual(["Dashed line: averaged over fewer than 5 rounds", "Sample record · 12 rounds · any setting"]);
+  });
+
+  it("reads the recent average and its change over the last 10 rounds, at any setting", () => {
+    show("spanClimber");
+    const held = panel("Pieces held");
+
+    expect(tagOf(held)).toBe("Your record");
+    expect(within(held).getByText("Recent average 13.8 pieces · up 1.0 over the last 10 rounds")).toBeInTheDocument();
+    expect(within(held).getByRole("img")).toHaveAccessibleName("Your pieces held over your last 30 rounds at any setting, as a 5-round average, latest 13.8 pieces.");
+    expect(held.querySelector(".lab-c-partial")).toBeNull();
+    expect(texts(held, ".lab-note")).toEqual(["Any setting · From 135 rounds"]);
+  });
+
+  it("says when the average fell", () => {
+    show("easyOnly");
+
+    expect(within(panel("Pieces held")).getByText("Recent average 1.4 pieces · down 0.5 over the last 10 rounds")).toBeInTheDocument();
+  });
+
+  it("dashes the averages taken over fewer than 5 rounds, and says so in words", () => {
+    show("threeDays");
+    const held = panel("Pieces held");
+
+    expect(within(held).getByText("Recent average 5.2 pieces")).toBeInTheDocument();
+    expect(held.querySelector(".lab-c-partial")).not.toBeNull();
+    expect(texts(held, ".lab-note")).toEqual(["Dashed line: averaged over fewer than 5 rounds", "Any setting · From 12 rounds"]);
+  });
+
+  it("says how many more rounds and days draw the line", () => {
+    show("twoRounds");
+
+    expect(texts(panel("Pieces held"), ".lab-empty")).toEqual(["3 more rounds, at least one on another day, draw your line."]);
+  });
+});

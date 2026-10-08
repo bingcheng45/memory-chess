@@ -32,8 +32,9 @@ function played(id: string, { pieces = 6, seconds = 10, accuracy, solveMs = 2000
 
 function cardAfter(records: readonly RoundRecord[], overrides: Partial<ResultCardInput> = {}) {
   const thisRound = records[records.length - 1];
-  const results = deriveLab({ records, summary: summarize(records), today: TODAY });
-  return resultCardFor({ round: thisRound, records, results, goal: 5, today: TODAY, ...overrides });
+  const summary = summarize(records);
+  const results = deriveLab({ records, summary, today: TODAY });
+  return resultCardFor({ round: thisRound, records, results, goal: 5, days: summary.days, today: TODAY, ...overrides });
 }
 
 beforeEach(() => {
@@ -81,9 +82,10 @@ describe("resultCardFor", () => {
   it("leaves out the old best when earlier rounds at the setting have left the log", () => {
     const all = [played("old", { accuracy: 88, day: 1 }), played("a", { accuracy: 80, day: 6 }), played("b", { accuracy: 90 })];
     const records = all.slice(1);
-    const results = deriveLab({ records, summary: summarize(all), today: TODAY });
+    const summary = summarize(all);
+    const results = deriveLab({ records, summary, today: TODAY });
 
-    expect(resultCardFor({ round: all[2], records, results, goal: 5, today: TODAY })?.newBest).toEqual({
+    expect(resultCardFor({ round: all[2], records, results, goal: 5, days: summary.days, today: TODAY })?.newBest).toEqual({
       setting: { pieceCount: 6, memorizeSeconds: 10 },
       accuracy: 90,
       previousAccuracy: null,
@@ -139,13 +141,13 @@ describe("resultCardFor", () => {
     const insight: Insight = { ruleId: "plateau", params: { span: 6 }, action: { kind: "rig", pieceCount: 7, memorizeSeconds: 10 }, strength: 1 };
     const results: LabResults = { ...derived, insights: { readiness: { state: "ready", sampleSize: 12 }, value: { insights: [insight] } } };
 
-    expect(resultCardFor({ round: records[0], records, results, goal: 5, today: TODAY })?.next).toEqual({ kind: "insight", insight });
+    expect(resultCardFor({ round: records[0], records, results, goal: 5, days: summarize(records).days, today: TODAY })?.next).toEqual({ kind: "insight", insight });
   });
 
   it("has no card until the record holds the round's day", () => {
     const records = [played("a", { accuracy: 80 })];
     const results = deriveLab({ records: [], summary: summarize([]), today: TODAY });
 
-    expect(resultCardFor({ round: records[0], records, results, goal: 5, today: TODAY })).toBeNull();
+    expect(resultCardFor({ round: records[0], records, results, goal: 5, days: [], today: TODAY })).toBeNull();
   });
 });

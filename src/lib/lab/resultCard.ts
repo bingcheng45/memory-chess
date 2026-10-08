@@ -1,5 +1,5 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
-import { mean, shiftDay } from "./engine";
+import { mean } from "./engine";
 import type { Insight } from "./insights";
 import type { LabResults } from "./metrics";
 import { spanOfRounds } from "./progress";
@@ -55,6 +55,8 @@ export interface ResultCardInput {
   readonly records: readonly RoundRecord[];
   readonly results: LabResults;
   readonly goal: WeekGoal;
+  /** Every local day with a round, the list the week panel counts. */
+  readonly days: readonly string[];
   readonly today: string;
 }
 
@@ -105,12 +107,11 @@ function nextOf(round: RoundRecord, results: LabResults): NextStep {
  * What the result screen says about the round just played, read from the same metrics as §06. A line is null when its
  * value is not there, and the whole card is null until the record holds a streak, which it does once the round is in.
  */
-export function resultCardFor({ round, records, results, goal, today }: ResultCardInput): ResultCard | null {
+export function resultCardFor({ round, records, results, goal, days, today }: ResultCardInput): ResultCard | null {
   const streak = results.streak.value;
   if (!streak) return null;
   const key = settingKey(round.source, round.config);
   const others = records.filter((record) => record.id !== round.id && settingKey(record.source, record.config) === key);
-  const playedDays = streak.window.flatMap((day, index) => (day === "played" ? [shiftDay(today, index - (streak.window.length - 1))] : []));
   return {
     newBest: newBestOf(round, others, results),
     vsRecent: vsRecentOf(round, others),
@@ -118,7 +119,7 @@ export function resultCardFor({ round, records, results, goal, today }: ResultCa
     streak: {
       current: streak.current,
       graceUsed: streak.graceUsed,
-      daysThisWeek: weekProgress(playedDays, today, goal).daysPlayed,
+      daysThisWeek: weekProgress(days, today, goal).daysPlayed,
       goal,
     },
     next: nextOf(round, results),

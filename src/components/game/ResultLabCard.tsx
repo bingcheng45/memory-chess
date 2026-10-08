@@ -114,7 +114,7 @@ export default function ResultLabCard({ roundId, onPlay }: ResultLabCardProps) {
     return () => clearTimeout(timer);
   }, [round]);
 
-  const card = round && data.today ? resultCardFor({ round, records: data.records, results, goal, today: data.today }) : null;
+  const card = round && data.today ? resultCardFor({ round, records: data.records, results, goal, days: data.summary.days, today: data.today }) : null;
   if (!card) return data.storage === "unavailable" || waited ? null : <ResultLabSlot />;
 
   const why = whyOf(t, card.next);

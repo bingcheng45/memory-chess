@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import { trackEvent } from "@/lib/analytics/events";
@@ -131,8 +131,12 @@ export function NotebookPanel({ result: { readiness, value } }: { result: LabRes
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const { seenBefore, ref: seenRef } = useNotebookSeen();
+  const format = useFormatter();
   const [expanded, setExpanded] = useState(false);
-  const text = ({ kind, params }: Pick<NotebookEntry, "kind" | "params">) => t(`notebook.entries.${kind}`, sentenceValues(params));
+  const text = ({ kind, params }: Pick<NotebookEntry, "kind" | "params">) => {
+    const sentence = t(`notebook.entries.${kind}`, sentenceValues(params));
+    return params.day === undefined ? sentence : `${t("notebook.day", { day: params.day })} ${sentence}`;
+  };
   const isNew = ({ at }: NotebookEntry) => seenBefore === null || at > seenBefore;
 
   const body = () => {
@@ -148,27 +152,34 @@ export function NotebookPanel({ result: { readiness, value } }: { result: LabRes
         </>
       );
     }
-    const { entries } = value;
+    const { entries, older } = value;
     const shown = expanded ? entries : entries.slice(0, NOTEBOOK_SHOWN);
     return (
       <>
-        <ol className="lab-notebook" aria-label={t("notebook.list")} id="lab-notebook-list" ref={seenRef}>
-          {shown.map((entry) => (
-            <li key={`${entry.kind}${entry.at}`}>
-              {text(entry)}
-              {isNew(entry) && (
-                <>
-                  {" "}
-                  <span className="lab-tag lab-tag-mint">{t("notebook.new")}</span>
-                </>
-              )}
-            </li>
-          ))}
-        </ol>
+        {entries.length > 0 && (
+          <ol className="lab-notebook" aria-label={t("notebook.list")} id="lab-notebook-list" ref={seenRef}>
+            {shown.map((entry) => (
+              <li key={`${entry.kind}${entry.at}`}>
+                {text(entry)}
+                {isNew(entry) && (
+                  <>
+                    {" "}
+                    <span className="lab-tag lab-tag-mint">{t("notebook.new")}</span>
+                  </>
+                )}
+              </li>
+            ))}
+          </ol>
+        )}
         {entries.length > NOTEBOOK_SHOWN && (
           <button type="button" className="lab-bests-toggle" aria-expanded={expanded} aria-controls="lab-notebook-list" onClick={() => setExpanded(!expanded)}>
             {expanded ? t("notebook.showFewer") : t("notebook.showAll", { count: entries.length })}
           </button>
+        )}
+        {(older || entries.length === 0) && (
+          <p className="lab-note">
+            {older?.before ? t("notebook.olderBefore", { date: format.dateTime(older.before, { dateStyle: "medium" }) }) : t("notebook.older")}
+          </p>
         )}
         <p className="lab-note">
           {t("fromRounds", { count: readiness.sampleSize })} · {t("notebook.newNote")}

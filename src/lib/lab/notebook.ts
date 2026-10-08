@@ -3,7 +3,7 @@ import { computeSpan } from "./progress";
 import { daysBetween } from "./readiness";
 import { settingKey, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
-import { beats, type LabSummary, type PersonalBest } from "./summary";
+import { beats, MAX_DAYS, type LabSummary, type PersonalBest } from "./summary";
 
 /** Entries of one moment print in this order: the sort by time is stable over this listing. */
 export const NOTEBOOK_KINDS = ["firstRound", "rounds", "first90", "best", "span", "streak"] as const;
@@ -19,6 +19,8 @@ export interface NotebookEntry {
 
 export interface NotebookValue {
   readonly entries: readonly NotebookEntry[];
+  /** Null when the log holds every round. `before` is the oldest round kept, or null when the gap cannot be placed. */
+  readonly older: { readonly before: number | null } | null;
 }
 
 export const NOTEBOOK_LIMIT = 20;
@@ -33,8 +35,12 @@ interface History {
   /** Oldest first. */
   readonly rounds: readonly RoundRecord[];
   readonly summary: LabSummary;
-  /** Rounds the summary counts that the log no longer holds. */
-  readonly evicted: number;
+  /** Rounds the summary counts that the log does not hold. */
+  readonly missing: number;
+  /** Rounds played before the log's oldest, known only when eviction, which drops the oldest, explains every missing one. */
+  readonly before: number | null;
+  /** The summary keeps the last 400 days played, so past that its first day is not the player's. */
+  readonly allDays: boolean;
 }
 
 interface Draft {
@@ -42,9 +48,17 @@ interface Draft {
   readonly params: NotebookEntry["params"];
 }
 
+/** A first or a best can only be known from every round, a round count from a known number before the log, a streak from every day. */
+type Needs = "wholeLog" | "roundCount" | "allDays";
+
+const HAS: { readonly [K in Needs]: (history: History) => boolean } = {
+  wholeLog: ({ missing }) => missing === 0,
+  roundCount: ({ before }) => before !== null,
+  allDays: ({ allDays }) => allDays,
+};
+
 interface EntrySource {
-  /** A first or a best can only be known from every round, so it is left out once older rounds were evicted. */
-  readonly wholeLog: boolean;
+  readonly needs: Needs;
   drafts(history: History): Draft[];
 }
 
@@ -113,45 +127,64 @@ function streakMilestones({ rounds, summary }: History): Draft[] {
 
 const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
   firstRound: {
-    wholeLog: true,
+    needs: "wholeLog",
     drafts: ({ rounds: [first] }) => (first ? [{ record: first, params: { pieceCount: first.config.pieceCount, accuracy: first.accuracy } }] : []),
   },
   rounds: {
-    wholeLog: false,
-    drafts: ({ rounds, evicted }) =>
-      rounds.flatMap((record, index) => (ROUND_MILESTONES.includes(evicted + index + 1) ? [{ record, params: { count: evicted + index + 1 } }] : [])),
+    needs: "roundCount",
+    drafts: ({ rounds, before }) =>
+      rounds.flatMap((record, index) => {
+        const count = (before ?? 0) + index + 1;
+        return ROUND_MILESTONES.includes(count) ? [{ record, params: { count } }] : [];
+      }),
   },
   first90: {
-    wholeLog: true,
+    needs: "wholeLog",
     drafts: ({ rounds }) =>
       firstsBy(rounds, ({ accuracy, config }) => (accuracy >= FIRST_READING_ACCURACY ? config.pieceCount : null))
         .filter((record) => record !== rounds[0])
         .map((record) => ({ record, params: { pieceCount: record.config.pieceCount } })),
   },
-  best: { wholeLog: true, drafts: ({ rounds }) => bestImprovements(rounds) },
-  span: { wholeLog: true, drafts: spanSteps },
-  streak: { wholeLog: false, drafts: streakMilestones },
+  best: { needs: "wholeLog", drafts: ({ rounds }) => bestImprovements(rounds) },
+  span: { needs: "wholeLog", drafts: spanSteps },
+  streak: { needs: "allDays", drafts: streakMilestones },
 };
 
-export function notebookEntries(records: readonly RoundRecord[], summary: LabSummary): NotebookEntry[] {
+function historyOf(records: readonly RoundRecord[], summary: LabSummary): History {
   const rounds = byEndedAt(records);
-  const history: History = { rounds, summary, evicted: Math.max(0, summary.rounds - rounds.length) };
+  const missing = Math.max(0, summary.rounds - rounds.length);
+  const { evictedThrough } = summary;
+  const evicted = evictedThrough !== null && rounds.every(({ endedAt }) => endedAt > evictedThrough);
+  return { rounds, summary, missing, before: missing === 0 ? 0 : evicted ? missing : null, allDays: summary.days.length < MAX_DAYS };
+}
+
+function entriesOf(history: History): NotebookEntry[] {
+  const { rounds, summary, allDays } = history;
   const firstDay = summary.days[0] ?? rounds[0]?.localDay;
   return NOTEBOOK_KINDS.flatMap((kind) => {
     const source = SOURCES[kind];
-    if (source.wholeLog && history.evicted > 0) return [];
+    if (!HAS[source.needs](history)) return [];
     return source.drafts(history).map(({ record, params }): NotebookEntry => ({
       at: record.endedAt,
       kind,
-      params: { day: daysBetween(firstDay, record.localDay) + 1, ...params },
+      params: allDays ? { day: daysBetween(firstDay, record.localDay) + 1, ...params } : params,
     }));
   })
     .sort((a, b) => b.at - a.at)
     .slice(0, NOTEBOOK_LIMIT);
 }
 
+export const notebookEntries = (records: readonly RoundRecord[], summary: LabSummary): NotebookEntry[] => entriesOf(historyOf(records, summary));
+
 export function computeNotebook(input: LabInput): MetricResult<NotebookValue> {
   const { rounds } = input.summary;
   const readiness = readinessFor(input, { sampleSize: rounds, have: { rounds }, thresholds: NOTEBOOK_THRESHOLDS });
-  return measured(readiness, () => ({ entries: notebookEntries(input.records, input.summary) }));
+  return measured(readiness, () => {
+    const history = historyOf(input.records, input.summary);
+    const oldest = history.rounds[0];
+    return {
+      entries: entriesOf(history),
+      older: history.missing === 0 ? null : { before: history.before !== null && oldest ? oldest.endedAt : null },
+    };
+  });
 }

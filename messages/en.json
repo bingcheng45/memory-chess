@@ -623,13 +623,16 @@
           "newNote": "New marks entries since your last visit.",
           "showAll": "Show all {count} entries",
           "showFewer": "Show fewer",
+          "day": "Day {day}.",
+          "olderBefore": "Entries before {date} are not kept in this browser.",
+          "older": "Older entries are not kept in this browser.",
           "entries": {
-            "firstRound": "Day {day}. First round: {accuracy} percent at {pieceCount} pieces.",
-            "rounds": "Day {day}. Round {count, number} played.",
-            "first90": "Day {day}. First {threshold} percent or better at {pieceCount} pieces.",
-            "best": "Day {day}. New {source, select, calibration {practice} other {game}} best at {pieceCount} pieces, {studyTime}: {by, select, time {{accuracy} percent again, rebuilt in {solveTime}} other {{accuracy} percent, up from {previous}}}.",
-            "span": "Day {day}. {from, select, 0 {Memory span reached {to} pieces} other {Memory span moved from {from} to {to} pieces}}.",
-            "streak": "Day {day}. {days} days in a row."
+            "firstRound": "First round: {accuracy} percent at {pieceCount} pieces.",
+            "rounds": "Round {count, number} played.",
+            "first90": "First {threshold} percent or better at {pieceCount} pieces.",
+            "best": "New {source, select, calibration {practice} other {game}} best at {pieceCount} pieces, {studyTime}: {by, select, time {{accuracy} percent again, rebuilt in {solveTime}} other {{accuracy} percent, up from {previous}}}.",
+            "span": "{from, select, 0 {Memory span reached {to} pieces} other {Memory span moved from {from} to {to} pieces}}.",
+            "streak": "{days} days in a row."
           }
         },
         "tools": {

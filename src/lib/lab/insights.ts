@@ -50,7 +50,6 @@ const bind = <TMin extends Need>({ id, priority, minSample, evaluate }: InsightR
   find: (input, prior) => evaluate(input, prior, minSample),
 });
 
-/** Metrics the rules read, computed once by the registry and passed in. */
 export interface InsightPrior {
   readonly span: MetricResult<SpanValue>;
   readonly speed: MetricResult<SpeedValue>;

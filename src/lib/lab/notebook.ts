@@ -178,7 +178,6 @@ function entriesOf(history: History): NotebookEntry[] {
     .slice(0, NOTEBOOK_LIMIT);
 }
 
-/** `span` is the span metric over the same input, so its history is not recomputed. */
 export function computeNotebook(input: LabInput, span: MetricResult<SpanValue>): MetricResult<NotebookValue> {
   const { rounds } = input.summary;
   const readiness = readinessFor(input, { sampleSize: rounds, have: { rounds }, thresholds: NOTEBOOK_THRESHOLDS });

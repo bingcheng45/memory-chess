@@ -70,6 +70,23 @@ describe("edge files rule", () => {
     expect(counters(squares([3, 0, 0, 0, 0, 0, 0, 3])).value?.insights[0].params).toEqual({ times: 0, edge: 15, centre: 0, edgeShown: 320, centreShown: 320 });
   });
 
+  /** Twenty shown on every square, with the edge misses on a1 and the centre misses on d1. */
+  const fewMisses = (edge: number, centre: number) => ({
+    squareShown: Array<number>(64).fill(20),
+    squareMissed: Array.from({ length: 64 }, (_, index) => (index === 0 ? edge : index === 3 ? centre : 0)),
+  });
+
+  it("finds nothing from 2 edge misses against 1, or 1 against none, under 5 misses on the a and h files", () => {
+    expect(ids(counters(fewMisses(2, 1)))).toEqual([]);
+    expect(ids(counters(fewMisses(1, 0)))).toEqual([]);
+    expect(ids(counters(fewMisses(4, 0)))).toEqual([]);
+  });
+
+  it("fires from 5 edge misses, with the centre missed or not", () => {
+    expect(counters(fewMisses(5, 2)).value?.insights[0]).toMatchObject({ ruleId: "edgeFiles", params: { edge: 2, centre: 1 }, strength: 1.39 });
+    expect(counters(fewMisses(5, 0)).value?.insights[0]).toMatchObject({ ruleId: "edgeFiles", params: { times: 0, edge: 2, centre: 0 }, strength: 0.99 });
+  });
+
   it("finds nothing at 1.75 times the centre", () => {
     expect(ids(counters(squares([7, 0, 0, 4, 4, 0, 0, 7])))).toEqual([]);
   });
@@ -234,5 +251,23 @@ describe("insight ranking", () => {
     });
 
     expect(ids(result)).toEqual(["weakType", "edgeFiles", "fasterLessAccurate"]);
+  });
+
+  /** Plateau cannot fire beside fasterLessAccurate: one needs accuracy flat and the other needs it down 5 points. */
+  it("ranks an edge finding with no centre miss at 0.99, below any weak type, whose recall under half reads 1 or more", () => {
+    const rounds = daily(20, (index) => (index < 10 ? { full: true, solveMs: 20_000 } : { full: false, solveMs: 12_000 }));
+    const result = insightsOf(rounds, {
+      ...squares([3, 0, 0, 0, 0, 0, 0, 3]),
+      typeShown: { k: 40, q: 100 },
+      typeMissed: { q: 51 },
+      colorShown: { w: 100, b: 100 },
+      colorMissed: { w: 10, b: 18 },
+    });
+
+    expect(result.value?.insights.map(({ ruleId, strength }) => [ruleId, strength])).toEqual([
+      ["weakType", 1.02],
+      ["edgeFiles", 0.99],
+      ["fasterLessAccurate", 3.33],
+    ]);
   });
 });

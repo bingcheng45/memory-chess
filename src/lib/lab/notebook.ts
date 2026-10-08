@@ -155,7 +155,7 @@ function historyOf(records: readonly RoundRecord[], summary: LabSummary, span: M
   const rounds = byEndedAt(records);
   const missing = Math.max(0, summary.rounds - rounds.length);
   const { evictedThrough } = summary;
-  const evicted = evictedThrough !== null && rounds.every(({ endedAt }) => endedAt > evictedThrough);
+  const evicted = evictedThrough !== null && (rounds[0]?.endedAt ?? Infinity) > evictedThrough;
   return {
     rounds,
     summary,

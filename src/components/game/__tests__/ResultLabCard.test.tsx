@@ -75,7 +75,7 @@ describe("ResultLabCard", () => {
       "·Span up to 6 pieces",
       "·Day 3 in a row, 3 of 5 days this week",
     ]);
-    expect(screen.getByText(/^Next\./).closest("p")?.textContent).toBe("Next. 90% or better, so one more piece at the same study time.");
+    expect(screen.getByText(/^Next\./).closest("p")?.textContent).toBe(`Next. 90% or better, so one more piece at the same study time. Play 7 pieces, ${seconds(10)} →`);
     expect(screen.getByRole("link", { name: `Play 7 pieces, ${seconds(10)} →` })).toHaveAttribute("href", "/game?pieceCount=7&memorizeTime=10&source=result_next");
   });
 

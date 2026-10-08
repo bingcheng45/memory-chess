@@ -17,7 +17,7 @@ export const RESULT_LAB_WAIT_MS = 3000;
 
 const SOURCE: RoundSource = "result_next";
 const LINK_CLASS =
-  "inline-flex min-h-11 items-center font-semibold text-peach-500 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach-500/60 rounded";
+  "rounded font-semibold text-peach-500 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach-500/60";
 
 export interface ResultLabCardProps {
   readonly roundId: string;
@@ -112,14 +112,14 @@ export default function ResultLabCard({ roundId, onPlay }: ResultLabCardProps) {
 
   const why = whyOf(t, card.next);
   return (
-    <section aria-labelledby="result-lab-title" className={`${RESULT_LAB_FRAME} flex flex-col gap-3`}>
+    <section aria-labelledby="result-lab-title" className={`${RESULT_LAB_FRAME} flex flex-col gap-2`}>
       <header className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
         <h3 id="result-lab-title" className="text-base font-semibold text-text-primary">
           {t("title")}
         </h3>
         <p className="text-xs text-text-secondary">{t("device")}</p>
       </header>
-      <ul aria-label={t("lines")} className="space-y-1.5 text-sm text-text-primary">
+      <ul aria-label={t("lines")} className="space-y-1 text-sm text-text-primary">
         {linesOf(t, card).map((line) => (
           <li key={line} className="flex gap-2">
             <span aria-hidden="true" className="text-peach-500">
@@ -129,13 +129,10 @@ export default function ResultLabCard({ roundId, onPlay }: ResultLabCardProps) {
           </li>
         ))}
       </ul>
-      <div className="mt-auto border-t border-bg-light pt-3 text-sm">
-        <p className="text-text-secondary">
-          <span className="font-semibold text-text-primary">{t("next.label")}.</span>
-          {why && ` ${why}`}
-        </p>
-        <NextAction t={t} next={card.next} onPlay={onPlay} />
-      </div>
+      <p className="mt-auto border-t border-bg-light pt-3 text-sm text-text-secondary">
+        <span className="font-semibold text-text-primary">{t("next.label")}.</span>
+        {why && ` ${why}`} <NextAction t={t} next={card.next} onPlay={onPlay} />
+      </p>
     </section>
   );
 }

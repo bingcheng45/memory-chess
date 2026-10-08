@@ -66,7 +66,8 @@ function qualifiesForLeaderboard(
 
 export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResultProps) {
   const t = useTranslations("game.result");
-  const showsLab = hasLabCopy(useLocale());
+  // Without IndexedDB nothing can be recorded, so no space is held for a card that could only leave again.
+  const showsLab = hasLabCopy(useLocale()) && typeof indexedDB !== "undefined";
   const tCountry = useTranslations("country");
   const { gameState } = useGameStore();
   const { countryCode, setCountryCode } = useSettingsStore();

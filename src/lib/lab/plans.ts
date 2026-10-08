@@ -158,8 +158,8 @@ function edge(plan: StoredPlan, records: readonly RoundRecord[], today: string):
 }
 
 /**
- * Study time drops 2 s a rung down to the 5 s floor; from the floor the next rung adds a piece and goes back to the
- * study time the ladder started at. Null past the largest board.
+ * Study time drops 2 s a rung down to the 5 s floor; from the floor, or below it, the next rung adds a piece and goes
+ * back to the study time the ladder started at. Null past the largest board.
  */
 export function nextRung(rung: Rung, startSeconds: number): Rung | null {
   const { stepSeconds, floorSeconds } = PLAN_RULES.ladder;
@@ -167,7 +167,7 @@ export function nextRung(rung: Rung, startSeconds: number): Rung | null {
     return { pieceCount: rung.pieceCount, memorizeSeconds: Math.max(floorSeconds, rung.memorizeSeconds - stepSeconds) };
   }
   if (rung.pieceCount >= PIECE_COUNT_RANGE.max) return null;
-  return { pieceCount: rung.pieceCount + 1, memorizeSeconds: Math.max(floorSeconds, startSeconds) };
+  return { pieceCount: rung.pieceCount + 1, memorizeSeconds: startSeconds };
 }
 
 export interface RungClimb {

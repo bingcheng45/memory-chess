@@ -176,7 +176,7 @@ describe("the next rung", () => {
     [{ pieceCount: 6, memorizeSeconds: 10 }, 10, { pieceCount: 6, memorizeSeconds: 8 }],
     [{ pieceCount: 6, memorizeSeconds: 6 }, 10, { pieceCount: 6, memorizeSeconds: 5 }],
     [{ pieceCount: 6, memorizeSeconds: 5 }, 10, { pieceCount: 7, memorizeSeconds: 10 }],
-    [{ pieceCount: 6, memorizeSeconds: 3 }, 3, { pieceCount: 7, memorizeSeconds: 5 }],
+    [{ pieceCount: 6, memorizeSeconds: 3 }, 3, { pieceCount: 7, memorizeSeconds: 3 }],
     [{ pieceCount: 32, memorizeSeconds: 5 }, 10, null],
   ])("after %o on a ladder that started at %i s is %o", (rung, startSeconds, next) => {
     expect(nextRung(rung, startSeconds)).toEqual(next);

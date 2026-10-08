@@ -1,3 +1,7 @@
+/**
+ * Progress metrics over the round log. Practice and game rounds count alike: the same generator builds their positions
+ * and the same scoring reads them.
+ */
 import {
   busiestSetting,
   distinctDays,
@@ -6,7 +10,6 @@ import {
   measured,
   readinessFor,
   settingOf,
-  shiftDay,
   TREND_THRESHOLDS,
   type LabInput,
   type MetricResult,
@@ -52,40 +55,36 @@ export function computeSessions(input: LabInput): MetricResult<SessionsValue> {
 
 export interface SpanStep {
   readonly endedAt: number;
-  /** The span after that session; null until a piece count first qualifies. */
+  /** The span after that session; null until a piece count first qualifies. Counts only grow, so steps never go down. */
   readonly pieceCount: number | null;
 }
 
 export interface SpanValue {
-  /** The largest qualifying piece count; null while warming. */
+  /** The largest piece count, three or more, with 2 rounds at 80% or better at any study time; null while warming. */
   readonly pieceCount: number | null;
-  /** The usual study time every round here was played at. */
-  readonly memorizeSeconds: number;
-  /** Rounds at 80% or better at the span's piece count and study time. */
+  /** The shortest study time among the qualifying rounds at that piece count; null while warming. */
+  readonly memorizeSeconds: number | null;
+  /** Rounds at 80% or better at the span's piece count, at every study time. */
   readonly qualifyingRounds: number;
   readonly history: readonly SpanStep[];
-  /** The span from rounds played up to 7 days before today, at the same study time; null when there was none. */
+  /** The span from rounds ending more than 7 days before the newest round; null when there was none. */
   readonly weekAgo: number | null;
   readonly change: number | null;
 }
 
 export const SPAN_THRESHOLDS = { qualifyingRounds: LAB_THRESHOLDS.spanRounds };
+/** Rounds of only the two kings never qualify, so a player with nothing else first needs one larger round. */
+const LARGER_THRESHOLDS = { largerRounds: 1 };
+const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 
-/** The study time played most in the last 20 rounds; a tie goes to the one played most recently. */
-function usualStudyTime(rounds: readonly RoundRecord[]): number {
-  const counts = new Map<number, number>();
-  rounds
-    .slice(-LAB_THRESHOLDS.usualTimeRounds)
-    .reverse()
-    .forEach(({ config }) => counts.set(config.memorizeSeconds, (counts.get(config.memorizeSeconds) ?? 0) + 1));
-  return [...counts].reduce((best, entry) => (entry[1] > best[1] ? entry : best))[0];
-}
+const isLarger = ({ config }: RoundRecord) => config.pieceCount >= LAB_THRESHOLDS.spanMinPieces;
+const qualifies = (record: RoundRecord) => isLarger(record) && record.accuracy >= LAB_THRESHOLDS.spanAccuracy;
 
 type QualifyingCounts = Map<number, number>;
 
 /** Mutates and returns `counts`, so the history folds every round once instead of recounting per session. */
-function addQualifying(counts: QualifyingCounts, { accuracy, config: { pieceCount } }: RoundRecord): QualifyingCounts {
-  if (accuracy >= LAB_THRESHOLDS.spanAccuracy) counts.set(pieceCount, (counts.get(pieceCount) ?? 0) + 1);
+function addQualifying(counts: QualifyingCounts, record: RoundRecord): QualifyingCounts {
+  if (qualifies(record)) counts.set(record.config.pieceCount, (counts.get(record.config.pieceCount) ?? 0) + 1);
   return counts;
 }
 
@@ -98,28 +97,27 @@ const countQualifying = (rounds: readonly RoundRecord[]) => rounds.reduce(addQua
 
 export function computeSpan(input: LabInput): MetricResult<SpanValue> {
   const rounds = trendRounds(input);
-  const memorizeSeconds = rounds.length === 0 ? 0 : usualStudyTime(rounds);
-  const atTime = (record: RoundRecord) => record.config.memorizeSeconds === memorizeSeconds;
-  const timed = rounds.filter(atTime);
-  const counts = countQualifying(timed);
+  const counts = countQualifying(rounds);
+  const larger = rounds.filter(isLarger).length;
   const readiness = readinessFor(input, {
-    sampleSize: timed.length,
-    have: { qualifyingRounds: Math.max(0, ...counts.values()) },
-    thresholds: SPAN_THRESHOLDS,
+    sampleSize: rounds.length,
+    have: { largerRounds: larger, qualifyingRounds: Math.max(0, ...counts.values()) },
+    thresholds: larger === 0 ? LARGER_THRESHOLDS : SPAN_THRESHOLDS,
   });
 
   return measured(readiness, () => {
     const running: QualifyingCounts = new Map();
     const history = sessionRuns(rounds).map((run) => {
-      run.filter(atTime).forEach((record) => addQualifying(running, record));
+      run.forEach((record) => addQualifying(running, record));
       return { endedAt: run[run.length - 1].endedAt, pieceCount: spanOf(running) };
     });
-    const cutoff = input.today === "" ? null : shiftDay(input.today, -7);
-    const weekAgo = cutoff === null ? null : spanOf(countQualifying(timed.filter(({ localDay }) => localDay <= cutoff)));
+    const weekBefore = rounds[rounds.length - 1].endedAt - WEEK_MS;
+    const weekAgo = spanOf(countQualifying(rounds.filter(({ endedAt }) => endedAt < weekBefore)));
     const pieceCount = spanOf(counts);
+    const times = rounds.filter((record) => qualifies(record) && record.config.pieceCount === pieceCount).map(({ config }) => config.memorizeSeconds);
     return {
       pieceCount,
-      memorizeSeconds,
+      memorizeSeconds: pieceCount === null ? null : Math.min(...times),
       qualifyingRounds: pieceCount === null ? 0 : (counts.get(pieceCount) ?? 0),
       history,
       weekAgo,

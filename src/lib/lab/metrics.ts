@@ -292,7 +292,7 @@ export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & 
   },
   span: {
     id: "span",
-    question: "How many pieces can you hold at your usual study time?",
+    question: "How many pieces can you hold at 80% or better, twice?",
     thresholds: SPAN_THRESHOLDS,
     compute: computeSpan,
   },

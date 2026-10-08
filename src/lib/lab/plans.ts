@@ -1,7 +1,7 @@
 import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import type { PlanId, StoredPlan } from "./choices";
-import { distinctDays, readinessFor, type LabInput, type MetricResult } from "./engine";
+import { distinctDays, readinessFor, shiftDay, type LabInput, type MetricResult } from "./engine";
 import { EDGE_FILES, EDGE_RIG } from "./insights";
 import { daysBetween } from "./readiness";
 import { configKey, type RoundConfig, type RoundRecord } from "./record";
@@ -64,8 +64,11 @@ export type PlanProgress =
       readonly next: Rung | null;
     };
 
-const sinceStart = (rounds: readonly RoundRecord[], { startedDay, ended }: StoredPlan) =>
-  rounds.filter(({ localDay }) => localDay >= startedDay && (!ended || localDay <= ended.day));
+/** Rounds the plan counts: none after the day it ended, nor after the edge drill's fourteenth day. */
+function sinceStart(rounds: readonly RoundRecord[], { planId, startedDay, ended }: StoredPlan) {
+  const lastDay = ended?.day ?? (planId === "edge" ? shiftDay(startedDay, PLAN_RULES.edge.days - 1) : null);
+  return rounds.filter(({ localDay }) => localDay >= startedDay && (lastDay === null || localDay <= lastDay));
+}
 const atRung = (rung: Rung) => {
   const key = configKey(rung);
   return (record: RoundRecord) => configKey(record.config) === key;

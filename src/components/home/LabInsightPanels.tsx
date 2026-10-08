@@ -5,13 +5,13 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import { trackEvent } from "@/lib/analytics/events";
+import { playHref } from "@/lib/game/roundLink";
 import { SAMPLE_EDGE_MISS, SAMPLE_NOTEBOOK } from "@/lib/home/labRecord";
 import { EDGE_RIG, INSIGHT_GUIDES, INSIGHTS_THRESHOLDS, type Insight, type InsightAction } from "@/lib/lab/insights";
 import type { LabResults } from "@/lib/lab/metrics";
 import { FIRST_READING_ACCURACY, type NotebookEntry } from "@/lib/lab/notebook";
 import { hasFigure, LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { seconds } from "./labFormat";
-import { insightRigHref } from "./links";
 import { PanelFrame, StaleNote, useTags } from "./LabRecordPanels";
 import { useNotebookSeen } from "./useNotebookSeen";
 
@@ -43,7 +43,7 @@ function ActionLink({ action }: { action: InsightAction }) {
     return (
       <Link
         className="lab-go"
-        href={insightRigHref(pieceCount, memorizeSeconds)}
+        href={playHref(pieceCount, memorizeSeconds, "insight")}
         onClick={() => trackEvent({ name: "lab_panel_action", params: { panel: "insights", action: "play" } })}
       >
         {t("rig", { pieceCount, studyTime: seconds(memorizeSeconds) })} →

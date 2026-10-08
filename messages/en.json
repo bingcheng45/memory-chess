@@ -717,9 +717,9 @@
           "plain": "New best at {pieceCount} pieces, {studyTime}: {accuracy}%"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# point} other {# points}} above your last {rounds} rounds at this setting",
-          "below": "{points, plural, one {# point} other {# points}} below your last {rounds} rounds at this setting",
-          "level": "Level with your last {rounds} rounds at this setting"
+          "above": "{points, plural, one {# point} other {# points}} above your average over your last {rounds} rounds at this setting",
+          "below": "{points, plural, one {# point} other {# points}} below your average over your last {rounds} rounds at this setting",
+          "level": "Level with your average over your last {rounds} rounds at this setting"
         },
         "span": "Span up to {pieceCount} pieces",
         "streak": "{current, plural, one {Day 1} other {Day # in a row}}{graceUsed, select, true {, grace day used} other {}}, {days} of {goal} days this week",

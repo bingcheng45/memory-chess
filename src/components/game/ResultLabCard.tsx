@@ -71,7 +71,7 @@ const trackNext = () => trackEvent({ name: "lab_panel_action", params: { panel: 
 function GuideLink({ t, guide }: { t: Translate; guide: keyof typeof INSIGHT_GUIDES }) {
   return (
     <Link className={LINK_CLASS} href={`/learn/${INSIGHT_GUIDES[guide]}`} onClick={trackNext}>
-      {t(`next.${guide}`)} →
+      {t(`next.${guide}`)} <span aria-hidden="true">→</span>
     </Link>
   );
 }
@@ -86,7 +86,7 @@ function PlayLink({ t, label, setting, onPlay }: { t: Translate; label: "again" 
   };
   return (
     <Link className={LINK_CLASS} href={playHref(pieceCount, memorizeSeconds, SOURCE)} onClick={play}>
-      {t(`next.${label}`, { pieceCount, studyTime: seconds(memorizeSeconds) })} →
+      {t(`next.${label}`, { pieceCount, studyTime: seconds(memorizeSeconds) })} <span aria-hidden="true">→</span>
     </Link>
   );
 }

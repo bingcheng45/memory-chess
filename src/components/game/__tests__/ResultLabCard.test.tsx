@@ -65,7 +65,7 @@ describe("ResultLabCard", () => {
 
     expect(screen.getByRole("region", { name: "Your lab record" })).toBeInTheDocument();
     expect(linesOf()).toEqual(["·Day 1, 1 of 5 days this week"]);
-    const link = screen.getByRole("link", { name: `Play again at 6 pieces, ${seconds(10)} →` });
+    const link = screen.getByRole("link", { name: `Play again at 6 pieces, ${seconds(10)}` });
     expect(link).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=result_next");
 
     fireEvent.click(link);
@@ -81,12 +81,12 @@ describe("ResultLabCard", () => {
 
     expect(linesOf()).toEqual([
       `·New best at 6 pieces, ${seconds(10)}: 92%, up from 85%`,
-      "·20 points above your last 3 rounds at this setting",
+      "·20 points above your average over your last 3 rounds at this setting",
       "·Span up to 6 pieces",
       "·Day 3 in a row, 3 of 5 days this week",
     ]);
     expect(screen.getByText(/^Next\./).closest("p")?.textContent).toBe(`Next. 90% or better, so one more piece at the same study time. Play 7 pieces, ${seconds(10)} →`);
-    expect(screen.getByRole("link", { name: `Play 7 pieces, ${seconds(10)} →` })).toHaveAttribute("href", "/game?pieceCount=7&memorizeTime=10&source=result_next");
+    expect(screen.getByRole("link", { name: `Play 7 pieces, ${seconds(10)}` })).toHaveAttribute("href", "/game?pieceCount=7&memorizeTime=10&source=result_next");
   });
 
   it("says a matched best was rebuilt faster, and a round under the recent mean is below it", () => {
@@ -98,14 +98,14 @@ describe("ResultLabCard", () => {
     clock = 0;
     withRecord([played("a", 75), played("b", 76), played("c", 77), played("d", 75)]);
     renderCard("d");
-    expect(linesOf()).toEqual(["·1 point below your last 3 rounds at this setting", "·Day 1, 1 of 5 days this week"]);
+    expect(linesOf()).toEqual(["·1 point below your average over your last 3 rounds at this setting", "·Day 1, 1 of 5 days this week"]);
   });
 
   it("opens a modified click in a new tab instead of starting the round here", () => {
     withRecord([played("first", 40)]);
     const { onPlay } = renderCard("first");
 
-    fireEvent.click(screen.getByRole("link", { name: `Play 5 pieces, ${seconds(10)} →` }), { metaKey: true });
+    fireEvent.click(screen.getByRole("link", { name: `Play 5 pieces, ${seconds(10)}` }), { metaKey: true });
 
     expect(onPlay).not.toHaveBeenCalled();
     expect(trackEvent).toHaveBeenCalledTimes(1);

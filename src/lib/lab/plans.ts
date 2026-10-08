@@ -79,9 +79,12 @@ const atRung = (rung: Rung) => {
   return (record: RoundRecord) => configKey(record.config) === key;
 };
 
-/** A plan's day count stops on the day it ended, so an ended plan reads the same on every later visit. */
+/**
+ * A plan's day count stops on the day it ended, so an ended plan reads the same on every later visit. A start dated after
+ * today, left by a clock set back, reads as day 1.
+ */
 function planDay({ startedDay, ended }: StoredPlan, today: string) {
-  return daysBetween(startedDay, ended?.day ?? today) + 1;
+  return Math.max(1, daysBetween(startedDay, ended?.day ?? today) + 1);
 }
 
 type Completion = { readonly how: "rounds" | "calendar"; readonly day: number } | null;

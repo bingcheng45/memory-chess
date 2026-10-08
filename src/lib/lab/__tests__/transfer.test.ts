@@ -119,10 +119,10 @@ describe("lab record export and import", () => {
     expect(parseImport(JSON.stringify(buildExport(rounds, NOW)), NOW)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: null });
   });
 
-  it("round-trips a round started from an insight link", () => {
-    const rounds = [roundV2({ id: "a" }, { startSource: "insight", tzOffsetMin: 0 })];
+  it.each(["insight", "result_next"] as const)("round-trips a round started from a %s link", (startSource) => {
+    const rounds = [roundV2({ id: "a" }, { startSource, tzOffsetMin: 0 })];
 
-    expect(parseImport(JSON.stringify(buildExport(rounds, NOW)), NOW)).toMatchObject({ ok: true, rejected: 0, rounds: [{ startSource: "insight" }] });
+    expect(parseImport(JSON.stringify(buildExport(rounds, NOW)), NOW)).toMatchObject({ ok: true, rejected: 0, rounds: [{ startSource }] });
   });
 
   it("round-trips a review round and a daily round", () => {

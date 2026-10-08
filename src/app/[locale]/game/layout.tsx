@@ -44,7 +44,7 @@ export default async function GameLayout({
 
   return (
     <>
-      <ScopedMessagesProvider messages={{ articles: tileGroupOf(messages), ...splitClientMessages(messages).resultCard }}>
+      <ScopedMessagesProvider messages={{ articles: tileGroupOf(messages), ...splitClientMessages(messages).game }}>
         <TileArticlesProvider articles={tileArticles}>{children}</TileArticlesProvider>
       </ScopedMessagesProvider>
       {/* Runs once the form above is parsed and before hydration, so a

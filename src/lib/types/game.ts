@@ -2,6 +2,14 @@ import { PieceSymbol, Square } from 'chess.js';
 import type { RoundSource } from '@/lib/analytics/events';
 import type { PlacementLog } from '@/lib/lab/placements';
 
+/** A round on a set position instead of a random one: today's shared daily board. */
+export interface SetBoard {
+  readonly kind: 'daily';
+  /** The UTC day the board belongs to. */
+  readonly day: string;
+  readonly fen: string;
+}
+
 export interface GameState {
   // Game status
   isPlaying: boolean;
@@ -35,6 +43,8 @@ export interface GameState {
   placementLog?: PlacementLog;
   /** The id the lab record saves the scored round under, so the result screen can find it. Never persisted. */
   labRoundId?: string;
+  /** Set when the round plays a set position; absent for a random one. */
+  board?: SetBoard;
   
   // Results
   accuracy?: number;         // Percentage of correct piece placements

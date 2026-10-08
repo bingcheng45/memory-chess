@@ -126,4 +126,23 @@ describe("lab record from a finished game round", () => {
     expect(stored).toContain('"pieceCount":6');
     expect(stored).not.toContain("labRoundId");
   });
+
+  it("plays a set board's position and records the round as that day's daily board, and a try again after it as a normal round", async () => {
+    const fen = "8/8/8/1pQ4k/P2p4/8/8/1K6 b - - 0 1";
+    useGameStore.getState().startGame(6, 10, "daily", { kind: "daily", day: "2026-10-09", fen });
+    const shown = useGameStore.getState().gameState.originalPosition;
+    useGameStore.getState().endMemorizationPhase(10);
+    useGameStore.getState().startSolutionPhase();
+    useGameStore.getState().submitSolution(4);
+    useGameStore.getState().startGame(6, 10, "try_again");
+    useGameStore.getState().endMemorizationPhase(10);
+    useGameStore.getState().startSolutionPhase();
+    useGameStore.getState().submitSolution(4);
+    await flush();
+
+    const [daily, again] = jest.mocked(recordLabRound).mock.calls.map(([facts]) => facts);
+    expect(shown).toBe(fen);
+    expect(daily).toMatchObject({ targetFen: fen, startSource: "daily", kind: "daily", dailyDay: "2026-10-09" });
+    expect([again.startSource, again.kind, again.dailyDay]).toEqual(["try_again", undefined, undefined]);
+  });
 });

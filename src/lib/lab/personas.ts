@@ -1,12 +1,15 @@
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { placementFromFen } from "@/lib/game/scoring";
 import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
+import { seededRandom } from "@/lib/utils/seededRandom";
 import type { RoundSource } from "@/lib/analytics/events";
 import type { PlanId, StoredPlan, StoredTarget } from "./choices";
 import { shiftDay } from "./engine";
 import { EDGE_RIG } from "./insights";
 import type { PlacementEvent } from "./placements";
 import { buildRoundRecord, type LabSource, type RoundCapture, type RoundInput, type RoundRecord } from "./record";
+import { utcDayOf } from "./daily";
+import { dailyFen } from "./dailyBoard";
 import { createLabStore, PLACEMENT_KEEP, type LabStore } from "./storage";
 import { buildExport, type LabExportV2 } from "./transfer";
 
@@ -35,10 +38,15 @@ export const PERSONA_NAMES = [
   "planBaseline",
   "planEdge",
   "ladderClimb",
+  "dailyOpen",
+  "dailyPlayed",
+  "dailyStreak",
 ] as const;
 export type PersonaName = (typeof PERSONA_NAMES)[number];
 /** The players with a plan or a goal chosen; the rest of the cast has none. */
 export const PLAN_PERSONAS = ["planBaseline", "planEdge", "ladderClimb"] as const satisfies readonly PersonaName[];
+/** The players with daily board rounds, whose board days are UTC days: drivers set the browser clock to their today. */
+export const DAILY_PERSONAS = ["dailyOpen", "dailyPlayed", "dailyStreak"] as const satisfies readonly PersonaName[];
 
 interface Setting {
   readonly source: LabSource;
@@ -52,6 +60,8 @@ interface PlannedRound extends Setting {
   readonly minute?: number;
   /** A fixed chance each piece is missed, in place of the persona's own, to set a round's score. */
   readonly miss?: number;
+  /** The shared daily board of the round's day, in place of a random position. */
+  readonly dailyBoard?: true;
 }
 
 /** `progress` runs from 0 at the first round to just under 1 at the last. */
@@ -115,6 +125,7 @@ const THREE_DAYS: PersonaPlan = { seed: 3, rounds: daily(countdown(2, 0), (_, sl
 const EDGE_RIG_SETTING: Setting = { source: "game", ...EDGE_RIG };
 const MEDIUM_8S: Setting = { ...MEDIUM, memorizeSeconds: 8 };
 const at = (setting: Setting, daysAgo: number, miss?: number): PlannedRound => ({ ...setting, daysAgo, ...(miss !== undefined && { miss }) });
+const dailyBoardOn = (daysAgo: number): PlannedRound => ({ ...MEDIUM, daysAgo, dailyBoard: true });
 
 /** Thirty days of edge-file misses before the drill, then fewer once it starts: the last six rounds are the drill's. */
 const edgesThenDrill: MissChance = (square, piece, progress) =>
@@ -178,6 +189,12 @@ const PLANS: Record<PersonaName, PersonaPlan> = {
     ],
     missChance: steady,
   },
+  // Today's board still open, after the board on each of the last three days among two Medium games a day.
+  dailyOpen: { seed: 101, rounds: [...daily(countdown(3, 0), () => MEDIUM, 2), ...[3, 2, 1].map(dailyBoardOn)], missChance: steady },
+  // Medium games yesterday and today, and today's board played: its first daily round.
+  dailyPlayed: { seed: 102, rounds: [...daily([1, 0], () => MEDIUM, 2), dailyBoardOn(0)], missChance: steady },
+  // The board on nine of the last ten days, today included, with five days ago missed and forgiven.
+  dailyStreak: { seed: 103, rounds: countdown(9, 0).filter((daysAgo) => daysAgo !== 5).map(dailyBoardOn), missChance: steady },
 };
 
 interface PersonaChoices {
@@ -200,18 +217,6 @@ export function personaChoices(name: PersonaName, today: string = PERSONA_TODAY)
   };
 }
 
-/** mulberry32: small, fast and the same on every platform. */
-function seeded(seed: number): () => number {
-  let state = seed >>> 0;
-  return () => {
-    state = (state + 0x6d2b79f5) >>> 0;
-    let t = state;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
 /** Noon UTC, so a persona's days are the same calendar days in every timezone. */
 function noonUtc(day: string, by = 0): number {
   const [year, month, date] = day.split("-").map(Number);
@@ -231,14 +236,16 @@ function placementsOf(placed: Readonly<Record<string, string>>, solveMs: number)
 
 export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY): RoundRecord[] {
   const { seed, rounds, missChance, legacy } = PLANS[name];
-  const random = seeded(seed);
+  const random = seededRandom(seed);
   const slots = new Map<number, number>();
 
   return rounds.map((planned, index) => {
     const slot = slots.get(planned.daysAgo) ?? 0;
     slots.set(planned.daysAgo, slot + 1);
     const playedAt = noonUtc(today, -planned.daysAgo);
-    const target = placementFromFen(generateMemorizationPosition(planned.pieceCount, random)?.fen() ?? "8/8/8/8/8/8/8/8");
+    const day = utcDayOf(playedAt);
+    const fen = planned.dailyBoard ? dailyFen(day) : generateMemorizationPosition(planned.pieceCount, random)?.fen();
+    const target = placementFromFen(fen ?? "8/8/8/8/8/8/8/8");
     const progress = index / rounds.length;
     const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= (planned.miss ?? missChance(square, piece, progress))));
     const solveMs = 8000 + Math.floor(random() * 22_000);
@@ -246,7 +253,7 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
       id: `${name}-${index}`,
       source: planned.source,
       endedAt: playedAt + (planned.minute ?? slot) * 60_000,
-      localDay: new Date(playedAt).toISOString().slice(0, 10),
+      localDay: day,
       pieceCount: planned.pieceCount,
       memorizeSeconds: planned.memorizeSeconds,
       targetFen: boardFen(target),
@@ -257,7 +264,8 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
     if (legacy) return buildRoundRecord(input);
     const recent = index >= rounds.length - PLACEMENT_KEEP;
     const capture: RoundCapture = {
-      startSource: planned.source === "calibration" ? "calibration" : GAME_STARTS[index % GAME_STARTS.length],
+      startSource: planned.dailyBoard ? "daily" : planned.source === "calibration" ? "calibration" : GAME_STARTS[index % GAME_STARTS.length],
+      ...(planned.dailyBoard && { kind: "daily", dailyDay: day }),
       tzOffsetMin: TZ_OFFSET_MIN,
       ...(recent && { placements: placementsOf(placed, solveMs), removals: 0 }),
     };

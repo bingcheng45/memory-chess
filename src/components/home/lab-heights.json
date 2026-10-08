@@ -13,6 +13,10 @@
   "personas": [
     "colourSkew",
     "colourSkewAway",
+    "dailyOpen",
+    "dailyPlayed",
+    "dailyStreak",
+    "dailyUnfinished",
     "easyOnly",
     "easyOnlyAway",
     "graceStreak",
@@ -51,6 +55,7 @@
       "notebook": 609,
       "plans": 1284,
       "goal": 449,
+      "daily": 483,
       "tools": 360
     },
     "medium": {
@@ -67,6 +72,7 @@
       "notebook": 430,
       "plans": 955,
       "goal": 314,
+      "daily": 343,
       "tools": 496
     },
     "wide": {
@@ -83,6 +89,7 @@
       "notebook": 393,
       "plans": 481,
       "goal": 291,
+      "daily": 319,
       "tools": 196
     }
   },
@@ -100,6 +107,7 @@
     "narrow notebook": "spanClimber client 320",
     "narrow plans": "planEdge client 320",
     "narrow goal": "colourSkew client 320",
+    "narrow daily": "dailyPlayed client 320",
     "narrow tools": "colourSkew client 320",
     "medium unlock": "twoRoundsAway client 641",
     "medium span": "stale client 641",
@@ -114,6 +122,7 @@
     "medium notebook": "spanClimber client 641",
     "medium plans": "planEdge client 641",
     "medium goal": "planEdge client 641",
+    "medium daily": "dailyPlayed client 641",
     "medium tools": "colourSkew client 768",
     "wide unlock": "colourSkew server 1024",
     "wide span": "stale client 1440",
@@ -128,6 +137,7 @@
     "wide notebook": "heavy client 1024",
     "wide plans": "planEdge client 1024",
     "wide goal": "planEdge client 1024",
+    "wide daily": "dailyPlayed client 1024",
     "wide tools": "colourSkew client 1024"
   },
   "empty": {
@@ -145,6 +155,7 @@
       "notebook": 446,
       "plans": 1181,
       "goal": 305,
+      "daily": 367,
       "tools": 0
     },
     "medium": {
@@ -161,6 +172,7 @@
       "notebook": 329,
       "plans": 920,
       "goal": 232,
+      "daily": 269,
       "tools": 0
     },
     "wide": {
@@ -177,6 +189,7 @@
       "notebook": 329,
       "plans": 455,
       "goal": 182,
+      "daily": 246,
       "tools": 0
     }
   }

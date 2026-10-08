@@ -19,6 +19,7 @@ const BOXES = {
   notebook: ".lab-p-notebook",
   plans: ".lab-p-plans",
   goal: ".lab-p-goal",
+  daily: ".lab-p-daily",
   tools: ".lab-tools-slot",
 } as const;
 type Box = keyof typeof BOXES;

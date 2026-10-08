@@ -1,13 +1,13 @@
 import { splitClientMessages, tileGroupOf } from "@/lib/articles/messageScope";
 
 describe("splitClientMessages", () => {
-  it("parts the articles namespace and the home lab group from every other string", () => {
+  it("parts the articles namespace, the home lab group and the lab groups /game prints from every other string", () => {
     const catalogue = {
       common: { nav: { articles: "Articles" } },
       articles: { like: { button: "Recommend this article" } },
       home: {
         meta: { title: "Memory Chess" },
-        lab: { hero: { lede: "Put a number on it." }, resultCard: { title: "Your lab record" } },
+        lab: { hero: { lede: "Put a number on it." }, resultCard: { title: "Your lab record" }, daily: { locked: "One try per day." } },
       },
       game: { skip: "Skip" },
     };
@@ -15,8 +15,8 @@ describe("splitClientMessages", () => {
     expect(splitClientMessages(catalogue)).toEqual({
       shared: { common: { nav: { articles: "Articles" } }, home: { meta: { title: "Memory Chess" } }, game: { skip: "Skip" } },
       articles: { like: { button: "Recommend this article" } },
-      lab: { home: { lab: { hero: { lede: "Put a number on it." } } } },
-      resultCard: { home: { lab: { resultCard: { title: "Your lab record" } } } },
+      lab: { home: { lab: { hero: { lede: "Put a number on it." }, daily: { locked: "One try per day." } } } },
+      game: { home: { lab: { resultCard: { title: "Your lab record" }, daily: { locked: "One try per day." } } } },
     });
   });
 
@@ -27,7 +27,7 @@ describe("splitClientMessages", () => {
       shared: { home: { meta: { title: "Memory Chess" } }, game: { skip: "Überspringen" } },
       articles: undefined,
       lab: {},
-      resultCard: {},
+      game: {},
     });
   });
 });

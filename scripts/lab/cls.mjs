@@ -9,6 +9,7 @@
  * and the plain sum of every shift as shiftSum. Runs for a new visitor and a 30-day
  * player (whose record loads from storage after first paint), each at the top of /
  * and scrolled to #record, for a player mid-plan with a goal reached scrolled to #record,
+ * for a player who has played today's board scrolled to #record,
  * and for /de, which renders the legacy body: its mono text
  * uses the platform monospace stack, so there Geist Mono must never be requested.
  * Fails when either number is over MAX_CLS.
@@ -34,6 +35,7 @@ const CASES = [
   { name: "thirtyDays", persona: "thirtyDays", path: "/" },
   { name: "thirtyDays-record", persona: "thirtyDays", path: "/#record" },
   { name: "planEdge-record", persona: "planEdge", path: "/#record" },
+  { name: "dailyPlayed-record", persona: "dailyPlayed", path: "/#record" },
   { name: "de", persona: "newVisitor", path: "/de", usesMono: false },
 ];
 

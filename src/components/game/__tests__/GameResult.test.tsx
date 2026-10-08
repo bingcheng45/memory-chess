@@ -5,6 +5,7 @@ import { makeArticle } from "@/lib/articles/__tests__/fixtures";
 import { tileArticleOf } from "@/lib/articles/tile";
 import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
 import type { BoardCutoff, LeaderboardCutoffs } from "@/lib/leaderboard/ranking";
+import type { SetBoard } from "@/lib/types/game";
 
 const baseGameState = {
   isPlaying: false,
@@ -25,7 +26,7 @@ const baseGameState = {
   userPosition: "8/8/8/8/8/8/8/P7 w - - 0 1",
 };
 
-let mockGameState = baseGameState;
+let mockGameState: typeof baseGameState & { board?: SetBoard } = baseGameState;
 
 jest.mock("@/lib/store/gameStore", () => ({
   useGameStore: () => ({ gameState: mockGameState }),
@@ -327,6 +328,19 @@ describe("GameResult", () => {
       expect(
         screen.getByRole("link", { name: "View Leaderboard" }),
       ).toBeInTheDocument();
+    } finally {
+      mockGameState = baseGameState;
+    }
+  });
+
+  it("offers no submission for the daily board, whose position every player shares", () => {
+    mockGameState = { ...baseGameState, board: { kind: "daily", day: "2026-10-09", fen: baseGameState.originalPosition } };
+
+    try {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      expect(screen.queryByRole("button", { name: "Submit to Leaderboard" })).not.toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Try Again" })).toBeInTheDocument();
     } finally {
       mockGameState = baseGameState;
     }

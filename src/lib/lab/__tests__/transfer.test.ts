@@ -127,7 +127,7 @@ describe("lab record export and import", () => {
 
   it("round-trips a review round and a daily round", () => {
     const rounds = [
-      roundV2({ id: "a" }, { kind: "daily", startSource: "link", tzOffsetMin: 0 }),
+      roundV2({ id: "a" }, { kind: "daily", dailyDay: "2026-10-07", startSource: "daily", tzOffsetMin: 0 }),
       roundV2({ id: "b", endedAt: Date.UTC(2026, 9, 7, 13) }, { kind: "review", reviewOf: "a", reviewDelayDays: 3, tzOffsetMin: 840 }),
     ];
 
@@ -173,7 +173,7 @@ describe("lab record export and import", () => {
     ["a fractional timezone", { tzOffsetMin: 30.5 }],
     ["an unknown kind", { kind: "weekly" }],
     ["a review link on a normal round", { reviewOf: "a" }],
-    ["a review delay on a daily round", { kind: "daily", reviewDelayDays: 2 }],
+    ["a review delay on a daily round", { kind: "daily", dailyDay: "2026-10-07", reviewDelayDays: 2 }],
     ["a review delay that is not a whole day", { kind: "review", reviewOf: "a", reviewDelayDays: 1.5 }],
     ["an empty review link", { kind: "review", reviewOf: "" }],
     ["an unknown start", { startSource: "server" }],
@@ -185,6 +185,19 @@ describe("lab record export and import", () => {
     const file = JSON.stringify(buildExport([roundV2({ id: "good" }), { ...roundV2({ id: "bad" }), ...change }] as never, NOW));
 
     expect(parseImport(file, NOW)).toMatchObject({ ok: true, rejected: 1, rounds: [{ id: "good" }] });
+  });
+
+  it.each([
+    ["a daily round without its board's day", { kind: "daily" }, "daily"],
+    ["a daily round whose board day is not a calendar day", { kind: "daily", dailyDay: "2026-02-30" }, "daily"],
+    ["a board day on a normal round", { dailyDay: "2026-10-07" }, "normal"],
+  ])("keeps %s and drops only the board day, so it never reads as a day's board", (_, change, kind) => {
+    const file = JSON.stringify(buildExport([{ ...roundV2({ id: "kept" }), ...change }] as never, NOW));
+
+    const result = parseImport(file, NOW);
+
+    expect(result).toMatchObject({ ok: true, rejected: 0, rounds: [{ id: "kept", kind }] });
+    expect(result.ok && "dailyDay" in result.rounds[0]).toBe(false);
   });
 
   it("skips a round of a version it does not know", () => {

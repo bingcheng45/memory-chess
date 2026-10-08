@@ -48,7 +48,7 @@ export interface RoundRecordV1 {
   readonly accuracy: number;
 }
 
-/** Nothing filters by kind yet; the daily board and review phases will keep their rounds out of the trend and the bests. */
+/** A daily round is a fresh Medium position like any other, so it counts in the trend and the bests; a review round, which replays a seen one, will not. */
 export const ROUND_KINDS = ["normal", "daily", "review"] as const;
 export type RoundKind = (typeof ROUND_KINDS)[number];
 
@@ -59,6 +59,8 @@ export interface RoundCapture {
   /** Review rounds only: the round reviewed and the days since it. */
   readonly reviewOf?: string;
   readonly reviewDelayDays?: number;
+  /** Daily rounds only: the UTC day whose board was played, which a round ending after midnight would otherwise misname. */
+  readonly dailyDay?: string;
   /** `Date.getTimezoneOffset()` at write time, so the hour of day reads true after a move. */
   readonly tzOffsetMin?: number;
   /** Kept on the newest PLACEMENT_KEEP rounds only; older rounds lose both fields together. */
@@ -143,7 +145,7 @@ export function buildRoundRecord(input: RoundInput, capture: RoundCapture): Roun
 export function buildRoundRecord(input: RoundInput, capture?: RoundCapture): RoundRecord {
   const core = scoreRound(input);
   if (!capture) return { v: 1, ...core };
-  return { v: 2, ...core, positionId: positionId(core.targetFen), ...definedOnly({ kind: "normal", ...capture }) } as RoundRecordV2;
+  return { v: 2, ...core, positionId: positionId(core.targetFen), ...definedOnly({ ...capture, kind: capture.kind ?? "normal" }) } as RoundRecordV2;
 }
 
 /** Merges each rank's empty runs ("44" becomes "8"), so one board has one written form and one position id. */

@@ -74,14 +74,10 @@ export function LabUnlockStrip({ results, storage, welcome }: { results: LabResu
   return (
     <div className="lab-unlock">
       {/* Keyed so the label and list under the greeting mount anew rather than move down, which is a layout shift. */}
-      {welcome ? (
-        <Fragment key="welcome">
-          <LabWelcome welcome={welcome} />
-          {content}
-        </Fragment>
-      ) : (
-        storage !== "unavailable" && content
-      )}
+      <Fragment key={welcome ? "welcome" : "plain"}>
+        {welcome && <LabWelcome welcome={welcome} />}
+        {storage !== "unavailable" && content}
+      </Fragment>
     </div>
   );
 }

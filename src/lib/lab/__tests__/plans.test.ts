@@ -114,6 +114,20 @@ describe("plan progress", () => {
     expect(plansOf([], { planId: "edge", startedDay: "2026-09-24" }).value).toMatchObject({ status: { kind: "done", day: 14, how: "calendar" }, daysElapsed: 14 });
   });
 
+  it("counts no edge rig round after the drill's fourteenth day", () => {
+    const rig = (day: string, placed = EDGES) => played(day, { pieces: 8, seconds: 15, target: EDGES, placed });
+    const records = [rig("2026-09-20"), rig("2026-09-26"), rig("2026-10-03"), rig("2026-10-04", EDGES_ONE_MISSED), rig("2026-10-06", EDGES_ONE_MISSED)];
+
+    expect(plansOf(records, { planId: "edge", startedDay: "2026-09-20" }).value).toEqual({
+      planId: "edge",
+      status: { kind: "done", day: 14, how: "calendar" },
+      daysPlayed: 3,
+      daysElapsed: 14,
+      before: { rounds: 0, shown: 0, missed: 0, percent: null },
+      since: { rounds: 3, shown: 12, missed: 0, percent: 0 },
+    });
+  });
+
   it("puts the ladder on the latest game setting, before the start when nothing is played since, else Medium", () => {
     const plan: StoredPlan = { planId: "ladder", startedDay: "2026-10-07" };
 

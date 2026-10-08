@@ -423,6 +423,26 @@
           "first": "Oldest",
           "last": "Latest"
         },
+        "speed": {
+          "fig": "Fig. {number} · Speed",
+          "title": "Seconds per piece you rebuild.",
+          "aria": "Sample line of rebuild seconds per correct piece over 12 rounds, falling from 4.1 to 2.6 seconds.",
+          "note": "Sample record · 12 rounds · Medium",
+          "realAria": "Your rebuild seconds per correct piece over your last {count} {source, select, calibration {practice} other {game}} rounds at {pieceCount} pieces and {memorizeSeconds} seconds, latest {latest} seconds.",
+          "average": "Recent average {average} s per piece",
+          "down": "{change} s faster than the {window} rounds before",
+          "up": "{change} s slower than the {window} rounds before",
+          "flat": "the same pace as the {window} rounds before",
+          "accuracy": "Accuracy on the same rounds {average}%",
+          "accuracyUp": "up {change, plural, one {# point} other {# points}}",
+          "accuracyDown": "down {change, plural, one {# point} other {# points}}",
+          "accuracyFlat": "no change",
+          "fastWrong": "Fast and wrong is not improvement.",
+          "config": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s, your most played setting lately · From {count, plural, one {# round} other {# rounds}}",
+          "need": "{count, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {memorizeSeconds}s {source, select, calibration {in practice} other {in games}} {count, plural, one {draws} other {draw}} your speed line.",
+          "first": "Oldest",
+          "last": "Latest"
+        },
         "curve": {
           "fig": "Fig. {number} · Forgetting curve",
           "tag": "Proposed · review reminders",

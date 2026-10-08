@@ -33,12 +33,13 @@ describe("§06 layout", () => {
       "Fig. 6.1 · Memory span",
       "Fig. 6.2 · Pieces held",
       "Fig. 6.3 · Accuracy over time",
-      "Fig. 6.4 · Days in a row",
-      "Fig. 6.5 · Forgetting curve",
-      "Fig. 6.6 · Miss map",
-      "Fig. 6.7 · Recall by piece type",
-      "Fig. 6.8 · Personal bests",
-      "Fig. 6.9 · Leaderboard",
+      "Fig. 6.4 · Speed",
+      "Fig. 6.5 · Days in a row",
+      "Fig. 6.6 · Forgetting curve",
+      "Fig. 6.7 · Miss map",
+      "Fig. 6.8 · Recall by piece type",
+      "Fig. 6.9 · Personal bests",
+      "Fig. 6.10 · Leaderboard",
     ]);
   });
 });

@@ -1,8 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { SAMPLE_PARTIAL, SAMPLE_PIECES_HELD, SAMPLE_SPAN, SAMPLE_SPAN_SECONDS } from "@/lib/home/labRecord";
+import { SAMPLE_PARTIAL, SAMPLE_PIECES_HELD, SAMPLE_SPAN, SAMPLE_SPAN_SECONDS, SAMPLE_SPEED } from "@/lib/home/labRecord";
 import type { LabResults } from "@/lib/lab/metrics";
+import type { SpeedValue } from "@/lib/lab/progress";
 import { hasFigure, LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { oneDecimal, SpanStaircase, ValueLine } from "./LabReadingCharts";
 import { figureOf, PanelHead, StaleNote, useTags } from "./LabRecordPanels";
@@ -118,6 +119,65 @@ export function HeldPanel({ result: { readiness, value: held }, daysAgo }: Panel
   return (
     <div className="lab-panel lab-p-held">
       <PanelHead fig={record("held.fig", { number: figureOf("piecesHeld") })} tag={held ? tags.mine : tags.sample} />
+      <h3>{t("title")}</h3>
+      {body}
+    </div>
+  );
+}
+
+const wholeDirection = (change: number) => {
+  const shown = Math.round(change);
+  return shown > 0 ? "accuracyUp" : shown < 0 ? "accuracyDown" : "accuracyFlat";
+};
+
+function SpeedReading({ speed, axis }: { speed: SpeedValue; axis: { first: string; last: string } }) {
+  const t = useTranslations("home.lab.record.speed");
+  const { recent, points, setting, accuracyAtSameRounds: accuracy } = speed;
+  const faster = recent.change !== null && direction(recent.change) === "down";
+  const lessAccurate = accuracy.recent.change !== null && wholeDirection(accuracy.recent.change) === "accuracyDown";
+
+  return (
+    <>
+      <p className="lab-reading-stat">
+        {t("average", { average: oneDecimal(recent.average) })}
+        {recent.change !== null &&
+          ` · ${t(direction(recent.change), { change: oneDecimal(Math.abs(recent.change)), window: LAB_THRESHOLDS.rollingWindow })}`}
+      </p>
+      <p className="lab-reading-stat">
+        {t("accuracy", { average: Math.round(accuracy.recent.average) })}
+        {accuracy.recent.change !== null &&
+          ` · ${t(wholeDirection(accuracy.recent.change), { change: Math.round(Math.abs(accuracy.recent.change)) })}`}
+      </p>
+      <ValueLine points={points} label={t("realAria", { count: points.length, latest: oneDecimal(points[points.length - 1]), ...setting })} {...axis} />
+      {faster && lessAccurate && <p className="lab-speed-warn">{t("fastWrong")}</p>}
+    </>
+  );
+}
+
+export function SpeedPanel({ result: { readiness, value: speed }, daysAgo }: PanelProps<"speed">) {
+  const t = useTranslations("home.lab.record.speed");
+  const record = useTranslations("home.lab.record");
+  const tags = useTags();
+  const axis = { first: t("first"), last: t("last") };
+
+  const body = !speed ? (
+    <>
+      <ValueLine points={SAMPLE_SPEED} label={t("aria")} {...axis} />
+      <p className="lab-note">{t("note")}</p>
+    </>
+  ) : hasFigure(readiness) ? (
+    <>
+      <SpeedReading speed={speed} axis={axis} />
+      <p className="lab-note">{t("config", { ...speed.setting, count: readiness.sampleSize })}</p>
+      <StaleNote readiness={readiness} daysAgo={daysAgo} panel="speed" />
+    </>
+  ) : (
+    <p className="lab-panel-desc lab-empty">{t("need", { count: readiness.need?.rounds ?? 0, ...speed.setting })}</p>
+  );
+
+  return (
+    <div className="lab-panel lab-p-speed">
+      <PanelHead fig={record("speed.fig", { number: figureOf("speed") })} tag={speed ? tags.mine : tags.sample} />
       <h3>{t("title")}</h3>
       {body}
     </div>

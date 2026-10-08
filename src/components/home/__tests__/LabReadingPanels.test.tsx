@@ -119,3 +119,63 @@ describe("pieces held", () => {
     expect(texts(panel("Pieces held"), ".lab-empty")).toEqual(["3 more rounds, at least one on another day, draw your line."]);
   });
 });
+
+describe("speed", () => {
+  it("shows an example line, tagged Sample, before any round", () => {
+    show("newVisitor", "");
+    const speed = panel("Speed");
+
+    expect(tagOf(speed)).toBe("Sample");
+    expect(within(speed).getByRole("img")).toHaveAccessibleName("Sample line of rebuild seconds per correct piece over 12 rounds, falling from 4.1 to 2.6 seconds.");
+    expect(texts(speed, ".lab-note")).toEqual(["Sample record · 12 rounds · Medium"]);
+  });
+
+  it("prints accuracy over the same rounds beside a faster pace", () => {
+    show("spanClimber");
+    const speed = panel("Speed");
+
+    expect(texts(speed, ".lab-reading-stat")).toEqual([
+      "Recent average 1.6 s per piece · 0.1 s faster than the 10 rounds before",
+      "Accuracy on the same rounds 99% · up 7 points",
+    ]);
+    expect(within(speed).getByRole("img")).toHaveAccessibleName(
+      "Your rebuild seconds per correct piece over your last 21 game rounds at 14 pieces and 10 seconds, latest 1.7 seconds.",
+    );
+    expect(texts(speed, ".lab-note")).toEqual(["Game · 14 pieces · 10s, your most played setting lately · From 21 rounds"]);
+  });
+
+  it("warns that fast and wrong is not improvement when accuracy fell as the pace quickened", () => {
+    show("stale");
+    const speed = panel("Speed");
+
+    expect(texts(speed, ".lab-reading-stat")).toEqual([
+      "Recent average 3.4 s per piece · 0.5 s faster than the 10 rounds before",
+      "Accuracy on the same rounds 83% · down 9 points",
+    ]);
+    expect(texts(speed, ".lab-speed-warn")).toEqual(["Fast and wrong is not improvement."]);
+    expect(texts(speed, ".lab-stale")).toEqual(["Last played 20 days ago. Play a round →"]);
+  });
+
+  it("gives no warning when the pace slowed", () => {
+    show("thirtyDays");
+    const speed = panel("Speed");
+
+    expect(texts(speed, ".lab-reading-stat")).toEqual([
+      "Recent average 1.8 s per piece · 0.1 s slower than the 10 rounds before",
+      "Accuracy on the same rounds 72% · down 5 points",
+    ]);
+    expect(texts(speed, ".lab-speed-warn")).toEqual([]);
+  });
+
+  it("prints only the averages before there are 20 rounds to compare", () => {
+    show("threeDays");
+
+    expect(texts(panel("Speed"), ".lab-reading-stat")).toEqual(["Recent average 4.6 s per piece", "Accuracy on the same rounds 92%"]);
+  });
+
+  it("says how many more rounds at the setting draw the line", () => {
+    show("twoRounds");
+
+    expect(texts(panel("Speed"), ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10s in games draw your speed line."]);
+  });
+});

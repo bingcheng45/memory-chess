@@ -157,6 +157,7 @@
 .lab-chart text.lab-c-last-label { fill: var(--lab-ink); font-weight: 600; }
 .lab-chart .lab-c-partial { fill: none; stroke: var(--lab-mint-ink); stroke-width: 2; stroke-dasharray: 5 4; opacity: 0.6; }
 .lab-reading-stat { margin-top: 10px; font: 500 14px/1.45 var(--lab-mono); color: var(--lab-ink); font-variant-numeric: tabular-nums; }
+.lab-speed-warn { margin-top: 10px; font: 600 14px/1.45 var(--lab-sans); color: var(--lab-mark-ink); }
 .lab-legend::before { content: ""; display: inline-block; width: 18px; margin-right: 8px; vertical-align: middle; border-top: 2px dashed var(--lab-mint-ink); opacity: 0.6; }
 .lab-heat { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; margin-top: 14px; max-width: var(--lab-heat-w); }
 .lab-heat i { aspect-ratio: 1; border-radius: 2px; display: block; background: var(--lab-mark); }

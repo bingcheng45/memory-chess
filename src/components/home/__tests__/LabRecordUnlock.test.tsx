@@ -89,6 +89,7 @@ describe("stale panels", () => {
       ["lab-p-span", "Last played 20 days ago. Play a round →"],
       ["lab-p-held", "Last played 20 days ago. Play a round →"],
       ["lab-p-spark", "Last played 20 days ago. Play a round →"],
+      ["lab-p-speed", "Last played 20 days ago. Play a round →"],
       ["lab-p-streak", "Last played 20 days ago. Play a round →"],
       ["lab-p-types", "Last played 20 days ago. Play a round →"],
       ["lab-p-bests", "Last played 20 days ago. Play a round →"],

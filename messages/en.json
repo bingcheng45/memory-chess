@@ -499,8 +499,7 @@
           "realDesc": "Any finished round counts for its day. One missed day a week is forgiven.",
           "need": "Play on {days, plural, one {# more day} other {# more days}} to read your streak.",
           "realAria": "Your last 14 days: {count, plural, one {# day} other {# days}} played{forgiven, plural, =0 {} one {, # forgiven} other {, # forgiven}}.",
-          "realNote": "Current streak {current, plural, one {# day} other {# days}} · longest {longest, plural, one {# day} other {# days}}",
-          "forgiven": "includes {count, plural, one {# forgiven day} other {# forgiven days}}",
+          "realNote": "Current streak {current, plural, one {# day} other {# days}}{forgiven, plural, =0 {} one {, includes # forgiven day} other {, includes # forgiven days}} · longest {longest, plural, one {# day} other {# days}}",
           "key": {
             "played": "played",
             "forgiven": "forgiven",

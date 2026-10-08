@@ -15,7 +15,7 @@ describe("days in a row with a grace day", () => {
     renderWithIntl(<LabRecordSection record={persona("graceStreak")} />);
     const panel = streakPanel();
 
-    expect(within(panel).getByText("Current streak 19 days · longest 19 days · includes 1 forgiven day · From 52 rounds")).toBeInTheDocument();
+    expect(within(panel).getByText("Current streak 19 days, includes 1 forgiven day · longest 19 days · From 52 rounds")).toBeInTheDocument();
     expect(within(panel).getByRole("img", { name: /^Your last 14 days/ })).toHaveAccessibleName("Your last 14 days: 13 days played, 1 forgiven.");
     expect(panel.querySelectorAll('.lab-streak i[data-day="forgiven"]')).toHaveLength(1);
     expect(panel.querySelector(".lab-streak-key")).toHaveTextContent("played forgiven missed today");

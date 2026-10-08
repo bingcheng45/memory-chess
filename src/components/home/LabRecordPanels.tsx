@@ -199,11 +199,6 @@ export function StreakPanel({ result: { readiness, value: streak }, days, today,
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const count = (day: StreakDay) => streak?.window.filter((shown) => shown === day).length ?? 0;
-  const note = streak && [
-    t("streak.realNote", { current: streak.current, longest: streak.longest }),
-    ...(streak.graceUsed ? [t("streak.forgiven", { count: streak.forgivenDays.length })] : []),
-    t("fromRounds", { count: readiness.sampleSize }),
-  ];
 
   return (
     <PanelFrame
@@ -224,7 +219,9 @@ export function StreakPanel({ result: { readiness, value: streak }, days, today,
         <>
           <StreakGrid days={streak.window} label={t("streak.realAria", { count: count("played"), forgiven: count("forgiven") })} />
           <StreakKey />
-          <p className="lab-note">{hasFigure(readiness) ? note?.join(" · ") : t("streak.need", { days: readiness.need?.days ?? 0 })}</p>
+          <p className="lab-note">{hasFigure(readiness)
+              ? `${t("streak.realNote", { current: streak.current, forgiven: streak.forgivenDays.length, longest: streak.longest })} · ${t("fromRounds", { count: readiness.sampleSize })}`
+              : t("streak.need", { days: readiness.need?.days ?? 0 })}</p>
           {today && <LabWeek days={days} today={today} />}
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="streak" />
         </>

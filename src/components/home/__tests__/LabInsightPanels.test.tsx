@@ -78,7 +78,7 @@ describe("insights panel", () => {
     const insights = panel("Insights");
 
     expect(lines(within(insights).getByRole("list"))).toEqual([
-      "At 6 pieces, 10 s your last 10 rounds took 0.5 s less per correct piece than the 10 before, and accuracy fell 9 points.Play 6 pieces, 10 s →",
+      "At 6 pieces, 10 s, your last 10 rounds took 0.5 s less per correct piece than the 10 before, and accuracy fell 9 points.Play 6 pieces, 10 s →",
     ]);
     expect(within(insights).getByText(/Last played 20 days ago\./)).toBeInTheDocument();
   });
@@ -251,7 +251,7 @@ describe("insight sentences", () => {
 
   it("words a plateau with the window and the span", () => {
     expect(t("plateau", { pieceCount: 6, studyTime: "10 s", window: 10, last: 88, before: 87, span: 6 })).toBe(
-      "At 6 pieces, 10 s your last 10 rounds averaged 88% and the 10 before 87%, and your span held at 6 pieces over your last week of play. One more piece may move it.",
+      "At 6 pieces, 10 s, your last 10 rounds averaged 88% and the 10 before 87%, and your span held at 6 pieces over your last week of play. One more piece may move it.",
     );
   });
 });

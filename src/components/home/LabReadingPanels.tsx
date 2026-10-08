@@ -23,14 +23,14 @@ export function SpanPanel({ result: { readiness, value: span }, daysAgo }: Panel
   const steps = span?.history.flatMap(({ pieceCount }) => (pieceCount === null ? [] : [pieceCount])) ?? [];
   const body = !span ? (
     <>
-      <p className="lab-span-figure">{t("figure", { pieceCount: SAMPLE_SPAN[SAMPLE_SPAN.length - 1], seconds: SAMPLE_SPAN_SECONDS })}</p>
+      <p className="lab-span-figure">{t("figure", { pieceCount: SAMPLE_SPAN[SAMPLE_SPAN.length - 1], memorizeSeconds: SAMPLE_SPAN_SECONDS })}</p>
       <p className="lab-span-change" />
       <SpanStaircase steps={SAMPLE_SPAN} label={t("aria")} {...axis} />
       <p className="lab-note">{t("note")}</p>
     </>
   ) : hasFigure(readiness) && span.pieceCount !== null && span.memorizeSeconds !== null ? (
     <>
-      <p className="lab-span-figure">{t("figure", { pieceCount: span.pieceCount, seconds: span.memorizeSeconds })}</p>
+      <p className="lab-span-figure">{t("figure", { pieceCount: span.pieceCount, memorizeSeconds: span.memorizeSeconds })}</p>
       <p className="lab-span-change">{span.change === null ? "" : span.change > 0 ? t("up", { count: span.change }) : t("same")}</p>
       <SpanStaircase
         steps={steps}

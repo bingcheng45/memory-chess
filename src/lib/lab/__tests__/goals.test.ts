@@ -54,12 +54,23 @@ describe("goal progress", () => {
     expect(value?.best).toEqual({ at: records[1].endedAt, localDay: "2026-10-06", pieceCount: 8, accuracy: 100 });
     expect(value?.percent).toBe(100);
   });
+
+  it("counts no round played earlier on the day the goal was set", () => {
+    const early = played("2026-10-07", 8);
+    const late = played("2026-10-07", 8, THREE_OF_FOUR);
+    const { value } = goalOf([early, late], { pieceCount: 8, accuracy: 75, createdDay: "2026-10-07", createdAt: early.endedAt + 1 });
+
+    expect(value?.best).toEqual({ at: late.endedAt, localDay: "2026-10-07", pieceCount: 8, accuracy: 75 });
+    expect(value?.reached).toEqual({ at: late.endedAt, localDay: "2026-10-07", pieceCount: 8, accuracy: 75 });
+  });
 });
 
 describe("stored choices", () => {
   it.each([
     ['{"planId":"edge","startedDay":"2026-10-03"}', { planId: "edge", startedDay: "2026-10-03" }],
     ['{"planId":"baseline","startedDay":"2026-10-03","ended":{"how":"stopped","day":"2026-10-04"}}', { planId: "baseline", startedDay: "2026-10-03", ended: { how: "stopped", day: "2026-10-04" } }],
+    ['{"planId":"edge","startedDay":"2026-10-03","startedAt":1791028800000}', { planId: "edge", startedDay: "2026-10-03", startedAt: 1791028800000 }],
+    ['{"planId":"edge","startedDay":"2026-10-03","startedAt":"noon"}', null],
     ['{"planId":"sprint","startedDay":"2026-10-03"}', null],
     ['{"planId":"edge","startedDay":"2026-02-30"}', null],
     ['{"planId":"edge","startedDay":"2026-10-03","ended":{"how":"stopped","day":"2026-10-01"}}', null],
@@ -71,6 +82,8 @@ describe("stored choices", () => {
 
   it.each([
     ['{"pieceCount":8,"accuracy":85,"createdDay":"2026-10-03"}', { pieceCount: 8, accuracy: 85, createdDay: "2026-10-03" }],
+    ['{"pieceCount":8,"accuracy":85,"createdDay":"2026-10-03","createdAt":1791028800000}', { pieceCount: 8, accuracy: 85, createdDay: "2026-10-03", createdAt: 1791028800000 }],
+    ['{"pieceCount":8,"accuracy":85,"createdDay":"2026-10-03","createdAt":-1}', null],
     ['{"pieceCount":2,"accuracy":85,"createdDay":"2026-10-03"}', null],
     ['{"pieceCount":33,"accuracy":85,"createdDay":"2026-10-03"}', null],
     ['{"pieceCount":8,"accuracy":87,"createdDay":"2026-10-03"}', null],

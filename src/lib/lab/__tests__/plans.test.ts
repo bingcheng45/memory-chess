@@ -158,6 +158,15 @@ describe("plan progress", () => {
   });
 });
 
+describe("a plan started partway through a day", () => {
+  it("counts no round played earlier that day toward the ladder", () => {
+    const earlier = [played("2026-10-07"), played("2026-10-07"), played("2026-10-07")];
+    const plan: StoredPlan = { planId: "ladder", startedDay: "2026-10-07", startedAt: earlier[2].endedAt + 1 };
+
+    expect(plansOf([...earlier, played("2026-10-07")], plan).value).toMatchObject({ run: 1, climbed: false });
+  });
+});
+
 describe("the next rung", () => {
   it.each([
     [{ pieceCount: 6, memorizeSeconds: 10 }, 10, { pieceCount: 6, memorizeSeconds: 8 }],

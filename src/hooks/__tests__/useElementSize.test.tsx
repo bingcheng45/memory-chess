@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { render, screen } from "@testing-library/react";
 import { useElementSize } from "@/hooks/useElementSize";
+import { fakeLayout } from "@/test-utils/layout";
 
 function Measured() {
   const ref = useRef<HTMLDivElement>(null);
@@ -14,7 +15,7 @@ describe("useElementSize", () => {
   });
 
   it("reports the element's laid out size from the first commit, without waiting for a ResizeObserver", () => {
-    jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({ width: 320, height: 180 } as DOMRect);
+    fakeLayout(() => ({ width: 320, height: 180 }));
 
     render(<Measured />);
 

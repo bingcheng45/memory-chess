@@ -1,5 +1,6 @@
 import { render } from "@/test-utils/intl";
 import GamePage from "@/app/[locale]/game/page";
+import { fakeLayout } from "@/test-utils/layout";
 
 const mockStartGame = jest.fn();
 const mockResetGame = jest.fn();
@@ -158,15 +159,14 @@ describe("GamePage header", () => {
 describe("GamePage pinning", () => {
   it("pins the page before the board first measures its room, so the board is never laid out on the unpinned page", () => {
     mockGamePhase = "memorization";
-    const pinnedAtEachMeasure: boolean[] = [];
-    jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(() => {
-      pinnedAtEachMeasure.push(document.body.classList.contains("game-fixed"));
-      return { width: 400, height: 600 } as DOMRect;
-    });
+    fakeLayout(() =>
+      document.body.classList.contains("game-fixed") ? { width: 400, height: 600 } : { width: 1000, height: 1000 },
+    );
 
     render(<GamePage />);
 
-    expect(pinnedAtEachMeasure.length > 0 && pinnedAtEachMeasure.every(Boolean)).toBe(true);
+    const board = document.querySelector<HTMLElement>(".game-container");
+    expect([board?.style.width, board?.style.height]).toEqual(["400px", "400px"]);
   });
 
   it("unpins the page when the round leaves the board", () => {

@@ -30,8 +30,9 @@ export function useElementSize(ref: RefObject<HTMLElement | null>) {
           : { width, height },
       );
 
-    const { width, height } = element.getBoundingClientRect();
-    update(width, height);
+    // The content box, as the observer reports it below. The border box would
+    // disagree with it the moment the element gained padding or a transform.
+    update(element.clientWidth, element.clientHeight);
 
     // Absent in jsdom and in older browsers; the size is then the one read
     // above, kept until the next mount.

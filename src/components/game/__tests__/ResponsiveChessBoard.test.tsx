@@ -1,6 +1,7 @@
 import { render } from "@/test-utils/intl";
 import ResponsiveChessBoard from "@/components/game/ResponsiveChessBoard";
 import { fenToChessPieces } from "@/utils/chessPieces";
+import { fakeLayout } from "@/test-utils/layout";
 
 const BLACK_ROOK_A8_WHITE_KING_H1 = "r7/8/8/8/8/8/8/7K w - - 0 1";
 
@@ -45,7 +46,7 @@ describe("the board's first paint", () => {
   });
 
   it("draws the board at the size of its area on the first commit, so it never grows from zero on screen", () => {
-    jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({ width: 400, height: 520 } as DOMRect);
+    fakeLayout(() => ({ width: 400, height: 520 }));
 
     render(<ResponsiveChessBoard pieces={[]} isInteractive={false} />);
 

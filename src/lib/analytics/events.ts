@@ -12,6 +12,7 @@ export const ROUND_SOURCES = [
   "game_form",
   "tile_drill",
   "try_again",
+  "insight",
   "link",
 ] as const;
 

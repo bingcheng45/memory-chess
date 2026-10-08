@@ -1,4 +1,4 @@
-import { trackEvent, type FunnelEvent } from "@/lib/analytics/events";
+import { roundSourceFrom, trackEvent, type FunnelEvent } from "@/lib/analytics/events";
 
 const EVENTS: FunnelEvent[] = [
   { name: "round_start", params: { piece_count: 6, memorize_time: 10, source: "home_quick" } },
@@ -35,6 +35,15 @@ it.each(EVENTS)("forwards $name to gtag with exactly its params", (event) => {
 
   expect(gtag).toHaveBeenCalledTimes(1);
   expect(gtag).toHaveBeenCalledWith("event", event.name, event.params);
+});
+
+it.each([
+  ["insight", "insight"],
+  ["tile_drill", "tile_drill"],
+  ["server", "link"],
+  [null, "link"],
+])("reads the round link source %p as %p", (value, source) => {
+  expect(roundSourceFrom(value)).toBe(source);
 });
 
 it("does nothing when gtag is absent", () => {

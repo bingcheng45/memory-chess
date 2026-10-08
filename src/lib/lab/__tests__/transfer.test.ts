@@ -114,6 +114,12 @@ describe("lab record export and import", () => {
     expect(parseImport(JSON.stringify(buildExport(rounds, NOW)), NOW)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: null });
   });
 
+  it("round-trips a round started from an insight link", () => {
+    const rounds = [roundV2({ id: "a" }, { startSource: "insight", tzOffsetMin: 0 })];
+
+    expect(parseImport(JSON.stringify(buildExport(rounds, NOW)), NOW)).toMatchObject({ ok: true, rejected: 0, rounds: [{ startSource: "insight" }] });
+  });
+
   it("round-trips a review round and a daily round", () => {
     const rounds = [
       roundV2({ id: "a" }, { kind: "daily", startSource: "link", tzOffsetMin: 0 }),

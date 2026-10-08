@@ -9,6 +9,7 @@ jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
 const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. 6\\.\\d+ · ${name}$`)).closest(".lab-panel") as HTMLElement;
 const texts = (element: HTMLElement, selector: string) => [...element.querySelectorAll(selector)].map((node) => node.textContent);
+const headline = (span: HTMLElement) => texts(span, ".lab-span-figure, .lab-span-held");
 const tagOf = (element: HTMLElement) => element.querySelector(".lab-tag")?.textContent ?? null;
 
 function show(name: PersonaName, today?: string) {
@@ -29,7 +30,7 @@ describe("memory span", () => {
     const span = panel("Memory span");
 
     expect(tagOf(span)).toBe("Sample");
-    expect(within(span).getByText("8 pieces at 10 s")).toHaveClass("lab-span-figure");
+    expect(headline(span)).toEqual(["8 pieces", "Scored 80 percent or better in 3 rounds. Shortest study time among them 10\u00a0s."]);
     expect(within(span).getByRole("img")).toHaveAccessibleName("Sample staircase of memory span over 12 sessions, stepping up from 4 to 8 pieces.");
     expect(texts(span, ".lab-note")).toEqual(["Sample record · 12 sessions"]);
   });
@@ -39,10 +40,10 @@ describe("memory span", () => {
     const span = panel("Memory span");
 
     expect(tagOf(span)).toBe("Your record");
-    expect(within(span).getByText("14 pieces at 10 s")).toHaveClass("lab-span-figure");
+    expect(headline(span)).toEqual(["14 pieces", "Scored 80 percent or better in 19 rounds. Shortest study time among them 10\u00a0s."]);
     expect(within(span).getByText("Up 4 pieces since last week")).toBeInTheDocument();
     expect(within(span).getByRole("img")).toHaveAccessibleName("Your memory span over the 45 sessions since it was first reached, rising from 4 to 14 pieces.");
-    expect(texts(span, ".lab-note")).toEqual(["From 135 rounds · 19 of them at 14 pieces scored 80 percent or better"]);
+    expect(texts(span, ".lab-note")).toEqual(["From 135 rounds"]);
     expect(texts(span, "svg text")).toEqual(["4", "14", "Span first reached", "Latest"]);
   });
 
@@ -50,7 +51,7 @@ describe("memory span", () => {
     show("thirtyDays");
     const span = panel("Memory span");
 
-    expect(within(span).getByText("12 pieces at 8 s")).toBeInTheDocument();
+    expect(headline(span)).toEqual(["12 pieces", "Scored 80 percent or better in 9 rounds. Shortest study time among them 8\u00a0s."]);
     expect(within(span).getByText("No change since last week")).toBeInTheDocument();
     expect(within(span).getByRole("img")).toHaveAccessibleName("Your memory span over the 29 sessions since it was first reached, rising from 6 to 12 pieces.");
   });
@@ -59,7 +60,7 @@ describe("memory span", () => {
     show("threeDays");
     const span = panel("Memory span");
 
-    expect(within(span).getByText("6 pieces at 10 s")).toBeInTheDocument();
+    expect(headline(span)).toEqual(["6 pieces", "Scored 80 percent or better in 11 rounds. Shortest study time among them 10\u00a0s."]);
     expect(span.querySelector(".lab-span-change")?.textContent).toBe("");
     expect(within(span).getByRole("img")).toHaveAccessibleName("Your memory span over the 3 sessions since it was first reached, holding at 6 pieces.");
   });
@@ -91,7 +92,7 @@ describe("memory span", () => {
     show("stale");
     const span = panel("Memory span");
 
-    expect(within(span).getByText("6 pieces at 10 s")).toBeInTheDocument();
+    expect(headline(span)).toEqual(["6 pieces", "Scored 80 percent or better in 26 rounds. Shortest study time among them 10\u00a0s."]);
     expect(texts(span, ".lab-stale")).toEqual(["Last played 20 days ago. Play a round →"]);
   });
 });

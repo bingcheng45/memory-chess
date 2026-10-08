@@ -1,5 +1,5 @@
 import { hasFigure, LAB_THRESHOLDS, readinessOf, type Need, type Readiness } from "./readiness";
-import { localDayOf, ROUND_KINDS, settingKey, type LabSource, type RoundConfig, type RoundKind, type RoundRecord } from "./record";
+import { localDayOf, settingKey, type LabSource, type RoundConfig, type RoundRecord } from "./record";
 import type { LabSummary } from "./summary";
 import { byEndedAt } from "./sessions";
 
@@ -33,11 +33,6 @@ export function shiftDay(day: string, by: number): string {
   const [year, month, date] = day.split("-").map(Number);
   return localDayOf(new Date(year, month - 1, date + by));
 }
-
-/** The daily board and review phases take their kinds out of this set, which keeps those rounds out of every progress line. */
-const TREND_KINDS: ReadonlySet<RoundKind> = new Set(ROUND_KINDS);
-
-export const countsForTrend = (record: RoundRecord): boolean => record.v === 1 || TREND_KINDS.has(record.kind);
 
 export type TrendSetting = Pick<RoundConfig, "pieceCount" | "memorizeSeconds"> & { readonly source: LabSource };
 

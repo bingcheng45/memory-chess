@@ -1,8 +1,8 @@
-import { countsForTrend, type LabInput } from "@/lib/lab/engine";
+import type { LabInput } from "@/lib/lab/engine";
 import { LAB_METRICS } from "@/lib/lab/metrics";
 import type { RoundInput, RoundRecord } from "@/lib/lab/record";
 import { summarize } from "@/lib/lab/summary";
-import { round, roundV2 } from "./fixtures";
+import { round } from "./fixtures";
 
 const THREE = "4k3/8/8/3q4/8/8/8/4K3";
 const HALF = "4k3/8/8/8/8/8/8/4K3";
@@ -14,14 +14,6 @@ const at = (day: string, hour: number) => Date.parse(`${day}T${String(hour).padS
 const input = (records: readonly RoundRecord[], today = TODAY): LabInput => ({ records, summary: summarize(records), today });
 const rounds = (count: number, make: (index: number) => Partial<RoundInput>) =>
   Array.from({ length: count }, (_, index) => round({ id: `r${index}`, endedAt: at(TODAY, 0) + index * HOUR, ...make(index) }));
-
-describe("countsForTrend", () => {
-  it("counts every kind of round until the daily and review phases need to keep theirs out of the progress lines", () => {
-    const kinds = (["normal", "daily", "review"] as const).map((kind) => roundV2({ id: kind }, { kind }));
-
-    expect([round(), ...kinds].map(countsForTrend)).toEqual([true, true, true, true]);
-  });
-});
 
 describe("sessions metric", () => {
   const sessions = (records: readonly RoundRecord[], today = TODAY) => LAB_METRICS.sessions.compute(input(records, today));

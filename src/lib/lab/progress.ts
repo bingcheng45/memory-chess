@@ -1,6 +1,5 @@
 import {
   busiestSetting,
-  countsForTrend,
   distinctDays,
   hundredths,
   mean,
@@ -17,7 +16,7 @@ import { LAB_THRESHOLDS } from "./readiness";
 import type { RoundRecord } from "./record";
 import { byEndedAt, sessionRuns, sessionsOf, type Session } from "./sessions";
 
-const trendRounds = (input: LabInput) => byEndedAt(input.records.filter(countsForTrend));
+const trendRounds = (input: LabInput) => byEndedAt(input.records);
 
 export interface RecentChange {
   /** Mean of the last 10 rounds, or of every round when there are fewer. */

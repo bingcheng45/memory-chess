@@ -1,7 +1,6 @@
 import type { PieceSymbol } from "chess.js";
 import {
   busiestSetting,
-  countsForTrend,
   hundredths,
   mean,
   measured,
@@ -131,7 +130,7 @@ function sessionAccuracy(records: readonly RoundRecord[], { source, pieceCount, 
 }
 
 function computeTrend(input: LabInput): MetricResult<TrendValue> {
-  const records = input.records.filter(countsForTrend);
+  const { records } = input;
   const { rounds, readiness } = busiestSetting(input, records, TREND_THRESHOLDS);
 
   return measured(readiness, () => {

@@ -6,7 +6,7 @@
  * is the baseline a later change diffs against, so "renders the same for every
  * player" is a command, not an eyeball. Fails on horizontal overflow, an
  * unexpected console error, or server-rendered main-content text that a
- * stylesheet hides at any of HIDDEN_WIDTHS: the AdSense audit reads served HTML
+ * stylesheet hides at any of BREAKPOINT_WIDTHS: the AdSense audit reads served HTML
  * only, so it cannot see a rule like `li + li { display: none }`.
  *
  *   npm run lab:personas && npm run lab:drive -- --base http://localhost:3121 --out <dir> [--compare <snapshot.json>] [--only <persona>]
@@ -23,8 +23,8 @@ const HARNESS = ".claude/skills/verify-memory-chess/helpers/cdp.mjs";
 const WIDTHS = [1440, 390];
 export const PERSONA_ENV = "LAB_DRIVE_PERSONA";
 const TEXT_FILE = "text.json";
-// Each side of the CSS breakpoints §06 and the page use: 640, 720, 860 and 1000.
-const HIDDEN_WIDTHS = [320, 390, 640, 641, 768, 1000, 1024, 1440];
+// Phones from the narrowest up, then both sides of the 640px and 1000px breakpoints the §06 layout changes at.
+export const BREAKPOINT_WIDTHS = [320, 360, 390, 640, 641, 768, 1000, 1024, 1440];
 // Hidden before this check existed, outside the lab record: on phones the tiers table moves its header words into
 // each cell's label. Listed so the run stays green while any new hidden text fails it.
 const KNOWN_HIDDEN = [".lab-proto thead"];
@@ -73,12 +73,16 @@ const HIDDEN_TEXT = `(() => {
   return hidden;
 })()`;
 
+export async function sized(page, width) {
+  await page.send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 600 });
+}
+
 /** Loads the server render with scripts off at each width and lists the text a stylesheet hides there. */
 async function serverHiddenText(page, baseUrl) {
   await page.send("Emulation.setScriptExecutionDisabled", { value: true });
   const hidden = {};
-  for (const width of HIDDEN_WIDTHS) {
-    await page.send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 600 });
+  for (const width of BREAKPOINT_WIDTHS) {
+    await sized(page, width);
     await page.goto(`${baseUrl}/`);
     const text = await page.eval(HIDDEN_TEXT);
     if (text.length > 0) hidden[width] = text;

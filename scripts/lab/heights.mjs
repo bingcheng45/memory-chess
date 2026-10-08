@@ -13,12 +13,10 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { argsOf, importFile, PERSONA_ENV, runPersona } from "./drive.mjs";
+import { argsOf, BREAKPOINT_WIDTHS as WIDTHS, importFile, PERSONA_ENV, runPersona, sized } from "./drive.mjs";
 
 const DATA_FILE = "src/components/home/lab-heights.json";
 const RAW_FILE = "heights.json";
-// Both sides of each breakpoint, so a tier's reserve covers its narrowest and widest layouts.
-const WIDTHS = [320, 360, 390, 640, 641, 768, 1000, 1024, 1440];
 // The CSS breakpoints the reserves change at: max-width 640px and max-width 1000px.
 const tierOf = (width) => (width <= 640 ? "narrow" : width <= 1000 ? "medium" : "wide");
 const BOXES = ["unlock", "span", "held", "spark", "speed", "heat", "streak", "bests", "types", "tools"];
@@ -35,10 +33,6 @@ const MEASURE = `(() => {
   style.remove();
   return result;
 })()`;
-
-async function sized(page, width) {
-  await page.send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 600 });
-}
 
 export default async function measure(page, { baseUrl, evidenceDir }) {
   const personaFile = process.env[PERSONA_ENV];

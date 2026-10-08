@@ -168,7 +168,8 @@ function PlanCard({ planId, progress, running, choosing, announce }: PlanCardPro
     if (running) return <p className="lab-note">{t("busy", { title: t(`${running}.title`) })}</p>;
     if (!progress || progress.status.kind !== "active") {
       const first = startRung(planId, choosing.records);
-      // A link, since starting opens the plan's first round; the plan is stored on the way, so a new tab starts it too.
+      // A link, since starting opens the plan's first round. The plan is stored on click, which a middle click into a
+      // new tab skips, so that tab plays the round without starting the plan.
       return (
         <Link className="lab-btn lab-btn-secondary" href={playHref(first.pieceCount, first.memorizeSeconds, "plan")} onClick={start}>
           {t(progress ? "again" : "start", { title })}

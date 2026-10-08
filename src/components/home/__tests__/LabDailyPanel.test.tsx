@@ -53,54 +53,48 @@ describe("today's board panel", () => {
     expect(playLink()).not.toBeInTheDocument();
   });
 
-  it("shows the result, the share grid and a clear end to today's try once the board is played", () => {
+  it("shows the result in a few lines once the board is played, with the board grid folded away", () => {
     render(<DailyPanel records={[daily("2026-10-08"), daily("2026-10-09", MISSED_QUEEN)]} ready />);
 
     expect(screen.getByText("You placed 5 of 6 pieces right, 83 percent.")).toBeInTheDocument();
-    expect(screen.getByText("Today's board is done. One try per day on this device.")).toBeInTheDocument();
     expect(screen.getByText("Daily streak 2 days · longest 2 days")).toBeInTheDocument();
-    expect(screen.getByRole("img", { name: "Your result on each square, a8 first: 5 correct, 0 wrong pieces, 1 missed, 0 extra." })).toHaveTextContent(
+    expect(screen.getByRole("button", { name: "Copy result" })).toBeInTheDocument();
+    expect(screen.getByText("Resets in 5 h 12 min")).toBeInTheDocument();
+    const grid = screen.getByRole("img", { name: "Your result on each square, a8 first: 5 correct, 0 wrong pieces, 1 missed, 0 extra." });
+    expect(grid.closest("details")).not.toHaveAttribute("open");
+    expect(screen.getByText("Show the grid").tagName).toBe("SUMMARY");
+    expect(grid).toHaveTextContent(
       "⬜⬜⬜⬜⬜⬜⬜⬜ ⬜⬜⬜⬜⬜⬜⬜⬜ ⬜⬜⬜⬜⬜⬜⬜⬜ ⬜🟩🟥⬜⬜⬜⬜🟩 🟩⬜⬜🟩⬜⬜⬜⬜ ⬜⬜⬜⬜⬜⬜⬜⬜ ⬜⬜⬜⬜⬜⬜⬜⬜ ⬜🟩⬜⬜⬜⬜⬜⬜".replaceAll(" ", "\n"),
       { normalizeWhitespace: false },
     );
     expect(playLink()).not.toBeInTheDocument();
   });
 
-  it("copies the result as text only when the player asks", async () => {
+  it("keeps the longest daily streak in view after the current one ends", () => {
+    render(<DailyPanel records={[daily("2026-10-01"), daily("2026-10-02"), daily("2026-10-03")]} ready />);
+
+    expect(screen.getByText("Longest daily streak 3 days")).toBeInTheDocument();
+  });
+
+  it("copies the result as one cell per piece in outcome order, never where the pieces stood", async () => {
     const writeText = jest.fn(() => Promise.resolve());
     Object.assign(navigator, { clipboard: { writeText } });
     render(<DailyPanel records={[daily("2026-10-09", MISSED_QUEEN)]} ready />);
 
     await act(async () => fireEvent.click(screen.getByRole("button", { name: "Copy result" })));
 
-    expect(writeText.mock.calls).toEqual([
-      [
-        [
-          "Memory Chess daily board 2026-10-09",
-          "5 of 6 right, 83%",
-          "⬜⬜⬜⬜⬜⬜⬜⬜",
-          "⬜⬜⬜⬜⬜⬜⬜⬜",
-          "⬜⬜⬜⬜⬜⬜⬜⬜",
-          "⬜🟩🟥⬜⬜⬜⬜🟩",
-          "🟩⬜⬜🟩⬜⬜⬜⬜",
-          "⬜⬜⬜⬜⬜⬜⬜⬜",
-          "⬜⬜⬜⬜⬜⬜⬜⬜",
-          "⬜🟩⬜⬜⬜⬜⬜⬜",
-          "thememorychess.com",
-        ].join("\n"),
-      ],
-    ]);
+    expect(writeText.mock.calls).toEqual([["Memory Chess daily board 2026-10-09\n5 of 6 right, 83%\n🟩🟩🟩🟩🟩🟥\nthememorychess.com"]]);
     expect(screen.getByRole("status")).toHaveTextContent("Copied. Paste it anywhere.");
   });
 
-  it("says how to copy by hand where the clipboard is refused", async () => {
+  it("selects the result text to copy by hand where the clipboard is refused", async () => {
     Object.assign(navigator, { clipboard: { writeText: () => Promise.reject(new Error("denied")) } });
-    render(<DailyPanel records={[daily("2026-10-09")]} ready />);
+    render(<DailyPanel records={[daily("2026-10-09", MISSED_QUEEN)]} ready />);
 
     await act(async () => fireEvent.click(screen.getByRole("button", { name: "Copy result" })));
 
-    expect(screen.getByRole("status")).toHaveTextContent("Copy did not work here. The grid is selected, so copy it yourself.");
-    expect(window.getSelection()?.toString()).toContain("🟩🟩");
+    expect(screen.getByRole("status")).toHaveTextContent("Copy did not work here. The result is selected below, so copy it yourself.");
+    expect(window.getSelection()?.toString()).toBe("Memory Chess daily board 2026-10-09\n5 of 6 right, 83%\n🟩🟩🟩🟩🟩🟥\nthememorychess.com");
   });
 
   it("opens the next board once midnight UTC passes, without a reload", () => {

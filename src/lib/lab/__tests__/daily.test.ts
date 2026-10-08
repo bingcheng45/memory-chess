@@ -1,4 +1,4 @@
-import { dailyBoardOf, msToNextUtcDay, shareGrid, utcDayOf } from "@/lib/lab/daily";
+import { boardGrid, dailyBoardOf, msToNextUtcDay, shareRow, utcDayOf } from "@/lib/lab/daily";
 import { personaRounds, PERSONA_TODAY } from "@/lib/lab/personas";
 import { round, roundV2 } from "./fixtures";
 
@@ -64,11 +64,11 @@ describe("today's daily board on this device", () => {
   });
 });
 
-describe("the share grid", () => {
+describe("the player's own board grid", () => {
   it("draws the 64 squares as eight rows of eight, a8 first, without naming a piece", () => {
     const squares = `${"c".padEnd(8, ".")}${".".repeat(8)}${"...m....".repeat(1)}${".".repeat(16)}${"......w."}${".".repeat(8)}${"x......c"}`;
 
-    expect(shareGrid(squares)).toBe(
+    expect(boardGrid(squares)).toBe(
       [
         "🟩⬜⬜⬜⬜⬜⬜⬜",
         "⬜⬜⬜⬜⬜⬜⬜⬜",
@@ -80,6 +80,19 @@ describe("the share grid", () => {
         "🟧⬜⬜⬜⬜⬜⬜🟩",
       ].join("\n"),
     );
+  });
+});
+
+describe("the shared result row", () => {
+  it("gives one cell per piece in outcome order, correct first, never in square order", () => {
+    const squares = `x${".".repeat(9)}m${".".repeat(20)}c${".".repeat(10)}w${".".repeat(5)}c${".".repeat(9)}cc...c`;
+
+    expect(shareRow(squares)).toBe("🟩🟩🟩🟩🟩🟨🟥🟧");
+  });
+
+  it("reads the same for two boards with the same outcomes on different squares", () => {
+    expect(shareRow(`cm${".".repeat(62)}`)).toBe("🟩🟥");
+    expect(shareRow(`${".".repeat(62)}mc`)).toBe("🟩🟥");
   });
 });
 

@@ -21,7 +21,7 @@ export interface StreakValue {
 }
 
 /** One missed day is forgiven per rolling week: two forgiven days in one run are at least this many days apart. */
-export const GRACE_GAP_DAYS = 7;
+const GRACE_GAP_DAYS = 7;
 
 const EPOCH = "1970-01-01";
 const dayNumber = (day: string) => daysBetween(EPOCH, day);

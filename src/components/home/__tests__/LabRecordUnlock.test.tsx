@@ -91,6 +91,15 @@ describe("unlock strip", () => {
     ]);
   });
 
+  it("asks for a round with a piece right before speed can count rounds at a setting", () => {
+    const records = Array.from({ length: 3 }, (_, index) =>
+      round({ id: `blank${index}`, placedFen: "8/8/8/8/8/8/8/8", localDay: "2026-10-08", endedAt: Date.UTC(2026, 9, 8, 9 + index) }),
+    );
+    renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor"), records, summary: summarize(records) }} />);
+
+    expect(items()).toContain("Speed: 1 round with at least one piece right.");
+  });
+
   it("drops the streak and piece recall lines exactly when their copy says they unlock", () => {
     const queenOnly = "4k3/8/8/3q4/8/8/8/4K3";
     const records = Array.from({ length: 20 }, (_, index) =>

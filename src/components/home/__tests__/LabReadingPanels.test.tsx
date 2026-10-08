@@ -1,7 +1,9 @@
 import { renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
 import type { PersonaName } from "@/lib/lab/personas";
+import { summarize } from "@/lib/lab/summary";
 import { persona } from "@/test-utils/labPersona";
+import { round } from "@/lib/lab/__tests__/fixtures";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
@@ -11,6 +13,14 @@ const tagOf = (element: HTMLElement) => element.querySelector(".lab-tag")?.textC
 
 function show(name: PersonaName, today?: string) {
   renderWithIntl(<LabRecordSection record={persona(name, today)} />);
+}
+
+/** Three rounds today with nothing placed right. */
+function showNothingRight() {
+  const records = Array.from({ length: 3 }, (_, index) =>
+    round({ id: `blank${index}`, placedFen: "8/8/8/8/8/8/8/8", localDay: "2026-10-08", endedAt: Date.UTC(2026, 9, 8, 9 + index) }),
+  );
+  renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor"), records, summary: summarize(records) }} />);
 }
 
 describe("memory span", () => {
@@ -178,6 +188,25 @@ describe("speed", () => {
     show("twoRounds");
 
     expect(texts(panel("Speed"), ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10s in games draw your speed line."]);
+  });
+
+  it("reads as the player's record, not a Sample, when no round so far had a piece right", () => {
+    showNothingRight();
+    const speed = panel("Speed");
+
+    expect(tagOf(speed)).toBe("Your record");
+    expect(within(speed).queryByRole("img")).toBeNull();
+    expect(texts(speed, ".lab-empty")).toEqual(["Speed reads only rounds with at least one piece right. Play 1 such round to start your line."]);
+  });
+});
+
+describe("a player whose rounds so far had nothing right", () => {
+  it("sees span and pieces held warming as their own record, not a Sample", () => {
+    showNothingRight();
+
+    expect([tagOf(panel("Memory span")), tagOf(panel("Pieces held"))]).toEqual(["Your record", "Your record"]);
+    expect(texts(panel("Memory span"), ".lab-empty")).toEqual(["Score 80 percent or better twice at one size of 3 or more pieces."]);
+    expect(texts(panel("Pieces held"), ".lab-empty")).toEqual(["2 more rounds, at least one on another day, draw your line."]);
   });
 });
 

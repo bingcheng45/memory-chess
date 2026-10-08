@@ -45,13 +45,35 @@ describe("lab notebook", () => {
   });
 
   it("keeps only the newest 20 entries", () => {
-    const rounds = Array.from({ length: 40 }, (_, index) => played(`p${index}`, 1, index, index % 2 === 1, 20_000 - index * 100));
+    const rounds = Array.from({ length: 120 }, (_, index) => played(`p${index}`, 1, index, index % 2 === 1, 20_000 - index * 100));
 
     const entries = notebookEntries(rounds, summarize(rounds));
 
-    expect(entries).toHaveLength(20);
-    expect(entries[0]).toEqual({ at: at(1, 39), kind: "best", params: { day: 1, source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, previous: 100, by: "time", solveSeconds: 16.1 } });
-    expect(entries.at(-1)).toEqual({ at: at(1, 5), kind: "best", params: { day: 1, source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, previous: 100, by: "time", solveSeconds: 19.5 } });
+    expect(entries.map(({ kind }) => kind)).toEqual([
+      "span", "best", "best", "best", "rounds", "best", "best", "best", "best", "best",
+      "best", "best", "best", "rounds", "best", "best", "best", "best", "best", "best",
+    ]);
+    expect(entries[1]).toEqual({ at: at(1, 115), kind: "best", params: { day: 1, source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, previous: 100, by: "time", solveSeconds: 8.5 } });
+    expect(entries.at(-1)).toEqual({ at: at(1, 19), kind: "best", params: { day: 1, source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, previous: 100, by: "time", solveSeconds: 18.1 } });
+  });
+
+  it("writes a best only for a point more accuracy, or the same accuracy rebuilt at least half a second faster than the last best written", () => {
+    const rounds = [
+      played("b1", 1, 0, true, 20_000),
+      played("b2", 1, 1, true, 19_600),
+      played("b3", 1, 2, true, 19_500),
+      played("b4", 1, 3, true, 19_100),
+    ];
+
+    expect(notebookEntries(rounds, summarize(rounds)).filter(({ kind }) => kind === "best")).toEqual([
+      { at: at(1, 2), kind: "best", params: { day: 1, source: "game", pieceCount: 4, memorizeSeconds: 10, accuracy: 100, previous: 100, by: "time", solveSeconds: 19.5 } },
+    ]);
+  });
+
+  it("writes no first reading at 90 percent for the very first round, which has its own entry", () => {
+    const rounds = [played("f1", 1, 0, true), played("f2", 1, 1, true)];
+
+    expect(notebookEntries(rounds, summarize(rounds)).map(({ kind }) => kind)).toEqual(["span", "firstRound"]);
   });
 
   it("writes only round counts and streaks when older rounds were evicted, and counts the evicted rounds in", () => {

@@ -173,7 +173,12 @@ const secondsPerPiece = ({ solveMs, correct }: RoundRecord) => solveMs / correct
 
 /** Rounds with nothing correct have no time per piece, so they are left out. */
 export function computeSpeed(input: LabInput): MetricResult<SpeedValue> {
-  const { rounds, readiness } = busiestSetting(input, trendRounds(input).filter(({ correct }) => correct > 0), SPEED_THRESHOLDS);
+  const { rounds, readiness } = busiestSetting(
+    input,
+    trendRounds(input).filter(({ correct }) => correct > 0),
+    SPEED_THRESHOLDS,
+    LAB_THRESHOLDS.speedSettingRounds,
+  );
 
   return measured(readiness, () => {
     const shown = rounds.slice(-Math.max(LAB_THRESHOLDS.trendPoints, 2 * LAB_THRESHOLDS.rollingWindow));

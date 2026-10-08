@@ -63,21 +63,28 @@ function groupOf(input: LabInput, rounds: readonly RoundRecord[], thresholds: Ne
 }
 
 /**
- * One setting only, since mixing settings would read harder rounds as decline. A setting that can draw wins over
- * one with more rounds that cannot, then most rounds, then most recent.
+ * One setting only, since mixing settings would read harder rounds as decline. Settings are ranked on the last
+ * `window` rounds, so an abandoned setting does not win on its old count: a setting that can draw wins over one that
+ * cannot, then most rounds in the window, then most recent. The chosen group holds every round at its setting.
  */
-export function busiestSetting(input: LabInput, records: readonly RoundRecord[], thresholds: Need): SettingGroup {
+export function busiestSetting(input: LabInput, records: readonly RoundRecord[], thresholds: Need, window = Infinity): SettingGroup {
+  const keyOf = (record: RoundRecord) => settingKey(record.source, record.config);
+  const inWindow = new Map<string, number>();
+  byEndedAt(records)
+    .slice(-window)
+    .forEach((record) => inWindow.set(keyOf(record), (inWindow.get(keyOf(record)) ?? 0) + 1));
   const bySetting = new Map<string, RoundRecord[]>();
   records.forEach((record) => {
-    const key = settingKey(record.source, record.config);
+    const key = keyOf(record);
+    if (!inWindow.has(key)) return;
     const group = bySetting.get(key);
     if (group) group.push(record);
     else bySetting.set(key, [record]);
   });
   const { rounds, readiness } =
-    [...bySetting.values()]
-      .map((group) => groupOf(input, group, thresholds))
-      .sort((a, b) => Number(b.ready) - Number(a.ready) || b.rounds.length - a.rounds.length || b.latest - a.latest)[0] ??
+    [...bySetting]
+      .map(([key, group]) => ({ ...groupOf(input, group, thresholds), recent: inWindow.get(key) ?? 0 }))
+      .sort((a, b) => Number(b.ready) - Number(a.ready) || b.recent - a.recent || b.latest - a.latest)[0] ??
     groupOf(input, [], thresholds);
   return { rounds: byEndedAt(rounds), readiness };
 }

@@ -12,6 +12,7 @@ export const LAB_THRESHOLDS = {
   spanAccuracy: 80,
   spanRounds: 2,
   spanMinPieces: 3,
+  speedSettingRounds: 20,
   rollingWindow: 10,
   movingAverage: 5,
 } as const;

@@ -47,6 +47,13 @@ describe("streak wording", () => {
   ])("words the note for %o", (params, note) => {
     expect(t("realNote", params)).toBe(note);
   });
+
+  it.each([
+    [0, "Goal can't be met with no days left. A new week starts Monday."],
+    [1, "Goal can't be met with 1 day left. A new week starts Monday."],
+  ])("words an out of reach week with %i days left", (daysLeft, line) => {
+    expect(createTranslator({ locale: "en", messages: en, namespace: "home.lab.record.week" })("outOfReach", { daysLeft })).toBe(line);
+  });
 });
 
 describe("streak chip in the index bar", () => {
@@ -111,7 +118,7 @@ describe("week ring", () => {
   it("says when the goal can no longer be met this week, rather than asking for more days than are left", () => {
     renderWithIntl(<LabRecordSection record={persona("stale")} />);
 
-    expect(within(streakPanel()).getByText("5 more days needed and only 4 left this week, so the goal can't be met. A new week starts Monday.")).toBeInTheDocument();
+    expect(within(streakPanel()).getByText("Goal can't be met with 4 days left. A new week starts Monday.")).toBeInTheDocument();
   });
 
   it("shows a Sample ring and no goal picker before the first round", () => {

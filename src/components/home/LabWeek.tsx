@@ -24,7 +24,7 @@ export function LabWeek({ days, today }: { readonly days: readonly string[]; rea
   const [goal, setGoal] = useWeekGoal();
   const { daysPlayed, remaining, daysLeft } = weekProgress(days, today, goal);
   const label = daysPlayed > goal ? t("ringOver", { played: daysPlayed }) : t("ring", { played: daysPlayed, goal });
-  const left = daysPlayed > goal ? null : remaining > daysLeft ? t("outOfReach", { remaining, daysLeft }) : t("left", { remaining });
+  const left = daysPlayed > goal ? null : remaining > daysLeft ? t("outOfReach", { daysLeft }) : t("left", { remaining });
   const groupLabel = useId();
 
   return (

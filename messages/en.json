@@ -514,7 +514,7 @@
           "ringOver": "Goal met, {played} days this week",
           "sampleRing": "Sample week · {played} of {goal} days",
           "left": "{remaining, plural, =0 {Goal met this week.} one {# more day to meet your goal.} other {# more days to meet your goal.}}",
-          "outOfReach": "{remaining, plural, one {# more day} other {# more days}} needed and {daysLeft, plural, =0 {none} one {only # left} other {only # left}} this week, so the goal can't be met. A new week starts Monday.",
+          "outOfReach": "Goal can't be met with {daysLeft, plural, =0 {no days} one {# day} other {# days}} left. A new week starts Monday.",
           "goal": "Days a week",
           "option": "{days} days a week"
         },

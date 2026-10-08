@@ -46,7 +46,8 @@ export function SpanPanel({ result: { readiness, value: span }, daysAgo }: Panel
   const t = useTranslations("home.lab.record.span");
   const axis = { first: t("first"), last: t("last") };
   const steps = span?.history.flatMap(({ pieceCount }) => (pieceCount === null ? [] : [pieceCount])) ?? [];
-  const weekChange = span?.change == null ? "" : span.change > 0 ? t("up", { count: span.change }) : t("same");
+  // A week measured back from the newest round; once stale that week is long past, so the change is left out.
+  const weekChange = span?.change == null || readiness.state !== "ready" ? "" : span.change > 0 ? t("up", { count: span.change }) : t("same");
 
   const body = () => {
     if (!span) {

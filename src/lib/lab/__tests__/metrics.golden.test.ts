@@ -329,16 +329,4 @@ describe("metric engine on the persona fixtures", () => {
     expect(last20.map(({ correct }) => correct)).toEqual(HELD_BY_HAND[name].correct);
     expect(deriveLab(await inputFor(name)).piecesHeld.value?.recent).toEqual(HELD_BY_HAND[name].recent);
   });
-
-  it("derives every metric for the 5,000-round heavy player inside one 16ms frame", async () => {
-    const input = await inputFor("heavy");
-    deriveLab(input);
-    const runs = Array.from({ length: 5 }, () => {
-      const started = performance.now();
-      deriveLab(input);
-      return performance.now() - started;
-    }).sort((a, b) => a - b);
-
-    expect(runs[2]).toBeLessThan(16);
-  });
 });

@@ -1,6 +1,6 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import { busiestSetting, hundredths, mean, measured, readinessFor, settingOf, TREND_THRESHOLDS, type LabInput, type MetricResult, type TrendSetting } from "./engine";
-import { computeSpan, computeSpeed } from "./progress";
+import type { SpanValue, SpeedValue } from "./progress";
 import { hasFigure, LAB_THRESHOLDS, type Need } from "./readiness";
 import { PIECE_LETTERS } from "./record";
 import type { ColorCounts } from "./summary";
@@ -35,7 +35,13 @@ interface InsightRule {
   readonly priority: number;
   /** The least evidence the rule reads, as the unlock and readiness needs name it; `evaluate` returns null below it. */
   readonly minSample: Need;
-  evaluate(input: LabInput): Finding | null;
+  evaluate(input: LabInput, prior: InsightPrior): Finding | null;
+}
+
+/** Metrics the rules read, computed once by the registry and passed in. */
+export interface InsightPrior {
+  readonly span: MetricResult<SpanValue>;
+  readonly speed: MetricResult<SpeedValue>;
 }
 
 export interface InsightsValue {
@@ -130,8 +136,8 @@ const fasterLessAccurate: InsightRule = {
   id: "fasterLessAccurate",
   priority: 2,
   minSample: { rounds: TWO_WINDOWS },
-  evaluate(input) {
-    const speed = computeSpeed(input).value;
+  evaluate(_input, prior) {
+    const speed = prior.speed.value;
     const pace = speed?.recent.change;
     const accuracy = speed?.accuracyAtSameRounds.recent.change;
     if (!speed || pace == null || accuracy == null || -pace < FASTER_SECONDS || -accuracy < ACCURACY_FALL_POINTS) return null;
@@ -174,7 +180,7 @@ const plateau: InsightRule = {
   id: "plateau",
   priority: 3,
   minSample: { rounds: TWO_WINDOWS },
-  evaluate(input) {
+  evaluate(input, prior) {
     const { rounds } = busiestSetting(input, input.records, TREND_THRESHOLDS, TWO_WINDOWS);
     const window = LAB_THRESHOLDS.rollingWindow;
     if (rounds.length < TWO_WINDOWS) return null;
@@ -182,7 +188,7 @@ const plateau: InsightRule = {
     const last = mean(accuracy.slice(-window));
     const before = mean(accuracy.slice(-2 * window, -window));
     const moved = Math.abs(last - before);
-    const span = computeSpan(input).value;
+    const span = prior.span.value;
     const setting = settingOf(rounds[rounds.length - 1]);
     if (moved > PLATEAU_POINTS || span?.change !== 0 || span.pieceCount !== setting.pieceCount || span.pieceCount >= PIECE_COUNT_RANGE.max) return null;
     return {
@@ -195,13 +201,13 @@ const plateau: InsightRule = {
 
 export const INSIGHT_RULES: readonly InsightRule[] = [edgeFiles, weakType, fasterLessAccurate, colourGap, plateau];
 
-export function computeInsights(input: LabInput): MetricResult<InsightsValue> {
+export function computeInsights(input: LabInput, prior: InsightPrior): MetricResult<InsightsValue> {
   const { rounds } = input.summary;
   const readiness = readinessFor(input, { sampleSize: rounds, have: { rounds }, thresholds: INSIGHTS_THRESHOLDS });
   return measured(readiness, () => {
     if (!hasFigure(readiness)) return { insights: [] };
     const found = INSIGHT_RULES.flatMap((rule) => {
-      const finding = rule.evaluate(input);
+      const finding = rule.evaluate(input, prior);
       return finding ? [{ rule, insight: { ruleId: rule.id, ...finding } }] : [];
     });
     found.sort((a, b) => a.rule.priority - b.rule.priority || b.insight.strength - a.insight.strength);

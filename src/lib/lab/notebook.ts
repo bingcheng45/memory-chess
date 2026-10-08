@@ -1,5 +1,5 @@
 import { measured, readinessFor, shiftDay, type LabInput, type MetricResult } from "./engine";
-import { computeSpan } from "./progress";
+import { computeSpan, type SpanStep, type SpanValue } from "./progress";
 import { daysBetween } from "./readiness";
 import { settingKey, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
@@ -41,6 +41,7 @@ interface History {
   readonly before: number | null;
   /** The summary keeps the last 400 days played, so past that its first day is not the player's. */
   readonly allDays: boolean;
+  readonly spanHistory: readonly SpanStep[];
 }
 
 interface Draft {
@@ -103,10 +104,10 @@ function bestImprovements(rounds: readonly RoundRecord[]): Draft[] {
   });
 }
 
-function spanSteps({ rounds, summary }: History): Draft[] {
+function spanSteps({ rounds, spanHistory }: History): Draft[] {
   const byEnd = new Map(rounds.map((record) => [record.endedAt, record]));
   let held: number | null = null;
-  return (computeSpan({ records: rounds, summary, today: "" }).value?.history ?? []).flatMap(({ endedAt, pieceCount }) => {
+  return spanHistory.flatMap(({ endedAt, pieceCount }) => {
     const record = byEnd.get(endedAt);
     if (pieceCount === null || pieceCount === held || !record) return [];
     const from = held ?? 0;
@@ -150,12 +151,19 @@ const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
   streak: { needs: "allDays", drafts: streakMilestones },
 };
 
-function historyOf(records: readonly RoundRecord[], summary: LabSummary): History {
+function historyOf(records: readonly RoundRecord[], summary: LabSummary, span: MetricResult<SpanValue>): History {
   const rounds = byEndedAt(records);
   const missing = Math.max(0, summary.rounds - rounds.length);
   const { evictedThrough } = summary;
   const evicted = evictedThrough !== null && rounds.every(({ endedAt }) => endedAt > evictedThrough);
-  return { rounds, summary, missing, before: missing === 0 ? 0 : evicted ? missing : null, allDays: summary.days.length < MAX_DAYS };
+  return {
+    rounds,
+    summary,
+    missing,
+    before: missing === 0 ? 0 : evicted ? missing : null,
+    allDays: summary.days.length < MAX_DAYS,
+    spanHistory: span.value?.history ?? [],
+  };
 }
 
 function entriesOf(history: History): NotebookEntry[] {
@@ -174,13 +182,15 @@ function entriesOf(history: History): NotebookEntry[] {
     .slice(0, NOTEBOOK_LIMIT);
 }
 
-export const notebookEntries = (records: readonly RoundRecord[], summary: LabSummary): NotebookEntry[] => entriesOf(historyOf(records, summary));
+export const notebookEntries = (records: readonly RoundRecord[], summary: LabSummary): NotebookEntry[] =>
+  entriesOf(historyOf(records, summary, computeSpan({ records, summary, today: "" })));
 
-export function computeNotebook(input: LabInput): MetricResult<NotebookValue> {
+/** `span` is the span metric over the same input, so its history is not recomputed. */
+export function computeNotebook(input: LabInput, span: MetricResult<SpanValue>): MetricResult<NotebookValue> {
   const { rounds } = input.summary;
   const readiness = readinessFor(input, { sampleSize: rounds, have: { rounds }, thresholds: NOTEBOOK_THRESHOLDS });
   return measured(readiness, () => {
-    const history = historyOf(input.records, input.summary);
+    const history = historyOf(input.records, input.summary, span);
     const oldest = history.rounds[0];
     return {
       entries: entriesOf(history),

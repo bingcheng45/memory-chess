@@ -55,7 +55,7 @@
       "notebook": 609,
       "plans": 1284,
       "goal": 449,
-      "daily": 754,
+      "daily": 483,
       "tools": 360
     },
     "medium": {
@@ -72,7 +72,7 @@
       "notebook": 430,
       "plans": 955,
       "goal": 314,
-      "daily": 475,
+      "daily": 343,
       "tools": 496
     },
     "wide": {
@@ -89,7 +89,7 @@
       "notebook": 393,
       "plans": 481,
       "goal": 291,
-      "daily": 452,
+      "daily": 319,
       "tools": 196
     }
   },

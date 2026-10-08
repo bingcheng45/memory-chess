@@ -1,5 +1,7 @@
 import { boardGrid, dailyBoardOf, msToNextUtcDay, shareRow, utcDayOf } from "@/lib/lab/daily";
+import { LAB_METRICS } from "@/lib/lab/metrics";
 import { personaRounds, PERSONA_TODAY } from "@/lib/lab/personas";
+import { summarize } from "@/lib/lab/summary";
 import { round, roundV2 } from "./fixtures";
 
 const daily = (dailyDay: string, overrides: Parameters<typeof roundV2>[0] = {}) =>
@@ -93,6 +95,21 @@ describe("the shared result row", () => {
   it("reads the same for two boards with the same outcomes on different squares", () => {
     expect(shareRow(`cm${".".repeat(62)}`)).toBe("🟩🟥");
     expect(shareRow(`${".".repeat(62)}mc`)).toBe("🟩🟥");
+  });
+});
+
+describe("a daily round beside a player's usual setting", () => {
+  it("leaves the trend and the speed chart on Hard for a player who plays two Hard rounds a day and the daily board last", () => {
+    const days = Array.from({ length: 10 }, (_, index) => `2026-09-${String(20 + index).padStart(2, "0")}`);
+    const records = days.flatMap((day) => [
+      roundV2({ id: `hard-a-${day}`, endedAt: Date.parse(`${day}T10:00:00Z`), localDay: day, pieceCount: 12, memorizeSeconds: 8 }),
+      roundV2({ id: `hard-b-${day}`, endedAt: Date.parse(`${day}T10:05:00Z`), localDay: day, pieceCount: 12, memorizeSeconds: 8 }),
+      daily(day, { endedAt: Date.parse(`${day}T20:00:00Z`), pieceCount: 6, memorizeSeconds: 10 }),
+    ]);
+    const input = { records, summary: summarize(records), today: "2026-09-29" };
+
+    expect(LAB_METRICS.trend.compute(input).value).toMatchObject({ setting: { source: "game", pieceCount: 12, memorizeSeconds: 8 }, points: Array(20).fill(100) });
+    expect(LAB_METRICS.speed.compute(input).value?.setting).toEqual({ source: "game", pieceCount: 12, memorizeSeconds: 8 });
   });
 });
 

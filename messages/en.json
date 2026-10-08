@@ -391,7 +391,7 @@
         "title": "Come back for the trend line.",
         "lede": "One reading is a snapshot. Ten readings are a measurement. Every round you play is kept on this device, and these panels fill in from your own rounds. Until there is enough to read, a panel shows <tag>Sample</tag> values, not real players.",
         "curve": {
-          "fig": "Fig. 6.1 · Forgetting curve",
+          "fig": "Fig. {number} · Forgetting curve",
           "tag": "Proposed · review reminders",
           "title": "Short, spaced reviews beat one long session.",
           "desc": "Memory for new material tends to fade quickly, and each well-timed review tends to slow the fade. A daily round is a natural review slot.",
@@ -403,7 +403,7 @@
           "day": "d{day}"
         },
         "spark": {
-          "fig": "Fig. 6.2 · Accuracy over time",
+          "fig": "Fig. {number} · Accuracy over time",
           "title": "Your line, round by round.",
           "aria": "Sample sparkline of accuracy over 12 rounds, rising from 52 to 79 percent.",
           "note": "Sample record · 12 rounds · Medium",
@@ -418,7 +418,7 @@
           "realLast": "Latest"
         },
         "heat": {
-          "fig": "Fig. 6.3 · Miss map",
+          "fig": "Fig. {number} · Miss map",
           "title": "Where your squares slip.",
           "aria": "Sample heatmap of missed squares, concentrated on the a and h files.",
           "note": "Sample: misses cluster on the edge files. Train edges next.",
@@ -432,7 +432,7 @@
           "realNote": "Darker means missed more often. Grey has under 10 pieces seen."
         },
         "streak": {
-          "fig": "Fig. 6.4 · Days in a row",
+          "fig": "Fig. {number} · Days in a row",
           "title": "One round a day builds a streak.",
           "desc": "Any finished round, game or practice, counts for its day. Play on two days in a row to start a streak.",
           "aria": "Sample two-week streak grid",
@@ -444,7 +444,7 @@
           "chip": "Day {count}"
         },
         "board": {
-          "fig": "Fig. 6.5 · Leaderboard",
+          "fig": "Fig. {number} · Leaderboard",
           "title": "Compare readings worldwide.",
           "desc": "Each difficulty is ranked by correct pieces, then fewer wrong pieces, then faster memorize time, then faster solve time. Every row shows the player's country.",
           "countryFilter": "Filter by country",
@@ -499,7 +499,7 @@
           "missMapLeft": "Miss map: {exposures, plural, one {# more sighting} other {# more sightings}} on the least seen file or rank."
         },
         "bests": {
-          "fig": "Fig. 6.6 · Personal bests",
+          "fig": "Fig. {number} · Personal bests",
           "title": "Your best reading per setting.",
           "desc": "Bests are kept per setting, because 6 pieces and 20 pieces are different tests. Practice readings on this page stay apart from games.",
           "empty": "Your best reading for each setting appears after your first round.",
@@ -510,7 +510,7 @@
           "reading": "{accuracy}% · rebuilt in {seconds}s"
         },
         "types": {
-          "fig": "Fig. 6.7 · Recall by piece type",
+          "fig": "Fig. {number} · Recall by piece type",
           "title": "Which pieces slip.",
           "need": "About {count, plural, one {# more round} other {# more rounds}} until a piece other than the king has 20 sightings.",
           "needStart": "Recall by piece type appears after your first round.",

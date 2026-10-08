@@ -4,6 +4,7 @@ import { useId, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import type { LabPanel } from "@/lib/analytics/events";
 import type { BestEntry, LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
+import { figureNumber, type PanelId } from "@/lib/lab/panels";
 import { hasFigure, type Readiness } from "@/lib/lab/readiness";
 import type { PieceSymbol } from "chess.js";
 import { FILES, RANKS } from "@/lib/game/board";
@@ -11,8 +12,11 @@ import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { formatSeconds } from "@/utils/timer";
 import { AccuracySparkline, MissLines, MissMap, RecallBar, StreakGrid } from "./LabCharts";
 import { LabPlayLink } from "./LabPlayLink";
+import { LAB_SECTIONS } from "./SectionHeading";
 
 const missShare = ({ shown, missed, ready }: MissCell) => (ready ? missed / shown : null);
+
+export const figureOf = (panel: PanelId) => figureNumber(LAB_SECTIONS.record.number, panel);
 
 export function PanelHead({ fig, tag }: { fig: string; tag: ReactNode }) {
   return (
@@ -58,7 +62,7 @@ export function TrendPanel({
 
   return (
     <div className="lab-panel lab-p-spark">
-      <PanelHead fig={t("spark.fig")} tag={played ? tags.mine : tags.sample} />
+      <PanelHead fig={t("spark.fig", { number: figureOf("trend") })} tag={played ? tags.mine : tags.sample} />
       <h3>{t("spark.title")}</h3>
       {!trend ? (
         <>
@@ -103,7 +107,7 @@ export function MissPanel({ result: { readiness, value: map }, daysAgo }: { resu
 
   return (
     <div className="lab-panel lab-p-heat">
-      <PanelHead fig={t("heat.fig")} tag={map ? tags.mine : tags.sample} />
+      <PanelHead fig={t("heat.fig", { number: figureOf("missMap") })} tag={map ? tags.mine : tags.sample} />
       <h3>{t("heat.title")}</h3>
       {!map ? (
         <>
@@ -140,7 +144,7 @@ export function StreakPanel({ result: { readiness, value: streak }, daysAgo }: {
 
   return (
     <div className="lab-panel lab-p-streak">
-      <PanelHead fig={t("streak.fig")} tag={streak ? tags.mine : tags.sample} />
+      <PanelHead fig={t("streak.fig", { number: figureOf("streak") })} tag={streak ? tags.mine : tags.sample} />
       <h3>{t("streak.title")}</h3>
       <p className="lab-panel-desc">{streak ? t("streak.realDesc") : t("streak.desc")}</p>
       {!streak ? (
@@ -190,7 +194,7 @@ export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { r
 
   return (
     <div className="lab-panel lab-p-bests">
-      <PanelHead fig={t("bests.fig")} tag={bests ? tags.mine : null} />
+      <PanelHead fig={t("bests.fig", { number: figureOf("bests") })} tag={bests ? tags.mine : null} />
       <h3>{t("bests.title")}</h3>
       <p className="lab-panel-desc">{t("bests.desc")}</p>
       {bests ? (
@@ -238,7 +242,7 @@ export function TypesPanel({ result: { readiness, value: recall }, daysAgo }: { 
 
   return (
     <div className="lab-panel lab-p-types">
-      <PanelHead fig={t("types.fig")} tag={ready ? tags.mine : null} />
+      <PanelHead fig={t("types.fig", { number: figureOf("typeRecall") })} tag={ready ? tags.mine : null} />
       <h3>{t("types.title")}</h3>
       {ready ? (
         <>

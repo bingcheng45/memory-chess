@@ -102,8 +102,8 @@ describe("stale panels", () => {
     expect(staleNotes(container)).toEqual([
       ["lab-p-spark", "Last played 20 days ago. Play a round →"],
       ["lab-p-streak", "Last played 20 days ago. Play a round →"],
-      ["lab-p-bests", "Last played 20 days ago. Play a round →"],
       ["lab-p-types", "Last played 20 days ago. Play a round →"],
+      ["lab-p-bests", "Last played 20 days ago. Play a round →"],
     ]);
     expect(items()).toEqual(["Miss map: 2 more sightings on the least seen file or rank."]);
     expect(container.querySelector(".lab-p-spark svg")).not.toBeNull();

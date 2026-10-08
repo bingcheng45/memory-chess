@@ -74,7 +74,7 @@ describe("LabRecordSection", () => {
   it("names the streak panel for what it counts, in the sample and the real record", () => {
     const { unmount } = renderWithIntl(<LabRecordSection record={record([])} />);
 
-    expect(screen.getByText("Fig. 6.4 · Days in a row")).toBeInTheDocument();
+    expect(screen.getByText("Fig. 6.2 · Days in a row")).toBeInTheDocument();
     expect(screen.queryByText(/Daily challenge/)).toBeNull();
     expect(screen.queryByText(/shared position|Same board for everyone/)).toBeNull();
     expect(within(panel("Days in a row")).getByText("Any finished round, game or practice, counts for its day. Play on two days in a row to start a streak.")).toBeInTheDocument();
@@ -82,7 +82,7 @@ describe("LabRecordSection", () => {
     unmount();
 
     renderWithIntl(<LabRecordSection record={record(rounds(2, 1))} />);
-    expect(screen.getByText("Fig. 6.4 · Days in a row")).toBeInTheDocument();
+    expect(screen.getByText("Fig. 6.2 · Days in a row")).toBeInTheDocument();
   });
 
   it("says how many more rounds each panel needs below its threshold", () => {

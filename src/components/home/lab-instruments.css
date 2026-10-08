@@ -104,7 +104,7 @@
   .lab {
     --lab-h-unlock: 264px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 424px; --lab-h-speed: 512px;
     --lab-h-heat: 528px; --lab-h-streak: 640px; --lab-h-bests: 920px; --lab-h-types: 528px; --lab-h-tools: 512px;
-    --lab-h-insights: 424px; --lab-h-notebook: 448px; --lab-h-welcome: 56px;
+    --lab-h-insights: 424px; --lab-h-notebook: 448px;
   }
 }
 @media (max-width: 640px) {
@@ -181,10 +181,10 @@
 .lab-heat i { aspect-ratio: 1; border-radius: 2px; display: block; background: var(--lab-mark); }
 .lab-streak { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 14px; }
 .lab-streak i { aspect-ratio: 1; border-radius: 4px; background: var(--lab-sq-light); border: 1px solid var(--lab-line); }
-.lab-streak i[data-day="played"], .lab-streak-key i[data-day="played"] { background: var(--lab-mint); border-color: #2db892; }
-.lab-streak i[data-day="today"], .lab-streak-key i[data-day="today"] { background: var(--lab-paper); border: 2px dashed var(--lab-mark); }
+:is(.lab-streak, .lab-streak-key) i[data-day="played"] { background: var(--lab-mint); border-color: #2db892; }
+:is(.lab-streak, .lab-streak-key) i[data-day="today"] { background: var(--lab-paper); border: 2px dashed var(--lab-mark); }
 /* Hatched rather than filled, so a forgiven day reads apart from a played one without colour. */
-.lab-streak i[data-day="forgiven"], .lab-streak-key i[data-day="forgiven"] { background: repeating-linear-gradient(135deg, var(--lab-mint) 0 2px, var(--lab-paper) 2px 6px); border-color: #2db892; }
+:is(.lab-streak, .lab-streak-key) i[data-day="forgiven"] { background: repeating-linear-gradient(135deg, var(--lab-mint) 0 2px, var(--lab-paper) 2px 6px); border-color: #2db892; }
 .lab-streak-key { display: flex; flex-wrap: wrap; gap: 4px 12px; }
 .lab-streak-key span { display: inline-flex; align-items: center; gap: 5px; }
 .lab-streak-key i { width: 12px; height: 12px; border-radius: 3px; background: var(--lab-sq-light); border: 1px solid var(--lab-line); box-sizing: border-box; }

@@ -35,10 +35,10 @@ export function LabWeek({ days, today }: { readonly days: readonly string[]; rea
         </p>
         <div className="lab-goal" role="radiogroup" aria-labelledby={groupLabel}>
           <span id={groupLabel}>{t("goal")}</span>
-          {WEEK_GOALS.map((days) => (
-            <label key={days}>
-              <input type="radio" name={groupLabel} checked={days === goal} onChange={() => setGoal(days)} aria-label={t("option", { days })} />
-              <span aria-hidden="true">{days}</span>
+          {WEEK_GOALS.map((option) => (
+            <label key={option}>
+              <input type="radio" name={groupLabel} checked={option === goal} onChange={() => setGoal(option)} aria-label={t("option", { days: option })} />
+              <span aria-hidden="true">{option}</span>
             </label>
           ))}
         </div>

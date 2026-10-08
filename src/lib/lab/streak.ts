@@ -42,20 +42,22 @@ function runEndingAt(played: ReadonlySet<number>, last: number): StreakRun {
   return { played: count, forgivenDays: forgiven.map(dayOf) };
 }
 
+const playedSet = (days: readonly string[]): ReadonlySet<number> => new Set(days.map(dayNumber));
+const runsIn = (played: ReadonlySet<number>, days: readonly string[]) => days.map((day) => runEndingAt(played, dayNumber(day)));
+
 /** The run ending on each played day, in the order given, by the same rule as the current streak. */
 export function runsByDay(days: readonly string[]): readonly StreakRun[] {
-  const played = new Set(days.map(dayNumber));
-  return days.map((day) => runEndingAt(played, dayNumber(day)));
+  return runsIn(playedSet(days), days);
 }
 
 export function streakOf(days: readonly string[], today: string): StreakValue {
-  const played = new Set(days.map(dayNumber));
+  const played = playedSet(days);
   const end = dayNumber(today) - (played.has(dayNumber(today)) ? 0 : 1);
   const run = runEndingAt(played, end);
   const forgiven = new Set(run.forgivenDays);
   return {
     current: run.played,
-    longest: runsByDay(days).reduce((longest, { played: count }) => Math.max(longest, count), run.played),
+    longest: runsIn(played, days).reduce((longest, { played: count }) => Math.max(longest, count), 0),
     graceUsed: run.forgivenDays.length > 0,
     forgivenDays: run.forgivenDays,
     window: Array.from({ length: LAB_THRESHOLDS.streakWindow }, (_, index): StreakDay => {

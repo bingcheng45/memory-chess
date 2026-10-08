@@ -6,9 +6,12 @@ import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { summarize } from "@/lib/lab/summary";
 import { persona } from "@/test-utils/labPersona";
 import { round } from "@/lib/lab/__tests__/fixtures";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
+const css = readFileSync(join(__dirname, "../lab-instruments.css"), "utf8");
 const PLAY_HREF = "/game?pieceCount=6&memorizeTime=10&source=home_quick";
 
 const strip = () => screen.queryByRole("list", { name: "What playing unlocks" });
@@ -21,13 +24,13 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
 
     expect(items()).toEqual([
-      "Memory span unlocks when you score 80 percent or better in 2 rounds at one size of 3 or more pieces.",
-      "Pieces held unlocks at 5 rounds of any setting on 2 different days.",
-      "Trend unlocks at 5 rounds of one setting on 2 different days.",
-      "Speed unlocks at 5 rounds of one setting.",
-      "Streak unlocks when you play on 2 different days.",
-      "Miss map unlocks at 10 sightings on every file and rank.",
-      "Piece recall unlocks when one piece other than the king reaches 20 sightings.",
+      "Memory span · 2 rounds at 80% with 3+ pieces",
+      "Pieces held · 5 rounds over 2 days",
+      "Trend · 5 rounds of one setting over 2 days",
+      "Speed · 5 rounds of one setting",
+      "Streak · play on 2 days",
+      "Miss map · 10 sightings per file and rank",
+      "Piece recall · 20 sightings of a non-king piece",
     ]);
     expect(screen.getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", PLAY_HREF);
   });
@@ -36,13 +39,13 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
 
     expect(items()).toEqual([
-      "Memory span: 1 more round at 80 percent or better at one size of 3 or more pieces.",
-      "Pieces held: 3 more rounds, at least one on another day.",
-      "Trend: 4 more rounds at 6 pieces, 10\u00a0s, at least one on another day in games.",
-      "Speed: 4 more rounds at 6 pieces, 10\u00a0s in games.",
-      "Streak: play on 1 more day, in a row or not.",
-      "Miss map: 10 more sightings on the least seen file or rank.",
-      "Piece recall: 14 more sightings until one piece other than the king reaches 20.",
+      "Memory span · 1 more round at 80% with 3+ pieces",
+      "Pieces held · 3 more rounds, 1 more day",
+      "Trend · 4 more game rounds at 6 pieces, 10\u00a0s, 1 more day",
+      "Speed · 4 more game rounds at 6 pieces, 10\u00a0s",
+      "Streak · play on 1 more day",
+      "Miss map · 10 more sightings on the least seen file or rank",
+      "Piece recall · 14 more sightings of a non-king piece",
     ]);
   });
 
@@ -50,30 +53,21 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("easyOnly")} />);
 
     expect(items()).toEqual([
-      "Memory span: play 1 round with 3 or more pieces.",
-      "Miss map: 4 more sightings on the least seen file or rank.",
-      "Piece recall: 20 more sightings until one piece other than the king reaches 20.",
+      "Memory span · 1 round with 3+ pieces",
+      "Miss map · 4 more sightings on the least seen file or rank",
+      "Piece recall · 20 more sightings of a non-king piece",
     ]);
   });
 
-  it("folds the lines after the first behind a toggle on phones, and opens them on request", () => {
+  it("shows every line at every width: no toggle in the strip, and no rule in the stylesheet that hides any part of it", () => {
     const { container } = renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
-    const toggle = screen.getByRole("button", { name: "Show all 7 figures" });
+    const hiding = [...css.matchAll(/([^{}]*\.lab-unlock[^{}]*)\{([^}]*)\}/g)]
+      .filter(([, , body]) => /display:\s*none|visibility:\s*hidden/.test(body))
+      .map(([, selector]) => selector.trim());
 
-    expect(toggle).toHaveAttribute("aria-expanded", "false");
-    expect(toggle).toHaveAttribute("aria-controls", strip()!.id);
-    expect(container.querySelector(".lab-unlock")).not.toHaveAttribute("data-expanded");
-
-    fireEvent.click(toggle);
-
-    expect(screen.getByRole("button", { name: "Show fewer" })).toHaveAttribute("aria-expanded", "true");
-    expect(container.querySelector(".lab-unlock")).toHaveAttribute("data-expanded");
-  });
-
-  it("keeps the toggle's line but hides it when one line is all there is", () => {
-    renderWithIntl(<LabRecordSection record={persona("stale")} />);
-
-    expect(screen.getByRole("button", { name: "Show all 1 figure", hidden: true })).toHaveAttribute("data-single");
+    expect(within(container.querySelector(".lab-unlock") as HTMLElement).queryAllByRole("button", { hidden: true })).toEqual([]);
+    expect(items()).toHaveLength(7);
+    expect(hiding).toEqual([]);
   });
 
   it("prints every threshold from the registry, so the copy cannot drift from the panels", () => {
@@ -81,7 +75,7 @@ describe("unlock strip", () => {
     const { span, piecesHeld, trend, speed, streak, missMap, typeRecall } = LAB_METRICS;
 
     expect(items().map((line) => line!.match(/\d+/g)!.map(Number))).toEqual([
-      [LAB_THRESHOLDS.spanAccuracy, span.thresholds.qualifyingRounds, LAB_THRESHOLDS.spanMinPieces],
+      [span.thresholds.qualifyingRounds, LAB_THRESHOLDS.spanAccuracy, LAB_THRESHOLDS.spanMinPieces],
       [piecesHeld.thresholds.rounds, piecesHeld.thresholds.days],
       [trend.thresholds.rounds, trend.thresholds.days],
       [speed.thresholds.rounds],
@@ -97,7 +91,7 @@ describe("unlock strip", () => {
     );
     renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor"), records, summary: summarize(records) }} />);
 
-    expect(items()).toContain("Speed: 1 round with at least one piece right.");
+    expect(items()).toContain("Speed · 1 round with a piece right");
   });
 
   it("drops the streak and piece recall lines exactly when their copy says they unlock", () => {
@@ -107,7 +101,7 @@ describe("unlock strip", () => {
     );
     renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor", "2026-10-07"), records, summary: summarize(records) }} />);
 
-    expect(items()).toEqual(["Miss map: 10 more sightings on the least seen file or rank."]);
+    expect(items()).toEqual(["Miss map · 10 more sightings on the least seen file or rank"]);
   });
 
   it("says in one line, in the same box, that every figure is unlocked once each can be read", () => {
@@ -147,7 +141,7 @@ describe("stale panels", () => {
       ["lab-p-types", "Last played 20 days ago. Play a round →"],
       ["lab-p-bests", "Last played 20 days ago. Play a round →"],
     ]);
-    expect(items()).toEqual(["Miss map: 2 more sightings on the least seen file or rank."]);
+    expect(items()).toEqual(["Miss map · 2 more sightings on the least seen file or rank"]);
     expect(container.querySelector(".lab-p-spark svg")).not.toBeNull();
   });
 

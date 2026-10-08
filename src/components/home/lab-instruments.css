@@ -95,23 +95,23 @@
  * for the Sample state without moving anything below it.
  */
 .lab {
-  --lab-h-unlock: 176px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
+  --lab-h-unlock: 200px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
   --lab-h-heat: 464px; --lab-h-streak: 424px; --lab-h-bests: 504px; --lab-h-types: 448px; --lab-h-tools: 208px;
-  --lab-h-insights: 400px; --lab-h-notebook: 360px;
+  --lab-h-insights: 344px; --lab-h-notebook: 384px;
   --lab-heat-w: 260px;
 }
 @media (max-width: 1000px) {
   .lab {
     --lab-h-unlock: 264px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 424px; --lab-h-speed: 512px;
     --lab-h-heat: 528px; --lab-h-streak: 440px; --lab-h-bests: 920px; --lab-h-types: 528px; --lab-h-tools: 512px;
-    --lab-h-insights: 640px; --lab-h-notebook: 400px;
+    --lab-h-insights: 424px; --lab-h-notebook: 408px;
   }
 }
 @media (max-width: 640px) {
   .lab {
     --lab-h-unlock: 304px; --lab-h-span: 544px; --lab-h-held: 504px; --lab-h-spark: 456px; --lab-h-speed: 544px;
     --lab-h-heat: 528px; --lab-h-streak: 432px; --lab-h-bests: 592px; --lab-h-types: 528px; --lab-h-tools: 376px;
-    --lab-h-insights: 720px; --lab-h-notebook: 480px;
+    --lab-h-insights: 600px; --lab-h-notebook: 648px;
   }
 }
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
@@ -137,7 +137,8 @@
 .lab-unlock:empty { background: none; border-color: transparent; }
 .lab-unlock ul { margin: 8px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 24px; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
 .lab-unlock .lab-go { margin-top: 0; }
-@media (max-width: 640px) { .lab-unlock { padding: 12px 14px; } .lab-unlock ul { grid-template-columns: 1fr; gap: 2px; font-size: 14px; line-height: 1.35; } }
+/* Phones: no gap between lines, so the strip holds every line in its reserve; the hanging indent keeps a wrapped line apart from the next. */
+@media (max-width: 640px) { .lab-unlock { padding: 12px 14px; } .lab-unlock ul { grid-template-columns: 1fr; gap: 0; font-size: 14px; line-height: 1.3; } .lab-unlock li { padding-left: 0.75em; text-indent: -0.75em; } }
 .lab-stale .lab-go { display: inline; margin: 0 0 0 4px; white-space: nowrap; }
 .lab-dash { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
 .lab-panel { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 22px; min-width: 0; }

@@ -9,7 +9,7 @@ import { useWeekGoal } from "@/components/home/useWeekGoal";
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { playHref } from "@/lib/game/roundLink";
 import { INSIGHT_GUIDES } from "@/lib/lab/insights";
-import { resultCardFor, type NewBest, type NextStep, type ResultCard, type Setting } from "@/lib/lab/resultCard";
+import { resultCardFor, type NewBest, type NextStep, type ResultCard, type Setting, type VsRecent } from "@/lib/lab/resultCard";
 import ResultLabSlot, { RESULT_LAB_FRAME } from "./ResultLabSlot";
 
 /** How long the card waits for the round to reach the record before it gives up and leaves the screen. */
@@ -41,15 +41,15 @@ function newBestLine(t: Translate, { setting, accuracy, previousAccuracy, faster
   return t("newBest.plain", values);
 }
 
+function vsRecentLine(t: Translate, { points, rounds }: VsRecent): string {
+  if (points === 0) return t("vsRecent.level", { rounds });
+  return t(points > 0 ? "vsRecent.above" : "vsRecent.below", { points: Math.abs(points), rounds });
+}
+
 function linesOf(t: Translate, { newBest, vsRecent, spanChange, streak }: ResultCard): string[] {
-  const recent =
-    vsRecent &&
-    (vsRecent.points === 0
-      ? t("vsRecent.level", { rounds: vsRecent.rounds })
-      : t(vsRecent.points > 0 ? "vsRecent.above" : "vsRecent.below", { points: Math.abs(vsRecent.points), rounds: vsRecent.rounds }));
   return [
     newBest && newBestLine(t, newBest),
-    recent,
+    vsRecent && vsRecentLine(t, vsRecent),
     spanChange && t("span", { pieceCount: spanChange.to }),
     t("streak", { current: streak.current, graceUsed: String(streak.graceUsed), days: streak.daysThisWeek, goal: streak.goal }),
   ].filter((line): line is string => Boolean(line));

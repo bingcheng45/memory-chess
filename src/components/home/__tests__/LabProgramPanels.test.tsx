@@ -102,6 +102,32 @@ describe("starting and stopping a plan", () => {
     expect(record.importFile).not.toHaveBeenCalled();
   });
 
+  it("keeps focus on the card and says what happened when a plan is stopped, kept or finished", () => {
+    renderWithIntl(<LabRecordSection record={withChoices("planBaseline")} />);
+    const baseline = () => card("Baseline week");
+
+    fireEvent.click(within(baseline()).getByRole("button", { name: "Stop plan" }));
+    fireEvent.keyDown(within(baseline()).getByRole("button", { name: "Really stop?" }), { key: "Escape" });
+    expect(within(baseline()).getByRole("button", { name: "Stop plan" })).toHaveFocus();
+    fireEvent.click(within(baseline()).getByRole("button", { name: "Stop plan" }));
+    fireEvent.click(within(baseline()).getByRole("button", { name: "Keep going" }));
+    expect(within(baseline()).getByRole("button", { name: "Stop plan" })).toHaveFocus();
+
+    fireEvent.click(within(baseline()).getByRole("button", { name: "Finish early" }));
+    expect(within(baseline()).getByRole("heading", { name: "Baseline week" })).toHaveFocus();
+    expect(within(plansPanel()).getByRole("status")).toHaveTextContent("Finished early on day 7.");
+  });
+
+  it("moves focus to the card's heading and announces the day a plan stopped", () => {
+    renderWithIntl(<LabRecordSection record={withChoices("planEdge")} />);
+
+    fireEvent.click(within(card("Edge-file drill")).getByRole("button", { name: "Stop plan" }));
+    fireEvent.click(within(card("Edge-file drill")).getByRole("button", { name: "Really stop?" }));
+
+    expect(within(card("Edge-file drill")).getByRole("heading", { name: "Edge-file drill" })).toHaveFocus();
+    expect(within(plansPanel()).getByRole("status")).toHaveTextContent("Stopped on day 6.");
+  });
+
   it("finishes a baseline week early and keeps its comparison", () => {
     renderWithIntl(<LabRecordSection record={withChoices("planBaseline")} />);
 
@@ -189,6 +215,18 @@ describe("the goal", () => {
     expect(window.localStorage.getItem(TARGET_KEY)).toBeNull();
     expect(trackEvent).toHaveBeenCalledWith({ name: "lab_panel_action", params: { panel: "goal", action: "clearGoal" } });
     expect(within(goalPanel()).getByRole("form", { name: "New goal" })).toBeInTheDocument();
+  });
+
+  it("announces a goal set or cleared and puts focus on the control that replaces the pressed one", () => {
+    renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
+
+    fireEvent.click(within(goalPanel()).getByRole("button", { name: "Set goal" }));
+    expect(within(goalPanel()).getByRole("button", { name: "Set a new goal" })).toHaveFocus();
+    expect(within(goalPanel()).getByRole("status")).toHaveTextContent("Goal set.");
+
+    fireEvent.click(within(goalPanel()).getByRole("button", { name: "Clear goal" }));
+    expect(within(goalPanel()).getByLabelText("Pieces, at least")).toHaveFocus();
+    expect(within(goalPanel()).getByRole("status")).toHaveTextContent("Goal cleared.");
   });
 
   it("says what is missing when no round at the goal's count has been played since it was set", () => {

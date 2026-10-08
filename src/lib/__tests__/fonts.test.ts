@@ -27,7 +27,7 @@ const fontFaces = (css: string) =>
   );
 
 describe("Geist Mono fallback", () => {
-  it("paints in a local face with Geist Mono's metrics from globals.css, not next/font's Arial", async () => {
+  it("paints in metric-matched local regular and bold faces from globals.css, not next/font's Arial", async () => {
     const { Geist_Mono } = await import("next/font/google");
     await import("../fonts");
     const options = (Geist_Mono as unknown as jest.Mock).mock.calls[0][0];
@@ -42,6 +42,12 @@ describe("Geist Mono fallback", () => {
       {
         "font-family": '"Geist Mono Local"',
         src: 'local("Menlo Regular"), local("Courier New"), local("DejaVu Sans Mono"), local("Liberation Mono"), local("Droid Sans Mono")',
+        ...METRICS,
+      },
+      {
+        "font-family": '"Geist Mono Local"',
+        "font-weight": "600 900",
+        src: 'local("Menlo Bold"), local("Courier New Bold"), local("DejaVu Sans Mono Bold"), local("Liberation Mono Bold")',
         ...METRICS,
       },
     ]);

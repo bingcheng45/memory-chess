@@ -70,6 +70,16 @@ describe("unlock strip", () => {
     expect(hiding).toEqual([]);
   });
 
+  it("mounts new lines when the record arrives, so a line that rewraps never moves the ones below it", () => {
+    const { rerender } = renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
+    const serverLines = within(strip()!).getAllByRole("listitem");
+
+    rerender(<LabRecordSection record={persona("twoRounds")} />);
+
+    expect(serverLines.map((line) => line.isConnected)).toEqual(Array(7).fill(false));
+    expect(items()).toHaveLength(7);
+  });
+
   it("prints every threshold from the registry, so the copy cannot drift from the panels", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
     const { span, piecesHeld, trend, speed, streak, missMap, typeRecall } = LAB_METRICS;

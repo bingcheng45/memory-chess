@@ -19,7 +19,8 @@
     "backup:verify": "node scripts/verify-leaderboard-backup.mjs",
     "lab:personas": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/lab/build-personas.mjs",
     "lab:drive": "node scripts/lab/drive.mjs",
-    "lab:heights": "node scripts/lab/heights.mjs"
+    "lab:heights": "node scripts/lab/heights.mjs",
+    "lab:cls": "node scripts/lab/cls.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

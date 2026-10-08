@@ -9,7 +9,7 @@ html:has(.lab), html:has(.lab) body { overflow-x: clip; }
   --lab-mark: #f2612d; --lab-mark-soft: #fde6dc; --lab-mark-ink: #b83c0e; --lab-bad: #f9b79e;
   --lab-sq-light: #eef5f2; --lab-sq-dark: #bfddd2; --lab-blank-dark: #f1f5f4;
   --lab-sans: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
-  --lab-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --lab-mono: var(--font-geist-mono);
   --lab-radius: 10px; --lab-radius-s: 6px; --lab-radius-l: 14px;
   --lab-gutter: clamp(16px, 4vw, 48px);
   --lab-index-h: 52px;

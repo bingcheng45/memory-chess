@@ -257,3 +257,28 @@ describe("seconds", () => {
     expect(text.match(/\d(?: ?)s\b/g)).toBeNull();
   });
 });
+
+describe("chart labels", () => {
+  /** A label's box from its anchor, at the 11px mono the charts use: about 0.62em a character, cap height above the baseline. */
+  const boxOf = (text: SVGTextElement) => {
+    const x = Number(text.getAttribute("x"));
+    const y = Number(text.getAttribute("y"));
+    const width = text.textContent!.length * 11 * 0.62;
+    const anchor = text.getAttribute("text-anchor") ?? "start";
+    const left = anchor === "end" ? x - width : anchor === "middle" ? x - width / 2 : x;
+    return { label: text.textContent, left, right: left + width, top: y - 9, bottom: y + 2 };
+  };
+  type Box = ReturnType<typeof boxOf>;
+  const overlap = (a: Box, b: Box) => a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+
+  it.each(["thirtyDays", "spanClimber", "newVisitor"] as const)("never overlap in the span, pieces held, accuracy and speed charts for %s", (name) => {
+    const { container } = renderWithIntl(<LabRecordSection record={persona(name)} />);
+    const collisions = [".lab-p-span", ".lab-p-held", ".lab-p-spark", ".lab-p-speed"].flatMap((selector) => {
+      const boxes = [...container.querySelectorAll<SVGTextElement>(`${selector} svg text`)].map(boxOf);
+      return boxes.flatMap((a, index) => boxes.slice(index + 1).filter((b) => overlap(a, b)).map((b) => `${selector}: ${a.label} over ${b.label}`));
+    });
+
+    expect(collisions).toEqual([]);
+  });
+});
+

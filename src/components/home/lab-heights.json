@@ -34,7 +34,7 @@
       "tools": 360
     },
     "medium": {
-      "unlock": 271,
+      "unlock": 142,
       "span": 410,
       "held": 468,
       "spark": 395,
@@ -59,7 +59,7 @@
     }
   },
   "tallest": {
-    "narrow unlock": "easyOnly server 320",
+    "narrow unlock": "easyOnly client 320",
     "narrow span": "manyBests client 320",
     "narrow held": "stale client 320",
     "narrow spark": "stale client 320",
@@ -69,7 +69,7 @@
     "narrow bests": "manyBests client 320",
     "narrow types": "stale client 320",
     "narrow tools": "easyOnly client 320",
-    "medium unlock": "easyOnly server 768",
+    "medium unlock": "easyOnly client 768",
     "medium span": "manyBests client 768",
     "medium held": "stale client 768",
     "medium spark": "stale client 768",
@@ -104,7 +104,7 @@
       "tools": 0
     },
     "medium": {
-      "unlock": 271,
+      "unlock": 142,
       "span": 343,
       "held": 393,
       "spark": 310,

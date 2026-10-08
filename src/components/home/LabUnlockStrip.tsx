@@ -63,7 +63,6 @@ export function LabUnlockStrip({ results, storage }: { results: LabResults; stor
             <li key={index}>{text(unlock)}</li>
           ))}
         </ul>
-        {/* Phones show the first line only, so the box keeps one small reserve for any number of lines. */}
         <button
           type="button"
           className="lab-bests-toggle lab-unlock-toggle"

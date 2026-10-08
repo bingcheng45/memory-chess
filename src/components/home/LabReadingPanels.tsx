@@ -1,13 +1,13 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { SAMPLE_PARTIAL, SAMPLE_PIECES_HELD, SAMPLE_SPAN, SAMPLE_SPAN_SECONDS, SAMPLE_SPEED, SAMPLE_SPEED_ACCURACY } from "@/lib/home/labRecord";
 import { mean } from "@/lib/lab/engine";
 import type { LabResults } from "@/lib/lab/metrics";
 import type { PanelId } from "@/lib/lab/panels";
 import type { SpeedValue } from "@/lib/lab/progress";
-import { hasFigure, LAB_THRESHOLDS } from "@/lib/lab/readiness";
+import { hasFigure, LAB_THRESHOLDS, type Readiness } from "@/lib/lab/readiness";
 import { oneDecimal, SpanStaircase, ValueLine } from "./LabReadingCharts";
 import { figureOf, PanelHead, StaleNote, useTags } from "./LabRecordPanels";
 
@@ -19,18 +19,19 @@ interface PanelProps<K extends keyof LabResults> {
 interface FrameProps {
   readonly panel: PanelId;
   readonly name: "span" | "held" | "speed";
-  readonly mine: boolean;
+  readonly readiness: Readiness;
   readonly children: ReactNode;
 }
 
-function ReadingFrame({ panel, name, mine, children }: FrameProps) {
+function ReadingFrame({ panel, name, readiness, children }: FrameProps) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   return (
     <div className={`lab-panel lab-p-${name}`}>
-      <PanelHead fig={t(`${name}.fig`, { number: figureOf(panel) })} tag={mine ? tags.mine : tags.sample} />
+      <PanelHead fig={t(`${name}.fig`, { number: figureOf(panel) })} tag={readiness.state === "empty" ? tags.sample : tags.mine} />
       <h3>{t(`${name}.title`)}</h3>
-      {children}
+      {/* Keyed by state, so new content mounts fresh instead of moving the nodes it replaces. */}
+      <Fragment key={readiness.state}>{children}</Fragment>
     </div>
   );
 }
@@ -86,7 +87,7 @@ export function SpanPanel({ result: { readiness, value: span }, daysAgo }: Panel
   };
 
   return (
-    <ReadingFrame panel="span" name="span" mine={!!span}>
+    <ReadingFrame panel="span" name="span" readiness={readiness}>
       {body()}
     </ReadingFrame>
   );
@@ -142,7 +143,7 @@ export function HeldPanel({ result: { readiness, value: held }, daysAgo }: Panel
   };
 
   return (
-    <ReadingFrame panel="piecesHeld" name="held" mine={!!held}>
+    <ReadingFrame panel="piecesHeld" name="held" readiness={readiness}>
       {body()}
     </ReadingFrame>
   );
@@ -197,7 +198,7 @@ export function SpeedPanel({ result: { readiness, value: speed }, daysAgo }: Pan
   );
 
   return (
-    <ReadingFrame panel="speed" name="speed" mine={!!speed}>
+    <ReadingFrame panel="speed" name="speed" readiness={readiness}>
       {body}
     </ReadingFrame>
   );

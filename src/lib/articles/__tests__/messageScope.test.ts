@@ -5,7 +5,10 @@ describe("splitClientMessages", () => {
     const catalogue = {
       common: { nav: { articles: "Articles" } },
       articles: { like: { button: "Recommend this article" } },
-      home: { meta: { title: "Memory Chess" }, lab: { hero: { lede: "Put a number on it." } } },
+      home: {
+        meta: { title: "Memory Chess" },
+        lab: { hero: { lede: "Put a number on it." }, resultCard: { title: "Your lab record" } },
+      },
       game: { skip: "Skip" },
     };
 
@@ -13,6 +16,7 @@ describe("splitClientMessages", () => {
       shared: { common: { nav: { articles: "Articles" } }, home: { meta: { title: "Memory Chess" } }, game: { skip: "Skip" } },
       articles: { like: { button: "Recommend this article" } },
       lab: { home: { lab: { hero: { lede: "Put a number on it." } } } },
+      resultCard: { home: { lab: { resultCard: { title: "Your lab record" } } } },
     });
   });
 
@@ -23,6 +27,7 @@ describe("splitClientMessages", () => {
       shared: { home: { meta: { title: "Memory Chess" } }, game: { skip: "Überspringen" } },
       articles: undefined,
       lab: {},
+      resultCard: {},
     });
   });
 });

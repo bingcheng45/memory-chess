@@ -57,7 +57,7 @@ const MONO_URLS = `[...document.styleSheets]
   .flatMap((rule) => [...rule.style.getPropertyValue("src").matchAll(/url\\("?([^")]+)"?\\)/g)].map(([, url]) => new URL(url, location.href).href))`;
 export const MONO_STATUS = `[...document.fonts].filter((face) => ${MONO_FAMILY}.test(face.family) && !/Local|Fallback/.test(face.family)).map((face) => face.status)`;
 
-const round = (value) => Math.round(value * 10000) / 10000;
+export const round = (value) => Math.round(value * 10000) / 10000;
 
 /** The Geist Mono webfont files the page's stylesheets declare, read from a page that has loaded them. */
 export async function monoFontUrls(page, baseUrl) {

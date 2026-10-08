@@ -286,10 +286,9 @@ describe("metric engine on the persona fixtures", () => {
         if (endedAt < weekBefore) counts[1] += 1;
       });
     const { span } = deriveLab(await inputFor(name));
-    const { history: _history, ...value } = span.value ?? { history: [] };
 
     expect(qualifying).toEqual(SPAN_BY_HAND[name].qualifying);
-    expect(value).toEqual(SPAN_BY_HAND[name].span);
+    expect({ ...span.value, history: undefined }).toEqual(SPAN_BY_HAND[name].span);
   });
 
   /** Correct pieces in each persona's last 20 rounds, oldest first; the averages are these tens summed by hand. */

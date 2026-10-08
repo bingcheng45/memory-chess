@@ -96,6 +96,8 @@ describe("metric engine on the persona fixtures", () => {
       v1Legacy: { typeRecall: undefined, missMap: { exposures: 6 } },
       spanClimber: { typeRecall: undefined, missMap: undefined },
       shortSessions: { typeRecall: undefined, missMap: undefined },
+      plateau: { typeRecall: undefined, missMap: undefined },
+      colourSkew: { typeRecall: undefined, missMap: undefined },
     });
   });
 
@@ -122,6 +124,8 @@ describe("metric engine on the persona fixtures", () => {
       v1Legacy: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready"), insights: "ready", notebook: "ready" },
       spanClimber: all("ready"),
       shortSessions: all("ready"),
+      plateau: all("ready"),
+      colourSkew: all("ready"),
     });
   });
 
@@ -241,6 +245,22 @@ describe("metric engine on the persona fixtures", () => {
         piecesHeld: { average: 5.3, previous: 5.1, change: 0.2 },
         speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 4.14, previous: 3.58, change: 0.56 }, accuracy: { average: 81.6, previous: 89.8, change: -8.2 } },
         trend: { granularity: "session", sessions: 18 },
+      },
+      plateau: {
+        sessions: 14,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 48, weekAgo: 6, change: 0 },
+        steps: [[0, 6]],
+        piecesHeld: { average: 5.3, previous: 5.3, change: 0 },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 3.68, previous: 3.89, change: -0.21 }, accuracy: { average: 88.2, previous: 88.2, change: 0 } },
+        trend: { granularity: "session", sessions: 14 },
+      },
+      colourSkew: {
+        sessions: 15,
+        span: { pieceCount: 6, memorizeSeconds: 10, qualifyingRounds: 44, weekAgo: 6, change: 0 },
+        steps: [[0, 6]],
+        piecesHeld: { average: 4.9, previous: 4.8, change: 0.1 },
+        speed: { setting: { source: "game", pieceCount: 6, memorizeSeconds: 10 }, recent: { average: 4.28, previous: 4.11, change: 0.17 }, accuracy: { average: 81.5, previous: 79.8, change: 1.7 } },
+        trend: { granularity: "session", sessions: 15 },
       },
     });
   });

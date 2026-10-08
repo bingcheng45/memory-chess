@@ -9,6 +9,11 @@ export const WEEK_GOAL_KEY = "memory-chess-lab-goal";
 let goalThisSession: WeekGoal | null = null;
 const listeners = new Set<() => void>();
 
+/** Clears the session fallback, so tests do not depend on the order they run in. */
+export function resetWeekGoalSession() {
+  goalThisSession = null;
+}
+
 function readGoal(): WeekGoal {
   if (goalThisSession !== null) return goalThisSession;
   try {

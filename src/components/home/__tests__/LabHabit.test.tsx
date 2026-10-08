@@ -1,6 +1,6 @@
 import { act, fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
-import { WEEK_GOAL_KEY } from "@/components/home/useWeekGoal";
+import { resetWeekGoalSession, WEEK_GOAL_KEY } from "@/components/home/useWeekGoal";
 import { persona } from "@/test-utils/labPersona";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
@@ -8,7 +8,12 @@ jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 const streakPanel = () => screen.getByText(/^Fig\. 6\.\d+ · Days in a row$/).closest(".lab-panel") as HTMLElement;
 const welcome = () => document.querySelector(".lab-welcome")?.textContent;
 
-beforeEach(() => window.localStorage.clear());
+beforeEach(() => {
+  window.localStorage.clear();
+  resetWeekGoalSession();
+});
+
+afterEach(() => jest.restoreAllMocks());
 
 describe("days in a row with a grace day", () => {
   it("says the current run includes a forgiven day, and marks it in the grid and its sentence", () => {

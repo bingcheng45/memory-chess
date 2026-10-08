@@ -63,8 +63,7 @@ describe("§06 reserved heights", () => {
     });
 
     // The tools strip is not rendered on the server at all, and recall by piece type has no Sample chart, only one line.
-    // Today's board holds room for its played state, whose share grid stacks under the result on a phone.
-    expect(blank).toEqual(["types: 300px", "daily: 401px", "tools: 376px"]);
+    expect(blank).toEqual(["types: 300px", "tools: 376px"]);
   });
 
   it("give each box its reserve as a minimum height", () => {

@@ -13,6 +13,8 @@ const plansPanel = () => screen.getByText(/^Fig\. 6\.\d+ · Programs$/).closest(
 const goalPanel = () => screen.getByText(/^Fig\. 6\.\d+ · Goal$/).closest(".lab-panel") as HTMLElement;
 const card = (title: string) => within(plansPanel()).getByRole("heading", { name: title }).closest(".lab-plan") as HTMLElement;
 const stored = (key: string) => JSON.parse(window.localStorage.getItem(key) ?? "null");
+/** 18:00 UTC on the personas' today. */
+const NOW = 1791482400000;
 
 /** The persona's record with its plan and goal in localStorage, as the drivers seed them. */
 function withChoices(name: PersonaName) {
@@ -27,6 +29,10 @@ beforeEach(() => {
   planChoice.reset();
   targetChoice.reset();
   jest.mocked(trackEvent).mockClear();
+});
+
+afterEach(() => {
+  jest.restoreAllMocks();
 });
 
 describe("programs before the record is read", () => {
@@ -46,7 +52,8 @@ describe("programs before the record is read", () => {
 });
 
 describe("starting and stopping a plan", () => {
-  it("starts a plan from its link: stores the plan and today, and opens the plan's first round", () => {
+  it("starts a plan from its link: stores the plan, today and the moment, and opens the plan's first round", () => {
+    jest.spyOn(Date, "now").mockReturnValue(NOW);
     renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
     const start = within(card("Edge-file drill")).getByRole("link", { name: "Start Edge-file drill" });
 
@@ -57,7 +64,7 @@ describe("starting and stopping a plan", () => {
     );
     fireEvent.click(start);
 
-    expect(stored(PLAN_KEY)).toEqual({ planId: "edge", startedDay: "2026-10-08" });
+    expect(stored(PLAN_KEY)).toEqual({ planId: "edge", startedDay: "2026-10-08", startedAt: NOW });
     expect(trackEvent).toHaveBeenCalledWith({ name: "lab_panel_action", params: { panel: "plans", action: "start" } });
     expect(within(card("Edge-file drill")).getByText("Day 1 of 14")).toBeInTheDocument();
     expect(within(card("Baseline week")).getByText("One plan at a time. Stop Edge-file drill to start this one.")).toBeInTheDocument();
@@ -149,7 +156,8 @@ describe("starting and stopping a plan", () => {
 });
 
 describe("the goal", () => {
-  it("sets a goal from the form and fills its bar from the best round at that count or more since today", () => {
+  it("sets a goal from the form and fills its bar from the best round at that count or more since it was set", () => {
+    jest.spyOn(Date, "now").mockReturnValue(NOW);
     renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
     const form = within(goalPanel()).getByRole("form", { name: "New goal" });
 
@@ -157,7 +165,7 @@ describe("the goal", () => {
     fireEvent.change(within(form).getByLabelText("Accuracy, at least"), { target: { value: "95" } });
     fireEvent.click(within(form).getByRole("button", { name: "Set goal" }));
 
-    expect(stored(TARGET_KEY)).toEqual({ pieceCount: 12, accuracy: 95, createdDay: "2026-10-08" });
+    expect(stored(TARGET_KEY)).toEqual({ pieceCount: 12, accuracy: 95, createdDay: "2026-10-08", createdAt: NOW });
     expect(trackEvent).toHaveBeenCalledWith({ name: "lab_panel_action", params: { panel: "goal", action: "setGoal" } });
     expect(within(goalPanel()).getByText("Goal: 12 or more pieces at 95 percent or better, set Oct 8.")).toBeInTheDocument();
     fireEvent.click(within(goalPanel()).getByRole("button", { name: "Set a new goal" }));

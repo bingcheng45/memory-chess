@@ -1,4 +1,5 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
+import type { RoundRecord } from "./record";
 import { isCalendarDay, isObject } from "./transfer";
 
 /**
@@ -17,6 +18,8 @@ export type PlanEnding = (typeof PLAN_ENDINGS)[number];
 export interface StoredPlan {
   readonly planId: PlanId;
   readonly startedDay: string;
+  /** Milliseconds; absent on a plan stored before it was kept, which then counts from the start of its day. */
+  readonly startedAt?: number;
   /** Set when the player stops the plan or finishes it early. A plan its rounds or its calendar complete needs no mark. */
   readonly ended?: { readonly how: PlanEnding; readonly day: string };
 }
@@ -28,6 +31,8 @@ export interface StoredTarget {
   readonly pieceCount: number;
   readonly accuracy: number;
   readonly createdDay: string;
+  /** Milliseconds; absent on a goal stored before it was kept, which then counts from the start of its day. */
+  readonly createdAt?: number;
 }
 
 function parseJson(text: string | null): unknown {
@@ -39,11 +44,21 @@ function parseJson(text: string | null): unknown {
   }
 }
 
+/** Rounds from the moment of a choice on, or from the start of its day for a choice stored without the moment. */
+export const playedSince =
+  (day: string, at: number | undefined) =>
+  ({ localDay, endedAt }: RoundRecord): boolean =>
+    at === undefined ? localDay >= day : endedAt >= at;
+
+const isTime = (value: unknown): value is number => Number.isSafeInteger(value) && (value as number) > 0;
+
 /** Anything this version did not write reads as no plan, so a damaged value never breaks the record. */
 export function parsePlan(text: string | null): StoredPlan | null {
   const raw = parseJson(text);
   if (!isObject(raw) || !PLAN_IDS.includes(raw.planId as PlanId) || !isCalendarDay(raw.startedDay)) return null;
-  const plan: StoredPlan = { planId: raw.planId as PlanId, startedDay: raw.startedDay };
+  if (raw.startedAt !== undefined && !isTime(raw.startedAt)) return null;
+  const started: StoredPlan = { planId: raw.planId as PlanId, startedDay: raw.startedDay };
+  const plan = raw.startedAt === undefined ? started : { ...started, startedAt: raw.startedAt };
   if (raw.ended === undefined) return plan;
   const { ended } = raw;
   if (!isObject(ended) || !PLAN_ENDINGS.includes(ended.how as PlanEnding) || !isCalendarDay(ended.day) || ended.day < plan.startedDay) return null;
@@ -58,6 +73,7 @@ export const GOAL_ACCURACY_OPTIONS: readonly number[] = range(GOAL_ACCURACY.min,
 export function parseTarget(text: string | null): StoredTarget | null {
   const raw = parseJson(text);
   if (!isObject(raw) || !GOAL_PIECE_OPTIONS.includes(raw.pieceCount as number) || !GOAL_ACCURACY_OPTIONS.includes(raw.accuracy as number)) return null;
-  if (!isCalendarDay(raw.createdDay)) return null;
-  return { pieceCount: raw.pieceCount as number, accuracy: raw.accuracy as number, createdDay: raw.createdDay };
+  if (!isCalendarDay(raw.createdDay) || (raw.createdAt !== undefined && !isTime(raw.createdAt))) return null;
+  const target: StoredTarget = { pieceCount: raw.pieceCount as number, accuracy: raw.accuracy as number, createdDay: raw.createdDay };
+  return raw.createdAt === undefined ? target : { ...target, createdAt: raw.createdAt };
 }

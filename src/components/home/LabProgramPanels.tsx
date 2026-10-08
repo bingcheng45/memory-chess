@@ -120,7 +120,7 @@ function PlanCard({ planId, progress, running, choosing }: { planId: PlanId; pro
 
   const start = () => {
     if (!choosing) return;
-    planChoice.set({ planId, startedDay: choosing.today });
+    planChoice.set({ planId, startedDay: choosing.today, startedAt: Date.now() });
     track("plans", "start");
   };
   const end = (how: "stopped" | "finished") => {
@@ -216,7 +216,7 @@ function GoalForm({ initial, today, onDone }: { initial: Pick<StoredTarget, "pie
   const [accuracy, setAccuracy] = useState(initial.accuracy);
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    targetChoice.set({ pieceCount, accuracy, createdDay: today });
+    targetChoice.set({ pieceCount, accuracy, createdDay: today, createdAt: Date.now() });
     track("goal", "setGoal");
     onDone?.();
   };

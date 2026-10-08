@@ -1,4 +1,4 @@
-import type { StoredTarget } from "./choices";
+import { playedSince, type StoredTarget } from "./choices";
 import { readinessFor, type LabInput, type MetricResult } from "./engine";
 import type { RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
@@ -29,9 +29,10 @@ const goalRound = ({ endedAt, localDay, config, accuracy }: RoundRecord): GoalRo
   accuracy: Math.round(accuracy),
 });
 
-/** Rounds at the goal's piece count or more since the day it was set, practice and games alike, oldest first. */
-function goalRounds(records: readonly RoundRecord[], { pieceCount, createdDay }: StoredTarget): RoundRecord[] {
-  return byEndedAt(records.filter(({ localDay, config }) => localDay >= createdDay && config.pieceCount >= pieceCount));
+/** Rounds at the goal's piece count or more since it was set, practice and games alike, oldest first. */
+function goalRounds(records: readonly RoundRecord[], { pieceCount, createdDay, createdAt }: StoredTarget): RoundRecord[] {
+  const since = playedSince(createdDay, createdAt);
+  return byEndedAt(records.filter((record) => since(record) && record.config.pieceCount >= pieceCount));
 }
 
 /** Empty with no goal set, so the panel shows its sample; warming until a round at the goal's piece count or more has been played since. */

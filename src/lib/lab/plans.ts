@@ -1,6 +1,6 @@
 import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
-import type { PlanId, StoredPlan } from "./choices";
+import { playedSince, type PlanId, type StoredPlan } from "./choices";
 import { distinctDays, readinessFor, shiftDay, type LabInput, type MetricResult } from "./engine";
 import { EDGE_FILES, EDGE_RIG } from "./insights";
 import { daysBetween } from "./readiness";
@@ -65,10 +65,15 @@ export type PlanProgress =
     };
 
 /** Rounds the plan counts: none after the day it ended, nor after the edge drill's fourteenth day. */
-function sinceStart(rounds: readonly RoundRecord[], { planId, startedDay, ended }: StoredPlan) {
+function sinceStart(rounds: readonly RoundRecord[], { planId, startedDay, startedAt, ended }: StoredPlan) {
+  const started = playedSince(startedDay, startedAt);
   const lastDay = ended?.day ?? (planId === "edge" ? shiftDay(startedDay, PLAN_RULES.edge.days - 1) : null);
-  return rounds.filter(({ localDay }) => localDay >= startedDay && (lastDay === null || localDay <= lastDay));
+  return rounds.filter((record) => started(record) && (lastDay === null || record.localDay <= lastDay));
 }
+const beforeStart = (rounds: readonly RoundRecord[], { startedDay, startedAt }: StoredPlan) => {
+  const started = playedSince(startedDay, startedAt);
+  return rounds.filter((record) => !started(record));
+};
 const atRung = (rung: Rung) => {
   const key = configKey(rung);
   return (record: RoundRecord) => configKey(record.config) === key;
@@ -137,7 +142,7 @@ function edgeSide(rounds: readonly RoundRecord[]): EdgeSide {
 function edge(plan: StoredPlan, records: readonly RoundRecord[], today: string): PlanProgress {
   const { days, rung, beforeWindow } = PLAN_RULES.edge;
   const since = sinceStart(records, plan);
-  const before = byEndedAt(records.filter(({ localDay }) => localDay < plan.startedDay)).slice(-beforeWindow);
+  const before = byEndedAt(beforeStart(records, plan)).slice(-beforeWindow);
   const day = planDay(plan, today);
   return {
     planId: "edge",
@@ -205,7 +210,7 @@ function latestGameRung(records: readonly RoundRecord[]): Rung {
 function ladder(plan: StoredPlan, records: readonly RoundRecord[], today: string): PlanProgress {
   const rounds = ladderRounds(records, plan);
   const latest = rounds.at(-1);
-  const rung = latest ? rungOf(latest) : latestGameRung(records.filter(({ localDay }) => localDay < plan.startedDay));
+  const rung = latest ? rungOf(latest) : latestGameRung(beforeStart(records, plan));
   const { climbs, run } = ladderClimbs(records, plan);
   const climb = climbs.find(({ from }) => configKey(from) === configKey(rung));
   return {

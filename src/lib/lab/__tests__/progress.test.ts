@@ -255,6 +255,18 @@ describe("speed", () => {
     });
   });
 
+  it("caps a round's rebuild at 600 seconds, so one board left open does not swamp the rest", () => {
+    const records = rounds(5, (index) => ({ solveMs: index === 1 ? 9_000_000_000 : 20_000 }));
+
+    expect(speed(records).value).toMatchObject({ points: [5, 150, 5, 5, 5], recent: { average: 34, previous: null, change: null } });
+  });
+
+  it("leaves out a round with no rebuild time", () => {
+    const records = rounds(6, (index) => ({ solveMs: index === 0 ? 0 : 20_000 }));
+
+    expect(speed(records)).toMatchObject({ readiness: { state: "ready", sampleSize: 5 }, value: { points: [5, 5, 5, 5, 5] } });
+  });
+
   it("follows the setting the last 20 rounds played most, while the accuracy trend keeps the busiest setting overall", () => {
     const records = rounds(42, (index) =>
       index < 30 ? { localDay: index < 15 ? "2026-09-01" : "2026-09-02" } : { pieceCount: 6, localDay: index < 36 ? "2026-10-06" : TODAY },

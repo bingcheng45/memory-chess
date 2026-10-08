@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { lazy, Suspense, useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { useRouter } from "@/i18n/navigation";
 import { useGameStore } from '@/lib/store/gameStore';
 import { GamePhase } from '@/lib/types/game';
@@ -24,9 +24,12 @@ import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
 import { ROUND_PARAMS } from '@/lib/game/roundLink';
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { hasLabCopy } from '@/lib/home/labLocales';
 
 const TIMER_CUE_DELAY_MS = 500;
+
+const DailyPlayedNotice = lazy(() => import('@/components/game/DailyPlayedNotice'));
 
 /**
  * Pins the page while a round is memorised or placed. Pinning the scrolling
@@ -124,12 +127,33 @@ function GamePageContent() {
   // StrictMode re-runs this effect after the cleanup above has reset the store,
   // by which time the URL is cleared, so the round is kept for the second run.
   const urlRoundRef = useRef<UrlRound | null | undefined>(undefined);
+  const hasDaily = hasLabCopy(useLocale());
+  const [dailyPlayed, setDailyPlayed] = useState(false);
 
   useEffect(() => {
     if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound();
     const round = urlRoundRef.current;
-    if (round) startGame(round.pieceCount, round.memorizeTime, round.source);
-  }, [startGame]);
+    if (!round) return;
+    if (round.source !== 'daily' || !hasDaily) {
+      // The daily board's copy is English only, so elsewhere its link plays an ordinary round.
+      startGame(round.pieceCount, round.memorizeTime, round.source === 'daily' ? 'link' : round.source);
+      return;
+    }
+
+    // Read from the record before the round, so a second attempt today is refused; loaded only for a daily link.
+    let live = true;
+    import('@/lib/lab/dailyBoard')
+      .then(({ openDaily }) => openDaily(Date.now()))
+      .then((daily) => {
+        if (!live || !daily) return;
+        if (daily.kind === 'played') setDailyPlayed(true);
+        else startGame(daily.pieceCount, daily.memorizeTime, 'daily', daily.board);
+      })
+      .catch((error) => console.error('Could not open the daily board', error));
+    return () => {
+      live = false;
+    };
+  }, [startGame, hasDaily]);
   
   useEffect(() => {
     if (gamePhase === GamePhase.MEMORIZATION) {
@@ -245,6 +269,7 @@ function GamePageContent() {
   const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
     console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
     playSound('click');
+    setDailyPlayed(false);
     startGame(pieceCount, memorizeTime, source);
   };
   
@@ -278,6 +303,13 @@ function GamePageContent() {
       case GamePhase.CONFIGURATION:
         return (
           <div className={containerClass}>
+            {dailyPlayed && (
+              <ErrorBoundary fallback={<></>}>
+                <Suspense fallback={null}>
+                  <DailyPlayedNotice />
+                </Suspense>
+              </ErrorBoundary>
+            )}
             <ErrorBoundary>
               <GameConfig onStart={handleStartGame} />
             </ErrorBoundary>

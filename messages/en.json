@@ -490,6 +490,30 @@
           "realAria": "Your miss share on each square. Grey squares have fewer than 10 pieces seen.",
           "realNote": "Darker means missed more often. Grey has under 10 pieces seen."
         },
+        "daily": {
+          "fig": "Fig. {number} · Today's board",
+          "title": "One board a day, the same for everyone.",
+          "desc": "A new position opens every day at midnight UTC. Everyone gets the same 6 pieces and 10 seconds to study, and you get one try.",
+          "play": "Play today's board",
+          "open": "You have not played today's board yet.",
+          "played": "You placed {correct} of {pieces, plural, one {# piece} other {# pieces}} right, {accuracy} percent.",
+          "done": "Today's board is done. One try per day on this device.",
+          "locked": "You have played today's board. One try per day on this device.",
+          "seeResult": "See your result",
+          "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Resets in under a minute} one {Resets in # min} other {Resets in # min}}} one {Resets in # h {minutes} min} other {Resets in # h {minutes} min}}",
+          "streak": "Daily streak {current, plural, one {# day} other {# days}}{forgiven, plural, =0 {} one {, # missed day forgiven} other {, # missed days forgiven}} · longest {longest, plural, one {# day} other {# days}}",
+          "gridAria": "Your result on each square, a8 first: {correct} correct, {wrong} wrong piece, {missed} missed, {extra} extra.",
+          "key": {
+            "c": "correct",
+            "w": "wrong piece",
+            "m": "missed",
+            "x": "extra"
+          },
+          "share": "Memory Chess daily board {day}\n{correct} of {pieces} right, {accuracy}%\n{grid}\nthememorychess.com",
+          "copy": "Copy result",
+          "copied": "Copied. Paste it anywhere.",
+          "copyFailed": "Copy did not work here. The grid is selected, so copy it yourself."
+        },
         "streak": {
           "fig": "Fig. {number} · Days in a row",
           "title": "One round a day builds a streak.",

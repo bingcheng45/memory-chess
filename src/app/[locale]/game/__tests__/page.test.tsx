@@ -1,4 +1,6 @@
-import { render } from "@/test-utils/intl";
+import type { ReactNode } from "react";
+import { render, screen, waitFor } from "@/test-utils/intl";
+import { openDaily, type DailyStart } from "@/lib/lab/dailyBoard";
 import GamePage from "@/app/[locale]/game/page";
 import { fakeLayout } from "@/test-utils/layout";
 
@@ -27,6 +29,8 @@ jest.mock("@/lib/store/gameStore", () => {
   return { useGameStore };
 });
 
+jest.mock("@/lib/lab/dailyBoard", () => ({ openDaily: jest.fn() }));
+
 jest.mock("@/lib/utils/soundEffects", () => ({
   playSound: jest.fn(),
   stopTimerSound: jest.fn(),
@@ -38,6 +42,11 @@ jest.mock("@/hooks/useSoundEffects", () => ({
 
 jest.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ push: jest.fn() }),
+  Link: ({ href, children, className }: { href: string; children: ReactNode; className?: string }) => (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  ),
 }));
 
 jest.mock("@/components/ui/PageHeader", () => {
@@ -51,6 +60,7 @@ beforeEach(() => {
   jest.spyOn(console, "log").mockImplementation(() => {});
   mockStartGame.mockClear();
   mockResetGame.mockClear();
+  jest.mocked(openDaily).mockReset();
 });
 
 afterEach(() => {
@@ -124,6 +134,41 @@ describe("GamePage URL-driven start", () => {
     render(<GamePage />);
 
     expect(window.location.search).toBe("?difficulty=hard");
+  });
+});
+
+describe("GamePage daily board link", () => {
+  const BOARD = { kind: "daily", day: "2026-10-09", fen: "8/8/8/1pQ4k/P2p4/8/8/1K6 b - - 0 1" } as const;
+  const opens = (daily: DailyStart) => jest.mocked(openDaily).mockResolvedValue(daily);
+
+  it("plays today's set board at the setting the board names, whatever the link says", async () => {
+    opens({ kind: "play", pieceCount: 6, memorizeTime: 10, board: BOARD });
+    window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=daily");
+
+    render(<GamePage />);
+
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(6, 10, "daily", BOARD));
+    expect(window.location.search).toBe("");
+  });
+
+  it("refuses a second attempt today with a message instead of a round", async () => {
+    opens({ kind: "played" });
+    window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10&source=daily");
+
+    render(<GamePage />);
+
+    expect(await screen.findByText("You have played today's board. One try per day on this device.")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "See your result" })).toHaveAttribute("href", "/#record");
+    expect(mockStartGame).not.toHaveBeenCalled();
+  });
+
+  it("plays an ordinary round from the link in a language without the daily board's copy", () => {
+    window.history.pushState({}, "", "/de/game?pieceCount=6&memorizeTime=10&source=daily");
+
+    render(<GamePage />, { locale: "de" });
+
+    expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link");
+    expect(openDaily).not.toHaveBeenCalled();
   });
 });
 

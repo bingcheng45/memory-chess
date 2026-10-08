@@ -513,7 +513,7 @@
           "ring": "{played} of {goal} days this week",
           "sampleRing": "Sample week · {played} of {goal} days",
           "left": "{remaining, plural, =0 {Goal met this week.} one {# more day to meet your goal.} other {# more days to meet your goal.}}",
-          "goal": "Goal, days a week",
+          "goal": "Days a week",
           "option": "{days} days a week"
         },
         "welcome": {

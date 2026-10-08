@@ -13,6 +13,7 @@
   "personas": [
     "colourSkew",
     "easyOnly",
+    "graceStreak",
     "heavy",
     "manyBests",
     "newVisitor",
@@ -34,12 +35,13 @@
       "spark": 444,
       "speed": 532,
       "heat": 515,
-      "streak": 414,
+      "streak": 586,
       "bests": 579,
       "types": 516,
       "insights": 581,
       "notebook": 609,
-      "tools": 360
+      "tools": 360,
+      "welcome": 59
     },
     "medium": {
       "unlock": 251,
@@ -48,12 +50,13 @@
       "spark": 412,
       "speed": 494,
       "heat": 515,
-      "streak": 425,
+      "streak": 618,
       "bests": 906,
       "types": 516,
       "insights": 403,
       "notebook": 430,
-      "tools": 496
+      "tools": 496,
+      "welcome": 36
     },
     "wide": {
       "unlock": 186,
@@ -62,12 +65,13 @@
       "spark": 423,
       "speed": 511,
       "heat": 451,
-      "streak": 407,
+      "streak": 579,
       "bests": 492,
       "types": 434,
       "insights": 324,
       "notebook": 393,
-      "tools": 196
+      "tools": 196,
+      "welcome": 36
     }
   },
   "tallest": {
@@ -106,7 +110,10 @@
     "wide types": "stale client 1024",
     "wide insights": "staleHeat client 1024",
     "wide notebook": "heavy client 1024",
-    "wide tools": "colourSkew client 1024"
+    "wide tools": "colourSkew client 1024",
+    "narrow welcome": "manyBests client 320",
+    "medium welcome": "manyBests client 641",
+    "wide welcome": "manyBests client 1024"
   },
   "empty": {
     "narrow": {
@@ -116,12 +123,13 @@
       "spark": 397,
       "speed": 443,
       "heat": 431,
-      "streak": 371,
+      "streak": 476,
       "bests": 374,
       "types": 228,
       "insights": 418,
       "notebook": 446,
-      "tools": 0
+      "tools": 0,
+      "welcome": 0
     },
     "medium": {
       "unlock": 251,
@@ -130,12 +138,13 @@
       "spark": 333,
       "speed": 387,
       "heat": 430,
-      "streak": 401,
+      "streak": 511,
       "bests": 303,
       "types": 228,
       "insights": 279,
       "notebook": 329,
-      "tools": 0
+      "tools": 0,
+      "welcome": 0
     },
     "wide": {
       "unlock": 186,
@@ -144,12 +153,13 @@
       "spark": 376,
       "speed": 422,
       "heat": 422,
-      "streak": 359,
+      "streak": 469,
       "bests": 206,
       "types": 160,
       "insights": 301,
       "notebook": 329,
-      "tools": 0
+      "tools": 0,
+      "welcome": 0
     }
   }
 }

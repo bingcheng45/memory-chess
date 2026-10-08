@@ -166,14 +166,16 @@ export function WeekRing({ played, goal, label }: { readonly played: number; rea
   return (
     <svg className="lab-week-ring" viewBox="0 0 44 44" role="img" aria-label={label}>
       <circle className="lab-week-track" cx="22" cy="22" r={RING_RADIUS} />
-      <circle
-        className="lab-week-fill"
-        cx="22"
-        cy="22"
-        r={RING_RADIUS}
-        strokeDasharray={`${RING_LENGTH * share} ${RING_LENGTH}`}
-        transform="rotate(-90 22 22)"
-      />
+      {share > 0 && (
+        <circle
+          className="lab-week-fill"
+          cx="22"
+          cy="22"
+          r={RING_RADIUS}
+          strokeDasharray={`${RING_LENGTH * share} ${RING_LENGTH}`}
+          transform="rotate(-90 22 22)"
+        />
+      )}
     </svg>
   );
 }

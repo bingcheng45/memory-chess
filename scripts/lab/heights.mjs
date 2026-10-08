@@ -15,7 +15,7 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { argsOf, BREAKPOINT_WIDTHS as WIDTHS, importFile, PERSONA_ENV, runPersona, sized } from "./drive.mjs";
+import { argsOf, BREAKPOINT_WIDTHS as WIDTHS, loadPersona, PERSONA_ENV, runPersona, sized } from "./drive.mjs";
 
 const DATA_FILE = "src/components/home/lab-heights.json";
 const RAW_FILE = "heights.json";
@@ -37,14 +37,7 @@ const MEASURE = `(() => {
 })()`;
 
 export default async function measure(page, { baseUrl, evidenceDir }) {
-  const personaFile = process.env[PERSONA_ENV];
-  const persona = JSON.parse(readFileSync(personaFile, "utf8"));
-  if (persona.rounds.length > 0) {
-    await sized(page, 1440);
-    await page.goto(`${baseUrl}/`);
-    await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);
-    await importFile(page, personaFile);
-  }
+  const rounds = await loadPersona(page, baseUrl, process.env[PERSONA_ENV]);
 
   const client = {};
   for (const width of WIDTHS) {
@@ -62,7 +55,7 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     server[width] = await page.eval(MEASURE);
   }
   writeFileSync(join(evidenceDir, RAW_FILE), JSON.stringify({ client, server }, null, 2));
-  return { rounds: persona.rounds.length };
+  return { rounds };
 }
 
 async function main() {

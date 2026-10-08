@@ -77,7 +77,6 @@ export async function sized(page, width) {
   await page.send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 600 });
 }
 
-/** Loads the server render with scripts off at each width and lists the text a stylesheet hides there. */
 async function serverHiddenText(page, baseUrl) {
   await page.send("Emulation.setScriptExecutionDisabled", { value: true });
   const hidden = {};

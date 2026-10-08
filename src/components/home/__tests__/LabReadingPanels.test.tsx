@@ -16,7 +16,6 @@ function show(name: PersonaName, today?: string) {
   renderWithIntl(<LabRecordSection record={persona(name, today)} />);
 }
 
-/** Three rounds today with nothing placed right. */
 function showNothingRight() {
   const records = Array.from({ length: 3 }, (_, index) =>
     round({ id: `blank${index}`, placedFen: "8/8/8/8/8/8/8/8", localDay: "2026-10-08", endedAt: Date.UTC(2026, 9, 8, 9 + index) }),

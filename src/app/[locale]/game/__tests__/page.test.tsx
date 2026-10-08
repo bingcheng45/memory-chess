@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { render, screen, waitFor } from "@/test-utils/intl";
+import { act, fireEvent, render, screen, waitFor } from "@/test-utils/intl";
 import { openDaily, type DailyStart } from "@/lib/lab/dailyBoard";
 import GamePage from "@/app/[locale]/game/page";
 import { fakeLayout } from "@/test-utils/layout";
@@ -151,15 +151,30 @@ describe("GamePage daily board link", () => {
     expect(window.location.search).toBe("");
   });
 
-  it("refuses a second attempt today with a message instead of a round", async () => {
+  it("refuses a second attempt today with a message in the form's place, until the player chooses a round", async () => {
     opens({ kind: "played" });
     window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10&source=daily");
 
     render(<GamePage />);
 
-    expect(await screen.findByText("You have played today's board. One try per day on this device.")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "See your result" })).toHaveAttribute("href", "/#record");
+    expect(await screen.findByText("You have already opened today's board. One try per day on this device.")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Open your lab record" })).toHaveAttribute("href", "/#record");
+    expect(document.querySelector("[data-game-config]")).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "Play another round" }));
+    expect(document.querySelector("[data-game-config]")).not.toBeNull();
     expect(mockStartGame).not.toHaveBeenCalled();
+  });
+
+  it("leaves a round the player started by hand alone when the daily board answers late", async () => {
+    let answer: (daily: DailyStart) => void = () => {};
+    jest.mocked(openDaily).mockReturnValue(new Promise((resolve) => (answer = resolve)));
+    window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10&source=daily");
+    render(<GamePage />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "Start Training" }));
+    await act(async () => answer({ kind: "play", pieceCount: 6, memorizeTime: 10, board: BOARD }));
+
+    expect(mockStartGame.mock.calls.map(([, , source]) => source)).toEqual(["game_form"]);
   });
 
   it("plays an ordinary round from the link in a language without the daily board's copy", () => {

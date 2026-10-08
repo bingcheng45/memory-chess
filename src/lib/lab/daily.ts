@@ -18,18 +18,32 @@ export type DailyRound = RoundRecordV2 & { readonly kind: "daily"; readonly dail
 
 const isDaily = (record: RoundRecord): record is DailyRound => record.v === 2 && record.kind === "daily" && record.dailyDay !== undefined;
 
-/** One attempt a day: the first daily round of the day is the day's result, and any later one changes nothing. */
+/**
+ * One attempt a day, and opening the board is the attempt: a board opened and left without a result is unfinished, so
+ * leaving and coming back never shows it twice. The first daily round of the day is the day's result.
+ */
 export type DailyBoard =
-  | { readonly status: "open"; readonly day: string; readonly streak: StreakValue | null }
+  | { readonly status: "open" | "unfinished"; readonly day: string; readonly streak: StreakValue | null }
   | { readonly status: "played"; readonly day: string; readonly round: DailyRound; readonly streak: StreakValue };
 
-export function dailyBoardOf(records: readonly RoundRecord[], day: string): DailyBoard {
+/** The UTC day of the last daily board opened on this device, written when the round starts. */
+export const DAILY_OPENED_KEY = "memory-chess-lab-daily-opened";
+
+export function readDailyOpened(): string | null {
+  try {
+    return window.localStorage.getItem(DAILY_OPENED_KEY);
+  } catch {
+    return null;
+  }
+}
+
+export function dailyBoardOf(records: readonly RoundRecord[], day: string, openedDay: string | null): DailyBoard {
   const daily = records.filter(isDaily);
   const [round] = byEndedAt(daily.filter(({ dailyDay }) => dailyDay === day));
   const streak = (days: readonly string[]) => streakOf(days, day);
   const days = [...new Set(daily.map(({ dailyDay }) => dailyDay))];
   if (round) return { status: "played", day, round, streak: streak(days) };
-  return { status: "open", day, streak: days.length > 0 ? streak(days) : null };
+  return { status: openedDay === day ? "unfinished" : "open", day, streak: days.length > 0 ? streak(days) : null };
 }
 
 /** Squares only, never pieces, so a pasted grid shows how the board went without naming what stood where. */

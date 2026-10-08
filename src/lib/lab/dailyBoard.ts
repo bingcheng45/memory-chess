@@ -1,7 +1,7 @@
 import type { SetBoard } from "@/lib/types/game";
 import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
 import { seededRandom } from "@/lib/utils/seededRandom";
-import { DAILY_SETTING, dailyBoardOf, utcDayOf } from "./daily";
+import { DAILY_OPENED_KEY, DAILY_SETTING, dailyBoardOf, readDailyOpened, utcDayOf } from "./daily";
 import { positionId, type RoundRecord } from "./record";
 import { labStore } from "./storage";
 
@@ -17,16 +17,24 @@ export type DailyStart =
   | { readonly kind: "play"; readonly pieceCount: number; readonly memorizeTime: number; readonly board: SetBoard }
   | { readonly kind: "played" };
 
-export function dailyStart(records: readonly RoundRecord[], at: number): DailyStart | null {
+export function dailyStart(records: readonly RoundRecord[], at: number, openedDay: string | null): DailyStart | null {
   const day = utcDayOf(at);
-  if (dailyBoardOf(records, day).status === "played") return { kind: "played" };
+  if (dailyBoardOf(records, day, openedDay).status !== "open") return { kind: "played" };
   const fen = dailyFen(day);
   return fen === null ? null : { kind: "play", ...DAILY_SETTING, board: { kind: "daily", day, fen } };
 }
 
-/** Reads the record on this device first, so a second attempt on the same UTC day is refused. */
+/** Reads the record on this device first, so a second attempt on the same UTC day is refused, and marks the day opened. */
 export async function openDaily(at: number): Promise<DailyStart | null> {
   const store = labStore();
   const records = store && (await store.isAvailable()) ? await store.listRounds() : [];
-  return dailyStart(records, at);
+  const start = dailyStart(records, at, readDailyOpened());
+  if (start?.kind === "play") {
+    try {
+      window.localStorage.setItem(DAILY_OPENED_KEY, start.board.day);
+    } catch {
+      // Without storage the record alone limits the day to one result.
+    }
+  }
+  return start;
 }

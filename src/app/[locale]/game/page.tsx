@@ -129,6 +129,8 @@ function GamePageContent() {
   const urlRoundRef = useRef<UrlRound | null | undefined>(undefined);
   const hasDaily = hasLabCopy(useLocale());
   const [dailyPlayed, setDailyPlayed] = useState(false);
+  // A round the player starts by hand wins over a daily board still being read.
+  const startedByHandRef = useRef(false);
 
   useEffect(() => {
     if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound();
@@ -145,7 +147,7 @@ function GamePageContent() {
     import('@/lib/lab/dailyBoard')
       .then(({ openDaily }) => openDaily(Date.now()))
       .then((daily) => {
-        if (!live || !daily) return;
+        if (!live || !daily || startedByHandRef.current) return;
         if (daily.kind === 'played') setDailyPlayed(true);
         else startGame(daily.pieceCount, daily.memorizeTime, 'daily', daily.board);
       })
@@ -246,6 +248,8 @@ function GamePageContent() {
   
   // Handle trying again with the same configuration
   const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
+    startedByHandRef.current = true;
+    setDailyPlayed(false);
     stopTimerSound();
     playSound('click');
     resetGame();
@@ -269,7 +273,7 @@ function GamePageContent() {
   const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
     console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
     playSound('click');
-    setDailyPlayed(false);
+    startedByHandRef.current = true;
     startGame(pieceCount, memorizeTime, source);
   };
   
@@ -303,16 +307,18 @@ function GamePageContent() {
       case GamePhase.CONFIGURATION:
         return (
           <div className={containerClass}>
-            {dailyPlayed && (
-              <ErrorBoundary fallback={<></>}>
-                <Suspense fallback={null}>
-                  <DailyPlayedNotice />
+            {/* In the configuration form's place, so nothing above or beside it moves when it appears. */}
+            {dailyPlayed ? (
+              <ErrorBoundary fallback={<GameConfig onStart={handleStartGame} />}>
+                <Suspense fallback={<GameConfig onStart={handleStartGame} />}>
+                  <DailyPlayedNotice onChoose={() => setDailyPlayed(false)} />
                 </Suspense>
               </ErrorBoundary>
+            ) : (
+              <ErrorBoundary>
+                <GameConfig onStart={handleStartGame} />
+              </ErrorBoundary>
             )}
-            <ErrorBoundary>
-              <GameConfig onStart={handleStartGame} />
-            </ErrorBoundary>
             {gameState.completionTime !== undefined && (
               <div className="mt-8 w-full max-w-md md:max-w-lg mx-auto">
                 <ErrorBoundary>

@@ -26,7 +26,7 @@ describe("the daily board position", () => {
 
 describe("starting today's board", () => {
   it("opens today's position at the Medium preset when the record has no daily round today", () => {
-    expect(dailyStart([], NOON)).toEqual({
+    expect(dailyStart([], NOON, null)).toEqual({
       kind: "play",
       pieceCount: 6,
       memorizeTime: 10,
@@ -37,12 +37,16 @@ describe("starting today's board", () => {
   it("refuses a second attempt on the same UTC day", () => {
     const played = roundV2({ endedAt: NOON - 3_600_000, localDay: "2026-10-09" }, { kind: "daily", dailyDay: "2026-10-09" });
 
-    expect(dailyStart([played], NOON)).toEqual({ kind: "played" });
+    expect(dailyStart([played], NOON, "2026-10-09")).toEqual({ kind: "played" });
+  });
+
+  it("refuses a board opened earlier today and left before its result", () => {
+    expect(dailyStart([], NOON, "2026-10-09")).toEqual({ kind: "played" });
   });
 
   it("opens the next day's position once UTC midnight has passed", () => {
     const played = roundV2({ endedAt: NOON - 3_600_000, localDay: "2026-10-09" }, { kind: "daily", dailyDay: "2026-10-09" });
 
-    expect(dailyStart([played], NOON + 12 * 3_600_000)).toMatchObject({ kind: "play", board: { day: "2026-10-10", fen: DAY_TWO } });
+    expect(dailyStart([played], NOON + 12 * 3_600_000, "2026-10-09")).toMatchObject({ kind: "play", board: { day: "2026-10-10", fen: DAY_TWO } });
   });
 });

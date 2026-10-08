@@ -23,6 +23,7 @@ beforeEach(() => {
 
 afterEach(() => {
   jest.useRealTimers();
+  window.localStorage.clear();
 });
 
 describe("today's board panel", () => {
@@ -41,6 +42,15 @@ describe("today's board panel", () => {
     expect(screen.getByText("Daily streak 3 days · longest 3 days")).toBeInTheDocument();
     expect(screen.getByText("Resets in 5 h 12 min")).toBeInTheDocument();
     expect(playLink()).toBeInTheDocument();
+  });
+
+  it("offers no second look at a board opened today and left before the result", () => {
+    window.localStorage.setItem("memory-chess-lab-daily-opened", "2026-10-09");
+    render(<DailyPanel records={[daily("2026-10-08")]} ready />);
+
+    expect(screen.getByText("You opened today's board and left before the result. One try per day on this device.")).toBeInTheDocument();
+    expect(screen.getByText("Daily streak 1 day · longest 1 day")).toBeInTheDocument();
+    expect(playLink()).not.toBeInTheDocument();
   });
 
   it("shows the result, the share grid and a clear end to today's try once the board is played", () => {

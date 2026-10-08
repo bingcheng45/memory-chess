@@ -110,10 +110,14 @@ export async function shiftClock(page, offsetMs) {
     source: `(() => {
       const offset = ${Number(offsetMs)};
       const RealDate = Date;
-      class ShiftedDate extends RealDate {
-        constructor(...args) { super(...(args.length === 0 ? [RealDate.now() + offset] : args)); }
-        static now() { return RealDate.now() + offset; }
+      function ShiftedDate(...args) {
+        if (!new.target) return new RealDate(RealDate.now() + offset).toString();
+        return new RealDate(...(args.length === 0 ? [RealDate.now() + offset] : args));
       }
+      ShiftedDate.prototype = RealDate.prototype;
+      ShiftedDate.now = () => RealDate.now() + offset;
+      ShiftedDate.parse = RealDate.parse;
+      ShiftedDate.UTC = RealDate.UTC;
       globalThis.Date = ShiftedDate;
     })()`,
   });

@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { trackEvent } from "@/lib/analytics/events";
 import { playHref } from "@/lib/game/roundLink";
-import { DAILY_SETTING, dailyBoardOf, SHARE_CELLS, shareGrid, utcDayOf, type DailyRound } from "@/lib/lab/daily";
+import { DAILY_SETTING, dailyBoardOf, readDailyOpened, SHARE_CELLS, shareGrid, utcDayOf, type DailyRound } from "@/lib/lab/daily";
 import type { RoundRecord } from "@/lib/lab/record";
 import type { StreakValue } from "@/lib/lab/streak";
 import { DailyResetsIn, useNow } from "./DailyResetsIn";
@@ -70,13 +70,13 @@ interface DailyPanelProps {
   readonly ready: boolean;
 }
 
-/** Today's shared board: open with a link to play it, or played with the result and its share grid. */
+/** Today's shared board: open with a link to play it, unfinished once opened without a result, or played with its share grid. */
 export function DailyPanel({ records, ready }: DailyPanelProps) {
   const t = useTranslations("home.lab.record.daily");
   const tags = useTags();
   const now = useNow();
-  const day = now === null ? null : utcDayOf(now);
-  const board = useMemo(() => (ready && day !== null ? dailyBoardOf(records, day) : null), [ready, day, records]);
+  // Read again on each tick, which also picks up the board being opened in another tab.
+  const board = useMemo(() => (ready && now !== null ? dailyBoardOf(records, utcDayOf(now), readDailyOpened()) : null), [ready, now, records]);
   const played = board?.status === "played" ? board : null;
 
   return (
@@ -96,15 +96,17 @@ export function DailyPanel({ records, ready }: DailyPanelProps) {
           </div>
         ) : (
           <>
-            <p className="lab-daily-status">{board && t("open")}</p>
+            <p className="lab-daily-status">{board && t(board.status === "unfinished" ? "unfinished" : "open")}</p>
             <StreakLine t={t} streak={board?.streak ?? null} />
-            <Link
-              className="lab-btn lab-btn-secondary lab-daily-play"
-              href={DAILY_HREF}
-              onClick={() => trackEvent({ name: "lab_panel_action", params: { panel: "daily", action: "play" } })}
-            >
-              {t("play")} →
-            </Link>
+            {board?.status !== "unfinished" && (
+              <Link
+                className="lab-btn lab-btn-secondary lab-daily-play"
+                href={DAILY_HREF}
+                onClick={() => trackEvent({ name: "lab_panel_action", params: { panel: "daily", action: "play" } })}
+              >
+                {t("play")} →
+              </Link>
+            )}
           </>
         )}
       </Fragment>

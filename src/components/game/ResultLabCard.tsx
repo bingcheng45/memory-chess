@@ -9,7 +9,7 @@ import { useWeekGoal } from "@/components/home/useWeekGoal";
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { playHref } from "@/lib/game/roundLink";
 import { INSIGHT_GUIDES } from "@/lib/lab/insights";
-import { resultCardFor, type NewBest, type NextStep, type ResultCard } from "@/lib/lab/resultCard";
+import { resultCardFor, type NewBest, type NextStep, type ResultCard, type Setting } from "@/lib/lab/resultCard";
 import ResultLabSlot, { RESULT_LAB_FRAME } from "./ResultLabSlot";
 
 /** How long the card waits for the round to reach the record before it gives up and leaves the screen. */
@@ -65,28 +65,35 @@ function whyOf(t: Translate, next: NextStep): string | null {
 
 const isPlainClick = (event: MouseEvent) => event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 
-function NextAction({ t, next, onPlay }: { t: Translate; next: NextStep; onPlay: ResultLabCardProps["onPlay"] }) {
-  const track = () => trackEvent({ name: "lab_panel_action", params: { panel: "resultCard", action: "next" } });
-  const action = next.kind === "insight" ? next.insight.action : { kind: "rig" as const, ...next.setting };
-  if (action.kind === "guide") {
-    return (
-      <Link className={LINK_CLASS} href={`/learn/${INSIGHT_GUIDES[action.guide]}`} onClick={track}>
-        {t(`next.${action.guide}`)} →
-      </Link>
-    );
-  }
-  const { pieceCount, memorizeSeconds } = action;
+const trackNext = () => trackEvent({ name: "lab_panel_action", params: { panel: "resultCard", action: "next" } });
+
+function GuideLink({ t, guide }: { t: Translate; guide: keyof typeof INSIGHT_GUIDES }) {
+  return (
+    <Link className={LINK_CLASS} href={`/learn/${INSIGHT_GUIDES[guide]}`} onClick={trackNext}>
+      {t(`next.${guide}`)} →
+    </Link>
+  );
+}
+
+function PlayLink({ t, label, setting, onPlay }: { t: Translate; label: "again" | "play"; setting: Setting; onPlay: ResultLabCardProps["onPlay"] }) {
+  const { pieceCount, memorizeSeconds } = setting;
   const play = (event: MouseEvent) => {
-    track();
+    trackNext();
     if (!isPlainClick(event)) return;
     event.preventDefault();
     onPlay(pieceCount, memorizeSeconds, SOURCE);
   };
   return (
     <Link className={LINK_CLASS} href={playHref(pieceCount, memorizeSeconds, SOURCE)} onClick={play}>
-      {t(next.kind === "again" ? "next.again" : "next.play", { pieceCount, studyTime: seconds(memorizeSeconds) })} →
+      {t(`next.${label}`, { pieceCount, studyTime: seconds(memorizeSeconds) })} →
     </Link>
   );
+}
+
+function NextAction({ t, next, onPlay }: { t: Translate; next: NextStep; onPlay: ResultLabCardProps["onPlay"] }) {
+  if (next.kind !== "insight") return <PlayLink t={t} label={next.kind === "again" ? "again" : "play"} setting={next.setting} onPlay={onPlay} />;
+  const { action } = next.insight;
+  return action.kind === "guide" ? <GuideLink t={t} guide={action.guide} /> : <PlayLink t={t} label="play" setting={action} onPlay={onPlay} />;
 }
 
 /**

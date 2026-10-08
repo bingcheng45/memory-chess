@@ -8,7 +8,7 @@ import { byEndedAt } from "./sessions";
 import { beats } from "./summary";
 import { weekProgress, type WeekGoal } from "./week";
 
-type Setting = Pick<RoundConfig, "pieceCount" | "memorizeSeconds">;
+export type Setting = Pick<RoundConfig, "pieceCount" | "memorizeSeconds">;
 
 export interface NewBest {
   readonly setting: Setting;

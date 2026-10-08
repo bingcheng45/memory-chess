@@ -8,7 +8,7 @@ import { RESULT_LAB_LINK } from "./ResultLabSlot";
 
 /** Shown in place of a second attempt at today's board, until the player chooses a round of their own. Loaded only then. */
 export default function DailyPlayedNotice({ onChoose }: { onChoose: () => void }) {
-  const t = useTranslations("home.lab.record.daily");
+  const t = useTranslations("home.lab.daily");
   const now = useNow();
   return (
     <section role="status" className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-5 text-sm sm:p-7 md:max-w-lg">

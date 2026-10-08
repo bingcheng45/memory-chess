@@ -19,7 +19,7 @@ export function useNow(): number | null {
 }
 
 export function DailyResetsIn({ now }: { now: number | null }) {
-  const t = useTranslations("home.lab.record.daily");
+  const t = useTranslations("home.lab.daily");
   if (now === null) return null;
   const minutes = Math.floor(msToNextUtcDay(now) / 60_000);
   return <>{t("resetsIn", { hours: Math.floor(minutes / 60), minutes: minutes % 60 })}</>;

@@ -3,7 +3,7 @@ import { join } from "node:path";
 import measured from "../lab-heights.json";
 
 const css = readFileSync(join(__dirname, "../lab-instruments.css"), "utf8");
-const SLACK_PX = 8;
+const SLACK_PX = 12;
 const EMPTY_GAP_PX = 220;
 const BOXES = {
   unlock: ".lab-unlock",
@@ -29,7 +29,17 @@ const medium = { ...wide, ...tokensIn(/@media \(max-width: 1000px\) \{\s*\.lab \
 const narrow = { ...medium, ...tokensIn(/@media \(max-width: 640px\) \{\s*\.lab \{([^}]*)\}/) };
 const reserves = { wide, medium, narrow };
 
+/** The widths at which the reserves change: each `@media (max-width: Npx)` block that sets them. */
+const BREAKPOINTS = [...css.matchAll(/@media \(max-width: (\d+)px\) \{\s*\.lab \{/g)].map(([, px]) => Number(px));
+
 describe("§06 reserved heights", () => {
+  it("were measured on both sides of every breakpoint the reserves change at", () => {
+    const uncovered = BREAKPOINTS.filter((px) => !(measured.widths.includes(px) && measured.widths.some((width) => width > px && width <= px + 32)));
+
+    expect(BREAKPOINTS).toEqual([1000, 640]);
+    expect(uncovered).toEqual([]);
+  });
+
   it("hold every box above its tallest measured state, with room to spare, at every layout width", () => {
     const short = Object.entries(measured.max).flatMap(([tier, heights]) =>
       Object.entries(heights).flatMap(([box, height]) => {
@@ -48,7 +58,7 @@ describe("§06 reserved heights", () => {
     });
 
     // The tools strip is not rendered on the server at all, and recall by piece type has no Sample chart, only one line.
-    expect(blank).toEqual(["types: 308px", "tools: 376px"]);
+    expect(blank).toEqual(["types: 300px", "tools: 376px"]);
   });
 
   it("give each box its reserve as a minimum height", () => {

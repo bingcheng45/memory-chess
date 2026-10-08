@@ -1,5 +1,5 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
-import { isCalendarDay } from "./transfer";
+import { isCalendarDay, isObject } from "./transfer";
 
 /**
  * What the player chose, as opposed to what they did: one plan and one goal, kept on this device apart from the round
@@ -30,8 +30,6 @@ export interface StoredTarget {
   readonly createdDay: string;
 }
 
-const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
-
 function parseJson(text: string | null): unknown {
   if (text === null) return null;
   try {
@@ -52,13 +50,14 @@ export function parsePlan(text: string | null): StoredPlan | null {
   return { ...plan, ended: { how: ended.how as PlanEnding, day: ended.day } };
 }
 
-export const isGoalPieces = (value: number) => Number.isInteger(value) && value >= GOAL_PIECES.min && value <= GOAL_PIECES.max;
-export const isGoalAccuracy = (value: number) =>
-  Number.isInteger(value) && value >= GOAL_ACCURACY.min && value <= GOAL_ACCURACY.max && value % GOAL_ACCURACY.step === 0;
+const range = (min: number, max: number, step = 1) => Array.from({ length: (max - min) / step + 1 }, (_, index) => min + index * step);
+/** The goal form's options, and the only values a stored goal may hold. */
+export const GOAL_PIECE_OPTIONS: readonly number[] = range(GOAL_PIECES.min, GOAL_PIECES.max);
+export const GOAL_ACCURACY_OPTIONS: readonly number[] = range(GOAL_ACCURACY.min, GOAL_ACCURACY.max, GOAL_ACCURACY.step);
 
 export function parseTarget(text: string | null): StoredTarget | null {
   const raw = parseJson(text);
-  if (!isObject(raw) || typeof raw.pieceCount !== "number" || typeof raw.accuracy !== "number") return null;
-  if (!isGoalPieces(raw.pieceCount) || !isGoalAccuracy(raw.accuracy) || !isCalendarDay(raw.createdDay)) return null;
-  return { pieceCount: raw.pieceCount, accuracy: raw.accuracy, createdDay: raw.createdDay };
+  if (!isObject(raw) || !GOAL_PIECE_OPTIONS.includes(raw.pieceCount as number) || !GOAL_ACCURACY_OPTIONS.includes(raw.accuracy as number)) return null;
+  if (!isCalendarDay(raw.createdDay)) return null;
+  return { pieceCount: raw.pieceCount as number, accuracy: raw.accuracy as number, createdDay: raw.createdDay };
 }

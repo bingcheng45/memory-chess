@@ -62,7 +62,7 @@ export interface InsightsValue {
 export const INSIGHTS_THRESHOLDS = { rounds: 10 };
 const MAX_INSIGHTS = 3;
 
-const EDGE_FILES = [0, 7];
+export const EDGE_FILES: readonly number[] = [0, 7];
 const CENTRE_FILES = [3, 4];
 const EDGE_RATIO = 1.8;
 const EDGE_MISSES = 5;

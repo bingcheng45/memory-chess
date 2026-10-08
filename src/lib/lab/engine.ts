@@ -36,10 +36,13 @@ export function readinessFor(
 export const hundredths = (value: number) => Math.round(value * 100) / 100;
 export const mean = (values: readonly number[]) => values.reduce((sum, value) => sum + value, 0) / values.length;
 
-export function shiftDay(day: string, by: number): string {
+/** A "YYYY-MM-DD" local day as a Date at its local midnight, `by` days later. */
+export function dayDate(day: string, by = 0): Date {
   const [year, month, date] = day.split("-").map(Number);
-  return localDayOf(new Date(year, month - 1, date + by));
+  return new Date(year, month - 1, date + by);
 }
+
+export const shiftDay = (day: string, by: number): string => localDayOf(dayDate(day, by));
 
 export type TrendSetting = Pick<RoundConfig, "pieceCount" | "memorizeSeconds"> & { readonly source: LabSource };
 

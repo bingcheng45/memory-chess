@@ -4,6 +4,7 @@ import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
 import type { RoundSource } from "@/lib/analytics/events";
 import type { PlanId, StoredPlan, StoredTarget } from "./choices";
 import { shiftDay } from "./engine";
+import { EDGE_RIG } from "./insights";
 import type { PlacementEvent } from "./placements";
 import { buildRoundRecord, type LabSource, type RoundCapture, type RoundInput, type RoundRecord } from "./record";
 import { createLabStore, PLACEMENT_KEEP, type LabStore } from "./storage";
@@ -111,7 +112,7 @@ const GRACE_DAYS = [...countdown(31, 24), ...countdown(19, 0)].filter((daysAgo) 
 
 const THREE_DAYS: PersonaPlan = { seed: 3, rounds: daily(countdown(2, 0), (_, slot) => (slot === 0 ? PRACTICE : MEDIUM), 4), missChance: steady };
 
-const EDGE_RIG_SETTING: Setting = { source: "game", pieceCount: 8, memorizeSeconds: 15 };
+const EDGE_RIG_SETTING: Setting = { source: "game", ...EDGE_RIG };
 const MEDIUM_8S: Setting = { ...MEDIUM, memorizeSeconds: 8 };
 const at = (setting: Setting, daysAgo: number, miss?: number): PlannedRound => ({ ...setting, daysAgo, ...(miss !== undefined && { miss }) });
 

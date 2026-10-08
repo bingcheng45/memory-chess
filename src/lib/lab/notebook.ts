@@ -60,7 +60,7 @@ const hasWholeLog = ({ missing }: History) => missing === 0;
 const hasRoundCount = ({ before }: History) => before !== null;
 const hasAllDays = ({ allDays }: History) => allDays;
 /** A plan or a goal reads only the rounds since it was chosen, which the log holds. */
-const always = () => true;
+const sinceChosen = () => true;
 
 interface EntrySource {
   readonly ready: (history: History) => boolean;
@@ -160,17 +160,18 @@ const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
   span: { ready: hasWholeLog, drafts: spanSteps },
   streak: { ready: hasAllDays, drafts: streakMilestones },
   rungUp: {
-    ready: always,
+    ready: sinceChosen,
     drafts: ({ rounds, plan }) =>
       plan?.planId === "ladder"
         ? ladderClimbs(rounds, plan).climbs.flatMap(({ record, next }) => (next ? [{ record, params: { ...next } }] : []))
         : [],
   },
   goalReached: {
-    ready: always,
+    ready: sinceChosen,
     drafts: ({ rounds, goal }) => {
-      const record = goal?.reached && rounds.find(({ endedAt }) => endedAt === goal.reached?.at);
-      return record ? [{ record, params: { pieceCount: goal.target.pieceCount, accuracy: goal.target.accuracy } }] : [];
+      const reached = goal?.reached;
+      const record = reached && rounds.find(({ endedAt }) => endedAt === reached.at);
+      return goal && record ? [{ record, params: { pieceCount: goal.target.pieceCount, accuracy: goal.target.accuracy } }] : [];
     },
   },
 };

@@ -1,8 +1,8 @@
 import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
-import type { PlanEnding, PlanId, StoredPlan } from "./choices";
-import { distinctDays, measured, readinessFor, type LabInput, type MetricResult } from "./engine";
-import { EDGE_RIG } from "./insights";
+import type { PlanId, StoredPlan } from "./choices";
+import { distinctDays, readinessFor, type LabInput, type MetricResult } from "./engine";
+import { EDGE_FILES, EDGE_RIG } from "./insights";
 import { daysBetween } from "./readiness";
 import { configKey, type RoundConfig, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
@@ -64,13 +64,12 @@ export type PlanProgress =
       readonly next: Rung | null;
     };
 
-export type PlansValue = PlanProgress;
-
-/** Rounds from the start day to the day the plan ended, or to today while it runs. */
 const sinceStart = (rounds: readonly RoundRecord[], { startedDay, ended }: StoredPlan) =>
   rounds.filter(({ localDay }) => localDay >= startedDay && (!ended || localDay <= ended.day));
-const atRung = (rung: Rung) => (record: RoundRecord) => configKey(record.config) === configKey(rung);
-const percentOf = (share: number) => Math.round(share * 100);
+const atRung = (rung: Rung) => {
+  const key = configKey(rung);
+  return (record: RoundRecord) => configKey(record.config) === key;
+};
 
 /** A plan's day count stops on the day it ended, so an ended plan reads the same on every later visit. */
 function planDay({ startedDay, ended }: StoredPlan, today: string) {
@@ -80,7 +79,7 @@ function planDay({ startedDay, ended }: StoredPlan, today: string) {
 type Completion = { readonly how: "rounds" | "calendar"; readonly day: number } | null;
 
 function statusOf(plan: StoredPlan, today: string, completed: Completion): PlanStatus {
-  const how: PlanEnding | undefined = plan.ended?.how;
+  const how = plan.ended?.how;
   if (how === "stopped") return { kind: "stopped", day: planDay(plan, today) };
   if (how === "finished") return { kind: "done", day: planDay(plan, today), how: "finished" };
   return completed ? { kind: "done", ...completed } : { kind: "active", day: planDay(plan, today) };
@@ -113,18 +112,24 @@ function baseline(plan: StoredPlan, records: readonly RoundRecord[], today: stri
   return { planId: "baseline", status, daysPlayed, comparison };
 }
 
-const EDGE_FILE = /^[ah]$/;
-const isEdgeIndex = (index: number) => EDGE_FILE.test("abcdefgh"[index % 8]);
-
+/** Rounds that showed a piece on the a or h file, with how many such pieces were shown and missed. */
 function edgeSide(rounds: readonly RoundRecord[]): EdgeSide {
-  const counted = rounds.map((record) => {
-    const edge = [...record.squares].filter((outcome, index) => isEdgeIndex(index) && outcome !== "." && outcome !== "x");
-    return { shown: edge.length, missed: edge.filter((outcome) => outcome === "m" || outcome === "w").length };
-  }).filter(({ shown }) => shown > 0);
-  const shown = counted.reduce((sum, round) => sum + round.shown, 0);
-  const missed = counted.reduce((sum, round) => sum + round.missed, 0);
-  const readable = counted.length >= PLAN_RULES.edge.compareRounds;
-  return { rounds: counted.length, shown, missed, percent: readable ? percentOf(missed / shown) : null };
+  let counted = 0;
+  let shown = 0;
+  let missed = 0;
+  for (const { squares } of rounds) {
+    let roundShown = 0;
+    for (let index = 0; index < squares.length; index += 1) {
+      const outcome = squares[index];
+      if (!EDGE_FILES.includes(index % 8) || outcome === "." || outcome === "x") continue;
+      roundShown += 1;
+      if (outcome === "m" || outcome === "w") missed += 1;
+    }
+    shown += roundShown;
+    if (roundShown > 0) counted += 1;
+  }
+  const readable = counted >= PLAN_RULES.edge.compareRounds;
+  return { rounds: counted, shown, missed, percent: readable ? Math.round((missed / shown) * 100) : null };
 }
 
 function edge(plan: StoredPlan, records: readonly RoundRecord[], today: string): PlanProgress {
@@ -189,12 +194,17 @@ export function ladderClimbs(records: readonly RoundRecord[], plan: StoredPlan):
   return { climbs, run: Math.min(run, runLength) };
 }
 
+/** The setting of the latest game round, or Medium before any. */
+function latestGameRung(records: readonly RoundRecord[]): Rung {
+  const latest = records.reduce<RoundRecord | null>((last, record) => (record.source === "game" && (!last || record.endedAt > last.endedAt) ? record : last), null);
+  return latest ? rungOf(latest) : MEDIUM_RUNG;
+}
+
 /** The rung is the latest game setting: since the start, else before it, else Medium. */
 function ladder(plan: StoredPlan, records: readonly RoundRecord[], today: string): PlanProgress {
   const rounds = ladderRounds(records, plan);
-  const earlier = byEndedAt(records.filter(({ source, localDay }) => source === "game" && localDay < plan.startedDay));
-  const latest = rounds.at(-1) ?? earlier.at(-1);
-  const rung = latest ? rungOf(latest) : MEDIUM_RUNG;
+  const latest = rounds.at(-1);
+  const rung = latest ? rungOf(latest) : latestGameRung(records.filter(({ localDay }) => localDay < plan.startedDay));
   const { climbs, run } = ladderClimbs(records, plan);
   const climb = climbs.find(({ from }) => configKey(from) === configKey(rung));
   return {
@@ -209,9 +219,7 @@ function ladder(plan: StoredPlan, records: readonly RoundRecord[], today: string
 
 /** The setting a plan opens on: Medium, the edge rig, or the ladder's current rung. */
 export function startRung(planId: PlanId, records: readonly RoundRecord[]): Rung {
-  if (planId !== "ladder") return PLAN_RULES[planId].rung;
-  const latest = byEndedAt(records.filter(({ source }) => source === "game")).at(-1);
-  return latest ? rungOf(latest) : MEDIUM_RUNG;
+  return planId === "ladder" ? latestGameRung(records) : PLAN_RULES[planId].rung;
 }
 
 const PLANS: { readonly [K in PlanId]: (plan: StoredPlan, records: readonly RoundRecord[], today: string) => PlanProgress } = { baseline, edge, ladder };
@@ -225,13 +233,9 @@ function planRounds(plan: StoredPlan, records: readonly RoundRecord[]): number {
 export const PLANS_THRESHOLDS = {};
 
 /** Empty with no plan chosen; a chosen plan is ready from its first day, since a plan with no rounds yet is still news. */
-export function computePlans(input: LabInput): MetricResult<PlansValue> {
+export function computePlans(input: LabInput): MetricResult<PlanProgress> {
   const { plan = null, records, today } = input;
-  const readiness = readinessFor(input, {
-    sampleSize: plan ? planRounds(plan, records) : 0,
-    played: plan ? 1 : 0,
-    have: {},
-    thresholds: PLANS_THRESHOLDS,
-  });
-  return measured(readiness, () => PLANS[(plan as StoredPlan).planId](plan as StoredPlan, records, today));
+  if (!plan) return { readiness: { state: "empty", sampleSize: 0 }, value: null };
+  const readiness = readinessFor(input, { sampleSize: planRounds(plan, records), played: 1, have: {}, thresholds: PLANS_THRESHOLDS });
+  return { readiness, value: PLANS[plan.planId](plan, records, today) };
 }

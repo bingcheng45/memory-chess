@@ -28,7 +28,7 @@ import {
 import { computeGoal, GOAL_THRESHOLDS, type GoalValue } from "./goals";
 import { computeInsights, INSIGHTS_THRESHOLDS, type InsightsValue } from "./insights";
 import { computeNotebook, NOTEBOOK_THRESHOLDS, type NotebookValue } from "./notebook";
-import { computePlans, PLANS_THRESHOLDS, type PlansValue } from "./plans";
+import { computePlans, PLANS_THRESHOLDS, type PlanProgress } from "./plans";
 import { LAB_THRESHOLDS, type Need } from "./readiness";
 import { LAB_SOURCES, PIECE_LETTERS, settingKey, type LabSource, type RoundRecord } from "./record";
 import { sessionRuns } from "./sessions";
@@ -229,7 +229,7 @@ interface LabValues {
   readonly speed: SpeedValue;
   readonly insights: InsightsValue;
   readonly notebook: NotebookValue;
-  readonly plans: PlansValue;
+  readonly plans: PlanProgress;
   readonly goal: GoalValue;
 }
 

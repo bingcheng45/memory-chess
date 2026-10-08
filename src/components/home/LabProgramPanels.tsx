@@ -7,7 +7,8 @@ import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import { trackEvent, type LabPanelAction } from "@/lib/analytics/events";
 import { playHref } from "@/lib/game/roundLink";
 import { SAMPLE_GOAL } from "@/lib/home/labRecord";
-import { GOAL_ACCURACY, GOAL_PIECES, PLAN_IDS, type PlanId, type StoredPlan, type StoredTarget } from "@/lib/lab/choices";
+import { GOAL_ACCURACY_OPTIONS, GOAL_PIECE_OPTIONS, PLAN_IDS, type PlanId, type StoredPlan, type StoredTarget } from "@/lib/lab/choices";
+import { dayDate } from "@/lib/lab/engine";
 import { INSIGHT_GUIDES } from "@/lib/lab/insights";
 import type { LabResults } from "@/lib/lab/metrics";
 import { PLAN_RULES, startRung, type PlanProgress, type PlanStatus, type Rung } from "@/lib/lab/plans";
@@ -31,15 +32,11 @@ function StatusLine({ planId, status }: { planId: PlanId; status: PlanStatus }) 
   const t = useTranslations("home.lab.record.plans.status");
   const length = PLAN_LENGTH[planId];
   const { day } = status;
-  const text =
-    status.kind === "stopped"
-      ? t("stopped", { day })
-      : status.kind === "done"
-        ? t(status.how === "finished" ? "finished" : "done", { day })
-        : length === null
-          ? t("day", { day })
-          : t(day > length ? "overtime" : "dayOf", { day, length });
-  return <p className="lab-plan-status">{text}</p>;
+  const key =
+    status.kind === "active"
+      ? length === null ? "day" : day > length ? "overtime" : "dayOf"
+      : status.kind === "done" && status.how === "finished" ? "finished" : status.kind;
+  return <p className="lab-plan-status">{t(key, { day, length: length ?? 0 })}</p>;
 }
 
 function ProgressLines({ progress }: { progress: PlanProgress }) {
@@ -207,10 +204,6 @@ function GoalBar({ percent, label }: { percent: number; label: string }) {
   );
 }
 
-const range = (from: number, to: number, step = 1) => Array.from({ length: Math.floor((to - from) / step) + 1 }, (_, index) => from + index * step);
-const PIECE_OPTIONS = range(GOAL_PIECES.min, GOAL_PIECES.max);
-const ACCURACY_OPTIONS = range(GOAL_ACCURACY.min, GOAL_ACCURACY.max, GOAL_ACCURACY.step);
-
 function GoalForm({ initial, today, onDone }: { initial: Pick<StoredTarget, "pieceCount" | "accuracy">; today: string; onDone: (() => void) | null }) {
   const t = useTranslations("home.lab.record.goal");
   const id = useId();
@@ -226,7 +219,7 @@ function GoalForm({ initial, today, onDone }: { initial: Pick<StoredTarget, "pie
     <form className="lab-target-form" aria-label={t("form")} onSubmit={submit}>
       <label htmlFor={`${id}-pieces`}>{t("pieces")}</label>
       <select id={`${id}-pieces`} value={pieceCount} onChange={(event) => setPieceCount(Number(event.target.value))}>
-        {PIECE_OPTIONS.map((count) => (
+        {GOAL_PIECE_OPTIONS.map((count) => (
           <option key={count} value={count}>
             {count}
           </option>
@@ -234,7 +227,7 @@ function GoalForm({ initial, today, onDone }: { initial: Pick<StoredTarget, "pie
       </select>
       <label htmlFor={`${id}-accuracy`}>{t("accuracy")}</label>
       <select id={`${id}-accuracy`} value={accuracy} onChange={(event) => setAccuracy(Number(event.target.value))}>
-        {ACCURACY_OPTIONS.map((value) => (
+        {GOAL_ACCURACY_OPTIONS.map((value) => (
           <option key={value} value={value}>
             {t("percent", { value })}
           </option>
@@ -251,11 +244,6 @@ function GoalForm({ initial, today, onDone }: { initial: Pick<StoredTarget, "pie
     </form>
   );
 }
-
-const dayDate = (day: string) => {
-  const [year, month, date] = day.split("-").map(Number);
-  return new Date(year, month - 1, date);
-};
 
 export function GoalPanel({ result: { readiness, value }, today, daysAgo }: { result: LabResults["goal"]; today: string | null; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record.goal");

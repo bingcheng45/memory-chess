@@ -1,5 +1,5 @@
 import type { StoredTarget } from "./choices";
-import { measured, readinessFor, type LabInput, type MetricResult } from "./engine";
+import { readinessFor, type LabInput, type MetricResult } from "./engine";
 import type { RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
 
@@ -30,29 +30,25 @@ const goalRound = ({ endedAt, localDay, config, accuracy }: RoundRecord): GoalRo
 });
 
 /** Rounds at the goal's piece count or more since the day it was set, practice and games alike, oldest first. */
-export function goalRounds(records: readonly RoundRecord[], { pieceCount, createdDay }: StoredTarget): RoundRecord[] {
+function goalRounds(records: readonly RoundRecord[], { pieceCount, createdDay }: StoredTarget): RoundRecord[] {
   return byEndedAt(records.filter(({ localDay, config }) => localDay >= createdDay && config.pieceCount >= pieceCount));
 }
 
 /** Empty with no goal set, so the panel shows its sample; warming until a round at the goal's piece count or more has been played since. */
 export function computeGoal(input: LabInput): MetricResult<GoalValue> {
   const { target = null, records } = input;
-  const rounds = target ? goalRounds(records, target) : [];
-  const readiness = readinessFor(input, {
-    sampleSize: rounds.length,
-    played: target ? 1 : 0,
-    have: { rounds: rounds.length },
-    thresholds: GOAL_THRESHOLDS,
-  });
-  return measured(readiness, () => {
-    const goal = target as StoredTarget;
-    const best = rounds.reduce<RoundRecord | null>((top, round) => (top === null || round.accuracy > top.accuracy ? round : top), null);
-    const reached = rounds.find(({ accuracy }) => Math.round(accuracy) >= goal.accuracy);
-    return {
-      target: goal,
+  if (!target) return { readiness: { state: "empty", sampleSize: 0 }, value: null };
+  const rounds = goalRounds(records, target);
+  const readiness = readinessFor(input, { sampleSize: rounds.length, played: 1, have: { rounds: rounds.length }, thresholds: GOAL_THRESHOLDS });
+  const best = rounds.reduce<RoundRecord | null>((top, round) => (top === null || round.accuracy > top.accuracy ? round : top), null);
+  const reached = rounds.find(({ accuracy }) => Math.round(accuracy) >= target.accuracy);
+  return {
+    readiness,
+    value: {
+      target,
       best: best && goalRound(best),
-      percent: best ? Math.min(100, Math.round((Math.round(best.accuracy) / goal.accuracy) * 100)) : 0,
+      percent: best ? Math.min(100, Math.round((Math.round(best.accuracy) / target.accuracy) * 100)) : 0,
       reached: reached ? goalRound(reached) : null,
-    };
-  });
+    },
+  };
 }

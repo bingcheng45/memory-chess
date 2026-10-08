@@ -11,17 +11,18 @@ interface ChoiceStore<T> {
 }
 
 /**
- * One choice kept in localStorage, the way the week goal is: a write storage refuses is kept in memory for the rest of
- * the session, and another tab's change arrives as a storage event. Snapshots are cached by the stored text, so React
- * sees the same object until the value really changes.
+ * One choice kept in localStorage: a write storage refuses is kept in memory for the rest of the session, and another
+ * tab's change arrives as a storage event. Snapshots are cached by the stored text, so React sees the same object until
+ * the value really changes.
  */
-function choiceStore<T>(key: string, parse: (text: string | null) => T | null): ChoiceStore<T> {
+export function choiceStore<T>(key: string, parse: (text: string | null) => T | null): ChoiceStore<T> {
   const listeners = new Set<() => void>();
-  let thisSession: { readonly text: string | null } | null = null;
+  /** Undefined until a write fails; then the text that write meant to store. */
+  let thisSession: string | null | undefined;
   let cached: { readonly text: string | null; readonly value: T | null } = { text: null, value: null };
 
   const readText = () => {
-    if (thisSession) return thisSession.text;
+    if (thisSession !== undefined) return thisSession;
     try {
       return window.localStorage.getItem(key);
     } catch {
@@ -52,14 +53,14 @@ function choiceStore<T>(key: string, parse: (text: string | null) => T | null): 
       try {
         if (text === null) window.localStorage.removeItem(key);
         else window.localStorage.setItem(key, text);
-        thisSession = null;
+        thisSession = undefined;
       } catch {
-        thisSession = { text };
+        thisSession = text;
       }
       listeners.forEach((listener) => listener());
     },
     reset() {
-      thisSession = null;
+      thisSession = undefined;
     },
   };
 }

@@ -126,11 +126,17 @@ export function computeSpan(input: LabInput): MetricResult<SpanValue> {
   });
 }
 
+export interface MovingAveragePoint {
+  readonly value: number;
+  /** True at the start of a player's series, where fewer than five rounds came before to average. */
+  readonly partial: boolean;
+}
+
 export interface PiecesHeldValue {
   /** Correct pieces in each of the last 30 rounds, oldest first, at any setting. */
   readonly points: readonly number[];
   /** For each point, the mean of that round and the four before it. */
-  readonly movingAverage: readonly number[];
+  readonly movingAverage: readonly MovingAveragePoint[];
   readonly recent: RecentChange;
 }
 
@@ -150,9 +156,10 @@ export function computePiecesHeld(input: LabInput): MetricResult<PiecesHeldValue
     const from = Math.max(0, correct.length - LAB_THRESHOLDS.trendPoints);
     return {
       points: correct.slice(from),
-      movingAverage: correct
-        .slice(from)
-        .map((_, index) => hundredths(mean(correct.slice(Math.max(0, from + index + 1 - LAB_THRESHOLDS.movingAverage), from + index + 1)))),
+      movingAverage: correct.slice(from).map((_, index) => {
+        const window = correct.slice(Math.max(0, from + index + 1 - LAB_THRESHOLDS.movingAverage), from + index + 1);
+        return { value: hundredths(mean(window)), partial: window.length < LAB_THRESHOLDS.movingAverage };
+      }),
       recent: recentChange(correct),
     };
   });

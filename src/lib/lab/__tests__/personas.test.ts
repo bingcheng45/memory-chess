@@ -32,6 +32,7 @@ describe("persona fixtures", () => {
       shortSessions: { rounds: 72, rejected: 0, overCap: 0, summary: 72 },
       plateau: { rounds: 56, rejected: 0, overCap: 0, summary: 56 },
       colourSkew: { rounds: 60, rejected: 0, overCap: 0, summary: 60 },
+      graceStreak: { rounds: 52, rejected: 0, overCap: 0, summary: 52 },
     });
   });
 

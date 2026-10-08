@@ -13,7 +13,7 @@ import {
   retentionNoReview,
   retentionWithReviews,
 } from "@/lib/home/labRecord";
-import type { StreakDay } from "@/lib/lab/metrics";
+import type { StreakDay } from "@/lib/lab/streak";
 import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
 
 const CURVE = { left: 44, right: 580, bottom: 210, top: 20 };
@@ -156,6 +156,27 @@ export function StreakGrid({ days = SAMPLE_STREAK, label }: { readonly days?: re
   );
 }
 
+
+const RING_RADIUS = 18;
+const RING_LENGTH = 2 * Math.PI * RING_RADIUS;
+
+/** Days played this week against the goal, a full ring at the goal or past it. */
+export function WeekRing({ played, goal, label }: { readonly played: number; readonly goal: number; readonly label: string }) {
+  const share = Math.min(1, played / goal);
+  return (
+    <svg className="lab-week-ring" viewBox="0 0 44 44" role="img" aria-label={label}>
+      <circle className="lab-week-track" cx="22" cy="22" r={RING_RADIUS} />
+      <circle
+        className="lab-week-fill"
+        cx="22"
+        cy="22"
+        r={RING_RADIUS}
+        strokeDasharray={`${RING_LENGTH * share} ${RING_LENGTH}`}
+        transform="rotate(-90 22 22)"
+      />
+    </svg>
+  );
+}
 
 export function RecallBar({ label, share, value }: { label: ReactNode; share: number | null; value: ReactNode }) {
   return (

@@ -1,4 +1,4 @@
-import type { StreakDay } from "@/lib/lab/metrics";
+import type { StreakDay } from "@/lib/lab/streak";
 import type { NotebookEntry } from "@/lib/lab/notebook";
 
 export const SAMPLE_ACCURACY: readonly number[] = [52, 58, 55, 63, 61, 68, 66, 72, 70, 75, 74, 79];
@@ -20,15 +20,18 @@ export const SAMPLE_EDGE_MISS = { edge: 38, centre: 19 };
 export const SAMPLE_NOTEBOOK: readonly Pick<NotebookEntry, "kind" | "params">[] = [
   { kind: "span", params: { day: 12, from: 6, to: 8 } },
   { kind: "first90", params: { day: 9, pieceCount: 8 } },
-  { kind: "streak", params: { day: 7, days: 7 } },
+  { kind: "streak", params: { day: 7, days: 7, forgiven: 0 } },
   { kind: "rounds", params: { day: 4, count: 10 } },
   { kind: "firstRound", params: { day: 1, pieceCount: 6, accuracy: 67 } },
 ];
 
+/** One missed day forgiven, and an earlier miss inside the same week that the walk back could not forgive. */
 export const SAMPLE_STREAK: readonly StreakDay[] = [
-  "played", "played", "missed", "played", "played", "played", "missed",
+  "played", "played", "missed", "played", "played", "played", "forgiven",
   "played", "played", "played", "played", "played", "played", "today",
 ];
+
+export const SAMPLE_WEEK = { played: 4, goal: 5 } as const;
 
 export const SAMPLE_MISS_MAP: readonly number[] = (() => {
   let seed = 7;

@@ -1,8 +1,9 @@
-import { measured, readinessFor, shiftDay, type LabInput, type MetricResult } from "./engine";
+import { measured, readinessFor, type LabInput, type MetricResult } from "./engine";
 import type { SpanStep, SpanValue } from "./progress";
 import { daysBetween } from "./readiness";
 import { settingKey, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
+import { runsByDay } from "./streak";
 import { beats, MAX_DAYS, type LabSummary, type PersonalBest } from "./summary";
 
 /** Entries of one moment print in this order: the sort by time is stable over this listing. */
@@ -112,13 +113,15 @@ function spanSteps({ rounds, spanHistory }: History): Draft[] {
   });
 }
 
+/** A milestone is written on the day a run reaches it: the run ending on the day played before was shorter. */
 function streakMilestones({ rounds, summary }: History): Draft[] {
   const firstOnDay = new Map(firstsBy(rounds, ({ localDay }) => localDay).map((record) => [record.localDay, record]));
-  let run = 0;
+  const runs = runsByDay(summary.days);
   return summary.days.flatMap((day, index) => {
-    run = index > 0 && shiftDay(summary.days[index - 1], 1) === day ? run + 1 : 1;
+    const { played, forgivenDays } = runs[index];
     const record = firstOnDay.get(day);
-    return STREAK_MILESTONES.includes(run) && record ? [{ record, params: { days: run } }] : [];
+    const reached = played > (runs[index - 1]?.played ?? 0) && STREAK_MILESTONES.includes(played);
+    return reached && record ? [{ record, params: { days: played, forgiven: forgivenDays.length } }] : [];
   });
 }
 

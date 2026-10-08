@@ -7,6 +7,8 @@ export const LAB_THRESHOLDS = {
   trendPoints: 30,
   streakWindow: 14,
   staleDays: 14,
+  /** Days since the last round before the record greets a returning player. */
+  awayDays: 3,
   sessionTrendRounds: 8,
   sessionTrendSessions: 4,
   spanAccuracy: 80,

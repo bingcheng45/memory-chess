@@ -6,7 +6,6 @@ import {
   measured,
   readinessFor,
   settingOf,
-  shiftDay,
   type LabInput,
   TREND_THRESHOLDS,
   type MetricResult,
@@ -31,6 +30,7 @@ import { computeNotebook, NOTEBOOK_THRESHOLDS, type NotebookValue } from "./note
 import { LAB_THRESHOLDS, type Need } from "./readiness";
 import { LAB_SOURCES, PIECE_LETTERS, settingKey, type LabSource, type RoundRecord } from "./record";
 import { sessionRuns } from "./sessions";
+import { streakOf, type StreakValue } from "./streak";
 import type { PersonalBest } from "./summary";
 
 export interface MetricDef<TValue> {
@@ -45,38 +45,12 @@ export interface MetricDef<TValue> {
   compute(input: LabInput, read?: ReadMetric): MetricResult<TValue>;
 }
 
-export type StreakDay = "played" | "missed" | "today";
-
-export interface StreakValue {
-  /** Consecutive days played, ending today, or yesterday if today has no round yet. */
-  readonly current: number;
-  readonly longest: number;
-  readonly window: readonly StreakDay[];
-}
-
-function run(played: ReadonlySet<string>, day: string, step: -1 | 1): number {
-  let length = 0;
-  while (played.has(shiftDay(day, step * length))) length += 1;
-  return length;
-}
-
 const STREAK_THRESHOLDS = { days: LAB_THRESHOLDS.streakDays };
 
 function computeStreak(input: LabInput): MetricResult<StreakValue> {
   const { summary: { rounds, days }, today } = input;
   const readiness = readinessFor(input, { sampleSize: rounds, have: { days: days.length }, thresholds: STREAK_THRESHOLDS });
-  return measured(readiness, () => {
-    const played = new Set(days);
-    return {
-      current: run(played, played.has(today) ? today : shiftDay(today, -1), -1),
-      longest: days.reduce((max, day) => (played.has(shiftDay(day, -1)) ? max : Math.max(max, run(played, day, 1))), 0),
-      window: Array.from({ length: LAB_THRESHOLDS.streakWindow }, (_, index): StreakDay => {
-        const day = shiftDay(today, index - (LAB_THRESHOLDS.streakWindow - 1));
-        if (played.has(day)) return "played";
-        return day === today ? "today" : "missed";
-      }),
-    };
-  });
+  return measured(readiness, () => streakOf(days, today));
 }
 
 export interface BestEntry extends PersonalBest {

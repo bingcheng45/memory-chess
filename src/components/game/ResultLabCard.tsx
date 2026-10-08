@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useLabData, useLabResults } from "@/hooks/useLabData";
@@ -114,8 +114,13 @@ export default function ResultLabCard({ roundId, onPlay }: ResultLabCardProps) {
     return () => clearTimeout(timer);
   }, [round]);
 
-  const card = round && data.today ? resultCardFor({ round, records: data.records, results, goal, days: data.summary.days, today: data.today }) : null;
-  if (!card) return data.storage === "unavailable" || waited ? null : <ResultLabSlot />;
+  const { records, summary, today, storage } = data;
+  const card = useMemo(
+    () => (round && today ? resultCardFor({ round, records, results, goal, days: summary.days, today }) : null),
+    [round, records, results, goal, summary.days, today],
+  );
+  const gaveUp = storage === "unavailable" || waited;
+  if (!card) return gaveUp ? null : <ResultLabSlot />;
 
   const why = whyOf(t, card.next);
   return (

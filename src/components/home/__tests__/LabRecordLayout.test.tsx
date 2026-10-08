@@ -1,6 +1,7 @@
 import { renderWithIntl } from "@/test-utils/intl";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
 import type { LabRecord } from "@/components/home/useLabRecord";
+import { PANEL_ORDER } from "@/lib/lab/panels";
 import { EMPTY_SUMMARY } from "@/lib/lab/summary";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
@@ -41,5 +42,13 @@ describe("§06 layout", () => {
       "Fig. 6.9 · Personal bests",
       "Fig. 6.10 · Leaderboard",
     ]);
+  });
+
+  it("renders every panel of the section map once, in order, so no row can drop one", () => {
+    const { container } = renderWithIntl(<LabRecordSection record={newVisitor} />);
+
+    const panels = [...container.querySelectorAll(".lab-panel .lab-panel-h > .lab-k")].map((fig) => Number(fig.textContent!.match(/^Fig\. 6\.(\d+) /)![1]));
+
+    expect(panels).toEqual(PANEL_ORDER.map((_, index) => index + 1));
   });
 });

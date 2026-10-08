@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useLabResults } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
-import { PANEL_ROWS, type PanelId, type PanelRow } from "@/lib/lab/panels";
+import { PANEL_ROWS, type CustomRow, type PanelId, type PanelRow } from "@/lib/lab/panels";
 import { daysBetween } from "@/lib/lab/readiness";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
 import { ForgettingCurve } from "./LabCharts";
@@ -130,7 +130,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
     bests: <BestsPanel result={lab.bests} daysAgo={daysAgo} />,
     board: <BoardPanel />,
   };
-  const rows: Partial<Record<PanelRow, ReactNode>> = {
+  const rows: Record<CustomRow, ReactNode> = {
     programs: <Plans key="programs" />,
     tools: (
       <div className="lab-tools-slot" data-row="tools" key="tools">
@@ -138,6 +138,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
       </div>
     ),
   };
+  const isCustom = (row: PanelRow): row is CustomRow => row in rows;
 
   return (
     <section className="lab-sec" id={LAB_SECTIONS.record.anchor} ref={section}>
@@ -148,15 +149,16 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
           lede={t.rich("lede", { tag: (chunks) => <span className="lab-tag lab-tag-blue">{chunks}</span> })}
         />
         <LabUnlockStrip results={lab} storage={record.storage} />
-        {PANEL_ROWS.map(
-          ({ row, panels: ids }) =>
-            rows[row] ?? (
-              <div className="lab-dash" data-row={row} key={row}>
-                {ids.map((id) => (
-                  <Fragment key={id}>{panels[id]}</Fragment>
-                ))}
-              </div>
-            ),
+        {PANEL_ROWS.map(({ row, panels: ids }) =>
+          isCustom(row) ? (
+            rows[row]
+          ) : (
+            <div className="lab-dash" data-row={row} key={row}>
+              {ids.map((id) => (
+                <Fragment key={id}>{panels[id]}</Fragment>
+              ))}
+            </div>
+          ),
         )}
       </div>
     </section>

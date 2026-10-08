@@ -126,6 +126,16 @@ describe("starting and stopping a plan", () => {
     expect(screen.getByText("Day 10. Rung up: 6 pieces at 8 s.", { exact: false })).toBeInTheDocument();
   });
 
+  it("lets another plan start once a baseline week is done by its seventh day played", () => {
+    window.localStorage.setItem(PLAN_KEY, JSON.stringify({ planId: "baseline", startedDay: "2026-09-10" }));
+    renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
+
+    expect(card("Baseline week").querySelector(".lab-plan-status")).toHaveTextContent("Done on day 7.");
+    expect(within(card("Baseline week")).getByRole("link", { name: "Start Baseline week again" })).toBeInTheDocument();
+    expect(within(card("Edge-file drill")).getByRole("link", { name: "Start Edge-file drill" })).toBeInTheDocument();
+    expect(within(card("Step-down ladder")).getByRole("link", { name: "Start Step-down ladder" })).toBeInTheDocument();
+  });
+
   it("follows a plan started in another tab without a reload", () => {
     renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
 

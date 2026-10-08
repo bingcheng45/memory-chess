@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useRef, type ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useLabResults } from "@/hooks/useLabData";
@@ -14,6 +14,7 @@ import { InsightsPanel, NotebookPanel } from "./LabInsightPanels";
 import { HeldPanel, SpanPanel, SpeedPanel } from "./LabReadingPanels";
 import { LabRecordTools } from "./LabRecordTools";
 import { LabUnlockStrip } from "./LabUnlockStrip";
+import { useFirstSight } from "./useFirstSight";
 import type { LabRecord } from "./useLabRecord";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
@@ -24,21 +25,7 @@ const BOARD_SKETCH = [
   { rank: "03", width: "61%", pieces: 8 },
 ];
 
-function useFirstSight() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const node = ref.current;
-    if (!node || typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver((entries) => {
-      if (!entries.some(({ isIntersecting }) => isIntersecting)) return;
-      observer.disconnect();
-      trackEvent({ name: "lab_section_view", params: {} });
-    });
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-  return ref;
-}
+const trackSectionView = () => trackEvent({ name: "lab_section_view", params: {} });
 
 function CurvePanel() {
   const t = useTranslations("home.lab.record");
@@ -115,7 +102,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
   const t = useTranslations("home.lab.record");
   const { summary, today } = record;
   const lab = useLabResults(record);
-  const section = useFirstSight();
+  const section = useFirstSight<HTMLElement>(trackSectionView);
   const lastDay = summary.days.at(-1);
   const daysAgo = today && lastDay ? daysBetween(lastDay, today) : null;
 

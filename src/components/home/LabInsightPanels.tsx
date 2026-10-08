@@ -130,7 +130,7 @@ const NOTEBOOK_SHOWN = 5;
 export function NotebookPanel({ result: { readiness, value } }: { result: LabResults["notebook"] }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
-  const seenBefore = useNotebookSeen();
+  const { seenBefore, ref: seenRef } = useNotebookSeen();
   const [expanded, setExpanded] = useState(false);
   const text = ({ kind, params }: Pick<NotebookEntry, "kind" | "params">) => t(`notebook.entries.${kind}`, sentenceValues(params));
   const isNew = ({ at }: NotebookEntry) => seenBefore === null || at > seenBefore;
@@ -152,7 +152,7 @@ export function NotebookPanel({ result: { readiness, value } }: { result: LabRes
     const shown = expanded ? entries : entries.slice(0, NOTEBOOK_SHOWN);
     return (
       <>
-        <ol className="lab-notebook" aria-label={t("notebook.list")} id="lab-notebook-list">
+        <ol className="lab-notebook" aria-label={t("notebook.list")} id="lab-notebook-list" ref={seenRef}>
           {shown.map((entry) => (
             <li key={`${entry.kind}${entry.at}`}>
               {text(entry)}

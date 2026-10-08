@@ -26,6 +26,7 @@ import {
   type SpanValue,
   type SpeedValue,
 } from "./progress";
+import { computeInsights, INSIGHTS_THRESHOLDS, type InsightsValue } from "./insights";
 import { LAB_THRESHOLDS, type Need } from "./readiness";
 import { LAB_SOURCES, PIECE_LETTERS, settingKey, type LabSource, type RoundRecord } from "./record";
 import { sessionRuns } from "./sessions";
@@ -248,6 +249,7 @@ interface LabValues {
   readonly span: SpanValue;
   readonly piecesHeld: PiecesHeldValue;
   readonly speed: SpeedValue;
+  readonly insights: InsightsValue;
 }
 
 export type MetricId = keyof LabValues;
@@ -307,6 +309,12 @@ export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & 
     question: "Are you rebuilding faster at the setting you play most, without losing accuracy?",
     thresholds: SPEED_THRESHOLDS,
     compute: computeSpeed,
+  },
+  insights: {
+    id: "insights",
+    question: "What stands out in your record, and what could you do about it?",
+    thresholds: INSIGHTS_THRESHOLDS,
+    compute: computeInsights,
   },
 };
 

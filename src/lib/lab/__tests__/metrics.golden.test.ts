@@ -67,7 +67,7 @@ describe("metric engine on the persona fixtures", () => {
     const input = await inputFor("newVisitor");
     const old = golden.newVisitor;
 
-    expect(Object.values(deriveLab(input)).map(({ value }) => value)).toEqual(Array(9).fill(null));
+    expect(Object.values(deriveLab(input)).map(({ value }) => value)).toEqual(Array(10).fill(null));
     expect(Object.fromEntries(Object.entries(legacy(input)).map(([id, { ready, sampleSize }]) => [id, { ready, sampleSize }]))).toEqual({
       streak: { ready: old.streak.ready, sampleSize: old.streak.sampleSize },
       bests: { ready: old.bests.ready, sampleSize: old.bests.sampleSize },
@@ -107,19 +107,19 @@ describe("metric engine on the persona fixtures", () => {
       }),
     );
     const all = (state: ReadinessState) => ({
-      streak: state, bests: state, trend: state, typeRecall: state, missMap: state, sessions: state, span: state, piecesHeld: state, speed: state,
+      streak: state, bests: state, trend: state, typeRecall: state, missMap: state, sessions: state, span: state, piecesHeld: state, speed: state, insights: state,
     });
     const progress = (state: ReadinessState) => ({ sessions: state, span: state, piecesHeld: state, speed: state });
 
     expect(Object.fromEntries(states)).toEqual({
       newVisitor: all("empty"),
-      twoRounds: { streak: "warming", bests: "ready", trend: "warming", typeRecall: "warming", missMap: "warming", ...progress("warming"), sessions: "ready" },
-      threeDays: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready") },
+      twoRounds: { streak: "warming", bests: "ready", trend: "warming", typeRecall: "warming", missMap: "warming", ...progress("warming"), sessions: "ready", insights: "warming" },
+      threeDays: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready"), insights: "ready" },
       thirtyDays: all("ready"),
       heavy: all("ready"),
-      easyOnly: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "warming", missMap: "warming", ...progress("ready"), span: "warming" },
-      stale: { streak: "stale", bests: "stale", trend: "stale", typeRecall: "stale", missMap: "warming", ...progress("stale") },
-      v1Legacy: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready") },
+      easyOnly: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "warming", missMap: "warming", ...progress("ready"), span: "warming", insights: "ready" },
+      stale: { streak: "stale", bests: "stale", trend: "stale", typeRecall: "stale", missMap: "warming", ...progress("stale"), insights: "stale" },
+      v1Legacy: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready"), insights: "ready" },
       spanClimber: all("ready"),
       shortSessions: all("ready"),
     });

@@ -179,7 +179,8 @@
 .lab-bests-toggle:hover { text-decoration-thickness: 2px; }
 .lab-bests [data-older="wide"], .lab-bests-toggle[data-shown="narrow"] { display: none; }
 @media (max-width: 640px) {
-  .lab .lab-bests-toggle { min-height: 24px; padding: 0 !important; }
+  /* Beats the side padding globals.css forces on every phone button. */
+  .lab .lab-bests-toggle { padding: 0 !important; }
   .lab-bests [data-older="narrow"] { display: none; }
   .lab-bests-toggle[data-shown="narrow"] { display: block; }
 }

@@ -15,11 +15,9 @@ import {
   type MetricResult,
   type TrendSetting,
 } from "./engine";
-import { LAB_THRESHOLDS } from "./readiness";
+import { DAY_MS, LAB_THRESHOLDS } from "./readiness";
 import type { RoundRecord } from "./record";
 import { byEndedAt, sessionRuns, sessionsOf, type Session } from "./sessions";
-
-const trendRounds = (input: LabInput) => byEndedAt(input.records);
 
 export interface RecentChange {
   /** Mean of the last 10 rounds, or of every round when there are fewer. */
@@ -75,7 +73,7 @@ export interface SpanValue {
 export const SPAN_THRESHOLDS = { qualifyingRounds: LAB_THRESHOLDS.spanRounds };
 /** Rounds of only the two kings never qualify, so a player with nothing else first needs one larger round. */
 const LARGER_THRESHOLDS = { largerRounds: 1 };
-const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+const WEEK_MS = 7 * DAY_MS;
 
 const isLarger = ({ config }: RoundRecord) => config.pieceCount >= LAB_THRESHOLDS.spanMinPieces;
 const qualifies = (record: RoundRecord) => isLarger(record) && record.accuracy >= LAB_THRESHOLDS.spanAccuracy;
@@ -96,7 +94,7 @@ function spanOf(counts: QualifyingCounts): number | null {
 const countQualifying = (rounds: readonly RoundRecord[]) => rounds.reduce(addQualifying, new Map());
 
 export function computeSpan(input: LabInput): MetricResult<SpanValue> {
-  const rounds = trendRounds(input);
+  const rounds = byEndedAt(input.records);
   const counts = countQualifying(rounds);
   const larger = rounds.filter(isLarger).length;
   const readiness = readinessFor(input, {
@@ -114,10 +112,11 @@ export function computeSpan(input: LabInput): MetricResult<SpanValue> {
     const weekBefore = rounds[rounds.length - 1].endedAt - WEEK_MS;
     const weekAgo = spanOf(countQualifying(rounds.filter(({ endedAt }) => endedAt < weekBefore)));
     const pieceCount = spanOf(counts);
-    const times = rounds.filter((record) => qualifies(record) && record.config.pieceCount === pieceCount).map(({ config }) => config.memorizeSeconds);
+    const shortestAt = (held: number) =>
+      Math.min(...rounds.filter((record) => qualifies(record) && record.config.pieceCount === held).map(({ config }) => config.memorizeSeconds));
     return {
       pieceCount,
-      memorizeSeconds: pieceCount === null ? null : Math.min(...times),
+      memorizeSeconds: pieceCount === null ? null : shortestAt(pieceCount),
       qualifyingRounds: pieceCount === null ? 0 : (counts.get(pieceCount) ?? 0),
       history,
       weekAgo,
@@ -144,7 +143,7 @@ export const PIECES_THRESHOLDS = TREND_THRESHOLDS;
 
 /** Correct pieces, unlike accuracy, does not fall when a player moves up to a harder setting. */
 export function computePiecesHeld(input: LabInput): MetricResult<PiecesHeldValue> {
-  const rounds = trendRounds(input);
+  const rounds = byEndedAt(input.records);
   const readiness = readinessFor(input, {
     sampleSize: rounds.length,
     have: { rounds: rounds.length, days: distinctDays(rounds) },
@@ -185,7 +184,7 @@ const secondsPerPiece = ({ solveMs, correct }: RoundRecord) => Math.min(solveMs,
 export function computeSpeed(input: LabInput): MetricResult<SpeedValue> {
   const { rounds, readiness } = busiestSetting(
     input,
-    trendRounds(input).filter(({ correct, solveMs }) => correct > 0 && solveMs > 0),
+    byEndedAt(input.records).filter(({ correct, solveMs }) => correct > 0 && solveMs > 0),
     SPEED_THRESHOLDS,
     LAB_THRESHOLDS.speedSettingRounds,
   );

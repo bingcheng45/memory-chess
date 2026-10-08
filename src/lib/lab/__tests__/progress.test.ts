@@ -7,7 +7,6 @@ import { round } from "./fixtures";
 const THREE = "4k3/8/8/3q4/8/8/8/4K3";
 const HALF = "4k3/8/8/8/8/8/8/4K3";
 const NONE = "8/8/8/8/8/8/8/8";
-const KINGS = "4k3/8/8/8/8/8/8/4K3";
 const FIVE = "4k3/8/8/3q4/8/5N2/8/R3K3";
 const FOUR_OF_FIVE = "4k3/8/8/3q4/8/5N2/8/4K3";
 const NINETEEN = "rnbqkbnr/pppppppp/8/8/8/8/PP6/4K3";
@@ -168,7 +167,7 @@ describe("memory span", () => {
   });
 
   it("stays warming on the two kings alone, however many rounds, and asks for a round with more than two pieces", () => {
-    const records = rounds(6, () => ({ pieceCount: 2, targetFen: KINGS, placedFen: KINGS }));
+    const records = rounds(6, () => ({ pieceCount: 2, targetFen: HALF, placedFen: HALF }));
 
     expect(span(records)).toMatchObject({
       readiness: { state: "warming", sampleSize: 6, need: { largerRounds: 1 } },

@@ -50,7 +50,7 @@ interface ReadinessInput {
   readonly today: string;
 }
 
-const DAY_MS = 24 * 60 * 60 * 1000;
+export const DAY_MS = 24 * 60 * 60 * 1000;
 const NEED_KEYS = ["rounds", "days", "exposures", "qualifyingRounds", "largerRounds"] as const;
 
 const utcDay = (day: string) => {

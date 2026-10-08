@@ -70,9 +70,10 @@ function groupOf(input: LabInput, rounds: readonly RoundRecord[], thresholds: Ne
 export function busiestSetting(input: LabInput, records: readonly RoundRecord[], thresholds: Need, window = Infinity): SettingGroup {
   const keyOf = (record: RoundRecord) => settingKey(record.source, record.config);
   const inWindow = new Map<string, number>();
-  byEndedAt(records)
-    .slice(-window)
-    .forEach((record) => inWindow.set(keyOf(record), (inWindow.get(keyOf(record)) ?? 0) + 1));
+  (Number.isFinite(window) ? byEndedAt(records).slice(-window) : records).forEach((record) => {
+    const key = keyOf(record);
+    inWindow.set(key, (inWindow.get(key) ?? 0) + 1);
+  });
   const bySetting = new Map<string, RoundRecord[]>();
   records.forEach((record) => {
     const key = keyOf(record);

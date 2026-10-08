@@ -29,7 +29,7 @@ describe("streak and week progress on the persona fixtures", () => {
       {
         // Today back to day 8 is 9 days, day 9 is forgiven, days 10 to 19 are 10 more; days 20 and 21 are both missed.
         streak: { current: 19, longest: 19, graceUsed: true, forgivenDays: ["2026-09-29"], window: [...played(4), "forgiven", ...played(9)] },
-        week: { daysPlayed: 4, goal: 5, weekStart: "2026-10-05", remaining: 1 },
+        week: { daysPlayed: 4, goal: 5, weekStart: "2026-10-05", remaining: 1, daysLeft: 3 },
         // Day N counts from 31 days ago. The older run reaches 3, then 7 through day 27; the current run 3, 7, then 14 through day 9.
         milestones: [[27, 14, 1], [19, 7, 0], [15, 3, 0], [8, 7, 1], [3, 3, 0]],
       },
@@ -38,7 +38,7 @@ describe("streak and week progress on the persona fixtures", () => {
       "thirtyDays",
       {
         streak: { current: 30, longest: 30, graceUsed: false, forgivenDays: [], window: played(14) },
-        week: { daysPlayed: 4, goal: 5, weekStart: "2026-10-05", remaining: 1 },
+        week: { daysPlayed: 4, goal: 5, weekStart: "2026-10-05", remaining: 1, daysLeft: 3 },
         milestones: [[30, 30, 0], [14, 14, 0], [7, 7, 0], [3, 3, 0]],
       },
     ],
@@ -47,7 +47,7 @@ describe("streak and week progress on the persona fixtures", () => {
       {
         // Last played 20 days ago: yesterday and the day before are both missed, so nothing is current.
         streak: { current: 0, longest: 6, graceUsed: false, forgivenDays: [], window: [...missed(13), "today"] },
-        week: { daysPlayed: 0, goal: 5, weekStart: "2026-10-05", remaining: 5 },
+        week: { daysPlayed: 0, goal: 5, weekStart: "2026-10-05", remaining: 5, daysLeft: 4 },
         milestones: [[3, 3, 0]],
       },
     ],
@@ -55,7 +55,7 @@ describe("streak and week progress on the persona fixtures", () => {
       "threeDays",
       {
         streak: { current: 3, longest: 3, graceUsed: false, forgivenDays: [], window: [...missed(11), ...played(3)] },
-        week: { daysPlayed: 3, goal: 5, weekStart: "2026-10-05", remaining: 2 },
+        week: { daysPlayed: 3, goal: 5, weekStart: "2026-10-05", remaining: 2, daysLeft: 3 },
         milestones: [[3, 3, 0]],
       },
     ],

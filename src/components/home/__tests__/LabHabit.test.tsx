@@ -74,6 +74,12 @@ describe("week ring", () => {
     expect(within(streakPanel()).getByRole("img", { name: "0 of 5 days this week" })).toBeInTheDocument();
   });
 
+  it("says when the goal can no longer be met this week, rather than asking for more days than are left", () => {
+    renderWithIntl(<LabRecordSection record={persona("stale")} />);
+
+    expect(within(streakPanel()).getByText("5 more days needed and only 4 left this week, so the goal can't be met. A new week starts Monday.")).toBeInTheDocument();
+  });
+
   it("shows a Sample ring and no goal picker before the first round", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor")} />);
 
@@ -88,8 +94,8 @@ describe("week ring", () => {
     renderWithIntl(<LabRecordSection record={persona("graceStreak")} />);
     fireEvent.click(within(streakPanel()).getByRole("radio", { name: "3 days a week" }));
 
-    expect(within(streakPanel()).getByRole("img", { name: "4 of 3 days this week" })).toBeInTheDocument();
-    expect(within(streakPanel()).getByText("Goal met this week.")).toBeInTheDocument();
+    expect(within(streakPanel()).getByRole("img", { name: "Goal met, 4 days this week" })).toBeInTheDocument();
+    expect(within(streakPanel()).queryByText(/of 3 days/)).toBeNull();
   });
 });
 

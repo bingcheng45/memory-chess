@@ -22,8 +22,9 @@ export function SampleWeek() {
 export function LabWeek({ days, today }: { readonly days: readonly string[]; readonly today: string }) {
   const t = useTranslations("home.lab.record.week");
   const [goal, setGoal] = useWeekGoal();
-  const { daysPlayed, remaining } = weekProgress(days, today, goal);
-  const label = t("ring", { played: daysPlayed, goal });
+  const { daysPlayed, remaining, daysLeft } = weekProgress(days, today, goal);
+  const label = daysPlayed > goal ? t("ringOver", { played: daysPlayed }) : t("ring", { played: daysPlayed, goal });
+  const left = daysPlayed > goal ? null : remaining > daysLeft ? t("outOfReach", { remaining, daysLeft }) : t("left", { remaining });
   const groupLabel = useId();
 
   return (
@@ -31,7 +32,7 @@ export function LabWeek({ days, today }: { readonly days: readonly string[]; rea
       <WeekRing played={daysPlayed} goal={goal} label={label} />
       <div>
         <p>
-          <b aria-hidden="true">{label}</b> {t("left", { remaining })}
+          <b aria-hidden="true">{label}</b> {left}
         </p>
         <div className="lab-goal" role="radiogroup" aria-labelledby={groupLabel}>
           <span id={groupLabel}>{t("goal")}</span>

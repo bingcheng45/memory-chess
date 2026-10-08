@@ -39,15 +39,16 @@ body {
 /*
  * Geist Mono's fallback while the webfont loads: a local monospace face sized to
  * its 0.6em advance and its 1.3em normal line box, so the swap moves nothing.
- * Measured in Chrome against Geist Mono; npm run lab:cls fails if they drift.
+ * The values come from next's capsize data (fonts.test.ts); npm run lab:cls and
+ * lab:fontswap fail if the layout drifts.
  */
 @font-face {
   font-family: "Geist Mono Local";
   src: local("Menlo Regular"), local("Courier New"), local("DejaVu Sans Mono"), local("Liberation Mono"), local("Droid Sans Mono");
-  size-adjust: 99.65%;
-  ascent-override: 100.5%;
-  descent-override: 29.5%;
-  line-gap-override: 0%;
+  size-adjust: 99.66%;
+  ascent-override: 100.84%;
+  descent-override: 29.60%;
+  line-gap-override: 0.00%;
 }
 
 /*

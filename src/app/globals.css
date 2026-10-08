@@ -37,6 +37,19 @@ body {
 }
 
 /*
+ * Geist Mono's fallback while the webfont loads: a local monospace face sized to
+ * its 0.6em advance and its 1.3em normal line box, so the swap moves nothing.
+ */
+@font-face {
+  font-family: "Geist Mono Fallback";
+  src: local("Menlo Regular"), local("Courier New"), local("DejaVu Sans Mono"), local("Liberation Mono"), local("Droid Sans Mono");
+  size-adjust: 99.65%;
+  ascent-override: 100.5%;
+  descent-override: 29.5%;
+  line-gap-override: 0%;
+}
+
+/*
  * CJK locales use the platform UI font rather than a downloaded webfont -- see
  * src/lib/fonts.ts for why. Applied to <body> by the locale layout, so the
  * variable is overridden before `body` reads it.

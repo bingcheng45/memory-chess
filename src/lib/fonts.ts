@@ -36,6 +36,11 @@ export const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin", "latin-ext"],
   preload: false,
+  // next/font's own fallback is Arial stretched to 0.69em a character, against
+  // Geist Mono's 0.60em, so mono text wrapped onto extra lines until the webfont
+  // swapped in and the home page shifted. globals.css defines this face.
+  adjustFontFallback: false,
+  fallback: ["Geist Mono Fallback", "ui-monospace", "monospace"],
 });
 
 const notoSansCyrillic = Noto_Sans({

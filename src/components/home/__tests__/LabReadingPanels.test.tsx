@@ -193,6 +193,14 @@ describe("accuracy trend", () => {
     expect(texts(trend, ".lab-note")).toEqual(["Game · 4 pieces · 10s, your most played setting with a trend · From 60 rounds · 20 sessions"]);
   });
 
+  it("reads a session's mean accuracy in whole percents", () => {
+    show("heavy");
+
+    expect(within(panel("Accuracy over time")).getByRole("img")).toHaveAccessibleName(
+      "Your accuracy over your last 30 sessions with game rounds at 6 pieces and 10 seconds, latest 87 percent.",
+    );
+  });
+
   it("stays round by round until there are enough sessions", () => {
     show("threeDays");
     const trend = panel("Accuracy over time");

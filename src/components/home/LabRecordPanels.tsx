@@ -61,7 +61,7 @@ export function TrendPanel({
   const tags = useTags();
   const need = readiness.need ?? {};
   const bySession = trend?.granularity === "session" && hasFigure(readiness);
-  const points = trend ? (bySession ? trend.bySession : trend.points) : [];
+  const points = trend ? (bySession ? trend.bySession.map(Math.round) : trend.points) : [];
 
   return (
     <div className="lab-panel lab-p-spark">

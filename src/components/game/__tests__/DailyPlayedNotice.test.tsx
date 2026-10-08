@@ -23,11 +23,12 @@ beforeEach(() => {
 afterEach(() => jest.useRealTimers());
 
 describe("the daily board notice on /game", () => {
-  it("reads every string it shows from the messages the game layout sends", () => {
+  it("reads every string it shows from the messages the game layout sends, announcing only the refusal", () => {
     render(<DailyPlayedNotice onChoose={jest.fn()} />, { messages: gamePageMessages() });
 
-    expect(screen.getByRole("status")).toHaveTextContent(
-      "You have already opened today's board. One try per day on this device.Resets in 5 h 12 minOpen your lab record →Play another round",
-    );
+    expect(screen.getByRole("status")).toHaveTextContent(/^You have already opened today's board\. One try per day on this device\.$/);
+    expect(screen.getByText("Resets in 5 h 12 min")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Open your lab record" })).toHaveAttribute("href", "/#record");
+    expect(screen.getByRole("button", { name: "Play another round" })).toBeInTheDocument();
   });
 });

@@ -1,9 +1,9 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useId, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import type { LabPanel } from "@/lib/analytics/events";
-import type { LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
+import type { BestEntry, LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
 import { hasFigure, type Readiness } from "@/lib/lab/readiness";
 import type { PieceSymbol } from "chess.js";
 import { FILES, RANKS } from "@/lib/game/board";
@@ -166,14 +166,27 @@ export function StreakPanel({ result: { readiness, value: streak }, daysAgo }: {
   );
 }
 
-/** Six rows keep the panel one reserved height for any number of settings played. */
+/** Six rows on wider screens and two on phones keep the panel one reserved height for any number of settings played. */
 const BESTS_SHOWN = 6;
-/** Phones show only the first two rows (lab-instruments.css), so a long list does not need a tall reserve there. */
-const BESTS_SHOWN_BY_WIDTH = [["narrow", 2], ["wide", BESTS_SHOWN]] as const;
+const BESTS_SHOWN_NARROW = 2;
+
+type HiddenFrom = "wide" | "narrow";
+
+/** Rows past the latest six are hidden everywhere until expanded, rows past the latest two on phones (lab-instruments.css). */
+function olderThanShown(entries: readonly BestEntry[]): Map<string, HiddenFrom> {
+  const latestFirst = [...entries].sort((a, b) => b.at - a.at);
+  return new Map(
+    latestFirst.slice(BESTS_SHOWN_NARROW).map(({ key }, index): [string, HiddenFrom] => [key, index + BESTS_SHOWN_NARROW >= BESTS_SHOWN ? "wide" : "narrow"]),
+  );
+}
 
 export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { result: LabResults["bests"]; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
+  const listId = useId();
+  const [expanded, setExpanded] = useState(false);
+  const older = bests && !expanded ? olderThanShown(bests.entries) : null;
+  const count = bests?.entries.length ?? 0;
 
   return (
     <div className="lab-panel lab-p-bests">
@@ -182,9 +195,9 @@ export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { r
       <p className="lab-panel-desc">{t("bests.desc")}</p>
       {bests ? (
         <>
-          <dl className="lab-bests">
-            {bests.entries.slice(0, BESTS_SHOWN).map((best) => (
-              <div key={best.key}>
+          <dl className="lab-bests" id={listId}>
+            {bests.entries.map((best) => (
+              <div key={best.key} data-older={older?.get(best.key)}>
                 <dt>{t("bests.setting", { source: best.source, pieceCount: best.pieceCount, memorizeSeconds: best.memorizeSeconds })}</dt>
                 <dd>
                   {t("bests.reading", { accuracy: best.accuracy, seconds: formatSeconds(best.solveMs) })}
@@ -193,8 +206,17 @@ export function BestsPanel({ result: { readiness, value: bests }, daysAgo }: { r
               </div>
             ))}
           </dl>
-          {BESTS_SHOWN_BY_WIDTH.flatMap(([shown, cap]) =>
-            bests.entries.length > cap ? [<p key={shown} className="lab-note" data-shown={shown}>{t("bests.more", { count: bests.entries.length - cap })}</p>] : [],
+          {count > BESTS_SHOWN_NARROW && (
+            <button
+              type="button"
+              className="lab-bests-toggle"
+              aria-expanded={expanded}
+              aria-controls={listId}
+              data-shown={count > BESTS_SHOWN ? undefined : "narrow"}
+              onClick={() => setExpanded(!expanded)}
+            >
+              {expanded ? t("bests.showFewer") : t("bests.showAll", { count })}
+            </button>
           )}
           <p className="lab-note">{t("fromRounds", { count: readiness.sampleSize })}</p>
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="bests" />

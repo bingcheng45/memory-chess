@@ -505,7 +505,8 @@
           "empty": "Your best reading for each setting appears after your first round.",
           "setting": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {memorizeSeconds}s",
           "first": "first reading",
-          "more": "+{count, plural, one {# more setting} other {# more settings}}",
+          "showAll": "Show all {count} settings",
+          "showFewer": "Show fewer",
           "reading": "{accuracy}% · rebuilt in {seconds}s"
         },
         "types": {

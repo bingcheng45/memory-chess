@@ -1,5 +1,6 @@
 import { withoutPlacements, type RoundRecord } from "./record";
 import { addToSummary, parseSummary, summarize, type LabSummary } from "./summary";
+import { browserIndexedDB } from "./support";
 
 const DB_NAME = "memory-chess-lab";
 const DB_VERSION = 1;
@@ -308,13 +309,7 @@ let browserStore: LabStore | null = null;
 export function labStore(): LabStore | null {
   if (typeof window === "undefined") return null;
   browserStore ??= createLabStore({
-    indexedDB: (() => {
-      try {
-        return window.indexedDB;
-      } catch {
-        return undefined;
-      }
-    })(),
+    indexedDB: browserIndexedDB(),
     localStorage: (() => {
       try {
         return window.localStorage;

@@ -53,3 +53,14 @@ describe("Geist Mono fallback", () => {
     ]);
   });
 });
+
+describe("lab mono font shorthands", () => {
+  it("all set a line-height, so the line box does not depend on font metrics Safari reads from the face", () => {
+    const shorthands = ["lab.css", "lab-instruments.css"].flatMap((file) =>
+      [...readFileSync(join(process.cwd(), "src/components/home", file), "utf8").matchAll(/font:\s*([^;]*var\(--lab-mono\))/g)].map(([, value]) => value),
+    );
+
+    expect(shorthands).toHaveLength(25);
+    expect(shorthands.filter((value) => !value.includes("/"))).toEqual([]);
+  });
+});

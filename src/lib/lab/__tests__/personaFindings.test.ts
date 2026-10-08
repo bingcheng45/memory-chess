@@ -6,7 +6,8 @@ import { exportPersona, memoryLabStore, PERSONA_TODAY, type PersonaName } from "
 /**
  * Expected values were counted from the exported persona files by a separate script that shares no code with the
  * app: thirtyDays misses 103 of 151 pieces on the a and h files and 17 of 138 on d and e, and 14 of 26 queens; colourSkew misses 7 of 120 white and 36 of 120 black pieces; plateau averages
- * 88.2 percent over both of its last two sets of 10 rounds with a span of 6 now and a week before.
+ * 88.2 percent over both of its last two sets of 10 rounds with a span of 6 now and a week before. The notebooks come from
+ * the same script, which writes a best only for a point more accuracy or half a second off the last best written.
  */
 async function labOf(name: PersonaName) {
   const file = await exportPersona(name, memoryLabStore(new IDBFactory()));
@@ -57,7 +58,6 @@ describe("persona notebooks", () => {
       ["streak", { day: 3, days: 3 }],
       ["span", { day: 1, from: 0, to: 6 }],
       ["firstRound", { day: 1, pieceCount: 6, accuracy: 100 }],
-      ["first90", { day: 1, pieceCount: 6 }],
     ]);
   });
 
@@ -72,7 +72,6 @@ describe("persona notebooks", () => {
       ["span", { day: 1, from: 0, to: 6 }],
       ["best", { day: 1, source: "game", pieceCount: 6, memorizeSeconds: 10, accuracy: 100, previous: 100, by: "time", solveSeconds: 18.2 }],
       ["firstRound", { day: 1, pieceCount: 6, accuracy: 100 }],
-      ["first90", { day: 1, pieceCount: 6 }],
     ]);
   });
 

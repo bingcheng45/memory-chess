@@ -26,6 +26,8 @@ export const NOTEBOOK_THRESHOLDS = { rounds: 1 };
 export const ROUND_MILESTONES: readonly number[] = [10, 50, 100, 500, 1000];
 export const STREAK_MILESTONES: readonly number[] = [3, 7, 14, 30, 100];
 export const FIRST_READING_ACCURACY = 90;
+const BEST_ACCURACY_GAIN = 1;
+const BEST_TIME_GAIN_MS = 500;
 
 interface History {
   /** Oldest first. */
@@ -56,17 +58,34 @@ function firstsBy<K>(rounds: readonly RoundRecord[], keyOf: (record: RoundRecord
   });
 }
 
+const solveSeconds = (solveMs: number) => Math.round(solveMs / 100) / 10;
+
+/**
+ * A best that matches the bests panel and gained on the last best written: a point more accuracy, or the same accuracy
+ * at least half a second faster with a different printed time. Smaller gains add up until one of them passes.
+ */
 function bestImprovements(rounds: readonly RoundRecord[]): Draft[] {
   const running = new Map<string, PersonalBest>();
+  const written = new Map<string, RoundRecord>();
   return rounds.flatMap((record) => {
     const key = settingKey(record.source, record.config);
-    const previous = running.get(key);
-    if (!beats(record, previous)) return [];
+    if (!beats(record, running.get(key))) return [];
     running.set(key, { accuracy: record.accuracy, correct: record.correct, solveMs: record.solveMs, at: record.endedAt, rounds: 0 });
-    if (!previous) return [];
+    const last = written.get(key);
+    if (!last) {
+      written.set(key, record);
+      return [];
+    }
     const { source, config: { pieceCount, memorizeSeconds }, accuracy, solveMs } = record;
-    const by = accuracy > previous.accuracy ? "accuracy" : "time";
-    return [{ record, params: { source, pieceCount, memorizeSeconds, accuracy, previous: previous.accuracy, by, solveSeconds: Math.round(solveMs / 100) / 10 } }];
+    const by =
+      accuracy >= last.accuracy + BEST_ACCURACY_GAIN
+        ? "accuracy"
+        : accuracy === last.accuracy && last.solveMs - solveMs >= BEST_TIME_GAIN_MS && solveSeconds(solveMs) !== solveSeconds(last.solveMs)
+          ? "time"
+          : null;
+    if (!by) return [];
+    written.set(key, record);
+    return [{ record, params: { source, pieceCount, memorizeSeconds, accuracy, previous: last.accuracy, by, solveSeconds: solveSeconds(solveMs) } }];
   });
 }
 
@@ -105,10 +124,9 @@ const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
   first90: {
     wholeLog: true,
     drafts: ({ rounds }) =>
-      firstsBy(rounds, ({ accuracy, config }) => (accuracy >= FIRST_READING_ACCURACY ? config.pieceCount : null)).map((record) => ({
-        record,
-        params: { pieceCount: record.config.pieceCount },
-      })),
+      firstsBy(rounds, ({ accuracy, config }) => (accuracy >= FIRST_READING_ACCURACY ? config.pieceCount : null))
+        .filter((record) => record !== rounds[0])
+        .map((record) => ({ record, params: { pieceCount: record.config.pieceCount } })),
   },
   best: { wholeLog: true, drafts: ({ rounds }) => bestImprovements(rounds) },
   span: { wholeLog: true, drafts: spanSteps },

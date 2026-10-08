@@ -112,7 +112,6 @@ describe("lab notebook panel", () => {
       "Day 3. 3 days in a row. New",
       "Day 1. Memory span reached 6 pieces.",
       "Day 1. First round: 100 percent at 6 pieces.",
-      "Day 1. First 90 percent or better at 6 pieces.",
     ]);
   });
 
@@ -133,7 +132,7 @@ describe("lab notebook panel", () => {
     renderWithIntl(<LabRecordSection record={persona("threeDays")} />);
 
     expect(within(panel("Lab notebook")).queryByText("New")).toBeNull();
-    expect(lines(within(panel("Lab notebook")).getByRole("list"))).toHaveLength(5);
+    expect(lines(within(panel("Lab notebook")).getByRole("list"))).toHaveLength(4);
   });
 
   it("shows the newest five and renders the rest only when asked", () => {

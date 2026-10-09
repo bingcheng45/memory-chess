@@ -27,6 +27,11 @@
     "planBaseline",
     "planEdge",
     "plateau",
+    "reviewCurve",
+    "reviewDue",
+    "reviewNone",
+    "reviewOverdue",
+    "reviewWarming",
     "shortSessions",
     "spanClimber",
     "spanClimberAway",
@@ -42,7 +47,7 @@
   ],
   "max": {
     "narrow": {
-      "unlock": 359,
+      "unlock": 395,
       "span": 529,
       "held": 488,
       "spark": 444,
@@ -56,10 +61,11 @@
       "plans": 1284,
       "goal": 449,
       "daily": 483,
-      "tools": 360
+      "tools": 360,
+      "curve": 636
     },
     "medium": {
-      "unlock": 270,
+      "unlock": 296,
       "span": 480,
       "held": 488,
       "spark": 412,
@@ -73,10 +79,11 @@
       "plans": 955,
       "goal": 314,
       "daily": 343,
-      "tools": 496
+      "tools": 496,
+      "curve": 595
     },
     "wide": {
-      "unlock": 186,
+      "unlock": 209,
       "span": 521,
       "held": 480,
       "spark": 423,
@@ -90,7 +97,8 @@
       "plans": 481,
       "goal": 291,
       "daily": 319,
-      "tools": 196
+      "tools": 196,
+      "curve": 614
     }
   },
   "tallest": {
@@ -124,7 +132,7 @@
     "medium goal": "planEdge client 641",
     "medium daily": "dailyPlayed client 641",
     "medium tools": "colourSkew client 768",
-    "wide unlock": "colourSkew server 1024",
+    "wide unlock": "twoRoundsAway client 1024",
     "wide span": "stale client 1440",
     "wide held": "stale client 1440",
     "wide spark": "stale client 1440",
@@ -138,11 +146,14 @@
     "wide plans": "planEdge client 1024",
     "wide goal": "planEdge client 1024",
     "wide daily": "dailyPlayed client 1024",
-    "wide tools": "colourSkew client 1024"
+    "wide tools": "colourSkew client 1024",
+    "wide curve": "colourSkew client 1440",
+    "medium curve": "colourSkew client 641",
+    "narrow curve": "colourSkew client 320"
   },
   "empty": {
     "narrow": {
-      "unlock": 271,
+      "unlock": 308,
       "span": 478,
       "held": 425,
       "spark": 397,
@@ -156,10 +167,11 @@
       "plans": 1181,
       "goal": 305,
       "daily": 367,
-      "tools": 0
+      "tools": 0,
+      "curve": 560
     },
     "medium": {
-      "unlock": 251,
+      "unlock": 295,
       "span": 445,
       "held": 393,
       "spark": 333,
@@ -173,7 +185,8 @@
       "plans": 920,
       "goal": 232,
       "daily": 269,
-      "tools": 0
+      "tools": 0,
+      "curve": 538
     },
     "wide": {
       "unlock": 186,
@@ -190,7 +203,8 @@
       "plans": 455,
       "goal": 182,
       "daily": 246,
-      "tools": 0
+      "tools": 0,
+      "curve": 585
     }
   }
 }

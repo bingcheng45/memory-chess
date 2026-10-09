@@ -1,3 +1,4 @@
+import type { LabSummary } from "@/lib/lab/summary";
 import { buildRoundRecord, type RoundCapture, type RoundInput, type RoundRecord, type RoundRecordV1, type RoundRecordV2 } from "@/lib/lab/record";
 
 export const TARGET = "4k3/8/8/3q4/8/5N2/8/4K3";
@@ -42,3 +43,9 @@ export function reviewedBoard(id: string, day: string, of: RoundRecord, delayDay
     { kind: "review", startSource: "review", reviewOf: of.id, reviewDelayDays: delayDays },
   );
 }
+
+/** Lifetime counters for `rounds` fresh rounds, all at 4 pieces and 10 seconds, since the bests count the fresh rounds. */
+export const playedFresh = (rounds: number): Pick<LabSummary, "rounds" | "bests"> => ({
+  rounds,
+  bests: { "game:4x10": { accuracy: 50, correct: 2, solveMs: 20000, at: 0, rounds } },
+});

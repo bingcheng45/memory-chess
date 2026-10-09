@@ -112,6 +112,10 @@ export function addToSummary(summary: LabSummary, record: RoundRecord): LabSumma
   };
 }
 
+/** Every fresh round adds to exactly one best, so the bests count the rounds that read the board for the first time. */
+export const freshRounds = (summary: LabSummary): number =>
+  Object.values(summary.bests).reduce((sum, best) => sum + best.rounds, 0);
+
 export function summarize(records: readonly RoundRecord[]): LabSummary {
   return [...records].sort((a, b) => a.endedAt - b.endedAt).reduce(addToSummary, EMPTY_SUMMARY);
 }

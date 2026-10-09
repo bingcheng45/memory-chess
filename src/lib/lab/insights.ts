@@ -3,7 +3,7 @@ import { busiestSetting, hundredths, mean, measured, readinessFor, settingOf, TR
 import type { SpanValue, SpeedValue } from "./progress";
 import { hasFigure, LAB_THRESHOLDS, type Need } from "./readiness";
 import { PIECE_LETTERS } from "./record";
-import type { ColorCounts } from "./summary";
+import { freshRounds, type ColorCounts } from "./summary";
 
 export type InsightId = "edgeFiles" | "weakType" | "fasterLessAccurate" | "colourGap" | "plateau";
 
@@ -214,7 +214,7 @@ const plateau: InsightRule<{ rounds: number }> = {
 const INSIGHT_RULES: readonly BoundRule[] = [bind(edgeFiles), bind(weakType), bind(fasterLessAccurate), bind(colourGap), bind(plateau)];
 
 export function computeInsights(input: LabInput, prior: InsightPrior): MetricResult<InsightsValue> {
-  const { rounds } = input.summary;
+  const rounds = freshRounds(input.summary);
   const readiness = readinessFor(input, { sampleSize: rounds, have: { rounds }, thresholds: INSIGHTS_THRESHOLDS });
   return measured(readiness, () => {
     if (!hasFigure(readiness)) return { insights: [] };

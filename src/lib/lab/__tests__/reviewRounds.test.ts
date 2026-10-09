@@ -50,3 +50,35 @@ describe("review rounds in the rest of the record", () => {
     expect(summaryCounts(summarize(records), reviews[1])).toBe(true);
   });
 });
+
+describe("a review placed in full", () => {
+  /** Rooks on the a and h files, queen and king on the d and e files: the fresh round puts back all but the rooks. */
+  const ROOKS = "3qk2r/8/8/8/8/8/8/R2QK3";
+  const NO_ROOKS = "3qk3/8/8/8/8/8/8/3QK3";
+  const dayOf = (index: number) => `2026-09-${index + 10}`;
+  const fresh = Array.from({ length: 10 }, (_, index) => seenBoard(`edge${index}`, dayOf(index), ROOKS, NO_ROOKS, 6));
+  const replayed = fresh.map((board, index) => reviewedBoard(`replay${index}`, dayOf(index + 1), board, 1));
+  const withReviews = [...fresh, ...replayed];
+  const lab = deriveLab({ records: withReviews, summary: summarize(withReviews), today: "2026-09-20" });
+
+  it("adds a round played but no sighting or miss, so the counters read the fresh rounds alone", () => {
+    expect(summarize(withReviews)).toMatchObject({
+      rounds: 20,
+      typeShown: { k: 20, q: 20, r: 20 },
+      typeMissed: { r: 20 },
+      colorShown: { w: 20, b: 20 },
+      colorMissed: { w: 10, b: 10 },
+    });
+  });
+
+  it("leaves the edge files insight and the rook's recall as the fresh rounds measured them", () => {
+    expect(lab.insights.value?.insights.find(({ ruleId }) => ruleId === "edgeFiles")?.params).toEqual({
+      times: 0,
+      edge: 100,
+      centre: 0,
+      edgeShown: 20,
+      centreShown: 40,
+    });
+    expect(lab.typeRecall.value?.types.find(({ type }) => type === "r")).toEqual({ type: "r", shown: 20, recalled: 0, ready: true });
+  });
+});

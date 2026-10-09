@@ -13,7 +13,7 @@ describe("lifetime colour counts", () => {
   it("count each non-king piece shown and missed by its colour, a wrong piece as a miss and an extra piece as nothing", () => {
     const summary = summarize([mixed("a")]);
 
-    expect(summary).toMatchObject({ v: 3, colorShown: { w: 3, b: 2 }, colorMissed: { w: 2, b: 1 } });
+    expect(summary).toMatchObject({ v: 4, colorShown: { w: 3, b: 2 }, colorMissed: { w: 2, b: 1 } });
   });
 
   it("add up over rounds", () => {

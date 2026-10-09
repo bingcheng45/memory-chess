@@ -154,11 +154,13 @@ export default function PrivacyPage() {
               you rebuilt, your timings, your scores, your time zone offset,
               where you started the round (such as the homepage or a guide),
               and the order and timing of each piece you placed. It is used only to
-              draw your streak, personal bests, accuracy trend, miss map and
-              today&apos;s board on this device. The record itself, with its
-              positions, squares, placements and history, never leaves this
-              device. Local storage also keeps the UTC day you last opened
-              today&apos;s board, so it offers you one try a day. Google
+              draw your streak, personal bests, accuracy trend, miss map,
+              today&apos;s board, review queue and forgetting curve on this
+              device. The record itself, with its positions, squares,
+              placements and history, never leaves this device. Local storage
+              also keeps the UTC day you last opened today&apos;s board, so it
+              offers you one try a day, and which review steps you opened, so a
+              board left before its result is not shown twice at one delay. Google
               Analytics receives an event for each round you finish, on the
               homepage or in the game, with the number of pieces, the study
               time, how many pieces you recalled, your accuracy and where the

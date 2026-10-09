@@ -69,9 +69,13 @@ describe("PrivacyPage", () => {
         /The record itself, with its positions, squares, placements and history, never leaves this device\./,
       ),
     ).toBeInTheDocument();
-    expect(screen.getByText(/draw your streak, personal bests, accuracy trend, miss map and today's board on this device\./)).toBeInTheDocument();
     expect(
-      screen.getByText(/Local storage also keeps the UTC day you last opened today's board, so it offers you one try a day\./),
+      screen.getByText(/draw your streak, personal bests, accuracy trend, miss map, today's board, review queue and forgetting curve on this device\./),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Local storage also keeps the UTC day you last opened today's board, so it offers you one try a day, and which review steps you opened, so a board left before its result is not shown twice at one delay\./,
+      ),
     ).toBeInTheDocument();
   });
 

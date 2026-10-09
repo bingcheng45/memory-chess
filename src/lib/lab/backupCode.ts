@@ -15,6 +15,7 @@ const TAG_BYTES = 16;
 
 /** The ciphertext cap the server and the migration enforce. */
 export const MAX_SEALED_BYTES = 1024 * 1024;
+export const MIN_SEALED_BYTES = 1 + NONCE_BYTES + TAG_BYTES;
 
 export type RecoveryCode = string & { readonly __brand: "RecoveryCode" };
 
@@ -49,8 +50,10 @@ function base64url(bytes: ArrayBuffer): string {
 export async function backupKeysOf(code: RecoveryCode): Promise<BackupKeys> {
   const secret = await crypto.subtle.importKey("raw", encode(code.replace(/-/g, "")), "HKDF", false, ["deriveBits", "deriveKey"]);
   const params = (info: string) => ({ name: "HKDF", hash: "SHA-256", salt: encode(SALT), info: encode(info) });
-  const lookup = await crypto.subtle.deriveBits(params("lookup"), secret, 256);
-  const key = await crypto.subtle.deriveKey(params("seal"), secret, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
+  const [lookup, key] = await Promise.all([
+    crypto.subtle.deriveBits(params("lookup"), secret, 256),
+    crypto.subtle.deriveKey(params("seal"), secret, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]),
+  ]);
   return { lookup: base64url(lookup), key };
 }
 
@@ -71,9 +74,9 @@ export async function sealRecord(json: string, key: CryptoKey): Promise<Uint8Arr
 
 /** Null for a wrong code, a changed or cut byte, or a version this build cannot read. */
 export async function openRecord(sealed: Uint8Array, key: CryptoKey): Promise<string | null> {
-  if (sealed.length < 1 + NONCE_BYTES + TAG_BYTES || sealed[0] !== SEAL_VERSION) return null;
+  if (sealed.length < MIN_SEALED_BYTES || sealed[0] !== SEAL_VERSION) return null;
   try {
-    const packed = await crypto.subtle.decrypt({ name: "AES-GCM", iv: sealed.slice(1, 1 + NONCE_BYTES) }, key, sealed.slice(1 + NONCE_BYTES));
+    const packed = await crypto.subtle.decrypt({ name: "AES-GCM", iv: sealed.subarray(1, 1 + NONCE_BYTES) }, key, sealed.subarray(1 + NONCE_BYTES));
     return new TextDecoder().decode(await piped(new Uint8Array(packed), new DecompressionStream("gzip")));
   } catch {
     return null;

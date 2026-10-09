@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export type CopyState = "idle" | "copied" | "failed";
+type CopyState = "idle" | "copied" | "failed";
 
 /** Copies only on a press. Where the clipboard is refused, the text element is selected so the player can copy it by hand. */
 export function useCopyText(text: string) {

@@ -26,17 +26,16 @@ export function LabInstallNudge({ days }: { days: number }) {
   const installed = useInstalled();
   const isSafari = useIsSafari();
   const [seenHere, setSeenHere] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
   const onSight = useCallback(() => {
     setSeenHere(true);
     markSeen();
   }, []);
   const ref = useFirstSight<HTMLDivElement>(onSight);
 
-  if (!showsInstallNudge({ days, installed, seenAt, seenHere, dismissed })) return null;
+  if (!showsInstallNudge({ days, installed, seenAt, seenHere })) return null;
 
   const dismiss = () => {
-    setDismissed(true);
+    setSeenHere(false);
     markSeen();
   };
 

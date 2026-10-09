@@ -9,13 +9,12 @@ interface NudgeInput {
   readonly installed: boolean | null;
   /** When the note first came into view on any visit, from local storage. */
   readonly seenAt: number | null;
-  /** Whether that first sight was on this visit, so the note stays put until the player leaves. */
+  /** Whether that first sight was on this visit, so the note stays put until the player leaves or dismisses it. */
   readonly seenHere: boolean;
-  readonly dismissed: boolean;
 }
 
-export function showsInstallNudge({ days, installed, seenAt, seenHere, dismissed }: NudgeInput): boolean {
-  return days >= INSTALL_NUDGE_DAYS && installed === false && !dismissed && (seenAt === null || seenHere);
+export function showsInstallNudge({ days, installed, seenAt, seenHere }: NudgeInput): boolean {
+  return days >= INSTALL_NUDGE_DAYS && installed === false && (seenAt === null || seenHere);
 }
 
 export function parseNudgeSeen(text: string | null): number | null {

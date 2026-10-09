@@ -19,26 +19,22 @@ function serviceClient(): SupabaseClient {
   return client;
 }
 
+async function rpc(name: string, args: Record<string, string>): Promise<unknown> {
+  const { data, error } = await serviceClient().rpc(name, args).abortSignal(AbortSignal.timeout(SUPABASE_TIMEOUT_MS));
+  if (error) throw error;
+  return data;
+}
+
 async function call(request: BackupRequest): Promise<BackupData> {
-  const signal = AbortSignal.timeout(SUPABASE_TIMEOUT_MS);
-  const supabase = serviceClient();
   switch (request.action) {
-    case "put": {
-      const { data, error } = await supabase.rpc("lab_backup_put", { p_lookup: request.lookup, p_sealed: request.sealed }).abortSignal(signal);
-      if (error) throw error;
-      return { savedAt: String(data) };
-    }
+    case "put":
+      return { savedAt: String(await rpc("lab_backup_put", { p_lookup: request.lookup, p_sealed: request.sealed })) };
     case "get": {
-      const { data, error } = await supabase.rpc("lab_backup_get", { p_lookup: request.lookup }).abortSignal(signal);
-      if (error) throw error;
-      const [row] = (data ?? []) as { sealed: string; updated_at: string }[];
+      const [row] = ((await rpc("lab_backup_get", { p_lookup: request.lookup })) ?? []) as { sealed: string; updated_at: string }[];
       return row ? { sealed: row.sealed, savedAt: row.updated_at } : null;
     }
-    case "delete": {
-      const { data, error } = await supabase.rpc("lab_backup_delete", { p_lookup: request.lookup }).abortSignal(signal);
-      if (error) throw error;
-      return { deleted: data === true };
-    }
+    case "delete":
+      return { deleted: (await rpc("lab_backup_delete", { p_lookup: request.lookup })) === true };
   }
 }
 

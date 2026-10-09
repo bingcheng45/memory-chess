@@ -6,8 +6,9 @@ import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { settingValues, seconds } from "./labFormat";
 import { useCopyText } from "./useCopyText";
 
-function useCardText({ span, held, speed }: ReadingCard): string {
-  const t = useTranslations("home.lab.record.tools.card");
+type Translate = ReturnType<typeof useTranslations<"home.lab.record.tools.card">>;
+
+function cardText(t: Translate, { span, held, speed }: ReadingCard): string {
   return [
     t("title"),
     t("span", { pieceCount: span.pieceCount, accuracy: LAB_THRESHOLDS.spanAccuracy, count: span.rounds }),
@@ -22,7 +23,7 @@ function useCardText({ span, held, speed }: ReadingCard): string {
 /** A text card rather than an image: it pastes anywhere, reads aloud as it is, and needs no drawing code. */
 export function LabReadingCard({ card }: { card: ReadingCard }) {
   const t = useTranslations("home.lab.record.tools.card");
-  const text = useCardText(card);
+  const text = cardText(t, card);
   const { state, copy, textRef } = useCopyText(text);
 
   return (

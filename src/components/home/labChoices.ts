@@ -7,6 +7,8 @@ import { ENTRIES_KEY, parseEntries, type StoredEntries } from "@/lib/lab/entries
 interface ChoiceStore<T> {
   useValue(): T | null;
   set(value: T | null): void;
+  /** Applies a change to what is stored now, not to a value read earlier. */
+  update(change: (current: T | null) => T | null): void;
   /** Clears the session fallback, so tests do not depend on the order they run in. */
   reset(): void;
 }
@@ -47,19 +49,22 @@ export function choiceStore<T>(key: string, parse: (text: string | null) => T | 
     };
   };
 
+  const set = (value: T | null) => {
+    const text = value === null ? null : JSON.stringify(value);
+    try {
+      if (text === null) window.localStorage.removeItem(key);
+      else window.localStorage.setItem(key, text);
+      thisSession = undefined;
+    } catch {
+      thisSession = text;
+    }
+    listeners.forEach((listener) => listener());
+  };
+
   return {
     useValue: () => useSyncExternalStore(subscribe, snapshot, () => null),
-    set(value) {
-      const text = value === null ? null : JSON.stringify(value);
-      try {
-        if (text === null) window.localStorage.removeItem(key);
-        else window.localStorage.setItem(key, text);
-        thisSession = undefined;
-      } catch {
-        thisSession = text;
-      }
-      listeners.forEach((listener) => listener());
-    },
+    set,
+    update: (change) => set(change(snapshot())),
     reset() {
       thisSession = undefined;
     },

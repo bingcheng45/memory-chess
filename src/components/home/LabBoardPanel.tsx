@@ -138,7 +138,7 @@ export function BoardPanel({ ready }: { ready: boolean }) {
     const key = `${entry.id}:${scope}`;
     const before = seen.current.get(key) ?? null;
     if (result.kind === "ranked") seen.current.set(key, { rank: result.standing.rank, checkedAt: result.checkedAt });
-    if (result.kind === "missing" && stored) entriesChoice.set(withoutEntry(stored, entry.difficulty));
+    if (result.kind === "missing") entriesChoice.update((current) => withoutEntry(current, entry));
     setCheck({ state: "done", result, entry, before });
   };
 

@@ -62,7 +62,8 @@ export function withEntry(entries: StoredEntries | null, entry: StoredEntry): St
   return { ...entries, [entry.difficulty]: entry };
 }
 
-export function withoutEntry(entries: StoredEntries, difficulty: LeaderboardDifficulty): StoredEntries | null {
+export function withoutEntry(entries: StoredEntries | null, { id, difficulty }: StoredEntry): StoredEntries | null {
+  if (entries?.[difficulty]?.id !== id) return entries;
   return orNothing(Object.fromEntries(Object.entries(entries).filter(([kept]) => kept !== difficulty)));
 }
 

@@ -16,7 +16,7 @@ import {
   type TrendSetting,
 } from "./engine";
 import { DAY_MS, LAB_THRESHOLDS } from "./readiness";
-import type { RoundRecord } from "./record";
+import { isFreshReading, type RoundRecord } from "./record";
 import { byEndedAt, sessionRuns, sessionsOf, type Session } from "./sessions";
 
 export interface RecentChange {
@@ -76,7 +76,7 @@ const LARGER_THRESHOLDS = { largerRounds: 1 };
 const WEEK_MS = 7 * DAY_MS;
 
 const isLarger = ({ config }: RoundRecord) => config.pieceCount >= LAB_THRESHOLDS.spanMinPieces;
-const qualifies = (record: RoundRecord) => isLarger(record) && record.accuracy >= LAB_THRESHOLDS.spanAccuracy;
+const qualifies = (record: RoundRecord) => isFreshReading(record) && isLarger(record) && record.accuracy >= LAB_THRESHOLDS.spanAccuracy;
 
 type QualifyingCounts = Map<number, number>;
 

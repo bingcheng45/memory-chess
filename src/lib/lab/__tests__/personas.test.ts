@@ -39,6 +39,11 @@ describe("persona fixtures", () => {
       dailyOpen: { rounds: 11, rejected: 0, overCap: 0, summary: 11 },
       dailyPlayed: { rounds: 5, rejected: 0, overCap: 0, summary: 5 },
       dailyStreak: { rounds: 9, rejected: 0, overCap: 0, summary: 9 },
+      reviewNone: { rounds: 8, rejected: 0, overCap: 0, summary: 8 },
+      reviewDue: { rounds: 8, rejected: 0, overCap: 0, summary: 8 },
+      reviewOverdue: { rounds: 15, rejected: 0, overCap: 0, summary: 15 },
+      reviewWarming: { rounds: 16, rejected: 0, overCap: 0, summary: 16 },
+      reviewCurve: { rounds: 37, rejected: 0, overCap: 0, summary: 37 },
     });
   });
 
@@ -81,7 +86,7 @@ describe("persona fixtures", () => {
 
     expect(rounds.every((round) => round.v === 2 && round.positionId === positionId(round.targetFen) && round.tzOffsetMin === -480)).toBe(true);
     expect(new Set(rounds.map((round) => round.v === 2 && round.startSource))).toEqual(
-      new Set(["calibration", "home_quick", "try_again", "game_form", "tile_drill", "home_tier", "link", "daily"]),
+      new Set(["calibration", "home_quick", "try_again", "game_form", "tile_drill", "home_tier", "link", "daily", "review"]),
     );
   });
 

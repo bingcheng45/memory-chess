@@ -3,7 +3,7 @@ import { mean } from "./engine";
 import type { Insight } from "./insights";
 import type { LabResults } from "./metrics";
 import { spanOfRounds } from "./progress";
-import { settingKey, type RoundConfig, type RoundRecord } from "./record";
+import { isFreshReading, settingKey, type RoundConfig, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
 import { beats, type LabSummary } from "./summary";
 import { weekProgress, type WeekGoal } from "./week";
@@ -46,7 +46,8 @@ export interface ResultCard {
   readonly vsRecent: VsRecent | null;
   readonly spanChange: SpanChange | null;
   readonly streak: StreakLine;
-  readonly next: NextStep;
+  /** Null on a review, which replays a board the player has seen rather than a setting to build on. */
+  readonly next: NextStep | null;
 }
 
 export interface ResultCardInput {
@@ -104,9 +105,10 @@ function nextOf(round: RoundRecord, results: LabResults): NextStep {
 
 /**
  * Whether the summary has counted this round yet. Reads can catch the log ahead of it, and a card built then would
- * miss a new best and print the streak a day short.
+ * miss a new best and print the streak a day short. A review sets no best, so only its day shows it.
  */
 export function summaryCounts(summary: LabSummary, round: RoundRecord): boolean {
+  if (!isFreshReading(round)) return summary.days.includes(round.localDay);
   const best = summary.bests[settingKey(round.source, round.config)];
   return summary.days.includes(round.localDay) && best !== undefined && !beats(round, best);
 }
@@ -119,10 +121,11 @@ export function resultCardFor({ round, records, results, goal, days, today }: Re
   const streak = results.streak.value;
   if (!streak) return null;
   const key = settingKey(round.source, round.config);
-  const others = records.filter((record) => record.id !== round.id && settingKey(record.source, record.config) === key);
+  const fresh = isFreshReading(round);
+  const others = records.filter((record) => record.id !== round.id && isFreshReading(record) && settingKey(record.source, record.config) === key);
   return {
     newBest: newBestOf(round, others, results),
-    vsRecent: vsRecentOf(round, others),
+    vsRecent: fresh ? vsRecentOf(round, others) : null,
     spanChange: spanChangeOf(round, records),
     streak: {
       current: streak.current,
@@ -130,6 +133,6 @@ export function resultCardFor({ round, records, results, goal, days, today }: Re
       daysThisWeek: weekProgress(days, today, goal).daysPlayed,
       goal,
     },
-    next: nextOf(round, results),
+    next: fresh ? nextOf(round, results) : null,
   };
 }

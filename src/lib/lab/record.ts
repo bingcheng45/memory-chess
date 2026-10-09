@@ -52,6 +52,9 @@ export interface RoundRecordV1 {
 export const ROUND_KINDS = ["normal", "daily", "review"] as const;
 export type RoundKind = (typeof ROUND_KINDS)[number];
 
+/** A review replays a board the player has seen, so it is a round they played but not a fresh reading of what they can hold. */
+export const isFreshReading = (record: RoundRecord): boolean => record.v === 1 || record.kind !== "review";
+
 /** Facts only a version 2 round carries. Each is optional, so a file written before a fact existed still reads. */
 export interface RoundCapture {
   readonly startSource?: RoundSource;

@@ -4,6 +4,7 @@ import { trackEvent } from "@/lib/analytics/events";
 import { LAB_METRICS } from "@/lib/lab/metrics";
 import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { summarize } from "@/lib/lab/summary";
+import { personaRounds } from "@/lib/lab/personas";
 import { persona } from "@/test-utils/labPersona";
 import { round } from "@/lib/lab/__tests__/fixtures";
 import { readFileSync } from "node:fs";
@@ -29,6 +30,7 @@ describe("unlock strip", () => {
       "Trend · 5 rounds of one setting over 2 days",
       "Speed · 5 rounds of one setting",
       "Streak · play on 2 days",
+      "Forgetting curve · 3 reviews after the same gap",
       "Lab notebook · 1 round",
       "Miss map · 10 sightings per file and rank",
       "Piece recall · 20 sightings of a non-king piece",
@@ -46,6 +48,7 @@ describe("unlock strip", () => {
       "Trend · 4 more game rounds at 6 pieces, 10\u00a0s, 1 more day",
       "Speed · 4 more game rounds at 6 pieces, 10\u00a0s",
       "Streak · play on 1 more day",
+      "Forgetting curve · 3 more reviews after the same gap",
       "Miss map · 10 more sightings on the least seen file or rank",
       "Piece recall · 14 more sightings of a non-king piece",
       "Insights · 8 more rounds",
@@ -57,6 +60,7 @@ describe("unlock strip", () => {
 
     expect(items()).toEqual([
       "Memory span · 1 round with 3+ pieces",
+      "Forgetting curve · 3 more reviews after the same gap",
       "Miss map · 4 more sightings on the least seen file or rank",
       "Piece recall · 20 more sightings of a non-king piece",
     ]);
@@ -69,7 +73,7 @@ describe("unlock strip", () => {
       .map(([, selector]) => selector.trim());
 
     expect(within(container.querySelector(".lab-unlock") as HTMLElement).queryAllByRole("button", { hidden: true })).toEqual([]);
-    expect(items()).toHaveLength(8);
+    expect(items()).toHaveLength(9);
     expect(hiding).toEqual([]);
   });
 
@@ -79,13 +83,13 @@ describe("unlock strip", () => {
 
     rerender(<LabRecordSection record={persona("twoRounds")} />);
 
-    expect(serverLines.map((line) => line.isConnected)).toEqual(Array(9).fill(false));
-    expect(items()).toHaveLength(8);
+    expect(serverLines.map((line) => line.isConnected)).toEqual(Array(10).fill(false));
+    expect(items()).toHaveLength(9);
   });
 
   it("prints every threshold from the registry, so the copy cannot drift from the panels", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
-    const { span, piecesHeld, trend, speed, streak, notebook, missMap, typeRecall, insights } = LAB_METRICS;
+    const { span, piecesHeld, trend, speed, streak, curve, notebook, missMap, typeRecall, insights } = LAB_METRICS;
 
     expect(items().map((line) => line!.match(/\d+/g)!.map(Number))).toEqual([
       [span.thresholds.qualifyingRounds, LAB_THRESHOLDS.spanAccuracy, LAB_THRESHOLDS.spanMinPieces],
@@ -93,6 +97,7 @@ describe("unlock strip", () => {
       [trend.thresholds.rounds, trend.thresholds.days],
       [speed.thresholds.rounds],
       [streak.thresholds.days],
+      [curve.thresholds.reviews],
       [notebook.thresholds.rounds],
       [missMap.thresholds.exposures],
       [typeRecall.thresholds.exposures],
@@ -116,11 +121,12 @@ describe("unlock strip", () => {
     );
     renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor", "2026-10-07"), records, summary: summarize(records) }} />);
 
-    expect(items()).toEqual(["Miss map · 10 more sightings on the least seen file or rank"]);
+    expect(items()).toEqual(["Forgetting curve · 3 more reviews after the same gap", "Miss map · 10 more sightings on the least seen file or rank"]);
   });
 
   it("says in one line, in the same box, that every figure is unlocked once each can be read", () => {
-    const { container } = renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
+    const records = [...personaRounds("thirtyDays"), ...personaRounds("reviewCurve")];
+    const { container } = renderWithIntl(<LabRecordSection record={{ ...persona("thirtyDays"), records, summary: summarize(records) }} />);
 
     expect(strip()).toBeNull();
     expect(container.querySelector(".lab-unlock")?.textContent).toBe("Every figure below is unlocked.");
@@ -157,7 +163,7 @@ describe("stale panels", () => {
       ["lab-p-insights", "Last played 20 days ago. Play a round →"],
       ["lab-p-bests", "Last played 20 days ago. Play a round →"],
     ]);
-    expect(items()).toEqual(["Miss map · 2 more sightings on the least seen file or rank"]);
+    expect(items()).toEqual(["Forgetting curve · 3 more reviews after the same gap", "Miss map · 2 more sightings on the least seen file or rank"]);
     expect(container.querySelector(".lab-p-spark svg")).not.toBeNull();
   });
 

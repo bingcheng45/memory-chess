@@ -95,23 +95,25 @@
  * for the Sample state without moving anything below it.
  */
 .lab {
-  --lab-h-unlock: 200px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
+  --lab-h-unlock: 224px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
   --lab-h-heat: 464px; --lab-h-streak: 616px; --lab-h-bests: 504px; --lab-h-types: 448px; --lab-h-tools: 208px;
   --lab-h-insights: 344px; --lab-h-notebook: 408px; --lab-h-plans: 496px; --lab-h-goal: 304px; --lab-h-daily: 336px;
-  --lab-heat-w: 260px;
+  --lab-h-curve: 632px; --lab-heat-w: 260px;
 }
 @media (max-width: 1000px) {
   .lab {
-    --lab-h-unlock: 288px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 424px; --lab-h-speed: 512px;
+    --lab-h-unlock: 312px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 424px; --lab-h-speed: 512px;
     --lab-h-heat: 528px; --lab-h-streak: 680px; --lab-h-bests: 920px; --lab-h-types: 528px; --lab-h-tools: 512px;
     --lab-h-insights: 424px; --lab-h-notebook: 448px; --lab-h-plans: 968px; --lab-h-goal: 328px; --lab-h-daily: 360px;
+    --lab-h-curve: 608px;
   }
 }
 @media (max-width: 640px) {
   .lab {
-    --lab-h-unlock: 376px; --lab-h-span: 544px; --lab-h-held: 504px; --lab-h-spark: 456px; --lab-h-speed: 544px;
+    --lab-h-unlock: 408px; --lab-h-span: 544px; --lab-h-held: 504px; --lab-h-spark: 456px; --lab-h-speed: 544px;
     --lab-h-heat: 528px; --lab-h-streak: 624px; --lab-h-bests: 592px; --lab-h-types: 528px; --lab-h-tools: 376px;
     --lab-h-insights: 600px; --lab-h-notebook: 648px; --lab-h-plans: 1300px; --lab-h-goal: 464px; --lab-h-daily: 504px;
+    --lab-h-curve: 648px;
   }
 }
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
@@ -135,6 +137,7 @@
 .lab-p-plans { min-height: var(--lab-h-plans); }
 .lab-p-goal { min-height: var(--lab-h-goal); }
 .lab-p-daily { min-height: var(--lab-h-daily); }
+.lab-p-curve { min-height: var(--lab-h-curve); }
 .lab-tools-slot { display: flow-root; min-height: var(--lab-h-tools); }
 .lab-welcome { margin: 0 0 8px; font-size: 16px; line-height: 1.45; color: var(--lab-ink); }
 .lab-unlock { min-height: var(--lab-h-unlock); margin-bottom: 16px; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 16px 22px; }
@@ -168,6 +171,11 @@
 .lab-daily-share-text { margin: 8px 0 0; font: 400 14px/1.45 var(--lab-sans); white-space: pre-wrap; color: var(--lab-ink); }
 .lab-daily-detail summary { width: fit-content; cursor: pointer; }
 .lab-daily-detail summary:focus-visible { outline: 2px solid var(--lab-mark); outline-offset: 2px; }
+/* Tall enough for a two-line status or the due count with its button, so the chart under it never moves. */
+.lab-review-queue { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 12px; min-height: 92px; }
+.lab-review-status { font-size: 16px; line-height: 1.45; color: var(--lab-ink); }
+.lab-review-chip { display: inline-block; padding: 2px 10px; border-radius: 999px; font-weight: 600; background: var(--lab-mark-soft); color: var(--lab-mark-ink); }
+.lab-review-play { padding: 12px 16px; font-size: 15px; }
 .lab-span-figure { margin-top: 12px; font: 600 clamp(32px, 4vw, 44px)/1.1 var(--lab-sans); font-variant-numeric: tabular-nums; color: var(--lab-ink); }
 .lab-span-held { margin-top: 6px; font-size: 15px; line-height: 1.45; color: var(--lab-ink-2); }
 /* Holds its line when empty, so a week's change arriving later moves nothing. */

@@ -142,7 +142,20 @@ describe("lab record from a finished game round", () => {
 
     const [daily, again] = jest.mocked(recordLabRound).mock.calls.map(([facts]) => facts);
     expect(shown).toBe(fen);
-    expect(daily).toMatchObject({ targetFen: fen, startSource: "daily", kind: "daily", dailyDay: "2026-10-09" });
-    expect([again.startSource, again.kind, again.dailyDay]).toEqual(["try_again", undefined, undefined]);
+    expect(daily).toMatchObject({ targetFen: fen, startSource: "daily", board: { kind: "daily", day: "2026-10-09", fen } });
+    expect([again.startSource, again.board]).toEqual(["try_again", undefined]);
+  });
+
+  it("replays a board from the lab record for review and hands the review's link to the record", async () => {
+    const board = { kind: "review", fen: "4k3/8/8/3q4/8/5N2/8/4K3 w - - 0 1", reviewOf: "first-round", firstDay: "2026-10-06", step: 1 } as const;
+    useGameStore.getState().startGame(4, 10, "review", board);
+    const shown = useGameStore.getState().gameState.originalPosition;
+    useGameStore.getState().endMemorizationPhase(10);
+    useGameStore.getState().startSolutionPhase();
+    useGameStore.getState().submitSolution(4);
+    await flush();
+
+    expect(shown).toBe(board.fen);
+    expect(jest.mocked(recordLabRound).mock.calls[0][0]).toMatchObject({ targetFen: board.fen, startSource: "review", pieceCount: 4, board });
   });
 });

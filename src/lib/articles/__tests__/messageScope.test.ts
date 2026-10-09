@@ -7,7 +7,7 @@ describe("splitClientMessages", () => {
       articles: { like: { button: "Recommend this article" } },
       home: {
         meta: { title: "Memory Chess" },
-        lab: { hero: { lede: "Put a number on it." }, resultCard: { title: "Your lab record" }, daily: { locked: "One try per day." } },
+        lab: { hero: { lede: "Put a number on it." }, resultCard: { title: "Your lab record" }, daily: { locked: "One try per day." }, review: { none: "Nothing due." } },
       },
       game: { skip: "Skip" },
     };
@@ -15,8 +15,8 @@ describe("splitClientMessages", () => {
     expect(splitClientMessages(catalogue)).toEqual({
       shared: { common: { nav: { articles: "Articles" } }, home: { meta: { title: "Memory Chess" } }, game: { skip: "Skip" } },
       articles: { like: { button: "Recommend this article" } },
-      lab: { home: { lab: { hero: { lede: "Put a number on it." }, daily: { locked: "One try per day." } } } },
-      game: { home: { lab: { resultCard: { title: "Your lab record" }, daily: { locked: "One try per day." } } } },
+      lab: { home: { lab: { hero: { lede: "Put a number on it." }, daily: { locked: "One try per day." }, review: { none: "Nothing due." } } } },
+      game: { home: { lab: { resultCard: { title: "Your lab record" }, daily: { locked: "One try per day." }, review: { none: "Nothing due." } } } },
     });
   });
 

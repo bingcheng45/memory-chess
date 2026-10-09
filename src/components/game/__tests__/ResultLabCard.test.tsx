@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen, within } from "@/test-utils/intl";
 import ResultLabCard, { RESULT_LAB_WAIT_MS } from "@/components/game/ResultLabCard";
 import { useLabData, useLabResults, type LabData } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
-import { round } from "@/lib/lab/__tests__/fixtures";
+import { reviewedBoard, round } from "@/lib/lab/__tests__/fixtures";
 import type { RoundRecord } from "@/lib/lab/record";
 import { summarize } from "@/lib/lab/summary";
 import { resetWeekGoalSession } from "@/components/home/useWeekGoal";
@@ -73,6 +73,16 @@ describe("ResultLabCard", () => {
     expect(followed).toBe(false);
     expect(onPlay).toHaveBeenCalledWith(6, 10, "result_next");
     expect(jest.mocked(trackEvent).mock.calls).toEqual([[{ name: "lab_panel_action", params: { panel: "resultCard", action: "next" } }]]);
+  });
+
+  it("shows a review its streak line and no next round", () => {
+    const first = played("first", 50, { day: 6 });
+    withRecord([first, reviewedBoard("review", TODAY, first, 1)]);
+    renderCard("review");
+
+    expect(linesOf()).toEqual(["·Day 2 in a row, 2 of 5 days this week"]);
+    expect(screen.queryByText("Next.")).toBeNull();
+    expect(screen.queryAllByRole("link")).toEqual([]);
   });
 
   it("prints a new best, the change against recent rounds, a raised span and the streak, then one more piece", () => {

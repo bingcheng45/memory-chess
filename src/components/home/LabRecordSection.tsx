@@ -9,12 +9,12 @@ import { PANEL_ROWS, type CustomRow, type PanelId, type PanelRow } from "@/lib/l
 import { daysBetween } from "@/lib/lab/readiness";
 import { welcomeBack } from "@/lib/lab/welcome";
 import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
-import { ForgettingCurve } from "./LabCharts";
 import { BestsPanel, figureOf, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
 import { DailyPanel } from "./LabDailyPanel";
 import { InsightsPanel, NotebookPanel } from "./LabInsightPanels";
 import { GoalPanel, PlansPanel } from "./LabProgramPanels";
 import { HeldPanel, SpanPanel, SpeedPanel } from "./LabReadingPanels";
+import { ReviewPanel } from "./LabReviewPanel";
 import { LabRecordTools } from "./LabRecordTools";
 import { LabUnlockStrip } from "./LabUnlockStrip";
 import { planChoice, targetChoice } from "./labChoices";
@@ -29,22 +29,6 @@ const BOARD_SKETCH = [
 ];
 
 const trackSectionView = () => trackEvent({ name: "lab_section_view", params: {} });
-
-function CurvePanel() {
-  const t = useTranslations("home.lab.record");
-  const tags = useTranslations("home.lab.tags");
-  return (
-    <div className="lab-panel lab-p-curve">
-      <PanelHead fig={t("curve.fig", { number: figureOf("curve") })} tag={<span className="lab-tag">{t("curve.tag")}</span>} />
-      <h3>{t("curve.title")}</h3>
-      <p className="lab-panel-desc">{t("curve.desc")}</p>
-      <ForgettingCurve />
-      <p className="lab-note">
-        <span className="lab-tag lab-tag-blue">{tags("illustrative")}</span> {t("curve.note")}
-      </p>
-    </div>
-  );
-}
 
 function BoardPanel() {
   const t = useTranslations("home.lab.record");
@@ -100,7 +84,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
     speed: <SpeedPanel result={lab.speed} daysAgo={daysAgo} />,
     daily: <DailyPanel records={record.records} ready={ready} />,
     streak: <StreakPanel result={lab.streak} days={summary.days} today={today} daysAgo={daysAgo} />,
-    curve: <CurvePanel />,
+    curve: <ReviewPanel result={lab.curve} records={record.records} today={ready ? today : ""} daysAgo={daysAgo} />,
     notebook: <NotebookPanel result={lab.notebook} />,
     missMap: <MissPanel result={lab.missMap} daysAgo={daysAgo} />,
     typeRecall: <TypesPanel result={lab.typeRecall} daysAgo={daysAgo} />,

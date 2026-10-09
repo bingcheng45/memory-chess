@@ -2,7 +2,7 @@
 import { IDBFactory } from "fake-indexeddb";
 import type { LabInput } from "@/lib/lab/engine";
 import { deriveLab, type LabResults, type MetricId } from "@/lib/lab/metrics";
-import { DAILY_PERSONAS, exportPersona, memoryLabStore, PERSONA_NAMES, PERSONA_TODAY, personaRounds, PLAN_PERSONAS, type PersonaName } from "@/lib/lab/personas";
+import { DAILY_PERSONAS, exportPersona, memoryLabStore, PERSONA_NAMES, PERSONA_TODAY, personaRounds, PLAN_PERSONAS, REVIEW_PERSONAS, type PersonaName } from "@/lib/lab/personas";
 import { hasFigure, type ReadinessState } from "@/lib/lab/readiness";
 import golden from "./__golden__/derive-personas.json";
 
@@ -59,7 +59,7 @@ function inputFor(name: PersonaName): Promise<LabInput> {
 }
 
 /** The cast these tables were written for; the plan personas are read in planPersonas.test.ts, the daily ones in daily.test.ts. */
-const CAST = PERSONA_NAMES.filter((name) => !([...PLAN_PERSONAS, ...DAILY_PERSONAS] as readonly string[]).includes(name));
+const CAST = PERSONA_NAMES.filter((name) => !([...PLAN_PERSONAS, ...DAILY_PERSONAS, ...REVIEW_PERSONAS] as readonly string[]).includes(name));
 /** A plan and a goal are choices, so a record alone leaves them empty; planPersonas.test.ts reads them with choices. */
 const recordMetrics = (results: LabResults) => Object.entries(results).filter(([id]) => id !== "plans" && id !== "goal");
 
@@ -72,7 +72,7 @@ describe("metric engine on the persona fixtures", () => {
     const input = await inputFor("newVisitor");
     const old = golden.newVisitor;
 
-    expect(Object.values(deriveLab(input)).map(({ value }) => value)).toEqual(Array(13).fill(null));
+    expect(Object.values(deriveLab(input)).map(({ value }) => value)).toEqual(Array(14).fill(null));
     expect(Object.fromEntries(Object.entries(legacy(input)).map(([id, { ready, sampleSize }]) => [id, { ready, sampleSize }]))).toEqual({
       streak: { ready: old.streak.ready, sampleSize: old.streak.sampleSize },
       bests: { ready: old.bests.ready, sampleSize: old.bests.sampleSize },
@@ -119,7 +119,11 @@ describe("metric engine on the persona fixtures", () => {
     });
     const progress = (state: ReadinessState) => ({ sessions: state, span: state, piecesHeld: state, speed: state });
 
-    expect(Object.fromEntries(states)).toEqual({
+    // No persona here has played a review, so every curve with rounds behind it is still warming.
+    const withCurve = (expected: Record<string, object>) =>
+      Object.fromEntries(Object.entries(expected).map(([name, metrics]) => [name, { ...metrics, curve: name === "newVisitor" ? "empty" : "warming" }]));
+
+    expect(Object.fromEntries(states)).toEqual(withCurve({
       newVisitor: all("empty"),
       twoRounds: { streak: "warming", bests: "ready", trend: "warming", typeRecall: "warming", missMap: "warming", ...progress("warming"), sessions: "ready", insights: "warming", notebook: "ready" },
       threeDays: { streak: "ready", bests: "ready", trend: "ready", typeRecall: "ready", missMap: "warming", ...progress("ready"), insights: "ready", notebook: "ready" },
@@ -133,7 +137,7 @@ describe("metric engine on the persona fixtures", () => {
       plateau: all("ready"),
       colourSkew: all("ready"),
       graceStreak: all("ready"),
-    });
+    }));
   });
 
   it("reads version 1 rounds exactly as it reads the same rounds as version 2", async () => {

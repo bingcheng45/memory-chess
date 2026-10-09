@@ -13,6 +13,7 @@ import {
   retentionNoReview,
   retentionWithReviews,
 } from "@/lib/home/labRecord";
+import type { CurvePoint } from "@/lib/lab/curve";
 import type { StreakDay } from "@/lib/lab/streak";
 import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
 
@@ -21,11 +22,12 @@ const curveX = (day: number) => CURVE.left + ((CURVE.right - CURVE.left) * day) 
 const curveY = (value: number) => CURVE.bottom - (CURVE.bottom - CURVE.top) * value;
 const RETENTION_TICKS = [0, 0.25, 0.5, 0.75, 1];
 
-export function ForgettingCurve() {
+/** Recall against days since first sight, the axes the model and the measured curve share. */
+function CurveFrame({ label, children }: { readonly label: string; readonly children: ReactNode }) {
   const t = useTranslations("home.lab.record.curve");
 
   return (
-    <svg className="lab-chart" viewBox="0 0 600 250" role="img" aria-label={t("aria")}>
+    <svg className="lab-chart" viewBox="0 0 600 250" role="img" aria-label={label}>
       {RETENTION_TICKS.map((value) => (
         <g key={value}>
           <line className="lab-c-grid" x1={CURVE.left} x2={CURVE.right} y1={curveY(value)} y2={curveY(value)} />
@@ -42,6 +44,16 @@ export function ForgettingCurve() {
           </text>
         </g>
       ))}
+      {children}
+    </svg>
+  );
+}
+
+export function ForgettingCurve() {
+  const t = useTranslations("home.lab.record.curve");
+
+  return (
+    <CurveFrame label={t("aria")}>
       <path className="lab-c-base" d={curvePath(retentionNoReview, curveX, curveY)} />
       <path className="lab-c-spaced" d={curvePath(retentionWithReviews, curveX, curveY)} />
       {CURVE_REVIEW_DAYS.map((day) => (
@@ -58,7 +70,30 @@ export function ForgettingCurve() {
       <text className="lab-c-spaced-label" x={curveX(9.2)} y={curveY(0.86)}>
         {t("spaced")}
       </text>
-    </svg>
+    </CurveFrame>
+  );
+}
+
+/** Measured points only, on the same axes as the model above, with each point's count under its day. */
+export function MeasuredCurve({ points, label }: { readonly points: readonly CurvePoint[]; readonly label: string }) {
+  const t = useTranslations("home.lab.record.curve");
+  const coords = points.map(({ day, accuracy }) => `${curveX(day).toFixed(1)},${curveY(accuracy / 100).toFixed(1)}`);
+
+  return (
+    <CurveFrame label={label}>
+      <polyline className="lab-c-spaced" points={coords.join(" ")} />
+      {points.map(({ day, accuracy, count }) => (
+        <g key={day}>
+          <circle className="lab-c-last" cx={curveX(day)} cy={curveY(accuracy / 100)} r={4.5} />
+          <text className="lab-c-last-label" x={curveX(day)} y={curveY(accuracy / 100) - 10} textAnchor="middle">
+            {accuracy}%
+          </text>
+          <text x={curveX(day)} y={CURVE.bottom + 36} textAnchor="middle">
+            {t("count", { count })}
+          </text>
+        </g>
+      ))}
+    </CurveFrame>
   );
 }
 

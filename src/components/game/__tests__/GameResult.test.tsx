@@ -333,8 +333,11 @@ describe("GameResult", () => {
     }
   });
 
-  it("offers no submission for the daily board, whose position every player shares", () => {
-    mockGameState = { ...baseGameState, board: { kind: "daily", day: "2026-10-09", fen: baseGameState.originalPosition } };
+  it.each([
+    ["the daily board, whose position every player shares", { kind: "daily", day: "2026-10-09", fen: baseGameState.originalPosition }],
+    ["a review, whose position the player has seen before", { kind: "review", fen: baseGameState.originalPosition, reviewOf: "first-round", firstDay: "2026-10-06", step: 1 }],
+  ] as const)("offers no submission for %s", (_, board: SetBoard) => {
+    mockGameState = { ...baseGameState, board };
 
     try {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);

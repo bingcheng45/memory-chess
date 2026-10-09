@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 import { act, fireEvent, render, screen, waitFor } from "@/test-utils/intl";
 import { openDaily, type DailyStart } from "@/lib/lab/dailyBoard";
+import { buildRoundRecord } from "@/lib/lab/record";
+import { readReviewOpened } from "@/lib/lab/review";
+import { openReview, type ReviewStart } from "@/lib/lab/reviewBoard";
 import GamePage from "@/app/[locale]/game/page";
 import { fakeLayout } from "@/test-utils/layout";
 
@@ -30,6 +33,7 @@ jest.mock("@/lib/store/gameStore", () => {
 });
 
 jest.mock("@/lib/lab/dailyBoard", () => ({ ...jest.requireActual("@/lib/lab/dailyBoard"), openDaily: jest.fn() }));
+jest.mock("@/lib/lab/reviewBoard", () => ({ ...jest.requireActual("@/lib/lab/reviewBoard"), openReview: jest.fn() }));
 
 jest.mock("@/lib/utils/soundEffects", () => ({
   playSound: jest.fn(),
@@ -61,6 +65,7 @@ beforeEach(() => {
   mockStartGame.mockClear();
   mockResetGame.mockClear();
   jest.mocked(openDaily).mockReset();
+  jest.mocked(openReview).mockReset();
 });
 
 afterEach(() => {
@@ -187,6 +192,53 @@ describe("GamePage daily board link", () => {
   });
 });
 
+describe("GamePage review link", () => {
+  const BOARD = { kind: "review", fen: "4k3/8/8/3q4/8/5N2/8/4K3 w - - 0 1", reviewOf: "first-round", firstDay: "2026-10-06", step: 1 } as const;
+  const opens = (review: ReviewStart) => jest.mocked(openReview).mockResolvedValue(review);
+
+  it("replays the board due next at the setting it was first played at, whatever the link says", async () => {
+    opens({ kind: "play", pieceCount: 4, memorizeTime: 10, board: BOARD });
+    window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=review");
+
+    render(<GamePage />);
+
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(4, 10, "review", BOARD));
+    expect(window.location.search).toBe("");
+  });
+
+  it("says nothing is due in the form's place when the queue emptied since the link was drawn, until the player chooses a round", async () => {
+    opens({ kind: "none" });
+    window.history.pushState({}, "", "/game?pieceCount=4&memorizeTime=10&source=review");
+
+    render(<GamePage />);
+
+    expect(await screen.findByText("No board is due for review on this device right now.")).toBeInTheDocument();
+    expect(document.querySelector("[data-game-config]")).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "Play another round" }));
+    expect(document.querySelector("[data-game-config]")).not.toBeNull();
+    expect(mockStartGame).not.toHaveBeenCalled();
+  });
+
+  it("says today's reviews are done in the form's place once the daily limit is reached", async () => {
+    opens({ kind: "capped" });
+    window.history.pushState({}, "", "/game?pieceCount=4&memorizeTime=10&source=review");
+
+    render(<GamePage />);
+
+    expect(await screen.findByText("Today's 5 reviews are done on this device.")).toBeInTheDocument();
+    expect(mockStartGame).not.toHaveBeenCalled();
+  });
+
+  it("plays an ordinary round from the link in a language without the lab record's copy", () => {
+    window.history.pushState({}, "", "/de/game?pieceCount=4&memorizeTime=10&source=review");
+
+    render(<GamePage />, { locale: "de" });
+
+    expect(mockStartGame).toHaveBeenCalledWith(4, 10, "link");
+    expect(openReview).not.toHaveBeenCalled();
+  });
+});
+
 describe("GamePage URL-driven start under StrictMode", () => {
   it("starts the round after the remount's reset and clears the address", () => {
     window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10");
@@ -214,6 +266,44 @@ describe("GamePage URL-driven start under StrictMode", () => {
     );
     expect(screen.queryByText("You have already opened today's board. One try per day on this device.")).toBeNull();
     expect(window.localStorage.getItem("memory-chess-lab-daily-opened")).toBe("2026-10-09");
+  });
+
+  it("plays the due review on the first try and marks its step opened once", async () => {
+    const { reviewStart } = jest.requireActual<typeof import("@/lib/lab/reviewBoard")>("@/lib/lab/reviewBoard");
+    const missed = buildRoundRecord(
+      {
+        id: "first-round",
+        source: "game",
+        endedAt: new Date(2026, 9, 8, 12).getTime(),
+        localDay: "2026-10-08",
+        pieceCount: 4,
+        memorizeSeconds: 10,
+        targetFen: "4k3/8/8/3q4/8/5N2/8/4K3",
+        placedFen: "4k3/8/8/8/8/8/8/4K3",
+        memorizeMs: 10000,
+        solveMs: 9000,
+      },
+      { startSource: "home_quick" },
+    );
+    jest.mocked(openReview).mockImplementation(async (at) => reviewStart([missed], at, readReviewOpened()));
+    jest.spyOn(Date, "now").mockReturnValue(new Date(2026, 9, 9, 12).getTime());
+    window.localStorage.removeItem("memory-chess-lab-review-opened");
+    window.history.pushState({}, "", "/game?pieceCount=4&memorizeTime=10&source=review");
+
+    render(<GamePage />, { reactStrictMode: true });
+
+    await waitFor(() =>
+      expect(mockStartGame).toHaveBeenCalledWith(4, 10, "review", {
+        kind: "review",
+        fen: "4k3/8/8/3q4/8/5N2/8/4K3 w - - 0 1",
+        reviewOf: "first-round",
+        firstDay: "2026-10-08",
+        step: 0,
+      }),
+    );
+    expect(mockStartGame).toHaveBeenCalledTimes(1);
+    expect(screen.queryByText("No board is due for review on this device right now.")).toBeNull();
+    expect(window.localStorage.getItem("memory-chess-lab-review-opened")).toBe('[{"reviewOf":"first-round","step":0,"day":"2026-10-09"}]');
   });
 });
 

@@ -198,7 +198,7 @@ function parseFileSummary(raw: unknown, rounds: readonly RoundRecord[], now: num
     (summary.evictedThrough === null || summary.evictedThrough <= now + DAY_MS);
   if (!valid) return null;
   return {
-    v: 3,
+    v: 4,
     rounds: summary.rounds,
     days: [...summary.days],
     bests: Object.fromEntries(

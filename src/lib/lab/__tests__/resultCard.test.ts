@@ -3,7 +3,7 @@ import type { Insight } from "@/lib/lab/insights";
 import type { RoundRecord } from "@/lib/lab/record";
 import { resultCardFor, summaryCounts, type ResultCardInput } from "@/lib/lab/resultCard";
 import { summarize } from "@/lib/lab/summary";
-import { round } from "./fixtures";
+import { reviewedBoard, round } from "./fixtures";
 
 const TODAY = "2026-10-07";
 
@@ -191,5 +191,34 @@ describe("summaryCounts", () => {
     const now = played("b", { accuracy: 80 });
 
     expect(summaryCounts(summarize([other]), now)).toBe(false);
+  });
+});
+
+describe("a result card beside review rounds", () => {
+  it("names a new best against the fresh rounds alone, with the best it replaced", () => {
+    const a = played("a", { accuracy: 85, day: 5 });
+    const card = cardAfter([a, reviewedBoard("review", "2026-10-06", a, 1), played("c", { accuracy: 92 })]);
+
+    expect(card?.newBest).toEqual({ setting: { pieceCount: 6, memorizeSeconds: 10 }, accuracy: 92, previousAccuracy: 85, fasterBy: null });
+  });
+
+  it("compares with the recent fresh rounds, not the reviews placed in full", () => {
+    const fresh = [played("a", { accuracy: 60, day: 3 }), played("b", { accuracy: 60, day: 4 }), played("c", { accuracy: 60, day: 5 })];
+    const reviews = [reviewedBoard("r1", "2026-10-06", fresh[0], 3), reviewedBoard("r2", "2026-10-06", fresh[1], 2)];
+
+    expect(cardAfter([...fresh, ...reviews, played("d", { accuracy: 70 })])?.vsRecent).toEqual({ points: 10, rounds: 3 });
+  });
+
+  it("gives a review no comparison and no next round, since it replays a board the player has seen", () => {
+    const fresh = [played("a", { accuracy: 60, day: 5 }), played("b", { accuracy: 60, day: 6 }), played("c", { accuracy: 60, day: 7 })];
+    const card = cardAfter([...fresh, reviewedBoard("review", TODAY, fresh[0], 2)]);
+
+    expect(card).toEqual({
+      newBest: null,
+      vsRecent: null,
+      spanChange: null,
+      streak: { current: 3, graceUsed: false, daysThisWeek: 3, goal: 5 },
+      next: null,
+    });
   });
 });

@@ -25,12 +25,13 @@ import {
   type SpanValue,
   type SpeedValue,
 } from "./progress";
+import { computeCurve, CURVE_THRESHOLDS, type CurveValue } from "./curve";
 import { computeGoal, GOAL_THRESHOLDS, type GoalValue } from "./goals";
 import { computeInsights, INSIGHTS_THRESHOLDS, type InsightsValue } from "./insights";
 import { computeNotebook, NOTEBOOK_THRESHOLDS, type NotebookValue } from "./notebook";
 import { computePlans, PLANS_THRESHOLDS, type PlanProgress } from "./plans";
 import { LAB_THRESHOLDS, type Need } from "./readiness";
-import { LAB_SOURCES, PIECE_LETTERS, settingKey, type LabSource, type RoundRecord } from "./record";
+import { isFreshReading, LAB_SOURCES, PIECE_LETTERS, settingKey, type LabSource, type RoundRecord } from "./record";
 import { sessionRuns } from "./sessions";
 import { streakOf, type StreakValue } from "./streak";
 import type { PersonalBest } from "./summary";
@@ -43,6 +44,8 @@ export interface MetricDef<TValue> {
    * other than the king, missMap's with the thinnest file or rank. Single cells carry their own `ready`.
    */
   readonly thresholds: Need;
+  /** Every metric but these reads fresh rounds only: a review replays a board the player has seen, so it would flatter a reading. */
+  readonly readsReviews?: true;
   /** `read` returns another metric's result for the same input; deriveLab shares one so each metric is computed once. */
   compute(input: LabInput, read?: ReadMetric): MetricResult<TValue>;
 }
@@ -231,6 +234,7 @@ interface LabValues {
   readonly notebook: NotebookValue;
   readonly plans: PlanProgress;
   readonly goal: GoalValue;
+  readonly curve: CurveValue;
 }
 
 export type MetricId = keyof LabValues;
@@ -272,6 +276,7 @@ export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & 
     id: "sessions",
     question: "When did you sit down to play, and for how many rounds?",
     thresholds: SESSIONS_THRESHOLDS,
+    readsReviews: true,
     compute: computeSessions,
   },
   span: {
@@ -302,6 +307,7 @@ export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & 
     id: "notebook",
     question: "What notable thing happened in your record, and when?",
     thresholds: NOTEBOOK_THRESHOLDS,
+    readsReviews: true,
     compute: (input, read = readerFor(input)) => computeNotebook(input, read("span"), read("goal")),
   },
   plans: {
@@ -316,14 +322,26 @@ export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & 
     thresholds: GOAL_THRESHOLDS,
     compute: computeGoal,
   },
+  curve: {
+    id: "curve",
+    question: "How much of a board do you still recall 1, 3, 7 and 14 days after first seeing it?",
+    thresholds: CURVE_THRESHOLDS,
+    readsReviews: true,
+    compute: computeCurve,
+  },
 };
 
 const METRIC_IDS = Object.keys(LAB_METRICS) as MetricId[];
 
 function readerFor(input: LabInput): ReadMetric {
   const results = new Map<MetricId, unknown>();
+  let fresh: LabInput | undefined;
   const read: ReadMetric = (id) => {
-    if (!results.has(id)) results.set(id, LAB_METRICS[id].compute(input, read));
+    const metric: MetricDef<unknown> = LAB_METRICS[id];
+    if (!results.has(id)) {
+      const metricInput = metric.readsReviews ? input : (fresh ??= { ...input, records: input.records.filter(isFreshReading) });
+      results.set(id, metric.compute(metricInput, read));
+    }
     return results.get(id) as LabResults[typeof id];
   };
   return read;

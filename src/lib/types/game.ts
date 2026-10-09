@@ -2,13 +2,23 @@ import { PieceSymbol, Square } from 'chess.js';
 import type { RoundSource } from '@/lib/analytics/events';
 import type { PlacementLog } from '@/lib/lab/placements';
 
-/** A round on a set position instead of a random one: today's shared daily board. */
-export interface SetBoard {
-  readonly kind: 'daily';
-  /** The UTC day the board belongs to. */
-  readonly day: string;
-  readonly fen: string;
-}
+/** A round on a set position instead of a random one: today's shared daily board, or a board from the lab record come back for review. */
+export type SetBoard =
+  | {
+      readonly kind: 'daily';
+      /** The UTC day the board belongs to. */
+      readonly day: string;
+      readonly fen: string;
+    }
+  | {
+      readonly kind: 'review';
+      readonly fen: string;
+      /** The round that first showed the board, and the local day it ended, from which the review's delay is counted. */
+      readonly reviewOf: string;
+      readonly firstDay: string;
+      /** The review step this round plays, an index into the review schedule. */
+      readonly step: number;
+    };
 
 export interface GameState {
   // Game status

@@ -4,7 +4,7 @@ import { withoutPlacements } from "@/lib/lab/record";
 import { createLabStore, PERSIST_AFTER_ROUNDS, PLACEMENT_KEEP, ROUND_CAP, type LabStoreDeps } from "@/lib/lab/storage";
 import { summarize } from "@/lib/lab/summary";
 import { buildExport, parseImport } from "@/lib/lab/transfer";
-import { round, roundV2, TARGET } from "./fixtures";
+import { reviewedBoard, round, roundV2, seenBoard, TARGET } from "./fixtures";
 
 const NOW = Date.UTC(2026, 9, 8);
 const MISSED_QUEEN = "4k3/8/8/8/8/5N2/8/4K3";
@@ -143,7 +143,7 @@ describe("lab store", () => {
 
     const summary = await store.readSummary();
 
-    expect(summary).toMatchObject({ v: 3, rounds: 2 });
+    expect(summary).toMatchObject({ v: 4, rounds: 2 });
     expect(Object.keys(summary.bests)).toEqual(["game:4x10", "calibration:4x10"]);
   });
 
@@ -158,8 +158,8 @@ describe("lab store", () => {
     const summary = await store.readSummary();
 
     expect([colorShown, colorMissed]).toEqual([{ w: 2, b: 2 }, { w: 0, b: 1 }]);
-    expect(summary).toMatchObject({ v: 3, rounds: 2, colorShown: { w: 2, b: 2 }, colorMissed: { w: 0, b: 1 } });
-    expect(JSON.parse(storage.getItem("memory-chess-lab-summary") as string)).toMatchObject({ v: 3, rounds: 2 });
+    expect(summary).toMatchObject({ v: 4, rounds: 2, colorShown: { w: 2, b: 2 }, colorMissed: { w: 0, b: 1 } });
+    expect(JSON.parse(storage.getItem("memory-chess-lab-summary") as string)).toMatchObject({ v: 4, rounds: 2 });
   });
 
   it("imports a file whose summary is version 2 by its rounds, and counts the colours from them", async () => {
@@ -171,7 +171,30 @@ describe("lab store", () => {
 
     expect(parseImport(file, NOW)).toMatchObject({ ok: true, rejected: 0, summary: "dropped" });
     expect(await importFile(store, file)).toBe(2);
-    expect(await store.readSummary()).toMatchObject({ v: 3, rounds: 2, colorShown: { w: 2, b: 2 }, colorMissed: { w: 0, b: 1 } });
+    expect(await store.readSummary()).toMatchObject({ v: 4, rounds: 2, colorShown: { w: 2, b: 2 }, colorMissed: { w: 0, b: 1 } });
+  });
+
+  it("rebuilds a version 3 summary, which counted a review's pieces, from the log, where a review adds only the round", async () => {
+    const storage = memoryStorage();
+    const store = createLabStore(deps({ localStorage: storage }));
+    const missed = seenBoard("first", "2026-10-06", TARGET, MISSED_QUEEN);
+    await store.addRound(missed);
+    await store.addRound(reviewedBoard("review", "2026-10-07", missed, 1));
+    const stored = JSON.parse(storage.getItem("memory-chess-lab-summary") as string);
+    storage.setItem("memory-chess-lab-summary", JSON.stringify({ ...stored, v: 3, typeShown: { k: 4, q: 2, n: 2 } }));
+
+    expect(await store.readSummary()).toMatchObject({ v: 4, rounds: 2, typeShown: { k: 2, q: 1, n: 1 }, typeMissed: { q: 1 } });
+  });
+
+  it("imports a file whose summary is version 3 by its rounds", async () => {
+    const missed = seenBoard("first", "2026-10-06", TARGET, MISSED_QUEEN);
+    const rounds = [missed, reviewedBoard("review", "2026-10-07", missed, 1)];
+    const file = JSON.stringify(buildExport(rounds, NOW, { ...summarize(rounds), v: 3 } as never));
+    const store = createLabStore(deps());
+
+    expect(parseImport(file, NOW)).toMatchObject({ ok: true, rejected: 0, summary: "dropped" });
+    expect(await importFile(store, file)).toBe(2);
+    expect(await store.readSummary()).toMatchObject({ v: 4, rounds: 2, typeShown: { k: 2, q: 1, n: 1 } });
   });
 
   it(`drops the oldest rounds past ${ROUND_CAP}`, async () => {

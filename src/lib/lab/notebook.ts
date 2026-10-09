@@ -4,7 +4,7 @@ import type { GoalValue } from "./goals";
 import { ladderClimbs } from "./plans";
 import type { SpanStep, SpanValue } from "./progress";
 import { daysBetween } from "./readiness";
-import { settingKey, type RoundRecord } from "./record";
+import { isFreshReading, settingKey, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
 import { runsByDay } from "./streak";
 import { beats, MAX_DAYS, type LabSummary, type PersonalBest } from "./summary";
@@ -36,7 +36,9 @@ const BEST_ACCURACY_GAIN = 1;
 const BEST_TIME_GAIN_MS = 500;
 
 interface History {
-  /** Oldest first. */
+  /** Every round in the log, reviews included, oldest first: what the round counts and the streaks are about. */
+  readonly played: readonly RoundRecord[];
+  /** The fresh rounds of `played`, which the firsts, bests and span read. */
   readonly rounds: readonly RoundRecord[];
   readonly summary: LabSummary;
   /** Rounds the summary counts that the log does not hold. */
@@ -124,8 +126,8 @@ function spanSteps({ rounds, spanHistory }: History): Draft[] {
  * A milestone is written once per run, named by its first day, on the day that run reaches it. A new run can start
  * below the count of the run before it, so comparing with the previous day's count would skip its milestones.
  */
-function streakMilestones({ rounds, summary }: History): Draft[] {
-  const firstOnDay = new Map(firstsBy(rounds, ({ localDay }) => localDay).map((record) => [record.localDay, record]));
+function streakMilestones({ played, summary }: History): Draft[] {
+  const firstOnDay = new Map(firstsBy(played, ({ localDay }) => localDay).map((record) => [record.localDay, record]));
   const written = new Set<string>();
   return runsByDay(summary.days).flatMap(({ start, played, forgivenDays }, index) => {
     const key = `${start} ${played}`;
@@ -143,8 +145,8 @@ const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
   },
   rounds: {
     ready: hasRoundCount,
-    drafts: ({ rounds, before }) =>
-      rounds.flatMap((record, index) => {
+    drafts: ({ played, before }) =>
+      played.flatMap((record, index) => {
         const count = (before ?? 0) + index + 1;
         return ROUND_MILESTONES.includes(count) ? [{ record, params: { count } }] : [];
       }),
@@ -177,12 +179,13 @@ const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
 };
 
 function historyOf({ records, summary, plan = null }: LabInput, span: MetricResult<SpanValue>, goal: MetricResult<GoalValue>): History {
-  const rounds = byEndedAt(records);
-  const missing = Math.max(0, summary.rounds - rounds.length);
+  const played = byEndedAt(records);
+  const missing = Math.max(0, summary.rounds - played.length);
   const { evictedThrough } = summary;
-  const evicted = evictedThrough !== null && (rounds[0]?.endedAt ?? Infinity) > evictedThrough;
+  const evicted = evictedThrough !== null && (played[0]?.endedAt ?? Infinity) > evictedThrough;
   return {
-    rounds,
+    played,
+    rounds: played.filter(isFreshReading),
     summary,
     missing,
     before: missing === 0 ? 0 : evicted ? missing : null,
@@ -194,8 +197,8 @@ function historyOf({ records, summary, plan = null }: LabInput, span: MetricResu
 }
 
 function entriesOf(history: History): NotebookEntry[] {
-  const { rounds, summary, allDays } = history;
-  const firstDay = summary.days[0] ?? rounds[0]?.localDay;
+  const { played, summary, allDays } = history;
+  const firstDay = summary.days[0] ?? played[0]?.localDay;
   return NOTEBOOK_KINDS.flatMap((kind) => {
     const source = SOURCES[kind];
     if (!source.ready(history)) return [];
@@ -214,7 +217,7 @@ export function computeNotebook(input: LabInput, span: MetricResult<SpanValue>, 
   const readiness = readinessFor(input, { sampleSize: rounds, have: { rounds }, thresholds: NOTEBOOK_THRESHOLDS });
   return measured(readiness, () => {
     const history = historyOf(input, span, goal);
-    const oldest = history.rounds[0];
+    const oldest = history.played[0];
     return {
       entries: entriesOf(history),
       older: history.missing === 0 ? null : { before: history.before !== null && oldest ? oldest.endedAt : null },

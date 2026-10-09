@@ -68,7 +68,8 @@ describe("LabRecordSection", () => {
       ),
     ).toBeInTheDocument();
     expect(within(board).getByRole("link", { name: "Open leaderboard →" })).toHaveAttribute("href", "/leaderboard");
-    expect(within(board).getByText(/Filter by country/)).toHaveTextContent("Filter by country Proposed");
+    expect(within(board).getByText("Submit a score from the result screen, then check where it stands, worldwide or in your country.")).toBeInTheDocument();
+    expect(within(board).queryByRole("button", { name: "Check my standing" })).toBeNull();
   });
 
   it("names the streak panel for what it counts, in the sample and the real record", () => {

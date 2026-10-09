@@ -98,14 +98,14 @@
   --lab-h-unlock: 224px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
   --lab-h-heat: 464px; --lab-h-streak: 616px; --lab-h-bests: 504px; --lab-h-types: 448px; --lab-h-tools: 208px;
   --lab-h-insights: 344px; --lab-h-notebook: 408px; --lab-h-plans: 496px; --lab-h-goal: 304px; --lab-h-daily: 336px;
-  --lab-h-curve: 632px; --lab-heat-w: 260px;
+  --lab-h-curve: 632px; --lab-h-board: 520px; --lab-heat-w: 260px;
 }
 @media (max-width: 1000px) {
   .lab {
     --lab-h-unlock: 312px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 424px; --lab-h-speed: 512px;
     --lab-h-heat: 528px; --lab-h-streak: 680px; --lab-h-bests: 920px; --lab-h-types: 528px; --lab-h-tools: 512px;
     --lab-h-insights: 424px; --lab-h-notebook: 448px; --lab-h-plans: 968px; --lab-h-goal: 328px; --lab-h-daily: 360px;
-    --lab-h-curve: 608px;
+    --lab-h-curve: 608px; --lab-h-board: 520px;
   }
 }
 @media (max-width: 640px) {
@@ -113,7 +113,7 @@
     --lab-h-unlock: 408px; --lab-h-span: 544px; --lab-h-held: 504px; --lab-h-spark: 456px; --lab-h-speed: 544px;
     --lab-h-heat: 528px; --lab-h-streak: 624px; --lab-h-bests: 592px; --lab-h-types: 528px; --lab-h-tools: 376px;
     --lab-h-insights: 600px; --lab-h-notebook: 648px; --lab-h-plans: 1300px; --lab-h-goal: 464px; --lab-h-daily: 504px;
-    --lab-h-curve: 648px;
+    --lab-h-curve: 648px; --lab-h-board: 560px;
   }
 }
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
@@ -138,6 +138,7 @@
 .lab-p-goal { min-height: var(--lab-h-goal); }
 .lab-p-daily { min-height: var(--lab-h-daily); }
 .lab-p-curve { min-height: var(--lab-h-curve); }
+.lab-p-board { min-height: var(--lab-h-board); }
 .lab-tools-slot { display: flow-root; min-height: var(--lab-h-tools); }
 .lab-welcome { margin: 0 0 8px; font-size: 16px; line-height: 1.45; color: var(--lab-ink); }
 .lab-unlock { min-height: var(--lab-h-unlock); margin-bottom: 16px; background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 16px 22px; }
@@ -228,6 +229,10 @@
 .lab-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
 .lab-chips span { font: 500 12px/1.3 var(--lab-mono); border: 1px solid var(--lab-line-2); border-radius: 999px; padding: 5px 9px; color: var(--lab-ink-2); }
 .lab-chips span:first-child { background: var(--lab-ink); color: #fff; border-color: var(--lab-ink); }
+.lab-board-choice { margin-top: 12px; }
+.lab-board-check { margin-top: 14px; padding: 10px 16px; font-size: 15px; }
+/* Five lines hold the longest answer at 320px, so an answer arriving never moves the link under it. */
+.lab-board-status[data-reserve] { margin-top: 10px; min-height: 7.75em; min-height: 5lh; }
 .lab-empty { margin-top: 14px; padding: 14px; border: 1px dashed var(--lab-line-2); border-radius: var(--lab-radius-s); }
 .lab-heat i[data-thin] { background: var(--lab-sq-light); }
 .lab-heat-lines { margin-top: 14px; }

@@ -21,6 +21,7 @@ const BOXES = {
   goal: ".lab-p-goal",
   daily: ".lab-p-daily",
   curve: ".lab-p-curve",
+  board: ".lab-p-board",
   tools: ".lab-tools-slot",
 } as const;
 type Box = keyof typeof BOXES;

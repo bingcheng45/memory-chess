@@ -26,7 +26,7 @@ export function roundSourceFrom(value: string | null): RoundSource {
   return ROUND_SOURCES.find((source) => source === value) ?? "link";
 }
 
-/** Lab parts with a link or a control: the unlock strip, each §06 panel that can go stale, the insights a finding links from, the plans and goal, the daily board, the review queue on the forgetting curve, and the card on the result screen. */
+/** Lab parts with a link or a control: the unlock strip, each §06 panel that can go stale, the insights a finding links from, the plans and goal, the daily board, the review queue on the forgetting curve, the leaderboard standing check, and the card on the result screen. */
 export type LabPanel =
   | "unlock"
   | "span"
@@ -42,10 +42,11 @@ export type LabPanel =
   | "goal"
   | "daily"
   | "curve"
+  | "board"
   | "resultCard";
 
-/** What the player did: follow a link, or start, stop or finish a plan, or set or clear a goal. Never which plan or goal. */
-export type LabPanelAction = "play" | "guide" | "next" | "start" | "stop" | "finish" | "setGoal" | "clearGoal";
+/** What the player did: follow a link, start, stop or finish a plan, set or clear a goal, or check a standing. Never which plan or goal, and never an entry id or rank. */
+export type LabPanelAction = "play" | "guide" | "next" | "start" | "stop" | "finish" | "setGoal" | "clearGoal" | "check";
 
 /**
  * The GA4 event contract. Round events carry the setting and the score, and

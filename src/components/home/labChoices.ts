@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { parsePlan, parseTarget, PLAN_KEY, TARGET_KEY, type StoredPlan, type StoredTarget } from "@/lib/lab/choices";
+import { ENTRIES_KEY, parseEntries, type StoredEntries } from "@/lib/lab/entries";
 
 interface ChoiceStore<T> {
   useValue(): T | null;
@@ -67,3 +68,4 @@ export function choiceStore<T>(key: string, parse: (text: string | null) => T | 
 
 export const planChoice = choiceStore<StoredPlan>(PLAN_KEY, parsePlan);
 export const targetChoice = choiceStore<StoredTarget>(TARGET_KEY, parseTarget);
+export const entriesChoice = choiceStore<StoredEntries>(ENTRIES_KEY, parseEntries);

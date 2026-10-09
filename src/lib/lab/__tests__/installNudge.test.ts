@@ -1,6 +1,6 @@
 import { INSTALL_NUDGE_KEY, parseNudgeSeen, showsInstallNudge } from "@/lib/lab/installNudge";
 
-const returning = { days: 2, installed: false, seenAt: null, seenHere: false };
+const returning = { days: 2, installed: false, belowScreen: true, seenAt: null, seenHere: false };
 
 describe("showsInstallNudge", () => {
   it("shows to a player who came back on a second day and has not seen it", () => {
@@ -11,6 +11,11 @@ describe("showsInstallNudge", () => {
     expect(showsInstallNudge({ ...returning, days: 1 })).toBe(false);
     expect(showsInstallNudge({ ...returning, installed: true })).toBe(false);
     expect(showsInstallNudge({ ...returning, installed: null })).toBe(false);
+  });
+
+  it("waits for a visit where its place starts below the screen, so adding it moves nothing in view", () => {
+    expect(showsInstallNudge({ ...returning, belowScreen: false })).toBe(false);
+    expect(showsInstallNudge({ ...returning, belowScreen: null })).toBe(false);
   });
 
   it("stays on screen for the visit that first showed it, and never comes back", () => {

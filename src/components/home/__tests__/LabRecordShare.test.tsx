@@ -18,8 +18,17 @@ const NUDGE = "Your record lives in this browser";
 const sightings: IntersectionObserverCallback[] = [];
 const seeEverything = () => act(() => sightings.forEach((callback) => callback([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver)));
 const show = (name: PersonaName, today?: string) => renderWithIntl(<LabRecordSection record={persona(name, today)} />);
+const SCREEN_BOTTOM = window.innerHeight;
+/** Where the note's place starts as the record loads: jsdom lays nothing out, so every box would otherwise sit at 0. */
+const placeNoteAt = (top: number) =>
+  jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(function (this: HTMLElement) {
+    return { top: this.classList.contains("lab-nudge-place") ? top : 0 } as DOMRect;
+  });
+
+afterEach(() => jest.restoreAllMocks());
 
 beforeEach(() => {
+  placeNoteAt(SCREEN_BOTTOM + 400);
   sightings.length = 0;
   window.IntersectionObserver = jest.fn((callback: IntersectionObserverCallback) => {
     sightings.push(callback);
@@ -103,6 +112,19 @@ describe("the note that the record lives in this browser", () => {
 
     show("threeDays");
     expect(screen.queryByText(NUDGE)).toBeNull();
+  });
+
+  it("waits for a later visit when its place is already on screen as the record loads", () => {
+    placeNoteAt(SCREEN_BOTTOM - 200);
+    const first = show("threeDays");
+    seeEverything();
+    expect(screen.queryByText(NUDGE)).toBeNull();
+    expect(window.localStorage.getItem(INSTALL_NUDGE_KEY)).toBeNull();
+    first.unmount();
+
+    placeNoteAt(SCREEN_BOTTOM);
+    show("threeDays");
+    expect(screen.getByText(NUDGE)).toBeInTheDocument();
   });
 
   it("is not shown in a Home Screen app, which keeps its own record", () => {

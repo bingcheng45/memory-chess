@@ -7,6 +7,7 @@ export type StandingCheck =
   | { readonly kind: "ranked"; readonly standing: Standing; readonly checkedAt: number }
   | { readonly kind: "missing"; readonly checkedAt: number }
   | { readonly kind: "limited"; readonly retryAfterSeconds: number }
+  | { readonly kind: "noCountry" }
   | { readonly kind: "offline" }
   | { readonly kind: "failed" };
 
@@ -20,6 +21,7 @@ export async function checkStanding(id: string, scope: StandingScope, now: () =>
   try {
     const response = await fetch(`${RANK_ENDPOINT}?id=${encodeURIComponent(id)}&scope=${scope}`, { cache: "no-store" });
     if (response.status === 404) return { kind: "missing", checkedAt: now() };
+    if (response.status === 400 && scope === "country") return { kind: "noCountry" };
     if (response.status === 429) return { kind: "limited", retryAfterSeconds: waitOf(response.headers.get("Retry-After")) };
     if (!response.ok) return { kind: "failed" };
     const standing = parseStanding((await response.json())?.data);

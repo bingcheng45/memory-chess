@@ -44,7 +44,7 @@ function statusOf(t: Translate, difficulty: string, { result, before }: Checked)
         country === null ? t("ranked", { rank, total, difficulty }) : t("rankedIn", { rank, total, difficulty, country: countryName(country, "en") }),
         t("checkedAt", { time: clock(result.checkedAt) }),
       ];
-      if (country === null) lines.push(t(rank <= LEADERBOARD_ROW_LIMIT ? "onBoard" : "offBoard", { limit: LEADERBOARD_ROW_LIMIT }));
+      if (country === null) lines.push(t("boardSize", { limit: LEADERBOARD_ROW_LIMIT }));
       if (before) {
         const moved = before.rank - rank;
         const time = clock(before.checkedAt);
@@ -56,6 +56,7 @@ function statusOf(t: Translate, difficulty: string, { result, before }: Checked)
       return t("missing", { difficulty, time: clock(result.checkedAt) });
     case "limited":
       return t("limited", { wait: result.retryAfterSeconds });
+    case "noCountry":
     case "offline":
     case "failed":
       return t(result.kind);
@@ -133,8 +134,8 @@ export function BoardPanel({ ready }: { ready: boolean }) {
 
   const onCheck = async (entry: StoredEntry, scope: StandingScope) => {
     setCheck({ state: "checking" });
-    trackEvent({ name: "lab_panel_action", params: { panel: "board", action: "check" } });
     const result = await checkStanding(entry.id, scope);
+    if (result.kind !== "offline") trackEvent({ name: "lab_panel_action", params: { panel: "board", action: "check" } });
     const key = `${entry.id}:${scope}`;
     const before = seen.current.get(key) ?? null;
     if (result.kind === "ranked") seen.current.set(key, { rank: result.standing.rank, checkedAt: result.checkedAt });

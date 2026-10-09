@@ -80,13 +80,19 @@ describe("the review steps opened on this device", () => {
     expect(reviewStart([missed], noonOn(2), readReviewOpened())).toEqual({ kind: "none" });
   });
 
-  it("keep only the newest 50, far more than one player's queue holds at once", () => {
-    const board = { kind: "review", fen: BOARD, firstDay: "2026-10-01", step: 0 } as const;
+  it("drop a marker older than the 28-day window at the next write, since its board has left the queue; one without a day stays", () => {
+    window.localStorage.setItem(
+      REVIEW_OPENED_KEY,
+      JSON.stringify(["legacy:0", { reviewOf: "old", step: 0, day: "2026-09-03" }, { reviewOf: "kept", step: 0, day: "2026-09-04" }]),
+    );
 
-    Array.from({ length: 52 }, (_, index) => markReviewOpened({ ...board, reviewOf: `round-${index}` }, noonOn(2)));
+    markReviewOpened({ kind: "review", fen: BOARD, reviewOf: "first-round", firstDay: "2026-10-01", step: 0 }, noonOn(2));
 
-    expect(readReviewOpened().slice(0, 2).map(({ reviewOf }) => reviewOf)).toEqual(["round-2", "round-3"]);
-    expect(readReviewOpened()).toHaveLength(50);
+    expect(readReviewOpened()).toEqual([
+      { reviewOf: "legacy", step: 0, day: null },
+      { reviewOf: "kept", step: 0, day: "2026-09-04" },
+      { reviewOf: "first-round", step: 0, day: "2026-10-02" },
+    ]);
   });
 
   it("read as none when the stored value is not a list of keys", () => {

@@ -3,7 +3,7 @@ import type { SetBoard } from "@/lib/types/game";
 import { withSideToMove } from "@/lib/utils/memorizationPosition";
 import { daysBetween } from "./readiness";
 import { localDayOf, type RoundRecord } from "./record";
-import { readReviewOpened, REVIEW_OPENED_KEY, reviewQueue, stepAfter, type OpenedReview } from "./review";
+import { readReviewOpened, REVIEW_OPENED_KEY, reviewQueue, reviewsDone, stepAfter, type OpenedReview } from "./review";
 import { labStore } from "./storage";
 
 /** Far more steps than one player's queue holds at once, so a marker is only dropped long after its board has left the queue. */
@@ -13,14 +13,16 @@ export type ReviewBoard = Extract<SetBoard, { kind: "review" }>;
 
 export type ReviewStart =
   | { readonly kind: "play"; readonly pieceCount: number; readonly memorizeTime: number; readonly board: ReviewBoard }
-  | { readonly kind: "none" };
+  | { readonly kind: "none" | "capped" };
 
 /**
  * The record keeps only a board's placement, so the side to move is set as the game's generator sets it. An imported
  * file is checked for shape, not for a legal position, so a due board the game cannot load is passed over.
  */
 export function reviewStart(records: readonly RoundRecord[], at: number, opened: readonly OpenedReview[]): ReviewStart {
-  for (const { reviewOf, firstDay, step, fen, pieceCount, memorizeSeconds } of reviewQueue(records, localDayOf(new Date(at)), opened).due) {
+  const queue = reviewQueue(records, localDayOf(new Date(at)), opened);
+  if (reviewsDone(queue)) return { kind: "capped" };
+  for (const { reviewOf, firstDay, step, fen, pieceCount, memorizeSeconds } of queue.due) {
     const playable = withSideToMove(fen);
     if (playable && validateFen(playable).ok) {
       return { kind: "play", pieceCount, memorizeTime: memorizeSeconds, board: { kind: "review", fen: playable, reviewOf, firstDay, step } };

@@ -9,7 +9,7 @@ import type { CurvePoint } from "@/lib/lab/curve";
 import type { LabResults } from "@/lib/lab/metrics";
 import { daysBetween, hasFigure, LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import type { RoundRecord } from "@/lib/lab/record";
-import { readReviewOpened, reviewQueue, type ReviewQueue } from "@/lib/lab/review";
+import { readReviewOpened, REVIEW_DAILY_CAP, reviewQueue, reviewsDone, type ReviewQueue } from "@/lib/lab/review";
 import { ForgettingCurve, MeasuredCurve } from "./LabCharts";
 import { figureOf, PanelHead, StaleNote, useTags } from "./LabRecordPanels";
 
@@ -17,14 +17,14 @@ type Translate = ReturnType<typeof useTranslations<"home.lab.record.curve">>;
 
 const trackPlay = () => trackEvent({ name: "lab_panel_action", params: { panel: "curve", action: "play" } });
 
-/** Due boards with a link to the first, else when the next comes back, else how a board gets in. */
+/** Today's next review with a link to it, else that today's reviews are done, else when the next comes back, else how a board gets in. */
 function QueueLine({ t, queue, today }: { t: Translate; queue: ReviewQueue; today: string }) {
   const [next] = queue.due;
-  if (next) {
+  if (next && !reviewsDone(queue)) {
     return (
       <>
-        <p className="lab-review-status">
-          <span className="lab-review-chip">{t("due", { count: queue.due.length, overdue: queue.overdue })}</span>
+        <p role="status" className="lab-review-status">
+          <span className="lab-review-chip">{t("due", { number: queue.doneToday + 1, cap: REVIEW_DAILY_CAP })}</span>
         </p>
         <Link className="lab-btn lab-btn-secondary lab-review-play" href={playHref(next.pieceCount, next.memorizeSeconds, "review")} onClick={trackPlay}>
           {t("play")} →
@@ -32,8 +32,12 @@ function QueueLine({ t, queue, today }: { t: Translate; queue: ReviewQueue; toda
       </>
     );
   }
-  const status = queue.next ? t("waiting", { days: daysBetween(today, queue.next), queued: queue.queued }) : t("empty");
-  return <p className="lab-review-status">{status}</p>;
+  const status = reviewsDone(queue) ? t("capped") : queue.next ? t("waiting", { days: daysBetween(today, queue.next), queued: queue.queued }) : t("empty");
+  return (
+    <p role="status" className="lab-review-status">
+      {status}
+    </p>
+  );
 }
 
 function pointLabel(t: Translate, { day, accuracy, count }: CurvePoint): string {

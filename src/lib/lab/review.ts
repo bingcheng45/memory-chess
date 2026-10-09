@@ -6,6 +6,9 @@ import { byEndedAt } from "./sessions";
 /** Days after first sight that a missed board comes back, one review step each. */
 export const REVIEW_DAYS = [1, 3, 7, 14] as const;
 
+/** Boards offered for review in one local day; the rest of the boards due wait for the next day, longest waiting first. */
+export const REVIEW_DAILY_CAP = 5;
+
 export interface ReviewItem {
   /** The round that first showed the board, which every review of it links to. */
   readonly reviewOf: string;
@@ -21,7 +24,8 @@ export interface ReviewItem {
 export interface ReviewQueue {
   /** Due today or before, the longest waiting first. */
   readonly due: readonly ReviewItem[];
-  readonly overdue: number;
+  /** Boards reviewed or opened for review today, each once, which REVIEW_DAILY_CAP limits. */
+  readonly doneToday: number;
   /** Boards in the queue, due or not. */
   readonly queued: number;
   /** The first day a board not yet due comes back; null when none is waiting. */
@@ -124,15 +128,21 @@ function itemOf(board: BoardHistory, today: string, opened: readonly OpenedRevie
 
 const byWait = (a: ReviewItem, b: ReviewItem) => a.dueDay.localeCompare(b.dueDay) || a.firstDay.localeCompare(b.firstDay) || a.reviewOf.localeCompare(b.reviewOf);
 
+function doneOn(today: string, records: readonly RoundRecord[], opened: readonly OpenedReview[]): number {
+  const reviewed = records.flatMap((record) => (record.v === 2 && record.kind === "review" && record.localDay === today ? [record.reviewOf ?? record.id] : []));
+  return new Set([...reviewed, ...opened.flatMap(({ reviewOf, day }) => (day === today ? [reviewOf] : []))]).size;
+}
+
 export function reviewQueue(records: readonly RoundRecord[], today: string, opened: readonly OpenedReview[]): ReviewQueue {
   const queued = boardHistories(records)
     .flatMap((board) => itemOf(board, today, opened) ?? [])
     .sort(byWait);
-  const due = queued.filter(({ dueDay }) => dueDay <= today);
   return {
-    due,
-    overdue: due.filter(({ dueDay }) => dueDay < today).length,
+    due: queued.filter(({ dueDay }) => dueDay <= today),
+    doneToday: doneOn(today, records, opened),
     queued: queued.length,
     next: queued.find(({ dueDay }) => dueDay > today)?.dueDay ?? null,
   };
 }
+
+export const reviewsDone = ({ doneToday }: ReviewQueue): boolean => doneToday >= REVIEW_DAILY_CAP;

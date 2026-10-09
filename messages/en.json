@@ -462,7 +462,8 @@
           "pointAfter": "after {day, plural, one {# day} other {# days}} {accuracy}% from {count, plural, one {# review} other {# reviews}}",
           "count": "n={count}",
           "measuredNote": "From {reviews, plural, one {# review} other {# reviews}} of {boards, plural, one {# board} other {# boards}}. A point needs {min} reviews after its gap.",
-          "due": "{count, plural, one {# board due for review} other {# boards due for review}}{overdue, plural, =0 {} one {, # overdue} other {, # overdue}}",
+          "due": "Review {number} of {cap} today",
+          "capped": "Today's reviews done",
           "play": "Play a review",
           "waiting": "Next review {days, plural, one {tomorrow} other {in # days}}. {queued, plural, one {# board} other {# boards}} in your queue.",
           "empty": "No boards to review yet. A board you score under 80% on comes back here the next day."
@@ -837,6 +838,8 @@
       },
       "review": {
         "none": "No board is due for review on this device right now.",
+        "capped": "Today's {cap} reviews are done on this device.",
+        "cappedNext": "Any board still due comes back tomorrow, the longest waiting first.",
         "schedule": "Boards you score under 80% on come back 1, 3, 7 and 14 days after you first see them."
       }
     }

@@ -5,6 +5,7 @@ import { computeCurve } from "@/lib/lab/curve";
 import type { RoundRecord } from "@/lib/lab/record";
 import { summarize } from "@/lib/lab/summary";
 import { reviewedBoard, seenBoard } from "@/lib/lab/__tests__/fixtures";
+import { PERSONA_TODAY, personaRounds } from "@/lib/lab/personas";
 
 jest.mock("@/i18n/navigation", () => ({
   Link: ({ href, children, className }: { href: string; children: ReactNode; className?: string }) => (
@@ -51,6 +52,13 @@ describe("the review and forgetting curve panel", () => {
 
     expect(screen.getByRole("status")).toHaveTextContent("Review 3 of 5 today");
     expect(screen.queryByText(/overdue|due for review/)).toBeNull();
+  });
+
+  it("offers a month of missed boards one review at a time, never naming the pile", () => {
+    panel(personaRounds("thirtyDays"), PERSONA_TODAY);
+
+    expect(screen.getByRole("status")).toHaveTextContent(/^Review 1 of 5 today$/);
+    expect(playLink()).not.toBeNull();
   });
 
   it("says today's reviews are done once five boards were reviewed or opened today, with no link", () => {

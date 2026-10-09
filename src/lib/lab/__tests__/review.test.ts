@@ -32,7 +32,7 @@ describe("the review queue", () => {
   it("takes a board off the queue once reviewed and schedules the next step from the day it was first seen", () => {
     const first = reviewedBoard("a1", "2026-10-02", missedA, 1);
 
-    expect(reviewQueue([missedA, first], "2026-10-02", NONE)).toEqual({ due: [], doneToday: 0, queued: 1, next: "2026-10-04" });
+    expect(reviewQueue([missedA, first], "2026-10-02", NONE)).toEqual({ due: [], doneToday: 1, queued: 1, next: "2026-10-04" });
     expect(reviewQueue([missedA, first], "2026-10-04", NONE).due.map(({ step, dueDay }) => [step, dueDay])).toEqual([[1, "2026-10-04"]]);
   });
 
@@ -41,7 +41,7 @@ describe("the review queue", () => {
     const last = reviewedBoard("a2", "2026-10-15", missedA, 14);
 
     expect(reviewQueue([missedA, late], "2026-10-06", NONE).next).toBe("2026-10-08");
-    expect(reviewQueue([missedA, late, last], "2026-10-15", NONE)).toEqual({ due: [], doneToday: 0, queued: 0, next: null });
+    expect(reviewQueue([missedA, late, last], "2026-10-15", NONE)).toEqual({ due: [], doneToday: 1, queued: 0, next: null });
   });
 
   it("counts a review played twice at one step once, so the second does not move the schedule", () => {

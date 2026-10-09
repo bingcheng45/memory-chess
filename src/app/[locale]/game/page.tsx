@@ -27,6 +27,7 @@ import { ROUND_PARAMS } from '@/lib/game/roundLink';
 import { useLocale, useTranslations } from "next-intl";
 import { hasLabCopy } from '@/lib/home/labLocales';
 import type { SetBoard } from '@/lib/types/game';
+import type { SetBoardRefusal } from '@/components/game/SetBoardNotice';
 
 const TIMER_CUE_DELAY_MS = 500;
 
@@ -38,7 +39,7 @@ const isSetBoardSource = (source: RoundSource): source is SetBoardSource => sour
 /** What a set board's link opens: its round, with the marker to write once that round starts, or a refusal. */
 type SetBoardOpen =
   | { kind: 'play'; pieceCount: number; memorizeTime: number; board: SetBoard; markOpened: () => void }
-  | { kind: 'refused' }
+  | { kind: 'refused'; reason: SetBoardRefusal }
   | null;
 
 // Each reads the lab record before the round, and is loaded only for its own link.
@@ -47,12 +48,13 @@ const OPEN_SET_BOARD: Record<SetBoardSource, () => Promise<SetBoardOpen>> = {
     import('@/lib/lab/dailyBoard').then(async ({ openDaily, markDailyOpened }) => {
       const daily = await openDaily(Date.now());
       if (!daily) return null;
-      return daily.kind === 'played' ? { kind: 'refused' } : { ...daily, markOpened: () => markDailyOpened(daily.board.day) };
+      return daily.kind === 'played' ? { kind: 'refused', reason: 'daily' } : { ...daily, markOpened: () => markDailyOpened(daily.board.day) };
     }),
   review: () =>
     import('@/lib/lab/reviewBoard').then(async ({ openReview, markReviewOpened }) => {
       const review = await openReview(Date.now());
-      return review.kind === 'none' ? { kind: 'refused' } : { ...review, markOpened: () => markReviewOpened(review.board) };
+      if (review.kind !== 'play') return { kind: 'refused', reason: review.kind === 'capped' ? 'reviewCap' : 'review' };
+      return { ...review, markOpened: () => markReviewOpened(review.board) };
     }),
 };
 
@@ -155,7 +157,7 @@ function GamePageContent() {
   // by which time the URL is cleared, so the round is kept for the second run.
   const urlRoundRef = useRef<UrlRound | null | undefined>(undefined);
   const hasLab = hasLabCopy(useLocale());
-  const [refused, setRefused] = useState<SetBoardSource | null>(null);
+  const [refused, setRefused] = useState<SetBoardRefusal | null>(null);
   // A round the player starts by hand wins over a set board still being read.
   const startedByHandRef = useRef(false);
 
@@ -175,7 +177,7 @@ function GamePageContent() {
       .then((opened) => {
         if (!live || !opened || startedByHandRef.current) return;
         if (opened.kind === 'refused') {
-          setRefused(source);
+          setRefused(opened.reason);
           return;
         }
         opened.markOpened();

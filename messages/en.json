@@ -825,6 +825,10 @@
         "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Resets in under a minute} one {Resets in # min} other {Resets in # min}}} one {Resets in # h {minutes} min} other {Resets in # h {minutes} min}}",
         "seeRecord": "Open your lab record",
         "chooseRound": "Play another round"
+      },
+      "review": {
+        "none": "No board is due for review on this device right now.",
+        "schedule": "Boards you score under 80% on come back 1, 3, 7 and 14 days after you first see them."
       }
     }
   },

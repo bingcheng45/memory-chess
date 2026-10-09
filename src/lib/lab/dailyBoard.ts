@@ -14,7 +14,7 @@ export function dailyFen(day: string): string | null {
 }
 
 export type DailyStart =
-  | { readonly kind: "play"; readonly pieceCount: number; readonly memorizeTime: number; readonly board: SetBoard }
+  | { readonly kind: "play"; readonly pieceCount: number; readonly memorizeTime: number; readonly board: Extract<SetBoard, { kind: "daily" }> }
   | { readonly kind: "played" };
 
 export function dailyStart(records: readonly RoundRecord[], at: number, openedDay: string | null): DailyStart | null {

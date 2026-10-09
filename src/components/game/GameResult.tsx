@@ -242,7 +242,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const isEligibleForLeaderboard = () => {
     // Only standard difficulties are eligible (not custom games). The board
     // hides rows with no correct piece, so such a round is not submittable.
-    // The daily board is the same position for every player, so it is not ranked.
+    // A set board is not ranked: the daily board is the same position for every player, and a review is one the player has seen.
     const difficulty = determineDifficulty(gameState.pieceCount);
     return difficulty !== "custom" && (extendedGameState.correctPlacements ?? 0) > 0 && gameState.board === undefined;
   };

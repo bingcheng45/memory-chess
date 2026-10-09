@@ -64,4 +64,22 @@ describe("recordLabRound", () => {
 
     expect(ids).toContain("round-from-the-store");
   });
+
+  it("saves a set board's facts: the day of a daily board, and a review's first round and days since it", async () => {
+    const facts = { source: "game", pieceCount: 4, memorizeSeconds: 10, targetFen: TARGET, placedFen: TARGET, memorizeMs: 10000, solveMs: 7000 } as const;
+
+    await recordLabRound({ ...facts, id: "daily-round", board: { kind: "daily", day: "2026-10-08", fen: TARGET } }, new Date(2026, 9, 8, 23));
+    await recordLabRound(
+      { ...facts, id: "review-round", board: { kind: "review", fen: TARGET, reviewOf: "first-round", firstDay: "2026-10-02", step: 2 } },
+      new Date(2026, 9, 9, 0, 5),
+    );
+    const saved = ((await labStore()?.listRounds()) ?? []).filter(({ id }) => id === "daily-round" || id === "review-round");
+
+    expect(saved).toMatchObject([
+      { id: "daily-round", kind: "daily", dailyDay: "2026-10-08" },
+      { id: "review-round", kind: "review", localDay: "2026-10-09", reviewOf: "first-round", reviewDelayDays: 7 },
+    ]);
+    const boardKeys = ["dailyDay", "reviewOf", "reviewDelayDays", "step", "firstDay"];
+    expect(saved.map((record) => Object.keys(record).filter((key) => boardKeys.includes(key)).sort())).toEqual([["dailyDay"], ["reviewDelayDays", "reviewOf"]]);
+  });
 });

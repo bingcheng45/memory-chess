@@ -502,7 +502,7 @@ export const useGameStore = create<GameStore>()(
           solveMs: Math.round(completionTime * 1000),
           placements: gameState.placementLog?.placements,
           removals: gameState.placementLog?.removals,
-          ...(gameState.board && { kind: gameState.board.kind, dailyDay: gameState.board.day }),
+          board: gameState.board,
         } as const;
         void import('@/lib/lab/recordRound').then(({ recordLabRound }) => recordLabRound(facts)).catch(() => {});
       },

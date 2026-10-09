@@ -6,14 +6,21 @@ import { DailyResetsIn, useNow } from "@/components/home/DailyResetsIn";
 import { LAB_SECTIONS } from "@/components/home/SectionHeading";
 import { RESULT_LAB_LINK } from "./ResultLabSlot";
 
-/** Shown in place of a second attempt at today's board, until the player chooses a round of their own. Loaded only then. */
-export default function DailyPlayedNotice({ onChoose }: { onChoose: () => void }) {
+interface SetBoardNoticeProps {
+  /** Today's board already opened, or no board due for review. */
+  readonly reason: "daily" | "review";
+  readonly onChoose: () => void;
+}
+
+/** Shown in place of a set board the link cannot open, until the player chooses a round of their own. Loaded only then. */
+export default function SetBoardNotice({ reason, onChoose }: SetBoardNoticeProps) {
   const t = useTranslations("home.lab.daily");
+  const review = useTranslations("home.lab.review");
   const now = useNow();
   return (
     <section className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-5 text-sm sm:p-7 md:max-w-lg">
-      <p role="status" className="font-semibold text-text-primary">{t("locked")}</p>
-      <p className="mt-1 min-h-[1.25rem] text-text-secondary"><DailyResetsIn now={now} /></p>
+      <p role="status" className="font-semibold text-text-primary">{reason === "daily" ? t("locked") : review("none")}</p>
+      <p className="mt-1 min-h-[1.25rem] text-text-secondary">{reason === "daily" ? <DailyResetsIn now={now} /> : review("schedule")}</p>
       <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
         <Link className={RESULT_LAB_LINK} href={`/#${LAB_SECTIONS.record.anchor}`}>
           {t("seeRecord")} <span aria-hidden="true">→</span>

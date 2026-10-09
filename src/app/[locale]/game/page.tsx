@@ -26,10 +26,35 @@ import { ROUND_PARAMS } from '@/lib/game/roundLink';
 
 import { useLocale, useTranslations } from "next-intl";
 import { hasLabCopy } from '@/lib/home/labLocales';
+import type { SetBoard } from '@/lib/types/game';
 
 const TIMER_CUE_DELAY_MS = 500;
 
-const DailyPlayedNotice = lazy(() => import('@/components/game/DailyPlayedNotice'));
+const SetBoardNotice = lazy(() => import('@/components/game/SetBoardNotice'));
+
+type SetBoardSource = 'daily' | 'review';
+const isSetBoardSource = (source: RoundSource): source is SetBoardSource => source === 'daily' || source === 'review';
+
+/** What a set board's link opens: its round, with the marker to write once that round starts, or a refusal. */
+type SetBoardOpen =
+  | { kind: 'play'; pieceCount: number; memorizeTime: number; board: SetBoard; markOpened: () => void }
+  | { kind: 'refused' }
+  | null;
+
+// Each reads the lab record before the round, and is loaded only for its own link.
+const OPEN_SET_BOARD: Record<SetBoardSource, () => Promise<SetBoardOpen>> = {
+  daily: () =>
+    import('@/lib/lab/dailyBoard').then(async ({ openDaily, markDailyOpened }) => {
+      const daily = await openDaily(Date.now());
+      if (!daily) return null;
+      return daily.kind === 'played' ? { kind: 'refused' } : { ...daily, markOpened: () => markDailyOpened(daily.board.day) };
+    }),
+  review: () =>
+    import('@/lib/lab/reviewBoard').then(async ({ openReview, markReviewOpened }) => {
+      const review = await openReview(Date.now());
+      return review.kind === 'none' ? { kind: 'refused' } : { ...review, markOpened: () => markReviewOpened(review.board) };
+    }),
+};
 
 /**
  * Pins the page while a round is memorised or placed. Pinning the scrolling
@@ -60,7 +85,7 @@ type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource 
 
 // The query is read off the live location rather than via useSearchParams,
 // which would bail /game out of static rendering and serve an empty page.
-function takeUrlRound(hasDaily: boolean): UrlRound | null {
+function takeUrlRound(hasLab: boolean): UrlRound | null {
   const params = new URLSearchParams(window.location.search);
   const pieceCountParam = params.get(ROUND_PARAMS.pieceCount);
   const memorizeTimeParam = params.get(ROUND_PARAMS.memorizeTime);
@@ -68,8 +93,8 @@ function takeUrlRound(hasDaily: boolean): UrlRound | null {
 
   // A refresh then opens the configuration screen instead of restarting the round.
   const asked = roundSourceFrom(params.get(ROUND_PARAMS.source));
-  // The daily board's copy is English only, so elsewhere its link plays an ordinary round.
-  const source = asked === 'daily' && !hasDaily ? 'link' : asked;
+  // The lab record's copy is English only, so elsewhere a daily or review link plays an ordinary round.
+  const source = isSetBoardSource(asked) && !hasLab ? 'link' : asked;
   Object.values(ROUND_PARAMS).forEach((name) => params.delete(name));
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
@@ -129,38 +154,38 @@ function GamePageContent() {
   // StrictMode re-runs this effect after the cleanup above has reset the store,
   // by which time the URL is cleared, so the round is kept for the second run.
   const urlRoundRef = useRef<UrlRound | null | undefined>(undefined);
-  const hasDaily = hasLabCopy(useLocale());
-  const [dailyPlayed, setDailyPlayed] = useState(false);
-  // A round the player starts by hand wins over a daily board still being read.
+  const hasLab = hasLabCopy(useLocale());
+  const [refused, setRefused] = useState<SetBoardSource | null>(null);
+  // A round the player starts by hand wins over a set board still being read.
   const startedByHandRef = useRef(false);
 
   useEffect(() => {
-    if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound(hasDaily);
+    if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound(hasLab);
     const round = urlRoundRef.current;
     if (!round) return;
-    if (round.source !== 'daily') {
-      startGame(round.pieceCount, round.memorizeTime, round.source);
+    const { source } = round;
+    if (!isSetBoardSource(source)) {
+      startGame(round.pieceCount, round.memorizeTime, source);
       return;
     }
 
-    // Read from the record before the round, so a second attempt today is refused; loaded only for a daily link.
+    // StrictMode runs this twice; only the live run marks the board opened, or the second read would refuse it.
     let live = true;
-    import('@/lib/lab/dailyBoard')
-      .then(async ({ openDaily, markDailyOpened }) => {
-        const daily = await openDaily(Date.now());
-        if (!live || !daily || startedByHandRef.current) return;
-        if (daily.kind === 'played') {
-          setDailyPlayed(true);
+    OPEN_SET_BOARD[source]()
+      .then((opened) => {
+        if (!live || !opened || startedByHandRef.current) return;
+        if (opened.kind === 'refused') {
+          setRefused(source);
           return;
         }
-        markDailyOpened(daily.board.day);
-        startGame(daily.pieceCount, daily.memorizeTime, 'daily', daily.board);
+        opened.markOpened();
+        startGame(opened.pieceCount, opened.memorizeTime, source, opened.board);
       })
-      .catch((error) => console.error('Could not open the daily board', error));
+      .catch((error) => console.error(`Could not open the ${source} board`, error));
     return () => {
       live = false;
     };
-  }, [startGame, hasDaily]);
+  }, [startGame, hasLab]);
   
   useEffect(() => {
     if (gamePhase === GamePhase.MEMORIZATION) {
@@ -254,7 +279,7 @@ function GamePageContent() {
   // Handle trying again with the same configuration
   const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
     startedByHandRef.current = true;
-    setDailyPlayed(false);
+    setRefused(null);
     stopTimerSound();
     playSound('click');
     resetGame();
@@ -313,10 +338,10 @@ function GamePageContent() {
         return (
           <div className={containerClass}>
             {/* In the configuration form's place, so nothing above or beside it moves when it appears. */}
-            {dailyPlayed ? (
+            {refused ? (
               <ErrorBoundary fallback={<GameConfig onStart={handleStartGame} />}>
                 <Suspense fallback={<GameConfig onStart={handleStartGame} />}>
-                  <DailyPlayedNotice onChoose={() => setDailyPlayed(false)} />
+                  <SetBoardNotice reason={refused} onChoose={() => setRefused(null)} />
                 </Suspense>
               </ErrorBoundary>
             ) : (

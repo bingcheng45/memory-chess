@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import { useLabResults } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
 import { PANEL_ROWS, type CustomRow, type PanelId, type PanelRow } from "@/lib/lab/panels";
+import { INSTALL_NUDGE_DAYS } from "@/lib/lab/installNudge";
+import { readingCardOf } from "@/lib/lab/readingCard";
 import { daysBetween } from "@/lib/lab/readiness";
 import { welcomeBack } from "@/lib/lab/welcome";
 import { BestsPanel, MissPanel, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
@@ -14,6 +16,7 @@ import { InsightsPanel, NotebookPanel } from "./LabInsightPanels";
 import { GoalPanel, PlansPanel } from "./LabProgramPanels";
 import { HeldPanel, SpanPanel, SpeedPanel } from "./LabReadingPanels";
 import { ReviewPanel } from "./LabReviewPanel";
+import { LabInstallNudge } from "./LabInstallNudge";
 import { LabRecordTools } from "./LabRecordTools";
 import { LabUnlockStrip } from "./LabUnlockStrip";
 import { planChoice, targetChoice } from "./labChoices";
@@ -57,7 +60,8 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
   const rows: Record<CustomRow, ReactNode> = {
     tools: (
       <div className="lab-tools-slot" data-row="tools" key="tools">
-        <LabRecordTools record={record} />
+        <LabRecordTools record={record} card={ready ? readingCardOf(lab) : null} />
+        {ready && summary.days.length >= INSTALL_NUDGE_DAYS && <LabInstallNudge days={summary.days.length} />}
       </div>
     ),
   };

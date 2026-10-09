@@ -780,7 +780,24 @@
           "safari": "On Safari, a private tab does not keep this record after it closes, and Safari erases a site's stored data after about 7 days without a visit. Export a copy to keep it.",
           "unavailable": "Not saved in private windows. This browser window is not keeping your rounds.",
           "backup": "Back up across devices (coming soon)",
-          "backupNoted": "Cross-device backup is not built yet. Thanks, your interest is counted."
+          "backupNoted": "Cross-device backup is not built yet. Thanks, your interest is counted.",
+          "card": {
+            "open": "Share my reading",
+            "title": "My Memory Chess reading",
+            "span": "Memory span: {pieceCount, plural, one {# piece} other {# pieces}}, {accuracy}% or better in {count, plural, one {# round} other {# rounds}}",
+            "held": "Pieces held: recent average {average}, from {count, plural, one {# round} other {# rounds}}",
+            "speed": "Speed: recent average {average} per piece {source, select, calibration {in practice} other {in games}} at {pieceCount} pieces, {studyTime}, from {count, plural, one {# round} other {# rounds}}",
+            "site": "thememorychess.com",
+            "copy": "Copy my reading",
+            "copied": "Copied. Paste it anywhere.",
+            "copyFailed": "Copy did not work here. The reading is selected above, so copy it yourself."
+          },
+          "nudge": {
+            "title": "Your record lives in this browser",
+            "body": "Clearing browser data deletes it. Bookmark this site so you come back to the same browser, and use Download my lab record above to keep a copy.",
+            "safari": "On iPhone and iPad, Add to Home Screen keeps the site as an app with its own record, which Safari's 7-day rule does not erase. It starts empty, so import your downloaded copy there.",
+            "dismiss": "Dismiss"
+          }
         }
       },
       "library": {

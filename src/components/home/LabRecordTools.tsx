@@ -1,23 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import { useRef, useState, type ChangeEvent } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { trackEvent } from "@/lib/analytics/events";
+import type { ReadingCard } from "@/lib/lab/readingCard";
+import { LabReadingCard } from "./LabReadingCard";
+import { useIsSafari } from "./useIsSafari";
 import type { LabRecord } from "./useLabRecord";
 
 type Notice = { readonly kind: "ok" | "error"; readonly text: string } | null;
 
-// Safari, not Chrome or Firefox on iOS, which report Safari in their user agent too.
-const SAFARI = /^((?!chrome|android|crios|fxios|edgios).)*safari/i;
-
-export function LabRecordTools({ record }: { record: LabRecord }) {
+export function LabRecordTools({ record, card }: { record: LabRecord; card: ReadingCard | null }) {
   const t = useTranslations("home.lab.record.tools");
   const format = useFormatter();
   const fileInput = useRef<HTMLInputElement>(null);
   const [notice, setNotice] = useState<Notice>(null);
-  const [isSafari, setIsSafari] = useState(false);
-
-  useEffect(() => setIsSafari(SAFARI.test(navigator.userAgent)), []);
+  const isSafari = useIsSafari();
 
   if (record.storage === "loading") return null;
 
@@ -85,6 +83,7 @@ export function LabRecordTools({ record }: { record: LabRecord }) {
       <p className="lab-note" role="status" data-kind={notice?.kind}>
         {notice?.text}
       </p>
+      {card && <LabReadingCard card={card} />}
     </div>
   );
 }

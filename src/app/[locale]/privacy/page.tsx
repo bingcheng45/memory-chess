@@ -174,7 +174,14 @@ export default function PrivacyPage() {
               goal you choose are kept in your browser&apos;s local storage on
               this device. Download my lab record saves a
               copy as a file you control, and clearing your browser data
-              deletes the record. Private windows do not keep it.
+              deletes the record. Private windows do not keep it. Only when you
+              press Copy my reading does your browser put a short text on your
+              clipboard with your memory span, and your pieces held and speed
+              when the record can read them, each with its number of rounds. It
+              names no positions, squares or dates and is not sent anywhere.
+              Local storage also keeps the time the note about keeping your
+              record in this browser first came into view, so the note is
+              shown once.
             </p>
             <p className={copyClassName}>
               When you submit a score to the leaderboard, local storage on this

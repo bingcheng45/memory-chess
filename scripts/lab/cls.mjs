@@ -10,6 +10,9 @@
  * player (whose record loads from storage after first paint), each at the top of /
  * and scrolled to #record, for a player mid-plan with a goal reached scrolled to #record,
  * for a player who has played today's board scrolled to #record,
+ * for a returning player due the record note, scrolled to #record, where the note must appear, and with the tools
+ * row centred before the record loads, as a reload that restores the scroll position leaves it, where the note
+ * must wait for a later visit,
  * and for /de, which renders the legacy body: its mono text
  * uses the platform monospace stack, so there Geist Mono must never be requested.
  * Fails when either number is over MAX_CLS.
@@ -29,6 +32,9 @@ const HOLD_MS = 1500;
 const SETTLE_MS = 4500;
 const SESSION_GAP_MS = 1000;
 const SESSION_MAX_MS = 5000;
+// The note shows on the visit that first brings it into view, so each load forgets that it was seen.
+const NOTE = { forget: ["memory-chess-lab-install-nudge"] };
+const NOTE_BOX = "#record .lab-nudge";
 const CASES = [
   { name: "newVisitor", persona: "newVisitor", path: "/" },
   { name: "newVisitor-record", persona: "newVisitor", path: "/#record" },
@@ -36,6 +42,8 @@ const CASES = [
   { name: "thirtyDays-record", persona: "thirtyDays", path: "/#record" },
   { name: "planEdge-record", persona: "planEdge", path: "/#record" },
   { name: "dailyPlayed-record", persona: "dailyPlayed", path: "/#record" },
+  { name: "note-record", persona: "threeDays", path: "/#record", shows: NOTE_BOX, ...NOTE },
+  { name: "note-tools", persona: "threeDays", path: "/", centre: "#record .lab-tools-slot", hides: NOTE_BOX, ...NOTE },
   { name: "de", persona: "newVisitor", path: "/de", usesMono: false },
 ];
 
@@ -89,12 +97,19 @@ export function sessionWindowCls(shifts) {
   return best;
 }
 
+/** Runs before any page script on every load: forgets the listed keys, and centres an element once the document has parsed. */
+const beforeLoad = ({ forget = [], centre = null }) => `
+${JSON.stringify(forget)}.forEach((key) => localStorage.removeItem(key));
+${centre ? `document.addEventListener("DOMContentLoaded", () => document.querySelector(${JSON.stringify(centre)}).scrollIntoView({ block: "center" }));` : ""}`;
+
 export default async function measure(page, { baseUrl, evidenceDir }) {
-  const { path, usesMono = true } = JSON.parse(process.env[CASE_ENV]);
+  const testCase = JSON.parse(process.env[CASE_ENV]);
+  const { path, usesMono = true, shows = null, hides = null } = testCase;
   await loadPersona(page, baseUrl, process.env[PERSONA_ENV]);
   await sized(page, 1440);
   const urls = await monoFontUrls(page, baseUrl);
   await page.send("Page.addScriptToEvaluateOnNewDocument", { source: OBSERVE });
+  await page.send("Page.addScriptToEvaluateOnNewDocument", { source: beforeLoad(testCase) });
   await page.send("Network.enable");
   await page.send("Network.setCacheDisabled", { cacheDisabled: true });
   await page.send("Emulation.setCPUThrottlingRate", { rate: 4 });
@@ -120,6 +135,8 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     await page.sleep(SETTLE_MS);
     const shifts = await page.eval("window.__shifts");
     const statusAfter = await page.eval(MONO_STATUS);
+    if (shows && !(await page.eval(`!!document.querySelector(${JSON.stringify(shows)})`))) throw new Error(`at ${width}: ${shows} never appeared`);
+    if (hides && (await page.eval(`!!document.querySelector(${JSON.stringify(hides)})`))) throw new Error(`at ${width}: ${hides} appeared`);
     if (!usesMono && held.length > 0) throw new Error(`at ${width}: ${path} requested Geist Mono, which it is listed as not using`);
     if (usesMono) {
       if (held.length === 0) throw new Error(`at ${width}: no Geist Mono request was held, so the fallback face may never have painted`);
@@ -145,8 +162,9 @@ async function main() {
   const cases = CASES.filter(({ name }) => !args.only || name === args.only);
   const table = {};
   let ok = true;
-  for (const { name, persona, path, usesMono } of cases) {
-    process.env[CASE_ENV] = JSON.stringify({ path, usesMono });
+  for (const { name, persona, ...testCase } of cases) {
+    const { path } = testCase;
+    process.env[CASE_ENV] = JSON.stringify(testCase);
     const run = await runPersona(name, join(args.personas, `${persona}.json`), args, import.meta.url);
     ok &&= run.ok;
     const file = join(args.out, name, RESULT_FILE);

@@ -65,7 +65,7 @@ describe("§06 reserved heights", () => {
     });
 
     // The tools strip is not rendered on the server at all, and recall by piece type has no Sample chart, only one line.
-    expect(blank).toEqual(["types: 300px", "tools: 376px"]);
+    expect(blank).toEqual(["types: 300px", "tools: 408px"]);
   });
 
   it("give each box its reserve as a minimum height", () => {

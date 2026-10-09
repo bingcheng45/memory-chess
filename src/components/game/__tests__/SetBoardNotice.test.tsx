@@ -40,4 +40,11 @@ describe("the set board notice on /game", () => {
     expect(screen.getByRole("link", { name: "Open your lab record" })).toHaveAttribute("href", "/#record");
     expect(screen.getByRole("button", { name: "Play another round" })).toBeInTheDocument();
   });
+
+  it("says today's reviews are done when the daily limit is reached, from the messages the game layout sends", () => {
+    render(<SetBoardNotice reason="reviewCap" onChoose={jest.fn()} />, { messages: gamePageMessages() });
+
+    expect(screen.getByRole("status")).toHaveTextContent(/^Today's 5 reviews are done on this device\.$/);
+    expect(screen.getByText("Any board still due comes back tomorrow, the longest waiting first.")).toBeInTheDocument();
+  });
 });

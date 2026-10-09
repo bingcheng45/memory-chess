@@ -219,6 +219,16 @@ describe("GamePage review link", () => {
     expect(mockStartGame).not.toHaveBeenCalled();
   });
 
+  it("says today's reviews are done in the form's place once the daily limit is reached", async () => {
+    opens({ kind: "capped" });
+    window.history.pushState({}, "", "/game?pieceCount=4&memorizeTime=10&source=review");
+
+    render(<GamePage />);
+
+    expect(await screen.findByText("Today's 5 reviews are done on this device.")).toBeInTheDocument();
+    expect(mockStartGame).not.toHaveBeenCalled();
+  });
+
   it("plays an ordinary round from the link in a language without the lab record's copy", () => {
     window.history.pushState({}, "", "/de/game?pieceCount=4&memorizeTime=10&source=review");
 

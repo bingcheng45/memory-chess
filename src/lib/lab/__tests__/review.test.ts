@@ -12,10 +12,10 @@ describe("the review queue", () => {
   it("brings back a board scored under 80% one day after it was first seen", () => {
     expect(missedA.accuracy).toBe(50);
 
-    expect(reviewQueue([missedA], "2026-10-01", NONE)).toEqual({ due: [], overdue: 0, queued: 1, next: "2026-10-02" });
+    expect(reviewQueue([missedA], "2026-10-01", NONE)).toEqual({ due: [], doneToday: 0, queued: 1, next: "2026-10-02" });
     expect(reviewQueue([missedA], "2026-10-02", NONE)).toEqual({
       due: [{ reviewOf: "a", firstDay: "2026-10-01", step: 0, dueDay: "2026-10-02", fen: BOARD_A, pieceCount: 4, memorizeSeconds: 10 }],
-      overdue: 0,
+      doneToday: 0,
       queued: 1,
       next: null,
     });
@@ -26,13 +26,13 @@ describe("the review queue", () => {
     const kings = seenBoard("kings", "2026-10-01", "4k3/8/8/8/8/8/8/4K3", "8/8/8/8/8/8/8/8", 2);
     const legacy = round({ id: "legacy", localDay: "2026-10-01", targetFen: BOARD_B, placedFen: HALF_A });
 
-    expect(reviewQueue([held, kings, legacy], "2026-10-05", NONE)).toEqual({ due: [], overdue: 0, queued: 0, next: null });
+    expect(reviewQueue([held, kings, legacy], "2026-10-05", NONE)).toEqual({ due: [], doneToday: 0, queued: 0, next: null });
   });
 
   it("takes a board off the queue once reviewed and schedules the next step from the day it was first seen", () => {
     const first = reviewedBoard("a1", "2026-10-02", missedA, 1);
 
-    expect(reviewQueue([missedA, first], "2026-10-02", NONE)).toEqual({ due: [], overdue: 0, queued: 1, next: "2026-10-04" });
+    expect(reviewQueue([missedA, first], "2026-10-02", NONE)).toEqual({ due: [], doneToday: 0, queued: 1, next: "2026-10-04" });
     expect(reviewQueue([missedA, first], "2026-10-04", NONE).due.map(({ step, dueDay }) => [step, dueDay])).toEqual([[1, "2026-10-04"]]);
   });
 
@@ -41,7 +41,7 @@ describe("the review queue", () => {
     const last = reviewedBoard("a2", "2026-10-15", missedA, 14);
 
     expect(reviewQueue([missedA, late], "2026-10-06", NONE).next).toBe("2026-10-08");
-    expect(reviewQueue([missedA, late, last], "2026-10-15", NONE)).toEqual({ due: [], overdue: 0, queued: 0, next: null });
+    expect(reviewQueue([missedA, late, last], "2026-10-15", NONE)).toEqual({ due: [], doneToday: 0, queued: 0, next: null });
   });
 
   it("counts a review played twice at one step once, so the second does not move the schedule", () => {
@@ -50,17 +50,16 @@ describe("the review queue", () => {
     expect(reviewQueue(twice, "2026-10-02", NONE).next).toBe("2026-10-04");
   });
 
-  it("names a due board overdue once its day has passed, and puts the longest waiting first", () => {
+  it("puts the longest waiting due board first", () => {
     const missedB = seenBoard("b", "2026-10-03", BOARD_B, HALF_A);
 
     const queue = reviewQueue([missedB, missedA], "2026-10-04", NONE);
 
     expect(queue.due.map(({ reviewOf, dueDay }) => [reviewOf, dueDay])).toEqual([["a", "2026-10-02"], ["b", "2026-10-04"]]);
-    expect(queue.overdue).toBe(1);
   });
 
   it("spends a step opened and left without a result, so the board is not shown twice at one delay", () => {
-    expect(reviewQueue([missedA], "2026-10-02", [{ reviewOf: "a", step: 0, day: "2026-10-02" }])).toEqual({ due: [], overdue: 0, queued: 1, next: "2026-10-04" });
+    expect(reviewQueue([missedA], "2026-10-02", [{ reviewOf: "a", step: 0, day: "2026-10-02" }])).toEqual({ due: [], doneToday: 1, queued: 1, next: "2026-10-04" });
   });
 
   it("drops a board first seen more than 28 days ago, so a long break does not come back to a pile of old boards", () => {
@@ -78,5 +77,23 @@ describe("the review queue", () => {
     const repeat = seenBoard("a-again", "2026-10-03", BOARD_A, HALF_A);
 
     expect(reviewQueue([repeat, missedA], "2026-10-04", NONE).due).toMatchObject([{ reviewOf: "a", firstDay: "2026-10-01", step: 0 }]);
+  });
+
+  it("counts the boards reviewed or opened for review today, each once, toward the daily limit", () => {
+    const ranks = ["Q6p", "1Q5p", "2Q4p", "3Q3p", "4Q2p", "5Q1p", "6Qp"];
+    const boards = ranks.map((rank, index) => seenBoard(`m${index}`, "2026-10-01", `4k3/8/8/8/${rank}/8/8/4K3`, HALF_A));
+    const reviewed = boards.slice(0, 3).map((board, index) => reviewedBoard(`r${index}`, "2026-10-02", board, 1));
+    const opened = [
+      { reviewOf: "m0", step: 0, day: "2026-10-02" },
+      { reviewOf: "m3", step: 0, day: "2026-10-02" },
+      { reviewOf: "m4", step: 0, day: "2026-10-02" },
+      { reviewOf: "m5", step: 0, day: "2026-10-01" },
+    ];
+
+    const queue = reviewQueue([...boards, ...reviewed], "2026-10-02", opened);
+
+    expect(queue.doneToday).toBe(5);
+    expect(queue.due.map(({ reviewOf }) => reviewOf)).toEqual(["m6"]);
+    expect(reviewQueue([...boards, ...reviewed], "2026-10-03", opened).doneToday).toBe(0);
   });
 });

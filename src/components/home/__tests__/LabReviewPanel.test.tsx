@@ -34,21 +34,35 @@ describe("the review and forgetting curve panel", () => {
     expect(screen.getByRole("heading", { name: "Short, spaced reviews beat one long session." })).toBeInTheDocument();
     expect(screen.getByRole("img", { name: /^Illustrative chart: retention falls quickly/ })).toBeInTheDocument();
     expect(screen.getByText("Illustrative")).toBeInTheDocument();
-    expect(screen.queryByText(/due for review|Next review|No boards to review/)).toBeNull();
+    expect(screen.queryByText(/Review \d of|Next review|No boards to review/)).toBeNull();
     expect(playLink()).toBeNull();
   });
 
-  it("counts the boards due today and links to the next one at its own setting", () => {
+  it("numbers the next review against the five a day and links to it at its own setting", () => {
     panel([seenBoard("a", "2026-10-08", BOARDS[0], KINGS)]);
 
-    expect(screen.getByText("1 board due for review")).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent("Review 1 of 5 today");
     expect(playLink()).toHaveAttribute("href", "/game?pieceCount=4&memorizeTime=10&source=review");
   });
 
-  it("names how many due boards are overdue", () => {
-    panel([seenBoard("a", "2026-10-04", BOARDS[0], KINGS), seenBoard("b", "2026-10-08", BOARDS[1], KINGS)]);
+  it("counts the reviews played today into the number, without naming how many boards wait", () => {
+    const firsts = BOARDS.map((fen, index) => seenBoard(`b${index}`, "2026-10-07", fen, KINGS));
+    panel([...firsts, reviewedBoard("r0", TODAY, firsts[0], 2), reviewedBoard("r1", TODAY, firsts[1], 2)]);
 
-    expect(screen.getByText("2 boards due for review, 1 overdue")).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent("Review 3 of 5 today");
+    expect(screen.queryByText(/overdue|due for review/)).toBeNull();
+  });
+
+  it("says today's reviews are done once five boards were reviewed or opened today, with no link", () => {
+    const firsts = BOARDS.map((fen, index) => seenBoard(`b${index}`, "2026-10-07", fen, KINGS));
+    window.localStorage.setItem(
+      "memory-chess-lab-review-opened",
+      JSON.stringify(["x1", "x2"].map((reviewOf) => ({ reviewOf, step: 0, day: TODAY }))),
+    );
+    panel([...firsts, ...firsts.map((first, index) => reviewedBoard(`r${index}`, TODAY, first, 2))]);
+
+    expect(screen.getByRole("status")).toHaveTextContent("Today's reviews done");
+    expect(playLink()).toBeNull();
   });
 
   it("says when the next review comes once nothing is due today", () => {

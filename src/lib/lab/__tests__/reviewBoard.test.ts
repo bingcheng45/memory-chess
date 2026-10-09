@@ -36,6 +36,17 @@ describe("starting a review", () => {
     expect(reviewStart([kingless], noonOn(2), [])).toEqual({ kind: "none" });
   });
 
+  it("starts nothing once five boards were reviewed or opened today, and the next board the day after", () => {
+    const ranks = ["Q6p", "1Q5p", "2Q4p", "3Q3p", "4Q2p", "5Q1p"];
+    const boards = ranks.map((rank, index) => seenBoard(`c${index}`, "2026-10-01", `4k3/8/8/8/${rank}/8/8/4K3`, "4k3/8/8/8/8/8/8/4K3"));
+    const reviewed = boards.slice(0, 2).map((board, index) => reviewedBoard(`cr${index}`, "2026-10-02", board, 1));
+    const opened = ["c2", "c3", "c4"].map((reviewOf) => ({ reviewOf, step: 0, day: "2026-10-02" }));
+
+    expect(reviewStart([...boards, ...reviewed], noonOn(2), opened.slice(0, 2))).toMatchObject({ kind: "play", board: { reviewOf: "c4" } });
+    expect(reviewStart([...boards, ...reviewed], noonOn(2), opened)).toEqual({ kind: "capped" });
+    expect(reviewStart([...boards, ...reviewed], noonOn(3), opened)).toMatchObject({ kind: "play", board: { reviewOf: "c5" } });
+  });
+
   it("starts nothing when no board is due today", () => {
     expect(reviewStart([missed, reviewedBoard("r1", "2026-10-02", missed, 1)], noonOn(2), [])).toEqual({ kind: "none" });
     expect(reviewStart([missed], noonOn(2), [{ reviewOf: "first-round", step: 0, day: "2026-10-02" }])).toEqual({ kind: "none" });

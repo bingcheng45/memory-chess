@@ -432,23 +432,24 @@ export const useGameStore = create<GameStore>()(
         // Determine success (e.g., accuracy >= 70%)
         const success = score.accuracy >= 70;
         
+        // A review replays a board the player has already seen, so it is not a fair test of skill.
+        const rated = gameState.board?.kind !== 'review';
+
         // Calculate skill rating change
         const currentRating = gameState.skillRating || 1000;
-        const skillRatingChange = calculateSkillRatingChange(
+        const skillRatingChange = rated ? calculateSkillRatingChange(
           score.accuracy, 
           gameState.pieceCount, 
           completionTime, 
           gameState.memorizeTime,
           currentRating,
           gameState.actualMemorizeTime
-        );
+        ) : 0;
         
         // Update streak
         let streak = gameState.streak || 0;
-        if (success) {
-          streak += 1;
-        } else {
-          streak = 0;
+        if (rated) {
+          streak = success ? streak + 1 : 0;
         }
         
         // Update skill rating

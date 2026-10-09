@@ -304,6 +304,11 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         },
       });
       setSubmitSuccess(true);
+      // Loaded on submit, so /game carries no lab storage code until then. The score is already on the board, so a
+      // reply this cannot read or a refused write only leaves the lab record without a standing to check.
+      void import("@/lib/lab/entries")
+        .then(async ({ rememberEntry }) => rememberEntry((await response.json())?.data, Date.now()))
+        .catch(() => undefined);
     } catch (err) {
       console.error("Error submitting to leaderboard:", err);
       setSubmitError(

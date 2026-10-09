@@ -78,7 +78,7 @@ describe("BoardPanel", () => {
 
     expect(jest.mocked(global.fetch).mock.calls).toEqual([[`/api/leaderboard/rank?id=${MEDIUM_ID}&scope=world`, { cache: "no-store" }]]);
     expect(status().textContent).toMatch(
-      new RegExp(`^Rank 14 of 200 entries on Medium, worldwide\\. Checked at ${TIME}\\. It is on the public board, which shows the top 200\\.$`),
+      new RegExp(`^Rank 14 of 200 entries on Medium, worldwide\\. Checked at ${TIME}\\. The public board shows the top 200\\.$`),
     );
     expect(jest.mocked(trackEvent).mock.calls).toEqual([[{ name: "lab_panel_action", params: { panel: "board", action: "check" } }]]);
   });
@@ -156,14 +156,17 @@ describe("BoardPanel", () => {
     expect(stored).toEqual([{ hard }, { medium: newerMedium }]);
   });
 
-  it("says plainly when checks are limited, the browser is offline, or the board cannot be reached", async () => {
+  it("says plainly when checks are limited, the board has no country for the entry, the browser is offline, or the board cannot be reached", async () => {
     keep({ medium });
-    answers({ status: 429, retryAfter: "37" }, { status: 503 });
+    answers({ status: 429, retryAfter: "37" }, { status: 503 }, { status: 400 });
     renderWithIntl(<BoardPanel ready />);
     const said = [];
 
     await press();
     said.push(status().textContent);
+    await press();
+    said.push(status().textContent);
+    fireEvent.click(screen.getByRole("radio", { name: /Singapore/ }));
     await press();
     said.push(status().textContent);
     jest.spyOn(window.navigator, "onLine", "get").mockReturnValue(false);
@@ -173,9 +176,11 @@ describe("BoardPanel", () => {
     expect(said).toEqual([
       "Too many checks from your connection. Try again in 37 seconds.",
       "The leaderboard could not be reached, so no standing was read. Try again later.",
+      "The leaderboard has no country for this entry, so it can only be ranked worldwide.",
       "You are offline, so nothing was sent. Connect and try again.",
     ]);
-    expect(global.fetch).toHaveBeenCalledTimes(2);
+    expect(global.fetch).toHaveBeenCalledTimes(3);
+    expect(trackEvent).toHaveBeenCalledTimes(3);
     expect(window.localStorage.getItem(ENTRIES_KEY)).not.toBeNull();
   });
 

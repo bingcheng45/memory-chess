@@ -44,6 +44,14 @@ describe("checkStanding", () => {
     ]);
   });
 
+  it("reads a 400 on a country check as an entry the board has no country for, and on a world check as failed", async () => {
+    answer(400, { error: "This entry has no country" });
+    const country = await checkStanding(ID, "country");
+    const world = await checkStanding(ID, "world");
+
+    expect([country, world]).toEqual([{ kind: "noCountry" }, { kind: "failed" }]);
+  });
+
   it("sends nothing while the browser is offline", async () => {
     online(false);
     global.fetch = jest.fn();

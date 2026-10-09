@@ -84,17 +84,17 @@ describe("PrivacyPage", () => {
 
     expect(
       screen.getByText(
-        /Google Analytics receives an event for each round you finish, on the homepage or in the game, with the number of pieces, the study time, how many pieces you recalled, your accuracy and where the round started\./,
+        /Google Analytics receives an event for each round you finish, on the homepage or in the game, with the number of pieces, the study time, how many pieces you recalled, your accuracy and where the round started, which can name today's board, a review or a plan\. It receives an event when a round starts too, with the number of pieces, the study time and where it started\./,
       ),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /when the lab section comes into view, when you follow one of its play links, and the number of rounds when you download, import, or ask for cross-device backup\. None of these events carry positions, squares, round ids or streaks\./,
+        /when the lab section comes into view, when you follow one of its play links, the number of rounds when you download or ask for cross-device backup, and the number of rounds added and skipped when you import\. None of these events carry positions, squares, round ids or streaks\./,
       ),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /When you start, stop or finish a plan, or set or clear a goal, Google Analytics receives an event that names only that action, with no plan name and no numbers\. The plan and goal you choose are kept in your browser's local storage on this device\./,
+        /When you start, stop or finish a plan, or set or clear a goal, Google Analytics receives an event that names only that action, with no plan name and no numbers\. The plan and goal you choose are kept in your browser's local storage on this device, as is the number of days a week you aim to play, which sends no event\./,
       ),
     ).toBeInTheDocument();
     expect(screen.queryByText(/never sent to Memory Chess or to analytics/)).not.toBeInTheDocument();
@@ -110,7 +110,7 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /Local storage also keeps the time the note about keeping your record in this browser first came into view, so the note is shown once\./,
+        /Local storage also keeps the time the note about keeping your record in this browser first came into view, so the note is shown once, the time you last saw your notebook, so newer entries are marked as new, and the time you last downloaded the record\. After a few rounds the site asks your browser once to keep the record when space runs low, and local storage notes that it asked\./,
       ),
     ).toBeInTheDocument();
   });

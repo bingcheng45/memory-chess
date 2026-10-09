@@ -3,7 +3,7 @@ import { aboutTimes } from "@/lib/lab/insights";
 import { deriveLab } from "@/lib/lab/metrics";
 import type { RoundRecord } from "@/lib/lab/record";
 import { summarize, type LabSummary } from "@/lib/lab/summary";
-import { round, TARGET } from "./fixtures";
+import { playedFresh, round, TARGET } from "./fixtures";
 
 const NO_QUEEN = "4k3/8/8/8/8/5N2/8/4K3";
 
@@ -13,7 +13,7 @@ function insightsOf(records: readonly RoundRecord[], summary: Partial<LabSummary
 }
 
 /** Only the lifetime counters, as a player with 30 rounds whose log the summary-only rules never read. */
-const counters = (summary: Partial<LabSummary>) => insightsOf([], { rounds: 30, days: ["2026-10-07"], ...summary });
+const counters = (summary: Partial<LabSummary>) => insightsOf([], { days: ["2026-10-07"], ...summary, ...playedFresh(summary.rounds ?? 30) });
 
 /** One round a day from 1 September, oldest first: a whole board when `full`, else the queen missed. */
 function daily(count: number, shape: (index: number) => { full: boolean; solveMs?: number }): RoundRecord[] {

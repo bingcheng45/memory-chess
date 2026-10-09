@@ -36,11 +36,13 @@ describe("lab record export and import", () => {
     ["unsorted days", { days: ["2026-10-08", "2026-10-07"] }],
     ["too many days", { days: Array.from({ length: 401 }, (_, i) => new Date(Date.UTC(2020, 0, 1 + i)).toISOString().slice(0, 10)) }],
     ["a best with an unknown setting", { bests: { "server:4x10": { accuracy: 50, correct: 1, solveMs: 1, at: 1, rounds: 1 } } }],
+    ["a best that is null", { bests: { "game:4x10": null } }],
     ["a best that is not a number", { bests: { "game:4x10": { accuracy: "100", correct: 1, solveMs: 1, at: 1, rounds: 1 } } }],
     ["a square count that is not finite", { squareShown: Array(64).fill(Infinity) }],
     ["a fractional watermark", { evictedThrough: 1.5 }],
     ["rounds but no day", { days: [] }],
     ["rounds but no best", { bests: {} }],
+    ["more fresh rounds in its bests than rounds played", { bests: { "game:4x10": { accuracy: 100, correct: 4, solveMs: 1, at: 1, rounds: 3 } } }],
     ["no colour counts", { colorShown: undefined }],
     ["a colour count that is not a count", { colorMissed: { w: -1, b: 0 } }],
     ["a third colour", { colorShown: { w: 2, b: 2, r: 1 } }],
@@ -57,6 +59,13 @@ describe("lab record export and import", () => {
     const file = JSON.stringify(buildExport([], NOW, { ...summarize([]), days: ["2026-10-07"] }));
 
     expect(parseImport(file, NOW)).toEqual({ ok: true, rounds: [], rejected: 0, overCap: 0, summary: "dropped" });
+  });
+
+  it("keeps the summary of a record whose only counted rounds are reviews, which set no best", () => {
+    const reviews = [roundV2({ id: "b", endedAt: 20 }, { kind: "review", reviewOf: "a", reviewDelayDays: 3, tzOffsetMin: 0 })];
+    const file = JSON.stringify(buildExport(reviews, NOW, summarize(reviews)));
+
+    expect(parseImport(file, NOW)).toMatchObject({ ok: true, rejected: 0, summary: { rounds: 1, days: ["2026-10-07"], bests: {} } });
   });
 
   it("keeps an empty summary from a file with no rounds", () => {

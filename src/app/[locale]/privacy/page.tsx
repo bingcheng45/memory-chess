@@ -164,15 +164,19 @@ export default function PrivacyPage() {
               Analytics receives an event for each round you finish, on the
               homepage or in the game, with the number of pieces, the study
               time, how many pieces you recalled, your accuracy and where the
-              round started. It also receives a few lab events: when the lab
-              section comes into view, when you follow one of its play links,
-              and the number of rounds when you download, import, or ask for
-              cross-device backup. None of these events carry positions,
+              round started, which can name today&apos;s board, a review or a
+              plan. It receives an event when a round starts too, with the
+              number of pieces, the study time and where it started. It also
+              receives a few lab events: when the lab section comes into view,
+              when you follow one of its play links, the number of rounds when
+              you download or ask for cross-device backup, and the number of
+              rounds added and skipped when you import. None of these events carry positions,
               squares, round ids or streaks. When you start, stop or finish a
               plan, or set or clear a goal, Google Analytics receives an event that names
               only that action, with no plan name and no numbers. The plan and
               goal you choose are kept in your browser&apos;s local storage on
-              this device. Download my lab record saves a
+              this device, as is the number of days a week you aim to play,
+              which sends no event. Download my lab record saves a
               copy as a file you control, and clearing your browser data
               deletes the record. Private windows do not keep it. Only when you
               press Copy my reading does your browser put a short text on your
@@ -181,7 +185,10 @@ export default function PrivacyPage() {
               names no positions, squares or dates and is not sent anywhere.
               Local storage also keeps the time the note about keeping your
               record in this browser first came into view, so the note is
-              shown once.
+              shown once, the time you last saw your notebook, so newer entries
+              are marked as new, and the time you last downloaded the record.
+              After a few rounds the site asks your browser once to keep the
+              record when space runs low, and local storage notes that it asked.
             </p>
             <p className={copyClassName}>
               When you submit a score to the leaderboard, local storage on this

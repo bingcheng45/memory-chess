@@ -34,7 +34,7 @@ import { LAB_THRESHOLDS, type Need } from "./readiness";
 import { isFreshReading, LAB_SOURCES, PIECE_LETTERS, settingKey, type LabSource, type RoundRecord } from "./record";
 import { sessionRuns } from "./sessions";
 import { streakOf, type StreakValue } from "./streak";
-import type { PersonalBest } from "./summary";
+import { freshRounds, type PersonalBest } from "./summary";
 
 export interface MetricDef<TValue> {
   readonly id: MetricId;
@@ -74,8 +74,8 @@ const BESTS_THRESHOLDS = { rounds: 1 };
 function computeBests(input: LabInput): MetricResult<BestsValue> {
   const { summary } = input;
   const bests = Object.entries(summary.bests);
-  const sampleSize = bests.length === 0 ? 0 : summary.rounds;
-  const readiness = readinessFor(input, { sampleSize, have: { rounds: summary.rounds }, thresholds: BESTS_THRESHOLDS });
+  const rounds = freshRounds(summary);
+  const readiness = readinessFor(input, { sampleSize: rounds, have: { rounds }, thresholds: BESTS_THRESHOLDS });
   return measured(readiness, () => ({
     entries: bests
       .map(([key, best]) => {
@@ -166,12 +166,13 @@ function computeTypeRecall(input: LabInput): MetricResult<TypeRecallValue> {
   };
   const types = PIECE_LETTERS.filter((type) => type !== "k").map(recallOf);
   const mostShown = Math.max(...types.map(({ shown }) => shown));
-  const readiness = readinessFor(input, { sampleSize: summary.rounds, have: { exposures: mostShown }, thresholds: TYPE_THRESHOLDS });
+  const rounds = freshRounds(summary);
+  const readiness = readinessFor(input, { sampleSize: rounds, have: { exposures: mostShown }, thresholds: TYPE_THRESHOLDS });
   return measured(readiness, () => ({
     types,
     king: recallOf("k"),
     onlyKings: mostShown === 0,
-    roundsEstimate: roundsToReach(TYPE_THRESHOLDS.exposures, mostShown, summary.rounds),
+    roundsEstimate: roundsToReach(TYPE_THRESHOLDS.exposures, mostShown, rounds),
   }));
 }
 
@@ -207,7 +208,8 @@ function computeMissMap(input: LabInput): MetricResult<MissMapValue> {
   const files = Array.from({ length: 8 }, (_, file) => line((index) => index % 8 === file));
   const ranks = Array.from({ length: 8 }, (_, row) => line((index) => Math.floor(index / 8) === row));
   const thinnest = Math.min(...files.map(({ shown }) => shown), ...ranks.map(({ shown }) => shown));
-  const readiness = readinessFor(input, { sampleSize: summary.rounds, have: { exposures: thinnest }, thresholds: MISS_THRESHOLDS });
+  const rounds = freshRounds(summary);
+  const readiness = readinessFor(input, { sampleSize: rounds, have: { exposures: thinnest }, thresholds: MISS_THRESHOLDS });
   return measured(readiness, () => {
     const squares = squareShown.map((shown, index) => cell(shown, squareMissed[index]));
     return {
@@ -215,7 +217,7 @@ function computeMissMap(input: LabInput): MetricResult<MissMapValue> {
       squares,
       files,
       ranks,
-      roundsEstimate: roundsToReach(MISS_THRESHOLDS.exposures, thinnest, summary.rounds),
+      roundsEstimate: roundsToReach(MISS_THRESHOLDS.exposures, thinnest, rounds),
     };
   });
 }

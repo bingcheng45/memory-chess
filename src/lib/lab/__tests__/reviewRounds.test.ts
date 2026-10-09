@@ -92,3 +92,20 @@ describe("a review placed in full", () => {
     expect(lab.typeRecall.value?.types.find(({ type }) => type === "r")).toEqual({ type: "r", shown: 20, recalled: 0, ready: true });
   });
 });
+
+describe("six fresh rounds and four reviews", () => {
+  const BOARD = "4k3/8/8/8/QR2p2p/8/8/4K3";
+  const dayOf = (index: number) => `2026-09-${index + 10}`;
+  const fresh = Array.from({ length: 6 }, (_, index) => seenBoard(`f${index}`, dayOf(index), BOARD, KINGS, 6));
+  const replayed = fresh.slice(0, 4).map((board, index) => reviewedBoard(`v${index}`, dayOf(index + 6), board, 6));
+  const played = [...fresh, ...replayed];
+  const lab = deriveLab({ records: played, summary: summarize(played), today: "2026-09-19" });
+
+  it("measure the insights, bests, type recall and miss map from the 6 fresh rounds, not the 10 played", () => {
+    expect(summarize(played).rounds).toBe(10);
+    expect(lab.insights.readiness).toEqual({ state: "warming", sampleSize: 6, need: { rounds: 4 } });
+    expect(lab.bests.readiness).toEqual({ state: "ready", sampleSize: 6 });
+    expect([lab.typeRecall.readiness.sampleSize, lab.typeRecall.value?.roundsEstimate]).toEqual([6, 4]);
+    expect([lab.missMap.readiness.sampleSize, lab.missMap.value?.roundsEstimate]).toEqual([6, null]);
+  });
+});

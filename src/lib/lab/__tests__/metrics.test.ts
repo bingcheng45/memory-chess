@@ -2,7 +2,7 @@ import type { LabInput } from "@/lib/lab/engine";
 import { deriveLab, LAB_METRICS } from "@/lib/lab/metrics";
 import type { RoundRecordV1 } from "@/lib/lab/record";
 import { EMPTY_SUMMARY, parseSummary, summarize, type LabSummary } from "@/lib/lab/summary";
-import { round, TARGET } from "./fixtures";
+import { playedFresh, round, TARGET } from "./fixtures";
 
 const HALF = "4k3/8/8/8/8/8/8/4K3";
 const TODAY = "2026-10-07";
@@ -252,7 +252,7 @@ describe("typeRecall", () => {
 
   it("compares its exposures threshold with the most-shown type other than the king", () => {
     const { exposures } = LAB_METRICS.typeRecall.thresholds;
-    const counted = (queens: number) => recall({ ...EMPTY_SUMMARY, rounds: 10, days: [TODAY], typeShown: { k: 40, q: queens, n: 5 } }).readiness;
+    const counted = (queens: number) => recall({ ...EMPTY_SUMMARY, ...playedFresh(10), days: [TODAY], typeShown: { k: 40, q: queens, n: 5 } }).readiness;
 
     expect(exposures).toBe(20);
     expect(counted(19)).toEqual({ state: "warming", sampleSize: 10, need: { exposures: 1 } });
@@ -281,7 +281,7 @@ describe("missMap", () => {
   it("compares its exposures threshold with the thinnest file or rank, not with a square", () => {
     const { exposures } = LAB_METRICS.missMap.thresholds;
     const withFileA = (fileA: readonly number[]) =>
-      missMap({ ...EMPTY_SUMMARY, rounds: 8, days: [TODAY], squareShown: Array.from({ length: 64 }, (_, index) => (index % 8 === 0 ? fileA[index / 8] : 2)) });
+      missMap({ ...EMPTY_SUMMARY, ...playedFresh(8), days: [TODAY], squareShown: Array.from({ length: 64 }, (_, index) => (index % 8 === 0 ? fileA[index / 8] : 2)) });
 
     expect(exposures).toBe(10);
     expect(withFileA([2, 2, 2, 2, 1, 0, 0, 0])).toMatchObject({ readiness: { state: "warming", need: { exposures: 1 } }, value: { view: "lines" } });
@@ -289,7 +289,7 @@ describe("missMap", () => {
   });
 
   it("switches to squares when every square has 10 exposures", () => {
-    const full = { ...EMPTY_SUMMARY, rounds: 80, days: [TODAY], squareShown: Array(64).fill(10), squareMissed: Array(64).fill(2) };
+    const full = { ...EMPTY_SUMMARY, ...playedFresh(80), days: [TODAY], squareShown: Array(64).fill(10), squareMissed: Array(64).fill(2) };
 
     expect(missMap(full)).toMatchObject({ readiness: { state: "ready", sampleSize: 80 }, value: { view: "squares", roundsEstimate: 0 } });
   });

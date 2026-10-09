@@ -42,6 +42,13 @@ describe("review rounds in the rest of the record", () => {
     expect(lab.piecesHeld.readiness).toEqual({ state: "warming", sampleSize: 2, need: { rounds: 3 } });
   });
 
+  it("leave the notebook whole: the log holds every round the summary counts, so no older entries are missing", () => {
+    expect(lab.notebook.value).toEqual({
+      entries: [{ at: first.endedAt, kind: "firstRound", params: { day: 1, pieceCount: 6, accuracy: 33 } }],
+      older: null,
+    });
+  });
+
   it("are counted by the summary as soon as their day is in it, since a review has no best to wait for", () => {
     const before = summarize([first, second]);
 

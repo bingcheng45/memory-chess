@@ -293,7 +293,7 @@ describe("GamePage URL-driven start under StrictMode", () => {
     );
     expect(mockStartGame).toHaveBeenCalledTimes(1);
     expect(screen.queryByText("No board is due for review on this device right now.")).toBeNull();
-    expect(window.localStorage.getItem("memory-chess-lab-review-opened")).toBe('["first-round:0"]');
+    expect(window.localStorage.getItem("memory-chess-lab-review-opened")).toBe('[{"reviewOf":"first-round","step":0,"day":"2026-10-09"}]');
   });
 });
 

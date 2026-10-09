@@ -1,4 +1,4 @@
-import { reviewQueue } from "@/lib/lab/review";
+import { reviewQueue, type OpenedReview } from "@/lib/lab/review";
 import { round, reviewedBoard, seenBoard } from "./fixtures";
 
 const BOARD_A = "4k3/8/8/3q4/8/5N2/8/4K3";
@@ -6,7 +6,7 @@ const BOARD_B = "4k3/8/2r5/8/8/5N2/1P6/4K3";
 
 const HALF_A = "4k3/8/8/8/8/8/8/4K3";
 const missedA = seenBoard("a", "2026-10-01", BOARD_A, HALF_A);
-const NONE = new Set<string>();
+const NONE: readonly OpenedReview[] = [];
 
 describe("the review queue", () => {
   it("brings back a board scored under 80% one day after it was first seen", () => {
@@ -60,7 +60,7 @@ describe("the review queue", () => {
   });
 
   it("spends a step opened and left without a result, so the board is not shown twice at one delay", () => {
-    expect(reviewQueue([missedA], "2026-10-02", new Set(["a:0"]))).toEqual({ due: [], overdue: 0, queued: 1, next: "2026-10-04" });
+    expect(reviewQueue([missedA], "2026-10-02", [{ reviewOf: "a", step: 0, day: "2026-10-02" }])).toEqual({ due: [], overdue: 0, queued: 1, next: "2026-10-04" });
   });
 
   it("drops a board first seen more than 28 days ago, so a long break does not come back to a pile of old boards", () => {

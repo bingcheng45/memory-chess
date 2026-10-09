@@ -5,7 +5,7 @@ import { summarize } from "@/lib/lab/summary";
 
 function stateOf(name: (typeof REVIEW_PERSONAS)[number]) {
   const records = personaRounds(name);
-  const { due, overdue, queued, next } = reviewQueue(records, PERSONA_TODAY, new Set());
+  const { due, overdue, queued, next } = reviewQueue(records, PERSONA_TODAY, []);
   const curve = computeCurve({ records, summary: summarize(records), today: PERSONA_TODAY });
   return { due: due.length, overdue, queued, next, curve: curve.readiness.state, need: curve.readiness.need, points: curve.value?.points };
 }

@@ -231,15 +231,20 @@ function legalSquaresForPiece(
   });
 }
 
-function finalizePosition(chess: Chess, pieceCount: number): Chess | null {
-  const { whiteInCheck, blackInCheck } = getCheckState(chess);
+/** The full position for a board's placement: the side in check has the move, and with both kings in check there is none. */
+export function withSideToMove(boardFen: string): string | null {
+  const { whiteInCheck, blackInCheck } = getCheckState(new Chess(`${boardFen} w - - 0 1`, { skipValidation: true }));
   if (whiteInCheck && blackInCheck) return null;
-
   const activeColor: Color = blackInCheck ? "b" : "w";
-  const boardFen = chess.fen().split(" ")[0];
+  return `${boardFen} ${activeColor} - - 0 1`;
+}
+
+function finalizePosition(chess: Chess, pieceCount: number): Chess | null {
+  const fen = withSideToMove(chess.fen().split(" ")[0]);
+  if (!fen) return null;
 
   try {
-    const finalized = new Chess(`${boardFen} ${activeColor} - - 0 1`);
+    const finalized = new Chess(fen);
     return validateMemorizationPosition(finalized, pieceCount).valid
       ? finalized
       : null;

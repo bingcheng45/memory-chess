@@ -1,5 +1,6 @@
-import { Chess, SQUARES, validateFen } from "chess.js";
+import { validateFen } from "chess.js";
 import type { SetBoard } from "@/lib/types/game";
+import { withSideToMove } from "@/lib/utils/memorizationPosition";
 import { localDayOf, type RoundRecord } from "./record";
 import { readReviewOpened, REVIEW_OPENED_KEY, reviewKey, reviewQueue } from "./review";
 import { labStore } from "./storage";
@@ -13,21 +14,14 @@ export type ReviewStart =
   | { readonly kind: "play"; readonly pieceCount: number; readonly memorizeTime: number; readonly board: ReviewBoard }
   | { readonly kind: "none" };
 
-/** The record keeps only a board's placement. The game's generator gives the move to a side in check, so this does too. */
-function playableFen(board: string): string {
-  const chess = new Chess(`${board} w - - 0 1`, { skipValidation: true });
-  const blackKing = SQUARES.find((square) => {
-    const piece = chess.get(square);
-    return piece?.type === "k" && piece.color === "b";
-  });
-  return `${board} ${blackKing && chess.isAttacked(blackKing, "w") ? "b" : "w"} - - 0 1`;
-}
-
-/** An imported file is checked for shape, not for a legal position, so a due board the game cannot load is passed over. */
+/**
+ * The record keeps only a board's placement, so the side to move is set as the game's generator sets it. An imported
+ * file is checked for shape, not for a legal position, so a due board the game cannot load is passed over.
+ */
 export function reviewStart(records: readonly RoundRecord[], at: number, opened: ReadonlySet<string>): ReviewStart {
   for (const { reviewOf, firstDay, step, fen, pieceCount, memorizeSeconds } of reviewQueue(records, localDayOf(new Date(at)), opened).due) {
-    const playable = playableFen(fen);
-    if (validateFen(playable).ok) {
+    const playable = withSideToMove(fen);
+    if (playable && validateFen(playable).ok) {
       return { kind: "play", pieceCount, memorizeTime: memorizeSeconds, board: { kind: "review", fen: playable, reviewOf, firstDay, step } };
     }
   }

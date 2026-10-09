@@ -1,7 +1,7 @@
 import { parseCountryCode, WORLD_CODE, type CountryCode } from "@/lib/leaderboard/countries";
-import { compareRanking, type RankingScore } from "@/lib/leaderboard/ranking";
+import { compareRanking, parseScore, type RankingScore } from "@/lib/leaderboard/ranking";
 import { isEntryId } from "@/lib/leaderboard/standing";
-import { LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } from "@/types/leaderboard";
+import { isLeaderboardDifficulty, LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } from "@/types/leaderboard";
 
 /**
  * The player's own leaderboard entries, one per difficulty, so the lab record can ask where they stand. Kept on this
@@ -20,21 +20,13 @@ export interface StoredEntry {
 
 export type StoredEntries = Readonly<Partial<Record<LeaderboardDifficulty, StoredEntry>>>;
 
+// Not imported from transfer.ts, which would pull the record export code into the chunk /game loads on submit.
 const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
-const isNumber = (value: unknown): value is number => typeof value === "number" && Number.isFinite(value);
-const isDifficulty = (value: unknown): value is LeaderboardDifficulty => LEADERBOARD_DIFFICULTIES.includes(value as LeaderboardDifficulty);
-
-function scoreOf(raw: Record<string, unknown>): RankingScore | null {
-  const { correctPieces, totalWrongPieces, memorizeTime, solutionTime } = raw;
-  if (!isNumber(correctPieces) || !isNumber(memorizeTime) || !isNumber(solutionTime)) return null;
-  if (totalWrongPieces !== null && !isNumber(totalWrongPieces)) return null;
-  return { correctPieces, totalWrongPieces, memorizeTime, solutionTime };
-}
 
 /** The row the leaderboard returned for a submission, or null for a reply this version cannot read. */
 export function entryFromRow(row: unknown, submittedAt: number): StoredEntry | null {
-  if (!isObject(row) || !isEntryId(row.id) || !isDifficulty(row.difficulty)) return null;
-  const score = scoreOf({
+  if (!isObject(row) || !isEntryId(row.id) || !isLeaderboardDifficulty(row.difficulty)) return null;
+  const score = parseScore({
     correctPieces: row.correct_pieces,
     totalWrongPieces: row.total_wrong_pieces ?? null,
     memorizeTime: row.memorize_time,
@@ -47,8 +39,8 @@ export function entryFromRow(row: unknown, submittedAt: number): StoredEntry | n
 }
 
 function parseEntry(raw: unknown, difficulty: LeaderboardDifficulty): StoredEntry | null {
-  if (!isObject(raw) || !isEntryId(raw.id) || raw.difficulty !== difficulty || !isObject(raw.score)) return null;
-  const score = scoreOf(raw.score);
+  if (!isObject(raw) || !isEntryId(raw.id) || raw.difficulty !== difficulty) return null;
+  const score = parseScore(raw.score);
   const country = parseCountryCode(raw.country);
   if (score === null || country === null || !Number.isSafeInteger(raw.submittedAt)) return null;
   return { id: raw.id, difficulty, country, score, submittedAt: raw.submittedAt as number };

@@ -4,6 +4,7 @@ import { isEntryId, isStandingScope } from '@/lib/leaderboard/standing';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
 
 const CHECKS_PER_MINUTE = 10;
+const UNAVAILABLE = 'The leaderboard is unavailable. Please try again shortly.';
 const allowCheck = fixedWindowLimiter({ limit: CHECKS_PER_MINUTE, windowMs: 60_000, maxKeys: 5_000 });
 
 function reply(body: object, status = 200, headers: Record<string, string> = {}) {
@@ -39,10 +40,10 @@ export async function GET(request: NextRequest) {
         return reply({ error: 'This entry has no country' }, 400);
       case 'unavailable':
         console.error('Leaderboard standing unavailable:', result.cause);
-        return reply({ error: 'The leaderboard is unavailable. Please try again shortly.' }, 503);
+        return reply({ error: UNAVAILABLE }, 503);
     }
   } catch (err) {
     console.error('Unexpected error in GET /api/leaderboard/rank:', err);
-    return reply({ error: 'The leaderboard is unavailable. Please try again shortly.' }, 503);
+    return reply({ error: UNAVAILABLE }, 503);
   }
 }

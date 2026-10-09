@@ -1,4 +1,4 @@
-import { LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } from "@/types/leaderboard";
+import { isLeaderboardDifficulty, type LeaderboardDifficulty } from "@/types/leaderboard";
 import { parseCountryCode, type CountryCode } from "./countries";
 import { RANKING_ORDER, type RankingScore } from "./ranking";
 
@@ -46,9 +46,9 @@ const isCount = (value: unknown, min: number): value is number => Number.isSafeI
 export function parseStanding(value: unknown): Standing | null {
   if (typeof value !== "object" || value === null) return null;
   const { difficulty, country, rank, total } = value as Record<string, unknown>;
-  if (!LEADERBOARD_DIFFICULTIES.includes(difficulty as LeaderboardDifficulty)) return null;
+  if (!isLeaderboardDifficulty(difficulty)) return null;
   if (!isCount(rank, 1) || !isCount(total, 1) || rank > total) return null;
   const code = country === null ? null : parseCountryCode(country);
   if (code === null && country !== null) return null;
-  return { difficulty: difficulty as LeaderboardDifficulty, country: code, rank, total };
+  return { difficulty, country: code, rank, total };
 }

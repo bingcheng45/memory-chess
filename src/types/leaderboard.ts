@@ -3,6 +3,9 @@ import type { CountryCode } from '@/lib/leaderboard/countries';
 export const LEADERBOARD_DIFFICULTIES = ['easy', 'medium', 'hard', 'grandmaster'] as const;
 export type LeaderboardDifficulty = (typeof LEADERBOARD_DIFFICULTIES)[number];
 
+export const isLeaderboardDifficulty = (value: unknown): value is LeaderboardDifficulty =>
+  LEADERBOARD_DIFFICULTIES.includes(value as LeaderboardDifficulty);
+
 export interface LeaderboardEntry {
   id: string;
   /**

@@ -1,6 +1,6 @@
 export type RateVerdict = { allowed: true } | { allowed: false; retryAfterSeconds: number };
 
-interface Window {
+interface Bucket {
   readonly startedAt: number;
   readonly count: number;
 }
@@ -10,7 +10,7 @@ interface Window {
  * counts and loses them on a cold start, so this caps a burst from one caller rather than enforcing an exact quota.
  */
 export function fixedWindowLimiter({ limit, windowMs, maxKeys }: { limit: number; windowMs: number; maxKeys: number }) {
-  const windows = new Map<string, Window>();
+  const windows = new Map<string, Bucket>();
 
   return (key: string, now: number): RateVerdict => {
     const current = windows.get(key);

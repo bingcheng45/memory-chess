@@ -1,11 +1,11 @@
 import { computeCurve } from "@/lib/lab/curve";
 import { PERSONA_TODAY, personaRounds, REVIEW_PERSONAS } from "@/lib/lab/personas";
-import { reviewQueue } from "@/lib/lab/review";
+import { playableQueue } from "@/lib/lab/reviewBoard";
 import { summarize } from "@/lib/lab/summary";
 
 function stateOf(name: (typeof REVIEW_PERSONAS)[number]) {
   const records = personaRounds(name);
-  const { due, doneToday, queued, next } = reviewQueue(records, PERSONA_TODAY, []);
+  const { due, doneToday, queued, next } = playableQueue(records, PERSONA_TODAY, []);
   const curve = computeCurve({ records, summary: summarize(records), today: PERSONA_TODAY });
   return { due: due.length, doneToday, queued, next, curve: curve.readiness.state, need: curve.readiness.need, points: curve.value?.points };
 }

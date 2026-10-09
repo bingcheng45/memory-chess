@@ -1,4 +1,5 @@
-import { reviewQueue, type OpenedReview } from "@/lib/lab/review";
+import type { OpenedReview } from "@/lib/lab/review";
+import { playableQueue as reviewQueue } from "@/lib/lab/reviewBoard";
 import { round, reviewedBoard, seenBoard } from "./fixtures";
 
 const BOARD_A = "4k3/8/8/3q4/8/5N2/8/4K3";
@@ -95,5 +96,11 @@ describe("the review queue", () => {
     expect(queue.doneToday).toBe(5);
     expect(queue.due.map(({ reviewOf }) => reviewOf)).toEqual(["m6"]);
     expect(reviewQueue([...boards, ...reviewed], "2026-10-03", opened).doneToday).toBe(0);
+  });
+
+  it("leaves out a board the game cannot load, such as one without a king from an imported file", () => {
+    const kingless = seenBoard("kingless", "2026-10-01", "8/8/8/3q4/8/5N2/8/8", "8/8/8/8/8/8/8/8");
+
+    expect(reviewQueue([kingless, missedA], "2026-10-02", NONE)).toMatchObject({ due: [{ reviewOf: "a" }], queued: 1 });
   });
 });

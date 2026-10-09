@@ -39,29 +39,29 @@ describe("the review and forgetting curve panel", () => {
     expect(playLink()).toBeNull();
   });
 
-  it("numbers the next review against the five a day and links to it at its own setting", () => {
+  it("numbers the next review against the five a day and links to it at its own setting", async () => {
     panel([seenBoard("a", "2026-10-08", BOARDS[0], KINGS)]);
 
-    expect(screen.getByRole("status")).toHaveTextContent("Review 1 of 5 today");
+    expect(await screen.findByRole("status")).toHaveTextContent("Review 1 of 5 today");
     expect(playLink()).toHaveAttribute("href", "/game?pieceCount=4&memorizeTime=10&source=review");
   });
 
-  it("counts the reviews played today into the number, without naming how many boards wait", () => {
+  it("counts the reviews played today into the number, without naming how many boards wait", async () => {
     const firsts = BOARDS.map((fen, index) => seenBoard(`b${index}`, "2026-10-07", fen, KINGS));
     panel([...firsts, reviewedBoard("r0", TODAY, firsts[0], 2), reviewedBoard("r1", TODAY, firsts[1], 2)]);
 
-    expect(screen.getByRole("status")).toHaveTextContent("Review 3 of 5 today");
+    expect(await screen.findByRole("status")).toHaveTextContent("Review 3 of 5 today");
     expect(screen.queryByText(/overdue|due for review/)).toBeNull();
   });
 
-  it("offers a month of missed boards one review at a time, never naming the pile", () => {
+  it("offers a month of missed boards one review at a time, never naming the pile", async () => {
     panel(personaRounds("thirtyDays"), PERSONA_TODAY);
 
-    expect(screen.getByRole("status")).toHaveTextContent(/^Review 1 of 5 today$/);
+    expect(await screen.findByRole("status")).toHaveTextContent(/^Review 1 of 5 today$/);
     expect(playLink()).not.toBeNull();
   });
 
-  it("says today's reviews are done once five boards were reviewed or opened today, with no link", () => {
+  it("says today's reviews are done once five boards were reviewed or opened today, with no link", async () => {
     const firsts = BOARDS.map((fen, index) => seenBoard(`b${index}`, "2026-10-07", fen, KINGS));
     window.localStorage.setItem(
       "memory-chess-lab-review-opened",
@@ -69,22 +69,29 @@ describe("the review and forgetting curve panel", () => {
     );
     panel([...firsts, ...firsts.map((first, index) => reviewedBoard(`r${index}`, TODAY, first, 2))]);
 
-    expect(screen.getByRole("status")).toHaveTextContent("Today's reviews done");
+    expect(await screen.findByRole("status")).toHaveTextContent("Today's reviews done");
     expect(playLink()).toBeNull();
   });
 
-  it("says when the next review comes once nothing is due today", () => {
+  it("says when the next review comes once nothing is due today", async () => {
     const missed = seenBoard("a", "2026-10-08", BOARDS[0], KINGS);
     panel([missed, reviewedBoard("a1", TODAY, missed, 1)]);
 
-    expect(screen.getByText("Next review in 2 days. 1 board in your queue.")).toBeInTheDocument();
+    expect(await screen.findByText("Next review in 2 days. 1 board in your queue.")).toBeInTheDocument();
     expect(playLink()).toBeNull();
   });
 
-  it("says how a board gets into the queue when none is in it", () => {
+  it("says how a board gets into the queue when none is in it", async () => {
     panel([seenBoard("a", "2026-10-08", BOARDS[0], BOARDS[0])]);
 
-    expect(screen.getByText("No boards to review yet. A board you score under 80% on comes back here the next day.")).toBeInTheDocument();
+    expect(await screen.findByText("No boards to review yet. A board you score under 80% on comes back here the next day.")).toBeInTheDocument();
+  });
+
+  it("never offers a board the game cannot load, such as one without a king from an imported file", async () => {
+    panel([seenBoard("kingless", "2026-10-08", "8/8/8/3q4/8/5N2/8/8", "8/8/8/8/8/8/8/8")]);
+
+    expect(await screen.findByText("No boards to review yet. A board you score under 80% on comes back here the next day.")).toBeInTheDocument();
+    expect(playLink()).toBeNull();
   });
 
   it("keeps the model while warming and says how many more reviews draw the first point", () => {

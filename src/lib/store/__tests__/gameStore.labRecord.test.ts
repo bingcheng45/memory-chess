@@ -1,6 +1,7 @@
 import { useGameStore } from "@/lib/store/gameStore";
 import { recordLabRound } from "@/lib/lab/recordRound";
 import { GAME_STORAGE_KEY } from "@/lib/game/configPrefill";
+import type { SetBoard } from "@/lib/types/game";
 
 jest.mock("@/lib/lab/recordRound", () => ({ recordLabRound: jest.fn(() => Promise.resolve(true)) }));
 
@@ -157,5 +158,31 @@ describe("lab record from a finished game round", () => {
 
     expect(shown).toBe(board.fen);
     expect(jest.mocked(recordLabRound).mock.calls[0][0]).toMatchObject({ targetFen: board.fen, startSource: "review", pieceCount: 4, board });
+  });
+
+  it("keeps the skill rating and win streak through a review round but still puts it in the history, while a daily round moves both", () => {
+    const fen = "4k3/8/8/8/8/8/8/4K3 w - - 0 1";
+    const playPerfect = (source: "daily" | "review", board: SetBoard) => {
+      useGameStore.getState().startGame(2, 10, source, board);
+      useGameStore.getState().endMemorizationPhase(10);
+      useGameStore.getState().startSolutionPhase();
+      useGameStore.getState().placePiece("e8", "k");
+      useGameStore.getState().placePiece("e1", "K");
+      useGameStore.getState().submitSolution(4);
+      const { skillRating, streak, accuracy } = useGameStore.getState().gameState;
+      useGameStore.getState().stopGame();
+      return { skillRating, streak, accuracy };
+    };
+    useGameStore.setState(({ gameState }) => ({ history: [], gameState: { ...gameState, skillRating: 1000, streak: 0 } }));
+
+    const review = playPerfect("review", { kind: "review", fen, reviewOf: "first-round", firstDay: "2026-10-06", step: 1 });
+    const daily = playPerfect("daily", { kind: "daily", day: "2026-10-09", fen });
+
+    expect(review).toEqual({ skillRating: 1000, streak: 0, accuracy: 100 });
+    expect(daily).toEqual({ skillRating: 1114, streak: 1, accuracy: 100 });
+    expect(useGameStore.getState().history.map(({ skillRatingChange, streak }) => [skillRatingChange, streak])).toEqual([
+      [114, 1],
+      [0, 0],
+    ]);
   });
 });

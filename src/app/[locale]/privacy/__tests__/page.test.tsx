@@ -100,6 +100,21 @@ describe("PrivacyPage", () => {
     expect(screen.queryByText(/never sent to Memory Chess or to analytics/)).not.toBeInTheDocument();
   });
 
+  it("says the reading card goes only to the clipboard and the record note is kept as seen", () => {
+    render(<PrivacyPage />);
+
+    expect(
+      screen.getByText(
+        /Only when you press Copy my reading does your browser put a short text on your clipboard with your memory span, and your pieces held and speed when the record can read them, each with its number of rounds\. It names no positions, squares or dates and is not sent anywhere\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Local storage also keeps the time the note about keeping your record in this browser first came into view, so the note is shown once\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
   it("says what a leaderboard standing check keeps on the device and sends, and only on a press", () => {
     render(<PrivacyPage />);
 

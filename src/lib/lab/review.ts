@@ -57,20 +57,38 @@ export function originOf({ first, reviews }: BoardHistory): { readonly reviewOf:
   return reviewOf === undefined || reviewDelayDays === undefined ? null : { reviewOf, firstDay: shiftDay(localDay, -reviewDelayDays) };
 }
 
-export const reviewKey = (reviewOf: string, step: number) => `${reviewOf}:${step}`;
+/** A review step started on this device. */
+export interface OpenedReview {
+  readonly reviewOf: string;
+  /** The last step the board's delay had passed when it was opened, so the board comes back at the step after it. */
+  readonly step: number;
+  /** The local day it was opened; null for a marker kept before days were. */
+  readonly day: string | null;
+}
 
 /**
- * The review steps started on this device, as reviewKey strings, newest last. Kept apart from the record for the same
- * reason as the daily board's marker: a review left before its result writes no round, yet its board has been seen.
+ * The review steps started on this device, newest last. Kept apart from the record for the same reason as the daily
+ * board's marker: a review left before its result writes no round, yet its board has been seen.
  */
 export const REVIEW_OPENED_KEY = "memory-chess-lab-review-opened";
 
-export function readReviewOpened(): ReadonlySet<string> {
+function parseOpened(value: unknown): OpenedReview | null {
+  if (typeof value === "string") {
+    const at = value.lastIndexOf(":");
+    const step = Number(value.slice(at + 1));
+    return at > 0 && Number.isInteger(step) ? { reviewOf: value.slice(0, at), step, day: null } : null;
+  }
+  if (typeof value !== "object" || value === null) return null;
+  const { reviewOf, step, day } = value as Record<string, unknown>;
+  return typeof reviewOf === "string" && Number.isInteger(step) && typeof day === "string" ? { reviewOf, step: step as number, day } : null;
+}
+
+export function readReviewOpened(): OpenedReview[] {
   try {
     const stored: unknown = JSON.parse(window.localStorage.getItem(REVIEW_OPENED_KEY) ?? "[]");
-    return new Set(Array.isArray(stored) ? stored.filter((key): key is string => typeof key === "string") : []);
+    return Array.isArray(stored) ? stored.flatMap((value) => parseOpened(value) ?? []) : [];
   } catch {
-    return new Set();
+    return [];
   }
 }
 
@@ -80,16 +98,18 @@ export const stepAfter = (delay: number): number => REVIEW_DAYS.filter((day) => 
 const missed = ({ accuracy, config }: RoundRecordV2) => accuracy < LAB_THRESHOLDS.reviewBelow && config.pieceCount >= LAB_THRESHOLDS.spanMinPieces;
 
 /**
- * `opened` holds the review keys started on this device: a step opened and left without a result is spent, like the
- * daily board. Boards first seen more than reviewWindowDays ago leave the queue, so a long break does not come back to a
+ * A step opened and left without a result counts like a review at the delay it was opened, as the daily board is spent
+ * once opened. Boards first seen more than reviewWindowDays ago leave the queue, so a long break does not come back to a
  * pile of old boards.
  */
-function itemOf(board: BoardHistory, today: string, opened: ReadonlySet<string>): ReviewItem | null {
+function itemOf(board: BoardHistory, today: string, opened: readonly OpenedReview[]): ReviewItem | null {
   if (board.first && !missed(board.first)) return null;
   const origin = originOf(board);
   if (!origin || daysBetween(origin.firstDay, today) > LAB_THRESHOLDS.reviewWindowDays) return null;
-  let step = stepAfter(Math.max(0, ...board.reviews.map(({ reviewDelayDays = 0 }) => reviewDelayDays)));
-  while (step < REVIEW_DAYS.length && opened.has(reviewKey(origin.reviewOf, step))) step += 1;
+  const step = Math.max(
+    stepAfter(Math.max(0, ...board.reviews.map(({ reviewDelayDays = 0 }) => reviewDelayDays))),
+    ...opened.flatMap(({ reviewOf, step: passed }) => (reviewOf === origin.reviewOf ? [passed + 1] : [])),
+  );
   if (step >= REVIEW_DAYS.length) return null;
   const shown = board.first ?? board.reviews[0];
   return {
@@ -104,7 +124,7 @@ function itemOf(board: BoardHistory, today: string, opened: ReadonlySet<string>)
 
 const byWait = (a: ReviewItem, b: ReviewItem) => a.dueDay.localeCompare(b.dueDay) || a.firstDay.localeCompare(b.firstDay) || a.reviewOf.localeCompare(b.reviewOf);
 
-export function reviewQueue(records: readonly RoundRecord[], today: string, opened: ReadonlySet<string>): ReviewQueue {
+export function reviewQueue(records: readonly RoundRecord[], today: string, opened: readonly OpenedReview[]): ReviewQueue {
   const queued = boardHistories(records)
     .flatMap((board) => itemOf(board, today, opened) ?? [])
     .sort(byWait);

@@ -1,7 +1,7 @@
 /** @jest-environment node */
 
 import { NextRequest } from "next/server";
-import { GET, POST } from "@/app/api/lab/backup/route";
+import { DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT } from "@/app/api/lab/backup/route";
 import { runBackup } from "@/lib/services/labBackupService";
 
 jest.mock("@/lib/services/labBackupService", () => ({ runBackup: jest.fn() }));
@@ -11,9 +11,9 @@ const SEALED = Buffer.alloc(29, 7).toString("base64");
 const SAVED_AT = "2026-10-09T12:00:00.000Z";
 let nextAddress = 0;
 
-function caller() {
+function caller(contentType = "application/json") {
   nextAddress += 1;
-  const headers = { "x-forwarded-for": `198.51.100.${nextAddress}`, "content-type": "application/json" };
+  const headers = { "x-forwarded-for": `198.51.100.${nextAddress}`, "content-type": contentType };
   return (body: unknown) =>
     POST(new NextRequest("http://localhost/api/lab/backup", { method: "POST", headers, body: typeof body === "string" ? body : JSON.stringify(body) }));
 }
@@ -37,10 +37,23 @@ describe("/api/lab/backup with the flag off", () => {
     expect(runBackup).not.toHaveBeenCalled();
   });
 
-  it("answers 404 to any other method too, so the route does not show it exists", async () => {
-    const response = await GET(new NextRequest("http://localhost/api/lab/backup"));
+  it("answers 404 with no body before checking the content type", async () => {
+    const response = await caller("text/plain")({ action: "get", lookup: LOOKUP });
 
-    expect(response.status).toBe(404);
+    expect([response.status, await response.text()]).toEqual([404, ""]);
+  });
+
+  it.each([
+    ["GET", GET],
+    ["PUT", PUT],
+    ["PATCH", PATCH],
+    ["DELETE", DELETE],
+    ["OPTIONS", OPTIONS],
+    ["HEAD", HEAD],
+  ])("answers %s with 404 and no body too, so the route does not show it exists", async (method, handler) => {
+    const response = await handler(new NextRequest("http://localhost/api/lab/backup", { method }));
+
+    expect([response.status, await response.text()]).toEqual([404, ""]);
   });
 });
 
@@ -90,6 +103,25 @@ describe("/api/lab/backup with the flag on", () => {
   ])("refuses %s without reaching the store", async (_, body) => {
     await expect(reply(await caller()(body))).resolves.toEqual({ status: 400, body: { error: "Invalid backup request" }, cache: "no-store" });
     expect(runBackup).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["text/plain", "text/plain"],
+    ["a form", "application/x-www-form-urlencoded"],
+    ["no content type", ""],
+  ])("refuses %s with 415 without reaching the store", async (_, contentType) => {
+    await expect(reply(await caller(contentType)({ action: "get", lookup: LOOKUP }))).resolves.toEqual({
+      status: 415,
+      body: { error: "Content-Type must be application/json" },
+      cache: "no-store",
+    });
+    expect(runBackup).not.toHaveBeenCalled();
+  });
+
+  it("accepts JSON with a charset", async () => {
+    jest.mocked(runBackup).mockResolvedValue({ status: "ok", data: null });
+
+    expect((await caller("application/json; charset=utf-8")({ action: "get", lookup: LOOKUP })).status).toBe(200);
   });
 
   it("refuses a body larger than the largest record before parsing it", async () => {

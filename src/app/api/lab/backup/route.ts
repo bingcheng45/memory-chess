@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { MAX_SEALED_CHARS, parseBackupRequest } from '@/lib/lab/backupRequest';
 import { runBackup } from '@/lib/services/labBackupService';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
-import { readBodyWithinLimit } from '@/lib/server/requestBody';
+import { isJson, readBodyWithinLimit } from '@/lib/server/requestBody';
 
 const REQUESTS_PER_MINUTE = 6;
 /** The largest record plus room for the action and lookup around it. */
@@ -25,8 +25,11 @@ function parseJson(text: string): unknown {
 }
 
 async function handle(request: NextRequest) {
-  // The same empty 404 as a path that does not exist, for every method, so the switched-off route reveals nothing.
+  // Switched off, every method gets an empty 404 before any other check, so no answer depends on the request.
   if (!isEnabled() || request.method !== 'POST') return new NextResponse(null, { status: 404 });
+
+  // Without a preflight another site can only POST text/plain or a form type, so this keeps it from using visitors' browsers.
+  if (!isJson(request.headers.get('content-type'))) return reply({ error: 'Content-Type must be application/json' }, 415);
 
   const verdict = allowRequest(clientAddress(request.headers), Date.now());
   if (!verdict.allowed) {
@@ -47,4 +50,4 @@ async function handle(request: NextRequest) {
   return reply({ data: result.data });
 }
 
-export { handle as GET, handle as POST, handle as PUT, handle as PATCH, handle as DELETE, handle as OPTIONS };
+export { handle as GET, handle as HEAD, handle as POST, handle as PUT, handle as PATCH, handle as DELETE, handle as OPTIONS };

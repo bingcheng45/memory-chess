@@ -1,3 +1,10 @@
+const JSON_MEDIA_TYPE = "application/json";
+
+/** Whether a Content-Type header names JSON, ignoring case and parameters such as charset. */
+export function isJson(contentType: string | null): boolean {
+  return contentType?.split(";")[0].trim().toLowerCase() === JSON_MEDIA_TYPE;
+}
+
 /** The body as text, or null once it passes `maxBytes`, counted as it streams so a body with no length cannot run long. */
 export async function readBodyWithinLimit(request: Request, maxBytes: number): Promise<string | null> {
   if (Number(request.headers.get("content-length")) > maxBytes) return null;

@@ -6,10 +6,9 @@ import {
   recordArticleEvent,
   type RecordArticleEventResult,
 } from "@/lib/services/articleStatsService";
-import { readBodyWithinLimit } from "@/lib/server/requestBody";
+import { isJson, readBodyWithinLimit } from "@/lib/server/requestBody";
 
 const MAX_BODY_BYTES = 64;
-const JSON_MEDIA_TYPE = "application/json";
 
 const ERRORS = {
   unknownArticle: { status: 404, error: "Unknown article" },
@@ -25,10 +24,6 @@ type RouteContext = { params: Promise<{ slug: string }> };
 function errorResponse(kind: keyof typeof ERRORS): NextResponse {
   const { status, error } = ERRORS[kind];
   return NextResponse.json({ error }, { status });
-}
-
-function isJson(contentType: string | null): boolean {
-  return contentType?.split(";")[0].trim().toLowerCase() === JSON_MEDIA_TYPE;
 }
 
 function parseEvent(body: string): ArticleEvent | null {

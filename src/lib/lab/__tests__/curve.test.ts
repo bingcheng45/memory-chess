@@ -36,7 +36,7 @@ describe("the measured forgetting curve", () => {
     });
   });
 
-  it("files a late review under the next delay up, and anything past a week under 14 days", () => {
+  it("files a late review under the step it was due at, the longest delay it has passed, and anything past two weeks under 14 days", () => {
     const records = [
       ...firstSights,
       ...firstSights.slice(0, 3).map((first, index) => reviewedBoard(`d2-${index}`, "2026-10-03", first, 2)),
@@ -44,7 +44,21 @@ describe("the measured forgetting curve", () => {
       ...firstSights.slice(0, 3).map((first, index) => reviewedBoard(`d20-${index}`, "2026-10-21", first, 20)),
     ];
 
-    expect(curveOf(records, "2026-10-21").value?.points.map(({ day, accuracy }) => [day, accuracy])).toEqual([[0, 50], [3, 100], [7, 50], [14, 100]]);
+    expect(curveOf(records, "2026-10-21").value?.points.map(({ day, accuracy }) => [day, accuracy])).toEqual([[0, 50], [1, 100], [3, 50], [14, 100]]);
+  });
+
+  it("keeps the on-time review that follows a late one, since the queue schedules it as the next step", () => {
+    const records = [
+      ...firstSights,
+      ...firstSights.slice(0, 3).map((first, index) => reviewedBoard(`d5-${index}`, "2026-10-06", first, 5, KINGS)),
+      ...firstSights.slice(0, 3).map((first, index) => reviewedBoard(`d7-${index}`, "2026-10-08", first, 7)),
+    ];
+
+    expect(curveOf(records).value?.points).toEqual([
+      { day: 0, accuracy: 50, count: 3 },
+      { day: 3, accuracy: 50, count: 3 },
+      { day: 7, accuracy: 100, count: 3 },
+    ]);
   });
 
   it("counts only the first review of a board at each delay, so a repeat the same day cannot lift the point", () => {

@@ -1,9 +1,12 @@
 import { mean, measured, readinessFor, type LabInput, type MetricResult } from "./engine";
 import { LAB_THRESHOLDS } from "./readiness";
-import { boardHistories } from "./review";
+import { boardHistories, REVIEW_DAYS } from "./review";
 
-/** Where the curve plots each delay: a review lands on the first of these at or past its delay, so late ones still count. */
-export const CURVE_DELAYS = [1, 3, 7, 14] as const;
+/**
+ * Where the curve plots each delay: the review steps. A late review lands on the longest step it has passed, the one the
+ * queue had it due at, so the next step's own review still has its point.
+ */
+const CURVE_DELAYS = REVIEW_DAYS;
 export type CurveDay = 0 | (typeof CURVE_DELAYS)[number];
 
 export interface CurvePoint {
@@ -24,7 +27,8 @@ export interface CurveValue {
 
 export const CURVE_THRESHOLDS = { reviews: LAB_THRESHOLDS.curveReviews };
 
-const delayOf = (days: number): CurveDay => CURVE_DELAYS.find((day) => days <= day) ?? CURVE_DELAYS[CURVE_DELAYS.length - 1];
+/** For a delay of at least one day. */
+const delayOf = (days: number): CurveDay => CURVE_DELAYS[CURVE_DELAYS.filter((day) => day <= days).length - 1];
 
 /**
  * Recall on the reviewed boards, at first sight and after each delay. First sight comes only from the round that first

@@ -25,6 +25,13 @@ describe("starting a review", () => {
     expect(reviewStart([checked], noonOn(2), new Set())).toMatchObject({ board: { fen: "4k3/8/8/8/8/8/8/4RK2 b - - 0 1" } });
   });
 
+  it("passes over a due board the game cannot load, such as one without a king from an imported file", () => {
+    const kingless = seenBoard("a-kingless", "2026-10-01", "8/8/8/3q4/8/5N2/8/8", "8/8/8/8/8/8/8/8");
+
+    expect(reviewStart([kingless, missed], noonOn(2), new Set())).toMatchObject({ kind: "play", board: { reviewOf: "first-round" } });
+    expect(reviewStart([kingless], noonOn(2), new Set())).toEqual({ kind: "none" });
+  });
+
   it("starts nothing when no board is due today", () => {
     expect(reviewStart([missed, reviewedBoard("r1", "2026-10-02", missed, 1)], noonOn(2), new Set())).toEqual({ kind: "none" });
     expect(reviewStart([missed], noonOn(2), new Set(["first-round:0"]))).toEqual({ kind: "none" });

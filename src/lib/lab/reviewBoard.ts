@@ -1,4 +1,4 @@
-import { Chess, SQUARES } from "chess.js";
+import { Chess, SQUARES, validateFen } from "chess.js";
 import type { SetBoard } from "@/lib/types/game";
 import { localDayOf, type RoundRecord } from "./record";
 import { readReviewOpened, REVIEW_OPENED_KEY, reviewKey, reviewQueue } from "./review";
@@ -23,11 +23,15 @@ function playableFen(board: string): string {
   return `${board} ${blackKing && chess.isAttacked(blackKing, "w") ? "b" : "w"} - - 0 1`;
 }
 
+/** An imported file is checked for shape, not for a legal position, so a due board the game cannot load is passed over. */
 export function reviewStart(records: readonly RoundRecord[], at: number, opened: ReadonlySet<string>): ReviewStart {
-  const [item] = reviewQueue(records, localDayOf(new Date(at)), opened).due;
-  if (!item) return { kind: "none" };
-  const { reviewOf, firstDay, step, fen, pieceCount, memorizeSeconds } = item;
-  return { kind: "play", pieceCount, memorizeTime: memorizeSeconds, board: { kind: "review", fen: playableFen(fen), reviewOf, firstDay, step } };
+  for (const { reviewOf, firstDay, step, fen, pieceCount, memorizeSeconds } of reviewQueue(records, localDayOf(new Date(at)), opened).due) {
+    const playable = playableFen(fen);
+    if (validateFen(playable).ok) {
+      return { kind: "play", pieceCount, memorizeTime: memorizeSeconds, board: { kind: "review", fen: playable, reviewOf, firstDay, step } };
+    }
+  }
+  return { kind: "none" };
 }
 
 /** Reads the record on this device for the board due next. Marks nothing: only the caller that starts the round knows it is played. */

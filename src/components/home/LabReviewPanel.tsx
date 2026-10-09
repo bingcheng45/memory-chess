@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { trackEvent } from "@/lib/analytics/events";
@@ -55,7 +55,7 @@ export function ReviewPanel({ result, records, today, daysAgo }: ReviewPanelProp
   const mine = useTags().mine;
   const { readiness, value } = result;
   const measured = hasFigure(readiness) && value ? value : null;
-  const queue = today ? reviewQueue(records, today, readReviewOpened()) : null;
+  const queue = useMemo(() => (today ? reviewQueue(records, today, readReviewOpened()) : null), [records, today]);
 
   return (
     <div className="lab-panel lab-p-curve">

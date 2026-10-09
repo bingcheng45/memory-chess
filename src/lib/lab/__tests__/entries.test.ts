@@ -89,8 +89,7 @@ describe("rememberEntry", () => {
   it("stores the submitted entry beside any kept for other difficulties", () => {
     window.localStorage.setItem(ENTRIES_KEY, JSON.stringify({ hard: { ...medium, id: ID_B, difficulty: "hard" } }));
 
-    rememberEntry(row, 1_000);
-
+    expect(rememberEntry(row, 1_000)).toBe(true);
     expect(JSON.parse(window.localStorage.getItem(ENTRIES_KEY) ?? "null")).toEqual({
       hard: { ...medium, id: ID_B, difficulty: "hard" },
       medium,
@@ -98,13 +97,13 @@ describe("rememberEntry", () => {
   });
 
   it("stores nothing for a reply it cannot read, and survives storage refusing the write", () => {
-    rememberEntry({ success: true }, 1_000);
+    const unreadable = rememberEntry({ success: true }, 1_000);
     const refuse = jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       throw new DOMException("full", "QuotaExceededError");
     });
-    expect(() => rememberEntry(row, 1_000)).not.toThrow();
+    const refused = rememberEntry(row, 1_000);
     refuse.mockRestore();
 
-    expect(window.localStorage.getItem(ENTRIES_KEY)).toBeNull();
+    expect([unreadable, refused, window.localStorage.getItem(ENTRIES_KEY)]).toEqual([false, false, null]);
   });
 });

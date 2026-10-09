@@ -9,7 +9,6 @@ jest.mock("@/lib/services/leaderboardService", () => ({ getStanding: jest.fn() }
 const ENTRY_ID = "0b5e8f7c-3c1a-4e2b-9d4f-1a2b3c4d5e6f";
 let nextAddress = 0;
 
-/** Each test calls from its own address, so the limiter's counts from one test never reach another. */
 function caller() {
   nextAddress += 1;
   const address = `203.0.113.${nextAddress}`;

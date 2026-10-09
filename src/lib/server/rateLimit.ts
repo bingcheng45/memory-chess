@@ -5,10 +5,7 @@ interface Bucket {
   readonly count: number;
 }
 
-/**
- * Counts calls per key in fixed windows, in this server instance's memory only. Each serverless instance keeps its own
- * counts and loses them on a cold start, so this caps a burst from one caller rather than enforcing an exact quota.
- */
+/** Counts live in one serverless instance's memory and reset on a cold start, so this caps bursts, not an exact quota. */
 export function fixedWindowLimiter({ limit, windowMs, maxKeys }: { limit: number; windowMs: number; maxKeys: number }) {
   const windows = new Map<string, Bucket>();
 
@@ -31,7 +28,7 @@ export function fixedWindowLimiter({ limit, windowMs, maxKeys }: { limit: number
   };
 }
 
-/** Vercel puts the caller first in x-forwarded-for. Without either header every caller shares one bucket. */
+/** Vercel puts the caller first in x-forwarded-for. */
 export function clientAddress(headers: Headers): string {
   const forwarded = headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   return forwarded || headers.get("x-real-ip") || "unknown";

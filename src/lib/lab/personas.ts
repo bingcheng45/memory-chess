@@ -256,14 +256,8 @@ export function personaChoices(name: PersonaName, today: string = PERSONA_TODAY)
   };
 }
 
-/** The player who has sent scores to the leaderboard: the rest of the cast never submitted, so it has no standing to check. */
 export const ENTRY_PERSONAS = ["thirtyDays"] as const satisfies readonly PersonaName[];
 
-/**
- * thirtyDays' kept entries, dated from `today`: Medium sent yesterday from a country with a long name, which is the
- * tallest state the panel loads in, and an older Hard entry sent with the world. The ids are fixed so a driver can
- * answer for them.
- */
 export function personaEntries(name: PersonaName, today: string = PERSONA_TODAY): StoredEntries | null {
   if (!(ENTRY_PERSONAS as readonly PersonaName[]).includes(name)) return null;
   const country = parseCountryCode("VC");

@@ -231,7 +231,6 @@
 .lab-chips span:first-child { background: var(--lab-ink); color: #fff; border-color: var(--lab-ink); }
 .lab-board-choice { margin-top: 12px; }
 .lab-board-check { margin-top: 14px; padding: 10px 16px; font-size: 15px; }
-/* Five lines hold the longest answer at 320px, so an answer arriving never moves the link under it. */
 .lab-board-status[data-reserve] { margin-top: 10px; min-height: 7.75em; min-height: 5lh; }
 .lab-empty { margin-top: 14px; padding: 14px; border: 1px dashed var(--lab-line-2); border-radius: var(--lab-radius-s); }
 .lab-heat i[data-thin] { background: var(--lab-sq-light); }

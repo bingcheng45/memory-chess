@@ -21,7 +21,6 @@ const BOARD_SKETCH = [
 
 type Translate = ReturnType<typeof useTranslations<"home.lab.record.board">>;
 
-/** The last rank read for one entry and scope in this page view, so the next press can say how it moved. */
 interface Seen {
   readonly rank: number;
   readonly checkedAt: number;
@@ -45,7 +44,6 @@ function statusOf(t: Translate, difficulty: string, { result, before }: Checked)
         country === null ? t("ranked", { rank, total, difficulty }) : t("rankedIn", { rank, total, difficulty, country: countryName(country, "en") }),
         t("checkedAt", { time: clock(result.checkedAt) }),
       ];
-      // The public board is the world's top rows, so only a world rank says whether the entry is on it.
       if (country === null) lines.push(t(rank <= LEADERBOARD_ROW_LIMIT ? "onBoard" : "offBoard", { limit: LEADERBOARD_ROW_LIMIT }));
       if (before) {
         const moved = before.rank - rank;
@@ -124,7 +122,6 @@ function Standing({ t, entries, check, onCheck }: { t: Translate; entries: Store
   );
 }
 
-/** Fig. 6.x: a Sample sketch of the board, or the player's own entries with their standing read on a press, never on load. */
 export function BoardPanel({ ready }: { ready: boolean }) {
   const t = useTranslations("home.lab.record.board");
   const presets = useTranslations("game.presets");

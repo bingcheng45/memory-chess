@@ -234,16 +234,12 @@ export type StandingResult =
   | { status: 'noCountry' }
   | { status: 'unavailable'; cause: unknown };
 
-/**
- * Three reads with no index or function beyond what the board already has: the entry, the entries ranked above it and
- * the entries in its bucket. The world counts use idx_leaderboard_ranking; a country count scans its difficulty.
- */
 export async function getStanding(id: string, scope: StandingScope): Promise<StandingResult> {
   if (!supabase) {
     return { status: 'unavailable', cause: 'Supabase is not configured' };
   }
   const client = supabase;
-  // select('*') rather than naming country_code, so the lookup still works where the country migration is outstanding.
+  // select('*'), not country_code by name: the column is absent where the country migration is outstanding.
   const found = await client.from('leaderboard_entries').select('*').eq('id', id).maybeSingle();
   if (found.error) {
     return { status: 'unavailable', cause: found.error };

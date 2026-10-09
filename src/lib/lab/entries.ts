@@ -1,18 +1,14 @@
 import { parseCountryCode, WORLD_CODE, type CountryCode } from "@/lib/leaderboard/countries";
 import { compareRanking, parseScore, type RankingScore } from "@/lib/leaderboard/ranking";
 import { isEntryId } from "@/lib/leaderboard/standing";
+import { isObject } from "./guards";
 import { isLeaderboardDifficulty, LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } from "@/types/leaderboard";
 
-/**
- * The player's own leaderboard entries, one per difficulty, so the lab record can ask where they stand. Kept on this
- * device apart from the round log and its export; the server only ever sees an id when the player asks for a standing.
- */
 export const ENTRIES_KEY = "memory-chess-lab-entries";
 
 export interface StoredEntry {
   readonly id: string;
   readonly difficulty: LeaderboardDifficulty;
-  /** The world code for an entry sent without a country, which then has only a world standing. */
   readonly country: CountryCode;
   readonly score: RankingScore;
   readonly submittedAt: number;
@@ -20,10 +16,6 @@ export interface StoredEntry {
 
 export type StoredEntries = Readonly<Partial<Record<LeaderboardDifficulty, StoredEntry>>>;
 
-// Not imported from transfer.ts, which would pull the record export code into the chunk /game loads on submit.
-const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
-
-/** The row the leaderboard returned for a submission, or null for a reply this version cannot read. */
 export function entryFromRow(row: unknown, submittedAt: number): StoredEntry | null {
   if (!isObject(row) || !isEntryId(row.id) || !isLeaderboardDifficulty(row.difficulty)) return null;
   const score = parseScore({
@@ -48,7 +40,6 @@ function parseEntry(raw: unknown, difficulty: LeaderboardDifficulty): StoredEntr
 
 const orNothing = (entries: StoredEntries): StoredEntries | null => (Object.keys(entries).length > 0 ? entries : null);
 
-/** Anything this version did not write is skipped one difficulty at a time, so a damaged value never hides the rest. */
 export function parseEntries(text: string | null): StoredEntries | null {
   if (text === null) return null;
   let raw: unknown;
@@ -65,7 +56,6 @@ export function parseEntries(text: string | null): StoredEntries | null {
   return orNothing(Object.fromEntries(kept));
 }
 
-/** The best entry on each difficulty is the one whose standing means most; a newer entry wins a tie. */
 export function withEntry(entries: StoredEntries | null, entry: StoredEntry): StoredEntries {
   const kept = entries?.[entry.difficulty];
   if (entries && kept && compareRanking(kept.score, entry.score) < 0) return entries;
@@ -76,14 +66,15 @@ export function withoutEntry(entries: StoredEntries, difficulty: LeaderboardDiff
   return orNothing(Object.fromEntries(Object.entries(entries).filter(([kept]) => kept !== difficulty)));
 }
 
-/** Called with the submit reply's `data`. A refused write leaves nothing stored, which reads as never submitted. */
-export function rememberEntry(row: unknown, now: number): void {
+/** False when the reply carries no entry or storage refuses the write; the score is on the board either way. */
+export function rememberEntry(row: unknown, now: number): boolean {
   const entry = entryFromRow(row, now);
-  if (entry === null) return;
+  if (entry === null) return false;
   try {
     const stored = parseEntries(window.localStorage.getItem(ENTRIES_KEY));
     window.localStorage.setItem(ENTRIES_KEY, JSON.stringify(withEntry(stored, entry)));
+    return true;
   } catch {
-    // Storage refused: the standing check is unavailable on this device, and the score itself is already on the board.
+    return false;
   }
 }

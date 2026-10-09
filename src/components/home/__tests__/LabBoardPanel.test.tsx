@@ -23,7 +23,6 @@ function keep(entries: object) {
   window.localStorage.setItem(ENTRIES_KEY, JSON.stringify(entries));
 }
 
-/** Answers each fetch in turn, shaped like a Response for the fields the client reads. */
 function answers(...replies: { status: number; body?: unknown; retryAfter?: string }[]) {
   const queue = [...replies];
   global.fetch = jest.fn(async () => {

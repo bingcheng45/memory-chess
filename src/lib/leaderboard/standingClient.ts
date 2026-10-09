@@ -3,7 +3,6 @@ import { parseStanding, type Standing, type StandingScope } from "./standing";
 const RANK_ENDPOINT = "/api/leaderboard/rank";
 const DEFAULT_WAIT_SECONDS = 60;
 
-/** What one press of "Check my standing" found. Only a rank or a missing entry carries the time it was learned. */
 export type StandingCheck =
   | { readonly kind: "ranked"; readonly standing: Standing; readonly checkedAt: number }
   | { readonly kind: "missing"; readonly checkedAt: number }

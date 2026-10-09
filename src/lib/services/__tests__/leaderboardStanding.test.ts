@@ -14,7 +14,7 @@ interface Board {
 const mockBoard: Board = { row: null, above: 0, total: 0 };
 const mockRequests: URL[] = [];
 
-/** Answers like PostgREST: one row for the id lookup, and a count in Content-Range for a HEAD count. */
+// PostgREST reports a HEAD count in Content-Range.
 function mockFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
   const url = new URL(typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url);
   mockRequests.push(url);

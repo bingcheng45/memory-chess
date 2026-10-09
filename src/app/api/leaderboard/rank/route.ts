@@ -8,11 +8,9 @@ const UNAVAILABLE = 'The leaderboard is unavailable. Please try again shortly.';
 const allowCheck = fixedWindowLimiter({ limit: CHECKS_PER_MINUTE, windowMs: 60_000, maxKeys: 5_000 });
 
 function reply(body: object, status = 200, headers: Record<string, string> = {}) {
-  // A standing is one player's, read on their press; nothing between them and the board may keep it.
   return NextResponse.json(body, { status, headers: { 'Cache-Control': 'no-store', ...headers } });
 }
 
-/** One entry's rank on its difficulty, worldwide or in its own country. Read only when a player asks for it. */
 export async function GET(request: NextRequest) {
   const verdict = allowCheck(clientAddress(request.headers), Date.now());
   if (!verdict.allowed) {

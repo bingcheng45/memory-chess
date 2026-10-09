@@ -1,6 +1,7 @@
 /** @jest-environment node */
+import { parseEntries } from "@/lib/lab/entries";
 import { IDBFactory } from "fake-indexeddb";
-import { exportPersona, memoryLabStore, PERSONA_NAMES, personaRounds, type PersonaName } from "@/lib/lab/personas";
+import { exportPersona, memoryLabStore, PERSONA_NAMES, personaEntries, personaRounds, type PersonaName } from "@/lib/lab/personas";
 import { positionId } from "@/lib/lab/record";
 import { PLACEMENT_KEEP } from "@/lib/lab/storage";
 import { parseImport } from "@/lib/lab/transfer";
@@ -111,5 +112,20 @@ describe("persona fixtures", () => {
     expect(placed[0].id).toBe("heavy-4503");
     expect(inOrder).toBe(true);
     expect(personaRounds("twoRounds")[1]).toMatchObject({ startSource: "try_again", removals: 0, placements: expect.any(Array) });
+  });
+});
+
+describe("personaEntries", () => {
+  it("gives thirtyDays a Medium and a Hard entry the app would read back, and the rest of the cast none", () => {
+    const entries = personaEntries("thirtyDays", "2026-10-08");
+
+    expect(parseEntries(JSON.stringify(entries))).toEqual(entries);
+    expect([entries?.medium?.country, entries?.medium?.submittedAt, entries?.hard?.country, entries?.hard?.submittedAt]).toEqual([
+      "VC",
+      Date.UTC(2026, 9, 7, 12),
+      "ZZ",
+      Date.UTC(2026, 9, 2, 12),
+    ]);
+    expect(personaEntries("twoRounds", "2026-10-08")).toBeNull();
   });
 });

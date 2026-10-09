@@ -4,6 +4,8 @@ import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
 import { seededRandom } from "@/lib/utils/seededRandom";
 import type { RoundSource } from "@/lib/analytics/events";
 import type { PlanId, StoredPlan, StoredTarget } from "./choices";
+import type { StoredEntries } from "./entries";
+import { parseCountryCode, WORLD_CODE } from "@/lib/leaderboard/countries";
 import { shiftDay } from "./engine";
 import { EDGE_RIG } from "./insights";
 import type { PlacementEvent } from "./placements";
@@ -251,6 +253,36 @@ export function personaChoices(name: PersonaName, today: string = PERSONA_TODAY)
   return {
     plan: plan ? { planId: plan.planId, startedDay: shiftDay(today, -plan.startedDaysAgo) } : null,
     target: target ? { pieceCount: target.pieceCount, accuracy: target.accuracy, createdDay: shiftDay(today, -target.createdDaysAgo) } : null,
+  };
+}
+
+/** The player who has sent scores to the leaderboard: the rest of the cast never submitted, so it has no standing to check. */
+export const ENTRY_PERSONAS = ["thirtyDays"] as const satisfies readonly PersonaName[];
+
+/**
+ * thirtyDays' kept entries, dated from `today`: Medium sent yesterday from a country with a long name, which is the
+ * tallest state the panel loads in, and an older Hard entry sent with the world. The ids are fixed so a driver can
+ * answer for them.
+ */
+export function personaEntries(name: PersonaName, today: string = PERSONA_TODAY): StoredEntries | null {
+  if (!(ENTRY_PERSONAS as readonly PersonaName[]).includes(name)) return null;
+  const country = parseCountryCode("VC");
+  if (country === null) throw new Error("VC is not a known country code");
+  return {
+    medium: {
+      id: "0b5e8f7c-3c1a-4e2b-9d4f-1a2b3c4d5e6f",
+      difficulty: "medium",
+      country,
+      score: { correctPieces: 6, totalWrongPieces: 0, memorizeTime: 8.4, solutionTime: 12.25 },
+      submittedAt: noonUtc(today, -1),
+    },
+    hard: {
+      id: "7d1f0a2e-5b6c-4d8e-8f9a-0b1c2d3e4f5a",
+      difficulty: "hard",
+      country: WORLD_CODE,
+      score: { correctPieces: 9, totalWrongPieces: 4, memorizeTime: 21.5, solutionTime: 40.75 },
+      submittedAt: noonUtc(today, -6),
+    },
   };
 }
 

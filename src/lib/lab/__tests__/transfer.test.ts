@@ -36,6 +36,7 @@ describe("lab record export and import", () => {
     ["unsorted days", { days: ["2026-10-08", "2026-10-07"] }],
     ["too many days", { days: Array.from({ length: 401 }, (_, i) => new Date(Date.UTC(2020, 0, 1 + i)).toISOString().slice(0, 10)) }],
     ["a best with an unknown setting", { bests: { "server:4x10": { accuracy: 50, correct: 1, solveMs: 1, at: 1, rounds: 1 } } }],
+    ["a best that is null", { bests: { "game:4x10": null } }],
     ["a best that is not a number", { bests: { "game:4x10": { accuracy: "100", correct: 1, solveMs: 1, at: 1, rounds: 1 } } }],
     ["a square count that is not finite", { squareShown: Array(64).fill(Infinity) }],
     ["a fractional watermark", { evictedThrough: 1.5 }],

@@ -3,6 +3,7 @@ import { ROUND_SOURCES, type RoundSource } from "@/lib/analytics/events";
 import { isPieceCode, MAX_PLACEMENT_MS, MAX_PLACEMENTS, MAX_REMOVALS, type PlacementEvent } from "./placements";
 import {
   buildRoundRecord,
+  isFreshReading,
   LAB_SOURCES,
   localDayOf,
   ROUND_KINDS,
@@ -14,7 +15,7 @@ import {
   type RoundRecord,
   type TypeCounts,
 } from "./record";
-import { isCount, MAX_DAYS, parseSummary, type ColorCounts, type LabSummary, type PersonalBest } from "./summary";
+import { freshRounds, isCount, MAX_DAYS, parseSummary, type ColorCounts, type LabSummary, type PersonalBest } from "./summary";
 import { PLACEMENT_KEEP, ROUND_CAP } from "./storage";
 import { isObject } from "./guards";
 
@@ -176,10 +177,11 @@ const colorTotal = ({ w, b }: ColorCounts) => w + b;
 
 /**
  * The file's lifetime summary, rebuilt field by field, or null if any part is
- * out of shape, it counts fewer rounds than the file holds, or it contradicts
- * itself: every counted round adds a day and a best, so rounds, days and
- * bests are empty together or not at all, and the colour counts split the
- * same pieces other than kings that the type counts hold.
+ * out of shape, it counts fewer rounds or fresh rounds than the file holds, or
+ * it contradicts itself: every counted round adds a day, so rounds and days are
+ * empty together or not at all; only a fresh round adds to a best, so the bests
+ * count no more rounds than were played; and the colour counts split the same
+ * pieces other than kings that the type counts hold.
  */
 function parseFileSummary(raw: unknown, rounds: readonly RoundRecord[], now: number): LabSummary | null {
   const summary = parseSummary(raw);
@@ -187,13 +189,14 @@ function parseFileSummary(raw: unknown, rounds: readonly RoundRecord[], now: num
   const bests = Object.entries(summary.bests);
   const played = summary.rounds > 0;
   const valid =
-    summary.rounds >= rounds.length &&
-    (summary.days.length > 0) === played &&
-    (bests.length > 0) === played &&
-    summary.days.length <= MAX_DAYS &&
-    summary.days.every((day, index) => isCalendarDay(day) && day <= localDayOf(new Date(now + DAY_MS)) && (index === 0 || summary.days[index - 1] < day)) &&
     bests.length <= MAX_BESTS &&
     bests.every(([key, best]) => BEST_KEY.test(key) && isBest(best)) &&
+    summary.rounds >= rounds.length &&
+    freshRounds(summary) >= rounds.filter(isFreshReading).length &&
+    freshRounds(summary) <= summary.rounds &&
+    (summary.days.length > 0) === played &&
+    summary.days.length <= MAX_DAYS &&
+    summary.days.every((day, index) => isCalendarDay(day) && day <= localDayOf(new Date(now + DAY_MS)) && (index === 0 || summary.days[index - 1] < day)) &&
     colorTotal(summary.colorShown) === nonKings(summary.typeShown) &&
     colorTotal(summary.colorMissed) === nonKings(summary.typeMissed) &&
     (summary.evictedThrough === null || summary.evictedThrough <= now + DAY_MS);

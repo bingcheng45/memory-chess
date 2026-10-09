@@ -42,9 +42,10 @@ export function boardHistories(records: readonly RoundRecord[]): BoardHistory[] 
   const boards = new Map<string, { first: RoundRecordV2 | null; reviews: RoundRecordV2[] }>();
   for (const record of byEndedAt(records)) {
     if (record.v !== 2) continue;
+    const isReview = record.kind === "review";
     const board = boards.get(record.positionId);
-    if (!board) boards.set(record.positionId, { first: record.kind === "review" ? null : record, reviews: record.kind === "review" ? [record] : [] });
-    else if (record.kind === "review") board.reviews.push(record);
+    if (!board) boards.set(record.positionId, { first: isReview ? null : record, reviews: isReview ? [record] : [] });
+    else if (isReview) board.reviews.push(record);
   }
   return [...boards.values()];
 }
@@ -74,14 +75,19 @@ export function readReviewOpened(): ReadonlySet<string> {
 }
 
 /** The step after the longest delay reviewed, so a late review skips the steps it passed and a second review at one step moves nothing. */
-const stepAfter = (delay: number) => REVIEW_DAYS.filter((day) => day <= delay).length;
+export const stepAfter = (delay: number): number => REVIEW_DAYS.filter((day) => day <= delay).length;
 
 const missed = ({ accuracy, config }: RoundRecordV2) => accuracy < LAB_THRESHOLDS.reviewBelow && config.pieceCount >= LAB_THRESHOLDS.spanMinPieces;
 
-/** `opened` holds the review keys started on this device: a step opened and left without a result is spent, like the daily board. */
-function itemOf(board: BoardHistory, opened: ReadonlySet<string>): ReviewItem | null {
+/**
+ * `opened` holds the review keys started on this device: a step opened and left without a result is spent, like the
+ * daily board. Boards first seen more than reviewWindowDays ago leave the queue, so a long break does not come back to a
+ * pile of old boards.
+ */
+function itemOf(board: BoardHistory, today: string, opened: ReadonlySet<string>): ReviewItem | null {
+  if (board.first && !missed(board.first)) return null;
   const origin = originOf(board);
-  if (!origin || (board.first && !missed(board.first))) return null;
+  if (!origin || daysBetween(origin.firstDay, today) > LAB_THRESHOLDS.reviewWindowDays) return null;
   let step = stepAfter(Math.max(0, ...board.reviews.map(({ reviewDelayDays = 0 }) => reviewDelayDays)));
   while (step < REVIEW_DAYS.length && opened.has(reviewKey(origin.reviewOf, step))) step += 1;
   if (step >= REVIEW_DAYS.length) return null;
@@ -98,11 +104,9 @@ function itemOf(board: BoardHistory, opened: ReadonlySet<string>): ReviewItem | 
 
 const byWait = (a: ReviewItem, b: ReviewItem) => a.dueDay.localeCompare(b.dueDay) || a.firstDay.localeCompare(b.firstDay) || a.reviewOf.localeCompare(b.reviewOf);
 
-/** Boards first seen more than reviewWindowDays ago leave the queue, so a long break does not come back to a pile of old boards. */
 export function reviewQueue(records: readonly RoundRecord[], today: string, opened: ReadonlySet<string>): ReviewQueue {
   const queued = boardHistories(records)
-    .flatMap((board) => itemOf(board, opened) ?? [])
-    .filter(({ firstDay }) => daysBetween(firstDay, today) <= LAB_THRESHOLDS.reviewWindowDays)
+    .flatMap((board) => itemOf(board, today, opened) ?? [])
     .sort(byWait);
   const due = queued.filter(({ dueDay }) => dueDay <= today);
   return {

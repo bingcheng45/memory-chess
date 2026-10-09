@@ -334,10 +334,13 @@ const METRIC_IDS = Object.keys(LAB_METRICS) as MetricId[];
 
 function readerFor(input: LabInput): ReadMetric {
   const results = new Map<MetricId, unknown>();
-  const fresh = { ...input, records: input.records.filter(isFreshReading) };
+  let fresh: LabInput | undefined;
   const read: ReadMetric = (id) => {
     const metric: MetricDef<unknown> = LAB_METRICS[id];
-    if (!results.has(id)) results.set(id, metric.compute(metric.readsReviews ? input : fresh, read));
+    if (!results.has(id)) {
+      const metricInput = metric.readsReviews ? input : (fresh ??= { ...input, records: input.records.filter(isFreshReading) });
+      results.set(id, metric.compute(metricInput, read));
+    }
     return results.get(id) as LabResults[typeof id];
   };
   return read;

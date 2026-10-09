@@ -1,13 +1,8 @@
 import { mean, measured, readinessFor, type LabInput, type MetricResult } from "./engine";
 import { LAB_THRESHOLDS } from "./readiness";
-import { boardHistories, REVIEW_DAYS } from "./review";
+import { boardHistories, REVIEW_DAYS, stepAfter } from "./review";
 
-/**
- * Where the curve plots each delay: the review steps. A late review lands on the longest step it has passed, the one the
- * queue had it due at, so the next step's own review still has its point.
- */
-const CURVE_DELAYS = REVIEW_DAYS;
-export type CurveDay = 0 | (typeof CURVE_DELAYS)[number];
+export type CurveDay = 0 | (typeof REVIEW_DAYS)[number];
 
 export interface CurvePoint {
   /** Days since first sight, 0 for the first sight itself. */
@@ -27,8 +22,11 @@ export interface CurveValue {
 
 export const CURVE_THRESHOLDS = { reviews: LAB_THRESHOLDS.curveReviews };
 
-/** For a delay of at least one day. */
-const delayOf = (days: number): CurveDay => CURVE_DELAYS[CURVE_DELAYS.filter((day) => day <= days).length - 1];
+/**
+ * Where the curve plots a delay of at least a day: the step the queue had the review due at, the longest one it has
+ * passed, so a late review leaves the next step's own review its point.
+ */
+const delayOf = (days: number): CurveDay => REVIEW_DAYS[stepAfter(days) - 1];
 
 /**
  * Recall on the reviewed boards, at first sight and after each delay. First sight comes only from the round that first
@@ -49,9 +47,13 @@ export function computeCurve(input: LabInput): MetricResult<CurveValue> {
     if (counted.size === 0) continue;
     boards += 1;
     if (first) firstSight.push(first.accuracy);
-    counted.forEach((accuracy, day) => byDay.set(day, [...(byDay.get(day) ?? []), accuracy]));
+    counted.forEach((accuracy, day) => {
+      const accuracies = byDay.get(day);
+      if (accuracies) accuracies.push(accuracy);
+      else byDay.set(day, [accuracy]);
+    });
   }
-  const delays = CURVE_DELAYS.map((day) => ({ day, accuracies: byDay.get(day) ?? [] }));
+  const delays = REVIEW_DAYS.map((day) => ({ day, accuracies: byDay.get(day) ?? [] }));
   const reviews = delays.reduce((sum, { accuracies }) => sum + accuracies.length, 0);
   const readiness = readinessFor(input, {
     sampleSize: reviews,
@@ -62,7 +64,7 @@ export function computeCurve(input: LabInput): MetricResult<CurveValue> {
 
   return measured(readiness, () => ({
     points: [{ day: 0 as const, accuracies: firstSight }, ...delays]
-      .filter(({ accuracies }) => accuracies.length >= LAB_THRESHOLDS.curveReviews)
+      .filter(({ accuracies }) => accuracies.length >= CURVE_THRESHOLDS.reviews)
       .map(({ day, accuracies }) => ({ day, accuracy: Math.round(mean(accuracies)), count: accuracies.length })),
     reviews,
     boards,

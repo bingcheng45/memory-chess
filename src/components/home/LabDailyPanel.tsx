@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { trackEvent } from "@/lib/analytics/events";
@@ -10,11 +10,11 @@ import type { RoundRecord, SquareOutcome } from "@/lib/lab/record";
 import type { StreakValue } from "@/lib/lab/streak";
 import { DailyResetsIn, useNow } from "./DailyResetsIn";
 import { figureOf, PanelHead, useTags } from "./LabRecordPanels";
+import { useCopyText } from "./useCopyText";
 
 const DAILY_HREF = playHref(DAILY_SETTING.pieceCount, DAILY_SETTING.memorizeTime, "daily");
 
 type Translate = ReturnType<typeof useTranslations<"home.lab.record.daily">>;
-type CopyState = "idle" | "copied" | "failed";
 
 function StreakLine({ t, streak }: { t: Translate; streak: StreakValue | null }) {
   if (!streak || streak.longest === 0) return null;
@@ -29,22 +29,8 @@ function counts(squares: string) {
 }
 
 function CopyResult({ t, round, day }: { t: Translate; round: DailyRound; day: string }) {
-  const textRef = useRef<HTMLPreElement>(null);
-  const [copy, setCopy] = useState<CopyState>("idle");
   const text = t("share", { day, correct: round.correct, pieceCount: round.config.pieceCount, accuracy: round.accuracy, row: shareRow(round.squares) });
-
-  useEffect(() => {
-    if (copy === "failed" && textRef.current) window.getSelection()?.selectAllChildren(textRef.current);
-  }, [copy]);
-
-  const copyResult = async () => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopy("copied");
-    } catch {
-      setCopy("failed");
-    }
-  };
+  const { state: copy, copy: copyResult, textRef } = useCopyText(text);
 
   return (
     <div className="lab-daily-share">

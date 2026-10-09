@@ -1,6 +1,5 @@
 const JSON_MEDIA_TYPE = "application/json";
 
-/** Whether a Content-Type header names JSON, ignoring case and parameters such as charset. */
 export function isJson(contentType: string | null): boolean {
   return contentType?.split(";")[0].trim().toLowerCase() === JSON_MEDIA_TYPE;
 }

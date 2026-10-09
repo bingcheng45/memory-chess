@@ -84,7 +84,7 @@ function parseOpened(value: unknown): OpenedReview | null {
   }
   if (typeof value !== "object" || value === null) return null;
   const { reviewOf, step, day } = value as Record<string, unknown>;
-  return typeof reviewOf === "string" && Number.isInteger(step) && typeof day === "string" ? { reviewOf, step: step as number, day } : null;
+  return typeof reviewOf === "string" && Number.isInteger(step) && (typeof day === "string" || day === null) ? { reviewOf, step: step as number, day } : null;
 }
 
 export function readReviewOpened(): OpenedReview[] {

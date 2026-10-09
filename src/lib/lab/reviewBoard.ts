@@ -1,13 +1,10 @@
 import { validateFen } from "chess.js";
 import type { SetBoard } from "@/lib/types/game";
 import { withSideToMove } from "@/lib/utils/memorizationPosition";
-import { daysBetween } from "./readiness";
+import { daysBetween, LAB_THRESHOLDS } from "./readiness";
 import { localDayOf, type RoundRecord } from "./record";
 import { readReviewOpened, REVIEW_OPENED_KEY, reviewQueue, reviewsDone, stepAfter, type OpenedReview, type ReviewQueue } from "./review";
 import { labStore } from "./storage";
-
-/** Far more steps than one player's queue holds at once, so a marker is only dropped long after its board has left the queue. */
-const OPENED_KEEP = 50;
 
 export type ReviewBoard = Extract<SetBoard, { kind: "review" }>;
 
@@ -49,9 +46,15 @@ export async function openReview(at: number): Promise<ReviewStart> {
 export function markReviewOpened({ reviewOf, firstDay }: ReviewBoard, at: number = Date.now()): void {
   const day = localDayOf(new Date(at));
   const step = stepAfter(daysBetween(firstDay, day)) - 1;
-  const kept = readReviewOpened().filter((opened) => opened.reviewOf !== reviewOf || opened.step !== step);
+  // A board leaves the queue reviewWindowDays after first sight and is opened no earlier, so an older marker marks no
+  // queued board. Markers without a day come only from the version before days were kept, which wrote at most 50.
+  const kept = readReviewOpened().filter(
+    (opened) =>
+      (opened.reviewOf !== reviewOf || opened.step !== step) &&
+      (opened.day === null || daysBetween(opened.day, day) <= LAB_THRESHOLDS.reviewWindowDays),
+  );
   try {
-    window.localStorage.setItem(REVIEW_OPENED_KEY, JSON.stringify([...kept, { reviewOf, step, day }].slice(-OPENED_KEEP)));
+    window.localStorage.setItem(REVIEW_OPENED_KEY, JSON.stringify([...kept, { reviewOf, step, day }]));
   } catch {
     // Without storage a review left before its result can be opened again, as every round could before.
   }

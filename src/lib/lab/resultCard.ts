@@ -46,7 +46,8 @@ export interface ResultCard {
   readonly vsRecent: VsRecent | null;
   readonly spanChange: SpanChange | null;
   readonly streak: StreakLine;
-  readonly next: NextStep;
+  /** Null on a review, which replays a board the player has seen rather than a setting to build on. */
+  readonly next: NextStep | null;
 }
 
 export interface ResultCardInput {
@@ -120,10 +121,11 @@ export function resultCardFor({ round, records, results, goal, days, today }: Re
   const streak = results.streak.value;
   if (!streak) return null;
   const key = settingKey(round.source, round.config);
-  const others = records.filter((record) => record.id !== round.id && settingKey(record.source, record.config) === key);
+  const fresh = isFreshReading(round);
+  const others = records.filter((record) => record.id !== round.id && isFreshReading(record) && settingKey(record.source, record.config) === key);
   return {
     newBest: newBestOf(round, others, results),
-    vsRecent: vsRecentOf(round, others),
+    vsRecent: fresh ? vsRecentOf(round, others) : null,
     spanChange: spanChangeOf(round, records),
     streak: {
       current: streak.current,
@@ -131,6 +133,6 @@ export function resultCardFor({ round, records, results, goal, days, today }: Re
       daysThisWeek: weekProgress(days, today, goal).daysPlayed,
       goal,
     },
-    next: nextOf(round, results),
+    next: fresh ? nextOf(round, results) : null,
   };
 }

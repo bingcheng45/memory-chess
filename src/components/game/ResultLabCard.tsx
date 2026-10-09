@@ -105,7 +105,8 @@ function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData;
   );
   if (!card) return <ResultLabEnd />;
 
-  const why = whyOf(t, card.next);
+  const { next } = card;
+  const why = next && whyOf(t, next);
   return (
     <section aria-labelledby="result-lab-title" className={`${RESULT_LAB_FRAME} flex flex-col gap-2`}>
       <header className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
@@ -124,10 +125,12 @@ function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData;
           </li>
         ))}
       </ul>
-      <p className="border-t border-bg-light pt-3 text-sm text-text-secondary">
-        <span className="font-semibold text-text-primary">{t("next.label")}.</span>
-        {why && ` ${why}`} <NextAction t={t} next={card.next} onPlay={onPlay} />
-      </p>
+      {next && (
+        <p className="border-t border-bg-light pt-3 text-sm text-text-secondary">
+          <span className="font-semibold text-text-primary">{t("next.label")}.</span>
+          {why && ` ${why}`} <NextAction t={t} next={next} onPlay={onPlay} />
+        </p>
+      )}
     </section>
   );
 }

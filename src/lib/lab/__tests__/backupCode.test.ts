@@ -1,6 +1,8 @@
 /** @jest-environment node */
 
-import { backupKeysOf, generateRecoveryCode, openRecord, parseRecoveryCode, sealRecord } from "@/lib/lab/backupCode";
+import { createDecipheriv, hkdfSync } from "node:crypto";
+import { gunzipSync } from "node:zlib";
+import { BackupUnsupportedError, backupKeysOf, generateRecoveryCode, openRecord, parseRecoveryCode, sealRecord } from "@/lib/lab/backupCode";
 import { MAX_SEALED_BYTES } from "@/lib/lab/backupRequest";
 
 const CODE = "7K2QM-9XRT4-VBN8H-D3WCF";
@@ -34,7 +36,25 @@ describe("recovery codes", () => {
 
 describe("backup keys", () => {
   it("derives the lookup the server hashes with HKDF-SHA-256 over the code's 20 characters", async () => {
-    expect((await keysOf(CODE)).lookup).toBe("GzS0Asu0aZQJ4xDR4UiO1fLsudFOtZo_eVr0gec2pVc");
+    const independent = Buffer.from(hkdfSync("sha256", "7K2QM9XRT4VBN8HD3WCF", "memory-chess-lab-backup/v1", "lookup", 32)).toString("base64url");
+
+    expect(independent).toBe("GzS0Asu0aZQJ4xDR4UiO1fLsudFOtZo_eVr0gec2pVc");
+    expect((await keysOf(CODE)).lookup).toBe(independent);
+  });
+
+  it("seals a record that Node opens with its own HKDF key, AES-256-GCM, the version and label as associated data, and gunzip", async () => {
+    const sealed = Buffer.from(await sealRecord(RECORD, (await keysOf(CODE)).key));
+    const key = Buffer.from(hkdfSync("sha256", "7K2QM9XRT4VBN8HD3WCF", "memory-chess-lab-backup/v1", "seal", 32));
+    const open = (associated: Buffer | null) => {
+      const decipher = createDecipheriv("aes-256-gcm", key, sealed.subarray(1, 13));
+      decipher.setAuthTag(sealed.subarray(-16));
+      if (associated) decipher.setAAD(associated);
+      return gunzipSync(Buffer.concat([decipher.update(sealed.subarray(13, -16)), decipher.final()])).toString("utf8");
+    };
+
+    expect(open(Buffer.concat([Buffer.from([1]), Buffer.from("memory-chess-lab-backup")]))).toBe(RECORD);
+    expect(() => open(null)).toThrow("Unsupported state or unable to authenticate data");
+    expect(() => open(Buffer.concat([Buffer.from([2]), Buffer.from("memory-chess-lab-backup")]))).toThrow("Unsupported state or unable to authenticate data");
   });
 
   it("opens only with the code that sealed it", async () => {
@@ -57,6 +77,16 @@ describe("backup keys", () => {
     expect(await openRecord(otherVersion, key)).toBeNull();
   });
 
+  it("stops inflating a record at the import cap and refuses it", async () => {
+    const { key } = await keysOf(CODE);
+    const bomb = " ".repeat(200_000);
+    const sealed = await sealRecord(bomb, key);
+
+    expect(sealed.length).toBeLessThan(1_000);
+    expect(await openRecord(sealed, key, 100_000)).toBeNull();
+    expect(await openRecord(sealed, key, 200_000)).toBe(bomb);
+  });
+
   it("compresses before sealing, so the largest record fits the 1 MiB cap", async () => {
     const { key } = await keysOf(CODE);
     const rounds = Array.from({ length: 5000 }, (_, index) => ({ id: `round-${index}`, targetFen: "4k3/8/8/3q4/8/5N2/8/4K3", accuracy: index % 101 }));
@@ -68,4 +98,29 @@ describe("backup keys", () => {
     expect(sealed.length).toBeLessThan(MAX_SEALED_BYTES / 10);
     expect(await openRecord(sealed, key)).toBe(large);
   });
+});
+
+describe("a browser without the crypto or compression the backup needs", () => {
+  it("refuses with a typed error when CompressionStream is missing", async () => {
+    const { key } = await keysOf(CODE);
+    const original = globalThis.CompressionStream;
+    Reflect.deleteProperty(globalThis, "CompressionStream");
+
+    try {
+      await expect(sealRecord(RECORD, key)).rejects.toBeInstanceOf(BackupUnsupportedError);
+    } finally {
+      globalThis.CompressionStream = original;
+    }
+  });
+
+  it("refuses with a typed error when crypto.subtle is missing", async () => {
+    jest.replaceProperty(globalThis, "crypto", { getRandomValues: crypto.getRandomValues.bind(crypto) } as Crypto);
+    const code = parseRecoveryCode(CODE);
+    if (!code) throw new Error("not a recovery code");
+
+    await expect(backupKeysOf(code)).rejects.toBeInstanceOf(BackupUnsupportedError);
+    await expect(backupKeysOf(code)).rejects.toThrow("This browser cannot encrypt a backup.");
+  });
+
+  afterEach(() => jest.restoreAllMocks());
 });

@@ -26,7 +26,7 @@ The server never learns the code and cannot read a backup.
 | Recovery code, 20 Crockford base32 characters, 100 random bits | The browser, `crypto.getRandomValues` | Nothing |
 | Lookup, HKDF-SHA-256 of the code, info `lookup` | The browser | The lookup in the request body, never in a URL, and only its SHA-256 in the table |
 | Sealing key, HKDF-SHA-256 of the code, info `seal`, AES-GCM 256 | The browser | Nothing |
-| Sealed record: version byte, 12-byte nonce, AES-GCM of the gzipped export | The browser | Ciphertext, its size and when it was written |
+| Sealed record: version byte, 12-byte nonce, AES-GCM of the gzipped export, with the version byte and the label `memory-chess-lab-backup` as associated data | The browser | Ciphertext, its size and when it was written |
 
 What a backup holds is exactly the export file, format `memory-chess-lab` version 2: rounds and lifetime totals. The kept leaderboard entry ids, the plan and goal choices, the daily and review markers and the install note stay out of the export today and so stay out of the backup.
 
@@ -40,7 +40,7 @@ Code in this PR:
 
 | Piece | File | Behaviour |
 | --- | --- | --- |
-| Client crypto | `src/lib/lab/backupCode.ts` | Code generation and parsing, HKDF lookup and key, seal and open. Nothing imports it yet. |
+| Client crypto | `src/lib/lab/backupCode.ts` | Code generation and parsing, HKDF lookup and key, seal and open. Opening stops inflating at the 5 MB import cap. A browser without Web Crypto or gzip streams gets `BackupUnsupportedError`. Nothing imports it yet. |
 | Request shape | `src/lib/lab/backupRequest.ts` | `put`, `get` or `delete`, with a 43-character base64url lookup. A `put` carries base64 of 29 bytes to 1 MiB and `expectedSavedAt`, the save it replaces or null for a first backup. |
 | Route | `src/app/api/lab/backup/route.ts` | Flag off: every method answers an empty 404 before any other check. Flag on: POST only, 415 unless the body is JSON, 6 requests a minute per address, 413 over the body cap, 400 for a bad request, 409 with the newer `savedAt` when the put lost a compare and swap, 503 with no cause when the store fails. |
 | Store calls | `src/lib/services/labBackupService.ts` | Server only. Calls the three functions with a service-role client made on first use. |

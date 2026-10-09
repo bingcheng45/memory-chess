@@ -100,6 +100,26 @@ describe("PrivacyPage", () => {
     expect(screen.queryByText(/never sent to Memory Chess or to analytics/)).not.toBeInTheDocument();
   });
 
+  it("says what a leaderboard standing check keeps on the device and sends, and only on a press", () => {
+    render(<PrivacyPage />);
+
+    expect(
+      screen.getByText(
+        /When you submit a score to the leaderboard, local storage on this device also keeps the id the leaderboard gives that entry, with its difficulty, country, score and the time you sent it, for your best entry on each difficulty\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Only when you press Check my standing in the lab record does your browser send that entry id to Memory Chess, with whether to rank it worldwide or within the entry's own country\. Memory Chess reads the entry from the leaderboard and replies with its rank and the number of entries it was ranked against\. The reply is not stored\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /To limit how often standing can be checked, the server counts checks from each IP address in its memory for one minute\. If the leaderboard no longer has the entry, its id is removed from this device\. Google Analytics receives an event that says a standing check was made, with no entry id and no rank\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
   it("claims no identifier the site does not create", () => {
     render(<PrivacyPage />);
 

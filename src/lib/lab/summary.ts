@@ -22,7 +22,7 @@ export interface ColorCounts {
  * and the miss map survive eviction. Every field is derivable from the log.
  */
 export interface LabSummary {
-  readonly v: 3;
+  readonly v: 4;
   readonly rounds: number;
   readonly days: readonly string[];
   readonly bests: Readonly<Record<string, PersonalBest>>;
@@ -38,7 +38,7 @@ export interface LabSummary {
 export const MAX_DAYS = 400;
 
 export const EMPTY_SUMMARY: LabSummary = {
-  v: 3,
+  v: 4,
   rounds: 0,
   days: [],
   bests: {},
@@ -83,7 +83,6 @@ export function beats(record: Scored, best: Scored | undefined): boolean {
 }
 
 function addBest(bests: LabSummary["bests"], record: RoundRecord): LabSummary["bests"] {
-  if (!isFreshReading(record)) return bests;
   const key = settingKey(record.source, record.config);
   const previous = bests[key];
   const best: PersonalBest = beats(record, previous)
@@ -92,16 +91,16 @@ function addBest(bests: LabSummary["bests"], record: RoundRecord): LabSummary["b
   return { ...bests, [key]: { ...best, rounds: (previous?.rounds ?? 0) + 1 } };
 }
 
-/** A review round is a round played, so it counts everywhere but the bests: its board is one the player has seen. */
+/** A review is a round played, so it counts in the rounds and days, but its board is one the player has seen, so it adds no best, sighting or miss. */
 export function addToSummary(summary: LabSummary, record: RoundRecord): LabSummary {
   const days = summary.days.includes(record.localDay)
     ? summary.days
     : [...summary.days, record.localDay].sort().slice(-MAX_DAYS);
+  const played = { ...summary, v: 4 as const, rounds: summary.rounds + 1, days };
+  if (!isFreshReading(record)) return played;
 
   return {
-    v: 3,
-    rounds: summary.rounds + 1,
-    days,
+    ...played,
     bests: addBest(summary.bests, record),
     squareShown: summary.squareShown.map((count, index) => count + (record.squares[index] === "." || record.squares[index] === "x" ? 0 : 1)),
     squareMissed: summary.squareMissed.map(
@@ -110,7 +109,6 @@ export function addToSummary(summary: LabSummary, record: RoundRecord): LabSumma
     typeShown: addCounts(summary.typeShown, record.shownByType),
     typeMissed: addCounts(summary.typeMissed, record.missedByType),
     ...addColors(summary, record),
-    evictedThrough: summary.evictedThrough,
   };
 }
 
@@ -137,7 +135,7 @@ export function parseSummary(raw: unknown): LabSummary | null {
   if (typeof raw !== "object" || raw === null) return null;
   const summary = raw as Record<string, unknown>;
   const valid =
-    summary.v === 3 &&
+    summary.v === 4 &&
     isCount(summary.rounds) &&
     Array.isArray(summary.days) &&
     summary.days.every((day) => typeof day === "string") &&

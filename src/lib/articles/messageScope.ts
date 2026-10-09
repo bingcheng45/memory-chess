@@ -31,13 +31,20 @@ export function splitClientMessages(messages: AbstractIntlMessages): ScopedMessa
   const { [ARTICLES_NAMESPACE]: articles, [HOME_NAMESPACE]: home, ...rest } = messages;
   const { [LAB_GROUP]: lab, ...homeShared } = typeof home === "object" ? home : {};
   const { [RESULT_CARD_GROUP]: resultCard, ...homeLab } = typeof lab === "object" ? lab : {};
-  const setBoards = Object.fromEntries([DAILY_GROUP, REVIEW_GROUP].flatMap((group) => (homeLab[group] === undefined ? [] : [[group, homeLab[group]]])));
+  const { [DAILY_GROUP]: daily, [REVIEW_GROUP]: review } = homeLab;
 
   return {
     shared: { ...rest, [HOME_NAMESPACE]: homeShared },
     articles,
     lab: lab === undefined ? {} : underLab(homeLab),
-    game: resultCard === undefined ? {} : underLab({ [RESULT_CARD_GROUP]: resultCard, ...setBoards }),
+    game:
+      resultCard === undefined
+        ? {}
+        : underLab({
+            [RESULT_CARD_GROUP]: resultCard,
+            ...(daily !== undefined && { [DAILY_GROUP]: daily }),
+            ...(review !== undefined && { [REVIEW_GROUP]: review }),
+          }),
   };
 }
 

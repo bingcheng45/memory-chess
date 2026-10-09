@@ -80,10 +80,10 @@ export function LabRecordTools({ record, card }: { record: LabRecord; card: Read
           {t("backup")}
         </button>
       </div>
-      {card && <LabReadingCard card={card} />}
       <p className="lab-note" role="status" data-kind={notice?.kind}>
         {notice?.text}
       </p>
+      {card && <LabReadingCard card={card} />}
     </div>
   );
 }

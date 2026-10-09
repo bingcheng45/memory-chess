@@ -59,6 +59,12 @@ describe("the reading card", () => {
     expect(window.getSelection()?.toString()).toBe(SPAN_CLIMBER_CARD);
   });
 
+  it("sits below the import notice, which stays the tools row's first status line", () => {
+    show("spanClimber");
+
+    expect([...document.querySelectorAll('.lab-tools [role="status"]')].map((node) => node.className)).toEqual(["lab-note", "lab-note lab-card-copied"]);
+  });
+
   it.each<[PersonaName, string]>([["newVisitor", ""], ["twoRounds", PERSONA_TODAY], ["stale", PERSONA_TODAY], ["thirtyDays", "2026-11-08"]])(
     "is not offered to %s, whose span is a sample, warming or stale",
     (name, today) => {

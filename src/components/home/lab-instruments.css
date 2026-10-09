@@ -96,14 +96,14 @@
  */
 .lab {
   --lab-h-unlock: 224px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
-  --lab-h-heat: 464px; --lab-h-streak: 616px; --lab-h-bests: 504px; --lab-h-types: 448px; --lab-h-tools: 208px;
+  --lab-h-heat: 464px; --lab-h-streak: 616px; --lab-h-bests: 504px; --lab-h-types: 448px; --lab-h-tools: 244px;
   --lab-h-insights: 344px; --lab-h-notebook: 408px; --lab-h-plans: 496px; --lab-h-goal: 304px; --lab-h-daily: 336px;
   --lab-h-curve: 632px; --lab-h-board: 648px; --lab-heat-w: 260px;
 }
 @media (max-width: 1000px) {
   .lab {
     --lab-h-unlock: 312px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 424px; --lab-h-speed: 512px;
-    --lab-h-heat: 528px; --lab-h-streak: 680px; --lab-h-bests: 920px; --lab-h-types: 528px; --lab-h-tools: 512px;
+    --lab-h-heat: 528px; --lab-h-streak: 680px; --lab-h-bests: 920px; --lab-h-types: 528px; --lab-h-tools: 544px;
     --lab-h-insights: 424px; --lab-h-notebook: 448px; --lab-h-plans: 968px; --lab-h-goal: 328px; --lab-h-daily: 360px;
     --lab-h-curve: 608px; --lab-h-board: 704px;
   }
@@ -111,7 +111,7 @@
 @media (max-width: 640px) {
   .lab {
     --lab-h-unlock: 408px; --lab-h-span: 544px; --lab-h-held: 504px; --lab-h-spark: 456px; --lab-h-speed: 544px;
-    --lab-h-heat: 528px; --lab-h-streak: 624px; --lab-h-bests: 592px; --lab-h-types: 528px; --lab-h-tools: 376px;
+    --lab-h-heat: 528px; --lab-h-streak: 624px; --lab-h-bests: 592px; --lab-h-types: 528px; --lab-h-tools: 408px;
     --lab-h-insights: 600px; --lab-h-notebook: 648px; --lab-h-plans: 1300px; --lab-h-goal: 464px; --lab-h-daily: 504px;
     --lab-h-curve: 648px; --lab-h-board: 648px;
   }

@@ -42,9 +42,12 @@ describe("review rounds in the rest of the record", () => {
     expect(lab.piecesHeld.readiness).toEqual({ state: "warming", sampleSize: 2, need: { rounds: 3 } });
   });
 
-  it("leave the notebook whole: the log holds every round the summary counts, so no older entries are missing", () => {
+  it("leave the notebook whole, and reach a streak milestone on a day played only by a review", () => {
     expect(lab.notebook.value).toEqual({
-      entries: [{ at: first.endedAt, kind: "firstRound", params: { day: 1, pieceCount: 6, accuracy: 33 } }],
+      entries: [
+        { at: reviews[1].endedAt, kind: "streak", params: { day: 3, days: 3, forgiven: 0 } },
+        { at: first.endedAt, kind: "firstRound", params: { day: 1, pieceCount: 6, accuracy: 33 } },
+      ],
       older: null,
     });
   });

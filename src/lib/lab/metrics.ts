@@ -307,6 +307,7 @@ export const LAB_METRICS: { readonly [K in MetricId]: MetricDef<LabValues[K]> & 
     id: "notebook",
     question: "What notable thing happened in your record, and when?",
     thresholds: NOTEBOOK_THRESHOLDS,
+    readsReviews: true,
     compute: (input, read = readerFor(input)) => computeNotebook(input, read("span"), read("goal")),
   },
   plans: {

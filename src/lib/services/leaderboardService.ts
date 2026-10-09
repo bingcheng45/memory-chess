@@ -2,6 +2,8 @@ import type { PostgrestError } from '@supabase/supabase-js';
 import { supabase, checkSupabaseConnection } from '@/lib/supabase';
 import { LEADERBOARD_ROW_LIMIT } from '@/lib/reference/facts';
 import { RANKING_ORDER, type BoardCutoff, type LeaderboardCutoffs } from '@/lib/leaderboard/ranking';
+import { rankedAboveFilter, type Standing, type StandingScope } from '@/lib/leaderboard/standing';
+import { WORLD_CODE } from '@/lib/leaderboard/countries';
 import {
   LEADERBOARD_DIFFICULTIES,
   type LeaderboardDifficulty,
@@ -224,4 +226,53 @@ export async function submitLeaderboardEntry(
     return { status: 'unavailable', cause: retry.error };
   }
   return { status: 'stored', entry: retry.data };
+}
+
+export type StandingResult =
+  | { status: 'ranked'; standing: Standing }
+  | { status: 'missing' }
+  | { status: 'noCountry' }
+  | { status: 'unavailable'; cause: unknown };
+
+export async function getStanding(id: string, scope: StandingScope): Promise<StandingResult> {
+  if (!supabase) {
+    return { status: 'unavailable', cause: 'Supabase is not configured' };
+  }
+  const client = supabase;
+  // select('*'), not country_code by name: the column is absent where the country migration is outstanding.
+  const found = await client.from('leaderboard_entries').select('*').eq('id', id).maybeSingle();
+  if (found.error) {
+    return { status: 'unavailable', cause: found.error };
+  }
+  const entry: LeaderboardEntry | null = found.data;
+  if (entry === null) {
+    return { status: 'missing' };
+  }
+  const country = scope === 'country' ? entry.country_code ?? WORLD_CODE : null;
+  if (country === WORLD_CODE) {
+    return { status: 'noCountry' };
+  }
+
+  const bucket = () => {
+    const ranked = client
+      .from('leaderboard_entries')
+      .select('id', { count: 'exact', head: true })
+      .eq('difficulty', entry.difficulty)
+      .gt('correct_pieces', 0);
+    return country === null ? ranked : ranked.eq('country_code', country);
+  };
+  const score = {
+    correctPieces: entry.correct_pieces,
+    totalWrongPieces: entry.total_wrong_pieces ?? null,
+    memorizeTime: entry.memorize_time,
+    solutionTime: entry.solution_time,
+  };
+  const [above, total] = await Promise.all([bucket().or(rankedAboveFilter(score)), bucket()]);
+  if (above.error || total.error || above.count === null || total.count === null) {
+    return { status: 'unavailable', cause: above.error ?? total.error ?? 'no count returned' };
+  }
+  return {
+    status: 'ranked',
+    standing: { difficulty: entry.difficulty, country, rank: above.count + 1, total: total.count },
+  };
 }

@@ -2,10 +2,13 @@
 
 import { useSyncExternalStore } from "react";
 import { parsePlan, parseTarget, PLAN_KEY, TARGET_KEY, type StoredPlan, type StoredTarget } from "@/lib/lab/choices";
+import { ENTRIES_KEY, parseEntries, type StoredEntries } from "@/lib/lab/entries";
 
 interface ChoiceStore<T> {
   useValue(): T | null;
   set(value: T | null): void;
+  /** Applies a change to what is stored now, not to a value read earlier. */
+  update(change: (current: T | null) => T | null): void;
   /** Clears the session fallback, so tests do not depend on the order they run in. */
   reset(): void;
 }
@@ -46,19 +49,22 @@ export function choiceStore<T>(key: string, parse: (text: string | null) => T | 
     };
   };
 
+  const set = (value: T | null) => {
+    const text = value === null ? null : JSON.stringify(value);
+    try {
+      if (text === null) window.localStorage.removeItem(key);
+      else window.localStorage.setItem(key, text);
+      thisSession = undefined;
+    } catch {
+      thisSession = text;
+    }
+    listeners.forEach((listener) => listener());
+  };
+
   return {
     useValue: () => useSyncExternalStore(subscribe, snapshot, () => null),
-    set(value) {
-      const text = value === null ? null : JSON.stringify(value);
-      try {
-        if (text === null) window.localStorage.removeItem(key);
-        else window.localStorage.setItem(key, text);
-        thisSession = undefined;
-      } catch {
-        thisSession = text;
-      }
-      listeners.forEach((listener) => listener());
-    },
+    set,
+    update: (change) => set(change(snapshot())),
     reset() {
       thisSession = undefined;
     },
@@ -67,3 +73,4 @@ export function choiceStore<T>(key: string, parse: (text: string | null) => T | 
 
 export const planChoice = choiceStore<StoredPlan>(PLAN_KEY, parsePlan);
 export const targetChoice = choiceStore<StoredTarget>(TARGET_KEY, parseTarget);
+export const entriesChoice = choiceStore<StoredEntries>(ENTRIES_KEY, parseEntries);

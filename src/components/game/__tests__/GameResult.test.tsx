@@ -296,6 +296,48 @@ describe("GameResult", () => {
       expect(window.gtag).toHaveBeenCalledTimes(1);
     });
 
+    it("keeps the entry the board stored on this device, so the lab record can ask for its standing", async () => {
+      window.localStorage.clear();
+      jest.spyOn(Date, "now").mockReturnValue(1_000);
+      const row = {
+        id: "0b5e8f7c-3c1a-4e2b-9d4f-1a2b3c4d5e6f",
+        player_name: "Poteto",
+        difficulty: "medium",
+        piece_count: 6,
+        correct_pieces: 4,
+        total_wrong_pieces: 2,
+        memorize_time: 8.25,
+        solution_time: 12.5,
+        country_code: "ZZ",
+        created_at: "2026-10-09T01:00:00Z",
+      };
+      global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true, data: row }) });
+
+      submitScore();
+
+      await waitFor(() => expect(window.localStorage.getItem("memory-chess-lab-entries")).not.toBeNull());
+      expect(JSON.parse(window.localStorage.getItem("memory-chess-lab-entries") ?? "null")).toEqual({
+        medium: {
+          id: "0b5e8f7c-3c1a-4e2b-9d4f-1a2b3c4d5e6f",
+          difficulty: "medium",
+          country: "ZZ",
+          score: { correctPieces: 4, totalWrongPieces: 2, memorizeTime: 8.25, solutionTime: 12.5 },
+          submittedAt: 1_000,
+        },
+      });
+    });
+
+    it("still says the score was submitted when the reply carries no entry it can keep", async () => {
+      window.localStorage.clear();
+      global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });
+
+      submitScore();
+
+      expect(await screen.findByRole("heading", { name: "Score Submitted!" })).toBeInTheDocument();
+      expect(screen.queryByText(/^Error:/)).toBeNull();
+      expect(window.localStorage.getItem("memory-chess-lab-entries")).toBeNull();
+    });
+
     it("stays silent when the server rejects the score", async () => {
       const logged = jest.spyOn(console, "error").mockImplementation(() => {});
       global.fetch = jest.fn().mockResolvedValue({

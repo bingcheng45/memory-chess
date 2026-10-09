@@ -304,6 +304,9 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         },
       });
       setSubmitSuccess(true);
+      void import("@/lib/lab/entries")
+        .then(async ({ rememberEntry }) => rememberEntry((await response.json())?.data, Date.now()))
+        .catch(() => undefined);
     } catch (err) {
       console.error("Error submitting to leaderboard:", err);
       setSubmitError(

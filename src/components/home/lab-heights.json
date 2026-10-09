@@ -62,7 +62,8 @@
       "goal": 449,
       "daily": 483,
       "tools": 360,
-      "curve": 626
+      "curve": 626,
+      "board": 625
     },
     "medium": {
       "unlock": 296,
@@ -80,7 +81,8 @@
       "goal": 314,
       "daily": 343,
       "tools": 496,
-      "curve": 586
+      "curve": 586,
+      "board": 684
     },
     "wide": {
       "unlock": 209,
@@ -98,7 +100,8 @@
       "goal": 291,
       "daily": 319,
       "tools": 196,
-      "curve": 614
+      "curve": 614,
+      "board": 625
     }
   },
   "tallest": {
@@ -149,7 +152,10 @@
     "wide tools": "colourSkew client 1024",
     "wide curve": "colourSkew client 1440",
     "medium curve": "colourSkew client 641",
-    "narrow curve": "colourSkew client 320"
+    "narrow curve": "colourSkew client 320",
+    "narrow board": "thirtyDays client 320",
+    "medium board": "thirtyDays client 641",
+    "wide board": "thirtyDays client 1024"
   },
   "empty": {
     "narrow": {
@@ -168,7 +174,8 @@
       "goal": 305,
       "daily": 367,
       "tools": 0,
-      "curve": 560
+      "curve": 560,
+      "board": 623
     },
     "medium": {
       "unlock": 295,
@@ -186,7 +193,8 @@
       "goal": 232,
       "daily": 269,
       "tools": 0,
-      "curve": 538
+      "curve": 538,
+      "board": 665
     },
     "wide": {
       "unlock": 186,
@@ -204,7 +212,8 @@
       "goal": 182,
       "daily": 246,
       "tools": 0,
-      "curve": 585
+      "curve": 585,
+      "board": 623
     }
   }
 }

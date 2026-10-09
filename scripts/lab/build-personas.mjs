@@ -5,8 +5,8 @@
  * Days count back from today, so streaks and staleness read the same on any day.
  * The players in AWAY also get a <name>Away copy built as if their last day were
  * one day past the welcome back threshold, so the greeting is measured and driven.
- * A persona with a chosen plan or goal carries it under `local`, the localStorage
- * entries the drivers write before loading the page. A daily board persona carries
+ * A persona with a chosen plan or goal, or kept leaderboard entries, carries them under
+ * `local`, the localStorage entries the drivers write before loading the page. A daily board persona carries
  * `clock`, noon UTC on its day, which the drivers set the browser's clock to, so its
  * board is today's in any time zone on any day. Import ignores both fields, and the
  * app's own export never writes them.
@@ -20,7 +20,8 @@ import { IDBFactory } from "fake-indexeddb";
 import "./ts-hooks.mjs";
 
 const fromSrc = (path) => import(pathToFileURL(join(process.cwd(), "src", path)).href);
-const { DAILY_PERSONAS, exportPersona, memoryLabStore, PERSONA_NAMES, personaChoices } = await fromSrc("lib/lab/personas.ts");
+const { DAILY_PERSONAS, exportPersona, memoryLabStore, PERSONA_NAMES, personaChoices, personaEntries } = await fromSrc("lib/lab/personas.ts");
+const { ENTRIES_KEY } = await fromSrc("lib/lab/entries.ts");
 const { PLAN_KEY, TARGET_KEY } = await fromSrc("lib/lab/choices.ts");
 const { localDayOf } = await fromSrc("lib/lab/record.ts");
 const { isCalendarDay } = await fromSrc("lib/lab/transfer.ts");
@@ -45,7 +46,7 @@ const builds = [...PERSONA_NAMES.map((name) => [name, name, today]), ...AWAY.map
 for (const [fileName, name, day] of builds) {
   const file = await exportPersona(name, memoryLabStore(new IDBFactory()), day, Date.now());
   const { plan, target } = personaChoices(name, day);
-  const local = Object.fromEntries([[PLAN_KEY, plan], [TARGET_KEY, target]].flatMap(([key, value]) => (value ? [[key, JSON.stringify(value)]] : [])));
+  const local = Object.fromEntries([[PLAN_KEY, plan], [TARGET_KEY, target], [ENTRIES_KEY, personaEntries(name, day)]].flatMap(([key, value]) => (value ? [[key, JSON.stringify(value)]] : [])));
   const clock = DAILY_PERSONAS.includes(name) ? { clock: Date.parse(`${day}T12:00:00Z`) } : {};
   const text = JSON.stringify({ ...file, ...(Object.keys(local).length > 0 && { local }), ...clock });
   for (const dir of outDirs) writeFileSync(join(resolve(dir), `${fileName}.json`), text);

@@ -16,6 +16,7 @@ import {
 } from "./record";
 import { isCount, MAX_DAYS, parseSummary, type ColorCounts, type LabSummary, type PersonalBest } from "./summary";
 import { PLACEMENT_KEEP, ROUND_CAP } from "./storage";
+import { isObject } from "./guards";
 
 const EXPORT_FORMAT = "memory-chess-lab";
 
@@ -60,7 +61,7 @@ const MAX_BESTS = 500;
 const MAX_TZ_OFFSET_MIN = 14 * 60;
 const MAX_REVIEW_DELAY_DAYS = 3650;
 
-export const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
+export { isObject };
 const rankWidth = (rank: string) => [...rank].reduce((width, char) => width + (Number(char) || 1), 0);
 const isFen = (value: unknown): value is string =>
   typeof value === "string" &&

@@ -2,14 +2,13 @@
 
 import { Fragment, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { useLabResults } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
 import { PANEL_ROWS, type CustomRow, type PanelId, type PanelRow } from "@/lib/lab/panels";
 import { daysBetween } from "@/lib/lab/readiness";
 import { welcomeBack } from "@/lib/lab/welcome";
-import { RANKED_DIFFICULTIES } from "@/lib/reference/facts";
-import { BestsPanel, figureOf, MissPanel, PanelHead, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
+import { BestsPanel, MissPanel, StreakPanel, TrendPanel, TypesPanel } from "./LabRecordPanels";
+import { BoardPanel } from "./LabBoardPanel";
 import { DailyPanel } from "./LabDailyPanel";
 import { InsightsPanel, NotebookPanel } from "./LabInsightPanels";
 import { GoalPanel, PlansPanel } from "./LabProgramPanels";
@@ -22,46 +21,7 @@ import { useFirstSight } from "./useFirstSight";
 import type { LabRecord } from "./useLabRecord";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
-const BOARD_SKETCH = [
-  { rank: "01", width: "86%", pieces: 12 },
-  { rank: "02", width: "74%", pieces: 10 },
-  { rank: "03", width: "61%", pieces: 8 },
-];
-
 const trackSectionView = () => trackEvent({ name: "lab_section_view", params: {} });
-
-function BoardPanel() {
-  const t = useTranslations("home.lab.record");
-  const tags = useTranslations("home.lab.tags");
-  const presets = useTranslations("game.presets");
-  return (
-    <div className="lab-panel lab-p-board">
-      <PanelHead fig={t("board.fig", { number: figureOf("board") })} tag={<span className="lab-tag lab-tag-blue">{tags("sample")}</span>} />
-      <h3>{t("board.title")}</h3>
-      <p className="lab-panel-desc">{t("board.desc")}</p>
-      <div className="lab-chips">
-        {RANKED_DIFFICULTIES.map((difficulty) => (
-          <span key={difficulty}>{presets(`${difficulty}.label`)}</span>
-        ))}
-      </div>
-      <div aria-hidden="true">
-        {BOARD_SKETCH.map(({ rank, width, pieces }) => (
-          <div className="lab-lb-row" key={rank}>
-            <span className="lab-mono">{rank}</span>
-            <span className="lab-lb-bar" style={{ width }} />
-            <span className="lab-mono lab-note">{t("board.sketchPieces", { count: pieces })}</span>
-          </div>
-        ))}
-      </div>
-      <p className="lab-note">
-        {t("board.countryFilter")} <span className="lab-tag">{tags("proposed")}</span>
-      </p>
-      <Link className="lab-go" href="/leaderboard">
-        {t("board.open")} →
-      </Link>
-    </div>
-  );
-}
 
 export function LabRecordSection({ record }: { record: LabRecord }) {
   const t = useTranslations("home.lab.record");
@@ -92,7 +52,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
     plans: <PlansPanel result={lab.plans} choosing={ready ? { today, records: record.records, plan } : null} daysAgo={daysAgo} />,
     goal: <GoalPanel result={lab.goal} today={ready ? today : null} daysAgo={daysAgo} />,
     bests: <BestsPanel result={lab.bests} daysAgo={daysAgo} />,
-    board: <BoardPanel />,
+    board: <BoardPanel ready={ready} />,
   };
   const rows: Record<CustomRow, ReactNode> = {
     tools: (

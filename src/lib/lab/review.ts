@@ -106,7 +106,7 @@ const missed = ({ accuracy, config }: RoundRecordV2) => accuracy < LAB_THRESHOLD
  * once opened. Boards first seen more than reviewWindowDays ago leave the queue, so a long break does not come back to a
  * pile of old boards.
  */
-function itemOf(board: BoardHistory, today: string, opened: readonly OpenedReview[]): ReviewItem | null {
+function itemOf(board: BoardHistory, today: string, opened: readonly OpenedReview[], playable: (fen: string) => boolean): ReviewItem | null {
   if (board.first && !missed(board.first)) return null;
   const origin = originOf(board);
   if (!origin || daysBetween(origin.firstDay, today) > LAB_THRESHOLDS.reviewWindowDays) return null;
@@ -114,8 +114,8 @@ function itemOf(board: BoardHistory, today: string, opened: readonly OpenedRevie
     stepAfter(Math.max(0, ...board.reviews.map(({ reviewDelayDays = 0 }) => reviewDelayDays))),
     ...opened.flatMap(({ reviewOf, step: passed }) => (reviewOf === origin.reviewOf ? [passed + 1] : [])),
   );
-  if (step >= REVIEW_DAYS.length) return null;
   const shown = board.first ?? board.reviews[0];
+  if (step >= REVIEW_DAYS.length || !playable(shown.targetFen)) return null;
   return {
     ...origin,
     step,
@@ -133,9 +133,15 @@ function doneOn(today: string, records: readonly RoundRecord[], opened: readonly
   return new Set([...reviewed, ...opened.flatMap(({ reviewOf, day }) => (day === today ? [reviewOf] : []))]).size;
 }
 
-export function reviewQueue(records: readonly RoundRecord[], today: string, opened: readonly OpenedReview[]): ReviewQueue {
+/** `playable` says whether the game can load a board, which takes chess.js, so it comes from the module that loads it. */
+export function reviewQueue(
+  records: readonly RoundRecord[],
+  today: string,
+  opened: readonly OpenedReview[],
+  playable: (fen: string) => boolean,
+): ReviewQueue {
   const queued = boardHistories(records)
-    .flatMap((board) => itemOf(board, today, opened) ?? [])
+    .flatMap((board) => itemOf(board, today, opened, playable) ?? [])
     .sort(byWait);
   return {
     due: queued.filter(({ dueDay }) => dueDay <= today),

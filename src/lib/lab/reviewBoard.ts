@@ -3,7 +3,7 @@ import type { SetBoard } from "@/lib/types/game";
 import { withSideToMove } from "@/lib/utils/memorizationPosition";
 import { daysBetween } from "./readiness";
 import { localDayOf, type RoundRecord } from "./record";
-import { readReviewOpened, REVIEW_OPENED_KEY, reviewQueue, reviewsDone, stepAfter, type OpenedReview } from "./review";
+import { readReviewOpened, REVIEW_OPENED_KEY, reviewQueue, reviewsDone, stepAfter, type OpenedReview, type ReviewQueue } from "./review";
 import { labStore } from "./storage";
 
 /** Far more steps than one player's queue holds at once, so a marker is only dropped long after its board has left the queue. */
@@ -17,18 +17,26 @@ export type ReviewStart =
 
 /**
  * The record keeps only a board's placement, so the side to move is set as the game's generator sets it. An imported
- * file is checked for shape, not for a legal position, so a due board the game cannot load is passed over.
+ * file is checked for shape, not for a legal position, so a board the game cannot load is left out of the queue.
  */
+function playableFen(placement: string): string | null {
+  const fen = withSideToMove(placement);
+  return fen && validateFen(fen).ok ? fen : null;
+}
+
+/** The review queue of the boards the game can load, which the home panel and /game both read. */
+export function playableQueue(records: readonly RoundRecord[], today: string, opened: readonly OpenedReview[]): ReviewQueue {
+  return reviewQueue(records, today, opened, (placement) => playableFen(placement) !== null);
+}
+
 export function reviewStart(records: readonly RoundRecord[], at: number, opened: readonly OpenedReview[]): ReviewStart {
-  const queue = reviewQueue(records, localDayOf(new Date(at)), opened);
+  const queue = playableQueue(records, localDayOf(new Date(at)), opened);
   if (reviewsDone(queue)) return { kind: "capped" };
-  for (const { reviewOf, firstDay, step, fen, pieceCount, memorizeSeconds } of queue.due) {
-    const playable = withSideToMove(fen);
-    if (playable && validateFen(playable).ok) {
-      return { kind: "play", pieceCount, memorizeTime: memorizeSeconds, board: { kind: "review", fen: playable, reviewOf, firstDay, step } };
-    }
-  }
-  return { kind: "none" };
+  const [next] = queue.due;
+  const fen = next && playableFen(next.fen);
+  if (!fen) return { kind: "none" };
+  const { reviewOf, firstDay, step, pieceCount, memorizeSeconds } = next;
+  return { kind: "play", pieceCount, memorizeTime: memorizeSeconds, board: { kind: "review", fen, reviewOf, firstDay, step } };
 }
 
 /** Reads the record on this device for the board due next. Marks nothing: only the caller that starts the round knows it is played. */

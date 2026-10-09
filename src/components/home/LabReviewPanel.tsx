@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useMemo } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { trackEvent } from "@/lib/analytics/events";
@@ -9,7 +9,7 @@ import type { CurvePoint } from "@/lib/lab/curve";
 import type { LabResults } from "@/lib/lab/metrics";
 import { daysBetween, hasFigure, LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import type { RoundRecord } from "@/lib/lab/record";
-import { readReviewOpened, REVIEW_DAILY_CAP, reviewQueue, reviewsDone, type ReviewQueue } from "@/lib/lab/review";
+import { readReviewOpened, REVIEW_DAILY_CAP, reviewsDone, type ReviewQueue } from "@/lib/lab/review";
 import { ForgettingCurve, MeasuredCurve } from "./LabCharts";
 import { figureOf, PanelHead, StaleNote, useTags } from "./LabRecordPanels";
 
@@ -59,7 +59,20 @@ export function ReviewPanel({ result, records, today, daysAgo }: ReviewPanelProp
   const mine = useTags().mine;
   const { readiness, value } = result;
   const measured = hasFigure(readiness) && value ? value : null;
-  const queue = useMemo(() => (today ? reviewQueue(records, today, readReviewOpened()) : null), [records, today]);
+  const [read, setRead] = useState<{ readonly today: string; readonly queue: ReviewQueue } | null>(null);
+  const queue = today && read?.today === today ? read.queue : null;
+
+  // The queue holds only boards the game can load, which takes chess.js, so it is read in its own chunk.
+  useEffect(() => {
+    if (!today) return;
+    let live = true;
+    import("@/lib/lab/reviewBoard")
+      .then(({ playableQueue }) => live && setRead({ today, queue: playableQueue(records, today, readReviewOpened()) }))
+      .catch(() => live && setRead(null));
+    return () => {
+      live = false;
+    };
+  }, [records, today]);
 
   return (
     <div className="lab-panel lab-p-curve">

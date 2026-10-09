@@ -1,9 +1,14 @@
+import "server-only";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { BackupData, BackupRequest } from "@/lib/lab/backupRequest";
 
 const SUPABASE_TIMEOUT_MS = 5000;
 
-export type BackupResult = { status: "ok"; data: BackupData } | { status: "unavailable"; cause: unknown };
+export type BackupResult =
+  | { status: "ok"; data: BackupData }
+  /** A put that expected an older save, or none: nothing was written, and savedAt is the save it missed. */
+  | { status: "conflict"; savedAt: string | null }
+  | { status: "unavailable"; cause: unknown };
 
 let client: SupabaseClient | null = null;
 
@@ -19,28 +24,31 @@ function serviceClient(): SupabaseClient {
   return client;
 }
 
-async function rpc(name: string, args: Record<string, string>): Promise<unknown> {
+async function rpc(name: string, args: Record<string, string | null>): Promise<unknown> {
   const { data, error } = await serviceClient().rpc(name, args).abortSignal(AbortSignal.timeout(SUPABASE_TIMEOUT_MS));
   if (error) throw error;
   return data;
 }
 
-async function call(request: BackupRequest): Promise<BackupData> {
+async function call(request: BackupRequest): Promise<BackupResult> {
   switch (request.action) {
-    case "put":
-      return { savedAt: String(await rpc("lab_backup_put", { p_lookup: request.lookup, p_sealed: request.sealed })) };
+    case "put": {
+      const args = { p_lookup: request.lookup, p_sealed: request.sealed, p_expected: request.expectedSavedAt };
+      const [row] = (await rpc("lab_backup_put", args)) as { saved_at: string | null; conflict: boolean }[];
+      return row.conflict ? { status: "conflict", savedAt: row.saved_at } : { status: "ok", data: { savedAt: String(row.saved_at) } };
+    }
     case "get": {
       const [row] = ((await rpc("lab_backup_get", { p_lookup: request.lookup })) ?? []) as { sealed: string; updated_at: string }[];
-      return row ? { sealed: row.sealed, savedAt: row.updated_at } : null;
+      return { status: "ok", data: row ? { sealed: row.sealed, savedAt: row.updated_at } : null };
     }
     case "delete":
-      return { deleted: (await rpc("lab_backup_delete", { p_lookup: request.lookup })) === true };
+      return { status: "ok", data: { deleted: (await rpc("lab_backup_delete", { p_lookup: request.lookup })) === true } };
   }
 }
 
 export async function runBackup(request: BackupRequest): Promise<BackupResult> {
   try {
-    return { status: "ok", data: await call(request) };
+    return await call(request);
   } catch (cause) {
     return { status: "unavailable", cause };
   }

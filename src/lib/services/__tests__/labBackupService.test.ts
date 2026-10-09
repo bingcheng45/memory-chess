@@ -35,7 +35,8 @@ describe("runBackup", () => {
     process.env.NEXT_PUBLIC_SUPABASE_URL = "https://example.supabase.co";
     process.env.SUPABASE_SERVICE_ROLE_KEY = "service-key";
     answers(
-      { data: "2026-10-09T12:00:00+00:00", error: null },
+      { data: [{ saved_at: "2026-10-09T12:00:00+00:00", conflict: false }], error: null },
+      { data: [{ saved_at: "2026-10-09T12:30:00.123456+00:00", conflict: true }], error: null },
       { data: [{ sealed: "AAAA", updated_at: "2026-10-09T12:00:00+00:00" }], error: null },
       { data: [], error: null },
       { data: true, error: null },
@@ -43,19 +44,22 @@ describe("runBackup", () => {
 
     expect(
       await Promise.all([
-        runBackup({ action: "put", lookup: LOOKUP, sealed: "AAAA" }),
+        runBackup({ action: "put", lookup: LOOKUP, sealed: "AAAA", expectedSavedAt: null }),
+        runBackup({ action: "put", lookup: LOOKUP, sealed: "AAAA", expectedSavedAt: "2026-10-09T12:00:00+00:00" }),
         runBackup({ action: "get", lookup: LOOKUP }),
         runBackup({ action: "get", lookup: LOOKUP }),
         runBackup({ action: "delete", lookup: LOOKUP }),
       ]),
     ).toEqual([
       { status: "ok", data: { savedAt: "2026-10-09T12:00:00+00:00" } },
+      { status: "conflict", savedAt: "2026-10-09T12:30:00.123456+00:00" },
       { status: "ok", data: { sealed: "AAAA", savedAt: "2026-10-09T12:00:00+00:00" } },
       { status: "ok", data: null },
       { status: "ok", data: { deleted: true } },
     ]);
     expect(rpc.mock.calls).toEqual([
-      ["lab_backup_put", { p_lookup: LOOKUP, p_sealed: "AAAA" }],
+      ["lab_backup_put", { p_lookup: LOOKUP, p_sealed: "AAAA", p_expected: null }],
+      ["lab_backup_put", { p_lookup: LOOKUP, p_sealed: "AAAA", p_expected: "2026-10-09T12:00:00+00:00" }],
       ["lab_backup_get", { p_lookup: LOOKUP }],
       ["lab_backup_get", { p_lookup: LOOKUP }],
       ["lab_backup_delete", { p_lookup: LOOKUP }],

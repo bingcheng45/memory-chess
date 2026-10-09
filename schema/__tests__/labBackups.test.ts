@@ -42,8 +42,15 @@ async function migrated(): Promise<Database> {
 }
 
 const codeOf = (result: SqlResult) => (result.ok ? null : result.code);
-const put = (db: Database, lookup: string, sealed: string, as = "service_role") =>
-  db.attempt(`SELECT public.lab_backup_put('${lookup}', '${sealed}') AS saved`, { as });
+const sqlText = (value: string | null) => (value === null ? "NULL" : `'${value}'`);
+const put = (db: Database, lookup: string, sealed: string, expected: string | null = null, as = "service_role") =>
+  db.attempt(`SELECT saved_at::text AS saved_at, conflict FROM public.lab_backup_put('${lookup}', '${sealed}', ${sqlText(expected)})`, { as });
+/** The time a put saved, as the text the route hands back to the browser, or the conflict it met. */
+async function putRow(db: Database, lookup: string, sealed: string, expected: string | null = null) {
+  const result = await put(db, lookup, sealed, expected);
+  if (!result.ok) throw new Error(`put failed with ${result.code}`);
+  return result.rows[0] as { saved_at: string | null; conflict: boolean };
+}
 const get = (db: Database, lookup: string) => db.rows(`SELECT sealed FROM public.lab_backup_get('${lookup}')`, { as: "service_role" });
 
 describe("0003 lab_backups", () => {
@@ -51,13 +58,35 @@ describe("0003 lab_backups", () => {
     const db = await migrated();
     const replaced = Buffer.alloc(40, 9).toString("base64");
 
-    expect((await put(db, LOOKUP, SEALED)).ok).toBe(true);
+    const first = await putRow(db, LOOKUP, SEALED);
     expect(await get(db, LOOKUP)).toEqual([{ sealed: SEALED }]);
-    expect((await put(db, LOOKUP, replaced)).ok).toBe(true);
+    expect((await putRow(db, LOOKUP, replaced, first.saved_at)).conflict).toBe(false);
     expect(await get(db, LOOKUP)).toEqual([{ sealed: replaced }]);
     expect(await get(db, OTHER_LOOKUP)).toEqual([]);
     expect(await db.rows(`SELECT public.lab_backup_delete('${LOOKUP}') AS deleted`, { as: "service_role" })).toEqual([{ deleted: true }]);
     expect(await db.rows(`SELECT public.lab_backup_delete('${LOOKUP}') AS deleted`, { as: "service_role" })).toEqual([{ deleted: false }]);
+    expect(await get(db, LOOKUP)).toEqual([]);
+  });
+
+  it("replaces a backup only for the device that saw its latest save, and tells the others when that was", async () => {
+    const db = await migrated();
+    const newer = Buffer.alloc(40, 9).toString("base64");
+    const stale = Buffer.alloc(50, 5).toString("base64");
+    const first = await putRow(db, LOOKUP, SEALED);
+    const second = await putRow(db, LOOKUP, newer, first.saved_at);
+
+    expect(first.conflict).toBe(false);
+    expect(second.conflict).toBe(false);
+    expect(second.saved_at === first.saved_at).toBe(false);
+    expect(await putRow(db, LOOKUP, stale, first.saved_at)).toEqual({ saved_at: second.saved_at, conflict: true });
+    expect(await putRow(db, LOOKUP, stale, null)).toEqual({ saved_at: second.saved_at, conflict: true });
+    expect(await get(db, LOOKUP)).toEqual([{ sealed: newer }]);
+  });
+
+  it("refuses a put that expects a backup no one has written", async () => {
+    const db = await migrated();
+
+    expect(await putRow(db, LOOKUP, SEALED, "2026-10-09 12:00:00+00")).toEqual({ saved_at: null, conflict: true });
     expect(await get(db, LOOKUP)).toEqual([]);
   });
 
@@ -95,7 +124,7 @@ describe("0003 lab_backups", () => {
 
     expect(codeOf(await db.attempt(`SELECT * FROM public.lab_backups`, { as: role }))).toBe(PERMISSION_DENIED);
     expect(codeOf(await db.attempt(`TRUNCATE public.lab_backups`, { as: role }))).toBe(PERMISSION_DENIED);
-    expect(codeOf(await put(db, OTHER_LOOKUP, SEALED, role))).toBe(PERMISSION_DENIED);
+    expect(codeOf(await put(db, OTHER_LOOKUP, SEALED, null, role))).toBe(PERMISSION_DENIED);
     expect(codeOf(await db.attempt(`SELECT * FROM public.lab_backup_get('${LOOKUP}')`, { as: role }))).toBe(PERMISSION_DENIED);
     expect(codeOf(await db.attempt(`SELECT public.lab_backup_delete('${LOOKUP}')`, { as: role }))).toBe(PERMISSION_DENIED);
     expect(codeOf(await db.attempt(`SELECT public.lab_backup_expire()`, { as: role }))).toBe(PERMISSION_DENIED);

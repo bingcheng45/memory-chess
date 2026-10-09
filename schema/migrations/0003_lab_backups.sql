@@ -36,13 +36,22 @@ REVOKE ALL ON public.lab_backups FROM anon, authenticated;
 
 -- The lookup arrives as 32 bytes in unpadded base64url. The sealed record
 -- arrives as base64 of at most 1 MiB, checked before decoding.
-CREATE OR REPLACE FUNCTION public.lab_backup_put(p_lookup TEXT, p_sealed TEXT)
-RETURNS TIMESTAMPTZ
+--
+-- A put is a compare and swap. p_expected is the saved time the device last
+-- read or wrote, NULL for a device that has never seen a backup under this
+-- lookup. The write happens only when that still matches, so a device that
+-- missed another device's backup cannot erase the newer rounds; it gets
+-- conflict = true with the saved time it missed, NULL if there is no backup,
+-- and has to restore before it backs up again. Each branch is one statement,
+-- so two puts racing on the same lookup cannot both win.
+CREATE OR REPLACE FUNCTION public.lab_backup_put(p_lookup TEXT, p_sealed TEXT, p_expected TIMESTAMPTZ)
+RETURNS TABLE (saved_at TIMESTAMPTZ, conflict BOOLEAN)
 LANGUAGE plpgsql
 SECURITY DEFINER
 SET search_path = ''
 AS $$
 DECLARE
+  v_hash BYTEA;
   v_saved TIMESTAMPTZ;
 BEGIN
   IF p_lookup IS NULL OR p_lookup !~ '^[A-Za-z0-9_-]{43}$' THEN
@@ -53,17 +62,27 @@ BEGIN
     RAISE EXCEPTION 'invalid backup size' USING ERRCODE = '22023';
   END IF;
 
-  INSERT INTO public.lab_backups AS backups (lookup_hash, sealed)
-  VALUES (
-    pg_catalog.sha256(pg_catalog.convert_to(p_lookup, 'UTF8')),
-    pg_catalog.decode(p_sealed, 'base64')
-  )
-  ON CONFLICT (lookup_hash) DO UPDATE SET
-    sealed = EXCLUDED.sealed,
-    updated_at = pg_catalog.now()
-  RETURNING backups.updated_at INTO v_saved;
+  v_hash := pg_catalog.sha256(pg_catalog.convert_to(p_lookup, 'UTF8'));
 
-  RETURN v_saved;
+  IF p_expected IS NULL THEN
+    INSERT INTO public.lab_backups AS backups (lookup_hash, sealed)
+    VALUES (v_hash, pg_catalog.decode(p_sealed, 'base64'))
+    ON CONFLICT (lookup_hash) DO NOTHING
+    RETURNING backups.updated_at INTO v_saved;
+  ELSE
+    -- Strictly later than the save it replaces, so the old time never matches again.
+    UPDATE public.lab_backups AS backups
+    SET sealed = pg_catalog.decode(p_sealed, 'base64'),
+        updated_at = GREATEST(pg_catalog.clock_timestamp(), backups.updated_at + INTERVAL '1 microsecond')
+    WHERE backups.lookup_hash = v_hash AND backups.updated_at = p_expected
+    RETURNING backups.updated_at INTO v_saved;
+  END IF;
+
+  IF v_saved IS NOT NULL THEN
+    RETURN QUERY SELECT v_saved, false;
+  ELSE
+    RETURN QUERY SELECT (SELECT backups.updated_at FROM public.lab_backups AS backups WHERE backups.lookup_hash = v_hash), true;
+  END IF;
 END;
 $$;
 
@@ -115,11 +134,11 @@ $$;
 
 -- A new function is executable by PUBLIC, and Supabase also grants anon and
 -- authenticated every function in public by default.
-REVOKE EXECUTE ON FUNCTION public.lab_backup_put(TEXT, TEXT) FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.lab_backup_put(TEXT, TEXT, TIMESTAMPTZ) FROM PUBLIC, anon, authenticated;
 REVOKE EXECUTE ON FUNCTION public.lab_backup_get(TEXT) FROM PUBLIC, anon, authenticated;
 REVOKE EXECUTE ON FUNCTION public.lab_backup_delete(TEXT) FROM PUBLIC, anon, authenticated;
 REVOKE EXECUTE ON FUNCTION public.lab_backup_expire() FROM PUBLIC, anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.lab_backup_put(TEXT, TEXT) TO service_role;
+GRANT EXECUTE ON FUNCTION public.lab_backup_put(TEXT, TEXT, TIMESTAMPTZ) TO service_role;
 GRANT EXECUTE ON FUNCTION public.lab_backup_get(TEXT) TO service_role;
 GRANT EXECUTE ON FUNCTION public.lab_backup_delete(TEXT) TO service_role;
 GRANT EXECUTE ON FUNCTION public.lab_backup_expire() TO service_role;

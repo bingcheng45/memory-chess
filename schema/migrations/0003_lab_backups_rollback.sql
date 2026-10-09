@@ -10,6 +10,6 @@
 DROP FUNCTION IF EXISTS public.lab_backup_expire();
 DROP FUNCTION IF EXISTS public.lab_backup_delete(TEXT);
 DROP FUNCTION IF EXISTS public.lab_backup_get(TEXT);
-DROP FUNCTION IF EXISTS public.lab_backup_put(TEXT, TEXT);
+DROP FUNCTION IF EXISTS public.lab_backup_put(TEXT, TEXT, TIMESTAMPTZ);
 
 DROP TABLE IF EXISTS public.lab_backups;

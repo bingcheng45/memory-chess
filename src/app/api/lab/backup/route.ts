@@ -43,11 +43,15 @@ async function handle(request: NextRequest) {
   if (!backup) return reply({ error: 'Invalid backup request' }, 400);
 
   const result = await runBackup(backup);
-  if (result.status === 'unavailable') {
-    console.error('Lab backup unavailable:', result.cause);
-    return reply({ error: 'Backup is unavailable. Please try again later.' }, 503);
+  switch (result.status) {
+    case 'unavailable':
+      console.error('Lab backup unavailable:', result.cause);
+      return reply({ error: 'Backup is unavailable. Please try again later.' }, 503);
+    case 'conflict':
+      return reply({ error: 'This backup changed on another device. Restore it, then back up again.', savedAt: result.savedAt }, 409);
+    case 'ok':
+      return reply({ data: result.data });
   }
-  return reply({ data: result.data });
 }
 
 export { handle as GET, handle as HEAD, handle as POST, handle as PUT, handle as PATCH, handle as DELETE, handle as OPTIONS };

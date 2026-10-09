@@ -12,9 +12,10 @@ The lab record lives in one browser. Clearing site data deletes it, Safari erase
 2. On the first press the browser makes a recovery code, such as `7K2QM-9XRT4-VBN8H-D3WCF`, and shows it once with Copy and a plain warning: whoever has the code can read and delete the backup, and a lost code cannot be recovered by anyone.
 3. The player confirms they saved it. Only then does the first upload run.
 4. On another device, Restore from a code takes the code and imports the record through the same rules as Import: adopt into an empty record, merge only new rounds into a non-empty one, never double count.
-5. Delete my backup removes it from the server at once.
+5. Every later backup restores first. The browser reads the backup, merges any rounds it lacks through the Import rules, and only then uploads, naming the save it read. If another device saved in between, the upload is refused and the browser restores again before retrying, so no device erases rounds it never saw.
+6. Delete my backup removes it from the server at once.
 
-The code is kept in this browser's local storage so later backups need no typing. Clearing browser data removes it, which is the same moment a player most needs it, so the copy in step 2 is the only way back.
+The code and the time of the last save this browser read or wrote are kept in this browser's local storage, so later backups need no typing. Clearing browser data removes it, which is the same moment a player most needs it, so the copy in step 2 is the only way back.
 
 ## Privacy model
 
@@ -40,11 +41,13 @@ Code in this PR:
 | Piece | File | Behaviour |
 | --- | --- | --- |
 | Client crypto | `src/lib/lab/backupCode.ts` | Code generation and parsing, HKDF lookup and key, seal and open. Nothing imports it yet. |
-| Request shape | `src/lib/lab/backupRequest.ts` | `put`, `get` or `delete`, with a 43-character base64url lookup and, for `put`, base64 of 29 bytes to 1 MiB. |
-| Route | `src/app/api/lab/backup/route.ts` | Flag off: every method answers an empty 404, the same as a missing path. Flag on: POST only, 6 requests a minute per address, 413 over the body cap, 400 for a bad request, 503 with no cause when the store fails. |
-| Store calls | `src/lib/services/labBackupService.ts` | Calls the three functions with a service-role client made on first use. |
+| Request shape | `src/lib/lab/backupRequest.ts` | `put`, `get` or `delete`, with a 43-character base64url lookup. A `put` carries base64 of 29 bytes to 1 MiB and `expectedSavedAt`, the save it replaces or null for a first backup. |
+| Route | `src/app/api/lab/backup/route.ts` | Flag off: every method answers an empty 404 before any other check. Flag on: POST only, 415 unless the body is JSON, 6 requests a minute per address, 413 over the body cap, 400 for a bad request, 409 with the newer `savedAt` when the put lost a compare and swap, 503 with no cause when the store fails. |
+| Store calls | `src/lib/services/labBackupService.ts` | Server only. Calls the three functions with a service-role client made on first use. |
 | Migration | `schema/migrations/0003_lab_backups.sql`, rollback beside it | Table `lab_backups`, row level security on, no policies, nothing granted to `anon` or `authenticated`. `lab_backup_put`, `lab_backup_get`, `lab_backup_delete` and `lab_backup_expire` are `SECURITY DEFINER` and executable by `service_role` only. |
-| Rehearsal | `schema/__tests__/labBackups.test.ts` | PGlite: round trip, hash only, size limits, web roles refused, expiry, re-run and rollback. |
+| Rehearsal | `schema/__tests__/labBackups.test.ts` | PGlite: round trip, compare and swap, hash only, size limits, web roles refused, expiry, re-run and rollback. |
+
+Conflicts. A put is a compare and swap on the save time. `lab_backup_put(lookup, sealed, expected)` writes only when `expected` matches the stored `updated_at`, or when `expected` is null and no backup exists. Otherwise it writes nothing and returns `conflict = true` with the stored time, null when there is no backup, and the route answers 409. Each branch is one statement, so of two devices racing on the same save exactly one wins. A successful put moves `updated_at` strictly forward, so an old time never matches again. The browser must send back the `savedAt` text exactly as it received it: Postgres keeps microseconds, and a value passed through a JavaScript `Date` loses them and never matches.
 
 Why service role. The anon key ships to every browser. A function granted to `anon` could be called straight from the Supabase REST API, skipping the route's flag, rate limit and size check. Granting only `service_role` keeps the route as the one way in.
 
@@ -69,7 +72,7 @@ The privacy test must assert this paragraph in the PR that turns the flag on, an
 
 ## Rolling back
 
-Set `LAB_BACKUP` off, which restores the empty 404 at once. Dropping the table with the rollback file deletes every backup, and a player whose browser data is gone has no other copy, so tell players and leave a month to download before running it.
+Set `LAB_BACKUP` off, which restores the empty 404 at once. The rollback file drops `lab_backup_put(TEXT, TEXT, TIMESTAMPTZ)` with the other functions. Dropping the table with the rollback file deletes every backup, and a player whose browser data is gone has no other copy, so tell players and leave a month to download before running it.
 
 ## Risks
 

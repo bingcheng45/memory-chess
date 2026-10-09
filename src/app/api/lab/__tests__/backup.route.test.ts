@@ -30,7 +30,7 @@ describe("/api/lab/backup with the flag off", () => {
   });
 
   it("answers 404 with no body to a well-formed backup, and never reaches the store", async () => {
-    const response = await caller()({ action: "put", lookup: LOOKUP, sealed: SEALED });
+    const response = await caller()({ action: "put", lookup: LOOKUP, sealed: SEALED, expectedSavedAt: null });
 
     expect(response.status).toBe(404);
     expect(await response.text()).toBe("");
@@ -74,12 +74,28 @@ describe("/api/lab/backup with the flag on", () => {
   it("stores a sealed record under its lookup, uncached", async () => {
     jest.mocked(runBackup).mockResolvedValue({ status: "ok", data: { savedAt: SAVED_AT } });
 
-    await expect(reply(await caller()({ action: "put", lookup: LOOKUP, sealed: SEALED }))).resolves.toEqual({
+    const ask = caller();
+
+    await expect(reply(await ask({ action: "put", lookup: LOOKUP, sealed: SEALED, expectedSavedAt: null }))).resolves.toEqual({
       status: 200,
       body: { data: { savedAt: SAVED_AT } },
       cache: "no-store",
     });
-    expect(jest.mocked(runBackup).mock.calls).toEqual([[{ action: "put", lookup: LOOKUP, sealed: SEALED }]]);
+    await ask({ action: "put", lookup: LOOKUP, sealed: SEALED, expectedSavedAt: "2026-10-09T11:00:00.123456+00:00" });
+    expect(jest.mocked(runBackup).mock.calls).toEqual([
+      [{ action: "put", lookup: LOOKUP, sealed: SEALED, expectedSavedAt: null }],
+      [{ action: "put", lookup: LOOKUP, sealed: SEALED, expectedSavedAt: "2026-10-09T11:00:00.123456+00:00" }],
+    ]);
+  });
+
+  it("refuses a put from a device that missed a newer backup with 409 and the time it missed", async () => {
+    jest.mocked(runBackup).mockResolvedValue({ status: "conflict", savedAt: SAVED_AT });
+
+    await expect(reply(await caller()({ action: "put", lookup: LOOKUP, sealed: SEALED, expectedSavedAt: null }))).resolves.toEqual({
+      status: 409,
+      body: { error: "This backup changed on another device. Restore it, then back up again.", savedAt: SAVED_AT },
+      cache: "no-store",
+    });
   });
 
   it("reads and deletes by lookup alone", async () => {
@@ -96,10 +112,13 @@ describe("/api/lab/backup with the flag on", () => {
     ["an unknown action", { action: "list", lookup: LOOKUP }],
     ["a short lookup", { action: "get", lookup: "abc" }],
     ["a padded lookup", { action: "get", lookup: `${LOOKUP.slice(1)}=` }],
-    ["a put with no record", { action: "put", lookup: LOOKUP }],
-    ["a record that is not base64", { action: "put", lookup: LOOKUP, sealed: "not base64!" }],
-    ["a record under the sealed minimum", { action: "put", lookup: LOOKUP, sealed: Buffer.alloc(28).toString("base64") }],
-    ["a record just over 1 MiB", { action: "put", lookup: LOOKUP, sealed: Buffer.alloc(1024 * 1024 + 1).toString("base64") }],
+    ["a put with no record", { action: "put", lookup: LOOKUP, expectedSavedAt: null }],
+    ["a put that does not say which save it replaces", { action: "put", lookup: LOOKUP, sealed: SEALED }],
+    ["a put whose expected save is not a timestamp", { action: "put", lookup: LOOKUP, sealed: SEALED, expectedSavedAt: "yesterday" }],
+    ["a put whose expected save has no time zone", { action: "put", lookup: LOOKUP, sealed: SEALED, expectedSavedAt: "2026-10-09T12:00:00" }],
+    ["a record that is not base64", { action: "put", lookup: LOOKUP, sealed: "not base64!", expectedSavedAt: null }],
+    ["a record under the sealed minimum", { action: "put", lookup: LOOKUP, sealed: Buffer.alloc(28).toString("base64"), expectedSavedAt: null }],
+    ["a record just over 1 MiB", { action: "put", lookup: LOOKUP, sealed: Buffer.alloc(1024 * 1024 + 1).toString("base64"), expectedSavedAt: null }],
   ])("refuses %s without reaching the store", async (_, body) => {
     await expect(reply(await caller()(body))).resolves.toEqual({ status: 400, body: { error: "Invalid backup request" }, cache: "no-store" });
     expect(runBackup).not.toHaveBeenCalled();
@@ -127,7 +146,7 @@ describe("/api/lab/backup with the flag on", () => {
   it("refuses a body larger than the largest record before parsing it", async () => {
     const sealed = Buffer.alloc(1024 * 1024 + 300).toString("base64");
 
-    await expect(reply(await caller()({ action: "put", lookup: LOOKUP, sealed }))).resolves.toEqual({
+    await expect(reply(await caller()({ action: "put", lookup: LOOKUP, sealed, expectedSavedAt: null }))).resolves.toEqual({
       status: 413,
       body: { error: "This record is too large to back up. Download it instead." },
       cache: "no-store",

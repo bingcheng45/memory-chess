@@ -270,12 +270,12 @@
 .lab .lab-tools-actions .lab-btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
 .lab-tools-warn { color: var(--lab-mark-ink); font-weight: 600; }
 .lab-tools .lab-note + .lab-note { margin-top: 4px; }
-.lab-card { grid-column: 1 / -1; }
-.lab-card summary { width: fit-content; cursor: pointer; }
-.lab-card summary:focus-visible { outline: 2px solid var(--lab-mark); outline-offset: 2px; }
-.lab-card-text { max-width: 60ch; margin: 12px 0 0; padding: 16px; font: 400 14px/1.5 var(--lab-sans); white-space: pre-wrap; overflow-wrap: anywhere; color: var(--lab-ink); background: var(--lab-bg); border: 1px solid var(--lab-line); border-radius: var(--lab-radius); }
-.lab-card .lab-btn { margin-top: 12px; padding: 10px 16px; font-size: 15px; }
-.lab-card-copied { min-height: 1.45em; margin-top: 4px; }
+.lab-reading-card { grid-column: 1 / -1; }
+.lab-reading-card summary { width: fit-content; cursor: pointer; }
+.lab-reading-card summary:focus-visible { outline: 2px solid var(--lab-mark); outline-offset: 2px; }
+.lab-reading-card-text { max-width: 60ch; margin: 12px 0 0; padding: 16px; font: 400 14px/1.5 var(--lab-sans); white-space: pre-wrap; overflow-wrap: anywhere; color: var(--lab-ink); background: var(--lab-bg); border: 1px solid var(--lab-line); border-radius: var(--lab-radius); }
+.lab-reading-card .lab-btn { margin-top: 12px; padding: 10px 16px; font-size: 15px; }
+.lab-reading-card-copied { min-height: 1.45em; margin-top: 4px; }
 .lab-nudge { display: grid; grid-template-columns: 1fr auto; gap: 12px 24px; align-items: start; margin-top: 12px; padding: 18px 22px; border: 1px dashed var(--lab-line-2); border-radius: var(--lab-radius-l); }
 .lab-nudge .lab-k { margin-bottom: 6px; }
 .lab-nudge .lab-note { margin-top: 6px; }

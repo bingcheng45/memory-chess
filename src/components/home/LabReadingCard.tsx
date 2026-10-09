@@ -27,15 +27,15 @@ export function LabReadingCard({ card }: { card: ReadingCard }) {
   const { state, copy, textRef } = useCopyText(text);
 
   return (
-    <details className="lab-card">
+    <details className="lab-reading-card">
       <summary className="lab-note">{t("open")}</summary>
-      <pre ref={textRef} className="lab-card-text">
+      <pre ref={textRef} className="lab-reading-card-text">
         {text}
       </pre>
       <button type="button" className="lab-btn lab-btn-secondary" onClick={copy}>
         {t("copy")}
       </button>
-      <p className="lab-note lab-card-copied" role="status">
+      <p className="lab-note lab-reading-card-copied" role="status">
         {state === "idle" ? "" : t(state === "copied" ? "copied" : "copyFailed")}
       </p>
     </details>

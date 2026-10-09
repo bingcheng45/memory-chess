@@ -34,7 +34,7 @@ describe("the reading card", () => {
 
     fireEvent.click(screen.getByText("Share my reading"));
 
-    expect(document.querySelector(".lab-card-text")?.textContent).toBe(SPAN_CLIMBER_CARD);
+    expect(document.querySelector(".lab-reading-card-text")?.textContent).toBe(SPAN_CLIMBER_CARD);
   });
 
   it("copies exactly the card shown, and only on a press", async () => {
@@ -62,7 +62,7 @@ describe("the reading card", () => {
   it("sits below the import notice, which stays the tools row's first status line", () => {
     show("spanClimber");
 
-    expect([...document.querySelectorAll('.lab-tools [role="status"]')].map((node) => node.className)).toEqual(["lab-note", "lab-note lab-card-copied"]);
+    expect([...document.querySelectorAll('.lab-tools [role="status"]')].map((node) => node.className)).toEqual(["lab-note", "lab-note lab-reading-card-copied"]);
   });
 
   it.each<[PersonaName, string]>([["newVisitor", ""], ["twoRounds", PERSONA_TODAY], ["stale", PERSONA_TODAY], ["thirtyDays", "2026-11-08"]])(

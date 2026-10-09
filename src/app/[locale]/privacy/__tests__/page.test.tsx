@@ -115,7 +115,7 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /To limit how often standing can be checked, the server counts checks from each IP address in its memory for one minute\. If the leaderboard no longer has the entry, its id is removed from this device\. Google Analytics receives an event that says a standing check was made, with no entry id and no rank\./,
+        /To limit how often standing can be checked, the server counts checks from each IP address in its memory for one minute, and drops an address at the first check after its minute is up\. If the leaderboard no longer has the entry, its id is removed from this device\. Google Analytics receives an event that says a standing check was made, with no entry id and no rank\./,
       ),
     ).toBeInTheDocument();
   });

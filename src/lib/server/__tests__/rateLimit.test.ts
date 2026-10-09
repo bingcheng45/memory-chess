@@ -23,6 +23,20 @@ describe("fixedWindowLimiter", () => {
 
     expect([allow("a", 1), allow("c", 1)]).toEqual([{ allowed: true }, { allowed: false, retryAfterSeconds: 60 }]);
   });
+
+  it("forgets an address at the first check after its window ends, even when that address never returns", () => {
+    const allow = fixedWindowLimiter({ limit: 1, windowMs: 60_000, maxKeys: 10 });
+    allow("a", 0);
+    allow("b", 30_000);
+    const kept = [allow.size()];
+
+    allow("c", 60_000);
+    kept.push(allow.size());
+    allow("c", 90_000);
+    kept.push(allow.size());
+
+    expect(kept).toEqual([2, 2, 1]);
+  });
 });
 
 describe("clientAddress", () => {

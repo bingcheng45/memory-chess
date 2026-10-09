@@ -1,5 +1,10 @@
-import { MAX_SEALED_BYTES, MIN_SEALED_BYTES } from "./backupCode";
 import { isObject } from "./guards";
+
+/** A sealed record is a version byte, a 12-byte AES-GCM nonce, then the ciphertext with its 16-byte tag. */
+export const NONCE_BYTES = 12;
+export const MIN_SEALED_BYTES = 1 + NONCE_BYTES + 16;
+/** The ciphertext cap the route and the migration enforce. */
+export const MAX_SEALED_BYTES = 1024 * 1024;
 
 /** What the backup route accepts. The lookup is the only trace of the recovery code that reaches the server. */
 export type BackupRequest =

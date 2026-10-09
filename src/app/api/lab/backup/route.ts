@@ -2,10 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { MAX_SEALED_CHARS, parseBackupRequest } from '@/lib/lab/backupRequest';
 import { runBackup } from '@/lib/services/labBackupService';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
+import { readBodyWithinLimit } from '@/lib/server/requestBody';
 
 const REQUESTS_PER_MINUTE = 6;
 /** The largest record plus room for the action and lookup around it. */
-const MAX_BODY_CHARS = MAX_SEALED_CHARS + 200;
+const MAX_BODY_BYTES = MAX_SEALED_CHARS + 200;
 const allowRequest = fixedWindowLimiter({ limit: REQUESTS_PER_MINUTE, windowMs: 60_000, maxKeys: 5_000 });
 
 /** Read on every request, so the backup stays off unless the deployment sets LAB_BACKUP=on. */
@@ -32,10 +33,8 @@ async function handle(request: NextRequest) {
     return reply({ error: 'Too many backup requests. Please wait a minute.' }, 429, { 'Retry-After': String(verdict.retryAfterSeconds) });
   }
 
-  const tooLarge = () => reply({ error: 'This record is too large to back up. Download it instead.' }, 413);
-  if (Number(request.headers.get('content-length')) > MAX_BODY_CHARS) return tooLarge();
-  const text = await request.text();
-  if (text.length > MAX_BODY_CHARS) return tooLarge();
+  const text = await readBodyWithinLimit(request, MAX_BODY_BYTES);
+  if (text === null) return reply({ error: 'This record is too large to back up. Download it instead.' }, 413);
 
   const backup = parseBackupRequest(parseJson(text));
   if (!backup) return reply({ error: 'Invalid backup request' }, 400);

@@ -4,18 +4,14 @@
  * seals the export before upload, so the server holds ciphertext it cannot read.
  */
 
+import { MIN_SEALED_BYTES, NONCE_BYTES } from "./backupRequest";
+
 // Crockford's base32: no I, L, O or U, so a code read aloud or retyped has fewer look-alikes.
 const ALPHABET = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
 const CODE_CHARS = 20;
 const GROUP = 5;
 const SALT = "memory-chess-lab-backup/v1";
 const SEAL_VERSION = 1;
-const NONCE_BYTES = 12;
-const TAG_BYTES = 16;
-
-/** The ciphertext cap the server and the migration enforce. */
-export const MAX_SEALED_BYTES = 1024 * 1024;
-export const MIN_SEALED_BYTES = 1 + NONCE_BYTES + TAG_BYTES;
 
 export type RecoveryCode = string & { readonly __brand: "RecoveryCode" };
 

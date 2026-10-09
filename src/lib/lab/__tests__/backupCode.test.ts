@@ -1,6 +1,7 @@
 /** @jest-environment node */
 
-import { backupKeysOf, generateRecoveryCode, MAX_SEALED_BYTES, openRecord, parseRecoveryCode, sealRecord } from "@/lib/lab/backupCode";
+import { backupKeysOf, generateRecoveryCode, openRecord, parseRecoveryCode, sealRecord } from "@/lib/lab/backupCode";
+import { MAX_SEALED_BYTES } from "@/lib/lab/backupRequest";
 
 const CODE = "7K2QM-9XRT4-VBN8H-D3WCF";
 const keysOf = (typed: string) => {

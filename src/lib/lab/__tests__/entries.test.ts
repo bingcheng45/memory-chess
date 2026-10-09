@@ -59,11 +59,14 @@ describe("withEntry", () => {
 });
 
 describe("withoutEntry", () => {
-  it("drops one difficulty, and reads an empty set as nothing stored", () => {
+  it("drops the entry only while its difficulty still holds that id, and reads an empty set as nothing stored", () => {
     const hard = { ...medium, id: ID_B, difficulty: "hard" as const };
+    const newerMedium = { ...medium, id: ID_B };
 
-    expect(withoutEntry({ medium, hard }, "medium")).toEqual({ hard });
-    expect(withoutEntry({ medium }, "medium")).toBeNull();
+    expect(withoutEntry({ medium, hard }, medium)).toEqual({ hard });
+    expect(withoutEntry({ medium }, medium)).toBeNull();
+    expect(withoutEntry({ medium: newerMedium, hard }, medium)).toEqual({ medium: newerMedium, hard });
+    expect(withoutEntry(null, medium)).toBeNull();
   });
 });
 

@@ -137,6 +137,25 @@ describe("BoardPanel", () => {
     expect(screen.getByText("Sample")).toBeInTheDocument();
   });
 
+  it("re-reads the device when the board answers, so it keeps entries another tab saved meanwhile and drops only the checked id", async () => {
+    const newerMedium = { ...medium, id: "c3d4e5f6-0718-4a29-8b3c-4d5e6f708192", submittedAt: Date.UTC(2026, 9, 9, 18) };
+    const stored = [];
+    for (const meanwhile of [{ medium, hard }, { medium: newerMedium }]) {
+      keep({ medium });
+      let finish: (value: unknown) => void = () => {};
+      global.fetch = jest.fn(() => new Promise((resolve) => (finish = resolve))) as unknown as typeof fetch;
+      const { unmount } = renderWithIntl(<BoardPanel ready />);
+
+      fireEvent.click(screen.getByRole("button", { name: "Check my standing" }));
+      keep(meanwhile);
+      await act(async () => finish({ status: 404, ok: false, headers: { get: () => null }, json: async () => ({}) }));
+      stored.push(JSON.parse(window.localStorage.getItem(ENTRIES_KEY) ?? "null"));
+      unmount();
+    }
+
+    expect(stored).toEqual([{ hard }, { medium: newerMedium }]);
+  });
+
   it("says plainly when checks are limited, the browser is offline, or the board cannot be reached", async () => {
     keep({ medium });
     answers({ status: 429, retryAfter: "37" }, { status: 503 });

@@ -19,6 +19,12 @@ export const LAB_THRESHOLDS = {
   movingAverage: 5,
   /** Recall under this share marks a piece type weak, in the chart and in the insights. */
   weakRecall: 0.5,
+  /** A board scored under this comes back for review. */
+  reviewBelow: 80,
+  /** Days after first sight a board stays in the review queue. */
+  reviewWindowDays: 28,
+  /** Reviews behind a point before the forgetting curve plots it. */
+  curveReviews: 3,
 } as const;
 
 /**
@@ -38,6 +44,8 @@ export interface Need {
   readonly largerRounds?: number;
   /** Rounds with at least one piece right and a rebuild time, the only rounds speed can read. */
   readonly rightRounds?: number;
+  /** Reviews at one delay, the most any point of the forgetting curve has. */
+  readonly reviews?: number;
 }
 
 export interface Readiness {
@@ -59,7 +67,7 @@ interface ReadinessInput {
 }
 
 export const DAY_MS = 24 * 60 * 60 * 1000;
-const NEED_KEYS = ["rounds", "days", "exposures", "qualifyingRounds", "largerRounds", "rightRounds"] as const;
+const NEED_KEYS = ["rounds", "days", "exposures", "qualifyingRounds", "largerRounds", "rightRounds", "reviews"] as const;
 
 const utcDay = (day: string) => {
   const [year, month, date] = day.split("-").map(Number);

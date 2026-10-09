@@ -3,7 +3,7 @@ import { mean } from "./engine";
 import type { Insight } from "./insights";
 import type { LabResults } from "./metrics";
 import { spanOfRounds } from "./progress";
-import { settingKey, type RoundConfig, type RoundRecord } from "./record";
+import { isFreshReading, settingKey, type RoundConfig, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
 import { beats, type LabSummary } from "./summary";
 import { weekProgress, type WeekGoal } from "./week";
@@ -104,9 +104,10 @@ function nextOf(round: RoundRecord, results: LabResults): NextStep {
 
 /**
  * Whether the summary has counted this round yet. Reads can catch the log ahead of it, and a card built then would
- * miss a new best and print the streak a day short.
+ * miss a new best and print the streak a day short. A review sets no best, so only its day shows it.
  */
 export function summaryCounts(summary: LabSummary, round: RoundRecord): boolean {
+  if (!isFreshReading(round)) return summary.days.includes(round.localDay);
   const best = summary.bests[settingKey(round.source, round.config)];
   return summary.days.includes(round.localDay) && best !== undefined && !beats(round, best);
 }

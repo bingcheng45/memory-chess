@@ -23,6 +23,7 @@ describe("unlocksFor", () => {
       { metric: "trend", started: false, need: { rounds: 5, days: 2 } },
       { metric: "speed", started: false, need: { rounds: 5 } },
       { metric: "streak", started: false, need: { days: 2 } },
+      { metric: "curve", started: false, need: { reviews: 3 } },
       { metric: "notebook", started: false, need: { rounds: 1 } },
       { metric: "missMap", started: false, need: { exposures: 10 } },
       { metric: "typeRecall", started: false, need: { exposures: 20 } },
@@ -39,6 +40,7 @@ describe("unlocksFor", () => {
       { metric: "trend", started: true, need: { rounds: 4, days: 1 } },
       { metric: "speed", started: true, need: { rounds: 4 } },
       { metric: "streak", started: true, need: { days: 1 } },
+      { metric: "curve", started: true, need: { reviews: 3 } },
       { metric: "missMap", started: true, need: { exposures: 10 } },
       { metric: "typeRecall", started: true, need: { exposures: 19 } },
       { metric: "insights", started: true, need: { rounds: 9 } },
@@ -46,11 +48,11 @@ describe("unlocksFor", () => {
   });
 
   it.each([
-    ["newVisitor", ["span", "piecesHeld", "trend", "speed", "streak", "notebook", "missMap", "typeRecall", "insights"]],
-    ["twoRounds", ["span", "piecesHeld", "trend", "speed", "streak", "missMap", "typeRecall", "insights"]],
-    ["easyOnly", ["span", "missMap", "typeRecall"]],
-    ["thirtyDays", []],
-    ["stale", ["missMap"]],
+    ["newVisitor", ["span", "piecesHeld", "trend", "speed", "streak", "curve", "notebook", "missMap", "typeRecall", "insights"]],
+    ["twoRounds", ["span", "piecesHeld", "trend", "speed", "streak", "curve", "missMap", "typeRecall", "insights"]],
+    ["easyOnly", ["span", "curve", "missMap", "typeRecall"]],
+    ["thirtyDays", ["curve"]],
+    ["stale", ["curve", "missMap"]],
   ] as const)("leaves out what %s can already read", (name, metrics) => {
     expect(unlocksOf(name).map(({ metric }) => metric)).toEqual(metrics);
   });

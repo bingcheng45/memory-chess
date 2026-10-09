@@ -41,12 +41,19 @@ export const PERSONA_NAMES = [
   "dailyOpen",
   "dailyPlayed",
   "dailyStreak",
+  "reviewNone",
+  "reviewDue",
+  "reviewOverdue",
+  "reviewWarming",
+  "reviewCurve",
 ] as const;
 export type PersonaName = (typeof PERSONA_NAMES)[number];
 /** The players with a plan or a goal chosen; the rest of the cast has none. */
 export const PLAN_PERSONAS = ["planBaseline", "planEdge", "ladderClimb"] as const satisfies readonly PersonaName[];
 /** The players with daily board rounds, whose board days are UTC days: drivers set the browser clock to their today. */
 export const DAILY_PERSONAS = ["dailyOpen", "dailyPlayed", "dailyStreak"] as const satisfies readonly PersonaName[];
+/** The players with boards in the review queue: nothing due, due today, overdue, a warming curve and a measured one. */
+export const REVIEW_PERSONAS = ["reviewNone", "reviewDue", "reviewOverdue", "reviewWarming", "reviewCurve"] as const satisfies readonly PersonaName[];
 
 interface Setting {
   readonly source: LabSource;
@@ -62,6 +69,8 @@ interface PlannedRound extends Setting {
   readonly miss?: number;
   /** The shared daily board of the round's day, in place of a random position. */
   readonly dailyBoard?: true;
+  /** A review of the board of the planned round at this index, at that round's setting. */
+  readonly reviewOf?: number;
 }
 
 /** `progress` runs from 0 at the first round to just under 1 at the last. */
@@ -126,6 +135,21 @@ const EDGE_RIG_SETTING: Setting = { source: "game", ...EDGE_RIG };
 const MEDIUM_8S: Setting = { ...MEDIUM, memorizeSeconds: 8 };
 const at = (setting: Setting, daysAgo: number, miss?: number): PlannedRound => ({ ...setting, daysAgo, ...(miss !== undefined && { miss }) });
 const dailyBoardOn = (daysAgo: number): PlannedRound => ({ ...MEDIUM, daysAgo, dailyBoard: true });
+
+/** Medium games placed back in full, so the only boards in a review persona's queue are the ones it misses on purpose. */
+const cleanGames = (from: number) => countdown(from, 0).flatMap((daysAgo) => [at(MEDIUM, daysAgo, 0), at(MEDIUM, daysAgo, 0)]);
+const MISSED = 0.5;
+/** Rounds after `before` planned rounds, so `reviewOf` indexes count from there. */
+const reviewOn = (daysAgo: number, reviewOf: number, miss: number): PlannedRound => ({ ...MEDIUM, daysAgo, reviewOf, miss });
+/** The four boards missed ten days ago, each reviewed after 1 and 3 days and two of them after 7, with more slipping the longer the gap. */
+const CURVE_BOARDS = [0, 1, 2, 3];
+const curveRounds = (games: number): PlannedRound[] => [
+  ...CURVE_BOARDS.map(() => at(MEDIUM, 10, MISSED)),
+  ...CURVE_BOARDS.map((board) => reviewOn(9, games + board, 0.2)),
+  ...CURVE_BOARDS.map((board) => reviewOn(7, games + board, 0.35)),
+  ...[0, 1].map((board) => reviewOn(3, games + board, 0.45)),
+  at(MEDIUM, 1, MISSED),
+];
 
 /** Thirty days of edge-file misses before the drill, then fewer once it starts: the last six rounds are the drill's. */
 const edgesThenDrill: MissChance = (square, piece, progress) =>
@@ -195,6 +219,19 @@ const PLANS: Record<PersonaName, PersonaPlan> = {
   dailyPlayed: { seed: 102, rounds: [...daily([1, 0], () => MEDIUM, 2), dailyBoardOn(0)], missChance: steady },
   // The board on nine of the last ten days, today included, with five days ago missed and forgiven.
   dailyStreak: { seed: 103, rounds: countdown(9, 0).filter((daysAgo) => daysAgo !== 5).map(dailyBoardOn), missChance: steady },
+  // A board missed yesterday and reviewed today: the next review is in two days.
+  reviewNone: { seed: 111, rounds: [...cleanGames(2), at(MEDIUM, 1, MISSED), reviewOn(0, 6, 0.2)], missChance: steady },
+  // A board missed yesterday is due today; one missed today comes back tomorrow.
+  reviewDue: { seed: 116, rounds: [...cleanGames(2), at(MEDIUM, 1, MISSED), at(MEDIUM, 0, MISSED)], missChance: steady },
+  // Boards missed five days, two days and one day ago, none reviewed: two overdue and one due today.
+  reviewOverdue: { seed: 113, rounds: [...cleanGames(5), ...[5, 2, 1].map((daysAgo) => at(MEDIUM, daysAgo, MISSED))], missChance: steady },
+  // Two boards missed four days ago, each reviewed after 1 and 3 days: two reviews at each gap, one short of a point.
+  reviewWarming: {
+    seed: 114,
+    rounds: [...cleanGames(4), at(MEDIUM, 4, MISSED), at(MEDIUM, 4, MISSED), reviewOn(3, 10, 0.2), reviewOn(3, 11, 0.2), reviewOn(1, 10, 0.35), reviewOn(1, 11, 0.35)],
+    missChance: steady,
+  },
+  reviewCurve: { seed: 115, rounds: [...cleanGames(10), ...curveRounds(22)], missChance: steady },
 };
 
 interface PersonaChoices {
@@ -238,13 +275,15 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
   const { seed, rounds, missChance, legacy } = PLANS[name];
   const random = seededRandom(seed);
   const slots = new Map<number, number>();
+  const built: RoundRecord[] = [];
 
   return rounds.map((planned, index) => {
     const slot = slots.get(planned.daysAgo) ?? 0;
     slots.set(planned.daysAgo, slot + 1);
     const playedAt = noonUtc(today, -planned.daysAgo);
     const day = utcDayOf(playedAt);
-    const fen = planned.dailyBoard ? dailyFen(day) : generateMemorizationPosition(planned.pieceCount, random)?.fen();
+    const reviewed = planned.reviewOf === undefined ? undefined : built[planned.reviewOf];
+    const fen = reviewed ? reviewed.targetFen : planned.dailyBoard ? dailyFen(day) : generateMemorizationPosition(planned.pieceCount, random)?.fen();
     const target = placementFromFen(fen ?? "8/8/8/8/8/8/8/8");
     const progress = index / rounds.length;
     const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= (planned.miss ?? missChance(square, piece, progress))));
@@ -264,12 +303,15 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
     if (legacy) return buildRoundRecord(input);
     const recent = index >= rounds.length - PLACEMENT_KEEP;
     const capture: RoundCapture = {
-      startSource: planned.dailyBoard ? "daily" : planned.source === "calibration" ? "calibration" : GAME_STARTS[index % GAME_STARTS.length],
+      startSource: reviewed ? "review" : planned.dailyBoard ? "daily" : planned.source === "calibration" ? "calibration" : GAME_STARTS[index % GAME_STARTS.length],
       ...(planned.dailyBoard && { kind: "daily", dailyDay: day }),
+      ...(reviewed && { kind: "review", reviewOf: reviewed.id, reviewDelayDays: rounds[planned.reviewOf ?? index].daysAgo - planned.daysAgo }),
       tzOffsetMin: TZ_OFFSET_MIN,
       ...(recent && { placements: placementsOf(placed, solveMs), removals: 0 }),
     };
-    return buildRoundRecord(input, capture);
+    const record = buildRoundRecord(input, capture);
+    built.push(record);
+    return record;
   });
 }
 

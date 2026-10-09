@@ -1,7 +1,7 @@
 import type { PieceSymbol } from "chess.js";
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { placementFromFen } from "@/lib/game/scoring";
-import { PIECE_LETTERS, settingKey, type RoundRecord, type TypeCounts } from "./record";
+import { isFreshReading, PIECE_LETTERS, settingKey, type RoundRecord, type TypeCounts } from "./record";
 
 export interface PersonalBest {
   readonly accuracy: number;
@@ -82,12 +82,18 @@ export function beats(record: Scored, best: Scored | undefined): boolean {
   return record.accuracy > best.accuracy || (record.accuracy === best.accuracy && record.solveMs < best.solveMs);
 }
 
-export function addToSummary(summary: LabSummary, record: RoundRecord): LabSummary {
+function addBest(bests: LabSummary["bests"], record: RoundRecord): LabSummary["bests"] {
+  if (!isFreshReading(record)) return bests;
   const key = settingKey(record.source, record.config);
-  const previous = summary.bests[key];
+  const previous = bests[key];
   const best: PersonalBest = beats(record, previous)
     ? { accuracy: record.accuracy, correct: record.correct, solveMs: record.solveMs, at: record.endedAt, rounds: 0 }
     : (previous as PersonalBest);
+  return { ...bests, [key]: { ...best, rounds: (previous?.rounds ?? 0) + 1 } };
+}
+
+/** A review round is a round played, so it counts everywhere but the bests: its board is one the player has seen. */
+export function addToSummary(summary: LabSummary, record: RoundRecord): LabSummary {
   const days = summary.days.includes(record.localDay)
     ? summary.days
     : [...summary.days, record.localDay].sort().slice(-MAX_DAYS);
@@ -96,7 +102,7 @@ export function addToSummary(summary: LabSummary, record: RoundRecord): LabSumma
     v: 3,
     rounds: summary.rounds + 1,
     days,
-    bests: { ...summary.bests, [key]: { ...best, rounds: (previous?.rounds ?? 0) + 1 } },
+    bests: addBest(summary.bests, record),
     squareShown: summary.squareShown.map((count, index) => count + (record.squares[index] === "." || record.squares[index] === "x" ? 0 : 1)),
     squareMissed: summary.squareMissed.map(
       (count, index) => count + (record.squares[index] === "m" || record.squares[index] === "w" ? 1 : 0),

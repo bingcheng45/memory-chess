@@ -16,6 +16,7 @@ export const ROUND_SOURCES = [
   "result_next",
   "plan",
   "daily",
+  "review",
   "link",
 ] as const;
 
@@ -25,7 +26,7 @@ export function roundSourceFrom(value: string | null): RoundSource {
   return ROUND_SOURCES.find((source) => source === value) ?? "link";
 }
 
-/** Lab parts with a link or a control: the unlock strip, each §06 panel that can go stale, the insights a finding links from, the plans and goal, the daily board, and the card on the result screen. */
+/** Lab parts with a link or a control: the unlock strip, each §06 panel that can go stale, the insights a finding links from, the plans and goal, the daily board, the review queue on the forgetting curve, and the card on the result screen. */
 export type LabPanel =
   | "unlock"
   | "span"
@@ -40,6 +41,7 @@ export type LabPanel =
   | "plans"
   | "goal"
   | "daily"
+  | "curve"
   | "resultCard";
 
 /** What the player did: follow a link, or start, stop or finish a plan, or set or clear a goal. Never which plan or goal. */

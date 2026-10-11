@@ -12,7 +12,7 @@ import type { LabResults } from "@/lib/lab/metrics";
 import { FIRST_READING_ACCURACY, type NotebookEntry } from "@/lib/lab/notebook";
 import { hasFigure, LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { seconds } from "./labFormat";
-import { PanelFrame, StaleNote, useTags } from "./LabRecordPanels";
+import { NeedNote, PanelFrame, StaleNote, useTags } from "./LabRecordPanels";
 import { useNotebookSeen } from "./useNotebookSeen";
 
 interface PanelProps<K extends keyof LabResults> {
@@ -90,9 +90,9 @@ export function InsightsPanel({ result: { readiness, value }, daysAgo }: PanelPr
     if (!hasFigure(readiness)) {
       return (
         <>
-          <p className="lab-panel-desc lab-empty">
+          <NeedNote readiness={readiness} panel="insights">
             {t("insights.need", { threshold: INSIGHTS_THRESHOLDS.rounds, count: readiness.need?.rounds ?? 0 })}
-          </p>
+          </NeedNote>
           {sample}
         </>
       );

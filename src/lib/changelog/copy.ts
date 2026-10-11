@@ -12,6 +12,7 @@ export const CHANGELOG_PAGE_COPY = {
   },
   title: "Changelog",
   latest: "Latest",
+  releases: "Releases",
   eyebrow: "What is new",
   changesIn: (version: string) => `Changes in version ${version}`,
 };

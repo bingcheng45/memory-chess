@@ -191,6 +191,19 @@ export default function PrivacyPage() {
               record when space runs low, and local storage notes that it asked.
             </p>
             <p className={copyClassName}>
+              The progress page reads the same record in your browser and
+              sends nothing. Only when you press Share my progress does your
+              browser draw a picture of your memory span, pieces held, speed,
+              streak and rounds played, the figures the record can read, and
+              hand it with a short caption and a link to your device&apos;s
+              share sheet. Where there is no share sheet, the picture is saved
+              as a file and the caption is copied to your clipboard. Neither is
+              sent to Memory Chess. Google Analytics receives an event that
+              names only how the card left the page, through the share sheet,
+              as a saved picture or as a copied caption, with none of its
+              figures.
+            </p>
+            <p className={copyClassName}>
               When you submit a score to the leaderboard, local storage on this
               device also keeps the id the leaderboard gives that entry, with
               its difficulty, country, score and the time you sent it, for your

@@ -10,12 +10,16 @@
       "terms": "Termos",
       "play": "Jogar",
       "leaderboard": "Ranking",
-      "progress": "Progresso"
+      "progress": "Progresso",
+      "menu": "Menu",
+      "site": "Site"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Todos os direitos reservados.",
       "followOnX": "Siga a gente no Twitter/X",
-      "productHuntAlt": "Memory Chess - Treine sua visualização espacial com xadrez | Product Hunt"
+      "productHuntAlt": "Memory Chess - Treine sua visualização espacial com xadrez | Product Hunt",
+      "tagline": "Um jogo gratuito de memória do tabuleiro. Estude uma posição, reconstrua-a e veja sua pontuação.",
+      "recognition": "Reconhecimento"
     },
     "sound": {
       "mute": "Desativar som",

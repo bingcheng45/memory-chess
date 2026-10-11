@@ -10,12 +10,16 @@
       "terms": "Koşullar",
       "play": "Oyna",
       "leaderboard": "Sıralama",
-      "progress": "İlerleme"
+      "progress": "İlerleme",
+      "menu": "Menü",
+      "site": "Site"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tüm hakları saklıdır.",
       "followOnX": "Bizi Twitter/X’te takip edin",
-      "productHuntAlt": "Memory Chess - Satrançla uzamsal görselleştirmeni geliştir | Product Hunt"
+      "productHuntAlt": "Memory Chess - Satrançla uzamsal görselleştirmeni geliştir | Product Hunt",
+      "tagline": "Ücretsiz bir tahta hafıza oyunu. Bir pozisyonu inceleyin, yeniden kurun, skorunuzu görün.",
+      "recognition": "Ödüller"
     },
     "sound": {
       "mute": "Sesi kapat",

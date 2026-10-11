@@ -1,0 +1,125 @@
+/* The Lab Paper shell (docs/design/brand-directions/lab-paper.md): tokens, the page base, buttons, the changelog
+   banner, the header and the footer. The locale layout loads it on every route, so every rule here sits under
+   .lab-paper and stays inert on a page drawn in the dark site shell. Page-specific rules live with their page. */
+:root:has(.lab-paper) {
+  --lp-paper: #f5f8f7; --lp-surface: #ffffff; --lp-surface-2: #ecf1ef;
+  --lp-ink: #0d1b24; --lp-ink-2: #364853; --lp-muted: #56666f;
+  --lp-line: #d6dfe0; --lp-line-strong: #87969d; --lp-grid: rgba(31, 79, 224, 0.06);
+  --lp-accent: #1f4fe0; --lp-accent-hover: #1a41bb; --lp-accent-soft: #e5ebfc; --lp-on-accent: #ffffff;
+  --lp-correct: #0f7a55; --lp-correct-soft: #cfeadf; --lp-wrong: #c63f12; --lp-wrong-soft: #f8dccf;
+  --lp-sq-light: #eef2f2; --lp-sq-dark: #c4cfd4;
+  --lp-mk-attack: #a8320b; --lp-mk-defend: #1a3fc0; --lp-mk-chain: #3d4d58; --lp-mk-ink: #0d1b24; --lp-mk-on: #ffffff;
+  --lp-mark-correct: color-mix(in srgb, var(--lp-correct) 26%, transparent);
+  --lp-mark-wrong: color-mix(in srgb, var(--lp-wrong) 30%, transparent);
+  --lp-pop-shadow: 0 12px 32px rgba(13, 27, 36, 0.12);
+  --lp-r-sm: 6px; --lp-r-md: 8px; --lp-r-lg: 12px;
+  --lp-gutter: clamp(16px, 4vw, 48px);
+  --lp-header-h: 64px;
+  color-scheme: light;
+  background-color: var(--lp-paper);
+}
+/* globals.css gives html and body overflow-x: hidden, which turns body into a scroll container that never
+   scrolls, so position: sticky never engages. clip on the root keeps sticky working but makes iOS Safari jitter
+   the sticky header while scrolling, so the root stays visible and each .lab-paper block clips its own overflow. */
+html:has(.lab-paper), html:has(.lab-paper) body { overflow-x: visible; }
+html:has(.lab-paper) { scroll-padding-top: calc(var(--lp-header-h) + 16px); }
+html:has(.lab-paper) body { background-color: var(--lp-paper); }
+.lab-paper {
+  /* Here, not on the root: the font variables are set on body and on this element, below where the root resolves them. */
+  --lp-ui: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --lp-body: var(--font-open-sans), var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --lp-data: var(--font-geist-mono);
+  overflow-x: clip;
+  background-color: var(--lp-paper);
+  color: var(--lp-ink); font: 400 17px/1.6 var(--lp-body);
+}
+.lab-paper :focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; border-radius: 4px; }
+.lab-paper a { color: var(--lp-accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.lab-paper a:hover { color: var(--lp-accent-hover); }
+.lab-paper h1, .lab-paper h2, .lab-paper h3, .lab-paper h4 { font-family: var(--lp-ui); color: var(--lp-ink); }
+.lab-paper .lab-wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--lp-gutter); }
+.lab-paper .lab-mono { font-family: var(--lp-data); font-variant-numeric: tabular-nums; }
+.lab-paper .lab-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.lab-paper .lab-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: var(--lp-r-md); font: 600 16px/1.2 var(--lp-ui); text-align: center; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background-color 0.15s, border-color 0.15s, color 0.15s; }
+.lab-paper .lab-btn-primary { background: var(--lp-accent); color: var(--lp-on-accent); }
+.lab-paper .lab-btn-primary:hover { background: var(--lp-accent-hover); color: var(--lp-on-accent); }
+.lab-paper .lab-btn-secondary { background: var(--lp-surface); color: var(--lp-ink); border-color: var(--lp-line-strong); }
+.lab-paper .lab-btn-secondary:hover { border-color: var(--lp-ink-2); color: var(--lp-ink); }
+.lab-paper .lab-btn-sm { min-height: 36px; padding: 0 14px; font-size: 14px; }
+.lab-paper .lab-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* changelog banner: a quiet line above the header that scrolls away with the page */
+.lab-paper .lab-banner { background: var(--lp-surface); border-bottom: 1px solid var(--lp-line); }
+.lab-paper .lab-banner-row { position: relative; display: flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 48px; text-align: center; font: 400 14px/1.4 var(--lp-ui); color: var(--lp-ink-2); }
+.lab-paper .lab-banner-row a { color: var(--lp-ink-2); text-decoration: none; }
+.lab-paper .lab-banner-row a:hover { color: var(--lp-ink); }
+.lab-paper .lab-banner-lead { font-weight: 600; color: var(--lp-ink); }
+.lab-paper .lab-banner-cta { white-space: nowrap; color: var(--lp-accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.lab-paper .lab-banner-row a:hover .lab-banner-cta { color: var(--lp-accent-hover); }
+.lab-paper .lab-banner-close { position: absolute; top: 50%; right: max(4px, calc(var(--lp-gutter) - 10px)); display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; transform: translateY(-50%); border: 0; border-radius: var(--lp-r-sm); background: none; color: var(--lp-muted); cursor: pointer; }
+.lab-paper .lab-banner-close:hover { background: var(--lp-surface-2); color: var(--lp-ink); }
+
+/* header */
+.lab-paper .lab-header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--lp-paper) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--lp-line); }
+.lab-paper .lab-header-row { display: flex; align-items: center; gap: 24px; height: var(--lp-header-h); }
+.lab-paper .lab-wordmark { font: 700 20px/1 var(--lp-ui); letter-spacing: -0.01em; color: var(--lp-ink); text-decoration: none; white-space: nowrap; }
+.lab-paper .lab-wordmark:hover { color: var(--lp-ink); opacity: 0.8; }
+.lab-paper .lab-nav { display: flex; align-items: center; gap: 2px; }
+.lab-paper .lab-nav-item { position: relative; }
+.lab-paper .lab-nav-link, .lab-paper .lab-nav-trigger { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 10px; border: 0; border-radius: var(--lp-r-sm); background: none; font: 500 15px/1 var(--lp-ui); color: var(--lp-ink-2); text-decoration: none; cursor: pointer; white-space: nowrap; }
+.lab-paper .lab-nav-link:hover, .lab-paper .lab-nav-trigger:hover { color: var(--lp-ink); background: var(--lp-surface-2); }
+.lab-paper .lab-nav-link[aria-current="page"] { color: var(--lp-accent); }
+.lab-paper .lab-nav-trigger { color: var(--lp-ink); }
+.lab-paper .lab-nav-trigger::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lp-accent); }
+.lab-paper .lab-chev { width: 10px; height: 10px; transition: transform 0.15s; }
+.lab-paper .lab-nav-trigger[aria-expanded="true"] .lab-chev { transform: rotate(180deg); }
+.lab-paper .lab-dropdown { position: absolute; top: calc(100% + 8px); left: 0; min-width: 300px; padding: 8px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); box-shadow: var(--lp-pop-shadow); }
+.lab-paper .lab-dropdown[hidden], .lab-paper .lab-menu[hidden] { display: none; }
+.lab-paper .lab-dropdown ul { margin: 0; padding: 0; list-style: none; }
+.lab-paper .lab-dropdown a { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 12px; border-radius: var(--lp-r-sm); font: 500 15px/1.3 var(--lp-ui); color: var(--lp-ink); text-decoration: none; }
+.lab-paper .lab-dropdown a:hover { background: var(--lp-surface-2); color: var(--lp-ink); }
+.lab-paper .lab-dropdown a span { font-size: 13px; font-weight: 400; color: var(--lp-muted); }
+.lab-paper .lab-panel-label { padding: 8px 12px 4px; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lab-header-tools { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.lab-paper .lab-play-short { display: none; }
+.lab-paper .lab-menu-btn { display: none; }
+.lab-paper .lab-menu { padding: 16px 0 24px; border-top: 1px solid var(--lp-line); max-height: calc(100vh - var(--lp-header-h)); overflow-y: auto; }
+.lab-paper .lab-menu-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.lab-paper .lab-menu-cols > :only-child { grid-column: 1 / -1; }
+.lab-paper .lab-menu .lab-panel-label { padding: 0 0 4px; }
+.lab-paper .lab-menu ul { list-style: none; margin: 0; padding: 0; }
+.lab-paper .lab-menu a { display: block; padding: 10px 0; border-bottom: 1px solid var(--lp-line); font: 500 16px/1.4 var(--lp-ui); color: var(--lp-ink); text-decoration: none; }
+.lab-paper .lab-menu a[aria-current="page"] { color: var(--lp-accent); }
+.lab-paper .lab-menu-tools { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
+@media (max-width: 1080px) { .lab-paper .lab-nav-extra { display: none; } }
+@media (max-width: 860px) {
+  .lab-paper .lab-nav, .lab-paper .lab-header-tools .lab-lang { display: none; }
+  .lab-paper .lab-menu-btn { display: inline-flex; }
+  .lab-paper .lab-header-row { gap: 12px; }
+}
+@media (max-width: 480px) { .lab-paper .lab-play-long { display: none; } .lab-paper .lab-play-short { display: inline; } }
+
+/* footer */
+.lab-paper .lab-footer { padding: 64px 0 32px; background: var(--lp-surface-2); border-top: 1px solid var(--lp-line); }
+.lab-paper .lab-foot-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1.2fr); gap: 48px; }
+.lab-paper .lab-foot-about { max-width: 320px; margin-top: 12px; font-size: 15px; line-height: 1.6; color: var(--lp-ink-2); }
+.lab-paper .lab-foot-h { margin-bottom: 12px; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lab-foot-links { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; margin: 0; padding: 0; list-style: none; }
+.lab-paper .lab-foot-links a, .lab-paper .lab-foot-social a { display: inline-block; padding: 6px 0; font: 500 15px/1.4 var(--lp-ui); color: var(--lp-ink); text-decoration: none; }
+.lab-paper .lab-foot-links a:hover, .lab-paper .lab-foot-social a:hover { color: var(--lp-accent); text-decoration: underline; }
+.lab-paper .lab-awards { display: grid; gap: 12px; }
+.lab-paper .lab-foot-base { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--lp-line); font: 400 14px/1.4 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lab-foot-social a { display: inline-flex; padding: 8px; color: var(--lp-ink-2); }
+@media (max-width: 1023px) {
+  .lab-paper .lab-foot-grid { grid-template-columns: 1fr 1fr; }
+  .lab-paper .lab-foot-grid > :first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 767px) {
+  .lab-paper { font-size: 16px; }
+  .lab-paper .lab-foot-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(.lab-paper) { scroll-behavior: auto; }
+  .lab-paper *, .lab-paper *::before, .lab-paper *::after { animation: none !important; transition: none !important; }
+}

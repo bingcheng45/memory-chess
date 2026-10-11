@@ -10,12 +10,16 @@
       "terms": "Regulamin",
       "play": "Graj",
       "leaderboard": "Ranking",
-      "progress": "Postępy"
+      "progress": "Postępy",
+      "menu": "Menu",
+      "site": "Serwis"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Wszelkie prawa zastrzeżone.",
       "followOnX": "Obserwuj nas na Twitterze/X",
-      "productHuntAlt": "Memory Chess - Trenuj wyobraźnię przestrzenną przy pomocy szachów | Product Hunt"
+      "productHuntAlt": "Memory Chess - Trenuj wyobraźnię przestrzenną przy pomocy szachów | Product Hunt",
+      "tagline": "Darmowa gra pamięciowa na szachownicy. Zapamiętaj pozycję, odtwórz ją i odczytaj wynik.",
+      "recognition": "Wyróżnienia"
     },
     "sound": {
       "mute": "Wyłącz dźwięk",

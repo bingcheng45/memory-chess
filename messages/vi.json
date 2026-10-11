@@ -10,12 +10,16 @@
       "terms": "Điều khoản",
       "play": "Chơi",
       "leaderboard": "Bảng xếp hạng",
-      "progress": "Tiến bộ"
+      "progress": "Tiến bộ",
+      "menu": "Menu",
+      "site": "Trang web"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Bảo lưu mọi quyền.",
       "followOnX": "Theo dõi chúng tôi trên Twitter/X",
-      "productHuntAlt": "Memory Chess - Rèn khả năng hình dung không gian bằng cờ vua | Product Hunt"
+      "productHuntAlt": "Memory Chess - Rèn khả năng hình dung không gian bằng cờ vua | Product Hunt",
+      "tagline": "Trò chơi ghi nhớ bàn cờ miễn phí. Xem một thế cờ, xếp lại nó và xem điểm số của bạn.",
+      "recognition": "Ghi nhận"
     },
     "sound": {
       "mute": "Tắt âm thanh",

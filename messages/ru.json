@@ -10,12 +10,16 @@
       "terms": "Условия",
       "play": "Играть",
       "leaderboard": "Рейтинг",
-      "progress": "Прогресс"
+      "progress": "Прогресс",
+      "menu": "Меню",
+      "site": "Сайт"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Все права защищены.",
       "followOnX": "Подпишитесь на нас в Twitter/X",
-      "productHuntAlt": "Memory Chess — тренируйте пространственное мышление с помощью шахмат | Product Hunt"
+      "productHuntAlt": "Memory Chess — тренируйте пространственное мышление с помощью шахмат | Product Hunt",
+      "tagline": "Бесплатная игра на память шахматной доски. Изучите позицию, восстановите её и узнайте свой результат.",
+      "recognition": "Награды"
     },
     "sound": {
       "mute": "Выключить звук",

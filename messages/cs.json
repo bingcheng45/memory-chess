@@ -10,12 +10,16 @@
       "terms": "Podmínky",
       "play": "Hrát",
       "leaderboard": "Žebříček",
-      "progress": "Pokrok"
+      "progress": "Pokrok",
+      "menu": "Menu",
+      "site": "Web"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Všechna práva vyhrazena.",
       "followOnX": "Sledujte nás na Twitteru/X",
-      "productHuntAlt": "Memory Chess - Trénujte prostorovou představivost pomocí šachů | Product Hunt"
+      "productHuntAlt": "Memory Chess - Trénujte prostorovou představivost pomocí šachů | Product Hunt",
+      "tagline": "Bezplatná hra na paměť šachovnice. Prohlédněte si pozici, sestavte ji znovu a přečtěte si výsledek.",
+      "recognition": "Ocenění"
     },
     "sound": {
       "mute": "Vypnout zvuk",

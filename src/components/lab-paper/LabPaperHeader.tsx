@@ -1,20 +1,12 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type RefObject } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode, type RefObject } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import LanguageSettings from "@/components/ui/LanguageSettings";
-import { LAB_SECTIONS, type LabSectionId } from "./SectionHeading";
-import { QUICK_START_HREF } from "./links";
-
-const PAGE_SECTIONS: readonly Extract<LabSectionId, "notebook" | "method" | "calibrate" | "tiers" | "record" | "library">[] = [
-  "notebook",
-  "method",
-  "calibrate",
-  "tiers",
-  "record",
-  "library",
-];
+import SiteLink from "@/components/ui/SiteLink";
+import { QUICK_START_HREF } from "@/components/home/links";
+import "./lab-paper.css";
 
 /** `extra` links leave the desktop row first and stay in the phone menu. Changelog lives in the footer and the phone menu only. */
 const SITE_LINKS = [
@@ -27,10 +19,25 @@ const SITE_LINKS = [
 
 const MENU_ONLY_LINKS = [{ href: "/changelog", key: "changelog" }] as const;
 
-/** The current run's days played, and its forgiven days, which the chip names only in its title and accessible name. */
-export interface HeaderStreak {
-  readonly days: number;
-  readonly forgiven: number;
+export interface PageSectionLink {
+  readonly href: `#${string}`;
+  readonly label: string;
+  readonly hint?: string;
+}
+
+/** A page's own sections: a dropdown named `trigger` on wide screens, a column headed `heading` in the phone menu. */
+export interface PageSections {
+  readonly trigger: string;
+  readonly heading: string;
+  readonly links: readonly PageSectionLink[];
+}
+
+export interface LabPaperHeaderProps {
+  readonly sections?: PageSections;
+  /** The Play button's wide-screen label and accessible name; phones show the short "Play". */
+  readonly playLabel?: string;
+  /** Page-specific tools placed before Play, such as the homepage's streak chip. */
+  readonly tools?: ReactNode;
 }
 
 interface Disclosure {
@@ -81,27 +88,29 @@ function Chevron() {
   );
 }
 
-function SectionLinks({ withHints, onPick }: { withHints: boolean; onPick: () => void }) {
-  const t = useTranslations("home.lab.index");
-  return PAGE_SECTIONS.map((id) => (
-    <li key={id}>
-      <a href={`#${LAB_SECTIONS[id].anchor}`} onClick={onPick}>
-        {t(id)}
-        {withHints && <span>{t(`hints.${id}`)}</span>}
+function SectionLinks({ links, withHints, onPick }: { links: readonly PageSectionLink[]; withHints: boolean; onPick: () => void }) {
+  return links.map((link) => (
+    <li key={link.href}>
+      <a href={link.href} onClick={onPick}>
+        {link.label}
+        {withHints && link.hint && <span>{link.hint}</span>}
       </a>
     </li>
   ));
 }
 
-export function LabHeader({ streak }: { streak: HeaderStreak | null }) {
-  const t = useTranslations("home.lab.index");
+function isCurrent(pathname: string, href: string): boolean {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+export function LabPaperHeader({ sections, playLabel, tools }: LabPaperHeaderProps) {
   const nav = useTranslations("common.nav");
-  const record = useTranslations("home.lab.record.streak");
-  const lab = useDisclosure();
+  const pathname = usePathname();
+  const pageMenu = useDisclosure();
   const menu = useDisclosure();
-  const labPanelId = useId();
+  const pagePanelId = useId();
   const menuPanelId = useId();
-  const streakNote = streak && streak.forgiven > 0 ? record("chipForgiven", { count: streak.days, forgiven: streak.forgiven }) : undefined;
+  const currentOf = (href: string) => (isCurrent(pathname, href) ? ("page" as const) : undefined);
 
   return (
     <header className="lab-header">
@@ -111,40 +120,42 @@ export function LabHeader({ streak }: { streak: HeaderStreak | null }) {
             Memory <span className="text-peach-500">Chess</span>
           </Link>
           <nav className="lab-nav" aria-label="Main">
-            <div className="lab-nav-item" ref={lab.rootRef}>
-              <button
-                type="button"
-                className="lab-nav-trigger"
-                ref={lab.triggerRef}
-                aria-expanded={lab.open}
-                aria-controls={labPanelId}
-                onClick={lab.toggle}
-              >
-                {t("label")}
-                <Chevron />
-              </button>
-              <div className="lab-dropdown" id={labPanelId} hidden={!lab.open}>
-                <p className="lab-panel-label">{t("onPage")}</p>
-                <ul>
-                  <SectionLinks withHints onPick={lab.close} />
-                </ul>
+            {sections && (
+              <div className="lab-nav-item" ref={pageMenu.rootRef}>
+                <button
+                  type="button"
+                  className="lab-nav-trigger"
+                  ref={pageMenu.triggerRef}
+                  aria-expanded={pageMenu.open}
+                  aria-controls={pagePanelId}
+                  onClick={pageMenu.toggle}
+                >
+                  {sections.trigger}
+                  <Chevron />
+                </button>
+                <div className="lab-dropdown" id={pagePanelId} hidden={!pageMenu.open}>
+                  <p className="lab-panel-label">{sections.heading}</p>
+                  <ul>
+                    <SectionLinks links={sections.links} withHints onPick={pageMenu.close} />
+                  </ul>
+                </div>
               </div>
-            </div>
+            )}
             {SITE_LINKS.map((link) => (
-              <Link key={link.href} className={`lab-nav-link${"extra" in link ? " lab-nav-extra" : ""}`} href={link.href}>
-                {nav(link.key)}
-              </Link>
+              <SiteLink
+                key={link.href}
+                className={`lab-nav-link${"extra" in link ? " lab-nav-extra" : ""}`}
+                href={link.href}
+                label={nav(link.key)}
+                aria-current={currentOf(link.href)}
+              />
             ))}
           </nav>
           <div className="lab-header-tools">
             <LanguageSettings appearance="paper" className="lab-lang" />
-            {streak && (
-              <a className="lab-streak-chip" href={`#${LAB_SECTIONS.record.anchor}`} title={streakNote} aria-label={streakNote}>
-                {record("chip", { count: streak.days })}
-              </a>
-            )}
-            <Link className="lab-btn lab-btn-primary lab-btn-sm" href={QUICK_START_HREF} aria-label={t("play")}>
-              <span className="lab-play-long">{t("play")}</span>
+            {tools}
+            <Link className="lab-btn lab-btn-primary lab-btn-sm" href={QUICK_START_HREF} aria-label={playLabel}>
+              <span className="lab-play-long">{playLabel ?? nav("play")}</span>
               <span className="lab-play-short">{nav("play")}</span>
             </Link>
             <button
@@ -155,26 +166,26 @@ export function LabHeader({ streak }: { streak: HeaderStreak | null }) {
               aria-controls={menuPanelId}
               onClick={menu.toggle}
             >
-              {t("menu")}
+              {nav("menu")}
             </button>
           </div>
         </div>
-        <nav className="lab-menu" id={menuPanelId} aria-label={t("menu")} hidden={!menu.open}>
+        <nav className="lab-menu" id={menuPanelId} aria-label={nav("menu")} hidden={!menu.open}>
           <div className="lab-menu-cols">
+            {sections && (
+              <div>
+                <p className="lab-panel-label">{sections.heading}</p>
+                <ul>
+                  <SectionLinks links={sections.links} withHints={false} onPick={menu.close} />
+                </ul>
+              </div>
+            )}
             <div>
-              <p className="lab-panel-label">{t("onPage")}</p>
-              <ul>
-                <SectionLinks withHints={false} onPick={menu.close} />
-              </ul>
-            </div>
-            <div>
-              <p className="lab-panel-label">{t("site")}</p>
+              <p className="lab-panel-label">{nav("site")}</p>
               <ul>
                 {[...SITE_LINKS, ...MENU_ONLY_LINKS].map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} onClick={menu.close}>
-                      {nav(link.key)}
-                    </Link>
+                    <SiteLink href={link.href} label={nav(link.key)} onClick={menu.close} aria-current={currentOf(link.href)} />
                   </li>
                 ))}
               </ul>

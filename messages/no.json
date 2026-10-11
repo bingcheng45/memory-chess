@@ -10,12 +10,16 @@
       "terms": "Vilkår",
       "play": "Spill",
       "leaderboard": "Toppliste",
-      "progress": "Fremgang"
+      "progress": "Fremgang",
+      "menu": "Meny",
+      "site": "Nettsted"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Med enerett.",
       "followOnX": "Følg oss på Twitter/X",
-      "productHuntAlt": "Memory Chess - Tren romlig forestillingsevne med sjakk | Product Hunt"
+      "productHuntAlt": "Memory Chess - Tren romlig forestillingsevne med sjakk | Product Hunt",
+      "tagline": "Et gratis spill for brettminne. Studer en stilling, bygg den opp igjen og les av tallet.",
+      "recognition": "Utmerkelser"
     },
     "sound": {
       "mute": "Slå av lyden",

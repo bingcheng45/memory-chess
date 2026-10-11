@@ -10,12 +10,16 @@
       "terms": "Nutzungsbedingungen",
       "play": "Spielen",
       "leaderboard": "Bestenliste",
-      "progress": "Fortschritt"
+      "progress": "Fortschritt",
+      "menu": "Menü",
+      "site": "Website"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle Rechte vorbehalten.",
       "followOnX": "Folge uns auf Twitter/X",
-      "productHuntAlt": "Memory Chess - Trainiere dein räumliches Vorstellungsvermögen mit Schach | Product Hunt"
+      "productHuntAlt": "Memory Chess - Trainiere dein räumliches Vorstellungsvermögen mit Schach | Product Hunt",
+      "tagline": "Ein kostenloses Brett-Gedächtnisspiel. Stellung einprägen, nachbauen, Ergebnis ablesen.",
+      "recognition": "Auszeichnungen"
     },
     "sound": {
       "mute": "Ton ausschalten",

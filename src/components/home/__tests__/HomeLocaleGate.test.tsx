@@ -9,6 +9,9 @@ jest.mock("@/components/ui/LanguageSettings", () => function MockLanguageSetting
   return null;
 });
 
+// A test render has no app router to read the path from.
+jest.mock("@/i18n/navigation", () => ({ ...jest.requireActual("@/i18n/navigation"), usePathname: () => "/" }));
+
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
     return <div>Memory Chess header</div>;

@@ -1,11 +1,8 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
-import { Link } from "@/i18n/navigation";
-import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
-import { isServedAtBareEnglishUrl } from "@/lib/seo/englishOnly";
-import { useIsLabHome } from "@/lib/home/useIsLabHome";
+import SiteLink from "@/components/ui/SiteLink";
 
 export const FOOTER_LINKS = [
   { href: "/learn", labelKey: "nav.learn" },
@@ -81,13 +78,9 @@ export function XIcon() {
 
 export default function Footer() {
   const t = useTranslations("common");
-  const locale = useLocale();
   // Passed as a string on purpose: ICU would format a bare number argument
   // with grouping separators and render the year as "2,026".
   const currentYear = String(new Date().getFullYear());
-  const onLabHome = useIsLabHome();
-  // The English homepage draws its own Lab Paper footer.
-  if (onLabHome) return null;
 
   return (
     // data-below-game: rendered by the locale layout after the game page, so
@@ -100,22 +93,9 @@ export default function Footer() {
     >
       <div className="container mx-auto px-2 sm:px-4">
         <div className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-3">
-          {FOOTER_LINKS.map((link) =>
-            isServedAtBareEnglishUrl(link.href, locale) ? (
-              <EnglishOnlyLink key={link.href} href={link.href} className={FOOTER_LINK_CLASS}>
-                {(suffix) => (
-                  <>
-                    {t(link.labelKey)}
-                    {suffix}
-                  </>
-                )}
-              </EnglishOnlyLink>
-            ) : (
-              <Link key={link.href} href={link.href} className={FOOTER_LINK_CLASS}>
-                {t(link.labelKey)}
-              </Link>
-            ),
-          )}
+          {FOOTER_LINKS.map((link) => (
+            <SiteLink key={link.href} href={link.href} label={t(link.labelKey)} className={FOOTER_LINK_CLASS} />
+          ))}
         </div>
 
         {/* Product Hunt Badges */}

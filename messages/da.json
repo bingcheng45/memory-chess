@@ -10,12 +10,16 @@
       "terms": "Vilkår",
       "play": "Spil",
       "leaderboard": "Rangliste",
-      "progress": "Fremskridt"
+      "progress": "Fremskridt",
+      "menu": "Menu",
+      "site": "Websted"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle rettigheder forbeholdes.",
       "followOnX": "Følg os på Twitter/X",
-      "productHuntAlt": "Memory Chess - Træn din rumlige forestillingsevne med skak | Product Hunt"
+      "productHuntAlt": "Memory Chess - Træn din rumlige forestillingsevne med skak | Product Hunt",
+      "tagline": "Et gratis spil til hukommelse af skakbrættet. Studér en stilling, genopbyg den, og aflæs tallet.",
+      "recognition": "Anerkendelse"
     },
     "sound": {
       "mute": "Slå lyden fra",

@@ -10,12 +10,16 @@
       "terms": "Conditions",
       "play": "Jouer",
       "leaderboard": "Classement",
-      "progress": "Progrès"
+      "progress": "Progrès",
+      "menu": "Menu",
+      "site": "Site"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tous droits réservés.",
       "followOnX": "Suivez-nous sur Twitter/X",
-      "productHuntAlt": "Memory Chess - Entraînez votre visualisation spatiale avec les échecs | Product Hunt"
+      "productHuntAlt": "Memory Chess - Entraînez votre visualisation spatiale avec les échecs | Product Hunt",
+      "tagline": "Un jeu gratuit de mémoire de l’échiquier. Étudiez une position, reconstruisez-la, lisez votre score.",
+      "recognition": "Distinctions"
     },
     "sound": {
       "mute": "Couper le son",

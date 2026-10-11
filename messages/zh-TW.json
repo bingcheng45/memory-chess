@@ -10,12 +10,16 @@
       "terms": "服務條款",
       "play": "開始遊戲",
       "leaderboard": "排行榜",
-      "progress": "進度"
+      "progress": "進度",
+      "menu": "選單",
+      "site": "網站"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 保留一切權利。",
       "followOnX": "在 Twitter/X 上追蹤我們",
-      "productHuntAlt": "Memory Chess - 用西洋棋訓練空間想像力 | Product Hunt"
+      "productHuntAlt": "Memory Chess - 用西洋棋訓練空間想像力 | Product Hunt",
+      "tagline": "免費的棋盤記憶遊戲。觀察局面，憑記憶復原，查看你的得分。",
+      "recognition": "榮譽"
     },
     "sound": {
       "mute": "靜音",

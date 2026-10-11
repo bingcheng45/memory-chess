@@ -10,12 +10,16 @@
       "terms": "Termini",
       "play": "Gioca",
       "leaderboard": "Classifica",
-      "progress": "Progressi"
+      "progress": "Progressi",
+      "menu": "Menu",
+      "site": "Sito"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tutti i diritti riservati.",
       "followOnX": "Seguici su Twitter/X",
-      "productHuntAlt": "Memory Chess - Allena la tua visualizzazione spaziale con gli scacchi | Product Hunt"
+      "productHuntAlt": "Memory Chess - Allena la tua visualizzazione spaziale con gli scacchi | Product Hunt",
+      "tagline": "Un gioco gratuito di memoria della scacchiera. Studia una posizione, ricostruiscila, leggi il punteggio.",
+      "recognition": "Riconoscimenti"
     },
     "sound": {
       "mute": "Disattiva l’audio",

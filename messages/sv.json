@@ -10,12 +10,16 @@
       "terms": "Villkor",
       "play": "Spela",
       "leaderboard": "Topplista",
-      "progress": "Framsteg"
+      "progress": "Framsteg",
+      "menu": "Meny",
+      "site": "Webbplats"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Med ensamrätt.",
       "followOnX": "Följ oss på Twitter/X",
-      "productHuntAlt": "Memory Chess - Träna din spatiala visualisering med schack | Product Hunt"
+      "productHuntAlt": "Memory Chess - Träna din spatiala visualisering med schack | Product Hunt",
+      "tagline": "Ett gratis spel för brädminne. Studera en ställning, bygg upp den igen och läs av resultatet.",
+      "recognition": "Utmärkelser"
     },
     "sound": {
       "mute": "Stäng av ljudet",

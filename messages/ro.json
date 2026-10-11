@@ -10,12 +10,16 @@
       "terms": "Termeni",
       "play": "Joacă",
       "leaderboard": "Clasament",
-      "progress": "Progres"
+      "progress": "Progres",
+      "menu": "Meniu",
+      "site": "Site"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Toate drepturile rezervate.",
       "followOnX": "Urmărește-ne pe Twitter/X",
-      "productHuntAlt": "Memory Chess - Antrenează-ți vizualizarea spațială cu ajutorul șahului | Product Hunt"
+      "productHuntAlt": "Memory Chess - Antrenează-ți vizualizarea spațială cu ajutorul șahului | Product Hunt",
+      "tagline": "Un joc gratuit de memorie a tablei. Studiază o poziție, reconstruiește-o și citește-ți scorul.",
+      "recognition": "Distincții"
     },
     "sound": {
       "mute": "Oprește sunetul",

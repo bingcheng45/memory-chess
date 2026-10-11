@@ -10,12 +10,16 @@
       "terms": "Ketentuan",
       "play": "Main",
       "leaderboard": "Peringkat",
-      "progress": "Kemajuan"
+      "progress": "Kemajuan",
+      "menu": "Menu",
+      "site": "Situs"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Seluruh hak cipta dilindungi.",
       "followOnX": "Ikuti kami di Twitter/X",
-      "productHuntAlt": "Memory Chess - Latih visualisasi spasial Anda lewat catur | Product Hunt"
+      "productHuntAlt": "Memory Chess - Latih visualisasi spasial Anda lewat catur | Product Hunt",
+      "tagline": "Game memori papan catur gratis. Pelajari sebuah posisi, susun kembali, lalu lihat skornya.",
+      "recognition": "Penghargaan"
     },
     "sound": {
       "mute": "Matikan suara",

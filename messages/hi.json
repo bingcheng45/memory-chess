@@ -10,12 +10,16 @@
       "terms": "शर्तें",
       "play": "खेलें",
       "leaderboard": "लीडरबोर्ड",
-      "progress": "प्रगति"
+      "progress": "प्रगति",
+      "menu": "मेन्यू",
+      "site": "साइट"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. सर्वाधिकार सुरक्षित।",
       "followOnX": "हमें Twitter/X पर फ़ॉलो करें",
-      "productHuntAlt": "Memory Chess - शतरंज के ज़रिए स्थानिक कल्पना का अभ्यास करें | Product Hunt"
+      "productHuntAlt": "Memory Chess - शतरंज के ज़रिए स्थानिक कल्पना का अभ्यास करें | Product Hunt",
+      "tagline": "बोर्ड याद रखने का एक मुफ़्त खेल। एक पोज़िशन देखें, उसे फिर से बनाएँ, अपना स्कोर पढ़ें।",
+      "recognition": "सम्मान"
     },
     "sound": {
       "mute": "आवाज़ बंद करें",

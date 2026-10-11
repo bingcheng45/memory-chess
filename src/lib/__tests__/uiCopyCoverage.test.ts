@@ -43,6 +43,7 @@ const catalogues = Object.fromEntries(
  */
 const MUST_DIFFER = [
   "common.footer.copyright",
+  "common.footer.tagline",
   "leaderboard.subtitle",
   "leaderboard.emptyCta",
   "game.feedback.description",

@@ -10,12 +10,16 @@
       "terms": "Feltételek",
       "play": "Játék",
       "leaderboard": "Ranglista",
-      "progress": "Fejlődés"
+      "progress": "Fejlődés",
+      "menu": "Menü",
+      "site": "Webhely"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Minden jog fenntartva.",
       "followOnX": "Kövess minket a Twitteren/X-en",
-      "productHuntAlt": "Memory Chess - Fejleszd a térlátásodat sakkal | Product Hunt"
+      "productHuntAlt": "Memory Chess - Fejleszd a térlátásodat sakkal | Product Hunt",
+      "tagline": "Ingyenes táblamemória-játék. Nézd meg az állást, rakd ki újra, és olvasd le az eredményt.",
+      "recognition": "Elismerések"
     },
     "sound": {
       "mute": "Hang némítása",

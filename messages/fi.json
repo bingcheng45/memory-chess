@@ -10,12 +10,16 @@
       "terms": "Käyttöehdot",
       "play": "Pelaa",
       "leaderboard": "Tulostaulukko",
-      "progress": "Edistyminen"
+      "progress": "Edistyminen",
+      "menu": "Valikko",
+      "site": "Sivusto"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Kaikki oikeudet pidätetään.",
       "followOnX": "Seuraa meitä Twitterissä/X:ssä",
-      "productHuntAlt": "Memory Chess - Harjoita avaruudellista hahmotusta shakin avulla | Product Hunt"
+      "productHuntAlt": "Memory Chess - Harjoita avaruudellista hahmotusta shakin avulla | Product Hunt",
+      "tagline": "Ilmainen shakkilaudan muistipeli. Tutki asema, rakenna se uudelleen ja lue tuloksesi.",
+      "recognition": "Tunnustukset"
     },
     "sound": {
       "mute": "Mykistä äänet",

@@ -10,12 +10,16 @@
       "terms": "Voorwaarden",
       "play": "Spelen",
       "leaderboard": "Ranglijst",
-      "progress": "Voortgang"
+      "progress": "Voortgang",
+      "menu": "Menu",
+      "site": "Site"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle rechten voorbehouden.",
       "followOnX": "Volg ons op Twitter/X",
-      "productHuntAlt": "Memory Chess - Train je ruimtelijk voorstellingsvermogen met schaken | Product Hunt"
+      "productHuntAlt": "Memory Chess - Train je ruimtelijk voorstellingsvermogen met schaken | Product Hunt",
+      "tagline": "Een gratis geheugenspel voor het schaakbord. Bestudeer een stelling, bouw hem na en lees je score af.",
+      "recognition": "Erkenning"
     },
     "sound": {
       "mute": "Geluid uitzetten",

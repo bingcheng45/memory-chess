@@ -19,7 +19,7 @@ import {
   isChangelogAnnouncementActive,
   LATEST_CHANGELOG_ENTRY,
 } from "@/lib/changelog";
-import Footer from "@/components/ui/Footer";
+import SiteFooter from "@/components/lab-paper/SiteFooter";
 import { ADSENSE_CLIENT_ID, ADSENSE_SCRIPT_URL } from "@/lib/adsense";
 import {
   AHREFS_ANALYTICS_KEY,
@@ -173,7 +173,7 @@ export default async function LocaleLayout({
             announce={isChangelogAnnouncementActive(LATEST_CHANGELOG_ENTRY)}
           />
           {children}
-          <Footer />
+          <SiteFooter />
           <Analytics />
           <SpeedInsights />
           {countsVisitors && <GoogleAnalytics gaId="G-R8BM9EMY9J" />}

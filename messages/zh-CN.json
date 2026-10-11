@@ -10,12 +10,16 @@
       "terms": "服务条款",
       "play": "开始游戏",
       "leaderboard": "排行榜",
-      "progress": "进度"
+      "progress": "进度",
+      "menu": "菜单",
+      "site": "网站"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 保留所有权利。",
       "followOnX": "在 Twitter/X 上关注我们",
-      "productHuntAlt": "Memory Chess - 用国际象棋训练空间想象力 | Product Hunt"
+      "productHuntAlt": "Memory Chess - 用国际象棋训练空间想象力 | Product Hunt",
+      "tagline": "免费的棋盘记忆游戏。观察局面，凭记忆复原，查看你的得分。",
+      "recognition": "荣誉"
     },
     "sound": {
       "mute": "静音",

@@ -10,12 +10,16 @@
       "terms": "이용약관",
       "play": "플레이",
       "leaderboard": "리더보드",
-      "progress": "진행 상황"
+      "progress": "진행 상황",
+      "menu": "메뉴",
+      "site": "사이트"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 모든 권리 보유.",
       "followOnX": "트위터/X에서 팔로우하기",
-      "productHuntAlt": "Memory Chess - 체스로 공간 시각화 능력을 훈련하세요 | Product Hunt"
+      "productHuntAlt": "Memory Chess - 체스로 공간 시각화 능력을 훈련하세요 | Product Hunt",
+      "tagline": "무료 체스판 기억 게임입니다. 포지션을 익히고, 다시 배치하고, 점수를 확인하세요.",
+      "recognition": "수상 내역"
     },
     "sound": {
       "mute": "소리 끄기",

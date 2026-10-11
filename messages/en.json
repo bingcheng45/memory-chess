@@ -10,12 +10,16 @@
       "terms": "Terms",
       "play": "Play",
       "leaderboard": "Leaderboard",
-      "progress": "Progress"
+      "progress": "Progress",
+      "menu": "Menu",
+      "site": "Site"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. All rights reserved.",
       "followOnX": "Follow us on Twitter/X",
-      "productHuntAlt": "Memory Chess - Train your spatial visualization with chess | Product Hunt"
+      "productHuntAlt": "Memory Chess - Train your spatial visualization with chess | Product Hunt",
+      "tagline": "A free board-memory game. Study a position, rebuild it, read the number.",
+      "recognition": "Recognition"
     },
     "sound": {
       "mute": "Mute sound",
@@ -128,9 +132,7 @@
     "lab": {
       "index": {
         "label": "Lab",
-        "site": "Site",
         "onPage": "On this page",
-        "menu": "Menu",
         "notebook": "Notebook",
         "method": "Method",
         "calibrate": "Calibrate",
@@ -923,11 +925,6 @@
         "capped": "Today's {cap} reviews are done on this device.",
         "cappedNext": "Any board still due comes back tomorrow, the longest waiting first.",
         "schedule": "Boards you score under 80% on come back 1, 3, 7 and 14 days after you first see them."
-      },
-      "footer": {
-        "description": "A free board-memory game. Study a position, rebuild it, read the number.",
-        "site": "Site",
-        "recognition": "Recognition"
       }
     }
   },

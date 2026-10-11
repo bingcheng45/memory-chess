@@ -432,7 +432,7 @@
           "note": "Sample record · 12 sessions",
           "realAria": "Your memory span {sessions, plural, one {in the session it was first reached} other {over the # sessions since it was first reached}}, {shape, select, flat {holding at {now} pieces} other {rising from {first} to {now} pieces}}.",
           "need": "Score {accuracy} percent or better {count, plural, =2 {twice} one {once more} other {# more times}} at one size of {minPieces} or more pieces.",
-          "onlyKings": "Your rounds so far were just the two kings. Play a round with more pieces to see your span.",
+          "onlyKings": "Your rounds so far were just the two kings, and a span needs more pieces.",
           "first": "Span first reached",
           "last": "Latest"
         },
@@ -747,7 +747,7 @@
           "title": "Which pieces slip.",
           "need": "About {count, plural, one {# more round} other {# more rounds}} until a piece other than the king has 20 sightings.",
           "needStart": "Recall by piece type appears after your first round.",
-          "onlyKings": "Your rounds so far were just the two kings. Play a round with more pieces to see recall by piece type.",
+          "onlyKings": "Your rounds so far were just the two kings, and recall by piece type needs more pieces.",
           "thin": "{shown}/20 seen",
           "baseline": "baseline",
           "kings": "Kings are in every round, so they are a baseline. Recalled {recalled} of {shown}.",

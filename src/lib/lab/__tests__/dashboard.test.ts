@@ -126,6 +126,20 @@ describe("dashboardOf", () => {
     });
   });
 
+  it("leaves out the insights tile while the record has no finding to show", () => {
+    expect(tile(tilesFor("spanClimber"), "insights")).toBeUndefined();
+    expect(tilesFor("spanClimber")).toHaveLength(17);
+  });
+
+  it("shows the insights tile once the record has a finding", () => {
+    expect(tile(tilesFor("colourSkew"), "insights")).toEqual({
+      id: "insights",
+      state: "ready",
+      figure: { value: 2, unit: "findings", digits: 0 },
+      context: { kind: "rounds", values: { rounds: personaRounds("colourSkew", PERSONA_TODAY).length } },
+    });
+  });
+
   it("keeps a stale figure and marks it stale", () => {
     expect(tile(tilesFor("stale"), "span")).toEqual({
       id: "span",

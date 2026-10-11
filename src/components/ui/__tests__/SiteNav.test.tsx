@@ -22,6 +22,20 @@ beforeEach(() => {
 });
 
 describe("SiteNav", () => {
+  it("hides About below the sm breakpoint, where the footer still links it, and shows every other link", () => {
+    render(<SiteNav />);
+
+    const items = within(nav()).getAllByRole("listitem");
+    expect(items.map((item) => [item.textContent, item.className])).toEqual([
+      ["Play", ""],
+      ["Learn", ""],
+      ["Articles", ""],
+      ["Leaderboard", ""],
+      ["Progress", ""],
+      ["About", "hidden sm:list-item"],
+    ]);
+  });
+
   it("links Play, Learn, Articles, Leaderboard, Progress and About in that order", () => {
     render(<SiteNav />);
 

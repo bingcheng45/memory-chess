@@ -1,52 +1,40 @@
-# Hero showcase: a guided walk through a real position
+# Hero showcase and microscope: real positions, verified relations
 
-Branch: `feat/brain-lab-landing` (PR 42). Status: approved after review of a throwaway mock.
+Branch: `feat/brain-lab-landing` (PR 42).
 
-## What changes for the visitor
+## What the visitor sees
 
-The hero card stops showing a made-up, motionless eight-piece position. It shows a real, famous one and walks through it from White's side, then blanks and rebuilds, on a loop of about 38 seconds.
+The hero card walks through a real, famous ending, then blanks and rebuilds it, on a loop of about 46 seconds. Section 02, "A round, under the microscope", teaches a memory technique on a second real position.
 
-- Position: Deep Fritz (White) against Vladimir Kramnik, Game 2 of the Bonn match, 27 November 2006, after 34.Nxf8, Black to move. 14 pieces.
-- Study: six groups circled one at a time. Each circle stays while the next is drawn.
-- White threats: the knight on f8, the queen on e4, then Qh7 as mate. Arrows show what each piece attacks. A one-line thought follows each step.
-- Finish: 34...Qe3 (Black misses the mate), 35.Qh7#.
-- Rebuild: the board goes blank, then each group fades back in.
-- Click any piece to see where it can move or capture, either colour. Click it again, or press Escape, to resume.
-- The stats row under the card replaces "0-100% accuracy reading" with the live "games played" count. While the count is unavailable it keeps the accuracy reading, so the row never has a hole.
+### Hero: Topalov against Shirov, Linares 1998
 
-## Approved layout (the "shorter, larger names" card)
+- Position: after 47.Kg1, Black to move, 10 pieces. Shirov is two pawns up with bishops on opposite colours.
+- Study: four groups circled one at a time (White's corner, the long diagonal, Black's wall, the runner), each with the relations that tie it together drawn as arrows.
+- The trap: the black king on e6 cannot step forward. Crosses on d5, e5 and f5, the c3 bishop's lines to e5 and f6. chess.js lists only Kd6, Kd7, Ke7 and Kf7.
+- The game, ply by ply, one a second: 47...Bh3!!, then 48.gxh3 Kf5 49.Kf2 Ke4, then 50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Captured pieces fade out. Under reduced motion each stretch shows its last board at once.
+- Rebuild: blank, the groups fade back in order, then ticks on the checks (bishops on opposite colours, c3 still hits f6, four white and six black).
+- Copy honesty: 48.gxh3 is not called forced. "Topalov took the bishop and resigned after 53...Kb3."
+- Click any piece to see where it can move or capture. Click it again, or press Escape, to resume.
 
-Top row: live dot and `Man vs machine · Game 2` on the left, `Bonn · 27 November 2006` on the right. Second row: the matchup as a left-aligned 20px title, white swatch `Deep Fritz`, `vs`, black swatch `Vladimir Kramnik`. Then the board, then phase tag with step counter, the caption, the thought bubble, and one row holding Back, Pause or Play, Next and the step bar. No readout row or footer inside the card. Everything is left-aligned. Card height must not change from step to step.
+### Microscope: Kasparov against Topalov, Wijk aan Zee 1999
 
-Reference mock (throwaway, scratch dir, not in the repo):
-`/private/tmp/claude-501/-Users-bingcheng-ai-projects-memory-chess/95c00692-73a4-49f8-9f20-7aeb671552f8/scratchpad/proto/` holds `template.html` (the timeline code, all CSS and the exact caption text), `story2.mjs` (the chess.js check that produced the data) and `data.json`.
+The final position after 44.Qa7, 11 pieces, in seven phases: Study, Anchors (the two kings), Chunk (three groups, arrows for attacks, defences, pawn chains and the blocked pawns), Encode (each group named and given a sentence), Blank, Rebuild (group by group, with one planted slip, the c3 pawn on c2), and Score (every relation re-derived on the rebuild, ticked or crossed, side counts, then the score). The calibration round reuses the phase numbers and names for its study, rebuild and scored phases.
+
+Research is cited only for what it found: de Groot, Chase and Simon (1973), Gobet and Simon (1996). The sentence and verify steps are presented as technique.
 
 ## Shape of the code
 
-One typed data module describes the tour. A pure function turns it into a list of steps. One component draws a step. A small clock advances the step.
-
 | Piece | File | Notes |
 |---|---|---|
-| Showcase data | `src/lib/home/showcase.ts` | FEN, game facts, six groups, three threat steps, the finish, reach table. Types make an unknown square or a group with no pieces a type error where practical. |
-| Step list | `src/lib/home/showcaseTour.ts` | Pure: showcase in, `ShowcaseStep[]` out. Discriminated by phase (`study`, `threat`, `finish`, `rebuild`). Durations live here. |
-| Renderer | `src/components/home/ShowcaseBoard.tsx` | Client component. One element per piece, moved with `transform`. Overlay is one SVG in board units like `MicroscopeOverlay`. |
-| Clock | `src/components/home/useShowcaseClock.ts` | Autoplay, pause off screen (IntersectionObserver), no autoplay under reduced motion, explore pauses it. |
-| Hero | `src/components/home/LabHero.tsx` | Swaps `StaticBoard` for `ShowcaseBoard`. Deletes `SpecimenCountdown` and the old readout. |
-| Styles | `src/components/home/lab.css` or `lab-instruments.css` | Existing `--lab-*` tokens only. No new colours. |
-| Copy | `messages/en.json` under `home.lab` | The lab is English-only (`LAB_LOCALES = ["en"]`), so no other catalogue is touched. |
+| Relations | `src/lib/home/relations.ts` | `Relation { kind: attacks, defends, controls, chain or blocked; from; to }`, `Group { id, side, squares, relations }`, `RelationCheck`. |
+| Hero data | `src/lib/home/showcase.ts` | FEN, groups, the trap, three game scenes as ply ranges, the rebuild check. |
+| Game record | `src/lib/home/showcaseGame.ts` | The whole Linares game and the study ply. Read only by the generator and tests. |
+| Generated | `src/lib/home/showcaseReplay.ts` | The reach table and one frame per ply (`san, from, to, captured, fen`), written by `npm run generate:showcase`. |
+| Step list | `src/lib/home/showcaseTour.ts` | Pure: showcase in, steps out. Each step holds one board per beat, folded from the frames, so captures drop pieces. |
+| Microscope data | `src/lib/home/specimen.ts` | FEN, anchors, groups, the slip, the recall, the checks, the phase table. |
+| Overlays | `ShowcaseOverlay.tsx`, `MicroscopeOverlay.tsx`, `BoardArrow.tsx` | Draw relations from data. No hard-coded arrows. |
+| Copy | `messages/en.json` under `home.lab` | The lab is English-only. |
 
-Leave `SPECIMEN`, `SPECIMEN_RECALL`, `MICROSCOPE_PHASES` and the Microscope section alone. They explain one round with a hand-made position and their copy counts those eight pieces.
+## The lever
 
-The reach table (what each piece attacks, its legal moves, which of them check or mate) is generated from chess.js by a script and committed, so chess.js stays out of the client bundle. A test regenerates it and fails if the committed copy is stale.
-
-## Checks that must pass
-
-1. A test replays the game record in chess.js and asserts every claim a caption makes: the final position equals the FEN, Black is to move, all 14 pieces sit in exactly one group, Nf8 and Qe4 both attack h7, Qh7 is mate, 22 of Black's 26 legal moves allow Qh7#, Kg8, Qg1+, g6 and g5 do not, 34...Qe3 35.Qh7# is checkmate, g8 is covered and Nf8 protects the queen. `story2.mjs` already makes these assertions.
-2. A test on the step list: phases in order, six study steps with circles accumulating, durations sum to the figure shown in the plan, rebuild last.
-3. A render test: the hero shows the matchup, the date, and the stats row with the live count, falls back to the accuracy reading when the count is missing.
-4. `npm run validate`, lint and the type check pass.
-5. In a real browser at about 1280px and 390px: card height identical on every step, no console errors, no horizontal scroll, circles and arrows land on the right squares, click-to-inspect works and resumes, reduced motion shows the full position with manual controls and no autoplay.
-
-## Out of scope
-
-Translating the captions, the Microscope section, the calibration board, any change to the game itself.
+`src/lib/home/__tests__/relations.test.ts` replays both games in chess.js and holds every relation in the data against the board it is drawn on, every rebuild check against the recall board, the tour's piece tracking against every ply, the trap's king moves, the move numbers in the captions, and the piece counts the captions state. A wrong arrow or a wrong number fails CI instead of shipping.

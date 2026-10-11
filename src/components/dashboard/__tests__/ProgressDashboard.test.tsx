@@ -54,4 +54,37 @@ describe("ProgressDashboard", () => {
     expect(tileText("piecesHeld")).toBe("Pieces heldUnlocks with 3 more rounds and 1 more day of play.Play a round →");
     expect(within(document.querySelector('[data-tile="plans"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/#record");
   });
+
+  it.each([
+    ["en", "Longest streak: 3 days"],
+    ["cs", "Nejdelší série: 3 dny"],
+    ["da", "Længste stime: 3 dage"],
+    ["de", "Längste Serie: 3 Tage"],
+    ["es", "Racha más larga: 3 días"],
+    ["fi", "Pisin putki: 3 päivää"],
+    ["fr", "Plus longue série : 3 jours"],
+    ["hi", "सबसे लंबा सिलसिला: 3 दिन"],
+    ["hu", "Leghosszabb sorozat: 3 nap"],
+    ["id", "Beruntun terpanjang: 3 hari"],
+    ["it", "Serie più lunga: 3 giorni"],
+    ["ja", "最長連続3日"],
+    ["ko", "최장 연속 3일"],
+    ["nl", "Langste reeks: 3 dagen"],
+    ["no", "Lengste rekke: 3 dager"],
+    ["pl", "Najdłuższa seria: 3 dni"],
+    ["pt-BR", "Maior sequência: 3 dias"],
+    ["ro", "Cea mai lungă serie: 3 zile"],
+    ["ru", "Самая длинная серия: 3 дня"],
+    ["sv", "Längsta svit: 3 dagar"],
+    ["tr", "En uzun seri: 3 gün"],
+    ["vi", "Chuỗi dài nhất: 3 ngày"],
+    ["zh-CN", "最长连续 3 天"],
+    ["zh-TW", "最長連續 3 天"],
+  ])("names the streak the longest run belongs to in %s", async (locale, longest) => {
+    labData = persona("threeDays");
+    const { default: messages } = await import(`../../../../messages/${locale}.json`);
+    renderWithIntl(<ProgressDashboard />, { locale, messages });
+
+    expect(document.querySelector('[data-tile="streak"] .lab-note')?.textContent).toBe(longest);
+  });
 });

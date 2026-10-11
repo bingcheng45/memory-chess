@@ -33,27 +33,49 @@ function pieceState(phase: MicroscopePhase, square: SquareName): PieceState {
   }
 }
 
-const ACTIVE_BAND = "-45% 0px -45% 0px";
+const PHONE = "(max-width: 820px)";
+// Desktop: the step crossing the middle of the viewport is the active one.
+const DESKTOP_BAND = "-45% 0px -45% 0px";
+// Phone: the step crossing a thin line just under the sticky card is the active one.
+const BELOW_CARD_GAP = 8;
+const LINE_THICKNESS = 2;
+
+/** The observer's root margin: a thin line under the sticky card on phones, the middle band elsewhere. */
+function activeBand(card: HTMLElement | null): string {
+  if (!card || !window.matchMedia(PHONE).matches) return DESKTOP_BAND;
+  const line = Math.round(parseFloat(getComputedStyle(card).top) + card.offsetHeight + BELOW_CARD_GAP);
+  return `-${line}px 0px -${Math.max(window.innerHeight - line - LINE_THICKNESS, 0)}px 0px`;
+}
 
 function useActiveStep(count: number) {
   const stepRefs = useRef<(HTMLElement | null)[]>([]);
+  const cardRef = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(0);
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(Number((entry.target as HTMLElement).dataset.step));
-        });
-      },
-      { rootMargin: ACTIVE_BAND },
-    );
-    stepRefs.current.slice(0, count).forEach((step) => step && observer.observe(step));
-    return () => observer.disconnect();
+    let observer: IntersectionObserver | undefined;
+    const observe = () => {
+      observer?.disconnect();
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(Number((entry.target as HTMLElement).dataset.step));
+          });
+        },
+        { rootMargin: activeBand(cardRef.current) },
+      );
+      stepRefs.current.slice(0, count).forEach((step) => step && observer?.observe(step));
+    };
+    observe();
+    window.addEventListener("resize", observe);
+    return () => {
+      window.removeEventListener("resize", observe);
+      observer?.disconnect();
+    };
   }, [count]);
 
-  return { active, stepRefs };
+  return { active, stepRefs, cardRef };
 }
 
 /** The encode step's sentences, one per group, numbered as the board labels them. */
@@ -72,7 +94,7 @@ function GroupSentences() {
 
 export function MicroscopeSection() {
   const t = useTranslations("home.lab.method");
-  const { active, stepRefs } = useActiveStep(MICROSCOPE_PHASES.length);
+  const { active, stepRefs, cardRef } = useActiveStep(MICROSCOPE_PHASES.length);
   const phase = MICROSCOPE_PHASES[active];
 
   return (
@@ -80,7 +102,7 @@ export function MicroscopeSection() {
       <div className="lab-wrap">
         <SectionHeading section="method" title={t("title")} lede={t("lede")} />
         <div className="lab-scope">
-          <div className="lab-scope-fig">
+          <div className="lab-scope-fig" ref={cardRef}>
             <div className="lab-scope-card" data-phase={phase.id}>
               <div className="lab-scope-status">
                 <span className="lab-k">

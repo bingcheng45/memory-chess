@@ -58,7 +58,8 @@
   /* The sticky strip spans the column and paints the page colour, so no step text shows beside or above the card. */
   .lab-scope-fig { top: var(--lab-index-h); z-index: 5; padding: 8px 0; background: var(--lab-bg); }
   .lab-scope-card { max-width: 300px; margin: 0 auto; padding: 10px; box-shadow: 0 8px 24px rgba(13, 27, 36, 0.08); }
-  .lab-step { min-height: 56vh; }
+  /* The active step is the one just under the card, so its heading starts at the top, not mid-block. */
+  .lab-step { min-height: 56vh; justify-content: flex-start; }
   .lab-scope-card .lab-score-chip { padding: 5px 7px; font-size: 10px; border-radius: 6px; }
   .lab-scope-card .lab-score-chip b { font-size: 16px; }
 }

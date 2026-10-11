@@ -22,7 +22,7 @@ beforeEach(() => {
 });
 
 describe("SiteNav", () => {
-  it("links Play, Learn, Articles, Leaderboard and About in that order", () => {
+  it("links Play, Learn, Articles, Leaderboard, Progress and About in that order", () => {
     render(<SiteNav />);
 
     const links = within(nav()).getAllByRole("link");
@@ -31,6 +31,7 @@ describe("SiteNav", () => {
       "Learn",
       "Articles",
       "Leaderboard",
+      "Progress",
       "About",
     ]);
     expect(links.map((link) => link.getAttribute("href"))).toEqual([
@@ -38,6 +39,7 @@ describe("SiteNav", () => {
       "/learn",
       "/articles",
       "/leaderboard",
+      "/dashboard",
       "/about",
     ]);
   });
@@ -127,7 +129,7 @@ describe("PageHeader navigation", () => {
   it("renders the nav on ordinary pages", () => {
     renderHeader();
 
-    expect(within(nav()).getAllByRole("link")).toHaveLength(5);
+    expect(within(nav()).getAllByRole("link")).toHaveLength(6);
   });
 
   it("leaves the nav out while a round is being memorised or placed", () => {

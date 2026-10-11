@@ -22,7 +22,8 @@
     "lab:heights": "node scripts/lab/heights.mjs",
     "lab:cls": "node scripts/lab/cls.mjs",
     "lab:cls-game": "node scripts/lab/cls-game.mjs",
-    "lab:fontswap": "node scripts/lab/fontswap.mjs"
+    "lab:fontswap": "node scripts/lab/fontswap.mjs",
+    "lab:fit": "node scripts/lab/fit.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

@@ -20,12 +20,22 @@ describe("readinessOf", () => {
       state: "warming",
       sampleSize: 7,
       need: { days: 1 },
+      waitsForTomorrow: true,
     });
     expect(readinessOf({ sampleSize: 4, have: { exposures: 13 }, thresholds: { exposures: 20 }, lastDay: "2026-10-08", today: "2026-10-08" })).toEqual({
       state: "warming",
       sampleSize: 4,
       need: { exposures: 7 },
     });
+  });
+
+  it("waits for tomorrow only when days alone are missing and today is already played", () => {
+    const daysShort = { sampleSize: 7, have: { rounds: 7, days: 1 }, thresholds: TREND, today: "2026-10-08" };
+
+    expect(readinessOf({ ...daysShort, lastDay: "2026-10-08" }).waitsForTomorrow).toBe(true);
+    expect(readinessOf({ ...daysShort, lastDay: "2026-10-07" }).waitsForTomorrow).toBe(undefined);
+    expect(readinessOf({ ...daysShort, lastDay: "2026-10-08", today: "" }).waitsForTomorrow).toBe(undefined);
+    expect(readinessOf({ ...daysShort, have: { rounds: 4, days: 1 }, lastDay: "2026-10-08" }).waitsForTomorrow).toBe(undefined);
   });
 
   it("is ready once every threshold is met", () => {

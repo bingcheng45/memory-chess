@@ -87,13 +87,14 @@ interface NeedNoteProps {
 }
 
 export function NeedNote({ readiness, panel, setting, className = "lab-panel-desc lab-empty", children }: NeedNoteProps) {
+  const t = useTranslations("home.lab.record");
   return (
     <p className={`${className} lab-need`}>
       {children}
       {readiness.state === "warming" && (
         <>
           {" "}
-          <LabPlayLink panel={panel} href={needHref(setting)} />
+          {readiness.waitsForTomorrow ? t("tomorrow") : <LabPlayLink panel={panel} href={needHref(setting)} />}
         </>
       )}
     </p>

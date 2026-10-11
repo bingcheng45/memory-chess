@@ -59,7 +59,7 @@ describe("dashboardOf", () => {
       { id: "span", state: "warming", need: { qualifyingRounds: 1 }, rig: null, href: QUICK },
       { id: "piecesHeld", state: "warming", need: { rounds: 3, days: 1 }, rig: null, href: QUICK },
       { id: "speed", state: "warming", need: { rounds: 4 }, rig: { pieceCount: 6, memorizeSeconds: 10 }, href: QUICK },
-      { id: "streak", state: "warming", need: { days: 1 }, rig: null, href: QUICK },
+      { id: "streak", state: "warming", need: { days: 1 }, rig: null, href: null },
     ]);
   });
 

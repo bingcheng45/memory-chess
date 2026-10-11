@@ -47,3 +47,4 @@ next-env.d.ts
 # lab persona exports and drive output (scripts/lab)
 .lab-personas/
 .lab-drive/
+.lab-fit/

@@ -52,9 +52,13 @@ function TileBody({ tile }: { tile: DashboardTile }) {
       return (
         <>
           <p className="lab-tile-need">{needText(tile.need, tile.rig)}</p>
-          <Link className="lab-go" href={tile.href}>
-            {tile.rig ? t("playAt", tile.rig) : t("play")} →
-          </Link>
+          {tile.href === null ? (
+            <p className="lab-note">{t("tomorrow")}</p>
+          ) : (
+            <Link className="lab-go" href={tile.href}>
+              {tile.rig ? t("playAt", tile.rig) : t("play")} →
+            </Link>
+          )}
         </>
       );
     case "empty":

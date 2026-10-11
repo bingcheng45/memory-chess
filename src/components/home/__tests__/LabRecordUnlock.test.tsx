@@ -16,7 +16,9 @@ const css = readFileSync(join(__dirname, "../lab-instruments.css"), "utf8");
 const PLAY_HREF = "/game?pieceCount=6&memorizeTime=10&source=home_quick";
 
 const strip = () => screen.queryByRole("list", { name: "Still to unlock" });
-const items = () => within(strip()!).getAllByRole("listitem").map((item) => item.textContent);
+const rows = () => within(strip()!).getAllByRole("listitem").map((item) => Array.from(item.children, (part) => part.textContent));
+const needs = () => rows().map(([, need]) => need);
+const summary = () => screen.getByText(/figures unlocked$/).textContent;
 const staleNotes = (container: HTMLElement) =>
   [...container.querySelectorAll(".lab-stale")].map((note) => [note.closest(".lab-panel")!.classList[1], note.textContent]);
 
@@ -24,46 +26,49 @@ describe("unlock strip", () => {
   it("lists every threshold for a new visitor, before the record has loaded too", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
 
-    expect(items()).toEqual([
-      "Memory span · 2 rounds at 80% with 3+ pieces",
-      "Pieces held · 5 rounds over 2 days",
-      "Trend · 5 rounds of one setting over 2 days",
-      "Speed · 5 rounds of one setting",
-      "Streak · play on 2 days",
-      "Forgetting curve · 3 reviews after the same gap",
-      "Lab notebook · 1 round",
-      "Miss map · 10 sightings per file and rank",
-      "Piece recall · 20 sightings of a non-king piece",
-      "Insights · 10 rounds",
+    expect(rows()).toEqual([
+      ["Fig. 6.1 · Memory span", "2 rounds at 80%+ with 3+ pieces"],
+      ["Fig. 6.2 · Pieces held", "5 rounds over 2 days"],
+      ["Fig. 6.3 · Accuracy over time", "5 rounds at one setting over 2 days"],
+      ["Fig. 6.4 · Speed", "5 rounds at one setting"],
+      ["Fig. 6.6 · Days in a row", "2 days played"],
+      ["Fig. 6.7 · Forgetting curve", "3 reviews after the same gap"],
+      ["Fig. 6.8 · Lab notebook", "1 round"],
+      ["Fig. 6.9 · Miss map", "10 sightings per file and rank"],
+      ["Fig. 6.10 · Recall by piece type", "20 sightings of a non-king piece"],
+      ["Fig. 6.11 · Insights", "10 rounds"],
     ]);
+    expect(summary()).toBe("0 of 10 figures unlocked");
     expect(screen.getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", PLAY_HREF);
   });
 
   it("says what two rounds on one day still need", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
 
-    expect(items()).toEqual([
-      "Memory span · 1 more round at 80% with 3+ pieces",
-      "Pieces held · 3 more rounds, 1 more day",
-      "Trend · 4 more game rounds at 6 pieces, 10\u00a0s, 1 more day",
-      "Speed · 4 more game rounds at 6 pieces, 10\u00a0s",
-      "Streak · play on 1 more day",
-      "Forgetting curve · 3 more reviews after the same gap",
-      "Miss map · 10 more sightings on the least seen file or rank",
-      "Piece recall · 14 more sightings of a non-king piece",
-      "Insights · 8 more rounds",
+    expect(rows()).toEqual([
+      ["Fig. 6.1 · Memory span", "1 more round at 80%+ with 3+ pieces"],
+      ["Fig. 6.2 · Pieces held", "3 more rounds, 1 more day"],
+      ["Fig. 6.3 · Accuracy over time", "4 more game rounds at 6 pieces, 10\u00a0s, 1 more day"],
+      ["Fig. 6.4 · Speed", "4 more game rounds at 6 pieces, 10\u00a0s"],
+      ["Fig. 6.6 · Days in a row", "1 more day played"],
+      ["Fig. 6.7 · Forgetting curve", "3 more reviews after the same gap"],
+      ["Fig. 6.9 · Miss map", "10 more sightings on the least seen file or rank"],
+      ["Fig. 6.10 · Recall by piece type", "14 more sightings of a non-king piece"],
+      ["Fig. 6.11 · Insights", "8 more rounds"],
     ]);
+    expect(summary()).toBe("1 of 10 figures unlocked");
   });
 
   it("leaves out what an easy-only player can already read", () => {
     renderWithIntl(<LabRecordSection record={persona("easyOnly")} />);
 
-    expect(items()).toEqual([
-      "Memory span · 1 round with 3+ pieces",
-      "Forgetting curve · 3 more reviews after the same gap",
-      "Miss map · 4 more sightings on the least seen file or rank",
-      "Piece recall · 20 more sightings of a non-king piece",
+    expect(rows()).toEqual([
+      ["Fig. 6.1 · Memory span", "1 round with 3+ pieces"],
+      ["Fig. 6.7 · Forgetting curve", "3 more reviews after the same gap"],
+      ["Fig. 6.9 · Miss map", "4 more sightings on the least seen file or rank"],
+      ["Fig. 6.10 · Recall by piece type", "20 more sightings of a non-king piece"],
     ]);
+    expect(summary()).toBe("6 of 10 figures unlocked");
   });
 
   it("shows every line at every width: no toggle in the strip, and no rule in the stylesheet that hides any part of it", () => {
@@ -73,7 +78,7 @@ describe("unlock strip", () => {
       .map(([, selector]) => selector.trim());
 
     expect(within(container.querySelector(".lab-unlock") as HTMLElement).queryAllByRole("button", { hidden: true })).toEqual([]);
-    expect(items()).toHaveLength(9);
+    expect(rows()).toHaveLength(9);
     expect(hiding).toEqual([]);
   });
 
@@ -84,14 +89,14 @@ describe("unlock strip", () => {
     rerender(<LabRecordSection record={persona("twoRounds")} />);
 
     expect(serverLines.map((line) => line.isConnected)).toEqual(Array(10).fill(false));
-    expect(items()).toHaveLength(9);
+    expect(rows()).toHaveLength(9);
   });
 
   it("prints every threshold from the registry, so the copy cannot drift from the panels", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
     const { span, piecesHeld, trend, speed, streak, curve, notebook, missMap, typeRecall, insights } = LAB_METRICS;
 
-    expect(items().map((line) => line!.match(/\d+/g)!.map(Number))).toEqual([
+    expect(needs().map((need) => need!.match(/\d+/g)!.map(Number))).toEqual([
       [span.thresholds.qualifyingRounds, LAB_THRESHOLDS.spanAccuracy, LAB_THRESHOLDS.spanMinPieces],
       [piecesHeld.thresholds.rounds, piecesHeld.thresholds.days],
       [trend.thresholds.rounds, trend.thresholds.days],
@@ -111,7 +116,7 @@ describe("unlock strip", () => {
     );
     renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor"), records, summary: summarize(records) }} />);
 
-    expect(items()).toContain("Speed · 1 round with a piece right");
+    expect(rows()).toContainEqual(["Fig. 6.4 · Speed", "1 round with a piece right"]);
   });
 
   it("drops the streak and piece recall lines exactly when their copy says they unlock", () => {
@@ -121,7 +126,10 @@ describe("unlock strip", () => {
     );
     renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor", "2026-10-07"), records, summary: summarize(records) }} />);
 
-    expect(items()).toEqual(["Forgetting curve · 3 more reviews after the same gap", "Miss map · 10 more sightings on the least seen file or rank"]);
+    expect(rows()).toEqual([
+      ["Fig. 6.7 · Forgetting curve", "3 more reviews after the same gap"],
+      ["Fig. 6.9 · Miss map", "10 more sightings on the least seen file or rank"],
+    ]);
   });
 
   it("says in one line, in the same box, that every figure is unlocked once each can be read", () => {
@@ -163,7 +171,10 @@ describe("stale panels", () => {
       ["lab-p-insights", "Last played 20 days ago. Play a round →"],
       ["lab-p-bests", "Last played 20 days ago. Play a round →"],
     ]);
-    expect(items()).toEqual(["Forgetting curve · 3 more reviews after the same gap", "Miss map · 2 more sightings on the least seen file or rank"]);
+    expect(rows()).toEqual([
+      ["Fig. 6.7 · Forgetting curve", "3 more reviews after the same gap"],
+      ["Fig. 6.9 · Miss map", "2 more sightings on the least seen file or rank"],
+    ]);
     expect(container.querySelector(".lab-p-spark svg")).not.toBeNull();
   });
 

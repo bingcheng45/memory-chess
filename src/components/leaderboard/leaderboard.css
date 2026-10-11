@@ -1,0 +1,84 @@
+/* The leaderboard in Lab Paper (docs/design/brand-directions/lab-paper.md). The shell supplies the tokens, the
+   page base and the buttons; these rules draw the page head, the difficulty tabs, the ranking table and its states. */
+.lab-paper .lb-main { padding-top: 48px; padding-bottom: 64px; }
+.lab-paper .lb-head { max-width: 760px; margin-bottom: 40px; }
+.lab-paper .lb-title { font: 650 48px/1.08 var(--lp-ui); letter-spacing: -0.025em; }
+.lab-paper .lb-lede { margin-top: 16px; font: 400 19px/1.6 var(--lp-body); color: var(--lp-ink-2); }
+
+/* difficulty tabs: the active board is ink with an accent bar beneath it, so the state is a shape as well as a colour */
+.lab-paper .lb-tabs { display: flex; gap: 4px; margin-bottom: 24px; overflow-x: auto; scrollbar-width: none; box-shadow: inset 0 -1px var(--lp-line); }
+.lab-paper .lb-tabs::-webkit-scrollbar { display: none; }
+.lab-paper .lb-tab { position: relative; flex: none; min-height: 44px; padding: 0 16px; border: 0; border-radius: var(--lp-r-sm) var(--lp-r-sm) 0 0; background: none; font: 500 16px/1 var(--lp-ui); color: var(--lp-ink-2); white-space: nowrap; cursor: pointer; }
+.lab-paper .lb-tab:hover { background: var(--lp-surface-2); color: var(--lp-ink); }
+.lab-paper .lb-tab[data-state="active"] { color: var(--lp-ink); }
+.lab-paper .lb-tab[data-state="active"]::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: 0; height: 2px; border-radius: 2px; background: var(--lp-accent); }
+.lab-paper .lb-tab:focus-visible { outline-offset: -2px; }
+
+/* the ranking table: text left, numbers right in tabular mono, the head row sticks below the site header */
+.lab-paper .lb-plate { background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
+.lab-paper .lb-table { width: 100%; border-collapse: separate; border-spacing: 0; font: 400 16px/1.4 var(--lp-body); color: var(--lp-ink); }
+.lab-paper .lb-table th { position: sticky; top: var(--lp-header-h); z-index: 2; padding: 12px 16px; text-align: left; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); white-space: nowrap; background: var(--lp-surface-2); border-bottom: 1px solid var(--lp-line); }
+.lab-paper .lb-table th:first-child { border-top-left-radius: calc(var(--lp-r-lg) - 1px); }
+.lab-paper .lb-table th:last-child { border-top-right-radius: calc(var(--lp-r-lg) - 1px); }
+.lab-paper .lb-table td { height: 52px; padding: 0 16px; white-space: nowrap; vertical-align: middle; background: var(--lb-row-bg, var(--lp-surface)); border-bottom: 1px solid var(--lp-line); }
+.lab-paper .lb-table tbody tr:last-child td { border-bottom: 0; }
+.lab-paper .lb-table tbody tr:last-child td:first-child { border-bottom-left-radius: calc(var(--lp-r-lg) - 1px); }
+.lab-paper .lb-table tbody tr:last-child td:last-child { border-bottom-right-radius: calc(var(--lp-r-lg) - 1px); }
+.lab-paper .lb-table .lb-num, .lab-paper .lb-table .lb-end { text-align: right; }
+.lab-paper .lb-table td.lb-num { font-family: var(--lp-data); font-variant-numeric: tabular-nums; }
+.lab-paper .lb-rank { width: 1%; }
+.lab-paper .lb-medal { margin-right: 6px; font-family: var(--lp-ui); }
+.lab-paper .lb-player { display: flex; align-items: center; gap: 8px; }
+.lab-paper .lb-flag { font-family: var(--lp-ui); }
+.lab-paper .lb-table tr[data-podium] .lb-name { font-weight: 600; }
+.lab-paper .lb-table tr[data-podium] .lb-rank { font-weight: 600; }
+.lab-paper .lb-table tr[data-highlighted] { --lb-row-bg: var(--lp-accent-soft); }
+.lab-paper .lb-you { display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 999px; font: 600 12px/1 var(--lp-ui); background: var(--lp-surface); color: var(--lp-accent); border: 1px solid currentColor; }
+.lab-paper .lb-penalty { margin-left: 2px; font-size: 12px; font-weight: 600; color: var(--lp-wrong); }
+.lab-paper .lb-time { display: inline-flex; align-items: baseline; }
+.lab-paper .lb-ms { font-size: 0.8em; color: var(--lp-ink-2); }
+.lab-paper .lb-table td.lb-date { font-size: 15px; color: var(--lp-muted); }
+
+/* unavailable, error and empty boards share the table's frame and head, so the page keeps its shape */
+.lab-paper .lb-table td.lb-state-cell { height: auto; padding: 40px 24px; white-space: normal; }
+.lab-paper .lb-state { display: flex; gap: 16px; align-items: flex-start; max-width: 600px; }
+.lab-paper .lb-state-icon { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--lp-surface-2); color: var(--lp-ink-2); }
+.lab-paper .lb-state-title { font: 600 18px/1.35 var(--lp-ui); color: var(--lp-ink); }
+.lab-paper .lb-state p + p { margin-top: 6px; }
+.lab-paper .lb-state-body { color: var(--lp-ink-2); }
+.lab-paper .lb-state-note { font-size: 14px; line-height: 1.55; color: var(--lp-muted); }
+.lab-paper .lb-state-error { color: var(--lp-wrong); }
+.lab-paper .lb-state .lab-btn { margin-top: 16px; }
+
+.lab-paper .lb-note { margin-top: 16px; font: 400 14px/1.55 var(--lp-body); color: var(--lp-muted); }
+.lab-paper .lb-cta { margin-top: 24px; }
+
+/* the explainer below the board */
+.lab-paper .lb-ref { padding: 64px 0 96px; border-top: 1px solid var(--lp-line); }
+.lab-paper .lb-ref-body { max-width: 720px; }
+.lab-paper .lb-ref h2 { font: 650 30px/1.15 var(--lp-ui); letter-spacing: -0.02em; }
+.lab-paper .lb-ref p { margin-top: 16px; color: var(--lp-ink-2); }
+.lab-paper .lb-ref h2 + p { margin-top: 20px; }
+
+/* phones: the table scrolls inside its own frame; rank and player stay pinned while the times scroll past */
+@media (max-width: 767px) {
+  .lab-paper .lb-main { padding-top: 32px; padding-bottom: 48px; }
+  .lab-paper .lb-head { margin-bottom: 32px; }
+  .lab-paper .lb-title { font-size: 34px; line-height: 1.12; }
+  .lab-paper .lb-lede { font-size: 17px; }
+  .lab-paper .lb-scroll { max-height: min(72vh, 640px); overflow: auto; overscroll-behavior-x: contain; border-radius: calc(var(--lp-r-lg) - 1px); }
+  .lab-paper .lb-table th { top: 0; }
+  .lab-paper .lb-table th, .lab-paper .lb-table td { padding-left: 12px; padding-right: 12px; }
+  .lab-paper .lb-table .lb-rank { position: sticky; left: 0; z-index: 1; min-width: 60px; }
+  .lab-paper .lb-table .lb-who { position: sticky; left: 60px; z-index: 1; box-shadow: inset -1px 0 var(--lp-line); }
+  .lab-paper .lb-table th.lb-rank, .lab-paper .lb-table th.lb-who { z-index: 3; }
+  .lab-paper .lb-table-state thead { display: none; }
+  .lab-paper .lb-table td.lb-state-cell { padding: 32px 16px; }
+  .lab-paper .lb-ref { padding: 48px 0 64px; }
+  .lab-paper .lb-ref h2 { font-size: 26px; }
+}
+@media (max-width: 480px) {
+  .lab-paper .lb-tabs { gap: 0; }
+  .lab-paper .lb-tab { padding: 0 10px; font-size: 15px; }
+  .lab-paper .lb-tab[data-state="active"]::after { left: 4px; right: 4px; }
+}

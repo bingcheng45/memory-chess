@@ -4,8 +4,6 @@ import LeaderboardTabsFromSearchParams, {
   LeaderboardTabs,
   type LeaderboardBoards,
 } from '@/components/leaderboard/LeaderboardTabs';
-import PageHeader from '@/components/ui/PageHeader';
-import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import { RANKED_DIFFICULTIES } from '@/lib/reference/facts';
 import { getLeaderboard } from '@/lib/services/leaderboardService';
 
@@ -32,23 +30,12 @@ export default async function LeaderboardPage() {
   ) as LeaderboardBoards;
 
   return (
-    <div className={`${PAGE_BELOW_BANNER_MIN_HEIGHT} bg-bg-dark text-text-primary`}>
-      <main className="container mx-auto px-2 sm:px-4 pb-8 pt-4">
-        <div className="flex justify-center mb-8">
-          <PageHeader
-            pageType="other"
-            style={{
-              maxWidth: MAX_BOARD_SIZE_PX,
-            }}
-          />
-        </div>
-
-        {/* useSearchParams makes static prerender serialise only this fallback,
-            so it carries the real rows a crawler reads. */}
-        <Suspense fallback={<LeaderboardTabs boards={boards} />}>
-          <LeaderboardTabsFromSearchParams boards={boards} />
-        </Suspense>
-      </main>
-    </div>
+    <main className="lab-wrap lb-main">
+      {/* useSearchParams makes static prerender serialise only this fallback,
+          so it carries the real rows a crawler reads. */}
+      <Suspense fallback={<LeaderboardTabs boards={boards} />}>
+        <LeaderboardTabsFromSearchParams boards={boards} />
+      </Suspense>
+    </main>
   );
 }

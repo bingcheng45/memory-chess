@@ -3,10 +3,9 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import * as Tabs from '@radix-ui/react-tabs';
 import LeaderboardTable, { type EntryDetails } from '@/components/leaderboard/LeaderboardTable';
 import { Link } from '@/i18n/navigation';
-import { Button } from '@/components/ui/button';
 import { RANKED_DIFFICULTIES, type RankedDifficulty } from '@/lib/reference/facts';
 import { LeaderboardEntry } from '@/types/leaderboard';
 
@@ -61,23 +60,21 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   const activeBoard = boards[activeTab];
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-8">
-      <h1 className="text-3xl font-bold text-peach-400">{t("title")}</h1>
-
-      <div className="max-w-2xl space-y-2">
-        <p className="text-lg text-text-secondary text-center">{t("subtitle")}</p>
+    <>
+      <div className="lb-head">
+        <h1 className="lb-title">{t("title")}</h1>
+        <p className="lb-lede">{t("subtitle")}</p>
       </div>
 
-      <Tabs
+      <Tabs.Root
         value={activeTab}
         onValueChange={(value) => {
           if (isRankedDifficulty(value)) setActiveTab(value);
         }}
-        className="w-full max-w-4xl"
       >
-        <TabsList className="grid grid-cols-4 mb-8 bg-bg-light/30">
+        <Tabs.List className="lb-tabs">
           {RANKED_DIFFICULTIES.map((difficulty) => (
-            <TabsTrigger
+            <Tabs.Trigger
               key={difficulty}
               value={difficulty}
               // Radix makes a trigger tabbable only once focus has entered the
@@ -85,39 +82,33 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
               // page had no tab stop at all. The active tab is the stop;
               // Radix's arrow keys still move between the rest.
               tabIndex={difficulty === activeTab ? 0 : -1}
-              className="data-[state=active]:bg-peach-600 data-[state=active]:text-white"
-            >{tg(`presets.${difficulty}.label`)}</TabsTrigger>
+              className="lb-tab"
+            >{tg(`presets.${difficulty}.label`)}</Tabs.Trigger>
           ))}
-        </TabsList>
+        </Tabs.List>
 
         {RANKED_DIFFICULTIES.map((difficulty) => (
-          <TabsContent key={difficulty} value={difficulty}>
+          <Tabs.Content key={difficulty} value={difficulty}>
             <LeaderboardTable
               data={boards[difficulty].data}
               error={boards[difficulty].error ?? null}
               entryDetails={entryDetails}
               activeTab={difficulty}
             />
-          </TabsContent>
+          </Tabs.Content>
         ))}
-      </Tabs>
+      </Tabs.Root>
+
+      <p className="lb-note">{t("footnote")}</p>
 
       {activeBoard.data.length > 0 && !activeBoard.error && (
-        <div className="w-full flex justify-center mt-4 mb-6">
-          <Link href={`/game?difficulty=${activeTab}`} className="inline-block">
-            <Button
-              variant="secondary"
-              className="bg-peach-500 text-white hover:bg-peach-600 px-6 py-2"
-              size="lg"
-            >{t("claimRank")}</Button>
+        <div className="lb-cta">
+          <Link href={`/game?difficulty=${activeTab}`} className="lab-btn lab-btn-primary">
+            {t("claimRank")}
           </Link>
         </div>
       )}
-
-      <div className="w-full max-w-4xl flex justify-end">
-        <p className="text-xs text-text-secondary/70 italic">{t("footnote")}</p>
-      </div>
-    </div>
+    </>
   );
 }
 

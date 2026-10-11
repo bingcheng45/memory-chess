@@ -215,7 +215,7 @@ function GamePageContent() {
               </ErrorBoundary>
             )}
             {gameState.completionTime !== undefined && (
-              <div className="mt-8 w-full max-w-md md:max-w-lg mx-auto">
+              <div className="lab-bridge mt-8 w-full max-w-md md:max-w-lg mx-auto">
                 <ErrorBoundary>
                   <GameStats />
                 </ErrorBoundary>
@@ -278,7 +278,7 @@ function GamePageContent() {
         */}
         <div
           className={`container mx-auto flex flex-col items-center justify-start ${
-            isActivePhase ? 'h-full px-2 py-2 sm:px-4' : `${PAGE_BELOW_BANNER_MIN_HEIGHT} px-4 py-8 sm:py-12`
+            isActivePhase ? 'h-full px-4 py-2' : `${PAGE_BELOW_BANNER_MIN_HEIGHT} px-4 py-8 sm:py-12`
           }`}
         >
           <ErrorBoundary>

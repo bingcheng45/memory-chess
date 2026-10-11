@@ -9,7 +9,8 @@
       "privacy": "Soukromí",
       "terms": "Podmínky",
       "play": "Hrát",
-      "leaderboard": "Žebříček"
+      "leaderboard": "Žebříček",
+      "progress": "Pokrok"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Všechna práva vyhrazena.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}}, {seconds, plural, one {# sekunda} few {# sekundy} many {# sekundy} other {# sekund}}",
       "read": "Přečíst článek",
       "tryDrill": "Vyzkoušet toto cvičení"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Tvůj pokrok",
+      "description": "Každé číslo, které Memory Chess sleduje z tvých kol na tomto zařízení, na jedné stránce a s kartou ke sdílení."
+    },
+    "kicker": "Laboratorní záznam",
+    "title": "Tvůj pokrok",
+    "lede": "Všechna čísla, která tvá kola na tomto zařízení získala, na jednom místě. Nic neopustí tvůj prohlížeč, pokud to nesdílíš.",
+    "loading": "Načítá se tvůj záznam na tomto zařízení.",
+    "unavailable": "Tento prohlížeč neukládá záznam, takže není co ukázat. Anonymní okna neukládají nic.",
+    "fullRecord": "Zobrazit celý záznam",
+    "headline": "Hlavní čísla",
+    "more": "Vše ostatní",
+    "stale": "Ke tvému poslednímu kolu",
+    "staleNote": "Naposledy hráno před {count, plural, one {# dnem} few {# dny} many {# dne} other {# dny}}. Takto označená čísla jsou z té doby.",
+    "play": "Zahrát kolo",
+    "playAt": "Zahrát {pieceCount} figur, {memorizeSeconds} s",
+    "choose": "Vyber si ho v celém záznamu",
+    "notYet": "Zatím nic.",
+    "notSet": "Zatím nenastaveno.",
+    "needs": "Odemkne se po {need}.",
+    "needsAt": "Odemkne se po {need} při {pieceCount} figurách, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {# dalším kole} few {# dalších kolech} many {# dalšího kola} other {# dalších kolech}}",
+      "days": "{count, plural, one {# dalším herním dni} few {# dalších herních dnech} many {# dalšího herního dne} other {# dalších herních dnech}}",
+      "exposures": "{count, plural, one {# další viděné figuře} few {# dalších viděných figurách} many {# další viděné figury} other {# dalších viděných figurách}}",
+      "qualifyingRounds": "{count, plural, one {# dalším kole} few {# dalších kolech} many {# dalšího kola} other {# dalších kolech}} s přesností {accuracy} % a více a s alespoň {minPieces} figurami",
+      "largerRounds": "{count, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}} s alespoň {minPieces} figurami",
+      "rightRounds": "{count, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}} s jednou správnou figurou",
+      "reviews": "{count, plural, one {# dalším opakování} few {# dalších opakováních} many {# dalšího opakování} other {# dalších opakováních}} po stejném odstupu"
+    },
+    "label": {
+      "span": "Paměťový rozsah",
+      "piecesHeld": "Zapamatované figury",
+      "speed": "Rychlost",
+      "streak": "Série",
+      "rounds": "Odehraná kola",
+      "days": "Herní dny",
+      "trend": "Přesnost",
+      "daily": "Deska dne",
+      "week": "Tento týden",
+      "curve": "Paměť po opakování",
+      "missMap": "Nejčastěji minutá linie",
+      "typeRecall": "Nejslabší figura",
+      "insights": "Postřehy",
+      "notebook": "Zápisník",
+      "plans": "Plán",
+      "goal": "Cíl",
+      "bests": "Osobní rekordy",
+      "board": "Žebříček"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> figura} few {<n>{value}</n> figury} many {<n>{value}</n> figury} other {<n>{value}</n> figur}}",
+      "secondsPerPiece": "<n>{value}</n> s na figuru",
+      "days": "{count, plural, one {<n>{value}</n> den} few {<n>{value}</n> dny} many {<n>{value}</n> dne} other {<n>{value}</n> dní}}",
+      "percent": "<n>{value}</n> %",
+      "rounds": "{count, plural, one {<n>{value}</n> kolo} few {<n>{value}</n> kola} many {<n>{value}</n> kola} other {<n>{value}</n> kol}}",
+      "entries": "{count, plural, one {<n>{value}</n> záznam} few {<n>{value}</n> záznamy} many {<n>{value}</n> záznamu} other {<n>{value}</n> záznamů}}",
+      "findings": "{count, plural, one {<n>{value}</n> postřeh} few {<n>{value}</n> postřehy} many {<n>{value}</n> postřehu} other {<n>{value}</n> postřehů}}",
+      "settings": "{count, plural, one {<n>{value}</n> nastavení} few {<n>{value}</n> nastavení} many {<n>{value}</n> nastavení} other {<n>{value}</n> nastavení}}"
+    },
+    "context": {
+      "span": "{accuracy} % a více v {rounds, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}}, zapamatováno {memorizeSeconds} s",
+      "recent": "Průměr posledních kol: {rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}, jakékoli nastavení",
+      "setting": "{source, select, calibration {Tréninková kola} other {Kola v partiích}} s {pieceCount} figurami, {memorizeSeconds} s, z {rounds, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
+      "longest": "Nejdelší {days, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+      "daily": "{status, select, played {Dnes odehráno} unfinished {Dnes otevřeno} other {Dnes k dispozici}}, nejdelší série {longest, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+      "curve": "Zapamatováno po {day, plural, one {# dni} few {# dnech} many {# dne} other {# dnech}}, z {reviews, plural, one {# opakování} few {# opakování} many {# opakování} other {# opakování}}",
+      "rounds": "Z {rounds, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
+      "missLine": "Minuto {line, select, file {ve sloupci {name}} other {v řadě {name}}}, z {shown} viděných figur",
+      "pieceType": "{type, select, p {Pěšci zapamatováni} n {Jezdci zapamatováni} b {Střelci zapamatováni} r {Věže zapamatovány} q {Dámy zapamatovány} other {Králové zapamatováni}}, z {shown} viděných",
+      "plan": "{planId, select, baseline {Plán Výchozí stav} edge {Plán Okraje} other {Plán Žebřík}}, {status, select, active {stále probíhá} done {nyní dokončen} other {nyní zastaven}}",
+      "goal": "Směrem k {pieceCount} figurám s přesností {accuracy} %",
+      "week": "Týdenní cíl {goal} dní",
+      "best": "Nejlepší výsledek {accuracy} % při {pieceCount} figurách, {memorizeSeconds} s",
+      "entry": "Správné figury v tvém nejlepším záznamu, {difficulty, select, easy {úroveň Lehká} medium {úroveň Střední} hard {úroveň Těžká} other {úroveň Velmistr}}",
+      "overDays": "Za {days, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+      "firstDay": "Od {date}"
+    },
+    "share": {
+      "button": "Sdílet můj pokrok",
+      "working": "Vytváří se tvá karta.",
+      "shared": "Sdíleno.",
+      "saved": "Karta uložena a text zkopírován. Zveřejni je, kde chceš.",
+      "savedNoCopy": "Karta uložena. Zkopíruj text níže a zveřejni ho s ní.",
+      "failed": "Kartu zde nešlo vytvořit. Zkopíruj místo toho text níže.",
+      "caption": "Text",
+      "copy": "Kopírovat text",
+      "copied": "Text zkopírován.",
+      "copyFailed": "Kopírování zde nefungovalo. Text je označený, zkopíruj ho sám.",
+      "locked": "Karta ke sdílení se odemkne, jakmile bude připraven paměťový rozsah, zapamatované figury, rychlost nebo tvá série.",
+      "text": "Můj pokrok v Memory Chess: {figures}. Překonáš to?",
+      "figure": {
+        "span": "paměťový rozsah {value, plural, one {# figura} few {# figury} many {# figury} other {# figur}}",
+        "piecesHeld": "{value, number} zapamatované figury",
+        "speed": "{value, number} s na figuru",
+        "streak": "{value, plural, one {# den} few {# dny} many {# dne} other {# dní}} v řadě"
+      },
+      "card": {
+        "kicker": "Laboratorní záznam",
+        "rounds": "{count, plural, one {# odehrané kolo} few {# odehraná kola} many {# odehraného kola} other {# odehraných kol}}",
+        "cta": "Překonáš to?"
+      }
     }
   }
 }

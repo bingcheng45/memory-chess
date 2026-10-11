@@ -12,10 +12,10 @@ describe("LabHero", () => {
   it("shows the matchup and the date of the position it walks through", () => {
     renderWithIntl(<LabHero totalPlays={null} />);
 
-    expect(screen.getByText("Deep Fritz")).toBeInTheDocument();
-    expect(screen.getByText("Vladimir Kramnik")).toBeInTheDocument();
-    expect(screen.getByText("Bonn · 27 November 2006")).toBeInTheDocument();
-    expect(screen.getAllByRole("button", { name: / on [a-h][1-8]$/ })).toHaveLength(14);
+    expect(screen.getByText("Veselin Topalov")).toBeInTheDocument();
+    expect(screen.getByText("Alexey Shirov")).toBeInTheDocument();
+    expect(screen.getByText("4 March 1998")).toBeInTheDocument();
+    expect(screen.getAllByRole("button", { name: / on [a-h][1-8]$/ })).toHaveLength(10);
   });
 });
 

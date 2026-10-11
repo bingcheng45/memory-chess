@@ -9,7 +9,8 @@
       "privacy": "Конфиденциальность",
       "terms": "Условия",
       "play": "Играть",
-      "leaderboard": "Рейтинг"
+      "leaderboard": "Рейтинг",
+      "progress": "Прогресс"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Все права защищены.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}}, {seconds, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунды}}",
       "read": "Читать статью",
       "tryDrill": "Попробовать это упражнение"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Ваш прогресс",
+      "description": "Все показатели, которые Memory Chess отслеживает по вашим раундам на этом устройстве, на одной странице и с карточкой, которой можно поделиться."
+    },
+    "kicker": "Журнал лаборатории",
+    "title": "Ваш прогресс",
+    "lede": "Все показатели, которые ваши раунды заработали на этом устройстве, в одном месте. Ничто не покидает браузер, пока вы сами этим не поделитесь.",
+    "loading": "Читаем ваш журнал на этом устройстве.",
+    "unavailable": "Этот браузер не хранит журнал, поэтому показать нечего. Приватные окна ничего не сохраняют.",
+    "fullRecord": "Открыть полный журнал",
+    "headline": "Главные показатели",
+    "more": "Всё остальное",
+    "stale": "На момент последнего раунда",
+    "staleNote": "Последняя игра {count, plural, one {# день} few {# дня} many {# дней} other {# дня}} назад. Отмеченные так показатели относятся к тому времени.",
+    "play": "Сыграть раунд",
+    "playAt": "Сыграть {pieceCount} фигур, {memorizeSeconds} с",
+    "choose": "Выберите в полном журнале",
+    "notYet": "Пока ничего.",
+    "notSet": "Пока не задано.",
+    "needs": "Откроется после: {need}.",
+    "needsAt": "Откроется после: {need} при {pieceCount} фигурах, {memorizeSeconds} с.",
+    "need": {
+      "rounds": "{count, plural, one {ещё # раунд} few {ещё # раунда} many {ещё # раундов} other {ещё # раунда}}",
+      "days": "{count, plural, one {ещё # игровой день} few {ещё # игровых дня} many {ещё # игровых дней} other {ещё # игрового дня}}",
+      "exposures": "{count, plural, one {ещё # увиденная фигура} few {ещё # увиденные фигуры} many {ещё # увиденных фигур} other {ещё # увиденной фигуры}}",
+      "qualifyingRounds": "{count, plural, one {ещё # раунд} few {ещё # раунда} many {ещё # раундов} other {ещё # раунда}} с точностью {accuracy}% и выше и не менее {minPieces} фигурами",
+      "largerRounds": "{count, plural, one {# раунд} few {# раунда} many {# раундов} other {# раунда}} с {minPieces} и более фигурами",
+      "rightRounds": "{count, plural, one {# раунд} few {# раунда} many {# раундов} other {# раунда}} с одной верной фигурой",
+      "reviews": "{count, plural, one {ещё # повторение} few {ещё # повторения} many {ещё # повторений} other {ещё # повторения}} через тот же промежуток"
+    },
+    "label": {
+      "span": "Объём памяти",
+      "piecesHeld": "Запомненные фигуры",
+      "speed": "Скорость",
+      "streak": "Серия",
+      "rounds": "Сыграно раундов",
+      "days": "Игровые дни",
+      "trend": "Точность",
+      "daily": "Доска дня",
+      "week": "Эта неделя",
+      "curve": "Память после повторения",
+      "missMap": "Чаще всего ошибка на линии",
+      "typeRecall": "Самая слабая фигура",
+      "insights": "Наблюдения",
+      "notebook": "Блокнот",
+      "plans": "План",
+      "goal": "Цель",
+      "bests": "Личные рекорды",
+      "board": "Таблица лидеров"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> фигура} few {<n>{value}</n> фигуры} many {<n>{value}</n> фигур} other {<n>{value}</n> фигуры}}",
+      "secondsPerPiece": "<n>{value}</n> с на фигуру",
+      "days": "{count, plural, one {<n>{value}</n> день} few {<n>{value}</n> дня} many {<n>{value}</n> дней} other {<n>{value}</n> дня}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, one {<n>{value}</n> раунд} few {<n>{value}</n> раунда} many {<n>{value}</n> раундов} other {<n>{value}</n> раунда}}",
+      "entries": "{count, plural, one {<n>{value}</n> запись} few {<n>{value}</n> записи} many {<n>{value}</n> записей} other {<n>{value}</n> записи}}",
+      "findings": "{count, plural, one {<n>{value}</n> наблюдение} few {<n>{value}</n> наблюдения} many {<n>{value}</n> наблюдений} other {<n>{value}</n> наблюдения}}",
+      "settings": "{count, plural, one {<n>{value}</n> настройка} few {<n>{value}</n> настройки} many {<n>{value}</n> настроек} other {<n>{value}</n> настройки}}"
+    },
+    "context": {
+      "span": "{accuracy}% и выше в {rounds, plural, one {# раунде} few {# раундах} many {# раундах} other {# раунда}}, запоминание {memorizeSeconds} с",
+      "recent": "Среднее за последние раунды: {rounds, plural, one {# раунд} few {# раунда} many {# раундов} other {# раунда}}, любые настройки",
+      "setting": "{source, select, calibration {Тренировочные раунды} other {Раунды в партиях}}: {pieceCount} фигур, {memorizeSeconds} с, по {rounds, plural, one {# раунду} few {# раундам} many {# раундам} other {# раунда}}",
+      "longest": "Рекорд {days, plural, one {# день} few {# дня} many {# дней} other {# дня}}",
+      "daily": "{status, select, played {Сыграно сегодня} unfinished {Открыто сегодня} other {Доступно сегодня}}, самая длинная серия {longest, plural, one {# день} few {# дня} many {# дней} other {# дня}}",
+      "curve": "Запомнено через {day, plural, one {# день} few {# дня} many {# дней} other {# дня}}, по {reviews, plural, one {# повторению} few {# повторениям} many {# повторениям} other {# повторения}}",
+      "rounds": "По {rounds, plural, one {# раунду} few {# раундам} many {# раундам} other {# раунда}}",
+      "missLine": "Ошибки {line, select, file {на вертикали {name}} other {на горизонтали {name}}}, из {shown} увиденных фигур",
+      "pieceType": "{type, select, p {Пешки запомнены} n {Кони запомнены} b {Слоны запомнены} r {Ладьи запомнены} q {Ферзи запомнены} other {Короли запомнены}}, из {shown} увиденных",
+      "plan": "{planId, select, baseline {План «Исходный уровень»} edge {План «Края»} other {План «Лестница»}}, {status, select, active {ещё идёт} done {уже завершён} other {уже остановлен}}",
+      "goal": "На пути к {pieceCount} фигурам с точностью {accuracy}%",
+      "week": "Цель недели {goal} дн.",
+      "best": "Лучший результат {accuracy}% при {pieceCount} фигурах, {memorizeSeconds} с",
+      "entry": "Верные фигуры в вашей лучшей записи, {difficulty, select, easy {уровень «Лёгкий»} medium {уровень «Средний»} hard {уровень «Сложный»} other {уровень «Гроссмейстер»}}",
+      "overDays": "За {days, plural, one {# день} few {# дня} many {# дней} other {# дня}}",
+      "firstDay": "С {date}"
+    },
+    "share": {
+      "button": "Поделиться прогрессом",
+      "working": "Создаём вашу карточку.",
+      "shared": "Отправлено.",
+      "saved": "Карточка сохранена, подпись скопирована. Публикуйте где угодно.",
+      "savedNoCopy": "Карточка сохранена. Скопируйте подпись ниже, чтобы опубликовать её вместе с ней.",
+      "failed": "Здесь не удалось создать карточку. Скопируйте подпись ниже.",
+      "caption": "Подпись",
+      "copy": "Копировать подпись",
+      "copied": "Подпись скопирована.",
+      "copyFailed": "Здесь копирование не сработало. Подпись выделена, скопируйте её сами.",
+      "locked": "Карточка откроется, как только будет готов объём памяти, запомненные фигуры, скорость или ваша серия.",
+      "text": "Мой прогресс в Memory Chess: {figures}. Сможете лучше?",
+      "figure": {
+        "span": "объём памяти {value, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}}",
+        "piecesHeld": "{value, number} фигуры в памяти",
+        "speed": "{value, number} с на фигуру",
+        "streak": "{value, plural, one {# день} few {# дня} many {# дней} other {# дня}} подряд"
+      },
+      "card": {
+        "kicker": "Журнал лаборатории",
+        "rounds": "{count, plural, one {сыгран # раунд} few {сыграно # раунда} many {сыграно # раундов} other {сыграно # раунда}}",
+        "cta": "Сможете лучше?"
+      }
     }
   }
 }

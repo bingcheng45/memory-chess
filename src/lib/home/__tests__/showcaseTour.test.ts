@@ -2,69 +2,85 @@ import { SHOWCASE } from "@/lib/home/showcase";
 import { SHOWCASE_STEPS, buildShowcaseSteps, type ShowcaseStep } from "@/lib/home/showcaseTour";
 
 const phaseOf = (phase: ShowcaseStep["phase"]) => SHOWCASE_STEPS.filter((step) => step.phase === phase);
+const stepOf = (key: string) => SHOWCASE_STEPS.find((step) => step.key === key)!;
 
 describe("the showcase tour", () => {
-  it("runs study, threats, finish, rebuild in that order", () => {
-    const order = SHOWCASE_STEPS.map((step) => step.phase);
-    expect(order).toEqual([
-      ...Array(7).fill("study"),
-      ...Array(3).fill("threat"),
-      ...Array(2).fill("finish"),
-      ...Array(2).fill("rebuild"),
+  it("runs study, the trap, the game, then the rebuild", () => {
+    expect(SHOWCASE_STEPS.map((step) => step.key)).toEqual([
+      "study.intro",
+      "study.whiteCorner",
+      "study.longDiagonal",
+      "study.blackWall",
+      "study.runner",
+      "trap.king",
+      "game.sacrifice",
+      "game.walk",
+      "game.runners",
+      "rebuild.blank",
+      "rebuild.back",
+      "rebuild.check",
     ]);
   });
 
-  it("opens on the full position with nothing circled, then circles six groups one at a time", () => {
+  it("opens on the full position with nothing circled, then circles four groups one at a time", () => {
     const study = phaseOf("study");
     expect(study[0]).toMatchObject({ circles: [], active: null });
-    const groups = study.slice(1);
-    expect(groups.map((step) => (step.phase === "study" ? step.circles.length : 0))).toEqual([1, 2, 3, 4, 5, 6]);
-    groups.forEach((step, index) => {
-      if (step.phase !== "study") return;
+    study.slice(1).forEach((step, index) => {
+      if (step.phase !== "study") throw new Error("expected a study step");
       expect(step.active).toBe(SHOWCASE.groups[index].id);
       expect(step.circles).toEqual(SHOWCASE.groups.slice(0, index + 1).map((group) => group.id));
+      expect(step.annotations.relations).toEqual(SHOWCASE.groups[index].relations);
     });
   });
 
-  it("lasts 37.1 seconds", () => {
-    expect(SHOWCASE_STEPS.reduce((sum, step) => sum + step.durationMs, 0)).toBe(37_100);
+  it("plays the game one board per ply: one for the sacrifice, four for the walk, eight for the runners", () => {
+    expect(phaseOf("game").map((step) => step.boards.length)).toEqual([1, 4, 8]);
   });
 
-  it("ends on the rebuild, blank first, then every piece back", () => {
-    expect(SHOWCASE_STEPS.slice(-2).map((step) => step.phase === "rebuild" && step.revealed)).toEqual([false, true]);
+  it("gives a stretch of the game a second per ply, then time to read", () => {
+    expect(stepOf("game.walk").durationMs).toBe(4 * 1000 + 2800);
+    expect(SHOWCASE_STEPS.reduce((sum, step) => sum + step.durationMs, 0)).toBe(45_600);
   });
 
-  it("dims every piece the threat is not about", () => {
-    const [knight] = phaseOf("threat");
-    if (knight.phase !== "threat") throw new Error("expected a threat step");
-    expect(knight.dimmed).toHaveLength(12);
-    expect(knight.dimmed).not.toContain("f8");
-    expect(knight.dimmed).not.toContain("h8");
+  it("takes the bishop on h3 and the pawn on f6 off the board as they fall", () => {
+    const walk = stepOf("game.walk");
+    expect(walk.boards[0].gone).toEqual(["f5"]);
+    expect(walk.boards[0].placements.g2).toBe("h3");
+    const runners = stepOf("game.runners");
+    expect(runners.boards[0].gone).toEqual(["f5", "f6"]);
+    expect(runners.boards.at(-1)!.placements).toMatchObject({ e6: "b3", c3: "e7", d5: "d4", a4: "a4" });
   });
 
-  it("slides the queens for the finish and leaves them put while the board blanks", () => {
-    const [reply, checkmate] = phaseOf("finish");
-    expect(reply.placements.a7).toBe("e3");
-    expect(checkmate.placements).toMatchObject({ a7: "e3", e4: "h7" });
-    const [blank, back] = phaseOf("rebuild");
-    expect(blank.placements).toEqual(checkmate.placements);
-    expect(back.placements.a7).toBe("a7");
-    expect(back.placements.e4).toBe("e4");
+  it("dims every piece the trap is not about", () => {
+    const trap = stepOf("trap.king");
+    if (trap.phase !== "trap") throw new Error("expected the trap");
+    expect([...trap.dimmed].sort()).toEqual(["a4", "g1", "g2", "g6", "h4"]);
   });
 
-  it("counts each phase from one, and numbers steps with a counter only", () => {
-    const counted = SHOWCASE_STEPS.filter((step) => step.ordinal);
-    expect(counted).toHaveLength(11);
-    expect(phaseOf("threat").map((step) => step.ordinal)).toEqual([
-      { n: 1, of: 3 },
-      { n: 2, of: 3 },
-      { n: 3, of: 3 },
+  it("blanks the board where the game ended, then puts every piece back on its study square", () => {
+    const [blank, back, check] = phaseOf("rebuild");
+    expect(blank.boards).toEqual(stepOf("game.runners").boards.slice(-1));
+    expect(back.boards[0]).toEqual(SHOWCASE_STEPS[0].boards[0]);
+    expect(back.boards[0].gone).toEqual([]);
+    expect(check.annotations.ticks).toEqual(["c3", "f5", "f6"]);
+    expect(phaseOf("rebuild").map((step) => step.phase === "rebuild" && step.revealed)).toEqual([false, true, true]);
+  });
+
+  it("counts the study groups and the stretches of the game, and nothing else", () => {
+    expect(SHOWCASE_STEPS.map((step) => step.ordinal && `${step.ordinal.n}/${step.ordinal.of}`)).toEqual([
+      null,
+      "1/4",
+      "2/4",
+      "3/4",
+      "4/4",
+      null,
+      "1/3",
+      "2/3",
+      "3/3",
+      null,
+      null,
+      null,
     ]);
-  });
-
-  it("gives every step its own copy key", () => {
-    const keys = SHOWCASE_STEPS.map((step) => step.key);
-    expect(new Set(keys).size).toBe(keys.length);
   });
 
   it("builds the same list from the same data", () => {

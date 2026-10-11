@@ -135,4 +135,11 @@ describe("sitemap", () => {
       entries.filter((entry) => entry.url.includes("/settings")),
     ).toHaveLength(0);
   });
+
+  it("leaves the progress dashboard out, since its figures live only in the visitor's browser", async () => {
+    const entries = await sitemap();
+
+    expect(entries.filter((entry) => entry.url.includes("/dashboard"))).toEqual([]);
+    expect(entries.some((entry) => entry.url.includes("/leaderboard"))).toBe(true);
+  });
 });

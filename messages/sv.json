@@ -9,7 +9,8 @@
       "privacy": "Integritet",
       "terms": "Villkor",
       "play": "Spela",
-      "leaderboard": "Topplista"
+      "leaderboard": "Topplista",
+      "progress": "Framsteg"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Med ensamrätt.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# pjäs} other {# pjäser}}, {seconds, plural, one {# sekund} other {# sekunder}}",
       "read": "Läs artikeln",
       "tryDrill": "Prova den övningen"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Dina framsteg",
+      "description": "Varje siffra som Memory Chess följer från dina rundor på den här enheten, på en sida, med ett kort att dela."
+    },
+    "kicker": "Labbjournal",
+    "title": "Dina framsteg",
+    "lede": "Varje siffra som dina rundor har gett på den här enheten, på ett ställe. Inget lämnar din webbläsare om du inte delar det.",
+    "loading": "Läser din journal på den här enheten.",
+    "unavailable": "Den här webbläsaren sparar ingen journal, så det finns inga framsteg att visa. Privata fönster sparar ingenting.",
+    "fullRecord": "Se hela journalen",
+    "headline": "Viktigaste siffror",
+    "more": "Allt annat",
+    "stale": "Från din senaste runda",
+    "staleNote": "Senast spelat för {count, plural, one {# dag} other {# dagar}} sedan. Siffror märkta så är från då.",
+    "play": "Spela en runda",
+    "playAt": "Spela {pieceCount} pjäser, {memorizeSeconds} s",
+    "choose": "Välj ett i hela journalen",
+    "notYet": "Inget ännu.",
+    "notSet": "Inte valt ännu.",
+    "needs": "Låses upp med {need}.",
+    "needsAt": "Låses upp med {need} på {pieceCount} pjäser, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {# runda till} other {# rundor till}}",
+      "days": "{count, plural, one {# speldag till} other {# speldagar till}}",
+      "exposures": "{count, plural, one {# sedd pjäs till} other {# sedda pjäser till}}",
+      "qualifyingRounds": "{count, plural, one {# runda till} other {# rundor till}} på {accuracy} % eller bättre med {minPieces} eller fler pjäser",
+      "largerRounds": "{count, plural, one {# runda} other {# rundor}} med {minPieces} eller fler pjäser",
+      "rightRounds": "{count, plural, one {# runda} other {# rundor}} med en rätt pjäs",
+      "reviews": "{count, plural, one {# repetition till} other {# repetitioner till}} efter samma uppehåll"
+    },
+    "label": {
+      "span": "Minnesspann",
+      "piecesHeld": "Hållna pjäser",
+      "speed": "Tempo",
+      "streak": "Svit",
+      "rounds": "Spelade rundor",
+      "days": "Speldagar",
+      "trend": "Träffsäkerhet",
+      "daily": "Dagens bräde",
+      "week": "Den här veckan",
+      "curve": "Minne efter repetition",
+      "missMap": "Mest missad linje",
+      "typeRecall": "Svagaste pjäs",
+      "insights": "Insikter",
+      "notebook": "Anteckningsbok",
+      "plans": "Plan",
+      "goal": "Mål",
+      "bests": "Personbästa",
+      "board": "Topplista"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> pjäs} other {<n>{value}</n> pjäser}}",
+      "secondsPerPiece": "<n>{value}</n> s per pjäs",
+      "days": "{count, plural, one {<n>{value}</n> dag} other {<n>{value}</n> dagar}}",
+      "percent": "<n>{value}</n> %",
+      "rounds": "{count, plural, one {<n>{value}</n> runda} other {<n>{value}</n> rundor}}",
+      "entries": "{count, plural, one {<n>{value}</n> anteckning} other {<n>{value}</n> anteckningar}}",
+      "findings": "{count, plural, one {<n>{value}</n> insikt} other {<n>{value}</n> insikter}}",
+      "settings": "{count, plural, one {<n>{value}</n> inställning} other {<n>{value}</n> inställningar}}"
+    },
+    "context": {
+      "span": "{accuracy} % eller bättre i {rounds, plural, one {# runda} other {# rundor}}, studerat {memorizeSeconds} s",
+      "recent": "Snitt av dina senaste {rounds, plural, one {# runda} other {# rundor}}, alla inställningar",
+      "setting": "{source, select, calibration {Övningsrundor} other {Rundor i partier}} med {pieceCount} pjäser, {memorizeSeconds} s, från {rounds, plural, one {# runda} other {# rundor}}",
+      "longest": "Längsta {days, plural, one {# dag} other {# dagar}}",
+      "daily": "{status, select, played {Spelat i dag} unfinished {Öppnat i dag} other {Öppet i dag}}, längsta svit {longest, plural, one {# dag} other {# dagar}}",
+      "curve": "Ihågkommet efter {day, plural, one {# dag} other {# dagar}}, från {reviews, plural, one {# repetition} other {# repetitioner}}",
+      "rounds": "Från {rounds, plural, one {# runda} other {# rundor}}",
+      "missLine": "Missade på {line, select, file {{name}-linjen} other {rad {name}}}, av {shown} sedda pjäser",
+      "pieceType": "{type, select, p {Bönder ihågkomna} n {Springare ihågkomna} b {Löpare ihågkomna} r {Torn ihågkomna} q {Damer ihågkomna} other {Kungar ihågkomna}}, av {shown} sedda",
+      "plan": "{planId, select, baseline {Planen Baslinje} edge {Planen Kanter} other {Planen Stege}}, {status, select, active {pågår fortfarande} done {nu klar} other {nu avbruten}}",
+      "goal": "Mot {pieceCount} pjäser på {accuracy} %",
+      "week": "Veckomål {goal} dagar",
+      "best": "Bästa resultat {accuracy} % på {pieceCount} pjäser, {memorizeSeconds} s",
+      "entry": "Rätta pjäser i ditt bästa bidrag, {difficulty, select, easy {nivå Lätt} medium {nivå Medel} hard {nivå Svår} other {nivå Stormästare}}",
+      "overDays": "Under {days, plural, one {# dag} other {# dagar}}",
+      "firstDay": "Sedan {date}"
+    },
+    "share": {
+      "button": "Dela mina framsteg",
+      "working": "Ditt kort skapas.",
+      "shared": "Delat.",
+      "saved": "Kortet sparat och texten kopierad. Lägg upp dem var du vill.",
+      "savedNoCopy": "Kortet sparat. Kopiera texten nedan och lägg upp den med kortet.",
+      "failed": "Kortet kunde inte skapas här. Kopiera texten nedan i stället.",
+      "caption": "Text",
+      "copy": "Kopiera text",
+      "copied": "Texten kopierad.",
+      "copyFailed": "Kopieringen fungerade inte här. Texten är markerad, så kopiera den själv.",
+      "locked": "Ditt delningskort låses upp när minnesspann, hållna pjäser, tempo eller svit är klar.",
+      "text": "Mina framsteg i Memory Chess: {figures}. Kan du slå det?",
+      "figure": {
+        "span": "minnesspann {value, plural, one {# pjäs} other {# pjäser}}",
+        "piecesHeld": "{value, number} hållna pjäser",
+        "speed": "{value, number} s per pjäs",
+        "streak": "{value, plural, one {# dag} other {# dagar}} i rad"
+      },
+      "card": {
+        "kicker": "Labbjournal",
+        "rounds": "{count, plural, one {# runda spelad} other {# rundor spelade}}",
+        "cta": "Kan du slå det?"
+      }
     }
   }
 }

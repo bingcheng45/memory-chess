@@ -9,7 +9,8 @@
       "privacy": "隐私政策",
       "terms": "服务条款",
       "play": "开始游戏",
-      "leaderboard": "排行榜"
+      "leaderboard": "排行榜",
+      "progress": "进度"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 保留所有权利。",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, other {#个棋子}}，{seconds, plural, other {#秒}}",
       "read": "阅读文章",
       "tryDrill": "试试这个训练"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "你的进度",
+      "description": "Memory Chess 根据你在本设备上的回合记录的每项数据，集中在一页，并附可分享的卡片。"
+    },
+    "kicker": "实验室记录",
+    "title": "你的进度",
+    "lede": "你在本设备上的回合所取得的每项数据，都在这里。除非你分享，否则不会离开你的浏览器。",
+    "loading": "正在读取本设备上的记录。",
+    "unavailable": "此浏览器不保存记录，因此没有可显示的进度。隐私窗口不会保存任何内容。",
+    "fullRecord": "查看完整记录",
+    "headline": "主要数据",
+    "more": "其他数据",
+    "stale": "截至你上一回合",
+    "staleNote": "上次游戏是 {count, plural, other {# 天}}前。带此标记的数据来自那时。",
+    "play": "玩一回合",
+    "playAt": "玩 {pieceCount} 子、{memorizeSeconds} 秒",
+    "choose": "在完整记录中选择",
+    "notYet": "暂无。",
+    "notSet": "尚未设置。",
+    "needs": "再完成{need}即可解锁。",
+    "needsAt": "以 {pieceCount} 子、{memorizeSeconds} 秒再完成{need}即可解锁。",
+    "need": {
+      "rounds": "{count, plural, other {# 回合}}",
+      "days": "{count, plural, other {# 天游戏}}",
+      "exposures": "{count, plural, other {# 次棋子出现}}",
+      "qualifyingRounds": "{count, plural, other {# 个}}准确率 {accuracy}% 以上且至少 {minPieces} 子的回合",
+      "largerRounds": "{count, plural, other {# 个}}至少 {minPieces} 子的回合",
+      "rightRounds": "{count, plural, other {# 个}}至少放对一子的回合",
+      "reviews": "{count, plural, other {# 次}}相同间隔后的复习"
+    },
+    "label": {
+      "span": "记忆广度",
+      "piecesHeld": "记住的棋子",
+      "speed": "速度",
+      "streak": "连续天数",
+      "rounds": "已玩回合",
+      "days": "游戏天数",
+      "trend": "准确率",
+      "daily": "每日棋盘",
+      "week": "本周",
+      "curve": "复习后的记忆",
+      "missMap": "最常出错的线",
+      "typeRecall": "最弱的棋子",
+      "insights": "发现",
+      "notebook": "笔记本",
+      "plans": "计划",
+      "goal": "目标",
+      "bests": "个人最佳",
+      "board": "排行榜"
+    },
+    "unit": {
+      "pieces": "{count, plural, other {<n>{value}</n> 子}}",
+      "secondsPerPiece": "<n>{value}</n> 秒/子",
+      "days": "{count, plural, other {<n>{value}</n> 天}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, other {<n>{value}</n> 回合}}",
+      "entries": "{count, plural, other {<n>{value}</n> 条}}",
+      "findings": "{count, plural, other {<n>{value}</n> 条}}",
+      "settings": "{count, plural, other {<n>{value}</n> 种设置}}"
+    },
+    "context": {
+      "span": "{rounds, plural, other {# 回合}}达到 {accuracy}% 以上，记忆 {memorizeSeconds} 秒",
+      "recent": "最近 {rounds, plural, other {# 回合}}的平均值，任意设置",
+      "setting": "{source, select, calibration {练习} other {对局}}，{pieceCount} 子、{memorizeSeconds} 秒，基于 {rounds, plural, other {# 回合}}",
+      "longest": "最长 {days, plural, other {# 天}}",
+      "daily": "{status, select, played {今天已玩} unfinished {今天已打开} other {今天可玩}}，最长连续 {longest, plural, other {# 天}}",
+      "curve": "{day, plural, other {# 天}}后的记忆，基于 {reviews, plural, other {# 次复习}}",
+      "rounds": "基于 {rounds, plural, other {# 回合}}",
+      "missLine": "{line, select, file {{name} 列} other {第 {name} 行}}出错，共看到 {shown} 子",
+      "pieceType": "{type, select, p {兵} n {马} b {象} r {车} q {后} other {王}}的记忆率，共看到 {shown} 次",
+      "plan": "{planId, select, baseline {基线} edge {边缘} other {阶梯}}计划，{status, select, active {进行中} done {已完成} other {已停止}}",
+      "goal": "迈向 {pieceCount} 子、{accuracy}%",
+      "week": "每周目标 {goal} 天",
+      "best": "最佳成绩 {pieceCount} 子、{memorizeSeconds} 秒时 {accuracy}%",
+      "entry": "最佳提交中放对的棋子，{difficulty, select, easy {简单} medium {中等} hard {困难} other {特级大师}}",
+      "overDays": "共 {days, plural, other {# 天}}",
+      "firstDay": "自 {date} 起"
+    },
+    "share": {
+      "button": "分享我的进度",
+      "working": "正在生成你的卡片。",
+      "shared": "已分享。",
+      "saved": "卡片已保存，文案已复制。随处发布吧。",
+      "savedNoCopy": "卡片已保存。复制下方文案一起发布。",
+      "failed": "此处无法生成卡片。请改为复制下方文案。",
+      "caption": "文案",
+      "copy": "复制文案",
+      "copied": "文案已复制。",
+      "copyFailed": "此处无法复制。文案已选中，请手动复制。",
+      "locked": "当记忆广度、记住的棋子、速度或连续天数任一项就绪后，分享卡片即会解锁。",
+      "text": "我在 Memory Chess 的进度：{figures}。你能超过吗？",
+      "figure": {
+        "span": "记忆广度 {value, plural, other {# 子}}",
+        "piecesHeld": "记住 {value, number} 子",
+        "speed": "每子 {value, number} 秒",
+        "streak": "连续 {value, plural, other {# 天}}"
+      },
+      "card": {
+        "kicker": "实验室记录",
+        "rounds": "{count, plural, other {已玩 # 回合}}",
+        "cta": "你能超过吗？"
+      }
     }
   }
 }

@@ -9,7 +9,8 @@
       "privacy": "Privacy",
       "terms": "Terms",
       "play": "Play",
-      "leaderboard": "Leaderboard"
+      "leaderboard": "Leaderboard",
+      "progress": "Progress"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. All rights reserved.",
@@ -167,25 +168,25 @@
           "languages": "languages"
         },
         "showcase": {
-          "aria": "Deep Fritz against Vladimir Kramnik, Bonn 2006, with a guided study of the position",
-          "event": "Man vs machine · Game 2",
-          "venue": "Bonn · 27 November 2006",
-          "white": "Deep Fritz",
-          "black": "Vladimir Kramnik",
+          "aria": "Veselin Topalov against Alexey Shirov, Linares 1998, with a guided study of the position",
+          "event": "Linares · Round 10",
+          "venue": "4 March 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
           "versus": "vs",
           "pieceLabel": "{piece} on {square}",
           "tags": {
             "study": "Study",
-            "threat": "White threat",
-            "finish": "The finish",
-            "checkmate": "Checkmate",
+            "trap": "The trap",
+            "sacrifice": "The sacrifice",
+            "walk": "The walk",
+            "runners": "Two runners",
             "rebuild": "Rebuild",
             "inspect": "Reach"
           },
           "counter": {
             "study": "Study {n}/{total}",
-            "threat": "Threats {n}/{total}",
-            "finish": "Finish {n}/{total}",
+            "game": "Game {n}/{total}",
             "resume": "Click again to resume"
           },
           "controls": {
@@ -202,56 +203,60 @@
             "checks": "Checks: {moves}."
           },
           "groups": {
-            "kingCorner": "King's corner",
-            "queenPawn": "Queen and pawn",
-            "cage": "The cage",
-            "blackQueen": "Black queen",
-            "blackPawns": "a4 and b4 pawns",
-            "bishopPawn": "Bishop and b2"
+            "whiteCorner": "White's corner",
+            "longDiagonal": "Long diagonal",
+            "blackWall": "Black's wall",
+            "runner": "The runner"
           },
           "steps": {
             "study": {
-              "intro": { "caption": "Deep Fritz, White, against the world champion Vladimir Kramnik. Black is to move." },
-              "kingCorner": { "caption": "White's king on h1 with pawns g2 and h2." },
-              "queenPawn": {
-                "caption": "The queen on e4 sits right behind the pawn on e5.",
-                "thought": "Queen on e4, pawn on e5 in front of it."
+              "intro": {
+                "caption": "Shirov, Black, is two pawns up, but bishops on opposite colours often hold a draw. Ten pieces."
               },
-              "cage": {
-                "caption": "Black's king on h8 behind g7 and h6, with White's knight on f8 next door.",
-                "thought": "White's knight is already on f8, right beside the king."
+              "whiteCorner": {
+                "caption": "White's king on g1 guards the g2 pawn. The h-pawn has run to h4."
               },
-              "blackQueen": { "caption": "Black's queen is far away on a7." },
-              "blackPawns": { "caption": "Two black pawns on the fourth rank." },
-              "bishopPawn": { "caption": "Black's bishop on c1 sits diagonally behind White's b2 pawn." }
-            },
-            "threat": {
-              "knight": {
-                "caption": "The knight on f8 covers h7, the square beside Black's king.",
-                "thought": "Knight on f8: one jump from h7."
+              "longDiagonal": {
+                "caption": "White's bishop on c3 runs the long diagonal and hits the f6 pawn.",
+                "thought": "Dark-squared bishop, c3 to f6."
               },
-              "queen": {
-                "caption": "The queen on e4 looks down the diagonal to h7. It can also take b4.",
-                "thought": "Queen and knight both aim at the same corner."
+              "blackWall": {
+                "caption": "Black's king on e6, his bishop on f5, pawns on d5, f6 and g6.",
+                "thought": "The king guards f6 and d5. The g6 pawn guards the bishop."
               },
-              "mate": {
-                "caption": "Qh7 would be mate. The knight guards the queen, and g7 blocks the king.",
-                "thought": "The horse on f8 is what makes h7 deadly."
+              "runner": {
+                "caption": "One black pawn on a4, far from everything."
               }
             },
-            "finish": {
-              "reply": {
-                "caption": "Black had to stop Qh7#. 22 of his 26 legal moves lose to it. Kramnik played Qe3.",
-                "thought": "Black offers a queen trade and misses the mate."
+            "trap": {
+              "king": {
+                "caption": "Black's king cannot step forward. d5 and f5 hold his own pieces, and the c3 bishop guards e5.",
+                "thought": "Only Kd6, Kd7, Ke7 and Kf7. Every one goes back or sideways."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! The bishop gives itself up on a square the g-pawn can take. It was in the king's way.",
+                "thought": "f5 is empty now. That is the door."
               },
-              "checkmate": {
-                "caption": "Qh7#. The knight guards the queen, g7 blocks the king, and g8 is covered.",
-                "thought": "Knight on f8: the piece that was already there."
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Through the door the bishop opened, the king reaches the centre."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. One bishop cannot stop two passed pawns.",
+                "thought": "Topalov took the bishop and resigned after 53...Kb3."
               }
             },
             "rebuild": {
-              "blank": { "caption": "The board goes blank. Which of the six groups can you still see?" },
-              "back": { "caption": "Rebuild one group at a time, then check it. That is the whole game." }
+              "blank": {
+                "caption": "The board goes blank. Rebuild the start: White's corner, the long diagonal, Black's wall, the runner."
+              },
+              "back": {
+                "caption": "Group by group, each piece goes back on its square."
+              },
+              "check": {
+                "caption": "Now check it. Bishops on opposite colours, c3 dark and f5 light. The c3 bishop still hits f6. Four white, six black."
+              }
             }
           }
         }
@@ -277,44 +282,67 @@
       },
       "method": {
         "title": "A round, under the microscope.",
-        "lede": "Scroll through the five phases of a single round. The diagram updates with each step. The overlays are illustrations of the method, not recordings of anyone's attention.",
+        "lede": "Scroll through one round on a real position: the end of Kasparov's Immortal, Kasparov against Topalov at Wijk aan Zee in 1999. The overlays show one way to memorise it, not a recording of anyone's attention.",
         "status": "Phase {number} / {name}",
         "clock": "t = {seconds}s",
-        "chunkCorner": "A · Corner ×5",
-        "chunkPair": "B · File pair ×2",
-        "chunkLone": "C · Lone ×1",
-        "chunkGroupA": "A",
         "scoreChip": "{correct} of {total} squares",
+        "countChip": "White {white} · Black {black}",
+        "groups": {
+          "standoff": {
+            "name": "Stand-off",
+            "sentence": "The white king bites the rook on d2. The black king and the c3 pawn hold it."
+          },
+          "mirror": {
+            "name": "Stairs",
+            "sentence": "Mirror stairs, h2 up to f4, h7 down to f5."
+          },
+          "longShots": {
+            "name": "Long shots",
+            "sentence": "Queen on a7 stares down the seventh rank at h7. Rook on d2 stares down the second at h2."
+          }
+        },
         "phases": {
           "study": {
             "name": "Study",
-            "title": "Look for how pieces relate.",
-            "body": "A random position appears with a countdown. Do not try to read eight pieces one at a time. Look for pieces that touch, share a file or rank, or sit together in a corner.",
-            "note": "Fig. overlay: dashed lines join pieces that relate. A piece with no line is on its own."
+            "title": "Eleven pieces, ten seconds.",
+            "body": "This is the final position of Kasparov's Immortal, after 44.Qa7. Topalov resigned here. Do not read the squares one by one. In de Groot's experiments, masters reproduced a briefly shown game position far better than weaker players. The rest of this round shows one way to see the structure in it.",
+            "note": "Fig. White: king c1, queen a7, pawns f4, g3, h2. Black: king e1, rook d2, pawns c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Anchors",
+            "title": "Start with the kings.",
+            "body": "Fix two points before anything else. Black's king has run the whole board to e1, White's home row. Both kings sit on the first rank, two files apart. Every other piece can now be placed relative to them.",
+            "note": "Fig. the two kings ringed. Everything else waits."
           },
           "chunk": {
             "name": "Chunk",
-            "title": "Eight pieces become three groups.",
-            "body": "Because the position is random, groups come from geometry: a cluster in a corner, a pair on a file, a piece alone. One chess-memory study estimates that people hold no more than about three chunks at a time, so three groups is a sensible target. One way to hold them is to name each one, for example “corner five”, “d-file pair”, “lone king”.",
-            "note": "A is a corner cluster of 5. B is a pair on the d-file. C is the black king on c4. A chess player would call A a castled shield and B a battery. Three groups to hold, not eight."
+            "title": "Eleven pieces become three ideas.",
+            "body": "Group pieces by what they do to each other. The kings fight over the rook on d2. Two pawn staircases meet head-on. The queen and the rook each aim at an h-pawn nobody guards. Chase and Simon (1973) found that strong players recall positions in chunks, and that pieces placed together tend to attack, defend or stand beside each other. On random positions their advantage largely disappeared.",
+            "note": "Fig. orange arrows attack, blue arrows defend, grey lines join a pawn chain, and the bar marks two pawns blocking each other. The rook on d2 sits in two groups. That overlap ties them together."
+          },
+          "encode": {
+            "name": "Encode",
+            "title": "Turn each group into a sentence.",
+            "body": "Name each group by its job, then say what it does in one sentence. Gobet and Simon (1996) describe strong players holding larger, schema-like structures they call templates. Naming a group by its role borrows that idea. The sentences themselves are a technique, not a research finding.",
+            "note": "Fig. the three groups, named. Their sentences:"
           },
           "blank": {
             "name": "Blank",
             "title": "The board clears.",
-            "body": "No pieces, no hints. Just the grid. This is the moment the round actually measures: what survived in your head after the image is gone.",
-            "note": "Nothing to do here but hold the three groups. Repeating their names is one way to do it."
+            "body": "No pieces, no hints. Rebuild from the sentences, not from a picture. Say them in order: the kings first, then each group.",
+            "note": "Nothing to do here but hold three sentences."
           },
           "rebuild": {
             "name": "Rebuild",
-            "title": "Rebuild one group at a time.",
-            "body": "Pick a piece and tap the square where it belongs. Finish a group before you start the next. In a classic chess-recall study, players put pieces back in quick bursts separated by longer pauses, which the researchers read as the gaps between chunks. Submit when you are done.",
-            "note": "Fig. the rebuilt board before it is checked. Nothing is marked until you submit."
+            "title": "Rebuild group by group.",
+            "body": "Kings. The stand-off. The stairs. The long shots. Place each group with its sentence before you start the next.",
+            "note": "Fig. the rebuild before it is checked. One pawn is on the wrong square. Can you see which?"
           },
           "score": {
             "name": "Score",
-            "title": "Read the result. Run it again.",
-            "body": "You get an accuracy score from 0 to 100% the moment you submit. Ask which group each miss came from. Here group A held except the knight, which landed one file off.",
-            "note": "Mint is correct. Orange fill is a wrong placement (knight on e3). Orange ring is the square it belonged on (f3). 7 of 8 squares is 88%. Your next round decides whether that was a fluke."
+            "title": "Check it against your sentences, then score.",
+            "body": "Re-derive each relation on the rebuilt board. Is the rook still held twice? From c2 the pawn guards d1, not d2, so one piece is wrong. Count the sides, five and six. The count matches, so only the relation check catches the slip. Fix it, then submit.",
+            "note": "Fig. mint ticks mark relations that still hold, the red cross the one that broke. Orange fill is the wrong square (c2), orange ring is where the pawn belonged (c3). {correct} of {total} squares is {accuracy}%."
           }
         }
       },
@@ -668,12 +696,15 @@
         },
         "mine": "Your record",
         "fromRounds": "From {count, plural, one {# round} other {# rounds}}",
+        "dashboardLink": "See every figure on one page",
         "play": "Play a round",
         "stale": "Last played {count, plural, one {# day} other {# days}} ago.",
         "unlock": {
           "label": "Still to unlock",
           "count": "{unlocked} of {total} figures unlocked",
           "done": "Every figure below is unlocked.",
+          "showAll": "Show all {count} figures",
+          "showFewer": "Show fewer",
           "span": "{qualifyingRounds, plural, one {# round} other {# rounds}} at {accuracy}%+ with {minPieces}+ pieces",
           "piecesHeld": "{rounds, plural, one {# round} other {# rounds}} over {days, plural, one {# day} other {# days}}",
           "trend": "{rounds, plural, one {# round} other {# rounds}} at one setting over {days, plural, one {# day} other {# days}}",
@@ -1201,6 +1232,111 @@
       "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
       "read": "Read the article",
       "tryDrill": "Try that drill"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Your progress",
+      "description": "Every figure Memory Chess tracks from your rounds on this device, on one page, with a card to share them."
+    },
+    "kicker": "Lab record",
+    "title": "Your progress",
+    "lede": "Every figure your rounds have earned on this device, in one place. Nothing here leaves your browser unless you share it.",
+    "loading": "Reading your record on this device.",
+    "unavailable": "This browser does not keep a record, so there is no progress to show. Private windows keep nothing.",
+    "fullRecord": "See the full record",
+    "headline": "Headline figures",
+    "more": "Everything else",
+    "stale": "As of your last round",
+    "staleNote": "Last played {count, plural, one {# day} other {# days}} ago. Figures marked so are from then.",
+    "play": "Play a round",
+    "playAt": "Play {pieceCount} pieces, {memorizeSeconds} s",
+    "choose": "Choose one in the full record",
+    "notYet": "Nothing yet.",
+    "notSet": "Not set yet.",
+    "needs": "Unlocks with {need}.",
+    "needsAt": "Unlocks with {need} at {pieceCount} pieces, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {# more round} other {# more rounds}}",
+      "days": "{count, plural, one {# more day of play} other {# more days of play}}",
+      "exposures": "{count, plural, one {# more piece seen} other {# more pieces seen}}",
+      "qualifyingRounds": "{count, plural, one {# more round} other {# more rounds}} at {accuracy}% or better with {minPieces} or more pieces",
+      "largerRounds": "{count, plural, one {# round} other {# rounds}} with {minPieces} or more pieces",
+      "rightRounds": "{count, plural, one {# round} other {# rounds}} with a piece right",
+      "reviews": "{count, plural, one {# more review} other {# more reviews}} after the same gap"
+    },
+    "label": {
+      "span": "Memory span",
+      "piecesHeld": "Pieces held",
+      "speed": "Speed",
+      "streak": "Streak",
+      "rounds": "Rounds played",
+      "days": "Days played",
+      "trend": "Accuracy",
+      "daily": "Daily board",
+      "week": "This week",
+      "curve": "Recall after review",
+      "missMap": "Most missed line",
+      "typeRecall": "Weakest piece",
+      "insights": "Insights",
+      "notebook": "Notebook",
+      "plans": "Plan",
+      "goal": "Goal",
+      "bests": "Personal bests",
+      "board": "Leaderboard"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> piece} other {<n>{value}</n> pieces}}",
+      "secondsPerPiece": "<n>{value}</n> s per piece",
+      "days": "{count, plural, one {<n>{value}</n> day} other {<n>{value}</n> days}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, one {<n>{value}</n> round} other {<n>{value}</n> rounds}}",
+      "entries": "{count, plural, one {<n>{value}</n> entry} other {<n>{value}</n> entries}}",
+      "findings": "{count, plural, one {<n>{value}</n> finding} other {<n>{value}</n> findings}}",
+      "settings": "{count, plural, one {<n>{value}</n> setting} other {<n>{value}</n> settings}}"
+    },
+    "context": {
+      "span": "{accuracy}% or better in {rounds, plural, one {# round} other {# rounds}}, studied {memorizeSeconds} s",
+      "recent": "Average of your last {rounds, plural, one {# round} other {# rounds}}, any setting",
+      "setting": "{source, select, calibration {Practice rounds} other {Game rounds}} at {pieceCount} pieces, {memorizeSeconds} s, from {rounds, plural, one {# round} other {# rounds}}",
+      "longest": "Longest {days, plural, one {# day} other {# days}}",
+      "daily": "{status, select, played {Played today} unfinished {Opened today} other {Open today}}, longest streak {longest, plural, one {# day} other {# days}}",
+      "curve": "Recalled after {day, plural, one {# day} other {# days}}, from {reviews, plural, one {# review} other {# reviews}}",
+      "rounds": "From {rounds, plural, one {# round} other {# rounds}}",
+      "missLine": "Missed on {line, select, file {the {name} file} other {rank {name}}}, from {shown} pieces seen",
+      "pieceType": "{type, select, p {Pawns recalled} n {Knights recalled} b {Bishops recalled} r {Rooks recalled} q {Queens recalled} other {Kings recalled}}, from {shown} seen",
+      "plan": "{planId, select, baseline {Baseline plan} edge {Edge plan} other {Ladder plan}}, {status, select, active {in progress} done {now complete} other {now stopped}}",
+      "goal": "Toward {pieceCount} pieces at {accuracy}%",
+      "week": "Weekly goal {goal} days",
+      "best": "Top reading {accuracy}% at {pieceCount} pieces, {memorizeSeconds} s",
+      "entry": "Correct pieces in your best entry, {difficulty, select, easy {Easy board} medium {Medium board} hard {Hard board} other {Grandmaster board}}",
+      "overDays": "Over {days, plural, one {# day} other {# days}}",
+      "firstDay": "Since {date}"
+    },
+    "share": {
+      "button": "Share my progress",
+      "working": "Making your card.",
+      "shared": "Shared.",
+      "saved": "Card saved and caption copied. Post them anywhere.",
+      "savedNoCopy": "Card saved. Copy the caption below to post with it.",
+      "failed": "The card could not be made here. Copy the caption below instead.",
+      "caption": "Caption",
+      "copy": "Copy caption",
+      "copied": "Caption copied.",
+      "copyFailed": "Copy did not work here. The caption is selected, so copy it yourself.",
+      "locked": "Your share card unlocks once memory span, pieces held, speed or your streak is ready.",
+      "text": "My Memory Chess progress: {figures}. Can you beat it?",
+      "figure": {
+        "span": "memory span {value, plural, one {# piece} other {# pieces}}",
+        "piecesHeld": "{value, number} pieces held",
+        "speed": "{value, number} s per piece",
+        "streak": "{value, plural, one {# day} other {# days}} in a row"
+      },
+      "card": {
+        "kicker": "Lab record",
+        "rounds": "{count, plural, one {# round played} other {# rounds played}}",
+        "cta": "Can you beat it?"
+      }
     }
   }
 }

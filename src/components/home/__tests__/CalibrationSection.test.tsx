@@ -36,7 +36,7 @@ describe("CalibrationSection", () => {
       jest.advanceTimersByTime(10100);
     });
 
-    expect(screen.getByText("Phase 04 · Rebuild")).toBeInTheDocument();
+    expect(screen.getByText("Phase 06 · Rebuild")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: `${square}, empty` })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: pieceName }));
@@ -49,7 +49,7 @@ describe("CalibrationSection", () => {
     fireEvent.click(screen.getByRole("button", { name: "Submit reading" }));
 
     expect(screen.getByText("Run complete")).toBeInTheDocument();
-    expect(screen.getByText("Phase 05 · Score")).toBeInTheDocument();
+    expect(screen.getByText("Phase 07 · Score")).toBeInTheDocument();
     expect(screen.getByText("1 / 6")).toBeInTheDocument();
     expect(recordLabRound).toHaveBeenCalledTimes(1);
     expect(recordLabRound).toHaveBeenCalledWith(
@@ -171,7 +171,7 @@ describe("the calibration round controls", () => {
 
     fireEvent.click(controls().getByRole("button", { name: "Done" }));
 
-    expect(screen.getByText("Phase 04 · Rebuild")).toBeInTheDocument();
+    expect(screen.getByText("Phase 06 · Rebuild")).toBeInTheDocument();
     expect(buttonState()).toEqual([["Restart", false], ["Submit reading", false]]);
     expect(controls().getByRole("button", { name: "Submit reading" })).toHaveAttribute("data-primary");
     expect(controls().getByRole("button", { name: "Restart" })).not.toHaveAttribute("data-primary");
@@ -220,7 +220,7 @@ describe("the calibration round controls", () => {
     fireEvent.click(controls().getByRole("button", { name: "Done" }));
     fireEvent.click(controls().getByRole("button", { name: "Submit reading" }));
 
-    expect(screen.getByText("Phase 05 · Score")).toBeInTheDocument();
+    expect(screen.getByText("Phase 07 · Score")).toBeInTheDocument();
     expect(buttonState()).toEqual([["Run again", false], ["Submit reading", true]]);
     expect(controls().getByRole("button", { name: "Run again" })).toHaveAttribute("data-primary");
     expect(screen.getByRole("button", { name: "Clear board" })).toBeDisabled();

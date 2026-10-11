@@ -1,7 +1,11 @@
 import { act, renderWithIntl, screen, within } from "@/test-utils/intl";
 import { MicroscopeSection } from "@/components/home/MicroscopeSection";
+import { MICROSCOPE_PHASES, type MicroscopePhaseId } from "@/lib/home/specimen";
 
-const STEP = { study: 0, chunk: 1, blank: 2, rebuild: 3, score: 4 } as const;
+const STEP = Object.fromEntries(MICROSCOPE_PHASES.map((phase, index) => [phase.id, index])) as Record<
+  MicroscopePhaseId,
+  number
+>;
 
 const originalObserver = globalThis.IntersectionObserver;
 let reportIntersection: IntersectionObserverCallback = () => {};
@@ -30,132 +34,117 @@ function renderScrollable() {
   return renderWithIntl(<MicroscopeSection />);
 }
 
-function ghostPieces(container: HTMLElement) {
-  return container.querySelectorAll('.lab-scope-fig [data-state="ghost"]');
-}
-
-function overlayLayers(container: HTMLElement) {
-  const [relations, chunks, groupA] = Array.from(container.querySelectorAll<SVGGElement>("svg.lab-ov > g"));
-  return {
-    relations: relations.hasAttribute("data-on"),
-    chunks: chunks.hasAttribute("data-on"),
-    groupA: groupA.hasAttribute("data-on"),
-  };
-}
+const figure = (container: HTMLElement) => container.querySelector<HTMLElement>(".lab-scope-fig")!;
+const pieces = (container: HTMLElement, state: string) =>
+  figure(container).querySelectorAll(`.lab-piece[data-state="${state}"]`).length;
+const count = (container: HTMLElement, selector: string) => figure(container).querySelectorAll(selector).length;
 
 afterEach(() => {
   globalThis.IntersectionObserver = originalObserver;
 });
 
 describe("MicroscopeSection", () => {
-  it("walks the five phases of a round in order", () => {
+  it("walks the seven phases of a round in order", () => {
     renderWithIntl(<MicroscopeSection />);
 
     const titles = screen.getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent);
     expect(titles).toEqual([
-      "Look for how pieces relate.",
-      "Eight pieces become three groups.",
+      "Eleven pieces, ten seconds.",
+      "Start with the kings.",
+      "Eleven pieces become three ideas.",
+      "Turn each group into a sentence.",
       "The board clears.",
-      "Rebuild one group at a time.",
-      "Read the result. Run it again.",
+      "Rebuild group by group.",
+      "Check it against your sentences, then score.",
     ]);
   });
 
-  it("numbers the steps from the phase table, with Rebuild as phase 04", () => {
+  it("numbers the steps from the phase table", () => {
     renderWithIntl(<MicroscopeSection />);
 
     const labels = screen.getAllByText(/^Phase 0\d \/ /).map((label) => label.textContent);
     // The sticky figure repeats the current step's label above the step list.
     expect(labels.slice(1)).toEqual([
       "Phase 01 / Study",
-      "Phase 02 / Chunk",
-      "Phase 03 / Blank",
-      "Phase 04 / Rebuild",
-      "Phase 05 / Score",
+      "Phase 02 / Anchors",
+      "Phase 03 / Chunk",
+      "Phase 04 / Encode",
+      "Phase 05 / Blank",
+      "Phase 06 / Rebuild",
+      "Phase 07 / Score",
     ]);
   });
 
-  it("no longer claims what the figure does not show", () => {
+  it("cites only what the research found, and calls the sentences a technique", () => {
     const { container } = renderWithIntl(<MicroscopeSection />);
 
-    expect(container).not.toHaveTextContent("loudest features");
-    expect(container).not.toHaveTextContent("square by square");
-    expect(container).not.toHaveTextContent("under tension");
-    expect(container).not.toHaveTextContent("outside a clean chunk");
+    expect(container).toHaveTextContent("In de Groot's experiments, masters reproduced a briefly shown game position");
+    expect(container).toHaveTextContent("Chase and Simon (1973) found that strong players recall positions in chunks");
+    expect(container).toHaveTextContent("Gobet and Simon (1996) describe strong players holding larger, schema-like structures");
+    expect(container).toHaveTextContent("The sentences themselves are a technique, not a research finding.");
+    expect(container).not.toHaveTextContent(/improve|percent better|\d+% better/i);
   });
 
-  it("states the research claims as one study's finding, not as settled fact", () => {
-    const { container } = renderWithIntl(<MicroscopeSection />);
-
-    expect(container).toHaveTextContent("One chess-memory study estimates that people hold no more than about three chunks");
-    expect(container).toHaveTextContent("One way to hold them is to name each one");
-    expect(container).toHaveTextContent("In a classic chess-recall study, players put pieces back in quick bursts");
-    expect(container).not.toHaveTextContent("Studies of chess recall find");
-    expect(container).not.toHaveTextContent("pausing two seconds or more");
-  });
-
-  it("labels the three groups", () => {
-    const { container } = renderWithIntl(<MicroscopeSection />);
-    const figure = container.querySelector<HTMLElement>(".lab-scope-fig")!;
-
-    expect(within(figure).getByText("A · Corner ×5")).toBeInTheDocument();
-    expect(within(figure).getByText("B · File pair ×2")).toBeInTheDocument();
-    expect(within(figure).getByText("C · Lone ×1")).toBeInTheDocument();
-  });
-
-  it("joins each related pair of pieces with a line at the squares' centres", () => {
-    const { container } = renderWithIntl(<MicroscopeSection />);
-    const lines = Array.from(container.querySelectorAll("line")).map((line) => ({
-      x1: line.getAttribute("x1"),
-      y1: line.getAttribute("y1"),
-      x2: line.getAttribute("x2"),
-      y2: line.getAttribute("y2"),
-    }));
-
-    expect(lines).toEqual([
-      { x1: "3.5", y1: "0.5", x2: "3.5", y2: "2.5" }, // d8-d6
-      { x1: "5.5", y1: "6.5", x2: "6.5", y2: "6.5" }, // f2-g2
-      { x1: "6.5", y1: "6.5", x2: "7.5", y2: "6.5" }, // g2-h2
-      { x1: "6.5", y1: "7.5", x2: "6.5", y2: "6.5" }, // g1-g2
-      { x1: "5.5", y1: "5.5", x2: "6.5", y2: "6.5" }, // f3-g2
-    ]);
-  });
-
-  it("shows only the relations layer on the first step", () => {
+  it("shows the whole position, unmarked, on the first step", () => {
     const { container } = renderScrollable();
 
-    expect(overlayLayers(container)).toEqual({ relations: true, chunks: false, groupA: false });
+    expect(pieces(container, "on")).toBe(11);
+    expect(count(container, ".lab-ov-rel, .lab-ov-cell, .lab-ov-ring")).toBe(0);
   });
 
-  it("swaps the relations for the three groups when Chunk is in view", () => {
+  it("rings the two kings and dims the rest for the anchors", () => {
+    const { container } = renderScrollable();
+    scrollTo(container, STEP.anchors);
+
+    expect(count(container, ".lab-ov-ring")).toBe(2);
+    expect(pieces(container, "on")).toBe(2);
+    expect(pieces(container, "ghost")).toBe(9);
+  });
+
+  it("outlines three groups and draws what ties each together", () => {
     const { container } = renderScrollable();
     scrollTo(container, STEP.chunk);
 
-    expect(overlayLayers(container)).toEqual({ relations: false, chunks: true, groupA: false });
+    expect(count(container, ".lab-ov-cell")).toBe(14);
+    expect(count(container, ".lab-ov-rel[data-kind='attacks']")).toBe(3);
+    expect(count(container, ".lab-ov-rel[data-kind='defends']")).toBe(2);
+    expect(count(container, ".lab-ov-rel[data-kind='chain']")).toBe(4);
+    expect(count(container, ".lab-ov-rel[data-kind='blocked']")).toBe(1);
   });
 
-  it("outlines group A alone when Score is in view", () => {
+  it("names the groups on the board and lists their sentences", () => {
     const { container } = renderScrollable();
-    scrollTo(container, STEP.score);
+    scrollTo(container, STEP.encode);
 
-    expect(overlayLayers(container)).toEqual({ relations: false, chunks: false, groupA: true });
+    expect(within(figure(container)).getByText("1 · Stand-off")).toBeInTheDocument();
+    expect(within(figure(container)).getByText("2 · Stairs")).toBeInTheDocument();
+    expect(within(figure(container)).getByText("3 · Long shots")).toBeInTheDocument();
+    expect(screen.getByText(/The white king bites the rook on d2/)).toBeInTheDocument();
+    expect(screen.getByText(/Mirror stairs, h2 up to f4, h7 down to f5/)).toBeInTheDocument();
   });
 
-  it("marks no piece as a ghost while the board is rebuilt, before it is submitted", () => {
+  it("rebuilds every piece, the c3 pawn on c2, group by group, unmarked", () => {
     const { container } = renderScrollable();
     scrollTo(container, STEP.rebuild);
 
     expect(container.querySelector(".lab-scope-card")).toHaveAttribute("data-phase", "rebuild");
-    expect(container.querySelectorAll('.lab-scope-fig [data-state="on"]')).toHaveLength(8);
-    expect(ghostPieces(container)).toHaveLength(0);
+    expect(pieces(container, "on")).toBe(11);
+    expect(pieces(container, "ghost")).toBe(0);
+    const reveal = (square: string) =>
+      figure(container).querySelectorAll<HTMLElement>(".lab-cell")[["a", "b", "c", "d", "e", "f", "g", "h"].indexOf(square[0]) + (8 - Number(square[1])) * 8].style.getPropertyValue("--reveal");
+    expect([reveal("c1"), reveal("e1"), reveal("d2"), reveal("c2"), reveal("f4"), reveal("a7")]).toEqual(["0", "0", "1", "1", "2", "3"]);
   });
 
-  it("ghosts the knight's true square once the round is scored", () => {
+  it("ticks every relation that still holds and crosses the one the slip broke", () => {
     const { container } = renderScrollable();
     scrollTo(container, STEP.score);
 
     expect(container.querySelector(".lab-scope-card")).toHaveAttribute("data-phase", "score");
-    expect(container.querySelectorAll('.lab-scope-fig [data-state="on"]')).toHaveLength(8);
-    expect(ghostPieces(container)).toHaveLength(1);
+    expect(count(container, ".lab-ov-verdict[data-holds='true']")).toBe(9);
+    expect(count(container, ".lab-ov-verdict[data-holds='false']")).toBe(1);
+    expect(pieces(container, "ghost")).toBe(1);
+    expect(within(figure(container)).getByText(/White 5 · Black 6/)).toBeInTheDocument();
+    expect(within(figure(container)).getByText("91%")).toBeInTheDocument();
+    expect(screen.getByText(/10 of 11 squares is 91%\./)).toBeInTheDocument();
   });
 });

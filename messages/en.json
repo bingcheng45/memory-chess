@@ -289,7 +289,7 @@
         "groups": {
           "standoff": {
             "name": "Stand-off",
-            "sentence": "The white king bites the rook on d2. The black king and the c3 pawn hold it."
+            "sentence": "White's king hits d2. Black's king and c3 guard it."
           },
           "mirror": {
             "name": "Stairs",
@@ -297,32 +297,32 @@
           },
           "longShots": {
             "name": "Long shots",
-            "sentence": "Queen on a7 stares down the seventh rank at h7. Rook on d2 stares down the second at h2."
+            "sentence": "Queen a7 eyes h7. Rook d2 eyes h2."
           }
         },
         "phases": {
           "study": {
             "name": "Study",
             "title": "Eleven pieces, ten seconds.",
-            "body": "This is the final position of Kasparov's Immortal, after 44.Qa7. Topalov resigned here. Do not read the squares one by one. In de Groot's experiments, masters reproduced a briefly shown game position far better than weaker players. The rest of this round shows one way to see the structure in it.",
+            "body": "The final position of Kasparov's Immortal, after 44.Qa7. Topalov resigned here. Take in the whole board, not square by square. In de Groot's experiments, masters reproduced a briefly shown game position far better than weaker players.",
             "note": "Fig. White: king c1, queen a7, pawns f4, g3, h2. Black: king e1, rook d2, pawns c3, f5, g6, h7."
           },
           "anchors": {
             "name": "Anchors",
             "title": "Start with the kings.",
-            "body": "Fix two points before anything else. Black's king has run the whole board to e1, White's home row. Both kings sit on the first rank, two files apart. Every other piece can now be placed relative to them.",
+            "body": "Fix two points first. Both kings sit on the first rank, two files apart, and Black's king has run all the way to e1. Place everything else relative to them.",
             "note": "Fig. the two kings ringed. Everything else waits."
           },
           "chunk": {
             "name": "Chunk",
             "title": "Eleven pieces become three ideas.",
-            "body": "Group pieces by what they do to each other. The kings fight over the rook on d2. Two pawn staircases meet head-on. The queen and the rook each aim at an h-pawn nobody guards. Chase and Simon (1973) found that strong players recall positions in chunks, and that pieces placed together tend to attack, defend or stand beside each other. On random positions their advantage largely disappeared.",
-            "note": "Fig. orange arrows attack, blue arrows defend, grey lines join a pawn chain, and the bar marks two pawns blocking each other. The rook on d2 sits in two groups. That overlap ties them together."
+            "body": "Group pieces by what they do to each other. The kings fight over d2. Two pawn staircases meet. The queen and rook each aim at an unguarded h-pawn. Chase and Simon (1973) found that strong players recall positions in chunks of related pieces.",
+            "note": "Fig. orange attacks, blue defends, grey joins a pawn chain, the bar marks a blocked pair. The rook on d2 sits in two groups."
           },
           "encode": {
             "name": "Encode",
             "title": "Turn each group into a sentence.",
-            "body": "Name each group by its job, then say what it does in one sentence. Gobet and Simon (1996) describe strong players holding larger, schema-like structures they call templates. Naming a group by its role borrows that idea. The sentences themselves are a technique, not a research finding.",
+            "body": "Name each group by its job. Gobet and Simon (1996) describe strong players holding larger, schema-like structures. The sentences themselves are a technique, not a research finding.",
             "note": "Fig. the three groups, named. Their sentences:"
           },
           "blank": {
@@ -340,8 +340,8 @@
           "score": {
             "name": "Score",
             "title": "Check it against your sentences, then score.",
-            "body": "Re-derive each relation on the rebuilt board. Is the rook still held twice? From c2 the pawn guards d1, not d2, so one piece is wrong. Count the sides, five and six. The count matches, so only the relation check catches the slip. Fix it, then submit.",
-            "note": "Fig. mint ticks mark relations that still hold, the red cross the one that broke. Orange fill is the wrong square (c2), orange ring is where the pawn belonged (c3). {correct} of {total} squares is {accuracy}%."
+            "body": "Re-check each relation on the rebuilt board. Is the rook still held twice? From c2 the pawn guards d1, not d2. The count, five and six, still matches, so only the relation check catches the slip.",
+            "note": "Fig. ticks still hold, the red cross broke. Orange fill is the wrong square (c2), the ring is where it belonged (c3). {correct} of {total} squares is {accuracy}%."
           }
         }
       },

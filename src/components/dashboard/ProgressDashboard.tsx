@@ -99,7 +99,8 @@ function TileList({ ids, tiles, className }: { ids: readonly DashboardTileId[]; 
     <ul className={className}>
       {ids.map((id) => {
         const tile = tiles?.find((candidate) => candidate.id === id);
-        return tile ? <Tile key={id} tile={tile} /> : <PendingTile key={id} id={id} />;
+        if (tile) return <Tile key={id} tile={tile} />;
+        return tiles ? null : <PendingTile key={id} id={id} />;
       })}
     </ul>
   );

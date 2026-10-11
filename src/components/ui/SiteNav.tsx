@@ -12,7 +12,8 @@ const NAV_LINKS = [
   { href: "/articles", labelKey: "nav.articles" },
   { href: "/leaderboard", labelKey: "nav.leaderboard" },
   { href: "/dashboard", labelKey: "nav.progress" },
-  { href: "/about", labelKey: "nav.about" },
+  // The footer links About, so phones drop it to keep the row on one line.
+  { href: "/about", labelKey: "nav.about", itemClass: "hidden sm:list-item" },
 ] as const;
 
 const LINK_CLASS =
@@ -31,7 +32,8 @@ export default function SiteNav() {
   return (
     <nav aria-label="Main" className="mt-3 w-full">
       <ul className="flex flex-wrap items-center justify-center gap-1 sm:gap-x-2">
-        {NAV_LINKS.map(({ href, labelKey }) => {
+        {NAV_LINKS.map((link) => {
+          const { href, labelKey } = link;
           const isCurrent = pathname === href;
           const linkProps = {
             className: `${LINK_CLASS} ${isCurrent ? CURRENT_CLASS : IDLE_CLASS}`,
@@ -40,7 +42,7 @@ export default function SiteNav() {
           const label = t(labelKey);
 
           return (
-            <li key={href}>
+            <li key={href} className={"itemClass" in link ? link.itemClass : undefined}>
               {isServedAtBareEnglishUrl(href, locale) ? (
                 // The footer's " (English)" suffix is too wide for this row at
                 // 320px, so the row shows a compact marker and the accessible

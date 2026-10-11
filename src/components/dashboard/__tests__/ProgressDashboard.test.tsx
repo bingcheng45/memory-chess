@@ -31,6 +31,13 @@ describe("ProgressDashboard", () => {
     expect(tileText("span")).toBe("Memory span6 pieces80% or better in 11 rounds, studied 10 s");
   });
 
+  it("draws no insights tile, not even a loading one, while the record has no finding", () => {
+    show("spanClimber");
+
+    expect(document.querySelector('[data-tile="insights"]')).toBeNull();
+    expect(document.querySelectorAll('[data-state="loading"]')).toHaveLength(0);
+  });
+
   it("swaps the share button for a round while every headline figure is still warming", () => {
     show("twoRounds");
 

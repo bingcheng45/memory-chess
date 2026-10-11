@@ -130,7 +130,8 @@ function weakestLine(files: readonly MissCell[], ranks: readonly MissCell[]) {
   return lines.reduce<(typeof lines)[number] | null>((worst, line) => (worst === null || missShare(line.cell) > missShare(worst.cell) ? line : worst), null);
 }
 
-type TileBuilder = (input: DashboardInput) => TileState;
+/** Null leaves the tile off the page: a figure of nothing found is not progress to show. */
+type TileBuilder = (input: DashboardInput) => TileState | null;
 
 const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
   span: ({ results: { span } }) =>
@@ -209,7 +210,9 @@ const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
       return weakest ? { figure: figure(Math.round(weakest.share * 100), "percent"), context: context("pieceType", { type: weakest.type, shown: weakest.shown }) } : null;
     }),
   insights: ({ results: { insights }, summary }) =>
-    fromReadiness(insights.readiness, () => insights.value && { figure: figure(insights.value.insights.length, "findings"), context: context("rounds", { rounds: summary.rounds }) }),
+    hasFigure(insights.readiness) && insights.value?.insights.length === 0
+      ? null
+      : fromReadiness(insights.readiness, () => insights.value && { figure: figure(insights.value.insights.length, "findings"), context: context("rounds", { rounds: summary.rounds }) }),
   notebook: ({ results: { notebook }, summary }) =>
     fromReadiness(notebook.readiness, () => notebook.value && { figure: figure(notebook.value.entries.length, "entries"), context: context("rounds", { rounds: summary.rounds }) }),
   plans: ({ results: { plans }, chooseHref }) => {
@@ -251,7 +254,10 @@ const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
 
 /** Every tracked figure on this device, one tile each, in the page's reading order. Pure, so the page memoises it. */
 export function dashboardOf(input: DashboardInput): readonly DashboardTile[] {
-  return DASHBOARD_TILES.map((id) => ({ id, ...TILES[id](input) }));
+  return DASHBOARD_TILES.flatMap((id) => {
+    const state = TILES[id](input);
+    return state ? [{ id, ...state }] : [];
+  });
 }
 
 export type ShareFigureId = (typeof HEADLINE_TILES)[number];

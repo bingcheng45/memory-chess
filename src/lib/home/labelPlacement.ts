@@ -38,6 +38,47 @@ export function coveredSquares(rect: Rect, occupied: ReadonlySet<SquareName>): S
   });
 }
 
+export interface Point {
+  readonly x: number;
+  readonly y: number;
+}
+/** A straight line between two points in board units: an arrow's shaft. */
+export interface Segment {
+  readonly from: Point;
+  readonly to: Point;
+}
+
+const centerOf = (square: SquareName): Point => ({ x: fileOf(square) + 0.5, y: rowOf(square) + 0.5 });
+
+/** The segment between two squares' centres, which is where an arrow or relation line runs. */
+export const segmentBetween = (from: SquareName, to: SquareName): Segment => ({ from: centerOf(from), to: centerOf(to) });
+
+/** How much of the segments' total length lies inside the rectangle (Liang-Barsky clip). */
+export function coveredLength(rect: Rect, segments: readonly Segment[]): number {
+  return segments.reduce((total, { from, to }) => {
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    let t0 = 0;
+    let t1 = 1;
+    const edges: [number, number][] = [
+      [-dx, from.x - rect.x],
+      [dx, rect.x + rect.width - from.x],
+      [-dy, from.y - rect.y],
+      [dy, rect.y + rect.height - from.y],
+    ];
+    for (const [p, q] of edges) {
+      if (p === 0) {
+        if (q < 0) return total;
+        continue;
+      }
+      const t = q / p;
+      if (p < 0) t0 = Math.max(t0, t);
+      else t1 = Math.min(t1, t);
+    }
+    return t1 > t0 ? total + (t1 - t0) * Math.hypot(dx, dy) : total;
+  }, 0);
+}
+
 const insideBoard = ({ x, y, width, height }: Rect) =>
   x >= EDGE && y >= EDGE && x + width <= BOARD - EDGE && y + height <= BOARD - EDGE;
 

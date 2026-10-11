@@ -341,7 +341,7 @@
             "name": "Score",
             "title": "Check it against your sentences, then score.",
             "body": "Re-derive each relation on the rebuilt board. Is the rook still held twice? From c2 the pawn guards d1, not d2, so one piece is wrong. Count the sides, five and six. The count matches, so only the relation check catches the slip. Fix it, then submit.",
-            "note": "Fig. mint arrows still hold, the red one broke. Orange fill is the wrong square (c2), orange ring is where the pawn belonged (c3). {correct} of {total} squares is {accuracy}%."
+            "note": "Fig. mint ticks mark relations that still hold, the red cross the one that broke. Orange fill is the wrong square (c2), orange ring is where the pawn belonged (c3). {correct} of {total} squares is {accuracy}%."
           }
         }
       },

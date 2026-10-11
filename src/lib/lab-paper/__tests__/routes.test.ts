@@ -8,6 +8,10 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/contact-us", "de")).toBe(false);
   });
 
+  it("draws the English-only changelog in Lab Paper", () => {
+    expect(isLabPaperRoute("/changelog", "en")).toBe(true);
+  });
+
   it("covers the paths beneath a subtree route, in the locales the route lists", () => {
     const routes: readonly LabPaperRoute[] = [
       { path: "/articles", scope: "subtree", locales: "all" },

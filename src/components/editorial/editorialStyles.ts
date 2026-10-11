@@ -1,5 +1,5 @@
 /**
- * The shared editorial language used by Changelog and Learn.
+ * The shared editorial language of the dark site's pages, such as Learn.
  *
  * Keep this intentionally small: dark canvas, narrow reading measure, peach
  * labels, quiet rules, and generous vertical rhythm. New editorial pages

@@ -4,8 +4,8 @@ import { CalibrationSection } from "@/components/home/CalibrationSection";
 jest.mock("@/lib/lab/recordRound", () => ({ recordLabRound: jest.fn(() => Promise.resolve(true)) }));
 
 const mockBoardRenders = { count: 0 };
-jest.mock("@/components/home/BoardFigure", () => {
-  const actual = jest.requireActual("@/components/home/BoardFigure");
+jest.mock("@/components/round/BoardFigure", () => {
+  const actual = jest.requireActual("@/components/round/BoardFigure");
   return {
     ...actual,
     usePieceName: () => {

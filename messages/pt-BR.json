@@ -288,6 +288,47 @@
       "sendFailed": "Não conseguimos enviar seu comentário. Tente de novo ou escolha Agora não.",
       "send": "Enviar comentário",
       "sending": "Enviando..."
+    },
+    "round": {
+      "start": "Começar",
+      "done": "Pronto",
+      "restart": "Reiniciar",
+      "again": "Jogar de novo",
+      "submit": "Enviar",
+      "clear": "Limpar tabuleiro",
+      "controlsLabel": "Controles da rodada",
+      "boardLabel": "Tabuleiro. Use as setas para se mover entre as casas.",
+      "paletteLabel": "Paleta de peças",
+      "squareEmpty": "{square}, vazia",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Memorize a posição",
+      "phaseRebuild": "Posicione as peças",
+      "liveStudy": "Estude a posição. {memorizeSeconds} segundos.",
+      "liveRebuild": "Tabuleiro limpo. Escolha uma peça e depois uma casa.",
+      "liveScore": "Precisão de {accuracy} por cento. {correct} de {total} casas corretas.",
+      "readout": {
+        "title": "Resultado",
+        "statusIdle": "Aguardando rodada",
+        "statusRecording": "Registrando",
+        "statusDone": "Rodada concluída",
+        "correct": "Casas corretas",
+        "time": "Tempo de montagem",
+        "wrong": "Peças erradas",
+        "exposure": "Tempo de estudo",
+        "byType": "Memória por tipo de peça",
+        "byTypeEmpty": "A memória por tipo de peça aparece aqui após a rodada.",
+        "legendCorrect": "correta",
+        "legendWrong": "posição errada",
+        "legendMissed": "casa esquecida"
+      },
+      "pieceTypes": {
+        "king": "Rei",
+        "queen": "Dama",
+        "rook": "Torre",
+        "bishop": "Bispo",
+        "knight": "Cavalo",
+        "pawn": "Peão"
+      }
     }
   },
   "leaderboard": {

@@ -288,6 +288,47 @@
       "sendFailed": "Vi kunde inte skicka din återkoppling. Försök igen eller välj Inte nu.",
       "send": "Skicka återkoppling",
       "sending": "Skickar ..."
+    },
+    "round": {
+      "start": "Starta",
+      "done": "Klar",
+      "restart": "Börja om",
+      "again": "Spela igen",
+      "submit": "Skicka in",
+      "clear": "Töm brädet",
+      "controlsLabel": "Rundans kontroller",
+      "boardLabel": "Bräde. Använd piltangenterna för att flytta mellan rutorna.",
+      "paletteLabel": "Pjäspalett",
+      "squareEmpty": "{square}, tom",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Memorera ställningen",
+      "phaseRebuild": "Placera pjäserna",
+      "liveStudy": "Studera ställningen. {memorizeSeconds} sekunder.",
+      "liveRebuild": "Brädet är tömt. Välj en pjäs och sedan en ruta.",
+      "liveScore": "Träffsäkerhet {accuracy} procent. {correct} av {total} rutor rätt.",
+      "readout": {
+        "title": "Resultat",
+        "statusIdle": "Väntar på runda",
+        "statusRecording": "Registrerar",
+        "statusDone": "Rundan är klar",
+        "correct": "Rätta rutor",
+        "time": "Placeringstid",
+        "wrong": "Fel pjäser",
+        "exposure": "Studietid",
+        "byType": "Minne per pjästyp",
+        "byTypeEmpty": "Minne per pjästyp visas här efter rundan.",
+        "legendCorrect": "rätt",
+        "legendWrong": "fel placering",
+        "legendMissed": "missad ruta"
+      },
+      "pieceTypes": {
+        "king": "Kung",
+        "queen": "Dam",
+        "rook": "Torn",
+        "bishop": "Löpare",
+        "knight": "Springare",
+        "pawn": "Bonde"
+      }
     }
   },
   "leaderboard": {

@@ -288,6 +288,47 @@
       "sendFailed": "Nem tudtuk elküldeni a visszajelzésed. Próbáld újra, vagy válaszd a Most nem lehetőséget.",
       "send": "Visszajelzés küldése",
       "sending": "Küldés…"
+    },
+    "round": {
+      "start": "Indítás",
+      "done": "Kész",
+      "restart": "Újrakezdés",
+      "again": "Új kör",
+      "submit": "Beküldés",
+      "clear": "Tábla törlése",
+      "controlsLabel": "A kör vezérlői",
+      "boardLabel": "Tábla. A mezők között a nyílbillentyűkkel lépkedhetsz.",
+      "paletteLabel": "Bábupaletta",
+      "squareEmpty": "{square}, üres",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Jegyezd meg az állást",
+      "phaseRebuild": "Helyezd el a bábukat",
+      "liveStudy": "Nézd meg az állást. {memorizeSeconds} másodperc.",
+      "liveRebuild": "A tábla kiürült. Válassz egy bábut, majd egy mezőt.",
+      "liveScore": "Pontosság: {accuracy} százalék. {total} mezőből {correct} helyes.",
+      "readout": {
+        "title": "Eredmény",
+        "statusIdle": "Körre vár",
+        "statusRecording": "Rögzítés",
+        "statusDone": "A kör véget ért",
+        "correct": "Helyes mezők",
+        "time": "Kirakási idő",
+        "wrong": "Hibás bábuk",
+        "exposure": "Megfigyelési idő",
+        "byType": "Felidézés bábutípusonként",
+        "byTypeEmpty": "A felidézés bábutípusonként itt jelenik meg a kör után.",
+        "legendCorrect": "helyes",
+        "legendWrong": "rossz helyen",
+        "legendMissed": "kihagyott mező"
+      },
+      "pieceTypes": {
+        "king": "Király",
+        "queen": "Vezér",
+        "rook": "Bástya",
+        "bishop": "Futó",
+        "knight": "Huszár",
+        "pawn": "Gyalog"
+      }
     }
   },
   "leaderboard": {

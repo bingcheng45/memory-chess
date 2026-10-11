@@ -288,6 +288,47 @@
       "sendFailed": "反馈发送失败。请重试，或选择“暂不评价”。",
       "send": "提交反馈",
       "sending": "发送中…"
+    },
+    "round": {
+      "start": "开始",
+      "done": "完成",
+      "restart": "重新开始",
+      "again": "再玩一次",
+      "submit": "提交",
+      "clear": "清空棋盘",
+      "controlsLabel": "本轮操作",
+      "boardLabel": "棋盘。使用方向键在格子之间移动。",
+      "paletteLabel": "棋子选择栏",
+      "squareEmpty": "{square}，空",
+      "squareWith": "{square}，{piece}",
+      "phaseStudy": "记住这个棋局",
+      "phaseRebuild": "摆放棋子",
+      "liveStudy": "观察棋局。{memorizeSeconds} 秒。",
+      "liveRebuild": "棋盘已清空。先选一个棋子，再选一个格子。",
+      "liveScore": "准确率 {accuracy}%。{total} 个格子中答对 {correct} 个。",
+      "readout": {
+        "title": "结果",
+        "statusIdle": "等待开始",
+        "statusRecording": "记录中",
+        "statusDone": "本轮完成",
+        "correct": "正确格子",
+        "time": "摆放用时",
+        "wrong": "错误棋子",
+        "exposure": "记忆用时",
+        "byType": "各类棋子的记忆情况",
+        "byTypeEmpty": "本轮结束后，这里会显示各类棋子的记忆情况。",
+        "legendCorrect": "正确",
+        "legendWrong": "放错",
+        "legendMissed": "漏掉的格子"
+      },
+      "pieceTypes": {
+        "king": "王",
+        "queen": "后",
+        "rook": "车",
+        "bishop": "象",
+        "knight": "马",
+        "pawn": "兵"
+      }
     }
   },
   "leaderboard": {

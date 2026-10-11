@@ -288,6 +288,47 @@
       "sendFailed": "Vi kunne ikke sende din tilbagemelding. Prøv igen, eller vælg Ikke nu.",
       "send": "Send tilbagemelding",
       "sending": "Sender …"
+    },
+    "round": {
+      "start": "Start",
+      "done": "Færdig",
+      "restart": "Forfra",
+      "again": "Spil igen",
+      "submit": "Send",
+      "clear": "Ryd brættet",
+      "controlsLabel": "Rundens knapper",
+      "boardLabel": "Bræt. Brug piletasterne til at flytte mellem felterne.",
+      "paletteLabel": "Brikpalet",
+      "squareEmpty": "{square}, tomt",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Husk stillingen",
+      "phaseRebuild": "Placér brikkerne",
+      "liveStudy": "Se på stillingen. {memorizeSeconds} sekunder.",
+      "liveRebuild": "Brættet er ryddet. Vælg en brik og derefter et felt.",
+      "liveScore": "Præcision {accuracy} procent. {correct} af {total} felter korrekte.",
+      "readout": {
+        "title": "Resultat",
+        "statusIdle": "Venter på runde",
+        "statusRecording": "Registrerer",
+        "statusDone": "Runden er færdig",
+        "correct": "Korrekte felter",
+        "time": "Placeringstid",
+        "wrong": "Forkerte brikker",
+        "exposure": "Husketid",
+        "byType": "Hukommelse pr. briktype",
+        "byTypeEmpty": "Hukommelse pr. briktype vises her efter runden.",
+        "legendCorrect": "korrekt",
+        "legendWrong": "forkert placering",
+        "legendMissed": "oversprunget felt"
+      },
+      "pieceTypes": {
+        "king": "Konge",
+        "queen": "Dronning",
+        "rook": "Tårn",
+        "bishop": "Løber",
+        "knight": "Springer",
+        "pawn": "Bonde"
+      }
     }
   },
   "leaderboard": {

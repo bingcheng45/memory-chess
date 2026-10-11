@@ -15,7 +15,7 @@ import {
   SPECIMEN_SCORE,
   type MicroscopePhase,
 } from "@/lib/home/specimen";
-import { BoardFigure, StaticBoard, type PieceState } from "./BoardFigure";
+import { BoardFigure, StaticBoard, type PieceState } from "@/components/round/BoardFigure";
 import { MicroscopeOverlay } from "./MicroscopeOverlay";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 

@@ -37,9 +37,12 @@ export function usePieceName(): (piece: LabPiece) => string {
 
 interface BoardFigureProps {
   children: ReactNode;
+  /** Draws the rank and file labels round the board; off, the board takes the whole figure. */
+  coordinates?: boolean;
 }
 
-export function BoardFigure({ children }: BoardFigureProps) {
+export function BoardFigure({ children, coordinates = true }: BoardFigureProps) {
+  if (!coordinates) return <div className="lab-figure" data-bare="">{children}</div>;
   return (
     <div className="lab-figure">
       {children}

@@ -288,6 +288,47 @@
       "sendFailed": "Nie udało się wysłać opinii. Spróbuj ponownie albo wybierz „Nie teraz”.",
       "send": "Wyślij opinię",
       "sending": "Wysyłanie…"
+    },
+    "round": {
+      "start": "Start",
+      "done": "Gotowe",
+      "restart": "Od nowa",
+      "again": "Jeszcze raz",
+      "submit": "Wyślij",
+      "clear": "Wyczyść szachownicę",
+      "controlsLabel": "Sterowanie rundą",
+      "boardLabel": "Szachownica. Poruszaj się między polami klawiszami strzałek.",
+      "paletteLabel": "Paleta bierek",
+      "squareEmpty": "{square}, puste",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Zapamiętaj pozycję",
+      "phaseRebuild": "Ustaw bierki",
+      "liveStudy": "Przyjrzyj się pozycji. Czas: {memorizeSeconds} s.",
+      "liveRebuild": "Szachownica wyczyszczona. Wybierz bierkę, a potem pole.",
+      "liveScore": "Celność {accuracy} procent. Poprawne pola: {correct} z {total}.",
+      "readout": {
+        "title": "Wyniki",
+        "statusIdle": "Czeka na rundę",
+        "statusRecording": "Rejestrowanie",
+        "statusDone": "Runda zakończona",
+        "correct": "Poprawne pola",
+        "time": "Czas ustawiania",
+        "wrong": "Błędne bierki",
+        "exposure": "Czas na zapamiętanie",
+        "byType": "Pamięć według rodzaju bierki",
+        "byTypeEmpty": "Pamięć według rodzaju bierki pojawi się tu po rundzie.",
+        "legendCorrect": "poprawne",
+        "legendWrong": "złe ustawienie",
+        "legendMissed": "pominięte pole"
+      },
+      "pieceTypes": {
+        "king": "Król",
+        "queen": "Hetman",
+        "rook": "Wieża",
+        "bishop": "Goniec",
+        "knight": "Skoczek",
+        "pawn": "Pionek"
+      }
     }
   },
   "leaderboard": {

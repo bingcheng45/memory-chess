@@ -1,13 +1,12 @@
 "use client";
 
-import { memo } from "react";
+import { memo, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import { CALIBRATION_RULES, suggestTier } from "@/lib/home/calibration";
 import type { RoundState } from "@/lib/round/round";
-import { playHref } from "@/lib/game/roundLink";
 import { formatSecondsMs } from "@/utils/timer";
-import { RecallBar } from "./LabCharts";
+import { RecallBar } from "@/components/home/LabCharts";
+import type { RoundCopy } from "./RoundBoard";
+import "./round.css";
 
 const STATUS = {
   idle: { key: "statusIdle", state: "idle" },
@@ -16,14 +15,22 @@ const STATUS = {
   scored: { key: "statusDone", state: "done" },
 } as const;
 
-// Memoized: the calibration clock re-renders its section every 50 ms, and this changes only with the round.
-export const ReadoutCard = memo(function ReadoutCard({ state }: { state: RoundState }) {
-  const t = useTranslations("home.lab.calibrate");
-  const presets = useTranslations("game.presets");
+interface ReadoutCardProps {
+  readonly state: RoundState;
+  readonly copy: RoundCopy;
+  /** What the card shows before a round has a config of its own. */
+  readonly expected: { readonly pieceCount: number; readonly studyMs: number };
+  /** A block under the recall bars, such as the homepage's suggested difficulty. */
+  readonly next?: ReactNode;
+}
+
+// Memoized: the round's clock ticks every frame, and this changes only with the round.
+export const ReadoutCard = memo(function ReadoutCard({ state, copy, expected, next }: ReadoutCardProps) {
+  const t = useTranslations(copy);
   const scored = state.phase === "scored" ? state : null;
   const score = scored?.score;
-  const tier = score ? suggestTier(score.accuracy) : null;
-  const exposure = formatSecondsMs(state.phase === "rebuild" || state.phase === "scored" ? state.studyMs : CALIBRATION_RULES.studyMs);
+  const exposure = formatSecondsMs(state.phase === "rebuild" || state.phase === "scored" ? state.studyMs : expected.studyMs);
+  const pieceCount = state.phase === "idle" ? expected.pieceCount : state.config.pieceCount;
 
   return (
     <div className="lab-card">
@@ -43,7 +50,7 @@ export const ReadoutCard = memo(function ReadoutCard({ state }: { state: RoundSt
         <div>
           <span className="lab-k">{t("readout.correct")}</span>
           <b>
-            {score ? score.correct : "--"} / {score ? score.total : CALIBRATION_RULES.pieceCount}
+            {score ? score.correct : "--"} / {score ? score.total : pieceCount}
           </b>
         </div>
         <div>
@@ -71,24 +78,7 @@ export const ReadoutCard = memo(function ReadoutCard({ state }: { state: RoundSt
           <span className="lab-note">{t("readout.byTypeEmpty")}</span>
         )}
       </div>
-      <div className="lab-rc-next">
-        {tier ? (
-          <>
-            <b>{t("readout.suggested")}</b>{" "}
-            {t(`readout.${tier.advice}`, {
-              tier: presets(`${tier.difficulty}.label`),
-              pieceCount: tier.pieceCount,
-              memorizeSeconds: tier.memorizeTime,
-            })}
-            <br />
-            <Link className="lab-go" href={playHref(tier.pieceCount, tier.memorizeTime, "calibration_cta")}>
-              {t("readout.playTier", { tier: presets(`${tier.difficulty}.label`) })} →
-            </Link>
-          </>
-        ) : (
-          t("readout.nextEmpty")
-        )}
-      </div>
+      {next}
       <div className="lab-legend">
         <span>
           <i data-key="ok" aria-hidden="true" />

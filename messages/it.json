@@ -288,6 +288,47 @@
       "sendFailed": "Non siamo riusciti a inviare il tuo commento. Riprova o scegli «Non ora».",
       "send": "Invia il commento",
       "sending": "Invio..."
+    },
+    "round": {
+      "start": "Inizia",
+      "done": "Fatto",
+      "restart": "Ricomincia",
+      "again": "Rigioca",
+      "submit": "Invia",
+      "clear": "Svuota scacchiera",
+      "controlsLabel": "Comandi del round",
+      "boardLabel": "Scacchiera. Usa le frecce per spostarti tra le case.",
+      "paletteLabel": "Tavolozza dei pezzi",
+      "squareEmpty": "{square}, vuota",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Memorizza la posizione",
+      "phaseRebuild": "Posiziona i pezzi",
+      "liveStudy": "Studia la posizione. {memorizeSeconds} secondi.",
+      "liveRebuild": "Scacchiera svuotata. Scegli un pezzo, poi una casa.",
+      "liveScore": "Precisione {accuracy} percento. {correct} case corrette su {total}.",
+      "readout": {
+        "title": "Resoconto",
+        "statusIdle": "In attesa",
+        "statusRecording": "Registrazione",
+        "statusDone": "Round completato",
+        "correct": "Case corrette",
+        "time": "Tempo di ricostruzione",
+        "wrong": "Pezzi errati",
+        "exposure": "Tempo di studio",
+        "byType": "Memoria per tipo di pezzo",
+        "byTypeEmpty": "La memoria per tipo di pezzo compare qui dopo il round.",
+        "legendCorrect": "corretta",
+        "legendWrong": "posizione errata",
+        "legendMissed": "casa mancata"
+      },
+      "pieceTypes": {
+        "king": "Re",
+        "queen": "Donna",
+        "rook": "Torre",
+        "bishop": "Alfiere",
+        "knight": "Cavallo",
+        "pawn": "Pedone"
+      }
     }
   },
   "leaderboard": {

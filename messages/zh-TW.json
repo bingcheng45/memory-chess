@@ -288,6 +288,47 @@
       "sendFailed": "意見送出失敗。請重試，或選擇「暫不評分」。",
       "send": "送出意見",
       "sending": "送出中…"
+    },
+    "round": {
+      "start": "開始",
+      "done": "完成",
+      "restart": "重新開始",
+      "again": "再玩一次",
+      "submit": "送出",
+      "clear": "清空棋盤",
+      "controlsLabel": "本輪操作",
+      "boardLabel": "棋盤。使用方向鍵在格子之間移動。",
+      "paletteLabel": "棋子選擇列",
+      "squareEmpty": "{square}，空",
+      "squareWith": "{square}，{piece}",
+      "phaseStudy": "記住這個棋局",
+      "phaseRebuild": "擺放棋子",
+      "liveStudy": "觀察棋局。{memorizeSeconds} 秒。",
+      "liveRebuild": "棋盤已清空。先選一個棋子，再選一個格子。",
+      "liveScore": "準確率 {accuracy}%。{total} 個格子中答對 {correct} 個。",
+      "readout": {
+        "title": "結果",
+        "statusIdle": "等待開始",
+        "statusRecording": "記錄中",
+        "statusDone": "本輪完成",
+        "correct": "正確格子",
+        "time": "擺放用時",
+        "wrong": "錯誤棋子",
+        "exposure": "記憶用時",
+        "byType": "各類棋子的記憶情況",
+        "byTypeEmpty": "本輪結束後，這裡會顯示各類棋子的記憶情況。",
+        "legendCorrect": "正確",
+        "legendWrong": "放錯",
+        "legendMissed": "漏掉的格子"
+      },
+      "pieceTypes": {
+        "king": "國王",
+        "queen": "皇后",
+        "rook": "城堡",
+        "bishop": "主教",
+        "knight": "騎士",
+        "pawn": "兵"
+      }
     }
   },
   "leaderboard": {

@@ -6,7 +6,7 @@ import type { SquareName } from "@/lib/game/board";
 import { SHOWCASE } from "@/lib/home/showcase";
 import { SHOWCASE_STEPS, STEP_MS, type ShowcaseStep, type StepTone } from "@/lib/home/showcaseTour";
 import { inspect, viewOfInspection, viewOfStep } from "@/lib/home/showcaseView";
-import { usePieceName } from "./BoardFigure";
+import { usePieceName } from "@/components/round/BoardFigure";
 import { ShowcaseControls } from "./ShowcaseControls";
 import { ShowcaseFigure } from "./ShowcaseFigure";
 import { useReducedMotion } from "./useLabEffects";

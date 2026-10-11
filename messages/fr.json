@@ -288,6 +288,47 @@
       "sendFailed": "Nous n’avons pas pu envoyer votre retour. Réessayez ou choisissez « Pas maintenant ».",
       "send": "Envoyer mon retour",
       "sending": "Envoi..."
+    },
+    "round": {
+      "start": "Commencer",
+      "done": "Terminé",
+      "restart": "Recommencer",
+      "again": "Rejouer",
+      "submit": "Valider",
+      "clear": "Vider l’échiquier",
+      "controlsLabel": "Commandes de la manche",
+      "boardLabel": "Échiquier. Utilisez les flèches pour passer d’une case à l’autre.",
+      "paletteLabel": "Palette de pièces",
+      "squareEmpty": "{square}, vide",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Mémorisez la position",
+      "phaseRebuild": "Placez les pièces",
+      "liveStudy": "Observez la position. {memorizeSeconds} secondes.",
+      "liveRebuild": "Échiquier vidé. Choisissez une pièce, puis une case.",
+      "liveScore": "Précision de {accuracy} pour cent. {correct} cases correctes sur {total}.",
+      "readout": {
+        "title": "Bilan",
+        "statusIdle": "En attente",
+        "statusRecording": "Enregistrement",
+        "statusDone": "Manche terminée",
+        "correct": "Cases correctes",
+        "time": "Temps de placement",
+        "wrong": "Pièces erronées",
+        "exposure": "Temps d’étude",
+        "byType": "Mémorisation par type de pièce",
+        "byTypeEmpty": "La mémorisation par type de pièce s’affiche ici après la manche.",
+        "legendCorrect": "correcte",
+        "legendWrong": "mauvais placement",
+        "legendMissed": "case manquée"
+      },
+      "pieceTypes": {
+        "king": "Roi",
+        "queen": "Dame",
+        "rook": "Tour",
+        "bishop": "Fou",
+        "knight": "Cavalier",
+        "pawn": "Pion"
+      }
     }
   },
   "leaderboard": {

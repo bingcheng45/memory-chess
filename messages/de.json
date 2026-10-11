@@ -288,6 +288,47 @@
       "sendFailed": "Wir konnten dein Feedback nicht senden. Versuch es noch einmal oder wähle „Jetzt nicht“.",
       "send": "Feedback senden",
       "sending": "Wird gesendet..."
+    },
+    "round": {
+      "start": "Start",
+      "done": "Fertig",
+      "restart": "Neu starten",
+      "again": "Neue Runde",
+      "submit": "Abgeben",
+      "clear": "Brett leeren",
+      "controlsLabel": "Rundensteuerung",
+      "boardLabel": "Brett. Mit den Pfeiltasten zwischen den Feldern wechseln.",
+      "paletteLabel": "Figurenauswahl",
+      "squareEmpty": "{square}, leer",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Präge dir die Stellung ein",
+      "phaseRebuild": "Figuren setzen",
+      "liveStudy": "Präge dir die Stellung ein. {memorizeSeconds} Sekunden.",
+      "liveRebuild": "Brett geleert. Wähle eine Figur, dann ein Feld.",
+      "liveScore": "Genauigkeit {accuracy} Prozent. {correct} von {total} Feldern richtig.",
+      "readout": {
+        "title": "Auswertung",
+        "statusIdle": "Wartet auf Runde",
+        "statusRecording": "Läuft",
+        "statusDone": "Runde beendet",
+        "correct": "Richtige Felder",
+        "time": "Aufbauzeit",
+        "wrong": "Falsche Figuren",
+        "exposure": "Einprägezeit",
+        "byType": "Erinnerung nach Figurentyp",
+        "byTypeEmpty": "Die Erinnerung nach Figurentyp erscheint hier nach der Runde.",
+        "legendCorrect": "richtig",
+        "legendWrong": "falsch platziert",
+        "legendMissed": "verpasstes Feld"
+      },
+      "pieceTypes": {
+        "king": "König",
+        "queen": "Dame",
+        "rook": "Turm",
+        "bishop": "Läufer",
+        "knight": "Springer",
+        "pawn": "Bauer"
+      }
     }
   },
   "leaderboard": {

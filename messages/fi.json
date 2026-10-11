@@ -288,6 +288,47 @@
       "sendFailed": "Palautteen lähettäminen ei onnistunut. Yritä uudelleen tai valitse Ei nyt.",
       "send": "Lähetä palaute",
       "sending": "Lähetetään…"
+    },
+    "round": {
+      "start": "Aloita",
+      "done": "Valmis",
+      "restart": "Aloita alusta",
+      "again": "Uusi kierros",
+      "submit": "Lähetä",
+      "clear": "Tyhjennä lauta",
+      "controlsLabel": "Kierroksen ohjaimet",
+      "boardLabel": "Lauta. Liiku ruutujen välillä nuolinäppäimillä.",
+      "paletteLabel": "Nappulavalikoima",
+      "squareEmpty": "{square}, tyhjä",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Paina asema mieleen",
+      "phaseRebuild": "Aseta nappulat",
+      "liveStudy": "Tutki asemaa. {memorizeSeconds} sekuntia.",
+      "liveRebuild": "Lauta tyhjennetty. Valitse nappula ja sitten ruutu.",
+      "liveScore": "Tarkkuus {accuracy} prosenttia. {correct}/{total} ruutua oikein.",
+      "readout": {
+        "title": "Tulokset",
+        "statusIdle": "Odottaa kierrosta",
+        "statusRecording": "Tallentaa",
+        "statusDone": "Kierros valmis",
+        "correct": "Oikeat ruudut",
+        "time": "Asetteluaika",
+        "wrong": "Väärät nappulat",
+        "exposure": "Tutkimisaika",
+        "byType": "Muistaminen nappulatyypeittäin",
+        "byTypeEmpty": "Muistaminen nappulatyypeittäin näkyy tässä kierroksen jälkeen.",
+        "legendCorrect": "oikein",
+        "legendWrong": "väärä sijoitus",
+        "legendMissed": "puuttuva ruutu"
+      },
+      "pieceTypes": {
+        "king": "Kuningas",
+        "queen": "Kuningatar",
+        "rook": "Torni",
+        "bishop": "Lähetti",
+        "knight": "Ratsu",
+        "pawn": "Sotilas"
+      }
     }
   },
   "leaderboard": {

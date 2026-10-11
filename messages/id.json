@@ -288,6 +288,47 @@
       "sendFailed": "Kami tidak bisa mengirim masukan Anda. Coba lagi atau pilih Nanti saja.",
       "send": "Kirim masukan",
       "sending": "Mengirim…"
+    },
+    "round": {
+      "start": "Mulai",
+      "done": "Selesai",
+      "restart": "Ulangi",
+      "again": "Main lagi",
+      "submit": "Kirim",
+      "clear": "Kosongkan papan",
+      "controlsLabel": "Kontrol ronde",
+      "boardLabel": "Papan. Gunakan tombol panah untuk berpindah antarpetak.",
+      "paletteLabel": "Palet bidak",
+      "squareEmpty": "{square}, kosong",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Hafalkan posisinya",
+      "phaseRebuild": "Letakkan bidak",
+      "liveStudy": "Pelajari posisinya. {memorizeSeconds} detik.",
+      "liveRebuild": "Papan dikosongkan. Pilih bidak, lalu petak.",
+      "liveScore": "Akurasi {accuracy} persen. {correct} dari {total} petak benar.",
+      "readout": {
+        "title": "Hasil",
+        "statusIdle": "Menunggu ronde",
+        "statusRecording": "Merekam",
+        "statusDone": "Ronde selesai",
+        "correct": "Petak benar",
+        "time": "Waktu menyusun",
+        "wrong": "Bidak salah",
+        "exposure": "Waktu menghafal",
+        "byType": "Ingatan per jenis bidak",
+        "byTypeEmpty": "Ingatan per jenis bidak muncul di sini setelah ronde.",
+        "legendCorrect": "benar",
+        "legendWrong": "salah tempat",
+        "legendMissed": "petak terlewat"
+      },
+      "pieceTypes": {
+        "king": "Raja",
+        "queen": "Menteri",
+        "rook": "Benteng",
+        "bishop": "Gajah",
+        "knight": "Kuda",
+        "pawn": "Pion"
+      }
     }
   },
   "leaderboard": {

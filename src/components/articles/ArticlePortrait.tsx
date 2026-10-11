@@ -29,7 +29,7 @@ export default function ArticlePortrait({
       alt={photo.alt}
       priority={priority}
       data-flight="portrait"
-      className={`aspect-[4/5] h-auto w-full bg-bg-light object-cover ${className}`}
+      className={`art-portrait aspect-[4/5] h-auto w-full object-cover ${className}`}
       style={style}
     />
   );

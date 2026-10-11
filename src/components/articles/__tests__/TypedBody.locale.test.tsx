@@ -20,7 +20,6 @@ const HINDI_SENTENCE = "मैग्नस कार्लसन ने शत�
 const HINDI_SECTIONS = [{ heading: HINDI_HEADING, paragraphs: [HINDI_SENTENCE] }];
 const LONG_HEADING = [{ heading: "x".repeat(400), paragraphs: [] }];
 const GERMAN_LABEL = "Ganzen Text zeigen";
-const SANS_CLASS = "[font-family:var(--font-geist-sans)]";
 
 const germanMessages = {
   ...englishMessages,
@@ -67,15 +66,6 @@ describe("TypedBody for a locale other than English", () => {
 
     expect(screen.getByRole("button", { name: GERMAN_LABEL })).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Show all text" })).not.toBeInTheDocument();
-  });
-
-  it("reads Hindi in the site sans stack and English in the reading face", () => {
-    const hindi = renderWithIntl(<TypedBody slug={SLUG} sections={HINDI_SECTIONS} />, { locale: "hi" });
-    expect(body().className).toContain(SANS_CLASS);
-    hindi.unmount();
-
-    renderBody();
-    expect(body().className).not.toContain(SANS_CLASS);
   });
 
   it("types at the rate it is given", async () => {

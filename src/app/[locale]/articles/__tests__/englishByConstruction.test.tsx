@@ -41,13 +41,7 @@ jest.mock("@/components/articles/ArticlePage", () => ({
   default: jest.fn(() => <div />),
 }));
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>PageHeader</div>;
-  }
-
-  return MockPageHeader;
-});
+jest.mock("@/components/lab-paper/LabPaperHeader", () => ({ LabPaperHeader: () => <div>LabPaperHeader</div> }));
 
 const SLUG = "magnus-carlsen";
 const ENGLISH_TITLE = "How Magnus Carlsen names a famous game from one position";

@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import { LikeCount, ViewCount } from "@/components/articles/ArticleCounts";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticlePortrait from "@/components/articles/ArticlePortrait";
-import { ARTICLE_FOCUS_RING, ARTICLE_LONG_WORDS } from "@/components/articles/articleStyles";
+import { ARTICLE_LONG_WORDS } from "@/components/articles/articleStyles";
 import { useLikesSeen } from "@/components/articles/useLikesSeen";
 import type { ArticleSummary } from "@/lib/articles/schema";
 import { hasCounts, atLeastLikesSeen, type ArticleCounts } from "@/lib/articles/stats";
@@ -15,10 +15,9 @@ type ArticleCardProps = {
 };
 
 const CARD_CLASS =
-  "group grid grid-cols-[96px_minmax(0,1fr)] gap-3.5 rounded-[18px] border border-white/10 bg-bg-card p-3.5 " +
-  "hover:border-peach-500/35 hover:bg-white/[0.06] motion-safe:transition-transform motion-safe:duration-300 " +
-  `motion-safe:hover:-translate-y-0.5 ${ARTICLE_FOCUS_RING} ` +
-  "min-[561px]:grid-cols-[148px_minmax(0,1fr)] min-[561px]:gap-[26px] min-[561px]:rounded-[22px] min-[561px]:p-[18px]";
+  "art-card group grid grid-cols-[96px_minmax(0,1fr)] gap-3.5 p-3.5 " +
+  "motion-safe:transition-transform motion-safe:duration-300 motion-safe:hover:-translate-y-0.5 " +
+  "min-[561px]:grid-cols-[148px_minmax(0,1fr)] min-[561px]:gap-6 min-[561px]:p-5";
 
 export default function ArticleCard({ article, counts: listed, priority, style }: ArticleCardProps) {
   const { slug, photo, person, publishedAt, publishedLabel, title, description } = article;
@@ -41,10 +40,10 @@ export default function ArticleCard({ article, counts: listed, priority, style }
             photo={photo}
             sizes="(max-width: 560px) 96px, 148px"
             priority={priority}
-            className="rounded-xl"
+            className="rounded-lg"
           />
-          <p className={`mt-[9px] text-[12.5px] leading-[1.35] text-text-muted ${ARTICLE_LONG_WORDS}`}>
-            <b className="block font-semibold text-text-secondary">{person.name}</b>
+          <p className={`art-card-person mt-2 ${ARTICLE_LONG_WORDS}`}>
+            <b className="block">{person.name}</b>
             <span>{person.role}</span>
           </p>
         </div>
@@ -52,20 +51,20 @@ export default function ArticleCard({ article, counts: listed, priority, style }
           <time
             dateTime={publishedAt}
             data-flight="date"
-            className="self-start text-[12.5px] tracking-[0.02em] text-peach-500"
+            className="art-meta self-start"
           >
             {publishedLabel}
           </time>
           <h2
             id={`${slug}-title`}
             data-flight="title"
-            className={`text-[clamp(19px,2.7vw,25px)] font-bold leading-[1.18] tracking-[-0.015em] text-white [text-wrap:balance] group-hover:text-peach-200 ${ARTICLE_LONG_WORDS}`}
+            className={`art-card-title [text-wrap:balance] ${ARTICLE_LONG_WORDS}`}
           >
             {title}
           </h2>
           <p
             id={descriptionId}
-            className={`text-[14.5px] leading-normal text-text-muted min-[561px]:text-[15.5px] ${ARTICLE_LONG_WORDS}`}
+            className={`art-card-desc ${ARTICLE_LONG_WORDS}`}
           >
             {description}
           </p>
@@ -73,7 +72,7 @@ export default function ArticleCard({ article, counts: listed, priority, style }
             <p
               id={countsId}
               data-article-counts
-              className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-1.5 text-[13px] text-text-muted [font-variant-numeric:tabular-nums]"
+              className="art-counts mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-1.5"
             >
               <ViewCount count={counts.views} />
               <LikeCount count={counts.likes} />

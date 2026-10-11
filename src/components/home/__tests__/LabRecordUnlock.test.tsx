@@ -71,15 +71,54 @@ describe("unlock strip", () => {
     expect(summary()).toBe("6 of 10 figures unlocked");
   });
 
-  it("shows every line at every width: no toggle in the strip, and no rule in the stylesheet that hides any part of it", () => {
-    const { container } = renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
-    const hiding = [...css.matchAll(/([^{}]*\.lab-unlock[^{}]*)\{([^}]*)\}/g)]
-      .filter(([, , body]) => /display:\s*none|visibility:\s*hidden/.test(body))
-      .map(([, selector]) => selector.trim());
+  describe("on phones", () => {
+    const older = () => rows().map((_, index) => within(strip()!).getAllByRole("listitem")[index].getAttribute("data-older"));
+    const toggle = () => within(screen.getByText(/figures unlocked$/).closest(".lab-unlock") as HTMLElement).queryByRole("button", { hidden: true });
+    const rule = (selector: string) => css.match(new RegExp(`@media \\(max-width: 640px\\) \\{[^@]*?${selector.replace(/[[\]".]/g, "\\$&")} \\{([^}]*)\\}`))?.[1] ?? "";
 
-    expect(within(container.querySelector(".lab-unlock") as HTMLElement).queryAllByRole("button", { hidden: true })).toEqual([]);
-    expect(rows()).toHaveLength(9);
-    expect(hiding).toEqual([]);
+    it("marks every row past the next three, and offers Show all, while the server still renders every row", () => {
+      renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
+
+      expect(summary()).toBe("1 of 10 figures unlocked");
+      expect(rows()).toHaveLength(9);
+      expect(older()).toEqual([null, null, null, ...Array(6).fill("narrow")]);
+      expect(toggle()).toHaveTextContent("Show all 9 figures");
+    });
+
+    it("hides the marked rows only at the phone breakpoint, by attribute, and shows the toggle only there", () => {
+      const everywhere = css.replace(/@media[^{]*\{(?:[^{}]*\{[^}]*\})*[^{}]*\}/g, "");
+
+      expect(rule('.lab-unlock [data-older="narrow"]')).toMatch(/display:\s*none/);
+      expect(rule('.lab-unlock-toggle[data-shown="narrow"]')).toMatch(/display:\s*block/);
+      expect(everywhere).toMatch(/\.lab-unlock-toggle\[data-shown="narrow"\][^{]*\{[^}]*display:\s*none/);
+      expect(everywhere).not.toMatch(/\.lab-unlock[^{]*\[data-older[^{]*\{[^}]*display:\s*none/);
+    });
+
+    it("shows every row on request and folds back to three", () => {
+      renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
+      const button = toggle()!;
+
+      expect(button).toHaveAttribute("aria-expanded", "false");
+      expect(button).toHaveAttribute("aria-controls", strip()!.id);
+
+      fireEvent.click(button);
+
+      expect(button).toHaveAttribute("aria-expanded", "true");
+      expect(button).toHaveTextContent("Show fewer");
+      expect(older()).toEqual(Array(9).fill(null));
+
+      fireEvent.click(button);
+
+      expect(button).toHaveTextContent("Show all 9 figures");
+      expect(older().filter(Boolean)).toHaveLength(6);
+    });
+
+    it("folds only the fourth row when four figures are locked", () => {
+      renderWithIntl(<LabRecordSection record={persona("easyOnly")} />);
+
+      expect(older()).toEqual([null, null, null, "narrow"]);
+      expect(toggle()).toHaveTextContent("Show all 4 figures");
+    });
   });
 
   it("mounts new lines when the record arrives, so a line that rewraps never moves the ones below it", () => {

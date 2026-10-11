@@ -55,6 +55,14 @@ describe("ProgressDashboard", () => {
     expect(within(document.querySelector('[data-tile="plans"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/#record");
   });
 
+  it("asks a player who already played today to come back tomorrow for a figure that needs only another day", () => {
+    show("twoRounds");
+
+    expect(tileText("streak")).toBe("StreakUnlocks with 1 more day of play.Come back tomorrow.");
+    expect(within(document.querySelector('[data-tile="streak"]') as HTMLElement).queryByRole("link")).toBeNull();
+    expect(within(document.querySelector('[data-tile="piecesHeld"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
+  });
+
   it.each([
     ["en", "Longest streak: 3 days"],
     ["cs", "Nejdelší série: 3 dny"],

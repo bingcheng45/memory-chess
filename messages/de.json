@@ -509,7 +509,7 @@
       "span": "{accuracy} % oder mehr in {rounds, plural, one {# Runde} other {# Runden}}, {memorizeSeconds} s eingeprägt",
       "recent": "Schnitt deiner letzten {rounds, plural, one {# Runde} other {# Runden}}, jede Einstellung",
       "setting": "{source, select, calibration {Übungsrunden} other {Runden in Partien}} mit {pieceCount} Figuren, {memorizeSeconds} s, aus {rounds, plural, one {# Runde} other {# Runden}}",
-      "longest": "Längste {days, plural, one {# Tag} other {# Tage}}",
+      "longest": "Längste Serie: {days, plural, one {# Tag} other {# Tage}}",
       "daily": "{status, select, played {Heute gespielt} unfinished {Heute geöffnet} other {Heute offen}}, längste Serie {longest, plural, one {# Tag} other {# Tage}}",
       "curve": "Erinnert nach {day, plural, one {# Tag} other {# Tagen}}, aus {reviews, plural, one {# Wiederholung} other {# Wiederholungen}}",
       "rounds": "Aus {rounds, plural, one {# Runde} other {# Runden}}",

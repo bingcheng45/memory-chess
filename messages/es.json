@@ -509,7 +509,7 @@
       "span": "{accuracy} % o más en {rounds, plural, one {# ronda} many {# rondas} other {# rondas}}, memorizado {memorizeSeconds} s",
       "recent": "Media de tus {rounds, plural, one {# última ronda} many {# últimas rondas} other {# últimas rondas}}, cualquier ajuste",
       "setting": "{source, select, calibration {Rondas de práctica} other {Rondas de partida}} con {pieceCount} piezas, {memorizeSeconds} s, de {rounds, plural, one {# ronda} many {# rondas} other {# rondas}}",
-      "longest": "Récord {days, plural, one {# día} many {# días} other {# días}}",
+      "longest": "Racha más larga: {days, plural, one {# día} many {# días} other {# días}}",
       "daily": "{status, select, played {Jugado hoy} unfinished {Abierto hoy} other {Disponible hoy}}, racha más larga {longest, plural, one {# día} many {# días} other {# días}}",
       "curve": "Recordado tras {day, plural, one {# día} many {# días} other {# días}}, de {reviews, plural, one {# repaso} many {# repasos} other {# repasos}}",
       "rounds": "De {rounds, plural, one {# ronda} many {# rondas} other {# rondas}}",

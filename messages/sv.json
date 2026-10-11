@@ -509,7 +509,7 @@
       "span": "{accuracy} % eller bättre i {rounds, plural, one {# runda} other {# rundor}}, studerat {memorizeSeconds} s",
       "recent": "Snitt av dina senaste {rounds, plural, one {# runda} other {# rundor}}, alla inställningar",
       "setting": "{source, select, calibration {Övningsrundor} other {Rundor i partier}} med {pieceCount} pjäser, {memorizeSeconds} s, från {rounds, plural, one {# runda} other {# rundor}}",
-      "longest": "Längsta {days, plural, one {# dag} other {# dagar}}",
+      "longest": "Längsta svit: {days, plural, one {# dag} other {# dagar}}",
       "daily": "{status, select, played {Spelat i dag} unfinished {Öppnat i dag} other {Öppet i dag}}, längsta svit {longest, plural, one {# dag} other {# dagar}}",
       "curve": "Ihågkommet efter {day, plural, one {# dag} other {# dagar}}, från {reviews, plural, one {# repetition} other {# repetitioner}}",
       "rounds": "Från {rounds, plural, one {# runda} other {# rundor}}",

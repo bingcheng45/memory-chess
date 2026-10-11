@@ -509,7 +509,7 @@
       "span": "{accuracy}% lub lepiej w {rounds, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}}, zapamiętywanie {memorizeSeconds} s",
       "recent": "Średnia z ostatnich rund: {rounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}, dowolne ustawienie",
       "setting": "{source, select, calibration {Rundy treningowe} other {Rundy w partiach}} z {pieceCount} figurami, {memorizeSeconds} s, z {rounds, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
-      "longest": "Najdłuższa {days, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
+      "longest": "Najdłuższa seria: {days, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
       "daily": "{status, select, played {Zagrane dziś} unfinished {Otwarte dziś} other {Dostępne dziś}}, najdłuższa seria {longest, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
       "curve": "Zapamiętane po {day, plural, one {# dniu} few {# dniach} many {# dniach} other {# dnia}}, z {reviews, plural, one {# powtórki} few {# powtórek} many {# powtórek} other {# powtórki}}",
       "rounds": "Z {rounds, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",

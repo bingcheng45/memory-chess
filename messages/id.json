@@ -509,7 +509,7 @@
       "span": "{accuracy}% atau lebih dalam {rounds, plural, other {# ronde}}, menghafal {memorizeSeconds} dtk",
       "recent": "Rata-rata {rounds, plural, other {# ronde}} terakhirmu, pengaturan apa pun",
       "setting": "{source, select, calibration {Ronde latihan} other {Ronde permainan}} {pieceCount} bidak, {memorizeSeconds} dtk, dari {rounds, plural, other {# ronde}}",
-      "longest": "Terpanjang {days, plural, other {# hari}}",
+      "longest": "Beruntun terpanjang: {days, plural, other {# hari}}",
       "daily": "{status, select, played {Dimainkan hari ini} unfinished {Dibuka hari ini} other {Tersedia hari ini}}, beruntun terpanjang {longest, plural, other {# hari}}",
       "curve": "Diingat setelah {day, plural, other {# hari}}, dari {reviews, plural, other {# ulasan}}",
       "rounds": "Dari {rounds, plural, other {# ronde}}",

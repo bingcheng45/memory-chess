@@ -509,7 +509,7 @@
       "span": "{accuracy}% sau mai mult în {rounds, plural, one {# rundă} few {# runde} other {# de runde}}, memorat {memorizeSeconds} s",
       "recent": "Media ultimelor tale {rounds, plural, one {# rundă} few {# runde} other {# de runde}}, orice setare",
       "setting": "{source, select, calibration {Runde de exercițiu} other {Runde din partide}} cu {pieceCount} piese, {memorizeSeconds} s, din {rounds, plural, one {# rundă} few {# runde} other {# de runde}}",
-      "longest": "Cea mai lungă {days, plural, one {# zi} few {# zile} other {# de zile}}",
+      "longest": "Cea mai lungă serie: {days, plural, one {# zi} few {# zile} other {# de zile}}",
       "daily": "{status, select, played {Jucată azi} unfinished {Deschisă azi} other {Disponibilă azi}}, cea mai lungă serie {longest, plural, one {# zi} few {# zile} other {# de zile}}",
       "curve": "Amintit după {day, plural, one {# zi} few {# zile} other {# de zile}}, din {reviews, plural, one {# recapitulare} few {# recapitulări} other {# de recapitulări}}",
       "rounds": "Din {rounds, plural, one {# rundă} few {# runde} other {# de runde}}",

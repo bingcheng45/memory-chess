@@ -1299,7 +1299,7 @@
       "span": "{accuracy}% or better in {rounds, plural, one {# round} other {# rounds}}, studied {memorizeSeconds} s",
       "recent": "Average of your last {rounds, plural, one {# round} other {# rounds}}, any setting",
       "setting": "{source, select, calibration {Practice rounds} other {Game rounds}} at {pieceCount} pieces, {memorizeSeconds} s, from {rounds, plural, one {# round} other {# rounds}}",
-      "longest": "Longest {days, plural, one {# day} other {# days}}",
+      "longest": "Longest streak: {days, plural, one {# day} other {# days}}",
       "daily": "{status, select, played {Played today} unfinished {Opened today} other {Open today}}, longest streak {longest, plural, one {# day} other {# days}}",
       "curve": "Recalled after {day, plural, one {# day} other {# days}}, from {reviews, plural, one {# review} other {# reviews}}",
       "rounds": "From {rounds, plural, one {# round} other {# rounds}}",

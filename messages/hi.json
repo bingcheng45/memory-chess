@@ -509,7 +509,7 @@
       "span": "{rounds, plural, one {# राउंड} other {# राउंड}} में {accuracy}% या बेहतर, {memorizeSeconds} से. याद किया",
       "recent": "आपके पिछले {rounds, plural, one {# राउंड} other {# राउंड}} का औसत, कोई भी सेटिंग",
       "setting": "{pieceCount} मोहरे, {memorizeSeconds} से. पर {source, select, calibration {अभ्यास राउंड} other {गेम राउंड}}, {rounds, plural, one {# राउंड} other {# राउंड}} से",
-      "longest": "सबसे लंबा {days, plural, one {# दिन} other {# दिन}}",
+      "longest": "सबसे लंबा सिलसिला: {days, plural, one {# दिन} other {# दिन}}",
       "daily": "{status, select, played {आज खेला} unfinished {आज खोला} other {आज खुला है}}, सबसे लंबा सिलसिला {longest, plural, one {# दिन} other {# दिन}}",
       "curve": "{day, plural, one {# दिन} other {# दिन}} बाद याद, {reviews, plural, one {# दोहराव} other {# दोहराव}} से",
       "rounds": "{rounds, plural, one {# राउंड} other {# राउंड}} से",

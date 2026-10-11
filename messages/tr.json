@@ -509,7 +509,7 @@
       "span": "{rounds, plural, one {# turda} other {# turda}} %{accuracy} veya üzeri, {memorizeSeconds} sn ezber",
       "recent": "Son {rounds, plural, one {# turunun} other {# turunun}} ortalaması, her ayar",
       "setting": "{pieceCount} taş, {memorizeSeconds} sn {source, select, calibration {alıştırma turları} other {oyun turları}}, {rounds, plural, one {# turdan} other {# turdan}}",
-      "longest": "En uzun {days, plural, one {# gün} other {# gün}}",
+      "longest": "En uzun seri: {days, plural, one {# gün} other {# gün}}",
       "daily": "{status, select, played {Bugün oynandı} unfinished {Bugün açıldı} other {Bugün açık}}, en uzun seri {longest, plural, one {# gün} other {# gün}}",
       "curve": "{day, plural, one {# gün} other {# gün}} sonra hatırlanan, {reviews, plural, one {# tekrardan} other {# tekrardan}}",
       "rounds": "{rounds, plural, one {# turdan} other {# turdan}}",

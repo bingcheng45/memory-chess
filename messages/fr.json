@@ -509,7 +509,7 @@
       "span": "{accuracy} % ou mieux sur {rounds, plural, one {# partie} many {# parties} other {# parties}}, mémorisé {memorizeSeconds} s",
       "recent": "Moyenne de vos {rounds, plural, one {# dernière partie} many {# dernières parties} other {# dernières parties}}, tous réglages",
       "setting": "{source, select, calibration {Parties d’entraînement} other {Parties de jeu}} à {pieceCount} pièces, {memorizeSeconds} s, sur {rounds, plural, one {# partie} many {# parties} other {# parties}}",
-      "longest": "Record {days, plural, one {# jour} many {# jours} other {# jours}}",
+      "longest": "Plus longue série : {days, plural, one {# jour} many {# jours} other {# jours}}",
       "daily": "{status, select, played {Joué aujourd’hui} unfinished {Ouvert aujourd’hui} other {Ouvert pour aujourd’hui}}, plus longue série {longest, plural, one {# jour} many {# jours} other {# jours}}",
       "curve": "Rappel après {day, plural, one {# jour} many {# jours} other {# jours}}, sur {reviews, plural, one {# révision} many {# révisions} other {# révisions}}",
       "rounds": "Sur {rounds, plural, one {# partie} many {# parties} other {# parties}}",

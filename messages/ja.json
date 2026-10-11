@@ -509,7 +509,7 @@
       "span": "{rounds, plural, other {#ラウンド}}で{accuracy}%以上、記憶時間{memorizeSeconds}秒",
       "recent": "直近{rounds, plural, other {#ラウンド}}の平均、全設定",
       "setting": "{source, select, calibration {練習} other {ゲーム}}・{pieceCount}駒・{memorizeSeconds}秒、{rounds, plural, other {#ラウンド}}から",
-      "longest": "最長{days, plural, other {#日}}",
+      "longest": "最長連続{days, plural, other {#日}}",
       "daily": "{status, select, played {今日プレイ済み} unfinished {今日開いた} other {今日プレイ可能}}、最長連続{longest, plural, other {#日}}",
       "curve": "{day, plural, other {#日}}後の記憶、{reviews, plural, other {#回}}の復習から",
       "rounds": "{rounds, plural, other {#ラウンド}}から",

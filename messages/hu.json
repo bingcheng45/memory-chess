@@ -509,7 +509,7 @@
       "span": "Legalább {accuracy}% {rounds, plural, one {# körben} other {# körben}}, {memorizeSeconds} mp tanulással",
       "recent": "Az utolsó {rounds, plural, one {# kör} other {# kör}} átlaga, bármely beállítás",
       "setting": "{source, select, calibration {Gyakorló körök} other {Játszmák körei}}, {pieceCount} bábu, {memorizeSeconds} mp, {rounds, plural, one {# körből} other {# körből}}",
-      "longest": "Leghosszabb {days, plural, one {# nap} other {# nap}}",
+      "longest": "Leghosszabb sorozat: {days, plural, one {# nap} other {# nap}}",
       "daily": "{status, select, played {Ma lejátszva} unfinished {Ma megnyitva} other {Ma elérhető}}, leghosszabb sorozat {longest, plural, one {# nap} other {# nap}}",
       "curve": "Felidézve {day, plural, one {# nap} other {# nap}} után, {reviews, plural, one {# ismétlésből} other {# ismétlésből}}",
       "rounds": "{rounds, plural, one {# körből} other {# körből}}",

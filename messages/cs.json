@@ -509,7 +509,7 @@
       "span": "{accuracy} % a více v {rounds, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}}, zapamatováno {memorizeSeconds} s",
       "recent": "Průměr posledních kol: {rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}, jakékoli nastavení",
       "setting": "{source, select, calibration {Tréninková kola} other {Kola v partiích}} s {pieceCount} figurami, {memorizeSeconds} s, z {rounds, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
-      "longest": "Nejdelší {days, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+      "longest": "Nejdelší série: {days, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
       "daily": "{status, select, played {Dnes odehráno} unfinished {Dnes otevřeno} other {Dnes k dispozici}}, nejdelší série {longest, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
       "curve": "Zapamatováno po {day, plural, one {# dni} few {# dnech} many {# dne} other {# dnech}}, z {reviews, plural, one {# opakování} few {# opakování} many {# opakování} other {# opakování}}",
       "rounds": "Z {rounds, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",

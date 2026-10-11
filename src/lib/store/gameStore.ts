@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Chess, PieceSymbol, Square } from 'chess.js';
-import { GameState, GameHistory, GamePhase, DIFFICULTY_LEVELS, DifficultyLevel, type SetBoard } from '@/lib/types/game';
+import { GameState, GameHistory, DIFFICULTY_LEVELS, DifficultyLevel, type SetBoard } from '@/lib/types/game';
 import { generateMemorizationPosition } from '@/lib/utils/memorizationPosition';
 import { v4 as uuidv4 } from 'uuid';
 import {
@@ -13,11 +12,18 @@ import {
 import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
 import { trackEvent, type RoundSource } from '@/lib/analytics/events';
 import { now as monotonicNow } from '@/lib/game/clock';
-import type { SquareName } from '@/lib/game/board';
-import { logPlacement, logRemovals, startPlacementLog } from '@/lib/lab/placements';
+import { isSoundEnabled } from '@/lib/utils/soundEffects';
+import {
+  IDLE_ROUND,
+  labPositionFromFen,
+  labPositionToFen,
+  roundReducer,
+  type RoundAction,
+  type RoundState,
+} from '@/lib/round/round';
 
 // Extended GameState type with skillRatingChange
-type GameStateWithRating = GameState & { 
+type GameStateWithRating = GameState & {
   skillRatingChange?: number;
   wrongPieces?: number;
   extraPieces?: number;
@@ -25,30 +31,24 @@ type GameStateWithRating = GameState & {
   correctPlacements?: number;
 };
 
+/** The suffix chess.js gave the solution board's FEN, kept so the lab record's placed FEN reads as it always has. */
+const SOLUTION_FEN_SUFFIX = ' w - - 0 1';
+
 interface GameStore {
-  // Game state
   gameState: GameState;
   lastSettings: GameSettings | null;
-  gamePhase: GamePhase;
   history: GameHistory[];
-  chess: Chess | null;
-  memorizationChess: Chess | null; // Chess instance for the position to memorize
-  
-  // Actions
+  /** The round being played, run by the shared round reducer. Never persisted. */
+  round: RoundState;
+
   startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
+  /** Done, the study deadline, the palette, the board and the eraser. Submit goes through submitSolution. */
+  dispatch: (action: Exclude<RoundAction, { type: 'start' } | { type: 'submit' }>) => void;
+  submitSolution: (now?: number) => void;
   stopGame: () => void;
-  makeMove: (move: string) => boolean;
   resetGame: () => void;
   addToHistory: (game: Omit<GameHistory, 'id'>) => void;
-  
-  // Memory game specific actions
-  startMemorizationPhase: () => void;
-  endMemorizationPhase: (actualMemorizeTimeOverride?: number) => void;
-  startSolutionPhase: () => void;
-  submitSolution: (completionTimeOverride?: number) => void;
-  placePiece: (square: string, piece: string) => void;
-  removePiece: (square: string) => void;
-  
+
   // Stats and progression (kept because they're used in game components)
   getTotalGames: () => number;
   getBestTime: () => number;
@@ -63,35 +63,13 @@ interface GameStore {
 
 // Initial game state
 const initialGameState: GameState = {
-  isPlaying: false,
-  isMemorizationPhase: false,
-  isSolutionPhase: false,
   pieceCount: 8, // Default to 8 pieces
   memorizeTime: 10, // Default to 10 seconds
-  timeElapsed: 0,
   currentLevel: 1,
   level: 1,
   skillRating: 1000, // Starting skill rating
   streak: 0,
-  moves: [], // Initialize empty moves array
 };
-
-// Initialize a chess instance outside the store to ensure it's created correctly
-let initialChess: Chess | null = null;
-try {
-  // Initialize with a minimal valid board (just kings)
-  initialChess = new Chess('4k3/8/8/8/8/8/8/4K3 w - - 0 1');
-} catch (error) {
-  console.error('Failed to initialize chess instance:', error);
-  initialChess = null;
-}
-
-// Define a type for chess.js move objects
-interface ChessMove {
-  from: string;
-  to: string;
-  promotion?: string;
-}
 
 // Calculate time bonus based on completion time and actual memorize time
 const calculateTimeBonus = (completionTime: number, memorizeTime: number, actualMemorizeTime?: number): number => {
@@ -155,59 +133,52 @@ const calculateSkillRatingChange = (
 export const useGameStore = create<GameStore>()(
   persist(
     (set, get) => ({
-      // State initialization
       gameState: initialGameState,
-      gamePhase: 'configuration' as GamePhase,
       history: [], // Empty history array
       lastSettings: null,
-      chess: initialChess, // Use the initialized chess instance
-      memorizationChess: null,
-      
-      // Actions
+      round: IDLE_ROUND,
+
       startGame: (pieceCount, memorizeTime, source, board) => {
-        console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
-        
-        const memorizationPosition = board ? new Chess(board.fen) : generateMemorizationPosition(pieceCount);
-        
-        if (!memorizationPosition) {
+        const generated = board ? null : generateMemorizationPosition(pieceCount);
+        const originalPosition = board ? board.fen : generated?.fen();
+        if (!originalPosition) {
           console.error('Failed to generate random position');
           return;
         }
-        
-        console.log('Random position generated:', memorizationPosition.fen());
-        
+
         set({
-          chess: memorizationPosition, // Use the random position for the current board
-          memorizationChess: memorizationPosition,
+          round: roundReducer(get().round, {
+            type: 'start',
+            config: { pieceCount, studyMs: memorizeTime * 1000, source, board },
+            target: labPositionFromFen(originalPosition),
+            now: monotonicNow(),
+          }),
           gameState: {
             ...initialGameState,
-            isPlaying: true,
             pieceCount,
             memorizeTime,
             startSource: source,
             board,
-            originalPosition: memorizationPosition.fen(),
+            originalPosition,
             skillRating: get().gameState.skillRating || 1000,
             streak: get().gameState.streak || 0,
           },
-          gamePhase: GamePhase.CONFIGURATION,
           lastSettings: { pieceCount, memorizeTime },
         });
         trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime, source } });
       },
 
+      dispatch: (action) => set({ round: roundReducer(get().round, action) }),
+
       stopGame: () => {
         const currentState = get().gameState;
-        set({ 
-          gameState: { ...currentState, isPlaying: false },
-          gamePhase: GamePhase.CONFIGURATION,
-        });
-        
+        set({ round: IDLE_ROUND });
+
         // Only add to history if the game was completed
         if (currentState.completionTime && currentState.accuracy !== undefined) {
           // Use the extended type to access skillRatingChange
           const gameStateWithRating = currentState as GameStateWithRating;
-          
+
           get().addToHistory({
             timestamp: new Date().getTime(),
             completionTime: currentState.completionTime,
@@ -225,96 +196,22 @@ export const useGameStore = create<GameStore>()(
           });
         }
       },
-      
-      makeMove: (move) => {
-        const chess = get().chess;
-        if (!chess) {
-          console.error('Chess object is null in makeMove');
-          return false;
-        }
-        
-        try {
-          // Check if the move is in the standard algebraic notation (e.g., "e2e4")
-          // If so, convert it to an object format that chess.js can understand
-          let moveObj: string | ChessMove;
-          if (move.length === 4) {
-            moveObj = {
-              from: move.substring(0, 2),
-              to: move.substring(2, 4),
-            };
-          } else {
-            moveObj = move;
-          }
-          
-          // Try to make the move directly
-          const result = chess.move(moveObj);
-          
-          if (result) {
-            // Move was successful
-            set((state) => ({
-              gameState: {
-                ...state.gameState,
-                moves: [
-                  ...(state.gameState.moves || []), 
-                  typeof moveObj === 'string' ? moveObj : `${moveObj.from}${moveObj.to}`
-                ],
-              },
-            }));
-            return true;
-          } else {
-            console.log(`Move failed: ${JSON.stringify(moveObj)}`);
-            return false;
-          }
-        } catch (error) {
-          console.error('Invalid move:', error);
-          return false;
-        }
-      },
-      
+
       resetGame: () => {
-        let newChess: Chess | null = null;
-        try {
-          // Initialize with a minimal valid board (just kings)
-          newChess = new Chess('4k3/8/8/8/8/8/8/4K3 w - - 0 1');
-          
-          // Clear the board by removing all pieces
-          const squares = [
-            'a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1',
-            'a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2',
-            'a3', 'b3', 'c3', 'd3', 'e3', 'f3', 'g3', 'h3',
-            'a4', 'b4', 'c4', 'd4', 'e4', 'f4', 'g4', 'h4',
-            'a5', 'b5', 'c5', 'd5', 'e5', 'f5', 'g5', 'h5',
-            'a6', 'b6', 'c6', 'd6', 'e6', 'f6', 'g6', 'h6',
-            'a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7',
-            'a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'
-          ];
-          
-          // Remove all pieces from the board
-          squares.forEach(square => {
-            if (newChess?.get(square as Square)) {
-              newChess?.remove(square as Square);
-            }
-          });
-        } catch (error) {
-          console.error('Failed to create Chess instance in resetGame:', error);
-        }
-        
         // Preserve skill rating and streak when resetting
         const currentSkillRating = get().gameState.skillRating || 1000;
         const currentStreak = get().gameState.streak || 0;
-        
+
         set({
-          chess: newChess,
-          memorizationChess: null,
-          gameState: { 
+          round: IDLE_ROUND,
+          gameState: {
             ...initialGameState,
             skillRating: currentSkillRating,
             streak: currentStreak,
           },
-          gamePhase: GamePhase.CONFIGURATION,
         });
       },
-      
+
       addToHistory: (game) => {
         set((state) => ({
           history: [
@@ -326,154 +223,62 @@ export const useGameStore = create<GameStore>()(
           ].slice(0, 20), // Keep only the last 20 games (reduced from 100)
         }));
       },
-      
-      // Memory game specific actions
-      startMemorizationPhase: () => {
-        const now = Date.now();
-        set((state) => ({
-          gameState: {
-            ...state.gameState,
-            isMemorizationPhase: true,
-            isSolutionPhase: false,
-            memorizeStartTime: now,
-          },
-          gamePhase: GamePhase.MEMORIZATION,
-        }));
-      },
-      
-      endMemorizationPhase: (actualMemorizeTimeOverride) => {
-        // The board always passes the override, measured on the monotonic
-        // clock and clamped to the configured duration. The wall-clock
-        // fallback below only serves callers that pass nothing, which is tests.
-        const now = Date.now();
-        const state = get().gameState;
-        const memorizeStartTime = state.memorizeStartTime || now;
-        const actualMemorizeTime =
-          actualMemorizeTimeOverride ?? (now - memorizeStartTime) / 1000;
 
-        set((state) => ({
-          gameState: {
-            ...state.gameState,
-            isMemorizationPhase: false,
-            actualMemorizeTime,
-          },
-        }));
-      },
-      
-      startSolutionPhase: () => {
-        // Reset the chess board for the user to recreate the position
-        let solutionChess: Chess | null = null;
-        try {
-          // Start with an empty board
-          solutionChess = new Chess('4k3/8/8/8/8/8/8/4K3 w - - 0 1');
-          
-          // Clear the board by removing all pieces
-          const squares = [
-            'a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1',
-            'a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2',
-            'a3', 'b3', 'c3', 'd3', 'e3', 'f3', 'g3', 'h3',
-            'a4', 'b4', 'c4', 'd4', 'e4', 'f4', 'g4', 'h4',
-            'a5', 'b5', 'c5', 'd5', 'e5', 'f5', 'g5', 'h5',
-            'a6', 'b6', 'c6', 'd6', 'e6', 'f6', 'g6', 'h6',
-            'a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7',
-            'a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'
-          ];
-          
-          // Remove all pieces from the board
-          squares.forEach(square => {
-            if (solutionChess?.get(square as Square)) {
-              solutionChess?.remove(square as Square);
-            }
-          });
-        } catch (error) {
-          console.error('Failed to create solution chess instance:', error);
-        }
-        
-        const now = Date.now();
-        set((state) => ({
-          chess: solutionChess,
-          gameState: {
-            ...state.gameState,
-            isMemorizationPhase: false,
-            isSolutionPhase: true,
-            timeElapsed: 0, // Reset timer for solution phase
-            solutionStartTime: now,
-            placementLog: startPlacementLog(monotonicNow()),
-          },
-          gamePhase: GamePhase.SOLUTION,
-        }));
-      },
-      
-      submitSolution: (completionTimeOverride) => {
-        const { gameState, chess } = get();
-        
-        if (!chess || !gameState.originalPosition) {
-          console.error('Cannot submit solution: missing chess instance or original position');
-          return;
-        }
-        
-        // Get the user's solution
-        const userPosition = chess.fen();
-        
+      submitSolution: (now = monotonicNow()) => {
+        const { gameState } = get();
+        const playing = get().round;
+        if (playing.phase !== 'rebuild' || !gameState.originalPosition) return;
+        const round = roundReducer(playing, { type: 'submit', now });
+        if (round.phase !== 'scored') return;
+
+        const userPosition = `${labPositionToFen(round.placed)}${SOLUTION_FEN_SUFFIX}`;
         const placed = placementFromFen(userPosition);
         const score = scorePlacement(placementFromFen(gameState.originalPosition), placed);
-        
-        // Calculate completion time with millisecond precision
-        const now = Date.now();
-        const solutionStartTime = gameState.solutionStartTime || now;
-        const completionTime = completionTimeOverride ?? (now - solutionStartTime) / 1000;
-        
+        const completionTime = round.rebuildMs / 1000;
+        const actualMemorizeTime = round.studyMs / 1000;
+
         // Calculate time bonus using actual memorize time if available
-        const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime, gameState.actualMemorizeTime);
-        
+        const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime, actualMemorizeTime);
+
         // Determine if this is a perfect score
         const perfectScore = score.accuracy === 100 && score.extra === 0;
-        
+
         // Determine success (e.g., accuracy >= 70%)
         const success = score.accuracy >= 70;
-        
+
         // A review replays a board the player has already seen, so it is not a fair test of skill.
         const rated = gameState.board?.kind !== 'review';
 
         // Calculate skill rating change
         const currentRating = gameState.skillRating || 1000;
         const skillRatingChange = rated ? calculateSkillRatingChange(
-          score.accuracy, 
-          gameState.pieceCount, 
-          completionTime, 
+          score.accuracy,
+          gameState.pieceCount,
+          completionTime,
           gameState.memorizeTime,
           currentRating,
-          gameState.actualMemorizeTime
+          actualMemorizeTime
         ) : 0;
-        
+
         // Update streak
         let streak = gameState.streak || 0;
         if (rated) {
           streak = success ? streak + 1 : 0;
         }
-        
+
         // Update skill rating
         const newSkillRating = Math.max(0, currentRating + skillRatingChange);
-        
-        // Create a type that extends GameState with skillRatingChange
-        type GameStateWithRating = GameState & { 
-          skillRatingChange?: number;
-          wrongPieces?: number;
-          extraPieces?: number;
-          totalPiecesPlaced?: number;
-          correctPlacements?: number;
-        };
-        
+
         const labRoundId = uuidv4();
 
         // Update game state with results
         const updatedGameState: GameStateWithRating = {
           ...gameState,
           labRoundId,
-          isSolutionPhase: false,
           userPosition,
           accuracy: score.accuracy,
           completionTime,
+          actualMemorizeTime,
           success,
           perfectScore,
           timeBonusEarned: timeBonus,
@@ -484,10 +289,24 @@ export const useGameStore = create<GameStore>()(
           totalPiecesPlaced: Object.keys(placed).length,
           correctPlacements: score.correct
         };
-        
-        set({
-          gameState: updatedGameState as GameState,
-          gamePhase: GamePhase.RESULT,
+
+        set({ round, gameState: updatedGameState as GameState });
+
+        const soundEnabled = isSoundEnabled();
+        window.gtag?.('event', 'sound_settings', {
+          event_category: 'user_preferences',
+          event_label: soundEnabled ? 'sound_on' : 'sound_off',
+          value: soundEnabled ? 1 : 0,
+        });
+        trackEvent({
+          name: 'round_complete',
+          params: {
+            piece_count: gameState.pieceCount,
+            memorize_time: gameState.memorizeTime,
+            correct_pieces: score.correct,
+            accuracy: score.accuracy,
+            source: gameState.startSource ?? 'link',
+          },
         });
 
         // Loaded on demand so the lab storage stays out of the /game bundle until a round ends.
@@ -499,93 +318,15 @@ export const useGameStore = create<GameStore>()(
           memorizeSeconds: gameState.memorizeTime,
           targetFen: gameState.originalPosition,
           placedFen: userPosition,
-          memorizeMs: Math.round((gameState.actualMemorizeTime ?? gameState.memorizeTime) * 1000),
-          solveMs: Math.round(completionTime * 1000),
-          placements: gameState.placementLog?.placements,
-          removals: gameState.placementLog?.removals,
+          memorizeMs: Math.round(round.studyMs),
+          solveMs: Math.round(round.rebuildMs),
+          placements: round.log.placements,
+          removals: round.log.removals,
           board: gameState.board,
         } as const;
         void import('@/lib/lab/recordRound').then(({ recordLabRound }) => recordLabRound(facts)).catch(() => {});
       },
-      
-      placePiece: (square, piece) => {
-        const { chess } = get();
-        console.log('placePiece called with square:', square, 'piece:', piece, 'chess instance:', chess);
-        if (!chess) {
-          console.error('Chess instance is null in placePiece');
-          return;
-        }
-        
-        try {
-          // Determine piece color and type
-          const color = piece === piece.toLowerCase() ? 'b' : 'w';
-          const type = piece.toLowerCase() as PieceSymbol;
-          
-          console.log(`Placing ${color} ${type} on ${square}`);
-          
-          // Place the piece. chess.put returns false instead of throwing when
-          // the placement is rejected (for example a second king of one color),
-          // so the result has to be checked or the piece is dropped silently.
-          const placed = chess.put({ type, color }, square as Square);
 
-          if (!placed) {
-            console.error(
-              `Rejected placement of ${color} ${type} on ${square}: the board did not accept the piece`
-            );
-            return;
-          }
-
-          // Update the state
-          const placedAt = monotonicNow();
-          set((state) => {
-            const { placementLog } = state.gameState;
-            const newState = {
-              gameState: {
-                ...state.gameState,
-                userPosition: chess.fen(),
-                placementLog: placementLog && logPlacement(placementLog, placedAt, square as SquareName, piece),
-              },
-            };
-            console.log('Updated state after placing piece:', newState);
-            return newState;
-          });
-        } catch (error) {
-          console.error(`Failed to place piece ${piece} on ${square}:`, error);
-        }
-      },
-      
-      removePiece: (square) => {
-        const { chess } = get();
-        console.log('removePiece called with square:', square, 'chess instance:', chess);
-        if (!chess) {
-          console.error('Chess instance is null in removePiece');
-          return;
-        }
-        
-        try {
-          console.log(`Removing piece from ${square}`);
-          
-          // Remove the piece
-          const removed = chess.remove(square as Square);
-          
-          // Update the state
-          set((state) => {
-            const { placementLog } = state.gameState;
-            const newState = {
-              gameState: {
-                ...state.gameState,
-                userPosition: chess.fen(),
-                placementLog: placementLog && logRemovals(placementLog, removed ? 1 : 0),
-              },
-            };
-            console.log('Updated state after removing piece:', newState);
-            return newState;
-          });
-        } catch (error) {
-          console.error(`Failed to remove piece from ${square}:`, error);
-        }
-      },
-      
       // Stats and progression
       getTotalGames: () => get().history.length,
       

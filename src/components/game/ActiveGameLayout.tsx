@@ -1,35 +1,37 @@
 'use client';
 
 import { useRef, type ReactNode } from 'react';
+import { useTranslations } from "next-intl";
 
 import { useElementSize } from '@/hooks/useElementSize';
 import { MAX_BOARD_SIZE, MIN_BOARD_SIZE, MIN_ROW_WIDTH } from '@/lib/layout';
-import { boardSizeForArea } from './ResponsiveChessBoard';
-
-import { useTranslations } from "next-intl";
 
 /**
- * Height of the row above the board, holding the timer and the phase's one
- * action. It must fit the taller of the two phases: memorising stacks a
- * title, the clock, a progress bar and the piece count.
+ * The size of the board that fits an area.
  *
- * That stack measures 86px below `sm` and 96px above it. Both earlier figures
- * -- 64px, then 80px and 88px -- were under it, so the row clipped its own
- * contents at every width; the margin was small enough to read as a tight
- * crop rather than a bug. These leave a little room above the measurement so
- * a locale whose words run taller does not go straight back to clipping.
+ * A square cannot be expressed with `aspect-ratio` alone here: a block told to
+ * fill its width keeps that width when `max-height` clamps it, and comes out
+ * oblong. Taking the smaller of the two sides gives a square that fits either
+ * way. Where the area has no height of its own, width is the only constraint.
  */
-const STATUS_ROW_HEIGHT = 'h-24 sm:h-[104px]';
+export function boardSizeForArea(area: { width: number; height: number }) {
+  return Math.min(area.width, area.height > 0 ? area.height : area.width, MAX_BOARD_SIZE);
+}
 
 /**
- * Height of the row below the board. It must fit the piece palette, which is
- * the taller of the two phases by some margin -- memorising puts a single
- * line of hint text here.
+ * Height of the row above the board: the phase, the clock, the eraser and the
+ * study meter. The eraser sets it, 40px, plus an 8px gap and the 4px meter.
+ */
+const STATUS_ROW_HEIGHT = 'h-14 sm:h-14';
+
+/**
+ * Height of the row below the board: two rows of 44px palette buttons, the
+ * round's two 44px buttons, and the gaps, in both phases.
  *
  * Both rows are fixed rather than sized by their contents so the board does
  * not move when the phase changes. See the note in the markup below.
  */
-const CONTROLS_ROW_HEIGHT = 'h-[136px] sm:h-[150px]';
+const CONTROLS_ROW_HEIGHT = 'h-[156px] sm:h-[156px]';
 
 /**
  * The two rows above as numbers, and the gap between the three children.
@@ -40,8 +42,8 @@ const CONTROLS_ROW_HEIGHT = 'h-[136px] sm:h-[150px]';
  * class name and cannot follow an interpolation, so a class cannot be built
  * from a number -- which is exactly why the pair has to be checked.
  */
-const STATUS_ROW_PX = { base: 96, sm: 104 } as const;
-const CONTROLS_ROW_PX = { base: 136, sm: 150 } as const;
+const STATUS_ROW_PX = { base: 56, sm: 56 } as const;
+const CONTROLS_ROW_PX = { base: 156, sm: 156 } as const;
 const COLUMN_GAP_PX = 8;
 const COLUMN_GAP_COUNT = 2;
 
@@ -63,7 +65,7 @@ export function activeColumnMinHeight(breakpoint: 'base' | 'sm') {
  * The floor under the column, as classes.
  *
  * Without it the board is whatever the two fixed rows leave over, and on a
- * short viewport that is nothing: the rows are a constant 232px (254px from
+ * short viewport that is nothing: the rows took a constant 232px (254px from
  * `sm`) before the page's own header and banner are counted, so a phone in
  * landscape left the board around 15px tall -- and, the rows being held to the
  * board's width, the timer and palette 15px wide with it. The active phase
@@ -73,7 +75,7 @@ export function activeColumnMinHeight(breakpoint: 'base' | 'sm') {
  * short for it overflows and can be scrolled, rather than silently crushing
  * the one thing the screen is for. Where the room exists this changes nothing.
  */
-const COLUMN_MIN_HEIGHT = 'min-h-[488px] sm:min-h-[510px]';
+const COLUMN_MIN_HEIGHT = 'min-h-[468px] sm:min-h-[468px]';
 
 interface ActiveGameLayoutProps {
   readonly status: ReactNode;
@@ -146,9 +148,8 @@ export default function ActiveGameLayout({
     >
       {/*
         The two rows are a fixed height rather than being sized by their
-        contents, because memorising and placing put very different things in
-        them: a timer and a progress bar against a full piece palette. Letting
-        them size themselves moves the board when the phase changes, and on iOS
+        contents, so a phase change or a longer translation never moves the
+        board. Letting them size themselves moves the board, and on iOS
         the resulting change in page height makes Safari collapse its toolbar,
         which changes the viewport and resizes the board on top of that.
         Reserving the taller phase's space in both keeps the board still.
@@ -169,7 +170,9 @@ export default function ActiveGameLayout({
         className="flex min-h-0 w-full flex-1 items-center justify-center [contain:size]"
         style={boardAreaStyle}
       >
-        {board}
+        <div data-round-board style={{ width: boardSize, height: boardSize }}>
+          {board}
+        </div>
       </div>
 
       {/* This padding is the whole of the gap between the board and what sits

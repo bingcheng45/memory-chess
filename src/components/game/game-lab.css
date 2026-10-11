@@ -1,0 +1,25 @@
+/* /game in the Lab Paper shell. The round's own rules are components/round/round.css; these fit it to the pinned
+   layout, where ActiveGameLayout fixes the rows' heights and hands the board an exact size. */
+
+/* While pinned, globals.css makes body a fixed flex column. The page's block is its flex item and passes the column
+   on, so main takes what the banner and the header leave. The shell's visible root overflow is for its sticky
+   header, and nothing scrolls the document while pinned. */
+body.game-fixed .lab-game { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
+html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow-x: hidden; }
+
+.lab-game [data-round-board] { flex: none; }
+.lab-game [data-round-board] .lab-figure { height: 100%; padding: 16px; }
+.lab-game [data-round-board] .lab-figure[data-bare] { padding: 0; }
+.lab-game [data-round-board] .lab-files { left: 16px; right: 16px; bottom: 1px; }
+.lab-game [data-round-board] .lab-ranks { top: 16px; bottom: 16px; left: 3px; }
+
+.lab-game .lab-cal-head { padding: 0 0 8px; }
+.lab-game .lab-meter { margin: 0; }
+.lab-game .lab-palette { margin-top: 0; }
+.lab-game .lab-palette button { aspect-ratio: auto; height: 44px; max-height: none; }
+.lab-game .lab-cal-actions { margin-top: 8px; }
+.lab-game .lab-cal-main .lab-btn { min-height: 44px; height: 44px; padding: 0 8px; font-size: 15px; line-height: 1.15; white-space: normal; }
+
+/* The sound control was drawn for the dark header. */
+.lab-game .lab-sound button { background: none; color: var(--lp-ink-2); }
+.lab-game .lab-sound button:hover { background: var(--lp-surface-2); color: var(--lp-ink); }

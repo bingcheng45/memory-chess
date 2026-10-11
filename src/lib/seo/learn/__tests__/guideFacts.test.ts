@@ -8,6 +8,8 @@ import {
   type AccuracyBandKey,
 } from "@/lib/reference/facts";
 import { useGameStore } from "@/lib/store/gameStore";
+import { PIECE_TYPE_ORDER, type LabPiece } from "@/lib/round/round";
+import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { DIFFICULTY_PRESETS } from "@/types/game";
 import { LEARN_GUIDES, LEARN_POSITIONS } from "../guides";
 import type { LearnPosition, PieceToken, PositionClaim, Side } from "../positions";
@@ -318,6 +320,10 @@ describe("board rules the coordinates guide states", () => {
   });
 });
 
+const WRONG_PIECES: readonly LabPiece[] = (["white", "black"] as const).flatMap((color) =>
+  PIECE_TYPE_ORDER.map((type) => ({ color, type })),
+);
+
 /**
  * Accuracy the game gives for `correct` of `total` pieces. With `extra`, the
  * board is filled to the count with wrong pieces and `extra` more go on top,
@@ -326,19 +332,35 @@ describe("board rules the coordinates guide states", () => {
 function accuracy(correct: number, total: number, extra = 0): number {
   const store = useGameStore.getState();
   store.startGame(total, 10, "game_form");
-  store.startSolutionPhase();
+  store.dispatch({ type: "studyEnded", now: performance.now() });
   const original = new Chess(useGameStore.getState().gameState.originalPosition!, { skipValidation: true });
   const occupied = SQUARES.filter((square) => original.get(square));
   const empty = SQUARES.filter((square) => !original.get(square));
-  const fenChar = (square: Square) => {
-    const piece = original.get(square)!;
-    return piece.color === "w" ? piece.type.toUpperCase() : piece.type;
+  const placedCount = () => {
+    const { round } = useGameStore.getState();
+    return round.phase === "rebuild" ? Object.keys(round.placed).length : 0;
+  };
+  const place = (square: Square, piece: LabPiece) => {
+    store.dispatch({ type: "select", piece });
+    store.dispatch({ type: "tapSquare", square, now: performance.now() });
+    store.dispatch({ type: "select", piece });
+  };
+  // A wrong piece is any piece the set still has left, so the board's inventory never refuses it.
+  const placeWrong = (square: Square) => {
+    const before = placedCount();
+    WRONG_PIECES.find((piece) => {
+      place(square, piece);
+      return placedCount() > before;
+    });
   };
 
-  occupied.slice(0, correct).forEach((square) => useGameStore.getState().placePiece(square, fenChar(square)));
+  occupied.slice(0, correct).forEach((square) => {
+    const piece = original.get(square)!;
+    place(square, { color: piece.color === "w" ? "white" : "black", type: mapChessJsPieceToType(piece.type) });
+  });
   const wrong = extra > 0 ? total - correct + extra : 0;
-  empty.slice(0, wrong).forEach((square) => useGameStore.getState().placePiece(square, "N"));
-  useGameStore.getState().submitSolution(1);
+  empty.slice(0, wrong).forEach(placeWrong);
+  useGameStore.getState().submitSolution();
 
   const result = useGameStore.getState().gameState;
   expect(result.correctPlacements).toBe(correct);

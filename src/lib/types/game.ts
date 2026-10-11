@@ -1,6 +1,5 @@
 import { PieceSymbol, Square } from 'chess.js';
 import type { RoundSource } from '@/lib/analytics/events';
-import type { PlacementLog } from '@/lib/lab/placements';
 
 /** A round on a set position instead of a random one: today's shared daily board, or a board from the lab record come back for review. */
 export type SetBoard =
@@ -21,22 +20,12 @@ export type SetBoard =
     };
 
 export interface GameState {
-  // Game status
-  isPlaying: boolean;
-  
-  // Game phases
-  isMemorizationPhase: boolean;
-  isSolutionPhase: boolean;
-  
   // Configuration
   pieceCount: number;
   memorizeTime: number;
   startSource?: RoundSource;
   
   // Timing
-  timeElapsed: number;
-  memorizeStartTime?: number;
-  solutionStartTime?: number;
   completionTime?: number;
   actualMemorizeTime?: number; // Actual time spent in memorization phase
   
@@ -47,10 +36,8 @@ export interface GameState {
   streak?: number;           // Current streak of successful games
   
   // Game data
-  moves: string[];
   originalPosition?: string; // FEN string of position to memorize
   userPosition?: string;     // FEN string of user's solution
-  placementLog?: PlacementLog;
   /** The id the lab record saves the scored round under, so the result screen can find it. Never persisted. */
   labRoundId?: string;
   /** Set when the round plays a set position; absent for a random one. */
@@ -155,13 +142,6 @@ export interface GameResult {
   streak?: number;
   perfectScore?: boolean;
   timeBonusEarned?: number;
-}
-
-export enum GamePhase {
-  CONFIGURATION = 'configuration',
-  MEMORIZATION = 'memorization',
-  SOLUTION = 'solution',
-  RESULT = 'result'
 }
 
 export interface DifficultyLevel {

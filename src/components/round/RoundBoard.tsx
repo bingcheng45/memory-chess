@@ -7,8 +7,8 @@ import {
   isDarkSquare,
   PIECE_TYPE_ORDER,
   squareVerdict,
+  type BoardAction,
   type LabPiece,
-  type RoundAction,
   type RoundState,
 } from "@/lib/round/round";
 import type { PieceColor } from "@/types/chess";
@@ -56,7 +56,7 @@ function squareView(state: RoundState, square: SquareName) {
 
 interface RoundBoardProps {
   readonly state: RoundState;
-  readonly dispatch: (action: RoundAction) => void;
+  readonly dispatch: (action: BoardAction) => void;
   readonly copy: RoundCopy;
   readonly coordinates?: boolean;
 }
@@ -122,7 +122,7 @@ export const RoundBoard = memo(function RoundBoard({ state, dispatch, copy, coor
 
 interface RoundPaletteProps {
   readonly state: RoundState;
-  readonly dispatch: (action: RoundAction) => void;
+  readonly dispatch: (action: BoardAction) => void;
   readonly copy: RoundCopy;
 }
 

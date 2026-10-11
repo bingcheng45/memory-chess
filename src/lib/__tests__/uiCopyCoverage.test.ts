@@ -74,8 +74,8 @@ describe("UI copy coverage", () => {
   });
 
   it("names every piece and colour on the board in every locale", () => {
-    // ResponsiveChessBoard and the piece picker build their aria-label and alt
-    // text from these keys. A missing entry reads the raw key path aloud.
+    // The round board and its palette build their aria-labels from
+    // these keys. A missing entry reads the raw key path aloud.
     for (const locale of LOCALES) {
       for (const color of PIECE_COLORS) {
         for (const type of PIECE_TYPES) {

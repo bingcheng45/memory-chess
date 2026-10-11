@@ -152,6 +152,9 @@ export type RoundAction =
   | { readonly type: "clear" }
   | { readonly type: "submit"; readonly now: number };
 
+/** What the board and its palette send: a piece picked, a square tapped. */
+export type BoardAction = Extract<RoundAction, { type: "select" | "tapSquare" }>;
+
 export const IDLE_ROUND: RoundState = { phase: "idle" };
 
 function withoutSquare(position: LabPosition, square: SquareName): LabPosition {

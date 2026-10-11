@@ -38,6 +38,8 @@ export interface LabPaperHeaderProps {
   readonly playLabel?: string;
   /** Page-specific tools placed before Play, such as the homepage's streak chip. */
   readonly tools?: ReactNode;
+  /** False on the game itself, where Play would link to the page already open and start nothing. */
+  readonly showPlay?: boolean;
 }
 
 interface Disclosure {
@@ -103,7 +105,7 @@ function isCurrent(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-export function LabPaperHeader({ sections, playLabel, tools }: LabPaperHeaderProps) {
+export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: LabPaperHeaderProps) {
   const nav = useTranslations("common.nav");
   const pathname = usePathname();
   const pageMenu = useDisclosure();
@@ -154,10 +156,12 @@ export function LabPaperHeader({ sections, playLabel, tools }: LabPaperHeaderPro
           <div className="lab-header-tools">
             <LanguageSettings appearance="paper" className="lab-lang" />
             {tools}
-            <Link className="lab-btn lab-btn-primary lab-btn-sm" href={QUICK_START_HREF} aria-label={playLabel}>
-              <span className="lab-play-long">{playLabel ?? nav("play")}</span>
-              <span className="lab-play-short">{nav("play")}</span>
-            </Link>
+            {showPlay && (
+              <Link className="lab-btn lab-btn-primary lab-btn-sm" href={QUICK_START_HREF} aria-label={playLabel}>
+                <span className="lab-play-long">{playLabel ?? nav("play")}</span>
+                <span className="lab-play-short">{nav("play")}</span>
+              </Link>
+            )}
             <button
               type="button"
               className="lab-btn lab-btn-secondary lab-btn-sm lab-menu-btn"

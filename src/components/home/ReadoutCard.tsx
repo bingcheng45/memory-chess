@@ -8,11 +8,11 @@ import { playHref } from "@/lib/game/roundLink";
 import { formatSecondsMs } from "@/utils/timer";
 import { RecallBar } from "./LabCharts";
 
-const STATUS_KEY = {
-  idle: "statusIdle",
-  study: "statusRecording",
-  rebuild: "statusRecording",
-  scored: "statusDone",
+const STATUS = {
+  idle: { key: "statusIdle", state: "idle" },
+  study: { key: "statusRecording", state: "recording" },
+  rebuild: { key: "statusRecording", state: "recording" },
+  scored: { key: "statusDone", state: "done" },
 } as const;
 
 // Memoized: the calibration clock re-renders its section every 50 ms, and this changes only with the round.
@@ -34,7 +34,9 @@ export const ReadoutCard = memo(function ReadoutCard({ state }: { state: RoundSt
             <small>%</small>
           </div>
         </div>
-        <span className="lab-tag lab-tag-blue">{t(`readout.${STATUS_KEY[state.phase]}`)}</span>
+        <span className="lab-status" data-state={STATUS[state.phase].state}>
+          {t(`readout.${STATUS[state.phase].key}`)}
+        </span>
       </div>
       <div className="lab-rc-grid">
         <div>

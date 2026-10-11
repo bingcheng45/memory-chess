@@ -19,7 +19,7 @@ export function LibrarySection() {
   const learn = useTranslations("home.learn");
 
   return (
-    <section className="lab-sec lab-sec-tight" id={LAB_SECTIONS.library.anchor}>
+    <section className="lab-sec" id={LAB_SECTIONS.library.anchor}>
       <div className="lab-wrap">
         <SectionHeading section="library" title={t("title")} lede={t("lede")} />
         <div className="lab-lib">
@@ -27,7 +27,7 @@ export function LibrarySection() {
             <EnglishOnlyLink key={id} href={`/learn/${slug}`}>
               {(suffix) => (
                 <>
-                  <span className="lab-k">{t("ref", { number: String(index + 1).padStart(2, "0") })}</span>
+                  <span className="lab-k">{t("ref", { number: String(index + 1) })}</span>
                   <h3>
                     {t(`${id}.title`)}
                     {suffix}

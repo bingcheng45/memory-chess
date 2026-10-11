@@ -31,28 +31,28 @@ describe("§06 layout", () => {
     const figures = [...container.querySelectorAll(".lab-panel .lab-panel-h > .lab-k")].map((fig) => fig.textContent);
 
     expect(figures).toEqual([
-      "Fig. 6.1 · Memory span",
-      "Fig. 6.2 · Pieces held",
-      "Fig. 6.3 · Accuracy over time",
-      "Fig. 6.4 · Speed",
-      "Fig. 6.5 · Today's board",
-      "Fig. 6.6 · Days in a row",
-      "Fig. 6.7 · Forgetting curve",
-      "Fig. 6.8 · Lab notebook",
-      "Fig. 6.9 · Miss map",
-      "Fig. 6.10 · Recall by piece type",
-      "Fig. 6.11 · Insights",
-      "Fig. 6.12 · Programs",
-      "Fig. 6.13 · Goal",
-      "Fig. 6.14 · Personal bests",
-      "Fig. 6.15 · Leaderboard",
+      "Fig. 1 · Memory span",
+      "Fig. 2 · Pieces held",
+      "Fig. 3 · Accuracy over time",
+      "Fig. 4 · Speed",
+      "Fig. 5 · Today's board",
+      "Fig. 6 · Days in a row",
+      "Fig. 7 · Forgetting curve",
+      "Fig. 8 · Lab notebook",
+      "Fig. 9 · Miss map",
+      "Fig. 10 · Recall by piece type",
+      "Fig. 11 · Insights",
+      "Fig. 12 · Programs",
+      "Fig. 13 · Goal",
+      "Fig. 14 · Personal bests",
+      "Fig. 15 · Leaderboard",
     ]);
   });
 
   it("renders every panel of the section map once, in order, so no row can drop one", () => {
     const { container } = renderWithIntl(<LabRecordSection record={newVisitor} />);
 
-    const panels = [...container.querySelectorAll(".lab-panel .lab-panel-h > .lab-k")].map((fig) => Number(fig.textContent!.match(/^Fig\. 6\.(\d+) /)![1]));
+    const panels = [...container.querySelectorAll(".lab-panel .lab-panel-h > .lab-k")].map((fig) => Number(fig.textContent!.match(/^Fig\. (\d+) /)![1]));
 
     expect(panels).toEqual(PANEL_ORDER.map((_, index) => index + 1));
   });

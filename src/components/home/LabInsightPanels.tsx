@@ -167,7 +167,7 @@ export function NotebookPanel({ result: { readiness, value } }: { result: LabRes
                 {isNew(entry) && (
                   <>
                     {" "}
-                    <span className="lab-tag lab-tag-mint">{t("notebook.new")}</span>
+                    <span className="lab-tag">{t("notebook.new")}</span>
                   </>
                 )}
               </li>

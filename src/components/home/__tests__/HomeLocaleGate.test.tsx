@@ -4,6 +4,11 @@ import english from "../../../../messages/en.json";
 import german from "../../../../messages/de.json";
 import japanese from "../../../../messages/ja.json";
 
+// The switcher needs a mounted app router, which a test render does not have.
+jest.mock("@/components/ui/LanguageSettings", () => function MockLanguageSettings() {
+  return null;
+});
+
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
     return <div>Memory Chess header</div>;
@@ -29,7 +34,7 @@ describe("homepage locale gate", () => {
     const { container } = renderWithIntl(await homeFor("en"));
 
     await screen.findByRole("heading", { level: 1 });
-    expect(container.querySelector(".lab")).not.toBeNull();
+    expect(container.querySelector(".lab-paper")).not.toBeNull();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Memory chess game · chess memory trainer Put a number on your mind's eye.",
@@ -46,7 +51,7 @@ describe("homepage locale gate", () => {
     const { container } = renderWithIntl(await homeFor(locale), { locale, messages });
 
     expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(messages.home.hero.title);
-    expect(container.querySelector(".lab")).toBeNull();
+    expect(container.querySelector(".lab-paper")).toBeNull();
     expect(container.textContent).not.toMatch(/calibration|home\.lab|mind's eye/i);
   });
 
@@ -56,11 +61,11 @@ describe("homepage locale gate", () => {
 
     const lab = renderWithIntl(await homeFor("de"), { locale: "de", messages: germanWithLab });
     await screen.findByRole("heading", { level: 1 });
-    expect(lab.container.querySelector(".lab")).not.toBeNull();
+    expect(lab.container.querySelector(".lab-paper")).not.toBeNull();
     lab.unmount();
 
     const legacy = renderWithIntl(await homeFor("en"));
     expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(english.home.hero.title);
-    expect(legacy.container.querySelector(".lab")).toBeNull();
+    expect(legacy.container.querySelector(".lab-paper")).toBeNull();
   });
 });

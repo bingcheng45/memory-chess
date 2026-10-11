@@ -10,13 +10,13 @@ describe("microscope specimen", () => {
 describe("microscope phase table", () => {
   it("numbers each phase from its place in round order", () => {
     expect(MICROSCOPE_PHASES.map((phase) => `${phaseNumber(phase.id)} ${phase.id}`)).toEqual([
-      "01 study",
-      "02 anchors",
-      "03 chunk",
-      "04 encode",
-      "05 blank",
-      "06 rebuild",
-      "07 score",
+      "1 study",
+      "2 anchors",
+      "3 chunk",
+      "4 encode",
+      "5 blank",
+      "6 rebuild",
+      "7 score",
     ]);
   });
 

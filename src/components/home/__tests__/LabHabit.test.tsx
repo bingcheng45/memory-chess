@@ -1,14 +1,13 @@
 import { createTranslator } from "next-intl";
 import { act, fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
 import en from "../../../../messages/en.json";
-import { LabIndex } from "@/components/home/LabIndex";
 import { LabRecordSection } from "@/components/home/LabRecordSection";
 import { resetWeekGoalSession, WEEK_GOAL_KEY } from "@/components/home/useWeekGoal";
 import { persona } from "@/test-utils/labPersona";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
-const streakPanel = () => screen.getByText(/^Fig\. 6\.\d+ · Days in a row$/, { selector: ".lab-panel-h > .lab-k" }).closest(".lab-panel") as HTMLElement;
+const streakPanel = () => screen.getByText(/^Fig\. \d+ · Days in a row$/, { selector: ".lab-panel-h > .lab-k" }).closest(".lab-panel") as HTMLElement;
 const welcome = () => document.querySelector(".lab-welcome");
 
 beforeEach(() => {
@@ -53,25 +52,6 @@ describe("streak wording", () => {
     [1, "Goal can't be met with 1 day left. A new week starts Monday."],
   ])("words an out of reach week with %i days left", (daysLeft, line) => {
     expect(createTranslator({ locale: "en", messages: en, namespace: "home.lab.record.week" })("outOfReach", { daysLeft })).toBe(line);
-  });
-});
-
-describe("streak chip in the index bar", () => {
-  it("counts the days played, and names a forgiven day in its title and accessible name", () => {
-    renderWithIntl(<LabIndex streak={{ days: 19, forgiven: 1 }} />);
-    const chip = screen.getByRole("link", { name: "Day 19 of your streak, 1 missed day forgiven" });
-
-    expect(chip).toHaveTextContent(/^Day 19$/);
-    expect(chip).toHaveAttribute("title", "Day 19 of your streak, 1 missed day forgiven");
-  });
-
-  it("reads Day N alone for an unbroken run, and is absent without a streak", () => {
-    const { unmount } = renderWithIntl(<LabIndex streak={{ days: 30, forgiven: 0 }} />);
-
-    expect(screen.getByRole("link", { name: "Day 30" })).not.toHaveAttribute("title");
-    unmount();
-    renderWithIntl(<LabIndex streak={null} />);
-    expect(screen.queryByRole("link", { name: /^Day/ })).toBeNull();
   });
 });
 

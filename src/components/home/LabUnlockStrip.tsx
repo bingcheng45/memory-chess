@@ -12,7 +12,7 @@ import { figureOf } from "./LabRecordPanels";
 import { settingValues } from "./labFormat";
 import { LabWelcome } from "./LabWelcome";
 
-/** Phones list the next three locked figures and fold the rest behind a toggle, as Fig. 6.14 does (lab-instruments.css). */
+/** Phones list the next three locked figures and fold the rest behind a toggle, as the personal bests panel does (lab-instruments.css). */
 const SHOWN_NARROW = 3;
 
 const roundsAndDays = ({ rounds = 0, days = 0 }: Need) => (rounds > 0 && days > 0 ? "RoundsDays" : rounds > 0 ? "Rounds" : "Days");

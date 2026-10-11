@@ -1,5 +1,5 @@
 /**
- * §06 in reading order: what a player wants to know first comes first. Figure numbers are positions in PANEL_ORDER,
+ * The lab record in reading order: what a player wants to know first comes first. Figure numbers are positions in PANEL_ORDER,
  * so a panel inserted into a row renumbers every figure after it. The tools row holds no numbered figure.
  */
 export const PANEL_ROWS = [
@@ -17,5 +17,3 @@ export type CustomRow = Extract<(typeof PANEL_ROWS)[number], { readonly panels: 
 export type PanelId = (typeof PANEL_ROWS)[number]["panels"][number];
 
 export const PANEL_ORDER: readonly PanelId[] = PANEL_ROWS.flatMap(({ panels }) => panels);
-
-export const figureNumber = (section: number, panel: PanelId) => `${section}.${PANEL_ORDER.indexOf(panel) + 1}`;

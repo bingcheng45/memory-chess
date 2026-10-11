@@ -22,7 +22,7 @@ describe("CalibrationSection", () => {
     renderWithIntl(<CalibrationSection />);
 
     fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
-    await screen.findByText("Phase 01 · Study");
+    await screen.findByText("Phase 1 · Study");
     const studied = screen
       .getAllByRole("button", { name: /^[a-h][1-8], / })
       .filter((cell) => !cell.getAttribute("aria-label")?.endsWith("empty"));
@@ -36,7 +36,7 @@ describe("CalibrationSection", () => {
       jest.advanceTimersByTime(10100);
     });
 
-    expect(screen.getByText("Phase 06 · Rebuild")).toBeInTheDocument();
+    expect(screen.getByText("Phase 6 · Rebuild")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: `${square}, empty` })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: pieceName }));
@@ -49,7 +49,7 @@ describe("CalibrationSection", () => {
     fireEvent.click(screen.getByRole("button", { name: "Submit reading" }));
 
     expect(screen.getByText("Run complete")).toBeInTheDocument();
-    expect(screen.getByText("Phase 07 · Score")).toBeInTheDocument();
+    expect(screen.getByText("Phase 7 · Score")).toBeInTheDocument();
     expect(screen.getByText("1 / 6")).toBeInTheDocument();
     expect(recordLabRound).toHaveBeenCalledTimes(1);
     expect(recordLabRound).toHaveBeenCalledWith(
@@ -72,7 +72,7 @@ describe("CalibrationSection", () => {
     renderWithIntl(<CalibrationSection />);
 
     fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
-    await screen.findByText("Phase 01 · Study");
+    await screen.findByText("Phase 1 · Study");
 
     expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "calibration" }]]);
     Reflect.deleteProperty(window, "gtag");
@@ -83,7 +83,7 @@ describe("CalibrationSection", () => {
     window.gtag = gtag;
     renderWithIntl(<CalibrationSection />);
     fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
-    await screen.findByText("Phase 01 · Study");
+    await screen.findByText("Phase 1 · Study");
     const [square, pieceName] = screen
       .getAllByRole("button", { name: /^[a-h][1-8], / })
       .find((cell) => !cell.getAttribute("aria-label")?.endsWith("empty"))!
@@ -106,7 +106,7 @@ describe("CalibrationSection", () => {
   it("moves focus across the board with the arrow keys once the board clears", async () => {
     renderWithIntl(<CalibrationSection />);
     fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
-    await screen.findByText("Phase 01 · Study");
+    await screen.findByText("Phase 1 · Study");
     act(() => {
       jest.advanceTimersByTime(10100);
     });
@@ -129,7 +129,7 @@ const seconds = (text: string | null) => Number(text?.replace("s", ""));
 
 async function startRound() {
   fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
-  await screen.findByText("Phase 01 · Study");
+  await screen.findByText("Phase 1 · Study");
 }
 
 function studiedPiece(): [string, string] {
@@ -171,7 +171,7 @@ describe("the calibration round controls", () => {
 
     fireEvent.click(controls().getByRole("button", { name: "Done" }));
 
-    expect(screen.getByText("Phase 06 · Rebuild")).toBeInTheDocument();
+    expect(screen.getByText("Phase 6 · Rebuild")).toBeInTheDocument();
     expect(buttonState()).toEqual([["Restart", false], ["Submit reading", false]]);
     expect(controls().getByRole("button", { name: "Submit reading" })).toHaveAttribute("data-primary");
     expect(controls().getByRole("button", { name: "Restart" })).not.toHaveAttribute("data-primary");
@@ -220,7 +220,7 @@ describe("the calibration round controls", () => {
     fireEvent.click(controls().getByRole("button", { name: "Done" }));
     fireEvent.click(controls().getByRole("button", { name: "Submit reading" }));
 
-    expect(screen.getByText("Phase 07 · Score")).toBeInTheDocument();
+    expect(screen.getByText("Phase 7 · Score")).toBeInTheDocument();
     expect(buttonState()).toEqual([["Run again", false], ["Submit reading", true]]);
     expect(controls().getByRole("button", { name: "Run again" })).toHaveAttribute("data-primary");
     expect(screen.getByRole("button", { name: "Clear board" })).toBeDisabled();

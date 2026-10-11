@@ -5,6 +5,11 @@ import english from "../../../messages/en.json";
 const ORGANIZATION_ID = "https://thememorychess.com/#organization";
 const WEBSITE_ID = "https://thememorychess.com/#website";
 
+// The switcher needs a mounted app router, which a test render does not have.
+jest.mock("@/components/ui/LanguageSettings", () => function MockLanguageSettings() {
+  return null;
+});
+
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
     return <div>PageHeader</div>;

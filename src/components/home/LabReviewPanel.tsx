@@ -78,7 +78,7 @@ export function ReviewPanel({ result, records, today, daysAgo }: ReviewPanelProp
     <div className="lab-panel lab-p-curve">
       <PanelHead
         fig={t("fig", { number: figureOf("curve") })}
-        tag={measured ? mine : <span key="illustrative" className="lab-tag lab-tag-blue">{tags("illustrative")}</span>}
+        tag={measured ? mine : <span key="illustrative" className="lab-tag lab-tag-accent">{tags("illustrative")}</span>}
       />
       <h3>{t("title")}</h3>
       <p className="lab-panel-desc">{t("desc")}</p>

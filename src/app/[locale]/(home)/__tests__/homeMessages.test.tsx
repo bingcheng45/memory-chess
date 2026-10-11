@@ -12,6 +12,11 @@ jest.mock("next-intl/server", () => ({
   ),
 }));
 
+// The switcher needs a mounted app router, which a test render does not have.
+jest.mock("@/components/ui/LanguageSettings", () => function MockLanguageSettings() {
+  return null;
+});
+
 jest.mock("@/components/ui/PageHeader", () => {
   function MockPageHeader() {
     return null;

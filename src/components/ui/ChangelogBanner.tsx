@@ -4,6 +4,7 @@ import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
+import { useIsLabHome } from "@/lib/home/useIsLabHome";
 import {
   CHANGELOG_ANNOUNCEMENT_DURATION_MS,
   CHANGELOG_DISMISSAL_STORAGE_KEY,
@@ -53,6 +54,7 @@ export function hideDismissedBannerScript(version: string, expiresAt: number): s
  */
 export default function ChangelogBanner({ announce }: { announce: boolean }) {
   const t = useTranslations("changelog");
+  const onLabHome = useIsLabHome();
   const release = LATEST_CHANGELOG_ENTRY;
   const expiresAt =
     Date.parse(release.publishedAt) + CHANGELOG_ANNOUNCEMENT_DURATION_MS;
@@ -125,7 +127,8 @@ export default function ChangelogBanner({ announce }: { announce: boolean }) {
     setIsVisible(false);
   };
 
-  if (!isVisible) {
+  // The English homepage keeps release notes in its footer, so a release never pushes its header down.
+  if (!isVisible || onLabHome) {
     return null;
   }
 

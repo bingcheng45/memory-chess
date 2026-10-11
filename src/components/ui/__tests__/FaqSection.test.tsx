@@ -9,7 +9,7 @@ describe("FaqSection", () => {
     render(<FaqSection />);
 
     expect(
-      screen.getByRole("heading", { name: "Questions About Memory Chess" }),
+      screen.getByRole("heading", { name: "Questions about Memory Chess." }),
     ).toBeInTheDocument();
     expect(screen.getByText("What is Memory Chess?")).toBeInTheDocument();
     expect(

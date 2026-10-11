@@ -22,7 +22,7 @@ describe("the calibration clock", () => {
   it("ticks the clock without redrawing the board or the readout", async () => {
     renderWithIntl(<CalibrationSection />);
     fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
-    await screen.findByText("Phase 01 · Study");
+    await screen.findByText("Phase 1 · Study");
     mockBoardRenders.count = 0;
 
     for (let elapsed = 0; elapsed < 5000; elapsed += 50) {

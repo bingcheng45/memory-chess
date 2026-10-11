@@ -116,5 +116,5 @@ export const MICROSCOPE_PHASES: readonly MicroscopePhase[] = [
 
 /** The only source of a phase's number, as the two-digit label shown beside its name. */
 export function phaseNumber(id: MicroscopePhaseId): string {
-  return String(MICROSCOPE_PHASES.findIndex((phase) => phase.id === id) + 1).padStart(2, "0");
+  return String(MICROSCOPE_PHASES.findIndex((phase) => phase.id === id) + 1);
 }

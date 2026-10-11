@@ -76,7 +76,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
           title={t("title")}
           lede={
             <>
-              {t.rich("lede", { tag: (chunks) => <span className="lab-tag lab-tag-blue">{chunks}</span> })}{" "}
+              {t.rich("lede", { tag: (chunks) => <span className="lab-tag lab-tag-accent">{chunks}</span> })}{" "}
               <Link href="/dashboard">{t("dashboardLink")} →</Link>
             </>
           }

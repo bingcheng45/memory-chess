@@ -4,7 +4,7 @@ import { persona } from "@/test-utils/labPersona";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
-const notebook = () => screen.getByText(/^Fig\. 6\.\d+ · Lab notebook$/).closest(".lab-panel") as HTMLElement;
+const notebook = () => screen.getByText(/^Fig\. \d+ · Lab notebook$/).closest(".lab-panel") as HTMLElement;
 
 it("keeps the visit in memory for the session when storage refuses the write, so entries do not stay new on every visit", () => {
   const sightings: IntersectionObserverCallback[] = [];

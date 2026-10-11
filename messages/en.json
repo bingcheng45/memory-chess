@@ -48,12 +48,12 @@
     },
     "cta": {
       "play": "Play Memory Chess",
-      "leaderboard": "View Leaderboard",
+      "leaderboard": "View leaderboard",
       "playFree": "Play a Free Round",
       "chooseSettings": "Choose pieces and time"
     },
     "video": {
-      "title": "See How Memory Chess Works",
+      "title": "See how Memory Chess works.",
       "subtitle": "Watch a quick guide to studying the board, rebuilding the position, and checking your score.",
       "iframeTitle": "How to Play Memory Chess",
       "credit": "Video: “A New Way To Train Your Vision” by Colin Galen"
@@ -85,11 +85,11 @@
       "eyebrow": "Learning Center",
       "title": "Simple Chess Guides",
       "description": "Learn practical ways to improve board vision, visualization, calculation, and memory. Each guide includes drills you can try right away.",
-      "browseCta": "Browse Chess Guides",
+      "browseCta": "Browse chess guides",
       "beginnerCta": "Start with the Beginner Guide"
     },
     "faq": {
-      "title": "Questions About Memory Chess",
+      "title": "Questions about Memory Chess.",
       "items": [
         {
           "question": "What is Memory Chess?",
@@ -127,14 +127,24 @@
     },
     "lab": {
       "index": {
-        "label": "Lab index",
-        "badge": "Lab",
+        "label": "Lab",
+        "site": "Site",
+        "onPage": "On this page",
+        "menu": "Menu",
         "notebook": "Notebook",
         "method": "Method",
         "calibrate": "Calibrate",
         "tiers": "Difficulty",
         "record": "Record",
         "library": "Library",
+        "hints": {
+          "notebook": "Why measure",
+          "method": "One round, step by step",
+          "calibrate": "Take a reading",
+          "tiers": "Presets and rig",
+          "record": "Your readings",
+          "library": "Guides and drills"
+        },
         "play": "Play a free round"
       },
       "tags": {
@@ -283,7 +293,7 @@
       "method": {
         "title": "A round, under the microscope.",
         "lede": "Scroll through one round on a real position: the end of Kasparov's Immortal, Kasparov against Topalov at Wijk aan Zee in 1999. The overlays show one way to memorise it, not a recording of anyone's attention.",
-        "status": "Phase {number} / {name}",
+        "status": "Phase {number} · {name}",
         "clock": "t = {seconds}s",
         "scoreChip": "{correct} of {total} squares",
         "countChip": "White {white} · Black {black}",
@@ -912,6 +922,15 @@
         "capped": "Today's {cap} reviews are done on this device.",
         "cappedNext": "Any board still due comes back tomorrow, the longest waiting first.",
         "schedule": "Boards you score under 80% on come back 1, 3, 7 and 14 days after you first see them."
+      },
+      "footer": {
+        "description": "A free board-memory game. Study a position, rebuild it, read the number.",
+        "site": "Site",
+        "recognition": "Recognition",
+        "productHunt": "Product Hunt",
+        "productHuntEducation": "Product Hunt · Education",
+        "productOfTheDay": "Product of the Day",
+        "productOfTheWeek": "Product of the Week"
       }
     }
   },

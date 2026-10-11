@@ -43,7 +43,7 @@ const bars = (panel: HTMLElement) =>
   [...panel.querySelectorAll(".lab-bar")].map((bar) => [bar.firstElementChild!.textContent, bar.lastElementChild!.textContent]);
 /** The figure label atop a panel; the unlock strip repeats it for each figure still locked. */
 const FIG = ".lab-panel-h > .lab-k";
-const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. 6\\.\\d+ · ${name}$`), { selector: FIG }).closest(".lab-panel") as HTMLElement;
+const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. \\d+ · ${name}$`), { selector: FIG }).closest(".lab-panel") as HTMLElement;
 
 describe("LabRecordSection", () => {
   it("shows the sample panels, tagged Sample, before any round is played", () => {
@@ -79,7 +79,7 @@ describe("LabRecordSection", () => {
   it("names the streak panel for what it counts, in the sample and the real record", () => {
     const { unmount } = renderWithIntl(<LabRecordSection record={record([])} />);
 
-    expect(screen.getByText("Fig. 6.6 · Days in a row", { selector: FIG })).toBeInTheDocument();
+    expect(screen.getByText("Fig. 6 · Days in a row", { selector: FIG })).toBeInTheDocument();
     expect(screen.queryByText(/Daily challenge/)).toBeNull();
     expect(screen.queryByText(/shared position|Same board for everyone/)).toBeNull();
     expect(within(panel("Days in a row")).getByText("Any finished round, game or practice, counts for its day. One missed day in any 7 is forgiven.")).toBeInTheDocument();
@@ -87,7 +87,7 @@ describe("LabRecordSection", () => {
     unmount();
 
     renderWithIntl(<LabRecordSection record={record(rounds(2, 1))} />);
-    expect(screen.getByText("Fig. 6.6 · Days in a row", { selector: FIG })).toBeInTheDocument();
+    expect(screen.getByText("Fig. 6 · Days in a row", { selector: FIG })).toBeInTheDocument();
   });
 
   it("says how many more rounds each panel needs below its threshold", () => {

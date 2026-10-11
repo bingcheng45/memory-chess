@@ -114,7 +114,7 @@ export function scoreReading(target: LabPosition, placed: LabPosition): Score {
 }
 
 /**
- * How a square reads after a submit, as space-separated words for lab.css's
+ * How a square reads after a submit, as space-separated words for lab-instruments.css's
  * `data-mark` selectors: "ok", "wrong", "miss", or "wrong miss" for both.
  */
 export function squareVerdict(

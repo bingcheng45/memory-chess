@@ -13,10 +13,10 @@ import { useReducedMotion } from "./useLabEffects";
 import { useShowcaseClock } from "./useShowcaseClock";
 
 const TAG_CLASS: Record<StepTone, string> = {
-  white: "lab-tag lab-tag-blue",
+  white: "lab-tag lab-tag-accent",
   black: "lab-tag",
-  game: "lab-tag lab-tag-ink",
-  rebuild: "lab-tag lab-tag-mint",
+  game: "lab-tag",
+  rebuild: "lab-tag",
 };
 
 const sentenceCase = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
@@ -92,12 +92,9 @@ export function ShowcaseBoard() {
     : t(`steps.${step.key}.caption`);
 
   return (
-    <figure ref={clock.ref} className="lab-showcase" aria-label={t("aria")}>
+    <figure ref={clock.ref} className="lab-showcase lab-plate lab-plate-grid" aria-label={t("aria")}>
       <div className="lab-sc-top">
-        <span className="lab-k lab-live">
-          <i aria-hidden="true" />
-          {t("event")}
-        </span>
+        <span className="lab-k">{t("event")}</span>
         <span className="lab-note">{t("venue")}</span>
       </div>
       <p className="lab-sc-match">

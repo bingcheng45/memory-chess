@@ -31,15 +31,15 @@ function tokensIn(pattern: RegExp): Partial<Record<Box, number>> {
   return Object.fromEntries([...block.matchAll(/--lab-h-(\w+):\s*(\d+)px/g)].map(([, box, px]) => [box, Number(px)]));
 }
 
-const wide = tokensIn(/^\.lab \{([^}]*)\}/m);
-const medium = { ...wide, ...tokensIn(/@media \(max-width: 1000px\) \{\s*\.lab \{([^}]*)\}/) };
-const narrow = { ...medium, ...tokensIn(/@media \(max-width: 640px\) \{\s*\.lab \{([^}]*)\}/) };
+const wide = tokensIn(/^\.lab-paper \{([^}]*)\}/m);
+const medium = { ...wide, ...tokensIn(/@media \(max-width: 1000px\) \{\s*\.lab-paper \{([^}]*)\}/) };
+const narrow = { ...medium, ...tokensIn(/@media \(max-width: 640px\) \{\s*\.lab-paper \{([^}]*)\}/) };
 const reserves = { wide, medium, narrow };
 
 /** The widths at which the reserves change: each `@media (max-width: Npx)` block that sets them. */
-const BREAKPOINTS = [...css.matchAll(/@media \(max-width: (\d+)px\) \{\s*\.lab \{/g)].map(([, px]) => Number(px));
+const BREAKPOINTS = [...css.matchAll(/@media \(max-width: (\d+)px\) \{\s*\.lab-paper \{/g)].map(([, px]) => Number(px));
 
-describe("§06 reserved heights", () => {
+describe("lab record reserved heights", () => {
   it("were measured on both sides of every breakpoint the reserves change at", () => {
     const uncovered = BREAKPOINTS.filter((px) => !(measured.widths.includes(px) && measured.widths.some((width) => width > px && width <= px + 32)));
 

@@ -9,8 +9,8 @@ import { persona } from "@/test-utils/labPersona";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
-const plansPanel = () => screen.getByText(/^Fig\. 6\.\d+ · Programs$/).closest(".lab-panel") as HTMLElement;
-const goalPanel = () => screen.getByText(/^Fig\. 6\.\d+ · Goal$/).closest(".lab-panel") as HTMLElement;
+const plansPanel = () => screen.getByText(/^Fig\. \d+ · Programs$/).closest(".lab-panel") as HTMLElement;
+const goalPanel = () => screen.getByText(/^Fig\. \d+ · Goal$/).closest(".lab-panel") as HTMLElement;
 const card = (title: string) => within(plansPanel()).getByRole("heading", { name: title }).closest(".lab-plan") as HTMLElement;
 const stored = (key: string) => JSON.parse(window.localStorage.getItem(key) ?? "null");
 /** 18:00 UTC on the personas' today. */

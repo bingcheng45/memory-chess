@@ -27,16 +27,16 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
 
     expect(rows()).toEqual([
-      ["Fig. 6.1 · Memory span", "2 rounds at 80%+ with 3+ pieces"],
-      ["Fig. 6.2 · Pieces held", "5 rounds over 2 days"],
-      ["Fig. 6.3 · Accuracy over time", "5 rounds at one setting over 2 days"],
-      ["Fig. 6.4 · Speed", "5 rounds at one setting"],
-      ["Fig. 6.6 · Days in a row", "2 days played"],
-      ["Fig. 6.7 · Forgetting curve", "3 reviews after the same gap"],
-      ["Fig. 6.8 · Lab notebook", "1 round"],
-      ["Fig. 6.9 · Miss map", "10 sightings per file and rank"],
-      ["Fig. 6.10 · Recall by piece type", "20 sightings of a non-king piece"],
-      ["Fig. 6.11 · Insights", "10 rounds"],
+      ["Fig. 1 · Memory span", "2 rounds at 80%+ with 3+ pieces"],
+      ["Fig. 2 · Pieces held", "5 rounds over 2 days"],
+      ["Fig. 3 · Accuracy over time", "5 rounds at one setting over 2 days"],
+      ["Fig. 4 · Speed", "5 rounds at one setting"],
+      ["Fig. 6 · Days in a row", "2 days played"],
+      ["Fig. 7 · Forgetting curve", "3 reviews after the same gap"],
+      ["Fig. 8 · Lab notebook", "1 round"],
+      ["Fig. 9 · Miss map", "10 sightings per file and rank"],
+      ["Fig. 10 · Recall by piece type", "20 sightings of a non-king piece"],
+      ["Fig. 11 · Insights", "10 rounds"],
     ]);
     expect(summary()).toBe("0 of 10 figures unlocked");
     expect(screen.getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", PLAY_HREF);
@@ -46,15 +46,15 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
 
     expect(rows()).toEqual([
-      ["Fig. 6.1 · Memory span", "1 more round at 80%+ with 3+ pieces"],
-      ["Fig. 6.2 · Pieces held", "3 more rounds, 1 more day"],
-      ["Fig. 6.3 · Accuracy over time", "4 more game rounds at 6 pieces, 10\u00a0s, 1 more day"],
-      ["Fig. 6.4 · Speed", "4 more game rounds at 6 pieces, 10\u00a0s"],
-      ["Fig. 6.6 · Days in a row", "1 more day played"],
-      ["Fig. 6.7 · Forgetting curve", "3 more reviews after the same gap"],
-      ["Fig. 6.9 · Miss map", "10 more sightings on the least seen file or rank"],
-      ["Fig. 6.10 · Recall by piece type", "14 more sightings of a non-king piece"],
-      ["Fig. 6.11 · Insights", "8 more rounds"],
+      ["Fig. 1 · Memory span", "1 more round at 80%+ with 3+ pieces"],
+      ["Fig. 2 · Pieces held", "3 more rounds, 1 more day"],
+      ["Fig. 3 · Accuracy over time", "4 more game rounds at 6 pieces, 10\u00a0s, 1 more day"],
+      ["Fig. 4 · Speed", "4 more game rounds at 6 pieces, 10\u00a0s"],
+      ["Fig. 6 · Days in a row", "1 more day played"],
+      ["Fig. 7 · Forgetting curve", "3 more reviews after the same gap"],
+      ["Fig. 9 · Miss map", "10 more sightings on the least seen file or rank"],
+      ["Fig. 10 · Recall by piece type", "14 more sightings of a non-king piece"],
+      ["Fig. 11 · Insights", "8 more rounds"],
     ]);
     expect(summary()).toBe("1 of 10 figures unlocked");
   });
@@ -63,10 +63,10 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={persona("easyOnly")} />);
 
     expect(rows()).toEqual([
-      ["Fig. 6.1 · Memory span", "1 round with 3+ pieces"],
-      ["Fig. 6.7 · Forgetting curve", "3 more reviews after the same gap"],
-      ["Fig. 6.9 · Miss map", "4 more sightings on the least seen file or rank"],
-      ["Fig. 6.10 · Recall by piece type", "20 more sightings of a non-king piece"],
+      ["Fig. 1 · Memory span", "1 round with 3+ pieces"],
+      ["Fig. 7 · Forgetting curve", "3 more reviews after the same gap"],
+      ["Fig. 9 · Miss map", "4 more sightings on the least seen file or rank"],
+      ["Fig. 10 · Recall by piece type", "20 more sightings of a non-king piece"],
     ]);
     expect(summary()).toBe("6 of 10 figures unlocked");
   });
@@ -155,7 +155,7 @@ describe("unlock strip", () => {
     );
     renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor"), records, summary: summarize(records) }} />);
 
-    expect(rows()).toContainEqual(["Fig. 6.4 · Speed", "1 round with a piece right"]);
+    expect(rows()).toContainEqual(["Fig. 4 · Speed", "1 round with a piece right"]);
   });
 
   it("drops the streak and piece recall lines exactly when their copy says they unlock", () => {
@@ -166,8 +166,8 @@ describe("unlock strip", () => {
     renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor", "2026-10-07"), records, summary: summarize(records) }} />);
 
     expect(rows()).toEqual([
-      ["Fig. 6.7 · Forgetting curve", "3 more reviews after the same gap"],
-      ["Fig. 6.9 · Miss map", "10 more sightings on the least seen file or rank"],
+      ["Fig. 7 · Forgetting curve", "3 more reviews after the same gap"],
+      ["Fig. 9 · Miss map", "10 more sightings on the least seen file or rank"],
     ]);
   });
 
@@ -211,8 +211,8 @@ describe("stale panels", () => {
       ["lab-p-bests", "Last played 20 days ago. Play a round →"],
     ]);
     expect(rows()).toEqual([
-      ["Fig. 6.7 · Forgetting curve", "3 more reviews after the same gap"],
-      ["Fig. 6.9 · Miss map", "2 more sightings on the least seen file or rank"],
+      ["Fig. 7 · Forgetting curve", "3 more reviews after the same gap"],
+      ["Fig. 9 · Miss map", "2 more sightings on the least seen file or rank"],
     ]);
     expect(container.querySelector(".lab-p-spark svg")).not.toBeNull();
   });

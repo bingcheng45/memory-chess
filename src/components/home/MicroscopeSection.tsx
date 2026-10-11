@@ -98,12 +98,12 @@ export function MicroscopeSection() {
   const phase = MICROSCOPE_PHASES[active];
 
   return (
-    <section className="lab-sec lab-sec-tight" id={LAB_SECTIONS.method.anchor}>
+    <section className="lab-sec" id={LAB_SECTIONS.method.anchor}>
       <div className="lab-wrap">
         <SectionHeading section="method" title={t("title")} lede={t("lede")} />
         <div className="lab-scope">
           <div className="lab-scope-fig" ref={cardRef}>
-            <div className="lab-scope-card" data-phase={phase.id}>
+            <div className="lab-scope-card lab-plate lab-plate-grid" data-phase={phase.id}>
               <div className="lab-scope-status">
                 <span className="lab-k">
                   {t("status", { number: phaseNumber(phase.id), name: t(`phases.${phase.id}.name`) })}

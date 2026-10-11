@@ -2,7 +2,7 @@
 
 The homepage currently mixes two designs. This folder holds three candidate brand systems that merge them into one. Use the chosen sheet as the reference for every future page revamp.
 
-Status: no direction chosen yet. When one is picked, record it here and treat the other two sheets as rejected alternatives.
+Status: Lab Paper is chosen and ships on the English homepage. The other two sheets are rejected alternatives. Night theme, the other locales and the remaining routes (/game and its wood board included) still have to move to it.
 
 ## The two themes on today's homepage
 

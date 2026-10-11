@@ -8,7 +8,7 @@ import { persona } from "@/test-utils/labPersona";
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
 const FIG = ".lab-panel-h > .lab-k";
-const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. 6\\.\\d+ · ${name}$`), { selector: FIG }).closest(".lab-panel") as HTMLElement;
+const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. \\d+ · ${name}$`), { selector: FIG }).closest(".lab-panel") as HTMLElement;
 const playLinks = (name: string) => within(panel(name)).queryAllByRole("link", { name: "Play a round →" }).map((link) => link.getAttribute("href"));
 
 const QUICK_START = "/game?pieceCount=6&memorizeTime=10&source=home_quick";

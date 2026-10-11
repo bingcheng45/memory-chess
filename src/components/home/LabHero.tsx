@@ -31,31 +31,28 @@ export function LabHero({ totalPlays }: { totalPlays: number | null }) {
       <div className="lab-wrap">
         <div>
           <div className="lab-eyebrow">
-            <span className="lab-tag lab-tag-blue">{lab("tags.free")}</span>
-            <span className="lab-k">{lab("hero.platforms")}</span>
+            <span className="lab-tag lab-tag-accent">{lab("tags.free")}</span>
+            <span>{lab("hero.platforms")}</span>
           </div>
           <h1>
-            <span className="lab-kicker">{t("hero.title")}</span>{" "}
+            <span className="lab-seo-title">{t("hero.title")}</span>{" "}
             <span className="lab-display">{lab.rich("hero.display", { em: (chunks) => <em>{chunks}</em> })}</span>
           </h1>
           <p className="lab-lede">{lab("hero.lede")}</p>
           <div className="lab-cta-row">
             <Link className="lab-btn lab-btn-primary" href={QUICK_START_HREF}>
-              <span className="lab-dot" aria-hidden="true" />
-              {t("cta.playFree")}
+              {lab("index.play")}
             </Link>
             <a className="lab-btn lab-btn-secondary" href={`#${LAB_SECTIONS.calibrate.anchor}`}>
               {lab("hero.secondaryCta")}
             </a>
           </div>
-          <div className="lab-subtle-links">
-            <Link href="/game">{t("cta.chooseSettings")}</Link>
-            <span>
-              {t.rich("hero.freeToPlay", {
-                link: (chunks) => <Link href="/leaderboard">{chunks}</Link>,
-              })}
-            </span>
-          </div>
+          <p className="lab-subtle-links">
+            <Link href="/game">{t("cta.chooseSettings")}</Link>.{" "}
+            {t.rich("hero.freeToPlay", {
+              link: (chunks) => <Link href="/leaderboard">{chunks}</Link>,
+            })}
+          </p>
           <div className="lab-facts">
             {facts.map((fact) => (
               <div key={fact.label}>

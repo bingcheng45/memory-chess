@@ -28,7 +28,7 @@ export const BREAKPOINT_WIDTHS = [320, 360, 390, 640, 641, 768, 1000, 1024, 1440
 // Hidden before this check existed, outside the lab record: on phones the tiers table moves its header words into
 // each cell's label. Listed so the run stays green while any new hidden text fails it.
 // The unlock strip's phone fold: its extra rows hide by a [data-older] attribute rule at max-width 640px, and its Show all
-// button hides above it, the same attribute mechanism as Fig. 6.14, which the AdSense audit does not count as hidden text.
+// button hides above it, the same attribute mechanism as the personal bests panel, which the AdSense audit does not count as hidden text.
 const KNOWN_HIDDEN = [".lab-proto thead", ".lab-unlock [data-older]", ".lab-unlock-toggle"];
 // Environment noise, not app faults: Vercel scripts that exist only on Vercel, Supabase and the
 // stats API without local credentials, and headless Chrome refusing audio without a gesture.

@@ -194,7 +194,6 @@ export function CalibrationSection() {
         disabled={!control.enabled || (control.intent === "start" && starting)}
         onClick={press[control.intent]}
       >
-        {primary && <span className="lab-dot" aria-hidden="true" />}
         {t(control.label)}
       </button>
     );
@@ -205,7 +204,7 @@ export function CalibrationSection() {
       <div className="lab-wrap">
         <SectionHeading section="calibrate" title={t("title")} lede={t("lede", { pieceCount: CALIBRATION_RULES.pieceCount, memorizeSeconds: STUDY_SECONDS })} />
         <div className="lab-cal">
-          <div className="lab-cal-board">
+          <div className="lab-cal-board lab-plate lab-plate-grid">
             <div className="lab-cal-head">
               <span className="lab-k">{heading}</span>
               <div className="lab-cal-head-end">

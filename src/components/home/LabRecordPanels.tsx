@@ -4,7 +4,7 @@ import { Fragment, useId, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import type { LabPanel } from "@/lib/analytics/events";
 import type { BestEntry, LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
-import { figureNumber, type PanelId } from "@/lib/lab/panels";
+import { PANEL_ORDER, type PanelId } from "@/lib/lab/panels";
 import type { TrendSetting } from "@/lib/lab/engine";
 import type { StreakDay } from "@/lib/lab/streak";
 import { playHref } from "@/lib/game/roundLink";
@@ -23,7 +23,7 @@ import { LAB_SECTIONS } from "./SectionHeading";
 
 const missShare = ({ shown, missed, ready }: MissCell) => (ready ? missed / shown : null);
 
-export const figureOf = (panel: PanelId) => figureNumber(LAB_SECTIONS.record.number, panel);
+export const figureOf = (panel: PanelId) => String(PANEL_ORDER.indexOf(panel) + 1);
 
 export function PanelHead({ fig, tag }: { fig: string; tag: ReactNode }) {
   return (
@@ -105,8 +105,8 @@ export function useTags() {
   const t = useTranslations("home.lab.record");
   // Keyed apart so the swap mounts a new tag; reusing one moved its centred text sideways, a layout shift.
   return {
-    sample: <span key="sample" className="lab-tag lab-tag-blue">{tags("sample")}</span>,
-    mine: <span key="mine" className="lab-tag lab-tag-mint">{t("mine")}</span>,
+    sample: <span key="sample" className="lab-tag lab-tag-accent">{tags("sample")}</span>,
+    mine: <span key="mine" className="lab-tag">{t("mine")}</span>,
   };
 }
 

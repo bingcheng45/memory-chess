@@ -62,16 +62,16 @@ describe("MicroscopeSection", () => {
   it("numbers the steps from the phase table", () => {
     renderWithIntl(<MicroscopeSection />);
 
-    const labels = screen.getAllByText(/^Phase 0\d \/ /).map((label) => label.textContent);
+    const labels = screen.getAllByText(/^Phase \d · /).map((label) => label.textContent);
     // The sticky figure repeats the current step's label above the step list.
     expect(labels.slice(1)).toEqual([
-      "Phase 01 / Study",
-      "Phase 02 / Anchors",
-      "Phase 03 / Chunk",
-      "Phase 04 / Encode",
-      "Phase 05 / Blank",
-      "Phase 06 / Rebuild",
-      "Phase 07 / Score",
+      "Phase 1 · Study",
+      "Phase 2 · Anchors",
+      "Phase 3 · Chunk",
+      "Phase 4 · Encode",
+      "Phase 5 · Blank",
+      "Phase 6 · Rebuild",
+      "Phase 7 · Score",
     ]);
   });
 

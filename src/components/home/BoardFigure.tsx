@@ -7,8 +7,6 @@ import { getPieceImageUrl } from "@/utils/chessPieces";
 import { BOARD_SQUARES, FILES, RANKS, type SquareName } from "@/lib/game/board";
 import { isDarkSquare, type LabPiece, type LabPosition } from "@/lib/home/calibration";
 
-const CORNERS = ["tl", "tr", "bl", "br"] as const;
-
 export type PieceState = "on" | "off" | "ghost";
 
 interface PieceImageProps {
@@ -44,9 +42,6 @@ interface BoardFigureProps {
 export function BoardFigure({ children }: BoardFigureProps) {
   return (
     <div className="lab-figure">
-      {CORNERS.map((corner) => (
-        <span key={corner} className="lab-crosshair" data-corner={corner} aria-hidden="true" />
-      ))}
       {children}
       <div className="lab-ranks" aria-hidden="true">
         {RANKS.map((rank) => (

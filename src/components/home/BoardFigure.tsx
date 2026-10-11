@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 import { BOARD_SQUARES, FILES, RANKS, type SquareName } from "@/lib/game/board";
@@ -66,10 +66,12 @@ interface StaticBoardProps {
   position: LabPosition;
   pieceState?: (square: SquareName) => PieceState;
   mark?: (square: SquareName) => string | undefined;
+  /** Where the square's piece falls in a staggered reveal, from 0. */
+  revealOrder?: (square: SquareName) => number | undefined;
 }
 
 /** A read-only board. It is decorative; the surrounding figure carries the label. */
-export function StaticBoard({ position, pieceState, mark }: StaticBoardProps) {
+export function StaticBoard({ position, pieceState, mark, revealOrder }: StaticBoardProps) {
   return (
     <div className="lab-board" aria-hidden="true">
       {BOARD_SQUARES.map((square, index) => {
@@ -80,6 +82,7 @@ export function StaticBoard({ position, pieceState, mark }: StaticBoardProps) {
             className="lab-cell"
             data-dark={isDarkSquare(index) || undefined}
             data-mark={mark?.(square)}
+            style={piece && revealOrder ? ({ "--reveal": revealOrder(square) ?? 0 } as CSSProperties) : undefined}
           >
             {piece && <PieceImage piece={piece} state={pieceState?.(square)} />}
           </div>

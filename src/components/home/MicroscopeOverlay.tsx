@@ -2,68 +2,132 @@
 
 import { useTranslations } from "next-intl";
 import type { SquareName } from "@/lib/game/board";
-import type { MicroscopePhase } from "@/lib/home/specimen";
-import { squareCenter } from "./boardUnits";
+import type { Relation, RelationCheck } from "@/lib/home/relations";
+import { SPECIMEN_GROUPS, type MicroscopePhase } from "@/lib/home/specimen";
+import { BoardArrow, direction } from "./BoardArrow";
+import { fileOf, rowOf } from "./boardUnits";
 
-/** Pieces of the specimen that touch, share a file, or sit together in the corner. */
-const RELATIONS: readonly (readonly [SquareName, SquareName])[] = [
-  ["d8", "d6"],
-  ["f2", "g2"],
-  ["g2", "h2"],
-  ["g1", "g2"],
-  ["f3", "g2"],
-];
-
-const CHUNKS = [
-  { id: "a", key: "chunkCorner", box: { x: 4.92, y: 4.92, w: 3, h: 3 }, pill: { x: 4.95, y: 4.5 } },
-  { id: "b", key: "chunkPair", box: { x: 2.92, y: 0.08, w: 1.16, h: 2.84 }, pill: { x: 4.15, y: 0.1 } },
-  { id: "c", key: "chunkLone", box: { x: 1.92, y: 3.92, w: 1.16, h: 1.16 }, pill: { x: 1.95, y: 5.15 } },
-] as const;
-
+const CELL_INSET = 0.05;
+const RING_INSET = 0.07;
 const PILL_FONT = 0.24;
+const PILL_HEIGHT = 0.36;
 // Geist Mono advances about 0.6em per character.
-const pillWidth = (label: string) => 0.2 + label.length * PILL_FONT * 0.6;
+const pillWidth = (label: string) => 0.24 + label.length * PILL_FONT * 0.6;
+const BAR_HALF = 0.32;
+const VERDICT_RADIUS = 0.17;
 
-function GroupBox({ chunk, label, dashed = false }: { chunk: (typeof CHUNKS)[number]; label: string; dashed?: boolean }) {
-  const { id, box, pill } = chunk;
+/** A group's pill sits above its highest square, kept on the board. */
+function pillAt(squares: readonly SquareName[], width: number) {
+  const top = [...squares].sort((a, b) => rowOf(a) - rowOf(b) || fileOf(a) - fileOf(b))[0];
+  return {
+    x: Math.min(Math.max(fileOf(top) + 0.5 - width / 2, 0.04), 8 - width - 0.04),
+    y: Math.max(rowOf(top) - PILL_HEIGHT - 0.04, 0.04),
+  };
+}
+
+function GroupMarks({ phase }: { phase: MicroscopePhase }) {
+  const t = useTranslations("home.lab.method.groups");
+  const shown = SPECIMEN_GROUPS.filter((group) => phase.groups.includes(group.id));
+
   return (
-    <g>
-      <rect
-        x={box.x}
-        y={box.y}
-        width={box.w}
-        height={box.h}
-        rx=".15"
-        strokeWidth=".06"
-        className={`lab-ov-box-${id}${dashed ? " lab-ov-box-dashed" : ""}`}
-      />
-      <rect x={pill.x} y={pill.y} width={pillWidth(label)} height=".36" rx=".06" className={`lab-ov-pill-${id}`} />
-      <text x={pill.x + 0.1} y={pill.y + 0.26} fontSize={PILL_FONT} className="lab-ov-pill-text">
-        {label}
-      </text>
+    <g className="lab-ov-groups">
+      {shown.map((group) =>
+        group.squares.map((square) => (
+          <rect
+            key={`${group.id}-${square}`}
+            className="lab-ov-cell"
+            data-group={group.id}
+            x={fileOf(square) + CELL_INSET}
+            y={rowOf(square) + CELL_INSET}
+            width={1 - 2 * CELL_INSET}
+            height={1 - 2 * CELL_INSET}
+            rx=".12"
+          />
+        )),
+      )}
+      {phase.labels &&
+        shown.map((group) => {
+          const label = `${SPECIMEN_GROUPS.indexOf(group) + 1} · ${t(`${group.id}.name`)}`;
+          const width = pillWidth(label);
+          const { x, y } = pillAt(group.squares, width);
+          return (
+            <g key={group.id} className="lab-ov-pill" data-group={group.id}>
+              <rect x={x} y={y} width={width} height={PILL_HEIGHT} rx=".08" />
+              <text x={x + 0.12} y={y + 0.26} fontSize={PILL_FONT}>
+                {label}
+              </text>
+            </g>
+          );
+        })}
     </g>
   );
 }
 
-export function MicroscopeOverlay({ overlay }: { overlay: MicroscopePhase["overlay"] }) {
-  const t = useTranslations("home.lab.method");
+/** Two pawns nose to nose: a bar across the border between their squares. */
+function BlockBar({ from, to }: { from: SquareName; to: SquareName }) {
+  const { ux, uy, mid } = direction(from, to);
+  return (
+    <g className="lab-ov-rel" data-kind="blocked">
+      <line x1={mid.x - uy * BAR_HALF} y1={mid.y + ux * BAR_HALF} x2={mid.x + uy * BAR_HALF} y2={mid.y - ux * BAR_HALF} />
+    </g>
+  );
+}
 
+function RelationMark({ relation, verdict }: { relation: Relation; verdict?: boolean }) {
+  if (relation.kind === "blocked") return <BlockBar from={relation.from} to={relation.to} />;
+  return (
+    <BoardArrow
+      from={relation.from}
+      to={relation.to}
+      kind={relation.kind}
+      headless={relation.kind === "chain" || relation.kind === "controls"}
+      className={verdict === undefined ? "lab-ov-rel" : "lab-ov-rel lab-ov-checked"}
+    />
+  );
+}
+
+/** A tick or a cross at the middle of a re-derived relation. */
+function Verdict({ check }: { check: RelationCheck }) {
+  const { mid } = direction(check.relation.from, check.relation.to);
+  const s = VERDICT_RADIUS * 0.5;
+  return (
+    <g className="lab-ov-verdict" data-holds={check.holds}>
+      <circle cx={mid.x} cy={mid.y} r={VERDICT_RADIUS} />
+      {check.holds ? (
+        <polyline points={`${mid.x - s},${mid.y} ${mid.x - s * 0.2},${mid.y + s * 0.75} ${mid.x + s},${mid.y - s * 0.7}`} />
+      ) : (
+        <path d={`M${mid.x - s * 0.7},${mid.y - s * 0.7}L${mid.x + s * 0.7},${mid.y + s * 0.7}M${mid.x - s * 0.7},${mid.y + s * 0.7}L${mid.x + s * 0.7},${mid.y - s * 0.7}`} />
+      )}
+    </g>
+  );
+}
+
+/** What the microscope draws over the board for one phase, all of it from the phase's data. */
+export function MicroscopeOverlay({ phase }: { phase: MicroscopePhase }) {
   return (
     <svg className="lab-ov" viewBox="0 0 8 8" aria-hidden="true">
-      <g data-on={overlay === "relations" || undefined}>
-        {RELATIONS.map(([from, to]) => {
-          const a = squareCenter(from);
-          const b = squareCenter(to);
-          return <line key={`${from}-${to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} className="lab-ov-relation" />;
-        })}
-      </g>
-      <g data-on={overlay === "chunks" || undefined}>
-        {CHUNKS.map((chunk) => (
-          <GroupBox key={chunk.id} chunk={chunk} label={t(chunk.key)} />
+      <g key={phase.id}>
+        <GroupMarks phase={phase} />
+        {phase.focus.map((square) => (
+          <rect
+            key={square}
+            className="lab-ov-ring"
+            x={fileOf(square) + RING_INSET}
+            y={rowOf(square) + RING_INSET}
+            width={1 - 2 * RING_INSET}
+            height={1 - 2 * RING_INSET}
+            rx=".12"
+          />
         ))}
-      </g>
-      <g data-on={overlay === "groupA" || undefined}>
-        <GroupBox chunk={CHUNKS[0]} label={t("chunkGroupA")} dashed />
+        {phase.relations.map((relation) => (
+          <RelationMark key={`${relation.kind}-${relation.from}-${relation.to}`} relation={relation} />
+        ))}
+        {phase.checks.map((check) => (
+          <g key={`${check.relation.kind}-${check.relation.from}-${check.relation.to}`} data-holds={check.holds}>
+            <RelationMark relation={check.relation} verdict={check.holds} />
+            <Verdict check={check} />
+          </g>
+        ))}
       </g>
     </svg>
   );

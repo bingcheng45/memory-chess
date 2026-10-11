@@ -2,8 +2,8 @@ import { MICROSCOPE_PHASES, phaseNumber, SPECIMEN_SCORE } from "@/lib/home/speci
 import { retentionNoReview, retentionWithReviews } from "@/lib/home/labRecord";
 
 describe("microscope specimen", () => {
-  it("reads 7 of 8 squares, 88%, under the real scoring rule", () => {
-    expect(SPECIMEN_SCORE).toMatchObject({ accuracy: 88, correct: 7, total: 8, wrong: 1 });
+  it("reads 10 of 11 squares, 91%, under the real scoring rule", () => {
+    expect(SPECIMEN_SCORE).toMatchObject({ accuracy: 91, correct: 10, total: 11, wrong: 1 });
   });
 });
 
@@ -11,10 +11,12 @@ describe("microscope phase table", () => {
   it("numbers each phase from its place in round order", () => {
     expect(MICROSCOPE_PHASES.map((phase) => `${phaseNumber(phase.id)} ${phase.id}`)).toEqual([
       "01 study",
-      "02 chunk",
-      "03 blank",
-      "04 rebuild",
-      "05 score",
+      "02 anchors",
+      "03 chunk",
+      "04 encode",
+      "05 blank",
+      "06 rebuild",
+      "07 score",
     ]);
   });
 

@@ -7,7 +7,10 @@ import { squareVerdict } from "@/lib/home/calibration";
 import {
   MICROSCOPE_PHASES,
   phaseNumber,
+  REBUILD_ORDER,
+  SIDE_COUNTS,
   SPECIMEN,
+  SPECIMEN_GROUPS,
   SPECIMEN_RECALL,
   SPECIMEN_SCORE,
   type MicroscopePhase,
@@ -23,7 +26,8 @@ function pieceState(phase: MicroscopePhase, square: SquareName): PieceState {
     case "none":
       return "off";
     case "specimen":
-      return SPECIMEN[square] ? "on" : "off";
+      if (!SPECIMEN[square]) return "off";
+      return phase.focus.length > 0 && !phase.focus.includes(square) ? "ghost" : "on";
     case "recall":
       return SPECIMEN_RECALL[square] ? "on" : phase.marks ? "ghost" : "off";
   }
@@ -52,6 +56,20 @@ function useActiveStep(count: number) {
   return { active, stepRefs };
 }
 
+/** The encode step's sentences, one per group, numbered as the board labels them. */
+function GroupSentences() {
+  const t = useTranslations("home.lab.method.groups");
+  return (
+    <ol className="lab-sentences">
+      {SPECIMEN_GROUPS.map((group) => (
+        <li key={group.id}>
+          <b>{t(`${group.id}.name`)}.</b> {t(`${group.id}.sentence`)}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 export function MicroscopeSection() {
   const t = useTranslations("home.lab.method");
   const { active, stepRefs } = useActiveStep(MICROSCOPE_PHASES.length);
@@ -75,11 +93,14 @@ export function MicroscopeSection() {
                   position={SPECIMEN_AND_RECALL}
                   pieceState={(square) => pieceState(phase, square)}
                   mark={(square) => (phase.marks ? squareVerdict(SPECIMEN, SPECIMEN_RECALL, square) : undefined)}
+                  revealOrder={(square) => REBUILD_ORDER[square]}
                 />
-                <MicroscopeOverlay overlay={phase.overlay} />
+                <MicroscopeOverlay phase={phase} />
                 <div className="lab-score-chip" data-on={phase.scoreChip || undefined} aria-hidden="true">
                   <b>{SPECIMEN_SCORE.accuracy}%</b>
                   {t("scoreChip", { correct: SPECIMEN_SCORE.correct, total: SPECIMEN_SCORE.total })}
+                  <br />
+                  {t("countChip", SIDE_COUNTS)}
                 </div>
               </BoardFigure>
             </div>
@@ -100,7 +121,14 @@ export function MicroscopeSection() {
                 </span>
                 <h3>{t(`phases.${id}.title`)}</h3>
                 <p>{t(`phases.${id}.body`)}</p>
-                <div className="lab-ann">{t(`phases.${id}.note`)}</div>
+                <div className="lab-ann">
+                  {t(`phases.${id}.note`, {
+                    correct: SPECIMEN_SCORE.correct,
+                    total: SPECIMEN_SCORE.total,
+                    accuracy: SPECIMEN_SCORE.accuracy,
+                  })}
+                  {id === "encode" && <GroupSentences />}
+                </div>
               </article>
             ))}
           </div>

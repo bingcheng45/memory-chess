@@ -281,44 +281,67 @@
       },
       "method": {
         "title": "A round, under the microscope.",
-        "lede": "Scroll through the five phases of a single round. The diagram updates with each step. The overlays are illustrations of the method, not recordings of anyone's attention.",
+        "lede": "Scroll through one round on a real position: the end of Kasparov's Immortal, Kasparov against Topalov at Wijk aan Zee in 1999. The overlays show one way to memorise it, not a recording of anyone's attention.",
         "status": "Phase {number} / {name}",
         "clock": "t = {seconds}s",
-        "chunkCorner": "A · Corner ×5",
-        "chunkPair": "B · File pair ×2",
-        "chunkLone": "C · Lone ×1",
-        "chunkGroupA": "A",
         "scoreChip": "{correct} of {total} squares",
+        "countChip": "White {white} · Black {black}",
+        "groups": {
+          "standoff": {
+            "name": "Stand-off",
+            "sentence": "The white king bites the rook on d2. The black king and the c3 pawn hold it."
+          },
+          "mirror": {
+            "name": "Stairs",
+            "sentence": "Mirror stairs, h2 up to f4, h7 down to f5."
+          },
+          "longShots": {
+            "name": "Long shots",
+            "sentence": "Queen on a7 stares down the seventh rank at h7. Rook on d2 stares down the second at h2."
+          }
+        },
         "phases": {
           "study": {
             "name": "Study",
-            "title": "Look for how pieces relate.",
-            "body": "A random position appears with a countdown. Do not try to read eight pieces one at a time. Look for pieces that touch, share a file or rank, or sit together in a corner.",
-            "note": "Fig. overlay: dashed lines join pieces that relate. A piece with no line is on its own."
+            "title": "Eleven pieces, ten seconds.",
+            "body": "This is the final position of Kasparov's Immortal, after 44.Qa7. Topalov resigned here. Do not read the squares one by one. In de Groot's experiments, masters reproduced a briefly shown game position far better than weaker players. The rest of this round shows one way to see the structure in it.",
+            "note": "Fig. White: king c1, queen a7, pawns f4, g3, h2. Black: king e1, rook d2, pawns c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Anchors",
+            "title": "Start with the kings.",
+            "body": "Fix two points before anything else. Black's king has run the whole board to e1, White's home row. Both kings sit on the first rank, two files apart. Every other piece can now be placed relative to them.",
+            "note": "Fig. the two kings ringed. Everything else waits."
           },
           "chunk": {
             "name": "Chunk",
-            "title": "Eight pieces become three groups.",
-            "body": "Because the position is random, groups come from geometry: a cluster in a corner, a pair on a file, a piece alone. One chess-memory study estimates that people hold no more than about three chunks at a time, so three groups is a sensible target. One way to hold them is to name each one, for example “corner five”, “d-file pair”, “lone king”.",
-            "note": "A is a corner cluster of 5. B is a pair on the d-file. C is the black king on c4. A chess player would call A a castled shield and B a battery. Three groups to hold, not eight."
+            "title": "Eleven pieces become three ideas.",
+            "body": "Group pieces by what they do to each other. The kings fight over the rook on d2. Two pawn staircases meet head-on. The queen and the rook each aim at an h-pawn nobody guards. Chase and Simon (1973) found that strong players recall positions in chunks, and that pieces placed together tend to attack, defend or stand beside each other. On random positions their advantage largely disappeared.",
+            "note": "Fig. orange arrows attack, blue arrows defend, grey lines join a pawn chain, and the bar marks two pawns blocking each other. The rook on d2 sits in two groups. That overlap ties them together."
+          },
+          "encode": {
+            "name": "Encode",
+            "title": "Turn each group into a sentence.",
+            "body": "Name each group by its job, then say what it does in one sentence. Gobet and Simon (1996) describe strong players holding larger, schema-like structures they call templates. Naming a group by its role borrows that idea. The sentences themselves are a technique, not a research finding.",
+            "note": "Fig. the three groups, named. Their sentences:"
           },
           "blank": {
             "name": "Blank",
             "title": "The board clears.",
-            "body": "No pieces, no hints. Just the grid. This is the moment the round actually measures: what survived in your head after the image is gone.",
-            "note": "Nothing to do here but hold the three groups. Repeating their names is one way to do it."
+            "body": "No pieces, no hints. Rebuild from the sentences, not from a picture. Say them in order: the kings first, then each group.",
+            "note": "Nothing to do here but hold three sentences."
           },
           "rebuild": {
             "name": "Rebuild",
-            "title": "Rebuild one group at a time.",
-            "body": "Pick a piece and tap the square where it belongs. Finish a group before you start the next. In a classic chess-recall study, players put pieces back in quick bursts separated by longer pauses, which the researchers read as the gaps between chunks. Submit when you are done.",
-            "note": "Fig. the rebuilt board before it is checked. Nothing is marked until you submit."
+            "title": "Rebuild group by group.",
+            "body": "Kings. The stand-off. The stairs. The long shots. Place each group with its sentence before you start the next.",
+            "note": "Fig. the rebuild before it is checked. One pawn is on the wrong square. Can you see which?"
           },
           "score": {
             "name": "Score",
-            "title": "Read the result. Run it again.",
-            "body": "You get an accuracy score from 0 to 100% the moment you submit. Ask which group each miss came from. Here group A held except the knight, which landed one file off.",
-            "note": "Mint is correct. Orange fill is a wrong placement (knight on e3). Orange ring is the square it belonged on (f3). 7 of 8 squares is 88%. Your next round decides whether that was a fluke."
+            "title": "Check it against your sentences, then score.",
+            "body": "Re-derive each relation on the rebuilt board. Is the rook still held twice? From c2 the pawn guards d1, not d2, so one piece is wrong. Count the sides, five and six. The count matches, so only the relation check catches the slip. Fix it, then submit.",
+            "note": "Fig. mint arrows still hold, the red one broke. Orange fill is the wrong square (c2), orange ring is where the pawn belonged (c3). {correct} of {total} squares is {accuracy}%."
           }
         }
       },

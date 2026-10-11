@@ -461,6 +461,7 @@
     "staleNote": "Dernière partie il y a {count, plural, one {# jour} many {# jours} other {# jours}}. Les chiffres ainsi marqués datent de ce moment.",
     "play": "Jouer une partie",
     "playAt": "Jouer {pieceCount} pièces, {memorizeSeconds} s",
+    "tomorrow": "Revenez demain.",
     "choose": "En choisir un dans l’historique complet",
     "notYet": "Rien pour l’instant.",
     "notSet": "Pas encore défini.",

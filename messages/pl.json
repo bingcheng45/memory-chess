@@ -461,6 +461,7 @@
     "staleNote": "Ostatnia gra {count, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} temu. Tak oznaczone liczby pochodzą z tamtego czasu.",
     "play": "Zagraj rundę",
     "playAt": "Zagraj {pieceCount} figur, {memorizeSeconds} s",
+    "tomorrow": "Wróć jutro.",
     "choose": "Wybierz go w pełnym dzienniku",
     "notYet": "Jeszcze nic.",
     "notSet": "Jeszcze nie ustawiono.",

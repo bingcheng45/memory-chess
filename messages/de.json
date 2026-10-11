@@ -461,6 +461,7 @@
     "staleNote": "Zuletzt gespielt vor {count, plural, one {# Tag} other {# Tagen}}. So markierte Werte stammen von damals.",
     "play": "Eine Runde spielen",
     "playAt": "{pieceCount} Figuren, {memorizeSeconds} s spielen",
+    "tomorrow": "Komm morgen wieder.",
     "choose": "Im vollständigen Bericht auswählen",
     "notYet": "Noch nichts.",
     "notSet": "Noch nicht festgelegt.",

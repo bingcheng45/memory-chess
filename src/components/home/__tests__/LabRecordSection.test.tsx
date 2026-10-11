@@ -94,7 +94,7 @@ describe("LabRecordSection", () => {
     renderWithIntl(<LabRecordSection record={record(rounds(2, 1))} />);
 
     expect(within(panel("Accuracy over time")).getByText("3 more rounds at 4 pieces, 10 s, at least one on another day, draws your game trend.")).toBeInTheDocument();
-    expect(within(panel("Days in a row")).getByText("Play on 1 more day to read your streak.")).toBeInTheDocument();
+    expect(panel("Days in a row").querySelector(".lab-need")?.textContent).toBe("Play on 1 more day to read your streak. Come back tomorrow.");
     expect(within(panel("Recall by piece type")).getByText("About 18 more rounds until a piece other than the king has 20 sightings.")).toBeInTheDocument();
     expect(within(panel("Personal bests")).getByText("Game · 4 pieces · 10 s")).toBeInTheDocument();
     expect(within(panel("Personal bests")).getByText("100% · rebuilt in 15.0 s")).toBeInTheDocument();

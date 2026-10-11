@@ -461,6 +461,7 @@
     "staleNote": "마지막 플레이는 {count, plural, other {#일}} 전입니다. 이렇게 표시된 수치는 그때의 것입니다.",
     "play": "한 라운드 플레이",
     "playAt": "{pieceCount}개, {memorizeSeconds}초로 플레이",
+    "tomorrow": "내일 다시 오세요.",
     "choose": "전체 기록에서 선택",
     "notYet": "아직 없습니다.",
     "notSet": "아직 설정하지 않았습니다.",

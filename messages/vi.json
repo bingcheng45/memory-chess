@@ -461,6 +461,7 @@
     "staleNote": "Lần chơi gần nhất cách đây {count, plural, other {# ngày}}. Các chỉ số được đánh dấu như vậy là từ lúc đó.",
     "play": "Chơi một ván",
     "playAt": "Chơi {pieceCount} quân, {memorizeSeconds} giây",
+    "tomorrow": "Hãy quay lại vào ngày mai.",
     "choose": "Chọn trong toàn bộ hồ sơ",
     "notYet": "Chưa có gì.",
     "notSet": "Chưa đặt.",

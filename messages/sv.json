@@ -461,6 +461,7 @@
     "staleNote": "Senast spelat för {count, plural, one {# dag} other {# dagar}} sedan. Siffror märkta så är från då.",
     "play": "Spela en runda",
     "playAt": "Spela {pieceCount} pjäser, {memorizeSeconds} s",
+    "tomorrow": "Kom tillbaka i morgon.",
     "choose": "Välj ett i hela journalen",
     "notYet": "Inget ännu.",
     "notSet": "Inte valt ännu.",

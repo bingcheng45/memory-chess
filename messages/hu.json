@@ -461,6 +461,7 @@
     "staleNote": "Utoljára {count, plural, one {# napja} other {# napja}} játszottál. Az így jelölt értékek akkoriak.",
     "play": "Játssz egy kört",
     "playAt": "Játssz {pieceCount} bábuval, {memorizeSeconds} mp",
+    "tomorrow": "Gyere vissza holnap.",
     "choose": "Válassz egyet a teljes jegyzőkönyvben",
     "notYet": "Még semmi.",
     "notSet": "Még nincs beállítva.",

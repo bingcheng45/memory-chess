@@ -461,6 +461,7 @@
     "staleNote": "आखिरी बार {count, plural, one {# दिन} other {# दिन}} पहले खेला। इस तरह चिह्नित आंकड़े उसी समय के हैं।",
     "play": "एक राउंड खेलें",
     "playAt": "{pieceCount} मोहरे, {memorizeSeconds} से. खेलें",
+    "tomorrow": "कल फिर आइए।",
     "choose": "पूरे रिकॉर्ड में चुनें",
     "notYet": "अभी कुछ नहीं।",
     "notSet": "अभी तय नहीं।",

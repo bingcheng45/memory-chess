@@ -461,6 +461,7 @@
     "staleNote": "Ultima rundă acum {count, plural, one {# zi} few {# zile} other {# de zile}}. Cifrele marcate astfel sunt de atunci.",
     "play": "Joacă o rundă",
     "playAt": "Joacă {pieceCount} piese, {memorizeSeconds} s",
+    "tomorrow": "Revino mâine.",
     "choose": "Alege unul în jurnalul complet",
     "notYet": "Nimic deocamdată.",
     "notSet": "Nesetat încă.",

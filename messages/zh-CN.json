@@ -461,6 +461,7 @@
     "staleNote": "上次游戏是 {count, plural, other {# 天}}前。带此标记的数据来自那时。",
     "play": "玩一回合",
     "playAt": "玩 {pieceCount} 子、{memorizeSeconds} 秒",
+    "tomorrow": "明天再来吧。",
     "choose": "在完整记录中选择",
     "notYet": "暂无。",
     "notSet": "尚未设置。",

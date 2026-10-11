@@ -461,6 +461,7 @@
     "staleNote": "Sist spilt for {count, plural, one {# dag} other {# dager}} siden. Tall merket slik er fra da.",
     "play": "Spill en runde",
     "playAt": "Spill {pieceCount} brikker, {memorizeSeconds} s",
+    "tomorrow": "Kom tilbake i morgen.",
     "choose": "Velg en i hele journalen",
     "notYet": "Ingenting ennå.",
     "notSet": "Ikke valgt ennå.",

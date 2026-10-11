@@ -461,6 +461,7 @@
     "staleNote": "En son {count, plural, one {# gün} other {# gün}} önce oynadın. Böyle işaretlenen değerler o zamana ait.",
     "play": "Bir tur oyna",
     "playAt": "{pieceCount} taş, {memorizeSeconds} sn oyna",
+    "tomorrow": "Yarın tekrar gel.",
     "choose": "Kaydın tamamında birini seç",
     "notYet": "Henüz bir şey yok.",
     "notSet": "Henüz ayarlanmadı.",

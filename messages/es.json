@@ -461,6 +461,7 @@
     "staleNote": "Última partida hace {count, plural, one {# día} many {# días} other {# días}}. Las cifras así marcadas son de entonces.",
     "play": "Jugar una ronda",
     "playAt": "Jugar {pieceCount} piezas, {memorizeSeconds} s",
+    "tomorrow": "Vuelve mañana.",
     "choose": "Elige uno en el registro completo",
     "notYet": "Todavía nada.",
     "notSet": "Aún sin definir.",

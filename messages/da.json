@@ -461,6 +461,7 @@
     "staleNote": "Sidst spillet for {count, plural, one {# dag} other {# dage}} siden. Tal markeret sådan er fra dengang.",
     "play": "Spil en runde",
     "playAt": "Spil {pieceCount} brikker, {memorizeSeconds} s",
+    "tomorrow": "Kom tilbage i morgen.",
     "choose": "Vælg en i hele journalen",
     "notYet": "Intet endnu.",
     "notSet": "Ikke valgt endnu.",

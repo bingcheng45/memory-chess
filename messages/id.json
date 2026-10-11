@@ -461,6 +461,7 @@
     "staleNote": "Terakhir bermain {count, plural, other {# hari}} lalu. Angka yang ditandai begini berasal dari saat itu.",
     "play": "Mainkan satu ronde",
     "playAt": "Main {pieceCount} bidak, {memorizeSeconds} dtk",
+    "tomorrow": "Kembali lagi besok.",
     "choose": "Pilih di catatan lengkap",
     "notYet": "Belum ada.",
     "notSet": "Belum diatur.",

@@ -461,6 +461,7 @@
     "staleNote": "Naposledy hráno před {count, plural, one {# dnem} few {# dny} many {# dne} other {# dny}}. Takto označená čísla jsou z té doby.",
     "play": "Zahrát kolo",
     "playAt": "Zahrát {pieceCount} figur, {memorizeSeconds} s",
+    "tomorrow": "Vrať se zítra.",
     "choose": "Vyber si ho v celém záznamu",
     "notYet": "Zatím nic.",
     "notSet": "Zatím nenastaveno.",

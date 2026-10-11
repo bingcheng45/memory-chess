@@ -461,6 +461,7 @@
     "staleNote": "Pelattu viimeksi {count, plural, one {# päivä} other {# päivää}} sitten. Näin merkityt luvut ovat silloisia.",
     "play": "Pelaa kierros",
     "playAt": "Pelaa {pieceCount} nappulaa, {memorizeSeconds} s",
+    "tomorrow": "Palaa huomenna.",
     "choose": "Valitse se koko päiväkirjassa",
     "notYet": "Ei vielä mitään.",
     "notSet": "Ei vielä asetettu.",

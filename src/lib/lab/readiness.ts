@@ -52,6 +52,8 @@ export interface Readiness {
   readonly state: ReadinessState;
   readonly sampleSize: number;
   readonly need?: Need;
+  /** Warming on days alone with today already played, so no round today closes the gap. */
+  readonly waitsForTomorrow?: true;
 }
 
 interface ReadinessInput {
@@ -83,7 +85,11 @@ export function readinessOf({ sampleSize, played = sampleSize, have, thresholds,
     const gap = (thresholds[key] ?? 0) - (have[key] ?? 0);
     return gap > 0 ? [[key, gap] as const] : [];
   });
-  if (missing.length > 0) return { state: "warming", sampleSize, need: Object.fromEntries(missing) };
+  if (missing.length > 0) {
+    const need = Object.fromEntries(missing);
+    const waitsForTomorrow = missing.every(([key]) => key === "days") && today !== "" && lastDay === today;
+    return { state: "warming", sampleSize, need, ...(waitsForTomorrow && { waitsForTomorrow }) };
+  }
   const stale = today !== "" && lastDay !== null && daysBetween(lastDay, today) >= LAB_THRESHOLDS.staleDays;
   return { state: stale ? "stale" : "ready", sampleSize };
 }

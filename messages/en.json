@@ -698,6 +698,7 @@
         "fromRounds": "From {count, plural, one {# round} other {# rounds}}",
         "dashboardLink": "See every figure on one page",
         "play": "Play a round",
+        "tomorrow": "Come back tomorrow.",
         "stale": "Last played {count, plural, one {# day} other {# days}} ago.",
         "unlock": {
           "label": "Still to unlock",
@@ -1251,6 +1252,7 @@
     "staleNote": "Last played {count, plural, one {# day} other {# days}} ago. Figures marked so are from then.",
     "play": "Play a round",
     "playAt": "Play {pieceCount} pieces, {memorizeSeconds} s",
+    "tomorrow": "Come back tomorrow.",
     "choose": "Choose one in the full record",
     "notYet": "Nothing yet.",
     "notSet": "Not set yet.",

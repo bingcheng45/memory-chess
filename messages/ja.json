@@ -461,6 +461,7 @@
     "staleNote": "最後のプレイは{count, plural, other {#日}}前です。この印の数値はその時点のものです。",
     "play": "1ラウンド遊ぶ",
     "playAt": "{pieceCount}駒・{memorizeSeconds}秒で遊ぶ",
+    "tomorrow": "また明日どうぞ。",
     "choose": "記録の全体で選ぶ",
     "notYet": "まだありません。",
     "notSet": "まだ設定されていません。",

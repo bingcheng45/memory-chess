@@ -3,7 +3,7 @@
 import { useRef, type ReactNode } from 'react';
 
 import { useElementSize } from '@/hooks/useElementSize';
-import { MIN_BOARD_SIZE, MIN_ROW_WIDTH } from '@/lib/layout';
+import { MAX_BOARD_SIZE, MIN_BOARD_SIZE, MIN_ROW_WIDTH } from '@/lib/layout';
 import { boardSizeForArea } from './ResponsiveChessBoard';
 
 import { useTranslations } from "next-intl";
@@ -128,11 +128,16 @@ export default function ActiveGameLayout({
    *
    * Capping the area at the board collects the surplus outside the group
    * instead, where the column's centring shares it above and below the whole
-   * thing. Reading the height back gives the same figure, so this settles
-   * rather than oscillating.
+   * thing.
+   *
+   * The cap is the area's width, the most a square there can use, not the
+   * board's last measured size. That size came from the previous height, so
+   * the area could follow the screen down but never grow back after a
+   * rotation. `contain: size` likewise keeps the board's own pixel height from
+   * holding the area open when the screen gets shorter.
    */
-  const boardAreaStyle = boardSize
-    ? { maxHeight: `${boardSize}px` }
+  const boardAreaStyle = boardArea.width
+    ? { maxHeight: `${Math.min(boardArea.width, MAX_BOARD_SIZE)}px` }
     : undefined;
 
   return (
@@ -161,7 +166,7 @@ export default function ActiveGameLayout({
           than pushing the page taller. */}
       <div
         ref={boardAreaRef}
-        className="flex min-h-0 w-full flex-1 items-center justify-center"
+        className="flex min-h-0 w-full flex-1 items-center justify-center [contain:size]"
         style={boardAreaStyle}
       >
         {board}

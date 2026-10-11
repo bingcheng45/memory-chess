@@ -701,6 +701,8 @@
           "label": "Still to unlock",
           "count": "{unlocked} of {total} figures unlocked",
           "done": "Every figure below is unlocked.",
+          "showAll": "Show all {count} figures",
+          "showFewer": "Show fewer",
           "span": "{qualifyingRounds, plural, one {# round} other {# rounds}} at {accuracy}%+ with {minPieces}+ pieces",
           "piecesHeld": "{rounds, plural, one {# round} other {# rounds}} over {days, plural, one {# day} other {# days}}",
           "trend": "{rounds, plural, one {# round} other {# rounds}} at one setting over {days, plural, one {# day} other {# days}}",

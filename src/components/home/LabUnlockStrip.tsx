@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useId, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { LabResults } from "@/lib/lab/metrics";
 import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
@@ -11,6 +11,9 @@ import { LabPlayLink } from "./LabPlayLink";
 import { figureOf } from "./LabRecordPanels";
 import { settingValues } from "./labFormat";
 import { LabWelcome } from "./LabWelcome";
+
+/** Phones list the next three locked figures and fold the rest behind a toggle, as Fig. 6.14 does (lab-instruments.css). */
+const SHOWN_NARROW = 3;
 
 const roundsAndDays = ({ rounds = 0, days = 0 }: Need) => (rounds > 0 && days > 0 ? "RoundsDays" : rounds > 0 ? "Rounds" : "Days");
 
@@ -37,6 +40,8 @@ export function LabUnlockStrip({ results, storage, welcome }: { results: LabResu
   const record = useTranslations("home.lab.record");
   const t = useTranslations("home.lab.record.unlock");
   const unlocks = unlocksFor(results);
+  const listId = useId();
+  const [expanded, setExpanded] = useState(false);
 
   const text = ({ metric, started, need }: Unlock) => {
     const setting = metric === "speed" ? results.speed.value?.setting : results.trend.value?.setting;
@@ -69,14 +74,19 @@ export function LabUnlockStrip({ results, storage, welcome }: { results: LabResu
         </div>
         <p className="lab-unlock-count">{t("count", { unlocked: UNLOCK_ORDER.length - unlocks.length, total: UNLOCK_ORDER.length })}</p>
         {/* Keyed by whether the record has arrived: a line rewrapped in place moved every line below it, a layout shift. */}
-        <ul aria-labelledby="lab-unlock-label" key={unlocks.some(({ started }) => started) ? "mine" : "sample"}>
-          {unlocks.map((unlock) => (
-            <li key={unlock.metric}>
+        <ul id={listId} aria-labelledby="lab-unlock-label" key={unlocks.some(({ started }) => started) ? "mine" : "sample"}>
+          {unlocks.map((unlock, index) => (
+            <li key={unlock.metric} data-older={!expanded && index >= SHOWN_NARROW ? "narrow" : undefined}>
               <span>{record(`${ROWS[unlock.metric].fig}.fig`, { number: figureOf(unlock.metric) })}</span>
               <span>{text(unlock)}</span>
             </li>
           ))}
         </ul>
+        {unlocks.length > SHOWN_NARROW && (
+          <button type="button" className="lab-unlock-toggle" aria-expanded={expanded} aria-controls={listId} data-shown="narrow" onClick={() => setExpanded(!expanded)}>
+            {expanded ? t("showFewer") : t("showAll", { count: unlocks.length })}
+          </button>
+        )}
       </>
     );
 

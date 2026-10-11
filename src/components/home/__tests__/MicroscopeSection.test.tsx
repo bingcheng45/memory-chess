@@ -119,7 +119,7 @@ describe("MicroscopeSection", () => {
     expect(within(figure(container)).getByText("1 · Stand-off")).toBeInTheDocument();
     expect(within(figure(container)).getByText("2 · Stairs")).toBeInTheDocument();
     expect(within(figure(container)).getByText("3 · Long shots")).toBeInTheDocument();
-    expect(screen.getByText(/The white king bites the rook on d2/)).toBeInTheDocument();
+    expect(screen.getByText(/White's king hits d2/)).toBeInTheDocument();
     expect(screen.getByText(/Mirror stairs, h2 up to f4, h7 down to f5/)).toBeInTheDocument();
   });
 

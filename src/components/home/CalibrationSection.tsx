@@ -64,7 +64,6 @@ interface PhaseControls {
   readonly second: RoundControl;
   readonly primary: "first" | "second";
   readonly clearEnabled: boolean;
-  readonly hint: "studyHint" | null;
 }
 
 const SUBMIT_OFF: RoundControl = { label: "submit", intent: "submit", enabled: false };
@@ -75,28 +74,24 @@ const ROUND_CONTROLS = {
     second: SUBMIT_OFF,
     primary: "first",
     clearEnabled: false,
-    hint: null,
   },
   study: {
     first: { label: "done", intent: "endStudy", enabled: true },
     second: SUBMIT_OFF,
     primary: "first",
     clearEnabled: false,
-    hint: "studyHint",
   },
   rebuild: {
     first: { label: "restart", intent: "start", enabled: true },
     second: { label: "submit", intent: "submit", enabled: true },
     primary: "second",
     clearEnabled: true,
-    hint: null,
   },
   scored: {
     first: { label: "again", intent: "start", enabled: true },
     second: SUBMIT_OFF,
     primary: "first",
     clearEnabled: false,
-    hint: null,
   },
 } as const satisfies Record<RoundState["phase"], PhaseControls>;
 
@@ -197,7 +192,6 @@ export function CalibrationSection() {
         className={`lab-btn ${primary ? "lab-btn-primary" : "lab-btn-secondary"}`}
         data-primary={primary || undefined}
         disabled={!control.enabled || (control.intent === "start" && starting)}
-        aria-describedby={control.label === "done" ? "cal-hint" : undefined}
         onClick={press[control.intent]}
       >
         {primary && <span className="lab-dot" aria-hidden="true" />}
@@ -238,9 +232,6 @@ export function CalibrationSection() {
                 {renderControl("second")}
               </div>
             </div>
-            <p className="lab-note lab-cal-hint" id="cal-hint">
-              {controls.hint && t(controls.hint)}
-            </p>
             <p className="lab-sr" aria-live="polite">
               {announcement}
             </p>

@@ -6,15 +6,15 @@
       "heading": "Kierroksen kolme vaihetta",
       "memorize": {
         "title": "Mieleenpainaminen",
-        "body": "Asema ilmestyy koko laudalle määrätyksi sekuntimääräksi. Mikään ei liiku eikä mitään piiloteta. Voit päättää vaiheen etuajassa Ohita-painikkeella, ja kello kirjaa sen, kuinka kauan oikeasti katsoit, ei sitä aikaa, joka sinulle annettiin."
+        "body": "Asema ilmestyy koko laudalle määrätyksi sekuntimääräksi. Mikään ei liiku eikä mitään piiloteta. Voit päättää vaiheen etuajassa Valmis-painikkeella, ja kello kirjaa sen, kuinka kauan oikeasti katsoit, ei sitä aikaa, joka sinulle annettiin."
       },
       "place": {
         "title": "Asettelu",
-        "body": "Lauta tyhjenee. Valitset nappulan tyypin ja värin ja napautat sitten ruutua asettaaksesi nappulan tai napautat sitä uudelleen ottaaksesi nappulan pois. Aikarajaa ei ole, mutta kello käy siitä hetkestä, kun lauta tyhjenee, siihen asti, kun lähetät vastauksesi."
+        "body": "Lauta tyhjenee. Valitset nappulan valikoimasta ja napautat sitten ruutua asettaaksesi sen tai napautat sitä uudelleen ottaaksesi nappulan pois. Aikarajaa ei ole, mutta kello käy siitä hetkestä, kun lauta tyhjenee, siihen asti, kun lähetät vastauksesi."
       },
       "score": {
         "title": "Pisteytys",
-        "body": "Lautaasi verrataan ruutu ruudulta alkuperäiseen. Näet, mitkä nappulat olivat oikein, mitkä väärin ja mitkä jäivät puuttumaan, sinulle näytetyn aseman kanssa, leveillä näytöillä rinnakkain ja kapeilla allekkain."
+        "body": "Lautaasi verrataan ruutu ruudulta alkuperäiseen. Oikeat ruudut ja väärät nappulat merkitään laudalle, ja puuttumaan jääneet nappulat näkyvät himmeinä siellä, missä ne olivat, ja vieressä näet tulokset eli tarkkuutesi ja muistamisesi nappulatyypeittäin."
       }
     },
     "presets": {

@@ -288,6 +288,47 @@
       "sendFailed": "의견을 보내지 못했습니다. 다시 시도하시거나 ‘나중에’를 선택해 주세요.",
       "send": "의견 보내기",
       "sending": "보내는 중…"
+    },
+    "round": {
+      "start": "시작",
+      "done": "완료",
+      "restart": "다시 시작",
+      "again": "다시 하기",
+      "submit": "제출",
+      "clear": "보드 비우기",
+      "controlsLabel": "라운드 조작",
+      "boardLabel": "보드. 화살표 키로 칸 사이를 이동하세요.",
+      "paletteLabel": "기물 팔레트",
+      "squareEmpty": "{square}, 빈 칸",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "국면을 외우세요",
+      "phaseRebuild": "기물 배치하기",
+      "liveStudy": "국면을 살펴보세요. {memorizeSeconds}초.",
+      "liveRebuild": "보드를 비웠습니다. 기물을 고른 다음 칸을 고르세요.",
+      "liveScore": "정확도 {accuracy}퍼센트. {total}칸 중 {correct}칸 정답.",
+      "readout": {
+        "title": "결과",
+        "statusIdle": "라운드 대기 중",
+        "statusRecording": "기록 중",
+        "statusDone": "라운드 완료",
+        "correct": "맞힌 칸",
+        "time": "배치 시간",
+        "wrong": "틀린 기물",
+        "exposure": "암기 시간",
+        "byType": "기물 종류별 기억률",
+        "byTypeEmpty": "기물 종류별 기억률은 라운드가 끝나면 여기에 표시됩니다.",
+        "legendCorrect": "정답",
+        "legendWrong": "잘못 배치",
+        "legendMissed": "놓친 칸"
+      },
+      "pieceTypes": {
+        "king": "킹",
+        "queen": "퀸",
+        "rook": "룩",
+        "bishop": "비숍",
+        "knight": "나이트",
+        "pawn": "폰"
+      }
     }
   },
   "leaderboard": {

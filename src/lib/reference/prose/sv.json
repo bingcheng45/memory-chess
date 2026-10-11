@@ -6,15 +6,15 @@
       "heading": "Omgångens tre faser",
       "memorize": {
         "title": "Memorera",
-        "body": "En ställning visas på ett fullt bräde under ett bestämt antal sekunder. Inget rör sig och inget är dolt. Du kan avsluta fasen i förtid med Hoppa över, och klockan registrerar hur länge du faktiskt tittade, inte hur lång tid du fick."
+        "body": "En ställning visas på ett fullt bräde under ett bestämt antal sekunder. Inget rör sig och inget är dolt. Du kan avsluta fasen i förtid med Klar, och klockan registrerar hur länge du faktiskt tittade, inte hur lång tid du fick."
       },
       "place": {
         "title": "Placera",
-        "body": "Brädet töms. Du väljer pjästyp och färg, trycker på en ruta för att sätta ner en pjäs och trycker på den igen för att ta bort den. Här finns ingen tidsgräns, men klockan går från det att brädet töms tills du skickar in."
+        "body": "Brädet töms. Du väljer en pjäs i paletten, trycker på en ruta för att sätta ner den och trycker på den igen för att ta bort den. Här finns ingen tidsgräns, men klockan går från det att brädet töms tills du skickar in."
       },
       "score": {
         "title": "Poäng",
-        "body": "Ditt bräde jämförs ruta för ruta med originalet. Du ser vilka pjäser som var rätt, vilka som var fel och vilka du missade, tillsammans med ställningen du fick se, sida vid sida på breda skärmar och under varandra på smala."
+        "body": "Ditt bräde jämförs ruta för ruta med originalet. Rätta rutor och felaktiga pjäser markeras på brädet, och pjäserna du missade syns svagt där de stod, bredvid ett resultat med din träffsäkerhet och hur väl du mindes varje pjästyp."
       }
     },
     "presets": {

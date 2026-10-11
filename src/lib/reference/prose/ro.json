@@ -6,15 +6,15 @@
       "heading": "Cele trei faze ale unei runde",
       "memorize": {
         "title": "Memorează",
-        "body": "O poziție apare pe o tablă întreagă pentru un număr fix de secunde. Nimic nu se mișcă și nimic nu este ascuns. Poți încheia faza mai devreme cu Sari peste, iar cronometrul reține cât ai privit de fapt, nu timpul care ți s-a acordat."
+        "body": "O poziție apare pe o tablă întreagă pentru un număr fix de secunde. Nimic nu se mișcă și nimic nu este ascuns. Poți încheia faza mai devreme cu Gata, iar cronometrul reține cât ai privit de fapt, nu timpul care ți s-a acordat."
       },
       "place": {
         "title": "Așază piesele",
-        "body": "Tabla se golește. Alegi un tip de piesă și o culoare, apoi atingi un pătrat ca să așezi piesa sau îl atingi din nou ca să o iei înapoi. Aici nu există limită de timp, dar cronometrul merge din momentul în care tabla se golește până când trimiți răspunsul."
+        "body": "Tabla se golește. Alegi o piesă din paletă, apoi atingi un pătrat ca să o așezi sau îl atingi din nou ca să o iei înapoi. Aici nu există limită de timp, dar cronometrul merge din momentul în care tabla se golește până când trimiți răspunsul."
       },
       "score": {
         "title": "Primește scorul",
-        "body": "Tabla ta este comparată pătrat cu pătrat cu originalul. Vezi care piese au fost corecte, care au fost greșite și care ți-au scăpat, împreună cu poziția care ți s-a arătat, alăturate pe ecranele late și una sub alta pe cele înguste."
+        "body": "Tabla ta este comparată pătrat cu pătrat cu originalul. Pătratele corecte și piesele greșite sunt marcate pe tablă, iar piesele care ți-au scăpat apar estompat acolo unde stăteau, alături de rezultatele cu precizia ta și cât ți-ai amintit din fiecare tip de piesă."
       }
     },
     "presets": {

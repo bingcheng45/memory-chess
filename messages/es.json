@@ -288,6 +288,47 @@
       "sendFailed": "No hemos podido enviar tus comentarios. Inténtalo de nuevo o elige Ahora no.",
       "send": "Enviar comentarios",
       "sending": "Enviando..."
+    },
+    "round": {
+      "start": "Empezar",
+      "done": "Listo",
+      "restart": "Reiniciar",
+      "again": "Otra partida",
+      "submit": "Enviar",
+      "clear": "Vaciar tablero",
+      "controlsLabel": "Controles de la ronda",
+      "boardLabel": "Tablero. Usa las flechas para moverte entre casillas.",
+      "paletteLabel": "Paleta de piezas",
+      "squareEmpty": "{square}, vacía",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Memoriza la posición",
+      "phaseRebuild": "Coloca las piezas",
+      "liveStudy": "Estudia la posición. {memorizeSeconds} segundos.",
+      "liveRebuild": "Tablero vacío. Elige una pieza y luego una casilla.",
+      "liveScore": "Precisión del {accuracy} por ciento. {correct} de {total} casillas correctas.",
+      "readout": {
+        "title": "Resultados",
+        "statusIdle": "Esperando ronda",
+        "statusRecording": "Registrando",
+        "statusDone": "Ronda completada",
+        "correct": "Casillas correctas",
+        "time": "Tiempo de colocación",
+        "wrong": "Piezas incorrectas",
+        "exposure": "Tiempo de estudio",
+        "byType": "Recuerdo por tipo de pieza",
+        "byTypeEmpty": "El recuerdo por tipo de pieza aparece aquí al terminar la ronda.",
+        "legendCorrect": "correcta",
+        "legendWrong": "mal colocada",
+        "legendMissed": "casilla omitida"
+      },
+      "pieceTypes": {
+        "king": "Rey",
+        "queen": "Dama",
+        "rook": "Torre",
+        "bishop": "Alfil",
+        "knight": "Caballo",
+        "pawn": "Peón"
+      }
     }
   },
   "leaderboard": {

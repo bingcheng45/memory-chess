@@ -5,6 +5,7 @@ import { makeArticle } from "@/lib/articles/__tests__/fixtures";
 import { tileArticleOf } from "@/lib/articles/tile";
 import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
 import type { BoardCutoff, LeaderboardCutoffs } from "@/lib/leaderboard/ranking";
+import { scoredRound } from "@/test-utils/round";
 import type { SetBoard } from "@/lib/types/game";
 
 const baseGameState = {
@@ -26,10 +27,12 @@ const baseGameState = {
   userPosition: "8/8/8/8/8/8/8/P7 w - - 0 1",
 };
 
+const mockRound = scoredRound("4k3/8/8/8/3q4/8/PP6/4K3", "4k3/8/8/8/8/8/PP6/4K3");
+
 let mockGameState: typeof baseGameState & { board?: SetBoard } = baseGameState;
 
 jest.mock("@/lib/store/gameStore", () => ({
-  useGameStore: () => ({ gameState: mockGameState }),
+  useGameStore: () => ({ gameState: mockGameState, round: mockRound }),
 }));
 
 jest.mock("@/lib/leaderboard/cutoffsClient", () => ({
@@ -80,23 +83,6 @@ jest.mock("@/components/game/FirstGameFeedbackDialog", () => ({
   default: () => null,
 }));
 
-jest.mock("@/components/game/ResultBoardComparison", () => ({
-  __esModule: true,
-  default: ({
-    originalPosition,
-    userPosition,
-  }: {
-    originalPosition?: string;
-    userPosition?: string;
-  }) => (
-    <div
-      data-testid="result-comparison"
-      data-original={originalPosition}
-      data-submitted={userPosition}
-    />
-  ),
-}));
-
 describe("GameResult", () => {
   beforeEach(() => {
     global.fetch = jest.fn().mockResolvedValue({
@@ -122,9 +108,9 @@ describe("GameResult", () => {
     expect(
       screen.getByRole("heading", { name: "Great Job!" }),
     ).toBeInTheDocument();
-    expect(screen.getByText("80%")).toBeInTheDocument();
-    expect(screen.getAllByText("4 / 6")).toHaveLength(2);
+    expect(screen.getByText("4 / 6")).toBeInTheDocument();
     expect(screen.getByText("Recall Speed")).toBeInTheDocument();
+    expect(document.querySelector(".lab-rc-big")).toHaveTextContent("80%");
 
     const summary = screen.getByRole("region", { name: "Great Job!" });
     const actions = within(summary).getByRole("navigation", {
@@ -143,15 +129,10 @@ describe("GameResult", () => {
       within(actions).getByRole("link", { name: "View Leaderboard" }),
     ).toBeInTheDocument();
 
-    const comparison = screen.getByTestId("result-comparison");
-    expect(comparison).toHaveAttribute(
-      "data-original",
-      mockGameState.originalPosition,
-    );
-    expect(comparison).toHaveAttribute(
-      "data-submitted",
-      mockGameState.userPosition,
-    );
+    const board = document.querySelector<HTMLElement>('[data-result-board="scored"]')!;
+    expect(
+      ["a2", "e1", "d4", "h8"].map((square) => board.querySelector(`[data-coordinate="${square}"]`)?.getAttribute("data-mark") ?? null),
+    ).toEqual(["ok", "ok", "miss", null]);
 
     fireEvent.click(screen.getByRole("button", { name: "Try Again" }));
     fireEvent.click(screen.getByRole("button", { name: "New Game" }));
@@ -195,10 +176,10 @@ describe("GameResult", () => {
       const comesBeforeTile = (element: HTMLElement) =>
         Boolean(element.compareDocumentPosition(tile) & Node.DOCUMENT_POSITION_FOLLOWING);
 
-      expect(comesBeforeTile(screen.getByTestId("result-comparison"))).toBe(true);
+      expect(comesBeforeTile(document.querySelector<HTMLElement>('[data-result-board="scored"]')!)).toBe(true);
       expect(
         ["Try Again", "New Game", "Submit to Leaderboard", "View Leaderboard"].map((name) =>
-          comesBeforeTile(screen.getByRole("button", { name })),
+          comesBeforeTile(screen.getByRole(name === "View Leaderboard" ? "link" : "button", { name })),
         ),
       ).toEqual([true, true, true, true]);
       expect(screen.getByRole("region", { name: "Great Job!" })).not.toContainElement(tile);
@@ -227,7 +208,7 @@ describe("GameResult", () => {
     it("is absent when the page was given no articles", () => {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
-      expect(screen.getByTestId("result-comparison")).toBeInTheDocument();
+      expect(document.querySelector('[data-result-board="scored"]')).not.toBeNull();
       expect(shownSlug()).toBeUndefined();
     });
   });

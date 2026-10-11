@@ -288,6 +288,47 @@
       "sendFailed": "We konden je reactie niet versturen. Probeer het opnieuw of kies Niet nu.",
       "send": "Reactie versturen",
       "sending": "Versturen…"
+    },
+    "round": {
+      "start": "Start",
+      "done": "Klaar",
+      "restart": "Opnieuw",
+      "again": "Nog een keer",
+      "submit": "Verstuur",
+      "clear": "Bord leegmaken",
+      "controlsLabel": "Rondebediening",
+      "boardLabel": "Bord. Gebruik de pijltjestoetsen om tussen velden te bewegen.",
+      "paletteLabel": "Stukkenpalet",
+      "squareEmpty": "{square}, leeg",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Onthoud de stelling",
+      "phaseRebuild": "Plaats de stukken",
+      "liveStudy": "Bekijk de stelling. {memorizeSeconds} seconden.",
+      "liveRebuild": "Bord leeggemaakt. Kies een stuk en daarna een veld.",
+      "liveScore": "Nauwkeurigheid {accuracy} procent. {correct} van {total} velden goed.",
+      "readout": {
+        "title": "Uitslag",
+        "statusIdle": "Wacht op ronde",
+        "statusRecording": "Registreert",
+        "statusDone": "Ronde voltooid",
+        "correct": "Goede velden",
+        "time": "Opbouwtijd",
+        "wrong": "Foute stukken",
+        "exposure": "Kijktijd",
+        "byType": "Herinnering per stuksoort",
+        "byTypeEmpty": "Herinnering per stuksoort verschijnt hier na de ronde.",
+        "legendCorrect": "goed",
+        "legendWrong": "verkeerd geplaatst",
+        "legendMissed": "gemist veld"
+      },
+      "pieceTypes": {
+        "king": "Koning",
+        "queen": "Dame",
+        "rook": "Toren",
+        "bishop": "Loper",
+        "knight": "Paard",
+        "pawn": "Pion"
+      }
     }
   },
   "leaderboard": {

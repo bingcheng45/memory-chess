@@ -288,6 +288,47 @@
       "sendFailed": "हम आपकी प्रतिक्रिया नहीं भेज सके। फिर कोशिश करें या “अभी नहीं” चुनें।",
       "send": "प्रतिक्रिया भेजें",
       "sending": "भेजा जा रहा है..."
+    },
+    "round": {
+      "start": "शुरू करें",
+      "done": "हो गया",
+      "restart": "फिर से शुरू",
+      "again": "फिर खेलें",
+      "submit": "सबमिट करें",
+      "clear": "बोर्ड साफ़ करें",
+      "controlsLabel": "राउंड के नियंत्रण",
+      "boardLabel": "बोर्ड। खानों के बीच जाने के लिए तीर कुंजियों का उपयोग करें।",
+      "paletteLabel": "मोहरों की पट्टी",
+      "squareEmpty": "{square}, खाली",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "स्थिति याद करें",
+      "phaseRebuild": "मोहरे रखें",
+      "liveStudy": "स्थिति को ध्यान से देखें। {memorizeSeconds} सेकंड।",
+      "liveRebuild": "बोर्ड साफ़ हो गया। एक मोहरा चुनें, फिर एक खाना।",
+      "liveScore": "सटीकता {accuracy} प्रतिशत। {total} में से {correct} खाने सही।",
+      "readout": {
+        "title": "परिणाम",
+        "statusIdle": "राउंड की प्रतीक्षा",
+        "statusRecording": "रिकॉर्ड हो रहा है",
+        "statusDone": "राउंड पूरा",
+        "correct": "सही खाने",
+        "time": "रखने का समय",
+        "wrong": "गलत मोहरे",
+        "exposure": "याद करने का समय",
+        "byType": "मोहरे के प्रकार के अनुसार याददाश्त",
+        "byTypeEmpty": "मोहरे के प्रकार के अनुसार याददाश्त राउंड के बाद यहाँ दिखेगी।",
+        "legendCorrect": "सही",
+        "legendWrong": "गलत जगह",
+        "legendMissed": "छूटा हुआ खाना"
+      },
+      "pieceTypes": {
+        "king": "राजा",
+        "queen": "वज़ीर",
+        "rook": "हाथी",
+        "bishop": "ऊँट",
+        "knight": "घोड़ा",
+        "pawn": "प्यादा"
+      }
     }
   },
   "leaderboard": {

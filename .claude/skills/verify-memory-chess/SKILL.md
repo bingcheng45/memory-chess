@@ -51,9 +51,9 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
 
 Stable handles in this app, in order of preference:
 
-- `aria-label` attributes: board squares ("e4", or "e4 with white king" when occupied), piece palette ("Select white pieces", "Select white king"), the language switcher.
-- `data-coordinate="e4"` on every board square; interactive squares also carry `role="button"`.
-- Visible English button text ("Start Training", "Skip", "Submit", "Try Again"). English is the bare-URL locale, so drive English routes unless the feature under test is localization itself.
+- `aria-label` attributes: board squares ("e4, empty", or "e4, white king" when occupied), palette pieces ("white king" inside `.lab-palette`), the eraser ("Clear board"), the language switcher.
+- `data-coordinate="e4"` on every board square, a `button`; the grid carries `data-round-phase` (`study`, `rebuild`, `scored`), and the board slot `[data-round-board]`.
+- Visible English button text ("Start Training", "Done", "Submit", "Try Again"). English is the bare-URL locale, so drive English routes unless the feature under test is localization itself.
 - There are no `data-testid` hooks in the app; do not invent selectors from Tailwind classes, they churn.
 
 ## Evidence

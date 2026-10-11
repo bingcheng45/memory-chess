@@ -288,6 +288,47 @@
       "sendFailed": "Zpětnou vazbu se nepodařilo odeslat. Zkuste to znovu nebo zvolte „Teď ne“.",
       "send": "Odeslat zpětnou vazbu",
       "sending": "Odesílání…"
+    },
+    "round": {
+      "start": "Začít",
+      "done": "Hotovo",
+      "restart": "Od začátku",
+      "again": "Hrát znovu",
+      "submit": "Odeslat",
+      "clear": "Vyčistit šachovnici",
+      "controlsLabel": "Ovládání kola",
+      "boardLabel": "Šachovnice. Mezi poli se pohybujte šipkami.",
+      "paletteLabel": "Paleta figurek",
+      "squareEmpty": "{square}, prázdné",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Zapamatujte si pozici",
+      "phaseRebuild": "Rozestavte figurky",
+      "liveStudy": "Prohlédněte si pozici. Čas: {memorizeSeconds} s.",
+      "liveRebuild": "Šachovnice je prázdná. Vyberte figurku a pak pole.",
+      "liveScore": "Přesnost {accuracy} %. Správná pole: {correct} z {total}.",
+      "readout": {
+        "title": "Výsledky",
+        "statusIdle": "Čeká na kolo",
+        "statusRecording": "Probíhá záznam",
+        "statusDone": "Kolo dokončeno",
+        "correct": "Správná pole",
+        "time": "Čas rozestavení",
+        "wrong": "Chybné figurky",
+        "exposure": "Čas na zapamatování",
+        "byType": "Úspěšnost podle druhu figurky",
+        "byTypeEmpty": "Úspěšnost podle druhu figurky se zobrazí po skončení kola.",
+        "legendCorrect": "správně",
+        "legendWrong": "špatné umístění",
+        "legendMissed": "vynechané pole"
+      },
+      "pieceTypes": {
+        "king": "Král",
+        "queen": "Dáma",
+        "rook": "Věž",
+        "bishop": "Střelec",
+        "knight": "Jezdec",
+        "pawn": "Pěšec"
+      }
     }
   },
   "leaderboard": {

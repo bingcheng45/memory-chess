@@ -6,7 +6,7 @@
  * Each shift is tagged in the page with the screen showing when it happened:
  * config, memorize, solve or result. Two loads per width: /game, where the quick
  * start button opens a round, and the home page's round link, which memorizes
- * until the clock runs out (no Skip, so the switch to solving is not an input),
+ * until the clock runs out (no Done, so the switch to solving is not an input),
  * places 4 of 6 pieces and submits. The leaderboard cutoffs answer "open" for
  * every board, so the round qualifies and the result screen shows its banner.
  * They answer when asked, as they do in the field, where the round warms them;
@@ -56,7 +56,7 @@ const CASES = [
 ];
 const SCREENS = ["config", "start", "memorize", "solve", "result"];
 const BOARD_FIT = `(() => {
-  const board = document.querySelector(".game-container");
+  const board = document.querySelector("[data-round-board]");
   const area = board.parentElement;
   let scroller = board.parentElement;
   while (scroller && !/auto|scroll/.test(getComputedStyle(scroller).overflowY)) scroller = scroller.parentElement;
@@ -73,7 +73,7 @@ const OBSERVE = `window.__shifts = [];
 new PerformanceObserver((list) => {
   const screen = document.getElementById("game-result-heading") ? "result"
     : document.querySelector("[data-game-config]") ? "config"
-    : document.querySelector('[role="button"][data-coordinate]') ? "solve" : "memorize";
+    : document.querySelector('[data-round-phase="rebuild"]') ? "solve" : "memorize";
   const name = (node) => {
     const element = node && (node.nodeType === 1 ? node : node.parentElement);
     if (!element) return "?";
@@ -100,9 +100,8 @@ function labels(locale) {
     .flatMap(([color, types]) => Object.entries(types).map(([type, name]) => ({ color, type, name })))
     .sort((a, b) => b.name.length - a.name.length);
   return {
-    submit: game.hud.submit,
-    color: { white: game.place.selectWhite, black: game.place.selectBlack },
-    piece: (name) => game.board.selectPiece.replace("{piece}", name),
+    submit: game.round.submit,
+    empty: (square) => game.round.squareEmpty.replace("{square}", square),
     pieceIn: (label) => pieceNames.find(({ name }) => label.endsWith(name)),
   };
 }
@@ -144,15 +143,17 @@ async function playRound(page, base, prefix, text) {
   await page.goto(`${base}${prefix}${ROUND_PATH}`);
   await page.waitFor(`document.querySelectorAll("[data-coordinate]").length === 64`, 20_000);
   const memorizeFit = await page.eval(BOARD_FIT);
-  const pieces = await page.eval(`[...document.querySelectorAll("[data-coordinate]")].map((el) => ({ square: el.dataset.coordinate, label: el.getAttribute("aria-label") || "" })).filter((p) => p.label !== p.square)`);
-  await page.waitFor(`!!document.querySelector('[role="button"][data-coordinate]')`, 30_000);
+  const cells = await page.eval(`[...document.querySelectorAll("[data-coordinate]")].map((el) => ({ square: el.dataset.coordinate, label: el.getAttribute("aria-label") || "" }))`);
+  const pieces = cells.filter((p) => p.label !== text.empty(p.square));
+  await page.waitFor(`!!document.querySelector('[data-round-phase="rebuild"]')`, 30_000);
   const solveFit = await page.eval(BOARD_FIT);
   for (const { square, label } of pieces.slice(0, CORRECT_PIECES)) {
     const piece = text.pieceIn(label);
     if (!piece) throw new Error(`no piece name ends the label "${label}"`);
-    await clickSelector(page, `[aria-label="${text.color[piece.color]}"]`);
-    await clickSelector(page, `[aria-label="${text.piece(piece.name)}"]`);
-    await clickSelector(page, `[role="button"][data-coordinate="${square}"]`);
+    const palette = `.lab-palette [aria-label="${piece.name}"]`;
+    await page.waitFor(`!!document.querySelector(${JSON.stringify(palette)})`, 10_000);
+    if ((await page.eval(`document.querySelector(${JSON.stringify(palette)}).getAttribute("aria-pressed")`)) !== "true") await page.click(palette);
+    await clickSelector(page, `[data-coordinate="${square}"]`);
   }
   await page.clickText("button", text.submit);
   await page.waitFor(`!!document.getElementById("game-result-heading")`, 20_000);

@@ -9,22 +9,24 @@ import { fakeLayout } from "@/test-utils/layout";
 
 const mockStartGame = jest.fn();
 const mockResetGame = jest.fn();
-let mockGamePhase = "configuration";
+const mockConfig = { pieceCount: 2, studyMs: 10000, source: "game_form" } as const;
+const mockTarget = { e1: { color: "white", type: "king" }, e8: { color: "black", type: "king" } } as const;
+const ROUNDS = {
+  idle: { phase: "idle" },
+  study: { phase: "study", config: mockConfig, target: mockTarget, startedAt: 0 },
+  rebuild: { phase: "rebuild", config: mockConfig, target: mockTarget, placed: {}, selected: null, studyMs: 4000, log: { startedAt: 0, placements: [], removals: 0 } },
+} as const;
+let mockPhase: keyof typeof ROUNDS = "idle";
 
 jest.mock("@/lib/store/gameStore", () => {
   const mockState = () => ({
-    gameState: { isPlaying: false, isMemorizationPhase: false, isSolutionPhase: false },
-    gamePhase: mockGamePhase,
+    gameState: { pieceCount: 2, memorizeTime: 10 },
+    round: ROUNDS[mockPhase],
     lastSettings: null,
     startGame: mockStartGame,
     resetGame: mockResetGame,
-    startMemorizationPhase: jest.fn(),
-    endMemorizationPhase: jest.fn(),
-    startSolutionPhase: jest.fn(),
+    dispatch: jest.fn(),
     submitSolution: jest.fn(),
-    placePiece: jest.fn(),
-    removePiece: jest.fn(),
-    chess: null,
   });
   const useGameStore = (selector?: (state: ReturnType<typeof mockState>) => unknown) =>
     selector ? selector(mockState()) : mockState();
@@ -36,29 +38,20 @@ jest.mock("@/lib/lab/dailyBoard", () => ({ ...jest.requireActual("@/lib/lab/dail
 jest.mock("@/lib/lab/reviewBoard", () => ({ ...jest.requireActual("@/lib/lab/reviewBoard"), openReview: jest.fn() }));
 
 jest.mock("@/lib/utils/soundEffects", () => ({
+  ...jest.requireActual("@/lib/utils/soundEffects"),
   playSound: jest.fn(),
   stopTimerSound: jest.fn(),
 }));
 
-jest.mock("@/hooks/useSoundEffects", () => ({
-  useSoundEffects: jest.fn(),
-}));
-
 jest.mock("@/i18n/navigation", () => ({
-  useRouter: () => ({ push: jest.fn() }),
+  usePathname: () => "/game",
+  useRouter: () => ({ push: jest.fn(), replace: jest.fn() }),
   Link: ({ href, children, className }: { href: string; children: ReactNode; className?: string }) => (
     <a href={href} className={className}>
       {children}
     </a>
   ),
 }));
-
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader({ pageType }: { pageType?: string }) {
-    return <div data-page-type={pageType} />;
-  }
-  return MockPageHeader;
-});
 
 beforeEach(() => {
   jest.spyOn(console, "log").mockImplementation(() => {});
@@ -69,7 +62,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  mockGamePhase = "configuration";
+  mockPhase = "idle";
   window.history.pushState({}, "", "/");
   jest.restoreAllMocks();
 });
@@ -308,38 +301,37 @@ describe("GamePage URL-driven start under StrictMode", () => {
 });
 
 describe("GamePage header", () => {
-  it.each([
-    ["configuration", "other"],
-    ["memorization", "game-memorize-solution"],
-    ["solution", "game-memorize-solution"],
-    ["result", "other"],
-  ])("in the %s phase asks the header for %s", (phase, pageType) => {
-    mockGamePhase = phase;
+  it.each(["idle", "study", "rebuild"] as const)(
+    "draws the Lab Paper header, without a Play button that would reopen this page, in the %s phase",
+    (phase) => {
+      mockPhase = phase;
 
-    const { container } = render(<GamePage />);
+      const { container } = render(<GamePage />);
 
-    expect(container.querySelector("[data-page-type]")).toHaveAttribute("data-page-type", pageType);
-  });
+      expect(container.querySelector(".lab-paper .lab-header")).not.toBeNull();
+      expect(screen.queryByRole("link", { name: "Play" })).toBeNull();
+    },
+  );
 });
 
 describe("GamePage pinning", () => {
   it("pins the page before the board first measures its room, so the board is never laid out on the unpinned page", () => {
-    mockGamePhase = "memorization";
+    mockPhase = "study";
     fakeLayout(() =>
       document.body.classList.contains("game-fixed") ? { width: 400, height: 600 } : { width: 1000, height: 1000 },
     );
 
     render(<GamePage />);
 
-    const board = document.querySelector<HTMLElement>(".game-container");
+    const board = document.querySelector<HTMLElement>("[data-round-board]");
     expect([board?.style.width, board?.style.height]).toEqual(["400px", "400px"]);
   });
 
   it("unpins the page when the round leaves the board", () => {
-    mockGamePhase = "memorization";
+    mockPhase = "rebuild";
     const { rerender } = render(<GamePage />);
 
-    mockGamePhase = "result";
+    mockPhase = "idle";
     rerender(<GamePage />);
 
     expect([document.documentElement.className, document.body.className]).toEqual(["", ""]);

@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { FEEDBACK_MAX_LENGTH, type FeedbackSubmission } from "@/lib/feedback";
+import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 
 import { useTranslations } from "next-intl";
 export const FEEDBACK_PROMPT_DELAY_MS = 800;
@@ -139,7 +140,7 @@ export default function FirstGameFeedbackDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto border border-bg-light bg-bg-card text-text-primary sm:max-w-md">
+      <DialogContent className={`${LAB_PAPER_CLASS} lab-bridge lab-dialog max-h-[90vh] overflow-y-auto sm:max-w-md`}>
         {submitSuccess ? (
           <div className="space-y-5 py-2 text-center">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-peach-500/10 text-2xl">

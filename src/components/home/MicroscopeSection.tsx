@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { SquareName } from "@/lib/game/board";
-import { squareVerdict } from "@/lib/home/calibration";
+import { squareVerdict } from "@/lib/round/round";
 import {
   MICROSCOPE_PHASES,
   phaseNumber,
@@ -15,7 +15,7 @@ import {
   SPECIMEN_SCORE,
   type MicroscopePhase,
 } from "@/lib/home/specimen";
-import { BoardFigure, StaticBoard, type PieceState } from "./BoardFigure";
+import { BoardFigure, StaticBoard, type PieceState } from "@/components/round/BoardFigure";
 import { MicroscopeOverlay } from "./MicroscopeOverlay";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 

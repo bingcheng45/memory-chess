@@ -1086,6 +1086,47 @@
       "sendFailed": "We could not send your feedback. Please try again or choose Not now.",
       "send": "Send feedback",
       "sending": "Sending..."
+    },
+    "round": {
+      "start": "Start",
+      "done": "Done",
+      "restart": "Restart",
+      "again": "Play again",
+      "submit": "Submit",
+      "clear": "Clear board",
+      "controlsLabel": "Round controls",
+      "boardLabel": "Board. Use the arrow keys to move between squares.",
+      "paletteLabel": "Piece palette",
+      "squareEmpty": "{square}, empty",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Memorize the position",
+      "phaseRebuild": "Place the pieces",
+      "liveStudy": "Study the position. {memorizeSeconds} seconds.",
+      "liveRebuild": "Board cleared. Pick a piece, then a square.",
+      "liveScore": "Accuracy {accuracy} percent. {correct} of {total} squares correct.",
+      "readout": {
+        "title": "Readout",
+        "statusIdle": "Awaiting run",
+        "statusRecording": "Recording",
+        "statusDone": "Run complete",
+        "correct": "Correct squares",
+        "time": "Rebuild time",
+        "wrong": "Wrong pieces",
+        "exposure": "Study time",
+        "byType": "Recall by piece type",
+        "byTypeEmpty": "Recall by piece type appears here after the round.",
+        "legendCorrect": "correct",
+        "legendWrong": "wrong placement",
+        "legendMissed": "missed square"
+      },
+      "pieceTypes": {
+        "king": "King",
+        "queen": "Queen",
+        "rook": "Rook",
+        "bishop": "Bishop",
+        "knight": "Knight",
+        "pawn": "Pawn"
+      }
     }
   },
   "leaderboard": {

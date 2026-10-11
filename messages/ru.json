@@ -288,6 +288,47 @@
       "sendFailed": "Не удалось отправить отзыв. Попробуйте ещё раз или выберите «Не сейчас».",
       "send": "Отправить отзыв",
       "sending": "Отправка..."
+    },
+    "round": {
+      "start": "Начать",
+      "done": "Готово",
+      "restart": "Заново",
+      "again": "Ещё раз",
+      "submit": "Отправить",
+      "clear": "Очистить доску",
+      "controlsLabel": "Управление раундом",
+      "boardLabel": "Доска. Перемещайтесь по полям клавишами со стрелками.",
+      "paletteLabel": "Набор фигур",
+      "squareEmpty": "{square}, пусто",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Запомните позицию",
+      "phaseRebuild": "Расставьте фигуры",
+      "liveStudy": "Изучите позицию. Время: {memorizeSeconds} с.",
+      "liveRebuild": "Доска очищена. Выберите фигуру, затем поле.",
+      "liveScore": "Точность {accuracy} %. Верных полей: {correct} из {total}.",
+      "readout": {
+        "title": "Итоги",
+        "statusIdle": "Ожидание раунда",
+        "statusRecording": "Запись",
+        "statusDone": "Раунд завершён",
+        "correct": "Верные поля",
+        "time": "Время расстановки",
+        "wrong": "Ошибочные фигуры",
+        "exposure": "Время на запоминание",
+        "byType": "Запоминание по типам фигур",
+        "byTypeEmpty": "Запоминание по типам фигур появится здесь после раунда.",
+        "legendCorrect": "верно",
+        "legendWrong": "неверная расстановка",
+        "legendMissed": "пропущенное поле"
+      },
+      "pieceTypes": {
+        "king": "Король",
+        "queen": "Ферзь",
+        "rook": "Ладья",
+        "bishop": "Слон",
+        "knight": "Конь",
+        "pawn": "Пешка"
+      }
     }
   },
   "leaderboard": {

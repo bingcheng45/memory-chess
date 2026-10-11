@@ -288,6 +288,47 @@
       "sendFailed": "Görüşünü gönderemedik. Tekrar dene ya da “Şimdi değil”i seç.",
       "send": "Görüşünü gönder",
       "sending": "Gönderiliyor..."
+    },
+    "round": {
+      "start": "Başla",
+      "done": "Bitti",
+      "restart": "Yeniden başla",
+      "again": "Tekrar oyna",
+      "submit": "Gönder",
+      "clear": "Tahtayı temizle",
+      "controlsLabel": "Tur kontrolleri",
+      "boardLabel": "Tahta. Kareler arasında gezinmek için ok tuşlarını kullan.",
+      "paletteLabel": "Taş paleti",
+      "squareEmpty": "{square}, boş",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Konumu ezberle",
+      "phaseRebuild": "Taşları yerleştir",
+      "liveStudy": "Konumu incele. {memorizeSeconds} saniye.",
+      "liveRebuild": "Tahta temizlendi. Bir taş, ardından bir kare seç.",
+      "liveScore": "İsabet yüzde {accuracy}. {total} karenin {correct} tanesi doğru.",
+      "readout": {
+        "title": "Sonuçlar",
+        "statusIdle": "Tur bekleniyor",
+        "statusRecording": "Kaydediliyor",
+        "statusDone": "Tur tamamlandı",
+        "correct": "Doğru kareler",
+        "time": "Yerleştirme süresi",
+        "wrong": "Yanlış taşlar",
+        "exposure": "İnceleme süresi",
+        "byType": "Taş türüne göre hatırlama",
+        "byTypeEmpty": "Taş türüne göre hatırlama tur bitince burada görünür.",
+        "legendCorrect": "doğru",
+        "legendWrong": "yanlış yerleşim",
+        "legendMissed": "atlanan kare"
+      },
+      "pieceTypes": {
+        "king": "Şah",
+        "queen": "Vezir",
+        "rook": "Kale",
+        "bishop": "Fil",
+        "knight": "At",
+        "pawn": "Piyon"
+      }
     }
   },
   "leaderboard": {

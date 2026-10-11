@@ -26,7 +26,7 @@ export default function SetBoardNotice({ reason, onChoose }: SetBoardNoticeProps
     reviewCap: [review("capped", { cap: REVIEW_DAILY_CAP }), review("cappedNext")],
   }[reason];
   return (
-    <section className="w-full max-w-md rounded-xl border border-bg-light bg-bg-card p-5 text-sm sm:p-7 md:max-w-lg">
+    <section className="lab-card lab-config lab-bridge text-sm">
       <p role="status" className="font-semibold text-text-primary">{lines[0]}</p>
       <p className="mt-1 min-h-[1.25rem] text-text-secondary">{lines[1]}</p>
       <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">

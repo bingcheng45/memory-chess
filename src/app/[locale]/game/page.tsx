@@ -1,35 +1,27 @@
 'use client';
 
 import { lazy, Suspense, useState, useEffect, useLayoutEffect, useRef } from 'react';
-import { useRouter } from "@/i18n/navigation";
 import { useGameStore } from '@/lib/store/gameStore';
-import { GamePhase } from '@/lib/types/game';
 import GameConfig from '@/components/game/GameConfig';
 import GameResult from '@/components/game/GameResult';
 import GameStats from '@/components/game/GameStats';
+import ActiveRound from '@/components/game/ActiveRound';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
+import SoundSettings from '@/components/ui/SoundSettings';
+import { LabPaperHeader } from '@/components/lab-paper/LabPaperHeader';
+import { LAB_PAPER_CLASS } from '@/components/lab-paper/shell';
 import { playSound, stopTimerSound } from '@/lib/utils/soundEffects';
-import { useSoundEffects } from '@/hooks/useSoundEffects';
-import { ChessPiece } from '@/types/chess';
-import { pieceTypeToFenChar } from '@/utils/chessPieces';
-import { Button } from "@/components/ui/button";
-import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
-import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
-import { formatTimeWithMilliseconds } from '@/utils/timer';
-import { elapsedMs, now, subscribe, type Monotonic } from '@/lib/game/clock';
-import PageHeader from '@/components/ui/PageHeader';
-import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
-import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
+import { useRoundSounds } from '@/hooks/useRoundSounds';
+import { PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
 import { ROUND_PARAMS } from '@/lib/game/roundLink';
+import '@/components/game/game-lab.css';
 
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { hasLabCopy } from '@/lib/home/labLocales';
 import type { SetBoard } from '@/lib/types/game';
 import type { SetBoardRefusal } from '@/components/game/SetBoardNotice';
-
-const TIMER_CUE_DELAY_MS = 500;
 
 const SetBoardNotice = lazy(() => import('@/components/game/SetBoardNotice'));
 
@@ -108,51 +100,27 @@ function takeUrlRound(hasLab: boolean): UrlRound | null {
   };
 }
 
-// Component to handle URL parameters
 function GamePageContent() {
-  const t = useTranslations("game");
-  const router = useRouter();
-
-  // Initialize sound effects hook to handle sound based on game state changes
-  useSoundEffects();
-
-  const {
-    gameState, 
-    gamePhase, 
-    startGame, 
-    resetGame, 
-    startMemorizationPhase,
-    submitSolution,
-    placePiece,
-    removePiece,
-    chess
-  } = useGameStore();
-  
-  const [solutionPieces, setSolutionPieces] = useState<ChessPiece[]>([]);
-  const [isSubmissionFlashVisible, setIsSubmissionFlashVisible] = useState(false);
-  const solutionStartRef = useRef<Monotonic | null>(null);
-  const countUpRef = useRef<HTMLDivElement>(null);
-  const timerWarningPlayedRef = useRef(false);
-  const timerCuePlayedRef = useRef(false);
-  const submissionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const round = useGameStore((state) => state.round);
+  const gameState = useGameStore((state) => state.gameState);
+  const startGame = useGameStore((state) => state.startGame);
+  const resetGame = useGameStore((state) => state.resetGame);
+  const submitSolution = useGameStore((state) => state.submitSolution);
+  useRoundSounds(round);
 
   // Memorising and placing are played without scrolling: the board is sized
   // from the room that is actually left, so the screen holds exactly what
   // fits. Configuration and the result page are ordinary scrolling pages.
-  const isActivePhase =
-    gamePhase === GamePhase.MEMORIZATION || gamePhase === GamePhase.SOLUTION;
+  const isActivePhase = round.phase === 'study' || round.phase === 'rebuild';
 
   useEffect(() => {
     // Clean up game state when leaving
     return () => {
       stopTimerSound(); // Stop any timer sound when leaving the page
-      if (submissionTimeoutRef.current) {
-        clearTimeout(submissionTimeoutRef.current);
-      }
       resetGame();
     };
   }, [resetGame]);
-  
+
   // StrictMode re-runs this effect after the cleanup above has reset the store,
   // by which time the URL is cleared, so the round is kept for the second run.
   const urlRoundRef = useRef<UrlRound | null | undefined>(undefined);
@@ -163,11 +131,11 @@ function GamePageContent() {
 
   useEffect(() => {
     if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound(hasLab);
-    const round = urlRoundRef.current;
-    if (!round) return;
-    const { source } = round;
+    const urlRound = urlRoundRef.current;
+    if (!urlRound) return;
+    const { source } = urlRound;
     if (!isSetBoardSource(source)) {
-      startGame(round.pieceCount, round.memorizeTime, source);
+      startGame(urlRound.pieceCount, urlRound.memorizeTime, source);
       return;
     }
 
@@ -188,97 +156,17 @@ function GamePageContent() {
       live = false;
     };
   }, [startGame, hasLab]);
-  
+
   useEffect(() => {
-    if (gamePhase === GamePhase.MEMORIZATION) {
-      warmLeaderboardCutoffs();
-    }
-  }, [gamePhase]);
-  
-  // Start memorization phase when game is started
-  useEffect(() => {
-    if (gameState.isPlaying && gamePhase === GamePhase.CONFIGURATION) {
-      playSound('success');
-      startMemorizationPhase();
-      timerCuePlayedRef.current = false;
-    }
-  }, [gameState.isPlaying, gamePhase, startMemorizationPhase]);
+    if (round.phase === 'study') warmLeaderboardCutoffs();
+  }, [round.phase]);
 
-  // The memorization deadline belongs to ResponsiveMemorizationBoard, which ends
-  // the phase from the same frame that paints the countdown's last value. Only
-  // the opening sound cue is left here.
-  useEffect(() => {
-    if (!gameState.isMemorizationPhase) return;
-
-    timerWarningPlayedRef.current = false;
-    if (timerCuePlayedRef.current) return;
-
-    // Late enough that the success sound has finished.
-    const cue = setTimeout(() => {
-      playSound('timer');
-      timerCuePlayedRef.current = true;
-    }, TIMER_CUE_DELAY_MS);
-
-    return () => {
-      clearTimeout(cue);
-    };
-  }, [gameState.isMemorizationPhase]);
-
-  // Reset solution pieces when entering solution phase
-  useEffect(() => {
-    if (gamePhase === GamePhase.SOLUTION) {
-      setSolutionPieces([]);
-    }
-  }, [gamePhase]);
-  
-  // Track elapsed time during solution phase. The flash pause simply drops the
-  // subscription, which leaves the last painted value on screen.
-  useEffect(() => {
-    if (!gameState.isSolutionPhase) {
-      stopTimerSound();
-      solutionStartRef.current = null;
-      return;
-    }
-    if (isSubmissionFlashVisible) return;
-
-    if (solutionStartRef.current === null) solutionStartRef.current = now();
-    const startedAt = solutionStartRef.current;
-    const warnAtMs = Math.floor(gameState.memorizeTime * 0.75) * 1000;
-
-    return subscribe((at) => {
-      const elapsed = elapsedMs(startedAt, at);
-
-      if (countUpRef.current) {
-        countUpRef.current.textContent = formatTimeWithMilliseconds(elapsed / 1000);
-      }
-      if (!timerWarningPlayedRef.current && elapsed >= warnAtMs) {
-        timerWarningPlayedRef.current = true;
-        playSound('timer');
-      }
-    });
-  }, [gameState.isSolutionPhase, gameState.memorizeTime, isSubmissionFlashVisible]);
-
-  // Handle submitting the solution
   const handleSubmitSolution = () => {
-    if (isSubmissionFlashVisible) return;
-
-    stopTimerSound(); // Stop any playing timer sound
+    stopTimerSound();
     playSound('click');
-    const startedAt = solutionStartRef.current;
-    const frozenElapsedTime = startedAt === null ? 0 : elapsedMs(startedAt, now()) / 1000;
-    if (countUpRef.current) {
-      countUpRef.current.textContent = formatTimeWithMilliseconds(frozenElapsedTime);
-    }
-    setIsSubmissionFlashVisible(true);
-
-    submissionTimeoutRef.current = setTimeout(() => {
-      submissionTimeoutRef.current = null;
-      submitSolution(frozenElapsedTime);
-      setIsSubmissionFlashVisible(false);
-    }, GAME_SUBMISSION_FLASH_DURATION_MS);
+    submitSolution();
   };
-  
-  // Handle trying again with the same configuration
+
   const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
     startedByHandRef.current = true;
     setRefused(null);
@@ -288,55 +176,30 @@ function GamePageContent() {
     startGame(pieceCount, memorizeTime, source);
   };
 
-  const handleTryAgain = () => {
-    console.log('Trying again with same configuration');
-    handlePlay(gameState.pieceCount, gameState.memorizeTime, 'try_again');
-  };
+  const handleTryAgain = () => handlePlay(gameState.pieceCount, gameState.memorizeTime, 'try_again');
 
-  // Handle starting a new game with different configuration
   const handleNewGame = () => {
-    console.log('Starting new game with different configuration');
     stopTimerSound(); // Stop any playing timer sound
     playSound('click');
     resetGame();
   };
-  
-  // Handle starting the game from configuration
+
   const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
-    console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
     playSound('click');
     startedByHandRef.current = true;
     startGame(pieceCount, memorizeTime, source);
   };
-  
-  // Handle back button
-  const handleBack = () => {
-    stopTimerSound(); // Stop any playing timer sound
-    router.push('/');
-  };
-  
-  // Add a useEffect to log the chess instance when it changes
-  useEffect(() => {
-    console.log('Chess instance updated:', chess);
-  }, [chess]);
-  
-  // Render the appropriate content based on game phase
+
   const renderGameContent = () => {
-    console.log('Rendering game content for phase:', gamePhase);
-    
-    // Shared container for consistent width and centering across all phases.
-    // The active phases also take the full height they are given, so the board
-    // can be sized from the space left over instead of from a guess at how
-    // tall everything else is.
     const containerClass = "w-full max-w-4xl mx-auto flex flex-col items-center justify-center";
     // `flex-1` without `min-h-0`: the wrapper still takes the leftover
     // height, but no longer shrinks below what ActiveGameLayout says the
     // board needs. On a viewport too short for that floor it overflows, and
     // `main` below scrolls to it.
     const activePhaseClass = `${containerClass} flex-1`;
-    
-    switch (gamePhase) {
-      case GamePhase.CONFIGURATION:
+
+    switch (round.phase) {
+      case 'idle':
         return (
           <div className={containerClass}>
             {/* In the configuration form's place, so nothing above or beside it moves when it appears. */}
@@ -352,7 +215,7 @@ function GamePageContent() {
               </ErrorBoundary>
             )}
             {gameState.completionTime !== undefined && (
-              <div className="mt-8 w-full max-w-md md:max-w-lg mx-auto">
+              <div className="lab-bridge mt-8 w-full max-w-md md:max-w-lg mx-auto">
                 <ErrorBoundary>
                   <GameStats />
                 </ErrorBoundary>
@@ -360,64 +223,18 @@ function GamePageContent() {
             )}
           </div>
         );
-        
-      case GamePhase.MEMORIZATION:
-        return (
-          <div className={activePhaseClass}>
-            <ErrorBoundary>
-              <ResponsiveMemorizationBoard />
-            </ErrorBoundary>
-          </div>
-        );
-        
-      case GamePhase.SOLUTION:
-        return (
-          <div className={activePhaseClass}>
-            <ErrorBoundary>
-              <ResponsiveInteractiveBoard
-                status={
-                  <div className="relative flex h-full items-center justify-center px-3 sm:px-4">
-                    <div className="text-center text-sm font-medium sm:text-base">{t("hud.time")}<div
-                        ref={countUpRef}
-                        className="font-mono text-2xl font-bold leading-tight sm:text-3xl"
-                      >
-                        {formatTimeWithMilliseconds(0)}
-                      </div>
-                    </div>
 
-                    <Button
-                      onClick={handleSubmitSolution}
-                      disabled={isSubmissionFlashVisible}
-                      variant="outline"
-                      size="sm"
-                      className="absolute right-0 top-1/2 h-9 -translate-y-1/2 border-peach-500/30 bg-peach-500/10 px-3 text-sm text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
-                    >{t("hud.submit")}</Button>
-                  </div>
-                }
-                playerSolution={solutionPieces}
-                onPlacePiece={(piece) => {
-                  setSolutionPieces(prev => [...prev, piece]);
-                  // Convert ChessPiece to chess.js format for the game store
-                  const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
-                  const pieceCode = pieceTypeToFenChar(piece.type, piece.color);
-                  placePiece(square, pieceCode);
-                }}
-                onRemovePiece={(position) => {
-                  setSolutionPieces(prev =>
-                    prev.filter(p =>
-                      p.position.file !== position.file || p.position.rank !== position.rank
-                    )
-                  );
-                  // Convert Position to chess.js format
-                  const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
-                  removePiece(square);
-                }}
-              />
+      case 'study':
+      case 'rebuild':
+        return (
+          <div className={activePhaseClass}>
+            <ErrorBoundary>
+              <ActiveRound round={round} onRestart={handleTryAgain} onSubmit={handleSubmitSolution} />
             </ErrorBoundary>
           </div>
         );
 
-      case GamePhase.RESULT:
+      case 'scored':
         return (
           <div className={containerClass}>
             <ErrorBoundary>
@@ -425,71 +242,51 @@ function GamePageContent() {
             </ErrorBoundary>
           </div>
         );
-        
-      default:
-        return (
-          <div className={containerClass}>
-            <ErrorBoundary>
-              <GameConfig onStart={handleStartGame} />
-            </ErrorBoundary>
-          </div>
-        );
     }
   };
-  
+
   return (
-    <main
-      className={`bg-bg-dark text-text-primary ${
-        isActivePhase
-          ? // Where the game fits, this scrolls no more than the clipped
-            // version did -- there is nothing to scroll to. Where it does not
-            // fit, this is the only way to reach the board.
-            //
-            // `main` is the scrolling element, so a drag inside it is settled
-            // by the touch-action stated here: the browser intersects
-            // touch-action from the touched node up to the first containing
-            // scroller and stops there, leaving the document's own refusal
-            // (globals.css) intact for everything outside. `overscroll-contain`
-            // keeps the bounce from chaining out to that document.
-            'min-h-0 flex-1 overflow-y-auto overscroll-contain [touch-action:pan-y_pinch-zoom]'
-          : PAGE_BELOW_BANNER_MIN_HEIGHT
-      }`}
-    >
+    <div className={`${LAB_PAPER_CLASS} lab-game`}>
       {isActivePhase && <PinnedPage />}
-      {isSubmissionFlashVisible && <GameSubmissionFlash />}
-
-      {/*
-        `h-full`, not `min-h-full`. A minimum does not make a height definite,
-        and everything below here asks for a percentage of it: the column's
-        own `h-full`, and the board area it hands the board. Under a minimum
-        those resolve to `auto`, the column falls to its floor, and the board
-        area lands on exactly MIN_BOARD_SIZE however much room the screen has
-        -- which then sets the width of the timer and palette rows.
-
-        A viewport too short for the column is still reachable: the column
-        overflows this box and `main` above scrolls to it.
-      */}
-      <div
-        className={`container mx-auto flex flex-col items-center justify-start px-2 py-2 sm:px-4 sm:py-4 ${
-          isActivePhase ? 'h-full' : PAGE_BELOW_BANNER_MIN_HEIGHT
-        }`}
+      <LabPaperHeader showPlay={false} tools={<SoundSettings className="lab-sound" />} />
+      <main
+        className={
+          isActivePhase
+            ? // Where the game fits, this scrolls no more than the clipped
+              // version did -- there is nothing to scroll to. Where it does not
+              // fit, this is the only way to reach the board.
+              //
+              // `main` is the scrolling element, so a drag inside it is settled
+              // by the touch-action stated here: the browser intersects
+              // touch-action from the touched node up to the first containing
+              // scroller and stops there, leaving the document's own refusal
+              // (globals.css) intact for everything outside. `overscroll-contain`
+              // keeps the bounce from chaining out to that document.
+              'min-h-0 flex-1 overflow-y-auto overscroll-contain [touch-action:pan-y_pinch-zoom]'
+            : PAGE_BELOW_BANNER_MIN_HEIGHT
+        }
       >
-        <PageHeader
-          onBackClick={handleBack}
-          // 'other', not 'game-config' or 'game-result': those move the
-          // controls inward, and this header is already held to the board's width.
-          pageType={isActivePhase ? 'game-memorize-solution' : 'other'}
-          className="!mb-3"
-          style={{
-            maxWidth: MAX_BOARD_SIZE_PX
-          }}
-        />
+        {/*
+          `h-full`, not `min-h-full`. A minimum does not make a height definite,
+          and everything below here asks for a percentage of it: the column's
+          own `h-full`, and the board area it hands the board. Under a minimum
+          those resolve to `auto`, the column falls to its floor, and the board
+          area lands on exactly MIN_BOARD_SIZE however much room the screen has.
 
-        <ErrorBoundary>
-          {renderGameContent()}
-        </ErrorBoundary>
-      </div>
-    </main>
+          A viewport too short for the column is still reachable: the column
+          overflows this box and `main` above scrolls to it.
+        */}
+        <div
+          className={`container mx-auto flex flex-col items-center justify-start ${
+            isActivePhase ? 'h-full px-4 py-2' : `${PAGE_BELOW_BANNER_MIN_HEIGHT} px-4 py-8 sm:py-12`
+          }`}
+        >
+          <ErrorBoundary>
+            {renderGameContent()}
+          </ErrorBoundary>
+        </div>
+      </main>
+    </div>
   );
 }
 

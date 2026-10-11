@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, type CSSProperties } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import type { RoundSource } from '@/lib/analytics/events';
-import { Button } from "@/components/ui/button";
 import { useTranslations } from 'next-intl';
 import {
   MEMORIZE_SECONDS_RANGE,
@@ -70,29 +69,28 @@ export default function GameConfig({ onStart }: GameConfigProps) {
 
   const handleStart = () => startRound({ pieceCount, memorizeTime }, 'game_form');
   
-  const sliderStyle = (value: number, range: { min: number; max: number }) => ({
-    '--fill': `${((value - range.min) / (range.max - range.min)) * 100}%`,
-    backgroundImage: 'linear-gradient(to right, #FFB380 0%, #FFB380 var(--fill), #222222 var(--fill), #222222 100%)',
-  }) as CSSProperties;
+  const fillOf = (value: number, range: { min: number; max: number }) =>
+    ({ '--fill': `${((value - range.min) / (range.max - range.min)) * 100}%` }) as CSSProperties;
 
   return (
     <div
       ref={formRef}
       data-game-config
       suppressHydrationWarning
-      className="w-full max-w-md md:max-w-lg mx-auto rounded-xl border border-bg-light bg-bg-card p-5 sm:p-7 shadow-xl"
+      className="lab-card lab-config"
     >
-      <h1 className="mb-5 text-center text-2xl font-bold text-text-primary">{t('config.title')}</h1>
+      <h1 className="lab-config-h">{t('config.title')}</h1>
 
-      <div className="mb-6 border-b border-bg-light pb-6 text-center">
-        <Button
+      <div className="lab-config-quick">
+        <button
+          type="button"
           onClick={() => startRound(DEFAULT_PRESET, 'game_quick')}
           data-quick-start
-          className="h-11 w-full bg-peach-500 text-base font-semibold text-bg-dark hover:bg-peach-400"
+          className="lab-btn lab-btn-primary"
         >
           {t('config.quickStart')}
-        </Button>
-        <p className="mt-2 text-xs text-text-muted">
+        </button>
+        <p className="lab-note">
           {t(`presets.${DEFAULT_PRESET.id}.label`)}
           {' · '}
           {t('config.presetSummary', {
@@ -102,56 +100,52 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </p>
       </div>
 
-      <div className="mb-5">
-        <h2 className="mb-3 text-sm font-medium text-text-secondary">{t('config.presetsLabel')}</h2>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <div className="lab-config-group">
+        <h2 className="lab-config-label">{t('config.presetsLabel')}</h2>
+        <div className="lab-config-presets">
           {DIFFICULTY_PRESETS.map((preset) => (
-            <Button
+            <button
               key={preset.id}
+              type="button"
               onClick={() => handlePresetSelect(preset)}
-              variant={selectedPreset === preset.id ? "secondary" : "ghost"}
-              className={`flex h-auto flex-col items-center justify-center p-2.5 transition-all duration-200 ease-in-out border ${
-                selectedPreset === preset.id
-                  ? 'border-peach-500 bg-peach-500/20 text-text-primary shadow-sm hover:bg-peach-500/25 hover:border-peach-500/70' 
-                  : 'border-transparent text-text-secondary hover:border-peach-500/30 hover:bg-peach-500/15 hover:text-white hover:shadow-sm'
-              }`}
+              className="lab-preset"
               aria-pressed={selectedPreset === preset.id}
               data-preset={preset.id}
               data-description={t(`presets.${preset.id}.description`)}
               suppressHydrationWarning
             >
-              <span className="font-medium">{t(`presets.${preset.id}.label`)}</span>
-              <div className="mt-1 text-xs opacity-70">
+              <span className="lab-preset-name">{t(`presets.${preset.id}.label`)}</span>
+              <span className="lab-preset-meta">
                 {t('config.presetSummary', {
                   pieces: preset.pieceCount,
                   seconds: preset.memorizeTime,
                 })}
-              </div>
-            </Button>
+              </span>
+            </button>
           ))}
         </div>
-        <div
+        <p
           data-preset-description
           data-custom-label={t('config.customLabel')}
           suppressHydrationWarning
-          className="mt-2 text-xs text-text-muted"
+          className="lab-note lab-config-description"
         >
           {selectedPreset
             ? t(`presets.${selectedPreset}.description`)
             : t('config.customLabel')}
-        </div>
+        </p>
       </div>
-      
-      <div className="mb-5">
-        <div className="mb-3 flex items-center justify-between">
-          <label htmlFor="pieceCount" className="text-sm font-medium text-text-secondary">
+
+      <div className="lab-config-group">
+        <div className="lab-config-row">
+          <label htmlFor="pieceCount" className="lab-config-label">
             {t('config.pieceCount')}
           </label>
           <span
             data-value-for="pieceCount"
             data-template={VALUE_PLACEHOLDER}
             suppressHydrationWarning
-            className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark"
+            className="lab-config-value"
           >
             {pieceCount}
           </span>
@@ -166,31 +160,27 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           onChange={(e) => {
             setPieceCount(parseInt(e.target.value));
           }}
-          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light
-                     [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 
-                     [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-peach-500 [&::-webkit-slider-thumb]:mt-[-1.5px]
-                     [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
-                     [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
-          style={sliderStyle(pieceCount, PIECE_COUNT_RANGE)}
+          className="lab-range"
+          style={fillOf(pieceCount, PIECE_COUNT_RANGE)}
           suppressHydrationWarning
         />
-        <div className="mt-4 flex justify-between text-xs text-text-muted">
+        <div className="lab-range-scale" aria-hidden="true">
           <span>2</span>
           <span>17</span>
           <span>32</span>
         </div>
       </div>
-      
-      <div className="mb-6">
-        <div className="mb-3 flex items-center justify-between">
-          <label htmlFor="memorizeTime" className="text-sm font-medium text-text-secondary">
+
+      <div className="lab-config-group">
+        <div className="lab-config-row">
+          <label htmlFor="memorizeTime" className="lab-config-label">
             {t('config.memorizeTime')}
           </label>
           <span
             data-value-for="memorizeTime"
             data-template={t('config.seconds', { seconds: VALUE_PLACEHOLDER })}
             suppressHydrationWarning
-            className="rounded-full bg-peach-500 px-3 py-1 text-sm font-bold text-bg-dark"
+            className="lab-config-value"
           >
             {t('config.seconds', { seconds: memorizeTime })}
           </span>
@@ -205,48 +195,37 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           onChange={(e) => {
             setMemorizeTime(parseInt(e.target.value));
           }}
-          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-bg-light
-                     [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 
-                     [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-peach-500 [&::-webkit-slider-thumb]:mt-[-1.5px]
-                     [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 
-                     [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-peach-500 [&::-moz-range-thumb]:border-0"
-          style={sliderStyle(memorizeTime, MEMORIZE_SECONDS_RANGE)}
+          className="lab-range"
+          style={fillOf(memorizeTime, MEMORIZE_SECONDS_RANGE)}
           suppressHydrationWarning
         />
-        <div className="mt-4 flex justify-between text-xs text-text-muted">
+        <div className="lab-range-scale" aria-hidden="true">
           <span>{t('config.seconds', { seconds: 2 })}</span>
           <span>{t('config.seconds', { seconds: 17 })}</span>
           <span>{t('config.seconds', { seconds: 32 })}</span>
         </div>
       </div>
-      
-      <Button
-        onClick={handleStart}
-        variant="outline"
-        size="sm"
-        className="w-full bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 px-3 py-1.5 text-sm"
-      >
+
+      <button type="button" onClick={handleStart} className="lab-btn lab-btn-secondary lab-config-start">
         {t('config.start')}
-      </Button>
-      
+      </button>
+
       {gameState.completionTime !== undefined && (
-        <div className="mt-4 text-center text-sm text-text-secondary">
-          <p>
-            {(() => {
-              // Splitting the total, rather than rounding the fraction on its
-              // own, is what keeps a time just under the next second from
-              // printing as 12.1000.
-              const totalMilliseconds = Math.round(gameState.completionTime * 1000);
-              const seconds = Math.floor(totalMilliseconds / 1000);
-              const milliseconds = (totalMilliseconds % 1000).toString().padStart(3, '0');
-              return t('config.lastGame', {
-                time: `${seconds}.${milliseconds}`,
-                accuracy: gameState.accuracy ?? 0,
-              });
-            })()}
-          </p>
-        </div>
+        <p className="lab-note lab-config-last">
+          {(() => {
+            // Splitting the total, rather than rounding the fraction on its
+            // own, is what keeps a time just under the next second from
+            // printing as 12.1000.
+            const totalMilliseconds = Math.round(gameState.completionTime * 1000);
+            const seconds = Math.floor(totalMilliseconds / 1000);
+            const milliseconds = (totalMilliseconds % 1000).toString().padStart(3, '0');
+            return t('config.lastGame', {
+              time: `${seconds}.${milliseconds}`,
+              accuracy: gameState.accuracy ?? 0,
+            });
+          })()}
+        </p>
       )}
     </div>
   );
-} 
+}

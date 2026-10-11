@@ -1,5 +1,5 @@
 import type { SquareName } from "@/lib/game/board";
-import { labPositionFromFen, scoreReading, type LabPosition } from "@/lib/home/calibration";
+import { labPositionFromFen, scoreReading, type LabPosition } from "@/lib/round/round";
 import { relation, type Group, type Relation, type RelationCheck } from "./relations";
 
 /** Kasparov against Topalov, Wijk aan Zee 1999, after 44.Qa7: the final position. Black to move. */

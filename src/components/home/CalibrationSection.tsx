@@ -1,99 +1,29 @@
 "use client";
 
-import { Eraser } from "lucide-react";
-import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import {
-  CALIBRATION_RULES,
-  labPositionToFen,
-  loadCalibrationPosition,
-  roundReducer,
-  type RoundState,
-} from "@/lib/home/calibration";
+import { Link } from "@/i18n/navigation";
+import { CALIBRATION_CONFIG, CALIBRATION_RULES, loadCalibrationPosition, suggestTier } from "@/lib/home/calibration";
+import { labPositionToFen, roundReducer, type RoundState } from "@/lib/round/round";
 import { phaseNumber, type MicroscopePhaseId } from "@/lib/home/specimen";
 import { trackEvent } from "@/lib/analytics/events";
 import { recordLabRound } from "@/lib/lab/recordRound";
-import { formatSecondsMs } from "@/utils/timer";
-import { CalibrationBoard } from "./CalibrationBoard";
-import { ReadoutCard } from "./ReadoutCard";
-import { RoundClock, type ClockFace } from "./RoundClock";
+import { playHref } from "@/lib/game/roundLink";
+import { useStudyDeadline } from "@/components/round/useStudyDeadline";
+import { RoundBoard, RoundPalette } from "@/components/round/RoundBoard";
+import { RoundControls } from "@/components/round/RoundControls";
+import { clockFace, RoundHead } from "@/components/round/RoundHead";
+import { ReadoutCard } from "@/components/round/ReadoutCard";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
 const STUDY_SECONDS = CALIBRATION_RULES.studyMs / 1000;
-
-function useStudyDeadline(state: RoundState, onStudyEnded: (now: number) => void): void {
-  const startedAt = state.phase === "study" ? state.startedAt : null;
-
-  useEffect(() => {
-    if (startedAt === null) return;
-    const left = Math.max(0, CALIBRATION_RULES.studyMs - (performance.now() - startedAt));
-    const timer = setTimeout(() => onStudyEnded(performance.now()), left);
-    return () => clearTimeout(timer);
-  }, [startedAt, onStudyEnded]);
-}
-
-function clockFace(state: RoundState): ClockFace {
-  switch (state.phase) {
-    case "idle":
-      return { kind: "still", text: `${formatSecondsMs(CALIBRATION_RULES.studyMs)}s` };
-    case "study":
-      return { kind: "countdown", startedAt: state.startedAt, totalMs: CALIBRATION_RULES.studyMs };
-    case "rebuild":
-      return { kind: "countup", startedAt: state.log.startedAt };
-    case "scored":
-      return { kind: "still", text: `${state.score.accuracy}%` };
-  }
-}
+const COPY = "home.lab.calibrate";
 
 const ROUND_PHASE_ID = {
   study: "study",
   rebuild: "rebuild",
   scored: "score",
 } as const satisfies Record<Exclude<RoundState["phase"], "idle">, MicroscopePhaseId>;
-
-type ControlIntent = "start" | "endStudy" | "submit";
-
-interface RoundControl {
-  readonly label: "start" | "done" | "restart" | "again" | "submit";
-  readonly intent: ControlIntent;
-  readonly enabled: boolean;
-}
-
-interface PhaseControls {
-  readonly first: RoundControl;
-  readonly second: RoundControl;
-  readonly primary: "first" | "second";
-  readonly clearEnabled: boolean;
-}
-
-const SUBMIT_OFF: RoundControl = { label: "submit", intent: "submit", enabled: false };
-
-const ROUND_CONTROLS = {
-  idle: {
-    first: { label: "start", intent: "start", enabled: true },
-    second: SUBMIT_OFF,
-    primary: "first",
-    clearEnabled: false,
-  },
-  study: {
-    first: { label: "done", intent: "endStudy", enabled: true },
-    second: SUBMIT_OFF,
-    primary: "first",
-    clearEnabled: false,
-  },
-  rebuild: {
-    first: { label: "restart", intent: "start", enabled: true },
-    second: { label: "submit", intent: "submit", enabled: true },
-    primary: "second",
-    clearEnabled: true,
-  },
-  scored: {
-    first: { label: "again", intent: "start", enabled: true },
-    second: SUBMIT_OFF,
-    primary: "first",
-    clearEnabled: false,
-  },
-} as const satisfies Record<RoundState["phase"], PhaseControls>;
 
 function useRecordReading(state: RoundState): void {
   const recorded = useRef<RoundState | null>(null);
@@ -126,14 +56,41 @@ function useRecordReading(state: RoundState): void {
   }, [state]);
 }
 
+/** The suggested difficulty under the readout, once the reading has a score. */
+const CalibrationNext = memo(function CalibrationNext({ accuracy }: { accuracy: number | null }) {
+  const t = useTranslations(COPY);
+  const presets = useTranslations("game.presets");
+  const tier = accuracy === null ? null : suggestTier(accuracy);
+
+  return (
+    <div className="lab-rc-next">
+      {tier ? (
+        <>
+          <b>{t("readout.suggested")}</b>{" "}
+          {t(`readout.${tier.advice}`, {
+            tier: presets(`${tier.difficulty}.label`),
+            pieceCount: tier.pieceCount,
+            memorizeSeconds: tier.memorizeTime,
+          })}
+          <br />
+          <Link className="lab-go" href={playHref(tier.pieceCount, tier.memorizeTime, "calibration_cta")}>
+            {t("readout.playTier", { tier: presets(`${tier.difficulty}.label`) })} →
+          </Link>
+        </>
+      ) : (
+        t("readout.nextEmpty")
+      )}
+    </div>
+  );
+});
+
 export function CalibrationSection() {
-  const t = useTranslations("home.lab.calibrate");
+  const t = useTranslations(COPY);
   const tPhase = useTranslations("home.lab.method.phases");
   const [state, dispatch] = useReducer(roundReducer, { phase: "idle" });
   const onStudyEnded = useCallback((now: number) => dispatch({ type: "studyEnded", now }), []);
   useStudyDeadline(state, onStudyEnded);
   useRecordReading(state);
-  const meterRef = useRef<HTMLElement>(null);
   const [starting, setStarting] = useState(false);
   const [startFailed, setStartFailed] = useState(false);
 
@@ -143,7 +100,7 @@ export function CalibrationSection() {
     try {
       const target = await loadCalibrationPosition();
       if (target) {
-        dispatch({ type: "start", target, now: performance.now() });
+        dispatch({ type: "start", config: CALIBRATION_CONFIG, target, now: performance.now() });
         trackEvent({
           name: "round_start",
           params: { piece_count: CALIBRATION_RULES.pieceCount, memorize_time: STUDY_SECONDS, source: "calibration" },
@@ -177,27 +134,6 @@ export function CalibrationSection() {
               total: state.score.total,
             })
           : "";
-  const controls = ROUND_CONTROLS[state.phase];
-  const press: Record<ControlIntent, () => void> = {
-    start,
-    endStudy: () => dispatch({ type: "studyEnded", now: performance.now() }),
-    submit: () => dispatch({ type: "submit", now: performance.now() }),
-  };
-  const renderControl = (slot: "first" | "second") => {
-    const control = controls[slot];
-    const primary = controls.primary === slot;
-    return (
-      <button
-        type="button"
-        className={`lab-btn ${primary ? "lab-btn-primary" : "lab-btn-secondary"}`}
-        data-primary={primary || undefined}
-        disabled={!control.enabled || (control.intent === "start" && starting)}
-        onClick={press[control.intent]}
-      >
-        {t(control.label)}
-      </button>
-    );
-  };
 
   return (
     <section className="lab-sec" id={LAB_SECTIONS.calibrate.anchor}>
@@ -205,31 +141,26 @@ export function CalibrationSection() {
         <SectionHeading section="calibrate" title={t("title")} lede={t("lede", { pieceCount: CALIBRATION_RULES.pieceCount, memorizeSeconds: STUDY_SECONDS })} />
         <div className="lab-cal">
           <div className="lab-cal-board lab-plate lab-plate-grid">
-            <div className="lab-cal-head">
-              <span className="lab-k">{heading}</span>
-              <div className="lab-cal-head-end">
-                <RoundClock face={clockFace(state)} meterRef={meterRef} />
-                <button
-                  type="button"
-                  className="lab-icon-btn"
-                  disabled={!controls.clearEnabled}
-                  aria-label={t("clear")}
-                  title={t("clear")}
-                  onClick={() => dispatch({ type: "clear" })}
-                >
-                  <Eraser size={20} aria-hidden="true" />
-                </button>
-              </div>
-            </div>
-            <div className="lab-meter" aria-hidden="true">
-              <i ref={meterRef} />
-            </div>
-            <CalibrationBoard state={state} dispatch={dispatch} />
+            <RoundHead
+              heading={heading}
+              face={clockFace(state, CALIBRATION_RULES.studyMs)}
+              clearEnabled={state.phase === "rebuild"}
+              onClear={() => dispatch({ type: "clear" })}
+              copy={COPY}
+            />
+            <RoundBoard state={state} dispatch={dispatch} copy={COPY} />
+            <RoundPalette state={state} dispatch={dispatch} copy={COPY} />
             <div className="lab-cal-actions">
-              <div className="lab-cal-main" role="group" aria-label={t("controlsLabel")}>
-                {renderControl("first")}
-                {renderControl("second")}
-              </div>
+              <RoundControls
+                phase={state.phase}
+                copy={COPY}
+                starting={starting}
+                press={{
+                  start,
+                  endStudy: () => dispatch({ type: "studyEnded", now: performance.now() }),
+                  submit: () => dispatch({ type: "submit", now: performance.now() }),
+                }}
+              />
             </div>
             <p className="lab-sr" aria-live="polite">
               {announcement}
@@ -237,7 +168,12 @@ export function CalibrationSection() {
             {startFailed && <p className="lab-note">{t("startFailed")}</p>}
           </div>
           <div>
-            <ReadoutCard state={state} />
+            <ReadoutCard
+              state={state}
+              copy={COPY}
+              expected={CALIBRATION_RULES}
+              next={<CalibrationNext accuracy={state.phase === "scored" ? state.score.accuracy : null} />}
+            />
             <ol className="lab-cal-steps">
               {(t.raw("steps") as string[]).map((step) => (
                 <li key={step}>{step}</li>

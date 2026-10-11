@@ -1,5 +1,5 @@
 import type { SquareName } from "@/lib/game/board";
-import { labPositionFromFen, type LabPosition } from "./calibration";
+import { labPositionFromFen, type LabPosition } from "@/lib/round/round";
 import { relation, type Group, type Relation } from "./relations";
 
 export type GroupId = "whiteCorner" | "longDiagonal" | "blackWall" | "runner";

@@ -3,7 +3,7 @@
 import { Chess, type Color, type Square } from "chess.js";
 import en from "../../../../messages/en.json";
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
-import { isDarkSquare, labPositionToFen } from "@/lib/home/calibration";
+import { isDarkSquare, labPositionToFen } from "@/lib/round/round";
 import type { Relation } from "@/lib/home/relations";
 import { pieceTypeToFenChar } from "@/utils/chessPieces";
 import { SHOWCASE } from "@/lib/home/showcase";

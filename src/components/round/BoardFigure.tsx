@@ -5,7 +5,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { getPieceImageUrl } from "@/utils/chessPieces";
 import { BOARD_SQUARES, FILES, RANKS, type SquareName } from "@/lib/game/board";
-import { isDarkSquare, type LabPiece, type LabPosition } from "@/lib/home/calibration";
+import { isDarkSquare, type LabPiece, type LabPosition } from "@/lib/round/round";
 
 export type PieceState = "on" | "off" | "ghost";
 
@@ -37,9 +37,12 @@ export function usePieceName(): (piece: LabPiece) => string {
 
 interface BoardFigureProps {
   children: ReactNode;
+  /** Draws the rank and file labels round the board; off, the board takes the whole figure. */
+  coordinates?: boolean;
 }
 
-export function BoardFigure({ children }: BoardFigureProps) {
+export function BoardFigure({ children, coordinates = true }: BoardFigureProps) {
+  if (!coordinates) return <div className="lab-figure" data-bare="">{children}</div>;
   return (
     <div className="lab-figure">
       {children}

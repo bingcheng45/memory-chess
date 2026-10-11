@@ -288,6 +288,47 @@
       "sendFailed": "Nu am putut trimite părerea ta. Încearcă din nou sau alege „Nu acum”.",
       "send": "Trimite părerea",
       "sending": "Se trimite…"
+    },
+    "round": {
+      "start": "Începe",
+      "done": "Gata",
+      "restart": "Reîncepe",
+      "again": "Joacă din nou",
+      "submit": "Trimite",
+      "clear": "Golește tabla",
+      "controlsLabel": "Comenzile rundei",
+      "boardLabel": "Tablă. Folosește tastele săgeți pentru a te deplasa între pătrate.",
+      "paletteLabel": "Paleta de piese",
+      "squareEmpty": "{square}, gol",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Memorează poziția",
+      "phaseRebuild": "Așază piesele",
+      "liveStudy": "Studiază poziția. {memorizeSeconds} secunde.",
+      "liveRebuild": "Tabla a fost golită. Alege o piesă, apoi un pătrat.",
+      "liveScore": "Precizie {accuracy} la sută. {correct} din {total} pătrate corecte.",
+      "readout": {
+        "title": "Rezultate",
+        "statusIdle": "Se așteaptă runda",
+        "statusRecording": "Se înregistrează",
+        "statusDone": "Rundă încheiată",
+        "correct": "Pătrate corecte",
+        "time": "Timp de reconstruire",
+        "wrong": "Piese greșite",
+        "exposure": "Timp de studiu",
+        "byType": "Memorare pe tip de piesă",
+        "byTypeEmpty": "Memorarea pe tip de piesă apare aici după rundă.",
+        "legendCorrect": "corect",
+        "legendWrong": "plasare greșită",
+        "legendMissed": "pătrat ratat"
+      },
+      "pieceTypes": {
+        "king": "Rege",
+        "queen": "Damă",
+        "rook": "Turn",
+        "bishop": "Nebun",
+        "knight": "Cal",
+        "pawn": "Pion"
+      }
     }
   },
   "leaderboard": {

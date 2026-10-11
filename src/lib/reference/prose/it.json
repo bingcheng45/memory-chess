@@ -6,15 +6,15 @@
       "heading": "Le tre fasi di un turno",
       "memorize": {
         "title": "Memorizza",
-        "body": "Una posizione appare su una scacchiera completa per un numero fisso di secondi. Niente si muove e niente è nascosto. Puoi chiudere la fase in anticipo con Salta, e il cronometro registra quanto hai guardato davvero, non il tempo che ti era stato concesso."
+        "body": "Una posizione appare su una scacchiera completa per un numero fisso di secondi. Niente si muove e niente è nascosto. Puoi chiudere la fase in anticipo con Fatto, e il cronometro registra quanto hai guardato davvero, non il tempo che ti era stato concesso."
       },
       "place": {
         "title": "Posiziona",
-        "body": "La scacchiera si svuota. Scegli tipo e colore di un pezzo, poi tocchi una casa per metterlo giù o la tocchi di nuovo per toglierlo. Qui non c'è limite di tempo, ma il cronometro corre dal momento in cui la scacchiera si svuota fino all'invio."
+        "body": "La scacchiera si svuota. Scegli un pezzo dalla tavolozza, poi tocchi una casa per metterlo giù o la tocchi di nuovo per toglierlo. Qui non c'è limite di tempo, ma il cronometro corre dal momento in cui la scacchiera si svuota fino all'invio."
       },
       "score": {
         "title": "Punteggio",
-        "body": "La tua scacchiera viene confrontata casa per casa con l'originale. Vedi quali pezzi erano giusti, quali sbagliati e quali ti sono sfuggiti, insieme alla posizione che ti era stata mostrata, affiancate sugli schermi larghi e una sopra l'altra su quelli stretti."
+        "body": "La tua scacchiera viene confrontata casa per casa con l'originale. Le case giuste e i pezzi sbagliati vengono segnati sulla scacchiera, e i pezzi che ti sono sfuggiti compaiono in trasparenza dove si trovavano, accanto a un resoconto della tua precisione e del tuo ricordo per tipo di pezzo."
       }
     },
     "presets": {

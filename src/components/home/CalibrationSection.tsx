@@ -1,5 +1,6 @@
 "use client";
 
+import { Eraser } from "lucide-react";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import {
@@ -12,46 +13,36 @@ import {
 import { phaseNumber, type MicroscopePhaseId } from "@/lib/home/specimen";
 import { trackEvent } from "@/lib/analytics/events";
 import { recordLabRound } from "@/lib/lab/recordRound";
-import { formatSeconds } from "@/utils/timer";
+import { formatSecondsMs } from "@/utils/timer";
 import { CalibrationBoard } from "./CalibrationBoard";
 import { ReadoutCard } from "./ReadoutCard";
+import { RoundClock, type ClockFace } from "./RoundClock";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
-const STUDY_TICK_MS = 50;
-const REBUILD_TICK_MS = 100;
 const STUDY_SECONDS = CALIBRATION_RULES.studyMs / 1000;
 
-const formatClock = (ms: number) => formatSeconds(ms).padStart(4, "0");
-
-function useRoundClock(state: RoundState, onStudyEnded: (now: number) => void): number {
-  const [clockMs, setClockMs] = useState<number>(CALIBRATION_RULES.studyMs);
-  const studyTarget = state.phase === "study" ? state.target : null;
-  const rebuildStart = state.phase === "rebuild" ? state.log.startedAt : null;
+function useStudyDeadline(state: RoundState, onStudyEnded: (now: number) => void): void {
+  const startedAt = state.phase === "study" ? state.startedAt : null;
 
   useEffect(() => {
-    if (!studyTarget) return;
-    const startedAt = performance.now();
-    setClockMs(CALIBRATION_RULES.studyMs);
-    const timer = setInterval(() => {
-      const now = performance.now();
-      const left = Math.max(0, CALIBRATION_RULES.studyMs - (now - startedAt));
-      setClockMs(left);
-      if (left === 0) {
-        clearInterval(timer);
-        onStudyEnded(now);
-      }
-    }, STUDY_TICK_MS);
-    return () => clearInterval(timer);
-  }, [studyTarget, onStudyEnded]);
+    if (startedAt === null) return;
+    const left = Math.max(0, CALIBRATION_RULES.studyMs - (performance.now() - startedAt));
+    const timer = setTimeout(() => onStudyEnded(performance.now()), left);
+    return () => clearTimeout(timer);
+  }, [startedAt, onStudyEnded]);
+}
 
-  useEffect(() => {
-    if (rebuildStart === null) return;
-    setClockMs(0);
-    const timer = setInterval(() => setClockMs(performance.now() - rebuildStart), REBUILD_TICK_MS);
-    return () => clearInterval(timer);
-  }, [rebuildStart]);
-
-  return clockMs;
+function clockFace(state: RoundState): ClockFace {
+  switch (state.phase) {
+    case "idle":
+      return { kind: "still", text: `${formatSecondsMs(CALIBRATION_RULES.studyMs)}s` };
+    case "study":
+      return { kind: "countdown", startedAt: state.startedAt, totalMs: CALIBRATION_RULES.studyMs };
+    case "rebuild":
+      return { kind: "countup", startedAt: state.log.startedAt };
+    case "scored":
+      return { kind: "still", text: `${state.score.accuracy}%` };
+  }
 }
 
 const ROUND_PHASE_ID = {
@@ -59,6 +50,55 @@ const ROUND_PHASE_ID = {
   rebuild: "rebuild",
   scored: "score",
 } as const satisfies Record<Exclude<RoundState["phase"], "idle">, MicroscopePhaseId>;
+
+type ControlIntent = "start" | "endStudy" | "submit";
+
+interface RoundControl {
+  readonly label: "start" | "done" | "restart" | "again" | "submit";
+  readonly intent: ControlIntent;
+  readonly enabled: boolean;
+}
+
+interface PhaseControls {
+  readonly first: RoundControl;
+  readonly second: RoundControl;
+  readonly primary: "first" | "second";
+  readonly clearEnabled: boolean;
+  readonly hint: "studyHint" | null;
+}
+
+const SUBMIT_OFF: RoundControl = { label: "submit", intent: "submit", enabled: false };
+
+const ROUND_CONTROLS = {
+  idle: {
+    first: { label: "start", intent: "start", enabled: true },
+    second: SUBMIT_OFF,
+    primary: "first",
+    clearEnabled: false,
+    hint: null,
+  },
+  study: {
+    first: { label: "done", intent: "endStudy", enabled: true },
+    second: SUBMIT_OFF,
+    primary: "first",
+    clearEnabled: false,
+    hint: "studyHint",
+  },
+  rebuild: {
+    first: { label: "restart", intent: "start", enabled: true },
+    second: { label: "submit", intent: "submit", enabled: true },
+    primary: "second",
+    clearEnabled: true,
+    hint: null,
+  },
+  scored: {
+    first: { label: "again", intent: "start", enabled: true },
+    second: SUBMIT_OFF,
+    primary: "first",
+    clearEnabled: false,
+    hint: null,
+  },
+} as const satisfies Record<RoundState["phase"], PhaseControls>;
 
 function useRecordReading(state: RoundState): void {
   const recorded = useRef<RoundState | null>(null);
@@ -73,7 +113,7 @@ function useRecordReading(state: RoundState): void {
       memorizeSeconds: STUDY_SECONDS,
       targetFen: labPositionToFen(state.target),
       placedFen: labPositionToFen(state.placed),
-      memorizeMs: CALIBRATION_RULES.studyMs,
+      memorizeMs: Math.round(state.studyMs),
       solveMs: Math.round(state.rebuildMs),
       placements: state.log.placements,
       removals: state.log.removals,
@@ -96,8 +136,9 @@ export function CalibrationSection() {
   const tPhase = useTranslations("home.lab.method.phases");
   const [state, dispatch] = useReducer(roundReducer, { phase: "idle" });
   const onStudyEnded = useCallback((now: number) => dispatch({ type: "studyEnded", now }), []);
-  const clockMs = useRoundClock(state, onStudyEnded);
+  useStudyDeadline(state, onStudyEnded);
   useRecordReading(state);
+  const meterRef = useRef<HTMLElement>(null);
   const [starting, setStarting] = useState(false);
   const [startFailed, setStartFailed] = useState(false);
 
@@ -107,7 +148,7 @@ export function CalibrationSection() {
     try {
       const target = await loadCalibrationPosition();
       if (target) {
-        dispatch({ type: "start", target });
+        dispatch({ type: "start", target, now: performance.now() });
         trackEvent({
           name: "round_start",
           params: { piece_count: CALIBRATION_RULES.pieceCount, memorize_time: STUDY_SECONDS, source: "calibration" },
@@ -128,11 +169,6 @@ export function CalibrationSection() {
           number: phaseNumber(ROUND_PHASE_ID[state.phase]),
           name: tPhase(`${ROUND_PHASE_ID[state.phase]}.name`),
         });
-  const clock =
-    state.phase === "scored"
-      ? `${state.score.accuracy}%`
-      : `${formatClock(state.phase === "idle" ? CALIBRATION_RULES.studyMs : clockMs)}s`;
-  const meter = state.phase === "study" ? (clockMs / CALIBRATION_RULES.studyMs) * 100 : 0;
   const announcement = startFailed
     ? t("startFailed")
     : state.phase === "study"
@@ -146,8 +182,29 @@ export function CalibrationSection() {
               total: state.score.total,
             })
           : "";
-  const startLabel =
-    state.phase === "rebuild" ? t("restart") : state.phase === "scored" ? t("again") : t("start");
+  const controls = ROUND_CONTROLS[state.phase];
+  const press: Record<ControlIntent, () => void> = {
+    start,
+    endStudy: () => dispatch({ type: "studyEnded", now: performance.now() }),
+    submit: () => dispatch({ type: "submit", now: performance.now() }),
+  };
+  const renderControl = (slot: "first" | "second") => {
+    const control = controls[slot];
+    const primary = controls.primary === slot;
+    return (
+      <button
+        type="button"
+        className={`lab-btn ${primary ? "lab-btn-primary" : "lab-btn-secondary"}`}
+        data-primary={primary || undefined}
+        disabled={!control.enabled || (control.intent === "start" && starting)}
+        aria-describedby={control.label === "done" ? "cal-hint" : undefined}
+        onClick={press[control.intent]}
+      >
+        {primary && <span className="lab-dot" aria-hidden="true" />}
+        {t(control.label)}
+      </button>
+    );
+  };
 
   return (
     <section className="lab-sec" id={LAB_SECTIONS.calibrate.anchor}>
@@ -157,39 +214,31 @@ export function CalibrationSection() {
           <div className="lab-cal-board">
             <div className="lab-cal-head">
               <span className="lab-k">{heading}</span>
-              <span className="lab-mono">{clock}</span>
+              <RoundClock face={clockFace(state)} meterRef={meterRef} />
             </div>
             <div className="lab-meter" aria-hidden="true">
-              <i style={{ width: `${meter}%` }} />
+              <i ref={meterRef} />
             </div>
             <CalibrationBoard state={state} dispatch={dispatch} />
             <div className="lab-cal-actions">
+              <div className="lab-cal-main" role="group" aria-label={t("controlsLabel")}>
+                {renderControl("first")}
+                {renderControl("second")}
+              </div>
               <button
                 type="button"
-                className="lab-btn lab-btn-primary"
-                disabled={state.phase === "study" || starting}
-                onClick={start}
-              >
-                <span className="lab-dot" aria-hidden="true" />
-                {startLabel}
-              </button>
-              <button
-                type="button"
-                className="lab-btn lab-btn-secondary"
-                disabled={state.phase !== "rebuild"}
-                onClick={() => dispatch({ type: "submit", now: performance.now() })}
-              >
-                {t("submit")}
-              </button>
-              <button
-                type="button"
-                className="lab-btn lab-btn-secondary"
-                disabled={state.phase !== "rebuild"}
+                className="lab-icon-btn"
+                disabled={!controls.clearEnabled}
+                aria-label={t("clear")}
+                title={t("clear")}
                 onClick={() => dispatch({ type: "clear" })}
               >
-                {t("clear")}
+                <Eraser size={20} aria-hidden="true" />
               </button>
             </div>
+            <p className="lab-note lab-cal-hint" id="cal-hint">
+              {controls.hint && t(controls.hint)}
+            </p>
             <p className="lab-sr" aria-live="polite">
               {announcement}
             </p>

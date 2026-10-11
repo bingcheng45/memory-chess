@@ -228,18 +228,18 @@ describe("the calibration round controls", () => {
 
   it("shows milliseconds on the study clock, the rebuild clock and the readout times", async () => {
     renderWithIntl(<CalibrationSection />);
-    expect(screen.getByTestId("round-clock")).toHaveTextContent("10.000s");
+    expect(screen.getByRole("timer")).toHaveTextContent("10.000s");
     await startRound();
     act(() => {
       jest.advanceTimersByTime(1250);
     });
-    expect(screen.getByTestId("round-clock").textContent).toMatch(/^[89]\.\d{3}s$/);
+    expect(screen.getByRole("timer").textContent).toMatch(/^[89]\.\d{3}s$/);
 
     fireEvent.click(controls().getByRole("button", { name: "Done" }));
     act(() => {
       jest.advanceTimersByTime(2500);
     });
-    const rebuildClock = screen.getByTestId("round-clock").textContent;
+    const rebuildClock = screen.getByRole("timer").textContent;
     expect(rebuildClock).toMatch(/^2\.\d{3}s$/);
 
     fireEvent.click(controls().getByRole("button", { name: "Submit reading" }));

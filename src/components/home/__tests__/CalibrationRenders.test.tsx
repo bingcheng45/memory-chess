@@ -31,7 +31,7 @@ describe("the calibration clock", () => {
       });
     }
 
-    const left = Number(screen.getByTestId("round-clock").textContent?.replace("s", ""));
+    const left = Number(screen.getByRole("timer").textContent?.replace("s", ""));
     expect(left).toBeGreaterThan(4.5);
     expect(left).toBeLessThan(5.2);
     expect(mockBoardRenders.count).toBe(0);

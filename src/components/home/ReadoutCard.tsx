@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CALIBRATION_RULES, suggestTier, type RoundState } from "@/lib/home/calibration";
 import { playHref } from "@/lib/game/roundLink";
-import { formatSeconds } from "@/utils/timer";
+import { formatSecondsMs } from "@/utils/timer";
 import { RecallBar } from "./LabCharts";
 
 const STATUS_KEY = {
@@ -22,7 +22,7 @@ export const ReadoutCard = memo(function ReadoutCard({ state }: { state: RoundSt
   const scored = state.phase === "scored" ? state : null;
   const score = scored?.score;
   const tier = score ? suggestTier(score.accuracy) : null;
-  const exposure = formatSeconds(CALIBRATION_RULES.studyMs);
+  const exposure = formatSecondsMs(state.phase === "rebuild" || state.phase === "scored" ? state.studyMs : CALIBRATION_RULES.studyMs);
 
   return (
     <div className="lab-card">
@@ -45,7 +45,7 @@ export const ReadoutCard = memo(function ReadoutCard({ state }: { state: RoundSt
         </div>
         <div>
           <span className="lab-k">{t("readout.time")}</span>
-          <b>{scored ? `${formatSeconds(scored.rebuildMs)}s` : "--.-s"}</b>
+          <b>{scored ? `${formatSecondsMs(scored.rebuildMs)}s` : "--.---s"}</b>
         </div>
         <div>
           <span className="lab-k">{t("readout.wrong")}</span>

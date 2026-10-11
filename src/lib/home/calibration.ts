@@ -156,12 +156,13 @@ export function suggestTier(accuracy: number): TierSuggestion {
 
 export type RoundState =
   | { readonly phase: "idle" }
-  | { readonly phase: "study"; readonly target: LabPosition }
+  | { readonly phase: "study"; readonly target: LabPosition; readonly startedAt: number }
   | {
       readonly phase: "rebuild";
       readonly target: LabPosition;
       readonly placed: LabPosition;
       readonly selected: LabPiece | null;
+      readonly studyMs: number;
       readonly log: PlacementLog;
     }
   | {
@@ -170,11 +171,12 @@ export type RoundState =
       readonly placed: LabPosition;
       readonly score: Score;
       readonly rebuildMs: number;
+      readonly studyMs: number;
       readonly log: PlacementLog;
     };
 
 export type RoundAction =
-  | { readonly type: "start"; readonly target: LabPosition }
+  | { readonly type: "start"; readonly target: LabPosition; readonly now: number }
   | { readonly type: "studyEnded"; readonly now: number }
   | { readonly type: "select"; readonly piece: LabPiece }
   | { readonly type: "tapSquare"; readonly square: SquareName; readonly now: number }
@@ -186,10 +188,17 @@ function withoutSquare(position: LabPosition, square: SquareName): LabPosition {
 }
 
 export function roundReducer(state: RoundState, action: RoundAction): RoundState {
-  if (action.type === "start") return { phase: "study", target: action.target };
+  if (action.type === "start") return { phase: "study", target: action.target, startedAt: action.now };
   if (action.type === "studyEnded") {
     return state.phase === "study"
-      ? { phase: "rebuild", target: state.target, placed: {}, selected: null, log: startPlacementLog(action.now) }
+      ? {
+          phase: "rebuild",
+          target: state.target,
+          placed: {},
+          selected: null,
+          studyMs: Math.min(CALIBRATION_RULES.studyMs, action.now - state.startedAt),
+          log: startPlacementLog(action.now),
+        }
       : state;
   }
   if (state.phase !== "rebuild") return state;
@@ -219,6 +228,7 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
         placed: state.placed,
         score: scoreReading(state.target, state.placed),
         rebuildMs: action.now - state.log.startedAt,
+        studyMs: state.studyMs,
         log: state.log,
       };
   }

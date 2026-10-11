@@ -159,7 +159,7 @@ export function LabHeader({ streak }: { streak: HeaderStreak | null }) {
             </button>
           </div>
         </div>
-        <div className="lab-menu" id={menuPanelId} hidden={!menu.open}>
+        <nav className="lab-menu" id={menuPanelId} aria-label={t("menu")} hidden={!menu.open}>
           <div className="lab-menu-cols">
             <div>
               <p className="lab-panel-label">{t("onPage")}</p>
@@ -183,7 +183,7 @@ export function LabHeader({ streak }: { streak: HeaderStreak | null }) {
           <div className="lab-menu-tools">
             <LanguageSettings appearance="paper" />
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   );

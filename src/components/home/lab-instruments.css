@@ -140,25 +140,25 @@
  * for the Sample state without moving anything below it.
  */
 .lab-paper {
-  --lab-h-unlock: 328px; --lab-h-span: 536px; --lab-h-held: 504px; --lab-h-spark: 472px; --lab-h-speed: 528px;
-  --lab-h-heat: 520px; --lab-h-streak: 616px; --lab-h-bests: 504px; --lab-h-types: 528px; --lab-h-tools: 244px;
-  --lab-h-insights: 368px; --lab-h-notebook: 408px; --lab-h-plans: 496px; --lab-h-goal: 304px; --lab-h-daily: 336px;
-  --lab-h-curve: 632px; --lab-h-board: 648px; --lab-heat-w: 260px;
+  --lab-h-unlock: 344px; --lab-h-span: 560px; --lab-h-held: 528px; --lab-h-spark: 496px; --lab-h-speed: 560px;
+  --lab-h-heat: 552px; --lab-h-streak: 600px; --lab-h-bests: 392px; --lab-h-types: 560px; --lab-h-tools: 264px;
+  --lab-h-insights: 408px; --lab-h-notebook: 440px; --lab-h-plans: 520px; --lab-h-goal: 328px; --lab-h-daily: 400px;
+  --lab-h-curve: 648px; --lab-h-board: 664px; --lab-heat-w: 260px;
 }
 @media (max-width: 1000px) {
   .lab-paper {
-    --lab-h-unlock: 432px; --lab-h-span: 496px; --lab-h-held: 512px; --lab-h-spark: 448px; --lab-h-speed: 520px;
-    --lab-h-heat: 616px; --lab-h-streak: 680px; --lab-h-bests: 920px; --lab-h-types: 656px; --lab-h-tools: 544px;
-    --lab-h-insights: 424px; --lab-h-notebook: 448px; --lab-h-plans: 968px; --lab-h-goal: 328px; --lab-h-daily: 360px;
-    --lab-h-curve: 608px; --lab-h-board: 704px;
+    --lab-h-unlock: 448px; --lab-h-span: 536px; --lab-h-held: 520px; --lab-h-spark: 496px; --lab-h-speed: 584px;
+    --lab-h-heat: 600px; --lab-h-streak: 672px; --lab-h-bests: 560px; --lab-h-types: 656px; --lab-h-tools: 544px;
+    --lab-h-insights: 440px; --lab-h-notebook: 472px; --lab-h-plans: 992px; --lab-h-goal: 352px; --lab-h-daily: 400px;
+    --lab-h-curve: 608px; --lab-h-board: 808px;
   }
 }
 @media (max-width: 640px) {
   .lab-paper {
-    --lab-h-unlock: 360px; --lab-h-span: 544px; --lab-h-held: 536px; --lab-h-spark: 496px; --lab-h-speed: 552px;
-    --lab-h-heat: 616px; --lab-h-streak: 624px; --lab-h-bests: 592px; --lab-h-types: 632px; --lab-h-tools: 408px;
-    --lab-h-insights: 600px; --lab-h-notebook: 648px; --lab-h-plans: 1300px; --lab-h-goal: 464px; --lab-h-daily: 504px;
-    --lab-h-curve: 648px; --lab-h-board: 648px;
+    --lab-h-unlock: 384px; --lab-h-span: 584px; --lab-h-held: 552px; --lab-h-spark: 520px; --lab-h-speed: 584px;
+    --lab-h-heat: 600px; --lab-h-streak: 616px; --lab-h-bests: 536px; --lab-h-types: 632px; --lab-h-tools: 432px;
+    --lab-h-insights: 624px; --lab-h-notebook: 656px; --lab-h-plans: 1312px; --lab-h-goal: 480px; --lab-h-daily: 560px;
+    --lab-h-curve: 632px; --lab-h-board: 664px;
   }
 }
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
@@ -366,7 +366,7 @@
 .lab-target-bar span { display: block; height: 100%; background: var(--lp-accent); }
 .lab-target-reached { font-weight: 600; color: var(--lp-correct); }
 .lab-target-form { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 16px; font-size: 14px; color: var(--lp-ink-2); }
-.lab-target-form select { padding: 8px 10px; font: 500 14px/1.3 var(--lp-data); color: var(--lp-ink); background: var(--lp-surface); border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-sm); }
+.lab-target-form select { padding: 8px 10px; font: 500 14px/1.3 var(--lp-ui); color: var(--lp-ink); background: var(--lp-surface); border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-sm); }
 .lab-target-form .lab-btn { min-height: 36px; padding: 0 14px; font-size: 14px; }
 @media (max-width: 900px) { .lab-plans { grid-template-columns: 1fr; } }
 

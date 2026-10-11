@@ -88,7 +88,9 @@ describe("the homepage header", () => {
     const menuButton = screen.getByRole("button", { name: "Menu" });
 
     fireEvent.click(menuButton);
-    const panel = document.getElementById(menuButton.getAttribute("aria-controls")!)!;
+    const panel = screen.getByRole("navigation", { name: "Menu" });
+
+    expect(panel).toHaveAttribute("id", menuButton.getAttribute("aria-controls"));
 
     expect(menuButton).toHaveAttribute("aria-expanded", "true");
     expect(hrefsOf(panel)).toEqual([

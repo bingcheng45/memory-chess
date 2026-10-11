@@ -65,7 +65,7 @@ describe("lab record reserved heights", () => {
     });
 
     // The tools strip is not rendered on the server at all.
-    expect(blank).toEqual(["tools: 408px"]);
+    expect(blank).toEqual(["tools: 432px"]);
   });
 
   it("give each box its reserve as a minimum height", () => {

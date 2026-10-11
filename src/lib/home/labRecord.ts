@@ -1,5 +1,6 @@
 import type { StreakDay } from "@/lib/lab/streak";
 import type { NotebookEntry } from "@/lib/lab/notebook";
+import type { PieceSymbol } from "chess.js";
 
 export const SAMPLE_ACCURACY: readonly number[] = [52, 58, 55, 63, 61, 68, 66, 72, 70, 75, 74, 79];
 
@@ -16,6 +17,15 @@ export const SAMPLE_SPEED_ACCURACY = 88;
 
 /** Miss shares, in percent, on the a and h files and on the d and e files of the sample finding. */
 export const SAMPLE_EDGE_MISS = { edge: 38, centre: 19 };
+
+/** Recall shares, in percent, for the sample piece bars; the king is a baseline and has no bar. */
+export const SAMPLE_TYPE_RECALL: readonly { readonly type: PieceSymbol; readonly share: number }[] = [
+  { type: "q", share: 82 },
+  { type: "r", share: 74 },
+  { type: "b", share: 61 },
+  { type: "n", share: 48 },
+  { type: "p", share: 39 },
+];
 
 export const SAMPLE_NOTEBOOK: readonly Pick<NotebookEntry, "kind" | "params">[] = [
   { kind: "span", params: { day: 12, from: 6, to: 8 } },

@@ -75,23 +75,26 @@ export function InsightsPanel({ result: { readiness, value }, daysAgo }: PanelPr
   const tags = useTags();
   const sentence = ({ ruleId, params }: Insight) => t(`insights.rules.${ruleId}`, sentenceValues(params));
 
+  const { edge, centre } = SAMPLE_EDGE_MISS;
+  const sample = (
+    <>
+      <ul className="lab-insights" aria-label={t("insights.sampleList")}>
+        <Finding text={t("insights.sample", { edge, centre, times: aboutTimes(edge / centre) })} action={{ kind: "rig", ...EDGE_RIG }} />
+      </ul>
+      <p className="lab-note">{t("insights.sampleNote")}</p>
+    </>
+  );
+
   const body = () => {
-    if (!value) {
-      const { edge, centre } = SAMPLE_EDGE_MISS;
-      return (
-        <>
-          <ul className="lab-insights" aria-label={t("insights.sampleList")}>
-            <Finding text={t("insights.sample", { edge, centre, times: aboutTimes(edge / centre) })} action={{ kind: "rig", ...EDGE_RIG }} />
-          </ul>
-          <p className="lab-note">{t("insights.sampleNote")}</p>
-        </>
-      );
-    }
+    if (!value) return sample;
     if (!hasFigure(readiness)) {
       return (
-        <p className="lab-panel-desc lab-empty">
-          {t("insights.need", { threshold: INSIGHTS_THRESHOLDS.rounds, count: readiness.need?.rounds ?? 0 })}
-        </p>
+        <>
+          <p className="lab-panel-desc lab-empty">
+            {t("insights.need", { threshold: INSIGHTS_THRESHOLDS.rounds, count: readiness.need?.rounds ?? 0 })}
+          </p>
+          {sample}
+        </>
       );
     }
     return (
@@ -115,7 +118,7 @@ export function InsightsPanel({ result: { readiness, value }, daysAgo }: PanelPr
     <PanelFrame
       panel="insights"
       name="insights"
-      tag={value ? tags.mine : tags.sample}
+      tag={value && hasFigure(readiness) ? tags.mine : tags.sample}
       state={readiness.state}
       intro={<p className="lab-panel-desc">{t("insights.desc")}</p>}
     >

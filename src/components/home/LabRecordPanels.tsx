@@ -8,6 +8,7 @@ import { figureNumber, type PanelId } from "@/lib/lab/panels";
 import type { StreakDay } from "@/lib/lab/streak";
 import { hasFigure, type Readiness, type ReadinessState } from "@/lib/lab/readiness";
 import type { PieceSymbol } from "chess.js";
+import { SAMPLE_TYPE_RECALL } from "@/lib/home/labRecord";
 import { FILES, RANKS } from "@/lib/game/board";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { formatSeconds } from "@/utils/timer";
@@ -137,17 +138,24 @@ export function MissPanel({ result: { readiness, value: map }, daysAgo }: { resu
         : t("heat.lineThin", { line: names[index], shown: cell.shown }),
     }));
 
+  const sample = (
+    <>
+      <MissMap label={t("heat.aria")} />
+      <p className="lab-note">{t("heat.note")}</p>
+    </>
+  );
+
   return (
-    <PanelFrame panel="missMap" name="heat" tag={map ? tags.mine : tags.sample} state={readiness.state}>
+    <PanelFrame panel="missMap" name="heat" tag={map && hasFigure(readiness) ? tags.mine : tags.sample} state={readiness.state}>
       {!map ? (
-        <>
-          <MissMap label={t("heat.aria")} />
-          <p className="lab-note">{t("heat.note")}</p>
-        </>
+        sample
       ) : !hasFigure(readiness) ? (
-        <p className="lab-panel-desc lab-empty">
-          {map.roundsEstimate === null ? t("heat.needStart") : t("heat.need", { count: map.roundsEstimate })}
-        </p>
+        <>
+          <p className="lab-panel-desc lab-empty">
+            {map.roundsEstimate === null ? t("heat.needStart") : t("heat.need", { count: map.roundsEstimate })}
+          </p>
+          {sample}
+        </>
       ) : (
         <>
           {map.view === "squares" ? (
@@ -299,8 +307,19 @@ export function TypesPanel({ result: { readiness, value: recall }, daysAgo }: { 
   const kings = (king: TypeRecall) => <p className="lab-note">{t("types.kings", { recalled: king.recalled, shown: king.shown })}</p>;
   const ready = recall && hasFigure(readiness);
 
+  const sample = (
+    <>
+      <div className="lab-bars">
+        {SAMPLE_TYPE_RECALL.map(({ type, share }) => (
+          <RecallBar key={type} label={typeName(type)} share={share / 100} value={`${share}%`} />
+        ))}
+      </div>
+      <p className="lab-note">{t("types.sampleNote")}</p>
+    </>
+  );
+
   return (
-    <PanelFrame panel="typeRecall" name="types" tag={ready ? tags.mine : null} state={readiness.state}>
+    <PanelFrame panel="typeRecall" name="types" tag={ready ? tags.mine : tags.sample} state={readiness.state}>
       {ready ? (
         <>
           <div className="lab-bars">
@@ -321,11 +340,15 @@ export function TypesPanel({ result: { readiness, value: recall }, daysAgo }: { 
         <>
           <p className="lab-panel-desc lab-empty">{t("types.onlyKings")}</p>
           {kings(recall.king)}
+          {sample}
         </>
       ) : (
-        <p className="lab-panel-desc lab-empty">
-          {!recall || recall.roundsEstimate === null ? t("types.needStart") : t("types.need", { count: recall.roundsEstimate })}
-        </p>
+        <>
+          <p className="lab-panel-desc lab-empty">
+            {!recall || recall.roundsEstimate === null ? t("types.needStart") : t("types.need", { count: recall.roundsEstimate })}
+          </p>
+          {sample}
+        </>
       )}
     </PanelFrame>
   );

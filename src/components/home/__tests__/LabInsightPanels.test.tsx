@@ -33,9 +33,9 @@ describe("insights panel", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
     const insights = panel("Insights");
 
-    expect(within(insights).getByText("Your record")).toBeInTheDocument();
+    expect(within(insights).getByText("Sample")).toBeInTheDocument();
     expect(within(insights).getByText("Insights read your record from 10 rounds. 8 more rounds to go.")).toBeInTheDocument();
-    expect(within(insights).queryByRole("list")).toBeNull();
+    expect(within(insights).queryByRole("list", { name: "Findings from your record" })).toBeNull();
   });
 
   it("says plainly when nothing stands out, as the player's own record", () => {
@@ -258,7 +258,7 @@ describe("insight sentences", () => {
 
 describe("a record panel that is still warming up", () => {
   const needs = {
-    "Miss map": /more rounds? until every file and rank has 10 pieces to read\.$/,
+    "Miss map": "Play a few more rounds to start your miss map.",
     "Recall by piece type": /more rounds? until a piece other than the king has 20 sightings\.$/,
     Insights: "Insights read your record from 10 rounds. 8 more rounds to go.",
   };

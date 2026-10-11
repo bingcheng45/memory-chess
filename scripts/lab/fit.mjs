@@ -1,20 +1,25 @@
 #!/usr/bin/env node
 /**
- * Checks layouts Jest cannot measure, in a real browser: the main nav fits one
- * row on English phones with full-size tap targets, and other locales wrap to no
- * more rows than they did before that fit. Screenshots of each go to the evidence directory.
+ * Checks layouts Jest cannot measure, in a real browser, each case in a fresh profile:
+ * the main nav fits one row on English phones with full-size tap targets, and other
+ * locales wrap to no more rows than they did before that fit; the dashboard's play
+ * button, shown while no headline figure is ready, is as wide as its label.
+ * Screenshots of each go to the evidence directory.
  *
- *   npm run lab:fit -- --base http://localhost:4671 --out <dir>
+ *   npm run lab:personas && npm run lab:fit -- --base http://localhost:4671 --out <dir> [--only <case>]
  */
+import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { argsOf, runPersona, sized } from "./drive.mjs";
+import { argsOf, loadPersona, PERSONA_ENV, runPersona, sized } from "./drive.mjs";
 
+const CASE_ENV = "LAB_FIT_CASE";
 const NAV_WIDTHS = [320, 360, 390];
 /** Rows the nav may take per locale at 320, 360 and 390 px. English must fit one; the others may not grow. */
 const NAV_ROWS = { "": [1, 1, 1], "/de": [2, 2, 2], "/ja": [2, 1, 1] };
 const MIN_TAP_PX = 44;
 const MIN_TEXT_PX = 14;
+const LOCKED_WIDTHS = [1440, 390];
 
 const NAV = `(() => {
   const links = [...document.querySelectorAll('nav[aria-label="Main"] li')].filter((item) => item.checkVisibility()).map((item) => item.querySelector("a"));
@@ -27,41 +32,84 @@ const NAV = `(() => {
   };
 })()`;
 
-async function shootTop(page, file) {
-  const { data } = await page.send("Page.captureScreenshot", { format: "png", clip: { x: 0, y: 0, width: await page.eval("innerWidth"), height: 220, scale: 2 } });
-  const { writeFileSync } = await import("node:fs");
+/** The play button's width beside the width its label and padding need on their own. */
+const LOCKED = `(() => {
+  const button = document.querySelector(".lab-share > a.lab-btn");
+  const natural = button.cloneNode(true);
+  natural.style.cssText = "position: absolute; width: max-content;";
+  button.parentElement.append(natural);
+  const result = { width: Math.round(button.getBoundingClientRect().width), natural: Math.round(natural.getBoundingClientRect().width) };
+  natural.remove();
+  return result;
+})()`;
+
+async function shoot(page, file, clip) {
+  const { data } = await page.send("Page.captureScreenshot", { format: "png", clip: { scale: 2, ...clip }, captureBeyondViewport: true });
   writeFileSync(file, Buffer.from(data, "base64"));
 }
 
-export default async function fit(page, { baseUrl, evidenceDir }) {
-  const nav = {};
+async function nav(page, { baseUrl, evidenceDir }) {
+  const measured = {};
   const failures = [];
   for (const [prefix, allowed] of Object.entries(NAV_ROWS)) {
     const locale = prefix.slice(1) || "en";
-    nav[locale] = {};
+    measured[locale] = {};
     for (const [index, width] of NAV_WIDTHS.entries()) {
       await sized(page, width, 800);
       await page.goto(`${baseUrl}${prefix}/leaderboard`);
       await page.waitFor(`!!document.querySelector('nav[aria-label="Main"] a')`, 20_000);
       await page.eval("document.fonts.ready.then(() => true)");
-      const measured = await page.eval(NAV);
-      nav[locale][width] = measured;
-      await shootTop(page, join(evidenceDir, `nav-${locale}-${width}.png`));
-      if (measured.rows > allowed[index]) failures.push(`${locale} at ${width}: ${measured.rows} rows, allowed ${allowed[index]}`);
-      if (measured.minHeight < MIN_TAP_PX) failures.push(`${locale} at ${width}: a link ${measured.minHeight}px tall`);
-      if (measured.minText < MIN_TEXT_PX) failures.push(`${locale} at ${width}: ${measured.minText}px text`);
-      if (measured.overflow > 0) failures.push(`${locale} at ${width}: ${measured.overflow}px horizontal overflow`);
+      const row = await page.eval(NAV);
+      measured[locale][width] = row;
+      await shoot(page, join(evidenceDir, `nav-${locale}-${width}.png`), { x: 0, y: 0, width, height: 220 });
+      if (row.rows > allowed[index]) failures.push(`${locale} at ${width}: ${row.rows} rows, allowed ${allowed[index]}`);
+      if (row.minHeight < MIN_TAP_PX) failures.push(`${locale} at ${width}: a link ${row.minHeight}px tall`);
+      if (row.minText < MIN_TEXT_PX) failures.push(`${locale} at ${width}: ${row.minText}px text`);
+      if (row.overflow > 0) failures.push(`${locale} at ${width}: ${row.overflow}px horizontal overflow`);
     }
   }
-  if (failures.length > 0) throw new Error(`${failures.join("; ")}\n${JSON.stringify(nav)}`);
-  return { nav };
+  return { measured, failures };
+}
+
+async function locked(page, { baseUrl, evidenceDir }) {
+  const measured = {};
+  const failures = [];
+  for (const width of LOCKED_WIDTHS) {
+    await sized(page, width);
+    await page.goto(`${baseUrl}/dashboard`);
+    await page.waitFor(`!!document.querySelector(".lab-share > a.lab-btn")`, 20_000);
+    const box = await page.eval(LOCKED);
+    measured[width] = box;
+    await shoot(page, join(evidenceDir, `locked-${width}.png`), await page.eval(`(() => { const r = document.querySelector(".lab-dash-head").getBoundingClientRect(); return { x: 0, y: r.top + scrollY, width: innerWidth, height: r.height }; })()`));
+    if (box.width !== box.natural) failures.push(`at ${width}: play button ${box.width}px wide, its label needs ${box.natural}px`);
+  }
+  return { measured, failures };
+}
+
+const CHECKS = { nav, locked };
+const CASES = [
+  { name: "nav", persona: "newVisitor" },
+  { name: "locked", persona: "twoRounds" },
+];
+
+export default async function fit(page, context) {
+  const { name } = JSON.parse(process.env[CASE_ENV]);
+  await loadPersona(page, context.baseUrl, process.env[PERSONA_ENV]);
+  const { measured, failures } = await CHECKS[name](page, context);
+  if (failures.length > 0) throw new Error(`${failures.join("; ")}\n${JSON.stringify(measured)}`);
+  return measured;
 }
 
 async function main() {
   const args = argsOf(process.argv.slice(2), ".lab-fit", "http://localhost:4671");
-  const run = await runPersona("fit", join(args.personas, "twoRounds.json"), args, import.meta.url);
-  console.log(`${run.ok ? "PASS" : "FAIL"} fit: ${run.log}`);
-  process.exit(run.ok ? 0 : 1);
+  let ok = true;
+  for (const testCase of CASES.filter(({ name }) => !args.only || name === args.only)) {
+    process.env[CASE_ENV] = JSON.stringify(testCase);
+    const run = await runPersona(testCase.name, join(args.personas, `${testCase.persona}.json`), args, import.meta.url);
+    ok &&= run.ok;
+    console.log(`${run.ok ? "PASS" : "FAIL"} ${testCase.name}: ${run.log}`);
+  }
+  process.exit(ok ? 0 : 1);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();

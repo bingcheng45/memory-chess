@@ -94,7 +94,6 @@
 .lab-icon-btn:hover { border-color: var(--lab-blue); color: var(--lab-blue); }
 .lab-icon-btn:focus-visible { outline: 3px solid var(--lab-blue); outline-offset: 2px; }
 .lab-icon-btn:disabled { opacity: 0.45; cursor: not-allowed; border-color: var(--lab-line-2); color: var(--lab-ink-2); }
-.lab-cal-hint { min-height: 2.9em; margin: 10px 0 0; }
 .lab-card { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 24px; }
 .lab-rc-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-bottom: 1px dashed var(--lab-line-2); padding-bottom: 16px; }
 .lab-rc-big { font: 600 clamp(56px, 7vw, 80px)/1 var(--lab-mono); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }

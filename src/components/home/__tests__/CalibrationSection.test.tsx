@@ -1,4 +1,4 @@
-import { act, fireEvent, renderWithIntl, screen } from "@/test-utils/intl";
+import { act, fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
 import { CalibrationSection } from "@/components/home/CalibrationSection";
 import { LibrarySection, LIBRARY_GUIDES } from "@/components/home/LibrarySection";
 import { LEARN_SLUGS } from "@/lib/seo/learn";
@@ -117,6 +117,134 @@ describe("CalibrationSection", () => {
     expect(document.activeElement?.getAttribute("aria-label")).toMatch(/^b8, /);
     fireEvent.keyDown(document.activeElement!, { key: "ArrowDown" });
     expect(document.activeElement?.getAttribute("aria-label")).toMatch(/^b7, /);
+  });
+});
+
+const controls = () => within(screen.getByRole("group", { name: "Round controls" }));
+const buttonState = () =>
+  controls()
+    .getAllByRole("button")
+    .map((button) => [button.textContent?.trim(), (button as HTMLButtonElement).disabled]);
+const seconds = (text: string | null) => Number(text?.replace("s", ""));
+
+async function startRound() {
+  fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
+  await screen.findByText("Phase 01 · Study");
+}
+
+function studiedPiece(): [string, string] {
+  const label = screen
+    .getAllByRole("button", { name: /^[a-h][1-8], / })
+    .find((cell) => !cell.getAttribute("aria-label")?.endsWith("empty"))!
+    .getAttribute("aria-label")!;
+  const [square, pieceName] = label.split(", ");
+  return [square, pieceName];
+}
+
+describe("the calibration round controls", () => {
+  beforeEach(() => jest.useFakeTimers());
+  afterEach(() => jest.useRealTimers());
+
+  it("offers a primary Start and a disabled Submit before the round", () => {
+    renderWithIntl(<CalibrationSection />);
+
+    expect(buttonState()).toEqual([["Start calibration", false], ["Submit reading", true]]);
+    expect(controls().getByRole("button", { name: /Start calibration/ })).toHaveAttribute("data-primary");
+    expect(screen.getByRole("button", { name: "Clear board" })).toBeDisabled();
+  });
+
+  it("swaps Start for Done while studying, with Submit still disabled", async () => {
+    renderWithIntl(<CalibrationSection />);
+    await startRound();
+
+    expect(buttonState()).toEqual([["Done", false], ["Submit reading", true]]);
+    expect(controls().getByRole("button", { name: "Done" })).toHaveAttribute("data-primary");
+    expect(screen.getByText(/Study time is saved with your reading/)).toBeInTheDocument();
+  });
+
+  it("rebuilds at once on Done and shows the real study time as exposure", async () => {
+    renderWithIntl(<CalibrationSection />);
+    await startRound();
+    act(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+
+    expect(screen.getByText("Phase 04 · Rebuild")).toBeInTheDocument();
+    expect(buttonState()).toEqual([["Restart", false], ["Submit reading", false]]);
+    expect(controls().getByRole("button", { name: "Submit reading" })).toHaveAttribute("data-primary");
+    expect(controls().getByRole("button", { name: "Restart" })).not.toHaveAttribute("data-primary");
+    const exposure = screen.getByText("Exposure").nextSibling?.textContent ?? "";
+    expect(exposure).toMatch(/^3\.\d{3}s$/);
+    expect(seconds(exposure)).toBeLessThan(3.2);
+  });
+
+  it("saves the study time actually used with the round", async () => {
+    renderWithIntl(<CalibrationSection />);
+    await startRound();
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
+    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    fireEvent.click(controls().getByRole("button", { name: "Submit reading" }));
+
+    const saved = jest.mocked(recordLabRound).mock.calls.at(-1)![0];
+    expect(saved.memorizeMs).toBeGreaterThanOrEqual(2000);
+    expect(saved.memorizeMs).toBeLessThan(2200);
+    expect(saved.memorizeSeconds).toBe(10);
+  });
+
+  it("clears the placed pieces from the icon button next to the row", async () => {
+    renderWithIntl(<CalibrationSection />);
+    await startRound();
+    const [square, pieceName] = studiedPiece();
+    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    fireEvent.click(screen.getByRole("button", { name: pieceName }));
+    fireEvent.click(screen.getByRole("button", { name: `${square}, empty` }));
+    expect(screen.getByRole("button", { name: `${square}, ${pieceName}` })).toBeInTheDocument();
+
+    const clear = screen.getByRole("button", { name: "Clear board" });
+    expect(clear).toBeEnabled();
+    expect(clear).toHaveAttribute("title", "Clear board");
+    expect(clear).toHaveTextContent("");
+    expect(controls().queryByRole("button", { name: "Clear board" })).toBeNull();
+    fireEvent.click(clear);
+
+    expect(screen.getByRole("button", { name: `${square}, empty` })).toBeInTheDocument();
+  });
+
+  it("keeps two buttons once scored: Run again as primary and Submit disabled", async () => {
+    renderWithIntl(<CalibrationSection />);
+    await startRound();
+    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    fireEvent.click(controls().getByRole("button", { name: "Submit reading" }));
+
+    expect(screen.getByText("Phase 05 · Score")).toBeInTheDocument();
+    expect(buttonState()).toEqual([["Run again", false], ["Submit reading", true]]);
+    expect(controls().getByRole("button", { name: "Run again" })).toHaveAttribute("data-primary");
+    expect(screen.getByRole("button", { name: "Clear board" })).toBeDisabled();
+  });
+
+  it("shows milliseconds on the study clock, the rebuild clock and the readout times", async () => {
+    renderWithIntl(<CalibrationSection />);
+    expect(screen.getByRole("timer")).toHaveTextContent("10.000s");
+    await startRound();
+    act(() => {
+      jest.advanceTimersByTime(1250);
+    });
+    expect(screen.getByRole("timer").textContent).toMatch(/^[89]\.\d{3}s$/);
+
+    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    act(() => {
+      jest.advanceTimersByTime(2500);
+    });
+    const rebuildClock = screen.getByRole("timer").textContent;
+    expect(rebuildClock).toMatch(/^2\.\d{3}s$/);
+
+    fireEvent.click(controls().getByRole("button", { name: "Submit reading" }));
+    expect(screen.getByText("Rebuild time").nextSibling?.textContent).toMatch(/^2\.\d{3}s$/);
+    expect(screen.getByText("Exposure").nextSibling?.textContent).toMatch(/^1\.\d{3}s$/);
   });
 });
 

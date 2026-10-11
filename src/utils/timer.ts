@@ -86,3 +86,8 @@ export function calculateProgress(elapsedTime: number, totalTime: number): numbe
 export function formatSeconds(ms: number): string {
   return (ms / 1000).toFixed(1);
 }
+
+/** Milliseconds as seconds with three decimals: 9873 reads "9.873". */
+export function formatSecondsMs(ms: number): string {
+  return (Math.max(0, ms) / 1000).toFixed(3);
+}

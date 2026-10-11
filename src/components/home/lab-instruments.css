@@ -45,9 +45,10 @@
 /* calibration */
 .lab-cal { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
 .lab-cal-board { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 16px; }
-.lab-cal-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 0 2px 10px; flex-wrap: wrap; }
+.lab-cal-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 0 2px 10px; }
+.lab-cal-head .lab-k { min-width: 0; }
 .lab-meter { height: 4px; background: var(--lab-line); border-radius: 2px; overflow: hidden; margin: 0 0 12px; }
-.lab-meter i { display: block; height: 100%; background: var(--lab-blue); transition: width 0.1s linear; }
+.lab-meter i { display: block; height: 100%; width: 0; background: var(--lab-blue); }
 .lab-cal-board .lab-figure { padding: 18px; }
 .lab-cal-board .lab-files { left: 18px; right: 18px; bottom: 2px; }
 .lab-cal-board .lab-ranks { top: 18px; bottom: 18px; left: 4px; }
@@ -61,7 +62,17 @@
 .lab-palette button[aria-pressed="true"] { background: var(--lab-blue-soft); border-color: var(--lab-blue); box-shadow: inset 0 0 0 1px var(--lab-blue); }
 .lab-palette button:disabled { opacity: 0.4; cursor: not-allowed; }
 .lab-palette .lab-piece { width: 70%; height: 70%; }
-.lab-cal-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.lab-cal-actions { margin-top: 14px; }
+.lab-cal-main { display: flex; gap: 10px; }
+.lab-cal-main .lab-btn { flex: 1 1 0; justify-content: center; min-width: 0; }
+.lab-cal-head-end { flex: none; display: flex; align-items: center; gap: 10px; margin-left: auto; }
+@media (max-width: 520px) { .lab-cal-head .lab-k { min-height: 2.6em; display: flex; align-items: center; } .lab-cal-main { gap: 8px; } .lab-cal-main .lab-btn { padding: 15px 8px; font-size: 14px; } .lab-cal-main .lab-dot { display: none; } }
+@media (max-width: 360px) { .lab-cal-main .lab-btn { min-height: 62px; line-height: 1.2; text-align: center; } }
+.lab-icon-btn { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 40px; height: 40px; border-radius: var(--lab-radius); border: 1px solid var(--lab-line-2); background: var(--lab-paper); color: var(--lab-ink-2); cursor: pointer; transition: border-color 0.15s, color 0.15s; }
+.lab-icon-btn:hover { border-color: var(--lab-blue); color: var(--lab-blue); }
+.lab-icon-btn:focus-visible { outline: 3px solid var(--lab-blue); outline-offset: 2px; }
+.lab-icon-btn:disabled { opacity: 0.45; cursor: not-allowed; border-color: var(--lab-line-2); color: var(--lab-ink-2); }
+.lab-cal-hint { min-height: 2.9em; margin: 10px 0 0; }
 .lab-card { background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: var(--lab-radius-l); padding: 24px; }
 .lab-rc-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-bottom: 1px dashed var(--lab-line-2); padding-bottom: 16px; }
 .lab-rc-big { font: 600 clamp(56px, 7vw, 80px)/1 var(--lab-mono); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }

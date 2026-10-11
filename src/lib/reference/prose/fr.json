@@ -6,15 +6,15 @@
       "heading": "Les trois phases d'une manche",
       "memorize": {
         "title": "Mémorisation",
-        "body": "Une position apparaît sur un échiquier complet pendant un nombre de secondes fixé. Rien ne bouge et rien n'est caché. Vous pouvez écourter la phase avec le bouton Passer, et le chrono enregistre le temps que vous avez réellement passé à regarder, et non le temps qui vous était accordé."
+        "body": "Une position apparaît sur un échiquier complet pendant un nombre de secondes fixé. Rien ne bouge et rien n'est caché. Vous pouvez écourter la phase avec le bouton Terminé, et le chrono enregistre le temps que vous avez réellement passé à regarder, et non le temps qui vous était accordé."
       },
       "place": {
         "title": "Placement",
-        "body": "L'échiquier se vide. Vous choisissez un type de pièce et une couleur, puis vous touchez une case pour y poser une pièce, ou la touchez de nouveau pour la retirer. Il n'y a pas de limite de temps ici, mais le chrono tourne du moment où l'échiquier se vide jusqu'à ce que vous validiez."
+        "body": "L'échiquier se vide. Vous choisissez une pièce dans la palette, puis vous touchez une case pour l'y poser, ou la touchez de nouveau pour la retirer. Il n'y a pas de limite de temps ici, mais le chrono tourne du moment où l'échiquier se vide jusqu'à ce que vous validiez."
       },
       "score": {
         "title": "Score",
-        "body": "Votre échiquier est comparé case par case avec l'original. Vous voyez quelles pièces étaient justes, lesquelles étaient fausses et lesquelles vous avez oubliées, à côté de la position qui vous avait été montrée, côte à côte sur les écrans larges et l'une au-dessus de l'autre sur les écrans étroits."
+        "body": "Votre échiquier est comparé case par case avec l'original. Les cases justes et les pièces fausses sont marquées sur l'échiquier, et les pièces que vous avez oubliées apparaissent en transparence là où elles se trouvaient, à côté d'un bilan de votre précision et de votre mémorisation par type de pièce."
       }
     },
     "presets": {

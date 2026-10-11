@@ -6,15 +6,15 @@
       "heading": "Tiga fase dalam satu ronde",
       "memorize": {
         "title": "Menghafal",
-        "body": "Sebuah posisi muncul di papan penuh selama jumlah detik yang tetap. Tidak ada yang bergerak dan tidak ada yang disembunyikan. Anda bisa mengakhiri fase ini lebih awal dengan Lewati, dan waktu yang dicatat adalah waktu yang benar-benar Anda gunakan untuk melihat, bukan waktu yang diberikan."
+        "body": "Sebuah posisi muncul di papan penuh selama jumlah detik yang tetap. Tidak ada yang bergerak dan tidak ada yang disembunyikan. Anda bisa mengakhiri fase ini lebih awal dengan Selesai, dan waktu yang dicatat adalah waktu yang benar-benar Anda gunakan untuk melihat, bukan waktu yang diberikan."
       },
       "place": {
         "title": "Menempatkan",
-        "body": "Papan dikosongkan. Anda memilih jenis dan warna bidak, lalu mengetuk sebuah petak untuk meletakkan bidak atau mengetuknya lagi untuk mengambilnya kembali. Tidak ada batas waktu di sini, tetapi waktu berjalan sejak papan dikosongkan hingga Anda mengirimkan jawaban."
+        "body": "Papan dikosongkan. Anda memilih bidak dari palet, lalu mengetuk sebuah petak untuk meletakkannya atau mengetuknya lagi untuk mengambilnya kembali. Tidak ada batas waktu di sini, tetapi waktu berjalan sejak papan dikosongkan hingga Anda mengirimkan jawaban."
       },
       "score": {
         "title": "Penilaian",
-        "body": "Papan Anda dibandingkan petak demi petak dengan posisi aslinya. Anda melihat bidak mana yang benar, mana yang salah, dan mana yang terlewat, bersama posisi yang ditunjukkan kepada Anda, berdampingan di layar lebar dan bersusun di layar sempit."
+        "body": "Papan Anda dibandingkan petak demi petak dengan posisi aslinya. Petak yang benar dan bidak yang salah ditandai di papan, dan bidak yang terlewat tampak samar di tempat semula, di samping ringkasan hasil berisi akurasi Anda dan daya ingat Anda per jenis bidak."
       }
     },
     "presets": {

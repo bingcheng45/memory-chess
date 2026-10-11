@@ -6,15 +6,15 @@
       "heading": "Tři fáze kola",
       "memorize": {
         "title": "Zapamatování",
-        "body": "Pozice se objeví na celé šachovnici na pevně daný počet sekund. Nic se nehýbe a nic není skryté. Fázi můžete ukončit dřív tlačítkem Přeskočit a hodiny zaznamenávají, jak dlouho jste se skutečně dívali, ne kolik času jste dostali."
+        "body": "Pozice se objeví na celé šachovnici na pevně daný počet sekund. Nic se nehýbe a nic není skryté. Fázi můžete ukončit dřív tlačítkem Hotovo a hodiny zaznamenávají, jak dlouho jste se skutečně dívali, ne kolik času jste dostali."
       },
       "place": {
         "title": "Umístění",
-        "body": "Šachovnice se vymaže. Vyberete typ a barvu figury, pak klepnutím na pole umístíte figuru, nebo dalším klepnutím ji vezmete zpět. Časový limit tu není, ale hodiny běží od okamžiku vymazání šachovnice až do odeslání."
+        "body": "Šachovnice se vymaže. Vyberete figuru z palety, pak klepnutím na pole ji umístíte, nebo dalším klepnutím ji vezmete zpět. Časový limit tu není, ale hodiny běží od okamžiku vymazání šachovnice až do odeslání."
       },
       "score": {
         "title": "Vyhodnocení",
-        "body": "Vaše šachovnice se porovnává pole po poli s originálem. Vidíte, které figury byly správně, které špatně a které jste vynechali, spolu s pozicí, která vám byla ukázána, na širokých obrazovkách vedle sebe a na úzkých pod sebou."
+        "body": "Vaše šachovnice se porovnává pole po poli s originálem. Správná pole a špatné figury jsou vyznačeny přímo na šachovnici a figury, které jste vynechali, jsou slabě vidět tam, kde stály, vedle výsledků s vaší přesností a zapamatováním podle typu figury."
       }
     },
     "presets": {

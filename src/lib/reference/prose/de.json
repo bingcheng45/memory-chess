@@ -6,15 +6,15 @@
       "heading": "Die 3 Phasen einer Runde",
       "memorize": {
         "title": "Einprägen",
-        "body": "Eine Stellung erscheint für eine feste Zahl von Sekunden auf dem vollen Brett. Nichts bewegt sich, und nichts ist verdeckt. Mit „Überspringen“ kannst du die Phase vorzeitig beenden; die Uhr hält fest, wie lange du tatsächlich hingeschaut hast, nicht wie viel Zeit dir zustand."
+        "body": "Eine Stellung erscheint für eine feste Zahl von Sekunden auf dem vollen Brett. Nichts bewegt sich, und nichts ist verdeckt. Mit „Fertig“ kannst du die Phase vorzeitig beenden; die Uhr hält fest, wie lange du tatsächlich hingeschaut hast, nicht wie viel Zeit dir zustand."
       },
       "place": {
         "title": "Setzen",
-        "body": "Das Brett wird geleert. Du wählst Figurenart und Farbe, tippst dann auf ein Feld, um eine Figur zu setzen, oder tippst erneut, um sie wieder zu entfernen. Ein Zeitlimit gibt es hier nicht, aber die Uhr läuft von dem Moment, in dem das Brett geleert wird, bis du deine Lösung abschickst."
+        "body": "Das Brett wird geleert. Du wählst eine Figur aus der Figurenauswahl, tippst dann auf ein Feld, um sie zu setzen, oder tippst erneut, um sie wieder zu entfernen. Ein Zeitlimit gibt es hier nicht, aber die Uhr läuft von dem Moment, in dem das Brett geleert wird, bis du deine Lösung abschickst."
       },
       "score": {
         "title": "Auswertung",
-        "body": "Dein Brett wird Feld für Feld mit dem Original verglichen. Du siehst, welche Figuren richtig waren, welche falsch und welche du vergessen hast, zusammen mit der Stellung, die dir gezeigt wurde, auf breiten Bildschirmen nebeneinander und auf schmalen untereinander."
+        "body": "Dein Brett wird Feld für Feld mit dem Original verglichen. Richtige Felder und falsche Figuren werden auf dem Brett markiert, und die Figuren, die du vergessen hast, erscheinen blass dort, wo sie standen, neben einer Auswertung deiner Genauigkeit und deiner Erinnerung nach Figurenart."
       }
     },
     "presets": {

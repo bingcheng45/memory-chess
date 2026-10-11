@@ -3,7 +3,8 @@
 import { useTranslations } from "next-intl";
 import type { SquareName } from "@/lib/game/board";
 import type { Relation, RelationCheck } from "@/lib/home/relations";
-import { SPECIMEN_GROUPS, type MicroscopePhase } from "@/lib/home/specimen";
+import { SPECIMEN, SPECIMEN_GROUPS, SPECIMEN_RECALL, type MicroscopePhase } from "@/lib/home/specimen";
+import { placeLabel, squaresBox } from "@/lib/home/labelPlacement";
 import { BoardArrow, direction } from "./BoardArrow";
 import { fileOf, rowOf } from "./boardUnits";
 
@@ -16,17 +17,21 @@ const pillWidth = (label: string) => 0.24 + label.length * PILL_FONT * 0.6;
 const BAR_HALF = 0.32;
 const VERDICT_RADIUS = 0.17;
 
-/** A group's pill sits above its highest square, kept on the board. */
-function pillAt(squares: readonly SquareName[], width: number) {
-  const top = [...squares].sort((a, b) => rowOf(a) - rowOf(b) || fileOf(a) - fileOf(b))[0];
-  return {
-    x: Math.min(Math.max(fileOf(top) + 0.5 - width / 2, 0.04), 8 - width - 0.04),
-    y: Math.max(rowOf(top) - PILL_HEIGHT - 0.04, 0.04),
-  };
+/** The squares holding a piece in this phase, which a label must not cover. */
+function occupiedIn(phase: MicroscopePhase): ReadonlySet<SquareName> {
+  switch (phase.pieces) {
+    case "none":
+      return new Set();
+    case "specimen":
+      return new Set(Object.keys(SPECIMEN) as SquareName[]);
+    case "recall":
+      return new Set(Object.keys(SPECIMEN_RECALL) as SquareName[]);
+  }
 }
 
 function GroupMarks({ phase }: { phase: MicroscopePhase }) {
   const t = useTranslations("home.lab.method.groups");
+  const occupied = occupiedIn(phase);
   const shown = SPECIMEN_GROUPS.filter((group) => phase.groups.includes(group.id));
 
   return (
@@ -49,7 +54,7 @@ function GroupMarks({ phase }: { phase: MicroscopePhase }) {
         shown.map((group) => {
           const label = `${SPECIMEN_GROUPS.indexOf(group) + 1} · ${t(`${group.id}.name`)}`;
           const width = pillWidth(label);
-          const { x, y } = pillAt(group.squares, width);
+          const { x, y } = placeLabel(squaresBox(group.squares), { width, height: PILL_HEIGHT }, occupied);
           return (
             <g key={group.id} className="lab-ov-pill" data-group={group.id}>
               <rect x={x} y={y} width={width} height={PILL_HEIGHT} rx=".08" />

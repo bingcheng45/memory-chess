@@ -6,6 +6,7 @@ import type { SquareName } from "@/lib/game/board";
 import type { Group, Relation } from "@/lib/home/relations";
 import { groupBounds, SHOWCASE, type GroupId, type ShowcaseMove } from "@/lib/home/showcase";
 import type { Inspection, ShowcaseView } from "@/lib/home/showcaseView";
+import { placeLabel, squaresBox } from "@/lib/home/labelPlacement";
 import { BoardArrow } from "./BoardArrow";
 import { fileOf, rowOf, squareCenter } from "./boardUnits";
 
@@ -14,7 +15,6 @@ const BADGE_NUDGE = 0.02;
 const SQUARE_INSET = 0.06;
 const PILL_FONT = 0.26;
 const PILL_HEIGHT = 0.36;
-const PILL_GAP = 0.06;
 // Geist Mono advances about 0.6em per character.
 const pillWidth = (label: string) => 0.3 + label.length * PILL_FONT * 0.6;
 
@@ -36,22 +36,20 @@ interface GroupCircleProps {
   label: string;
   on: boolean;
   active: boolean;
+  /** Squares with a piece on them: the name pill keeps clear of these. */
+  occupied: ReadonlySet<SquareName>;
   /** The outline is drawn under the marks; the name pill over them, so an arrow never crosses its text. */
   part: "outline" | "pill";
 }
 
-function GroupCircle({ group, label, on, active, part }: GroupCircleProps) {
+function GroupCircle({ group, label, on, active, occupied, part }: GroupCircleProps) {
   const [from, to] = groupBounds(group);
   const x = fileOf(from) + BOX_INSET;
   const y = rowOf(to) + BOX_INSET;
   const width = fileOf(to) - fileOf(from) + 1 - 2 * BOX_INSET;
   const height = rowOf(from) - rowOf(to) + 1 - 2 * BOX_INSET;
   const index = SHOWCASE.groups.indexOf(group) + 1;
-  const pill = {
-    width: pillWidth(label),
-    x: Math.min(x, 8 - pillWidth(label) - PILL_GAP),
-    y: y >= PILL_HEIGHT + PILL_GAP ? y - PILL_HEIGHT - PILL_GAP : y + height + PILL_GAP,
-  };
+  const pill = placeLabel(squaresBox(group.squares), { width: pillWidth(label), height: PILL_HEIGHT }, occupied);
 
   return (
     <g className="lab-sc-group" data-side={group.side} data-on={on || undefined} data-active={active || undefined}>
@@ -67,7 +65,7 @@ function GroupCircle({ group, label, on, active, part }: GroupCircleProps) {
         </>
       ) : (
         <g className="lab-sc-pill">
-          <rect x={pill.x} y={pill.y} width={pill.width} height={PILL_HEIGHT} rx=".08" />
+          <rect x={pill.x} y={pill.y} width={pill.width} height={pill.height} rx=".08" />
           <text x={pill.x + 0.14} y={pill.y + 0.26} fontSize={PILL_FONT}>
             {label}
           </text>
@@ -148,6 +146,11 @@ function ReachMarks({ inspection }: { inspection: Inspection }) {
 export function ShowcaseOverlay({ view }: { view: ShowcaseView }) {
   const t = useTranslations("home.lab.hero.showcase.groups");
   const { annotations, inspection } = view;
+  const occupied = new Set(
+    Object.entries(view.board.placements)
+      .filter(([home]) => !view.board.gone.includes(home as SquareName))
+      .map(([, square]) => square as SquareName),
+  );
   const circles = (part: GroupCircleProps["part"]) =>
     SHOWCASE.groups.map((group) => (
       <GroupCircle
@@ -156,6 +159,7 @@ export function ShowcaseOverlay({ view }: { view: ShowcaseView }) {
         label={t(group.id)}
         on={view.circles.includes(group.id)}
         active={view.active === group.id}
+        occupied={occupied}
         part={part}
       />
     ));

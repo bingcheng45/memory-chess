@@ -43,7 +43,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
   const panels: Record<PanelId, ReactNode> = {
     span: <SpanPanel result={lab.span} daysAgo={daysAgo} />,
     piecesHeld: <HeldPanel result={lab.piecesHeld} daysAgo={daysAgo} />,
-    trend: <TrendPanel result={lab.trend} played={summary.rounds > 0} daysAgo={daysAgo} />,
+    trend: <TrendPanel result={lab.trend} daysAgo={daysAgo} />,
     speed: <SpeedPanel result={lab.speed} daysAgo={daysAgo} />,
     daily: <DailyPanel records={record.records} ready={ready} />,
     streak: <StreakPanel result={lab.streak} days={summary.days} today={today} daysAgo={daysAgo} />,

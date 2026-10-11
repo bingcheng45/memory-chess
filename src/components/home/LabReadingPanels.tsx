@@ -27,7 +27,7 @@ interface FrameProps {
 function ReadingFrame({ panel, name, readiness, children }: FrameProps) {
   const tags = useTags();
   return (
-    <PanelFrame panel={panel} name={name} tag={readiness.state === "empty" ? tags.sample : tags.mine} state={readiness.state}>
+    <PanelFrame panel={panel} name={name} tag={hasFigure(readiness) ? tags.mine : tags.sample} state={readiness.state}>
       {children}
     </PanelFrame>
   );
@@ -58,25 +58,33 @@ export function SpanPanel({ result: { readiness, value: span }, daysAgo }: Panel
   // A week measured back from the newest round; once stale that week is long past, so the change is left out.
   const weekChange = span?.change == null || readiness.state !== "ready" ? "" : span.change > 0 ? t("up", { count: span.change }) : t("same");
 
+  const sampleChart = (
+    <>
+      <SpanStaircase steps={SAMPLE_SPAN} label={t("aria")} {...axis} />
+      <p className="lab-note">{t("note")}</p>
+    </>
+  );
+  const sample = (
+    <>
+      <SpanHeadline pieceCount={SAMPLE_SPAN[SAMPLE_SPAN.length - 1]} rounds={SAMPLE_SPAN_ROUNDS} memorizeSeconds={SAMPLE_SPAN_SECONDS} />
+      <p className="lab-span-change" />
+      {sampleChart}
+    </>
+  );
+
   const body = () => {
-    if (!span) {
-      return (
-        <>
-          <SpanHeadline pieceCount={SAMPLE_SPAN[SAMPLE_SPAN.length - 1]} rounds={SAMPLE_SPAN_ROUNDS} memorizeSeconds={SAMPLE_SPAN_SECONDS} />
-          <p className="lab-span-change" />
-          <SpanStaircase steps={SAMPLE_SPAN} label={t("aria")} {...axis} />
-          <p className="lab-note">{t("note")}</p>
-        </>
-      );
-    }
+    if (!span) return sample;
     const { pieceCount, memorizeSeconds, qualifyingRounds } = span;
     if (!hasFigure(readiness) || pieceCount === null || memorizeSeconds === null) {
       return (
-        <p className="lab-panel-desc lab-empty">
-          {readiness.need?.largerRounds
-            ? t("onlyKings")
-            : t("need", { count: readiness.need?.qualifyingRounds ?? 0, accuracy: LAB_THRESHOLDS.spanAccuracy, minPieces: LAB_THRESHOLDS.spanMinPieces })}
-        </p>
+        <>
+          <p className="lab-panel-desc lab-empty">
+            {readiness.need?.largerRounds
+              ? t("onlyKings")
+              : t("need", { count: readiness.need?.qualifyingRounds ?? 0, accuracy: LAB_THRESHOLDS.spanAccuracy, minPieces: LAB_THRESHOLDS.spanMinPieces })}
+          </p>
+          {sampleChart}
+        </>
       );
     }
     return (
@@ -108,21 +116,24 @@ export function HeldPanel({ result: { readiness, value: held }, daysAgo }: Panel
   const legend = <p className="lab-note lab-legend">{t("partial", { window: averaged })}</p>;
   const need = readiness.need ?? {};
 
+  const sample = (
+    <>
+      <ValueLine points={SAMPLE_PIECES_HELD} partial={SAMPLE_PARTIAL} label={t("aria")} {...axis} />
+      {legend}
+      <p className="lab-note">{t("note")}</p>
+    </>
+  );
+
   const body = () => {
-    if (!held) {
-      return (
-        <>
-          <ValueLine points={SAMPLE_PIECES_HELD} partial={SAMPLE_PARTIAL} label={t("aria")} {...axis} />
-          {legend}
-          <p className="lab-note">{t("note")}</p>
-        </>
-      );
-    }
+    if (!held) return sample;
     if (!hasFigure(readiness)) {
       return (
-        <p className="lab-panel-desc lab-empty">
-          {need.rounds === undefined ? t("needDay") : t(need.days ? "needRoundsAndDay" : "needRounds", { count: need.rounds })}
-        </p>
+        <>
+          <p className="lab-panel-desc lab-empty">
+            {need.rounds === undefined ? t("needDay") : t(need.days ? "needRoundsAndDay" : "needRounds", { count: need.rounds })}
+          </p>
+          {sample}
+        </>
       );
     }
     const { recent, movingAverage } = held;
@@ -188,23 +199,28 @@ export function SpeedPanel({ result: { readiness, value: speed }, daysAgo }: Pan
   const t = useTranslations("home.lab.record.speed");
   const axis = { first: t("first"), last: t("last") };
 
-  const body = readiness.state === "empty" ? (
+  const sample = (
     <>
       <p className="lab-reading-stat">{t("average", { average: seconds(oneDecimal(mean(SAMPLE_SPEED.slice(-LAB_THRESHOLDS.rollingWindow)))) })}</p>
       <p className="lab-reading-stat">{t("accuracy", { average: SAMPLE_SPEED_ACCURACY })}</p>
       <ValueLine points={SAMPLE_SPEED} label={t("aria")} {...axis} />
       <p className="lab-note">{t("note")}</p>
     </>
-  ) : speed && hasFigure(readiness) ? (
+  );
+
+  const body = readiness.state === "empty" ? sample : speed && hasFigure(readiness) ? (
     <>
       <SpeedReading speed={speed} axis={axis} />
       <p className="lab-note">{t("config", { ...settingValues(speed.setting), count: readiness.sampleSize })}</p>
       <StaleNote readiness={readiness} daysAgo={daysAgo} panel="speed" />
     </>
   ) : (
-    <p className="lab-panel-desc lab-empty">
-      {speed ? t("need", { count: readiness.need?.rounds ?? 0, ...settingValues(speed.setting) }) : t("needRight", { count: readiness.need?.rightRounds ?? 0 })}
-    </p>
+    <>
+      <p className="lab-panel-desc lab-empty">
+        {speed ? t("need", { count: readiness.need?.rounds ?? 0, ...settingValues(speed.setting) }) : t("needRight", { count: readiness.need?.rightRounds ?? 0 })}
+      </p>
+      {sample}
+    </>
   );
 
   return (

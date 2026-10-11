@@ -95,14 +95,14 @@
  * for the Sample state without moving anything below it.
  */
 .lab {
-  --lab-h-unlock: 224px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 440px; --lab-h-speed: 528px;
+  --lab-h-unlock: 224px; --lab-h-span: 536px; --lab-h-held: 496px; --lab-h-spark: 472px; --lab-h-speed: 528px;
   --lab-h-heat: 464px; --lab-h-streak: 616px; --lab-h-bests: 504px; --lab-h-types: 448px; --lab-h-tools: 244px;
   --lab-h-insights: 344px; --lab-h-notebook: 408px; --lab-h-plans: 496px; --lab-h-goal: 304px; --lab-h-daily: 336px;
   --lab-h-curve: 632px; --lab-h-board: 648px; --lab-heat-w: 260px;
 }
 @media (max-width: 1000px) {
   .lab {
-    --lab-h-unlock: 312px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 424px; --lab-h-speed: 512px;
+    --lab-h-unlock: 312px; --lab-h-span: 496px; --lab-h-held: 504px; --lab-h-spark: 432px; --lab-h-speed: 520px;
     --lab-h-heat: 528px; --lab-h-streak: 680px; --lab-h-bests: 920px; --lab-h-types: 528px; --lab-h-tools: 544px;
     --lab-h-insights: 424px; --lab-h-notebook: 448px; --lab-h-plans: 968px; --lab-h-goal: 328px; --lab-h-daily: 360px;
     --lab-h-curve: 608px; --lab-h-board: 704px;
@@ -110,7 +110,7 @@
 }
 @media (max-width: 640px) {
   .lab {
-    --lab-h-unlock: 408px; --lab-h-span: 544px; --lab-h-held: 504px; --lab-h-spark: 456px; --lab-h-speed: 544px;
+    --lab-h-unlock: 408px; --lab-h-span: 544px; --lab-h-held: 512px; --lab-h-spark: 496px; --lab-h-speed: 544px;
     --lab-h-heat: 528px; --lab-h-streak: 624px; --lab-h-bests: 592px; --lab-h-types: 528px; --lab-h-tools: 408px;
     --lab-h-insights: 600px; --lab-h-notebook: 648px; --lab-h-plans: 1300px; --lab-h-goal: 464px; --lab-h-daily: 504px;
     --lab-h-curve: 648px; --lab-h-board: 648px;
@@ -233,6 +233,8 @@
 .lab-board-check { margin-top: 14px; padding: 10px 16px; font-size: 15px; }
 .lab-board-status[data-reserve] { margin-top: 10px; min-height: 7.75em; min-height: 5lh; }
 .lab-empty { margin-top: 14px; padding: 14px; border: 1px dashed var(--lab-line-2); border-radius: var(--lab-radius-s); }
+/* A needs note above a sample chart: the chart is the next sibling and needs air. */
+.lab-panel .lab-empty:not(:last-child) { margin-bottom: 16px; }
 .lab-heat i[data-thin] { background: var(--lab-sq-light); }
 .lab-heat-lines { margin-top: 14px; }
 .lab-heat-lines ul { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; max-width: var(--lab-heat-w); margin: 6px 0 0; padding: 0; list-style: none; }

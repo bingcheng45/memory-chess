@@ -76,15 +76,7 @@ export function useTags() {
   };
 }
 
-export function TrendPanel({
-  result: { readiness, value: trend },
-  played,
-  daysAgo,
-}: {
-  result: LabResults["trend"];
-  played: boolean;
-  daysAgo: number | null;
-}) {
+export function TrendPanel({ result: { readiness, value: trend }, daysAgo }: { result: LabResults["trend"]; daysAgo: number | null }) {
   const t = useTranslations("home.lab.record");
   const tags = useTags();
   const need = readiness.need ?? {};
@@ -95,7 +87,7 @@ export function TrendPanel({
     <PanelFrame
       panel="trend"
       name="spark"
-      tag={played ? tags.mine : tags.sample}
+      tag={trend && hasFigure(readiness) ? tags.mine : tags.sample}
       state={readiness.state}
       title={bySession ? t("spark.titleSessions") : t("spark.title")}
     >
@@ -119,11 +111,15 @@ export function TrendPanel({
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="trend" />
         </>
       ) : (
-        <p className="lab-panel-desc lab-empty">
-          {need.rounds === undefined
-            ? t("spark.needDay", settingValues(trend.setting))
-            : t(need.days ? "spark.needRoundsAndDay" : "spark.needRounds", { count: need.rounds, ...settingValues(trend.setting) })}
-        </p>
+        <>
+          <p className="lab-panel-desc lab-empty">
+            {need.rounds === undefined
+              ? t("spark.needDay", settingValues(trend.setting))
+              : t(need.days ? "spark.needRoundsAndDay" : "spark.needRounds", { count: need.rounds, ...settingValues(trend.setting) })}
+          </p>
+          <AccuracySparkline label={t("spark.aria")} first={t("spark.first")} last={t("spark.last")} />
+          <p className="lab-note">{t("spark.note")}</p>
+        </>
       )}
     </PanelFrame>
   );

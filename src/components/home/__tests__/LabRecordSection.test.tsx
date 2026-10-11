@@ -100,10 +100,10 @@ describe("LabRecordSection", () => {
     const tag = (name: string) => panel(name).querySelector(".lab-tag")?.textContent ?? null;
     const sampleTrend = "Sample record · 12 rounds · Medium";
 
-    it("tags the trend as the player's while its log is empty but the summary counts rounds", () => {
+    it("tags the trend as a Sample while its log is empty but the summary counts rounds, since the chart drawn is the sample", () => {
       renderWithIntl(<LabRecordSection record={record([], { summary: summarize(rounds(6, 3)) })} />);
 
-      expect(tag("Accuracy over time")).toBe("Your record");
+      expect(tag("Accuracy over time")).toBe("Sample");
       expect(within(panel("Accuracy over time")).getByText(sampleTrend)).toBeInTheDocument();
     });
 

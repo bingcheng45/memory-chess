@@ -8,15 +8,21 @@ type Faq = {
   answer: string;
 };
 
-export default function FaqSection() {
-  const t = useTranslations("home.faq");
+/** The homepage questions. Read as raw so the list stays one array in the message file rather than a set of numbered keys that drift apart between locales. */
+export function useFaqs(): Faq[] {
+  return useTranslations("home.faq").raw("items") as Faq[];
+}
 
-  // Read as raw so the FAQ list stays one array in the message file rather than
-  // a set of numbered keys that drift apart between locales.
-  const faqs = t.raw("items") as Faq[];
-
-  // Built from the translated copy on purpose: the structured data should match
-  // what the page actually says, so each locale gets its own FAQ rich result.
+/**
+ * Built from the translated copy on purpose: the structured data should match
+ * what the page actually says, so each locale gets its own FAQ rich result.
+ *
+ * Plain script tag, not next/script: `strategy="afterInteractive"` keeps the
+ * JSON-LD out of the served HTML entirely, so crawlers only see it if they
+ * execute JS. This matches how the Learn pages already emit their structured
+ * data.
+ */
+export function FaqStructuredData({ faqs }: { faqs: Faq[] }) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -30,22 +36,20 @@ export default function FaqSection() {
     })),
   };
 
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />;
+}
+
+export default function FaqSection() {
+  const t = useTranslations("home.faq");
+  const faqs = useFaqs();
+
   return (
     <section className="mx-auto mt-8 w-full max-w-4xl border-t border-bg-light px-2 py-12 sm:px-4 md:py-16">
       <h2 className="mb-8 text-center text-2xl font-bold text-text-primary sm:mb-10 sm:text-3xl">
         {t("title")}
       </h2>
 
-      {/*
-        Plain script tag, not next/script: `strategy="afterInteractive"` keeps
-        the JSON-LD out of the served HTML entirely, so crawlers only see it if
-        they execute JS. This matches how the Learn pages already emit their
-        structured data.
-      */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <FaqStructuredData faqs={faqs} />
 
       {/*
         Native details/summary instead of the Radix accordion: Radix unmounts

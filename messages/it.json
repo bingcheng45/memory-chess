@@ -9,7 +9,8 @@
       "privacy": "Privacy",
       "terms": "Termini",
       "play": "Gioca",
-      "leaderboard": "Classifica"
+      "leaderboard": "Classifica",
+      "progress": "Progressi"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tutti i diritti riservati.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# pezzo} many {# di pezzi} other {# pezzi}}, {seconds, plural, one {# secondo} many {# di secondi} other {# secondi}}",
       "read": "Leggi l’articolo",
       "tryDrill": "Prova quell’esercizio"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "I tuoi progressi",
+      "description": "Ogni dato che Memory Chess ricava dalle tue partite su questo dispositivo, in una pagina, con una scheda da condividere."
+    },
+    "kicker": "Registro del laboratorio",
+    "title": "I tuoi progressi",
+    "lede": "Ogni dato che le tue partite hanno ottenuto su questo dispositivo, in un unico posto. Nulla lascia il browser, a meno che tu non lo condivida.",
+    "loading": "Lettura del tuo registro su questo dispositivo.",
+    "unavailable": "Questo browser non conserva un registro, quindi non ci sono progressi da mostrare. Le finestre private non conservano nulla.",
+    "fullRecord": "Vedi il registro completo",
+    "headline": "Dati principali",
+    "more": "Tutto il resto",
+    "stale": "All’ultima partita",
+    "staleNote": "Ultima partita {count, plural, one {# giorno} many {# giorni} other {# giorni}} fa. I dati così segnati risalgono ad allora.",
+    "play": "Gioca una partita",
+    "playAt": "Gioca {pieceCount} pezzi, {memorizeSeconds} s",
+    "choose": "Scegline uno nel registro completo",
+    "notYet": "Ancora niente.",
+    "notSet": "Non ancora impostato.",
+    "needs": "Si sblocca con {need}.",
+    "needsAt": "Si sblocca con {need} a {pieceCount} pezzi, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {# partita in più} many {# partite in più} other {# partite in più}}",
+      "days": "{count, plural, one {# giorno di gioco in più} many {# giorni di gioco in più} other {# giorni di gioco in più}}",
+      "exposures": "{count, plural, one {# pezzo visto in più} many {# pezzi visti in più} other {# pezzi visti in più}}",
+      "qualifyingRounds": "{count, plural, one {# partita in più} many {# partite in più} other {# partite in più}} al {accuracy}% o meglio con {minPieces} o più pezzi",
+      "largerRounds": "{count, plural, one {# partita} many {# partite} other {# partite}} con {minPieces} o più pezzi",
+      "rightRounds": "{count, plural, one {# partita} many {# partite} other {# partite}} con un pezzo giusto",
+      "reviews": "{count, plural, one {# ripasso in più} many {# ripassi in più} other {# ripassi in più}} dopo lo stesso intervallo"
+    },
+    "label": {
+      "span": "Span di memoria",
+      "piecesHeld": "Pezzi ricordati",
+      "speed": "Velocità",
+      "streak": "Serie",
+      "rounds": "Partite giocate",
+      "days": "Giorni giocati",
+      "trend": "Precisione",
+      "daily": "Scacchiera del giorno",
+      "week": "Questa settimana",
+      "curve": "Ricordo dopo il ripasso",
+      "missMap": "Linea più sbagliata",
+      "typeRecall": "Pezzo più debole",
+      "insights": "Osservazioni",
+      "notebook": "Quaderno",
+      "plans": "Piano",
+      "goal": "Obiettivo",
+      "bests": "Record personali",
+      "board": "Classifica"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> pezzo} many {<n>{value}</n> pezzi} other {<n>{value}</n> pezzi}}",
+      "secondsPerPiece": "<n>{value}</n> s per pezzo",
+      "days": "{count, plural, one {<n>{value}</n> giorno} many {<n>{value}</n> giorni} other {<n>{value}</n> giorni}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, one {<n>{value}</n> partita} many {<n>{value}</n> partite} other {<n>{value}</n> partite}}",
+      "entries": "{count, plural, one {<n>{value}</n> voce} many {<n>{value}</n> voci} other {<n>{value}</n> voci}}",
+      "findings": "{count, plural, one {<n>{value}</n> osservazione} many {<n>{value}</n> osservazioni} other {<n>{value}</n> osservazioni}}",
+      "settings": "{count, plural, one {<n>{value}</n> impostazione} many {<n>{value}</n> impostazioni} other {<n>{value}</n> impostazioni}}"
+    },
+    "context": {
+      "span": "{accuracy}% o meglio in {rounds, plural, one {# partita} many {# partite} other {# partite}}, memorizzato {memorizeSeconds} s",
+      "recent": "Media delle tue {rounds, plural, one {# ultima partita} many {# ultime partite} other {# ultime partite}}, qualsiasi impostazione",
+      "setting": "{source, select, calibration {Partite di allenamento} other {Partite di gioco}} a {pieceCount} pezzi, {memorizeSeconds} s, da {rounds, plural, one {# partita} many {# partite} other {# partite}}",
+      "longest": "Record {days, plural, one {# giorno} many {# giorni} other {# giorni}}",
+      "daily": "{status, select, played {Giocata oggi} unfinished {Aperta oggi} other {Disponibile oggi}}, serie più lunga {longest, plural, one {# giorno} many {# giorni} other {# giorni}}",
+      "curve": "Ricordato dopo {day, plural, one {# giorno} many {# giorni} other {# giorni}}, da {reviews, plural, one {# ripasso} many {# ripassi} other {# ripassi}}",
+      "rounds": "Da {rounds, plural, one {# partita} many {# partite} other {# partite}}",
+      "missLine": "Sbagliati sulla {line, select, file {colonna {name}} other {traversa {name}}}, da {shown} pezzi visti",
+      "pieceType": "{type, select, p {Pedoni ricordati} n {Cavalli ricordati} b {Alfieri ricordati} r {Torri ricordate} q {Donne ricordate} other {Re ricordati}}, da {shown} visti",
+      "plan": "{planId, select, baseline {Piano Riferimento} edge {Piano Bordi} other {Piano Scala}}, {status, select, active {in corso} done {ora completato} other {ora interrotto}}",
+      "goal": "Verso {pieceCount} pezzi al {accuracy}%",
+      "week": "Obiettivo settimanale {goal} giorni",
+      "best": "Miglior risultato {accuracy}% a {pieceCount} pezzi, {memorizeSeconds} s",
+      "entry": "Pezzi giusti nella tua voce migliore, {difficulty, select, easy {livello Facile} medium {livello Medio} hard {livello Difficile} other {livello Grande maestro}}",
+      "overDays": "In {days, plural, one {# giorno} many {# giorni} other {# giorni}}",
+      "firstDay": "Dal {date}"
+    },
+    "share": {
+      "button": "Condividi i miei progressi",
+      "working": "Creazione della scheda.",
+      "shared": "Condiviso.",
+      "saved": "Scheda salvata e testo copiato. Pubblicali dove vuoi.",
+      "savedNoCopy": "Scheda salvata. Copia il testo qui sotto per pubblicarlo insieme.",
+      "failed": "Qui non è stato possibile creare la scheda. Copia invece il testo qui sotto.",
+      "caption": "Testo",
+      "copy": "Copia testo",
+      "copied": "Testo copiato.",
+      "copyFailed": "La copia non ha funzionato qui. Il testo è selezionato, copialo tu.",
+      "locked": "La scheda da condividere si sblocca quando span di memoria, pezzi ricordati, velocità o serie sono pronti.",
+      "text": "I miei progressi su Memory Chess: {figures}. Riesci a fare di meglio?",
+      "figure": {
+        "span": "span di memoria di {value, plural, one {# pezzo} many {# pezzi} other {# pezzi}}",
+        "piecesHeld": "{value, number} pezzi ricordati",
+        "speed": "{value, number} s per pezzo",
+        "streak": "{value, plural, one {# giorno} many {# giorni} other {# giorni}} di fila"
+      },
+      "card": {
+        "kicker": "Registro del laboratorio",
+        "rounds": "{count, plural, one {# partita giocata} many {# partite giocate} other {# partite giocate}}",
+        "cta": "Riesci a fare di meglio?"
+      }
     }
   }
 }

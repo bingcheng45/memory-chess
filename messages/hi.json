@@ -9,7 +9,8 @@
       "privacy": "गोपनीयता",
       "terms": "शर्तें",
       "play": "खेलें",
-      "leaderboard": "लीडरबोर्ड"
+      "leaderboard": "लीडरबोर्ड",
+      "progress": "प्रगति"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. सर्वाधिकार सुरक्षित।",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# मोहरा} other {# मोहरे}}, {seconds, plural, one {# सेकंड} other {# सेकंड}}",
       "read": "लेख पढ़ें",
       "tryDrill": "यह अभ्यास आज़माएँ"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "आपकी प्रगति",
+      "description": "इस डिवाइस पर आपके राउंड से Memory Chess जो भी आंकड़े दर्ज करता है, सब एक पेज पर, साझा करने के लिए एक कार्ड के साथ।"
+    },
+    "kicker": "लैब रिकॉर्ड",
+    "title": "आपकी प्रगति",
+    "lede": "इस डिवाइस पर आपके राउंड ने जो भी आंकड़े कमाए हैं, सब एक जगह। जब तक आप साझा न करें, कुछ भी आपके ब्राउज़र से बाहर नहीं जाता।",
+    "loading": "इस डिवाइस पर आपका रिकॉर्ड पढ़ा जा रहा है।",
+    "unavailable": "यह ब्राउज़र रिकॉर्ड नहीं रखता, इसलिए दिखाने के लिए कोई प्रगति नहीं है। प्राइवेट विंडो कुछ नहीं रखतीं।",
+    "fullRecord": "पूरा रिकॉर्ड देखें",
+    "headline": "मुख्य आंकड़े",
+    "more": "बाकी सब",
+    "stale": "आपके पिछले राउंड के अनुसार",
+    "staleNote": "आखिरी बार {count, plural, one {# दिन} other {# दिन}} पहले खेला। इस तरह चिह्नित आंकड़े उसी समय के हैं।",
+    "play": "एक राउंड खेलें",
+    "playAt": "{pieceCount} मोहरे, {memorizeSeconds} से. खेलें",
+    "choose": "पूरे रिकॉर्ड में चुनें",
+    "notYet": "अभी कुछ नहीं।",
+    "notSet": "अभी तय नहीं।",
+    "needs": "{need} के बाद खुलेगा।",
+    "needsAt": "{pieceCount} मोहरे, {memorizeSeconds} से. पर {need} के बाद खुलेगा।",
+    "need": {
+      "rounds": "{count, plural, one {# और राउंड} other {# और राउंड}}",
+      "days": "{count, plural, one {# और दिन खेलने} other {# और दिन खेलने}}",
+      "exposures": "{count, plural, one {# और मोहरा देखने} other {# और मोहरे देखने}}",
+      "qualifyingRounds": "{accuracy}% या बेहतर और कम से कम {minPieces} मोहरों के साथ {count, plural, one {# और राउंड} other {# और राउंड}}",
+      "largerRounds": "कम से कम {minPieces} मोहरों वाले {count, plural, one {# राउंड} other {# राउंड}}",
+      "rightRounds": "एक सही मोहरे वाले {count, plural, one {# राउंड} other {# राउंड}}",
+      "reviews": "उसी अंतराल के बाद {count, plural, one {# और दोहराव} other {# और दोहराव}}"
+    },
+    "label": {
+      "span": "स्मृति क्षमता",
+      "piecesHeld": "याद रखे मोहरे",
+      "speed": "गति",
+      "streak": "लगातार दिन",
+      "rounds": "खेले गए राउंड",
+      "days": "खेले गए दिन",
+      "trend": "सटीकता",
+      "daily": "आज का बोर्ड",
+      "week": "इस सप्ताह",
+      "curve": "दोहराव के बाद याद",
+      "missMap": "सबसे ज़्यादा चूकी पंक्ति",
+      "typeRecall": "सबसे कमज़ोर मोहरा",
+      "insights": "निष्कर्ष",
+      "notebook": "नोटबुक",
+      "plans": "योजना",
+      "goal": "लक्ष्य",
+      "bests": "व्यक्तिगत रिकॉर्ड",
+      "board": "लीडरबोर्ड"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> मोहरा} other {<n>{value}</n> मोहरे}}",
+      "secondsPerPiece": "<n>{value}</n> से. प्रति मोहरा",
+      "days": "{count, plural, one {<n>{value}</n> दिन} other {<n>{value}</n> दिन}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, one {<n>{value}</n> राउंड} other {<n>{value}</n> राउंड}}",
+      "entries": "{count, plural, one {<n>{value}</n> प्रविष्टि} other {<n>{value}</n> प्रविष्टियाँ}}",
+      "findings": "{count, plural, one {<n>{value}</n> निष्कर्ष} other {<n>{value}</n> निष्कर्ष}}",
+      "settings": "{count, plural, one {<n>{value}</n> सेटिंग} other {<n>{value}</n> सेटिंग}}"
+    },
+    "context": {
+      "span": "{rounds, plural, one {# राउंड} other {# राउंड}} में {accuracy}% या बेहतर, {memorizeSeconds} से. याद किया",
+      "recent": "आपके पिछले {rounds, plural, one {# राउंड} other {# राउंड}} का औसत, कोई भी सेटिंग",
+      "setting": "{pieceCount} मोहरे, {memorizeSeconds} से. पर {source, select, calibration {अभ्यास राउंड} other {गेम राउंड}}, {rounds, plural, one {# राउंड} other {# राउंड}} से",
+      "longest": "सबसे लंबा {days, plural, one {# दिन} other {# दिन}}",
+      "daily": "{status, select, played {आज खेला} unfinished {आज खोला} other {आज खुला है}}, सबसे लंबा सिलसिला {longest, plural, one {# दिन} other {# दिन}}",
+      "curve": "{day, plural, one {# दिन} other {# दिन}} बाद याद, {reviews, plural, one {# दोहराव} other {# दोहराव}} से",
+      "rounds": "{rounds, plural, one {# राउंड} other {# राउंड}} से",
+      "missLine": "{line, select, file {{name} फ़ाइल} other {रैंक {name}}} पर चूक, {shown} देखे गए मोहरों में से",
+      "pieceType": "{type, select, p {प्यादे याद रहे} n {घोड़े याद रहे} b {ऊँट याद रहे} r {हाथी याद रहे} q {वज़ीर याद रहे} other {राजा याद रहे}}, {shown} देखे गए में से",
+      "plan": "{planId, select, baseline {आधार रेखा योजना} edge {किनारे योजना} other {सीढ़ी योजना}}, {status, select, active {अभी जारी} done {अब पूरी} other {अब रुकी}}",
+      "goal": "{accuracy}% पर {pieceCount} मोहरों की ओर",
+      "week": "साप्ताहिक लक्ष्य {goal} दिन",
+      "best": "सबसे अच्छा परिणाम {pieceCount} मोहरे, {memorizeSeconds} से. पर {accuracy}%",
+      "entry": "आपकी सबसे अच्छी प्रविष्टि में सही मोहरे, {difficulty, select, easy {आसान बोर्ड} medium {मध्यम बोर्ड} hard {कठिन बोर्ड} other {ग्रैंडमास्टर बोर्ड}}",
+      "overDays": "{days, plural, one {# दिन} other {# दिनों}} में",
+      "firstDay": "{date} से"
+    },
+    "share": {
+      "button": "मेरी प्रगति साझा करें",
+      "working": "आपका कार्ड बन रहा है।",
+      "shared": "साझा किया गया।",
+      "saved": "कार्ड सहेजा गया और कैप्शन कॉपी हुआ। कहीं भी पोस्ट करें।",
+      "savedNoCopy": "कार्ड सहेजा गया। साथ में पोस्ट करने के लिए नीचे का कैप्शन कॉपी करें।",
+      "failed": "यहाँ कार्ड नहीं बन सका। इसके बजाय नीचे का कैप्शन कॉपी करें।",
+      "caption": "कैप्शन",
+      "copy": "कैप्शन कॉपी करें",
+      "copied": "कैप्शन कॉपी हुआ।",
+      "copyFailed": "यहाँ कॉपी नहीं हुआ। कैप्शन चुना हुआ है, खुद कॉपी करें।",
+      "locked": "आपका साझा कार्ड तब खुलेगा जब स्मृति क्षमता, याद रखे मोहरे, गति या आपका सिलसिला तैयार होगा।",
+      "text": "Memory Chess पर मेरी प्रगति: {figures}। क्या आप इसे हरा सकते हैं?",
+      "figure": {
+        "span": "{value, plural, one {# मोहरे} other {# मोहरों}} की स्मृति क्षमता",
+        "piecesHeld": "{value, number} मोहरे याद",
+        "speed": "{value, number} से. प्रति मोहरा",
+        "streak": "लगातार {value, plural, one {# दिन} other {# दिन}}"
+      },
+      "card": {
+        "kicker": "लैब रिकॉर्ड",
+        "rounds": "{count, plural, one {# राउंड खेला} other {# राउंड खेले}}",
+        "cta": "क्या आप इसे हरा सकते हैं?"
+      }
     }
   }
 }

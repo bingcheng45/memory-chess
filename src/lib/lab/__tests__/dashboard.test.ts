@@ -109,7 +109,7 @@ describe("dashboardOf", () => {
     expect(tile(tilesFor("planBaseline"), "plans")).toEqual({
       id: "plans",
       state: "ready",
-      figure: { value: 7, unit: "planDays", digits: 0 },
+      figure: { value: 7, unit: "days", digits: 0 },
       context: { kind: "plan", values: { planId: "baseline", status: "active" } },
     });
     expect(tile(tilesFor("planBaseline"), "goal")).toEqual({

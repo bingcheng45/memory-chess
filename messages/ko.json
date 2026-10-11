@@ -9,7 +9,8 @@
       "privacy": "개인정보",
       "terms": "이용약관",
       "play": "플레이",
-      "leaderboard": "리더보드"
+      "leaderboard": "리더보드",
+      "progress": "진행 상황"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 모든 권리 보유.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, other {기물 #개}}, {seconds, plural, other {#초}}",
       "read": "기사 읽기",
       "tryDrill": "이 훈련 해 보기"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "내 진행 상황",
+      "description": "이 기기에서 플레이한 라운드로 Memory Chess가 기록하는 모든 수치를 한 페이지에서. 공유할 카드도 함께."
+    },
+    "kicker": "랩 기록",
+    "title": "내 진행 상황",
+    "lede": "이 기기에서 라운드로 얻은 모든 수치를 한곳에. 공유하지 않는 한 브라우저 밖으로 나가지 않습니다.",
+    "loading": "이 기기의 기록을 읽는 중입니다.",
+    "unavailable": "이 브라우저는 기록을 저장하지 않아 보여 줄 진행 상황이 없습니다. 시크릿 창은 아무것도 저장하지 않습니다.",
+    "fullRecord": "전체 기록 보기",
+    "headline": "주요 수치",
+    "more": "그 밖의 모든 것",
+    "stale": "마지막 라운드 기준",
+    "staleNote": "마지막 플레이는 {count, plural, other {#일}} 전입니다. 이렇게 표시된 수치는 그때의 것입니다.",
+    "play": "한 라운드 플레이",
+    "playAt": "{pieceCount}개, {memorizeSeconds}초로 플레이",
+    "choose": "전체 기록에서 선택",
+    "notYet": "아직 없습니다.",
+    "notSet": "아직 설정하지 않았습니다.",
+    "needs": "{need} 더 하면 열립니다.",
+    "needsAt": "{pieceCount}개, {memorizeSeconds}초로 {need} 더 하면 열립니다.",
+    "need": {
+      "rounds": "{count, plural, other {#라운드}}",
+      "days": "{count, plural, other {#일 플레이}}",
+      "exposures": "{count, plural, other {말 #개 보기}}",
+      "qualifyingRounds": "{minPieces}개 이상, 정확도 {accuracy}% 이상으로 {count, plural, other {#라운드}}",
+      "largerRounds": "{minPieces}개 이상으로 {count, plural, other {#라운드}}",
+      "rightRounds": "말을 하나 이상 맞힌 {count, plural, other {#라운드}}",
+      "reviews": "같은 간격 후 복습 {count, plural, other {#회}}"
+    },
+    "label": {
+      "span": "기억 범위",
+      "piecesHeld": "기억한 말",
+      "speed": "속도",
+      "streak": "연속 기록",
+      "rounds": "플레이한 라운드",
+      "days": "플레이한 날",
+      "trend": "정확도",
+      "daily": "오늘의 보드",
+      "week": "이번 주",
+      "curve": "복습 후 기억",
+      "missMap": "가장 많이 놓친 줄",
+      "typeRecall": "가장 약한 말",
+      "insights": "발견",
+      "notebook": "노트",
+      "plans": "플랜",
+      "goal": "목표",
+      "bests": "개인 최고 기록",
+      "board": "리더보드"
+    },
+    "unit": {
+      "pieces": "{count, plural, other {<n>{value}</n>개}}",
+      "secondsPerPiece": "<n>{value}</n>초/말",
+      "days": "{count, plural, other {<n>{value}</n>일}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, other {<n>{value}</n>라운드}}",
+      "entries": "{count, plural, other {<n>{value}</n>개}}",
+      "findings": "{count, plural, other {<n>{value}</n>개}}",
+      "settings": "{count, plural, other {<n>{value}</n>개 설정}}"
+    },
+    "context": {
+      "span": "{rounds, plural, other {#라운드}}에서 {accuracy}% 이상, 기억 시간 {memorizeSeconds}초",
+      "recent": "최근 {rounds, plural, other {#라운드}} 평균, 모든 설정",
+      "setting": "{source, select, calibration {연습} other {게임}} {pieceCount}개, {memorizeSeconds}초, {rounds, plural, other {#라운드}} 기준",
+      "longest": "최장 {days, plural, other {#일}}",
+      "daily": "{status, select, played {오늘 플레이함} unfinished {오늘 열어 봄} other {오늘 플레이 가능}}, 최장 연속 {longest, plural, other {#일}}",
+      "curve": "{day, plural, other {#일}} 후 기억, 복습 {reviews, plural, other {#회}} 기준",
+      "rounds": "{rounds, plural, other {#라운드}} 기준",
+      "missLine": "{line, select, file {{name} 파일} other {{name} 랭크}}에서 놓침, 본 말 {shown}개 중",
+      "pieceType": "{type, select, p {폰} n {나이트} b {비숍} r {룩} q {퀸} other {킹}} 기억률, 본 말 {shown}개 중",
+      "plan": "{planId, select, baseline {기준선} edge {가장자리} other {사다리}} 플랜, {status, select, active {진행 중} done {완료} other {중단}}",
+      "goal": "{pieceCount}개, {accuracy}% 목표까지",
+      "week": "주간 목표 {goal}일",
+      "best": "최고 기록 {pieceCount}개, {memorizeSeconds}초에서 {accuracy}%",
+      "entry": "최고 등록 기록의 맞힌 말, {difficulty, select, easy {쉬움} medium {보통} hard {어려움} other {그랜드마스터}}",
+      "overDays": "{days, plural, other {#일}} 동안",
+      "firstDay": "{date}부터"
+    },
+    "share": {
+      "button": "내 진행 상황 공유",
+      "working": "카드를 만드는 중입니다.",
+      "shared": "공유했습니다.",
+      "saved": "카드를 저장하고 캡션을 복사했습니다. 원하는 곳에 올리세요.",
+      "savedNoCopy": "카드를 저장했습니다. 아래 캡션을 복사해 함께 올리세요.",
+      "failed": "여기서는 카드를 만들 수 없습니다. 대신 아래 캡션을 복사하세요.",
+      "caption": "캡션",
+      "copy": "캡션 복사",
+      "copied": "캡션을 복사했습니다.",
+      "copyFailed": "여기서는 복사가 되지 않았습니다. 캡션이 선택되어 있으니 직접 복사하세요.",
+      "locked": "기억 범위, 기억한 말, 속도, 연속 기록 중 하나가 준비되면 공유 카드가 열립니다.",
+      "text": "Memory Chess 내 진행 상황: {figures}. 이길 수 있나요?",
+      "figure": {
+        "span": "기억 범위 {value, plural, other {#개}}",
+        "piecesHeld": "기억한 말 {value, number}개",
+        "speed": "말 하나당 {value, number}초",
+        "streak": "{value, plural, other {#일}} 연속"
+      },
+      "card": {
+        "kicker": "랩 기록",
+        "rounds": "{count, plural, other {#라운드 플레이}}",
+        "cta": "이길 수 있나요?"
+      }
     }
   }
 }

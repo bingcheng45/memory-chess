@@ -9,7 +9,8 @@
       "privacy": "Prywatność",
       "terms": "Regulamin",
       "play": "Graj",
-      "leaderboard": "Ranking"
+      "leaderboard": "Ranking",
+      "progress": "Postępy"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Wszelkie prawa zastrzeżone.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}}, {seconds, plural, one {# sekunda} few {# sekundy} many {# sekund} other {# sekundy}}",
       "read": "Przeczytaj artykuł",
       "tryDrill": "Wypróbuj to ćwiczenie"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Twoje postępy",
+      "description": "Każda liczba, którą Memory Chess śledzi z twoich rund na tym urządzeniu, na jednej stronie, z kartą do udostępnienia."
+    },
+    "kicker": "Dziennik laboratorium",
+    "title": "Twoje postępy",
+    "lede": "Wszystkie liczby, które twoje rundy zdobyły na tym urządzeniu, w jednym miejscu. Nic nie opuszcza twojej przeglądarki, chyba że to udostępnisz.",
+    "loading": "Wczytywanie twojego dziennika na tym urządzeniu.",
+    "unavailable": "Ta przeglądarka nie przechowuje dziennika, więc nie ma postępów do pokazania. Okna prywatne niczego nie zapisują.",
+    "fullRecord": "Zobacz pełny dziennik",
+    "headline": "Najważniejsze liczby",
+    "more": "Wszystko inne",
+    "stale": "Z ostatniej rundy",
+    "staleNote": "Ostatnia gra {count, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} temu. Tak oznaczone liczby pochodzą z tamtego czasu.",
+    "play": "Zagraj rundę",
+    "playAt": "Zagraj {pieceCount} figur, {memorizeSeconds} s",
+    "choose": "Wybierz go w pełnym dzienniku",
+    "notYet": "Jeszcze nic.",
+    "notSet": "Jeszcze nie ustawiono.",
+    "needs": "Odblokuje się po {need}.",
+    "needsAt": "Odblokuje się po {need} przy {pieceCount} figurach, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {# kolejnej rundzie} few {# kolejnych rundach} many {# kolejnych rundach} other {# kolejnej rundy}}",
+      "days": "{count, plural, one {# kolejnym dniu gry} few {# kolejnych dniach gry} many {# kolejnych dniach gry} other {# kolejnego dnia gry}}",
+      "exposures": "{count, plural, one {# kolejnej zobaczonej figurze} few {# kolejnych zobaczonych figurach} many {# kolejnych zobaczonych figurach} other {# kolejnej zobaczonej figury}}",
+      "qualifyingRounds": "{count, plural, one {# kolejnej rundzie} few {# kolejnych rundach} many {# kolejnych rundach} other {# kolejnej rundy}} z wynikiem {accuracy}% lub lepszym i co najmniej {minPieces} figurami",
+      "largerRounds": "{count, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}} z co najmniej {minPieces} figurami",
+      "rightRounds": "{count, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}} z jedną poprawną figurą",
+      "reviews": "{count, plural, one {# kolejnej powtórce} few {# kolejnych powtórkach} many {# kolejnych powtórkach} other {# kolejnej powtórki}} po tej samej przerwie"
+    },
+    "label": {
+      "span": "Zakres pamięci",
+      "piecesHeld": "Zapamiętane figury",
+      "speed": "Tempo",
+      "streak": "Seria",
+      "rounds": "Rozegrane rundy",
+      "days": "Dni gry",
+      "trend": "Dokładność",
+      "daily": "Plansza dnia",
+      "week": "Ten tydzień",
+      "curve": "Pamięć po powtórce",
+      "missMap": "Najczęściej mylona linia",
+      "typeRecall": "Najsłabsza figura",
+      "insights": "Spostrzeżenia",
+      "notebook": "Notatnik",
+      "plans": "Plan",
+      "goal": "Cel",
+      "bests": "Rekordy osobiste",
+      "board": "Ranking"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> figura} few {<n>{value}</n> figury} many {<n>{value}</n> figur} other {<n>{value}</n> figury}}",
+      "secondsPerPiece": "<n>{value}</n> s na figurę",
+      "days": "{count, plural, one {<n>{value}</n> dzień} few {<n>{value}</n> dni} many {<n>{value}</n> dni} other {<n>{value}</n> dnia}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, one {<n>{value}</n> runda} few {<n>{value}</n> rundy} many {<n>{value}</n> rund} other {<n>{value}</n> rundy}}",
+      "entries": "{count, plural, one {<n>{value}</n> wpis} few {<n>{value}</n> wpisy} many {<n>{value}</n> wpisów} other {<n>{value}</n> wpisu}}",
+      "findings": "{count, plural, one {<n>{value}</n> spostrzeżenie} few {<n>{value}</n> spostrzeżenia} many {<n>{value}</n> spostrzeżeń} other {<n>{value}</n> spostrzeżenia}}",
+      "settings": "{count, plural, one {<n>{value}</n> ustawienie} few {<n>{value}</n> ustawienia} many {<n>{value}</n> ustawień} other {<n>{value}</n> ustawienia}}"
+    },
+    "context": {
+      "span": "{accuracy}% lub lepiej w {rounds, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}}, zapamiętywanie {memorizeSeconds} s",
+      "recent": "Średnia z ostatnich rund: {rounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}, dowolne ustawienie",
+      "setting": "{source, select, calibration {Rundy treningowe} other {Rundy w partiach}} z {pieceCount} figurami, {memorizeSeconds} s, z {rounds, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+      "longest": "Najdłuższa {days, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
+      "daily": "{status, select, played {Zagrane dziś} unfinished {Otwarte dziś} other {Dostępne dziś}}, najdłuższa seria {longest, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
+      "curve": "Zapamiętane po {day, plural, one {# dniu} few {# dniach} many {# dniach} other {# dnia}}, z {reviews, plural, one {# powtórki} few {# powtórek} many {# powtórek} other {# powtórki}}",
+      "rounds": "Z {rounds, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+      "missLine": "Pomyłki {line, select, file {w kolumnie {name}} other {w rzędzie {name}}}, z {shown} zobaczonych figur",
+      "pieceType": "{type, select, p {Pionki zapamiętane} n {Skoczki zapamiętane} b {Gońce zapamiętane} r {Wieże zapamiętane} q {Hetmany zapamiętane} other {Króle zapamiętane}}, z {shown} zobaczonych",
+      "plan": "{planId, select, baseline {Plan Punkt odniesienia} edge {Plan Krawędzie} other {Plan Drabina}}, {status, select, active {wciąż w toku} done {już ukończony} other {już przerwany}}",
+      "goal": "W drodze do {pieceCount} figur z dokładnością {accuracy}%",
+      "week": "Cel tygodniowy {goal} dni",
+      "best": "Najlepszy wynik {accuracy}% przy {pieceCount} figurach, {memorizeSeconds} s",
+      "entry": "Poprawne figury w twoim najlepszym wpisie, {difficulty, select, easy {poziom Łatwy} medium {poziom Średni} hard {poziom Trudny} other {poziom Arcymistrz}}",
+      "overDays": "W ciągu {days, plural, one {# dnia} few {# dni} many {# dni} other {# dnia}}",
+      "firstDay": "Od {date}"
+    },
+    "share": {
+      "button": "Udostępnij moje postępy",
+      "working": "Tworzenie karty.",
+      "shared": "Udostępniono.",
+      "saved": "Karta zapisana, a tekst skopiowany. Opublikuj je, gdzie chcesz.",
+      "savedNoCopy": "Karta zapisana. Skopiuj tekst poniżej, aby opublikować go razem z nią.",
+      "failed": "Nie udało się tu utworzyć karty. Skopiuj zamiast tego tekst poniżej.",
+      "caption": "Tekst",
+      "copy": "Kopiuj tekst",
+      "copied": "Tekst skopiowany.",
+      "copyFailed": "Kopiowanie tu nie zadziałało. Tekst jest zaznaczony, skopiuj go samodzielnie.",
+      "locked": "Karta do udostępnienia odblokuje się, gdy gotowy będzie zakres pamięci, zapamiętane figury, tempo lub twoja seria.",
+      "text": "Moje postępy w Memory Chess: {figures}. Pobijesz to?",
+      "figure": {
+        "span": "zakres pamięci {value, plural, one {# figura} few {# figury} many {# figur} other {# figury}}",
+        "piecesHeld": "{value, number} figury w pamięci",
+        "speed": "{value, number} s na figurę",
+        "streak": "{value, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} z rzędu"
+      },
+      "card": {
+        "kicker": "Dziennik laboratorium",
+        "rounds": "{count, plural, one {# rozegrana runda} few {# rozegrane rundy} many {# rozegranych rund} other {# rozegranej rundy}}",
+        "cta": "Pobijesz to?"
+      }
     }
   }
 }

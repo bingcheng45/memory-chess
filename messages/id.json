@@ -9,7 +9,8 @@
       "privacy": "Privasi",
       "terms": "Ketentuan",
       "play": "Main",
-      "leaderboard": "Peringkat"
+      "leaderboard": "Peringkat",
+      "progress": "Kemajuan"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Seluruh hak cipta dilindungi.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, other {# bidak}}, {seconds, plural, other {# detik}}",
       "read": "Baca artikelnya",
       "tryDrill": "Coba latihan itu"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Kemajuanmu",
+      "description": "Setiap angka yang dicatat Memory Chess dari ronde-rondemu di perangkat ini, dalam satu halaman, dengan kartu untuk dibagikan."
+    },
+    "kicker": "Catatan lab",
+    "title": "Kemajuanmu",
+    "lede": "Semua angka yang diraih ronde-rondemu di perangkat ini, di satu tempat. Tidak ada yang keluar dari browsermu kecuali kamu membagikannya.",
+    "loading": "Membaca catatanmu di perangkat ini.",
+    "unavailable": "Browser ini tidak menyimpan catatan, jadi tidak ada kemajuan untuk ditampilkan. Jendela pribadi tidak menyimpan apa pun.",
+    "fullRecord": "Lihat catatan lengkap",
+    "headline": "Angka utama",
+    "more": "Semua lainnya",
+    "stale": "Per ronde terakhirmu",
+    "staleNote": "Terakhir bermain {count, plural, other {# hari}} lalu. Angka yang ditandai begini berasal dari saat itu.",
+    "play": "Mainkan satu ronde",
+    "playAt": "Main {pieceCount} bidak, {memorizeSeconds} dtk",
+    "choose": "Pilih di catatan lengkap",
+    "notYet": "Belum ada.",
+    "notSet": "Belum diatur.",
+    "needs": "Terbuka setelah {need}.",
+    "needsAt": "Terbuka setelah {need} dengan {pieceCount} bidak, {memorizeSeconds} dtk.",
+    "need": {
+      "rounds": "{count, plural, other {# ronde lagi}}",
+      "days": "{count, plural, other {# hari bermain lagi}}",
+      "exposures": "{count, plural, other {# bidak terlihat lagi}}",
+      "qualifyingRounds": "{count, plural, other {# ronde lagi}} dengan {accuracy}% atau lebih dan minimal {minPieces} bidak",
+      "largerRounds": "{count, plural, other {# ronde}} dengan minimal {minPieces} bidak",
+      "rightRounds": "{count, plural, other {# ronde}} dengan satu bidak benar",
+      "reviews": "{count, plural, other {# ulasan lagi}} setelah jeda yang sama"
+    },
+    "label": {
+      "span": "Rentang memori",
+      "piecesHeld": "Bidak diingat",
+      "speed": "Kecepatan",
+      "streak": "Beruntun",
+      "rounds": "Ronde dimainkan",
+      "days": "Hari bermain",
+      "trend": "Akurasi",
+      "daily": "Papan harian",
+      "week": "Minggu ini",
+      "curve": "Ingatan setelah ulasan",
+      "missMap": "Garis paling sering meleset",
+      "typeRecall": "Bidak terlemah",
+      "insights": "Temuan",
+      "notebook": "Buku catatan",
+      "plans": "Rencana",
+      "goal": "Target",
+      "bests": "Rekor pribadi",
+      "board": "Papan peringkat"
+    },
+    "unit": {
+      "pieces": "{count, plural, other {<n>{value}</n> bidak}}",
+      "secondsPerPiece": "<n>{value}</n> dtk per bidak",
+      "days": "{count, plural, other {<n>{value}</n> hari}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, other {<n>{value}</n> ronde}}",
+      "entries": "{count, plural, other {<n>{value}</n> catatan}}",
+      "findings": "{count, plural, other {<n>{value}</n> temuan}}",
+      "settings": "{count, plural, other {<n>{value}</n> pengaturan}}"
+    },
+    "context": {
+      "span": "{accuracy}% atau lebih dalam {rounds, plural, other {# ronde}}, menghafal {memorizeSeconds} dtk",
+      "recent": "Rata-rata {rounds, plural, other {# ronde}} terakhirmu, pengaturan apa pun",
+      "setting": "{source, select, calibration {Ronde latihan} other {Ronde permainan}} {pieceCount} bidak, {memorizeSeconds} dtk, dari {rounds, plural, other {# ronde}}",
+      "longest": "Terpanjang {days, plural, other {# hari}}",
+      "daily": "{status, select, played {Dimainkan hari ini} unfinished {Dibuka hari ini} other {Tersedia hari ini}}, beruntun terpanjang {longest, plural, other {# hari}}",
+      "curve": "Diingat setelah {day, plural, other {# hari}}, dari {reviews, plural, other {# ulasan}}",
+      "rounds": "Dari {rounds, plural, other {# ronde}}",
+      "missLine": "Meleset di {line, select, file {kolom {name}} other {baris {name}}}, dari {shown} bidak terlihat",
+      "pieceType": "{type, select, p {Pion diingat} n {Kuda diingat} b {Gajah diingat} r {Benteng diingat} q {Menteri diingat} other {Raja diingat}}, dari {shown} terlihat",
+      "plan": "{planId, select, baseline {Rencana Dasar} edge {Rencana Tepi} other {Rencana Tangga}}, {status, select, active {masih berjalan} done {sudah selesai} other {sudah dihentikan}}",
+      "goal": "Menuju {pieceCount} bidak dengan {accuracy}%",
+      "week": "Target mingguan {goal} hari",
+      "best": "Hasil terbaik {accuracy}% dengan {pieceCount} bidak, {memorizeSeconds} dtk",
+      "entry": "Bidak benar di entri terbaikmu, {difficulty, select, easy {level Mudah} medium {level Sedang} hard {level Sulit} other {level Grandmaster}}",
+      "overDays": "Selama {days, plural, other {# hari}}",
+      "firstDay": "Sejak {date}"
+    },
+    "share": {
+      "button": "Bagikan kemajuanku",
+      "working": "Membuat kartumu.",
+      "shared": "Dibagikan.",
+      "saved": "Kartu disimpan dan teks disalin. Unggah di mana saja.",
+      "savedNoCopy": "Kartu disimpan. Salin teks di bawah untuk diunggah bersamanya.",
+      "failed": "Kartu tidak bisa dibuat di sini. Salin teks di bawah sebagai gantinya.",
+      "caption": "Teks",
+      "copy": "Salin teks",
+      "copied": "Teks disalin.",
+      "copyFailed": "Menyalin tidak berhasil di sini. Teks sudah dipilih, salin sendiri.",
+      "locked": "Kartu untuk dibagikan terbuka setelah rentang memori, bidak diingat, kecepatan, atau beruntunmu siap.",
+      "text": "Kemajuanku di Memory Chess: {figures}. Bisa kalahkan?",
+      "figure": {
+        "span": "rentang memori {value, plural, other {# bidak}}",
+        "piecesHeld": "{value, number} bidak diingat",
+        "speed": "{value, number} dtk per bidak",
+        "streak": "{value, plural, other {# hari}} beruntun"
+      },
+      "card": {
+        "kicker": "Catatan lab",
+        "rounds": "{count, plural, other {# ronde dimainkan}}",
+        "cta": "Bisa kalahkan?"
+      }
     }
   }
 }

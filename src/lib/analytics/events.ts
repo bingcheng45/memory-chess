@@ -102,7 +102,14 @@ export type FunnelEvent =
   | {
       name: "lab_panel_action";
       params: { panel: LabPanel; action: LabPanelAction };
+    }
+  /** How the progress card left the dashboard: the share sheet, a saved image, or the caption copied. Never its figures. */
+  | {
+      name: "lab_dashboard_share";
+      params: { method: ShareMethod };
     };
+
+export type ShareMethod = "native" | "download" | "copy";
 
 export function trackEvent({ name, params }: FunnelEvent): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;

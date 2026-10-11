@@ -9,7 +9,8 @@
       "privacy": "Privacy",
       "terms": "Voorwaarden",
       "play": "Spelen",
-      "leaderboard": "Ranglijst"
+      "leaderboard": "Ranglijst",
+      "progress": "Voortgang"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle rechten voorbehouden.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# stuk} other {# stukken}}, {seconds, plural, one {# seconde} other {# seconden}}",
       "read": "Lees het artikel",
       "tryDrill": "Probeer die oefening"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Je voortgang",
+      "description": "Elk cijfer dat Memory Chess bijhoudt uit je rondes op dit apparaat, op één pagina, met een kaart om te delen."
+    },
+    "kicker": "Labverslag",
+    "title": "Je voortgang",
+    "lede": "Elk cijfer dat je rondes op dit apparaat hebben opgeleverd, op één plek. Niets verlaat je browser, tenzij je het deelt.",
+    "loading": "Je verslag op dit apparaat wordt gelezen.",
+    "unavailable": "Deze browser bewaart geen verslag, dus er is geen voortgang om te tonen. Privévensters bewaren niets.",
+    "fullRecord": "Bekijk het volledige verslag",
+    "headline": "Belangrijkste cijfers",
+    "more": "Al het andere",
+    "stale": "Stand van je laatste ronde",
+    "staleNote": "Laatst gespeeld {count, plural, one {# dag} other {# dagen}} geleden. Zo gemarkeerde cijfers zijn van toen.",
+    "play": "Speel een ronde",
+    "playAt": "Speel {pieceCount} stukken, {memorizeSeconds} s",
+    "choose": "Kies er een in het volledige verslag",
+    "notYet": "Nog niets.",
+    "notSet": "Nog niet ingesteld.",
+    "needs": "Ontgrendelt met {need}.",
+    "needsAt": "Ontgrendelt met {need} bij {pieceCount} stukken, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {nog # ronde} other {nog # rondes}}",
+      "days": "{count, plural, one {nog # speeldag} other {nog # speeldagen}}",
+      "exposures": "{count, plural, one {nog # gezien stuk} other {nog # geziene stukken}}",
+      "qualifyingRounds": "{count, plural, one {nog # ronde} other {nog # rondes}} met {accuracy}% of beter en {minPieces} of meer stukken",
+      "largerRounds": "{count, plural, one {# ronde} other {# rondes}} met {minPieces} of meer stukken",
+      "rightRounds": "{count, plural, one {# ronde} other {# rondes}} met een goed stuk",
+      "reviews": "{count, plural, one {nog # herhaling} other {nog # herhalingen}} na dezelfde tussenpoos"
+    },
+    "label": {
+      "span": "Geheugenspanne",
+      "piecesHeld": "Onthouden stukken",
+      "speed": "Snelheid",
+      "streak": "Reeks",
+      "rounds": "Gespeelde rondes",
+      "days": "Speeldagen",
+      "trend": "Nauwkeurigheid",
+      "daily": "Bord van de dag",
+      "week": "Deze week",
+      "curve": "Herinnering na herhaling",
+      "missMap": "Meest gemiste lijn",
+      "typeRecall": "Zwakste stuk",
+      "insights": "Inzichten",
+      "notebook": "Notitieboek",
+      "plans": "Plan",
+      "goal": "Doel",
+      "bests": "Persoonlijke records",
+      "board": "Ranglijst"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> stuk} other {<n>{value}</n> stukken}}",
+      "secondsPerPiece": "<n>{value}</n> s per stuk",
+      "days": "{count, plural, one {<n>{value}</n> dag} other {<n>{value}</n> dagen}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, one {<n>{value}</n> ronde} other {<n>{value}</n> rondes}}",
+      "entries": "{count, plural, one {<n>{value}</n> notitie} other {<n>{value}</n> notities}}",
+      "findings": "{count, plural, one {<n>{value}</n> inzicht} other {<n>{value}</n> inzichten}}",
+      "settings": "{count, plural, one {<n>{value}</n> instelling} other {<n>{value}</n> instellingen}}"
+    },
+    "context": {
+      "span": "{accuracy}% of beter in {rounds, plural, one {# ronde} other {# rondes}}, {memorizeSeconds} s bestudeerd",
+      "recent": "Gemiddelde van je laatste {rounds, plural, one {# ronde} other {# rondes}}, elke instelling",
+      "setting": "{source, select, calibration {Rondes als oefening} other {Rondes in partijen}} met {pieceCount} stukken, {memorizeSeconds} s, uit {rounds, plural, one {# ronde} other {# rondes}}",
+      "longest": "Langste {days, plural, one {# dag} other {# dagen}}",
+      "daily": "{status, select, played {Vandaag gespeeld} unfinished {Vandaag geopend} other {Vandaag open}}, langste reeks {longest, plural, one {# dag} other {# dagen}}",
+      "curve": "Onthouden na {day, plural, one {# dag} other {# dagen}}, uit {reviews, plural, one {# herhaling} other {# herhalingen}}",
+      "rounds": "Uit {rounds, plural, one {# ronde} other {# rondes}}",
+      "missLine": "Gemist op {line, select, file {de {name}-lijn} other {rij {name}}}, uit {shown} geziene stukken",
+      "pieceType": "{type, select, p {Pionnen onthouden} n {Paarden onthouden} b {Lopers onthouden} r {Torens onthouden} q {Dames onthouden} other {Koningen onthouden}}, uit {shown} gezien",
+      "plan": "{planId, select, baseline {Plan Nulmeting} edge {Plan Randen} other {Plan Ladder}}, {status, select, active {nog bezig} done {nu afgerond} other {nu gestopt}}",
+      "goal": "Op weg naar {pieceCount} stukken met {accuracy}%",
+      "week": "Weekdoel {goal} dagen",
+      "best": "Beste meting {accuracy}% bij {pieceCount} stukken, {memorizeSeconds} s",
+      "entry": "Goede stukken in je beste inzending, {difficulty, select, easy {bord Makkelijk} medium {bord Gemiddeld} hard {bord Moeilijk} other {bord Grootmeester}}",
+      "overDays": "Over {days, plural, one {# dag} other {# dagen}}",
+      "firstDay": "Sinds {date}"
+    },
+    "share": {
+      "button": "Deel mijn voortgang",
+      "working": "Je kaart wordt gemaakt.",
+      "shared": "Gedeeld.",
+      "saved": "Kaart opgeslagen en tekst gekopieerd. Plaats ze waar je wilt.",
+      "savedNoCopy": "Kaart opgeslagen. Kopieer de tekst hieronder om erbij te plaatsen.",
+      "failed": "De kaart kon hier niet worden gemaakt. Kopieer in plaats daarvan de tekst hieronder.",
+      "caption": "Tekst",
+      "copy": "Tekst kopiëren",
+      "copied": "Tekst gekopieerd.",
+      "copyFailed": "Kopiëren werkte hier niet. De tekst is geselecteerd, kopieer hem zelf.",
+      "locked": "Je deelkaart wordt ontgrendeld zodra je geheugenspanne, onthouden stukken, snelheid of reeks klaar is.",
+      "text": "Mijn voortgang bij Memory Chess: {figures}. Kun jij het beter?",
+      "figure": {
+        "span": "geheugenspanne van {value, plural, one {# stuk} other {# stukken}}",
+        "piecesHeld": "{value, number} onthouden stukken",
+        "speed": "{value, number} s per stuk",
+        "streak": "{value, plural, one {# dag} other {# dagen}} op rij"
+      },
+      "card": {
+        "kicker": "Labverslag",
+        "rounds": "{count, plural, one {# ronde gespeeld} other {# rondes gespeeld}}",
+        "cta": "Kun jij het beter?"
+      }
     }
   }
 }

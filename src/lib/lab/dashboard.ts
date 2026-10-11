@@ -11,11 +11,11 @@ import { hasFigure, LAB_THRESHOLDS, type Need, type Readiness } from "./readines
 import type { LabSummary } from "./summary";
 import { weekProgress, type WeekGoal } from "./week";
 
-export const DASHBOARD_SOURCE: RoundSource = "dashboard";
-const QUICK_PLAY = playHref(DEFAULT_PRESET.pieceCount, DEFAULT_PRESET.memorizeTime, DASHBOARD_SOURCE);
+const DASHBOARD_SOURCE: RoundSource = "dashboard";
+export const DASHBOARD_PLAY_HREF = playHref(DEFAULT_PRESET.pieceCount, DEFAULT_PRESET.memorizeTime, DASHBOARD_SOURCE);
 const DAILY_PLAY = playHref(DAILY_SETTING.pieceCount, DAILY_SETTING.memorizeTime, "daily");
 
-export type DashboardUnit = "pieces" | "secondsPerPiece" | "days" | "percent" | "rounds" | "entries" | "findings" | "settings" | "planDays";
+export type DashboardUnit = "pieces" | "secondsPerPiece" | "days" | "percent" | "rounds" | "entries" | "findings" | "settings";
 
 export interface Figure {
   readonly value: number;
@@ -24,7 +24,7 @@ export interface Figure {
 }
 
 /** Each kind is one message under dashboard.context, and `values` are its arguments. */
-export type ContextKind =
+type ContextKind =
   | "span"
   | "recent"
   | "setting"
@@ -98,7 +98,7 @@ export interface DashboardInput {
   readonly chooseHref: string | null;
 }
 
-const rigHref = (rig: Rig | null) => (rig ? playHref(rig.pieceCount, rig.memorizeSeconds, DASHBOARD_SOURCE) : QUICK_PLAY);
+const rigHref = (rig: Rig | null) => (rig ? playHref(rig.pieceCount, rig.memorizeSeconds, DASHBOARD_SOURCE) : DASHBOARD_PLAY_HREF);
 
 const figure = (value: number, unit: DashboardUnit, digits: 0 | 1 = 0): Figure => ({ value, unit, digits });
 const context = (kind: ContextKind, values: TileContext["values"]): TileContext => ({ kind, values });
@@ -108,16 +108,16 @@ const settingValues = ({ source, pieceCount, memorizeSeconds }: TrendSetting) =>
 const gameRig = (setting: TrendSetting | undefined): Rig | null =>
   setting?.source === "game" ? { pieceCount: setting.pieceCount, memorizeSeconds: setting.memorizeSeconds } : null;
 
+const ready = (figureValue: Figure, tileContext: TileContext): TileState => ({ state: "ready", figure: figureValue, context: tileContext });
+const emptyPlay = (href = DASHBOARD_PLAY_HREF): TileState => ({ state: "empty", href, cta: "play" });
+
 /** One metric's tile: its figure only once the metric can read one, else what it still needs. */
 function fromReadiness(readiness: Readiness, draw: () => Omit<Extract<TileState, { figure: Figure }>, "state"> | null, rig: Rig | null = null): TileState {
   const drawn = hasFigure(readiness) ? draw() : null;
   if (drawn) return { state: readiness.state as "ready" | "stale", ...drawn };
   if (readiness.state === "warming" && readiness.need) return { state: "warming", need: readiness.need, rig, href: rigHref(rig) };
-  return { state: "empty", href: QUICK_PLAY, cta: "play" };
+  return emptyPlay();
 }
-
-const ready = (figureValue: Figure, tileContext: TileContext): TileState => ({ state: "ready", figure: figureValue, context: tileContext });
-const emptyPlay = (href = QUICK_PLAY): TileState => ({ state: "empty", href, cta: "play" });
 
 const missShare = ({ shown, missed }: MissCell) => missed / shown;
 
@@ -215,7 +215,7 @@ const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
   plans: ({ results: { plans }, chooseHref }) => {
     if (!plans.value) return chooseHref ? { state: "empty", href: chooseHref, cta: "choose" } : emptyPlay();
     const { planId, status } = plans.value;
-    return { state: plans.readiness.state === "stale" ? "stale" : "ready", figure: figure(status.day, "planDays"), context: context("plan", { planId, status: status.kind }) };
+    return { state: plans.readiness.state === "stale" ? "stale" : "ready", figure: figure(status.day, "days"), context: context("plan", { planId, status: status.kind }) };
   },
   goal: ({ results: { goal }, chooseHref }) => {
     if (!goal.value) return chooseHref ? { state: "empty", href: chooseHref, cta: "choose" } : emptyPlay();

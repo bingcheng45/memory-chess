@@ -3,7 +3,8 @@
  * Checks layouts Jest cannot measure, in a real browser, each case in a fresh profile:
  * the main nav fits one row on English phones with full-size tap targets, and other
  * locales wrap to no more rows than they did before that fit; the dashboard's play
- * button, shown while no headline figure is ready, is as wide as its label.
+ * button, shown while no headline figure is ready, is as wide as its label; and the
+ * share card sets its rounds line in the card's sans, as it sets every other lowercase line.
  * Screenshots of each go to the evidence directory.
  *
  *   npm run lab:personas && npm run lab:fit -- --base http://localhost:4671 --out <dir> [--only <case>]
@@ -86,10 +87,39 @@ async function locked(page, { baseUrl, evidenceDir }) {
   return { measured, failures };
 }
 
-const CHECKS = { nav, locked };
+/** Keeps every blob the page saves and the font of every line the canvas draws, so the card is read as the player gets it. */
+const RECORD_CARD = `(() => {
+  window.__blobs = [];
+  window.__lines = [];
+  const objectUrl = URL.createObjectURL;
+  URL.createObjectURL = (blob) => { window.__blobs.push(blob); return objectUrl.call(URL, blob); };
+  const fillText = CanvasRenderingContext2D.prototype.fillText;
+  CanvasRenderingContext2D.prototype.fillText = function (text, x, y) { window.__lines.push([text, this.font]); return fillText.call(this, text, x, y); };
+})()`;
+const BLOB_BASE64 = `window.__blobs[0].arrayBuffer().then((buffer) => {
+  let binary = "";
+  new Uint8Array(buffer).forEach((byte) => (binary += String.fromCharCode(byte)));
+  return btoa(binary);
+})`;
+const ROUNDS_FONT = '500 30px Geist, "Geist Fallback", system-ui, -apple-system, "Segoe UI", sans-serif';
+
+async function card(page, { baseUrl, evidenceDir }) {
+  await sized(page, 1440);
+  await page.goto(`${baseUrl}/dashboard`);
+  await page.waitFor(`!!document.querySelector(".lab-share button")`, 20_000);
+  await page.eval(RECORD_CARD);
+  await page.click(".lab-share button", "Share my progress");
+  await page.waitFor("window.__blobs.length > 0 || null", 20_000);
+  writeFileSync(join(evidenceDir, "card.png"), Buffer.from(await page.eval(BLOB_BASE64), "base64"));
+  const rounds = (await page.eval("window.__lines")).find(([text]) => /rounds played$/.test(text));
+  return { measured: { rounds }, failures: rounds?.[1] === ROUNDS_FONT ? [] : [`rounds line drawn in ${rounds?.[1]}, expected ${ROUNDS_FONT}`] };
+}
+
+const CHECKS = { nav, locked, card };
 const CASES = [
   { name: "nav", persona: "newVisitor" },
   { name: "locked", persona: "twoRounds" },
+  { name: "card", persona: "threeDays" },
 ];
 
 export default async function fit(page, context) {

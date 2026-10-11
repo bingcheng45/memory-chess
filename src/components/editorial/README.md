@@ -1,8 +1,9 @@
 # Memory Chess editorial style
 
-The changelog is the visual reference for editorial pages. The reusable rules
-live in `editorialStyles.ts`, and the shared page shell, hero, and actions live
-in `EditorialPage.tsx`.
+These are the dark site's editorial rules, for pages not yet drawn in Lab Paper
+(the changelog and about pages use `LabReadingPage` in `src/components/lab-paper/`).
+The reusable rules live in `editorialStyles.ts`, and the shared page shell, hero,
+and actions live in `EditorialPage.tsx`.
 
 - Use a near-black canvas and one peach accent.
 - Keep prose in a narrow reading column (`max-w-2xl` or `max-w-3xl`).

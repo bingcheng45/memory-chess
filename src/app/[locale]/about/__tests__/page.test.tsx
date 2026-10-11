@@ -1,16 +1,33 @@
+import type { AnchorHTMLAttributes } from "react";
 import { render, screen } from "@/test-utils/intl";
 import AboutPage from "@/app/[locale]/about/page";
 import { EN_LEARN_PAGES } from "@/lib/seo/learn";
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>Memory Chess header</div>;
-  }
-
-  return MockPageHeader;
-});
+jest.mock("@/i18n/navigation", () => ({
+  Link: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => <a href={href} {...props} />,
+  usePathname: () => "/about",
+  useRouter: () => ({ replace: jest.fn() }),
+}));
+jest.mock("@/lib/articles/translatedLocales");
 
 describe("AboutPage", () => {
+  it("is a Lab Paper page whose header marks About as the current page", () => {
+    const { container } = render(<AboutPage />);
+
+    expect(container.firstElementChild).toHaveClass("lab-paper");
+    expect(screen.getAllByRole("link", { name: "About" })[0]).toHaveAttribute("aria-current", "page");
+    expect(
+      screen.getAllByRole("heading", { level: 2 }).map((heading) => heading.textContent),
+    ).toEqual([
+      "Who runs this site",
+      "Why the game exists",
+      "How a round works",
+      "How the Learn guides are written",
+      "Where the site has been",
+      "Get in touch",
+    ]);
+  });
+
   it("names the developer and links the site's real pages", () => {
     render(<AboutPage />);
 

@@ -14,6 +14,7 @@ export interface LabPaperRoute {
 export const LAB_PAPER_ROUTES: readonly LabPaperRoute[] = [
   { path: "/", scope: "page", locales: LAB_LOCALES },
   { path: "/changelog", scope: "page", locales: ["en"] },
+  { path: "/about", scope: "page", locales: ["en"] },
 ];
 
 function covers(route: LabPaperRoute, pathname: string): boolean {

@@ -13,7 +13,7 @@ import { LAB_SECTIONS } from "@/components/home/SectionHeading";
 import { useWeekGoal } from "@/components/home/useWeekGoal";
 import { DashboardShare } from "./DashboardShare";
 import { useFigureText } from "./figureText";
-import "@/components/home/lab.css";
+import "./lab.css";
 import "./dashboard.css";
 
 const isHeadline = (id: DashboardTileId) => (HEADLINE_TILES as readonly DashboardTileId[]).includes(id);

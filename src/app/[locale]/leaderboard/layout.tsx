@@ -5,6 +5,9 @@ import { localizedPath } from '@/lib/seo/alternates';
 import { socialMetadata } from '@/lib/seo/brand';
 import { robotsFor } from '@/lib/seo/englishOnly';
 import LeaderboardReference from '@/components/reference/LeaderboardReference';
+import { LabPaperHeader } from '@/components/lab-paper/LabPaperHeader';
+import { LAB_PAPER_CLASS } from '@/components/lab-paper/shell';
+import '@/components/leaderboard/leaderboard.css';
 
 const siteUrl = 'https://thememorychess.com';
 
@@ -40,10 +43,12 @@ export default async function LeaderboardLayout({
 }) {
   const { locale } = await params;
 
+  // One Lab Paper block holds the header, the board and the explainer, so the sticky header spans all three.
   return (
-    <>
+    <div className={LAB_PAPER_CLASS}>
+      <LabPaperHeader />
       {children}
       <LeaderboardReference locale={locale} />
-    </>
+    </div>
   );
 }

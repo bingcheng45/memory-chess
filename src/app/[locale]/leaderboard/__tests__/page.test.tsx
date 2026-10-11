@@ -11,14 +11,6 @@ jest.mock("next/navigation", () => ({
   useSearchParams: () => new URLSearchParams(),
 }));
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>Memory Chess header</div>;
-  }
-
-  return MockPageHeader;
-});
-
 const env = process.env as Record<string, string | undefined>;
 const original = { NODE_ENV: env.NODE_ENV, NEXT_PHASE: env.NEXT_PHASE };
 

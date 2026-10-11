@@ -13,6 +13,11 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/about", "en")).toBe(true);
   });
 
+  it("draws the leaderboard in Lab Paper in every locale, since every catalogue carries its copy", () => {
+    expect(isLabPaperRoute("/leaderboard", "en")).toBe(true);
+    expect(isLabPaperRoute("/leaderboard", "ja")).toBe(true);
+  });
+
   it("covers the paths beneath a subtree route, in the locales the route lists", () => {
     const routes: readonly LabPaperRoute[] = [
       { path: "/articles", scope: "subtree", locales: "all" },

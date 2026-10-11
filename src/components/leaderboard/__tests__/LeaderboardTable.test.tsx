@@ -50,7 +50,7 @@ describe("LeaderboardTable highlight", () => {
   const highlighted = (entryDetails: ReturnType<typeof link>) =>
     render(
       <LeaderboardTable error={null} activeTab="medium" data={sameName} entryDetails={entryDetails as never} />,
-    ).container.querySelectorAll("tr.bg-peach-500\\/20");
+    ).container.querySelectorAll("tr[data-highlighted]");
 
   it("highlights nothing when a link names a player but not the round", () => {
     expect(highlighted(link({}))).toHaveLength(0);

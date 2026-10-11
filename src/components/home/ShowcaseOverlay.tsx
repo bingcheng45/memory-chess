@@ -6,7 +6,7 @@ import type { SquareName } from "@/lib/game/board";
 import type { Group, Relation } from "@/lib/home/relations";
 import { groupBounds, SHOWCASE, type GroupId, type ShowcaseMove } from "@/lib/home/showcase";
 import type { Inspection, ShowcaseView } from "@/lib/home/showcaseView";
-import { placeLabel, squaresBox } from "@/lib/home/labelPlacement";
+import { placeLabel, segmentBetween, squaresBox, type Segment } from "@/lib/home/labelPlacement";
 import { BoardArrow } from "./BoardArrow";
 import { fileOf, rowOf, squareCenter } from "./boardUnits";
 
@@ -38,18 +38,20 @@ interface GroupCircleProps {
   active: boolean;
   /** Squares with a piece on them: the name pill keeps clear of these. */
   occupied: ReadonlySet<SquareName>;
+  /** The step's arrows: the name pill keeps clear of these too, after the pieces. */
+  arrows: readonly Segment[];
   /** The outline is drawn under the marks; the name pill over them, so an arrow never crosses its text. */
   part: "outline" | "pill";
 }
 
-function GroupCircle({ group, label, on, active, occupied, part }: GroupCircleProps) {
+function GroupCircle({ group, label, on, active, occupied, arrows, part }: GroupCircleProps) {
   const [from, to] = groupBounds(group);
   const x = fileOf(from) + BOX_INSET;
   const y = rowOf(to) + BOX_INSET;
   const width = fileOf(to) - fileOf(from) + 1 - 2 * BOX_INSET;
   const height = rowOf(from) - rowOf(to) + 1 - 2 * BOX_INSET;
   const index = SHOWCASE.groups.indexOf(group) + 1;
-  const pill = placeLabel(squaresBox(group.squares), { width: pillWidth(label), height: PILL_HEIGHT }, occupied);
+  const pill = placeLabel(squaresBox(group.squares), { width: pillWidth(label), height: PILL_HEIGHT }, occupied, arrows);
 
   return (
     <g className="lab-sc-group" data-side={group.side} data-on={on || undefined} data-active={active || undefined}>
@@ -151,6 +153,11 @@ export function ShowcaseOverlay({ view }: { view: ShowcaseView }) {
       .filter(([home]) => !view.board.gone.includes(home as SquareName))
       .map(([, square]) => square as SquareName),
   );
+  const arrows: DrawnArrow[] = [
+    ...annotations.moves.map((move) => ({ ...move, kind: "move" as const })),
+    ...annotations.relations,
+  ];
+  const segments = arrows.map((arrow) => segmentBetween(arrow.from, arrow.to));
   const circles = (part: GroupCircleProps["part"]) =>
     SHOWCASE.groups.map((group) => (
       <GroupCircle
@@ -160,13 +167,10 @@ export function ShowcaseOverlay({ view }: { view: ShowcaseView }) {
         on={view.circles.includes(group.id)}
         active={view.active === group.id}
         occupied={occupied}
+        arrows={segments}
         part={part}
       />
     ));
-  const arrows: DrawnArrow[] = [
-    ...annotations.moves.map((move) => ({ ...move, kind: "move" as const })),
-    ...annotations.relations,
-  ];
 
   return (
     <svg className="lab-sc-ov" viewBox="0 0 8 8" aria-hidden="true">

@@ -4,17 +4,18 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { SquareName } from "@/lib/game/board";
 import { SHOWCASE } from "@/lib/home/showcase";
-import { SHOWCASE_STEPS, type StepTone } from "@/lib/home/showcaseTour";
+import { SHOWCASE_STEPS, STEP_MS, type ShowcaseStep, type StepTone } from "@/lib/home/showcaseTour";
 import { inspect, viewOfInspection, viewOfStep } from "@/lib/home/showcaseView";
 import { usePieceName } from "./BoardFigure";
 import { ShowcaseControls } from "./ShowcaseControls";
 import { ShowcaseFigure } from "./ShowcaseFigure";
+import { useReducedMotion } from "./useLabEffects";
 import { useShowcaseClock } from "./useShowcaseClock";
 
 const TAG_CLASS: Record<StepTone, string> = {
   white: "lab-tag lab-tag-blue",
   black: "lab-tag",
-  mate: "lab-tag lab-tag-ink",
+  game: "lab-tag lab-tag-ink",
   rebuild: "lab-tag lab-tag-mint",
 };
 
@@ -30,7 +31,26 @@ function useInspectedKeys(inspected: SquareName | null, onLeave: () => void) {
 }
 
 /**
- * The hero's card: Deep Fritz against Kramnik, walked through step by step, with
+ * Which of a step's boards is showing. A stretch of the game plays its plies one
+ * a second from the moment the step opens; under reduced motion it shows the last.
+ */
+function useBeat(step: ShowcaseStep): number {
+  const reduced = useReducedMotion();
+  const [beat, setBeat] = useState({ key: step.key, n: 0 });
+  const current = beat.key === step.key ? beat.n : 0;
+  const last = step.boards.length - 1;
+
+  useEffect(() => {
+    if (current >= last) return;
+    const timer = window.setTimeout(() => setBeat({ key: step.key, n: current + 1 }), STEP_MS.ply);
+    return () => window.clearTimeout(timer);
+  }, [step.key, current, last]);
+
+  return reduced ? last : current;
+}
+
+/**
+ * The hero's card: Topalov against Shirov, walked through step by step, with
  * any piece open to inspection. The first frame is the full position, so the
  * page is complete before any motion starts.
  */
@@ -40,8 +60,9 @@ export function ShowcaseBoard() {
   const [inspected, setInspected] = useState<SquareName | null>(null);
   const clock = useShowcaseClock(SHOWCASE_STEPS, inspected !== null);
   const step = SHOWCASE_STEPS[clock.index];
+  const beat = useBeat(step);
   const inspection = inspected ? inspect(inspected) : null;
-  const view = inspection ? viewOfInspection(inspection) : viewOfStep(step);
+  const view = inspection ? viewOfInspection(inspection) : viewOfStep(step, beat);
 
   const resume = () => {
     setInspected(null);

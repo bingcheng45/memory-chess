@@ -1,10 +1,14 @@
 /**
- * Deep Fritz (White) against Vladimir Kramnik, game 2 of the Bonn match, 27 November 2006,
- * through 34.Nxf8. Only the reach generator and the showcase test read it, so the client
- * bundle never carries it. scripts/generate-showcase-reach.mjs imports this file directly,
- * so it must stay free of path aliases and imports.
+ * Veselin Topalov (White) against Alexey Shirov, Linares 1998, round 10, 0-1:
+ * the whole game. Source: https://www.chessgames.com/perl/chessgame?gid=1143956
+ * Only the generator and the tests read it, so the client bundle never carries it.
+ * scripts/generate-showcase-reach.mjs imports this file directly, so it must stay
+ * free of path aliases and imports.
  */
-export const BONN_MOVES: readonly string[] =
-  "d4 d5 c4 dxc4 e4 b5 a4 c6 Nc3 b4 Na2 Nf6 e5 Nd5 Bxc4 e6 Nf3 a5 Bg5 Qb6 Nc1 Ba6 Qe2 h6 Be3 Bxc4 Qxc4 Nd7 Nb3 Be7 Rc1 O-O O-O Rfc8 Qe2 c5 Nfd2 Qc6 Qh5 Qxa4 Nxc5 Nxc5 dxc5 Nxe3 fxe3 Bxc5 Qxf7+ Kh8 Qf3 Rf8 Qe4 Qd7 Nb3 Bb6 Rfd1 Qf7 Rf1 Qa7 Rxf8+ Rxf8 Nd4 a4 Nxe6 Bxe3+ Kh1 Bxc1 Nxf8".split(
+export const LINARES_MOVES: readonly string[] =
+  "d4 Nf6 c4 g6 Nc3 d5 cxd5 Nxd5 e4 Nxc3 bxc3 Bg7 Bb5+ c6 Ba4 O-O Ne2 Nd7 O-O e5 f3 Qe7 Be3 Rd8 Qc2 Nb6 Bb3 Be6 Rad1 Nc4 Bc1 b5 f4 exd4 Nxd4 Bg4 Rde1 Qc5 Kh1 a5 h3 Bd7 a4 bxa4 Ba2 Be8 e5 Nb6 f5 Nd5 Bd2 Nb4 Qxa4 Nxa2 Qxa2 Bxe5 fxg6 hxg6 Bg5 Rd5 Re3 Qd6 Qe2 Bd7 c4 Bxd4 cxd5 Bxe3 Qxe3 Re8 Qc3 Qxd5 Bh6 Re5 Rf3 Qc5 Qa1 Bf5 Re3 f6 Rxe5 Qxe5 Qa2+ Qd5 Qxd5+ cxd5 Bd2 a4 Bc3 Kf7 h4 Ke6 Kg1 Bh3 gxh3 Kf5 Kf2 Ke4 Bxf6 d4 Be7 Kd3 Bc5 Kc4 Be7 Kb3".split(
     " ",
   );
+
+/** The study position is the board after 47.Kg1, the moment before 47...Bh3. */
+export const STUDY_PLY = 93;

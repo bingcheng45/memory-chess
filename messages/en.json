@@ -167,25 +167,25 @@
           "languages": "languages"
         },
         "showcase": {
-          "aria": "Deep Fritz against Vladimir Kramnik, Bonn 2006, with a guided study of the position",
-          "event": "Man vs machine · Game 2",
-          "venue": "Bonn · 27 November 2006",
-          "white": "Deep Fritz",
-          "black": "Vladimir Kramnik",
+          "aria": "Veselin Topalov against Alexey Shirov, Linares 1998, with a guided study of the position",
+          "event": "Linares · Round 10",
+          "venue": "4 March 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
           "versus": "vs",
           "pieceLabel": "{piece} on {square}",
           "tags": {
             "study": "Study",
-            "threat": "White threat",
-            "finish": "The finish",
-            "checkmate": "Checkmate",
+            "trap": "The trap",
+            "sacrifice": "The sacrifice",
+            "walk": "The walk",
+            "runners": "Two runners",
             "rebuild": "Rebuild",
             "inspect": "Reach"
           },
           "counter": {
             "study": "Study {n}/{total}",
-            "threat": "Threats {n}/{total}",
-            "finish": "Finish {n}/{total}",
+            "game": "Game {n}/{total}",
             "resume": "Click again to resume"
           },
           "controls": {
@@ -202,56 +202,60 @@
             "checks": "Checks: {moves}."
           },
           "groups": {
-            "kingCorner": "King's corner",
-            "queenPawn": "Queen and pawn",
-            "cage": "The cage",
-            "blackQueen": "Black queen",
-            "blackPawns": "a4 and b4 pawns",
-            "bishopPawn": "Bishop and b2"
+            "whiteCorner": "White's corner",
+            "longDiagonal": "Long diagonal",
+            "blackWall": "Black's wall",
+            "runner": "The runner"
           },
           "steps": {
             "study": {
-              "intro": { "caption": "Deep Fritz, White, against the world champion Vladimir Kramnik. Black is to move." },
-              "kingCorner": { "caption": "White's king on h1 with pawns g2 and h2." },
-              "queenPawn": {
-                "caption": "The queen on e4 sits right behind the pawn on e5.",
-                "thought": "Queen on e4, pawn on e5 in front of it."
+              "intro": {
+                "caption": "Shirov, Black, is two pawns up, but bishops on opposite colours often hold a draw. Ten pieces."
               },
-              "cage": {
-                "caption": "Black's king on h8 behind g7 and h6, with White's knight on f8 next door.",
-                "thought": "White's knight is already on f8, right beside the king."
+              "whiteCorner": {
+                "caption": "White's king on g1 guards the g2 pawn. The h-pawn has run to h4."
               },
-              "blackQueen": { "caption": "Black's queen is far away on a7." },
-              "blackPawns": { "caption": "Two black pawns on the fourth rank." },
-              "bishopPawn": { "caption": "Black's bishop on c1 sits diagonally behind White's b2 pawn." }
-            },
-            "threat": {
-              "knight": {
-                "caption": "The knight on f8 covers h7, the square beside Black's king.",
-                "thought": "Knight on f8: one jump from h7."
+              "longDiagonal": {
+                "caption": "White's bishop on c3 runs the long diagonal and hits the f6 pawn.",
+                "thought": "Dark-squared bishop, c3 to f6."
               },
-              "queen": {
-                "caption": "The queen on e4 looks down the diagonal to h7. It can also take b4.",
-                "thought": "Queen and knight both aim at the same corner."
+              "blackWall": {
+                "caption": "Black's king on e6, his bishop on f5, pawns on d5, f6 and g6.",
+                "thought": "The king guards f6 and d5. The g6 pawn guards the bishop."
               },
-              "mate": {
-                "caption": "Qh7 would be mate. The knight guards the queen, and g7 blocks the king.",
-                "thought": "The horse on f8 is what makes h7 deadly."
+              "runner": {
+                "caption": "One black pawn on a4, far from everything."
               }
             },
-            "finish": {
-              "reply": {
-                "caption": "Black had to stop Qh7#. 22 of his 26 legal moves lose to it. Kramnik played Qe3.",
-                "thought": "Black offers a queen trade and misses the mate."
+            "trap": {
+              "king": {
+                "caption": "Black's king cannot step forward. d5 and f5 hold his own pieces, and the c3 bishop guards e5.",
+                "thought": "Only Kd6, Kd7, Ke7 and Kf7. Every one goes back or sideways."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! The bishop gives itself up on a square the g-pawn can take. It was in the king's way.",
+                "thought": "f5 is empty now. That is the door."
               },
-              "checkmate": {
-                "caption": "Qh7#. The knight guards the queen, g7 blocks the king, and g8 is covered.",
-                "thought": "Knight on f8: the piece that was already there."
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Through the door the bishop opened, the king reaches the centre."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. One bishop cannot stop two passed pawns.",
+                "thought": "Topalov took the bishop and resigned after 53...Kb3."
               }
             },
             "rebuild": {
-              "blank": { "caption": "The board goes blank. Which of the six groups can you still see?" },
-              "back": { "caption": "Rebuild one group at a time, then check it. That is the whole game." }
+              "blank": {
+                "caption": "The board goes blank. Rebuild the start: White's corner, the long diagonal, Black's wall, the runner."
+              },
+              "back": {
+                "caption": "Group by group, each piece goes back on its square."
+              },
+              "check": {
+                "caption": "Now check it. Bishops on opposite colours, c3 dark and f5 light. The c3 bishop still hits f6. Four white, six black."
+              }
             }
           }
         }

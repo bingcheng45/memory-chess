@@ -374,7 +374,13 @@
 /* Marks start from their drawn state, so they still show where animation is switched off. */
 .lab-sc-arrow line { fill: none; stroke: var(--lab-blue); stroke-width: 0.1; stroke-linecap: round; stroke-dasharray: 1 1; animation: lab-sc-draw 0.55s ease backwards calc(var(--order) * 0.08s); }
 .lab-sc-arrow polygon { fill: var(--lab-blue); animation: lab-sc-fade 0.2s ease backwards calc(var(--order) * 0.08s + 0.4s); }
-.lab-sc-arrow[data-faint] line { stroke-width: 0.05; opacity: 0.45; }
+.lab-sc-arrow[data-kind="controls"] line { stroke-width: 0.05; opacity: 0.55; }
+.lab-sc-arrow[data-kind="defends"] line { stroke: var(--lab-mint-ink); }
+.lab-sc-arrow[data-kind="defends"] polygon { fill: var(--lab-mint-ink); }
+.lab-sc-arrow[data-kind="move"] line { stroke: var(--lab-ink); stroke-width: 0.08; stroke-dasharray: 0.16 0.12; animation: lab-sc-fade 0.4s ease backwards calc(var(--order) * 0.25s); }
+.lab-sc-arrow[data-kind="move"] polygon { fill: var(--lab-ink); animation-delay: calc(var(--order) * 0.25s + 0.2s); }
+.lab-sc-tick circle { fill: var(--lab-mint-ink); animation: lab-sc-fade 0.3s ease 0.3s backwards; }
+.lab-sc-tick polyline { fill: none; stroke: var(--lab-paper); stroke-width: 0.05; stroke-linecap: round; stroke-linejoin: round; animation: lab-sc-fade 0.3s ease 0.3s backwards; }
 .lab-sc-ring { fill: none; stroke-width: 0.08; animation: lab-sc-fade 0.3s ease 0.15s backwards; }
 .lab-sc-ring:is([data-kind="white"], [data-kind="target"]) { stroke: var(--lab-blue); }
 .lab-sc-ring:is([data-kind="black"], [data-kind="king"]) { stroke: var(--lab-mark); }
@@ -409,8 +415,8 @@
 .lab-sc-bar[data-state]::after { opacity: 1; }
 .lab-sc-bar[data-state="past"]::after { opacity: 0.4; }
 .lab-sc-bar[data-state][data-phase="study"]::after { background: var(--lab-blue); }
-.lab-sc-bar[data-state][data-phase="threat"]::after { background: var(--lab-mark); }
-.lab-sc-bar[data-state][data-phase="finish"]::after { background: var(--lab-ink); }
+.lab-sc-bar[data-state][data-phase="trap"]::after { background: var(--lab-mark); }
+.lab-sc-bar[data-state][data-phase="game"]::after { background: var(--lab-ink); }
 .lab-sc-bar[data-state][data-phase="rebuild"]::after { background: var(--lab-mint); }
 
 /* Reserve the lines the longest caption and thought need, so the card is as tall on every step. */

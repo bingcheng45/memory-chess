@@ -19,12 +19,14 @@ interface ShowcaseFigureProps {
   onInspect: (square: SquareName) => void;
 }
 
-function stateOf(view: ShowcaseView, square: SquareName): PieceState {
-  if (view.hidden) return "off";
-  return view.dimmed.includes(square) ? "ghost" : "on";
+const isOff = (view: ShowcaseView, home: SquareName) => view.hidden || view.board.gone.includes(home);
+
+function stateOf(view: ShowcaseView, home: SquareName): PieceState {
+  if (isOff(view, home)) return "off";
+  return view.dimmed.includes(home) ? "ghost" : "on";
 }
 
-/** The board of the hero's walkthrough. Each piece keeps one element and slides between squares. */
+/** The board of the hero's walkthrough. Each piece keeps one element, slides between squares, and fades when taken. */
 export function ShowcaseFigure({ view, inspected, onInspect }: ShowcaseFigureProps) {
   const t = useTranslations("home.lab.hero.showcase");
   const pieceName = usePieceName();
@@ -38,7 +40,7 @@ export function ShowcaseFigure({ view, inspected, onInspect }: ShowcaseFigurePro
         <ShowcaseOverlay view={view} />
         <div className="lab-sc-pieces">
           {PIECE_SQUARES.map((home) => {
-            const square = view.placements[home] ?? home;
+            const square = view.board.placements[home] ?? home;
             const reveal = view.staggered ? (GROUP_INDEX[home] ?? 0) * REVEAL_STAGGER_S : 0;
             return (
               <button
@@ -46,7 +48,7 @@ export function ShowcaseFigure({ view, inspected, onInspect }: ShowcaseFigurePro
                 type="button"
                 className="lab-sc-piece"
                 style={{ "--file": fileOf(square), "--row": rowOf(square), "--reveal": `${reveal}s` } as CSSProperties}
-                disabled={view.hidden}
+                disabled={isOff(view, home)}
                 aria-pressed={inspected === home}
                 aria-label={t("pieceLabel", { piece: pieceName(SHOWCASE.position[home]!), square })}
                 onClick={() => onInspect(home)}

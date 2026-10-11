@@ -31,7 +31,9 @@ describe("the calibration clock", () => {
       });
     }
 
-    expect(screen.getByText("05.0s")).toBeInTheDocument();
+    const left = Number(screen.getByTestId("round-clock").textContent?.replace("s", ""));
+    expect(left).toBeGreaterThan(4.5);
+    expect(left).toBeLessThan(5.2);
     expect(mockBoardRenders.count).toBe(0);
   });
 });

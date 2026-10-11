@@ -156,7 +156,7 @@ describe("roundReducer", () => {
   const target: LabPosition = { g1: WK, d6: BQ };
 
   function rebuilding(): RoundState {
-    const studying = roundReducer({ phase: "idle" }, { type: "start", target });
+    const studying = roundReducer({ phase: "idle" }, { type: "start", target, now: 0 });
     return roundReducer(studying, { type: "studyEnded", now: 1000 });
   }
 
@@ -166,8 +166,29 @@ describe("roundReducer", () => {
       target,
       placed: {},
       selected: null,
+      studyMs: 1000,
       log: { startedAt: 1000, placements: [], removals: 0 },
     });
+  });
+
+  it("keeps the real study time when the player ends study early", () => {
+    const studying = roundReducer({ phase: "idle" }, { type: "start", target, now: 500 });
+    expect(roundReducer(studying, { type: "studyEnded", now: 3873 })).toMatchObject({
+      phase: "rebuild",
+      studyMs: 3373,
+      log: { startedAt: 3873 },
+    });
+  });
+
+  it("caps the study time at the window when the timer fires a few milliseconds late", () => {
+    const studying = roundReducer({ phase: "idle" }, { type: "start", target, now: 0 });
+    expect(roundReducer(studying, { type: "studyEnded", now: CALIBRATION_RULES.studyMs + 7 })).toMatchObject({
+      studyMs: CALIBRATION_RULES.studyMs,
+    });
+  });
+
+  it("carries the study time into the scored round", () => {
+    expect(roundReducer(rebuilding(), { type: "submit", now: 2000 })).toMatchObject({ phase: "scored", studyMs: 1000 });
   });
 
   it("places the selected piece, and a second tap with it lifts the piece again", () => {
@@ -246,7 +267,7 @@ describe("roundReducer", () => {
   });
 
   it("ignores placement before the board clears", () => {
-    const studying = roundReducer({ phase: "idle" }, { type: "start", target });
+    const studying = roundReducer({ phase: "idle" }, { type: "start", target, now: 0 });
 
     expect(roundReducer(studying, { type: "tapSquare", square: "g1", now: 2000 })).toBe(studying);
   });

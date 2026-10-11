@@ -3,7 +3,7 @@
 import type { CSSProperties } from "react";
 import { useTranslations } from "next-intl";
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
-import { isDarkSquare } from "@/lib/home/calibration";
+import { isDarkSquare } from "@/lib/round/round";
 import { GROUP_INDEX, SHOWCASE } from "@/lib/home/showcase";
 import type { ShowcaseView } from "@/lib/home/showcaseView";
 import { BoardFigure, PieceImage, usePieceName, type PieceState } from "./BoardFigure";

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { SquareName } from "@/lib/game/board";
-import { squareVerdict } from "@/lib/home/calibration";
+import { squareVerdict } from "@/lib/round/round";
 import {
   MICROSCOPE_PHASES,
   phaseNumber,

@@ -10,7 +10,7 @@ import {
   type LabPiece,
   type RoundAction,
   type RoundState,
-} from "@/lib/home/calibration";
+} from "@/lib/round/round";
 import type { PieceColor } from "@/types/chess";
 import { BoardFigure, PieceImage, usePieceName } from "./BoardFigure";
 

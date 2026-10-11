@@ -3,13 +3,8 @@
 import { Eraser } from "lucide-react";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import {
-  CALIBRATION_RULES,
-  labPositionToFen,
-  loadCalibrationPosition,
-  roundReducer,
-  type RoundState,
-} from "@/lib/home/calibration";
+import { CALIBRATION_CONFIG, CALIBRATION_RULES, loadCalibrationPosition } from "@/lib/home/calibration";
+import { labPositionToFen, roundReducer, type RoundState } from "@/lib/round/round";
 import { phaseNumber, type MicroscopePhaseId } from "@/lib/home/specimen";
 import { trackEvent } from "@/lib/analytics/events";
 import { recordLabRound } from "@/lib/lab/recordRound";
@@ -22,14 +17,16 @@ import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 const STUDY_SECONDS = CALIBRATION_RULES.studyMs / 1000;
 
 function useStudyDeadline(state: RoundState, onStudyEnded: (now: number) => void): void {
-  const startedAt = state.phase === "study" ? state.startedAt : null;
+  const study = state.phase === "study" ? state : null;
+  const startedAt = study?.startedAt ?? null;
+  const studyMs = study?.config.studyMs ?? 0;
 
   useEffect(() => {
     if (startedAt === null) return;
-    const left = Math.max(0, CALIBRATION_RULES.studyMs - (performance.now() - startedAt));
+    const left = Math.max(0, studyMs - (performance.now() - startedAt));
     const timer = setTimeout(() => onStudyEnded(performance.now()), left);
     return () => clearTimeout(timer);
-  }, [startedAt, onStudyEnded]);
+  }, [startedAt, studyMs, onStudyEnded]);
 }
 
 function clockFace(state: RoundState): ClockFace {
@@ -37,7 +34,7 @@ function clockFace(state: RoundState): ClockFace {
     case "idle":
       return { kind: "still", text: `${formatSecondsMs(CALIBRATION_RULES.studyMs)}s` };
     case "study":
-      return { kind: "countdown", startedAt: state.startedAt, totalMs: CALIBRATION_RULES.studyMs };
+      return { kind: "countdown", startedAt: state.startedAt, totalMs: state.config.studyMs };
     case "rebuild":
       return { kind: "countup", startedAt: state.log.startedAt };
     case "scored":
@@ -143,7 +140,7 @@ export function CalibrationSection() {
     try {
       const target = await loadCalibrationPosition();
       if (target) {
-        dispatch({ type: "start", target, now: performance.now() });
+        dispatch({ type: "start", config: CALIBRATION_CONFIG, target, now: performance.now() });
         trackEvent({
           name: "round_start",
           params: { piece_count: CALIBRATION_RULES.pieceCount, memorize_time: STUDY_SECONDS, source: "calibration" },

@@ -3,7 +3,8 @@
 import { memo } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { CALIBRATION_RULES, suggestTier, type RoundState } from "@/lib/home/calibration";
+import { CALIBRATION_RULES, suggestTier } from "@/lib/home/calibration";
+import type { RoundState } from "@/lib/round/round";
 import { playHref } from "@/lib/game/roundLink";
 import { formatSecondsMs } from "@/utils/timer";
 import { RecallBar } from "./LabCharts";

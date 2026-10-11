@@ -49,6 +49,13 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-btn-sm { min-height: 36px; padding: 0 14px; font-size: 14px; }
 .lab-paper .lab-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
+/* type and labels every Lab Paper page shares: the section kicker, the lede and the tag */
+.lab-paper .lab-kicker { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; font: 600 14px/1.3 var(--lp-ui); color: var(--lp-accent); }
+.lab-paper .lab-kicker::before { content: ""; width: 16px; height: 2px; background: currentColor; }
+.lab-paper .lab-lede { font: 400 19px/1.6 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .lab-tag { display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 999px; font: 600 12px/1 var(--lp-ui); background: var(--lp-surface-2); color: var(--lp-ink-2); white-space: nowrap; }
+.lab-paper .lab-tag-accent { background: var(--lp-accent-soft); color: var(--lp-accent); }
+
 /* changelog banner: a quiet line above the header that scrolls away with the page */
 .lab-paper .lab-banner { background: var(--lp-surface); border-bottom: 1px solid var(--lp-line); }
 .lab-paper .lab-banner-row { position: relative; display: flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 48px; text-align: center; font: 400 14px/1.4 var(--lp-ui); color: var(--lp-ink-2); }
@@ -117,6 +124,7 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 }
 @media (max-width: 767px) {
   .lab-paper { font-size: 16px; }
+  .lab-paper .lab-lede { font-size: 17px; }
   .lab-paper .lab-foot-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
 }
 @media (prefers-reduced-motion: reduce) {

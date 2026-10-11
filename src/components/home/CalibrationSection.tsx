@@ -214,7 +214,19 @@ export function CalibrationSection() {
           <div className="lab-cal-board">
             <div className="lab-cal-head">
               <span className="lab-k">{heading}</span>
-              <RoundClock face={clockFace(state)} meterRef={meterRef} />
+              <div className="lab-cal-head-end">
+                <RoundClock face={clockFace(state)} meterRef={meterRef} />
+                <button
+                  type="button"
+                  className="lab-icon-btn"
+                  disabled={!controls.clearEnabled}
+                  aria-label={t("clear")}
+                  title={t("clear")}
+                  onClick={() => dispatch({ type: "clear" })}
+                >
+                  <Eraser size={20} aria-hidden="true" />
+                </button>
+              </div>
             </div>
             <div className="lab-meter" aria-hidden="true">
               <i ref={meterRef} />
@@ -225,16 +237,6 @@ export function CalibrationSection() {
                 {renderControl("first")}
                 {renderControl("second")}
               </div>
-              <button
-                type="button"
-                className="lab-icon-btn"
-                disabled={!controls.clearEnabled}
-                aria-label={t("clear")}
-                title={t("clear")}
-                onClick={() => dispatch({ type: "clear" })}
-              >
-                <Eraser size={20} aria-hidden="true" />
-              </button>
             </div>
             <p className="lab-note lab-cal-hint" id="cal-hint">
               {controls.hint && t(controls.hint)}

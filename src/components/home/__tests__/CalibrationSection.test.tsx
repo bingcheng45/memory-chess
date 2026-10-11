@@ -159,7 +159,7 @@ describe("the calibration round controls", () => {
 
     expect(buttonState()).toEqual([["Done", false], ["Submit reading", true]]);
     expect(controls().getByRole("button", { name: "Done" })).toHaveAttribute("data-primary");
-    expect(screen.getByText(/Your study time is saved with the reading/)).toBeInTheDocument();
+    expect(screen.getByText(/Study time is saved with your reading/)).toBeInTheDocument();
   });
 
   it("rebuilds at once on Done and shows the real study time as exposure", async () => {

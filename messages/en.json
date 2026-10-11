@@ -327,7 +327,7 @@
         "restart": "Restart",
         "again": "Run again",
         "done": "Done",
-        "studyHint": "Ready early? Done starts the rebuild now. Your study time is saved with the reading; accuracy scores the same.",
+        "studyHint": "Ready early? Done starts the rebuild. Study time is saved with your reading.",
         "submit": "Submit reading",
         "clear": "Clear board",
         "controlsLabel": "Round controls",

@@ -5,6 +5,7 @@ import { LabRecordSection } from "@/components/home/LabRecordSection";
 import { NOTEBOOK_SEEN_KEY } from "@/components/home/useNotebookSeen";
 import { trackEvent } from "@/lib/analytics/events";
 import { persona } from "@/test-utils/labPersona";
+import { BOARD_SQUARES } from "@/lib/game/board";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
@@ -26,7 +27,7 @@ describe("insights panel", () => {
     expect(screen.getByText("Fig. 6.11 · Insights", { selector: FIG })).toBeInTheDocument();
     expect(within(insights).getByText("Sample")).toBeInTheDocument();
     expect(lines(within(insights).getByRole("list", { name: "Sample finding" }))).toEqual([
-      "Example from a sample record: the a and h files missed about twice as often as the centre files, d and e, 38% of pieces against 19%.Play 8 pieces, 15 s →",
+      "Example from a sample record: the a and h files missed about 3.5 times as often as the centre files, d and e, 35% of pieces against 10%.Play 8 pieces, 15 s →",
     ]);
     expect(within(insights).getByText("Sample finding, not from your rounds.")).toBeInTheDocument();
   });
@@ -274,10 +275,15 @@ describe("a record panel that is still warming up", () => {
     expect(within(element).queryByText("Your record")).toBeNull();
   });
 
-  it("draws the sample heatmap under the miss map need", () => {
+  it("draws the sample heatmap under the miss map need, darkest at h1 and lightest at d4, as its caption says", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
+    const map = within(panel("Miss map")).getByRole("img");
+    const shades = [...map.querySelectorAll("i")].map((square) => Number((square as HTMLElement).style.opacity));
 
-    expect(within(panel("Miss map")).getByRole("img")).toHaveAccessibleName("Sample heatmap of missed squares, concentrated on the a and h files.");
+    expect(map).toHaveAccessibleName("Sample heatmap of missed squares: darkest down the h-file and around h1, with hot spots on b7 and f7, lightest in the centre.");
+    expect(BOARD_SQUARES[shades.indexOf(Math.max(...shades))]).toBe("h1");
+    expect(BOARD_SQUARES[shades.indexOf(Math.min(...shades))]).toBe("d4");
+    expect(within(panel("Miss map")).getByText("Sample: misses pile up on the h-file and around the king's corner at h1. Train that edge next.")).toBeInTheDocument();
   });
 
   it("draws sample piece bars under the recall need, with the king as a marked baseline row", () => {

@@ -94,7 +94,7 @@ export function NeedNote({ readiness, panel, setting, className = "lab-panel-des
       {readiness.state === "warming" && (
         <>
           {" "}
-          {readiness.waitsForTomorrow ? t("tomorrow") :<LabPlayLink panel={panel} href={needHref(setting)} />}
+          {readiness.waitsForTomorrow ? t("tomorrow") : <LabPlayLink panel={panel} href={needHref(setting)} />}
         </>
       )}
     </p>

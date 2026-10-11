@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import type { SquareName } from "@/lib/game/board";
 import type { Relation, RelationCheck } from "@/lib/home/relations";
 import { SPECIMEN, SPECIMEN_GROUPS, SPECIMEN_RECALL, type MicroscopePhase } from "@/lib/home/specimen";
-import { placeLabel, squaresBox } from "@/lib/home/labelPlacement";
+import { placeLabel, segmentBetween, squaresBox } from "@/lib/home/labelPlacement";
 import { BoardArrow, direction } from "./BoardArrow";
 import { fileOf, rowOf } from "./boardUnits";
 
@@ -32,6 +32,9 @@ function occupiedIn(phase: MicroscopePhase): ReadonlySet<SquareName> {
 function GroupMarks({ phase }: { phase: MicroscopePhase }) {
   const t = useTranslations("home.lab.method.groups");
   const occupied = occupiedIn(phase);
+  const arrows = [...phase.relations, ...phase.checks.map((check) => check.relation)]
+    .filter((relation) => relation.kind !== "blocked")
+    .map((relation) => segmentBetween(relation.from, relation.to));
   const shown = SPECIMEN_GROUPS.filter((group) => phase.groups.includes(group.id));
 
   return (
@@ -54,7 +57,7 @@ function GroupMarks({ phase }: { phase: MicroscopePhase }) {
         shown.map((group) => {
           const label = `${SPECIMEN_GROUPS.indexOf(group) + 1} · ${t(`${group.id}.name`)}`;
           const width = pillWidth(label);
-          const { x, y } = placeLabel(squaresBox(group.squares), { width, height: PILL_HEIGHT }, occupied);
+          const { x, y } = placeLabel(squaresBox(group.squares), { width, height: PILL_HEIGHT }, occupied, arrows);
           return (
             <g key={group.id} className="lab-ov-pill" data-group={group.id}>
               <rect x={x} y={y} width={width} height={PILL_HEIGHT} rx=".08" />

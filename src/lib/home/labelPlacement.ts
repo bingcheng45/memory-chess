@@ -16,6 +16,8 @@ const BOARD = 8;
 const EDGE = 0.04;
 // Clears the numbered badge that sits on a box's top-left corner.
 const GAP = 0.16;
+// Arrow lengths closer than this tie, so the candidate order decides.
+const ARROW_EPSILON = 0.001;
 
 const fileOf = (square: SquareName) => FILES.indexOf(square[0] as (typeof FILES)[number]);
 const rowOf = (square: SquareName) => RANKS.indexOf(square[1] as (typeof RANKS)[number]);
@@ -38,12 +40,53 @@ export function coveredSquares(rect: Rect, occupied: ReadonlySet<SquareName>): S
   });
 }
 
+export interface Point {
+  readonly x: number;
+  readonly y: number;
+}
+/** A straight line between two points in board units: an arrow's shaft. */
+export interface Segment {
+  readonly from: Point;
+  readonly to: Point;
+}
+
+const centerOf = (square: SquareName): Point => ({ x: fileOf(square) + 0.5, y: rowOf(square) + 0.5 });
+
+/** The segment between two squares' centres, which is where an arrow or relation line runs. */
+export const segmentBetween = (from: SquareName, to: SquareName): Segment => ({ from: centerOf(from), to: centerOf(to) });
+
+/** How much of the segments' total length lies inside the rectangle (Liang-Barsky clip). */
+export function coveredLength(rect: Rect, segments: readonly Segment[]): number {
+  return segments.reduce((total, { from, to }) => {
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    let t0 = 0;
+    let t1 = 1;
+    const edges: [number, number][] = [
+      [-dx, from.x - rect.x],
+      [dx, rect.x + rect.width - from.x],
+      [-dy, from.y - rect.y],
+      [dy, rect.y + rect.height - from.y],
+    ];
+    for (const [p, q] of edges) {
+      if (p === 0) {
+        if (q < 0) return total;
+        continue;
+      }
+      const t = q / p;
+      if (p < 0) t0 = Math.max(t0, t);
+      else t1 = Math.min(t1, t);
+    }
+    return t1 > t0 ? total + (t1 - t0) * Math.hypot(dx, dy) : total;
+  }, 0);
+}
+
 const insideBoard = ({ x, y, width, height }: Rect) =>
   x >= EDGE && y >= EDGE && x + width <= BOARD - EDGE && y + height <= BOARD - EDGE;
 
 const clampX = (x: number, width: number) => Math.min(Math.max(x, EDGE), BOARD - width - EDGE);
 
-/** Positions to try, best first: above, below, beside, then inside the box's top and bottom edge. */
+/** Positions to try, best first: above, below, beside, inside the box's top and bottom edge, then inside it row by row. */
 function candidates(box: Rect, { width, height }: Size): Rect[] {
   const left = clampX(box.x, width);
   const right = clampX(box.x + box.width - width, width);
@@ -65,21 +108,33 @@ function candidates(box: Rect, { width, height }: Size): Rect[] {
     [left, box.y + box.height - height - GAP],
     [right, box.y + box.height - height - GAP],
   ];
+  for (let row = 0; row < box.height; row += 1) {
+    const y = box.y + row + (1 - height) / 2;
+    spots.push([left, y], [right, y]);
+  }
   return spots.map(([x, y]) => ({ x, y, width, height }));
 }
 
 /**
- * Where a group's name label goes: the first candidate that sits fully on the board and covers no piece.
- * When every one covers something, the on-board candidate covering the fewest, so the label still shows.
+ * Where a group's name label goes. Candidates are ranked by pieces covered, then by arrow length
+ * covered, then by the order above, so a piece is never traded for an arrow. When every on-board
+ * candidate covers something, the least-bad one still shows.
  */
-export function placeLabel(box: Rect, size: Size, occupied: ReadonlySet<SquareName>): Rect {
-  const onBoard = candidates(box, size).filter(insideBoard);
-  const open = onBoard.find((rect) => coveredSquares(rect, occupied).length === 0);
-  if (open) return open;
-  const least = onBoard.reduce<Rect | null>(
-    (best, rect) =>
-      !best || coveredSquares(rect, occupied).length < coveredSquares(best, occupied).length ? rect : best,
+export function placeLabel(
+  box: Rect,
+  size: Size,
+  occupied: ReadonlySet<SquareName>,
+  arrows: readonly Segment[] = [],
+): Rect {
+  const scored = candidates(box, size)
+    .filter(insideBoard)
+    .map((rect) => ({ rect, pieces: coveredSquares(rect, occupied).length, arrow: coveredLength(rect, arrows) }));
+  const best = scored.reduce<(typeof scored)[number] | null>(
+    (lead, next) =>
+      !lead || next.pieces < lead.pieces || (next.pieces === lead.pieces && next.arrow < lead.arrow - ARROW_EPSILON)
+        ? next
+        : lead,
     null,
   );
-  return least ?? { x: clampX(box.x, size.width), y: EDGE, ...size };
+  return best?.rect ?? { x: clampX(box.x, size.width), y: EDGE, ...size };
 }

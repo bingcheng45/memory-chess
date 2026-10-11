@@ -9,7 +9,8 @@
       "privacy": "Quyền riêng tư",
       "terms": "Điều khoản",
       "play": "Chơi",
-      "leaderboard": "Bảng xếp hạng"
+      "leaderboard": "Bảng xếp hạng",
+      "progress": "Tiến bộ"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Bảo lưu mọi quyền.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, other {# quân}}, {seconds, plural, other {# giây}}",
       "read": "Đọc bài viết",
       "tryDrill": "Thử bài tập đó"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Tiến bộ của bạn",
+      "description": "Mọi chỉ số Memory Chess ghi nhận từ các ván của bạn trên thiết bị này, trên một trang, kèm thẻ để chia sẻ."
+    },
+    "kicker": "Hồ sơ phòng lab",
+    "title": "Tiến bộ của bạn",
+    "lede": "Mọi chỉ số các ván của bạn đạt được trên thiết bị này, ở cùng một chỗ. Không gì rời khỏi trình duyệt trừ khi bạn chia sẻ.",
+    "loading": "Đang đọc hồ sơ của bạn trên thiết bị này.",
+    "unavailable": "Trình duyệt này không lưu hồ sơ, nên không có tiến bộ nào để hiển thị. Cửa sổ ẩn danh không lưu gì.",
+    "fullRecord": "Xem toàn bộ hồ sơ",
+    "headline": "Chỉ số chính",
+    "more": "Mọi thứ khác",
+    "stale": "Theo ván gần nhất",
+    "staleNote": "Lần chơi gần nhất cách đây {count, plural, other {# ngày}}. Các chỉ số được đánh dấu như vậy là từ lúc đó.",
+    "play": "Chơi một ván",
+    "playAt": "Chơi {pieceCount} quân, {memorizeSeconds} giây",
+    "choose": "Chọn trong toàn bộ hồ sơ",
+    "notYet": "Chưa có gì.",
+    "notSet": "Chưa đặt.",
+    "needs": "Mở khóa sau {need}.",
+    "needsAt": "Mở khóa sau {need} với {pieceCount} quân, {memorizeSeconds} giây.",
+    "need": {
+      "rounds": "{count, plural, other {thêm # ván}}",
+      "days": "{count, plural, other {thêm # ngày chơi}}",
+      "exposures": "{count, plural, other {thêm # quân được thấy}}",
+      "qualifyingRounds": "{count, plural, other {thêm # ván}} đạt {accuracy}% trở lên với ít nhất {minPieces} quân",
+      "largerRounds": "{count, plural, other {# ván}} với ít nhất {minPieces} quân",
+      "rightRounds": "{count, plural, other {# ván}} có một quân đúng",
+      "reviews": "{count, plural, other {thêm # lần ôn}} sau cùng một khoảng cách"
+    },
+    "label": {
+      "span": "Tầm nhớ",
+      "piecesHeld": "Số quân nhớ được",
+      "speed": "Tốc độ",
+      "streak": "Chuỗi ngày",
+      "rounds": "Số ván đã chơi",
+      "days": "Số ngày đã chơi",
+      "trend": "Độ chính xác",
+      "daily": "Bàn cờ hôm nay",
+      "week": "Tuần này",
+      "curve": "Ghi nhớ sau khi ôn",
+      "missMap": "Đường hay sai nhất",
+      "typeRecall": "Quân yếu nhất",
+      "insights": "Nhận xét",
+      "notebook": "Sổ ghi chép",
+      "plans": "Kế hoạch",
+      "goal": "Mục tiêu",
+      "bests": "Kỷ lục cá nhân",
+      "board": "Bảng xếp hạng"
+    },
+    "unit": {
+      "pieces": "{count, plural, other {<n>{value}</n> quân}}",
+      "secondsPerPiece": "<n>{value}</n> giây mỗi quân",
+      "days": "{count, plural, other {<n>{value}</n> ngày}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, other {<n>{value}</n> ván}}",
+      "entries": "{count, plural, other {<n>{value}</n> mục}}",
+      "findings": "{count, plural, other {<n>{value}</n> nhận xét}}",
+      "settings": "{count, plural, other {<n>{value}</n> thiết lập}}"
+    },
+    "context": {
+      "span": "{accuracy}% trở lên trong {rounds, plural, other {# ván}}, ghi nhớ {memorizeSeconds} giây",
+      "recent": "Trung bình {rounds, plural, other {# ván}} gần nhất, mọi thiết lập",
+      "setting": "{source, select, calibration {Ván luyện tập} other {Ván đấu}} {pieceCount} quân, {memorizeSeconds} giây, từ {rounds, plural, other {# ván}}",
+      "longest": "Dài nhất {days, plural, other {# ngày}}",
+      "daily": "{status, select, played {Đã chơi hôm nay} unfinished {Đã mở hôm nay} other {Đang mở hôm nay}}, chuỗi dài nhất {longest, plural, other {# ngày}}",
+      "curve": "Nhớ sau {day, plural, other {# ngày}}, từ {reviews, plural, other {# lần ôn}}",
+      "rounds": "Từ {rounds, plural, other {# ván}}",
+      "missLine": "Sai ở {line, select, file {cột {name}} other {hàng {name}}}, trên {shown} quân đã thấy",
+      "pieceType": "{type, select, p {Tốt nhớ được} n {Mã nhớ được} b {Tượng nhớ được} r {Xe nhớ được} q {Hậu nhớ được} other {Vua nhớ được}}, trên {shown} lần thấy",
+      "plan": "{planId, select, baseline {Kế hoạch Mốc chuẩn} edge {Kế hoạch Rìa bàn} other {Kế hoạch Bậc thang}}, {status, select, active {đang chạy} done {đã xong} other {đã dừng}}",
+      "goal": "Hướng tới {pieceCount} quân với {accuracy}%",
+      "week": "Mục tiêu tuần {goal} ngày",
+      "best": "Kết quả tốt nhất {accuracy}% với {pieceCount} quân, {memorizeSeconds} giây",
+      "entry": "Số quân đúng trong lượt gửi tốt nhất, {difficulty, select, easy {mức Dễ} medium {mức Trung bình} hard {mức Khó} other {mức Đại kiện tướng}}",
+      "overDays": "Trong {days, plural, other {# ngày}}",
+      "firstDay": "Từ {date}"
+    },
+    "share": {
+      "button": "Chia sẻ tiến bộ của tôi",
+      "working": "Đang tạo thẻ của bạn.",
+      "shared": "Đã chia sẻ.",
+      "saved": "Đã lưu thẻ và sao chép chú thích. Đăng ở bất cứ đâu.",
+      "savedNoCopy": "Đã lưu thẻ. Sao chép chú thích bên dưới để đăng kèm.",
+      "failed": "Không thể tạo thẻ ở đây. Hãy sao chép chú thích bên dưới.",
+      "caption": "Chú thích",
+      "copy": "Sao chép chú thích",
+      "copied": "Đã sao chép chú thích.",
+      "copyFailed": "Sao chép không hoạt động ở đây. Chú thích đã được chọn, hãy tự sao chép.",
+      "locked": "Thẻ chia sẻ sẽ mở khi tầm nhớ, số quân nhớ được, tốc độ hoặc chuỗi ngày của bạn sẵn sàng.",
+      "text": "Tiến bộ của tôi trên Memory Chess: {figures}. Bạn có vượt được không?",
+      "figure": {
+        "span": "tầm nhớ {value, plural, other {# quân}}",
+        "piecesHeld": "nhớ được {value, number} quân",
+        "speed": "{value, number} giây mỗi quân",
+        "streak": "{value, plural, other {# ngày}} liên tiếp"
+      },
+      "card": {
+        "kicker": "Hồ sơ phòng lab",
+        "rounds": "{count, plural, other {đã chơi # ván}}",
+        "cta": "Bạn có vượt được không?"
+      }
     }
   }
 }

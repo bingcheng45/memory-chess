@@ -9,7 +9,8 @@
       "privacy": "Personvern",
       "terms": "Vilkår",
       "play": "Spill",
-      "leaderboard": "Toppliste"
+      "leaderboard": "Toppliste",
+      "progress": "Fremgang"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Med enerett.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# brikke} other {# brikker}}, {seconds, plural, one {# sekund} other {# sekunder}}",
       "read": "Les artikkelen",
       "tryDrill": "Prøv den øvelsen"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Din fremgang",
+      "description": "Hvert tall Memory Chess følger fra rundene dine på denne enheten, på én side, med et kort du kan dele."
+    },
+    "kicker": "Laboratoriejournal",
+    "title": "Din fremgang",
+    "lede": "Hvert tall rundene dine har gitt på denne enheten, samlet på ett sted. Ingenting forlater nettleseren din med mindre du deler det.",
+    "loading": "Leser journalen din på denne enheten.",
+    "unavailable": "Denne nettleseren lagrer ingen journal, så det er ingen fremgang å vise. Private vinduer lagrer ingenting.",
+    "fullRecord": "Se hele journalen",
+    "headline": "Viktigste tall",
+    "more": "Alt det andre",
+    "stale": "Fra din siste runde",
+    "staleNote": "Sist spilt for {count, plural, one {# dag} other {# dager}} siden. Tall merket slik er fra da.",
+    "play": "Spill en runde",
+    "playAt": "Spill {pieceCount} brikker, {memorizeSeconds} s",
+    "choose": "Velg en i hele journalen",
+    "notYet": "Ingenting ennå.",
+    "notSet": "Ikke valgt ennå.",
+    "needs": "Låses opp med {need}.",
+    "needsAt": "Låses opp med {need} med {pieceCount} brikker, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {# runde til} other {# runder til}}",
+      "days": "{count, plural, one {# spilledag til} other {# spilledager til}}",
+      "exposures": "{count, plural, one {# sett brikke til} other {# sette brikker til}}",
+      "qualifyingRounds": "{count, plural, one {# runde til} other {# runder til}} med {accuracy} % eller bedre og {minPieces} eller flere brikker",
+      "largerRounds": "{count, plural, one {# runde} other {# runder}} med {minPieces} eller flere brikker",
+      "rightRounds": "{count, plural, one {# runde} other {# runder}} med en riktig brikke",
+      "reviews": "{count, plural, one {# repetisjon til} other {# repetisjoner til}} etter samme pause"
+    },
+    "label": {
+      "span": "Hukommelsesspenn",
+      "piecesHeld": "Husket brikker",
+      "speed": "Tempo",
+      "streak": "Rekke",
+      "rounds": "Spilte runder",
+      "days": "Spilledager",
+      "trend": "Presisjon",
+      "daily": "Dagens brett",
+      "week": "Denne uken",
+      "curve": "Hukommelse etter repetisjon",
+      "missMap": "Mest bommet linje",
+      "typeRecall": "Svakeste brikke",
+      "insights": "Innsikter",
+      "notebook": "Notatbok",
+      "plans": "Plan",
+      "goal": "Mål",
+      "bests": "Personlige rekorder",
+      "board": "Toppliste"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> brikke} other {<n>{value}</n> brikker}}",
+      "secondsPerPiece": "<n>{value}</n> s per brikke",
+      "days": "{count, plural, one {<n>{value}</n> dag} other {<n>{value}</n> dager}}",
+      "percent": "<n>{value}</n> %",
+      "rounds": "{count, plural, one {<n>{value}</n> runde} other {<n>{value}</n> runder}}",
+      "entries": "{count, plural, one {<n>{value}</n> notat} other {<n>{value}</n> notater}}",
+      "findings": "{count, plural, one {<n>{value}</n> innsikt} other {<n>{value}</n> innsikter}}",
+      "settings": "{count, plural, one {<n>{value}</n> innstilling} other {<n>{value}</n> innstillinger}}"
+    },
+    "context": {
+      "span": "{accuracy} % eller bedre i {rounds, plural, one {# runde} other {# runder}}, studert {memorizeSeconds} s",
+      "recent": "Snitt av de siste {rounds, plural, one {# runden} other {# rundene}} dine, alle innstillinger",
+      "setting": "{source, select, calibration {Øvingsrunder} other {Runder i partier}} med {pieceCount} brikker, {memorizeSeconds} s, fra {rounds, plural, one {# runde} other {# runder}}",
+      "longest": "Lengste {days, plural, one {# dag} other {# dager}}",
+      "daily": "{status, select, played {Spilt i dag} unfinished {Åpnet i dag} other {Åpent i dag}}, lengste rekke {longest, plural, one {# dag} other {# dager}}",
+      "curve": "Husket etter {day, plural, one {# dag} other {# dager}}, fra {reviews, plural, one {# repetisjon} other {# repetisjoner}}",
+      "rounds": "Fra {rounds, plural, one {# runde} other {# runder}}",
+      "missLine": "Bommet på {line, select, file {{name}-linjen} other {rad {name}}}, av {shown} sette brikker",
+      "pieceType": "{type, select, p {Bønder husket} n {Springere husket} b {Løpere husket} r {Tårn husket} q {Dronninger husket} other {Konger husket}}, av {shown} sette",
+      "plan": "{planId, select, baseline {Planen Grunnlinje} edge {Planen Kanter} other {Planen Stige}}, {status, select, active {pågår fortsatt} done {nå fullført} other {nå stoppet}}",
+      "goal": "Mot {pieceCount} brikker med {accuracy} %",
+      "week": "Ukemål {goal} dager",
+      "best": "Beste resultat {accuracy} % med {pieceCount} brikker, {memorizeSeconds} s",
+      "entry": "Riktige brikker i ditt beste bidrag, {difficulty, select, easy {nivå Lett} medium {nivå Middels} hard {nivå Vanskelig} other {nivå Stormester}}",
+      "overDays": "Over {days, plural, one {# dag} other {# dager}}",
+      "firstDay": "Siden {date}"
+    },
+    "share": {
+      "button": "Del fremgangen min",
+      "working": "Kortet ditt lages.",
+      "shared": "Delt.",
+      "saved": "Kort lagret og tekst kopiert. Del dem hvor du vil.",
+      "savedNoCopy": "Kort lagret. Kopier teksten under og del den sammen med kortet.",
+      "failed": "Kortet kunne ikke lages her. Kopier teksten under i stedet.",
+      "caption": "Tekst",
+      "copy": "Kopier tekst",
+      "copied": "Tekst kopiert.",
+      "copyFailed": "Kopiering virket ikke her. Teksten er merket, så kopier den selv.",
+      "locked": "Delekortet ditt låses opp når hukommelsesspenn, husket brikker, tempo eller rekken din er klar.",
+      "text": "Fremgangen min i Memory Chess: {figures}. Klarer du å slå det?",
+      "figure": {
+        "span": "hukommelsesspenn på {value, plural, one {# brikke} other {# brikker}}",
+        "piecesHeld": "{value, number} husket brikker",
+        "speed": "{value, number} s per brikke",
+        "streak": "{value, plural, one {# dag} other {# dager}} på rad"
+      },
+      "card": {
+        "kicker": "Laboratoriejournal",
+        "rounds": "{count, plural, one {# runde spilt} other {# runder spilt}}",
+        "cta": "Klarer du å slå det?"
+      }
     }
   }
 }

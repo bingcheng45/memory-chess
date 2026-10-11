@@ -9,7 +9,8 @@
       "privacy": "隱私權",
       "terms": "服務條款",
       "play": "開始遊戲",
-      "leaderboard": "排行榜"
+      "leaderboard": "排行榜",
+      "progress": "進度"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 保留一切權利。",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, other {# 顆棋子}}、{seconds, plural, other {# 秒}}",
       "read": "閱讀文章",
       "tryDrill": "試試這個練習"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "你的進度",
+      "description": "Memory Chess 根據你在本裝置上的回合記錄的每項數據，集中在一頁，並附可分享的卡片。"
+    },
+    "kicker": "實驗室紀錄",
+    "title": "你的進度",
+    "lede": "你在本裝置上的回合所取得的每項數據，都在這裡。除非你分享，否則不會離開你的瀏覽器。",
+    "loading": "正在讀取本裝置上的紀錄。",
+    "unavailable": "此瀏覽器不保存紀錄，因此沒有可顯示的進度。私密視窗不會保存任何內容。",
+    "fullRecord": "查看完整紀錄",
+    "headline": "主要數據",
+    "more": "其他數據",
+    "stale": "截至你上一回合",
+    "staleNote": "上次遊玩是 {count, plural, other {# 天}}前。帶此標記的數據來自那時。",
+    "play": "玩一回合",
+    "playAt": "玩 {pieceCount} 子、{memorizeSeconds} 秒",
+    "choose": "在完整紀錄中選擇",
+    "notYet": "尚無。",
+    "notSet": "尚未設定。",
+    "needs": "再完成{need}即可解鎖。",
+    "needsAt": "以 {pieceCount} 子、{memorizeSeconds} 秒再完成{need}即可解鎖。",
+    "need": {
+      "rounds": "{count, plural, other {# 回合}}",
+      "days": "{count, plural, other {# 天遊玩}}",
+      "exposures": "{count, plural, other {# 次棋子出現}}",
+      "qualifyingRounds": "{count, plural, other {# 個}}準確率 {accuracy}% 以上且至少 {minPieces} 子的回合",
+      "largerRounds": "{count, plural, other {# 個}}至少 {minPieces} 子的回合",
+      "rightRounds": "{count, plural, other {# 個}}至少放對一子的回合",
+      "reviews": "{count, plural, other {# 次}}相同間隔後的複習"
+    },
+    "label": {
+      "span": "記憶廣度",
+      "piecesHeld": "記住的棋子",
+      "speed": "速度",
+      "streak": "連續天數",
+      "rounds": "已玩回合",
+      "days": "遊玩天數",
+      "trend": "準確率",
+      "daily": "每日棋盤",
+      "week": "本週",
+      "curve": "複習後的記憶",
+      "missMap": "最常出錯的線",
+      "typeRecall": "最弱的棋子",
+      "insights": "發現",
+      "notebook": "筆記本",
+      "plans": "計畫",
+      "goal": "目標",
+      "bests": "個人最佳",
+      "board": "排行榜"
+    },
+    "unit": {
+      "pieces": "{count, plural, other {<n>{value}</n> 子}}",
+      "secondsPerPiece": "<n>{value}</n> 秒/子",
+      "days": "{count, plural, other {<n>{value}</n> 天}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, other {<n>{value}</n> 回合}}",
+      "entries": "{count, plural, other {<n>{value}</n> 則}}",
+      "findings": "{count, plural, other {<n>{value}</n> 則}}",
+      "settings": "{count, plural, other {<n>{value}</n> 種設定}}"
+    },
+    "context": {
+      "span": "{rounds, plural, other {# 回合}}達到 {accuracy}% 以上，記憶 {memorizeSeconds} 秒",
+      "recent": "最近 {rounds, plural, other {# 回合}}的平均值，任意設定",
+      "setting": "{source, select, calibration {練習} other {對局}}，{pieceCount} 子、{memorizeSeconds} 秒，根據 {rounds, plural, other {# 回合}}",
+      "longest": "最長 {days, plural, other {# 天}}",
+      "daily": "{status, select, played {今天已玩} unfinished {今天已開啟} other {今天可玩}}，最長連續 {longest, plural, other {# 天}}",
+      "curve": "{day, plural, other {# 天}}後的記憶，根據 {reviews, plural, other {# 次複習}}",
+      "rounds": "根據 {rounds, plural, other {# 回合}}",
+      "missLine": "{line, select, file {{name} 直行} other {第 {name} 橫列}}出錯，共看到 {shown} 子",
+      "pieceType": "{type, select, p {兵} n {馬} b {象} r {車} q {后} other {王}}的記憶率，共看到 {shown} 次",
+      "plan": "{planId, select, baseline {基準} edge {邊緣} other {階梯}}計畫，{status, select, active {進行中} done {已完成} other {已停止}}",
+      "goal": "邁向 {pieceCount} 子、{accuracy}%",
+      "week": "每週目標 {goal} 天",
+      "best": "最佳成績 {pieceCount} 子、{memorizeSeconds} 秒時 {accuracy}%",
+      "entry": "最佳提交中放對的棋子，{difficulty, select, easy {簡單} medium {中等} hard {困難} other {特級大師}}",
+      "overDays": "共 {days, plural, other {# 天}}",
+      "firstDay": "自 {date} 起"
+    },
+    "share": {
+      "button": "分享我的進度",
+      "working": "正在產生你的卡片。",
+      "shared": "已分享。",
+      "saved": "卡片已儲存，文案已複製。隨處發布吧。",
+      "savedNoCopy": "卡片已儲存。複製下方文案一起發布。",
+      "failed": "此處無法產生卡片。請改為複製下方文案。",
+      "caption": "文案",
+      "copy": "複製文案",
+      "copied": "文案已複製。",
+      "copyFailed": "此處無法複製。文案已選取，請手動複製。",
+      "locked": "當記憶廣度、記住的棋子、速度或連續天數任一項就緒後，分享卡片即會解鎖。",
+      "text": "我在 Memory Chess 的進度：{figures}。你能超越嗎？",
+      "figure": {
+        "span": "記憶廣度 {value, plural, other {# 子}}",
+        "piecesHeld": "記住 {value, number} 子",
+        "speed": "每子 {value, number} 秒",
+        "streak": "連續 {value, plural, other {# 天}}"
+      },
+      "card": {
+        "kicker": "實驗室紀錄",
+        "rounds": "{count, plural, other {已玩 # 回合}}",
+        "cta": "你能超越嗎？"
+      }
     }
   }
 }

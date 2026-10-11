@@ -9,7 +9,8 @@
       "privacy": "プライバシー",
       "terms": "利用規約",
       "play": "プレイ",
-      "leaderboard": "ランキング"
+      "leaderboard": "ランキング",
+      "progress": "進捗"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 無断転載を禁じます。",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, other {駒#個}}、{seconds, plural, other {#秒}}",
       "read": "記事を読む",
       "tryDrill": "そのドリルを試す"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "あなたの進捗",
+      "description": "このデバイスでのラウンドから Memory Chess が記録するすべての数値を1ページに。シェア用のカード付き。"
+    },
+    "kicker": "ラボ記録",
+    "title": "あなたの進捗",
+    "lede": "このデバイスでのラウンドで得たすべての数値を一か所に。シェアしない限り、ブラウザーの外には出ません。",
+    "loading": "このデバイスの記録を読み込んでいます。",
+    "unavailable": "このブラウザーは記録を保存しないため、表示できる進捗はありません。プライベートウィンドウでは何も保存されません。",
+    "fullRecord": "記録の全体を見る",
+    "headline": "主な数値",
+    "more": "その他",
+    "stale": "最後のラウンド時点",
+    "staleNote": "最後のプレイは{count, plural, other {#日}}前です。この印の数値はその時点のものです。",
+    "play": "1ラウンド遊ぶ",
+    "playAt": "{pieceCount}駒・{memorizeSeconds}秒で遊ぶ",
+    "choose": "記録の全体で選ぶ",
+    "notYet": "まだありません。",
+    "notSet": "まだ設定されていません。",
+    "needs": "あと{need}で解放されます。",
+    "needsAt": "{pieceCount}駒・{memorizeSeconds}秒で、あと{need}で解放されます。",
+    "need": {
+      "rounds": "{count, plural, other {#ラウンド}}",
+      "days": "{count, plural, other {#日のプレイ}}",
+      "exposures": "{count, plural, other {#駒の出現}}",
+      "qualifyingRounds": "{minPieces}駒以上・正解率{accuracy}%以上のラウンドを{count, plural, other {#回}}",
+      "largerRounds": "{minPieces}駒以上のラウンドを{count, plural, other {#回}}",
+      "rightRounds": "1駒以上正解したラウンドを{count, plural, other {#回}}",
+      "reviews": "同じ間隔での復習を{count, plural, other {#回}}"
+    },
+    "label": {
+      "span": "記憶スパン",
+      "piecesHeld": "記憶できた駒",
+      "speed": "スピード",
+      "streak": "連続日数",
+      "rounds": "プレイしたラウンド",
+      "days": "プレイした日数",
+      "trend": "正解率",
+      "daily": "今日の盤面",
+      "week": "今週",
+      "curve": "復習後の記憶",
+      "missMap": "最もミスの多いライン",
+      "typeRecall": "最も苦手な駒",
+      "insights": "気づき",
+      "notebook": "ノート",
+      "plans": "プラン",
+      "goal": "目標",
+      "bests": "自己ベスト",
+      "board": "ランキング"
+    },
+    "unit": {
+      "pieces": "{count, plural, other {<n>{value}</n>駒}}",
+      "secondsPerPiece": "<n>{value}</n>秒/駒",
+      "days": "{count, plural, other {<n>{value}</n>日}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, other {<n>{value}</n>ラウンド}}",
+      "entries": "{count, plural, other {<n>{value}</n>件}}",
+      "findings": "{count, plural, other {<n>{value}</n>件}}",
+      "settings": "{count, plural, other {<n>{value}</n>設定}}"
+    },
+    "context": {
+      "span": "{rounds, plural, other {#ラウンド}}で{accuracy}%以上、記憶時間{memorizeSeconds}秒",
+      "recent": "直近{rounds, plural, other {#ラウンド}}の平均、全設定",
+      "setting": "{source, select, calibration {練習} other {ゲーム}}・{pieceCount}駒・{memorizeSeconds}秒、{rounds, plural, other {#ラウンド}}から",
+      "longest": "最長{days, plural, other {#日}}",
+      "daily": "{status, select, played {今日プレイ済み} unfinished {今日開いた} other {今日プレイ可能}}、最長連続{longest, plural, other {#日}}",
+      "curve": "{day, plural, other {#日}}後の記憶、{reviews, plural, other {#回}}の復習から",
+      "rounds": "{rounds, plural, other {#ラウンド}}から",
+      "missLine": "{line, select, file {{name}ファイル} other {{name}ランク}}でのミス、{shown}駒中",
+      "pieceType": "{type, select, p {ポーン} n {ナイト} b {ビショップ} r {ルーク} q {クイーン} other {キング}}の記憶率、{shown}駒中",
+      "plan": "{planId, select, baseline {ベースライン} edge {端} other {はしご}}プラン、{status, select, active {進行中} done {完了} other {停止}}",
+      "goal": "{pieceCount}駒・{accuracy}%への到達度",
+      "week": "週の目標 {goal}日",
+      "best": "最高記録 {pieceCount}駒・{memorizeSeconds}秒で{accuracy}%",
+      "entry": "ベスト登録の正解駒数、{difficulty, select, easy {やさしい} medium {ふつう} hard {むずかしい} other {グランドマスター}}",
+      "overDays": "{days, plural, other {#日}}間で",
+      "firstDay": "{date}から"
+    },
+    "share": {
+      "button": "進捗をシェア",
+      "working": "カードを作成しています。",
+      "shared": "シェアしました。",
+      "saved": "カードを保存し、キャプションをコピーしました。好きな場所に投稿できます。",
+      "savedNoCopy": "カードを保存しました。下のキャプションをコピーして一緒に投稿してください。",
+      "failed": "ここではカードを作成できませんでした。代わりに下のキャプションをコピーしてください。",
+      "caption": "キャプション",
+      "copy": "キャプションをコピー",
+      "copied": "キャプションをコピーしました。",
+      "copyFailed": "ここではコピーできませんでした。キャプションを選択したので、手動でコピーしてください。",
+      "locked": "記憶スパン、記憶できた駒、スピード、連続日数のいずれかが揃うと、シェア用カードが解放されます。",
+      "text": "Memory Chess の進捗: {figures}。あなたは超えられる?",
+      "figure": {
+        "span": "記憶スパン{value, plural, other {#駒}}",
+        "piecesHeld": "記憶できた駒{value, number}",
+        "speed": "1駒あたり{value, number}秒",
+        "streak": "{value, plural, other {#日}}連続"
+      },
+      "card": {
+        "kicker": "ラボ記録",
+        "rounds": "{count, plural, other {#ラウンドをプレイ}}",
+        "cta": "あなたは超えられる?"
+      }
     }
   }
 }

@@ -6,6 +6,7 @@ import { trackEvent } from "@/lib/analytics/events";
 import { announceLabChange } from "@/lib/lab/recordSync";
 import { labStore } from "@/lib/lab/storage";
 import { buildExport, readImportFile } from "@/lib/lab/transfer";
+import { saveBlob } from "@/lib/saveBlob";
 
 export type ImportOutcome =
   | {
@@ -24,7 +25,6 @@ export interface LabRecord extends LabData {
 }
 
 const EXPORT_FILE = "memory-chess-lab-record.json";
-const REVOKE_AFTER_MS = 30_000;
 
 export function useLabRecord(): LabRecord {
   const data = useLabData();
@@ -37,16 +37,7 @@ export function useLabRecord(): LabRecord {
     const lifetime = await store.readSummary();
     const rounds = await store.listRounds();
     const now = Date.now();
-    const blob = new Blob([JSON.stringify(buildExport(rounds, now, lifetime))], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = EXPORT_FILE;
-    // Firefox ignores a click on a detached link, and Safari can still be reading the blob after click returns.
-    document.body.append(link);
-    link.click();
-    link.remove();
-    window.setTimeout(() => URL.revokeObjectURL(url), REVOKE_AFTER_MS);
+    saveBlob(new Blob([JSON.stringify(buildExport(rounds, now, lifetime))], { type: "application/json" }), EXPORT_FILE);
     // Records that an export was started; whether the file was saved is up to the browser.
     store.markBackedUp(now);
     setExportedAt(now);

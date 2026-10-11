@@ -22,7 +22,21 @@ beforeEach(() => {
 });
 
 describe("SiteNav", () => {
-  it("links Play, Learn, Articles, Leaderboard and About in that order", () => {
+  it("hides About below the sm breakpoint, where the footer still links it, and shows every other link", () => {
+    render(<SiteNav />);
+
+    const items = within(nav()).getAllByRole("listitem");
+    expect(items.map((item) => [item.textContent, item.className])).toEqual([
+      ["Play", ""],
+      ["Learn", ""],
+      ["Articles", ""],
+      ["Leaderboard", ""],
+      ["Progress", ""],
+      ["About", "hidden sm:list-item"],
+    ]);
+  });
+
+  it("links Play, Learn, Articles, Leaderboard, Progress and About in that order", () => {
     render(<SiteNav />);
 
     const links = within(nav()).getAllByRole("link");
@@ -31,6 +45,7 @@ describe("SiteNav", () => {
       "Learn",
       "Articles",
       "Leaderboard",
+      "Progress",
       "About",
     ]);
     expect(links.map((link) => link.getAttribute("href"))).toEqual([
@@ -38,6 +53,7 @@ describe("SiteNav", () => {
       "/learn",
       "/articles",
       "/leaderboard",
+      "/dashboard",
       "/about",
     ]);
   });
@@ -127,7 +143,7 @@ describe("PageHeader navigation", () => {
   it("renders the nav on ordinary pages", () => {
     renderHeader();
 
-    expect(within(nav()).getAllByRole("link")).toHaveLength(5);
+    expect(within(nav()).getAllByRole("link")).toHaveLength(6);
   });
 
   it("leaves the nav out while a round is being memorised or placed", () => {

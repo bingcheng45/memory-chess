@@ -2,6 +2,7 @@
 
 import { Fragment, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useLabResults } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
 import { PANEL_ROWS, type CustomRow, type PanelId, type PanelRow } from "@/lib/lab/panels";
@@ -73,7 +74,12 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
         <SectionHeading
           section="record"
           title={t("title")}
-          lede={t.rich("lede", { tag: (chunks) => <span className="lab-tag lab-tag-blue">{chunks}</span> })}
+          lede={
+            <>
+              {t.rich("lede", { tag: (chunks) => <span className="lab-tag lab-tag-blue">{chunks}</span> })}{" "}
+              <Link href="/dashboard">{t("dashboardLink")} →</Link>
+            </>
+          }
         />
         <LabUnlockStrip results={lab} storage={record.storage} welcome={record.storage === "available" ? welcomeBack(record) : null} />
         {PANEL_ROWS.map(({ row, panels: ids }) =>

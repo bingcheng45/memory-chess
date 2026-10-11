@@ -9,7 +9,8 @@
       "privacy": "Tietosuoja",
       "terms": "Käyttöehdot",
       "play": "Pelaa",
-      "leaderboard": "Tulostaulukko"
+      "leaderboard": "Tulostaulukko",
+      "progress": "Edistyminen"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Kaikki oikeudet pidätetään.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# nappula} other {# nappulaa}}, {seconds, plural, one {# sekunti} other {# sekuntia}}",
       "read": "Lue artikkeli",
       "tryDrill": "Kokeile harjoitusta"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Edistymisesi",
+      "description": "Jokainen luku, jota Memory Chess seuraa kierroksistasi tällä laitteella, yhdellä sivulla ja jaettavan kortin kanssa."
+    },
+    "kicker": "Laboratoriopäiväkirja",
+    "title": "Edistymisesi",
+    "lede": "Kaikki luvut, jotka kierroksesi ovat tällä laitteella ansainneet, yhdessä paikassa. Mitään ei lähde selaimestasi, ellet jaa sitä.",
+    "loading": "Luetaan päiväkirjaasi tältä laitteelta.",
+    "unavailable": "Tämä selain ei säilytä päiväkirjaa, joten näytettävää edistymistä ei ole. Yksityiset ikkunat eivät säilytä mitään.",
+    "fullRecord": "Katso koko päiväkirja",
+    "headline": "Tärkeimmät luvut",
+    "more": "Kaikki muu",
+    "stale": "Viimeisimmältä kierrokselta",
+    "staleNote": "Pelattu viimeksi {count, plural, one {# päivä} other {# päivää}} sitten. Näin merkityt luvut ovat silloisia.",
+    "play": "Pelaa kierros",
+    "playAt": "Pelaa {pieceCount} nappulaa, {memorizeSeconds} s",
+    "choose": "Valitse se koko päiväkirjassa",
+    "notYet": "Ei vielä mitään.",
+    "notSet": "Ei vielä asetettu.",
+    "needs": "Avautuu: {need}.",
+    "needsAt": "Avautuu: {need}, {pieceCount} nappulaa, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {vielä # kierros} other {vielä # kierrosta}}",
+      "days": "{count, plural, one {vielä # pelipäivä} other {vielä # pelipäivää}}",
+      "exposures": "{count, plural, one {vielä # nähty nappula} other {vielä # nähtyä nappulaa}}",
+      "qualifyingRounds": "{count, plural, one {vielä # kierros} other {vielä # kierrosta}} vähintään {accuracy} %:n tarkkuudella ja vähintään {minPieces} nappulalla",
+      "largerRounds": "{count, plural, one {# kierros} other {# kierrosta}} vähintään {minPieces} nappulalla",
+      "rightRounds": "{count, plural, one {# kierros} other {# kierrosta}}, jossa on yksi oikea nappula",
+      "reviews": "{count, plural, one {vielä # kertaus} other {vielä # kertausta}} saman tauon jälkeen"
+    },
+    "label": {
+      "span": "Muistijänne",
+      "piecesHeld": "Muistetut nappulat",
+      "speed": "Nopeus",
+      "streak": "Putki",
+      "rounds": "Pelatut kierrokset",
+      "days": "Pelipäivät",
+      "trend": "Tarkkuus",
+      "daily": "Päivän lauta",
+      "week": "Tämä viikko",
+      "curve": "Muistaminen kertauksen jälkeen",
+      "missMap": "Eniten ohi mennyt linja",
+      "typeRecall": "Heikoin nappula",
+      "insights": "Havainnot",
+      "notebook": "Muistikirja",
+      "plans": "Suunnitelma",
+      "goal": "Tavoite",
+      "bests": "Ennätykset",
+      "board": "Tulostaulu"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> nappula} other {<n>{value}</n> nappulaa}}",
+      "secondsPerPiece": "<n>{value}</n> s / nappula",
+      "days": "{count, plural, one {<n>{value}</n> päivä} other {<n>{value}</n> päivää}}",
+      "percent": "<n>{value}</n> %",
+      "rounds": "{count, plural, one {<n>{value}</n> kierros} other {<n>{value}</n> kierrosta}}",
+      "entries": "{count, plural, one {<n>{value}</n> merkintä} other {<n>{value}</n> merkintää}}",
+      "findings": "{count, plural, one {<n>{value}</n> havainto} other {<n>{value}</n> havaintoa}}",
+      "settings": "{count, plural, one {<n>{value}</n> asetus} other {<n>{value}</n> asetusta}}"
+    },
+    "context": {
+      "span": "Vähintään {accuracy} % {rounds, plural, one {# kierroksella} other {# kierroksella}}, tutkittu {memorizeSeconds} s",
+      "recent": "Viimeisten {rounds, plural, one {# kierroksen} other {# kierroksen}} keskiarvo, kaikki asetukset",
+      "setting": "{source, select, calibration {Harjoituksen kierrokset} other {Pelien kierrokset}}, {pieceCount} nappulaa, {memorizeSeconds} s, {rounds, plural, one {# kierroksesta} other {# kierroksesta}}",
+      "longest": "Pisin {days, plural, one {# päivä} other {# päivää}}",
+      "daily": "{status, select, played {Pelattu tänään} unfinished {Avattu tänään} other {Avoinna tänään}}, pisin putki {longest, plural, one {# päivä} other {# päivää}}",
+      "curve": "Muistettu {day, plural, one {# päivän} other {# päivän}} jälkeen, {reviews, plural, one {# kertauksesta} other {# kertauksesta}}",
+      "rounds": "{rounds, plural, one {# kierroksesta} other {# kierroksesta}}",
+      "missLine": "Ohi {line, select, file {{name}-linjalla} other {rivillä {name}}}, {shown} nähdystä nappulasta",
+      "pieceType": "{type, select, p {Sotilaat muistettu} n {Ratsut muistettu} b {Lähetit muistettu} r {Tornit muistettu} q {Daamit muistettu} other {Kuninkaat muistettu}}, {shown} nähdystä",
+      "plan": "{planId, select, baseline {Suunnitelma Lähtötaso} edge {Suunnitelma Reunat} other {Suunnitelma Tikkaat}}, {status, select, active {yhä käynnissä} done {nyt valmis} other {nyt keskeytetty}}",
+      "goal": "Kohti {pieceCount} nappulaa {accuracy} %:n tarkkuudella",
+      "week": "Viikkotavoite {goal} päivää",
+      "best": "Paras tulos {accuracy} %, {pieceCount} nappulaa, {memorizeSeconds} s",
+      "entry": "Oikeat nappulat parhaassa merkinnässäsi, {difficulty, select, easy {taso Helppo} medium {taso Keskitaso} hard {taso Vaikea} other {taso Suurmestari}}",
+      "overDays": "{days, plural, one {# päivän} other {# päivän}} aikana",
+      "firstDay": "Alkaen {date}"
+    },
+    "share": {
+      "button": "Jaa edistymiseni",
+      "working": "Korttiasi tehdään.",
+      "shared": "Jaettu.",
+      "saved": "Kortti tallennettu ja teksti kopioitu. Julkaise ne missä haluat.",
+      "savedNoCopy": "Kortti tallennettu. Kopioi alla oleva teksti ja julkaise se kortin kanssa.",
+      "failed": "Korttia ei voitu tehdä täällä. Kopioi sen sijaan alla oleva teksti.",
+      "caption": "Teksti",
+      "copy": "Kopioi teksti",
+      "copied": "Teksti kopioitu.",
+      "copyFailed": "Kopiointi ei toiminut täällä. Teksti on valittu, joten kopioi se itse.",
+      "locked": "Jaettava kortti avautuu, kun muistijänne, muistetut nappulat, nopeus tai putkesi on valmis.",
+      "text": "Edistymiseni Memory Chessissä: {figures}. Pystytkö parempaan?",
+      "figure": {
+        "span": "muistijänne {value, plural, one {# nappula} other {# nappulaa}}",
+        "piecesHeld": "{value, number} muistettua nappulaa",
+        "speed": "{value, number} s / nappula",
+        "streak": "{value, plural, one {# päivä} other {# päivää}} putkeen"
+      },
+      "card": {
+        "kicker": "Laboratoriopäiväkirja",
+        "rounds": "{count, plural, one {# kierros pelattu} other {# kierrosta pelattu}}",
+        "cta": "Pystytkö parempaan?"
+      }
     }
   }
 }

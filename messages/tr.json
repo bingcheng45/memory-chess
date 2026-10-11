@@ -9,7 +9,8 @@
       "privacy": "Gizlilik",
       "terms": "Koşullar",
       "play": "Oyna",
-      "leaderboard": "Sıralama"
+      "leaderboard": "Sıralama",
+      "progress": "İlerleme"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tüm hakları saklıdır.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# taş} other {# taş}}, {seconds, plural, one {# saniye} other {# saniye}}",
       "read": "Makaleyi oku",
       "tryDrill": "Alıştırmayı dene"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "İlerlemen",
+      "description": "Memory Chess'in bu cihazdaki turlarından izlediği her değer, tek sayfada ve paylaşılabilir bir kartla."
+    },
+    "kicker": "Laboratuvar kaydı",
+    "title": "İlerlemen",
+    "lede": "Turlarının bu cihazda kazandığı her değer tek bir yerde. Sen paylaşmadıkça hiçbiri tarayıcından çıkmaz.",
+    "loading": "Bu cihazdaki kaydın okunuyor.",
+    "unavailable": "Bu tarayıcı kayıt tutmuyor, bu yüzden gösterilecek ilerleme yok. Gizli pencereler hiçbir şey saklamaz.",
+    "fullRecord": "Kaydın tamamını gör",
+    "headline": "Öne çıkan değerler",
+    "more": "Diğer her şey",
+    "stale": "Son turuna göre",
+    "staleNote": "En son {count, plural, one {# gün} other {# gün}} önce oynadın. Böyle işaretlenen değerler o zamana ait.",
+    "play": "Bir tur oyna",
+    "playAt": "{pieceCount} taş, {memorizeSeconds} sn oyna",
+    "choose": "Kaydın tamamında birini seç",
+    "notYet": "Henüz bir şey yok.",
+    "notSet": "Henüz ayarlanmadı.",
+    "needs": "Açılması için: {need}.",
+    "needsAt": "Açılması için: {need}, {pieceCount} taş, {memorizeSeconds} sn.",
+    "need": {
+      "rounds": "{count, plural, one {# tur daha} other {# tur daha}}",
+      "days": "{count, plural, one {# oyun günü daha} other {# oyun günü daha}}",
+      "exposures": "{count, plural, one {# görülen taş daha} other {# görülen taş daha}}",
+      "qualifyingRounds": "%{accuracy} veya üzeri ve en az {minPieces} taşla {count, plural, one {# tur daha} other {# tur daha}}",
+      "largerRounds": "En az {minPieces} taşla {count, plural, one {# tur} other {# tur}}",
+      "rightRounds": "Bir taşı doğru olan {count, plural, one {# tur} other {# tur}}",
+      "reviews": "Aynı aralıktan sonra {count, plural, one {# tekrar daha} other {# tekrar daha}}"
+    },
+    "label": {
+      "span": "Bellek kapasitesi",
+      "piecesHeld": "Akılda tutulan taşlar",
+      "speed": "Hız",
+      "streak": "Seri",
+      "rounds": "Oynanan turlar",
+      "days": "Oynanan günler",
+      "trend": "İsabet",
+      "daily": "Günün tahtası",
+      "week": "Bu hafta",
+      "curve": "Tekrardan sonra hatırlama",
+      "missMap": "En çok kaçırılan hat",
+      "typeRecall": "En zayıf taş",
+      "insights": "Bulgular",
+      "notebook": "Defter",
+      "plans": "Plan",
+      "goal": "Hedef",
+      "bests": "Kişisel rekorlar",
+      "board": "Sıralama"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> taş} other {<n>{value}</n> taş}}",
+      "secondsPerPiece": "<n>{value}</n> sn / taş",
+      "days": "{count, plural, one {<n>{value}</n> gün} other {<n>{value}</n> gün}}",
+      "percent": "%<n>{value}</n>",
+      "rounds": "{count, plural, one {<n>{value}</n> tur} other {<n>{value}</n> tur}}",
+      "entries": "{count, plural, one {<n>{value}</n> not} other {<n>{value}</n> not}}",
+      "findings": "{count, plural, one {<n>{value}</n> bulgu} other {<n>{value}</n> bulgu}}",
+      "settings": "{count, plural, one {<n>{value}</n> ayar} other {<n>{value}</n> ayar}}"
+    },
+    "context": {
+      "span": "{rounds, plural, one {# turda} other {# turda}} %{accuracy} veya üzeri, {memorizeSeconds} sn ezber",
+      "recent": "Son {rounds, plural, one {# turunun} other {# turunun}} ortalaması, her ayar",
+      "setting": "{pieceCount} taş, {memorizeSeconds} sn {source, select, calibration {alıştırma turları} other {oyun turları}}, {rounds, plural, one {# turdan} other {# turdan}}",
+      "longest": "En uzun {days, plural, one {# gün} other {# gün}}",
+      "daily": "{status, select, played {Bugün oynandı} unfinished {Bugün açıldı} other {Bugün açık}}, en uzun seri {longest, plural, one {# gün} other {# gün}}",
+      "curve": "{day, plural, one {# gün} other {# gün}} sonra hatırlanan, {reviews, plural, one {# tekrardan} other {# tekrardan}}",
+      "rounds": "{rounds, plural, one {# turdan} other {# turdan}}",
+      "missLine": "{line, select, file {{name} sütununda} other {{name}. sırada}} kaçırılan, görülen {shown} taştan",
+      "pieceType": "{type, select, p {Hatırlanan piyonlar} n {Hatırlanan atlar} b {Hatırlanan filler} r {Hatırlanan kaleler} q {Hatırlanan vezirler} other {Hatırlanan şahlar}}, görülen {shown} taştan",
+      "plan": "{planId, select, baseline {Başlangıç planı} edge {Kenarlar planı} other {Merdiven planı}}, {status, select, active {hâlâ sürüyor} done {artık tamamlandı} other {artık durduruldu}}",
+      "goal": "%{accuracy} ile {pieceCount} taşa doğru",
+      "week": "Haftalık hedef {goal} gün",
+      "best": "En iyi sonuç {pieceCount} taş, {memorizeSeconds} sn ile %{accuracy}",
+      "entry": "En iyi kaydındaki doğru taşlar, {difficulty, select, easy {Kolay seviye} medium {Orta seviye} hard {Zor seviye} other {Büyükusta seviyesi}}",
+      "overDays": "{days, plural, one {# günde} other {# günde}}",
+      "firstDay": "{date} tarihinden beri"
+    },
+    "share": {
+      "button": "İlerlememi paylaş",
+      "working": "Kartın hazırlanıyor.",
+      "shared": "Paylaşıldı.",
+      "saved": "Kart kaydedildi ve metin kopyalandı. İstediğin yerde paylaş.",
+      "savedNoCopy": "Kart kaydedildi. Birlikte paylaşmak için aşağıdaki metni kopyala.",
+      "failed": "Kart burada oluşturulamadı. Bunun yerine aşağıdaki metni kopyala.",
+      "caption": "Metin",
+      "copy": "Metni kopyala",
+      "copied": "Metin kopyalandı.",
+      "copyFailed": "Kopyalama burada çalışmadı. Metin seçili, kendin kopyala.",
+      "locked": "Paylaşım kartın; bellek kapasitesi, akılda tutulan taşlar, hız veya serin hazır olduğunda açılır.",
+      "text": "Memory Chess ilerlemem: {figures}. Geçebilir misin?",
+      "figure": {
+        "span": "{value, plural, one {# taşlık} other {# taşlık}} bellek kapasitesi",
+        "piecesHeld": "akılda tutulan {value, number} taş",
+        "speed": "taş başına {value, number} sn",
+        "streak": "üst üste {value, plural, one {# gün} other {# gün}}"
+      },
+      "card": {
+        "kicker": "Laboratuvar kaydı",
+        "rounds": "{count, plural, one {# tur oynandı} other {# tur oynandı}}",
+        "cta": "Geçebilir misin?"
+      }
     }
   }
 }

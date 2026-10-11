@@ -23,8 +23,45 @@ import {
 } from "@/i18n/routing";
 import { isEnglishOnlyPath, isServedAtBareEnglishUrl } from "@/lib/seo/englishOnly";
 
+/** The dark site chrome, or the homepage's Lab Paper header, whose tokens the popover reads from the root. */
+type Appearance = "site" | "paper";
+
+const LOOKS = {
+  site: {
+    button:
+      "flex h-9 items-center gap-1.5 rounded-full bg-bg-card/30 px-2.5 backdrop-blur-sm transition-all hover:bg-bg-card/50 disabled:opacity-60 sm:h-10 sm:px-3",
+    globe: "h-4 w-4 text-text-secondary sm:h-[18px] sm:w-[18px]",
+    code: "text-xs font-semibold tracking-wide text-text-secondary sm:text-sm",
+    menu: "fixed z-[99990] overflow-y-auto overscroll-contain rounded-lg border border-bg-light bg-bg-card p-2 shadow-2xl shadow-black/60",
+    backdrop: "fixed inset-0 z-[99998] flex items-end bg-black/70",
+    sheet: "max-h-[80vh] w-full overflow-y-auto rounded-t-2xl border-t border-bg-light bg-bg-card p-4 pb-8 shadow-2xl",
+    handle: "mx-auto mb-4 h-1 w-10 rounded-full bg-bg-light",
+    active: "bg-peach-500/15 text-peach-500",
+    disabled: "cursor-not-allowed text-text-muted opacity-50",
+    idle: "text-text-secondary hover:bg-bg-light hover:text-text-primary",
+    badge: "text-xs font-medium text-text-muted",
+    note: "max-w-[14rem] px-3 pb-2 text-xs leading-5 text-text-muted",
+  },
+  paper: {
+    button:
+      "flex h-10 items-center gap-1.5 rounded-md px-2.5 text-[var(--lp-ink-2)] transition-colors hover:bg-[var(--lp-surface-2)] hover:text-[var(--lp-ink)] disabled:opacity-60",
+    globe: "h-[18px] w-[18px]",
+    code: "text-sm font-medium",
+    menu: "fixed z-[99990] overflow-y-auto overscroll-contain rounded-xl border border-[var(--lp-line)] bg-[var(--lp-surface)] p-2 shadow-[var(--lp-pop-shadow)]",
+    backdrop: "fixed inset-0 z-[99998] flex items-end bg-[rgba(13,27,36,0.4)]",
+    sheet: "max-h-[80vh] w-full overflow-y-auto rounded-t-2xl border-t border-[var(--lp-line)] bg-[var(--lp-surface)] p-4 pb-8 shadow-[var(--lp-pop-shadow)]",
+    handle: "mx-auto mb-4 h-1 w-10 rounded-full bg-[var(--lp-line)]",
+    active: "bg-[var(--lp-accent-soft)] text-[var(--lp-accent)]",
+    disabled: "cursor-not-allowed text-[var(--lp-muted)] opacity-50",
+    idle: "text-[var(--lp-ink-2)] hover:bg-[var(--lp-surface-2)] hover:text-[var(--lp-ink)]",
+    badge: "text-xs font-medium text-[var(--lp-muted)]",
+    note: "max-w-[14rem] px-3 pb-2 text-xs leading-5 text-[var(--lp-muted)]",
+  },
+} as const satisfies Record<Appearance, Record<string, string>>;
+
 interface LanguageSettingsProps {
   className?: string;
+  appearance?: Appearance;
 }
 
 type Anchor = { top: number; left: number };
@@ -43,7 +80,9 @@ type Anchor = { top: number; left: number };
  */
 export default function LanguageSettings({
   className = "",
+  appearance = "site",
 }: LanguageSettingsProps) {
+  const look = LOOKS[appearance];
   const t = useTranslations("common.language");
   const locale = useLocale() as Locale;
   const pathname = usePathname();
@@ -167,11 +206,7 @@ export default function LanguageSettings({
         disabled={isDisabled}
         aria-disabled={isDisabled || undefined}
         className={`flex w-full items-center justify-between gap-3 rounded-md px-3 py-2 text-left text-sm transition-colors ${
-          isActive
-            ? "bg-peach-500/15 text-peach-500"
-            : isDisabled
-              ? "cursor-not-allowed text-text-muted opacity-50"
-              : "text-text-secondary hover:bg-bg-light hover:text-text-primary"
+          isActive ? look.active : isDisabled ? look.disabled : look.idle
         }`}
       >
         <span className="whitespace-nowrap">{option.label}</span>
@@ -191,9 +226,7 @@ export default function LanguageSettings({
             <polyline points="20 6 9 17 4 12" />
           </svg>
         ) : (
-          <span className="text-xs font-medium text-text-muted">
-            {option.badge}
-          </span>
+          <span className={look.badge}>{option.badge}</span>
         )}
       </button>
     );
@@ -204,7 +237,7 @@ export default function LanguageSettings({
       {isEnglishOnlyPage && (
         <p
           id={englishOnlyNoteId}
-          className="max-w-[14rem] px-3 pb-2 text-xs leading-5 text-text-muted"
+          className={look.note}
         >
           {t("englishOnly")}
         </p>
@@ -221,14 +254,14 @@ export default function LanguageSettings({
         onClick={() => setIsOpen((open) => !open)}
         whileTap={{ scale: 0.94 }}
         disabled={isPending}
-        className="flex h-9 items-center gap-1.5 rounded-full bg-bg-card/30 px-2.5 backdrop-blur-sm transition-all hover:bg-bg-card/50 disabled:opacity-60 sm:h-10 sm:px-3"
+        className={look.button}
         aria-label={t("change", { language: LOCALE_LABELS[locale] })}
         title={t("current", { language: LOCALE_LABELS[locale] })}
         aria-expanded={isOpen}
         aria-haspopup="menu"
       >
         <Globe
-          className="h-4 w-4 text-text-secondary sm:h-[18px] sm:w-[18px]"
+          className={look.globe}
           aria-hidden="true"
         />
         <motion.span
@@ -236,7 +269,7 @@ export default function LanguageSettings({
           initial={{ opacity: 0.6 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.25 }}
-          className="text-xs font-semibold tracking-wide text-text-secondary sm:text-sm"
+          className={look.code}
         >
           {LOCALE_BADGES[locale]}
         </motion.span>
@@ -256,7 +289,7 @@ export default function LanguageSettings({
                 aria-describedby={menuDescription}
                 // Solid, not translucent: at 90% the chess board read straight
                 // through the menu and the labels became hard to scan.
-                className="fixed z-[99990] overflow-y-auto overscroll-contain rounded-lg border border-bg-light bg-bg-card p-2 shadow-2xl shadow-black/60"
+                className={look.menu}
                 style={{
                   top: anchor.top,
                   left: anchor.left,
@@ -277,7 +310,7 @@ export default function LanguageSettings({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="fixed inset-0 z-[99998] flex items-end bg-black/70"
+                className={look.backdrop}
                 onClick={() => setIsOpen(false)}
               >
                 <motion.div
@@ -288,10 +321,10 @@ export default function LanguageSettings({
                   role="menu"
                   aria-label={t("select")}
                   aria-describedby={menuDescription}
-                  className="max-h-[80vh] w-full overflow-y-auto rounded-t-2xl border-t border-bg-light bg-bg-card p-4 pb-8 shadow-2xl"
+                  className={look.sheet}
                   onClick={(event) => event.stopPropagation()}
                 >
-                  <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-bg-light" />
+                  <div className={look.handle} />
                   {menuItems}
                 </motion.div>
               </motion.div>

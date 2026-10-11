@@ -255,3 +255,40 @@ describe("insight sentences", () => {
     );
   });
 });
+
+describe("a record panel that is still warming up", () => {
+  const needs = {
+    "Miss map": /more rounds? until every file and rank has 10 pieces to read\.$/,
+    "Recall by piece type": /more rounds? until a piece other than the king has 20 sightings\.$/,
+    Insights: "Insights read your record from 10 rounds. 8 more rounds to go.",
+  };
+
+  it.each(Object.entries(needs))("%s keeps what it still needs and draws a Sample under it", (name, need) => {
+    renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
+    const element = panel(name);
+
+    expect(element.querySelector(".lab-empty")).toHaveTextContent(need);
+    expect(within(element).getByText("Sample")).toBeInTheDocument();
+    expect(within(element).queryByText("Your record")).toBeNull();
+  });
+
+  it("draws the sample heatmap under the miss map need", () => {
+    renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
+
+    expect(within(panel("Miss map")).getByRole("img")).toHaveAccessibleName("Sample heatmap of missed squares, concentrated on the a and h files.");
+  });
+
+  it("draws sample piece bars under the recall need, without the real king baseline", () => {
+    renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
+    const types = panel("Recall by piece type");
+
+    expect(within(types).getByText("Sample: pawns and knights slip first.")).toBeInTheDocument();
+    expect(within(types).getByText("Queen")).toBeInTheDocument();
+  });
+
+  it("draws the sample finding under the insights need", () => {
+    renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
+
+    expect(within(panel("Insights")).getByRole("list", { name: "Sample finding" })).toBeInTheDocument();
+  });
+});

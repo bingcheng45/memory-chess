@@ -22,6 +22,8 @@
   /* globals.css gives every button on a phone a 36px minimum and side padding, which a board square cannot afford. */
   .lab-paper .lab-cell, .lab-paper .lab-palette button { padding: 0 !important; }
 }
+/* globals.css also gives every button a 36px minimum, which eight squares on a narrow board cannot all have. */
+.lab-paper .lab-cell { min-width: 0; min-height: 0; }
 
 .lab-cell[data-mark~="ok"] { background-image: linear-gradient(var(--lp-mark-correct), var(--lp-mark-correct)); }
 .lab-cell[data-mark~="wrong"] { background-image: linear-gradient(var(--lp-mark-wrong), var(--lp-mark-wrong)); }

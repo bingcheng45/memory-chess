@@ -5,6 +5,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import { trackEvent, type LabPanelAction } from "@/lib/analytics/events";
+import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
 import { playHref } from "@/lib/game/roundLink";
 import { SAMPLE_GOAL } from "@/lib/home/labRecord";
 import { GOAL_ACCURACY_OPTIONS, GOAL_PIECE_OPTIONS, PLAN_IDS, type PlanId, type StoredPlan, type StoredTarget } from "@/lib/lab/choices";
@@ -15,7 +16,7 @@ import { PLAN_RULES, startRung, type PlanProgress, type PlanStatus, type Rung } 
 import type { RoundRecord } from "@/lib/lab/record";
 import { seconds } from "./labFormat";
 import { planChoice, targetChoice } from "./labChoices";
-import { PanelFrame, StaleNote, useTags } from "./LabRecordPanels";
+import { NeedNote, PanelFrame, StaleNote, useTags } from "./LabRecordPanels";
 
 const track = (panel: "plans" | "goal", action: LabPanelAction) => trackEvent({ name: "lab_panel_action", params: { panel, action } });
 const rungValues = ({ pieceCount, memorizeSeconds }: Rung) => ({ pieceCount, studyTime: seconds(memorizeSeconds) });
@@ -346,7 +347,14 @@ export function GoalPanel({ result: { readiness, value }, today, daysAgo }: { re
             <GoalBar percent={percent} label={t("bar", { percent })} />
           </>
         ) : (
-          <p className="lab-empty">{t("need", { pieceCount: target.pieceCount })}</p>
+          <NeedNote
+            readiness={readiness}
+            panel="goal"
+            setting={{ source: "game", pieceCount: target.pieceCount, memorizeSeconds: DEFAULT_PRESET.memorizeTime }}
+            className="lab-empty"
+          >
+            {t("need", { pieceCount: target.pieceCount })}
+          </NeedNote>
         )}
         {reached && <p className="lab-target-reached">{t("reached", { date: day(reached.localDay), accuracy: reached.accuracy, pieceCount: reached.pieceCount })}</p>}
         {today && editing ? (

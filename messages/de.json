@@ -9,7 +9,8 @@
       "privacy": "Datenschutz",
       "terms": "Nutzungsbedingungen",
       "play": "Spielen",
-      "leaderboard": "Bestenliste"
+      "leaderboard": "Bestenliste",
+      "progress": "Fortschritt"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle Rechte vorbehalten.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# Figur} other {# Figuren}}, {seconds, plural, one {# Sekunde} other {# Sekunden}}",
       "read": "Artikel lesen",
       "tryDrill": "Diese Übung ausprobieren"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Dein Fortschritt",
+      "description": "Jede Kennzahl, die Memory Chess aus deinen Runden auf diesem Gerät ermittelt, auf einer Seite und mit einer Karte zum Teilen."
+    },
+    "kicker": "Laborbericht",
+    "title": "Dein Fortschritt",
+    "lede": "Alle Werte, die deine Runden auf diesem Gerät ergeben haben, an einem Ort. Nichts davon verlässt deinen Browser, außer du teilst es.",
+    "loading": "Dein Verlauf auf diesem Gerät wird gelesen.",
+    "unavailable": "Dieser Browser speichert keinen Verlauf, daher gibt es keinen Fortschritt anzuzeigen. Private Fenster speichern nichts.",
+    "fullRecord": "Vollständigen Bericht ansehen",
+    "headline": "Wichtigste Werte",
+    "more": "Alles Weitere",
+    "stale": "Stand deiner letzten Runde",
+    "staleNote": "Zuletzt gespielt vor {count, plural, one {# Tag} other {# Tagen}}. So markierte Werte stammen von damals.",
+    "play": "Eine Runde spielen",
+    "playAt": "{pieceCount} Figuren, {memorizeSeconds} s spielen",
+    "choose": "Im vollständigen Bericht auswählen",
+    "notYet": "Noch nichts.",
+    "notSet": "Noch nicht festgelegt.",
+    "needs": "Wird freigeschaltet mit {need}.",
+    "needsAt": "Wird freigeschaltet mit {need} bei {pieceCount} Figuren, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {# weiteren Runde} other {# weiteren Runden}}",
+      "days": "{count, plural, one {# weiteren Spieltag} other {# weiteren Spieltagen}}",
+      "exposures": "{count, plural, one {# weiteren gesehenen Figur} other {# weiteren gesehenen Figuren}}",
+      "qualifyingRounds": "{count, plural, one {# weiteren Runde} other {# weiteren Runden}} mit {accuracy} % oder mehr und mindestens {minPieces} Figuren",
+      "largerRounds": "{count, plural, one {# Runde} other {# Runden}} mit mindestens {minPieces} Figuren",
+      "rightRounds": "{count, plural, one {# Runde} other {# Runden}} mit einer richtigen Figur",
+      "reviews": "{count, plural, one {# weiteren Wiederholung} other {# weiteren Wiederholungen}} nach demselben Abstand"
+    },
+    "label": {
+      "span": "Gedächtnisspanne",
+      "piecesHeld": "Gehaltene Figuren",
+      "speed": "Tempo",
+      "streak": "Serie",
+      "rounds": "Gespielte Runden",
+      "days": "Spieltage",
+      "trend": "Genauigkeit",
+      "daily": "Tagesbrett",
+      "week": "Diese Woche",
+      "curve": "Erinnerung nach Wiederholung",
+      "missMap": "Meistverfehlte Linie",
+      "typeRecall": "Schwächste Figur",
+      "insights": "Erkenntnisse",
+      "notebook": "Notizbuch",
+      "plans": "Plan",
+      "goal": "Ziel",
+      "bests": "Bestwerte",
+      "board": "Bestenliste"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> Figur} other {<n>{value}</n> Figuren}}",
+      "secondsPerPiece": "<n>{value}</n> s pro Figur",
+      "days": "{count, plural, one {<n>{value}</n> Tag} other {<n>{value}</n> Tage}}",
+      "percent": "<n>{value}</n> %",
+      "rounds": "{count, plural, one {<n>{value}</n> Runde} other {<n>{value}</n> Runden}}",
+      "entries": "{count, plural, one {<n>{value}</n> Eintrag} other {<n>{value}</n> Einträge}}",
+      "findings": "{count, plural, one {<n>{value}</n> Erkenntnis} other {<n>{value}</n> Erkenntnisse}}",
+      "settings": "{count, plural, one {<n>{value}</n> Einstellung} other {<n>{value}</n> Einstellungen}}"
+    },
+    "context": {
+      "span": "{accuracy} % oder mehr in {rounds, plural, one {# Runde} other {# Runden}}, {memorizeSeconds} s eingeprägt",
+      "recent": "Schnitt deiner letzten {rounds, plural, one {# Runde} other {# Runden}}, jede Einstellung",
+      "setting": "{source, select, calibration {Übungsrunden} other {Runden in Partien}} mit {pieceCount} Figuren, {memorizeSeconds} s, aus {rounds, plural, one {# Runde} other {# Runden}}",
+      "longest": "Längste {days, plural, one {# Tag} other {# Tage}}",
+      "daily": "{status, select, played {Heute gespielt} unfinished {Heute geöffnet} other {Heute offen}}, längste Serie {longest, plural, one {# Tag} other {# Tage}}",
+      "curve": "Erinnert nach {day, plural, one {# Tag} other {# Tagen}}, aus {reviews, plural, one {# Wiederholung} other {# Wiederholungen}}",
+      "rounds": "Aus {rounds, plural, one {# Runde} other {# Runden}}",
+      "missLine": "Verfehlt auf {line, select, file {der {name}-Linie} other {Reihe {name}}}, aus {shown} gesehenen Figuren",
+      "pieceType": "{type, select, p {Bauern erinnert} n {Springer erinnert} b {Läufer erinnert} r {Türme erinnert} q {Damen erinnert} other {Könige erinnert}}, aus {shown} gesehenen",
+      "plan": "{planId, select, baseline {Plan Basislinie} edge {Plan Rand} other {Plan Leiter}}, {status, select, active {läuft noch} done {jetzt abgeschlossen} other {jetzt beendet}}",
+      "goal": "Auf dem Weg zu {pieceCount} Figuren mit {accuracy} %",
+      "week": "Wochenziel {goal} Tage",
+      "best": "Bestwert {accuracy} % bei {pieceCount} Figuren, {memorizeSeconds} s",
+      "entry": "Richtige Figuren in deinem besten Eintrag, {difficulty, select, easy {Brett Leicht} medium {Brett Mittel} hard {Brett Schwer} other {Brett Großmeister}}",
+      "overDays": "An {days, plural, one {# Tag} other {# Tagen}}",
+      "firstDay": "Seit {date}"
+    },
+    "share": {
+      "button": "Fortschritt teilen",
+      "working": "Deine Karte wird erstellt.",
+      "shared": "Geteilt.",
+      "saved": "Karte gespeichert und Text kopiert. Poste beides, wo du willst.",
+      "savedNoCopy": "Karte gespeichert. Kopiere den Text unten, um ihn dazu zu posten.",
+      "failed": "Die Karte konnte hier nicht erstellt werden. Kopiere stattdessen den Text unten.",
+      "caption": "Text",
+      "copy": "Text kopieren",
+      "copied": "Text kopiert.",
+      "copyFailed": "Kopieren hat hier nicht funktioniert. Der Text ist markiert, kopiere ihn selbst.",
+      "locked": "Deine Karte zum Teilen wird freigeschaltet, sobald Gedächtnisspanne, gehaltene Figuren, Tempo oder deine Serie bereit sind.",
+      "text": "Mein Fortschritt bei Memory Chess: {figures}. Schaffst du das?",
+      "figure": {
+        "span": "Gedächtnisspanne {value, plural, one {# Figur} other {# Figuren}}",
+        "piecesHeld": "{value, number} gehaltene Figuren",
+        "speed": "{value, number} s pro Figur",
+        "streak": "{value, plural, one {# Tag} other {# Tage}} in Folge"
+      },
+      "card": {
+        "kicker": "Laborbericht",
+        "rounds": "{count, plural, one {# Runde gespielt} other {# Runden gespielt}}",
+        "cta": "Schaffst du das?"
+      }
     }
   }
 }

@@ -72,13 +72,13 @@ describe("memory span", () => {
 
     expect(tagOf(span)).toBe("Sample");
     expect(within(span).getByText("Sample record · 12 sessions")).toBeInTheDocument();
-    expect(texts(span, ".lab-empty")).toEqual(["Your rounds so far were just the two kings. Play a round with more pieces to see your span."]);
+    expect(texts(span, ".lab-empty")).toEqual(["Your rounds so far were just the two kings. Play a round with more pieces to see your span. Play a round →"]);
   });
 
   it("says how many more rounds at 80 percent the span needs", () => {
     show("twoRounds");
 
-    expect(texts(panel("Memory span"), ".lab-empty")).toEqual(["Score 80 percent or better once more at one size of 3 or more pieces."]);
+    expect(texts(panel("Memory span"), ".lab-empty")).toEqual(["Score 80 percent or better once more at one size of 3 or more pieces. Play a round →"]);
   });
 
   it("drops the change since last week once stale, since that week ended long before today", () => {
@@ -137,7 +137,7 @@ describe("pieces held", () => {
   it("says how many more rounds and days draw the line", () => {
     show("twoRounds");
 
-    expect(texts(panel("Pieces held"), ".lab-empty")).toEqual(["3 more rounds, at least one on another day, draw your line."]);
+    expect(texts(panel("Pieces held"), ".lab-empty")).toEqual(["3 more rounds, at least one on another day, draw your line. Play a round →"]);
   });
 });
 
@@ -198,7 +198,7 @@ describe("speed", () => {
   it("says how many more rounds at the setting draw the line", () => {
     show("twoRounds");
 
-    expect(texts(panel("Speed"), ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10\u00a0s in games draw your speed line."]);
+    expect(texts(panel("Speed"), ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10\u00a0s in games draw your speed line. Play a round →"]);
   });
 
   it("tags the sample chart as a Sample, and still says what is needed, when no round so far had a piece right", () => {
@@ -207,7 +207,7 @@ describe("speed", () => {
 
     expect(tagOf(speed)).toBe("Sample");
     expect(within(speed).getByText("Sample record · 12 rounds · Medium")).toBeInTheDocument();
-    expect(texts(speed, ".lab-empty")).toEqual(["Speed reads only rounds with at least one piece right. Play 1 such round to start your line."]);
+    expect(texts(speed, ".lab-empty")).toEqual(["Speed reads only rounds with at least one piece right. Play 1 such round to start your line. Play a round →"]);
   });
 });
 
@@ -216,8 +216,8 @@ describe("a player whose rounds so far had nothing right", () => {
     showNothingRight();
 
     expect([tagOf(panel("Memory span")), tagOf(panel("Pieces held"))]).toEqual(["Sample", "Sample"]);
-    expect(texts(panel("Memory span"), ".lab-empty")).toEqual(["Score 80 percent or better twice at one size of 3 or more pieces."]);
-    expect(texts(panel("Pieces held"), ".lab-empty")).toEqual(["2 more rounds, at least one on another day, draw your line."]);
+    expect(texts(panel("Memory span"), ".lab-empty")).toEqual(["Score 80 percent or better twice at one size of 3 or more pieces. Play a round →"]);
+    expect(texts(panel("Pieces held"), ".lab-empty")).toEqual(["2 more rounds, at least one on another day, draw your line. Play a round →"]);
     expect(within(panel("Memory span")).getByText("Sample record · 12 sessions")).toBeInTheDocument();
     expect(within(panel("Pieces held")).getByText("Sample record · 12 rounds · any setting")).toBeInTheDocument();
   });
@@ -303,7 +303,7 @@ describe("a panel that is still warming up", () => {
     show("twoRounds");
 
     const speed = panel("Speed");
-    expect(texts(speed, ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10 s in games draw your speed line."]);
+    expect(texts(speed, ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10 s in games draw your speed line. Play a round →"]);
     expect(within(speed).getByRole("img")).toBeInTheDocument();
     expect(tagOf(speed)).toBe("Sample");
   });

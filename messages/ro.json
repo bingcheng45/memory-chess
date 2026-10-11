@@ -9,7 +9,8 @@
       "privacy": "Confidențialitate",
       "terms": "Termeni",
       "play": "Joacă",
-      "leaderboard": "Clasament"
+      "leaderboard": "Clasament",
+      "progress": "Progres"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Toate drepturile rezervate.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# piesă} few {# piese} other {# de piese}}, {seconds, plural, one {# secundă} few {# secunde} other {# de secunde}}",
       "read": "Citește articolul",
       "tryDrill": "Încearcă exercițiul"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Progresul tău",
+      "description": "Fiecare cifră pe care Memory Chess o urmărește din rundele tale pe acest dispozitiv, pe o singură pagină, cu un card de distribuit."
+    },
+    "kicker": "Jurnal de laborator",
+    "title": "Progresul tău",
+    "lede": "Toate cifrele pe care rundele tale le-au obținut pe acest dispozitiv, într-un singur loc. Nimic nu părăsește browserul decât dacă distribui.",
+    "loading": "Se citește jurnalul tău de pe acest dispozitiv.",
+    "unavailable": "Acest browser nu păstrează un jurnal, așa că nu există progres de afișat. Ferestrele private nu păstrează nimic.",
+    "fullRecord": "Vezi jurnalul complet",
+    "headline": "Cifre principale",
+    "more": "Tot restul",
+    "stale": "La ultima rundă",
+    "staleNote": "Ultima rundă acum {count, plural, one {# zi} few {# zile} other {# de zile}}. Cifrele marcate astfel sunt de atunci.",
+    "play": "Joacă o rundă",
+    "playAt": "Joacă {pieceCount} piese, {memorizeSeconds} s",
+    "choose": "Alege unul în jurnalul complet",
+    "notYet": "Nimic deocamdată.",
+    "notSet": "Nesetat încă.",
+    "needs": "Se deblochează cu {need}.",
+    "needsAt": "Se deblochează cu {need} la {pieceCount} piese, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {încă # rundă} few {încă # runde} other {încă # de runde}}",
+      "days": "{count, plural, one {încă # zi de joc} few {încă # zile de joc} other {încă # de zile de joc}}",
+      "exposures": "{count, plural, one {încă # piesă văzută} few {încă # piese văzute} other {încă # de piese văzute}}",
+      "qualifyingRounds": "{count, plural, one {încă # rundă} few {încă # runde} other {încă # de runde}} cu {accuracy}% sau mai mult și cel puțin {minPieces} piese",
+      "largerRounds": "{count, plural, one {# rundă} few {# runde} other {# de runde}} cu cel puțin {minPieces} piese",
+      "rightRounds": "{count, plural, one {# rundă} few {# runde} other {# de runde}} cu o piesă corectă",
+      "reviews": "{count, plural, one {încă # recapitulare} few {încă # recapitulări} other {încă # de recapitulări}} după același interval"
+    },
+    "label": {
+      "span": "Capacitate de memorie",
+      "piecesHeld": "Piese reținute",
+      "speed": "Viteză",
+      "streak": "Serie",
+      "rounds": "Runde jucate",
+      "days": "Zile jucate",
+      "trend": "Precizie",
+      "daily": "Tabla zilei",
+      "week": "Săptămâna aceasta",
+      "curve": "Amintire după recapitulare",
+      "missMap": "Linia cea mai greșită",
+      "typeRecall": "Cea mai slabă piesă",
+      "insights": "Observații",
+      "notebook": "Caiet",
+      "plans": "Plan",
+      "goal": "Obiectiv",
+      "bests": "Recorduri personale",
+      "board": "Clasament"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> piesă} few {<n>{value}</n> piese} other {<n>{value}</n> de piese}}",
+      "secondsPerPiece": "<n>{value}</n> s pe piesă",
+      "days": "{count, plural, one {<n>{value}</n> zi} few {<n>{value}</n> zile} other {<n>{value}</n> de zile}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, one {<n>{value}</n> rundă} few {<n>{value}</n> runde} other {<n>{value}</n> de runde}}",
+      "entries": "{count, plural, one {<n>{value}</n> însemnare} few {<n>{value}</n> însemnări} other {<n>{value}</n> de însemnări}}",
+      "findings": "{count, plural, one {<n>{value}</n> observație} few {<n>{value}</n> observații} other {<n>{value}</n> de observații}}",
+      "settings": "{count, plural, one {<n>{value}</n> setare} few {<n>{value}</n> setări} other {<n>{value}</n> de setări}}"
+    },
+    "context": {
+      "span": "{accuracy}% sau mai mult în {rounds, plural, one {# rundă} few {# runde} other {# de runde}}, memorat {memorizeSeconds} s",
+      "recent": "Media ultimelor tale {rounds, plural, one {# rundă} few {# runde} other {# de runde}}, orice setare",
+      "setting": "{source, select, calibration {Runde de exercițiu} other {Runde din partide}} cu {pieceCount} piese, {memorizeSeconds} s, din {rounds, plural, one {# rundă} few {# runde} other {# de runde}}",
+      "longest": "Cea mai lungă {days, plural, one {# zi} few {# zile} other {# de zile}}",
+      "daily": "{status, select, played {Jucată azi} unfinished {Deschisă azi} other {Disponibilă azi}}, cea mai lungă serie {longest, plural, one {# zi} few {# zile} other {# de zile}}",
+      "curve": "Amintit după {day, plural, one {# zi} few {# zile} other {# de zile}}, din {reviews, plural, one {# recapitulare} few {# recapitulări} other {# de recapitulări}}",
+      "rounds": "Din {rounds, plural, one {# rundă} few {# runde} other {# de runde}}",
+      "missLine": "Greșite pe {line, select, file {coloana {name}} other {rândul {name}}}, din {shown} piese văzute",
+      "pieceType": "{type, select, p {Pioni reținuți} n {Cai reținuți} b {Nebuni reținuți} r {Turnuri reținute} q {Regine reținute} other {Regi reținuți}}, din {shown} văzuți",
+      "plan": "{planId, select, baseline {Planul Referință} edge {Planul Margini} other {Planul Scară}}, {status, select, active {încă în desfășurare} done {acum încheiat} other {acum oprit}}",
+      "goal": "Spre {pieceCount} piese la {accuracy}%",
+      "week": "Obiectiv săptămânal {goal} zile",
+      "best": "Cel mai bun rezultat {accuracy}% la {pieceCount} piese, {memorizeSeconds} s",
+      "entry": "Piese corecte în cea mai bună înscriere, {difficulty, select, easy {nivelul Ușor} medium {nivelul Mediu} hard {nivelul Greu} other {nivelul Mare maestru}}",
+      "overDays": "În {days, plural, one {# zi} few {# zile} other {# de zile}}",
+      "firstDay": "Din {date}"
+    },
+    "share": {
+      "button": "Distribuie progresul meu",
+      "working": "Se creează cardul tău.",
+      "shared": "Distribuit.",
+      "saved": "Card salvat și text copiat. Publică-le oriunde.",
+      "savedNoCopy": "Card salvat. Copiază textul de mai jos ca să-l publici împreună.",
+      "failed": "Cardul nu a putut fi creat aici. Copiază în schimb textul de mai jos.",
+      "caption": "Text",
+      "copy": "Copiază textul",
+      "copied": "Text copiat.",
+      "copyFailed": "Copierea nu a mers aici. Textul este selectat, copiază-l singur.",
+      "locked": "Cardul de distribuit se deblochează când capacitatea de memorie, piesele reținute, viteza sau seria ta sunt gata.",
+      "text": "Progresul meu la Memory Chess: {figures}. Poți mai bine?",
+      "figure": {
+        "span": "capacitate de memorie de {value, plural, one {# piesă} few {# piese} other {# de piese}}",
+        "piecesHeld": "{value, number} piese reținute",
+        "speed": "{value, number} s pe piesă",
+        "streak": "{value, plural, one {# zi} few {# zile} other {# de zile}} la rând"
+      },
+      "card": {
+        "kicker": "Jurnal de laborator",
+        "rounds": "{count, plural, one {# rundă jucată} few {# runde jucate} other {# de runde jucate}}",
+        "cta": "Poți mai bine?"
+      }
     }
   }
 }

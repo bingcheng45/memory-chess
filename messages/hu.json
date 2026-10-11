@@ -9,7 +9,8 @@
       "privacy": "Adatvédelem",
       "terms": "Feltételek",
       "play": "Játék",
-      "leaderboard": "Ranglista"
+      "leaderboard": "Ranglista",
+      "progress": "Fejlődés"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Minden jog fenntartva.",
@@ -441,6 +442,111 @@
       "roundSize": "{pieces, plural, one {# bábu} other {# bábu}}, {seconds, plural, one {# másodperc} other {# másodperc}}",
       "read": "Cikk elolvasása",
       "tryDrill": "Próbáld ki a gyakorlatot"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "A fejlődésed",
+      "description": "Minden érték, amelyet a Memory Chess a köreidből követ ezen az eszközön, egy oldalon, megosztható kártyával."
+    },
+    "kicker": "Laborjegyzőkönyv",
+    "title": "A fejlődésed",
+    "lede": "Minden érték, amelyet a köreid ezen az eszközön elértek, egy helyen. Semmi sem hagyja el a böngésződet, hacsak meg nem osztod.",
+    "loading": "A jegyzőkönyved beolvasása erről az eszközről.",
+    "unavailable": "Ez a böngésző nem tárol jegyzőkönyvet, így nincs megjeleníthető fejlődés. A privát ablakok semmit sem őriznek meg.",
+    "fullRecord": "A teljes jegyzőkönyv",
+    "headline": "Fő értékek",
+    "more": "Minden más",
+    "stale": "Az utolsó köröd szerint",
+    "staleNote": "Utoljára {count, plural, one {# napja} other {# napja}} játszottál. Az így jelölt értékek akkoriak.",
+    "play": "Játssz egy kört",
+    "playAt": "Játssz {pieceCount} bábuval, {memorizeSeconds} mp",
+    "choose": "Válassz egyet a teljes jegyzőkönyvben",
+    "notYet": "Még semmi.",
+    "notSet": "Még nincs beállítva.",
+    "needs": "Feloldás: {need}.",
+    "needsAt": "Feloldás: {need}, {pieceCount} bábu, {memorizeSeconds} mp.",
+    "need": {
+      "rounds": "{count, plural, one {még # kör} other {még # kör}}",
+      "days": "{count, plural, one {még # játéknap} other {még # játéknap}}",
+      "exposures": "{count, plural, one {még # látott bábu} other {még # látott bábu}}",
+      "qualifyingRounds": "{count, plural, one {még # kör} other {még # kör}} legalább {accuracy}%-kal és legalább {minPieces} bábuval",
+      "largerRounds": "{count, plural, one {# kör} other {# kör}} legalább {minPieces} bábuval",
+      "rightRounds": "{count, plural, one {# kör} other {# kör}} egy helyes bábuval",
+      "reviews": "{count, plural, one {még # ismétlés} other {még # ismétlés}} ugyanakkora szünet után"
+    },
+    "label": {
+      "span": "Memóriaterjedelem",
+      "piecesHeld": "Megjegyzett bábuk",
+      "speed": "Sebesség",
+      "streak": "Sorozat",
+      "rounds": "Lejátszott körök",
+      "days": "Játéknapok",
+      "trend": "Pontosság",
+      "daily": "A nap táblája",
+      "week": "Ezen a héten",
+      "curve": "Emlékezés ismétlés után",
+      "missMap": "Leggyakrabban hibázott vonal",
+      "typeRecall": "Leggyengébb bábu",
+      "insights": "Megfigyelések",
+      "notebook": "Jegyzetfüzet",
+      "plans": "Terv",
+      "goal": "Cél",
+      "bests": "Egyéni csúcsok",
+      "board": "Ranglista"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> bábu} other {<n>{value}</n> bábu}}",
+      "secondsPerPiece": "<n>{value}</n> mp bábunként",
+      "days": "{count, plural, one {<n>{value}</n> nap} other {<n>{value}</n> nap}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, one {<n>{value}</n> kör} other {<n>{value}</n> kör}}",
+      "entries": "{count, plural, one {<n>{value}</n> bejegyzés} other {<n>{value}</n> bejegyzés}}",
+      "findings": "{count, plural, one {<n>{value}</n> megfigyelés} other {<n>{value}</n> megfigyelés}}",
+      "settings": "{count, plural, one {<n>{value}</n> beállítás} other {<n>{value}</n> beállítás}}"
+    },
+    "context": {
+      "span": "Legalább {accuracy}% {rounds, plural, one {# körben} other {# körben}}, {memorizeSeconds} mp tanulással",
+      "recent": "Az utolsó {rounds, plural, one {# kör} other {# kör}} átlaga, bármely beállítás",
+      "setting": "{source, select, calibration {Gyakorló körök} other {Játszmák körei}}, {pieceCount} bábu, {memorizeSeconds} mp, {rounds, plural, one {# körből} other {# körből}}",
+      "longest": "Leghosszabb {days, plural, one {# nap} other {# nap}}",
+      "daily": "{status, select, played {Ma lejátszva} unfinished {Ma megnyitva} other {Ma elérhető}}, leghosszabb sorozat {longest, plural, one {# nap} other {# nap}}",
+      "curve": "Felidézve {day, plural, one {# nap} other {# nap}} után, {reviews, plural, one {# ismétlésből} other {# ismétlésből}}",
+      "rounds": "{rounds, plural, one {# körből} other {# körből}}",
+      "missLine": "Hibák {line, select, file {a(z) {name} vonalon} other {a(z) {name}. soron}}, {shown} látott bábuból",
+      "pieceType": "{type, select, p {Gyalogok felidézve} n {Huszárok felidézve} b {Futók felidézve} r {Bástyák felidézve} q {Vezérek felidézve} other {Királyok felidézve}}, {shown} látottból",
+      "plan": "{planId, select, baseline {Alapszint terv} edge {Szélek terv} other {Létra terv}}, {status, select, active {még folyamatban} done {már kész} other {már leállítva}}",
+      "goal": "Úton {pieceCount} bábu felé {accuracy}%-kal",
+      "week": "Heti cél {goal} nap",
+      "best": "Legjobb eredmény {accuracy}% {pieceCount} bábuval, {memorizeSeconds} mp",
+      "entry": "Helyes bábuk a legjobb nevezésedben, {difficulty, select, easy {Könnyű szint} medium {Közepes szint} hard {Nehéz szint} other {Nagymester szint}}",
+      "overDays": "{days, plural, one {# nap} other {# nap}} alatt",
+      "firstDay": "{date} óta"
+    },
+    "share": {
+      "button": "Fejlődésem megosztása",
+      "working": "A kártyád készül.",
+      "shared": "Megosztva.",
+      "saved": "Kártya elmentve, szöveg kimásolva. Oszd meg, ahol szeretnéd.",
+      "savedNoCopy": "Kártya elmentve. Másold ki az alábbi szöveget, és tedd mellé.",
+      "failed": "A kártyát itt nem sikerült elkészíteni. Másold ki helyette az alábbi szöveget.",
+      "caption": "Szöveg",
+      "copy": "Szöveg másolása",
+      "copied": "Szöveg kimásolva.",
+      "copyFailed": "A másolás itt nem működött. A szöveg ki van jelölve, másold ki magad.",
+      "locked": "A megosztható kártya akkor oldódik fel, amikor kész a memóriaterjedelem, a megjegyzett bábuk, a sebesség vagy a sorozatod.",
+      "text": "A fejlődésem a Memory Chessben: {figures}. Meg tudod verni?",
+      "figure": {
+        "span": "{value, plural, one {# bábus} other {# bábus}} memóriaterjedelem",
+        "piecesHeld": "{value, number} megjegyzett bábu",
+        "speed": "{value, number} mp bábunként",
+        "streak": "{value, plural, one {# nap} other {# nap}} egymás után"
+      },
+      "card": {
+        "kicker": "Laborjegyzőkönyv",
+        "rounds": "{count, plural, one {# lejátszott kör} other {# lejátszott kör}}",
+        "cta": "Meg tudod verni?"
+      }
     }
   }
 }

@@ -9,7 +9,8 @@
       "privacy": "Privacy",
       "terms": "Terms",
       "play": "Play",
-      "leaderboard": "Leaderboard"
+      "leaderboard": "Leaderboard",
+      "progress": "Progress"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. All rights reserved.",
@@ -695,6 +696,7 @@
         },
         "mine": "Your record",
         "fromRounds": "From {count, plural, one {# round} other {# rounds}}",
+        "dashboardLink": "See every figure on one page",
         "play": "Play a round",
         "stale": "Last played {count, plural, one {# day} other {# days}} ago.",
         "unlock": {
@@ -1230,6 +1232,111 @@
       "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
       "read": "Read the article",
       "tryDrill": "Try that drill"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Your progress",
+      "description": "Every figure Memory Chess tracks from your rounds on this device, on one page, with a card to share them."
+    },
+    "kicker": "Lab record",
+    "title": "Your progress",
+    "lede": "Every figure your rounds have earned on this device, in one place. Nothing here leaves your browser unless you share it.",
+    "loading": "Reading your record on this device.",
+    "unavailable": "This browser does not keep a record, so there is no progress to show. Private windows keep nothing.",
+    "fullRecord": "See the full record",
+    "headline": "Headline figures",
+    "more": "Everything else",
+    "stale": "As of your last round",
+    "staleNote": "Last played {count, plural, one {# day} other {# days}} ago. Figures marked so are from then.",
+    "play": "Play a round",
+    "playAt": "Play {pieceCount} pieces, {memorizeSeconds} s",
+    "choose": "Choose one in the full record",
+    "notYet": "Nothing yet.",
+    "notSet": "Not set yet.",
+    "needs": "Unlocks with {need}.",
+    "needsAt": "Unlocks with {need} at {pieceCount} pieces, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {# more round} other {# more rounds}}",
+      "days": "{count, plural, one {# more day of play} other {# more days of play}}",
+      "exposures": "{count, plural, one {# more piece seen} other {# more pieces seen}}",
+      "qualifyingRounds": "{count, plural, one {# more round} other {# more rounds}} at {accuracy}% or better with {minPieces} or more pieces",
+      "largerRounds": "{count, plural, one {# round} other {# rounds}} with {minPieces} or more pieces",
+      "rightRounds": "{count, plural, one {# round} other {# rounds}} with a piece right",
+      "reviews": "{count, plural, one {# more review} other {# more reviews}} after the same gap"
+    },
+    "label": {
+      "span": "Memory span",
+      "piecesHeld": "Pieces held",
+      "speed": "Speed",
+      "streak": "Streak",
+      "rounds": "Rounds played",
+      "days": "Days played",
+      "trend": "Accuracy",
+      "daily": "Daily board",
+      "week": "This week",
+      "curve": "Recall after review",
+      "missMap": "Most missed line",
+      "typeRecall": "Weakest piece",
+      "insights": "Insights",
+      "notebook": "Notebook",
+      "plans": "Plan",
+      "goal": "Goal",
+      "bests": "Personal bests",
+      "board": "Leaderboard"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> piece} other {<n>{value}</n> pieces}}",
+      "secondsPerPiece": "<n>{value}</n> s per piece",
+      "days": "{count, plural, one {<n>{value}</n> day} other {<n>{value}</n> days}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, one {<n>{value}</n> round} other {<n>{value}</n> rounds}}",
+      "entries": "{count, plural, one {<n>{value}</n> entry} other {<n>{value}</n> entries}}",
+      "findings": "{count, plural, one {<n>{value}</n> finding} other {<n>{value}</n> findings}}",
+      "settings": "{count, plural, one {<n>{value}</n> setting} other {<n>{value}</n> settings}}"
+    },
+    "context": {
+      "span": "{accuracy}% or better in {rounds, plural, one {# round} other {# rounds}}, studied {memorizeSeconds} s",
+      "recent": "Average of your last {rounds, plural, one {# round} other {# rounds}}, any setting",
+      "setting": "{source, select, calibration {Practice rounds} other {Game rounds}} at {pieceCount} pieces, {memorizeSeconds} s, from {rounds, plural, one {# round} other {# rounds}}",
+      "longest": "Longest {days, plural, one {# day} other {# days}}",
+      "daily": "{status, select, played {Played today} unfinished {Opened today} other {Open today}}, longest streak {longest, plural, one {# day} other {# days}}",
+      "curve": "Recalled after {day, plural, one {# day} other {# days}}, from {reviews, plural, one {# review} other {# reviews}}",
+      "rounds": "From {rounds, plural, one {# round} other {# rounds}}",
+      "missLine": "Missed on {line, select, file {the {name} file} other {rank {name}}}, from {shown} pieces seen",
+      "pieceType": "{type, select, p {Pawns recalled} n {Knights recalled} b {Bishops recalled} r {Rooks recalled} q {Queens recalled} other {Kings recalled}}, from {shown} seen",
+      "plan": "{planId, select, baseline {Baseline plan} edge {Edge plan} other {Ladder plan}}, {status, select, active {in progress} done {now complete} other {now stopped}}",
+      "goal": "Toward {pieceCount} pieces at {accuracy}%",
+      "week": "Weekly goal {goal} days",
+      "best": "Top reading {accuracy}% at {pieceCount} pieces, {memorizeSeconds} s",
+      "entry": "Correct pieces in your best entry, {difficulty, select, easy {Easy board} medium {Medium board} hard {Hard board} other {Grandmaster board}}",
+      "overDays": "Over {days, plural, one {# day} other {# days}}",
+      "firstDay": "Since {date}"
+    },
+    "share": {
+      "button": "Share my progress",
+      "working": "Making your card.",
+      "shared": "Shared.",
+      "saved": "Card saved and caption copied. Post them anywhere.",
+      "savedNoCopy": "Card saved. Copy the caption below to post with it.",
+      "failed": "The card could not be made here. Copy the caption below instead.",
+      "caption": "Caption",
+      "copy": "Copy caption",
+      "copied": "Caption copied.",
+      "copyFailed": "Copy did not work here. The caption is selected, so copy it yourself.",
+      "locked": "Your share card unlocks once memory span, pieces held, speed or your streak is ready.",
+      "text": "My Memory Chess progress: {figures}. Can you beat it?",
+      "figure": {
+        "span": "memory span {value, plural, one {# piece} other {# pieces}}",
+        "piecesHeld": "{value, number} pieces held",
+        "speed": "{value, number} s per piece",
+        "streak": "{value, plural, one {# day} other {# days}} in a row"
+      },
+      "card": {
+        "kicker": "Lab record",
+        "rounds": "{count, plural, one {# round played} other {# rounds played}}",
+        "cta": "Can you beat it?"
+      }
     }
   }
 }

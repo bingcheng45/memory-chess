@@ -23,6 +23,7 @@ export interface IndexStreak {
 export function LabIndex({ streak }: { streak: IndexStreak | null }) {
   const t = useTranslations("home.lab.index");
   const record = useTranslations("home.lab.record.streak");
+  const common = useTranslations("common");
   const forgivenNote = streak && streak.forgiven > 0 ? record("chipForgiven", { count: streak.days, forgiven: streak.forgiven }) : undefined;
 
   return (
@@ -37,6 +38,7 @@ export function LabIndex({ streak }: { streak: IndexStreak | null }) {
               {t(id)}
             </a>
           ))}
+          <Link href="/dashboard">{common("nav.progress")}</Link>
         </nav>
         {streak && (
           <a className="lab-streak-chip" href={`#${LAB_SECTIONS.record.anchor}`} title={forgivenNote} aria-label={forgivenNote}>

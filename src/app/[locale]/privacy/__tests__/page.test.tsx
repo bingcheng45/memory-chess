@@ -100,6 +100,16 @@ describe("PrivacyPage", () => {
     expect(screen.queryByText(/never sent to Memory Chess or to analytics/)).not.toBeInTheDocument();
   });
 
+  it("says the progress card leaves only on a press and analytics hear only how it left", () => {
+    render(<PrivacyPage />);
+
+    expect(
+      screen.getByText(
+        /The progress page reads the same record in your browser and sends nothing\. Only when you press Share my progress does your browser draw a picture of your memory span, pieces held, speed, streak and rounds played.*Google Analytics receives an event that names only how the card left the page, through the share sheet, as a saved picture or as a copied caption, with none of its figures\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
   it("says the reading card goes only to the clipboard and the record note is kept as seen", () => {
     render(<PrivacyPage />);
 

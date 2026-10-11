@@ -1,7 +1,7 @@
 import { splitClientMessages, tileGroupOf } from "@/lib/articles/messageScope";
 
 describe("splitClientMessages", () => {
-  it("parts the articles namespace, the home lab group and the lab groups /game prints from every other string", () => {
+  it("parts the articles namespace, the dashboard, the home lab group and the lab groups /game prints from every other string", () => {
     const catalogue = {
       common: { nav: { articles: "Articles" } },
       articles: { like: { button: "Recommend this article" } },
@@ -10,6 +10,7 @@ describe("splitClientMessages", () => {
         lab: { hero: { lede: "Put a number on it." }, resultCard: { title: "Your lab record" }, daily: { locked: "One try per day." }, review: { none: "Nothing due." } },
       },
       game: { skip: "Skip" },
+      dashboard: { title: "Your progress" },
     };
 
     expect(splitClientMessages(catalogue)).toEqual({
@@ -17,6 +18,7 @@ describe("splitClientMessages", () => {
       articles: { like: { button: "Recommend this article" } },
       lab: { home: { lab: { hero: { lede: "Put a number on it." }, daily: { locked: "One try per day." }, review: { none: "Nothing due." } } } },
       game: { home: { lab: { resultCard: { title: "Your lab record" }, daily: { locked: "One try per day." }, review: { none: "Nothing due." } } } },
+      dashboard: { dashboard: { title: "Your progress" } },
     });
   });
 
@@ -28,6 +30,7 @@ describe("splitClientMessages", () => {
       articles: undefined,
       lab: {},
       game: {},
+      dashboard: {},
     });
   });
 });

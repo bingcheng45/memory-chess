@@ -9,7 +9,7 @@ import type { PanelId } from "@/lib/lab/panels";
 import type { SpeedValue } from "@/lib/lab/progress";
 import { hasFigure, LAB_THRESHOLDS, type Readiness } from "@/lib/lab/readiness";
 import { oneDecimal, SpanStaircase, ValueLine } from "./LabReadingCharts";
-import { PanelFrame, StaleNote, useTags } from "./LabRecordPanels";
+import { NeedNote, PanelFrame, StaleNote, useTags } from "./LabRecordPanels";
 import { seconds, settingValues } from "./labFormat";
 
 interface PanelProps<K extends keyof LabResults> {
@@ -78,11 +78,11 @@ export function SpanPanel({ result: { readiness, value: span }, daysAgo }: Panel
     if (!hasFigure(readiness) || pieceCount === null || memorizeSeconds === null) {
       return (
         <>
-          <p className="lab-panel-desc lab-empty">
+          <NeedNote readiness={readiness} panel="span">
             {readiness.need?.largerRounds
               ? t("onlyKings")
               : t("need", { count: readiness.need?.qualifyingRounds ?? 0, accuracy: LAB_THRESHOLDS.spanAccuracy, minPieces: LAB_THRESHOLDS.spanMinPieces })}
-          </p>
+          </NeedNote>
           {sampleChart}
         </>
       );
@@ -129,9 +129,9 @@ export function HeldPanel({ result: { readiness, value: held }, daysAgo }: Panel
     if (!hasFigure(readiness)) {
       return (
         <>
-          <p className="lab-panel-desc lab-empty">
+          <NeedNote readiness={readiness} panel="piecesHeld">
             {need.rounds === undefined ? t("needDay") : t(need.days ? "needRoundsAndDay" : "needRounds", { count: need.rounds })}
-          </p>
+          </NeedNote>
           {sample}
         </>
       );
@@ -216,9 +216,9 @@ export function SpeedPanel({ result: { readiness, value: speed }, daysAgo }: Pan
     </>
   ) : (
     <>
-      <p className="lab-panel-desc lab-empty">
+      <NeedNote readiness={readiness} panel="speed" setting={speed?.setting}>
         {speed ? t("need", { count: readiness.need?.rounds ?? 0, ...settingValues(speed.setting) }) : t("needRight", { count: readiness.need?.rightRounds ?? 0 })}
-      </p>
+      </NeedNote>
       {sample}
     </>
   );

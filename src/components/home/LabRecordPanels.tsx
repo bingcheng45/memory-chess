@@ -5,7 +5,9 @@ import { useTranslations } from "next-intl";
 import type { LabPanel } from "@/lib/analytics/events";
 import type { BestEntry, LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
 import { figureNumber, type PanelId } from "@/lib/lab/panels";
+import type { TrendSetting } from "@/lib/lab/engine";
 import type { StreakDay } from "@/lib/lab/streak";
+import { playHref } from "@/lib/game/roundLink";
 import { hasFigure, type Readiness, type ReadinessState } from "@/lib/lab/readiness";
 import type { PieceSymbol } from "chess.js";
 import { SAMPLE_TYPE_RECALL } from "@/lib/home/labRecord";
@@ -15,6 +17,7 @@ import { formatSeconds } from "@/utils/timer";
 import { seconds, settingValues } from "./labFormat";
 import { AccuracySparkline, MissLines, MissMap, RecallBar, StreakGrid } from "./LabCharts";
 import { LabPlayLink } from "./LabPlayLink";
+import { QUICK_START_HREF } from "./links";
 import { LabWeek, SampleWeek } from "./LabWeek";
 import { LAB_SECTIONS } from "./SectionHeading";
 
@@ -67,6 +70,36 @@ export function StaleNote({ readiness, daysAgo, panel }: { readiness: Readiness;
   );
 }
 
+/** Practice rounds are played only in the home page's calibration section, so a practice setting links there. */
+const needHref = (setting?: TrendSetting) =>
+  !setting
+    ? QUICK_START_HREF
+    : setting.source === "calibration"
+      ? `/#${LAB_SECTIONS.calibrate.anchor}`
+      : playHref(setting.pieceCount, setting.memorizeSeconds, "home_quick");
+
+interface NeedNoteProps {
+  readonly readiness: Readiness;
+  readonly panel: LabPanel;
+  readonly setting?: TrendSetting;
+  readonly className?: string;
+  readonly children: ReactNode;
+}
+
+export function NeedNote({ readiness, panel, setting, className = "lab-panel-desc lab-empty", children }: NeedNoteProps) {
+  return (
+    <p className={`${className} lab-need`}>
+      {children}
+      {readiness.state === "warming" && (
+        <>
+          {" "}
+          <LabPlayLink panel={panel} href={needHref(setting)} />
+        </>
+      )}
+    </p>
+  );
+}
+
 export function useTags() {
   const tags = useTranslations("home.lab.tags");
   const t = useTranslations("home.lab.record");
@@ -113,11 +146,11 @@ export function TrendPanel({ result: { readiness, value: trend }, daysAgo }: { r
         </>
       ) : (
         <>
-          <p className="lab-panel-desc lab-empty">
+          <NeedNote readiness={readiness} panel="trend" setting={trend.setting}>
             {need.rounds === undefined
               ? t("spark.needDay", settingValues(trend.setting))
               : t(need.days ? "spark.needRoundsAndDay" : "spark.needRounds", { count: need.rounds, ...settingValues(trend.setting) })}
-          </p>
+          </NeedNote>
           <AccuracySparkline label={t("spark.aria")} first={t("spark.first")} last={t("spark.last")} />
           <p className="lab-note">{t("spark.note")}</p>
         </>
@@ -151,9 +184,9 @@ export function MissPanel({ result: { readiness, value: map }, daysAgo }: { resu
         sample
       ) : !hasFigure(readiness) ? (
         <>
-          <p className="lab-panel-desc lab-empty">
+          <NeedNote readiness={readiness} panel="missMap">
             {map.roundsEstimate === null ? t("heat.needStart") : t("heat.need", { count: map.roundsEstimate })}
-          </p>
+          </NeedNote>
           {sample}
         </>
       ) : (
@@ -223,9 +256,13 @@ export function StreakPanel({ result: { readiness, value: streak }, days, today,
         <>
           <StreakGrid days={streak.window} label={t("streak.realAria", { count: count("played"), forgiven: count("forgiven") })} />
           <StreakKey />
-          <p className="lab-note">{hasFigure(readiness)
-              ? `${t("streak.realNote", { current: streak.current, forgiven: streak.forgivenDays.length, longest: streak.longest })} · ${t("fromRounds", { count: readiness.sampleSize })}`
-              : t("streak.need", { days: readiness.need?.days ?? 0 })}</p>
+          {hasFigure(readiness) ? (
+            <p className="lab-note">{`${t("streak.realNote", { current: streak.current, forgiven: streak.forgivenDays.length, longest: streak.longest })} · ${t("fromRounds", { count: readiness.sampleSize })}`}</p>
+          ) : (
+            <NeedNote readiness={readiness} panel="streak" className="lab-note">
+              {t("streak.need", { days: readiness.need?.days ?? 0 })}
+            </NeedNote>
+          )}
           {today && <LabWeek days={days} today={today} />}
           <StaleNote readiness={readiness} daysAgo={daysAgo} panel="streak" />
         </>
@@ -336,15 +373,17 @@ export function TypesPanel({ result: { readiness, value: recall }, daysAgo }: { 
         </>
       ) : recall?.onlyKings ? (
         <>
-          <p className="lab-panel-desc lab-empty">{t("types.onlyKings")}</p>
+          <NeedNote readiness={readiness} panel="typeRecall">
+            {t("types.onlyKings")}
+          </NeedNote>
           {kings(recall.king)}
           {sample}
         </>
       ) : (
         <>
-          <p className="lab-panel-desc lab-empty">
+          <NeedNote readiness={readiness} panel="typeRecall">
             {!recall || recall.roundsEstimate === null ? t("types.needStart") : t("types.need", { count: recall.roundsEstimate })}
-          </p>
+          </NeedNote>
           {sample}
         </>
       )}

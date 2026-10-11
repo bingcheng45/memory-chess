@@ -1,36 +1,48 @@
 import { useGameStore } from "@/lib/store/gameStore";
 import { validateMemorizationPosition } from "@/lib/utils/memorizationPosition";
-import { pieceTypeToFenChar } from "@/utils/chessPieces";
+import { labPositionToFen, type LabPiece, type LabPosition } from "@/lib/round/round";
+import type { SquareName } from "@/lib/game/board";
 import type { PieceColor, PieceType } from "@/types/chess";
 
-const placeOnSolutionBoard = (
-  square: string,
-  type: PieceType,
-  color: PieceColor,
-) => useGameStore.getState().placePiece(square, pieceTypeToFenChar(type, color));
-
+const store = () => useGameStore.getState();
 const boardPlacement = (fen: string) => fen.split(" ")[0];
 
-describe("active game store position generation", () => {
-  afterEach(() => {
-    useGameStore.getState().resetGame();
-  });
+function place(square: SquareName, type: PieceType, color: PieceColor, now = performance.now()) {
+  const { round } = store();
+  const selected = round.phase === "rebuild" ? round.selected : null;
+  if (selected?.color !== color || selected.type !== type) store().dispatch({ type: "select", piece: { color, type } });
+  store().dispatch({ type: "tapSquare", square, now });
+}
 
-  it("stores a validated memorization position with the requested piece count", () => {
-    useGameStore.getState().startGame(12, 8, "game_form");
+function placed(): LabPosition {
+  const { round } = store();
+  if (round.phase !== "rebuild") throw new Error(`no board to place on in the ${round.phase} phase`);
+  return round.placed;
+}
 
-    const { gameState, memorizationChess } = useGameStore.getState();
-    expect(gameState.isPlaying).toBe(true);
-    expect(gameState.originalPosition).toBe(memorizationChess?.fen());
-    expect(
-      validateMemorizationPosition(gameState.originalPosition!, 12),
-    ).toMatchObject({ valid: true, violations: [] });
+const target = (): LabPosition => {
+  const { round } = store();
+  return round.phase === "idle" ? {} : round.target;
+};
+
+describe("starting a round", () => {
+  afterEach(() => store().resetGame());
+
+  it("studies a validated position with the requested piece count, at the round's own settings", () => {
+    store().startGame(12, 8, "game_form");
+
+    const { gameState, round } = store();
+    expect(round.phase).toBe("study");
+    expect(round.phase === "study" && round.config).toEqual({ pieceCount: 12, studyMs: 8000, source: "game_form", board: undefined });
+    expect(Object.keys(target())).toHaveLength(12);
+    expect(boardPlacement(gameState.originalPosition!)).toBe(labPositionToFen(target()));
+    expect(validateMemorizationPosition(gameState.originalPosition!, 12)).toMatchObject({ valid: true, violations: [] });
   });
 });
 
-describe("reporting a round start", () => {
+describe("reporting a round", () => {
   afterEach(() => {
-    useGameStore.getState().resetGame();
+    store().resetGame();
     Reflect.deleteProperty(window, "gtag");
   });
 
@@ -38,64 +50,135 @@ describe("reporting a round start", () => {
     const gtag = jest.fn();
     window.gtag = gtag;
 
-    useGameStore.getState().startGame(6, 10, "game_quick");
+    store().startGame(6, 10, "game_quick");
 
     expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "game_quick" }]]);
   });
+
+  it("sends round_complete once when the round is scored, with what the player got right", () => {
+    const gtag = jest.fn();
+    store().startGame(6, 10, "plan");
+    const [square, piece] = Object.entries(target())[0] as [SquareName, LabPiece];
+    store().dispatch({ type: "studyEnded", now: performance.now() });
+    place(square, piece.type, piece.color);
+    window.gtag = gtag;
+
+    store().submitSolution();
+    store().submitSolution();
+
+    const completes = gtag.mock.calls.filter(([, name]) => name === "round_complete");
+    expect(completes).toEqual([
+      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, source: "plan" }],
+    ]);
+  });
 });
 
-describe("recording the player's solution", () => {
+describe("the player's rebuild", () => {
   beforeEach(() => {
-    useGameStore.getState().startGame(6, 10, "game_form");
-    useGameStore.getState().startSolutionPhase();
+    store().startGame(6, 10, "game_form");
+    store().dispatch({ type: "studyEnded", now: performance.now() });
   });
 
-  afterEach(() => {
-    useGameStore.getState().resetGame();
-  });
+  afterEach(() => store().resetGame());
 
   it("records a knight as a knight rather than a king", () => {
-    // Regression: knights were encoded from the first letter of the type name,
-    // so they landed in the scored FEN as kings and were counted as missed.
-    placeOnSolutionBoard("c3", "knight", "white");
-    placeOnSolutionBoard("f6", "knight", "black");
+    place("c3", "knight", "white");
+    place("f6", "knight", "black");
+    store().submitSolution();
 
-    const { userPosition } = useGameStore.getState().gameState;
-
-    expect(boardPlacement(userPosition!)).toBe("8/8/5n2/8/8/2N5/8/8");
-  });
-
-  it("keeps both knights of a color and the king of that color", () => {
-    placeOnSolutionBoard("b1", "knight", "white");
-    placeOnSolutionBoard("g1", "knight", "white");
-    placeOnSolutionBoard("e1", "king", "white");
-
-    const { userPosition } = useGameStore.getState().gameState;
-
-    expect(boardPlacement(userPosition!)).toBe("8/8/8/8/8/8/8/1N2K1N1");
+    expect(boardPlacement(store().gameState.userPosition!)).toBe("8/8/5n2/8/8/2N5/8/8");
   });
 
   it("records every piece type on the square it was placed on", () => {
-    placeOnSolutionBoard("a1", "rook", "white");
-    placeOnSolutionBoard("b2", "knight", "white");
-    placeOnSolutionBoard("c3", "bishop", "white");
-    placeOnSolutionBoard("d4", "queen", "white");
-    placeOnSolutionBoard("e5", "king", "white");
-    placeOnSolutionBoard("f6", "pawn", "white");
+    place("a1", "rook", "white");
+    place("b2", "knight", "white");
+    place("c3", "bishop", "white");
+    place("d4", "queen", "white");
+    place("e5", "king", "white");
+    place("f6", "pawn", "white");
+    store().submitSolution();
 
-    const { userPosition } = useGameStore.getState().gameState;
-
-    expect(boardPlacement(userPosition!)).toBe("8/8/5P2/4K3/3Q4/2B5/1N6/R7");
+    expect(boardPlacement(store().gameState.userPosition!)).toBe("8/8/5P2/4K3/3Q4/2B5/1N6/R7");
   });
 
-  it("leaves the board unchanged when a placement is rejected", () => {
-    placeOnSolutionBoard("e1", "king", "white");
-    const before = useGameStore.getState().gameState.userPosition;
+  it("refuses a second king of one colour", () => {
+    place("e1", "king", "white");
+    place("a5", "king", "white");
 
-    // A second white king is not a legal placement, so nothing should change.
-    placeOnSolutionBoard("a5", "king", "white");
+    expect(placed()).toEqual({ e1: { color: "white", type: "king" } });
+  });
 
-    expect(useGameStore.getState().gameState.userPosition).toBe(before);
+  it("clears the board", () => {
+    place("e1", "king", "white");
+    place("e8", "king", "black");
+    store().dispatch({ type: "clear" });
+
+    expect(placed()).toEqual({});
+  });
+});
+
+describe("ending study early", () => {
+  afterEach(() => {
+    store().resetGame();
+    jest.restoreAllMocks();
+  });
+
+  it("keeps the time the player actually looked, and never more than the round gave", () => {
+    let clock = 0;
+    jest.spyOn(performance, "now").mockImplementation(() => clock);
+    store().startGame(6, 10, "game_form");
+    store().dispatch({ type: "studyEnded", now: 3250 });
+    store().submitSolution(5250);
+    const early = store().gameState;
+    store().startGame(6, 10, "try_again");
+    clock = 100;
+    store().dispatch({ type: "studyEnded", now: 60000 });
+    store().submitSolution(64000);
+    const late = store().gameState;
+
+    expect([early.actualMemorizeTime, early.completionTime]).toEqual([3.25, 2]);
+    expect([late.actualMemorizeTime, late.completionTime]).toEqual([10, 4]);
+  });
+});
+
+describe("scoring and the skill rating", () => {
+  afterEach(() => {
+    store().resetGame();
+    jest.restoreAllMocks();
+  });
+
+  it("scores a perfect rebuild, raises the rating and the streak, and leaves the round on its score", () => {
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    useGameStore.setState(({ gameState }) => ({ gameState: { ...gameState, skillRating: 1000, streak: 0 } }));
+    store().startGame(2, 10, "game_form");
+    store().dispatch({ type: "studyEnded", now: 10000 });
+    for (const [square, piece] of Object.entries(target()) as [SquareName, LabPiece][]) place(square, piece.type, piece.color, 11000);
+    store().submitSolution(14000);
+
+    const { gameState, round } = store();
+    expect(round.phase).toBe("scored");
+    expect(gameState).toMatchObject({
+      accuracy: 100,
+      perfectScore: true,
+      success: true,
+      correctPlacements: 2,
+      extraPieces: 0,
+      totalPiecesPlaced: 2,
+      skillRatingChange: 114,
+      skillRating: 1114,
+      streak: 1,
+    });
+  });
+
+  it("restarts a placement with a new position at the same settings, rating untouched", () => {
+    useGameStore.setState(({ gameState }) => ({ gameState: { ...gameState, skillRating: 1234, streak: 3 } }));
+    store().startGame(6, 10, "game_form");
+    store().dispatch({ type: "studyEnded", now: performance.now() });
+    store().startGame(6, 10, "try_again");
+
+    const { gameState, round } = store();
+    expect(round.phase).toBe("study");
+    expect([gameState.skillRating, gameState.streak, gameState.startSource]).toEqual([1234, 3, "try_again"]);
   });
 });
 

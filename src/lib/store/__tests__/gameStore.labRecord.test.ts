@@ -1,11 +1,24 @@
 import { useGameStore } from "@/lib/store/gameStore";
 import { recordLabRound } from "@/lib/lab/recordRound";
 import { GAME_STORAGE_KEY } from "@/lib/game/configPrefill";
+import type { SquareName } from "@/lib/game/board";
 import type { SetBoard } from "@/lib/types/game";
+import type { LabPiece } from "@/lib/round/round";
 
 jest.mock("@/lib/lab/recordRound", () => ({ recordLabRound: jest.fn(() => Promise.resolve(true)) }));
 
 const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
+const store = () => useGameStore.getState();
+const WK: LabPiece = { color: "white", type: "king" };
+const BK: LabPiece = { color: "black", type: "king" };
+const BQ: LabPiece = { color: "black", type: "queen" };
+
+function tap(square: SquareName, piece: LabPiece, now: number) {
+  const { round } = store();
+  const selected = round.phase === "rebuild" ? round.selected : null;
+  if (selected?.color !== piece.color || selected.type !== piece.type) store().dispatch({ type: "select", piece });
+  store().dispatch({ type: "tapSquare", square, now });
+}
 
 describe("lab record from a finished game round", () => {
   let clock = 0;
@@ -15,21 +28,18 @@ describe("lab record from a finished game round", () => {
     jest.mocked(recordLabRound).mockClear();
   });
   afterEach(() => {
-    useGameStore.getState().resetGame();
+    store().resetGame();
     jest.restoreAllMocks();
   });
 
   it("records both positions, the timings, where the round started and the placement", async () => {
-    useGameStore.getState().startGame(6, 10, "game_form");
-    useGameStore.getState().endMemorizationPhase(9.5);
-    clock = 1000;
-    useGameStore.getState().startSolutionPhase();
-    clock = 2400;
-    useGameStore.getState().placePiece("e1", "K");
-    useGameStore.getState().submitSolution(12.25);
+    store().startGame(6, 10, "game_form");
+    store().dispatch({ type: "studyEnded", now: 9500 });
+    tap("e1", WK, 10900);
+    store().submitSolution(21750);
     await flush();
 
-    const { originalPosition, labRoundId } = useGameStore.getState().gameState;
+    const { originalPosition, labRoundId } = store().gameState;
     expect(labRoundId).toMatch(/^[0-9a-f-]{36}$/);
     expect(recordLabRound).toHaveBeenCalledTimes(1);
     expect(recordLabRound).toHaveBeenCalledWith({
@@ -48,21 +58,13 @@ describe("lab record from a finished game round", () => {
   });
 
   it("keeps the placements in the order played, timed from the start of the rebuild, and counts the lift", async () => {
-    useGameStore.getState().startGame(6, 10, "home_quick");
-    useGameStore.getState().endMemorizationPhase(10);
-    clock = 500;
-    useGameStore.getState().startSolutionPhase();
-    clock = 1500;
-    useGameStore.getState().placePiece("d4", "q");
-    clock = 2600;
-    useGameStore.getState().placePiece("a8", "k");
-    clock = 3000;
-    useGameStore.getState().removePiece("d4");
-    clock = 3100;
-    useGameStore.getState().removePiece("h5");
-    clock = 3900;
-    useGameStore.getState().placePiece("d5", "q");
-    useGameStore.getState().submitSolution(4);
+    store().startGame(6, 10, "home_quick");
+    store().dispatch({ type: "studyEnded", now: 500 });
+    tap("d4", BQ, 1500);
+    tap("a8", BK, 2600);
+    tap("d4", BQ, 3000);
+    tap("d5", BQ, 3900);
+    store().submitSolution(4500);
     await flush();
 
     expect(jest.mocked(recordLabRound).mock.calls[0][0]).toMatchObject({
@@ -72,13 +74,12 @@ describe("lab record from a finished game round", () => {
     });
   });
 
-  it("leaves out a placement the board refused", async () => {
-    useGameStore.getState().startGame(6, 10, "try_again");
-    useGameStore.getState().endMemorizationPhase(10);
-    useGameStore.getState().startSolutionPhase();
-    useGameStore.getState().placePiece("e1", "K");
-    useGameStore.getState().placePiece("e2", "K");
-    useGameStore.getState().submitSolution(4);
+  it("leaves out a placement the inventory refuses", async () => {
+    store().startGame(6, 10, "try_again");
+    store().dispatch({ type: "studyEnded", now: 0 });
+    tap("e1", WK, 0);
+    tap("e2", WK, 0);
+    store().submitSolution(4000);
     await flush();
 
     expect(jest.mocked(recordLabRound).mock.calls[0][0]).toMatchObject({
@@ -89,39 +90,37 @@ describe("lab record from a finished game round", () => {
   });
 
   it("starts a reset or a try again with no placements and only the new start", () => {
-    useGameStore.getState().startGame(6, 10, "home_quick");
-    useGameStore.getState().endMemorizationPhase(10);
-    useGameStore.getState().startSolutionPhase();
-    useGameStore.getState().placePiece("e1", "K");
-    const played = useGameStore.getState().gameState.placementLog?.placements;
+    store().startGame(6, 10, "home_quick");
+    store().dispatch({ type: "studyEnded", now: 0 });
+    tap("e1", WK, 0);
+    const played = store().round;
 
-    useGameStore.getState().resetGame();
-    const reset = useGameStore.getState().gameState;
-    useGameStore.getState().startGame(6, 10, "try_again");
-    const again = useGameStore.getState().gameState;
+    store().resetGame();
+    const reset = store();
+    store().startGame(6, 10, "try_again");
+    const again = store();
 
-    expect(played).toEqual([[0, 60, "K"]]);
-    expect([reset.placementLog, reset.startSource]).toEqual([undefined, undefined]);
-    expect([again.placementLog, again.startSource]).toEqual([undefined, "try_again"]);
+    expect(played.phase === "rebuild" && played.log.placements).toEqual([[0, 60, "K"]]);
+    expect([reset.round.phase, reset.gameState.startSource]).toEqual(["idle", undefined]);
+    expect([again.round.phase, again.gameState.startSource]).toEqual(["study", "try_again"]);
   });
 
   it("gives each scored round its own lab id, clears it with the round and never stores it", async () => {
     const scoreRound = () => {
-      useGameStore.getState().startGame(6, 10, "home_quick");
-      useGameStore.getState().endMemorizationPhase(10);
-      useGameStore.getState().startSolutionPhase();
-      useGameStore.getState().submitSolution(4);
-      return useGameStore.getState().gameState.labRoundId;
+      store().startGame(6, 10, "home_quick");
+      store().dispatch({ type: "studyEnded", now: 0 });
+      store().submitSolution(4000);
+      return store().gameState.labRoundId;
     };
     const first = scoreRound();
-    useGameStore.getState().startGame(6, 10, "try_again");
-    const afterTryAgain = useGameStore.getState().gameState.labRoundId;
+    store().startGame(6, 10, "try_again");
+    const afterTryAgain = store().gameState.labRoundId;
     const second = scoreRound();
-    useGameStore.getState().resetGame();
+    store().resetGame();
     await flush();
 
     expect(first).not.toBe(second);
-    expect([afterTryAgain, useGameStore.getState().gameState.labRoundId]).toEqual([undefined, undefined]);
+    expect([afterTryAgain, store().gameState.labRoundId]).toEqual([undefined, undefined]);
     expect(jest.mocked(recordLabRound).mock.calls.map(([facts]) => facts.id)).toEqual([first, second]);
     const stored = window.localStorage.getItem(GAME_STORAGE_KEY) ?? "";
     expect(stored).toContain('"pieceCount":6');
@@ -130,30 +129,36 @@ describe("lab record from a finished game round", () => {
 
   it("plays a set board's position and records the round as that day's daily board, and a try again after it as a normal round", async () => {
     const fen = "8/8/8/1pQ4k/P2p4/8/8/1K6 b - - 0 1";
-    useGameStore.getState().startGame(6, 10, "daily", { kind: "daily", day: "2026-10-09", fen });
-    const shown = useGameStore.getState().gameState.originalPosition;
-    useGameStore.getState().endMemorizationPhase(10);
-    useGameStore.getState().startSolutionPhase();
-    useGameStore.getState().submitSolution(4);
-    useGameStore.getState().startGame(6, 10, "try_again");
-    useGameStore.getState().endMemorizationPhase(10);
-    useGameStore.getState().startSolutionPhase();
-    useGameStore.getState().submitSolution(4);
+    store().startGame(6, 10, "daily", { kind: "daily", day: "2026-10-09", fen });
+    const shown = store().gameState.originalPosition;
+    const round = store().round;
+    store().dispatch({ type: "studyEnded", now: 10000 });
+    store().submitSolution(14000);
+    store().startGame(6, 10, "try_again");
+    store().dispatch({ type: "studyEnded", now: 10000 });
+    store().submitSolution(14000);
     await flush();
 
     const [daily, again] = jest.mocked(recordLabRound).mock.calls.map(([facts]) => facts);
     expect(shown).toBe(fen);
+    expect(round.phase === "study" && round.target).toEqual({
+      b5: { color: "black", type: "pawn" },
+      c5: { color: "white", type: "queen" },
+      h5: { color: "black", type: "king" },
+      a4: { color: "white", type: "pawn" },
+      d4: { color: "black", type: "pawn" },
+      b1: { color: "white", type: "king" },
+    });
     expect(daily).toMatchObject({ targetFen: fen, startSource: "daily", board: { kind: "daily", day: "2026-10-09", fen } });
     expect([again.startSource, again.board]).toEqual(["try_again", undefined]);
   });
 
   it("replays a board from the lab record for review and hands the review's link to the record", async () => {
     const board = { kind: "review", fen: "4k3/8/8/3q4/8/5N2/8/4K3 w - - 0 1", reviewOf: "first-round", firstDay: "2026-10-06", step: 1 } as const;
-    useGameStore.getState().startGame(4, 10, "review", board);
-    const shown = useGameStore.getState().gameState.originalPosition;
-    useGameStore.getState().endMemorizationPhase(10);
-    useGameStore.getState().startSolutionPhase();
-    useGameStore.getState().submitSolution(4);
+    store().startGame(4, 10, "review", board);
+    const shown = store().gameState.originalPosition;
+    store().dispatch({ type: "studyEnded", now: 10000 });
+    store().submitSolution(14000);
     await flush();
 
     expect(shown).toBe(board.fen);
@@ -163,14 +168,13 @@ describe("lab record from a finished game round", () => {
   it("keeps the skill rating and win streak through a review round but still puts it in the history, while a daily round moves both", () => {
     const fen = "4k3/8/8/8/8/8/8/4K3 w - - 0 1";
     const playPerfect = (source: "daily" | "review", board: SetBoard) => {
-      useGameStore.getState().startGame(2, 10, source, board);
-      useGameStore.getState().endMemorizationPhase(10);
-      useGameStore.getState().startSolutionPhase();
-      useGameStore.getState().placePiece("e8", "k");
-      useGameStore.getState().placePiece("e1", "K");
-      useGameStore.getState().submitSolution(4);
-      const { skillRating, streak, accuracy } = useGameStore.getState().gameState;
-      useGameStore.getState().stopGame();
+      store().startGame(2, 10, source, board);
+      store().dispatch({ type: "studyEnded", now: 10000 });
+      tap("e8", BK, 11000);
+      tap("e1", WK, 12000);
+      store().submitSolution(14000);
+      const { skillRating, streak, accuracy } = store().gameState;
+      store().stopGame();
       return { skillRating, streak, accuracy };
     };
     useGameStore.setState(({ gameState }) => ({ history: [], gameState: { ...gameState, skillRating: 1000, streak: 0 } }));
@@ -180,7 +184,7 @@ describe("lab record from a finished game round", () => {
 
     expect(review).toEqual({ skillRating: 1000, streak: 0, accuracy: 100 });
     expect(daily).toEqual({ skillRating: 1114, streak: 1, accuracy: 100 });
-    expect(useGameStore.getState().history.map(({ skillRatingChange, streak }) => [skillRatingChange, streak])).toEqual([
+    expect(store().history.map(({ skillRatingChange, streak }) => [skillRatingChange, streak])).toEqual([
       [114, 1],
       [0, 0],
     ]);

@@ -61,7 +61,7 @@ const WATCH_FIRST_PAINT = `(() => {
 
 const SCAN = `(() => {
   const rail = document.querySelector(${q(RAIL)});
-  const footer = document.querySelector("body > footer");
+  const footer = document.querySelector("footer.lab-footer, body > footer");
   const article = rail.closest("article");
   const end = document.documentElement.scrollHeight - innerHeight;
   const rows = [];
@@ -73,7 +73,8 @@ const SCAN = `(() => {
   }
   scrollTo(0, 0);
   const style = getComputedStyle(rail);
-  return { viewportHeight: innerHeight, railHeight: rows[0].bottom - rows[0].top, position: style.position, pageEnd: end, rows };
+  const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--lp-header-h")) || 0;
+  return { viewportHeight: innerHeight, headerHeight, railHeight: rows[0].bottom - rows[0].top, position: style.position, pageEnd: end, rows };
 })()`;
 
 const STACKED = `(() => {
@@ -128,9 +129,9 @@ async function open(page, url, viewport) {
   await page.eval("document.fonts.ready.then(() => true)");
 }
 
-function reachedParts(rows, railHeight, viewportHeight) {
+function reachedParts(rows, railHeight, viewportHeight, headerHeight) {
   const seen = rows
-    .map((row) => [Math.max(0, -row.top), Math.min(railHeight, viewportHeight - row.top)])
+    .map((row) => [Math.max(0, headerHeight - row.top), Math.min(railHeight, viewportHeight - row.top)])
     .filter(([from, to]) => to > from)
     .sort((a, b) => a[0] - b[0]);
   let reached = 0;
@@ -142,14 +143,15 @@ function reachedParts(rows, railHeight, viewportHeight) {
 }
 
 function judgeRail(label, scan) {
-  const { rows, railHeight, viewportHeight } = scan;
-  const fits = railHeight + 2 * RAIL_GAP_PX <= viewportHeight;
-  const pinTop = fits ? RAIL_GAP_PX : viewportHeight - railHeight - RAIL_GAP_PX;
+  const { rows, railHeight, viewportHeight, headerHeight } = scan;
+  const topGap = headerHeight + RAIL_GAP_PX;
+  const fits = railHeight + topGap + RAIL_GAP_PX <= viewportHeight;
+  const pinTop = fits ? topGap : viewportHeight - railHeight - RAIL_GAP_PX;
   const expectedTop = (row) => Math.min(Math.max(rows[0].top - row.scrollY, pinTop), row.articleBottom - railHeight);
   const pinned = rows.filter((row) => near(row.top, pinTop));
   const released = (row) => near(row.bottom, row.articleBottom);
-  const clipped = rows.filter((row) => row.top < -TOLERANCE_PX && row.bottom < viewportHeight - RAIL_GAP_PX - TOLERANCE_PX && !released(row));
-  const reached = reachedParts(rows, railHeight, viewportHeight);
+  const clipped = rows.filter((row) => row.top < headerHeight - TOLERANCE_PX && row.bottom < viewportHeight - RAIL_GAP_PX - TOLERANCE_PX && !released(row));
+  const reached = reachedParts(rows, railHeight, viewportHeight, headerHeight);
   const problems = [
     scan.position !== "sticky" && `the rail is ${scan.position}`,
     rows.some((row) => row.bottom > row.footerTop + TOLERANCE_PX) && "the rail overlaps the footer",
@@ -163,7 +165,7 @@ function judgeRail(label, scan) {
       railHeight,
       viewportHeight,
       fits,
-      pinsWith: fits ? `top at ${RAIL_GAP_PX}px` : `bottom ${RAIL_GAP_PX}px above the viewport bottom`,
+      pinsWith: fits ? `top ${RAIL_GAP_PX}px below the ${headerHeight}px sticky header` : `bottom ${RAIL_GAP_PX}px above the viewport bottom`,
       pinnedTop: pinned[0]?.top ?? null,
       pinnedBottom: pinned[0]?.bottom ?? null,
       pinnedFromScrollY: pinned[0]?.scrollY ?? null,

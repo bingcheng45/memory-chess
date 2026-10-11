@@ -21,7 +21,7 @@ jest.mock("@/i18n/navigation", () => ({
   usePathname: () => "/articles",
 }));
 
-jest.mock("@/components/ui/PageHeader", () => () => null);
+jest.mock("@/components/lab-paper/LabPaperHeader", () => ({ LabPaperHeader: () => null }));
 
 jest.mock("@/components/articles/TypedBody", () => {
   function MockTypedBody({ charsPerSecond }: { charsPerSecond?: number }) {

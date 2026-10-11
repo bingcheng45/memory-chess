@@ -18,6 +18,5 @@ and actions live in `EditorialPage.tsx`.
   and nothing else. The portrait is information, so it has alt text, and its
   credit prints the author, the licence and a link to the source inside a
   `<cite>`.
-- An Articles body is set in Literata, declared in
-  `src/lib/articles/readingFont.ts` so only article pages load it. Geist stays
-  the face for everything else.
+- Articles do not use this style. They are drawn in Lab Paper
+  (`src/components/articles/ArticlePaperShell.tsx`), with the body in Open Sans.

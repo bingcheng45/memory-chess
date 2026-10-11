@@ -40,7 +40,7 @@ export default function ArrivingPortrait({ slug, photo }: ArrivingPortraitProps)
       photo={photo}
       sizes={ARTICLE_PAGE_PORTRAIT_SIZES}
       priority
-      className="rounded-[18px]"
+      className="rounded-xl"
       style={placeholder}
     />
   );

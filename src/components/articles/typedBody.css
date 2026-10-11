@@ -13,7 +13,7 @@
   bottom: -0.16em;
   width: 2px;
   height: 1.12em;
-  background-color: theme("colors.peach.500");
+  background-color: var(--lp-accent);
   animation: article-caret-blink 1s steps(1, end) infinite;
 }
 

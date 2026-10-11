@@ -1,10 +1,7 @@
-body:has([data-article-rail]) {
-  overflow-x: clip;
-}
-
 [data-article-rail] {
   --rail-gap: 20px;
   /* ArticleRail sets --rail-height once it has measured the rail. Until then this top is invalid and the
-     rail does not stick, which paints it where it belongs at the top of the page. */
-  top: min(var(--rail-gap), calc(100dvh - var(--rail-height) - var(--rail-gap)));
+     rail does not stick, which paints it where it belongs at the top of the page. A rail that fits pins 20px
+     below the sticky Lab Paper header; a taller one pins 20px above the viewport bottom. */
+  top: min(calc(var(--lp-header-h) + var(--rail-gap)), calc(100dvh - var(--rail-height) - var(--rail-gap)));
 }

@@ -11,8 +11,8 @@ import LikeButton from "@/components/articles/LikeButton";
 import TranslationNote from "@/components/articles/TranslationNote";
 import TypedBody from "@/components/articles/TypedBody";
 import ViewBeacon from "@/components/articles/ViewBeacon";
-import { ARTICLE_FOCUS_RING, ARTICLE_LINK, ARTICLE_LONG_WORDS } from "@/components/articles/articleStyles";
-import { EditorialPageShell } from "@/components/editorial/EditorialPage";
+import ArticlePaperShell from "@/components/articles/ArticlePaperShell";
+import { ARTICLE_LINK, ARTICLE_LONG_WORDS } from "@/components/articles/articleStyles";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { formatArticleDate } from "@/lib/articles/format";
 import { articlePath } from "@/lib/articles/paths";
@@ -42,7 +42,7 @@ const GUIDES_HEADING_ID = "article-guides-heading";
 /** The guides are English-only, so the list of them is shown, and worded, in English only. */
 const RELATED_GUIDES_HEADING = "Train it with a guide";
 const DRILL_WHY_ID = "article-drill-why";
-const NOTE_CLASS = "max-w-2xl";
+const NOTE_CLASS = "mt-1 max-w-2xl";
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
@@ -58,7 +58,7 @@ function Credit({ credit }: { credit: PhotoCredit }) {
   const { author, license, licenseUrl, sourceUrl, changes } = credit;
 
   return (
-    <cite className="mt-1.5 block text-[11.5px] not-italic leading-normal text-text-muted">
+    <cite className="art-credit mt-2 block not-italic">
       {t.rich("photoCredit", {
         author,
         license,
@@ -77,8 +77,8 @@ function Portrait({ article }: { article: Article }) {
   return (
     <figure className="row-start-1 mb-[22px] max-w-[190px] min-[821px]:mb-0 min-[821px]:max-w-none">
       <ArrivingPortrait key={slug} slug={slug} photo={{ src, width, height, alt }} />
-      <figcaption className={`mt-3 text-sm leading-[1.4] text-text-muted ${ARTICLE_LONG_WORDS}`}>
-        <b className="block font-semibold text-text-secondary">{person.name}</b>
+      <figcaption className={`art-figcap mt-3 ${ARTICLE_LONG_WORDS}`}>
+        <b className="block">{person.name}</b>
         <span>{person.role}</span>
         <Credit credit={photo} />
       </figcaption>
@@ -92,19 +92,19 @@ function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "c
 
   return (
     <header className="row-start-2 min-[821px]:col-start-2 min-[821px]:row-start-1">
-      <p className="text-sm text-peach-500">
+      <p className="art-meta">
         <time dateTime={article.publishedAt} data-flight="date" className="inline-block">
           {formatArticleDate(article.publishedAt, locale)}
         </time>
       </p>
       <h1
         data-flight="title"
-        className={`mt-2.5 text-[clamp(30px,4.6vw,48px)] font-bold leading-[1.06] tracking-[-0.025em] text-white [text-wrap:balance] ${ARTICLE_LONG_WORDS}`}
+        className={`art-h1 mt-3 [text-wrap:balance] ${ARTICLE_LONG_WORDS}`}
       >
         {article.title}
       </h1>
-      <p className="mt-4 max-w-[58ch] text-[19px] leading-normal text-text-muted">{article.description}</p>
-      <div className="mt-[18px] text-sm leading-6 text-text-muted">
+      <p className="art-lede mt-4 max-w-[58ch]">{article.description}</p>
+      <div className="art-note mt-5">
         <address data-article-byline className="not-italic">
           {t.rich("byline", {
             name: LEARN_AUTHOR.name,
@@ -118,7 +118,7 @@ function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "c
       </div>
       <div
         data-article-counts
-        className="mt-4 flex flex-wrap items-center gap-x-[18px] gap-y-2.5 text-sm text-text-muted [font-variant-numeric:tabular-nums]"
+        className="art-counts mt-5 flex flex-wrap items-center gap-x-[18px] gap-y-2.5"
       >
         <ViewCount count={counts?.views} />
         <LikeButton key={article.slug} slug={article.slug} likes={counts?.likes} />
@@ -138,13 +138,13 @@ function Drill({ drill }: { drill: ArticleDrill }) {
         data-article-drill
         aria-label={action}
         aria-describedby={DRILL_WHY_ID}
-        className={`group flex flex-wrap items-center justify-between gap-3.5 rounded-[18px] border border-peach-500/25 bg-peach-500/10 p-[22px] hover:border-peach-400/50 ${ARTICLE_FOCUS_RING}`}
+        className="art-drill group flex flex-wrap items-center justify-between gap-4 p-6"
       >
-        <span className="min-w-0 flex-[1_1_260px] text-[15.5px] leading-[1.45] text-text-muted">
-          <b className="block text-lg font-semibold text-white">{t("drillHeading")}</b>
+        <span className="art-drill-text min-w-0 flex-[1_1_260px]">
+          <b>{t("drillHeading")}</b>
           <span id={DRILL_WHY_ID}>{drill.why}</span>
         </span>
-        <span className="inline-flex min-h-[46px] items-center rounded-full bg-peach-500 px-5 font-semibold text-bg-dark group-hover:bg-peach-400">
+        <span className="art-drill-btn inline-flex min-h-11 items-center px-5">
           {action}
         </span>
       </Link>
@@ -158,11 +158,11 @@ function Drill({ drill }: { drill: ArticleDrill }) {
  */
 function RelatedGuides({ guides }: { guides: readonly ArticleRelatedGuide[] }) {
   return (
-    <nav aria-labelledby={GUIDES_HEADING_ID} className="mt-12 max-w-[720px] border-t border-white/10 pt-8">
-      <span id={GUIDES_HEADING_ID} className="block text-xl font-semibold tracking-tight text-white">
+    <nav aria-labelledby={GUIDES_HEADING_ID} className="art-after">
+      <span id={GUIDES_HEADING_ID} className="art-after-h">
         {RELATED_GUIDES_HEADING}
       </span>
-      <div className="mt-4 space-y-2 text-base leading-7">
+      <div className="art-prose mt-4 space-y-2">
         {guides.map((guide) => (
           // The anchor is written to read inside a sentence, so only its
           // first letter is raised for the list.
@@ -180,17 +180,17 @@ function Sources({ sources }: { sources: readonly ArticleSource[] }) {
   const titleLang = useLocale() === DEFAULT_LOCALE ? undefined : DEFAULT_LOCALE;
 
   return (
-    <section aria-labelledby={SOURCES_HEADING_ID} className="mt-12 max-w-[720px] border-t border-white/10 pt-8">
-      <h2 id={SOURCES_HEADING_ID} className="text-xl font-semibold tracking-tight text-white">
+    <section aria-labelledby={SOURCES_HEADING_ID} className="art-after">
+      <h2 id={SOURCES_HEADING_ID} className="art-after-h">
         {t("sources")}
       </h2>
-      <ol className="mt-4 divide-y divide-white/10 border-t border-white/10">
+      <ol className="art-sources mt-4">
         {sources.map((source) => (
           <li key={source.url} className="py-4">
             <cite lang={titleLang} className="not-italic">
               <ExternalLink href={source.url}>{source.title}</ExternalLink>
             </cite>
-            <p className="mt-2 text-sm leading-6 text-text-muted">{source.note}</p>
+            <p className="art-note mt-2">{source.note}</p>
           </li>
         ))}
       </ol>
@@ -205,10 +205,10 @@ function NextArticle({ next }: { next: ArticleSummary }) {
     <ArticleLink
       article={next.slug}
       portrait={next.photo}
-      className={`group mt-7 block max-w-[720px] rounded border-t border-white/10 pt-5 text-[13px] text-text-muted ${ARTICLE_FOCUS_RING}`}
+      className="art-next group mt-8 block pt-6"
     >
       {t("nextArticle")}
-      <b className="mt-1 block text-lg font-semibold leading-[1.3] text-white group-hover:text-peach-300">
+      <b className="art-next-title mt-1 block">
         {next.title}
       </b>
     </ArticleLink>
@@ -221,10 +221,10 @@ export default function ArticlePage({ article, nextArticle, counts, charsPerSeco
   const structuredData = buildArticleStructuredData(article, locale, t("list.heading"));
 
   return (
-    <EditorialPageShell mainClassName="!max-w-[1080px]">
+    <ArticlePaperShell layout="article">
       <ArticleLink
         backFrom={article.slug}
-        className={`mb-2.5 mt-1.5 inline-flex min-h-11 items-center gap-2 rounded text-sm text-text-muted hover:text-peach-300 ${ARTICLE_FOCUS_RING}`}
+        className="art-back mb-4 mt-8 inline-flex min-h-11 items-center gap-2"
       >
         <span aria-hidden="true">←</span>
         {t("page.backToList")}
@@ -258,6 +258,6 @@ export default function ArticlePage({ article, nextArticle, counts, charsPerSeco
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-    </EditorialPageShell>
+    </ArticlePaperShell>
   );
 }

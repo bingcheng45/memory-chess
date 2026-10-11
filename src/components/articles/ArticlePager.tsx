@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import { FIRST_PAGE, writePage } from "@/components/articles/listAddress";
 import type { Page } from "@/lib/articles/paging";
 
@@ -15,12 +14,7 @@ type StepButtonProps = {
   isAtEnd: boolean;
 };
 
-const BUTTON_CLASS =
-  "h-11 min-w-11 rounded-xl border border-white/10 bg-bg-card px-3 text-text-secondary " +
-  "hover:border-peach-500/35 hover:text-peach-300 aria-disabled:cursor-default aria-disabled:opacity-40 " +
-  "aria-disabled:hover:border-white/10 aria-disabled:hover:text-text-secondary " +
-  ARTICLE_FOCUS_RING;
-const CURRENT_CLASS = "border-transparent bg-peach-500 font-semibold text-bg-dark";
+const BUTTON_CLASS = "art-pager-btn h-11 min-w-11 px-3";
 
 function StepButton({ label, symbol, target, isAtEnd }: StepButtonProps) {
   return (
@@ -45,7 +39,7 @@ export default function ArticlePager({ current, total }: ArticlePagerProps) {
   return (
     <nav
       aria-label={t("label")}
-      className="mt-[34px] flex flex-wrap items-center justify-between gap-3 text-sm text-text-muted [font-variant-numeric:tabular-nums]"
+      className="art-counts mt-8 flex flex-wrap items-center justify-between gap-3"
     >
       <p aria-live="polite">
         {t("showing", { first: current.firstPosition, last: current.lastPosition, total })}
@@ -66,7 +60,7 @@ export default function ArticlePager({ current, total }: ArticlePagerProps) {
               aria-label={t("page", { page })}
               aria-current={isCurrent ? "page" : undefined}
               onClick={() => writePage(page)}
-              className={isCurrent ? `${BUTTON_CLASS} ${CURRENT_CLASS}` : BUTTON_CLASS}
+              className={BUTTON_CLASS}
             >
               {page}
             </button>

@@ -25,13 +25,7 @@ jest.mock("@/i18n/navigation", () => ({
   usePathname: () => "/articles/alder-fixture",
 }));
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>PageHeader</div>;
-  }
-
-  return MockPageHeader;
-});
+jest.mock("@/components/lab-paper/LabPaperHeader", () => ({ LabPaperHeader: () => <div>LabPaperHeader</div> }));
 
 const TEXT_NODE_MARKER = /<!-- -->/g;
 const HIDDEN_ATTRIBUTE = /\shidden(=|\s|>)/;
@@ -86,7 +80,7 @@ describe("ArticlePage server HTML", () => {
   it("holds the date, the byline, the credit, the count and the drill label in the words they always had", () => {
     expect(wordsIn(html, /<time[\s\S]*?<\/time>/)).toBe("Jan 1, 2026");
     expect(wordsIn(html, /<address[\s\S]*?<\/address>/)).toBe("By Bing Cheng");
-    expect(wordsIn(html, /<cite class="mt-1\.5[\s\S]*?<\/cite>/)).toBe(
+    expect(wordsIn(html, /<cite class="art-credit[\s\S]*?<\/cite>/)).toBe(
       "Photo: Fixture Photographer, CC BY 4.0, via Wikimedia Commons. Cropped and resized.",
     );
     expect(html).toContain("2,140 views</span>");

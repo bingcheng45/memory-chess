@@ -35,13 +35,7 @@ jest.mock("@/i18n/navigation", () => ({
   usePathname: () => "/articles",
 }));
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>PageHeader</div>;
-  }
-
-  return MockPageHeader;
-});
+jest.mock("@/components/lab-paper/LabPaperHeader", () => ({ LabPaperHeader: () => <div>LabPaperHeader</div> }));
 
 const AUDIT_URL = pathToFileURL(join(process.cwd(), "scripts", "audit-adsense.mjs")).href;
 const SITE_RULES = ["boilerplate", "heading-template", "near-duplicate"] as const;

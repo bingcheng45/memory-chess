@@ -3,7 +3,6 @@
 import { useId, useRef, useState } from "react";
 import { Heart } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import { useLikesSeen } from "@/components/articles/useLikesSeen";
 import { trackEvent } from "@/lib/analytics/events";
 import { formatCount } from "@/lib/articles/format";
@@ -21,11 +20,9 @@ type Shown = {
 };
 
 const BUTTON_CLASS =
-  "group inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-bg-card px-3.5 " +
-  "text-sm text-text-secondary hover:border-peach-500/35 " +
-  "aria-pressed:border-peach-500/45 aria-pressed:bg-peach-500/10 aria-pressed:text-peach-200 " +
-  `transition-transform motion-reduce:transition-none motion-safe:active:scale-95 ${ARTICLE_FOCUS_RING}`;
-const HEART_CLASS = "h-[17px] w-[17px] group-aria-pressed:fill-peach-500 group-aria-pressed:text-peach-500";
+  "art-like inline-flex min-h-11 items-center gap-2 px-3.5 " +
+  "transition-transform motion-reduce:transition-none motion-safe:active:scale-95";
+const HEART_CLASS = "h-[17px] w-[17px]";
 
 function setLikesSeen(slug: string, likesSeen: number): void {
   if (likesSeen === NOT_LIKED) likedStore.unlike(slug);
@@ -82,7 +79,7 @@ export default function LikeButton({ slug, likes }: LikeButtonProps) {
         <Heart aria-hidden="true" strokeWidth={1.8} className={HEART_CLASS} />
         {hasCount ? <span id={countId}>{formatCount(likesShown, locale)}</span> : null}
       </button>
-      <p role="status" aria-live="polite" className="text-peach-200">
+      <p role="status" aria-live="polite" className="art-like-failed">
         {shown.hasFailed ? t("failed") : null}
       </p>
     </>

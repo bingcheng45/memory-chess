@@ -49,10 +49,10 @@
     "narrow": {
       "unlock": 619,
       "span": 529,
-      "held": 496,
+      "held": 519,
       "spark": 481,
-      "speed": 532,
-      "heat": 576,
+      "speed": 536,
+      "heat": 599,
       "streak": 607,
       "bests": 579,
       "types": 619,
@@ -68,13 +68,13 @@
     "medium": {
       "unlock": 416,
       "span": 480,
-      "held": 488,
-      "spark": 417,
+      "held": 500,
+      "spark": 432,
       "speed": 503,
-      "heat": 575,
+      "heat": 598,
       "streak": 658,
       "bests": 906,
-      "types": 619,
+      "types": 642,
       "insights": 402,
       "notebook": 430,
       "plans": 955,
@@ -87,13 +87,13 @@
     "wide": {
       "unlock": 310,
       "span": 521,
-      "held": 480,
+      "held": 489,
       "spark": 460,
-      "speed": 511,
+      "speed": 515,
       "heat": 507,
       "streak": 600,
       "bests": 492,
-      "types": 490,
+      "types": 513,
       "insights": 356,
       "notebook": 393,
       "plans": 481,
@@ -109,7 +109,7 @@
     "narrow span": "stale client 640",
     "narrow held": "twoRounds client 360",
     "narrow spark": "twoRounds client 640",
-    "narrow speed": "stale client 640",
+    "narrow speed": "twoRounds client 640",
     "narrow heat": "dailyOpen client 320",
     "narrow streak": "stale client 360",
     "narrow bests": "manyBests client 320",
@@ -122,8 +122,8 @@
     "narrow tools": "colourSkew client 320",
     "medium unlock": "twoRoundsAway client 641",
     "medium span": "stale client 641",
-    "medium held": "stale client 641",
-    "medium spark": "twoRounds client 768",
+    "medium held": "twoRounds client 641",
+    "medium spark": "twoRounds client 641",
     "medium speed": "twoRounds client 641",
     "medium heat": "dailyOpen client 641",
     "medium streak": "stale client 641",
@@ -137,9 +137,9 @@
     "medium tools": "colourSkew client 768",
     "wide unlock": "twoRoundsAway client 1024",
     "wide span": "stale client 1440",
-    "wide held": "stale client 1440",
+    "wide held": "twoRounds client 1440",
     "wide spark": "twoRounds client 1440",
-    "wide speed": "stale client 1440",
+    "wide speed": "twoRounds client 1440",
     "wide heat": "dailyOpen client 1024",
     "wide streak": "stale client 1024",
     "wide bests": "manyBests client 1024",
@@ -173,9 +173,9 @@
       "plans": 1181,
       "goal": 305,
       "daily": 367,
-      "tools": 0,
       "curve": 560,
-      "board": 623
+      "board": 623,
+      "tools": 0
     },
     "medium": {
       "unlock": 354,
@@ -192,9 +192,9 @@
       "plans": 920,
       "goal": 232,
       "daily": 269,
-      "tools": 0,
       "curve": 538,
-      "board": 665
+      "board": 665,
+      "tools": 0
     },
     "wide": {
       "unlock": 301,
@@ -211,9 +211,9 @@
       "plans": 455,
       "goal": 182,
       "daily": 246,
-      "tools": 0,
       "curve": 585,
-      "board": 623
+      "board": 623,
+      "tools": 0
     }
   }
 }

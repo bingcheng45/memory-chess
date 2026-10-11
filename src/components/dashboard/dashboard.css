@@ -51,6 +51,7 @@
   }
   .lab.lab-dashboard .lab-btn-primary { background: var(--lab-mint); color: #0d1b24; }
   .lab.lab-dashboard .lab-btn-primary:hover { background: #6fe0bf; box-shadow: none; }
+  .lab.lab-dashboard .lab-btn-primary .lab-dot { background: #0d1b24; box-shadow: none; }
 }
 
 @media (prefers-reduced-motion: reduce) { .lab-dashboard .lab-btn { transition: none; } }

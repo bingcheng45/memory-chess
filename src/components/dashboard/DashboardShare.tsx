@@ -71,10 +71,14 @@ export function DashboardShare({ card }: { card: ShareCard | null }) {
         await navigator.share({ files: [file], text: caption.text, url: caption.url });
         track("native");
         setState("shared");
+        return;
       } catch (error) {
-        setState(isCancel(error) ? "idle" : "failed");
+        // A sheet that refuses the file, as headless and some desktop browsers do, falls through to saving it.
+        if (isCancel(error)) {
+          setState("idle");
+          return;
+        }
       }
-      return;
     }
     if (blob) {
       saveBlob(blob, FILE_NAME);

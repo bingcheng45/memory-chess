@@ -75,7 +75,7 @@ function ChangeText({ change }: { change: ChangelogChange }) {
 
 function ChangeTable({ table }: { table: ChangelogTable }) {
   return (
-    <div className="lab-change-table" role="region" aria-label={table.caption} tabIndex={0}>
+    <div className="lab-change-table">
       <table>
         <caption>{table.caption}</caption>
         <thead>

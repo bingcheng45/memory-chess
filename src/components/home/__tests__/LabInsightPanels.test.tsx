@@ -280,12 +280,21 @@ describe("a record panel that is still warming up", () => {
     expect(within(panel("Miss map")).getByRole("img")).toHaveAccessibleName("Sample heatmap of missed squares, concentrated on the a and h files.");
   });
 
-  it("draws sample piece bars under the recall need, without the real king baseline", () => {
+  it("draws sample piece bars under the recall need, with the king as a marked baseline row", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
     const types = panel("Recall by piece type");
+    const bars = [...types.querySelectorAll(".lab-bar")].map((bar) => [bar.firstElementChild!.textContent, bar.lastElementChild!.textContent]);
 
     expect(within(types).getByText("Sample: pawns and knights slip first.")).toBeInTheDocument();
-    expect(within(types).getByText("Queen")).toBeInTheDocument();
+    expect(bars).toEqual([
+      ["Queen", "82%"],
+      ["Rook", "74%"],
+      ["Bishop", "61%"],
+      ["Knight", "48%"],
+      ["Pawn", "39%"],
+      ["King baseline", "96%"],
+    ]);
+    expect(within(types).queryByText(/Kings are in every round/)).toBeNull();
   });
 
   it("draws the sample finding under the insights need", () => {

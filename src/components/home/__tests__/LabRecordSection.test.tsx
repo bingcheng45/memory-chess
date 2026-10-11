@@ -39,6 +39,8 @@ function record(records: RoundRecordV1[], overrides: Partial<LabRecord> = {}): L
   };
 }
 
+const bars = (panel: HTMLElement) =>
+  [...panel.querySelectorAll(".lab-bar")].map((bar) => [bar.firstElementChild!.textContent, bar.lastElementChild!.textContent]);
 /** The figure label atop a panel; the unlock strip repeats it for each figure still locked. */
 const FIG = ".lab-panel-h > .lab-k";
 const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. 6\\.\\d+ · ${name}$`), { selector: FIG }).closest(".lab-panel") as HTMLElement;
@@ -151,10 +153,11 @@ describe("LabRecordSection", () => {
     renderWithIntl(<LabRecordSection record={record(rounds(20, 3))} />);
     const types = panel("Recall by piece type");
 
-    expect(within(types).getByText("Queen")).toBeInTheDocument();
-    expect(within(types).getAllByText("50%")).toHaveLength(2);
-    expect(within(types).queryByText("King")).toBeNull();
-    expect(within(types).queryByText("Pawn")).toBeNull();
+    expect(bars(types)).toEqual([
+      ["Queen", "50%"],
+      ["Knight", "50%"],
+      ["King baseline", "100%"],
+    ]);
     expect(within(types).getByText("Kings are in every round, so they are a baseline. Recalled 40 of 40.")).toBeInTheDocument();
     expect(within(types).getByText("From 20 rounds")).toBeInTheDocument();
   });
@@ -180,6 +183,7 @@ describe("LabRecordSection", () => {
     ).toBeInTheDocument();
     expect(within(types).getByText("Kings are in every round, so they are a baseline. Recalled 100 of 100.")).toBeInTheDocument();
     expect(within(types).queryByText(/after your first round/)).toBeNull();
+    expect(bars(types).at(-1)).toEqual(["King baseline", "96%"]);
   });
 
   it("keeps the first-round empty state for recall by piece type before any round", () => {

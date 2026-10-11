@@ -2,6 +2,19 @@
 
 Mockup: `a-lab-paper.html` (same folder). Screenshots: `a-lab-paper-shots/` (light and dark, 1440 and 390 wide).
 
+## Using the shell on a page
+
+The shell is the part every Lab Paper route shares. It lives in `src/components/lab-paper/`. `lab-paper.css` holds the tokens, the page base, buttons, the changelog banner, the header and the footer. `shell.ts` holds the Open Sans body face and `LAB_PAPER_CLASS`. The registry of routes that use it is `src/lib/lab-paper/routes.ts`. A route opts in with three steps.
+
+1. **Add the route to `LAB_PAPER_ROUTES`.** Give its unprefixed `path`. Set `scope: "subtree"` when the paths beneath it come too (`/articles` covers `/articles/[slug]`), or `"page"` for that path alone. Set `locales` to `"all"` when every locale has the page's copy, or to the list that does. The homepage is `["en"]` because only English carries `home.lab`. On a listed route, in a listed locale, the locale layout draws the Lab Paper changelog banner and footer. Anywhere else it draws the dark banner and footer, and the page keeps `PageHeader`.
+2. **Wrap the page in one Lab Paper block.** The page's root element takes `className={LAB_PAPER_CLASS}`. That class turns on the tokens for the whole document, sets the paper background and the body face, and keeps the sticky header steady on iOS. Never set `overflow-x` on `html` or `body` for a Lab Paper page. The shell keeps the root visible and clips each block instead (commit e8a36a3). The banner and footer each carry their own block, because the layout renders them outside the page.
+3. **Render `<LabPaperHeader />` first inside that block, in place of `PageHeader`.** With no props it shows the wordmark, the site links (the current route is marked `aria-current="page"`), the language switcher, Play and the phone menu, all from `common.nav`, so it reads correctly in all 24 locales. Optional props:
+   - `sections`: an on-page menu, `{ trigger, heading, links: [{ href: "#anchor", label, hint? }] }`. It appears as a dropdown beside the site links and as the first column of the phone menu. The homepage passes its six sections as "Lab".
+   - `playLabel`: a longer label and accessible name for Play on wide screens. Phones always show "Play".
+   - `tools`: a page's own controls before Play, such as the homepage's streak chip.
+
+Page-specific rules (sections, figures, tables) stay in the page's own stylesheet, under `.lab-paper` when the class name could also appear on the dashboard. A shared primitive that a second page needs moves into `lab-paper.css`. New copy in the shell must exist in all 24 locales (`npm run validate`).
+
 ## The idea
 
 Memory Chess is a measuring instrument for board memory, so the whole site reads like one calm lab notebook: white paper, dark ink, one blue pen. V2's lab sheet becomes the brand, and v1's black header, black banner, black footer and peach accent are retired. The costume parts of v2 go too: the page-wide graph grid, the mono uppercase labels, the § numbering and the crosshair corners. What stays is what does a job. A faint grid sits only behind figures (boards, charts, the final call to action) to mark "this is a measurement surface". Mono is used only for numbers that are measurements. Blue is the only brand colour and means "act here" or "this matters". The night theme is the same notebook read under a lamp: deep ink-blue paper with the board kept lit like a specimen plate.
@@ -13,7 +26,7 @@ Memory Chess is a measuring instrument for board memory, so the whole site reads
 | v1 | The "Memory Chess" name as the only wordmark. The site destinations: Learn, Articles, Leaderboard, Progress, About. The footer links, Product Hunt awards and X link. The language picker. | Black header, black changelog banner, black footer. Peach accent on "Chess" and on footer links. Centred Title Case headings. Centred video and FAQ blocks. Wood board (#f0d9b5 / #b58863). "Memory Chess LAB" badge. |
 | v2 | Paper and ink (#0d1b24). The blue (#1f4fe0) as the single accent. Sentence-case headlines that end in a full stop. Left-aligned section heads. Figure framing (Fig. n, Sample tags). Real research copy, phases, the record panels. | Second sticky lab index bar. Page-wide 24px graph grid. Geist Mono uppercase kickers ("§03 / FIELD RECORDING"). § numbering. Crosshair corners. Mint as a brand colour and mint board squares. Orange as a brand mark. Dark ink CTA card with mint button. |
 
-The changelog banner is not carried over. "Changelog" stays in the footer and in the phone menu, so a release note never pushes the header down.
+The changelog banner is carried over in paper: one quiet line on the surface colour above the header, the release in ink and "See what's new" as a blue link, dismissible for that release and shown for 30 days after it. It is in the served HTML, so it never pushes the page down after load, and it scrolls away while the header stays. "Changelog" also stays in the footer and in the phone menu.
 
 ## Decisions and why
 

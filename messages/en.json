@@ -489,8 +489,8 @@
         "heat": {
           "fig": "Fig. {number} · Miss map",
           "title": "Where your squares slip.",
-          "aria": "Sample heatmap of missed squares, concentrated on the a and h files.",
-          "note": "Sample: misses cluster on the edge files. Train edges next.",
+          "aria": "Sample heatmap of missed squares: darkest down the h-file and around h1, with hot spots on b7 and f7, lightest in the centre.",
+          "note": "Sample: misses pile up on the h-file and around the king's corner at h1. Train that edge next.",
           "need": "About {count, plural, one {# more round} other {# more rounds}} until every file and rank has 10 pieces to read.",
           "needStart": "Play a few more rounds to start your miss map.",
           "files": "Files",

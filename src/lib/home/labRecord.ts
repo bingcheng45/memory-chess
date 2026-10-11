@@ -15,8 +15,6 @@ export const SAMPLE_PARTIAL = 4;
 export const SAMPLE_SPEED: readonly number[] = [4.1, 3.9, 3.8, 3.6, 3.5, 3.3, 3.2, 3, 2.9, 2.8, 2.7, 2.6];
 export const SAMPLE_SPEED_ACCURACY = 88;
 
-/** Miss shares, in percent, on the a and h files and on the d and e files of the sample finding. */
-export const SAMPLE_EDGE_MISS = { edge: 38, centre: 19 };
 
 /** Recall shares, in percent, for the sample piece bars, with the king last as the baseline. */
 export const SAMPLE_TYPE_RECALL: readonly { readonly type: PieceSymbol; readonly share: number }[] = [
@@ -47,18 +45,30 @@ export const SAMPLE_WEEK = { played: 4, goal: 5 } as const;
 /** The goal the roadmap names as its example, with a best round short of it. */
 export const SAMPLE_GOAL = { pieceCount: 8, accuracy: 85, best: 78 } as const;
 
-export const SAMPLE_MISS_MAP: readonly number[] = (() => {
-  let seed = 7;
-  const next = () => {
-    seed = (seed * 16807) % 2147483647;
-    return seed / 2147483647;
-  };
-  return Array.from({ length: 64 }, (_, index) => {
-    const file = index % 8;
-    const fromEdge = Math.min(file, 7 - file);
-    return Math.min(1, Math.max(0, (1 - fromEdge / 3) * 0.75 + next() * 0.25));
-  });
-})();
+/**
+ * Miss shares, in percent, rank 8 down to rank 1 and a to h: a blind h-file that is worst in the corner around h1, where
+ * White's king sits after castling, hot spots on b7, f7 and g7, and a centre that is rarely missed.
+ */
+const SAMPLE_MISS_PERCENT: readonly (readonly number[])[] = [
+  [14, 16, 14, 13, 15, 19, 30, 48],
+  [12, 52, 17, 12, 14, 58, 47, 56],
+  [10, 13, 11, 9, 10, 13, 18, 45],
+  [9, 11, 8, 6, 7, 10, 16, 50],
+  [10, 10, 9, 5, 6, 11, 17, 53],
+  [11, 12, 10, 8, 9, 14, 22, 57],
+  [12, 14, 13, 11, 12, 22, 62, 74],
+  [13, 16, 14, 12, 15, 26, 70, 86],
+];
+
+export const SAMPLE_MISS_MAP: readonly number[] = SAMPLE_MISS_PERCENT.flat().map((percent) => percent / 100);
+
+const sampleFileMiss = (files: readonly number[]) => {
+  const squares = SAMPLE_MISS_PERCENT.flatMap((rank) => files.map((file) => rank[file]));
+  return Math.round(squares.reduce((sum, percent) => sum + percent, 0) / squares.length);
+};
+
+/** Miss shares, in percent, on the a and h files and on the d and e files, read off the sample map so the sample finding matches it. */
+export const SAMPLE_EDGE_MISS = { edge: sampleFileMiss([0, 7]), centre: sampleFileMiss([3, 4]) };
 
 export const CURVE_REVIEW_DAYS: readonly number[] = [1, 3, 7];
 export const CURVE_AXIS_DAYS: readonly number[] = [0, 1, 3, 7, 14];

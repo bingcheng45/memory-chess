@@ -58,4 +58,19 @@ describe("DashboardShare", () => {
     expect(screen.getByRole("status")).toHaveTextContent("");
     expect(shareMethods()).toEqual([]);
   });
+
+  it("counts a caption copy only when the clipboard took it", async () => {
+    Object.assign(navigator, { clipboard: { writeText: () => Promise.reject(new DOMException("no", "NotAllowedError")) } });
+    renderWithIntl(<DashboardShare card={CARD} />);
+    const copy = () => act(async () => fireEvent.click(screen.getByRole("button", { name: "Copy caption" })));
+
+    await copy();
+    expect(screen.getByRole("status")).toHaveTextContent("Copy did not work here. The caption is selected, so copy it yourself.");
+    expect(shareMethods()).toEqual([]);
+
+    Object.assign(navigator, { clipboard: { writeText: () => Promise.resolve() } });
+    await copy();
+    expect(screen.getByRole("status")).toHaveTextContent("Caption copied.");
+    expect(shareMethods()).toEqual([{ name: "lab_dashboard_share", params: { method: "copy" } }]);
+  });
 });

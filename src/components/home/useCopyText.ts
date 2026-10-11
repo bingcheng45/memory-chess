@@ -13,12 +13,14 @@ export function useCopyText(text: string) {
     if (state === "failed" && textRef.current) window.getSelection()?.selectAllChildren(textRef.current);
   }, [state]);
 
-  const copy = async () => {
+  const copy = async (): Promise<boolean> => {
     try {
       await navigator.clipboard.writeText(text);
       setState("copied");
+      return true;
     } catch {
       setState("failed");
+      return false;
     }
   };
 

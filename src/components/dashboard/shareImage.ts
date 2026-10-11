@@ -130,7 +130,7 @@ function drawFigures(ctx: Ctx, copy: CardCopy, fonts: CardFonts) {
 
 function drawFooter(ctx: Ctx, copy: CardCopy, fonts: CardFonts) {
   ctx.fillStyle = SOFT;
-  fitFont(ctx, copy.rounds, 500, 30, fonts.mono, WIDTH - 2 * PAD);
+  fitFont(ctx, copy.rounds, 500, 30, fonts.sans, WIDTH - 2 * PAD);
   ctx.fillText(copy.rounds, PAD, HEIGHT - PAD - 150);
   ctx.fillStyle = RULE;
   ctx.fillRect(PAD, HEIGHT - PAD - 116, WIDTH - 2 * PAD, 2);

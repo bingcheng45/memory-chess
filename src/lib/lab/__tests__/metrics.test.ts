@@ -167,7 +167,7 @@ describe("trend", () => {
   it("asks for another day when five rounds all fell on one", () => {
     const records = days.map((_, index) => round({ id: `s${index}`, endedAt: index }));
 
-    expect(trend(records).readiness).toEqual({ state: "warming", sampleSize: 5, need: { days: 1 } });
+    expect(trend(records).readiness).toEqual({ state: "warming", sampleSize: 5, need: { days: 1 }, waitsForTomorrow: true });
   });
 
   it("has nothing to plot without rounds", () => {

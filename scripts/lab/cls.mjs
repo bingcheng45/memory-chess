@@ -8,7 +8,8 @@
  * window (shifts under 1 s apart, at most 5 s long), the way browsers score it,
  * and the plain sum of every shift as shiftSum. Runs for a new visitor and a 30-day
  * player (whose record loads from storage after first paint), each at the top of /
- * and scrolled to #record, for a player mid-plan with a goal reached scrolled to #record,
+ * and scrolled to #record, for a two-round player whose panels are still warming scrolled to #record,
+ * for a player mid-plan with a goal reached scrolled to #record,
  * for a player who has played today's board scrolled to #record,
  * for a returning player due the record note, scrolled to #record, where the note must appear, and with the tools
  * row centred before the record loads, as a reload that restores the scroll position leaves it, where the note
@@ -40,6 +41,7 @@ const CASES = [
   { name: "newVisitor-record", persona: "newVisitor", path: "/#record" },
   { name: "thirtyDays", persona: "thirtyDays", path: "/" },
   { name: "thirtyDays-record", persona: "thirtyDays", path: "/#record" },
+  { name: "twoRounds-record", persona: "twoRounds", path: "/#record" },
   { name: "planEdge-record", persona: "planEdge", path: "/#record" },
   { name: "dailyPlayed-record", persona: "dailyPlayed", path: "/#record" },
   { name: "note-record", persona: "threeDays", path: "/#record", shows: NOTE_BOX, ...NOTE },

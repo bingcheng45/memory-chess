@@ -89,8 +89,7 @@ export function DashboardShare({ card }: { card: ShareCard | null }) {
   };
 
   const copyCaption = async () => {
-    await copy();
-    track("copy");
+    if (await copy()) track("copy");
   };
 
   const status = {

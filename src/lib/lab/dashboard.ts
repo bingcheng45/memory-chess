@@ -50,10 +50,10 @@ export interface TileContext {
 /** The setting a warming tile asks for, when its figure reads only one setting. */
 export type Rig = Pick<TrendSetting, "pieceCount" | "memorizeSeconds">;
 
-/** Ready and stale draw a figure; warming says what is missing and where to play it; empty only invites a first round or a choice. */
+/** Ready and stale draw a figure; warming says what is missing and where to play it, or null when only tomorrow can add it; empty only invites a first round or a choice. */
 export type TileState =
   | { readonly state: "ready" | "stale"; readonly figure: Figure; readonly context: TileContext }
-  | { readonly state: "warming"; readonly need: Need; readonly rig: Rig | null; readonly href: string }
+  | { readonly state: "warming"; readonly need: Need; readonly rig: Rig | null; readonly href: string | null }
   | { readonly state: "empty"; readonly href: string; readonly cta: "play" | "choose" };
 
 export const DASHBOARD_TILES = [
@@ -115,7 +115,7 @@ const emptyPlay = (href = DASHBOARD_PLAY_HREF): TileState => ({ state: "empty", 
 function fromReadiness(readiness: Readiness, draw: () => Omit<Extract<TileState, { figure: Figure }>, "state"> | null, rig: Rig | null = null): TileState {
   const drawn = hasFigure(readiness) ? draw() : null;
   if (drawn) return { state: readiness.state as "ready" | "stale", ...drawn };
-  if (readiness.state === "warming" && readiness.need) return { state: "warming", need: readiness.need, rig, href: rigHref(rig) };
+  if (readiness.state === "warming" && readiness.need) return { state: "warming", need: readiness.need, rig, href: readiness.waitsForTomorrow ? null : rigHref(rig) };
   return emptyPlay();
 }
 

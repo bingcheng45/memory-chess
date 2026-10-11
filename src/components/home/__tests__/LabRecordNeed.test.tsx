@@ -23,7 +23,7 @@ function showRounds(source: "game" | "calibration", pieceCount: number, memorize
 describe("a warming record panel", () => {
   beforeEach(() => jest.mocked(trackEvent).mockClear());
 
-  it.each(["Memory span", "Pieces held", "Miss map", "Recall by piece type", "Insights", "Days in a row"])(
+  it.each(["Memory span", "Pieces held", "Miss map", "Recall by piece type", "Insights"])(
     "offers a round beside what %s still needs",
     (name) => {
       renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
@@ -31,6 +31,20 @@ describe("a warming record panel", () => {
       expect(playLinks(name)).toEqual([QUICK_START]);
     },
   );
+
+  it("asks a player who already played today to come back tomorrow when only days are missing", () => {
+    renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
+
+    expect(playLinks("Days in a row")).toEqual([]);
+    expect(panel("Days in a row").querySelector(".lab-need")?.textContent).toBe("Play on 1 more day to read your streak. Come back tomorrow.");
+  });
+
+  it("offers the round again on a day not yet played", () => {
+    renderWithIntl(<LabRecordSection record={persona("twoRounds", "2026-10-09")} />);
+
+    expect(playLinks("Days in a row")).toEqual([QUICK_START]);
+    expect(panel("Days in a row").querySelector(".lab-need")?.textContent).toBe("Play on 1 more day to read your streak. Play a round →");
+  });
 
   it("plays the exact game setting the trend and the speed line are waiting on", () => {
     showRounds("game", 8, 15);

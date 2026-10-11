@@ -17,7 +17,7 @@ const NAV_LINKS = [
 ] as const;
 
 const LINK_CLASS =
-  "inline-flex min-h-11 items-center gap-1.5 rounded-full px-2.5 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-peach-300 sm:px-3.5";
+  "inline-flex min-h-11 items-center gap-1.5 rounded-full px-1 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-peach-300 sm:px-3.5";
 const IDLE_CLASS = "text-text-muted hover:bg-white/5 hover:text-peach-300";
 const CURRENT_CLASS = "bg-peach-500/10 text-peach-300";
 const EN_MARKER_CLASS =
@@ -31,7 +31,7 @@ export default function SiteNav() {
 
   return (
     <nav aria-label="Main" className="mt-3 w-full">
-      <ul className="flex flex-wrap items-center justify-center gap-1 sm:gap-x-2">
+      <ul className="flex flex-wrap items-center justify-center gap-y-1 sm:gap-x-2">
         {NAV_LINKS.map((link) => {
           const { href, labelKey } = link;
           const isCurrent = pathname === href;

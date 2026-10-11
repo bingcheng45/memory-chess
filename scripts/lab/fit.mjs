@@ -17,7 +17,7 @@ import { argsOf, loadPersona, PERSONA_ENV, runPersona, sized } from "./drive.mjs
 const CASE_ENV = "LAB_FIT_CASE";
 const NAV_WIDTHS = [320, 360, 390];
 /** Rows the nav may take per locale at 320, 360 and 390 px. English must fit one; the others may not grow. */
-const NAV_ROWS = { "": [1, 1, 1], "/de": [2, 2, 2], "/ja": [2, 1, 1] };
+const NAV_ROWS = { "": [1, 1, 1], "/de": [2, 2, 1], "/ja": [1, 1, 1] };
 const MIN_TAP_PX = 44;
 const MIN_TEXT_PX = 14;
 const LOCKED_WIDTHS = [1440, 390];

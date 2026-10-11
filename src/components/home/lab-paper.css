@@ -218,11 +218,6 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-foot-links a, .lab-paper .lab-foot-social a { display: inline-block; padding: 6px 0; font: 500 15px/1.4 var(--lp-ui); color: var(--lp-ink); text-decoration: none; }
 .lab-paper .lab-foot-links a:hover, .lab-paper .lab-foot-social a:hover { color: var(--lp-accent); text-decoration: underline; }
 .lab-awards { display: grid; gap: 12px; }
-.lab-paper .lab-award { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-md); background: var(--lp-surface); color: var(--lp-ink); text-decoration: none; }
-.lab-paper .lab-award:hover { border-color: var(--lp-ink-2); color: var(--lp-ink); }
-.lab-award-rank { display: grid; place-items: center; flex: none; width: 36px; height: 36px; border: 1.5px solid var(--lp-ink); border-radius: 50%; font: 600 14px/1 var(--lp-data); }
-.lab-award small { display: block; font: 500 12px/1.4 var(--lp-ui); color: var(--lp-muted); }
-.lab-award b { font: 600 15px/1.4 var(--lp-ui); }
 .lab-foot-base { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--lp-line); font: 400 14px/1.4 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .lab-foot-social a { display: inline-flex; padding: 8px; color: var(--lp-ink-2); }
 

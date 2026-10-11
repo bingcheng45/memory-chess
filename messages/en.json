@@ -927,11 +927,7 @@
       "footer": {
         "description": "A free board-memory game. Study a position, rebuild it, read the number.",
         "site": "Site",
-        "recognition": "Recognition",
-        "productHunt": "Product Hunt",
-        "productHuntEducation": "Product Hunt · Education",
-        "productOfTheDay": "Product of the Day",
-        "productOfTheWeek": "Product of the Week"
+        "recognition": "Recognition"
       }
     }
   },

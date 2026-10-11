@@ -138,7 +138,7 @@ Shadows appear only on the dropdown (`0 12px 32px rgba(13,27,36,.12)`) and the v
 
 **Record panels.** Fig. label and a `Sample` tag, then the title (a sentence ending with a full stop), the metric in mono, the change in green with an arrow and words ("Up 1 piece since last week"), the chart, then the caption. Charts use the accent for the measured series and neutral lines for grid lines. Baselines (King) use a hatched neutral bar and the word "baseline". Heatmaps use a single-hue accent ramp with a labelled "fewer misses → more" key. Streak days use fill (played), hatch (forgiven), outline (missed) and a dashed accent outline (today), each with a text key.
 
-**Footer.** A surface-2 band with a top hairline, no black. Three columns: the mark with a one-line description, the site links (ink text that turns accent and underlined on hover), and the recognition chips (Product Hunt #5 Product of the Day, #2 Product of the Week in Education). The chips are redrawn as bordered cards, because the official badge images are orange and black and would break the palette. The base row holds the copyright, X (Twitter) and the language.
+**Footer.** A surface-2 band with a top hairline, no black. Three columns: the mark with a one-line description, the site links (ink text that turns accent and underlined on hover), and the recognition badges (Product Hunt #5 Product of the Day, #2 Product of the Week in Education). Use the official Product Hunt badge images in their light theme (`theme=light`) on paper and their dark theme on dark pages; never redraw them. `ProductHuntBadges` in `src/components/ui/Footer.tsx` renders both. The base row holds the copyright, X (Twitter) and the language.
 
 ## Voice
 

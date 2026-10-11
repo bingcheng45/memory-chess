@@ -2,12 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { FOOTER_LINKS, PRODUCT_HUNT_DAY_URL, PRODUCT_HUNT_WEEK_URL, X_URL, XIcon } from "@/components/ui/Footer";
-
-const AWARDS = [
-  { href: PRODUCT_HUNT_DAY_URL, rank: "#5", source: "productHunt", title: "productOfTheDay" },
-  { href: PRODUCT_HUNT_WEEK_URL, rank: "#2", source: "productHuntEducation", title: "productOfTheWeek" },
-] as const;
+import { FOOTER_LINKS, ProductHuntBadges, X_URL, XIcon } from "@/components/ui/Footer";
 
 /** The site footer on the Lab Paper homepage: the same links and awards as the site footer, on paper. */
 export function LabFooter() {
@@ -38,17 +33,7 @@ export function LabFooter() {
           </nav>
           <div>
             <p className="lab-foot-h">{t("recognition")}</p>
-            <div className="lab-awards">
-              {AWARDS.map((award) => (
-                <a key={award.rank} className="lab-award" href={award.href} target="_blank" rel="noopener noreferrer">
-                  <span className="lab-award-rank">{award.rank}</span>
-                  <span>
-                    <small>{t(award.source)}</small>
-                    <b>{t(award.title)}</b>
-                  </span>
-                </a>
-              ))}
-            </div>
+            <ProductHuntBadges theme="light" className="lab-awards" />
           </div>
         </div>
         <div className="lab-foot-base">

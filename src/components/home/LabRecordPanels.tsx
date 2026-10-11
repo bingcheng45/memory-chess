@@ -303,17 +303,20 @@ export function TypesPanel({ result: { readiness, value: recall }, daysAgo }: { 
   const t = useTranslations("home.lab.record");
   const pieces = useTranslations("home.lab.calibrate.pieceTypes");
   const tags = useTags();
-  const typeName = (type: PieceSymbol) => pieces(mapChessJsPieceToType(type));
+  /** The king is in every round, so its row is the baseline the other pieces read against, not a piece to train. */
+  const typeBar = (type: PieceSymbol, share: number | null, value: string) => {
+    const name = pieces(mapChessJsPieceToType(type));
+    const baseline = type === "k";
+    return (
+      <RecallBar key={type} baseline={baseline} label={baseline ? <>{name} <small>{t("types.baseline")}</small></> : name} share={share} value={value} />
+    );
+  };
   const kings = (king: TypeRecall) => <p className="lab-note">{t("types.kings", { recalled: king.recalled, shown: king.shown })}</p>;
   const ready = recall && hasFigure(readiness);
 
   const sample = (
     <>
-      <div className="lab-bars">
-        {SAMPLE_TYPE_RECALL.map(({ type, share }) => (
-          <RecallBar key={type} label={typeName(type)} share={share / 100} value={`${share}%`} />
-        ))}
-      </div>
+      <div className="lab-bars">{SAMPLE_TYPE_RECALL.map(({ type, share }) => typeBar(type, share / 100, `${share}%`))}</div>
       <p className="lab-note">{t("types.sampleNote")}</p>
     </>
   );
@@ -323,14 +326,9 @@ export function TypesPanel({ result: { readiness, value: recall }, daysAgo }: { 
       {ready ? (
         <>
           <div className="lab-bars">
-            {recall.types.filter(({ shown }) => shown > 0).map(({ type, shown, recalled, ready }) => (
-              <RecallBar
-                key={type}
-                label={typeName(type)}
-                share={ready ? recalled / shown : null}
-                value={ready ? `${Math.round((recalled / shown) * 100)}%` : t("types.thin", { shown })}
-              />
-            ))}
+            {[...recall.types.filter(({ shown }) => shown > 0), recall.king].map(({ type, shown, recalled, ready }) =>
+              typeBar(type, ready ? recalled / shown : null, ready ? `${Math.round((recalled / shown) * 100)}%` : t("types.thin", { shown })),
+            )}
           </div>
           {kings(recall.king)}
           <p className="lab-note">{t("fromRounds", { count: readiness.sampleSize })}</p>

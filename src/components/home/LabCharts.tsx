@@ -215,9 +215,9 @@ export function WeekRing({ played, goal, label }: { readonly played: number; rea
   );
 }
 
-export function RecallBar({ label, share, value }: { label: ReactNode; share: number | null; value: ReactNode }) {
+export function RecallBar({ label, share, value, baseline }: { label: ReactNode; share: number | null; value: ReactNode; baseline?: boolean }) {
   return (
-    <div className="lab-bar" data-thin={share === null ? "" : undefined}>
+    <div className="lab-bar" data-thin={share === null ? "" : undefined} data-baseline={baseline ? "" : undefined}>
       <span>{label}</span>
       <span className="lab-bar-track">
         {share !== null && (

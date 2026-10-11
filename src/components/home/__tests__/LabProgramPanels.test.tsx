@@ -233,7 +233,8 @@ describe("the goal", () => {
     window.localStorage.setItem(TARGET_KEY, JSON.stringify({ pieceCount: 20, accuracy: 60, createdDay: "2026-10-01" }));
     renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
 
-    expect(within(goalPanel()).getByText("No round at 20 or more pieces since you set this goal.")).toBeInTheDocument();
+    expect(goalPanel().querySelector(".lab-empty")).toHaveTextContent("No round at 20 or more pieces since you set this goal. Play a round →");
+    expect(within(goalPanel()).getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", "/game?pieceCount=20&memorizeTime=10&source=home_quick");
     expect(within(goalPanel()).queryByRole("progressbar")).toBeNull();
   });
 });

@@ -261,9 +261,9 @@ describe("insight sentences", () => {
 
 describe("a record panel that is still warming up", () => {
   const needs = {
-    "Miss map": "Play a few more rounds to start your miss map.",
-    "Recall by piece type": /more rounds? until a piece other than the king has 20 sightings\.$/,
-    Insights: "Insights read your record from 10 rounds. 8 more rounds to go.",
+    "Miss map": "Play a few more rounds to start your miss map. Play a round →",
+    "Recall by piece type": /more rounds? until a piece other than the king has 20 sightings\. Play a round →$/,
+    Insights: "Insights read your record from 10 rounds. 8 more rounds to go. Play a round →",
   };
 
   it.each(Object.entries(needs))("%s keeps what it still needs and draws a Sample under it", (name, need) => {

@@ -8,7 +8,7 @@ type UnlockMetric = Exclude<MetricId & PanelId, (typeof NOT_UNLOCKED)[number]>;
 const unlocks = (panel: PanelId): panel is UnlockMetric => panel in LAB_METRICS && !(NOT_UNLOCKED as readonly string[]).includes(panel);
 
 /** The metrics a few rounds unlock, in the order the section's rows read them. */
-const UNLOCK_ORDER = PANEL_ORDER.filter(unlocks);
+export const UNLOCK_ORDER = PANEL_ORDER.filter(unlocks);
 
 export interface Unlock {
   readonly metric: UnlockMetric;

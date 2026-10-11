@@ -8,7 +8,9 @@ import { persona } from "@/test-utils/labPersona";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
-const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. 6\\.\\d+ · ${name}$`)).closest(".lab-panel") as HTMLElement;
+/** The figure label atop a panel; the unlock strip repeats it for each figure still locked. */
+const FIG = ".lab-panel-h > .lab-k";
+const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. 6\\.\\d+ · ${name}$`), { selector: FIG }).closest(".lab-panel") as HTMLElement;
 const lines = (list: HTMLElement) => within(list).getAllByRole("listitem").map((item) => item.textContent);
 
 afterEach(() => {
@@ -21,7 +23,7 @@ describe("insights panel", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
     const insights = panel("Insights");
 
-    expect(screen.getByText("Fig. 6.11 · Insights")).toBeInTheDocument();
+    expect(screen.getByText("Fig. 6.11 · Insights", { selector: FIG })).toBeInTheDocument();
     expect(within(insights).getByText("Sample")).toBeInTheDocument();
     expect(lines(within(insights).getByRole("list", { name: "Sample finding" }))).toEqual([
       "Example from a sample record: the a and h files missed about twice as often as the centre files, d and e, 38% of pieces against 19%.Play 8 pieces, 15 s →",
@@ -89,7 +91,7 @@ describe("lab notebook panel", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor", "")} />);
     const notebook = panel("Lab notebook");
 
-    expect(screen.getByText("Fig. 6.8 · Lab notebook")).toBeInTheDocument();
+    expect(screen.getByText("Fig. 6.8 · Lab notebook", { selector: FIG })).toBeInTheDocument();
     expect(within(notebook).getByText("Sample")).toBeInTheDocument();
     expect(lines(within(notebook).getByRole("list", { name: "Sample notebook entries" }))).toEqual([
       "Day 12. Memory span moved from 6 to 8 pieces.",

@@ -7,7 +7,9 @@ import { round } from "@/lib/lab/__tests__/fixtures";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
-const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. 6\\.\\d+ · ${name}$`)).closest(".lab-panel") as HTMLElement;
+/** The figure label atop a panel; the unlock strip repeats it for each figure still locked. */
+const FIG = ".lab-panel-h > .lab-k";
+const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. 6\\.\\d+ · ${name}$`), { selector: FIG }).closest(".lab-panel") as HTMLElement;
 const texts = (element: HTMLElement, selector: string) => [...element.querySelectorAll(selector)].map((node) => node.textContent);
 const headline = (span: HTMLElement) => texts(span, ".lab-span-figure, .lab-span-held");
 const tagOf = (element: HTMLElement) => element.querySelector(".lab-tag")?.textContent ?? null;

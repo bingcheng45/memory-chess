@@ -8,7 +8,7 @@ import { persona } from "@/test-utils/labPersona";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
-const streakPanel = () => screen.getByText(/^Fig\. 6\.\d+ · Days in a row$/).closest(".lab-panel") as HTMLElement;
+const streakPanel = () => screen.getByText(/^Fig\. 6\.\d+ · Days in a row$/, { selector: ".lab-panel-h > .lab-k" }).closest(".lab-panel") as HTMLElement;
 const welcome = () => document.querySelector(".lab-welcome");
 
 beforeEach(() => {

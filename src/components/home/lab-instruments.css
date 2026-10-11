@@ -145,7 +145,7 @@
 }
 @media (max-width: 640px) {
   .lab {
-    --lab-h-unlock: 632px; --lab-h-span: 544px; --lab-h-held: 512px; --lab-h-spark: 496px; --lab-h-speed: 544px;
+    --lab-h-unlock: 360px; --lab-h-span: 544px; --lab-h-held: 512px; --lab-h-spark: 496px; --lab-h-speed: 544px;
     --lab-h-heat: 592px; --lab-h-streak: 624px; --lab-h-bests: 592px; --lab-h-types: 632px; --lab-h-tools: 408px;
     --lab-h-insights: 600px; --lab-h-notebook: 648px; --lab-h-plans: 1300px; --lab-h-goal: 464px; --lab-h-daily: 504px;
     --lab-h-curve: 648px; --lab-h-board: 648px;

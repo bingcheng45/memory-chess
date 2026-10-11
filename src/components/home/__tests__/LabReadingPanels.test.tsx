@@ -281,3 +281,26 @@ describe("chart labels", () => {
   });
 });
 
+
+describe("a panel that is still warming up", () => {
+  const READING_PANELS = ["Memory span", "Pieces held", "Accuracy over time", "Speed"];
+
+  it.each(PERSONA_NAMES)("never leaves its reserved chart space empty for %s", (name) => {
+    show(name);
+
+    const warming = READING_PANELS.map(panel).filter((element) => element.querySelector(".lab-empty"));
+    for (const element of warming) {
+      expect(within(element).getByRole("img")).toBeInTheDocument();
+      expect(tagOf(element)).toBe("Sample");
+    }
+  });
+
+  it("covers a player who has played but not enough for any line", () => {
+    show("twoRounds");
+
+    const speed = panel("Speed");
+    expect(texts(speed, ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10 s in games draw your speed line."]);
+    expect(within(speed).getByRole("img")).toBeInTheDocument();
+    expect(tagOf(speed)).toBe("Sample");
+  });
+});

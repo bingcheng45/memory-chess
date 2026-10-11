@@ -1,7 +1,9 @@
 /* globals.css gives html and body overflow-x: hidden, which turns body into a scroll container that never
-   scrolls, so position: sticky never engages. clip hides the same overflow without that side effect. */
-html:has(.lab), html:has(.lab) body { overflow-x: clip; }
+   scrolls, so position: sticky never engages. clip on the root keeps sticky working but makes iOS Safari jitter
+   the index bar while scrolling, so the root stays visible and .lab clips its own overflow. */
+html:has(.lab), html:has(.lab) body { overflow-x: visible; }
 .lab {
+  overflow-x: clip;
   --lab-bg: #f5f9f8; --lab-paper: #ffffff; --lab-ink: #0d1b24; --lab-ink-2: #3a4b56; --lab-ink-3: #5a6a74;
   --lab-line: #d6e3e0; --lab-line-2: #b8ccc7; --lab-grid: rgba(31, 79, 224, 0.05);
   --lab-mint: #3fd0a8; --lab-mint-soft: #ddf6ee; --lab-mint-ink: #0a7158; --lab-ok: #9fe7d1;

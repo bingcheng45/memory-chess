@@ -1,8 +1,7 @@
 import { createTranslator } from "next-intl";
 import { shareCaption, type DashboardTranslate } from "@/components/dashboard/shareCaption";
 import { resultCaption, resultCardCopy, type ResultCardCopy, type ResultTranslate, type RoundShare } from "@/components/game/roundShare";
-import type { CardTrend } from "@/components/share/cardCanvas";
-import { SITE } from "@/components/share/cardCanvas";
+import { SITE, type CardTrend } from "@/components/share/cardCanvas";
 import type { Figure } from "@/lib/lab/dashboard";
 import type { SharedFigure, SharedProgress } from "@/lib/share/shareCode";
 import en from "../../../messages/en.json";

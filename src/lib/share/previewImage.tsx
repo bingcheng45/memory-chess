@@ -30,7 +30,8 @@ const fonts = Promise.all(
 );
 
 /** The largest size up to `max` at which `text` fits `width`, estimated, since the renderer cannot measure ahead. */
-const fit = (text: string, max: number, width: number) => Math.max(SMALLEST, Math.min(max, Math.floor(width / (Math.max(text.length, 1) * ADVANCE))));
+const fitChars = (chars: number, max: number, width: number) => Math.max(SMALLEST, Math.min(max, Math.floor(width / (Math.max(chars, 1) * ADVANCE))));
+const fit = (text: string, max: number, width: number) => fitChars(text.length, max, width);
 
 const row = (style: CSSProperties = {}): CSSProperties => ({ display: "flex", flexDirection: "row", ...style });
 const column = (style: CSSProperties = {}): CSSProperties => ({ display: "flex", flexDirection: "column", ...style });
@@ -51,7 +52,7 @@ function Trend({ trend, size }: { trend: CardTrend; size: number }) {
 
 function Value({ segments, trend, size, width }: { segments: readonly PreviewSegment[]; trend?: CardTrend; size: number; width: number }) {
   const length = segments.reduce((sum, { text, big }) => sum + (big ? text.length : text.length * 0.3), 0) + (trend ? (trend.text.length + 2) * 0.4 : 0);
-  const fitted = fit("x".repeat(Math.ceil(length)), size, width);
+  const fitted = fitChars(length, size, width);
   return (
     <div style={row({ alignItems: "baseline", whiteSpace: "pre" })}>
       {segments.map(({ text, big }, index) => (

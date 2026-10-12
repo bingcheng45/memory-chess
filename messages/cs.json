@@ -259,6 +259,10 @@
         "cta": "Překonáš to?",
         "text": "{kind, select, daily {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na denní pozici Memory Chess z {date}.} review {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na opakovací pozici Memory Chess.} other {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) v Memory Chess.}} Překonáš to?",
         "alt": "Karta s výsledkem Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Kolo uloženo. Aktualizované statistiky najdeš hned níž.",
+        "action": "Ukázat"
       }
     },
     "comparison": {

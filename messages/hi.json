@@ -259,6 +259,10 @@
         "cta": "क्या आप इसे हरा सकते हैं?",
         "text": "{kind, select, daily {मैंने Memory Chess के {date} के दैनिक बोर्ड पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।} review {मैंने Memory Chess के एक समीक्षा बोर्ड पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।} other {मैंने Memory Chess पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।}} क्या आप इसे हरा सकते हैं?",
         "alt": "Memory Chess नतीजा कार्ड: {details}।"
+      },
+      "savedToast": {
+        "message": "राउंड सेव हो गया। आपके नए आँकड़े ठीक नीचे हैं।",
+        "action": "दिखाएँ"
       }
     },
     "comparison": {

@@ -259,6 +259,10 @@
         "cta": "Klarer du å slå det?",
         "text": "{kind, select, daily {Jeg husket {correct, number} av {total, number} brikker ({accuracy}) på dagens brett i Memory Chess for {date}.} review {Jeg husket {correct, number} av {total, number} brikker ({accuracy}) på et repetisjonsbrett i Memory Chess.} other {Jeg husket {correct, number} av {total, number} brikker ({accuracy}) i Memory Chess.}} Klarer du å slå det?",
         "alt": "Resultatkort fra Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Runden er lagret. De oppdaterte tallene dine står rett nedenfor.",
+        "action": "Vis meg"
       }
     },
     "comparison": {

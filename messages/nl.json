@@ -259,6 +259,10 @@
         "cta": "Kun jij het beter?",
         "text": "{kind, select, daily {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) op het dagbord van Memory Chess van {date}.} review {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) op een herhalingsbord van Memory Chess.} other {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) bij Memory Chess.}} Kun jij het beter?",
         "alt": "Resultaatkaart van Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Ronde opgeslagen. Je bijgewerkte statistieken staan hieronder.",
+        "action": "Laat zien"
       }
     },
     "comparison": {

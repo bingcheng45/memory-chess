@@ -259,6 +259,10 @@
         "cta": "Pystytkö parempaan?",
         "text": "{kind, select, daily {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessin päivän laudalla {date}.} review {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessin kertauslaudalla.} other {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessissä.}} Pystytkö parempaan?",
         "alt": "Memory Chessin tuloskortti: {details}."
+      },
+      "savedToast": {
+        "message": "Kierros tallennettu. Päivitetyt tilastosi ovat heti alla.",
+        "action": "Näytä"
       }
     },
     "comparison": {

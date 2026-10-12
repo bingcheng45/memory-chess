@@ -259,6 +259,10 @@
         "cta": "Pobijesz to?",
         "text": "{kind, select, daily {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na dziennej szachownicy Memory Chess z dnia {date}.} review {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na szachownicy powtórkowej Memory Chess.} other {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) w Memory Chess.}} Pobijesz to?",
         "alt": "Karta wyniku Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Runda zapisana. Zaktualizowane statystyki są tuż poniżej.",
+        "action": "Pokaż"
       }
     },
     "comparison": {

@@ -259,6 +259,10 @@
         "cta": "Сможете лучше?",
         "text": "{kind, select, daily {Мне удалось запомнить {correct, number} из {total, plural, one {# фигуры} few {# фигур} many {# фигур} other {# фигур}} ({accuracy}) на ежедневной доске Memory Chess за {date}.} review {Мне удалось запомнить {correct, number} из {total, plural, one {# фигуры} few {# фигур} many {# фигур} other {# фигур}} ({accuracy}) на доске для повторения в Memory Chess.} other {Мне удалось запомнить {correct, number} из {total, plural, one {# фигуры} few {# фигур} many {# фигур} other {# фигур}} ({accuracy}) в Memory Chess.}} Сможете лучше?",
         "alt": "Карточка результата Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Раунд сохранён. Обновлённая статистика чуть ниже.",
+        "action": "Показать"
       }
     },
     "comparison": {

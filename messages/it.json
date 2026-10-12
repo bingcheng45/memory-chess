@@ -259,6 +259,10 @@
         "cta": "Riesci a fare di meglio?",
         "text": "{kind, select, daily {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) sulla scacchiera giornaliera di Memory Chess del {date}.} review {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) su una scacchiera di ripasso di Memory Chess.} other {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) su Memory Chess.}} Riesci a fare di meglio?",
         "alt": "Scheda del risultato di Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Partita salvata. Le tue statistiche aggiornate sono qui sotto.",
+        "action": "Mostra"
       }
     },
     "comparison": {

@@ -259,6 +259,10 @@
         "cta": "Saurez-vous faire mieux ?",
         "text": "{kind, select, daily {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur le plateau du jour de Memory Chess du {date}.} review {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur un plateau de révision de Memory Chess.} other {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur Memory Chess.}} Saurez-vous faire mieux ?",
         "alt": "Carte de résultat Memory Chess : {details}."
+      },
+      "savedToast": {
+        "message": "Partie enregistrée. Vos statistiques à jour sont juste en dessous.",
+        "action": "Voir"
       }
     },
     "comparison": {

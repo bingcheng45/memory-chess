@@ -259,6 +259,10 @@
         "cta": "Bạn có vượt được không?",
         "text": "{kind, select, daily {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở bàn cờ hằng ngày của Memory Chess ngày {date}.} review {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở một bàn cờ ôn tập của Memory Chess.} other {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) trên Memory Chess.}} Bạn có vượt được không?",
         "alt": "Thẻ kết quả Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Đã lưu ván. Số liệu mới của bạn ở ngay bên dưới.",
+        "action": "Xem"
       }
     },
     "comparison": {

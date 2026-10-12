@@ -259,6 +259,10 @@
         "cta": "你能超越嗎？",
         "text": "{kind, select, daily {我在 Memory Chess {date} 的每日棋盤中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。} review {我在 Memory Chess 的複習棋盤中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。} other {我在 Memory Chess 中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。}}你能超越嗎？",
         "alt": "Memory Chess 結果卡片：{details}。"
+      },
+      "savedToast": {
+        "message": "本局已儲存。更新後的數據就在下方。",
+        "action": "查看"
       }
     },
     "comparison": {

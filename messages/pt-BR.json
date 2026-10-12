@@ -259,6 +259,10 @@
         "cta": "Consegue superar?",
         "text": "{kind, select, daily {Lembrei {correct, number} de {total, number} peças ({accuracy}) no tabuleiro diário do Memory Chess de {date}.} review {Lembrei {correct, number} de {total, number} peças ({accuracy}) em um tabuleiro de revisão do Memory Chess.} other {Lembrei {correct, number} de {total, number} peças ({accuracy}) no Memory Chess.}} Consegue superar?",
         "alt": "Cartão de resultado do Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Rodada salva. Suas estatísticas atualizadas estão logo abaixo.",
+        "action": "Ver"
       }
     },
     "comparison": {

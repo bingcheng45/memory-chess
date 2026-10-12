@@ -259,6 +259,10 @@
         "cta": "이길 수 있나요?",
         "text": "{kind, select, daily {Memory Chess {date} 데일리 보드에서 기물 {total, number}개 중 {correct, number}개({accuracy})를 기억했어요.} review {Memory Chess 복습 보드에서 기물 {total, number}개 중 {correct, number}개({accuracy})를 기억했어요.} other {Memory Chess에서 기물 {total, number}개 중 {correct, number}개({accuracy})를 기억했어요.}} 이길 수 있나요?",
         "alt": "Memory Chess 결과 카드: {details}."
+      },
+      "savedToast": {
+        "message": "라운드가 저장됐어요. 업데이트된 기록은 바로 아래에 있어요.",
+        "action": "보기"
       }
     },
     "comparison": {

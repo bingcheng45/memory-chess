@@ -259,6 +259,10 @@
         "cta": "Kan du slå det?",
         "text": "{kind, select, daily {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) på dagens bräde i Memory Chess den {date}.} review {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) på ett repetitionsbräde i Memory Chess.} other {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) i Memory Chess.}} Kan du slå det?",
         "alt": "Resultatkort från Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Rundan är sparad. Din uppdaterade statistik finns strax nedanför.",
+        "action": "Visa"
       }
     },
     "comparison": {

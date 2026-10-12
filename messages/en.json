@@ -1074,6 +1074,10 @@
         "cta": "Can you beat it?",
         "text": "{kind, select, daily {I recalled {correct, number} of {total, number} pieces ({accuracy}) on the Memory Chess daily board for {date}.} review {I recalled {correct, number} of {total, number} pieces ({accuracy}) on a Memory Chess review board.} other {I recalled {correct, number} of {total, number} pieces ({accuracy}) on Memory Chess.}} Can you beat it?",
         "alt": "Memory Chess result card: {details}."
+      },
+      "savedToast": {
+        "message": "Round saved. Your updated stats are just below.",
+        "action": "Show me"
       }
     },
     "comparison": {

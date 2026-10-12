@@ -259,6 +259,10 @@
         "cta": "Poți mai bine?",
         "text": "{kind, select, daily {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) pe tabla zilnică Memory Chess din {date}.} review {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) pe o tablă de recapitulare Memory Chess.} other {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) la Memory Chess.}} Poți mai bine?",
         "alt": "Card de rezultat Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Runda a fost salvată. Statisticile tale actualizate sunt chiar mai jos.",
+        "action": "Arată-mi"
       }
     },
     "comparison": {

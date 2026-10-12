@@ -259,6 +259,10 @@
         "cta": "Geçebilir misin?",
         "text": "{kind, select, daily {Memory Chess günlük tahtasında ({date}) {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} review {Memory Chess tekrar tahtasında {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} other {Memory Chess'te {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.}} Geçebilir misin?",
         "alt": "Memory Chess sonuç kartı: {details}."
+      },
+      "savedToast": {
+        "message": "Tur kaydedildi. Güncel istatistiklerin hemen aşağıda.",
+        "action": "Göster"
       }
     },
     "comparison": {

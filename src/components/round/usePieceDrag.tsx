@@ -61,6 +61,7 @@ export interface PieceDrag {
     onPointerMove: (event: PointerEvent<HTMLElement>) => void;
     onPointerUp: (event: PointerEvent<HTMLElement>) => void;
     onPointerCancel: (event: PointerEvent<HTMLElement>) => void;
+    onLostPointerCapture: (event: PointerEvent<HTMLElement>) => void;
   };
   /** The source of the drag in flight, so it can be drawn as lifted. */
   readonly dragging: DragSource | null;
@@ -130,14 +131,10 @@ export function usePieceDrag({ onStart, onDrop }: PieceDragOptions): PieceDrag {
 
   const bind: PieceDrag["bind"] = (source) => ({
     onPointerDown: (event) => {
-      if (gesture.current || !event.isPrimary || event.button !== 0) return;
-      gesture.current = {
-        phase: "pressed",
-        pointerId: event.pointerId,
-        source,
-        x: event.clientX,
-        y: event.clientY,
-      };
+      if (!event.isPrimary || event.button !== 0) return;
+      // A new primary press means the last one is over, even if its release never reached us.
+      if (gesture.current) settle(null);
+      gesture.current = { phase: "pressed", pointerId: event.pointerId, source, x: event.clientX, y: event.clientY };
       event.currentTarget.setPointerCapture?.(event.pointerId);
     },
     onPointerMove: (event) => {
@@ -152,17 +149,8 @@ export function usePieceDrag({ onStart, onDrop }: PieceDragOptions): PieceDrag {
         const square = document.querySelector("[data-live] > [data-coordinate]") ?? event.currentTarget;
         const size = square.getBoundingClientRect().width || FALLBACK_GHOST_PX;
         const lift = event.pointerType === "touch" ? size * TOUCH_LIFT : 0;
-        gesture.current = {
-          phase: "dragging",
-          pointerId: current.pointerId,
-          source: current.source,
-          lift,
-        };
-        setGhost({
-          piece: current.source.piece,
-          size,
-          transform: ghostTransform(event.clientX, event.clientY, size, lift),
-        });
+        gesture.current = { phase: "dragging", pointerId: current.pointerId, source: current.source, lift };
+        setGhost({ piece: current.source.piece, size, transform: ghostTransform(event.clientX, event.clientY, size, lift) });
         setDragging(current.source);
       } else if (current.phase === "dragging" && ghostNode.current) {
         const size = ghostNode.current.offsetWidth;
@@ -183,6 +171,10 @@ export function usePieceDrag({ onStart, onDrop }: PieceDragOptions): PieceDrag {
     onPointerCancel: (event) => {
       if (gesture.current?.pointerId === event.pointerId) settle(null);
     },
+    // The release clears the gesture before capture goes, so a capture lost with a gesture still open is a cancel.
+    onLostPointerCapture: (event) => {
+      if (gesture.current?.pointerId === event.pointerId) settle(null);
+    },
   });
 
   const ghostElement =
@@ -192,11 +184,7 @@ export function usePieceDrag({ onStart, onDrop }: PieceDragOptions): PieceDrag {
         ref={ghostNode}
         className="lab-drag-ghost"
         aria-hidden="true"
-        style={{
-          width: ghost.size,
-          height: ghost.size,
-          transform: ghost.transform,
-        }}
+        style={{ width: ghost.size, height: ghost.size, transform: ghost.transform }}
       >
         <PieceImage piece={ghost.piece} />
       </div>,

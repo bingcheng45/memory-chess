@@ -43,6 +43,9 @@ function Round({ initial }: { initial: RoundState }) {
 const pointOf = (square: SquareName) => ({ clientX: BOARD_SQUARES.indexOf(square) * 10 + 5, clientY: 5 });
 const OFF_BOARD = { clientX: 5, clientY: 900 };
 
+// A drag's release arms a one-shot click swallower that the next task disarms; let it go before the next test.
+afterEach(() => new Promise((resolve) => setTimeout(resolve, 0)));
+
 beforeEach(() => {
   Object.assign(document, {
     elementFromPoint: (x: number, y: number) =>
@@ -191,6 +194,19 @@ describe("drag and drop", () => {
     expect(cell("a8")).toHaveAccessibleName("a8, black rook");
     expect(cell("d8")).toHaveAccessibleName("d8, empty");
     expect(document.querySelector(".lab-drag-ghost")).toBeNull();
+  });
+
+  it("cancels when the pointer capture is lost mid-drag, and the next press drags again", () => {
+    renderWithIntl(<Round initial={rebuilding({ type: "place", piece: { color: "black", type: "rook" }, square: "a8", now: 2000 })} />);
+    const init = { pointerId: 5, isPrimary: true, button: 0 };
+
+    fireEvent.pointerDown(cell("a8"), { ...init, ...pointOf("a8") });
+    fireEvent.pointerMove(cell("a8"), { ...init, ...pointOf("d8") });
+    fireEvent.lostPointerCapture(cell("a8"), init);
+    expect(document.querySelector(".lab-drag-ghost")).toBeNull();
+    drag(cell("a8"), [pointOf("a8"), pointOf("e8")]);
+
+    expect(cell("e8")).toHaveAccessibleName("e8, black rook");
   });
 
   it("treats a press on a placed piece that barely moves as a tap, which lifts it", () => {

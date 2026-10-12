@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Good chess calculation exercises for beginners are short. Pick two candidate moves and follow each for two plies, your move and the reply. After every imagined move, ask which enemy piece can capture on the square you landed on. Say each line out loud, then play it on a real board to check.",
+    quickAnswer: "Good chess calculation exercises for beginners compare two candidate moves, two plies each: your move and the reply. After every imagined move, ask which enemy piece can capture on the square you landed on. Then say the line out loud and play it on a real board to check.",
     takeaways: [
       "Two candidate moves, two plies each, is a full calculation for one decision.",
       "A line usually breaks at a piece that never moved, so suspect the starting position before the moves.",
@@ -95,7 +95,7 @@ const guide: LearnDocument = {
             "Say the first line out loud, 1.Nc7+. List what the knight on c7 attacks: a8, b5 and e8. That is the rook, the queen and the king.",
             "Ask which black piece can capture on c7. The queen on b5 cannot reach it, nor can the rook on a8, and the king on e8 is not next to it. Black must move the king, and 2.Nxb5 takes the queen for free.",
             "Say the second line, 1.Nf6+. It also checks the king on e8. Ask the same question. The pawn on g7 reaches f6, so 1...gxf6 wins the knight for nothing.",
-            "Now play both lines on the board. If you judged 1.Nf6+ safe, the piece you lost was the g7 pawn, which never moved.",
+            "Now play both lines on the board. If you judged 1.Nf6+ safe, the piece you lost track of was the g7 pawn, which never moved.",
           ],
         },
         {
@@ -142,7 +142,7 @@ const guide: LearnDocument = {
           paragraphs: [
             "Two. Each extra line is one more picture to keep apart from the base position, so start with the fewest that still give you a comparison.",
             "Spend your attention on defenders. Five candidates mean five landing squares to check, and those checks are where beginner lines go wrong.",
-            "Add a third candidate only when both of the first two fail for a reason you can say. Stay at two plies until the base position stops drifting.",
+            "Add a third candidate only when both of the first two fail for a reason you can say. Stay at two plies until five lines in a row check out on the board.",
             "When a line still fails, it usually fails in one of three places. The table names them, and the next section uses those names.",
           ],
         },
@@ -186,7 +186,7 @@ const guide: LearnDocument = {
             "Say the line in full, your move and the reply, before you touch a piece.",
             "Name every piece that attacks or defends the landing square before you imagine the next move.",
             "Play the line on a real board or an analysis board. Label any miss with a name from the table: forgotten defender, mixed lines or too deep.",
-            "Count the labels after a week. If most are forgotten defenders, the base position is the problem, so add the empty-board rounds below.",
+            "Count the labels after a week and train the most common one. If most are forgotten defenders, add the empty-board rounds below. If most are mixed lines, reset the real board and say \"back to the start\" before the second line. If most are too deep, drop back to two plies until five lines in a row check out.",
           ],
         },
       ],

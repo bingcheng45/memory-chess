@@ -93,7 +93,7 @@ const guide: LearnDocument = {
           ordered: true,
           items: [
             "Say the first line out loud, 1.Nc7+. List what the knight on c7 attacks: a8, b5 and e8. That is the rook, the queen and the king.",
-            "Ask which black piece can capture on c7. The queen on b5 cannot reach it, nor can the rook on a8, and the king on e8 is not next to it. Black must move the king, and 2.Nxb5 takes the queen for free.",
+            "Ask which black piece can capture on c7. The queen on b5 cannot reach it, nor can the rook on a8, and the king on e8 is not next to it. Black must move the king. After any king move, the knight on c7 still attacks the undefended queen on b5, so White wins it next move.",
             "Say the second line, 1.Nf6+. It also checks the king on e8. Ask the same question. The pawn on g7 reaches f6, so 1...gxf6 wins the knight for nothing.",
             "Now play both lines on the board. If you judged 1.Nf6+ safe, the piece you lost track of was the g7 pawn, which never moved.",
           ],
@@ -240,8 +240,8 @@ const guide: LearnDocument = {
       kind: "faq",
       items: [
         {
-          question: "How many moves ahead should a beginner calculate?",
-          answer: "Two plies, which means your move and your opponent's reply. Check who can capture on each landing square before you go further. Add a third ply once five lines in a row check out on the board. A deeper line built on a shaky base picture fails at the first ply anyway.",
+          question: "What is a ply in chess?",
+          answer: "A ply is one move by one side, so 1.Nc7+ Kd8 is two plies. Books and engines count depth in plies because a move can mean one side's turn or both. This guide trains two plies, your move and the reply.",
         },
         {
           question: "Does Memory Chess teach calculation?",

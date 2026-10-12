@@ -168,7 +168,7 @@
 @media (max-width: 640px) { .lab-dash > * { grid-column: span 12; } }
 /* Lines that fill in on the client hold their height from the server render. */
 .lab-daily-status, .lab-daily-reset, .lab-daily-copied { min-height: 1.45em; }
-.lab-daily-status { min-height: 2.9em; margin-top: 12px; font: 400 16px/1.45 var(--lp-body); line-height: 1.45; color: var(--lp-ink); }
+.lab-daily-status { min-height: 4.35em; margin-top: 12px; font: 400 16px/1.45 var(--lp-body); line-height: 1.45; color: var(--lp-ink); }
 .lab-daily-play { margin-top: 16px; }
 .lab-daily-grid { margin: 12px 0 0; font: 400 18px/1.2 var(--lp-ui); letter-spacing: 0; white-space: pre; }
 .lab-daily-key { display: flex; flex-wrap: wrap; gap: 4px 14px; }

@@ -3,17 +3,18 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "how-to-analyze-chess-games-for-beginners",
-    title: "How to Analyze Chess Games for Beginners",
+    title: "How to Analyze Chess Games for Beginners in 10 Minutes",
     h1: "How to analyze chess games for beginners",
-    description: "A ten-minute review that ends in one sentence. Find the move that decided the game, write your reason before the engine gives its own, and label the mistake.",
+    description: "Learn how to analyze chess games for beginners in ten minutes. Find the move that decided the game, explain it before the engine does, and label the mistake.",
     group: "practice",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
-    updatedAt: "2026-09-15T00:00:00.000Z",
+    updatedAt: "2026-10-13T00:00:00.000Z",
     questions: [
-      "How do I analyse my chess games?",
-      "Should beginners use the engine?",
-      "Should I review my wins?",
+      "How do I analyze my own chess games as a beginner?",
+      "Should beginners use a chess engine to review games?",
+      "How long should a chess game review take?",
+      "What should I look for when reviewing a lost chess game?",
     ],
     keywords: {
       primary: "how to analyze chess games for beginners",
@@ -27,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Find the one move that decided the game. Set that position up from memory, write one sentence on why the move was bad, then run the engine on that position only. Label the mistake and close the game.",
+    quickAnswer: "To analyze a chess game as a beginner, review only the move that decided it. Set that position up from memory and write one sentence on why the move was bad, before the engine sees it. Then label the mistake by its cause and close the game, ten minutes in all.",
     takeaways: [
       "One decisive move per game. Ignore the rest.",
       "Write your reason before the engine shows its line, or the engine's reason can replace yours.",
@@ -74,12 +75,41 @@ const guide: LearnDocument = {
       heading: "Three labels for a beginner mistake",
       blocks: [
         {
+          kind: "prose",
+          paragraphs: [
+            "Take one lost queen as the example. Your bishop stands on g5, Black has a knight on f6 and a queen on d7, and you play your queen to h5. The knight takes it. The same move can come from three different causes.",
+          ],
+        },
+        {
+          kind: "board",
+          position: {
+            id: "knight-takes-the-queen-on-h5",
+            white: ["Kg1", "Bg5", "Qh5"],
+            black: ["Ke8", "Qd7", "Nf6", "f7"],
+            toMove: "b",
+            unstated: ["g1", "e8", "f7"],
+            claims: [
+              { kind: "attacks", from: "f6", squares: ["h5"] },
+              { kind: "attacks", from: "g5", squares: ["f6"] },
+              { kind: "occupant", square: "d8", piece: null },
+              { kind: "noCheck" },
+              { kind: "legal", move: "Nxh5" },
+            ],
+          },
+          arrows: [
+            { from: "f6", to: "h5", kind: "attack" },
+            { from: "g5", to: "f6", kind: "attack" },
+          ],
+          marks: [{ square: "d8", kind: "ring" }],
+          caption: "Your bishop on g5 aims through the knight at an empty d8, so the knight on f6 is free to take the queen on h5.",
+        },
+        {
           kind: "list",
           ordered: false,
           items: [
-            "Never looked. Your queen went to h5 and the knight on f6 took it. The knight was there the whole time and your eyes never went to it.",
-            "Looked and misjudged. You saw the knight on f6 but counted it as pinned by your bishop on g5. It was pinned only to the queen on d8, and a pinned piece can still move.",
-            "Knew and rushed. You knew h5 was risky, had 30 seconds on the clock, and played it anyway. Treat this as a clock problem, and play longer games before you study more.",
+            "Never looked. You did not check what the knight on f6 attacked. It had stood there for ten moves and your eyes never went to it.",
+            "Looked and misjudged. You saw the knight but counted it as pinned by your bishop. Black's queen had left d8 for d7 a move earlier, so nothing stood behind it.",
+            "Knew and rushed. You saw the knight could take on h5, had 30 seconds on the clock, and played the move anyway. Treat this as a clock problem, and play longer games before you study more.",
           ],
         },
         {
@@ -89,42 +119,44 @@ const guide: LearnDocument = {
           ],
         },
       ],
-      facts: [
-        {
-          id: "knight-pinned-to-the-queen",
-          white: ["Kg1", "Bg5", "Qh5"],
-          black: ["Ke8", "Qd8", "Nf6"],
-          toMove: "b",
-          unstated: ["g1", "e8"],
-          claims: [
-            { kind: "attacks", from: "f6", squares: ["h5"] },
-            { kind: "attacks", from: "g5", squares: ["f6"] },
-            { kind: "legal", move: "Nxh5" },
-          ],
-        },
-        {
-          id: "bishop-g5-behind-the-knight",
-          white: ["Kg1", "Bg5"],
-          black: ["Ke8", "Qd8"],
-          unstated: ["g1", "e8"],
-          claims: [{ kind: "attacks", from: "g5", squares: ["d8"] }],
-        },
-      ],
     },
     {
       id: "ten-minutes",
       heading: "The ten-minute review, step by step",
       blocks: [
         {
-          kind: "list",
-          ordered: true,
-          items: [
-            "Minute 1. Name the decisive move from memory, before opening the game record.",
-            "Minutes 2 to 4. Set the position up from memory. Check it against the record and note any piece you placed wrong.",
-            "Minutes 5 to 6. Write the sentence. Why the move was bad, in your own words.",
-            "Minute 7. Engine on, that position only. A second sentence if it saw something you did not.",
-            "Minutes 8 to 9. Choose a label. Never looked, looked and misjudged, or knew and rushed.",
-            "Minute 10. Close everything. Do not scroll through the rest of the game.",
+          kind: "plan",
+          steps: [
+            {
+              label: "Minute 1",
+              duration: "1 minute",
+              detail: "Name the decisive move from memory, before you open the game record.",
+            },
+            {
+              label: "Minutes 2 to 4",
+              duration: "3 minutes",
+              detail: "Set the position up from memory. Check it against the record and note any piece you placed wrong or left out.",
+            },
+            {
+              label: "Minutes 5 to 6",
+              duration: "2 minutes",
+              detail: "Write the sentence. Why the move was bad, in your own words.",
+            },
+            {
+              label: "Minute 7",
+              duration: "1 minute",
+              detail: "Engine on, that position only. Add a second sentence if it saw something you did not.",
+            },
+            {
+              label: "Minutes 8 to 9",
+              duration: "2 minutes",
+              detail: "Choose a label. Never looked, looked and misjudged, or knew and rushed.",
+            },
+            {
+              label: "Minute 10",
+              duration: "1 minute",
+              detail: "Close everything. Do not scroll through the rest of the game.",
+            },
           ],
         },
       ],
@@ -138,9 +170,8 @@ const guide: LearnDocument = {
           paragraphs: [
             "Do not skip minutes 2 to 4. A piece you cannot place from memory is a lead. Check whether it was one of the pieces that decided the move.",
             "If it was, the label is probably never looked. If the missing piece stood far from the action, your sentence and the engine will say more.",
-            "Memory Chess trains the same rebuild on positions that are not from your games. A position appears for a fixed number of seconds, the board clears, and you put the pieces back.",
-            "The result screen then marks squares against the original as Correct, Incorrect or Missed. A square marked Missed is one where the original had a piece and you placed nothing.",
-            "On a screen 1024 pixels or wider the two boards sit side by side. Narrower screens stack the original above yours, so scroll to compare them.",
+            "Memory Chess trains the same rebuild on positions from outside your games. A position appears for a fixed number of seconds, the board clears, and you put the pieces back.",
+            "The result screen then scores your board square by square as correct, wrong placement or missed square. A missed square is one where the position had a piece and you placed none. The piece you left out shows faded on it.",
             "Start at 8 pieces with 10 seconds. That is two more pieces than the 6-piece medium preset, with the same time to look.",
           ],
         },
@@ -149,9 +180,9 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Rebuild eight pieces, then read the marks",
-              description: "Play 8 pieces with 10 seconds to look, 3 rounds. After each round, find the squares marked Missed. Those are pieces you did not place at all.",
+              description: "Play 8 pieces with 10 seconds to look, 3 rounds. After each round, count the missed squares. Each one is a piece you did not place at all.",
               duration: "about 4 minutes",
-              goal: "No squares marked Missed, even with an Incorrect square or two.",
+              goal: "Three rounds with no missed square, even if a piece or two lands on the wrong square.",
               play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },
             },
           ],
@@ -180,7 +211,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "That is the whole method. One move, one sentence before the engine, one label, one change tomorrow.",
+            "One move, one sentence before the engine, one label, one change tomorrow. That is the whole review.",
           ],
         },
       ],
@@ -197,15 +228,19 @@ const guide: LearnDocument = {
       items: [
         {
           question: "Should I use the engine at all?",
-          answer: "Yes, once, on one position, after you have written your own sentence. The engine is a check on your reasoning, not a replacement for it.",
+          answer: "Yes, once, on the deciding position, after your own sentence is written. Skip the full-game accuracy graph and the list of every inaccuracy. Twenty engine comments on one game are too many to act on. One comment checked against your own reason gives you a habit to change.",
         },
         {
-          question: "What about my wins?",
-          answer: "Review them the same way. A win can still contain a move your opponent could have punished. Finding it is cheaper than losing to it next week.",
+          question: "Should I review games I won?",
+          answer: "Yes, the same way. Look for the move your opponent could have punished and did not. A win often hides a loose piece or a missed capture, and finding it in a review costs ten minutes instead of a game next week.",
         },
         {
           question: "How many games a week should I review?",
-          answer: "Every game you play, for ten minutes each. If that is too many, play fewer games.",
+          answer: "Every slow game you play, ten minutes each. If that is more than your week allows, play fewer games rather than skipping reviews. An unreviewed loss tends to repeat, because the habit that caused it is still there.",
+        },
+        {
+          question: "What if no single move decided the game?",
+          answer: "Pick the earliest move after which you felt worse and write your sentence about it anyway. If the engine then shows a bigger mistake earlier in the game, note the move number and review that one next time. One move per review still holds.",
         },
       ],
     },
@@ -215,12 +250,12 @@ const guide: LearnDocument = {
         {
           kind: "guide",
           slug: "how-to-get-better-at-chess-for-beginners",
-          reason: "The four stages the three labels map onto.",
+          reason: "The four-stage plan whose last stage, one line after every game, this review expands.",
         },
         {
           kind: "guide",
           slug: "20-minute-daily-chess-study-plan",
-          reason: "A seven-minute version of this review inside a fixed daily session.",
+          reason: "A daily session with a seven-minute game block for days without ten minutes to spare.",
         },
         {
           kind: "guide",

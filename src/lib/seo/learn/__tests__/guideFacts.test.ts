@@ -401,7 +401,7 @@ function guideFacts(): Record<string, string[]> {
       `${word(grandmaster.pieceCount)} pieces in ${word(grandmaster.memorizeTime)} seconds is a quarter of a second per piece`,
       `at least ${minAccuracy("goodEffort")} percent on the second round, which the result screen calls ${label("goodEffort")}`,
       `on a ${hard.pieceCount}-piece board the ${word(hard.pieceCount - 2)} pieces beyond the kings`,
-      `once ${hard.pieceCount} pieces at ${hard.memorizeTime} seconds gives you ${label("excellent")} most rounds`,
+      `once ${hard.pieceCount} pieces at ${hard.memorizeTime} seconds gives you ${label("excellent")} or ${label("perfect")}, ${minAccuracy("excellent")} percent or better, in most rounds`,
       `likely to end in ${label("keepPracticing")}`,
     ],
     "why-puzzle-rating-doesnt-transfer-to-games": [

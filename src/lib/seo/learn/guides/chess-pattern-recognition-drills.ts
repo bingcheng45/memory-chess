@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Chess pattern recognition drills work best when you learn each pattern as a set of squares plus one condition. Set the shape up at a board, clear it and rebuild it from memory. Then add one defender that breaks it, watch the tactic fail, and look for the shape in your own games.",
+    quickAnswer: "Chess pattern recognition drills should start with four patterns, the knight fork, back-rank mate, bishop pin and smothered mate, each learned as squares plus one condition. Set the shape up at a board, clear it and rebuild it from memory. Then add one defender that breaks it, watch the tactic fail, and look for the shape in your own games.",
     takeaways: [
       "A knight fork on c7 is three squares, e8, a8 and c7, plus one condition, that nothing black can take on c7.",
       "Rebuild each shape from an empty board until you can place it without the table, then look for it in your own games.",
@@ -248,7 +248,7 @@ const guide: LearnDocument = {
             },
             {
               title: "The quarter-second board",
-              description: "2 rounds of 20 pieces, 5 seconds, about 4 minutes. Try it only once 12 pieces at 8 seconds gives you Excellent Memory most rounds. Before that, a round is likely to end in Keep Practicing. Watch for the moment you start reading clusters.",
+              description: "2 rounds of 20 pieces, 5 seconds, about 4 minutes. Try it only once 12 pieces at 8 seconds gives you Excellent Memory or Perfect Score, 90 percent or better, in most rounds. Before that, a round is likely to end in Keep Practicing. Watch for the moment you start reading clusters.",
               duration: "About 4 minutes",
               goal: "At least 50 percent on the second round, which the result screen calls Good Effort or better.",
               play: { label: "Try 20 pieces, 5 seconds", pieceCount: 20, memorizeTime: 5 },

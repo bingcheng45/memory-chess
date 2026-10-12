@@ -1,4 +1,4 @@
-import { BODY_BOTTOM, BODY_TOP, CARD_WIDTH, drawCard, fitFont, font, INK, INNER, PAD, type CardFonts, type Ctx } from "@/components/share/cardCanvas";
+import { BODY_BOTTOM, BODY_TOP, CARD_WIDTH, drawCard, fitFont, font, INK, INNER, PAD, wrapLines, type CardFonts, type Ctx } from "@/components/share/cardCanvas";
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { isDarkSquare, squareVerdict, type LabPiece } from "@/lib/round/round";
 import type { PieceColor, PieceType } from "@/types/chess";
@@ -11,6 +11,8 @@ const BOARD_X = CARD_WIDTH - PAD - BOARD_SIZE;
 const BOARD_Y = BODY_TOP + 6;
 const COLUMN_GAP = 48;
 const STATS_TOP = 760;
+/** With no board beside the accuracy, the figures move up under it. */
+const DAILY_STATS_TOP = 640;
 /** The board's marks as round.css draws them on the result screen. */
 const MARK = { ok: "rgba(15, 122, 85, 0.26)", wrong: "rgba(198, 63, 18, 0.30)" };
 const GHOST_ALPHA = 0.38;
@@ -127,30 +129,33 @@ function drawHeadline(ctx: Ctx, copy: ResultCardCopy, width: number, fonts: Card
   ctx.fillText(copy.pieces, PAD, baseline + 64);
 }
 
-function drawStats(ctx: Ctx, copy: ResultCardCopy, fonts: CardFonts) {
-  const width = (INNER - COLUMN_GAP) / 2;
+/** Four figures make two pairs; three or five run in threes, the setting and its two times on the first row. */
+function drawStats(ctx: Ctx, copy: ResultCardCopy, top: number, fonts: CardFonts, locale: string) {
+  const columns = copy.stats.length === 4 ? 2 : 3;
+  const width = (INNER - COLUMN_GAP * (columns - 1)) / columns;
   const rowHeight = (BODY_BOTTOM - STATS_TOP) / 2;
   copy.stats.forEach(({ label, value }, index) => {
-    const x = PAD + (index % 2) * (width + COLUMN_GAP);
-    const y = STATS_TOP + Math.floor(index / 2) * rowHeight;
+    const x = PAD + (index % columns) * (width + COLUMN_GAP);
+    const y = top + Math.floor(index / columns) * rowHeight;
     ctx.fillStyle = INK.rule;
     ctx.fillRect(x, y, width, 2);
     ctx.fillStyle = INK.muted;
     fitFont(ctx, label, 600, 26, fonts, width);
     ctx.fillText(label, x, y + 48);
     ctx.fillStyle = INK.ink;
-    fitFont(ctx, value, 600, 46, fonts, width);
-    ctx.fillText(value, x, y + 112);
+    const size = columns === 2 ? 46 : 36;
+    ctx.font = font(600, size, fonts);
+    wrapLines(ctx, value, width, 2, locale).forEach((line, row) => ctx.fillText(line, x, y + 64 + size + row * Math.round(size * 1.2)));
   });
 }
 
 /** The round's card: the accuracy large, the scored board beside it unless the round was the daily board, the rest in a grid. */
-export async function drawResultCard(copy: ResultCardCopy, board: ScoredBoard | null, fonts: CardFonts): Promise<Blob> {
+export async function drawResultCard(copy: ResultCardCopy, board: ScoredBoard | null, fonts: CardFonts, locale: string): Promise<Blob> {
   const art = board ? await pieceArt(board) : null;
   return drawCard(copy, fonts, (ctx) => {
     drawHeadline(ctx, copy, board ? BOARD_X - PAD - COLUMN_GAP : INNER, fonts);
     if (board && art) drawBoard(ctx, board, art);
     if (board && copy.legend) drawLegend(ctx, copy.legend, fonts);
-    drawStats(ctx, copy, fonts);
+    drawStats(ctx, copy, board ? STATS_TOP : DAILY_STATS_TOP, fonts, locale);
   });
 }

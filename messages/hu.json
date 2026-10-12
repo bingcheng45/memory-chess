@@ -243,6 +243,7 @@
         "pieces": "{correct, number} / {total, plural, one {# bábu} other {# bábu}}",
         "setting": "Beállítás",
         "settingValue": "{pieceCount, plural, one {# bábu} other {# bábu}}, {seconds} mp memorizálás",
+        "study": "Megfigyelési idő",
         "rebuild": "Megoldási idő",
         "seconds": "{seconds} mp",
         "rating": "Pontszám",

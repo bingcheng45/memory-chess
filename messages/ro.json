@@ -243,6 +243,7 @@
         "pieces": "{correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}}",
         "setting": "Setare",
         "settingValue": "{pieceCount, plural, one {# piesă} few {# piese} other {# de piese}}, {seconds} s de memorare",
+        "study": "Timp de studiu",
         "rebuild": "Timp de rezolvare",
         "seconds": "{seconds} s",
         "rating": "Rating",

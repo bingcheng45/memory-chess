@@ -243,6 +243,7 @@
         "pieces": "{correct, number} von {total, plural, one {# Figur} other {# Figuren}}",
         "setting": "Einstellung",
         "settingValue": "{pieceCount, plural, one {# Figur} other {# Figuren}}, {seconds} s Einprägezeit",
+        "study": "Einprägezeit",
         "rebuild": "Lösungszeit",
         "seconds": "{seconds} s",
         "rating": "Wertung",

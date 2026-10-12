@@ -22,7 +22,7 @@ export default function ShareResult({ share, roundKey }: { share: RoundShare; ro
   const [open, setOpen] = useState(false);
   const [opened, setOpened] = useState(false);
   const copy = resultCardCopy(t, share, locale);
-  const image = useCardImage(() => drawResultCard(copy, share.kind === "daily" ? null : share.board, fontsOf(button.current ?? document.body)), opened ? `${locale}:${roundKey}` : null);
+  const image = useCardImage(() => drawResultCard(copy, share.kind === "daily" ? null : share.board, fontsOf(button.current ?? document.body), locale), opened ? `${locale}:${roundKey}` : null);
 
   const changeOpen = (next: boolean) => {
     setOpen(next);

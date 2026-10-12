@@ -243,6 +243,7 @@
         "pieces": "{correct, number} van {total, plural, one {# stuk} other {# stukken}}",
         "setting": "Instelling",
         "settingValue": "{pieceCount, plural, one {# stuk} other {# stukken}}, {seconds} s kijktijd",
+        "study": "Kijktijd",
         "rebuild": "Oplostijd",
         "seconds": "{seconds} s",
         "rating": "Rating",

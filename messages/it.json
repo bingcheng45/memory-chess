@@ -243,6 +243,7 @@
         "pieces": "{correct, number} su {total, plural, one {# pezzo} many {# pezzi} other {# pezzi}}",
         "setting": "Impostazione",
         "settingValue": "{pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}}, {seconds} s di memorizzazione",
+        "study": "Tempo di studio",
         "rebuild": "Tempo di risoluzione",
         "seconds": "{seconds} s",
         "rating": "Punteggio",

@@ -243,6 +243,7 @@
         "pieces": "{total, number} में से {correct, number} मोहरे",
         "setting": "सेटिंग",
         "settingValue": "{pieceCount, plural, one {# मोहरा} other {# मोहरे}}, {seconds} से. याद करने का समय",
+        "study": "याद करने का समय",
         "rebuild": "हल करने का समय",
         "seconds": "{seconds} से.",
         "rating": "रेटिंग",

@@ -243,6 +243,7 @@
         "pieces": "{correct, number} trên {total, plural, other {# quân}}",
         "setting": "Thiết lập",
         "settingValue": "{pieceCount, plural, other {# quân}}, ghi nhớ {seconds} giây",
+        "study": "Thời gian ghi nhớ",
         "rebuild": "Thời gian hoàn thành",
         "seconds": "{seconds} giây",
         "rating": "Điểm",

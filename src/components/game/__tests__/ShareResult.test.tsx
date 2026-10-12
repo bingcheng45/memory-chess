@@ -49,7 +49,7 @@ describe("Share result", () => {
     const image = await within(dialog()).findByRole("img");
     expect(image).toHaveAttribute("src", "blob:result");
     expect(image.getAttribute("alt")).toBe(
-      "Memory Chess result card: Round result, Accuracy 80%, 4 of 5 pieces, Setting 5 pieces, 8.3 s study, Rebuild time 12.5 s, Rating 1,042 (+12), Win streak 3 rounds in a row.",
+      "Memory Chess result card: Round result, Accuracy 80%, 4 of 5 pieces, Setting 5 pieces, 10 s study, Study time 8.3 s, Rebuild time 12.5 s, Rating 1,042 (+12), Win streak 3 rounds in a row.",
     );
     expect(within(dialog()).getByText(/^I recalled/).textContent).toBe(
       "I recalled 4 of 5 pieces (80%) on Memory Chess. Can you beat it? https://thememorychess.com/?utm_source=share&utm_medium=result",

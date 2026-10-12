@@ -44,6 +44,7 @@ describe("roundShareOf", () => {
       correct: 2,
       total: 4,
       pieceCount: 4,
+      memorizeSeconds: 10,
       studySeconds: 8.4,
       rebuildSeconds: 38.3,
       rating: { rating: 1214, change: 14 },
@@ -80,7 +81,8 @@ describe("resultCardCopy", () => {
       accuracy: "50%",
       pieces: "2 of 4 pieces",
       stats: [
-        { label: "Setting", value: "4 pieces, 8.4 s study" },
+        { label: "Setting", value: "4 pieces, 10 s study" },
+        { label: "Study time", value: "8.4 s" },
         { label: "Rebuild time", value: "38.3 s" },
         { label: "Rating", value: "1,214 (+14)" },
         { label: "Win streak", value: "3 rounds in a row" },
@@ -88,26 +90,26 @@ describe("resultCardCopy", () => {
       legend: { correct: "Correct", missed: "Missed", wrong: "Wrong" },
       cta: "Can you beat it?",
       site: "thememorychess.com",
-      alt: "Memory Chess result card: Round result, Accuracy 50%, 2 of 4 pieces, Setting 4 pieces, 8.4 s study, Rebuild time 38.3 s, Rating 1,214 (+14), Win streak 3 rounds in a row.",
+      alt: "Memory Chess result card: Round result, Accuracy 50%, 2 of 4 pieces, Setting 4 pieces, 10 s study, Study time 8.4 s, Rebuild time 38.3 s, Rating 1,214 (+14), Win streak 3 rounds in a row.",
     });
   });
 
   it("badges the daily board with its date and prints no legend, since it draws no board", () => {
     const copy = resultCardCopy(EN, roundShareOf(scored(DAILY), { ...STANDING, change: -6, winStreak: 0 }), "en");
 
-    expect([copy.kicker, copy.legend, copy.stats.map(({ value }) => value)]).toEqual(["Daily board · Oct 12, 2026", null, ["4 pieces, 8.4 s study", "38.3 s", "1,214 (-6)"]]);
+    expect([copy.kicker, copy.legend, copy.stats.map(({ value }) => value)]).toEqual(["Daily board · Oct 12, 2026", null, ["4 pieces, 10 s study", "8.4 s", "38.3 s", "1,214 (-6)"]]);
   });
 
   it("names a review round and leaves out the rating it did not change", () => {
     const copy = resultCardCopy(EN, roundShareOf(scored(REVIEW), STANDING), "en");
 
-    expect([copy.kicker, copy.stats.map(({ label }) => label)]).toEqual(["Review round", ["Setting", "Rebuild time"]]);
+    expect([copy.kicker, copy.stats.map(({ label }) => label)]).toEqual(["Review round", ["Setting", "Study time", "Rebuild time"]]);
   });
 
   it("writes the player's language and number format", () => {
     const copy = resultCardCopy(translator("de", de as typeof en), roundShareOf(scored(), STANDING), "de");
 
-    expect([copy.accuracy, copy.stats[0].value, copy.stats[2].value]).toEqual([`50${NBSP}%`, "4 Figuren, 8,4 s Einprägezeit", "1.214 (+14)"]);
+    expect([copy.accuracy, copy.stats[0].value, copy.stats[1].value, copy.stats[3].value]).toEqual([`50${NBSP}%`, "4 Figuren, 10 s Einprägezeit", "8,4 s", "1.214 (+14)"]);
   });
 });
 

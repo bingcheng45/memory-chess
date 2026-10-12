@@ -243,6 +243,7 @@
         "pieces": "{correct, number} dari {total, plural, other {# bidak}}",
         "setting": "Pengaturan",
         "settingValue": "{pieceCount, plural, other {# bidak}}, {seconds} dtk menghafal",
+        "study": "Waktu menghafal",
         "rebuild": "Waktu penyelesaian",
         "seconds": "{seconds} dtk",
         "rating": "Rating",

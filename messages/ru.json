@@ -243,6 +243,7 @@
         "pieces": "{correct, number} из {total, plural, one {# фигуры} few {# фигур} many {# фигур} other {# фигур}}",
         "setting": "Настройка",
         "settingValue": "{pieceCount, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}}, {seconds} с на запоминание",
+        "study": "Время на запоминание",
         "rebuild": "Время решения",
         "seconds": "{seconds} с",
         "rating": "Рейтинг",

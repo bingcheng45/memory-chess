@@ -1060,6 +1060,7 @@
         "pieces": "{correct, number} of {total, plural, one {# piece} other {# pieces}}",
         "setting": "Setting",
         "settingValue": "{pieceCount, plural, one {# piece} other {# pieces}}, {seconds} s study",
+        "study": "Study time",
         "rebuild": "Rebuild time",
         "seconds": "{seconds} s",
         "rating": "Rating",

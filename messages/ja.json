@@ -243,6 +243,7 @@
         "pieces": "{total, plural, other {#駒}}中{correct, number}駒",
         "setting": "設定",
         "settingValue": "{pieceCount, plural, other {#駒}}、記憶{seconds}秒",
+        "study": "記憶時間",
         "rebuild": "解答時間",
         "seconds": "{seconds}秒",
         "rating": "レーティング",

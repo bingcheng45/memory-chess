@@ -243,6 +243,7 @@
         "pieces": "{correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}}",
         "setting": "Ustawienie",
         "settingValue": "{pieceCount, plural, one {# figura} few {# figury} many {# figur} other {# figury}}, {seconds} s na zapamiętanie",
+        "study": "Czas na zapamiętanie",
         "rebuild": "Czas rozwiązania",
         "seconds": "{seconds} s",
         "rating": "Ocena",

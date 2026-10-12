@@ -28,6 +28,8 @@ interface RoundFacts {
   readonly correct: number;
   readonly total: number;
   readonly pieceCount: number;
+  /** The study time the setting allowed, and the time the player took. */
+  readonly memorizeSeconds: number;
   readonly studySeconds: number;
   readonly rebuildSeconds: number;
 }
@@ -51,6 +53,7 @@ export function roundShareOf(round: ScoredRound, { rating, change, winStreak }: 
     correct: round.score.correct,
     total: round.score.total,
     pieceCount: round.config.pieceCount,
+    memorizeSeconds: round.config.studyMs / 1000,
     studySeconds: tenths(round.studyMs),
     rebuildSeconds: tenths(round.rebuildMs),
   };
@@ -90,7 +93,8 @@ function statsOf(t: ResultTranslate, share: RoundShare, locale: string): ResultS
   const number = new Intl.NumberFormat(locale);
   const signed = new Intl.NumberFormat(locale, { signDisplay: "exceptZero" });
   const stats: ResultStat[] = [
-    { label: t("setting"), value: t("settingValue", { pieceCount: share.pieceCount, seconds: secondsText(share.studySeconds, locale) }) },
+    { label: t("setting"), value: t("settingValue", { pieceCount: share.pieceCount, seconds: number.format(share.memorizeSeconds) }) },
+    { label: t("study"), value: t("seconds", { seconds: secondsText(share.studySeconds, locale) }) },
     { label: t("rebuild"), value: t("seconds", { seconds: secondsText(share.rebuildSeconds, locale) }) },
   ];
   if (share.kind === "review") return stats;

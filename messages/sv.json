@@ -243,6 +243,7 @@
         "pieces": "{correct, number} av {total, plural, one {# pjäs} other {# pjäser}}",
         "setting": "Inställning",
         "settingValue": "{pieceCount, plural, one {# pjäs} other {# pjäser}}, {seconds} s memoreringstid",
+        "study": "Studietid",
         "rebuild": "Lösningstid",
         "seconds": "{seconds} s",
         "rating": "Rating",

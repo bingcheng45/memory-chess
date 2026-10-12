@@ -243,6 +243,7 @@
         "pieces": "{total, plural, one {# taş} other {# taş}} içinden {correct, number}",
         "setting": "Ayar",
         "settingValue": "{pieceCount, plural, one {# taş} other {# taş}}, {seconds} sn ezberleme",
+        "study": "İnceleme süresi",
         "rebuild": "Çözüm süresi",
         "seconds": "{seconds} sn",
         "rating": "Puan",

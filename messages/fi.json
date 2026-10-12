@@ -243,6 +243,7 @@
         "pieces": "{correct, number} / {total, plural, one {# nappula} other {# nappulaa}}",
         "setting": "Asetus",
         "settingValue": "{pieceCount, plural, one {# nappula} other {# nappulaa}}, muistiinpanoaika {seconds} s",
+        "study": "Tutkimisaika",
         "rebuild": "Ratkaisuaika",
         "seconds": "{seconds} s",
         "rating": "Taitoluku",

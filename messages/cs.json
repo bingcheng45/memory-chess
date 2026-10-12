@@ -243,6 +243,7 @@
         "pieces": "{correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}}",
         "setting": "Nastavení",
         "settingValue": "{pieceCount, plural, one {# figura} few {# figury} many {# figury} other {# figur}}, {seconds} s na zapamatování",
+        "study": "Čas na zapamatování",
         "rebuild": "Čas řešení",
         "seconds": "{seconds} s",
         "rating": "Hodnocení",

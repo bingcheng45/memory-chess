@@ -243,6 +243,7 @@
         "pieces": "{correct, number} av {total, plural, one {# brikke} other {# brikker}}",
         "setting": "Innstilling",
         "settingValue": "{pieceCount, plural, one {# brikke} other {# brikker}}, {seconds} s innlæring",
+        "study": "Studietid",
         "rebuild": "Løsningstid",
         "seconds": "{seconds} s",
         "rating": "Rating",

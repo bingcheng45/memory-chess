@@ -243,6 +243,7 @@
         "pieces": "{correct, number} sur {total, plural, one {# pièce} many {# pièces} other {# pièces}}",
         "setting": "Réglage",
         "settingValue": "{pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}}, {seconds} s de mémorisation",
+        "study": "Temps d’étude",
         "rebuild": "Temps de résolution",
         "seconds": "{seconds} s",
         "rating": "Cote",

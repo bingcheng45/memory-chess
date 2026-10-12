@@ -243,6 +243,7 @@
         "pieces": "기물 {total, plural, other {#개}} 중 {correct, number}개",
         "setting": "설정",
         "settingValue": "기물 {pieceCount, plural, other {#개}}, 암기 {seconds}초",
+        "study": "암기 시간",
         "rebuild": "풀이 시간",
         "seconds": "{seconds}초",
         "rating": "레이팅",

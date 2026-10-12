@@ -345,7 +345,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
             {t("newGame")}
           </button>
           {leaderboardEligible && (
-            <button type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary">
+            <button type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
               {t("submitToLeaderboard")}
             </button>
           )}

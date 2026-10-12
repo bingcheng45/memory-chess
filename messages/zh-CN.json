@@ -243,6 +243,7 @@
         "pieces": "{total, plural, other {# 子}}中记住 {correct, number} 子",
         "setting": "设置",
         "settingValue": "{pieceCount, plural, other {# 子}}，记忆 {seconds} 秒",
+        "study": "记忆用时",
         "rebuild": "还原用时",
         "seconds": "{seconds} 秒",
         "rating": "评分",

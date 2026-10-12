@@ -243,6 +243,7 @@
         "pieces": "{total, plural, other {# 子}}中記住 {correct, number} 子",
         "setting": "設定",
         "settingValue": "{pieceCount, plural, other {# 子}}，記憶 {seconds} 秒",
+        "study": "記憶用時",
         "rebuild": "重建用時",
         "seconds": "{seconds} 秒",
         "rating": "評分",

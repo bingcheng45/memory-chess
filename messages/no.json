@@ -768,5 +768,14 @@
       "note": "Hver lenke deler teksten din med en lenke til kortet ditt, og X, Facebook, LinkedIn og de andre viser kortet i lenkeforhåndsvisningen. For Instagram eller andre steder som trenger bildefilen, må du laste den ned eller kopiere den først.",
       "newTab": "(åpnes i en ny fane)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Fant ikke siden",
+      "heading": "Denne siden finnes ikke.",
+      "body": "Lenken kan være utdatert, eller adressen kan ha en skrivefeil. Du kan spille en runde eller gå tilbake til forsiden."
+    },
+    "play": "Spill en runde",
+    "home": "Til forsiden"
   }
 }

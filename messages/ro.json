@@ -768,5 +768,14 @@
       "note": "Fiecare link publică textul tău cu un link către cardul tău, iar X, Facebook, LinkedIn și celelalte afișează cardul în previzualizarea linkului. Pentru Instagram sau oriunde altundeva e nevoie de fișierul imagine, descarcă-l sau copiază-l mai întâi.",
       "newTab": "(se deschide într-o filă nouă)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Pagina nu a fost găsită",
+      "heading": "Această pagină nu există.",
+      "body": "Linkul poate fi învechit sau adresa poate conține o greșeală de scriere. Poți juca o rundă sau te poți întoarce la pagina principală."
+    },
+    "play": "Joacă o rundă",
+    "home": "Mergi la pagina principală"
   }
 }

@@ -768,5 +768,14 @@
       "note": "Hvert link deler din tekst med et link til dit kort, og X, Facebook, LinkedIn og de andre viser kortet i linkforhåndsvisningen. Til Instagram eller andre steder, der kræver billedfilen, skal du først downloade eller kopiere den.",
       "newTab": "(åbner i en ny fane)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Siden blev ikke fundet",
+      "heading": "Denne side findes ikke.",
+      "body": "Linket kan være forældet, eller adressen kan have en stavefejl. Du kan spille en runde eller gå tilbage til forsiden."
+    },
+    "play": "Spil en runde",
+    "home": "Til forsiden"
   }
 }

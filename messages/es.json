@@ -768,5 +768,14 @@
       "note": "Cada enlace publica tu texto con un enlace a tu tarjeta, y X, Facebook, LinkedIn y los demás muestran la tarjeta en la vista previa del enlace. Para Instagram o cualquier otro sitio que necesite el archivo de imagen, descárgalo o cópialo primero.",
       "newTab": "(se abre en una pestaña nueva)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Página no encontrada",
+      "heading": "Esta página no existe.",
+      "body": "Puede que el enlace esté desactualizado o que la dirección tenga un error. Puedes jugar una ronda o volver a la página de inicio."
+    },
+    "play": "Jugar una ronda",
+    "home": "Ir a la página de inicio"
   }
 }

@@ -768,5 +768,14 @@
       "note": "Elke link plaatst je tekst met een link naar je kaart, en X, Facebook, LinkedIn en de rest tonen de kaart in de linkpreview. Voor Instagram of waar dan ook het afbeeldingsbestand nodig is, download of kopieer je het eerst.",
       "newTab": "(opent in een nieuw tabblad)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Pagina niet gevonden",
+      "heading": "Deze pagina bestaat niet.",
+      "body": "De link is misschien verouderd, of er staat een typfout in het adres. Je kunt een ronde spelen of teruggaan naar de startpagina."
+    },
+    "play": "Speel een ronde",
+    "home": "Naar de startpagina"
   }
 }

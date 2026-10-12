@@ -1583,5 +1583,14 @@
       "note": "Each link posts your caption with a link to your card, and X, Facebook, LinkedIn and the others show the card in the link preview. For Instagram, or anywhere else that needs the image file, download or copy it first.",
       "newTab": "(opens in a new tab)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Page not found",
+      "heading": "This page does not exist.",
+      "body": "The link may be out of date, or the address may have a typo. You can play a round or go back to the home page."
+    },
+    "play": "Play a round",
+    "home": "Go to the home page"
   }
 }

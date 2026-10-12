@@ -768,5 +768,14 @@
       "note": "Setiap tautan mengunggah teksmu beserta tautan ke kartumu, dan X, Facebook, LinkedIn, serta yang lain menampilkan kartu di pratinjau tautan. Untuk Instagram atau tempat lain yang membutuhkan file gambar, unduh atau salin dulu.",
       "newTab": "(terbuka di tab baru)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Halaman tidak ditemukan",
+      "heading": "Halaman ini tidak ada.",
+      "body": "Tautannya mungkin sudah usang, atau alamatnya salah ketik. Mainkan satu ronde atau kembali ke beranda."
+    },
+    "play": "Mainkan satu ronde",
+    "home": "Ke beranda"
   }
 }

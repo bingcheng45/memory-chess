@@ -768,5 +768,14 @@
       "note": "Mỗi liên kết đăng chú thích của bạn kèm liên kết đến thẻ, và X, Facebook, LinkedIn cùng các nền tảng khác hiển thị thẻ trong bản xem trước liên kết. Với Instagram hoặc nơi nào cần tệp hình ảnh, hãy tải xuống hoặc sao chép hình ảnh trước.",
       "newTab": "(mở trong thẻ mới)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Không tìm thấy trang",
+      "heading": "Trang này không tồn tại.",
+      "body": "Liên kết có thể đã cũ hoặc địa chỉ bị gõ sai. Bạn có thể chơi một ván hoặc quay lại trang chủ."
+    },
+    "play": "Chơi một ván",
+    "home": "Về trang chủ"
   }
 }

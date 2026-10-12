@@ -768,5 +768,14 @@
       "note": "Minden hivatkozás a szövegedet teszi közzé a kártyádra mutató linkkel, és az X, a Facebook, a LinkedIn és a többi a link előnézetében mutatja a kártyát. Az Instagramhoz vagy bárhová, ahol a képfájl kell, előbb töltsd le vagy másold ki.",
       "newTab": "(új lapon nyílik meg)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Az oldal nem található",
+      "heading": "Ez az oldal nem létezik.",
+      "body": "Lehet, hogy a link elavult, vagy elírás van a címben. Játszhatsz egy kört, vagy visszatérhetsz a főoldalra."
+    },
+    "play": "Játssz egy kört",
+    "home": "Vissza a főoldalra"
   }
 }

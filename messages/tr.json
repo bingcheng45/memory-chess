@@ -768,5 +768,14 @@
       "note": "Her bağlantı metnini ve kartına giden bir bağlantıyı paylaşır; X, Facebook, LinkedIn ve diğerleri kartı bağlantı önizlemesinde gösterir. Instagram için ya da görsel dosyasının gerektiği başka yerlerde önce görseli indir veya kopyala.",
       "newTab": "(yeni sekmede açılır)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Sayfa bulunamadı",
+      "heading": "Bu sayfa yok.",
+      "body": "Bağlantı eskimiş ya da adreste bir yazım hatası olabilir. Bir tur oynayabilir ya da ana sayfaya dönebilirsin."
+    },
+    "play": "Bir tur oyna",
+    "home": "Ana sayfaya git"
   }
 }

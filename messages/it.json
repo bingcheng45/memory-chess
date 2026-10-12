@@ -768,5 +768,14 @@
       "note": "Ogni link pubblica il tuo testo con un link alla tua scheda, e X, Facebook, LinkedIn e gli altri mostrano la scheda nell'anteprima del link. Per Instagram o ovunque serva il file dell'immagine, scaricalo o copialo prima.",
       "newTab": "(si apre in una nuova scheda)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Pagina non trovata",
+      "heading": "Questa pagina non esiste.",
+      "body": "Il link potrebbe essere vecchio o l’indirizzo potrebbe contenere un errore di battitura. Puoi giocare una partita o tornare alla home page."
+    },
+    "play": "Gioca una partita",
+    "home": "Vai alla home page"
   }
 }

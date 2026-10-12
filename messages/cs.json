@@ -768,5 +768,14 @@
       "note": "Každý odkaz zveřejní tvůj text s odkazem na kartu a X, Facebook, LinkedIn i další ukážou kartu v náhledu odkazu. Pro Instagram nebo kdekoli jinde, kde je potřeba soubor s obrázkem, ho nejdřív stáhni nebo zkopíruj.",
       "newTab": "(otevře se v nové kartě)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Stránka nenalezena",
+      "heading": "Tato stránka neexistuje.",
+      "body": "Odkaz může být zastaralý nebo je v adrese překlep. Můžete si zahrát kolo nebo se vrátit na úvodní stránku."
+    },
+    "play": "Zahrát kolo",
+    "home": "Na úvodní stránku"
   }
 }

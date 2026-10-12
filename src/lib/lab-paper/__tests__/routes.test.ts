@@ -1,4 +1,11 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { isLabPaperRoute, type LabPaperRoute } from "@/lib/lab-paper/routes";
+import { UNKNOWN_PATH_GROUP } from "@/lib/lab-paper/useIsLabPaperRoute";
+
+it("names the route group of the catch-all that sends every unmatched path to the Lab Paper 404", () => {
+  expect(existsSync(join(process.cwd(), "src/app/[locale]", UNKNOWN_PATH_GROUP, "[...rest]/page.tsx"))).toBe(true);
+});
 
 describe("the Lab Paper route registry", () => {
   it("draws the homepage in Lab Paper only in the locales that have its copy, and leaves unlisted routes in the site shell", () => {

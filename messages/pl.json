@@ -768,5 +768,14 @@
       "note": "Każdy link publikuje Twój tekst wraz z linkiem do karty, a X, Facebook, LinkedIn i pozostałe pokazują kartę w podglądzie linku. W przypadku Instagrama lub innych miejsc, które wymagają pliku obrazu, najpierw go pobierz lub skopiuj.",
       "newTab": "(otwiera się w nowej karcie)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Nie znaleziono strony",
+      "heading": "Ta strona nie istnieje.",
+      "body": "Link może być nieaktualny albo w adresie jest literówka. Możesz zagrać rundę lub wrócić na stronę główną."
+    },
+    "play": "Zagraj rundę",
+    "home": "Przejdź na stronę główną"
   }
 }

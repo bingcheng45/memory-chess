@@ -1,0 +1,9 @@
+/* The 404 and error pages: one short column under the shell header, with room above the footer. */
+.lab-paper .lab-message { max-width: calc(720px + 2 * var(--lp-gutter)); padding-top: 96px; padding-bottom: 128px; }
+.lab-paper .lab-message-h { margin: 0 0 16px; font: 650 48px/1.08 var(--lp-ui); letter-spacing: -0.025em; }
+.lab-paper .lab-message .lab-lede { margin: 0; }
+.lab-paper .lab-message-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+@media (max-width: 767px) {
+  .lab-paper .lab-message { padding-top: 56px; padding-bottom: 80px; }
+  .lab-paper .lab-message-h { font-size: 34px; }
+}

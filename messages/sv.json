@@ -768,5 +768,14 @@
       "note": "Varje länk lägger upp din text med en länk till ditt kort, och X, Facebook, LinkedIn och de andra visar kortet i länkförhandsvisningen. För Instagram eller andra ställen som kräver bildfilen laddar du ned eller kopierar den först.",
       "newTab": "(öppnas i en ny flik)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Sidan hittades inte",
+      "heading": "Den här sidan finns inte.",
+      "body": "Länken kan vara inaktuell, eller så har adressen ett stavfel. Du kan spela en runda eller gå tillbaka till startsidan."
+    },
+    "play": "Spela en runda",
+    "home": "Till startsidan"
   }
 }

@@ -768,5 +768,14 @@
       "note": "Jeder Link postet deinen Text mit einem Link zu deiner Karte, und X, Facebook, LinkedIn und die anderen zeigen die Karte in der Link-Vorschau. Für Instagram oder überall sonst, wo die Bilddatei nötig ist, lade sie zuerst herunter oder kopiere sie.",
       "newTab": "(öffnet in einem neuen Tab)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Seite nicht gefunden",
+      "heading": "Diese Seite gibt es nicht.",
+      "body": "Vielleicht ist der Link veraltet oder die Adresse enthält einen Tippfehler. Du kannst eine Runde spielen oder zur Startseite zurückkehren."
+    },
+    "play": "Eine Runde spielen",
+    "home": "Zur Startseite"
   }
 }

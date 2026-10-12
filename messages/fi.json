@@ -768,5 +768,14 @@
       "note": "Jokainen linkki julkaisee tekstisi ja linkin korttiisi, ja X, Facebook, LinkedIn ja muut näyttävät kortin linkin esikatselussa. Instagramia tai muuta paikkaa varten, joka tarvitsee kuvatiedoston, lataa tai kopioi se ensin.",
       "newTab": "(avautuu uudelle välilehdelle)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Sivua ei löytynyt",
+      "heading": "Tätä sivua ei ole.",
+      "body": "Linkki voi olla vanhentunut tai osoitteessa voi olla kirjoitusvirhe. Voit pelata kierroksen tai palata etusivulle."
+    },
+    "play": "Pelaa kierros",
+    "home": "Etusivulle"
   }
 }

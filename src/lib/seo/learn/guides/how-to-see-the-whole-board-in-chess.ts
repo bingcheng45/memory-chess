@@ -29,7 +29,7 @@ const guide: LearnDocument = {
   intro: {
     quickAnswer: "To learn how to see the whole board in chess, sweep it from the edges inward before you look at your own move. Name every piece on the a-file, h-file, first rank and eighth rank. Then trace each enemy bishop, rook and queen to the last square it reaches, check the knights, and only then choose your move.",
     takeaways: [
-      "A long-range piece wins material without moving. A blocker steps off its line while you watch the piece that moved.",
+      "A long-range piece wins material without moving. When a pawn steps off its line, your eyes follow the pawn and miss the line it opened.",
       "Trace every line to the last square it reaches, because the first piece on the line may be yours and pinned.",
       "Start the sweep at the edges, because a look that works outward from your own move reaches them last.",
     ],
@@ -72,7 +72,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Nxf7 is stronger still. The king cannot take the knight either, because the bishop now covers f7, and the knight attacks the rook on d8.",
-            "Nothing about the bishop changed. Only a Black pawn moved. Your eyes go to the piece that just moved, so a piece that stood still for ten moves drops out of the picture.",
+            "Nothing about the bishop changed. Only a Black pawn moved. Your eyes follow the pawn to e5 and the space it gains, so a bishop that has stood still for ten moves drops out of the picture.",
             "Rooks do the same more quietly. A rook can sit on h1 all game until the h-pawns are traded, and then it owns an open file without having moved.",
           ],
         },
@@ -184,22 +184,22 @@ const guide: LearnDocument = {
           paragraphs: [
             "A game position clusters. Pawns lock in the centre, pieces gather near the kings, and a corner can stay empty for twenty moves. That clustering is why you need the sweep.",
             "Memory Chess builds a fresh position for every round, with no plan behind it. The two kings go on random squares that are never adjacent. Every other piece goes on a random empty square, within the rules of a legal position.",
-            "Nothing pulls the pieces toward the centre or the kings, so a 12-piece board can have a piece in every corner. Reading it zone by zone and rebuilding every zone is the sweep, done from memory.",
+            "Nothing pulls the pieces toward the centre or the kings, so a 12-piece board can have a piece in every corner. Reading the edges first and the middle last is the sweep, done from memory.",
           ],
         },
         {
           kind: "drills",
           drills: [
             {
-              title: "Zone recall round",
-              description: "Play 3 rounds of 12 pieces with 8 seconds to look. Read the board in three zones, files a to c, then d and e, then f to h, and place the pieces zone by zone. The result board rings each square you missed. You pass when the rings stop bunching on one wing.",
+              title: "Edge-first recall round",
+              description: "Play 3 rounds of 12 pieces with 8 seconds to look. During the look, read the edges first, meaning the a-file, h-file, first rank and eighth rank, then the middle. Place the edge pieces first. The result board rings each square you missed. You pass when no ring lands on an edge square.",
               duration: "3 rounds, about 5 minutes",
-              goal: "Hold both wings at once instead of one cluster.",
+              goal: "Hold the edges and the middle at once instead of one cluster.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
             {
               title: "Edge inventory",
-              description: "Open an annotated game at any middlegame diagram. List every piece on the a-file, the h-file, the first rank and the eighth rank, and write the last square each one reaches. Check each trace against the diagram. You pass when no piece is missing and no trace stops at the first piece in its way.",
+              description: "Open an annotated game at any middlegame diagram. List every piece on the a-file, the h-file, the first rank and the eighth rank. For each bishop, rook and queen among them, write the last square each of its lines reaches. Check each trace against the diagram. You pass when no piece is missing and no trace stops at the first piece in its way.",
               duration: "4 minutes",
               goal: "Make the pieces you usually skip the first ones you list.",
             },
@@ -283,7 +283,7 @@ const guide: LearnDocument = {
         {
           kind: "guide",
           slug: "chess-visualization-exercises",
-          reason: "Trains holding a position in your head, which the zone recall round asks for at speed.",
+          reason: "Trains holding a position in your head, which the edge-first recall round asks for at speed.",
         },
         {
           kind: "guide",

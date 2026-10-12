@@ -1,4 +1,5 @@
 import type { RoundShare, ScoredBoard } from "@/components/game/roundShare";
+import { MEMORIZE_SECONDS_RANGE } from "@/lib/reference/facts";
 import { SHARE_TILES, type DashboardUnit, type Figure, type ShareFigure, type ShareFigureId, type Trend } from "@/lib/lab/dashboard";
 import { labPositionFromFen, labPositionToFen, scoreReading, type LabPosition } from "@/lib/round/round";
 
@@ -118,7 +119,7 @@ export function parseProgress(code: string): SharedProgress | null {
 const KIND_LETTER = { game: "g", daily: "d", review: "v" } as const satisfies Record<RoundShare["kind"], string>;
 const MIN_PIECES = 2;
 const MAX_PIECES = 32;
-const MAX_STUDY_TENTHS = 320;
+const MAX_STUDY_TENTHS = MEMORIZE_SECONDS_RANGE.max * 10;
 const MAX_REBUILD_TENTHS = 36000;
 const MAX_STREAK = 99999;
 const MIN_SHOWN_STREAK = 2;

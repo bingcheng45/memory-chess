@@ -950,7 +950,7 @@
   "game": {
     "meta": {
       "title": "Chess Memory Game: Rebuild the Position",
-      "description": "Start a chess memory game in one tap. Memorize a position, rebuild it square by square, and see your accuracy. Pick 2 to 32 pieces and 2 to 32 seconds.",
+      "description": "Start a chess memory game in one tap. Memorize a position, rebuild it square by square, and see your accuracy. Pick 2 to 32 pieces and 2 to 60 seconds.",
       "socialTitle": "Play Memory Chess Online",
       "socialDescription": "Train your chess visualization and memory with interactive timed challenges."
     },

@@ -13,7 +13,7 @@ const MAX_TITLE = 64;
 
 const GAME_TITLE = "Chess Memory Game: Rebuild the Position | Memory Chess";
 const GAME_DESCRIPTION =
-  "Start a chess memory game in one tap. Memorize a position, rebuild it square by square, and see your accuracy. Pick 2 to 32 pieces and 2 to 32 seconds.";
+  "Start a chess memory game in one tap. Memorize a position, rebuild it square by square, and see your accuracy. Pick 2 to 32 pieces and 2 to 60 seconds.";
 
 const TRIMMED_TITLES = {
   "/learn/chess-calculation-exercises-for-beginners": "Chess Calculation Exercises for Beginners | Memory Chess",

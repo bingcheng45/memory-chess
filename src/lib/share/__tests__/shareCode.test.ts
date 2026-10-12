@@ -87,6 +87,14 @@ describe("resultCode", () => {
     expect(parseResult(code)).toEqual(share);
   });
 
+  it("writes and reads back a round at the longest study time the slider allows", () => {
+    const longest: RoundShare = { ...REVIEW, memorizeSeconds: 60, studySeconds: 60 };
+    const code = "1_v_4_600_600_383_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3";
+
+    expect(resultCode(longest)).toBe(code);
+    expect(parseResult(code)).toEqual(longest);
+  });
+
   it("scores a round with a board from the board itself, so its figures always match the board it draws", () => {
     expect(parseResult(GAME_CODE)).toMatchObject({ accuracy: 50, correct: 2, total: 4 });
   });
@@ -113,6 +121,7 @@ describe("resultCode", () => {
     ["an empty target board", "1_v_4_100_84_383_8-8-8-8-8-8-8-8_4k3-8-8-8-8-8-8-R3K3"],
     ["a missing field", "1_v_4_100_84_383_4k3-8-8-3q4-8-8-4P3-4K3"],
     ["an extra field", `${REVIEW_CODE}_1`],
+    ["a study setting past the slider's 60 seconds", "1_v_4_601_600_383_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3"],
     ["a setting of one piece", "1_d_1_100_84_383_75_1_1_1000_0_0_20261012"],
   ])("rejects %s", (_, code) => {
     expect(parseResult(code)).toBeNull();

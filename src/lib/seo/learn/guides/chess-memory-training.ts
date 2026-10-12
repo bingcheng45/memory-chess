@@ -33,7 +33,7 @@ const guide: LearnGuide = {
   difficulty: "Beginner",
   featured: true,
   publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-09-15T00:00:00.000Z",
+  updatedAt: "2026-10-12T00:00:00.000Z",
   sections: [
     {
       id: "score-counts-exact-squares",
@@ -168,7 +168,7 @@ const guide: LearnGuide = {
             "Counts other than 2, 6, 12 and 20 make the round a custom game and keep it off the leaderboard. While you are climbing that does not matter.",
             "Two rounds in a row below Well Done, which is 70 percent: take two pieces away and rebuild the streak there.",
             "Shorten the look only once the count is stable. Changing both at once tells you nothing about which one broke.",
-            "The look slider runs from 2 to 32 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
+            "The look slider runs from 2 to 60 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
           ],
         },
       ],

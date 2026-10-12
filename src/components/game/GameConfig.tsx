@@ -24,6 +24,8 @@ interface GameConfigProps {
 
 const { presets: DIFFICULTY_PRESETS } = GAME_CONFIG_RULES;
 
+const scaleOf = ({ min, max }: { min: number; max: number }) => [min, Math.round((min + max) / 2), max];
+
 export default function GameConfig({ onStart }: GameConfigProps) {
   const t = useTranslations('game');
   const { 
@@ -165,9 +167,9 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           suppressHydrationWarning
         />
         <div className="lab-range-scale" aria-hidden="true">
-          <span>2</span>
-          <span>17</span>
-          <span>32</span>
+          {scaleOf(PIECE_COUNT_RANGE).map((tick) => (
+            <span key={tick}>{tick}</span>
+          ))}
         </div>
       </div>
 
@@ -200,9 +202,9 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           suppressHydrationWarning
         />
         <div className="lab-range-scale" aria-hidden="true">
-          <span>{t('config.seconds', { seconds: 2 })}</span>
-          <span>{t('config.seconds', { seconds: 17 })}</span>
-          <span>{t('config.seconds', { seconds: 32 })}</span>
+          {scaleOf(MEMORIZE_SECONDS_RANGE).map((tick) => (
+            <span key={tick}>{t('config.seconds', { seconds: tick })}</span>
+          ))}
         </div>
       </div>
 

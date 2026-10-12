@@ -118,6 +118,24 @@ describe("GamePage URL-driven start", () => {
     expect(mockStartGame).toHaveBeenCalledWith(12, 8, "link");
   });
 
+  it("starts a round at the longest study time a link can name", () => {
+    window.history.pushState({}, "", "/game?pieceCount=8&memorizeTime=60&source=plan");
+
+    render(<GamePage />);
+
+    expect(mockStartGame).toHaveBeenCalledWith(8, 60, "plan");
+  });
+
+  it("opens the configuration form for a link past the longest study time", () => {
+    window.history.pushState({}, "", "/game?pieceCount=8&memorizeTime=61&source=plan");
+
+    render(<GamePage />);
+
+    expect(mockStartGame).not.toHaveBeenCalled();
+    expect(document.querySelector("[data-game-config]")).not.toBeNull();
+    expect(window.location.search).toBe("");
+  });
+
   it("waits on the configuration form without round params", () => {
     window.history.pushState({}, "", "/game?difficulty=hard");
 

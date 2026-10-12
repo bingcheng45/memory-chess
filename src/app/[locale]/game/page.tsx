@@ -15,6 +15,7 @@ import { PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
 import { ROUND_PARAMS } from '@/lib/game/roundLink';
+import { GAME_CONFIG_RULES, parseGameSettings } from '@/lib/game/configPrefill';
 import '@/components/game/game-lab.css';
 
 import { useLocale } from "next-intl";
@@ -92,11 +93,14 @@ function takeUrlRound(hasLab: boolean): UrlRound | null {
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
 
-  return {
-    pieceCount: pieceCountParam ? parseInt(pieceCountParam) : 8,
-    memorizeTime: memorizeTimeParam ? parseInt(memorizeTimeParam) : 10,
-    source,
-  };
+  const settings = parseGameSettings(
+    {
+      pieceCount: pieceCountParam ? parseInt(pieceCountParam) : 8,
+      memorizeTime: memorizeTimeParam ? parseInt(memorizeTimeParam) : 10,
+    },
+    GAME_CONFIG_RULES,
+  );
+  return settings && { ...settings, source };
 }
 
 function GamePageContent() {

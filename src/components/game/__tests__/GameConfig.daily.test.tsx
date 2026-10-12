@@ -36,7 +36,7 @@ describe("GameConfig daily board link", () => {
     expect(dailyLink()).toHaveTextContent("Next board in 4 h 11 min");
   });
 
-  it("reads the next board time once today's board was played", () => {
+  it("reads minutes alone in the last hour before the next board", () => {
     window.localStorage.setItem(DAILY_OPENED_KEY, "2026-10-13");
     jest.setSystemTime(Date.parse("2026-10-13T23:30:00Z"));
     render(<GameConfig />);

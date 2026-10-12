@@ -29,7 +29,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Before every move, run one five-step scan in a fixed order. Check what your opponent's last move attacks, list every check, capture and threat they have, and find your loose pieces, the ones with no defender. Then ask what your intended move stops guarding, and only after that look for your own checks and captures.",
+    quickAnswer: "Before every move, run one five-step scan in a fixed order. Check what your opponent's last move attacks, list every check, capture and threat they have, and find your loose pieces, the undefended ones. Then ask whether your intended move lands on a defended square and what it stops guarding. Only then look for your own checks and captures.",
     takeaways: [
       "A one-move blunder is a move that only works on the board in your head.",
       "A loose piece has no defender, so list yours before your opponent's check finds one.",
@@ -121,7 +121,7 @@ const guide: LearnDocument = {
             "The last move. Name every square the moved piece now attacks, and any line it opened by leaving its old square.",
             "Your opponent's forcing moves. List every check they could give, every capture they could make, and every move that would attack one of your pieces.",
             "Your loose pieces. A loose piece is one with no defender. A pinned defender counts only if it can legally recapture. Name each loose piece by its square, then name any piece attacked more times than it is defended.",
-            "Your intended move. Picture the piece gone from its square, then ask what it was guarding and which line it was blocking.",
+            "Your intended move. Count the piece's defenders on its new square. Then ask what it guarded from its old square and which line it blocked.",
             "Your own forcing moves. Only now look at checks and captures for you, starting with any loose enemy piece.",
           ],
         },
@@ -165,7 +165,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Black must answer the check first. Blocking with ...c6, ...b5 or ...Bd7 does not defend b4, and neither does any king move, so Qxb4 follows.",
-            "Step three would have warned Black a move earlier. Run it on the position after ...Bb4, and it finds the bishop loose.",
+            "Step four would have warned Black a move earlier. Count the bishop's defenders on b4 before you play it, and there are none.",
           ],
         },
       ],
@@ -216,7 +216,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Both drills use positions from your own games, because the blunders worth studying are the ones you actually make.",
+            "Both drills use your own games, because those hold the blunders you actually make.",
           ],
         },
         {
@@ -260,7 +260,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "On a low clock the full scan will not fit, so keep step one and drop the rest. A piece that just moved has fresh targets, and step one also catches any line it opened.",
-            "This is also why the advice to play slower fails on its own. Extra time is only as useful as the question you spend it on.",
+            "Slow play alone fails for the same reason. Extra time is only as useful as the question you spend it on.",
           ],
         },
       ],

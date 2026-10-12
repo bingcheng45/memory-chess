@@ -84,19 +84,34 @@ describe("ContactUs", () => {
     expect(document.querySelector("form")).toHaveAttribute("inert");
   });
 
-  it("keeps the form and reports a failed send in the status line", async () => {
+  it("keeps the form and reports the server's reason for a failed send in the status line", async () => {
     answerWith(500, { error: "Failed to send message", details: "no credentials" });
     render(<ContactUs />);
 
     fillValidForm();
     fireEvent.click(screen.getByRole("button", { name: "Send message" }));
 
-    await waitFor(() =>
-      expect(screen.getByRole("status")).toHaveTextContent(
-        "An error occurred while submitting the form. Please try again.",
-      ),
-    );
+    await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Failed to submit form: no credentials"));
     expect(screen.getByRole("button", { name: "Send message" })).toBeEnabled();
     expect(screen.queryByRole("heading", { name: "Message sent" })).not.toBeInTheDocument();
+  });
+
+  it("reports a failed send with no reason, or one that never answered, in the generic words", async () => {
+    answerWith(500, { error: "Failed to send message" });
+    render(<ContactUs />);
+
+    fillValidForm();
+    fireEvent.click(screen.getByRole("button", { name: "Send message" }));
+
+    await waitFor(() =>
+      expect(screen.getByRole("status")).toHaveTextContent("An error occurred while submitting the form. Please try again."),
+    );
+
+    global.fetch = jest.fn().mockRejectedValue(new TypeError("Failed to fetch"));
+    fireEvent.click(screen.getByRole("button", { name: "Send message" }));
+    await waitFor(() => expect(global.fetch).toHaveBeenCalled());
+    await waitFor(() =>
+      expect(screen.getByRole("status")).toHaveTextContent("An error occurred while submitting the form. Please try again."),
+    );
   });
 });

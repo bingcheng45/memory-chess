@@ -32,7 +32,7 @@ const guide: LearnDocument = {
       "Each stage has a pass mark, so you know when to move on and when to repeat.",
       "Six checks that every Memory Chess position passes also catch the worst errors in a mental board that has drifted.",
       "From stage two on, each test makes you name the pieces that never moved, the ones you lose.",
-      "Keep the move list in view for your first blind games. Rebuilding from it is the skill.",
+      "Keep the move list in view until a full game comes out clean. Rebuilding from it is the skill.",
     ],
     audience: [
       "Players who tried a blindfold game and lost the bishops by move ten.",
@@ -213,7 +213,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "After two clean games, play to the end, and only then take the list away.",
+            "Once two games pass at move 15, play your next games to the end with the list still in view. Check the final position on a real board the same way. When one full game comes out clean, play the next one with the list hidden. That is your first full blind game.",
           ],
         },
       ],
@@ -225,7 +225,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The first three stages take about four weeks. Stage four needs two clean games played every other day, so plan on at least another week, which puts your first full blind game about five weeks from today. Repeat a stage you fail instead of skipping ahead.",
+            "The first three stages take about four weeks. Stage four takes at least another week. You need two clean 15-move games and then one clean full game, playing one game every other day. That puts your first full blind game, a whole game with the list hidden, about five weeks from today. Repeat a stage you fail instead of skipping ahead.",
           ],
         },
         {
@@ -249,7 +249,7 @@ const guide: LearnDocument = {
             {
               label: "Stage four",
               duration: "One game every other day, a week or more",
-              detail: "Fifteen moves with the move list in view, checked on a real board, until two games in a row come out clean.",
+              detail: "Fifteen moves with the move list in view until two games in a row come out clean, then one clean full game with the list still in view.",
             },
           ],
         },

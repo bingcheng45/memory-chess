@@ -167,7 +167,7 @@ const guide: LearnDocument = {
           ordered: false,
           items: [
             "A loose piece, one that nothing defends. Any attack on it is already a threat.",
-            "A lined-up pair, like the knight on f6 in front of the queen on d8. Two pieces of one side share a file, rank or diagonal, with the more valuable one behind. A bishop, rook or queen on that line can pin or skewer them.",
+            "A lined-up pair, like the knight on f6 in front of the queen on d8. Two pieces of one side share a file, rank or diagonal. With the more valuable one behind, a bishop, rook or queen on that line pins the front piece. With it in front, the same attack skewers them.",
             "A king with no flight squares, where a single check can end the game.",
           ],
         },

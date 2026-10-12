@@ -366,6 +366,7 @@
     "columns": {
       "rank": "順位",
       "player": "プレイヤー",
+      "elo": "ELO",
       "pieces": "駒数",
       "memorizeTime": "記憶時間",
       "solutionTime": "解答時間",

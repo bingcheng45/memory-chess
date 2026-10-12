@@ -366,6 +366,7 @@
     "columns": {
       "rank": "名次",
       "player": "玩家",
+      "elo": "ELO",
       "pieces": "棋子數",
       "memorizeTime": "記憶時間",
       "solutionTime": "重建用時",

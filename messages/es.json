@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Puesto",
       "player": "Jugador",
+      "elo": "ELO",
       "pieces": "Piezas",
       "memorizeTime": "Tiempo de memorización",
       "solutionTime": "Tiempo de resolución",

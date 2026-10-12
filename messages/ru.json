@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Место",
       "player": "Игрок",
+      "elo": "ELO",
       "pieces": "Фигуры",
       "memorizeTime": "Время запоминания",
       "solutionTime": "Время решения",

@@ -235,6 +235,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       memorize_time: memorizeTime,
       solution_time: gameState.completionTime || 0,
       total_wrong_pieces: piecesInfo.totalWrong,
+      skill_rating: gameState.skillRating ?? START_RATING,
     };
   };
 

@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Peringkat",
       "player": "Pemain",
+      "elo": "ELO",
       "pieces": "Bidak",
       "memorizeTime": "Waktu menghafal",
       "solutionTime": "Waktu penyelesaian",

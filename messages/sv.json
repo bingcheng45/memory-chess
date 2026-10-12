@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Plats",
       "player": "Spelare",
+      "elo": "ELO",
       "pieces": "Pjäser",
       "memorizeTime": "Memoreringstid",
       "solutionTime": "Lösningstid",

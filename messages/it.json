@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Posizione",
       "player": "Giocatore",
+      "elo": "ELO",
       "pieces": "Pezzi",
       "memorizeTime": "Tempo di memorizzazione",
       "solutionTime": "Tempo di risoluzione",

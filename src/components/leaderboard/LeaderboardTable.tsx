@@ -1,6 +1,6 @@
 'use client';
 
-import { LeaderboardEntry } from '@/types/leaderboard';
+import { UNRECORDED_SKILL_RATING, type LeaderboardEntry } from '@/types/leaderboard';
 import { Link } from "@/i18n/navigation";
 import { useEffect, useRef, type ReactNode } from "react";
 import { CloudOff, TriangleAlert } from "lucide-react";
@@ -25,7 +25,7 @@ interface LeaderboardTableProps {
   activeTab?: string;
 }
 
-const COLUMN_COUNT = 6;
+const COLUMN_COUNT = 7;
 const PODIUM_MEDALS = ["🏆", "🥈", "🥉"];
 
 export function TimeDisplay({ seconds }: { seconds: number }) {
@@ -56,6 +56,7 @@ function BoardFrame({ isState, children }: { isState: boolean; children: ReactNo
             <tr>
               <th scope="col" className="lb-num lb-rank">{t("columns.rank")}</th>
               <th scope="col" className="lb-who">{t("columns.player")}</th>
+              <th scope="col" className="lb-num">{t("columns.elo")}</th>
               <th scope="col" className="lb-num">{t("columns.pieces")}</th>
               <th scope="col" className="lb-num">{t("columns.memorizeTime")}</th>
               <th scope="col" className="lb-num">{t("columns.solutionTime")}</th>
@@ -189,6 +190,7 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
                 {isHighlighted && <span className="lb-you">{t("you")}</span>}
               </div>
             </td>
+            <td className="lb-num">{entry.skill_rating ?? UNRECORDED_SKILL_RATING}</td>
             <td className="lb-num">
               {entry.correct_pieces}
               {entry.total_wrong_pieces !== undefined &&

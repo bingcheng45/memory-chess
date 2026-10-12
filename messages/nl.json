@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Plek",
       "player": "Speler",
+      "elo": "ELO",
       "pieces": "Stukken",
       "memorizeTime": "Kijktijd",
       "solutionTime": "Oplostijd",

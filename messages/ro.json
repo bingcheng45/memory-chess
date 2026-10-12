@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Loc",
       "player": "Jucător",
+      "elo": "ELO",
       "pieces": "Piese",
       "memorizeTime": "Timp de memorare",
       "solutionTime": "Timp de rezolvare",

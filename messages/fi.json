@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Sija",
       "player": "Pelaaja",
+      "elo": "ELO",
       "pieces": "Nappulat",
       "memorizeTime": "Muistiinpainamisaika",
       "solutionTime": "Ratkaisuaika",

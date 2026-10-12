@@ -366,6 +366,7 @@
     "columns": {
       "rank": "रैंक",
       "player": "खिलाड़ी",
+      "elo": "ELO",
       "pieces": "मोहरे",
       "memorizeTime": "याद करने का समय",
       "solutionTime": "हल करने का समय",

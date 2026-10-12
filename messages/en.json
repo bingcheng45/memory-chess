@@ -1181,6 +1181,7 @@
     "columns": {
       "rank": "Rank",
       "player": "Player",
+      "elo": "ELO",
       "pieces": "Pieces",
       "memorizeTime": "Memorize Time",
       "solutionTime": "Solution Time",

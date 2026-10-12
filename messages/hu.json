@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Helyezés",
       "player": "Játékos",
+      "elo": "ELO",
       "pieces": "Bábuk",
       "memorizeTime": "Memorizálási idő",
       "solutionTime": "Megoldási idő",

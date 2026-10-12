@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Sıra",
       "player": "Oyuncu",
+      "elo": "ELO",
       "pieces": "Taş",
       "memorizeTime": "Ezberleme süresi",
       "solutionTime": "Çözüm süresi",

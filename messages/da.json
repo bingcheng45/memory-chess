@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Plads",
       "player": "Spiller",
+      "elo": "ELO",
       "pieces": "Brikker",
       "memorizeTime": "Indlæringstid",
       "solutionTime": "Løsningstid",

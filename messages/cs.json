@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Pořadí",
       "player": "Hráč",
+      "elo": "ELO",
       "pieces": "Figurky",
       "memorizeTime": "Čas na zapamatování",
       "solutionTime": "Čas řešení",

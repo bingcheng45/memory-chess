@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Hạng",
       "player": "Người chơi",
+      "elo": "ELO",
       "pieces": "Quân cờ",
       "memorizeTime": "Thời gian ghi nhớ",
       "solutionTime": "Thời gian hoàn thành",

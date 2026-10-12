@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Miejsce",
       "player": "Gracz",
+      "elo": "ELO",
       "pieces": "Bierki",
       "memorizeTime": "Czas zapamiętywania",
       "solutionTime": "Czas rozwiązania",

@@ -366,6 +366,7 @@
     "columns": {
       "rank": "Platz",
       "player": "Spieler",
+      "elo": "ELO",
       "pieces": "Figuren",
       "memorizeTime": "Einprägezeit",
       "solutionTime": "Lösungszeit",

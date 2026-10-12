@@ -111,10 +111,10 @@ const guide: LearnDocument = {
           kind: "drills",
           drills: [
             {
-              title: "Scholar's mate under a cloth",
-              description: "Cover the board and say 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7# aloud, one move at a time. Name the square of all 31 pieces left, run the six checks and say why Black is mated. Then check against the board below.",
+              title: "Scholar's mate with no board",
+              description: "Stop scrolling here, so the diagram below stays out of sight, and keep no board in front of you. Say 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7# aloud, one move at a time. Name the square of all 31 pieces left, run the six checks and say why Black is mated. Then scroll down and compare with the diagram.",
               duration: "About 5 minutes",
-              goal: "Every piece named on its square and the mate explained before you uncover.",
+              goal: "Every piece named on its square and the mate explained before you look at the diagram.",
             },
           ],
         },
@@ -123,7 +123,7 @@ const guide: LearnDocument = {
           paragraphs: [
             "Scholar's mate is the right first game because it is four moves long and only six pieces move. The other 25 still stand where they started, and those are the ones a blind player drops.",
             "Now say why it is mate. The king on e8 cannot take on f7, because the bishop on c4 covers that square. It cannot step to e7, because the queen on f7 covers it. Black's own queen, bishop and pawn fill d8, f8 and d7. Black's king is in check and it is Black's move, so the last item on the list holds.",
-            "The pass mark is a clean run on two different days. Clean means every piece on its square and the mate explained without a look.",
+            "The pass mark is a clean run on two different days. Clean means every piece on its square and the mate explained before you look at the diagram.",
           ],
         },
         {
@@ -239,7 +239,7 @@ const guide: LearnDocument = {
             {
               label: "Stage two",
               duration: "5 minutes a day for a week",
-              detail: "Replay Scholar's mate under a cloth, name all 31 pieces and run the six checks, until two days come out clean.",
+              detail: "Replay Scholar's mate with no board, name all 31 pieces and run the six checks, until two days come out clean.",
             },
             {
               label: "Stage three",

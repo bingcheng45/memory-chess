@@ -172,7 +172,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The safety question is always the same. After my move, can my opponent take anything for free, or attack one of my pieces with a pawn? Ask it on every move, including the quiet ones.",
+            "The safety question is always the same. After my move, can my opponent take anything for free, or attack a piece that cannot move away? Ask it on every move, including the quiet ones.",
             "Start from your opponent's last move. Say you are Black after 1.e4 e5. If White plays 2.Bc4, the bishop now looks at f7. If White plays 2.Qh5 instead, the queen looks at f7, e5 and h7.",
             "Then check your own move. The piece you move stops guarding whatever it guarded. Say you answered 2.Qh5 with 2...Nc6. The knight now guards e5, which the queen attacks. If you later move that knight, the pawn on e5 is loose and the queen takes it with check.",
           ],
@@ -183,8 +183,8 @@ const guide: LearnDocument = {
           items: [
             "Name your opponent's last move and every new square it attacks.",
             "Pick your move, but keep your hand off the piece.",
-            "Ask whether they can take anything for free or attack a piece with a pawn after it, including anything your moving piece used to guard.",
-            "If the answer is anything at all, pick again.",
+            "Ask the safety question about the position after it, including anything your moving piece used to guard.",
+            "If the answer is yes, pick again.",
           ],
         },
         {
@@ -231,7 +231,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Skip the full engine review for now. Find the first move where you lost material, and write one line about it. The line names the stage that failed.",
+            "Skip the full engine review for now. Find the first move where you lost material, and write one line about it. The line names the stage that failed. If you lost nothing, write that instead.",
           ],
         },
         {
@@ -314,7 +314,7 @@ const guide: LearnDocument = {
       items: [
         {
           question: "How long before this shows up in my rating?",
-          answer: "Rating moves slowly and depends on who you are paired with, so a week of results tells you little. Count the pieces you leave hanging in each game instead, from your stage 4 lines. If that count falls, the plan is working.",
+          answer: "Rating moves slowly and depends on who you are paired with, so a week of results tells you little. Look at your last ten stage 4 lines instead and count the games where you lost material. If that count falls, the plan is working.",
         },
         {
           question: "Is Memory Chess enough on its own?",

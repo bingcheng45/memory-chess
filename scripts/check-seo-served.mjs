@@ -85,7 +85,7 @@ const game = await fetchPage("/game");
 check("/game title", titleOf(game.html) === GAME_TITLE, titleOf(game.html));
 check("/game description (151 chars)", metaOf(game.html, "description") === GAME_DESCRIPTION, `${metaOf(game.html, "description").length} chars`);
 const [level, text] = firstHeading(game.html);
-check("/game first heading is the h1 with 'chess memory game'", level === "h1" && /chess memory game/i.test(text), `${level} "${text}"`);
+check("/game first heading is the h1 'Memory chess game'", level === "h1" && text === "Memory chess game", `${level} "${text}"`);
 
 for (const path of ["/game", "/leaderboard", "/contact-us", "/about", "/terms", "/privacy", "/changelog"]) {
   const { html } = await fetchPage(path);

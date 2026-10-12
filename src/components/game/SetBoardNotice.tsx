@@ -26,9 +26,9 @@ export default function SetBoardNotice({ reason, onChoose }: SetBoardNoticeProps
     reviewCap: [review("capped", { cap: REVIEW_DAILY_CAP }), review("cappedNext")],
   }[reason];
   return (
-    <section className="lab-card lab-config lab-bridge text-sm">
-      <p role="status" className="font-semibold text-text-primary">{lines[0]}</p>
-      <p className="mt-1 min-h-[1.25rem] text-text-secondary">{lines[1]}</p>
+    <section className="lab-card lab-config lab-ui-face text-sm">
+      <p role="status" className="font-semibold text-[var(--lp-ink)]">{lines[0]}</p>
+      <p className="mt-1 min-h-[1.25rem] text-[var(--lp-ink-2)]">{lines[1]}</p>
       <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
         <Link className={RESULT_LAB_LINK} href={`/#${LAB_SECTIONS.record.anchor}`}>
           {t("seeRecord")} <span aria-hidden="true">→</span>

@@ -3,6 +3,7 @@ import { shareCaption, type DashboardTranslate } from "@/components/dashboard/sh
 import { resultCaption, type ResultTranslate, type RoundShare } from "@/components/game/roundShare";
 import { LOCALES } from "@/i18n/routing";
 import type { ShareCard } from "@/lib/lab/dashboard";
+import { BOARD_SQUARES } from "@/lib/game/board";
 import { labPositionFromFen } from "@/lib/round/round";
 import { parseProgress, parseResult } from "@/lib/share/shareCode";
 import { SHARE_NETWORKS } from "@/lib/shareIntents";
@@ -42,7 +43,7 @@ const GAME_RESULT: RoundShare = {
   memorizeSeconds: 32,
   studySeconds: 31.9,
   rebuildSeconds: 3599.9,
-  board: { target: FULL, placed: FULL },
+  board: { target: FULL, placed: FULL, order: BOARD_SQUARES.filter((square) => FULL[square]).map((square, index) => ({ square, seconds: ((index + 1) * 1124) / 10 })) },
   rating: { rating: 2999, change: 999 },
   winStreak: 9999,
 };

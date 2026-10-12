@@ -16,7 +16,7 @@ jest.mock("@/lib/store/gameStore", () => ({
       correctPlacements: 4,
       extraPieces: 0,
       totalPiecesPlaced: 5,
-      labRoundId: "played-now",
+      labRound: { facts: { id: "played-now" }, endedAt: 0 },
       originalPosition: "8/8/8/8/8/8/8/P7 w - - 0 1",
       userPosition: "8/8/8/8/8/8/8/P7 w - - 0 1",
     },

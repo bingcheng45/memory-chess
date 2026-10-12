@@ -39,11 +39,12 @@ describe("lab record from a finished game round", () => {
     store().submitSolution(21750);
     await flush();
 
-    const { originalPosition, labRoundId } = store().gameState;
-    expect(labRoundId).toMatch(/^[0-9a-f-]{36}$/);
+    const { originalPosition, labRound } = store().gameState;
+    expect(labRound?.facts.id).toMatch(/^[0-9a-f-]{36}$/);
     expect(recordLabRound).toHaveBeenCalledTimes(1);
-    expect(recordLabRound).toHaveBeenCalledWith({
-      id: labRoundId,
+    expect(recordLabRound).toHaveBeenCalledWith(labRound?.facts, new Date(labRound?.endedAt ?? NaN));
+    expect(labRound?.facts).toEqual({
+      id: labRound?.facts.id,
       source: "game",
       startSource: "game_form",
       pieceCount: 6,
@@ -54,6 +55,7 @@ describe("lab record from a finished game round", () => {
       solveMs: 12250,
       placements: [[1400, 60, "K"]],
       removals: 0,
+      board: undefined,
     });
   });
 
@@ -110,21 +112,21 @@ describe("lab record from a finished game round", () => {
       store().startGame(6, 10, "home_quick");
       store().dispatch({ type: "studyEnded", now: 0 });
       store().submitSolution(4000);
-      return store().gameState.labRoundId;
+      return store().gameState.labRound?.facts.id;
     };
     const first = scoreRound();
     store().startGame(6, 10, "try_again");
-    const afterTryAgain = store().gameState.labRoundId;
+    const afterTryAgain = store().gameState.labRound?.facts.id;
     const second = scoreRound();
     store().resetGame();
     await flush();
 
     expect(first).not.toBe(second);
-    expect([afterTryAgain, store().gameState.labRoundId]).toEqual([undefined, undefined]);
+    expect([afterTryAgain, store().gameState.labRound?.facts.id]).toEqual([undefined, undefined]);
     expect(jest.mocked(recordLabRound).mock.calls.map(([facts]) => facts.id)).toEqual([first, second]);
     const stored = window.localStorage.getItem(GAME_STORAGE_KEY) ?? "";
     expect(stored).toContain('"pieceCount":6');
-    expect(stored).not.toContain("labRoundId");
+    expect(stored).not.toContain("labRound");
   });
 
   it("plays a set board's position and records the round as that day's daily board, and a try again after it as a normal round", async () => {

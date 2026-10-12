@@ -1,5 +1,6 @@
 import type { RoundShare } from "@/components/game/roundShare";
 import type { ShareCard } from "@/lib/lab/dashboard";
+import { BOARD_SQUARES } from "@/lib/game/board";
 import { labPositionFromFen } from "@/lib/round/round";
 import { MAX_CODE_LENGTH, parseProgress, parseResult, progressCode, resultCode } from "@/lib/share/shareCode";
 
@@ -20,6 +21,12 @@ const PROGRESS_CODE = "1_s8_r1214u23_h64_v19_b100_w0_n140";
 
 const TARGET = labPositionFromFen("4k3/8/8/3q4/8/8/4P3/4K3");
 const PLACED = labPositionFromFen("4k3/8/8/8/8/8/8/R3K3");
+const ORDER = [
+  { square: "e1", seconds: 3.1 },
+  { square: "e8", seconds: 5 },
+  { square: "a1", seconds: 12.4 },
+] as const;
+const BOARD = { target: TARGET, placed: PLACED, order: ORDER };
 const TIMES = { pieceCount: 4, memorizeSeconds: 10, studySeconds: 8.4, rebuildSeconds: 38.3 };
 
 const GAME: RoundShare = {
@@ -28,17 +35,18 @@ const GAME: RoundShare = {
   correct: 2,
   total: 4,
   ...TIMES,
-  board: { target: TARGET, placed: PLACED },
+  board: BOARD,
   rating: { rating: 1214, change: -14 },
   winStreak: 3,
 };
-const GAME_CODE = "1_g_4_100_84_383_1214_d14_3_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3";
+const GAME_CODE = "1_g_4_100_84_383_1214_d14_3_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3_e131e819a174";
 
 const DAILY: RoundShare = { kind: "daily", accuracy: 75, correct: 3, total: 4, ...TIMES, day: "2026-10-12", rating: { rating: 1000, change: 0 }, winStreak: null };
 const DAILY_CODE = "1_d_4_100_84_383_75_3_4_1000_0_0_20261012";
 
-const REVIEW: RoundShare = { kind: "review", accuracy: 50, correct: 2, total: 4, ...TIMES, board: { target: TARGET, placed: PLACED } };
-const REVIEW_CODE = "1_v_4_100_84_383_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3";
+const REVIEW: RoundShare = { kind: "review", accuracy: 50, correct: 2, total: 4, ...TIMES, board: BOARD };
+const REVIEW_CODE = "1_v_4_100_84_383_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3_e131e819a174";
+const REVIEW_HEAD = "1_v_4_100_84_383_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3";
 
 describe("progressCode", () => {
   it("writes each figure the card prints as its letter and value, tenths for a one-decimal figure, and the rating's trend", () => {
@@ -89,7 +97,7 @@ describe("resultCode", () => {
 
   it("writes and reads back a round at the longest study time the slider allows", () => {
     const longest: RoundShare = { ...REVIEW, memorizeSeconds: 60, studySeconds: 60 };
-    const code = "1_v_4_600_600_383_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3";
+    const code = "1_v_4_600_600_383_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3_e131e819a174";
 
     expect(resultCode(longest)).toBe(code);
     expect(parseResult(code)).toEqual(longest);
@@ -99,12 +107,29 @@ describe("resultCode", () => {
     expect(parseResult(GAME_CODE)).toMatchObject({ accuracy: 50, correct: 2, total: 4 });
   });
 
-  it("keeps every code well under the length a post allows, even a full board", () => {
-    const full = labPositionFromFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
-    const code = resultCode({ ...GAME, pieceCount: 32, rebuildSeconds: 3599.9, board: { target: full, placed: full }, rating: { rating: 2999, change: -999 }, winStreak: 9999 });
+  it("writes the order of a board whose log lost track of it as an empty field, and reads it back as unknown", () => {
+    const unknown: RoundShare = { ...REVIEW, board: { ...BOARD, order: null } };
 
-    expect(parseResult(code)).not.toBeNull();
+    expect(resultCode(unknown)).toBe(`${REVIEW_HEAD}_`);
+    expect(parseResult(`${REVIEW_HEAD}_`)).toEqual(unknown);
+  });
+
+  it("reads an empty order on an empty board as a rebuild with nothing put down", () => {
+    const code = "1_v_4_100_84_383_4k3-8-8-3q4-8-8-4P3-4K3_8-8-8-8-8-8-8-8_";
+
+    expect(parseResult(code)).toMatchObject({ accuracy: 0, board: { placed: {}, order: [] } });
+  });
+
+  it("keeps the longest code a card can write under the cap: 32 pieces on both boards, each ordered, every field at its widest", () => {
+    const sparse = "p1p1p1p1/1p1p1p1p/p1p1p1p1/1p1p1p1p/P1P1P1P1/1P1P1P1P/P1P1P1P1/1P1P1P1P";
+    const board = labPositionFromFen(sparse);
+    const order = BOARD_SQUARES.filter((square) => board[square]).map((square, index) => ({ square, seconds: ((index + 1) * 1124) / 10 }));
+    const widest: RoundShare = { ...GAME, pieceCount: 32, memorizeSeconds: 60, studySeconds: 60, rebuildSeconds: 3599.9, board: { target: board, placed: board, order }, rating: { rating: 9999, change: -9999 }, winStreak: 99999 };
+    const code = resultCode(widest);
+
+    expect(code).toHaveLength(374);
     expect(code.length).toBeLessThanOrEqual(MAX_CODE_LENGTH);
+    expect(parseResult(code)).toEqual({ ...widest, accuracy: 100, correct: 32, total: 32 });
   });
 
   it.each([
@@ -123,6 +148,14 @@ describe("resultCode", () => {
     ["an extra field", `${REVIEW_CODE}_1`],
     ["a study setting past the slider's 60 seconds", "1_v_4_601_600_383_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3"],
     ["a setting of one piece", "1_d_1_100_84_383_75_1_1_1000_0_0_20261012"],
+    ["a round with no order field", REVIEW_HEAD],
+    ["an order that misses a placed piece", `${REVIEW_HEAD}_e131e819`],
+    ["an order that names a square twice", `${REVIEW_HEAD}_e131e819e174`],
+    ["an order that names an empty square", `${REVIEW_HEAD}_e131e819a274`],
+    ["an order that runs past the rebuild", `${REVIEW_HEAD}_e131e819a1334`],
+    ["an order with a leading zero", `${REVIEW_HEAD}_e131e819a1074`],
+    ["an order with a square off the board", `${REVIEW_HEAD}_e131e819a974`],
+    ["an order on an empty board", "1_v_4_100_84_383_4k3-8-8-3q4-8-8-4P3-4K3_8-8-8-8-8-8-8-8_e10"],
   ])("rejects %s", (_, code) => {
     expect(parseResult(code)).toBeNull();
   });

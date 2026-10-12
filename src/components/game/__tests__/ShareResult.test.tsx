@@ -24,7 +24,7 @@ function show(board?: SetBoard) {
   const round = scoredRound(TARGET, "4k3/8/8/8/8/8/PP6/4K3", { pieceCount: 5, studyMs: 10000, source: board ? "daily" : "game_form", board });
   mockStore = {
     round,
-    gameState: { pieceCount: 5, memorizeTime: 10, accuracy: 80, correctPlacements: 4, skillRating: 1042, skillRatingChange: 12, streak: 3, labRoundId: "r1", board },
+    gameState: { pieceCount: 5, memorizeTime: 10, accuracy: 80, correctPlacements: 4, skillRating: 1042, skillRatingChange: 12, streak: 3, labRound: { facts: { id: "r1" }, endedAt: 0 }, board },
   };
   render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 }
@@ -52,7 +52,7 @@ describe("Share result", () => {
       "Memory Chess result card: Round result, Accuracy 80%, 4 of 5 pieces, Setting 5 pieces, 10 s study, Study time 8.3 s, Rebuild time 12.5 s, Rating 1,042 (+12), Win streak 3 rounds in a row.",
     );
     expect(within(dialog()).getByText(/^I recalled/).textContent).toBe(
-      "I recalled 4 of 5 pieces (80%) on Memory Chess. Can you beat it? https://thememorychess.com/share/result/1_g_5_100_83_125_1042_u12_3_4k3-8-8-8-3q4-8-PP6-4K3_4k3-8-8-8-8-8-PP6-4K3?utm_source=share&utm_medium=result",
+      "I recalled 4 of 5 pieces (80%) on Memory Chess. Can you beat it? https://thememorychess.com/share/result/1_g_5_100_83_125_1042_u12_3_4k3-8-8-8-3q4-8-PP6-4K3_4k3-8-8-8-8-8-PP6-4K3_e818a20b20e10?utm_source=share&utm_medium=result",
     );
     const [, board] = jest.mocked(drawResultCard).mock.calls[0];
     expect(board?.target.d4).toEqual({ color: "black", type: "queen" });

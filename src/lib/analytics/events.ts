@@ -18,6 +18,7 @@ export const ROUND_SOURCES = [
   "daily",
   "review",
   "dashboard",
+  "share",
   "link",
 ] as const;
 

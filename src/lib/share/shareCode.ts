@@ -1,4 +1,5 @@
-import type { RoundShare, ScoredBoard } from "@/components/game/roundShare";
+import type { PlacedPiece, RoundShare, ScoredBoard } from "@/components/game/roundShare";
+import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import { MEMORIZE_SECONDS_RANGE } from "@/lib/reference/facts";
 import { SHARE_TILES, type DashboardUnit, type Figure, type ShareFigure, type ShareFigureId, type Trend } from "@/lib/lab/dashboard";
 import { labPositionFromFen, labPositionToFen, scoreReading, type LabPosition } from "@/lib/round/round";
@@ -8,11 +9,13 @@ import { labPositionFromFen, labPositionToFen, scoreReading, type LabPosition } 
  *
  *   progress  1_<figure>_<figure>...      figure = letter, value (tenths for a one-decimal figure), then u|d and the
  *                                         rating's change when it moved; the first figure is the card's lead
- *   result    1_g_<setting>_<rating>_<change>_<streak>_<target>_<placed>    a random round
+ *   result    1_g_<setting>_<rating>_<change>_<streak>_<target>_<placed>_<order>    a random round
  *             1_d_<setting>_<accuracy>_<correct>_<total>_<rating>_<change>_<streak>_<yyyymmdd>    the daily board
- *             1_v_<setting>_<target>_<placed>    a review
+ *             1_v_<setting>_<target>_<placed>_<order>    a review
  *             setting = pieces_<study allowed>_<study taken>_<rebuild>, times in tenths of a second;
- *             change = 0 | u<n> | d<n>; streak = 0 for none; a board is its FEN placement with - between ranks
+ *             change = 0 | u<n> | d<n>; streak = 0 for none; a board is its FEN placement with - between ranks;
+ *             order = each placed piece's square, then the tenths since the piece before it went down, so e4 at
+ *             1.2 s then d5 at once is e412d50; empty when the round's log lost track of the board
  *
  * Only figures a card prints go in. A code is canonical (no leading zeros, fixed order), so one card has one URL.
  * It is not signed: every figure is measured in the player's browser, so a signing endpoint would sign whatever it
@@ -22,8 +25,8 @@ import { labPositionFromFen, labPositionToFen, scoreReading, type LabPosition } 
 export const SHARE_KINDS = ["progress", "result"] as const;
 export type ShareKind = (typeof SHARE_KINDS)[number];
 
-/** Longer than any card's code: 32 pieces on both boards and every field at its widest come to about 130. */
-export const MAX_CODE_LENGTH = 160;
+/** Longer than any card's code: 32 pieces on both boards, each ordered, and every field at its widest come to 374. */
+export const MAX_CODE_LENGTH = 400;
 const VERSION = "1";
 const SEPARATOR = "_";
 
@@ -125,9 +128,18 @@ const MAX_STREAK = 99999;
 const MIN_SHOWN_STREAK = 2;
 const RANK = /^[pnbrqkPNBRQK1-8]{1,8}$/;
 const DAY = /^(\d{4})(\d{2})(\d{2})$/;
+const ORDER = /^(?:[a-h][1-8](?:0|[1-9]\d{0,4}))*$/;
+const ORDER_STEP = /([a-h][1-8])(\d+)/g;
 
 const tenths = (seconds: number) => String(Math.round(seconds * 10));
 const boardCode = (position: LabPosition) => labPositionToFen(position).replaceAll("/", "-");
+
+function orderCode(order: ScoredBoard["order"]): string {
+  const times = (order ?? []).map(({ seconds }) => Math.round(seconds * 10));
+  return (order ?? []).map(({ square }, index) => `${square}${times[index] - (times[index - 1] ?? 0)}`).join("");
+}
+
+const boardFields = ({ target, placed, order }: ScoredBoard) => [boardCode(target), boardCode(placed), orderCode(order)];
 
 function settingCode(share: RoundShare): string[] {
   return [String(share.pieceCount), tenths(share.memorizeSeconds), tenths(share.studySeconds), tenths(share.rebuildSeconds)];
@@ -139,8 +151,8 @@ function ratedCode({ rating, winStreak }: Extract<RoundShare, { rating: unknown 
 
 export function resultCode(share: RoundShare): string {
   const head = [VERSION, KIND_LETTER[share.kind], ...settingCode(share)];
-  if (share.kind === "game") return [...head, ...ratedCode(share), boardCode(share.board.target), boardCode(share.board.placed)].join(SEPARATOR);
-  if (share.kind === "review") return [...head, boardCode(share.board.target), boardCode(share.board.placed)].join(SEPARATOR);
+  if (share.kind === "game") return [...head, ...ratedCode(share), ...boardFields(share.board)].join(SEPARATOR);
+  if (share.kind === "review") return [...head, ...boardFields(share.board)].join(SEPARATOR);
   return [...head, String(share.accuracy), String(share.correct), String(share.total), ...ratedCode(share), share.day.replaceAll("-", "")].join(SEPARATOR);
 }
 
@@ -183,11 +195,30 @@ function parseDay(text: string | undefined): string | null {
   return !Number.isNaN(date.getTime()) && date.toISOString().startsWith(day) ? day : null;
 }
 
+/**
+ * The placed board's pieces in the code's order, or undefined when it names a square twice, misses a piece of the
+ * board, or runs past the rebuild. An empty order is an unknown one (null), unless the board is empty too.
+ */
+function parseOrder(text: string | undefined, placed: LabPosition, rebuildSeconds: number): ScoredBoard["order"] | undefined {
+  if (text === undefined || !ORDER.test(text)) return undefined;
+  const squares = BOARD_SQUARES.filter((square) => placed[square]);
+  if (text === "") return squares.length === 0 ? [] : null;
+  let elapsed = 0;
+  const order: PlacedPiece[] = [...text.matchAll(ORDER_STEP)].map(([, square, delta]) => {
+    elapsed += Number(delta);
+    return { square: square as SquareName, seconds: elapsed / 10 };
+  });
+  const named = new Set(order.map(({ square }) => square));
+  const exact = order.length === squares.length && named.size === squares.length && squares.every((square) => named.has(square));
+  return exact && elapsed <= Math.round(rebuildSeconds * 10) ? order : undefined;
+}
+
 /** A board's figures come from the board, so a card's accuracy can never disagree with the board it draws. */
-function scoredBoard(target: string | undefined, placed: string | undefined) {
+function scoredBoard([target, placed, orderText]: readonly string[], rebuildSeconds: number) {
   const [from, to] = [parseBoard(target), parseBoard(placed)];
-  if (!from || !to) return null;
-  const board: ScoredBoard = { target: from, placed: to };
+  const order = to && parseOrder(orderText, to, rebuildSeconds);
+  if (!from || !to || order === undefined) return null;
+  const board: ScoredBoard = { target: from, placed: to, order };
   const { accuracy, correct, total } = scoreReading(from, to);
   return total > 0 ? { board, accuracy: Math.round(accuracy), correct, total } : null;
 }
@@ -203,7 +234,7 @@ function parseDaily(setting: Setting, fields: readonly string[]): RoundShare | n
   return { kind: "daily", accuracy, correct, total, ...setting, day, ...rated };
 }
 
-const FIELD_COUNT = { g: 9, d: 11, v: 6 } as const;
+const FIELD_COUNT = { g: 10, d: 11, v: 7 } as const;
 
 export function parseResult(code: string): RoundShare | null {
   const fields = fieldsOf(code);
@@ -213,7 +244,7 @@ export function parseResult(code: string): RoundShare | null {
   if (!setting) return null;
   const rest = fields.slice(5);
   if (letter === "d") return parseDaily(setting, rest);
-  const scored = letter === "g" ? scoredBoard(rest[3], rest[4]) : scoredBoard(rest[0], rest[1]);
+  const scored = scoredBoard(letter === "g" ? rest.slice(3) : rest, setting.rebuildSeconds);
   if (!scored) return null;
   if (letter === "v") return { kind: "review", ...scored, ...setting };
   const rated = parseRated(rest.slice(0, 3));

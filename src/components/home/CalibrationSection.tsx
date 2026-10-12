@@ -10,7 +10,7 @@ import { trackEvent } from "@/lib/analytics/events";
 import { recordLabRound } from "@/lib/lab/recordRound";
 import { playHref } from "@/lib/game/roundLink";
 import { useStudyDeadline } from "@/components/round/useStudyDeadline";
-import { RoundBoard, RoundPalette } from "@/components/round/RoundBoard";
+import { RefusalAnnouncement, RoundBoard, RoundPalette } from "@/components/round/RoundBoard";
 import { RoundControls } from "@/components/round/RoundControls";
 import { clockFace, RoundHead } from "@/components/round/RoundHead";
 import { ReadoutCard } from "@/components/round/ReadoutCard";
@@ -164,6 +164,7 @@ export function CalibrationSection() {
             </div>
             <p className="lab-sr" aria-live="polite">
               {announcement}
+              <RefusalAnnouncement state={state} copy={COPY} />
             </p>
             {startFailed && <p className="lab-note">{t("startFailed")}</p>}
           </div>

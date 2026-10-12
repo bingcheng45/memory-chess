@@ -14,8 +14,9 @@ const occupiedCells = (words) =>
   `${CELLS}.map(el => ({ square: el.dataset.coordinate, label: el.getAttribute("aria-label") }))
      .filter(p => p.label !== ${JSON.stringify(words.round.squareEmpty)}.replace("{square}", p.square))`;
 
-async function place(page, square, piece) {
-  const palette = `.lab-palette [aria-label="${piece}"]`;
+async function place(page, words, square, piece) {
+  // A palette button is named for its piece and what is left of it, so match the name and the words before the count.
+  const palette = `.lab-palette [aria-label^="${words.round.paletteItem.split("{count}")[0].replace("{piece}", piece)}"]`;
   if ((await page.eval(`document.querySelector('${palette}').getAttribute("aria-pressed")`)) !== "true") await page.click(palette);
   await page.click(`[data-coordinate="${square}"]`);
 }
@@ -37,11 +38,11 @@ export default async function drive(page, { baseUrl }) {
 
   await page.waitFor(phaseIs("rebuild"));
   if ((await page.eval(occupiedCells(words))).length !== 0) throw new Error("the board did not clear for the rebuild");
-  await place(page, pieces[0].square, pieces[0].piece);
+  await place(page, words, pieces[0].square, pieces[0].piece);
   await page.click(`[aria-label="${words.round.clear}"]`);
   if ((await page.eval(occupiedCells(words))).length !== 0) throw new Error("the eraser left pieces on the board");
 
-  for (const { square, piece } of pieces) await place(page, square, piece);
+  for (const { square, piece } of pieces) await place(page, words, square, piece);
   const placed = await page.eval(occupiedCells(words));
   if (placed.length !== pieces.length) throw new Error(`placed ${placed.length} pieces, expected ${pieces.length}`);
   await page.screenshot("2-placed.png");

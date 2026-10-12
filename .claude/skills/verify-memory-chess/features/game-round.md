@@ -6,7 +6,7 @@ The core loop on `/game`. A player picks a difficulty, memorizes a random positi
 
 - `round-config` picks a preset (Easy 2 pieces/10s, Medium 6/10, Hard 12/8, Grandmaster 20/5) or custom piece count and time.
 - `round-memorize` shows the position with a millisecond countdown and a meter; `Done` ends it early.
-- `round-place` recreates the position: pick one of the 12 palette pieces, tap squares; tapping a square with that piece, or with none selected, removes it. The eraser (`Clear board`) empties the board, and `Restart` starts a new position at the same setting.
+- `round-place` recreates the position: pick one of the 12 palette pieces, tap squares; tapping a square with that piece, or with none selected, removes it. The eraser (`Clear board`) empties the board, and `Restart` starts a new position at the same setting. Pieces also drag (Pointer Events, mouse and touch): a palette piece onto a square places it, a placed piece onto another square moves it and replaces what stood there, and off the board removes it. A piece with every copy on the board is refused with a message over the palette, also spoken by the live region.
 - `round-submit` scores at once.
 - `round-result` shows accuracy, pieces correct, timings, `Try Again`, `New Game`, and `Submit to Leaderboard`.
 - `round-article-tile` ends the result screen with one article set beside the round just played, with `Read the article` and `Try that drill`. Every locale that serves the articles shows it in its own language, which today is all 24.
@@ -35,8 +35,8 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
 
 - **Configure.** Choose `Easy`, then `Start Training`. Run `clickText("button", "Easy")` then `clickText("button", "Start Training")`. The board grid carries `data-round-phase="study"` and the controls show `Done`.
 - **Read the position.** Every square is a `button[data-coordinate]` whose `aria-label` reads "e4, white king" or "e4, empty" (`game.round.squareWith` and `squareEmpty`). Collect the occupied ones. Screenshot as evidence of the position shown.
-- **End study.** Run `clickText("button", "Done")`. The grid turns `data-round-phase="rebuild"` and the palette (`.lab-palette`, one button per piece, named like "white king") becomes active.
-- **Place each piece.** For each remembered square: `click('.lab-palette [aria-label="white king"]')` unless that button already has `aria-pressed="true"` (pressing it again deselects), then `click('[data-coordinate="e4"]')`. The square's `aria-label` becomes "e4, white king".
+- **End study.** Run `clickText("button", "Done")`. The grid turns `data-round-phase="rebuild"` and the palette (`.lab-palette`, one button per piece, named for the piece and what is left of it, like "white king, 1 left"; a piece with none left is `aria-disabled="true"`) becomes active.
+- **Place each piece.** For each remembered square: `click('.lab-palette [aria-label^="white king, "]')` unless that button already has `aria-pressed="true"` (pressing it again deselects), then `click('[data-coordinate="e4"]')`. The square's `aria-label` becomes "e4, white king".
 - **Submit.** Run `clickText("button", "Submit")`. The result panel with `#game-result-heading` appears.
 - **Prove the score.** The page shows `100%` when every piece matched. Screenshot the result.
 - **Article tile.** The tile is `section[data-article-tile]`, and the attribute holds the slug of the article it shows. It comes after the board review (`[data-result-board]`) and outside the result card. Assert its `dt` and `dd` pairs: `Your round` with the round just played and `This article's drill` with the article's drill, both in the form `6 pieces, 10 seconds`. `Read the article` is an `a` whose `href` is `/articles/<slug>`, or `/de/articles/<slug>` on `/de/game`. Read the strings of another locale from `articles.tile` in `messages/<locale>.json`.

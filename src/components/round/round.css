@@ -36,12 +36,27 @@
 .lab-cal-grid[data-live] .lab-cell { cursor: pointer; }
 .lab-cal-grid[data-live] .lab-cell:hover { box-shadow: inset 0 0 0 2px var(--lp-accent); }
 .lab-cal-grid .lab-cell:focus-visible { outline: 3px solid var(--lp-accent); outline-offset: -3px; border-radius: 0; z-index: 1; }
-.lab-palette { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
-.lab-palette button { aspect-ratio: 1; max-height: 56px; min-height: 44px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-md); background: var(--lp-sq-light); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: border-color 0.15s, background-color 0.15s; }
+.lab-palette { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin-top: 16px; user-select: none; -webkit-user-select: none; }
+.lab-palette button { position: relative; aspect-ratio: 1; max-height: 56px; min-height: 44px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-md); background: var(--lp-sq-light); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: border-color 0.15s, background-color 0.15s; }
 .lab-palette button:hover { border-color: var(--lp-ink-2); }
 .lab-palette button[aria-pressed="true"] { background: var(--lp-accent-soft); border-color: var(--lp-accent); box-shadow: inset 0 0 0 1px var(--lp-accent); }
 .lab-palette button:disabled { opacity: 0.4; cursor: not-allowed; }
 .lab-palette .lab-piece { width: 70%; height: 70%; }
+/* Every copy is on the board: still focusable and pressable, so pressing it can say why nothing more goes down. */
+.lab-palette button[aria-disabled="true"] { background: var(--lp-surface-2); border-style: dashed; cursor: not-allowed; }
+.lab-palette button[aria-disabled="true"] .lab-piece { opacity: 0.3; filter: grayscale(1); }
+.lab-palette-count { position: absolute; right: 3px; bottom: 2px; font: 500 12px/1 var(--lp-data); font-variant-numeric: tabular-nums; color: var(--lp-muted); pointer-events: none; }
+.lab-palette button[aria-disabled="true"] .lab-palette-count { color: var(--lp-wrong); font-weight: 600; }
+/* Drawn over the board's lower edge so the pinned /game rows keep their height; the pointer passes through it. */
+.lab-palette-note { position: absolute; left: 50%; bottom: calc(100% + 8px); z-index: 3; width: max-content; max-width: 100%; margin: 0; padding: 8px 12px; transform: translateX(-50%); border-radius: var(--lp-r-md); background: var(--lp-ink); color: var(--lp-surface); font: 500 14px/1.35 var(--lp-ui); text-align: center; box-shadow: var(--lp-pop-shadow); pointer-events: none; animation: lab-note-in 0.15s ease-out; }
+@keyframes lab-note-in { from { opacity: 0; } }
+/* Pieces that can be dragged decline the browser's own pan, so a drag never scrolls the page; empty squares keep it. */
+.lab-palette button:not(:disabled), .lab-cal-grid[data-live] .lab-cell[data-draggable] { touch-action: none; }
+.lab-cal-grid[data-live] .lab-cell[data-draggable] { cursor: grab; }
+.lab-cell[data-lifted] .lab-piece { opacity: 0.3; }
+.lab-cal-grid .lab-cell[data-drop-target] { box-shadow: inset 0 0 0 3px var(--lp-accent); }
+.lab-drag-ghost { position: fixed; left: 0; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; pointer-events: none; filter: drop-shadow(0 6px 10px rgba(13, 27, 36, 0.28)); will-change: transform; }
+.lab-drag-ghost .lab-piece { width: 90%; height: 90%; }
 .lab-cal-actions { margin-top: 16px; }
 .lab-cal-main { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .lab-cal-main .lab-btn { min-width: 0; }

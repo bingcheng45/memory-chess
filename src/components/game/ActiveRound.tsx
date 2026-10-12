@@ -6,7 +6,7 @@ import { useGameStore } from '@/lib/store/gameStore';
 import { useSettingsStore } from '@/stores/settingsStore';
 import type { RoundState } from '@/lib/round/round';
 import { ROUND_CONTROLS } from '@/lib/round/controls';
-import { RoundBoard, RoundPalette } from '@/components/round/RoundBoard';
+import { RefusalAnnouncement, RoundBoard, RoundPalette } from '@/components/round/RoundBoard';
 import { RoundControls } from '@/components/round/RoundControls';
 import { clockFace, RoundHead } from '@/components/round/RoundHead';
 import { useStudyDeadline } from '@/components/round/useStudyDeadline';
@@ -63,6 +63,7 @@ export default function ActiveRound({ round, onRestart, onSubmit }: ActiveRoundP
       />
       <p className="lab-sr" aria-live="polite">
         {round.phase === 'study' ? t('liveStudy', { memorizeSeconds: studySeconds }) : t('liveRebuild')}
+        <RefusalAnnouncement state={round} copy={COPY} />
       </p>
     </>
   );

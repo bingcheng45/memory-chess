@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Allena la tua memoria e visualizzazione negli scacchi",
-      "subtitle": "Memorizza una posizione, ricostruiscila a memoria e ricevi subito un punteggio. Migliora la tua visione della scacchiera turno dopo turno.",
-      "freeToPlay": "Gratis e senza bisogno di un account. Puoi anche confrontare il tuo punteggio nella <link>classifica</link>.",
-      "gamesPlayed": "Partite giocate: {count}"
+      "freeToPlay": "Gratis e senza bisogno di un account. Puoi anche confrontare il tuo punteggio nella <link>classifica</link>."
     },
     "cta": {
-      "play": "Gioca a Memory Chess",
       "leaderboard": "Vedi la classifica",
-      "playFree": "Gioca un turno gratis",
       "chooseSettings": "Scegli pezzi e tempo"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Come giocare a Memory Chess",
       "credit": "Video: «A New Way To Train Your Vision», di Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Come funziona",
-      "title": "Un allenamento semplice per la tua memoria scacchistica",
-      "subtitle": "Ogni turno ha tre passaggi semplici: studia la posizione, ricostruiscila e impara dal tuo punteggio.",
-      "steps": {
-        "observe": {
-          "title": "Osserva",
-          "description": "Nota dove si trova ogni pezzo. Cerca gruppi, linee e case vuote che ti facciano da riferimento."
-        },
-        "recreate": {
-          "title": "Ricostruisci",
-          "description": "Quando la scacchiera si svuota, rimetti ogni pezzo sulla casa che ricordi."
-        },
-        "improve": {
-          "title": "Migliora",
-          "description": "Controlla il punteggio, guarda cosa ti è sfuggito e riprova con più pezzi o meno tempo."
-        }
-      }
-    },
-    "board": {
-      "study": "Studia la scacchiera",
-      "rebuild": "Ricostruisci a memoria"
-    },
     "learn": {
-      "eyebrow": "Area didattica",
-      "title": "Guide di scacchi semplici",
-      "description": "Scopri modi pratici per migliorare visione della scacchiera, visualizzazione, calcolo e memoria. Ogni guida include esercizi da provare subito.",
-      "browseCta": "Sfoglia le guide",
-      "beginnerCta": "Inizia dalla guida per principianti"
+      "browseCta": "Sfoglia le guide"
     },
     "faq": {
       "title": "Domande su Memory Chess",

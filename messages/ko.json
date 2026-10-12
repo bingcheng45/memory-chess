@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: 체스 기억력과 시각화 능력을 훈련하세요",
-      "subtitle": "체스 국면을 외우고 기억만으로 다시 배치하면 바로 점수가 나옵니다. 한 판씩 판 전체를 보는 눈을 키워 보세요.",
-      "freeToPlay": "계정 없이 무료로 즐길 수 있습니다. <link>리더보드</link>에서 점수를 비교할 수도 있습니다.",
-      "gamesPlayed": "플레이한 게임 수: {count}"
+      "freeToPlay": "계정 없이 무료로 즐길 수 있습니다. <link>리더보드</link>에서 점수를 비교할 수도 있습니다."
     },
     "cta": {
-      "play": "Memory Chess 플레이",
       "leaderboard": "리더보드 보기",
-      "playFree": "무료로 한 판 해보기",
       "chooseSettings": "기물 수와 시간 선택"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Memory Chess 하는 방법",
       "credit": "영상: Colin Galen의 “A New Way To Train Your Vision”"
     },
-    "howItWorks": {
-      "eyebrow": "이렇게 동작합니다",
-      "title": "체스 기억력을 위한 간단한 훈련",
-      "subtitle": "한 판은 세 단계로 이뤄집니다. 국면을 살피고, 다시 세우고, 점수에서 배웁니다.",
-      "steps": {
-        "observe": {
-          "title": "관찰하기",
-          "description": "각 기물이 어디에 있는지 살펴보세요. 기물 무리, 라인, 기준이 될 만한 빈 칸을 찾아보세요."
-        },
-        "recreate": {
-          "title": "다시 세우기",
-          "description": "판이 비워지면 기억나는 칸에 기물을 하나씩 되돌려 놓습니다."
-        },
-        "improve": {
-          "title": "실력 올리기",
-          "description": "점수를 확인하고 놓친 부분을 찾은 뒤, 기물을 늘리거나 시간을 줄여 다시 도전해 보세요."
-        }
-      }
-    },
-    "board": {
-      "study": "판을 살펴보기",
-      "rebuild": "기억으로 다시 세우기"
-    },
     "learn": {
-      "eyebrow": "학습 센터",
-      "title": "이해하기 쉬운 체스 가이드",
-      "description": "판을 보는 눈, 시각화, 수읽기, 기억력을 키우는 실용적인 방법을 배워 보세요. 모든 가이드에는 바로 해볼 수 있는 훈련이 담겨 있습니다.",
-      "browseCta": "체스 가이드 둘러보기",
-      "beginnerCta": "입문자 가이드로 시작하기"
+      "browseCta": "체스 가이드 둘러보기"
     },
     "faq": {
       "title": "Memory Chess에 대한 질문",

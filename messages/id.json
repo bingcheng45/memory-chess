@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Latih ingatan dan visualisasi catur Anda",
-      "subtitle": "Hafalkan sebuah posisi catur, susun ulang dari ingatan, dan langsung dapatkan skor. Pertajam penglihatan papan Anda ronde demi ronde.",
-      "freeToPlay": "Gratis dimainkan, tanpa perlu akun. Anda juga bisa membandingkan skor di <link>papan peringkat</link>.",
-      "gamesPlayed": "Permainan dimainkan: {count}"
+      "freeToPlay": "Gratis dimainkan, tanpa perlu akun. Anda juga bisa membandingkan skor di <link>papan peringkat</link>."
     },
     "cta": {
-      "play": "Mainkan Memory Chess",
       "leaderboard": "Lihat papan peringkat",
-      "playFree": "Mainkan satu ronde gratis",
       "chooseSettings": "Pilih bidak dan waktu"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Cara bermain Memory Chess",
       "credit": "Video: “A New Way To Train Your Vision” oleh Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Cara kerjanya",
-      "title": "Latihan sederhana untuk ingatan catur Anda",
-      "subtitle": "Setiap ronde punya tiga langkah sederhana: amati posisinya, susun ulang, lalu pelajari skor Anda.",
-      "steps": {
-        "observe": {
-          "title": "Amati",
-          "description": "Perhatikan letak setiap bidak. Cari kelompok, garis, dan kotak kosong yang bisa jadi patokan."
-        },
-        "recreate": {
-          "title": "Susun ulang",
-          "description": "Saat papan dikosongkan, kembalikan setiap bidak ke kotak yang Anda ingat."
-        },
-        "improve": {
-          "title": "Tingkatkan",
-          "description": "Cek skor Anda, lihat apa yang terlewat, lalu coba lagi dengan lebih banyak bidak atau waktu lebih singkat."
-        }
-      }
-    },
-    "board": {
-      "study": "Amati papannya",
-      "rebuild": "Susun ulang dari ingatan"
-    },
     "learn": {
-      "eyebrow": "Pusat belajar",
-      "title": "Panduan catur yang mudah dipahami",
-      "description": "Pelajari cara praktis meningkatkan penglihatan papan, visualisasi, perhitungan, dan ingatan. Setiap panduan berisi latihan yang bisa langsung dicoba.",
-      "browseCta": "Jelajahi panduan catur",
-      "beginnerCta": "Mulai dari panduan pemula"
+      "browseCta": "Jelajahi panduan catur"
     },
     "faq": {
       "title": "Pertanyaan seputar Memory Chess",

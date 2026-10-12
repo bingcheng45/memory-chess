@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory chess game · chess memory trainer",
-      "subtitle": "Memorize a chess position, rebuild it from memory, and get an instant score. Improve your board vision one round at a time.",
-      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
-      "gamesPlayed": "Games played: {count}"
+      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>."
     },
     "cta": {
-      "play": "Play Memory Chess",
       "leaderboard": "View leaderboard",
-      "playFree": "Play a Free Round",
       "chooseSettings": "Choose pieces and time"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "How to Play Memory Chess",
       "credit": "Video: “A New Way To Train Your Vision” by Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "How it works",
-      "title": "A Simple Workout for Your Chess Memory",
-      "subtitle": "Every round has three simple steps: study the position, rebuild it, and learn from your score.",
-      "steps": {
-        "observe": {
-          "title": "Observe",
-          "description": "Study where each piece sits. Look for groups, lines, and useful empty spaces."
-        },
-        "recreate": {
-          "title": "Recreate",
-          "description": "When the board clears, place every piece back on the square you remember."
-        },
-        "improve": {
-          "title": "Improve",
-          "description": "Check your score, see what you missed, and try again with more pieces or less time."
-        }
-      }
-    },
-    "board": {
-      "study": "Study the board",
-      "rebuild": "Rebuild from memory"
-    },
     "learn": {
-      "eyebrow": "Learning Center",
-      "title": "Simple Chess Guides",
-      "description": "Learn practical ways to improve board vision, visualization, calculation, and memory. Each guide includes drills you can try right away.",
-      "browseCta": "Browse chess guides",
-      "beginnerCta": "Start with the Beginner Guide"
+      "browseCta": "Browse chess guides"
     },
     "faq": {
       "title": "Questions about Memory Chess.",

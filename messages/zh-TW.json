@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: 訓練你的西洋棋記憶力與盤面想像力",
-      "subtitle": "記住一個棋局，憑記憶重新擺回來，立刻取得分數。每一輪都讓你的棋盤視野更清楚。",
-      "freeToPlay": "免費遊玩，不必註冊。你也可以在<link>排行榜</link>上比較自己的成績。",
-      "gamesPlayed": "已進行對局：{count}"
+      "freeToPlay": "免費遊玩，不必註冊。你也可以在<link>排行榜</link>上比較自己的成績。"
     },
     "cta": {
-      "play": "開始玩 Memory Chess",
       "leaderboard": "查看排行榜",
-      "playFree": "免費玩一局",
       "chooseSettings": "自選棋子數與時間"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Memory Chess 玩法介紹",
       "credit": "影片：Colin Galen《A New Way To Train Your Vision》"
     },
-    "howItWorks": {
-      "eyebrow": "玩法說明",
-      "title": "一套簡單的棋盤記憶訓練",
-      "subtitle": "每一輪只有三個簡單步驟：觀察棋局、重建棋局、從分數中檢討。",
-      "steps": {
-        "observe": {
-          "title": "觀察",
-          "description": "記住每顆棋子的位置。留意棋子的組合、線路，以及可當作參考點的空格。"
-        },
-        "recreate": {
-          "title": "重建",
-          "description": "棋盤清空後，把每顆棋子放回你記得的格子上。"
-        },
-        "improve": {
-          "title": "進步",
-          "description": "查看分數，找出漏掉的地方，再用更多棋子或更短時間挑戰一次。"
-        }
-      }
-    },
-    "board": {
-      "study": "觀察棋盤",
-      "rebuild": "憑記憶重建"
-    },
     "learn": {
-      "eyebrow": "學習中心",
-      "title": "淺顯易懂的西洋棋指南",
-      "description": "學習提升棋盤視野、盤面想像、算路與記憶力的實用方法。每篇指南都附有可以馬上上手的練習。",
-      "browseCta": "瀏覽西洋棋指南",
-      "beginnerCta": "從新手指南開始"
+      "browseCta": "瀏覽西洋棋指南"
     },
     "faq": {
       "title": "關於 Memory Chess 的常見問題",

@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Trénujte šachovou paměť a představivost",
-      "subtitle": "Zapamatujte si šachovou pozici, poskládejte ji zpátky po paměti a hned dostanete skóre. Zlepšujte přehled na šachovnici kolo za kolem.",
-      "freeToPlay": "Zdarma a bez zakládání účtu. Své skóre můžete porovnat i v <link>žebříčku</link>.",
-      "gamesPlayed": "Odehraných partií: {count}"
+      "freeToPlay": "Zdarma a bez zakládání účtu. Své skóre můžete porovnat i v <link>žebříčku</link>."
     },
     "cta": {
-      "play": "Hrát Memory Chess",
       "leaderboard": "Zobrazit žebříček",
-      "playFree": "Zahrát si kolo zdarma",
       "chooseSettings": "Zvolte počet figur a čas"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Jak hrát Memory Chess",
       "credit": "Video: „A New Way To Train Your Vision“ od Colina Galena"
     },
-    "howItWorks": {
-      "eyebrow": "Jak to funguje",
-      "title": "Jednoduchý trénink šachové paměti",
-      "subtitle": "Každé kolo má tři jednoduché kroky: prohlédnout si pozici, poskládat ji a poučit se ze skóre.",
-      "steps": {
-        "observe": {
-          "title": "Pozorujte",
-          "description": "Všímejte si, kde stojí jednotlivé figurky. Hledejte skupiny, linie a prázdná pole, která poslouží jako záchytné body."
-        },
-        "recreate": {
-          "title": "Poskládejte",
-          "description": "Až se šachovnice vyprázdní, vraťte každou figurku na pole, které si pamatujete."
-        },
-        "improve": {
-          "title": "Zlepšujte se",
-          "description": "Podívejte se na skóre, zjistěte, co vám uniklo, a zkuste to znovu s více figurkami nebo kratším časem."
-        }
-      }
-    },
-    "board": {
-      "study": "Prohlédněte si šachovnici",
-      "rebuild": "Poskládejte po paměti"
-    },
     "learn": {
-      "eyebrow": "Výukové centrum",
-      "title": "Srozumitelné šachové návody",
-      "description": "Naučte se praktické způsoby, jak zlepšit přehled na šachovnici, představivost, výpočet variant a paměť. Každý návod obsahuje cvičení, která můžete zkusit hned.",
-      "browseCta": "Procházet návody",
-      "beginnerCta": "Začněte návodem pro začátečníky"
+      "browseCta": "Procházet návody"
     },
     "faq": {
       "title": "Otázky k Memory Chess",

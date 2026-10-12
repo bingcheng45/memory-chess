@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Harjoita shakkimuistiasi ja hahmotustasi",
-      "subtitle": "Paina mieleen shakkiasema, rakenna se uudelleen muistista ja saat pisteet heti. Paranna laudan hahmotusta kierros kerrallaan.",
-      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>.",
-      "gamesPlayed": "Pelattuja pelejä: {count}"
+      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>."
     },
     "cta": {
-      "play": "Pelaa Memory Chessiä",
       "leaderboard": "Katso tulostaulukko",
-      "playFree": "Pelaa ilmainen kierros",
       "chooseSettings": "Valitse nappulat ja aika"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Näin pelaat Memory Chessiä",
       "credit": "Video: ”A New Way To Train Your Vision”, Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Näin se toimii",
-      "title": "Yksinkertainen treeni shakkimuistille",
-      "subtitle": "Jokaisessa kierroksessa on kolme yksinkertaista vaihetta: tutki asema, rakenna se uudelleen ja opi tuloksesta.",
-      "steps": {
-        "observe": {
-          "title": "Havainnoi",
-          "description": "Huomaa, missä kukin nappula on. Etsi ryhmiä, linjoja ja tyhjiä ruutuja, jotka toimivat kiintopisteinä."
-        },
-        "recreate": {
-          "title": "Rakenna uudelleen",
-          "description": "Kun lauta tyhjenee, aseta jokainen nappula muistamaasi ruutuun."
-        },
-        "improve": {
-          "title": "Kehity",
-          "description": "Katso tuloksesi, selvitä mikä meni ohi, ja yritä uudelleen useammalla nappulalla tai lyhyemmällä ajalla."
-        }
-      }
-    },
-    "board": {
-      "study": "Tutki lautaa",
-      "rebuild": "Rakenna muistista"
-    },
     "learn": {
-      "eyebrow": "Oppimiskeskus",
-      "title": "Selkeät shakkioppaat",
-      "description": "Opi käytännön keinoja parantaa laudan hahmotusta, mielikuvitusta, laskentaa ja muistia. Jokaisessa oppaassa on harjoituksia, jotka voit kokeilla heti.",
-      "browseCta": "Selaa shakkioppaita",
-      "beginnerCta": "Aloita aloittelijan oppaasta"
+      "browseCta": "Selaa shakkioppaita"
     },
     "faq": {
       "title": "Kysymyksiä Memory Chessistä",

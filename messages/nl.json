@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Train je schaakgeheugen en je voorstellingsvermogen",
-      "subtitle": "Onthoud een schaakstelling, bouw die uit je hoofd weer op en krijg meteen een score. Verbeter je bordoverzicht ronde na ronde.",
-      "freeToPlay": "Gratis te spelen, zonder account. Je kunt je score ook vergelijken op de <link>ranglijst</link>.",
-      "gamesPlayed": "Gespeelde partijen: {count}"
+      "freeToPlay": "Gratis te spelen, zonder account. Je kunt je score ook vergelijken op de <link>ranglijst</link>."
     },
     "cta": {
-      "play": "Speel Memory Chess",
       "leaderboard": "Bekijk de ranglijst",
-      "playFree": "Speel een gratis ronde",
       "chooseSettings": "Kies stukken en tijd"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Zo speel je Memory Chess",
       "credit": "Video: ‘A New Way To Train Your Vision’ van Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Hoe het werkt",
-      "title": "Een simpele training voor je schaakgeheugen",
-      "subtitle": "Elke ronde bestaat uit drie eenvoudige stappen: bestudeer de stelling, bouw die opnieuw op en leer van je score.",
-      "steps": {
-        "observe": {
-          "title": "Kijken",
-          "description": "Let op waar elk stuk staat. Zoek naar groepjes, lijnen en lege velden die je als houvast kunt gebruiken."
-        },
-        "recreate": {
-          "title": "Opbouwen",
-          "description": "Zodra het bord leeg is, zet je elk stuk terug op het veld dat je je herinnert."
-        },
-        "improve": {
-          "title": "Verbeteren",
-          "description": "Bekijk je score, zie wat je miste en probeer het opnieuw met meer stukken of minder tijd."
-        }
-      }
-    },
-    "board": {
-      "study": "Bestudeer het bord",
-      "rebuild": "Bouw op uit je hoofd"
-    },
     "learn": {
-      "eyebrow": "Leercentrum",
-      "title": "Heldere schaakgidsen",
-      "description": "Ontdek praktische manieren om je bordoverzicht, voorstellingsvermogen, rekenwerk en geheugen te verbeteren. Elke gids bevat oefeningen die je meteen kunt proberen.",
-      "browseCta": "Bekijk de schaakgidsen",
-      "beginnerCta": "Begin met de beginnersgids"
+      "browseCta": "Bekijk de schaakgidsen"
     },
     "faq": {
       "title": "Vragen over Memory Chess",

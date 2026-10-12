@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Träna ditt schackminne och din visualisering",
-      "subtitle": "Memorera en schackställning, bygg upp den ur minnet och få poäng direkt. Förbättra din brädkänsla omgång för omgång.",
-      "freeToPlay": "Gratis att spela, inget konto behövs. Du kan också jämföra din poäng på <link>topplistan</link>.",
-      "gamesPlayed": "Spelade partier: {count}"
+      "freeToPlay": "Gratis att spela, inget konto behövs. Du kan också jämföra din poäng på <link>topplistan</link>."
     },
     "cta": {
-      "play": "Spela Memory Chess",
       "leaderboard": "Visa topplistan",
-      "playFree": "Spela en gratis omgång",
       "chooseSettings": "Välj pjäser och tid"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Så spelar du Memory Chess",
       "credit": "Video: ”A New Way To Train Your Vision” av Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Så fungerar det",
-      "title": "Ett enkelt träningspass för ditt schackminne",
-      "subtitle": "Varje omgång har tre enkla steg: studera ställningen, bygg upp den och lär av din poäng.",
-      "steps": {
-        "observe": {
-          "title": "Observera",
-          "description": "Lägg märke till var varje pjäs står. Leta efter grupper, linjer och tomma rutor du kan använda som hållpunkter."
-        },
-        "recreate": {
-          "title": "Återskapa",
-          "description": "När brädet töms placerar du varje pjäs på den ruta du minns."
-        },
-        "improve": {
-          "title": "Förbättra",
-          "description": "Titta på din poäng, se vad du missade och försök igen med fler pjäser eller kortare tid."
-        }
-      }
-    },
-    "board": {
-      "study": "Studera brädet",
-      "rebuild": "Bygg upp ur minnet"
-    },
     "learn": {
-      "eyebrow": "Lärcenter",
-      "title": "Enkla schackguider",
-      "description": "Lär dig praktiska sätt att förbättra brädkänsla, visualisering, beräkning och minne. Varje guide har övningar du kan testa direkt.",
-      "browseCta": "Bläddra bland guiderna",
-      "beginnerCta": "Börja med nybörjarguiden"
+      "browseCta": "Bläddra bland guiderna"
     },
     "faq": {
       "title": "Frågor om Memory Chess",

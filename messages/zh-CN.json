@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: 训练你的国际象棋记忆与盘面想象力",
-      "subtitle": "记住一个棋局，凭记忆还原它，立刻得到评分。每一轮都让你的棋盘视野更清晰。",
-      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。",
-      "gamesPlayed": "已进行对局：{count}"
+      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。"
     },
     "cta": {
-      "play": "开始玩 Memory Chess",
       "leaderboard": "查看排行榜",
-      "playFree": "免费玩一局",
       "chooseSettings": "自选棋子数和时间"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Memory Chess 玩法介绍",
       "credit": "视频：《A New Way To Train Your Vision》，作者 Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "玩法说明",
-      "title": "一套简单的棋盘记忆训练",
-      "subtitle": "每一轮只有三个简单步骤：观察棋局、还原棋局、从得分中总结。",
-      "steps": {
-        "observe": {
-          "title": "观察",
-          "description": "记住每颗棋子的位置。留意棋子的组合、线路，以及可作参照的空格。"
-        },
-        "recreate": {
-          "title": "还原",
-          "description": "棋盘清空后，把每颗棋子放回你记得的格子上。"
-        },
-        "improve": {
-          "title": "提升",
-          "description": "查看得分，找出漏掉的地方，再用更多棋子或更短时间试一次。"
-        }
-      }
-    },
-    "board": {
-      "study": "观察棋盘",
-      "rebuild": "凭记忆还原"
-    },
     "learn": {
-      "eyebrow": "学习中心",
-      "title": "简明国际象棋指南",
-      "description": "学习提升棋盘视野、盘面想象、计算能力和记忆力的实用方法。每篇指南都附有可以马上上手的练习。",
-      "browseCta": "浏览国际象棋指南",
-      "beginnerCta": "从新手指南开始"
+      "browseCta": "浏览国际象棋指南"
     },
     "faq": {
       "title": "关于 Memory Chess 的常见问题",

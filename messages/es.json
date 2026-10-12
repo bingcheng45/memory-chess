@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Entrena tu memoria y tu visualización en el ajedrez",
-      "subtitle": "Memoriza una posición de ajedrez, reconstrúyela de memoria y recibe una puntuación al instante. Mejora tu visión del tablero ronda a ronda.",
-      "freeToPlay": "Gratis y sin necesidad de crear una cuenta. También puedes comparar tu puntuación en la <link>clasificación</link>.",
-      "gamesPlayed": "Partidas jugadas: {count}"
+      "freeToPlay": "Gratis y sin necesidad de crear una cuenta. También puedes comparar tu puntuación en la <link>clasificación</link>."
     },
     "cta": {
-      "play": "Jugar a Memory Chess",
       "leaderboard": "Ver la clasificación",
-      "playFree": "Juega una ronda gratis",
       "chooseSettings": "Elige piezas y tiempo"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Cómo jugar a Memory Chess",
       "credit": "Vídeo: «A New Way To Train Your Vision», de Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Cómo funciona",
-      "title": "Un entrenamiento sencillo para tu memoria ajedrecística",
-      "subtitle": "Cada ronda tiene tres pasos sencillos: estudia la posición, reconstrúyela y aprende de tu puntuación.",
-      "steps": {
-        "observe": {
-          "title": "Observa",
-          "description": "Fíjate en dónde está cada pieza. Busca grupos, líneas y casillas vacías que te sirvan de referencia."
-        },
-        "recreate": {
-          "title": "Reconstruye",
-          "description": "Cuando el tablero se vacíe, coloca cada pieza en la casilla que recuerdes."
-        },
-        "improve": {
-          "title": "Mejora",
-          "description": "Revisa tu puntuación, mira qué se te escapó e inténtalo otra vez con más piezas o menos tiempo."
-        }
-      }
-    },
-    "board": {
-      "study": "Estudia el tablero",
-      "rebuild": "Reconstrúyelo de memoria"
-    },
     "learn": {
-      "eyebrow": "Centro de aprendizaje",
-      "title": "Guías de ajedrez sencillas",
-      "description": "Aprende formas prácticas de mejorar tu visión del tablero, tu visualización, tu cálculo y tu memoria. Cada guía incluye ejercicios que puedes probar ahora mismo.",
-      "browseCta": "Ver las guías de ajedrez",
-      "beginnerCta": "Empieza por la guía para principiantes"
+      "browseCta": "Ver las guías de ajedrez"
     },
     "faq": {
       "title": "Preguntas sobre Memory Chess",

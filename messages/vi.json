@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Rèn trí nhớ và khả năng hình dung bàn cờ",
-      "subtitle": "Ghi nhớ một thế cờ, dựng lại từ trí nhớ và nhận điểm ngay. Cải thiện khả năng bao quát bàn cờ qua từng vòng.",
-      "freeToPlay": "Chơi miễn phí, không cần tài khoản. Bạn cũng có thể so điểm trên <link>bảng xếp hạng</link>.",
-      "gamesPlayed": "Số ván đã chơi: {count}"
+      "freeToPlay": "Chơi miễn phí, không cần tài khoản. Bạn cũng có thể so điểm trên <link>bảng xếp hạng</link>."
     },
     "cta": {
-      "play": "Chơi Memory Chess",
       "leaderboard": "Xem bảng xếp hạng",
-      "playFree": "Chơi thử một vòng miễn phí",
       "chooseSettings": "Chọn số quân và thời gian"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Cách chơi Memory Chess",
       "credit": "Video: “A New Way To Train Your Vision” của Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Cách hoạt động",
-      "title": "Bài tập đơn giản cho trí nhớ cờ vua",
-      "subtitle": "Mỗi vòng có ba bước đơn giản: quan sát thế cờ, dựng lại nó và rút kinh nghiệm từ điểm số.",
-      "steps": {
-        "observe": {
-          "title": "Quan sát",
-          "description": "Để ý vị trí của từng quân cờ. Tìm các cụm quân, các hàng và những ô trống có thể làm mốc."
-        },
-        "recreate": {
-          "title": "Dựng lại",
-          "description": "Khi bàn cờ trống, hãy đặt từng quân về đúng ô mà bạn nhớ."
-        },
-        "improve": {
-          "title": "Tiến bộ",
-          "description": "Xem điểm số, tìm chỗ bị sót, rồi thử lại với nhiều quân hơn hoặc ít thời gian hơn."
-        }
-      }
-    },
-    "board": {
-      "study": "Quan sát bàn cờ",
-      "rebuild": "Dựng lại từ trí nhớ"
-    },
     "learn": {
-      "eyebrow": "Trung tâm học tập",
-      "title": "Hướng dẫn cờ vua dễ hiểu",
-      "description": "Học những cách thiết thực để cải thiện khả năng bao quát bàn cờ, hình dung, tính toán và ghi nhớ. Mỗi bài đều có bài tập bạn thử được ngay.",
-      "browseCta": "Xem các hướng dẫn",
-      "beginnerCta": "Bắt đầu với hướng dẫn cho người mới"
+      "browseCta": "Xem các hướng dẫn"
     },
     "faq": {
       "title": "Câu hỏi về Memory Chess",

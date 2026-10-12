@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Tren sjakkhukommelsen og forestillingsevnen din",
-      "subtitle": "Husk en sjakkstilling, bygg den opp igjen fra hukommelsen og få poeng med én gang. Forbedre brettforståelsen runde for runde.",
-      "freeToPlay": "Gratis å spille, uten konto. Du kan også sammenligne poengsummen din på <link>topplisten</link>.",
-      "gamesPlayed": "Spilte partier: {count}"
+      "freeToPlay": "Gratis å spille, uten konto. Du kan også sammenligne poengsummen din på <link>topplisten</link>."
     },
     "cta": {
-      "play": "Spill Memory Chess",
       "leaderboard": "Se topplisten",
-      "playFree": "Spill en gratis runde",
       "chooseSettings": "Velg brikker og tid"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Slik spiller du Memory Chess",
       "credit": "Video: «A New Way To Train Your Vision» av Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Slik fungerer det",
-      "title": "En enkel treningsøkt for sjakkhukommelsen",
-      "subtitle": "Hver runde har tre enkle steg: studer stillingen, bygg den opp igjen og lær av poengsummen.",
-      "steps": {
-        "observe": {
-          "title": "Observer",
-          "description": "Merk deg hvor hver brikke står. Se etter grupper, linjer og tomme felt du kan bruke som holdepunkter."
-        },
-        "recreate": {
-          "title": "Gjenskap",
-          "description": "Når brettet tømmes, setter du hver brikke tilbake på feltet du husker."
-        },
-        "improve": {
-          "title": "Forbedre",
-          "description": "Se på poengsummen, finn ut hva du bommet på, og prøv igjen med flere brikker eller kortere tid."
-        }
-      }
-    },
-    "board": {
-      "study": "Studer brettet",
-      "rebuild": "Gjenskap fra hukommelsen"
-    },
     "learn": {
-      "eyebrow": "Læringssenter",
-      "title": "Enkle sjakkguider",
-      "description": "Lær praktiske måter å forbedre brettforståelse, forestillingsevne, beregning og hukommelse på. Hver guide har øvelser du kan prøve med en gang.",
-      "browseCta": "Bla gjennom guidene",
-      "beginnerCta": "Start med nybegynnerguiden"
+      "browseCta": "Bla gjennom guidene"
     },
     "faq": {
       "title": "Spørsmål om Memory Chess",

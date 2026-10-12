@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Treine sua memória e visualização no xadrez",
-      "subtitle": "Memorize uma posição de xadrez, reconstrua de memória e receba uma pontuação na hora. Melhore sua visão de tabuleiro a cada rodada.",
-      "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>.",
-      "gamesPlayed": "Partidas jogadas: {count}"
+      "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>."
     },
     "cta": {
-      "play": "Jogar Memory Chess",
       "leaderboard": "Ver o ranking",
-      "playFree": "Jogar uma rodada grátis",
       "chooseSettings": "Escolha peças e tempo"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Como jogar Memory Chess",
       "credit": "Vídeo: “A New Way To Train Your Vision”, de Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Como funciona",
-      "title": "Um treino simples para a sua memória no xadrez",
-      "subtitle": "Cada rodada tem três passos simples: estude a posição, reconstrua e aprenda com a sua pontuação.",
-      "steps": {
-        "observe": {
-          "title": "Observe",
-          "description": "Repare onde cada peça está. Procure grupos, linhas e casas vazias que sirvam de referência."
-        },
-        "recreate": {
-          "title": "Reconstrua",
-          "description": "Quando o tabuleiro esvaziar, coloque cada peça de volta na casa que você lembrar."
-        },
-        "improve": {
-          "title": "Evolua",
-          "description": "Veja sua pontuação, confira o que passou batido e tente de novo com mais peças ou menos tempo."
-        }
-      }
-    },
-    "board": {
-      "study": "Estude o tabuleiro",
-      "rebuild": "Reconstrua de memória"
-    },
     "learn": {
-      "eyebrow": "Central de aprendizado",
-      "title": "Guias de xadrez descomplicados",
-      "description": "Aprenda formas práticas de melhorar visão de tabuleiro, visualização, cálculo e memória. Cada guia traz exercícios para você testar na hora.",
-      "browseCta": "Ver os guias de xadrez",
-      "beginnerCta": "Comece pelo guia para iniciantes"
+      "browseCta": "Ver os guias de xadrez"
     },
     "faq": {
       "title": "Perguntas sobre o Memory Chess",

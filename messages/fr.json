@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Entraînez votre mémoire et votre visualisation aux échecs",
-      "subtitle": "Mémorisez une position d’échecs, reconstituez-la de mémoire et obtenez un score immédiat. Améliorez votre vision de l’échiquier partie après partie.",
-      "freeToPlay": "Gratuit, sans création de compte. Vous pouvez aussi comparer votre score dans le <link>classement</link>.",
-      "gamesPlayed": "Parties jouées : {count}"
+      "freeToPlay": "Gratuit, sans création de compte. Vous pouvez aussi comparer votre score dans le <link>classement</link>."
     },
     "cta": {
-      "play": "Jouer à Memory Chess",
       "leaderboard": "Voir le classement",
-      "playFree": "Jouer une manche gratuite",
       "chooseSettings": "Choisir les pièces et la durée"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Comment jouer à Memory Chess",
       "credit": "Vidéo : « A New Way To Train Your Vision », par Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Comment ça marche",
-      "title": "Un entraînement simple pour votre mémoire échiquéenne",
-      "subtitle": "Chaque manche suit trois étapes simples : étudier la position, la reconstituer et apprendre de votre score.",
-      "steps": {
-        "observe": {
-          "title": "Observer",
-          "description": "Repérez où se trouve chaque pièce. Cherchez des groupes, des lignes et des cases vides utiles."
-        },
-        "recreate": {
-          "title": "Reconstituer",
-          "description": "Quand l’échiquier se vide, replacez chaque pièce sur la case dont vous vous souvenez."
-        },
-        "improve": {
-          "title": "Progresser",
-          "description": "Regardez votre score, voyez ce qui vous a échappé et recommencez avec plus de pièces ou moins de temps."
-        }
-      }
-    },
-    "board": {
-      "study": "Étudier l’échiquier",
-      "rebuild": "Reconstituer de mémoire"
-    },
     "learn": {
-      "eyebrow": "Espace d’apprentissage",
-      "title": "Des guides d’échecs accessibles",
-      "description": "Découvrez des méthodes concrètes pour améliorer votre vision de l’échiquier, votre visualisation, votre calcul et votre mémoire. Chaque guide propose des exercices à essayer tout de suite.",
-      "browseCta": "Parcourir les guides",
-      "beginnerCta": "Commencer par le guide débutant"
+      "browseCta": "Parcourir les guides"
     },
     "faq": {
       "title": "Questions sur Memory Chess",

@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Antrenează-ți memoria și vizualizarea la șah",
-      "subtitle": "Memorează o poziție de șah, reconstruiește-o din memorie și primești pe loc un punctaj. Îmbunătățește-ți vederea de ansamblu a tablei rundă după rundă.",
-      "freeToPlay": "Gratuit, fără cont. Îți poți compara punctajul și în <link>clasament</link>.",
-      "gamesPlayed": "Partide jucate: {count}"
+      "freeToPlay": "Gratuit, fără cont. Îți poți compara punctajul și în <link>clasament</link>."
     },
     "cta": {
-      "play": "Joacă Memory Chess",
       "leaderboard": "Vezi clasamentul",
-      "playFree": "Joacă o rundă gratuită",
       "chooseSettings": "Alege piesele și timpul"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Cum se joacă Memory Chess",
       "credit": "Video: „A New Way To Train Your Vision”, de Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Cum funcționează",
-      "title": "Un antrenament simplu pentru memoria ta șahistă",
-      "subtitle": "Fiecare rundă are trei pași simpli: studiezi poziția, o reconstruiești și înveți din punctaj.",
-      "steps": {
-        "observe": {
-          "title": "Observă",
-          "description": "Reține unde stă fiecare piesă. Caută grupuri, linii și pătrate goale care îți pot servi drept repere."
-        },
-        "recreate": {
-          "title": "Reconstruiește",
-          "description": "Când tabla se golește, pune fiecare piesă înapoi pe pătratul pe care ți-l amintești."
-        },
-        "improve": {
-          "title": "Progresează",
-          "description": "Uită-te la punctaj, vezi ce ți-a scăpat și încearcă din nou cu mai multe piese sau cu mai puțin timp."
-        }
-      }
-    },
-    "board": {
-      "study": "Studiază tabla",
-      "rebuild": "Reconstruiește din memorie"
-    },
     "learn": {
-      "eyebrow": "Centru de învățare",
-      "title": "Ghiduri de șah pe înțelesul tuturor",
-      "description": "Învață metode practice pentru a-ți îmbunătăți vederea tablei, vizualizarea, calculul și memoria. Fiecare ghid conține exerciții pe care le poți încerca imediat.",
-      "browseCta": "Răsfoiește ghidurile",
-      "beginnerCta": "Începe cu ghidul pentru începători"
+      "browseCta": "Răsfoiește ghidurile"
     },
     "faq": {
       "title": "Întrebări despre Memory Chess",

@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Satranç hafızanı ve görselleştirmeni geliştir",
-      "subtitle": "Bir satranç konumunu ezberle, hafızandan yeniden kur ve anında puan al. Tahta görüşünü her turda biraz daha güçlendir.",
-      "freeToPlay": "Ücretsiz, hesap açmaya gerek yok. Puanını <link>sıralama tablosunda</link> da karşılaştırabilirsin.",
-      "gamesPlayed": "Oynanan oyun: {count}"
+      "freeToPlay": "Ücretsiz, hesap açmaya gerek yok. Puanını <link>sıralama tablosunda</link> da karşılaştırabilirsin."
     },
     "cta": {
-      "play": "Memory Chess oyna",
       "leaderboard": "Sıralamayı gör",
-      "playFree": "Ücretsiz bir tur oyna",
       "chooseSettings": "Taş sayısı ve süreyi seç"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Memory Chess nasıl oynanır",
       "credit": "Video: “A New Way To Train Your Vision”, Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Nasıl çalışır",
-      "title": "Satranç hafızan için basit bir antrenman",
-      "subtitle": "Her tur üç basit adımdan oluşur: konumu incele, yeniden kur ve puanından ders çıkar.",
-      "steps": {
-        "observe": {
-          "title": "Gözlemle",
-          "description": "Her taşın nerede durduğuna dikkat et. Grupları, hatları ve işine yarayacak boş kareleri ara."
-        },
-        "recreate": {
-          "title": "Yeniden kur",
-          "description": "Tahta boşaldığında her taşı hatırladığın kareye geri koy."
-        },
-        "improve": {
-          "title": "Geliştir",
-          "description": "Puanına bak, neyi kaçırdığını gör ve daha çok taşla ya da daha az süreyle yeniden dene."
-        }
-      }
-    },
-    "board": {
-      "study": "Tahtayı incele",
-      "rebuild": "Hafızandan yeniden kur"
-    },
     "learn": {
-      "eyebrow": "Öğrenme merkezi",
-      "title": "Sade satranç rehberleri",
-      "description": "Tahta görüşünü, görselleştirmeni, hesaplamanı ve hafızanı geliştirmenin pratik yollarını öğren. Her rehberde hemen deneyebileceğin alıştırmalar var.",
-      "browseCta": "Satranç rehberlerine göz at",
-      "beginnerCta": "Yeni başlayanlar rehberiyle başla"
+      "browseCta": "Satranç rehberlerine göz at"
     },
     "faq": {
       "title": "Memory Chess hakkında sorular",

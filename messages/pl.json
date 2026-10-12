@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Trenuj szachową pamięć i wyobraźnię",
-      "subtitle": "Zapamiętaj pozycję szachową, odtwórz ją z pamięci i od razu otrzymaj wynik. Poprawiaj widzenie szachownicy runda po rundzie.",
-      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>.",
-      "gamesPlayed": "Rozegrane partie: {count}"
+      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>."
     },
     "cta": {
-      "play": "Zagraj w Memory Chess",
       "leaderboard": "Zobacz ranking",
-      "playFree": "Zagraj darmową rundę",
       "chooseSettings": "Wybierz figury i czas"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Jak grać w Memory Chess",
       "credit": "Wideo: „A New Way To Train Your Vision”, Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Jak to działa",
-      "title": "Prosty trening szachowej pamięci",
-      "subtitle": "Każda runda ma trzy proste kroki: przeanalizuj pozycję, odtwórz ją i wyciągnij wnioski z wyniku.",
-      "steps": {
-        "observe": {
-          "title": "Obserwuj",
-          "description": "Zapamiętaj, gdzie stoi każda bierka. Szukaj grup, linii i pustych pól, które posłużą za punkty odniesienia."
-        },
-        "recreate": {
-          "title": "Odtwórz",
-          "description": "Gdy szachownica opustoszeje, ustaw każdą bierkę na polu, które pamiętasz."
-        },
-        "improve": {
-          "title": "Poprawiaj się",
-          "description": "Sprawdź wynik, zobacz, co ci umknęło, i spróbuj ponownie z większą liczbą bierek albo krótszym czasem."
-        }
-      }
-    },
-    "board": {
-      "study": "Przeanalizuj szachownicę",
-      "rebuild": "Odtwórz z pamięci"
-    },
     "learn": {
-      "eyebrow": "Centrum nauki",
-      "title": "Przystępne poradniki szachowe",
-      "description": "Poznaj praktyczne sposoby na lepsze widzenie szachownicy, wyobraźnię, liczenie wariantów i pamięć. Każdy poradnik zawiera ćwiczenia do wypróbowania od razu.",
-      "browseCta": "Przeglądaj poradniki",
-      "beginnerCta": "Zacznij od poradnika dla początkujących"
+      "browseCta": "Przeglądaj poradniki"
     },
     "faq": {
       "title": "Pytania o Memory Chess",

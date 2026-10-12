@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Trainiere dein Schachgedächtnis und deine Vorstellungskraft",
-      "subtitle": "Präge dir eine Schachstellung ein, baue sie aus dem Gedächtnis wieder auf und erhalte sofort eine Bewertung. Verbessere dein Brettgefühl Runde für Runde.",
-      "freeToPlay": "Kostenlos und ohne Konto. Deinen Punktestand kannst du auch in der <link>Bestenliste</link> vergleichen.",
-      "gamesPlayed": "Gespielte Partien: {count}"
+      "freeToPlay": "Kostenlos und ohne Konto. Deinen Punktestand kannst du auch in der <link>Bestenliste</link> vergleichen."
     },
     "cta": {
-      "play": "Memory Chess spielen",
       "leaderboard": "Bestenliste ansehen",
-      "playFree": "Kostenlose Runde spielen",
       "chooseSettings": "Figuren und Zeit wählen"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Wie man Memory Chess spielt",
       "credit": "Video: „A New Way To Train Your Vision“ von Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "So funktioniert es",
-      "title": "Ein einfaches Workout für dein Schachgedächtnis",
-      "subtitle": "Jede Runde hat drei einfache Schritte: Stellung einprägen, wieder aufbauen und aus dem Ergebnis lernen.",
-      "steps": {
-        "observe": {
-          "title": "Beobachten",
-          "description": "Präge dir ein, wo jede Figur steht. Achte auf Gruppen, Linien und hilfreiche leere Felder."
-        },
-        "recreate": {
-          "title": "Nachbauen",
-          "description": "Wenn das Brett leer ist, stelle jede Figur auf das Feld zurück, an das du dich erinnerst."
-        },
-        "improve": {
-          "title": "Verbessern",
-          "description": "Sieh dir dein Ergebnis an, prüfe, was gefehlt hat, und versuch es erneut – mit mehr Figuren oder weniger Zeit."
-        }
-      }
-    },
-    "board": {
-      "study": "Brett einprägen",
-      "rebuild": "Aus dem Gedächtnis aufbauen"
-    },
     "learn": {
-      "eyebrow": "Lernbereich",
-      "title": "Verständliche Schach-Guides",
-      "description": "Lerne praktische Wege, um Brettgefühl, Vorstellungskraft, Berechnung und Gedächtnis zu verbessern. Jeder Guide enthält Übungen, die du sofort ausprobieren kannst.",
-      "browseCta": "Schach-Guides ansehen",
-      "beginnerCta": "Mit dem Einsteiger-Guide starten"
+      "browseCta": "Schach-Guides ansehen"
     },
     "faq": {
       "title": "Fragen zu Memory Chess",

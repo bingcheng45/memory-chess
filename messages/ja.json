@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: チェスの記憶力とイメージ力を鍛える",
-      "subtitle": "チェスの局面を覚え、記憶だけで並べ直すと、その場でスコアが出ます。一局ごとに盤面を見る力が育ちます。",
-      "freeToPlay": "アカウント不要、無料で遊べます。スコアは<link>ランキング</link>で比べることもできます。",
-      "gamesPlayed": "プレイ回数：{count}"
+      "freeToPlay": "アカウント不要、無料で遊べます。スコアは<link>ランキング</link>で比べることもできます。"
     },
     "cta": {
-      "play": "Memory Chess で遊ぶ",
       "leaderboard": "ランキングを見る",
-      "playFree": "無料で 1 ラウンド遊ぶ",
       "chooseSettings": "駒の数と時間を選ぶ"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Memory Chess の遊び方",
       "credit": "動画：Colin Galen「A New Way To Train Your Vision」"
     },
-    "howItWorks": {
-      "eyebrow": "遊び方",
-      "title": "チェスの記憶力を鍛えるシンプルな練習",
-      "subtitle": "各ラウンドは 3 つの簡単なステップです。局面を見て、並べ直し、スコアから学びます。",
-      "steps": {
-        "observe": {
-          "title": "観察する",
-          "description": "駒がどこにあるかを見ます。駒のまとまり、ライン、目印になる空きマスを探しましょう。"
-        },
-        "recreate": {
-          "title": "並べ直す",
-          "description": "盤面が消えたら、覚えているマスに駒を戻していきます。"
-        },
-        "improve": {
-          "title": "上達する",
-          "description": "スコアを確認し、抜けた部分を見つけて、駒を増やすか時間を縮めてもう一度挑戦しましょう。"
-        }
-      }
-    },
-    "board": {
-      "study": "盤面を覚える",
-      "rebuild": "記憶だけで並べ直す"
-    },
     "learn": {
-      "eyebrow": "ラーニングセンター",
-      "title": "わかりやすいチェスガイド",
-      "description": "盤面を見る力、イメージ力、読みの力、記憶力を伸ばす実践的な方法を紹介します。各ガイドにはすぐ試せる練習が付いています。",
-      "browseCta": "チェスガイドを見る",
-      "beginnerCta": "初心者ガイドから始める"
+      "browseCta": "チェスガイドを見る"
     },
     "faq": {
       "title": "Memory Chess についてのご質問",

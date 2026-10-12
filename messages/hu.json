@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Fejleszd a sakkmemóriádat és a vizualizációdat",
-      "subtitle": "Jegyezz meg egy sakkállást, építsd fel emlékezetből, és azonnal pontszámot kapsz. Javítsd a tábla átlátását körről körre.",
-      "freeToPlay": "Ingyenes, fiók nélkül is játszható. Az eredményedet a <link>ranglistán</link> is összevetheted másokéval.",
-      "gamesPlayed": "Lejátszott játszmák: {count}"
+      "freeToPlay": "Ingyenes, fiók nélkül is játszható. Az eredményedet a <link>ranglistán</link> is összevetheted másokéval."
     },
     "cta": {
-      "play": "Memory Chess játék",
       "leaderboard": "Ranglista megtekintése",
-      "playFree": "Játssz egy ingyenes kört",
       "chooseSettings": "Válassz bábukat és időt"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Így játszd a Memory Chesst",
       "credit": "Videó: „A New Way To Train Your Vision”, Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Hogyan működik",
-      "title": "Egyszerű edzés a sakkmemóriádnak",
-      "subtitle": "Minden kör három egyszerű lépésből áll: tanulmányozd az állást, építsd fel újra, és tanulj az eredményedből.",
-      "steps": {
-        "observe": {
-          "title": "Figyelj",
-          "description": "Jegyezd meg, hol áll az egyes bábuk. Keress csoportokat, vonalakat és üres mezőket, amelyek fogódzót adnak."
-        },
-        "recreate": {
-          "title": "Építsd fel",
-          "description": "Amikor a tábla kiürül, tedd vissza minden bábut arra a mezőre, amelyikre emlékszel."
-        },
-        "improve": {
-          "title": "Fejlődj",
-          "description": "Nézd meg az eredményed, keresd meg, mi maradt ki, és próbáld újra több bábuval vagy kevesebb idővel."
-        }
-      }
-    },
-    "board": {
-      "study": "Tanulmányozd a táblát",
-      "rebuild": "Építsd fel emlékezetből"
-    },
     "learn": {
-      "eyebrow": "Tanulóközpont",
-      "title": "Érthető sakk-útmutatók",
-      "description": "Ismerj meg gyakorlati módszereket a tábla átlátásának, a vizualizációnak, a számolásnak és a memóriának a fejlesztésére. Minden útmutató tartalmaz azonnal kipróbálható gyakorlatokat.",
-      "browseCta": "Útmutatók böngészése",
-      "beginnerCta": "Kezdd a kezdő útmutatóval"
+      "browseCta": "Útmutatók böngészése"
     },
     "faq": {
       "title": "Kérdések a Memory Chessről",

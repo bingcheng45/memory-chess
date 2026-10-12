@@ -90,7 +90,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "After you submit, the board shows the pieces you placed. A green square is correct. A red square holds a piece that does not belong there. A red ring marks a square that held a piece in the original, and if you left it empty, a faded copy of the missing piece sits inside the ring.",
-            "Read those marks, not the accuracy number. If one type keeps scoring low under Recall by piece type, that is the piece your picture drops.",
+            "Read those marks, not the accuracy number.",
             "If you place a seventh piece, accuracy drops ten points for it.",
           ],
         },
@@ -228,12 +228,12 @@ const guide: LearnDocument = {
             {
               label: "Weeks 1 and 2",
               duration: "8 minutes a day",
-              detail: "The four-minute check daily, then one cover-and-move question with a single capture. The number to watch is perfect rounds out of four.",
+              detail: "The four-minute check daily, then two cover-and-move positions, each with a single capture. The number to watch is perfect rounds out of four.",
             },
             {
               label: "Weeks 3 and 4",
               duration: "10 minutes a day",
-              detail: "Keep the check. Extend cover-and-move to two moves for each side, and end by saying the file or diagonal behind the last capture.",
+              detail: "Keep the check. Extend cover-and-move to two moves for each side, and end by saying the file or diagonal behind the last capture. Open Recall by piece type in your Lab record. A type that stays low is the one your picture loses.",
             },
             {
               label: "Weeks 5 and 6",

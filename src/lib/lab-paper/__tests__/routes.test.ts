@@ -4,14 +4,15 @@ describe("the Lab Paper route registry", () => {
   it("draws the homepage in Lab Paper only in the locales that have its copy, and leaves unlisted routes in the site shell", () => {
     expect(isLabPaperRoute("/", "en")).toBe(true);
     expect(isLabPaperRoute("/", "de")).toBe(false);
-    expect(isLabPaperRoute("/privacy", "en")).toBe(false);
+    expect(isLabPaperRoute("/settings", "en")).toBe(false);
     expect(isLabPaperRoute("/contact-us", "de")).toBe(false);
   });
 
-  it("draws the English-only changelog, about and terms pages in Lab Paper", () => {
+  it("draws the English-only changelog, about, terms and privacy pages in Lab Paper", () => {
     expect(isLabPaperRoute("/changelog", "en")).toBe(true);
     expect(isLabPaperRoute("/about", "en")).toBe(true);
     expect(isLabPaperRoute("/terms", "en")).toBe(true);
+    expect(isLabPaperRoute("/privacy", "en")).toBe(true);
   });
 
   it("draws the leaderboard in Lab Paper in every locale, since every catalogue carries its copy", () => {

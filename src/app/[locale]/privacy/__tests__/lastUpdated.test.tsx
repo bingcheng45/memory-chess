@@ -7,13 +7,7 @@ declare const setMachineTimeZone: (zone: string) => void;
 
 jest.mock("@/lib/seo/privacyPolicy", () => ({ PRIVACY_LAST_UPDATED: "2031-01-09T00:00:00.000+08:00" }));
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>Memory Chess header</div>;
-  }
-
-  return MockPageHeader;
-});
+jest.mock("@/components/lab-paper/LabPaperHeader", () => ({ LabPaperHeader: () => null }));
 
 jest.mock("@/i18n/navigation", () => ({
   Link: ({ href, children, ...rest }: { href: string; children?: ReactNode }) => (
@@ -46,7 +40,10 @@ describe("PrivacyPage last-updated line", () => {
       render(<PrivacyPage />);
 
       expect(new Date(PRIVACY_LAST_UPDATED).toLocaleDateString("en-US")).toBe(dateOnMachine);
-      expect(screen.getByText("Last updated: January 9, 2031")).toBeInTheDocument();
+      const updated = screen.getByText("January 9, 2031");
+      expect(updated.tagName).toBe("TIME");
+      expect(updated).toHaveAttribute("dateTime", "2031-01-09");
+      expect(updated.parentElement).toHaveTextContent("Last updated: January 9, 2031");
     },
   );
 });

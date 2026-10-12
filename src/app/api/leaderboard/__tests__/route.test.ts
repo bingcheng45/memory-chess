@@ -142,9 +142,7 @@ describe("POST /api/leaderboard", () => {
   });
 
   it.each([
-    ["missing", undefined],
     ["negative", -1],
-    ["above 5000", 5001],
     ["fractional", 12.5],
     ["a string", "1200"],
     ["null", null],
@@ -156,11 +154,22 @@ describe("POST /api/leaderboard", () => {
     expect(submitLeaderboardEntry).not.toHaveBeenCalled();
   });
 
-  it.each([0, 5000])("accepts the boundary rating %d", async (skill_rating) => {
-    const response = await post({ ...validEntry, skill_rating });
+  it.each([
+    ["the lowest rating", 0, 0],
+    ["the highest rating", 5000, 5000],
+    ["a rating above the highest as the highest", 7300, 5000],
+  ])("stores %s", async (_case, sent, stored) => {
+    const response = await post({ ...validEntry, skill_rating: sent });
 
     expect(response.status).toBe(200);
-    expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ skill_rating }));
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ skill_rating: stored }));
+  });
+
+  it("stores the starting rating for a tab that sends none", async () => {
+    const response = await post({ ...validEntry, skill_rating: undefined });
+
+    expect(response.status).toBe(200);
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ skill_rating: 1000 }));
   });
 
   it("hands the rating to the insert unchanged", async () => {
@@ -198,7 +207,7 @@ describe("POST /api/leaderboard", () => {
     const response = await post({ ...validEntry, ...board });
 
     expect(response.status).toBe(400);
-    expect(await response.json()).toEqual({ error: "Invalid daily day" });
+    expect(await response.json()).toEqual({ error: "Invalid difficulty or daily day" });
     expect(submitLeaderboardEntry).not.toHaveBeenCalled();
   });
 
@@ -212,7 +221,7 @@ describe("POST /api/leaderboard", () => {
     const response = await post({ ...validEntry, difficulty: "weekly" });
 
     expect(response.status).toBe(400);
-    expect(await response.json()).toEqual({ error: "Invalid difficulty level" });
+    expect(await response.json()).toEqual({ error: "Invalid difficulty or daily day" });
   });
 });
 

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
+import { START_RATING } from '@/lib/game/rating';
 import {
   DAILY_BOARD,
   isLeaderboardDifficulty,
@@ -13,9 +14,11 @@ const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try ag
 
 const DAY_FORMAT = /^\d{4}-\d{2}-\d{2}$/;
 
+/** A missing rating comes from a tab loaded before ratings were sent, and reads as the starting rating. */
 function parseSkillRating(value: unknown): number | null {
-  return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= MAX_SKILL_RATING
-    ? value
+  if (value === undefined) return START_RATING;
+  return typeof value === 'number' && Number.isInteger(value) && value >= 0
+    ? Math.min(value, MAX_SKILL_RATING)
     : null;
 }
 
@@ -26,19 +29,14 @@ function parseDay(value: unknown): string | null {
   return !Number.isNaN(date.getTime()) && date.toISOString().startsWith(value) ? value : null;
 }
 
-type BoardReading = { board: LeaderboardBoard } | { error: string };
-
-function readBoard(difficulty: unknown, dailyDay: unknown): BoardReading {
+function readBoard(difficulty: unknown, dailyDay: unknown): LeaderboardBoard | null {
   if (difficulty === DAILY_BOARD) {
     const day = parseDay(dailyDay);
-    return day === null ? { error: 'Invalid daily day' } : { board: { difficulty, daily_day: day } };
+    return day === null ? null : { difficulty, daily_day: day };
   }
-  if (!isLeaderboardDifficulty(difficulty)) {
-    return { error: 'Invalid difficulty level' };
-  }
-  return dailyDay === undefined || dailyDay === null
-    ? { board: { difficulty } }
-    : { error: 'Invalid daily day' };
+  return isLeaderboardDifficulty(difficulty) && (dailyDay === undefined || dailyDay === null)
+    ? { difficulty }
+    : null;
 }
 
 export async function GET(request: NextRequest) {
@@ -111,8 +109,8 @@ export async function POST(request: NextRequest) {
     }
     
     const board = readBoard(difficulty, daily_day);
-    if ('error' in board) {
-      return NextResponse.json({ error: board.error }, { status: 400 });
+    if (board === null) {
+      return NextResponse.json({ error: 'Invalid difficulty or daily day' }, { status: 400 });
     }
 
     const parsedSkillRating = parseSkillRating(skill_rating);
@@ -151,7 +149,7 @@ export async function POST(request: NextRequest) {
     
     const result = await submitLeaderboardEntry({
       player_name,
-      ...board.board,
+      ...board,
       piece_count,
       correct_pieces,
       memorize_time,

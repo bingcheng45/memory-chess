@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import type { DashboardTile, DashboardTileId, Rig } from "@/lib/lab/dashboard";
 import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
 import { useContextText, useFigureText } from "./figureText";
+import { TrendChip } from "./TrendChip";
 
 const NEED_VALUES = { accuracy: LAB_THRESHOLDS.spanAccuracy, minPieces: LAB_THRESHOLDS.spanMinPieces };
 
@@ -30,7 +31,10 @@ function TileBody({ tile }: { tile: DashboardTile }) {
     case "stale":
       return (
         <>
-          <p className="lab-tile-figure">{figureText.rich(tile.figure)}</p>
+          <div className="lab-tile-figure-row">
+            <p className="lab-tile-figure">{figureText.rich(tile.figure)}</p>
+            {tile.trend && <TrendChip trend={tile.trend} />}
+          </div>
           <p className="lab-tile-note">{contextText(tile.context)}</p>
         </>
       );

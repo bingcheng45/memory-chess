@@ -27,10 +27,10 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "To learn how to see the whole board in chess, sweep it from the edges inward before you look at your own move. Name every piece on the a-file, h-file, first rank and eighth rank. Then trace each enemy bishop, rook and queen to the last square it reaches, check the knights, and only then choose your move.",
+    quickAnswer: "To learn how to see the whole board in chess, sweep it from the edges inward before you look at your own move. Name every piece on the a-file, h-file, first rank and eighth rank. Then trace each enemy bishop, rook and queen to the edge of the board, check the knights, and only then choose your move.",
     takeaways: [
       "A long-range piece wins material without moving. When a pawn steps off its line, your eyes follow the pawn and miss the line it opened.",
-      "Trace every line to the last square it reaches, because the first piece on the line may be yours and pinned.",
+      "Trace every line to the edge of the board, because the first piece on the line may be yours and pinned.",
       "Start the sweep at the edges, because a look that works outward from your own move reaches them last.",
     ],
     audience: [
@@ -47,7 +47,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Set this up with Black to move. White has Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 and pawns on a3, b2, c2, f2, g2 and h2. Black has Kg8, Ra8, Rd8, Bc8, Nf6 and pawns on a7, b7, c7, e6, f7, g7 and h7.",
-            "The bishop on a2 looks at b3, c4, d5, e6 and f7. Only Black's own pawn on e6 stands in its way.",
+            "The bishop on a2 looks down b3, c4, d5, e6, f7 and g8. Black's pawns on e6 and f7 stand in the way, and Black's king waits at the end.",
             "Push ...e5 for space in the centre, and Bxf7+ follows. The king cannot take back, because the knight on g5 also covers f7, so White wins a pawn with check.",
           ],
         },
@@ -90,6 +90,8 @@ const guide: LearnDocument = {
             { kind: "occupant", square: "c4", piece: null },
             { kind: "occupant", square: "d5", piece: null },
             { kind: "occupant", square: "e6", piece: "bp" },
+            { kind: "occupant", square: "f7", piece: "bp" },
+            { kind: "occupant", square: "g8", piece: "bk" },
             { kind: "legal", move: "e5" },
           ],
         },
@@ -137,7 +139,7 @@ const guide: LearnDocument = {
           ordered: true,
           items: [
             "The edges. Name every piece on the a-file, the h-file, the first rank and the eighth rank, for both sides. Rooks still on their first squares and bishops pulled back to the rim stand here.",
-            "Every enemy bishop, rook and queen. Follow each line to the last square it reaches, and say whose piece each blocker is.",
+            "Every enemy bishop, rook and queen. Follow each line through every piece on it to the edge of the board, and say whose piece each one is.",
             "Every enemy knight. Name the squares it reaches, because a sweep along lines never touches them.",
             "Your own bishops, rooks and queen, traced the same way.",
             "Last, your own move. Check the square it lands on and any line it opens by leaving its old square.",
@@ -146,14 +148,14 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Run it on the bishop position as Black. Step one finds the bishop on a2. Step two follows it to f7 and names the blocker, your own pawn on e6. Now ...e5 reads as a move that opens a White line before you play it.",
+            "Run it on the bishop position as Black. Step one finds the bishop on a2. Step two follows it through e6 and f7 to g8 and names each piece it passes, your pawn, your other pawn and your king. Now ...e5 reads as a move that leaves one pawn between that bishop and your king.",
           ],
         },
       ],
     },
     {
       id: "last-square",
-      heading: "Name the last square a line reaches, not the first piece on it",
+      heading: "Trace a line to the edge, not to the first piece on it",
       blocks: [
         {
           kind: "prose",
@@ -199,7 +201,7 @@ const guide: LearnDocument = {
             },
             {
               title: "Edge inventory",
-              description: "Open an annotated game at any middlegame diagram. List every piece on the a-file, the h-file, the first rank and the eighth rank. For each bishop, rook and queen among them, write the last square each of its lines reaches. Check each trace against the diagram. You pass when no piece is missing and no trace stops at the first piece in its way.",
+              description: "Open an annotated game at any middlegame diagram. List every piece on the a-file, the h-file, the first rank and the eighth rank. For each bishop, rook and queen among them, trace each of its lines to the edge and write every piece it passes. Check each trace against the diagram. You pass when no piece is missing and no trace stops at the first piece in its way.",
               duration: "4 minutes",
               goal: "Make the pieces you usually skip the first ones you list.",
             },
@@ -288,7 +290,7 @@ const guide: LearnDocument = {
         {
           kind: "guide",
           slug: "chess-coordinates-practice",
-          reason: "Drills for naming a square without counting, so naming the last square of a line does not slow the sweep.",
+          reason: "Drills for naming a square without counting, so naming each square along a line does not slow the sweep.",
         },
         {
           kind: "guide",

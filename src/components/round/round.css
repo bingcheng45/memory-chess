@@ -43,10 +43,10 @@
 .lab-palette button:disabled { opacity: 0.4; cursor: not-allowed; }
 .lab-palette .lab-piece { width: 70%; height: 70%; }
 /* Every copy is on the board: still focusable and pressable, so pressing it can say why nothing more goes down. */
-.lab-palette button[aria-disabled="true"] { background: var(--lp-surface-2); border-style: dashed; cursor: not-allowed; }
-.lab-palette button[aria-disabled="true"] .lab-piece { opacity: 0.3; filter: grayscale(1); }
+.lab-palette button[data-used-up] { background: var(--lp-surface-2); border-style: dashed; cursor: not-allowed; }
+.lab-palette button[data-used-up] .lab-piece { opacity: 0.3; filter: grayscale(1); }
 .lab-palette-count { position: absolute; right: 3px; bottom: 2px; font: 500 12px/1 var(--lp-data); font-variant-numeric: tabular-nums; color: var(--lp-muted); pointer-events: none; }
-.lab-palette button[aria-disabled="true"] .lab-palette-count { color: var(--lp-wrong); font-weight: 600; }
+.lab-palette button[data-used-up] .lab-palette-count { color: var(--lp-wrong); font-weight: 600; }
 /* Drawn over the board's lower edge so the pinned /game rows keep their height; the pointer passes through it. */
 .lab-palette-note { position: absolute; left: 50%; bottom: calc(100% + 8px); z-index: 3; width: max-content; max-width: 100%; margin: 0; padding: 8px 12px; transform: translateX(-50%); border-radius: var(--lp-r-md); background: var(--lp-ink); color: var(--lp-surface); font: 500 14px/1.35 var(--lp-ui); text-align: center; box-shadow: var(--lp-pop-shadow); pointer-events: none; animation: lab-note-in 0.15s ease-out; }
 @keyframes lab-note-in { from { opacity: 0; } }

@@ -204,7 +204,7 @@ export const RoundPalette = memo(function RoundPalette({ state, dispatch, copy }
             key={`${piece.color}-${piece.type}`}
             type="button"
             disabled={!live}
-            aria-disabled={live && left <= 0 ? true : undefined}
+            data-used-up={live && left <= 0 ? "" : undefined}
             aria-pressed={selected?.color === piece.color && selected.type === piece.type}
             aria-label={live ? t("paletteItem", { piece: pieceName(piece), count: left }) : pieceName(piece)}
             onClick={() => dispatch({ type: "select", piece })}

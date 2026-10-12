@@ -106,7 +106,7 @@ function SectionLinks({ links, withHints, onPick }: { links: readonly PageSectio
 
 type SiteLinkItem = (typeof SITE_LINKS)[number] | (typeof MENU_ONLY_LINKS)[number];
 
-interface NavLinkProps {
+interface SiteLinkWithDailyDotProps {
   readonly link: SiteLinkItem;
   readonly dailyReady: boolean;
   readonly className?: string;
@@ -114,8 +114,7 @@ interface NavLinkProps {
   readonly "aria-current"?: "page";
 }
 
-/** A site link; Dashboard carries a dot while today's daily board is unused on this device. */
-function NavLink({ link, dailyReady, ...props }: NavLinkProps) {
+function SiteLinkWithDailyDot({ link, dailyReady, ...props }: SiteLinkWithDailyDotProps) {
   const nav = useTranslations("common.nav");
   const entry = useTranslations("dailyEntry");
   const label = nav(link.key);
@@ -151,7 +150,7 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
           </Link>
           <nav className="lab-nav" aria-label="Main">
             {SITE_LINKS.map((link) => (
-              <NavLink
+              <SiteLinkWithDailyDot
                 key={link.href}
                 link={link}
                 dailyReady={dailyReady}
@@ -223,7 +222,7 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
               <ul>
                 {[...SITE_LINKS, ...MENU_ONLY_LINKS].map((link) => (
                   <li key={link.href}>
-                    <NavLink link={link} dailyReady={dailyReady} onClick={menu.close} aria-current={currentOf(link.href)} />
+                    <SiteLinkWithDailyDot link={link} dailyReady={dailyReady} onClick={menu.close} aria-current={currentOf(link.href)} />
                   </li>
                 ))}
               </ul>

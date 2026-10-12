@@ -7,10 +7,8 @@ import { DAILY_OPENED_KEY, utcDayOf } from "@/lib/lab/daily";
 
 const CARD_ID = "lab-dash-daily";
 
-/** Runs as the card is parsed, so a visitor who already opened today's board never sees the card paint and vanish. */
-const HIDE_USED_CARD = `try{if(localStorage.getItem(${JSON.stringify(DAILY_OPENED_KEY)})===(${utcDayOf})(Date.now()))document.getElementById(${JSON.stringify(CARD_ID)}).hidden=true}catch(e){}`;
+const HIDE_OPENED_CARD_BEFORE_PAINT = `try{if(localStorage.getItem(${JSON.stringify(DAILY_OPENED_KEY)})===(${utcDayOf})(Date.now()))document.getElementById(${JSON.stringify(CARD_ID)}).hidden=true}catch(e){}`;
 
-/** Today's daily board, at the top of the dashboard until it is opened on this device. */
 export function DashboardDailyCard() {
   const t = useTranslations("dailyEntry");
   const daily = useDailyState();
@@ -30,7 +28,7 @@ export function DashboardDailyCard() {
           {t("play")}
         </Link>
       </section>
-      <script dangerouslySetInnerHTML={{ __html: HIDE_USED_CARD }} />
+      <script dangerouslySetInnerHTML={{ __html: HIDE_OPENED_CARD_BEFORE_PAINT }} />
     </>
   );
 }

@@ -75,7 +75,7 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-wordmark:hover { color: var(--lp-ink); opacity: 0.8; }
 .lab-paper .lab-wordmark-chess { color: var(--lp-wordmark); }
 .lab-paper .lab-nav { display: flex; align-items: center; gap: 2px; }
-.lab-paper .lab-nav-item { position: relative; }
+.lab-paper .lab-nav-item { position: relative; margin-left: 6px; padding-left: 8px; border-left: 1px solid var(--lp-line); }
 .lab-paper .lab-nav-link, .lab-paper .lab-nav-trigger { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 10px; border: 0; border-radius: var(--lp-r-sm); background: none; font: 500 15px/1 var(--lp-ui); color: var(--lp-ink-2); text-decoration: none; cursor: pointer; white-space: nowrap; }
 .lab-paper .lab-nav-link:hover, .lab-paper .lab-nav-trigger:hover { color: var(--lp-ink); background: var(--lp-surface-2); }
 .lab-paper .lab-nav-link[aria-current="page"] { color: var(--lp-accent); }
@@ -103,7 +103,7 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-menu a { display: block; padding: 10px 0; border-bottom: 1px solid var(--lp-line); font: 500 16px/1.4 var(--lp-ui); color: var(--lp-ink); text-decoration: none; }
 .lab-paper .lab-menu a[aria-current="page"] { color: var(--lp-accent); }
 .lab-paper .lab-menu-tools { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
-@media (max-width: 1080px) { .lab-paper .lab-nav-extra { display: none; } }
+@media (max-width: 1080px) { .lab-paper .lab-nav-extra { display: none; } .lab-paper .lab-dropdown { left: auto; right: 0; } }
 @media (max-width: 860px) {
   .lab-paper .lab-nav, .lab-paper .lab-header-tools .lab-lang { display: none; }
   .lab-paper .lab-menu-btn { display: inline-flex; }

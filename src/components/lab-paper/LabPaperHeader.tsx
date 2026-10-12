@@ -124,6 +124,15 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
             Memory <span className="lab-wordmark-chess">Chess</span>
           </Link>
           <nav className="lab-nav" aria-label="Main">
+            {SITE_LINKS.map((link) => (
+              <SiteLink
+                key={link.href}
+                className={`lab-nav-link${"extra" in link ? " lab-nav-extra" : ""}`}
+                href={link.href}
+                label={nav(link.key)}
+                aria-current={currentOf(link.href)}
+              />
+            ))}
             {sections && (
               <div className="lab-nav-item" ref={pageMenu.rootRef}>
                 <button
@@ -145,15 +154,6 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
                 </div>
               </div>
             )}
-            {SITE_LINKS.map((link) => (
-              <SiteLink
-                key={link.href}
-                className={`lab-nav-link${"extra" in link ? " lab-nav-extra" : ""}`}
-                href={link.href}
-                label={nav(link.key)}
-                aria-current={currentOf(link.href)}
-              />
-            ))}
           </nav>
           <div className="lab-header-tools">
             <LanguageSettings appearance="paper" className="lab-lang" />

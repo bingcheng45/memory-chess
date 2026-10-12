@@ -81,11 +81,13 @@ function drawFigure(ctx: Ctx, { label, segments, note, trend }: CardFigure, slot
   const end = drawValue(ctx, segments, slot.x, valueBaseline, slot.width - reserve, slot.valueSize, fonts);
   if (trend) drawTrend(ctx, trend, end, valueBaseline, trendSize, fonts);
 
+  // A comma or a descender in a large figure hangs about a quarter of its size below the baseline.
+  const descent = Math.max(14, Math.round(slot.valueSize * 0.24));
   ctx.font = font(400, slot.noteSize, fonts);
   ctx.fillStyle = INK.ink2;
   const lineHeight = Math.round(slot.noteSize * 1.3);
   wrapLines(ctx, note, slot.width, slot.noteLines, locale).forEach((line, index) => {
-    ctx.fillText(line, slot.x, valueBaseline + 14 + lineHeight * (index + 1) - (lineHeight - slot.noteSize));
+    ctx.fillText(line, slot.x, valueBaseline + descent + lineHeight * (index + 1) - (lineHeight - slot.noteSize));
   });
 }
 

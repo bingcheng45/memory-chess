@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { useCopyText } from "@/components/home/useCopyText";
-import { trackEvent } from "@/lib/analytics/events";
+import { trackEvent, type ShareMethod } from "@/lib/analytics/events";
 import { saveBlob } from "@/lib/saveBlob";
 import { SHARE_NETWORKS, type ShareNetwork } from "@/lib/shareIntents";
 import { captionWithLink, type ShareCaption } from "./shareCaption";
@@ -15,9 +15,7 @@ const FILE_NAME = "memory-chess-progress.png";
 
 export type CardImage = { readonly state: "rendering" } | { readonly state: "ready"; readonly blob: Blob; readonly src: string } | { readonly state: "failed" };
 
-type Method = "native" | "download" | "copy_image" | "copy";
-
-const track = (method: Method) => trackEvent({ name: "lab_dashboard_share", params: { method } });
+const track = (method: Exclude<ShareMethod, "post">) => trackEvent({ name: "lab_dashboard_share", params: { method } });
 const trackPost = (network: ShareNetwork) => trackEvent({ name: "lab_dashboard_share", params: { method: "post", network } });
 
 const isCancel = (error: unknown) => error instanceof DOMException && error.name === "AbortError";

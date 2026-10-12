@@ -1,44 +1,50 @@
-import type { LearnPosition } from "../positions";
-import type { LearnGuide } from "../schema";
+import type { LearnDocument } from "../schema";
 
-const guide: LearnGuide = {
-  slug: "why-puzzle-rating-doesnt-transfer-to-games",
-  goal: "reduce-blunders",
-  title: "Why Puzzle Rating Doesn't Transfer to Games",
-  h1: "Why your puzzle rating doesn't transfer to games",
-  description:
-    "A puzzle hands you four things a game never does. Until you replace them yourself, the rating stays on the puzzle site.",
-  primaryKeyword: "why puzzle rating doesn't transfer to games",
-  secondaryKeywords: [
-    "puzzle rating vs chess rating",
-    "tactics not transferring to games",
-    "chess puzzle skill in real games",
-    "why am i better at puzzles than games",
-    "board vision in chess",
-  ],
-  ctaLabel: "Play 12 pieces, 8 seconds",
-  quickAnswer:
-    "A puzzle hands you a fresh diagram, tells you whose move it is, promises there is something to find, and lets you look without cost. A game gives you none of that. The rating measures solving with those four gifts, and games test you without them.",
-  keyTakeaways: [
-    "A game takes away all four gifts a puzzle gives, and the stale board in your head is easy to overlook.",
-    "Scan for preconditions, loose pieces and lined-up pairs, and solve only when one appears.",
-  ],
-  whoThisIsFor: [
-    "Your puzzle rating is several hundred points above your game rating.",
-    "You see the tactic on the analysis screen and wonder how you missed it.",
-    "You are about to buy a bigger puzzle set.",
-  ],
-  timeToRead: "8 min read",
-  difficulty: "Beginner",
-  publishedAt: "2026-03-24T00:00:00.000Z",
-  updatedAt: "2026-09-15T00:00:00.000Z",
+const guide: LearnDocument = {
+  meta: {
+    slug: "why-puzzle-rating-doesnt-transfer-to-games",
+    title: "Why Puzzle Rating Doesn't Transfer to Games",
+    h1: "Why your puzzle rating doesn't transfer to games",
+    description: "A puzzle hands you four things a game never does. Until you replace them yourself, the rating stays on the puzzle site.",
+    group: "board-vision",
+    level: "beginner",
+    publishedAt: "2026-03-24T00:00:00.000Z",
+    updatedAt: "2026-09-15T00:00:00.000Z",
+    questions: [
+      "Why is my puzzle rating higher than my game rating?",
+      "Why can I solve puzzles but miss tactics in games?",
+      "Do puzzle skills transfer to real games?",
+    ],
+    keywords: {
+      primary: "why puzzle rating doesn't transfer to games",
+      secondary: [
+        "puzzle rating vs chess rating",
+        "tactics not transferring to games",
+        "chess puzzle skill in real games",
+        "why am i better at puzzles than games",
+        "board vision in chess",
+      ],
+    },
+  },
+  intro: {
+    quickAnswer: "A puzzle hands you a fresh diagram, tells you whose move it is, promises there is something to find, and lets you look without cost. A game gives you none of that. The rating measures solving with those four gifts, and games test you without them.",
+    takeaways: [
+      "A game takes away all four gifts a puzzle gives, and the stale board in your head is easy to overlook.",
+      "Scan for preconditions, loose pieces and lined-up pairs, and solve only when one appears.",
+    ],
+    audience: [
+      "Your puzzle rating is several hundred points above your game rating.",
+      "You see the tactic on the analysis screen and wonder how you missed it.",
+      "You are about to buy a bigger puzzle set.",
+    ],
+  },
   sections: [
     {
       id: "the-claim",
-      title: "What a puzzle rating actually measures",
+      heading: "What a puzzle rating actually measures",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "Puzzle rating is a real skill. It measures how reliably you find a winning move once you know one exists. That skill is worth having.",
             "It is also narrower than it looks. Every rated puzzle is solved under the same conditions, and the rating only ever measures you under them.",
@@ -49,10 +55,10 @@ const guide: LearnGuide = {
     },
     {
       id: "four-gifts",
-      title: "Four things a puzzle gives you and a game does not",
+      heading: "Four things a puzzle gives you and a game does not",
       blocks: [
         {
-          kind: "steps",
+          kind: "list",
           ordered: false,
           items: [
             "A promise. Something is there. A game makes no such promise, and the skill is knowing which move is the exception.",
@@ -62,19 +68,17 @@ const guide: LearnGuide = {
           ],
         },
         {
-          kind: "paragraphs",
-          paragraphs: [
-            "The third one is the least obvious, so the next section is about it.",
-          ],
+          kind: "prose",
+          paragraphs: ["The third one is the least obvious, so the next section is about it."],
         },
       ],
     },
     {
       id: "stale-board",
-      title: "The stale board, a gift that is easy to overlook",
+      heading: "The stale board, a gift that is easy to overlook",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "By move 25 your picture of the board can lag behind the board. It can be the board as it was a few moves ago, with the recent changes patched in, so check those changes first.",
             "A puzzle never has this problem. The diagram is the position, complete and current. Your puzzle rating has never once been tested on a stale board.",
@@ -88,15 +92,10 @@ const guide: LearnGuide = {
           drills: [
             {
               title: "Twelve pieces, seen as shapes",
-              description:
-                "Play 12 pieces with 8 seconds to look, 3 rounds. Do not read piece by piece. Find the two or three groups, name them, and rebuild from the groups.",
+              description: "Play 12 pieces with 8 seconds to look, 3 rounds. Do not read piece by piece. Find the two or three groups, name them, and rebuild from the groups.",
               duration: "about 5 minutes",
               goal: "Rounds where the squares marked Missed sit inside a group you saw, not in a corner you never looked at.",
-              ctaLabel: "Play 12 pieces, 8 seconds",
-              setup: {
-                pieceCount: 12,
-                memorizeTime: 8,
-              },
+              play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
           ],
         },
@@ -104,10 +103,10 @@ const guide: LearnGuide = {
     },
     {
       id: "what-transfers",
-      title: "The patterns that do cross over, and the condition attached",
+      heading: "The patterns that do cross over, and the condition attached",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "Some patterns do show up in games. A knight on c7 forking a king on e8 and a rook on a8. A bishop on g5 pinning a knight on f6 to a queen on d8.",
             "They transfer under one condition. You have to be looking at the precondition, not the tactic.",
@@ -117,13 +116,50 @@ const guide: LearnGuide = {
           ],
         },
       ],
+      facts: [
+        {
+          id: "fork-on-c7",
+          white: ["Kg1", "Nb5"],
+          black: ["Ke8", "Ra8"],
+          unstated: ["g1"],
+          claims: [
+            { kind: "attackers", square: "c7", side: "b", from: [] },
+            { kind: "legal", move: "Nc7+" },
+          ],
+        },
+        {
+          id: "fork-on-c7-played",
+          white: ["Kg1", "Nb5"],
+          black: ["Ke8", "Ra8"],
+          unstated: ["g1"],
+          line: ["Nc7+"],
+          claims: [{ kind: "check" }, { kind: "attacks", from: "c7", squares: ["e8", "a8"] }],
+        },
+        {
+          id: "pin-on-f6",
+          white: ["Kg1", "Bg5"],
+          black: ["Kg8", "Nf6", "Qd8"],
+          unstated: ["g1", "g8"],
+          claims: [
+            { kind: "occupant", square: "e7", piece: null },
+            { kind: "attacks", from: "g5", squares: ["f6"] },
+          ],
+        },
+        {
+          id: "pin-on-f6-without-the-knight",
+          white: ["Kg1", "Bg5"],
+          black: ["Kg8", "Qd8"],
+          unstated: ["g1", "g8"],
+          claims: [{ kind: "attacks", from: "g5", squares: ["d8"] }],
+        },
+      ],
     },
     {
       id: "the-test",
-      title: "A test to run in your next five games",
+      heading: "A test to run in your next five games",
       blocks: [
         {
-          kind: "steps",
+          kind: "list",
           ordered: true,
           items: [
             "Play five games at 15 minutes with a 10-second increment. Not blitz, or the test measures your clock.",
@@ -134,7 +170,7 @@ const guide: LearnGuide = {
           ],
         },
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "A puzzle does the scanning for you by promising a tactic, so puzzle volume does not practise it. If most missed tactics sit on unmarked moves, more puzzles are unlikely to close the gap.",
           ],
@@ -142,73 +178,43 @@ const guide: LearnGuide = {
       ],
     },
   ],
-  faq: [],
-  relatedArticles: [
+  end: [
     {
-      slug: "how-many-chess-puzzles-a-day",
-      reason: "How many puzzles are still worth doing once you accept this.",
+      kind: "cta",
+      target: { kind: "game", label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
+      why: "Twelve pieces in eight seconds is a fresh board with no hint about what matters, the condition a puzzle never sets.",
     },
     {
-      slug: "how-to-stop-blundering-in-chess",
-      reason: "The precondition scan as a full pre-move checklist.",
+      kind: "furtherReading",
+      items: [
+        {
+          kind: "guide",
+          slug: "how-many-chess-puzzles-a-day",
+          reason: "How many puzzles are still worth doing once you accept this.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-stop-blundering-in-chess",
+          reason: "The precondition scan as a full pre-move checklist.",
+        },
+        {
+          kind: "guide",
+          slug: "chess-pattern-recognition-drills",
+          reason: "Training the patterns that do cross over.",
+        },
+      ],
     },
     {
-      slug: "chess-pattern-recognition-drills",
-      reason: "Training the patterns that do cross over.",
-    },
-  ],
-  sources: [
-    {
-      title: "Perception in Chess",
-      url: "https://doi.org/10.1016/0010-0285(73)90004-2",
-      note: "Supports the claim that strong players recall a briefly seen position in chunks, familiar groups of pieces stored as one unit.",
+      kind: "sources",
+      items: [
+        {
+          title: "Perception in Chess",
+          note: "Supports the claim that strong players recall a briefly seen position in chunks, familiar groups of pieces stored as one unit.",
+          url: "https://doi.org/10.1016/0010-0285(73)90004-2",
+        },
+      ],
     },
   ],
 };
-
-export const positions: LearnPosition[] = [
-  {
-    id: "fork-on-c7",
-    sectionId: "what-transfers",
-    white: ["Kg1", "Nb5"],
-    black: ["Ke8", "Ra8"],
-    unstated: ["g1"],
-    claims: [
-      { kind: "attackers", square: "c7", side: "b", from: [] },
-      { kind: "legal", move: "Nc7+" },
-    ],
-  },
-  {
-    id: "fork-on-c7-played",
-    sectionId: "what-transfers",
-    white: ["Kg1", "Nb5"],
-    black: ["Ke8", "Ra8"],
-    unstated: ["g1"],
-    line: ["Nc7+"],
-    claims: [
-      { kind: "check" },
-      { kind: "attacks", from: "c7", squares: ["e8", "a8"] },
-    ],
-  },
-  {
-    id: "pin-on-f6",
-    sectionId: "what-transfers",
-    white: ["Kg1", "Bg5"],
-    black: ["Kg8", "Nf6", "Qd8"],
-    unstated: ["g1", "g8"],
-    claims: [
-      { kind: "occupant", square: "e7", piece: null },
-      { kind: "attacks", from: "g5", squares: ["f6"] },
-    ],
-  },
-  {
-    id: "pin-on-f6-without-the-knight",
-    sectionId: "what-transfers",
-    white: ["Kg1", "Bg5"],
-    black: ["Kg8", "Qd8"],
-    unstated: ["g1", "g8"],
-    claims: [{ kind: "attacks", from: "g5", squares: ["d8"] }],
-  },
-];
 
 export default guide;

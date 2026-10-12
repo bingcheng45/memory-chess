@@ -13,6 +13,13 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/about", "en")).toBe(true);
   });
 
+  it("draws the Learn hub and every guide in Lab Paper in English only", () => {
+    expect(isLabPaperRoute("/learn", "en")).toBe(true);
+    expect(isLabPaperRoute("/learn/how-to-stop-blundering-in-chess", "en")).toBe(true);
+    expect(isLabPaperRoute("/learn", "de")).toBe(false);
+    expect(isLabPaperRoute("/learning", "en")).toBe(false);
+  });
+
   it("draws the leaderboard in Lab Paper in every locale, since every catalogue carries its copy", () => {
     expect(isLabPaperRoute("/leaderboard", "en")).toBe(true);
     expect(isLabPaperRoute("/leaderboard", "ja")).toBe(true);

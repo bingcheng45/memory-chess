@@ -25,7 +25,7 @@ describe("locale coverage", () => {
     const urls = (await sitemap()).map((entry) => entry.url);
     const englishUrls = [
       ...LISTED_IN_ENGLISH_ONLY,
-      ...EN_LEARN_PAGES.map((page) => `/learn/${page.slug}`),
+      ...EN_LEARN_PAGES.map((page) => `/learn/${page.meta.slug}`),
       ...ARTICLE_SLUGS.map((slug) => `/articles/${slug}`),
     ].map((path) => `${SITE_URL}${path}`);
 

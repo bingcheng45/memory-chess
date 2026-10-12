@@ -1,43 +1,52 @@
-import type { LearnPosition } from "../positions";
-import type { LearnGuide } from "../schema";
+import type { LearnDocument } from "../schema";
 
-const guide: LearnGuide = {
-  slug: "how-to-think-in-chess-for-beginners",
-  goal: "routine",
-  title: "How to Think in Chess for Beginners",
-  h1: "How to think in chess for beginners",
-  description: "Three questions asked in a fixed order, a stop rule for when to move, and a Memory Chess round that trains the moment you commit.",
-  primaryKeyword: "how to think in chess",
-  secondaryKeywords: [
-    "beginner chess thought process",
-    "what to think about in chess",
-    "chess candidate moves for beginners",
-    "when to move in chess",
-    "chess time management beginners",
-  ],
-  ctaLabel: "Play 6 pieces with 20 seconds to look",
-  quickAnswer: "Ask three questions in order on every move. What did the last move change, what do I want here, and is my move safe? Move when you can say the answer in one sentence.",
-  keyTakeaways: [
-    "Treat moving instantly and staring for minutes as one failure, a think with no question in it.",
-    "Ask what changed before asking what you want, because once you like a plan, it is easy to look only for it.",
-    "Stop when the one-sentence reason comes out, because tired and certain can feel alike from the inside.",
-  ],
-  whoThisIsFor: [
-    "Beginners who move on impulse in calm positions and freeze the moment something is attacked.",
-    "Players who have read that they should calculate and do not know what to calculate about.",
-    "Anyone who runs out of clock in ten-minute games without knowing where it went.",
-  ],
-  timeToRead: "6 min read",
-  difficulty: "Beginner",
-  publishedAt: "2026-03-24T00:00:00.000Z",
-  updatedAt: "2026-09-15T00:00:00.000Z",
+const guide: LearnDocument = {
+  meta: {
+    slug: "how-to-think-in-chess-for-beginners",
+    title: "How to Think in Chess for Beginners",
+    h1: "How to think in chess for beginners",
+    description: "Three questions asked in a fixed order, a stop rule for when to move, and a Memory Chess round that trains the moment you commit.",
+    group: "foundations",
+    level: "beginner",
+    publishedAt: "2026-03-24T00:00:00.000Z",
+    updatedAt: "2026-09-15T00:00:00.000Z",
+    questions: [
+      "What should I think about before each move?",
+      "How do I stop moving too fast?",
+      "When should I stop thinking and move?",
+      "How should I use my clock in a 10-minute game?",
+    ],
+    keywords: {
+      primary: "how to think in chess",
+      secondary: [
+        "beginner chess thought process",
+        "what to think about in chess",
+        "chess candidate moves for beginners",
+        "when to move in chess",
+        "chess time management beginners",
+      ],
+    },
+  },
+  intro: {
+    quickAnswer: "Ask three questions in order on every move. What did the last move change, what do I want here, and is my move safe? Move when you can say the answer in one sentence.",
+    takeaways: [
+      "Treat moving instantly and staring for minutes as one failure, a think with no question in it.",
+      "Ask what changed before asking what you want, because once you like a plan, it is easy to look only for it.",
+      "Stop when the one-sentence reason comes out, because tired and certain can feel alike from the inside.",
+    ],
+    audience: [
+      "Beginners who move on impulse in calm positions and freeze the moment something is attacked.",
+      "Players who have read that they should calculate and do not know what to calculate about.",
+      "Anyone who runs out of clock in ten-minute games without knowing where it went.",
+    ],
+  },
   sections: [
     {
       id: "fast-and-slow",
-      title: "Moving too fast and thinking too long can be the same mistake",
+      heading: "Moving too fast and thinking too long can be the same mistake",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "The instant mover and the long starer look like opposites at the board. Both can be missing a question to answer, so one plays whatever looks nice and the other waits for a certainty that never comes.",
             "A routine gives a think the beginning and the end that both habits can lack. The beginning is a question you answer by looking. The end is a sentence you can say.",
@@ -48,10 +57,10 @@ const guide: LearnGuide = {
     },
     {
       id: "three-questions-in-order",
-      title: "What changed, what do I want, is it safe?",
+      heading: "What changed, what do I want, is it safe?",
       blocks: [
         {
-          kind: "steps",
+          kind: "list",
           ordered: true,
           items: [
             "What changed? Take the opponent's last move and name what it now attacks, what line it opened, and what it stopped defending.",
@@ -60,7 +69,7 @@ const guide: LearnGuide = {
           ],
         },
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "Try it after 1.e4 e5 2.Nf3. Question one has a short answer. The knight on f3 attacks the pawn on e5, and no other Black piece is attacked.",
             "Question two is to keep the pawn while developing. That aim gives 2...Nc6 and 2...d6, which both defend e5.",
@@ -70,20 +79,52 @@ const guide: LearnGuide = {
           ],
         },
       ],
+      facts: [
+        {
+          id: "after-nf3",
+          line: ["e4", "e5", "Nf3"],
+          claims: [
+            { kind: "attacked", side: "b", squares: ["e5"] },
+            { kind: "attackers", square: "e4", side: "w", from: [] },
+          ],
+        },
+        {
+          id: "after-nc6",
+          line: ["e4", "e5", "Nf3", "Nc6"],
+          claims: [
+            { kind: "attackers", square: "e5", side: "b", from: ["c6"] },
+            { kind: "attacked", side: "b", squares: ["e5"] },
+          ],
+        },
+        {
+          id: "after-d6",
+          line: ["e4", "e5", "Nf3", "d6"],
+          claims: [{ kind: "attackers", square: "e5", side: "b", from: ["d6"] }],
+        },
+        {
+          id: "after-nf6",
+          line: ["e4", "e5", "Nf3", "Nf6"],
+          claims: [
+            { kind: "attacks", from: "f6", squares: ["e4"] },
+            { kind: "attackers", square: "e4", side: "w", from: [] },
+            { kind: "attackers", square: "e5", side: "b", from: [] },
+          ],
+        },
+      ],
     },
     {
       id: "stop-rule",
-      title: "Move when the reason fits in one sentence",
+      heading: "Move when the reason fits in one sentence",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "You are done thinking when one sentence names the move, the aim it serves, and the safety check it passed. “Nc6, it develops and keeps e5, and nothing hangs” is that sentence.",
             "If a full minute passes and no new candidate has appeared, play the safest developing move on your list. Staring longer with no new candidate only spends clock.",
           ],
         },
         {
-          kind: "callout",
+          kind: "takeaway",
           title: "Certain or tired?",
           body: "Tired can feel like certainty from the inside, which is why the stop rule is a sentence and not a feeling. If you reach for the piece and the sentence will not come, keep thinking.",
         },
@@ -91,10 +132,10 @@ const guide: LearnGuide = {
     },
     {
       id: "skip-round",
-      title: "Training the moment you commit with the Skip button",
+      heading: "Training the moment you commit with the Skip button",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "In a Memory Chess round, a Skip button ends the phase early while the position is still showing. The game then records how long you actually looked, not the seconds you were given.",
             "The leaderboard orders rounds by correct pieces, then fewest wrong pieces, and only then by shorter look time. Look time separates only rounds that scored the same.",
@@ -110,18 +151,13 @@ const guide: LearnGuide = {
               description: "Play 5 rounds of 6 pieces with 20 seconds to look. Press Skip the moment you can name all six squares in your head. A skipped round with a miss may mean you stopped early.",
               duration: "5 rounds, about 6 minutes",
               goal: "Learn what certainty feels like before the clock decides for you.",
-              ctaLabel: "Play 6 pieces, 20 seconds",
-              setup: {
-                pieceCount: 6,
-                memorizeTime: 20,
-              },
+              play: { label: "Play 6 pieces, 20 seconds", pieceCount: 6, memorizeTime: 20 },
             },
             {
               title: "One-sentence move",
               description: "Play a slow game against a computer. Before every move, say the stop-rule sentence out loud with the move, the aim and the safety check. If the sentence will not come, keep thinking.",
               duration: "15 minutes",
               goal: "Make the sentence the thing that releases the piece.",
-              ctaLabel: "Say the sentence first",
             },
           ],
         },
@@ -129,10 +165,10 @@ const guide: LearnGuide = {
     },
     {
       id: "clock-budget",
-      title: "Where the clock goes in a 10-minute game",
+      heading: "Where the clock goes in a 10-minute game",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "The routine is short on purpose, so the clock can go where material changes hands. Here is one budget for a ten-minute game.",
           ],
@@ -163,7 +199,7 @@ const guide: LearnGuide = {
           ],
         },
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "Material changes hands at captures and checks, so a miscount there costs the most. The five-second opening moves are what pay for those minutes.",
           ],
@@ -171,74 +207,55 @@ const guide: LearnGuide = {
       ],
     },
   ],
-  faq: [
+  end: [
     {
-      question: "How many moves ahead should a beginner think?",
-      answer: "As far as the captures and checks go and no further. On a quiet move that is one move, and after a capture it is until the taking stops.",
+      kind: "cta",
+      target: {
+        kind: "game",
+        label: "Play 6 pieces with 20 seconds to look",
+        pieceCount: 6,
+        memorizeTime: 20,
+      },
+      why: "Twenty seconds on six pieces gives time to run the three questions before you place a single piece.",
     },
     {
-      question: "What if none of my options feels good?",
-      answer: "Play the safest developing move and spend the saved time on the next move. When every option feels bad, you may have no aim yet, and question two supplies one.",
+      kind: "faq",
+      items: [
+        {
+          question: "How many moves ahead should a beginner think?",
+          answer: "As far as the captures and checks go and no further. On a quiet move that is one move, and after a capture it is until the taking stops.",
+        },
+        {
+          question: "What if none of my options feels good?",
+          answer: "Play the safest developing move and spend the saved time on the next move. When every option feels bad, you may have no aim yet, and question two supplies one.",
+        },
+        {
+          question: "Should I use the routine in blitz?",
+          answer: "Use question one on every move and the other two after captures and checks. The stop rule matters more in blitz, because a long stare costs a bigger share of the clock.",
+        },
+      ],
     },
     {
-      question: "Should I use the routine in blitz?",
-      answer: "Use question one on every move and the other two after captures and checks. The stop rule matters more in blitz, because a long stare costs a bigger share of the clock.",
+      kind: "furtherReading",
+      items: [
+        {
+          kind: "guide",
+          slug: "how-to-stop-blundering-in-chess",
+          reason: "Turns the safety question into a full scan for checks, captures, threats and loose pieces.",
+        },
+        {
+          kind: "guide",
+          slug: "chess-calculation-exercises-for-beginners",
+          reason: "Practises the counting that a capture or check asks for before you decide.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-analyze-chess-games-for-beginners",
+          reason: "Shows how to find, after the game, which of the three questions you skipped.",
+        },
+      ],
     },
   ],
-  relatedArticles: [
-    {
-      slug: "how-to-stop-blundering-in-chess",
-      reason: "Turns the safety question into a full scan for checks, captures, threats and loose pieces.",
-    },
-    {
-      slug: "chess-calculation-exercises-for-beginners",
-      reason: "Practises the counting that a capture or check asks for before you decide.",
-    },
-    {
-      slug: "how-to-analyze-chess-games-for-beginners",
-      reason: "Shows how to find, after the game, which of the three questions you skipped.",
-    },
-  ],
-  sources: [],
 };
-
-const OPENING = ["e4", "e5", "Nf3"];
-
-export const positions: LearnPosition[] = [
-  {
-    id: "after-nf3",
-    sectionId: "three-questions-in-order",
-    line: OPENING,
-    claims: [
-      { kind: "attacked", side: "b", squares: ["e5"] },
-      { kind: "attackers", square: "e4", side: "w", from: [] },
-    ],
-  },
-  {
-    id: "after-nc6",
-    sectionId: "three-questions-in-order",
-    line: [...OPENING, "Nc6"],
-    claims: [
-      { kind: "attackers", square: "e5", side: "b", from: ["c6"] },
-      { kind: "attacked", side: "b", squares: ["e5"] },
-    ],
-  },
-  {
-    id: "after-d6",
-    sectionId: "three-questions-in-order",
-    line: [...OPENING, "d6"],
-    claims: [{ kind: "attackers", square: "e5", side: "b", from: ["d6"] }],
-  },
-  {
-    id: "after-nf6",
-    sectionId: "three-questions-in-order",
-    line: [...OPENING, "Nf6"],
-    claims: [
-      { kind: "attacks", from: "f6", squares: ["e4"] },
-      { kind: "attackers", square: "e4", side: "w", from: [] },
-      { kind: "attackers", square: "e5", side: "b", from: [] },
-    ],
-  },
-];
 
 export default guide;

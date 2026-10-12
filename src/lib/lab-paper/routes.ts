@@ -17,6 +17,8 @@ export const LAB_PAPER_ROUTES: readonly LabPaperRoute[] = [
   { path: "/about", scope: "page", locales: ["en"] },
   { path: "/leaderboard", scope: "page", locales: "all" },
   { path: "/articles", scope: "subtree", locales: "all" },
+  // English-only (ENGLISH_ONLY_ROUTES): no other locale reaches it, so none draws the Lab Paper banner and footer.
+  { path: "/learn", scope: "subtree", locales: ["en"] },
   { path: "/game", scope: "page", locales: "all" },
   { path: "/dashboard", scope: "page", locales: "all" },
   // Served only at the bare English URL (UNLISTED_ROUTES), so only "en" ever reaches the layout.

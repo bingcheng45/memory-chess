@@ -1,4 +1,4 @@
-import { Chess, SQUARES, type PieceSymbol, type Square } from "chess.js";
+import { Chess, SQUARES, type Square } from "chess.js";
 import en from "../../../../../messages/en.json";
 import {
   ACCURACY_BANDS,
@@ -11,86 +11,35 @@ import { useGameStore } from "@/lib/store/gameStore";
 import { PIECE_TYPE_ORDER, type LabPiece } from "@/lib/round/round";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { DIFFICULTY_PRESETS } from "@/types/game";
-import { LEARN_GUIDES, LEARN_POSITIONS } from "../guides";
-import type { LearnPosition, PieceToken, PositionClaim, Side } from "../positions";
-import type { LearnBlock, LearnGuide } from "../schema";
+import { LEARN_GUIDES } from "../guides";
+import { chessOf, tokenSquare, type LearnPosition, type PositionClaim, type Side } from "../positions";
+import type { LearnDocument, LearnSection } from "../schema";
+import { blockText, richText, sectionText } from "../text";
 
-function blockText(block: LearnBlock): string[] {
-  switch (block.kind) {
-    case "paragraphs":
-      return block.paragraphs;
-    case "steps":
-      return block.items;
-    case "callout":
-      return [block.title, block.body];
-    case "drills":
-      return block.drills.flatMap((drill) => [
-        drill.title,
-        drill.description,
-        drill.duration,
-        drill.goal,
-        drill.ctaLabel,
-      ]);
-    case "comparison":
-      return [...block.columns, ...block.rows.flatMap((row) => [row.label, row.struggling, row.stronger])];
-    case "plan":
-      return block.steps.flatMap((step) => [step.label, step.duration, step.detail]);
-  }
-}
-
-function guideText(guide: LearnGuide): string {
+function guideText(guide: LearnDocument): string {
   return [
-    guide.title,
-    guide.description,
-    guide.quickAnswer,
-    ...(guide.keyTakeaways ?? []),
-    ...guide.sections.flatMap((section) => [
-      section.title,
-      section.summary ?? "",
-      ...section.blocks.flatMap(blockText),
-    ]),
-    ...guide.faq.flatMap((entry) => [entry.question, entry.answer]),
+    guide.meta.title,
+    guide.meta.description,
+    guide.intro.quickAnswer,
+    ...guide.intro.takeaways,
+    ...guide.sections.flatMap(sectionText),
+    ...guide.end.flatMap((block) => (block.kind === "faq" ? blockText(block) : [])),
   ].join("\n");
 }
 
-function sectionText(guide: LearnGuide, sectionId: string): string {
-  const section = guide.sections.find(({ id }) => id === sectionId);
-  if (!section) throw new Error(`${guide.slug} has no section ${sectionId}`);
-  return [section.title, section.summary ?? "", ...section.blocks.flatMap(blockText)].join("\n");
+/** Every position a section states: the boards it draws and the facts it lists. */
+function sectionPositions(section: LearnSection): LearnPosition[] {
+  return [
+    ...section.blocks.flatMap((block) => (block.kind === "board" ? [block.position] : [])),
+    ...(section.facts ?? []),
+  ];
 }
 
-const PIECE_TYPES: Record<string, PieceSymbol> = { K: "k", Q: "q", R: "r", B: "b", N: "n" };
-const tokenSquare = (token: PieceToken): Square => SQUARES.find((square) => token.endsWith(square))!;
 const other = (side: Side): Side => (side === "w" ? "b" : "w");
 const withoutMark = (san: string) => san.replace(/[+#]$/, "");
 const destination = (san: string) => san.match(/[a-h][1-8]/g)!.at(-1)!;
 const sameSet = (a: readonly string[], b: readonly string[]) =>
   JSON.stringify([...a].sort()) === JSON.stringify([...b].sort());
-
-function buildPosition(position: LearnPosition): Chess {
-  let chess: Chess;
-  if (!position.white && !position.black) {
-    chess = new Chess();
-  } else {
-    const board = new Chess();
-    board.clear();
-    for (const [color, tokens] of [
-      ["w", position.white ?? []],
-      ["b", position.black ?? []],
-    ] as const) {
-      for (const token of tokens) {
-        const type = token.length === 2 ? "p" : PIECE_TYPES[token[0]];
-        if (!board.put({ type, color }, tokenSquare(token))) {
-          throw new Error(`${position.id}: cannot put ${color}${token}`);
-        }
-      }
-    }
-    const placement = board.fen().split(" ")[0];
-    chess = new Chess(`${placement} ${position.toMove ?? "w"} - - 0 1`, { skipValidation: true });
-  }
-  for (const move of position.line ?? []) chess.move(move);
-  return chess;
-}
 
 function occupantOf(chess: Chess, square: Square): string | null {
   const piece = chess.get(square);
@@ -245,19 +194,18 @@ function claimSquares(claim: PositionClaim): string[] {
 const namesSquare = (text: string, square: string) => new RegExp(`(^|[^a-h0-9])${square}([^0-9]|$)`).test(text);
 
 const positionCases = LEARN_GUIDES.flatMap((guide) =>
-  (LEARN_POSITIONS[guide.slug] ?? []).map((position) => ({ guide, position })),
+  guide.sections.flatMap((section) => sectionPositions(section).map((position) => ({ guide, section, position }))),
 );
 
 describe("guide chess positions", () => {
-  it("has a position list for every guide", () => {
-    expect(Object.keys(LEARN_POSITIONS).sort()).toEqual(LEARN_GUIDES.map(({ slug }) => slug).sort());
-    expect(positionCases.length).toBeGreaterThan(0);
+  it("replays every position the guides state, drawn or not", () => {
+    expect(positionCases.length).toBe(50);
   });
 
-  it.each(positionCases.map((entry) => [`${entry.guide.slug} ${entry.position.id}`, entry] as const))(
+  it.each(positionCases.map((entry) => [`${entry.guide.meta.slug} ${entry.position.id}`, entry] as const))(
     "%s holds every claim the guide makes",
     (_label, { position }) => {
-      const chess = buildPosition(position);
+      const chess = chessOf(position);
       const failures = position.claims
         .map((claim) => [claim.kind, failure(chess, claim)] as const)
         .filter(([, detail]) => detail !== null)
@@ -267,10 +215,10 @@ describe("guide chess positions", () => {
     },
   );
 
-  it.each(positionCases.map((entry) => [`${entry.guide.slug} ${entry.position.id}`, entry] as const))(
+  it.each(positionCases.map((entry) => [`${entry.guide.meta.slug} ${entry.position.id}`, entry] as const))(
     "%s names its squares in the section that states it",
-    (_label, { guide, position }) => {
-      const text = sectionText(guide, position.sectionId);
+    (_label, { section, position }) => {
+      const text = sectionText(section).join("\n");
       const unstated = new Set(position.unstated ?? []);
       const stated = [...(position.white ?? []), ...(position.black ?? [])]
         .map(tokenSquare)
@@ -472,7 +420,7 @@ describe("guide game facts", () => {
   it("states scoring, bands and presets as the game code computes them", () => {
     const facts = guideFacts();
     const missing = Object.entries(facts).flatMap(([slug, sentences]) => {
-      const guide = LEARN_GUIDES.find((entry) => entry.slug === slug);
+      const guide = LEARN_GUIDES.find((entry) => entry.meta.slug === slug);
       if (!guide) return [`no guide ${slug}`];
       const text = guideText(guide).toLowerCase();
       return sentences.filter((sentence) => !text.includes(sentence.toLowerCase())).map((sentence) => `${slug}: "${sentence}"`);
@@ -523,7 +471,7 @@ const UNCHECKED_PLAN_STEPS: Record<string, string> = {
 const planSteps = LEARN_GUIDES.flatMap((guide) =>
   guide.sections.flatMap((section) =>
     section.blocks.flatMap((block) =>
-      block.kind === "plan" ? block.steps.map((step) => ({ key: `${guide.slug} ${step.label}`, step })) : [],
+      block.kind === "plan" ? block.steps.map((step) => ({ key: `${guide.meta.slug} ${step.label}`, step })) : [],
     ),
   ),
 );
@@ -541,16 +489,17 @@ describe("guide round durations", () => {
         section.blocks.flatMap((block) => {
           if (block.kind === "drills") {
             return block.drills.flatMap((drill) => {
-              if (!drill.setup) return [];
-              const setup = `${drill.setup.pieceCount}/${drill.setup.memorizeTime}`;
-              const rounds = Number(drill.description.match(/(\d+) rounds/)?.[1]);
+              if (!drill.play) return [];
+              const setup = `${drill.play.pieceCount}/${drill.play.memorizeTime}`;
+              const description = richText(drill.description);
+              const rounds = Number(description.match(/(\d+) rounds/)?.[1]);
               const perRound = MINUTES_PER_ROUND[setup];
-              const stated = [...`${drill.description} ${drill.duration}`.matchAll(/about (\d+) minutes/gi)].map(
+              const stated = [...`${description} ${drill.duration}`.matchAll(/about (\d+) minutes/gi)].map(
                 (match) => Number(match[1]),
               );
               const expected = Math.round(rounds * perRound);
               const ok = Number.isFinite(expected) && stated.length > 0 && stated.every((n) => n === expected);
-              return ok ? [] : [`${guide.slug} "${drill.title}" ${setup}: ${rounds} rounds, stated ${stated.join()}, expected ${expected}`];
+              return ok ? [] : [`${guide.meta.slug} "${drill.title}" ${setup}: ${rounds} rounds, stated ${stated.join()}, expected ${expected}`];
             });
           }
           return [];

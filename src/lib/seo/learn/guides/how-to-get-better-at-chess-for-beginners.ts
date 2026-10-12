@@ -1,45 +1,52 @@
-import type { LearnPosition, PieceToken } from "../positions";
-import type { LearnGuide } from "../schema";
+import type { LearnDocument } from "../schema";
 
-const guide: LearnGuide = {
-  slug: "how-to-get-better-at-chess-for-beginners",
-  goal: "routine",
-  title: "How to Get Better at Chess for Beginners",
-  h1: "How to get better at chess for beginners",
-  description:
-    "A beginner chess plan for players who know the rules and still lose pieces for free. Read the whole board, ask one question before each move, play slower, write one line.",
-  primaryKeyword: "how to get better at chess",
-  secondaryKeywords: [
-    "chess improvement plan",
-    "beginner chess training",
-    "chess routine for beginners",
-    "reduce blunders in chess",
-    "chess board vision",
-  ],
-  ctaLabel: "Play 4 pieces, 10 seconds",
-  quickAnswer:
-    "Use a short daily routine in a fixed order. Read the whole board before you think about your move, ask one safety question, play games slow enough to do both, and write one line after each game. Openings come last.",
-  keyTakeaways: [
-    "Stop leaving pieces where they can be taken for free before you study any opening.",
-    "One line after each game tells you whether the board reading, the move question or the pace failed.",
-  ],
-  whoThisIsFor: [
-    "You know how the pieces move and lose most games to a piece left hanging.",
-    "You have watched opening videos and cannot say why you still lose.",
-    "You want a fixed order of things to work on, not a list of options.",
-  ],
-  timeToRead: "9 min read",
-  difficulty: "Beginner",
-  featured: true,
-  publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-09-15T00:00:00.000Z",
+const guide: LearnDocument = {
+  meta: {
+    slug: "how-to-get-better-at-chess-for-beginners",
+    title: "How to Get Better at Chess for Beginners",
+    h1: "How to get better at chess for beginners",
+    description: "A beginner chess plan for players who know the rules and still lose pieces for free: read the whole board, ask one question per move, write one line.",
+    group: "foundations",
+    level: "beginner",
+    publishedAt: "2026-03-06T00:00:00.000Z",
+    updatedAt: "2026-09-15T00:00:00.000Z",
+    questions: [
+      "How do I get better at chess as a beginner?",
+      "What should a beginner practise first?",
+      "Where do beginners actually lose their games?",
+      "When should beginners study openings?",
+    ],
+    keywords: {
+      primary: "how to get better at chess",
+      secondary: [
+        "chess improvement plan",
+        "beginner chess training",
+        "chess routine for beginners",
+        "reduce blunders in chess",
+        "chess board vision",
+      ],
+    },
+    featured: true,
+  },
+  intro: {
+    quickAnswer: "Use a short daily routine in a fixed order. Read the whole board before you think about your move, ask one safety question, play games slow enough to do both, and write one line after each game. Openings come last.",
+    takeaways: [
+      "Stop leaving pieces where they can be taken for free before you study any opening.",
+      "One line after each game tells you whether the board reading, the move question or the pace failed.",
+    ],
+    audience: [
+      "You know how the pieces move and lose most games to a piece left hanging.",
+      "You have watched opening videos and cannot say why you still lose.",
+      "You want a fixed order of things to work on, not a list of options.",
+    ],
+  },
   sections: [
     {
       id: "where-games-go",
-      title: "Where beginner games are actually lost",
+      heading: "Where beginner games are actually lost",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "A lost piece outweighs whatever the opening gave you. When you lose one, look at where it stood and whether it could be taken for free.",
             "Here is one example. Your knight on f3 is pinned to your queen on d1 by a bishop on g4. Black pushes a pawn from e5 to e4, and the pawn attacks the knight.",
@@ -48,18 +55,46 @@ const guide: LearnGuide = {
           ],
         },
         {
-          kind: "callout",
+          kind: "takeaway",
           title: "The order this guide follows",
           body: "Board reading first, then the move question, then slower games, then a line after each game. Openings wait until the first three are automatic.",
+        },
+      ],
+      facts: [
+        {
+          id: "pinned-knight",
+          white: ["Kg1", "Qd1", "Nf3", "g2"],
+          black: ["Kg8", "Bg4", "e5"],
+          toMove: "b",
+          unstated: ["g1", "g2", "g8"],
+          claims: [{ kind: "attacks", from: "g4", squares: ["f3"] }],
+        },
+        {
+          id: "pinned-knight-after-e4",
+          white: ["Kg1", "Qd1", "Nf3", "g2"],
+          black: ["Kg8", "Bg4", "e5"],
+          toMove: "b",
+          unstated: ["g1", "g2", "g8"],
+          line: ["e4"],
+          claims: [{ kind: "attacks", from: "e4", squares: ["f3"] }],
+        },
+        {
+          id: "pinned-knight-steps-away",
+          white: ["Kg1", "Qd1", "Nf3", "g2"],
+          black: ["Kg8", "Bg4", "e5"],
+          toMove: "b",
+          unstated: ["g1", "g2", "g8"],
+          line: ["e4", "Nd4"],
+          claims: [{ kind: "legal", move: "Bxd1" }],
         },
       ],
     },
     {
       id: "read-the-board",
-      title: "Stage 1. Hold the whole board in your head",
+      heading: "Stage 1. Hold the whole board in your head",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "If you look only at the piece you are moving and the square it goes to, the rest of the board gets no look at all. A Memory Chess round asks for the opposite, because it gives you the whole position and nothing else.",
             "A round shows a position for a fixed number of seconds, then clears the board and asks you to rebuild it. The game counts a piece as correct only when its square, its type and its colour all match the original.",
@@ -73,44 +108,29 @@ const guide: LearnGuide = {
           drills: [
             {
               title: "Four pieces, read out loud",
-              description:
-                "Play 4 pieces with 10 seconds to look, 5 rounds. While the position is up, say each piece and its square out loud, like white knight c3. Then rebuild it.",
+              description: "Play 4 pieces with 10 seconds to look, 5 rounds. While the position is up, say each piece and its square out loud, like white knight c3. Then rebuild it.",
               duration: "about 4 minutes",
               goal: "Five rounds at 100 percent before you raise the piece count.",
-              ctaLabel: "Play 4 pieces, 10 seconds",
-              setup: {
-                pieceCount: 4,
-                memorizeTime: 10,
-              },
+              play: { label: "Play 4 pieces, 10 seconds", pieceCount: 4, memorizeTime: 10 },
             },
             {
               title: "Six pieces, same ten seconds",
-              description:
-                "Play 6 pieces with 10 seconds to look, 5 rounds. Keep naming every piece aloud, and start with the two kings so they are never the ones you miss.",
+              description: "Play 6 pieces with 10 seconds to look, 5 rounds. Keep naming every piece aloud, and start with the two kings so they are never the ones you miss.",
               duration: "about 5 minutes",
               goal: "Five rounds at 100 percent, then move on to eight.",
-              ctaLabel: "Play 6 pieces, 10 seconds",
-              setup: {
-                pieceCount: 6,
-                memorizeTime: 10,
-              },
+              play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
             },
             {
               title: "Eight pieces, where this stage stops",
-              description:
-                "Play 8 pieces with 10 seconds to look, 5 rounds. Naming every piece gets tight here, so name the pairs that attack or guard each other.",
+              description: "Play 8 pieces with 10 seconds to look, 5 rounds. Naming every piece gets tight here, so name the pairs that attack or guard each other.",
               duration: "about 6 minutes",
               goal: "Most rounds at 100 percent. This is the ceiling this guide asks for.",
-              ctaLabel: "Play 8 pieces, 10 seconds",
-              setup: {
-                pieceCount: 8,
-                memorizeTime: 10,
-              },
+              play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },
             },
           ],
         },
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "The three drills above are the whole progression. The count grows from 4 to 6 to 8 while the 10 seconds stay fixed.",
           ],
@@ -119,10 +139,10 @@ const guide: LearnGuide = {
     },
     {
       id: "move-question",
-      title: "Stage 2. One question before every move",
+      heading: "Stage 2. One question before every move",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "The question is always the same. After this move, what can the opponent take or attack for free? Ask it on every move, including the boring ones.",
             "To answer it, name the piece your opponent just moved and the new squares it now attacks. A bishop that arrives on c4 looks at f7. A queen that reaches h5 looks at f7 too, and at e5 and h7.",
@@ -130,7 +150,7 @@ const guide: LearnGuide = {
           ],
         },
         {
-          kind: "steps",
+          kind: "list",
           ordered: true,
           items: [
             "Say the opponent's last move and every new square it attacks.",
@@ -140,18 +160,36 @@ const guide: LearnGuide = {
           ],
         },
         {
-          kind: "callout",
+          kind: "takeaway",
           title: "Why the question works",
           body: "Avoiding a free capture needs no long calculation, only a look at the right piece. The question forces the look on every move.",
+        },
+      ],
+      facts: [
+        {
+          id: "bishop-reaches-c4",
+          line: ["e4", "e5", "Bc4"],
+          claims: [{ kind: "attacks", from: "c4", squares: ["f7"] }],
+        },
+        {
+          id: "queen-reaches-h5",
+          line: ["e4", "e5", "Qh5"],
+          claims: [{ kind: "attacks", from: "h5", squares: ["f7", "e5", "h7"] }],
+        },
+        {
+          id: "knight-f3-guards-e5",
+          white: ["Nf3"],
+          black: [],
+          claims: [{ kind: "attacks", from: "f3", squares: ["e5"] }],
         },
       ],
     },
     {
       id: "slow-games",
-      title: "Stage 3. Play slow enough to use the question",
+      heading: "Stage 3. Play slow enough to use the question",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "A 3-minute game that lasts 40 moves leaves you under 5 seconds a move. The question can take longer than that while it is new, so blitz makes it easy to skip.",
             "Play 15 minutes with a 10-second increment, or longer. One game a day at that speed is enough for this stage.",
@@ -162,10 +200,10 @@ const guide: LearnGuide = {
     },
     {
       id: "one-line",
-      title: "Stage 4. One line after every game",
+      heading: "Stage 4. One line after every game",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "Skip the full engine review for now. Find the move where you lost a piece or missed a check, and write one line about it.",
             "The line names the stage that failed. Did not look at the board, did not ask the question, or asked it and rushed. Keep the lines in one place.",
@@ -176,7 +214,7 @@ const guide: LearnGuide = {
     },
     {
       id: "four-weeks",
-      title: "Four weeks in the right order",
+      heading: "Four weeks in the right order",
       blocks: [
         {
           kind: "plan",
@@ -184,26 +222,22 @@ const guide: LearnGuide = {
             {
               label: "Week 1",
               duration: "4 minutes plus one slow game",
-              detail:
-                "Five rounds of 4 pieces, 10 seconds, each piece named out loud. Then one 15+10 game with the question asked before every move. One line afterwards.",
+              detail: "Five rounds of 4 pieces, 10 seconds, each piece named out loud. Then one 15+10 game with the question asked before every move. One line afterwards.",
             },
             {
               label: "Week 2",
               duration: "5 minutes plus one slow game",
-              detail:
-                "Five rounds of 6 pieces, 10 seconds. Same game, same question. Read your week 1 lines before you play.",
+              detail: "Five rounds of 6 pieces, 10 seconds. Same game, same question. Read your week 1 lines before you play.",
             },
             {
               label: "Week 3",
               duration: "6 minutes plus one slow game",
-              detail:
-                "Five rounds of 8 pieces, 10 seconds. In the game, also name what your moving piece stops guarding before you move it.",
+              detail: "Five rounds of 8 pieces, 10 seconds. In the game, also name what your moving piece stops guarding before you move it.",
             },
             {
               label: "Week 4",
               duration: "6 minutes plus one slow game",
-              detail:
-                "Keep the 8-piece rounds. Count your lines by stage. Whichever stage appears most is your first job next month.",
+              detail: "Keep the 8-piece rounds. Count your lines by stage. Whichever stage appears most is your first job next month.",
             },
           ],
         },
@@ -211,10 +245,10 @@ const guide: LearnGuide = {
     },
     {
       id: "openings-last",
-      title: "When openings finally earn their place",
+      heading: "When openings finally earn their place",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "Openings matter once your pieces stop disappearing for free. Until then a memorised line can take you to move ten with a position you cannot yet hold in your head.",
             "When you get there, keep it small. For white, play e4 and bring the knights out before the bishops. For black, answer e4 with e5 and d4 with d5.",
@@ -224,111 +258,74 @@ const guide: LearnGuide = {
       ],
     },
   ],
-  faq: [
+  end: [
     {
-      question: "How long before this shows up in my rating?",
-      answer:
-        "Rating moves slowly and depends on who you are paired with, so it is a poor weekly signal. Count hanging pieces per game instead, from your stage 4 lines.",
+      kind: "cta",
+      target: { kind: "game", label: "Play 4 pieces, 10 seconds", pieceCount: 4, memorizeTime: 10 },
+      why: "Four pieces is the first rung of the board-reading habit: look, rebuild, and only then think about a move.",
     },
     {
-      question: "Is Memory Chess enough on its own?",
-      answer:
-        "No. It trains reading the board, which is stage 1. Stages 2 to 4 happen in real games and nothing replaces them.",
+      kind: "faq",
+      items: [
+        {
+          question: "How long before this shows up in my rating?",
+          answer: "Rating moves slowly and depends on who you are paired with, so it is a poor weekly signal. Count hanging pieces per game instead, from your stage 4 lines.",
+        },
+        {
+          question: "Is Memory Chess enough on its own?",
+          answer: "No. It trains reading the board, which is stage 1. Stages 2 to 4 happen in real games and nothing replaces them.",
+        },
+        {
+          question: "Should I do puzzles too?",
+          answer: "Yes, a few a day, solved slowly. The guide on how many puzzles a day explains how to set the count from the minutes you have.",
+        },
+        {
+          question: "What piece count should I stop at?",
+          answer: "Eight pieces at 10 seconds is enough for this guide. Higher counts are for players who want the memory skill for its own sake.",
+        },
+      ],
     },
     {
-      question: "Should I do puzzles too?",
-      answer:
-        "Yes, a few a day, solved slowly. The guide on how many puzzles a day explains how to set the count from the minutes you have.",
+      kind: "furtherReading",
+      items: [
+        {
+          kind: "guide",
+          slug: "how-to-stop-blundering-in-chess",
+          reason: "A longer checklist for stage 2 once the single question is automatic.",
+        },
+        {
+          kind: "guide",
+          slug: "chess-memory-training",
+          reason: "More memory rounds for players who want to push stage 1 past eight pieces.",
+        },
+        {
+          kind: "guide",
+          slug: "20-minute-daily-chess-study-plan",
+          reason: "Twenty fixed minutes of memory rounds, slow puzzles, one replayed game and a written line, without the slow game.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-analyze-chess-games-for-beginners",
+          reason: "What to do with the one line from stage 4.",
+        },
+        {
+          kind: "guide",
+          slug: "how-many-chess-puzzles-a-day",
+          reason: "How to size the puzzle habit that sits beside these stages.",
+        },
+      ],
     },
     {
-      question: "What piece count should I stop at?",
-      answer:
-        "Eight pieces at 10 seconds is enough for this guide. Higher counts are for players who want the memory skill for its own sake.",
-    },
-  ],
-  relatedArticles: [
-    {
-      slug: "how-to-stop-blundering-in-chess",
-      reason: "A longer checklist for stage 2 once the single question is automatic.",
-    },
-    {
-      slug: "chess-memory-training",
-      reason: "More memory rounds for players who want to push stage 1 past eight pieces.",
-    },
-    {
-      slug: "20-minute-daily-chess-study-plan",
-      reason: "Twenty fixed minutes of memory rounds, slow puzzles, one replayed game and a written line, without the slow game.",
-    },
-    {
-      slug: "how-to-analyze-chess-games-for-beginners",
-      reason: "What to do with the one line from stage 4.",
-    },
-    {
-      slug: "how-many-chess-puzzles-a-day",
-      reason: "How to size the puzzle habit that sits beside these stages.",
-    },
-  ],
-  sources: [
-    {
-      title: "Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention",
-      url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
-      note: "Supports the claim in stage 1 that tested students remembered a passage better than restudying students days later, though not after five minutes.",
+      kind: "sources",
+      items: [
+        {
+          title: "Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention",
+          note: "Supports the claim in stage 1 that tested students remembered a passage better than restudying students days later, though not after five minutes.",
+          url: "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
+        },
+      ],
     },
   ],
 };
-
-const PINNED_KNIGHT_WHITE: PieceToken[] = ["Kg1", "Qd1", "Nf3", "g2"];
-const PINNED_KNIGHT_BLACK: PieceToken[] = ["Kg8", "Bg4", "e5"];
-
-export const positions: LearnPosition[] = [
-  {
-    id: "pinned-knight",
-    sectionId: "where-games-go",
-    white: PINNED_KNIGHT_WHITE,
-    black: PINNED_KNIGHT_BLACK,
-    toMove: "b",
-    unstated: ["g1", "g2", "g8"],
-    claims: [{ kind: "attacks", from: "g4", squares: ["f3"] }],
-  },
-  {
-    id: "pinned-knight-after-e4",
-    sectionId: "where-games-go",
-    white: PINNED_KNIGHT_WHITE,
-    black: PINNED_KNIGHT_BLACK,
-    toMove: "b",
-    unstated: ["g1", "g2", "g8"],
-    line: ["e4"],
-    claims: [{ kind: "attacks", from: "e4", squares: ["f3"] }],
-  },
-  {
-    id: "pinned-knight-steps-away",
-    sectionId: "where-games-go",
-    white: PINNED_KNIGHT_WHITE,
-    black: PINNED_KNIGHT_BLACK,
-    toMove: "b",
-    unstated: ["g1", "g2", "g8"],
-    line: ["e4", "Nd4"],
-    claims: [{ kind: "legal", move: "Bxd1" }],
-  },
-  {
-    id: "bishop-reaches-c4",
-    sectionId: "move-question",
-    line: ["e4", "e5", "Bc4"],
-    claims: [{ kind: "attacks", from: "c4", squares: ["f7"] }],
-  },
-  {
-    id: "queen-reaches-h5",
-    sectionId: "move-question",
-    line: ["e4", "e5", "Qh5"],
-    claims: [{ kind: "attacks", from: "h5", squares: ["f7", "e5", "h7"] }],
-  },
-  {
-    id: "knight-f3-guards-e5",
-    sectionId: "move-question",
-    white: ["Nf3"],
-    black: [],
-    claims: [{ kind: "attacks", from: "f3", squares: ["e5"] }],
-  },
-];
 
 export default guide;

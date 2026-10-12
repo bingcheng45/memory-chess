@@ -1,45 +1,51 @@
-import type { LearnPosition } from "../positions";
-import type { LearnGuide } from "../schema";
+import type { LearnDocument } from "../schema";
 
-const guide: LearnGuide = {
-  slug: "how-to-analyze-chess-games-for-beginners",
-  goal: "routine",
-  title: "How to Analyze Chess Games for Beginners",
-  h1: "How to analyze chess games for beginners",
-  description:
-    "A ten-minute review that ends in one sentence. Find the move that decided the game, write your reason before the engine gives its own, and label the mistake.",
-  primaryKeyword: "how to analyze chess games for beginners",
-  secondaryKeywords: [
-    "beginner chess game review",
-    "how to review chess games",
-    "chess self analysis beginners",
-    "analyze blunders in chess",
-    "post game chess routine",
-  ],
-  ctaLabel: "Play 8 pieces, 10 seconds",
-  quickAnswer:
-    "Find the one move that decided the game. Set that position up from memory, write one sentence on why the move was bad, then run the engine on that position only. Label the mistake and close the game.",
-  keyTakeaways: [
-    "One decisive move per game. Ignore the rest.",
-    "Write your reason before the engine shows its line, or the engine's reason can replace yours.",
-    "Label it never looked, looked and misjudged, or knew and rushed, and let the count choose your training.",
-  ],
-  whoThisIsFor: [
-    "You lose, open the analysis, look at the graph and learn nothing.",
-    "You have been told to review your games and do not know what that means in practice.",
-    "You want a routine that fits between games.",
-  ],
-  timeToRead: "7 min read",
-  difficulty: "Beginner",
-  publishedAt: "2026-03-24T00:00:00.000Z",
-  updatedAt: "2026-09-15T00:00:00.000Z",
+const guide: LearnDocument = {
+  meta: {
+    slug: "how-to-analyze-chess-games-for-beginners",
+    title: "How to Analyze Chess Games for Beginners",
+    h1: "How to analyze chess games for beginners",
+    description: "A ten-minute review that ends in one sentence. Find the move that decided the game, write your reason before the engine gives its own, and label the mistake.",
+    group: "practice",
+    level: "beginner",
+    publishedAt: "2026-03-24T00:00:00.000Z",
+    updatedAt: "2026-09-15T00:00:00.000Z",
+    questions: [
+      "How do I analyse my chess games?",
+      "Should beginners use the engine?",
+      "Should I review my wins?",
+    ],
+    keywords: {
+      primary: "how to analyze chess games for beginners",
+      secondary: [
+        "beginner chess game review",
+        "how to review chess games",
+        "chess self analysis beginners",
+        "analyze blunders in chess",
+        "post game chess routine",
+      ],
+    },
+  },
+  intro: {
+    quickAnswer: "Find the one move that decided the game. Set that position up from memory, write one sentence on why the move was bad, then run the engine on that position only. Label the mistake and close the game.",
+    takeaways: [
+      "One decisive move per game. Ignore the rest.",
+      "Write your reason before the engine shows its line, or the engine's reason can replace yours.",
+      "Label it never looked, looked and misjudged, or knew and rushed, and let the count choose your training.",
+    ],
+    audience: [
+      "You lose, open the analysis, look at the graph and learn nothing.",
+      "You have been told to review your games and do not know what that means in practice.",
+      "You want a routine that fits between games.",
+    ],
+  },
   sections: [
     {
       id: "one-move",
-      title: "Find the one move that decided the game",
+      heading: "Find the one move that decided the game",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "When you lose a piece for nothing, the game turned at that move, whatever came after. Your review is about that move and almost nothing else.",
             "Find it without the engine. It is the move after which you were a piece down, or the move after which you stopped feeling fine.",
@@ -50,10 +56,10 @@ const guide: LearnGuide = {
     },
     {
       id: "before-engine",
-      title: "Write your reason before the engine gives its own",
+      heading: "Write your reason before the engine gives its own",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "Set the position up, on a board or on screen, and write one sentence about why the move was bad. Do this before you switch the engine on.",
             "The engine will tell you the move was bad. It will not tell you which of your habits produced it. Only you can, and only if you answer first.",
@@ -65,10 +71,10 @@ const guide: LearnGuide = {
     },
     {
       id: "three-labels",
-      title: "Three labels for a beginner mistake",
+      heading: "Three labels for a beginner mistake",
       blocks: [
         {
-          kind: "steps",
+          kind: "list",
           ordered: false,
           items: [
             "Never looked. Your queen went to h5 and the knight on f6 took it. The knight was there the whole time and your eyes never went to it.",
@@ -77,19 +83,40 @@ const guide: LearnGuide = {
           ],
         },
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "Write the label next to the sentence. After ten games, count the labels. The one that leads is your training plan.",
           ],
         },
       ],
+      facts: [
+        {
+          id: "knight-pinned-to-the-queen",
+          white: ["Kg1", "Bg5", "Qh5"],
+          black: ["Ke8", "Qd8", "Nf6"],
+          toMove: "b",
+          unstated: ["g1", "e8"],
+          claims: [
+            { kind: "attacks", from: "f6", squares: ["h5"] },
+            { kind: "attacks", from: "g5", squares: ["f6"] },
+            { kind: "legal", move: "Nxh5" },
+          ],
+        },
+        {
+          id: "bishop-g5-behind-the-knight",
+          white: ["Kg1", "Bg5"],
+          black: ["Ke8", "Qd8"],
+          unstated: ["g1", "e8"],
+          claims: [{ kind: "attacks", from: "g5", squares: ["d8"] }],
+        },
+      ],
     },
     {
       id: "ten-minutes",
-      title: "The ten-minute review, step by step",
+      heading: "The ten-minute review, step by step",
       blocks: [
         {
-          kind: "steps",
+          kind: "list",
           ordered: true,
           items: [
             "Minute 1. Name the decisive move from memory, before opening the game record.",
@@ -104,10 +131,10 @@ const guide: LearnGuide = {
     },
     {
       id: "rebuild",
-      title: "Rebuild the position from memory, and what it tells you",
+      heading: "Rebuild the position from memory, and what it tells you",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "Do not skip minutes 2 to 4. A piece you cannot place from memory is a lead. Check whether it was one of the pieces that decided the move.",
             "If it was, the label is probably never looked. If the missing piece stood far from the action, your sentence and the engine will say more.",
@@ -122,15 +149,10 @@ const guide: LearnGuide = {
           drills: [
             {
               title: "Rebuild eight pieces, then read the marks",
-              description:
-                "Play 8 pieces with 10 seconds to look, 3 rounds. After each round, find the squares marked Missed. Those are pieces you did not place at all.",
+              description: "Play 8 pieces with 10 seconds to look, 3 rounds. After each round, find the squares marked Missed. Those are pieces you did not place at all.",
               duration: "about 4 minutes",
               goal: "No squares marked Missed, even with an Incorrect square or two.",
-              ctaLabel: "Play 8 pieces, 10 seconds",
-              setup: {
-                pieceCount: 8,
-                memorizeTime: 10,
-              },
+              play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },
             },
           ],
         },
@@ -138,16 +160,16 @@ const guide: LearnGuide = {
     },
     {
       id: "next-session",
-      title: "Turning the label into tomorrow's first change",
+      heading: "Turning the label into tomorrow's first change",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "The review is only worth doing if it changes the next session. Each label points somewhere specific.",
           ],
         },
         {
-          kind: "steps",
+          kind: "list",
           ordered: false,
           items: [
             "Never looked. Three rounds of the 8-piece drill above before tomorrow's game. In the game, say what the last move newly attacks before each of yours.",
@@ -156,7 +178,7 @@ const guide: LearnGuide = {
           ],
         },
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
             "That is the whole method. One move, one sentence before the engine, one label, one change tomorrow.",
           ],
@@ -164,66 +186,55 @@ const guide: LearnGuide = {
       ],
     },
   ],
-  faq: [
+  end: [
     {
-      question: "Should I use the engine at all?",
-      answer:
-        "Yes, once, on one position, after you have written your own sentence. The engine is a check on your reasoning, not a replacement for it.",
+      kind: "cta",
+      target: { kind: "game", label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },
+      why: "Rebuilding eight pieces from memory is the same skill as setting up the deciding position of a lost game.",
     },
     {
-      question: "What about my wins?",
-      answer:
-        "Review them the same way. A win can still contain a move your opponent could have punished. Finding it is cheaper than losing to it next week.",
+      kind: "faq",
+      items: [
+        {
+          question: "Should I use the engine at all?",
+          answer: "Yes, once, on one position, after you have written your own sentence. The engine is a check on your reasoning, not a replacement for it.",
+        },
+        {
+          question: "What about my wins?",
+          answer: "Review them the same way. A win can still contain a move your opponent could have punished. Finding it is cheaper than losing to it next week.",
+        },
+        {
+          question: "How many games a week should I review?",
+          answer: "Every game you play, for ten minutes each. If that is too many, play fewer games.",
+        },
+      ],
     },
     {
-      question: "How many games a week should I review?",
-      answer:
-        "Every game you play, for ten minutes each. If that is too many, play fewer games.",
+      kind: "furtherReading",
+      items: [
+        {
+          kind: "guide",
+          slug: "how-to-get-better-at-chess-for-beginners",
+          reason: "The four stages the three labels map onto.",
+        },
+        {
+          kind: "guide",
+          slug: "20-minute-daily-chess-study-plan",
+          reason: "A seven-minute version of this review inside a fixed daily session.",
+        },
+        {
+          kind: "guide",
+          slug: "chess-memory-training",
+          reason: "More rounds for the never looked label.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-stop-blundering-in-chess",
+          reason: "Turns the never looked fix, naming what the last move attacks, into a full scan before each move.",
+        },
+      ],
     },
   ],
-  relatedArticles: [
-    {
-      slug: "how-to-get-better-at-chess-for-beginners",
-      reason: "The four stages the three labels map onto.",
-    },
-    {
-      slug: "20-minute-daily-chess-study-plan",
-      reason: "A seven-minute version of this review inside a fixed daily session.",
-    },
-    {
-      slug: "chess-memory-training",
-      reason: "More rounds for the never looked label.",
-    },
-    {
-      slug: "how-to-stop-blundering-in-chess",
-      reason: "Turns the never looked fix, naming what the last move attacks, into a full scan before each move.",
-    },
-  ],
-  sources: [],
 };
-
-export const positions: LearnPosition[] = [
-  {
-    id: "knight-pinned-to-the-queen",
-    sectionId: "three-labels",
-    white: ["Kg1", "Bg5", "Qh5"],
-    black: ["Ke8", "Qd8", "Nf6"],
-    toMove: "b",
-    unstated: ["g1", "e8"],
-    claims: [
-      { kind: "attacks", from: "f6", squares: ["h5"] },
-      { kind: "attacks", from: "g5", squares: ["f6"] },
-      { kind: "legal", move: "Nxh5" },
-    ],
-  },
-  {
-    id: "bishop-g5-behind-the-knight",
-    sectionId: "three-labels",
-    white: ["Kg1", "Bg5"],
-    black: ["Ke8", "Qd8"],
-    unstated: ["g1", "e8"],
-    claims: [{ kind: "attacks", from: "g5", squares: ["d8"] }],
-  },
-];
 
 export default guide;

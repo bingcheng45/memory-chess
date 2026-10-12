@@ -56,7 +56,7 @@ describe("the footer the locale layout renders", () => {
   });
 
   it("is the dark site footer on a route outside the registry, and in a locale the route does not list", () => {
-    mockPathname = "/learn";
+    mockPathname = "/terms";
     const { unmount } = renderWithIntl(<SiteFooter />);
 
     expect(screen.getByRole("contentinfo").closest(".lab-paper")).toBeNull();
@@ -86,7 +86,7 @@ describe("the changelog banner", () => {
   });
 
   it("keeps the dark banner, outside any Lab Paper block, on a route outside the registry", () => {
-    mockPathname = "/learn";
+    mockPathname = "/terms";
     renderWithIntl(<ChangelogBanner announce />);
     const banner = screen.getByRole("complementary", { name: "Memory Chess update" });
 

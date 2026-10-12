@@ -1,153 +1,188 @@
-import type { RoundSource } from "@/lib/analytics/events";
-import { playHref } from "@/lib/game/roundLink";
+import type { Square } from "chess.js";
+import type { PhotoCredit } from "@/lib/articles/schema";
+import type { DashboardTileId } from "@/lib/lab/dashboard";
+import type { LearnPosition } from "./positions";
 
-/**
- * Goal ids and their hrefs. The visible label, description and accent live in
- * LEARN_GOAL_COPY in ./copy -- see EN_LEARN_GOALS in ./index.
- */
-export const LEARN_GOAL_IDS = [
-  "reduce-blunders",
-  "visualization",
-  "memory",
-  "routine",
-] as const;
+export const LEARN_GROUPS = [
+  {
+    id: "foundations",
+    label: "Start here",
+    description: "How to improve from scratch and what to think about on every move.",
+    status: "live",
+  },
+  {
+    id: "board-vision",
+    label: "Board vision and blunders",
+    description: "See every piece, read squares at a glance, and stop dropping material.",
+    status: "live",
+  },
+  {
+    id: "visualization",
+    label: "Visualization and calculation",
+    description: "Hold a position in your head and move pieces there without losing it.",
+    status: "live",
+  },
+  {
+    id: "memory",
+    label: "Memory and patterns",
+    description: "Recall positions square by square and learn shapes worth remembering.",
+    status: "live",
+  },
+  {
+    id: "practice",
+    label: "Practice and review",
+    description: "Short routines, puzzle counts and how to learn from your own games.",
+    status: "live",
+  },
+  {
+    id: "science",
+    label: "The science of chess memory",
+    description: "What de Groot, Chase and Simon and later research found, written for players.",
+    status: "planned",
+  },
+  {
+    id: "using-memory-chess",
+    label: "Using Memory Chess",
+    description: "How a round is scored, what each preset tests and what your dashboard figures mean.",
+    status: "planned",
+  },
+] as const satisfies readonly {
+  readonly id: string;
+  readonly label: string;
+  readonly description: string;
+  readonly status: "live" | "planned";
+}[];
 
-export const LEARN_GOAL_HREFS: Record<(typeof LEARN_GOAL_IDS)[number], string> = {
-  "reduce-blunders": "/learn/how-to-stop-blundering-in-chess",
-  visualization: "/learn/chess-visualization-exercises",
-  memory: "/learn/chess-memory-training",
-  routine: "/learn/20-minute-daily-chess-study-plan",
+export type LearnGroup = (typeof LEARN_GROUPS)[number];
+export type LearnGroupId = LearnGroup["id"];
+
+export const LEARN_LEVELS = {
+  beginner: "Beginner",
+  improver: "Beginner to intermediate",
+  intermediate: "Intermediate",
+} as const;
+
+export type LearnLevel = keyof typeof LEARN_LEVELS;
+
+export type InlineLink = { readonly text: string; readonly href: `/${string}` };
+
+export type Rich = string | readonly (string | InlineLink)[];
+
+export type LearnMeta = {
+  readonly slug: string;
+  /** The <title>, 60 characters or fewer. */
+  readonly title: string;
+  readonly h1: string;
+  /** The meta description and the hub card text, 160 characters or fewer. */
+  readonly description: string;
+  readonly group: LearnGroupId;
+  readonly level: LearnLevel;
+  readonly publishedAt: string;
+  readonly updatedAt: string;
+  /** What a reader would type, each ending in "?" and none repeating an FAQ question. The search ranks these highest. */
+  readonly questions: readonly [string, string, ...string[]];
+  readonly keywords: { readonly primary: string; readonly secondary: readonly string[] };
+  readonly featured?: true;
 };
 
-export type LearnGoalId = (typeof LEARN_GOAL_IDS)[number];
-
-export type LearnFaq = {
-  question: string;
-  answer: string;
+export type LearnIntro = {
+  readonly quickAnswer: string;
+  readonly takeaways: readonly string[];
+  readonly audience: readonly string[];
 };
 
-/** The round a drill is played as. Absent for drills done away from the game. */
-export type LearnGameSetup = {
-  pieceCount: number;
-  memorizeTime: number;
+export type GameSetup = { readonly pieceCount: number; readonly memorizeTime: number };
+
+export type BoardArrow = { readonly from: Square; readonly to: Square; readonly kind: "attack" | "defend" | "pin" };
+export type BoardMark = { readonly square: Square; readonly kind: "ring" };
+
+export type Drill = {
+  readonly title: string;
+  readonly description: Rich;
+  readonly duration: string;
+  readonly goal: string;
+  /** A drill played on the site. A drill done at a real board has none and renders no button. */
+  readonly play?: GameSetup & { readonly label: string };
 };
 
-/** A phrase in a block's own text that links to another page on the site. */
-export type LearnInlineLink = {
-  phrase: string;
-  href: string;
-};
+export type PlanStep = { readonly label: string; readonly duration: string; readonly detail: string };
 
-export type LearnDrillCard = {
-  title: string;
-  description: string;
-  duration: string;
-  goal: string;
-  ctaLabel: string;
-  /** Links `phrase` where it appears in the description. */
-  link?: LearnInlineLink;
-  setup?: LearnGameSetup;
-};
-
-export function gameHref(setup: LearnGameSetup | undefined, source: RoundSource): string {
-  return setup ? playHref(setup.pieceCount, setup.memorizeTime, source) : "/game";
-}
-
-export type LearnComparisonRow = {
-  label: string;
-  struggling: string;
-  stronger: string;
-};
-
-export type LearnPlanStep = {
-  label: string;
-  duration: string;
-  detail: string;
-};
-
-export type LearnSource = {
-  title: string;
-  url: string;
-  note?: string;
-};
-
-export type LearnRelatedArticle = {
-  slug: string;
-  reason: string;
-};
-
-/** An article the guide sends readers on to, linked with `anchor` as its text. */
-export type LearnFurtherReading = {
-  slug: string;
-  anchor: string;
-};
-
-export type LearnTableOfContentsItem = {
-  id: string;
-  label: string;
-};
-
-/** One piece of a section. A section uses only the kinds it needs, in its own order. */
-export type LearnBlock =
-  | { kind: "paragraphs"; paragraphs: string[]; link?: LearnInlineLink }
-  | { kind: "steps"; ordered: boolean; items: string[] }
-  | { kind: "callout"; title: string; body: string }
-  | { kind: "drills"; drills: LearnDrillCard[] }
+export type BodyBlock =
+  | { readonly kind: "prose"; readonly paragraphs: readonly [Rich, ...Rich[]] }
+  | { readonly kind: "list"; readonly ordered: boolean; readonly items: readonly [Rich, ...Rich[]] }
+  | { readonly kind: "takeaway"; readonly title: string; readonly body: string }
   | {
-      kind: "comparison";
-      columns: [string, string, string];
-      rows: LearnComparisonRow[];
+      readonly kind: "board";
+      /** The drawn position is the checked one: guideFacts.test.ts replays its claims. */
+      readonly position: LearnPosition;
+      readonly arrows?: readonly BoardArrow[];
+      readonly marks?: readonly BoardMark[];
+      /** One sentence that says what to see. Also the board's accessible name. */
+      readonly caption: string;
     }
-  | { kind: "plan"; steps: LearnPlanStep[] };
+  | {
+      readonly kind: "image";
+      readonly src: `/images/learn/${string}`;
+      readonly width: number;
+      readonly height: number;
+      readonly alt: string;
+      readonly caption: string;
+      readonly credit: PhotoCredit | "own";
+    }
+  | { readonly kind: "drills"; readonly drills: readonly [Drill, ...Drill[]] }
+  | {
+      readonly kind: "table";
+      readonly columns: readonly [string, string, ...string[]];
+      readonly rows: readonly { readonly label: string; readonly cells: readonly string[] }[];
+    }
+  | { readonly kind: "plan"; readonly steps: readonly PlanStep[] }
+  | CtaBlock;
+
+export type CtaTarget =
+  | ({ readonly kind: "game"; readonly label: string } & GameSetup)
+  | { readonly kind: "article"; readonly slug: string; readonly label: string }
+  | { readonly kind: "stat"; readonly tile: DashboardTileId; readonly label: string };
+
+/** `why` is written per guide: a shared sentence trips the AdSense repeated-sentence rule. */
+export type CtaBlock = { readonly kind: "cta"; readonly target: CtaTarget; readonly why: string };
+
+export type FaqItem = { readonly question: string; readonly answer: string };
+export type Source = { readonly title: string; readonly url: `https://${string}`; readonly note?: string };
+export type FurtherItem =
+  | { readonly kind: "guide"; readonly slug: string; readonly reason: string }
+  | { readonly kind: "article"; readonly slug: string; readonly reason: string };
+
+export type EndBlock =
+  | CtaBlock
+  | { readonly kind: "faq"; readonly items: readonly [FaqItem, ...FaqItem[]] }
+  | { readonly kind: "furtherReading"; readonly items: readonly [FurtherItem, ...FurtherItem[]] }
+  | { readonly kind: "sources"; readonly items: readonly [Source, ...Source[]] };
+
+export type LearnBlock = BodyBlock | EndBlock;
 
 export type LearnSection = {
-  id: string;
-  title: string;
-  eyebrow?: string;
-  summary?: string;
-  blocks: LearnBlock[];
+  readonly id: string;
+  readonly heading: string;
+  readonly summary?: string;
+  readonly blocks: readonly [BodyBlock, ...BodyBlock[]];
+  /** Positions the section's prose states without drawing them. guideFacts.test.ts replays these too. */
+  readonly facts?: readonly LearnPosition[];
 };
 
-/** A guide owns its page: its sections, their order, and its own dates. */
-export type LearnGuide = {
-  slug: string;
-  goal: LearnGoalId;
-  title: string;
-  h1: string;
-  description: string;
-  primaryKeyword: string;
-  secondaryKeywords: string[];
-  ctaLabel: string;
-  quickAnswer: string;
-  keyTakeaways?: string[];
-  whoThisIsFor?: string[];
-  timeToRead: string;
-  difficulty: "Beginner" | "Beginner to Intermediate";
-  featured?: boolean;
-  publishedAt: string;
-  updatedAt: string;
-  sections: LearnSection[];
-  faq: LearnFaq[];
-  relatedArticles: LearnRelatedArticle[];
-  furtherReading?: LearnFurtherReading[];
-  sources: LearnSource[];
+export type LearnDocument = {
+  readonly meta: LearnMeta;
+  readonly intro: LearnIntro;
+  readonly sections: readonly [LearnSection, ...LearnSection[]];
+  /** In render order. At most one each of faq, furtherReading and sources. */
+  readonly end: readonly EndBlock[];
 };
 
-/** A guide plus what the page derives from it. */
-export type LearnPageContent = LearnGuide & {
-  ctaHref: string;
-  tableOfContents: LearnTableOfContentsItem[];
-};
-
-// A named person with a page behind the name. The guides used to credit a
-// pseudonymous "Editorial Team" whose JSON-LD id resolved to /learn, which
-// says nothing about who writes.
 export const LEARN_AUTHOR = {
   name: "Bing Cheng",
   url: "https://thememorychess.com/about",
   id: "https://thememorychess.com/about#bing-cheng",
 } as const;
 
-/** Shown after the author's name on every guide. Learn is English-only. */
+/** Shown after the author's name on every guide. */
 export const LEARN_AUTHORSHIP_NOTE =
   "Written with AI assistance; chess positions checked by script and game facts traced to the code.";

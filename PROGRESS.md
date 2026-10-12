@@ -157,7 +157,6 @@ memory-chess/
 ├── .gitignore
 ├── .npmrc
 ├── .vercelignore
-├── bun.lock
 ├── eslint.config.mjs
 ├── jest.config.js
 ├── jest.setup.js

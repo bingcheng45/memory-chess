@@ -77,13 +77,13 @@ cd memory-chess
 2. Install dependencies:
 
 ```bash
-bun install
+npm install
 ```
 
 3. Run the development server:
 
 ```bash
-bun run dev
+npm run dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.

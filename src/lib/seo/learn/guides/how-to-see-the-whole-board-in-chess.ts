@@ -3,9 +3,9 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "how-to-see-the-whole-board-in-chess",
-    title: "How to See the Whole Board in Chess",
-    h1: "How to see the whole chess board",
-    description: "Why a bishop that never moved still wins material, a sweep that starts at the edges, and a 12-piece round with no plan gathering its pieces.",
+    title: "How to See the Whole Board in Chess and Stop Tunnel Vision",
+    h1: "How to see the whole board in chess",
+    description: "Learn how to see the whole board in chess with a sweep that starts at the edges, why a bishop that never moved wins material, and a 12-piece drill.",
     group: "board-vision",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
@@ -27,31 +27,52 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Sweep from the edges inward before you look at your own move. Take the long diagonals, then the edge files and ranks, then trace every enemy bishop, rook and queen to its last square.",
+    quickAnswer: "To learn how to see the whole board in chess, sweep it from the edges inward before you look at your own move. Name every piece on the a-file, h-file, first rank and eighth rank. Then trace each enemy bishop, rook and queen to the last square it reaches, check the knights, and only then choose your move.",
     takeaways: [
-      "It is easy to watch only the piece that moved, and a long-range piece does its damage by standing still while a blocker moves.",
+      "A long-range piece wins material without moving. A blocker steps off its line while you watch the piece that moved.",
       "Trace every line to the last square it reaches, because the first piece on the line may be yours and pinned.",
-      "A Memory Chess position is generated with no plan behind it, so its pieces are not gathered near the kings or the centre the way a game's are.",
+      "Start the sweep at the edges, because a look that works outward from your own move reaches them last.",
     ],
     audience: [
       "Players who lose material to a bishop or rook that had not moved for many moves.",
       "Anyone whose blunders happen on the side of the board away from the fight.",
-      "Beginners who look at their own move first and at the far corners never.",
     ],
   },
   sections: [
     {
       id: "bishop-on-a2",
-      heading: "The bishop on a2 that nobody was watching",
+      heading: "Why you miss long-range bishops and rooks",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "Set this up with Black to move. White has Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 and pawns on a3, b2, c2, f2, g2 and h2.",
-            "Black has Kg8, Ra8, Rd8, Bc8, Nf6 and pawns on a7, b7, c7, e6, f7, g7 and h7.",
-            "The pawn on e6 is the only piece between the bishop on a2 and f7. The diagonal runs a2, b3, c4, d5, e6 and f7.",
-            "Push ...e5 for space in the centre, and Bxf7+ follows. The king cannot take back, because the knight on g5 also covers f7, so White wins a pawn with check. Nxf7 is stronger still. The king cannot take the knight either, because the bishop on a2 now covers f7, and the knight attacks the rook on d8.",
-            "Nothing about the bishop changed. Only a Black pawn moved. Long-range pieces win material by standing still while a blocker walks away.",
+            "Set this up with Black to move. White has Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 and pawns on a3, b2, c2, f2, g2 and h2. Black has Kg8, Ra8, Rd8, Bc8, Nf6 and pawns on a7, b7, c7, e6, f7, g7 and h7.",
+            "The bishop on a2 looks at b3, c4, d5, e6 and f7. Only Black's own pawn on e6 stands in its way.",
+            "Push ...e5 for space in the centre, and Bxf7+ follows. The king cannot take back, because the knight on g5 also covers f7, so White wins a pawn with check.",
+          ],
+        },
+        {
+          kind: "board",
+          position: {
+            id: "bishop-a2-after-e5",
+            white: ["Kg1", "Ra1", "Rf1", "Ba2", "Nc3", "Ng5", "a3", "b2", "c2", "f2", "g2", "h2"],
+            black: ["Kg8", "Ra8", "Rd8", "Bc8", "Nf6", "a7", "b7", "c7", "e6", "f7", "g7", "h7"],
+            toMove: "b",
+            line: ["e5"],
+            claims: [
+              { kind: "attacks", from: "a2", squares: ["f7"] },
+              { kind: "attacks", from: "g5", squares: ["f7"] },
+            ],
+          },
+          arrows: [{ from: "a2", to: "f7", kind: "attack" }, { from: "g5", to: "f7", kind: "attack" }],
+          marks: [{ square: "f7", kind: "ring" }],
+          caption: "After ...e5 the bishop on a2 and the knight on g5 both hit f7, though the bishop did not move.",
+        },
+        {
+          kind: "prose",
+          paragraphs: [
+            "Nxf7 is stronger still. The king cannot take the knight either, because the bishop now covers f7, and the knight attacks the rook on d8.",
+            "Nothing about the bishop changed. Only a Black pawn moved. Your eyes go to the piece that just moved, so a piece that stood still for ten moves drops out of the picture.",
             "Rooks do the same more quietly. A rook can sit on h1 all game until the h-pawns are traded, and then it owns an open file without having moved.",
           ],
         },
@@ -71,14 +92,6 @@ const guide: LearnDocument = {
             { kind: "occupant", square: "e6", piece: "bp" },
             { kind: "legal", move: "e5" },
           ],
-        },
-        {
-          id: "bishop-a2-after-e5",
-          white: ["Kg1", "Ra1", "Rf1", "Ba2", "Nc3", "Ng5", "a3", "b2", "c2", "f2", "g2", "h2"],
-          black: ["Kg8", "Ra8", "Rd8", "Bc8", "Nf6", "a7", "b7", "c7", "e6", "f7", "g7", "h7"],
-          toMove: "b",
-          line: ["e5"],
-          claims: [{ kind: "attacks", from: "a2", squares: ["f7"] }],
         },
         {
           id: "bishop-a2-after-bxf7",
@@ -111,29 +124,29 @@ const guide: LearnDocument = {
     },
     {
       id: "edge-sweep",
-      heading: "The four-corner sweep, in a fixed order",
+      heading: "How to sweep the board from the edges inward",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "The order matters more than the speed. The sweep starts at the edges because a look that works outward from your own move reaches them last.",
+            "The order matters more than the speed. Run these five steps before you choose a move.",
           ],
         },
         {
           kind: "list",
           ordered: true,
           items: [
-            "The two long diagonals, a1 to h8 and h1 to a8. Find any bishop or queen on them and name what blocks each one.",
-            "The a-file, the h-file, the first rank and the eighth rank. Find any rook or queen on them and trace it to the far end.",
-            "Every enemy bishop, rook and queen, followed to the edge of the board. Say whose piece each blocker is.",
+            "The edges. Name every piece on the a-file, the h-file, the first rank and the eighth rank, for both sides. Rooks still on their first squares and bishops pulled back to the rim stand here.",
+            "Every enemy bishop, rook and queen. Follow each line to the last square it reaches, and say whose piece each blocker is.",
             "Every enemy knight. Name the squares it reaches, because a sweep along lines never touches them.",
-            "Last, your own move, the square it lands on and the square it leaves behind.",
+            "Your own bishops, rooks and queen, traced the same way.",
+            "Last, your own move. Check the square it lands on and any line it opens by leaving its old square.",
           ],
         },
         {
           kind: "prose",
           paragraphs: [
-            "Starting at the edges feels backwards. Start from your own move instead, and the far corner becomes the last place you look and the first you skip on a low clock.",
+            "Run it on the bishop position as Black. Step one finds the bishop on a2. Step two follows it to f7 and names the blocker, your own pawn on e6. Now ...e5 reads as a move that opens a White line before you play it.",
           ],
         },
       ],
@@ -147,7 +160,7 @@ const guide: LearnDocument = {
           paragraphs: [
             "One slip is to stop a trace at the first piece on the line. If that piece is yours, you have not found a blocker. You may have found a pin.",
             "Put a White rook on e1, a Black knight on e5 and the Black king on e8, with the squares between them empty. The knight cannot move at all.",
-            "So say “that rook sees e8” rather than “that rook is blocked by my knight”. The first version announces the pin, and the second one hides it.",
+            "So as Black, say that the rook sees e8, never that the rook is blocked by your knight. The first version announces the pin, and the second one hides it.",
           ],
         },
       ],
@@ -169,12 +182,9 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "A game position clusters. Pawns lock in the centre, pieces gather near the kings, and a corner can stay empty for twenty moves.",
-            "That clustering is why the sweep is needed. It is also why your own games are a poor place to practise the sweep.",
-            "Memory Chess builds a fresh position for every round, with no plan behind it. The two kings go on random squares that are never adjacent.",
-            "Every other piece goes on a random empty square, limited by the rules of a legal position. No pawn stands on the first or eighth rank, and a side's two bishops stand on opposite colours.",
-            "Nothing in the generator pulls pieces toward the centre or toward the kings, so a 12-piece board can have pieces in every corner.",
-            "So you read the board in zones and carry every zone to the empty board. That is the sweep, done from memory.",
+            "A game position clusters. Pawns lock in the centre, pieces gather near the kings, and a corner can stay empty for twenty moves. That clustering is why you need the sweep.",
+            "Memory Chess builds a fresh position for every round, with no plan behind it. The two kings go on random squares that are never adjacent. Every other piece goes on a random empty square, within the rules of a legal position.",
+            "Nothing pulls the pieces toward the centre or the kings, so a 12-piece board can have a piece in every corner. Reading it zone by zone and rebuilding every zone is the sweep, done from memory.",
           ],
         },
         {
@@ -182,14 +192,14 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Zone recall round",
-              description: "Play 3 rounds of 12 pieces with 8 seconds to look. Read the board in three zones, files a to c, d and e, then f to h. Place the pieces zone by zone.",
+              description: "Play 3 rounds of 12 pieces with 8 seconds to look. Read the board in three zones, files a to c, then d and e, then f to h, and place the pieces zone by zone. The result board rings each square you missed. You pass when the rings stop bunching on one wing.",
               duration: "3 rounds, about 5 minutes",
               goal: "Hold both wings at once instead of one cluster.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
             {
               title: "Edge inventory",
-              description: "Open an annotated game at any middlegame diagram. List every piece on the a-file, the h-file, the first rank and the eighth rank, and write the last square each one reaches.",
+              description: "Open an annotated game at any middlegame diagram. List every piece on the a-file, the h-file, the first rank and the eighth rank, and write the last square each one reaches. Check each trace against the diagram. You pass when no piece is missing and no trace stops at the first piece in its way.",
               duration: "4 minutes",
               goal: "Make the pieces you usually skip the first ones you list.",
             },
@@ -204,7 +214,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The sweep opens your think. This table covers its close, the last look before you release the piece.",
+            "The sweep opens your think. The table covers the moments around it.",
           ],
         },
         {
@@ -219,17 +229,17 @@ const guide: LearnDocument = {
               ],
             },
             {
-              label: "Before you release a piece",
-              cells: [
-                "You check the squares next to your move.",
-                "You check the corner farthest from your move.",
-              ],
-            },
-            {
               label: "After a trade",
               cells: [
                 "You count the material.",
                 "You re-trace every line the trade opened, for both sides.",
+              ],
+            },
+            {
+              label: "Before you release a piece",
+              cells: [
+                "You check the squares next to your move.",
+                "You check the corner farthest from your move.",
               ],
             },
           ],
@@ -258,12 +268,12 @@ const guide: LearnDocument = {
       kind: "faq",
       items: [
         {
-          question: "Do I have to sweep on every move?",
-          answer: "Run the full sweep whenever a pawn moves or a piece is traded, because those moves open lines. On other moves, check the edges and the last move.",
+          question: "When should I run the full sweep?",
+          answer: "Run it in full after any pawn move, capture or trade, because those are the moves that open lines. On a quiet move where no blocker moved, check the four edges and the line behind the piece that just moved, then play.",
         },
         {
           question: "What if the sweep makes me too slow?",
-          answer: "Keep the order and shorten each step. When nothing on an edge has changed since your last move, a glance confirms it and you move on.",
+          answer: "Keep the order and shorten each step. When nothing on an edge has changed since your last move, a glance confirms it and you move on. Practise the order in slow games and Memory Chess rounds first, so it runs on its own before blitz.",
         },
       ],
     },

@@ -34,6 +34,9 @@ type GameStateWithRating = GameState & {
 /** The suffix chess.js gave the solution board's FEN, kept so the lab record's placed FEN reads as it always has. */
 const SOLUTION_FEN_SUFFIX = ' w - - 0 1';
 
+/** The newest rounds kept in the persisted history. A review round is left out, as it is from the rating and the streak. */
+const HISTORY_LIMIT = 20;
+
 interface GameStore {
   gameState: GameState;
   lastSettings: GameSettings | null;
@@ -45,9 +48,7 @@ interface GameStore {
   /** Done, the study deadline, the palette, the board and the eraser. Submit goes through submitSolution. */
   dispatch: (action: Exclude<RoundAction, { type: 'start' } | { type: 'submit' }>) => void;
   submitSolution: (now?: number) => void;
-  stopGame: () => void;
   resetGame: () => void;
-  addToHistory: (game: Omit<GameHistory, 'id'>) => void;
 
   // Stats and progression (kept because they're used in game components)
   getTotalGames: () => number;
@@ -170,33 +171,6 @@ export const useGameStore = create<GameStore>()(
 
       dispatch: (action) => set({ round: roundReducer(get().round, action) }),
 
-      stopGame: () => {
-        const currentState = get().gameState;
-        set({ round: IDLE_ROUND });
-
-        // Only add to history if the game was completed
-        if (currentState.completionTime && currentState.accuracy !== undefined) {
-          // Use the extended type to access skillRatingChange
-          const gameStateWithRating = currentState as GameStateWithRating;
-
-          get().addToHistory({
-            timestamp: new Date().getTime(),
-            completionTime: currentState.completionTime,
-            accuracy: currentState.accuracy,
-            pieceCount: currentState.pieceCount,
-            memorizeTime: currentState.memorizeTime,
-            actualMemorizeTime: currentState.actualMemorizeTime,
-            level: currentState.level || currentState.currentLevel || 1,
-            skillRatingChange: gameStateWithRating.skillRatingChange,
-            streak: currentState.streak,
-            perfectScore: currentState.perfectScore,
-            correctPlacements: Math.round((currentState.accuracy || 0) * currentState.pieceCount / 100),
-            totalPlacements: currentState.pieceCount,
-            duration: currentState.completionTime || 0,
-          });
-        }
-      },
-
       resetGame: () => {
         // Preserve skill rating and streak when resetting
         const currentSkillRating = get().gameState.skillRating || 1000;
@@ -210,18 +184,6 @@ export const useGameStore = create<GameStore>()(
             streak: currentStreak,
           },
         });
-      },
-
-      addToHistory: (game) => {
-        set((state) => ({
-          history: [
-            {
-              ...game,
-              id: uuidv4(),
-            },
-            ...state.history,
-          ].slice(0, 20), // Keep only the last 20 games (reduced from 100)
-        }));
       },
 
       submitSolution: (now = monotonicNow()) => {
@@ -290,7 +252,27 @@ export const useGameStore = create<GameStore>()(
           correctPlacements: score.correct
         };
 
-        set({ round, gameState: updatedGameState as GameState });
+        const played: GameHistory = {
+          id: labRoundId,
+          timestamp: Date.now(),
+          pieceCount: gameState.pieceCount,
+          memorizeTime: gameState.memorizeTime,
+          actualMemorizeTime,
+          completionTime,
+          duration: completionTime,
+          accuracy: score.accuracy,
+          correctPlacements: score.correct,
+          totalPlacements: gameState.pieceCount,
+          perfectScore,
+          level: gameState.level || gameState.currentLevel || 1,
+          skillRatingChange,
+          streak,
+        };
+        set(({ history }) => ({
+          round,
+          gameState: updatedGameState as GameState,
+          history: rated ? [played, ...history].slice(0, HISTORY_LIMIT) : history,
+        }));
 
         const soundEnabled = isSoundEnabled();
         window.gtag?.('event', 'sound_settings', {

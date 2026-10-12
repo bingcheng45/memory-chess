@@ -28,6 +28,7 @@ Preconditions:
 
 ## Gotchas
 
-- The inquiry type is a Radix Select; it opens on pointer events, so a plain `el.click()` from `eval` may not open it. Validate around it (it has a default error state when unselected) or drive it with keyboard events on the trigger.
+- The inquiry type is a native `<select name="type">`. Choose an option the way a keyboard user does: focus it and send a `keyDown` with `text: "f"` through `Input.dispatchKeyEvent`, which picks Feedback. An empty type passes the schema and is caught in the submit handler, so an empty submit flags only name, email and message.
+- To see the success state without writing to the sheet, intercept the POST with `Fetch.enable` (pattern `*/api/contact*`) and answer it with `Fetch.fulfillRequest` (200, `{"success":true}`). Delay the answer to capture the sending state.
 - "Message Sent!" auto-redirects to the home page after a short delay; capture the success screenshot immediately after it appears.
 - A 500 from `/api/contact` in an uncredentialed run is the expected passing result for the boundary check, not a defect.

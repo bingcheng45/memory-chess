@@ -237,7 +237,7 @@ const guide: LearnDocument = {
             {
               label: "Weeks 5 and 6",
               duration: "12 minutes a day",
-              detail: "Three perfect rounds out of four means the picture holds at six pieces. Move the check to 8 pieces with 10 seconds and start cover-and-move again from one capture. With fewer than three, repeat weeks 3 and 4.",
+              detail: "If three of your last five checks in week 4 had three perfect rounds out of four, the picture holds at six pieces. Move the check to 8 pieces with 10 seconds and restart cover-and-move from one capture. Otherwise, repeat weeks 3 and 4.",
             },
           ],
         },
@@ -259,7 +259,7 @@ const guide: LearnDocument = {
         },
         {
           question: "Should I test visualization with more pieces?",
-          answer: "Not until six pieces are easy. On a board with many misses, rings and red squares crowd together and you cannot tell which failure caused which. Three perfect rounds out of four at six pieces is the signal to move to eight. The 12-piece, 8-second Hard preset comes after that.",
+          answer: "Not until six pieces are easy. On a board with many misses, rings and red squares crowd together and you cannot tell which failure caused which. Move to eight once three of your last five checks have three perfect rounds out of four. The 12-piece, 8-second Hard preset comes after that.",
         },
         {
           question: "Can I do visualization exercises without a chess board?",

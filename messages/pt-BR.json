@@ -10,7 +10,7 @@
       "terms": "Termos",
       "play": "Jogar",
       "leaderboard": "Ranking",
-      "progress": "Progresso",
+      "dashboard": "Painel",
       "menu": "Menu",
       "site": "Site"
     },
@@ -491,17 +491,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Seu progresso",
-      "description": "Todos os números que o Memory Chess acompanha das suas rodadas neste dispositivo, em uma página, com um cartão para compartilhar."
+      "title": "Painel",
+      "description": "Seu painel do Memory Chess: rating de habilidade, amplitude de memória, todas as rodadas que você jogou neste dispositivo, precisão e velocidade ao longo do tempo, recordes pessoais e um cartão para compartilhar."
     },
-    "kicker": "Registro do laboratório",
-    "title": "Seu progresso",
-    "lede": "Todos os números que suas rodadas conquistaram neste dispositivo, em um só lugar. Nada sai do seu navegador, a não ser que você compartilhe.",
+    "title": "Painel",
+    "lede": "Todas as rodadas que você jogou neste dispositivo, o que elas dizem sobre sua memória e um cartão para compartilhar. Nada daqui sai do seu navegador, a não ser que você compartilhe.",
     "loading": "Lendo seu registro neste dispositivo.",
     "unavailable": "Este navegador não guarda um registro, então não há progresso para mostrar. Janelas anônimas não guardam nada.",
     "fullRecord": "Ver o registro completo",
-    "headline": "Números principais",
-    "more": "Todo o resto",
+    "sections": {
+      "summary": "Resumo",
+      "history": "Histórico de jogos",
+      "analysis": "Análise",
+      "more": "Mais números"
+    },
+    "historyLede": "Mais recentes primeiro. Abra uma rodada para ver o tabuleiro corrigido.",
+    "analysisLede": "Como sua precisão e velocidade mudam ao longo do tempo, e onde as peças escapam.",
     "stale": "Da sua última rodada",
     "staleNote": "Última partida há {count, plural, one {# dia} many {# dias} other {# dias}}. Os números marcados assim são daquela época.",
     "play": "Jogar uma rodada",
@@ -522,23 +527,22 @@
       "reviews": "{count, plural, one {mais # revisão} many {mais # revisões} other {mais # revisões}} após o mesmo intervalo"
     },
     "label": {
+      "rating": "Rating de habilidade",
+      "winStreak": "Sequência de vitórias",
+      "bestAccuracy": "Melhor precisão",
+      "recentAccuracy": "Precisão recente",
       "span": "Amplitude de memória",
       "piecesHeld": "Peças retidas",
       "speed": "Velocidade",
-      "streak": "Sequência",
+      "streak": "Sequência de dias",
       "rounds": "Rodadas jogadas",
       "days": "Dias jogados",
-      "trend": "Precisão",
       "daily": "Tabuleiro do dia",
       "week": "Esta semana",
       "curve": "Lembrança após revisão",
-      "missMap": "Linha mais errada",
-      "typeRecall": "Peça mais fraca",
-      "insights": "Descobertas",
       "notebook": "Caderno",
       "plans": "Plano",
       "goal": "Meta",
-      "bests": "Recordes pessoais",
       "board": "Classificação"
     },
     "unit": {
@@ -548,8 +552,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> rodada} many {<n>{value}</n> rodadas} other {<n>{value}</n> rodadas}}",
       "entries": "{count, plural, one {<n>{value}</n> registro} many {<n>{value}</n> registros} other {<n>{value}</n> registros}}",
-      "findings": "{count, plural, one {<n>{value}</n> descoberta} many {<n>{value}</n> descobertas} other {<n>{value}</n> descobertas}}",
-      "settings": "{count, plural, one {<n>{value}</n> configuração} many {<n>{value}</n> configurações} other {<n>{value}</n> configurações}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy}% ou mais em {rounds, plural, one {# rodada} many {# rodadas} other {# rodadas}}, memorizou {memorizeSeconds} s",
@@ -559,15 +562,124 @@
       "daily": "{status, select, played {Jogado hoje} unfinished {Aberto hoje} other {Disponível hoje}}, maior sequência {longest, plural, one {# dia} many {# dias} other {# dias}}",
       "curve": "Lembrado após {day, plural, one {# dia} many {# dias} other {# dias}}, de {reviews, plural, one {# revisão} many {# revisões} other {# revisões}}",
       "rounds": "De {rounds, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
-      "missLine": "Erradas na {line, select, file {coluna {name}} other {fileira {name}}}, de {shown} peças vistas",
-      "pieceType": "{type, select, p {Peões lembrados} n {Cavalos lembrados} b {Bispos lembrados} r {Torres lembradas} q {Damas lembradas} other {Reis lembrados}}, de {shown} vistos",
       "plan": "{planId, select, baseline {Plano Referência} edge {Plano Bordas} other {Plano Escada}}, {status, select, active {em andamento} done {já concluído} other {já interrompido}}",
       "goal": "Rumo a {pieceCount} peças com {accuracy}%",
       "week": "Meta semanal de {goal} dias",
-      "best": "Melhor leitura {accuracy}% com {pieceCount} peças, {memorizeSeconds} s",
       "entry": "Peças certas no seu melhor registro, {difficulty, select, easy {nível Fácil} medium {nível Médio} hard {nível Difícil} other {nível Grande mestre}}",
       "overDays": "Em {days, plural, one {# dia} many {# dias} other {# dias}}",
-      "firstDay": "Desde {date}"
+      "firstDay": "Desde {date}",
+      "rating": "{sign, select, up {Subiu {change}} down {Caiu {change}} other {Sem mudança}} nas suas {rounds, plural, one {# última rodada com rating} many {# últimas rodadas com rating} other {# últimas rodadas com rating}}",
+      "ratingSince": "Das suas rodadas de partida com rating",
+      "winStreak": "Rodadas de partida seguidas com {accuracy}% ou mais",
+      "bestAt": "{source, select, calibration {Treino} other {Partida}} com {pieceCount} peças, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "Mostrando {shown} de {total, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
+      "filterSource": "Origem",
+      "filterSetting": "Configuração",
+      "allSources": "Todas as origens",
+      "allSettings": "Todas as configurações",
+      "sources": {
+        "game": "Partida",
+        "daily": "Tabuleiro do dia",
+        "plan": "Plano",
+        "review": "Revisão",
+        "practice": "Treino"
+      },
+      "settingValue": "{pieceCount} peças, {memorizeSeconds} s",
+      "col": {
+        "date": "Jogada em",
+        "source": "Origem",
+        "setting": "Configuração",
+        "accuracy": "Precisão",
+        "correct": "Certas",
+        "time": "Tempo de montagem",
+        "rating": "Rating",
+        "board": "Tabuleiro"
+      },
+      "correctValue": "{correct} de {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Rating subiu {change}",
+      "ratingDown": "Rating caiu {change}",
+      "ratingLevel": "Rating inalterado",
+      "unrated": "Sem rating",
+      "show": "Mostrar tabuleiro",
+      "hide": "Ocultar tabuleiro",
+      "boardLabel": "Tabuleiro corrigido: {correct} de {total} peças certas.",
+      "detail": "Estudou {studied} s de {memorizeSeconds} s. {wrong, plural, =0 {Nenhuma peça errada} one {# peça errada} many {# peças erradas} other {# peças erradas}}, {extra, plural, =0 {nenhuma peça a mais} one {# peça a mais} many {# peças a mais} other {# peças a mais}}.",
+      "more": "Mostrar mais {count}",
+      "ratingNote": "As mudanças de rating são guardadas para as suas 20 rodadas de partida com rating mais recentes. Rodadas de treino e de revisão não valem rating.",
+      "kept": "Seu registro guarda rodada a rodada as {kept} mais recentes das suas {total} rodadas. As mais antigas continuam contando nos totais e recordes.",
+      "emptyTitle": "Nenhuma rodada ainda.",
+      "empty": "Todas as rodadas que você jogar neste dispositivo aparecem aqui, das mais recentes para as mais antigas, com configuração, precisão e tempo de montagem. Abra uma para ver o tabuleiro corrigido.",
+      "noMatch": "Nenhuma rodada corresponde a estes filtros.",
+      "clear": "Limpar filtros"
+    },
+    "analysis": {
+      "fromRounds": "De {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
+      "oldest": "Mais antiga",
+      "latest": "Mais recente",
+      "accuracy": {
+        "title": "Precisão ao longo do tempo",
+        "desc": "Sua precisão rodada a rodada na sua configuração mais jogada, numa escala de 0 a 100%.",
+        "note": "{source, select, calibration {Rodadas de treino} other {Rodadas de partida}} com {pieceCount} peças, {memorizeSeconds} s, sua configuração mais jogada. {count, plural, one {Última # rodada} many {Últimas # rodadas} other {Últimas # rodadas}}.",
+        "aria": "Precisão nas suas últimas {count} rodadas com {pieceCount} peças, {memorizeSeconds} s, numa escala de 0 a 100 por cento, a mais recente {latest} por cento."
+      },
+      "speed": {
+        "title": "Velocidade ao longo do tempo",
+        "unit": "Segundos por peça certa. Menor é mais rápido.",
+        "note": "{source, select, calibration {Rodadas de treino} other {Rodadas de partida}} com {pieceCount} peças, {memorizeSeconds} s. {count, plural, one {Última # rodada} many {Últimas # rodadas} other {Últimas # rodadas}}.",
+        "aria": "Segundos por peça certa nas suas últimas {count} rodadas com {pieceCount} peças, {memorizeSeconds} s, a mais recente {latest}."
+      },
+      "bests": {
+        "title": "Recordes pessoais por configuração",
+        "desc": "Os recordes são guardados por configuração, porque 6 peças e 20 peças são testes diferentes.",
+        "setting": "{source, select, calibration {Treino} other {Partida}} · {pieceCount} peças, {memorizeSeconds} s",
+        "col": {
+          "setting": "Configuração",
+          "accuracy": "Melhor precisão",
+          "correct": "Certas",
+          "time": "Tempo de montagem",
+          "rounds": "Rodadas",
+          "date": "Obtido em"
+        }
+      },
+      "types": {
+        "title": "Lembrança por tipo de peça",
+        "desc": "Com que frequência você devolve cada tipo de peça à casa onde estava.",
+        "value": "{recalled} de {shown}",
+        "thin": "{shown} de {minimum} vistas",
+        "baseline": "Os reis estão em todas as rodadas, então servem de referência: lembrou {recalled} de {shown}.",
+        "onlyKings": "Até agora suas rodadas tiveram só os dois reis. A lembrança por tipo de peça precisa de mais peças."
+      },
+      "miss": {
+        "title": "Mapa de erros",
+        "desc": "Quais casas e linhas você mais erra, somando todas as rodadas.",
+        "aria": "Sua taxa de erro em cada casa. Mais escuro é errado com mais frequência. Casas cinza têm menos de {minimum} peças vistas.",
+        "note": "Casas mais escuras são erradas com mais frequência. Casas cinza têm menos de {minimum} peças vistas.",
+        "lines": "Até cada casa ter {minimum} peças vistas, o mapa lê colunas e fileiras inteiras.",
+        "files": "Colunas",
+        "ranks": "Fileiras",
+        "line": "{line}: {missed} de {shown} erradas",
+        "lineThin": "{line}: {shown} vistas, poucas para ler"
+      },
+      "insights": {
+        "title": "Descobertas",
+        "desc": "Padrões no seu histórico que valem atenção, cada um com os números por trás.",
+        "none": "Nada se destaca ainda. Continue jogando.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Você erra {edge, select, 0 {menos de 1%} other {{edge}%}} de {edgeShown} peças nas colunas a e h e nenhuma de {centreShown} nas colunas centrais, d e e.} 2 {Você erra nas colunas a e h cerca do dobro das vezes que nas colunas centrais, d e e: {edge, select, 0 {menos de 1%} other {{edge}%}} de {edgeShown} peças contra {centre, select, 0 {menos de 1%} other {{centre}%}} de {centreShown}.} other {Você erra nas colunas a e h cerca de {times} vezes mais que nas colunas centrais, d e e: {edge, select, 0 {menos de 1%} other {{edge}%}} de {edgeShown} peças contra {centre, select, 0 {menos de 1%} other {{centre}%}} de {centreShown}.}}",
+          "weakType": "Das peças, sem contar os reis, vistas {minimum} vezes ou mais, {type, select, q {as damas} r {as torres} b {os bispos} n {os cavalos} other {os peões}} são as que mais escapam: você lembrou {recalled} de {shown}, {percent}%.",
+          "fasterLessAccurate": "Com {pieceCount} peças, {studyTime}, suas últimas {window} rodadas levaram {fasterTime} a menos por peça certa que as {window} anteriores, e a precisão caiu {fell} pontos.",
+          "colourGap": "Você lembra das peças {weaker, select, w {brancas} other {pretas}} com menos frequência que das {weaker, select, w {pretas} other {brancas}}: {weakerPercent}% de {weakerShown} contra {strongerPercent}% de {strongerShown}, sem contar os reis.",
+          "plateau": "Com {pieceCount} peças, {studyTime}, suas últimas {window} rodadas tiveram média de {last}% e as {window} anteriores {before}%, e sua amplitude ficou em {span} peças na sua última semana de jogo. Uma peça a mais pode movê-la."
+        },
+        "actions": {
+          "rig": "Jogar {pieceCount} peças, {studyTime}",
+          "patterns": "Leia os exercícios de reconhecimento de padrões",
+          "vision": "Leia como ver o tabuleiro inteiro"
+        }
+      }
     },
     "share": {
       "button": "Compartilhar meu progresso",
@@ -580,10 +692,11 @@
       "copy": "Copiar legenda",
       "copied": "Legenda copiada.",
       "copyFailed": "Copiar não funcionou aqui. A legenda está selecionada, copie você mesmo.",
-      "locked": "Seu cartão para compartilhar é liberado quando sua amplitude de memória, peças retidas, velocidade ou sequência estiver pronta.",
+      "locked": "Seu cartão para compartilhar é liberado quando sua amplitude de memória, rating de habilidade, peças retidas, velocidade ou sequência de dias estiver pronta.",
       "text": "Meu progresso no Memory Chess: {figures}. Consegue superar?",
       "figure": {
         "span": "amplitude de memória de {value, plural, one {# peça} many {# peças} other {# peças}}",
+        "rating": "rating de habilidade {value, number}",
         "piecesHeld": "{value, number} peças retidas",
         "speed": "{value, number} s por peça",
         "streak": "{value, plural, one {# dia} many {# dias} other {# dias}} seguidos"

@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { href: "/learn", labelKey: "nav.learn" },
   { href: "/articles", labelKey: "nav.articles" },
   { href: "/leaderboard", labelKey: "nav.leaderboard" },
-  { href: "/dashboard", labelKey: "nav.progress" },
+  { href: "/dashboard", labelKey: "nav.dashboard" },
   // The footer links About, so phones drop it to keep the row on one line.
   { href: "/about", labelKey: "nav.about", itemClass: "hidden sm:list-item" },
 ] as const;

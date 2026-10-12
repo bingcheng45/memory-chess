@@ -10,7 +10,7 @@
       "terms": "服务条款",
       "play": "开始游戏",
       "leaderboard": "排行榜",
-      "progress": "进度",
+      "dashboard": "数据面板",
       "menu": "菜单",
       "site": "网站"
     },
@@ -491,17 +491,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "你的进度",
-      "description": "Memory Chess 根据你在本设备上的回合记录的每项数据，集中在一页，并附可分享的卡片。"
+      "title": "数据面板",
+      "description": "你的 Memory Chess 数据面板：技能评分、记忆广度、你在本设备上玩过的每一回合、准确率与速度随时间的变化、个人最佳，以及一张可分享的卡片。"
     },
-    "kicker": "实验室记录",
-    "title": "你的进度",
-    "lede": "你在本设备上的回合所取得的每项数据，都在这里。除非你分享，否则不会离开你的浏览器。",
+    "title": "数据面板",
+    "lede": "你在本设备上玩过的每一回合、它们反映出的记忆情况，以及一张可分享的卡片。除非你分享，这里的内容不会离开你的浏览器。",
     "loading": "正在读取本设备上的记录。",
     "unavailable": "此浏览器不保存记录，因此没有可显示的进度。隐私窗口不会保存任何内容。",
     "fullRecord": "查看完整记录",
-    "headline": "主要数据",
-    "more": "其他数据",
+    "sections": {
+      "summary": "概览",
+      "history": "游戏记录",
+      "analysis": "分析",
+      "more": "更多数据"
+    },
+    "historyLede": "最新的在前。打开一个回合即可查看评分后的棋盘。",
+    "analysisLede": "你的准确率和速度如何随时间变化，以及哪些棋子容易漏记。",
     "stale": "截至你上一回合",
     "staleNote": "上次游戏是 {count, plural, other {# 天}}前。带此标记的数据来自那时。",
     "play": "玩一回合",
@@ -522,23 +527,22 @@
       "reviews": "{count, plural, other {# 次}}相同间隔后的复习"
     },
     "label": {
+      "rating": "技能评分",
+      "winStreak": "连胜",
+      "bestAccuracy": "最佳准确率",
+      "recentAccuracy": "近期准确率",
       "span": "记忆广度",
       "piecesHeld": "记住的棋子",
       "speed": "速度",
       "streak": "连续天数",
       "rounds": "已玩回合",
       "days": "游戏天数",
-      "trend": "准确率",
       "daily": "每日棋盘",
       "week": "本周",
       "curve": "复习后的记忆",
-      "missMap": "最常出错的线",
-      "typeRecall": "最弱的棋子",
-      "insights": "发现",
       "notebook": "笔记本",
       "plans": "计划",
       "goal": "目标",
-      "bests": "个人最佳",
       "board": "排行榜"
     },
     "unit": {
@@ -548,8 +552,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, other {<n>{value}</n> 回合}}",
       "entries": "{count, plural, other {<n>{value}</n> 条}}",
-      "findings": "{count, plural, other {<n>{value}</n> 条}}",
-      "settings": "{count, plural, other {<n>{value}</n> 种设置}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{rounds, plural, other {# 回合}}达到 {accuracy}% 以上，记忆 {memorizeSeconds} 秒",
@@ -559,15 +562,124 @@
       "daily": "{status, select, played {今天已玩} unfinished {今天已打开} other {今天可玩}}，最长连续 {longest, plural, other {# 天}}",
       "curve": "{day, plural, other {# 天}}后的记忆，基于 {reviews, plural, other {# 次复习}}",
       "rounds": "基于 {rounds, plural, other {# 回合}}",
-      "missLine": "{line, select, file {{name} 列} other {第 {name} 行}}出错，共看到 {shown} 子",
-      "pieceType": "{type, select, p {兵} n {马} b {象} r {车} q {后} other {王}}的记忆率，共看到 {shown} 次",
       "plan": "{planId, select, baseline {基线} edge {边缘} other {阶梯}}计划，{status, select, active {进行中} done {已完成} other {已停止}}",
       "goal": "迈向 {pieceCount} 子、{accuracy}%",
       "week": "每周目标 {goal} 天",
-      "best": "最佳成绩 {pieceCount} 子、{memorizeSeconds} 秒时 {accuracy}%",
       "entry": "最佳提交中放对的棋子，{difficulty, select, easy {简单} medium {中等} hard {困难} other {特级大师}}",
       "overDays": "共 {days, plural, other {# 天}}",
-      "firstDay": "自 {date} 起"
+      "firstDay": "自 {date} 起",
+      "rating": "最近 {rounds, plural, other {# 个计分回合}}{sign, select, up {上升 {change}} down {下降 {change}} other {没有变化}}",
+      "ratingSince": "基于你的计分对局回合",
+      "winStreak": "连续达到 {accuracy}% 以上的对局回合",
+      "bestAt": "{source, select, calibration {练习} other {对局}}，{pieceCount} 子、{memorizeSeconds} 秒"
+    },
+    "history": {
+      "count": "显示 {shown} 个，共 {total, plural, other {# 回合}}",
+      "filterSource": "来源",
+      "filterSetting": "设置",
+      "allSources": "全部来源",
+      "allSettings": "全部设置",
+      "sources": {
+        "game": "对局",
+        "daily": "每日棋盘",
+        "plan": "计划",
+        "review": "复习",
+        "practice": "练习"
+      },
+      "settingValue": "{pieceCount} 子、{memorizeSeconds} 秒",
+      "col": {
+        "date": "日期",
+        "source": "来源",
+        "setting": "设置",
+        "accuracy": "准确率",
+        "correct": "正确",
+        "time": "摆放用时",
+        "rating": "评分",
+        "board": "棋盘"
+      },
+      "correctValue": "{correct} / {total}",
+      "seconds": "{value} 秒",
+      "ratingUp": "评分上升 {change}",
+      "ratingDown": "评分下降 {change}",
+      "ratingLevel": "评分不变",
+      "unrated": "不计分",
+      "show": "显示棋盘",
+      "hide": "隐藏棋盘",
+      "boardLabel": "评分后的棋盘：{total} 子中放对 {correct} 子。",
+      "detail": "记忆了 {studied} 秒，共 {memorizeSeconds} 秒。{wrong, plural, =0 {没有放错的棋子} other {放错 # 子}}，{extra, plural, =0 {没有多放的棋子} other {多放 # 子}}。",
+      "more": "再显示 {count} 个",
+      "ratingNote": "评分变化只保留最近 20 个计分对局回合。练习和复习回合不计分。",
+      "kept": "你的记录逐回合保留了 {total} 回合中最新的 {kept} 回合。更早的回合仍计入你的总计和个人最佳。",
+      "emptyTitle": "还没有回合。",
+      "empty": "你在本设备上玩的每一回合都会显示在这里，最新的在前，并附上设置、准确率和摆放用时。打开任意一个即可查看评分后的棋盘。",
+      "noMatch": "没有符合这些筛选条件的回合。",
+      "clear": "清除筛选"
+    },
+    "analysis": {
+      "fromRounds": "基于 {count, plural, other {# 回合}}",
+      "oldest": "最早",
+      "latest": "最新",
+      "accuracy": {
+        "title": "准确率变化",
+        "desc": "你在最常玩的设置下每个回合的准确率，范围为 0 到 100%。",
+        "note": "{source, select, calibration {练习} other {对局}}回合，{pieceCount} 子、{memorizeSeconds} 秒，你最常玩的设置。最近 {count, plural, other {# 回合}}。",
+        "aria": "你最近 {count} 回合在 {pieceCount} 子、{memorizeSeconds} 秒下的准确率，刻度从 0 到 100%，最新为 {latest}%。"
+      },
+      "speed": {
+        "title": "速度变化",
+        "unit": "每个正确棋子所用秒数。越低越快。",
+        "note": "{source, select, calibration {练习} other {对局}}回合，{pieceCount} 子、{memorizeSeconds} 秒。最近 {count, plural, other {# 回合}}。",
+        "aria": "你最近 {count} 回合在 {pieceCount} 子、{memorizeSeconds} 秒下每个正确棋子所用秒数，最新为 {latest}。"
+      },
+      "bests": {
+        "title": "各设置的个人最佳",
+        "desc": "个人最佳按设置分别记录，因为 6 子和 20 子是不同的测试。",
+        "setting": "{source, select, calibration {练习} other {对局}} · {pieceCount} 子、{memorizeSeconds} 秒",
+        "col": {
+          "setting": "设置",
+          "accuracy": "最佳准确率",
+          "correct": "正确",
+          "time": "摆放用时",
+          "rounds": "回合数",
+          "date": "创下日期"
+        }
+      },
+      "types": {
+        "title": "各类棋子的记忆率",
+        "desc": "你把每类棋子放回原来位置的频率。",
+        "value": "{recalled} / {shown}",
+        "thin": "已见 {shown} / {minimum}",
+        "baseline": "每回合都有王，因此可作为基准：记住 {recalled} / {shown}。",
+        "onlyKings": "你目前的回合只放了两个王。按棋子类型统计记忆率需要更多棋子。"
+      },
+      "miss": {
+        "title": "失误分布图",
+        "desc": "综合所有回合，你最常失误的格子和线。",
+        "aria": "你在每个格子上的失误比例。颜色越深，失误越多。灰色格子见过的棋子少于 {minimum} 个。",
+        "note": "颜色越深的格子失误越多。灰色格子见过的棋子少于 {minimum} 个。",
+        "lines": "在每个格子都见过 {minimum} 个棋子之前，图中按整列和整行统计。",
+        "files": "列",
+        "ranks": "行",
+        "line": "{line}：{shown} 子中漏记 {missed} 子",
+        "lineThin": "{line}：已见 {shown} 子，数据不足"
+      },
+      "insights": {
+        "title": "发现",
+        "desc": "记录中值得采取行动的规律，每条都附有背后的次数。",
+        "none": "暂时没有突出的发现。继续玩吧。",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {你在 a、h 列的 {edgeShown} 子中漏记了 {edge, select, 0 {不到 1%} other {{edge}%}}，而在中心 d、e 列的 {centreShown} 子中一个也没漏。} 2 {你在 a、h 列的失误约是中心 d、e 列的两倍：{edgeShown} 子中漏记 {edge, select, 0 {不到 1%} other {{edge}%}}，而 {centreShown} 子中为 {centre, select, 0 {不到 1%} other {{centre}%}}。} other {你在 a、h 列的失误约是中心 d、e 列的 {times} 倍：{edgeShown} 子中漏记 {edge, select, 0 {不到 1%} other {{edge}%}}，而 {centreShown} 子中为 {centre, select, 0 {不到 1%} other {{centre}%}}。}}",
+          "weakType": "在王以外、出现过至少 {minimum} 次的棋子中，{type, select, q {后} r {车} b {象} n {马} other {兵}}最容易漏记：你记住了 {shown} 个中的 {recalled} 个，即 {percent}%。",
+          "fasterLessAccurate": "在 {pieceCount} 子、{studyTime} 下，你最近 {window} 回合每个正确棋子比之前 {window} 回合少用 {fasterTime}，但准确率下降了 {fell} 个百分点。",
+          "colourGap": "你记{weaker, select, w {白} other {黑}}子不如{weaker, select, w {黑} other {白}}子：{weakerShown} 子中记住 {weakerPercent}%，而 {strongerShown} 子中为 {strongerPercent}%，不计王。",
+          "plateau": "在 {pieceCount} 子、{studyTime} 下，你最近 {window} 回合平均 {last}%，之前 {window} 回合平均 {before}%，过去一周的记忆广度停在 {span} 子。多加一子也许就能突破。"
+        },
+        "actions": {
+          "rig": "玩 {pieceCount} 子、{studyTime}",
+          "patterns": "阅读模式识别练习",
+          "vision": "阅读如何纵观全盘"
+        }
+      }
     },
     "share": {
       "button": "分享我的进度",
@@ -580,10 +692,11 @@
       "copy": "复制文案",
       "copied": "文案已复制。",
       "copyFailed": "此处无法复制。文案已选中，请手动复制。",
-      "locked": "当记忆广度、记住的棋子、速度或连续天数任一项就绪后，分享卡片即会解锁。",
+      "locked": "当记忆广度、技能评分、记住的棋子、速度或连续天数任一项就绪后，分享卡片即会解锁。",
       "text": "我在 Memory Chess 的进度：{figures}。你能超过吗？",
       "figure": {
         "span": "记忆广度 {value, plural, other {# 子}}",
+        "rating": "技能评分 {value, number}",
         "piecesHeld": "记住 {value, number} 子",
         "speed": "每子 {value, number} 秒",
         "streak": "连续 {value, plural, other {# 天}}"

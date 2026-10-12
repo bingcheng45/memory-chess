@@ -10,7 +10,7 @@
       "terms": "Términos",
       "play": "Jugar",
       "leaderboard": "Clasificación",
-      "progress": "Progreso",
+      "dashboard": "Panel",
       "menu": "Menú",
       "site": "Sitio"
     },
@@ -491,17 +491,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Tu progreso",
-      "description": "Todas las cifras que Memory Chess registra de tus rondas en este dispositivo, en una sola página, con una tarjeta para compartirlas."
+      "title": "Panel",
+      "description": "Tu panel de Memory Chess: puntuación de habilidad, amplitud de memoria, cada ronda que has jugado en este dispositivo, precisión y velocidad a lo largo del tiempo, mejores marcas y una tarjeta para compartirlas."
     },
-    "kicker": "Registro del laboratorio",
-    "title": "Tu progreso",
-    "lede": "Todas las cifras que tus rondas han conseguido en este dispositivo, en un solo lugar. Nada sale de tu navegador a menos que lo compartas.",
+    "title": "Panel",
+    "lede": "Cada ronda que has jugado en este dispositivo, lo que dice de tu memoria y una tarjeta para compartirlo. Nada de esto sale de tu navegador a menos que lo compartas.",
     "loading": "Leyendo tu registro en este dispositivo.",
     "unavailable": "Este navegador no guarda un registro, así que no hay progreso que mostrar. Las ventanas privadas no guardan nada.",
     "fullRecord": "Ver el registro completo",
-    "headline": "Cifras principales",
-    "more": "Todo lo demás",
+    "sections": {
+      "summary": "Resumen",
+      "history": "Historial de partidas",
+      "analysis": "Análisis",
+      "more": "Más cifras"
+    },
+    "historyLede": "Las más recientes primero. Abre una ronda para ver su tablero corregido.",
+    "analysisLede": "Cómo evolucionan tu precisión y tu velocidad con el tiempo, y dónde se te escapan las piezas.",
     "stale": "Según tu última ronda",
     "staleNote": "Última partida hace {count, plural, one {# día} many {# días} other {# días}}. Las cifras así marcadas son de entonces.",
     "play": "Jugar una ronda",
@@ -522,23 +527,22 @@
       "reviews": "{count, plural, one {# repaso más} many {# repasos más} other {# repasos más}} tras el mismo intervalo"
     },
     "label": {
+      "rating": "Puntuación de habilidad",
+      "winStreak": "Racha de victorias",
+      "bestAccuracy": "Mejor precisión",
+      "recentAccuracy": "Precisión reciente",
       "span": "Amplitud de memoria",
       "piecesHeld": "Piezas retenidas",
       "speed": "Velocidad",
-      "streak": "Racha",
+      "streak": "Racha de días",
       "rounds": "Rondas jugadas",
       "days": "Días jugados",
-      "trend": "Precisión",
       "daily": "Tablero del día",
       "week": "Esta semana",
       "curve": "Recuerdo tras repasar",
-      "missMap": "Línea más fallada",
-      "typeRecall": "Pieza más débil",
-      "insights": "Hallazgos",
       "notebook": "Cuaderno",
       "plans": "Plan",
       "goal": "Meta",
-      "bests": "Mejores marcas",
       "board": "Clasificación"
     },
     "unit": {
@@ -548,8 +552,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> ronda} many {<n>{value}</n> rondas} other {<n>{value}</n> rondas}}",
       "entries": "{count, plural, one {<n>{value}</n> entrada} many {<n>{value}</n> entradas} other {<n>{value}</n> entradas}}",
-      "findings": "{count, plural, one {<n>{value}</n> hallazgo} many {<n>{value}</n> hallazgos} other {<n>{value}</n> hallazgos}}",
-      "settings": "{count, plural, one {<n>{value}</n> ajuste} many {<n>{value}</n> ajustes} other {<n>{value}</n> ajustes}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy} % o más en {rounds, plural, one {# ronda} many {# rondas} other {# rondas}}, memorizado {memorizeSeconds} s",
@@ -559,15 +562,124 @@
       "daily": "{status, select, played {Jugado hoy} unfinished {Abierto hoy} other {Disponible hoy}}, racha más larga {longest, plural, one {# día} many {# días} other {# días}}",
       "curve": "Recordado tras {day, plural, one {# día} many {# días} other {# días}}, de {reviews, plural, one {# repaso} many {# repasos} other {# repasos}}",
       "rounds": "De {rounds, plural, one {# ronda} many {# rondas} other {# rondas}}",
-      "missLine": "Falladas en {line, select, file {la columna {name}} other {la fila {name}}}, de {shown} piezas vistas",
-      "pieceType": "{type, select, p {Peones recordados} n {Caballos recordados} b {Alfiles recordados} r {Torres recordadas} q {Damas recordadas} other {Reyes recordados}}, de {shown} vistos",
       "plan": "{planId, select, baseline {Plan Referencia} edge {Plan Bordes} other {Plan Escalera}}, {status, select, active {en curso} done {ya terminado} other {ya detenido}}",
       "goal": "Hacia {pieceCount} piezas al {accuracy} %",
       "week": "Meta semanal {goal} días",
-      "best": "Mejor lectura {accuracy} % con {pieceCount} piezas, {memorizeSeconds} s",
       "entry": "Piezas correctas en tu mejor entrada, {difficulty, select, easy {nivel Fácil} medium {nivel Medio} hard {nivel Difícil} other {nivel Gran maestro}}",
       "overDays": "En {days, plural, one {# día} many {# días} other {# días}}",
-      "firstDay": "Desde el {date}"
+      "firstDay": "Desde el {date}",
+      "rating": "{sign, select, up {Sube {change}} down {Baja {change}} other {Sin cambios}} en {rounds, plural, one {tu última # ronda puntuada} many {tus últimas # rondas puntuadas} other {tus últimas # rondas puntuadas}}",
+      "ratingSince": "De tus rondas de partida puntuadas",
+      "winStreak": "Rondas de partida seguidas con {accuracy} % o más",
+      "bestAt": "{source, select, calibration {Práctica} other {Partida}} con {pieceCount} piezas, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "Mostrando {shown} de {total, plural, one {# ronda} many {# rondas} other {# rondas}}",
+      "filterSource": "Origen",
+      "filterSetting": "Ajuste",
+      "allSources": "Todos los orígenes",
+      "allSettings": "Todos los ajustes",
+      "sources": {
+        "game": "Partida",
+        "daily": "Tablero del día",
+        "plan": "Plan",
+        "review": "Repaso",
+        "practice": "Práctica"
+      },
+      "settingValue": "{pieceCount} piezas, {memorizeSeconds} s",
+      "col": {
+        "date": "Jugada",
+        "source": "Origen",
+        "setting": "Ajuste",
+        "accuracy": "Precisión",
+        "correct": "Correctas",
+        "time": "Tiempo de colocación",
+        "rating": "Puntuación",
+        "board": "Tablero"
+      },
+      "correctValue": "{correct} de {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Puntuación sube {change}",
+      "ratingDown": "Puntuación baja {change}",
+      "ratingLevel": "Puntuación sin cambios",
+      "unrated": "Sin puntuar",
+      "show": "Ver tablero",
+      "hide": "Ocultar tablero",
+      "boardLabel": "Tablero corregido: {correct} de {total} piezas bien.",
+      "detail": "Estudiaste {studied} s de {memorizeSeconds} s. {wrong, plural, =0 {Ninguna pieza incorrecta} one {# pieza incorrecta} many {# piezas incorrectas} other {# piezas incorrectas}}, {extra, plural, =0 {ninguna pieza de más} one {# pieza de más} many {# piezas de más} other {# piezas de más}}.",
+      "more": "Mostrar {count} más",
+      "ratingNote": "Los cambios de puntuación se guardan para tus 20 rondas de partida puntuadas más recientes. Las rondas de práctica y de repaso no se puntúan.",
+      "kept": "Tu registro guarda una a una las {kept} rondas más recientes de tus {total}. Las rondas más antiguas siguen contando en tus totales y mejores marcas.",
+      "emptyTitle": "Aún no hay rondas.",
+      "empty": "Cada ronda que juegues en este dispositivo aparece aquí, la más reciente primero, con su ajuste, precisión y tiempo de colocación. Abre una para ver su tablero corregido.",
+      "noMatch": "Ninguna ronda coincide con estos filtros.",
+      "clear": "Borrar filtros"
+    },
+    "analysis": {
+      "fromRounds": "De {count, plural, one {# ronda} many {# rondas} other {# rondas}}",
+      "oldest": "Más antigua",
+      "latest": "Más reciente",
+      "accuracy": {
+        "title": "Precisión a lo largo del tiempo",
+        "desc": "Tu precisión ronda a ronda en tu ajuste más jugado, en una escala de 0 a 100%.",
+        "note": "{source, select, calibration {Rondas de práctica} other {Rondas de partida}} con {pieceCount} piezas, {memorizeSeconds} s, tu ajuste más jugado. {count, plural, one {Última # ronda} many {Últimas # rondas} other {Últimas # rondas}}.",
+        "aria": "Precisión en tus últimas {count} rondas con {pieceCount} piezas, {memorizeSeconds} s, en una escala de 0 a 100 por ciento, la más reciente {latest} por ciento."
+      },
+      "speed": {
+        "title": "Velocidad a lo largo del tiempo",
+        "unit": "Segundos por pieza correcta. Menos es más rápido.",
+        "note": "{source, select, calibration {Rondas de práctica} other {Rondas de partida}} con {pieceCount} piezas, {memorizeSeconds} s. {count, plural, one {Última # ronda} many {Últimas # rondas} other {Últimas # rondas}}.",
+        "aria": "Segundos por pieza correcta en tus últimas {count} rondas con {pieceCount} piezas, {memorizeSeconds} s, la más reciente {latest}."
+      },
+      "bests": {
+        "title": "Mejores marcas por ajuste",
+        "desc": "Las mejores marcas se guardan por ajuste, porque 6 piezas y 20 piezas son pruebas distintas.",
+        "setting": "{source, select, calibration {Práctica} other {Partida}} · {pieceCount} piezas, {memorizeSeconds} s",
+        "col": {
+          "setting": "Ajuste",
+          "accuracy": "Mejor precisión",
+          "correct": "Correctas",
+          "time": "Tiempo de colocación",
+          "rounds": "Rondas",
+          "date": "Conseguida el"
+        }
+      },
+      "types": {
+        "title": "Recuerdo por tipo de pieza",
+        "desc": "Con qué frecuencia devuelves cada tipo de pieza a la casilla donde estaba.",
+        "value": "{recalled} de {shown}",
+        "thin": "{shown} de {minimum} vistas",
+        "baseline": "Los reyes están en todas las rondas, así que sirven de referencia: recordaste {recalled} de {shown}.",
+        "onlyKings": "Hasta ahora tus rondas solo han tenido los dos reyes. El recuerdo por tipo de pieza necesita más piezas."
+      },
+      "miss": {
+        "title": "Mapa de fallos",
+        "desc": "Qué casillas y líneas fallas más, sumando todas las rondas.",
+        "aria": "Tu proporción de fallos en cada casilla. Más oscuro significa que se falla más a menudo. Las casillas grises tienen menos de {minimum} piezas vistas.",
+        "note": "Las casillas más oscuras se fallan más a menudo. Las casillas grises tienen menos de {minimum} piezas vistas.",
+        "lines": "Hasta que cada casilla tenga {minimum} piezas vistas, el mapa muestra columnas y filas completas.",
+        "files": "Columnas",
+        "ranks": "Filas",
+        "line": "{line}: {missed} de {shown} falladas",
+        "lineThin": "{line}: {shown} vistas, no bastan para sacar conclusiones"
+      },
+      "insights": {
+        "title": "Hallazgos",
+        "desc": "Patrones en tu historial que vale la pena atender, cada uno con las cifras que lo respaldan.",
+        "none": "Aún no destaca nada. Sigue jugando.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Fallas {edge, select, 0 {menos del 1 %} other {el {edge} %}} de {edgeShown} piezas en las columnas a y h y ninguna de {centreShown} en las columnas centrales, d y e.} 2 {Fallas las columnas a y h aproximadamente el doble que las columnas centrales, d y e: {edge, select, 0 {menos del 1 %} other {el {edge} %}} de {edgeShown} piezas frente a {centre, select, 0 {menos del 1 %} other {el {centre} %}} de {centreShown}.} other {Fallas las columnas a y h aproximadamente {times} veces más que las columnas centrales, d y e: {edge, select, 0 {menos del 1 %} other {el {edge} %}} de {edgeShown} piezas frente a {centre, select, 0 {menos del 1 %} other {el {centre} %}} de {centreShown}.}}",
+          "weakType": "De las piezas, sin contar los reyes, que has visto {minimum} veces o más, {type, select, q {las damas} r {las torres} b {los alfiles} n {los caballos} other {los peones}} son las que más se te escapan: recordaste {recalled} de {shown}, el {percent} %.",
+          "fasterLessAccurate": "Con {pieceCount} piezas, {studyTime}, tus últimas {window} rondas tardaron {fasterTime} menos por pieza correcta que las {window} anteriores, y la precisión bajó {fell} puntos.",
+          "colourGap": "Recuerdas las piezas {weaker, select, w {blancas} other {negras}} con menos frecuencia que las {weaker, select, w {negras} other {blancas}}: {weakerPercent} % de {weakerShown} frente a {strongerPercent} % de {strongerShown}, sin contar los reyes.",
+          "plateau": "Con {pieceCount} piezas, {studyTime}, tus últimas {window} rondas promediaron un {last} % y las {window} anteriores un {before} %, y tu amplitud se mantuvo en {span} piezas durante tu última semana de juego. Una pieza más puede moverla."
+        },
+        "actions": {
+          "rig": "Jugar {pieceCount} piezas, {studyTime}",
+          "patterns": "Leer los ejercicios de reconocimiento de patrones",
+          "vision": "Leer cómo ver todo el tablero"
+        }
+      }
     },
     "share": {
       "button": "Compartir mi progreso",
@@ -580,10 +692,11 @@
       "copy": "Copiar texto",
       "copied": "Texto copiado.",
       "copyFailed": "Copiar no funcionó aquí. El texto está seleccionado, cópialo tú.",
-      "locked": "Tu tarjeta para compartir se desbloquea cuando tu amplitud de memoria, piezas retenidas, velocidad o racha estén listas.",
+      "locked": "Tu tarjeta para compartir se desbloquea cuando tu amplitud de memoria, puntuación de habilidad, piezas retenidas, velocidad o racha de días estén listas.",
       "text": "Mi progreso en Memory Chess: {figures}. ¿Puedes superarlo?",
       "figure": {
         "span": "amplitud de memoria de {value, plural, one {# pieza} many {# piezas} other {# piezas}}",
+        "rating": "puntuación de habilidad {value, number}",
         "piecesHeld": "{value, number} piezas retenidas",
         "speed": "{value, number} s por pieza",
         "streak": "{value, plural, one {# día} many {# días} other {# días}} seguidos"

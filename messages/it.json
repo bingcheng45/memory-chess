@@ -10,7 +10,7 @@
       "terms": "Termini",
       "play": "Gioca",
       "leaderboard": "Classifica",
-      "progress": "Progressi",
+      "dashboard": "Dashboard",
       "menu": "Menu",
       "site": "Sito"
     },
@@ -491,17 +491,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "I tuoi progressi",
-      "description": "Ogni dato che Memory Chess ricava dalle tue partite su questo dispositivo, in una pagina, con una scheda da condividere."
+      "title": "Dashboard",
+      "description": "La tua dashboard di Memory Chess: punteggio di abilità, span di memoria, ogni partita giocata su questo dispositivo, precisione e velocità nel tempo, record personali e una scheda per condividerli."
     },
-    "kicker": "Registro del laboratorio",
-    "title": "I tuoi progressi",
-    "lede": "Ogni dato che le tue partite hanno ottenuto su questo dispositivo, in un unico posto. Nulla lascia il browser, a meno che tu non lo condivida.",
+    "title": "Dashboard",
+    "lede": "Ogni partita giocata su questo dispositivo, cosa dice della tua memoria e una scheda per condividerla. Nulla di ciò che vedi qui lascia il browser, a meno che tu non lo condivida.",
     "loading": "Lettura del tuo registro su questo dispositivo.",
     "unavailable": "Questo browser non conserva un registro, quindi non ci sono progressi da mostrare. Le finestre private non conservano nulla.",
     "fullRecord": "Vedi il registro completo",
-    "headline": "Dati principali",
-    "more": "Tutto il resto",
+    "sections": {
+      "summary": "Riepilogo",
+      "history": "Cronologia partite",
+      "analysis": "Analisi",
+      "more": "Altri dati"
+    },
+    "historyLede": "Dalla più recente. Apri una partita per vedere la sua scacchiera valutata.",
+    "analysisLede": "Come cambiano nel tempo precisione e velocità, e dove ti sfuggono i pezzi.",
     "stale": "All’ultima partita",
     "staleNote": "Ultima partita {count, plural, one {# giorno} many {# giorni} other {# giorni}} fa. I dati così segnati risalgono ad allora.",
     "play": "Gioca una partita",
@@ -522,23 +527,22 @@
       "reviews": "{count, plural, one {# ripasso in più} many {# ripassi in più} other {# ripassi in più}} dopo lo stesso intervallo"
     },
     "label": {
+      "rating": "Punteggio di abilità",
+      "winStreak": "Serie di vittorie",
+      "bestAccuracy": "Miglior precisione",
+      "recentAccuracy": "Precisione recente",
       "span": "Span di memoria",
       "piecesHeld": "Pezzi ricordati",
       "speed": "Velocità",
-      "streak": "Serie",
+      "streak": "Giorni di fila",
       "rounds": "Partite giocate",
       "days": "Giorni giocati",
-      "trend": "Precisione",
       "daily": "Scacchiera del giorno",
       "week": "Questa settimana",
       "curve": "Ricordo dopo il ripasso",
-      "missMap": "Linea più sbagliata",
-      "typeRecall": "Pezzo più debole",
-      "insights": "Osservazioni",
       "notebook": "Quaderno",
       "plans": "Piano",
       "goal": "Obiettivo",
-      "bests": "Record personali",
       "board": "Classifica"
     },
     "unit": {
@@ -548,8 +552,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> partita} many {<n>{value}</n> partite} other {<n>{value}</n> partite}}",
       "entries": "{count, plural, one {<n>{value}</n> voce} many {<n>{value}</n> voci} other {<n>{value}</n> voci}}",
-      "findings": "{count, plural, one {<n>{value}</n> osservazione} many {<n>{value}</n> osservazioni} other {<n>{value}</n> osservazioni}}",
-      "settings": "{count, plural, one {<n>{value}</n> impostazione} many {<n>{value}</n> impostazioni} other {<n>{value}</n> impostazioni}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy}% o meglio in {rounds, plural, one {# partita} many {# partite} other {# partite}}, memorizzato {memorizeSeconds} s",
@@ -559,15 +562,124 @@
       "daily": "{status, select, played {Giocata oggi} unfinished {Aperta oggi} other {Disponibile oggi}}, serie più lunga {longest, plural, one {# giorno} many {# giorni} other {# giorni}}",
       "curve": "Ricordato dopo {day, plural, one {# giorno} many {# giorni} other {# giorni}}, da {reviews, plural, one {# ripasso} many {# ripassi} other {# ripassi}}",
       "rounds": "Da {rounds, plural, one {# partita} many {# partite} other {# partite}}",
-      "missLine": "Sbagliati sulla {line, select, file {colonna {name}} other {traversa {name}}}, da {shown} pezzi visti",
-      "pieceType": "{type, select, p {Pedoni ricordati} n {Cavalli ricordati} b {Alfieri ricordati} r {Torri ricordate} q {Donne ricordate} other {Re ricordati}}, da {shown} visti",
       "plan": "{planId, select, baseline {Piano Riferimento} edge {Piano Bordi} other {Piano Scala}}, {status, select, active {in corso} done {ora completato} other {ora interrotto}}",
       "goal": "Verso {pieceCount} pezzi al {accuracy}%",
       "week": "Obiettivo settimanale {goal} giorni",
-      "best": "Miglior risultato {accuracy}% a {pieceCount} pezzi, {memorizeSeconds} s",
       "entry": "Pezzi giusti nella tua voce migliore, {difficulty, select, easy {livello Facile} medium {livello Medio} hard {livello Difficile} other {livello Grande maestro}}",
       "overDays": "In {days, plural, one {# giorno} many {# giorni} other {# giorni}}",
-      "firstDay": "Dal {date}"
+      "firstDay": "Dal {date}",
+      "rating": "{sign, select, up {In salita di {change}} down {In calo di {change}} other {Nessuna variazione}} nelle ultime partite valutate ({rounds, plural, one {# partita} many {# partite} other {# partite}})",
+      "ratingSince": "Dalle tue partite di gioco valutate",
+      "winStreak": "Partite di gioco consecutive al {accuracy}% o meglio",
+      "bestAt": "{source, select, calibration {Allenamento} other {Gioco}} a {pieceCount} pezzi, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "Mostrate {shown} di {total, plural, one {# partita} many {# partite} other {# partite}}",
+      "filterSource": "Origine",
+      "filterSetting": "Impostazione",
+      "allSources": "Tutte le origini",
+      "allSettings": "Tutte le impostazioni",
+      "sources": {
+        "game": "Gioco",
+        "daily": "Scacchiera del giorno",
+        "plan": "Piano",
+        "review": "Ripasso",
+        "practice": "Allenamento"
+      },
+      "settingValue": "{pieceCount} pezzi, {memorizeSeconds} s",
+      "col": {
+        "date": "Giocata",
+        "source": "Origine",
+        "setting": "Impostazione",
+        "accuracy": "Precisione",
+        "correct": "Corretti",
+        "time": "Tempo di ricostruzione",
+        "rating": "Punteggio",
+        "board": "Scacchiera"
+      },
+      "correctValue": "{correct} su {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Punteggio in salita di {change}",
+      "ratingDown": "Punteggio in calo di {change}",
+      "ratingLevel": "Punteggio invariato",
+      "unrated": "Non valutata",
+      "show": "Mostra scacchiera",
+      "hide": "Nascondi scacchiera",
+      "boardLabel": "Scacchiera valutata: {correct} pezzi giusti su {total}.",
+      "detail": "Studiato {studied} s su {memorizeSeconds} s. {wrong, plural, =0 {Nessun pezzo errato} one {# pezzo errato} many {# pezzi errati} other {# pezzi errati}}, {extra, plural, =0 {nessun pezzo in più} one {# pezzo in più} many {# pezzi in più} other {# pezzi in più}}.",
+      "more": "Mostra altre {count}",
+      "ratingNote": "Le variazioni di punteggio sono conservate per le tue 20 partite di gioco valutate più recenti. Le partite di allenamento e di ripasso non sono valutate.",
+      "kept": "Il tuo registro conserva nel dettaglio le {kept} più recenti delle tue {total} partite. Le partite più vecchie contano ancora nei totali e nei record.",
+      "emptyTitle": "Ancora nessuna partita.",
+      "empty": "Ogni partita giocata su questo dispositivo compare qui, dalla più recente, con impostazione, precisione e tempo di ricostruzione. Aprine una per vedere la sua scacchiera valutata.",
+      "noMatch": "Nessuna partita corrisponde a questi filtri.",
+      "clear": "Cancella filtri"
+    },
+    "analysis": {
+      "fromRounds": "Da {count, plural, one {# partita} many {# partite} other {# partite}}",
+      "oldest": "Meno recente",
+      "latest": "Più recente",
+      "accuracy": {
+        "title": "Precisione nel tempo",
+        "desc": "La tua precisione partita per partita nell’impostazione che giochi di più, su una scala da 0 a 100%.",
+        "note": "Partite di {source, select, calibration {allenamento} other {gioco}} a {pieceCount} pezzi, {memorizeSeconds} s, l’impostazione che giochi di più. Le più recenti: {count, plural, one {# partita} many {# partite} other {# partite}}.",
+        "aria": "Precisione nelle tue ultime {count} partite a {pieceCount} pezzi, {memorizeSeconds} s, su una scala da 0 a 100 per cento, ultima {latest} per cento."
+      },
+      "speed": {
+        "title": "Velocità nel tempo",
+        "unit": "Secondi per pezzo corretto. Meno è più veloce.",
+        "note": "Partite di {source, select, calibration {allenamento} other {gioco}} a {pieceCount} pezzi, {memorizeSeconds} s. Le più recenti: {count, plural, one {# partita} many {# partite} other {# partite}}.",
+        "aria": "Secondi per pezzo corretto nelle tue ultime {count} partite a {pieceCount} pezzi, {memorizeSeconds} s, ultima {latest}."
+      },
+      "bests": {
+        "title": "Record personali per impostazione",
+        "desc": "I record sono tenuti per impostazione, perché 6 pezzi e 20 pezzi sono prove diverse.",
+        "setting": "{source, select, calibration {Allenamento} other {Gioco}} · {pieceCount} pezzi, {memorizeSeconds} s",
+        "col": {
+          "setting": "Impostazione",
+          "accuracy": "Miglior precisione",
+          "correct": "Corretti",
+          "time": "Tempo di ricostruzione",
+          "rounds": "Partite",
+          "date": "Data"
+        }
+      },
+      "types": {
+        "title": "Memoria per tipo di pezzo",
+        "desc": "Quanto spesso rimetti ogni tipo di pezzo sulla casa in cui si trovava.",
+        "value": "{recalled} su {shown}",
+        "thin": "{shown} visti su {minimum}",
+        "baseline": "I re sono in ogni partita, quindi fanno da riferimento: ricordati {recalled} su {shown}.",
+        "onlyKings": "Finora le tue partite hanno posizionato solo i due re. La memoria per tipo di pezzo richiede più pezzi."
+      },
+      "miss": {
+        "title": "Mappa degli errori",
+        "desc": "Le case e le linee che sbagli di più, considerando tutte le partite.",
+        "aria": "La tua quota di errori su ogni casa. Più scuro significa sbagliata più spesso. Le case grigie hanno meno di {minimum} pezzi visti.",
+        "note": "Le case più scure sono sbagliate più spesso. Le case grigie hanno meno di {minimum} pezzi visti.",
+        "lines": "Finché ogni casa non ha {minimum} pezzi visti, la mappa legge colonne e traverse intere.",
+        "files": "Colonne",
+        "ranks": "Traverse",
+        "line": "{line}: {missed} sbagliati su {shown}",
+        "lineThin": "{line}: {shown} visti, non abbastanza per una lettura"
+      },
+      "insights": {
+        "title": "Osservazioni",
+        "desc": "Tendenze nei tuoi risultati su cui vale la pena intervenire, ognuna con i numeri che la sostengono.",
+        "none": "Ancora niente di rilevante. Continua a giocare.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Sbagli {edge, select, 0 {meno dell’1%} other {il {edge}%}} di {edgeShown} pezzi sulle colonne a e h e nessuno di {centreShown} sulle colonne centrali, d ed e.} 2 {Sbagli le colonne a e h circa il doppio delle colonne centrali, d ed e: {edge, select, 0 {meno dell’1%} other {il {edge}%}} di {edgeShown} pezzi contro {centre, select, 0 {meno dell’1%} other {il {centre}%}} di {centreShown}.} other {Sbagli le colonne a e h circa {times} volte più spesso delle colonne centrali, d ed e: {edge, select, 0 {meno dell’1%} other {il {edge}%}} di {edgeShown} pezzi contro {centre, select, 0 {meno dell’1%} other {il {centre}%}} di {centreShown}.}}",
+          "weakType": "Tra i pezzi diversi dal re visti {minimum} volte o più, {type, select, q {le donne} r {le torri} b {gli alfieri} n {i cavalli} other {i pedoni}} sfuggono di più: hai ricordato {recalled} pezzi su {shown}, il {percent}%.",
+          "fasterLessAccurate": "A {pieceCount} pezzi, {studyTime}, le tue ultime {window} partite hanno richiesto {fasterTime} in meno per pezzo corretto rispetto alle {window} precedenti, e la precisione è scesa di {fell} punti.",
+          "colourGap": "Ricordi i pezzi {weaker, select, w {bianchi} other {neri}} meno spesso di quelli {weaker, select, w {neri} other {bianchi}}: {weakerPercent}% di {weakerShown} contro {strongerPercent}% di {strongerShown}, re esclusi.",
+          "plateau": "A {pieceCount} pezzi, {studyTime}, le tue ultime {window} partite hanno fatto in media il {last}% e le {window} precedenti il {before}%, e il tuo span è rimasto a {span} pezzi nell’ultima settimana di gioco. Un pezzo in più potrebbe smuoverlo."
+        },
+        "actions": {
+          "rig": "Gioca {pieceCount} pezzi, {studyTime}",
+          "patterns": "Leggi gli esercizi di riconoscimento degli schemi",
+          "vision": "Leggi come vedere tutta la scacchiera"
+        }
+      }
     },
     "share": {
       "button": "Condividi i miei progressi",
@@ -580,10 +692,11 @@
       "copy": "Copia testo",
       "copied": "Testo copiato.",
       "copyFailed": "La copia non ha funzionato qui. Il testo è selezionato, copialo tu.",
-      "locked": "La scheda da condividere si sblocca quando span di memoria, pezzi ricordati, velocità o serie sono pronti.",
+      "locked": "La scheda da condividere si sblocca quando span di memoria, punteggio di abilità, pezzi ricordati, velocità o giorni di fila sono pronti.",
       "text": "I miei progressi su Memory Chess: {figures}. Riesci a fare di meglio?",
       "figure": {
         "span": "span di memoria di {value, plural, one {# pezzo} many {# pezzi} other {# pezzi}}",
+        "rating": "punteggio di abilità {value, number}",
         "piecesHeld": "{value, number} pezzi ricordati",
         "speed": "{value, number} s per pezzo",
         "streak": "{value, plural, one {# giorno} many {# giorni} other {# giorni}} di fila"

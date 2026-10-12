@@ -10,7 +10,7 @@
       "terms": "Voorwaarden",
       "play": "Spelen",
       "leaderboard": "Ranglijst",
-      "progress": "Voortgang",
+      "dashboard": "Dashboard",
       "menu": "Menu",
       "site": "Site"
     },
@@ -491,17 +491,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Je voortgang",
-      "description": "Elk cijfer dat Memory Chess bijhoudt uit je rondes op dit apparaat, op één pagina, met een kaart om te delen."
+      "title": "Dashboard",
+      "description": "Je Memory Chess-dashboard: vaardigheidsrating, geheugenspanne, elke ronde die je op dit apparaat speelde, nauwkeurigheid en snelheid door de tijd, persoonlijke records en een kaart om ze te delen."
     },
-    "kicker": "Labverslag",
-    "title": "Je voortgang",
-    "lede": "Elk cijfer dat je rondes op dit apparaat hebben opgeleverd, op één plek. Niets verlaat je browser, tenzij je het deelt.",
+    "title": "Dashboard",
+    "lede": "Elke ronde die je op dit apparaat hebt gespeeld, wat die over je geheugen zegt, en een kaart om het te delen. Niets hiervan verlaat je browser, tenzij je het deelt.",
     "loading": "Je verslag op dit apparaat wordt gelezen.",
     "unavailable": "Deze browser bewaart geen verslag, dus er is geen voortgang om te tonen. Privévensters bewaren niets.",
     "fullRecord": "Bekijk het volledige verslag",
-    "headline": "Belangrijkste cijfers",
-    "more": "Al het andere",
+    "sections": {
+      "summary": "Overzicht",
+      "history": "Spelgeschiedenis",
+      "analysis": "Analyse",
+      "more": "Meer cijfers"
+    },
+    "historyLede": "Nieuwste eerst. Open een ronde om het nagekeken bord te zien.",
+    "analysisLede": "Hoe je nauwkeurigheid en snelheid zich door de tijd ontwikkelen, en waar stukken wegglippen.",
     "stale": "Stand van je laatste ronde",
     "staleNote": "Laatst gespeeld {count, plural, one {# dag} other {# dagen}} geleden. Zo gemarkeerde cijfers zijn van toen.",
     "play": "Speel een ronde",
@@ -522,23 +527,22 @@
       "reviews": "{count, plural, one {nog # herhaling} other {nog # herhalingen}} na dezelfde tussenpoos"
     },
     "label": {
+      "rating": "Vaardigheidsrating",
+      "winStreak": "Winstreeks",
+      "bestAccuracy": "Beste nauwkeurigheid",
+      "recentAccuracy": "Recente nauwkeurigheid",
       "span": "Geheugenspanne",
       "piecesHeld": "Onthouden stukken",
       "speed": "Snelheid",
-      "streak": "Reeks",
+      "streak": "Dagreeks",
       "rounds": "Gespeelde rondes",
       "days": "Speeldagen",
-      "trend": "Nauwkeurigheid",
       "daily": "Bord van de dag",
       "week": "Deze week",
       "curve": "Herinnering na herhaling",
-      "missMap": "Meest gemiste lijn",
-      "typeRecall": "Zwakste stuk",
-      "insights": "Inzichten",
       "notebook": "Notitieboek",
       "plans": "Plan",
       "goal": "Doel",
-      "bests": "Persoonlijke records",
       "board": "Ranglijst"
     },
     "unit": {
@@ -548,8 +552,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> ronde} other {<n>{value}</n> rondes}}",
       "entries": "{count, plural, one {<n>{value}</n> notitie} other {<n>{value}</n> notities}}",
-      "findings": "{count, plural, one {<n>{value}</n> inzicht} other {<n>{value}</n> inzichten}}",
-      "settings": "{count, plural, one {<n>{value}</n> instelling} other {<n>{value}</n> instellingen}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy}% of beter in {rounds, plural, one {# ronde} other {# rondes}}, {memorizeSeconds} s bestudeerd",
@@ -559,15 +562,124 @@
       "daily": "{status, select, played {Vandaag gespeeld} unfinished {Vandaag geopend} other {Vandaag open}}, langste reeks {longest, plural, one {# dag} other {# dagen}}",
       "curve": "Onthouden na {day, plural, one {# dag} other {# dagen}}, uit {reviews, plural, one {# herhaling} other {# herhalingen}}",
       "rounds": "Uit {rounds, plural, one {# ronde} other {# rondes}}",
-      "missLine": "Gemist op {line, select, file {de {name}-lijn} other {rij {name}}}, uit {shown} geziene stukken",
-      "pieceType": "{type, select, p {Pionnen onthouden} n {Paarden onthouden} b {Lopers onthouden} r {Torens onthouden} q {Dames onthouden} other {Koningen onthouden}}, uit {shown} gezien",
       "plan": "{planId, select, baseline {Plan Nulmeting} edge {Plan Randen} other {Plan Ladder}}, {status, select, active {nog bezig} done {nu afgerond} other {nu gestopt}}",
       "goal": "Op weg naar {pieceCount} stukken met {accuracy}%",
       "week": "Weekdoel {goal} dagen",
-      "best": "Beste meting {accuracy}% bij {pieceCount} stukken, {memorizeSeconds} s",
       "entry": "Goede stukken in je beste inzending, {difficulty, select, easy {bord Makkelijk} medium {bord Gemiddeld} hard {bord Moeilijk} other {bord Grootmeester}}",
       "overDays": "Over {days, plural, one {# dag} other {# dagen}}",
-      "firstDay": "Sinds {date}"
+      "firstDay": "Sinds {date}",
+      "rating": "{sign, select, up {{change} omhoog} down {{change} omlaag} other {Geen verandering}} over je laatste {rounds, plural, one {# ronde met rating} other {# rondes met rating}}",
+      "ratingSince": "Uit je rondes in partijen met rating",
+      "winStreak": "Rondes in partijen op rij met {accuracy}% of beter",
+      "bestAt": "{source, select, calibration {Oefening} other {Partij}} bij {pieceCount} stukken, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "{shown} van {total, plural, one {# ronde} other {# rondes}} getoond",
+      "filterSource": "Bron",
+      "filterSetting": "Instelling",
+      "allSources": "Alle bronnen",
+      "allSettings": "Alle instellingen",
+      "sources": {
+        "game": "Partij",
+        "daily": "Bord van de dag",
+        "plan": "Plan",
+        "review": "Herhaling",
+        "practice": "Oefening"
+      },
+      "settingValue": "{pieceCount} stukken, {memorizeSeconds} s",
+      "col": {
+        "date": "Gespeeld",
+        "source": "Bron",
+        "setting": "Instelling",
+        "accuracy": "Nauwkeurigheid",
+        "correct": "Goed",
+        "time": "Opbouwtijd",
+        "rating": "Rating",
+        "board": "Bord"
+      },
+      "correctValue": "{correct} van {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Rating {change} omhoog",
+      "ratingDown": "Rating {change} omlaag",
+      "ratingLevel": "Rating ongewijzigd",
+      "unrated": "Zonder rating",
+      "show": "Toon bord",
+      "hide": "Verberg bord",
+      "boardLabel": "Nagekeken bord: {correct} van {total} stukken goed.",
+      "detail": "{studied} s van {memorizeSeconds} s bestudeerd. {wrong, plural, =0 {Geen foute stukken} one {# fout stuk} other {# foute stukken}}, {extra, plural, =0 {geen extra stukken} one {# extra stuk} other {# extra stukken}}.",
+      "more": "Toon er nog {count}",
+      "ratingNote": "Ratingwijzigingen worden bewaard voor je nieuwste 20 rondes in partijen met rating. Oefen- en herhalingsrondes tellen niet mee voor je rating.",
+      "kept": "Je verslag bewaart de nieuwste {kept} van je {total} rondes ronde voor ronde. Oudere rondes tellen nog steeds mee in je totalen en records.",
+      "emptyTitle": "Nog geen rondes.",
+      "empty": "Elke ronde die je op dit apparaat speelt, verschijnt hier, nieuwste eerst, met de instelling, nauwkeurigheid en opbouwtijd. Open er een om het nagekeken bord te zien.",
+      "noMatch": "Geen rondes voldoen aan deze filters.",
+      "clear": "Filters wissen"
+    },
+    "analysis": {
+      "fromRounds": "Uit {count, plural, one {# ronde} other {# rondes}}",
+      "oldest": "Oudste",
+      "latest": "Nieuwste",
+      "accuracy": {
+        "title": "Nauwkeurigheid door de tijd",
+        "desc": "Je nauwkeurigheid per ronde in je meest gespeelde instelling, op een schaal van 0 tot 100%.",
+        "note": "{source, select, calibration {Oefenrondes} other {Rondes in partijen}} met {pieceCount} stukken, {memorizeSeconds} s, je meest gespeelde instelling. Laatste {count, plural, one {# ronde} other {# rondes}}.",
+        "aria": "Nauwkeurigheid over je laatste {count} rondes met {pieceCount} stukken, {memorizeSeconds} s, op een schaal van 0 tot 100 procent, laatste {latest} procent."
+      },
+      "speed": {
+        "title": "Snelheid door de tijd",
+        "unit": "Seconden per goed stuk. Lager is sneller.",
+        "note": "{source, select, calibration {Oefenrondes} other {Rondes in partijen}} met {pieceCount} stukken, {memorizeSeconds} s. Laatste {count, plural, one {# ronde} other {# rondes}}.",
+        "aria": "Seconden per goed stuk over je laatste {count} rondes met {pieceCount} stukken, {memorizeSeconds} s, laatste {latest}."
+      },
+      "bests": {
+        "title": "Persoonlijke records per instelling",
+        "desc": "Records worden per instelling bijgehouden, want 6 stukken en 20 stukken zijn verschillende tests.",
+        "setting": "{source, select, calibration {Oefening} other {Partij}} · {pieceCount} stukken, {memorizeSeconds} s",
+        "col": {
+          "setting": "Instelling",
+          "accuracy": "Beste nauwkeurigheid",
+          "correct": "Goed",
+          "time": "Opbouwtijd",
+          "rounds": "Rondes",
+          "date": "Behaald op"
+        }
+      },
+      "types": {
+        "title": "Onthouden per stuksoort",
+        "desc": "Hoe vaak je elke soort stuk terugzet op het veld waar het stond.",
+        "value": "{recalled} van {shown}",
+        "thin": "{shown} van {minimum} gezien",
+        "baseline": "Koningen staan in elke ronde, dus ze zijn een nulmeting: {recalled} van {shown} onthouden.",
+        "onlyKings": "Je rondes tot nu toe hadden alleen de twee koningen. Onthouden per stuksoort heeft meer stukken nodig."
+      },
+      "miss": {
+        "title": "Kaart van missers",
+        "desc": "Welke velden en lijnen je het vaakst mist, over alle rondes.",
+        "aria": "Je aandeel missers op elk veld. Donkerder wordt vaker gemist. Grijze velden hebben minder dan {minimum} geziene stukken.",
+        "note": "Donkerdere velden worden vaker gemist. Grijze velden hebben minder dan {minimum} geziene stukken.",
+        "lines": "Tot elk veld {minimum} geziene stukken heeft, leest de kaart hele lijnen en rijen.",
+        "files": "Lijnen",
+        "ranks": "Rijen",
+        "line": "{line}: {missed} van {shown} gemist",
+        "lineThin": "{line}: {shown} gezien, te weinig om te lezen"
+      },
+      "insights": {
+        "title": "Inzichten",
+        "desc": "Patronen in je resultaten waar je iets mee kunt, elk met de aantallen erachter.",
+        "none": "Er valt nog niets op. Blijf spelen.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Je mist {edge, select, 0 {minder dan 1%} other {{edge}%}} van {edgeShown} stukken op de a- en h-lijn en geen van {centreShown} op de middenlijnen, d en e.} 2 {Je mist de a- en h-lijn ongeveer twee keer zo vaak als de middenlijnen, d en e: {edge, select, 0 {minder dan 1%} other {{edge}%}} van {edgeShown} stukken tegen {centre, select, 0 {minder dan 1%} other {{centre}%}} van {centreShown}.} other {Je mist de a- en h-lijn ongeveer {times} keer zo vaak als de middenlijnen, d en e: {edge, select, 0 {minder dan 1%} other {{edge}%}} van {edgeShown} stukken tegen {centre, select, 0 {minder dan 1%} other {{centre}%}} van {centreShown}.}}",
+          "weakType": "Van de stukken behalve koningen die je {minimum} keer of vaker zag, glippen {type, select, q {dames} r {torens} b {lopers} n {paarden} other {pionnen}} het vaakst weg: je onthield {recalled} van {shown}, {percent}%.",
+          "fasterLessAccurate": "Bij {pieceCount} stukken, {studyTime}, kostten je laatste {window} rondes {fasterTime} minder per goed stuk dan de {window} daarvoor, en je nauwkeurigheid daalde {fell} punten.",
+          "colourGap": "Je onthoudt {weaker, select, w {witte} other {zwarte}} stukken minder vaak dan {weaker, select, w {zwarte} other {witte}}: {weakerPercent}% van {weakerShown} tegen {strongerPercent}% van {strongerShown}, koningen niet meegeteld.",
+          "plateau": "Bij {pieceCount} stukken, {studyTime}, haalden je laatste {window} rondes gemiddeld {last}% en de {window} daarvoor {before}%, en je spanne bleef je laatste speelweek op {span} stukken. Eén stuk meer kan hem in beweging brengen."
+        },
+        "actions": {
+          "rig": "Speel {pieceCount} stukken, {studyTime}",
+          "patterns": "Lees de oefeningen voor patroonherkenning",
+          "vision": "Lees hoe je het hele bord overziet"
+        }
+      }
     },
     "share": {
       "button": "Deel mijn voortgang",
@@ -580,10 +692,11 @@
       "copy": "Tekst kopiëren",
       "copied": "Tekst gekopieerd.",
       "copyFailed": "Kopiëren werkte hier niet. De tekst is geselecteerd, kopieer hem zelf.",
-      "locked": "Je deelkaart wordt ontgrendeld zodra je geheugenspanne, onthouden stukken, snelheid of reeks klaar is.",
+      "locked": "Je deelkaart wordt ontgrendeld zodra je geheugenspanne, vaardigheidsrating, onthouden stukken, snelheid of dagreeks klaar is.",
       "text": "Mijn voortgang bij Memory Chess: {figures}. Kun jij het beter?",
       "figure": {
         "span": "geheugenspanne van {value, plural, one {# stuk} other {# stukken}}",
+        "rating": "vaardigheidsrating {value, number}",
         "piecesHeld": "{value, number} onthouden stukken",
         "speed": "{value, number} s per stuk",
         "streak": "{value, plural, one {# dag} other {# dagen}} op rij"

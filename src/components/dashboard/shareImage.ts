@@ -11,25 +11,27 @@ export interface CardCopy {
 
 export interface CardFonts {
   readonly sans: string;
-  readonly mono: string;
 }
 
 /** 4:5, the tallest shape the big feeds show uncropped. */
 const WIDTH = 1080;
 const HEIGHT = 1350;
 const PAD = 88;
+/** Lab Paper's light tokens (components/lab-paper/lab-paper.css): a card reads the same wherever it is posted. */
+const PAPER = "#f5f8f7";
 const INK = "#0d1b24";
-const PAPER = "#ffffff";
-const MUTED = "#8fa1a8";
-const SOFT = "#b5c4c9";
-const MINT = "#3fd0a8";
-const GRID = "rgba(255, 255, 255, 0.04)";
-const RULE = "rgba(255, 255, 255, 0.16)";
+const INK_2 = "#364853";
+const MUTED = "#56666f";
+const ACCENT = "#1f4fe0";
+const ACCENT_SOFT = "#e5ebfc";
+const WORDMARK = "#c2541a";
+const GRID = "rgba(31, 79, 224, 0.06)";
+const RULE = "#d6dfe0";
 
 type Ctx = CanvasRenderingContext2D;
 
 function drawGrid(ctx: Ctx) {
-  ctx.fillStyle = INK;
+  ctx.fillStyle = PAPER;
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
   ctx.strokeStyle = GRID;
   ctx.lineWidth = 1;
@@ -64,21 +66,22 @@ function fitFont(ctx: Ctx, text: string, weight: number, size: number, family: s
 
 function drawHeader(ctx: Ctx, copy: CardCopy, fonts: CardFonts) {
   ctx.textBaseline = "alphabetic";
-  ctx.font = `600 60px ${fonts.sans}`;
-  ctx.fillStyle = PAPER;
+  ctx.font = `700 60px ${fonts.sans}`;
+  ctx.fillStyle = INK;
   ctx.fillText("Memory ", PAD, PAD + 52);
   const memory = ctx.measureText("Memory ").width;
-  ctx.fillStyle = MINT;
+  ctx.fillStyle = WORDMARK;
   ctx.fillText("Chess", PAD + memory, PAD + 52);
 
-  const kicker = copy.kicker.toUpperCase();
-  const size = fitFont(ctx, kicker, 500, 24, fonts.mono, 360);
-  const width = ctx.measureText(kicker).width;
-  ctx.strokeStyle = MUTED;
-  ctx.lineWidth = 2;
-  ctx.strokeRect(WIDTH - PAD - width - 28, PAD + 6, width + 28, size + 24);
-  ctx.fillStyle = SOFT;
-  ctx.fillText(kicker, WIDTH - PAD - width - 14, PAD + 6 + 12 + size * 0.85);
+  const size = fitFont(ctx, copy.kicker, 600, 26, fonts.sans, 360);
+  const width = ctx.measureText(copy.kicker).width;
+  const height = size + 24;
+  ctx.fillStyle = ACCENT_SOFT;
+  ctx.beginPath();
+  ctx.roundRect(WIDTH - PAD - width - 36, PAD + 4, width + 36, height, height / 2);
+  ctx.fill();
+  ctx.fillStyle = ACCENT;
+  ctx.fillText(copy.kicker, WIDTH - PAD - width - 18, PAD + 4 + 12 + size * 0.85);
   drawRuler(ctx, PAD + 128);
 }
 
@@ -93,8 +96,8 @@ interface Slot {
 function drawFigure(ctx: Ctx, { label, segments }: CardCopy["figures"][number], slot: Slot, fonts: CardFonts) {
   const labelSize = Math.round(slot.valueSize / 5.5) + 8;
   ctx.fillStyle = MUTED;
-  fitFont(ctx, label.toUpperCase(), 500, labelSize, fonts.mono, slot.width);
-  ctx.fillText(label.toUpperCase(), slot.x, slot.y + labelSize);
+  fitFont(ctx, label, 600, labelSize, fonts.sans, slot.width);
+  ctx.fillText(label, slot.x, slot.y + labelSize);
 
   const baseline = slot.y + labelSize + 18 + slot.valueSize * 0.82;
   const fontOf = (big: boolean, size: number) => (big ? `600 ${size}px ${fonts.sans}` : `500 ${Math.round(size * 0.24)}px ${fonts.sans}`);
@@ -109,7 +112,7 @@ function drawFigure(ctx: Ctx, { label, segments }: CardCopy["figures"][number], 
   let x = slot.x;
   segments.forEach(({ text, big }) => {
     ctx.font = fontOf(big, size);
-    ctx.fillStyle = big ? PAPER : SOFT;
+    ctx.fillStyle = big ? INK : INK_2;
     ctx.fillText(text, x, baseline);
     x += ctx.measureText(text).width;
   });
@@ -129,15 +132,15 @@ function drawFigures(ctx: Ctx, copy: CardCopy, fonts: CardFonts) {
 }
 
 function drawFooter(ctx: Ctx, copy: CardCopy, fonts: CardFonts) {
-  ctx.fillStyle = SOFT;
+  ctx.fillStyle = INK_2;
   fitFont(ctx, copy.rounds, 500, 30, fonts.sans, WIDTH - 2 * PAD);
   ctx.fillText(copy.rounds, PAD, HEIGHT - PAD - 150);
   ctx.fillStyle = RULE;
   ctx.fillRect(PAD, HEIGHT - PAD - 116, WIDTH - 2 * PAD, 2);
-  ctx.fillStyle = PAPER;
+  ctx.fillStyle = INK;
   fitFont(ctx, copy.cta, 600, 48, fonts.sans, WIDTH - 2 * PAD);
   ctx.fillText(copy.cta, PAD, HEIGHT - PAD - 52);
-  ctx.fillStyle = MINT;
+  ctx.fillStyle = ACCENT;
   fitFont(ctx, copy.site, 600, 44, fonts.sans, WIDTH - 2 * PAD);
   ctx.fillText(copy.site, PAD, HEIGHT - PAD + 4);
 }
@@ -145,7 +148,7 @@ function drawFooter(ctx: Ctx, copy: CardCopy, fonts: CardFonts) {
 /** Waits for the faces the card names, since a canvas draws with whatever is loaded at that moment. */
 async function loadFonts(fonts: CardFonts) {
   if (!document.fonts) return;
-  await Promise.all([document.fonts.load(`600 60px ${fonts.sans}`), document.fonts.load(`500 24px ${fonts.sans}`), document.fonts.load(`500 24px ${fonts.mono}`)]);
+  await Promise.all([document.fonts.load(`700 60px ${fonts.sans}`), document.fonts.load(`600 60px ${fonts.sans}`), document.fonts.load(`500 24px ${fonts.sans}`)]);
 }
 
 export async function drawShareCard(copy: CardCopy, fonts: CardFonts): Promise<Blob> {

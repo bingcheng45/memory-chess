@@ -10,7 +10,7 @@
       "terms": "Nutzungsbedingungen",
       "play": "Spielen",
       "leaderboard": "Bestenliste",
-      "progress": "Fortschritt",
+      "dashboard": "Dashboard",
       "menu": "Menü",
       "site": "Website"
     },
@@ -491,17 +491,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Dein Fortschritt",
-      "description": "Jede Kennzahl, die Memory Chess aus deinen Runden auf diesem Gerät ermittelt, auf einer Seite und mit einer Karte zum Teilen."
+      "title": "Dashboard",
+      "description": "Dein Dashboard bei Memory Chess: Wertungszahl, Gedächtnisspanne, jede Runde, die du auf diesem Gerät gespielt hast, Genauigkeit und Tempo im Verlauf, Bestwerte und eine Karte zum Teilen."
     },
-    "kicker": "Laborbericht",
-    "title": "Dein Fortschritt",
-    "lede": "Alle Werte, die deine Runden auf diesem Gerät ergeben haben, an einem Ort. Nichts davon verlässt deinen Browser, außer du teilst es.",
+    "title": "Dashboard",
+    "lede": "Jede Runde, die du auf diesem Gerät gespielt hast, was sie über dein Gedächtnis verrät, und eine Karte zum Teilen. Nichts davon verlässt deinen Browser, außer du teilst es.",
     "loading": "Dein Verlauf auf diesem Gerät wird gelesen.",
     "unavailable": "Dieser Browser speichert keinen Verlauf, daher gibt es keinen Fortschritt anzuzeigen. Private Fenster speichern nichts.",
     "fullRecord": "Vollständigen Bericht ansehen",
-    "headline": "Wichtigste Werte",
-    "more": "Alles Weitere",
+    "sections": {
+      "summary": "Überblick",
+      "history": "Spielverlauf",
+      "analysis": "Analyse",
+      "more": "Weitere Werte"
+    },
+    "historyLede": "Neueste zuerst. Öffne eine Runde, um ihr ausgewertetes Brett zu sehen.",
+    "analysisLede": "Wie sich deine Genauigkeit und dein Tempo mit der Zeit entwickeln und wo dir Figuren entgleiten.",
     "stale": "Stand deiner letzten Runde",
     "staleNote": "Zuletzt gespielt vor {count, plural, one {# Tag} other {# Tagen}}. So markierte Werte stammen von damals.",
     "play": "Eine Runde spielen",
@@ -522,23 +527,22 @@
       "reviews": "{count, plural, one {# weiteren Wiederholung} other {# weiteren Wiederholungen}} nach demselben Abstand"
     },
     "label": {
+      "rating": "Wertungszahl",
+      "winStreak": "Siegesserie",
+      "bestAccuracy": "Beste Genauigkeit",
+      "recentAccuracy": "Aktuelle Genauigkeit",
       "span": "Gedächtnisspanne",
       "piecesHeld": "Gehaltene Figuren",
       "speed": "Tempo",
-      "streak": "Serie",
+      "streak": "Tagesserie",
       "rounds": "Gespielte Runden",
       "days": "Spieltage",
-      "trend": "Genauigkeit",
       "daily": "Tagesbrett",
       "week": "Diese Woche",
       "curve": "Erinnerung nach Wiederholung",
-      "missMap": "Meistverfehlte Linie",
-      "typeRecall": "Schwächste Figur",
-      "insights": "Erkenntnisse",
       "notebook": "Notizbuch",
       "plans": "Plan",
       "goal": "Ziel",
-      "bests": "Bestwerte",
       "board": "Bestenliste"
     },
     "unit": {
@@ -548,8 +552,7 @@
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> Runde} other {<n>{value}</n> Runden}}",
       "entries": "{count, plural, one {<n>{value}</n> Eintrag} other {<n>{value}</n> Einträge}}",
-      "findings": "{count, plural, one {<n>{value}</n> Erkenntnis} other {<n>{value}</n> Erkenntnisse}}",
-      "settings": "{count, plural, one {<n>{value}</n> Einstellung} other {<n>{value}</n> Einstellungen}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy} % oder mehr in {rounds, plural, one {# Runde} other {# Runden}}, {memorizeSeconds} s eingeprägt",
@@ -559,15 +562,124 @@
       "daily": "{status, select, played {Heute gespielt} unfinished {Heute geöffnet} other {Heute offen}}, längste Serie {longest, plural, one {# Tag} other {# Tage}}",
       "curve": "Erinnert nach {day, plural, one {# Tag} other {# Tagen}}, aus {reviews, plural, one {# Wiederholung} other {# Wiederholungen}}",
       "rounds": "Aus {rounds, plural, one {# Runde} other {# Runden}}",
-      "missLine": "Verfehlt auf {line, select, file {der {name}-Linie} other {Reihe {name}}}, aus {shown} gesehenen Figuren",
-      "pieceType": "{type, select, p {Bauern erinnert} n {Springer erinnert} b {Läufer erinnert} r {Türme erinnert} q {Damen erinnert} other {Könige erinnert}}, aus {shown} gesehenen",
       "plan": "{planId, select, baseline {Plan Basislinie} edge {Plan Rand} other {Plan Leiter}}, {status, select, active {läuft noch} done {jetzt abgeschlossen} other {jetzt beendet}}",
       "goal": "Auf dem Weg zu {pieceCount} Figuren mit {accuracy} %",
       "week": "Wochenziel {goal} Tage",
-      "best": "Bestwert {accuracy} % bei {pieceCount} Figuren, {memorizeSeconds} s",
       "entry": "Richtige Figuren in deinem besten Eintrag, {difficulty, select, easy {Brett Leicht} medium {Brett Mittel} hard {Brett Schwer} other {Brett Großmeister}}",
       "overDays": "An {days, plural, one {# Tag} other {# Tagen}}",
-      "firstDay": "Seit {date}"
+      "firstDay": "Seit {date}",
+      "rating": "{sign, select, up {Plus {change}} down {Minus {change}} other {Keine Änderung}} in {rounds, plural, one {der letzten # gewerteten Runde} other {den letzten # gewerteten Runden}}",
+      "ratingSince": "Aus deinen gewerteten Runden in Partien",
+      "winStreak": "Runden in Partien in Folge mit {accuracy} % oder mehr",
+      "bestAt": "{source, select, calibration {Übung} other {Partie}} mit {pieceCount} Figuren, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "{shown} von {total, plural, one {# Runde} other {# Runden}} angezeigt",
+      "filterSource": "Quelle",
+      "filterSetting": "Einstellung",
+      "allSources": "Alle Quellen",
+      "allSettings": "Alle Einstellungen",
+      "sources": {
+        "game": "Partie",
+        "daily": "Tagesbrett",
+        "plan": "Plan",
+        "review": "Wiederholung",
+        "practice": "Übung"
+      },
+      "settingValue": "{pieceCount} Figuren, {memorizeSeconds} s",
+      "col": {
+        "date": "Gespielt",
+        "source": "Quelle",
+        "setting": "Einstellung",
+        "accuracy": "Genauigkeit",
+        "correct": "Richtig",
+        "time": "Aufbauzeit",
+        "rating": "Wertung",
+        "board": "Brett"
+      },
+      "correctValue": "{correct} von {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Wertung um {change} gestiegen",
+      "ratingDown": "Wertung um {change} gesunken",
+      "ratingLevel": "Wertung unverändert",
+      "unrated": "Nicht gewertet",
+      "show": "Brett zeigen",
+      "hide": "Brett ausblenden",
+      "boardLabel": "Ausgewertetes Brett: {correct} von {total} Figuren richtig.",
+      "detail": "{studied} s von {memorizeSeconds} s eingeprägt. {wrong, plural, =0 {Keine falschen Figuren} one {# falsche Figur} other {# falsche Figuren}}, {extra, plural, =0 {keine zusätzlichen Figuren} one {# zusätzliche Figur} other {# zusätzliche Figuren}}.",
+      "more": "{count} weitere zeigen",
+      "ratingNote": "Wertungsänderungen werden für deine neuesten 20 gewerteten Runden in Partien gespeichert. Übungs- und Wiederholungsrunden werden nicht gewertet.",
+      "kept": "Dein Verlauf speichert die neuesten {kept} deiner {total} Runden einzeln. Ältere Runden zählen weiter für deine Summen und Bestwerte.",
+      "emptyTitle": "Noch keine Runden.",
+      "empty": "Jede Runde, die du auf diesem Gerät spielst, erscheint hier, die neueste zuerst, mit Einstellung, Genauigkeit und Aufbauzeit. Öffne eine, um ihr ausgewertetes Brett zu sehen.",
+      "noMatch": "Keine Runden passen zu diesen Filtern.",
+      "clear": "Filter zurücksetzen"
+    },
+    "analysis": {
+      "fromRounds": "Aus {count, plural, one {# Runde} other {# Runden}}",
+      "oldest": "Älteste",
+      "latest": "Neueste",
+      "accuracy": {
+        "title": "Genauigkeit im Verlauf",
+        "desc": "Deine Genauigkeit Runde für Runde in deiner meistgespielten Einstellung, auf einer Skala von 0 bis 100 %.",
+        "note": "{source, select, calibration {Übungsrunden} other {Runden in Partien}} mit {pieceCount} Figuren, {memorizeSeconds} s, deine meistgespielte Einstellung. {count, plural, one {Letzte # Runde} other {Letzte # Runden}}.",
+        "aria": "Genauigkeit in deinen letzten {count} Runden mit {pieceCount} Figuren, {memorizeSeconds} s, auf einer Skala von 0 bis 100 Prozent, zuletzt {latest} Prozent."
+      },
+      "speed": {
+        "title": "Tempo im Verlauf",
+        "unit": "Sekunden pro richtiger Figur. Weniger ist schneller.",
+        "note": "{source, select, calibration {Übungsrunden} other {Runden in Partien}} mit {pieceCount} Figuren, {memorizeSeconds} s. {count, plural, one {Letzte # Runde} other {Letzte # Runden}}.",
+        "aria": "Sekunden pro richtiger Figur in deinen letzten {count} Runden mit {pieceCount} Figuren, {memorizeSeconds} s, zuletzt {latest}."
+      },
+      "bests": {
+        "title": "Bestwerte pro Einstellung",
+        "desc": "Bestwerte gelten pro Einstellung, denn 6 Figuren und 20 Figuren sind verschiedene Tests.",
+        "setting": "{source, select, calibration {Übung} other {Partie}} · {pieceCount} Figuren, {memorizeSeconds} s",
+        "col": {
+          "setting": "Einstellung",
+          "accuracy": "Beste Genauigkeit",
+          "correct": "Richtig",
+          "time": "Aufbauzeit",
+          "rounds": "Runden",
+          "date": "Erreicht am"
+        }
+      },
+      "types": {
+        "title": "Erinnerung nach Figurentyp",
+        "desc": "Wie oft du jede Figurenart wieder auf ihr Feld stellst.",
+        "value": "{recalled} von {shown}",
+        "thin": "{shown} von {minimum} gesehen",
+        "baseline": "Könige stehen in jeder Runde, deshalb dienen sie als Basiswert: {recalled} von {shown} erinnert.",
+        "onlyKings": "Deine bisherigen Runden hatten nur die beiden Könige. Für die Erinnerung nach Figurentyp braucht es mehr Figuren."
+      },
+      "miss": {
+        "title": "Fehlerkarte",
+        "desc": "Welche Felder und Linien du am häufigsten verfehlst, über alle Runden hinweg.",
+        "aria": "Dein Fehleranteil auf jedem Feld. Dunkler heißt öfter verfehlt. Graue Felder haben weniger als {minimum} gesehene Figuren.",
+        "note": "Dunklere Felder werden öfter verfehlt. Graue Felder haben weniger als {minimum} gesehene Figuren.",
+        "lines": "Solange nicht jedes Feld {minimum} gesehene Figuren hat, zeigt die Karte ganze Linien und Reihen.",
+        "files": "Linien",
+        "ranks": "Reihen",
+        "line": "{line}: {missed} von {shown} verfehlt",
+        "lineThin": "{line}: {shown} gesehen, zu wenig für eine Aussage"
+      },
+      "insights": {
+        "title": "Erkenntnisse",
+        "desc": "Muster in deinen Ergebnissen, an denen sich ansetzen lässt, jeweils mit den Zahlen dahinter.",
+        "none": "Noch fällt nichts auf. Spiel weiter.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Du verfehlst {edge, select, 0 {unter 1 %} other {{edge} %}} von {edgeShown} Figuren auf der a- und h-Linie und keine von {centreShown} auf den Zentrumslinien d und e.} 2 {Du verfehlst die a- und h-Linie etwa doppelt so oft wie die Zentrumslinien d und e: {edge, select, 0 {unter 1 %} other {{edge} %}} von {edgeShown} Figuren gegenüber {centre, select, 0 {unter 1 %} other {{centre} %}} von {centreShown}.} other {Du verfehlst die a- und h-Linie etwa {times}-mal so oft wie die Zentrumslinien d und e: {edge, select, 0 {unter 1 %} other {{edge} %}} von {edgeShown} Figuren gegenüber {centre, select, 0 {unter 1 %} other {{centre} %}} von {centreShown}.}}",
+          "weakType": "Von den Figuren außer Königen, die du {minimum}-mal oder öfter gesehen hast, entgleiten dir {type, select, q {Damen} r {Türme} b {Läufer} n {Springer} other {Bauern}} am häufigsten: {recalled} von {shown} erinnert, {percent} %.",
+          "fasterLessAccurate": "Bei {pieceCount} Figuren, {studyTime}, brauchten deine letzten {window} Runden {fasterTime} weniger pro richtiger Figur als die {window} davor, und die Genauigkeit sank um {fell} Punkte.",
+          "colourGap": "Du erinnerst {weaker, select, w {weiße} other {schwarze}} Figuren seltener als {weaker, select, w {schwarze} other {weiße}}: {weakerPercent} % von {weakerShown} gegenüber {strongerPercent} % von {strongerShown}, ohne Könige.",
+          "plateau": "Bei {pieceCount} Figuren, {studyTime}, lagen deine letzten {window} Runden im Schnitt bei {last} % und die {window} davor bei {before} %, und deine Spanne blieb in deiner letzten Spielwoche bei {span} Figuren. Eine Figur mehr könnte sie bewegen."
+        },
+        "actions": {
+          "rig": "{pieceCount} Figuren, {studyTime} spielen",
+          "patterns": "Übungen zur Mustererkennung lesen",
+          "vision": "Lesen, wie du das ganze Brett siehst"
+        }
+      }
     },
     "share": {
       "button": "Fortschritt teilen",
@@ -580,10 +692,11 @@
       "copy": "Text kopieren",
       "copied": "Text kopiert.",
       "copyFailed": "Kopieren hat hier nicht funktioniert. Der Text ist markiert, kopiere ihn selbst.",
-      "locked": "Deine Karte zum Teilen wird freigeschaltet, sobald Gedächtnisspanne, gehaltene Figuren, Tempo oder deine Serie bereit sind.",
+      "locked": "Deine Karte zum Teilen wird freigeschaltet, sobald Gedächtnisspanne, Wertungszahl, gehaltene Figuren, Tempo oder deine Tagesserie bereit sind.",
       "text": "Mein Fortschritt bei Memory Chess: {figures}. Schaffst du das?",
       "figure": {
         "span": "Gedächtnisspanne {value, plural, one {# Figur} other {# Figuren}}",
+        "rating": "Wertungszahl {value, number}",
         "piecesHeld": "{value, number} gehaltene Figuren",
         "speed": "{value, number} s pro Figur",
         "streak": "{value, plural, one {# Tag} other {# Tage}} in Folge"

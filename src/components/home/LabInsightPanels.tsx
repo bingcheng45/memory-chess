@@ -23,7 +23,7 @@ interface PanelProps<K extends keyof LabResults> {
 type Params = Readonly<Record<string, number | string>>;
 
 /** Seconds print through the record's one formatter, and the window and sample sizes come from the thresholds. */
-function sentenceValues(params: Params): Record<string, number | string> {
+export function sentenceValues(params: Params): Record<string, number | string> {
   const { memorizeSeconds, faster, solveSeconds } = params;
   return {
     ...params,

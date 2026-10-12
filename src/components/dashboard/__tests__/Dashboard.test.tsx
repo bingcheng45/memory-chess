@@ -1,5 +1,6 @@
+import { fireEvent } from "@testing-library/react";
 import { renderWithIntl, screen, within } from "@/test-utils/intl";
-import { ProgressDashboard } from "@/components/dashboard/ProgressDashboard";
+import { Dashboard } from "@/components/dashboard/Dashboard";
 import type { LabData } from "@/hooks/useLabData";
 import { persona } from "@/test-utils/labPersona";
 import type { PersonaName } from "@/lib/lab/personas";
@@ -14,13 +15,13 @@ jest.mock("@/hooks/useLabData", () => ({
 
 const show = (name: PersonaName) => {
   labData = persona(name);
-  return renderWithIntl(<ProgressDashboard />);
+  return renderWithIntl(<Dashboard />);
 };
 const tileText = (id: string) => document.querySelector(`[data-tile="${id}"]`)?.textContent;
 
 beforeEach(() => window.localStorage.clear());
 
-describe("ProgressDashboard", () => {
+describe("Dashboard", () => {
   it("offers the share card once a headline figure is ready, with the caption it will post", () => {
     show("threeDays");
 
@@ -31,18 +32,45 @@ describe("ProgressDashboard", () => {
     expect(tileText("span")).toBe("Memory span6 pieces80% or better in 11 rounds, studied 10 s");
   });
 
-  it("draws no insights tile, not even a loading one, while the record has no finding", () => {
-    show("spanClimber");
+  it("lists every round of the record, newest first, and opens a round's scored board", () => {
+    show("threeDays");
 
-    expect(document.querySelector('[data-tile="insights"]')).toBeNull();
-    expect(document.querySelectorAll('[data-state="loading"]')).toHaveLength(0);
+    expect(document.querySelector("[data-history-count]")?.textContent).toBe("Showing 12 of 12 rounds");
+    const rows = document.querySelectorAll("[data-history-row]");
+    expect(rows).toHaveLength(12);
+    const first = within(rows[0] as HTMLElement);
+    fireEvent.click(first.getByRole("button", { name: "Show board" }));
+    expect(first.getByRole("button", { name: "Hide board" })).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByRole("figure", { name: /^Scored board: \d+ of \d+ pieces right\.$/ })).toBeInTheDocument();
+  });
+
+  it("shows twenty rounds at first and twenty more on request, and filters by setting", () => {
+    show("thirtyDays");
+
+    expect(document.querySelectorAll("[data-history-row]")).toHaveLength(20);
+    expect(document.querySelector("[data-history-count]")?.textContent).toBe("Showing 20 of 90 rounds");
+    fireEvent.click(screen.getByRole("button", { name: "Show 20 more" }));
+    expect(document.querySelectorAll("[data-history-row]")).toHaveLength(40);
+
+    const setting = screen.getByRole("combobox", { name: "Setting" });
+    fireEvent.change(setting, { target: { value: (within(setting).getAllByRole("option")[1] as HTMLOptionElement).value } });
+    const shown = document.querySelector("[data-history-count]")?.textContent ?? "";
+    expect(shown).toMatch(/^Showing \d+ of \d+ rounds?$/);
+    expect(shown).not.toBe("Showing 20 of 90 rounds");
+  });
+
+  it("explains an empty record and offers a first round instead of an empty table", () => {
+    show("newVisitor");
+
+    expect(screen.getByText("No rounds yet.")).toBeInTheDocument();
+    expect(document.querySelectorAll("[data-history-row]")).toHaveLength(0);
   });
 
   it("swaps the share button for a round while every headline figure is still warming", () => {
     show("twoRounds");
 
     expect(screen.queryByRole("button", { name: "Share my progress" })).toBeNull();
-    expect(screen.getByText("Your share card unlocks once memory span, pieces held, speed or your streak is ready.")).toBeInTheDocument();
+    expect(screen.getByText("Your share card unlocks once memory span, skill rating, pieces held, speed or your day streak is ready.")).toBeInTheDocument();
     const speed = document.querySelector<HTMLElement>('[data-tile="speed"]');
     expect(speed?.textContent).toBe("SpeedUnlocks with 4 more rounds at 6 pieces, 10 s.Play 6 pieces, 10 s →");
     expect(within(speed as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
@@ -58,7 +86,7 @@ describe("ProgressDashboard", () => {
   it("asks a player who already played today to come back tomorrow for a figure that needs only another day", () => {
     show("twoRounds");
 
-    expect(tileText("streak")).toBe("StreakUnlocks with 1 more day of play.Come back tomorrow.");
+    expect(tileText("streak")).toBe("Day streakUnlocks with 1 more day of play.Come back tomorrow.");
     expect(within(document.querySelector('[data-tile="streak"]') as HTMLElement).queryByRole("link")).toBeNull();
     expect(within(document.querySelector('[data-tile="piecesHeld"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
   });
@@ -91,8 +119,8 @@ describe("ProgressDashboard", () => {
   ])("names the streak the longest run belongs to in %s", async (locale, longest) => {
     labData = persona("threeDays");
     const { default: messages } = await import(`../../../../messages/${locale}.json`);
-    renderWithIntl(<ProgressDashboard />, { locale, messages });
+    renderWithIntl(<Dashboard />, { locale, messages });
 
-    expect(document.querySelector('[data-tile="streak"] .lab-note')?.textContent).toBe(longest);
+    expect(document.querySelector('[data-tile="streak"] .lab-tile-note')?.textContent).toBe(longest);
   });
 });

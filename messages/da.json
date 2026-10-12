@@ -10,7 +10,7 @@
       "terms": "Vilkår",
       "play": "Spil",
       "leaderboard": "Rangliste",
-      "progress": "Fremskridt",
+      "dashboard": "Oversigt",
       "menu": "Menu",
       "site": "Websted"
     },
@@ -491,17 +491,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Dine fremskridt",
-      "description": "Hvert tal, Memory Chess følger fra dine runder på denne enhed, på én side, med et kort, du kan dele."
+      "title": "Oversigt",
+      "description": "Din oversigt i Memory Chess: færdighedsrating, hukommelsesspænd, hver runde du har spillet på denne enhed, præcision og tempo over tid, personlige rekorder og et kort til at dele dem."
     },
-    "kicker": "Laboratoriejournal",
-    "title": "Dine fremskridt",
-    "lede": "Hvert tal, dine runder har givet på denne enhed, samlet ét sted. Intet forlader din browser, medmindre du deler det.",
+    "title": "Oversigt",
+    "lede": "Hver runde du har spillet på denne enhed, hvad den siger om din hukommelse, og et kort til at dele det. Intet her forlader din browser, medmindre du deler det.",
     "loading": "Læser din journal på denne enhed.",
     "unavailable": "Denne browser gemmer ikke en journal, så der er ingen fremskridt at vise. Private vinduer gemmer intet.",
     "fullRecord": "Se hele journalen",
-    "headline": "Vigtigste tal",
-    "more": "Alt det andet",
+    "sections": {
+      "summary": "Resumé",
+      "history": "Spilhistorik",
+      "analysis": "Analyse",
+      "more": "Flere tal"
+    },
+    "historyLede": "Nyeste først. Åbn en runde for at se dens bedømte bræt.",
+    "analysisLede": "Hvordan din præcision og dit tempo udvikler sig over tid, og hvor brikkerne smutter.",
     "stale": "Fra din seneste runde",
     "staleNote": "Sidst spillet for {count, plural, one {# dag} other {# dage}} siden. Tal markeret sådan er fra dengang.",
     "play": "Spil en runde",
@@ -522,23 +527,22 @@
       "reviews": "{count, plural, one {# gentagelse mere} other {# gentagelser mere}} efter samme pause"
     },
     "label": {
+      "rating": "Færdighedsrating",
+      "winStreak": "Sejre i træk",
+      "bestAccuracy": "Bedste præcision",
+      "recentAccuracy": "Seneste præcision",
       "span": "Hukommelsesspænd",
       "piecesHeld": "Huskede brikker",
       "speed": "Tempo",
-      "streak": "Stime",
+      "streak": "Dage i træk",
       "rounds": "Spillede runder",
       "days": "Spilledage",
-      "trend": "Præcision",
       "daily": "Dagens bræt",
       "week": "Denne uge",
       "curve": "Hukommelse efter gentagelse",
-      "missMap": "Mest missede linje",
-      "typeRecall": "Svageste brik",
-      "insights": "Indsigter",
       "notebook": "Notesbog",
       "plans": "Plan",
       "goal": "Mål",
-      "bests": "Personlige rekorder",
       "board": "Rangliste"
     },
     "unit": {
@@ -548,8 +552,7 @@
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> runde} other {<n>{value}</n> runder}}",
       "entries": "{count, plural, one {<n>{value}</n> notat} other {<n>{value}</n> notater}}",
-      "findings": "{count, plural, one {<n>{value}</n> indsigt} other {<n>{value}</n> indsigter}}",
-      "settings": "{count, plural, one {<n>{value}</n> indstilling} other {<n>{value}</n> indstillinger}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy} % eller bedre i {rounds, plural, one {# runde} other {# runder}}, studeret {memorizeSeconds} s",
@@ -559,15 +562,124 @@
       "daily": "{status, select, played {Spillet i dag} unfinished {Åbnet i dag} other {Åbent i dag}}, længste stime {longest, plural, one {# dag} other {# dage}}",
       "curve": "Husket efter {day, plural, one {# dag} other {# dage}}, fra {reviews, plural, one {# gentagelse} other {# gentagelser}}",
       "rounds": "Fra {rounds, plural, one {# runde} other {# runder}}",
-      "missLine": "Misset på {line, select, file {{name}-linjen} other {række {name}}}, af {shown} sete brikker",
-      "pieceType": "{type, select, p {Bønder husket} n {Springere husket} b {Løbere husket} r {Tårne husket} q {Dronninger husket} other {Konger husket}}, af {shown} sete",
       "plan": "{planId, select, baseline {Planen Grundlinje} edge {Planen Kanter} other {Planen Stige}}, {status, select, active {stadig i gang} done {nu færdig} other {nu stoppet}}",
       "goal": "Mod {pieceCount} brikker med {accuracy} %",
       "week": "Ugemål {goal} dage",
-      "best": "Bedste resultat {accuracy} % med {pieceCount} brikker, {memorizeSeconds} s",
       "entry": "Rigtige brikker i dit bedste bidrag, {difficulty, select, easy {niveau Let} medium {niveau Mellem} hard {niveau Svær} other {niveau Stormester}}",
       "overDays": "Over {days, plural, one {# dag} other {# dage}}",
-      "firstDay": "Siden {date}"
+      "firstDay": "Siden {date}",
+      "rating": "{sign, select, up {Op {change}} down {Ned {change}} other {Ingen ændring}} over {rounds, plural, one {din seneste # ratede runde} other {dine seneste # ratede runder}}",
+      "ratingSince": "Fra dine ratede runder i partier",
+      "winStreak": "Runder i partier i træk med {accuracy} % eller bedre",
+      "bestAt": "{source, select, calibration {Øvelse} other {Parti}} med {pieceCount} brikker, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "Viser {shown} af {total, plural, one {# runde} other {# runder}}",
+      "filterSource": "Kilde",
+      "filterSetting": "Indstilling",
+      "allSources": "Alle kilder",
+      "allSettings": "Alle indstillinger",
+      "sources": {
+        "game": "Parti",
+        "daily": "Dagens bræt",
+        "plan": "Plan",
+        "review": "Gentagelse",
+        "practice": "Øvelse"
+      },
+      "settingValue": "{pieceCount} brikker, {memorizeSeconds} s",
+      "col": {
+        "date": "Spillet",
+        "source": "Kilde",
+        "setting": "Indstilling",
+        "accuracy": "Præcision",
+        "correct": "Rigtige",
+        "time": "Placeringstid",
+        "rating": "Rating",
+        "board": "Bræt"
+      },
+      "correctValue": "{correct} af {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Rating op {change}",
+      "ratingDown": "Rating ned {change}",
+      "ratingLevel": "Rating uændret",
+      "unrated": "Ikke ratet",
+      "show": "Vis bræt",
+      "hide": "Skjul bræt",
+      "boardLabel": "Bedømt bræt: {correct} af {total} brikker rigtige.",
+      "detail": "Studeret {studied} s af {memorizeSeconds} s. {wrong, plural, =0 {Ingen forkerte brikker} one {# forkert brik} other {# forkerte brikker}}, {extra, plural, =0 {ingen ekstra brikker} one {# ekstra brik} other {# ekstra brikker}}.",
+      "more": "Vis {count} mere",
+      "ratingNote": "Ratingændringer gemmes for dine nyeste 20 ratede runder i partier. Øvelses- og gentagelsesrunder bliver ikke ratet.",
+      "kept": "Din journal gemmer de nyeste {kept} af dine {total} runder enkeltvis. Ældre runder tæller stadig med i dine totaler og rekorder.",
+      "emptyTitle": "Ingen runder endnu.",
+      "empty": "Hver runde du spiller på denne enhed vises her, nyeste først, med indstilling, præcision og placeringstid. Åbn en for at se dens bedømte bræt.",
+      "noMatch": "Ingen runder passer til disse filtre.",
+      "clear": "Ryd filtre"
+    },
+    "analysis": {
+      "fromRounds": "Fra {count, plural, one {# runde} other {# runder}}",
+      "oldest": "Ældste",
+      "latest": "Seneste",
+      "accuracy": {
+        "title": "Præcision over tid",
+        "desc": "Din præcision runde for runde med din mest spillede indstilling, på en skala fra 0 til 100 %.",
+        "note": "{source, select, calibration {Øvelsesrunder} other {Runder i partier}} med {pieceCount} brikker, {memorizeSeconds} s, din mest spillede indstilling. {count, plural, one {Seneste # runde} other {Seneste # runder}}.",
+        "aria": "Præcision over dine seneste {count} runder med {pieceCount} brikker, {memorizeSeconds} s, på en skala fra 0 til 100 procent, senest {latest} procent."
+      },
+      "speed": {
+        "title": "Tempo over tid",
+        "unit": "Sekunder pr. rigtig brik. Lavere er hurtigere.",
+        "note": "{source, select, calibration {Øvelsesrunder} other {Runder i partier}} med {pieceCount} brikker, {memorizeSeconds} s. {count, plural, one {Seneste # runde} other {Seneste # runder}}.",
+        "aria": "Sekunder pr. rigtig brik over dine seneste {count} runder med {pieceCount} brikker, {memorizeSeconds} s, senest {latest}."
+      },
+      "bests": {
+        "title": "Personlige rekorder pr. indstilling",
+        "desc": "Rekorder gemmes pr. indstilling, fordi 6 brikker og 20 brikker er forskellige tests.",
+        "setting": "{source, select, calibration {Øvelse} other {Parti}} · {pieceCount} brikker, {memorizeSeconds} s",
+        "col": {
+          "setting": "Indstilling",
+          "accuracy": "Bedste præcision",
+          "correct": "Rigtige",
+          "time": "Placeringstid",
+          "rounds": "Runder",
+          "date": "Sat den"
+        }
+      },
+      "types": {
+        "title": "Hukommelse pr. briktype",
+        "desc": "Hvor ofte du sætter hver slags brik tilbage, hvor den stod.",
+        "value": "{recalled} af {shown}",
+        "thin": "{shown} af {minimum} set",
+        "baseline": "Kongerne er med i hver runde, så de er en basislinje: {recalled} af {shown} husket.",
+        "onlyKings": "Dine runder indtil nu har kun haft de to konger. Hukommelse pr. briktype kræver flere brikker."
+      },
+      "miss": {
+        "title": "Fejlkort",
+        "desc": "Hvilke felter og linjer du oftest misser, på tværs af alle runder.",
+        "aria": "Din andel af missede brikker på hvert felt. Mørkere betyder oftere misset. Grå felter har færre end {minimum} sete brikker.",
+        "note": "Mørkere felter misses oftere. Grå felter har færre end {minimum} sete brikker.",
+        "lines": "Indtil hvert felt har {minimum} sete brikker, viser kortet hele linjer og rækker.",
+        "files": "Linjer",
+        "ranks": "Rækker",
+        "line": "{line}: {missed} af {shown} misset",
+        "lineThin": "{line}: {shown} set, for få til at sige noget"
+      },
+      "insights": {
+        "title": "Indsigter",
+        "desc": "Mønstre i dine resultater, der er værd at handle på, hver med tallene bag.",
+        "none": "Intet skiller sig ud endnu. Bliv ved med at spille.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Du misser {edge, select, 0 {under 1 %} other {{edge} %}} af {edgeShown} brikker på a- og h-linjen og ingen af {centreShown} på centerlinjerne d og e.} 2 {Du misser a- og h-linjen cirka dobbelt så ofte som centerlinjerne d og e: {edge, select, 0 {under 1 %} other {{edge} %}} af {edgeShown} brikker mod {centre, select, 0 {under 1 %} other {{centre} %}} af {centreShown}.} other {Du misser a- og h-linjen cirka {times} gange så ofte som centerlinjerne d og e: {edge, select, 0 {under 1 %} other {{edge} %}} af {edgeShown} brikker mod {centre, select, 0 {under 1 %} other {{centre} %}} af {centreShown}.}}",
+          "weakType": "Af brikkerne ud over kongerne, som du har set {minimum} gange eller mere, smutter {type, select, q {dronninger} r {tårne} b {løbere} n {springere} other {bønder}} oftest: du huskede {recalled} af {shown}, {percent} %.",
+          "fasterLessAccurate": "Med {pieceCount} brikker, {studyTime}, brugte dine seneste {window} runder {fasterTime} mindre pr. rigtig brik end de {window} før, og præcisionen faldt {fell} point.",
+          "colourGap": "Du husker {weaker, select, w {hvide} other {sorte}} brikker sjældnere end {weaker, select, w {sorte} other {hvide}}: {weakerPercent} % af {weakerShown} mod {strongerPercent} % af {strongerShown}, kongerne ikke medregnet.",
+          "plateau": "Med {pieceCount} brikker, {studyTime}, lå dine seneste {window} runder i gennemsnit på {last} % og de {window} før på {before} %, og dit spænd holdt sig på {span} brikker i din seneste uges spil. Én brik mere kan flytte det."
+        },
+        "actions": {
+          "rig": "Spil {pieceCount} brikker, {studyTime}",
+          "patterns": "Læs øvelserne i mønstergenkendelse",
+          "vision": "Læs, hvordan du ser hele brættet"
+        }
+      }
     },
     "share": {
       "button": "Del mine fremskridt",
@@ -580,10 +692,11 @@
       "copy": "Kopiér tekst",
       "copied": "Tekst kopieret.",
       "copyFailed": "Kopiering virkede ikke her. Teksten er markeret, så kopiér den selv.",
-      "locked": "Dit delekort låses op, når dit hukommelsesspænd, huskede brikker, tempo eller din stime er klar.",
+      "locked": "Dit delekort låses op, når dit hukommelsesspænd, din færdighedsrating, huskede brikker, tempo eller dine dage i træk er klar.",
       "text": "Mine fremskridt i Memory Chess: {figures}. Kan du slå det?",
       "figure": {
         "span": "hukommelsesspænd på {value, plural, one {# brik} other {# brikker}}",
+        "rating": "færdighedsrating på {value, number}",
         "piecesHeld": "{value, number} huskede brikker",
         "speed": "{value, number} s pr. brik",
         "streak": "{value, plural, one {# dag} other {# dage}} i træk"

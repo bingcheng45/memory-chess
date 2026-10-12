@@ -10,7 +10,7 @@
       "terms": "Terms",
       "play": "Play",
       "leaderboard": "Leaderboard",
-      "progress": "Progress",
+      "dashboard": "Dashboard",
       "menu": "Menu",
       "site": "Site"
     },
@@ -707,7 +707,7 @@
         },
         "mine": "Your record",
         "fromRounds": "From {count, plural, one {# round} other {# rounds}}",
-        "dashboardLink": "See every figure on one page",
+        "dashboardLink": "Open your dashboard",
         "play": "Play a round",
         "tomorrow": "Come back tomorrow.",
         "stale": "Last played {count, plural, one {# day} other {# days}} ago.",
@@ -1289,17 +1289,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Your progress",
-      "description": "Every figure Memory Chess tracks from your rounds on this device, on one page, with a card to share them."
+      "title": "Dashboard",
+      "description": "Your Memory Chess dashboard: skill rating, memory span, every round you played on this device, accuracy and speed over time, personal bests, and a card to share them."
     },
-    "kicker": "Lab record",
-    "title": "Your progress",
-    "lede": "Every figure your rounds have earned on this device, in one place. Nothing here leaves your browser unless you share it.",
+    "title": "Dashboard",
+    "lede": "Every round you have played on this device, what it says about your memory, and a card to share it. Nothing here leaves your browser unless you share it.",
     "loading": "Reading your record on this device.",
     "unavailable": "This browser does not keep a record, so there is no progress to show. Private windows keep nothing.",
     "fullRecord": "See the full record",
-    "headline": "Headline figures",
-    "more": "Everything else",
+    "sections": {
+      "summary": "Summary",
+      "history": "Game history",
+      "analysis": "Analysis",
+      "more": "More figures"
+    },
+    "historyLede": "Newest first. Open a round to see its scored board.",
+    "analysisLede": "How your accuracy and speed move over time, and where pieces slip.",
     "stale": "As of your last round",
     "staleNote": "Last played {count, plural, one {# day} other {# days}} ago. Figures marked so are from then.",
     "play": "Play a round",
@@ -1320,23 +1325,22 @@
       "reviews": "{count, plural, one {# more review} other {# more reviews}} after the same gap"
     },
     "label": {
+      "rating": "Skill rating",
+      "winStreak": "Win streak",
+      "bestAccuracy": "Best accuracy",
+      "recentAccuracy": "Recent accuracy",
       "span": "Memory span",
       "piecesHeld": "Pieces held",
       "speed": "Speed",
-      "streak": "Streak",
+      "streak": "Day streak",
       "rounds": "Rounds played",
       "days": "Days played",
-      "trend": "Accuracy",
       "daily": "Daily board",
       "week": "This week",
       "curve": "Recall after review",
-      "missMap": "Most missed line",
-      "typeRecall": "Weakest piece",
-      "insights": "Insights",
       "notebook": "Notebook",
       "plans": "Plan",
       "goal": "Goal",
-      "bests": "Personal bests",
       "board": "Leaderboard"
     },
     "unit": {
@@ -1346,8 +1350,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> round} other {<n>{value}</n> rounds}}",
       "entries": "{count, plural, one {<n>{value}</n> entry} other {<n>{value}</n> entries}}",
-      "findings": "{count, plural, one {<n>{value}</n> finding} other {<n>{value}</n> findings}}",
-      "settings": "{count, plural, one {<n>{value}</n> setting} other {<n>{value}</n> settings}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy}% or better in {rounds, plural, one {# round} other {# rounds}}, studied {memorizeSeconds} s",
@@ -1357,15 +1360,124 @@
       "daily": "{status, select, played {Played today} unfinished {Opened today} other {Open today}}, longest streak {longest, plural, one {# day} other {# days}}",
       "curve": "Recalled after {day, plural, one {# day} other {# days}}, from {reviews, plural, one {# review} other {# reviews}}",
       "rounds": "From {rounds, plural, one {# round} other {# rounds}}",
-      "missLine": "Missed on {line, select, file {the {name} file} other {rank {name}}}, from {shown} pieces seen",
-      "pieceType": "{type, select, p {Pawns recalled} n {Knights recalled} b {Bishops recalled} r {Rooks recalled} q {Queens recalled} other {Kings recalled}}, from {shown} seen",
       "plan": "{planId, select, baseline {Baseline plan} edge {Edge plan} other {Ladder plan}}, {status, select, active {in progress} done {now complete} other {now stopped}}",
       "goal": "Toward {pieceCount} pieces at {accuracy}%",
       "week": "Weekly goal {goal} days",
-      "best": "Top reading {accuracy}% at {pieceCount} pieces, {memorizeSeconds} s",
       "entry": "Correct pieces in your best entry, {difficulty, select, easy {Easy board} medium {Medium board} hard {Hard board} other {Grandmaster board}}",
       "overDays": "Over {days, plural, one {# day} other {# days}}",
-      "firstDay": "Since {date}"
+      "firstDay": "Since {date}",
+      "rating": "{sign, select, up {Up {change}} down {Down {change}} other {No change}} over your last {rounds, plural, one {# rated round} other {# rated rounds}}",
+      "ratingSince": "From your rated game rounds",
+      "winStreak": "Game rounds in a row at {accuracy}% or better",
+      "bestAt": "{source, select, calibration {Practice} other {Game}} at {pieceCount} pieces, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "Showing {shown} of {total, plural, one {# round} other {# rounds}}",
+      "filterSource": "Source",
+      "filterSetting": "Setting",
+      "allSources": "All sources",
+      "allSettings": "All settings",
+      "sources": {
+        "game": "Game",
+        "daily": "Daily board",
+        "plan": "Plan",
+        "review": "Review",
+        "practice": "Practice"
+      },
+      "settingValue": "{pieceCount} pieces, {memorizeSeconds} s",
+      "col": {
+        "date": "Played",
+        "source": "Source",
+        "setting": "Setting",
+        "accuracy": "Accuracy",
+        "correct": "Correct",
+        "time": "Rebuild time",
+        "rating": "Rating",
+        "board": "Board"
+      },
+      "correctValue": "{correct} of {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Rating up {change}",
+      "ratingDown": "Rating down {change}",
+      "ratingLevel": "Rating unchanged",
+      "unrated": "Not rated",
+      "show": "Show board",
+      "hide": "Hide board",
+      "boardLabel": "Scored board: {correct} of {total} pieces right.",
+      "detail": "Studied {studied} s of {memorizeSeconds} s. {wrong, plural, =0 {No wrong pieces} one {# wrong piece} other {# wrong pieces}}, {extra, plural, =0 {no extra pieces} one {# extra piece} other {# extra pieces}}.",
+      "more": "Show {count} more",
+      "ratingNote": "Rating changes are kept for your newest 20 rated game rounds. Practice and review rounds are not rated.",
+      "kept": "Your record keeps the newest {kept} of your {total} rounds round by round. Older rounds still count in your totals and bests.",
+      "emptyTitle": "No rounds yet.",
+      "empty": "Every round you play on this device appears here, newest first, with its setting, accuracy and rebuild time. Open one to see its scored board.",
+      "noMatch": "No rounds match these filters.",
+      "clear": "Clear filters"
+    },
+    "analysis": {
+      "fromRounds": "From {count, plural, one {# round} other {# rounds}}",
+      "oldest": "Oldest",
+      "latest": "Latest",
+      "accuracy": {
+        "title": "Accuracy over time",
+        "desc": "Your accuracy round by round at your most played setting, on a scale from 0 to 100%.",
+        "note": "{source, select, calibration {Practice} other {Game}} rounds at {pieceCount} pieces, {memorizeSeconds} s, your most played setting. Last {count, plural, one {# round} other {# rounds}}.",
+        "aria": "Accuracy over your last {count} rounds at {pieceCount} pieces, {memorizeSeconds} s, on a scale from 0 to 100 percent, latest {latest} percent."
+      },
+      "speed": {
+        "title": "Speed over time",
+        "unit": "Seconds per correct piece. Lower is faster.",
+        "note": "{source, select, calibration {Practice} other {Game}} rounds at {pieceCount} pieces, {memorizeSeconds} s. Last {count, plural, one {# round} other {# rounds}}.",
+        "aria": "Seconds per correct piece over your last {count} rounds at {pieceCount} pieces, {memorizeSeconds} s, latest {latest}."
+      },
+      "bests": {
+        "title": "Personal bests per setting",
+        "desc": "Bests are kept per setting, because 6 pieces and 20 pieces are different tests.",
+        "setting": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces, {memorizeSeconds} s",
+        "col": {
+          "setting": "Setting",
+          "accuracy": "Best accuracy",
+          "correct": "Correct",
+          "time": "Rebuild time",
+          "rounds": "Rounds",
+          "date": "Set on"
+        }
+      },
+      "types": {
+        "title": "Recall by piece type",
+        "desc": "How often you put each kind of piece back where it stood.",
+        "value": "{recalled} of {shown}",
+        "thin": "{shown} of {minimum} seen",
+        "baseline": "Kings are in every round, so they are a baseline: recalled {recalled} of {shown}.",
+        "onlyKings": "Your rounds so far placed only the two kings. Recall by piece type needs more pieces."
+      },
+      "miss": {
+        "title": "Miss map",
+        "desc": "Which squares and lines you miss most, across every round.",
+        "aria": "Your miss share on each square. Darker is missed more often. Grey squares have fewer than {minimum} pieces seen.",
+        "note": "Darker squares are missed more often. Grey squares have fewer than {minimum} pieces seen.",
+        "lines": "Until every square has {minimum} pieces seen, the map reads whole files and ranks.",
+        "files": "Files",
+        "ranks": "Ranks",
+        "line": "{line}: {missed} of {shown} missed",
+        "lineThin": "{line}: {shown} seen, not enough to read"
+      },
+      "insights": {
+        "title": "Insights",
+        "desc": "Patterns in your record worth acting on, each with the counts behind it.",
+        "none": "Nothing stands out yet. Keep playing.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {You miss {edge, select, 0 {under 1%} other {{edge}%}} of {edgeShown} pieces on the a and h files and none of {centreShown} on the centre files, d and e.} 2 {You miss the a and h files about twice as often as the centre files, d and e: {edge, select, 0 {under 1%} other {{edge}%}} of {edgeShown} pieces against {centre, select, 0 {under 1%} other {{centre}%}} of {centreShown}.} other {You miss the a and h files about {times} times as often as the centre files, d and e: {edge, select, 0 {under 1%} other {{edge}%}} of {edgeShown} pieces against {centre, select, 0 {under 1%} other {{centre}%}} of {centreShown}.}}",
+          "weakType": "Of the pieces other than kings seen {minimum} times or more, {type, select, q {queens} r {rooks} b {bishops} n {knights} other {pawns}} slip most: you recalled {recalled} of {shown}, {percent}%.",
+          "fasterLessAccurate": "At {pieceCount} pieces, {studyTime}, your last {window} rounds took {fasterTime} less per correct piece than the {window} before, and accuracy fell {fell} points.",
+          "colourGap": "You recall {weaker, select, w {white} other {black}} pieces less often than {weaker, select, w {black} other {white}} ones: {weakerPercent}% of {weakerShown} against {strongerPercent}% of {strongerShown}, kings left out.",
+          "plateau": "At {pieceCount} pieces, {studyTime}, your last {window} rounds averaged {last}% and the {window} before {before}%, and your span held at {span} pieces over your last week of play. One more piece may move it."
+        },
+        "actions": {
+          "rig": "Play {pieceCount} pieces, {studyTime}",
+          "patterns": "Read the pattern recognition drills",
+          "vision": "Read how to see the whole board"
+        }
+      }
     },
     "share": {
       "button": "Share my progress",
@@ -1378,10 +1490,11 @@
       "copy": "Copy caption",
       "copied": "Caption copied.",
       "copyFailed": "Copy did not work here. The caption is selected, so copy it yourself.",
-      "locked": "Your share card unlocks once memory span, pieces held, speed or your streak is ready.",
+      "locked": "Your share card unlocks once memory span, skill rating, pieces held, speed or your day streak is ready.",
       "text": "My Memory Chess progress: {figures}. Can you beat it?",
       "figure": {
         "span": "memory span {value, plural, one {# piece} other {# pieces}}",
+        "rating": "skill rating {value, number}",
         "piecesHeld": "{value, number} pieces held",
         "speed": "{value, number} s per piece",
         "streak": "{value, plural, one {# day} other {# days}} in a row"

@@ -13,7 +13,7 @@ const SITE_LINKS = [
   { href: "/learn", key: "learn" },
   { href: "/articles", key: "articles" },
   { href: "/leaderboard", key: "leaderboard" },
-  { href: "/dashboard", key: "progress" },
+  { href: "/dashboard", key: "dashboard" },
   { href: "/about", key: "about", extra: true },
 ] as const;
 

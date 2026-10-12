@@ -10,7 +10,7 @@
       "terms": "Ketentuan",
       "play": "Main",
       "leaderboard": "Peringkat",
-      "progress": "Kemajuan",
+      "dashboard": "Dasbor",
       "menu": "Menu",
       "site": "Situs"
     },
@@ -491,17 +491,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Kemajuanmu",
-      "description": "Setiap angka yang dicatat Memory Chess dari ronde-rondemu di perangkat ini, dalam satu halaman, dengan kartu untuk dibagikan."
+      "title": "Dasbor",
+      "description": "Dasbor Memory Chess-mu: rating keahlian, rentang memori, setiap ronde yang kamu mainkan di perangkat ini, akurasi dan kecepatan dari waktu ke waktu, rekor pribadi, dan kartu untuk membagikannya."
     },
-    "kicker": "Catatan lab",
-    "title": "Kemajuanmu",
-    "lede": "Semua angka yang diraih ronde-rondemu di perangkat ini, di satu tempat. Tidak ada yang keluar dari browsermu kecuali kamu membagikannya.",
+    "title": "Dasbor",
+    "lede": "Setiap ronde yang kamu mainkan di perangkat ini, apa artinya bagi ingatanmu, dan kartu untuk membagikannya. Tidak ada yang keluar dari browsermu kecuali kamu membagikannya.",
     "loading": "Membaca catatanmu di perangkat ini.",
     "unavailable": "Browser ini tidak menyimpan catatan, jadi tidak ada kemajuan untuk ditampilkan. Jendela pribadi tidak menyimpan apa pun.",
     "fullRecord": "Lihat catatan lengkap",
-    "headline": "Angka utama",
-    "more": "Semua lainnya",
+    "sections": {
+      "summary": "Ringkasan",
+      "history": "Riwayat permainan",
+      "analysis": "Analisis",
+      "more": "Angka lainnya"
+    },
+    "historyLede": "Terbaru lebih dulu. Buka satu ronde untuk melihat papan yang sudah dinilai.",
+    "analysisLede": "Bagaimana akurasi dan kecepatanmu berubah dari waktu ke waktu, dan di mana bidak terlewat.",
     "stale": "Per ronde terakhirmu",
     "staleNote": "Terakhir bermain {count, plural, other {# hari}} lalu. Angka yang ditandai begini berasal dari saat itu.",
     "play": "Mainkan satu ronde",
@@ -522,23 +527,22 @@
       "reviews": "{count, plural, other {# ulasan lagi}} setelah jeda yang sama"
     },
     "label": {
+      "rating": "Rating keahlian",
+      "winStreak": "Kemenangan beruntun",
+      "bestAccuracy": "Akurasi terbaik",
+      "recentAccuracy": "Akurasi terbaru",
       "span": "Rentang memori",
       "piecesHeld": "Bidak diingat",
       "speed": "Kecepatan",
-      "streak": "Beruntun",
+      "streak": "Hari beruntun",
       "rounds": "Ronde dimainkan",
       "days": "Hari bermain",
-      "trend": "Akurasi",
       "daily": "Papan harian",
       "week": "Minggu ini",
       "curve": "Ingatan setelah ulasan",
-      "missMap": "Garis paling sering meleset",
-      "typeRecall": "Bidak terlemah",
-      "insights": "Temuan",
       "notebook": "Buku catatan",
       "plans": "Rencana",
       "goal": "Target",
-      "bests": "Rekor pribadi",
       "board": "Papan peringkat"
     },
     "unit": {
@@ -548,8 +552,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, other {<n>{value}</n> ronde}}",
       "entries": "{count, plural, other {<n>{value}</n> catatan}}",
-      "findings": "{count, plural, other {<n>{value}</n> temuan}}",
-      "settings": "{count, plural, other {<n>{value}</n> pengaturan}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy}% atau lebih dalam {rounds, plural, other {# ronde}}, menghafal {memorizeSeconds} dtk",
@@ -559,15 +562,124 @@
       "daily": "{status, select, played {Dimainkan hari ini} unfinished {Dibuka hari ini} other {Tersedia hari ini}}, beruntun terpanjang {longest, plural, other {# hari}}",
       "curve": "Diingat setelah {day, plural, other {# hari}}, dari {reviews, plural, other {# ulasan}}",
       "rounds": "Dari {rounds, plural, other {# ronde}}",
-      "missLine": "Meleset di {line, select, file {kolom {name}} other {baris {name}}}, dari {shown} bidak terlihat",
-      "pieceType": "{type, select, p {Pion diingat} n {Kuda diingat} b {Gajah diingat} r {Benteng diingat} q {Menteri diingat} other {Raja diingat}}, dari {shown} terlihat",
       "plan": "{planId, select, baseline {Rencana Dasar} edge {Rencana Tepi} other {Rencana Tangga}}, {status, select, active {masih berjalan} done {sudah selesai} other {sudah dihentikan}}",
       "goal": "Menuju {pieceCount} bidak dengan {accuracy}%",
       "week": "Target mingguan {goal} hari",
-      "best": "Hasil terbaik {accuracy}% dengan {pieceCount} bidak, {memorizeSeconds} dtk",
       "entry": "Bidak benar di entri terbaikmu, {difficulty, select, easy {level Mudah} medium {level Sedang} hard {level Sulit} other {level Grandmaster}}",
       "overDays": "Selama {days, plural, other {# hari}}",
-      "firstDay": "Sejak {date}"
+      "firstDay": "Sejak {date}",
+      "rating": "{sign, select, up {Naik {change}} down {Turun {change}} other {Tidak berubah}} dalam {rounds, plural, other {# ronde berating}} terakhirmu",
+      "ratingSince": "Dari ronde permainanmu yang berating",
+      "winStreak": "Ronde permainan berturut-turut dengan {accuracy}% atau lebih",
+      "bestAt": "{source, select, calibration {Latihan} other {Permainan}} dengan {pieceCount} bidak, {memorizeSeconds} dtk"
+    },
+    "history": {
+      "count": "Menampilkan {shown} dari {total, plural, other {# ronde}}",
+      "filterSource": "Sumber",
+      "filterSetting": "Pengaturan",
+      "allSources": "Semua sumber",
+      "allSettings": "Semua pengaturan",
+      "sources": {
+        "game": "Permainan",
+        "daily": "Papan harian",
+        "plan": "Rencana",
+        "review": "Ulasan",
+        "practice": "Latihan"
+      },
+      "settingValue": "{pieceCount} bidak, {memorizeSeconds} dtk",
+      "col": {
+        "date": "Dimainkan",
+        "source": "Sumber",
+        "setting": "Pengaturan",
+        "accuracy": "Akurasi",
+        "correct": "Benar",
+        "time": "Waktu menyusun",
+        "rating": "Rating",
+        "board": "Papan"
+      },
+      "correctValue": "{correct} dari {total}",
+      "seconds": "{value} dtk",
+      "ratingUp": "Rating naik {change}",
+      "ratingDown": "Rating turun {change}",
+      "ratingLevel": "Rating tetap",
+      "unrated": "Tanpa rating",
+      "show": "Tampilkan papan",
+      "hide": "Sembunyikan papan",
+      "boardLabel": "Papan yang dinilai: {correct} dari {total} bidak benar.",
+      "detail": "Menghafal {studied} dtk dari {memorizeSeconds} dtk. {wrong, plural, =0 {Tidak ada bidak salah} other {# bidak salah}}, {extra, plural, =0 {tidak ada bidak berlebih} other {# bidak berlebih}}.",
+      "more": "Tampilkan {count} lagi",
+      "ratingNote": "Perubahan rating disimpan untuk 20 ronde permainan berating terbarumu. Ronde latihan dan ulasan tidak diberi rating.",
+      "kept": "Catatanmu menyimpan rincian {kept} ronde terbaru dari total {total} rondemu. Ronde yang lebih lama tetap dihitung dalam total dan rekormu.",
+      "emptyTitle": "Belum ada ronde.",
+      "empty": "Setiap ronde yang kamu mainkan di perangkat ini muncul di sini, terbaru lebih dulu, dengan pengaturan, akurasi, dan waktu menyusunnya. Buka satu untuk melihat papan yang sudah dinilai.",
+      "noMatch": "Tidak ada ronde yang cocok dengan filter ini.",
+      "clear": "Hapus filter"
+    },
+    "analysis": {
+      "fromRounds": "Dari {count, plural, other {# ronde}}",
+      "oldest": "Terlama",
+      "latest": "Terbaru",
+      "accuracy": {
+        "title": "Akurasi dari waktu ke waktu",
+        "desc": "Akurasimu ronde demi ronde pada pengaturan yang paling sering kamu mainkan, dalam skala 0 hingga 100%.",
+        "note": "Ronde {source, select, calibration {latihan} other {permainan}} dengan {pieceCount} bidak, {memorizeSeconds} dtk, pengaturan yang paling sering kamu mainkan. {count, plural, other {# ronde}} terakhir.",
+        "aria": "Akurasi dalam {count} ronde terakhirmu dengan {pieceCount} bidak, {memorizeSeconds} dtk, pada skala 0 sampai 100 persen, terbaru {latest} persen."
+      },
+      "speed": {
+        "title": "Kecepatan dari waktu ke waktu",
+        "unit": "Detik per bidak benar. Makin rendah makin cepat.",
+        "note": "Ronde {source, select, calibration {latihan} other {permainan}} dengan {pieceCount} bidak, {memorizeSeconds} dtk. {count, plural, other {# ronde}} terakhir.",
+        "aria": "Detik per bidak benar dalam {count} ronde terakhirmu dengan {pieceCount} bidak, {memorizeSeconds} dtk, terbaru {latest}."
+      },
+      "bests": {
+        "title": "Rekor pribadi per pengaturan",
+        "desc": "Rekor disimpan per pengaturan, karena 6 bidak dan 20 bidak adalah tes yang berbeda.",
+        "setting": "{source, select, calibration {Latihan} other {Permainan}} · {pieceCount} bidak, {memorizeSeconds} dtk",
+        "col": {
+          "setting": "Pengaturan",
+          "accuracy": "Akurasi terbaik",
+          "correct": "Benar",
+          "time": "Waktu menyusun",
+          "rounds": "Ronde",
+          "date": "Tanggal"
+        }
+      },
+      "types": {
+        "title": "Ingatan per jenis bidak",
+        "desc": "Seberapa sering kamu mengembalikan tiap jenis bidak ke petak asalnya.",
+        "value": "{recalled} dari {shown}",
+        "thin": "{shown} dari {minimum} terlihat",
+        "baseline": "Raja ada di setiap ronde, jadi menjadi patokan: diingat {recalled} dari {shown}.",
+        "onlyKings": "Sejauh ini rondemu hanya menempatkan kedua raja. Ingatan per jenis bidak butuh lebih banyak bidak."
+      },
+      "miss": {
+        "title": "Peta meleset",
+        "desc": "Petak dan garis mana yang paling sering kamu lewatkan, dari semua ronde.",
+        "aria": "Porsi melesetmu di setiap petak. Lebih gelap berarti lebih sering meleset. Petak abu-abu memiliki kurang dari {minimum} bidak terlihat.",
+        "note": "Petak yang lebih gelap lebih sering meleset. Petak abu-abu memiliki kurang dari {minimum} bidak terlihat.",
+        "lines": "Sampai setiap petak memiliki {minimum} bidak terlihat, peta membaca kolom dan baris secara utuh.",
+        "files": "Kolom",
+        "ranks": "Baris",
+        "line": "{line}: {missed} dari {shown} meleset",
+        "lineThin": "{line}: {shown} terlihat, belum cukup untuk dibaca"
+      },
+      "insights": {
+        "title": "Temuan",
+        "desc": "Pola dalam catatanmu yang layak ditindaklanjuti, masing-masing dengan angka di baliknya.",
+        "none": "Belum ada yang menonjol. Terus bermain.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Kamu meleset {edge, select, 0 {di bawah 1%} other {{edge}%}} dari {edgeShown} bidak di kolom a dan h, dan tidak satu pun dari {centreShown} di kolom tengah, d dan e.} 2 {Kamu meleset di kolom a dan h sekitar dua kali lebih sering daripada di kolom tengah, d dan e: {edge, select, 0 {di bawah 1%} other {{edge}%}} dari {edgeShown} bidak dibanding {centre, select, 0 {di bawah 1%} other {{centre}%}} dari {centreShown}.} other {Kamu meleset di kolom a dan h sekitar {times} kali lebih sering daripada di kolom tengah, d dan e: {edge, select, 0 {di bawah 1%} other {{edge}%}} dari {edgeShown} bidak dibanding {centre, select, 0 {di bawah 1%} other {{centre}%}} dari {centreShown}.}}",
+          "weakType": "Dari bidak selain raja yang terlihat {minimum} kali atau lebih, {type, select, q {menteri} r {benteng} b {gajah} n {kuda} other {pion}} paling sering terlewat: kamu mengingat {recalled} dari {shown}, {percent}%.",
+          "fasterLessAccurate": "Dengan {pieceCount} bidak, {studyTime}, {window} ronde terakhirmu butuh {fasterTime} lebih sedikit per bidak benar dibanding {window} ronde sebelumnya, dan akurasi turun {fell} poin.",
+          "colourGap": "Kamu lebih jarang mengingat bidak {weaker, select, w {putih} other {hitam}} daripada bidak {weaker, select, w {hitam} other {putih}}: {weakerPercent}% dari {weakerShown} dibanding {strongerPercent}% dari {strongerShown}, tanpa raja.",
+          "plateau": "Dengan {pieceCount} bidak, {studyTime}, {window} ronde terakhirmu rata-rata {last}% dan {window} ronde sebelumnya {before}%, dan rentang memorimu bertahan di {span} bidak selama seminggu terakhir kamu bermain. Satu bidak lagi mungkin bisa menggesernya."
+        },
+        "actions": {
+          "rig": "Main {pieceCount} bidak, {studyTime}",
+          "patterns": "Baca latihan pengenalan pola",
+          "vision": "Baca cara melihat seluruh papan"
+        }
+      }
     },
     "share": {
       "button": "Bagikan kemajuanku",
@@ -580,10 +692,11 @@
       "copy": "Salin teks",
       "copied": "Teks disalin.",
       "copyFailed": "Menyalin tidak berhasil di sini. Teks sudah dipilih, salin sendiri.",
-      "locked": "Kartu untuk dibagikan terbuka setelah rentang memori, bidak diingat, kecepatan, atau beruntunmu siap.",
+      "locked": "Kartu untuk dibagikan terbuka setelah rentang memori, rating keahlian, bidak diingat, kecepatan, atau hari beruntunmu siap.",
       "text": "Kemajuanku di Memory Chess: {figures}. Bisa kalahkan?",
       "figure": {
         "span": "rentang memori {value, plural, other {# bidak}}",
+        "rating": "rating keahlian {value, number}",
         "piecesHeld": "{value, number} bidak diingat",
         "speed": "{value, number} dtk per bidak",
         "streak": "{value, plural, other {# hari}} beruntun"

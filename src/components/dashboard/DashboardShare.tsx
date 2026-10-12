@@ -18,9 +18,10 @@ type ShareState = "idle" | "working" | "shared" | "saved" | "failed";
 
 const track = (method: ShareMethod) => trackEvent({ name: "lab_dashboard_share", params: { method } });
 
+/** The card prints in Lab Paper's interface face, the one the page's headings and figures use. */
 function fontsOf(element: HTMLElement): CardFonts {
-  const mono = getComputedStyle(document.body).getPropertyValue("--font-geist-mono").trim();
-  return { sans: getComputedStyle(element).fontFamily, mono: mono || "ui-monospace, monospace" };
+  const style = getComputedStyle(element);
+  return { sans: style.getPropertyValue("--lp-ui").trim() || style.fontFamily };
 }
 
 const isCancel = (error: unknown) => error instanceof DOMException && error.name === "AbortError";
@@ -37,10 +38,9 @@ export function DashboardShare({ card }: { card: ShareCard | null }) {
 
   if (!card || !caption) {
     return (
-      <div className="lab-share">
-        <p className="lab-panel-desc">{t("share.locked")}</p>
+      <div className="lab-share" data-locked="">
+        <p className="lab-share-text">{t("share.locked")}</p>
         <Link className="lab-btn lab-btn-primary" href={DASHBOARD_PLAY_HREF}>
-          <span className="lab-dot" aria-hidden="true" />
           {t("play")}
         </Link>
       </div>
@@ -102,9 +102,8 @@ export function DashboardShare({ card }: { card: ShareCard | null }) {
 
   return (
     <div className="lab-share" ref={root}>
-      <div className="lab-cta-row">
+      <div className="lab-share-actions">
         <button type="button" className="lab-btn lab-btn-primary" onClick={() => void share()} disabled={state === "working"}>
-          <span className="lab-dot" aria-hidden="true" />
           {t("share.button")}
         </button>
         <button type="button" className="lab-btn lab-btn-secondary" onClick={() => void copyCaption()}>
@@ -115,7 +114,7 @@ export function DashboardShare({ card }: { card: ShareCard | null }) {
         {status}
       </p>
       <figure className="lab-share-caption">
-        <figcaption className="lab-k">{t("share.caption")}</figcaption>
+        <figcaption className="lab-share-label">{t("share.caption")}</figcaption>
         <pre ref={textRef}>{captionWithLink(caption)}</pre>
       </figure>
     </div>

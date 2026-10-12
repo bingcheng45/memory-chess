@@ -10,7 +10,7 @@
       "terms": "Villkor",
       "play": "Spela",
       "leaderboard": "Topplista",
-      "progress": "Framsteg",
+      "dashboard": "Översikt",
       "menu": "Meny",
       "site": "Webbplats"
     },
@@ -491,17 +491,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Dina framsteg",
-      "description": "Varje siffra som Memory Chess följer från dina rundor på den här enheten, på en sida, med ett kort att dela."
+      "title": "Översikt",
+      "description": "Din översikt i Memory Chess: färdighetsrating, minnesspann, varje runda du spelat på den här enheten, träffsäkerhet och tempo över tid, personbästa och ett kort att dela dem med."
     },
-    "kicker": "Labbjournal",
-    "title": "Dina framsteg",
-    "lede": "Varje siffra som dina rundor har gett på den här enheten, på ett ställe. Inget lämnar din webbläsare om du inte delar det.",
+    "title": "Översikt",
+    "lede": "Varje runda du har spelat på den här enheten, vad den säger om ditt minne och ett kort att dela. Inget här lämnar din webbläsare om du inte delar det.",
     "loading": "Läser din journal på den här enheten.",
     "unavailable": "Den här webbläsaren sparar ingen journal, så det finns inga framsteg att visa. Privata fönster sparar ingenting.",
     "fullRecord": "Se hela journalen",
-    "headline": "Viktigaste siffror",
-    "more": "Allt annat",
+    "sections": {
+      "summary": "Sammanfattning",
+      "history": "Spelhistorik",
+      "analysis": "Analys",
+      "more": "Fler siffror"
+    },
+    "historyLede": "Nyast först. Öppna en runda för att se dess rättade bräde.",
+    "analysisLede": "Hur din träffsäkerhet och ditt tempo förändras över tid, och var pjäserna glider undan.",
     "stale": "Från din senaste runda",
     "staleNote": "Senast spelat för {count, plural, one {# dag} other {# dagar}} sedan. Siffror märkta så är från då.",
     "play": "Spela en runda",
@@ -522,23 +527,22 @@
       "reviews": "{count, plural, one {# repetition till} other {# repetitioner till}} efter samma uppehåll"
     },
     "label": {
+      "rating": "Färdighetsrating",
+      "winStreak": "Vinstsvit",
+      "bestAccuracy": "Bästa träffsäkerhet",
+      "recentAccuracy": "Senaste träffsäkerhet",
       "span": "Minnesspann",
       "piecesHeld": "Hållna pjäser",
       "speed": "Tempo",
-      "streak": "Svit",
+      "streak": "Dagssvit",
       "rounds": "Spelade rundor",
       "days": "Speldagar",
-      "trend": "Träffsäkerhet",
       "daily": "Dagens bräde",
       "week": "Den här veckan",
       "curve": "Minne efter repetition",
-      "missMap": "Mest missad linje",
-      "typeRecall": "Svagaste pjäs",
-      "insights": "Insikter",
       "notebook": "Anteckningsbok",
       "plans": "Plan",
       "goal": "Mål",
-      "bests": "Personbästa",
       "board": "Topplista"
     },
     "unit": {
@@ -548,8 +552,7 @@
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> runda} other {<n>{value}</n> rundor}}",
       "entries": "{count, plural, one {<n>{value}</n> anteckning} other {<n>{value}</n> anteckningar}}",
-      "findings": "{count, plural, one {<n>{value}</n> insikt} other {<n>{value}</n> insikter}}",
-      "settings": "{count, plural, one {<n>{value}</n> inställning} other {<n>{value}</n> inställningar}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy} % eller bättre i {rounds, plural, one {# runda} other {# rundor}}, studerat {memorizeSeconds} s",
@@ -559,15 +562,124 @@
       "daily": "{status, select, played {Spelat i dag} unfinished {Öppnat i dag} other {Öppet i dag}}, längsta svit {longest, plural, one {# dag} other {# dagar}}",
       "curve": "Ihågkommet efter {day, plural, one {# dag} other {# dagar}}, från {reviews, plural, one {# repetition} other {# repetitioner}}",
       "rounds": "Från {rounds, plural, one {# runda} other {# rundor}}",
-      "missLine": "Missade på {line, select, file {{name}-linjen} other {rad {name}}}, av {shown} sedda pjäser",
-      "pieceType": "{type, select, p {Bönder ihågkomna} n {Springare ihågkomna} b {Löpare ihågkomna} r {Torn ihågkomna} q {Damer ihågkomna} other {Kungar ihågkomna}}, av {shown} sedda",
       "plan": "{planId, select, baseline {Planen Baslinje} edge {Planen Kanter} other {Planen Stege}}, {status, select, active {pågår fortfarande} done {nu klar} other {nu avbruten}}",
       "goal": "Mot {pieceCount} pjäser på {accuracy} %",
       "week": "Veckomål {goal} dagar",
-      "best": "Bästa resultat {accuracy} % på {pieceCount} pjäser, {memorizeSeconds} s",
       "entry": "Rätta pjäser i ditt bästa bidrag, {difficulty, select, easy {nivå Lätt} medium {nivå Medel} hard {nivå Svår} other {nivå Stormästare}}",
       "overDays": "Under {days, plural, one {# dag} other {# dagar}}",
-      "firstDay": "Sedan {date}"
+      "firstDay": "Sedan {date}",
+      "rating": "{sign, select, up {Upp {change}} down {Ned {change}} other {Ingen förändring}} under dina senaste {rounds, plural, one {# runda med rating} other {# rundor med rating}}",
+      "ratingSince": "Från dina rundor i partier med rating",
+      "winStreak": "Rundor i partier i rad på {accuracy} % eller bättre",
+      "bestAt": "{source, select, calibration {Övning} other {Parti}} på {pieceCount} pjäser, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "Visar {shown} av {total, plural, one {# runda} other {# rundor}}",
+      "filterSource": "Källa",
+      "filterSetting": "Inställning",
+      "allSources": "Alla källor",
+      "allSettings": "Alla inställningar",
+      "sources": {
+        "game": "Parti",
+        "daily": "Dagens bräde",
+        "plan": "Plan",
+        "review": "Repetition",
+        "practice": "Övning"
+      },
+      "settingValue": "{pieceCount} pjäser, {memorizeSeconds} s",
+      "col": {
+        "date": "Spelad",
+        "source": "Källa",
+        "setting": "Inställning",
+        "accuracy": "Träffsäkerhet",
+        "correct": "Rätt",
+        "time": "Placeringstid",
+        "rating": "Rating",
+        "board": "Bräde"
+      },
+      "correctValue": "{correct} av {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Rating upp {change}",
+      "ratingDown": "Rating ned {change}",
+      "ratingLevel": "Rating oförändrad",
+      "unrated": "Utan rating",
+      "show": "Visa bräde",
+      "hide": "Dölj bräde",
+      "boardLabel": "Rättat bräde: {correct} av {total} pjäser rätt.",
+      "detail": "Studerade {studied} s av {memorizeSeconds} s. {wrong, plural, =0 {Inga fel pjäser} one {# fel pjäs} other {# fel pjäser}}, {extra, plural, =0 {inga extra pjäser} one {# extra pjäs} other {# extra pjäser}}.",
+      "more": "Visa {count} till",
+      "ratingNote": "Ratingförändringar sparas för dina 20 senaste rundor i partier med rating. Övnings- och repetitionsrundor ger ingen rating.",
+      "kept": "Din journal sparar de {kept} senaste av dina {total} rundor runda för runda. Äldre rundor räknas fortfarande med i dina totaler och personbästa.",
+      "emptyTitle": "Inga rundor ännu.",
+      "empty": "Varje runda du spelar på den här enheten visas här, nyast först, med inställning, träffsäkerhet och placeringstid. Öppna en för att se dess rättade bräde.",
+      "noMatch": "Inga rundor matchar filtren.",
+      "clear": "Rensa filter"
+    },
+    "analysis": {
+      "fromRounds": "Från {count, plural, one {# runda} other {# rundor}}",
+      "oldest": "Äldst",
+      "latest": "Senast",
+      "accuracy": {
+        "title": "Träffsäkerhet över tid",
+        "desc": "Din träffsäkerhet runda för runda med din mest spelade inställning, på en skala från 0 till 100 %.",
+        "note": "{source, select, calibration {Övningsrundor} other {Rundor i partier}} med {pieceCount} pjäser, {memorizeSeconds} s, din mest spelade inställning. {count, plural, one {Senaste # runda} other {Senaste # rundor}}.",
+        "aria": "Träffsäkerhet under dina senaste {count} rundor med {pieceCount} pjäser, {memorizeSeconds} s, på en skala från 0 till 100 procent, senast {latest} procent."
+      },
+      "speed": {
+        "title": "Tempo över tid",
+        "unit": "Sekunder per rätt pjäs. Lägre är snabbare.",
+        "note": "{source, select, calibration {Övningsrundor} other {Rundor i partier}} med {pieceCount} pjäser, {memorizeSeconds} s. {count, plural, one {Senaste # runda} other {Senaste # rundor}}.",
+        "aria": "Sekunder per rätt pjäs under dina senaste {count} rundor med {pieceCount} pjäser, {memorizeSeconds} s, senast {latest}."
+      },
+      "bests": {
+        "title": "Personbästa per inställning",
+        "desc": "Personbästa sparas per inställning, eftersom 6 pjäser och 20 pjäser är olika test.",
+        "setting": "{source, select, calibration {Övning} other {Parti}} · {pieceCount} pjäser, {memorizeSeconds} s",
+        "col": {
+          "setting": "Inställning",
+          "accuracy": "Bästa träffsäkerhet",
+          "correct": "Rätt",
+          "time": "Placeringstid",
+          "rounds": "Rundor",
+          "date": "Satt"
+        }
+      },
+      "types": {
+        "title": "Ihågkommet per pjästyp",
+        "desc": "Hur ofta du ställer tillbaka varje sorts pjäs där den stod.",
+        "value": "{recalled} av {shown}",
+        "thin": "{shown} av {minimum} sedda",
+        "baseline": "Kungarna finns i varje runda, så de är en baslinje: {recalled} av {shown} ihågkomna.",
+        "onlyKings": "Dina rundor hittills har bara placerat ut de två kungarna. Ihågkommet per pjästyp kräver fler pjäser."
+      },
+      "miss": {
+        "title": "Karta över missar",
+        "desc": "Vilka rutor och linjer du missar mest, över alla rundor.",
+        "aria": "Din andel missar på varje ruta. Mörkare missas oftare. Grå rutor har färre än {minimum} sedda pjäser.",
+        "note": "Mörkare rutor missas oftare. Grå rutor har färre än {minimum} sedda pjäser.",
+        "lines": "Tills varje ruta har {minimum} sedda pjäser visar kartan hela linjer och rader.",
+        "files": "Linjer",
+        "ranks": "Rader",
+        "line": "{line}: {missed} av {shown} missade",
+        "lineThin": "{line}: {shown} sedda, för få för att avläsa"
+      },
+      "insights": {
+        "title": "Insikter",
+        "desc": "Mönster i dina resultat som är värda att agera på, vart och ett med siffrorna bakom.",
+        "none": "Inget sticker ut ännu. Fortsätt spela.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Du missar {edge, select, 0 {under 1 %} other {{edge} %}} av {edgeShown} pjäser på a- och h-linjen och ingen av {centreShown} på centrumlinjerna d och e.} 2 {Du missar a- och h-linjen ungefär dubbelt så ofta som centrumlinjerna d och e: {edge, select, 0 {under 1 %} other {{edge} %}} av {edgeShown} pjäser mot {centre, select, 0 {under 1 %} other {{centre} %}} av {centreShown}.} other {Du missar a- och h-linjen ungefär {times} gånger så ofta som centrumlinjerna d och e: {edge, select, 0 {under 1 %} other {{edge} %}} av {edgeShown} pjäser mot {centre, select, 0 {under 1 %} other {{centre} %}} av {centreShown}.}}",
+          "weakType": "Av pjäserna utom kungar som setts {minimum} gånger eller fler glider {type, select, q {damerna} r {tornen} b {löparna} n {springarna} other {bönderna}} undan mest: du kom ihåg {recalled} av {shown}, {percent} %.",
+          "fasterLessAccurate": "Med {pieceCount} pjäser, {studyTime}, tog dina senaste {window} rundor {fasterTime} mindre per rätt pjäs än de {window} före, och träffsäkerheten föll {fell} procentenheter.",
+          "colourGap": "Du kommer ihåg {weaker, select, w {vita} other {svarta}} pjäser mer sällan än {weaker, select, w {svarta} other {vita}}: {weakerPercent} % av {weakerShown} mot {strongerPercent} % av {strongerShown}, kungar ej medräknade.",
+          "plateau": "Med {pieceCount} pjäser, {studyTime}, låg dina senaste {window} rundor i snitt på {last} % och de {window} före på {before} %, och ditt spann har legat kvar på {span} pjäser under din senaste veckas spel. En pjäs till kan flytta det."
+        },
+        "actions": {
+          "rig": "Spela {pieceCount} pjäser, {studyTime}",
+          "patterns": "Läs övningarna i mönsterigenkänning",
+          "vision": "Läs hur du ser hela brädet"
+        }
+      }
     },
     "share": {
       "button": "Dela mina framsteg",
@@ -580,10 +692,11 @@
       "copy": "Kopiera text",
       "copied": "Texten kopierad.",
       "copyFailed": "Kopieringen fungerade inte här. Texten är markerad, så kopiera den själv.",
-      "locked": "Ditt delningskort låses upp när minnesspann, hållna pjäser, tempo eller svit är klar.",
+      "locked": "Ditt delningskort låses upp när minnesspann, färdighetsrating, hållna pjäser, tempo eller dagssvit är klar.",
       "text": "Mina framsteg i Memory Chess: {figures}. Kan du slå det?",
       "figure": {
         "span": "minnesspann {value, plural, one {# pjäs} other {# pjäser}}",
+        "rating": "färdighetsrating {value, number}",
         "piecesHeld": "{value, number} hållna pjäser",
         "speed": "{value, number} s per pjäs",
         "streak": "{value, plural, one {# dag} other {# dagar}} i rad"

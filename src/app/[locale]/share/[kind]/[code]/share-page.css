@@ -1,11 +1,50 @@
-/* A shared card's page: the round replayed when the card has a board, its figures, the way in, then the card itself,
-   its 1200:630 frame held from the first paint. */
-.lab-paper .lab-shared-card { margin: 32px 0 0; }
-.lab-paper .lab-shared-card[data-small] { max-width: 480px; margin: 0 0 16px; }
-.lab-paper .lab-shared-card figcaption { margin-bottom: 8px; font: 500 14px/1.4 var(--lp-ui); color: var(--lp-muted); }
-.lab-paper .lab-shared-card-frame { overflow: hidden; background: var(--lp-surface-2); border: 1px solid var(--lp-line); border-radius: var(--lp-r-md); aspect-ratio: 1200 / 630; }
-.lab-paper .lab-shared-card img { display: block; width: 100%; height: 100%; }
-.lab-paper .lab-shared-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0 64px; }
+/* A shared card's page. With a board: the replay and its figures down the left, the card and the way in held beside
+   them on wide screens and after them on narrow ones. Without one: the card at reading width, then the way in. */
+.lab-paper .lab-read > .lab-shared { max-width: none; margin-top: 32px; }
+.lab-paper .lab-shared[data-layout="card"] { max-width: 880px; }
+.lab-paper .lab-shared h2 { font: 650 22px/1.25 var(--lp-ui); letter-spacing: -0.01em; }
+.lab-paper .lab-shared-main > * + *, .lab-paper .lab-shared[data-layout="card"] > * + *, .lab-paper .lab-shared-aside > * + * { margin-top: 48px; }
+.lab-paper .lab-shared-main .lab-replay { margin-top: 0; }
+.lab-paper .lab-shared-aside { margin-top: 48px; }
+@media (min-width: 1024px) {
+  .lab-paper .lab-shared[data-layout="replay"] { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 40px; align-items: start; }
+  .lab-paper .lab-shared-aside { margin-top: 0; }
+  .lab-paper .lab-shared-aside > * + * { margin-top: 32px; }
+}
+/* held in view only where the whole column fits under the header, so its last button is never out of reach */
+@media (min-width: 1024px) and (min-height: 760px) {
+  .lab-paper .lab-shared-aside { position: sticky; top: calc(var(--lp-header-h) + 24px); }
+}
+
+/* the card: its 1200:630 frame held from the first paint, a button that opens it at the size of the screen */
+/* globals.css pads every phone button with !important, which would squeeze the card out of its frame */
+.lab-paper .lab-shared-card-open { display: block; width: 100%; margin-top: 16px; padding: 0 !important; overflow: hidden; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); text-align: left; cursor: zoom-in; transition: border-color 0.15s; }
+.lab-paper .lab-shared-card-open:hover { border-color: var(--lp-line-strong); }
+.lab-paper .lab-shared-card-open:focus-visible { outline-offset: 3px; }
+.lab-paper .lab-shared-card-frame { display: block; aspect-ratio: 1200 / 630; background: var(--lp-surface-2); }
+.lab-paper .lab-shared-card-frame img { display: block; width: 100%; height: 100%; }
+.lab-paper .lab-shared-card-hint { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-top: 1px solid var(--lp-line); font: 500 14px/1.3 var(--lp-ui); color: var(--lp-accent); }
+.lab-paper .lab-shared-card-open:hover .lab-shared-card-hint { color: var(--lp-accent-hover); }
+
+/* the way in: one closing panel on the lab grid, its primary action first */
+.lab-paper .lab-shared-next { padding: 32px; background-color: var(--lp-surface); background-image: linear-gradient(var(--lp-grid) 1px, transparent 1px), linear-gradient(90deg, var(--lp-grid) 1px, transparent 1px); background-size: 24px 24px; background-position: -1px -1px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
+.lab-paper .lab-shared-next p { max-width: 52ch; margin-top: 8px; font: 400 17px/1.6 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .lab-shared-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+
+/* the card full screen: the image fit to the viewport on a dimmed page, which the reader may pinch to zoom */
+.lab-card-viewer-overlay { position: fixed; inset: 0; z-index: 60; background: color-mix(in srgb, var(--lp-ink) 94%, transparent); }
+.lab-paper.lab-card-viewer { position: fixed; inset: 0; z-index: 61; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 12px; padding: max(12px, env(safe-area-inset-top)) var(--lp-gutter) max(16px, env(safe-area-inset-bottom)); background: transparent; color: var(--lp-on-accent); }
+.lab-paper .lab-card-viewer-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.lab-paper .lab-card-viewer-title { font: 600 16px/1.3 var(--lp-ui); color: var(--lp-on-accent); }
+.lab-paper .lab-card-viewer-close { display: grid; place-items: center; width: 44px; height: 44px; margin-right: -8px; padding: 0; background: transparent; border: 1px solid transparent; border-radius: var(--lp-r-md); color: var(--lp-on-accent); cursor: pointer; transition: background-color 0.15s; }
+.lab-paper .lab-card-viewer-close:hover { background: color-mix(in srgb, var(--lp-on-accent) 14%, transparent); }
+.lab-paper.lab-card-viewer :focus-visible { outline-color: var(--lp-on-accent); }
+.lab-paper .lab-card-viewer-body { display: grid; place-items: center; min-height: 0; overflow: auto; touch-action: pinch-zoom pan-x pan-y; }
+.lab-paper .lab-card-viewer-body img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; border-radius: var(--lp-r-md); }
+@media (prefers-reduced-motion: no-preference) {
+  .lab-card-viewer-overlay[data-state="open"], .lab-paper.lab-card-viewer[data-state="open"] { animation: lab-card-viewer-in 0.2s ease-out; }
+}
+@keyframes lab-card-viewer-in { from { opacity: 0; } }
 
 /* the replay: a figure plate with its clock, the board, a caption of fixed height, the legend and the controls */
 .lab-paper .lab-replay { margin-top: 32px; padding: 24px; }
@@ -42,15 +81,17 @@
 .lab-paper .lab-replay-phases button[aria-current] { font-weight: 650; color: var(--lp-ink); }
 .lab-paper .lab-replay-note { margin-top: 8px; font: 400 13px/1.5 var(--lp-body); color: var(--lp-muted); }
 
-/* figures: label and value pairs, two to a row where there is room */
-.lab-paper .lab-shared-figures { margin-top: 48px; }
-.lab-paper .lab-shared-figures h2 { font: 650 22px/1.25 var(--lp-ui); letter-spacing: -0.01em; }
-.lab-paper .lab-shared-figures dl { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0 32px; margin-top: 12px; }
-.lab-paper .lab-shared-figures dl > div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-top: 1px solid var(--lp-line); }
-.lab-paper .lab-shared-figures dt { font: 500 15px/1.4 var(--lp-ui); color: var(--lp-muted); }
-.lab-paper .lab-shared-figures dd { font: 600 16px/1.4 var(--lp-ui); color: var(--lp-ink); text-align: right; }
+/* figures: the round's measurements as a list on one plate, each label beside its value */
+.lab-paper .lab-shared-figures dl { margin-top: 16px; padding: 4px 24px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
+.lab-paper .lab-shared-figures dl > div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; }
+.lab-paper .lab-shared-figures dl > div + div { border-top: 1px solid var(--lp-line); }
+.lab-paper .lab-shared-figures dt { font: 500 15px/1.4 var(--lp-ui); color: var(--lp-ink-2); }
+.lab-paper .lab-shared-figures dd { font: 600 16px/1.4 var(--lp-ui); font-variant-numeric: tabular-nums; color: var(--lp-ink); text-align: right; }
 
 @media (max-width: 640px) {
+  .lab-paper .lab-shared-figures dl { padding: 4px 16px; }
+  .lab-paper .lab-shared-next { padding: 24px 16px; }
+  .lab-paper .lab-shared-actions .lab-btn { flex: 1 1 auto; }
   .lab-paper .lab-replay { padding: 16px; }
   .lab-paper .lab-replay .lab-figure { padding: 18px; }
   .lab-paper .lab-replay-speed { margin-left: 0; }

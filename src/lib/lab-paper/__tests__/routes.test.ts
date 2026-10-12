@@ -18,6 +18,12 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/leaderboard", "ja")).toBe(true);
   });
 
+  it("draws both kinds of shared card page in Lab Paper at their bare English URL", () => {
+    expect(isLabPaperRoute("/share/result/1_g_4_100_84_383", "en")).toBe(true);
+    expect(isLabPaperRoute("/share/progress/1_s6_h52", "en")).toBe(true);
+    expect(isLabPaperRoute("/share-old", "en")).toBe(false);
+  });
+
   it("covers the paths beneath a subtree route, in the locales the route lists", () => {
     const routes: readonly LabPaperRoute[] = [
       { path: "/articles", scope: "subtree", locales: "all" },

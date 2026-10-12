@@ -15,7 +15,7 @@ import {
 } from "@/lib/round/round";
 import type { PieceColor } from "@/types/chess";
 import { BoardFigure, PieceImage, usePieceName } from "./BoardFigure";
-import { usePieceDrag } from "./usePieceDrag";
+import { usePieceDrag, type DragSource } from "./usePieceDrag";
 import "./round.css";
 
 /** Where a round's words come from: the homepage calibration (English only) or the game (every locale). */
@@ -72,10 +72,10 @@ export const RoundBoard = memo(function RoundBoard({ state, dispatch, copy, coor
   const cells = useRef<(HTMLButtonElement | null)[]>([]);
   const live = state.phase === "rebuild";
   const navigable = live || state.phase === "scored";
-  const drag = usePieceDrag({
+  const drag = usePieceDrag<Extract<DragSource, { kind: "board" }>>({
     enabled: live,
     onDrop: (source, square) => {
-      if (source.kind !== "board" || square === source.square) return;
+      if (square === source.square) return;
       dispatch(
         square
           ? { type: "move", from: source.square, to: square, now: performance.now() }
@@ -146,11 +146,9 @@ interface RoundPaletteProps {
 }
 
 /** The sentence for the last piece the player reached for after every copy was on the board, if any. */
-export function useRefusalMessage(state: RoundState, copy: RoundCopy): string | null {
+function useRefusalMessage(refused: Refusal | null, copy: RoundCopy): string | null {
   const t = useTranslations(copy);
-  if (state.phase !== "rebuild" || !state.refused) return null;
-  const { color, type } = state.refused.piece;
-  return t(`usedUp.${color}.${type}`);
+  return refused && t(`usedUp.${refused.piece.color}.${refused.piece.type}`);
 }
 
 /**
@@ -158,8 +156,9 @@ export function useRefusalMessage(state: RoundState, copy: RoundCopy): string | 
  * the region's own text is never rewritten, so clearing a refusal announces nothing.
  */
 export function RefusalAnnouncement({ state, copy }: { state: RoundState; copy: RoundCopy }) {
-  const message = useRefusalMessage(state, copy);
-  return message && state.phase === "rebuild" ? <span key={state.refused?.attempt}> {message}</span> : null;
+  const refused = state.phase === "rebuild" ? state.refused : null;
+  const message = useRefusalMessage(refused, copy);
+  return refused && <span key={refused.attempt}> {message}</span>;
 }
 
 /** How long a refusal stays on screen; the live region has already spoken it. */
@@ -182,7 +181,7 @@ export const RoundPalette = memo(function RoundPalette({ state, dispatch, copy }
   const selected = live ? state.selected : null;
   const placed = live ? state.placed : {};
   const refused = live ? state.refused : null;
-  const message = useRefusalMessage(state, copy);
+  const message = useRefusalMessage(refused, copy);
   const noticeVisible = useNoticeVisible(refused);
   const drag = usePieceDrag({
     enabled: live,

@@ -28,18 +28,18 @@ const TOUCH_LIFT = 0.75;
 /** The ghost's size where nothing on the page has one to lend it. */
 const FALLBACK_GHOST_PX = 48;
 
-type Gesture =
+type Gesture<S extends DragSource> =
   | {
       readonly phase: "pressed";
       readonly pointerId: number;
-      readonly source: DragSource;
+      readonly source: S;
       readonly x: number;
       readonly y: number;
     }
   | {
       readonly phase: "dragging";
       readonly pointerId: number;
-      readonly source: DragSource;
+      readonly source: S;
       readonly lift: number;
     }
   | { readonly phase: "spent"; readonly pointerId: number };
@@ -50,23 +50,23 @@ interface Ghost {
   readonly transform: string;
 }
 
-interface PieceDragOptions {
+interface PieceDragOptions<S extends DragSource> {
   /** False while nothing can be dragged. A drag in flight then ends where it is, and its release does nothing. */
   readonly enabled: boolean;
   /**
    * Called once the press has moved far enough to be a drag. Returning false refuses the drag: no ghost follows, and
    * the press no longer counts as a tap.
    */
-  readonly onStart?: (source: DragSource) => boolean;
+  readonly onStart?: (source: S) => boolean;
   /** The square under the pointer on release, or null when it was let go off the board. */
-  readonly onDrop: (source: DragSource, square: SquareName | null) => void;
+  readonly onDrop: (source: S, square: SquareName | null) => void;
 }
 
-export interface PieceDrag {
+export interface PieceDrag<S extends DragSource> {
   /** The press handler for one draggable element; the rest of the gesture is heard on the window. */
-  readonly bind: (source: DragSource) => { onPointerDown: (event: ReactPointerEvent<HTMLElement>) => void };
+  readonly bind: (source: S) => { onPointerDown: (event: ReactPointerEvent<HTMLElement>) => void };
   /** The source of the drag in flight, so it can be drawn as lifted. */
-  readonly dragging: DragSource | null;
+  readonly dragging: S | null;
   readonly ghost: ReactNode;
 }
 
@@ -103,13 +103,13 @@ function swallowNextClick(): void {
  * Drag and drop with Pointer Events, so mouse, touch and pen take one path. A press that stays within a few pixels is
  * left alone and arrives as the element's own click, which keeps tap-to-place and the keyboard working unchanged.
  */
-export function usePieceDrag({ enabled, onStart, onDrop }: PieceDragOptions): PieceDrag {
-  const gesture = useRef<Gesture | null>(null);
+export function usePieceDrag<S extends DragSource>({ enabled, onStart, onDrop }: PieceDragOptions<S>): PieceDrag<S> {
+  const gesture = useRef<Gesture<S> | null>(null);
   const unlisten = useRef<(() => void) | null>(null);
   const target = useRef<HTMLElement | null>(null);
   const ghostNode = useRef<HTMLDivElement | null>(null);
   const [ghost, setGhost] = useState<Ghost | null>(null);
-  const [dragging, setDragging] = useState<DragSource | null>(null);
+  const [dragging, setDragging] = useState<S | null>(null);
 
   const highlight = useCallback((square: HTMLElement | null) => {
     if (square === target.current) return;
@@ -119,7 +119,7 @@ export function usePieceDrag({ enabled, onStart, onDrop }: PieceDragOptions): Pi
   }, []);
 
   const settle = useCallback(
-    (next: Gesture | null) => {
+    (next: Gesture<S> | null) => {
       gesture.current = next;
       if (!next) {
         unlisten.current?.();
@@ -212,7 +212,7 @@ export function usePieceDrag({ enabled, onStart, onDrop }: PieceDragOptions): Pi
     };
   };
 
-  const bind: PieceDrag["bind"] = (source) => ({
+  const bind: PieceDrag<S>["bind"] = (source) => ({
     onPointerDown: (event) => {
       if (!event.isPrimary || event.button !== 0) return;
       // A new primary press means the last one is over, even if its release never reached us.

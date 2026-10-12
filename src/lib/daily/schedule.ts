@@ -1,5 +1,5 @@
 import { utcDayOf } from "@/lib/lab/daily";
-import { shiftDay } from "@/lib/lab/engine";
+import { DAY_MS } from "@/lib/lab/readiness";
 import { positionId } from "@/lib/lab/record";
 import { seededRandom } from "@/lib/utils/seededRandom";
 
@@ -36,7 +36,7 @@ export const WEEKLY_ARC: WeeklyArc = {
   sunday: { pieces: { min: 12, max: 32 }, seconds: exactly(12) },
 };
 
-const MAX_LOOKBACK_DAYS = 7;
+export const MAX_LOOKBACK_DAYS = 7;
 
 const DAY_FORMAT = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -71,7 +71,18 @@ const sameSetting = (a: DailySetting, b: DailySetting) => a.pieceCount === b.pie
 
 const pick = <T>(items: readonly T[], random: () => number): T => items[Math.floor(random() * items.length)];
 
+const assertArc = (arc: WeeklyArc) => {
+  for (const weekday of WEEKDAYS) {
+    const { pieces, seconds } = arc[weekday];
+    if (pieces.min > pieces.max) throw new RangeError(`${weekday} pieces band has min ${pieces.min} above max ${pieces.max}`);
+    if (seconds.min > seconds.max) throw new RangeError(`${weekday} seconds band has min ${seconds.min} above max ${seconds.max}`);
+  }
+};
+
+const yesterdayOf = (day: string) => utcDayOf(Date.parse(`${day}T00:00:00Z`) - DAY_MS);
+
 export function scheduleOf(arc: WeeklyArc): (day: string) => DailySetting {
+  assertArc(arc);
   const bandOf = (day: string): Band => arc[WEEKDAYS[new Date(`${day}T00:00:00Z`).getUTCDay()]];
 
   function settingOf(day: string, lookback: number): DailySetting {
@@ -79,7 +90,7 @@ export function scheduleOf(arc: WeeklyArc): (day: string) => DailySetting {
     const settings = settingsIn(band);
     const random = seededRandom(seedOf(`daily-setting ${day}`));
     const drawn = pick(settings, random);
-    const yesterday = shiftDay(day, -1);
+    const yesterday = yesterdayOf(day);
     if (lookback === 0 || !bandsOverlap(bandOf(yesterday), band)) return drawn;
     const before = settingOf(yesterday, lookback - 1);
     const others = settings.filter((setting) => !sameSetting(setting, before));

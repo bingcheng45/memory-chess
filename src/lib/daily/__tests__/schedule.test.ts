@@ -1,7 +1,7 @@
-import { bandsOverlap, dailySettingOf, InvalidDayError, isUtcDay, scheduleOf, settingsIn, WEEKLY_ARC, type Band, type WeeklyArc } from "@/lib/daily/schedule";
+import { bandsOverlap, dailySettingOf, InvalidDayError, isUtcDay, scheduleOf, settingsIn, MAX_LOOKBACK_DAYS, WEEKLY_ARC, type Band, type WeeklyArc } from "@/lib/daily/schedule";
 import { utcDayOf } from "@/lib/lab/daily";
+import { DAY_MS } from "@/lib/lab/readiness";
 
-const DAY_MS = 86_400_000;
 const daysFrom = (first: string, count: number) => Array.from({ length: count }, (_, index) => utcDayOf(Date.parse(`${first}T00:00:00Z`) + index * DAY_MS));
 
 const EXPECTED_WEEKLY_ARC: Record<number, { pieces: [number, number]; seconds: [number, number] }> = {
@@ -87,6 +87,36 @@ describe("the daily setting", () => {
     });
 
     expect(runs).toEqual([0, 0, 0, 1, 0, 0, 0]);
+  });
+
+  it("keeps every run of overlapping weekday pairs shorter than the lookback cap", () => {
+    const week: Band[] = [WEEKLY_ARC.sunday, WEEKLY_ARC.monday, WEEKLY_ARC.tuesday, WEEKLY_ARC.wednesday, WEEKLY_ARC.thursday, WEEKLY_ARC.friday, WEEKLY_ARC.saturday];
+    const overlapsPrevious = week.map((band, weekday) => bandsOverlap(week[(weekday + 6) % 7], band));
+    const doubled = [...overlapsPrevious, ...overlapsPrevious];
+    const runs = doubled.map((_, end) => {
+      let run = 0;
+      while (run <= end && doubled[end - run]) run += 1;
+      return run;
+    });
+
+    expect(Math.max(...runs)).toBeLessThan(MAX_LOOKBACK_DAYS);
+  });
+
+  it("never repeats the day before for years before 100, where local-time day maths drifts", () => {
+    const days = daysFrom("0050-01-01", 400);
+    const settings = days.map(dailySettingOf);
+
+    settings.forEach((setting, index) => {
+      if (index > 0) expect([days[index], setting]).not.toEqual([days[index], settings[index - 1]]);
+    });
+    expect(dailySettingOf("0050-01-02")).not.toEqual(dailySettingOf("0050-01-01"));
+  });
+
+  it("rejects an arc with a band whose minimum is above its maximum", () => {
+    const bad = { pieces: { min: 8, max: 5 }, seconds: { min: 10, max: 10 } };
+
+    expect(() => scheduleOf({ ...WEEKLY_ARC, tuesday: bad })).toThrow(/tuesday.*pieces/);
+    expect(() => scheduleOf({ ...WEEKLY_ARC, friday: { ...bad, pieces: { min: 1, max: 2 }, seconds: { min: 9, max: 3 } } })).toThrow(/friday.*seconds/);
   });
 
   it("returns the only setting a one-setting week has, looking back no more than a week", () => {

@@ -18,7 +18,7 @@ const PNG = new Blob(["png"], { type: "image/png" });
 const DAILY: SetBoard = { kind: "daily", day: "2026-10-12", fen: TARGET };
 
 let mockStore: { gameState: Record<string, unknown>; round: ReturnType<typeof scoredRound> };
-jest.mock("@/lib/store/gameStore", () => ({ START_RATING: 1000, useGameStore: () => mockStore }));
+jest.mock("@/lib/store/gameStore", () => ({ useGameStore: () => mockStore }));
 
 function show(board?: SetBoard) {
   const round = scoredRound(TARGET, "4k3/8/8/8/8/8/PP6/4K3", { pieceCount: 5, studyMs: 10000, source: board ? "daily" : "game_form", board });

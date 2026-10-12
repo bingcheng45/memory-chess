@@ -6,8 +6,6 @@ export type LeaderboardDifficulty = (typeof LEADERBOARD_DIFFICULTIES)[number];
 /** The board a daily row is filed under, next to its `daily_day`. */
 export const DAILY_BOARD = 'daily';
 
-/** What `skill_rating` reads on a row stored before the column existed. */
-export const UNRECORDED_SKILL_RATING = 1000;
 export const MAX_SKILL_RATING = 5000;
 
 export const isLeaderboardDifficulty = (value: unknown): value is LeaderboardDifficulty =>

@@ -13,6 +13,7 @@ import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
 import { trackEvent, type RoundSource } from '@/lib/analytics/events';
 import type { LabRound } from '@/lib/lab/recordRound';
 import { now as monotonicNow } from '@/lib/game/clock';
+import { START_RATING } from "@/lib/game/rating";
 import { isSoundEnabled } from '@/lib/utils/soundEffects';
 import {
   IDLE_ROUND,
@@ -37,9 +38,6 @@ const SOLUTION_FEN_SUFFIX = ' w - - 0 1';
 
 /** The newest rounds kept in the persisted history. A review round is left out, as it is from the rating and the streak. */
 const HISTORY_LIMIT = 20;
-
-/** Every player's rating before their first rated round. */
-export const START_RATING = 1000;
 
 /** The accuracy a rated round needs to extend the win streak; below it the streak starts again. */
 export const WIN_ACCURACY = 70;

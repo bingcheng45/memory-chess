@@ -1,6 +1,7 @@
 'use client';
 
-import { UNRECORDED_SKILL_RATING, type LeaderboardEntry } from '@/types/leaderboard';
+import { START_RATING } from "@/lib/game/rating";
+import type { LeaderboardEntry } from "@/types/leaderboard";
 import { Link } from "@/i18n/navigation";
 import { useEffect, useRef, type ReactNode } from "react";
 import { CloudOff, TriangleAlert } from "lucide-react";
@@ -190,7 +191,7 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
                 {isHighlighted && <span className="lb-you">{t("you")}</span>}
               </div>
             </td>
-            <td className="lb-num">{entry.skill_rating ?? UNRECORDED_SKILL_RATING}</td>
+            <td className="lb-num">{entry.skill_rating ?? START_RATING}</td>
             <td className="lb-num">
               {entry.correct_pieces}
               {entry.total_wrong_pieces !== undefined &&

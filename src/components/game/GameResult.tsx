@@ -40,7 +40,7 @@ import { warmedResultDeltas } from "@/components/game/resultDeltasWarm";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import ShareResult from "@/components/game/ShareResult";
 import { roundShareOf } from "@/components/game/roundShare";
-import { START_RATING } from "@/lib/store/gameStore";
+import { START_RATING } from "@/lib/game/rating";
 
 // Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
 // never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.

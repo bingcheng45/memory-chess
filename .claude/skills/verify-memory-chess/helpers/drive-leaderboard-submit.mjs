@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 const ESCAPE = { key: "Escape", code: "Escape", windowsVirtualKeyCode: 27, nativeVirtualKeyCode: 27 };
 const difficulty = process.env.SUBMIT_DIFFICULTY ?? "Medium";
 const names = (process.env.SUBMIT_NAMES ?? "Rater one").split(",");
@@ -26,14 +27,10 @@ async function mouseClick(page, selector) {
 
 const phaseIs = (phase) => `document.querySelector("[data-round-phase]")?.dataset.roundPhase === "${phase}"`;
 
-async function wordsOf() {
-  const { readFileSync } = await import("node:fs");
-  const { game } = JSON.parse(readFileSync(new URL("../../../../messages/en.json", import.meta.url), "utf8"));
-  return { start: game.config.start, preset: game.presets[difficulty.toLowerCase()].label, round: game.round };
-}
+const { game } = JSON.parse(readFileSync(new URL("../../../../messages/en.json", import.meta.url), "utf8"));
+const words = { start: game.config.start, preset: game.presets[difficulty.toLowerCase()].label, round: game.round };
 
 async function playRound(page, baseUrl) {
-  const words = await wordsOf();
   const cells = `[...document.querySelectorAll("[data-coordinate]")].map(el => ({ square: el.dataset.coordinate, label: el.getAttribute("aria-label") })).filter(p => p.label !== ${JSON.stringify(words.round.squareEmpty)}.replace("{square}", p.square))`;
   const pieceOf = ({ square, label }) => label.slice(words.round.squareWith.replace("{square}", square).indexOf("{piece}"));
   await page.goto(`${baseUrl}/game`);

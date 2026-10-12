@@ -14,39 +14,27 @@ if (!fixturePath) {
 
 const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
 
-const CLASSIC_BOARDS = ["easy", "medium", "hard", "grandmaster"];
+const DEFAULTS = { country_code: "ZZ", skill_rating: 1000, daily_day: null };
 // The leaderboard table as each outstanding migration leaves it, so a driver
 // can see the insert retries the real server runs.
 const SCHEMAS = {
-  current: {
-    label: "",
-    absent: [],
-    boards: [...CLASSIC_BOARDS, "daily"],
-    defaults: { country_code: "ZZ", skill_rating: 1000, daily_day: null },
-  },
-  missingRating: {
-    label: ", without migration 0004 (no skill_rating or daily_day)",
-    absent: ["skill_rating", "daily_day"],
-    boards: CLASSIC_BOARDS,
-    defaults: { country_code: "ZZ" },
-  },
-  missingCountry: {
+  MISSING_COUNTRY: {
     label: ", without migrations 0001 and 0004 (no country_code, skill_rating or daily_day)",
     absent: ["skill_rating", "daily_day", "country_code"],
-    boards: CLASSIC_BOARDS,
-    defaults: {},
+  },
+  MISSING_RATING: {
+    label: ", without migration 0004 (no skill_rating or daily_day)",
+    absent: ["skill_rating", "daily_day"],
   },
 };
-const schema =
-  process.env.FAKE_SUPABASE_MISSING_COUNTRY === "1"
-    ? SCHEMAS.missingCountry
-    : process.env.FAKE_SUPABASE_MISSING_RATING === "1"
-      ? SCHEMAS.missingRating
-      : SCHEMAS.current;
+const mode = Object.keys(SCHEMAS).find((name) => process.env[`FAKE_SUPABASE_${name}`] === "1");
+const schema = mode ? SCHEMAS[mode] : { label: "", absent: [] };
 const has = (column) => !schema.absent.includes(column);
+const present = (row) => Object.fromEntries(Object.entries(row).filter(([column]) => has(column)));
+const boards = ["easy", "medium", "hard", "grandmaster", ...(has("daily_day") ? ["daily"] : [])];
 
 const fixtureRows = Array.isArray(fixture) ? fixture : (fixture.leaderboard_entries ?? []);
-const rows = fixtureRows.map((row) => Object.fromEntries(Object.entries(row).filter(([column]) => has(column))));
+const rows = fixtureRows.map(present);
 let articleStats = Array.isArray(fixture) ? [] : (fixture.article_stats ?? []);
 
 const RECORD_EVENT_PATH = "/rest/v1/rpc/record_article_event";
@@ -98,23 +86,28 @@ const checkViolation = (constraint) => ({
 });
 
 const CHECKS = [
-  ["check_difficulty_board", (row) => schema.boards.includes(row.difficulty)],
-  ...(has("daily_day")
-    ? [["check_daily_day_matches_board", (row) => (row.difficulty === "daily") === (row.daily_day != null)]]
-    : []),
-  ...(has("skill_rating")
-    ? [["check_skill_rating_range", (row) => Number.isInteger(row.skill_rating) && row.skill_rating >= 0 && row.skill_rating <= 5000]]
-    : []),
-];
+  ["check_difficulty_board", "difficulty", (row) => boards.includes(row.difficulty)],
+  ["check_daily_day_matches_board", "daily_day", (row) => (row.difficulty === "daily") === (row.daily_day != null)],
+  [
+    "check_skill_rating_range",
+    "skill_rating",
+    (row) => Number.isInteger(row.skill_rating) && row.skill_rating >= 0 && row.skill_rating <= 5000,
+  ],
+].filter(([, column]) => has(column));
+
+function rejectInsert(body) {
+  console.log(`insert rejected ${body.code}: ${body.message}`);
+  return { status: 400, body };
+}
 
 // Stores the row the way the live table would, with its defaults and checks,
 // so a submission can be read back from /api/leaderboard and /leaderboard.
 function insertRow(body) {
   const unknown = Object.keys(body).find((column) => !has(column));
-  if (unknown) return { status: 400, body: missingColumn(unknown) };
-  const row = { id: randomUUID(), created_at: new Date().toISOString(), total_wrong_pieces: null, ...schema.defaults, ...body };
-  const broken = CHECKS.find(([, holds]) => !holds(row));
-  if (broken) return { status: 400, body: checkViolation(broken[0]) };
+  if (unknown) return rejectInsert(missingColumn(unknown));
+  const row = { id: randomUUID(), created_at: new Date().toISOString(), total_wrong_pieces: null, ...present(DEFAULTS), ...body };
+  const broken = CHECKS.find(([, , holds]) => !holds(row));
+  if (broken) return rejectInsert(checkViolation(broken[0]));
   rows.push(row);
   console.log(`insert ${row.difficulty} ${row.player_name} skill_rating=${row.skill_rating ?? "(no column)"} -> ${rows.length} rows`);
   return { status: 201, body: row };
@@ -195,6 +188,9 @@ function condition(column, test) {
   return (row) => COMPARE[name](row[column], value.join("."));
 }
 
+const CONTROL_PARAMS = new Set(["select", "order", "limit", "offset"]);
+const anyOf = (tests) => (row) => tests.some((test) => test(row));
+
 // The `or` filter getStanding sends: conditions and nested `and(...)`.
 function logicTest(clause) {
   if (clause.startsWith("and(")) {
@@ -268,28 +264,20 @@ createServer(async (req, res) => {
   }
   if (req.method === "POST") {
     const answer = insertRow((await readJson(req)) ?? {});
-    if (answer.status !== 201) console.log(`insert rejected ${answer.body.code}: ${answer.body.message}`);
     const single = (req.headers.accept ?? "").includes("vnd.pgrst.object");
     sendJson(res, answer.status, answer.status === 201 && !single ? [answer.body] : answer.body);
     return;
   }
-  const unsupported = [...url.searchParams].filter(
-    ([key, value]) =>
-      !["select", "order", "limit", "offset", "or"].includes(key) && !/^(eq|gt|lt)\./.test(value),
-  );
+  const filters = [...url.searchParams].filter(([key]) => !CONTROL_PARAMS.has(key));
+  const unsupported = filters.filter(([key, value]) => key !== "or" && !/^(eq|gt|lt)\./.test(value));
   if (unsupported.length) {
     sendCannotAnswer(res, unsupported);
     return;
   }
-  const ranked = rows
-    .filter((row) =>
-      [...url.searchParams].every(([column, value]) => {
-        if (["select", "order", "limit", "offset"].includes(column)) return true;
-        if (column === "or") return splitTopLevel(value.slice(1, -1)).some((clause) => logicTest(clause)(row));
-        return condition(column, value)(row);
-      }),
-    )
-    .sort(compare(url.searchParams.get("order") ?? "id"));
+  const tests = filters.map(([column, value]) =>
+    column === "or" ? anyOf(splitTopLevel(value.slice(1, -1)).map(logicTest)) : condition(column, value),
+  );
+  const ranked = rows.filter((row) => tests.every((test) => test(row))).sort(compare(url.searchParams.get("order") ?? "id"));
   // `.range(from, to)` reaches PostgREST as offset plus limit, not as a Range header.
   const offset = Number(url.searchParams.get("offset") ?? 0);
   const limit = Number(url.searchParams.get("limit") ?? ranked.length);

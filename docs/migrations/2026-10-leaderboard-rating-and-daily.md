@@ -92,7 +92,7 @@ Paste the whole of `schema/migrations/0004_leaderboard_rating_and_daily.sql` int
 
 **What success looks like.** `Success. No rows returned`, in about a second.
 
-Neither new column rewrites the table. A column with a constant default is stored as metadata since Postgres 11. Each new check scans the table once, and the index build reads it once. On a table of a few thousand rows that is instant. Each `ALTER TABLE` holds an exclusive lock that blocks reads as well as writes, and the index build blocks writes, so a board load or a score submitted in that second waits for it.
+Neither new column rewrites the table. A column with a constant default is stored as metadata since Postgres 11. Each new check scans the table once, and the index build reads it once. On a table of a few thousand rows that is instant. The first `ALTER TABLE` takes an exclusive lock that blocks reads as well as writes, and the editor's single transaction holds it until the whole file finishes, index build included. Every board load and score submitted in that second waits for it.
 
 The file starts with `SET lock_timeout = '5s'`. If another transaction holds the table, the migration gives up after five seconds with `canceling statement due to lock timeout` rather than queue every leaderboard read behind it. Wait a minute and run it again.
 

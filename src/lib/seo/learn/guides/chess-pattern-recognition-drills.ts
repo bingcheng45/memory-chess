@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Chess pattern recognition drills work best when you learn each pattern as a set of squares plus one condition. Set the shape up at a board, clear it and rebuild it from memory. Then shift it one file, add a defender that breaks it, and look for it in your own games.",
+    quickAnswer: "Chess pattern recognition drills work best when you learn each pattern as a set of squares plus one condition. Set the shape up at a board, clear it and rebuild it from memory. Then add one defender that breaks it, watch the tactic fail, and look for the shape in your own games.",
     takeaways: [
       "A knight fork on c7 is three squares, e8, a8 and c7, plus one condition, that nothing black can take on c7.",
       "Rebuild each shape from an empty board until you can place it without the table, then look for it in your own games.",

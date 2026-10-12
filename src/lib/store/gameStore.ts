@@ -37,6 +37,8 @@ const SOLUTION_FEN_SUFFIX = ' w - - 0 1';
 /** The newest rounds kept in the persisted history. A review round is left out, as it is from the rating and the streak. */
 const HISTORY_LIMIT = 20;
 
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+
 interface GameStore {
   gameState: GameState;
   lastSettings: GameSettings | null;
@@ -410,17 +412,23 @@ export const useGameStore = create<GameStore>()(
           memorizeTime: state.gameState.memorizeTime,
           level: state.gameState.level,
           skillRating: state.gameState.skillRating,
+          streak: state.gameState.streak,
         },
         history: state.history,
         lastSettings: state.lastSettings,
       }),
       // localStorage is user-editable and outlives app versions, so a stored
       // value that would put the configuration form out of range is dropped.
+      // The stored game state is laid over the defaults, so a field saved only
+      // by a later version, such as the streak, starts from its default.
       merge: (persisted, current) => {
-        const stored = (typeof persisted === 'object' && persisted !== null
-          ? persisted
-          : {}) as Partial<GameStore>;
-        return { ...current, ...stored, lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES) };
+        const stored = (isRecord(persisted) ? persisted : {}) as Partial<GameStore>;
+        return {
+          ...current,
+          ...stored,
+          gameState: { ...current.gameState, ...(isRecord(stored.gameState) ? stored.gameState : {}) },
+          lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
+        };
       },
     }
   )

@@ -171,7 +171,7 @@ const guide: LearnDocument = {
             "Do not skip minutes 2 to 4. A piece you cannot place from memory is a lead. Check whether it was one of the pieces that decided the move.",
             "If it was, the label is probably never looked. If the missing piece stood far from the action, your sentence and the engine will say more.",
             "Memory Chess trains the same rebuild on positions from outside your games. A position appears for a fixed number of seconds, the board clears, and you put the pieces back.",
-            "The result screen then scores your board square by square as correct, wrong placement or missed square. A missed square is one where the position had a piece and your board does not have that piece there. The piece that belonged shows faded on it. A piece you put on the wrong square gives two marks: wrong placement where you put it, and a missed square where it stood.",
+            "The result screen then scores your board square by square as correct, wrong placement or missed square. A missed square is one where the position had a piece and your board does not have that piece there. The piece that belonged shows faded on it when the square is empty. If you put another piece there, the square shows both marks. A piece you put on the wrong square gives two marks: wrong placement where you put it, and a missed square where it stood.",
             "Start at 8 pieces with 10 seconds. That is two more pieces than the 6-piece medium preset, with the same time to look.",
           ],
         },
@@ -180,9 +180,9 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Rebuild eight pieces, then read the marks",
-              description: "Play 8 pieces with 10 seconds to look, 3 rounds. After each round, count the faded pieces. Each one is a piece you did not put back where it stood.",
+              description: "Play 8 pieces with 10 seconds to look, 3 rounds. After each round, count the squares marked missed square. Each one is a piece you did not put back where it stood.",
               duration: "about 4 minutes",
-              goal: "Three rounds in a row with no more than one faded piece.",
+              goal: "Three rounds in a row with no more than one missed square.",
               play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },
             },
           ],

@@ -29,7 +29,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "To get better at chess as a beginner, stop losing pieces for free before you study openings. Each day, play five short board-reading rounds, then one slow game where you ask one safety question before every move. After the game, write one line about the move that lost material.",
+    quickAnswer: "To get better at chess as a beginner, stop giving away pieces before you study openings. Each day, play five short board-reading rounds, then one slow game where you ask one safety question before every move. After the game, write one line about the move that lost material.",
     takeaways: [
       "Add two pieces each week, but only after one session of five perfect rounds at the current count.",
       "One line after each game tells you whether the board reading, the question or the pace failed.",
@@ -37,7 +37,7 @@ const guide: LearnDocument = {
     audience: [
       "You know how the pieces move and lose most games to a piece left hanging.",
       "You have watched opening videos and cannot say why you still lose.",
-      "You want one order of work to follow, with a clear next step each week.",
+      "You want one order of work, with a clear next step each week.",
     ],
   },
   sections: [
@@ -48,8 +48,8 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "At beginner level, a game usually turns on a piece left where it can be taken for free. One lost knight outweighs anything the opening gave you.",
-            "Here is a common way it happens. Your knight on f3 is pinned to your queen on d1 by Black's bishop on g4. Black pushes the pawn from e5 to e4, and now the pawn attacks the knight.",
+            "At beginner level, a game usually turns on a piece lost for nothing or for a pawn. One lost knight outweighs anything the opening gave you.",
+            "Your knight on f3 is pinned to your queen on d1 by Black's bishop on g4. Black pushes the pawn from e5 to e4, and now the pawn attacks the knight.",
           ],
         },
         {
@@ -76,8 +76,8 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "If the knight stays, the pawn takes it. If the knight steps away, the bishop takes the queen. No opening study fixes that.",
-            "Two habits do. You see every piece that is attacked, and you check each move against the reply before you play it.",
+            "If the knight stays, the pawn takes it and you get only a pawn back. If the knight steps away, the bishop takes the queen. No opening study fixes that.",
+            "Two habits do. You see every piece that is attacked, and you check each move against the reply first.",
           ],
         },
         {
@@ -113,7 +113,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "A piece usually hangs because nobody looked at it. You studied the piece you were moving and its new square, and the rest of the board got no look at all.",
+            "A piece usually hangs because nobody looked at it. You studied the piece you were moving, and the rest of the board got no look.",
             "A Memory Chess round trains the opposite habit. It shows a position for a fixed number of seconds, clears the board and asks you to rebuild it. A piece counts as correct only when its square, its type and its colour all match.",
             "Guessing does not help, because extra pieces cost points. Put five pieces on a 4-piece round and ten points come off your accuracy, however many of the five are right.",
             "Start at 4 pieces and add two at a time, keeping the look at 10 seconds. Every position has both kings, so a 4-piece round is two kings and two other pieces.",
@@ -154,9 +154,9 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The safety question is always the same. After my move, what can my opponent take for free? Ask it on every move, including the quiet ones.",
+            "The safety question is always the same. After my move, what can my opponent take for free or win with a pawn? Ask it on every move, including the quiet ones.",
             "Start from your opponent's last move. Say you are Black after 1.e4 e5. If White plays 2.Bc4, the bishop now looks at f7. If White plays 2.Qh5 instead, the queen looks at f7, e5 and h7.",
-            "Then check your own move. The piece you move stops guarding whatever it guarded. Your knight on c6 guards e5, so moving it can leave the pawn on e5 loose, with nothing defending it, right as the queen on h5 attacks it.",
+            "Then check your own move. The piece you move stops guarding whatever it guarded. Say you answered 2.Qh5 with 2...Nc6. The knight now guards e5, which the queen attacks. If you later move that knight, the pawn on e5 is loose and the queen takes it with check.",
           ],
         },
         {
@@ -165,14 +165,14 @@ const guide: LearnDocument = {
           items: [
             "Name your opponent's last move and every new square it attacks.",
             "Pick your move, but keep your hand off the piece.",
-            "Ask what they can take for free after it, including anything your moving piece used to guard.",
+            "Ask what they can take for free or win with a pawn after it, including anything your moving piece used to guard.",
             "If the answer is anything at all, pick again.",
           ],
         },
         {
           kind: "takeaway",
           title: "Why the question works",
-          body: "Avoiding a free capture needs no long calculation, only a look at the right piece. The question forces that look on every move.",
+          body: "Avoiding a cheap loss needs no long calculation, only a look at the right piece. The question forces that look on every move.",
         },
       ],
       facts: [
@@ -213,7 +213,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Skip the full engine review for now. Find the first move where you lost a piece for free, and write one line about it. The line names the stage that failed.",
+            "Skip the full engine review for now. Find the first move where you lost material, and write one line about it. The line names the stage that failed.",
           ],
         },
         {
@@ -277,7 +277,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Start once a full week of games goes by with no piece lost for free. Before that, a memorised line only takes you to move ten in a position you cannot yet read.",
+            "Start once a full week of games goes by with no material given away. Before that, a memorised line only takes you to move ten in a position you cannot yet read.",
             "Keep the first repertoire small. As White, play 1.e4 and bring the knights out before the bishops. As Black, answer 1.e4 with 1...e5 and 1.d4 with 1...d5.",
             "Learn why each move is played before you learn the next one. When your opponent leaves the book, the reasons are all you have left.",
           ],

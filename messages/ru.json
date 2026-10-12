@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} мин",
     "hoursLeft": "{hours} ч {minutes} мин",
+    "underMinute": "< 1 мин",
     "ready": "Доска дня · {pieceCount, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}} · {seconds} с · осталось {timeLeft}",
     "next": "Следующая доска через {timeLeft}",
     "pending": "Доска дня",

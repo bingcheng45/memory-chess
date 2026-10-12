@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} min",
     "hoursLeft": "{hours} h {minutes} min",
+    "underMinute": "< 1 min",
     "ready": "Tabla de azi · {pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s · mai sunt {timeLeft}",
     "next": "Următoarea tablă în {timeLeft}",
     "pending": "Tabla de azi",

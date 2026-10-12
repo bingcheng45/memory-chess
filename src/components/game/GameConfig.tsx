@@ -33,7 +33,7 @@ function DailyBoardLink() {
 
   function labelOf(state: DailyState) {
     const { hours, minutes } = state.left;
-    const timeLeft = hours === 0 ? t('minutesLeft', { minutes }) : t('hoursLeft', { hours, minutes });
+    const timeLeft = hours > 0 ? t('hoursLeft', { hours, minutes }) : minutes > 0 ? t('minutesLeft', { minutes }) : t('underMinute');
     if (state.status === 'used') return t('next', { timeLeft });
     return t('ready', { pieceCount: state.setting.pieceCount, seconds: state.setting.memorizeTime, timeLeft });
   }

@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} mnt",
     "hoursLeft": "{hours} j {minutes} mnt",
+    "underMinute": "kurang dari 1 mnt",
     "ready": "Papan hari ini · {pieceCount} bidak · {seconds} dtk · sisa {timeLeft}",
     "next": "Papan berikutnya dalam {timeLeft}",
     "pending": "Papan hari ini",

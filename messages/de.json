@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} Min.",
     "hoursLeft": "{hours} Std. {minutes} Min.",
+    "underMinute": "< 1 Min.",
     "ready": "Heutiges Brett · {pieceCount, plural, one {# Figur} other {# Figuren}} · {seconds} s · noch {timeLeft}",
     "next": "Nächstes Brett in {timeLeft}",
     "pending": "Heutiges Brett",

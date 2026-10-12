@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} min",
     "hoursLeft": "{hours} h {minutes} min",
+    "underMinute": "< 1 min",
     "ready": "Tabuleiro de hoje · {pieceCount, plural, one {# peça} many {# peças} other {# peças}} · {seconds} s · faltam {timeLeft}",
     "next": "Próximo tabuleiro em {timeLeft}",
     "pending": "Tabuleiro de hoje",

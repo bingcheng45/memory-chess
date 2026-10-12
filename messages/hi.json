@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} मि.",
     "hoursLeft": "{hours} घं. {minutes} मि.",
+    "underMinute": "1 मि. से कम",
     "ready": "आज का बोर्ड · {pieceCount, plural, one {# मोहरा} other {# मोहरे}} · {seconds} से. · {timeLeft} बाकी",
     "next": "अगला बोर्ड {timeLeft} में",
     "pending": "आज का बोर्ड",

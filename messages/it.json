@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} min",
     "hoursLeft": "{hours} h {minutes} min",
+    "underMinute": "< 1 min",
     "ready": "Scacchiera di oggi · {pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}} · {seconds} s · mancano {timeLeft}",
     "next": "Prossima scacchiera tra {timeLeft}",
     "pending": "Scacchiera di oggi",

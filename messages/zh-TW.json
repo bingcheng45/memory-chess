@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} 分鐘",
     "hoursLeft": "{hours} 小時 {minutes} 分鐘",
+    "underMinute": "不到 1 分鐘",
     "ready": "今日棋局 · {pieceCount} 子 · {seconds} 秒 · 剩餘 {timeLeft}",
     "next": "{timeLeft}後開放下一局",
     "pending": "今日棋局",

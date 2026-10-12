@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes}分",
     "hoursLeft": "{hours}時間 {minutes}分",
+    "underMinute": "1分未満",
     "ready": "今日の盤面 · {pieceCount}駒 · {seconds}秒 · 残り{timeLeft}",
     "next": "次の盤面まで{timeLeft}",
     "pending": "今日の盤面",

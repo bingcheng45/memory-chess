@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} dk",
     "hoursLeft": "{hours} sa {minutes} dk",
+    "underMinute": "< 1 dk",
     "ready": "Bugünün tahtası · {pieceCount} taş · {seconds} sn · {timeLeft} kaldı",
     "next": "Sonraki tahta {timeLeft} sonra",
     "pending": "Bugünün tahtası",

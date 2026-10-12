@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} phút",
     "hoursLeft": "{hours} giờ {minutes} phút",
+    "underMinute": "< 1 phút",
     "ready": "Bàn cờ hôm nay · {pieceCount} quân · {seconds} giây · còn {timeLeft}",
     "next": "Bàn cờ tiếp theo sau {timeLeft}",
     "pending": "Bàn cờ hôm nay",

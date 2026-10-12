@@ -788,6 +788,7 @@
   "dailyEntry": {
     "minutesLeft": "{minutes} min",
     "hoursLeft": "{hours} t {minutes} min",
+    "underMinute": "under et minut",
     "ready": "Dagens bræt · {pieceCount, plural, one {# brik} other {# brikker}} · {seconds} s · {timeLeft} tilbage",
     "next": "Næste bræt om {timeLeft}",
     "pending": "Dagens bræt",

@@ -13,7 +13,7 @@ function fill(label: string, value: string) {
 function fillValidForm() {
   fill("Name", "Verify Run");
   fill("Email", "verify@example.com");
-  fill("Inquiry Type", "feedback");
+  fill("Inquiry type", "feedback");
   fill("Message", "verification probe, please ignore");
 }
 
@@ -42,16 +42,16 @@ describe("ContactUs", () => {
 
     expect(describedText(screen.getByLabelText("Name"))).toEqual(["At least 2 characters."]);
     expect(describedText(screen.getByLabelText("Email"))).toEqual(["Replies go to this address."]);
-    expect(describedText(screen.getByLabelText("Inquiry Type"))).toEqual(["Each type is explained below the form."]);
+    expect(describedText(screen.getByLabelText("Inquiry type"))).toEqual(["Each type is explained below the form."]);
     expect(describedText(screen.getByLabelText("Message"))).toEqual(["At least 10 characters."]);
     expect(
-      Array.from((screen.getByLabelText("Inquiry Type") as HTMLSelectElement).options).map((option) => [option.value, option.text]),
+      Array.from((screen.getByLabelText("Inquiry type") as HTMLSelectElement).options).map((option) => [option.value, option.text]),
     ).toEqual([
       ["", "Select inquiry type"],
       ["feedback", "Feedback"],
-      ["feature", "Feature Request"],
-      ["inquiry", "General Inquiry"],
-      ["business", "Business Opportunity"],
+      ["feature", "Feature request"],
+      ["inquiry", "General inquiry"],
+      ["business", "Business opportunity"],
     ]);
   });
 
@@ -59,7 +59,7 @@ describe("ContactUs", () => {
     const fetchSpy = answerWith(200, { success: true });
     render(<ContactUs />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Send Message" }));
+    fireEvent.click(screen.getByRole("button", { name: "Send message" }));
 
     await waitFor(() => expect(screen.getByLabelText("Name")).toHaveAttribute("aria-invalid", "true"));
     expect(describedText(screen.getByLabelText("Name"))).toEqual(["At least 2 characters.", "Name must be at least 2 characters."]);
@@ -73,9 +73,9 @@ describe("ContactUs", () => {
     render(<ContactUs />);
 
     fillValidForm();
-    fireEvent.click(screen.getByRole("button", { name: "Send Message" }));
+    fireEvent.click(screen.getByRole("button", { name: "Send message" }));
 
-    expect(await screen.findByRole("heading", { name: "Message Sent!" })).toHaveFocus();
+    expect(await screen.findByRole("heading", { name: "Message sent" })).toHaveFocus();
     expect(fetchSpy).toHaveBeenCalledWith("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -89,14 +89,14 @@ describe("ContactUs", () => {
     render(<ContactUs />);
 
     fillValidForm();
-    fireEvent.click(screen.getByRole("button", { name: "Send Message" }));
+    fireEvent.click(screen.getByRole("button", { name: "Send message" }));
 
     await waitFor(() =>
       expect(screen.getByRole("status")).toHaveTextContent(
         "An error occurred while submitting the form. Please try again.",
       ),
     );
-    expect(screen.getByRole("button", { name: "Send Message" })).toBeEnabled();
-    expect(screen.queryByRole("heading", { name: "Message Sent!" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Send message" })).toBeEnabled();
+    expect(screen.queryByRole("heading", { name: "Message sent" })).not.toBeInTheDocument();
   });
 });

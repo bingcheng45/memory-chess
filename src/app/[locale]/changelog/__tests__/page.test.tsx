@@ -30,7 +30,7 @@ describe("ChangelogPage", () => {
     ).toBeInTheDocument();
     expect(screen.getByText(/over 32,000 games played/)).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: "Contact Us page" }),
+      screen.getByRole("link", { name: "Contact us page" }),
     ).toHaveAttribute("href", "/contact-us");
 
     expect(

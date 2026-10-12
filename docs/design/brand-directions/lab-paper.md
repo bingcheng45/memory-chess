@@ -32,6 +32,8 @@ The changelog banner is carried over in paper: one quiet line on the surface col
 
 **Single accent: ink blue `#1f4fe0` (night `#8ea8ff`).** It was already v2's link and "defend" colour, so it carries no new meaning. It reads as a pen on paper rather than as a highlighter, it passes 6.0:1 as text on the paper, and it keeps clear of the two status hues the game needs (green for correct, vermilion for wrong). Peach and mint were both rejected: peach collides with the "wrong" vermilion, and mint collides with "correct" green. The blue has one job everywhere: primary buttons, links, the active nav item, the active phase, the hero emphasis and the kicker rule. Nothing decorative is blue.
 
+**Wordmark: darker peach `#c2541a` on paper.** The logo keeps its peach "Chess", deepened from `#FFB380` (1.64:1 on paper) to `#c2541a` (4.29:1 on paper, 4.02:1 on the footer surface), which passes the 3:1 rule for the 20 px bold wordmark. It is the token `--lp-wordmark`, used only on the wordmark (class `lab-wordmark-chess`), never on buttons, links or text. Dark pages keep `#FFB380`, which reads 11.3:1 on near-black.
+
 **Board palette: slate on paper (`#eef2f2` light squares, `#c4cfd4` dark squares).** The board is the specimen, and the marks on it carry the meaning: attack, defend, chain, correct, wrong, missed. So the squares must be close to hue-neutral. Wood's orange-brown would fight the vermilion "wrong" and "attack" marks. Mint would fight the green "correct" mark. A cool slate is calm, keeps black pieces at 10:1 or better on both square colours, and keeps all board marks at 3:1 or better. In night mode the board stays lit (`#d3dce0` / `#a3b3bd`) instead of going dark, because black pieces and dark marks must stay readable. A lit plate on a dark desk also matches the notebook idea. One palette for every board: hero, method, calibration, /game, results and share cards.
 
 **Board marks use their own tokens** (`--mk-*`) that do not change with the theme, because they sit on the board, not on the page. The page legend draws each mark on a small board-coloured tile so the legend matches what the eye sees on the board in both themes.
@@ -173,7 +175,7 @@ Do:
 - Left-align section heads and body. Cap prose at about 760px.
 
 Don't:
-- Bring back black bands, peach, mint or wood anywhere, including /game.
+- Bring back black bands, mint or wood anywhere, including /game. Peach appears only as the darker `--lp-wordmark` in the logo.
 - Use uppercase mono kickers, § numbers or crosshair corners as decoration.
 - Put two primary buttons side by side, or more than one primary button in the header.
 - Centre a section inside the left-aligned page.

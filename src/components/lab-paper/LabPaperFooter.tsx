@@ -22,7 +22,7 @@ export function LabPaperFooter() {
           <div className="lab-foot-grid">
             <div>
               <Link className="lab-wordmark" href="/">
-                Memory <span className="text-peach-500">Chess</span>
+                Memory <span className="lab-wordmark-chess">Chess</span>
               </Link>
               <p className="lab-foot-about">{t("footer.tagline")}</p>
             </div>

@@ -6,6 +6,7 @@
   --lp-ink: #0d1b24; --lp-ink-2: #364853; --lp-muted: #56666f;
   --lp-line: #d6dfe0; --lp-line-strong: #87969d; --lp-grid: rgba(31, 79, 224, 0.06);
   --lp-accent: #1f4fe0; --lp-accent-hover: #1a41bb; --lp-accent-soft: #e5ebfc; --lp-on-accent: #ffffff;
+  --lp-wordmark: #c2541a;
   --lp-correct: #0f7a55; --lp-correct-soft: #cfeadf; --lp-wrong: #c63f12; --lp-wrong-soft: #f8dccf;
   --lp-sq-light: #eef2f2; --lp-sq-dark: #c4cfd4;
   --lp-mk-attack: #a8320b; --lp-mk-defend: #1a3fc0; --lp-mk-chain: #3d4d58; --lp-mk-ink: #0d1b24; --lp-mk-on: #ffffff;
@@ -72,6 +73,7 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-header-row { display: flex; align-items: center; gap: 24px; height: var(--lp-header-h); }
 .lab-paper .lab-wordmark { font: 700 20px/1 var(--lp-ui); letter-spacing: -0.01em; color: var(--lp-ink); text-decoration: none; white-space: nowrap; }
 .lab-paper .lab-wordmark:hover { color: var(--lp-ink); opacity: 0.8; }
+.lab-paper .lab-wordmark-chess { color: var(--lp-wordmark); }
 .lab-paper .lab-nav { display: flex; align-items: center; gap: 2px; }
 .lab-paper .lab-nav-item { position: relative; }
 .lab-paper .lab-nav-link, .lab-paper .lab-nav-trigger { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 10px; border: 0; border-radius: var(--lp-r-sm); background: none; font: 500 15px/1 var(--lp-ui); color: var(--lp-ink-2); text-decoration: none; cursor: pointer; white-space: nowrap; }

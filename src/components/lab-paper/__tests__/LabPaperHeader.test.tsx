@@ -44,7 +44,7 @@ describe("the Lab Paper header", () => {
     const wordmark = screen.getByRole("link", { name: "Memory Chess" });
 
     expect(wordmark).toHaveAttribute("href", "/");
-    expect(within(wordmark).getByText("Chess")).toHaveClass("text-peach-500");
+    expect(within(wordmark).getByText("Chess")).toHaveClass("lab-wordmark-chess");
   });
 
   it("links the site's pages with no page menu of its own, and plays a round from a Play button", () => {

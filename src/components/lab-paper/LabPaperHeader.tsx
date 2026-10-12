@@ -119,7 +119,7 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
       <div className="lab-wrap" ref={menu.rootRef}>
         <div className="lab-header-row">
           <Link className="lab-wordmark" href="/">
-            Memory <span className="text-peach-500">Chess</span>
+            Memory <span className="lab-wordmark-chess">Chess</span>
           </Link>
           <nav className="lab-nav" aria-label="Main">
             {sections && (

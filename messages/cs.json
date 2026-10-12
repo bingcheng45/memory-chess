@@ -577,7 +577,7 @@
       "entry": "Správné figury v tvém nejlepším záznamu, {difficulty, select, easy {úroveň Lehká} medium {úroveň Střední} hard {úroveň Těžká} other {úroveň Velmistr}}",
       "overDays": "Za {days, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
       "firstDay": "Od {date}",
-      "rating": "{sign, select, up {Nahoru o {change}} down {Dolů o {change}} other {Beze změny}} za {rounds, plural, one {poslední # hodnocené kolo} few {poslední # hodnocená kola} many {posledního # hodnoceného kola} other {posledních # hodnocených kol}}",
+      "rating": "{sign, select, up {Nahoru o {change}} down {Dolů o {change}} other {Beze změny}} za {rounds, plural, one {poslední hodnocené kolo} few {poslední # hodnocená kola} many {posledního # hodnoceného kola} other {posledních # hodnocených kol}}",
       "ratingSince": "Z tvých hodnocených kol v partiích",
       "winStreak": "Kola v partiích za sebou s přesností {accuracy} % a více",
       "bestAt": "{source, select, calibration {Trénink} other {Partie}} při {pieceCount} figurách, {memorizeSeconds} s"

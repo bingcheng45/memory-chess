@@ -577,7 +577,7 @@
       "entry": "Piezas correctas en tu mejor entrada, {difficulty, select, easy {nivel Fácil} medium {nivel Medio} hard {nivel Difícil} other {nivel Gran maestro}}",
       "overDays": "En {days, plural, one {# día} many {# días} other {# días}}",
       "firstDay": "Desde el {date}",
-      "rating": "{sign, select, up {Sube {change}} down {Baja {change}} other {Sin cambios}} en {rounds, plural, one {tu última # ronda puntuada} many {tus últimas # rondas puntuadas} other {tus últimas # rondas puntuadas}}",
+      "rating": "{sign, select, up {Sube {change}} down {Baja {change}} other {Sin cambios}} en {rounds, plural, one {tu última ronda puntuada} many {tus últimas # rondas puntuadas} other {tus últimas # rondas puntuadas}}",
       "ratingSince": "De tus rondas de partida puntuadas",
       "winStreak": "Rondas de partida seguidas con {accuracy} % o más",
       "bestAt": "{source, select, calibration {Práctica} other {Partida}} con {pieceCount} piezas, {memorizeSeconds} s"

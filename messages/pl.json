@@ -577,7 +577,7 @@
       "entry": "Poprawne figury w twoim najlepszym wpisie, {difficulty, select, easy {poziom Łatwy} medium {poziom Średni} hard {poziom Trudny} other {poziom Arcymistrz}}",
       "overDays": "W ciągu {days, plural, one {# dnia} few {# dni} many {# dni} other {# dnia}}",
       "firstDay": "Od {date}",
-      "rating": "{sign, select, up {Wzrost o {change}} down {Spadek o {change}} other {Bez zmian}} w ostatnich rundach liczonych do oceny: {rounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}",
+      "rating": "{sign, select, up {Wzrost o {change}} down {Spadek o {change}} other {Bez zmian}} {rounds, plural, one {w ostatniej rundzie liczonej do oceny} few {w ostatnich rundach liczonych do oceny: # rundy} many {w ostatnich rundach liczonych do oceny: # rund} other {w ostatnich rundach liczonych do oceny: # rundy}}",
       "ratingSince": "Z twoich rund w partiach liczonych do oceny",
       "winStreak": "Rundy w partiach z rzędu z wynikiem {accuracy}% lub lepszym",
       "bestAt": "{source, select, calibration {Trening} other {Partia}} przy {pieceCount} figurach, {memorizeSeconds} s"

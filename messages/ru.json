@@ -577,7 +577,7 @@
       "entry": "Верные фигуры в вашей лучшей записи, {difficulty, select, easy {уровень «Лёгкий»} medium {уровень «Средний»} hard {уровень «Сложный»} other {уровень «Гроссмейстер»}}",
       "overDays": "За {days, plural, one {# день} few {# дня} many {# дней} other {# дня}}",
       "firstDay": "С {date}",
-      "rating": "{sign, select, up {Рост на {change}} down {Снижение на {change}} other {Без изменений}} за последние рейтинговые раунды: {rounds, plural, one {# раунд} few {# раунда} many {# раундов} other {# раунда}}",
+      "rating": "{sign, select, up {Рост на {change}} down {Снижение на {change}} other {Без изменений}} {rounds, plural, one {за последний рейтинговый раунд} few {за последние рейтинговые раунды: # раунда} many {за последние рейтинговые раунды: # раундов} other {за последние рейтинговые раунды: # раунда}}",
       "ratingSince": "По вашим рейтинговым раундам в партиях",
       "winStreak": "Раунды в партиях подряд с точностью {accuracy}% и выше",
       "bestAt": "{source, select, calibration {Тренировка} other {Партия}}: {pieceCount} фигур, {memorizeSeconds} с"

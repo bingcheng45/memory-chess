@@ -577,7 +577,7 @@
       "entry": "आपकी सबसे अच्छी प्रविष्टि में सही मोहरे, {difficulty, select, easy {आसान बोर्ड} medium {मध्यम बोर्ड} hard {कठिन बोर्ड} other {ग्रैंडमास्टर बोर्ड}}",
       "overDays": "{days, plural, one {# दिन} other {# दिनों}} में",
       "firstDay": "{date} से",
-      "rating": "आपके पिछले {rounds, plural, one {# रेटेड राउंड} other {# रेटेड राउंड}} में {sign, select, up {{change} ऊपर} down {{change} नीचे} other {कोई बदलाव नहीं}}",
+      "rating": "आपके पिछले {rounds, plural, one {रेटेड राउंड} other {# रेटेड राउंड}} में {sign, select, up {{change} ऊपर} down {{change} नीचे} other {कोई बदलाव नहीं}}",
       "ratingSince": "आपके रेटेड गेम राउंड से",
       "winStreak": "लगातार गेम राउंड जिनमें {accuracy}% या बेहतर",
       "bestAt": "{source, select, calibration {अभ्यास} other {गेम}}, {pieceCount} मोहरे, {memorizeSeconds} से."

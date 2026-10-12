@@ -577,7 +577,7 @@
       "entry": "Goede stukken in je beste inzending, {difficulty, select, easy {bord Makkelijk} medium {bord Gemiddeld} hard {bord Moeilijk} other {bord Grootmeester}}",
       "overDays": "Over {days, plural, one {# dag} other {# dagen}}",
       "firstDay": "Sinds {date}",
-      "rating": "{sign, select, up {{change} omhoog} down {{change} omlaag} other {Geen verandering}} over je laatste {rounds, plural, one {# ronde met rating} other {# rondes met rating}}",
+      "rating": "{sign, select, up {{change} omhoog} down {{change} omlaag} other {Geen verandering}} over je laatste {rounds, plural, one {ronde met rating} other {# rondes met rating}}",
       "ratingSince": "Uit je rondes in partijen met rating",
       "winStreak": "Rondes in partijen op rij met {accuracy}% of beter",
       "bestAt": "{source, select, calibration {Oefening} other {Partij}} bij {pieceCount} stukken, {memorizeSeconds} s"

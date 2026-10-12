@@ -577,7 +577,7 @@
       "entry": "Rätta pjäser i ditt bästa bidrag, {difficulty, select, easy {nivå Lätt} medium {nivå Medel} hard {nivå Svår} other {nivå Stormästare}}",
       "overDays": "Under {days, plural, one {# dag} other {# dagar}}",
       "firstDay": "Sedan {date}",
-      "rating": "{sign, select, up {Upp {change}} down {Ned {change}} other {Ingen förändring}} under dina senaste {rounds, plural, one {# runda med rating} other {# rundor med rating}}",
+      "rating": "{sign, select, up {Upp {change}} down {Ned {change}} other {Ingen förändring}} {rounds, plural, one {under din senaste runda med rating} other {under dina senaste # rundor med rating}}",
       "ratingSince": "Från dina rundor i partier med rating",
       "winStreak": "Rundor i partier i rad på {accuracy} % eller bättre",
       "bestAt": "{source, select, calibration {Övning} other {Parti}} på {pieceCount} pjäser, {memorizeSeconds} s"

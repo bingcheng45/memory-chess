@@ -577,7 +577,7 @@
       "entry": "Pezzi giusti nella tua voce migliore, {difficulty, select, easy {livello Facile} medium {livello Medio} hard {livello Difficile} other {livello Grande maestro}}",
       "overDays": "In {days, plural, one {# giorno} many {# giorni} other {# giorni}}",
       "firstDay": "Dal {date}",
-      "rating": "{sign, select, up {In salita di {change}} down {In calo di {change}} other {Nessuna variazione}} nelle ultime partite valutate ({rounds, plural, one {# partita} many {# partite} other {# partite}})",
+      "rating": "{sign, select, up {In salita di {change}} down {In calo di {change}} other {Nessuna variazione}} {rounds, plural, one {nell'ultima partita valutata} many {nelle ultime # partite valutate} other {nelle ultime # partite valutate}}",
       "ratingSince": "Dalle tue partite di gioco valutate",
       "winStreak": "Partite di gioco consecutive al {accuracy}% o meglio",
       "bestAt": "{source, select, calibration {Allenamento} other {Gioco}} a {pieceCount} pezzi, {memorizeSeconds} s"

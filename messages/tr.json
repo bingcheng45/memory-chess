@@ -577,7 +577,7 @@
       "entry": "En iyi kaydındaki doğru taşlar, {difficulty, select, easy {Kolay seviye} medium {Orta seviye} hard {Zor seviye} other {Büyükusta seviyesi}}",
       "overDays": "{days, plural, one {# günde} other {# günde}}",
       "firstDay": "{date} tarihinden beri",
-      "rating": "Son {rounds, plural, one {# puanlı turda} other {# puanlı turda}} {sign, select, up {{change} arttı} down {{change} düştü} other {değişmedi}}",
+      "rating": "Son {rounds, plural, one {puanlı turda} other {# puanlı turda}} {sign, select, up {{change} arttı} down {{change} düştü} other {değişmedi}}",
       "ratingSince": "Puanlı oyun turlarından",
       "winStreak": "Üst üste %{accuracy} veya üzeri oyun turları",
       "bestAt": "{source, select, calibration {Alıştırma} other {Oyun}}, {pieceCount} taş, {memorizeSeconds} sn"

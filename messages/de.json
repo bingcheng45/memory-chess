@@ -577,7 +577,7 @@
       "entry": "Richtige Figuren in deinem besten Eintrag, {difficulty, select, easy {Brett Leicht} medium {Brett Mittel} hard {Brett Schwer} other {Brett Großmeister}}",
       "overDays": "An {days, plural, one {# Tag} other {# Tagen}}",
       "firstDay": "Seit {date}",
-      "rating": "{sign, select, up {Plus {change}} down {Minus {change}} other {Keine Änderung}} in {rounds, plural, one {der letzten # gewerteten Runde} other {den letzten # gewerteten Runden}}",
+      "rating": "{sign, select, up {Plus {change}} down {Minus {change}} other {Keine Änderung}} in {rounds, plural, one {der letzten gewerteten Runde} other {den letzten # gewerteten Runden}}",
       "ratingSince": "Aus deinen gewerteten Runden in Partien",
       "winStreak": "Runden in Partien in Folge mit {accuracy} % oder mehr",
       "bestAt": "{source, select, calibration {Übung} other {Partie}} mit {pieceCount} Figuren, {memorizeSeconds} s"

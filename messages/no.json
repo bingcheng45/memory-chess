@@ -577,7 +577,7 @@
       "entry": "Riktige brikker i ditt beste bidrag, {difficulty, select, easy {nivå Lett} medium {nivå Middels} hard {nivå Vanskelig} other {nivå Stormester}}",
       "overDays": "Over {days, plural, one {# dag} other {# dager}}",
       "firstDay": "Siden {date}",
-      "rating": "{sign, select, up {Opp {change}} down {Ned {change}} other {Ingen endring}} over de siste {rounds, plural, one {# ratede runden} other {# ratede rundene}} dine",
+      "rating": "{sign, select, up {Opp {change}} down {Ned {change}} other {Ingen endring}} {rounds, plural, one {over din siste ratede runde} other {over de siste # ratede rundene dine}}",
       "ratingSince": "Fra de ratede rundene dine i partier",
       "winStreak": "Runder i partier på rad med {accuracy} % eller bedre",
       "bestAt": "{source, select, calibration {Øving} other {Parti}} med {pieceCount} brikker, {memorizeSeconds} s"

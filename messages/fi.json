@@ -577,7 +577,7 @@
       "entry": "Oikeat nappulat parhaassa merkinnässäsi, {difficulty, select, easy {taso Helppo} medium {taso Keskitaso} hard {taso Vaikea} other {taso Suurmestari}}",
       "overDays": "{days, plural, one {# päivän} other {# päivän}} aikana",
       "firstDay": "Alkaen {date}",
-      "rating": "{sign, select, up {Nousua {change}} down {Laskua {change}} other {Ei muutosta}} {rounds, plural, one {viimeisellä # taitolukuun lasketulla kierroksella} other {viimeisillä # taitolukuun lasketulla kierroksella}}",
+      "rating": "{sign, select, up {Nousua {change}} down {Laskua {change}} other {Ei muutosta}} {rounds, plural, one {viimeisellä taitolukuun lasketulla kierroksella} other {viimeisillä # taitolukuun lasketulla kierroksella}}",
       "ratingSince": "Taitolukuun lasketuista pelien kierroksistasi",
       "winStreak": "Pelien kierroksia peräkkäin vähintään {accuracy} %:n tarkkuudella",
       "bestAt": "{source, select, calibration {Harjoitus} other {Peli}}, {pieceCount} nappulaa, {memorizeSeconds} s"

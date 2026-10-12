@@ -577,7 +577,7 @@
       "entry": "Helyes bábuk a legjobb nevezésedben, {difficulty, select, easy {Könnyű szint} medium {Közepes szint} hard {Nehéz szint} other {Nagymester szint}}",
       "overDays": "{days, plural, one {# nap} other {# nap}} alatt",
       "firstDay": "{date} óta",
-      "rating": "{sign, select, up {Emelkedés: {change}} down {Csökkenés: {change}} other {Nincs változás}} az utolsó {rounds, plural, one {# pontozott körödben} other {# pontozott körödben}}",
+      "rating": "{sign, select, up {Emelkedés: {change}} down {Csökkenés: {change}} other {Nincs változás}} az utolsó {rounds, plural, one {pontozott körödben} other {# pontozott körödben}}",
       "ratingSince": "A pontozott játékköreid alapján",
       "winStreak": "Egymást követő játékkörök legalább {accuracy}%-kal",
       "bestAt": "{source, select, calibration {Gyakorlás} other {Játék}}, {pieceCount} bábu, {memorizeSeconds} mp"

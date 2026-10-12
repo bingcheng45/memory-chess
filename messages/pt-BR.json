@@ -577,7 +577,7 @@
       "entry": "Peças certas no seu melhor registro, {difficulty, select, easy {nível Fácil} medium {nível Médio} hard {nível Difícil} other {nível Grande mestre}}",
       "overDays": "Em {days, plural, one {# dia} many {# dias} other {# dias}}",
       "firstDay": "Desde {date}",
-      "rating": "{sign, select, up {Subiu {change}} down {Caiu {change}} other {Sem mudança}} nas suas {rounds, plural, one {# última rodada com rating} many {# últimas rodadas com rating} other {# últimas rodadas com rating}}",
+      "rating": "{sign, select, up {Subiu {change}} down {Caiu {change}} other {Sem mudança}} {rounds, plural, one {na sua última rodada com rating} many {nas suas # últimas rodadas com rating} other {nas suas # últimas rodadas com rating}}",
       "ratingSince": "Das suas rodadas de partida com rating",
       "winStreak": "Rodadas de partida seguidas com {accuracy}% ou mais",
       "bestAt": "{source, select, calibration {Treino} other {Partida}} com {pieceCount} peças, {memorizeSeconds} s"

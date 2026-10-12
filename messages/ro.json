@@ -577,7 +577,7 @@
       "entry": "Piese corecte în cea mai bună înscriere, {difficulty, select, easy {nivelul Ușor} medium {nivelul Mediu} hard {nivelul Greu} other {nivelul Mare maestru}}",
       "overDays": "În {days, plural, one {# zi} few {# zile} other {# de zile}}",
       "firstDay": "Din {date}",
-      "rating": "{sign, select, up {Crește cu {change}} down {Scade cu {change}} other {Nicio schimbare}} în ultimele tale {rounds, plural, one {# rundă cu rating} few {# runde cu rating} other {# de runde cu rating}}",
+      "rating": "{sign, select, up {Crește cu {change}} down {Scade cu {change}} other {Nicio schimbare}} {rounds, plural, one {în ultima ta rundă cu rating} few {în ultimele tale # runde cu rating} other {în ultimele tale # de runde cu rating}}",
       "ratingSince": "Din rundele tale din partide cu rating",
       "winStreak": "Runde din partide la rând cu {accuracy}% sau mai mult",
       "bestAt": "{source, select, calibration {Exercițiu} other {Partidă}} la {pieceCount} piese, {memorizeSeconds} s"

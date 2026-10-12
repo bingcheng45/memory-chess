@@ -577,7 +577,7 @@
       "entry": "Pièces justes de votre meilleure entrée, {difficulty, select, easy {niveau Facile} medium {niveau Moyen} hard {niveau Difficile} other {niveau Grand maître}}",
       "overDays": "Sur {days, plural, one {# jour} many {# jours} other {# jours}}",
       "firstDay": "Depuis le {date}",
-      "rating": "{sign, select, up {En hausse de {change}} down {En baisse de {change}} other {Aucun changement}} sur {rounds, plural, one {votre dernière # partie cotée} many {vos # dernières parties cotées} other {vos # dernières parties cotées}}",
+      "rating": "{sign, select, up {En hausse de {change}} down {En baisse de {change}} other {Aucun changement}} sur {rounds, plural, one {votre dernière partie cotée} many {vos # dernières parties cotées} other {vos # dernières parties cotées}}",
       "ratingSince": "D’après vos parties de jeu cotées",
       "winStreak": "Parties de jeu d’affilée à {accuracy} % ou mieux",
       "bestAt": "{source, select, calibration {Entraînement} other {Jeu}} à {pieceCount} pièces, {memorizeSeconds} s"

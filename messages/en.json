@@ -1394,7 +1394,7 @@
       "entry": "Correct pieces in your best entry, {difficulty, select, easy {Easy board} medium {Medium board} hard {Hard board} other {Grandmaster board}}",
       "overDays": "Over {days, plural, one {# day} other {# days}}",
       "firstDay": "Since {date}",
-      "rating": "{sign, select, up {Up {change}} down {Down {change}} other {No change}} over your last {rounds, plural, one {# rated round} other {# rated rounds}}",
+      "rating": "{sign, select, up {Up {change}} down {Down {change}} other {No change}} {rounds, plural, one {in your last rated round} other {over your last # rated rounds}}",
       "ratingSince": "From your rated game rounds",
       "winStreak": "Game rounds in a row at {accuracy}% or better",
       "bestAt": "{source, select, calibration {Practice} other {Game}} at {pieceCount} pieces, {memorizeSeconds} s"

@@ -370,15 +370,25 @@ export const useGameStore = create<GameStore>()(
         lastSettings: state.lastSettings,
       }),
       // localStorage is user-editable and outlives app versions, so a stored
-      // value that would put the configuration form out of range is dropped.
+      // value that would put the configuration form out of range is dropped,
+      // and so is a rating that is not a whole number from 0 up.
       // The stored game state is laid over the defaults, so a field saved only
       // by a later version, such as the streak, starts from its default.
       merge: (persisted, current) => {
         const stored = (isRecord(persisted) ? persisted : {}) as Partial<GameStore>;
+        const storedGameState = isRecord(stored.gameState) ? stored.gameState : {};
+        const storedRating: unknown = isRecord(stored.gameState) ? stored.gameState.skillRating : undefined;
         return {
           ...current,
           ...stored,
-          gameState: { ...current.gameState, ...(isRecord(stored.gameState) ? stored.gameState : {}) },
+          gameState: {
+            ...current.gameState,
+            ...storedGameState,
+            skillRating:
+              typeof storedRating === "number" && Number.isInteger(storedRating) && storedRating >= 0
+                ? storedRating
+                : START_RATING,
+          },
           lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
         };
       },

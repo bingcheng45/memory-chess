@@ -290,6 +290,18 @@ describe("GameResult", () => {
       expect(JSON.parse(init.body)).toMatchObject({ difficulty: "medium", skill_rating: 1187 });
     });
 
+    it("sends the starting rating for a rating of 0, which the store reads as unset", async () => {
+      mockGameState = { ...baseGameState, skillRating: 0, skillRatingChange: 0 } as typeof mockGameState;
+      const fetchMock = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });
+      global.fetch = fetchMock;
+
+      submitScore();
+
+      await waitFor(() => expect(screen.getByRole("heading", { name: "Score submitted!" })).toBeInTheDocument());
+      const [, init] = fetchMock.mock.calls.find(([url]) => String(url).includes("/api/leaderboard"));
+      expect(JSON.parse(init.body)).toMatchObject({ skill_rating: 1000 });
+    });
+
     it("keeps the entry the board stored on this device, so the lab record can ask for its standing", async () => {
       window.localStorage.clear();
       jest.spyOn(Date, "now").mockReturnValue(1_000);

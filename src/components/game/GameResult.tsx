@@ -235,7 +235,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       memorize_time: memorizeTime,
       solution_time: gameState.completionTime || 0,
       total_wrong_pieces: piecesInfo.totalWrong,
-      skill_rating: gameState.skillRating ?? START_RATING,
+      skill_rating: gameState.skillRating || START_RATING,
     };
   };
 
@@ -359,7 +359,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
             <ShareResult
               key={labRound?.facts.id}
               share={roundShareOf(round, {
-                rating: gameState.skillRating ?? START_RATING,
+                rating: gameState.skillRating || START_RATING,
                 change: extendedGameState.skillRatingChange ?? 0,
                 winStreak: gameState.streak ?? 0,
               })}

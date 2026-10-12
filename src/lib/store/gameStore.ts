@@ -170,7 +170,7 @@ export const useGameStore = create<GameStore>()(
             startSource: source,
             board,
             originalPosition,
-            skillRating: get().gameState.skillRating || 1000,
+            skillRating: get().gameState.skillRating || START_RATING,
             streak: get().gameState.streak || 0,
           },
           lastSettings: { pieceCount, memorizeTime },
@@ -182,7 +182,7 @@ export const useGameStore = create<GameStore>()(
 
       resetGame: () => {
         // Preserve skill rating and streak when resetting
-        const currentSkillRating = get().gameState.skillRating || 1000;
+        const currentSkillRating = get().gameState.skillRating || START_RATING;
         const currentStreak = get().gameState.streak || 0;
 
         set({
@@ -221,7 +221,7 @@ export const useGameStore = create<GameStore>()(
         const rated = gameState.board?.kind !== 'review';
 
         // Calculate skill rating change
-        const currentRating = gameState.skillRating || 1000;
+        const currentRating = gameState.skillRating || START_RATING;
         const skillRatingChange = rated ? calculateSkillRatingChange(
           score.accuracy,
           gameState.pieceCount,
@@ -326,7 +326,7 @@ export const useGameStore = create<GameStore>()(
 
       // Stats and progression
       getSkillRating: () => {
-        return get().gameState.skillRating || 1000;
+        return get().gameState.skillRating || START_RATING;
       },
       
       getCurrentStreak: () => {
@@ -351,7 +351,7 @@ export const useGameStore = create<GameStore>()(
           pieceCount, 
           completionTime, 
           gameState.memorizeTime,
-          gameState.skillRating || 1000,
+          gameState.skillRating || START_RATING,
           gameState.actualMemorizeTime
         );
       }

@@ -6,8 +6,6 @@ export type LeaderboardDifficulty = (typeof LEADERBOARD_DIFFICULTIES)[number];
 /** The board a daily row is filed under, next to its `daily_day`. */
 export const DAILY_BOARD = 'daily';
 
-export const MAX_SKILL_RATING = 5000;
-
 export const isLeaderboardDifficulty = (value: unknown): value is LeaderboardDifficulty =>
   LEADERBOARD_DIFFICULTIES.includes(value as LeaderboardDifficulty);
 
@@ -51,7 +49,7 @@ type SubmittedRound = {
   memorize_time: number;
   solution_time: number;
   total_wrong_pieces?: number; // Total wrong pieces (missed + extra)
-  /** The rating after this round's own change, an integer from 0 to MAX_SKILL_RATING. */
+  /** The rating after this round's own change, an integer from 0 to MAX_SKILL_RATING in src/lib/game/rating.ts. */
   skill_rating: number;
 };
 

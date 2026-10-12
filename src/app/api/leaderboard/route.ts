@@ -2,11 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
-import { START_RATING } from '@/lib/game/rating';
+import { MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
+import { utcDayOf } from '@/lib/lab/daily';
 import {
   DAILY_BOARD,
   isLeaderboardDifficulty,
-  MAX_SKILL_RATING,
   type LeaderboardBoard,
 } from '@/types/leaderboard';
 
@@ -25,8 +25,8 @@ function parseSkillRating(value: unknown): number | null {
 /** A calendar day that exists, as YYYY-MM-DD. */
 function parseDay(value: unknown): string | null {
   if (typeof value !== 'string' || !DAY_FORMAT.test(value)) return null;
-  const date = new Date(`${value}T00:00:00Z`);
-  return !Number.isNaN(date.getTime()) && date.toISOString().startsWith(value) ? value : null;
+  const midnight = Date.parse(`${value}T00:00:00Z`);
+  return !Number.isNaN(midnight) && utcDayOf(midnight) === value ? value : null;
 }
 
 function readBoard(difficulty: unknown, dailyDay: unknown): LeaderboardBoard | null {
@@ -34,7 +34,7 @@ function readBoard(difficulty: unknown, dailyDay: unknown): LeaderboardBoard | n
     const day = parseDay(dailyDay);
     return day === null ? null : { difficulty, daily_day: day };
   }
-  return isLeaderboardDifficulty(difficulty) && (dailyDay === undefined || dailyDay === null)
+  return isLeaderboardDifficulty(difficulty) && dailyDay == null
     ? { difficulty }
     : null;
 }

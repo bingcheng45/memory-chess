@@ -21,7 +21,7 @@ export function warmResultDeltas(): void {
       const before = await readRecordBefore();
       if (ask === asked && before) warmed = { Deltas, before };
     })
-    .catch(() => {});
+    .catch((error) => console.error("Could not warm the dashboard figures", error));
 }
 
 export const warmedResultDeltas = (): WarmDeltas | null => warmed;

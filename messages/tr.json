@@ -266,6 +266,25 @@
       "controlsLabel": "Tur kontrolleri",
       "boardLabel": "Tahta. Kareler arasında gezinmek için ok tuşlarını kullan.",
       "paletteLabel": "Taş paleti",
+      "paletteItem": "{piece}, {count} kaldı",
+      "usedUp": {
+        "white": {
+          "king": "Beyaz şah zaten tahtada.",
+          "queen": "Beyaz vezir zaten tahtada.",
+          "rook": "İki beyaz kale de tahtada.",
+          "bishop": "İki beyaz fil de tahtada.",
+          "knight": "İki beyaz at da tahtada.",
+          "pawn": "Sekiz beyaz piyonun hepsi tahtada."
+        },
+        "black": {
+          "king": "Siyah şah zaten tahtada.",
+          "queen": "Siyah vezir zaten tahtada.",
+          "rook": "İki siyah kale de tahtada.",
+          "bishop": "İki siyah fil de tahtada.",
+          "knight": "İki siyah at da tahtada.",
+          "pawn": "Sekiz siyah piyonun hepsi tahtada."
+        }
+      },
       "squareEmpty": "{square}, boş",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Konumu ezberle",

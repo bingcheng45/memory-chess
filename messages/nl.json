@@ -266,6 +266,25 @@
       "controlsLabel": "Rondebediening",
       "boardLabel": "Bord. Gebruik de pijltjestoetsen om tussen velden te bewegen.",
       "paletteLabel": "Stukkenpalet",
+      "paletteItem": "{piece}, nog {count}",
+      "usedUp": {
+        "white": {
+          "king": "De witte koning staat al op het bord.",
+          "queen": "De witte dame staat al op het bord.",
+          "rook": "Beide witte torens staan op het bord.",
+          "bishop": "Beide witte lopers staan op het bord.",
+          "knight": "Beide witte paarden staan op het bord.",
+          "pawn": "Alle acht witte pionnen staan op het bord."
+        },
+        "black": {
+          "king": "De zwarte koning staat al op het bord.",
+          "queen": "De zwarte dame staat al op het bord.",
+          "rook": "Beide zwarte torens staan op het bord.",
+          "bishop": "Beide zwarte lopers staan op het bord.",
+          "knight": "Beide zwarte paarden staan op het bord.",
+          "pawn": "Alle acht zwarte pionnen staan op het bord."
+        }
+      },
       "squareEmpty": "{square}, leeg",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Onthoud de stelling",

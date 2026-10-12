@@ -266,6 +266,25 @@
       "controlsLabel": "Controles de la ronda",
       "boardLabel": "Tablero. Usa las flechas para moverte entre casillas.",
       "paletteLabel": "Paleta de piezas",
+      "paletteItem": "{piece}, disponibles: {count}",
+      "usedUp": {
+        "white": {
+          "king": "El rey blanco ya está en el tablero.",
+          "queen": "La dama blanca ya está en el tablero.",
+          "rook": "Las dos torres blancas están en el tablero.",
+          "bishop": "Los dos alfiles blancos están en el tablero.",
+          "knight": "Los dos caballos blancos están en el tablero.",
+          "pawn": "Los ocho peones blancos están en el tablero."
+        },
+        "black": {
+          "king": "El rey negro ya está en el tablero.",
+          "queen": "La dama negra ya está en el tablero.",
+          "rook": "Las dos torres negras están en el tablero.",
+          "bishop": "Los dos alfiles negros están en el tablero.",
+          "knight": "Los dos caballos negros están en el tablero.",
+          "pawn": "Los ocho peones negros están en el tablero."
+        }
+      },
       "squareEmpty": "{square}, vacía",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Memoriza la posición",

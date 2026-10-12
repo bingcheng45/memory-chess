@@ -266,6 +266,25 @@
       "controlsLabel": "Rundans kontroller",
       "boardLabel": "Bräde. Använd piltangenterna för att flytta mellan rutorna.",
       "paletteLabel": "Pjäspalett",
+      "paletteItem": "{piece}, {count} kvar",
+      "usedUp": {
+        "white": {
+          "king": "Den vita kungen står redan på brädet.",
+          "queen": "Den vita damen står redan på brädet.",
+          "rook": "Båda de vita tornen står på brädet.",
+          "bishop": "Båda de vita löparna står på brädet.",
+          "knight": "Båda de vita springarna står på brädet.",
+          "pawn": "Alla åtta vita bönder står på brädet."
+        },
+        "black": {
+          "king": "Den svarta kungen står redan på brädet.",
+          "queen": "Den svarta damen står redan på brädet.",
+          "rook": "Båda de svarta tornen står på brädet.",
+          "bishop": "Båda de svarta löparna står på brädet.",
+          "knight": "Båda de svarta springarna står på brädet.",
+          "pawn": "Alla åtta svarta bönder står på brädet."
+        }
+      },
       "squareEmpty": "{square}, tom",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Memorera ställningen",

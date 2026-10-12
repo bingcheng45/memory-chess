@@ -12,6 +12,9 @@ const pieceLetter = (name: string) => {
   return pieceTypeToFenChar(type as PieceType, color as PieceColor);
 };
 
+const paletteButton = (pieceName: string) =>
+  screen.getByRole("button", { name: new RegExp(`^${pieceName}, \\d+ left$`) });
+
 jest.mock("@/lib/lab/recordRound", () => ({ recordLabRound: jest.fn(() => Promise.resolve(true)) }));
 
 describe("CalibrationSection", () => {
@@ -39,7 +42,7 @@ describe("CalibrationSection", () => {
     expect(screen.getByText("Phase 6 · Rebuild")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: `${square}, empty` })).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("button", { name: pieceName }));
+    fireEvent.click(paletteButton(pieceName));
     act(() => {
       jest.advanceTimersByTime(1400);
     });
@@ -93,7 +96,7 @@ describe("CalibrationSection", () => {
       jest.advanceTimersByTime(10100);
     });
 
-    fireEvent.click(screen.getByRole("button", { name: pieceName }));
+    fireEvent.click(paletteButton(pieceName));
     fireEvent.click(screen.getByRole("button", { name: `${square}, empty` }));
     fireEvent.click(screen.getByRole("button", { name: "Submit reading" }));
 
@@ -200,7 +203,7 @@ describe("the calibration round controls", () => {
     await startRound();
     const [square, pieceName] = studiedPiece();
     fireEvent.click(controls().getByRole("button", { name: "Done" }));
-    fireEvent.click(screen.getByRole("button", { name: pieceName }));
+    fireEvent.click(paletteButton(pieceName));
     fireEvent.click(screen.getByRole("button", { name: `${square}, empty` }));
     expect(screen.getByRole("button", { name: `${square}, ${pieceName}` })).toBeInTheDocument();
 
@@ -212,6 +215,21 @@ describe("the calibration round controls", () => {
     fireEvent.click(clear);
 
     expect(screen.getByRole("button", { name: `${square}, empty` })).toBeInTheDocument();
+  });
+
+  it("greys out the white king once it is placed and says why a second one is refused", async () => {
+    renderWithIntl(<CalibrationSection />);
+    await startRound();
+    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    fireEvent.click(paletteButton("white king"));
+    fireEvent.click(screen.getByRole("button", { name: "e1, empty" }));
+    fireEvent.click(screen.getByRole("button", { name: "d1, empty" }));
+
+    expect(screen.getByRole("button", { name: "white king, 0 left" })).toHaveAttribute("aria-disabled", "true");
+    expect(screen.getByRole("button", { name: "d1, empty" })).toBeInTheDocument();
+    expect(screen.getByText(/Board cleared\./)).toHaveTextContent(
+      "Board cleared. Pick a piece, then a square. The white king is already on the board.",
+    );
   });
 
   it("keeps two buttons once scored: Run again as primary and Submit disabled", async () => {

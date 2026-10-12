@@ -2,6 +2,7 @@ import {
   CALIBRATION_RULES,
 } from "@/lib/home/calibration";
 import {
+  remainingOf,
   roundReducer,
   scoreReading,
   squareVerdict,
@@ -118,6 +119,7 @@ describe("roundReducer", () => {
       target,
       placed: {},
       selected: null,
+      refused: null,
       studyMs: 1000,
       log: { startedAt: 1000, placements: [], removals: 0 },
     });
@@ -250,5 +252,170 @@ describe("roundReducer", () => {
         removals: 4,
       },
     });
+  });
+});
+
+describe("the palette inventory", () => {
+  const target: LabPosition = { g1: WK, d6: BQ };
+  type Rebuild = Extract<RoundState, { phase: "rebuild" }>;
+
+  function rebuilding(): Rebuild {
+    const studying = roundReducer({ phase: "idle" }, { type: "start", config: CONFIG, target, now: 0 });
+    return roundReducer(studying, { type: "studyEnded", now: 1000 }) as Rebuild;
+  }
+
+  function play(state: RoundState, ...actions: RoundAction[]): Rebuild {
+    return actions.reduce(roundReducer, state) as Rebuild;
+  }
+
+  it("counts what is left of each piece from the position", () => {
+    const position: LabPosition = { a1: WN, b1: WN, c1: BP, d1: WK };
+
+    expect(remainingOf(position, WN)).toBe(0);
+    expect(remainingOf(position, BP)).toBe(7);
+    expect(remainingOf(position, WK)).toBe(0);
+    expect(remainingOf(position, BQ)).toBe(1);
+  });
+
+  it("names the used-up piece when a third white knight is tapped onto the board", () => {
+    const state = play(
+      rebuilding(),
+      { type: "select", piece: WN },
+      { type: "tapSquare", square: "b1", now: 2000 },
+      { type: "tapSquare", square: "g1", now: 2100 },
+      { type: "tapSquare", square: "e4", now: 2200 },
+    );
+
+    expect(state.placed).toEqual({ b1: WN, g1: WN });
+    expect(state.selected).toEqual(WN);
+    expect(state.refused).toEqual({ piece: WN, attempt: 1 });
+  });
+
+  it("counts repeated refusals and forgets them on the next thing that works", () => {
+    const full = play(rebuilding(), { type: "select", piece: WK }, { type: "tapSquare", square: "e1", now: 2000 });
+    const twice = play(full, { type: "tapSquare", square: "e2", now: 2100 }, { type: "tapSquare", square: "e3", now: 2200 });
+    const lifted = play(twice, { type: "tapSquare", square: "e1", now: 2300 });
+
+    expect(twice.refused).toEqual({ piece: WK, attempt: 2 });
+    expect(lifted).toMatchObject({ placed: {}, refused: null });
+  });
+
+  it("selects a piece that has run out but says so, and lets it lift its copy to move it", () => {
+    const picked = play(
+      rebuilding(),
+      { type: "select", piece: WK },
+      { type: "tapSquare", square: "e1", now: 2000 },
+      { type: "select", piece: BQ },
+      { type: "select", piece: WK },
+    );
+    const moved = play(picked, { type: "tapSquare", square: "e1", now: 2100 }, { type: "tapSquare", square: "g1", now: 2200 });
+
+    expect(picked).toMatchObject({ selected: WK, refused: { piece: WK, attempt: 1 } });
+    expect(moved).toMatchObject({ placed: { g1: WK }, selected: WK, refused: null });
+  });
+
+  it("still lets the player put down a used-up piece they are holding", () => {
+    const state = play(
+      rebuilding(),
+      { type: "select", piece: WK },
+      { type: "tapSquare", square: "e1", now: 2000 },
+      { type: "select", piece: WK },
+    );
+
+    expect(state).toMatchObject({ selected: null, refused: null });
+  });
+
+  it("refuses a used-up piece grabbed from the palette, and not one that is left", () => {
+    const full = play(rebuilding(), { type: "place", piece: WK, square: "e1", now: 2000 });
+
+    expect(play(full, { type: "grab", piece: WK }).refused).toEqual({ piece: WK, attempt: 1 });
+    expect(play(full, { type: "grab", piece: WK }, { type: "grab", piece: BQ }).refused).toBeNull();
+  });
+
+  it("drops a palette piece on a square without touching the selection, and logs it", () => {
+    const state = play(rebuilding(), { type: "select", piece: BQ }, { type: "place", piece: WN, square: "f3", now: 2500 });
+
+    expect(state).toMatchObject({
+      placed: { f3: WN },
+      selected: BQ,
+      log: { placements: [[1500, 45, "N"]], removals: 0 },
+    });
+  });
+
+  it("replaces a different piece when one is dropped on it, as a tap does", () => {
+    const state = play(
+      rebuilding(),
+      { type: "place", piece: BQ, square: "d6", now: 2000 },
+      { type: "place", piece: WN, square: "d6", now: 3000 },
+    );
+
+    expect(state).toMatchObject({ placed: { d6: WN }, log: { removals: 1 } });
+  });
+
+  it("leaves the board alone when a piece is dropped on its own kind", () => {
+    const once = play(rebuilding(), { type: "place", piece: WN, square: "f3", now: 2000 });
+
+    expect(play(once, { type: "place", piece: WN, square: "f3", now: 3000 })).toBe(once);
+  });
+
+  it("refuses a dropped piece that has run out, even onto a different piece", () => {
+    const state = play(
+      rebuilding(),
+      { type: "place", piece: WK, square: "e1", now: 2000 },
+      { type: "place", piece: BQ, square: "d1", now: 2100 },
+      { type: "place", piece: WK, square: "d1", now: 2200 },
+    );
+
+    expect(state.placed).toEqual({ e1: WK, d1: BQ });
+    expect(state.refused).toEqual({ piece: WK, attempt: 1 });
+  });
+
+  it("moves a placed piece to an empty square, logged as a lift and a placement", () => {
+    const state = play(
+      rebuilding(),
+      { type: "place", piece: WN, square: "f3", now: 2000 },
+      { type: "move", from: "f3", to: "e5", now: 2600 },
+    );
+
+    expect(state).toMatchObject({
+      placed: { e5: WN },
+      log: { placements: [[1000, 45, "N"], [1600, 28, "N"]], removals: 1 },
+    });
+  });
+
+  it("moves a piece onto another and sends the one it lands on back to the palette", () => {
+    const state = play(
+      rebuilding(),
+      { type: "place", piece: WN, square: "f3", now: 2000 },
+      { type: "place", piece: BQ, square: "d6", now: 2100 },
+      { type: "move", from: "f3", to: "d6", now: 2600 },
+    );
+
+    expect(state).toMatchObject({ placed: { d6: WN }, log: { removals: 2 } });
+    expect(remainingOf(state.placed, BQ)).toBe(1);
+  });
+
+  it("ignores a move onto the same square or from an empty one", () => {
+    const placed = play(rebuilding(), { type: "place", piece: WN, square: "f3", now: 2000 });
+
+    expect(play(placed, { type: "move", from: "f3", to: "f3", now: 2600 })).toBe(placed);
+    expect(play(placed, { type: "move", from: "a1", to: "b1", now: 2600 })).toBe(placed);
+  });
+
+  it("removes a piece dragged off the board and counts the removal", () => {
+    const state = play(
+      rebuilding(),
+      { type: "place", piece: WN, square: "f3", now: 2000 },
+      { type: "remove", square: "f3" },
+    );
+
+    expect(state).toMatchObject({ placed: {}, log: { removals: 1 } });
+  });
+
+  it("ignores drags outside the rebuild", () => {
+    const studying = roundReducer({ phase: "idle" }, { type: "start", config: CONFIG, target, now: 0 });
+
+    expect(roundReducer(studying, { type: "place", piece: WN, square: "f3", now: 10 })).toBe(studying);
+    expect(roundReducer(studying, { type: "remove", square: "g1" })).toBe(studying);
   });
 });

@@ -48,7 +48,8 @@ export function labPositionToFen(position: LabPosition): string {
   ).join("/");
 }
 
-function remainingOf(position: LabPosition, piece: LabPiece): number {
+/** Copies of a piece still in the palette: the standard set less what the position already holds. */
+export function remainingOf(position: LabPosition, piece: LabPiece): number {
   const used = Object.values(position).filter((placed) => samePiece(placed, piece)).length;
   return STANDARD_INVENTORY[piece.type] - used;
 }
@@ -119,6 +120,12 @@ export interface RoundConfig {
   readonly board?: SetBoard;
 }
 
+/** A piece the player reached for after every copy was on the board; `attempt` counts the tries in a row. */
+export interface Refusal {
+  readonly piece: LabPiece;
+  readonly attempt: number;
+}
+
 export type RoundState =
   | { readonly phase: "idle" }
   | { readonly phase: "study"; readonly config: RoundConfig; readonly target: LabPosition; readonly startedAt: number }
@@ -128,6 +135,7 @@ export type RoundState =
       readonly target: LabPosition;
       readonly placed: LabPosition;
       readonly selected: LabPiece | null;
+      readonly refused: Refusal | null;
       readonly studyMs: number;
       readonly log: PlacementLog;
     }
@@ -149,16 +157,75 @@ export type RoundAction =
   | { readonly type: "studyEnded"; readonly now: number }
   | { readonly type: "select"; readonly piece: LabPiece }
   | { readonly type: "tapSquare"; readonly square: SquareName; readonly now: number }
+  | { readonly type: "grab"; readonly piece: LabPiece }
+  | { readonly type: "place"; readonly piece: LabPiece; readonly square: SquareName; readonly now: number }
+  | { readonly type: "move"; readonly from: SquareName; readonly to: SquareName; readonly now: number }
+  | { readonly type: "remove"; readonly square: SquareName }
   | { readonly type: "clear" }
   | { readonly type: "submit"; readonly now: number };
 
-/** What the board and its palette send: a piece picked, a square tapped. */
-export type BoardAction = Extract<RoundAction, { type: "select" | "tapSquare" }>;
+/** What the board and its palette send: a piece picked or grabbed, a square tapped, a piece dropped or dragged off. */
+export type BoardAction = Extract<RoundAction, { type: "select" | "tapSquare" | "grab" | "place" | "move" | "remove" }>;
+
+type RebuildState = Extract<RoundState, { phase: "rebuild" }>;
 
 export const IDLE_ROUND: RoundState = { phase: "idle" };
 
 function withoutSquare(position: LabPosition, square: SquareName): LabPosition {
   return Object.fromEntries(Object.entries(position).filter(([key]) => key !== square));
+}
+
+function refuse(state: RebuildState, piece: LabPiece): RebuildState {
+  return { ...state, refused: { piece, attempt: (state.refused?.attempt ?? 0) + 1 } };
+}
+
+function lift(state: RebuildState, square: SquareName): RebuildState {
+  return { ...state, placed: withoutSquare(state.placed, square), log: logRemovals(state.log) };
+}
+
+/** Puts `piece` on `square`, replacing whatever stood there; refused once every copy is on the board. */
+function put(state: RebuildState, piece: LabPiece, square: SquareName, now: number): RebuildState {
+  if (remainingOf(state.placed, piece) <= 0) return refuse(state, piece);
+  const current = state.placed[square];
+  return {
+    ...state,
+    placed: { ...state.placed, [square]: piece },
+    log: logPlacement(logRemovals(state.log, current ? 1 : 0), now, square, pieceTypeToFenChar(piece.type, piece.color)),
+  };
+}
+
+function rebuildReducer(
+  state: RebuildState,
+  action: Exclude<RoundAction, { type: "start" | "studyEnded" | "submit" }>,
+): RebuildState {
+  switch (action.type) {
+    case "select": {
+      if (samePiece(state.selected ?? undefined, action.piece)) return { ...state, selected: null };
+      // Picking a used-up piece still selects it, as tapping one of its copies with it lifts that copy to move it.
+      const picked = { ...state, selected: action.piece };
+      return remainingOf(state.placed, action.piece) <= 0 ? refuse(picked, action.piece) : picked;
+    }
+    case "grab":
+      return remainingOf(state.placed, action.piece) <= 0 ? refuse(state, action.piece) : { ...state, refused: null };
+    case "tapSquare": {
+      const current = state.placed[action.square];
+      if (current && (!state.selected || samePiece(current, state.selected))) return lift(state, action.square);
+      return state.selected ? put(state, state.selected, action.square, action.now) : state;
+    }
+    case "place":
+      return samePiece(state.placed[action.square], action.piece)
+        ? state
+        : put(state, action.piece, action.square, action.now);
+    case "move": {
+      const piece = state.placed[action.from];
+      if (!piece || action.from === action.to) return state;
+      return put(lift(state, action.from), piece, action.to, action.now);
+    }
+    case "remove":
+      return state.placed[action.square] ? lift(state, action.square) : state;
+    case "clear":
+      return { ...state, placed: {}, log: logRemovals(state.log, occupied(state.placed).length) };
+  }
 }
 
 export function roundReducer(state: RoundState, action: RoundAction): RoundState {
@@ -173,6 +240,7 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
           target: state.target,
           placed: {},
           selected: null,
+          refused: null,
           // A hidden tab gets no timers, so the deadline can fire long after it passed. The player only ever saw the
           // configured time, and this figure feeds the time bonus and the leaderboard.
           studyMs: Math.min(state.config.studyMs, action.now - state.startedAt),
@@ -181,35 +249,20 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
       : state;
   }
   if (state.phase !== "rebuild") return state;
-
-  switch (action.type) {
-    case "select":
-      return { ...state, selected: samePiece(state.selected ?? undefined, action.piece) ? null : action.piece };
-    case "tapSquare": {
-      const current = state.placed[action.square];
-      if (current && (!state.selected || samePiece(current, state.selected))) {
-        return { ...state, placed: withoutSquare(state.placed, action.square), log: logRemovals(state.log) };
-      }
-      if (!state.selected || remainingOf(state.placed, state.selected) <= 0) return state;
-      const piece = pieceTypeToFenChar(state.selected.type, state.selected.color);
-      return {
-        ...state,
-        placed: { ...state.placed, [action.square]: state.selected },
-        log: logPlacement(logRemovals(state.log, current ? 1 : 0), action.now, action.square, piece),
-      };
-    }
-    case "clear":
-      return { ...state, placed: {}, log: logRemovals(state.log, occupied(state.placed).length) };
-    case "submit":
-      return {
-        phase: "scored",
-        config: state.config,
-        target: state.target,
-        placed: state.placed,
-        score: scoreReading(state.target, state.placed),
-        rebuildMs: action.now - state.log.startedAt,
-        studyMs: state.studyMs,
-        log: state.log,
-      };
+  if (action.type === "submit") {
+    return {
+      phase: "scored",
+      config: state.config,
+      target: state.target,
+      placed: state.placed,
+      score: scoreReading(state.target, state.placed),
+      rebuildMs: action.now - state.log.startedAt,
+      studyMs: state.studyMs,
+      log: state.log,
+    };
   }
+
+  const next = rebuildReducer(state, action);
+  // A refusal stands until the next thing the player does that works.
+  return next === state || next.refused !== state.refused ? next : { ...next, refused: null };
 }

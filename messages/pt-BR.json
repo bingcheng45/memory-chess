@@ -266,6 +266,25 @@
       "controlsLabel": "Controles da rodada",
       "boardLabel": "Tabuleiro. Use as setas para se mover entre as casas.",
       "paletteLabel": "Paleta de peças",
+      "paletteItem": "{piece}, disponíveis: {count}",
+      "usedUp": {
+        "white": {
+          "king": "O rei branco já está no tabuleiro.",
+          "queen": "A dama branca já está no tabuleiro.",
+          "rook": "As duas torres brancas estão no tabuleiro.",
+          "bishop": "Os dois bispos brancos estão no tabuleiro.",
+          "knight": "Os dois cavalos brancos estão no tabuleiro.",
+          "pawn": "Os oito peões brancos estão no tabuleiro."
+        },
+        "black": {
+          "king": "O rei preto já está no tabuleiro.",
+          "queen": "A dama preta já está no tabuleiro.",
+          "rook": "As duas torres pretas estão no tabuleiro.",
+          "bishop": "Os dois bispos pretos estão no tabuleiro.",
+          "knight": "Os dois cavalos pretos estão no tabuleiro.",
+          "pawn": "Os oito peões pretos estão no tabuleiro."
+        }
+      },
       "squareEmpty": "{square}, vazia",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Memorize a posição",

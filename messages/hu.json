@@ -266,6 +266,25 @@
       "controlsLabel": "A kör vezérlői",
       "boardLabel": "Tábla. A mezők között a nyílbillentyűkkel lépkedhetsz.",
       "paletteLabel": "Bábupaletta",
+      "paletteItem": "{piece}, maradt: {count}",
+      "usedUp": {
+        "white": {
+          "king": "A világos király már a táblán van.",
+          "queen": "A világos vezér már a táblán van.",
+          "rook": "Mindkét világos bástya a táblán van.",
+          "bishop": "Mindkét világos futó a táblán van.",
+          "knight": "Mindkét világos huszár a táblán van.",
+          "pawn": "Mind a nyolc világos gyalog a táblán van."
+        },
+        "black": {
+          "king": "A sötét király már a táblán van.",
+          "queen": "A sötét vezér már a táblán van.",
+          "rook": "Mindkét sötét bástya a táblán van.",
+          "bishop": "Mindkét sötét futó a táblán van.",
+          "knight": "Mindkét sötét huszár a táblán van.",
+          "pawn": "Mind a nyolc sötét gyalog a táblán van."
+        }
+      },
       "squareEmpty": "{square}, üres",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Jegyezd meg az állást",

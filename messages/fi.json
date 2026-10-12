@@ -266,6 +266,25 @@
       "controlsLabel": "Kierroksen ohjaimet",
       "boardLabel": "Lauta. Liiku ruutujen välillä nuolinäppäimillä.",
       "paletteLabel": "Nappulavalikoima",
+      "paletteItem": "{piece}, jäljellä {count}",
+      "usedUp": {
+        "white": {
+          "king": "Valkoinen kuningas on jo laudalla.",
+          "queen": "Valkoinen kuningatar on jo laudalla.",
+          "rook": "Molemmat valkoiset tornit ovat laudalla.",
+          "bishop": "Molemmat valkoiset lähetit ovat laudalla.",
+          "knight": "Molemmat valkoiset ratsut ovat laudalla.",
+          "pawn": "Kaikki kahdeksan valkoista sotilasta ovat laudalla."
+        },
+        "black": {
+          "king": "Musta kuningas on jo laudalla.",
+          "queen": "Musta kuningatar on jo laudalla.",
+          "rook": "Molemmat mustat tornit ovat laudalla.",
+          "bishop": "Molemmat mustat lähetit ovat laudalla.",
+          "knight": "Molemmat mustat ratsut ovat laudalla.",
+          "pawn": "Kaikki kahdeksan mustaa sotilasta ovat laudalla."
+        }
+      },
       "squareEmpty": "{square}, tyhjä",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Paina asema mieleen",

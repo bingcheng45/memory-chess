@@ -266,6 +266,25 @@
       "controlsLabel": "Rundensteuerung",
       "boardLabel": "Brett. Mit den Pfeiltasten zwischen den Feldern wechseln.",
       "paletteLabel": "Figurenauswahl",
+      "paletteItem": "{piece}, noch {count}",
+      "usedUp": {
+        "white": {
+          "king": "Der weiße König steht schon auf dem Brett.",
+          "queen": "Die weiße Dame steht schon auf dem Brett.",
+          "rook": "Beide weißen Türme stehen auf dem Brett.",
+          "bishop": "Beide weißen Läufer stehen auf dem Brett.",
+          "knight": "Beide weißen Springer stehen auf dem Brett.",
+          "pawn": "Alle acht weißen Bauern stehen auf dem Brett."
+        },
+        "black": {
+          "king": "Der schwarze König steht schon auf dem Brett.",
+          "queen": "Die schwarze Dame steht schon auf dem Brett.",
+          "rook": "Beide schwarzen Türme stehen auf dem Brett.",
+          "bishop": "Beide schwarzen Läufer stehen auf dem Brett.",
+          "knight": "Beide schwarzen Springer stehen auf dem Brett.",
+          "pawn": "Alle acht schwarzen Bauern stehen auf dem Brett."
+        }
+      },
       "squareEmpty": "{square}, leer",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Präge dir die Stellung ein",

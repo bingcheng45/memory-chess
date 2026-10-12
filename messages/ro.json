@@ -266,6 +266,25 @@
       "controlsLabel": "Comenzile rundei",
       "boardLabel": "Tablă. Folosește tastele săgeți pentru a te deplasa între pătrate.",
       "paletteLabel": "Paleta de piese",
+      "paletteItem": "{piece}, rămase: {count}",
+      "usedUp": {
+        "white": {
+          "king": "Regele alb este deja pe tablă.",
+          "queen": "Dama albă este deja pe tablă.",
+          "rook": "Ambele turnuri albe sunt pe tablă.",
+          "bishop": "Ambii nebuni albi sunt pe tablă.",
+          "knight": "Ambii cai albi sunt pe tablă.",
+          "pawn": "Toți cei opt pioni albi sunt pe tablă."
+        },
+        "black": {
+          "king": "Regele negru este deja pe tablă.",
+          "queen": "Dama neagră este deja pe tablă.",
+          "rook": "Ambele turnuri negre sunt pe tablă.",
+          "bishop": "Ambii nebuni negri sunt pe tablă.",
+          "knight": "Ambii cai negri sunt pe tablă.",
+          "pawn": "Toți cei opt pioni negri sunt pe tablă."
+        }
+      },
       "squareEmpty": "{square}, gol",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Memorează poziția",

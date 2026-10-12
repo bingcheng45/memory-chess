@@ -103,6 +103,8 @@ function labels(locale) {
     submit: game.round.submit,
     empty: (square) => game.round.squareEmpty.replace("{square}", square),
     pieceIn: (label) => pieceNames.find(({ name }) => label.endsWith(name)),
+    // A palette button is named for its piece and what is left of it, so match the name and the words before the count.
+    palette: (name) => `.lab-palette [aria-label^="${game.round.paletteItem.split("{count}")[0].replace("{piece}", name)}"]`,
   };
 }
 
@@ -150,7 +152,7 @@ async function playRound(page, base, prefix, text) {
   for (const { square, label } of pieces.slice(0, CORRECT_PIECES)) {
     const piece = text.pieceIn(label);
     if (!piece) throw new Error(`no piece name ends the label "${label}"`);
-    const palette = `.lab-palette [aria-label="${piece.name}"]`;
+    const palette = text.palette(piece.name);
     await page.waitFor(`!!document.querySelector(${JSON.stringify(palette)})`, 10_000);
     if ((await page.eval(`document.querySelector(${JSON.stringify(palette)}).getAttribute("aria-pressed")`)) !== "true") await page.click(palette);
     await clickSelector(page, `[data-coordinate="${square}"]`);

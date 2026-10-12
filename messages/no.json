@@ -266,6 +266,25 @@
       "controlsLabel": "Rundekontroller",
       "boardLabel": "Brett. Bruk piltastene for å flytte mellom feltene.",
       "paletteLabel": "Brikkepalett",
+      "paletteItem": "{piece}, {count} igjen",
+      "usedUp": {
+        "white": {
+          "king": "Den hvite kongen står allerede på brettet.",
+          "queen": "Den hvite dronningen står allerede på brettet.",
+          "rook": "Begge de hvite tårnene står på brettet.",
+          "bishop": "Begge de hvite løperne står på brettet.",
+          "knight": "Begge de hvite springerne står på brettet.",
+          "pawn": "Alle de åtte hvite bøndene står på brettet."
+        },
+        "black": {
+          "king": "Den svarte kongen står allerede på brettet.",
+          "queen": "Den svarte dronningen står allerede på brettet.",
+          "rook": "Begge de svarte tårnene står på brettet.",
+          "bishop": "Begge de svarte løperne står på brettet.",
+          "knight": "Begge de svarte springerne står på brettet.",
+          "pawn": "Alle de åtte svarte bøndene står på brettet."
+        }
+      },
       "squareEmpty": "{square}, tomt",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Husk stillingen",

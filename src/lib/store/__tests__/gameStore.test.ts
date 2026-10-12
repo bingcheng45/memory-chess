@@ -3,6 +3,7 @@ import { validateMemorizationPosition } from "@/lib/utils/memorizationPosition";
 import { labPositionToFen, type LabPiece, type LabPosition } from "@/lib/round/round";
 import type { SquareName } from "@/lib/game/board";
 import type { PieceColor, PieceType } from "@/types/chess";
+import type { GameState } from "@/lib/types/game";
 
 const store = () => useGameStore.getState();
 const boardPlacement = (fen: string) => fen.split(" ")[0];
@@ -279,7 +280,7 @@ function playRound({ pieceCount, solveMs, correct = pieceCount, studyMs = 10000 
     place(square, piece.type, piece.color, studyMs);
   }
   store().submitSolution(studyMs + solveMs);
-  return store().gameState;
+  return store().gameState as GameState & { skillRatingChange?: number };
 }
 
 const freshPlayer = () =>
@@ -416,5 +417,44 @@ describe("keeping the win streak across visits", () => {
       skillRating: 1300,
       streak: 0,
     });
+  });
+});
+
+describe("how solve speed moves the skill rating", () => {
+  beforeEach(() => {
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    freshPlayer();
+  });
+
+  afterEach(() => {
+    store().resetGame();
+    jest.restoreAllMocks();
+    freshPlayer();
+  });
+
+  it("lowers the rating for an empty submit however fast it comes", () => {
+    const first = playRound({ pieceCount: 6, correct: 0, solveMs: 0 });
+    const firstRating = first.skillRating;
+    const second = playRound({ pieceCount: 6, correct: 0, solveMs: 1 });
+
+    expect([first.accuracy, first.skillRatingChange, firstRating, second.skillRatingChange, second.skillRating]).toEqual([0, -10, 990, -10, 980]);
+  });
+
+  it("gives an instant perfect round no more speed bonus than solving in a third of the study time", () => {
+    const instant = playRound({ pieceCount: 2, solveMs: 100 });
+
+    expect([instant.skillRatingChange, instant.skillRating]).toEqual([122, 1122]);
+  });
+
+  it("adds speed in proportion to what was recalled", () => {
+    const half = playRound({ pieceCount: 6, correct: 3, solveMs: 5000 });
+
+    expect([half.accuracy, half.skillRatingChange]).toEqual([50, 27]);
+  });
+
+  it("leaves a slow perfect round as it was", () => {
+    const slow = playRound({ pieceCount: 6, solveMs: 60000 });
+
+    expect(slow.skillRatingChange).toBe(80);
   });
 });

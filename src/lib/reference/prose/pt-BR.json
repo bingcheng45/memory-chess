@@ -65,6 +65,8 @@
         "bishop-color-complex": "Os dois bispos de um mesmo lado nunca ocupam casas da mesma cor.",
         "simultaneous-check": "Os dois reis nunca estão em xeque ao mesmo tempo.",
         "checked-side-not-to-move": "Se um rei está em xeque, é a vez desse lado jogar.",
+        "home-rank-pawn-check": "Um peão que nunca saiu da sua fileira inicial nunca dá xeque.",
+        "impossible-double-check": "Nenhum rei recebe xeque de mais de duas peças, e um xeque duplo sempre envolve um bispo, uma torre ou uma dama.",
         "piece-count": "O tabuleiro contém exatamente o número de peças que o nível pediu.",
         "invalid-fen": "A posição é uma posição legal de xadrez, que pode ser montada em um tabuleiro."
       },

@@ -65,6 +65,8 @@
         "bishop-color-complex": "Kedua gajah satu pihak tidak pernah berada di petak berwarna sama.",
         "simultaneous-check": "Kedua raja tidak pernah di-sekak bersamaan.",
         "checked-side-not-to-move": "Jika satu raja di-sekak, giliran jalan memang milik pihak itu.",
+        "home-rank-pawn-check": "Pion yang belum pernah meninggalkan baris awalnya tidak pernah memberi sekak.",
+        "impossible-double-check": "Raja tidak pernah di-sekak oleh lebih dari dua bidak, dan sekak ganda selalu melibatkan gajah, benteng, atau menteri.",
         "piece-count": "Papan berisi tepat jumlah bidak yang diminta tingkat tersebut.",
         "invalid-fen": "Posisi tersebut adalah posisi catur yang sah, yang bisa disusun di papan."
       },

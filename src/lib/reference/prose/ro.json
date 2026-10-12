@@ -65,6 +65,8 @@
         "bishop-color-complex": "Cei doi nebuni ai unei tabere nu stau niciodată pe pătrate de aceeași culoare.",
         "simultaneous-check": "Cei doi regi nu sunt niciodată în șah în același timp.",
         "checked-side-not-to-move": "Dacă un rege este în șah, este rândul acelei tabere să mute.",
+        "home-rank-pawn-check": "Un pion care nu și-a părăsit niciodată rândul de start nu dă niciodată șah.",
+        "impossible-double-check": "Un rege nu primește niciodată șah de la mai mult de două piese, iar un șah dublu implică mereu un nebun, un turn sau o damă.",
         "piece-count": "Tabla conține exact numărul de piese cerut de nivelul ales.",
         "invalid-fen": "Poziția este o poziție legală de șah, care poate fi așezată pe o tablă."
       },

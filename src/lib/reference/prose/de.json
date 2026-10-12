@@ -65,6 +65,8 @@
         "bishop-color-complex": "Die beiden Läufer einer Seite stehen nie auf gleichfarbigen Feldern.",
         "simultaneous-check": "Nie stehen beide Könige gleichzeitig im Schach.",
         "checked-side-not-to-move": "Steht ein König im Schach, ist diese Seite am Zug.",
+        "home-rank-pawn-check": "Ein Bauer, der seine Ausgangsreihe nie verlassen hat, gibt nie Schach.",
+        "impossible-double-check": "Kein König steht im Schach durch mehr als zwei Figuren, und an einem Doppelschach ist immer ein Läufer, ein Turm oder eine Dame beteiligt.",
         "piece-count": "Das Brett enthält genau die Figurenzahl, die die Stufe vorgibt.",
         "invalid-fen": "Die Stellung ist eine regelkonforme Schachstellung, die sich auf einem Brett aufbauen lässt."
       },

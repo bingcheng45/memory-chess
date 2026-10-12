@@ -65,6 +65,8 @@
         "bishop-color-complex": "De to løperne til en side står aldri på ruter med lik farge.",
         "simultaneous-check": "Begge kongene står aldri i sjakk samtidig.",
         "checked-side-not-to-move": "Hvis en konge står i sjakk, er det den siden som skal trekke.",
+        "home-rank-pawn-check": "En bonde som aldri har forlatt startraden sin, gir aldri sjakk.",
+        "impossible-double-check": "En konge står aldri i sjakk fra mer enn to brikker, og i en dobbeltsjakk inngår alltid en løper, et tårn eller en dronning.",
         "piece-count": "Brettet har nøyaktig så mange brikker som vanskelighetsgraden ba om.",
         "invalid-fen": "Stillingen er en lovlig sjakkstilling som kan settes opp på et brett."
       },

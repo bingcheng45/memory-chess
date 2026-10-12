@@ -65,6 +65,8 @@
         "bishop-color-complex": "A side's two bishops never sit on same-colored squares.",
         "simultaneous-check": "Both kings are never in check at the same time.",
         "checked-side-not-to-move": "If one king is in check, it is that side's turn to move.",
+        "home-rank-pawn-check": "A pawn that has never left its starting rank never gives check.",
+        "impossible-double-check": "No king is ever checked by more than two pieces, and a double check always includes a bishop, rook or queen.",
         "piece-count": "The board holds exactly the number of pieces the preset asked for.",
         "invalid-fen": "The position is a legal chess position that a board can be set to."
       },

@@ -65,6 +65,8 @@
         "bishop-color-complex": "Hai tượng của một bên không bao giờ đứng trên các ô cùng màu.",
         "simultaneous-check": "Hai vua không bao giờ cùng bị chiếu một lúc.",
         "checked-side-not-to-move": "Nếu một vua đang bị chiếu, đến lượt đi của chính bên đó.",
+        "home-rank-pawn-check": "Tốt chưa từng rời hàng xuất phát thì không bao giờ chiếu tướng.",
+        "impossible-double-check": "Vua không bao giờ bị chiếu bởi quá hai quân, và chiếu đôi luôn có một tượng, xe hoặc hậu.",
         "piece-count": "Bàn cờ chứa đúng số quân mà mức đã chọn yêu cầu.",
         "invalid-fen": "Thế cờ là một thế cờ hợp lệ mà một bàn cờ có thể được xếp thành."
       },

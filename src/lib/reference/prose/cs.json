@@ -65,6 +65,8 @@
         "bishop-color-complex": "Dva střelci jedné strany nikdy nestojí na polích stejné barvy.",
         "simultaneous-check": "Oba králové nejsou nikdy v šachu současně.",
         "checked-side-not-to-move": "Pokud je král v šachu, je právě na tahu ta strana.",
+        "home-rank-pawn-check": "Pěšec, který nikdy neopustil svou výchozí řadu, nikdy nedává šach.",
+        "impossible-double-check": "Krále nikdy nešachují více než dva kameny a na dvojitém šachu se vždy podílí střelec, věž nebo dáma.",
         "piece-count": "Šachovnice obsahuje přesně tolik figur, kolik vyžaduje zvolená úroveň.",
         "invalid-fen": "Pozice je legální šachová pozice, na kterou lze šachovnici nastavit."
       },

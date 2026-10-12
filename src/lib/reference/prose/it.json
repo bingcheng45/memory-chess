@@ -65,6 +65,8 @@
         "bishop-color-complex": "I due alfieri di uno stesso schieramento non stanno mai su case dello stesso colore.",
         "simultaneous-check": "I due re non sono mai sotto scacco contemporaneamente.",
         "checked-side-not-to-move": "Se un re è sotto scacco, tocca a quel colore muovere.",
+        "home-rank-pawn-check": "Un pedone che non ha mai lasciato la sua traversa di partenza non dà mai scacco.",
+        "impossible-double-check": "Nessun re è sotto scacco da più di due pezzi, e uno scacco doppio coinvolge sempre un alfiere, una torre o una donna.",
         "piece-count": "La scacchiera contiene esattamente il numero di pezzi richiesto dal livello.",
         "invalid-fen": "La posizione è una posizione di scacchi legale, che si può disporre su una scacchiera."
       },

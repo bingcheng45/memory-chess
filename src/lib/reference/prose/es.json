@@ -65,6 +65,8 @@
         "bishop-color-complex": "Los dos alfiles de un bando nunca están en casillas del mismo color.",
         "simultaneous-check": "Los dos reyes nunca están en jaque a la vez.",
         "checked-side-not-to-move": "Si un rey está en jaque, le toca mover a ese bando.",
+        "home-rank-pawn-check": "Un peón que nunca ha salido de su fila inicial nunca da jaque.",
+        "impossible-double-check": "Ningún rey recibe jaque de más de dos piezas, y un jaque doble siempre incluye un alfil, una torre o una dama.",
         "piece-count": "El tablero tiene exactamente el número de piezas que pidió la dificultad.",
         "invalid-fen": "La posición es una posición legal de ajedrez que se puede montar en un tablero."
       },

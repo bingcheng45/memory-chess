@@ -65,6 +65,8 @@
         "bishop-color-complex": "한쪽의 비숍 두 개가 같은 색 칸에 앉는 일은 없습니다.",
         "simultaneous-check": "두 킹이 동시에 체크에 걸리는 일은 없습니다.",
         "checked-side-not-to-move": "어느 킹이 체크 상태라면, 차례는 반드시 그쪽에 있습니다.",
+        "home-rank-pawn-check": "출발 가로줄을 한 번도 떠나지 않은 폰은 체크를 걸지 않습니다.",
+        "impossible-double-check": "킹에게 동시에 체크를 거는 기물은 둘을 넘지 않으며, 더블 체크에는 항상 비숍, 룩, 퀸 중 하나가 포함됩니다.",
         "piece-count": "보드 위 기물 수는 프리셋이 요구한 수와 정확히 같습니다.",
         "invalid-fen": "포지션은 실제 보드에 차릴 수 있는 합법적인 체스 포지션입니다."
       },

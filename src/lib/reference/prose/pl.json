@@ -65,6 +65,8 @@
         "bishop-color-complex": "Dwaj gońce jednej strony nigdy nie stoją na polach tego samego koloru.",
         "simultaneous-check": "Obaj królowie nigdy nie są w szachu jednocześnie.",
         "checked-side-not-to-move": "Jeśli król jest w szachu, to właśnie ta strona ma teraz ruch.",
+        "home-rank-pawn-check": "Pionek, który nigdy nie opuścił swojego rzędu wyjściowego, nigdy nie daje szacha.",
+        "impossible-double-check": "Króla nigdy nie szachują więcej niż dwie bierki, a w podwójnym szachu zawsze bierze udział goniec, wieża lub hetman.",
         "piece-count": "Szachownica zawiera dokładnie tyle bierek, ile wymaga wybrany poziom.",
         "invalid-fen": "Pozycja jest legalną pozycją szachową, którą można ustawić na szachownicy."
       },

@@ -89,7 +89,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "After you submit, the board shows the pieces you placed. A green square is correct. A red square holds a piece that does not belong there. A red ring marks a square that held a piece in the original, and if you left it empty, a faded copy of the missing piece sits inside the ring.",
+            "After you submit, the board shows the pieces you placed. A green square is correct. A red square holds a piece that does not belong there. A red ring marks a square where a piece stood in the original and you did not put it back. If you left that square empty, a faded copy of the missing piece sits inside the ring.",
             "Read those marks, not the accuracy number.",
             "If you place a seventh piece, accuracy drops ten points for it.",
           ],
@@ -178,7 +178,7 @@ const guide: LearnDocument = {
           paragraphs: [
             "Now move the white pawn from e4 to d3 and ask the same question. This time the e-file behind the knight is empty, so the rook on e1 defends e5. After 1.Nxe5 Rxe5 2.Rxe5 White has won a rook and a pawn for a knight, so Black should not recapture, and 1.Nxe5 wins a clean pawn.",
             "One pawn moved one square and the answer flipped. The e4 pawn is easy to forget because it never moves in the line. Before you judge a capture, say the whole file or diagonal behind it, all the way to the edge.",
-            "Do two positions of your own each day. Cover a puzzle you solved yesterday and play the solution in your head. Name the square of every piece that moved or was taken, then uncover. It worked if every square matches.",
+            "Do two positions of your own each day. Cover a puzzle you solved yesterday and play the solution in your head. Say where every moved piece now stands and which pieces are gone. Then uncover, play the solution out on the board and check each square you named. It worked if every one matches.",
           ],
         },
       ],

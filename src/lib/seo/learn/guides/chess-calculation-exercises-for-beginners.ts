@@ -49,7 +49,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Calculating means holding a position that is not on the board. You look at the real board, imagine one move, and now keep two pictures apart, the board in front of you and the one in your head.",
-            "Each imagined move changes two squares, the one a piece leaves and the one it lands on. Two plies in, four squares differ from the real board. Every other piece has to stay put with no help from your eyes.",
+            "Each imagined move changes two squares, the one a piece leaves and the one it lands on. Two plies in, up to four squares differ from the real board. Every other piece has to stay put with no help from your eyes.",
             "The moving pieces hold your attention. The line breaks on a piece that stood still, a pawn or a queen that quietly guards the square you land on. A line can only run as far as the picture underneath it holds.",
             "If pieces slip out of your picture before you move anything, the problem comes earlier than calculation. Start with the visualization exercises linked at the end, then come back here.",
           ],
@@ -186,7 +186,7 @@ const guide: LearnDocument = {
             "Say the line in full, your move and the reply, before you touch a piece.",
             "Name every piece that attacks or defends the landing square before you imagine the next move.",
             "Play the line on a real board or an analysis board. Label any miss with a name from the table: forgotten defender, mixed lines or too deep.",
-            "Count the labels after a week and train the most common one. If most are forgotten defenders, add the empty-board rounds below. If most are mixed lines, reset the real board and say \"back to the start\" before the second line. If most are too deep, drop back to two plies until five lines in a row check out.",
+            "Count the labels after a week and train the most common one. If most are forgotten defenders, add the empty-board rounds below. If most are mixed lines, look back at the real board and say \"back to the start\" before you begin the second line. If most are too deep, drop back to two plies until five lines in a row check out.",
           ],
         },
       ],
@@ -208,7 +208,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Hold it while the board is empty",
-              description: "4 rounds of 8 pieces, 10 seconds, about 5 minutes. Place both kings first, then the pieces you are sure of. Stop before you guess, since each extra piece costs ten accuracy points.",
+              description: "4 rounds of 8 pieces, 10 seconds, about 5 minutes. Place both kings first, then the pieces you are sure of. Never place a ninth piece. Each piece past the count costs ten accuracy points. A guess inside the eight costs nothing extra.",
               duration: "About 5 minutes",
               goal: "At least 7 of the 8 correct in three of the four rounds.",
               play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },

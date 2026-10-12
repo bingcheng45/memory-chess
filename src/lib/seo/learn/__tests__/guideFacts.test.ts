@@ -391,7 +391,7 @@ function guideFacts(): Record<string, string[]> {
       `at ${at(4, 6)}% on six pieces`,
     ],
     "chess-calculation-exercises-for-beginners": [
-      `each extra piece costs ${word(penalty)} accuracy points`,
+      `each piece past the count costs ${word(penalty)} accuracy points`,
       `${word(hard.pieceCount - 1)} pieces, one short of the hard preset`,
     ],
     "chess-pattern-recognition-drills": [

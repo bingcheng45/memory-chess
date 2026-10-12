@@ -797,5 +797,104 @@
     "cardSetting": "{pieceCount} bidak dan {seconds} detik untuk menghafal.",
     "cardNote": "Semua orang memainkan papan yang sama hari ini, dan kamu punya satu kesempatan.",
     "play": "Mainkan papan hari ini"
+  },
+  "daily": {
+    "meta": {
+      "title": "Papan Memori Catur Harian: Satu Posisi untuk Semua",
+      "description": "Satu papan memori catur setiap hari, posisinya sama untuk semua pemain. Pelajari sekali, susun ulang, dan masuk ke 10 besar hari ini. Papan baru dibuka tengah malam UTC.",
+      "socialTitle": "Papan Harian Memory Chess",
+      "socialDescription": "Hari ini semua orang mendapat posisi yang sama. Hafalkan, susun ulang, dan lihat peringkat Anda."
+    },
+    "round": {
+      "locked": "Anda sudah memainkan papan hari ini. Satu kali percobaan sehari agar tetap adil.",
+      "resetsIn": "Papan berikutnya {hours} jam {minutes} menit lagi",
+      "resetsInMinutes": "Papan berikutnya {minutes} menit lagi",
+      "seeBoard": "Lihat papan hari ini",
+      "chooseRound": "Main ronde lagi",
+      "join": "Ikut papan hari ini"
+    },
+    "page": {
+      "fig": "Papan harian · {date}",
+      "title": "Satu papan, sama untuk semua",
+      "lede": "Setiap hari, semua pemain mendapat satu posisi yang sama. Pelajari sekali, susun ulang dari ingatan, lalu ikut papan hari ini untuk melihat posisi Anda.",
+      "resets": "Papan baru tengah malam UTC",
+      "open": "Papan hari ini sudah dibuka",
+      "pieces": "{count, plural, other {# bidak}}",
+      "seconds": "{count} dtk untuk menghafal",
+      "oneTry": "Satu percobaan",
+      "hidden": "Tersembunyi sampai Anda main",
+      "play": "Main papan hari ini",
+      "streak": "{count, plural, other {Beruntun harian: # hari}}",
+      "unfinishedTitle": "Percobaan hari ini sudah terpakai",
+      "unfinished": "Anda membuka papan hari ini lalu pergi sebelum ada hasil. Satu percobaan sehari menjaga papan tetap adil, jadi kembalilah untuk papan berikutnya.",
+      "result": "Hasil Anda",
+      "score": "{correct} dari {pieceCount} benar",
+      "rebuild": "disusun ulang dalam {seconds} dtk",
+      "gridAria": "Petak Anda: {correct} benar, {wrong} bidak salah, {missed} terlewat, {extra} berlebih",
+      "key": {
+        "c": "Benar",
+        "w": "Bidak salah",
+        "m": "Terlewat",
+        "x": "Berlebih"
+      },
+      "shareLabel": "Bagikan tanpa membocorkan papan",
+      "shareText": "Papan harian Memory Chess {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Salin hasil",
+      "copied": "Tersalin",
+      "copyFailed": "Papan klip menolak akses. Pilih teks di bawah lalu salin.",
+      "noneRight": "Tidak ada bidak yang benar, jadi percobaan ini tidak masuk peringkat. Papan berikutnya dibuka tengah malam UTC.",
+      "joined": "Anda ada di papan hari ini",
+      "rank": "Peringkat {rank} dari {total} hari ini"
+    },
+    "join": {
+      "title": "Ikut papan hari ini",
+      "name": "Nama",
+      "nameHint": "4 sampai 16 karakter, ditampilkan bersama skor Anda.",
+      "country": "Negara",
+      "chooseCountry": "Pilih negara",
+      "from": {
+        "saved": "Tersimpan di perangkat ini.",
+        "connection": "Berdasarkan koneksi Anda.",
+        "language": "Berdasarkan bahasa browser Anda.",
+        "none": "Pilih negara yang Anda wakili."
+      },
+      "change": "Ubah",
+      "submit": "Ikut papan",
+      "submitting": "Bergabung…",
+      "public": "Nama, negara, skor, dan rating Anda ditampilkan secara publik.",
+      "failed": "Gagal bergabung: {message}",
+      "failedGeneric": "Gagal bergabung ke papan. Silakan coba lagi."
+    },
+    "board": {
+      "title": "10 besar hari ini",
+      "rank": "Peringkat",
+      "player": "Pemain",
+      "right": "Benar",
+      "wrong": "Salah",
+      "time": "Waktu (dtk)",
+      "rating": "{rating} Elo",
+      "you": "Anda",
+      "empty": "Belum ada yang ikut papan hari ini. Mainkan dan jadilah yang pertama.",
+      "error": "Papan hari ini tidak bisa dimuat. Silakan coba lagi sebentar lagi.",
+      "joinToRank": "Ikut papan untuk melihat peringkat Anda di sini.",
+      "order": "Diurutkan berdasarkan bidak benar, lalu salah paling sedikit, lalu penyusunan tercepat.",
+      "all": "Lihat semua papan"
+    },
+    "reference": {
+      "title": "Cara kerja papan harian",
+      "shared": "Setiap hari pada tengah malam UTC, satu posisi baru dipilih, dan setiap pemain di dunia mendapat posisi yang sama. Posisi itu berasal dari seed yang dibuat dari tanggal, jadi tidak ada yang bisa melihatnya lebih awal dan tidak ada yang mendapat versi yang lebih mudah. Karena papannya dipakai bersama, skor di papan itu berarti sama bagi semua orang yang memainkannya pada hari itu.",
+      "oneTry": "Anda hanya mendapat satu percobaan. Membuka papan sudah dihitung sebagai percobaan, jadi keluar saat fase menghafal lalu kembali tidak akan menampilkan papan itu dua kali. Perangkat Anda mengingat percobaan itu sampai papan berikutnya dibuka.",
+      "grid": "Setelah menyusun ulang posisi, Anda bisa melihat petak mana yang benar, mana yang berisi bidak salah, mana yang terlewat, dan di mana Anda menaruh bidak berlebih. Baris untuk dibagikan memuat satu petak per bidak, diurutkan menurut hasil, tanpa petunjuk letak bidaknya, sehingga membagikannya tidak membocorkan papan kepada orang yang belum bermain.",
+      "join": "Untuk ikut papan, pilih nama sepanjang 4 sampai 16 karakter dan negara yang Anda wakili. Negara diisi dari pilihan Anda sebelumnya, lalu dari koneksi Anda, lalu dari bahasa browser Anda, dan Anda selalu bisa mengubahnya. Rating Anda saat bergabung ditampilkan di samping nama Anda.",
+      "ranking": "Baris diurutkan berdasarkan jumlah bidak yang ditempatkan dengan benar, lalu bidak salah paling sedikit, lalu penyusunan tercepat. Semua orang menghafal selama jumlah detik yang sama, jadi waktu menghafal tidak pernah membedakan dua pemain di papan harian.",
+      "arcTitle": "Bidak dan waktu menghafal sepanjang pekan",
+      "arcIntro": "Pengaturannya mengikuti alur mingguan. Senin dimulai dengan ringan agar libur akhir pekan tidak memutus rangkaian harian Anda, beban naik sepanjang pekan, Sabtu adalah papan kilat yang hanya terlihat beberapa detik, dan Minggu adalah papan tersulit. Dalam rentang tiap hari, tanggal memilih satu pengaturan, sama untuk semua pemain.",
+      "day": "Hari",
+      "pieces": "Bidak",
+      "seconds": "Waktu menghafal",
+      "range": "{min} sampai {max}",
+      "secondsRange": "{min} sampai {max} dtk",
+      "secondsExact": "{count} dtk"
+    }
   }
 }

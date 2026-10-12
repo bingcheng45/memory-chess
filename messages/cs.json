@@ -797,5 +797,104 @@
     "cardSetting": "{pieceCount, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} a {seconds, plural, one {# sekunda} few {# sekundy} many {# sekundy} other {# sekund}} na zapamatování.",
     "cardNote": "Dnes všichni hrají stejnou pozici a máte jeden pokus.",
     "play": "Hrát dnešní pozici"
+  },
+  "daily": {
+    "meta": {
+      "title": "Denní šachová paměťová pozice: jedna pro všechny",
+      "description": "Jedna šachová paměťová pozice denně, stejná pro všechny hráče. Prostudujte ji jednou, postavte ji znovu a dostaňte se do dnešní desítky nejlepších. Nová pozice se otevře o půlnoci UTC.",
+      "socialTitle": "Denní pozice v Memory Chess",
+      "socialDescription": "Dnes mají všichni stejnou pozici. Prostudujte ji, postavte ji znovu a zjistěte, kolikátí jste."
+    },
+    "round": {
+      "locked": "Dnešní pozici jste už hráli. Jeden pokus denně udrží hru férovou.",
+      "resetsIn": "Další pozice za {hours} h {minutes} min",
+      "resetsInMinutes": "Další pozice za {minutes} min",
+      "seeBoard": "Zobrazit dnešní pozici",
+      "chooseRound": "Hrát další kolo",
+      "join": "Zapojit se do dnešní pozice"
+    },
+    "page": {
+      "fig": "Denní pozice · {date}",
+      "title": "Jedna pozice, stejná pro všechny",
+      "lede": "Každý den dostanou všichni hráči jednu pozici. Prostudujte ji jednou, postavte ji z paměti a pak se zapojte do dnešní pozice, abyste viděli své pořadí.",
+      "resets": "Nová pozice o půlnoci UTC",
+      "open": "Dnešní pozice je otevřená",
+      "pieces": "{count, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}}",
+      "seconds": "{count} s na studium",
+      "oneTry": "Jeden pokus",
+      "hidden": "Skrytá, dokud nezačnete hrát",
+      "play": "Hrát dnešní pozici",
+      "streak": "{count, plural, one {Denní série: # den} few {Denní série: # dny} many {Denní série: # dne} other {Denní série: # dní}}",
+      "unfinishedTitle": "Dnešní pokus je využitý",
+      "unfinished": "Dnešní pozici jste otevřeli a odešli před výsledkem. Jeden pokus denně udrží pozici férovou, vraťte se tedy pro další.",
+      "result": "Váš výsledek",
+      "score": "{correct} z {pieceCount} správně",
+      "rebuild": "postaveno za {seconds} s",
+      "gridAria": "Vaše pole: {correct} správně, {wrong} špatná figurka, {missed} vynecháno, {extra} navíc",
+      "key": {
+        "c": "Správně",
+        "w": "Špatná figurka",
+        "m": "Vynecháno",
+        "x": "Navíc"
+      },
+      "shareLabel": "Sdílet bez prozrazení pozice",
+      "shareText": "Memory Chess, denní pozice {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Zkopírovat výsledek",
+      "copied": "Zkopírováno",
+      "copyFailed": "Schránka kopírování odmítla. Označte text níže a zkopírujte ho ručně.",
+      "noneRight": "Žádná figurka nebyla správně, takže tento pokus nemá co zařadit do žebříčku. Další pozice se otevře o půlnoci UTC.",
+      "joined": "Jste v dnešním žebříčku",
+      "rank": "{rank}. místo z {total} dnes"
+    },
+    "join": {
+      "title": "Zapojit se do dnešní pozice",
+      "name": "Jméno",
+      "nameHint": "4 až 16 znaků, zobrazí se u vašeho skóre.",
+      "country": "Země",
+      "chooseCountry": "Vyberte zemi",
+      "from": {
+        "saved": "Uloženo v tomto zařízení.",
+        "connection": "Podle vašeho připojení.",
+        "language": "Podle jazyka prohlížeče.",
+        "none": "Vyberte zemi, za kterou hrajete."
+      },
+      "change": "Změnit",
+      "submit": "Zapojit se",
+      "submitting": "Připojování…",
+      "public": "Vaše jméno, země, skóre a hodnocení jsou veřejně vidět.",
+      "failed": "Zapojení se nepodařilo: {message}",
+      "failedGeneric": "Zapojení se nepodařilo. Zkuste to prosím znovu."
+    },
+    "board": {
+      "title": "Dnešní desítka nejlepších",
+      "rank": "Pořadí",
+      "player": "Hráč",
+      "right": "Správně",
+      "wrong": "Špatně",
+      "time": "Čas (s)",
+      "rating": "{rating} Elo",
+      "you": "Vy",
+      "empty": "Do dnešní pozice se zatím nikdo nezapojil. Zahrajte ji a buďte první.",
+      "error": "Dnešní žebříček se nepodařilo načíst. Zkuste to za chvíli znovu.",
+      "joinToRank": "Zapojte se, abyste tady viděli své pořadí.",
+      "order": "Řazeno podle počtu správných figurek, pak podle nejméně špatných, pak podle nejrychlejšího postavení.",
+      "all": "Zobrazit všechny pozice"
+    },
+    "reference": {
+      "title": "Jak denní pozice funguje",
+      "shared": "Každý den o půlnoci UTC se vylosuje nová pozice a každý hráč na světě dostane tu samou. Pozice vzniká ze semínka vytvořeného z data, takže ji nikdo nevidí předem a nikdo nedostane jednodušší verzi. Protože je pozice společná, skóre znamená totéž pro všechny, kdo ji ten den hráli.",
+      "oneTry": "Máte jeden pokus. Otevření pozice se počítá jako pokus, takže odchod během studia a návrat vám ji neukáže podruhé. Vaše zařízení si pokus pamatuje, dokud se neotevře další pozice.",
+      "grid": "Po postavení pozice uvidíte, která pole jste trefili, na kterých byla špatná figurka, která jste vynechali a kam jste umístili figurku navíc. Řádek ke sdílení obsahuje jedno pole na figurku, seřazené podle výsledku, bez informace, kde figurka stála, takže jeho zveřejnění neprozradí pozici nikomu, kdo ještě nehrál.",
+      "join": "Pro zapojení si zvolte jméno o 4 až 16 znacích a zemi, za kterou hrajete. Země se nejprve předvyplní podle vaší dřívější volby, pak podle připojení a nakonec podle jazyka prohlížeče, a můžete ji kdykoli změnit. Vaše hodnocení v okamžiku zapojení se zobrazí u jména.",
+      "ranking": "Řádky se řadí podle počtu správně umístěných figurek, pak podle nejmenšího počtu špatných figurek a nakonec podle nejrychlejšího postavení. Všichni studují stejný počet sekund, takže čas studia nikdy nerozhoduje mezi dvěma hráči v denní pozici.",
+      "arcTitle": "Figurky a čas studia v průběhu týdne",
+      "arcIntro": "Nastavení sleduje týdenní oblouk. Pondělí začíná mírně, aby víkendová pauza nepřerušila sérii, zátěž roste během týdne, sobota je bleskové kolo, které vidíte jen pár sekund, a neděle je ze všech nejtěžší. V rozsahu každého dne vybere datum jedno nastavení, stejné pro všechny hráče.",
+      "day": "Den",
+      "pieces": "Figurky",
+      "seconds": "Čas studia",
+      "range": "{min} až {max}",
+      "secondsRange": "{min} až {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

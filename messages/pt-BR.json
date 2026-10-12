@@ -797,5 +797,104 @@
     "cardSetting": "{pieceCount, plural, one {# peça} many {# peças} other {# peças}} e {seconds, plural, one {# segundo} many {# segundos} other {# segundos}} para memorizar.",
     "cardNote": "Hoje todos jogam o mesmo tabuleiro, e você tem uma tentativa.",
     "play": "Jogar o tabuleiro de hoje"
+  },
+  "daily": {
+    "meta": {
+      "title": "Tabuleiro diário de memória no xadrez: uma posição para todos",
+      "description": "Um tabuleiro de memória de xadrez por dia, a mesma posição para todos os jogadores. Estude uma vez, reconstrua e entre no top 10 de hoje. Um novo tabuleiro abre à meia-noite UTC.",
+      "socialTitle": "O tabuleiro diário do Memory Chess",
+      "socialDescription": "Hoje todo mundo recebe a mesma posição. Estude, reconstrua e veja em que posição você fica."
+    },
+    "round": {
+      "locked": "Você já jogou o tabuleiro de hoje. Uma tentativa por dia mantém o jogo justo.",
+      "resetsIn": "Próximo tabuleiro em {hours} h {minutes} min",
+      "resetsInMinutes": "Próximo tabuleiro em {minutes} min",
+      "seeBoard": "Ver o tabuleiro de hoje",
+      "chooseRound": "Jogar outra rodada",
+      "join": "Entrar no tabuleiro de hoje"
+    },
+    "page": {
+      "fig": "Tabuleiro diário · {date}",
+      "title": "Um tabuleiro, igual para todos",
+      "lede": "Cada dia traz uma posição para todos os jogadores. Estude uma vez, reconstrua de memória e entre no tabuleiro do dia para ver como você está.",
+      "resets": "Novo tabuleiro à meia-noite UTC",
+      "open": "O tabuleiro de hoje está aberto",
+      "pieces": "{count, plural, one {# peça} many {# peças} other {# peças}}",
+      "seconds": "{count} s para estudar",
+      "oneTry": "Uma tentativa",
+      "hidden": "Oculto até você jogar",
+      "play": "Jogar o tabuleiro de hoje",
+      "streak": "{count, plural, one {Sequência diária: # dia} many {Sequência diária: # dias} other {Sequência diária: # dias}}",
+      "unfinishedTitle": "A tentativa de hoje foi usada",
+      "unfinished": "Você abriu o tabuleiro de hoje e saiu antes do resultado. Uma tentativa por dia mantém o tabuleiro justo, então volte para o próximo.",
+      "result": "Seu resultado",
+      "score": "{correct} de {pieceCount} corretas",
+      "rebuild": "reconstruído em {seconds} s",
+      "gridAria": "Suas casas: {correct} corretas, {wrong} com peça errada, {missed} esquecidas, {extra} a mais",
+      "key": {
+        "c": "Correta",
+        "w": "Peça errada",
+        "m": "Esquecida",
+        "x": "A mais"
+      },
+      "shareLabel": "Compartilhe sem revelar o tabuleiro",
+      "shareText": "Tabuleiro diário do Memory Chess {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Copiar resultado",
+      "copied": "Copiado",
+      "copyFailed": "A área de transferência recusou a cópia. Selecione o texto abaixo e copie.",
+      "noneRight": "Nenhuma peça estava correta, então esta tentativa não entra no ranking. O próximo tabuleiro abre à meia-noite UTC.",
+      "joined": "Você está no tabuleiro de hoje",
+      "rank": "Posição {rank} de {total} hoje"
+    },
+    "join": {
+      "title": "Entrar no tabuleiro de hoje",
+      "name": "Nome",
+      "nameHint": "De 4 a 16 caracteres, exibido junto com sua pontuação.",
+      "country": "País",
+      "chooseCountry": "Escolha um país",
+      "from": {
+        "saved": "Salvo neste dispositivo.",
+        "connection": "Pela sua conexão.",
+        "language": "Pelo idioma do seu navegador.",
+        "none": "Escolha o país que você representa."
+      },
+      "change": "Alterar",
+      "submit": "Entrar no tabuleiro",
+      "submitting": "Entrando…",
+      "public": "Seu nome, país, pontuação e rating são exibidos publicamente.",
+      "failed": "Não foi possível entrar: {message}",
+      "failedGeneric": "Não foi possível entrar no tabuleiro. Tente novamente."
+    },
+    "board": {
+      "title": "Top 10 de hoje",
+      "rank": "Posição",
+      "player": "Jogador",
+      "right": "Corretas",
+      "wrong": "Erradas",
+      "time": "Tempo (s)",
+      "rating": "{rating} Elo",
+      "you": "Você",
+      "empty": "Ninguém entrou no tabuleiro de hoje ainda. Jogue e seja o primeiro.",
+      "error": "Não foi possível carregar o tabuleiro de hoje. Tente novamente em instantes.",
+      "joinToRank": "Entre no tabuleiro para ver sua posição aqui.",
+      "order": "Ordenado por peças corretas, depois menos erradas e, por fim, reconstrução mais rápida.",
+      "all": "Ver todos os tabuleiros"
+    },
+    "reference": {
+      "title": "Como funciona o tabuleiro diário",
+      "shared": "Todo dia à meia-noite UTC uma nova posição é sorteada, e todos os jogadores do mundo recebem a mesma. A posição vem de uma semente criada a partir da data, então ninguém pode vê-la antes e ninguém recebe uma versão mais fácil. Como o tabuleiro é compartilhado, uma pontuação nele significa a mesma coisa para todos que o jogaram naquele dia.",
+      "oneTry": "Você tem uma tentativa. Abrir o tabuleiro conta como a tentativa, então sair durante a fase de estudo e voltar não mostra o tabuleiro de novo. Seu dispositivo lembra da tentativa até o próximo tabuleiro abrir.",
+      "grid": "Depois de reconstruir a posição, você vê quais casas acertou, quais tinham a peça errada, quais esqueceu e onde colocou uma peça a mais. A linha para compartilhar mostra um quadradinho por peça, ordenado por resultado e sem indicar onde ela estava, então publicá-la não revela o tabuleiro para quem ainda não jogou.",
+      "join": "Para entrar no tabuleiro, escolha um nome de 4 a 16 caracteres e o país que você representa. O país começa pelo que você escolheu antes, depois pela sua conexão e depois pelo idioma do navegador, e você sempre pode alterá-lo. Seu rating no momento em que você entra aparece ao lado do seu nome.",
+      "ranking": "As linhas são ordenadas pelo número de peças colocadas corretamente, depois pelo menor número de peças erradas e, por fim, pela reconstrução mais rápida. Todos estudam pelo mesmo número de segundos, então o tempo de estudo nunca desempata dois jogadores no tabuleiro diário.",
+      "arcTitle": "Peças e tempo de estudo ao longo da semana",
+      "arcIntro": "A configuração segue um arco semanal. A segunda-feira começa leve para que uma pausa no fim de semana não quebre uma sequência, a dificuldade cresce durante a semana, o sábado é um tabuleiro relâmpago que você vê só por alguns segundos, e o domingo é o tabuleiro mais difícil de todos. Dentro da faixa de cada dia, a data escolhe uma configuração, a mesma para todos os jogadores.",
+      "day": "Dia",
+      "pieces": "Peças",
+      "seconds": "Tempo de estudo",
+      "range": "De {min} a {max}",
+      "secondsRange": "De {min} a {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

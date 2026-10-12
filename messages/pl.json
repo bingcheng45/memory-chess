@@ -797,5 +797,104 @@
     "cardSetting": "{pieceCount, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} i {seconds, plural, one {# sekunda} few {# sekundy} many {# sekund} other {# sekundy}} na zapamiętanie.",
     "cardNote": "Dziś wszyscy grają na tej samej planszy, a ty masz jedną próbę.",
     "play": "Zagraj dzisiejszą planszę"
+  },
+  "daily": {
+    "meta": {
+      "title": "Szachownica dnia do zapamiętania: jedna pozycja dla wszystkich",
+      "description": "Jedna szachowa pozycja do zapamiętania dziennie, taka sama dla każdego gracza. Przestudiuj ją raz, odtwórz i wskocz do dzisiejszej dziesiątki. Nowa szachownica pojawia się o północy UTC.",
+      "socialTitle": "Szachownica dnia w Memory Chess",
+      "socialDescription": "Dziś wszyscy dostają tę samą pozycję. Przestudiuj ją, odtwórz i sprawdź, które miejsce zajmiesz."
+    },
+    "round": {
+      "locked": "Dzisiejsza szachownica została już zagrana. Jedna próba dziennie gwarantuje uczciwą grę.",
+      "resetsIn": "Następna szachownica za {hours} godz. {minutes} min",
+      "resetsInMinutes": "Następna szachownica za {minutes} min",
+      "seeBoard": "Zobacz dzisiejszą szachownicę",
+      "chooseRound": "Zagraj kolejną rundę",
+      "join": "Dołącz do dzisiejszej szachownicy"
+    },
+    "page": {
+      "fig": "Szachownica dnia · {date}",
+      "title": "Jedna szachownica, taka sama dla wszystkich",
+      "lede": "Każdego dnia wszyscy gracze dostają jedną pozycję. Przestudiuj ją raz, odtwórz z pamięci, a potem dołącz do szachownicy dnia, żeby zobaczyć swoje miejsce.",
+      "resets": "Nowa szachownica o północy UTC",
+      "open": "Dzisiejsza szachownica jest otwarta",
+      "pieces": "{count, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}}",
+      "seconds": "{count} s na naukę",
+      "oneTry": "Jedna próba",
+      "hidden": "Ukryta, dopóki nie zagrasz",
+      "play": "Zagraj dzisiejszą szachownicę",
+      "streak": "{count, plural, one {Seria dzienna: # dzień} few {Seria dzienna: # dni} many {Seria dzienna: # dni} other {Seria dzienna: # dnia}}",
+      "unfinishedTitle": "Dzisiejsza próba została wykorzystana",
+      "unfinished": "Otwarto dzisiejszą szachownicę i opuszczono ją przed wynikiem. Jedna próba dziennie gwarantuje uczciwą grę, więc wróć po następną szachownicę.",
+      "result": "Twój wynik",
+      "score": "{correct} z {pieceCount} poprawnie",
+      "rebuild": "odtworzono w {seconds} s",
+      "gridAria": "Twoje pola: {correct} poprawnych, {wrong} ze złą bierką, {missed} pominiętych, {extra} dodatkowych",
+      "key": {
+        "c": "Dobrze",
+        "w": "Zła bierka",
+        "m": "Pominięta",
+        "x": "Dodatkowa"
+      },
+      "shareLabel": "Udostępnij bez zdradzania szachownicy",
+      "shareText": "Memory Chess, szachownica dnia {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Skopiuj wynik",
+      "copied": "Skopiowano",
+      "copyFailed": "Schowek odmówił dostępu. Zaznacz tekst poniżej i skopiuj go ręcznie.",
+      "noneRight": "Żadna bierka nie była na właściwym miejscu, więc ta próba nie trafi do rankingu. Następna szachownica pojawi się o północy UTC.",
+      "joined": "Jesteś w dzisiejszej szachownicy",
+      "rank": "Miejsce {rank} z {total} dzisiaj"
+    },
+    "join": {
+      "title": "Dołącz do dzisiejszej szachownicy",
+      "name": "Nazwa",
+      "nameHint": "Od 4 do 16 znaków, widoczna przy Twoim wyniku.",
+      "country": "Kraj",
+      "chooseCountry": "Wybierz kraj",
+      "from": {
+        "saved": "Zapisano na tym urządzeniu.",
+        "connection": "Na podstawie Twojego połączenia.",
+        "language": "Na podstawie języka przeglądarki.",
+        "none": "Wybierz kraj, który reprezentujesz."
+      },
+      "change": "Zmień",
+      "submit": "Dołącz do rankingu",
+      "submitting": "Dołączanie…",
+      "public": "Twoja nazwa, kraj, wynik i ranking są widoczne publicznie.",
+      "failed": "Nie udało się dołączyć: {message}",
+      "failedGeneric": "Nie udało się dołączyć do rankingu. Spróbuj ponownie."
+    },
+    "board": {
+      "title": "Dzisiejsza dziesiątka",
+      "rank": "Miejsce",
+      "player": "Gracz",
+      "right": "Dobrze",
+      "wrong": "Źle",
+      "time": "Czas (s)",
+      "rating": "{rating} Elo",
+      "you": "Ty",
+      "empty": "Nikt jeszcze nie dołączył do dzisiejszej szachownicy. Zagraj i bądź pierwszy.",
+      "error": "Nie udało się wczytać dzisiejszej szachownicy. Spróbuj ponownie za chwilę.",
+      "joinToRank": "Dołącz do rankingu, żeby zobaczyć tutaj swoje miejsce.",
+      "order": "Kolejność: najwięcej poprawnych bierek, potem najmniej błędnych, potem najszybsze odtworzenie.",
+      "all": "Zobacz wszystkie szachownice"
+    },
+    "reference": {
+      "title": "Jak działa szachownica dnia",
+      "shared": "Każdego dnia o północy UTC losowana jest nowa pozycja i każdy gracz na świecie dostaje tę samą. Pozycja powstaje z ziarna utworzonego z daty, więc nikt nie zobaczy jej wcześniej i nikt nie dostanie łatwiejszej wersji. Ponieważ szachownica jest wspólna, wynik oznacza to samo dla wszystkich, którzy zagrali ją tego dnia.",
+      "oneTry": "Masz jedną próbę. Otwarcie szachownicy liczy się jako próba, więc wyjście w trakcie nauki i powrót nie pokaże jej drugi raz. Twoje urządzenie pamięta próbę do czasu otwarcia następnej szachownicy.",
+      "grid": "Po odtworzeniu pozycji zobaczysz, które pola trafiłeś, na których stała zła bierka, które pominąłeś i gdzie postawiłeś dodatkową bierkę. Wiersz do udostępnienia zawiera jedno pole na bierkę, ułożone według wyniku, bez informacji o tym, gdzie stała, więc jego wklejenie nie zdradza szachownicy komuś, kto jeszcze nie grał.",
+      "join": "Aby dołączyć do rankingu, wybierz nazwę od 4 do 16 znaków i kraj, który reprezentujesz. Kraj jest ustawiany najpierw na podstawie poprzedniego wyboru, potem połączenia, a na końcu języka przeglądarki, i zawsze możesz go zmienić. Twój ranking w chwili dołączenia widać obok nazwy.",
+      "ranking": "Wiersze są uporządkowane według liczby poprawnie ustawionych bierek, potem najmniejszej liczby błędnych bierek, a na końcu najszybszego odtworzenia. Wszyscy uczą się przez tyle samo sekund, więc czas nauki nigdy nie rozstrzyga między dwoma graczami na szachownicy dnia.",
+      "arcTitle": "Bierki i czas nauki w ciągu tygodnia",
+      "arcIntro": "Ustawienia zmieniają się według tygodniowego schematu. Poniedziałek zaczyna się łagodnie, żeby weekendowa przerwa nie kończyła serii, trudność rośnie przez cały tydzień, sobota to szybka szachownica widoczna tylko przez kilka sekund, a niedziela to najtrudniejsza szachownica ze wszystkich. W zakresie każdego dnia data wybiera jedno ustawienie, takie samo dla wszystkich graczy.",
+      "day": "Dzień",
+      "pieces": "Bierki",
+      "seconds": "Czas nauki",
+      "range": "od {min} do {max}",
+      "secondsRange": "od {min} do {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

@@ -1622,7 +1622,8 @@
     },
     "round": {
       "locked": "You have played today's board. One try a day keeps it fair.",
-      "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Next board in under a minute} other {Next board in # min}}} other {Next board in # h {minutes} min}}",
+      "resetsIn": "Next board in {hours} h {minutes} min",
+      "resetsInMinutes": "Next board in {minutes} min",
       "seeBoard": "See today's board",
       "chooseRound": "Play another round",
       "join": "Join today's board"

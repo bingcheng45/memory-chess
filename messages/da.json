@@ -797,5 +797,104 @@
     "cardSetting": "{pieceCount, plural, one {# brik} other {# brikker}} og {seconds, plural, one {# sekund} other {# sekunder}} til at huske.",
     "cardNote": "Alle spiller det samme bræt i dag, og du får ét forsøg.",
     "play": "Spil dagens bræt"
+  },
+  "daily": {
+    "meta": {
+      "title": "Dagens skakbræt til hukommelsen: én stilling til alle",
+      "description": "Ét skakbræt til hukommelsen hver dag, samme stilling for alle spillere. Se det én gang, byg det igen og kom med i dagens top 10. Et nyt bræt åbner ved midnat UTC.",
+      "socialTitle": "Memory Chess’ dagens bræt",
+      "socialDescription": "I dag får alle den samme stilling. Husk den, byg den igen og se, hvor du ligger."
+    },
+    "round": {
+      "locked": "Du har spillet dagens bræt. Ét forsøg om dagen holder det fair.",
+      "resetsIn": "Næste bræt om {hours} t. {minutes} min.",
+      "resetsInMinutes": "Næste bræt om {minutes} min.",
+      "seeBoard": "Se dagens bræt",
+      "chooseRound": "Spil en runde mere",
+      "join": "Deltag i dagens bræt"
+    },
+    "page": {
+      "fig": "Dagens bræt · {date}",
+      "title": "Ét bræt, ens for alle",
+      "lede": "Hver dag giver én stilling til alle spillere. Se den én gang, byg den igen fra hukommelsen, og deltag så i dagens bræt for at se, hvor du ligger.",
+      "resets": "Nyt bræt ved midnat UTC",
+      "open": "Dagens bræt er åbent",
+      "pieces": "{count, plural, one {# brik} other {# brikker}}",
+      "seconds": "{count} s husketid",
+      "oneTry": "Ét forsøg",
+      "hidden": "Skjult, til du spiller",
+      "play": "Spil dagens bræt",
+      "streak": "{count, plural, one {Dagsstreak: # dag} other {Dagsstreak: # dage}}",
+      "unfinishedTitle": "Dagens forsøg er brugt",
+      "unfinished": "Du åbnede dagens bræt og forlod det, før resultatet var klar. Ét forsøg om dagen holder brættet fair, så kom tilbage til det næste.",
+      "result": "Dit resultat",
+      "score": "{correct} af {pieceCount} rigtige",
+      "rebuild": "genopbygget på {seconds} s",
+      "gridAria": "Dine felter: {correct} rigtige, {wrong} forkert brik, {missed} overset, {extra} ekstra",
+      "key": {
+        "c": "Rigtig",
+        "w": "Forkert brik",
+        "m": "Overset",
+        "x": "Ekstra"
+      },
+      "shareLabel": "Del uden at afsløre brættet",
+      "shareText": "Memory Chess dagens bræt {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Kopiér resultat",
+      "copied": "Kopieret",
+      "copyFailed": "Udklipsholderen afviste det. Markér teksten nedenfor og kopiér den.",
+      "noneRight": "Ingen brik var rigtig, så dette forsøg har intet at placere på ranglisten. Det næste bræt åbner ved midnat UTC.",
+      "joined": "Du er med på dagens bræt",
+      "rank": "Plads {rank} af {total} i dag"
+    },
+    "join": {
+      "title": "Deltag i dagens bræt",
+      "name": "Navn",
+      "nameHint": "4 til 16 tegn, vises sammen med din score.",
+      "country": "Land",
+      "chooseCountry": "Vælg et land",
+      "from": {
+        "saved": "Gemt på denne enhed.",
+        "connection": "Fra din forbindelse.",
+        "language": "Fra din browsers sprog.",
+        "none": "Vælg det land, du spiller for."
+      },
+      "change": "Skift",
+      "submit": "Deltag i brættet",
+      "submitting": "Tilmelder …",
+      "public": "Dit navn, land, din score og rating vises offentligt.",
+      "failed": "Kunne ikke deltage: {message}",
+      "failedGeneric": "Du kunne ikke deltage i brættet. Prøv igen."
+    },
+    "board": {
+      "title": "Dagens top 10",
+      "rank": "Plads",
+      "player": "Spiller",
+      "right": "Rigtige",
+      "wrong": "Forkerte",
+      "time": "Tid (s)",
+      "rating": "{rating} Elo",
+      "you": "Dig",
+      "empty": "Ingen har deltaget i dagens bræt endnu. Spil det og vær den første.",
+      "error": "Dagens bræt kunne ikke indlæses. Prøv igen om lidt.",
+      "joinToRank": "Deltag i brættet for at se din plads her.",
+      "order": "Rangeret efter rigtige brikker, derefter færrest forkerte, derefter hurtigste genopbygning.",
+      "all": "Se alle bræt"
+    },
+    "reference": {
+      "title": "Sådan virker dagens bræt",
+      "shared": "Hver dag ved midnat UTC trækkes en ny stilling, og alle spillere i hele verden får den samme. Stillingen kommer fra et frø, der laves ud fra datoen, så ingen kan se den på forhånd, og ingen får en nemmere udgave. Fordi brættet er fælles, betyder en score på det det samme for alle, der spillede det den dag.",
+      "oneTry": "Du har ét forsøg. At åbne brættet tæller som forsøget, så hvis du går under husketiden og kommer tilbage, får du det ikke vist en gang til. Din enhed husker forsøget, indtil det næste bræt åbner.",
+      "grid": "Når du har bygget stillingen igen, kan du se, hvilke felter du ramte rigtigt, hvilke der havde den forkerte brik, hvilke du overså, og hvor du placerede en ekstra brik. Delingsrækken viser ét felt pr. brik, sorteret efter udfald og uden at afsløre, hvor den stod, så du ikke afslører brættet for en, der endnu ikke har spillet, når du deler den.",
+      "join": "For at deltage vælger du et navn på 4 til 16 tegn og det land, du spiller for. Landet kommer først fra dit tidligere valg, derefter fra din forbindelse og derefter fra din browsers sprog, og du kan altid ændre det. Din rating på det tidspunkt, du deltager, vises ved siden af dit navn.",
+      "ranking": "Rækkerne rangeres efter antal rigtigt placerede brikker, derefter færrest forkerte brikker og derefter hurtigste genopbygning. Alle har det samme antal sekunder til at se på brættet, så husketiden skiller aldrig to spillere ad på dagens bræt.",
+      "arcTitle": "Brikker og husketid gennem ugen",
+      "arcIntro": "Indstillingen følger en ugentlig bue. Mandag starter blidt, så en pause i weekenden ikke afbryder en streak, belastningen vokser gennem ugen, lørdag er et lynbræt, du kun ser i få sekunder, og søndag er det sværeste bræt af alle. Inden for hver dags interval vælger datoen én indstilling, den samme for alle spillere.",
+      "day": "Dag",
+      "pieces": "Brikker",
+      "seconds": "Husketid",
+      "range": "{min} til {max}",
+      "secondsRange": "{min} til {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

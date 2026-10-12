@@ -4,8 +4,7 @@ import { utcDayOf } from "@/lib/lab/daily";
 const DAY_MS = 86_400_000;
 const daysFrom = (first: string, count: number) => Array.from({ length: count }, (_, index) => utcDayOf(Date.parse(`${first}T00:00:00Z`) + index * DAY_MS));
 
-/** The operator's bands, restated here so a retune of the table is a deliberate change to this file too. */
-const BANDS: Record<number, { pieces: [number, number]; seconds: [number, number] }> = {
+const EXPECTED_WEEKLY_ARC: Record<number, { pieces: [number, number]; seconds: [number, number] }> = {
   1: { pieces: [4, 5], seconds: [12, 12] },
   2: { pieces: [5, 6], seconds: [10, 10] },
   3: { pieces: [6, 7], seconds: [10, 10] },
@@ -38,7 +37,7 @@ describe("the daily setting", () => {
     const settings = days.map(dailySettingOf);
 
     settings.forEach((setting, index) => {
-      const band = BANDS[new Date(`${days[index]}T00:00:00Z`).getUTCDay()];
+      const band = EXPECTED_WEEKLY_ARC[new Date(`${days[index]}T00:00:00Z`).getUTCDay()];
       expect([days[index], setting.pieceCount >= band.pieces[0] && setting.pieceCount <= band.pieces[1]]).toEqual([days[index], true]);
       expect([days[index], setting.memorizeTime >= band.seconds[0] && setting.memorizeTime <= band.seconds[1]]).toEqual([days[index], true]);
       if (index > 0) expect([days[index], setting]).not.toEqual([days[index], settings[index - 1]]);
@@ -48,7 +47,7 @@ describe("the daily setting", () => {
   it("reaches both ends of every band over a year", () => {
     const settings = daysFrom("2026-10-13", 365).map((day) => ({ weekday: new Date(`${day}T00:00:00Z`).getUTCDay(), ...dailySettingOf(day) }));
     const reached = Object.fromEntries(
-      Object.keys(BANDS).map((weekday) => {
+      Object.keys(EXPECTED_WEEKLY_ARC).map((weekday) => {
         const own = settings.filter((setting) => setting.weekday === Number(weekday));
         const pieces = own.map((setting) => setting.pieceCount);
         const seconds = own.map((setting) => setting.memorizeTime);
@@ -56,6 +55,6 @@ describe("the daily setting", () => {
       }),
     );
 
-    expect(reached).toEqual(BANDS);
+    expect(reached).toEqual(EXPECTED_WEEKLY_ARC);
   });
 });

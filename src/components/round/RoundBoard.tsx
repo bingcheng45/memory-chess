@@ -166,14 +166,13 @@ export function RefusalAnnouncement({ state, copy }: { state: RoundState; copy: 
 const NOTICE_MS = 3200;
 
 function useNoticeVisible(refused: Refusal | null): boolean {
-  const [shown, setShown] = useState<Refusal | null>(null);
+  const [expired, setExpired] = useState<Refusal | null>(null);
   useEffect(() => {
     if (!refused) return;
-    setShown(refused);
-    const timer = setTimeout(() => setShown(null), NOTICE_MS);
+    const timer = setTimeout(() => setExpired(refused), NOTICE_MS);
     return () => clearTimeout(timer);
   }, [refused]);
-  return refused !== null && shown === refused;
+  return refused !== null && expired !== refused;
 }
 
 export const RoundPalette = memo(function RoundPalette({ state, dispatch, copy }: RoundPaletteProps) {

@@ -142,8 +142,7 @@
       "submit": "Gửi",
       "status": "Trạng thái ván đấu",
       "controls": "Điều khiển ván đấu",
-      "complete": "Ván đấu kết thúc",
-      "flash": "XONG!"
+      "complete": "Ván đấu kết thúc"
     },
     "config": {
       "title": "Thiết lập ván đấu",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Ghi nhớ thế cờ",
-      "skip": "Bỏ qua",
-      "hint": "Bàn cờ sẽ trống khi hết giờ",
-      "rememberPieces": "{count, plural, other {Ghi nhớ tất cả # quân cờ}}"
-    },
-    "place": {
-      "title": "Đặt quân cờ",
-      "subtitle": "Chọn loại quân và màu",
-      "whitePieces": "Quân trắng",
-      "blackPieces": "Quân đen",
-      "selectWhite": "Chọn quân trắng",
-      "selectBlack": "Chọn quân đen",
-      "hint": "Chạm vào một ô để đặt hoặc gỡ quân cờ"
+      "hint": "Bàn cờ sẽ trống khi hết giờ"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "vua đen"
         }
       },
-      "feedback": {
-        "correct": "đúng",
-        "incorrect": "sai",
-        "missing": "thiếu"
-      },
-      "squareWithPiece": "{square} có {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Chọn {piece}"
+      "squareWithPiece": "{square} có {piece}"
     },
     "stats": {
       "title": "Thống kê",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Xem lại thế cờ của bạn",
-      "subtitle": "So sánh những gì bạn đã nhớ với những gì bạn đã gửi.",
-      "unavailable": "Không thể so sánh bàn cờ.",
-      "ariaLabel": "So sánh bàn cờ",
-      "correct": "Đúng",
-      "incorrect": "Sai",
-      "missed": "Bỏ sót",
-      "originalBoard": "Thế cờ cần nhớ",
-      "submittedBoard": "Thế cờ bạn đã gửi"
+      "title": "Xem lại thế cờ của bạn"
     },
     "feedback": {
       "title": "Cảm ơn bạn đã chơi Memory Chess!",

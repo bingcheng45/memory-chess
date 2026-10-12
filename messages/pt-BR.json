@@ -142,8 +142,7 @@
       "submit": "Enviar",
       "status": "Status da partida",
       "controls": "Controles da partida",
-      "complete": "Partida concluída",
-      "flash": "FIM!"
+      "complete": "Partida concluída"
     },
     "config": {
       "title": "Configuração da partida",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Memorize a posição",
-      "skip": "Pular",
-      "hint": "O tabuleiro será limpo quando o tempo acabar",
-      "rememberPieces": "{count, plural, one {Memorize a peça} many {Memorize todas as # peças} other {Memorize todas as # peças}}"
-    },
-    "place": {
-      "title": "Posicione as peças",
-      "subtitle": "Escolha o tipo e a cor",
-      "whitePieces": "Peças brancas",
-      "blackPieces": "Peças pretas",
-      "selectWhite": "Selecionar peças brancas",
-      "selectBlack": "Selecionar peças pretas",
-      "hint": "Toque em uma casa para adicionar ou remover uma peça"
+      "hint": "O tabuleiro será limpo quando o tempo acabar"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "rei preto"
         }
       },
-      "feedback": {
-        "correct": "correto",
-        "incorrect": "incorreto",
-        "missing": "ausente"
-      },
-      "squareWithPiece": "{square} com {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Selecionar {piece}"
+      "squareWithPiece": "{square} com {piece}"
     },
     "stats": {
       "title": "Estatísticas",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Revise sua posição",
-      "subtitle": "Compare o que você memorizou com o que enviou.",
-      "unavailable": "A comparação de tabuleiros não está disponível.",
-      "ariaLabel": "Comparação de tabuleiros",
-      "correct": "Correta",
-      "incorrect": "Incorreta",
-      "missed": "Esquecida",
-      "originalBoard": "Posição para lembrar",
-      "submittedBoard": "A posição que você enviou"
+      "title": "Revise sua posição"
     },
     "feedback": {
       "title": "Obrigado por jogar Memory Chess!",

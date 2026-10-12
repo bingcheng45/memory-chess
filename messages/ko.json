@@ -142,8 +142,7 @@
       "submit": "제출",
       "status": "게임 상태",
       "controls": "게임 조작",
-      "complete": "게임 종료",
-      "flash": "완료!"
+      "complete": "게임 종료"
     },
     "config": {
       "title": "게임 설정",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "국면을 외우세요",
-      "skip": "건너뛰기",
-      "hint": "시간이 끝나면 판이 비워집니다",
-      "rememberPieces": "{count, plural, other {기물 #개를 모두 외우세요}}"
-    },
-    "place": {
-      "title": "기물 배치하기",
-      "subtitle": "종류와 색을 고르세요",
-      "whitePieces": "백 기물",
-      "blackPieces": "흑 기물",
-      "selectWhite": "백 기물 선택",
-      "selectBlack": "흑 기물 선택",
-      "hint": "칸을 누르면 기물을 놓거나 뺄 수 있습니다"
+      "hint": "시간이 끝나면 판이 비워집니다"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "흑 킹"
         }
       },
-      "feedback": {
-        "correct": "정답",
-        "incorrect": "오답",
-        "missing": "누락"
-      },
-      "squareWithPiece": "{square}에 {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "{piece} 선택"
+      "squareWithPiece": "{square}에 {piece}"
     },
     "stats": {
       "title": "게임 통계",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "내 국면 되돌아보기",
-      "subtitle": "외운 내용과 제출한 내용을 비교해 보세요.",
-      "unavailable": "판 비교를 사용할 수 없습니다.",
-      "ariaLabel": "판 비교",
-      "correct": "정답",
-      "incorrect": "오답",
-      "missed": "누락",
-      "originalBoard": "외워야 했던 국면",
-      "submittedBoard": "제출한 국면"
+      "title": "내 국면 되돌아보기"
     },
     "feedback": {
       "title": "Memory Chess를 플레이해 주셔서 감사합니다!",

@@ -142,8 +142,7 @@
       "submit": "Lähetä",
       "status": "Pelin tila",
       "controls": "Pelin säätimet",
-      "complete": "Peli päättyi",
-      "flash": "VALMIS!"
+      "complete": "Peli päättyi"
     },
     "config": {
       "title": "Pelin asetukset",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Paina asema mieleen",
-      "skip": "Ohita",
-      "hint": "Lauta tyhjenee, kun aika loppuu",
-      "rememberPieces": "{count, plural, one {Paina mieleen tämä nappula} other {Paina mieleen kaikki # nappulaa}}"
-    },
-    "place": {
-      "title": "Aseta nappulat",
-      "subtitle": "Valitse tyyppi ja väri",
-      "whitePieces": "Valkeat nappulat",
-      "blackPieces": "Mustat nappulat",
-      "selectWhite": "Valitse valkeat nappulat",
-      "selectBlack": "Valitse mustat nappulat",
-      "hint": "Napauta ruutua lisätäksesi tai poistaaksesi nappulan"
+      "hint": "Lauta tyhjenee, kun aika loppuu"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "musta kuningas"
         }
       },
-      "feedback": {
-        "correct": "oikein",
-        "incorrect": "väärin",
-        "missing": "puuttuu"
-      },
-      "squareWithPiece": "{square}: {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Valitse: {piece}"
+      "squareWithPiece": "{square}: {piece}"
     },
     "stats": {
       "title": "Tilastot",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Käy asemasi läpi",
-      "subtitle": "Vertaa muistamaasi siihen, minkä lähetit.",
-      "unavailable": "Lautojen vertailu ei ole käytettävissä.",
-      "ariaLabel": "Lautojen vertailu",
-      "correct": "Oikein",
-      "incorrect": "Väärin",
-      "missed": "Jäi huomaamatta",
-      "originalBoard": "Muistettava asema",
-      "submittedBoard": "Lähettämäsi asema"
+      "title": "Käy asemasi läpi"
     },
     "feedback": {
       "title": "Kiitos, että pelasit Memory Chessiä!",

@@ -142,8 +142,7 @@
       "submit": "Verstuur",
       "status": "Spelstatus",
       "controls": "Spelbediening",
-      "complete": "Partij afgerond",
-      "flash": "KLAAR!"
+      "complete": "Partij afgerond"
     },
     "config": {
       "title": "Spelinstellingen",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Onthoud de stelling",
-      "skip": "Overslaan",
-      "hint": "Het bord wordt leeggemaakt zodra de tijd om is",
-      "rememberPieces": "{count, plural, one {Onthoud het stuk} other {Onthoud alle # stukken}}"
-    },
-    "place": {
-      "title": "Plaats de stukken",
-      "subtitle": "Kies soort en kleur",
-      "whitePieces": "Witte stukken",
-      "blackPieces": "Zwarte stukken",
-      "selectWhite": "Witte stukken kiezen",
-      "selectBlack": "Zwarte stukken kiezen",
-      "hint": "Tik op een veld om een stuk te plaatsen of weg te halen"
+      "hint": "Het bord wordt leeggemaakt zodra de tijd om is"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "zwarte koning"
         }
       },
-      "feedback": {
-        "correct": "correct",
-        "incorrect": "onjuist",
-        "missing": "ontbreekt"
-      },
-      "squareWithPiece": "{square} met {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "{piece} selecteren"
+      "squareWithPiece": "{square} met {piece}"
     },
     "stats": {
       "title": "Statistieken",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Bekijk je stelling terug",
-      "subtitle": "Vergelijk wat je onthouden hebt met wat je hebt ingestuurd.",
-      "unavailable": "Bordvergelijking niet beschikbaar.",
-      "ariaLabel": "Bordvergelijking",
-      "correct": "Goed",
-      "incorrect": "Fout",
-      "missed": "Gemist",
-      "originalBoard": "De te onthouden stelling",
-      "submittedBoard": "Jouw ingestuurde stelling"
+      "title": "Bekijk je stelling terug"
     },
     "feedback": {
       "title": "Bedankt voor het spelen van Memory Chess!",

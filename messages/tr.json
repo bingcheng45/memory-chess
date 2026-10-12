@@ -142,8 +142,7 @@
       "submit": "Gönder",
       "status": "Oyun durumu",
       "controls": "Oyun kontrolleri",
-      "complete": "Oyun tamamlandı",
-      "flash": "BİTTİ!"
+      "complete": "Oyun tamamlandı"
     },
     "config": {
       "title": "Oyun ayarları",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Konumu ezberle",
-      "skip": "Atla",
-      "hint": "Süre bittiğinde tahta boşalacak",
-      "rememberPieces": "{count, plural, one {Taşı ezberle} other {# taşın hepsini ezberle}}"
-    },
-    "place": {
-      "title": "Taşları yerleştir",
-      "subtitle": "Tür ve renk seç",
-      "whitePieces": "Beyaz taşlar",
-      "blackPieces": "Siyah taşlar",
-      "selectWhite": "Beyaz taşları seç",
-      "selectBlack": "Siyah taşları seç",
-      "hint": "Taş eklemek ya da kaldırmak için bir kareye dokun"
+      "hint": "Süre bittiğinde tahta boşalacak"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "siyah şah"
         }
       },
-      "feedback": {
-        "correct": "doğru",
-        "incorrect": "yanlış",
-        "missing": "eksik"
-      },
-      "squareWithPiece": "{square}: {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Seç: {piece}"
+      "squareWithPiece": "{square}: {piece}"
     },
     "stats": {
       "title": "İstatistikler",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Konumunu incele",
-      "subtitle": "Ezberlediğinle gönderdiğini karşılaştır.",
-      "unavailable": "Tahta karşılaştırması kullanılamıyor.",
-      "ariaLabel": "Tahta karşılaştırması",
-      "correct": "Doğru",
-      "incorrect": "Yanlış",
-      "missed": "Atlanan",
-      "originalBoard": "Hatırlanacak konum",
-      "submittedBoard": "Gönderdiğin konum"
+      "title": "Konumunu incele"
     },
     "feedback": {
       "title": "Memory Chess oynadığın için teşekkürler!",

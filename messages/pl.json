@@ -142,8 +142,7 @@
       "submit": "Wyślij",
       "status": "Stan partii",
       "controls": "Sterowanie grą",
-      "complete": "Partia zakończona",
-      "flash": "GOTOWE!"
+      "complete": "Partia zakończona"
     },
     "config": {
       "title": "Ustawienia partii",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Zapamiętaj pozycję",
-      "skip": "Pomiń",
-      "hint": "Szachownica opustoszeje, gdy skończy się czas",
-      "rememberPieces": "{count, plural, one {Zapamiętaj bierkę} few {Zapamiętaj wszystkie # bierki} many {Zapamiętaj wszystkich # bierek} other {Zapamiętaj # bierki}}"
-    },
-    "place": {
-      "title": "Ustaw bierki",
-      "subtitle": "Wybierz rodzaj i kolor",
-      "whitePieces": "Białe bierki",
-      "blackPieces": "Czarne bierki",
-      "selectWhite": "Wybierz białe bierki",
-      "selectBlack": "Wybierz czarne bierki",
-      "hint": "Dotknij pola, aby postawić lub usunąć bierkę"
+      "hint": "Szachownica opustoszeje, gdy skończy się czas"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "czarny król"
         }
       },
-      "feedback": {
-        "correct": "poprawnie",
-        "incorrect": "niepoprawnie",
-        "missing": "brak"
-      },
-      "squareWithPiece": "{square}: {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Wybierz: {piece}"
+      "squareWithPiece": "{square}: {piece}"
     },
     "stats": {
       "title": "Statystyki",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Przejrzyj swoją pozycję",
-      "subtitle": "Porównaj to, co zapamiętałeś, z tym, co wysłałeś.",
-      "unavailable": "Porównanie szachownic jest niedostępne.",
-      "ariaLabel": "Porównanie szachownic",
-      "correct": "Poprawnie",
-      "incorrect": "Błędnie",
-      "missed": "Pominięte",
-      "originalBoard": "Pozycja do zapamiętania",
-      "submittedBoard": "Twoja wysłana pozycja"
+      "title": "Przejrzyj swoją pozycję"
     },
     "feedback": {
       "title": "Dziękujemy za grę w Memory Chess!",

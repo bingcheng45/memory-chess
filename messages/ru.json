@@ -142,8 +142,7 @@
       "submit": "Отправить",
       "status": "Состояние партии",
       "controls": "Управление партией",
-      "complete": "Партия завершена",
-      "flash": "ГОТОВО!"
+      "complete": "Партия завершена"
     },
     "config": {
       "title": "Настройки партии",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Запомните позицию",
-      "skip": "Пропустить",
-      "hint": "Доска очистится, когда закончится время",
-      "rememberPieces": "{count, plural, one {Запомните # фигуру} few {Запомните все # фигуры} many {Запомните все # фигур} other {Запомните все # фигуры}}"
-    },
-    "place": {
-      "title": "Расставьте фигуры",
-      "subtitle": "Выберите тип и цвет",
-      "whitePieces": "Белые фигуры",
-      "blackPieces": "Чёрные фигуры",
-      "selectWhite": "Выбрать белые фигуры",
-      "selectBlack": "Выбрать чёрные фигуры",
-      "hint": "Нажмите на поле, чтобы поставить или убрать фигуру"
+      "hint": "Доска очистится, когда закончится время"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "чёрный король"
         }
       },
-      "feedback": {
-        "correct": "верно",
-        "incorrect": "неверно",
-        "missing": "пропущено"
-      },
-      "squareWithPiece": "{square}, {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Выбрать: {piece}"
+      "squareWithPiece": "{square}, {piece}"
     },
     "stats": {
       "title": "Статистика",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Разбор вашей позиции",
-      "subtitle": "Сравните то, что вы запомнили, с тем, что отправили.",
-      "unavailable": "Сравнение досок недоступно.",
-      "ariaLabel": "Сравнение досок",
-      "correct": "Верно",
-      "incorrect": "Неверно",
-      "missed": "Пропущено",
-      "originalBoard": "Позиция для запоминания",
-      "submittedBoard": "Ваша отправленная позиция"
+      "title": "Разбор вашей позиции"
     },
     "feedback": {
       "title": "Спасибо за игру в Memory Chess!",

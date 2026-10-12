@@ -142,8 +142,7 @@
       "submit": "送信",
       "status": "ゲームの状態",
       "controls": "ゲーム操作",
-      "complete": "ゲーム終了",
-      "flash": "終了！"
+      "complete": "ゲーム終了"
     },
     "config": {
       "title": "ゲーム設定",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "局面を覚えてください",
-      "skip": "スキップ",
-      "hint": "時間が切れると盤面が消えます",
-      "rememberPieces": "{count, plural, other {# 個の駒をすべて覚えてください}}"
-    },
-    "place": {
-      "title": "駒を並べる",
-      "subtitle": "種類と色を選んでください",
-      "whitePieces": "白の駒",
-      "blackPieces": "黒の駒",
-      "selectWhite": "白の駒を選択",
-      "selectBlack": "黒の駒を選択",
-      "hint": "マスをタップすると駒を置いたり外したりできます"
+      "hint": "時間が切れると盤面が消えます"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "黒のキング"
         }
       },
-      "feedback": {
-        "correct": "正解",
-        "incorrect": "不正解",
-        "missing": "未配置"
-      },
-      "squareWithPiece": "{square}に{piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "{piece}を選択"
+      "squareWithPiece": "{square}に{piece}"
     },
     "stats": {
       "title": "ゲーム統計",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "自分の局面を振り返る",
-      "subtitle": "覚えた内容と、送信した内容を見比べてみましょう。",
-      "unavailable": "盤面の比較は利用できません。",
-      "ariaLabel": "盤面の比較",
-      "correct": "正解",
-      "incorrect": "不正解",
-      "missed": "抜け",
-      "originalBoard": "覚えるべき局面",
-      "submittedBoard": "送信した局面"
+      "title": "自分の局面を振り返る"
     },
     "feedback": {
       "title": "Memory Chess で遊んでいただきありがとうございます！",

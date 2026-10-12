@@ -142,8 +142,7 @@
       "submit": "Skicka in",
       "status": "Spelstatus",
       "controls": "Spelkontroller",
-      "complete": "Partiet klart",
-      "flash": "KLART!"
+      "complete": "Partiet klart"
     },
     "config": {
       "title": "Spelinställningar",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Memorera ställningen",
-      "skip": "Hoppa över",
-      "hint": "Brädet töms när tiden går ut",
-      "rememberPieces": "{count, plural, one {Memorera pjäsen} other {Memorera alla # pjäser}}"
-    },
-    "place": {
-      "title": "Placera pjäserna",
-      "subtitle": "Välj typ och färg",
-      "whitePieces": "Vita pjäser",
-      "blackPieces": "Svarta pjäser",
-      "selectWhite": "Välj vita pjäser",
-      "selectBlack": "Välj svarta pjäser",
-      "hint": "Tryck på en ruta för att lägga till eller ta bort en pjäs"
+      "hint": "Brädet töms när tiden går ut"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "svart kung"
         }
       },
-      "feedback": {
-        "correct": "rätt",
-        "incorrect": "fel",
-        "missing": "saknas"
-      },
-      "squareWithPiece": "{square} med {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Välj {piece}"
+      "squareWithPiece": "{square} med {piece}"
     },
     "stats": {
       "title": "Statistik",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Gå igenom din ställning",
-      "subtitle": "Jämför det du memorerade med det du skickade in.",
-      "unavailable": "Brädjämförelsen är inte tillgänglig.",
-      "ariaLabel": "Brädjämförelse",
-      "correct": "Rätt",
-      "incorrect": "Fel",
-      "missed": "Missad",
-      "originalBoard": "Ställningen att minnas",
-      "submittedBoard": "Ställningen du skickade in"
+      "title": "Gå igenom din ställning"
     },
     "feedback": {
       "title": "Tack för att du spelade Memory Chess!",

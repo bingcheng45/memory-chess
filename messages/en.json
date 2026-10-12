@@ -940,8 +940,7 @@
       "submit": "Submit",
       "status": "Game status",
       "controls": "Game controls",
-      "complete": "Game complete",
-      "flash": "GAME!"
+      "complete": "Game complete"
     },
     "config": {
       "title": "Chess memory game",
@@ -975,18 +974,7 @@
     },
     "memorize": {
       "title": "Memorize the Position",
-      "skip": "Skip",
-      "hint": "The board will clear when the timer ends",
-      "rememberPieces": "{count, plural, one {Remember the piece} other {Remember all # pieces}}"
-    },
-    "place": {
-      "title": "Place Pieces",
-      "subtitle": "Select type and color",
-      "whitePieces": "White pieces",
-      "blackPieces": "Black pieces",
-      "selectWhite": "Select white pieces",
-      "selectBlack": "Select black pieces",
-      "hint": "Tap a square to add a piece or remove one"
+      "hint": "The board will clear when the timer ends"
     },
     "board": {
       "pieces": {
@@ -1007,14 +995,7 @@
           "king": "black king"
         }
       },
-      "feedback": {
-        "correct": "correct",
-        "incorrect": "incorrect",
-        "missing": "missing"
-      },
-      "squareWithPiece": "{square} with {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Select {piece}"
+      "squareWithPiece": "{square} with {piece}"
     },
     "stats": {
       "title": "Game Stats",
@@ -1060,15 +1041,7 @@
       }
     },
     "comparison": {
-      "title": "Review Your Position",
-      "subtitle": "Compare what you memorized with what you submitted.",
-      "unavailable": "Board comparison unavailable.",
-      "ariaLabel": "Board comparison",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "missed": "Missed",
-      "originalBoard": "Position to Remember",
-      "submittedBoard": "Your Submitted Position"
+      "title": "Review Your Position"
     },
     "feedback": {
       "title": "Thanks for playing Memory Chess!",

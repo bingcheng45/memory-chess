@@ -142,8 +142,7 @@
       "submit": "Odeslat",
       "status": "Stav partie",
       "controls": "Ovládání hry",
-      "complete": "Partie dokončena",
-      "flash": "HOTOVO!"
+      "complete": "Partie dokončena"
     },
     "config": {
       "title": "Nastavení hry",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Zapamatujte si pozici",
-      "skip": "Přeskočit",
-      "hint": "Až vyprší čas, šachovnice se vyprázdní",
-      "rememberPieces": "{count, plural, one {Zapamatujte si figurku} few {Zapamatujte si všechny # figurky} many {Zapamatujte si # figurky} other {Zapamatujte si všech # figurek}}"
-    },
-    "place": {
-      "title": "Rozestavte figurky",
-      "subtitle": "Vyberte druh a barvu",
-      "whitePieces": "Bílé figurky",
-      "blackPieces": "Černé figurky",
-      "selectWhite": "Vybrat bílé figurky",
-      "selectBlack": "Vybrat černé figurky",
-      "hint": "Klepnutím na pole figurku přidáte nebo odeberete"
+      "hint": "Až vyprší čas, šachovnice se vyprázdní"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "černý král"
         }
       },
-      "feedback": {
-        "correct": "správně",
-        "incorrect": "špatně",
-        "missing": "chybí"
-      },
-      "squareWithPiece": "{square}: {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Vybrat: {piece}"
+      "squareWithPiece": "{square}: {piece}"
     },
     "stats": {
       "title": "Statistiky",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Projděte si svou pozici",
-      "subtitle": "Porovnejte, co jste si zapamatovali, s tím, co jste odeslali.",
-      "unavailable": "Porovnání šachovnic není k dispozici.",
-      "ariaLabel": "Porovnání šachovnic",
-      "correct": "Správně",
-      "incorrect": "Špatně",
-      "missed": "Vynecháno",
-      "originalBoard": "Pozice k zapamatování",
-      "submittedBoard": "Vámi odeslaná pozice"
+      "title": "Projděte si svou pozici"
     },
     "feedback": {
       "title": "Díky, že jste si zahráli Memory Chess!",

@@ -142,8 +142,7 @@
       "submit": "Invia",
       "status": "Stato della partita",
       "controls": "Comandi della partita",
-      "complete": "Partita completata",
-      "flash": "FINITO!"
+      "complete": "Partita completata"
     },
     "config": {
       "title": "Configurazione della partita",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Memorizza la posizione",
-      "skip": "Salta",
-      "hint": "La scacchiera si svuoterà allo scadere del tempo",
-      "rememberPieces": "{count, plural, one {Memorizza il pezzo} many {Memorizza tutti i # pezzi} other {Memorizza tutti i # pezzi}}"
-    },
-    "place": {
-      "title": "Posiziona i pezzi",
-      "subtitle": "Scegli tipo e colore",
-      "whitePieces": "Pezzi bianchi",
-      "blackPieces": "Pezzi neri",
-      "selectWhite": "Seleziona i pezzi bianchi",
-      "selectBlack": "Seleziona i pezzi neri",
-      "hint": "Tocca una casa per aggiungere o togliere un pezzo"
+      "hint": "La scacchiera si svuoterà allo scadere del tempo"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "re nero"
         }
       },
-      "feedback": {
-        "correct": "corretto",
-        "incorrect": "errato",
-        "missing": "mancante"
-      },
-      "squareWithPiece": "{square} con {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Seleziona {piece}"
+      "squareWithPiece": "{square} con {piece}"
     },
     "stats": {
       "title": "Statistiche",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Rivedi la tua posizione",
-      "subtitle": "Confronta ciò che hai memorizzato con ciò che hai inviato.",
-      "unavailable": "Confronto delle scacchiere non disponibile.",
-      "ariaLabel": "Confronto delle scacchiere",
-      "correct": "Corretto",
-      "incorrect": "Sbagliato",
-      "missed": "Mancante",
-      "originalBoard": "Posizione da ricordare",
-      "submittedBoard": "La posizione che hai inviato"
+      "title": "Rivedi la tua posizione"
     },
     "feedback": {
       "title": "Grazie per aver giocato a Memory Chess!",

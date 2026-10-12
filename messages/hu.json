@@ -142,8 +142,7 @@
       "submit": "Beküldés",
       "status": "Játék állapota",
       "controls": "Játékvezérlők",
-      "complete": "A játszma véget ért",
-      "flash": "KÉSZ!"
+      "complete": "A játszma véget ért"
     },
     "config": {
       "title": "Játékbeállítások",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Jegyezd meg az állást",
-      "skip": "Kihagyás",
-      "hint": "A tábla kiürül, amint lejár az idő",
-      "rememberPieces": "{count, plural, one {Jegyezd meg a bábut} other {Jegyezd meg mind a # bábut}}"
-    },
-    "place": {
-      "title": "Helyezd el a bábukat",
-      "subtitle": "Válassz típust és színt",
-      "whitePieces": "Világos bábuk",
-      "blackPieces": "Sötét bábuk",
-      "selectWhite": "Világos bábuk kiválasztása",
-      "selectBlack": "Sötét bábuk kiválasztása",
-      "hint": "Koppints egy mezőre bábu elhelyezéséhez vagy eltávolításához"
+      "hint": "A tábla kiürül, amint lejár az idő"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "sötét király"
         }
       },
-      "feedback": {
-        "correct": "helyes",
-        "incorrect": "helytelen",
-        "missing": "hiányzik"
-      },
-      "squareWithPiece": "{square}: {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Kiválasztás: {piece}"
+      "squareWithPiece": "{square}: {piece}"
     },
     "stats": {
       "title": "Statisztikák",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Nézd át az állásodat",
-      "subtitle": "Vesd össze, amit megjegyeztél, azzal, amit beküldtél.",
-      "unavailable": "A táblák összehasonlítása nem érhető el.",
-      "ariaLabel": "Táblák összehasonlítása",
-      "correct": "Helyes",
-      "incorrect": "Hibás",
-      "missed": "Kimaradt",
-      "originalBoard": "A megjegyzendő állás",
-      "submittedBoard": "Az általad beküldött állás"
+      "title": "Nézd át az állásodat"
     },
     "feedback": {
       "title": "Köszönjük, hogy Memory Chesst játszottál!",

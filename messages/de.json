@@ -142,8 +142,7 @@
       "submit": "Abgeben",
       "status": "Spielstatus",
       "controls": "Spielsteuerung",
-      "complete": "Spiel beendet",
-      "flash": "FERTIG!"
+      "complete": "Spiel beendet"
     },
     "config": {
       "title": "Spieleinstellungen",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Präge dir die Stellung ein",
-      "skip": "Überspringen",
-      "hint": "Das Brett wird geleert, sobald die Zeit abläuft",
-      "rememberPieces": "{count, plural, one {Präge dir die Figur ein} other {Präge dir alle # Figuren ein}}"
-    },
-    "place": {
-      "title": "Figuren setzen",
-      "subtitle": "Art und Farbe wählen",
-      "whitePieces": "Weiße Figuren",
-      "blackPieces": "Schwarze Figuren",
-      "selectWhite": "Weiße Figuren auswählen",
-      "selectBlack": "Schwarze Figuren auswählen",
-      "hint": "Tippe auf ein Feld, um eine Figur zu setzen oder zu entfernen"
+      "hint": "Das Brett wird geleert, sobald die Zeit abläuft"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "schwarzer König"
         }
       },
-      "feedback": {
-        "correct": "richtig",
-        "incorrect": "falsch",
-        "missing": "fehlt"
-      },
-      "squareWithPiece": "{square}: {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Auswählen: {piece}"
+      "squareWithPiece": "{square}: {piece}"
     },
     "stats": {
       "title": "Statistik",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Deine Stellung im Rückblick",
-      "subtitle": "Vergleiche, was du dir eingeprägt hast, mit dem, was du abgegeben hast.",
-      "unavailable": "Brettvergleich nicht verfügbar.",
-      "ariaLabel": "Brettvergleich",
-      "correct": "Richtig",
-      "incorrect": "Falsch",
-      "missed": "Fehlt",
-      "originalBoard": "Zu merkende Stellung",
-      "submittedBoard": "Deine abgegebene Stellung"
+      "title": "Deine Stellung im Rückblick"
     },
     "feedback": {
       "title": "Danke, dass du Memory Chess gespielt hast!",

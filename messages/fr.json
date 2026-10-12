@@ -142,8 +142,7 @@
       "submit": "Valider",
       "status": "État de la partie",
       "controls": "Commandes de la partie",
-      "complete": "Partie terminée",
-      "flash": "TERMINÉ !"
+      "complete": "Partie terminée"
     },
     "config": {
       "title": "Configuration de la partie",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Mémorisez la position",
-      "skip": "Passer",
-      "hint": "L’échiquier se videra à la fin du chrono",
-      "rememberPieces": "{count, plural, one {Mémorisez la pièce} many {Mémorisez les # pièces} other {Mémorisez les # pièces}}"
-    },
-    "place": {
-      "title": "Placez les pièces",
-      "subtitle": "Choisissez le type et la couleur",
-      "whitePieces": "Pièces blanches",
-      "blackPieces": "Pièces noires",
-      "selectWhite": "Sélectionner les pièces blanches",
-      "selectBlack": "Sélectionner les pièces noires",
-      "hint": "Touchez une case pour ajouter ou retirer une pièce"
+      "hint": "L’échiquier se videra à la fin du chrono"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "roi noir"
         }
       },
-      "feedback": {
-        "correct": "correct",
-        "incorrect": "incorrect",
-        "missing": "manquant"
-      },
-      "squareWithPiece": "{square} avec {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Sélectionner : {piece}"
+      "squareWithPiece": "{square} avec {piece}"
     },
     "stats": {
       "title": "Statistiques",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Revoyez votre position",
-      "subtitle": "Comparez ce que vous avez mémorisé avec ce que vous avez validé.",
-      "unavailable": "Comparaison des échiquiers indisponible.",
-      "ariaLabel": "Comparaison des échiquiers",
-      "correct": "Correcte",
-      "incorrect": "Incorrecte",
-      "missed": "Oubliée",
-      "originalBoard": "Position à retenir",
-      "submittedBoard": "La position que vous avez validée"
+      "title": "Revoyez votre position"
     },
     "feedback": {
       "title": "Merci d’avoir joué à Memory Chess !",

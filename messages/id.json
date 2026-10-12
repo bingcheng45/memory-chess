@@ -142,8 +142,7 @@
       "submit": "Kirim",
       "status": "Status permainan",
       "controls": "Kontrol permainan",
-      "complete": "Permainan selesai",
-      "flash": "SELESAI!"
+      "complete": "Permainan selesai"
     },
     "config": {
       "title": "Pengaturan permainan",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Hafalkan posisinya",
-      "skip": "Lewati",
-      "hint": "Papan akan dikosongkan saat waktu habis",
-      "rememberPieces": "{count, plural, other {Hafalkan semua # bidak}}"
-    },
-    "place": {
-      "title": "Letakkan bidak",
-      "subtitle": "Pilih jenis dan warna",
-      "whitePieces": "Bidak putih",
-      "blackPieces": "Bidak hitam",
-      "selectWhite": "Pilih bidak putih",
-      "selectBlack": "Pilih bidak hitam",
-      "hint": "Ketuk kotak untuk menambah atau menghapus bidak"
+      "hint": "Papan akan dikosongkan saat waktu habis"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "raja hitam"
         }
       },
-      "feedback": {
-        "correct": "benar",
-        "incorrect": "salah",
-        "missing": "tidak ada"
-      },
-      "squareWithPiece": "{square} dengan {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Pilih {piece}"
+      "squareWithPiece": "{square} dengan {piece}"
     },
     "stats": {
       "title": "Statistik",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Tinjau posisi Anda",
-      "subtitle": "Bandingkan yang Anda hafal dengan yang Anda kirim.",
-      "unavailable": "Perbandingan papan tidak tersedia.",
-      "ariaLabel": "Perbandingan papan",
-      "correct": "Benar",
-      "incorrect": "Salah",
-      "missed": "Terlewat",
-      "originalBoard": "Posisi yang harus diingat",
-      "submittedBoard": "Posisi yang Anda kirim"
+      "title": "Tinjau posisi Anda"
     },
     "feedback": {
       "title": "Terima kasih sudah memainkan Memory Chess!",

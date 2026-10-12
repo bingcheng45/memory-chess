@@ -142,8 +142,7 @@
       "submit": "Send inn",
       "status": "Spillstatus",
       "controls": "Spillkontroller",
-      "complete": "Partiet er ferdig",
-      "flash": "FERDIG!"
+      "complete": "Partiet er ferdig"
     },
     "config": {
       "title": "Spillinnstillinger",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Husk stillingen",
-      "skip": "Hopp over",
-      "hint": "Brettet tømmes når tiden er ute",
-      "rememberPieces": "{count, plural, one {Husk brikken} other {Husk alle # brikker}}"
-    },
-    "place": {
-      "title": "Plasser brikkene",
-      "subtitle": "Velg type og farge",
-      "whitePieces": "Hvite brikker",
-      "blackPieces": "Svarte brikker",
-      "selectWhite": "Velg hvite brikker",
-      "selectBlack": "Velg svarte brikker",
-      "hint": "Trykk på et felt for å sette ut eller fjerne en brikke"
+      "hint": "Brettet tømmes når tiden er ute"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "svart konge"
         }
       },
-      "feedback": {
-        "correct": "riktig",
-        "incorrect": "feil",
-        "missing": "mangler"
-      },
-      "squareWithPiece": "{square} med {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Velg {piece}"
+      "squareWithPiece": "{square} med {piece}"
     },
     "stats": {
       "title": "Statistikk",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Gå gjennom stillingen din",
-      "subtitle": "Sammenlign det du husket med det du sendte inn.",
-      "unavailable": "Brettsammenligning er ikke tilgjengelig.",
-      "ariaLabel": "Brettsammenligning",
-      "correct": "Riktig",
-      "incorrect": "Feil",
-      "missed": "Bommet",
-      "originalBoard": "Stillingen du skulle huske",
-      "submittedBoard": "Stillingen du sendte inn"
+      "title": "Gå gjennom stillingen din"
     },
     "feedback": {
       "title": "Takk for at du spilte Memory Chess!",

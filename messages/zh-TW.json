@@ -142,8 +142,7 @@
       "submit": "送出",
       "status": "對局狀態",
       "controls": "對局操作",
-      "complete": "對局結束",
-      "flash": "完成！"
+      "complete": "對局結束"
     },
     "config": {
       "title": "對局設定",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "記住這個棋局",
-      "skip": "略過",
-      "hint": "計時結束後棋盤會被清空",
-      "rememberPieces": "{count, plural, other {記住全部 # 個棋子}}"
-    },
-    "place": {
-      "title": "擺放棋子",
-      "subtitle": "選擇棋子種類與顏色",
-      "whitePieces": "白方棋子",
-      "blackPieces": "黑方棋子",
-      "selectWhite": "選擇白方棋子",
-      "selectBlack": "選擇黑方棋子",
-      "hint": "點一下格子可放置棋子，再點一次可移除"
+      "hint": "計時結束後棋盤會被清空"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "黑方國王"
         }
       },
-      "feedback": {
-        "correct": "正確",
-        "incorrect": "錯誤",
-        "missing": "遺漏"
-      },
-      "squareWithPiece": "{square}：{piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "選擇{piece}"
+      "squareWithPiece": "{square}：{piece}"
     },
     "stats": {
       "title": "對局數據",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "回顧你的棋局",
-      "subtitle": "把你記住的和你送出的對照一下。",
-      "unavailable": "暫時無法比較棋盤。",
-      "ariaLabel": "棋盤比較",
-      "correct": "正確",
-      "incorrect": "錯誤",
-      "missed": "遺漏",
-      "originalBoard": "需要記住的棋局",
-      "submittedBoard": "你送出的棋局"
+      "title": "回顧你的棋局"
     },
     "feedback": {
       "title": "感謝你玩 Memory Chess！",

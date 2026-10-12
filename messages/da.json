@@ -142,8 +142,7 @@
       "submit": "Send",
       "status": "Spilstatus",
       "controls": "Spilkontroller",
-      "complete": "Partiet er slut",
-      "flash": "FÆRDIG!"
+      "complete": "Partiet er slut"
     },
     "config": {
       "title": "Spilindstillinger",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Husk stillingen",
-      "skip": "Spring over",
-      "hint": "Brættet tømmes, når tiden er gået",
-      "rememberPieces": "{count, plural, one {Husk brikken} other {Husk alle # brikker}}"
-    },
-    "place": {
-      "title": "Placér brikkerne",
-      "subtitle": "Vælg type og farve",
-      "whitePieces": "Hvide brikker",
-      "blackPieces": "Sorte brikker",
-      "selectWhite": "Vælg hvide brikker",
-      "selectBlack": "Vælg sorte brikker",
-      "hint": "Tryk på et felt for at sætte en brik eller fjerne den"
+      "hint": "Brættet tømmes, når tiden er gået"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "sort konge"
         }
       },
-      "feedback": {
-        "correct": "rigtig",
-        "incorrect": "forkert",
-        "missing": "mangler"
-      },
-      "squareWithPiece": "{square} med {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Vælg {piece}"
+      "squareWithPiece": "{square} med {piece}"
     },
     "stats": {
       "title": "Statistik",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Gennemgå din stilling",
-      "subtitle": "Sammenlign det, du huskede, med det, du sendte.",
-      "unavailable": "Brætsammenligning er ikke tilgængelig.",
-      "ariaLabel": "Brætsammenligning",
-      "correct": "Rigtigt",
-      "incorrect": "Forkert",
-      "missed": "Overset",
-      "originalBoard": "Stillingen du skulle huske",
-      "submittedBoard": "Den stilling du sendte"
+      "title": "Gennemgå din stilling"
     },
     "feedback": {
       "title": "Tak fordi du spillede Memory Chess!",

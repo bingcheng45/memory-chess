@@ -142,8 +142,7 @@
       "submit": "Trimite",
       "status": "Starea partidei",
       "controls": "Comenzile partidei",
-      "complete": "Partidă încheiată",
-      "flash": "GATA!"
+      "complete": "Partidă încheiată"
     },
     "config": {
       "title": "Setările partidei",
@@ -177,18 +176,7 @@
     },
     "memorize": {
       "title": "Memorează poziția",
-      "skip": "Sari peste",
-      "hint": "Tabla se golește când se termină timpul",
-      "rememberPieces": "{count, plural, one {Memorează piesa} few {Memorează toate cele # piese} other {Memorează toate cele # de piese}}"
-    },
-    "place": {
-      "title": "Așază piesele",
-      "subtitle": "Alege tipul și culoarea",
-      "whitePieces": "Piese albe",
-      "blackPieces": "Piese negre",
-      "selectWhite": "Selectează piesele albe",
-      "selectBlack": "Selectează piesele negre",
-      "hint": "Atinge un pătrat ca să adaugi sau să scoți o piesă"
+      "hint": "Tabla se golește când se termină timpul"
     },
     "board": {
       "pieces": {
@@ -209,14 +197,7 @@
           "king": "rege negru"
         }
       },
-      "feedback": {
-        "correct": "corect",
-        "incorrect": "incorect",
-        "missing": "lipsă"
-      },
-      "squareWithPiece": "{square} cu {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Selectează {piece}"
+      "squareWithPiece": "{square} cu {piece}"
     },
     "stats": {
       "title": "Statistici",
@@ -262,15 +243,7 @@
       }
     },
     "comparison": {
-      "title": "Revezi-ți poziția",
-      "subtitle": "Compară ce ai memorat cu ce ai trimis.",
-      "unavailable": "Compararea tablelor nu este disponibilă.",
-      "ariaLabel": "Compararea tablelor",
-      "correct": "Corect",
-      "incorrect": "Greșit",
-      "missed": "Omis",
-      "originalBoard": "Poziția de reținut",
-      "submittedBoard": "Poziția trimisă de tine"
+      "title": "Revezi-ți poziția"
     },
     "feedback": {
       "title": "Mulțumim că ai jucat Memory Chess!",

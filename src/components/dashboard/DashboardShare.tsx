@@ -68,12 +68,10 @@ export function DashboardShare({ card }: { card: ShareCard | null | "pending" })
         <span className="lab-share-thumb" data-state="locked">
           <Sketch />
         </span>
-        <div className="lab-share-side">
-          <p className="lab-share-text">{t("share.locked")}</p>
-          <Link className="lab-btn lab-btn-primary" href={DASHBOARD_PLAY_HREF}>
-            {t("play")}
-          </Link>
-        </div>
+        <p className="lab-share-text">{t("share.locked")}</p>
+        <Link className="lab-btn lab-btn-primary" href={DASHBOARD_PLAY_HREF}>
+          {t("play")}
+        </Link>
       </div>
     );
   }
@@ -82,12 +80,10 @@ export function DashboardShare({ card }: { card: ShareCard | null | "pending" })
     <div className="lab-share" ref={root} data-state={ready ? "ready" : "pending"}>
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Thumb image={ready ? image : { state: "rendering" }} onOpen={() => ready && setOpen(true)} />
-        <div className="lab-share-side">
-          <p className="lab-share-text">{t("share.lede")}</p>
-          <Dialog.Trigger className="lab-btn lab-btn-primary" disabled={!ready}>
-            {t("share.button")}
-          </Dialog.Trigger>
-        </div>
+        <p className="lab-share-text">{t("share.lede")}</p>
+        <Dialog.Trigger className="lab-btn lab-btn-primary" disabled={!ready}>
+          {t("share.button")}
+        </Dialog.Trigger>
         {open && ready && (
           <ShareDialog
             surface="dashboard"

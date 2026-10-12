@@ -24,7 +24,7 @@ interface Slot {
   readonly noteLines: number;
 }
 
-const GRID_TOP = 572;
+const GRID_TOP = 540;
 const COLUMN_GAP = 40;
 
 /** The number large and its unit small on one baseline, in the order the language puts them, shrunk together until they fit. */
@@ -83,7 +83,7 @@ function drawGrid(ctx: Ctx, grid: readonly CardFigure[], fonts: CardFonts, local
 
 export function drawShareCard(copy: CardCopy, fonts: CardFonts, locale: string): Promise<Blob> {
   return drawCard(copy, fonts, (ctx) => {
-    drawFigure(ctx, copy.lead, { x: PAD, y: BODY_TOP, width: INNER, labelSize: 34, valueSize: 170, noteSize: 28, noteLines: 1 }, fonts, locale);
+    drawFigure(ctx, copy.lead, { x: PAD, y: BODY_TOP, width: INNER, labelSize: 34, valueSize: 150, noteSize: 28, noteLines: 1 }, fonts, locale);
     drawGrid(ctx, copy.grid, fonts, locale);
   });
 }

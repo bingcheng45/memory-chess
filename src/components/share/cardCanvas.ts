@@ -68,11 +68,20 @@ export function fitFont(ctx: Ctx, text: string, weight: number, size: number, fo
 }
 
 /**
- * Breaks text into lines no wider than maxWidth at the language's word breaks, so Japanese and Chinese wrap between
- * characters and spaced languages between words. A last line that would overflow `maxLines` ends in an ellipsis.
+ * The pieces a line may break between: after each space but the one after a number, so "70%" and "10 s" stay whole, and, for a run too wide to
+ * fit (Japanese and Chinese, written without spaces), between the words the language's segmenter finds.
  */
+function breakable(ctx: Ctx, text: string, maxWidth: number, locale: string): string[] {
+  const segmenter = new Intl.Segmenter(locale, { granularity: "word" });
+  return text
+    .split(/(?<=\s)/)
+    .reduce<string[]>((runs, run) => (/^[\d.,]+\s$/.test(runs.at(-1) ?? "") ? [...runs.slice(0, -1), runs.at(-1) + run] : [...runs, run]), [])
+    .flatMap((run) => (ctx.measureText(run).width <= maxWidth ? [run] : [...segmenter.segment(run)].map(({ segment }) => segment)));
+}
+
+/** Breaks text into lines no wider than maxWidth. A last line that would overflow `maxLines` ends in an ellipsis. */
 export function wrapLines(ctx: Ctx, text: string, maxWidth: number, maxLines: number, locale: string): string[] {
-  const words = [...new Intl.Segmenter(locale, { granularity: "word" }).segment(text)].map(({ segment }) => segment);
+  const words = breakable(ctx, text, maxWidth, locale);
   const lines = words.reduce<string[]>((done, word) => {
     const last = done.at(-1) ?? "";
     const joined = last + word;

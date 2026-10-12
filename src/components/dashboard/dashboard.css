@@ -5,7 +5,7 @@
 .lab-paper .lab-dash-head { max-width: 760px; margin-bottom: 48px; }
 .lab-paper .lab-dash-head h1 { font: 650 48px/1.08 var(--lp-ui); letter-spacing: -0.025em; }
 .lab-paper .lab-dash-head .lab-lede { margin-top: 16px; }
-.lab-paper .lab-dash-head .lab-note, .lab-paper .lab-dash-warn { margin-top: 16px; }
+.lab-paper .lab-dash-warn { margin-top: 16px; }
 .lab-paper .lab-dash-warn { font: 400 15px/1.55 var(--lp-body); color: var(--lp-wrong); }
 
 /* sections: a plain heading, a hairline between them */
@@ -45,9 +45,9 @@
 .lab-paper .lab-share-sketch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; gap: 8px; height: 100%; padding: 16px 12px; }
 .lab-paper .lab-share-sketch > span { height: 20px; background: var(--lp-line); border-radius: 3px; }
 .lab-paper .lab-share-sketch > [data-part="lead"] { grid-column: 1 / -1; height: 40px; margin: 12px 0 8px; }
-.lab-paper .lab-share-side { display: grid; gap: 16px; justify-items: start; min-width: 0; }
-/* Four lines whichever text shows, so the panel keeps its height when a pending record turns out to be empty. */
-.lab-paper .lab-share-text { min-height: calc(1.55em * 4); font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .lab-share-text { font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
+/* The action takes its own row under the picture, so it reads on one line however narrow the column beside the card. */
+.lab-paper .lab-share > .lab-btn { grid-column: 1 / -1; justify-self: start; }
 
 /* history */
 .lab-paper .lab-hist-bar { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 16px; }

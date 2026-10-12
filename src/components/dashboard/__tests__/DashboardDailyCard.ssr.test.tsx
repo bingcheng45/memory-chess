@@ -43,4 +43,10 @@ describe("the served dashboard daily card", () => {
   it("is hidden before first paint for a visitor who already opened today's board", () => {
     expect(paint(today())?.hidden).toBe(true);
   });
+
+  it("hides it with a script written out in full, not a bundled function's source", () => {
+    const script = new JSDOM(served).window.document.querySelector("script")?.textContent;
+    expect(script).toContain('localStorage.getItem("memory-chess-lab-daily-opened")');
+    expect(script).not.toMatch(/=>|\bfunction\b/);
+  });
 });

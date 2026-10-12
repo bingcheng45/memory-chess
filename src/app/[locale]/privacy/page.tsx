@@ -231,6 +231,15 @@ export default function PrivacyPage() {
               the article.
             </p>
             <p className={copyClassName}>
+              The Learn search ranks guides in your browser, or on the server
+              when you search from the search page. Google Analytics receives
+              an event for a search with how many characters you typed, how
+              many guides matched, the top guide and whether the match was
+              close, and an event when you open a result with that guide and
+              its place in the list. Neither event carries the words you
+              typed.
+            </p>
+            <p className={copyClassName}>
               Google Analytics and advertising services may use cookies or
               similar identifiers. You can block or delete cookies in your
               browser, although some preferences may stop working as expected.

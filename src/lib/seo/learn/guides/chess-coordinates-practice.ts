@@ -32,7 +32,7 @@ const guide: LearnDocument = {
       "A square you count takes two lookups, the file and then the rank. A square you recognise takes one.",
       "Add the file number to the rank number. An even total is a dark square, an odd total is light.",
       "A knight always lands on the other colour, so the colour rule checks every knight move you name.",
-      "Show board coordinates on the Memory Chess settings page hides the labels on every board in a round, which turns any round into a coordinates drill.",
+      "Turn off Show board coordinates on the Memory Chess settings page to hide the labels on every board in a round, which turns any round into a coordinates drill.",
     ],
     audience: [
       "Players who still find c3 by running a finger along the bottom edge.",
@@ -103,7 +103,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Test the anchors away from the board. Ask someone to name a square and say its colour before they finish the word. Ten in a row without a miss and the anchors are in.",
+            "Test the anchors away from the board. Have someone call out squares at random. Say each square's colour before they finish saying its name. Ten in a row without a miss and the anchors are in.",
           ],
         },
       ],
@@ -132,7 +132,7 @@ const guide: LearnDocument = {
               { text: "the settings page", href: "/settings" },
               ". It is on until you turn it off. Off, it hides the labels on the board you study, the board you rebuild on and the result board.",
             ],
-            "The result board still marks every square right or wrong, so you can see whether you found the square. The browser remembers the setting, and a round link cannot change it. Both drills below open the same round, and only the setting decides whether its labels show.",
+            "The result board still marks each piece you placed right or wrong and rings each square you missed, so you can see whether you found the square. The browser remembers the setting, and a round link cannot change it. Both drills below open the same round, and only the setting decides whether its labels show.",
             "If you use a screen reader, every square announces its name, and a square with a piece on it announces the piece too. The labels setting does not change that.",
           ],
         },
@@ -248,7 +248,7 @@ const guide: LearnDocument = {
       items: [
         {
           question: "Why turn the labels off when they are on by default?",
-          answer: "A label lets you read the square instead of knowing it. With the labels hidden, the only way to put a rook on c3 is to know where c3 is. The result board still marks each placement right or wrong, so you find out at once.",
+          answer: "A label lets you read the square instead of knowing it. With the labels hidden, the only way to put a rook on c3 is to know where c3 is. The result board still marks each piece you placed right or wrong and rings each square you missed, so you find out at once.",
         },
         {
           question: "Do I need to learn the board from Black's side?",

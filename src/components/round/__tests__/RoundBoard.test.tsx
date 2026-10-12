@@ -196,6 +196,18 @@ describe("drag and drop", () => {
     expect(document.querySelector(".lab-drag-ghost")).toBeNull();
   });
 
+  it("with a finger, drops the piece where its ghost rides, above the finger", () => {
+    renderWithIntl(<Round initial={rebuilding()} />);
+    const init = { pointerId: 9, isPrimary: true, button: 0, pointerType: "touch" };
+    const fingerBelow = (square: SquareName) => ({ clientX: pointOf(square).clientX, clientY: pointOf(square).clientY + 36 });
+
+    fireEvent.pointerDown(palette("white queen"), { ...init, clientX: 300, clientY: 600 });
+    fireEvent.pointerMove(palette("white queen"), { ...init, ...fingerBelow("d1") });
+    fireEvent.pointerUp(palette("white queen"), { ...init, ...fingerBelow("d1") });
+
+    expect(cell("d1")).toHaveAccessibleName("d1, white queen");
+  });
+
   it("cancels when the pointer capture is lost mid-drag, and the next press drags again", () => {
     renderWithIntl(<Round initial={rebuilding({ type: "place", piece: { color: "black", type: "rook" }, square: "a8", now: 2000 })} />);
     const init = { pointerId: 5, isPrimary: true, button: 0 };

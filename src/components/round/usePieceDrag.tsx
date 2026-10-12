@@ -156,13 +156,15 @@ export function usePieceDrag({ onStart, onDrop }: PieceDragOptions): PieceDrag {
         const size = ghostNode.current.offsetWidth;
         ghostNode.current.style.transform = ghostTransform(event.clientX, event.clientY, size, current.lift);
       }
-      if (gesture.current?.phase === "dragging") highlight(squareAt(event.clientX, event.clientY));
+      const active = gesture.current;
+      // The piece lands where the ghost is drawn, which rides above a finger.
+      if (active?.phase === "dragging") highlight(squareAt(event.clientX, event.clientY - active.lift));
     },
     onPointerUp: (event) => {
       const current = gesture.current;
       if (!current || current.pointerId !== event.pointerId) return;
       if (current.phase === "dragging") {
-        const square = squareAt(event.clientX, event.clientY)?.dataset.coordinate as SquareName | undefined;
+        const square = squareAt(event.clientX, event.clientY - current.lift)?.dataset.coordinate as SquareName | undefined;
         onDrop(current.source, square ?? null);
       }
       if (current.phase !== "pressed") swallowNextClick();

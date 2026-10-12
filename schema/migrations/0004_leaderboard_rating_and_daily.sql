@@ -2,7 +2,7 @@
 --
 -- Every statement is guarded, so running this file a second time is a no-op
 -- rather than an error. The owner applies it by hand in the Supabase SQL
--- editor, where a half-finished paste and a re-run are both likely.
+-- editor, where a re-run is likely.
 -- Runbook: docs/migrations/2026-10-leaderboard-rating-and-daily.md
 --
 -- Rows stored before this migration take 1000, the rating every player starts

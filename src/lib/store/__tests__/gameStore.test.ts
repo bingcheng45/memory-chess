@@ -371,3 +371,50 @@ describe("saving finished rounds to the history", () => {
     expect([history.length, history[0].accuracy, history[1].id, history[19].id]).toEqual([20, 100, "old-0", "old-18"]);
   });
 });
+
+describe("keeping the win streak across visits", () => {
+  const rehydrateFrom = async (gameState: object) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { gameState }, version: 0 }));
+    await useGameStore.persist.rehydrate();
+    return store().gameState;
+  };
+
+  beforeEach(() => {
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    localStorage.clear();
+    freshPlayer();
+  });
+
+  afterEach(() => {
+    store().resetGame();
+    jest.restoreAllMocks();
+    freshPlayer();
+    localStorage.clear();
+  });
+
+  it("stores the win streak with the rating", () => {
+    playRound({ pieceCount: 2, solveMs: 4000 });
+
+    expect(storedState().gameState).toEqual({ pieceCount: 2, memorizeTime: 10, level: 1, skillRating: 1114, streak: 1 });
+  });
+
+  it("restores the stored win streak and counts on from it", async () => {
+    await rehydrateFrom({ pieceCount: 2, memorizeTime: 10, level: 1, skillRating: 1114, streak: 3 });
+    const restored = store().getCurrentStreak();
+
+    playRound({ pieceCount: 2, solveMs: 4000 });
+
+    expect([restored, store().gameState.streak]).toEqual([3, 4]);
+  });
+
+  it("loads state stored before the streak was kept with a streak of 0 and its rating intact", async () => {
+    await expect(rehydrateFrom({ pieceCount: 6, memorizeTime: 10, level: 1, skillRating: 1300 })).resolves.toEqual({
+      pieceCount: 6,
+      memorizeTime: 10,
+      currentLevel: 1,
+      level: 1,
+      skillRating: 1300,
+      streak: 0,
+    });
+  });
+});

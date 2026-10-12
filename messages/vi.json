@@ -714,6 +714,19 @@
       "lede": "Tạo hình ảnh hồ sơ của bạn để đăng, lưu hoặc gửi.",
       "title": "Chia sẻ tiến bộ của bạn",
       "alt": "Thẻ tiến bộ Memory Chess: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Bảng thống kê của bạn sau ván này",
+      "from": "từ {before}",
+      "new": "Mới",
+      "level": "Không đổi",
+      "open": "Mở bảng thống kê",
+      "say": {
+        "up": "{label} {after}, tăng {amount} từ {before}, {verdict, select, better {tốt hơn} other {kém hơn}}",
+        "down": "{label} {after}, giảm {amount} từ {before}, {verdict, select, better {tốt hơn} other {kém hơn}}",
+        "level": "{label} {after}, không đổi",
+        "new": "{label} {after}, mới"
+      }
     }
   },
   "share": {

@@ -714,6 +714,19 @@
       "lede": "अपने रिकॉर्ड की एक इमेज बनाएँ, जिसे पोस्ट करें, सहेजें या भेजें।",
       "title": "अपनी प्रगति साझा करें",
       "alt": "Memory Chess प्रगति कार्ड: {figures}। {rounds}।"
+    },
+    "deltas": {
+      "title": "इस राउंड के बाद आपका डैशबोर्ड",
+      "from": "{before} से",
+      "new": "नया",
+      "level": "कोई बदलाव नहीं",
+      "open": "अपना डैशबोर्ड खोलें",
+      "say": {
+        "up": "{label} {after}, {before} से {amount} ऊपर, {verdict, select, better {बेहतर} other {खराब}}",
+        "down": "{label} {after}, {before} से {amount} नीचे, {verdict, select, better {बेहतर} other {खराब}}",
+        "level": "{label} {after}, कोई बदलाव नहीं",
+        "new": "{label} {after}, नया"
+      }
     }
   },
   "share": {

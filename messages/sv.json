@@ -714,6 +714,19 @@
       "lede": "Gör en bild av din journal att lägga upp, spara eller skicka.",
       "title": "Dela dina framsteg",
       "alt": "Memory Chess-framstegskort: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Din översikt efter den här rundan",
+      "from": "från {before}",
+      "new": "Ny",
+      "level": "Oförändrad",
+      "open": "Öppna din översikt",
+      "say": {
+        "up": "{label} {after}, upp {amount} från {before}, {verdict, select, better {bättre} other {sämre}}",
+        "down": "{label} {after}, ned {amount} från {before}, {verdict, select, better {bättre} other {sämre}}",
+        "level": "{label} {after}, oförändrad",
+        "new": "{label} {after}, ny"
+      }
     }
   },
   "share": {

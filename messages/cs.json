@@ -714,6 +714,19 @@
       "lede": "Vytvoř obrázek svého záznamu a zveřejni ho, ulož nebo pošli.",
       "title": "Sdílej svůj pokrok",
       "alt": "Karta pokroku Memory Chess: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Tvůj přehled po tomto kole",
+      "from": "z {before}",
+      "new": "Nové",
+      "level": "Beze změny",
+      "open": "Otevřít přehled",
+      "say": {
+        "up": "{label} {after}, nahoru o {amount} z {before}, {verdict, select, better {lepší} other {horší}}",
+        "down": "{label} {after}, dolů o {amount} z {before}, {verdict, select, better {lepší} other {horší}}",
+        "level": "{label} {after}, beze změny",
+        "new": "{label} {after}, nové"
+      }
     }
   },
   "share": {

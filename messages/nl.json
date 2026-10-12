@@ -714,6 +714,19 @@
       "lede": "Maak een afbeelding van je verslag om te plaatsen, op te slaan of te versturen.",
       "title": "Deel je voortgang",
       "alt": "Memory Chess-voortgangskaart: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Je dashboard na deze ronde",
+      "from": "van {before}",
+      "new": "Nieuw",
+      "level": "Ongewijzigd",
+      "open": "Open je dashboard",
+      "say": {
+        "up": "{label} {after}, {amount} omhoog van {before}, {verdict, select, better {beter} other {slechter}}",
+        "down": "{label} {after}, {amount} omlaag van {before}, {verdict, select, better {beter} other {slechter}}",
+        "level": "{label} {after}, ongewijzigd",
+        "new": "{label} {after}, nieuw"
+      }
     }
   },
   "share": {

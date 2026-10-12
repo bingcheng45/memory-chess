@@ -714,6 +714,19 @@
       "lede": "기록을 이미지로 만들어 올리거나 저장하거나 보내세요.",
       "title": "진행 상황 공유",
       "alt": "Memory Chess 진행 카드: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "이번 라운드 후 대시보드",
+      "from": "이전 {before}",
+      "new": "신규",
+      "level": "변동 없음",
+      "open": "대시보드 열기",
+      "say": {
+        "up": "{label} {after}, {before}에서 {amount} 상승, {verdict, select, better {향상} other {악화}}",
+        "down": "{label} {after}, {before}에서 {amount} 하락, {verdict, select, better {향상} other {악화}}",
+        "level": "{label} {after}, 변동 없음",
+        "new": "{label} {after}, 신규"
+      }
     }
   },
   "share": {

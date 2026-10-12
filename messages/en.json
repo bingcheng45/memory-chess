@@ -1531,6 +1531,19 @@
       "lede": "Make an image of your record to post, save or send.",
       "title": "Share your progress",
       "alt": "Memory Chess progress card: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Your dashboard after this round",
+      "from": "from {before}",
+      "new": "New",
+      "level": "No change",
+      "open": "Open your dashboard",
+      "say": {
+        "up": "{label} {after}, up {amount} from {before}, {verdict, select, better {better} other {worse}}",
+        "down": "{label} {after}, down {amount} from {before}, {verdict, select, better {better} other {worse}}",
+        "level": "{label} {after}, no change",
+        "new": "{label} {after}, new"
+      }
     }
   },
   "share": {

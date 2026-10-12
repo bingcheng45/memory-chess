@@ -714,6 +714,19 @@
       "lede": "Сделайте картинку с вашим журналом, чтобы опубликовать, сохранить или отправить её.",
       "title": "Поделитесь прогрессом",
       "alt": "Карточка прогресса Memory Chess: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Ваша статистика после этого раунда",
+      "from": "было {before}",
+      "new": "Новое",
+      "level": "Без изменений",
+      "open": "Открыть статистику",
+      "say": {
+        "up": "{label} {after}, рост на {amount} (было {before}), {verdict, select, better {лучше} other {хуже}}",
+        "down": "{label} {after}, снижение на {amount} (было {before}), {verdict, select, better {лучше} other {хуже}}",
+        "level": "{label} {after}, без изменений",
+        "new": "{label} {after}, новое"
+      }
     }
   },
   "share": {

@@ -134,7 +134,14 @@ describe("drag and drop", () => {
     );
     renderWithIntl(<Round initial={initial} />);
 
-    drag(screen.getByRole("button", { name: "white king, 0 left" }), [{ clientX: 300, clientY: 600 }, pointOf("e4")]);
+    const king = screen.getByRole("button", { name: "white king, 0 left" });
+    const init = { pointerId: 8, isPrimary: true, button: 0, pointerType: "mouse" };
+
+    fireEvent.pointerDown(king, { ...init, clientX: 300, clientY: 600 });
+    fireEvent.pointerMove(king, { ...init, ...pointOf("e4") });
+    expect(document.querySelector(".lab-drag-ghost")).toBeNull();
+    expect(cell("e4")).not.toHaveAttribute("data-drop-target");
+    fireEvent.pointerUp(king, { ...init, ...pointOf("e4") });
 
     expect(cell("e4")).toHaveAccessibleName("e4, empty");
     expect(screen.getByTestId("live")).toHaveTextContent("The white king is already on the board.");

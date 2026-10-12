@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 
 interface Props {
   children: ReactNode;
+  /** Shown in place of the children after an error; null shows nothing. Without it the boundary draws its own message. */
   fallback?: ReactNode;
 }
 
@@ -44,8 +45,7 @@ class ErrorBoundary extends Component<Props, State> {
 
   render(): ReactNode {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
-      if (this.props.fallback) {
+      if (this.props.fallback !== undefined) {
         return this.props.fallback;
       }
       

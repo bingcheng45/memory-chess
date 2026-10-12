@@ -270,6 +270,9 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
   if (entry === null) {
     return { status: 'missing' };
   }
+  if (entry.difficulty === DAILY_BOARD) {
+    return { status: 'unavailable', cause: 'daily standings are not served yet' };
+  }
   const country = scope === 'country' ? entry.country_code ?? WORLD_CODE : null;
   if (country === WORLD_CODE) {
     return { status: 'noCountry' };

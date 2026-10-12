@@ -21,7 +21,9 @@ export interface LeaderboardEntry {
    * Absent on rows written before the database migration added the column.
    */
   country_code?: CountryCode;
-  difficulty: LeaderboardDifficulty;
+  difficulty: LeaderboardDifficulty | typeof DAILY_BOARD;
+  /** The UTC day of a daily row's board; null on every other board, absent where migration 0004 is outstanding. */
+  daily_day?: string | null;
   piece_count: number;
   correct_pieces: number;
   memorize_time: number;

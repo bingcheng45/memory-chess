@@ -37,16 +37,18 @@ async function renderResultScreen(locale: string) {
   return missing;
 }
 
+const facts = { id: "played-now", source: "game", pieceCount: 4, memorizeSeconds: 10, targetFen: TARGET, placedFen: TARGET, memorizeMs: 10000, solveMs: 9000 } as const;
+const endedAt = Date.now();
+
 beforeAll(async () => {
-  const facts = { id: "played-now", source: "game", pieceCount: 4, memorizeSeconds: 10, targetFen: TARGET, placedFen: TARGET, memorizeMs: 10000, solveMs: 9000 } as const;
-  await recordLabRound(facts);
+  await recordLabRound(facts, new Date(endedAt));
 });
 
 beforeEach(() => {
   jest.spyOn(console, "log").mockImplementation(() => {});
   global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ data: { value: 1 } }) });
   useGameStore.setState({
-    gameState: { ...useGameStore.getState().gameState, pieceCount: 4, memorizeTime: 10, accuracy: 100, correctPlacements: 4, labRoundId: "played-now", originalPosition: TARGET, userPosition: TARGET },
+    gameState: { ...useGameStore.getState().gameState, pieceCount: 4, memorizeTime: 10, accuracy: 100, correctPlacements: 4, labRound: { facts, endedAt }, originalPosition: TARGET, userPosition: TARGET },
   });
 });
 

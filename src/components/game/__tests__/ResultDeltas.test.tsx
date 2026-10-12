@@ -24,7 +24,7 @@ const rated = (id: string, skillRatingChange: number) => ({ id, skillRatingChang
 
 function afterRound(id: string, standing: { rating: number; streak: number; before: { skillRating: number; streak: number }; history: GameHistory[] }) {
   useGameStore.setState(({ gameState }) => ({
-    gameState: { ...gameState, labRoundId: id, skillRating: standing.rating, streak: standing.streak, standingBefore: standing.before },
+    gameState: { ...gameState, skillRating: standing.rating, streak: standing.streak, standingBefore: standing.before },
     history: standing.history,
   }));
   render(<ResultDeltas roundId={id} />);

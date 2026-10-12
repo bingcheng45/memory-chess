@@ -11,6 +11,7 @@ import {
 } from '@/lib/game/configPrefill';
 import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
 import { trackEvent, type RoundSource } from '@/lib/analytics/events';
+import type { LabRound } from '@/lib/lab/recordRound';
 import { now as monotonicNow } from '@/lib/game/clock';
 import { isSoundEnabled } from '@/lib/utils/soundEffects';
 import {
@@ -242,11 +243,30 @@ export const useGameStore = create<GameStore>()(
         const newSkillRating = Math.max(0, currentRating + skillRatingChange);
 
         const labRoundId = uuidv4();
+        const endedAt = Date.now();
+
+        const labRound: LabRound = {
+          endedAt,
+          facts: {
+            id: labRoundId,
+            source: 'game',
+            startSource: gameState.startSource,
+            pieceCount: gameState.pieceCount,
+            memorizeSeconds: gameState.memorizeTime,
+            targetFen: gameState.originalPosition,
+            placedFen: userPosition,
+            memorizeMs: Math.round(round.studyMs),
+            solveMs: Math.round(round.rebuildMs),
+            placements: round.log.placements,
+            removals: round.log.removals,
+            board: gameState.board,
+          },
+        };
 
         // Update game state with results
         const updatedGameState: GameStateWithRating = {
           ...gameState,
-          labRoundId,
+          labRound,
           standingBefore: { skillRating: currentRating, streak: gameState.streak || 0 },
           userPosition,
           accuracy: score.accuracy,
@@ -303,21 +323,7 @@ export const useGameStore = create<GameStore>()(
         });
 
         // Loaded on demand so the lab storage stays out of the /game bundle until a round ends.
-        const facts = {
-          id: labRoundId,
-          source: 'game',
-          startSource: gameState.startSource,
-          pieceCount: gameState.pieceCount,
-          memorizeSeconds: gameState.memorizeTime,
-          targetFen: gameState.originalPosition,
-          placedFen: userPosition,
-          memorizeMs: Math.round(round.studyMs),
-          solveMs: Math.round(round.rebuildMs),
-          placements: round.log.placements,
-          removals: round.log.removals,
-          board: gameState.board,
-        } as const;
-        void import('@/lib/lab/recordRound').then(({ recordLabRound }) => recordLabRound(facts)).catch(() => {});
+        void import('@/lib/lab/recordRound').then(({ recordLabRound }) => recordLabRound(labRound.facts, new Date(endedAt))).catch(() => {});
       },
 
       // Stats and progression

@@ -84,6 +84,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const tCountry = useTranslations("country");
   const tComparison = useTranslations("game.comparison");
   const { gameState, round } = useGameStore();
+  const { labRound } = gameState;
   const { countryCode, setCountryCode, showCoordinates } = useSettingsStore();
 
   // Leaderboard submission state
@@ -354,7 +355,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           )}
           {round.phase === "scored" && (
             <ShareResult
-              key={gameState.labRoundId}
+              key={labRound?.facts.id}
               share={roundShareOf(round, {
                 rating: gameState.skillRating ?? START_RATING,
                 change: extendedGameState.skillRatingChange ?? 0,
@@ -369,19 +370,19 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       </section>
 
       <div className="lab-bridge space-y-6">
-        {showsLab && gameState.labRoundId && (
-          <ErrorBoundary key={gameState.labRoundId} fallback={<ResultLabEnd />}>
+        {showsLab && labRound && (
+          <ErrorBoundary key={labRound.facts.id} fallback={<ResultLabEnd />}>
             <Suspense fallback={<ResultLabSlot />}>
-              <ResultLabCard roundId={gameState.labRoundId} onPlay={onPlay} />
+              <ResultLabCard roundId={labRound.facts.id} onPlay={onPlay} />
             </Suspense>
           </ErrorBoundary>
         )}
 
-        {keepsRecord && gameState.labRoundId && (
-          <ResultDeltasFrame key={gameState.labRoundId}>
+        {keepsRecord && labRound && (
+          <ResultDeltasFrame key={labRound.facts.id}>
             <ErrorBoundary fallback={<></>}>
               <Suspense fallback={null}>
-                <ResultDeltas roundId={gameState.labRoundId} />
+                <ResultDeltas roundId={labRound.facts.id} />
               </Suspense>
             </ErrorBoundary>
           </ResultDeltasFrame>

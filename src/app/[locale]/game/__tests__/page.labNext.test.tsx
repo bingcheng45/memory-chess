@@ -56,9 +56,9 @@ describe("GamePage starting the lab card's next round", () => {
       memorizeTime: gameState.memorizeTime,
       startSource: gameState.startSource,
       phase: useGameStore.getState().round.phase,
-      labRoundId: gameState.labRoundId,
+      labRound: gameState.labRound,
       accuracy: gameState.accuracy,
-    }).toEqual({ pieceCount: 7, memorizeTime: 4, startSource: "result_next", phase: "study", labRoundId: undefined, accuracy: undefined });
+    }).toEqual({ pieceCount: 7, memorizeTime: 4, startSource: "result_next", phase: "study", labRound: undefined, accuracy: undefined });
     expect(screen.queryByRole("button", { name: "Lab next" })).toBeNull();
     expect(stopTimerSound).toHaveBeenCalled();
     expect(playSound).toHaveBeenCalledWith("click");

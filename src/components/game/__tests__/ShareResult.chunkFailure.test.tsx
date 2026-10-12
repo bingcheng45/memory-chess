@@ -11,7 +11,7 @@ jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: je
 
 const mockStore = {
   round: scoredRound("4k3/8/8/8/3q4/8/PP6/4K3", "4k3/8/8/8/8/8/PP6/4K3"),
-  gameState: { pieceCount: 5, memorizeTime: 10, accuracy: 80, correctPlacements: 4, skillRating: 1042, skillRatingChange: 12, streak: 3, labRoundId: "r1" },
+  gameState: { pieceCount: 5, memorizeTime: 10, accuracy: 80, correctPlacements: 4, skillRating: 1042, skillRatingChange: 12, streak: 3, labRound: { facts: { id: "r1" }, endedAt: 0 } },
 };
 jest.mock("@/lib/store/gameStore", () => ({ START_RATING: 1000, useGameStore: () => mockStore }));
 

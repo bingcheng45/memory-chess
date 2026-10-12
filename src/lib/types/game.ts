@@ -1,5 +1,6 @@
 import { PieceSymbol, Square } from 'chess.js';
 import type { RoundSource } from '@/lib/analytics/events';
+import type { LabRound } from '@/lib/lab/recordRound';
 
 /** A round on a set position instead of a random one: today's shared daily board, or a board from the lab record come back for review. */
 export type SetBoard =
@@ -40,8 +41,8 @@ export interface GameState {
   // Game data
   originalPosition?: string; // FEN string of position to memorize
   userPosition?: string;     // FEN string of user's solution
-  /** The id the lab record saves the scored round under, so the result screen can find it. Never persisted. */
-  labRoundId?: string;
+  /** The scored round as the lab record saves it, so the result screen can find it and count it. Never persisted. */
+  labRound?: LabRound;
   /** Set when the round plays a set position; absent for a random one. */
   board?: SetBoard;
   

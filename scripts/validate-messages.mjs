@@ -89,13 +89,23 @@ function flatten(value, prefix = "", out = {}) {
   return out;
 }
 
-/** ICU arguments ({count}) and rich-text tags (<link>). */
-function placeholders(text) {
-  const found = new Set();
-  for (const m of String(text).matchAll(/\{(\w+)[,}]|<(\w+)>/g)) {
-    found.add(m[1] ?? m[2]);
+/** Argument and tag names in a parsed message, branch text excluded: `{source, select, other {Game}}` names only `source`. */
+function namesIn(elements, found) {
+  for (const element of elements) {
+    if ("value" in element && element.type !== 0 && element.type !== 7) found.add(element.value);
+    if (element.options) Object.values(element.options).forEach((option) => namesIn(option.value, found));
+    if (element.children) namesIn(element.children, found);
   }
-  return [...found].sort();
+  return found;
+}
+
+/** ICU arguments ({count}) and rich-text tags (<link>). A message that does not parse is reported by the syntax check below. */
+function placeholders(text) {
+  try {
+    return [...namesIn(new IntlMessageFormat(String(text), DEFAULT_LOCALE).getAst(), new Set())].sort();
+  } catch {
+    return [...new Set([...String(text).matchAll(/\{(\w+)[,}]|<(\w+)>/g)].map((m) => m[1] ?? m[2]))].sort();
+  }
 }
 
 const catalogues = Object.fromEntries(

@@ -27,12 +27,12 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Blindfold chess training for beginners starts with two kings, not a game. Hold them without a board, learn six checks that catch a wrong mental picture on Scholar's mate, then replay ten moves of your own games from the move list alone. Play a full game blind only after each stage passes its test.",
+    quickAnswer: "Blindfold chess training for beginners starts with two kings held without a board, not a game. Next, learn six checks that catch the worst errors in your mental picture, then replay ten moves of your own games from the move list alone. Play a full game blind only after each stage passes its test.",
     takeaways: [
       "Each stage has a pass mark, so you know when to move on and when to repeat.",
-      "Six checks that every Memory Chess position passes also catch a mental board that has drifted.",
-      "From stage two on, each test makes you name the pieces that never moved, because those are the ones you lose.",
-      "Keep the score sheet in view for your first blind games. Rebuilding the board from it is the skill.",
+      "Six checks that every Memory Chess position passes also catch the worst errors in a mental board that has drifted.",
+      "From stage two on, each test makes you name the pieces that never moved, the ones you lose.",
+      "Keep the move list in view for your first blind games. Rebuilding from it is the skill.",
     ],
     audience: [
       "Players who tried a blindfold game and lost the bishops by move ten.",
@@ -47,7 +47,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "A blindfold game does not fail all at once. It can fail on a single piece, and a piece that has not moved is easy to lose track of. You know where the knights are because you moved them. The bishop on c1 sat still for twelve moves, so it fell out of the picture, and you play as if it is not there.",
+            "A blindfold game often fails on a single piece that has not moved. You know where the knights are because you moved them. The bishop on c1 sat still for twelve moves, so it fell out of the picture, and you play as if it is not there.",
             "So the training builds the whole board, including the pieces that never move. Each of the four stages below has a test you pass or repeat.",
           ],
         },
@@ -60,7 +60,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The easiest preset in Memory Chess is 2 pieces, and the position rules guarantee those two are the kings, one of each colour, never on adjacent squares. That makes it the smallest blindfold exercise there is.",
+            "The easiest preset in Memory Chess is 2 pieces, and the position rules make those two the kings, never on adjacent squares.",
           ],
         },
         {
@@ -78,7 +78,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The pass mark is six perfect rounds in a row on two separate days, with both square colours right as well. Do not skip the colours. They let you test your picture in a blindfold game later, because a bishop only ever lives on one colour.",
+            "The pass mark is six perfect rounds in a row on two separate days, with both square colours right as well. Do not skip the colours. A bishop only ever lives on one colour, so colours let you test your picture later.",
             "If you cannot name a square's colour without thinking, do the coordinates guide first and come back.",
           ],
         },
@@ -91,7 +91,8 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Every position Memory Chess shows passes a fixed set of checks before it reaches the screen. The same checks catch a drifting mental board. When your imagined position breaks one, the picture is wrong, and you rebuild from the last move you are sure of.",
+            "Every position Memory Chess shows passes a fixed set of checks. The same checks catch a drifting mental board. When your imagined position breaks one, the picture is wrong, and you rebuild from the last move you are sure of.",
+            "Passing all six does not prove the picture is right. A knight one square off breaks none of them. They catch the gross errors, and stages three and four catch the rest by comparing with the real board.",
           ],
         },
         {
@@ -101,7 +102,7 @@ const guide: LearnDocument = {
             "Exactly one king of each colour.",
             "The two kings never stand on adjacent squares.",
             "No pawn on the first rank or the eighth. A pawn you picture on e1 is a pawn you lost track of.",
-            "A side's two bishops never stand on squares of the same colour. If both of Black's bishops sit on dark squares in your head, one of them is on a wrong square.",
+            "A side's two bishops never stand on squares of the same colour. If you picture both of Black's bishops on dark squares, one is misplaced.",
             "No side has more of a piece than a set holds. Eight pawns, two knights, two bishops, two rooks, one queen. If you count three black knights, your picture has invented one.",
             "Both kings are never in check at once, and a king in check belongs to the side to move.",
           ],
@@ -111,7 +112,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Scholar's mate under a cloth",
-              description: "Cover the board and say 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7# aloud, one move at a time. Name the square of all 31 pieces left, run the six checks and say why Black is mated. Then compare with the board below.",
+              description: "Cover the board and say 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7# aloud, one move at a time. Name the square of all 31 pieces left, run the six checks and say why Black is mated. Then check against the board below.",
               duration: "About 5 minutes",
               goal: "Every piece named on its square and the mate explained before you uncover.",
             },
@@ -154,7 +155,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Real games have one exception to the bishop and piece-count checks, promotion. A promoted pawn can become a second queen, a third knight, or a bishop on its partner's colour. Look for promotions in the move list before you trust those two checks.",
+            "Promotion can break the bishop and piece-count checks in a real game. A pawn can become a third knight or a bishop on its partner's colour, so look for promotions in the move list first.",
           ],
         },
       ],
@@ -174,7 +175,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Ten moves from the move list",
-              description: "Open one of your own games on the site you played it on and hide the board, so only the move list shows. Read the first ten moves for each side, 20 in all. Name the square of every piece still on the board and run the six checks. Then step the site's board to Black's tenth move and count the pieces you placed on a wrong square.",
+              description: "Open one of your own games on the site you played it on. Cover the board with a sheet of paper or a sticky note, so only the move list shows. Read the first ten moves for each side, 20 in all. Name the square of every piece still on the board and run the six checks. Then step the site's board to Black's tenth move and count the pieces you placed on a wrong square.",
               duration: "About 6 minutes",
               goal: "Zero pieces on a wrong square after ten moves each, with nothing in front of you but the move list.",
             },
@@ -189,15 +190,30 @@ const guide: LearnDocument = {
       ],
     },
     {
-      id: "stage-four-with-score-sheet",
-      heading: "Stage four, a game with the score sheet in view",
+      id: "stage-four-with-move-list",
+      heading: "Stage four, a game with the move list in view",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "Play against a friend or an engine with the board hidden and the move list visible. The list is not cheating. It is the tool you rebuild from. The rule is that you may read the list only to rebuild after a checklist failure, never to find your next move.",
-            "Stop at move 15 the first few times and set the position up on a real board from memory. Count the pieces on the wrong square. The pass mark is two games in a row with every piece right at move 15.",
-            "After that, play to the end, and only then take the sheet away.",
+            "You rebuild from the list, so keeping it in view is part of the drill.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
+            {
+              title: "Fifteen moves with the move list in view",
+              description: "Play a friend or an engine. Cover the game board with paper, or turn on the site's blindfold or hidden-pieces setting if it has one. Read the move list after a failed check or when unsure where a piece stands, never to find a move. At move 15, set the position up on a real board from memory. Uncover the game board and count the pieces on your real board that stand on a different square.",
+              duration: "One game every other day",
+              goal: "Every piece on its square at move 15, two games in a row.",
+            },
+          ],
+        },
+        {
+          kind: "prose",
+          paragraphs: [
+            "After two clean games, play to the end, and only then take the list away.",
           ],
         },
       ],
@@ -209,7 +225,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The first three stages take about four weeks on this schedule. A stage you fail takes longer, so repeat it instead of skipping ahead.",
+            "The first three stages take about four weeks. Repeat a stage you fail instead of skipping ahead.",
           ],
         },
         {
@@ -233,7 +249,7 @@ const guide: LearnDocument = {
             {
               label: "Stage four",
               duration: "One game every other day",
-              detail: "Fifteen moves with the sheet in view, checked on a real board, until two games in a row come out clean.",
+              detail: "Fifteen moves with the move list in view, checked on a real board, until two games in a row come out clean.",
             },
           ],
         },
@@ -265,7 +281,7 @@ const guide: LearnDocument = {
       items: [
         {
           question: "Should I also train with the 6-piece or 12-piece presets?",
-          answer: "Not for blindfold. In a game you track pieces through moves you chose. A random 12-piece position gives you no moves to follow, so it trains recall instead. Stage one uses 2 pieces because two named squares is the smallest board you can hold, and the rules make them the kings.",
+          answer: "Not for blindfold. In a game you track pieces through moves you chose. A random 12-piece position has no moves to follow, so it trains recall instead. Stage one uses 2 pieces because the rules make them the kings, the smallest board you can hold.",
         },
         {
           question: "Do I need to be a strong player first?",

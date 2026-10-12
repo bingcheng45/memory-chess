@@ -332,6 +332,12 @@ describe("the palette inventory", () => {
     expect(play(full, { type: "grab", piece: WK }, { type: "grab", piece: BQ }).refused).toBeNull();
   });
 
+  it("keeps the same round when a grab has no refusal to clear, so nothing re-renders as a drag starts", () => {
+    const state = play(rebuilding(), { type: "place", piece: WK, square: "e1", now: 2000 });
+
+    expect(roundReducer(state, { type: "grab", piece: BQ })).toBe(state);
+  });
+
   it("drops a palette piece on a square without touching the selection, and logs it", () => {
     const state = play(rebuilding(), { type: "select", piece: BQ }, { type: "place", piece: WN, square: "f3", now: 2500 });
 

@@ -54,6 +54,9 @@ export const EN_LEARN_PAGES: readonly LearnPage[] = LEARN_GUIDES.map(toPage);
 
 export const LEARN_SLUGS: readonly string[] = EN_LEARN_PAGES.map((page) => page.meta.slug);
 
+/** Paths under /learn that are not guides, so no guide may take their slug. */
+export const RESERVED_LEARN_SLUGS: readonly string[] = ["search"];
+
 export function findLearnPage(slug: string): LearnPage | undefined {
   return EN_LEARN_PAGES.find((page) => page.meta.slug === slug);
 }

@@ -17,7 +17,8 @@ const FONT = "Geist";
 /** Geist's figures and most letters run about this share of the size wide: enough to shrink a figure that would overflow. */
 const ADVANCE = 0.6;
 const MARK = { ok: "rgba(15, 122, 85, 0.26)", wrong: "rgba(198, 63, 18, 0.30)" };
-const PIECE_LETTER: Record<LabPiece["type"], string> = { king: "K", queen: "Q", rook: "R", bishop: "B", knight: "N", pawn: "P" };
+const PIECE_TYPES = ["king", "queen", "rook", "bishop", "knight", "pawn"] as const satisfies readonly LabPiece["type"][];
+type PieceArt = Readonly<Record<`${LabPiece["color"]}-${LabPiece["type"]}`, string>>;
 
 /** The faces ship with the app (src/lib/share/fonts, SIL Open Font License), so drawing a card never waits on a network. */
 const fonts = Promise.all(
@@ -28,6 +29,16 @@ const fonts = Promise.all(
     style: "normal" as const,
   })),
 );
+
+/** The game's own piece artwork (src/lib/share/pieces, BSD), as data URIs the renderer draws without a network. */
+const pieceArt: Promise<PieceArt> = Promise.all(
+  (["white", "black"] as const).flatMap((color) =>
+    PIECE_TYPES.map(async (type) => {
+      const svg = await readFile(join(process.cwd(), "src/lib/share/pieces", `${color}-${type}.svg`));
+      return [`${color}-${type}`, `data:image/svg+xml;base64,${svg.toString("base64")}`] as const;
+    }),
+  ),
+).then((entries) => Object.fromEntries(entries) as PieceArt);
 
 /** The largest size up to `max` at which `text` fits `width`, estimated, since the renderer cannot measure ahead. */
 const fitChars = (chars: number, max: number, width: number) => Math.max(SMALLEST, Math.min(max, Math.floor(width / (Math.max(chars, 1) * ADVANCE))));
@@ -126,34 +137,17 @@ function ProgressBody({ copy }: { copy: ProgressPreview }) {
   );
 }
 
-const SQUARE = 32;
+const SQUARE = 40;
 const BOARD = SQUARE * 8;
+const PIECE = Math.round(SQUARE * 0.85);
 
-function Piece({ piece, ghost }: { piece: LabPiece; ghost: boolean }) {
-  const white = piece.color === "white";
-  return (
-    <div
-      style={row({
-        width: SQUARE - 8,
-        height: SQUARE - 8,
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 999,
-        border: `2px solid ${INK.ink}`,
-        backgroundColor: white ? "#ffffff" : INK.ink,
-        color: white ? INK.ink : "#ffffff",
-        fontSize: 17,
-        fontWeight: 700,
-        opacity: ghost ? 0.38 : 1,
-      })}
-    >
-      {PIECE_LETTER[piece.type]}
-    </div>
-  );
+function Piece({ piece, ghost, art }: { piece: LabPiece; ghost: boolean; art: PieceArt }) {
+  // eslint-disable-next-line @next/next/no-img-element -- drawn by the image renderer, not a page
+  return <img src={art[`${piece.color}-${piece.type}`]} width={PIECE} height={PIECE} alt="" style={{ opacity: ghost ? 0.38 : 1 }} />;
 }
 
-/** The scored board as the result screen marks it, each piece a lettered disc, since no chess font ships with the image. */
-function Board({ board }: { board: ScoredBoard }) {
+/** The scored board as the result screen marks it, with the pieces the game draws. */
+function Board({ board, art }: { board: ScoredBoard; art: PieceArt }) {
   return (
     <div style={row({ width: BOARD + 4, flexWrap: "wrap", border: `2px solid ${INK.rule}` })}>
       {BOARD_SQUARES.map((square, index) => {
@@ -174,7 +168,7 @@ function Board({ board }: { board: ScoredBoard }) {
                 border: verdict.includes("miss") ? `3px solid ${INK.wrong}` : "none",
               })}
             >
-              {piece && <Piece piece={piece} ghost={!placed} />}
+              {piece && <Piece piece={piece} ghost={!placed} art={art} />}
             </div>
           </div>
         );
@@ -185,7 +179,7 @@ function Board({ board }: { board: ScoredBoard }) {
 
 function Legend({ legend }: { legend: NonNullable<ResultPreview["legend"]> }) {
   return (
-    <div style={row({ width: BOARD + 4, flexWrap: "wrap", columnGap: 18, rowGap: 4, marginTop: 10 })}>
+    <div style={column({ gap: 2, marginTop: 10 })}>
       {(["correct", "missed", "wrong"] as const).map((mark) => (
         <div key={mark} style={row({ alignItems: "center", gap: 8, fontSize: SMALLEST, fontWeight: 500, color: INK.ink2 })}>
           <div
@@ -216,8 +210,8 @@ function Stat({ stat, width }: { stat: ResultStat; width: number }) {
   );
 }
 
-function ResultBody({ copy, board }: { copy: ResultPreview; board: ScoredBoard | null }) {
-  const headWidth = board ? 300 : 420;
+function ResultBody({ copy, board, art }: { copy: ResultPreview; board: ScoredBoard | null; art: PieceArt }) {
+  const headWidth = board ? 260 : 420;
   const statsWidth = INNER - headWidth - (board ? BOARD + 4 + 2 * 36 : 48);
   return (
     <div style={row({ flex: 1, gap: board ? 36 : 48, alignItems: "flex-start" })}>
@@ -225,18 +219,14 @@ function ResultBody({ copy, board }: { copy: ResultPreview; board: ScoredBoard |
         <span style={{ fontSize: 32, fontWeight: 600, color: INK.muted }}>{copy.accuracyLabel}</span>
         <span style={{ fontSize: fit(copy.accuracy, board ? 132 : 170, headWidth), fontWeight: 600, lineHeight: 1.05 }}>{copy.accuracy}</span>
         <span style={{ fontSize: fit(copy.pieces, 34, headWidth), fontWeight: 500, color: INK.ink2 }}>{copy.pieces}</span>
+        {board && copy.legend && <Legend legend={copy.legend} />}
       </div>
       <div style={column({ width: statsWidth })}>
         {copy.stats.map((stat) => (
           <Stat key={stat.label} stat={stat} width={statsWidth} />
         ))}
       </div>
-      {board && (
-        <div style={column({})}>
-          <Board board={board} />
-          {copy.legend && <Legend legend={copy.legend} />}
-        </div>
-      )}
+      {board && <Board board={board} art={art} />}
     </div>
   );
 }
@@ -256,4 +246,4 @@ async function respond(frame: { kicker: string; cta: string; site: string }, bod
 }
 
 export const progressImage = (copy: ProgressPreview) => respond(copy, <ProgressBody copy={copy} />);
-export const resultImage = (copy: ResultPreview, board: ScoredBoard | null) => respond(copy, <ResultBody copy={copy} board={board} />);
+export const resultImage = async (copy: ResultPreview, board: ScoredBoard | null) => respond(copy, <ResultBody copy={copy} board={board} art={await pieceArt} />);

@@ -130,6 +130,821 @@
           "answer": "集中して数ラウンドを定期的に、が良い出発点です。1 局面ずつしっかり見られる程度の短さに保ちましょう。"
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "ラボ",
+        "onPage": "このページの内容",
+        "notebook": "ノート",
+        "method": "方法",
+        "calibrate": "キャリブレーション",
+        "tiers": "難易度",
+        "record": "記録",
+        "library": "ライブラリー",
+        "hints": {
+          "notebook": "測る理由",
+          "method": "1ラウンドを順に",
+          "calibrate": "測定してみる",
+          "tiers": "プリセットとカスタム",
+          "record": "あなたの測定値",
+          "library": "ガイドとドリル"
+        },
+        "play": "無料で1ラウンド遊ぶ"
+      },
+      "tags": {
+        "proposed": "提案",
+        "sample": "サンプル",
+        "illustrative": "説明用",
+        "free": "無料 · アカウント不要",
+        "rig": "カスタム"
+      },
+      "sections": {
+        "notebook": "実験ノート",
+        "method": "方法",
+        "recording": "記録映像",
+        "calibrate": "キャリブレーション",
+        "tiers": "難易度",
+        "record": "ラボ記録",
+        "library": "ライブラリー",
+        "faq": "よくある質問",
+        "next": "次の実験"
+      },
+      "hero": {
+        "platforms": "ブラウザー · デスクトップ · モバイル",
+        "display": "あなたの<em>心の目</em>を、数字で測る。",
+        "lede": "Memory Chess は、無料で遊べるチェスの記憶ゲームであり、チェスの記憶力トレーナーです。局面を数秒だけ見ると盤面が消え、記憶だけで並べ直します。1ラウンドは短い記憶テストで、0から100%の正解率と、正しく置けたマスと間違えたマスをすべて示すマップが出ます。",
+        "secondaryCta": "キャリブレーション測定をする",
+        "facts": {
+          "study": "記憶時間",
+          "pieces": "1ラウンドの駒数",
+          "accuracy": "正解率",
+          "plays": "プレイ回数",
+          "languages": "対応言語"
+        },
+        "showcase": {
+          "aria": "Linares 1998 での Veselin Topalov 対 Alexey Shirov の局面と、その局面をたどるガイド",
+          "event": "Linares · 第10回戦",
+          "venue": "1998年3月4日",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "対",
+          "pieceLabel": "{square}の{piece}",
+          "tags": {
+            "study": "観察",
+            "trap": "罠",
+            "sacrifice": "犠牲",
+            "walk": "キングの行進",
+            "runners": "2つのパスポーン",
+            "rebuild": "並べ直し",
+            "inspect": "利き"
+          },
+          "counter": {
+            "study": "観察 {n}/{total}",
+            "game": "実戦 {n}/{total}",
+            "resume": "もう一度クリックすると再開します"
+          },
+          "controls": {
+            "steps": "ステップ",
+            "step": "ステップ{n}/{total}：{tag}",
+            "previous": "前のステップ",
+            "next": "次のステップ",
+            "play": "再生",
+            "pause": "一時停止"
+          },
+          "inspect": {
+            "title": "{square}の{piece}。",
+            "reach": "{moves, plural, =0 {動ける手なし} other {#手}}、{captures, plural, =0 {取れる駒なし} other {取れる駒#個}}。",
+            "checks": "チェック：{moves}。"
+          },
+          "groups": {
+            "whiteCorner": "白の隅",
+            "longDiagonal": "長い対角線",
+            "blackWall": "黒の壁",
+            "runner": "走るポーン"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "黒番の Shirov はポーン2つ得ですが、異色ビショップの局面は引き分けになりやすいものです。駒は10個。"
+              },
+              "whiteCorner": {
+                "caption": "g1の白キングがg2のポーンを守っています。hポーンはh4まで進んでいます。"
+              },
+              "longDiagonal": {
+                "caption": "c3の白ビショップが長い対角線を押さえ、f6のポーンを狙っています。",
+                "thought": "黒マスのビショップ、c3からf6へ。"
+              },
+              "blackWall": {
+                "caption": "黒のキングはe6、ビショップはf5、ポーンはd5、f6、g6。",
+                "thought": "キングがf6とd5を守り、g6のポーンがビショップを守る。"
+              },
+              "runner": {
+                "caption": "a4に黒のポーンが1つ。ほかの駒から遠く離れています。"
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "黒のキングは前に出られません。d5とf5は自分の駒でふさがり、e5はc3のビショップが押さえています。",
+                "thought": "行けるのはKd6、Kd7、Ke7、Kf7だけ。どれも後ろか横への移動だ。"
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! ビショップは、gポーンに取られるマスへ自ら飛び込みます。キングの通り道をふさいでいたからです。",
+                "thought": "これでf5が空いた。ここが扉だ。"
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4。ビショップが開けた扉を通り、キングが中央にたどり着きます。"
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3。ビショップ1つでは、2つのパスポーンを止められません。",
+                "thought": "Topalov はビショップを取り、53...Kb3 の後に投了した。"
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "盤面が消えます。最初の局面を並べ直しましょう。白の隅、長い対角線、黒の壁、走るポーン。"
+              },
+              "back": {
+                "caption": "まとまりごとに、駒を1つずつ元のマスへ戻します。"
+              },
+              "check": {
+                "caption": "では確かめましょう。異色ビショップで、c3は黒マス、f5は白マス。c3のビショップはまだf6を狙っています。白が4つ、黒が6つ。"
+              }
+            }
+          }
+        }
+      },
+      "notebook": {
+        "title": "測らないものは、伸ばせない。",
+        "lede": "チェスの練習の多くは、判断力を鍛えるものです。盤面を本当に頭の中に保てているかを確かめる練習は、ほとんどありません。この力は読み、目隠しチェス、戦術の発見を支えているのに、たいていは運任せにされています。",
+        "observation": {
+          "kicker": "観察",
+          "title": "読みの途中で、駒を見失う。",
+          "body": "3手先を読むうちに、長い対角線上のビショップが、頭の中の盤面からいつの間にか消えています。目の前の盤面は正しかった。間違っていたのは、頭の中の盤面です。"
+        },
+        "hypothesis": {
+          "kicker": "仮説",
+          "title": "盤面の記憶は、鍛えられ、測れる力である。",
+          "body": "局面を短く覚え、並べ直し、結果を確かめる。駒を増やし、時間を減らして繰り返す。<hl>あなたの脳について、何かを約束するものではありません。</hl>お渡しするのは、記録して追える測定値です。"
+        },
+        "method": {
+          "kicker": "方法",
+          "title": "1ラウンドで、1つの明快な数字。",
+          "body": "観察、空の盤面、並べ直し、採点。正しいマスにも間違ったマスにも印がつき、何も隠しません。1ラウンドは1分もかからないので、何度でも測れます。"
+        }
+      },
+      "method": {
+        "title": "1ラウンドを、顕微鏡でのぞく。",
+        "lede": "実際の局面で、1ラウンドをスクロールしながら追っていきます。題材は「Kasparov の不滅の一局」の最終局面、1999年に Wijk aan Zee で指された Kasparov 対 Topalov です。重ねて示す図は覚え方の一例で、誰かの注意の動きを記録したものではありません。",
+        "status": "フェーズ{number} · {name}",
+        "clock": "t = {seconds}s",
+        "scoreChip": "{total}マス中{correct}マス",
+        "countChip": "白{white} · 黒{black}",
+        "groups": {
+          "standoff": {
+            "name": "にらみ合い",
+            "sentence": "白のキングがd2を狙い、黒のキングとc3がそこを守る。"
+          },
+          "mirror": {
+            "name": "階段",
+            "sentence": "鏡写しの階段。h2からf4へ上り、h7からf5へ下る。"
+          },
+          "longShots": {
+            "name": "遠くからの狙い",
+            "sentence": "a7のクイーンがh7を、d2のルークがh2を狙う。"
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "観察",
+            "title": "11個の駒を、10秒で。",
+            "body": "44.Qa7 の後の、「Kasparov の不滅の一局」の最終局面です。Topalov はここで投了しました。1マスずつではなく、盤面全体をとらえてください。de Groot の実験では、実戦の局面を短時間だけ見せると、マスターは弱いプレーヤーよりはるかに正確に再現しました。",
+            "note": "図：白はキングc1、クイーンa7、ポーンf4、g3、h2。黒はキングe1、ルークd2、ポーンc3、f5、g6、h7。"
+          },
+          "anchors": {
+            "name": "目印",
+            "title": "まずキングから。",
+            "body": "最初に2つの点を固定します。両キングは第1ランクにいて、2ファイル離れています。黒のキングは、はるばるe1まで来ています。ほかの駒はすべて、この2つを基準に置きます。",
+            "note": "図：2つのキングに印。ほかの駒はあと回し。"
+          },
+          "chunk": {
+            "name": "チャンク",
+            "title": "11個の駒が、3つのアイデアになる。",
+            "body": "駒同士が互いに何をしているかで、まとめます。両キングはd2を争う。2つのポーンの階段が向かい合う。クイーンとルークは、それぞれ守りのないhポーンを狙う。Chase と Simon (1973) は、強いプレーヤーが関連する駒のまとまり、つまりチャンクで局面を記憶することを示しました。",
+            "note": "図：オレンジは攻め、青は守り、灰色はポーンの鎖につながり、バーは互いにブロックし合う2つを示します。d2のルークは2つのまとまりに属しています。"
+          },
+          "encode": {
+            "name": "符号化",
+            "title": "まとまりを、1つの文にする。",
+            "body": "まとまりごとに、その役割で名前をつけます。Gobet と Simon (1996) は、強いプレーヤーがより大きな、スキーマのような構造を保持していると述べています。ただし、文にする方法そのものはテクニックであり、研究の結果ではありません。",
+            "note": "図：名前をつけた3つのまとまり。それぞれの文は次のとおり："
+          },
+          "blank": {
+            "name": "消去",
+            "title": "盤面が消える。",
+            "body": "駒もヒントもありません。絵ではなく、文から並べ直します。順番に唱えましょう。まずキング、次に各まとまり。",
+            "note": "ここでやることは、3つの文を覚えておくことだけです。"
+          },
+          "rebuild": {
+            "name": "並べ直し",
+            "title": "まとまりごとに並べ直す。",
+            "body": "キング。にらみ合い。階段。遠くからの狙い。まとまりを1つ、その文とともに置いてから、次のまとまりに進みます。",
+            "note": "図：採点前の並べ直し。ポーンが1つ、違うマスにあります。どれかわかりますか？"
+          },
+          "score": {
+            "name": "採点",
+            "title": "文と照らし合わせてから、採点する。",
+            "body": "並べ直した盤面で、関係を1つずつ確かめます。ルークはまだ2つの駒に守られているか？ c2からでは、ポーンが守るのはd1で、d2ではありません。駒の数は5と6でまだ合っているので、このミスに気づけるのは関係のチェックだけです。",
+            "note": "図：チェックマークの関係は保たれ、赤いバツの関係が崩れています。オレンジの塗りは間違ったマス (c2)、輪は本来のマス (c3) です。{total}マス中{correct}マスで{accuracy}%。"
+          }
+        }
+      },
+      "calibrate": {
+        "title": "キャリブレーション測定をする。",
+        "lede": "実戦から取った「ふつう」のラウンドです。駒は{pieceCount}個で、うち2つはキング。記憶時間は{memorizeSeconds}秒です。その後盤面が消え、あなたが並べ直します。正解率と駒の種類別の再現率を示す結果カードが表示されます。マウス、タッチ、キーボードで操作できます。",
+        "phaseReady": "準備完了 · {pieceCount}駒 · 記憶時間{memorizeSeconds}秒",
+        "phaseLabel": "フェーズ{number} · {name}",
+        "start": "キャリブレーション開始",
+        "restart": "やり直す",
+        "again": "もう一度",
+        "done": "完了",
+        "submit": "測定値を送信",
+        "clear": "盤面をクリア",
+        "controlsLabel": "ラウンドの操作",
+        "boardLabel": "キャリブレーション用の盤面。矢印キーでマスを移動します。",
+        "paletteLabel": "駒パレット",
+        "paletteItem": "{piece}、残り{count}",
+        "usedUp": {
+          "white": {
+            "king": "白のキングはすでに盤面にあります。",
+            "queen": "白のクイーンはすでに盤面にあります。",
+            "rook": "白のルークは2つとも盤面にあります。",
+            "bishop": "白のビショップは2つとも盤面にあります。",
+            "knight": "白のナイトは2つとも盤面にあります。",
+            "pawn": "白のポーンは8つすべて盤面にあります。"
+          },
+          "black": {
+            "king": "黒のキングはすでに盤面にあります。",
+            "queen": "黒のクイーンはすでに盤面にあります。",
+            "rook": "黒のルークは2つとも盤面にあります。",
+            "bishop": "黒のビショップは2つとも盤面にあります。",
+            "knight": "黒のナイトは2つとも盤面にあります。",
+            "pawn": "黒のポーンは8つすべて盤面にあります。"
+          }
+        },
+        "squareEmpty": "{square}、空き",
+        "squareWith": "{square}、{piece}",
+        "liveStudy": "局面をよく見てください。{memorizeSeconds}秒です。",
+        "liveRebuild": "盤面をクリアしました。駒を選んでから、マスを選んでください。",
+        "liveScore": "正解率{accuracy}パーセント。{total}マス中{correct}マス正解。",
+        "startFailed": "局面を読み込めませんでした。接続を確認して、もう一度お試しください。",
+        "steps": [
+          "スタートを押します。メーターが空になるまで局面を覚えてください。",
+          "パレットから駒を選び、マスをタップします。置いた駒をタップすると取り除けます。",
+          "送信します。元の局面より多くの駒を置くと正解率が下がるので、覚えている駒だけを置きましょう。"
+        ],
+        "readout": {
+          "title": "結果カード",
+          "statusIdle": "測定待ち",
+          "statusRecording": "記録中",
+          "statusDone": "測定完了",
+          "correct": "正解マス",
+          "time": "配置時間",
+          "wrong": "誤った駒",
+          "exposure": "記憶時間",
+          "byType": "駒の種類別の再現率",
+          "byTypeEmpty": "駒の種類別の再現率は、最初の測定の後にここに表示されます。",
+          "nextEmpty": "測定の後に、おすすめの難易度が表示されます。",
+          "suggested": "おすすめ：",
+          "stepUp": "{tier}（{pieceCount}駒・{memorizeSeconds}秒）に上げる。その前に、あと2回ミスのないラウンドで確かめましょう。",
+          "stay": "{tier}（{pieceCount}駒・{memorizeSeconds}秒）を続ける。3ラウンドプレイして、推移を見ましょう。",
+          "start": "{tier}（{pieceCount}駒・{memorizeSeconds}秒）から始める。覚えるときは、駒を2つずつ組にしましょう。",
+          "playTier": "{tier}で遊ぶ",
+          "legendCorrect": "正解",
+          "legendWrong": "配置ミス",
+          "legendMissed": "見落としたマス"
+        },
+        "pieceTypes": {
+          "king": "キング",
+          "queen": "クイーン",
+          "rook": "ルーク",
+          "bishop": "ビショップ",
+          "knight": "ナイト",
+          "pawn": "ポーン"
+        }
+      },
+      "tiers": {
+        "title": "4つのプリセットと、1つのカスタム設定。",
+        "lede": "駒は増え、記憶時間は短くなっていきます。運のよい1ラウンドの後ではなく、測定値が安定してから次の難易度へ進みましょう。",
+        "columns": {
+          "tier": "難易度",
+          "pieces": "駒",
+          "exposure": "記憶時間",
+          "load": "負荷"
+        },
+        "loadLabel": "32マス中{pieceCount}マスが埋まる",
+        "play": "プレイ",
+        "custom": {
+          "label": "カスタム",
+          "description": "変数を自分で決めて、1つの弱点だけを切り分けます。"
+        }
+      },
+      "record": {
+        "title": "推移を見に、また戻ってきてください。",
+        "lede": "1回の測定値は、その瞬間の記録にすぎません。10回分そろえば、ひとつの計測になります。プレイしたラウンドはすべてこのデバイスに保存され、これらのパネルはあなた自身のラウンドで埋まっていきます。最初のラウンドの前は、パネルに<tag>サンプル</tag>の値が表示されます。実在のプレーヤーの値ではありません。その後は、まだ記録を読み取れないパネルに、あと何が必要かが表示されます。",
+        "span": {
+          "fig": "図{number} · 記憶スパン",
+          "title": "頭に保てる駒の数。",
+          "figure": "{pieceCount, plural, other {#駒}}",
+          "held": "{count, plural, other {#ラウンド}}で正解率{accuracy}パーセント以上。そのうち最短の記憶時間は{studyTime}。",
+          "up": "先週から{count, plural, other {#駒}}アップ",
+          "same": "先週から変化なし",
+          "aria": "12セッションにわたる記憶スパンのサンプル階段グラフ。4駒から8駒へ上がっていきます。",
+          "note": "サンプル記録 · 12セッション",
+          "realAria": "あなたの記憶スパン、{sessions, plural, =1 {初めて到達したセッション} other {初めて到達してからの#セッション}}。{shape, select, flat {{now}駒を維持} other {{first}駒から{now}駒へ上昇}}。",
+          "need": "同じ駒数（{minPieces}駒以上）で、正解率{accuracy}パーセント以上を{count, plural, =2 {2回} other {あと#回}}出しましょう。",
+          "onlyKings": "これまでのラウンドは2つのキングだけでした。記憶スパンには、もっと多くの駒が必要です。",
+          "first": "初めて到達",
+          "last": "最新"
+        },
+        "held": {
+          "fig": "図{number} · 記憶できた駒",
+          "title": "どの設定でも、正しく置けた駒の数。",
+          "aria": "12ラウンドにわたる記憶できた駒のサンプル折れ線。5ラウンド平均が4.0駒から7.0駒へ上がっていきます。",
+          "note": "サンプル記録 · 12ラウンド · 全設定",
+          "partial": "破線：{window}ラウンド未満での平均",
+          "realAria": "全設定での直近{count, plural, other {#ラウンド}}の記憶できた駒を、{window}ラウンド平均で表示。最新は{latest}駒。",
+          "average": "最近の平均{average}駒",
+          "up": "その前の{window}ラウンドより{change}増",
+          "down": "その前の{window}ラウンドより{change}減",
+          "flat": "その前の{window}ラウンドから変化なし",
+          "realNote": "全設定 · {count, plural, other {#ラウンド}}から",
+          "needRounds": "あと{count, plural, other {#ラウンド}}で、あなたの折れ線が描かれます。",
+          "needRoundsAndDay": "あと{count, plural, other {#ラウンド}}、少なくとも1回は別の日にプレイすると、あなたの折れ線が描かれます。",
+          "needDay": "別の日にもプレイすると、あなたの折れ線が描かれます。",
+          "first": "最古",
+          "last": "最新"
+        },
+        "speed": {
+          "fig": "図{number} · スピード",
+          "title": "並べ直しにかかる、1駒あたりの秒数。",
+          "aria": "12ラウンドにわたる、正解1駒あたりの配置秒数のサンプル折れ線。4.1秒から2.6秒へ下がっていきます。",
+          "note": "サンプル記録 · 12ラウンド · ふつう",
+          "realAria": "{pieceCount}駒・{memorizeSeconds}秒での直近{count}回の{source, select, calibration {練習} other {ゲーム}}ラウンドにおける、正解1駒あたりの配置秒数。最新は{latest}秒。",
+          "average": "最近の平均は1駒あたり{average}",
+          "down": "その前の{window}ラウンドより{change}速い",
+          "up": "その前の{window}ラウンドより{change}遅い",
+          "flat": "その前の{window}ラウンドと同じペース",
+          "accuracy": "同じラウンドの正解率{average}%",
+          "accuracyChange": {
+            "up": "{change, plural, other {#ポイント}}上昇",
+            "down": "{change, plural, other {#ポイント}}低下",
+            "flat": "変化なし"
+          },
+          "fastWrong": "速くても間違っていては、上達とはいえません。",
+          "config": "{source, select, calibration {練習} other {ゲーム}} · {pieceCount}駒 · {studyTime}、最近いちばんよくプレイする設定 · {count, plural, other {#ラウンド}}から",
+          "need": "{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}であと{count, plural, other {#ラウンド}}プレイすると、スピードの折れ線が描かれます。",
+          "needRight": "スピードは、1駒以上正解したラウンドだけを読み取ります。そうしたラウンドを{count, plural, other {#回}}プレイすると、折れ線が始まります。",
+          "first": "最古",
+          "last": "最新"
+        },
+        "curve": {
+          "fig": "図{number} · 忘却曲線",
+          "title": "長い練習を1回より、短い復習を間隔をあけて。",
+          "desc": "正解率80%未満だった盤面は、初めて見てから1、3、7、14日後に復習として戻ってきます。あなたの曲線は、それぞれの間隔でどれだけ思い出せたかを示します。",
+          "aria": "説明用のグラフ：復習しないと記憶は急速に落ち、1、3、7日目に間隔をあけて復習するたびに、落ち方がゆるやかになります。",
+          "note": "間隔効果を説明するモデルです。測定データではありません。",
+          "noReview": "復習なし",
+          "spaced": "間隔をあけたラウンド",
+          "review": "復習",
+          "day": "{day}日",
+          "warming": "同じ間隔であと{reviews, plural, other {#回}}復習すると、最初の測定点が描かれます。",
+          "measuredAria": "復習した盤面でのあなたの再現率：{points}。",
+          "pointFirst": "初見で{accuracy}%（{count, plural, other {#盤面}}から）",
+          "pointAfter": "{day, plural, other {#日}}後に{accuracy}%（{count, plural, other {#回の復習}}から）",
+          "count": "n={count}",
+          "measuredNote": "{boards, plural, other {#盤面}}の{reviews, plural, other {#回の復習}}から。1つの点には、その間隔の後の復習が{min}回必要です。",
+          "due": "今日の復習 {cap}回中{number}回目",
+          "capped": "今日の復習は完了",
+          "play": "復習をプレイ",
+          "waiting": "次の復習は{days, plural, =1 {明日} other {#日後}}。キューに{queued, plural, other {#盤面}}あります。",
+          "empty": "復習する盤面はまだありません。正解率80%未満だった盤面は、翌日ここに戻ってきます。"
+        },
+        "spark": {
+          "fig": "図{number} · 正解率の推移",
+          "title": "ラウンドごとの、あなたの推移。",
+          "titleSessions": "セッションごとの、あなたの推移。",
+          "aria": "12ラウンドにわたる正解率のサンプル・スパークライン。52パーセントから79パーセントへ上がっていきます。",
+          "note": "サンプル記録 · 12ラウンド · ふつう",
+          "first": "R01",
+          "last": "R12",
+          "needRounds": "{pieceCount}駒・{studyTime}であと{count, plural, other {#ラウンド}}プレイすると、{source, select, calibration {練習} other {ゲーム}}の推移が描かれます。",
+          "needRoundsAndDay": "{pieceCount}駒・{studyTime}であと{count, plural, other {#ラウンド}}、少なくとも1回は別の日にプレイすると、{source, select, calibration {練習} other {ゲーム}}の推移が描かれます。",
+          "needDay": "{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}を別の日にもプレイすると、推移が描かれます。",
+          "config": "{source, select, calibration {練習} other {ゲーム}} · {pieceCount}駒 · {studyTime}、推移が出ている設定のうち最もよくプレイするもの",
+          "realAria": "{pieceCount}駒・{memorizeSeconds}秒での直近{count}回の{source, select, calibration {練習} other {ゲーム}}ラウンドの正解率。最新は{latest}パーセント。",
+          "realAriaSessions": "{pieceCount}駒・{memorizeSeconds}秒の{source, select, calibration {練習} other {ゲーム}}ラウンドがある直近{count, plural, other {#セッション}}の正解率。最新は{latest}パーセント。",
+          "sessions": "{count, plural, other {#セッション}}",
+          "realFirst": "最古",
+          "realLast": "最新"
+        },
+        "heat": {
+          "fig": "図{number} · ミスマップ",
+          "title": "取りこぼしやすいマス。",
+          "aria": "見落としたマスのサンプル・ヒートマップ。hファイル沿いとh1の周りが最も濃く、b7とf7にも集中があり、中央が最も薄くなっています。",
+          "note": "サンプル：ミスはhファイルと、h1のキングの隅に集まっています。次はその端を鍛えましょう。",
+          "need": "すべてのファイルとランクで10駒ずつ読み取れるまで、あと約{count, plural, other {#ラウンド}}。",
+          "needStart": "あと数ラウンドプレイすると、ミスマップが始まります。",
+          "files": "ファイル",
+          "ranks": "ランク",
+          "line": "{line}: {shown}駒中{missed}駒ミス",
+          "lineThin": "{line}: {shown}駒出現、判断にはまだ不足",
+          "realAria": "マスごとのミスの割合。灰色のマスは、出現した駒が10個未満です。",
+          "realNote": "濃いほど、よくミスするマスです。灰色は出現した駒が10個未満です。"
+        },
+        "daily": {
+          "fig": "図{number} · 今日の盤面",
+          "title": "1日1つ、全員に同じ盤面。",
+          "desc": "毎日 UTC の午前0時に、新しい局面が公開されます。全員に同じ6個の駒と10秒の記憶時間が与えられ、挑戦は1回だけです。",
+          "play": "今日の盤面をプレイ",
+          "open": "今日の盤面はまだプレイしていません。",
+          "played": "{pieceCount, plural, other {#駒}}中{correct}駒を正しく置けました。{accuracy}パーセントです。",
+          "unfinished": "今日の盤面を開きましたが、結果が出る前に離れました。このデバイスでは1日1回の挑戦です。",
+          "streak": "デイリー連続{current, plural, other {#日}}{forgiven, plural, =0 {} other {（ミスした#日を免除）}} · 最長{longest, plural, other {#日}}",
+          "streakLongest": "デイリーの最長連続{longest, plural, other {#日}}",
+          "gridAria": "マスごとの結果、a8から順に。正解{correct}、{wrong, plural, other {誤った駒#個}}、見落とし{missed}、余分{extra}。",
+          "key": {
+            "c": "正解",
+            "w": "誤った駒",
+            "m": "見落とし",
+            "x": "余分"
+          },
+          "share": "Memory Chess デイリー盤面 {day}\n{pieceCount}駒中{correct}駒正解、{accuracy}%\n{row}\nthememorychess.com",
+          "copy": "結果をコピー",
+          "showGrid": "グリッドを表示",
+          "copied": "コピーしました。どこにでも貼り付けられます。",
+          "copyFailed": "ここではコピーできませんでした。下で結果を選択したので、手動でコピーしてください。"
+        },
+        "streak": {
+          "fig": "図{number} · 連続日数",
+          "title": "1日1ラウンドで、連続記録が伸びる。",
+          "desc": "終えたラウンドは、ゲームでも練習でも、その日の分として数えます。7日間のうち1日のミスは免除されます。",
+          "aria": "2週間の連続記録グリッドのサンプル",
+          "note": "サンプル · 破線のマスは今日の分で、まだ未完了です",
+          "realDesc": "終えたラウンドはすべて、その日の分として数えます。7日間のうち1日のミスは免除されます。",
+          "need": "あと{days, plural, other {#日}}プレイすると、連続記録を読み取れます。",
+          "realAria": "直近14日間：プレイした日{count, plural, other {#日}}{forgiven, plural, =0 {} other {、免除#日}}。",
+          "realNote": "現在の連続{current, plural, other {#日}}{forgiven, plural, =0 {} other {（ミスした#日を免除）}} · 最長{longest, plural, other {#日}}",
+          "key": {
+            "played": "プレイ",
+            "forgiven": "免除",
+            "missed": "ミス",
+            "today": "今日"
+          }
+        },
+        "week": {
+          "ring": "今週{goal}日中{played}日",
+          "ringOver": "目標達成、今週{played}日",
+          "sampleRing": "サンプルの週 · {goal}日中{played}日",
+          "left": "{remaining, plural, =0 {今週の目標を達成しました。} other {目標まであと#日です。}}",
+          "outOfReach": "{daysLeft, plural, =0 {残りの日がないため} other {残り#日では}}、目標に届きません。新しい週は月曜日に始まります。",
+          "goal": "週の目標日数",
+          "option": "週{days}日"
+        },
+        "welcome": {
+          "line": "おかえりなさい。記録の{day}日目です。前回は{pieceCount}駒・{studyTime}で{accuracy}%でした。",
+          "lineNoDay": "おかえりなさい。前回は{pieceCount}駒・{studyTime}で{accuracy}%でした。"
+        },
+        "board": {
+          "fig": "図{number} · ランキング",
+          "title": "世界中の測定値と比べる。",
+          "desc": "難易度ごとに、正解した駒の数、次に誤った駒の少なさ、次に記憶時間の短さ、最後に解答時間の短さで順位が決まります。各行にはプレーヤーの国が表示されます。",
+          "howTo": "結果画面からスコアを登録し、世界やあなたの国での順位を確かめましょう。",
+          "sketchPieces": "{count}駒",
+          "open": "ランキングを開く",
+          "difficulty": "難易度",
+          "scope": "順位の範囲",
+          "world": "世界",
+          "entry": "{difficulty}でのあなたのベスト登録：{correct, plural, other {正解#駒}}、{date}に送信。",
+          "check": "順位を確認",
+          "checking": "確認中...",
+          "ranked": "{difficulty}で世界{total, plural, other {#件}}中{rank, number}位。",
+          "rankedIn": "{country}の{difficulty}で{total, plural, other {#件}}中{rank, number}位。",
+          "checkedAt": "{time}に確認。",
+          "boardSize": "公開ランキングには上位{limit}件が表示されます。",
+          "up": "{time}から{places, plural, other {#位}}アップ。",
+          "down": "{time}から{places, plural, other {#位}}ダウン。",
+          "same": "{time}と同じ順位です。",
+          "missing": "あなたの{difficulty}の登録はランキングから消えたため、このデバイスでも保持しなくなりました。ランキングは整理やリセットが行われることがあります。{time}に確認。",
+          "limited": "あなたの接続からの確認が多すぎます。{wait, plural, other {#秒}}後にもう一度お試しください。",
+          "noCountry": "この登録には国の情報がないため、世界順位しか出せません。",
+          "offline": "オフラインのため、何も送信していません。接続してから、もう一度お試しください。",
+          "failed": "ランキングに接続できず、順位を読み取れませんでした。しばらくしてから、もう一度お試しください。"
+        },
+        "plans": {
+          "fig": "図{number} · プログラム",
+          "title": "プランを選んで、最後までやり抜く。",
+          "desc": "プランは1つずつです。進捗はあなたのラウンドから数えるので、プランをやめてもラウンドが消えることはありません。",
+          "baseline": {
+            "kicker": "プランA · 7日間",
+            "title": "ベースライン週間",
+            "steps": [
+              "1日1回、「ふつう」のラウンドをプレイ。",
+              "測定値を記録し、やり直したい気持ちはこらえる。",
+              "7日目：1日目と比べる。"
+            ],
+            "progress": "{days}日中{played}日で「ふつう」のラウンドをプレイ",
+            "compare": "{firstDay}日目は{first}%、{lastDay}日目は{latest}%：{direction, select, up {{change, plural, other {#ポイント}}上昇} down {{change, plural, other {#ポイント}}低下} other {変化なし}}。",
+            "compareNone": "プラン開始後に「ふつう」のラウンドがないため、比べるものがありません。",
+            "compareOne": "プラン開始後の「ふつう」のラウンドはまだ1回だけなので、比べられません。"
+          },
+          "edge": {
+            "kicker": "プランB · 14日間",
+            "title": "端ファイル・ドリル",
+            "steps": [
+              "カスタム設定：8駒、15秒。",
+              "3日ごとにミスマップを見直す。",
+              "盤面を見る力のガイドと組み合わせる。"
+            ],
+            "progress": "{elapsed}日中{played, plural, other {#日}}、この設定でプレイ。目標：{days}日で{target}日。",
+            "share": "端ファイルのミス：プラン前は{beforeRounds, plural, other {#ラウンド}}で{before}%、開始後は{nowRounds, plural, other {#ラウンド}}で{now}%。",
+            "shareMissing": "端ファイルのミスは、前後それぞれに、aファイルかhファイルに駒があるラウンドが{needed}回そろうと比べられます。現在、プラン前が{before}回、開始後が{now}回です。",
+            "guide": "盤面全体を見る方法を読む"
+          },
+          "ladder": {
+            "kicker": "プランC · 期間なし",
+            "title": "ステップダウンのはしご",
+            "steps": [
+              "3ラウンド連続で90%を保つ。",
+              "そうしたら、記憶時間を2秒縮める。",
+              "記憶時間が下限に達したら、駒を増やす。"
+            ],
+            "rung": "今の段：{pieceCount}駒、{studyTime}。",
+            "run": "{accuracy}パーセント以上の連続：{needed}ラウンド中{run}ラウンド。",
+            "climbed": "達成：{accuracy}パーセント以上で{needed}ラウンド連続。",
+            "next": "次の段：{pieceCount}駒、{studyTime}。",
+            "top": "はしごの最上段：{pieceCount}駒を超える盤面はありません。"
+          },
+          "status": {
+            "day": "{day}日目",
+            "dayOf": "{length}日中{day}日目",
+            "overtime": "{day}日目、予定の{length}日を超過",
+            "done": "{day}日目に完了。",
+            "finished": "{day}日目に早めに終了。",
+            "stopped": "{day}日目に停止。"
+          },
+          "start": "{title}を開始",
+          "again": "{title}をもう一度開始",
+          "busy": "プランは1つずつです。これを始めるには、{title}を停止してください。",
+          "stop": "プランを停止",
+          "confirmStop": "本当に停止しますか？",
+          "keep": "続ける",
+          "finish": "早めに終了",
+          "play": "{pieceCount}駒・{studyTime}でプレイ"
+        },
+        "goal": {
+          "fig": "図{number} · 目標",
+          "title": "目標の測定値を決める。",
+          "desc": "駒の数と正解率を選びます。目標を設定してから、その駒数以上で出したベストのラウンドで、バーが埋まっていきます。",
+          "sample": "サンプルの目標：{pieceCount}駒で{accuracy}パーセント。これまでのベストは{best}パーセントで、{percent}%まで到達。",
+          "target": "目標：{pieceCount}駒以上で{accuracy, select, 100 {100パーセント} other {{accuracy}パーセント以上}}、{date}に設定。",
+          "progress": "設定後のベスト：{pieceCount}駒で{best}パーセント、{percent}%まで到達。",
+          "bar": "目標まで{percent}%到達",
+          "need": "この目標を設定してから、{pieceCount}駒以上のラウンドはありません。",
+          "reached": "{date}に達成：{pieceCount}駒で{accuracy}パーセント。",
+          "form": "新しい目標",
+          "pieces": "駒の数（以上）",
+          "accuracy": "正解率（以上）",
+          "percent": "{value}%",
+          "set": "目標を設定",
+          "newGoal": "新しい目標を設定",
+          "clear": "目標を消去",
+          "cancel": "キャンセル",
+          "saved": "目標を設定しました。",
+          "cleared": "目標を消去しました。"
+        },
+        "mine": "あなたの記録",
+        "fromRounds": "{count, plural, other {#ラウンド}}から",
+        "dashboardLink": "ダッシュボードを開く",
+        "play": "1ラウンド遊ぶ",
+        "tomorrow": "また明日どうぞ。",
+        "stale": "最後のプレイは{count, plural, other {#日}}前です。",
+        "unlock": {
+          "label": "未解放",
+          "count": "{total}個の図のうち{unlocked}個を解放",
+          "done": "下の図はすべて解放されています。",
+          "showAll": "{count}個の図をすべて表示",
+          "showFewer": "表示を減らす",
+          "span": "{minPieces}駒以上・{accuracy}%以上で{qualifyingRounds, plural, other {#ラウンド}}",
+          "piecesHeld": "{days, plural, other {#日}}にわたって{rounds, plural, other {#ラウンド}}",
+          "trend": "1つの設定で、{days, plural, other {#日}}にわたって{rounds, plural, other {#ラウンド}}",
+          "speed": "1つの設定で{rounds, plural, other {#ラウンド}}",
+          "streak": "{days, plural, other {#日}}プレイ",
+          "curve": "同じ間隔で{reviews, plural, other {#回の復習}}",
+          "typeRecall": "キング以外の駒の出現{exposures, plural, other {#回}}",
+          "missMap": "ファイルとランクごとに{exposures, plural, other {#回}}の出現",
+          "trendRounds": "{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}ラウンドをあと{rounds}{rounds, plural, other {回}}",
+          "trendDays": "{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}ラウンドをあと{days, plural, other {#日}}",
+          "trendRoundsDays": "{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}ラウンドをあと{rounds}{rounds, plural, other {回}}、あと{days, plural, other {#日}}",
+          "spanLeft": "{minPieces}駒以上・{accuracy}%以上であと{qualifyingRounds, plural, other {#ラウンド}}",
+          "spanLarger": "{minPieces}駒以上で{largerRounds, plural, other {#ラウンド}}",
+          "piecesHeldRounds": "あと{rounds, plural, other {#ラウンド}}",
+          "piecesHeldDays": "あと{days, plural, other {#日}}",
+          "piecesHeldRoundsDays": "あと{rounds, plural, other {#ラウンド}}、あと{days, plural, other {#日}}",
+          "speedRounds": "{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}ラウンドをあと{rounds}{rounds, plural, other {回}}",
+          "speedRight": "1駒以上正解したラウンドを{rightRounds, plural, other {#回}}",
+          "streakLeft": "あと{days, plural, other {#日}}プレイ",
+          "curveLeft": "同じ間隔であと{reviews, plural, other {#回の復習}}",
+          "typeRecallLeft": "キング以外の駒の出現をあと{exposures, plural, other {#回}}",
+          "missMapLeft": "最も出現の少ないファイルかランクで、あと{exposures, plural, other {#回}}の出現",
+          "insights": "{rounds, plural, other {#ラウンド}}",
+          "insightsLeft": "あと{rounds, plural, other {#ラウンド}}",
+          "notebook": "{rounds, plural, other {#ラウンド}}"
+        },
+        "bests": {
+          "fig": "図{number} · 自己ベスト",
+          "title": "設定ごとのベスト測定値。",
+          "desc": "6駒と20駒は別のテストなので、ベストは設定ごとに記録されます。このページの練習の測定値は、ゲームとは分けて扱います。",
+          "empty": "設定ごとのベスト測定値は、最初のラウンドの後に表示されます。",
+          "setting": "{source, select, calibration {練習} other {ゲーム}} · {pieceCount}駒 · {studyTime}",
+          "first": "初回の測定",
+          "showAll": "{count}個の設定をすべて表示",
+          "showFewer": "表示を減らす",
+          "reading": "{accuracy}% · {time}で配置"
+        },
+        "types": {
+          "fig": "図{number} · 駒の種類別の再現率",
+          "title": "取りこぼしやすい駒。",
+          "need": "キング以外の駒が20回出現するまで、あと約{count, plural, other {#ラウンド}}。",
+          "needStart": "駒の種類別の再現率は、最初のラウンドの後に表示されます。",
+          "onlyKings": "これまでのラウンドは2つのキングだけでした。駒の種類別の再現率には、もっと多くの駒が必要です。",
+          "thin": "{shown}/20回出現",
+          "baseline": "基準",
+          "kings": "キングは毎ラウンド登場するため、基準になります。{shown}駒中{recalled}駒を再現。",
+          "sampleNote": "サンプル：最初に取りこぼすのはポーンとナイトです。"
+        },
+        "insights": {
+          "fig": "図{number} · 気づき",
+          "title": "目立つ傾向と、試すこと。",
+          "desc": "気づきは、その数値が最低限のサンプル数を超えたときにだけ表示され、根拠となる数も示します。",
+          "sample": "サンプル記録からの例：aファイルとhファイルのミスは、中央のdファイルとeファイルの{times, select, 2 {約2倍} other {約{times}倍}}でした。{edge}%に対して{centre}%です。",
+          "sampleList": "サンプルの気づき",
+          "sampleNote": "サンプルの気づきです。あなたのラウンドからではありません。",
+          "list": "あなたの記録からの気づき",
+          "need": "気づきは{threshold}ラウンドから記録を読み取ります。あと{count, plural, other {#ラウンド}}です。",
+          "none": "まだ目立つ傾向はありません。プレイを続けましょう。",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {aファイルとhファイルでは{edgeShown}駒中{edge, select, 0 {1%未満} other {{edge}%}}をミスしていますが、中央のdファイルとeファイルでは{centreShown}駒中1つもミスしていません。} 2 {aファイルとhファイルのミスは、中央のdファイルとeファイルの約2倍です。{edgeShown}駒中{edge, select, 0 {1%未満} other {{edge}%}}に対し、{centreShown}駒中{centre, select, 0 {1%未満} other {{centre}%}}。} other {aファイルとhファイルのミスは、中央のdファイルとeファイルの約{times}倍です。{edgeShown}駒中{edge, select, 0 {1%未満} other {{edge}%}}に対し、{centreShown}駒中{centre, select, 0 {1%未満} other {{centre}%}}。}}",
+            "weakType": "キング以外で{minimum}回以上出現した駒のうち、最も取りこぼしが多いのは{type, select, q {クイーン} r {ルーク} b {ビショップ} n {ナイト} other {ポーン}}です。{shown}駒中{recalled}駒、{percent}%を再現しました。",
+            "fasterLessAccurate": "{pieceCount}駒・{studyTime}では、直近{window}ラウンドはその前の{window}ラウンドより正解1駒あたり{fasterTime}速くなりましたが、正解率は{fell}ポイント下がりました。",
+            "colourGap": "{weaker, select, w {白} other {黒}}の駒は、{weaker, select, w {黒} other {白}}の駒より再現率が低めです。{weakerShown}駒中{weakerPercent}%に対し、{strongerShown}駒中{strongerPercent}%（キングを除く）。",
+            "plateau": "{pieceCount}駒・{studyTime}では、直近{window}ラウンドの平均は{last}%、その前の{window}ラウンドは{before}%で、直近1週間のプレイで記憶スパンは{span}駒にとどまっています。駒を1つ増やすと伸びるかもしれません。"
+          },
+          "actions": {
+            "rig": "{pieceCount}駒・{studyTime}でプレイ",
+            "patterns": "パターン認識ドリルを読む",
+            "vision": "盤面全体を見る方法を読む"
+          }
+        },
+        "notebook": {
+          "fig": "図{number} · 実験ノート",
+          "title": "いつ、何があったか。",
+          "empty": "プレイするたびに、ここに記録が増えていきます。",
+          "sampleList": "サンプルのノート",
+          "list": "あなたのノート（新しい順）",
+          "new": "新着",
+          "newNote": "「新着」は、前回の訪問以降の記録です。",
+          "showAll": "{count}件をすべて表示",
+          "showFewer": "表示を減らす",
+          "day": "{day}日目。",
+          "olderBefore": "{date}より前の記録は、このブラウザーに保存されていません。",
+          "older": "古い記録は、このブラウザーに保存されていません。",
+          "entries": {
+            "firstRound": "最初のラウンド：{pieceCount}駒で{accuracy}パーセント。",
+            "rounds": "{count, number}ラウンド目をプレイ。",
+            "first90": "{pieceCount}駒で初めて{threshold}パーセント以上。",
+            "best": "{pieceCount}駒・{studyTime}で{source, select, calibration {練習} other {ゲーム}}の自己ベスト更新：{by, select, time {再び{accuracy}パーセント、{solveTime}で配置} other {{previous}から{accuracy}パーセントに上昇}}。",
+            "span": "{from, select, 0 {記憶スパンが{to}駒に到達} other {記憶スパンが{from}駒から{to}駒に}}。",
+            "streak": "{forgiven, plural, =0 {{days}日連続。} other {連続{days}日、ミスした#日は免除。}}",
+            "rungUp": "次の段へ：{pieceCount}駒、{studyTime}。",
+            "goalReached": "目標達成：{pieceCount}駒以上で{accuracy}パーセント。"
+          }
+        },
+        "tools": {
+          "title": "このデバイスに保存",
+          "body": "アカウントもサーバーもありません。コピーをダウンロードすれば、別のブラウザーに移したり、安全に保管したりできます。",
+          "download": "ラボ記録をダウンロード",
+          "import": "インポート",
+          "lastBackup": "{date}にエクスポート開始",
+          "neverBackedUp": "まだエクスポートしていません",
+          "imported": "{added, plural, =0 {新しくインポートするものはありません。それらのラウンドはすでにあります。} other {#ラウンドをインポートしました。}}",
+          "skipped": "{count, plural, other {ファイル内の#ラウンドを読み取れず、スキップしました。}}",
+          "importFailed": "このファイルは Memory Chess のラボ記録ではありません。",
+          "tooLarge": "このファイルは5 MBを超えていて、どのラボ記録よりも大きいため、何もインポートしませんでした。",
+          "overCap": "5,000ラウンドの上限に収めるため、古い{count, plural, other {#ラウンド}}を除外しました。",
+          "summaryIgnored": "このブラウザーにはすでにラウンドがあったため、新しいラウンドだけを統合し、ファイルの累計は使いませんでした。",
+          "summaryDropped": "ファイルの累計が読み取れないか古いバージョンのものだったため、ラウンドだけをインポートしました。",
+          "safari": "Safari のプライベートタブでは、閉じるとこの記録は残りません。また Safari は、7日ほどアクセスのないサイトの保存データを消去します。コピーをエクスポートして保管してください。",
+          "unavailable": "プライベートウィンドウでは保存されません。このブラウザーウィンドウは、ラウンドを保存していません。",
+          "backup": "デバイス間でバックアップ（近日公開）",
+          "backupNoted": "デバイス間のバックアップは、まだできていません。ありがとうございます。ご関心を記録しました。",
+          "card": {
+            "open": "測定値をシェア",
+            "title": "私の Memory Chess 測定値",
+            "span": "記憶スパン：{pieceCount, plural, other {#駒}}、{count, plural, other {#ラウンド}}で{accuracy}%以上",
+            "held": "記憶できた駒：最近の平均{average}、{count, plural, other {#ラウンド}}から",
+            "speed": "スピード：{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}で最近の平均は1駒あたり{average}、{count, plural, other {#ラウンド}}から",
+            "site": "thememorychess.com",
+            "copy": "測定値をコピー",
+            "copied": "コピーしました。どこにでも貼り付けられます。",
+            "copyFailed": "ここではコピーできませんでした。上で測定値を選択したので、手動でコピーしてください。"
+          },
+          "nudge": {
+            "title": "あなたの記録は、このブラウザーの中にあります",
+            "body": "ブラウザーのデータを消去すると、記録も消えます。同じブラウザーで戻ってこられるようにこのサイトをブックマークし、上の「ラボ記録をダウンロード」でコピーを保管しましょう。",
+            "safari": "iPhone と iPad では、「ホーム画面に追加」でサイトをアプリとして置くと、独自の記録を持ち、Safari の7日ルールでも消去されません。最初は空なので、ダウンロードしたコピーをそこでインポートしてください。",
+            "dismiss": "閉じる"
+          }
+        }
+      },
+      "library": {
+        "title": "参考資料。",
+        "lede": "ラーニングセンターでは、短いガイドとドリルを組み合わせています。どの測定値からも、次に練習できることが見つかります。",
+        "ref": "資料{number}",
+        "read": "ガイドを読む",
+        "vision": {
+          "title": "盤面を見る力",
+          "body": "一角ずつではなく、盤面全体を一度に見る。"
+        },
+        "visualization": {
+          "title": "イメージ力",
+          "body": "駒が動いていく局面を、頭の中に保つ。"
+        },
+        "calculation": {
+          "title": "読み",
+          "body": "盤面を見失わずに、より先まで読む。"
+        },
+        "memory": {
+          "title": "記憶",
+          "body": "測定値を伸ばす、チャンキングとパターンのテクニック。"
+        },
+        "blindfold": {
+          "title": "目隠しチェスのトレーニング",
+          "body": "盤面の記憶から完全な目隠し対局まで、4段階のプラン。"
+        },
+        "blundering": "ポカをなくす方法"
+      },
+      "final": {
+        "title": "最初の測定は、1分もかかりません。",
+        "body": "アカウントも、ダウンロードも、登録も不要です。ラウンドを開き、覚えて、並べ直し、数字を読む。2回目をやるかどうかは、それから決めてください。"
+      },
+      "resultCard": {
+        "title": "あなたのラボ記録",
+        "device": "このデバイスに保存",
+        "lines": "記録の中のこのラウンド",
+        "unshown": "このラウンドのラボ記録を表示できませんでした。",
+        "newBest": {
+          "up": "{pieceCount}駒・{studyTime}で自己ベスト：{previous}%から{accuracy}%に上昇",
+          "faster": "{pieceCount}駒・{studyTime}で自己ベスト：同じ{accuracy}%で{fasterTime}速く",
+          "plain": "{pieceCount}駒・{studyTime}で自己ベスト：{accuracy}%"
+        },
+        "vsRecent": {
+          "above": "この設定の直近{rounds}ラウンドの平均より{points, plural, other {#ポイント}}上",
+          "below": "この設定の直近{rounds}ラウンドの平均より{points, plural, other {#ポイント}}下",
+          "level": "この設定の直近{rounds}ラウンドの平均と同じ"
+        },
+        "span": "記憶スパンが{pieceCount}駒に上昇",
+        "streak": "{current, plural, =1 {1日目} other {#日連続}}{graceUsed, select, true {、猶予日を使用} other {}}、今週{goal}日中{days}日",
+        "next": {
+          "label": "次は",
+          "why": {
+            "more": "90%以上だったので、同じ記憶時間で駒を1つ増やします。",
+            "fewer": "50%未満だったので、同じ記憶時間で駒を1つ減らします。",
+            "edgeFiles": "aファイルとhファイルのミスが、中央のファイルより多くなっています。",
+            "weakType": "最も取りこぼしが多いのは{type, select, q {クイーン} r {ルーク} b {ビショップ} n {ナイト} other {ポーン}}です。{shown}駒中{recalled}駒を再現しました。",
+            "fasterLessAccurate": "{pieceCount}駒・{studyTime}では、正解1駒あたりは速くなりましたが、正解率が{fell}ポイント下がりました。",
+            "colourGap": "{weaker, select, w {白} other {黒}}の駒の再現率が低めです。{weakerPercent}%に対して{strongerPercent}%。",
+            "plateau": "記憶スパンが{span}駒にとどまっています。"
+          },
+          "play": "{pieceCount}駒・{studyTime}でプレイ",
+          "again": "{pieceCount}駒・{studyTime}でもう一度",
+          "patterns": "パターン認識ドリルを読む",
+          "vision": "盤面全体を見る方法を読む"
+        }
+      },
+      "daily": {
+        "locked": "今日の盤面はすでに開いています。このデバイスでは1日1回の挑戦です。",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {1分以内にリセット} other {#分後にリセット}}} other {#時間{minutes}分後にリセット}}",
+        "seeRecord": "ラボ記録を開く",
+        "chooseRound": "別のラウンドをプレイ"
+      },
+      "review": {
+        "none": "このデバイスで今、復習する盤面はありません。",
+        "capped": "このデバイスでの今日の復習{cap}回は完了しました。",
+        "cappedNext": "まだ復習が必要な盤面は明日、待ち時間の長いものから順に戻ってきます。",
+        "schedule": "正解率80%未満だった盤面は、初めて見てから1、3、7、14日後に戻ってきます。"
+      }
     }
   },
   "game": {

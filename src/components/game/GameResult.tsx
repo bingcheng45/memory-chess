@@ -36,7 +36,7 @@ import type { BoardAction } from "@/lib/round/round";
 import ArticleTile from "@/components/game/ArticleTile";
 import { countWrong } from "@/lib/game/scoring";
 import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
-import ResultDeltasFrame from "@/components/game/ResultDeltasFrame";
+import { warmedResultDeltas } from "@/components/game/resultDeltasWarm";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import ShareResult from "@/components/game/ShareResult";
 import { roundShareOf } from "@/components/game/roundShare";
@@ -45,7 +45,6 @@ import { START_RATING } from "@/lib/store/gameStore";
 // Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
 // never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.
 const ResultLabCard = lazy(() => import("@/components/game/ResultLabCard"));
-const ResultDeltas = lazy(() => import("@/components/game/ResultDeltas"));
 
 // The scored board only shows the round: it takes no input.
 const ignoreBoard: (action: BoardAction) => void = () => {};
@@ -96,6 +95,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
   // effect below would insert it a frame later and push down everything under it.
   const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(readCachedCutoffs);
+  // Likewise the dashboard figures: their code and the record were loaded during the round, or they are not shown.
+  const [deltas] = useState(warmedResultDeltas);
 
   // Use a ref instead of state to prevent double increments due to StrictMode
   const playsCountedRef = useRef(false);
@@ -378,14 +379,10 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           </ErrorBoundary>
         )}
 
-        {keepsRecord && labRound && (
-          <ResultDeltasFrame key={labRound.facts.id}>
-            <ErrorBoundary fallback={<></>}>
-              <Suspense fallback={null}>
-                <ResultDeltas roundId={labRound.facts.id} />
-              </Suspense>
-            </ErrorBoundary>
-          </ResultDeltasFrame>
+        {deltas && labRound && (
+          <ErrorBoundary key={labRound.facts.id} fallback={<></>}>
+            <deltas.Deltas before={deltas.before} labRound={labRound} />
+          </ErrorBoundary>
         )}
 
         <ArticleTile

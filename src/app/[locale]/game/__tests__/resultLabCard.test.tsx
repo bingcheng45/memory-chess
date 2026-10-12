@@ -1,9 +1,10 @@
 import "fake-indexeddb/auto";
 import { deserialize, serialize } from "node:v8";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 import GameLayout from "@/app/[locale]/game/layout";
 import GameResult from "@/components/game/GameResult";
+import { warmedResultDeltas, warmResultDeltas } from "@/components/game/resultDeltasWarm";
 import { recordLabRound } from "@/lib/lab/recordRound";
 import { useGameStore } from "@/lib/store/gameStore";
 import { localeLayoutClientMessages } from "@/test-utils/localeLayoutMessages";
@@ -40,7 +41,10 @@ async function renderResultScreen(locale: string) {
 const facts = { id: "played-now", source: "game", pieceCount: 4, memorizeSeconds: 10, targetFen: TARGET, placedFen: TARGET, memorizeMs: 10000, solveMs: 9000 } as const;
 const endedAt = Date.now();
 
+// The round warms the figures from the record it starts on, then is saved as it ends.
 beforeAll(async () => {
+  warmResultDeltas();
+  await waitFor(() => expect(warmedResultDeltas()).not.toBeNull());
   await recordLabRound(facts, new Date(endedAt));
 });
 

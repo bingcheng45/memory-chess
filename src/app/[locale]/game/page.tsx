@@ -13,6 +13,7 @@ import { playSound, stopTimerSound } from '@/lib/utils/soundEffects';
 import { useRoundSounds } from '@/hooks/useRoundSounds';
 import { PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
+import { warmResultDeltas } from '@/components/game/resultDeltasWarm';
 import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
 import { ROUND_PARAMS } from '@/lib/game/roundLink';
 import { GAME_CONFIG_RULES, parseGameSettings } from '@/lib/game/configPrefill';
@@ -161,7 +162,9 @@ function GamePageContent() {
   }, [startGame, hasLab]);
 
   useEffect(() => {
-    if (round.phase === 'study') warmLeaderboardCutoffs();
+    if (round.phase !== 'study') return;
+    warmLeaderboardCutoffs();
+    warmResultDeltas();
   }, [round.phase]);
 
   const handleSubmitSolution = () => {

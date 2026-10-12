@@ -126,10 +126,10 @@ function ReplayBoard({ round, cursor }: { round: ReplayRound; cursor: ReplayCurs
   );
 }
 
-function Legend({ round, legend }: { round: ReplayRound; legend: SharedRound["legend"] }) {
+function Legend({ round, legend, shown }: { round: ReplayRound; legend: SharedRound["legend"]; shown: boolean }) {
   const counts = markCounts(round.board);
   return (
-    <ul className="lab-replay-legend" aria-label="Marks on the scored board">
+    <ul className="lab-replay-legend" aria-label="Marks on the scored board" style={shown ? undefined : { visibility: "hidden" }}>
       {(["correct", "missed", "wrong"] as const).map((mark) => (
         <li key={mark}>
           <i data-mark={mark} aria-hidden="true" />
@@ -167,7 +167,7 @@ export function RoundReplay({ round: { replay: round, legend } }: RoundReplayPro
       </div>
       <ReplayBoard round={round} cursor={cursor} />
       <p className="lab-replay-caption">{captionText(round, cursor)}</p>
-      <Legend round={round} legend={legend} />
+      <Legend round={round} legend={legend} shown={cursor.phase === "scored"} />
       <div className="lab-replay-controls">
         <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" aria-label="Previous phase" disabled={at === 0} onClick={() => playback.go(phases[at - 1])}>
           ‹

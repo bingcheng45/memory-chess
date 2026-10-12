@@ -13,6 +13,7 @@
   --lp-mark-correct: color-mix(in srgb, var(--lp-correct) 26%, transparent);
   --lp-mark-wrong: color-mix(in srgb, var(--lp-wrong) 30%, transparent);
   --lp-pop-shadow: 0 12px 32px rgba(13, 27, 36, 0.12);
+  --lp-scrim: rgba(13, 27, 36, 0.48);
   --lp-r-sm: 6px; --lp-r-md: 8px; --lp-r-lg: 12px;
   --lp-gutter: clamp(16px, 4vw, 48px);
   --lp-header-h: 64px;

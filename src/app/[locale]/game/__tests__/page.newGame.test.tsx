@@ -33,11 +33,11 @@ describe("GamePage new game after a round", () => {
     fireEvent.click(screen.getByRole("button", { name: "Start round" }));
     fireEvent.click(screen.getByRole("button", { name: "Done" }));
     fireEvent.click(screen.getByRole("button", { name: "Submit" }));
-    fireEvent.click(screen.getByRole("button", { name: "New Game" }));
+    fireEvent.click(screen.getByRole("button", { name: "New game" }));
 
     expect(screen.getByRole("button", { name: /Hard/ })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: /Medium/ })).toHaveAttribute("aria-pressed", "false");
-    expect(screen.getByLabelText("Number of Pieces")).toHaveValue("12");
-    expect(screen.getByLabelText("Memorization Time")).toHaveValue("8");
+    expect(screen.getByLabelText("Number of pieces")).toHaveValue("12");
+    expect(screen.getByLabelText("Memorization time")).toHaveValue("8");
   });
 });

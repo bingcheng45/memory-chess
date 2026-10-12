@@ -963,11 +963,11 @@
     },
     "config": {
       "title": "Memory chess game",
-      "presetsLabel": "Difficulty Presets",
+      "presetsLabel": "Difficulty presets",
       "presetSummary": "{pieces} pcs / {seconds}s",
       "customLabel": "Custom settings",
-      "pieceCount": "Number of Pieces",
-      "memorizeTime": "Memorization Time",
+      "pieceCount": "Number of pieces",
+      "memorizeTime": "Memorization time",
       "seconds": "{seconds}s",
       "start": "Start round",
       "lastGame": "Last game: {time}s solution time with {accuracy}% accuracy"
@@ -991,7 +991,7 @@
       }
     },
     "memorize": {
-      "title": "Memorize the Position",
+      "title": "Memorize the position",
       "hint": "The board will clear when the timer ends"
     },
     "board": {
@@ -1017,37 +1017,37 @@
     },
     "result": {
       "messages": {
-        "perfect": "✨ Perfect Score! ✨",
-        "excellent": "Excellent Memory!",
-        "great": "Great Job!",
-        "wellDone": "Well Done!",
-        "goodEffort": "Good Effort!",
-        "keepPracticing": "Keep Practicing!"
+        "perfect": "✨ Perfect score! ✨",
+        "excellent": "Excellent memory!",
+        "great": "Great job!",
+        "wellDone": "Well done!",
+        "goodEffort": "Good effort!",
+        "keepPracticing": "Keep practicing!"
       },
       "accuracy": "Accuracy",
       "piecesCorrectCaption": "pieces correct",
-      "piecesCorrect": "Pieces Correct",
-      "memorizationTime": "Memorization Time",
-      "solutionTime": "Solution Time",
-      "recallSpeed": "Recall Speed",
+      "piecesCorrect": "Pieces correct",
+      "memorizationTime": "Memorization time",
+      "solutionTime": "Solution time",
+      "recallSpeed": "Recall speed",
       "piecesPerSecond": "{value} pieces/sec",
       "actions": "Result actions",
-      "tryAgain": "Try Again",
-      "newGame": "New Game",
-      "submitToLeaderboard": "Submit to Leaderboard",
+      "tryAgain": "Try again",
+      "newGame": "New game",
+      "submitToLeaderboard": "Submit to leaderboard",
       "leaderboardQualifies": "Your score makes the leaderboard. Submit it before it's gone.",
-      "viewLeaderboard": "View Leaderboard",
+      "viewLeaderboard": "View leaderboard",
       "dialog": {
-        "submitTitle": "Submit to Leaderboard",
+        "submitTitle": "Submit to leaderboard",
         "submitDescription": "Enter your name to be displayed on the leaderboard.",
-        "successTitle": "Score Submitted!",
+        "successTitle": "Score submitted!",
         "successDescription": "Your score has been successfully submitted to the leaderboard.",
-        "playerName": "Player Name",
+        "playerName": "Player name",
         "playerNamePlaceholder": "Enter your name",
         "error": "Error: {message}",
         "submitFailed": "Failed to submit score",
         "cancel": "Cancel",
-        "submit": "Submit Score",
+        "submit": "Submit score",
         "submitting": "Submitting...",
         "thanks": "Thanks for participating, {name}!"
       },
@@ -1077,7 +1077,7 @@
       }
     },
     "comparison": {
-      "title": "Review Your Position"
+      "title": "Review your position"
     },
     "feedback": {
       "title": "Thanks for playing Memory Chess!",

@@ -55,7 +55,7 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 @media (max-width: 767px) {
   .lab-game .lab-result-grid { grid-template-columns: minmax(0, 1fr); }
   .lab-game .lab-result-actions .lab-btn { flex: 1 1 calc(50% - 6px); }
-  /* Sharing is not the next step: it keeps its own width beside the leaderboard link, under a full-width Submit, so Try Again and New Game stay the wide pair. */
+  /* Sharing is not the next step: it keeps its own width beside the leaderboard link, under a full-width Submit, so Try again and New game stay the wide pair. */
   .lab-game .lab-result-actions .lab-result-submit { flex-basis: 100%; }
   .lab-game .lab-result-actions .lab-result-share { flex: none; }
 }

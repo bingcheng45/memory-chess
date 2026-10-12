@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { SharedCard } from "@/components/share/SharedCard";
 
 const SRC = "/api/share/result/1_g_4_100_84_383";
@@ -16,7 +16,7 @@ describe("the shared card on its page", () => {
 
     await act(async () => fireEvent.keyDown(document.activeElement as Element, { key: "Escape" }));
     expect(screen.queryByRole("dialog")).toBeNull();
-    expect(document.activeElement).toBe(open);
+    await waitFor(() => expect(document.activeElement).toBe(open));
   });
 
   it("closes from its close button", async () => {

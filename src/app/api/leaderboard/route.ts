@@ -4,9 +4,17 @@ import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 import { isSkillRating, MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
 import { readBoard } from '@/lib/leaderboard/board';
-import { isLeaderboardDifficulty } from '@/types/leaderboard';
+import { dailySettingOf } from '@/lib/daily/schedule';
+import { DAILY_BOARD, isLeaderboardDifficulty, type LeaderboardBoard } from '@/types/leaderboard';
 
 const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
+
+function dailySettingMismatch(board: LeaderboardBoard, pieceCount: unknown, memorizeTime: unknown): string | null {
+  if (board.difficulty !== DAILY_BOARD) return null;
+  const setting = dailySettingOf(board.daily_day);
+  if (pieceCount === setting.pieceCount && memorizeTime === setting.memorizeTime) return null;
+  return `The daily board for ${board.daily_day} is ${setting.pieceCount} pieces and ${setting.memorizeTime} seconds`;
+}
 
 function parseSkillRating(value: unknown): number | null {
   if (value === undefined) return START_RATING;
@@ -85,6 +93,11 @@ export async function POST(request: NextRequest) {
     const board = readBoard(difficulty, daily_day, Date.now());
     if (board === null) {
       return NextResponse.json({ error: 'Invalid difficulty or daily day' }, { status: 400 });
+    }
+
+    const mismatch = dailySettingMismatch(board, piece_count, memorize_time);
+    if (mismatch !== null) {
+      return NextResponse.json({ error: mismatch }, { status: 400 });
     }
 
     const parsedSkillRating = parseSkillRating(skill_rating);

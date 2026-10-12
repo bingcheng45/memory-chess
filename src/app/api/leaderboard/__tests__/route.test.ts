@@ -197,13 +197,28 @@ describe("POST /api/leaderboard", () => {
       jest.mocked(Date.now).mockRestore();
     });
 
-    it.each(["2026-10-13", "2026-10-12"])("stores a daily row for %s, today or yesterday in UTC", async (day) => {
-      const response = await post({ ...validEntry, difficulty: "daily", daily_day: day });
+    it.each([
+      ["2026-10-13", 6, 10],
+      ["2026-10-12", 5, 12],
+    ])("stores a daily row for %s, today or yesterday in UTC, at that day's %i pieces and %i seconds", async (day, pieces, seconds) => {
+      const response = await post({ ...validEntry, difficulty: "daily", daily_day: day, piece_count: pieces, memorize_time: seconds });
 
       expect(response.status).toBe(200);
       expect(submitLeaderboardEntry).toHaveBeenCalledWith(
         expect.objectContaining({ difficulty: "daily", daily_day: day }),
       );
+    });
+
+    it.each([
+      ["yesterday's pieces and seconds", { piece_count: 5, memorize_time: 12 }],
+      ["today's seconds with another piece count", { piece_count: 5, memorize_time: 10 }],
+      ["today's pieces with the seconds actually studied", { piece_count: 6, memorize_time: 8.25 }],
+    ])("rejects a row for today, 6 pieces and 10 seconds, sent with %s", async (_case, setting) => {
+      const response = await post({ ...validEntry, difficulty: "daily", daily_day: "2026-10-13", ...setting });
+
+      expect(response.status).toBe(400);
+      expect(await response.json()).toEqual({ error: "The daily board for 2026-10-13 is 6 pieces and 10 seconds" });
+      expect(submitLeaderboardEntry).not.toHaveBeenCalled();
     });
 
     it.each(["2026-10-14", "2026-10-11", "9999-12-31", "0000-01-01"])("rejects a daily row for %s", async (day) => {

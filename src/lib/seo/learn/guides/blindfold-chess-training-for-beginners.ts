@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Blindfold chess training for beginners starts with two pieces, not a game. Hold two kings without a board, then learn six checks that catch a wrong mental picture. Next, replay a short game with the board covered. Play a full game blind only after each stage passes its test.",
+    quickAnswer: "Blindfold chess training for beginners starts with two kings, not a game. Hold them without a board, learn six checks that catch a wrong mental picture on Scholar's mate, then replay ten moves of your own games from the move list alone. Play a full game blind only after each stage passes its test.",
     takeaways: [
       "Each stage has a pass mark, so you know when to move on and when to repeat.",
       "Six checks that every Memory Chess position passes also catch a mental board that has drifted.",
@@ -48,7 +48,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "A blindfold game does not fail all at once. It can fail on a single piece, and a piece that has not moved is easy to lose track of. You know where the knights are because you moved them. The bishop on c1 sat still for twelve moves, so it fell out of the picture, and you play as if it is not there.",
-            "So the training builds the whole board, including the pieces that never move. The four stages below go from two pieces to a full game, and each has a test you either pass or repeat.",
+            "So the training builds the whole board, including the pieces that never move. Each of the four stages below has a test you pass or repeat.",
           ],
         },
       ],
@@ -60,7 +60,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The easiest preset in Memory Chess is 2 pieces, and the position rules guarantee those two are the kings, one of each colour, never on adjacent squares. That makes it the smallest blindfold exercise there is. Two squares, both named, held without a board.",
+            "The easiest preset in Memory Chess is 2 pieces, and the position rules guarantee those two are the kings, one of each colour, never on adjacent squares. That makes it the smallest blindfold exercise there is.",
           ],
         },
         {
@@ -161,7 +161,7 @@ const guide: LearnDocument = {
     },
     {
       id: "stage-three-covered-replay",
-      heading: "Stage three, ten moves of your own game under a cloth",
+      heading: "Stage three, ten moves of your own game from the move list",
       blocks: [
         {
           kind: "prose",
@@ -173,17 +173,17 @@ const guide: LearnDocument = {
           kind: "drills",
           drills: [
             {
-              title: "Ten moves under the cloth",
-              description: "Read ten moves of a game you played with the board covered. Name the square of every piece still on the board, then run the six checks before you uncover.",
+              title: "Ten moves from the move list",
+              description: "Open one of your own games on the site you played it on and hide the board, so only the move list shows. Read the first ten moves for each side, 20 in all. Name the square of every piece still on the board and run the six checks. Then step the site's board to Black's tenth move and count the pieces you placed on a wrong square.",
               duration: "About 6 minutes",
-              goal: "Rebuild a full board from a move list with no pieces in front of you.",
+              goal: "Zero pieces on a wrong square after ten moves each, with nothing in front of you but the move list.",
             },
           ],
         },
         {
           kind: "prose",
           paragraphs: [
-            "The pass mark is two clean replays of ten moves on different days, each from a different game. Clean means every piece on its square, with no exceptions. A single misplaced pawn in a covered replay can become a lost piece in a blind game.",
+            "The pass mark is two clean replays on different days, from different games. One misplaced pawn in a replay can become a lost piece in a blind game.",
           ],
         },
       ],
@@ -196,7 +196,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Play against a friend or an engine with the board hidden and the move list visible. The list is not cheating. It is the tool you rebuild from. The rule is that you may read the list only to rebuild after a checklist failure, never to find your next move.",
-            "Stop at move 15 the first few times, whatever the position, and set the final position up on a real board from memory. Count the pieces on the wrong square. The pass mark is two games in a row with every piece right at move 15.",
+            "Stop at move 15 the first few times and set the position up on a real board from memory. Count the pieces on the wrong square. The pass mark is two games in a row with every piece right at move 15.",
             "After that, play to the end, and only then take the sheet away.",
           ],
         },
@@ -228,7 +228,7 @@ const guide: LearnDocument = {
             {
               label: "Stage three",
               duration: "6 minutes a day for two weeks",
-              detail: "Ten moves of one of your own games each day. Two clean replays from different games, on different days, to pass.",
+              detail: "Ten moves each from one of your own games a day, until two different games pass on different days.",
             },
             {
               label: "Stage four",

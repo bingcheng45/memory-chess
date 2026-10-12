@@ -279,13 +279,19 @@ export function withSideToMove(boardFen: string): string | null {
   return `${boardFen} ${activeColor} - - 0 1`;
 }
 
-function finalizePosition(chess: Chess, pieceCount: number): Chess | null {
+function finalizePosition(
+  chess: Chess,
+  pieceCount: number,
+  waived: readonly PositionViolation[],
+): Chess | null {
   const fen = withSideToMove(chess.fen().split(" ")[0]);
   if (!fen) return null;
 
   try {
     const finalized = new Chess(fen);
-    return validateMemorizationPosition(finalized, pieceCount).valid
+    return validateMemorizationPosition(finalized, pieceCount).violations.every(
+      (violation) => waived.includes(violation),
+    )
       ? finalized
       : null;
   } catch {
@@ -296,6 +302,7 @@ function finalizePosition(chess: Chess, pieceCount: number): Chess | null {
 function generateCandidate(
   pieceCount: number,
   random: RandomSource,
+  waived: readonly PositionViolation[],
 ): Chess | null {
   const chess = new Chess();
   chess.clear();
@@ -371,10 +378,13 @@ function generateCandidate(
     piecesPlaced += 1;
   }
 
-  return finalizePosition(chess, pieceCount);
+  return finalizePosition(chess, pieceCount, waived);
 }
 
-function createFallbackPosition(pieceCount: number): Chess | null {
+function createFallbackPosition(
+  pieceCount: number,
+  waived: readonly PositionViolation[],
+): Chess | null {
   const chess = new Chess();
   chess.clear();
 
@@ -382,12 +392,13 @@ function createFallbackPosition(pieceCount: number): Chess | null {
     chess.put({ type, color }, square);
   });
 
-  return finalizePosition(chess, pieceCount);
+  return finalizePosition(chess, pieceCount, waived);
 }
 
 export function generateMemorizationPosition(
   requestedPieceCount: number,
   random: RandomSource = Math.random,
+  waived: readonly PositionViolation[] = [],
 ): Chess | null {
   const pieceCount = Math.max(
     PIECE_COUNT_RANGE.min,
@@ -395,9 +406,9 @@ export function generateMemorizationPosition(
   );
 
   for (let attempt = 0; attempt < MAX_GENERATION_ATTEMPTS; attempt += 1) {
-    const position = generateCandidate(pieceCount, random);
+    const position = generateCandidate(pieceCount, random, waived);
     if (position) return position;
   }
 
-  return createFallbackPosition(pieceCount);
+  return createFallbackPosition(pieceCount, waived);
 }

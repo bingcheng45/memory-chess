@@ -1,6 +1,6 @@
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { placementFromFen } from "@/lib/game/scoring";
-import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
+import { generateMemorizationPosition, type PositionViolation } from "@/lib/utils/memorizationPosition";
 import { seededRandom } from "@/lib/utils/seededRandom";
 import type { RoundSource } from "@/lib/analytics/events";
 import type { PlanId, StoredPlan, StoredTarget } from "./choices";
@@ -297,6 +297,12 @@ function placementsOf(placed: Readonly<Record<string, string>>, solveMs: number)
   return squares.map(([index, piece], order) => [Math.round((solveMs * (order + 1)) / (squares.length + 1)), index, piece]);
 }
 
+/**
+ * The personas' histories predate these position rules, as a real player's older records do. Waiving them keeps every
+ * persona board the one its findings and figures were worked out from.
+ */
+const RULES_AFTER_PERSONAS: readonly PositionViolation[] = ["home-rank-pawn-check", "impossible-double-check"];
+
 export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY): RoundRecord[] {
   const { seed, rounds, missChance, legacy } = PLANS[name];
   const random = seededRandom(seed);
@@ -309,7 +315,7 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
     const playedAt = noonUtc(today, -planned.daysAgo);
     const day = utcDayOf(playedAt);
     const reviewed = planned.reviewOf === undefined ? undefined : built[planned.reviewOf];
-    const fen = reviewed ? reviewed.targetFen : planned.dailyBoard ? dailyFen(day) : generateMemorizationPosition(planned.pieceCount, random)?.fen();
+    const fen = reviewed ? reviewed.targetFen : planned.dailyBoard ? dailyFen(day) : generateMemorizationPosition(planned.pieceCount, random, RULES_AFTER_PERSONAS)?.fen();
     const target = placementFromFen(fen ?? "8/8/8/8/8/8/8/8");
     const progress = index / rounds.length;
     const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= (planned.miss ?? missChance(square, piece, progress))));

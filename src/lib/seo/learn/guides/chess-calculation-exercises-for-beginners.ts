@@ -30,7 +30,7 @@ const guide: LearnDocument = {
     quickAnswer: "Good chess calculation exercises for beginners compare two candidate moves, two plies each: your move and the reply. After every imagined move, ask which enemy piece can capture on the square you landed on. Then say the line out loud and play it on a real board to check.",
     takeaways: [
       "Two candidate moves, two plies each, is a full calculation for one decision.",
-      "A line usually breaks at a piece that never moved, so suspect the starting position before the moves.",
+      "A line usually breaks at a piece that never moved, so check your base picture before the moves.",
       "Label every miss as a forgotten defender, mixed lines or too deep, and train the one you make most.",
       "An empty-board rebuild trains the base picture that every calculated line stands on.",
     ],
@@ -48,9 +48,9 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Calculating means holding a position that is not on the board. You look at the real board, imagine one move, and now keep two pictures apart, the board in front of you and the one in your head.",
-            "Each imagined move changes two squares, the one a piece leaves and the one it lands on. Two plies in, up to four squares differ from the real board. Every other piece has to stay put with no help from your eyes.",
-            "The moving pieces hold your attention. The line breaks on a piece that stood still, a pawn or a queen that quietly guards the square you land on. A line can only run as far as the picture underneath it holds.",
+            "Calculating means holding a position that is not on the board. You look at the real board, imagine one move, and now keep two pictures apart, the board in front of you and the one in your head. Call the position before any imagined move the base position, and your mental copy of it the base picture.",
+            "Each imagined move changes two squares, the one a piece leaves and the one it lands on. Two plies in, up to four squares differ from the real board. In the example below, the board still shows the knight on d5 while your line has it on c7. You overrule your eyes on the squares that changed and trust them everywhere else.",
+            "Your attention follows the moved piece and skips the one that stood still. The line breaks there, on a pawn or a queen that guards the square you land on. A line can only run as far as your base picture holds.",
             "If pieces slip out of your picture before you move anything, the problem comes earlier than calculation. Start with the visualization exercises linked at the end, then come back here.",
           ],
         },
@@ -140,7 +140,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Two. Each extra line is one more picture to keep apart from the base position, so start with the fewest that still give you a comparison.",
+            "Two. Each extra line is one more picture to keep apart from the base picture, so start with the fewest that still give you a comparison.",
             "Spend your attention on defenders. Five candidates mean five landing squares to check, and those checks are where beginner lines go wrong.",
             "Add a third candidate only when both of the first two fail for a reason you can say. Stay at two plies until five lines in a row check out on the board.",
             "When a line still fails, it usually fails in one of three places. The table names them, and the next section uses those names.",
@@ -161,7 +161,7 @@ const guide: LearnDocument = {
               label: "Mixed lines",
               cells: [
                 "The two lines blurred into one.",
-                "You calculated the second line from the end of the first instead of from the starting position.",
+                "You calculated the second line from the end of the first instead of from the base position.",
               ],
             },
             {
@@ -193,13 +193,13 @@ const guide: LearnDocument = {
     },
     {
       id: "empty-board-reset",
-      heading: "Train the base position with an empty-board rebuild",
+      heading: "Train the base picture with an empty-board rebuild",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
             "A Memory Chess round isolates the part of calculation that fails first. A position appears for a fixed number of seconds, then the board clears and you put every piece back.",
-            "Nothing on the empty board reminds you of the queen on b5. One move into a line you face the same task, holding pieces the board in front of you no longer shows. The rebuild has no time limit, so the round tests the picture alone.",
+            "Nothing on the empty board reminds you of the queen on b5. In a line, the board is there but wrong on the squares that changed, so you hold a position your eyes cannot confirm. The rebuild trains that same hold with nothing to lean on.",
             "Positions are random and fresh each round, so a round will not teach you which moves to look at. The other two drills cover choosing and checking moves.",
           ],
         },
@@ -241,7 +241,7 @@ const guide: LearnDocument = {
       items: [
         {
           question: "How many moves ahead should a beginner calculate?",
-          answer: "Two plies, which means your move and your opponent's reply. Check who can capture on each landing square before you go further. Add a third ply once five lines in a row check out on the board. A deeper line built on a shaky base position fails at the first ply anyway.",
+          answer: "Two plies, which means your move and your opponent's reply. Check who can capture on each landing square before you go further. Add a third ply once five lines in a row check out on the board. A deeper line built on a shaky base picture fails at the first ply anyway.",
         },
         {
           question: "Does Memory Chess teach calculation?",
@@ -249,7 +249,7 @@ const guide: LearnDocument = {
         },
         {
           question: "Why do I forget a piece that never moved?",
-          answer: "Your attention follows the pieces that move, because each move is an event you just pictured. A piece that stands still has no event attached, so only your base picture holds it, and that picture fades while you work on the line. The landing-square question sends you back to look for it.",
+          answer: "Your attention follows the pieces that move, because each move is an event you just pictured. A piece that stands still has no event attached, so you stop checking it, even though it is in plain sight. The landing-square question sends you back to look for it.",
         },
       ],
     },

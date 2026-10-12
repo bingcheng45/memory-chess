@@ -40,7 +40,7 @@
 /* The card itself as the panel's picture, its 4:5 frame sized from the first paint so nothing moves when it is drawn. */
 .lab-paper .lab-share { display: grid; grid-template-columns: 144px minmax(0, 1fr); gap: 20px; align-items: center; min-width: 0; padding: 20px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
 .lab-paper .lab-share-thumb { display: block; width: 100%; aspect-ratio: 4 / 5; margin: 0; padding: 0; overflow: hidden; background: var(--lp-paper); border: 1px solid var(--lp-line); border-radius: var(--lp-r-md); cursor: pointer; }
-.lab-paper .lab-share-thumb:is([data-state="locked"], [data-state="rendering"]) { cursor: default; }
+.lab-paper .lab-share-thumb:not([data-state="ready"]) { cursor: default; }
 .lab-paper .lab-share-thumb img { display: block; width: 100%; height: 100%; }
 .lab-paper .lab-share-sketch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; gap: 8px; height: 100%; padding: 16px 12px; }
 .lab-paper .lab-share-sketch > span { height: 20px; background: var(--lp-line); border-radius: 3px; }

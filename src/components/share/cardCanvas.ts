@@ -69,14 +69,18 @@ export function fitFont(ctx: Ctx, text: string, weight: number, size: number, fo
 
 /**
  * The pieces a line may break between: after each space but the one after a number, so "70%" and "10 s" stay whole, and, for a run too wide to
- * fit (Japanese and Chinese, written without spaces), between the words the language's segmenter finds.
+ * fit (Japanese and Chinese, written without spaces), between the words the language's segmenter finds. A word still too
+ * wide (a long compound) breaks between characters, as it does where the browser has no segmenter.
  */
 function breakable(ctx: Ctx, text: string, maxWidth: number, locale: string): string[] {
-  const segmenter = new Intl.Segmenter(locale, { granularity: "word" });
+  const fits = (run: string) => ctx.measureText(run).width <= maxWidth;
+  const words = (run: string) =>
+    typeof Intl.Segmenter === "function" ? [...new Intl.Segmenter(locale, { granularity: "word" }).segment(run)].map(({ segment }) => segment) : [run];
   return text
     .split(/(?<=\s)/)
     .reduce<string[]>((runs, run) => (/^[\d.,]+\s$/.test(runs.at(-1) ?? "") ? [...runs.slice(0, -1), runs.at(-1) + run] : [...runs, run]), [])
-    .flatMap((run) => (ctx.measureText(run).width <= maxWidth ? [run] : [...segmenter.segment(run)].map(({ segment }) => segment)));
+    .flatMap((run) => (fits(run) ? [run] : words(run)))
+    .flatMap((word) => (fits(word) ? [word] : Array.from(word)));
 }
 
 /** Breaks text into lines no wider than maxWidth. A last line that would overflow `maxLines` ends in an ellipsis. */
@@ -91,7 +95,7 @@ export function wrapLines(ctx: Ctx, text: string, maxWidth: number, maxLines: nu
   if (lines.length <= maxLines) return lines;
   const kept = lines.slice(0, maxLines);
   let tail = kept[maxLines - 1];
-  while (tail.length > 1 && ctx.measureText(`${tail}…`).width > maxWidth) tail = tail.slice(0, -1);
+  while (Array.from(tail).length > 1 && ctx.measureText(`${tail}…`).width > maxWidth) tail = Array.from(tail).slice(0, -1).join("");
   return [...kept.slice(0, -1), `${tail.trimEnd()}…`];
 }
 

@@ -12,6 +12,10 @@ describe("wrapLines", () => {
     expect(wrapLines(ctx, "Over 3 days", 200, 2, "en")).toEqual(["Over 3 days"]);
   });
 
+  it("breaks a word wider than the line between its characters", () => {
+    expect(wrapLines(ctx, "Donaudampfschifffahrtsgesellschaft", 200, 2, "de")).toEqual(["Donaudampfschifffahr", "tsgesellschaft"]);
+  });
+
   it("breaks text written without spaces between its words", () => {
     const lines = wrapLines(ctx, "直近10ラウンドの平均、設定は問わない", 100, 3, "ja");
 

@@ -165,7 +165,7 @@ describe("lab record from a finished game round", () => {
     expect(jest.mocked(recordLabRound).mock.calls[0][0]).toMatchObject({ targetFen: board.fen, startSource: "review", pieceCount: 4, board });
   });
 
-  it("keeps the skill rating and win streak through a review round but still puts it in the history, while a daily round moves both", () => {
+  it("keeps the skill rating, win streak and history through a review round, while a daily round moves all three", () => {
     const fen = "4k3/8/8/8/8/8/8/4K3 w - - 0 1";
     const playPerfect = (source: "daily" | "review", board: SetBoard) => {
       store().startGame(2, 10, source, board);
@@ -174,7 +174,6 @@ describe("lab record from a finished game round", () => {
       tap("e1", WK, 12000);
       store().submitSolution(14000);
       const { skillRating, streak, accuracy } = store().gameState;
-      store().stopGame();
       return { skillRating, streak, accuracy };
     };
     useGameStore.setState(({ gameState }) => ({ history: [], gameState: { ...gameState, skillRating: 1000, streak: 0 } }));
@@ -184,9 +183,6 @@ describe("lab record from a finished game round", () => {
 
     expect(review).toEqual({ skillRating: 1000, streak: 0, accuracy: 100 });
     expect(daily).toEqual({ skillRating: 1114, streak: 1, accuracy: 100 });
-    expect(store().history.map(({ skillRatingChange, streak }) => [skillRatingChange, streak])).toEqual([
-      [114, 1],
-      [0, 0],
-    ]);
+    expect(store().history.map(({ skillRatingChange, streak }) => [skillRatingChange, streak])).toEqual([[114, 1]]);
   });
 });

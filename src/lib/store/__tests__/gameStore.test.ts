@@ -3,6 +3,7 @@ import { validateMemorizationPosition } from "@/lib/utils/memorizationPosition";
 import { labPositionToFen, type LabPiece, type LabPosition } from "@/lib/round/round";
 import type { SquareName } from "@/lib/game/board";
 import type { PieceColor, PieceType } from "@/types/chess";
+import type { GameState } from "@/lib/types/game";
 
 const store = () => useGameStore.getState();
 const boardPlacement = (fen: string) => fen.split(" ")[0];
@@ -265,5 +266,195 @@ describe("remembering the last settings played", () => {
     useGameStore.setState({ lastSettings: { pieceCount: 6, memorizeTime: 10 } });
 
     await expect(rehydrateFrom(stored)).resolves.toBeNull();
+  });
+});
+
+const STORAGE_KEY = "memory-chess-storage";
+const storedState = () => JSON.parse(localStorage.getItem(STORAGE_KEY)!).state;
+
+/** Plays a round from a clock at 0: studies for `studyMs`, rebuilds `correct` of the pieces and submits `solveMs` later. */
+function playRound({ pieceCount, solveMs, correct = pieceCount, studyMs = 10000 }: { pieceCount: number; solveMs: number; correct?: number; studyMs?: number }) {
+  store().startGame(pieceCount, 10, "game_form");
+  store().dispatch({ type: "studyEnded", now: studyMs });
+  for (const [square, piece] of (Object.entries(target()) as [SquareName, LabPiece][]).slice(0, correct)) {
+    place(square, piece.type, piece.color, studyMs);
+  }
+  store().submitSolution(studyMs + solveMs);
+  return store().gameState as GameState & { skillRatingChange?: number };
+}
+
+const freshPlayer = () =>
+  useGameStore.setState({
+    history: [],
+    gameState: { pieceCount: 8, memorizeTime: 10, currentLevel: 1, level: 1, skillRating: 1000, streak: 0 },
+  });
+
+describe("saving finished rounds to the history", () => {
+  beforeEach(() => {
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    localStorage.clear();
+    freshPlayer();
+  });
+
+  afterEach(() => {
+    store().resetGame();
+    jest.restoreAllMocks();
+    freshPlayer();
+    localStorage.clear();
+  });
+
+  it("saves each scored round once, newest first, with what was played", () => {
+    playRound({ pieceCount: 2, solveMs: 4000 });
+    store().submitSolution(20000);
+    playRound({ pieceCount: 6, correct: 3, solveMs: 15000 });
+
+    expect(store().history).toEqual([
+      {
+        id: expect.any(String),
+        timestamp: expect.any(Number),
+        pieceCount: 6,
+        memorizeTime: 10,
+        actualMemorizeTime: 10,
+        completionTime: 15,
+        duration: 15,
+        accuracy: 50,
+        correctPlacements: 3,
+        totalPlacements: 6,
+        perfectScore: false,
+        level: 1,
+        skillRatingChange: 12,
+        streak: 0,
+      },
+      {
+        id: expect.any(String),
+        timestamp: expect.any(Number),
+        pieceCount: 2,
+        memorizeTime: 10,
+        actualMemorizeTime: 10,
+        completionTime: 4,
+        duration: 4,
+        accuracy: 100,
+        correctPlacements: 2,
+        totalPlacements: 2,
+        perfectScore: true,
+        level: 1,
+        skillRatingChange: 114,
+        streak: 1,
+      },
+    ]);
+  });
+
+  it("writes the history to storage", () => {
+    playRound({ pieceCount: 2, solveMs: 4000 });
+
+    const stored: { accuracy: number; skillRatingChange: number }[] = storedState().history;
+    expect(stored.map(({ accuracy, skillRatingChange }) => [accuracy, skillRatingChange])).toEqual([[100, 114]]);
+  });
+
+  it("keeps the 20 newest rounds", () => {
+    useGameStore.setState({
+      history: Array.from({ length: 20 }, (_, i) => ({
+        id: `old-${i}`,
+        timestamp: i,
+        pieceCount: 6,
+        memorizeTime: 10,
+        accuracy: 50,
+        correctPlacements: 3,
+        totalPlacements: 6,
+        level: 1,
+        duration: 20,
+      })),
+    });
+
+    playRound({ pieceCount: 2, solveMs: 4000 });
+
+    const { history } = store();
+    expect([history.length, history[0].accuracy, history[1].id, history[19].id]).toEqual([20, 100, "old-0", "old-18"]);
+  });
+});
+
+describe("keeping the win streak across visits", () => {
+  const rehydrateFrom = async (gameState: object) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { gameState }, version: 0 }));
+    await useGameStore.persist.rehydrate();
+    return store().gameState;
+  };
+
+  beforeEach(() => {
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    localStorage.clear();
+    freshPlayer();
+  });
+
+  afterEach(() => {
+    store().resetGame();
+    jest.restoreAllMocks();
+    freshPlayer();
+    localStorage.clear();
+  });
+
+  it("stores the win streak with the rating", () => {
+    playRound({ pieceCount: 2, solveMs: 4000 });
+
+    expect(storedState().gameState).toEqual({ pieceCount: 2, memorizeTime: 10, level: 1, skillRating: 1114, streak: 1 });
+  });
+
+  it("restores the stored win streak and counts on from it", async () => {
+    await rehydrateFrom({ pieceCount: 2, memorizeTime: 10, level: 1, skillRating: 1114, streak: 3 });
+    const restored = store().getCurrentStreak();
+
+    playRound({ pieceCount: 2, solveMs: 4000 });
+
+    expect([restored, store().gameState.streak]).toEqual([3, 4]);
+  });
+
+  it("loads state stored before the streak was kept with a streak of 0 and its rating intact", async () => {
+    await expect(rehydrateFrom({ pieceCount: 6, memorizeTime: 10, level: 1, skillRating: 1300 })).resolves.toEqual({
+      pieceCount: 6,
+      memorizeTime: 10,
+      currentLevel: 1,
+      level: 1,
+      skillRating: 1300,
+      streak: 0,
+    });
+  });
+});
+
+describe("how solve speed moves the skill rating", () => {
+  beforeEach(() => {
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    freshPlayer();
+  });
+
+  afterEach(() => {
+    store().resetGame();
+    jest.restoreAllMocks();
+    freshPlayer();
+  });
+
+  it("lowers the rating for an empty submit however fast it comes", () => {
+    const first = playRound({ pieceCount: 6, correct: 0, solveMs: 0 });
+    const firstRating = first.skillRating;
+    const second = playRound({ pieceCount: 6, correct: 0, solveMs: 1 });
+
+    expect([first.accuracy, first.skillRatingChange, firstRating, second.skillRatingChange, second.skillRating]).toEqual([0, -10, 990, -10, 980]);
+  });
+
+  it("gives an instant perfect round no more speed bonus than solving in a third of the study time", () => {
+    const instant = playRound({ pieceCount: 2, solveMs: 100 });
+
+    expect([instant.skillRatingChange, instant.skillRating]).toEqual([122, 1122]);
+  });
+
+  it("adds speed in proportion to what was recalled", () => {
+    const half = playRound({ pieceCount: 6, correct: 3, solveMs: 5000 });
+
+    expect([half.accuracy, half.skillRatingChange]).toEqual([50, 27]);
+  });
+
+  it("leaves a slow perfect round as it was", () => {
+    const slow = playRound({ pieceCount: 6, solveMs: 60000 });
+
+    expect(slow.skillRatingChange).toBe(80);
   });
 });

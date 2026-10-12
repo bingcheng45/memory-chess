@@ -143,6 +143,7 @@
         "display": "Put a number on your <em>mind's eye.</em>",
         "lede": "Memory Chess is a free memory chess game and chess memory trainer. Study a position for a few seconds, the board goes blank, then rebuild it from memory. Each round is a short memory test with an accuracy reading from 0 to 100% and a map of every square you got right or wrong.",
         "secondaryCta": "Take a calibration reading",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "study window",
           "pieces": "pieces per round",

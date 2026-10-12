@@ -143,6 +143,7 @@
         "display": "Mittaa, mitä <em>mielesi silmä näkee.</em>",
         "lede": "Memory Chess on ilmainen shakkimuistipeli ja shakkimuistin harjoitusväline. Tutki asemaa muutaman sekunnin ajan, lauta tyhjenee, ja sitten rakennat sen uudelleen muistista. Jokainen kierros on lyhyt muistitesti, josta saat tarkkuuslukeman 0 ja 100 %:n väliltä sekä kartan jokaisesta ruudusta, jonka sait oikein tai väärin.",
         "secondaryCta": "Tee kalibrointimittaus",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "tutkimisaika",
           "pieces": "nappulaa kierroksella",

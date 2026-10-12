@@ -143,6 +143,7 @@
         "display": "Dai un numero alla <em>tua visione mentale.</em>",
         "lede": "Memory Chess è un gioco gratuito di memoria per gli scacchi e un allenatore della memoria scacchistica. Studia una posizione per qualche secondo, la scacchiera si svuota, poi ricostruiscila a memoria. Ogni partita è un breve test di memoria con una misurazione di precisione da 0 a 100% e una mappa di ogni casa giusta o sbagliata.",
         "secondaryCta": "Fai una misurazione di calibrazione",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "tempo di studio",
           "pieces": "pezzi per partita",

@@ -143,6 +143,7 @@
         "display": "Een getal voor je <em>geestesoog.</em>",
         "lede": "Memory Chess is een gratis schaakgeheugenspel en geheugentrainer voor schakers. Bekijk een stelling een paar seconden, het bord wordt leeg, en dan bouw je hem uit je hoofd weer op. Elke ronde is een korte geheugentest met een nauwkeurigheid van 0 tot 100% en een kaart van elk veld dat je goed of fout had.",
         "secondaryCta": "Doe een kalibratiemeting",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "kijktijd",
           "pieces": "stukken per ronde",

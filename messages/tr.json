@@ -143,6 +143,7 @@
         "display": "Zihninde gördüğünü <em>bir sayıyla ölç.</em>",
         "lede": "Memory Chess, ücretsiz bir satranç hafıza oyunu ve satranç hafızası antrenörüdür. Bir konumu birkaç saniye incele, tahta boşalsın, sonra konumu hafızandan yeniden kur. Her tur kısa bir hafıza testidir. Sonunda 0 ile %100 arasında bir isabet ölçümü ve doğru ya da yanlış bildiğin her kareyi gösteren bir harita alırsın.",
         "secondaryCta": "Kalibrasyon ölçümü yap",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "inceleme süresi",
           "pieces": "tur başına taş",

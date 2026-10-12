@@ -143,6 +143,7 @@
         "display": "Gắn một con số cho <em>bàn cờ trong tâm trí bạn.</em>",
         "lede": "Memory Chess là trò chơi trí nhớ cờ vua miễn phí và là công cụ luyện trí nhớ bàn cờ. Quan sát một thế cờ trong vài giây, bàn cờ trống đi, rồi bạn dựng lại nó từ trí nhớ. Mỗi ván là một bài kiểm tra trí nhớ ngắn, cho một số đo độ chính xác từ 0 đến 100% và một bản đồ đánh dấu mọi ô bạn đặt đúng hay sai.",
         "secondaryCta": "Lấy một số đo hiệu chuẩn",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "thời gian quan sát",
           "pieces": "quân mỗi ván",

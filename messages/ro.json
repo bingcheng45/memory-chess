@@ -143,6 +143,7 @@
         "display": "Măsoară în cifre <em>ochiul minții.</em>",
         "lede": "Memory Chess este un joc gratuit de memorie la șah și un antrenor de memorie pentru șahiști. Studiezi o poziție câteva secunde, tabla se golește, apoi o reconstruiești din memorie. Fiecare rundă este un scurt test de memorie, cu o citire a preciziei de la 0 la 100% și o hartă a fiecărui câmp nimerit sau greșit.",
         "secondaryCta": "Fă o citire de calibrare",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "timp de studiu",
           "pieces": "piese pe rundă",

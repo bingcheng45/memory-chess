@@ -143,6 +143,7 @@
         "display": "Mérd meg a <em>belső látásodat.</em>",
         "lede": "A Memory Chess ingyenes sakkos memóriajáték és sakkmemória-tréner. Néhány másodpercig nézed az állást, a tábla kiürül, te pedig emlékezetből újraépíted. Minden kör egy rövid memóriateszt, 0 és 100% közötti pontossággal és egy térképpel, amely megmutatja, melyik mezőt találtad el és melyiket nem.",
         "secondaryCta": "Végezz egy kalibráló mérést",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "megfigyelési idő",
           "pieces": "bábu körönként",

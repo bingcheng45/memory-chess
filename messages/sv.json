@@ -143,6 +143,7 @@
         "display": "Sätt en siffra på ditt <em>inre öga.</em>",
         "lede": "Memory Chess är ett gratis minnesspel i schack och en tränare för schackminnet. Studera en ställning i några sekunder, brädet töms, och sedan bygger du upp den ur minnet. Varje runda är ett kort minnestest med en träffsäkerhet från 0 till 100 % och en karta över varje ruta du fick rätt eller fel.",
         "secondaryCta": "Gör en kalibreringsmätning",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "studietid",
           "pieces": "pjäser per runda",

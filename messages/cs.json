@@ -143,6 +143,7 @@
         "display": "Změřte své <em>vnitřní oko.</em>",
         "lede": "Memory Chess je bezplatná šachová hra na paměť a trenažér šachové paměti. Několik sekund si prohlížíte pozici, šachovnice se vyprázdní a vy ji poskládáte zpátky po paměti. Každé kolo je krátký test paměti s přesností od 0 do 100 % a mapou všech polí, která jste trefili nebo spletli.",
         "secondaryCta": "Provést kalibrační měření",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "čas na prohlížení",
           "pieces": "figur v kole",

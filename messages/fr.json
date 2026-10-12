@@ -143,6 +143,7 @@
         "display": "Mettez un chiffre sur <em>votre vision mentale.</em>",
         "lede": "Memory Chess est un jeu de mémoire aux échecs gratuit pour entraîner votre mémoire échiquéenne. Étudiez une position quelques secondes, l’échiquier se vide, puis reconstituez-la de mémoire. Chaque partie est un court test de mémoire, avec une mesure de précision de 0 à 100 % et une carte de chaque case juste ou fausse.",
         "secondaryCta": "Faire une mesure d’étalonnage",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "temps d’étude",
           "pieces": "pièces par partie",

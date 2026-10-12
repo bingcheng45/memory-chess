@@ -143,6 +143,7 @@
         "display": "Beri angka untuk <em>mata batinmu.</em>",
         "lede": "Memory Chess adalah permainan catur ingatan gratis sekaligus pelatih ingatan catur. Amati sebuah posisi selama beberapa detik, papan pun kosong, lalu susun ulang dari ingatan. Setiap ronde adalah tes ingatan singkat dengan pembacaan akurasi dari 0 sampai 100% dan peta yang menandai setiap petak yang benar atau salah.",
         "secondaryCta": "Ambil pembacaan kalibrasi",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "waktu menghafal",
           "pieces": "bidak per ronde",

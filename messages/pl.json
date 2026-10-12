@@ -143,6 +143,7 @@
         "display": "Zmierz liczbą to, co widzisz <em>oczami wyobraźni.</em>",
         "lede": "Memory Chess to darmowa gra pamięciowa w szachy i trener pamięci szachowej. Przez kilka sekund przyglądasz się pozycji, szachownica pustoszeje, a ty odtwarzasz ją z pamięci. Każda runda to krótki test pamięci z odczytem dokładności od 0 do 100% i mapą wszystkich pól, trafionych i pomylonych.",
         "secondaryCta": "Zrób odczyt kalibracyjny",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "czas na zapamiętanie",
           "pieces": "figur w rundzie",

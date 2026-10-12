@@ -143,6 +143,7 @@
         "display": "Sæt tal på dit <em>indre øje.</em>",
         "lede": "Memory Chess er et gratis hukommelsesspil med skak og en træner til din skakhukommelse. Se på en stilling i nogle få sekunder, så bliver brættet tomt, og du sætter den op igen fra hukommelsen. Hver runde er en kort hukommelsestest med en præcision fra 0 til 100 % og et kort over hvert felt, du ramte eller missede.",
         "secondaryCta": "Tag en kalibreringsmåling",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "husketid",
           "pieces": "brikker pr. runde",

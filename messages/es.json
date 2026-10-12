@@ -143,6 +143,7 @@
         "display": "Ponle un número a <em>tu visión mental.</em>",
         "lede": "Memory Chess es un juego gratuito de memoria de ajedrez y un entrenador de memoria para ajedrecistas. Estudia una posición unos segundos, el tablero se vacía y luego reconstrúyela de memoria. Cada ronda es una breve prueba de memoria con una medición de precisión de 0 a 100 % y un mapa de cada casilla que acertaste o fallaste.",
         "secondaryCta": "Haz una medición de calibración",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "tiempo de estudio",
           "pieces": "piezas por ronda",

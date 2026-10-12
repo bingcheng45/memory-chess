@@ -143,6 +143,7 @@
         "display": "Dê um número à sua <em>visão mental.</em>",
         "lede": "O Memory Chess é um jogo grátis de memória no xadrez e um treino de memória para enxadristas. Estude uma posição por alguns segundos, o tabuleiro fica vazio e você a reconstrói de memória. Cada rodada é um teste curto de memória, com uma leitura de precisão de 0 a 100% e um mapa de cada casa que você acertou ou errou.",
         "secondaryCta": "Fazer uma leitura de calibração",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "tempo de estudo",
           "pieces": "peças por rodada",

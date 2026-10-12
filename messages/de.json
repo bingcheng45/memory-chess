@@ -143,6 +143,7 @@
         "display": "Eine Zahl für dein <em>inneres Auge.</em>",
         "lede": "Memory Chess ist ein kostenloses Schach-Gedächtnisspiel und Gedächtnistrainer für Schach. Präge dir eine Stellung ein paar Sekunden lang ein, dann wird das Brett leer und du baust sie aus dem Gedächtnis wieder auf. Jede Runde ist ein kurzer Gedächtnistest mit einer Genauigkeit von 0 bis 100 % und einer Karte, die jedes richtige und falsche Feld zeigt.",
         "secondaryCta": "Kalibriermessung machen",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "Einprägezeit",
           "pieces": "Figuren pro Runde",

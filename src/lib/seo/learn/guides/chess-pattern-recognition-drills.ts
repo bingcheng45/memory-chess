@@ -181,7 +181,8 @@ const guide: LearnDocument = {
             "Clear the board completely and set the shape up again from memory. Check it against the table. A piece on the wrong square counts as wrong, the same rule Memory Chess uses.",
             "Shift the whole shape one file to the right: king f8, rook b8, knight e5. The fork square is now d7. Play Nd7+ and confirm the knight hits both, then say why aloud. Nothing black guards d7.",
             "Break the condition. Put a black bishop on c8 and play Nd7+ again. Bxd7 takes the knight, so the fork fails. That bishop is the piece to look for in a game.",
-            "Run steps 1 to 4 for one pattern per session. Once all four rebuild cleanly, open your last three games and look for each shape, even where it never happened. A knight two jumps from a fork square is the shape in its early form.",
+            "Steps 3 and 4 use the fork. For the other three patterns, skip the shift and break the table's shape directly. Add one black piece that does what the condition column rules out, such as a piece guarding f7 in the smothered mate, and check that the winning move now fails.",
+            "Drill one pattern per session. Once all four rebuild cleanly, open your last three games and look for each shape, even where it never happened. A knight two jumps from a fork square is the shape in its early form.",
           ],
         },
         {

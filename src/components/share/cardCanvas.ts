@@ -9,6 +9,8 @@ export const CARD_WIDTH = 1080;
 export const CARD_HEIGHT = 1350;
 export const PAD = 88;
 export const INNER = CARD_WIDTH - 2 * PAD;
+/** The smallest text a card prints: a 460px preview, as the dialog and the dashboard show it, sets it at about 11px. */
+export const SMALLEST_TEXT = 26;
 /** Where a card's own content starts, under the header and its ruler. */
 export const BODY_TOP = 256;
 /** Lab Paper's light tokens (components/lab-paper/lab-paper.css): a card reads the same wherever it is posted. */

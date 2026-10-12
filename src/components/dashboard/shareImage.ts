@@ -8,6 +8,7 @@ import {
   INK,
   INNER,
   PAD,
+  SMALLEST_TEXT,
   trendWidth,
   wrapLines,
   type CardFonts,
@@ -47,7 +48,7 @@ const COLUMN_GAP = 40;
 
 /** The number large and its unit small on one baseline, in the order the language puts them, shrunk together until they fit. */
 function drawValue(ctx: Ctx, segments: readonly FigureSegment[], x: number, baseline: number, width: number, size: number, fonts: CardFonts): number {
-  const fontOf = (big: boolean, at: number) => (big ? font(600, at, fonts) : font(500, Math.round(at * 0.3), fonts));
+  const fontOf = (big: boolean, at: number) => (big ? font(600, at, fonts) : font(500, Math.max(SMALLEST_TEXT, Math.round(at * 0.3)), fonts));
   const widthAt = (at: number) =>
     segments.reduce((sum, { text, big }) => {
       ctx.font = fontOf(big, at);
@@ -67,7 +68,7 @@ function drawValue(ctx: Ctx, segments: readonly FigureSegment[], x: number, base
 }
 
 /** The trend sits beside the figure at about a third of its height, so a figure shrunk to fit leaves it the room it needs. */
-const trendSizeOf = (valueSize: number) => Math.max(22, Math.round(valueSize * 0.34));
+const trendSizeOf = (valueSize: number) => Math.max(SMALLEST_TEXT, Math.round(valueSize * 0.34));
 
 function drawFigure(ctx: Ctx, { label, segments, note, trend }: CardFigure, slot: Slot, fonts: CardFonts, locale: string) {
   ctx.fillStyle = INK.muted;
@@ -98,7 +99,7 @@ function drawGrid(ctx: Ctx, grid: readonly CardFigure[], fonts: CardFonts, local
   const rows = Math.ceil(grid.length / columns);
   const width = (INNER - COLUMN_GAP * (columns - 1)) / columns;
   const rowHeight = (BODY_BOTTOM - GRID_TOP) / Math.max(rows, columns === 2 ? 2 : 3);
-  const sizes = columns === 2 ? { labelSize: 28, valueSize: 96, noteSize: 24 } : { labelSize: 24, valueSize: 66, noteSize: 21 };
+  const sizes = columns === 2 ? { labelSize: 28, valueSize: 96, noteSize: SMALLEST_TEXT } : { labelSize: SMALLEST_TEXT, valueSize: 60, noteSize: SMALLEST_TEXT };
   grid.forEach((figure, index) => {
     const x = PAD + (index % columns) * (width + COLUMN_GAP);
     const y = GRID_TOP + Math.floor(index / columns) * rowHeight;

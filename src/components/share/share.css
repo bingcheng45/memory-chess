@@ -1,13 +1,13 @@
 
-/* share dialog: the card on the left, every way to send it on the right; a bottom sheet on phones */
+/* share dialog: the card large on the left, every way to send it on the right; a bottom sheet on phones, the card its full width */
 .lab-share-overlay { position: fixed; inset: 0; z-index: 60; background: rgba(13, 27, 36, 0.48); }
-.lab-paper.lab-share-dialog { position: fixed; z-index: 61; top: 50%; left: 50%; translate: -50% -50%; width: min(840px, calc(100vw - 48px)); max-height: calc(100dvh - 48px); overflow: hidden auto; overscroll-behavior: contain; padding: 24px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); box-shadow: var(--lp-pop-shadow); }
+.lab-paper.lab-share-dialog { position: fixed; z-index: 61; top: 50%; left: 50%; translate: -50% -50%; width: min(1010px, calc(100vw - 48px)); max-height: calc(100dvh - 48px); overflow: hidden auto; overscroll-behavior: contain; padding: 24px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); box-shadow: var(--lp-pop-shadow); }
 .lab-paper .lab-share-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .lab-paper .lab-share-title { margin: 0; font: 650 22px/1.25 var(--lp-ui); color: var(--lp-ink); }
 .lab-paper .lab-share-intro { margin: 4px 0 0; font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
 .lab-paper .lab-share-close { display: grid; place-items: center; flex: none; width: 44px; height: 44px; margin: -8px -8px 0 0; padding: 0; background: transparent; border: 1px solid transparent; border-radius: var(--lp-r-md); color: var(--lp-ink-2); cursor: pointer; transition: background-color 0.15s, color 0.15s; }
 .lab-paper .lab-share-close:hover { background: var(--lp-surface-2); color: var(--lp-ink); }
-.lab-paper .lab-share-body { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 24px; align-items: start; margin-top: 24px; }
+.lab-paper .lab-share-body { display: grid; grid-template-columns: 472px minmax(0, 1fr); gap: 32px; align-items: start; margin-top: 24px; }
 /* The frame holds the card's 4:5 shape from the first paint, so nothing moves when the image arrives. */
 .lab-paper .lab-share-preview { position: relative; width: 100%; aspect-ratio: 4 / 5; margin: 0; overflow: hidden; background: var(--lp-surface-2); border: 1px solid var(--lp-line); border-radius: var(--lp-r-md); }
 .lab-paper .lab-share-preview img { display: block; width: 100%; height: 100%; }
@@ -29,10 +29,12 @@
 }
 @keyframes lab-share-fade { from { opacity: 0; } }
 @keyframes lab-share-rise { from { opacity: 0; transform: translateY(8px); } }
+@media (max-width: 960px) {
+  .lab-paper .lab-share-body { grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 24px; }
+}
 @media (max-width: 640px) {
   .lab-paper.lab-share-dialog { top: auto; bottom: 0; left: 0; translate: none; width: 100%; max-height: 92dvh; padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); border-bottom: 0; border-radius: var(--lp-r-lg) var(--lp-r-lg) 0 0; }
   .lab-paper .lab-share-title { font-size: 20px; }
   .lab-paper .lab-share-body { grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 16px; }
-  .lab-paper .lab-share-preview:not([data-state="failed"]) { justify-self: center; width: auto; height: min(36dvh, 300px); }
   .lab-paper .lab-share-actions .lab-btn { flex: 1 1 auto; }
 }

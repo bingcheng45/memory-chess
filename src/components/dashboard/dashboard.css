@@ -40,9 +40,9 @@
 .lab-paper .lab-tile:is([data-state="warming"], [data-state="empty"], [data-state="loading"]) { background: transparent; border-style: dashed; border-color: var(--lp-line-strong); }
 
 /* summary: the totals beside the share panel on wide screens */
-.lab-paper .lab-dash-summary { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 16px; align-items: start; }
-/* The card itself as the panel's picture, its 4:5 frame sized from the first paint so nothing moves when it is drawn. */
-.lab-paper .lab-share { display: grid; grid-template-columns: 144px minmax(0, 1fr); gap: 20px; align-items: center; min-width: 0; padding: 20px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
+.lab-paper .lab-dash-summary { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: start; }
+/* The card itself as the panel's picture, large enough to read without zooming, its 4:5 frame sized from the first paint so nothing moves when it is drawn. */
+.lab-paper .lab-share { display: grid; grid-template-columns: minmax(0, 480px) minmax(0, 1fr); grid-template-rows: auto 1fr; gap: 16px 32px; align-items: start; min-width: 0; padding: 20px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
 .lab-paper .lab-share-thumb { display: block; width: 100%; aspect-ratio: 4 / 5; margin: 0; padding: 0; overflow: hidden; background: var(--lp-paper); border: 1px solid var(--lp-line); border-radius: var(--lp-r-md); cursor: pointer; }
 .lab-paper .lab-share-thumb:not([data-state="ready"]) { cursor: default; }
 .lab-paper .lab-share-thumb img { display: block; width: 100%; height: 100%; }
@@ -50,8 +50,9 @@
 .lab-paper .lab-share-sketch > span { height: 20px; background: var(--lp-line); border-radius: 3px; }
 .lab-paper .lab-share-sketch > [data-part="lead"] { grid-column: 1 / -1; height: 40px; margin: 12px 0 8px; }
 .lab-paper .lab-share-text { font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
-/* The action takes its own row under the picture, so it reads on one line however narrow the column beside the card. */
-.lab-paper .lab-share > .lab-btn { grid-column: 1 / -1; justify-self: start; }
+/* The words and the action sit beside the card, the action under the words. */
+.lab-paper .lab-share > .lab-share-thumb { grid-row: 1 / span 2; }
+.lab-paper .lab-share > .lab-btn { grid-column: 2; justify-self: start; }
 
 /* history */
 .lab-paper .lab-hist-bar { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
@@ -118,7 +119,6 @@
 
 @media (max-width: 1023px) {
   .lab-paper .lab-tiles[data-size="lead"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .lab-paper .lab-dash-summary { grid-template-columns: minmax(0, 1fr); }
   .lab-paper .lab-dash-insights { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 860px) {
@@ -153,6 +153,8 @@
   .lab-paper .lab-field { flex: 1 1 140px; }
   .lab-paper .lab-field select { width: 100%; min-width: 0; }
   .lab-paper .lab-dash-panel, .lab-paper .lab-share { padding: 16px; }
-  .lab-paper .lab-share { grid-template-columns: 112px minmax(0, 1fr); gap: 16px; }
+  .lab-paper .lab-share { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; gap: 16px; }
+  .lab-paper .lab-share > .lab-share-thumb { grid-row: auto; max-width: 480px; }
+  .lab-paper .lab-share > .lab-btn { grid-column: auto; }
   .lab-paper .lab-dash-lines { gap: 16px; }
 }

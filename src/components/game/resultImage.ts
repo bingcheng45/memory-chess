@@ -1,4 +1,4 @@
-import { BODY_BOTTOM, BODY_TOP, CARD_WIDTH, drawCard, drawTrend, fitFont, font, INK, INNER, PAD, trendWidth, wrapLines, type CardFonts, type Ctx } from "@/components/share/cardCanvas";
+import { BODY_BOTTOM, BODY_TOP, CARD_WIDTH, drawCard, drawTrend, fitFont, font, INK, INNER, PAD, SMALLEST_TEXT, trendWidth, wrapLines, type CardFonts, type Ctx } from "@/components/share/cardCanvas";
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { isDarkSquare, squareVerdict, type LabPiece } from "@/lib/round/round";
 import type { PieceColor, PieceType } from "@/types/chess";
@@ -102,9 +102,16 @@ function drawBoard(ctx: Ctx, board: ScoredBoard, art: PieceArt) {
 function drawLegend(ctx: Ctx, legend: NonNullable<ResultCardCopy["legend"]>, fonts: CardFonts) {
   const y = BOARD_Y + BOARD_SIZE + 28;
   const swatch = 24;
+  const marks = ["correct", "missed", "wrong"] as const;
+  const widthAt = (size: number) => {
+    ctx.font = font(500, size, fonts);
+    return marks.reduce((sum, mark) => sum + swatch + 8 + ctx.measureText(legend[mark]).width, 0) + 24 * (marks.length - 1);
+  };
+  let size = SMALLEST_TEXT;
+  while (size > 18 && widthAt(size) > BOARD_SIZE) size -= 1;
+  ctx.font = font(500, size, fonts);
   let x = BOARD_X;
-  ctx.font = font(500, 22, fonts);
-  (["correct", "missed", "wrong"] as const).forEach((mark) => {
+  marks.forEach((mark) => {
     ctx.fillStyle = INK.squareLight;
     ctx.fillRect(x, y, swatch, swatch);
     if (mark === "missed") {
@@ -116,7 +123,7 @@ function drawLegend(ctx: Ctx, legend: NonNullable<ResultCardCopy["legend"]>, fon
       ctx.fillRect(x, y, swatch, swatch);
     }
     ctx.fillStyle = INK.ink2;
-    ctx.fillText(legend[mark], x + swatch + 8, y + 19);
+    ctx.fillText(legend[mark], x + swatch + 8, y + 12 + size * 0.36);
     x += swatch + 8 + ctx.measureText(legend[mark]).width + 24;
   });
 }
